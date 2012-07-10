@@ -1,0 +1,34 @@
+#themeblvd-options-buttons {
+	background: #353535 url(../images/title-bg.png);
+	border-bottom: 1px solid #000000;
+	margin: -2px -15px 10px -15px;
+	padding: 10px;
+}
+#themeblvd-options-buttons h3 {
+	color: #ffffff;
+	margin: 5px 10px;
+	text-shadow: 1px 1px 1px #000000;
+}
+#themeblvd-options-buttons #themeblvd-cancel-button {
+	display: none; /* Hiding for now */
+}
+#themeblvd-options-table {
+	margin-bottom: 20px;
+}
+#themeblvd-options-table th,
+#themeblvd-options-table td {
+	padding: 10px;
+}
+#themeblvd-options-table th label {
+	display: block;
+	width: 175px;
+}
+#themeblvd-options-table .themeblvd-input-help {
+	color: #888888;
+	display: block;
+	font-size: 11px;
+	padding: 5px;
+}
+#themeblvd-options-table .select_wrapper span {
+	display: none;
+}

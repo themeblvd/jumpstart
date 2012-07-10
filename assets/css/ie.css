@@ -1,0 +1,19 @@
+/* Fix responsive featured images at 100% width in IE8 */
+.attachment-tb_medium img.wp-post-image,
+.attachment-tb_large img.wp-post-image,
+.attachment-grid_6 img.wp-post-image,
+.attachment-grid_4 img.wp-post-image,
+.attachment-grid_3 img.wp-post-image,
+.attachment-grid_2 img.wp-post-image,
+.attachment-grid_fifth_1 img.wp-post-image,
+.type-attachment .attachment img {
+	width: auto;
+}
+/* Fix small floated thumbnails in IE8 */
+.attachment-small img.wp-post-image,
+.attachment-tb_small img.wp-post-image,
+.attachment-square_small img.wp-post-image,
+.attachment-square_smaller img.wp-post-image,
+.attachment-square_smallest img.wp-post-image {
+	max-width: inherit;
+}

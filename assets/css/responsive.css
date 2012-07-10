@@ -1,0 +1,55 @@
+/* =Responsive Structure
+------------------------------------------------- */
+
+/* Optimized for Tablets */
+@media (max-width: 800px) {	
+	#top, #featured, #main, #bottom {font-size: 12px;}
+	#container {width: inherit; max-width: 780px; /* Accomodates 10px gutters on each side of #wrapper */}
+	/* Responsive visiblity classes */
+	.hide_on_standard { display:block; }
+	.hide_on_standard_and_tablet { display:none; }
+	.hide_on_standard_and_tablet_and_mobile { display:none; }
+	.hide_on_standard_and_mobile { display:block; }
+	.hide_on_tablet { display:none; }
+	.hide_on_tablet_and_mobile { display:none; }
+	.hide_on_mobile { display:block; }
+}
+
+/* Optimized for Mobile Devices */
+@media (max-width: 480px) {
+	/* Responsive visiblity classes */
+	.hide_on_standard { display:block; }
+	.hide_on_standard_and_tablet { display:block; }
+	.hide_on_standard_and_tablet_and_mobile { display:none; }
+	.hide_on_standard_and_mobile { display:none; }
+	.hide_on_tablet { display:block; }
+	.hide_on_tablet_and_mobile { display:none; }
+	.hide_on_mobile { display:none; }
+	/* Grids */
+	#main #content, #main .fixed-sidebar, .column {float:none;margin:0 0 20px 0;width:100%; }
+	/* Header */
+	.header_logo, header_addon {float:none;text-align:center;}
+	#branding #access li {border-right:none;float:none;padding:0;}	
+	#access li li a { padding-left: 20px !important; }
+	#access li li li a { padding-left: 30px !important; }
+	#access .sf-menu ul { border:none; margin:0; position:static; width: inherit; }
+	#access .sf-menu ul a > .sf-sub-indicator { background-position:0 -100px; }
+	.mobile_nav_select #access {display:none;}
+	.mobile_nav_select .responsive-nav {display:block;margin-bottom:10px;text-align:center;}
+	/* Footer */
+	#footer_sub_content .copyright, #footer_sub_content .footer-nav {float:none;text-align:center;}
+	#footer_sub_content .footer-nav ul li {display:inline;float:none;padding:2px;}
+	/* Slogan */
+	.element-slogan .has_button .tb-button { display:block;float:none;margin:0 0 10px 0;text-align:center; }
+	.element-slogan .slogan .slogan-text { display:block;text-align:center; }
+	/* Divider */
+	.divider-shadow {background-size:100%;}
+	/* Posts */
+	.attachment-small {width:40%;}
+	#comments {font-size:.85em}
+	#comments .comment-body {padding:5px;padding-left:45px;}
+	#comments .comment-body .avatar {top:5px;left:5px;width:30px;height:30px;}
+	/* Sliders */
+	.slider_has_mobile_fallback {display:none;}
+	.slider-fallback {display:block;}
+}

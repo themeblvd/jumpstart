@@ -1,0 +1,44 @@
+/* =Options Framework Overrides
+----------------------------------------------- */
+
+#builder_blvd #optionsframework .section { padding-bottom: 30px; }
+
+/* =Primary Layout
+----------------------------------------------- */
+
+#builder_blvd #optionsframework .metabox-holder { max-width:780px; }
+#builder_blvd #optionsframework, #builder_blvd #optionsframework .full-width { max-width:none; }
+#builder_blvd #optionsframework .updated { max-width:none; }
+
+/* =General Classes
+----------------------------------------------- */
+
+#builder_blvd #add_new_builder .warning { margin:0; }
+#builder_blvd #add_new_builder .sample-layouts img { width:100%; }
+
+/* =Edit Layout
+----------------------------------------------- */
+	
+/* Header */
+#builder_blvd #edit_layout #titlediv { margin:10px 0 10px 0; }
+#builder_blvd #edit_layout #titlediv h2 { float:left; margin:0 12px; }
+#builder_blvd #edit_layout #titlediv select { float:left; margin:4px 10px 0 20px; }
+#builder_blvd #edit_layout #titlediv .button-secondary { float:left; margin:5px 5px 0 0; }
+#builder_blvd #edit_layout #titlediv .ajax-loading { display:none; float:left; margin:9px 0 0 0; visibility:visible; }
+
+/* Main Sections */
+#builder_blvd #builder #featured, #builder_blvd #builder #primary, #builder_blvd #builder #featured_below{ position:relative; }
+#builder_blvd #builder #featured .sortable, #builder_blvd #builder #primary .sortable, #builder_blvd #builder #featured_below .sortable  { background:#f8f8f8; border:1px dashed #dfdfdf; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; margin:0 0 40px 0; padding:10px; }
+#builder_blvd #builder #featured span.label, #builder_blvd #builder #primary span.label, #builder_blvd #builder #featured_below span.label { content:'Featured Area'; background:#f8f8f8; border:1px dashed #dfdfdf; border-bottom:none; color:#666666; font-size:10px; letter-spacing:1px; line-height:25px; padding:0 10px; position:absolute; top:-25px; right:10px; text-align:center; width:100px; }
+
+/* Elements */
+#builder_blvd #builder .widget { margin-bottom:10px; }
+#builder_blvd #optionsframework #builder .widget-content { padding:5px; }
+#builder_blvd #builder #featured .empty:before { content:'Drag elements here to have them featured above the primary content and sidebar(s).'; color:#bbbbbb; display:block; font-family:Georgia, "Times New Roman", "Bitstream Charter", Times, serif; font-size:15px; font-style:italic; padding:10px; text-align:center; }
+#builder_blvd #builder #primary .empty:before { content:'Click "Add New Element" above to add a new element here.'; color:#bbbbbb; display:block; font-family:Georgia, "Times New Roman", "Bitstream Charter", Times, serif; font-size:15px; font-style:italic; padding:10px; text-align:center; }
+#builder_blvd #builder #featured_below .empty:before { content:'Drag elements here to have them featured below the primary content and sidebar(s).'; color:#bbbbbb; display:block; font-family:Georgia, "Times New Roman", "Bitstream Charter", Times, serif; font-size:15px; font-style:italic; padding:10px; text-align:center; }
+
+/* Sidebar */
+#builder_blvd #optionsframework .inner-sidebar .section-radio label {  margin-bottom: 15px; width:80%; }
+#builder_blvd #optionsframework .inner-sidebar .section-radio input.of-radio { margin-top: 2px; }
+#builder_blvd #optionsframework .inner-sidebar .section-radio .heading { margin-bottom: 12px; }
