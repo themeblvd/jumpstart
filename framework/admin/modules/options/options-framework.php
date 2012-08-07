@@ -68,8 +68,8 @@ if ( ! function_exists( 'optionsframework_add_page' ) ) {
 if( ! function_exists( 'optionsframework_load_styles' ) ) {
 	function optionsframework_load_styles() {
 		// Enqueued styles
-		wp_enqueue_style('admin-style', OPTIONS_FRAMEWORK_DIRECTORY.'css/admin-style.css');
-		wp_enqueue_style('sharedframework-style', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-style.css');
+		wp_enqueue_style('admin-style', OPTIONS_FRAMEWORK_DIRECTORY.'css/admin-style.css', null, TB_FRAMEWORK_VERSION);
+		wp_enqueue_style('sharedframework-style', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-style.css', null, TB_FRAMEWORK_VERSION);
 		wp_enqueue_style('color-picker', OPTIONS_FRAMEWORK_DIRECTORY.'css/colorpicker.css');
 	}
 }
@@ -82,10 +82,10 @@ if( ! function_exists( 'optionsframework_load_scripts' ) ) {
 	function optionsframework_load_scripts() {		
 		// Enqueued scripts
 		wp_enqueue_script('jquery-ui-core');
-		wp_enqueue_script('sharedframework-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/shared.min.js', array('jquery'));
+		wp_enqueue_script('sharedframework-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/shared.js', array('jquery'), TB_FRAMEWORK_VERSION);
 		wp_localize_script('sharedframework-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		wp_enqueue_script('color-picker', OPTIONS_FRAMEWORK_DIRECTORY.'js/colorpicker.js', array('jquery'));
-		wp_enqueue_script('options-custom', OPTIONS_FRAMEWORK_DIRECTORY.'js/options-custom.js', array('jquery'));
+		wp_enqueue_script('options-custom', OPTIONS_FRAMEWORK_DIRECTORY.'js/options.js', array('jquery'), TB_FRAMEWORK_VERSION);
 	}
 }
 

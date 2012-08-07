@@ -66,8 +66,8 @@ if ( ! function_exists( 'builder_blvd_add_page' ) ) {
 
 if( ! function_exists( 'builder_blvd_load_styles' ) ) {
 	function builder_blvd_load_styles() {
-		wp_enqueue_style('sharedframework-style', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-style.css');
-		wp_enqueue_style('builderframework-style', BUILDER_FRAMEWORK_DIRECTORY . 'css/builder-style.css');
+		wp_enqueue_style('sharedframework-style', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-style.css', null, TB_FRAMEWORK_VERSION);
+		wp_enqueue_style('builderframework-style', BUILDER_FRAMEWORK_DIRECTORY . 'css/builder-style.css', null, TB_FRAMEWORK_VERSION);
 	}
 }	
 
@@ -80,8 +80,8 @@ if( ! function_exists( 'builder_blvd_load_styles' ) ) {
 if( ! function_exists( 'builder_blvd_load_scripts' ) ) {
 	function builder_blvd_load_scripts() {
 		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('sharedframework-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/shared.min.js', array('jquery'));
-		wp_enqueue_script('builderframework-scripts', BUILDER_FRAMEWORK_DIRECTORY . 'js/builder-custom.js', array('jquery'));
+		wp_enqueue_script('sharedframework-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/shared.js', array('jquery'), TB_FRAMEWORK_VERSION);
+		wp_enqueue_script('builderframework-scripts', BUILDER_FRAMEWORK_DIRECTORY . 'js/builder.js', array('jquery'), TB_FRAMEWORK_VERSION);
 		wp_localize_script('sharedframework-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 	}
 }
@@ -89,7 +89,7 @@ if( ! function_exists( 'builder_blvd_load_scripts' ) ) {
 /**
  * Builds out the header for all builder pages.
  *
- * @since 2.0.0 
+ * @since 2.0.0
  */
 
 if ( ! function_exists( 'builder_blvd_page_header' ) ) {
@@ -122,7 +122,7 @@ if ( ! function_exists( 'builder_blvd_page_footer' ) ) {
 				<div class="admin-module-footer">
 			    	<?php do_action( 'themeblvd_admin_module_footer', 'builder' ); ?>
 			    </div>
-			</div> <!-- #optionsframework (end) -->
+			</div><!-- #optionsframework (end) -->
 		</div><!-- #builder_blvd (end) -->
 	    <?php
 	}	

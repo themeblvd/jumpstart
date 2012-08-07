@@ -5,5 +5,3 @@ Jump Start Changelog
 -----
 
 * This is the first release constructed from Theme Blvd Framework version 2.1.0.
-
-Hello, do u see me github repository?

@@ -15,18 +15,24 @@
  *		- four_fifth		=> @since 2.0.0
  *		- three_tenth		=> @since 2.0.0
  *		- seven_tenth		=> @since 2.0.0
- * (2) HTML
+ * (2) Components
  *		- button 			=> @since 2.0.0
- *		- icon				=> @since 2.0.0
  *		- box				=> @since 2.0.0
+ *		- alert				=> @since 2.2.0
  *		- icon_list			=> @since 2.0.0
+ *		- divider			=> @since 2.0.0
+ * 		- progess_bar		=> @since 2.2.0
+ *		- popup				=> @since 2.2.0
+ * (3) Inline Elements
+ *		- icon				=> @since 2.0.0
  *		- icon_link 		=> @since 2.0.0
  *		- highlight			=> @since 2.0.0
  *		- dropcap			=> @since 2.0.0
- *		- divider			=> @since 2.0.0
- * (3) Tabs
+ *		- label				=> @since 2.2.0
+ *		- vector_icon		=> @since 2.2.0
+ * (3) Tabs, Accordion, & Toggles
  *		- tabs				=> @since 2.0.0
- * (4) Toggles
+ *		- accordion			=> @since 2.2.0
  *		- toggle			=> @since 2.0.0
  * (5) Sliders
  * 		- slider			=> @since 2.0.0
@@ -163,7 +169,7 @@ if( ! function_exists( 'themeblvd_shortcode_clear' ) ) {
 add_shortcode( 'clear', 'themeblvd_shortcode_clear' );
 
 /*-----------------------------------------------------------------------------------*/
-/* Basic HTML Shortcodes
+/* Components
 /*-----------------------------------------------------------------------------------*/
 
 /**
@@ -179,10 +185,68 @@ add_shortcode( 'clear', 'themeblvd_shortcode_clear' );
 if( ! function_exists( 'themeblvd_shortcode_icon_list' ) ) {
 	function themeblvd_shortcode_icon_list( $atts, $content = null ) {
 	    $default = array(
-			'style' => 'check' // check, crank, delete, doc, plus, star, star2, warning, write
+			'style' => '',					// (deprecated) check, crank, delete, doc, plus, star, star2, warning, write
+			'icon'	=> 'caret-right',		// Any fontawesome icon
+			'color'	=> ''					// Optional color hex for icon - ex: #000000
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
-	    $output = '<div class="icon-list icon-'.$style.'">'.do_shortcode($content).'</div><!-- .icon-list (end) -->';
+	    
+	    
+	    // For those using old "style" method, this will 
+	    // match the old style choices to a fontawesome icon 
+	    // and add in a relevant color.
+	    if( $style ){
+		    switch( $style ){
+			    case 'check' :
+			    	$icon = 'ok-sign';
+			    	$color = '#59f059';
+			    	break;
+			    case 'crank' :
+			    	$icon = 'cog';
+			    	$color = '#d7d7d7';
+			    	break;
+			    case 'delete' :
+			    	$icon = 'remove-sign';
+			    	$color = '#ff7352';
+			    	break;
+			    case 'doc' :
+			    	$icon = 'file';
+			    	$color = '#b8b8b8';
+			    	break;
+			    case 'plus' :
+			    	$icon = 'plus-sign';
+			    	$color = '#59f059';
+			    	break;
+			    case 'star' :
+			    	$icon = 'star';
+			    	$color = '#eec627';
+			    	break;
+			    case 'star2' :
+			    	$icon = 'star';
+			    	$color = '#a7a7a7';
+			    	break;
+			    case 'warning' :
+			    	$icon = 'warning-sign';
+			    	$color = '#ffd014';
+			    	break;
+			    case 'write' :
+			    	$icon = 'pencil';
+			    	$color = '#ffd014';
+			    	break;
+		    }
+	    }
+	    
+	    // Color
+	    $color_css = '';
+	    if( $color )
+	    	$color_css = ' style="color:'.$color.';"';
+	    
+	    // Add in fontawesome icon
+	    $content = str_replace('<ul>', '<ul class="tb-icon-list">', $content );
+	    $content = str_replace('<li>', '<li><i class="icon-'.$icon.'"'.$color_css.'></i> ', $content );
+	    
+	    // Output
+	    $output = do_shortcode($content);
 	    return $output;
 	}
 }
@@ -207,10 +271,12 @@ if( ! function_exists( 'themeblvd_shortcode_button' ) ) {
             'target' => '_self',
             'size' => 'small',
             'class' => '',
-            'title' => ''
+            'title' => '',
+            'icon_before' => '',
+            'icon_after' => ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
-	    $output = themeblvd_button( $content, $link, $color, $target, $size, $class, $title );
+	    $output = themeblvd_button( $content, $link, $color, $target, $size, $class, $title, $icon_before, $icon_after );
 	    return $output;
 	}
 }
@@ -229,18 +295,191 @@ add_shortcode( 'button', 'themeblvd_shortcode_button' );
 if( ! function_exists( 'themeblvd_shortcode_box' ) ) {
 	function themeblvd_shortcode_box( $atts, $content = null ) {
 		$output = '';
+		$has_icon = '';
 		$default = array(
-            'style' => 'alert' // alert, approved, camera, cart, doc, download, media, note, notice, quote, warning
+            'style' => 'blue', // blue, green, grey, orange, purple, red, teal, yellow
+            'icon' => ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
-	    $output = '<div class="info-box info-box-'.$style.'"><div class="icon">'.do_shortcode( $content ).'</div></div>';
+	    // Classes
+	    $classes = 'info-box info-box-'.$style;	    
+	    // Add icon
+	    if( $icon ) {
+	    	$classes .= ' info-box-has-icon';
+	    	$content = '<i class="icon icon-'.$icon.'"></i>'.$content;
+	    }
+	    $output = '<div class="'.$classes.'">'.apply_filters('themeblvd_the_content', $content).'</div>';
 	    return $output;
 	}
 }
 add_shortcode( 'box', 'themeblvd_shortcode_box' );
 
 /**
- * 48px Icon
+ * Alerts (from Bootstrap)
+ *
+ * @since 2.2.0
+ *
+ * @param array $atts Standard WordPress shortcode attributes
+ * @param string $content The enclosed content
+ * @return string $output Content to output for shortcode
+ */
+
+if( ! function_exists( 'themeblvd_shortcode_alert' ) ) {
+	function themeblvd_shortcode_alert( $atts, $content = null ) {
+		$output = '';
+		$classes = 'alert';
+		$default = array(
+            'style' => 'blue', // info, success, danger, 'message'
+            'close' => 'false' // true, false
+	    );
+	    extract( shortcode_atts( $default, $atts ) );
+	    // CSS classes
+	    if( in_array( $style, array( 'info', 'success', 'danger', 'message' ) ) )
+	    	$classes .= ' alert-'.$style;
+	    if( $close == 'true' ) 
+	    	$classes .= ' fade in';
+	    // Start output
+	    $output = '<div class="'.$classes.'">';
+	    // Add a close button?
+	    if( $close == 'true' )
+	    	$output .= '<button type="button" class="close" data-dismiss="alert">×</button>';
+	    // Finish output
+	    $output .= $content.'</div><!-- .alert (end) -->';
+	    return $output;
+	}
+}
+add_shortcode( 'alert', 'themeblvd_shortcode_alert' );
+
+/**
+ * Divider
+ *
+ * @since 2.0.0
+ *
+ * @param array $atts Standard WordPress shortcode attributes
+ * @param string $content The enclosed content
+ */
+
+if( ! function_exists( 'themeblvd_shortcode_divider' ) ) {
+	function themeblvd_shortcode_divider( $atts, $content = null ) {
+	    $default = array(
+            'style' => 'solid' // dashed, shadow, solid
+	    );
+	    extract( shortcode_atts( $default, $atts ) );
+	    return themeblvd_divider( $style );
+	}
+}
+add_shortcode( 'divider', 'themeblvd_shortcode_divider' );
+
+/**
+ * Progress Bar (from Bootstrap)
+ *
+ * @since 2.2.0
+ *
+ * @param array $atts Standard WordPress shortcode attributes
+ * @return string $output Content to output for shortcode
+ */
+
+if( ! function_exists( 'themeblvd_shortcode_progress_bar' ) ) {
+	function themeblvd_shortcode_progress_bar( $atts ) {
+	    $default = array(
+            'color' 	=> '',		// default, danger, success, info, warning
+            'percent' 	=> '100',	// Percent of bar - 30, 60, 80, etc.
+            'striped' 	=> 'false',	// true, false	
+            'animate' 	=> 'false'	// true, false
+	    );
+	    extract( shortcode_atts( $default, $atts ) );
+	    
+	    $classes = 'progress';
+	    
+	    // Color
+	    if( $color && $color != 'default' )
+	    	$classes .= ' progress-'.$color;
+	    
+	    // Striped?
+	    if( $striped == 'true' )
+	    	$classes .= ' progress-striped';
+	    
+	    // Animated?
+	    if( $animate == 'true' )
+	    	$classes .= ' active';
+	    
+	    // Output
+	    $output = '<div class="'.$classes.'"><div class="bar" style="width: '.$percent.'%;"></div></div>';
+	    
+	    return $output;
+	}
+}
+add_shortcode( 'progress_bar', 'themeblvd_shortcode_progress_bar' );
+
+/**
+ * Popup (from Bootstrap)
+ *
+ * @since 2.2.0
+ *
+ * @param array $atts Standard WordPress shortcode attributes
+ * @param string $content Content in shortcode
+ * @return string $output Content to output for shortcode
+ */
+
+if( ! function_exists( 'themeblvd_shortcode_popup' ) ) {
+	function themeblvd_shortcode_popup( $atts, $content = null ) {
+	    $default = array(
+	    	'text' 			=> 'Link Text', // Text for link or button leading to popup
+			'title' 		=> '', 			// Title for anchor, will default to "text" option
+			'color' 		=> '', 			// Color of button, only applies if button style is selected
+			'icon_before'	=> '', 			// Icon before button or link's text
+			'icon_after' 	=> '', 			// Icon after button or link's text
+			'header' 		=> '', 			// Header text for popup
+			'animate' 		=> 'false'		// Whether popup slides in or not - true, false 
+	    );
+	    extract( shortcode_atts( $default, $atts ) );
+	    
+	    // ID for popup
+	    $popup_id = uniqid( 'popup_'.rand() );
+	    
+	    // Button/Link
+	    $link = '';
+	    if( $title )
+	    	$title = $text;
+	    $link = themeblvd_button( $text, '#'.$popup_id, $color, null, $size, null, $title, $icon_before, $icon_after, 'data-toggle="modal"' );
+		$link = apply_filters('themeblvd_the_content', $link);
+	    
+	    // Classes for popup
+	    $classes = 'modal hide';
+	    if( $animate == 'true' )
+	    	$classes .= ' fade';
+	    
+	    // Header
+	    $header_html = '';
+	    if( $header ){
+	    	$header_html .= '<div class="modal-header">';
+	    	$header_html .= '<button type="button" class="close" data-dismiss="modal">×</button>';
+	    	$header_html .= '<h3>'.$header.'</h3>';
+	    	$header_html .= '</div><!-- modal-header (end) -->';
+	    }
+	    
+	    // Output
+	    $output  = $link;
+	    $output .= '<div class="'.$classes.'" id="'.$popup_id.'">';
+	    $output .= $header_html;
+	    $output .= '<div class="modal-body">';
+	    $output .= apply_filters('themeblvd_the_content', $content);
+	    $output .= '</div><!-- .modal-body (end) -->';
+	    $output .= '<div class="modal-footer">';
+	    $output .= '<a href="#" class="btn" data-dismiss="modal">'.themeblvd_get_local('close').'</a>';
+	    $output .= '</div><!-- .modal-footer (end) -->';
+	    $output .= '</div><!-- .modal (end) -->';
+	    return $output;
+	}
+}
+add_shortcode( 'popup', 'themeblvd_shortcode_popup' );
+
+/*-----------------------------------------------------------------------------------*/
+/* Inline Elements
+/*-----------------------------------------------------------------------------------*/
+
+/**
+ * 48px Icon (NOT Font Awesome icons)
  *
  * @since 2.0.0
  *
@@ -284,10 +523,46 @@ if( ! function_exists( 'themeblvd_shortcode_icon_link' ) ) {
             'title' => ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
+	    
+	    // Convert icons used with older framework versions to fontawesome
+	    // alert, approved, camera, cart, doc, download, media, note, notice, quote, warning
+	    // Note: "camera" and "download" work so can be excluded below.
+	    switch( $icon ) {
+		    case 'alert' :
+		    	$icon = 'exclamation-sign';
+		    	break;
+		    case 'approved' :
+				$icon = 'check';		    
+		    	break;
+		    case 'cart' :
+		    	$icon = 'shopping-cart';	
+		    	break;
+		    case 'doc' :
+		    	$icon = 'file';	
+		    	break;
+		    case 'media' :
+		    	$icon = 'hdd'; // Kind of ironic... The CD icon gets replaced with the harddrive icon in the update for the "media" icon.
+		    	break;
+		    case 'note' :
+		    	$icon = 'pencil';	
+		    	break;
+		    case 'notice' :
+		    	$icon = 'exclamation-sign'; // Was always the same as "alert"	
+		    	break;
+		    case 'quote' :
+		    	$icon = 'comment';	
+		    	break;
+		    case 'warning' :
+		    	$icon = 'warning-sign';	
+		    	break;
+	    }
+	    
 	    if( ! $title ) $title = $content;
-	    $output =	'<span class="icon-link">';
-	    $output .=	'<a href="'.$link.'" title="'.$title.'" class="icon-link-'.$icon.'" target="'.$target.'">'.$content.'</a>';
-	    $output .= 	'</span>';
+	    if( $class ) $class = ' '.$class;
+	    $output  = '<span class="tb-icon-link'.$class.'">'; // Can't use class starting in "icon-" or it will conflict with Bootstrap
+	    $output .= '<i class="icon-'.$icon.'"></i>';
+	    $output .= '<a href="'.$link.'" title="'.$title.'" class="icon-link-'.$icon.'" target="'.$target.'">'.$content.'</a>';
+	    $output .= '</span>';
 	    return $output;
 	}
 }
@@ -304,7 +579,7 @@ add_shortcode( 'icon_link', 'themeblvd_shortcode_icon_link' );
 
 if( ! function_exists( 'themeblvd_shortcode_highlight' ) ) {
 	function themeblvd_shortcode_highlight( $atts, $content = null ) {
-	    return '<span class="text-highlight">'.do_shortcode( $content ).'</span><!-- .text-highlight (end) -->';
+	    return '<span class="text-highlight">'.do_shortcode($content).'</span><!-- .text-highlight (end) -->';
 	}
 }
 add_shortcode( 'highlight', 'themeblvd_shortcode_highlight' );
@@ -320,33 +595,67 @@ add_shortcode( 'highlight', 'themeblvd_shortcode_highlight' );
 
 if( ! function_exists( 'themeblvd_shortcode_dropcap' ) ) {
 	function themeblvd_shortcode_dropcap( $atts, $content = null ) {
-	    return '<span class="dropcap">'.do_shortcode( $content ).'</span><!-- .dropcap (end) -->';
+	    return '<span class="dropcap">'.do_shortcode($content).'</span><!-- .dropcap (end) -->';
 	}
 }
 add_shortcode( 'dropcap', 'themeblvd_shortcode_dropcap' );
 
 /**
- * Divider
+ * Labels (straight from Bootstrap)
+ * 
+ * <span class="label label-success">Success</span>
  *
- * @since 2.0.0
+ * @since 2.2.0
  *
  * @param array $atts Standard WordPress shortcode attributes
  * @param string $content The enclosed content
  */
 
-if( ! function_exists( 'themeblvd_shortcode_divider' ) ) {
-	function themeblvd_shortcode_divider( $atts, $content = null ) {
-	    $default = array(
-            'style' => 'solid' // dashed, shadow, solid
+if( ! function_exists( 'themeblvd_shortcode_label' ) ) {
+	function themeblvd_shortcode_label( $atts, $content = null ) {
+	   	$default = array(
+            'style' => '', // default, success, warning, important, info, inverse
+            'icon'	=> ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
-	    return themeblvd_divider( $style );
+	   	$class = 'label'; 
+	    if( $style && $style != 'default' )
+	    	$class .= ' label-'.$style;
+	    if( $icon )
+	    	$content = '<i class="icon-'.$icon.'"></i> '.$content;
+	    return '<span class="'.$class.'">'.do_shortcode($content).'</span><!-- .label (end) -->';
 	}
 }
-add_shortcode( 'divider', 'themeblvd_shortcode_divider' );
+add_shortcode( 'label', 'themeblvd_shortcode_label' );
+
+/**
+ * Vector Icon (from Bootstrap and Font Awesome)
+ * 
+ * <i class="icon-{whatever}"></i>
+ *
+ * @since 2.2.0
+ *
+ * @param array $atts Standard WordPress shortcode attributes
+ * @param string $content The enclosed content
+ */
+
+if( ! function_exists( 'themeblvd_shortcode_vector_icon' ) ) {
+	function themeblvd_shortcode_vector_icon( $atts ) {
+	   	$default = array(
+            'icon' => 'pencil',
+            'size'	=> ''
+	    );
+	    extract( shortcode_atts( $default, $atts ) );
+	   	$size_style = '';
+	   	if( $size )
+	   		$size_style = ' style="font-size:'.$size.';"';
+	    return '<i class="icon-'.$icon.'"'.$size_style.'></i>';
+	}
+}
+add_shortcode( 'vector_icon', 'themeblvd_shortcode_vector_icon' );
 
 /*-----------------------------------------------------------------------------------*/
-/* Tabs
+/* Tabs, Accordion, & Toggles
 /*-----------------------------------------------------------------------------------*/
 
 /**
@@ -362,19 +671,22 @@ add_shortcode( 'divider', 'themeblvd_shortcode_divider' );
 if( ! function_exists( 'themeblvd_shortcode_tabs' ) ) {
 	function themeblvd_shortcode_tabs( $atts, $content = null ) {
 	    $default = array(
-            'style' => 'framed', // framed, open
-            'height' => '' // Optional fixed height for inside of tabs
+            'style' 		=> 'framed', 		// framed, open
+            'nav'			=> 'tabs_above',	// tabs_above, tabs_right, tabs_below, tabs_left, pills_above, pills_below
+            'height' 		=> '' 				// Optional fixed height for inside of tabs
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
 	    if( isset( $atts['style'] ) ) unset( $atts['style'] );
+	    if( isset( $atts['nav'] ) ) unset( $atts['nav'] );
 	    if( isset( $atts['height'] ) ) unset( $atts['height'] );
 	    $id = uniqid( 'tabs_'.rand() );
 	    $num = count( $atts ) - 1;
 		$i = 1;
 		$options = array(
 	    	'setup' => array(
-	    		'num' => $num,
+	    		'num' 	=> $num,
 	    		'style' => $style,
+	    		'nav' 	=> $nav,
 	    		'names' => array()
 	    	),
 	    	'height' => $height
@@ -399,9 +711,23 @@ if( ! function_exists( 'themeblvd_shortcode_tabs' ) ) {
 }
 add_shortcode( 'tabs', 'themeblvd_shortcode_tabs' );
 
-/*-----------------------------------------------------------------------------------*/
-/* Toggles
-/*-----------------------------------------------------------------------------------*/
+/**
+ * Accordion
+ *
+ * @since 2.2.0
+ *
+ * @param array $atts Standard WordPress shortcode attributes
+ * @param string $content The enclosed content
+ * @return string $output Content to output for shortcode
+ */
+
+if( ! function_exists( 'themeblvd_shortcode_accordion' ) ) {
+	function themeblvd_shortcode_accordion( $atts, $content = null ) {
+		$accordion_id = uniqid( 'accordion_'.rand() );
+		return '<div id="'.$accordion_id.'" class="tb-accordion">'.do_shortcode($content).'</div>';
+	}
+}
+add_shortcode( 'accordion', 'themeblvd_shortcode_accordion' );
 
 /**
  * Toggles
@@ -415,17 +741,24 @@ add_shortcode( 'tabs', 'themeblvd_shortcode_tabs' );
 
 if( ! function_exists( 'themeblvd_shortcode_toggle' ) ) {
 	function themeblvd_shortcode_toggle( $atts, $content = null ) {		
-		$last = '';
-		if ( isset( $atts[0] ) && trim( $atts[0] ) == 'last') $last = ' tb-toggle-last';
+		if( isset( $atts[0] ) ) $last = ' accordion-group-last';
 		$default = array(
 	        'title' => ''
 	    );
-	    extract( shortcode_atts( $default, $atts ) );
-	    $content = wpautop( do_shortcode( stripslashes( $content ) ) );
-		$output  = '<div class="tb-toggle'.$last.'">';
-		$output .= '<a href="#" title="'.$title.'" class="toggle-trigger"><span></span>'.$title.'</a>';
-		$output .= '<div class="toggle-content">'.$content.'</div>';
-		$output .= '</div>';
+		extract( shortcode_atts( $default, $atts ) );
+		// Individual toggle ID (NOT the Accordion ID)
+		$toggle_id = uniqid( 'toggle_'.rand() );
+		// Start output
+		$output  = '<div class="accordion-group'.$last.'">';
+		$output .= '<div class="accordion-heading">';               
+		$output .= '<a class="accordion-toggle" data-toggle="collapse" href="#'.$toggle_id.'"><i class="icon-plus-sign switch-me"></i> '.$title.'</a>';
+		$output .= '</div><!-- .accordion-heading (end) -->';
+		$output .= '<div id="'.$toggle_id.'" class="accordion-body collapse">';
+		$output .= '<div class="accordion-inner">';
+		$output .= apply_filters( 'themeblvd_the_content', $content );
+		$output .= '</div><!-- .accordion-inner (end) -->';
+		$output .= '</div><!-- .accordion-body (end) -->';
+		$output .= '</div><!-- .accordion-group (end) -->';
 	    return $output;
 	}
 }

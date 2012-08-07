@@ -1063,7 +1063,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			array(
 				'id' 		=> 'height',
 				'name'		=> __( 'Fixed Height', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Enter in a number of pixels for a fixed height if you\'d like to do so. This can help with "page jumping" in the case that not all tabs have equal amount of content. This is optional.', TB_GETTEXT_DOMAIN ),
+				'desc'		=> __( 'Enter in a number of pixels for a fixed height if you\'d like to do so. Ex: 400<br><br>This can help with "page jumping" in the case that not all tabs have equal amount of content. It can also help in the case when you\'re getting unwanted scrollbars on the inner content areas of tabs. This is optional.', TB_GETTEXT_DOMAIN ),
 				'type'		=> 'text' 
 			),
 			array(
@@ -1178,13 +1178,30 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			array(
 		    	'id' 		=> 'icon',
 				'name'		=> __( 'Icon', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Select the icon you\'d like shown before the Tweet.', TB_GETTEXT_DOMAIN ),
+				'desc'		=> __( 'Enter any Font Awesome icon ID; this icon will then display next to the Tweet. Set this option blank to not use any icon. Examples: twitter, pencil, warning-sign, etc. ', TB_GETTEXT_DOMAIN ),
+				'type'		=> 'text',
+				'std'		=> 'twitter'
+			),
+			array(
+		    	'id' 		=> 'meta',
+				'name'		=> __( 'Tweet Meta Info', TB_GETTEXT_DOMAIN ),
+				'desc'		=> __( 'Select whether you\'d like information about the current tweet displayed below it.', TB_GETTEXT_DOMAIN ),
 				'type'		=> 'select',
-				'std'		=> 'twitter',
+				'std'		=> 'show',
 				'options'	=> array(
-			        'twitter' 	=> __( 'Twitter Icon', TB_GETTEXT_DOMAIN ),
-			        'message' 	=> __( 'Generic Message Bubble', TB_GETTEXT_DOMAIN ),
-			        'alert' 	=> __( 'Alert Symbol', TB_GETTEXT_DOMAIN )
+			        'show' 	=> __( 'Show meta info below tweet.', TB_GETTEXT_DOMAIN ),
+			        'hide' 	=> __( 'Hide meta info below tweet.', TB_GETTEXT_DOMAIN )
+				)
+			),
+			array(
+		    	'id' 		=> 'replies',
+				'name'		=> __( 'Exclude @replies?', TB_GETTEXT_DOMAIN ),
+				'desc'		=> __( 'Select whether or not you\'d like to exclude @replies for the current tweet.', TB_GETTEXT_DOMAIN ),
+				'type'		=> 'select',
+				'std'		=> 'no',
+				'options'	=> array(
+			        'yes' 	=> __( 'Yes, exclude @replies.', TB_GETTEXT_DOMAIN ),
+			        'no' 	=> __( 'No, do not exclude @replies.', TB_GETTEXT_DOMAIN )
 				)
 			),
 		    array(

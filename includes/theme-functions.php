@@ -30,7 +30,7 @@ if( ! function_exists( 'themeblvd_jumpstart_setup' ) ) {
 add_action( 'after_setup_theme', 'themeblvd_jumpstart_setup' );
 
 /**
- * TB Jump Start CSS Files
+ * Jump Start CSS Files
  *
  * To add styles or remove unwanted styles that you 
  * know you won't need to maybe save some frontend load 
@@ -41,7 +41,7 @@ add_action( 'after_setup_theme', 'themeblvd_jumpstart_setup' );
 if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 	function themeblvd_jumpstart_css() {
 		wp_register_style( 'themeblvd_theme', get_template_directory_uri() . '/assets/css/theme.css', false, '1.0' ); // ... change to min
-		wp_register_style( 'themeblvd_responsive', get_template_directory_uri() . '/assets/css/responsive.min.css', false, '1.0' );
+		wp_register_style( 'themeblvd_responsive', get_template_directory_uri() . '/assets/css/responsive.css', false, '1.0' ); // ... change to min
 		wp_register_style( 'themeblvd_ie', get_template_directory_uri() . '/assets/css/ie.css', false, '1.0' );
 		wp_enqueue_style( 'themeblvd_theme' );
 		$GLOBALS['wp_styles']->add_data( 'themeblvd_ie', 'conditional', 'lt IE 9' ); // Add IE conditional
@@ -52,6 +52,17 @@ if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 	}
 }
 add_action( 'wp_print_styles', 'themeblvd_jumpstart_css' );
+
+/**
+ * Jump Start Scripts
+ */
+
+if( ! function_exists( 'themeblvd_jumpstart_scripts' ) ) {
+	function themeblvd_jumpstart_scripts() {
+		wp_enqueue_script( 'themeblvd_theme', get_template_directory_uri() . '/assets/js/theme.js', array('jquery'), null, true );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'themeblvd_jumpstart_scripts' );
 
 /**
  * Jump Start Body Classes 

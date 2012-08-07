@@ -106,7 +106,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 						'name' 		=> __( 'Logo', TB_GETTEXT_DOMAIN ),
 						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.', TB_GETTEXT_DOMAIN ),
 						'id' 		=> 'logo',
-						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png' ),
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'
 					)
 				) // End header options
@@ -401,13 +401,14 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 					),
 					'mobile_nav' => array( 
 						'name' 		=> __( 'Mobile Navigation', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Select how you\'d like the <em>Primary Navigation</em> displayed on mobile devices. While the graphic navigation may be more visually appealing, if your navigation is more complex with many dropdown items, you possibly could be providing a better user experience to mobile users by having the navigation converted into a simple select menu.', TB_GETTEXT_DOMAIN ),
+						'desc' 		=> __( 'Select how you\'d like the <em>Primary Navigation</em> displayed on mobile devices. While the graphic navigation may be more visually appealing, if your navigation is more complex with many dropdown items, you possibly could be providing a better user experience to mobile users by having the navigation converted into a simple select menu.<br><br>A nice compromise between the two options discussed above is the first default option that will display a button for the user to toggle the main navigation on and off.', TB_GETTEXT_DOMAIN ),
 						'id' 		=> 'mobile_nav',
-						'std' 		=> 'mobile_nav_graphic',
+						'std' 		=> 'mobile_nav_toggle_graphic',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'mobile_nav_graphic'	=> __( 'Display graphic navigation.', TB_GETTEXT_DOMAIN ),
-							'mobile_nav_select' 	=> __( 'Display simple select menu.', TB_GETTEXT_DOMAIN )
+							'mobile_nav_toggle_graphic'	=> __( 'Display graphic navigation that toggles on/off.', TB_GETTEXT_DOMAIN ),
+							'mobile_nav_graphic'		=> __( 'Display graphic navigation.', TB_GETTEXT_DOMAIN ),
+							'mobile_nav_select' 		=> __( 'Display simple select menu.', TB_GETTEXT_DOMAIN )
 						)
 					)
 				) // End Responsiveness options
@@ -422,7 +423,44 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 						'id' 		=> 'analytics',
 						'type' 		=> 'textarea'
 					)
-				) // End archives options
+				) // End analytics options
+			),
+			// Section: Favicon
+			'favicons' => array(
+				'name' => __( 'Favicons', TB_GETTEXT_DOMAIN ),
+				'desc' => __( 'A favicon generally appears at the top of the web browser next to the title or URL of your website for your online visitors. The favicon also gets associated with your website when users bookmark it. In addition to the standard favicon, you can also configure the Apple touch icons that users see when bookmarking your website from various Apple devices.<br><br><strong>These are all completely optional; any items you leave blank in this section will simply not display on your website.</strong>', TB_GETTEXT_DOMAIN ),
+				'options' => array(		
+					'favicon' => array( 
+						'name' 		=> __( 'Standard Favicon (16x16)', TB_GETTEXT_DOMAIN ),	
+						'desc' 		=> __( 'Insert the URL to the .ico file or PNG image you\'d like to use as your website\'s favicon.<br><br>For help generating a standard favicon ICO file, visit <a href="http://www.favicon.cc/" target="_blank">favicon.cc</a>.', TB_GETTEXT_DOMAIN ),
+						'id' 		=> 'favicon',
+						'type' 		=> 'upload'
+					),
+					'apple_touch_57x57' => array( 
+						'name' 		=> __( 'Standard Apple Touch Icon (57x57)', TB_GETTEXT_DOMAIN ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on standard apple devices.<br><br>This is more of the "fallback" for older Apple devices.', TB_GETTEXT_DOMAIN ),
+						'id' 		=> 'apple_touch_57x57',
+						'type' 		=> 'upload'
+					),
+					'apple_touch_72x72' => array( 
+						'name' 		=> __( 'Apple Touch Icon - iPad 1st/2nd Generation (72x72)', TB_GETTEXT_DOMAIN ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on first and second generation iPads.', TB_GETTEXT_DOMAIN ),
+						'id' 		=> 'apple_touch_72x72',
+						'type' 		=> 'upload'
+					),
+					'apple_touch_114x114' => array( 
+						'name' 		=> __( 'Apple Touch Icon - iPhone with Retina (114x114)', TB_GETTEXT_DOMAIN ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on for the iPhone 4S and later, which come with retina display.', TB_GETTEXT_DOMAIN ),
+						'id' 		=> 'apple_touch_114x114',
+						'type' 		=> 'upload'
+					),
+					'apple_touch_144x144' => array( 
+						'name' 		=> __( 'Apple Touch Icon - iPad with Retina (144x144)', TB_GETTEXT_DOMAIN ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on third generation iPads and later, which come with retina display.', TB_GETTEXT_DOMAIN ),
+						'id' 		=> 'apple_touch_144x144',
+						'type' 		=> 'upload'
+					)
+				) // End favicon options
 			)	
 		);
 	

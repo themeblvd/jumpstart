@@ -15,38 +15,18 @@
  * @package 	Theme Blvd WordPress Framework
  */
 
-// Header
-get_header(); 
-	
-	the_post();
-	
-	// Featured area
-	if( themeblvd_config( 'featured' ) ) {
-		themeblvd_featured_start();
-		themeblvd_featured( 'page' );
-		themeblvd_featured_end();
-	}
-	
-	// Start main area
-	themeblvd_main_start();
-	themeblvd_main_top();
-	
-	// Breadcrumbs
-	themeblvd_breadcrumbs();
-	
-	// Before sidebar+content layout
-	themeblvd_before_layout();
-	?>
-	
-	<div id="sidebar_layout">
-		<div class="sidebar_layout-inner">
-			<div class="grid-protection">
+get_header();
+?>
 
-				<?php themeblvd_sidebars( 'left' ); ?>
+	<div id="sidebar_layout" class="clearfix">
+		<div class="sidebar_layout-inner">
+			<div class="row-fluid grid-protection">
+
+				<?php get_sidebar( 'left' ); ?>
 				
 				<!-- CONTENT (start) -->
 	
-				<div id="content" role="main">
+				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>		
 						<?php get_template_part( 'content', 'template_archives' ); ?>
@@ -56,23 +36,10 @@ get_header();
 					
 				<!-- CONTENT (end) -->	
 				
-				<?php themeblvd_sidebars( 'right' ); ?>
+				<?php get_sidebar( 'right' ); ?>
 			
 			</div><!-- .grid-protection (end) -->
 		</div><!-- .sidebar_layout-inner (end) -->
-	</div><!-- .sidebar-layout-wrapper (end) -->
+	</div><!-- #sidebar_layout (end) -->
 	
-	<?php
-	// End main area
-	themeblvd_main_bottom();
-	themeblvd_main_end();
-	
-	// Featured area (below)
-	if( themeblvd_config( 'featured_below' ) ) {
-		themeblvd_featured_below_start();
-		themeblvd_featured_below( 'page' );
-		themeblvd_featured_below_end();
-	}
-	
-// Footer
-get_footer();
+<?php get_footer(); ?>

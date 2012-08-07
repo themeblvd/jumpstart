@@ -9,7 +9,7 @@
  * @since 2.0.0
  *
  * @param array $buttons icons to use - array( 'twitter' => 'http://twitter.com/whatever', 'facebook' => 'http://facebook.com/whatever' )
- * @param string $style Style of buttons - dark, grey, light
+ * @param string $style Style of buttons - dark, grey, light, color
  */
 
 if( ! function_exists( 'themeblvd_contact_bar' ) ) {
@@ -27,7 +27,7 @@ if( ! function_exists( 'themeblvd_contact_bar' ) ) {
 		$output = null;
 		if( is_array( $buttons ) && ! empty ( $buttons ) ) {
 			$output = '<div class="themeblvd-contact-bar">';
-			$output .= '<ul class="'.$style.'">';
+			$output .= '<ul class="social-media-'.$style.'">';
 			foreach( $buttons as $id => $url ) {
 				strpos( $url, 'mailto:' ) ? $target = '_self' : $target = '_blank'; // Change target if URL has 'mailto:'
 				$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
@@ -43,6 +43,9 @@ if( ! function_exists( 'themeblvd_contact_bar' ) ) {
 /** 
  * Button
  *
+ * As of framework v2.2, the button markup matches 
+ * the Bootstrap standard "btn" structure.
+ *
  * @since 2.0.0
  *
  * @param string $text Text to show in button
@@ -52,24 +55,55 @@ if( ! function_exists( 'themeblvd_contact_bar' ) ) {
  * @param string $size Size of button - small, medium, or large
  * @param string $classes CSS classes to attach onto button
  * @param string $title Title for anchor tag
+ * @param string $icon_before Optional fontawesome icon before text
+ * @param string $icon_after Optional fontawesome icon after text
+ * @param string $addon Anything to add onto the anchor tag
  * @return $output string HTML to output for button
  */
 
 if( ! function_exists( 'themeblvd_button' ) ) {
-	function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = 'small', $classes = null, $title = null ) {
-		if( $target == 'lightbox' ) {
-			$lightbox = ' rel="themeblvd_lightbox"';
-			$target = null;
-		} else {
-			$lightbox = null;
-			$target = ' target="'.$target.'"';
+	function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = null, $classes = null, $title = null, $icon_before = null, $icon_after = null, $addon = null ) {
+		
+		// Classes for button
+		$final_classes = 'btn';
+		if( ! $color )
+			$color = 'default';
+		if( in_array( $color, array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) )
+			$final_classes .= ' btn-'.$color;
+		else
+			$final_classes .= ' '.$color;
+		if( in_array( $size, array( 'mini', 'small', 'large', ) ) )
+			$final_classes .= ' btn-'.$size;
+		if( $classes )
+			$final_classes .= ' '.$classes;
+		
+		// Target
+		$final_target = '';
+		if( $target ){
+			if( $target == 'lightbox' )
+				$final_target = ' rel="themeblvd_lightbox"';
+			else
+				$final_target = ' target="'.$target.'"';
 		}
+		
+		// Title param
 		if( ! $title )
-			$title = $text;
-		$output = '<a href="'.$url.'" title="'.$title.'" class="tb-button tb-button-'.$size.' '.$color.' '.$classes.'"'.$target.$lightbox.'>';
-		$output .= '<span>'.$text.'</span>';
-		$output .= '</a>';
-		return $output;
+			$title = strip_tags( $text );
+		
+		// Add icon before text?
+		if( $icon_before )
+			$text = '<i class="icon-'.$icon_before.'"></i> '.$text;
+		
+		// Add icon after text?
+		if( $icon_after )
+			$text .= ' <i class="icon-'.$icon_after.'"></i>';
+		
+		// Optional addon to anchor
+		if( $addon )
+			$addon = ' '.$addon;
+		
+		// Return final button
+		return '<a href="'.$url.'" title="'.$title.'" class="'.$final_classes.'"'.$final_target.$addon.'>'.$text.'</a>';
 	}
 }
 
@@ -136,17 +170,17 @@ if( ! function_exists( 'themeblvd_pagination' ) ) {
 			}
 		}
 		if( 1 != $pages ) {
-			echo "<div class='pagination-wrap'><div class='pagination'><ul>";
-			if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<li><a href='".get_pagenum_link(1)."'>&laquo;</a></li>";
-			if($paged > 1 && $showitems < $pages) echo "<li><a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a></li>";
+			echo '<div class="pagination-wrap"><div class=""><div class="btn-group clearfix">';
+			if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link(1).'">&laquo;</a>';
+			if($paged > 1 && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($paged - 1).'">&lsaquo;</a>';
 			for ( $i = 1; $i <= $pages; $i++ ) {
 				if (1 != $pages &&( ! ( $i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-					echo ( $paged == $i ) ? '<li><span class="current">'.$i.'</span></li>' : '<li><a href="'.get_pagenum_link($i).'" class="inactive">'.$i.'</a></li>';
+					echo ( $paged == $i ) ? '<a class="btn btn-default active" href="'.get_pagenum_link($i).'">'.$i.'</a>' : '<a class="btn btn-default" href="'.get_pagenum_link($i).'">'.$i.'</a>';
 				}
 			}
-			if ($paged < $pages && $showitems < $pages) echo "<li><a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a></li>";  
-			if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<li><a href='".get_pagenum_link($pages)."'>&raquo;</a></li>";
-			echo "</ul><div class=\"clear\"></div></div></div>\n";
+			if ($paged < $pages && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($paged + 1).'">&rsaquo;</a>';  
+			if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($pages).'">&raquo;</a>';
+			echo "</div></div></div>\n";
 		}
 	}
 }
@@ -157,12 +191,15 @@ if( ! function_exists( 'themeblvd_pagination' ) ) {
  * @since 2.0.0
  */
 
+
+
+
 if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
 	function themeblvd_get_breadcrumbs() {
 		global $post;
 		// Filterable attributes
 		$atts = array(
-			'delimiter' => '&raquo;',
+			'delimiter' => ' <span class="divider">/</span>',
 			'home' => themeblvd_get_local('home'),
 			'home_link' => home_url(),
 			'before' => '<span class="current">',
@@ -170,9 +207,10 @@ if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
 		);
 		$atts = apply_filters( 'themeblvd_breadcrumb_atts', $atts );
 		// Start output
-		$output = '<div id="breadcrumbs">';
+		$output = '<div id="breadcrumbs">'; 
 		$output .= '<div class="breadcrumbs-inner">';
 		$output .= '<div class="breadcrumbs-content">';
+		$output .= '<div class="breadcrumb">'; // This enables bootstrap styles
 		$output .= '<a href="'.$atts['home_link'].'" class="home-link" title="'.$atts['home'].'">'.$atts['home'].'</a>'.$atts['delimiter'].' ';
 		if ( is_category() ) {
 			global $wp_query;
@@ -241,6 +279,7 @@ if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
 		if ( get_query_var('paged') ) {
 			$output .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
 		}
+		$output .= '</div><!-- .breadcrumb (end) -->';
 		$output .= '</div><!-- .breadcrumbs-content (end) -->';
 		$output .= '</div><!-- .breadcrumbs-inner (end) -->';
 		$output .= '</div><!-- #breadcrumbs (end) -->';
@@ -285,6 +324,7 @@ if( ! function_exists( 'themeblvd_get_twitter' ) ) {
 					if( $iterations == $count ) break;
 					// Set text of tweet
 					$text = (string) $item->get_title();
+					$text = str_ireplace( $username.': ', '', $text );
 					// Take "Exclude @ replies" option into account before adding 
 					// tweet and increasing current number of tweets.
 					if( $exclude_replies == 'no' || ( $exclude_replies == 'yes' && $text[0] != "@") ) {
@@ -486,7 +526,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 						$image .= '<div class="featured-image-wrapper '.$classes.'">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
-						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image" />';
+						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image thumbnail" />';
 						$image .= '</div><!-- .featured-image-inner (end) -->';
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -561,7 +601,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 					$output .= '<div class="featured-image-wrapper">';
 					$output .= '<div class="featured-image">';
 					$output .= '<div class="featured-image-inner">';
-					$output .= '<a href="'.$image[0].'" title="" class="image" rel="themeblvd_lightbox[gallery_'.$gallery.']">';
+					$output .= '<a href="'.$image[0].'" title="" class="image thumbnail" rel="themeblvd_lightbox[gallery_'.$gallery.']">';
 					$output .= '<img src="'.$thumbnail[0].'" alt="'.$post->post_title.'" />';
 					$output .= apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
 					$output .= '</a>';
@@ -583,7 +623,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 						$image .= '<div class="featured-image-wrapper '.$classes.'">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
-						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image" />';
+						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image thumbnail" />';
 						$image .= '</div><!-- .featured-image-inner (end) -->';
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';

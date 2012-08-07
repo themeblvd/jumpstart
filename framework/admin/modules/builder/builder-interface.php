@@ -171,7 +171,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 		<input type="hidden" name="layout_id" value="<?php echo $id; ?>" />
 		<div id="poststuff" class="metabox-holder full-width has-right-sidebar">
 			<div class="inner-sidebar">
-				<div class="postbox">
+				<div class="postbox postbox-publish">
 					<h3 class="hndle"><?php _e( 'Publish', TB_GETTEXT_DOMAIN ); ?> <?php echo stripslashes($layout->post_title); ?></h3>
 					<div class="submitbox">
 						<div id="major-publishing-actions">
@@ -186,7 +186,37 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 						</div>
 					</div><!-- .submitbox (end) -->
 				</div><!-- .post-box (end) -->
-				<div class="postbox">
+				<div class="postbox postbox-layout-info">
+					<h3 class="hndle"><?php _e('Layout Information', TB_GETTEXT_DOMAIN ); ?></h3>
+					<?php
+					// Current settings
+					$info_settings = array(
+						'post_title' 	=> $layout->post_title,
+						'post_name'		=> $layout->post_name
+					);
+					
+					// Setup attribute options
+					$info_options = array( 
+						array( 
+							'name'		=> __('Layout Name', TB_GETTEXT_DOMAIN ),
+							'id' 		=> 'post_title',
+							'desc'		=> __('This title is just for you. It\'ll never be used outside of your WordPress admin panel.', TB_GETTEXT_DOMAIN),
+							'type' 		=> 'text'
+						),
+						array( 
+							'name' 		=> __('Layout ID', TB_GETTEXT_DOMAIN ),
+							'id' 		=> 'post_name',
+							'desc'		=> __( 'Custom layouts are assigned based on this ID. So if you change this at any point, make sure to also update any pages or options in which you\'ve assigned this specific layout.', TB_GETTEXT_DOMAIN ),
+							'type' 		=> 'text'
+						)
+					);
+	
+					// Display form element
+					$form = optionsframework_fields( 'info', $info_options, $info_settings, false );
+					echo $form[0]; 
+					?>
+				</div><!-- .post-box (end) -->
+				<div class="postbox postbox-sidebar-layout">
 					<h3 class="hndle"><?php _e('Sidebar Layout', TB_GETTEXT_DOMAIN ); ?></h3>
 					<?php
 					// Setup sidebar layouts
@@ -198,7 +228,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 					$options = array( 
 						array( 
 							'id' 		=> 'sidebar_layout',
-							'desc'		=> __( 'Select how you\'d like the sidebar(s) arranged in this layout. Your site-wide default sidebar layout can be set from your Theme Options page.', TB_GETTEXT_DOMAIN ),
+							'desc'		=> __( 'Select how you\'d like the sidebar(s) arranged in this layout. Your site-wide default sidebar layout can be set from your Theme Options page.<br><br><strong>Note: The sidebar layout is only applied to the "Primary Area" of the custom layout.</strong>', TB_GETTEXT_DOMAIN ),
 							'type' 		=> 'select',
 							'options' 	=> $sidebar_layouts
 						)

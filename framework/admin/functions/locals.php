@@ -31,6 +31,7 @@ function themeblvd_get_admin_locals( $type ) {
 				'invalid_name'		=> __( 'Oops! The name you entered is either taken or too close to another name you\'ve already used.', TB_GETTEXT_DOMAIN ),
 				'invalid_slider'	=> __( 'Oops! Somehow, you\'ve entered an invalid slider type.', TB_GETTEXT_DOMAIN ),
 				'layout_created'	=> __( 'Layout created!', TB_GETTEXT_DOMAIN ),
+				'publish'			=> __( 'Publish', TB_GETTEXT_DOMAIN ),
 				'sidebar_created'	=> __( 'Widget Area created!', TB_GETTEXT_DOMAIN ),
 				'slider_created'	=> __( 'Slider created!', TB_GETTEXT_DOMAIN ),
 				'primary_query'		=> __( 'Oops! You can only have one primary query element per layout. A paginated post list or paginated post grid would be examples of primary query elements.', TB_GETTEXT_DOMAIN ),

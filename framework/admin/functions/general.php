@@ -48,7 +48,7 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 		global $pagenow;
 		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
 			wp_enqueue_style( 'tb_meta_box-styles', THEMEBLVD_ADMIN_ASSETS_DIRECTORY.'css/meta-box.css', false, false, 'screen' );
-			wp_enqueue_script( 'tb_meta_box-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/meta-box.min.js', array('jquery') );
+			wp_enqueue_script( 'tb_meta_box-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/meta-box.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		}
 	}
 }
@@ -113,8 +113,6 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 					}
 				}
 			}
-			
-			
 		}
 	}
 	return $conflicts;

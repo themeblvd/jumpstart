@@ -21,7 +21,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$singular_name = $post_type_object->labels->singular_name;
 	
 	// Get posts
-	$posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1 ) );
+	$posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
 	
 	// Get conflicts if this is a sidebar table
 	if( $post_type == 'tb_sidebar' )
@@ -348,6 +348,24 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$select_style .= '</select>';
 	
 	/*------------------------------------------------------*/
+	/* Build <select> for nav of tabs
+	/*------------------------------------------------------*/
+	
+	$select_nav = '<select class="tabs-nav" name="'.esc_attr( $name.'['.$id.'][nav]' ).'">';
+	if( is_array($val) && isset( $val['nav'] ) )
+		$current_value = $val['nav'];
+	else
+		$current_value = null;
+	
+	$select_nav .= '<option value="tabs_above" '.selected( $current_value, 'tabs_above', false ).'>'.__( 'Tabs on Top', TB_GETTEXT_DOMAIN ).'</option>';
+	$select_nav .= '<option value="tabs_right" '.selected( $current_value, 'tabs_right', false ).'>'.__( 'Tabs on Right', TB_GETTEXT_DOMAIN ).'</option>';
+	$select_nav .= '<option value="tabs_below" '.selected( $current_value, 'tabs_below', false ).'>'.__( 'Tabs on Bottom', TB_GETTEXT_DOMAIN ).'</option>';
+	$select_nav .= '<option value="tabs_left" '.selected( $current_value, 'tabs_left', false ).'>'.__( 'Tabs on Left', TB_GETTEXT_DOMAIN ).'</option>';
+	$select_nav .= '<option value="pills_above" '.selected( $current_value, 'pills_above', false ).'>'.__( 'Pills on Top', TB_GETTEXT_DOMAIN ).'</option>';
+	$select_nav .= '<option value="pills_below" '.selected( $current_value, 'pills_below', false ).'>'.__( 'Pills on Bottom', TB_GETTEXT_DOMAIN ).'</option>';
+	$select_nav .= '</select>';
+		
+	/*------------------------------------------------------*/
 	/* Add in text fields for names of tabs
 	/*------------------------------------------------------*/
 	
@@ -377,6 +395,9 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$output .= '</div>';
 	$output .= '<div class="select-tab-style">';
 	$output .= $select_style;
+	$output .= '</div>';
+	$output .= '<div class="select-tab-nav">';
+	$output .= $select_nav;
 	$output .= '</div>';
 	$output .= '<div class="tab-names">';
 	$output .= $input_names;
@@ -802,9 +823,26 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		$current_value = array( 'url' => $val['image'], 'id' => '' );
 	else
 		$current_value = array( 'url' => '', 'id' => '' );
+		
+	if( is_array( $val ) && isset( $val['image_2x'] ) )
+		$current_retina = array( 'url' => $val['image_2x'], 'id' => '' );
+	else
+		$current_retina = array( 'url' => '', 'id' => '' );
 	
-	$image_upload = optionsframework_medialibrary_uploader( $name, 'logo', $id, $current_value, null, null, 0, 'image' );
-	$image_upload .= '<p class="note">'.__( 'Use the "Upload" button to either upload an image or select an image from your media library. You can also type in the URL to an image in the text field.', TB_GETTEXT_DOMAIN ).'</p>';
+	// Standard Image
+	$image_upload  = '<div class="section-upload">';
+	$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', TB_GETTEXT_DOMAIN ).'</strong></label>';
+	$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo', $id, $current_value, null, null, 0, 'image' );
+	$image_upload .= '</div>';
+	
+	// Retina image (2x)
+	$image_upload .= '<div class="section-upload">';
+	$image_upload .= '<label class="inner-label"><strong>'.__( 'Retina-optimized Image (optional)', TB_GETTEXT_DOMAIN ).'</strong></label>';
+	$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo', $id, $current_retina, null, null, 0, 'image_2x' );
+	$image_upload .= '</div>';
+	
+	// Description
+	$image_upload .= '<p class="note">'.__( 'Use the "Upload" button to either upload an image or select an image from your media library. You can also type in the URL to an image in the text field.<br /><br />If you\'re inputting a "Retina-optimized" image, it should be twice as large as you intend it to be displayed. Leave this field blank for it not have any effect.', TB_GETTEXT_DOMAIN ).'</p>';
 
 	/*------------------------------------------------------*/
 	/* Primary Output

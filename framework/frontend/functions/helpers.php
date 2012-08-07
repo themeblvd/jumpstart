@@ -121,16 +121,22 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 		
 		// Attributes
 		$size_class = $size;
-		if( $size_class == 'tb_small' ) $size_class = 'small';
+		if( $size_class == 'tb_small' )
+			$size_class = 'small';
 		$classes = 'attachment-'.$size_class.' wp-post-image';
+		if( ! $link )
+			$classes .= ' thumbnail';
 		if( is_single() ) $title = ' title="'.get_the_title($post->ID).'"';
+		$anchor_class = 'thumbnail';
+		if( $thumb_link_meta != 'thumbnail' )
+			$anchor_class .= ' '.$thumb_link_meta;
 		
 		// Final HTML output
 		if( has_post_thumbnail( $post->ID ) ) {
 			$output .= '<div class="featured-image-wrapper '.$classes.'">';
 			$output .= '<div class="featured-image">';
 			$output .= '<div class="featured-image-inner">';
-			if( $link ) $output .= '<a href="'.$link_url.'"'.$link_target.' class="'.$thumb_link_meta.'"'.$title.'>';	
+			if( $link ) $output .= '<a href="'.$link_url.'"'.$link_target.' class="'.$anchor_class.'"'.$title.'>';	
 			$output .= get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
 			if( $link ) $output .= $end_link.'</a>';
 			$output .= '</div><!-- .featured-image-inner (end) -->';
@@ -724,7 +730,14 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 	function themeblvd_responsive_visibility_class( $devices, $start_space = false, $end_space = false ) {
 		// Build class
 		$class = '';
-		if( is_array( $devices ) && $devices ) {
+		$exists = false;
+		if( is_array( $devices ) && ! empty( $devices ) )
+			foreach( $devices as $device )
+				if( $device )
+					$exists = true;
+		
+		// Only start buld if there's a class to build
+		if( $exists ){
 			$class = 'hide_on_';
 			if( $devices['hide_on_standard'] ) {
 				// Standard Devices
@@ -743,8 +756,10 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 				$class .= 'mobile';
 			}
 		}
+		
 		// Apply filter
 		$class = apply_filters( 'themeblvd_responsive_visibility_class', $class, $devices );
+		
 		// Start/End spaces
 		if( $class ) {
 			if( $start_space )
@@ -752,6 +767,7 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 			if( $end_space )
 				$class .= ' ';
 		}
+		
 		// Return class
 		return $class;
 	}

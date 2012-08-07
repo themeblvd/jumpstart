@@ -20,6 +20,7 @@ function themeblvd_get_all_locals() {
 		'cancel_reply_link'			=> __( 'Cancel reply', TB_GETTEXT_DOMAIN_FRONT ),
 		'categories'				=> __( 'Categories', TB_GETTEXT_DOMAIN_FRONT ),
 		'category'					=> __( 'Category', TB_GETTEXT_DOMAIN_FRONT ),
+		'close'						=> __( 'Close', TB_GETTEXT_DOMAIN_FRONT ),
 		'comment_navigation'		=> __( 'Comment navigation', TB_GETTEXT_DOMAIN_FRONT ),
 		'comment'					=> __( 'Comment', TB_GETTEXT_DOMAIN_FRONT ),
 		'comments'					=> __( 'Comments', TB_GETTEXT_DOMAIN_FRONT ),
@@ -61,6 +62,7 @@ function themeblvd_get_all_locals() {
 		'tag'						=> __( 'Tag', TB_GETTEXT_DOMAIN_FRONT ),
 		'title_reply'				=> __( 'Leave a Reply', TB_GETTEXT_DOMAIN_FRONT ),
 		'title_reply_to'			=> __( 'Leave a Reply to %s', TB_GETTEXT_DOMAIN_FRONT ),
+		'via'						=> __( 'via', TB_GETTEXT_DOMAIN_FRONT ),
 		'website'					=> __( 'Website', TB_GETTEXT_DOMAIN_FRONT )
 	);
 	// Return with framework's filter applied

@@ -3,7 +3,7 @@
 /* Text (Extended by ThemeBlvd) */
 
 function of_sanitize_text($input) {
-	$allowedtags = themeblvd_allowed_tags( false );
+	$allowedtags = themeblvd_allowed_tags();
 	$output = wp_kses( $input, $allowedtags);
 	$output = str_replace( "\r\n", "\n", $output );
 	return $output;
@@ -14,7 +14,7 @@ add_filter( 'of_sanitize_text', 'of_sanitize_text' );
 /* Textarea */
 
 function of_sanitize_textarea($input) {
-	$allowedtags = themeblvd_allowed_tags( true );
+	$allowedtags = themeblvd_allowed_tags();
 	$output = wp_kses( $input, $allowedtags);
 	$output = str_replace( "\r\n", "\n", $output );
 	return $output;
@@ -25,7 +25,7 @@ add_filter( 'of_sanitize_textarea', 'of_sanitize_textarea' );
 /* Info */
 
 function of_sanitize_allowedtags($input) {
-	$allowedtags = themeblvd_allowed_tags( false );
+	$allowedtags = themeblvd_allowed_tags();
 	$output = wpautop(wp_kses( $input, $allowedtags));
 	return $output;
 }
@@ -250,8 +250,12 @@ function of_sanitize_tabs( $input ) {
 		$output['num'] = null;
 	
 	// Verify style
-	if( $input['style'] == 'open' || $input['style'] == 'framed' )
+	if( in_array( $input['style'], array( 'open', 'framed' ) ) )
 		$output['style'] = $input['style'];
+	
+	// Verify nav
+	if( in_array( $input['nav'], array( 'tabs_above', 'tabs_right', 'tabs_below', 'tabs_left', 'pills_above', 'pills_below' ) ) )
+		$output['nav'] = $input['nav'];
 	
 	// Verify name fields and only save the right amount of names
 	if( $output['num'] ) {
@@ -271,7 +275,7 @@ add_filter( 'of_sanitize_tabs', 'of_sanitize_tabs' );
 
 function of_sanitize_content( $input ) {
 	
-	$allowedtags = themeblvd_allowed_tags( true );
+	$allowedtags = themeblvd_allowed_tags();
 	$output = array();
 	
 	// Verify type
@@ -314,22 +318,28 @@ function of_sanitize_logo( $input ) {
 	if( is_array( $input ) && isset( $input['type'] ) )
 		$output['type'] = $input['type'];
 	
-	if( isset( $output['type'] ) ) {
-		switch( $output['type'] ) {
-			case 'custom' :
-				if( isset( $input['custom'] ) )
-					$output['custom'] = sanitize_text_field( $input['custom'] );
-				if( isset( $input['custom_tagline'] ) )
-					$output['custom_tagline'] = sanitize_text_field( $input['custom_tagline'] );
-				break;
-			case 'image' :
-				$filetype = wp_check_filetype( $input['image'] );
-				if ( $filetype["ext"] )
-					$output['image'] = $input['image'];
-				else
-					$output['image'] = null;
-				break;
-		}
+	// Custom
+	if( isset( $input['custom'] ) )
+		$output['custom'] = sanitize_text_field( $input['custom'] );
+	if( isset( $input['custom_tagline'] ) )
+		$output['custom_tagline'] = sanitize_text_field( $input['custom_tagline'] );
+	
+	// Image (standard)
+	if( isset( $input['image'] ) ){
+		$filetype = wp_check_filetype( $input['image'] );
+		if ( $filetype["ext"] )
+			$output['image'] = $input['image'];
+		else
+			$output['image'] = null;
+	}
+	
+	// Image (for retina)
+	if( isset( $input['image_2x'] ) ){
+		$filetype = wp_check_filetype( $input['image_2x'] );
+		if ( $filetype["ext"] )
+			$output['image_2x'] = $input['image_2x'];
+		else
+			$output['image_2x'] = null;
 	}
 
 	return $output;

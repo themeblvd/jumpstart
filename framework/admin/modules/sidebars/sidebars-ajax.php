@@ -119,7 +119,29 @@ if( ! function_exists( 'sidebar_blvd_ajax_save_sidebar' ) ) {
 		// Update even if they're empty
 		update_post_meta( $post_id, 'location', $location );
 		update_post_meta( $post_id, 'assignments', $assignments );
-	
+		
+		// Widget Area Information
+		if( isset( $config['options']['post_title'] ) && isset( $config['options']['post_name'] ) ){
+			
+			// Start post data to be updated with the ID
+			$post_atts = array(
+				'ID' 			=> $post_id,
+				'post_title' 	=> $config['options']['post_title'],
+				'post_name' 	=> $config['options']['post_name']
+			);
+			
+			// Update Post info
+			wp_update_post( $post_atts );
+		
+		}
+		
+		// Get most recent layout id after doing the above processes
+		$updated_sidebar = get_post($post_id);
+		$current_sidebar_id = $updated_sidebar->post_name;
+		
+		// Send current layout ID back with response
+		echo $current_sidebar_id.'[(=>)]';
+		
 		// Respond with update message and management table
 		echo '<div id="setting-error-save_options" class="updated fade settings-error ajax-update">';
 		echo '	<p><strong>'.__( 'Widget Area saved.', TB_GETTEXT_DOMAIN ).'</strong></p>';

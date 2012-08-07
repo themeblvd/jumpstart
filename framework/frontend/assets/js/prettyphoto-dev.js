@@ -605,7 +605,7 @@
 			// So, I'm only applying the smaller number if the 
 			// device is smaller than 480px.
 			var offset = 200;
-			if( windowWidth < 480 ) {
+			if( windowWidth < 515 ) {
 				offset = 50;
 			}
 			
@@ -633,7 +633,7 @@
 				// When our new offset variable is is less than the 200, other problems are caused 
 				// on smaller devices like freezing on iPhone. However the item below is needed 
 				// for the dimensions to be calculated correctly on standard resolutions. 
-				if( windowWidth > 480 ) {
+				if( windowWidth > 515 ) {
 					if((pp_containerWidth > windowWidth) || (pp_containerHeight > windowHeight)){
 						_fitToViewport(pp_containerWidth,pp_containerHeight)
 					};

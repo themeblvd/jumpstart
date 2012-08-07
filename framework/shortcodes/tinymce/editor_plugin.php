@@ -48,77 +48,11 @@ $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
 							switch ( themeblvdSelectedShortcodeType ) {
 								
 								// -------------------------------------------------------------
-								// Info Boxes
+								// Components
 								// -------------------------------------------------------------
 								
-								// alert
-								case 'alert':
-								a = '[box style="alert"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// approved
-								case 'approved':
-								a = '[box style="approved"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// camera
-								case 'camera':
-								a = '[box style="camera"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// cart
-								case 'cart':
-								a = '[box style="cart"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// doc
-								case 'doc':
-								a = '[box style="doc"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// download
-								case 'download':
-								a = '[box style="download"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// media
-								case 'media':
-								a = '[box style="media"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// note
-								case 'note':
-								a = '[box style="note"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// notice
-								case 'notice':
-								a = '[box style="notice"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// quote
-								case 'quote':
-								a = '[box style="quote"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
-								// warning
-								case 'warning':
-								a = '[box style="warning"]'+selectedText+'[/box]';
-								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
-								break;
-								
 								// -------------------------------------------------------------
-								// HTML Elements
+								// Inline Elements
 								// -------------------------------------------------------------
 								
 								// highlight
@@ -467,13 +401,27 @@ $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
 								
 								// tabs
 								case 'tabs':
-								a  = '[raw]<br />';
-								a += '[tabs style="framed" tab_1="Title #1" tab_2="Title #2" tab_3="Title #3"]<br />';
+								a  = '[tabs style="framed" nav="tabs_below" height="300" tab_1="Title #1" tab_2="Title #2" tab_3="Title #3"]<br />';
 								a += '[tab_1]Tab 1 content...[/tab_1]<br />'; 
 								a += '[tab_2]Tab 2 content...[/tab_2]<br />';
 								a += '[tab_3]Tab 3 content...[/tab_3]<br />';
 								a += '[/tabs]<br />';
-								a += '[/raw]';
+								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
+								break;
+								
+								// -------------------------------------------------------------
+								// Accordion
+								// -------------------------------------------------------------
+								
+								// accordion
+								case 'accordion':
+								a  = '[raw]<br />';
+								a += '[accordion]<br />';
+								a += '[toggle title="Toggle #1"]Your content goes here.[/toggle]<br />'; 
+								a += '[toggle title="Toggle #2"]Your content goes here.[/toggle]<br />';
+								a += '[toggle title="Toggle #3"]Your content goes here.[/toggle]<br />';
+								a += '[/accordion]<br />';
+								a += '[/raw]<br />';
 								tinyMCE.activeEditor.execCommand("mceInsertContent", false, a);
 								break;
 							
@@ -514,25 +462,21 @@ $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
 								});
 								
 								var a=this;d.onRenderMenu.add(function(c,b){
-									c=b.addMenu({title:"Info Boxes"});
+									c=b.addMenu({title:"Components"});
 										a.addWithDialog(c,"Alert","alert");
-										a.addWithDialog(c,"Approved","approved");
-										a.addWithDialog(c,"Camera","camera");
-										a.addWithDialog(c,"Doc","doc");
-										a.addWithDialog(c,"Download","download");
-										a.addWithDialog(c,"Media","media");
-										a.addWithDialog(c,"Note","note");
-										a.addWithDialog(c,"Notice","notice");
-										a.addWithDialog(c,"Quote","quote");
-										a.addWithDialog(c,"Warning","warning");
-									c=b.addMenu({title:"HTML Elements"});
 										a.addWithDialog(c,"Button","button");
+										a.addWithDialog(c,"Divider","divider");
+										a.addWithDialog(c,"Icon List","iconlist");
+										a.addWithDialog(c,"Info Box","box");
+										a.addWithDialog(c,"Popup","popup");
+										a.addWithDialog(c,"Progress Bar","progress_bar");
+									c=b.addMenu({title:"Inline Elements"});
 										a.addWithDialog(c,"Drop Cap","dropcap");
 										a.addWithDialog(c,"Highlight","highlight");
 										a.addWithDialog(c,"Icon Link","iconlink");
-										a.addWithDialog(c,"Icon List","iconlist");
-										a.addWithDialog(c,"Divider","divider");
-									a.addWithDialog(b,"Icon","icon");
+										a.addWithDialog(c,"Image Icon","icon");
+										a.addWithDialog(c,"Label","label");
+										a.addWithDialog(c,"Vector Icon","vector_icon");
 									a.addWithDialog(b,"Escape Auto WP","raw");
 										
 									// ----------------------
@@ -585,16 +529,16 @@ $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
 									b.addSeparator();
 									// ----------------------
 									
+									a.addWithDialog(b,"Accordion (Group of Toggles)","accordion");
+									a.addWithDialog(b,"Individual Toggle","toggle");
+									c=b.addMenu({title:"Posts"});
+										a.addWithDialog(c,"Post Grid","post_grid");
+										a.addWithDialog(c,"Post List","post_list");
 									c=b.addMenu({title:"Sliders"});
 										a.addWithDialog(c,"Custom Slider","slider");
 										a.addWithDialog(c,"Post Grid Slider","post_grid_slider");
 										a.addWithDialog(c,"Post List Slider","post_list_slider");
-									c=b.addMenu({title:"Posts"});
-										a.addWithDialog(c,"Post Grid","post_grid");
-										a.addWithDialog(c,"Post List","post_list");
 									a.addWithDialog(b,"Tabs","tabs");
-									a.addWithDialog(b,"Toggle","toggle");
-
 							});
 							
 							return d

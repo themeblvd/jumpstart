@@ -251,8 +251,36 @@ if( ! function_exists( 'slider_blvd_ajax_save_slider' ) ) {
 		update_post_meta( $slider_id, 'slides', $slides );
 		update_post_meta( $slider_id, 'settings', $settings );
 		
+		// Slider Information
+		if( isset( $data['info'] ) ){
+			
+			// Start post data to be updated with the ID
+			$post_atts = array(
+				'ID' => $slider_id
+			);
+			
+			// Post Title (only used in admin for reference)
+			if( isset( $data['info']['post_title'] ) )
+				$post_atts['post_title'] = $data['info']['post_title'];
+			
+			// Post Slug (used as custom layout ID, important! )
+			if( isset( $data['info']['post_name'] ) )
+				$post_atts['post_name'] = $data['info']['post_name'];
+			
+			// Update Post info
+			wp_update_post( $post_atts );
+		
+		}
+		
 		// Allow plugins to hook in
 		do_action( 'themeblvd_save_slider_'.$slider_type, $slider_id, $slides, $settings );
+		
+		// Get most recent slider id after doing the above processes
+		$updated_slider = get_post($slider_id);
+		$current_slider_id = $updated_slider->post_name;
+		
+		// Send current slider ID back with response
+		echo $current_slider_id.'[(=>)]';
 		
 		// Display update message
 		echo '<div id="setting-error-save_options" class="updated fade settings-error ajax-update">';

@@ -38,6 +38,7 @@
 #optionsframework .section-social_media .active{border:1px solid #f2f2f2;margin:0 0 4px;padding:4px 7px;}
 #optionsframework .section-social_media .column-1{float:left;width:48%;margin:0 2% 0 0;}
 #optionsframework .section-social_media .column-2{float:left;width:48%;}
+#optionsframework .section-upload .section-upload {background:#ffffff;border:1px solid #dddddd;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;margin:0 0 10px 0;padding:12px 15px;}
 
 /* SIDEBAR LAYOUTS - needed for WordPress 3.4+ */
 

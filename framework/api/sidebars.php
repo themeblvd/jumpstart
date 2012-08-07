@@ -261,7 +261,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 				)
 			)
 		);
-		
+
 		// Add in user-inputted sidebar locations
 		$sidebars = array_merge( $sidebars, $_themeblvd_user_sidebar_locations );
 		
@@ -288,8 +288,10 @@ if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 		foreach( $default_sidebars as $sidebar ) {
 			register_sidebar( $sidebar['args'] );
 		}
+		
 		// Register custom sidebars
-		$custom_sidebars = get_posts( 'post_type=tb_sidebar&numberposts=-1&order=ASC' );
+		$custom_sidebars = get_posts( 'post_type=tb_sidebar&numberposts=-1&orderby=title&order=ASC' );
+		
 		foreach( $custom_sidebars as $sidebar ) {
 			$args = array(
 				'name' 			=> __( 'Custom: ', TB_GETTEXT_DOMAIN ).$sidebar->post_title,
@@ -345,11 +347,11 @@ if( ! function_exists( 'themeblvd_get_sidebar_id' ) ) {
 		// Get all the sidebars for this location and create
 		// a single array of just their assignments
 		$custom_sidebars = get_posts( 'post_type=tb_sidebar&numberposts=-1' );
-		if( $custom_sidebars ) {
+		if( $custom_sidebars ){
 	    	foreach( $custom_sidebars as $sidebar ){
-	    		if( $location == get_post_meta( $sidebar->ID, 'location', true ) ) {
+	    		if( $location == get_post_meta( $sidebar->ID, 'location', true ) ){
 	    			$current_assignments = get_post_meta( $sidebar->ID, 'assignments', true );
-	    			if( is_array( $current_assignments ) && ! empty ( $current_assignments ) ) {
+	    			if( is_array( $current_assignments ) && ! empty ( $current_assignments ) ){
 		    			foreach( $current_assignments as $key => $value ) {
 		    				$assignments[$key] = $value;
 		    			}

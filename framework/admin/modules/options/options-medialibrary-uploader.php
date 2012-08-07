@@ -118,8 +118,10 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 			$value = $_value;
 		
 		// If passed name, set it.
-		if ( $_name )
+		if ( $_name ) {
 			$name = $name.'['.$_name.']';
+			$id = $id.'_'.$_name;
+		}
 
 		// Set the ID for the post.
 		if( $_postid )

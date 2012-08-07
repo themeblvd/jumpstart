@@ -3,11 +3,13 @@
  * - link: The full URL of where you want the button to link
  *
  * Optional arguments
- *  - color: default, black, blue, brown, dark_blue, dark_brown, dark_green, green, mauve, orange, pearl, pink, purple, red, slate_grey, silver, steel_blue, teal, yellow, wheat, white
+ *  - color: default, primary, info, success, warning, danger, inverse, black, blue, brown, dark_blue, dark_brown, dark_green, green, mauve, orange, pearl, pink, purple, red, slate_grey, silver, steel_blue, teal, yellow, wheat
  *  - target: _self, _blank, or lightbox
  *  - size: small, medium, large
  *  - class: Any CSS classes you want to add
  *  - title: Title of link, will default to button's text
+ *  - icon_before: Optional icon before text
+ *  - icon_after: Optional icon before text
  */
 themeblvdShortcodeAtts={
 	attributes:[
@@ -21,7 +23,7 @@ themeblvdShortcodeAtts={
 			id:"color",
 			help:"Select the color of the button.", 
 			controlType:"select-control", 
-			selectValues:['default', 'black', 'blue', 'brown', 'dark_blue', 'dark_brown', 'dark_green', 'green', 'mauve', 'orange', 'pearl', 'pink', 'purple', 'red', 'slate_grey', 'silver', 'steel_blue', 'teal', 'yellow', 'wheat', 'white']
+			selectValues:['default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse', '----------', 'black', 'blue', 'brown', 'dark_blue', 'dark_brown', 'dark_green', 'green', 'mauve', 'orange', 'pearl', 'pink', 'purple', 'red', 'slate_grey', 'silver', 'steel_blue', 'teal', 'yellow', 'wheat', 'white']
 		},
 		{
 			label:"Link Target",
@@ -35,7 +37,7 @@ themeblvdShortcodeAtts={
 			id:"size",
 			help:"Select the size of the button.", 
 			controlType:"select-control", 
-			selectValues:['small', 'medium', 'large']
+			selectValues:['default', 'mini', 'small', 'large']
 		},
 		{
 			label:"CSS Classes",
@@ -46,6 +48,16 @@ themeblvdShortcodeAtts={
 			label:"Title",
 			id:"title",
 			help:"Enter in the title of the link's anchor tag. If you leave this blank, it will just default to the text of the button."
+		},
+		{
+			label:"Icon Before Text",
+			id:"icon_before",
+			help:"Enter an ID of a supported icon. You can view your theme's live demo for a full list of compatible vector icons."
+		},
+		{
+			label:"Icon After Text",
+			id:"icon_after",
+			help:"Enter an ID of a supported icon. You can view your theme's live demo for a full list of compatible vector icons."
 		}
 	],
 	defaultContent:"Button Text",

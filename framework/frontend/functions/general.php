@@ -424,20 +424,22 @@ function themeblvd_get_assigned_id( $assignments ) {
 				}
 				// Category
 				if( $assignment['type'] == 'category' ) {
-					if( is_category($assignment['id'] ) )			
+					if( is_category( $assignment['id'] ) )			
 						$id = $assignment['post_slug'];
 				}
 				// Tag
 				if( $assignment['type'] == 'tag') {
-					if( is_tag($assignment['id'] ) )		
+					if( is_tag( $assignment['id'] ) )		
 						$id = $assignment['post_slug'];
 				}
+				// Extend Tier I
+				$id = apply_filters( 'themeblvd_sidebar_id_tier_1', $id, $assignment );
 			}
 		}
 	}
 	
 	// Tier II conditionals
-	if( ! isset( $id ) && ! empty( $assignments ) ) {
+	if( ! $id && ! empty( $assignments ) ) {
 		foreach( $assignments as $assignment ) {
 			if( $assignment['type'] != 'top' ) {				
 				// Posts in Category
@@ -445,12 +447,14 @@ function themeblvd_get_assigned_id( $assignments ) {
 					if( is_single() && in_category( $assignment['id'] ) )		
 						$id = $assignment['post_slug'];
 				}			
+				// Extend Tier II
+				$id = apply_filters( 'themeblvd_sidebar_id_tier_2', $id, $assignment );
 			}
 		}
 	}
 	
 	// Tier III conditionals
-	if( ! isset( $id ) && ! empty( $assignments ) ) {
+	if( ! $id && ! empty( $assignments ) ) {
 		foreach( $assignments as $assignment ) {
 			if( $assignment['type'] == 'top' ) {				
 				switch( $assignment['id'] ) {
@@ -510,6 +514,9 @@ function themeblvd_get_assigned_id( $assignments ) {
 							$id = $assignment['post_slug'];
 						break;
 				} // End switch $assignment['id']					
+				
+				// Extend Tier III
+				$id = apply_filters( 'themeblvd_sidebar_id_tier_3', $id, $assignment );
 			}
 		}
 	}
@@ -523,6 +530,16 @@ function themeblvd_get_assigned_id( $assignments ) {
  * know you won't need to maybe save some frontend load 
  * time, this function can easily be re-done from a 
  * child theme.
+ * 
+ * (1) jQuery - Already registered by WP, and enqueued for most our scripts.
+ * (2) Twitter Bootstrap - All Bootstrap JS plugins combiled.
+ * (3) prettyPhoto - Modified version by Jason to include responsive features.
+ * (4) Super Fish - Used for primary navigation.
+ * (5) FlexSlider - Responsive slider, controls framework's "standard" slider type.
+ * (6) Roundabout - Carousel-style slider, controls framwork's "3D Carousel" slider type.
+ * (7) Theme Blvd scripts - Anything used by the framework to set other items into motion.
+ * (8) iOS Orientation Fix - Allows zooming to be enabled on iOS devices while still 
+ * allowing auto adjustment when switching between landscape and portrait.
  *
  * @since 2.0.0
  */
@@ -530,16 +547,18 @@ function themeblvd_get_assigned_id( $assignments ) {
 if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	function themeblvd_include_scripts() {
 		// Register scripts
-		// wp_register_script( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js', array('jquery'), '3.1.3' );
-		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/prettyphoto.js', array('jquery'), '3.1.3' ); // Modified version of prettyPhoto by Jason Bobich
-		wp_register_script( 'superfish', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8' );
-		// wp_register_script( 'flexslider', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/flexslider.js', array('jquery'), '1.8' );
-		wp_register_script( 'flexslider', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0' );
-		wp_register_script( 'roundabout', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1' );
-		wp_register_script( 'themeblvd', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/themeblvd.js', array('jquery'), '1.0' );
-		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/ios-orientationchange-fix.js' );
+		// wp_register_script( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js', array('jquery'), '3.1.3', true ); // Original un-modified prettyPhoto
+		wp_register_script( 'bootstrap', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.4', true );
+		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/prettyphoto.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
+		wp_register_script( 'superfish', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
+		// wp_register_script( 'flexslider', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/flexslider.js', array('jquery'), '1.8', true );
+		wp_register_script( 'flexslider', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true );
+		wp_register_script( 'roundabout', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
+		wp_register_script( 'themeblvd', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
+		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/ios-orientationchange-fix.js', true );
 		// Enqueue 'em
 		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'bootstrap' );
 		wp_enqueue_script( 'prettyPhoto' );
 		wp_enqueue_script( 'superfish' );
 		wp_enqueue_script( 'flexslider' );
@@ -566,12 +585,14 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 		// Level 1 user styles
 		themeblvd_user_stylesheets( 1 );
 		// Register framework styles
-		wp_register_style( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css' );
-		wp_register_style( 'themeblvd_plugins', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/css/plugins.css' );
-		wp_register_style( 'themeblvd', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/css/themeblvd.css' );
+		wp_register_style( 'bootstrap', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.0.4' );
+		wp_register_style( 'fontawesome', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
+		wp_register_style( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
+		wp_register_style( 'themeblvd', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/css/themeblvd.css', array(), TB_FRAMEWORK_VERSION );
 		// Enqueue framework styles
+		wp_enqueue_style( 'bootstrap' );
+		wp_enqueue_style( 'fontawesome' );
 		wp_enqueue_style( 'prettyPhoto' );
-		wp_enqueue_style( 'themeblvd_plugins' );
 		wp_enqueue_style( 'themeblvd' );
 		// Level 2 user styles
 		themeblvd_user_stylesheets( 2 );
@@ -776,7 +797,7 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
  * the true posts_per_page is adjusted in the query if this is 
  * a custom layout on the homepage.
  *
- * @since 2.1.0
+ * @since 2.2.0
  */
 
 if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
@@ -821,5 +842,44 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 				$query->set( 'posts_per_page', $new_posts_per_page );
 				
 	    }
+	}
+}
+
+/**
+ * Get class used to determine width of column in primary layout.
+ *
+ * @since 2.2.0
+ * 
+ * @param string $column Which column to retrieve class for
+ * @return string $column_class The class to be used in grid system
+ */
+
+if( ! function_exists( 'themeblvd_get_column_class' ) ) {
+	function themeblvd_get_column_class( $column ) {
+		$column_class = '';
+		$sidebar_layouts = themeblvd_sidebar_layouts();
+		$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
+		if( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) )
+			$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
+		return $column_class;
+	}
+}
+
+/**
+ * Add "btn" class to read more links.
+ *
+ * When a WP user uses the more tag <!--more-->, this filter 
+ * will add the class "btn" to that link. This will allow 
+ * Bootstrap to style the link as one of its buttons. 
+ * 
+ * This function is used with WP filter "the_content_more_link"
+ *
+ * @since 2.2.0
+ */
+
+if( ! function_exists( 'themeblvd_read_more_link' ) ) {
+	function themeblvd_read_more_link( $read_more ){
+		// Add standard "btn" bootstrap class
+		return str_replace( 'class="more-link"', 'class="more-link btn btn-default"', $read_more );
 	}
 }

@@ -14,18 +14,31 @@
  * @link		http://themeblvd.com
  * @package 	Theme Blvd WordPress Framework
  */
-?>
-		<?php themeblvd_footer_before(); ?>
+		
+		// End main area
+		themeblvd_main_bottom();
+		themeblvd_main_end();
+		
+		// Featured area (below)
+		if( themeblvd_config( 'featured_below' ) ) {
+			themeblvd_featured_below_start();
+			themeblvd_featured_below();
+			themeblvd_featured_below_end();
+		}
+		
+		themeblvd_footer_before();
+		?>
 		
 		<!-- FOOTER (start) -->
 		
 		<div id="bottom">
 			<footer id="colophon" role="contentinfo">
-				<div class="content">
+				<div class="colophon-inner">
 					<?php
 					/**
 					 * Display footer elements.
 					 */
+					themeblvd_footer_above();
 					themeblvd_footer_content();
 					themeblvd_footer_sub_content();
 					themeblvd_footer_below();

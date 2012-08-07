@@ -2,6 +2,17 @@
 /**
  * Setup all global vars for use with API functions.
  *
+ * @global array $_themeblvd_core_options
+ * @global array $_themeblvd_core_elements
+ * @global array $_themeblvd_customizer_sections
+ * @global array $_themeblvd_registered_elements
+ * @global array $_themeblvd_user_sample_layouts
+ * @global array $_themeblvd_remove_sample_layouts
+ * @global array $_themeblvd_user_sidebar_locations
+ * @global array $_themeblvd_remove_sidebar_locations
+ * @global array $_themeblvd_user_sliders
+ * @global array $_themeblvd_user_stylesheets
+ * @global array $_themeblvd_remove_stylesheets
  * @since 2.1.0
  */
 
@@ -65,6 +76,8 @@ if( ! function_exists( 'themeblvd_api_init' ) ) {
  * themeblvd_global_config
  *
  * @since 2.0.0
+ *
+ * @return array $setup Features framework support
  */
 
 if( ! function_exists( 'themeblvd_setup' ) ) { 
@@ -136,17 +149,17 @@ if( ! function_exists( 'themeblvd_supports' ) ) {
  * @since 2.1.0
  *
  * @param string $module Module ID to check
- * @return boolean
+ * @return string $cap WP capability for current admin module
  */
 
 if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {  
 	function themeblvd_admin_module_cap( $module ) {
 		// Setup default capabilities
 		$module_caps = array(
-			'builder' => 'edit_theme_options', 		// Role: Administrator
-			'options' => 'edit_theme_options',		// Role: Administrator
-			'sidebars' => 'edit_theme_options',		// Role: Administrator
-			'sliders' => 'edit_theme_options'		// Role: Administrator
+			'builder' 	=> 'edit_theme_options', 		// Role: Administrator
+			'options' 	=> 'edit_theme_options',		// Role: Administrator
+			'sidebars' 	=> 'edit_theme_options',		// Role: Administrator
+			'sliders' 	=> 'edit_theme_options'			// Role: Administrator
 		);
 		$module_caps = apply_filters( 'themeblvd_admin_module_caps', $module_caps );
 		
@@ -165,7 +178,8 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
  * @since 2.0.0
  * 
  * @param string $buffer Text to compress
- * @param string $buffer Buffered text 
+ * @param string $buffer Buffered text
+ * @return array $buffer Compressed text
  */
 
 if( ! function_exists( 'themeblvd_compress' ) ) {  
@@ -380,35 +394,65 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
  *
  * @since 2.0.0
  *
- * @return array
+ * @return array $layouts All current sidebar layouts
  */
 
 if( ! function_exists( 'themeblvd_sidebar_layouts' ) ) { 
 	function themeblvd_sidebar_layouts() {
 		$layouts = array(
 			'full_width' => array(
-				'name' 	=> 'Full Width',
-				'id'	=> 'full_width'
+				'name' 		=> 'Full Width',
+				'id'		=> 'full_width',
+				'columns'	=> array(
+					'content' 	=> 'span12',
+					'left' 		=> '',
+					'right' 	=> '',
+				)
 			),
 			'sidebar_right' => array(
-				'name' 	=> 'Sidebar Right',
-				'id'	=> 'sidebar_right'
+				'name' 		=> 'Sidebar Right',
+				'id'		=> 'sidebar_right',
+				'columns'	=> array(
+					'content' 	=> 'span8',
+					'left' 		=> '',
+					'right' 	=> 'span4',
+				)
 			),
 			'sidebar_left' => array(
-				'name' 	=> 'Sidebar Left',
-				'id'	=> 'sidebar_left'
+				'name' 		=> 'Sidebar Left',
+				'id'		=> 'sidebar_left',
+				'columns'	=> array(
+					'content' 	=> 'span8',
+					'left' 		=> 'span4',
+					'right' 	=> '',
+				)
 			),
 			'double_sidebar' => array(
-				'name' 	=> 'Double Sidebar',
-				'id'	=> 'double_sidebar'
+				'name' 		=> 'Double Sidebar',
+				'id'		=> 'double_sidebar',
+				'columns'	=> array(
+					'content' 	=> 'span6',
+					'left' 		=> 'span3',
+					'right' 	=> 'span3',
+				)
 			),
 			'double_sidebar_left' => array(
-				'name' 	=> 'Double Left Sidebars',
-				'id'	=> 'double_sidebar_left'
+				'name' 		=> 'Double Left Sidebars',
+				'id'		=> 'double_sidebar_left',
+				'columns'	=> array(
+					'content' 	=> 'span6',
+					'left' 		=> 'span3',
+					'right' 	=> 'span3',
+				)
 			),
 			'double_sidebar_right' => array(
-				'name' 	=> 'Double Right Sidebars',
-				'id'	=> 'double_sidebar_right'
+				'name' 		=> 'Double Right Sidebars',
+				'id'		=> 'double_sidebar_right',
+				'columns'	=> array(
+					'content' 	=> 'span6',
+					'left' 		=> 'span3',
+					'right' 	=> 'span3',
+				)
 			)
 		);
 		return apply_filters( 'themeblvd_sidebar_layouts', $layouts );
@@ -420,7 +464,7 @@ if( ! function_exists( 'themeblvd_sidebar_layouts' ) ) {
  *
  * @since 2.0.5
  *
- * @return array
+ * @return array $textures All current textures
  */
 
 if( ! function_exists( 'themeblvd_get_textures' ) ) {  
@@ -1081,6 +1125,8 @@ if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
  * image_size_names_choose
  *
  * @since 2.1.0
+ *
+ * @return array Framework's image sizes
  */
 
 if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
@@ -1107,123 +1153,44 @@ if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
  * global $allowedtags.
  *
  * @since 2.0.0
- * Note: Moved to /framework/api/helpers.php in v2.1.0
+ * @uses $allowedposttags
  *
- * @param $type string type of field 'text' or 'textarea'
+ * @return array $themeblvd_tags Allowed HTML tags for Theme Blvd options sanitation
  */
 
-function themeblvd_allowed_tags( $extended = false ) {
+function themeblvd_allowed_tags() {
 	
-	global $allowedtags;
-	$tags = $allowedtags;
+	global $allowedposttags;
 	
-	// Tags to add
-	$addons = array(
-		'a' => array(
-			'href' => array(),
-			'title' => array(),
-			'class' => array(),
-			'id'	=> array(),
-			'style' => array(),
-			'rel' => array(),
-			'target' => array()
-		),
-		'img' => array(
-			'alt' => array(),
-			'title' => array(),
-			'src' => array(),
-			'class' => array(),
-			'id'	=> array(),
-			'style' => array()
-		),
-		'br' => array()
+	// Match Theme Blvd tags with global HTML 
+	// allowed for standard Posts/Pages.
+	$themeblvd_tags = $allowedposttags;
+
+	// And make any adjustments
+	$themeblvd_tags['iframe'] = array(
+		'style' 				=> true,
+		'width' 				=> true,
+		'height' 				=> true,
+		'src' 					=> true,
+		'frameborder'			=> true,
+		'allowfullscreen' 		=> true,
+		'webkitAllowFullScreen'	=> true,
+		'mozallowfullscreen' 	=> true
 	);
-	$addons = apply_filters( 'themeblvd_allowed_tags_basic', $addons );
+	$themeblvd_tags['script'] = array(
+		'type'					=> true,
+		'src' 					=> true
+	);
 	
-	// Add in extended HTML tags
-	if( $extended ) {
-		$extended_addons = array(
-			'h1' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'h2' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'h3' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'h4' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'h5' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'h6' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'script' => array(
-				'type' => array(),
-				'src' => array()
-			),
-			'div' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'p' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'ul' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'li' => array(
-				'class' => array(),
-				'id'	=> array(),
-				'style' => array()
-			),
-			'iframe' => array(
-				'style' => array(),
-				'width' => array(),
-				'height' => array(),
-				'src' => array(),
-				'frameborder' => array(),
-				'allowfullscreen' => array(),
-				'webkitAllowFullScreen' => array(),
-				'mozallowfullscreen' => array()
-			)
-		);
-		$extended_addons = apply_filters( 'themeblvd_allowed_tags_extended', $extended_addons );
-		$addons = array_merge( $addons, $extended_addons );
-	}
-	
-	// Add the addons to the final array
-	$tags = array_merge( $tags, $addons );
-	
-	return apply_filters( 'themeblvd_allowed_tags', $tags );
-	
+	return apply_filters( 'themeblvd_allowed_tags', $themeblvd_tags );
 }
 
 /**
  * Generates default column widths for column element.
  *
  * @since 2.0.0
- * Note: Moved to /framework/api/helpers.php in v2.1.0
+ *
+ * @return array $widths All column options with cooresponding widths.
  */
 
 function themeblvd_column_widths() {
@@ -1365,7 +1332,8 @@ function themeblvd_column_widths() {
  * conditionals.
  *
  * @since 2.0.0
- * Note: Moved to /framework/api/helpers.php in v2.1.0
+ *
+ * @return array $conditionals Configuration of conditionals to choose from
  */
  
 function themeblvd_conditionals_config() {

@@ -31,6 +31,28 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 		// Theme style.css
 		echo '<link rel="stylesheet" type="text/css" media="all" href="'.get_bloginfo( 'stylesheet_url' ).'" />'."\n";
 		
+		// Favicon
+		$icon_16x16 = themeblvd_get_option('favicon');
+		if( $icon_16x16 )
+			echo '<link rel="shortcut icon" href="'.$icon_16x16.'" />'."\n";
+		
+		// Apple touch icons
+		$icon_144x144 = themeblvd_get_option('apple_touch_144x144');
+		if( $icon_144x144 )
+			echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="'.$icon_144x144.'" />'."\n";
+		
+		$icon_114x114 = themeblvd_get_option('apple_touch_114x114');
+		if( $icon_114x114 )
+			echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="'.$icon_114x114.'" />'."\n";
+			
+		$icon_72x72 = themeblvd_get_option('apple_touch_72x72');
+		if( $icon_72x72 )
+			echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="'.$icon_72x72.'" />'."\n";
+			
+		$icon_57x57 = themeblvd_get_option('apple_touch_57x57');
+		if( $icon_57x57 )
+			echo '<link rel="apple-touch-icon-precomposed" href="'.$icon_57x57.'" />'."\n";
+
 		// Pingback
 		echo '<link rel="pingback" href="'.get_bloginfo( 'pingback_url' ).'" />'."\n";
 		
@@ -99,15 +121,14 @@ if( ! function_exists( 'themeblvd_header_content_default' ) ) {
 	function themeblvd_header_content_default() {
 		?>
 		<div id="header_content">
-			<div class="container">
-				<div class="inner">
+			<div class="header_content-inner">
+				<div class="header_content-content clearfix">
 					<?php 
 					themeblvd_header_logo();
 					themeblvd_header_addon();
 					?>
-					<div class="clear"></div>
-				</div><!-- .inner (end) -->
-			</div><!-- .container (end) -->
+				</div><!-- .header_content-content (end) -->
+			</div><!-- .header_content-inner (end) -->
 		</div><!-- #header_content (end) -->
 		<?php
 	}
@@ -123,6 +144,8 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 	function themeblvd_header_logo_default() {
 		$option = themeblvd_get_option( 'logo' );
 		$classes = 'header_logo header_logo_'.$option['type'];
+		if( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' )
+			$classes .= ' header_logo_text';
 		if( $option['type'] == 'custom' && isset( $option['custom_tagline'] ) && $option['custom_tagline'] )
 			$classes .= ' header_logo_has_tagline';
 		if( $option['type'] == 'title_tagline' )
@@ -145,7 +168,10 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 							echo '<span class="tagline">'.$option['custom_tagline'].'</span>';
 						break;
 					case 'image' :
-						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" /></a>';
+						$image_2x = '';
+						if( isset( $option['image_2x'] ) && $option['image_2x'] )
+							$image_2x = $option['image_2x'];
+						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
 						break;
 				}
 			}
@@ -163,17 +189,23 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 
 if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 	function themeblvd_header_menu_default() {
-		if( themeblvd_get_option( 'responsive_css', null, 'true' ) != 'false' && themeblvd_get_option( 'mobile_nav', null, 'mobile_nav_select' ) != 'mobile_nav_graphic' )
+		if( themeblvd_get_option( 'responsive_css', null, 'true' ) != 'false' && themeblvd_get_option( 'mobile_nav' ) == 'mobile_nav_select' )
 			echo themeblvd_nav_menu_select( apply_filters( 'themeblvd_responsive_menu_location', 'primary' ) );
 		?>
+		
+		<?php if( themeblvd_get_option( 'mobile_nav' ) == 'mobile_nav_toggle_graphic' ) : ?>
+			<a href="#access" class="btn btn-navbar">
+				<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="icon-reorder"></i>' ); ?>
+			</a>
+		<?php endif; ?>
+		
 		<nav id="access" role="navigation">
-			<div class="container">
-				<div class="content">
+			<div class="access-inner">
+				<div class="access-content clearfix">
 					<?php wp_nav_menu( array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu','container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ); ?>
 					<?php themeblvd_header_menu_addon(); ?>
-					<div class="clear"></div>
-				</div><!-- .content (end) -->
-			</div><!-- .container (end) -->
+				</div><!-- .access-content (end) -->
+			</div><!-- .access-inner (end) -->
 		</nav><!-- #access (end) -->
 		<?php
 	}
@@ -206,15 +238,14 @@ if( ! function_exists( 'themeblvd_footer_content_default' ) ) {
 					$i++;
 				}
 				?>
-				<div class="footer_content">
-					<div class="container">
-						<div class="content">
+				<div id="footer_content" class="clearfix">
+					<div class="footer_content-inner">
+						<div class="footer_content-content">
 							<div class="grid-protection">
 								<?php themeblvd_columns( $num, $footer_setup['width'][$num], $columns ); ?>
-								<div class="clear"></div>
 							</div><!-- .grid-protection (end) -->
-						</div><!-- .content (end) -->
-					</div><!-- .container (end) -->
+						</div><!-- .footer_content-content (end) -->
+					</div><!-- .footer_content-inner (end) -->
 				</div><!-- .footer_content (end) -->
 				<?php
 			}
@@ -231,9 +262,9 @@ if( ! function_exists( 'themeblvd_footer_content_default' ) ) {
 if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 	function themeblvd_footer_sub_content_default() {
 		?>
-		<div id="footer_sub_content">
-			<div class="container">
-				<div class="content">
+		<div id="footer_sub_content" class="clearfix">
+			<div class="footer_sub_content-inner">
+				<div class="footer_sub_content-content">
 					<div class="copyright">
 						<span class="copyright-inner">
 							<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
@@ -244,9 +275,8 @@ if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 							<?php wp_nav_menu( array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ); ?>
 						</span>
 					</div><!-- .copyright (end) -->
-					<div class="clear"></div>
-				</div><!-- .content (end) -->
-			</div><!-- .container (end) -->
+				</div><!-- .footer_sub_content-content (end) -->
+			</div><!-- .footer_sub_content-inner (end) -->
 		</div><!-- .footer_sub_content (end) -->
 		<?php
 	}
@@ -258,7 +288,7 @@ if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
  * @since 2.0.0
  */
 
-if( ! function_exists( 'tthemeblvd_footer_below_default' ) ) {
+if( ! function_exists( 'themeblvd_footer_below_default' ) ) {
 	function themeblvd_footer_below_default() {		
 		echo '<div class="footer-below">';
 		themeblvd_display_sidebar( 'ad_below_footer' );
@@ -279,7 +309,7 @@ if( ! function_exists( 'tthemeblvd_footer_below_default' ) ) {
 
 if( ! function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) {
 	function themeblvd_fixed_sidebar_before_default( $side ) {
-		echo '<div class="fixed-sidebar '.$side.'-sidebar">';
+		echo '<div class="fixed-sidebar '.$side.'-sidebar '.themeblvd_get_column_class( $side ).'">';
 		echo '<div class="fixed-sidebar-inner">';
 	}
 }
@@ -346,24 +376,39 @@ if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 }
 
 /**
- * Default display for action: themeblvd_featured_blog
+ * Default display for action: themeblvd_featured
  *
  * @since 2.1.0
  */
 
 if( ! function_exists( 'themeblvd_featured_blog_default' ) ) {
 	function themeblvd_featured_blog_default() {
-		if( themeblvd_get_option( 'blog_featured', null, false ) ){
-			$slider = themeblvd_get_option( 'blog_slider' );
-			$type = get_post_meta( themeblvd_post_id_by_name($slider, 'tb_slider'), 'type', true );
-			echo '<div class="element element-slider element-slider-'.$type.'">';
-			echo '<div class="element-inner">';
-			echo '<div class="element-inner-wrap">';
-			themeblvd_slider( $slider );
-			echo '</div>';
-			echo '</div>';
-			echo '</div>';
+		if( is_home() || is_page_template( 'template_list.php' ) ){
+			if( ! themeblvd_config( 'builder' ) && themeblvd_get_option( 'blog_featured', null, false ) ){
+				$slider = themeblvd_get_option( 'blog_slider' );
+				$type = get_post_meta( themeblvd_post_id_by_name($slider, 'tb_slider'), 'type', true );
+				echo '<div class="element element-slider element-slider-'.$type.'">';
+				echo '<div class="element-inner">';
+				echo '<div class="element-inner-wrap">';
+				themeblvd_slider( $slider );
+				echo '</div>';
+				echo '</div>';
+				echo '</div>';
+			}
 		}
+	}
+}
+
+/**
+ * Default display for action: themeblvd_featured
+ *
+ * @since 2.2.0
+ */
+ 
+if( ! function_exists( 'themeblvd_featured_builder_default' ) ) {
+	function themeblvd_featured_builder_default() {
+		if( themeblvd_config( 'builder' ) )
+			themeblvd_elements( themeblvd_config( 'builder' ), 'featured' );	
 	}
 }
 
@@ -397,7 +442,7 @@ if( ! function_exists( 'themeblvd_featured_below_start_default' ) ) {
 }
 
 /**
- * Default display for action: themeblvd_featured_below_end
+ * Default display for action: themeblvd_featured_below
  *
  * @since 2.1.0
  */
@@ -412,6 +457,19 @@ if( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
 		
 		<!-- FEATURED BELOW (end) -->
 		<?php
+	}
+}
+
+/**
+ * Default display for action: themeblvd_featured_below_end
+ *
+ * @since 2.2.0
+ */
+ 
+if( ! function_exists( 'themeblvd_featured_below_builder_default' ) ) {
+	function themeblvd_featured_below_builder_default() {
+		if( themeblvd_config( 'builder' ) )
+			themeblvd_elements( themeblvd_config( 'builder' ), 'featured_below' );	
 	}
 }
 
@@ -561,26 +619,22 @@ if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 		// Setup text strings so their run through the 
 		// framework's frontend localization filter.
 		$text = array(
-			'by' => themeblvd_get_local( 'by' ),
 			'comment' => themeblvd_get_local( 'comment' ),
 			'comments' => themeblvd_get_local( 'comments' ),
-			'in' => themeblvd_get_local( 'in' ),
 			'no_comments' => themeblvd_get_local( 'no_comments' ),
-			'posted_on' => themeblvd_get_local( 'posted_on' )
-
 		);
 		
 		?>
 		<div class="entry-meta">
-			<span class="sep"><?php echo $text['posted_on']; ?></span>
-			<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php the_time( get_option('date_format') ); ?></time>
-			<span class="sep"> <?php echo $text['by']; ?> </span>
-			<span class="author vcard"><a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo sprintf( esc_attr__( 'View all posts by %s', TB_GETTEXT_DOMAIN ), get_the_author() ); ?>" rel="author"><?php the_author(); ?></a></span>
-			<span class="sep"> <?php _e( 'in', TB_GETTEXT_DOMAIN ); ?> </span>
-			<span class="category"><?php the_category(', '); ?></span>
+			<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><i class="icon-calendar"></i> <?php the_time( get_option('date_format') ); ?></time>
+			<span class="sep"> / </span>
+			<span class="author vcard"><i class="icon-user"></i> <a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo sprintf( esc_attr__( 'View all posts by %s', TB_GETTEXT_DOMAIN ), get_the_author() ); ?>" rel="author"><?php the_author(); ?></a></span>
+			<span class="sep"> / </span>
+			<span class="category"><i class="icon-reorder"></i>  <?php the_category(', '); ?></span>
 			<?php if ( comments_open() ) : ?>
-			 - <span class="comments-link">
-				<?php comments_popup_link( '<span class="leave-reply">'.$text['no_comments'].'</span>', '1 '.$text['comment'], '% '.$text['comments'] ); ?>
+			<span class="sep"> / </span>
+			<span class="comments-link">
+				<i class="icon-comment"></i> <?php comments_popup_link( '<span class="leave-reply">'.$text['no_comments'].'</span>', '1 '.$text['comment'], '% '.$text['comments'] ); ?>
 			</span>
 			<?php endif; ?>
 		</div><!-- .entry-meta -->		
@@ -596,7 +650,7 @@ if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 
 if( ! function_exists( 'themeblvd_blog_tags_default' ) ) {
 	function themeblvd_blog_tags_default() {
-		the_tags( '<span class="tags">', ', ', '</span>' );
+		the_tags( '<span class="tags"><i class="icon-tags"></i> ', ', ', '</span>' );
 	}
 }
 
@@ -626,8 +680,7 @@ if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 		} else {
 			// Show excerpt and read more button
 			the_excerpt();
-			echo '<div class="clear"></div>';
-			echo themeblvd_button( themeblvd_get_local( 'read_more' ), get_permalink( get_the_ID() ), 'default', '_self', 'small', 'read-more', get_the_title( get_the_ID() )  );
+			echo '<p><a href="'.get_permalink( get_the_ID() ).'" class="btn btn-default">'.themeblvd_get_local( 'read_more' ).' &rarr;</a></p>';
 		}
 	}
 }

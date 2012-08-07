@@ -100,7 +100,7 @@ if ( ! function_exists( 'sidebar_blvd_hijack_submenu' ) ) {
 
 if ( ! function_exists( 'sidebar_blvd_load_styles' ) ) {
 	function sidebar_blvd_load_styles() {
-		wp_enqueue_style('sharedframework-style', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-style.css');
+		wp_enqueue_style('sharedframework-style', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-style.css', null, TB_FRAMEWORK_VERSION);
 		// wp_enqueue_style('sidebarsframework-style', SIDEBARS_FRAMEWORK_DIRECTORY . 'css/sidebars-style.css');
 	}	
 }
@@ -114,8 +114,8 @@ if ( ! function_exists( 'sidebar_blvd_load_styles' ) ) {
 if ( ! function_exists( 'sidebar_blvd_load_scripts' ) ) {
 	function sidebar_blvd_load_scripts() {
 		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('sharedframework-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/shared.min.js', array('jquery'));
-		wp_enqueue_script('sidebarsframework-scripts', SIDEBARS_FRAMEWORK_DIRECTORY . 'js/sidebars-custom.js', array('jquery'));
+		wp_enqueue_script('sharedframework-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/shared.js', array('jquery'), TB_FRAMEWORK_VERSION);
+		wp_enqueue_script('sidebarsframework-scripts', SIDEBARS_FRAMEWORK_DIRECTORY . 'js/sidebars.js', array('jquery'), TB_FRAMEWORK_VERSION);
 		wp_localize_script('sharedframework-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 	}
 }

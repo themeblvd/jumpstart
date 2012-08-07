@@ -60,19 +60,19 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 	                        'col_1' => array(
 								'type' => 'raw',
 								'page' => null,
-								'raw' => "<h3>Sample Headline #1</h3>\n\n<img src=\"$imgpath/business_1.jpg\" />\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n[button link=\"http://google.com\" color=\"black\"]Learn More[/button]",
+								'raw' => "<h3>Sample Headline #1</h3>\n\n<img src=\"$imgpath/business_1.jpg\" />\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n[button link=\"http://google.com\"]Learn More[/button]",
 								'raw_format' => 1
 							),
 	                        'col_2' => array(
 								'type' => 'raw',
 								'page' => null,
-								'raw' => "<h3>Sample Headline #2</h3>\n\n<img src=\"$imgpath/business_2.jpg\" />\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n[button link=\"http://google.com\" color=\"black\"]Learn More[/button]",
+								'raw' => "<h3>Sample Headline #2</h3>\n\n<img src=\"$imgpath/business_2.jpg\" />\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n[button link=\"http://google.com\"]Learn More[/button]",
 								'raw_format' => 1
 							),
 	                        'col_3' => array(
 								'type' => 'raw',
 								'page' => null,
-								'raw' => "<h3>Sample Headline #3</h3>\n\n<img src=\"$imgpath/business_3.jpg\" />\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n[button link=\"http://google.com\" color=\"black\"]Learn More[/button]",
+								'raw' => "<h3>Sample Headline #3</h3>\n\n<img src=\"$imgpath/business_3.jpg\" />\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n[button link=\"http://google.com\"]Learn More[/button]",
 								'raw_format' => 1
 							),
 	                        'col_4' => array(

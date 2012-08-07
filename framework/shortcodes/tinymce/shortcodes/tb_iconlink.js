@@ -1,6 +1,6 @@
 /**
  * Required arguments
- *  - icon: alert, approved, attention, camera, cart, doc, download, media, note, notice, quote
+ *  - icon: Icon to show before link
  *  - link: The full URL of where you want the link to go
  * 
  * Optional arguments
@@ -13,9 +13,7 @@ themeblvdShortcodeAtts={
 		{
 			label:"Icon",
 			id:"icon",
-			help:"This will determine the icon located next to your link.", 
-			controlType:"select-control", 
-			selectValues:['alert', 'approved', 'attention', 'camera', 'cart', 'doc', 'download', 'media', 'note', 'notice', 'quote']
+			help:"Enter an ID of a supported icon. You can view your theme's live demo for a full list of compatible vector icons."
 		},
 		{
 			label:"Link URL",

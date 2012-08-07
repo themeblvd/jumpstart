@@ -152,6 +152,34 @@ if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
 		update_post_meta( $layout_id, 'elements', $elements );
 		update_post_meta( $layout_id, 'settings', $options );
 		
+		// Layout Information
+		if( isset( $data['info'] ) ){
+			
+			// Start post data to be updated with the ID
+			$post_atts = array(
+				'ID' => $layout_id
+			);
+			
+			// Post Title (only used in admin for reference)
+			if( isset( $data['info']['post_title'] ) )
+				$post_atts['post_title'] = $data['info']['post_title'];
+			
+			// Post Slug (used as custom layout ID, important! )
+			if( isset( $data['info']['post_name'] ) )
+				$post_atts['post_name'] = $data['info']['post_name'];
+			
+			// Update Post info
+			wp_update_post( $post_atts );
+		
+		}
+		
+		// Get most recent layout id after doing the above processes
+		$updated_layout = get_post($layout_id);
+		$current_layout_id = $updated_layout->post_name;
+		
+		// Send current layout ID back with response
+		echo $current_layout_id.'[(=>)]';
+		
 		// Display update message
 		echo '<div id="setting-error-save_options" class="updated fade settings-error ajax-update">';
 		echo '	<p><strong>'.__( 'Layout saved.', TB_GETTEXT_DOMAIN ).'</strong></p>';

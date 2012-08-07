@@ -125,6 +125,19 @@ if( ! function_exists( 'sidebar_blvd_edit' ) ) {
 		// Setup options array to display form
 		$options = array(
 			array( 
+				'name' 		=> __( 'Widget Area Name', TB_GETTEXT_DOMAIN ),
+				'desc' 		=> __( 'Here you can edit the name of your widget area. This will adjust how your widget area is labeled for you here in the WordPress admin panel.', TB_GETTEXT_DOMAIN ),
+				'id' 		=> 'post_title',
+				'type' 		=> 'text'
+			),
+			array( 
+				'name' 		=> __( 'Widget Area ID', TB_GETTEXT_DOMAIN ),
+				'desc' 		=> __( 'Here you can edit the internal ID of your widget area.<br><br><em>Warning: This is how WordPress assigns your widgets and how the theme applies your widget area. If you change this ID, you will need to re-assign any widgets under Appearance > Widgets, and re-visit any areas you may have added this as a floating widget area.</em>', TB_GETTEXT_DOMAIN ),
+				'id' 		=> 'post_name',
+				'type' 		=> 'text',
+				'class'		=> 'hide' // Hidden from user. For debugging can display and change with dev console.
+			),
+			array( 
 				'name' 		=> __( 'Widget Area Location', TB_GETTEXT_DOMAIN ),
 				'desc' 		=> __( 'Select which location on the site this widget area will be among the theme\'s currently supported widget area locations.<br><br><em>Note: A "Floating Widget Area" can be used in dynamic elements like setting up columns in the layout builder, for example.</em>', TB_GETTEXT_DOMAIN ),
 				'id' 		=> 'sidebar_location',
@@ -141,8 +154,10 @@ if( ! function_exists( 'sidebar_blvd_edit' ) ) {
 		
 		// Settup current settings
 		$settings = array(
-			'sidebar_location' => get_post_meta( $id, 'location', true ),
-			'sidebar_assignments' => get_post_meta( $id, 'assignments', true )
+			'post_title' 			=> $post->post_title,
+			'post_name' 			=> $post->post_name,
+			'sidebar_location' 		=> get_post_meta( $id, 'location', true ),
+			'sidebar_assignments' 	=> get_post_meta( $id, 'assignments', true )
 		);
 		
 		// Build form

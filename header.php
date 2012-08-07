@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<?php themeblvd_head(); ?>
+<?php themeblvd_head(); // wp_head() happens here. ?>
 </head>
 <body <?php body_class(); ?>>
 <?php themeblvd_before(); ?>
@@ -47,4 +47,23 @@
 		
 		<!-- HEADER (end) -->
 		
-		<?php themeblvd_header_after(); ?>
+		<?php 
+		// After header
+		themeblvd_header_after();
+	
+		// Featured area (above)
+		if( themeblvd_config( 'featured' ) ) {
+			themeblvd_featured_start();
+			themeblvd_featured();
+			themeblvd_featured_end();
+		}
+		
+		// Start main area
+		themeblvd_main_start();
+		themeblvd_main_top();
+		
+		// Breadcrumbs
+		themeblvd_breadcrumbs();
+		
+		// Before sidebar+content layout
+		themeblvd_before_layout();

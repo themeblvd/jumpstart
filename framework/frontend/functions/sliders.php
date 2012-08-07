@@ -21,6 +21,8 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 					useCSS: false, // Avoid CSS3 glitches
 					video: true, // Avoid CSS3 glitches
 					smoothHeight: true,
+					prevText: '<i class="icon-circle-arrow-left"></i>',
+					nextText: '<i class="icon-circle-arrow-right"></i>',
 					animation: "<?php echo $options['fx']; ?>",
 					// pauseOnHover: true - This was replaced with a custom solution to work with other controls, see below with "pause_on_hover" option.
 					<?php if( $options['timeout'] ) : ?>
@@ -33,7 +35,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 					controlsContainer: ".slides-wrapper-<?php echo $id; ?>",
 					start: function(slider) {
         				<?php if( $options['pause_play'] && $options['timeout'] != '0' ) : ?>
-		    				$('#tb-slider-<?php echo $id; ?> .flex-direction-nav li:first-child').after('<li><a class="flex-pause" href="#">Pause</a></li><li><a class="flex-play" href="#" style="display:none">Play</a></li>');
+		    				$('#tb-slider-<?php echo $id; ?> .flex-direction-nav li:first-child').after('<li><a class="flex-pause" href="#"><i class="icon-pause"></i></a></li><li><a class="flex-play" href="#" style="display:none"><i class="icon-play"></i></a></li>');
 		    				$('#tb-slider-<?php echo $id; ?> .flex-pause').click(function(){
 								slider.pause();
 								$(this).hide();
@@ -309,8 +311,8 @@ if( ! function_exists( 'themeblvd_carrousel_slider_default' ) ) {
 			<div class="slider-inner">
 				<?php if( $settings['nav_arrows'] ) : ?>
 				<div class="roundabout-nav">
-					<a href="#" title="Previous" class="prev">Previous</a>
-					<a href="#" title="Next" class="next">Next</a>
+					<a href="#" title="Previous" class="prev"><i class="icon-circle-arrow-left"></i></a>
+					<a href="#" title="Next" class="next"><i class="icon-circle-arrow-right"></i></a>
 				</div><!-- .roundabout-nav (end) -->
 				<?php endif; ?>
 				<ul class="carrousel-slider">
@@ -340,9 +342,9 @@ if( ! function_exists( 'themeblvd_carrousel_slider_default' ) ) {
 										?>
 										<?php if( in_array( 'image_link', $elements ) ) : ?>
 											<?php if( $slide['elements']['image_link']['target'] == 'lightbox' ) : ?>
-												<a href="<?php echo $slide['elements']['image_link']['url']; ?>" class="image-link enlarge" rel="themeblvd_lightbox" title=""><span>Image Link</span></a>
+												<a href="<?php echo $slide['elements']['image_link']['url']; ?>" class="image-link enlarge" rel="themeblvd_lightbox" title=""><span><i class="icon-plus"></i></span></a>
 											<?php else : ?>
-												<a href="<?php echo $slide['elements']['image_link']['url']; ?>" target="<?php echo $slide['elements']['image_link']['target']; ?>" class="image-link external"><span>Image Link</span></a>
+												<a href="<?php echo $slide['elements']['image_link']['url']; ?>" target="<?php echo $slide['elements']['image_link']['target']; ?>" class="image-link external"><span><i class="icon-external-link"></i></span></a>
 											<?php endif; ?>
 										<?php endif; ?>
 										<img src="<?php echo $image_url; ?>" alt="<?php echo $image_title; ?>" />

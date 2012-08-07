@@ -66,7 +66,6 @@ class TB_Widget_Twitter extends WP_Widget {
 				foreach ( $answers as $answer ) {
 					$selected = "";
 					if($answer == $exclude_replies) $selected = 'selected="selected"';
-				
 					$list .= "<option $selected value='$answer'>$answer</option>";
 				}
 				echo $list;

@@ -352,7 +352,7 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 			<input type="hidden" name="slider_id" value="<?php echo $post_id; ?>" />
 			<div id="poststuff" class="metabox-holder full-width has-right-sidebar">
 				<div class="inner-sidebar">
-					<div class="postbox">
+					<div class="postbox postbox-publish">
 						<h3 class="hndle"><?php _e( 'Publish', TB_GETTEXT_DOMAIN ); ?> <?php echo stripslashes($slider->post_title); ?></h3>
 						<div class="submitbox">
 							<div id="major-publishing-actions">
@@ -367,8 +367,38 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 							</div>
 						</div><!-- .submitbox (end) -->
 					</div><!-- .post-box (end) -->
+					<div class="postbox postbox-slider-info">
+						<h3 class="hndle"><?php _e('Slider Information', TB_GETTEXT_DOMAIN ); ?></h3>
+						<?php
+						// Current settings
+						$info_settings = array(
+							'post_title' 	=> $slider->post_title,
+							'post_name'		=> $slider->post_name
+						);
+						
+						// Setup attribute options
+						$info_options = array( 
+							array( 
+								'name'		=> __('Slider Name', TB_GETTEXT_DOMAIN ),
+								'id' 		=> 'post_title',
+								'desc'		=> __('This title is just for you. It\'ll never be used outside of your WordPress admin panel.', TB_GETTEXT_DOMAIN),
+								'type' 		=> 'text'
+							),
+							array( 
+								'name' 		=> __('Slider ID', TB_GETTEXT_DOMAIN ),
+								'id' 		=> 'post_name',
+								'desc'		=> __( 'Sliders are assigned based on this ID. So if you change this at any point, make sure to also update any builder elements, pages, or other options in which you\'ve assigned this specific slider.', TB_GETTEXT_DOMAIN ),
+								'type' 		=> 'text'
+							)
+						);
+		
+						// Display form element
+						$form = optionsframework_fields( 'info', $info_options, $info_settings, false );
+						echo $form[0]; 
+						?>
+					</div><!-- .post-box (end) -->
 					<?php if( $options ) : ?>
-						<div class="postbox">
+						<div class="postbox postbox-options">
 							<h3 class="hndle"><?php echo $types[$type]['name'].' '.__( 'Options', TB_GETTEXT_DOMAIN ); ?></h3>
 							<?php 
 							// Slider Options

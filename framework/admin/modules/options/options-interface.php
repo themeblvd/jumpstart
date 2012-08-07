@@ -401,7 +401,7 @@ function optionsframework_fields( $option_name, $options, $settings, $close = tr
 				$explain_value = $value['desc'];
 			}
 			
-			$allowedtags = themeblvd_allowed_tags( true );
+			$allowedtags = themeblvd_allowed_tags();
 			$output .= '</div><div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
 			$output .= '<div class="clear"></div></div></div>'."\n";
 		}

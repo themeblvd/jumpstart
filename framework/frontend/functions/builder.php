@@ -870,7 +870,7 @@ if( ! function_exists( 'themeblvd_slogan' ) ) {
 		if( $options['button'] ) {
 			$output .= themeblvd_button( stripslashes($options['button_text']), $options['button_url'], $options['button_color'], $options['button_target'], 'large' );	
 		}
-		$output .= '<span class="slogan-text">'.stripslashes( $options['slogan'] ).'</span>';
+		$output .= '<span class="slogan-text">'.stripslashes( do_shortcode( $options['slogan'] ) ).'</span>';
 		$output .= '</div><!-- .slogan (end) -->';
 		return $output;
 	}	
@@ -888,32 +888,46 @@ if( ! function_exists( 'themeblvd_slogan' ) ) {
 
 if( ! function_exists( 'themeblvd_tabs' ) ) {
 	function themeblvd_tabs( $id, $options ) {
-		$output = '<div class="tb-tabs tb-tabs-'.$options['setup']['style'].'">';
+		$nav = array( 'tabs', 'above' ); // Backup for someone updating who doesn't have this saved yet.
+		$navigation = '';
+		$content = '';
+		$output = '';		
+		
 		// Fixed Height
 		$height = '';
 		if( $options['height'] )
 			$height = ' style="height:'.$options['height'].'px"';
+		
+		// Tabs or pills?
+		if( isset( $options['setup']['nav'] ) )
+			$nav = explode( '_', $options['setup']['nav'] );
+		$nav_type = $nav[0];
+		$nav_location = $nav[1];
+		
+		// Container classes
+		$classes = 'tabbable';
+		if( $nav_type == 'tabs' )
+			$classes .= ' tabs-'.$nav_location;
+		$classes .= ' tb-tabs-'.$options['setup']['style'];
+		
 		// Navigation
 		$i = 0;
 		$class = null;
-		$output .= '<div class="tab-nav">';
-		$output .= '<ul>';
+		$navigation .= '<ul class="nav nav-'.$nav_type.'">';
 		foreach( $options['setup']['names'] as $key => $name ) {
-			if( $i == 0 ) 
-				$class = 'active';
-			$output .= '<li class="'.$class.'"><a href="#'.$id.'-'.$key.'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
+			if( $i == 0 ) $class = 'active';
+			$navigation .= '<li class="'.$class.'"><a href="#'.$id.'-'.$key.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
 			$class = null;
 			$i++;
 		}
-		$output .= '</ul>';
-		$output .= '<div class="clear"></div>';
-		$output .= '</div><!-- .tab-nav (end) -->';
+		$navigation .= '</ul>';
+		
 		// Tab content
 		$i = 0;
-		$class = null;
+		$content = '<div class="tab-content">';
 		foreach( $options['setup']['names'] as $key => $name ) {
-			$output .= '<div id="'.$id.'-'.$key.'" class="tab-content">';
-			$output .= '<div class="grid-protection"'.$height.'>';
+			$i == '0' ? $class = ' active' : $class = ''; 
+			$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix"'.$height.'>';
 			switch( $options[$key]['type'] ) {
 				case 'page' :
 					// Get WP internal ID for the page
@@ -928,7 +942,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 					// a single post (i.e. our external page).
 					while ( $the_query->have_posts() ) {
 						$the_query->the_post();
-						$output .= apply_filters( 'themeblvd_the_content', get_the_content() );	
+						$content .= apply_filters( 'themeblvd_the_content', get_the_content() );	
 					}
 					
 					// Reset Post Data
@@ -939,26 +953,32 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 					// been unchecked. This is for legacy purposes, as this feature 
 					// was added in v2.1.0
 					if( isset( $options[$key]['raw_format'] ) && ! $options[$key]['raw_format'] )
-						$output .= do_shortcode( stripslashes( $options[$key]['raw'] ) ); // Shortcodes only
+						$content .= do_shortcode( stripslashes( $options[$key]['raw'] ) ); // Shortcodes only
 					else
-						$output .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
+						$content .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
 					break;
 				case 'widget' :
 					if( isset( $options[$key]['sidebar'] ) && $options[$key]['sidebar'] ) {
-						$output .= '<div class="widget-area">';
+						$content .= '<div class="widget-area">';
 						ob_start();
 						dynamic_sidebar( $options[$key]['sidebar'] );
-						$output .= ob_get_clean();
-						$output .= '</div><!-- .widget-area (end) -->';
+						$content .= ob_get_clean();
+						$content .= '</div><!-- .widget-area (end) -->';
 					}
 					break;
 			}
-			$output .= '<div class="clear"></div>';
-			$output .= '</div><!-- .grid-production (end) -->';
-			$output .= '</div><!-- #'.$id.'-'.$key.' (end) -->';
+			$content .= '</div><!-- #'.$id.'-'.$key.' (end) -->';
 			$i++;
 		}
-		$output .= '</div><!-- .tb-tabs (end) -->';
+		$content .= '</div><!-- .tab-content (end) -->';
+
+		// Construct final output
+		$output = '<div class="'.$classes.'">';
+		if( $nav_location != 'below' ) $output .= $navigation;
+		$output .= $content;
+		if( $nav_location == 'below' ) $output .= $navigation;
+		$output .= '</div><!-- .tabbable (end) -->';
+		
 		return $output;
 	}
 }
@@ -975,13 +995,33 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 if( ! function_exists( 'themeblvd_tweet' ) ) {
 	function themeblvd_tweet( $id, $options ) {
 		
-		// In Framework verstion 2.1.0, this function was changed dramatically. 
+		// In Framework verstion 2.1.0, this function was changed quite a bit. 
 		// It's now setup in a way that is a little cumbersome for only 
 		// displaying one tweet, however this will make it easier to add more 
 		// options to this Tweet element in the future.
 		
 		$tweets = array();
-		$output = null;
+		$iterations = 0;
+		$count = 1; // Being manually set currently
+		$output = '';		
+		isset( $options['meta'] ) ? $meta = $options['meta'] : $meta = 'show';
+		isset( $options['icon'] ) ? $icon = $options['icon'] : $icon = 'twitter';
+		isset( $options['replies'] ) ? $exclude_replies = $options['replies'] : $exclude_replies = 'no';
+		
+		// Convert older icon option for those updating. 
+		switch( $icon ){
+			case 'message' :
+				$icon = 'comment';
+				break;
+			case 'alert' :
+				$icon = 'warning';
+				break;
+		}
+		
+		// Wrapping CSS class
+		$wrap_class = 'tweet-wrapper';
+		if( $icon )
+			$wrap_class .= ' has-icon';
 		
 		// Use WordPress's SimplePie integration to retrieve Tweets
 		$rss = fetch_feed( themeblvd_get_twitter_rss_url( $options['account'] ) );
@@ -990,27 +1030,42 @@ if( ! function_exists( 'themeblvd_tweet' ) ) {
 		if ( ! is_wp_error( $rss ) ) {
 		
 			// Setup items from fetched feed
-			$maxitems = $rss->get_item_quantity(1);
+			$maxitems = $rss->get_item_quantity();
 			$rss_items = $rss->get_items(0, $maxitems);
 			
 			// Build Tweets array for display - (should only be 1 tweet currently)
 			if( $rss_items ) {
 				foreach ( $rss_items as $item ) {
-					$tweets[] = array(
-				    	'link' => $item->get_permalink(),
-				    	'text' => apply_filters( 'themeblvd_tweet_filter', $item->get_title(), $options['account'] ),
-				    	'date' => $item->get_date( get_option('date_format') ) // Not currently being used
-				    );
+					// Only continue if we haven't reached the max number of tweets
+					if( $iterations == $count ) break;
+					// Set text of tweet
+					$text = (string) $item->get_title();
+					$text = str_ireplace( $options['account'].': ', '', $text );
+					// Take "Exclude @ replies" option into account before adding 
+					// tweet and increasing current number of tweets.
+					if( $exclude_replies == 'no' || ( $exclude_replies == 'yes' && $text[0] != "@") ) {
+					    $iterations++;
+					    $tweets[] = array(
+					    	'link' => $item->get_permalink(),
+					    	'text' => apply_filters( 'themeblvd_tweet_filter', $text, $options['account'] ),
+					    	'date' => $item->get_date( get_option('date_format') )
+					    );
+					}
 				}
 			}
 			
 			// Start output of tweets - (should only be 1 tweet currently)
 			if( $tweets ) {	
 				foreach( $tweets as $tweet) {	
-					$output = '<span class="tweet-icon '.$options['icon'].'"></span>';
-					$output .= '<a href="'.$tweet['link'].'" target="_blank">';
-					$output .= $tweet['text'];
-					$output .= '</a>';
+					$output .= '<div class="'.$wrap_class.'">';
+					if( $icon ) 
+						$output .= '<div class="tweet-icon"><i class="icon-'.$icon.'"></i></div>';
+					$output .= '<div class="tweet-content">'.$tweet['text'].'</div>';
+					if( $meta == 'show' ){
+						$output .= '<div class="tweet-meta"><a href="http://twitter.com/'.$options['account'].'" target="_blank">@'.$options['account'].'</a> ';
+						$output .= themeblvd_get_local('via').' Twitter, <a href="'.$tweet['link'].'" target="_blank">'.$tweet['date'].'</a></div>';
+					}
+					$output .= '</div><!-- .tweet-wrapper (end) -->';
 				}
 			}
 			
