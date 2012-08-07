@@ -12,9 +12,4 @@ http://codex.wordpress.org/GPL
 
 http://themeforest.net/legal/licences
 
-<<<<<<< HEAD
-
-testing...
-=======
-balls...
->>>>>>> still learning...
+foo
