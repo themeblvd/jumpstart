@@ -346,16 +346,22 @@ if( ! function_exists( 'themeblvd_get_sidebar_id' ) ) {
 		
 		// Get all the sidebars for this location and create
 		// a single array of just their assignments
-		$custom_sidebars = get_posts( 'post_type=tb_sidebar&numberposts=-1' );
+
+		$args = array(
+			'post_type' => 'tb_sidebar'
+			'numberposts' => -1,
+			'meta_key' => 'location',
+			'meta_value' => $location
+		);
+
+		$custom_sidebars = get_posts( $args );
 		if( $custom_sidebars ){
 	    	foreach( $custom_sidebars as $sidebar ){
-	    		if( $location == get_post_meta( $sidebar->ID, 'location', true ) ){
-	    			$current_assignments = get_post_meta( $sidebar->ID, 'assignments', true );
-	    			if( is_array( $current_assignments ) && ! empty ( $current_assignments ) ){
-		    			foreach( $current_assignments as $key => $value ) {
-		    				$assignments[$key] = $value;
-		    			}
-		    		}
+    			$current_assignments = get_post_meta( $sidebar->ID, 'assignments', true );
+    			if( is_array( $current_assignments ) && ! empty ( $current_assignments ) ){
+	    			foreach( $current_assignments as $key => $value ) {
+	    				$assignments[$key] = $value;
+	    			}
 	    		}
 	    	}
 	    }
