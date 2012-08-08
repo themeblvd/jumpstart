@@ -1009,7 +1009,7 @@ if( ! function_exists( 'themeblvd_tweet' ) ) {
 		isset( $options['replies'] ) ? $exclude_replies = $options['replies'] : $exclude_replies = 'no';
 		
 		// Convert older icon option for those updating. 
-		switch( $icon ){
+		switch( $icon ) {
 			case 'message' :
 				$icon = 'comment';
 				break;
@@ -1061,7 +1061,7 @@ if( ! function_exists( 'themeblvd_tweet' ) ) {
 					if( $icon ) 
 						$output .= '<div class="tweet-icon"><i class="icon-'.$icon.'"></i></div>';
 					$output .= '<div class="tweet-content">'.$tweet['text'].'</div>';
-					if( $meta == 'show' ){
+					if( $meta == 'show' ) {
 						$output .= '<div class="tweet-meta"><a href="http://twitter.com/'.$options['account'].'" target="_blank">@'.$options['account'].'</a> ';
 						$output .= themeblvd_get_local('via').' Twitter, <a href="'.$tweet['link'].'" target="_blank">'.$tweet['date'].'</a></div>';
 					}

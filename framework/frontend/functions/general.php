@@ -127,7 +127,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 			if( themeblvd_supports( 'featured_below', 'grid' ) )
 				$featured_below[] = 'has_grid_featured_below';
 		}
-		if( is_archive() || is_search() ){
+		if( is_archive() || is_search() ) {
 			if( themeblvd_supports( 'featured', 'archive' ) )
 				$featured[] = 'has_archive_featured';
 			if( themeblvd_supports( 'featured_below', 'archive' ) )
@@ -249,7 +249,7 @@ if( ! function_exists( 'themeblvd_featured_builder_classes' ) ) {
 		if( is_array( $elements ) && isset( $elements[$area] ) && ! empty( $elements[$area] ) ) {
 			$classes[] = 'has_builder';
 			foreach( $elements[$area] as $element ) {
-				switch( $element['type'] ){
+				switch( $element['type'] ) {
 					case 'slider' :
 						$classes[] = 'has_slider';
 						break;
@@ -807,7 +807,7 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
-	function themeblvd_homepage_posts_per_page( $query ){
+	function themeblvd_homepage_posts_per_page( $query ) {
 	   
 	    // This is only for the homepage
 		if( is_home() ) {
@@ -818,16 +818,16 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 			$builder = '';
 			$option_name = themeblvd_get_option_name();
 			$theme_options = get_option( $option_name );
-			if( isset( $theme_options['homepage_content'] ) && $theme_options['homepage_content'] == 'custom_layout' ){
-				if( isset( $theme_options['homepage_custom_layout'] ) && $theme_options['homepage_custom_layout'] ){
+			if( isset( $theme_options['homepage_content'] ) && $theme_options['homepage_content'] == 'custom_layout' ) {
+				if( isset( $theme_options['homepage_custom_layout'] ) && $theme_options['homepage_custom_layout'] ) {
 					// Determine custom layout info
 					$builder = $theme_options['homepage_custom_layout'];
 					$layout_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );
 					$elements = get_post_meta( $layout_post_id, 'elements', true );
 					// Loop through elements searching for one with a primary query element
-					foreach( $elements as $area ){
-						foreach( $area as $element ){
-							switch( $element['type'] ){
+					foreach( $elements as $area ) {
+						foreach( $area as $element ) {
+							switch( $element['type'] ) {
 								case 'post_grid_paginated' :
 									if( $element['options']['rows'] && $element['options']['columns'] )
 										$new_posts_per_page = $element['options']['rows'] * $element['options']['columns'];
@@ -884,7 +884,7 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_read_more_link' ) ) {
-	function themeblvd_read_more_link( $read_more ){
+	function themeblvd_read_more_link( $read_more ) {
 		// Add standard "btn" bootstrap class
 		return str_replace( 'class="more-link"', 'class="more-link btn btn-default"', $read_more );
 	}

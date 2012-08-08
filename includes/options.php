@@ -7,7 +7,7 @@
  */
  
 if( ! function_exists( 'jumpstart_customizer' ) ) {
-	function jumpstart_customizer(){
+	function jumpstart_customizer() {
 		
 		// Setup logo options
 		$logo_options = array(
@@ -39,9 +39,9 @@ add_action( 'after_setup_theme', 'jumpstart_customizer' );
  */
 
 if( ! function_exists( 'jumpstart_customizer_init' ) ) {
-	function jumpstart_customizer_init( $wp_customize ){
+	function jumpstart_customizer_init( $wp_customize ) {
 		// Add real-time option edits
-		if ( $wp_customize->is_preview() && ! is_admin() ){
+		if ( $wp_customize->is_preview() && ! is_admin() ) {
 			add_action( 'wp_footer', 'jumpstart_customizer_preview', 21 );
 		}
 	}
@@ -49,12 +49,12 @@ if( ! function_exists( 'jumpstart_customizer_init' ) ) {
 add_action( 'customize_register', 'jumpstart_customizer_init' );
 
 if( ! function_exists( 'jumpstart_customizer_preview' ) ) {
-	function jumpstart_customizer_preview(){
+	function jumpstart_customizer_preview() {
 		// Begin output	
 		?>
 		<script type="text/javascript">
-		window.onload = function(){ // window.onload for silly IE9 bug fix	
-			(function($){
+		window.onload = function() { // window.onload for silly IE9 bug fix	
+			(function($) {
 				
 				// ---------------------------------------------------------
 				// Logo

@@ -121,7 +121,7 @@ if( ! function_exists( 'sidebar_blvd_ajax_save_sidebar' ) ) {
 		update_post_meta( $post_id, 'assignments', $assignments );
 		
 		// Widget Area Information
-		if( isset( $config['options']['post_title'] ) && isset( $config['options']['post_name'] ) ){
+		if( isset( $config['options']['post_title'] ) && isset( $config['options']['post_name'] ) ) {
 			
 			// Start post data to be updated with the ID
 			$post_atts = array(

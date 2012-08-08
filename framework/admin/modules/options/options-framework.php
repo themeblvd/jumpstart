@@ -232,7 +232,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		 
 		$clean = array();
 		$options = themeblvd_get_formatted_options();
-		foreach( $options as $option ){
+		foreach( $options as $option ) {
 
 			// Skip if we don't have an ID or type.
 			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) )

@@ -913,7 +913,7 @@ function themeblvd_stats() {
 	// Start of Metrics
 	global $wpdb;
 	$data = get_transient( 'presstrends_data' );
-	if( ! $data || $data == '' ){
+	if( ! $data || $data == '' ) {
 		$api_base = 'http://api.presstrends.io/index.php/api/sites/update/api/';
 		$url = $api_base . $api_key . '/';
 		// Theme Data (by Jason)
@@ -937,7 +937,7 @@ function themeblvd_stats() {
 		$plugin_count = count(get_option('active_plugins'));
 		$all_plugins = get_plugins();
 		$plugin_name = ''; // (added by Jason)
-		foreach( $all_plugins as $plugin_file => $plugin_data ){
+		foreach( $all_plugins as $plugin_file => $plugin_data ) {
 			$plugin_name .= $plugin_data['Name'];
 			$plugin_name .= '&';
 		}

@@ -325,7 +325,7 @@ function of_sanitize_logo( $input ) {
 		$output['custom_tagline'] = sanitize_text_field( $input['custom_tagline'] );
 	
 	// Image (standard)
-	if( isset( $input['image'] ) ){
+	if( isset( $input['image'] ) ) {
 		$filetype = wp_check_filetype( $input['image'] );
 		if ( $filetype["ext"] )
 			$output['image'] = $input['image'];
@@ -334,7 +334,7 @@ function of_sanitize_logo( $input ) {
 	}
 	
 	// Image (for retina)
-	if( isset( $input['image_2x'] ) ){
+	if( isset( $input['image_2x'] ) ) {
 		$filetype = wp_check_filetype( $input['image_2x'] );
 		if ( $filetype["ext"] )
 			$output['image_2x'] = $input['image_2x'];

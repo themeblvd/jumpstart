@@ -737,7 +737,7 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 					$exists = true;
 		
 		// Only start buld if there's a class to build
-		if( $exists ){
+		if( $exists ) {
 			$class = 'hide_on_';
 			if( $devices['hide_on_standard'] ) {
 				// Standard Devices

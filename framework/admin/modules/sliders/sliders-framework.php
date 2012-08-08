@@ -23,13 +23,13 @@ add_action( 'init', 'slider_blvd_rolescheck' );
  */
 
 if( ! function_exists( 'slider_blvd_init' ) ) {
-	function slider_blvd_init(){
+	function slider_blvd_init() {
 	
 		// Include the required files
 		require_once dirname( __FILE__ ) . '/sliders-default.php';
 		require_once dirname( __FILE__ ) . '/sliders-interface.php';
 		require_once dirname( __FILE__ ) . '/sliders-ajax.php';
-			
+
 	}
 }
 

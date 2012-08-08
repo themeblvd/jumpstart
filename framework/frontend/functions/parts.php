@@ -79,7 +79,7 @@ if( ! function_exists( 'themeblvd_button' ) ) {
 		
 		// Target
 		$final_target = '';
-		if( $target ){
+		if( $target ) {
 			if( $target == 'lightbox' )
 				$final_target = ' rel="themeblvd_lightbox"';
 			else

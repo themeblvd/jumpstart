@@ -210,7 +210,7 @@ if( ! function_exists( 'slider_blvd_ajax_save_slider' ) ) {
 			
 			// Sanitize options
 			$clean = array();
-			foreach( $slider['options'] as $option ){
+			foreach( $slider['options'] as $option ) {
 				
 				if ( ! isset( $option['id'] ) )
 					continue;
@@ -229,7 +229,7 @@ if( ! function_exists( 'slider_blvd_ajax_save_slider' ) ) {
 				}
 	
 				// Set each item in the multicheck to false if it wasn't sent in the $_POST
-				if ( 'multicheck' == $option['type'] ){
+				if ( 'multicheck' == $option['type'] ) {
 					if( isset( $data['options'][$option_id] ) ) {
 						foreach ( $option['options'] as $key => $value ) {
 							if( isset($value) )
@@ -252,7 +252,7 @@ if( ! function_exists( 'slider_blvd_ajax_save_slider' ) ) {
 		update_post_meta( $slider_id, 'settings', $settings );
 		
 		// Slider Information
-		if( isset( $data['info'] ) ){
+		if( isset( $data['info'] ) ) {
 			
 			// Start post data to be updated with the ID
 			$post_atts = array(

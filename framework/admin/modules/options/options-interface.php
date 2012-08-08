@@ -99,7 +99,7 @@ function optionsframework_fields( $option_name, $options, $settings, $close = tr
 				if ( isset($settings[($value['group'])][($value['id'])]) ) {
 					$val = $settings[($value['group'])][($value['id'])];
 					// Striping slashes of non-array options
-					if (!is_array($val)) {
+					if ( ! is_array( $val ) ) {
 						$val = stripslashes($val);
 					}
 				}
@@ -108,7 +108,7 @@ function optionsframework_fields( $option_name, $options, $settings, $close = tr
 				if ( isset($settings[($value['id'])]) ) {
 					$val = $settings[($value['id'])];
 					// Striping slashes of non-array options
-					if (!is_array($val)) {
+					if ( ! is_array( $val ) ) {
 						$val = stripslashes($val);
 					}
 				}
@@ -127,9 +127,9 @@ function optionsframework_fields( $option_name, $options, $settings, $close = tr
 			$cols = '8';
 			$ta_value = '';
 			
-			if(isset($value['options'])){
+			if(isset($value['options'])) {
 				$ta_options = $value['options'];
-				if(isset($ta_options['cols'])){
+				if(isset($ta_options['cols'])) {
 					$cols = $ta_options['cols'];
 				} else { $cols = '8'; }
 			}
@@ -381,7 +381,7 @@ function optionsframework_fields( $option_name, $options, $settings, $close = tr
 		
 		// Heading for Navigation
 		case "heading":
-			if($counter >= 2){
+			if($counter >= 2) {
 			   $output .= '</div>'."\n";
 			}
 			$jquery_click_hook = preg_replace('/\W/', '', strtolower($value['name']) );

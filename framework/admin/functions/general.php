@@ -61,7 +61,7 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_theme_activation' ) ) {
-	function themeblvd_theme_activation(){
+	function themeblvd_theme_activation() {
 		global $pagenow;
 		if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) )
 			header( 'Location: '.admin_url( 'themes.php?page=options-framework' ) );

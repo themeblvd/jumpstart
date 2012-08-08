@@ -195,8 +195,8 @@ if( ! function_exists( 'themeblvd_shortcode_icon_list' ) ) {
 	    // For those using old "style" method, this will 
 	    // match the old style choices to a fontawesome icon 
 	    // and add in a relevant color.
-	    if( $style ){
-		    switch( $style ){
+	    if( $style ) {
+		    switch( $style ) {
 			    case 'check' :
 			    	$icon = 'ok-sign';
 			    	$color = '#59f059';
@@ -451,7 +451,7 @@ if( ! function_exists( 'themeblvd_shortcode_popup' ) ) {
 	    
 	    // Header
 	    $header_html = '';
-	    if( $header ){
+	    if( $header ) {
 	    	$header_html .= '<div class="modal-header">';
 	    	$header_html .= '<button type="button" class="close" data-dismiss="modal">×</button>';
 	    	$header_html .= '<h3>'.$header.'</h3>';

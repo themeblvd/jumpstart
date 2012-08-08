@@ -67,7 +67,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 		foreach( $posts as $post ) {
 			$output .= '<tr id="row-'.$post->ID.'">';
 			$output .= '<th scope="row" class="check-column"><input type="checkbox" name="posts[]" value="'.$post->ID.'"></th>';
-			foreach( $columns as $column ){
+			foreach( $columns as $column ) {
 				switch( $column['type'] ) {
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';

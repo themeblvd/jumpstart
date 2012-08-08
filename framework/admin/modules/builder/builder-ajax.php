@@ -70,7 +70,7 @@ if( ! function_exists( 'builder_blvd_ajax_add_layout' ) ) {
  */
 
 if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
-	function builder_blvd_ajax_save_layout () {
+	function builder_blvd_ajax_save_layout() {
 		
 		// Make sure Satan isn't lurking
 		check_ajax_referer( 'optionsframework_save_builder', 'security' );
@@ -105,7 +105,7 @@ if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
 					
 					// Sanitize element's options
 					$clean = array();
-					foreach( $default_element_options[$element['type']]['options'] as $option ){
+					foreach( $default_element_options[$element['type']]['options'] as $option ) {
 						
 						if ( ! isset( $option['id'] ) )
 							continue;
@@ -124,7 +124,7 @@ if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
 						}
 			
 						// Set each item in the multicheck to false if it wasn't sent in the $_POST
-						if ( 'multicheck' == $option['type'] ){
+						if ( 'multicheck' == $option['type'] ) {
 							if( ! isset( $element['options'][$option_id] ) ) {
 								$element['options'][$option_id] = array();
 							}
@@ -153,7 +153,7 @@ if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
 		update_post_meta( $layout_id, 'settings', $options );
 		
 		// Layout Information
-		if( isset( $data['info'] ) ){
+		if( isset( $data['info'] ) ) {
 			
 			// Start post data to be updated with the ID
 			$post_atts = array(
