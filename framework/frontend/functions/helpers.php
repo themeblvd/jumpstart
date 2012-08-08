@@ -778,7 +778,7 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 
 /**
  * Display <title>
- * This added to wp_title() as a filter.
+ * This is added to wp_title filter.
  *
  * @since 2.2.0
  */
