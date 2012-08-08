@@ -11,26 +11,26 @@ if( ! function_exists( 'slider_blvd_manage' ) ) {
 		// Setup columns for management table
 		$columns = array(
 			array(
-				'name' 		=> __( 'Slider Title', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Slider Title', 'themeblvd' ),
 				'type' 		=> 'title',
 			),
 			array(
-				'name' 		=> __( 'Slider ID', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Slider ID', 'themeblvd' ),
 				'type' 		=> 'slug',
 			),
 			/* Hiding the true post ID from user to avoid confusion.
 			array(
-				'name' 		=> __( 'Slider ID', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Slider ID', 'themeblvd' ),
 				'type' 		=> 'id',
 			),
 			*/
 			array(
-				'name' 		=> __( 'Slider Type', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Slider Type', 'themeblvd' ),
 				'type' 		=> 'meta',
 				'config' 	=> 'type' // Meta key to use to get value
 			),
 			array(
-				'name' 		=> __( 'Shortcode Usage', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Shortcode Usage', 'themeblvd' ),
 				'type' 		=> 'shortcode',
 				'config' 	=> 'slider' // Shortcode key
 			),
@@ -64,14 +64,14 @@ if( ! function_exists( 'slider_blvd_add' ) ) {
 		// Setup options array to display form
 		$options = array(
 			array( 
-				'name' 		=> __( 'Slider Name', TB_GETTEXT_DOMAIN ),
-				'desc' 		=> __( 'Enter a user-friendly name for your slider.<br>Example: My Slider', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Slider Name', 'themeblvd' ),
+				'desc' 		=> __( 'Enter a user-friendly name for your slider.<br>Example: My Slider', 'themeblvd' ),
 				'id' 		=> 'slider_name',
 				'type' 		=> 'text'
 			),
 			array( 
-				'name' 		=> __( 'Slider Type', TB_GETTEXT_DOMAIN ),
-				'desc' 		=> __( 'Select which type of slider among the theme\'s currently supported slider types.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Slider Type', 'themeblvd' ),
+				'desc' 		=> __( 'Select which type of slider among the theme\'s currently supported slider types.', 'themeblvd' ),
 				'id' 		=> 'slider_type',
 				'type' 		=> 'select',
 				'options' 	=> $slider_types
@@ -84,13 +84,13 @@ if( ! function_exists( 'slider_blvd_add' ) ) {
 		?>
 		<div class="metabox-holder">
 			<div class="postbox">
-				<h3><?php _e( 'Add New Slider', TB_GETTEXT_DOMAIN ); ?></h3>
+				<h3><?php _e( 'Add New Slider', 'themeblvd' ); ?></h3>
 				<form id="add_new_slider">
 					<div class="inner-group">
 						<?php echo $form[0]; ?>
 					</div><!-- .group (end) -->
 					<div id="optionsframework-submit">
-						<input type="submit" class="button-primary" name="update" value="<?php _e( 'Add New Slider', TB_GETTEXT_DOMAIN ); ?>">
+						<input type="submit" class="button-primary" name="update" value="<?php _e( 'Add New Slider', 'themeblvd' ); ?>">
 						<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" class="ajax-loading" id="ajax-loading">
 			            <div class="clear"></div>
 					</div>
@@ -122,11 +122,11 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 		<div id="<?php echo $slide_id; ?>" class="widget slide-options"<?php if( $visibility == 'hide' ) echo ' style="display:none"'; ?>>					
 			<div class="widget-name">
 				<a href="#" class="widget-name-arrow">Toggle</a>
-				<h3><?php _e( 'Slide', TB_GETTEXT_DOMAIN ); ?> (<?php echo $slider_type; ?>)</h3>
+				<h3><?php _e( 'Slide', 'themeblvd' ); ?> (<?php echo $slider_type; ?>)</h3>
 			</div><!-- .element-name (end) -->
 			<div class="widget-content">
 				<div class="slide-set-type">
-					<strong><?php _e( 'Image Slide', TB_GETTEXT_DOMAIN ); ?></strong>
+					<strong><?php _e( 'Image Slide', 'themeblvd' ); ?></strong>
 					<select name="slides[<?php echo $slide_id; ?>][slide_type]">
 						<?php
 						$slide_type = slider_blvd_slide_value( $slide_options, 'slide_type' );
@@ -149,7 +149,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 											<div class="field section-upload">
 												<?php
 												$current_image = slider_blvd_slide_value( $slide_options, 'image' );
-												echo optionsframework_medialibrary_uploader( 'slides['.$slide_id.']', 'slider', $slide_id.'image', $current_image, null, null, $slider_id, null, __( 'Get Image', TB_GETTEXT_DOMAIN ) );
+												echo optionsframework_medialibrary_uploader( 'slides['.$slide_id.']', 'slider', $slide_id.'image', $current_image, null, null, $slider_id, null, __( 'Get Image', 'themeblvd' ) );
 												?>
 											</div><!-- .field (end) -->
 										</div><!-- .slide-set-image (end) -->
@@ -164,7 +164,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 												$current_video = slider_blvd_slide_value( $slide_options, 'video' );
 												echo '<input type="text" name="slides['.$slide_id.'][video]" value="'.$current_video.'" />';
 												?>
-												<p class="explain"><?php _e( 'Enter in a video URL compatible with <a href="http://codex.wordpress.org/Embeds">WordPress\'s oEmbed</a>.<br><br>Ex: http://youtube.com/watch?v=HPPj6viIBmU<br>Ex: http://vimeo.com/11178250<br>Ex: http://wordpress.tv/2011/08/14/name-of-video', TB_GETTEXT_DOMAIN ); ?>
+												<p class="explain"><?php _e( 'Enter in a video URL compatible with <a href="http://codex.wordpress.org/Embeds">WordPress\'s oEmbed</a>.<br><br>Ex: http://youtube.com/watch?v=HPPj6viIBmU<br>Ex: http://vimeo.com/11178250<br>Ex: http://wordpress.tv/2011/08/14/name-of-video', 'themeblvd' ); ?>
 											</div><!-- .field (end) -->
 										</div><!-- .slide-set-video (end) -->
 										<?php
@@ -176,7 +176,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 						<div class="slide-include-elements">
 							<div class="slide-section">
 								<?php if( $slider_types[$slider_type]['positions'] ) : ?>
-									<h4><?php _e( 'How would you like to display the media?', TB_GETTEXT_DOMAIN ); ?></h4>
+									<h4><?php _e( 'How would you like to display the media?', 'themeblvd' ); ?></h4>
 									<select class="slide-position" name="slides[<?php echo $slide_id; ?>][position]">
 										<?php
 										$position = slider_blvd_slide_value($slide_options, 'position');
@@ -189,7 +189,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 							</div><!-- .slide-section (end) -->
 							<?php if( ! empty( $slider_types[$slider_type]['elements'] ) ) : ?>
 								<div class="slide-section">
-									<h4><?php _e( 'Would you like to include additional elements?', TB_GETTEXT_DOMAIN ); ?></h4>
+									<h4><?php _e( 'Would you like to include additional elements?', 'themeblvd' ); ?></h4>
 									<table class="widefat slide-elements">
 										<tbody>
 										<?php
@@ -201,22 +201,22 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 														?>
 														<tr class="element-image_link slide-element-header">
 															<td class="slide-element-check"><input value="image_link" type="checkbox" name="slides[<?php echo $slide_id; ?>][elements][include][]"<?php echo slider_blvd_slide_value($slide_options, 'include', 'image_link'); ?> /></td>
-															<td class="slide-element-name"><?php _e( 'Image Link', TB_GETTEXT_DOMAIN ); ?></td>
-															<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to apply a link to the image of this slide. You can configure it to open a webpage or a lightbox popup of different media types.', TB_GETTEXT_DOMAIN ); ?>">Help</a></td>
+															<td class="slide-element-name"><?php _e( 'Image Link', 'themeblvd' ); ?></td>
+															<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to apply a link to the image of this slide. You can configure it to open a webpage or a lightbox popup of different media types.', 'themeblvd' ); ?>">Help</a></td>
 														</tr>
 														<tr class="element-image_link slide-element-options">
 															<td colspan="3">
 																<div class="field">
-																	<h5><?php _e( 'Where should the link open?', TB_GETTEXT_DOMAIN ); ?></h5>
+																	<h5><?php _e( 'Where should the link open?', 'themeblvd' ); ?></h5>
 																	<?php $target = slider_blvd_slide_value($slide_options, 'image_link', 'target'); ?>
 																	<select name="slides[<?php echo $slide_id; ?>][elements][image_link][target]">
-																		<option value="_self" <?php selected( $target, '_self' ); ?>><?php _e( 'Same Window', TB_GETTEXT_DOMAIN ); ?></option>
-																		<option value="_blank" <?php selected( $target, '_blank' ); ?>><?php _e( 'New Window', TB_GETTEXT_DOMAIN ); ?></option>
-																		<option value="lightbox" <?php selected( $target, 'lightbox' ); ?>><?php _e( 'Lightbox Popup', TB_GETTEXT_DOMAIN ); ?></option>
+																		<option value="_self" <?php selected( $target, '_self' ); ?>><?php _e( 'Same Window', 'themeblvd' ); ?></option>
+																		<option value="_blank" <?php selected( $target, '_blank' ); ?>><?php _e( 'New Window', 'themeblvd' ); ?></option>
+																		<option value="lightbox" <?php selected( $target, 'lightbox' ); ?>><?php _e( 'Lightbox Popup', 'themeblvd' ); ?></option>
 																	</select>
 																</div><!-- .field (end) -->
 																<div class="field">
-																	<h5><?php _e( 'Where should the link go?', TB_GETTEXT_DOMAIN ); ?></h5>
+																	<h5><?php _e( 'Where should the link go?', 'themeblvd' ); ?></h5>
 																	<input name="slides[<?php echo $slide_id; ?>][elements][image_link][url]" type="text" value="<?php echo slider_blvd_slide_value($slide_options, 'image_link', 'url'); ?>" class="input" />
 																	</div><!-- .class="more-info (end) -->
 																</div><!-- .field (end) -->
@@ -231,13 +231,13 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 													?>
 													<tr class="element-headline slide-element-header">
 														<td class="slide-element-check"><input value="headline" type="checkbox" name="slides[<?php echo $slide_id; ?>][elements][include][]"<?php echo slider_blvd_slide_value($slide_options, 'include', 'headline'); ?> /></td>
-														<td class="slide-element-name"><?php _e( 'Headline', TB_GETTEXT_DOMAIN ) ?></td>
-														<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to insert a simple headline on your slide. The location and style of this headline will vary depending on the design of the current theme.', TB_GETTEXT_DOMAIN ); ?>">Help</a></td>
+														<td class="slide-element-name"><?php _e( 'Headline', 'themeblvd' ) ?></td>
+														<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to insert a simple headline on your slide. The location and style of this headline will vary depending on the design of the current theme.', 'themeblvd' ); ?>">Help</a></td>
 													</tr>
 													<tr class="element-headline slide-element-options">
 														<td colspan="3">
 															<div class="field">
-																<h5><?php _e( 'What should the headline say?', TB_GETTEXT_DOMAIN ); ?></h5>
+																<h5><?php _e( 'What should the headline say?', 'themeblvd' ); ?></h5>
 																<textarea name="slides[<?php echo $slide_id; ?>][elements][headline]"><?php echo slider_blvd_slide_value($slide_options, 'headline'); ?></textarea>
 															</div><!-- .field (end) -->
 														</td>
@@ -251,13 +251,13 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 													?>
 													<tr class="element-description slide-element-header">
 														<td class="slide-element-check"><input value="description" type="checkbox" name="slides[<?php echo $slide_id; ?>][elements][include][]"<?php echo slider_blvd_slide_value($slide_options, 'include', 'description'); ?> /></td>
-														<td class="slide-element-name"><?php _e( 'Description', TB_GETTEXT_DOMAIN ); ?></td>
-														<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to insert a simple description on your slide. The location and style of this description will vary depending on the design of the current theme.', TB_GETTEXT_DOMAIN ); ?>">Help</a></td>
+														<td class="slide-element-name"><?php _e( 'Description', 'themeblvd' ); ?></td>
+														<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to insert a simple description on your slide. The location and style of this description will vary depending on the design of the current theme.', 'themeblvd' ); ?>">Help</a></td>
 													</tr>
 													<tr class="element-description slide-element-options">
 														<td colspan="3">
 															<div class="field">
-																<h5><?php _e( 'What should the description say?', TB_GETTEXT_DOMAIN ); ?></h5>
+																<h5><?php _e( 'What should the description say?', 'themeblvd' ); ?></h5>
 																<textarea name="slides[<?php echo $slide_id; ?>][elements][description]"><?php echo slider_blvd_slide_value($slide_options, 'description'); ?></textarea>
 															</div><!-- .field (end) -->
 														</td>
@@ -271,26 +271,26 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 													?>
 													<tr class="element-button slide-element-header">
 														<td class="slide-element-check"><input value="button" type="checkbox" name="slides[<?php echo $slide_id; ?>][elements][include][]"<?php echo slider_blvd_slide_value($slide_options, 'include', 'button'); ?> /></td>
-														<td class="slide-element-name"><?php _e( 'Button', TB_GETTEXT_DOMAIN ); ?></td>
-														<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to include a button on your slide. You can configure it to open a webpage or a lightbox popup of different media types.', TB_GETTEXT_DOMAIN ); ?>">Help</a></td>
+														<td class="slide-element-name"><?php _e( 'Button', 'themeblvd' ); ?></td>
+														<td class="slide-element-help"><a href="#" class="help-icon tooltip-link" title="<?php _e( 'This will allow you to include a button on your slide. You can configure it to open a webpage or a lightbox popup of different media types.', 'themeblvd' ); ?>">Help</a></td>
 													</tr>
 													<tr class="element-button slide-element-options">
 														<td colspan="3">
 															<div class="field">
-																<h5><?php _e( 'What should the button say?', TB_GETTEXT_DOMAIN ); ?></h5>
+																<h5><?php _e( 'What should the button say?', 'themeblvd' ); ?></h5>
 																<input name="slides[<?php echo $slide_id; ?>][elements][button][text]" type="text" value="<?php echo slider_blvd_slide_value($slide_options, 'button', 'text'); ?>" class="input" />
 															</div><!-- .field (end) -->
 															<div class="field">
-																<h5><?php _e( 'Where should the link open?', TB_GETTEXT_DOMAIN ); ?></h5>
+																<h5><?php _e( 'Where should the link open?', 'themeblvd' ); ?></h5>
 																<?php $target = slider_blvd_slide_value($slide_options, 'button', 'target'); ?>
 																<select name="slides[<?php echo $slide_id; ?>][elements][button][target]">
-																	<option value="_self" <?php selected( $target, '_self' ); ?>><?php _e( 'Same Window', TB_GETTEXT_DOMAIN ); ?></option>
-																	<option value="_blank" <?php selected( $target, '_blank' ); ?>><?php _e( 'New Window', TB_GETTEXT_DOMAIN ); ?></option>
-																	<option value="lightbox" <?php selected( $target, 'lightbox' ); ?>><?php _e( 'Lightbox Popup', TB_GETTEXT_DOMAIN ); ?></option>
+																	<option value="_self" <?php selected( $target, '_self' ); ?>><?php _e( 'Same Window', 'themeblvd' ); ?></option>
+																	<option value="_blank" <?php selected( $target, '_blank' ); ?>><?php _e( 'New Window', 'themeblvd' ); ?></option>
+																	<option value="lightbox" <?php selected( $target, 'lightbox' ); ?>><?php _e( 'Lightbox Popup', 'themeblvd' ); ?></option>
 																</select>
 															</div><!-- .field (end) -->
 															<div class="field">
-																<h5><?php _e( 'Where should the link go?', TB_GETTEXT_DOMAIN ); ?></h5>
+																<h5><?php _e( 'Where should the link go?', 'themeblvd' ); ?></h5>
 																<input name="slides[<?php echo $slide_id; ?>][elements][button][url]" type="text" value="<?php echo slider_blvd_slide_value($slide_options, 'button', 'url'); ?>" class="input" />
 															</div><!-- .field (end) -->
 														</td>
@@ -303,7 +303,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 										?>
 										</tbody>
 									</table>
-									<p class="warning slide-elements-warning"><?php _e( 'You cannot have any elements on top of full-size video. If you\'d like to include elements, align the video to the right or left.', TB_GETTEXT_DOMAIN ); ?></p>
+									<p class="warning slide-elements-warning"><?php _e( 'You cannot have any elements on top of full-size video. If you\'d like to include elements, align the video to the right or left.', 'themeblvd' ); ?></p>
 								</div><!-- .slide-section (end) -->
 							<?php endif; ?>
 						</div><!-- .slide-include-elements (end) -->
@@ -318,7 +318,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 					<?php endif; ?>
 				</div><!-- .pad (end) -->
 				<div class="submitbox widget-footer">
-					<a href="#<?php echo $slide_id; ?>" class="submitdelete delete-me" title="<?php _e( 'Are you sure you want to delete this slide?', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Delete Slide', TB_GETTEXT_DOMAIN ); ?></a>
+					<a href="#<?php echo $slide_id; ?>" class="submitdelete delete-me" title="<?php _e( 'Are you sure you want to delete this slide?', 'themeblvd' ); ?>"><?php _e( 'Delete Slide', 'themeblvd' ); ?></a>
 					<div class="clear"></div>
 				</div><!-- .widget-footer (end) -->
 			</div><!-- .element-content (end) -->
@@ -353,14 +353,14 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 			<div id="poststuff" class="metabox-holder full-width has-right-sidebar">
 				<div class="inner-sidebar">
 					<div class="postbox postbox-publish">
-						<h3 class="hndle"><?php _e( 'Publish', TB_GETTEXT_DOMAIN ); ?> <?php echo stripslashes($slider->post_title); ?></h3>
+						<h3 class="hndle"><?php _e( 'Publish', 'themeblvd' ); ?> <?php echo stripslashes($slider->post_title); ?></h3>
 						<div class="submitbox">
 							<div id="major-publishing-actions">
 								<div id="delete-action">
-									<a class="submitdelete delete_slider" href="#<?php echo $post_id; ?>"><?php _e( 'Delete', TB_GETTEXT_DOMAIN ); ?></a>
+									<a class="submitdelete delete_slider" href="#<?php echo $post_id; ?>"><?php _e( 'Delete', 'themeblvd' ); ?></a>
 								</div>
 								<div id="publishing-action">
-									<input class="button-primary" value="<?php _e( 'Update Slider', TB_GETTEXT_DOMAIN ); ?>" type="submit" />
+									<input class="button-primary" value="<?php _e( 'Update Slider', 'themeblvd' ); ?>" type="submit" />
 									<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" class="ajax-loading" />
 								</div>
 								<div class="clear"></div>
@@ -368,7 +368,7 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 						</div><!-- .submitbox (end) -->
 					</div><!-- .post-box (end) -->
 					<div class="postbox postbox-slider-info">
-						<h3 class="hndle"><?php _e('Slider Information', TB_GETTEXT_DOMAIN ); ?></h3>
+						<h3 class="hndle"><?php _e('Slider Information', 'themeblvd' ); ?></h3>
 						<?php
 						// Current settings
 						$info_settings = array(
@@ -379,15 +379,15 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 						// Setup attribute options
 						$info_options = array( 
 							array( 
-								'name'		=> __('Slider Name', TB_GETTEXT_DOMAIN ),
+								'name'		=> __('Slider Name', 'themeblvd' ),
 								'id' 		=> 'post_title',
-								'desc'		=> __('This title is just for you. It\'ll never be used outside of your WordPress admin panel.', TB_GETTEXT_DOMAIN),
+								'desc'		=> __('This title is just for you. It\'ll never be used outside of your WordPress admin panel.', 'themeblvd'),
 								'type' 		=> 'text'
 							),
 							array( 
-								'name' 		=> __('Slider ID', TB_GETTEXT_DOMAIN ),
+								'name' 		=> __('Slider ID', 'themeblvd' ),
 								'id' 		=> 'post_name',
-								'desc'		=> __( 'Sliders are assigned based on this ID. So if you change this at any point, make sure to also update any builder elements, pages, or other options in which you\'ve assigned this specific slider.', TB_GETTEXT_DOMAIN ),
+								'desc'		=> __( 'Sliders are assigned based on this ID. So if you change this at any point, make sure to also update any builder elements, pages, or other options in which you\'ve assigned this specific slider.', 'themeblvd' ),
 								'type' 		=> 'text'
 							)
 						);
@@ -399,7 +399,7 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 					</div><!-- .post-box (end) -->
 					<?php if( $options ) : ?>
 						<div class="postbox postbox-options">
-							<h3 class="hndle"><?php echo $types[$type]['name'].' '.__( 'Options', TB_GETTEXT_DOMAIN ); ?></h3>
+							<h3 class="hndle"><?php echo $types[$type]['name'].' '.__( 'Options', 'themeblvd' ); ?></h3>
 							<?php 
 							// Slider Options
 							$form = optionsframework_fields( 'options', $options, $settings, false );
@@ -412,8 +412,8 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 					<div id="post-body-content">
 						<div id="titlediv">
 							<div class="ajax-overlay"></div>
-							<h2><?php _e( 'Manage Slides', TB_GETTEXT_DOMAIN ); ?></h2>
-							<a href="#<?php echo $post_id; ?>=><?php echo $type; ?>" id="add_new_slide" class="button-secondary"><?php _e( 'Add New Slide', TB_GETTEXT_DOMAIN ); ?></a>
+							<h2><?php _e( 'Manage Slides', 'themeblvd' ); ?></h2>
+							<a href="#<?php echo $post_id; ?>=><?php echo $type; ?>" id="add_new_slide" class="button-secondary"><?php _e( 'Add New Slide', 'themeblvd' ); ?></a>
 							<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" class="ajax-loading" id="ajax-loading">
 							<div class="clear"></div>
 						</div><!-- #titlediv (end) -->
@@ -424,7 +424,7 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 									slider_blvd_edit_slide( $post_id, $type, $slide_id, $slide );
 								}
 							} else {
-								echo '<p class="warning no-item-yet">'.__( 'You haven\'t added any slides yet. Get started by clicking "Add New Slide" above.', TB_GETTEXT_DOMAIN ).'</p>';
+								echo '<p class="warning no-item-yet">'.__( 'You haven\'t added any slides yet. Get started by clicking "Add New Slide" above.', 'themeblvd' ).'</p>';
 							}
 	    					?>
 						</div><!-- .sortable-slides (end) -->
@@ -433,7 +433,7 @@ if( ! function_exists( 'slider_blvd_edit' ) ) {
 			</div><!-- .metabox-holder (end) -->
 			<?php
 		} else {
-			echo '<p>'.__( 'Error: The slider you\'re trying to edit doesn\'t exist.', TB_GETTEXT_DOMAIN ).'</p>';
+			echo '<p>'.__( 'Error: The slider you\'re trying to edit doesn\'t exist.', 'themeblvd' ).'</p>';
 		}
 	}
 }

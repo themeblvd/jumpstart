@@ -1071,11 +1071,11 @@ if( ! function_exists( 'themeblvd_tweet' ) ) {
 			
 			// Finish up output
 			if( ! $output )
-				$output = __( 'No public Tweets found', TB_GETTEXT_DOMAIN );
+				$output = __( 'No public Tweets found', 'themeblvd' );
 			
 		} else {
 			// Received error with fetch_feed()
-			$output = __( 'Could not fetch Twitter RSS feed.', TB_GETTEXT_DOMAIN );
+			$output = __( 'Could not fetch Twitter RSS feed.', 'themeblvd' );
 		}
 		
 		return $output;

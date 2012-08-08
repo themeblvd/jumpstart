@@ -25,20 +25,20 @@ if( ! function_exists( 'themeblvd_add_slider' ) ) {
 			switch( $type ) {
 				case 'image' :
 					$formatted_slide_types['image'] = array(
-						'name' 			=> __( 'Image Slide', TB_GETTEXT_DOMAIN ),
-						'main_title' 	=> __( 'Setup Image', TB_GETTEXT_DOMAIN )
+						'name' 			=> __( 'Image Slide', 'themeblvd' ),
+						'main_title' 	=> __( 'Setup Image', 'themeblvd' )
 					);
 					break;
 				case 'video' :
 					$formatted_slide_types['video'] = array(
-						'name' 			=> __( 'Video Slide', TB_GETTEXT_DOMAIN ),
-						'main_title' 	=> __( 'Video Link', TB_GETTEXT_DOMAIN )
+						'name' 			=> __( 'Video Slide', 'themeblvd' ),
+						'main_title' 	=> __( 'Video Link', 'themeblvd' )
 					);
 					break;
 				case 'custom' :
 					$formatted_slide_types['custom'] = array(
-						'name' 			=> __( 'Custom Slide', TB_GETTEXT_DOMAIN ),
-						'main_title' 	=> __( 'Setup Custom Content', TB_GETTEXT_DOMAIN )
+						'name' 			=> __( 'Custom Slide', 'themeblvd' ),
+						'main_title' 	=> __( 'Setup Custom Content', 'themeblvd' )
 					);
 					break;
 			}
@@ -50,13 +50,13 @@ if( ! function_exists( 'themeblvd_add_slider' ) ) {
 		foreach( $media_positions as $position ) {
 			switch( $position ) {
 				case 'full' :
-					$formatted_media_positions['full'] = __( 'Full-Size', TB_GETTEXT_DOMAIN );
+					$formatted_media_positions['full'] = __( 'Full-Size', 'themeblvd' );
 					break;
 				case 'align-left' :
-					$formatted_media_positions['align-left'] = __( 'Aligned Left', TB_GETTEXT_DOMAIN );
+					$formatted_media_positions['align-left'] = __( 'Aligned Left', 'themeblvd' );
 					break;
 				case 'align-right' :
-					$formatted_media_positions['align-right'] = __( 'Aligned Right', TB_GETTEXT_DOMAIN );
+					$formatted_media_positions['align-right'] = __( 'Aligned Right', 'themeblvd' );
 					break;
 			}	
 		}

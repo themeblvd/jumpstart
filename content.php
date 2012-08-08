@@ -21,6 +21,6 @@ global $show_meta;
 		<?php themeblvd_blog_tags(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
 		<div class="clear"></div>
-		<?php edit_post_link( __( '<p>Edit</p>', TB_GETTEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( '<p>Edit</p>', 'themeblvd' ), '<span class="edit-link">', '</span>' ); ?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -128,7 +128,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 function themeblvd_hijack_page_atts() {
 	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		remove_meta_box( 'pageparentdiv', 'page', 'side' );
-		add_meta_box( 'themeblvd_pageparentdiv', __( 'Page Attributes', TB_GETTEXT_DOMAIN ), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
+		add_meta_box( 'themeblvd_pageparentdiv', __( 'Page Attributes', 'themeblvd' ), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
 	}
 }
 

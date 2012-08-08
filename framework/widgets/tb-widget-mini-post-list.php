@@ -42,11 +42,11 @@ class TB_Widget_Mini_Post_List extends WP_Widget {
 		$query = isset($instance['query']) ? strip_tags($instance['query']): "";
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', TB_GETTEXT_DOMAIN ); ?> 
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'themeblvd' ); ?> 
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('thumb'); ?>"><?php _e( 'Thumbnail Sizes:', TB_GETTEXT_DOMAIN ); ?> </label>
+			<label for="<?php echo $this->get_field_id('thumb'); ?>"><?php _e( 'Thumbnail Sizes:', 'themeblvd' ); ?> </label>
 			<select class="widefat" id="<?php echo $this->get_field_id('thumb'); ?>" name="<?php echo $this->get_field_name('thumb'); ?>">
 				<?php 
 				$list = null;
@@ -61,7 +61,7 @@ class TB_Widget_Mini_Post_List extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('meta'); ?>"><?php _e( 'Post Dates:', TB_GETTEXT_DOMAIN ); ?> </label>
+			<label for="<?php echo $this->get_field_id('meta'); ?>"><?php _e( 'Post Dates:', 'themeblvd' ); ?> </label>
 			<select class="widefat" id="<?php echo $this->get_field_id('meta'); ?>" name="<?php echo $this->get_field_name('meta'); ?>">
 				<?php 
 				$list = null;
@@ -76,11 +76,11 @@ class TB_Widget_Mini_Post_List extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('category'); ?>"><?php _e( 'Category:', TB_GETTEXT_DOMAIN ); ?> </label>
+			<label for="<?php echo $this->get_field_id('category'); ?>"><?php _e( 'Category:', 'themeblvd' ); ?> </label>
 			<select class="widefat" id="<?php echo $this->get_field_id('category'); ?>" name="<?php echo $this->get_field_name('category'); ?>">
 				<?php 
 				$list = null;
-				$answers = array( 'all' => __( 'All Categories', TB_GETTEXT_DOMAIN ) );
+				$answers = array( 'all' => __( 'All Categories', 'themeblvd' ) );
 				$categories = get_categories();
 				foreach( $categories as $current_category ) {
 					$answers[$current_category->slug] = $current_category->name;
@@ -95,16 +95,16 @@ class TB_Widget_Mini_Post_List extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('numberposts'); ?>"><?php _e( 'Number of Posts:', TB_GETTEXT_DOMAIN ); ?> 
+			<label for="<?php echo $this->get_field_id('numberposts'); ?>"><?php _e( 'Number of Posts:', 'themeblvd' ); ?> 
 			<input class="widefat" id="<?php echo $this->get_field_id('numberposts'); ?>" name="<?php echo $this->get_field_name('numberposts'); ?>" type="text" value="<?php echo esc_attr($numberposts); ?>" /></label>
 		</p>		
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('query'); ?>"><strong><?php _e( 'Custom query string (optional)', TB_GETTEXT_DOMAIN ); ?></strong>
+				<label for="<?php echo $this->get_field_id('query'); ?>"><strong><?php _e( 'Custom query string (optional)', 'themeblvd' ); ?></strong>
 				<input class="widefat" id="<?php echo $this->get_field_id('query'); ?>" name="<?php echo $this->get_field_name('query'); ?>" type="text" value="<?php echo esc_attr($query); ?>" /></label>
 			</p>
-			<p><?php _e( 'Here you can enter in a custom query string formatted for WordPress\'s <a href="http://codex.wordpress.org/Template_Tags/get_posts" target="_blank">get_posts</a>.', TB_GETTEXT_DOMAIN ); ?></p>
-			<p><?php _e( 'If you enter anything here, your category selection and number of posts selection above will be ignored.', TB_GETTEXT_DOMAIN ); ?></p>
+			<p><?php _e( 'Here you can enter in a custom query string formatted for WordPress\'s <a href="http://codex.wordpress.org/Template_Tags/get_posts" target="_blank">get_posts</a>.', 'themeblvd' ); ?></p>
+			<p><?php _e( 'If you enter anything here, your category selection and number of posts selection above will be ignored.', 'themeblvd' ); ?></p>
 			<p>
 				Example: "tag=whatever"<br>
 				Example: "tag=whatever&category_name=portfolio"<br>

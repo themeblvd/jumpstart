@@ -267,7 +267,7 @@ function optionsframework_fields( $option_name, $options, $settings, $close = tr
 			// Google Font support (added by ThemeBlvd)
 			if( in_array( 'face', $value['atts'] ) ) {
 				$output .= '<div class="google-font hide">';
-				$output .= '<h5>'.__( 'Enter the name of a font from the <a href="http://www.google.com/webfonts" target="_blank">Google Font Directory</a>.', TB_GETTEXT_DOMAIN ).'</h5>';
+				$output .= '<h5>'.__( 'Enter the name of a font from the <a href="http://www.google.com/webfonts" target="_blank">Google Font Directory</a>.', 'themeblvd' ).'</h5>';
 				$output .= '<input type="text" name="' . esc_attr( $option_name . '[' . $value['id'] . '][google]' ) . '" value="' . esc_attr( $typography_stored['google'] ) . '" />';
 				$output .= '<p class="note">Example Font Name: "Hammersmith One"</p>';
 				$output .= '</div>';

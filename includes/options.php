@@ -12,24 +12,24 @@ if( ! function_exists( 'jumpstart_customizer' ) ) {
 		// Setup logo options
 		$logo_options = array(
 			'logo' => array( 
-				'name' 		=> __( 'Logo', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Logo', 'themeblvd' ),
 				'id' 		=> 'logo',
 				'type' 		=> 'logo',
 				'transport'	=> 'postMessage'
 			)
 		);
-		themeblvd_add_customizer_section( 'logo', __( 'Logo', TB_GETTEXT_DOMAIN ), $logo_options, 1 );
+		themeblvd_add_customizer_section( 'logo', __( 'Logo', 'themeblvd' ), $logo_options, 1 );
 		
 		// Setup custom styles option
 		$custom_styles_options = array(
 			'custom_styles' => array( 
-				'name' 		=> __( 'Enter styles to preview their results.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Enter styles to preview their results.', 'themeblvd' ),
 				'id' 		=> 'custom_styles',
 				'type' 		=> 'textarea',
 				'transport'	=> 'postMessage'
 			)
 		);
-		themeblvd_add_customizer_section( 'custom_css', __( 'Custom CSS Preview', TB_GETTEXT_DOMAIN ), $custom_styles_options, 121 );
+		themeblvd_add_customizer_section( 'custom_css', __( 'Custom CSS Preview', 'themeblvd' ), $custom_styles_options, 121 );
 	}
 }
 add_action( 'after_setup_theme', 'jumpstart_customizer' );

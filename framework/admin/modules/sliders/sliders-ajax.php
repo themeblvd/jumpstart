@@ -284,7 +284,7 @@ if( ! function_exists( 'slider_blvd_ajax_save_slider' ) ) {
 		
 		// Display update message
 		echo '<div id="setting-error-save_options" class="updated fade settings-error ajax-update">';
-		echo '	<p><strong>'.__( 'Slider saved.', TB_GETTEXT_DOMAIN ).'</strong></p>';
+		echo '	<p><strong>'.__( 'Slider saved.', 'themeblvd' ).'</strong></p>';
 		echo '</div>';
 		die();
 	}
@@ -351,7 +351,7 @@ if( ! function_exists( 'slider_blvd_ajax_delete_slider' ) ) {
 			
 			// Display update message
 			echo '<div id="setting-error-delete_slider" class="updated fade settings-error ajax-update">';
-			echo '	<p><strong>'.__( 'Slider(s) deleted.', TB_GETTEXT_DOMAIN ).'</strong></p>';
+			echo '	<p><strong>'.__( 'Slider(s) deleted.', 'themeblvd' ).'</strong></p>';
 			echo '</div>';
 		
 		}

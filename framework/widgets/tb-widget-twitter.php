@@ -36,15 +36,15 @@ class TB_Widget_Twitter extends WP_Widget {
 		$time = isset($instance['time']) ? strip_tags($instance['time']): "";
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', TB_GETTEXT_DOMAIN ); ?> 
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'themeblvd' ); ?> 
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('username'); ?>"><?php _e( 'Enter your twitter username:', TB_GETTEXT_DOMAIN ); ?> 
+			<label for="<?php echo $this->get_field_id('username'); ?>"><?php _e( 'Enter your twitter username:', 'themeblvd' ); ?> 
 			<input class="widefat" id="<?php echo $this->get_field_id('username'); ?>" name="<?php echo $this->get_field_name('username'); ?>" type="text" value="<?php echo esc_attr($username); ?>" /></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'How many entries do you want to display:', TB_GETTEXT_DOMAIN ); ?></label>
+			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'How many entries do you want to display:', 'themeblvd' ); ?></label>
 			<select class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>">
 				<?php 
 				$list = null;
@@ -58,7 +58,7 @@ class TB_Widget_Twitter extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('exclude_replies'); ?>"><?php _e( 'Exclude @replies:', TB_GETTEXT_DOMAIN ); ?> </label>
+			<label for="<?php echo $this->get_field_id('exclude_replies'); ?>"><?php _e( 'Exclude @replies:', 'themeblvd' ); ?> </label>
 			<select class="widefat" id="<?php echo $this->get_field_id('exclude_replies'); ?>" name="<?php echo $this->get_field_name('exclude_replies'); ?>">
 				<?php 
 				$list = null;
@@ -73,7 +73,7 @@ class TB_Widget_Twitter extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('time'); ?>"><?php _e( 'Display time of tweet', TB_GETTEXT_DOMAIN ); ?> </label>
+			<label for="<?php echo $this->get_field_id('time'); ?>"><?php _e( 'Display time of tweet', 'themeblvd' ); ?> </label>
 			<select class="widefat" id="<?php echo $this->get_field_id('time'); ?>" name="<?php echo $this->get_field_name('time'); ?>">
 				<?php 
 				$list = null;

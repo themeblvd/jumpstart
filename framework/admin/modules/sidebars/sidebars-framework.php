@@ -42,7 +42,7 @@ if( ! function_exists( 'sidebar_blvd_init' ) ) {
 if ( ! function_exists( 'sidebar_blvd_add_page' ) ) {
 	function sidebar_blvd_add_page() {
 		
-		$title = __( 'Widget Areas', TB_GETTEXT_DOMAIN );
+		$title = __( 'Widget Areas', 'themeblvd' );
 		$bb_page = add_theme_page( $title, $title, themeblvd_admin_module_cap( 'sidebars' ), 'sidebar_blvd', 'sidebar_blvd_page' );
 		
 		// Adds actions to hook in the required css and javascript
@@ -132,7 +132,7 @@ if ( ! function_exists( 'sidebar_blvd_widgets_admin_page' ) ) {
 		// we'd have to enqueue an entire stylesheet just for the widgets 
 		// page of the admin panel.
 		echo '<div style="width:300px;float:right;position:relative;z-index:1000"><p class="description" style="padding-left:5px">';
-		_e( 'In the <a href="themes.php?page=sidebar_blvd">Widget Area Manager</a>, you can create and manage widget areas for specific pages of your website to override the default locations you see below.', TB_GETTEXT_DOMAIN);
+		_e( 'In the <a href="themes.php?page=sidebar_blvd">Widget Area Manager</a>, you can create and manage widget areas for specific pages of your website to override the default locations you see below.', 'themeblvd');
 		echo '</p></div>';
 	}
 } 
@@ -153,9 +153,9 @@ if ( ! function_exists( 'sidebar_blvd_page_header' ) ) {
 			    </div>
 			    <?php screen_icon( 'themes' ); ?>
 			    <h2 class="nav-tab-wrapper">
-			        <a href="#manage_sidebars" id="manage_sidebars-tab" class="nav-tab" title="<?php _e( 'Custom Widget Areas', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Custom Widget Areas', TB_GETTEXT_DOMAIN ); ?></a>
-			        <a href="#add_sidebar" id="add_sidebar-tab" class="nav-tab" title="<?php _e( 'Add New', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Add New', TB_GETTEXT_DOMAIN ); ?></a>
-			        <a href="#edit_sidebar" id="edit_sidebar-tab" class="nav-tab nav-edit-sidebar" title="<?php _e( 'Edit', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Edit', TB_GETTEXT_DOMAIN ); ?></a>
+			        <a href="#manage_sidebars" id="manage_sidebars-tab" class="nav-tab" title="<?php _e( 'Custom Widget Areas', 'themeblvd' ); ?>"><?php _e( 'Custom Widget Areas', 'themeblvd' ); ?></a>
+			        <a href="#add_sidebar" id="add_sidebar-tab" class="nav-tab" title="<?php _e( 'Add New', 'themeblvd' ); ?>"><?php _e( 'Add New', 'themeblvd' ); ?></a>
+			        <a href="#edit_sidebar" id="edit_sidebar-tab" class="nav-tab nav-edit-sidebar" title="<?php _e( 'Edit', 'themeblvd' ); ?>"><?php _e( 'Edit', 'themeblvd' ); ?></a>
 			    </h2>
 	    <?php
 	}	

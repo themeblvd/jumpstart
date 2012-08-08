@@ -51,7 +51,7 @@ if( ! function_exists( 'optionsframework_init' ) ) {
 if ( ! function_exists( 'optionsframework_add_page' ) ) {
 	function optionsframework_add_page() {
 	
-		$title = __( 'Theme Options', TB_GETTEXT_DOMAIN );
+		$title = __( 'Theme Options', 'themeblvd' );
 		$options_page = add_theme_page( $title, $title, themeblvd_admin_module_cap( 'options' ), 'options-framework', 'optionsframework_page' );
 		
 		// Adds actions to hook in the required css and javascript
@@ -131,9 +131,9 @@ if ( ! function_exists( 'optionsframework_page' ) ) {
 						<?php settings_fields( $option_name ); ?>
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit">
-							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', TB_GETTEXT_DOMAIN ); ?>" />
-							<input type="submit" class="reset-button button-secondary" value="<?php esc_attr_e( 'Restore Defaults', TB_GETTEXT_DOMAIN ); ?>" />
-							<input type="submit" class="clear-button button-secondary" value="<?php esc_attr_e( 'Clear Options', TB_GETTEXT_DOMAIN ); ?>" />
+							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
+							<input type="submit" class="reset-button button-secondary" value="<?php esc_attr_e( 'Restore Defaults', 'themeblvd' ); ?>" />
+							<input type="submit" class="clear-button button-secondary" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
 				           	<div class="clear"></div>
 						</div>
 					</form>
@@ -172,7 +172,7 @@ if ( ! function_exists( 'optionsframework_footer_text' ) ) {
 		$changelog = null;
 		if ( defined( 'TB_THEME_ID' ) ) {
 			$changelog .= ' ( <a href="'.apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID.'&TB_iframe=1', TB_THEME_ID ).'" class="thickbox tb-update-log" onclick="return false;">';
-			$changelog .= __( 'Changelog', TB_GETTEXT_DOMAIN );
+			$changelog .= __( 'Changelog', 'themeblvd' );
 			$changelog .= '</a> )';
 		}
 		// Output
@@ -204,7 +204,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		// file will be added to the option for the active theme.
 		
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $option_name, 'restore_defaults', __( 'Default options restored.', TB_GETTEXT_DOMAIN ), 'error fade' );
+			add_settings_error( $option_name, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
 			return of_get_default_values();
 		}
 		
@@ -214,7 +214,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		// the database.
 		 
 		if ( isset( $_POST['clear'] ) ) {
-			add_settings_error( $option_name, 'restore_defaults', __( 'Options cleared from database.', TB_GETTEXT_DOMAIN ), 'error fade' );
+			add_settings_error( $option_name, 'restore_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
 			return null;
 		}
 		 
@@ -264,7 +264,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		}
 		
 		// Add update message for page re-fresh
-		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', TB_GETTEXT_DOMAIN ), 'updated fade' );
+		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
 		
 		// Return sanitized options
 		return $clean;

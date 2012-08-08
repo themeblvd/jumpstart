@@ -15,7 +15,7 @@ function setup_themeblvd_page_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_page_options',						// make it unique	
-			'title' 	=> __( 'Page Options', TB_GETTEXT_DOMAIN ),	// title to show for entire meta box
+			'title' 	=> __( 'Page Options', 'themeblvd' ),	// title to show for entire meta box
 			'page'		=> array( 'page' ),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'high'									// high, core, default, or low
@@ -23,23 +23,23 @@ function setup_themeblvd_page_meta() {
 		'options' => array(
 			array(
 				'id'		=> '_tb_title',
-				'name' 		=> __( 'Page Title', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'This option will be ignored if you\'re using this page with a custom layout built with the <a href="admin.php?page=builder_blvd">Layout Builder</a>.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Page Title', 'themeblvd' ),
+				'desc'		=> __( 'This option will be ignored if you\'re using this page with a custom layout built with the <a href="admin.php?page=builder_blvd">Layout Builder</a>.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'show' => __( 'Show page\'s title.', TB_GETTEXT_DOMAIN ),
-					'hide' => __( 'Hide page\'s title.', TB_GETTEXT_DOMAIN )
+					'show' => __( 'Show page\'s title.', 'themeblvd' ),
+					'hide' => __( 'Hide page\'s title.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> '_tb_breadcrumbs',
-				'name' 		=> __( 'Breadcrumbs', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
+				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default' => __( 'Use default setting.', TB_GETTEXT_DOMAIN ),
-					'show' => __( 'Yes, show breadcrumbs.', TB_GETTEXT_DOMAIN ),
-					'hide' => __( 'No, hide breadcrumbs.', TB_GETTEXT_DOMAIN )
+					'default' => __( 'Use default setting.', 'themeblvd' ),
+					'show' => __( 'Yes, show breadcrumbs.', 'themeblvd' ),
+					'hide' => __( 'No, hide breadcrumbs.', 'themeblvd' )
 				)
 			)
 		)
@@ -116,7 +116,7 @@ function setup_themeblvd_post_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_post_options',						// make it unique	
-			'title' 	=> __( 'Post Options', TB_GETTEXT_DOMAIN ),	// title to show for entire meta box
+			'title' 	=> __( 'Post Options', 'themeblvd' ),	// title to show for entire meta box
 			'page'		=> array( 'post' ),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'high'									// high, core, default, or low
@@ -124,105 +124,105 @@ function setup_themeblvd_post_meta() {
 		'options' => array(
 			array(
 				'id' 		=> '_tb_meta',
-				'name' 		=> __( 'Meta Information', TB_GETTEXT_DOMAIN ), /* Required by Framework */
-				'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Meta Information', 'themeblvd' ), /* Required by Framework */
+				'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting.', TB_GETTEXT_DOMAIN ),
-					'show'		=> __( 'Show meta info.', TB_GETTEXT_DOMAIN ),
-					'hide' 		=> __( 'Hide meta info.', TB_GETTEXT_DOMAIN )
+					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
+					'show'		=> __( 'Show meta info.', 'themeblvd' ),
+					'hide' 		=> __( 'Hide meta info.', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> '_tb_comments',
-				'name' 		=> __( 'Comments', TB_GETTEXT_DOMAIN ), /* Required by Framework */
-				'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Comments', 'themeblvd' ), /* Required by Framework */
+				'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting.', TB_GETTEXT_DOMAIN ),
-					'show'		=> __( 'Show comments.', TB_GETTEXT_DOMAIN ),
-					'hide' 		=> __( 'Hide comments.', TB_GETTEXT_DOMAIN )
+					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
+					'show'		=> __( 'Show comments.', 'themeblvd' ),
+					'hide' 		=> __( 'Hide comments.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> '_tb_breadcrumbs',
-				'name' 		=> __( 'Breadcrumbs', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this post or not.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
+				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this post or not.', 'themeblvd' ),
 				'type' 		=> 'radio',
 				'options'	=> array(
-					'default' => __( 'Use default setting.', TB_GETTEXT_DOMAIN ),
-					'show' => __( 'Yes, show breadcrumbs.', TB_GETTEXT_DOMAIN ),
-					'hide' => __( 'No, hide breadcrumbs.', TB_GETTEXT_DOMAIN )
+					'default' => __( 'Use default setting.', 'themeblvd' ),
+					'show' => __( 'Yes, show breadcrumbs.', 'themeblvd' ),
+					'hide' => __( 'No, hide breadcrumbs.', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> '_tb_thumb',
-				'name' 		=> __( 'Featured Image', TB_GETTEXT_DOMAIN ), /* Required by Framework */
-				'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Featured Image', 'themeblvd' ), /* Required by Framework */
+				'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting.', TB_GETTEXT_DOMAIN ),
-					'small'		=> __( 'Show small thumbnail.', TB_GETTEXT_DOMAIN ),
-					'full' 		=> __( 'Show full-width thumbnail.', TB_GETTEXT_DOMAIN ),
-					'hide' 		=> __( 'Hide featured image.', TB_GETTEXT_DOMAIN )
+					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
+					'small'		=> __( 'Show small thumbnail.', 'themeblvd' ),
+					'full' 		=> __( 'Show full-width thumbnail.', 'themeblvd' ),
+					'hide' 		=> __( 'Hide featured image.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> '_tb_thumb_link',
-				'name' 		=> __( 'Featured Image Link', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Featured Image Link', 'themeblvd' ),
+				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', 'themeblvd' ),
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
 				'class'		=> 'select-tb-thumb-link',
 				'options'	=> array(
-					'inactive'	=> __( 'Featured image is not a link.', TB_GETTEXT_DOMAIN ),
-					'post' 		=> __( 'It links to its post.', TB_GETTEXT_DOMAIN ),
-					'thumbnail' => __( 'It links to its enlarged lightbox version.', TB_GETTEXT_DOMAIN ),
-					'image' 	=> __( 'It links to a custom lightbox image.', TB_GETTEXT_DOMAIN ),
-					'video' 	=> __( 'It links to a lightbox video.', TB_GETTEXT_DOMAIN ),
-					'external' 	=> __( 'It links to a webpage.', TB_GETTEXT_DOMAIN ),
+					'inactive'	=> __( 'Featured image is not a link.', 'themeblvd' ),
+					'post' 		=> __( 'It links to its post.', 'themeblvd' ),
+					'thumbnail' => __( 'It links to its enlarged lightbox version.', 'themeblvd' ),
+					'image' 	=> __( 'It links to a custom lightbox image.', 'themeblvd' ),
+					'video' 	=> __( 'It links to a lightbox video.', 'themeblvd' ),
+					'external' 	=> __( 'It links to a webpage.', 'themeblvd' ),
 				)
 			),
 			array(
 				'id'		=> '_tb_image_link',
-				'name' 		=> __( 'Featured Image - Image Link', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Featured Image - Image Link', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-image',
 				'type' 		=> 'text'
 			),
 			array(
 				'id'		=> '_tb_video_link',
-				'name' 		=> __( 'Featured Image - Video Link', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Enter the full URL to a video page on YouTube or Vimeo. You can also enter a link to a Quicktime video file.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL to a video page on YouTube or Vimeo. You can also enter a link to a Quicktime video file.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-video',
 				'type' 		=> 'text'
 			),
 			array(
 				'id'		=> '_tb_external_link',
-				'name' 		=> __( 'Featured Image - External Link', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Featured Image - External Link', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-external',
 				'type' 		=> 'text'
 			),
 			array(
 				'id'		=> '_tb_external_link_target',
-				'name' 		=> __( 'Featured Image - External Link Target', TB_GETTEXT_DOMAIN ),
-				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Featured Image - External Link Target', 'themeblvd' ),
+				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-external',
 				'type' 		=> 'radio',
 				'std'		=> '_blank',
 				'options'	=> array(
-					'_blank'	=> __( 'Open link in new window.', TB_GETTEXT_DOMAIN ),
-					'_self' 	=> __( 'Open link in same window.', TB_GETTEXT_DOMAIN )
+					'_blank'	=> __( 'Open link in new window.', 'themeblvd' ),
+					'_self' 	=> __( 'Open link in same window.', 'themeblvd' )
 				)
 			),
 			array( 
 				'id' 		=> '_tb_sidebar_layout',
-				'name' 		=> __( 'Sidebar Layout', TB_GETTEXT_DOMAIN ),
-				'desc' 		=> __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Sidebar Layout', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'images',
 				'options' 	=> $sidebar_layouts
@@ -364,11 +364,11 @@ if( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) {
 		
 		$post_type_object = get_post_type_object($post->post_type);
 		if ( $post_type_object->hierarchical ) {
-			$pages = wp_dropdown_pages(array('post_type' => $post->post_type, 'exclude_tree' => $post->ID, 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)', TB_GETTEXT_DOMAIN), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
+			$pages = wp_dropdown_pages(array('post_type' => $post->post_type, 'exclude_tree' => $post->ID, 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)', 'themeblvd'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
 			if ( ! empty($pages) ) {
 ?>
-<p><strong><?php _e('Parent', TB_GETTEXT_DOMAIN) ?></strong></p>
-<label class="screen-reader-text" for="parent_id"><?php _e('Parent', TB_GETTEXT_DOMAIN) ?></label>
+<p><strong><?php _e('Parent', 'themeblvd') ?></strong></p>
+<label class="screen-reader-text" for="parent_id"><?php _e('Parent', 'themeblvd') ?></label>
 <?php echo $pages; ?>
 <?php
 		} // end empty pages check
@@ -376,9 +376,9 @@ if( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) {
 	if ( 'page' == $post->post_type && 0 != count( get_page_templates() ) ) {
 		$template = !empty($post->page_template) ? $post->page_template : false;
 		?>
-<p><strong><?php _e('Template', TB_GETTEXT_DOMAIN) ?></strong></p>
-<label class="screen-reader-text" for="page_template"><?php _e('Page Template', TB_GETTEXT_DOMAIN) ?></label><select name="page_template" id="page_template">
-<option value='default'><?php _e('Default Template', TB_GETTEXT_DOMAIN); ?></option>
+<p><strong><?php _e('Template', 'themeblvd') ?></strong></p>
+<label class="screen-reader-text" for="page_template"><?php _e('Page Template', 'themeblvd') ?></label><select name="page_template" id="page_template">
+<option value='default'><?php _e('Default Template', 'themeblvd'); ?></option>
 <?php page_template_dropdown($template); ?>
 </select>
 <?php
@@ -395,9 +395,9 @@ echo themeblvd_custom_layout_dropdown( $custom_layout );
 /* ThemeBlvd Modifications (end)
 /*-----------------------------------------------------------------------------------*/
 ?>
-<p><strong><?php _e('Order', TB_GETTEXT_DOMAIN) ?></strong></p>
-<p><label class="screen-reader-text" for="menu_order"><?php _e('Order', TB_GETTEXT_DOMAIN) ?></label><input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo esc_attr($post->menu_order) ?>" /></p>
-<p><?php if ( 'page' == $post->post_type ) _e( 'Need help? Use the Help tab in the upper right of your screen.', TB_GETTEXT_DOMAIN ); ?></p>
+<p><strong><?php _e('Order', 'themeblvd') ?></strong></p>
+<p><label class="screen-reader-text" for="menu_order"><?php _e('Order', 'themeblvd') ?></label><input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo esc_attr($post->menu_order) ?>" /></p>
+<p><?php if ( 'page' == $post->post_type ) _e( 'Need help? Use the Help tab in the upper right of your screen.', 'themeblvd' ); ?></p>
 <?php
 	}
 }

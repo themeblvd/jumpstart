@@ -182,7 +182,7 @@ if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
 		
 		// Display update message
 		echo '<div id="setting-error-save_options" class="updated fade settings-error ajax-update">';
-		echo '	<p><strong>'.__( 'Layout saved.', TB_GETTEXT_DOMAIN ).'</strong></p>';
+		echo '	<p><strong>'.__( 'Layout saved.', 'themeblvd' ).'</strong></p>';
 		echo '</div>';
 		die();
 	}
@@ -249,7 +249,7 @@ if( ! function_exists( 'builder_blvd_ajax_delete_layout' ) ) {
 			
 			// Display update message
 			echo '<div id="setting-error-delete_layout" class="updated fade settings-error ajax-update">';
-			echo '	<p><strong>'.__( 'Layout(s) deleted.', TB_GETTEXT_DOMAIN ).'</strong></p>';
+			echo '	<p><strong>'.__( 'Layout(s) deleted.', 'themeblvd' ).'</strong></p>';
 			echo '</div>';
 		
 		}

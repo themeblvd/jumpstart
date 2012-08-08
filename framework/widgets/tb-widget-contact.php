@@ -83,40 +83,40 @@ class TB_Widget_Contact extends WP_Widget {
 		);
 		$icons = apply_filters( 'themeblvd_simple_contact_icons', $icons );
         ?>
-		<p class="description"><?php _e( 'All fields are optional. Only fill in the items you want to show.', TB_GETTEXT_DOMAIN ); ?></p>
+		<p class="description"><?php _e( 'All fields are optional. Only fill in the items you want to show.', 'themeblvd' ); ?></p>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('phone_1'); ?>"><?php _e('Phone #1:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('phone_1'); ?>"><?php _e('Phone #1:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('phone_1'); ?>" name="<?php echo $this->get_field_name('phone_1'); ?>" type="text" value="<?php echo esc_attr($instance['phone_1']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('phone_2'); ?>"><?php _e('Phone #2:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('phone_2'); ?>"><?php _e('Phone #2:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('phone_2'); ?>" name="<?php echo $this->get_field_name('phone_2'); ?>" type="text" value="<?php echo esc_attr($instance['phone_2']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('email_1'); ?>"><?php _e('Email Address #1:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('email_1'); ?>"><?php _e('Email Address #1:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('email_1'); ?>" name="<?php echo $this->get_field_name('email_1'); ?>" type="text" value="<?php echo esc_attr($instance['email_1']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('email_2'); ?>"><?php _e('Email Address #2:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('email_2'); ?>"><?php _e('Email Address #2:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('email_2'); ?>" name="<?php echo $this->get_field_name('email_2'); ?>" type="text" value="<?php echo esc_attr($instance['email_2']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('contact'); ?>"><?php _e('URL to Contact Page:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('contact'); ?>"><?php _e('URL to Contact Page:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('contact'); ?>" name="<?php echo $this->get_field_name('contact'); ?>" type="text" value="<?php echo esc_attr($instance['contact']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('skype'); ?>"><?php _e('Skype Username:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('skype'); ?>"><?php _e('Skype Username:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('skype'); ?>" name="<?php echo $this->get_field_name('skype'); ?>" type="text" value="<?php echo esc_attr($instance['skype']); ?>" />
 		</p>
 		
-		<h4><?php _e( 'Icon Links', TB_GETTEXT_DOMAIN ); ?></h4>
+		<h4><?php _e( 'Icon Links', 'themeblvd' ); ?></h4>
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('link_1_icon'); ?>"><?php _e('Link #1 Icon:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_1_icon'); ?>"><?php _e('Link #1 Icon:', 'themeblvd'); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id('link_1_icon'); ?>" name="<?php echo $this->get_field_name('link_1_icon'); ?>">
 					<?php foreach( $icons as $icon => $name ) : ?>
 						<option value="<?php echo $icon; ?>" <?php selected( $icon, esc_attr($instance['link_1_icon']), true ); ?>'><?php echo $name; ?></option>
@@ -124,13 +124,13 @@ class TB_Widget_Contact extends WP_Widget {
 				</select>
 			</p>
 			<p>	
-				<label for="<?php echo $this->get_field_id('link_1_url'); ?>"><?php _e('Link #1 URL:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_1_url'); ?>"><?php _e('Link #1 URL:', 'themeblvd'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('link_1_url'); ?>" name="<?php echo $this->get_field_name('link_1_url'); ?>" type="text" value="<?php echo esc_attr($instance['link_1_url']); ?>" />
 			</p>
 		</div>
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('link_2_icon'); ?>"><?php _e('Link #2 Icon:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_2_icon'); ?>"><?php _e('Link #2 Icon:', 'themeblvd'); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id('link_2_icon'); ?>" name="<?php echo $this->get_field_name('link_2_icon'); ?>">
 					<?php foreach( $icons as $icon => $name ) : ?>
 						<option value="<?php echo $icon; ?>" <?php selected( $icon, esc_attr($instance['link_2_icon']), true ); ?>'><?php echo $name; ?></option>
@@ -138,13 +138,13 @@ class TB_Widget_Contact extends WP_Widget {
 				</select>
 			</p>
 			<p>	
-				<label for="<?php echo $this->get_field_id('link_2_url'); ?>"><?php _e('Link #2 URL:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_2_url'); ?>"><?php _e('Link #2 URL:', 'themeblvd'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('link_2_url'); ?>" name="<?php echo $this->get_field_name('link_2_url'); ?>" type="text" value="<?php echo esc_attr($instance['link_2_url']); ?>" />
 			</p>
 		</div>
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('link_3_icon'); ?>"><?php _e('Link #3 Icon:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_3_icon'); ?>"><?php _e('Link #3 Icon:', 'themeblvd'); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id('link_3_icon'); ?>" name="<?php echo $this->get_field_name('link_3_icon'); ?>">
 					<?php foreach( $icons as $icon => $name ) : ?>
 						<option value="<?php echo $icon; ?>" <?php selected( $icon, esc_attr($instance['link_3_icon']), true ); ?>'><?php echo $name; ?></option>
@@ -152,13 +152,13 @@ class TB_Widget_Contact extends WP_Widget {
 				</select>
 			</p>
 			<p>	
-				<label for="<?php echo $this->get_field_id('link_3_url'); ?>"><?php _e('Link #3 URL:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_3_url'); ?>"><?php _e('Link #3 URL:', 'themeblvd'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('link_3_url'); ?>" name="<?php echo $this->get_field_name('link_3_url'); ?>" type="text" value="<?php echo esc_attr($instance['link_3_url']); ?>" />
 			</p>
 		</div>
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('link_4_icon'); ?>"><?php _e('Link #4 Icon:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_4_icon'); ?>"><?php _e('Link #4 Icon:', 'themeblvd'); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id('link_4_icon'); ?>" name="<?php echo $this->get_field_name('link_4_icon'); ?>">
 					<?php foreach( $icons as $icon => $name ) : ?>
 						<option value="<?php echo $icon; ?>" <?php selected( $icon, esc_attr($instance['link_4_icon']), true ); ?>'><?php echo $name; ?></option>
@@ -166,13 +166,13 @@ class TB_Widget_Contact extends WP_Widget {
 				</select>
 			</p>
 			<p>	
-				<label for="<?php echo $this->get_field_id('link_4_url'); ?>"><?php _e('Link #4 URL:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_4_url'); ?>"><?php _e('Link #4 URL:', 'themeblvd'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('link_4_url'); ?>" name="<?php echo $this->get_field_name('link_4_url'); ?>" type="text" value="<?php echo esc_attr($instance['link_4_url']); ?>" />
 			</p>
 		</div>
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('link_5_icon'); ?>"><?php _e('Link #5 Icon:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_5_icon'); ?>"><?php _e('Link #5 Icon:', 'themeblvd'); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id('link_5_icon'); ?>" name="<?php echo $this->get_field_name('link_5_icon'); ?>">
 					<?php foreach( $icons as $icon => $name ) : ?>
 						<option value="<?php echo $icon; ?>" <?php selected( $icon, esc_attr($instance['link_5_icon']), true ); ?>'><?php echo $name; ?></option>
@@ -180,13 +180,13 @@ class TB_Widget_Contact extends WP_Widget {
 				</select>
 			</p>
 			<p>	
-				<label for="<?php echo $this->get_field_id('link_5_url'); ?>"><?php _e('Link #5 URL:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_5_url'); ?>"><?php _e('Link #5 URL:', 'themeblvd'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('link_5_url'); ?>" name="<?php echo $this->get_field_name('link_5_url'); ?>" type="text" value="<?php echo esc_attr($instance['link_5_url']); ?>" />
 			</p>
 		</div>
 		<div style="border: 1px solid #cccccc; margin: 0 0 5px 0; padding: 8px;">
 			<p>
-				<label for="<?php echo $this->get_field_id('link_6_icon'); ?>"><?php _e('Link #6 Icon:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_6_icon'); ?>"><?php _e('Link #6 Icon:', 'themeblvd'); ?></label>
 				<select class="widefat" id="<?php echo $this->get_field_id('link_6_icon'); ?>" name="<?php echo $this->get_field_name('link_6_icon'); ?>">
 					<?php foreach( $icons as $icon => $name ) : ?>
 						<option value="<?php echo $icon; ?>" <?php selected( $icon, esc_attr($instance['link_6_icon']), true ); ?>'><?php echo $name; ?></option>
@@ -194,7 +194,7 @@ class TB_Widget_Contact extends WP_Widget {
 				</select>
 			</p>
 			<p>	
-				<label for="<?php echo $this->get_field_id('link_6_url'); ?>"><?php _e('Link #6 URL:', TB_GETTEXT_DOMAIN); ?></label>
+				<label for="<?php echo $this->get_field_id('link_6_url'); ?>"><?php _e('Link #6 URL:', 'themeblvd'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('link_6_url'); ?>" name="<?php echo $this->get_field_name('link_6_url'); ?>" type="text" value="<?php echo esc_attr($instance['link_6_url']); ?>" />
 			</p>
 		</div>

@@ -23,8 +23,8 @@ if( ! function_exists( 'themeblvd_jumpstart_setup' ) ) {
 		// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 		
 		// Localization
-		load_theme_textdomain( TB_GETTEXT_DOMAIN, get_template_directory() . '/lang' );
-		load_theme_textdomain( TB_GETTEXT_DOMAIN_FRONT, get_template_directory() . '/lang' );
+		load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
+		load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
 	}
 }
 add_action( 'after_setup_theme', 'themeblvd_jumpstart_setup' );

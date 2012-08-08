@@ -33,16 +33,16 @@ class TB_Widget_Video extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
         ?>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('video_url'); ?>"><?php _e('Video URL:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('video_url'); ?>"><?php _e('Video URL:', 'themeblvd'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('video_url'); ?>" name="<?php echo $this->get_field_name('video_url'); ?>" type="text" value="<?php echo esc_attr($instance['video_url']); ?>" />
 			<span style="display:block;padding:5px 0" class="description">Enter in a video URL that is compatible with WordPress's built-in oEmbed feature. <a href="http://codex.wordpress.org/Embeds" target="_blank">Learn More</a></span>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', TB_GETTEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', 'themeblvd'); ?></label>
 			<textarea rows="5" class="widefat" id="<?php echo $this->get_field_id('description'); ?>" name="<?php echo $this->get_field_name('description'); ?>" type="text"><?php echo stripslashes($instance['description']); ?></textarea>
 			<span style="display:block;padding:5px 0" class="description">Enter in any content you'd liked displayed after the video.</span>
 		</p>
@@ -68,7 +68,7 @@ class TB_Widget_Video extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 		if( ! $instance['video_url'] ) {
-            _e('You forgot to enter a video URL.', TB_GETTEXT_DOMAIN );
+            _e('You forgot to enter a video URL.', 'themeblvd' );
             echo $after_widget;
             return;
 		}

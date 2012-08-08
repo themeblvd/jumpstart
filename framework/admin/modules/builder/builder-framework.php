@@ -102,9 +102,9 @@ if ( ! function_exists( 'builder_blvd_page_header' ) ) {
 			    </div>
 			    <?php screen_icon( 'themes' ); ?>
 			    <h2 class="nav-tab-wrapper">
-			        <a href="#manage_layouts" id="manage_layouts-tab" class="nav-tab" title="<?php _e( 'Manage Layouts', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Manage Layouts', TB_GETTEXT_DOMAIN ); ?></a>
-			        <a href="#add_layout" id="add_layout-tab" class="nav-tab" title="<?php _e( 'Add New Layout', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Add New Layout', TB_GETTEXT_DOMAIN ); ?></a>
-			        <a href="#edit_layout" id="edit_layout-tab" class="nav-tab nav-edit-builder" title="<?php _e( 'Edit Layout', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Edit Layout', TB_GETTEXT_DOMAIN ); ?></a>
+			        <a href="#manage_layouts" id="manage_layouts-tab" class="nav-tab" title="<?php _e( 'Manage Layouts', 'themeblvd' ); ?>"><?php _e( 'Manage Layouts', 'themeblvd' ); ?></a>
+			        <a href="#add_layout" id="add_layout-tab" class="nav-tab" title="<?php _e( 'Add New Layout', 'themeblvd' ); ?>"><?php _e( 'Add New Layout', 'themeblvd' ); ?></a>
+			        <a href="#edit_layout" id="edit_layout-tab" class="nav-tab nav-edit-builder" title="<?php _e( 'Edit Layout', 'themeblvd' ); ?>"><?php _e( 'Edit Layout', 'themeblvd' ); ?></a>
 			    </h2>
 	    <?php
 	}	

@@ -141,14 +141,14 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							$wp_customize->add_control( $option['id'].'_type', array(
 								'priority'		=> 1,
 								'settings'		=> $option_name.'['.$option['id'].'][type]',
-								'label'   		=> $option['name'].' '.__( 'Type', TB_GETTEXT_DOMAIN ),
+								'label'   		=> $option['name'].' '.__( 'Type', 'themeblvd' ),
 								'section'    	=> $section['id'],
 								'type'       	=> 'select',
 								'choices'    	=> array(
-									'title' 		=> __( 'Site Title', TB_GETTEXT_DOMAIN ),
-									'title_tagline'	=> __( 'Site Title + Tagline', TB_GETTEXT_DOMAIN ),
-									'custom' 		=> __( 'Custom Text', TB_GETTEXT_DOMAIN ),
-									'image' 		=> __( 'Image', TB_GETTEXT_DOMAIN )
+									'title' 		=> __( 'Site Title', 'themeblvd' ),
+									'title_tagline'	=> __( 'Site Title + Tagline', 'themeblvd' ),
+									'custom' 		=> __( 'Custom Text', 'themeblvd' ),
+									'image' 		=> __( 'Image', 'themeblvd' )
 								)
 							) );
 							
@@ -162,7 +162,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							$wp_customize->add_control( $option['id'].'_custom', array(
 								'priority'		=> 2,
 								'settings'		=> $option_name.'['.$option['id'].'][custom]',
-								'label'      	=> __( 'Custom Title', TB_GETTEXT_DOMAIN ),
+								'label'      	=> __( 'Custom Title', 'themeblvd' ),
 								'section'    	=> $section['id']
 							) );
 							
@@ -176,7 +176,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							$wp_customize->add_control( $option['id'].'_custom_tagline', array(
 								'priority'		=> 3,
 								'settings'		=> $option_name.'['.$option['id'].'][custom_tagline]',
-								'label'      	=> __( 'Custom Tagline', TB_GETTEXT_DOMAIN ),
+								'label'      	=> __( 'Custom Tagline', 'themeblvd' ),
 								'section'    	=> $section['id']
 							) );
 							
@@ -190,7 +190,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $option['id'].'_image', array(
 								'priority'		=> 4,
 								'settings'		=> $option_name.'['.$option['id'].'][image]',
-								'label'   => $option['name'].' '.__( 'Image', TB_GETTEXT_DOMAIN ),
+								'label'   => $option['name'].' '.__( 'Image', 'themeblvd' ),
 								'section' => $section['id'],
 							) ) );
 							
@@ -260,7 +260,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 										$wp_customize->add_control( new WP_Customize_ThemeBlvd_Google_Font( $wp_customize, $option['id'].'_'.$attribute.'_google', array(
 											'priority'		=> $font_counter,
 											'settings'		=> $option_name.'['.$option['id'].'][google]',
-											'label'   		=> __( 'Google Font Name', TB_GETTEXT_DOMAIN ),
+											'label'   		=> __( 'Google Font Name', 'themeblvd' ),
 											'section' 		=> $section['id']
 										) ) );
 										$font_counter++;
@@ -397,7 +397,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 					case 'static_front_page' :
 						// Modify section's title
 						$wp_customize->add_section( 'static_front_page', array(
-							'title'          => __( 'Homepage', TB_GETTEXT_DOMAIN ),
+							'title'          => __( 'Homepage', 'themeblvd' ),
 							'priority'       => 120,
 							'description'    => __( 'Your theme supports a static front page.' ),
 						) );
@@ -409,12 +409,12 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 						) );
 						$wp_customize->add_control( 'homepage_content', array(
 							'settings'		=> $option_name.'[homepage_content]',
-							'label'			=> __( 'Homepage Content', TB_GETTEXT_DOMAIN ),
+							'label'			=> __( 'Homepage Content', 'themeblvd' ),
 							'section'		=> 'static_front_page',
 							'type'			=> 'radio',
 							'choices'		=> array(
-								'posts'			=> __( 'WordPress Default', TB_GETTEXT_DOMAIN ),
-								'custom_layout' => __( 'Custom Layout', TB_GETTEXT_DOMAIN )
+								'posts'			=> __( 'WordPress Default', 'themeblvd' ),
+								'custom_layout' => __( 'Custom Layout', 'themeblvd' )
 							)
 						) );
 						// Add custom layout selection
@@ -425,7 +425,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							foreach( $custom_layout_posts as $layout )
 								$custom_layouts[$layout->post_name] = $layout->post_title;
 						} else {
-							$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', TB_GETTEXT_DOMAIN );
+							$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', 'themeblvd' );
 						}				
 						$wp_customize->add_setting( $option_name.'[homepage_custom_layout]', array(
 							'default'    	=> '',
@@ -434,7 +434,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 						) );
 						$wp_customize->add_control( 'homepage_custom_layout', array(
 							'settings'		=> $option_name.'[homepage_custom_layout]',
-							'label'			=> __( 'Homepage Custom Layout', TB_GETTEXT_DOMAIN ),
+							'label'			=> __( 'Homepage Custom Layout', 'themeblvd' ),
 							'section'		=> 'static_front_page',
 							'type'			=> 'select',
 							'choices'		=> $custom_layouts
@@ -489,7 +489,7 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 	
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __('Default', TB_GETTEXT_DOMAIN ) );
+			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
 		
@@ -523,7 +523,7 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 	
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __( 'Default', TB_GETTEXT_DOMAIN ) );
+			$this->statuses = array( '' => __( 'Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
 		
@@ -565,7 +565,7 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 	
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __('Default', TB_GETTEXT_DOMAIN ) );
+			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
 		
@@ -584,8 +584,8 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 			<label class="themeblvd-google-font">
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
-				<p><?php _e( 'Example', TB_GETTEXT_DOMAIN ); ?>: Pontano Sans</p>
-				<p><a href="http://www.google.com/webfonts" target="_blank"><?php _e( 'Browse Google Fonts', TB_GETTEXT_DOMAIN ); ?></a></p>
+				<p><?php _e( 'Example', 'themeblvd' ); ?>: Pontano Sans</p>
+				<p><a href="http://www.google.com/webfonts" target="_blank"><?php _e( 'Browse Google Fonts', 'themeblvd' ); ?></a></p>
 			</label>
 			<?php
 		}
@@ -602,7 +602,7 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 		public $statuses;
 	
 		public function __construct( $manager, $id, $args = array() ) {
-			$this->statuses = array( '' => __('Default', TB_GETTEXT_DOMAIN ) );
+			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
 		

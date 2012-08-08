@@ -73,7 +73,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			foreach( $sliders as $slider )
 				$custom_sliders[$slider->post_name] = $slider->post_title;
 		} else {
-			$custom_sliders['null'] = __( 'You haven\'t created any custom sliders yet.', TB_GETTEXT_DOMAIN );
+			$custom_sliders['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
 		}		
 		
 		// Pull all the categories into an array
@@ -90,7 +90,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			foreach( $custom_layout_posts as $layout )
 				$custom_layouts[$layout->post_name] = $layout->post_title;
 		} else {
-			$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', TB_GETTEXT_DOMAIN );
+			$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', 'themeblvd' );
 		}
 	
 		/*-------------------------------------------------------*/
@@ -100,11 +100,11 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		$layout_options = array(
 			// Section: Header
 			'header' => array(
-				'name' => __( 'Header', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Header', 'themeblvd' ),
 				'options' => array(	
 					'logo' => array( 
-						'name' 		=> __( 'Logo', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Logo', 'themeblvd' ),
+						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.', 'themeblvd' ),
 						'id' 		=> 'logo',
 						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'
@@ -113,22 +113,22 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			),
 			// Section: Main
 			'main' => array(
-				'name' => __( 'Main', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Main', 'themeblvd' ),
 				'options' => array(	
 					'breadcrumbs' => array(	
-						'name' 		=> __( 'Breadcrumbs', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Select whether you\'d like breadcrumbs to show throughout the site or not.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
+						'desc'		=> __( 'Select whether you\'d like breadcrumbs to show throughout the site or not.', 'themeblvd' ),
 						'id'		=> 'breadcrumbs',
 						'std'		=> 'show',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'show' => __( 'Yes, show breadcrumbs.', TB_GETTEXT_DOMAIN ),
-							'hide' => __( 'No, hide breadcrumbs.', TB_GETTEXT_DOMAIN )
+							'show' => __( 'Yes, show breadcrumbs.', 'themeblvd' ),
+							'hide' => __( 'No, hide breadcrumbs.', 'themeblvd' )
 						)
 					),
 					'sidebar_layout' => array( 
-						'name' 		=> __( 'Default Sidebar Layout', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Choose the default sidebar layout for the main content area of your site.<br><br><em>Note: This will be the default sidebar layout throughout your site, but you can be override this setting for any specific page or custom layout.</em>', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Default Sidebar Layout', 'themeblvd' ),
+						'desc' 		=> __( 'Choose the default sidebar layout for the main content area of your site.<br><br><em>Note: This will be the default sidebar layout throughout your site, but you can be override this setting for any specific page or custom layout.</em>', 'themeblvd' ),
 						'id' 		=> 'sidebar_layout',
 						'std' 		=> 'sidebar_right',
 						'type' 		=> 'images',
@@ -138,54 +138,54 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			),
 			// Section: Footer
 			'footer' => array(
-				'name' => __( 'Footer', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Footer', 'themeblvd' ),
 				'options' => array(	
 					'start_footer_cols' => array( 
 						'type'		=> 'subgroup_start',
 						'class'		=> 'columns'
 					),
 					'footer_setup' => array( 
-						'name'		=> __( 'Setup Columns', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Choose the number of columns along with the corresponding width configurations.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Setup Columns', 'themeblvd' ),
+						'desc'		=> __( 'Choose the number of columns along with the corresponding width configurations.', 'themeblvd' ),
 						'id' 		=> 'footer_setup',
 						'type'		=> 'columns',
 						'options'	=> 'standard'
 					),
 					'footer_col_1' => array( 
-						'name'		=> __( 'Footer Column #1', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Configure the content for the first column.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Footer Column #1', 'themeblvd' ),
+						'desc'		=> __( 'Configure the content for the first column.', 'themeblvd' ),
 						'id' 		=> 'footer_col_1',
 						'type'		=> 'content',
 						'class'		=> 'col_1',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_2' => array( 
-						'name'		=> __( 'Footer Column #2', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Configure the content for the second column.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Footer Column #2', 'themeblvd' ),
+						'desc'		=> __( 'Configure the content for the second column.', 'themeblvd' ),
 						'id' 		=> 'footer_col_2',
 						'type'		=> 'content',
 						'class'		=> 'col_2',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_3' => array( 
-						'name'		=> __( 'Footer Column #3', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Configure the content for the third column.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Footer Column #3', 'themeblvd' ),
+						'desc'		=> __( 'Configure the content for the third column.', 'themeblvd' ),
 						'id' 		=> 'footer_col_3',
 						'type'		=> 'content',
 						'class'		=> 'col_3',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_4' => array( 
-						'name'		=> __( 'Footer Column #4', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Configure the content for the fourth column.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Footer Column #4', 'themeblvd' ),
+						'desc'		=> __( 'Configure the content for the fourth column.', 'themeblvd' ),
 						'id' 		=> 'footer_col_4',
 						'type'		=> 'content',
 						'class'		=> 'col_4',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_5' => array( 
-						'name'		=> __( 'Footer Column #5', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Configure the content for the fifth column.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Footer Column #5', 'themeblvd' ),
+						'desc'		=> __( 'Configure the content for the fifth column.', 'themeblvd' ),
 						'id' 		=> 'footer_col_5',
 						'type'		=> 'content',
 						'class'		=> 'col_5',
@@ -195,8 +195,8 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 						'type'		=> 'subgroup_end'
 					),
 					'footer_copyright' => array(
-						'name' 		=> __( 'Footer Copyright Text', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Enter the copyright text you\'d like to show in the footer of your site.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Footer Copyright Text', 'themeblvd' ),
+						'desc' 		=> __( 'Enter the copyright text you\'d like to show in the footer of your site.', 'themeblvd' ),
 						'id' 		=> 'footer_copyright',
 						'std' 		=> '(c) '.date('Y').' '.get_bloginfo('site_title').' - Web Design by <a href="http://www.jasonbobich.com" target="_blank">Jason Bobich</a>',
 						'type' 		=> 'text'
@@ -212,22 +212,22 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		$content_options = array(
 			// Section: Homepage
 			'homepage' => array(
-				'name' => __( 'Homepage', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Homepage', 'themeblvd' ),
 				'options' => array(	
 					'homepage_content' => array( 
-						'name' 		=> __( 'Homepage Content', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Select the content you\'d like to show on your homepage. Note that for this setting to take effect, you must go to Settings > Reading > Frontpage displays, and select "your latest posts."', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Homepage Content', 'themeblvd' ),
+						'desc' 		=> __( 'Select the content you\'d like to show on your homepage. Note that for this setting to take effect, you must go to Settings > Reading > Frontpage displays, and select "your latest posts."', 'themeblvd' ),
 						'id' 		=> 'homepage_content',
 						'std' 		=> 'posts',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'posts'			=> __( 'Posts', TB_GETTEXT_DOMAIN ),
-							'custom_layout' => __( 'Custom Layout', TB_GETTEXT_DOMAIN )
+							'posts'			=> __( 'Posts', 'themeblvd' ),
+							'custom_layout' => __( 'Custom Layout', 'themeblvd' )
 						)
 					),
 					'homepage_custom_layout' => array( 
-						'name' 		=> __( 'Select Custom Layout', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Select from the custom layouts you\'ve built under the <a href="admin.php?page=builder_blvd">Builder</a> section.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Select Custom Layout', 'themeblvd' ),
+						'desc' 		=> __( 'Select from the custom layouts you\'ve built under the <a href="admin.php?page=builder_blvd">Builder</a> section.', 'themeblvd' ),
 						'id' 		=> 'homepage_custom_layout',
 						'std' 		=> '',
 						'type' 		=> 'select',
@@ -237,76 +237,76 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			),
 			// Section: Single Posts
 			'single' => array(
-				'name' => __( 'Single Posts', TB_GETTEXT_DOMAIN ),
-				'desc' => __( 'These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid.', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Single Posts', 'themeblvd' ),
+				'desc' => __( 'These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid.', 'themeblvd' ),
 				'options' => array(	
 					'single_meta' => array( 
-						'name' 		=> __( 'Show meta information at top of posts?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show meta information at top of posts?', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info.', 'themeblvd' ),
 						'id' 		=> 'single_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'show'		=> __( 'Show meta info.', TB_GETTEXT_DOMAIN ),
-							'hide' 		=> __( 'Hide meta info.', TB_GETTEXT_DOMAIN )
+							'show'		=> __( 'Show meta info.', 'themeblvd' ),
+							'hide' 		=> __( 'Hide meta info.', 'themeblvd' )
 						) 
 					),			
 					'single_thumbs' => array( 
-						'name' 		=> __( 'Show featured images at top of posts?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don\'t want them to show on the actual posts themeselves.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show featured images at top of posts?', 'themeblvd' ),
+						'desc' 		=> __( 'Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don\'t want them to show on the actual posts themeselves.', 'themeblvd' ),
 						'id' 		=> 'single_thumbs',
 						'std' 		=> 'small',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'small'		=> __( 'Show small thumbnails.', TB_GETTEXT_DOMAIN ),
-							'full' 		=> __( 'Show full-width thumbnails.', TB_GETTEXT_DOMAIN ),
-							'hide' 		=> __( 'Hide thumbnails.', TB_GETTEXT_DOMAIN )
+							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
+							'full' 		=> __( 'Show full-width thumbnails.', 'themeblvd' ),
+							'hide' 		=> __( 'Hide thumbnails.', 'themeblvd' )
 						)
 					),		
 					'single_comments' => array( 
-						'name' 		=> __( 'Show comments below posts?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show comments below posts?', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post.', 'themeblvd' ),
 						'id' 		=> 'single_comments',
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'show'		=> __( 'Show comments.', TB_GETTEXT_DOMAIN ),
-							'hide' 		=> __( 'Hide comments.', TB_GETTEXT_DOMAIN )
+							'show'		=> __( 'Show comments.', 'themeblvd' ),
+							'hide' 		=> __( 'Hide comments.', 'themeblvd' )
 						)
 					)
 				) // End single options
 			),
 			// Section: Primary Posts Display
 			'blog' => array(
-				'name' => __( 'Primary Posts Display', TB_GETTEXT_DOMAIN ),
-				'desc' => __( 'These settings apply to your primary posts page that you\'ve selected under Settings > Reading and <strong>all</strong> instances of the "Post List" page template. Note that if you want to use the post list page template for multiple pages with different categories on each, you can accomplish this on each specific page with custom fields - <a href="http://vimeo.com/32754998">Learn More</a>.', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Primary Posts Display', 'themeblvd' ),
+				'desc' => __( 'These settings apply to your primary posts page that you\'ve selected under Settings > Reading and <strong>all</strong> instances of the "Post List" page template. Note that if you want to use the post list page template for multiple pages with different categories on each, you can accomplish this on each specific page with custom fields - <a href="http://vimeo.com/32754998">Learn More</a>.', 'themeblvd' ),
 				'options' => array(	
 					'blog_thumbs' => array( 
-						'name' 		=> __( 'Featured Images', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Select the size of the blog\'s post thumbnail or whether you\'d like to hide them all together when posts are listed.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Featured Images', 'themeblvd' ),
+						'desc' 		=> __( 'Select the size of the blog\'s post thumbnail or whether you\'d like to hide them all together when posts are listed.', 'themeblvd' ),
 						'id' 		=> 'blog_thumbs',
 						'std' 		=> 'small',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'small'		=> __( 'Show small thumbnails.', TB_GETTEXT_DOMAIN ),
-							'full' 		=> __( 'Show full-width thumbnails.', TB_GETTEXT_DOMAIN ),
-							'hide' 		=> __( 'Hide thumbnails.', TB_GETTEXT_DOMAIN )
+							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
+							'full' 		=> __( 'Show full-width thumbnails.', 'themeblvd' ),
+							'hide' 		=> __( 'Hide thumbnails.', 'themeblvd' )
 						)
 					),
 					'blog_content' => array( 
-						'name' 		=> __( 'Show excerpts or full content?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.<br><br><em>Note: Because this theme uses post formats, this option will not apply to all post formats.</em>', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show excerpts or full content?', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.<br><br><em>Note: Because this theme uses post formats, this option will not apply to all post formats.</em>', 'themeblvd' ),
 						'id' 		=> 'blog_content',
 						'std' 		=> 'content',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'content'	=> __( 'Show full content.', TB_GETTEXT_DOMAIN ),
-							'excerpt' 	=> __( 'Show excerpt only.', TB_GETTEXT_DOMAIN )
+							'content'	=> __( 'Show full content.', 'themeblvd' ),
+							'excerpt' 	=> __( 'Show excerpt only.', 'themeblvd' )
 						)
 					),
 					'blog_categories' => array( 
-						'name' 		=> __( 'Exclude Categories', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Select any categories you\'d like to be excluded from your blog.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Exclude Categories', 'themeblvd' ),
+						'desc' 		=> __( 'Select any categories you\'d like to be excluded from your blog.', 'themeblvd' ),
 						'id' 		=> 'blog_categories',
 						'type' 		=> 'multicheck',
 						'options' 	=> $options_categories
@@ -316,16 +316,16 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 				    	'class'		=> 'show-hide'
 				    ),
 					'blog_featured' => array( 
-						'name'		=> __( 'Featured Area', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Show slider above blog?', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Featured Area', 'themeblvd' ),
+						'desc'		=> __( 'Show slider above blog?', 'themeblvd' ),
 						'id' 		=> 'blog_featured',
 						'type'		=> 'checkbox',
 						'class'		=> 'trigger'
 					),
 											
 					'blog_slider' => array( 
-						'name'		=> __( 'Featured Slider', TB_GETTEXT_DOMAIN ),
-						'desc'		=> __( 'Select a slider from you custom-made sliders. Sliders are created <a href="admin.php?page=slider_blvd" target="_blank">here</a>.', TB_GETTEXT_DOMAIN ),
+						'name'		=> __( 'Featured Slider', 'themeblvd' ),
+						'desc'		=> __( 'Select a slider from you custom-made sliders. Sliders are created <a href="admin.php?page=slider_blvd" target="_blank">here</a>.', 'themeblvd' ),
 						'id' 		=> 'blog_slider',
 						'type'		=> 'select',
 						'options'	=> $custom_sliders,
@@ -338,41 +338,41 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			),
 			// Section: Archives
 			'archives' => array(
-				'name' => __( 'Archives', TB_GETTEXT_DOMAIN ),
-				'desc' => __( 'These settings apply any time you\'re viewing search results or posts specific to a category, tag, date, author, etc.', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Archives', 'themeblvd' ),
+				'desc' => __( 'These settings apply any time you\'re viewing search results or posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
 				'options' => array(		
 					'archive_title' => array( 
-						'name' 		=> __( 'Show title on archive pages?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show title on archive pages?', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages.', 'themeblvd' ),
 						'id' 		=> 'archive_title',
 						'std' 		=> 'false',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'true'	=> __( 'Yes, show main title at the top of archive pages.', TB_GETTEXT_DOMAIN ),
-							'false' => __( 'No, hide the title.', TB_GETTEXT_DOMAIN )
+							'true'	=> __( 'Yes, show main title at the top of archive pages.', 'themeblvd' ),
+							'false' => __( 'No, hide the title.', 'themeblvd' )
 						)
 					),
 					'archive_thumbs' => array( 
-						'name' 		=> __( 'Show featured images on archive pages?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show featured images on archive pages?', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages.', 'themeblvd' ),
 						'id' 		=> 'archive_thumbs',
 						'std' 		=> 'small',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'small'		=> __( 'Show small thumbnails.', TB_GETTEXT_DOMAIN ),
-							'full' 		=> __( 'Show full-width thumbnails.', TB_GETTEXT_DOMAIN ),
-							'hide' 		=> __( 'Hide thumbnails.', TB_GETTEXT_DOMAIN )
+							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
+							'full' 		=> __( 'Show full-width thumbnails.', 'themeblvd' ),
+							'hide' 		=> __( 'Hide thumbnails.', 'themeblvd' )
 						)
 					),
 					'archive_content' => array( 
-						'name' 		=> __( 'Show excerpts or full content?', TB_GETTEXT_DOMAIN ),
-						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Show excerpts or full content?', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
 						'id' 		=> 'archive_content',
 						'std' 		=> 'excerpt',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'content'	=> __( 'Show full content.', TB_GETTEXT_DOMAIN ),
-							'excerpt' 	=> __( 'Show excerpt only.', TB_GETTEXT_DOMAIN )
+							'content'	=> __( 'Show full content.', 'themeblvd' ),
+							'excerpt' 	=> __( 'Show excerpt only.', 'themeblvd' )
 						)
 					)
 				) // End archives options
@@ -386,40 +386,40 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		$config_options = array(
 			// Section: Responsiveness
 			'responsiveness' => array(
-				'name' => __( 'Responsiveness', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Responsiveness', 'themeblvd' ),
 				'options' => array(		
 					'responsive_css' => array( 
-						'name' 		=> __( 'Tablets and Mobile Devices', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'This theme comes with a special stylesheet that will target the screen resolution of your website vistors and show them a slightly modified design if their screen resolution matches common sizes for a tablet or a mobile device.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Tablets and Mobile Devices', 'themeblvd' ),	
+						'desc' 		=> __( 'This theme comes with a special stylesheet that will target the screen resolution of your website vistors and show them a slightly modified design if their screen resolution matches common sizes for a tablet or a mobile device.', 'themeblvd' ),
 						'id' 		=> 'responsive_css',
 						'std' 		=> 'true',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'true'		=> __( 'Yes, apply special styles to tablets and mobile devices.', TB_GETTEXT_DOMAIN ),
-							'false' 	=> __( 'No, allow website to show normally on tablets and mobile devices.', TB_GETTEXT_DOMAIN )
+							'true'		=> __( 'Yes, apply special styles to tablets and mobile devices.', 'themeblvd' ),
+							'false' 	=> __( 'No, allow website to show normally on tablets and mobile devices.', 'themeblvd' )
 						)
 					),
 					'mobile_nav' => array( 
-						'name' 		=> __( 'Mobile Navigation', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Select how you\'d like the <em>Primary Navigation</em> displayed on mobile devices. While the graphic navigation may be more visually appealing, if your navigation is more complex with many dropdown items, you possibly could be providing a better user experience to mobile users by having the navigation converted into a simple select menu.<br><br>A nice compromise between the two options discussed above is the first default option that will display a button for the user to toggle the main navigation on and off.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Mobile Navigation', 'themeblvd' ),	
+						'desc' 		=> __( 'Select how you\'d like the <em>Primary Navigation</em> displayed on mobile devices. While the graphic navigation may be more visually appealing, if your navigation is more complex with many dropdown items, you possibly could be providing a better user experience to mobile users by having the navigation converted into a simple select menu.<br><br>A nice compromise between the two options discussed above is the first default option that will display a button for the user to toggle the main navigation on and off.', 'themeblvd' ),
 						'id' 		=> 'mobile_nav',
 						'std' 		=> 'mobile_nav_toggle_graphic',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'mobile_nav_toggle_graphic'	=> __( 'Display graphic navigation that toggles on/off.', TB_GETTEXT_DOMAIN ),
-							'mobile_nav_graphic'		=> __( 'Display graphic navigation.', TB_GETTEXT_DOMAIN ),
-							'mobile_nav_select' 		=> __( 'Display simple select menu.', TB_GETTEXT_DOMAIN )
+							'mobile_nav_toggle_graphic'	=> __( 'Display graphic navigation that toggles on/off.', 'themeblvd' ),
+							'mobile_nav_graphic'		=> __( 'Display graphic navigation.', 'themeblvd' ),
+							'mobile_nav_select' 		=> __( 'Display simple select menu.', 'themeblvd' )
 						)
 					)
 				) // End Responsiveness options
 			),
 			// Section: Analytics
 			'analytics' => array(
-				'name' => __( 'Analytics', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Analytics', 'themeblvd' ),
 				'options' => array(		
 					'analytics' => array( 
-						'name' 		=> __( 'Analytics Code', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Paste in the code provided by your Analytics service.<br><br>If you\'re looking for a free analytics service, definitely check out <a href="http://www.google.com/analytics/">Google Analytics</a>.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Analytics Code', 'themeblvd' ),	
+						'desc' 		=> __( 'Paste in the code provided by your Analytics service.<br><br>If you\'re looking for a free analytics service, definitely check out <a href="http://www.google.com/analytics/">Google Analytics</a>.', 'themeblvd' ),
 						'id' 		=> 'analytics',
 						'type' 		=> 'textarea'
 					)
@@ -427,36 +427,36 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			),
 			// Section: Favicon
 			'favicons' => array(
-				'name' => __( 'Favicons', TB_GETTEXT_DOMAIN ),
-				'desc' => __( 'A favicon generally appears at the top of the web browser next to the title or URL of your website for your online visitors. The favicon also gets associated with your website when users bookmark it. In addition to the standard favicon, you can also configure the Apple touch icons that users see when bookmarking your website from various Apple devices.<br><br><strong>These are all completely optional; any items you leave blank in this section will simply not display on your website.</strong>', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Favicons', 'themeblvd' ),
+				'desc' => __( 'A favicon generally appears at the top of the web browser next to the title or URL of your website for your online visitors. The favicon also gets associated with your website when users bookmark it. In addition to the standard favicon, you can also configure the Apple touch icons that users see when bookmarking your website from various Apple devices.<br><br><strong>These are all completely optional; any items you leave blank in this section will simply not display on your website.</strong>', 'themeblvd' ),
 				'options' => array(		
 					'favicon' => array( 
-						'name' 		=> __( 'Standard Favicon (16x16)', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Insert the URL to the .ico file or PNG image you\'d like to use as your website\'s favicon.<br><br>For help generating a standard favicon ICO file, visit <a href="http://www.favicon.cc/" target="_blank">favicon.cc</a>.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Standard Favicon (16x16)', 'themeblvd' ),	
+						'desc' 		=> __( 'Insert the URL to the .ico file or PNG image you\'d like to use as your website\'s favicon.<br><br>For help generating a standard favicon ICO file, visit <a href="http://www.favicon.cc/" target="_blank">favicon.cc</a>.', 'themeblvd' ),
 						'id' 		=> 'favicon',
 						'type' 		=> 'upload'
 					),
 					'apple_touch_57x57' => array( 
-						'name' 		=> __( 'Standard Apple Touch Icon (57x57)', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on standard apple devices.<br><br>This is more of the "fallback" for older Apple devices.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Standard Apple Touch Icon (57x57)', 'themeblvd' ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on standard apple devices.<br><br>This is more of the "fallback" for older Apple devices.', 'themeblvd' ),
 						'id' 		=> 'apple_touch_57x57',
 						'type' 		=> 'upload'
 					),
 					'apple_touch_72x72' => array( 
-						'name' 		=> __( 'Apple Touch Icon - iPad 1st/2nd Generation (72x72)', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on first and second generation iPads.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Apple Touch Icon - iPad 1st/2nd Generation (72x72)', 'themeblvd' ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on first and second generation iPads.', 'themeblvd' ),
 						'id' 		=> 'apple_touch_72x72',
 						'type' 		=> 'upload'
 					),
 					'apple_touch_114x114' => array( 
-						'name' 		=> __( 'Apple Touch Icon - iPhone with Retina (114x114)', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on for the iPhone 4S and later, which come with retina display.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Apple Touch Icon - iPhone with Retina (114x114)', 'themeblvd' ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on for the iPhone 4S and later, which come with retina display.', 'themeblvd' ),
 						'id' 		=> 'apple_touch_114x114',
 						'type' 		=> 'upload'
 					),
 					'apple_touch_144x144' => array( 
-						'name' 		=> __( 'Apple Touch Icon - iPad with Retina (144x144)', TB_GETTEXT_DOMAIN ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on third generation iPads and later, which come with retina display.', TB_GETTEXT_DOMAIN ),
+						'name' 		=> __( 'Apple Touch Icon - iPad with Retina (144x144)', 'themeblvd' ),	
+						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on third generation iPads and later, which come with retina display.', 'themeblvd' ),
 						'id' 		=> 'apple_touch_144x144',
 						'type' 		=> 'upload'
 					)
@@ -470,15 +470,15 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		
 		$options = array(
 			'layout' 	=> array( 
-				'name' 		=> __( 'Layout', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Layout', 'themeblvd' ),
 				'sections' 	=> $layout_options
 			),
 			'content' 	=> array( 
-				'name' 		=> __( 'Content', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Content', 'themeblvd' ),
 				'sections' 	=> $content_options
 			),
 			'config' 	=> array( 
-				'name' 		=> __( 'Configuration', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Configuration', 'themeblvd' ),
 				'sections' 	=> $config_options
 			)
 		);

@@ -704,7 +704,7 @@ if( ! function_exists( 'themeblvd_shortcode_tabs' ) ) {
 			}
 			$output = '<div class="element element-tabs'.themeblvd_get_classes( 'element_tabs', true ).'">'.themeblvd_tabs( $id, $options ).'</div><!-- .element (end) -->';
 		} else {
-			$output = '<p class="tb-warning">'.__( 'No tabs found', TB_GETTEXT_DOMAIN ).'</p>';
+			$output = '<p class="tb-warning">'.__( 'No tabs found', 'themeblvd' ).'</p>';
 		}
 	    return $output;
 	}

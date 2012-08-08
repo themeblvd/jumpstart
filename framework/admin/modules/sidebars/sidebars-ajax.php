@@ -144,7 +144,7 @@ if( ! function_exists( 'sidebar_blvd_ajax_save_sidebar' ) ) {
 		
 		// Respond with update message and management table
 		echo '<div id="setting-error-save_options" class="updated fade settings-error ajax-update">';
-		echo '	<p><strong>'.__( 'Widget Area saved.', TB_GETTEXT_DOMAIN ).'</strong></p>';
+		echo '	<p><strong>'.__( 'Widget Area saved.', 'themeblvd' ).'</strong></p>';
 		echo '</div>';
 		echo '[(=>)]';
 		sidebar_blvd_manage();
@@ -179,7 +179,7 @@ if( ! function_exists( 'sidebar_blvd_ajax_delete_sidebar' ) ) {
 					
 			// Respond with update message and management table
 			echo '<div id="setting-error-delete_sidebar" class="updated fade settings-error ajax-update">';
-			echo '	<p><strong>'.__( 'Sidebar(s) deleted.', TB_GETTEXT_DOMAIN ).'</strong></p>';
+			echo '	<p><strong>'.__( 'Sidebar(s) deleted.', 'themeblvd' ).'</strong></p>';
 			echo '</div>';
 			echo '[(=>)]';
 			sidebar_blvd_manage();

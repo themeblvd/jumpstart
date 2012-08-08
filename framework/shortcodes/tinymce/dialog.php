@@ -18,7 +18,7 @@ $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
 	<div id="themeblvd-dialog">
 		<div id="themeblvd-options-buttons" class="clear">
 			<div class="alignleft">
-			   <h3><?php _e( 'Shortcode Options', TB_GETTEXT_DOMAIN ); ?></h3>
+			   <h3><?php _e( 'Shortcode Options', 'themeblvd' ); ?></h3>
 			</div>
 			<div class="alignright">
 			 	<input type="button" id="themeblvd-cancel-button" class="button" name="cancel" value="Cancel" accesskey="C" />

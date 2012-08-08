@@ -27,22 +27,22 @@ if( ! function_exists( 'slider_blvd_recognized_sliders' ) ) {
 		
 		$standard_types = array(
 			'image' => array(
-				'name' => __( 'Image Slide', TB_GETTEXT_DOMAIN ),
-				'main_title' => __( 'Setup Image', TB_GETTEXT_DOMAIN )
+				'name' => __( 'Image Slide', 'themeblvd' ),
+				'main_title' => __( 'Setup Image', 'themeblvd' )
 			),
 			'video' => array(
-				'name' => __( 'Video Slide', TB_GETTEXT_DOMAIN ),
-				'main_title' => __( 'Video Link', TB_GETTEXT_DOMAIN )
+				'name' => __( 'Video Slide', 'themeblvd' ),
+				'main_title' => __( 'Video Link', 'themeblvd' )
 			),
 			'custom' => array(
-				'name' => __( 'Custom Slide', TB_GETTEXT_DOMAIN ),
-				'main_title' => __( 'Setup Custom Content', TB_GETTEXT_DOMAIN )
+				'name' => __( 'Custom Slide', 'themeblvd' ),
+				'main_title' => __( 'Setup Custom Content', 'themeblvd' )
 			)
 		);
 		$carrousel_types = array(
 			'image' => array(
-				'name' => __( 'Image Slide', TB_GETTEXT_DOMAIN ),
-				'main_title' => __( 'Setup Image', TB_GETTEXT_DOMAIN )
+				'name' => __( 'Image Slide', 'themeblvd' ),
+				'main_title' => __( 'Setup Image', 'themeblvd' )
 			)
 		);
 		
@@ -52,12 +52,12 @@ if( ! function_exists( 'slider_blvd_recognized_sliders' ) ) {
 		 */
 		
 		$standard_positions = array(
-			'full' 			=> __( 'Full-Size', TB_GETTEXT_DOMAIN ),
-			'align-left' 	=> __( 'Aligned Left', TB_GETTEXT_DOMAIN ),
-			'align-right' 	=> __( 'Aligned Right', TB_GETTEXT_DOMAIN )
+			'full' 			=> __( 'Full-Size', 'themeblvd' ),
+			'align-left' 	=> __( 'Aligned Left', 'themeblvd' ),
+			'align-right' 	=> __( 'Aligned Right', 'themeblvd' )
 		);
 		$carrousel_positions = array(
-			'full' 			=> __( 'Full-Size', TB_GETTEXT_DOMAIN )
+			'full' 			=> __( 'Full-Size', 'themeblvd' )
 		);
 		
 		/**
@@ -76,7 +76,7 @@ if( ! function_exists( 'slider_blvd_recognized_sliders' ) ) {
 		$standard_options = array(
 			array(
 				'id'		=> 'fx',
-				'name'		=> __( 'How to transition between slides?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'How to transition between slides?', 'themeblvd' ),
 				'std'		=> 'fade',
 				'type'		=> 'select',
 				'options'		=> array(
@@ -86,83 +86,83 @@ if( ! function_exists( 'slider_blvd_recognized_sliders' ) ) {
 			),
 			array(
 				'id'		=> 'timeout',
-				'name' 		=> __( 'Seconds between each transition?', TB_GETTEXT_DOMAIN ),
+				'name' 		=> __( 'Seconds between each transition?', 'themeblvd' ),
 				'std'		=> '5',
 				'type'		=> 'text'
 		    ),
 			array(
 				'id'		=> 'nav_standard',
-				'name'		=> __( 'Show standard slideshow navigation?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'Show standard slideshow navigation?', 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'		=> array(
-		            '1'	=> __( 'Yes, show navigation.', TB_GETTEXT_DOMAIN ),
-		            '0'	=> __( 'No, don\'t show it.', TB_GETTEXT_DOMAIN )
+		            '1'	=> __( 'Yes, show navigation.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> 'nav_arrows',
-				'name'		=> __( 'Show next/prev arrows?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'Show next/prev arrows?', 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'		=> array(
-		            '1'	=> __( 'Yes, show arrows.', TB_GETTEXT_DOMAIN ),
-		            '0'	=> __( 'No, don\'t show them.', TB_GETTEXT_DOMAIN )
+		            '1'	=> __( 'Yes, show arrows.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show them.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> 'pause_play',
-				'name'		=> __( 'Show pause/play button?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'Show pause/play button?', 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'		=> array(
-		            '1'	=> __( 'Yes, show pause/play button.', TB_GETTEXT_DOMAIN ),
-		            '0'	=> __( 'No, don\'t show it.', TB_GETTEXT_DOMAIN )
+		            '1'	=> __( 'Yes, show pause/play button.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> 'pause_on_hover',
-				'name'		=> __( 'Enable pause on hover?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'Enable pause on hover?', 'themeblvd' ),
 				'std'		=> 'pause_on',
 				'type'		=> 'select',
 				'options'		=> array(
-		            'pause_on'		=> __( 'Pause on hover only.', TB_GETTEXT_DOMAIN ),
-		            'pause_on_off'	=> __( 'Pause on hover and resume when hovering off.', TB_GETTEXT_DOMAIN ),
-		            'disable'		=> __( 'No, disable this all together.', TB_GETTEXT_DOMAIN )
+		            'pause_on'		=> __( 'Pause on hover only.', 'themeblvd' ),
+		            'pause_on_off'	=> __( 'Pause on hover and resume when hovering off.', 'themeblvd' ),
+		            'disable'		=> __( 'No, disable this all together.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> 'mobile_fallback',
-				'name'		=> __( 'How to display on mobile devices?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'How to display on mobile devices?', 'themeblvd' ),
 				'std'		=> 'full_list',
 				'type'		=> 'radio',
 				'options'		=> array(
-		            'full_list'		=> __( 'List out slides for a more user-friendly mobile experience.', TB_GETTEXT_DOMAIN ),
-		            'first_slide'	=> __( 'Show first slide only for a more simple mobile experience.', TB_GETTEXT_DOMAIN ),
-		            'display'		=> __( 'Attempt to show full animated slider on mobile devices.', TB_GETTEXT_DOMAIN )
+		            'full_list'		=> __( 'List out slides for a more user-friendly mobile experience.', 'themeblvd' ),
+		            'first_slide'	=> __( 'Show first slide only for a more simple mobile experience.', 'themeblvd' ),
+		            'display'		=> __( 'Attempt to show full animated slider on mobile devices.', 'themeblvd' )
 				)
 			)
 		);
 		$carrousel_options = array(
 			array(
 				'id'		=> 'nav_arrows',
-				'name'		=> __( 'Show next/prev arrows?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'Show next/prev arrows?', 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'		=> array(
-		            '1'	=> __( 'Yes, show arrows.', TB_GETTEXT_DOMAIN ),
-		            '0'	=> __( 'No, don\'t show them.', TB_GETTEXT_DOMAIN )
+		            '1'	=> __( 'Yes, show arrows.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show them.', 'themeblvd' )
 				)
 			),
 			array(
 				'id'		=> 'mobile_fallback',
-				'name'		=> __( 'How to display on mobile devices?', TB_GETTEXT_DOMAIN ),
+				'name'		=> __( 'How to display on mobile devices?', 'themeblvd' ),
 				'std'		=> 'full_list',
 				'type'		=> 'radio',
 				'options'		=> array(
-		            'full_list'		=> __( 'List out slides for a more user-friendly mobile experience.', TB_GETTEXT_DOMAIN ),
-		            'first_slide'	=> __( 'Show first slide only for a more simple mobile experience.', TB_GETTEXT_DOMAIN ),
-		            'display'		=> __( 'Attempt to show full animated slider on mobile devices.', TB_GETTEXT_DOMAIN )
+		            'full_list'		=> __( 'List out slides for a more user-friendly mobile experience.', 'themeblvd' ),
+		            'first_slide'	=> __( 'Show first slide only for a more simple mobile experience.', 'themeblvd' ),
+		            'display'		=> __( 'Attempt to show full animated slider on mobile devices.', 'themeblvd' )
 				)
 			)
 		);

@@ -13,8 +13,6 @@
 define( 'TB_FRAMEWORK_VERSION', '2.2.0' );
 define( 'TB_FRAMEWORK_URL', get_template_directory().'/framework' );
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory_uri().'/framework' );
-define( 'TB_GETTEXT_DOMAIN', 'themeblvd' );
-define( 'TB_GETTEXT_DOMAIN_FRONT', 'themeblvd_frontend' );
 
 // Run framework
 if( is_admin() ) {
@@ -60,6 +58,7 @@ if( is_admin() ) {
 	add_action( 'admin_enqueue_scripts', 'themeblvd_non_modular_assets' );
 	add_action( 'admin_init','themeblvd_theme_activation' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
+	add_action( 'after_setup_theme', 'themeblvd_textdomain' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 	add_action( 'themeblvd_options_footer_text', 'optionsframework_footer_text' );
@@ -132,6 +131,7 @@ if( is_admin() ) {
 	// Apply initial hooks
 	add_action( 'pre_get_posts', 'themeblvd_homepage_posts_per_page' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
+	add_action( 'after_setup_theme', 'themeblvd_textdomain' );
 	add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );

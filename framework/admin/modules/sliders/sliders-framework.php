@@ -241,9 +241,9 @@ if ( ! function_exists( 'slider_blvd_page_header' ) ) {
 			    </div>
 			    <?php screen_icon( 'themes' ); ?>
 			    <h2 class="nav-tab-wrapper">
-			        <a href="#manage" id="manage-tab" class="nav-tab" title="<?php _e( 'Manage Sliders', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Manage Sliders', TB_GETTEXT_DOMAIN ); ?></a>
-			        <a href="#add" id="add-tab" class="nav-tab" title="<?php _e( 'Add New Slider', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Add Slider', TB_GETTEXT_DOMAIN ); ?></a>
-			        <a href="#edit" id="edit-tab" class="nav-tab nav-edit-slider" title="<?php _e( 'Edit Slider', TB_GETTEXT_DOMAIN ); ?>"><?php _e( 'Edit Slider', TB_GETTEXT_DOMAIN ); ?></a>
+			        <a href="#manage" id="manage-tab" class="nav-tab" title="<?php _e( 'Manage Sliders', 'themeblvd' ); ?>"><?php _e( 'Manage Sliders', 'themeblvd' ); ?></a>
+			        <a href="#add" id="add-tab" class="nav-tab" title="<?php _e( 'Add New Slider', 'themeblvd' ); ?>"><?php _e( 'Add Slider', 'themeblvd' ); ?></a>
+			        <a href="#edit" id="edit-tab" class="nav-tab nav-edit-slider" title="<?php _e( 'Edit Slider', 'themeblvd' ); ?>"><?php _e( 'Edit Slider', 'themeblvd' ); ?></a>
 			    </h2>
 	    <?php
 	}	

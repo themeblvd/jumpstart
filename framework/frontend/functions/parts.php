@@ -354,11 +354,11 @@ if( ! function_exists( 'themeblvd_get_twitter' ) ) {
 			if( $output )
 				$output = '<ul class="tweets">'.$output.'</ul>';
 			else
-				$output = '<ul class="tweets"><li>'.__( 'No public Tweets found', TB_GETTEXT_DOMAIN ).'</li></ul>';
+				$output = '<ul class="tweets"><li>'.__( 'No public Tweets found', 'themeblvd' ).'</li></ul>';
 			
 		} else {
 			// Received error with fetch_feed()
-			$output = '<ul class="tweets"><li>'.__( 'Could not fetch Twitter RSS feed.', TB_GETTEXT_DOMAIN ).'</li></ul>';
+			$output = '<ul class="tweets"><li>'.__( 'Could not fetch Twitter RSS feed.', 'themeblvd' ).'</li></ul>';
 		}
 		return $output;
 	}

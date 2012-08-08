@@ -23,7 +23,7 @@ if ( ! function_exists( 'optionsframework_mlu_init' ) ) {
 	function optionsframework_mlu_init () {
 		register_post_type( 'optionsframework', array(
 			'labels' => array(
-				'name' => __( 'Options Framework Internal Container', TB_GETTEXT_DOMAIN ),
+				'name' => __( 'Options Framework Internal Container', 'themeblvd' ),
 			),
 			'public' => true,
 			'show_ui' => false,
@@ -104,7 +104,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$class = '';
 		$int = '';
 		$value = array( 'url' => '', 'id' => '' );
-		$upload_text = __( 'Upload', TB_GETTEXT_DOMAIN );
+		$upload_text = __( 'Upload', 'themeblvd' );
 		
 		if( $type == 'slider' )
 			$name = $option_name.'[image]';
@@ -141,7 +141,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 			// Slider image ID input w/hidden image URL input for user admin display
 			$output .= '<span class="locked"><span></span><input id="' . $id . '_id" class="locked upload' . $class . '" type="text" name="'.$name.'[id]" value="' . $value['id'] . '" /></span>' . "\n";
 			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="hidden" name="'.$name.'[url]" value="' . $value['url'] . '" />' . "\n";
-			$output .= '<p class="explain">'.__( 'You must use the "Get Image" button modify the image ID for this slide. This is what the locked icon represents.', TB_GETTEXT_DOMAIN ).'</p>';
+			$output .= '<p class="explain">'.__( 'You must use the "Get Image" button modify the image ID for this slide. This is what the locked icon represents.', 'themeblvd' ).'</p>';
 		} else {
 			// Standard image input
 			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" />' . "\n";
@@ -170,7 +170,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 				$output .= '';
 			
 				// Standard generic output if it's not an image.	
-				$title = __( 'View File', TB_GETTEXT_DOMAIN );
+				$title = __( 'View File', 'themeblvd' );
 				$output .= '<div class="no_image"><span class="file_link"><a href="' . $value['url'] . '" target="_blank" rel="external">'.$title.'</a></span>' . $remove . '</div>';
 			}	
 		}
@@ -307,7 +307,7 @@ if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 if ( ! function_exists( 'optionsframework_mlu_modify_tabs' ) ) {
 
 	function optionsframework_mlu_modify_tabs ( $tabs ) {
-		$tabs['gallery'] = str_replace( __( 'Gallery', TB_GETTEXT_DOMAIN ), __( 'Previously Uploaded', TB_GETTEXT_DOMAIN ), $tabs['gallery'] );
+		$tabs['gallery'] = str_replace( __( 'Gallery', 'themeblvd' ), __( 'Previously Uploaded', 'themeblvd' ), $tabs['gallery'] );
 		return $tabs;
 	}
 }
