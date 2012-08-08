@@ -344,16 +344,16 @@ if( ! function_exists( 'themeblvd_get_sidebar_id' ) ) {
 		// Innitiate assignments
 		$assignments = array();
 		
-		// Get all the sidebars for this location and create
-		// a single array of just their assignments
-
+		// Get all the sidebars for this location
 		$args = array(
-			'post_type' => 'tb_sidebar'
+			'post_type' => 'tb_sidebar',
 			'numberposts' => -1,
 			'meta_key' => 'location',
 			'meta_value' => $location
 		);
-
+		
+		// And now create a single array of just their assignments 
+		// formatted for the themeblvd_get_assigned_id function
 		$custom_sidebars = get_posts( $args );
 		if( $custom_sidebars ){
 	    	foreach( $custom_sidebars as $sidebar ){
@@ -366,7 +366,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_id' ) ) {
 	    	}
 	    }
 		
-		// Find the current custom sidebar with from assignments
+		// Find the current custom sidebar from assignments
 		return themeblvd_get_assigned_id( $assignments );
 	}
 }
