@@ -1041,7 +1041,7 @@ if( ! function_exists( 'themeblvd_deregister_stylesheets' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_textdomain' ) ) {
-	function themeblvd_jumpstart_setup() {
+	function themeblvd_textdomain() {
 		load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
 		load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
 	}

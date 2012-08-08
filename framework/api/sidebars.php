@@ -18,7 +18,7 @@ if( ! function_exists( 'themeblvd_add_sidebar_location' ) ) {
 		
 		// Description
 		if( ! $description )
-			$description = sprintf( __( 'This is default placeholder for the "%s" location.', TB_GETTEXT_DOMAIN), $location_name );
+			$description = sprintf( __( 'This is default placeholder for the "%s" location.', 'themeblvd'), $location_name );
 			
 		// Add Sidebar location
 		$_themeblvd_user_sidebar_locations[$location_id] = array(
@@ -36,7 +36,7 @@ if( ! function_exists( 'themeblvd_add_sidebar_location' ) ) {
 				)
 			),
 			'args' => array(
-			    'name' 			=> __( 'Location: ', TB_GETTEXT_DOMAIN ).$location_name,
+			    'name' 			=> __( 'Location: ', 'themeblvd' ).$location_name,
 			    'description' 	=> $description,
 			    'id' 			=> $location_id,
 			    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -109,7 +109,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 			'sidebar_left' => array(
 				'type' => 'fixed',
 				'location'	=> array(
-					'name' 	=> __( 'Left Sidebar', TB_GETTEXT_DOMAIN ),
+					'name' 	=> __( 'Left Sidebar', 'themeblvd' ),
 					'id' 	=> 'sidebar_left'
 				),
 				'assignments' => array(
@@ -121,8 +121,8 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 					)
 				),
 				'args' => array(
-				    'name' 			=> __( 'Location: Left Sidebar', TB_GETTEXT_DOMAIN ),
-				    'description' 	=> __( 'This is default placeholder for the "Left Sidebar" location.', TB_GETTEXT_DOMAIN ),
+				    'name' 			=> __( 'Location: Left Sidebar', 'themeblvd' ),
+				    'description' 	=> __( 'This is default placeholder for the "Left Sidebar" location.', 'themeblvd' ),
 				    'id' 			=> 'sidebar_left',
 				    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 					'after_widget' 	=> '</div></aside>',
@@ -135,7 +135,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 			'sidebar_right' => array(
 				'type' => 'fixed',
 				'location' => array(
-					'name' 	=> __( 'Right Sidebar', TB_GETTEXT_DOMAIN ),
+					'name' 	=> __( 'Right Sidebar', 'themeblvd' ),
 					'id'	=> 'sidebar_right'
 				),
 				'assignments' => array(
@@ -147,8 +147,8 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 					)
 				),
 				'args' => array(
-				    'name' 			=> __( 'Location: Right Sidebar', TB_GETTEXT_DOMAIN ),
-				    'description' 	=> __( 'This is default placeholder for the "Right Sidebar" location.', TB_GETTEXT_DOMAIN ),
+				    'name' 			=> __( 'Location: Right Sidebar', 'themeblvd' ),
+				    'description' 	=> __( 'This is default placeholder for the "Right Sidebar" location.', 'themeblvd' ),
 				    'id' 			=> 'sidebar_right',
 				    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 					'after_widget' 	=> '</div></aside>',
@@ -161,7 +161,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 			'ad_above_header' => array(
 				'type' => 'collapsible',
 				'location' => array(
-					'name' 	=> __( 'Ads Above Header', TB_GETTEXT_DOMAIN ),
+					'name' 	=> __( 'Ads Above Header', 'themeblvd' ),
 					'id'	=> 'ad_above_header'
 				),		
 				'assignments' => array(
@@ -173,8 +173,8 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 					)
 				),
 				'args' => array(		
-				    'name' 			=> __( 'Location: Ads Above Header', TB_GETTEXT_DOMAIN ),
-				    'description' 	=> __( 'This is default placeholder for the "Ads Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', TB_GETTEXT_DOMAIN ),
+				    'name' 			=> __( 'Location: Ads Above Header', 'themeblvd' ),
+				    'description' 	=> __( 'This is default placeholder for the "Ads Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
 				    'id' 			=> 'ad_above_header',
 				    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 					'after_widget' 	=> '</div></aside>',
@@ -187,7 +187,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 			'ad_above_content' => array(
 				'type' => 'collapsible',
 				'location' => array(
-					'name' 	=> __( 'Ads Above Content', TB_GETTEXT_DOMAIN ),
+					'name' 	=> __( 'Ads Above Content', 'themeblvd' ),
 					'id'	=> 'ad_above_content'
 				),
 				'assignments' => array(
@@ -199,8 +199,8 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 					)
 				),
 				'args' => array(
-				    'name' 			=> __( 'Location: Ads Above Content', TB_GETTEXT_DOMAIN ),
-				    'description' 	=> __( 'This is default placeholder for the "Ads Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', TB_GETTEXT_DOMAIN ),
+				    'name' 			=> __( 'Location: Ads Above Content', 'themeblvd' ),
+				    'description' 	=> __( 'This is default placeholder for the "Ads Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
 				    'id' 			=> 'ad_above_content',
 				    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 					'after_widget' 	=> '</div></aside>',
@@ -213,7 +213,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 			'ad_below_content' => array(
 				'type' => 'collapsible',
 				'location' => array(
-					'name' 	=> __( 'Ads Below Content', TB_GETTEXT_DOMAIN ),
+					'name' 	=> __( 'Ads Below Content', 'themeblvd' ),
 					'id'	=> 'ad_below_content'
 				),
 				'assignments' => array(
@@ -225,8 +225,8 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 					)
 				),
 				'args' => array(
-				    'name' 			=> __( 'Location: Ads Below Content', TB_GETTEXT_DOMAIN ),
-				    'description' 	=> __( 'This is default placeholder for the "Ads Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', TB_GETTEXT_DOMAIN ),
+				    'name' 			=> __( 'Location: Ads Below Content', 'themeblvd' ),
+				    'description' 	=> __( 'This is default placeholder for the "Ads Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
 				    'id' 			=> 'ad_below_content',
 				    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 					'after_widget' 	=> '</div></aside>',
@@ -239,7 +239,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 			'ad_below_footer' => array(
 				'type' => 'collapsible',
 				'location' => array(
-					'name' 	=> __( 'Ads Below Footer', TB_GETTEXT_DOMAIN ),
+					'name' 	=> __( 'Ads Below Footer', 'themeblvd' ),
 					'id'	=> 'ad_below_footer'
 				),
 				'assignments' => array(
@@ -251,8 +251,8 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 					)
 				),
 				'args' => array(
-				    'name' 			=> __( 'Location: Ads Below Footer', TB_GETTEXT_DOMAIN ),
-				    'description' 	=> __( 'This is default placeholder for the "Ads Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', TB_GETTEXT_DOMAIN ),
+				    'name' 			=> __( 'Location: Ads Below Footer', 'themeblvd' ),
+				    'description' 	=> __( 'This is default placeholder for the "Ads Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
 				    'id' 			=> 'ad_below_footer',
 				    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 					'after_widget' 	=> '</div></aside>',
@@ -294,7 +294,7 @@ if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 		
 		foreach( $custom_sidebars as $sidebar ) {
 			$args = array(
-				'name' 			=> __( 'Custom: ', TB_GETTEXT_DOMAIN ).$sidebar->post_title,
+				'name' 			=> __( 'Custom: ', 'themeblvd' ).$sidebar->post_title,
 			    'id' 			=> $sidebar->post_name,
 			    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
 				'after_widget' 	=> '</div></aside>',
@@ -303,9 +303,9 @@ if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 			);
 			$location = get_post_meta( $sidebar->ID, 'location', true );
 			if( $location && $location != 'floating' )
-				$args['description'] = sprintf( esc_attr__( 'This is a custom widget area to replace the %s on its assigned pages.', TB_GETTEXT_DOMAIN ), themeblvd_get_sidebar_location_name( $location ) );
+				$args['description'] = sprintf( esc_attr__( 'This is a custom widget area to replace the %s on its assigned pages.', 'themeblvd' ), themeblvd_get_sidebar_location_name( $location ) );
 			else
-				$args['description'] = __( 'This is a custom floating widget area. ', TB_GETTEXT_DOMAIN );
+				$args['description'] = __( 'This is a custom floating widget area. ', 'themeblvd' );
 			register_sidebar( $args );
 		}
 	}
@@ -325,7 +325,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_location_name' ) ) {
 		$sidebars = themeblvd_get_sidebar_locations();
 		if( isset( $sidebars[$location]['location']['name']) )
 			return $sidebars[$location]['location']['name'];
-		return __( 'Floating Widget Area', TB_GETTEXT_DOMAIN );
+		return __( 'Floating Widget Area', 'themeblvd' );
 	}
 }
 
@@ -418,11 +418,11 @@ if( ! function_exists( 'themeblvd_display_sidebar' ) ) {
 				// Set message
 				switch( $type ) {
 					case 'collapsible' :
-						$message = sprintf( __( 'This is a collapsible widget area with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', TB_GETTEXT_DOMAIN ), $sidebar['id'] );
+						$message = sprintf( __( 'This is a collapsible widget area with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', 'themeblvd' ), $sidebar['id'] );
 						break;
 						
 					case 'fixed' :
-						$message = sprintf( __( 'This is a fixed sidebar with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet.', TB_GETTEXT_DOMAIN ), $sidebar['id'] );
+						$message = sprintf( __( 'This is a fixed sidebar with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet.', 'themeblvd' ), $sidebar['id'] );
 						break;
 				}
 				// Ouput message
