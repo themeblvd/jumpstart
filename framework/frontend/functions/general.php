@@ -405,119 +405,125 @@ function themeblvd_get_assigned_id( $assignments ) {
 	// Initialize $id
 	$id = null;
 	
+	// If assignments is empty, we can't do anything in 
+	// this function, so we'll just quit now!
+	if( empty( $assignments ) )
+		return $id;
+	
 	// Reset the query
 	wp_reset_query();
 	
 	// Tier I conditionals
-	if( ! empty( $assignments ) ) {
-		foreach($assignments as $assignment) {
-			if( $assignment['type'] != 'top') {
-				// Page
-				if( $assignment['type'] == 'page' ) {
-					if( is_page( $assignment['id'] ) )			
-						$id = $assignment['post_slug'];
-				}
-				// Post
-				if( $assignment['type'] == 'post' ) {
-					if( is_single( $assignment['id'] ) )		
-						$id = $assignment['post_slug'];
-				}
-				// Category
-				if( $assignment['type'] == 'category' ) {
-					if( is_category( $assignment['id'] ) )			
-						$id = $assignment['post_slug'];
-				}
-				// Tag
-				if( $assignment['type'] == 'tag') {
-					if( is_tag( $assignment['id'] ) )		
-						$id = $assignment['post_slug'];
-				}
-				// Extend Tier I
-				$id = apply_filters( 'themeblvd_sidebar_id_tier_1', $id, $assignment );
+	foreach( $assignments as $assignment ) {
+		if( $assignment['type'] != 'top') {
+			// Page
+			if( $assignment['type'] == 'page' ) {
+				if( is_page( $assignment['id'] ) )			
+					$id = $assignment['post_slug'];
 			}
+			// Post
+			if( $assignment['type'] == 'post' ) {
+				if( is_single( $assignment['id'] ) )		
+					$id = $assignment['post_slug'];
+			}
+			// Category
+			if( $assignment['type'] == 'category' ) {
+				if( is_category( $assignment['id'] ) )			
+					$id = $assignment['post_slug'];
+			}
+			// Tag
+			if( $assignment['type'] == 'tag') {
+				if( is_tag( $assignment['id'] ) )		
+					$id = $assignment['post_slug'];
+			}
+			// Extend Tier I
+			$id = apply_filters( 'themeblvd_sidebar_id_tier_1', $id, $assignment );
 		}
 	}
+	
+	// If we found a tier I item, we're finished
+	if( $id )
+		return $id;
 	
 	// Tier II conditionals
-	if( ! $id && ! empty( $assignments ) ) {
-		foreach( $assignments as $assignment ) {
-			if( $assignment['type'] != 'top' ) {				
-				// Posts in Category
-				if( $assignment['type'] == 'posts_in_category' ) {
-					if( is_single() && in_category( $assignment['id'] ) )		
-						$id = $assignment['post_slug'];
-				}			
-				// Extend Tier II
-				$id = apply_filters( 'themeblvd_sidebar_id_tier_2', $id, $assignment );
-			}
+	foreach( $assignments as $assignment ) {
+		if( $assignment['type'] != 'top' ) {				
+			// Posts in Category
+			if( $assignment['type'] == 'posts_in_category' ) {
+				if( is_single() && in_category( $assignment['id'] ) )		
+					$id = $assignment['post_slug'];
+			}			
+			// Extend Tier II
+			$id = apply_filters( 'themeblvd_sidebar_id_tier_2', $id, $assignment );
 		}
 	}
 	
+	// If we found a tier II item, we're finished
+	if( $id )
+		return $id;
+	
 	// Tier III conditionals
-	if( ! $id && ! empty( $assignments ) ) {
-		foreach( $assignments as $assignment ) {
-			if( $assignment['type'] == 'top' ) {				
-				switch( $assignment['id'] ) {
+	foreach( $assignments as $assignment ) {
+		if( $assignment['type'] == 'top' ) {				
+			switch( $assignment['id'] ) {
 
-					// Homepage
-					case 'home' :
-						if( is_home() )		
-							$id = $assignment['post_slug'];
-						break;
-					
-					// All Posts	
-					case 'posts' :
-						if( is_single() )
-							$id = $assignment['post_slug'];
-						break;
-						
-					// All Pages	
-					case 'pages' :
-						if( is_page() )
-							$id = $assignment['post_slug'];
-						
-						break;
-						
-					// Archives	
-					case 'archives' :
-						if( is_archive() )
-							$id = $assignment['post_slug'];
-						break;
-						
-					// Categories	
-					case 'categories' :
-						if( is_category() )
-							$id = $assignment['post_slug'];
-						break;
-						
-					// Tags	
-					case 'tags' :
-						if( is_tag() )
-							$id = $assignment['post_slug'];
-						break;
-						
-					// Authors	
-					case 'authors' :
-						if( is_author() )
-							$id = $assignment['post_slug'];
-						break;
-						
-					// Search Results
-					case 'search' :
-						if( is_search() )
-							$id = $assignment['post_slug'];
-						break;
-						
-					// 404	
-					case '404' :
-						if( is_404() )
-							$id = $assignment['post_slug'];
-						break;
-				} // End switch $assignment['id']					
+				// Homepage
+				case 'home' :
+					if( is_home() )		
+						$id = $assignment['post_slug'];
+					break;
 				
-				// Extend Tier III
-				$id = apply_filters( 'themeblvd_sidebar_id_tier_3', $id, $assignment );
-			}
+				// All Posts	
+				case 'posts' :
+					if( is_single() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// All Pages	
+				case 'pages' :
+					if( is_page() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// Archives	
+				case 'archives' :
+					if( is_archive() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// Categories	
+				case 'categories' :
+					if( is_category() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// Tags	
+				case 'tags' :
+					if( is_tag() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// Authors	
+				case 'authors' :
+					if( is_author() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// Search Results
+				case 'search' :
+					if( is_search() )
+						$id = $assignment['post_slug'];
+					break;
+					
+				// 404	
+				case '404' :
+					if( is_404() )
+						$id = $assignment['post_slug'];
+					break;
+			} // End switch $assignment['id']					
+			
+			// Extend Tier III
+			$id = apply_filters( 'themeblvd_sidebar_id_tier_3', $id, $assignment );
 		}
 	}
 	return $id;	
@@ -804,7 +810,7 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 	function themeblvd_homepage_posts_per_page( $query ){
 	   
 	    // This is only for the homepage
-		if( is_home() ){
+		if( is_home() ) {
 			
 			// The framework has not run at this point, so 
 			// we manually need to check for a homepage layout.
