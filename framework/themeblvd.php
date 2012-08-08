@@ -6,7 +6,7 @@
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
+ * @package		Theme Blvd WordPress Framework
  */
 
 // Constants
