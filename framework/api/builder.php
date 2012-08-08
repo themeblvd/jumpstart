@@ -111,7 +111,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -176,7 +176,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -202,7 +202,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -254,7 +254,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -376,7 +376,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -450,7 +450,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -582,7 +582,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -717,7 +717,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -803,7 +803,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -947,7 +947,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -969,7 +969,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -1039,7 +1039,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -1156,7 +1156,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
@@ -1207,7 +1207,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    array(
 		    	'id' 		=> 'visibility',
 				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
-				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
 					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
