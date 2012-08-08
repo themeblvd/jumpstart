@@ -21,9 +21,10 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 		
 		// <title> tag
-		echo '<title>';
-		themeblvd_title();
-		echo "</title>\n";
+		echo '<title>'.wp_title( '|', false, 'right' )."</title>\n";
+		
+		// Optional meta data for Theme Blvd SEO plugin
+		do_action( 'themeblvd_meta' );
 		
 		// XFN
 		echo '<link rel="profile" href="http://gmpg.org/xfn/11" />'."\n";
@@ -66,30 +67,6 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 		
 		// Standard WP head hook
 		wp_head();
-	}
-}
-
-
-/**
- * Display <title>
- * Default display for action: themeblvd_title
- *
- * @since 2.0.0
- */
-
-if( ! function_exists( 'themeblvd_title_default' ) ) {
-	function themeblvd_title_default() {
-		global $page, $paged;
-		wp_title( '|', true, 'right' );
-		// Add the blog name.
-		bloginfo( 'name' );
-		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo( 'description', 'display' );
-		if ( $site_description && ( is_home() || is_front_page() ) )
-			echo " | $site_description";
-		// Add a page number if necessary:
-		if ( $paged >= 2 || $page >= 2 )
-			echo ' | ' . sprintf( themeblvd_get_local( 'page_num' ), max( $paged, $page ) );
 	}
 }
 

@@ -775,3 +775,26 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 		return $class;
 	}
 }
+
+/**
+ * Display <title>
+ * This added to wp_title() as a filter.
+ *
+ * @since 2.2.0
+ */
+
+if( ! function_exists( 'themeblvd_wp_title' ) ) {
+	function themeblvd_wp_title( $title ) {
+		global $page, $paged;
+		// Add the blog name.
+		$title .= get_bloginfo( 'name' );
+		// Add the blog description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			$title .= " | $site_description";
+		// Add a page number if necessary:
+		if ( $paged >= 2 || $page >= 2 )
+			$title .= ' | ' . sprintf( themeblvd_get_local( 'page_num' ), max( $paged, $page ) );
+		return $title;
+	}
+}

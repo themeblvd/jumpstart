@@ -127,6 +127,7 @@ if( is_admin() ) {
 	add_filter( 'themeblvd_sidebar_layout', 'themeblvd_wpmultisite_signup_sidebar_layout' );
 	add_filter( 'the_content_more_link', 'themeblvd_read_more_link' );
 	add_filter( 'use_default_gallery_style', '__return_false');
+	add_filter( 'wp_title', 'themeblvd_wp_title' );
 	
 	// Apply initial hooks
 	add_action( 'pre_get_posts', 'themeblvd_homepage_posts_per_page' );

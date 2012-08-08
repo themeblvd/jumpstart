@@ -5,7 +5,6 @@
 
 // <head>
 function themeblvd_head() { do_action( 'themeblvd_head' ); }
-function themeblvd_title() { do_action( 'themeblvd_title' ); }
 
 // Before and after site
 function themeblvd_before() { do_action( 'themeblvd_before' ); } // No default hooked function
