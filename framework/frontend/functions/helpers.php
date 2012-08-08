@@ -365,9 +365,12 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 			}
 		}
 		// Additional args
-		if( isset( $options['orderby'] ) ) $args['orderby'] = $options['orderby'];
-		if( isset( $options['order'] ) ) $args['order'] = $options['order'];
-		if( isset( $options['offset'] ) ) $args['offset'] = intval( $options['offset'] );
+		if( isset( $options['orderby'] ) ) 
+			$args['orderby'] = $options['orderby'];
+		if( isset( $options['order'] ) ) 
+			$args['order'] = $options['order'];
+		if( isset( $options['offset'] ) ) 
+			$args['offset'] = intval( $options['offset'] );
 
 		return $args;
 	}
@@ -698,7 +701,7 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
 			'slider_carrousel'				=> '',
 		);
 		$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options );
-		if( isset( $all_classes[$element] ) && $all_classes[$element] ) {
+		if( ! empty( $all_classes[$element] ) ) {
 			if( $start_space ) $classes .= ' ';
 			$classes .= $all_classes[$element];
 			if( $end_space ) $classes .= ' ';

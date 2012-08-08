@@ -283,15 +283,17 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 
 if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 	function themeblvd_register_sidebars() {
+		
 		// Register default sidebars
 		$default_sidebars = themeblvd_get_sidebar_locations();
 		foreach( $default_sidebars as $sidebar ) {
 			register_sidebar( $sidebar['args'] );
 		}
 		
-		// Register custom sidebars
+		// Get custom sidebars
 		$custom_sidebars = get_posts( 'post_type=tb_sidebar&numberposts=-1&orderby=title&order=ASC' );
 		
+		// Register custom sidebars
 		foreach( $custom_sidebars as $sidebar ) {
 			$args = array(
 				'name' 			=> __( 'Custom: ', 'themeblvd' ).$sidebar->post_title,
@@ -305,7 +307,7 @@ if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 			if( $location && $location != 'floating' )
 				$args['description'] = sprintf( esc_attr__( 'This is a custom widget area to replace the %s on its assigned pages.', 'themeblvd' ), themeblvd_get_sidebar_location_name( $location ) );
 			else
-				$args['description'] = __( 'This is a custom floating widget area. ', 'themeblvd' );
+				$args['description'] = __( 'This is a custom floating widget area.', 'themeblvd' );
 			register_sidebar( $args );
 		}
 	}

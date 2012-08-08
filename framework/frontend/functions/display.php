@@ -146,14 +146,14 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 		$classes = 'header_logo header_logo_'.$option['type'];
 		if( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' )
 			$classes .= ' header_logo_text';
-		if( $option['type'] == 'custom' && isset( $option['custom_tagline'] ) && $option['custom_tagline'] )
+		if( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) )
 			$classes .= ' header_logo_has_tagline';
 		if( $option['type'] == 'title_tagline' )
 			$classes .= ' header_logo_has_tagline';
 		?>
 		<div class="<?php echo $classes; ?>">
 			<?php
-			if( is_array( $option ) && isset( $option['type'] ) ) {
+			if( ! empty( $option['type'] ) ) {
 				switch( $option['type'] ) {
 					case 'title' :
 						echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
@@ -169,7 +169,7 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 						break;
 					case 'image' :
 						$image_2x = '';
-						if( isset( $option['image_2x'] ) && $option['image_2x'] )
+						if( ! empty( $option['image_2x'] ) )
 							$image_2x = $option['image_2x'];
 						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
 						break;

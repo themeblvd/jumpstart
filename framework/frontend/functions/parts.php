@@ -429,29 +429,29 @@ if( ! function_exists( 'themeblvd_get_simple_contact' ) ) {
 		$icons = array();
 		$i = 1; // 6 possible icons
 		while ( $i <= 6 ) {
-			if( isset( $args['link_'.$i.'_url'] ) && $args['link_'.$i.'_url'] )
+			if( ! empty( $args['link_'.$i.'_url'] ) )
 				$icons[$args['link_'.$i.'_icon']] = $args['link_'.$i.'_url'];
 			$i++;
 		}
 		// Start Output
 		$module = '<ul class="simple-contact">';
 		// Phone #1
-		if( isset( $args['phone_1'] ) && $args['phone_1'] )
+		if( ! empty( $args['phone_1'] ) )
 			$module .= '<li class="phone">'.$args['phone_1'].'</li>';
 		// Phone #2
-		if( isset( $args['phone_2'] ) && $args['phone_2'] )
+		if( ! empty( $args['phone_2'] ) )
 			$module .= '<li class="phone">'.$args['phone_2'].'</li>';
 		// Email #1
-		if( isset( $args['email_1'] ) && $args['email_1'] )
+		if( ! empty( $args['email_1'] ) )
 			$module .= '<li class="email"><a href="mailto:'.$args['email_1'].'">'.$args['email_1'].'</a></li>';
 		// Email #2
-		if( isset( $args['email_2'] ) && $args['email_2'] )
+		if( ! empty( $args['email_2'] ) )
 			$module .= '<li class="email"><a href="mailto:'.$args['email_2'].'">'.$args['email_2'].'</a></li>';
 		// Contact Page
-		if( isset( $args['contact'] ) && $args['contact'] )
+		if( ! empty( $args['contact'] ) )
 			$module .= '<li class="contact"><a href="'.$args['contact'].'">'.themeblvd_get_local( 'contact_us' ).'</a></li>';
 		// Skype
-		if( isset( $args['skype'] ) && $args['skype'] )
+		if( ! empty( $args['skype'] ) )
 			$module .= '<li class="skype">'.$args['skype'].'</li>';
 		// Social Icons
 		if( ! empty( $icons ) ) {

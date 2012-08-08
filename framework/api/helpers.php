@@ -127,18 +127,18 @@ if( ! function_exists( 'themeblvd_setup' ) ) {
  *
  * @since 2.0.0
  *
- * @param string $group admin or frontend
- * @param string $feature feature key to check
- * @return boolean
+ * @param string $group Admin or frontend
+ * @param string $feature Feature key to check
+ * @return boolean $supports Whether feature is supported or not
  */
 
 if( ! function_exists( 'themeblvd_supports' ) ) {  
 	function themeblvd_supports( $group, $feature ) {
 		$setup = themeblvd_setup();
-		if( isset( $setup[$group][$feature] ) && $setup[$group][$feature] )
-			return true;
-		else
-			return false;
+		$supports = false;
+		if( ! empty( $setup[$group][$feature] ) )
+			$supports = true;
+		return $supports;
 	}
 }
 

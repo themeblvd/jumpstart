@@ -36,10 +36,12 @@ if( ! function_exists( 'themeblvd_elements' ) ) {
 		}
 		// Gather elements and only move forward if we have elements to show.
 		$elements = get_post_meta( $layout_id, 'elements', true );
-		if( is_array( $elements ) && isset( $elements[$location] ) && ! empty( $elements[$location] ) ) {
+		if( ! empty( $elements[$location] ) ) {
 			$elements = $elements[$location];
 			$num_elements = count($elements);
 		} else {
+			// If there are no elements in this location, 
+			// get us out of here!
 			return;
 		}
 
@@ -267,14 +269,14 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 			// Column Content
 			switch( $column['type'] ) {
 				case 'widget' :
-					if( isset( $column['sidebar'] ) && $column['sidebar'] ) {
+					if( ! empty( $column['sidebar'] ) ) {
 						echo '<div class="widget-area">';
 						dynamic_sidebar( $column['sidebar'] );
 						echo '</div><!-- .widget-area (end) -->';
 					}
 					break;
 				case 'page' :
-					if( isset( $column['page'] ) && $column['page'] ) {
+					if( ! empty( $column['page'] ) ) {
 						// Get WP internal ID for the page
 						$page_id = themeblvd_post_id_by_name( $column['page'], 'page' );
 						
@@ -618,7 +620,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		$location = $current_location;
 		
 		// Setup query args
-		if( isset( $options['query'] ) && $options['query'] ) {
+		if( ! empty( $options['query'] ) ) {
 			// Custom query string
 			$custom_query = html_entity_decode( $options['query'] );
 			$args = $custom_query;
@@ -733,7 +735,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		/* in helpers.php - May combine functions later )
 		/*------------------------------------------------------*/
 		
-		if( isset( $options['query'] ) && $options['query'] ) {
+		if( ! empty( $options['query'] ) ) {
 			
 			// Custom query string
 			$query_string = html_entity_decode( $options['query'] );
@@ -899,7 +901,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 			$height = ' style="height:'.$options['height'].'px"';
 		
 		// Tabs or pills?
-		if( isset( $options['setup']['nav'] ) )
+		if( ! empty( $options['setup']['nav'] ) )
 			$nav = explode( '_', $options['setup']['nav'] );
 		$nav_type = $nav[0];
 		$nav_location = $nav[1];
@@ -958,7 +960,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 						$content .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
 					break;
 				case 'widget' :
-					if( isset( $options[$key]['sidebar'] ) && $options[$key]['sidebar'] ) {
+					if( ! empty( $options[$key]['sidebar'] ) ) {
 						$content .= '<div class="widget-area">';
 						ob_start();
 						dynamic_sidebar( $options[$key]['sidebar'] );
@@ -1004,9 +1006,9 @@ if( ! function_exists( 'themeblvd_tweet' ) ) {
 		$iterations = 0;
 		$count = 1; // Being manually set currently
 		$output = '';		
-		isset( $options['meta'] ) ? $meta = $options['meta'] : $meta = 'show';
-		isset( $options['icon'] ) ? $icon = $options['icon'] : $icon = 'twitter';
-		isset( $options['replies'] ) ? $exclude_replies = $options['replies'] : $exclude_replies = 'no';
+		$meta = isset( $options['meta'] ) ? $options['meta'] : 'show';
+		$icon = isset( $options['icon'] ) ? $options['icon'] : 'twitter';
+		$exclude_replies = isset( $options['replies'] ) ? $options['replies'] : 'no';
 		
 		// Convert older icon option for those updating. 
 		switch( $icon ) {

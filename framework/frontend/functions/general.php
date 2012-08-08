@@ -246,7 +246,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 if( ! function_exists( 'themeblvd_featured_builder_classes' ) ) {
 	function themeblvd_featured_builder_classes( $elements, $area ) {
 		$classes = array();
-		if( is_array( $elements ) && isset( $elements[$area] ) && ! empty( $elements[$area] ) ) {
+		if( ! empty( $elements[$area] ) ) {
 			$classes[] = 'has_builder';
 			foreach( $elements[$area] as $element ) {
 				switch( $element['type'] ) {
@@ -819,7 +819,7 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 			$option_name = themeblvd_get_option_name();
 			$theme_options = get_option( $option_name );
 			if( isset( $theme_options['homepage_content'] ) && $theme_options['homepage_content'] == 'custom_layout' ) {
-				if( isset( $theme_options['homepage_custom_layout'] ) && $theme_options['homepage_custom_layout'] ) {
+				if( ! empty( $theme_options['homepage_custom_layout'] ) ) {
 					// Determine custom layout info
 					$builder = $theme_options['homepage_custom_layout'];
 					$layout_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );

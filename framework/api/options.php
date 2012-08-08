@@ -570,6 +570,7 @@ if( ! function_exists( 'themeblvd_get_option' ) ) {
 	function themeblvd_get_option( $primary, $seconday = null, $default = null ) {
 		global $_themeblvd_theme_settings; // We pull from a global array, so we're not using WordPress's get_option every single time.
 		$options = $_themeblvd_theme_settings;
+		$option = null;
 		if( isset( $options[$primary] ) ) {
 			if( $seconday ) {
 				if( is_array( $options[$primary] ) && isset( $options[$primary][$seconday] ) )
@@ -593,7 +594,6 @@ if( ! function_exists( 'themeblvd_get_option' ) ) {
 				}
 			}
 		}
-		if( ! isset( $option ) ) $option = null;
 		return $option;
 	}
 }
