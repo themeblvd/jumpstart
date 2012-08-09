@@ -350,16 +350,22 @@ add_filter( 'of_sanitize_logo', 'of_sanitize_logo' );
 /* Social Media Buttons */
 
 function of_sanitize_social_media( $input ) {
-	$output = array();
-	$value = null;
-	if( is_array( $input ) ) {
-		if( isset( $input['includes'] ) && ! empty( $input['includes'] ) ) {
+	if( ! empty( $input['sources'] ) ) {
+		// The option is being sent from the actual 
+		// Theme Options page and so it hasn't been 
+		// formatted yet.
+		$output = array();
+		if( ! empty( $input['includes'] ) ) {
 			foreach( $input['includes'] as $include ) {
-				if( isset( $input[$include] ) )	
-					$output[$include] = $input[$include];
+				if( isset( $input['sources'][$include] ) )	
+					$output[$include] = $input['sources'][$include];
 			}
 		}
-	}
+	} else {
+		// The option has already been formatted, 
+		// so let it on through.
+		$output = $input;
+	}	
 	return $output;
 }
 

@@ -204,7 +204,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		// file will be added to the option for the active theme.
 		
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $option_name, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
+			add_settings_error( $option_name, 'restore_defaults', __( 'Default options restored.', TB_GETTEXT_DOMAIN ), 'error fade' );
 			return of_get_default_values();
 		}
 		
@@ -214,25 +214,19 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		// the database.
 		 
 		if ( isset( $_POST['clear'] ) ) {
-			add_settings_error( $option_name, 'restore_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
+			add_settings_error( $option_name, 'restore_defaults', __( 'Options cleared from database.', TB_GETTEXT_DOMAIN ), 'error fade' );
 			return null;
 		}
 		 
-		// Udpdate Settings.
+		// Update Settings.
 		// 
-		// This runs through all registered options and sanitizes them. 
-		// However, the catch here that is a bit different than the 
-		// original options framework, is that we first check if each 
-		// option was present in the $input before adding it our sanitized 
-		// options to return.
-		//
-		// By doing this, when we save from the customizer, if it doesn't 
-		// include ALL registered options, it will not effect those options 
-		// upon saving that weren't included with the customizer.
-		 
+		// Basically, we're just looping through the current options 
+		// registered in this set and sanitizing each value from the 
+		// $input before sending back the final $clean array.
+				 
 		$clean = array();
 		$options = themeblvd_get_formatted_options();
-		foreach( $options as $option ) {
+		foreach( $options as $option ){
 
 			// Skip if we don't have an ID or type.
 			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) )
@@ -240,13 +234,6 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 			
 			// Make sure ID is formatted right.
 			$id = preg_replace( '/\W/', '', strtolower( $option['id'] ) );
-
-			// Skip if this is the customizer and current option wasn't 
-			// sent in the input. This current method means we can't have 
-			// any checkboxes or multichecks in the customizer.
-			// (something to fix later hopefully)
-			if( isset( $_POST['customized'] ) && ! isset( $input[$id] ) )
-				continue;
 
 			// Set checkbox to false if it wasn't sent in the $_POST
 			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) )
@@ -264,8 +251,8 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		}
 		
 		// Add update message for page re-fresh
-		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
-		
+		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', TB_GETTEXT_DOMAIN ), 'updated fade' );
+
 		// Return sanitized options
 		return $clean;
 	}
