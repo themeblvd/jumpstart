@@ -314,6 +314,12 @@ function of_sanitize_logo( $input ) {
 	
 	$output = array();
 	
+	// Delete logo-size transient, as user may be 
+	// inserting an image that is a new size. 
+	// The new dimensions will be calculated when 
+	// the site runs on the frontend the next time.
+	delete_transient( 'themeblvd_logo_size' );
+	
 	// Type 
 	if( is_array( $input ) && isset( $input['type'] ) )
 		$output['type'] = $input['type'];

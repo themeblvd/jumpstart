@@ -99,34 +99,7 @@ jQuery(document).ready(function($) {
 		name = classes.substr(classes.indexOf('menu-icon') + 10).split(' ')[0];
 		$(this).find('> a, > span').prepend('<i class="icon-'+name+'"></i>');
 	});
-	
-	// Create responsive navigation toggle similar to Bootstrap.
-	// Why not use bootstrap default functionality? Because it 
-	// works by adjusting the height of the navigation menu, 
-	// which does not account for the menu having any drop downs 
-	// within, and this won't work for us, unfortuantely.
-	/*
-	var target, collapse;
-	$('.btn-navbar').click(function(){
-		target = $(this).attr('data-target');
-		if( $(target).hasClass('open') )
-		{
-			// Toggle is open, so let's close it.
-			$(target).slideUp('fast');
-			$(target).removeClass('open');
-			$(target).addClass('closed');
-		}
-		else
-		{
-			// Toggle is closed, so let's open it.
-			$(target).slideDown('fast');
-			$(target).removeClass('closed');
-			$(target).addClass('open');
-		}
-		return false;
-	});
-	*/
-		
+			
 	// ---------------------------------------------------------
 	// No-click dropdowns
 	// ---------------------------------------------------------
@@ -270,17 +243,15 @@ jQuery(document).ready(function($) {
 	// Logo w/retina display support
 	// ---------------------------------------------------------
 	
-	var width, 
-		height,
-		image = $('.tb-image-logo img'),
+	var image = $('.tb-image-logo img'),
 		image_2x = image.attr('data-image-2x');
 	
-	// If a retina-otimized image was detected
-	if(image_2x)
+	// If a retina-otimized image was detected 
+	// and should be displayed
+	if(window.devicePixelRatio >= 2 && image_2x)
 	{
 		// Display 2x image w/fixed original width
 		image.attr({
-			width: image.width(),
 			src: image_2x
 		});
 	}

@@ -146,9 +146,17 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 						break;
 					case 'image' :
 						$image_2x = '';
+						$image_1x = $option['image'];
+						$img_size = get_transient( 'themeblvd_logo_size' );
+						if( ! $img_size ) {
+							echo 'transient is being set.';
+							$img_size = getimagesize( $image_1x );
+							set_transient( 'themeblvd_logo_size', $img_size ); // This is deleted every time user saves a logo option from wp admin
+						}
 						if( ! empty( $option['image_2x'] ) )
 							$image_2x = $option['image_2x'];
-						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
+						
+						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$image_1x.'" width="'.$img_size[0].'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
 						break;
 				}
 			}
