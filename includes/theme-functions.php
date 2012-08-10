@@ -15,19 +15,13 @@ require_once( get_template_directory() . '/includes/options.php' );
 
 if( ! function_exists( 'themeblvd_jumpstart_setup' ) ) {
 	function themeblvd_jumpstart_setup() {
-		
 		// Custom background support
-		// add_theme_support( 'custom-background' ); // Not supported in this theme.
-		
+		add_theme_support( 'custom-background' ); // Not supported in this theme.
 		// Post Formats
-		// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
-		
-		// Localization
-		load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
-		load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
+		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 	}
 }
-add_action( 'after_setup_theme', 'themeblvd_jumpstart_setup' );
+// add_action( 'after_setup_theme', 'themeblvd_jumpstart_setup' ); // Not used in Jump Start
 
 /**
  * Jump Start CSS Files

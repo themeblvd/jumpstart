@@ -1035,13 +1035,13 @@ if( ! function_exists( 'themeblvd_deregister_stylesheets' ) ) {
 }
 
 /**
- * Register Image Sizes
+ * Load theme text domains
  *
  * @since 2.2.0
  */
 
-if( ! function_exists( 'themeblvd_textdomain' ) ) {
-	function themeblvd_textdomain() {
+if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
+	function themeblvd_load_theme_textdomain() {
 		load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
 		load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
 	}

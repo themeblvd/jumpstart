@@ -48,6 +48,11 @@ if( ! function_exists( 'jumpstart_customizer_init' ) ) {
 }
 add_action( 'customize_register', 'jumpstart_customizer_init' );
 
+/**
+ * Setup javascript needed for customizer to link up 
+ * to real-time edit options.
+ */
+
 if( ! function_exists( 'jumpstart_customizer_preview' ) ) {
 	function jumpstart_customizer_preview() {
 		// Begin output	
