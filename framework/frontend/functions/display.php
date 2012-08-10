@@ -149,7 +149,6 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 						$image_1x = $option['image'];
 						$img_size = get_transient( 'themeblvd_logo_size' );
 						if( ! $img_size ) {
-							echo 'transient is being set.';
 							$img_size = getimagesize( $image_1x );
 							set_transient( 'themeblvd_logo_size', $img_size ); // This is deleted every time user saves a logo option from wp admin
 						}
