@@ -150,6 +150,7 @@ function setup_themeblvd_post_meta() {
 				'id'		=> '_tb_breadcrumbs',
 				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
 				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this post or not.', 'themeblvd' ),
+				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options'	=> array(
 					'default' => __( 'Use default setting.', 'themeblvd' ),
