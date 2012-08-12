@@ -1,0 +1,161 @@
+/* =Small Desktops
+------------------------------------------------- */
+
+@media (max-width: 1000px) {
+	#access li {
+		border-right: none;
+	}
+}
+
+/* =Optimized for Tablets
+------------------------------------------------- */
+
+@media (max-width: 768px) {	
+	
+	/* Primary Structure */
+	#top,
+	#featured,
+	#main,
+	#featured_below,
+	#bottom {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+	
+	/* Header */
+	#branding {
+		border-bottom: 1px solid #eeeeee;	
+	}
+	#branding .header_logo {
+		float: none;
+		text-align: center;
+	}
+	
+	/**
+	 * Primary Navigation (graphic) 
+	 * This is needed if you've selected either of 
+	 * the graphic options from Theme Options for 
+	 * mobile navigation. 
+	 */
+	#access {
+		margin-bottom: 10px;
+	}
+	#access li {
+		float: none;
+		padding: 0;
+	}
+	#access li li a { 
+		padding-left: 20px; 
+	}
+	#access li li li a { 
+		padding-left: 30px;
+	}
+	#access .sf-menu ul {
+		border: none;
+		margin: 0; 
+		position: static; 
+		width: auto;
+	}
+	#access .sf-menu ul .sf-sub-indicator.icon-caret-right {
+		position: static;
+		right: inherit;
+	}
+	#access .sf-menu ul .sf-sub-indicator.icon-caret-right:before {
+		content: "\f0d7";
+	}
+	
+	/**
+	 * Primary Navigation (toggle graphic) 
+	 * This is only used if you've selected to show 
+	 * a graphic navigation for mobile that toggles on/off.
+	 */
+	.mobile_nav_toggle_graphic .btn-navbar {
+		display: block;
+		outline: none;
+		padding: 7px 10px;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	.mobile_nav_toggle_graphic #access {
+		display: none;
+	}
+	
+	/**
+	 * Primary Navigation (select menu)
+	 * This only gets applied if the user has selected to 
+	 * show select menu from Theme Options for mobile navigation.
+	 */ 
+	.mobile_nav_select #access {
+		display:none;
+	}
+	.mobile_nav_select .responsive-nav {
+		display: block;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+}
+
+/* =Optimized for Mobile Devices
+------------------------------------------------- */
+
+@media (max-width: 515px) {
+	
+	/* Primary Structure */
+	#container {
+		padding: 0 5px;
+	}
+	
+	/* Typography */
+	h1 {
+	  font-size: 24px;
+	  line-height: 1.3em;
+	}
+	
+	/* Header */
+	.mobile_nav_toggle_graphic .btn-navbar {
+		top: 7px;
+		right: 2px;
+	}
+
+	/* Builder - Slogan */
+	.element-slogan .has_button .btn-large {
+		display: block;
+		float: none;
+		margin: 0 0 10px 0;
+	}
+	.element-slogan .slogan .slogan-text { 
+		display: block;
+		font-size: 1.3em;
+		text-align: center;
+	}
+
+	/* Builder - Divider */
+	.divider-shadow {
+		background-size:100%;
+	}
+	
+	/* Posts */
+	.attachment-small {
+		width: 40%;
+	}
+	
+	/* Comments */
+	#comments {
+		font-size: .85em;
+	}
+	#comments .comment-body {
+		padding: 2px 10px;
+	}
+	#comments .comment-author,
+	#comments .comment-meta {
+		padding-left: 35px;
+	}
+	#comments .comment-body .avatar {
+		top: 5px;
+		left: 5px;
+		width: 30px;
+		height: 30px;
+	}
+}
