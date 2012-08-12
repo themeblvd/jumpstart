@@ -1,13 +1,14 @@
 <?php 
 header("Content-Type:text/javascript");
 
-//Setup URL to WordPres
+// Setup path to WordPres
 $absolute_path = __FILE__;
+echo $absolute_path;
 $path_to_wp = explode( 'wp-content', $absolute_path );
 $wp_url = $path_to_wp[0];
 
-//Access WordPress
-require_once( $wp_url.'/wp-load.php' );
+// Access WordPress
+require_once( $wp_url.'wp-load.php' );
 
 //URL to TinyMCE plugin folder
 $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
