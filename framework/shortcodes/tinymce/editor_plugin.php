@@ -3,7 +3,6 @@ header("Content-Type:text/javascript");
 
 // Setup path to WordPres
 $absolute_path = __FILE__;
-echo $absolute_path;
 $path_to_wp = explode( 'wp-content', $absolute_path );
 $wp_url = $path_to_wp[0];
 
