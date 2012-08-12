@@ -52,7 +52,7 @@ function themeblvd_footer_after() { do_action( 'themeblvd_footer_after' ); } // 
 function themeblvd_content_top() { do_action( 'themeblvd_content_top' ); }
 function themeblvd_blog_meta() { do_action( 'themeblvd_blog_meta' ); }
 function themeblvd_blog_tags() { do_action( 'themeblvd_blog_tags' ); }
-function themeblvd_the_post_thumbnail( $location = 'primary', $size = '', $link = true ) { do_action( 'themeblvd_the_post_thumbnail', $location, $size, $link ); }
+function themeblvd_the_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) { do_action( 'themeblvd_the_post_thumbnail', $location, $size, $link, $allow_filters, $gallery ); }
 function themeblvd_blog_content( $type ) { do_action( 'themeblvd_blog_content', $type ); }
 function themeblvd_single_footer() { do_action( 'themeblvd_single_footer' ); }
 function themeblvd_page_footer() { do_action( 'themeblvd_page_footer' );}

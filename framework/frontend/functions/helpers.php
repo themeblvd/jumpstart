@@ -17,7 +17,7 @@
  */
 
 if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
-	function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true ) {
+	function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
 		global $post;
 		$attachment_id = get_post_thumbnail_id( $post->ID );
 		$conditionals = apply_filters( 'thumbnail_conditionals', array( 'home', 'template_list.php', 'single', 'search', 'archive' ) );
@@ -90,15 +90,21 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 						break;
 					case 'thumbnail' :
 						$link_url = wp_get_attachment_url( $attachment_id );
-						$link_target = ' rel="featured_themeblvd_lightbox[gallery]"';
+						$link_target = ' rel="featured_themeblvd_lightbox"';
+						if( $gallery )
+							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						break;
 					case 'image' :
 						$link_url = get_post_meta( $post->ID, '_tb_image_link', true );
-						$link_target = ' rel="featured_themeblvd_lightbox[gallery]"';
+						$link_target = ' rel="featured_themeblvd_lightbox"';
+						if( $gallery )
+							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						break;
 					case 'video' :
 						$link_url = get_post_meta( $post->ID, '_tb_video_link', true );
-						$link_target = ' rel="featured_themeblvd_lightbox[gallery]"';
+						$link_target = ' rel="featured_themeblvd_lightbox"';
+						if( $gallery )
+							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						break;
 					case 'external' :
 						$link_url = get_post_meta( $post->ID, '_tb_external_link', true );
@@ -108,7 +114,6 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 						$link_target = ' target="'.$target.'"';
 						break;
 				}
-				if( is_single() ) $link_target = str_replace('[gallery]', '', $link_target );
 				$end_link = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';
 				$end_link = apply_filters( 'themeblvd_image_overlay', $end_link );
 			} else {

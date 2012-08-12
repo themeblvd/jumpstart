@@ -645,8 +645,8 @@ if( ! function_exists( 'themeblvd_blog_tags_default' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
-	function themeblvd_the_post_thumbnail_default( $location, $size, $link ) {
-		echo themeblvd_get_post_thumbnail( $location, $size, $link );
+	function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
+		echo themeblvd_get_post_thumbnail( $location, $size, $link, $allow_filters, $gallery );
 	}
 }
 
