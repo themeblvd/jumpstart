@@ -1,11 +1,7 @@
 <?php
 /**
- * The default template for displaying content in blogroll.
+ * The default template for displaying a single attachment.
  */
-global $location;
-global $size;
-global $content;
-global $show_meta;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">

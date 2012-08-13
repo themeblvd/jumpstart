@@ -32,10 +32,8 @@ if( $template_part == 'grid' || $template_part == 'index_grid' ) {
 	$rows = themeblvd_get_option( 'archive_grid_rows' );
 	if( ! $rows ) $rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
 	// Thumbnail size
-	$size = themeblvd_grid_class( $columns );
-	$crop = get_post_meta( $post->ID, 'crop', true );
-	if( ! $crop )
-		$crop = $size;
+	$tb_size = themeblvd_grid_class( $columns );
+	$tb_crop = apply_filters( 'themeblvd_archive_grid_crop_size', $tb_size );
 	
 } else {
 	
@@ -43,7 +41,7 @@ if( $template_part == 'grid' || $template_part == 'index_grid' ) {
 	/* Standard Blog archive setup (post list)
 	/*------------------------------------------------------*/
 	
-	$content = themeblvd_get_option( 'archive_content' );
+	$tb_content = themeblvd_get_option( 'archive_content' );
 }
 
 // Header

@@ -17,7 +17,7 @@
 // global $_themeblvd_config;
 // echo '<pre>'; print_r($_themeblvd_config); echo "</pre>"; // Debug
 $homepage_content = themeblvd_get_option( 'homepage_content', null, 'posts' );
-$content = themeblvd_get_option( 'blog_content', null, 'content' );
+$tb_content = themeblvd_get_option( 'blog_content', null, 'content' );
 
 // In displaying the homepage, we need to first figure out if a custom layout
 // should show or we're going to list out posts. If the user were to apply a 
@@ -54,7 +54,8 @@ if( $homepage_content == 'custom_layout' ) {
 		$rows = themeblvd_get_option( 'index_grid_rows' );
 		if( ! $rows ) $rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
 		// Thumbnail size
-		$size = themeblvd_grid_class( $columns );
+		$tb_size = themeblvd_grid_class( $columns );
+		$tb_crop = apply_filters( 'themeblvd_index_grid_crop_size', $tb_size );
 		// Re-Build query string
 		$query_string = '';
 		// Categories
@@ -81,7 +82,7 @@ if( $homepage_content == 'custom_layout' ) {
 		/*------------------------------------------------------*/
 		
 		$query_string = themeblvd_query_string();
-		$content = themeblvd_get_option( 'blog_content', null, 'content' );
+		$tb_content = themeblvd_get_option( 'blog_content', null, 'content' );
 	
 	}
 	

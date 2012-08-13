@@ -15,7 +15,7 @@
  * @package 	Theme Blvd WordPress Framework
  */
 
-$content = themeblvd_get_option( 'archive_content', null, 'excerpt' );
+$tb_content = themeblvd_get_option( 'archive_content', null, 'excerpt' );
 
 get_header(); 
 ?>

@@ -3,9 +3,9 @@
  * The default template for displaying content in blogroll.
  */
 global $post;
-global $location;
-global $size;
-global $content;
+global $tb_location;
+global $tb_size;
+global $tb_content;
 global $show_meta;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -16,7 +16,7 @@ global $show_meta;
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php themeblvd_the_post_thumbnail( $location, $size ); ?>
+		<?php themeblvd_the_post_thumbnail( $tb_location, $tb_size ); ?>
 		<?php the_content(); ?>
 		<?php themeblvd_blog_tags(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>

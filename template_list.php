@@ -39,7 +39,7 @@ if( $custom_query_string ) {
 
 // How to display blog content, carried into 
 // editable content file (default: content-list.php).
-$content = themeblvd_get_option( 'blog_content', null, 'content' );
+$tb_content = themeblvd_get_option( 'blog_content', null, 'content' );
 
 // Header
 get_header(); 
