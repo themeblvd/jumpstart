@@ -36,7 +36,7 @@ if( ! function_exists( 'themeblvd_elements' ) ) {
 		}
 		// Gather elements and only move forward if we have elements to show.
 		$elements = get_post_meta( $layout_id, 'elements', true );
-		if( ! empty( $elements[$location] ) ) {
+		if( ! empty( $elements ) && ! empty( $elements[$location] ) ) {
 			$elements = $elements[$location];
 			$num_elements = count($elements);
 		} else {

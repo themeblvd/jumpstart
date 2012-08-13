@@ -136,7 +136,7 @@ if( ! function_exists( 'themeblvd_supports' ) ) {
 	function themeblvd_supports( $group, $feature ) {
 		$setup = themeblvd_setup();
 		$supports = false;
-		if( ! empty( $setup[$group][$feature] ) )
+		if( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) )
 			$supports = true;
 		return $supports;
 	}

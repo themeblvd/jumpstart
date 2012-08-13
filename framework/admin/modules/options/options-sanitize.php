@@ -356,7 +356,7 @@ add_filter( 'of_sanitize_logo', 'of_sanitize_logo' );
 /* Social Media Buttons */
 
 function of_sanitize_social_media( $input ) {
-	if( ! empty( $input['sources'] ) ) {
+	if( ! empty( $input ) && ! empty( $input['sources'] ) ) {
 		// The option is being sent from the actual 
 		// Theme Options page and so it hasn't been 
 		// formatted yet.

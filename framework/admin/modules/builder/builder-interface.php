@@ -260,7 +260,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 							<span class="label"><?php _e( 'Featured Above', 'themeblvd' ); ?></span>
 							<div class="sortable">
 								<?php
-								if( ! empty( $layout_elements['featured'] ) ) {
+								if( ! empty( $layout_elements ) && ! empty( $layout_elements['featured'] ) ) {
 									foreach( $layout_elements['featured'] as $id => $element ) {
 										if( themeblvd_is_element( $element['type'] ) ) {
 											builder_blvd_edit_element( $element['type'], $id, $element['options'] );
@@ -275,7 +275,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 							<span class="label"><?php _e( 'Primary Area', 'themeblvd' ); ?></span>
 							<div class="sortable">
 								<?php
-								if( ! empty( $layout_elements['primary'] ) ) {
+								if( ! empty( $layout_elements ) && ! empty( $layout_elements['primary'] ) ) {
 									foreach( $layout_elements['primary'] as $id => $element ) {
 										if( themeblvd_is_element( $element['type'] ) ) {
 											builder_blvd_edit_element( $element['type'], $id, $element['options'] );
@@ -290,7 +290,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 							<span class="label"><?php _e( 'Featured Below', 'themeblvd' ); ?></span>
 							<div class="sortable">
 								<?php
-								if( ! empty( $layout_elements['featured_below'] ) ) {
+								if( ! empty( $layout_elements ) && ! empty( $layout_elements['featured_below'] ) ) {
 									foreach( $layout_elements['featured_below'] as $id => $element ) {
 										if( themeblvd_is_element( $element['type'] ) ) {
 											builder_blvd_edit_element( $element['type'], $id, $element['options'] );

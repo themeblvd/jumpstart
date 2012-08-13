@@ -187,7 +187,7 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 									</select>
 								<?php endif; ?>
 							</div><!-- .slide-section (end) -->
-							<?php if( ! empty( $slider_types[$slider_type]['elements'] ) ) : ?>
+							<?php if( ! empty( $slider_types ) && ! empty( $slider_types[$slider_type]['elements'] ) ) : ?>
 								<div class="slide-section">
 									<h4><?php _e( 'Would you like to include additional elements?', 'themeblvd' ); ?></h4>
 									<table class="widefat slide-elements">
