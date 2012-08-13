@@ -266,14 +266,14 @@ if( ! function_exists( 'themeblvd_shortcode_button' ) ) {
 	function themeblvd_shortcode_button( $atts, $content = null ) {
 		$output = '';
 		$default = array(
-            'link' => 'http://www.google.com',
-            'color' => 'default',
-            'target' => '_self',
-            'size' => 'small',
-            'class' => '',
-            'title' => '',
-            'icon_before' => '',
-            'icon_after' => ''
+            'link' 			=> 'http://www.google.com',
+            'color' 		=> 'default',
+            'target' 		=> '_self',
+            'size' 			=> 'small',
+            'class' 		=> '',
+            'title' 		=> '',
+            'icon_before' 	=> '',
+            'icon_after' 	=> ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
 	    $output = themeblvd_button( $content, $link, $color, $target, $size, $class, $title, $icon_before, $icon_after );
@@ -297,8 +297,8 @@ if( ! function_exists( 'themeblvd_shortcode_box' ) ) {
 		$output = '';
 		$has_icon = '';
 		$default = array(
-            'style' => 'blue', // blue, green, grey, orange, purple, red, teal, yellow
-            'icon' => ''
+            'style' 	=> 'blue', // blue, green, grey, orange, purple, red, teal, yellow
+            'icon' 		=> ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
 	    // Classes
@@ -516,11 +516,11 @@ add_shortcode( 'icon', 'themeblvd_shortcode_icon' );
 if( ! function_exists( 'themeblvd_shortcode_icon_link' ) ) {
 	function themeblvd_shortcode_icon_link( $atts, $content = null ) {	    
 	    $default = array(
-            'icon' => '', // alert, approved, camera, cart, doc, download, media, note, notice, quote, warning
-            'link' => 'http://www.google.com',
-            'target' => '_self',
-            'class' => '',
-            'title' => ''
+            'icon' 		=> '', // alert, approved, camera, cart, doc, download, media, note, notice, quote, warning
+            'link' 		=> 'http://www.google.com',
+            'target' 	=> '_self',
+            'class' 	=> '',
+            'title' 	=> ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
 	    
@@ -642,7 +642,7 @@ add_shortcode( 'label', 'themeblvd_shortcode_label' );
 if( ! function_exists( 'themeblvd_shortcode_vector_icon' ) ) {
 	function themeblvd_shortcode_vector_icon( $atts ) {
 	   	$default = array(
-            'icon' => 'pencil',
+            'icon' 	=> 'pencil',
             'size'	=> ''
 	    );
 	    extract( shortcode_atts( $default, $atts ) );
@@ -803,7 +803,7 @@ if( ! function_exists( 'themeblvd_shortcode_slider' ) ) {
 add_shortcode( 'slider', 'themeblvd_shortcode_slider' );
 
 /**
- * Grid List
+ * Post Grid Slider
  *
  * @since 2.0.0
  *
@@ -813,35 +813,35 @@ add_shortcode( 'slider', 'themeblvd_shortcode_slider' );
 if( ! function_exists( 'themeblvd_shortcode_post_grid_slider' ) ) {
 	function themeblvd_shortcode_post_grid_slider( $atts ) {
 		$default = array(
-            'fx' => 'slide', 			// fx: Transition of slider - fade, slide
-            'timeout' => 0, 			// timeout: Seconds in between transitions, 0 for no auto-advancing
-            'nav_standard' => 1, 		// nav_standard: Show standard nav dots to control slider - true or false
-            'nav_arrows' => 1, 			// nav_arrows: Show directional arrows to control slider - true or false
-            'pause_play' => 1, 			// pause_play: Show pause/play button - true or false
-            'categories' => '',			// categories: Categories to include, category slugs separated by commas, or blank for all categories
-            'columns' => 3,				// columns: Number of posts per row
-            'rows' => 3,				// rows: Number of rows per slide
-            'numberposts' => -1,		// numberposts: Total number of posts, -1 for all posts
-            'orderby' => 'post_date',	// orderby: post_date, title, comment_count, rand
-            'order' => 'DESC',			// order: DESC, ASC
-            'offset' => 0,				// offset: Number of posts to offset off the start, defaults to 0
-            'crop'	=> ''				// crop: Can manually enter a featured image crop size
+            'fx' 			=> 'slide', 	// fx: Transition of slider - fade, slide
+            'timeout' 		=> 0, 			// timeout: Seconds in between transitions, 0 for no auto-advancing
+            'nav_standard' 	=> 1, 			// nav_standard: Show standard nav dots to control slider - true or false
+            'nav_arrows' 	=> 1, 			// nav_arrows: Show directional arrows to control slider - true or false
+            'pause_play' 	=> 1, 			// pause_play: Show pause/play button - true or false
+            'categories' 	=> '',			// categories: Categories to include, category slugs separated by commas, or blank for all categories
+            'columns' 		=> 3,			// columns: Number of posts per row
+            'rows' 			=> 3,			// rows: Number of rows per slide
+            'numberposts' 	=> -1,			// numberposts: Total number of posts, -1 for all posts
+            'orderby' 		=> 'post_date',	// orderby: post_date, title, comment_count, rand
+            'order' 		=> 'DESC',		// order: DESC, ASC
+            'offset' 		=> 0,			// offset: Number of posts to offset off the start, defaults to 0
+            'crop'			=> ''			// crop: Can manually enter a featured image crop size
 	    ); 
 	    extract( shortcode_atts( $default, $atts ) );
 	    // Generate unique ID
 		$id = uniqid( 'grid_'.rand() );
 	    // Build $options array compatible to element's function
 	    $options = array(
-	    	'fx' => $fx,
-	    	'timeout' => $timeout,
-            'categories' => array('all' => 0),
-            'columns' => $columns,
-            'rows' => $rows,
-            'numberposts' => $numberposts,
-            'orderby' => $orderby,
-            'order' => $order,
-            'offset' => $offset,
-            'crop' => $crop
+            'fx' 			=> $fx,
+            'timeout' 		=> $timeout,
+            'categories' 	=> array('all' => 0),
+            'columns' 		=> $columns,
+            'rows' 			=> $rows,
+            'numberposts' 	=> $numberposts,
+            'orderby' 		=> $orderby,
+            'order' 		=> $order,
+            'offset' 		=> $offset,
+            'crop' 			=> $crop
 	    );
 	    
 	    // Add in the booleans
@@ -903,34 +903,35 @@ add_shortcode( 'post_grid_slider', 'themeblvd_shortcode_post_grid_slider' );
 if( ! function_exists( 'themeblvd_shortcode_post_list_slider' ) ) {
 	function themeblvd_shortcode_post_list_slider( $atts ) {
 		$default = array(
-            'fx' => 'slide', 				// fx: Transition of slider - fade, slide
-            'timeout' => 0, 				// timeout: Seconds in between transitions, 0 for no auto-advancing
-            'nav_standard' => 1, 			// nav_standard: Show standard nav dots to control slider - true or false
-            'nav_arrows' => 1, 				// nav_arrows: Show directional arrows to control slider - true or false
-            'pause_play' => 1, 				// pause_play: Show pause/play button - true or false
-            'categories' => '',				// categories: Categories to include, category slugs separated by commas, or blank for all categories
-            'thumbs' => 'default',			// thumbs: Size of post thumbnails - default, small, full, hide
-            'post_content' => 'default',	// content: Show excerpts or full content - default, content, excerpt
-            'posts_per_slide' => 3,			// posts_per_slide: Number of posts per slide.
-            'numberposts' => -1,			// numberposts: Total number of posts, -1 for all posts
-            'orderby' => 'post_date',		// orderby: post_date, title, comment_count, rand
-            'order' => 'DESC',				// order: DESC, ASC
-            'offset' => 0					// offset: Number of posts to offset off the start, defaults to 0
+            'fx' 				=> 'slide', 	// fx: Transition of slider - fade, slide
+            'timeout' 			=> 0, 			// timeout: Seconds in between transitions, 0 for no auto-advancing
+            'nav_standard' 		=> 1, 			// nav_standard: Show standard nav dots to control slider - true or false
+            'nav_arrows' 		=> 1, 			// nav_arrows: Show directional arrows to control slider - true or false
+            'pause_play' 		=> 1, 			// pause_play: Show pause/play button - true or false
+            'categories' 		=> '',			// categories: Categories to include, category slugs separated by commas, or blank for all categories
+            'thumbs' 			=> 'default',	// thumbs: Size of post thumbnails - default, small, full, hide
+            'post_content' 		=> 'default',	// content: Show excerpts or full content - default, content, excerpt
+            'posts_per_slide' 	=> 3,			// posts_per_slide: Number of posts per slide.
+            'numberposts' 		=> -1,			// numberposts: Total number of posts, -1 for all posts
+            'orderby' 			=> 'post_date',	// orderby: post_date, title, comment_count, rand
+            'order' 			=> 'DESC',		// order: DESC, ASC
+            'offset' 			=> 0			// offset: Number of posts to offset off the start, defaults to 0
 	    ); 
 	    extract( shortcode_atts( $default, $atts ) );	    
 	    // Generate unique ID
 		$id = uniqid( 'list_'.rand() );
 	    // Build $options array compatible to element's function
 	    $options = array(
-	    	'timeout' => $timeout,
-            'categories' => array('all' => 0),
-			'thumbs' => $thumbs,	
-			'content' => $post_content,
-			'posts_per_slide' => $posts_per_slide,
-            'numberposts' => $numberposts,
-            'orderby' => $orderby,
-            'order' => $order,
-            'offset' => $offset
+            'fx' 				=> $fx,
+            'timeout' 			=> $timeout,
+            'categories' 		=> array('all' => 0),
+            'thumbs' 			=> $thumbs,	
+            'content' 			=> $post_content,
+            'posts_per_slide' 	=> $posts_per_slide,
+            'numberposts' 		=> $numberposts,
+            'orderby' 			=> $orderby,
+            'order' 			=> $order,
+            'offset' 			=> $offset
 	    );
 	    
 	    // Add in the booleans
@@ -996,34 +997,34 @@ add_shortcode( 'post_list_slider', 'themeblvd_shortcode_post_list_slider' );
 if( ! function_exists( 'themeblvd_shortcode_post_grid' ) ) {
 	function themeblvd_shortcode_post_grid( $atts ) {
 		$default = array(
-            'categories' => '',					// categories: Categories to include, category slugs separated by commas, or blank for all categories
-            'columns' => 3,						// columns: Number of posts per row
-            'rows' => 3,						// rows: Number of rows per slide
-            'orderby' => 'post_date',			// orderby: post_date, title, comment_count, rand
-            'order' => 'DESC',					// order: DESC, ASC
-            'offset' => 0,						// offset: Number of posts to offset off the start, defaults to 0
-            'query' => '',						// custom query string
-            'crop'	=> '',						// crop: Can manually enter a featured image crop size
-            'link' => 0,						// link: Show link after posts, true or false
-            'link_text' => 'View All Posts', 	// link_text: Text for the link
-            'link_url' => 'http://google.com',	// link_url: URL where link should go
-            'link_target' => '_self' 			// link_target: Where link opens - _self, _blank
+            'categories' 	=> '',					// categories: Categories to include, category slugs separated by commas, or blank for all categories
+            'columns' 		=> 3,					// columns: Number of posts per row
+            'rows' 			=> 3,					// rows: Number of rows per slide
+            'orderby' 		=> 'post_date',			// orderby: post_date, title, comment_count, rand
+            'order' 		=> 'DESC',				// order: DESC, ASC
+            'offset' 		=> 0,					// offset: Number of posts to offset off the start, defaults to 0
+            'query' 		=> '',					// custom query string
+            'crop'			=> '',					// crop: Can manually enter a featured image crop size
+            'link' 			=> 0,					// link: Show link after posts, true or false
+            'link_text' 	=> 'View All Posts', 	// link_text: Text for the link
+            'link_url' 		=> 'http://google.com',	// link_url: URL where link should go
+            'link_target' 	=> '_self' 				// link_target: Where link opens - _self, _blank
 	    ); 
 	    extract( shortcode_atts( $default, $atts ) );
 	    
 	    // Build $options array compatible to element's function
 	    $options = array(
-            'categories' => array('all' => 0),
-            'columns' => $columns,
-            'rows' => $rows,
-            'orderby' => $orderby,
-            'order' => $order,
-            'offset' => $offset,
-            'crop' => $crop,
-            'query' => $query,
-            'link_text' => $link_text,
-            'link_url' => $link_url,
-            'link_target' => $link_target
+            'categories' 	=> array('all' => 0),
+            'columns' 		=> $columns,
+            'rows' 			=> $rows,
+            'orderby' 		=> $orderby,
+            'order' 		=> $order,
+            'offset' 		=> $offset,
+            'crop' 			=> $crop,
+            'query' 		=> $query,
+            'link_text' 	=> $link_text,
+            'link_url' 		=> $link_url,
+            'link_target' 	=> $link_target
 	    );
 	    
 	    // Add in the booleans
@@ -1071,35 +1072,34 @@ add_shortcode( 'post_grid', 'themeblvd_shortcode_post_grid' );
 if( ! function_exists( 'themeblvd_shortcode_post_list' ) ) {
 	function themeblvd_shortcode_post_list( $atts ) {
 		$default = array(
-            'categories' => '',					// categories: Categories to include, category slugs separated by commas, or blank for all categories
-			'thumbs' => 'default',				// thumbs: Size of post thumbnails - default, small, full, hide
-			'post_content' => 'default',		// content: Show excerpts or full content - default, content, excerpt
-			'numberposts' => 3,					// numberposts: Total number of posts, -1 for all posts            
-            'orderby' => 'post_date',			// orderby: post_date, title, comment_count, rand
-            'order' => 'DESC',					// order: DESC, ASC
-            'offset' => 0,						// offset: Number of posts to offset off the start, defaults to 0
-            'link' => 0,						// link: Show link after posts, true or false
-            'link_text' => 'View All Posts', 	// link_text: Text for the link
-            'link_url' => 'http://google.com',	// link_url: URL where link should go
-            'link_target' => '_self', 			// link_target: Where link opens - _self, _blank
-            'query' => '' 						// custom query string
+            'categories' 	=> '',					// categories: Categories to include, category slugs separated by commas, or blank for all categories
+			'thumbs' 		=> 'default',			// thumbs: Size of post thumbnails - default, small, full, hide
+			'post_content' 	=> 'default',			// content: Show excerpts or full content - default, content, excerpt
+			'numberposts' 	=> 3,					// numberposts: Total number of posts, -1 for all posts            
+            'orderby' 		=> 'post_date',			// orderby: post_date, title, comment_count, rand
+            'order' 		=> 'DESC',				// order: DESC, ASC
+            'offset' 		=> 0,					// offset: Number of posts to offset off the start, defaults to 0
+            'link'			=> 0,					// link: Show link after posts, true or false
+            'link_text' 	=> 'View All Posts', 	// link_text: Text for the link
+            'link_url' 		=> 'http://google.com',	// link_url: URL where link should go
+            'link_target' 	=> '_self', 			// link_target: Where link opens - _self, _blank
+            'query' 		=> '' 					// custom query string
 	    ); 
 	    extract( shortcode_atts( $default, $atts ) );
 	    
 	    // Build $options array compatible to element's function
 	    $options = array(
-            'categories' => array('all' => 0),
-            'thumbs' => $thumbs,
-			'content' => $post_content,
-			'numberposts' => $numberposts,
-            'orderby' => $orderby,
-            'order' => $order,
-            'offset' => $offset,
-            'query' => $query,
-            'link_text' => $link_text,
-            'link_url' => $link_url,
-            'link_target' => $link_target
             'categories' 	=> array('all' => 0),
+            'thumbs' 		=> $thumbs,
+            'content' 		=> $post_content,
+            'numberposts' 	=> $numberposts,
+            'orderby' 		=> $orderby,
+            'order' 		=> $order,
+            'offset' 		=> $offset,
+            'query' 		=> $query,
+            'link_text' 	=> $link_text,
+            'link_url' 		=> $link_url,
+            'link_target' 	=> $link_target
 	    );
 	    
 	    // Add in the booleans
@@ -1149,15 +1149,15 @@ if( ! function_exists( 'themeblvd_shortcode_mini_post_grid' ) ) {
 	function themeblvd_shortcode_mini_post_grid( $atts ) {
 		// Default shortcode atts
 		$default = array(
-		    'categories' => '',					// categories: Categories to include, category slugs separated by commas, or blank for all categories
-			'numberposts' => 4,					// numberposts: Total number of posts, -1 for all posts         
-		    'orderby' => 'post_date',			// orderby: post_date, title, comment_count, rand
-		    'order' => 'DESC',					// order: DESC, ASC
-		    'offset' => 0,						// offset: Number of posts to offset off the start, defaults to 0
-		    'query' => '',						// custom query string
-		    'thumb' => 'smaller',				// thumbnail size - small, smaller, or smallest
-		    'align' => 'left',					// alignment of grid - left, right, or center
-		    'gallery' => ''						// post ID to pull gallery attachments from, only used if not blank
+		    'categories' 	=> '',			// categories: Categories to include, category slugs separated by commas, or blank for all categories
+			'numberposts' 	=> 4,			// numberposts: Total number of posts, -1 for all posts         
+		    'orderby' 		=> 'post_date',	// orderby: post_date, title, comment_count, rand
+		    'order' 		=> 'DESC',		// order: DESC, ASC
+		    'offset' 		=> 0,			// offset: Number of posts to offset off the start, defaults to 0
+		    'query' 		=> '',			// custom query string
+		    'thumb' 		=> 'smaller',	// thumbnail size - small, smaller, or smallest
+		    'align' 		=> 'left',		// alignment of grid - left, right, or center
+		    'gallery' 		=> ''			// post ID to pull gallery attachments from, only used if not blank
 		); 
 		extract( shortcode_atts( $default, $atts ) );
 		// Build query
