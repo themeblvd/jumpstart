@@ -33,6 +33,9 @@ if( $template_part == 'grid' || $template_part == 'index_grid' ) {
 	if( ! $rows ) $rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
 	// Thumbnail size
 	$size = themeblvd_grid_class( $columns );
+	$crop = get_post_meta( $post->ID, 'crop', true );
+	if( ! $crop )
+		$crop = $size;
 	
 } else {
 	
