@@ -204,7 +204,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		// file will be added to the option for the active theme.
 		
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $option_name, 'restore_defaults', __( 'Default options restored.', TB_GETTEXT_DOMAIN ), 'error fade' );
+			add_settings_error( $option_name, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
 			return of_get_default_values();
 		}
 		
@@ -214,7 +214,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		// the database.
 		 
 		if ( isset( $_POST['clear'] ) ) {
-			add_settings_error( $option_name, 'restore_defaults', __( 'Options cleared from database.', TB_GETTEXT_DOMAIN ), 'error fade' );
+			add_settings_error( $option_name, 'restore_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
 			return null;
 		}
 		 
@@ -251,7 +251,7 @@ if ( ! function_exists( 'optionsframework_validate' ) ) {
 		}
 		
 		// Add update message for page re-fresh
-		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', TB_GETTEXT_DOMAIN ), 'updated fade' );
+		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
 
 		// Return sanitized options
 		return $clean;
