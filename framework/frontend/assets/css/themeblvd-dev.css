@@ -822,7 +822,7 @@ ul.sf-menu [class^="icon-"] {
 	display: none;
 }
 .tb-loader {
-	background: #ffffff url('../images/loader.gif') center center no-repeat;
+	background: #ffffff url('../images/elements/loader.gif') center center no-repeat;
 	-webkit-border-radius: 99px; 
 	border-radius: 99px;
 	-webkit-box-shadow: 0 1px 2px #bbb;
