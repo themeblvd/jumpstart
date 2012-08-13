@@ -2033,6 +2033,11 @@ div.pp_default .pp_description {
 	padding-bottom: 20px;
 }
 
+/* Headline */
+.element-headline {
+	padding-bottom: 0;	
+}
+
 /* Divider */
 .element-divider {
 	padding-bottom: 0;
