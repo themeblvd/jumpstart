@@ -922,7 +922,6 @@ if( ! function_exists( 'themeblvd_shortcode_post_list_slider' ) ) {
 		$id = uniqid( 'list_'.rand() );
 	    // Build $options array compatible to element's function
 	    $options = array(
-	    	'fx' => $fx,
 	    	'timeout' => $timeout,
             'categories' => array('all' => 0),
 			'thumbs' => $thumbs,	
@@ -1100,6 +1099,7 @@ if( ! function_exists( 'themeblvd_shortcode_post_list' ) ) {
             'link_text' => $link_text,
             'link_url' => $link_url,
             'link_target' => $link_target
+            'categories' 	=> array('all' => 0),
 	    );
 	    
 	    // Add in the booleans
