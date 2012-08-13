@@ -555,56 +555,94 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 				),
 				'primary' => array(
 					'element_3' => array(
-						'type' => 'headline',
-						'query_type' => 'none',
-						'options' => array(
-							'text' => 'From the Portfolio',
-							'tagline' => 'Check out our latest work.',
-							'tag' => 'h3',
-							'align' => 'left'
-						)
+	                    'type' => 'columns',
+	                    'query_type' => 'none',
+	                    'options' => array(
+	                        'setup' => array(
+								'num' => '4',
+								'width' => array(
+									'2' => 'grid_6-grid_6',
+									'3' => 'grid_4-grid_4-grid_4',
+									'4' => 'grid_3-grid_3-grid_3-grid_3',
+									'5' => 'grid_fifth_1-grid_fifth_1-grid_fifth_1-grid_fifth_1-grid_fifth_1'
+								)
+							),
+	                        'col_1' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => "<h3>From the Portfolio</h3>\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+								'raw_format' => 1
+							),
+	                        'col_2' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => '[post_grid categories="" columns="1" rows="1" crop="grid_4" offset="0"]',
+								'raw_format' => 1
+							),
+	                        'col_3' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => '[post_grid categories="" columns="1" rows="1" crop="grid_4" offset="1"]',
+								'raw_format' => 1
+							),
+	                        'col_4' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => '[post_grid categories="" columns="1" rows="1" crop="grid_4" offset="2"]',
+								'raw_format' => 1
+							),
+	                        'col_5' => array(
+								'type' => null,
+								'page' => null,
+								'raw' => null,
+								'raw_format' => 1
+							)
+	                    )
 					),
 					'element_4' => array(
-						'type' => 'post_grid',
-						'query_type' => 'secondary',
-						'options' => array(
-							'categories' => array('all'=>1),
-							'columns' => 4,
-							'rows' => 1,
-							'orderby' => 'post_date',
-							'order' => 'DESC',
-							'offset' => 0,
-							'link' => 1,
-							'link_text' => 'Go to the Portfolio &rarr;',
-							'link_url' => 'http://www.your-site.com/your-blog-page',
-							'link_target' => '_self'
-						)
-					),
-					'element_5' => array(
-						'type' => 'headline',
-						'query_type' => 'none',
-						'options' => array(
-							'text' => 'From the Blog',
-							'tagline' => 'See what we\'re talking about.',
-							'tag' => 'h3',
-							'align' => 'left'
-						)
-					),
-					'element_6' => array(
-						'type' => 'post_grid',
-						'query_type' => 'secondary',
-						'options' => array(
-							'categories' => array('all'=>1),
-							'columns' => 4,
-							'rows' => 1,
-							'orderby' => 'post_date',
-							'order' => 'DESC',
-							'offset' => 0,
-							'link' => 1,
-							'link_text' => 'Go to the Blog &rarr;',
-							'link_url' => 'http://www.your-site.com/your-blog-page',
-							'link_target' => '_self'
-						)
+	                    'type' => 'columns',
+	                    'query_type' => 'none',
+	                    'options' => array(
+	                        'setup' => array(
+								'num' => '4',
+								'width' => array(
+									'2' => 'grid_6-grid_6',
+									'3' => 'grid_4-grid_4-grid_4',
+									'4' => 'grid_3-grid_3-grid_3-grid_3',
+									'5' => 'grid_fifth_1-grid_fifth_1-grid_fifth_1-grid_fifth_1-grid_fifth_1'
+								)
+							),
+	                        'col_1' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => "<h3>From the Blog</h3>\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+								'raw_format' => 1
+							),
+	                        'col_2' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => '[post_grid categories="" columns="1" rows="1" crop="grid_4" offset="0"]',
+								'raw_format' => 1
+							),
+	                        'col_3' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => '[post_grid categories="" columns="1" rows="1" crop="grid_4" offset="1"]',
+								'raw_format' => 1
+							),
+	                        'col_4' => array(
+								'type' => 'raw',
+								'page' => null,
+								'raw' => '[post_grid categories="" columns="1" rows="1" crop="grid_4" offset="2"]',
+								'raw_format' => 1
+							),
+	                        'col_5' => array(
+								'type' => null,
+								'page' => null,
+								'raw' => null,
+								'raw_format' => 1
+							)
+	                    )
 					)
 				),
 				'featured_below' => array()
