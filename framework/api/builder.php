@@ -333,6 +333,13 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'std'		=> ''
 			),
 			array(
+		    	'id' 		=> 'crop',
+				'name'		=> __( 'Custom Image Crop Size (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Enter in a custom image crop size. Always leave this blank unless you know what you\'re doing here; when left blank, the theme will generate this crop size for you depending on the amount of columns in your post grid.', 'themeblvd' ),
+				'type'		=> 'text',
+				'std'		=> ''
+			),
+			array(
 		    	'type'		=> 'subgroup_start',
 		    	'class'		=> 'show-hide'
 		    ),
@@ -444,6 +451,13 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		    	'id' 		=> 'query',
 				'name'		=> __( 'Custom Query String (optional)', 'themeblvd' ),
 				'desc'		=> __( 'Enter in a <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Parameters">custom query string</a>. This will override any other query-related options.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ<br><br><em>Note: Putting anything in this option will cause the following options to not have any effect: Categories, Orderby, and Order. Additionally, you can\'t use "posts_per_page" as this is generated in a grid based on the rows and columns.</em>', 'themeblvd' ),
+				'type'		=> 'text',
+				'std'		=> ''
+			),
+			array(
+		    	'id' 		=> 'crop',
+				'name'		=> __( 'Custom Image Crop Size (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Enter in a custom image crop size. Always leave this blank unless you know what you\'re doing here; when left blank, the theme will generate this crop size for you depending on the amount of columns in your post grid.', 'themeblvd' ),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
@@ -578,6 +592,13 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Enter the number of posts you\'d like to offset the query by. In most cases, you will just leave this at <em>0</em>. Utilizing this option could be useful, for example, if you wanted to have the first post in an element above this one, and then you could offset this set by <em>1</em> so the posts start after that post in the previous element. If that makes no sense, just ignore this option and leave it at <em>0</em>!', 'themeblvd' ),
 				'type'		=> 'text',
 				'std'		=> '0'
+			),
+			array(
+		    	'id' 		=> 'crop',
+				'name'		=> __( 'Custom Image Crop Size (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Enter in a custom image crop size. Always leave this blank unless you know what you\'re doing here; when left blank, the theme will generate this crop size for you depending on the amount of columns in your post grid.', 'themeblvd' ),
+				'type'		=> 'text',
+				'std'		=> ''
 			),
 		    array(
 		    	'id' 		=> 'visibility',

@@ -20,6 +20,9 @@ $columns = get_post_meta( $post->ID, 'columns', true );
 if( ! $columns ) $columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
 $posts_per_page = themeblvd_posts_page_page( 'template' );
 $size = themeblvd_grid_class( $columns );
+$crop = get_post_meta( $post->ID, 'crop', true );
+if( ! $crop )
+	$crop = $size;
 
 // Setup query string
 $query_string = '';

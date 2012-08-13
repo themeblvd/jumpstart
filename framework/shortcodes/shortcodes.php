@@ -824,7 +824,8 @@ if( ! function_exists( 'themeblvd_shortcode_post_grid_slider' ) ) {
             'numberposts' => -1,		// numberposts: Total number of posts, -1 for all posts
             'orderby' => 'post_date',	// orderby: post_date, title, comment_count, rand
             'order' => 'DESC',			// order: DESC, ASC
-            'offset' => 0				// offset: Number of posts to offset off the start, defaults to 0
+            'offset' => 0,				// offset: Number of posts to offset off the start, defaults to 0
+            'crop'	=> ''				// crop: Can manually enter a featured image crop size
 	    ); 
 	    extract( shortcode_atts( $default, $atts ) );
 	    // Generate unique ID
@@ -839,7 +840,8 @@ if( ! function_exists( 'themeblvd_shortcode_post_grid_slider' ) ) {
             'numberposts' => $numberposts,
             'orderby' => $orderby,
             'order' => $order,
-            'offset' => $offset
+            'offset' => $offset,
+            'crop' => $crop
 	    );
 	    
 	    // Add in the booleans
@@ -1001,11 +1003,12 @@ if( ! function_exists( 'themeblvd_shortcode_post_grid' ) ) {
             'orderby' => 'post_date',			// orderby: post_date, title, comment_count, rand
             'order' => 'DESC',					// order: DESC, ASC
             'offset' => 0,						// offset: Number of posts to offset off the start, defaults to 0
+            'query' => '',						// custom query string
+            'crop'	=> '',						// crop: Can manually enter a featured image crop size
             'link' => 0,						// link: Show link after posts, true or false
             'link_text' => 'View All Posts', 	// link_text: Text for the link
             'link_url' => 'http://google.com',	// link_url: URL where link should go
-            'link_target' => '_self', 			// link_target: Where link opens - _self, _blank
-            'query' => '' 						// custom query string
+            'link_target' => '_self' 			// link_target: Where link opens - _self, _blank
 	    ); 
 	    extract( shortcode_atts( $default, $atts ) );
 	    
@@ -1017,6 +1020,7 @@ if( ! function_exists( 'themeblvd_shortcode_post_grid' ) ) {
             'orderby' => $orderby,
             'order' => $order,
             'offset' => $offset,
+            'crop' => $crop,
             'query' => $query,
             'link_text' => $link_text,
             'link_url' => $link_url,
