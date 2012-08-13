@@ -212,7 +212,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	
 	// Select number of columns
 	$select_number = '<select class="column-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
-	$current_value = ! empty( $val['num'] ) ? $val['num'] : null;
+	$current_value = ! empty( $val ) && ! empty( $val['num'] ) ? $val['num'] : null;
 	foreach( $data_num as $num ) {
 		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
 	}
@@ -223,7 +223,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	$select_widths = '<div class="column-width column-width-0"><p class="inactive">'.__( 'Columns will be hidden.', 'themeblvd' ).'</p></div>';
 	foreach( $data_widths as $widths ) {
 		$select_widths .= '<select class="column-width column-width-'.$i.'" name= "'.esc_attr( $name.'['.$id.'][width]['.$i.']' ).'">';
-		$current_value = ! empty( $val['width'][$i] ) ? $val['width'][$i] : null;
+		$current_value = ! empty( $val ) && ! empty( $val['width'][$i] ) ? $val['width'][$i] : null;
 		foreach( $widths as $width ) {
 			$select_widths .= '<option value="'.$width['value'].'" '.selected( $current_value, $width['value'], false ).'>'.$width['name'].'</option>';
 		}
@@ -313,7 +313,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 			'value' => 12,
 		)
 	);
-	$current_value = ! empty( $val['num'] ) ? $val['num'] : null;
+	$current_value = ! empty( $val ) && ! empty( $val['num'] ) ? $val['num'] : null;
 	$select_number = '<select class="tabs-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
 	foreach( $numbers as $num ) {
 		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
@@ -324,7 +324,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	/* Build <select> for style of tabs
 	/*------------------------------------------------------*/
 	
-	$current_value = ! empty( $val['style'] ) ? $val['style'] : null;
+	$current_value = ! empty( $val ) && ! empty( $val['style'] ) ? $val['style'] : null;
 	$select_style  = '<select class="tabs-style" name="'.esc_attr( $name.'['.$id.'][style]' ).'">';	
 	$select_style .= '<option value="open" '.selected( $current_value, 'open', false ).'>'.__( 'Open Style', 'themeblvd' ).'</option>';
 	$select_style .= '<option value="framed" '.selected( $current_value, 'framed', false ).'>'.__( 'Framed Style', 'themeblvd' ).'</option>';
@@ -334,7 +334,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	/* Build <select> for nav of tabs
 	/*------------------------------------------------------*/
 	
-	$current_value = ! empty( $val['nav'] ) ? $val['nav'] : null;
+	$current_value = ! empty( $val ) && ! empty( $val['nav'] ) ? $val['nav'] : null;
 	$select_nav  = '<select class="tabs-nav" name="'.esc_attr( $name.'['.$id.'][nav]' ).'">';
 	$select_nav .= '<option value="tabs_above" '.selected( $current_value, 'tabs_above', false ).'>'.__( 'Tabs on Top', 'themeblvd' ).'</option>';
 	$select_nav .= '<option value="tabs_right" '.selected( $current_value, 'tabs_right', false ).'>'.__( 'Tabs on Right', 'themeblvd' ).'</option>';
@@ -353,7 +353,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$input_names = null;
 	foreach( $numbers as $number ) {
 		// Default value
-		$current_value = ! empty( $val['names']['tab_'.$number['value']] ) ? $val['names']['tab_'.$number['value']] : null;
+		$current_value = ! empty( $val ) && ! empty( $val['names']['tab_'.$number['value']] ) ? $val['names']['tab_'.$number['value']] : null;
 		// Output
 		$input_names .= '<div class="tab-name tab-name-'.$number['value'].'">';
 		$input_names .= '<label for="tab-name-input='.$number['value'].'">'.sprintf( __('Tab #%d Name', 'themeblvd'), $number['value'] ).'</label>';
@@ -422,7 +422,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		$sources['raw'] = __( 'Raw Content', 'themeblvd' );
 	
 	// Set default value
-	$current_value = ! empty( $val['type'] ) ? $val['type'] : null;
+	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
 	
 	// Build <select>
 	$select_type = '<select class="select-type" name= "'.esc_attr( $name.'['.$id.'][type]' ).'">';
@@ -440,7 +440,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		$sidebars = array();
 		
 		// Set default value
-		$current_value = ! empty( $val['sidebar'] ) ? $val['sidebar'] : null;
+		$current_value = ! empty( $val ) && ! empty( $val['sidebar'] ) ? $val['sidebar'] : null;
 		
 		// Get all custom sidebars from custom post type
 		$sidebars = themeblvd_get_select( 'sidebars' );
@@ -465,7 +465,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	if( in_array ( 'page', $options ) ) {
 	
 		// Set default value
-		$current_value = ! empty( $val['page'] ) ? $val['page'] : null;
+		$current_value = ! empty( $val ) && ! empty( $val['page'] ) ? $val['page'] : null;
 		
 		// Get all pages from WP database
 		$pages = themeblvd_get_select( 'pages' );
@@ -490,7 +490,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	if( in_array ( 'raw', $options ) ) {
 	
 		// Set default value
-		$current_value = ! empty( $val['raw'] ) ? $val['raw'] : null;
+		$current_value = ! empty( $val ) && ! empty( $val['raw'] ) ? $val['raw'] : null;
 		
 		// Text area
 		$raw_content = '<textarea name="'.esc_attr( $name.'['.$id.'][raw]' ).'" class="of-input" cols="8" rows="8">'.$current_value.'</textarea>';
@@ -724,7 +724,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		'custom' 		=> __( 'Custom Text', 'themeblvd' ),
 		'image' 		=> __( 'Image', 'themeblvd' )
 	);
-	$current_value = ! empty( $val['type'] ) ? $val['type'] : null;
+	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
 	$select_type = '<select name="'.esc_attr( $name.'['.$id.'][type]' ).'">';	
 	foreach( $types as $key => $type ) {
 		$select_type .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$type.'</option>';
@@ -757,8 +757,8 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/* Custom Text
 	/*------------------------------------------------------*/
 	
-	$current_value = ! empty( $val['custom'] ) ? $val['custom'] : null;
-	$current_tagline = ! empty( $val['custom_tagline'] ) ? $val['custom_tagline'] : null;	
+	$current_value = ! empty( $val ) && ! empty( $val['custom'] ) ? $val['custom'] : null;
+	$current_tagline = ! empty( $val ) && ! empty( $val['custom_tagline'] ) ? $val['custom_tagline'] : null;	
 	$custom_text  = '<p><label class="inner-label"><strong>'.__( 'Title', 'themeblvd' ).'</strong></label>';
 	$custom_text .= '<input type="text" name="'.esc_attr( $name.'['.$id.'][custom]' ).'" value="'.esc_attr($current_value).'" /></p>';
 	$custom_text .= '<p><label class="inner-label"><strong>'.__( 'Tagline', 'themeblvd' ).'</strong> ('.__( 'optional', 'themeblvd' ).')</label>';
@@ -875,7 +875,7 @@ function themeblvd_social_media_option( $id, $name, $val ) {
 	foreach( $sources as $key => $source ) {
 		// Setup
 		$checked = is_array( $val ) && array_key_exists( $key, $val ) ? true : false;
-		if( ! empty( $val[$key] ) )
+		if( ! empty( $val ) && ! empty( $val[$key] ) )
 			$value = $val[$key];
 		else
 			$value = $key == 'email' ? 'mailto:' : 'http://';
