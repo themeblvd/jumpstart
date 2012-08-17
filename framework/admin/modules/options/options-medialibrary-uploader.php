@@ -141,7 +141,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 			// Slider image ID input w/hidden image URL input for user admin display
 			$output .= '<span class="locked"><span></span><input id="' . $id . '_id" class="locked upload' . $class . '" type="text" name="'.$name.'[id]" value="' . $value['id'] . '" /></span>' . "\n";
 			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="hidden" name="'.$name.'[url]" value="' . $value['url'] . '" />' . "\n";
-			$output .= '<p class="explain">'.__( 'You must use the "Get Image" button modify the image ID for this slide. This is what the locked icon represents.', 'themeblvd' ).'</p>';
+			$output .= '<p class="explain">'.__( 'You must use the "Get Image" button to modify the image ID for this slide. This is what the locked icon represents.', 'themeblvd' ).'</p>';
 		} else {
 			// Standard image input
 			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" />' . "\n";
