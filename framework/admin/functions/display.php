@@ -792,7 +792,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	$image_upload .= '</div>';
 	
 	// Description
-	$image_upload .= '<p class="note">'.__( 'Use the "Upload" button to either upload an image or select an image from your media library. You can also type in the URL to an image in the text field.<br /><br />If you\'re inputting a "Retina-optimized" image, it should be twice as large as you intend it to be displayed. Leave this field blank for it not have any effect.', 'themeblvd' ).'</p>';
+	$image_upload .= '<p class="note">'.__( 'Use the "Upload" button to either upload an image or select an image from your media library. You can also type in the URL to an image in the text field.<br /><br />If you\'re inputting a "Retina-optimized" image, it should be twice as large as you intend it to be displayed. Feel free to leave the retina image field blank if you\'d like it to simply not have any effect.', 'themeblvd' ).'</p>';
 
 	/*------------------------------------------------------*/
 	/* Primary Output
