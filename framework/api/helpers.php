@@ -1178,19 +1178,21 @@ if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
 
 if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
 	function themeblvd_image_size_names_choose( $sizes ) {
-		$themeblvd_sizes = array(
-			'tb_small' 		=> 'TB Small',
-			'tb_medium' 	=> 'TB Medium',
-			'tb_large' 		=> 'TB Large',
-			'slider-large' 	=> 'Slider Full Width',
-			'slider-staged' => 'Slider Staged',
-			'grid_fifth_1' 	=> '1/5 Column of Grid',
-			'grid_3' 		=> '1/4 Column of Grid',
-			'grid_4' 		=> '1/3 Column of Grid',
-			'grid_6' 		=> '1/2 Column of Grid'
-		);
-		$themeblvd_sizes = apply_filters( 'themeblvd_choose_sizes', $themeblvd_sizes );
-		return array_merge( $sizes, $themeblvd_sizes );
+		
+		// Get image sizes for framework that were registered.
+		$tb_raw_sizes = themeblvd_get_image_sizes();
+		
+		// Format sizes
+		$tb_sizes = array();
+		foreach( $tb_raw_sizes as $id => $atts ) {
+			$tb_sizes[$id] = $atts['name'];
+		}
+		
+		// Apply filter - Filter in filter... I know, I know.
+		$tb_sizes = apply_filters( 'themeblvd_choose_sizes', $tb_sizes );
+		
+		// Return merged with original WP sizes
+		return array_merge( $sizes, $tb_sizes );
 	}
 }
 
