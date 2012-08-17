@@ -1067,62 +1067,74 @@ if( ! function_exists( 'themeblvd_get_image_sizes' ) ) {
 		// Crop sizes
 		$sizes = array(
 			'tb_large' => array(
-				'width' 	=> $content_width,	// 940 => Full width thumb for 1-col page
+				'name' 		=> __( 'TB Large', 'themeblvd' ),
+				'width' 	=> $content_width,
 				'height' 	=> 9999,
 				'crop' 		=> false
 			),
 			'tb_medium' => array(
-				'width' 	=> 620, 			// 620 => Full width thumb for 2-col/3-col page
+				'name' 		=> __( 'TB Medium', 'themeblvd' ),
+				'width' 	=> 620,
 				'height'	=> 9999,
 				'crop' 		=> false
 			),
 			'tb_small' => array(
-				'width' 	=> 195,				// Square'ish thumb floated left
+				'name' 		=> __( 'TB Small', 'themeblvd' ),
+				'width' 	=> 195,
 				'height' 	=> 195,
 				'crop' 		=> false
 			),
 			'square_small' => array(
-				'width' 	=> 130,				// Square small thumbnail
+				'name' 		=> __( 'Small Square', 'themeblvd' ),
+				'width' 	=> 130,
 				'height' 	=> 130,
 				'crop' 		=> true
 			),
 			'square_smaller' => array(
-				'width' 	=> 70,				// Square smaller thumbnail
+				'name' 		=> __( 'Smaller Square', 'themeblvd' ),
+				'width' 	=> 70,
 				'height' 	=> 70,
 				'crop' 		=> true
 			),
 			'square_smallest' => array(
-				'width' 	=> 45,				// Square smallest thumbnail
+				'name' 		=> __( 'Smallest Square', 'themeblvd' ),
+				'width' 	=> 45,
 				'height' 	=> 45,
 				'crop' 		=> true
 			),
 			'slider-large' => array(
-				'width' 	=> 940,				// Slider full-size image
+				'name' 		=> __( 'Slider Full Width', 'themeblvd' ),
+				'width' 	=> 940,
 				'height' 	=> 350,
 				'crop' 		=> true
 			),
 			'slider-staged' => array(
-				'width' 	=> 550,				// Slider staged image
+				'name' 		=> __( 'Slider Staged', 'themeblvd' ),
+				'width' 	=> 550,
 				'height' 	=> 340,
 				'crop' 		=> true
 			),
 			'grid_fifth_1' => array(
-				'width' 	=> 200,				// 1/5 Column
+				'name' 		=> __( '1/5 Column of Grid', 'themeblvd' ),
+				'width' 	=> 200,
 				'height' 	=> 125,
 				'crop' 		=> true
 			),
 			'grid_3' => array(
-				'width' 	=> 240,				// 1/4 Column
+				'name' 		=> __( '1/4 Column of Grid', 'themeblvd' ),
+				'width' 	=> 240,
 				'height' 	=> 150,
 				'crop' 		=> true
 			),
 			'grid_4' => array(
-				'width' 	=> 320,				// 1/3 Column
+				'name' 		=> __( '1/3 Column of Grid', 'themeblvd' ),
+				'width' 	=> 320,
 				'height' 	=> 200,
 				'crop' 		=> true
 			),
 			'grid_6' => array(
-				'width' 	=> 472,				// 1/2 Column
+				'name' 		=> __( '1/2 Column of Grid', 'themeblvd' ),
+				'width' 	=> 472,
 				'height' 	=> 295,
 				'crop' 		=> true
 			)
