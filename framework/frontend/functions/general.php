@@ -268,7 +268,8 @@ if( ! function_exists( 'themeblvd_featured_builder_classes' ) ) {
 				}
 			}
 			// First element classes
-			$first_element = array_shift( array_values( $elements[$area] ) );
+			$first_element = array_values( $elements[$area] );
+			$first_element = array_shift( $first_element );
 			$first_element = $first_element['type'];
 			if( $first_element == 'slider' || $first_element == 'post_grid_slider' || $first_element == 'post_list_slider'  )
 				$classes[] = 'slider_is_first';
