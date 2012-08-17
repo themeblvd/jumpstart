@@ -1048,13 +1048,18 @@ if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
 }
 
 /**
- * Register Image Sizes
+ * Get Image Sizes
  *
- * @since 2.1.0
+ * By having this in a separate function, hopefully 
+ * it can be extended upon better. If any plugin or 
+ * other feature of the framework requires these 
+ * image sizes, they can grab 'em.
+ * 
+ * @since 2.2.0
  */
 
-if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
-	function themeblvd_add_image_sizes() {
+if( ! function_exists( 'themeblvd_get_image_sizes' ) ) {
+	function themeblvd_get_image_sizes() {
 		
 		// Content Width
 		$content_width = apply_filters( 'themeblvd_content_width', 940 ); // Default width of primary content area
@@ -1122,11 +1127,28 @@ if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
 				'crop' 		=> true
 			)
 		);
-		$sizes = apply_filters( 'themeblvd_image_sizes', $sizes );
+		
+		return apply_filters( 'themeblvd_image_sizes', $sizes );
+	}
+}
+
+/**
+ * Register Image Sizes
+ *
+ * @since 2.1.0
+ */
+
+if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
+	function themeblvd_add_image_sizes() {
+		
+		// Get image sizes
+		$sizes = themeblvd_get_image_sizes();
 		
 		// Add image sizes
-		foreach( $sizes as $size => $atts )
+		foreach( $sizes as $size => $atts ) {
 			add_image_size( $size, $atts['width'], $atts['height'], $atts['crop'] );
+		}
+		
 	}
 }
 
