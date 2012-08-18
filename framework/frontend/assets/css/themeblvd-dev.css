@@ -896,7 +896,11 @@ ul.sf-menu [class^="icon-"] {
 .themeblvd-contact-bar li .xbox {background-position:0 -672px;}
 .themeblvd-contact-bar li .yahoo {background-position:0 -696px;}
 .themeblvd-contact-bar li .youtube {background-position:0 -720px;}
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	/* Use 2x images for retina */
 	.themeblvd-contact-bar li a {
 		background-image: url('../images/parts/social-media-grey_48x48.png');
@@ -1053,12 +1057,16 @@ ul.sf-menu [class^="icon-"] {
 .featured-image-wrapper a.external .image-overlay .image-overlay-icon {
 	background-position: 0 -126px;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 2), 
-		only screen and (-moz-min-device-pixel-ratio: 2), 
-		only screen and (-o-min-device-pixel-ratio: 2), 
-		only screen and (min-device-pixel-ratio: 2){
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	/* Use 2x images for retina */
-	.featured-image-wrapper .image-overlay .image-overlay-icon {background-image: url('../images/elements/image-overlay-icon_2x.png'); background-size: 44px 168px;}
+	.featured-image-wrapper .image-overlay .image-overlay-icon {
+		background-image: url('../images/elements/image-overlay-icon_2x.png');
+		background-size: 44px 168px;
+	}
 }
 
 /* =Colors
@@ -1742,10 +1750,11 @@ ul.tb-icon-list {
 .tb-contact_widget ul.simple-contact ul.icons li.xbox a {background-position:0 -448px;}
 .tb-contact_widget ul.simple-contact ul.icons li.yahoo a {background-position:0 -464px;}
 .tb-contact_widget ul.simple-contact ul.icons li.youtube a {background-position:0 -480px;}
-@media 	only screen and (-webkit-min-device-pixel-ratio: 2), 
-		only screen and (-moz-min-device-pixel-ratio: 2),
-		only screen and (-o-min-device-pixel-ratio: 2),
-		only screen and (min-device-pixel-ratio: 2) {
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	/* Use 2x images for retina */
 	.tb-contact_widget ul.simple-contact li {
 		background-image:url('../images/parts/simple-contact_2x.png');
@@ -1904,10 +1913,11 @@ div.wpcf7 .watermark {
 div.pp_default .pp_description {
 	color: #666666;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 2), 
-		only screen and (-moz-min-device-pixel-ratio: 2), 
-		only screen and (-o-min-device-pixel-ratio: 2), 
-		only screen and (min-device-pixel-ratio: 2) {
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	
 	/* Use 2x size images */
 	div.pp_default .pp_expand,
@@ -2204,10 +2214,11 @@ div.pp_default .pp_description {
 	width: 10px;
 	height: 11px;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 2), 
-		only screen and (-moz-min-device-pixel-ratio: 2),
-		only screen and (-o-min-device-pixel-ratio: 2), 
-		only screen and (min-device-pixel-ratio: 2) {
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	/* Slider controls - Use 2x image for retina */
 	.standard-slider-wrapper .flex-control-nav li a {
 		background-image: url('../images/elements/slider-nav_2x.png');
@@ -2365,10 +2376,11 @@ div.pp_default .pp_description {
 .carrousel-slider-wrapper .carrousel-slider .slide .image-link.external span {
 	background: url('../images/parts/link-ffffff.png') 0 0 no-repeat;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 2), 
-		only screen and (-moz-min-device-pixel-ratio: 2),
-		only screen and (-o-min-device-pixel-ratio: 2), 
-		only screen and (min-device-pixel-ratio: 2) {
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	/* Slider controls - Use 2x image for retina */
 	.carrousel-slider-wrapper .carrousel-slider .slide .image-link.enlarge span {
 		background-image: url('../images/parts/enlarge-ffffff_2x.png');

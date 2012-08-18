@@ -206,10 +206,11 @@ a.thumbnail:hover {
 .standard-slider-wrapper .flex-control-nav li a {
 	background-image: url('../images/elements/slider-nav.png');
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 2), 
-		only screen and (-moz-min-device-pixel-ratio: 2),
-		only screen and (-o-min-device-pixel-ratio: 2), 
-		only screen and (min-device-pixel-ratio: 2) {
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
 	/* Slider controls - Use 2x image for retina */
 	.standard-slider-wrapper .flex-control-nav li a {
 		background-image: url('../images/elements/slider-nav_2x.png');

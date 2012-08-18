@@ -248,7 +248,7 @@ jQuery(document).ready(function($) {
 	
 	// If a retina-otimized image was detected 
 	// and should be displayed
-	if(window.devicePixelRatio >= 2 && image_2x)
+	if(window.devicePixelRatio >= 1.5 && image_2x)
 	{
 		// Display 2x image w/fixed original width
 		image.attr({
