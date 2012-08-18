@@ -84,8 +84,7 @@ if( ! function_exists( 'slider_blvd_slider_defaults' ) ) {
 if ( ! function_exists( 'slider_blvd_add_page' ) ) {
 	function slider_blvd_add_page() {
 		
-		$icon = THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'images/icon-images.png';
-		$sb_page = add_object_page( 'Slider Manager', 'Sliders', themeblvd_admin_module_cap( 'sliders' ), 'slider_blvd', 'slider_blvd_page', $icon, 31 );
+		$sb_page = add_object_page( 'Slider Manager', 'Sliders', themeblvd_admin_module_cap( 'sliders' ), 'slider_blvd', 'slider_blvd_page', 'div', 31 );
 		
 		// Adds actions to hook in the required css and javascript
 		add_action( 'admin_print_styles-'.$sb_page, 'optionsframework_load_styles' );
@@ -239,7 +238,7 @@ if ( ! function_exists( 'slider_blvd_page_header' ) ) {
 			    <div class="admin-module-header">
 			    	<?php do_action( 'themeblvd_admin_module_header', 'sliders' ); ?>
 			    </div>
-			    <?php screen_icon( 'themes' ); ?>
+			    <?php screen_icon( 'tb_sliders' ); ?>
 			    <h2 class="nav-tab-wrapper">
 			        <a href="#manage" id="manage-tab" class="nav-tab" title="<?php _e( 'Manage Sliders', 'themeblvd' ); ?>"><?php _e( 'Manage Sliders', 'themeblvd' ); ?></a>
 			        <a href="#add" id="add-tab" class="nav-tab" title="<?php _e( 'Add New Slider', 'themeblvd' ); ?>"><?php _e( 'Add Slider', 'themeblvd' ); ?></a>

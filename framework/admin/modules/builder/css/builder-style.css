@@ -9,6 +9,14 @@
 #builder_blvd #optionsframework .metabox-holder { max-width:780px; }
 #builder_blvd #optionsframework, #builder_blvd #optionsframework .full-width { max-width:none; }
 #builder_blvd #optionsframework .updated { max-width:none; }
+#builder_blvd #icon-tb_builder { background-image: url('../../../assets/images/icons-32.png'); background-position: -8px -4px;}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#builder_blvd #icon-tb_builder { background-image: url('../../../assets/images/icons-32_2x.png'); background-size: 120px 45px; }	
+}
 
 /* =General Classes
 ----------------------------------------------- */

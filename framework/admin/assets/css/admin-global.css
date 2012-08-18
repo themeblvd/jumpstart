@@ -1,0 +1,31 @@
+/* WP ADMIN MENU ICONS */
+#adminmenu #toplevel_page_builder_blvd div.wp-menu-image,
+#adminmenu #toplevel_page_slider_blvd div.wp-menu-image {
+	background-image: url('../images/menu.png');
+}
+#adminmenu #toplevel_page_builder_blvd div.wp-menu-image {
+	background-position: -1px -1px;	
+}
+#adminmenu #toplevel_page_builder_blvd:hover div.wp-menu-image,
+#adminmenu #toplevel_page_builder_blvd.current div.wp-menu-image {
+	background-position: -1px -33px;	
+}
+#adminmenu #toplevel_page_slider_blvd div.wp-menu-image {
+	background-position: -31px -2px;
+}
+#adminmenu #toplevel_page_slider_blvd:hover div.wp-menu-image,
+#adminmenu #toplevel_page_slider_blvd.current div.wp-menu-image {
+	background-position: -31px -34px;	
+}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+
+	#adminmenu #toplevel_page_builder_blvd div.wp-menu-image,
+	#adminmenu #toplevel_page_slider_blvd div.wp-menu-image {
+		background-image: url('../images/menu_2x.png');
+		background-size: 60px 64px;
+	}		
+}

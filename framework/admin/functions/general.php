@@ -46,10 +46,16 @@ function themeblvd_admin_init() {
 if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 	function themeblvd_non_modular_assets() {
 		global $pagenow;
+		
+		// Assets for editing posts
 		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
 			wp_enqueue_style( 'tb_meta_box-styles', THEMEBLVD_ADMIN_ASSETS_DIRECTORY.'css/meta-box.css', false, false, 'screen' );
 			wp_enqueue_script( 'tb_meta_box-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/meta-box.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		}
+		
+		// Styles for all of WP admin
+		wp_enqueue_style( 'tb_admin_global', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-global.css', null, TB_FRAMEWORK_VERSION );
+		
 	}
 }
 

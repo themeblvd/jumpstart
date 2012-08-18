@@ -44,8 +44,7 @@ if( ! function_exists( 'builder_blvd_init' ) ) {
 if ( ! function_exists( 'builder_blvd_add_page' ) ) {
 	function builder_blvd_add_page() {
 	
-		$icon = THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'images/icon-builder.png';
-		$bb_page = add_object_page( 'Layout Builder', 'Builder', themeblvd_admin_module_cap( 'builder' ), 'builder_blvd', 'builder_blvd_page', $icon, 30 );
+		$bb_page = add_object_page( 'Layout Builder', 'Builder', themeblvd_admin_module_cap( 'builder' ), 'builder_blvd', 'builder_blvd_page', 'div', 30 );
 		
 		// Adds actions to hook in the required css and javascript
 		add_action( 'admin_print_styles-'.$bb_page, 'optionsframework_load_styles' );
@@ -100,7 +99,7 @@ if ( ! function_exists( 'builder_blvd_page_header' ) ) {
 				<div class="admin-module-header">
 			    	<?php do_action( 'themeblvd_admin_module_header', 'builder' ); ?>
 			    </div>
-			    <?php screen_icon( 'themes' ); ?>
+			    <?php screen_icon( 'tb_builder' ); ?>
 			    <h2 class="nav-tab-wrapper">
 			        <a href="#manage_layouts" id="manage_layouts-tab" class="nav-tab" title="<?php _e( 'Manage Layouts', 'themeblvd' ); ?>"><?php _e( 'Manage Layouts', 'themeblvd' ); ?></a>
 			        <a href="#add_layout" id="add_layout-tab" class="nav-tab" title="<?php _e( 'Add New Layout', 'themeblvd' ); ?>"><?php _e( 'Add New Layout', 'themeblvd' ); ?></a>

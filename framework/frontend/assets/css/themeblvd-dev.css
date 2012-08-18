@@ -904,7 +904,7 @@ ul.sf-menu [class^="icon-"] {
 	/* Use 2x images for retina */
 	.themeblvd-contact-bar li a {
 		background-image: url('../images/parts/social-media-grey_48x48.png');
-		background-size:24px 744px;
+		background-size: 24px 744px;
 	}
 	.themeblvd-contact-bar ul.social-media-dark li a {background-image:url('../images/parts/social-media-dark_48x48.png');}
 	.themeblvd-contact-bar ul.social-media-grey li a {background-image:url('../images/parts/social-media-grey_48x48.png');}

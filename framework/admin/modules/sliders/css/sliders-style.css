@@ -5,6 +5,14 @@
 #slider_blvd #optionsframework, #slider_blvd #optionsframework .full-width { max-width: none; }
 #slider_blvd #optionsframework .updated { max-width: none; }
 #slider_blvd #optionsframework .inner-sidebar .section .heading { font-size: 1em; }
+#slider_blvd #icon-tb_sliders { background-image: url('../../../assets/images/icons-32.png'); background-position: -70px -4px;}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#slider_blvd #icon-tb_sliders { background-image: url('../../../assets/images/icons-32_2x.png'); background-size: 120px 45px; }	
+}
 
 /* =Manage Slides
 ----------------------------------------------- */
