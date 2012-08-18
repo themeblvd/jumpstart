@@ -38,6 +38,8 @@
 #slider_blvd #edit_slider .slide-include-elements .slide-element-header { background: #f2f2f2; }
 #slider_blvd #edit_slider .slide-include-elements .slide-element-options { display: none; }
 #slider_blvd #edit_slider .slide-include-elements .widefat td { vertical-align: middle; }
+#slider_blvd #edit_slider h4 { line-height: 1.5em; }
+#slider_blvd #edit_slider .note { margin-top: 0; }
 #slider_blvd #optionsframework .widget-content .controls input[type=checkbox] { margin-bottom: 0; }
 #slider_blvd #optionsframework .inner-sidebar .section-radio label {  margin-bottom: 15px; width:80%; }
 #slider_blvd #optionsframework .inner-sidebar .section-radio input.of-radio { margin-top: 2px; }

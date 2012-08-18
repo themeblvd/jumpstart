@@ -160,7 +160,7 @@ jQuery(document).ready(function($) {
     		var opposite,
 				parent = object.closest('.widget-content'),
 				value = object.val(),
-				position = object.closest('.widget-content').find('.slide-position').val();
+				position = object.closest('.widget-content').find('.slide-position-'+value).val();
 				name = object.find('option[value="'+value+'"]').text();	
 			
 			parent.removeClass('type-image type-video type-custom');
@@ -174,8 +174,12 @@ jQuery(document).ready(function($) {
 			}
 			else
 			{
-				if(value == 'image'){
+				if(value == 'image')
+				{
 					opposite = 'video';
+					parent.find('.slide-position-image').show();
+					parent.find('.slide-position-video').hide();
+					parent.find('.image-note').show();
 					if( parent.find('.slide-elements .element-image_link input').is(':checked') )
 					{
 						parent.find('.slide-elements .element-image_link').show();
@@ -191,6 +195,9 @@ jQuery(document).ready(function($) {
 				{
 					opposite = 'image';
 					parent.find('.slide-elements .element-image_link').hide();
+					parent.find('.slide-position-video').show();
+					parent.find('.slide-position-image').hide();
+					parent.find('.image-note').hide();
 					if(position == 'full')
 					{
 						parent.find('.slide-elements').hide();
@@ -202,7 +209,6 @@ jQuery(document).ready(function($) {
 						parent.find('.slide-elements').show();
 					}
 				}
-				
 				parent.find('.slide-set-media .slide-set-'+opposite).hide();
 				parent.find('.slide-set-media .slide-set-'+value).show();
 				parent.find('.slide-custom').hide();

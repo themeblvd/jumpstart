@@ -52,12 +52,12 @@ if( ! function_exists( 'slider_blvd_recognized_sliders' ) ) {
 		 */
 		
 		$standard_positions = array(
-			'full' 			=> __( 'Full-Size', 'themeblvd' ),
-			'align-left' 	=> __( 'Aligned Left', 'themeblvd' ),
-			'align-right' 	=> __( 'Aligned Right', 'themeblvd' )
+			'full' 			=> 'slider-large',
+			'align-left' 	=> 'slider-staged',
+			'align-right' 	=> 'slider-staged'
 		);
 		$carrousel_positions = array(
-			'full' 			=> __( 'Full-Size', 'themeblvd' )
+			'full' 			=> 'grid_4'
 		);
 		
 		/**

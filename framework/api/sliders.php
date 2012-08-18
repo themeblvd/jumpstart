@@ -45,24 +45,18 @@ if( ! function_exists( 'themeblvd_add_slider' ) ) {
 		}
 		
 		// Format media positions
-		// $media_positions should look something like: array( 'full', 'align-left', 'align-right' )
+		// $media_positions should look something like: array( 'full' => 'crop_size', 'align-left' => 'crop_size', 'align-right' => 'crop_size' )
+		$accepted_positions = apply_filters( 'themeblvd_slider_image_positions', array( 'full', 'align-left', 'align-right' ) );
 		$formatted_media_positions = array();
-		foreach( $media_positions as $position ) {
-			switch( $position ) {
-				case 'full' :
-					$formatted_media_positions['full'] = __( 'Full-Size', 'themeblvd' );
-					break;
-				case 'align-left' :
-					$formatted_media_positions['align-left'] = __( 'Aligned Left', 'themeblvd' );
-					break;
-				case 'align-right' :
-					$formatted_media_positions['align-right'] = __( 'Aligned Right', 'themeblvd' );
-					break;
-			}	
+		foreach( $media_positions as $position => $crop_size ) {
+			if( in_array( $position, $accepted_positions ) ) {
+				$formatted_media_positions[$position] = $crop_size;
+			}
 		}
 		
 		// Slide Elements
 		// $slide_elements should look something like: array( 'image_link', 'headline', 'description', 'button' )
+		// (no re-formatting should be needed)
 		
 		// Add in slider
 		$_themeblvd_user_sliders[$slider_id] = array(

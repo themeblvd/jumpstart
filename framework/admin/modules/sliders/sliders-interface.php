@@ -117,6 +117,7 @@ if( ! function_exists( 'slider_blvd_add' ) ) {
 
 if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 	function slider_blvd_edit_slide( $slider_id, $slider_type, $slide_id, $slide_options = null, $visibility = null ) {
+		global $_wp_additional_image_sizes;
 		$slider_types = slider_blvd_recognized_sliders();
 		?>
 		<div id="<?php echo $slide_id; ?>" class="widget slide-options"<?php if( $visibility == 'hide' ) echo ' style="display:none"'; ?>>					
@@ -176,15 +177,54 @@ if( ! function_exists( 'slider_blvd_edit_slide' ) ) {
 						<div class="slide-include-elements">
 							<div class="slide-section">
 								<?php if( $slider_types[$slider_type]['positions'] ) : ?>
-									<h4><?php _e( 'How would you like to display the media?', 'themeblvd' ); ?></h4>
-									<select class="slide-position" name="slides[<?php echo $slide_id; ?>][position]">
+									<h4 class="header_has_icon"><?php _e( 'How would you like to display the media?', 'themeblvd' ); ?></h4>
+									<?php $position = slider_blvd_slide_value( $slide_options, 'position' ); ?>
+									<select class="slide-position slide-position-image" name="slides[<?php echo $slide_id; ?>][position_image]">
 										<?php
-										$position = slider_blvd_slide_value($slide_options, 'position');
+										$sizes = $_wp_additional_image_sizes;
 										foreach( $slider_types[$slider_type]['positions'] as $key => $value ) {
-					        				echo '<option '.selected( $key, $position, false ).' value="'.$key.'">'.$value.'</option>';
+					        				// Set name for option
+					        				$name = '';
+					        				switch( $key ) {
+						        				case 'full' :
+						        					$name = __( 'Full Size', 'themeblvd' );
+						        					break;
+						        				case 'align-left' :
+						        					$name = __( 'Aligned Left', 'themeblvd' );
+						        					break;
+						        				case 'align-right' :
+						        					$name = __( 'Aligned Right', 'themeblvd' );
+						        					break;	
+					        				}
+					        				// Set display dimensions for option
+					        				$dimensions = '';
+					        				if( isset( $sizes[$value] ) )
+						        				$dimensions = ' <span class="dimensions">('.$sizes[$value]['width'].'x'.$sizes[$value]['height'].')</span>';
+					        				echo '<option '.selected( $key, $position, false ).' value="'.$key.'">'.$name.$dimensions.'</option>';
 					        			}
 					        			?>
 									</select>
+									<select class="slide-position slide-position-video" name="slides[<?php echo $slide_id; ?>][position_video]">
+										<?php
+										foreach( $slider_types[$slider_type]['positions'] as $key => $value ) {
+					        				// Set name for option
+					        				$name = '';
+					        				switch( $key ) {
+						        				case 'full' :
+						        					$name = __( 'Full Size', 'themeblvd' );
+						        					break;
+						        				case 'align-left' :
+						        					$name = __( 'Aligned Left', 'themeblvd' );
+						        					break;
+						        				case 'align-right' :
+						        					$name = __( 'Aligned Right', 'themeblvd' );
+						        					break;	
+					        				}
+					        				echo '<option '.selected( $key, $position, false ).' value="'.$key.'">'.$name.'</option>';
+					        			}
+					        			?>
+									</select>
+									<p class="note image-note"><?php _e( 'When you upload an image, it must be at a minimum the size listed above in order for WordPress to generate and register the crop size. Images will be scaled down proportionally from their respective crop sizes depending on where the slider is placed.', 'themeblvd' ); ?></p>
 								<?php endif; ?>
 							</div><!-- .slide-section (end) -->
 							<?php if( ! empty( $slider_types ) && ! empty( $slider_types[$slider_type]['elements'] ) ) : ?>

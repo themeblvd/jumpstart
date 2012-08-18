@@ -143,7 +143,6 @@ if( ! function_exists( 'themeblvd_standard_slider_default' ) ) {
 		if( $settings['nav_standard'] == '0' && $settings['nav_arrows'] == '0' )
 			$classes .= ' hide-full_nav';
 		
-		
 		// Hide on mobile?
 		$hide = '';
 		if( isset( $settings['mobile_fallback'] ) )

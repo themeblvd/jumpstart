@@ -1,6 +1,6 @@
 /* GENERAL CLASSES */
 
-#optionsframework .warning{background:#f7f7f7;border:1px solid #eeeeee;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;color:#666666;padding:10px;}
+#optionsframework .warning{background:#f7f7f7;border:1px solid #eeeeee;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;color:#666666;line-height:1.3em;padding:10px;}
 #optionsframework .note{border-top:1px solid #eeeeee;color:#666666;font-size:11px;line-height:150%;padding:5px;}
 #optionsframework .inner-label{cursor:inherit;display:block;padding:5px;}
 #optionsframework .inactive{color:#999999;}
@@ -60,13 +60,15 @@
 
 /* ICON BUTTONS */
 
-#optionsframework .active-icon{background:url(../images/icon-active.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
-#optionsframework .add-icon{background:url(../images/icon-add.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
-#optionsframework .delete-icon{background:url(../images/icon-delete.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
-#optionsframework .help-icon{background:url(../images/icon-help.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
-#optionsframework .inactive-icon{background:url(../images/icon-inactive.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
-#optionsframework .refresh-icon{background:url(../images/icon-refresh.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
-#optionsframework .remove-icon{background:url(../images/icon-remove.png) no-repeat;display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
+#optionsframework .active-icon, #optionsframework .add-icon, #optionsframework .delete-icon, #optionsframework .help-icon, #optionsframework .inactive-icon, #optionsframework .refresh-icon, #optionsframework .remove-icon {display:block;float:right;text-indent:-9999px;width:16px;height:16px;}
+#optionsframework .header_has_icon .active-icon, #optionsframework .header_has_icon .add-icon, #optionsframework .header_has_icon .delete-icon, #optionsframework .header_has_icon .help-icon, #optionsframework .header_has_icon .inactive-icon, #optionsframework .header_has_icon .refresh-icon, #optionsframework .header_has_icon .remove-icon {display:inline-block;float:none;margin-left:5px;}
+#optionsframework .active-icon{background:url(../images/icon-active.png) no-repeat;}
+#optionsframework .add-icon{background:url(../images/icon-add.png) no-repeat;}
+#optionsframework .delete-icon{background:url(../images/icon-delete.png) no-repeat;}
+#optionsframework .help-icon{background:url(../images/icon-help.png) no-repeat;}
+#optionsframework .inactive-icon{background:url(../images/icon-inactive.png) no-repeat;}
+#optionsframework .refresh-icon{background:url(../images/icon-refresh.png) no-repeat;}
+#optionsframework .remove-icon{background:url(../images/icon-remove.png) no-repeat;}
 
 /* ACCORDION */
 

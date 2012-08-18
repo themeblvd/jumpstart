@@ -145,7 +145,9 @@ if( ! function_exists( 'slider_blvd_ajax_save_slider' ) ) {
 					
 					// Media position
 					if( $slider['positions'] ) {
-						if( ! array_key_exists( $slide['position'], $slider['positions'] ) ) {
+						$media = $slide['slide_type'];
+						$slides[$key]['position'] = $slide['position_'.$media]; // Which select we pull from depends on teh type of slide, image or video
+						if( ! array_key_exists( $slide['position_'.$media], $slider['positions'] ) ) {
 							unset( $slides[$key] );
 							continue;
 						}
