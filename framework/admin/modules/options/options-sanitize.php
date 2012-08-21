@@ -382,44 +382,82 @@ add_filter( 'of_sanitize_social_media', 'of_sanitize_social_media' );
 function of_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar_id = null ) {
 	$conditionals = themeblvd_conditionals_config();
 	$output = array();
+	// Prepare items that weren't straight-up arrays 
+	// gifted on a platter for us.
+	if( ! empty( $input['post'] ) ){
+		$input['post'] = str_replace(' ', '', $input['post'] );
+		$input['post'] = explode( ',', $input['post'] );
+	}
+	if( ! empty( $input['tag'] ) ){
+		$input['tag'] = str_replace(' ', '', $input['tag'] );
+		$input['tag'] = explode( ',', $input['tag'] );
+	}
+	// Now loop through each group and then each item
 	foreach( $input as $type => $group ) {
-		foreach( $group as $item_id ) {
-			switch( $type ) {
-				case 'page' :
-					$page_id = themeblvd_post_id_by_name( $item_id, 'page' );
-					$page = get_page( $page_id );
-					$name = $page->post_title;
-					break;
-				case 'post' :
-					$post_id = themeblvd_post_id_by_name( $item_id, 'post' );
-					$post = get_post( $post_id );
-					$name = $post->post_title;
-					break;
-				case 'posts_in_category' :
-					$category = get_category_by_slug( $item_id );
-					$name = $category->slug;
-					break;
-				case 'category' :
-					$category = get_category_by_slug( $item_id );
-					$name = $category->slug;
-					break;
-				case 'tag' :
-					$tag = get_term_by( 'slug', $item_id, 'post_tag' );
-					$name = $tag->name;
-					break;
-				case 'top' :
-					$name = $conditionals['top']['items'][$item_id];
-					break;
+		if( is_array( $group ) && ! empty( $group ) ) {	
+			foreach( $group as $item_id ) {
+				$name = '';
+				switch( $type ) {
+					
+					case 'page' :
+						$page_id = themeblvd_post_id_by_name( $item_id, 'page' );
+						$page = get_page( $page_id );
+						if( $page )
+							$name = $page->post_title;
+						break;
+					
+					case 'post' :
+						$post_id = themeblvd_post_id_by_name( $item_id, 'post' );
+						$post = get_post( $post_id );
+						if( $post )
+							$name = $post->post_title;
+						break;
+					
+					case 'posts_in_category' :
+						$category = get_category_by_slug( $item_id );
+						if( $category )
+							$name = $category->slug;
+						break;
+					
+					case 'category' :
+						$category = get_category_by_slug( $item_id );
+						if( $category )
+							$name = $category->slug;
+						break;
+					
+					case 'tag' :
+						$tag = get_term_by( 'slug', $item_id, 'post_tag' );
+						if( $tag )
+							$name = $tag->name;
+						break;
+					
+					case 'top' :
+						$name = $conditionals['top']['items'][$item_id];
+						break;
+				}
+				if( $name ) {
+					$output[$type.'_'.$item_id] = array(
+						'type' 		=> $type,
+						'id' 		=> $item_id,
+						'name' 		=> $name,
+						'post_slug' => $sidebar_slug,
+						'post_id' 	=> $sidebar_id
+					);
+				}
 			}
-			$output[$type.'_'.$item_id] = array(
-				'type' 		=> $type,
-				'id' 		=> $item_id,
-				'name' 		=> $name,
-				'post_slug' => $sidebar_slug,
-				'post_id' 	=> $sidebar_id
-			);
 		}
 	}
+	// Add in cusotm conditional
+	if( ! empty( $input['custom'] ) ){
+		$output['custom'] = array(
+			'type' 		=> 'custom',
+			'id' 		=> of_sanitize_text( $input['custom'] ),
+			'name' 		=> of_sanitize_text( $input['custom'] ),
+			'post_slug' => $sidebar_slug,
+			'post_id' 	=> $sidebar_id
+		);
+	}
+		
 	return $output;
 }
 

@@ -39,7 +39,10 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		
 		// Setup array for floating sidebars
 		$sidebars = themeblvd_get_select( 'sidebars' );
-		if( ! $sidebars ) $sidebars['null'] = __( 'You haven\'t created any floating widget areas yet.', 'themeblvd' );
+		if( ! $sidebars ) 
+			$sidebars['null'] = __( 'You haven\'t created any floating widget areas yet.', 'themeblvd' );
+		if( ! defined( 'TB_WA_PLUGIN_VERSION' ) )
+			$sidebars['null'] = __( 'You need to have the Theme Blvd Widget Areas plugin installed for this feature.', 'themeblvd' );
 			
 		// Setup array for categories select
 		$categories_select = themeblvd_get_select( 'categories' );

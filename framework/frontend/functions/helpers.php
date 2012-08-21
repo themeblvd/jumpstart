@@ -171,8 +171,8 @@ if( ! function_exists( 'themeblvd_placeholder_image' ) ) {
 	function themeblvd_placeholder_image( $size ) {
 		$image_url = null;
 		$images = array(
-			'slider-large' 	=> TB_FRAMEWORK_DIRECTORY . '/frontend/assets/images/placeholders/slider-large.png',
-			'slider-staged' => TB_FRAMEWORK_DIRECTORY . '/frontend/assets/images/placeholders/slider-large.png',
+			'slider-large' 	=> TB_FRAMEWORK_URI . '/frontend/assets/images/placeholders/slider-large.png',
+			'slider-staged' => TB_FRAMEWORK_URI . '/frontend/assets/images/placeholders/slider-large.png',
 		);
 		$images = apply_filters( 'themeblvd_placeholder_image', $images );
 		if( isset( $images[$size] ) )

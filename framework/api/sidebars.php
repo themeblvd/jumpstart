@@ -276,39 +276,16 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 }
 
 /**
- * Register default and custom sidebars.
+ * Register default sidebars (i.e. the "locations").
  *
  * @since 2.0.0
  */
 
 if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 	function themeblvd_register_sidebars() {
-		
-		// Register default sidebars
 		$default_sidebars = themeblvd_get_sidebar_locations();
 		foreach( $default_sidebars as $sidebar ) {
 			register_sidebar( $sidebar['args'] );
-		}
-		
-		// Get custom sidebars
-		$custom_sidebars = get_posts( 'post_type=tb_sidebar&numberposts=-1&orderby=title&order=ASC' );
-		
-		// Register custom sidebars
-		foreach( $custom_sidebars as $sidebar ) {
-			$args = array(
-				'name' 			=> __( 'Custom: ', 'themeblvd' ).$sidebar->post_title,
-			    'id' 			=> $sidebar->post_name,
-			    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget' 	=> '</div></aside>',
-				'before_title' 	=> '<h3 class="widget-title">',
-				'after_title' 	=> '</h3>'
-			);
-			$location = get_post_meta( $sidebar->ID, 'location', true );
-			if( $location && $location != 'floating' )
-				$args['description'] = sprintf( esc_attr__( 'This is a custom widget area to replace the %s on its assigned pages.', 'themeblvd' ), themeblvd_get_sidebar_location_name( $location ) );
-			else
-				$args['description'] = __( 'This is a custom floating widget area.', 'themeblvd' );
-			register_sidebar( $args );
 		}
 	}
 }
@@ -328,48 +305,6 @@ if( ! function_exists( 'themeblvd_get_sidebar_location_name' ) ) {
 		if( isset( $sidebars[$location]['location']['name']) )
 			return $sidebars[$location]['location']['name'];
 		return __( 'Floating Widget Area', 'themeblvd' );
-	}
-}
-
-/**
- * Retrieve current sidebar ID for a location.
- *
- * @since 2.0.0
- * 
- * @param string $location the location for the sidebar
- * @return string $id the id of the sidebar that should be shown
- */
-
-if( ! function_exists( 'themeblvd_get_sidebar_id' ) ) {
-	function themeblvd_get_sidebar_id( $location ) {
-		
-		// Innitiate assignments
-		$assignments = array();
-		
-		// Get all the sidebars for this location
-		$args = array(
-			'post_type' => 'tb_sidebar',
-			'numberposts' => -1,
-			'meta_key' => 'location',
-			'meta_value' => $location
-		);
-		
-		// And now create a single array of just their assignments 
-		// formatted for the themeblvd_get_assigned_id function
-		$custom_sidebars = get_posts( $args );
-		if( $custom_sidebars ) {
-	    	foreach( $custom_sidebars as $sidebar ) {
-    			$current_assignments = get_post_meta( $sidebar->ID, 'assignments', true );
-    			if( is_array( $current_assignments ) && ! empty ( $current_assignments ) ) {
-	    			foreach( $current_assignments as $key => $value ) {
-	    				$assignments[$key] = $value;
-	    			}
-	    		}
-	    	}
-	    }
-		
-		// Find the current custom sidebar from assignments
-		return themeblvd_get_assigned_id( $assignments );
 	}
 }
 

@@ -176,21 +176,17 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		// have theoretically assigned different custom sidebars to different 
 		// sidebar locations depending on what page we're on. So, here we 
 		// need to determine all of the proper sidebar IDs for our current 
-		// template situation.
+		// template situation. 
+		// NOTE: Custom sidebar ID's have to be filtered onto
+		// "themeblvd_custom_sidebar_id" -- The Widget Areas plugin does this.
 
 		$sidebars = array();
 		$sidebar_locations = themeblvd_get_sidebar_locations();
 		foreach( $sidebar_locations as $location_id => $default_sidebar ) {
     		
-    		// Find sidebar depending on location and current page
-    		$sidebar_post_slug = themeblvd_get_sidebar_id( $location_id );
-    		
-    		// Set the sidebar ID based on if we found a custom one or we'll 
-    		// be falling back to the default.
-    		if( $sidebar_post_slug )
-    			$sidebar_id = $sidebar_post_slug;
-    		else
-    			$sidebar_id = $location_id;
+    		// By default, the sidebar ID will match the ID of the
+    		// current location.
+    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id );
     		
     		// Set current sidebar ID
     		$sidebars[$location_id]['id'] = $sidebar_id;
@@ -387,150 +383,6 @@ function themeblvd_config( $key, $seconday = null ) {
 }
 
 /**
- * Locate the id for sidebar or override to be used based 
- * on the current WP query compared with assignments.
- *
- * These conditionals are split into three tiers. This 
- * means that we loop through conditionals each tier and 
- * only move onto the next tier if we didn't find an 
- * assignment to set.
- *
- * @since 2.0.0
- * 
- * @param $assignments array all of elements assignments to check through
- * @return $id string id of element to return
- */
-
-function themeblvd_get_assigned_id( $assignments ) {
-	
-	// Initialize $id
-	$id = null;
-	
-	// If assignments is empty, we can't do anything in 
-	// this function, so we'll just quit now!
-	if( empty( $assignments ) )
-		return $id;
-	
-	// Reset the query
-	wp_reset_query();
-	
-	// Tier I conditionals
-	foreach( $assignments as $assignment ) {
-		if( $assignment['type'] != 'top') {
-			// Page
-			if( $assignment['type'] == 'page' ) {
-				if( is_page( $assignment['id'] ) )			
-					$id = $assignment['post_slug'];
-			}
-			// Post
-			if( $assignment['type'] == 'post' ) {
-				if( is_single( $assignment['id'] ) )		
-					$id = $assignment['post_slug'];
-			}
-			// Category
-			if( $assignment['type'] == 'category' ) {
-				if( is_category( $assignment['id'] ) )			
-					$id = $assignment['post_slug'];
-			}
-			// Tag
-			if( $assignment['type'] == 'tag') {
-				if( is_tag( $assignment['id'] ) )		
-					$id = $assignment['post_slug'];
-			}
-			// Extend Tier I
-			$id = apply_filters( 'themeblvd_sidebar_id_tier_1', $id, $assignment );
-		}
-	}
-	
-	// If we found a tier I item, we're finished
-	if( $id )
-		return $id;
-	
-	// Tier II conditionals
-	foreach( $assignments as $assignment ) {
-		if( $assignment['type'] != 'top' ) {				
-			// Posts in Category
-			if( $assignment['type'] == 'posts_in_category' ) {
-				if( is_single() && in_category( $assignment['id'] ) )		
-					$id = $assignment['post_slug'];
-			}			
-			// Extend Tier II
-			$id = apply_filters( 'themeblvd_sidebar_id_tier_2', $id, $assignment );
-		}
-	}
-	
-	// If we found a tier II item, we're finished
-	if( $id )
-		return $id;
-	
-	// Tier III conditionals
-	foreach( $assignments as $assignment ) {
-		if( $assignment['type'] == 'top' ) {				
-			switch( $assignment['id'] ) {
-
-				// Homepage
-				case 'home' :
-					if( is_home() )		
-						$id = $assignment['post_slug'];
-					break;
-				
-				// All Posts	
-				case 'posts' :
-					if( is_single() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// All Pages	
-				case 'pages' :
-					if( is_page() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// Archives	
-				case 'archives' :
-					if( is_archive() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// Categories	
-				case 'categories' :
-					if( is_category() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// Tags	
-				case 'tags' :
-					if( is_tag() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// Authors	
-				case 'authors' :
-					if( is_author() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// Search Results
-				case 'search' :
-					if( is_search() )
-						$id = $assignment['post_slug'];
-					break;
-					
-				// 404	
-				case '404' :
-					if( is_404() )
-						$id = $assignment['post_slug'];
-					break;
-			} // End switch $assignment['id']					
-			
-			// Extend Tier III
-			$id = apply_filters( 'themeblvd_sidebar_id_tier_3', $id, $assignment );
-		}
-	}
-	return $id;	
-}
-
-/**
  * Load framework's JS scripts 
  *
  * To add scripts or remove unwanted scripts that you 
@@ -554,15 +406,15 @@ function themeblvd_get_assigned_id( $assignments ) {
 if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	function themeblvd_include_scripts() {
 		// Register scripts
-		// wp_register_script( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js', array('jquery'), '3.1.3', true ); // Original un-modified prettyPhoto
-		wp_register_script( 'bootstrap', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.4', true );
-		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/prettyphoto.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
-		wp_register_script( 'superfish', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
-		// wp_register_script( 'flexslider', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/flexslider.js', array('jquery'), '1.8', true );
-		wp_register_script( 'flexslider', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true );
-		wp_register_script( 'roundabout', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
-		wp_register_script( 'themeblvd', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
-		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/js/ios-orientationchange-fix.js', true );
+		// wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js', array('jquery'), '3.1.3', true ); // Original un-modified prettyPhoto
+		wp_register_script( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.0.4', true );
+		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
+		wp_register_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
+		// wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider.js', array('jquery'), '1.8', true );
+		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true );
+		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
+		wp_register_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
+		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/frontend/assets/js/ios-orientationchange-fix.js', true );
 		// Enqueue 'em
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bootstrap' );
@@ -592,10 +444,10 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 		// Level 1 user styles
 		themeblvd_user_stylesheets( 1 );
 		// Register framework styles
-		wp_register_style( 'bootstrap', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.0.4' );
-		wp_register_style( 'fontawesome', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
-		wp_register_style( 'prettyPhoto', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
-		wp_register_style( 'themeblvd', TB_FRAMEWORK_DIRECTORY . '/frontend/assets/css/themeblvd.css', array(), TB_FRAMEWORK_VERSION );
+		wp_register_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.0.4' );
+		wp_register_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
+		wp_register_style( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
+		wp_register_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.css', array(), TB_FRAMEWORK_VERSION );
 		// Enqueue framework styles
 		wp_enqueue_style( 'bootstrap' );
 		wp_enqueue_style( 'fontawesome' );

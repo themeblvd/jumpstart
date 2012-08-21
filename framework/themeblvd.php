@@ -11,8 +11,8 @@
 
 // Constants
 define( 'TB_FRAMEWORK_VERSION', '2.2.0' );
-define( 'TB_FRAMEWORK_URL', get_template_directory().'/framework' );
-define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory_uri().'/framework' );
+define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory().'/framework' );
+define( 'TB_FRAMEWORK_URI', get_template_directory_uri().'/framework' );
 
 // Run framework
 if( is_admin() ) {
@@ -22,31 +22,30 @@ if( is_admin() ) {
 	/*------------------------------------------------------*/
 	
 	// Include files
-	require_once( TB_FRAMEWORK_URL . '/admin/functions/display.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/functions/locals.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/functions/meta.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/options/options-interface.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/options/options-medialibrary-uploader.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/options/options-sanitize.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/options/options-framework.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/builder/builder-framework.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/sidebars/sidebars-framework.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/sliders/sliders-framework.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/builder.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/customizer.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/helpers.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/locals.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/options.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/sidebars.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/sliders.php' );
-	require_once( TB_FRAMEWORK_URL . '/shortcodes/tinymce/tinymce_shortcodes.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-contact.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-horz-nav.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-mini-post-grid.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-mini-post-list.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-video.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-twitter.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/functions/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/meta.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-interface.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-medialibrary-uploader.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-sanitize.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-framework.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/builder-framework.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/sliders/sliders-framework.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/locals.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/shortcodes/tinymce/tinymce_shortcodes.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-contact.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-horz-nav.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-mini-post-grid.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-mini-post-list.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-video.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-twitter.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
 	
 	// Filters
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
@@ -83,29 +82,29 @@ if( is_admin() ) {
 	/*------------------------------------------------------*/
 
 	// Include files
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/options/options-sanitize.php' );
-	require_once( TB_FRAMEWORK_URL . '/admin/modules/options/options-framework.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/builder.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/customizer.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/helpers.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/locals.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/options.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/sidebars.php' );
-	require_once( TB_FRAMEWORK_URL . '/api/sliders.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/sliders.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/builder.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/parts.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/actions.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/helpers.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/display.php' );
-	require_once( TB_FRAMEWORK_URL . '/frontend/functions/general.php' );
-	require_once( TB_FRAMEWORK_URL . '/shortcodes/shortcodes.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-contact.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-horz-nav.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-mini-post-grid.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-mini-post-list.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-video.php' );
-	require_once( TB_FRAMEWORK_URL . '/widgets/tb-widget-twitter.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-sanitize.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-framework.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/locals.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/sliders.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/builder.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/parts.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/actions.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/helpers.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/display.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/shortcodes/shortcodes.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-contact.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-horz-nav.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-mini-post-grid.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-mini-post-list.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-video.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-twitter.php' );
 
 	// Filters
 	add_filter( 'body_class', 'themeblvd_body_class' );
@@ -209,4 +208,4 @@ do_action( 'themeblvd_localize' );
 do_action( 'themeblvd_api' );
 
 // Run theme functions
-require_once ( get_template_directory() . '/includes/theme-functions.php' );
+include_once ( get_template_directory() . '/includes/theme-functions.php' );

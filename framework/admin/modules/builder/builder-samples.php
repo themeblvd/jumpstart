@@ -14,7 +14,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 		global $_themeblvd_remove_sample_layouts;
 		
 		// Path to images used in sample layouts on frontend.
-		$imgpath = TB_FRAMEWORK_DIRECTORY.'/frontend/assets/images/sample';
+		$imgpath = TB_FRAMEWORK_URI.'/frontend/assets/images/sample';
 		
 		$samples = array(
 			'business_1' => array(

@@ -216,22 +216,6 @@ if( ! function_exists( 'themeblvd_register_posts' ) ) {
 			register_post_type( 'tb_slider', $args );
 		}
 		
-		// Custom Sidebars
-		if( themeblvd_supports( 'primary', 'sidebars' ) ) {
-			$args = array(
-				'labels' 			=> array( 'name' => 'Widget Areas', 'singular_name' => 'Widget Area' ),
-				'public'			=> false,
-				//'show_ui' 		=> true,	// Can uncomment for debugging
-				'query_var' 		=> true,
-				'capability_type' 	=> 'post',
-				'hierarchical' 		=> false,
-				'rewrite' 			=> false,
-				'supports' 			=> array( 'title', 'custom-fields' ), 
-				'can_export'		=> true
-			);
-			register_post_type( 'tb_sidebar', $args );
-		}
-		
 		// Custom Layouts
 		if( themeblvd_supports( 'primary', 'builder' ) ) {
 			$args = array(
@@ -1426,6 +1410,10 @@ function themeblvd_conditionals_config() {
 				'search' 		=> __( 'Search Results', 'themeblvd' ),
 				'404' 			=> __( '404 Page', 'themeblvd' )
 			)
+		),
+		'custom' => array(
+			'id'	=> 'custom',
+			'name'	=> __( 'Custom', 'themeblvd' )
 		)
 	);
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );

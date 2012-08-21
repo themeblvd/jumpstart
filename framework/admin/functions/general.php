@@ -16,24 +16,25 @@ function themeblvd_admin_init() {
 	/*------------------------------------------------------*/
 	
 	// Common Assets
-	define( 'THEMEBLVD_ADMIN_ASSETS_URL', TB_FRAMEWORK_URL . '/admin/assets/' );
-	define( 'THEMEBLVD_ADMIN_ASSETS_DIRECTORY', TB_FRAMEWORK_DIRECTORY . '/admin/assets/');
+	define( 'THEMEBLVD_ADMIN_ASSETS_URI', TB_FRAMEWORK_URI . '/admin/assets');
 	
 	// Options Framework
-	define( 'OPTIONS_FRAMEWORK_URL', TB_FRAMEWORK_URL . '/admin/modules/options/' );
-	define( 'OPTIONS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/');
+	define( 'OPTIONS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/' );
+	define( 'OPTIONS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/options/');
+	
+	// ... Everything below will get removed as we moved to plugins ...
 	
 	// Sliders Framework
-	define( 'SLIDERS_FRAMEWORK_URL', TB_FRAMEWORK_URL . '/admin/modules/sliders/' );
-	define( 'SLIDERS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_DIRECTORY . '/admin/modules/sliders/');
+	define( 'SLIDERS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/sliders/' );
+	define( 'SLIDERS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/sliders/');
 	
 	// Builder Framework
-	define( 'BUILDER_FRAMEWORK_URL', TB_FRAMEWORK_URL . '/admin/modules/builder/' );
-	define( 'BUILDER_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/');
+	define( 'BUILDER_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/' );
+	define( 'BUILDER_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/builder/');
 			
 	// Sidebar Framework
-	define( 'SIDEBARS_FRAMEWORK_URL', TB_FRAMEWORK_URL . '/admin/modules/sidebars/' );
-	define( 'SIDEBARS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_DIRECTORY . '/admin/modules/sidebars/');
+	//define( 'SIDEBARS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/sidebars/' );
+	//define( 'SIDEBARS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/sidebars/');
 	
 }
 
@@ -49,12 +50,12 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 		
 		// Assets for editing posts
 		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
-			wp_enqueue_style( 'tb_meta_box-styles', THEMEBLVD_ADMIN_ASSETS_DIRECTORY.'css/meta-box.css', false, false, 'screen' );
-			wp_enqueue_script( 'tb_meta_box-scripts', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'js/meta-box.js', array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_enqueue_style( 'tb_meta_box-styles', THEMEBLVD_ADMIN_ASSETS_URI.'/css/meta-box.css', false, false, 'screen' );
+			wp_enqueue_script( 'tb_meta_box-scripts', THEMEBLVD_ADMIN_ASSETS_URI . '/js/meta-box.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		}
 		
 		// Styles for all of WP admin
-		wp_enqueue_style( 'tb_admin_global', THEMEBLVD_ADMIN_ASSETS_DIRECTORY . 'css/admin-global.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'tb_admin_global', THEMEBLVD_ADMIN_ASSETS_URI . '/css/admin-global.css', null, TB_FRAMEWORK_VERSION );
 		
 	}
 }

@@ -21,8 +21,6 @@ $plugin_url = get_template_directory_uri().'/framework/shortcodes/tinymce/';
 		{
 			init: function(d,e) {
 					
-					
-					
 					d.addCommand( "themeblvdOpenDialog",function(a,c){
 						
 						// Grab the selected text from the content editor.
