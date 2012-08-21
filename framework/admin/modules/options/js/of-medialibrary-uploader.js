@@ -84,7 +84,7 @@
 				jQuery('#TB_iframeContent').contents().find('.slidetoggle tr.image_alt, .slidetoggle tr.post_excerpt, .slidetoggle tr.post_content, .slidetoggle tr.url, .slidetoggle tr.align, .slidetoggle tr.image-size').hide();
 			}, 2000);
         }
-        else if( upload_type == 'logo' )
+        else if( upload_type == 'logo' || upload_type == 'logo_2x' )
         {
         	tbframe_interval = setInterval(function() {jQuery('#TB_iframeContent').contents().find('.savesend .button').val('Use as Logo');}, 2000);
         }
@@ -121,14 +121,18 @@
           
 			if ( $(html).html(html).find('img').length > 0 ) {
 				
+				if( upload_type == 'logo' )
+				{
+					var itemwidth = $(html).html(html).find('img').attr('width');	
+				}
 				var itemurl = $(html).html(html).find('img').attr('src'); // Use the URL to the size selected.
 				
 			} else {
 			
-			// It's not an image. Get the URL to the file instead.
+				// It's not an image. Get the URL to the file instead.
 				
-			var htmlBits = html.split("'"); // jQuery seems to strip out XHTML when assigning the string to an object. Use alternate method.
-			itemurl = htmlBits[1]; // Use the URL to the file.
+				var htmlBits = html.split("'"); // jQuery seems to strip out XHTML when assigning the string to an object. Use alternate method.
+				itemurl = htmlBits[1]; // Use the URL to the file.
 				
 				var itemtitle = htmlBits[2];
 				
@@ -143,18 +147,25 @@
 			var video = /(^.*\.mp4|m4v|mov|wmv|avi|mpg|ogv|3gp|3g2*)/gi;
 			
 			if (itemurl.match(image)) {
-			btnContent = '<img src="'+itemurl+'" alt="" /><a href="#" class="mlu_remove button">Remove Image</a>';
+			
+				btnContent = '<img src="'+itemurl+'" alt="" /><a href="#" class="mlu_remove button">Remove Image</a>';
+			
 			} else {
 				
-			// No output preview if it's not an image.
-			// btnContent = '';
-			// Standard generic output if it's not an image.
+				// No output preview if it's not an image.
+				// btnContent = '';
+				// Standard generic output if it's not an image.
 			
-			html = '<a href="'+itemurl+'" target="_blank" rel="external">View File</a>';
-			btnContent = '<div class="no_image"><span class="file_link">'+html+'</span><a href="#" class="mlu_remove button">Remove</a></div>';
+				html = '<a href="'+itemurl+'" target="_blank" rel="external">View File</a>';
+				btnContent = '<div class="no_image"><span class="file_link">'+html+'</span><a href="#" class="mlu_remove button">Remove</a></div>';
 			}
 			
 			$('#' + formfield).val(itemurl);
+			if( upload_type == 'logo' )
+			{
+				// Insert width if this is the standard size logo image.
+				$('#' + formfield).next().val(itemwidth);
+			}
 			// $('#' + formfield).next().next('div').slideDown().html(btnContent);
 			$('#' + formfield).siblings('.screenshot').slideDown().html(btnContent);
 			$('#' + formfield).siblings('.of-background-properties').show(); //show background properties

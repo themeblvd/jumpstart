@@ -136,15 +136,21 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 			$upload_text = $_upload_text;
 		
 		if ( $value['url'] ) { $class = ' has-file'; }
-		
+
 		if( $type == 'slider' ) {
 			// Slider image ID input w/hidden image URL input for user admin display
 			$output .= '<span class="locked"><span></span><input id="' . $id . '_id" class="locked upload' . $class . '" type="text" name="'.$name.'[id]" value="' . $value['id'] . '" /></span>' . "\n";
 			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="hidden" name="'.$name.'[url]" value="' . $value['url'] . '" />' . "\n";
 			$output .= '<p class="explain">'.__( 'You must use the "Get Image" button to modify the image ID for this slide. This is what the locked icon represents.', 'themeblvd' ).'</p>';
+		} elseif( $type == 'logo' ){
+			$width_name = str_replace( '[image]', '[image_width]', $name );
+			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL', 'themeblvd').'" />' . "\n";
+			$output .= '<input id="' . $id . '_width" class="image-width upload' . $class . '" type="text" name="'.$width_name.'" value="' . $value['width'] . '" placeholder="'.__('Width', 'themeblvd').'" />' . "\n";
+		} elseif( $type == 'logo_2x' ){
+			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL twice the size of standard image', 'themeblvd').'" />' . "\n";
 		} else {
 			// Standard image input
-			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" />' . "\n";
+			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL', 'themeblvd').'" />' . "\n";
 		}
 		
 		$output .= '<input id="upload_' . $id . '" class="upload_button button" type="button" value="' . $upload_text . '" data-upload-type="'. $type .'" rel="' . $int . '" />' . "\n";

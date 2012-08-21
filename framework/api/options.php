@@ -106,7 +106,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 						'name' 		=> __( 'Logo', 'themeblvd' ),
 						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.', 'themeblvd' ),
 						'id' 		=> 'logo',
-						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '220', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'
 					)
 				) // End header options

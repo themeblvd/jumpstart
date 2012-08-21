@@ -314,12 +314,6 @@ function of_sanitize_logo( $input ) {
 	
 	$output = array();
 	
-	// Delete logo-size transient, as user may be 
-	// inserting an image that is a new size. 
-	// The new dimensions will be calculated when 
-	// the site runs on the frontend the next time.
-	delete_transient( 'themeblvd_logo_size' );
-	
 	// Type 
 	if( is_array( $input ) && isset( $input['type'] ) )
 		$output['type'] = $input['type'];
@@ -333,10 +327,14 @@ function of_sanitize_logo( $input ) {
 	// Image (standard)
 	if( isset( $input['image'] ) ) {
 		$filetype = wp_check_filetype( $input['image'] );
-		if ( $filetype["ext"] )
+		if ( $filetype["ext"] ){
 			$output['image'] = $input['image'];
-		else
+			if( isset( $input['image_width'] ) )
+				$output['image_width'] = $input['image_width'];
+		} else {
 			$output['image'] = null;
+			$output['image_width'] = null;
+		}
 	}
 	
 	// Image (for retina)
