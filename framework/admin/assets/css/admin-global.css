@@ -22,7 +22,6 @@
 		only screen and (-o-min-device-pixel-ratio: 1.5), 
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
-
 	#adminmenu #toplevel_page_builder_blvd div.wp-menu-image,
 	#adminmenu #toplevel_page_slider_blvd div.wp-menu-image {
 		background-image: url('../images/menu_2x.png');

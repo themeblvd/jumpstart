@@ -53,10 +53,17 @@
 #optionsframework .section-upload .section-upload.image-standard input.image-width {width:15%;}
 #optionsframework .screenshot{float:left;margin-left:1px;position:relative;width:344px;margin-top:3px;}
 #optionsframework .screenshot img{background:#FAFAFA;float:left;max-width:334px;margin-bottom:10px;border-color:#ccc #eee #eee #ccc;border-style:solid;border-width:1px;padding:4px;}
-#optionsframework .screenshot .mlu_remove{background:url(../images/ico-delete.png) no-repeat;border:medium none;bottom:4px;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
+#optionsframework .screenshot .mlu_remove{background:url(../../assets/images/icon-remove.png) no-repeat;border:medium none;bottom:4px;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
 #optionsframework .screenshot .no_image .file_link{margin-left:20px;}
 #optionsframework .screenshot .no_image .mlu_remove{bottom:0;}
 #optionsframework .reset-button{float:left;cursor:pointer;}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#optionsframework .screenshot .mlu_remove{background-image:url(../../assets/images/icon-remove_2x.png);background-size:16px 16px;}
+}
 
 /* Bottom Section */
 #optionsframework-submit{border-top:1px solid #ECECEC;background-color:#F1F1F1;background-image:0;padding:7px 10px;}

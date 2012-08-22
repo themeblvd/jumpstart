@@ -25,10 +25,10 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/meta.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-interface.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-medialibrary-uploader.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-sanitize.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-framework.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-medialibrary-uploader.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/builder-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/sliders/sliders-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
@@ -82,8 +82,8 @@ if( is_admin() ) {
 	/*------------------------------------------------------*/
 
 	// Include files
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-sanitize.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/options-framework.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );

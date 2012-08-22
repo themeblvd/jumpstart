@@ -6,11 +6,19 @@
 #optionsframework .inactive{color:#999999;}
 #optionsframework .ajax-update{display:none;}
 #optionsframework .ajax-overlay{background:#ffffff;display:none;opacity:.7;position:absolute;top:0;right:0;bottom:0;left:0;}
-#optionsframework .conflict,#optionsframework .no-conflict{background-position:left center;background-repeat:no-repeat;padding:2px 0 2px 20px;}
+#optionsframework .conflict, #optionsframework .no-conflict{background-position:left center;background-repeat:no-repeat;padding:2px 0 2px 20px;}
 #optionsframework .conflict{background-image:url(../images/icon-error.png);}
 #optionsframework .no-conflict{background-image:url(../images/icon-check.png);}
 #optionsframework .admin-module-footer { clear:both; }
 #optionsframework .widefat { margin-bottom: 20px; }
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#optionsframework .conflict{background-image:url(../images/icon-error_2x.png);background-size:16px 16px;}
+	#optionsframework .no-conflict{background-image:url(../images/icon-check_2x.png);background-size:16px 16px;}
+}
 
 /* FORM ELEMENTS */
 
@@ -69,6 +77,19 @@
 #optionsframework .inactive-icon{background:url(../images/icon-inactive.png) no-repeat;}
 #optionsframework .refresh-icon{background:url(../images/icon-refresh.png) no-repeat;}
 #optionsframework .remove-icon{background:url(../images/icon-remove.png) no-repeat;}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#optionsframework .active-icon{background-image:url(../images/icon-active_2x.png);background-size:16px 16px;}
+	#optionsframework .add-icon{background-image:url(../images/icon-add_2x.png);background-size:16px 16px;}
+	#optionsframework .delete-icon{background-image:url(../images/icon-delete_2x.png);background-size:16px 16px;}
+	#optionsframework .help-icon{background-image:url(../images/icon-help_2x.png);background-size:16px 16px;}
+	#optionsframework .inactive-icon{background-image:url(../images/icon-inactive_2x.png);background-size:16px 16px;}
+	#optionsframework .refresh-icon{background-image:url(../images/icon-refresh_2x.png);background-size:16px 16px;}
+	#optionsframework .remove-icon{background-image:url(../images/icon-remove_2x.png);background-size:16px 16px;}
+}
 
 /* ACCORDION */
 

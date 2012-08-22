@@ -19,8 +19,8 @@ function themeblvd_admin_init() {
 	define( 'THEMEBLVD_ADMIN_ASSETS_URI', TB_FRAMEWORK_URI . '/admin/assets');
 	
 	// Options Framework
-	define( 'OPTIONS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/options/' );
-	define( 'OPTIONS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/options/');
+	define( 'OPTIONS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/options/' );
+	define( 'OPTIONS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/options/');
 	
 	// ... Everything below will get removed as we moved to plugins ...
 	

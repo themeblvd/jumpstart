@@ -39,6 +39,7 @@
 #slider_blvd #optionsframework .screenshot img { width: 90%; }
 #slider_blvd #edit_slider .slide-set-media h3 { margin: 0; padding: 5px; }
 #slider_blvd #edit_slider .slide-set-media .explain { color: #666; line-height: 150%; margin-top: 0; }
+#slider_blvd #edit_slider .slide-element-help .help-icon {margin-top:-3px;margin-right:-4px;}
 #slider_blvd #edit_slider .slide-include-elements h4 { margin: 0 0 10px 0; }
 #slider_blvd #edit_slider .slide-include-elements h5 { font-size: 12px; margin: 0 0 7px 0; }
 #slider_blvd #edit_slider .slide-include-elements .slide-element-check { width: 15px; text-align: center; vertical-align: middle; }

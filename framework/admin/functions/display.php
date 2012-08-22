@@ -441,7 +441,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		
 		// The selection of a floating widget area is only 
 		// possible if the Widget Areas plugin is installed.
-		if( ! defined( 'TB_WA_PLUGIN_VERSION' ) ){
+		if( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
 			
 			// Message to get plugin	
 			$select_sidebar = '<p class="warning">'.sprintf(__( 'In order for you to use this feature you need to have the %s plugin activated.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
