@@ -322,16 +322,17 @@ if( ! function_exists( 'themeblvd_carrousel_slider_default' ) ) {
 									<div class="grid-protection">
 										<?php
 										// Image
+										$crop = apply_filters( 'themeblvd_carrousel_image_size', 'grid_4' );
 										$image_url = null;
 										$image_title = null;
-										if( isset( $slide['image']['grid_4'] ) && $slide['image']['grid_4'] )
-											$image_url = $slide['image']['grid_4'];
+										if( isset( $slide['image'][$crop] ) && $slide['image'][$crop] )
+											$image_url = $slide['image'][$crop];
 										if( isset( $slide['image']['id'] ) ) {
 											$attachment = get_post( $slide['image']['id'], OBJECT );
 											$image_title = $attachment->post_title;
 										}
 										if( ! $image_url ) {
-											$attachment = wp_get_attachment_image_src( $slide['image']['id'], 'grid_4' );
+											$attachment = wp_get_attachment_image_src( $slide['image']['id'], $crop );
 											$image_url = $attachment[0];
 										}
 										// Elements
