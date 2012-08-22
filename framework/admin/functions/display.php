@@ -637,6 +637,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$output .= '<textarea name="'.esc_attr( $name.'['.$id.'][post]' ).'">'.$assignment_list.'</textarea>';
 				$output .= '<p class="note">'.__( 'Enter in a comma-separated list of the post slugs you\'d like to add to the assignments.', 'themeblvd' ).'</p>';
 				$output .= '<p class="note"><em>'.__( 'Example: post-1, post-2, post-3', 'themeblvd' ).'</em></p>';
+				$output .= '<p class="note"><em>'.__( 'Note: Any post slugs entered that don\'t exist won\'t be saved.', 'themeblvd' ).'</em></p>';
 				break;
 			
 			// Posts in Category	
@@ -679,6 +680,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$output .= '<textarea name="'.esc_attr( $name.'['.$id.'][tag]' ).'">'.$assignment_list.'</textarea>';
 				$output .= '<p class="note">'.__( 'Enter in a comma-separated list of the tags you\'d like to add to the assignments.', 'themeblvd' ).'</p>';
 				$output .= '<p class="note"><em>'.__( 'Example: tag-1, tag-2, tag-3', 'themeblvd' ).'</em></p>';
+				$output .= '<p class="note"><em>'.__( 'Note: Any tags entered that don\'t exist won\'t be saved.', 'themeblvd' ).'</em></p>';
 				break;
 			
 			// Hierarchy
@@ -698,6 +700,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$output .= '<input type="text" name="'.esc_attr( $name.'['.$id.'][custom]' ).'" value="'.$assignments['custom'].'" />';
 					$output .= '<p class="note">'.__( 'Enter in a custom <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">conditional statement</a>.', 'themeblvd' ).'</p>';
 					$output .= '<p class="note"><em>'.__( 'Examples:', 'themeblvd' ).'</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>';
+					$output .= '<p class="note"><em>'.__( 'Warning: Make sure you know what you\'re doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website.', 'themeblvd' ).'</em></p>';
 				}
 				break;
 
