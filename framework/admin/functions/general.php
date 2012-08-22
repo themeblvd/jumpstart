@@ -91,7 +91,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 	$non_conflicts = array();
 	$conflicts = array();
 	$locations = themeblvd_get_sidebar_locations();
-	foreach( $locations as $location) {
+	foreach( $locations as $location ) {
 		$conflicts[$location['location']['id']] = array();
 		$non_conflicts[$location['location']['id']] = array();
 	}
@@ -110,8 +110,8 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 		if( $location && $location != 'floating' ) {
 			$assignments = get_post_meta( $post->ID, 'assignments', true );
 			if( is_array( $assignments ) && ! empty( $assignments ) ) {
-				foreach( $assignments as $key => $assignmnet ) {
-					if( in_array( $key, $non_conflicts[$location] ) ) {
+				foreach( $assignments as $key => $assignment ) {
+					if( $key != 'custom' && in_array( $key, $non_conflicts[$location] ) ) {
 						if( ! in_array( $key, $conflicts[$location] ) ) {
 							$conflicts[$location][] = $key;
 						}	
