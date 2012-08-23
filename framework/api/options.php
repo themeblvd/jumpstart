@@ -310,29 +310,6 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 						'id' 		=> 'blog_categories',
 						'type' 		=> 'multicheck',
 						'options' 	=> $options_categories
-					),			
-					'start_featured' => array( 
-						'type'		=> 'subgroup_start',
-				    	'class'		=> 'show-hide'
-				    ),
-					'blog_featured' => array( 
-						'name'		=> __( 'Featured Area', 'themeblvd' ),
-						'desc'		=> __( 'Show slider above blog?', 'themeblvd' ),
-						'id' 		=> 'blog_featured',
-						'type'		=> 'checkbox',
-						'class'		=> 'trigger'
-					),
-											
-					'blog_slider' => array( 
-						'name'		=> __( 'Featured Slider', 'themeblvd' ),
-						'desc'		=> __( 'Select a slider from you custom-made sliders. Sliders are created <a href="admin.php?page=slider_blvd" target="_blank">here</a>.', 'themeblvd' ),
-						'id' 		=> 'blog_slider',
-						'type'		=> 'select',
-						'options'	=> $custom_sliders,
-						'class'		=> 'hide receiver'
-					),	
-					'end_featured' => array( 
-						'type'		=> 'subgroup_end'
 					)
 				) // End blog options
 			),

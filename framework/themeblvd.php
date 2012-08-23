@@ -157,7 +157,6 @@ if( is_admin() ) {
 	// Featured area hooks
 	add_action( 'themeblvd_featured_start', 'themeblvd_featured_start_default' );
 	add_action( 'themeblvd_featured_end', 'themeblvd_featured_end_default' );
-	add_action( 'themeblvd_featured', 'themeblvd_featured_blog_default' );
 	add_action( 'themeblvd_featured', 'themeblvd_featured_builder_default' );
 	add_action( 'themeblvd_featured_below_start', 'themeblvd_featured_below_start_default' );
 	add_action( 'themeblvd_featured_below_end', 'themeblvd_featured_below_end_default' );

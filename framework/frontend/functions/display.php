@@ -360,30 +360,6 @@ if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 /**
  * Default display for action: themeblvd_featured
  *
- * @since 2.1.0
- */
-
-if( ! function_exists( 'themeblvd_featured_blog_default' ) ) {
-	function themeblvd_featured_blog_default() {
-		if( is_home() || is_page_template( 'template_list.php' ) ) {
-			if( ! themeblvd_config( 'builder' ) && themeblvd_get_option( 'blog_featured', null, false ) ) {
-				$slider = themeblvd_get_option( 'blog_slider' );
-				$type = get_post_meta( themeblvd_post_id_by_name($slider, 'tb_slider'), 'type', true );
-				echo '<div class="element element-slider element-slider-'.$type.'">';
-				echo '<div class="element-inner">';
-				echo '<div class="element-inner-wrap">';
-				themeblvd_slider( $slider );
-				echo '</div>';
-				echo '</div>';
-				echo '</div>';
-			}
-		}
-	}
-}
-
-/**
- * Default display for action: themeblvd_featured
- *
  * @since 2.2.0
  */
  
