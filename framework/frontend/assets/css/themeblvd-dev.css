@@ -841,6 +841,9 @@ ul.sf-menu [class^="icon-"] {
 .edit-link {
 	display: block;
 }
+.required {
+	color: red;
+}
 .skip-link, 
 .screen-reader-text, 
 .assistive-text {

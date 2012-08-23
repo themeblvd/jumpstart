@@ -58,4 +58,5 @@
 		<!-- COMMENT FORM (end) -->
 		
 	</div><!-- #comments -->
+	
 <?php endif; ?>
