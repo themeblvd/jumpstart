@@ -803,3 +803,95 @@ if( ! function_exists( 'themeblvd_wp_title' ) ) {
 		return $title;
 	}
 }
+
+/**
+ * Get Comment List arguments for comments.php
+ *
+ * @since 2.2.0
+ *
+ * @return array $args Arguments to be passed into wp_list_comments()
+ */
+
+if( ! function_exists( 'themeblvd_get_comment_list_args' ) ) {
+	function themeblvd_get_comment_list_args() {
+		$args = array( 
+			'avatar_size' 		=> 48,
+			'style' 			=> 'ul',
+			'type' 				=> 'all',
+			'reply_text' 		=> themeblvd_get_local( 'reply' ),
+			'login_text' 		=> themeblvd_get_local( 'login_text' ),
+			'callback' 			=> null,
+			'reverse_top_level' => null,
+			'reverse_children' 	=> false
+		);
+		return apply_filters( 'themeblvd_comment_list', $args );
+	}	
+}
+
+/**
+ * Get Comment Form arguments for comments.php
+ *
+ * @since 2.2.0
+ *
+ * @return array $args Arguments to be passed into comment_form()
+ */
+
+if( ! function_exists( 'themeblvd_get_comment_form_args' ) ) {
+	function themeblvd_get_comment_form_args() {
+		$commenter = wp_get_current_commenter();
+		$req = get_option( 'require_name_email' );
+		$aria_req = ( $req ? " aria-required='true'" : '' );
+		$args = array(
+			'fields' => array(
+				'author' => '<p class="comment-form-author"><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
+							'<label for="author">' . themeblvd_get_local( 'name' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+				'email'  => '<p class="comment-form-email"><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
+							'<label for="email">' . themeblvd_get_local( 'email' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+				'url'    => '<p class="comment-form-url"><input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
+							'<label for="url">' .themeblvd_get_local( 'website' ) . '</label></p>'
+			),
+			'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
+			'title_reply'			=> themeblvd_get_local( 'title_reply' ),
+			'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
+			'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
+			'label_submit'			=> themeblvd_get_local( 'label_submit' )
+		);
+		return apply_filters( 'themeblvd_comment_form', $args );
+	}
+}
+
+/**
+ * Determine whether comments section should show on 
+ * a single post.
+ *
+ * At first glance, you're probably wondering why this 
+ * would exist when you the WP user could just close 
+ * the comments. When the user closes the comments, 
+ * comments will still be present and in place of the 
+ * comment form, it will say that the comments are closed.
+ * 
+ * However, in addition to that, this framework allows 
+ * the user to completely hide the comments section all 
+ * together in various ways. So, this extends further 
+ * up than simply haivng the comments for a post closed.
+ * 
+ * @since 2.2.0
+ *
+ * @return boolean $show Arguments to be passed into wp_list_comments()
+ */
+
+if( ! function_exists( 'themeblvd_show_comments' ) ) {
+	function themeblvd_show_comments() {
+		global $post;
+		$show = true;
+		if( is_single() ) {
+			if( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' )
+				$show = false;
+			if( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' )
+				$show = false;
+			else if( get_post_meta( $post->ID, '_tb_comments', true ) == 'show' )
+				$show = true;
+		}
+		return $show;
+	}	
+}

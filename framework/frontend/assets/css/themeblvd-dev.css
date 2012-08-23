@@ -841,6 +841,28 @@ ul.sf-menu [class^="icon-"] {
 .edit-link {
 	display: block;
 }
+.skip-link, 
+.screen-reader-text, 
+.assistive-text {
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+.nav-previous,
+.previous-image {
+	float: left;
+	width: 50%;
+}
+.nav-next,
+.next-image {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+#content nav {
+	clear: both;
+	line-height: 2;
+	overflow: hidden;
+}
 
 /* =Moveable Parts
 -------------------------------------------------------------- */
