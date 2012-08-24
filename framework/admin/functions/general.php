@@ -10,31 +10,25 @@
  */
  
 function themeblvd_admin_init() {
+
+	global $_themeblvd_theme_options_page;
 	
-	/*------------------------------------------------------*/
-	/* Admin Modules
-	/*------------------------------------------------------*/
-	
-	// Common Assets
-	define( 'THEMEBLVD_ADMIN_ASSETS_URI', TB_FRAMEWORK_URI . '/admin/assets');
-	
-	// Options Framework
-	define( 'OPTIONS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/options/' );
-	define( 'OPTIONS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/options/');
-	
-	// ... Everything below will get removed as we moved to plugins ...
-	
-	// Sliders Framework
-	define( 'SLIDERS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/sliders/' );
-	define( 'SLIDERS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/sliders/');
-	
-	// Builder Framework
-	define( 'BUILDER_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/' );
-	define( 'BUILDER_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/builder/');
-			
-	// Sidebar Framework
-	//define( 'SIDEBARS_FRAMEWORK_URL', TB_FRAMEWORK_DIRECTORY . '/admin/modules/sidebars/' );
-	//define( 'SIDEBARS_FRAMEWORK_DIRECTORY', TB_FRAMEWORK_URI . '/admin/modules/sidebars/');
+	// Allow theme options page to run if framework filters
+	// have don't have it hidden it and user is capable.
+	if( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
+		
+		// Option ID the theme options are registered and 
+		// saved to. -- i.e. get_option( $option_name )
+		$option_name = themeblvd_get_option_name();
+		
+		// All options constructed from framework and 
+		// potentially added to by API
+		$options = themeblvd_get_formatted_options();
+		
+		// Theme Options object
+		$_themeblvd_theme_options_page = new Theme_Blvd_Options_Page( $option_name, $options );
+		
+	}
 	
 }
 
@@ -50,12 +44,12 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 		
 		// Assets for editing posts
 		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
-			wp_enqueue_style( 'tb_meta_box-styles', THEMEBLVD_ADMIN_ASSETS_URI.'/css/meta-box.css', false, false, 'screen' );
-			wp_enqueue_script( 'tb_meta_box-scripts', THEMEBLVD_ADMIN_ASSETS_URI . '/js/meta-box.js', array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.css', false, false, 'screen' );
+			wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		}
 		
 		// Styles for all of WP admin
-		wp_enqueue_style( 'tb_admin_global', THEMEBLVD_ADMIN_ASSETS_URI . '/css/admin-global.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.css', null, TB_FRAMEWORK_VERSION );
 		
 	}
 }

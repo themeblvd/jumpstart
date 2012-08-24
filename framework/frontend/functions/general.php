@@ -17,9 +17,13 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		$builder = false;
 		$sidebar_layout = '';
 		
-		// Setup global theme options
+		// Setup global theme settings
 		$option_name = themeblvd_get_option_name();
 		$_themeblvd_theme_settings = get_option( $option_name );
+		if( ! $_themeblvd_theme_settings ) {
+			$options = themeblvd_get_formatted_options();
+			$_themeblvd_theme_settings = themeblvd_get_option_defaults( $options );
+		}
 		
 		/*------------------------------------------------------*/
 		/* Primary Post ID

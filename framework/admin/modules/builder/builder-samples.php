@@ -20,7 +20,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'business_1' => array(
 				'name' => 'Business Homepage #1',
 				'id' => 'business_1',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-business_1.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-business_1.png',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(
 					'element_1' => array(
@@ -95,7 +95,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'business_2' => array(
 				'name' => 'Business Homepage #2',
 				'id' => 'business_2',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-business_2.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-business_2.png',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(
 					'element_1' => array(
@@ -170,7 +170,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'business_3' => array(
 				'name' => 'Business Homepage #3',
 				'id' => 'business_3',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-business_3.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-business_3.png',
 				'sidebar_layout' => 'sidebar_right',
 				'featured' => array(
 					'element_1' => array(
@@ -210,7 +210,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'business_4' => array(
 				'name' => 'Business Homepage #4',
 				'id' => 'business_4',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-business_4.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-business_4.png',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(),
 				'primary' => array(
@@ -293,7 +293,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'magazine_1' => array(
 				'name' => 'Classic Magazine #1',
 				'id' => 'magazine_1',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-magazine_1.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-magazine_1.png',
 				'sidebar_layout' => 'sidebar_right',
 				'featured' => array(),
 				'primary' => array(
@@ -322,7 +322,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'magazine_2' => array(
 				'name' => 'Classic Magazine #2',
 				'id' => 'magazine_2',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-magazine_2.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-magazine_2.png',
 				'sidebar_layout' => 'sidebar_right',
 				'featured' => array(),
 				'primary' => array(
@@ -367,7 +367,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'agency' => array(
 				'name' => 'Design Agency',
 				'id' => 'agency',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-agency.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-agency.png',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(
 					'element_1' => array(
@@ -453,7 +453,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'portfolio' => array(
 				'name' => 'Portfolio Homepage',
 				'id' => 'portfolio',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-portfolio.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-portfolio.png',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(
 					'element_1' => array(
@@ -487,7 +487,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'showcase' => array(
 				'name' => 'Showcase Blogger',
 				'id' => 'showcase',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-showcase.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-showcase.png',
 				'sidebar_layout' => 'sidebar_right',
 				'featured' => array(
 					'element_1' => array(
@@ -529,7 +529,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'orman' => array(
 				'name' => 'The Orman',
 				'id' => 'orman',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-orman.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-orman.png',
 				'credit' => 'Inspired by Orman Clark\'s <a href="http://themeforest.net/item/classica-minimalistic-wordpress-portfolio-theme/155672" target="_blank">Classica</a>',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(
@@ -650,7 +650,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'mcalister' => array(
 				'name' => 'The McAlister',
 				'id' => 'mcalister',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-mcalister.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-mcalister.png',
 				'credit' => 'Inspired by Mike McAlister\'s <a href="http://themeforest.net/item/transfer-wordpress-theme/505769" target="_blank">Transfer</a>',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(
@@ -781,7 +781,7 @@ if( ! function_exists( 'builder_blvd_samples' ) ) {
 			'webtreats' => array(
 				'name' => 'The WebTreats Special',
 				'id' => 'webtreats',
-				'preview' => BUILDER_FRAMEWORK_DIRECTORY . 'images/sample-webtreats.png',
+				'preview' => TB_FRAMEWORK_URI . '/admin/modules/builder/images/sample-webtreats.png',
 				'credit' => 'Inspired by WebTreats\' <a href="http://themeforest.net/item/awake-powerful-professional-wordpress-theme/111267" target="_blank">Awake</a>',
 				'sidebar_layout' => 'full_width',
 				'featured' => array(

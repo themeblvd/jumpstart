@@ -797,3 +797,31 @@ if( ! function_exists( 'themeblvd_get_option_name' ) ) {
 		return apply_filters( 'themeblvd_option_id', $themename );
 	}
 }
+
+/**
+ * Get default values for set of options
+ *
+ * @since 2.2.0
+ *
+ * @param array $options Options formatted for internal options framework
+ * @return array $defaults Default values from options
+ */
+
+if( ! function_exists( 'themeblvd_get_option_defaults' ) ) {
+	function themeblvd_get_option_defaults( $options ) {
+		$defaults = array();
+		foreach( (array) $options as $option ) {
+			// Skip if any vital items are not set.
+			if( ! isset( $option['id'] ) )
+				continue;
+			if( ! isset( $option['std'] ) )
+				continue;
+			if( ! isset( $option['type'] ) )
+				continue;
+			// Continue with adding the option in.
+			if ( has_filter( 'of_sanitize_' . $option['type'] ) )
+				$defaults[$option['id']] = apply_filters( 'of_sanitize_' . $option['type'], $option['std'], $option );
+		}
+		return $defaults;
+	}
+}

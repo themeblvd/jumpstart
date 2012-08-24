@@ -61,7 +61,7 @@ if( ! function_exists( 'optionsframework_mlu_css' ) ) {
 if( ! function_exists( 'optionsframework_mlu_js' ) ) {
 	function optionsframework_mlu_js () {
 		// Registers custom scripts for the Media Library AJAX uploader.
-		wp_register_script( 'of-medialibrary-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/of-medialibrary-uploader.js', array( 'jquery', 'thickbox' ) );
+		wp_register_script( 'of-medialibrary-uploader', TB_FRAMEWORK_URI .'/admin/options/js/of-medialibrary-uploader.js', array( 'jquery', 'thickbox' ) );
 		wp_enqueue_script( 'of-medialibrary-uploader' );
 		wp_enqueue_script( 'media-upload' );
 	}
