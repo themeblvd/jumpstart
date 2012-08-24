@@ -468,7 +468,7 @@ if( ! function_exists( 'themeblvd_close_row' ) ) {
 if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 	function themeblvd_oembed_result( $input, $url ) {
 		
-		// If this is a tweet, keep on movin'
+		// If this is a tweet, keep on movin' fella.
 		if( strpos( $url, 'twitter.com' ) )
 			return $input;
 		
