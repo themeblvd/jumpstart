@@ -32,7 +32,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		$checked = '';
 		$class = '';
 		
-		// Sub Groups
+		// Sub Groups --
 		// This allows for a wrapping div around groups of elements. 
 		// The primary reason for this is to help link certain options 
 		// together in order to apply custom javascript for certain 
@@ -47,14 +47,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   		continue;
 	   	}
 	   	
-	   	// Name Grouping (added by ThemeBlvd)
+	   	// Name Grouping --
 	   	// This allows certain options to be grouped together in the 
 	   	// final saved options array by adding a common prefix to their
 	   	// name form attributes.
 	   	if( isset( $value['group'] ) )
 	   		$option_name .= '['.$value['group'].']';
 	   		
-	   	// Sections (added by ThemeBlvd)
+	   	// Sections --
 		// This allows for a wrapping div around certain sections. This 
 		// is meant to create visual dividing styles between sections, 
 		// opposed to sub groups, which are used to section off the code 
@@ -72,7 +72,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   	}
 		
 		// Wrap all options
-		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+		if( $value['type'] != 'heading' && $value['type'] != 'info' ) {
 
 			// Keep all ids lowercase with no spaces
 			$value['id'] = preg_replace('/\W/', '', strtolower($value['id']) );
@@ -80,13 +80,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			// Determine CSS classes
 			$id = 'section-' . $value['id'];
 			$class = 'section ';
-			if ( isset( $value['type'] ) ) {
+			if( isset( $value['type'] ) ) {
 				$class .= ' section-' . $value['type'];
 				if( $value['type'] == 'logo' ) {
 					$class .= ' section-upload';
 				}
 			}
-			if ( isset( $value['class'] ) ) {
+			if( isset( $value['class'] ) ) {
 				$class .= ' ' . $value['class'];
 			}
 			
@@ -98,25 +98,25 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		 }
 		
 		// Set default value to $val
-		if ( isset( $value['std'] ) )
+		if( isset( $value['std'] ) )
 			$val = $value['std'];
 		
-		// If the option is already saved, ovveride $val (Modified by ThemeBlvd to check for grouping)
-		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+		// If the option is already saved, ovveride $val
+		if( $value['type'] != 'heading' && $value['type'] != 'info' ) {
 			if( isset( $value['group'] ) ) {
 				// Set grouped value
-				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
+				if( isset( $settings[($value['group'])][($value['id'])] ) ) {
 					$val = $settings[($value['group'])][($value['id'])];
 					// Striping slashes of non-array options
-					if ( ! is_array( $val ) )
+					if( ! is_array( $val ) )
 						$val = stripslashes( $val );
 				}
 			} else {
 				// Set non-grouped value
-				if ( isset($settings[($value['id'])]) ) {
+				if( isset($settings[($value['id'])]) ) {
 					$val = $settings[($value['id'])];
 					// Striping slashes of non-array options
-					if ( ! is_array( $val ) )
+					if( ! is_array( $val ) )
 						$val = stripslashes( $val );
 				}
 			}
@@ -160,7 +160,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				foreach ($value['options'] as $key => $option ) {
 					$selected = '';
 					 if( $val != '' ) {
-						 if ( $val == $key) { $selected = ' selected="selected"';} 
+						 if( $val == $key) { $selected = ' selected="selected"';} 
 				     }
 					 $output .= '<option'. $selected .' value="' . esc_attr( $key ) . '">' . esc_html( $option ) . '</option>';
 				 }
@@ -195,8 +195,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				foreach ( $value['options'] as $key => $option ) {
 					$selected = '';
 					$checked = '';
-					if ( $val != '' ) {
-						if ( $val == $key ) {
+					if( $val != '' ) {
+						if( $val == $key ) {
 							$selected = ' of-radio-img-selected';
 							$checked = ' checked="checked"';
 						}
@@ -226,7 +226,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$option = preg_replace('/\W/', '', strtolower($key));
 					$id = $option_name . '-' . $value['id'] . '-'. $option;
 					$name = $option_name . '[' . $value['id'] . '][' . $key .']';
-				    if ( isset($val[$key]) )
+				    if( isset($val[$key]) )
 						$checked = checked($val[$key], 1, false);
 					$output .= '<input id="' . esc_attr( $id ) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr( $name ) . '" ' . $checked . ' /><label for="' . esc_attr( $id ) . '">' . $label . '</label>';
 				}
@@ -247,7 +247,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			
 			case 'upload' :
 				$val = array( 'url' => $val, 'id' => '' );
-				$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $val ); // New AJAX Uploader using Media Library // Mod'd by ThemeBlvd	
+				$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $val ); // New AJAX Uploader using Media Library
 				break;
 			
 			/*---------------------------------------*/
@@ -319,7 +319,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Start output
 				$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $current_bg_image, null, '',0,'image');
 				$class = 'of-background-properties';
-				if ( '' == $background['image'] )
+				if( '' == $background['image'] )
 					$class .= ' hide';
 				$output .= '<div class="' . esc_attr( $class ) . '">';
 				
@@ -358,16 +358,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			
 				// Classes
 				$class = 'section';
-				if ( isset( $value['type'] ) )
+				if( isset( $value['type'] ) )
 					$class .= ' section-' . $value['type'];
-				if ( isset( $value['class'] ) )
+				if( isset( $value['class'] ) )
 					$class .= ' ' . $value['class'];
 				
 				// Start output
 				$output .= '<div class="' . esc_attr( $class ) . '">' . "\n";
-				if ( isset($value['name']) )
+				if( isset($value['name']) )
 					$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
-				if ( isset( $value['desc'] ) )
+				if( isset( $value['desc'] ) )
 					$output .= apply_filters('of_sanitize_info', $value['desc'] ) . "\n";
 				$output .= '<div class="clear"></div></div>' . "\n";
 				break;

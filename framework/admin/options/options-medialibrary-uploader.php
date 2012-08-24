@@ -1,15 +1,13 @@
 <?php
-
 /**
  * WooThemes Media Library-driven AJAX File Uploader Module (2010-11-05)
  *
  * Slightly modified for use in the Options Framework.
  */
 
-if ( is_admin() ) {
-	
+if( is_admin() ) {
 	// Load additional css and js for image uploads on the Options Framework page
-	$of_page= 'appearance_page_options-framework';
+	$of_page = 'appearance_page_options-framework';
 	add_action( "admin_print_styles-$of_page", 'optionsframework_mlu_css', 0 );
 	add_action( "admin_print_scripts-$of_page", 'optionsframework_mlu_js', 0 );	
 }
@@ -19,7 +17,7 @@ if ( is_admin() ) {
  * individual galleries for different uploaders.
  */
 
-if ( ! function_exists( 'optionsframework_mlu_init' ) ) {
+if( ! function_exists( 'optionsframework_mlu_init' ) ) {
 	function optionsframework_mlu_init () {
 		register_post_type( 'optionsframework', array(
 			'labels' => array(
@@ -43,21 +41,16 @@ if ( ! function_exists( 'optionsframework_mlu_init' ) ) {
  * on the pages where this function is called.
  */
 
-if ( ! function_exists( 'optionsframework_mlu_css' ) ) {
-
+if( ! function_exists( 'optionsframework_mlu_css' ) ) {
 	function optionsframework_mlu_css () {
-	
 		$_html = '';
 		$_html .= '<link rel="stylesheet" href="' . get_option('siteurl') . '/' . WPINC . '/js/thickbox/thickbox.css" type="text/css" media="screen" />' . "\n";
 		$_html .= '<script type="text/javascript">
 		var tb_pathToImage = "' . get_option('siteurl') . '/' . WPINC . '/js/thickbox/loadingAnimation.gif";
 	    var tb_closeImage = "' . get_option('siteurl') . '/' . WPINC . '/js/thickbox/tb-close.png";
 	    </script>' . "\n";
-	    
 	    echo $_html;
-		
 	}
-
 }
 
 /**
@@ -65,16 +58,13 @@ if ( ! function_exists( 'optionsframework_mlu_css' ) ) {
  * Media Library-driven AJAX File Uploader Module.
  */
 
-if ( ! function_exists( 'optionsframework_mlu_js' ) ) {
-
+if( ! function_exists( 'optionsframework_mlu_js' ) ) {
 	function optionsframework_mlu_js () {
-	
 		// Registers custom scripts for the Media Library AJAX uploader.
 		wp_register_script( 'of-medialibrary-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/of-medialibrary-uploader.js', array( 'jquery', 'thickbox' ) );
 		wp_enqueue_script( 'of-medialibrary-uploader' );
 		wp_enqueue_script( 'media-upload' );
 	}
-
 }
 
 /**
@@ -95,8 +85,7 @@ if ( ! function_exists( 'optionsframework_mlu_js' ) ) {
  * - optionsframework_mlu_get_silentpost()
  */
 
-if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
-
+if( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 	function optionsframework_medialibrary_uploader( $option_name, $type, $_id, $_value, $_mode = 'full', $_desc = null, $_postid = 0, $_name = null, $_upload_text = null) {
 	
 		$output = '';
@@ -114,11 +103,11 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$id = strip_tags( strtolower( $_id ) );
 		
 		// If a value is passed and we don't have a stored value, use the value that's passed through.
-		if ( $_value )
+		if( $_value )
 			$value = $_value;
 		
 		// If passed name, set it.
-		if ( $_name ) {
+		if( $_name ) {
 			$name = $name.'['.$_name.']';
 			$id = $id.'_'.$_name;
 		}
@@ -135,7 +124,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		if( $_upload_text )
 			$upload_text = $_upload_text;
 		
-		if ( $value['url'] ) { $class = ' has-file'; }
+		if( $value['url'] ) { $class = ' has-file'; }
 
 		if( $type == 'slider' ) {
 			// Slider image ID input w/hidden image URL input for user admin display
@@ -152,19 +141,15 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 			// Standard image input
 			$output .= '<input id="' . $id . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL', 'themeblvd').'" />' . "\n";
 		}
-		
 		$output .= '<input id="upload_' . $id . '" class="upload_button button" type="button" value="' . $upload_text . '" data-upload-type="'. $type .'" rel="' . $int . '" />' . "\n";
-		
-		if ( $_desc != '' ) {
+		if( $_desc != '' ) {
 			$output .= '<span class="of_metabox_desc">' . $_desc . '</span>' . "\n";
 		}
-		
 		$output .= '<div class="screenshot" id="' . $id . '_image">' . "\n";
-		
-		if ( $value['url'] != '' ) { 
+		if( $value['url'] != '' ) { 
 			$remove = '<a href="javascript:(void);" class="mlu_remove button">Remove</a>';
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value['url'] );
-			if ( $image ) {
+			if( $image ) {
 				$output .= '<img src="' . $value['url'] . '" alt="" />'.$remove.'';
 			} else {
 				$parts = explode( "/", $value['url'] );
@@ -198,8 +183,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
  * optionsframework_mlu_get_silentpost ( 'of_logo' );
  */
 
-if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
-
+if( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 	function optionsframework_mlu_get_silentpost ( $_token ) {
 	
 		global $wpdb;
@@ -211,8 +195,8 @@ if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 		
 		$_token = strtolower( str_replace( ' ', '_', $_token ) );
 		
-		// if ( in_array( $_token, $_whitelist ) ) {
-		if ( $_token ) {
+		// if( in_array( $_token, $_whitelist ) ) {
+		if( $_token ) {
 			
 			// Tell the function what to look for in a post.
 			
@@ -228,7 +212,7 @@ if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 			$_posts = $wpdb->get_row( $query );
 			
 			// If we've got a post, loop through and get it's ID.
-			if ( count( $_posts ) ) {
+			if( count( $_posts ) ) {
 				$_id = $_posts->ID;
 			} else {
 			
@@ -250,68 +234,61 @@ if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
  * Trigger code inside the Media Library popup.
  */
 
-if ( ! function_exists( 'optionsframework_mlu_insidepopup' ) ) {
-
+if( ! function_exists( 'optionsframework_mlu_insidepopup' ) ) {
 	function optionsframework_mlu_insidepopup () {
-	
-		if ( isset( $_REQUEST['is_optionsframework'] ) && $_REQUEST['is_optionsframework'] == 'yes' ) {
-		
+		if( isset( $_REQUEST['is_optionsframework'] ) && $_REQUEST['is_optionsframework'] == 'yes' ) {
 			add_action( 'admin_head', 'optionsframework_mlu_js_popup' );
 			add_filter( 'media_upload_tabs', 'optionsframework_mlu_modify_tabs' );
 		}
 	}
 }
 
-if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
-
+if( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 	function optionsframework_mlu_js_popup () {
-
 		$_of_title = $_REQUEST['of_title'];
-		if ( ! $_of_title ) { $_of_title = 'file'; } // End IF Statement
-?>
-	<script type="text/javascript">
-	<!--
-	jQuery(function($) {
-		
-		jQuery.noConflict();
-		
-		// Change the title of each tab to use the custom title text instead of "Media File".
-		$( 'h3.media-title' ).each ( function () {
-			var current_title = $( this ).html();
-			var new_title = current_title.replace( 'media file', '<?php echo $_of_title; ?>' );
-			$( this ).html( new_title );
-		
-		} );
-		
-		// Change the text of the "Insert into Post" buttons to read "Use this File".
-		$( '.savesend input.button[value*="Insert into Post"], .media-item #go_button' ).attr( 'value', 'Use this File' );
-		
-		// Hide the "Insert Gallery" settings box on the "Gallery" tab.
-		$( 'div#gallery-settings' ).hide();
-		
-		// Preserve the "is_optionsframework" parameter on the "delete" confirmation button.
-		$( '.savesend a.del-link' ).click ( function () {
-		
-			var continueButton = $( this ).next( '.del-attachment' ).children( 'a.button[id*="del"]' );
-			var continueHref = continueButton.attr( 'href' );
-			continueHref = continueHref + '&is_optionsframework=yes';
-			continueButton.attr( 'href', continueHref );
-		
-		} );
-		
-	});
-	-->
-	</script>
-<?php
+		if( ! $_of_title ) { $_of_title = 'file'; } // End IF Statement
+		?>
+		<script type="text/javascript">
+		<!--
+		jQuery(function($) {
+			
+			jQuery.noConflict();
+			
+			// Change the title of each tab to use the custom title text instead of "Media File".
+			$( 'h3.media-title' ).each ( function () {
+				var current_title = $( this ).html();
+				var new_title = current_title.replace( 'media file', '<?php echo $_of_title; ?>' );
+				$( this ).html( new_title );
+			
+			} );
+			
+			// Change the text of the "Insert into Post" buttons to read "Use this File".
+			$( '.savesend input.button[value*="Insert into Post"], .media-item #go_button' ).attr( 'value', 'Use this File' );
+			
+			// Hide the "Insert Gallery" settings box on the "Gallery" tab.
+			$( 'div#gallery-settings' ).hide();
+			
+			// Preserve the "is_optionsframework" parameter on the "delete" confirmation button.
+			$( '.savesend a.del-link' ).click ( function () {
+			
+				var continueButton = $( this ).next( '.del-attachment' ).children( 'a.button[id*="del"]' );
+				var continueHref = continueButton.attr( 'href' );
+				continueHref = continueHref + '&is_optionsframework=yes';
+				continueButton.attr( 'href', continueHref );
+			
+			} );
+			
+		});
+		-->
+		</script>
+		<?php
 	}
 }
 
 /**
  * Triggered inside the Media Library popup to modify the title of the "Gallery" tab.
  */
-
-if ( ! function_exists( 'optionsframework_mlu_modify_tabs' ) ) {
-
+if( ! function_exists( 'optionsframework_mlu_modify_tabs' ) ) {
 	function optionsframework_mlu_modify_tabs ( $tabs ) {
 		$tabs['gallery'] = str_replace( __( 'Gallery', 'themeblvd' ), __( 'Previously Uploaded', 'themeblvd' ), $tabs['gallery'] );
 		return $tabs;
