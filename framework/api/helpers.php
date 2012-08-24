@@ -200,22 +200,6 @@ if( ! function_exists( 'themeblvd_compress' ) ) {
 if( ! function_exists( 'themeblvd_register_posts' ) ) {  
 	function themeblvd_register_posts() {
 		
-		// Sliders
-		if( themeblvd_supports( 'primary', 'sliders' ) ) {
-			$args = array(
-				'labels' 			=> array( 'name' => 'Sliders', 'singular_name' => 'Slider' ),
-				'public'			=> false,
-				//'show_ui' 		=> true,	// Can uncomment for debugging
-				'query_var' 		=> true,
-				'capability_type' 	=> 'post',
-				'hierarchical' 		=> false,
-				'rewrite' 			=> false,
-				'supports' 			=> array( 'title', 'custom-fields', 'editor' ), // needs to support 'editor' for image to be inserted properly
-				'can_export'		=> true
-			);
-			register_post_type( 'tb_slider', $args );
-		}
-		
 		// Custom Layouts
 		if( themeblvd_supports( 'primary', 'builder' ) ) {
 			$args = array(

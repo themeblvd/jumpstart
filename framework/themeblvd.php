@@ -30,7 +30,6 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/builder-framework.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/sliders/sliders-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
@@ -91,7 +90,6 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/sliders.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/builder.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/actions.php' );
@@ -187,10 +185,6 @@ if( is_admin() ) {
 	// Elements
 	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 3 );
 	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 3 );
-	
-	// Sliders
-	add_action( 'themeblvd_standard_slider', 'themeblvd_standard_slider_default', 9, 3 );
-	add_action( 'themeblvd_carrousel_slider', 'themeblvd_carrousel_slider_default', 9, 3 );
 	
 	// WordPress Multisite Signup
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );

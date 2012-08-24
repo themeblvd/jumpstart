@@ -769,40 +769,6 @@ add_shortcode( 'toggle', 'themeblvd_shortcode_toggle' );
 /*-----------------------------------------------------------------------------------*/
 
 /**
- * Custom slider
- *
- * @since 2.0.0
- *
- * @param array $atts Standard WordPress shortcode attributes
- */
-
-if( ! function_exists( 'themeblvd_shortcode_slider' ) ) {
-	function themeblvd_shortcode_slider( $atts ) {
-		$default = array(
-            'id' => ''
-	    );
-	    extract( shortcode_atts( $default, $atts ) );
-		// CSS classes for element
-		$slider_id = themeblvd_post_id_by_name( $id, 'tb_slider' );
-		$type = get_post_meta( $slider_id, 'type', true );
-		$classes = 'element element-slider element-slider-'.$type.themeblvd_get_classes( 'element_slider', true );
-		// Output
-		ob_start();
-		echo '<div class="'.$classes.'">';
-		echo '<div class="element-inner">';
-		echo '<div class="element-inner-wrap">';
-		echo '<div class="grid-protection">';
-		themeblvd_slider( $id );
-		echo '</div><!-- .grid-protection (end) -->';
-		echo '</div><!-- .element-inner-wrap (end) -->';
-		echo '</div><!-- .element-inner (end) -->';
-		echo '</div><!-- .element (end) -->';
-		return ob_get_clean();
-	}
-}
-add_shortcode( 'slider', 'themeblvd_shortcode_slider' );
-
-/**
  * Post Grid Slider
  *
  * @since 2.0.0

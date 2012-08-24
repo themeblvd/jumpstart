@@ -1401,6 +1401,11 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'options' => $element_tweet
 			)
 		);
+		
+		// Remove slider element if plugin isn't installed
+		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) )
+			unset( $_themeblvd_core_elements['slider'] );
+		
 		return apply_filters( 'themeblvd_core_elements', $_themeblvd_core_elements );
 	}
 }

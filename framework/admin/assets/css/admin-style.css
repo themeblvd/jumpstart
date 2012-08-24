@@ -120,6 +120,18 @@
 #optionsframework .widget-footer a,#optionsframework .widget-footer span{display:block;font-size:11px;float:right;text-decoration:none;}
 #optionsframework .ui-sortable-placeholder{border:2px dashed #cccccc;height:50px!important;visibility:visible!important;}
 
+/* PAGE HEADERS */
+
+#slider_blvd #icon-tb_sliders { background-image: url('../images/icons-32.png'); background-position: -70px -4px;}
+#builder_blvd #icon-tb_builder { background-image: url('../images/icons-32.png'); background-position: -8px -4px;}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#slider_blvd #icon-tb_sliders, #builder_blvd #icon-tb_builder { background-image: url('../images/icons-32_2x.png'); background-size: 120px 45px; }	
+}
+
 /* CONFIRMATION PROMPT (Originally from Apprise plugin) */
 
 .appriseOverlay{ position:fixed;top:0;left:0;background:rgba(0,0,0,0.3);display:none; z-index: 999;}

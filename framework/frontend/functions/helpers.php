@@ -1,8 +1,4 @@
 <?php
-/*-----------------------------------------------------------------------------------*/
-/* Helpers
-/*-----------------------------------------------------------------------------------*/
-
 /**
  * The post thumbnail (must be within the loop)
  *
@@ -801,6 +797,93 @@ if( ! function_exists( 'themeblvd_wp_title' ) ) {
 		if ( $paged >= 2 || $page >= 2 )
 			$title .= ' | ' . sprintf( themeblvd_get_local( 'page_num' ), max( $paged, $page ) );
 		return $title;
+	}
+}
+
+/**
+ * Print out the JS for setting up a standard slider.
+ *
+ * @since 2.0.0
+ */
+
+if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
+	function themeblvd_standard_slider_js( $id, $options ) {
+		wp_enqueue_script( 'flexslider' ); // add to wp_footer()
+		?>
+		<script>
+		jQuery(document).ready(function($) {
+			$(window).load(function() {
+				
+				// Initiate flexslider for this slider.
+				$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider({
+					useCSS: false, // Avoid CSS3 glitches
+					video: true, // Avoid CSS3 glitches
+					smoothHeight: true,
+					prevText: '<i class="icon-circle-arrow-left"></i>',
+					nextText: '<i class="icon-circle-arrow-right"></i>',
+					animation: "<?php echo $options['fx']; ?>",
+					// pauseOnHover: true - This was replaced with a custom solution to work with other controls, see below with "pause_on_hover" option.
+					<?php if( $options['timeout'] ) : ?>
+					slideshowSpeed: <?php echo $options['timeout']; ?>000,
+					<?php else : ?>
+					slideshow: false,
+					<?php endif; ?>
+					<?php if( ! $options['nav_arrows'] ) echo 'directionNav: false,'; ?>
+					<?php if( ! $options['nav_standard'] ) echo 'controlNav: false,'; ?>
+					controlsContainer: ".slides-wrapper-<?php echo $id; ?>",
+					start: function(slider) {
+	    				<?php if( $options['pause_play'] && $options['timeout'] != '0' ) : ?>
+		    				$('#tb-slider-<?php echo $id; ?> .flex-direction-nav li:first-child').after('<li><a class="flex-pause" href="#"><i class="icon-pause"></i></a></li><li><a class="flex-play" href="#" style="display:none"><i class="icon-play"></i></a></li>');
+		    				$('#tb-slider-<?php echo $id; ?> .flex-pause').click(function(){
+								slider.pause();
+								$(this).hide();
+								$('#tb-slider-<?php echo $id; ?> .flex-play').show();
+								return false;
+							});
+							$('#tb-slider-<?php echo $id; ?> .flex-play').click(function(){
+								// slider.resume(); currently has a bug with FlexSlider 2.0, so will do the next line instead.
+								$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider('play');
+								$(this).hide();
+								$('#tb-slider-<?php echo $id; ?> .flex-pause').show();
+								return false;
+							});
+							$('#tb-slider-<?php echo $id; ?> .flex-control-nav li, #tb-slider-<?php echo $id; ?> .flex-direction-nav li').click(function(){
+								$('#tb-slider-<?php echo $id; ?> .flex-pause').hide();
+								$('#tb-slider-<?php echo $id; ?> .flex-play').show();
+							});
+						<?php endif; ?>
+	    				$('#tb-slider-<?php echo $id; ?> .image-link').click(function(){
+	    					$('#tb-slider-<?php echo $id; ?> .flex-pause').hide();
+	    					$('#tb-slider-<?php echo $id; ?> .flex-play').show();
+	    					slider.pause();
+	    				});
+	    			}
+				}).parent().find('.tb-loader').fadeOut();
+				
+				<?php if( isset( $options['pause_on_hover'] ) ) : ?>
+					<?php if( $options['pause_on_hover'] == 'pause_on' || $options['pause_on_hover'] == 'pause_on_off' ) : ?>
+					// Custom pause on hover funtionality
+					$('#tb-slider-<?php echo $id; ?>').hover(
+						function() {
+							$('#tb-slider-<?php echo $id; ?> .flex-pause').hide();
+							$('#tb-slider-<?php echo $id; ?> .flex-play').show();
+							$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider('pause');
+						}, 
+						function() {
+							<?php if( $options['pause_on_hover'] == 'pause_on_off' ) : ?>
+							$('#tb-slider-<?php echo $id; ?> .flex-play').hide();
+							$('#tb-slider-<?php echo $id; ?> .flex-pause').show();
+							$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider('play');
+							<?php endif; ?>
+						}
+					);
+					<?php endif; ?>
+				<?php endif; ?>
+				
+			});
+		});
+		</script>
+		<?php
 	}
 }
 

@@ -1,8 +1,4 @@
 <?php
-/*-----------------------------------------------------------------------------------*/
-/* General Front-end Functions
-/*-----------------------------------------------------------------------------------*/
-
 /**
  * Initiate Front-end
  *
@@ -411,7 +407,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
 		wp_register_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
 		// wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider.js', array('jquery'), '1.8', true );
-		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true );
+		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true  );
 		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
 		wp_register_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
 		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/frontend/assets/js/ios-orientationchange-fix.js', true );
@@ -420,8 +416,8 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		wp_enqueue_script( 'bootstrap' );
 		wp_enqueue_script( 'prettyPhoto' );
 		wp_enqueue_script( 'superfish' );
-		wp_enqueue_script( 'flexslider' );
-		wp_enqueue_script( 'roundabout' );
+		// wp_enqueue_script( 'flexslider' ); // Enque'd within the content if warranted, will keep an eye on how this goes.
+		// wp_enqueue_script( 'roundabout' ); // Enque'd within the content if warranted, will keep an eye on how this goes.
 		wp_enqueue_script( 'themeblvd' );
 		if( themeblvd_get_option( 'responsive_css', null, 'true' ) != 'false' ) 
 			wp_enqueue_script( 'ios-orientationchange-fix' );
