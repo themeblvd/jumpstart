@@ -468,14 +468,18 @@ if( ! function_exists( 'themeblvd_close_row' ) ) {
 if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 	function themeblvd_oembed_result( $input, $url ) {
 		
+		// If this is a tweet, keep on movin'
+		if( strpos( $url, 'twitter.com' ) )
+			return $input;
+		
 		// Since the framework applies this filter in two 
 		// spots, we must first check if the filter has 
 		// been applied or not. The reason for this is 
 		// because WP has issues with caching the oembed 
 		// result, and oembed_result doesn't always get 
 		// applied when it's supposed to.
-		$filter_applied = strpos( $input, 'themeblvd' );
-		if( $filter_applied ) return $input;
+		if( strpos( $input, '<div class="themeblvd' ) ) 
+			return $input;
 		
 		// Media Type (will use in future if we add audio player)
 		// $mp3 = strpos( $url, '.mp3' );

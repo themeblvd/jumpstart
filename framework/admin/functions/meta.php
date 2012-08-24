@@ -1,8 +1,4 @@
 <?php
-/*-----------------------------------------------------------------------------------*/
-/* Admin Meta Boxes
-/*-----------------------------------------------------------------------------------*/
-
 /**
  * Get settings for the Page Options meta box.
  *
@@ -61,7 +57,7 @@ if( ! function_exists( 'display_themeblvd_page_meta' ) ) {
     	
     	// Make sure options framework exists so we can show 
     	// the options form.
-    	if( ! function_exists( 'optionsframework_fields' ) ) {
+    	if( ! function_exists( 'themeblvd_option_fields' ) ) {
     		echo 'Options framework not found.';
     		return;
     	}
@@ -83,7 +79,7 @@ if( ! function_exists( 'display_themeblvd_page_meta' ) ) {
     	}
     	
     	// Use options framework to display form elements
-    	$form = optionsframework_fields( 'themeblvd_meta', $page_meta['options'], $settings, false );
+    	$form = themeblvd_option_fields( 'themeblvd_meta', $page_meta['options'], $settings, false );
     	echo $form[0];
     	
     	//  Finish content
@@ -247,7 +243,7 @@ if( ! function_exists( 'display_themeblvd_post_meta' ) ) {
     	
     	// Make sure options framework exists so we can show 
     	// the options form.
-    	if( ! function_exists( 'optionsframework_fields' ) ) {
+    	if( ! function_exists( 'themeblvd_option_fields' ) ) {
     		echo 'Options framework not found.';
     		return;
     	}
@@ -269,7 +265,7 @@ if( ! function_exists( 'display_themeblvd_post_meta' ) ) {
     	}
     	
     	// Use options framework to display form elements
-    	$form = optionsframework_fields( 'themeblvd_meta', $post_meta['options'], $settings, false );
+    	$form = themeblvd_option_fields( 'themeblvd_meta', $post_meta['options'], $settings, false );
     	echo $form[0];
     	
     	//  Finish content

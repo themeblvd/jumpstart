@@ -93,7 +93,7 @@ if( ! function_exists( 'builder_blvd_add' ) ) {
 		$options = apply_filters( 'themeblvd_add_layout', $options );
 		
 		// Build form
-		$form = optionsframework_fields( 'options', $options, null, false );
+		$form = themeblvd_option_fields( 'options', $options, null, false );
 		?>
 		<div class="metabox-holder">
 			<div class="postbox">
@@ -131,7 +131,7 @@ if( ! function_exists( 'builder_blvd_add' ) ) {
 if( ! function_exists( 'builder_blvd_edit_element' ) ) {
 	function builder_blvd_edit_element( $element_type, $element_id, $element_settings = null, $visibility = null ) {
 		$elements = themeblvd_get_elements();
-		$form = optionsframework_fields( 'elements['.$element_id.'][options]', $elements[$element_type]['options'], $element_settings, false );
+		$form = themeblvd_option_fields( 'elements['.$element_id.'][options]', $elements[$element_type]['options'], $element_settings, false );
 		?>
 		<div id="<?php echo $element_id; ?>" class="widget element-options"<?php if( $visibility == 'hide' ) echo ' style="display:none"'; ?>>					
 			<div class="widget-name">
@@ -212,7 +212,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 					);
 	
 					// Display form element
-					$form = optionsframework_fields( 'info', $info_options, $info_settings, false );
+					$form = themeblvd_option_fields( 'info', $info_options, $info_settings, false );
 					echo $form[0]; 
 					?>
 				</div><!-- .post-box (end) -->
@@ -235,7 +235,7 @@ if( ! function_exists( 'builder_blvd_edit' ) ) {
 					);
 	
 					// Display form element
-					$form = optionsframework_fields( 'options', $options, $layout_settings, false );
+					$form = themeblvd_option_fields( 'options', $options, $layout_settings, false );
 					echo $form[0]; 
 					?>
 				</div><!-- .post-box (end) -->

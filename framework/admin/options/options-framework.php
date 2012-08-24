@@ -95,7 +95,7 @@ if( ! function_exists( 'optionsframework_load_scripts' ) ) {
  * If we were using the Settings API as it was likely intended 
  * we would use do_settings_sections here.  But as we don't want 
  * the settings wrapped in a table, we'll call our own custom 
- * optionsframework_fields.  See options-interface.php for 
+ * themeblvd_option_fields.  See options-interface.php for 
  * specifics on how each individual field is generated.
  *
  * Nonces are provided using the settings_fields()
@@ -112,7 +112,7 @@ if ( ! function_exists( 'optionsframework_page' ) ) {
 	    
 	    // Get options.
 	    $options = themeblvd_get_formatted_options();
-		$return = optionsframework_fields( $option_name, $options, $settings  );
+		$return = themeblvd_option_fields( $option_name, $options, $settings  );
 		
 		// Display any errors or update messages.
 		settings_errors();
