@@ -556,21 +556,6 @@ if( ! function_exists( 'themeblvd_get_option' ) ) {
 				$option = $options[$primary];
 			}
 		}
-		if( ! isset( $option ) ) {
-			if( $default ) {
-				$option = $default;
-			} else {
-				$default_options = of_get_default_values();
-				if( isset( $default_options[$primary] ) ) {
-					if( $seconday ) {
-						if( is_array( $default_options[$primary] ) && isset( $default_options[$primary][$seconday] ) )
-							$option = $default_options[$primary][$seconday];
-					} else {
-						$option = $default_options[$primary];
-					}
-				}
-			}
-		}
 		return $option;
 	}
 }
@@ -819,8 +804,8 @@ if( ! function_exists( 'themeblvd_get_option_defaults' ) ) {
 			if( ! isset( $option['type'] ) )
 				continue;
 			// Continue with adding the option in.
-			if ( has_filter( 'of_sanitize_' . $option['type'] ) )
-				$defaults[$option['id']] = apply_filters( 'of_sanitize_' . $option['type'], $option['std'], $option );
+			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) )
+				$defaults[$option['id']] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $option['std'], $option );
 		}
 		return $defaults;
 	}

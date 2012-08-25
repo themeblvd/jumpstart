@@ -83,7 +83,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 		$theme_options = get_option( $option_name );
 		
 		// If theme options don't exist, yet set defaults for customizer.
-		$theme_option_defaults = of_get_default_values();
+		$theme_option_defaults = themeblvd_get_option_defaults( themeblvd_get_formatted_options() );
 		
 		// Register sections of options
 		if( $_themeblvd_customizer_sections ) {
@@ -248,7 +248,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 											'settings'		=> $option_name.'['.$option['id'].']['.$attribute.']',
 											'label'   		=> $option['name'].' '.ucfirst($attribute),
 											'section' 		=> $section['id'],
-											'choices'    	=> of_recognized_font_faces()
+											'choices'    	=> themeblvd_recognized_font_faces()
 										) ) );
 										$font_counter++;
 										$wp_customize->add_setting( $option_name.'['.$option['id'].'][google]', array(

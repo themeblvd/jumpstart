@@ -21,6 +21,8 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		$option_name = themeblvd_get_option_name();
 		$_themeblvd_theme_settings = get_option( $option_name );
 		if( ! $_themeblvd_theme_settings ) {
+			// Theme Options have never been saved.
+			themeblvd_add_sanitization();
 			$options = themeblvd_get_formatted_options();
 			$_themeblvd_theme_settings = themeblvd_get_option_defaults( $options );
 		}

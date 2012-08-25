@@ -271,7 +271,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Font Face
 				if( in_array( 'face', $value['atts'] ) ) {
 					$output .= '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
-					$faces = of_recognized_font_faces();
+					$faces = themeblvd_recognized_font_faces();
 					foreach ( $faces as $key => $face ) {
 						$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['face'], $key, false ) . '>' . esc_html( $face ) . '</option>';
 					}			
@@ -325,7 +325,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				
 				// Background Repeat
 				$output .= '<select class="of-background of-background-repeat" name="' . esc_attr( $option_name . '[' . $value['id'] . '][repeat]'  ) . '" id="' . esc_attr( $value['id'] . '_repeat' ) . '">';
-				$repeats = of_recognized_background_repeat();
+				$repeats = themeblvd_recognized_background_repeat();
 				foreach( $repeats as $key => $repeat ) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['repeat'], $key, false ) . '>'. esc_html( $repeat ) . '</option>';
 				}
@@ -333,7 +333,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				
 				// Background Position
 				$output .= '<select class="of-background of-background-position" name="' . esc_attr( $option_name . '[' . $value['id'] . '][position]' ) . '" id="' . esc_attr( $value['id'] . '_position' ) . '">';
-				$positions = of_recognized_background_position();
+				$positions = themeblvd_recognized_background_position();
 				foreach ($positions as $key=>$position) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['position'], $key, false ) . '>'. esc_html( $position ) . '</option>';
 				}
@@ -341,7 +341,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				
 				// Background Attachment
 				$output .= '<select class="of-background of-background-attachment" name="' . esc_attr( $option_name . '[' . $value['id'] . '][attachment]' ) . '" id="' . esc_attr( $value['id'] . '_attachment' ) . '">';
-				$attachments = of_recognized_background_attachment();
+				$attachments = themeblvd_recognized_background_attachment();
 				foreach ($attachments as $key => $attachment) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['attachment'], $key, false ) . '>' . esc_html( $attachment ) . '</option>';
 				}
@@ -368,7 +368,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				if( isset($value['name']) )
 					$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
 				if( isset( $value['desc'] ) )
-					$output .= apply_filters('of_sanitize_info', $value['desc'] ) . "\n";
+					$output .= apply_filters('themeblvd_sanitize_info', $value['desc'] ) . "\n";
 				$output .= '<div class="clear"></div></div>' . "\n";
 				break;
 			

@@ -131,8 +131,8 @@ if( ! function_exists( 'builder_blvd_ajax_save_layout' ) ) {
 						}
 						
 						// For a value to be submitted to database it must pass through a sanitization filter
-						if ( has_filter( 'of_sanitize_' . $option['type'] ) ) {
-							$clean[$option_id] = apply_filters( 'of_sanitize_' . $option['type'], $element['options'][$option_id], $option );
+						if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) ) {
+							$clean[$option_id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $element['options'][$option_id], $option );
 						}
 						
 					}
