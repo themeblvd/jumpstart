@@ -299,48 +299,49 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 			if( method_exists( $wp_admin_bar, 'add_menu' ) ) {
 				
 				// Theme Options
-				if( themeblvd_supports( 'admin', 'options' ) ) {
-					if( current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {	
-						// Theme Options
-						$wp_admin_bar->add_menu( 
-							array(
-								'id' => 'tb_theme_options',
-								'title' => __( 'Theme Options', 'themeblvd' ),
-								'parent' => 'site-name',
-								'href' => admin_url( 'themes.php?page=options-framework')
-							)
-						);
-					}
+				if( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {	
+					$wp_admin_bar->add_menu( 
+						array(
+							'id' => 'tb_theme_options',
+							'title' => __( 'Theme Options', 'themeblvd' ),
+							'parent' => 'site-name',
+							'href' => admin_url( 'themes.php?page='.themeblvd_get_option_name() )
+						)
+					);
 				}
-				// Sidebars
-				if( themeblvd_supports( 'admin', 'sidebars' ) ) {
-					if( current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {	
+				
+				// Sidebars (if sidebar plugin is installed)
+				if( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
+					if( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {	
 						$wp_admin_bar->add_menu( 
 							array(
 								'id' => 'tb_sidebars',
 								'title' => __( 'Widget Areas', 'themeblvd' ),
 								'parent' => 'site-name',
-								'href' => admin_url( 'admin.php?page=sidebar_blvd')
+								'href' => admin_url( 'themes.php?page=themeblvd_widget_areas' )
 							)
 						);
 					}
 				}
-				// Sliders
-				if( themeblvd_supports( 'admin', 'sliders' ) ) {
-					if( current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {	
+				
+				// Sliders (if sliders plugin is installed)
+				if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ) {
+					if( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
 						$wp_admin_bar->add_menu( 
 							array(
 								'id' => 'tb_sliders',
 								'title' => __( 'Sliders', 'themeblvd' ),
 								'parent' => 'site-name',
-								'href' => admin_url( 'admin.php?page=slider_blvd')
+								'href' => admin_url( 'admin.php?page=themeblvd_sliders' )
 							)
 						);
 					}
 				}
-				// Builder
-				if( themeblvd_supports( 'admin', 'builder' ) ) {
-					if( current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
+				
+				// Builder -- @todo This will be edited after we've created the Layout Builder plugin
+				/*
+				if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
+					if( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
 						$wp_admin_bar->add_menu( 
 							array(
 								'id' => 'tb_builder',
@@ -351,6 +352,7 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 						);
 					}
 				}
+				*/
 				
 			} // end if method_exists()
 		} // end if is_admin()
