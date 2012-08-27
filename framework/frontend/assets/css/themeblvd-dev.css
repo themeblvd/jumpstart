@@ -2441,9 +2441,16 @@ div.pp_default .pp_description {
 }
 
 /* Slogan */
-.element-slogan .slogan .slogan-text {
+.element-slogan .slogan .slogan-text.text_large {
 	font-size: 1.5em;
 	line-height: 1.25em;
+}
+.element-slogan .slogan .slogan-text.text_medium {
+	font-size: 1.25em;
+	line-height: 1.25em;
+}
+.element-slogan .slogan .slogan-text.text_small {
+	font-size: .9em;
 }
 .element-slogan .text_only {
 	text-align: center;

@@ -865,16 +865,14 @@ if( ! function_exists( 'themeblvd_slider' ) ) {
 if( ! function_exists( 'themeblvd_slogan' ) ) {
 	function themeblvd_slogan( $options ) {
 		// Wrapping class
-		if( $options['button'] )
-			$class = 'has_button';
-		else
-			$class = 'text_only';
+		$class  = $options['button'] ? 'has_button' : 'text_only';
+		$text_class = 'text_'.$options['text_size']; // @todo change to $arg!
 		// Output
 		$output = '<div class="slogan '.$class.'">';
 		if( $options['button'] ) {
 			$output .= themeblvd_button( stripslashes($options['button_text']), $options['button_url'], $options['button_color'], $options['button_target'], $options['button_size'] ); // @todo - Initially, if someone updates $options['button_size'] here they will get an error that the value doesn't exist. This will be fixed soon with default args for this function.	
 		}
-		$output .= '<span class="slogan-text">'.stripslashes( do_shortcode( $options['slogan'] ) ).'</span>';
+		$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( do_shortcode( $options['slogan'] ) ).'</span>';
 		$output .= '</div><!-- .slogan (end) -->';
 		return $output;
 	}	

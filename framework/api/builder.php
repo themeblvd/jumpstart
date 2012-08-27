@@ -1012,6 +1012,19 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'type'		=> 'textarea'
 		    ),
 		    array(
+				'id' 		=> 'text_size',
+				'name' 		=> __( 'Slogan Text Size', 'themeblvd'),
+				'desc'		=> __( 'Select how large you\'d like the text in the slogan to be.', 'themeblvd'),
+				'std'		=> 'large',
+				'type'		=> 'select',
+				'options'	=> array(
+					'small' 	=> __( 'Small', 'themeblvd' ),
+					'default' 	=> __( 'Normal', 'themeblvd' ),
+					'medium' 	=> __( 'Medium', 'themeblvd' ),
+					'large' 	=> __( 'Large', 'themeblvd' )
+				)
+		    ),
+		    array(
 		    	'type'		=> 'subgroup_start',
 		    	'class'		=> 'show-hide'
 		    ),
