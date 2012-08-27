@@ -2448,10 +2448,12 @@ div.pp_default .pp_description {
 .element-slogan .text_only {
 	text-align: center;
 }
-.element-slogan .has_button .btn-large {
+.element-slogan .has_button .btn {
 	float: right;
-	font-size: 20px;
 	margin: 0 0 0 20px;
+}
+.element-slogan .has_button .btn-large {
+	font-size: 20px;
 	padding: 15px;
 }
 

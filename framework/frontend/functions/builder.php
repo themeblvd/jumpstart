@@ -872,7 +872,7 @@ if( ! function_exists( 'themeblvd_slogan' ) ) {
 		// Output
 		$output = '<div class="slogan '.$class.'">';
 		if( $options['button'] ) {
-			$output .= themeblvd_button( stripslashes($options['button_text']), $options['button_url'], $options['button_color'], $options['button_target'], 'large' );	
+			$output .= themeblvd_button( stripslashes($options['button_text']), $options['button_url'], $options['button_color'], $options['button_target'], $options['button_size'] ); // @todo - Initially, if someone updates $options['button_size'] here they will get an error that the value doesn't exist. This will be fixed soon with default args for this function.	
 		}
 		$output .= '<span class="slogan-text">'.stripslashes( do_shortcode( $options['slogan'] ) ).'</span>';
 		$output .= '</div><!-- .slogan (end) -->';

@@ -1039,6 +1039,20 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'options'	=> themeblvd_colors()
 			),
 			array(
+				'id' 		=> 'button_size',
+				'name'		=> __( 'Button Size', 'themeblvd' ),
+				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd' ),
+				'type'		=> 'select',
+				'std'		=> 'large',
+				'class'		=> 'hide receiver',
+				'options'	=> array(
+					'mini' 		=> __( 'Mini', 'themeblvd' ),
+					'small' 	=> __( 'Small', 'themeblvd' ),
+					'default' 	=> __( 'Normal', 'themeblvd' ),
+					'large' 	=> __( 'Large', 'themeblvd' )
+				)
+			),
+			array(
 				'id' 		=> 'button_url',
 				'name'		=> __( 'Link URL', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd' ),
@@ -1052,7 +1066,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select how you want the button to open the webpage.', 'themeblvd' ),
 				'type'		=> 'select',
 				'class'		=> 'hide receiver',
-				'options'		=> array(
+				'options'	=> array(
 			        '_self' 	=> __( 'Same Window', 'themeblvd' ),
 			        '_blank' 	=> __( 'New Window', 'themeblvd' )
 				) 
