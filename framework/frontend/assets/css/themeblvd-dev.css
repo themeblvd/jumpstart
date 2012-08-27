@@ -2431,35 +2431,35 @@ div.pp_default .pp_description {
 }
 
 /* Post List Slider */
-.element-post_list_slider .slides-wrapper {
-	padding:20px;
+.tb-post-list-slider .slides-wrapper {
+	padding: 20px;
 }
 
 /* Post Grid Slider */
-.element-post_grid_slider .slides-wrapper {
-	padding:20px;
+.tb-post-grid-slider .slides-wrapper {
+	padding: 20px;
 }
 
 /* Slogan */
-.element-slogan .slogan .slogan-text.text_large {
+.tb-slogan .slogan-text.text_large {
 	font-size: 1.5em;
 	line-height: 1.25em;
 }
-.element-slogan .slogan .slogan-text.text_medium {
+.tb-slogan .slogan-text.text_medium {
 	font-size: 1.25em;
 	line-height: 1.25em;
 }
-.element-slogan .slogan .slogan-text.text_small {
+.tb-slogan .slogan-text.text_small {
 	font-size: .9em;
 }
-.element-slogan .text_only {
+.tb-slogan .text_only {
 	text-align: center;
 }
-.element-slogan .has_button .btn {
+.tb-slogan.has_button .btn {
 	float: right;
 	margin: 0 0 0 20px;
 }
-.element-slogan .has_button .btn-large {
+.tb-slogan.has_button .btn-large {
 	font-size: 20px;
 	padding: 15px;
 }
@@ -2489,13 +2489,13 @@ div.pp_default .pp_description {
 }
 
 /* Tweet */
-.tweet-wrapper {
+.tb-tweet-wrapper {
 	position: relative;
 }
-.tweet-wrapper.has-icon {
+.tb-tweet-wrapper.has-icon {
 	padding-left: 70px;
 }
-.tweet-wrapper .tweet-icon {
+.tb-tweet-wrapper .tweet-icon {
 	display: block;  
 	font-size: 64px;
 	line-height: 50px;
@@ -2504,8 +2504,7 @@ div.pp_default .pp_description {
 	left: 0;
 	width: 50px;
 }
-
-.tweet-wrapper .tweet-content {
+.tb-tweet-wrapper .tweet-content {
 	font-size: 1.9em;
 	line-height: 125%;
 }
