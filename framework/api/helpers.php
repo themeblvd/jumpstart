@@ -83,13 +83,8 @@ if( ! function_exists( 'themeblvd_api_init' ) ) {
 if( ! function_exists( 'themeblvd_setup' ) ) { 
 	function themeblvd_setup() {
 		$setup = array(
-			'primary' => array(
-				'sliders' 			=> true,			// Sliders
-				'sidebars'			=> true,			// Custom sidebars
-				'builder'			=> true				// Custom layouts
-			),
 			'admin' => array(
-				'options'			=> true,			// Entire Admin presence
+				'options'			=> true,			// Theme Options
 				'sliders' 			=> true,			// Sliders page
 				'builder'			=> true,			// Layouts page
 				'sidebars'			=> true				// Sidebars page
@@ -115,7 +110,10 @@ if( ! function_exists( 'themeblvd_setup' ) ) {
 			),
 			'comments' => array(
 				'pages'				=> false,			// Comments on pages
-				'posts'				=> true,			// Commments on posts
+				'posts'				=> true				// Commments on posts
+			),
+			'display' => array(
+				'responsive' 		=> true				// Responsive elements
 			)
 		);
 		return apply_filters( 'themeblvd_global_config', $setup );
