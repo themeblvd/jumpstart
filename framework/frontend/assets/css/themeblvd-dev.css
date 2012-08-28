@@ -2452,7 +2452,7 @@ div.pp_default .pp_description {
 .tb-slogan .slogan-text.text_small {
 	font-size: .9em;
 }
-.tb-slogan .text_only {
+.tb-slogan.text_only {
 	text-align: center;
 }
 .tb-slogan.has_button .btn {
