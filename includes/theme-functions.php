@@ -40,7 +40,8 @@ if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 		wp_enqueue_style( 'themeblvd_theme' );
 		$GLOBALS['wp_styles']->add_data( 'themeblvd_ie', 'conditional', 'lt IE 9' ); // Add IE conditional
 		wp_enqueue_style( 'themeblvd_ie' );
-		if( themeblvd_get_option( 'responsive_css' ) != 'false' ) wp_enqueue_style( 'themeblvd_responsive' );
+		if( themeblvd_get_option( 'responsive_css' ) != 'false' ) 
+			wp_enqueue_style( 'themeblvd_responsive' );
 		// Level 3 user styles
 		themeblvd_user_stylesheets( 3 );
 	}
