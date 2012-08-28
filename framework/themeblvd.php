@@ -90,7 +90,8 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/builder.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/builder.php' ); // @todo - get rid of this.
+	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/elements.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/actions.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/helpers.php' );

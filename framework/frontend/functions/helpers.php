@@ -351,7 +351,7 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 		if( ! isset( $args['numberposts'] ) )
 			$args['numberposts'] = -1;
 		// Categories
-		if( ! $options['categories']['all'] ) {
+		if( isset( $options['categories'] ) && ! $options['categories']['all'] ) {
 			unset( $options['categories']['all'] );
 			$categories = '';
 			foreach( $options['categories'] as $category => $include ) {
