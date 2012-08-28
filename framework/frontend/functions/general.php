@@ -425,7 +425,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		// wp_enqueue_script( 'flexslider' ); // Enque'd within the content if warranted, will keep an eye on how this goes.
 		// wp_enqueue_script( 'roundabout' ); // Enque'd within the content if warranted, will keep an eye on how this goes.
 		wp_enqueue_script( 'themeblvd' );
-		if( themeblvd_get_option( 'responsive_css', null, 'true' ) != 'false' ) 
+		if( themeblvd_supports( 'display', 'responsive' ) )
 			wp_enqueue_script( 'ios-orientationchange-fix' );
 	}
 }

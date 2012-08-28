@@ -40,7 +40,7 @@ if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 		wp_enqueue_style( 'themeblvd_theme' );
 		$GLOBALS['wp_styles']->add_data( 'themeblvd_ie', 'conditional', 'lt IE 9' ); // Add IE conditional
 		wp_enqueue_style( 'themeblvd_ie' );
-		if( themeblvd_get_option( 'responsive_css' ) != 'false' ) 
+		if( themeblvd_supports( 'display', 'responsive' ) )
 			wp_enqueue_style( 'themeblvd_responsive' );
 		// Level 3 user styles
 		themeblvd_user_stylesheets( 3 );
@@ -69,11 +69,11 @@ add_action( 'wp_enqueue_scripts', 'themeblvd_jumpstart_scripts' );
 
 if( ! function_exists( 'jumpstart_body_class' ) ) {
 	function jumpstart_body_class( $classes ) {
-		$classes[] = themeblvd_get_option( 'mobile_nav' );
+		// $classes[] = ...
 		return $classes;
 	}
 }
-add_filter( 'body_class', 'jumpstart_body_class' );
+// add_filter( 'body_class', 'jumpstart_body_class' ); // Not used in Jump Start
 
 /**
  * Jump Start Styles 

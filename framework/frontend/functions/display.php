@@ -17,7 +17,7 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 		echo '<meta charset="'.get_bloginfo( 'charset' ).'" />'."\n";
 		
 		// Viewport meta
-		if( themeblvd_get_option( 'responsive_css', null, 'true' ) != 'false' )
+		if( themeblvd_supports( 'display', 'responsive' ) )
 			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 		
 		// <title> tag
@@ -171,16 +171,11 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 
 if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 	function themeblvd_header_menu_default() {
-		if( themeblvd_get_option( 'responsive_css', null, 'true' ) != 'false' && themeblvd_get_option( 'mobile_nav' ) == 'mobile_nav_select' )
-			echo themeblvd_nav_menu_select( apply_filters( 'themeblvd_responsive_menu_location', 'primary' ) );
+		do_action( 'themeblvd_header_menu_before' );
 		?>
-		
-		<?php if( themeblvd_get_option( 'mobile_nav' ) == 'mobile_nav_toggle_graphic' ) : ?>
-			<a href="#access" class="btn btn-navbar">
-				<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="icon-reorder"></i>' ); ?>
-			</a>
-		<?php endif; ?>
-		
+		<a href="#access" class="btn btn-navbar">
+			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="icon-reorder"></i>' ); ?>
+		</a>		
 		<nav id="access" role="navigation">
 			<div class="access-inner">
 				<div class="access-content clearfix">
@@ -190,6 +185,7 @@ if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 			</div><!-- .access-inner (end) -->
 		</nav><!-- #access (end) -->
 		<?php
+		do_action( 'themeblvd_header_menu_after' );
 	}
 }
 

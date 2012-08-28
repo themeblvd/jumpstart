@@ -38,6 +38,7 @@
 	 * mobile navigation. 
 	 */
 	#access {
+		display: none;
 		margin-bottom: 10px;
 	}
 	#access li {
@@ -63,13 +64,7 @@
 	#access .sf-menu ul .sf-sub-indicator.icon-caret-right:before {
 		content: "\f0d7";
 	}
-	
-	/**
-	 * Primary Navigation (toggle graphic) 
-	 * This is only used if you've selected to show 
-	 * a graphic navigation for mobile that toggles on/off.
-	 */
-	.mobile_nav_toggle_graphic .btn-navbar {
+	.btn-navbar {
 		display: block;
 		outline: none;
 		padding: 7px 10px;
@@ -77,24 +72,7 @@
 		top: 10px;
 		right: 10px;
 	}
-	.mobile_nav_toggle_graphic #access {
-		display: none;
-	}
 	
-	/**
-	 * Primary Navigation (select menu)
-	 * This only gets applied if the user has selected to 
-	 * show select menu from Theme Options for mobile navigation.
-	 */ 
-	.mobile_nav_select #access {
-		display:none;
-	}
-	.mobile_nav_select .responsive-nav {
-		display: block;
-		margin-bottom: 10px;
-		text-align: center;
-	}
-
 }
 
 /* =Optimized for Mobile Devices

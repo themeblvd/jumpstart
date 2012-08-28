@@ -43,9 +43,6 @@
  *		- archive_thumbs
  *		- archive_content
  * Configuration
- *	- Responsiveness
- *		- responsive_css
- *		- mobile_nav
  *	- Analytics
  *		- analytics
  */
@@ -361,35 +358,6 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		/*-------------------------------------------------------*/
 		
 		$config_options = array(
-			// Section: Responsiveness
-			'responsiveness' => array(
-				'name' => __( 'Responsiveness', 'themeblvd' ),
-				'options' => array(		
-					'responsive_css' => array( 
-						'name' 		=> __( 'Tablets and Mobile Devices', 'themeblvd' ),	
-						'desc' 		=> __( 'This theme comes with a special stylesheet that will target the screen resolution of your website vistors and show them a slightly modified design if their screen resolution matches common sizes for a tablet or a mobile device.', 'themeblvd' ),
-						'id' 		=> 'responsive_css',
-						'std' 		=> 'true',
-						'type' 		=> 'radio',
-						'options' 	=> array(
-							'true'		=> __( 'Yes, apply special styles to tablets and mobile devices.', 'themeblvd' ),
-							'false' 	=> __( 'No, allow website to show normally on tablets and mobile devices.', 'themeblvd' )
-						)
-					),
-					'mobile_nav' => array( 
-						'name' 		=> __( 'Mobile Navigation', 'themeblvd' ),	
-						'desc' 		=> __( 'Select how you\'d like the <em>Primary Navigation</em> displayed on mobile devices. While the graphic navigation may be more visually appealing, if your navigation is more complex with many dropdown items, you possibly could be providing a better user experience to mobile users by having the navigation converted into a simple select menu.<br><br>A nice compromise between the two options discussed above is the first default option that will display a button for the user to toggle the main navigation on and off.', 'themeblvd' ),
-						'id' 		=> 'mobile_nav',
-						'std' 		=> 'mobile_nav_toggle_graphic',
-						'type' 		=> 'radio',
-						'options' 	=> array(
-							'mobile_nav_toggle_graphic'	=> __( 'Display graphic navigation that toggles on/off.', 'themeblvd' ),
-							'mobile_nav_graphic'		=> __( 'Display graphic navigation.', 'themeblvd' ),
-							'mobile_nav_select' 		=> __( 'Display simple select menu.', 'themeblvd' )
-						)
-					)
-				) // End Responsiveness options
-			),
 			// Section: Analytics
 			'analytics' => array(
 				'name' => __( 'Analytics', 'themeblvd' ),
