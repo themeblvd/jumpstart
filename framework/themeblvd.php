@@ -37,7 +37,6 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/shortcodes/tinymce/tinymce_shortcodes.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-contact.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-horz-nav.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-mini-post-grid.php' );
@@ -97,7 +96,6 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/general.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/shortcodes/shortcodes.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-contact.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-horz-nav.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/widgets/tb-widget-mini-post-grid.php' );
@@ -126,6 +124,7 @@ if( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
 	add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
+	add_action( 'after_setup_theme', 'themeblvd_raw_shortcode' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 	add_action( 'wp_print_styles', 'themeblvd_include_styles', 5 );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
