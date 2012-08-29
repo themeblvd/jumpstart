@@ -199,20 +199,18 @@ if( ! function_exists( 'themeblvd_register_posts' ) ) {
 	function themeblvd_register_posts() {
 		
 		// Custom Layouts
-		if( themeblvd_supports( 'primary', 'builder' ) ) {
-			$args = array(
-				'labels' 			=> array( 'name' => 'Layouts', 'singular_name' => 'Layout' ),
-				'public'			=> false,
-				//'show_ui' 		=> true,	// Can uncomment for debugging
-				'query_var' 		=> true,
-				'capability_type' 	=> 'post',
-				'hierarchical' 		=> false,
-				'rewrite' 			=> false,
-				'supports' 			=> array( 'title', 'custom-fields' ), 
-				'can_export'		=> true
-			);
-			register_post_type( 'tb_layout', $args );
-		}
+		$args = array(
+			'labels' 			=> array( 'name' => 'Layouts', 'singular_name' => 'Layout' ),
+			'public'			=> false,
+			//'show_ui' 		=> true,	// Can uncomment for debugging
+			'query_var' 		=> true,
+			'capability_type' 	=> 'post',
+			'hierarchical' 		=> false,
+			'rewrite' 			=> false,
+			'supports' 			=> array( 'title', 'custom-fields' ), 
+			'can_export'		=> true
+		);
+		register_post_type( 'tb_layout', $args );
 	}
 }
 
