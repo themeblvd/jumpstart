@@ -1,1 +1,106 @@
-jQuery(document).ready(function(c){c(".fade").delay(1000).fadeOut(1000);c(".colorSelector").each(function(){var d=this;var e=c(d).next("input").attr("value");c(this).ColorPicker({color:e,onShow:function(f){c(f).fadeIn(500);return false},onHide:function(f){c(f).fadeOut(500);return false},onChange:function(f,h,g){c(d).children("div").css("backgroundColor","#"+h);c(d).next("input").attr("value","#"+h)}})});c(".group").hide();var b="";if(typeof(localStorage)!="undefined"){b=localStorage.getItem("activetab")}if(b!=""&&c(b).length){c(b).fadeIn()}else{c(".group:first").fadeIn()}c(".group .collapsed").each(function(){c(this).find("input:checked").parent().parent().parent().nextAll().each(function(){if(c(this).hasClass("last")){c(this).removeClass("hidden");return false}c(this).filter(".hidden").removeClass("hidden")})});if(b!=""&&c(b+"-tab").length){c(b+"-tab").addClass("nav-tab-active")}else{c(".nav-tab-wrapper a:first").addClass("nav-tab-active")}c(".nav-tab-wrapper a").click(function(d){c(".nav-tab-wrapper a").removeClass("nav-tab-active");c(this).addClass("nav-tab-active").blur();var e=c(this).attr("href");if(typeof(localStorage)!="undefined"){localStorage.setItem("activetab",c(this).attr("href"))}c(".group").hide();c(e).fadeIn();d.preventDefault()});c(".group .collapsed input:checkbox").click(a);function a(){if(c(this).attr("checked")){c(this).parent().parent().parent().nextAll().removeClass("hidden")}else{c(this).parent().parent().parent().nextAll().each(function(){if(c(this).filter(".last").length){c(this).addClass("hidden");return false}c(this).addClass("hidden")})}}c(".of-radio-img-img").click(function(){c(this).parent().parent().find(".of-radio-img-img").removeClass("of-radio-img-selected");c(this).addClass("of-radio-img-selected")});c(".of-radio-img-label").hide();c(".of-radio-img-img").show();c(".of-radio-img-radio").hide();c("#optionsframework").themeblvd("init");c("#optionsframework").themeblvd("options","bind");c("#optionsframework").themeblvd("options","setup")});
+/**
+ * Prints out the inline javascript needed for the colorpicker and choosing
+ * the tabs in the panel.
+ */
+
+jQuery(document).ready(function($) {
+	
+	// Fade out the save message
+	$('.fade').delay(1000).fadeOut(1000);
+	
+	// Color Picker
+	$('.colorSelector').each(function(){
+		var Othis = this; //cache a copy of the this variable for use inside nested function
+		var initialColor = $(Othis).next('input').attr('value');
+		$(this).ColorPicker({
+		color: initialColor,
+		onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+		},
+		onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+		},
+		onChange: function (hsb, hex, rgb) {
+		$(Othis).children('div').css('backgroundColor', '#' + hex);
+		$(Othis).next('input').attr('value','#' + hex);
+	}
+	});
+	}); //end color picker
+	
+	// Switches option sections
+	$('.group').hide();
+	var activetab = '';
+	if (typeof(localStorage) != 'undefined' ) {
+		activetab = localStorage.getItem("activetab");
+	}
+	if (activetab != '' && $(activetab).length ) {
+		$(activetab).fadeIn();
+	} else {
+		$('.group:first').fadeIn();
+	}
+	$('.group .collapsed').each(function(){
+		$(this).find('input:checked').parent().parent().parent().nextAll().each( 
+			function(){
+				if ($(this).hasClass('last')) {
+					$(this).removeClass('hidden');
+						return false;
+					}
+				$(this).filter('.hidden').removeClass('hidden');
+			});
+	});
+	
+	if (activetab != '' && $(activetab + '-tab').length ) {
+		$(activetab + '-tab').addClass('nav-tab-active');
+	}
+	else {
+		$('.nav-tab-wrapper a:first').addClass('nav-tab-active');
+	}
+	$('.nav-tab-wrapper a').click(function(evt) {
+		$('.nav-tab-wrapper a').removeClass('nav-tab-active');
+		$(this).addClass('nav-tab-active').blur();
+		var clicked_group = $(this).attr('href');
+		if (typeof(localStorage) != 'undefined' ) {
+			localStorage.setItem("activetab", $(this).attr('href'));
+		}
+		$('.group').hide();
+		$(clicked_group).fadeIn();
+		evt.preventDefault();
+	});
+           					
+	$('.group .collapsed input:checkbox').click(unhideHidden);
+				
+	function unhideHidden(){
+		if ($(this).attr('checked')) {
+			$(this).parent().parent().parent().nextAll().removeClass('hidden');
+		}
+		else {
+			$(this).parent().parent().parent().nextAll().each( 
+			function(){
+				if ($(this).filter('.last').length) {
+					$(this).addClass('hidden');
+					return false;		
+					}
+				$(this).addClass('hidden');
+			});
+           					
+		}
+	}
+	
+	// Image Options
+	$('.of-radio-img-img').click(function(){
+		$(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
+		$(this).addClass('of-radio-img-selected');		
+	});
+		
+	$('.of-radio-img-label').hide();
+	$('.of-radio-img-img').show();
+	$('.of-radio-img-radio').hide();
+	
+	// ThemeBlvd namespace
+	$('#optionsframework').themeblvd('init');
+	$('#optionsframework').themeblvd('options', 'bind');
+	$('#optionsframework').themeblvd('options', 'setup');
+		 		
+});	

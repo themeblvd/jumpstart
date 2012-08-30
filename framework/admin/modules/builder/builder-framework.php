@@ -63,10 +63,10 @@ if ( ! function_exists( 'builder_blvd_add_page' ) ) {
 
 if( ! function_exists( 'builder_blvd_load_styles' ) ) {
 	function builder_blvd_load_styles() {
-		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.css', null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_style( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/css/admin-style.css', null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_style( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/css/colorpicker.css' );
-		wp_enqueue_style( 'themeblvd_builder', TB_FRAMEWORK_URI . '/admin/modules/builder/css/builder-style.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/css/colorpicker.min.css' );
+		wp_enqueue_style( 'themeblvd_builder', TB_FRAMEWORK_URI . '/admin/modules/builder/css/builder-style.min.css', null, TB_FRAMEWORK_VERSION );
 	}
 }	
 
@@ -80,11 +80,11 @@ if( ! function_exists( 'builder_blvd_load_scripts' ) ) {
 	function builder_blvd_load_scripts() {
 		wp_enqueue_script( 'jquery-ui-core');
 		wp_enqueue_script( 'jquery-ui-sortable' );
-		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
-		wp_enqueue_script( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/js/options.js', array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_enqueue_script( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/js/colorpicker.js', array('jquery') );
-		wp_enqueue_script( 'themeblvd_builder', TB_FRAMEWORK_URI . '/admin/modules/builder/js/builder.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/js/options.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/js/colorpicker.min.js', array('jquery') );
+		wp_enqueue_script( 'themeblvd_builder', TB_FRAMEWORK_URI . '/admin/modules/builder/js/builder.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_builder', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 	}
 }

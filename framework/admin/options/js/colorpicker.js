@@ -1,1 +1,455 @@
-(function(b){var a=function(){var R={},c,M=65,t,O='<div class="colorpicker"><div class="colorpicker_color"><div><div></div></div></div><div class="colorpicker_hue"><div></div></div><div class="colorpicker_new_color"></div><div class="colorpicker_current_color"></div><div class="colorpicker_hex"><input type="text" maxlength="6" size="6" /></div><div class="colorpicker_rgb_r colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_submit"></div></div>',B={eventName:"click",onShow:function(){},onBeforeShow:function(){},onHide:function(){},onChange:function(){},onSubmit:function(){},color:"ff0000",livePreview:true,flat:false},I=function(S,U){var T=j(S);b(U).data("colorpicker").fields.eq(1).val(T.r).end().eq(2).val(T.g).end().eq(3).val(T.b).end()},u=function(S,T){b(T).data("colorpicker").fields.eq(4).val(S.h).end().eq(5).val(S.s).end().eq(6).val(S.b).end()},g=function(S,T){b(T).data("colorpicker").fields.eq(0).val(Q(S)).end()},l=function(S,T){b(T).data("colorpicker").selector.css("backgroundColor","#"+Q({h:S.h,s:100,b:100}));b(T).data("colorpicker").selectorIndic.css({left:parseInt(150*S.s/100,10),top:parseInt(150*(100-S.b)/100,10)})},F=function(S,T){b(T).data("colorpicker").hue.css("top",parseInt(150-150*S.h/360,10))},h=function(S,T){b(T).data("colorpicker").currentColor.css("backgroundColor","#"+Q(S))},E=function(S,T){b(T).data("colorpicker").newColor.css("backgroundColor","#"+Q(S))},n=function(S){var U=S.charCode||S.keyCode||-1;if((U>M&&U<=90)||U==32){return false}var T=b(this).parent().parent();if(T.data("colorpicker").livePreview===true){e.apply(this)}},e=function(T){var U=b(this).parent().parent(),S;if(this.parentNode.className.indexOf("_hex")>0){U.data("colorpicker").color=S=m(y(this.value))}else{if(this.parentNode.className.indexOf("_hsb")>0){U.data("colorpicker").color=S=f({h:parseInt(U.data("colorpicker").fields.eq(4).val(),10),s:parseInt(U.data("colorpicker").fields.eq(5).val(),10),b:parseInt(U.data("colorpicker").fields.eq(6).val(),10)})}else{U.data("colorpicker").color=S=i(L({r:parseInt(U.data("colorpicker").fields.eq(1).val(),10),g:parseInt(U.data("colorpicker").fields.eq(2).val(),10),b:parseInt(U.data("colorpicker").fields.eq(3).val(),10)}))}}if(T){I(S,U.get(0));g(S,U.get(0));u(S,U.get(0))}l(S,U.get(0));F(S,U.get(0));E(S,U.get(0));U.data("colorpicker").onChange.apply(U,[S,Q(S),j(S)])},o=function(S){var T=b(this).parent().parent();T.data("colorpicker").fields.parent().removeClass("colorpicker_focus")},J=function(){M=this.parentNode.className.indexOf("_hex")>0?70:65;b(this).parent().parent().data("colorpicker").fields.parent().removeClass("colorpicker_focus");b(this).parent().addClass("colorpicker_focus")},H=function(S){var U=b(this).parent().find("input").focus();var T={el:b(this).parent().addClass("colorpicker_slider"),max:this.parentNode.className.indexOf("_hsb_h")>0?360:(this.parentNode.className.indexOf("_hsb")>0?100:255),y:S.pageY,field:U,val:parseInt(U.val(),10),preview:b(this).parent().parent().data("colorpicker").livePreview};b(document).bind("mouseup",T,s);b(document).bind("mousemove",T,K)},K=function(S){S.data.field.val(Math.max(0,Math.min(S.data.max,parseInt(S.data.val+S.pageY-S.data.y,10))));if(S.data.preview){e.apply(S.data.field.get(0),[true])}return false},s=function(S){e.apply(S.data.field.get(0),[true]);S.data.el.removeClass("colorpicker_slider").find("input").focus();b(document).unbind("mouseup",s);b(document).unbind("mousemove",K);return false},w=function(S){var T={cal:b(this).parent(),y:b(this).offset().top};T.preview=T.cal.data("colorpicker").livePreview;b(document).bind("mouseup",T,r);b(document).bind("mousemove",T,k)},k=function(S){e.apply(S.data.cal.data("colorpicker").fields.eq(4).val(parseInt(360*(150-Math.max(0,Math.min(150,(S.pageY-S.data.y))))/150,10)).get(0),[S.data.preview]);return false},r=function(S){I(S.data.cal.data("colorpicker").color,S.data.cal.get(0));g(S.data.cal.data("colorpicker").color,S.data.cal.get(0));b(document).unbind("mouseup",r);b(document).unbind("mousemove",k);return false},x=function(S){var T={cal:b(this).parent(),pos:b(this).offset()};T.preview=T.cal.data("colorpicker").livePreview;b(document).bind("mouseup",T,A);b(document).bind("mousemove",T,q)},q=function(S){e.apply(S.data.cal.data("colorpicker").fields.eq(6).val(parseInt(100*(150-Math.max(0,Math.min(150,(S.pageY-S.data.pos.top))))/150,10)).end().eq(5).val(parseInt(100*(Math.max(0,Math.min(150,(S.pageX-S.data.pos.left))))/150,10)).get(0),[S.data.preview]);return false},A=function(S){I(S.data.cal.data("colorpicker").color,S.data.cal.get(0));g(S.data.cal.data("colorpicker").color,S.data.cal.get(0));b(document).unbind("mouseup",A);b(document).unbind("mousemove",q);return false},v=function(S){b(this).addClass("colorpicker_focus")},P=function(S){b(this).removeClass("colorpicker_focus")},p=function(T){var U=b(this).parent();var S=U.data("colorpicker").color;U.data("colorpicker").origColor=S;h(S,U.get(0));U.data("colorpicker").onSubmit(S,Q(S),j(S));U.hide()},D=function(S){var W=b("#"+b(this).data("colorpickerId"));W.data("colorpicker").onBeforeShow.apply(this,[W.get(0)]);var X=b(this).offset();var V=z();var U=X.top+this.offsetHeight;var T=X.left;if(U+176>V.t+V.h){U-=this.offsetHeight+176}else{U+=5}if(T+356>V.l+V.w){T-=356}W.css({left:T+"px",top:U+"px"});if(W.data("colorpicker").onShow.apply(this,[W.get(0)])!=false){W.show()}b(document).bind("mousedown",{cal:W},N);return false},N=function(S){if(!G(S.data.cal.get(0),S.target,S.data.cal.get(0))){if(S.data.cal.data("colorpicker").onHide.apply(this,[S.data.cal.get(0)])!=false){S.data.cal.hide()}b(document).unbind("mousedown",N)}},G=function(U,T,S){if(U==T){return true}if(U.contains){return U.contains(T)}if(U.compareDocumentPosition){return !!(U.compareDocumentPosition(T)&16)}var V=T.parentNode;while(V&&V!=S){if(V==U){return true}V=V.parentNode}return false},z=function(){var S=document.compatMode=="CSS1Compat";return{l:window.pageXOffset||(S?document.documentElement.scrollLeft:document.body.scrollLeft),t:window.pageYOffset||(S?document.documentElement.scrollTop:document.body.scrollTop),w:window.innerWidth||(S?document.documentElement.clientWidth:document.body.clientWidth),h:window.innerHeight||(S?document.documentElement.clientHeight:document.body.clientHeight)}},f=function(S){return{h:Math.min(360,Math.max(0,S.h)),s:Math.min(100,Math.max(0,S.s)),b:Math.min(100,Math.max(0,S.b))}},L=function(S){return{r:Math.min(255,Math.max(0,S.r)),g:Math.min(255,Math.max(0,S.g)),b:Math.min(255,Math.max(0,S.b))}},y=function(U){var S=6-U.length;if(S>0){var V=[];for(var T=0;T<S;T++){V.push("0")}V.push(U);U=V.join("")}return U},d=function(S){var S=parseInt(((S.indexOf("#")>-1)?S.substring(1):S),16);return{r:S>>16,g:(S&65280)>>8,b:(S&255)}},m=function(S){return i(d(S))},i=function(T){var S={};S.b=Math.max(Math.max(T.r,T.g),T.b);S.s=(S.b<=0)?0:Math.round(100*(S.b-Math.min(Math.min(T.r,T.g),T.b))/S.b);S.b=Math.round((S.b/255)*100);if((T.r==T.g)&&(T.g==T.b)){S.h=0}else{if(T.r>=T.g&&T.g>=T.b){S.h=60*(T.g-T.b)/(T.r-T.b)}else{if(T.g>=T.r&&T.r>=T.b){S.h=60+60*(T.g-T.r)/(T.g-T.b)}else{if(T.g>=T.b&&T.b>=T.r){S.h=120+60*(T.b-T.r)/(T.g-T.r)}else{if(T.b>=T.g&&T.g>=T.r){S.h=180+60*(T.b-T.g)/(T.b-T.r)}else{if(T.b>=T.r&&T.r>=T.g){S.h=240+60*(T.r-T.g)/(T.b-T.g)}else{if(T.r>=T.b&&T.b>=T.g){S.h=300+60*(T.r-T.b)/(T.r-T.g)}else{S.h=0}}}}}}}S.h=Math.round(S.h);return S},j=function(S){var U={};var Y=Math.round(S.h);var X=Math.round(S.s*255/100);var T=Math.round(S.b*255/100);if(X==0){U.r=U.g=U.b=T}else{var Z=T;var W=(255-X)*T/255;var V=(Z-W)*(Y%60)/60;if(Y==360){Y=0}if(Y<60){U.r=Z;U.b=W;U.g=W+V}else{if(Y<120){U.g=Z;U.b=W;U.r=Z-V}else{if(Y<180){U.g=Z;U.r=W;U.b=W+V}else{if(Y<240){U.b=Z;U.r=W;U.g=Z-V}else{if(Y<300){U.b=Z;U.g=W;U.r=W+V}else{if(Y<360){U.r=Z;U.g=W;U.b=Z-V}else{U.r=0;U.g=0;U.b=0}}}}}}}return{r:Math.round(U.r),g:Math.round(U.g),b:Math.round(U.b)}},C=function(S){var T=[S.r.toString(16),S.g.toString(16),S.b.toString(16)];b.each(T,function(U,V){if(V.length==1){T[U]="0"+V}});return T.join("")},Q=function(S){return C(j(S))};return{init:function(S){S=b.extend({},B,S||{});if(typeof S.color=="string"){S.color=m(S.color)}else{if(S.color.r!=undefined&&S.color.g!=undefined&&S.color.b!=undefined){S.color=i(S.color)}else{if(S.color.h!=undefined&&S.color.s!=undefined&&S.color.b!=undefined){S.color=f(S.color)}else{return this}}}S.origColor=S.color;return this.each(function(){if(!b(this).data("colorpickerId")){var U="collorpicker_"+parseInt(Math.random()*1000);b(this).data("colorpickerId",U);var T=b(O).attr("id",U);if(S.flat){T.appendTo(this).show()}else{T.appendTo(document.body)}S.fields=T.find("input").bind("keydown",n).bind("change",e).bind("blur",o).bind("focus",J);T.find("span").bind("mousedown",H);S.selector=T.find("div.colorpicker_color").bind("mousedown",x);S.selectorIndic=S.selector.find("div div");S.hue=T.find("div.colorpicker_hue div");T.find("div.colorpicker_hue").bind("mousedown",w);S.newColor=T.find("div.colorpicker_new_color");S.currentColor=T.find("div.colorpicker_current_color");T.data("colorpicker",S);T.find("div.colorpicker_submit").bind("mouseenter",v).bind("mouseleave",P).bind("click",p);I(S.color,T.get(0));u(S.color,T.get(0));g(S.color,T.get(0));F(S.color,T.get(0));l(S.color,T.get(0));h(S.color,T.get(0));E(S.color,T.get(0));if(S.flat){T.css({position:"relative",display:"block"})}else{b(this).bind(S.eventName,D)}}})},showPicker:function(){return this.each(function(){if(b(this).data("colorpickerId")){D.apply(this)}})},hidePicker:function(){return this.each(function(){if(b(this).data("colorpickerId")){b("#"+b(this).data("colorpickerId")).hide()}})},setColor:function(S){if(typeof S=="string"){S=m(S)}else{if(S.r!=undefined&&S.g!=undefined&&S.b!=undefined){S=i(S)}else{if(S.h!=undefined&&S.s!=undefined&&S.b!=undefined){S=f(S)}else{return this}}}return this.each(function(){if(b(this).data("colorpickerId")){var T=b("#"+b(this).data("colorpickerId"));T.data("colorpicker").color=S;T.data("colorpicker").origColor=S;I(S,T.get(0));u(S,T.get(0));g(S,T.get(0));F(S,T.get(0));l(S,T.get(0));h(S,T.get(0));E(S,T.get(0))}})}}}();b.fn.extend({ColorPicker:a.init,ColorPickerHide:a.hide,ColorPickerShow:a.show,ColorPickerSetColor:a.setColor})})(jQuery);
+/**
+ *
+ * Color picker
+ * Author: Stefan Petre www.eyecon.ro
+ * 
+ * Dependencies: jQuery
+ *
+ */
+(function ($) {
+	var ColorPicker = function () {
+		var
+			ids = {},
+			inAction,
+			charMin = 65,
+			visible,
+			tpl = '<div class="colorpicker"><div class="colorpicker_color"><div><div></div></div></div><div class="colorpicker_hue"><div></div></div><div class="colorpicker_new_color"></div><div class="colorpicker_current_color"></div><div class="colorpicker_hex"><input type="text" maxlength="6" size="6" /></div><div class="colorpicker_rgb_r colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input type="text" maxlength="3" size="3" /><span></span></div><div class="colorpicker_submit"></div></div>',
+			defaults = {
+				eventName: 'click',
+				onShow: function () {},
+				onBeforeShow: function(){},
+				onHide: function () {},
+				onChange: function () {},
+				onSubmit: function () {},
+				color: 'ff0000',
+				livePreview: true,
+				flat: false
+			},
+			fillRGBFields = function  (hsb, cal) {
+				var rgb = HSBToRGB(hsb);
+				$(cal).data('colorpicker').fields
+					.eq(1).val(rgb.r).end()
+					.eq(2).val(rgb.g).end()
+					.eq(3).val(rgb.b).end();
+			},
+			fillHSBFields = function  (hsb, cal) {
+				$(cal).data('colorpicker').fields
+					.eq(4).val(hsb.h).end()
+					.eq(5).val(hsb.s).end()
+					.eq(6).val(hsb.b).end();
+			},
+			fillHexFields = function (hsb, cal) {
+				$(cal).data('colorpicker').fields
+					.eq(0).val(HSBToHex(hsb)).end();
+			},
+			setSelector = function (hsb, cal) {
+				$(cal).data('colorpicker').selector.css('backgroundColor', '#' + HSBToHex({h: hsb.h, s: 100, b: 100}));
+				$(cal).data('colorpicker').selectorIndic.css({
+					left: parseInt(150 * hsb.s/100, 10),
+					top: parseInt(150 * (100-hsb.b)/100, 10)
+				});
+			},
+			setHue = function (hsb, cal) {
+				$(cal).data('colorpicker').hue.css('top', parseInt(150 - 150 * hsb.h/360, 10));
+			},
+			setCurrentColor = function (hsb, cal) {
+				$(cal).data('colorpicker').currentColor.css('backgroundColor', '#' + HSBToHex(hsb));
+			},
+			setNewColor = function (hsb, cal) {
+				$(cal).data('colorpicker').newColor.css('backgroundColor', '#' + HSBToHex(hsb));
+			},
+			keyDown = function (ev) {
+				var pressedKey = ev.charCode || ev.keyCode || -1;
+				if ((pressedKey > charMin && pressedKey <= 90) || pressedKey == 32) {
+					return false;
+				}
+				var cal = $(this).parent().parent();
+				if (cal.data('colorpicker').livePreview === true) {
+					change.apply(this);
+				}
+			},
+			change = function (ev) {
+				var cal = $(this).parent().parent(), col;
+				if (this.parentNode.className.indexOf('_hex') > 0) {
+					cal.data('colorpicker').color = col = HexToHSB(fixHex(this.value));
+				} else if (this.parentNode.className.indexOf('_hsb') > 0) {
+					cal.data('colorpicker').color = col = fixHSB({
+						h: parseInt(cal.data('colorpicker').fields.eq(4).val(), 10),
+						s: parseInt(cal.data('colorpicker').fields.eq(5).val(), 10),
+						b: parseInt(cal.data('colorpicker').fields.eq(6).val(), 10)
+					});
+				} else {
+					cal.data('colorpicker').color = col = RGBToHSB(fixRGB({
+						r: parseInt(cal.data('colorpicker').fields.eq(1).val(), 10),
+						g: parseInt(cal.data('colorpicker').fields.eq(2).val(), 10),
+						b: parseInt(cal.data('colorpicker').fields.eq(3).val(), 10)
+					}));
+				}
+				if (ev) {
+					fillRGBFields(col, cal.get(0));
+					fillHexFields(col, cal.get(0));
+					fillHSBFields(col, cal.get(0));
+				}
+				setSelector(col, cal.get(0));
+				setHue(col, cal.get(0));
+				setNewColor(col, cal.get(0));
+				cal.data('colorpicker').onChange.apply(cal, [col, HSBToHex(col), HSBToRGB(col)]);
+			},
+			blur = function (ev) {
+				var cal = $(this).parent().parent();
+				cal.data('colorpicker').fields.parent().removeClass('colorpicker_focus')
+			},
+			focus = function () {
+				charMin = this.parentNode.className.indexOf('_hex') > 0 ? 70 : 65;
+				$(this).parent().parent().data('colorpicker').fields.parent().removeClass('colorpicker_focus');
+				$(this).parent().addClass('colorpicker_focus');
+			},
+			downIncrement = function (ev) {
+				var field = $(this).parent().find('input').focus();
+				var current = {
+					el: $(this).parent().addClass('colorpicker_slider'),
+					max: this.parentNode.className.indexOf('_hsb_h') > 0 ? 360 : (this.parentNode.className.indexOf('_hsb') > 0 ? 100 : 255),
+					y: ev.pageY,
+					field: field,
+					val: parseInt(field.val(), 10),
+					preview: $(this).parent().parent().data('colorpicker').livePreview					
+				};
+				$(document).bind('mouseup', current, upIncrement);
+				$(document).bind('mousemove', current, moveIncrement);
+			},
+			moveIncrement = function (ev) {
+				ev.data.field.val(Math.max(0, Math.min(ev.data.max, parseInt(ev.data.val + ev.pageY - ev.data.y, 10))));
+				if (ev.data.preview) {
+					change.apply(ev.data.field.get(0), [true]);
+				}
+				return false;
+			},
+			upIncrement = function (ev) {
+				change.apply(ev.data.field.get(0), [true]);
+				ev.data.el.removeClass('colorpicker_slider').find('input').focus();
+				$(document).unbind('mouseup', upIncrement);
+				$(document).unbind('mousemove', moveIncrement);
+				return false;
+			},
+			downHue = function (ev) {
+				var current = {
+					cal: $(this).parent(),
+					y: $(this).offset().top
+				};
+				current.preview = current.cal.data('colorpicker').livePreview;
+				$(document).bind('mouseup', current, upHue);
+				$(document).bind('mousemove', current, moveHue);
+			},
+			moveHue = function (ev) {
+				change.apply(
+					ev.data.cal.data('colorpicker')
+						.fields
+						.eq(4)
+						.val(parseInt(360*(150 - Math.max(0,Math.min(150,(ev.pageY - ev.data.y))))/150, 10))
+						.get(0),
+					[ev.data.preview]
+				);
+				return false;
+			},
+			upHue = function (ev) {
+				fillRGBFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
+				fillHexFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
+				$(document).unbind('mouseup', upHue);
+				$(document).unbind('mousemove', moveHue);
+				return false;
+			},
+			downSelector = function (ev) {
+				var current = {
+					cal: $(this).parent(),
+					pos: $(this).offset()
+				};
+				current.preview = current.cal.data('colorpicker').livePreview;
+				$(document).bind('mouseup', current, upSelector);
+				$(document).bind('mousemove', current, moveSelector);
+			},
+			moveSelector = function (ev) {
+				change.apply(
+					ev.data.cal.data('colorpicker')
+						.fields
+						.eq(6)
+						.val(parseInt(100*(150 - Math.max(0,Math.min(150,(ev.pageY - ev.data.pos.top))))/150, 10))
+						.end()
+						.eq(5)
+						.val(parseInt(100*(Math.max(0,Math.min(150,(ev.pageX - ev.data.pos.left))))/150, 10))
+						.get(0),
+					[ev.data.preview]
+				);
+				return false;
+			},
+			upSelector = function (ev) {
+				fillRGBFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
+				fillHexFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
+				$(document).unbind('mouseup', upSelector);
+				$(document).unbind('mousemove', moveSelector);
+				return false;
+			},
+			enterSubmit = function (ev) {
+				$(this).addClass('colorpicker_focus');
+			},
+			leaveSubmit = function (ev) {
+				$(this).removeClass('colorpicker_focus');
+			},
+			clickSubmit = function (ev) {
+				var cal = $(this).parent();
+				var col = cal.data('colorpicker').color;
+				cal.data('colorpicker').origColor = col;
+				setCurrentColor(col, cal.get(0));
+				cal.data('colorpicker').onSubmit(col, HSBToHex(col), HSBToRGB(col));
+				cal.hide();
+			},
+			show = function (ev) {
+				var cal = $('#' + $(this).data('colorpickerId'));
+				cal.data('colorpicker').onBeforeShow.apply(this, [cal.get(0)]);
+				var pos = $(this).offset();
+				var viewPort = getViewport();
+				var top = pos.top + this.offsetHeight;
+				var left = pos.left;
+				if (top + 176 > viewPort.t + viewPort.h) {
+					top -= this.offsetHeight + 176;
+				} else {
+				  top += 5;
+				}
+				if (left + 356 > viewPort.l + viewPort.w) {
+					left -= 356;
+				}
+				cal.css({left: left + 'px', top: top + 'px'});
+				if (cal.data('colorpicker').onShow.apply(this, [cal.get(0)]) != false) {
+					cal.show();
+				}
+				$(document).bind('mousedown', {cal: cal}, hide);
+				return false;
+			},
+			hide = function (ev) {
+				if (!isChildOf(ev.data.cal.get(0), ev.target, ev.data.cal.get(0))) {
+					if (ev.data.cal.data('colorpicker').onHide.apply(this, [ev.data.cal.get(0)]) != false) {
+						ev.data.cal.hide();
+					}
+					$(document).unbind('mousedown', hide);
+				}
+			},
+			isChildOf = function(parentEl, el, container) {
+				if (parentEl == el) {
+					return true;
+				}
+				if (parentEl.contains) {
+					return parentEl.contains(el);
+				}
+				if ( parentEl.compareDocumentPosition ) {
+					return !!(parentEl.compareDocumentPosition(el) & 16);
+				}
+				var prEl = el.parentNode;
+				while(prEl && prEl != container) {
+					if (prEl == parentEl)
+						return true;
+					prEl = prEl.parentNode;
+				}
+				return false;
+			},
+			getViewport = function () {
+				var m = document.compatMode == 'CSS1Compat';
+				return {
+					l : window.pageXOffset || (m ? document.documentElement.scrollLeft : document.body.scrollLeft),
+					t : window.pageYOffset || (m ? document.documentElement.scrollTop : document.body.scrollTop),
+					w : window.innerWidth || (m ? document.documentElement.clientWidth : document.body.clientWidth),
+					h : window.innerHeight || (m ? document.documentElement.clientHeight : document.body.clientHeight)
+				};
+			},
+			fixHSB = function (hsb) {
+				return {
+					h: Math.min(360, Math.max(0, hsb.h)),
+					s: Math.min(100, Math.max(0, hsb.s)),
+					b: Math.min(100, Math.max(0, hsb.b))
+				};
+			}, 
+			fixRGB = function (rgb) {
+				return {
+					r: Math.min(255, Math.max(0, rgb.r)),
+					g: Math.min(255, Math.max(0, rgb.g)),
+					b: Math.min(255, Math.max(0, rgb.b))
+				};
+			},
+			fixHex = function (hex) {
+				var len = 6 - hex.length;
+				if (len > 0) {
+					var o = [];
+					for (var i=0; i<len; i++) {
+						o.push('0');
+					}
+					o.push(hex);
+					hex = o.join('');
+				}
+				return hex;
+			}, 
+			HexToRGB = function (hex) {
+				var hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
+				return {r: hex >> 16, g: (hex & 0x00FF00) >> 8, b: (hex & 0x0000FF)};
+			},
+			HexToHSB = function (hex) {
+				return RGBToHSB(HexToRGB(hex));
+			},
+			RGBToHSB = function (rgb) {
+				var hsb = {};
+				hsb.b = Math.max(Math.max(rgb.r,rgb.g),rgb.b);
+				hsb.s = (hsb.b <= 0) ? 0 : Math.round(100*(hsb.b - Math.min(Math.min(rgb.r,rgb.g),rgb.b))/hsb.b);
+				hsb.b = Math.round((hsb.b /255)*100);
+				if((rgb.r==rgb.g) && (rgb.g==rgb.b)) hsb.h = 0;
+				else if(rgb.r>=rgb.g && rgb.g>=rgb.b) hsb.h = 60*(rgb.g-rgb.b)/(rgb.r-rgb.b);
+				else if(rgb.g>=rgb.r && rgb.r>=rgb.b) hsb.h = 60  + 60*(rgb.g-rgb.r)/(rgb.g-rgb.b);
+				else if(rgb.g>=rgb.b && rgb.b>=rgb.r) hsb.h = 120 + 60*(rgb.b-rgb.r)/(rgb.g-rgb.r);
+				else if(rgb.b>=rgb.g && rgb.g>=rgb.r) hsb.h = 180 + 60*(rgb.b-rgb.g)/(rgb.b-rgb.r);
+				else if(rgb.b>=rgb.r && rgb.r>=rgb.g) hsb.h = 240 + 60*(rgb.r-rgb.g)/(rgb.b-rgb.g);
+				else if(rgb.r>=rgb.b && rgb.b>=rgb.g) hsb.h = 300 + 60*(rgb.r-rgb.b)/(rgb.r-rgb.g);
+				else hsb.h = 0;
+				hsb.h = Math.round(hsb.h);
+				return hsb;
+			},
+			HSBToRGB = function (hsb) {
+				var rgb = {};
+				var h = Math.round(hsb.h);
+				var s = Math.round(hsb.s*255/100);
+				var v = Math.round(hsb.b*255/100);
+				if(s == 0) {
+					rgb.r = rgb.g = rgb.b = v;
+				} else {
+					var t1 = v;
+					var t2 = (255-s)*v/255;
+					var t3 = (t1-t2)*(h%60)/60;
+					if(h==360) h = 0;
+					if(h<60) {rgb.r=t1;	rgb.b=t2; rgb.g=t2+t3}
+					else if(h<120) {rgb.g=t1; rgb.b=t2;	rgb.r=t1-t3}
+					else if(h<180) {rgb.g=t1; rgb.r=t2;	rgb.b=t2+t3}
+					else if(h<240) {rgb.b=t1; rgb.r=t2;	rgb.g=t1-t3}
+					else if(h<300) {rgb.b=t1; rgb.g=t2;	rgb.r=t2+t3}
+					else if(h<360) {rgb.r=t1; rgb.g=t2;	rgb.b=t1-t3}
+					else {rgb.r=0; rgb.g=0;	rgb.b=0}
+				}
+				return {r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b)};
+			},
+			RGBToHex = function (rgb) {
+				var hex = [
+					rgb.r.toString(16),
+					rgb.g.toString(16),
+					rgb.b.toString(16)
+				];
+				$.each(hex, function (nr, val) {
+					if (val.length == 1) {
+						hex[nr] = '0' + val;
+					}
+				});
+				return hex.join('');
+			},
+			HSBToHex = function (hsb) {
+				return RGBToHex(HSBToRGB(hsb));
+			};
+		return {
+			init: function (options) {
+				options = $.extend({}, defaults, options||{});
+				if (typeof options.color == 'string') {
+					options.color = HexToHSB(options.color);
+				} else if (options.color.r != undefined && options.color.g != undefined && options.color.b != undefined) {
+					options.color = RGBToHSB(options.color);
+				} else if (options.color.h != undefined && options.color.s != undefined && options.color.b != undefined) {
+					options.color = fixHSB(options.color);
+				} else {
+					return this;
+				}
+				options.origColor = options.color;
+				return this.each(function () {
+					if (!$(this).data('colorpickerId')) {
+						var id = 'collorpicker_' + parseInt(Math.random() * 1000);
+						$(this).data('colorpickerId', id);
+						var cal = $(tpl).attr('id', id);
+						if (options.flat) {
+							cal.appendTo(this).show();
+						} else {
+							cal.appendTo(document.body);
+						}
+						options.fields = cal
+											.find('input')
+												.bind('keydown', keyDown)
+												.bind('change', change)
+												.bind('blur', blur)
+												.bind('focus', focus);
+						cal.find('span').bind('mousedown', downIncrement);
+						options.selector = cal.find('div.colorpicker_color').bind('mousedown', downSelector);
+						options.selectorIndic = options.selector.find('div div');
+						options.hue = cal.find('div.colorpicker_hue div');
+						cal.find('div.colorpicker_hue').bind('mousedown', downHue);
+						options.newColor = cal.find('div.colorpicker_new_color');
+						options.currentColor = cal.find('div.colorpicker_current_color');
+						cal.data('colorpicker', options);
+						cal.find('div.colorpicker_submit')
+							.bind('mouseenter', enterSubmit)
+							.bind('mouseleave', leaveSubmit)
+							.bind('click', clickSubmit);
+						fillRGBFields(options.color, cal.get(0));
+						fillHSBFields(options.color, cal.get(0));
+						fillHexFields(options.color, cal.get(0));
+						setHue(options.color, cal.get(0));
+						setSelector(options.color, cal.get(0));
+						setCurrentColor(options.color, cal.get(0));
+						setNewColor(options.color, cal.get(0));
+						if (options.flat) {
+							cal.css({
+								position: 'relative',
+								display: 'block'
+							});
+						} else {
+							$(this).bind(options.eventName, show);
+						}
+					}
+				});
+			},
+			showPicker: function() {
+				return this.each( function () {
+					if ($(this).data('colorpickerId')) {
+						show.apply(this);
+					}
+				});
+			},
+			hidePicker: function() {
+				return this.each( function () {
+					if ($(this).data('colorpickerId')) {
+						$('#' + $(this).data('colorpickerId')).hide();
+					}
+				});
+			},
+			setColor: function(col) {
+				if (typeof col == 'string') {
+					col = HexToHSB(col);
+				} else if (col.r != undefined && col.g != undefined && col.b != undefined) {
+					col = RGBToHSB(col);
+				} else if (col.h != undefined && col.s != undefined && col.b != undefined) {
+					col = fixHSB(col);
+				} else {
+					return this;
+				}
+				return this.each(function(){
+					if ($(this).data('colorpickerId')) {
+						var cal = $('#' + $(this).data('colorpickerId'));
+						cal.data('colorpicker').color = col;
+						cal.data('colorpicker').origColor = col;
+						fillRGBFields(col, cal.get(0));
+						fillHSBFields(col, cal.get(0));
+						fillHexFields(col, cal.get(0));
+						setHue(col, cal.get(0));
+						setSelector(col, cal.get(0));
+						setCurrentColor(col, cal.get(0));
+						setNewColor(col, cal.get(0));
+					}
+				});
+			}
+		};
+	}();
+	$.fn.extend({
+		ColorPicker: ColorPicker.init,
+		ColorPickerHide: ColorPicker.hide,
+		ColorPickerShow: ColorPicker.show,
+		ColorPickerSetColor: ColorPicker.setColor
+	});
+})(jQuery)
