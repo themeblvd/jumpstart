@@ -16,10 +16,6 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 		// Charset meta
 		echo '<meta charset="'.get_bloginfo( 'charset' ).'" />'."\n";
 		
-		// Viewport meta
-		if( themeblvd_supports( 'display', 'responsive' ) )
-			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
-		
 		// <title> tag
 		echo '<title>'.wp_title( '|', false, 'right' )."</title>\n";
 		
@@ -67,6 +63,20 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 		
 		// Standard WP head hook
 		wp_head();
+	}
+}
+
+/**
+ * Add viewport meta to wp_head if responsive 
+ * design is enabled in framework.
+ *
+ * @since 2.2.0
+ */
+
+if( ! function_exists( 'themeblvd_viewport_default' ) ) {
+	function themeblvd_viewport_default() {
+		if( themeblvd_supports( 'display', 'responsive' ) )
+			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 	}
 }
 
