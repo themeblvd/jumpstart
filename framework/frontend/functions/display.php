@@ -27,28 +27,6 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 		
 		// Theme style.css
 		echo '<link rel="stylesheet" type="text/css" media="all" href="'.get_bloginfo( 'stylesheet_url' ).'" />'."\n";
-		
-		// Favicon
-		$icon_16x16 = themeblvd_get_option('favicon');
-		if( $icon_16x16 )
-			echo '<link rel="shortcut icon" href="'.$icon_16x16.'" />'."\n";
-		
-		// Apple touch icons
-		$icon_144x144 = themeblvd_get_option('apple_touch_144x144');
-		if( $icon_144x144 )
-			echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="'.$icon_144x144.'" />'."\n";
-		
-		$icon_114x114 = themeblvd_get_option('apple_touch_114x114');
-		if( $icon_114x114 )
-			echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="'.$icon_114x114.'" />'."\n";
-			
-		$icon_72x72 = themeblvd_get_option('apple_touch_72x72');
-		if( $icon_72x72 )
-			echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="'.$icon_72x72.'" />'."\n";
-			
-		$icon_57x57 = themeblvd_get_option('apple_touch_57x57');
-		if( $icon_57x57 )
-			echo '<link rel="apple-touch-icon-precomposed" href="'.$icon_57x57.'" />'."\n";
 
 		// Pingback
 		echo '<link rel="pingback" href="'.get_bloginfo( 'pingback_url' ).'" />'."\n";
@@ -76,7 +54,7 @@ if( ! function_exists( 'themeblvd_head_default' ) ) {
 if( ! function_exists( 'themeblvd_viewport_default' ) ) {
 	function themeblvd_viewport_default() {
 		if( themeblvd_supports( 'display', 'responsive' ) )
-			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	}
 }
 

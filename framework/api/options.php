@@ -331,44 +331,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 						'type' 		=> 'textarea'
 					)
 				) // End analytics options
-			),
-			// Section: Favicon
-			'favicons' => array(
-				'name' => __( 'Favicons', 'themeblvd' ),
-				'desc' => __( 'A favicon generally appears at the top of the web browser next to the title or URL of your website for your online visitors. The favicon also gets associated with your website when users bookmark it. In addition to the standard favicon, you can also configure the Apple touch icons that users see when bookmarking your website from various Apple devices.<br><br><strong>These are all completely optional; any items you leave blank in this section will simply not display on your website.</strong>', 'themeblvd' ),
-				'options' => array(		
-					'favicon' => array( 
-						'name' 		=> __( 'Standard Favicon (16x16)', 'themeblvd' ),	
-						'desc' 		=> __( 'Insert the URL to the .ico file or PNG image you\'d like to use as your website\'s favicon.<br><br>For help generating a standard favicon ICO file, visit <a href="http://www.favicon.cc/" target="_blank">favicon.cc</a>.', 'themeblvd' ),
-						'id' 		=> 'favicon',
-						'type' 		=> 'upload'
-					),
-					'apple_touch_57x57' => array( 
-						'name' 		=> __( 'Standard Apple Touch Icon (57x57)', 'themeblvd' ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on standard apple devices.<br><br>This is more of the "fallback" for older Apple devices.', 'themeblvd' ),
-						'id' 		=> 'apple_touch_57x57',
-						'type' 		=> 'upload'
-					),
-					'apple_touch_72x72' => array( 
-						'name' 		=> __( 'Apple Touch Icon - iPad 1st/2nd Generation (72x72)', 'themeblvd' ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on first and second generation iPads.', 'themeblvd' ),
-						'id' 		=> 'apple_touch_72x72',
-						'type' 		=> 'upload'
-					),
-					'apple_touch_114x114' => array( 
-						'name' 		=> __( 'Apple Touch Icon - iPhone with Retina (114x114)', 'themeblvd' ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on for the iPhone 4S and later, which come with retina display.', 'themeblvd' ),
-						'id' 		=> 'apple_touch_114x114',
-						'type' 		=> 'upload'
-					),
-					'apple_touch_144x144' => array( 
-						'name' 		=> __( 'Apple Touch Icon - iPad with Retina (144x144)', 'themeblvd' ),	
-						'desc' 		=> __( 'Insert the URL to the PNG image file you\'d like to use as your website\'s Apple touch icon on third generation iPads and later, which come with retina display.', 'themeblvd' ),
-						'id' 		=> 'apple_touch_144x144',
-						'type' 		=> 'upload'
-					)
-				) // End favicon options
-			)	
+			)
 		);
 	
 		/*-------------------------------------------------------*/
