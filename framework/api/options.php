@@ -23,9 +23,6 @@
  *		- end_footer_cols
  *		- footer_copyright
  * Content
- *	- Homepage
- *		- homepage_content
- *		- homepage_custom_layout
  *	- Single Posts
  *		- single_meta
  *		- single_thumbs
@@ -197,33 +194,6 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		/*-------------------------------------------------------*/
 		
 		$content_options = array(
-			// Section: Homepage
-			/*
-			'homepage' => array(
-				'name' => __( 'Homepage', 'themeblvd' ),
-				'options' => array(	
-					'homepage_content' => array( 
-						'name' 		=> __( 'Homepage Content', 'themeblvd' ),
-						'desc' 		=> __( 'Select the content you\'d like to show on your homepage. Note that for this setting to take effect, you must go to Settings > Reading > Frontpage displays, and select "your latest posts."', 'themeblvd' ),
-						'id' 		=> 'homepage_content',
-						'std' 		=> 'posts',
-						'type' 		=> 'radio',
-						'options' 	=> array(
-							'posts'			=> __( 'Posts', 'themeblvd' ),
-							'custom_layout' => __( 'Custom Layout', 'themeblvd' )
-						)
-					),
-					'homepage_custom_layout' => array( 
-						'name' 		=> __( 'Select Custom Layout', 'themeblvd' ),
-						'desc' 		=> __( 'Select from the custom layouts you\'ve built under the <a href="admin.php?page=builder_blvd">Builder</a> section.', 'themeblvd' ),
-						'id' 		=> 'homepage_custom_layout',
-						'std' 		=> '',
-						'type' 		=> 'select',
-						'options' 	=> $custom_layouts
-					)
-				) // End home options
-			),
-			*/
 			// Section: Single Posts
 			'single' => array(
 				'name' => __( 'Single Posts', 'themeblvd' ),
@@ -596,6 +566,12 @@ if( ! function_exists( 'themeblvd_add_option_section' ) ) {
 					$new_options[$option['id']] = $option;
 				}
 			}
+		}
+		
+		// Does the options section already exist?
+		if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) ) {
+			$_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'] = array_merge( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'], $new_options );
+			return;
 		}
 		
 		// Add new section to top or bottom
