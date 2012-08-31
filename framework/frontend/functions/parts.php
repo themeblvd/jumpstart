@@ -187,9 +187,6 @@ if( ! function_exists( 'themeblvd_pagination' ) ) {
  * @since 2.0.0
  */
 
-
-
-
 if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
 	function themeblvd_get_breadcrumbs() {
 		global $post;

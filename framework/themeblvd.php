@@ -29,7 +29,6 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-medialibrary-uploader.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/modules/builder/builder-framework.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
@@ -83,7 +82,6 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/builder.php' ); // @todo - get rid of this.
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/elements.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/actions.php' );
@@ -143,10 +141,8 @@ if( is_admin() ) {
 	// Featured area hooks
 	add_action( 'themeblvd_featured_start', 'themeblvd_featured_start_default' );
 	add_action( 'themeblvd_featured_end', 'themeblvd_featured_end_default' );
-	add_action( 'themeblvd_featured', 'themeblvd_featured_builder_default' );
 	add_action( 'themeblvd_featured_below_start', 'themeblvd_featured_below_start_default' );
 	add_action( 'themeblvd_featured_below_end', 'themeblvd_featured_below_end_default' );
-	add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_builder_default' );
 	
 	// Main content area hooks
 	add_action( 'themeblvd_main_start', 'themeblvd_main_start_default' );

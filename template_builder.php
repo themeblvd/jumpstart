@@ -17,7 +17,7 @@
 
 get_header(); 
 ?>	
-	
+
 	<div id="sidebar_layout" class="clearfix">
 		<div class="sidebar_layout-inner">
 			<div class="row-fluid grid-protection">
@@ -29,7 +29,11 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
-						<?php themeblvd_elements( themeblvd_config( 'builder' ), 'primary' ); ?>
+						<?php if( has_action( 'themeblvd_builder_content' ) ) : ?>
+							<?php do_action( 'themeblvd_builder_content' ); ?>
+						<?php else : ?>
+							<p class="warning"><?php echo apply_filters( 'no_builder_message', themeblvd_get_local( 'no_builder_plugin' ) ); ?></p>
+						<?php endif; ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

@@ -353,19 +353,6 @@ if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 	}
 }
 
-/**
- * Default display for action: themeblvd_featured
- *
- * @since 2.2.0
- */
- 
-if( ! function_exists( 'themeblvd_featured_builder_default' ) ) {
-	function themeblvd_featured_builder_default() {
-		if( themeblvd_config( 'builder' ) )
-			themeblvd_elements( themeblvd_config( 'builder' ), 'featured' );	
-	}
-}
-
 /*-----------------------------------------------------------------------------------*/
 /* Featured Area (below)
 /*-----------------------------------------------------------------------------------*/
@@ -411,19 +398,6 @@ if( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
 		
 		<!-- FEATURED BELOW (end) -->
 		<?php
-	}
-}
-
-/**
- * Default display for action: themeblvd_featured_below_end
- *
- * @since 2.2.0
- */
- 
-if( ! function_exists( 'themeblvd_featured_below_builder_default' ) ) {
-	function themeblvd_featured_below_builder_default() {
-		if( themeblvd_config( 'builder' ) )
-			themeblvd_elements( themeblvd_config( 'builder' ), 'featured_below' );	
 	}
 }
 

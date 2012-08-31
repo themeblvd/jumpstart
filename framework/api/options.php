@@ -79,16 +79,6 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		foreach ($options_categories_obj as $category) {
 	    	$options_categories[$category->cat_ID] = $category->cat_name;
 		}
-		
-		// Custom Layouts
-		$custom_layouts = array();
-		$custom_layout_posts = get_posts('post_type=tb_layout&numberposts=-1');
-		if( ! empty( $custom_layout_posts ) ) {
-			foreach( $custom_layout_posts as $layout )
-				$custom_layouts[$layout->post_name] = $layout->post_title;
-		} else {
-			$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', 'themeblvd' );
-		}
 	
 		/*-------------------------------------------------------*/
 		/* Layout
@@ -208,6 +198,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 		
 		$content_options = array(
 			// Section: Homepage
+			/*
 			'homepage' => array(
 				'name' => __( 'Homepage', 'themeblvd' ),
 				'options' => array(	
@@ -232,6 +223,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 					)
 				) // End home options
 			),
+			*/
 			// Section: Single Posts
 			'single' => array(
 				'name' => __( 'Single Posts', 'themeblvd' ),

@@ -947,6 +947,13 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
  */
  
 function themeblvd_custom_layout_dropdown( $layout = null ) {
+	
+	// Make sure layout builder plugin is installed
+	if( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
+		$message = sprintf( __( 'In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
+		return '<p class="tb_custom_layout"><em>'.$message.'</em></p>';
+	}
+	
 	$custom_layouts = get_posts('post_type=tb_layout&numberposts=-1');
 	$output = '<p><strong>'.__( 'Custom Layout', 'themeblvd' ).'</strong></p>';
 	if( ! empty( $custom_layouts ) ) {
@@ -958,6 +965,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 	} else {
 		$output .='<p class="tb_custom_layout"><em>'.__( 'You haven\'t created any custom layouts in the Layout builder yet.', 'themeblvd' ).'</em></p>';
 	}
+	
 	return $output;
 }
 

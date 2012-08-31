@@ -16,7 +16,7 @@
  */
 // global $_themeblvd_config;
 // echo '<pre>'; print_r($_themeblvd_config); echo "</pre>"; // Debug
-$homepage_content = themeblvd_get_option( 'homepage_content', null, 'posts' );
+$homepage_content = apply_filters( 'themeblvd_homepage_content', 'posts' );
 $tb_content = themeblvd_get_option( 'blog_content', null, 'content' );
 
 // In displaying the homepage, we need to first figure out if a custom layout
@@ -26,6 +26,8 @@ $tb_content = themeblvd_get_option( 'blog_content', null, 'content' );
 // layout will not work right. So, to combat this, it's setup that the user 
 // can select a custom layout from their Theme Options page and leave their 
 // frontpage displays option to "your latest posts."
+
+do_action( 'themeblvd_homepage_override', $homepage_content );
 
 if( $homepage_content == 'custom_layout' ) {
 	

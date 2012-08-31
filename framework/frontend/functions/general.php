@@ -60,24 +60,11 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		// we can make appropriate edits anywhere to content outside of the 
 		// template_builder.php file if we need to.
 		
-		// Custom Layout on static page
-		if( is_page_template( 'template_builder.php' ) ) {
-			$layout_id = get_post_meta( $post->ID, '_tb_custom_layout', true );
-			if( $layout_id ) {
-				$builder = $layout_id;
-				$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
-				$layout_settings = get_post_meta( $layout_post_id, 'settings', true );
-				$sidebar_layout = $layout_settings['sidebar_layout'];
-			} else {
-				$builder = 'error';
-			}
-		}
+		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 		
-		// Custom Layout on homepage
-		if( is_home() ) {
-			$homepage_content = themeblvd_get_option( 'homepage_content', null, 'posts' );
-			if( $homepage_content == 'custom_layout' ) {
-				$layout_id = themeblvd_get_option( 'homepage_custom_layout' );
+			// Custom Layout on static page
+			if( is_page_template( 'template_builder.php' ) ) {
+				$layout_id = get_post_meta( $post->ID, '_tb_custom_layout', true );
 				if( $layout_id ) {
 					$builder = $layout_id;
 					$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
@@ -87,6 +74,23 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 					$builder = 'error';
 				}
 			}
+			
+			// Custom Layout on homepage
+			if( is_home() ) {
+				$homepage_content = themeblvd_get_option( 'homepage_content', null, 'posts' );
+				if( $homepage_content == 'custom_layout' ) {
+					$layout_id = themeblvd_get_option( 'homepage_custom_layout' );
+					if( $layout_id ) {
+						$builder = $layout_id;
+						$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
+						$layout_settings = get_post_meta( $layout_post_id, 'settings', true );
+						$sidebar_layout = $layout_settings['sidebar_layout'];
+					} else {
+						$builder = 'error';
+					}
+				}
+			}
+		
 		}
 		
 		/*------------------------------------------------------*/

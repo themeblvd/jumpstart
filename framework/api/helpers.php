@@ -334,8 +334,7 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 					}
 				}
 				
-				// Builder -- @todo This will be edited after we've created the Layout Builder plugin
-				/*
+				// Builder (if layout builder plugin is installed)
 				if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 					if( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
 						$wp_admin_bar->add_menu( 
@@ -343,12 +342,11 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 								'id' => 'tb_builder',
 								'title' => __( 'Builder', 'themeblvd' ),
 								'parent' => 'site-name',
-								'href' => admin_url( 'admin.php?page=builder_blvd')
+								'href' => admin_url( 'admin.php?page=themeblvd_builder')
 							)
 						);
 					}
 				}
-				*/
 				
 			} // end if method_exists()
 		} // end if is_admin()
