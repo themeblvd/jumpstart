@@ -387,8 +387,8 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 				$wp_customize->remove_section( $section );
 		
 		// Modify sections
-		$modify_sections = apply_filters( 'themeblvd_customizer_modify_sections', array( 'static_front_page' ) );
-		if( is_array( $modify_sections ) && $modify_sections ) {
+		$modify_sections = apply_filters( 'themeblvd_customizer_modify_sections', array() );
+		if( ! empty( $modify_sections ) ) {
 			foreach( $modify_sections as $section ) {
 				// Currently only one section set to be modified. I'm doing this 
 				// loop to make it so you can stop items from being modified and 
