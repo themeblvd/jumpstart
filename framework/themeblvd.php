@@ -125,7 +125,6 @@ if( is_admin() ) {
 	
 	// <head> hooks
 	add_action( 'themeblvd_head', 'themeblvd_head_default' );
-	add_action( 'themeblvd_title', 'themeblvd_title_default' ); // @todo remove this! right?
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 	add_action( 'wp_head', 'themeblvd_closing_styles', 11 );
 	
