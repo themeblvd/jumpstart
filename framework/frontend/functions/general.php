@@ -423,12 +423,12 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		// Register scripts
 		// wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js', array('jquery'), '3.1.3', true ); // Original un-modified prettyPhoto
 		wp_register_script( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.1.0', true );
-		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
+		wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.min.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
 		wp_register_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
 		// wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider.js', array('jquery'), '1.8', true );
 		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true  );
 		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
-		wp_register_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
+		wp_register_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
 		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/frontend/assets/js/ios-orientationchange-fix.js', true );
 		
 		// Enqueue 'em
@@ -475,7 +475,7 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 		wp_register_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.1.0' );
 		wp_register_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
 		wp_register_style( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
-		wp_register_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.css', array(), TB_FRAMEWORK_VERSION );
+		wp_register_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.min.css', array(), TB_FRAMEWORK_VERSION );
 		
 		// Enqueue framework styles
 		wp_enqueue_style( 'bootstrap' );
