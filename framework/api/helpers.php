@@ -28,7 +28,7 @@ if( ! function_exists( 'themeblvd_api_init' ) ) {
 		global $_themeblvd_user_sidebar_locations;
 		global $_themeblvd_remove_sidebar_locations;
 		global $_themeblvd_user_sliders;
-		global $_themeblvd_user_stylesheets;
+		global $_themeblvd_user_stylesheets; // @deprecated
 		global $_themeblvd_remove_stylesheets;
 		
 		// Options
@@ -117,6 +117,29 @@ if( ! function_exists( 'themeblvd_setup' ) ) {
 			)
 		);
 		return apply_filters( 'themeblvd_global_config', $setup );
+	}
+}
+
+/**
+ * Run warning if Theme Blvd function is deprecated 
+ * and WP_DEBUG is on.
+ *
+ * @since 2.0.0
+ *
+ * @param string $function Name of deprectated function
+ * @param string $version Framework version function was deprecated
+ * @param string $replacement Name of suggested replacement function
+ * @param string $message Message to display instead of auto-generated replacement statement.
+ */
+
+function themeblvd_deprecated_function( $function, $version, $replacement = null, $message = null ) {
+	if( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
+		if ( ! is_null( $message ) )
+			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd' ), $function, $version, $message ) );
+		elseif ( ! is_null( $replacement ) )
+			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'themeblvd' ), $function, $version, $replacement ) );
+		else
+			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available.', 'themeblvd' ), $function, $version ) );	
 	}
 }
 
