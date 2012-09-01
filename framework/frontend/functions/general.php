@@ -215,7 +215,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 				}
 			}
 				
-    	}	
+		}	
 
 		/*------------------------------------------------------*/
 		/* Finalize Frontend Configuration
