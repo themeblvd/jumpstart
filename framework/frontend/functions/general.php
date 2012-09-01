@@ -412,6 +412,14 @@ function themeblvd_config( $key, $seconday = null ) {
 
 if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	function themeblvd_include_scripts() {
+		
+		global $themeblvd_framework_scripts;
+		
+		// Framework stylesheets. This can be used declare 
+		// the $deps of any enque'd JS files intended to
+		// come after the framework.
+		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', array( 'jquery', 'bootstrap', 'prettyPhoto', 'superfish', 'flexslider', 'themeblvd', 'roundabout', 'themeblvd' ) );
+		
 		// Register scripts
 		// wp_register_script( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js', array('jquery'), '3.1.3', true ); // Original un-modified prettyPhoto
 		wp_register_script( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.1.0', true );
@@ -422,6 +430,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
 		wp_register_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true ); // ... change back from dev
 		wp_register_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/frontend/assets/js/ios-orientationchange-fix.js', true );
+		
 		// Enqueue 'em
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bootstrap' );
@@ -434,6 +443,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 			wp_enqueue_script( 'ios-orientationchange-fix' );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' );
+		
 	}
 }
 
@@ -450,20 +460,32 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 if( ! function_exists( 'themeblvd_include_styles' ) ) {
 	function themeblvd_include_styles() {
+		
+		global $themeblvd_framework_stylesheets;
+		
+		// Framework stylesheets. This can be used declare 
+		// the $deps of any enque'd CSS file intended to
+		// come after the framework.
+		$themeblvd_framework_stylesheets = apply_filters( 'themeblvd_framework_stylesheets', array( 'bootstrap', 'fontawesome', 'prettyPhoto', 'themeblvd' ) );
+		
 		// Level 1 user styles
-		themeblvd_user_stylesheets( 1 );
+		themeblvd_user_stylesheets( 1 ); // @deprecated
+		
 		// Register framework styles
 		wp_register_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.1.0' );
 		wp_register_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
 		wp_register_style( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
 		wp_register_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.css', array(), TB_FRAMEWORK_VERSION );
+		
 		// Enqueue framework styles
 		wp_enqueue_style( 'bootstrap' );
 		wp_enqueue_style( 'fontawesome' );
 		wp_enqueue_style( 'prettyPhoto' );
 		wp_enqueue_style( 'themeblvd' );
+		
 		// Level 2 user styles
-		themeblvd_user_stylesheets( 2 );
+		themeblvd_user_stylesheets( 2 ); // @deprecated
+		
 	}
 }
 
