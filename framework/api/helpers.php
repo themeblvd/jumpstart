@@ -962,6 +962,7 @@ function themeblvd_stats() {
  * Add custom stylesheet
  *
  * @since 2.1.0
+ * @deprecated 2.2.0
  * 
  * @param string $handle ID for this stylesheet
  * @param string $src URL to stylesheet
@@ -973,6 +974,7 @@ function themeblvd_stats() {
 if( ! function_exists( 'themeblvd_add_stylesheet' ) ) {
 	function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $media = 'all' ) {
 		if( ! is_admin() ) {
+			themeblvd_deprecated_function( __FUNCTION__, '2.2.0', null, __( 'Either use wp_enque_style() or if you need your CSS file to come after all theme-generated styles attached to wp_head, you can manually output it by hooking your function to wp_head.', 'themeblvd' ) );
 			global $_themeblvd_user_stylesheets;
 			$_themeblvd_user_stylesheets[$level][] = array(
 				'handle' 	=> $handle,
@@ -989,6 +991,7 @@ if( ! function_exists( 'themeblvd_add_stylesheet' ) ) {
  * Remove custom stylesheet
  *
  * @since 2.1.0
+ * @deprecated 2.2.0
  * 
  * @param string $handle ID for this stylesheet
  */
@@ -996,6 +999,7 @@ if( ! function_exists( 'themeblvd_add_stylesheet' ) ) {
 if( ! function_exists( 'themeblvd_remove_stylesheet' ) ) {
 	function themeblvd_remove_stylesheet( $handle ) {
 		if( ! is_admin() ) {
+			themeblvd_deprecated_function( __FUNCTION__, '2.2.0', 'wp_deregister_style' );
 			global $_themeblvd_remove_stylesheets;
 			$_themeblvd_remove_stylesheets[] = $handle;
 		}		
