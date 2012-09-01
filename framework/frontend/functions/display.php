@@ -4,47 +4,6 @@
 /*-----------------------------------------------------------------------------------*/
 
 /**
- * Display <head>
- * Default display for action: themeblvd_head
- *
- * @since 2.1.0
- */
-
-if( ! function_exists( 'themeblvd_head_default' ) ) {
-	function themeblvd_head_default() {
-		
-		// Charset meta
-		echo '<meta charset="'.get_bloginfo( 'charset' ).'" />'."\n";
-		
-		// <title> tag
-		echo '<title>'.wp_title( '|', false, 'right' )."</title>\n";
-		
-		// Optional meta data for Theme Blvd SEO plugin
-		do_action( 'themeblvd_meta' );
-		
-		// XFN
-		echo '<link rel="profile" href="http://gmpg.org/xfn/11" />'."\n";
-		
-		// Theme style.css
-		echo '<link rel="stylesheet" type="text/css" media="all" href="'.get_bloginfo( 'stylesheet_url' ).'" />'."\n";
-
-		// Pingback
-		echo '<link rel="pingback" href="'.get_bloginfo( 'pingback_url' ).'" />'."\n";
-		
-		// HTML5 for old IE browsers
-		echo "<!--[if lt IE 9]>\n";
-		echo '<script src="'.get_template_directory_uri().'/framework/frontend/assets/js/html5.js" type="text/javascript"></script>';
-		echo "<![endif]-->\n";
-		
-		// Comment reply JS
-		if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
-		
-		// Standard WP head hook
-		wp_head();
-	}
-}
-
-/**
  * Add viewport meta to wp_head if responsive 
  * design is enabled in framework.
  *

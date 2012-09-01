@@ -124,7 +124,6 @@ if( is_admin() ) {
 	add_action( 'wp_print_styles', 'themeblvd_deregister_stylesheets', 1000 );
 	
 	// <head> hooks
-	add_action( 'themeblvd_head', 'themeblvd_head_default' );
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 	add_action( 'wp_head', 'themeblvd_closing_styles', 11 );
 	

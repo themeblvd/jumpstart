@@ -14,11 +14,18 @@
  * @link		http://themeblvd.com
  * @package 	Theme Blvd WordPress Framework
  */
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<?php themeblvd_head(); // wp_head() happens here. ?>
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_uri(); ?>" /><?php // @todo - Remove this motha */ ?>
+<!--[if lt IE 9]>
+<script src="<?php echo get_template_directory_uri(); ?>/framework/frontend/assets/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php themeblvd_before(); ?>

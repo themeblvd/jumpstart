@@ -405,6 +405,7 @@ function themeblvd_config( $key, $seconday = null ) {
  * (7) Theme Blvd scripts - Anything used by the framework to set other items into motion.
  * (8) iOS Orientation Fix - Allows zooming to be enabled on iOS devices while still 
  * allowing auto adjustment when switching between landscape and portrait.
+ * (9) Already registered by WP, enable commentform to show when visitor clicks "Reply" on comment.
  *
  * @since 2.0.0
  */
@@ -431,6 +432,8 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		wp_enqueue_script( 'themeblvd' );
 		if( themeblvd_supports( 'display', 'responsive' ) )
 			wp_enqueue_script( 'ios-orientationchange-fix' );
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+			wp_enqueue_script( 'comment-reply' );
 	}
 }
 
