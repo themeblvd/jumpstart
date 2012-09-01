@@ -1,1 +1,289 @@
-(function(a){a.fn.toggleMenu=function(b){var c=a.extend({viewport:768,openClass:"mobile-open",closedClass:"mobile-closed"},b);this.each(function(){var d=a(this),g=a(d.attr("href")),f,e=false;d.click(function(){if(g.hasClass(c.openClass)){g.slideUp().removeClass(c.openClass).addClass(c.closedClass)}else{g.slideDown().removeClass(c.closedClass).addClass(c.openClass)}return false});a(window).resize(function(){if(false!==e){clearTimeout(e)}e=setTimeout(function(){f=a(window).width();if(f>c.viewport){g.show().removeClass(c.openClass+" "+c.closedClass).addClass("expanded")}else{if(g.hasClass("expanded")){g.hide().removeClass("expanded")}}},100)})})}})(jQuery);jQuery(document).ready(function(e){e("ul.sf-menu").superfish().addClass("sf-menu-with-fontawesome");e("ul.sf-menu-with-fontawesome > li > a .sf-sub-indicator").replaceWith('<i class="sf-sub-indicator icon-caret-down"></i>');e("ul.sf-menu-with-fontawesome ul li a .sf-sub-indicator").replaceWith('<i class="sf-sub-indicator icon-caret-right"></i>');var c;e(".sf-menu li li.nav-header, .menu li.nav-header, .subnav li.nav-header").each(function(){c=e(this).find("> a").text();e(this).prepend("<span>"+c+"</span>").find("> a").remove()});e(".sf-menu li li.divider, .menu li.divider").html("");var d,b;e('[class^="menu-icon-"]').each(function(){d=e(this).attr("class");b=d.substr(d.indexOf("menu-icon")+10).split(" ")[0];e(this).find("> a, > span").prepend('<i class="icon-'+b+'"></i>')});e("ul.sf-menu .no-click").find("a:first").click(function(){return false});e(".gallery").append('<div class="clear"></div>');e(".gallery").each(function(){var i=e(this),h=i.attr("id");i.find(".gallery-item a").each(function(){e(this).find("img").addClass("thumbnail");if(this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i)){e(this).attr("rel","themeblvd_lightbox["+h+"]");e(this).addClass("image-button")}})});e('a[rel^="themeblvd_lightbox"], a[rel^="featured_themeblvd_lightbox"]').prettyPhoto({social_tools:false,deeplinking:false,overlay_gallery:false,show_title:false});e('a[rel^="themeblvd_lightbox"]').prepend('<span class="enlarge"></span>');e('a[rel^="themeblvd_lightbox"]').hover(function(){var h=e(this);h.find(".enlarge").stop(true,true).animate({opacity:1},100);h.find("img").stop(true,true).animate({opacity:0.6},100)},function(){var h=e(this);h.find(".enlarge").stop(true,true).animate({opacity:0},100);h.find("img").stop(true,true).animate({opacity:1},100)});e(".featured-image a").hover(function(){var h=e(this);h.find(".image-overlay-bg").stop(true,true).animate({opacity:0.2},300);h.find(".image-overlay-icon").stop(true,true).animate({opacity:1},300)},function(){var h=e(this);h.find(".image-overlay-bg").stop(true,true).animate({opacity:0},300);h.find(".image-overlay-icon").stop(true,true).animate({opacity:0},300)});e(".tb-tabs").each(function(){var h=e(this);h.find(".tab-content").hide();h.find(".tab-content:first").show()});e(".tb-tabs .tab-nav a").click(function(){var j=e(this),i=j.closest(".tb-tabs"),h=j.attr("href");i.find(".tab-nav li").removeClass("active");j.closest("li").addClass("active");i.find(".tab-content").hide();i.find(h).show();return false});e(".tb-toggle").each(function(){e(this).find(".toggle-content").hide()});e(".tb-toggle a.toggle-trigger").click(function(){var i=e(this),h=i.closest(".tb-toggle");if(i.hasClass("active")){h.find(".toggle-content").hide();i.removeClass("active")}else{h.find(".toggle-content").show();i.addClass("active")}return false});e(".tb-jump-menu").change(function(h){window.location.href=e(this).val()});var f=e(".tb-image-logo img"),g=f.attr("data-image-2x");if(window.devicePixelRatio>=1.5&&g){f.attr({src:g})}e("#calendar_wrap table").addClass("table table-bordered");e(".collapse").on("show",function(){e(this).closest(".accordion-group").find(".accordion-toggle").addClass("active-trigger").find(".switch-me").removeClass("icon-plus-sign").addClass("icon-minus-sign")});e(".collapse").on("hide",function(){e(this).closest(".accordion-group").find(".accordion-toggle").removeClass("active-trigger").find(".switch-me").removeClass("icon-minus-sign").addClass("icon-plus-sign")});var a;e(".tb-accordion").each(function(){a=e(this).attr("id");e(this).find(".accordion-toggle").each(function(){e(this).attr("data-parent","#"+a)})})});
+/**
+ * Responsive navigation menu.
+ */
+
+(function($) {
+    $.fn.toggleMenu = function(options) {
+        
+        var settings = $.extend({
+	      'viewport' 	: 768,
+	      'openClass'	: 'mobile-open',
+	      'closedClass'	: 'mobile-closed'
+	    }, options);
+        
+        // Run it
+        this.each(function(){
+
+        	var el = $(this),
+        		target = $(el.attr('href')),
+        		currentViewport,
+        		timeout = false;
+		    
+		    // Toggle on click
+		    el.click(function(){
+			    if( target.hasClass(settings.openClass) )
+				    target.slideUp().removeClass(settings.openClass).addClass(settings.closedClass);
+			    else
+			    	target.slideDown().removeClass(settings.closedClass).addClass(settings.openClass);
+
+			    return false;
+		    });
+		    
+		    // Window re-sizing  - For those people screwing with the 
+		    // browser window and are not actually on a mobile device.
+		    $( window ).resize( function() {
+				if ( false !== timeout )
+					clearTimeout( timeout );
+		
+				timeout = setTimeout( function() {
+					currentViewport = $(window).width();
+					if( currentViewport > settings.viewport )
+					{
+						// Add class "expanded" so we can keep track of 
+						// whether this re-sizing is occuring on a mobile 
+						// device or not. If we're on mobile, the "forced_open" 
+						// class should never get added.
+						target.show().removeClass(settings.openClass+' '+settings.closedClass).addClass('expanded');
+					}
+					else
+					{
+						// Make sure this wasn't triggered by re-sizing on mobile
+						if( target.hasClass('expanded') )
+							target.hide().removeClass('expanded');
+					}
+						
+				}, 100 );
+			});
+        });
+    };
+})(jQuery);
+
+/**
+ * Prints out the inline javascript needed for the frontend framework. 
+ */
+
+jQuery(document).ready(function($) {
+	
+	// ---------------------------------------------------------
+	// Menus
+	// ---------------------------------------------------------
+	
+	// Activate Superfish
+	$('ul.sf-menu').superfish().addClass('sf-menu-with-fontawesome'); 
+	
+	// Adjust sub indicators to use fontawesome
+	$('ul.sf-menu-with-fontawesome > li > a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-down"></i>');
+	$('ul.sf-menu-with-fontawesome ul li a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-right"></i>');
+	
+	// Allow bootstrap "nav-header" class in menu items.
+	// Note: For primary navigation will only work on levels 2-3
+	// (1) ".sf-menu li li.nav-header" 	=> Primary nav dropdowns
+	// (2) ".menu li.nav-header" 		=> Standard custom menu widget
+	// (3) ".subnav li.nav-header" 		=> Theme Blvd Horizontal Menu widget
+	var menu_text;
+	$('.sf-menu li li.nav-header, .menu li.nav-header, .subnav li.nav-header').each(function(){	
+		menu_text = $(this).find('> a').text();
+		$(this).prepend('<span>'+menu_text+'</span>').find('> a').remove();
+	});
+	
+	// Allow bootstrap "divider" class in menu items.
+	// Note: For primary navigation will only work on levels 2-3
+	$('.sf-menu li li.divider, .menu li.divider').html('');
+	
+	// Fontawesome icons in menu items
+	var classes, name;
+	$('[class^="menu-icon-"]').each(function(){
+		// For this to work, "menu-icon-whatever" must be the first 
+		// class inputted on the menu item.
+		classes = $(this).attr('class');
+		name = classes.substr(classes.indexOf('menu-icon') + 10).split(' ')[0];
+		$(this).find('> a, > span').prepend('<i class="icon-'+name+'"></i>');
+	});
+			
+	// ---------------------------------------------------------
+	// No-click dropdowns
+	// ---------------------------------------------------------
+	
+	$('ul.sf-menu .no-click').find('a:first').click(function(){
+		return false;
+	});
+	
+	// ---------------------------------------------------------
+	// Gallery Shortcode Integration
+	// ---------------------------------------------------------
+
+	$('.gallery').append('<div class="clear"></div>');
+
+	$('.gallery').each(function(){
+
+		var current_gallery = $(this),
+			gallery_id = current_gallery.attr('id');
+		
+		current_gallery.find('.gallery-item a').each(function(){
+			// Add bootstrap thumbnail class
+			$(this).find('img').addClass('thumbnail');
+			// Append lightbox if it's an image
+			if(this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i)){
+			    $(this).attr('rel','themeblvd_lightbox['+gallery_id+']');
+			    $(this).addClass('image-button');
+			}
+		});
+	
+	});
+	
+	// ---------------------------------------------------------
+	// Lightbox
+	// ---------------------------------------------------------
+		
+	$('a[rel^="themeblvd_lightbox"], a[rel^="featured_themeblvd_lightbox"]').prettyPhoto({
+		social_tools: false, // Share icons are not compatible with IE9
+		deeplinking: false,
+		overlay_gallery: false,
+		show_title: false
+	});
+	
+	$('a[rel^="themeblvd_lightbox"]').prepend('<span class="enlarge"></span>');
+	
+	$('a[rel^="themeblvd_lightbox"]').hover(
+		function () {
+			var el = $(this);
+			el.find('.enlarge').stop(true, true).animate({
+				opacity: 1
+			}, 100 );
+			el.find('img').stop(true, true).animate({
+				opacity: 0.6
+			}, 100 );
+		}, 
+		function () {
+			var el = $(this);
+			el.find('.enlarge').stop(true, true).animate({
+				opacity: 0
+			}, 100 );
+			el.find('img').stop(true, true).animate({
+				opacity: 1
+			}, 100 );
+		}
+	);
+	
+	// ---------------------------------------------------------
+	// Featured Image overlay links
+	// ---------------------------------------------------------
+	
+	$('.featured-image a').hover(
+		function () {
+			var el = $(this);
+			el.find('.image-overlay-bg').stop(true, true).animate({
+				opacity: 0.2
+			}, 300 );
+			el.find('.image-overlay-icon').stop(true, true).animate({
+				opacity: 1
+			}, 300 );
+		}, 
+		function () {
+			var el = $(this);
+			el.find('.image-overlay-bg').stop(true, true).animate({
+				opacity: 0
+			}, 300 );
+			el.find('.image-overlay-icon').stop(true, true).animate({
+				opacity: 0
+			}, 300 );
+		}
+	);
+	
+	// ---------------------------------------------------------
+	// Tabs
+	// ---------------------------------------------------------
+	
+	$('.tb-tabs').each(function(){
+		var el = $(this);
+		el.find('.tab-content').hide();
+		el.find('.tab-content:first').show();
+	});
+    $('.tb-tabs .tab-nav a').click(function() {
+		var el = $(this), parent = el.closest('.tb-tabs'), activetab = el.attr('href');
+		parent.find('.tab-nav li').removeClass('active');
+		el.closest('li').addClass('active');
+		parent.find('.tab-content').hide();
+		parent.find(activetab).show(); // Use show instead of nicer looking fade to avoid jumping
+        return false;
+    });
+    
+    // ---------------------------------------------------------
+	// Toggle
+	// ---------------------------------------------------------
+	
+	$('.tb-toggle').each(function(){
+		$(this).find('.toggle-content').hide();
+	});
+	$('.tb-toggle a.toggle-trigger').click(function(){
+		var el = $(this), parent = el.closest('.tb-toggle');
+		
+		if( el.hasClass('active') )
+		{
+			parent.find('.toggle-content').hide();
+			el.removeClass('active');
+		}
+		else
+		{
+			parent.find('.toggle-content').show();
+			el.addClass('active');
+		}
+		return false;
+	});
+	
+	// ---------------------------------------------------------
+	// Jump Menu
+	// ---------------------------------------------------------
+	
+	$(".tb-jump-menu").change(function(e) {
+		window.location.href = $(this).val();
+	})
+	
+	// ---------------------------------------------------------
+	// Logo w/retina display support
+	// ---------------------------------------------------------
+	
+	var image = $('.tb-image-logo img'),
+		image_2x = image.attr('data-image-2x');
+	
+	// If a retina-otimized image was detected 
+	// and should be displayed
+	if(window.devicePixelRatio >= 1.5 && image_2x)
+	{
+		// Display 2x image w/fixed original width
+		image.attr({
+			src: image_2x
+		});
+	}
+	
+	// ---------------------------------------------------------
+	// Bootstrap Integration
+	// ---------------------------------------------------------
+	
+	// Add standard table classes to calendar widget
+	$('#calendar_wrap table').addClass('table table-bordered');
+	
+	// Collapsables expanded
+	// This basically just toggles the Plus/Minus fontawesome 
+	// icon we've incorporated into the triggers for the toggles.
+	$('.collapse').on('show', function() {
+		// Toggle is opening, add "active-trigger" class and 
+		// change icon to a minus sign.
+		$(this).closest('.accordion-group').find('.accordion-toggle').addClass('active-trigger').find('.switch-me').removeClass('icon-plus-sign').addClass('icon-minus-sign');
+	});
+	$('.collapse').on('hide', function() {
+		// Toggle is closing, remove "active-trigger" class and 
+		// change icon to a plus sign.
+		$(this).closest('.accordion-group').find('.accordion-toggle').removeClass('active-trigger').find('.switch-me').removeClass('icon-minus-sign').addClass('icon-plus-sign');
+	});
+	// And now if the user has wrapped a set of "toggles" into an 
+	// accordian, this will attach them all.
+	var accordion_id;
+	$('.tb-accordion').each(function(){
+		accordion_id = $(this).attr('id');
+		$(this).find('.accordion-toggle').each(function(){
+			$(this).attr('data-parent', '#'+accordion_id);
+		});
+	});
+	
+});
