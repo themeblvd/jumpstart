@@ -905,17 +905,9 @@ function themeblvd_stats() {
 		$url = $api_base . $api_key . '/';
 		// Theme Data (by Jason)
 		$data = array();
-		if( function_exists( 'wp_get_theme' ) ) {
-			// Use wp_get_theme for WP 3.4+
-			$theme_data = wp_get_theme( get_template() );
-			$data['theme_name'] = str_replace( ' ', '', $theme_data->get('Name') ); // remove spaces to fix presstrend's bug
-			$data['theme_version'] = str_replace( ' ', '', $theme_data->get('Version') ); // remove spaces to fix presstrend's bug		
-		} else {
-			// Deprecated theme data retrieval
-			$theme_data = get_theme_data( get_template_directory() . '/style.css' );
-			$data['theme_version'] = str_replace( ' ', '', $theme_data['Version'] ); // remove spaces to fix presstrend's bug
-			$data['theme_name'] = str_replace( ' ', '', $theme_data['Name'] ); // remove spaces to fix presstrend's bug
-		} 
+		$theme_data = wp_get_theme( get_template() );
+		$data['theme_name'] = str_replace( ' ', '', $theme_data->get('Name') ); // remove spaces to fix presstrend's bug
+		$data['theme_version'] = str_replace( ' ', '', $theme_data->get('Version') ); // remove spaces to fix presstrend's bug		
 		// Continue on ...
 		$count_posts = wp_count_posts();
 		$count_pages = wp_count_posts('page');

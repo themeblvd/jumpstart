@@ -978,17 +978,9 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 if ( ! function_exists( 'themeblvd_options_footer_text_default' ) ) {
 	function themeblvd_options_footer_text_default() {
 		// Theme info and text
-		if( function_exists( 'wp_get_theme' ) ) {
-			// Use wp_get_theme for WP 3.4+
-			$theme_data = wp_get_theme( get_template() );
-			$theme_title = $theme_data->get('Name');
-			$theme_version = $theme_data->get('Version');
-		} else {
-			// Deprecated theme data retrieval
-			$theme_data = get_theme_data( get_template_directory() . '/style.css' );
-			$theme_title = $theme_data['Title'];
-			$theme_version = $theme_data['Version'];
-		}
+		$theme_data = wp_get_theme( get_template() );
+		$theme_title = $theme_data->get('Name');
+		$theme_version = $theme_data->get('Version');
 		// Changelog
 		$changelog = null;
 		if ( defined( 'TB_THEME_ID' ) ) {

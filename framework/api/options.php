@@ -663,16 +663,8 @@ if( ! function_exists( 'themeblvd_get_option_name' ) ) {
 	function themeblvd_get_option_name() {
 	
 		// This gets the theme name from the stylesheet (lowercase and without spaces)
-		if( function_exists( 'wp_get_theme' ) ) {
-			// Use wp_get_theme for WP 3.4+
-			$theme_data = wp_get_theme( get_stylesheet() );
-			$themename = preg_replace('/\W/', '', strtolower( $theme_data->get('Name') ) );
-		} else {
-			// Deprecated theme data retrieval
-			$themename = get_theme_data( get_stylesheet_directory() . '/style.css');
-			$themename = $themename['Name'];
-			$themename = preg_replace('/\W/', '', strtolower( $themename ) );
-		}
+		$theme_data = wp_get_theme( get_stylesheet() );
+		$themename = preg_replace('/\W/', '', strtolower( $theme_data->get('Name') ) );
 		
 		// This is what ID the options will be saved under in the database. 
 		// By default, it's generated from the current installed theme. 
