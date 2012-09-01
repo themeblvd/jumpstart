@@ -221,16 +221,16 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		/* Finalize Frontend Configuration
 		/*------------------------------------------------------*/
 		
-    	$config = array(
-    		'id'				=> $primary,			// global $post->ID that can be accessed anywhere
-    		'fake_conditional'	=> $fake_conditional,	// Fake conditional tag
-    		'sidebar_layout' 	=> $sidebar_layout, 	// Sidebar layout
-    		'builder'			=> $builder,			// ID of current custom layout if not false
-    		'featured'			=> $featured,			// Classes for featured area, if empty area won't show
-    		'featured_below'	=> $featured_below,		// Classes for featured below area, if empty area won't show
-    		'sidebars'			=> $sidebars			// Array of sidbar ID's for all corresponding locations
-    	);
-    	$_themeblvd_config = apply_filters( 'themeblvd_frontend_config', $config );
+		$config = array(
+			'id'				=> $primary,			// global $post->ID that can be accessed anywhere
+			'fake_conditional'	=> $fake_conditional,	// Fake conditional tag
+			'sidebar_layout'	=> $sidebar_layout,		// Sidebar layout
+			'builder'			=> $builder,			// ID of current custom layout if not false
+			'featured'			=> $featured,			// Classes for featured area, if empty area won't show
+			'featured_below'	=> $featured_below,		// Classes for featured below area, if empty area won't show
+			'sidebars'			=> $sidebars 			// Array of sidbar ID's for all corresponding locations
+		);
+		$_themeblvd_config = apply_filters( 'themeblvd_frontend_config', $config );
 	}
 }
 
