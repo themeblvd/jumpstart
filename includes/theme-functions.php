@@ -36,17 +36,13 @@ if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 	function themeblvd_jumpstart_css() {
 		
 		global $themeblvd_framework_stylesheets;
-		
-		// Register stylesheets
-		wp_register_style( 'themeblvd_theme', get_stylesheet_uri(), $themeblvd_framework_stylesheets );
-		wp_register_style( 'themeblvd_ie', get_template_directory_uri() . '/assets/css/ie.css', array( 'themeblvd_theme' ) );
-		
+
 		// Primary style.css after all framework stylesheets
-		wp_enqueue_style( 'themeblvd_theme' );
+		wp_enqueue_style( 'themeblvd_theme', get_stylesheet_uri(), $themeblvd_framework_stylesheets );
 		
 		// IE Stylesheet
+		wp_enqueue_style( 'themeblvd_ie', get_template_directory_uri() . '/assets/css/ie.css', array( 'themeblvd_theme' ) );
 		$GLOBALS['wp_styles']->add_data( 'themeblvd_ie', 'conditional', 'lt IE 9' ); // Add IE conditional
-		wp_enqueue_style( 'themeblvd_ie' );
 		
 		// Level 3 user styles
 		themeblvd_user_stylesheets( 3 ); // @deprecated
