@@ -397,9 +397,9 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 					case 'static_front_page' :
 						// Modify section's title
 						$wp_customize->add_section( 'static_front_page', array(
-							'title'          => __( 'Homepage', 'themeblvd' ),
-							'priority'       => 120,
-							'description'    => __( 'Your theme supports a static front page.' ),
+							'title'         => __( 'Homepage', 'themeblvd' ),
+							'priority'      => 120,
+							'description'   => __( 'Your theme supports a static front page.', 'themeblvd' ),
 						) );
 						// Add custom homepage option
 						$wp_customize->add_setting( $option_name.'[homepage_content]', array(
