@@ -34,16 +34,23 @@ if( ! function_exists( 'themeblvd_jumpstart_setup' ) ) {
 
 if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 	function themeblvd_jumpstart_css() {
-		wp_register_style( 'themeblvd_theme', get_template_directory_uri() . '/assets/css/theme.css', false, '1.0' ); // ... change to min
-		wp_register_style( 'themeblvd_responsive', get_template_directory_uri() . '/assets/css/responsive.css', false, '1.0' ); // ... change to min
-		wp_register_style( 'themeblvd_ie', get_template_directory_uri() . '/assets/css/ie.css', false, '1.0' );
+		
+		global $themeblvd_framework_stylesheets;
+		
+		// Register stylesheets
+		wp_register_style( 'themeblvd_theme', get_stylesheet_uri(), $themeblvd_framework_stylesheets );
+		wp_register_style( 'themeblvd_ie', get_template_directory_uri() . '/assets/css/ie.css', array( 'themeblvd_theme' ) );
+		
+		// Primary style.css after all framework stylesheets
 		wp_enqueue_style( 'themeblvd_theme' );
+		
+		// IE Stylesheet
 		$GLOBALS['wp_styles']->add_data( 'themeblvd_ie', 'conditional', 'lt IE 9' ); // Add IE conditional
 		wp_enqueue_style( 'themeblvd_ie' );
-		if( themeblvd_supports( 'display', 'responsive' ) )
-			wp_enqueue_style( 'themeblvd_responsive' );
+		
 		// Level 3 user styles
-		themeblvd_user_stylesheets( 3 );
+		themeblvd_user_stylesheets( 3 ); // @deprecated
+		
 	}
 }
 add_action( 'wp_print_styles', 'themeblvd_jumpstart_css' );
@@ -54,7 +61,12 @@ add_action( 'wp_print_styles', 'themeblvd_jumpstart_css' );
 
 if( ! function_exists( 'themeblvd_jumpstart_scripts' ) ) {
 	function themeblvd_jumpstart_scripts() {
-		wp_enqueue_script( 'themeblvd_theme', get_template_directory_uri() . '/assets/js/theme.js', array('jquery'), null, true );
+		
+		global $themeblvd_framework_scripts; 
+		
+		// Theme-specific script
+		wp_enqueue_script( 'themeblvd_theme', get_template_directory_uri() . '/assets/js/theme.js', $themeblvd_framework_scripts, null, true );
+	
 	}
 }
 add_action( 'wp_enqueue_scripts', 'themeblvd_jumpstart_scripts' );
