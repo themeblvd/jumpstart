@@ -758,27 +758,3 @@ if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 		return str_replace( 'class="more-link"', 'class="more-link btn btn-default"', $read_more );
 	}
 }
-
-/**
- * Add in [raw] shortcode functionality.
- *
- * This allows the user to wrap content when editing posts 
- * and pages with the [raw] shortcode so WP auto formatting 
- * doesn't get applied. 
- *
- * To remove this from a Child theme, you'd do: 
- * remove_action( 'after_setup_theme', 'themeblvd_raw_shortcode' );
- *
- * @since 2.2.0
- *
- * @return array $args Arguments to be passed into comment_form()
- */
- 
-if( ! function_exists( 'themeblvd_raw_shortcode' ) ) {
-	function themeblvd_raw_shortcode() {
-		remove_filter( 'the_content', 'wpautop' );
-		remove_filter( 'the_content', 'wptexturize' );
-		remove_filter( 'the_content', 'shortcode_unautop' );
-		add_filter( 'the_content', 'themeblvd_content_formatter', 9 );	
-	}
-}

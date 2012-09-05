@@ -982,29 +982,3 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
 		return $show;
 	}	
 }
-
-/**
- * Content formatter.
- *
- * @since 2.0.0
- *
- * @param sting $content Content
- */
-
-if( ! function_exists( 'themeblvd_content_formatter' ) ) {
-	function themeblvd_content_formatter( $content ) {
-		$new_content = '';
-		$pattern_full = '{(\[raw\].*?\[/raw\])}is';
-		$pattern_contents = '{\[raw\](.*?)\[/raw\]}is';
-		$pieces = preg_split($pattern_full, $content, -1, PREG_SPLIT_DELIM_CAPTURE);
-		foreach ($pieces as $piece) {
-			if (preg_match($pattern_contents, $piece, $matches)) {
-				$new_content .= $matches[1];
-			} else {
-				$new_content .= shortcode_unautop( wptexturize( wpautop( $piece ) ) );
-			}
-		}
-		return $new_content;
-	}
-}
-
