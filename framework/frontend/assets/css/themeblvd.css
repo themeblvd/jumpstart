@@ -332,6 +332,7 @@ code.block {
 .nav-tabs > li > a,
 .nav-pills > li > a {
 	color: inherit;
+	outline: none;
 }
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
