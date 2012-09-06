@@ -94,7 +94,6 @@ if( is_admin() ) {
 	add_filter( 'oembed_result', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'embed_oembed_html', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'wp_feed_cache_transient_lifetime' , 'themeblvd_feed_transient' );
-	add_filter( 'themeblvd_the_content', 'themeblvd_content_formatter' );
 	add_filter( 'themeblvd_the_content', 'do_shortcode' );
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
 	add_filter( 'themeblvd_tweet_filter', 'themeblvd_tweet_filter_default', 10, 2 );
