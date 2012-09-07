@@ -80,13 +80,13 @@ if( ! function_exists( 'themeblvd_tgm_register' ) ) {
 			'default_path' 		=> '',                         	// Default absolute path to pre-packaged plugins
 			'parent_menu_slug' 	=> 'themes.php', 				// Default parent menu slug
 			'parent_url_slug' 	=> 'themes.php', 				// Default parent URL slug
-			'menu'         		=> 'install-required-plugins', 	// Menu slug
+			'menu'         		=> 'install-plugins', 			// Menu slug
 			'has_notices'      	=> true,                       	// Show admin notices or not
 			'is_automatic'    	=> false,					   	// Automatically activate plugins after installation or not
 			'message' 			=> '',							// Message to output right before the plugins table
 			'strings'      		=> array(
 				'page_title'                       			=> __( 'Install Recommended Plugins', 'themeblvd' ),
-				'menu_title'                       			=> __( 'Install Plugins', 'themeblvd' ),
+				'menu_title'                       			=> __( 'Theme Plugins', 'themeblvd' ),
 				'installing'                       			=> __( 'Installing Plugin: %s', 'themeblvd' ), // %1$s = plugin name
 				'oops'                             			=> __( 'Something went wrong with the plugin API.', 'themeblvd' ),
 				'notice_can_install_required'     			=> _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s)
