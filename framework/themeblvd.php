@@ -37,6 +37,7 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
 	
 	// Filters
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
@@ -59,6 +60,7 @@ if( is_admin() ) {
 	add_action( 'customize_register', 'themeblvd_customizer_init' );
 	add_action( 'customize_controls_print_styles', 'themeblvd_customizer_styles' );
 	add_action( 'customize_controls_print_scripts', 'themeblvd_customizer_scripts' );
+	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	
 	// Apply other hooks after theme has had a chance to add filters
 	add_action( 'after_setup_theme', 'themeblvd_format_options', 1000 );
