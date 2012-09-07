@@ -46,27 +46,27 @@ if( ! function_exists( 'themeblvd_tgm_register' ) ) {
 		
 		// Plugins to require/recommend
 		$plugins = array(
-			array(
+			'builder' => array(
 				'name' 		=> 'Theme Blvd Layout Builder',
 				'slug' 		=> 'theme-blvd-layout-builder',
 				'required' 	=> false
 			),
-			array(
+			'sliders' => array(
 				'name' 		=> 'Theme Blvd Sliders',
 				'slug' 		=> 'theme-blvd-sliders',
 				'required' 	=> false
 			),
-			array(
+			'sidebars' => array(
 				'name' 		=> 'Theme Blvd Widget Areas',
 				'slug' 		=> 'theme-blvd-widget-areas',
 				'required' 	=> false
 			),
-			array(
+			'widgets' => array(
 				'name' 		=> 'Theme Blvd Widget Pack',
 				'slug' 		=> 'theme-blvd-widget-pack',
 				'required' 	=> false
 			),
-			array(
+			'shortcodes' => array(
 				'name' 		=> 'Theme Blvd Shortcodes',
 				'slug' 		=> 'theme-blvd-shortcodes',
 				'required' 	=> false
