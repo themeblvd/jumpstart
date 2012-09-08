@@ -279,7 +279,7 @@ if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
 		}
 		
 		// Here's your chance to extend it. Happy trails. Yes, pun intended.
-		$output .= apply_filters( 'themeblvd_breadcrumbs_trail', $trail );
+		$output .= apply_filters( 'themeblvd_breadcrumbs_trail', $trail, $atts );
 		
 		// Add page number if is paged
 		if ( get_query_var('paged') )
