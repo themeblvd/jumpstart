@@ -248,22 +248,25 @@ if( ! function_exists( 'themeblvd_register_posts' ) ) {
  * @return string $id ID of post.
  */
 if( ! function_exists( 'themeblvd_post_id_by_name' ) ) { 
-	function themeblvd_post_id_by_name( $slug, $post_type ) {
+	function themeblvd_post_id_by_name( $slug, $post_type = null ) {
 		global $wpdb;
 		$null = null;
 		$slug = sanitize_title( $slug );
 		
 		// Grab posts from DB (hopefully there's only one!)
-		$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND (post_type = %s)", $slug, $post_type ));
+		if( $post_type ) // More efficiant with post type
+			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND (post_type = %s)", $slug, $post_type ));
+		else
+			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s", $slug ));
 		
 		// If no results, return null
-		if ( empty($posts) )
+		if ( empty( $posts ) )
 			return $null;
 		
 		// Run through our results and return the ID of the first. 
 		// Hopefully there was only one result, but if there was 
 		// more than one, we'll just return a single ID.
-		foreach ( $posts as $post )
+		foreach( $posts as $post )
 			if( $post->ID )
 				return $post->ID;
 		
