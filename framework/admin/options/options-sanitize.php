@@ -456,7 +456,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 						break;
 					
 					case 'post' :
-						$post_id = themeblvd_post_id_by_name( $item_id, 'post' );
+						$post_id = themeblvd_post_id_by_name( $item_id );
 						$post = get_post( $post_id );
 						if( $post )
 							$name = $post->post_title;
