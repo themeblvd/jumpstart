@@ -120,9 +120,9 @@ if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 	function themeblvd_header_menu_default() {
 		do_action( 'themeblvd_header_menu_before' );
 		?>
-		<a href="#access" class="btn btn-navbar">
+		<a href="#access" class="btn-navbar">
 			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="icon-reorder"></i>' ); ?>
-		</a>		
+		</a>
 		<nav id="access" role="navigation">
 			<div class="access-inner">
 				<div class="access-content clearfix">
