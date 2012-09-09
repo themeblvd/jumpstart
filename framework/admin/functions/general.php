@@ -151,3 +151,31 @@ function themeblvd_save_page_atts( $post_id ) {
 			update_post_meta( $post_id, '_tb_custom_layout', $_POST['_tb_custom_layout'] );
 	}
 }
+
+/**
+ * Determine if current admin page is an admin 
+ * module page.
+ *
+ * @since 2.2.0
+ */ 
+
+function themeblvd_is_admin_module() {
+	
+	global $pagenow;
+	global $_GET;
+	
+	$current_page = $pagenow;
+	if( isset( $_GET['page'] ) )
+		$current_page .= '?page='.$_GET['page'];
+
+	$modules = apply_filters( 'themeblvd_admin_modules', array(
+		'builder' => 'admin.php?page=themeblvd_builder',
+		'options' => 'themes.php?page='.themeblvd_get_option_name(),
+		'sidebars' => 'themes.php?page=themeblvd_widget_areas',
+		'sliders' => 'admin.php?page=themeblvd_sliders',
+	) );
+
+	$is_module = in_array( $current_page, $modules ) ? true : false;
+		
+	return $is_module;
+}
