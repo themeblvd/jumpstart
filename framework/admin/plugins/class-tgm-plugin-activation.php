@@ -718,7 +718,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			}
 
 			/** Admin options pages already output settings_errors, so this is to avoid duplication */
-			if ( 'options-general' !== $current_screen->parent_base )
+			if ( 'options-general' !== $current_screen->parent_base && ! themeblvd_is_admin_module() )
 				settings_errors( 'tgmpa' );
 
 		}

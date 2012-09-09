@@ -114,7 +114,8 @@ class Theme_Blvd_Options_Page {
 		$return = themeblvd_option_fields( $this->id, $this->options, $settings  );
 		
 		// Display any errors or update messages.
-		settings_errors();
+		settings_errors( $this->id );
+		//settings_errors();
 		?>
 		<div class="wrap">
 			<div class="admin-module-header">
