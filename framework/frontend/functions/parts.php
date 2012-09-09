@@ -236,7 +236,7 @@ if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
 				$trail .= $atts['before'].get_the_title().$atts['after'];
 			} else {
 				$cat = get_the_category(); $cat = $cat[0];
-				$trail .= get_category_parents($cat, trye, ' '.$atts['delimiter'].' ');
+				$trail .= get_category_parents($cat, true, ' '.$atts['delimiter'].' ');
 				$trail .= $atts['before'].get_the_title().$atts['after'];
 			}
 		} else if ( is_search() ) {
