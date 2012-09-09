@@ -552,12 +552,7 @@ img.size-full {
 		text-align: center;
 	}
 	
-	/**
-	 * Primary Navigation (graphic) 
-	 * This is needed if you've selected either of 
-	 * the graphic options from Theme Options for 
-	 * mobile navigation. 
-	 */
+	/* Primary Navigation */
 	#access {
 		display: none;
 		margin-bottom: 10px;
@@ -617,12 +612,6 @@ img.size-full {
 	h1 {
 	  font-size: 24px;
 	  line-height: 1.3em;
-	}
-	
-	/* Header */
-	.mobile_nav_toggle_graphic .btn-navbar {
-		top: 7px;
-		right: 2px;
 	}
 
 	/* Builder - Slogan */
