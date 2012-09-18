@@ -121,9 +121,13 @@ class Theme_Blvd_Options_Page {
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
-		    <?php screen_icon( 'themes' ); ?>
-		    <h2 class="nav-tab-wrapper">
-		        <?php echo $return[1]; ?>
+		    <?php screen_icon( str_replace( '.php', '', $this->args['parent']) ); ?>
+		    <h2<?php if( $return[1] ) echo ' class="nav-tab-wrapper"' ?>>
+		        <?php if( $return[1] ) : ?>
+		        	<?php echo $return[1]; ?>
+		        <?php else : ?>
+		        	<?php echo $this->args['page_title']; ?>
+		        <?php endif; ?>
 		    </h2>
 		    <div class="metabox-holder">
 			    <div id="optionsframework">
