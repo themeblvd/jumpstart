@@ -304,7 +304,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 */
 		public function thickbox() {
 
-			if ( ! get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) )
+			if ( ! get_user_meta( get_current_user_id(), themeblvd_get_option_name().'_tgmpa_dismissed_notice', true ) )
 				add_thickbox();
 
 		}
@@ -642,7 +642,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			}
 
 			/** Only process the nag messages if the user has not dismissed them already */
-			if ( ! get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) ) {
+			if ( ! get_user_meta( get_current_user_id(), themeblvd_get_option_name().'_tgmpa_dismissed_notice', true ) ) {
 				/** If we have notices to display, we move forward */
 				if ( ! empty( $message ) ) {
 					krsort( $message ); // Sort messages
@@ -708,19 +708,30 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					$action_links = array_filter( $action_links ); // Remove any empty array items
 					if ( $action_links )
 						$rendered .= '<p>' . implode( ' | ', $action_links ) . '</p>';
-
+					
+					// Modifed admin nag by Theme Blvd to be outputted admin notice 
+					// and not with settings_errors(), which conflicted with tons of 
+					// other things.
+					
 					/** Register the nag messages and prepare them to be processed */
+               		/*
                		if ( isset( $this->strings['nag_type'] ) )
 						add_settings_error( 'tgmpa', 'tgmpa', $rendered, sanitize_html_class( strtolower( $this->strings['nag_type'] ), 'updated' ) );
 					else
 						add_settings_error( 'tgmpa', 'tgmpa', $rendered, 'updated' );
+					*/
+					if ( isset( $this->strings['nag_type'] ) )
+						echo '<div class="'.sanitize_html_class( strtolower( $this->strings['nag_type'] ), 'updated' ).'">'.$rendered.'</div>';
+					else
+						echo '<div class="updated">'.$rendered.'</div>';
+				
 				}
 			}
 
 			/** Admin options pages already output settings_errors, so this is to avoid duplication */
-			if ( 'options-general' !== $current_screen->parent_base && ! themeblvd_is_admin_module() )
-				settings_errors( 'tgmpa' );
-
+			// if ( 'options-general' !== $current_screen->parent_base && ! themeblvd_is_admin_module() )
+				// settings_errors( 'tgmpa' );
+				
 		}
 
 		/**
@@ -733,7 +744,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		public function dismiss() {
 
 			if ( isset( $_GET[sanitize_key( 'tgmpa-dismiss' )] ) )
-				update_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', 1 );
+				update_user_meta( get_current_user_id(), themeblvd_get_option_name().'_tgmpa_dismissed_notice', 1 );
 
 		}
 
@@ -891,7 +902,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 */
 		public function update_dismiss() {
 
-			delete_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice' );
+			delete_user_meta( get_current_user_id(), themeblvd_get_option_name().'_tgmpa_dismissed_notice' );
 
 		}
 
