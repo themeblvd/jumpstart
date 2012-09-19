@@ -25,7 +25,9 @@ class Theme_Blvd_Options_Page {
 			'parent'		=> 'themes.php',
 			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
-			'cap'			=> themeblvd_admin_module_cap( 'options' )
+			'cap'			=> themeblvd_admin_module_cap( 'options' ),
+			'icon'			=> '',
+			'closer'		=> true // Needs to be false if option page has no tabs
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 		
@@ -106,22 +108,24 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	function admin_page() {
-		
+
 		// Get any current settings from the database.
 		$settings = get_option( $this->id );
 	    
 	    // Setup options form
-		$return = themeblvd_option_fields( $this->id, $this->options, $settings  );
+		$return = themeblvd_option_fields( $this->id, $this->options, $settings, $this->args['closer'] );
+		
+		// Icon ID
+		$icon_id = ! empty( $this->args['icon'] ) ? $this->args['icon'] : str_replace( '.php', '', $this->args['parent']);
 		
 		// Display any errors or update messages.
 		settings_errors( $this->id );
-		//settings_errors();
 		?>
 		<div class="wrap">
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
-		    <?php screen_icon( str_replace( '.php', '', $this->args['parent']) ); ?>
+		    <?php screen_icon( $icon_id ); ?>
 		    <h2<?php if( $return[1] ) echo ' class="nav-tab-wrapper"' ?>>
 		        <?php if( $return[1] ) : ?>
 		        	<?php echo $return[1]; ?>
