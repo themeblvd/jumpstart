@@ -398,6 +398,7 @@ html {
 /* Videos (oEmbed) */
 .themeblvd-video-wrapper {
 	position: relative;
+	margin-bottom: 10px;
 }
 .themeblvd-video-wrapper .video-inner {
 	padding-bottom: 56.25%; /* 16:9 */ 

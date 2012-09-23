@@ -478,13 +478,8 @@ if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 		// because WP has issues with caching the oembed 
 		// result, and oembed_result doesn't always get 
 		// applied when it's supposed to.
-		if( strpos( $input, '<div class="themeblvd' ) ) 
+		if( strpos( $input, 'themeblvd-video-wrapper' ) ) 
 			return $input;
-		
-		// Media Type (will use in future if we add audio player)
-		// $mp3 = strpos( $url, '.mp3' );
-		// $mp3 ? $media = 'audio' : $media = 'video';
-		$media = 'video'; // Temporary while video is only media type.
 		
 		// Apply YouTube wmode fix
 		if( strpos( $url, 'youtube' ) || strpos( $url, 'youtu.be' ) ) {
@@ -493,11 +488,11 @@ if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 		}
 		
 		// Wrap output
-		$output  = '<div class="themeblvd-'.$media.'-wrapper">';
-		$output .= '<div class="'.$media.'-inner">';
+		$output  = '<div class="themeblvd-video-wrapper">';
+		$output .= '<div class="video-inner">';
 		$output .= $input;
-		$output .= '</div><!-- .video-inner (end) -->';
-		$output .= '</div><!-- .themeblvd-video-wrapper (end) -->';
+		$output .= '</div>';
+		$output .= '</div>';
 		
 		return $output;
 	}
