@@ -19,7 +19,7 @@ function themeblvd_header_after() { do_action( 'themeblvd_header_after' ); } // 
 
 // Featured area
 function themeblvd_featured_start() { do_action( 'themeblvd_featured_start' ); }
-function themeblvd_featured() { do_action( 'themeblvd_featured' ); } // Only default hooked action is themeblvd_featured_blog_default and themeblvd_featured_builder_default
+function themeblvd_featured() { do_action( 'themeblvd_featured' ); } // No default hooked function
 function themeblvd_featured_end() { do_action( 'themeblvd_featured_end' ); }
 
 // Featured area below
