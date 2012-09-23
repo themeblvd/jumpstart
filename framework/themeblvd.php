@@ -136,6 +136,7 @@ if( is_admin() ) {
 	// Sidebars
 	add_action( 'themeblvd_fixed_sidebar_before', 'themeblvd_fixed_sidebar_before_default' );
 	add_action( 'themeblvd_fixed_sidebar_after', 'themeblvd_fixed_sidebar_after_default' );
+	add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
 	
 	// Featured area hooks
 	add_action( 'themeblvd_featured_start', 'themeblvd_featured_start_default' );
@@ -149,7 +150,6 @@ if( is_admin() ) {
 	add_action( 'themeblvd_main_bottom', 'themeblvd_main_bottom_default' );
 	add_action( 'themeblvd_main_end', 'themeblvd_main_end_default' );
 	add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
-	add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
 	
 	// Footer
 	add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
