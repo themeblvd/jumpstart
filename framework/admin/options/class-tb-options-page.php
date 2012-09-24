@@ -216,6 +216,7 @@ class Theme_Blvd_Options_Page {
 			}
 
 			// For a value to be submitted to database it must pass through a sanitization filter
+			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) )
 				$clean[$id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[$id], $option );
 				
 		}
