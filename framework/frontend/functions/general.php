@@ -415,7 +415,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		
 		global $themeblvd_framework_scripts;
 		
-		// Framework stylesheets. This can be used declare the 
+		// Framework scripts. This can be used declare the 
 		// $deps of any enque'd JS files intended to come after 
 		// the framework.
 		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', array( 'jquery', 'bootstrap', 'prettyPhoto', 'superfish', 'flexslider', 'themeblvd', 'roundabout', 'themeblvd' ) );
