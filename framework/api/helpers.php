@@ -1040,6 +1040,8 @@ if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
 
 function themeblvd_get_image_sizes() {
 	
+	global $content_width;
+	
 	// Content Width
 	$content_width = apply_filters( 'themeblvd_content_width', 940 ); // Default width of primary content area
 	
