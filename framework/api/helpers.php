@@ -80,44 +80,42 @@ if( ! function_exists( 'themeblvd_api_init' ) ) {
  * @return array $setup Features framework support
  */
 
-if( ! function_exists( 'themeblvd_setup' ) ) { 
-	function themeblvd_setup() {
-		$setup = array(
-			'admin' => array(
-				'options'			=> true,			// Theme Options
-				'sliders' 			=> true,			// Sliders page
-				'builder'			=> true,			// Layouts page
-				'sidebars'			=> true				// Sidebars page
-			),
-			'meta' => array(
-				'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
-				'page_options'		=> true,			// Meta box for basic page options
-				'post_options'		=> true				// Meta box for basic post options
-			),
-			'featured' => array(
-				'archive'			=> false,			// Featured area on/off by default
-				'blog'				=> false,			// Featured area on/off by default
-				'grid'				=> false,			// Featured area on/off by default
-				'page'				=> false,			// Featured area on/off by default
-				'single'			=> false			// Featured area on/off by default
-			),
-			'featured_below' => array(
-				'archive'			=> false,			// Featured area on/off by default
-				'blog'				=> false,			// Featured area on/off by default
-				'grid'				=> false,			// Featured area on/off by default
-				'page'				=> false,			// Featured area on/off by default
-				'single'			=> false			// Featured area on/off by default
-			),
-			'comments' => array(
-				'pages'				=> false,			// Comments on pages
-				'posts'				=> true				// Commments on posts
-			),
-			'display' => array(
-				'responsive' 		=> true				// Responsive elements
-			)
-		);
-		return apply_filters( 'themeblvd_global_config', $setup );
-	}
+function themeblvd_setup() {
+	$setup = array(
+		'admin' => array(
+			'options'			=> true,			// Theme Options
+			'sliders' 			=> true,			// Sliders page
+			'builder'			=> true,			// Layouts page
+			'sidebars'			=> true				// Sidebars page
+		),
+		'meta' => array(
+			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
+			'page_options'		=> true,			// Meta box for basic page options
+			'post_options'		=> true				// Meta box for basic post options
+		),
+		'featured' => array(
+			'archive'			=> false,			// Featured area on/off by default
+			'blog'				=> false,			// Featured area on/off by default
+			'grid'				=> false,			// Featured area on/off by default
+			'page'				=> false,			// Featured area on/off by default
+			'single'			=> false			// Featured area on/off by default
+		),
+		'featured_below' => array(
+			'archive'			=> false,			// Featured area on/off by default
+			'blog'				=> false,			// Featured area on/off by default
+			'grid'				=> false,			// Featured area on/off by default
+			'page'				=> false,			// Featured area on/off by default
+			'single'			=> false			// Featured area on/off by default
+		),
+		'comments' => array(
+			'pages'				=> false,			// Comments on pages
+			'posts'				=> true				// Commments on posts
+		),
+		'display' => array(
+			'responsive' 		=> true				// Responsive elements
+		)
+	);
+	return apply_filters( 'themeblvd_global_config', $setup );
 }
 
 /**
@@ -387,66 +385,64 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
  * @return array $layouts All current sidebar layouts
  */
 
-if( ! function_exists( 'themeblvd_sidebar_layouts' ) ) { 
-	function themeblvd_sidebar_layouts() {
-		$layouts = array(
-			'full_width' => array(
-				'name' 		=> 'Full Width',
-				'id'		=> 'full_width',
-				'columns'	=> array(
-					'content' 	=> 'span12',
-					'left' 		=> '',
-					'right' 	=> '',
-				)
-			),
-			'sidebar_right' => array(
-				'name' 		=> 'Sidebar Right',
-				'id'		=> 'sidebar_right',
-				'columns'	=> array(
-					'content' 	=> 'span8',
-					'left' 		=> '',
-					'right' 	=> 'span4',
-				)
-			),
-			'sidebar_left' => array(
-				'name' 		=> 'Sidebar Left',
-				'id'		=> 'sidebar_left',
-				'columns'	=> array(
-					'content' 	=> 'span8',
-					'left' 		=> 'span4',
-					'right' 	=> '',
-				)
-			),
-			'double_sidebar' => array(
-				'name' 		=> 'Double Sidebar',
-				'id'		=> 'double_sidebar',
-				'columns'	=> array(
-					'content' 	=> 'span6',
-					'left' 		=> 'span3',
-					'right' 	=> 'span3',
-				)
-			),
-			'double_sidebar_left' => array(
-				'name' 		=> 'Double Left Sidebars',
-				'id'		=> 'double_sidebar_left',
-				'columns'	=> array(
-					'content' 	=> 'span6',
-					'left' 		=> 'span3',
-					'right' 	=> 'span3',
-				)
-			),
-			'double_sidebar_right' => array(
-				'name' 		=> 'Double Right Sidebars',
-				'id'		=> 'double_sidebar_right',
-				'columns'	=> array(
-					'content' 	=> 'span6',
-					'left' 		=> 'span3',
-					'right' 	=> 'span3',
-				)
+function themeblvd_sidebar_layouts() {
+	$layouts = array(
+		'full_width' => array(
+			'name' 		=> 'Full Width',
+			'id'		=> 'full_width',
+			'columns'	=> array(
+				'content' 	=> 'span12',
+				'left' 		=> '',
+				'right' 	=> '',
 			)
-		);
-		return apply_filters( 'themeblvd_sidebar_layouts', $layouts );
-	}
+		),
+		'sidebar_right' => array(
+			'name' 		=> 'Sidebar Right',
+			'id'		=> 'sidebar_right',
+			'columns'	=> array(
+				'content' 	=> 'span8',
+				'left' 		=> '',
+				'right' 	=> 'span4',
+			)
+		),
+		'sidebar_left' => array(
+			'name' 		=> 'Sidebar Left',
+			'id'		=> 'sidebar_left',
+			'columns'	=> array(
+				'content' 	=> 'span8',
+				'left' 		=> 'span4',
+				'right' 	=> '',
+			)
+		),
+		'double_sidebar' => array(
+			'name' 		=> 'Double Sidebar',
+			'id'		=> 'double_sidebar',
+			'columns'	=> array(
+				'content' 	=> 'span6',
+				'left' 		=> 'span3',
+				'right' 	=> 'span3',
+			)
+		),
+		'double_sidebar_left' => array(
+			'name' 		=> 'Double Left Sidebars',
+			'id'		=> 'double_sidebar_left',
+			'columns'	=> array(
+				'content' 	=> 'span6',
+				'left' 		=> 'span3',
+				'right' 	=> 'span3',
+			)
+		),
+		'double_sidebar_right' => array(
+			'name' 		=> 'Double Right Sidebars',
+			'id'		=> 'double_sidebar_right',
+			'columns'	=> array(
+				'content' 	=> 'span6',
+				'left' 		=> 'span3',
+				'right' 	=> 'span3',
+			)
+		)
+	);
+	return apply_filters( 'themeblvd_sidebar_layouts', $layouts );
 }
 
 /**
@@ -456,345 +452,343 @@ if( ! function_exists( 'themeblvd_sidebar_layouts' ) ) {
  *
  * @return array $textures All current textures
  */
+ 
+function themeblvd_get_textures() {
+	$imagepath = get_template_directory_uri().'/framework/frontend/assets/images/textures/';
+	$textures = array(
+		'boxy' => array( 
+			'name' 		=> __( 'Boxy', 'themeblvd' ),
+			'url' 		=> $imagepath.'boxy.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'carbon_classic' => array( 
+			'name' 		=> __( 'Carbon Classic', 'themeblvd' ),
+			'url' 		=> $imagepath.'carbon_classic.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'carbon_diagonal' => array( 
+			'name' 		=> __( 'Carbon Diagonol', 'themeblvd' ),
+			'url' 		=> $imagepath.'carbon_diagonal.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'carbon_weave' => array( 
+			'name' 		=> __( 'Carbon Weave', 'themeblvd' ),
+			'url' 		=> $imagepath.'carbon_weave.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'chex' => array( 
+			'name' 		=> __( 'Chex', 'themeblvd' ),
+			'url' 		=> $imagepath.'chex.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'concrete' => array( 
+			'name' 		=> __( 'Concrete', 'themeblvd' ),
+			'url' 		=> $imagepath.'concrete.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'cross' => array( 
+			'name' 		=> __( 'Crosses', 'themeblvd' ),
+			'url' 		=> $imagepath.'cross.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'denim' => array( 
+			'name' 		=> __( 'Denim', 'themeblvd' ),
+			'url' 		=> $imagepath.'denim.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'diagnol_thin' => array( 
+			'name' 		=> __( 'Diagonal (thin)', 'themeblvd' ),
+			'url' 		=> $imagepath.'diagnol_thin.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'diagnol_thick' => array( 
+			'name' 		=> __( 'Diagonal (thick)', 'themeblvd' ),
+			'url' 		=> $imagepath.'diagnol_thick.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'diamonds' => array( 
+			'name' 		=> __( 'Diamonds', 'themeblvd' ),
+			'url' 		=> $imagepath.'diamonds.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'grid' => array( 
+			'name' 		=> __( 'Grid', 'themeblvd' ),
+			'url' 		=> $imagepath.'grid.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'grunge' => array( 
+			'name' 		=> __( 'Grunge', 'themeblvd' ),
+			'url' 		=> $imagepath.'grunge.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'honey_comb' => array( 
+			'name' 		=> __( 'Honey Comb', 'themeblvd' ),
+			'url' 		=> $imagepath.'honey_comb.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'leather' => array( 
+			'name' 		=> __( 'Leather', 'themeblvd' ),
+			'url' 		=> $imagepath.'leather.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'metal' => array( 
+			'name' 		=> __( 'Metal', 'themeblvd' ),
+			'url' 		=> $imagepath.'metal.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'mosaic' => array( 
+			'name' 		=> __( 'Mosaic', 'themeblvd' ),
+			'url' 		=> $imagepath.'mosaic.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'noise' => array( 
+			'name' 		=> __( 'Noise', 'themeblvd' ),
+			'url' 		=> $imagepath.'noise.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'paper' => array( 
+			'name' 		=> __( 'Paper', 'themeblvd' ),
+			'url' 		=> $imagepath.'paper.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'plaid' => array( 
+			'name' 		=> __( 'Plaid', 'themeblvd' ),
+			'url' 		=> $imagepath.'plaid.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'rubber' => array( 
+			'name' 		=> __( 'Rubber', 'themeblvd' ),
+			'url' 		=> $imagepath.'rubber.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'squares' => array( 
+			'name' 		=> __( 'Squares', 'themeblvd' ),
+			'url' 		=> $imagepath.'squares.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'textile' => array( 
+			'name' 		=> __( 'Textile', 'themeblvd' ),
+			'url' 		=> $imagepath.'textile.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'vertical_fabric' => array( 
+			'name' 		=> __( 'Vertical Fabric', 'themeblvd' ),
+			'url' 		=> $imagepath.'vertical_fabric.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'vintage' => array( 
+			'name' 		=> __( 'Vintage', 'themeblvd' ),
+			'url' 		=> $imagepath.'vintage.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'wood' => array( 
+			'name' 		=> __( 'Wood', 'themeblvd' ),
+			'url' 		=> $imagepath.'wood.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'wood_planks' => array( 
+			'name' 		=> __( 'Wood Planks', 'themeblvd' ),
+			'url' 		=> $imagepath.'wood_planks.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'divider' => array( 
+			'name' 		=> __( '---------------', 'themeblvd' ),
+			'url' 		=> null,
+			'position' 	=> null,
+			'repeat' 	=> null,
+		),
+		'boxy_light' => array( 
+			'name' 		=> __( 'Light Boxy', 'themeblvd' ),
+			'url' 		=> $imagepath.'boxy_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'carbon_classic_light' => array( 
+			'name' 		=> __( 'Light Carbon Classic', 'themeblvd' ),
+			'url' 		=> $imagepath.'carbon_classic_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'carbon_diagonal_light' => array( 
+			'name' 		=> __( 'Light Carbon Diagonol', 'themeblvd' ),
+			'url' 		=> $imagepath.'carbon_diagonal_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'carbon_weave_light' => array( 
+			'name' 		=> __( 'Light Carbon Weave', 'themeblvd' ),
+			'url' 		=> $imagepath.'carbon_weave_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'chex_light' => array( 
+			'name' 		=> __( 'Light Chex', 'themeblvd' ),
+			'url' 		=> $imagepath.'chex_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'concrete_light' => array( 
+			'name' 		=> __( 'Light Concrete', 'themeblvd' ),
+			'url' 		=> $imagepath.'concrete_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'cross_light' => array( 
+			'name' 		=> __( 'Light Crosses', 'themeblvd' ),
+			'url' 		=> $imagepath.'cross_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'denim_light' => array( 
+			'name' 		=> __( 'Light Denim', 'themeblvd' ),
+			'url' 		=> $imagepath.'denim_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'diagnol_thin_light' => array( 
+			'name' 		=> __( 'Light Diagonal (thin)', 'themeblvd' ),
+			'url' 		=> $imagepath.'diagnol_thin_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'diagnol_thick_light' => array( 
+			'name' 		=> __( 'Light Diagonal (thick)', 'themeblvd' ),
+			'url' 		=> $imagepath.'diagnol_thick_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'diamonds_light' => array( 
+			'name' 		=> __( 'Light Diamonds', 'themeblvd' ),
+			'url' 		=> $imagepath.'diamonds_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'grid_light' => array( 
+			'name' 		=> __( 'Light Grid', 'themeblvd' ),
+			'url' 		=> $imagepath.'grid_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'grunge_light' => array( 
+			'name' 		=> __( 'Light Grunge', 'themeblvd' ),
+			'url' 		=> $imagepath.'grunge_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'honey_comb_light' => array( 
+			'name' 		=> __( 'Light Honey Comb', 'themeblvd' ),
+			'url' 		=> $imagepath.'honey_comb_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'leather_light' => array( 
+			'name' 		=> __( 'Light Leather', 'themeblvd' ),
+			'url' 		=> $imagepath.'leather_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'metal_light' => array( 
+			'name' 		=> __( 'Light Metal', 'themeblvd' ),
+			'url' 		=> $imagepath.'metal_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'mosaic_light' => array( 
+			'name' 		=> __( 'Light Mosaic', 'themeblvd' ),
+			'url' 		=> $imagepath.'mosaic_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'noise_light' => array( 
+			'name' 		=> __( 'Light Noise', 'themeblvd' ),
+			'url' 		=> $imagepath.'noise_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'paper_light' => array( 
+			'name' 		=> __( 'Light Paper', 'themeblvd' ),
+			'url' 		=> $imagepath.'paper_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'plaid_light' => array( 
+			'name' 		=> __( 'Light Plaid', 'themeblvd' ),
+			'url' 		=> $imagepath.'plaid_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'rubber_light' => array( 
+			'name' 		=> __( 'Light Rubber', 'themeblvd' ),
+			'url' 		=> $imagepath.'rubber_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'squares_light' => array( 
+			'name' 		=> __( 'Light Squares', 'themeblvd' ),
+			'url' 		=> $imagepath.'squares_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'textile_light' => array( 
+			'name' 		=> __( 'Light Textile', 'themeblvd' ),
+			'url' 		=> $imagepath.'textile_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'vertical_fabric_light' => array( 
+			'name' 		=> __( 'Light Vertical Fabric', 'themeblvd' ),
+			'url' 		=> $imagepath.'vertical_fabric_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'vintage_light' => array( 
+			'name' 		=> __( 'Light Vintage', 'themeblvd' ),
+			'url' 		=> $imagepath.'vintage_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'wood_light' => array( 
+			'name' 		=> __( 'Light Wood', 'themeblvd' ),
+			'url' 		=> $imagepath.'wood_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		),
+		'wood_planks_light' => array( 
+			'name' 		=> __( 'Light Wood Planks', 'themeblvd' ),
+			'url' 		=> $imagepath.'wood_planks_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+		)
 
-if( ! function_exists( 'themeblvd_get_textures' ) ) {  
-	function themeblvd_get_textures() {
-		$imagepath = get_template_directory_uri().'/framework/frontend/assets/images/textures/';
-		$textures = array(
-			'boxy' => array( 
-				'name' 		=> __( 'Boxy', 'themeblvd' ),
-				'url' 		=> $imagepath.'boxy.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'carbon_classic' => array( 
-				'name' 		=> __( 'Carbon Classic', 'themeblvd' ),
-				'url' 		=> $imagepath.'carbon_classic.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'carbon_diagonal' => array( 
-				'name' 		=> __( 'Carbon Diagonol', 'themeblvd' ),
-				'url' 		=> $imagepath.'carbon_diagonal.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'carbon_weave' => array( 
-				'name' 		=> __( 'Carbon Weave', 'themeblvd' ),
-				'url' 		=> $imagepath.'carbon_weave.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'chex' => array( 
-				'name' 		=> __( 'Chex', 'themeblvd' ),
-				'url' 		=> $imagepath.'chex.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'concrete' => array( 
-				'name' 		=> __( 'Concrete', 'themeblvd' ),
-				'url' 		=> $imagepath.'concrete.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'cross' => array( 
-				'name' 		=> __( 'Crosses', 'themeblvd' ),
-				'url' 		=> $imagepath.'cross.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'denim' => array( 
-				'name' 		=> __( 'Denim', 'themeblvd' ),
-				'url' 		=> $imagepath.'denim.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'diagnol_thin' => array( 
-				'name' 		=> __( 'Diagonal (thin)', 'themeblvd' ),
-				'url' 		=> $imagepath.'diagnol_thin.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'diagnol_thick' => array( 
-				'name' 		=> __( 'Diagonal (thick)', 'themeblvd' ),
-				'url' 		=> $imagepath.'diagnol_thick.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'diamonds' => array( 
-				'name' 		=> __( 'Diamonds', 'themeblvd' ),
-				'url' 		=> $imagepath.'diamonds.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'grid' => array( 
-				'name' 		=> __( 'Grid', 'themeblvd' ),
-				'url' 		=> $imagepath.'grid.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'grunge' => array( 
-				'name' 		=> __( 'Grunge', 'themeblvd' ),
-				'url' 		=> $imagepath.'grunge.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'honey_comb' => array( 
-				'name' 		=> __( 'Honey Comb', 'themeblvd' ),
-				'url' 		=> $imagepath.'honey_comb.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'leather' => array( 
-				'name' 		=> __( 'Leather', 'themeblvd' ),
-				'url' 		=> $imagepath.'leather.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'metal' => array( 
-				'name' 		=> __( 'Metal', 'themeblvd' ),
-				'url' 		=> $imagepath.'metal.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'mosaic' => array( 
-				'name' 		=> __( 'Mosaic', 'themeblvd' ),
-				'url' 		=> $imagepath.'mosaic.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'noise' => array( 
-				'name' 		=> __( 'Noise', 'themeblvd' ),
-				'url' 		=> $imagepath.'noise.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'paper' => array( 
-				'name' 		=> __( 'Paper', 'themeblvd' ),
-				'url' 		=> $imagepath.'paper.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'plaid' => array( 
-				'name' 		=> __( 'Plaid', 'themeblvd' ),
-				'url' 		=> $imagepath.'plaid.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'rubber' => array( 
-				'name' 		=> __( 'Rubber', 'themeblvd' ),
-				'url' 		=> $imagepath.'rubber.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'squares' => array( 
-				'name' 		=> __( 'Squares', 'themeblvd' ),
-				'url' 		=> $imagepath.'squares.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'textile' => array( 
-				'name' 		=> __( 'Textile', 'themeblvd' ),
-				'url' 		=> $imagepath.'textile.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'vertical_fabric' => array( 
-				'name' 		=> __( 'Vertical Fabric', 'themeblvd' ),
-				'url' 		=> $imagepath.'vertical_fabric.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'vintage' => array( 
-				'name' 		=> __( 'Vintage', 'themeblvd' ),
-				'url' 		=> $imagepath.'vintage.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'wood' => array( 
-				'name' 		=> __( 'Wood', 'themeblvd' ),
-				'url' 		=> $imagepath.'wood.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'wood_planks' => array( 
-				'name' 		=> __( 'Wood Planks', 'themeblvd' ),
-				'url' 		=> $imagepath.'wood_planks.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'divider' => array( 
-				'name' 		=> __( '---------------', 'themeblvd' ),
-				'url' 		=> null,
-				'position' 	=> null,
-				'repeat' 	=> null,
-			),
-			'boxy_light' => array( 
-				'name' 		=> __( 'Light Boxy', 'themeblvd' ),
-				'url' 		=> $imagepath.'boxy_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'carbon_classic_light' => array( 
-				'name' 		=> __( 'Light Carbon Classic', 'themeblvd' ),
-				'url' 		=> $imagepath.'carbon_classic_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'carbon_diagonal_light' => array( 
-				'name' 		=> __( 'Light Carbon Diagonol', 'themeblvd' ),
-				'url' 		=> $imagepath.'carbon_diagonal_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'carbon_weave_light' => array( 
-				'name' 		=> __( 'Light Carbon Weave', 'themeblvd' ),
-				'url' 		=> $imagepath.'carbon_weave_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'chex_light' => array( 
-				'name' 		=> __( 'Light Chex', 'themeblvd' ),
-				'url' 		=> $imagepath.'chex_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'concrete_light' => array( 
-				'name' 		=> __( 'Light Concrete', 'themeblvd' ),
-				'url' 		=> $imagepath.'concrete_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'cross_light' => array( 
-				'name' 		=> __( 'Light Crosses', 'themeblvd' ),
-				'url' 		=> $imagepath.'cross_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'denim_light' => array( 
-				'name' 		=> __( 'Light Denim', 'themeblvd' ),
-				'url' 		=> $imagepath.'denim_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'diagnol_thin_light' => array( 
-				'name' 		=> __( 'Light Diagonal (thin)', 'themeblvd' ),
-				'url' 		=> $imagepath.'diagnol_thin_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'diagnol_thick_light' => array( 
-				'name' 		=> __( 'Light Diagonal (thick)', 'themeblvd' ),
-				'url' 		=> $imagepath.'diagnol_thick_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'diamonds_light' => array( 
-				'name' 		=> __( 'Light Diamonds', 'themeblvd' ),
-				'url' 		=> $imagepath.'diamonds_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'grid_light' => array( 
-				'name' 		=> __( 'Light Grid', 'themeblvd' ),
-				'url' 		=> $imagepath.'grid_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'grunge_light' => array( 
-				'name' 		=> __( 'Light Grunge', 'themeblvd' ),
-				'url' 		=> $imagepath.'grunge_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'honey_comb_light' => array( 
-				'name' 		=> __( 'Light Honey Comb', 'themeblvd' ),
-				'url' 		=> $imagepath.'honey_comb_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'leather_light' => array( 
-				'name' 		=> __( 'Light Leather', 'themeblvd' ),
-				'url' 		=> $imagepath.'leather_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'metal_light' => array( 
-				'name' 		=> __( 'Light Metal', 'themeblvd' ),
-				'url' 		=> $imagepath.'metal_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'mosaic_light' => array( 
-				'name' 		=> __( 'Light Mosaic', 'themeblvd' ),
-				'url' 		=> $imagepath.'mosaic_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'noise_light' => array( 
-				'name' 		=> __( 'Light Noise', 'themeblvd' ),
-				'url' 		=> $imagepath.'noise_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'paper_light' => array( 
-				'name' 		=> __( 'Light Paper', 'themeblvd' ),
-				'url' 		=> $imagepath.'paper_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'plaid_light' => array( 
-				'name' 		=> __( 'Light Plaid', 'themeblvd' ),
-				'url' 		=> $imagepath.'plaid_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'rubber_light' => array( 
-				'name' 		=> __( 'Light Rubber', 'themeblvd' ),
-				'url' 		=> $imagepath.'rubber_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'squares_light' => array( 
-				'name' 		=> __( 'Light Squares', 'themeblvd' ),
-				'url' 		=> $imagepath.'squares_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'textile_light' => array( 
-				'name' 		=> __( 'Light Textile', 'themeblvd' ),
-				'url' 		=> $imagepath.'textile_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'vertical_fabric_light' => array( 
-				'name' 		=> __( 'Light Vertical Fabric', 'themeblvd' ),
-				'url' 		=> $imagepath.'vertical_fabric_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'vintage_light' => array( 
-				'name' 		=> __( 'Light Vintage', 'themeblvd' ),
-				'url' 		=> $imagepath.'vintage_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'wood_light' => array( 
-				'name' 		=> __( 'Light Wood', 'themeblvd' ),
-				'url' 		=> $imagepath.'wood_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			),
-			'wood_planks_light' => array( 
-				'name' 		=> __( 'Light Wood Planks', 'themeblvd' ),
-				'url' 		=> $imagepath.'wood_planks_light.png',
-				'position' 	=> '0 0',
-				'repeat' 	=> 'repeat',
-			)
-	
-		);
-		return apply_filters( 'themeblvd_textures', $textures );
-	}
+	);
+	return apply_filters( 'themeblvd_textures', $textures );
 }
 
 /**
@@ -1044,90 +1038,88 @@ if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
  * @since 2.2.0
  */
 
-if( ! function_exists( 'themeblvd_get_image_sizes' ) ) {
-	function themeblvd_get_image_sizes() {
-		
-		// Content Width
-		$content_width = apply_filters( 'themeblvd_content_width', 940 ); // Default width of primary content area
-		
-		// Crop sizes
-		$sizes = array(
-			'tb_large' => array(
-				'name' 		=> __( 'TB Large', 'themeblvd' ),
-				'width' 	=> $content_width,
-				'height' 	=> 9999,
-				'crop' 		=> false
-			),
-			'tb_medium' => array(
-				'name' 		=> __( 'TB Medium', 'themeblvd' ),
-				'width' 	=> 620,
-				'height'	=> 9999,
-				'crop' 		=> false
-			),
-			'tb_small' => array(
-				'name' 		=> __( 'TB Small', 'themeblvd' ),
-				'width' 	=> 195,
-				'height' 	=> 195,
-				'crop' 		=> false
-			),
-			'square_small' => array(
-				'name' 		=> __( 'Small Square', 'themeblvd' ),
-				'width' 	=> 130,
-				'height' 	=> 130,
-				'crop' 		=> true
-			),
-			'square_smaller' => array(
-				'name' 		=> __( 'Smaller Square', 'themeblvd' ),
-				'width' 	=> 70,
-				'height' 	=> 70,
-				'crop' 		=> true
-			),
-			'square_smallest' => array(
-				'name' 		=> __( 'Smallest Square', 'themeblvd' ),
-				'width' 	=> 45,
-				'height' 	=> 45,
-				'crop' 		=> true
-			),
-			'slider-large' => array(
-				'name' 		=> __( 'Slider Full Width', 'themeblvd' ),
-				'width' 	=> 940,
-				'height' 	=> 350,
-				'crop' 		=> true
-			),
-			'slider-staged' => array(
-				'name' 		=> __( 'Slider Staged', 'themeblvd' ),
-				'width' 	=> 550,
-				'height' 	=> 340,
-				'crop' 		=> true
-			),
-			'grid_fifth_1' => array(
-				'name' 		=> __( '1/5 Column of Grid', 'themeblvd' ),
-				'width' 	=> 200,
-				'height' 	=> 125,
-				'crop' 		=> true
-			),
-			'grid_3' => array(
-				'name' 		=> __( '1/4 Column of Grid', 'themeblvd' ),
-				'width' 	=> 240,
-				'height' 	=> 150,
-				'crop' 		=> true
-			),
-			'grid_4' => array(
-				'name' 		=> __( '1/3 Column of Grid', 'themeblvd' ),
-				'width' 	=> 320,
-				'height' 	=> 200,
-				'crop' 		=> true
-			),
-			'grid_6' => array(
-				'name' 		=> __( '1/2 Column of Grid', 'themeblvd' ),
-				'width' 	=> 472,
-				'height' 	=> 295,
-				'crop' 		=> true
-			)
-		);
-		
-		return apply_filters( 'themeblvd_image_sizes', $sizes );
-	}
+function themeblvd_get_image_sizes() {
+	
+	// Content Width
+	$content_width = apply_filters( 'themeblvd_content_width', 940 ); // Default width of primary content area
+	
+	// Crop sizes
+	$sizes = array(
+		'tb_large' => array(
+			'name' 		=> __( 'TB Large', 'themeblvd' ),
+			'width' 	=> $content_width,
+			'height' 	=> 9999,
+			'crop' 		=> false
+		),
+		'tb_medium' => array(
+			'name' 		=> __( 'TB Medium', 'themeblvd' ),
+			'width' 	=> 620,
+			'height'	=> 9999,
+			'crop' 		=> false
+		),
+		'tb_small' => array(
+			'name' 		=> __( 'TB Small', 'themeblvd' ),
+			'width' 	=> 195,
+			'height' 	=> 195,
+			'crop' 		=> false
+		),
+		'square_small' => array(
+			'name' 		=> __( 'Small Square', 'themeblvd' ),
+			'width' 	=> 130,
+			'height' 	=> 130,
+			'crop' 		=> true
+		),
+		'square_smaller' => array(
+			'name' 		=> __( 'Smaller Square', 'themeblvd' ),
+			'width' 	=> 70,
+			'height' 	=> 70,
+			'crop' 		=> true
+		),
+		'square_smallest' => array(
+			'name' 		=> __( 'Smallest Square', 'themeblvd' ),
+			'width' 	=> 45,
+			'height' 	=> 45,
+			'crop' 		=> true
+		),
+		'slider-large' => array(
+			'name' 		=> __( 'Slider Full Width', 'themeblvd' ),
+			'width' 	=> 940,
+			'height' 	=> 350,
+			'crop' 		=> true
+		),
+		'slider-staged' => array(
+			'name' 		=> __( 'Slider Staged', 'themeblvd' ),
+			'width' 	=> 550,
+			'height' 	=> 340,
+			'crop' 		=> true
+		),
+		'grid_fifth_1' => array(
+			'name' 		=> __( '1/5 Column of Grid', 'themeblvd' ),
+			'width' 	=> 200,
+			'height' 	=> 125,
+			'crop' 		=> true
+		),
+		'grid_3' => array(
+			'name' 		=> __( '1/4 Column of Grid', 'themeblvd' ),
+			'width' 	=> 240,
+			'height' 	=> 150,
+			'crop' 		=> true
+		),
+		'grid_4' => array(
+			'name' 		=> __( '1/3 Column of Grid', 'themeblvd' ),
+			'width' 	=> 320,
+			'height' 	=> 200,
+			'crop' 		=> true
+		),
+		'grid_6' => array(
+			'name' 		=> __( '1/2 Column of Grid', 'themeblvd' ),
+			'width' 	=> 472,
+			'height' 	=> 295,
+			'crop' 		=> true
+		)
+	);
+	
+	return apply_filters( 'themeblvd_image_sizes', $sizes );
 }
 
 /**

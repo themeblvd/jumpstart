@@ -514,25 +514,22 @@ if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
  * @return string $stacks All current font stacks
  */
 
-if( ! function_exists( 'themeblvd_font_stacks' ) ) {
-	function themeblvd_font_stacks() {
-		$stacks = array(
-			'default'		=> 'Arial, sans-serif', // Used to chain onto end of google font
-			'arial'     	=> 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-			'baskerville'	=> 'Baskerville, "Times New Roman", Times, serif',
-			'georgia'   	=> 'Georgia, Times, "Times New Roman", serif',
-			'helvetica' 	=> '"Helvetica Neue", Helvetica, Arial,sans-serif',
-			'lucida'  		=> '"Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif',
-			'palatino'  	=> 'Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif',
-			'tahoma'    	=> 'Tahoma, Geneva, Verdana, sans-serif',
-			'times'     	=> 'Times New Roman',
-			'trebuchet' 	=> '"Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif',
-			'verdana'   	=> 'Verdana, Geneva, Tahoma, sans-serif',
-			'google'		=> 'Google Font'
-		);
-		$stacks = apply_filters( 'themeblvd_font_stacks', $stacks );
-		return $stacks;
-	}
+function themeblvd_font_stacks() {
+	$stacks = array(
+		'default'		=> 'Arial, sans-serif', // Used to chain onto end of google font
+		'arial'     	=> 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+		'baskerville'	=> 'Baskerville, "Times New Roman", Times, serif',
+		'georgia'   	=> 'Georgia, Times, "Times New Roman", serif',
+		'helvetica' 	=> '"Helvetica Neue", Helvetica, Arial,sans-serif',
+		'lucida'  		=> '"Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif',
+		'palatino'  	=> 'Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif',
+		'tahoma'    	=> 'Tahoma, Geneva, Verdana, sans-serif',
+		'times'     	=> 'Times New Roman',
+		'trebuchet' 	=> '"Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif',
+		'verdana'   	=> 'Verdana, Geneva, Tahoma, sans-serif',
+		'google'		=> 'Google Font'
+	);
+	return apply_filters( 'themeblvd_font_stacks', $stacks );
 }
 
 /**

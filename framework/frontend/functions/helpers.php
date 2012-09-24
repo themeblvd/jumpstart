@@ -441,10 +441,8 @@ if( ! function_exists( 'themeblvd_grid_class' ) ) {
  * @since 2.0.0
  */
 
-if( ! function_exists( 'themeblvd_open_row' ) ) {
-	function themeblvd_open_row() {
-		echo apply_filters( 'themeblvd_open_row', '<div class="grid-row">' );
-	}
+function themeblvd_open_row() {
+	echo apply_filters( 'themeblvd_open_row', '<div class="grid-row">' );
 }
 
 /**
@@ -453,10 +451,8 @@ if( ! function_exists( 'themeblvd_open_row' ) ) {
  * @since 2.0.0
  */
 
-if( ! function_exists( 'themeblvd_close_row' ) ) {
-	function themeblvd_close_row() {
-		echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
-	}
+function themeblvd_close_row() {
+	echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
 }
 
 /**
@@ -894,20 +890,18 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
  * @return array $args Arguments to be passed into wp_list_comments()
  */
 
-if( ! function_exists( 'themeblvd_get_comment_list_args' ) ) {
-	function themeblvd_get_comment_list_args() {
-		$args = array( 
-			'avatar_size' 		=> 48,
-			'style' 			=> 'ul',
-			'type' 				=> 'all',
-			'reply_text' 		=> themeblvd_get_local( 'reply' ),
-			'login_text' 		=> themeblvd_get_local( 'login_text' ),
-			'callback' 			=> null,
-			'reverse_top_level' => null,
-			'reverse_children' 	=> false
-		);
-		return apply_filters( 'themeblvd_comment_list', $args );
-	}	
+function themeblvd_get_comment_list_args() {
+	$args = array( 
+		'avatar_size' 		=> 48,
+		'style' 			=> 'ul',
+		'type' 				=> 'all',
+		'reply_text' 		=> themeblvd_get_local( 'reply' ),
+		'login_text' 		=> themeblvd_get_local( 'login_text' ),
+		'callback' 			=> null,
+		'reverse_top_level' => null,
+		'reverse_children' 	=> false
+	);
+	return apply_filters( 'themeblvd_comment_list', $args );
 }
 
 /**
@@ -918,28 +912,26 @@ if( ! function_exists( 'themeblvd_get_comment_list_args' ) ) {
  * @return array $args Arguments to be passed into comment_form()
  */
 
-if( ! function_exists( 'themeblvd_get_comment_form_args' ) ) {
-	function themeblvd_get_comment_form_args() {
-		$commenter = wp_get_current_commenter();
-		$req = get_option( 'require_name_email' );
-		$aria_req = ( $req ? " aria-required='true'" : '' );
-		$args = array(
-			'fields' => array(
-				'author' => '<p class="comment-form-author"><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
-							'<label for="author">' . themeblvd_get_local( 'name' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-				'email'  => '<p class="comment-form-email"><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
-							'<label for="email">' . themeblvd_get_local( 'email' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-				'url'    => '<p class="comment-form-url"><input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
-							'<label for="url">' .themeblvd_get_local( 'website' ) . '</label></p>'
-			),
-			'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
-			'title_reply'			=> themeblvd_get_local( 'title_reply' ),
-			'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
-			'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
-			'label_submit'			=> themeblvd_get_local( 'label_submit' )
-		);
-		return apply_filters( 'themeblvd_comment_form', $args );
-	}
+function themeblvd_get_comment_form_args() {
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? " aria-required='true'" : '' );
+	$args = array(
+		'fields' => array(
+			'author' => '<p class="comment-form-author"><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
+						'<label for="author">' . themeblvd_get_local( 'name' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+			'email'  => '<p class="comment-form-email"><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
+						'<label for="email">' . themeblvd_get_local( 'email' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
+			'url'    => '<p class="comment-form-url"><input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
+						'<label for="url">' .themeblvd_get_local( 'website' ) . '</label></p>'
+		),
+		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
+		'title_reply'			=> themeblvd_get_local( 'title_reply' ),
+		'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
+		'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
+		'label_submit'			=> themeblvd_get_local( 'label_submit' )
+	);
+	return apply_filters( 'themeblvd_comment_form', $args );
 }
 
 /**
