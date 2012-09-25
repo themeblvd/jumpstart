@@ -13,15 +13,15 @@ require_once( get_template_directory() . '/includes/options.php' );
  * theme if any basic setup things need to be changed.
  */
 
-if( ! function_exists( 'themeblvd_jumpstart_setup' ) ) {
-	function themeblvd_jumpstart_setup() {
+if( ! function_exists( 'jumpstart_setup' ) ) {
+	function jumpstart_setup() {
 		// Custom background support
 		add_theme_support( 'custom-background' ); // Not supported in this theme.
 		// Post Formats
 		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 	}
 }
-// add_action( 'after_setup_theme', 'themeblvd_jumpstart_setup' ); // Not used in Jump Start
+// add_action( 'after_setup_theme', 'jumpstart_setup' ); // Not used in Jump Start
 
 /**
  * Jump Start CSS Files
@@ -32,8 +32,8 @@ if( ! function_exists( 'themeblvd_jumpstart_setup' ) ) {
  * child theme.
  */
 
-if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
-	function themeblvd_jumpstart_css() {
+if( ! function_exists( 'jumpstart_css' ) ) {
+	function jumpstart_css() {
 		
 		global $themeblvd_framework_stylesheets;
 
@@ -49,14 +49,14 @@ if( ! function_exists( 'themeblvd_jumpstart_css' ) ) {
 		
 	}
 }
-add_action( 'wp_print_styles', 'themeblvd_jumpstart_css' );
+add_action( 'wp_print_styles', 'jumpstart_css' );
 
 /**
  * Jump Start Scripts
  */
 
-if( ! function_exists( 'themeblvd_jumpstart_scripts' ) ) {
-	function themeblvd_jumpstart_scripts() {
+if( ! function_exists( 'jumpstart_scripts' ) ) {
+	function jumpstart_scripts() {
 		
 		global $themeblvd_framework_scripts; 
 		
@@ -65,7 +65,7 @@ if( ! function_exists( 'themeblvd_jumpstart_scripts' ) ) {
 	
 	}
 }
-add_action( 'wp_enqueue_scripts', 'themeblvd_jumpstart_scripts' );
+add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );
 
 /**
  * Jump Start Body Classes 
