@@ -112,7 +112,7 @@ if( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
-	add_action( 'wp_print_styles', 'themeblvd_include_styles', 5 );
+	add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles', 5 );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 	add_action( 'customize_register', 'themeblvd_customizer_init' );
 
