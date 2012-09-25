@@ -457,7 +457,7 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 		// Framework stylesheets. This can be used declare the 
 		// $deps of any enque'd CSS files intended to come after 
 		// the framework.
-		$themeblvd_framework_stylesheets = apply_filters( 'themeblvd_framework_stylesheets', array( 'bootstrap', 'fontawesome', 'prettyPhoto', 'themeblvd' ) );
+		$themeblvd_framework_stylesheets = apply_filters( 'themeblvd_framework_stylesheets', array( 'bootstrap', 'fontawesome', 'prettyphoto', 'themeblvd' ) );
 		
 		// Level 1 user styles
 		themeblvd_user_stylesheets( 1 ); // @deprecated
@@ -465,7 +465,7 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 		// Register framework styles
 		wp_enqueue_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.1.0' );
 		wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
-		wp_enqueue_style( 'prettyPhoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
+		wp_enqueue_style( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
 		wp_enqueue_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.min.css', array(), TB_FRAMEWORK_VERSION );
 		
 		// Level 2 user styles
