@@ -393,7 +393,7 @@ function themeblvd_sidebar_layouts() {
 			'columns'	=> array(
 				'content' 	=> 'span12',
 				'left' 		=> '',
-				'right' 	=> '',
+				'right' 	=> ''
 			)
 		),
 		'sidebar_right' => array(
@@ -402,7 +402,7 @@ function themeblvd_sidebar_layouts() {
 			'columns'	=> array(
 				'content' 	=> 'span8',
 				'left' 		=> '',
-				'right' 	=> 'span4',
+				'right' 	=> 'span4'
 			)
 		),
 		'sidebar_left' => array(
@@ -411,7 +411,7 @@ function themeblvd_sidebar_layouts() {
 			'columns'	=> array(
 				'content' 	=> 'span8',
 				'left' 		=> 'span4',
-				'right' 	=> '',
+				'right' 	=> ''
 			)
 		),
 		'double_sidebar' => array(
@@ -420,7 +420,7 @@ function themeblvd_sidebar_layouts() {
 			'columns'	=> array(
 				'content' 	=> 'span6',
 				'left' 		=> 'span3',
-				'right' 	=> 'span3',
+				'right' 	=> 'span3'
 			)
 		),
 		'double_sidebar_left' => array(
@@ -429,7 +429,7 @@ function themeblvd_sidebar_layouts() {
 			'columns'	=> array(
 				'content' 	=> 'span6',
 				'left' 		=> 'span3',
-				'right' 	=> 'span3',
+				'right' 	=> 'span3'
 			)
 		),
 		'double_sidebar_right' => array(
@@ -438,7 +438,7 @@ function themeblvd_sidebar_layouts() {
 			'columns'	=> array(
 				'content' 	=> 'span6',
 				'left' 		=> 'span3',
-				'right' 	=> 'span3',
+				'right' 	=> 'span3'
 			)
 		)
 	);
