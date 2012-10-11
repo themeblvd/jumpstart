@@ -676,7 +676,7 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 	function themeblvd_homepage_posts_per_page( $query ) {
 
 	    // This is only for custom layouts and the homepage
-		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && is_home() ) {
+		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && is_home() && $query->is_main_query() ) {
 
 			// The framework has not run at this point, so 
 			// we manually need to check for a homepage layout.
