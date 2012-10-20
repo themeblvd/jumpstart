@@ -964,6 +964,7 @@ ul.sf-menu [class^="icon-"] {
 	left: 0;
 }
 .themeblvd-mini-post-list ul .mini-post-list-content h4 {
+	margin-top: 0;
 	margin-bottom: 0;
 }
 .themeblvd-mini-post-list ul .mini-post-list-content .mini-meta {
