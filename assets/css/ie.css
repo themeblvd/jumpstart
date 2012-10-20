@@ -1,6 +1,7 @@
 /* Fix responsive featured images at 100% width in IE8 */
 .attachment-tb_medium img.wp-post-image,
 .attachment-tb_large img.wp-post-image,
+.attachment-grid_12 img.wp-post-image,
 .attachment-grid_6 img.wp-post-image,
 .attachment-grid_4 img.wp-post-image,
 .attachment-grid_3 img.wp-post-image,
