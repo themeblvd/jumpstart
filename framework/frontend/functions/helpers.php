@@ -975,7 +975,7 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
  * be password protected, forward to the standard 
  * page.php template file.
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @param string $template Current template file
  * @return string $template Current theme location of page.php
