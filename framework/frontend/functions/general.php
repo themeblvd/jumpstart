@@ -756,18 +756,22 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 					$layout_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );
 					$elements = get_post_meta( $layout_post_id, 'elements', true );
 					// Loop through elements searching for one with a primary query element
-					foreach( $elements as $area ) {
-						foreach( $area as $element ) {
-							switch( $element['type'] ) {
-								case 'post_grid_paginated' :
-									if( $element['options']['rows'] && $element['options']['columns'] )
-										$new_posts_per_page = $element['options']['rows'] * $element['options']['columns'];
-									break;
-								case 'post_list_paginated';
-									if( $element['options']['posts_per_page'] )
-										$new_posts_per_page = $element['options']['posts_per_page'];
-									break;
-							}	
+					if( ! empty( $elements ) ) {
+						foreach( $elements as $area ) {
+							if( ! empty( $area ) ) {
+								foreach( $area as $element ) {
+									switch( $element['type'] ) {
+										case 'post_grid_paginated' :
+											if( $element['options']['rows'] && $element['options']['columns'] )
+												$new_posts_per_page = $element['options']['rows'] * $element['options']['columns'];
+											break;
+										case 'post_list_paginated';
+											if( $element['options']['posts_per_page'] )
+												$new_posts_per_page = $element['options']['posts_per_page'];
+											break;
+									}	
+								}
+							}
 						}
 					}
 				}
