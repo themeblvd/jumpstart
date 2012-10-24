@@ -1081,7 +1081,8 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'class'		=> 'hide receiver',
 				'options'	=> array(
 			        '_self' 	=> __( 'Same Window', 'themeblvd' ),
-			        '_blank' 	=> __( 'New Window', 'themeblvd' )
+			        '_blank' 	=> __( 'New Window', 'themeblvd' ),
+			        'lightbox' 	=> __( 'Lightbox Popup', 'themeblvd' )
 				) 
 			),
 			array(
