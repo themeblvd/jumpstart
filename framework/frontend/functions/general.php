@@ -355,23 +355,23 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 		$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
 	 
 		// OS class
-		if ( preg_match( "/Mac/", $browser ) )
+		if( preg_match( "/Mac/", $browser ) )
 			$classes[] = 'mac';
-		elseif ( preg_match( "/Windows/", $browser ) )
+		elseif( preg_match( "/Windows/", $browser ) )
 			$classes[] = 'windows';
-		elseif ( preg_match( "/Linux/", $browser ) )
+		elseif( preg_match( "/Linux/", $browser ) )
 			$classes[] = 'linux';
 		else
 			$classes[] = 'unknown-os';
 	 
 		// Browser class
-		if ( preg_match( "/Chrome/", $browser ) ) {
+		if( preg_match( "/Chrome/", $browser ) ) {
 			$classes[] = 'chrome';
-		} elseif ( preg_match( "/Safari/", $browser ) ) {
+		} elseif( preg_match( "/Safari/", $browser ) ) {
 			$classes[] = 'safari';
-		} elseif ( preg_match( "/Opera/", $browser ) ) {
+		} elseif( preg_match( "/Opera/", $browser ) ) {
 			$classes[] = 'opera';
-		} elseif ( preg_match( "/MSIE/", $browser ) ) {
+		} elseif( preg_match( "/MSIE/", $browser ) ) {
 			
 			// Internet Explorer... ugh, kill me now.
 			$classes[] = 'msie';
@@ -386,7 +386,7 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 			elseif ( preg_match( "/MSIE 10.0/", $browser ) )
 				$classes[] = 'ie10';
 	
-		} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
+		} elseif( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
 			$classes[] = 'firefox';
 		} else {
 			$classes[] = 'unknown-browser';
