@@ -64,14 +64,21 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		
 			// Custom Layout on static page
 			if( is_page_template( 'template_builder.php' ) ) {
-				$layout_id = get_post_meta( $post->ID, '_tb_custom_layout', true );
-				if( $layout_id ) {
-					$builder = $layout_id;
-					$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
-					$layout_settings = get_post_meta( $layout_post_id, 'settings', true );
-					$sidebar_layout = $layout_settings['sidebar_layout'];
+				if( post_password_required() ) {
+					// Password is currently required 
+					// and so the layout is irrelevant.
+					$builder = 'wp-private';
 				} else {
-					$builder = 'error';
+					// Determine ID of custom layout
+					$layout_id = get_post_meta( $post->ID, '_tb_custom_layout', true );
+					if( $layout_id ) {
+						$builder = $layout_id;
+						$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
+						$layout_settings = get_post_meta( $layout_post_id, 'settings', true );
+						$sidebar_layout = $layout_settings['sidebar_layout'];
+					} else {
+						$builder = 'error';
+					}
 				}
 			}
 			
@@ -106,7 +113,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		
 		$featured = array();
 		$featured_below = array();
-		if( $builder ) {
+		if( $builder && $builder != 'wp-private' ) {
 			$layout_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );
 			$elements = get_post_meta( $layout_post_id, 'elements', true );
 			$featured = themeblvd_featured_builder_classes( $elements, 'featured' );

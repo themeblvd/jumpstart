@@ -969,3 +969,22 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
 		return $show;
 	}	
 }
+
+/** 
+ * If there a page with custom layout is set to 
+ * be password protected, forward to the standard 
+ * page.php template file.
+ *
+ * @since 2.1.0
+ *
+ * @param string $template Current template file
+ * @return string $template Current theme location of page.php
+ */
+
+if( ! function_exists( 'themeblvd_private_layout' ) ) {
+	function themeblvd_private_layout( $template ){	
+		if( themeblvd_config( 'builder' ) && post_password_required() )
+			$template = locate_template( 'page.php' );
+		return $template;
+	}
+}
