@@ -737,15 +737,19 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
  * @since 2.2.0
  */
 
-if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
-	function themeblvd_homepage_posts_per_page( $query ) {
+if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
+	function themeblvd_posts_per_page( $query ) {
 
-	    // This is only for custom layouts and the homepage
+		$new_posts_per_page = '';
+
+	    /*---------------------------------*/
+	    /* Homepage Custom Layouts
+	    /*---------------------------------*/
+	    
 		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && is_home() && $query->is_main_query() ) {
 
 			// The framework has not run at this point, so 
 			// we manually need to check for a homepage layout.
-			$new_posts_per_page = '';
 			$builder = '';
 			$option_name = themeblvd_get_option_name();
 			$theme_options = get_option( $option_name );
@@ -775,7 +779,29 @@ if( ! function_exists( 'themeblvd_homepage_posts_per_page' ) ) {
 						}
 					}
 				}
+			}	
+			
+			/*---------------------------------*/
+			/* Archive Grids
+			/*---------------------------------*/
+			
+			if( is_archive() ){
+				$template_part = themeblvd_get_part( 'archive' );
+				if( $template_part == 'grid' || $template_part == 'archive-grid' ) {
+					// Columns
+					$columns = themeblvd_get_option( 'archive_grid_columns' );
+					if( ! $columns ) $columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
+					// Rows
+					$rows = themeblvd_get_option( 'archive_grid_rows' );
+					if( ! $rows ) $rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+					// Posts per page = $columns x $rows
+					$new_posts_per_page = $columns * $rows;
+				}
 			}
+			
+			/*---------------------------------*/
+			/* The Grand Finale
+			/*---------------------------------*/
 			
 			// And after ALL that, if we end up with a new post per 
 			// page item, let's add it in!

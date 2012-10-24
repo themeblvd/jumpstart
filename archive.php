@@ -34,6 +34,8 @@ if( $template_part == 'grid' || $template_part == 'index_grid' ) {
 	// Thumbnail size
 	$tb_size = themeblvd_grid_class( $columns );
 	$tb_crop = apply_filters( 'themeblvd_archive_grid_crop_size', $tb_size );
+	// Posts per page
+	$posts_per_page = $columns*$rows;
 	
 } else {
 	
@@ -66,7 +68,7 @@ get_header();
 							<div class="post_grid post_grid_paginated archive">
 								<div class="grid-protection">
 									<?php
-									$posts_per_page = get_option( 'posts_per_page' );
+									global $more; $more = 0;
 									$counter = 1;
 									if ( have_posts() ) {
 										while ( have_posts() ) {

@@ -109,7 +109,7 @@ if( is_admin() ) {
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
-	add_action( 'pre_get_posts', 'themeblvd_homepage_posts_per_page' );
+	add_action( 'pre_get_posts', 'themeblvd_posts_per_page' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
 	add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
