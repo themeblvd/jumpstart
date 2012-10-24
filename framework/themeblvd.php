@@ -93,6 +93,7 @@ if( is_admin() ) {
 
 	// Filters
 	add_filter( 'body_class', 'themeblvd_body_class' );
+	add_filter( 'body_class','themeblvd_browser_class' );
 	add_filter( 'oembed_result', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'embed_oembed_html', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'wp_feed_cache_transient_lifetime' , 'themeblvd_feed_transient' );

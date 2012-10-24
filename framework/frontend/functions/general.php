@@ -338,6 +338,64 @@ if( ! function_exists( 'themeblvd_body_class' ) ) {
 	}
 }
 
+/** 
+ * Determine current web browser and generate a CSS class for 
+ * it. This function gets filtered onto WP's body_class.
+ *
+ * @since 2.2.0
+ *
+ * @param array $classes Current body classes
+ * @return array $classes Body classes with browser classes added
+ */
+ 
+if( ! function_exists( 'themeblvd_browser_class' ) ) {
+	function themeblvd_browser_class( $classes ) {
+	 
+		// Get current user agent
+		$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
+	 
+		// OS class
+		if ( preg_match( "/Mac/", $browser ) )
+			$classes[] = 'mac';
+		elseif ( preg_match( "/Windows/", $browser ) )
+			$classes[] = 'windows';
+		elseif ( preg_match( "/Linux/", $browser ) )
+			$classes[] = 'linux';
+		else
+			$classes[] = 'unknown-os';
+	 
+		// Browser class
+		if ( preg_match( "/Chrome/", $browser ) ) {
+			$classes[] = 'chrome';
+		} elseif ( preg_match( "/Safari/", $browser ) ) {
+			$classes[] = 'safari';
+		} elseif ( preg_match( "/Opera/", $browser ) ) {
+			$classes[] = 'opera';
+		} elseif ( preg_match( "/MSIE/", $browser ) ) {
+			
+			// Internet Explorer... ugh, kill me now.
+			$classes[] = 'msie';
+			if( preg_match( "/MSIE 6.0/", $browser ) )
+				$classes[] = 'ie6';
+			elseif ( preg_match( "/MSIE 7.0/", $browser ) )
+				$classes[] = 'ie7';
+			elseif ( preg_match( "/MSIE 8.0/", $browser ) )
+				$classes[] = 'ie8';
+			elseif ( preg_match( "/MSIE 9.0/", $browser ) )
+				$classes[] = 'ie9';
+			elseif ( preg_match( "/MSIE 10.0/", $browser ) )
+				$classes[] = 'ie10';
+	
+		} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
+			$classes[] = 'firefox';
+		} else {
+			$classes[] = 'unknown-browser';
+		}
+		
+		return $classes;
+	}
+}
+
 /**
  * Set fake conditional.
  *
