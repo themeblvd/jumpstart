@@ -780,14 +780,17 @@ if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
 					}
 				}
 			}	
-			
-			/*---------------------------------*/
-			/* Archive Grids
-			/*---------------------------------*/
-			
-			if( is_archive() ){
-				$template_part = themeblvd_get_part( 'archive' );
-				if( $template_part == 'grid' || $template_part == 'archive-grid' ) {
+				
+	    }
+	    
+	    /*---------------------------------*/
+		/* Archive/Index Grids
+		/*---------------------------------*/
+		
+		if( ! $new_posts_per_page ) {
+			if( is_archive() || is_home() && $query->is_main_query() ) {
+				$template_part = is_archive() ? themeblvd_get_part( 'archive' ) : themeblvd_get_part( 'index' );
+				if( $template_part == 'grid' || $template_part == 'index_grid' ) {
 					// Columns
 					$columns = themeblvd_get_option( 'archive_grid_columns' );
 					if( ! $columns ) $columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
@@ -798,17 +801,16 @@ if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
 					$new_posts_per_page = $columns * $rows;
 				}
 			}
-			
-			/*---------------------------------*/
-			/* The Grand Finale
-			/*---------------------------------*/
-			
-			// And after ALL that, if we end up with a new post per 
-			// page item, let's add it in!
-			if( $new_posts_per_page )
-				$query->set( 'posts_per_page', $new_posts_per_page );
-				
-	    }
+		}
+		
+		/*---------------------------------*/
+		/* The Grand Finale
+		/*---------------------------------*/
+		
+		// And after ALL that, if we end up with a new post per 
+		// page item, let's add it in!
+		if( $new_posts_per_page )
+			$query->set( 'posts_per_page', $new_posts_per_page );
 	}
 }
 
