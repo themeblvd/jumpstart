@@ -377,8 +377,9 @@ if( ! function_exists( 'themeblvd_format_options' ) ) {
 		foreach( $_themeblvd_core_options as $tab_id => $tab ) {	
 			// Insert Tab Heading
 			$_themeblvd_options['tab_'.$tab_id] = array(
-				'name' => $tab['name'],
-				'type' => 'heading'
+				'id' 	=> $tab_id,
+				'name' 	=> $tab['name'],
+				'type' 	=> 'heading'
 			);
 			// Section Level
 			if( $tab['sections'] ) {
