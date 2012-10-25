@@ -123,6 +123,7 @@ if( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1000 );
 	add_action( 'after_setup_theme', 'themeblvd_register_sidebars', 1000 );
 	add_action( 'wp', 'themeblvd_frontend_init', 5 ); // This needs to run before any plugins hook into it
+	add_action( 'wp', 'themeblvd_atts_init' );
 	add_action( 'wp_print_styles', 'themeblvd_deregister_stylesheets', 1000 );
 	
 	// <head> hooks

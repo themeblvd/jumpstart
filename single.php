@@ -15,16 +15,6 @@
  * @package 	Theme Blvd WordPress Framework
  */
 
-// Determine if meta info should show
-$show_meta = true;
-if( themeblvd_get_option( 'single_meta', null, 'show' ) == 'hide' )
-	$show_meta = false;
-if( get_post_meta( $post->ID, '_tb_meta', true ) == 'hide' )
-	$show_meta = false;
-else if( get_post_meta( $post->ID, '_tb_meta', true ) == 'show' )
-	$show_meta = true;
-
-// Header
 get_header(); 
 ?>
 	

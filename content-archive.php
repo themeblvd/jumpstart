@@ -2,8 +2,6 @@
 /**
  * The default template for displaying content in an archive.
  */
-global $tb_location;
-global $tb_content;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -13,8 +11,8 @@ global $tb_content;
 		<?php themeblvd_blog_meta(); ?>
 	</div><!-- .meta-wrapper (end) -->
 	<div class="entry-content">
-		<?php themeblvd_the_post_thumbnail( $tb_location ); ?>
-		<?php themeblvd_blog_content( $tb_content ); ?>
+		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ) ); ?>
+		<?php themeblvd_blog_content( themeblvd_get_att( 'content' ) ); ?>
 		<?php themeblvd_blog_tags(); ?>
 		<div class="clear"></div>
 	</div><!-- .entry-content -->

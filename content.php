@@ -1,22 +1,17 @@
 <?php
 /**
- * The default template for displaying content in blogroll.
+ * The default template for displaying content in single.php.
  */
-global $post;
-global $tb_location;
-global $tb_size;
-global $tb_content;
-global $show_meta;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title<?php if( $show_meta ) echo ' entry-title-with-meta'; ?>"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
-		<?php if( $show_meta ) : ?>
+		<h1 class="entry-title<?php if( themeblvd_get_att( 'show_meta' ) ) echo ' entry-title-with-meta'; ?>"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
+		<?php if( themeblvd_get_att( 'show_meta' ) ) : ?>
 			<?php themeblvd_blog_meta(); ?>
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php themeblvd_the_post_thumbnail( $tb_location, $tb_size ); ?>
+		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ), themeblvd_get_att( 'size' ) ); ?>
 		<?php the_content(); ?>
 		<?php themeblvd_blog_tags(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>

@@ -391,17 +391,19 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 if( ! function_exists( 'themeblvd_posts_page_page' ) ) {
 	function themeblvd_posts_page_page( $type, $columns = null, $rows = null ) {
 		if( $type == 'template' ) {
-			global $post;
-			$possible_column_nums = array( 1, 2, 3, 4, 5 );
-			$posts_per_page = null;
-			// Columns
-			$columns = get_post_meta( $post->ID, 'columns', true );
-			if( ! in_array( intval($columns), $possible_column_nums ) )
-				$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
-			// Rows
-			$rows = get_post_meta( $post->ID, 'rows', true );
-			if( ! $rows )
-				$rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+			if( ! $columns || ! $rows ) {
+				global $post;
+				$possible_column_nums = array( 1, 2, 3, 4, 5 );
+				$posts_per_page = null;
+				// Columns
+				$columns = get_post_meta( $post->ID, 'columns', true );
+				if( ! in_array( intval($columns), $possible_column_nums ) )
+					$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
+				// Rows
+				$rows = get_post_meta( $post->ID, 'rows', true );
+				if( ! $rows )
+					$rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+			}
 		}
 		// Posts per page
 		$posts_per_page = $columns * $rows;

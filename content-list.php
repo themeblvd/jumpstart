@@ -2,9 +2,6 @@
 /**
  * The default template for displaying content in post list.
  */
-global $tb_location;
-global $tb_size;
-global $tb_content;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -12,8 +9,8 @@ global $tb_content;
 		<?php themeblvd_blog_meta(); ?>
 	</header><!-- .entry-header (end) -->
 	<div class="entry-content">
-		<?php themeblvd_the_post_thumbnail( $tb_location, $tb_size ); ?>
-		<?php themeblvd_blog_content( $tb_content ); ?>
+		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ), themeblvd_get_att( 'size' ) ); ?>
+		<?php themeblvd_blog_content( themeblvd_get_att( 'content' ) ); ?>
 		<?php themeblvd_blog_tags(); ?>
 		<div class="clear"></div>
 	</div><!-- .entry-content (end) -->

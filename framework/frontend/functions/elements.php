@@ -223,7 +223,7 @@ if( ! function_exists( 'themeblvd_headline' ) ) {
  * @since 2.0.0
  *
  * @param string $id Unique ID for element
- * @param array $options All options for posts
+ * @param array $args All options for posts
  * @param string $type Type of posts, grid or list
  * @param string $current_location Location of element, primary, featured, or featured_below
  */
@@ -231,12 +231,6 @@ if( ! function_exists( 'themeblvd_headline' ) ) {
 if( ! function_exists( 'themeblvd_post_slider' ) ) {
 	function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_location = 'primary' ) {
 
-		global $tb_content; // $content (for lists)
-		global $tb_size; 	// $thumbs (for lists)
-		global $tb_crop; 	// Optional image crop override for generated $tb_size on grids
-		global $counter;
-		global $columns;
-		global $tb_location;
 		global $post;
 
 		// Setup and extract $args
@@ -262,7 +256,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		extract( $args, EXTR_OVERWRITE );
 		
 		// Location and query string
-		$tb_location = $current_location;
+		$location = themeblvd_set_att( 'location', $current_location );
 		$query_string = themeblvd_get_posts_args( $args, $type, true );
 		$query_string = apply_filters( 'themeblvd_post_slider_args', $query_string, $args, $type, $current_location );
 
@@ -274,12 +268,16 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		
 		// Config before query string
 		if( $type == 'grid' ) {
+			$columns = themeblvd_set_att( 'columns', $columns );
 			$posts_per_slide = $columns*$rows;
-			$tb_size = themeblvd_grid_class( $columns );
-			$tb_crop = ! empty( $crop ) ? $crop : $tb_size;
+			$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
+			$crop = ! empty( $crop ) ? $crop : $size;
+			$crop = themeblvd_set_att( 'crop', $crop );
 		} else {
-			$tb_content = $content == 'default' ? themeblvd_get_option( 'blog_content', null, 'content' ) : $content;
-			$tb_size = $thumbs == 'default' ? themeblvd_get_option( 'blog_thumbs', null, 'small' ) : $thumbs;
+			$content = $content == 'default' ? themeblvd_get_option( 'blog_content', null, 'content' ) : $content;
+			$content = themeblvd_set_att( 'content', $content );
+			$size = $thumbs == 'default' ? themeblvd_get_option( 'blog_thumbs', null, 'small' ) : $thumbs;
+			$size = themeblvd_set_att( 'size', $size );
 		}
 		
 		// Get posts
@@ -313,7 +311,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 											/* Post Grid Loop
 											/*-------------------------------------------*/
 											
-											$counter = 1;
+											$counter = themeblvd_set_att( 'counter', 1 );
 											$per_slide_counter = 1;
 											$number_of_posts = count( $posts );
 
@@ -359,7 +357,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 													// if nothing else is happenning.
 													$per_slide_counter++;
 												}									
-												$counter++;
+												$counter = themeblvd_set_att( 'counter', $counter+1 );
 												
 											}
 											wp_reset_postdata();
@@ -370,7 +368,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 											/* Post List Loop
 											/*-------------------------------------------*/
 											
-											$counter = 1;
+											$counter = themeblvd_set_att( 'counter', 1 );
 											$per_slide_counter = 1;
 											$number_of_posts = count( $posts );
 											
@@ -400,7 +398,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 													// if nothing else is happenning.
 													$per_slide_counter++;
 												}
-												$counter++;
+												$counter = themeblvd_set_att( 'counter', $counter+1 );
 											}
 											wp_reset_postdata();
 										}
@@ -437,15 +435,12 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 if( ! function_exists( 'themeblvd_posts' ) ) {
 	function themeblvd_posts( $args = array(), $type = 'list', $current_location = 'primary' ) {
 		
-		global $tb_content; // $content (for lists)
-		global $tb_size; 	// $thumbs (for lists)
-		global $tb_crop; 	// Optional image crop override for generated $tb_size on grids
-		global $counter;
-		global $columns;
-		global $tb_location;
 		global $post;
 		global $more;
-		$tb_location = $current_location;
+		$more = 0;
+		
+		// Current location if relevant
+		$location = themeblvd_set_att( 'location', $current_location );
 		
 		// Setup and extract $args
 		$defaults = array(
@@ -481,11 +476,15 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 
 		// Config before query string
 		if( $type == 'grid' ) {
-			$tb_size = themeblvd_grid_class( $columns );			
-			$tb_crop = ! empty( $crop ) ? $crop : $tb_size;
+			$columns = themeblvd_set_att( 'columns', $columns );
+			$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );		
+			$crop = ! empty( $crop ) ? $crop : $size;
+			$crop = themeblvd_set_att( 'crop', $crop );
 		} else {
-			$tb_content = $content == 'default' ? themeblvd_get_option( 'blog_content', null, 'content' ) : $content;
-			$tb_size = $thumbs == 'default' ? themeblvd_get_option( 'blog_thumbs', null, 'small' ) : $thumbs;
+			$content = $content == 'default' ? themeblvd_get_option( 'blog_content', null, 'content' ) : $content;
+			$content = themeblvd_set_att( 'content', $content );
+			$size = $thumbs == 'default' ? themeblvd_get_option( 'blog_thumbs', null, 'small' ) : $thumbs;
+			$size = themeblvd_set_att( 'size', $size );
 		}
 		
 		// Apply filters
@@ -510,7 +509,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		if ( ! empty( $posts ) ) {
 			if( $type == 'grid' ) {
 				// Loop for post grid (i.e. Portfolio)
-				$counter = 1;
+				$counter = themeblvd_set_att( 'counter', 1 );
 				$number_of_posts = count( $posts );
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
@@ -518,7 +517,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 					get_template_part( 'content', themeblvd_get_part( 'grid' ) );
 					if( $counter % $columns == 0 ) themeblvd_close_row();
 					if( $counter % $columns == 0 && $number_of_posts != $counter ) themeblvd_open_row();
-					$counter++;
+					$counter = themeblvd_set_att( 'counter', $counter+1 );
 				}
 				wp_reset_postdata();
 				if( $number_of_posts % $columns != 0 ) themeblvd_close_row();
@@ -526,7 +525,6 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 				// Loop for post list (i.e. Blog)
 				foreach ( $posts as $post ) { 
 					setup_postdata( $post );
-					$more = 0;
 					get_template_part( 'content', themeblvd_get_part( 'list' ) );
 				}
 				wp_reset_postdata();
@@ -557,16 +555,12 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		
 		global $wp_query;
 		global $_themeblvd_paged;
-		global $tb_content;
-		global $tb_size;
-		global $tb_crop; // Optional image crop override for generated $tb_size on grids
-		global $counter;
-		global $columns;
-		global $tb_location;
 		global $more;
     	$more = 0;
-		$tb_location = $current_location;
 		$query_string = '';
+		
+		// Current location if relevant
+		$location = themeblvd_set_att( 'location', $current_location );
 		
 		// Setup and extract $args
 		$defaults = array(
@@ -584,15 +578,20 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		);
 		$args = wp_parse_args( $args, $defaults );
 		extract( $args, EXTR_OVERWRITE );
-
+		
 		// Config before query string
 		if( $type == 'grid' ) {
-			$tb_size = themeblvd_grid_class( $columns );
-			$tb_crop = ! empty( $crop ) ? $crop : $tb_size;
+			$columns = themeblvd_set_att( 'columns', $columns );
 			$posts_per_page = $rows ? $columns*$rows : '-1';
+			$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );		
+			$crop = ! empty( $crop ) ? $crop : $size;
+			$crop = themeblvd_set_att( 'crop', $crop );
 		} else {
-			$tb_content = $content == 'default' ? themeblvd_get_option( 'blog_content', null, 'content' ) : $content;
-			$tb_size = $thumbs == 'default' ? themeblvd_get_option( 'blog_thumbs', null, 'small' ) : $thumbs;
+			$posts_per_page = themeblvd_set_att( 'posts_per_page', $posts_per_page );
+			$content = $content == 'default' ? themeblvd_get_option( 'blog_content', null, 'content' ) : $content;
+			$content = themeblvd_set_att( 'content', $content );
+			$size = $thumbs == 'default' ? themeblvd_get_option( 'blog_thumbs', null, 'small' ) : $thumbs;
+			$size = themeblvd_set_att( 'size', $size );
 		}
 		
 		/*------------------------------------------------------*/
@@ -650,7 +649,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		
 		// Apply filters
 		$query_string = apply_filters( 'themeblvd_posts_args', $query_string, $args, $type, $current_location );
-		
+
 		/*------------------------------------------------------*/
 		/* The Loop
 		/*------------------------------------------------------*/
@@ -663,14 +662,14 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		if ( have_posts() ) {
 			if( $type == 'grid' ) {
 				// Loop for post grid (i.e. Portfolio)
-				$counter = 1;
+				$counter = themeblvd_set_att( 'counter', 1 );
 				while ( have_posts() ) { 
 					the_post();
 					if( $counter == 1 ) themeblvd_open_row();
 					get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
 					if( $counter % $columns == 0 ) themeblvd_close_row();
 					if( $counter % $columns == 0 && $posts_per_page != $counter ) themeblvd_open_row();
-					$counter++;
+					$counter = themeblvd_set_att( 'counter', $counter+1 );
 				}
 				if( ($counter-1) != $posts_per_page ) themeblvd_close_row();
 			} else {

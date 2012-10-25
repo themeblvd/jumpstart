@@ -454,6 +454,339 @@ function themeblvd_config( $key, $seconday = null ) {
 }
 
 /**
+ * At any time, this function can be called to effect 
+ * the global template attributes array which can 
+ * be utilized within template files.
+ *
+ * This system provides a way for attributes to be set 
+ * and retreived with themeblvd_get_att() from files 
+ * included with WP's get_template_part.
+ *
+ * @uses global $_themeblvd_template_atts
+ * @since 2.2.0
+ *
+ * @param array $atts Attributes to be merged with global attributes 
+ */
+
+if( ! function_exists( 'themeblvd_set_atts' ) ) {
+	function themeblvd_set_atts( $atts ) {
+		
+		global $_themeblvd_template_atts;
+		
+		// If no atts have been added, make
+		// sure it exists as an array.
+		if( ! $_themeblvd_template_atts )
+			$_themeblvd_template_atts = array();
+		
+		// Merge inputted $atts 
+		$_themeblvd_template_atts = array_merge( $_themeblvd_template_atts, $atts );
+		
+	}
+}
+
+/**
+ * Working with the system established in the 
+ * previous function, this function allows you
+ * to set an individual att along with creating 
+ * a new variable.
+ *
+ * @uses global $_themeblvd_template_atts
+ * @since 2.2.0
+ *
+ * @param array $atts Attributes to be merged with global attributes 
+ * @return string $value
+ */
+
+if( ! function_exists( 'themeblvd_set_att' ) ) {
+	function themeblvd_set_att( $key, $value ) {
+		
+		global $_themeblvd_template_atts;
+		
+		// If no atts have been added, make
+		// sure it exists as an array.
+		if( ! $_themeblvd_template_atts )
+			$_themeblvd_template_atts = array();
+		
+		// Add inputted attribute
+		$_themeblvd_template_atts[$key] = $value;
+		
+		// Return value just in case this needs to be stored.
+		// Ex: $value = themeblvd_set_att( 'key', 'value' );
+		return $value;
+		
+	}
+}
+
+/**
+ * Set template attributes for a page containing a 
+ * grid in the main query.
+ *
+ * @uses themeblvd_set_atts()
+ * @since 2.2.0
+ */
+
+if( ! function_exists( 'themeblvd_set_grid_atts' ) ) {
+	function themeblvd_set_grid_atts() {
+		
+		global $post;
+		
+		// Columns and rows
+		$columns = '';
+		$rows = '';
+		if( is_home() ){
+			$columns = themeblvd_get_option( 'index_grid_columns' );
+			$rows = themeblvd_get_option( 'index_grid_rows' );
+		} elseif( is_archive() ) {
+			$columns = themeblvd_get_option( 'archive_grid_columns' );
+			$rows = themeblvd_get_option( 'archive_grid_rows' );
+		} elseif( is_page_template( 'template_grid.php' ) ){
+			$possible_column_nums = array( 1, 2, 3, 4, 5 );
+			$custom_columns = get_post_meta( $post->ID, 'columns', true );
+			if( in_array( intval( $custom_columns ), $possible_column_nums ) )
+				$columns = $custom_columns;
+			$rows = get_post_meta( $post->ID, 'rows', true );
+		}
+		if( ! $columns )
+			$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
+		if( ! $rows )
+			$rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+		
+		// Posts per page, used for the grid display and not 
+		// the actual main query of posts.
+		$posts_per_page = $columns*$rows;
+		
+		// Thumbnail size
+		$size = themeblvd_grid_class( $columns );
+		$crop = '';
+		if( is_home() ){
+			$crop = apply_filters( 'themeblvd_index_grid_crop_size', $size );
+		} elseif( is_archive() ) {
+			$crop = apply_filters( 'themeblvd_archive_grid_crop_size', $size );
+		} elseif( is_page_template( 'template_grid.php' ) ) {
+			$crop = get_post_meta( $post->ID, 'crop', true );
+			if( ! $crop )
+				$crop = apply_filters( 'themeblvd_template_grid_crop_size', $size );
+		}
+		if( ! $crop )
+			$crop = $size;
+		
+		// Query String
+		$query_string = '';
+		if( is_home() ){
+			
+			// Categories
+			$exclude = themeblvd_get_option( 'index_grid_categories' );
+			if( $exclude ) {
+				$categories = 'cat=';
+				foreach( $exclude as $key => $value )
+					if( $value )
+						$categories .= '-'.$key.',';
+				$categories = themeblvd_remove_trailing_char( $categories, ',' );
+			}
+			if( isset( $categories ) )
+				$query_string .= $categories;
+			// Posts per page
+			$query_string .= 'posts_per_page='.$posts_per_page.'&';
+			// Pagination
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+			$query_string .= $paged;
+		
+		} elseif( is_page_template( 'template_grid.php' ) ) {
+			
+			$custom_query_string = get_post_meta( $post->ID, 'query', true );
+			if( $custom_query_string ) {
+				
+				// Custom query string
+				$query_string = htmlspecialchars_decode($custom_query_string).'&';
+				$query_string .= 'posts_per_page='.$posts_per_page.'&'; // User can't use posts_per_page in custom query
+				if ( get_query_var('paged') )
+			        $paged = get_query_var('paged');
+			    else if ( get_query_var('page') )
+			        $paged = get_query_var('page');
+				else
+			        $paged = 1;
+				$query_string .= 'paged='.$paged;
+			
+			} else {
+				
+				// Generated query string
+				$query_string = themeblvd_query_string( $posts_per_page );
+			
+			}
+		}
+		
+		// Set attributes
+		$atts = array(
+			'query_string' 		=> $query_string, 	// Only used for index.php and template_list.php
+			'columns' 			=> $columns,
+			'rows' 				=> $rows,
+			'posts_per_page' 	=> $posts_per_page,
+			'counter'			=> 0,
+			'size'				=> $size,
+			'crop'				=> $crop 			// Will be equal to "size" if not overridden
+		);
+		themeblvd_set_atts( apply_filters( 'themeblvd_grid_atts', $atts ) ); // Any atts you want available with themeblvd_get_att() in a template part can filtered on here.
+				
+	}
+}
+
+/**
+ * Set template attributes for a page containing a 
+ * list in the main query.
+ *
+ * @uses themeblvd_set_atts()
+ * @since 2.2.0
+ */
+
+if( ! function_exists( 'themeblvd_set_list_atts' ) ) {
+	function themeblvd_set_list_atts() {
+		
+		global $post;
+		
+		// Content
+		$content = 'content'; // Can be "content" or "excerpt"
+		if( is_home() )
+			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_blog_content_default', 'content' ) );
+		elseif( is_archive() )
+			$content = themeblvd_get_option( 'archive_content', null, apply_filters( 'themeblvd_archive_content_default', 'content' ) );
+		elseif( is_page_template( 'template_list.php' ) )
+			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_list_template_content_default', 'content' ) );
+		
+		// Query string
+		$query_string = '';
+		if( is_home() ) {
+			
+			// Generated default query string
+			$query_string = themeblvd_query_string();
+		
+		} elseif( is_page_template( 'template_list.php' ) ) {
+			
+			// If user has put ina custom query string to the page 
+			// template, we'll work with, but if not, we'll use 
+			// the default generated one. @uses "query" custom field.
+			$custom_query_string = get_post_meta( $post->ID, 'query', true );
+			if( $custom_query_string ) {
+				// Custom query string
+				$query_string = htmlspecialchars_decode($custom_query_string).'&';
+				if ( get_query_var('paged') )
+			        $paged = get_query_var('paged');
+			    else if ( get_query_var('page') )
+			        $paged = get_query_var('page');
+				else
+			        $paged = 1;
+				$query_string .= 'paged='.$paged;
+			
+			} else {
+				// Generated query string
+				$query_string = themeblvd_query_string();
+			}
+		}
+			
+		// Set attributes
+		$atts = array(
+			'query_string' 	=> $query_string, // Only used for index.php and template_list.php
+			'content' 		=> $content
+		);
+		themeblvd_set_atts( apply_filters( 'themeblvd_list_atts', $atts ) ); // Any atts you want available with themeblvd_get_att() in a template part can filtered on here.
+	}
+}
+
+/**
+ * Retrieve a single attribute set with 
+ * themeblvd_set_atts()
+ *
+ * @uses global $_themeblvd_template_atts
+ * @since 2.2.0
+ *
+ * @param string $key Array key to pull value from on $_themeblvd_template_atts
+ * @return string $value Value pulled from $_themeblvd_template_atts based on inputted $key
+ */
+
+if( ! function_exists( 'themeblvd_get_att' ) ) {
+	function themeblvd_get_att( $key ) {
+		
+		global $_themeblvd_template_atts;
+		$value = '';
+		
+		// Set value if the array key exists
+		if( isset( $_themeblvd_template_atts[$key] ) )
+			$value = $_themeblvd_template_atts[$key];
+		
+		return $value;
+	}
+}
+
+/**
+ * This function is hooked to 'wp' in the loading 
+ * process to setup any template attributes required 
+ * for specific theme files.
+ *
+ * @since 2.2.0
+ */
+
+if( ! function_exists( 'themeblvd_atts_init' ) ) {
+	function themeblvd_atts_init() {
+		
+		global $post;
+		
+		/*---------------------------------*/
+		/* Index/Archive
+		/*---------------------------------*/
+		
+		if( is_home() || is_archive() ) {
+			
+			// Possible template part ID's that will trigger the 
+			// grid layout on main post loops
+			$archive_grid_parts = apply_filters( 'archive_grid_parts', array( 'grid', 'index_grid' ) );
+			
+			// Template part the check against
+			$template_part = is_archive() ? themeblvd_get_part( 'archive' ) : themeblvd_get_part( 'index' );
+			
+			// Set global attributes for the primary query based on 
+			// whether this is a grid or list display.
+			if( in_array( $template_part, $archive_grid_parts ) )
+				themeblvd_set_grid_atts();
+			else
+				themeblvd_set_list_atts();
+			
+		}
+		
+		/*---------------------------------*/
+		/* Single Posts
+		/*---------------------------------*/
+		
+		if( is_single() ) {
+			
+			$show_meta = true;
+			if( themeblvd_get_option( 'single_meta', null, 'show' ) == 'hide' )
+				$show_meta = false;
+			if( get_post_meta( $post->ID, '_tb_meta', true ) == 'hide' )
+				$show_meta = false;
+			else if( get_post_meta( $post->ID, '_tb_meta', true ) == 'show' )
+				$show_meta = true;
+				
+			themeblvd_set_atts( apply_filters( 'themeblvd_single_atts', array( 'show_meta', $show_meta ) ) ); // Any atts you want available with themeblvd_get_att() in a template part can filtered on here.
+			
+		}
+		
+		/*---------------------------------*/
+		/* Post List Page Template
+		/*---------------------------------*/
+		
+		if( is_page_template( 'template_list.php' ) )
+			themeblvd_set_list_atts();
+		
+		/*---------------------------------*/
+		/* Post Grid Page Template
+		/*---------------------------------*/
+		
+		if( is_page_template( 'template_grid.php' ) )
+			themeblvd_set_grid_atts();
+		
+	}
+}
+
+/**
  * Load framework's JS scripts 
  *
  * To add scripts or remove unwanted scripts that you 
@@ -789,8 +1122,16 @@ if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
 		
 		if( ! $new_posts_per_page ) {
 			if( is_archive() || is_home() && $query->is_main_query() ) {
+				
+				// Possible template part ID's that will trigger the 
+				// grid layout on main post loops
+				$archive_grid_parts = apply_filters( 'archive_grid_parts', array( 'grid', 'index_grid' ) );
+				
+				// Template part the check against
 				$template_part = is_archive() ? themeblvd_get_part( 'archive' ) : themeblvd_get_part( 'index' );
-				if( $template_part == 'grid' || $template_part == 'index_grid' ) {
+				
+				// Only move forward if internal archive system should display in grid format.
+				if( in_array( $template_part, $archive_grid_parts ) ) {
 					// Columns
 					$columns = themeblvd_get_option( 'archive_grid_columns' );
 					if( ! $columns ) $columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
@@ -800,6 +1141,7 @@ if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
 					// Posts per page = $columns x $rows
 					$new_posts_per_page = $columns * $rows;
 				}
+				
 			}
 		}
 		
