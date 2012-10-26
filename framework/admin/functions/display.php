@@ -412,9 +412,12 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	
 	if( in_array ( 'widget', $options ) )
 		$sources['widget'] = __( 'Floating Widget Area', 'themeblvd' );
+	
+	if( in_array ( 'current', $options ) )
+		$sources['current'] = __( 'Content of Current Page', 'themeblvd' );
 		
 	if( in_array ( 'page', $options ) )
-		$sources['page'] = __( 'External Page', 'themeblvd' );
+		$sources['page'] = __( 'Content of External Page', 'themeblvd' );
 	
 	if( in_array ( 'raw', $options ) )
 		$sources['raw'] = __( 'Raw Content', 'themeblvd' );

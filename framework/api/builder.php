@@ -74,7 +74,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Configure the content for the first column.', 'themeblvd' ),
 				'type'		=> 'content',
 				'class'		=> 'col_1',
-				'options'	=> array( 'widget', 'page', 'raw' )
+				'options'	=> array( 'widget', 'current', 'page', 'raw' )
 			),
 			array(
 				'id' 		=> 'col_2',
@@ -82,7 +82,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Configure the content for the second column.', 'themeblvd' ),
 				'type'		=> 'content',
 				'class'		=> 'col_2',
-				'options'	=> array( 'widget', 'page', 'raw' )
+				'options'	=> array( 'widget', 'current', 'page', 'raw' )
 			),
 			array(
 				'id' 		=> 'col_3',
@@ -90,7 +90,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Configure the content for the third column.', 'themeblvd' ),
 				'type'		=> 'content',
 				'class'		=> 'col_3',
-				'options'	=> array( 'widget', 'page', 'raw' )
+				'options'	=> array( 'widget', 'current', 'page', 'raw' )
 			),
 			array(
 				'id' 		=> 'col_4',
@@ -98,7 +98,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Configure the content for the fourth column.', 'themeblvd' ),
 				'type'		=> 'content',
 				'class'		=> 'col_4',
-				'options'	=> array( 'widget', 'page', 'raw' )
+				'options'	=> array( 'widget', 'current', 'page', 'raw' )
 			),
 			array(
 				'id' 		=> 'col_5',
@@ -106,7 +106,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Configure the content for the fifth column.', 'themeblvd' ),
 				'type'		=> 'content',
 				'class'		=> 'col_5',
-				'options'	=> array( 'widget', 'page', 'raw' )
+				'options'	=> array( 'widget', 'current', 'page', 'raw' )
 			),
 			array(
 		    	'type'		=> 'subgroup_end'

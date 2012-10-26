@@ -333,7 +333,7 @@ function themeblvd_sanitize_content( $input ) {
 	$output = array();
 	
 	// Verify type
-	$types = array( 'widget', 'page', 'raw' );
+	$types = array( 'widget', 'current', 'page', 'raw' );
 	if( in_array( $input['type'], $types ) )
 		$output['type'] = $input['type'];
 	else

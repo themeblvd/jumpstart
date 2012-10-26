@@ -45,6 +45,11 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 						echo '</div><!-- .widget-area (end) -->';
 					}
 					break;
+				case 'current' :
+					$current_page_id = themeblvd_config( 'id' );
+					$current_page = get_page( $current_page_id );
+					echo apply_filters( 'the_content', $current_page->post_content );
+					break;
 				case 'page' :
 					if( ! empty( $column['page'] ) ) {
 						// Get WP internal ID for the page
