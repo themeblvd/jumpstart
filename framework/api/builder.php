@@ -220,7 +220,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			array(
 				'id' 		=> 'text',
 				'name'		=> __( 'Headline Text', 'themeblvd' ),
-				'desc'		=> __( 'Enter in the text you\'d like to use for your headline. It is better if you use plain text here and not try and use HTML tags.', 'themeblvd' ),
+				'desc'		=> __( 'Enter in the text you\'d like to use for your headline. It is better if you use plain text here and not try and use HTML tags. Additionally, if you\'d like to automatically pull the title from the current page, insert <em>%page_title%</em> here.', 'themeblvd' ),
 				'type'		=> 'textarea',
 			),
 			array(

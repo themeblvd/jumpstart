@@ -207,6 +207,9 @@ if( ! function_exists( 'themeblvd_headline' ) ) {
 		$args = wp_parse_args( $args, $defaults );
 		extract( $args, EXTR_OVERWRITE );
 		
+		// Swap in current page's title for %page_title%
+		$text = str_replace( '%page_title%', get_the_title( themeblvd_config( 'id' ) ), $text );
+		
 		// Output
 		$output = '<'.$tag.' class="text-'.$align.'">';
 		$output .= stripslashes( $text );
