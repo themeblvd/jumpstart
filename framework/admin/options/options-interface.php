@@ -60,9 +60,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		// opposed to sub groups, which are used to section off the code 
 		// for hidden purposes.
 	   	if( $value['type'] == 'section_start' ) {
-	   		if( isset( $value['class'] ) ) $class = ' '.$value['class'];
+	   		$name = ! empty( $value['name'] ) ? esc_html( $value['name'] ) : '';
+	   		if( isset( $value['class'] ) )
+	   			$class = ' '.$value['class'];
+	   		if( ! $name ) 
+	   			$class .= ' no-name';
 	   		$output .= '<div class="postbox inner-section'.$class.'">';
-	   		$output .= '<h3>' . esc_html( $value['name'] ) . '</h3>';
+	   		if( $name )
+	   			$output .= '<h3>'.$name.'</h3>';
 	   		if( isset($value['desc']) ) $output .= '<div class="section-description">'.$value['desc'].'</div>';
 	   		continue;
 	   	}
