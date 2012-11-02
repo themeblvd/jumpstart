@@ -3,10 +3,10 @@
  * Template Name: Post Grid
  *
  * WARNING: This template file is a core part of the 
- * Theme Blvd WordPress Framework. This framework is 
- * designed around this file NEVER being altered. It 
- * is advised that any edits to the way this file 
- * displays its content be done with via hooks and filters.
+ * Theme Blvd WordPress Framework. It is advised
+ * that any edits to the way this file displays its
+ * content be done with via hooks, filters, and
+ * template parts.
  *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
