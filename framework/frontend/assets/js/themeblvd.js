@@ -136,6 +136,7 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 		
 	$('a[rel^="themeblvd_lightbox"], a[rel^="featured_themeblvd_lightbox"]').prettyPhoto({
+		theme: themeblvd.prettyphoto_theme, // Filter with themeblvd_js_locals
 		social_tools: false, // Share icons are not compatible with IE9
 		deeplinking: false,
 		overlay_gallery: false,
