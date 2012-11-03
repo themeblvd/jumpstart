@@ -339,6 +339,11 @@ code.block {
 	background-color: #454545;
 }
 
+/* Alerts */
+.alert p:last-child {
+	margin-bottom: 0;
+}
+
 /* =Responsive Elements
 -------------------------------------------------------------- */
 
@@ -1590,6 +1595,9 @@ ul.tb-icon-list {
 	margin: 15px 0;
 	padding: 15px 17px;
 	position: relative;
+}
+.info-box p:last-child {
+	margin-bottom: 0;
 }
 .info-box-has-icon {
 	padding-left: 36px;
