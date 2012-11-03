@@ -89,3 +89,21 @@ if( ! function_exists( 'themeblvd_get_local' ) ) {
 		return $text;
 	}
 }
+
+/**
+ * Setup JavaScript localized strings for 
+ * themeblvd.js
+ *
+ * The filter "themeblvd_js_locals"
+ * can be used to add/remove strings.
+ *
+ * @since 2.2.0
+ */
+
+function themeblvd_get_js_locals() {
+	$locals = array ( 
+		'prettyphoto_theme' => 'pp_default'
+	);
+	// Return with framework's filter applied
+	return apply_filters( 'themeblvd_js_locals', $locals );
+}
