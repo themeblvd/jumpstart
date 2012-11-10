@@ -27,7 +27,7 @@ function jumpstart_updates(){
 	
 	// Args
 	$args = array( 
-		'remote_api_url' 	=> 'http://themeblvd.local/network/jumpstart',	// Store URL
+		'remote_api_url' 	=> 'http://wpjumpstart.com',	// Store URL
 		'item_name' 		=> $theme_data->get('Name')		// Name of the theme
 	);
 	
