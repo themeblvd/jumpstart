@@ -28,6 +28,8 @@ class EDD_SL_Theme_Updater {
 		$this->remote_api_url = $remote_api_url;
 		$this->response_key = $this->theme_slug . '-update-response';
 		
+		// DEBUG
+		// delete_transient( $this->theme_slug . '-update-response' );
 		
 		add_filter( 'site_transient_update_themes', array( &$this, 'theme_update_transient' ) );
 		add_filter( 'delete_site_transient_update_themes', array( &$this, 'delete_theme_update_transient' ) );
