@@ -109,7 +109,7 @@ class Theme_Blvd_License_Admin {
 								<label class="description" for="themeblvd_license_key"><?php _e('Enter your license key'); ?></label>
 							</td>
 						</tr>
-						<?php if( false !== $license ) : ?>
+						<?php if( $license ) : ?>
 							<tr valign="top">	
 								<th scope="row" valign="top">
 									<?php _e( 'Activate License', 'themeblvd' ); ?>
