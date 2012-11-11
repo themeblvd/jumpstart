@@ -691,7 +691,10 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 			echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 		}
 		themeblvd_pagination();
-		echo '</div><!-- .post_'.$type.' (end) -->';		
+		echo '</div><!-- .post_'.$type.' (end) -->';	
+		
+		// Reset Query
+		wp_reset_query();	
 	}
 }
 

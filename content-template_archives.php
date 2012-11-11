@@ -14,7 +14,7 @@
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <?php $wp_query->is_home = false; ?>
                 <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> - <?php the_time(get_option('date_format')); ?> - <?php echo $post->comment_count ?> <?php echo themeblvd_get_local('comments'); ?></li>
-            <?php endwhile; endif; ?>
+            <?php endwhile; endif; wp_reset_query(); ?>
         </ul>
         <h2><?php echo themeblvd_get_local( 'categories' ); ?></h2>
         <ul>

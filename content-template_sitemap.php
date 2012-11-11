@@ -24,7 +24,7 @@
                 <ul>
                     <?php while (have_posts()) : the_post(); ?>
                     <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> - <?php echo themeblvd_get_local( 'comments' ); ?> (<?php echo $post->comment_count ?>)</li>
-                    <?php endwhile;  ?>
+                    <?php endwhile; wp_reset_query(); ?>
                 </ul>
         <?php endforeach; ?>
 	</div><!-- .entry-content (end) -->

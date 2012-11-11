@@ -49,6 +49,7 @@ get_header();
 								} else {
 									echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 								}
+								wp_reset_query();
 								?>
 							</div><!-- .grid-protection (end) -->
 							<?php themeblvd_pagination(); ?>

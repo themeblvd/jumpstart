@@ -52,6 +52,7 @@ get_header();
 									} else {
 										echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 									}
+									wp_reset_query();
 									?>
 								</div><!-- .grid-protection (end) -->
 								<?php themeblvd_pagination(); ?>
@@ -71,7 +72,7 @@ get_header();
 									<?php endwhile; ?>
 								<?php else : ?>
 									<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
-								<?php endif; ?>
+								<?php endif; wp_reset_query(); ?>
 								<?php themeblvd_pagination(); ?>
 							</div><!-- .blogroll (end) -->
 							
