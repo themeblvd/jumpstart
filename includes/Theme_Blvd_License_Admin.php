@@ -73,8 +73,9 @@ class Theme_Blvd_License_Admin {
 			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 			
 			// $license_data->license will be either "active" or "inactive"
-	
-			update_option( 'themeblvd_license_key_status', $license_data->license );
+			
+			if( isset( $license_data->license ) )
+				update_option( 'themeblvd_license_key_status', $license_data->license );
 	
 		}
 	}
