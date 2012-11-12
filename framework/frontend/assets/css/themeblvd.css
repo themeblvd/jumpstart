@@ -2176,6 +2176,7 @@ div.pp_default .pp_description {
 }
 .standard-slider .slide .media {
 	position: relative;
+	margin: 0; /* Bootstrap override */
 }
 .standard-slider .slide .image-link {
 	position: absolute;
