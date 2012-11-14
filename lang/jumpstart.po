@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jump Start\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-09 16:52-1000\n"
-"PO-Revision-Date: 2012-09-09 16:52-1000\n"
+"POT-Creation-Date: 2012-11-14 14:28-1000\n"
+"PO-Revision-Date: 2012-11-14 14:28-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -118,161 +118,165 @@ msgid "Floating Widget Area"
 msgstr ""
 
 #: ../framework/admin/functions/display.php:417
-msgid "External Page"
+msgid "Content of Current Page"
 msgstr ""
 
 #: ../framework/admin/functions/display.php:420
+msgid "Content of External Page"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:423
 msgid "Raw Content"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:443
+#: ../framework/admin/functions/display.php:446
 #, php-format
 msgid "In order for you to use this feature you need to have the %s plugin activated."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:463
+#: ../framework/admin/functions/display.php:466
 msgid "You haven't created any floating widget areas."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:489
+#: ../framework/admin/functions/display.php:492
 msgid "You haven't created any pages."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:508
+#: ../framework/admin/functions/display.php:511
 msgid "Apply WordPress automatic formatting."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:521
+#: ../framework/admin/functions/display.php:524
 msgid "Select from your floating custom widget areas. In order for a custom widget area to be \"floating\" you must have it configured this way in the Widget Area manager."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:528
+#: ../framework/admin/functions/display.php:531
 msgid "Select an external page to pull content from."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:535
+#: ../framework/admin/functions/display.php:538
 msgid "You can use basic HTML here, and most shortcodes."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:634
+#: ../framework/admin/functions/display.php:637
 msgid "Enter in a comma-separated list of the post slugs you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:635
+#: ../framework/admin/functions/display.php:638
 msgid "Example: post-1, post-2, post-3"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:636
+#: ../framework/admin/functions/display.php:639
 msgid "Note: Any post slugs entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:677
+#: ../framework/admin/functions/display.php:680
 msgid "Enter in a comma-separated list of the tags you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:678
+#: ../framework/admin/functions/display.php:681
 msgid "Example: tag-1, tag-2, tag-3"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:679
+#: ../framework/admin/functions/display.php:682
 msgid "Note: Any tags entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:697
+#: ../framework/admin/functions/display.php:700
 msgid "Enter in a custom <a href=\"http://codex.wordpress.org/Conditional_Tags\" target=\"_blank\">conditional statement</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:698
+#: ../framework/admin/functions/display.php:701
 msgid "Examples:"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:699
+#: ../framework/admin/functions/display.php:702
 msgid "Warning: Make sure you know what you're doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:735
+#: ../framework/admin/functions/display.php:738
 msgid "Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:736
+#: ../framework/admin/functions/display.php:739
 msgid "Site Title + Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:737
+#: ../framework/admin/functions/display.php:740
 msgid "Custom Text"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:738
+#: ../framework/admin/functions/display.php:741
 msgid "Image"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:752
-#: ../framework/admin/functions/display.php:762
+#: ../framework/admin/functions/display.php:755
+#: ../framework/admin/functions/display.php:765
 msgid "Current Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:754
+#: ../framework/admin/functions/display.php:757
 msgid "You can change your site title and tagline by going <a href=\"options-general.php\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:764
+#: ../framework/admin/functions/display.php:767
 msgid "Current Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:766
+#: ../framework/admin/functions/display.php:769
 msgid "You can change your site title by going <a href=\"options-general.php\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:775
+#: ../framework/admin/functions/display.php:778
 msgid "Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:777
+#: ../framework/admin/functions/display.php:780
 msgid "Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:777
+#: ../framework/admin/functions/display.php:780
 msgid "optional"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:779
+#: ../framework/admin/functions/display.php:782
 msgid "Insert your custom text."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:797
+#: ../framework/admin/functions/display.php:800
 msgid "Standard Image"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:803
+#: ../framework/admin/functions/display.php:806
 msgid "Retina-optimized Image (optional)"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:808
+#: ../framework/admin/functions/display.php:811
 msgid "Use the \"Upload\" button to either upload an image or select an image from your media library. When inserting an image with the \"Upload\" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you're inputting a \"Retina-optimized\" image, it should be twice as large as you intend it to be displayed. Feel free to leave the retina image field blank if you'd like it to simply not have any effect."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:928
+#: ../framework/admin/functions/display.php:931
 msgid "Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:930
+#: ../framework/admin/functions/display.php:933
 msgid "Default Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:953
+#: ../framework/admin/functions/display.php:956
 #, php-format
 msgid "In order to use the \"Custom Layout\" template, you must have the %s plugin installed."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:958
+#: ../framework/admin/functions/display.php:961
 msgid "Custom Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:966
+#: ../framework/admin/functions/display.php:969
 msgid "You haven't created any custom layouts in the Layout builder yet."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:988
+#: ../framework/admin/functions/display.php:991
 msgid "Changelog"
 msgstr ""
 
@@ -584,23 +588,23 @@ msgstr ""
 
 #: ../framework/admin/options/class-tb-options-page.php:26
 #: ../framework/admin/options/class-tb-options-page.php:27
-#: ../framework/api/helpers.php:328
+#: ../framework/api/helpers.php:326
 msgid "Theme Options"
 msgstr ""
 
-#: ../framework/admin/options/class-tb-options-page.php:171
+#: ../framework/admin/options/class-tb-options-page.php:179
 msgid "Default options restored."
 msgstr ""
 
-#: ../framework/admin/options/class-tb-options-page.php:180
+#: ../framework/admin/options/class-tb-options-page.php:188
 msgid "Options cleared from database."
 msgstr ""
 
-#: ../framework/admin/options/class-tb-options-page.php:217
+#: ../framework/admin/options/class-tb-options-page.php:225
 msgid "Options saved."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:292
+#: ../framework/admin/options/options-interface.php:297
 msgid "Enter the name of a font from the <a href=\"http://www.google.com/webfonts\" target=\"_blank\">Google Font Directory</a>."
 msgstr ""
 
@@ -666,7 +670,7 @@ msgid "Return to Required Plugins Installer"
 msgstr ""
 
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:179
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1846
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1857
 #: ../framework/admin/plugins/plugins.php:103
 msgid "Plugin activated successfully."
 msgstr ""
@@ -677,7 +681,7 @@ msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:517
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2058
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2069
 msgid "Return to the Dashboard"
 msgstr ""
 
@@ -690,149 +694,149 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1091
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1102
 msgid "External Link"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1096
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1107
 msgid "Private Repository"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1099
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1110
 msgid "Pre-Packaged"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1103
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1114
 msgid "WordPress Repository"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1106
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1117
 msgid "Required"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1106
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1117
 msgid "Recommended"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1109
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1120
 msgid "Not Installed"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1111
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1122
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1281
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1292
 #, php-format
 msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1297
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1308
 msgid "Plugin"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1298
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1309
 msgid "Source"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1299
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1310
 #: ../framework/api/customizer.php:144
 msgid "Type"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1300
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1311
 msgid "Status"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1318
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1329
 msgid "Install"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1319
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1330
 msgid "Activate"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1829
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1840
 msgid "Install package not available."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1830
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1841
 #, php-format
 msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1831
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1842
 msgid "Unpacking the package&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1832
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1843
 msgid "Installing the plugin&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1833
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1844
 msgid "Plugin install failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1834
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1845
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1845
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1856
 msgid "Plugin activation failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1955
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1966
 msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1956
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1967
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1956
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1965
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1967
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1976
 msgid "Show Details"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1956
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1965
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1967
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1976
 msgid "Hide Details"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1957
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1968
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1958
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1969
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1962
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1973
 msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1963
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1974
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1964
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1975
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1965
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1976
 #, php-format
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1966
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1977
 msgid "All installations have been completed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1967
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1978
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
@@ -928,9 +932,9 @@ msgstr ""
 #: ../framework/api/builder.php:829
 #: ../framework/api/builder.php:973
 #: ../framework/api/builder.php:995
-#: ../framework/api/builder.php:1092
-#: ../framework/api/builder.php:1209
-#: ../framework/api/builder.php:1260
+#: ../framework/api/builder.php:1093
+#: ../framework/api/builder.php:1210
+#: ../framework/api/builder.php:1261
 msgid "Responsive Visibility "
 msgstr ""
 
@@ -945,9 +949,9 @@ msgstr ""
 #: ../framework/api/builder.php:830
 #: ../framework/api/builder.php:974
 #: ../framework/api/builder.php:996
-#: ../framework/api/builder.php:1093
-#: ../framework/api/builder.php:1210
-#: ../framework/api/builder.php:1261
+#: ../framework/api/builder.php:1094
+#: ../framework/api/builder.php:1211
+#: ../framework/api/builder.php:1262
 msgid "Select any resolutions you'd like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that's hidden only on standard screen resolutions to take its place.</em>"
 msgstr ""
 
@@ -969,6 +973,10 @@ msgstr ""
 
 #: ../framework/api/builder.php:140
 msgid "Raw content"
+msgstr ""
+
+#: ../framework/api/builder.php:147
+msgid "External Page"
 msgstr ""
 
 #: ../framework/api/builder.php:148
@@ -1008,7 +1016,7 @@ msgid "Headline Text"
 msgstr ""
 
 #: ../framework/api/builder.php:223
-msgid "Enter in the text you'd like to use for your headline. It is better if you use plain text here and not try and use HTML tags."
+msgid "Enter in the text you'd like to use for your headline. It is better if you use plain text here and not try and use HTML tags. Additionally, if you'd like to automatically pull the title from the current page, insert <em>%page_title%</em> here."
 msgstr ""
 
 #: ../framework/api/builder.php:229
@@ -1600,219 +1608,223 @@ msgstr ""
 msgid "Select how you want the button to open the webpage."
 msgstr ""
 
-#: ../framework/api/builder.php:1110
-msgid "Setup Tabs"
+#: ../framework/api/builder.php:1085
+msgid "Lightbox Popup"
 msgstr ""
 
 #: ../framework/api/builder.php:1111
+msgid "Setup Tabs"
+msgstr ""
+
+#: ../framework/api/builder.php:1112
 msgid "Choose the number of tabs along with inputting a name for each one. These names are what will appear on the actual tab buttons across the top of the tab set."
 msgstr ""
 
-#: ../framework/api/builder.php:1116
+#: ../framework/api/builder.php:1117
 msgid "Fixed Height"
 msgstr ""
 
-#: ../framework/api/builder.php:1117
+#: ../framework/api/builder.php:1118
 msgid "Enter in a number of pixels for a fixed height if you'd like to do so. Ex: 400<br><br>This can help with \"page jumping\" in the case that not all tabs have equal amount of content. It can also help in the case when you're getting unwanted scrollbars on the inner content areas of tabs. This is optional."
 msgstr ""
 
-#: ../framework/api/builder.php:1122
+#: ../framework/api/builder.php:1123
 msgid "Tab #1 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1123
+#: ../framework/api/builder.php:1124
 msgid "Configure the content for the first tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1129
+#: ../framework/api/builder.php:1130
 msgid "Tab #2 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1130
+#: ../framework/api/builder.php:1131
 msgid "Configure the content for the second tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1136
+#: ../framework/api/builder.php:1137
 msgid "Tab #3 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1137
+#: ../framework/api/builder.php:1138
 msgid "Configure the content for the third tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1143
+#: ../framework/api/builder.php:1144
 msgid "Tab #4 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1144
+#: ../framework/api/builder.php:1145
 msgid "Configure the content for the fourth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1150
+#: ../framework/api/builder.php:1151
 msgid "Tab #5 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1151
+#: ../framework/api/builder.php:1152
 msgid "Configure the content for the fifth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1157
+#: ../framework/api/builder.php:1158
 msgid "Tab #6 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1158
+#: ../framework/api/builder.php:1159
 msgid "Configure the content for the sixth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1164
+#: ../framework/api/builder.php:1165
 msgid "Tab #7 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1165
+#: ../framework/api/builder.php:1166
 msgid "Configure the content for the seventh tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1171
+#: ../framework/api/builder.php:1172
 msgid "Tab #8 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1172
+#: ../framework/api/builder.php:1173
 msgid "Configure the content for the eighth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1178
+#: ../framework/api/builder.php:1179
 msgid "Tab #9 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1179
+#: ../framework/api/builder.php:1180
 msgid "Configure the content for the ninth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1185
+#: ../framework/api/builder.php:1186
 msgid "Tab #10 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1186
+#: ../framework/api/builder.php:1187
 msgid "Configure the content for the tenth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1192
+#: ../framework/api/builder.php:1193
 msgid "Tab #11 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1193
+#: ../framework/api/builder.php:1194
 msgid "Configure the content for the eleventh tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1199
+#: ../framework/api/builder.php:1200
 msgid "Tab #12 Content"
 msgstr ""
 
-#: ../framework/api/builder.php:1200
+#: ../framework/api/builder.php:1201
 msgid "Configure the content for the twelfth tab."
 msgstr ""
 
-#: ../framework/api/builder.php:1224
+#: ../framework/api/builder.php:1225
 msgid "Twitter Account"
 msgstr ""
 
-#: ../framework/api/builder.php:1225
+#: ../framework/api/builder.php:1226
 msgid "Enter the Twitter username you'd like to pull the most recent tweet from."
 msgstr ""
 
-#: ../framework/api/builder.php:1231
+#: ../framework/api/builder.php:1232
 msgid "Icon"
 msgstr ""
 
-#: ../framework/api/builder.php:1232
+#: ../framework/api/builder.php:1233
 msgid "Enter any Font Awesome icon ID; this icon will then display next to the Tweet. Set this option blank to not use any icon. Examples: twitter, pencil, warning-sign, etc. "
 msgstr ""
 
-#: ../framework/api/builder.php:1238
+#: ../framework/api/builder.php:1239
 msgid "Tweet Meta Info"
 msgstr ""
 
-#: ../framework/api/builder.php:1239
+#: ../framework/api/builder.php:1240
 msgid "Select whether you'd like information about the current tweet displayed below it."
 msgstr ""
 
-#: ../framework/api/builder.php:1243
+#: ../framework/api/builder.php:1244
 msgid "Show meta info below tweet."
 msgstr ""
 
-#: ../framework/api/builder.php:1244
+#: ../framework/api/builder.php:1245
 msgid "Hide meta info below tweet."
 msgstr ""
 
-#: ../framework/api/builder.php:1249
+#: ../framework/api/builder.php:1250
 msgid "Exclude @replies?"
 msgstr ""
 
-#: ../framework/api/builder.php:1250
+#: ../framework/api/builder.php:1251
 msgid "Select whether or not you'd like to exclude @replies for the current tweet."
 msgstr ""
 
-#: ../framework/api/builder.php:1254
+#: ../framework/api/builder.php:1255
 msgid "Yes, exclude @replies."
 msgstr ""
 
-#: ../framework/api/builder.php:1255
+#: ../framework/api/builder.php:1256
 msgid "No, do not exclude @replies."
 msgstr ""
 
-#: ../framework/api/builder.php:1283
+#: ../framework/api/builder.php:1284
 msgid "Row of columns with custom content"
 msgstr ""
 
-#: ../framework/api/builder.php:1294
+#: ../framework/api/builder.php:1295
 msgid "Content from external page or current page"
 msgstr ""
 
-#: ../framework/api/builder.php:1305
+#: ../framework/api/builder.php:1306
 msgid "Simple divider line to break up content"
 msgstr ""
 
-#: ../framework/api/builder.php:1316
+#: ../framework/api/builder.php:1317
 msgid "Simple <H> header title"
 msgstr ""
 
-#: ../framework/api/builder.php:1327
+#: ../framework/api/builder.php:1328
 msgid "Full paginated grid of posts"
 msgstr ""
 
-#: ../framework/api/builder.php:1338
+#: ../framework/api/builder.php:1339
 msgid "Grid of posts followed by optional link"
 msgstr ""
 
-#: ../framework/api/builder.php:1349
+#: ../framework/api/builder.php:1350
 msgid "Slider of posts in a grid"
 msgstr ""
 
-#: ../framework/api/builder.php:1360
+#: ../framework/api/builder.php:1361
 msgid "Full paginated list of posts"
 msgstr ""
 
-#: ../framework/api/builder.php:1371
+#: ../framework/api/builder.php:1372
 msgid "List of posts followed by optional link"
 msgstr ""
 
-#: ../framework/api/builder.php:1382
+#: ../framework/api/builder.php:1383
 msgid "Slider of posts listed out"
 msgstr ""
 
-#: ../framework/api/builder.php:1393
+#: ../framework/api/builder.php:1394
 msgid "User-built slideshow"
 msgstr ""
 
-#: ../framework/api/builder.php:1404
+#: ../framework/api/builder.php:1405
 msgid "Slogan with optional button"
 msgstr ""
 
-#: ../framework/api/builder.php:1415
+#: ../framework/api/builder.php:1416
 msgid "Set of tabbed content"
 msgstr ""
 
-#: ../framework/api/builder.php:1426
+#: ../framework/api/builder.php:1427
 msgid "Shows the most recent tweet from a Twitter account"
 msgstr ""
 
@@ -1829,7 +1841,7 @@ msgid "Google Font Name"
 msgstr ""
 
 #: ../framework/api/customizer.php:400
-#: ../framework/api/helpers.php:1405
+#: ../framework/api/helpers.php:1399
 msgid "Homepage"
 msgstr ""
 
@@ -1868,485 +1880,485 @@ msgstr ""
 msgid "Browse Google Fonts"
 msgstr ""
 
-#: ../framework/api/helpers.php:138
+#: ../framework/api/helpers.php:136
 #, php-format
 msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s"
 msgstr ""
 
-#: ../framework/api/helpers.php:140
+#: ../framework/api/helpers.php:138
 #, php-format
 msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead."
 msgstr ""
 
-#: ../framework/api/helpers.php:142
+#: ../framework/api/helpers.php:140
 #, php-format
 msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available."
 msgstr ""
 
-#: ../framework/api/helpers.php:288
+#: ../framework/api/helpers.php:286
 msgid "Primary Navigation"
 msgstr ""
 
-#: ../framework/api/helpers.php:289
+#: ../framework/api/helpers.php:287
 msgid "Footer Navigation"
 msgstr ""
 
-#: ../framework/api/helpers.php:341
+#: ../framework/api/helpers.php:339
 msgid "Widget Areas"
 msgstr ""
 
-#: ../framework/api/helpers.php:355
+#: ../framework/api/helpers.php:353
 msgid "Sliders"
 msgstr ""
 
-#: ../framework/api/helpers.php:369
+#: ../framework/api/helpers.php:367
 msgid "Builder"
 msgstr ""
 
-#: ../framework/api/helpers.php:465
+#: ../framework/api/helpers.php:460
 msgid "Boxy"
 msgstr ""
 
-#: ../framework/api/helpers.php:471
+#: ../framework/api/helpers.php:466
 msgid "Carbon Classic"
 msgstr ""
 
-#: ../framework/api/helpers.php:477
+#: ../framework/api/helpers.php:472
 msgid "Carbon Diagonol"
 msgstr ""
 
-#: ../framework/api/helpers.php:483
+#: ../framework/api/helpers.php:478
 msgid "Carbon Weave"
 msgstr ""
 
-#: ../framework/api/helpers.php:489
+#: ../framework/api/helpers.php:484
 msgid "Chex"
 msgstr ""
 
-#: ../framework/api/helpers.php:495
+#: ../framework/api/helpers.php:490
 msgid "Concrete"
 msgstr ""
 
-#: ../framework/api/helpers.php:501
+#: ../framework/api/helpers.php:496
 msgid "Crosses"
 msgstr ""
 
-#: ../framework/api/helpers.php:507
+#: ../framework/api/helpers.php:502
 msgid "Denim"
 msgstr ""
 
-#: ../framework/api/helpers.php:513
+#: ../framework/api/helpers.php:508
 msgid "Diagonal (thin)"
 msgstr ""
 
-#: ../framework/api/helpers.php:519
+#: ../framework/api/helpers.php:514
 msgid "Diagonal (thick)"
 msgstr ""
 
-#: ../framework/api/helpers.php:525
+#: ../framework/api/helpers.php:520
 msgid "Diamonds"
 msgstr ""
 
-#: ../framework/api/helpers.php:531
+#: ../framework/api/helpers.php:526
 msgid "Grid"
 msgstr ""
 
-#: ../framework/api/helpers.php:537
+#: ../framework/api/helpers.php:532
 msgid "Grunge"
 msgstr ""
 
-#: ../framework/api/helpers.php:543
+#: ../framework/api/helpers.php:538
 msgid "Honey Comb"
 msgstr ""
 
-#: ../framework/api/helpers.php:549
+#: ../framework/api/helpers.php:544
 msgid "Leather"
 msgstr ""
 
-#: ../framework/api/helpers.php:555
+#: ../framework/api/helpers.php:550
 msgid "Metal"
 msgstr ""
 
-#: ../framework/api/helpers.php:561
+#: ../framework/api/helpers.php:556
 msgid "Mosaic"
 msgstr ""
 
-#: ../framework/api/helpers.php:567
+#: ../framework/api/helpers.php:562
 msgid "Noise"
 msgstr ""
 
-#: ../framework/api/helpers.php:573
+#: ../framework/api/helpers.php:568
 msgid "Paper"
 msgstr ""
 
-#: ../framework/api/helpers.php:579
+#: ../framework/api/helpers.php:574
 msgid "Plaid"
 msgstr ""
 
-#: ../framework/api/helpers.php:585
+#: ../framework/api/helpers.php:580
 msgid "Rubber"
 msgstr ""
 
-#: ../framework/api/helpers.php:591
+#: ../framework/api/helpers.php:586
 msgid "Squares"
 msgstr ""
 
-#: ../framework/api/helpers.php:597
+#: ../framework/api/helpers.php:592
 msgid "Textile"
 msgstr ""
 
-#: ../framework/api/helpers.php:603
+#: ../framework/api/helpers.php:598
 msgid "Vertical Fabric"
 msgstr ""
 
-#: ../framework/api/helpers.php:609
+#: ../framework/api/helpers.php:604
 msgid "Vintage"
 msgstr ""
 
-#: ../framework/api/helpers.php:615
+#: ../framework/api/helpers.php:610
 msgid "Wood"
 msgstr ""
 
-#: ../framework/api/helpers.php:621
+#: ../framework/api/helpers.php:616
 msgid "Wood Planks"
 msgstr ""
 
-#: ../framework/api/helpers.php:627
+#: ../framework/api/helpers.php:622
 msgid "---------------"
 msgstr ""
 
-#: ../framework/api/helpers.php:633
+#: ../framework/api/helpers.php:628
 msgid "Light Boxy"
 msgstr ""
 
-#: ../framework/api/helpers.php:639
+#: ../framework/api/helpers.php:634
 msgid "Light Carbon Classic"
 msgstr ""
 
-#: ../framework/api/helpers.php:645
+#: ../framework/api/helpers.php:640
 msgid "Light Carbon Diagonol"
 msgstr ""
 
-#: ../framework/api/helpers.php:651
+#: ../framework/api/helpers.php:646
 msgid "Light Carbon Weave"
 msgstr ""
 
-#: ../framework/api/helpers.php:657
+#: ../framework/api/helpers.php:652
 msgid "Light Chex"
 msgstr ""
 
-#: ../framework/api/helpers.php:663
+#: ../framework/api/helpers.php:658
 msgid "Light Concrete"
 msgstr ""
 
-#: ../framework/api/helpers.php:669
+#: ../framework/api/helpers.php:664
 msgid "Light Crosses"
 msgstr ""
 
-#: ../framework/api/helpers.php:675
+#: ../framework/api/helpers.php:670
 msgid "Light Denim"
 msgstr ""
 
-#: ../framework/api/helpers.php:681
+#: ../framework/api/helpers.php:676
 msgid "Light Diagonal (thin)"
 msgstr ""
 
-#: ../framework/api/helpers.php:687
+#: ../framework/api/helpers.php:682
 msgid "Light Diagonal (thick)"
 msgstr ""
 
-#: ../framework/api/helpers.php:693
+#: ../framework/api/helpers.php:688
 msgid "Light Diamonds"
 msgstr ""
 
-#: ../framework/api/helpers.php:699
+#: ../framework/api/helpers.php:694
 msgid "Light Grid"
 msgstr ""
 
-#: ../framework/api/helpers.php:705
+#: ../framework/api/helpers.php:700
 msgid "Light Grunge"
 msgstr ""
 
-#: ../framework/api/helpers.php:711
+#: ../framework/api/helpers.php:706
 msgid "Light Honey Comb"
 msgstr ""
 
-#: ../framework/api/helpers.php:717
+#: ../framework/api/helpers.php:712
 msgid "Light Leather"
 msgstr ""
 
-#: ../framework/api/helpers.php:723
+#: ../framework/api/helpers.php:718
 msgid "Light Metal"
 msgstr ""
 
-#: ../framework/api/helpers.php:729
+#: ../framework/api/helpers.php:724
 msgid "Light Mosaic"
 msgstr ""
 
-#: ../framework/api/helpers.php:735
+#: ../framework/api/helpers.php:730
 msgid "Light Noise"
 msgstr ""
 
-#: ../framework/api/helpers.php:741
+#: ../framework/api/helpers.php:736
 msgid "Light Paper"
 msgstr ""
 
-#: ../framework/api/helpers.php:747
+#: ../framework/api/helpers.php:742
 msgid "Light Plaid"
 msgstr ""
 
-#: ../framework/api/helpers.php:753
+#: ../framework/api/helpers.php:748
 msgid "Light Rubber"
 msgstr ""
 
-#: ../framework/api/helpers.php:759
+#: ../framework/api/helpers.php:754
 msgid "Light Squares"
 msgstr ""
 
-#: ../framework/api/helpers.php:765
+#: ../framework/api/helpers.php:760
 msgid "Light Textile"
 msgstr ""
 
-#: ../framework/api/helpers.php:771
+#: ../framework/api/helpers.php:766
 msgid "Light Vertical Fabric"
 msgstr ""
 
-#: ../framework/api/helpers.php:777
+#: ../framework/api/helpers.php:772
 msgid "Light Vintage"
 msgstr ""
 
-#: ../framework/api/helpers.php:783
+#: ../framework/api/helpers.php:778
 msgid "Light Wood"
 msgstr ""
 
-#: ../framework/api/helpers.php:789
+#: ../framework/api/helpers.php:784
 msgid "Light Wood Planks"
 msgstr ""
 
-#: ../framework/api/helpers.php:822
+#: ../framework/api/helpers.php:816
 msgid "No pages exist."
 msgstr ""
 
-#: ../framework/api/helpers.php:827
+#: ../framework/api/helpers.php:821
 msgid "<strong>All Categories</strong>"
 msgstr ""
 
-#: ../framework/api/helpers.php:840
+#: ../framework/api/helpers.php:834
 #: ../framework/api/options.php:70
 msgid "You haven't created any custom sliders yet."
 msgstr ""
 
-#: ../framework/api/helpers.php:869
+#: ../framework/api/helpers.php:863
 msgid "Default Color"
 msgstr ""
 
-#: ../framework/api/helpers.php:870
+#: ../framework/api/helpers.php:864
 msgid "Black"
 msgstr ""
 
-#: ../framework/api/helpers.php:871
+#: ../framework/api/helpers.php:865
 msgid "Blue"
 msgstr ""
 
-#: ../framework/api/helpers.php:872
+#: ../framework/api/helpers.php:866
 msgid "Brown"
 msgstr ""
 
-#: ../framework/api/helpers.php:873
+#: ../framework/api/helpers.php:867
 msgid "Dark Blue"
 msgstr ""
 
-#: ../framework/api/helpers.php:874
+#: ../framework/api/helpers.php:868
 msgid "Dark Brown"
 msgstr ""
 
-#: ../framework/api/helpers.php:875
+#: ../framework/api/helpers.php:869
 msgid "Dark Green"
 msgstr ""
 
-#: ../framework/api/helpers.php:876
+#: ../framework/api/helpers.php:870
 msgid "Green"
 msgstr ""
 
-#: ../framework/api/helpers.php:877
+#: ../framework/api/helpers.php:871
 msgid "Mauve"
 msgstr ""
 
-#: ../framework/api/helpers.php:878
+#: ../framework/api/helpers.php:872
 msgid "Orange"
 msgstr ""
 
-#: ../framework/api/helpers.php:879
+#: ../framework/api/helpers.php:873
 msgid "Pearl"
 msgstr ""
 
-#: ../framework/api/helpers.php:880
+#: ../framework/api/helpers.php:874
 msgid "Pink"
 msgstr ""
 
-#: ../framework/api/helpers.php:881
+#: ../framework/api/helpers.php:875
 msgid "Purple"
 msgstr ""
 
-#: ../framework/api/helpers.php:882
+#: ../framework/api/helpers.php:876
 msgid "Red"
 msgstr ""
 
-#: ../framework/api/helpers.php:883
+#: ../framework/api/helpers.php:877
 msgid "Slate Grey"
 msgstr ""
 
-#: ../framework/api/helpers.php:884
+#: ../framework/api/helpers.php:878
 msgid "Silver"
 msgstr ""
 
-#: ../framework/api/helpers.php:885
+#: ../framework/api/helpers.php:879
 msgid "Steel Blue"
 msgstr ""
 
-#: ../framework/api/helpers.php:886
+#: ../framework/api/helpers.php:880
 msgid "Teal"
 msgstr ""
 
-#: ../framework/api/helpers.php:887
+#: ../framework/api/helpers.php:881
 msgid "Yellow"
 msgstr ""
 
-#: ../framework/api/helpers.php:888
+#: ../framework/api/helpers.php:882
 msgid "Wheat"
 msgstr ""
 
-#: ../framework/api/helpers.php:889
+#: ../framework/api/helpers.php:883
 msgid "White"
 msgstr ""
 
-#: ../framework/api/helpers.php:972
+#: ../framework/api/helpers.php:966
 msgid "Either use wp_enque_style() or if you need your CSS file to come after all theme-generated styles attached to wp_head, you can manually output it by hooking your function to wp_head."
 msgstr ""
 
-#: ../framework/api/helpers.php:1056
+#: ../framework/api/helpers.php:1051
 msgid "TB Large"
 msgstr ""
 
-#: ../framework/api/helpers.php:1062
+#: ../framework/api/helpers.php:1057
 msgid "TB Medium"
 msgstr ""
 
-#: ../framework/api/helpers.php:1068
+#: ../framework/api/helpers.php:1063
 msgid "TB Small"
 msgstr ""
 
-#: ../framework/api/helpers.php:1074
+#: ../framework/api/helpers.php:1069
 msgid "Small Square"
 msgstr ""
 
-#: ../framework/api/helpers.php:1080
+#: ../framework/api/helpers.php:1075
 msgid "Smaller Square"
 msgstr ""
 
-#: ../framework/api/helpers.php:1086
+#: ../framework/api/helpers.php:1081
 msgid "Smallest Square"
 msgstr ""
 
-#: ../framework/api/helpers.php:1092
+#: ../framework/api/helpers.php:1087
 msgid "Slider Full Width"
 msgstr ""
 
-#: ../framework/api/helpers.php:1098
+#: ../framework/api/helpers.php:1093
 msgid "Slider Staged"
 msgstr ""
 
-#: ../framework/api/helpers.php:1104
+#: ../framework/api/helpers.php:1099
 msgid "1/5 Column of Grid"
 msgstr ""
 
-#: ../framework/api/helpers.php:1110
+#: ../framework/api/helpers.php:1105
 msgid "1/4 Column of Grid"
 msgstr ""
 
-#: ../framework/api/helpers.php:1116
+#: ../framework/api/helpers.php:1111
 msgid "1/3 Column of Grid"
 msgstr ""
 
-#: ../framework/api/helpers.php:1122
+#: ../framework/api/helpers.php:1117
 msgid "1/2 Column of Grid"
 msgstr ""
 
-#: ../framework/api/helpers.php:1378
+#: ../framework/api/helpers.php:1372
 #: ../framework/api/locals.php:50
 msgid "Pages"
 msgstr ""
 
-#: ../framework/api/helpers.php:1379
+#: ../framework/api/helpers.php:1373
 msgid "No pages to display."
 msgstr ""
 
-#: ../framework/api/helpers.php:1383
+#: ../framework/api/helpers.php:1377
 msgid "Posts"
 msgstr ""
 
-#: ../framework/api/helpers.php:1384
+#: ../framework/api/helpers.php:1378
 msgid "No posts to display."
 msgstr ""
 
-#: ../framework/api/helpers.php:1388
+#: ../framework/api/helpers.php:1382
 msgid "Posts in Category"
 msgstr ""
 
-#: ../framework/api/helpers.php:1389
-#: ../framework/api/helpers.php:1394
+#: ../framework/api/helpers.php:1383
+#: ../framework/api/helpers.php:1388
 msgid "No categories to display."
 msgstr ""
 
-#: ../framework/api/helpers.php:1393
+#: ../framework/api/helpers.php:1387
 msgid "Category Archives"
 msgstr ""
 
-#: ../framework/api/helpers.php:1398
+#: ../framework/api/helpers.php:1392
 msgid "Tag Archives"
 msgstr ""
 
-#: ../framework/api/helpers.php:1399
+#: ../framework/api/helpers.php:1393
 msgid "No tags to display."
 msgstr ""
 
-#: ../framework/api/helpers.php:1403
+#: ../framework/api/helpers.php:1397
 msgid "Hierarchy"
 msgstr ""
 
-#: ../framework/api/helpers.php:1406
+#: ../framework/api/helpers.php:1400
 msgid "All Posts"
 msgstr ""
 
-#: ../framework/api/helpers.php:1407
+#: ../framework/api/helpers.php:1401
 msgid "All Pages"
 msgstr ""
 
-#: ../framework/api/helpers.php:1408
+#: ../framework/api/helpers.php:1402
 msgid "All Archives"
 msgstr ""
 
-#: ../framework/api/helpers.php:1409
+#: ../framework/api/helpers.php:1403
 msgid "All Category Archives"
 msgstr ""
 
-#: ../framework/api/helpers.php:1410
+#: ../framework/api/helpers.php:1404
 msgid "All Tag Archives"
 msgstr ""
 
-#: ../framework/api/helpers.php:1411
+#: ../framework/api/helpers.php:1405
 msgid "All Author Archives"
 msgstr ""
 
-#: ../framework/api/helpers.php:1412
+#: ../framework/api/helpers.php:1406
 msgid "Search Results"
 msgstr ""
 
-#: ../framework/api/helpers.php:1413
+#: ../framework/api/helpers.php:1407
 msgid "404 Page"
 msgstr ""
 
-#: ../framework/api/helpers.php:1418
+#: ../framework/api/helpers.php:1412
 msgid "Custom"
 msgstr ""
 
@@ -2843,14 +2855,18 @@ msgstr ""
 msgid "Setup Custom Content"
 msgstr ""
 
-#: ../framework/frontend/functions/elements.php:969
+#: ../framework/frontend/functions/elements.php:979
 #: ../framework/frontend/functions/parts.php:364
 msgid "No public Tweets found"
 msgstr ""
 
-#: ../framework/frontend/functions/elements.php:973
+#: ../framework/frontend/functions/elements.php:983
 #: ../framework/frontend/functions/parts.php:368
 msgid "Could not fetch Twitter RSS feed."
+msgstr ""
+
+#: ../includes/EDD_SL_Theme_Updater.php:55
+msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
 msgstr ""
 
 #: ../includes/options.php:26
@@ -2859,5 +2875,27 @@ msgstr ""
 
 #: ../includes/options.php:32
 msgid "Custom CSS Preview"
+msgstr ""
+
+#: ../includes/Theme_Blvd_License_Admin.php:87
+#: ../includes/Theme_Blvd_License_Admin.php:98
+msgid "Theme License"
+msgstr ""
+
+#: ../includes/Theme_Blvd_License_Admin.php:105
+msgid "License Key"
+msgstr ""
+
+#: ../includes/Theme_Blvd_License_Admin.php:109
+msgid "Enter your license key"
+msgstr ""
+
+#: ../includes/Theme_Blvd_License_Admin.php:115
+#: ../includes/Theme_Blvd_License_Admin.php:122
+msgid "Activate License"
+msgstr ""
+
+#: ../includes/Theme_Blvd_License_Admin.php:119
+msgid "active"
 msgstr ""
 
