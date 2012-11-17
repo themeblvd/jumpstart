@@ -161,6 +161,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 			
 			case 'select' :
+				$output .= '<div class="tb-fancy-select">';
 				$output .= '<select class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" id="' . esc_attr( $value['id'] ) . '">';
 				foreach ($value['options'] as $key => $option ) {
 					$selected = '';
@@ -170,6 +171,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					 $output .= '<option'. $selected .' value="' . esc_attr( $key ) . '">' . esc_html( $option ) . '</option>';
 				 }
 				 $output .= '</select>';
+				 $output .= '<span class="trigger"></span>';
+				 $output .= '<span class="textbox"></span>';
+				 $output .= '</div><!-- .tb-fancy-select (end) -->';
 				 // If this is a builder sample select, show preview images
 				 if( isset( $value['class'] ) && $value['class'] == 'builder_samples' ) {
 				 	if( function_exists( 'themeblvd_builder_sample_previews' ) ) {
@@ -265,22 +269,30 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				
 				// Font Size
 				if( in_array( 'size', $value['atts'] ) ) {
+					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-size" name="' . esc_attr( $option_name . '[' . $value['id'] . '][size]' ) . '" id="' . esc_attr( $value['id'] . '_size' ) . '">';
 					for ($i = 9; $i < 71; $i++) { 
 						$size = $i . 'px';
 						$output .= '<option value="' . esc_attr( $size ) . '" ' . selected( $typography_stored['size'], $size, false ) . '>' . esc_html( $size ) . '</option>';
 					}
 					$output .= '</select>';
+					$output .= '<span class="trigger"></span>';
+					$output .= '<span class="textbox"></span>';
+					$output .= '</div><!-- .tb-fancy-select (end) -->';
 				}
 			
 				// Font Face
 				if( in_array( 'face', $value['atts'] ) ) {
+					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
 					$faces = themeblvd_recognized_font_faces();
 					foreach ( $faces as $key => $face ) {
 						$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['face'], $key, false ) . '>' . esc_html( $face ) . '</option>';
 					}			
-					$output .= '</select>';	
+					$output .= '</select>';
+					$output .= '<span class="trigger"></span>';
+					$output .= '<span class="textbox"></span>';
+					$output .= '</div><!-- .tb-fancy-select (end) -->';
 				}
 					
 				// Font Color
@@ -329,28 +341,40 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="' . esc_attr( $class ) . '">';
 				
 				// Background Repeat
+				$output .= '<div class="tb-fancy-select">';
 				$output .= '<select class="of-background of-background-repeat" name="' . esc_attr( $option_name . '[' . $value['id'] . '][repeat]'  ) . '" id="' . esc_attr( $value['id'] . '_repeat' ) . '">';
 				$repeats = themeblvd_recognized_background_repeat();
 				foreach( $repeats as $key => $repeat ) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['repeat'], $key, false ) . '>'. esc_html( $repeat ) . '</option>';
 				}
 				$output .= '</select>';
+				$output .= '<span class="trigger"></span>';
+				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
 				
 				// Background Position
+				$output .= '<div class="tb-fancy-select">';
 				$output .= '<select class="of-background of-background-position" name="' . esc_attr( $option_name . '[' . $value['id'] . '][position]' ) . '" id="' . esc_attr( $value['id'] . '_position' ) . '">';
 				$positions = themeblvd_recognized_background_position();
 				foreach ($positions as $key=>$position) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['position'], $key, false ) . '>'. esc_html( $position ) . '</option>';
 				}
 				$output .= '</select>';
+				$output .= '<span class="trigger"></span>';
+				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
 				
 				// Background Attachment
+				$output .= '<div class="tb-fancy-select">';
 				$output .= '<select class="of-background of-background-attachment" name="' . esc_attr( $option_name . '[' . $value['id'] . '][attachment]' ) . '" id="' . esc_attr( $value['id'] . '_attachment' ) . '">';
 				$attachments = themeblvd_recognized_background_attachment();
 				foreach ($attachments as $key => $attachment) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['attachment'], $key, false ) . '>' . esc_html( $attachment ) . '</option>';
 				}
 				$output .= '</select>';
+				$output .= '<span class="trigger"></span>';
+				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
 				$output .= '</div>';
 			
 				break;  

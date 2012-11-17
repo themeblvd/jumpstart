@@ -209,23 +209,31 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 		unset( $data_num[0] );
 	
 	// Select number of columns
-	$select_number = '<select class="column-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
+	$select_number  = '<div class="tb-fancy-select">';
+	$select_number .= '<select class="column-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
 	$current_value = ! empty( $val ) && ! empty( $val['num'] ) ? $val['num'] : null;
 	foreach( $data_num as $num ) {
 		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
 	}
 	$select_number .= '</select>';
+	$select_number .= '<span class="trigger"></span>';
+	$select_number .= '<span class="textbox"></span>';
+	$select_number .= '</div><!-- .tb-fancy-select (end) -->';
 	
 	// Select column widths
 	$i = 1;
 	$select_widths = '<div class="column-width column-width-0"><p class="inactive">'.__( 'Columns will be hidden.', 'themeblvd' ).'</p></div>';
 	foreach( $data_widths as $widths ) {
-		$select_widths .= '<select class="column-width column-width-'.$i.'" name= "'.esc_attr( $name.'['.$id.'][width]['.$i.']' ).'">';
+		$select_widths .= '<div class="tb-fancy-select column-width column-width-'.$i.'">';
+		$select_widths .= '<select name= "'.esc_attr( $name.'['.$id.'][width]['.$i.']' ).'">';
 		$current_value = ! empty( $val ) && ! empty( $val['width'][$i] ) ? $val['width'][$i] : null;
 		foreach( $widths as $width ) {
 			$select_widths .= '<option value="'.$width['value'].'" '.selected( $current_value, $width['value'], false ).'>'.$width['name'].'</option>';
 		}
 		$select_widths .= '</select>';
+		$select_widths .= '<span class="trigger"></span>';
+		$select_widths .= '<span class="textbox"></span>';
+		$select_widths .= '</div><!-- .tb-fancy-select (end) -->';
 		$i++;
 	}
 	
@@ -312,28 +320,37 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 		)
 	);
 	$current_value = ! empty( $val ) && ! empty( $val['num'] ) ? $val['num'] : null;
-	$select_number = '<select class="tabs-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
+	$select_number  = '<div class="tb-fancy-select">';
+	$select_number .= '<select class="tabs-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
 	foreach( $numbers as $num ) {
 		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
 	}
 	$select_number .= '</select>';
+	$select_number .= '<span class="trigger"></span>';
+	$select_number .= '<span class="textbox"></span>';
+	$select_number .= '</div><!-- .tb-fancy-select (end) -->';
 	
 	/*------------------------------------------------------*/
 	/* Build <select> for style of tabs
 	/*------------------------------------------------------*/
 	
 	$current_value = ! empty( $val ) && ! empty( $val['style'] ) ? $val['style'] : null;
-	$select_style  = '<select class="tabs-style" name="'.esc_attr( $name.'['.$id.'][style]' ).'">';	
+	$select_style  = '<div class="tb-fancy-select">';
+	$select_style .= '<select class="tabs-style" name="'.esc_attr( $name.'['.$id.'][style]' ).'">';	
 	$select_style .= '<option value="open" '.selected( $current_value, 'open', false ).'>'.__( 'Open Style', 'themeblvd' ).'</option>';
 	$select_style .= '<option value="framed" '.selected( $current_value, 'framed', false ).'>'.__( 'Framed Style', 'themeblvd' ).'</option>';
 	$select_style .= '</select>';
+	$select_style .= '<span class="trigger"></span>';
+	$select_style .= '<span class="textbox"></span>';
+	$select_style .= '</div><!-- .tb-fancy-select (end) -->';
 	
 	/*------------------------------------------------------*/
 	/* Build <select> for nav of tabs
 	/*------------------------------------------------------*/
 	
 	$current_value = ! empty( $val ) && ! empty( $val['nav'] ) ? $val['nav'] : null;
-	$select_nav  = '<select class="tabs-nav" name="'.esc_attr( $name.'['.$id.'][nav]' ).'">';
+	$select_nav  = '<div class="tb-fancy-select">';
+	$select_nav .= '<select class="tabs-nav" name="'.esc_attr( $name.'['.$id.'][nav]' ).'">';
 	$select_nav .= '<option value="tabs_above" '.selected( $current_value, 'tabs_above', false ).'>'.__( 'Tabs on Top', 'themeblvd' ).'</option>';
 	$select_nav .= '<option value="tabs_right" '.selected( $current_value, 'tabs_right', false ).'>'.__( 'Tabs on Right', 'themeblvd' ).'</option>';
 	$select_nav .= '<option value="tabs_below" '.selected( $current_value, 'tabs_below', false ).'>'.__( 'Tabs on Bottom', 'themeblvd' ).'</option>';
@@ -341,6 +358,9 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$select_nav .= '<option value="pills_above" '.selected( $current_value, 'pills_above', false ).'>'.__( 'Pills on Top', 'themeblvd' ).'</option>';
 	$select_nav .= '<option value="pills_below" '.selected( $current_value, 'pills_below', false ).'>'.__( 'Pills on Bottom', 'themeblvd' ).'</option>';
 	$select_nav .= '</select>';
+	$select_nav .= '<span class="trigger"></span>';
+	$select_nav .= '<span class="textbox"></span>';
+	$select_nav .= '</div><!-- .tb-fancy-select (end) -->';
 		
 	/*------------------------------------------------------*/
 	/* Add in text fields for names of tabs
@@ -426,11 +446,15 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
 	
 	// Build <select>
-	$select_type = '<select class="select-type" name= "'.esc_attr( $name.'['.$id.'][type]' ).'">';
+	$select_type  = '<div class="tb-fancy-select">';
+	$select_type .= '<select class="select-type" name= "'.esc_attr( $name.'['.$id.'][type]' ).'">';
 	foreach( $sources as $key => $value ) {
 		$select_type .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$value.'</option>';
 	}
 	$select_type .= '</select>';
+	$select_type .= '<span class="trigger"></span>';
+	$select_type .= '<span class="textbox"></span>';
+	$select_type .= '</div><!-- .tb-fancy-select (end) -->';
 	
 	/*------------------------------------------------------*/
 	/* Build <select> for widget area
@@ -457,11 +481,15 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			
 			// Build <select>
 			if( ! empty( $sidebars ) ) {
-				$select_sidebar = '<select class="select-sidebar" name= "'.esc_attr( $name.'['.$id.'][sidebar]' ).'">';
+				$select_sidebar  = '<div class="tb-fancy-select">';
+				$select_sidebar .= '<select class="select-sidebar" name= "'.esc_attr( $name.'['.$id.'][sidebar]' ).'">';
 				foreach( $sidebars as $key => $value ) {
 					$select_sidebar .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$value.'</option>';
 				}
 				$select_sidebar .= '</select>';
+				$select_sidebar .= '<span class="trigger"></span>';
+				$select_sidebar .= '<span class="textbox"></span>';
+				$select_sidebar .= '</div><!-- .tb-fancy-select (end) -->';
 			} else {
 				$select_sidebar = '<p class="warning">'.__( 'You haven\'t created any floating widget areas.', 'themeblvd' ).'</p>';
 			}
@@ -483,11 +511,15 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		
 		// Build <select>
 		if( ! empty( $pages ) ) {
-			$select_page = '<select name= "'.esc_attr( $name.'['.$id.'][page]' ).'">';
+			$select_page  = '<div class="tb-fancy-select">';
+			$select_page .= '<select name= "'.esc_attr( $name.'['.$id.'][page]' ).'">';
 			foreach( $pages as $key => $value ) {
 				$select_page .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$value.'</option>';
 			}
 			$select_page .= '</select>';
+			$select_page .= '<span class="trigger"></span>';
+			$select_page .= '<span class="textbox"></span>';
+			$select_page .= '</div><!-- .tb-fancy-select (end) -->';
 		} else {
 			$select_page = '<p class="warning">'.__( 'You haven\'t created any pages.', 'themeblvd' ).'</p>';
 		}
@@ -741,11 +773,15 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		'image' 		=> __( 'Image', 'themeblvd' )
 	);
 	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
-	$select_type = '<select name="'.esc_attr( $name.'['.$id.'][type]' ).'">';	
+	$select_type  = '<div class="tb-fancy-select">';
+	$select_type .= '<select name="'.esc_attr( $name.'['.$id.'][type]' ).'">';	
 	foreach( $types as $key => $type ) {
 		$select_type .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$type.'</option>';
 	}
 	$select_type .= '</select>';
+	$select_type .= '<span class="trigger"></span>';
+	$select_type .= '<span class="textbox"></span>';
+	$select_type .= '</div><!-- .tb-fancy-select (end) -->';
 	
 	/*------------------------------------------------------*/
 	/* Site Title

@@ -92,11 +92,24 @@ jQuery(document).ready(function($) {
 	$('.of-radio-img-img').click(function(){
 		$(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
 		$(this).addClass('of-radio-img-selected');		
-	});
-		
+	});	
 	$('.of-radio-img-label').hide();
 	$('.of-radio-img-img').show();
 	$('.of-radio-img-radio').hide();
+	
+	// Fancy Select
+	$('.tb-fancy-select').each(function(){
+		var el = $(this), 
+			value = el.find('select').val(),
+			text = el.find('option[value='+value+']').text();
+		el.find('.textbox').text(text);
+	});
+	$('.tb-fancy-select select').change(function(){
+		var el = $(this), 
+			value = el.val(),
+			text = el.find('option[value='+value+']').text();
+		el.closest('.tb-fancy-select').find('.textbox').text(text);
+	});
 	
 	// ThemeBlvd namespace
 	$('#optionsframework').themeblvd('init');
