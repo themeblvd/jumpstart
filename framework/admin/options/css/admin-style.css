@@ -46,17 +46,17 @@
 #optionsframework .tb-footer-text .tb-update-log {text-decoration:none;}
 
 /* Image Uploader */
-#optionsframework .controls input.upload{width:77%;}
-#optionsframework .controls input.upload_button{float:right;width:45px;cursor:pointer;height:16px;border-color:#BBBBBB;}
+#optionsframework .controls input.upload{width:74%;}
+#optionsframework .controls input.upload_button{float:right;width:64px;cursor:pointer;border-color:#BBBBBB;}
 #optionsframework .controls input.upload_button:hover{color:#000;border-color:#666666;}
-#optionsframework .section-upload .section-upload.image-standard input.image-url {width:60%;}
+#optionsframework .section-upload .section-upload.image-standard input.image-url {width:58%;}
 #optionsframework .section-upload .section-upload.image-standard input.image-width {width:15%;}
 #optionsframework .screenshot{float:left;margin-left:1px;position:relative;width:344px;margin-top:3px;}
 #optionsframework .screenshot img{background:#FAFAFA;float:left;max-width:334px;margin-bottom:10px;border-color:#ccc #eee #eee #ccc;border-style:solid;border-width:1px;padding:4px;}
 #optionsframework .screenshot .mlu_remove{background:url(../../assets/images/icon-remove.png) no-repeat;border:medium none;bottom:4px;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
 #optionsframework .screenshot .no_image .file_link{margin-left:20px;}
 #optionsframework .screenshot .no_image .mlu_remove{bottom:0;}
-#optionsframework .reset-button{float:left;cursor:pointer;}
+#optionsframework .reset-button{margin-right:10px;float:left;cursor:pointer;}
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
 		only screen and (-moz-min-device-pixel-ratio: 1.5), 
 		only screen and (-o-min-device-pixel-ratio: 1.5), 
