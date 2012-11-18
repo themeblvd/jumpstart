@@ -117,7 +117,7 @@
 #optionsframework .widget-name select,#slidersframework #edit_slider .widget-name select{float:right;width:175px;margin:4px 10px 0 0;}
 #optionsframework .widget-content{background-color:#FCFCFC;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;-webkit-border-bottom-right-radius:3px;-webkit-border-bottom-left-radius:3px;-khtml-border-bottom-right-radius:3px;-khtml-border-bottom-left-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px;border-color:#DFDFDF;border-style:none solid solid;border-width:0 1px 1px;}
 #optionsframework .widget-content .pad{padding:15px;}
-#optionsframework .widget-footer{border-top:1px solid #f2f2f2;margin:10px 0 0;padding:5px 10px;}
+#optionsframework .widget-footer{padding:5px 10px;}
 #optionsframework .widget-footer a,#optionsframework .widget-footer span{display:block;font-size:11px;float:right;text-decoration:none;}
 #optionsframework .ui-sortable-placeholder{border:2px dashed #cccccc;height:50px!important;visibility:visible!important;}
 
