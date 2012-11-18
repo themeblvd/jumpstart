@@ -48,6 +48,14 @@
 			    });
 			    return false;
 			});	
+			
+			// Fancy Select
+			$this.find('.tb-fancy-select').each(function(){
+				var el = $(this), 
+					value = el.find('select').val(),
+					text = el.find('option[value='+value+']').text();
+				el.find('.textbox').text(text);
+			});
     	},
     	
     	// Setup custom option combos
@@ -62,6 +70,13 @@
 	    		// time a new options set is inserted.
 	    		if(type == 'setup')
 	    		{
+	    		
+	    			// Fancy Select
+					$this.find('.tb-fancy-select').each(function(){
+						var el = $(this), value = el.find('select').val(), text = el.find('option[value='+value+']').text();
+						el.find('.textbox').text(text);
+					});
+			
 	    			// Custom content
 	    			$this.find('.custom-content-types').each(function(){
 	    				var el = $(this), value = el.find('select').val(), parent = el.closest('.subgroup');
@@ -173,6 +188,13 @@
 	    		// to be called once on the original page load.
 	    		else if(type == 'bind')
 	    		{
+	    			
+	    			// Fancy Select
+	    			$this.find('.tb-fancy-select select').live('change', function(){
+		    			var el = $(this), value = el.val(), text = el.find('option[value='+value+']').text();
+						el.closest('.tb-fancy-select').find('.textbox').text(text);
+	    			});
+									
 	    			// Custom content
 	    			$this.find('.custom-content-types select').live('change', function(){
 	    				var el = $(this), value = el.val(), parent = el.closest('.subgroup');
