@@ -386,8 +386,9 @@ if( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) {
 /*-----------------------------------------------------------------------------------*/
 $sidebar_layout = get_post_meta( $post->ID, '_tb_sidebar_layout', true );
 echo themeblvd_sidebar_layout_dropdown( $sidebar_layout );
-$custom_layout = get_post_meta( $post->ID, '_tb_custom_layout', true );
-echo themeblvd_custom_layout_dropdown( $custom_layout );
+// Custom layout selection removed as of Layout Builder v1.1, as now it's selected from a custom metabox.
+// $custom_layout = get_post_meta( $post->ID, '_tb_custom_layout', true );
+// echo themeblvd_custom_layout_dropdown( $custom_layout );
 /*-----------------------------------------------------------------------------------*/
 /* ThemeBlvd Modifications (end)
 /*-----------------------------------------------------------------------------------*/

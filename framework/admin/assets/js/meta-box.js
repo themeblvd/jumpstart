@@ -18,7 +18,6 @@ jQuery(document).ready(function($) {
 	}
 	else
 	{
-		page_atts.find('select[name="_tb_custom_layout"]').hide().prev('p').hide();
 		page_atts.find('p.tb_custom_layout').hide().prev('p').hide();
 	}
 	
@@ -28,12 +27,10 @@ jQuery(document).ready(function($) {
 		if( template == 'template_builder.php' )
 		{
 			page_atts.find('select[name="_tb_sidebar_layout"]').hide().prev('p').hide();
-			page_atts.find('select[name="_tb_custom_layout"]').show().prev('p').show();
 			page_atts.find('p.tb_custom_layout').show().prev('p').show();
 		}
 		else
 		{
-			page_atts.find('select[name="_tb_custom_layout"]').hide().prev('p').hide();
 			page_atts.find('p.tb_custom_layout').hide().prev('p').hide();
 			page_atts.find('select[name="_tb_sidebar_layout"]').show().prev('p').show();
 		}

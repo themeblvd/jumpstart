@@ -8,27 +8,6 @@ jQuery(document).ready(function($) {
 	// Fade out the save message
 	$('.fade').delay(1000).fadeOut(1000);
 	
-	// Color Picker
-	$('.colorSelector').each(function(){
-		var Othis = this; //cache a copy of the this variable for use inside nested function
-		var initialColor = $(Othis).next('input').attr('value');
-		$(this).ColorPicker({
-		color: initialColor,
-		onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-		},
-		onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-		},
-		onChange: function (hsb, hex, rgb) {
-		$(Othis).children('div').css('backgroundColor', '#' + hex);
-		$(Othis).next('input').attr('value','#' + hex);
-	}
-	});
-	}); //end color picker
-	
 	// Switches option sections
 	$('.group').hide();
 	var activetab = '';
@@ -87,15 +66,6 @@ jQuery(document).ready(function($) {
            					
 		}
 	}
-	
-	// Image Options
-	$('.of-radio-img-img').click(function(){
-		$(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
-		$(this).addClass('of-radio-img-selected');		
-	});	
-	$('.of-radio-img-label').hide();
-	$('.of-radio-img-img').show();
-	$('.of-radio-img-radio').hide();
 	
 	// ThemeBlvd namespace
 	$('#optionsframework').themeblvd('init');

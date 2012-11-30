@@ -182,6 +182,36 @@
     						$this.find('#section-homepage_custom_layout').hide();
     					}				
     				});
+    				
+    				// Color Picker
+					$this.find('.colorSelector').each(function(){
+						var Othis = this; //cache a copy of the this variable for use inside nested function
+						var initialColor = $(Othis).next('input').attr('value');
+						$(this).ColorPicker({
+							color: initialColor,
+							onShow: function (colpkr) {
+								$(colpkr).fadeIn(500);
+								return false;
+							},
+							onHide: function (colpkr) {
+								$(colpkr).fadeOut(500);
+								return false;
+							},
+							onChange: function (hsb, hex, rgb) {
+								$(Othis).children('div').css('backgroundColor', '#' + hex);
+								$(Othis).next('input').attr('value','#' + hex);
+							}
+						});
+					});
+    				
+    				// Image Options
+					$this.find('.of-radio-img-img').click(function(){
+						$(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
+						$(this).addClass('of-radio-img-selected');		
+					});	
+					$this.find('.of-radio-img-label').hide();
+					$this.find('.of-radio-img-img').show();
+					$this.find('.of-radio-img-radio').hide();
 	    				
 	    		}
 	    		// Apply all binded actions. This will only need
@@ -383,7 +413,7 @@
  
 (function ($) {
 	tbc_alert = {
-		init: function(alert_text, alert_class)
+		init: function(alert_text, alert_class, selector)
 		{
 		
 		  	// Available classes:
@@ -403,7 +433,10 @@
 									 </div><!-- .tb-alert (end) -->';
 			
 			// Add initial markup to site				
-			$('body').append(alert_markup);
+			if( ! selector )
+				selector = 'body';
+				
+			$(selector).append(alert_markup);
 			
 			var	$this 			= $('#tb-alert'),
 				window_height 	= $(window).height();
@@ -412,8 +445,11 @@
 			$this.addClass('tb-'+alert_class);
 			$this.find('.tb-alert-message p').text(alert_text);
 			
-			// Position it
-			$this.animate({'top' : ( window_height - ( window_height-75 ) ) + $(window).scrollTop() + "px"}, 100);
+			// Position it, but only if it's being applied to the entire body.
+			if( selector == 'body' )
+			{
+				$this.animate({'top' : ( window_height - ( window_height-75 ) ) + $(window).scrollTop() + "px"}, 100);
+			}
 			
 			// Show it and fade it out 1.5 secs later
 			$this.fadeIn(500, function(){

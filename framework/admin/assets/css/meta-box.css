@@ -1,9 +1,12 @@
 /**
  * Custom Meta Box (Copied and modified from Options Framework)
+ * Note: These styles may be redundant depending on if the Layout 
+ * Builder plugin exists or not.
  */
 
+.tb-meta-box {margin-right:-10px;margin-left:-10px;}
 .tb-meta-box p{margin-bottom:0;padding-bottom:10px;}
-.tb-meta-box .section{border-bottom:1px solid #dfdfdf;padding:10px 10px 20px;}
+.tb-meta-box .section{border-bottom:1px solid #dfdfdf;padding:15px;}
 .tb-meta-box .section:last-of-type{border-bottom:none;padding-bottom:40px;}
 .tb-meta-box .section .heading{font-size:1.2em;margin:0 0 7px;padding:7px 5px;}
 .tb-meta-box .section-info .heading{font-size:18px;margin:0;padding:5px;}

@@ -32,6 +32,7 @@ function themeblvd_get_admin_locals( $type ) {
 				'invalid_slider'		=> __( 'Oops! Somehow, you\'ve entered an invalid slider type.', 'themeblvd' ),
 				'layout_created'		=> __( 'Layout created!', 'themeblvd' ),
 				'publish'				=> __( 'Publish', 'themeblvd' ),
+				'save_switch_layout'	=> __( 'Would you like to save the current layout before switching?', 'themeblvd' ),
 				'sidebar_created'		=> __( 'Widget Area created!', 'themeblvd' ),
 				'sidebar_layout_set'	=> __( 'With how you\'ve selected to start your layout, there is already a sidebar layout applied.', 'themeblvd' ),
 				'slider_created'		=> __( 'Slider created!', 'themeblvd' ),
