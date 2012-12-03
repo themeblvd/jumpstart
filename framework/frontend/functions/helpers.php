@@ -933,7 +933,7 @@ function themeblvd_get_comment_form_args() {
 		'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
 		'label_submit'			=> themeblvd_get_local( 'label_submit' )
 	);
-	return apply_filters( 'themeblvd_comment_form', $args );
+	return apply_filters( 'themeblvd_comment_form', $args, $commenter, $req, $aria_req );
 }
 
 /**
