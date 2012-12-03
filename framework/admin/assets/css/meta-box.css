@@ -4,6 +4,7 @@
  * Builder plugin exists or not.
  */
 
+.updated {max-width:inherit !important;}
 .tb-meta-box {margin-right:-10px;margin-left:-10px;}
 .tb-meta-box p{margin-bottom:0;padding-bottom:10px;}
 .tb-meta-box .section{border-bottom:1px solid #dfdfdf;padding:15px;}
