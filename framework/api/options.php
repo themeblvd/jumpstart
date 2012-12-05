@@ -56,25 +56,31 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 	
 		// Generate sidebar layout options
 		$sidebar_layouts = array();
-		$layouts = themeblvd_sidebar_layouts();
-		foreach( $layouts as $layout )
-			$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
+		if( is_admin() ) {
+			$layouts = themeblvd_sidebar_layouts();
+			foreach( $layouts as $layout )
+				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
+		}
 		
 		// Generate sliders options
 		$custom_sliders = array();
-		$sliders = get_posts('post_type=tb_slider&numberposts=-1');
-		if( ! empty( $sliders ) ) {
-			foreach( $sliders as $slider )
-				$custom_sliders[$slider->post_name] = $slider->post_title;
-		} else {
-			$custom_sliders['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
+		if( is_admin() ) {
+			$sliders = get_posts('post_type=tb_slider&numberposts=-1');
+			if( ! empty( $sliders ) ) {
+				foreach( $sliders as $slider )
+					$custom_sliders[$slider->post_name] = $slider->post_title;
+			} else {
+				$custom_sliders['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
+			}
 		}		
 		
 		// Pull all the categories into an array
 		$options_categories = array();  
-		$options_categories_obj = get_categories();
-		foreach ($options_categories_obj as $category) {
-	    	$options_categories[$category->cat_ID] = $category->cat_name;
+		if( is_admin() ) {
+			$options_categories_obj = get_categories();
+			foreach ($options_categories_obj as $category) {
+		    	$options_categories[$category->cat_ID] = $category->cat_name;
+			}
 		}
 	
 		/*-------------------------------------------------------*/

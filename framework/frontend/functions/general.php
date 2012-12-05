@@ -15,6 +15,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		
 		// Initiate vars
 		$builder = false;
+		$builder_post_id = false;
 		$sidebar_layout = '';
 		
 		// Setup global theme settings
@@ -73,8 +74,8 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 					$layout_id = get_post_meta( $post->ID, '_tb_custom_layout', true );
 					if( $layout_id ) {
 						$builder = $layout_id;
-						$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
-						$layout_settings = get_post_meta( $layout_post_id, 'settings', true );
+						$builder_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
+						$layout_settings = get_post_meta( $builder_post_id, 'settings', true );
 						$sidebar_layout = $layout_settings['sidebar_layout'];
 					} else {
 						$builder = 'error';
@@ -89,8 +90,8 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 					$layout_id = themeblvd_get_option( 'homepage_custom_layout' );
 					if( $layout_id ) {
 						$builder = $layout_id;
-						$layout_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
-						$layout_settings = get_post_meta( $layout_post_id, 'settings', true );
+						$builder_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
+						$layout_settings = get_post_meta( $builder_post_id, 'settings', true );
 						$sidebar_layout = $layout_settings['sidebar_layout'];
 					} else {
 						$builder = 'error';
@@ -114,8 +115,9 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		$featured = array();
 		$featured_below = array();
 		if( $builder && $builder != 'wp-private' ) {
-			$layout_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );
-			$elements = get_post_meta( $layout_post_id, 'elements', true );
+			if( ! $builder_post_id  ) 
+				$builder_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );
+			$elements = get_post_meta( $builder_post_id, 'elements', true );
 			$featured = themeblvd_featured_builder_classes( $elements, 'featured' );
 			$featured_below = themeblvd_featured_builder_classes( $elements, 'featured_below' );	
 		}
@@ -195,12 +197,14 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 
 		$sidebars = array();
 		$sidebar_locations = themeblvd_get_sidebar_locations();
+		$custom_sidebars = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_posts('post_type=tb_sidebar&numberposts=-1') : null;
+		$sidebar_overrides = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_post_meta( $post->ID, '_tb_sidebars', true ) : null;
 		foreach( $sidebar_locations as $location_id => $default_sidebar ) {
     		
     		// By default, the sidebar ID will match the ID of the
     		// current location.
-    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id );
-    		
+    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id, $custom_sidebars, $sidebar_overrides, $post->ID );
+
     		// Set current sidebar ID
     		$sidebars[$location_id]['id'] = $sidebar_id;
     		$sidebars[$location_id]['error'] = false;
@@ -233,6 +237,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 			'fake_conditional'	=> $fake_conditional,	// Fake conditional tag
 			'sidebar_layout'	=> $sidebar_layout,		// Sidebar layout
 			'builder'			=> $builder,			// ID of current custom layout if not false
+			'builder_post_id'	=> $builder_post_id,	// Numerical Post ID of tb_layout custom post
 			'featured'			=> $featured,			// Classes for featured area, if empty area won't show
 			'featured_below'	=> $featured_below,		// Classes for featured below area, if empty area won't show
 			'sidebars'			=> $sidebars 			// Array of sidbar ID's for all corresponding locations

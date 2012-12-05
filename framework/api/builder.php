@@ -1273,7 +1273,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		/* Final Filterable Elements
 		/*------------------------------------------------------*/
 		
-		$_themeblvd_core_elements = array(
+		$core_elements = array(
 			'columns' => array(
 				'info' => array(
 					'name' 	=> 'Columns',
@@ -1430,11 +1430,49 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			)
 		);
 		
-		// Remove slider element if plugin isn't installed
-		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) )
-			unset( $_themeblvd_core_elements['slider'] );
+		// Remove slider elements if plugin isn't installed
+		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ){
+			unset( $core_elements['slider'] );
+			// @todo -- Add in unset for quick slider element.	
+		}
 		
-		return apply_filters( 'themeblvd_core_elements', $_themeblvd_core_elements );
+		return apply_filters( 'themeblvd_core_elements', $core_elements );
+	}
+}
+
+/**
+ * Setup all core theme options of framework, which can 
+ * then be altered at the theme level.
+ *
+ * @uses $_themeblvd_registered_elements 
+ * @since 2.2.1
+ */
+
+if( ! function_exists( 'themeblvd_get_registered_elements' ) ) {
+	function themeblvd_get_registered_elements() {
+		$registered_elements = array(
+			'columns',
+			'content',
+			'divider',
+			'headline',
+			'post_grid_paginated',
+			'post_grid',
+			'post_grid_slider',
+			'post_list_paginated',
+			'post_list',
+			'post_list_slider',
+			'slider',
+			// @todo -- Add quick slider element
+			'slogan',
+			'tabs',
+			'tweet'
+		);
+		// Remove slider elements if plugin isn't installed
+		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ){
+			unset( $registered_elements['slider'] );
+			// @todo -- Add in unset for quick slider element.	
+		}
+		return apply_filters( 'themeblvd_registered_elements', $registered_elements );
 	}
 }
 
@@ -1449,9 +1487,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 if( ! function_exists( 'themeblvd_get_elements' ) ) {
 	function themeblvd_get_elements() {
 		global $_themeblvd_core_elements;
-		$elements = array();
-		if( $_themeblvd_core_elements )
-			$elements = $_themeblvd_core_elements;
+		$elements = ! empty( $_themeblvd_core_elements ) ? $_themeblvd_core_elements : themeblvd_get_core_elements();
 		return apply_filters( 'themeblvd_elements', $elements );
 	}
 }
@@ -1500,17 +1536,19 @@ if( ! function_exists( 'themeblvd_add_builder_element' ) ) {
 		$_themeblvd_registered_elements[] = $element_id;
 		
 		// Add in element
-		$_themeblvd_core_elements[$element_id] = array(
-			'info' => array(
-				'name' 		=> $element_name,
-				'id'		=> $element_id,
-				'query'		=> $query_type,
-				'hook'		=> 'themeblvd_'.$element_id,
-				'shortcode'	=> null,
-				'desc' 		=> null
-			),
-			'options' => $options
-		);
+		if( is_admin() ) {
+			$_themeblvd_core_elements[$element_id] = array(
+				'info' => array(
+					'name' 		=> $element_name,
+					'id'		=> $element_id,
+					'query'		=> $query_type,
+					'hook'		=> 'themeblvd_'.$element_id,
+					'shortcode'	=> null,
+					'desc' 		=> null
+				),
+				'options' => $options
+			);
+		}
 		
 		// Hook in display function on frontend
 		add_action( 'themeblvd_'.$element_id, $function_to_display, 10, 3 );
@@ -1555,6 +1593,10 @@ if( ! function_exists( 'themeblvd_remove_builder_element' ) ) {
 
 if( ! function_exists( 'themeblvd_add_sample_layout' ) ) { 
 	function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements ) {
+		
+		// If this is not the admin panel, we don't need to do any of this.
+		if( ! is_admin() )
+			return;
 		
 		global $_themeblvd_user_sample_layouts;
 		
@@ -1637,6 +1679,7 @@ if( ! function_exists( 'themeblvd_add_sample_layout' ) ) {
 
 if( ! function_exists( 'themeblvd_remove_sample_layout' ) ) { 
 	function themeblvd_remove_sample_layout( $layout_id ) {
+		if( ! is_admin() ) return;
 		global $_themeblvd_remove_sample_layouts;
 		$_themeblvd_remove_sample_layouts[] = $layout_id;
 	}

@@ -31,21 +31,19 @@ if( ! function_exists( 'themeblvd_api_init' ) ) {
 		global $_themeblvd_user_stylesheets; // @deprecated
 		global $_themeblvd_remove_stylesheets;
 		
-		// Options
+		// Theme Options
 		$_themeblvd_core_options = themeblvd_get_core_options(); // Filters must be applied before framework. 
 		$_themeblvd_customizer_sections = array();
 		
-		// Core elements with options
-		$_themeblvd_core_elements = themeblvd_get_core_elements(); // Filters must be applied before framework. 
-		
-		// Single dimensional array of elements
-		$_themeblvd_registered_elements = array();
-		foreach( $_themeblvd_core_elements as $element )
-			$_themeblvd_registered_elements[] = $element['info']['id'];
-		
-		// Sample layouts
-		$_themeblvd_user_sample_layouts = array();
-		$_themeblvd_remove_sample_layouts = array();
+		// Layout Builder
+		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
+			if( is_admin() ) {
+				$_themeblvd_core_elements = themeblvd_get_core_elements(); // Filters must be applied before framework.
+				$_themeblvd_user_sample_layouts = array();
+				$_themeblvd_remove_sample_layouts = array();
+			}
+			$_themeblvd_registered_elements = themeblvd_get_registered_elements();
+		}
 		
 		// Sidebars
 		$_themeblvd_user_sidebar_locations = array();
