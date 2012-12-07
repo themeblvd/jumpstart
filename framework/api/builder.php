@@ -26,6 +26,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 	function themeblvd_get_core_elements() {
 		
 		global $_themeblvd_core_elements;
+		global $_wp_additional_image_sizes;
 
 		/*------------------------------------------------------*/
 		/* Initial Setup
@@ -35,21 +36,38 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		$pages_select = themeblvd_get_select( 'pages' );
 		
 		// Setup array for custom sliders select
-		$sliders_select = themeblvd_get_select( 'sliders' );
+		$sliders_select = array();
+		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) )
+			$sliders_select = themeblvd_get_select( 'sliders' );
 		
 		// Setup array for floating sidebars
-		$sidebars = themeblvd_get_select( 'sidebars' );
-		if( ! $sidebars ) 
-			$sidebars['null'] = __( 'You haven\'t created any floating widget areas yet.', 'themeblvd' );
-		if( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) )
-			$sidebars['null'] = __( 'You need to have the Theme Blvd Widget Areas plugin installed for this feature.', 'themeblvd' );
-			
+		$sidebars = array();
+		if( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
+			$sidebars = themeblvd_get_select( 'sidebars' );
+			if( ! $sidebars ) 
+				$sidebars['null'] = __( 'You haven\'t created any floating widget areas yet.', 'themeblvd' );
+			if( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) )
+				$sidebars['null'] = __( 'You need to have the Theme Blvd Widget Areas plugin installed for this feature.', 'themeblvd' );
+		}
+		
 		// Setup array for categories select
 		$categories_select = themeblvd_get_select( 'categories' );
 		
 		// Setup array for categories group of checkboxes
 		$categories_multicheck = $categories_select;
 		unset( $categories_multicheck['null'] );
+		
+		// Setup image size selections for post slider
+		$post_slider_sizes = array();
+		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ) {
+			$sizes = $_wp_additional_image_sizes;
+			$post_slider_sizes = array(
+				'full' 			=> __( 'Full Size', 'themeblvd' ).' ('.$sizes['slider-large']['width'].'x'.$sizes['slider-large']['height'].')',
+				'align-left'	=> __( 'Aligned Left', 'themeblvd' ).' ('.$sizes['slider-staged']['width'].'x'.$sizes['slider-staged']['height'].')',
+				'align-right'	=> __( 'Aligned Right', 'themeblvd' ).' ('.$sizes['slider-staged']['width'].'x'.$sizes['slider-staged']['height'].')'
+				
+			);
+		}
 		
 		/*------------------------------------------------------*/
 		/* Element Options
@@ -981,6 +999,11 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			)	
 		);
 		
+		// Post Slider
+		$element_post_slider = array(
+		
+		);
+		
 		// Slider
 		$element_slider = array(
 		    array(
@@ -1298,7 +1321,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'divider' => array(
 				'info' => array(
-					'name' 	=> 'Divider',
+					'name' 	=> __( 'Divider', 'themeblvd' ),
 					'id'	=> 'divider',
 					'query'	=> 'none',
 					'hook'	=> 'themeblvd_divider',
@@ -1309,7 +1332,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'headline' => array(
 				'info' => array(
-					'name' 	=> 'Headline',
+					'name' 	=> __( 'Headline', 'themeblvd' ),
 					'id'	=> 'headline',
 					'query'	=> 'none',
 					'hook'	=> 'themeblvd_headline',
@@ -1320,7 +1343,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'post_grid_paginated' => array(
 				'info' => array(
-					'name' 	=> 'Post Grid (paginated)',
+					'name' 	=> __( 'Post Grid (paginated)', 'themeblvd' ),
 					'id'	=> 'post_grid_paginated',
 					'query'	=> 'primary',
 					'hook'	=> 'themeblvd_post_grid_paginated',
@@ -1331,7 +1354,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'post_grid' => array(
 				'info' => array(
-					'name' 	=> 'Post Grid',
+					'name' 	=> __( 'Post Grid', 'themeblvd' ),
 					'id'	=> 'post_grid',
 					'query'	=> 'secondary',
 					'hook'	=> 'themeblvd_post_grid',
@@ -1342,7 +1365,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'post_grid_slider' => array(
 				'info' => array(
-					'name' 	=> 'Post Grid Slider',
+					'name' 	=> __( 'Post Grid Slider', 'themeblvd' ),
 					'id'	=> 'post_grid_slider',
 					'query'	=> 'secondary',
 					'hook'	=> 'themeblvd_post_grid_slider',
@@ -1353,7 +1376,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'post_list_paginated' => array(
 				'info' => array(
-					'name' 	=> 'Post List (paginated)',
+					'name' 	=> __( 'Post List (paginated)', 'themeblvd' ),
 					'id'	=> 'post_list_paginated',
 					'query'	=> 'primary',
 					'hook'	=> 'themeblvd_post_list_paginated',
@@ -1364,7 +1387,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'post_list' => array(
 				'info' => array(
-					'name' 	=> 'Post List',
+					'name' 	=> __( 'Post List', 'themeblvd' ),
 					'id'	=> 'post_list',
 					'query'	=> 'secondary',
 					'hook'	=> 'themeblvd_post_list',
@@ -1375,7 +1398,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'post_list_slider' => array(
 				'info' => array(
-					'name' 	=> 'Post List Slider',
+					'name' 	=> __( 'Post List Slider', 'themeblvd' ),
 					'id'	=> 'post_list_slider',
 					'query'	=> 'secondary',
 					'hook'	=> 'themeblvd_post_list_slider',
@@ -1384,9 +1407,20 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				),
 				'options' => $element_post_list_slider
 			),
+			'post_slider' => array(
+				'info' => array(
+					'name' 	=> __( 'Post Slider', 'themeblvd' ),
+					'id'	=> 'post_slider',
+					'query'	=> 'secondary',
+					'hook'	=> 'themeblvd_post_slider',
+					'shortcode'	=> '[post_slider]',
+					'desc' 	=> __( 'Slider generated from group of posts', 'themeblvd' )
+				),
+				'options' => $element_post_slider
+			),
 			'slider' => array(
 				'info' => array(
-					'name' 	=> 'Slider',
+					'name' 	=> __( 'Slider', 'themeblvd' ),
 					'id'	=> 'slider',
 					'query'	=> 'secondary',
 					'hook'	=> 'themeblvd_slider',
@@ -1397,7 +1431,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'slogan' => array(
 				'info' => array(
-					'name' 	=> 'Slogan',
+					'name' 	=> __( 'Slogan', 'themeblvd' ),
 					'id'	=> 'slogan',
 					'query'	=> 'none',
 					'hook'	=> 'themeblvd_slogan',
@@ -1408,7 +1442,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'tabs' => array(
 				'info' => array(
-					'name' 	=> 'Tabs',
+					'name' 	=> __( 'Tabs', 'themeblvd' ),
 					'id'	=> 'tabs',
 					'query'	=> 'none',
 					'hook'	=> 'themeblvd_tabs',
@@ -1419,7 +1453,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			),
 			'tweet' => array(
 				'info' => array(
-					'name' 	=> 'Tweet',
+					'name' 	=> __( 'Tweet', 'themeblvd' ),
 					'id'	=> 'tweet',
 					'query'	=> 'none',
 					'hook'	=> 'themeblvd_tweet',
@@ -1433,6 +1467,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		// Remove slider elements if plugin isn't installed
 		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ){
 			unset( $core_elements['slider'] );
+			unset( $core_elements['post_slider'] );	
 			// @todo -- Add in unset for quick slider element.	
 		}
 		
@@ -1461,6 +1496,7 @@ if( ! function_exists( 'themeblvd_get_registered_elements' ) ) {
 			'post_list_paginated',
 			'post_list',
 			'post_list_slider',
+			'post_slider',
 			'slider',
 			// @todo -- Add quick slider element
 			'slogan',
@@ -1470,6 +1506,7 @@ if( ! function_exists( 'themeblvd_get_registered_elements' ) ) {
 		// Remove slider elements if plugin isn't installed
 		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ){
 			unset( $registered_elements['slider'] );
+			unset( $registered_elements['post_slider'] );
 			// @todo -- Add in unset for quick slider element.	
 		}
 		return apply_filters( 'themeblvd_registered_elements', $registered_elements );
