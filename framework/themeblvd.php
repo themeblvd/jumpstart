@@ -43,6 +43,7 @@ if( is_admin() ) {
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
 	
 	// Apply initial hooks
+	add_action( 'themeblvd_intervene', 'themeblvd_add_image_sizes' );
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
 	add_action( 'admin_enqueue_scripts', 'themeblvd_non_modular_assets' );
@@ -50,7 +51,6 @@ if( is_admin() ) {
 	add_action( 'admin_init', 'themeblvd_add_sanitization' );
 	add_action( 'admin_init', 'themeblvd_disable_nag' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
-	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 	add_action( 'themeblvd_options_footer_text', 'themeblvd_options_footer_text_default' );
 	add_action( 'admin_init', 'themeblvd_stats' );
@@ -108,12 +108,12 @@ if( is_admin() ) {
 	add_filter( 'template_include', 'themeblvd_private_layout' );
 	
 	// Apply initial hooks
+	add_action( 'themeblvd_intervene', 'themeblvd_add_image_sizes' );
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
 	add_action( 'pre_get_posts', 'themeblvd_posts_per_page' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
 	add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
-	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles', 5 );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
@@ -178,7 +178,8 @@ if( is_admin() ) {
 	add_action( 'after_signup_form', 'themeblvd_after_signup_form' );
 }
 
-// Optional Intervene (nothing hooked by default)
+// Optional Intervene for anything that needs to 
+// happen before API is established.
 do_action( 'themeblvd_intervene' );
 
 // Register text domains
