@@ -10,8 +10,7 @@
 #optionsframework .section-description{border-bottom:1px solid #dfdfdf;color:#888888;font-family:Georgia,"Times New Roman",Times,serif;font-size:12px;font-style:italic;line-height:1.5em;padding:15px;}
 #optionsframework .group .section:last-of-type{padding-bottom:40px;}
 #optionsframework .section .heading{font-size:1.1em;margin:0 0 15px 3px;padding:10px 5px;}
-#optionsframework .section-info{border:none;padding-bottom:0;}
-#optionsframework .section-info .heading{font-size:18px;border-bottom:none;margin:0;padding:5px;}
+#optionsframework .section-info{ color:#888888;font-family:Georgia,"Times New Roman",Times,serif;font-size:12px;font-style:italic;line-height:1.5em;padding:15px; }
 #optionsframework .section-info p{margin:5px 0 0;padding:0 5px;}
 #optionsframework .section .controls{float:left;min-width:350px;width:54%;padding-right:2%;}
 #optionsframework .section .explain{max-width:38%;float:left;font-size:12px;line-height:16px;color:#777;}
