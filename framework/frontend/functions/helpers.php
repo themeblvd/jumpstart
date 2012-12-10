@@ -691,6 +691,7 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
 			'element_post_list_paginated' 	=> '',
 			'element_post_list' 			=> '',
 			'element_post_list_slider' 		=> '',
+			'element_post_slider' 			=> '',
 			'element_slider' 				=> '',
 			'element_slogan' 				=> '',
 			'element_tabs' 					=> '',
