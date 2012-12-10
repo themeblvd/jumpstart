@@ -699,6 +699,141 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 }
 
 /**
+ * Display post slider. 
+ * 
+ * This is different from post list slider or post 
+ * grid slider. This slider mimics custom slider set 
+ * up in the slider manager, but provides a way to 
+ * automatically feed slides to them from posts.
+ *
+ * @since 2.2.1
+ *
+ * @param string $slider Slug of custom-built slider to use
+ */
+
+if( ! function_exists( 'themeblvd_slider_auto' ) ) {
+	function themeblvd_slider_auto( $id, $args = array() ) {
+
+		global $post;
+
+		// Setup $args
+		$defaults = array(
+			'fx' 				=> 'slide', 	// Effect for transitions
+			'timeout' 			=> '3',			// Time between auto trasitions in seconds
+			'nav_standard' 		=> '1',			// Show standard nav - true, false
+			'nav_arrows'		=> '1',			// Show nav arrows - true, false
+			'pause_play'		=> '1',			// Show pause/play buttons - true, false
+			'pause_on_hover' 	=> 'disable',	// Pause on hover - pause_on, pause_on_off, disable
+			'image' 			=> 'full',		// How to display featured images - full, align-right, align-left
+			'image_link' 		=> 'permalink',	// Where image link goes - permalink, lightbox, none
+			'button' 			=> '',			// Text for button to lead to permalink - leave empty to hide
+			'source' 			=> 'tag',		// Source for the posts query
+			'tag' 				=> '',			// Tag to pull posts from
+			'category' 			=> '',			// Category slug to pull posts from
+			'numberposts' 		=> '5',			// Number of posts/slides
+			'orderby' 			=> 'post_date',	// Orderby param for posts query
+			'order'				=> 'DESC',		// Order param for posts query
+			'query' 			=> '',			// Custom query string
+			'mobile_fallback' 	=> 'full_list',	// How to display on mobile - full_list, first_slide, display
+			
+		);
+		$args = wp_parse_args( $args, $defaults );		
+
+		// Format settings array so it matches the array 
+		// pulled if we were getting to this from a 
+		// custom-built slider.
+		$settings = array(
+			'fx' 				=> $args['fx'],
+		    'timeout' 			=> $args['timeout'],
+		    'nav_standard' 		=> $args['nav_standard'],
+		    'nav_arrows' 		=> $args['nav_arrows'],
+		    'pause_play' 		=> $args['pause_play'],
+		    'pause_on_hover' 	=> $args['pause_on_hover'],
+		    'mobile_fallback' 	=> $args['mobile_fallback']
+		);
+		$settings = apply_filters( 'themeblvd_slider_auto_settings', $settings, $args );
+		
+		// Get posts for slider
+		$query_string = '';
+		switch( $args['source'] ){
+			case 'tag' :
+				$query_string = 'tag='.$args['tag'].'&orderby='.$args['orderby'].'&order='.$args['order'].'&numberposts='.$args['numberposts'];
+				break;
+			case 'category' :
+				$query_string = 'category_name='.$args['category'].'&orderby='.$args['orderby'].'&order='.$args['order'].'&numberposts='.$args['numberposts'];
+				break;
+			case 'query' :
+				$query_string = $args['query'];
+				break;
+		}
+		$posts = get_posts( apply_filters( 'themeblvd_slider_auto_args', $query_string, $args ) );
+		
+		// Now loop through posts and setup an array of 
+		// slides that matches what would have been pulled 
+		// from a custom-built slider.
+		$slides = array();
+		$counter = 1;
+		$includes = array( 'image_link', 'headline', 'description' );
+		if( $args['button'] ) $includes[] = 'button';
+		$image_link_target = $args['image_link'] == 'permalink' ? '_self' : $args['image_link'];
+		if( $posts ) {
+			foreach( $posts as $post ) {
+				
+				// Setup post data for loop
+				setup_postdata( $post );
+				
+				// Featured image ID
+				$featured_image_id = get_post_thumbnail_id( $post->ID );
+				
+				// Image Link
+				$image_link_url = '';
+				switch( $args['image_link'] ) {
+					case 'permalink' :
+						$image_link_url = get_permalink();
+						break;
+					case 'lightbox' :
+						$image_link_url = wp_get_attachment_url( $featured_image_id );
+						break;
+				}
+				
+				// Elements
+				$include = array( 'image_link', 'headline', 'description' );
+				$elements = array(
+					'include'		=> $includes,
+					'image_link' 	=> array(
+						'target' 	=> $image_link_target,
+						'url'		=> $image_link_url
+					),
+					'headline' 		=> get_the_title(),
+					'description'	=> get_the_excerpt(),
+					'button'		=> array(
+						'text'		=> $args['button'],
+						'target' 	=> '_self',
+						'url' 		=> get_permalink()
+					)
+				);
+				
+				// Add slide
+				$slides['slide_'.$counter] = array(
+					'slide_type' 		=> 'image',
+					'position_image' 	=> $args['image'],
+					'position' 			=> $args['image'],
+					'elements' 			=> $elements,
+					'image'				=> array(
+						'id' => $featured_image_id
+					)
+				);
+				$counter++;
+			}
+		}
+		$slides = apply_filters( 'themeblvd_slider_auto_slides', $slides, $args, $posts );
+		
+		// Display post slider
+		do_action( 'themeblvd_slider_auto', $id, $settings, $slides );
+	}
+}
+
+/**
  * Display slider.
  *
  * @since 2.0.0
@@ -726,7 +861,7 @@ if( ! function_exists( 'themeblvd_slider' ) ) {
 		$type = get_post_meta( $slider_id, 'type', true );
 		$settings = get_post_meta( $slider_id, 'settings', true );
 		$slides = get_post_meta( $slider_id, 'slides', true );
-		
+
 		// Display slider based on its slider type
 		do_action( 'themeblvd_'.$type.'_slider', $slider, $settings, $slides );
 	}

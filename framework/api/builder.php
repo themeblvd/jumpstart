@@ -57,18 +57,6 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		$categories_multicheck = $categories_select;
 		unset( $categories_multicheck['null'] );
 		
-		// Setup image size selections for post slider
-		$post_slider_sizes = array();
-		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ) {
-			$sizes = $_wp_additional_image_sizes;
-			$post_slider_sizes = array(
-				'full' 			=> __( 'Full Size', 'themeblvd' ).' ('.$sizes['slider-large']['width'].'x'.$sizes['slider-large']['height'].')',
-				'align-left'	=> __( 'Aligned Left', 'themeblvd' ).' ('.$sizes['slider-staged']['width'].'x'.$sizes['slider-staged']['height'].')',
-				'align-right'	=> __( 'Aligned Right', 'themeblvd' ).' ('.$sizes['slider-staged']['width'].'x'.$sizes['slider-staged']['height'].')'
-				
-			);
-		}
-		
 		/*------------------------------------------------------*/
 		/* Element Options
 		/*------------------------------------------------------*/
@@ -135,9 +123,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -200,9 +188,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -226,9 +214,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -278,9 +266,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -320,7 +308,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'name'		=> __( 'Order By', 'themeblvd' ),
 				'desc'		=> __( 'Select what attribute you\'d like the posts ordered by.', 'themeblvd' ),
 				'type'		=> 'select',
-				'std'		=> '3',
+				'std'		=> 'post_date',
 				'options'	=> array(
 			        'post_date' 	=> __( 'Publish Date', 'themeblvd' ),
 			        'title' 		=> __( 'Post Title', 'themeblvd' ),
@@ -407,9 +395,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -449,7 +437,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'name'		=> __( 'Order By', 'themeblvd' ),
 				'desc'		=> __( 'Select what attribute you\'d like the posts ordered by.', 'themeblvd' ),
 				'type'		=> 'select',
-				'std'		=> '3',
+				'std'		=> 'post_date',
 				'options'	=> array(
 			        'post_date' 	=> __( 'Publish Date', 'themeblvd' ),
 			        'title' 		=> __( 'Post Title', 'themeblvd' ),
@@ -488,9 +476,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)	
 		);
@@ -504,8 +492,8 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'type'		=> 'select',
 				'std'		=> 'slide',
 				'options'	=> array(
-			        'fade' 	=> 'Fade',
-					'slide'	=> 'Slide'
+			        'fade' 	=> __( 'Fade', 'themeblvd' ),
+					'slide'	=> __( 'Slide', 'themeblvd' )
 				)
 			),
 			array(
@@ -521,7 +509,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'The standard navigation are the little dots that appear below the slider.' , 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
-				'options'		=> array(
+				'options'	=> array(
 		            '1'	=> __( 'Yes, show navigation.', 'themeblvd' ),
 		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
 				)
@@ -532,7 +520,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'These arrows allow the user to navigation from one slide to the next.' , 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
-				'options'		=> array(
+				'options'	=> array(
 		            '1'	=> __( 'Yes, show arrows.', 'themeblvd' ),
 		            '0'	=> __( 'No, don\'t show them.', 'themeblvd' )
 				)
@@ -543,7 +531,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __('Note that if you have the speed set to 0, this option will be ignored. ', 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
-				'options'		=> array(
+				'options'	=> array(
 		            '1'	=> __( 'Yes, show pause/play button.', 'themeblvd' ),
 		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
 				)
@@ -627,9 +615,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -762,9 +750,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -816,7 +804,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'name'		=> __( 'Order By', 'themeblvd' ),
 				'desc'		=> __( 'Select what attribute you\'d like the posts ordered by.', 'themeblvd' ),
 				'type'		=> 'select',
-				'std'		=> '3',
+				'std'		=> 'post_date',
 				'options'	=> array(
 			        'post_date' 	=> __( 'Publish Date', 'themeblvd' ),
 			        'title' 		=> __( 'Post Title', 'themeblvd' ),
@@ -848,9 +836,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -881,7 +869,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'The standard navigation are the little dots that appear below the slider.' , 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
-				'options'		=> array(
+				'options'	=> array(
 		            '1'	=> __( 'Yes, show navigation.', 'themeblvd' ),
 		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
 				)
@@ -892,7 +880,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'These arrows allow the user to navigation from one slide to the next.' , 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
-				'options'		=> array(
+				'options'	=> array(
 		            '1'	=> __( 'Yes, show arrows.', 'themeblvd' ),
 		            '0'	=> __( 'No, don\'t show them.', 'themeblvd' )
 				)
@@ -903,7 +891,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __('Note that if you have the speed set to 0, this option will be ignored. ', 'themeblvd' ),
 				'std'		=> '1',
 				'type'		=> 'select',
-				'options'		=> array(
+				'options'	=> array(
 		            '1'	=> __( 'Yes, show pause/play button.', 'themeblvd' ),
 		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
 				)
@@ -960,7 +948,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'name'		=> __( 'Order By', 'themeblvd' ),
 				'desc'		=> __( 'Select what attribute you\'d like the posts ordered by.', 'themeblvd' ),
 				'type'		=> 'select',
-				'std'		=> '3',
+				'std'		=> 'post_date',
 				'options'	=> array(
 			        'post_date' 	=> __( 'Publish Date', 'themeblvd' ),
 			        'title' 		=> __( 'Post Title', 'themeblvd' ),
@@ -992,20 +980,222 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)	
 		);
 		
 		// Post Slider
 		$element_post_slider = array(
-		
+			array(
+				'id' 		=> 'post_slider_desc',
+				'desc' 		=> __( 'The "Post Slider" element works with the <a href="http://wordpress.org/extend/plugins/theme-blvd-sliders" target="_blank">Theme Blvd Sliders</a> plugin you\'ve installed. It works a little differently than the framework\'s default "Post List Slider" and "Post Grid Slider" elements. The point of this element is to mimic custom sliders setup under the Slider Manager, but provide you a way to automatically set them up by feeding the slides directly from posts.', 'themeblvd' ),
+				'type' 		=> 'info'
+			),
+			array(
+		    	'id' 		=> 'fx',
+				'name'		=> __( 'Transition Effect', 'themeblvd' ),
+				'desc'		=> __( 'Select the effect you\'d like used to transition from one slide to the next.', 'themeblvd' ),
+				'type'		=> 'select',
+				'std'		=> 'slide',
+				'options'	=> array(
+			        'fade' 	=> __( 'Fade', 'themeblvd' ),
+					'slide'	=> __( 'Slide', 'themeblvd' )
+				)
+			),
+			array(
+		    	'id' 		=> 'timeout',
+				'name'		=> __( 'Speed', 'themeblvd' ),
+				'desc'		=> __( 'Enter the number of seconds you\'d like in between trasitions. You may use <em>0</em> to disable the slider from auto advancing.', 'themeblvd' ),
+				'type'		=> 'text',
+				'std'		=> '3'
+			),
+			array(
+				'id'		=> 'nav_standard',
+				'name'		=> __( 'Show standard slideshow navigation?', 'themeblvd' ),
+				'desc'		=> __( 'The standard navigation are the little dots that appear below the slider.' , 'themeblvd' ),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+		            '1'	=> __( 'Yes, show navigation.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
+				)
+			),
+			array(
+				'id'		=> 'nav_arrows',
+				'name'		=> __( 'Show next/prev slideshow arrows?', 'themeblvd' ),
+				'desc'		=> __( 'These arrows allow the user to navigation from one slide to the next.' , 'themeblvd' ),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+		            '1'	=> __( 'Yes, show arrows.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show them.', 'themeblvd' )
+				)
+			),
+			array(
+				'id'		=> 'pause_play',
+				'name'		=> __( 'Show pause/play button?', 'themeblvd' ),
+				'desc'		=> __( 'Note that if you have the speed set to 0, this option will be ignored.', 'themeblvd' ),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+		            '1'	=> __( 'Yes, show pause/play button.', 'themeblvd' ),
+		            '0'	=> __( 'No, don\'t show it.', 'themeblvd' )
+				)
+			),
+			array(
+				'id'		=> 'pause_on_hover',
+				'name'		=> __( 'Enable pause on hover?', 'themeblvd' ),
+				'desc'		=> __( 'Select if you\'d like to implement the pause on hover feature.' , 'themeblvd' ),
+				'std'		=> 'disable',
+				'type'		=> 'select',
+				'options'	=> array(
+		            'pause_on'		=> __( 'Pause on hover only.', 'themeblvd' ),
+		            'pause_on_off'	=> __( 'Pause on hover and resume when hovering off.', 'themeblvd' ),
+		            'disable'		=> __( 'No, disable this all together.', 'themeblvd' ),
+				)
+			),
+			array(
+				'id'		=> 'image',
+				'name'		=> __( 'Image Display', 'themeblvd' ),
+				'desc'		=> __( 'Select how you\'d like the "featured image" from the post to be displayed in the slider.', 'themeblvd' ),
+				'std'		=> 'full',
+				'type'		=> 'select',
+				'options'	=> array(
+					'full' 			=> __( 'Full Size', 'themeblvd' ),
+					'align-left'	=> __( 'Aligned Left', 'themeblvd' ),
+					'align-right'	=> __( 'Aligned Right', 'themeblvd' )
+				)
+			),
+			array(
+				'id'		=> 'image_link',
+				'name'		=> __( 'Image Link', 'themeblvd' ),
+				'desc'		=> __( 'Select how you\'d like the image link to work for each post.', 'themeblvd' ),
+				'std'		=> 'permalink',
+				'type'		=> 'select',
+				'options'	=> array(
+					'permalink' => __( 'Link to post.', 'themeblvd' ),
+					'lightbox'	=> __( 'Link to enlarged featured image in lightbox.', 'themeblvd' ),
+					'none'		=> __( 'No image link.', 'themeblvd' )
+				)
+			),
+			array(
+				'id'		=> 'button',
+				'name'		=> __( 'Button Text Leading to Post', 'themeblvd' ),
+				'desc'		=> __( 'Enter in the text you\'d like for the button placed after the excerpt leading to the post. Leave blank to not include a button at all.<br><br>Ex: Read More', 'themeblvd' ),
+				'pholder'	=> __( 'Leave blank for no button...', 'themeblvd' ),
+				'std'		=> '',
+				'type'		=> 'text'
+			),
+			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'show-hide-toggle'
+		    ),
+			array(
+		    	'id' 		=> 'source',
+				'name'		=> __( 'Where to pull posts from?', 'themeblvd' ),
+				'desc'		=> __( 'Select how you\'d like to pull posts to generate this slider.', 'themeblvd' ),
+				'type'		=> 'select',
+				'std'		=> 'tag',
+				'options'	=> array(
+			        'tag' 		=> __( 'Tag', 'themeblvd' ),
+			        'category' 	=> __( 'Category', 'themeblvd' ),
+			        'query' 	=> __( 'Custom Query', 'themeblvd' )
+				),
+				'class' 	=> 'trigger'
+			),
+			array(
+		    	'id' 		=> 'tag',
+				'name'		=> __( 'Tag', 'themeblvd' ),
+				'desc'		=> __( 'Enter a tag to pull most recent posts from.', 'themeblvd' ),
+				'type'		=> 'text',
+				'class' 	=> 'hide receiver receiver-tag'
+			),
+			array(
+		    	'id' 		=> 'category',
+				'name'		=> __( 'Category', 'themeblvd' ),
+				'desc'		=> __( 'Enter a category slug to pull most recent posts from.', 'themeblvd' ),
+				'type'		=> 'text',
+				'class' 	=> 'hide receiver receiver-category'
+			),
+			array(
+		    	'id' 		=> 'numberposts',
+				'name'		=> __( 'Total Number of Posts', 'themeblvd' ),
+				'desc'		=> __( 'Enter the maximum number of posts you\'d like to pull. You can use <em>-1</em> to show all posts from the selected criteria.', 'themeblvd' ),
+				'type'		=> 'text',
+				'std'		=> '5',
+				'class' 	=> 'hide receiver receiver-tag receiver-category'
+			),
+			array(
+		    	'id' 		=> 'orderby',
+				'name'		=> __( 'Order By', 'themeblvd' ),
+				'desc'		=> __( 'Select what attribute you\'d like the posts ordered by.', 'themeblvd' ),
+				'type'		=> 'select',
+				'std'		=> 'post_date',
+				'options'	=> array(
+			        'post_date' 	=> __( 'Publish Date', 'themeblvd' ),
+			        'title' 		=> __( 'Post Title', 'themeblvd' ),
+			        'comment_count' => __( 'Number of Comments', 'themeblvd' ),
+			        'rand' 			=> __( 'Random', 'themeblvd' )
+				),
+				'class' 	=> 'hide receiver receiver-tag receiver-category'
+			),
+			array(
+		    	'id' 		=> 'order',
+				'name'		=> __( 'Order', 'themeblvd' ),
+				'desc'		=> __( 'Select the order in which you\'d like the posts displayed based on the previous orderby parameter.<br><br><em>Note that a traditional WordPress setup would have posts ordered by <strong>Publish Date</strong> and be ordered <strong>Descending</strong>.</em>', 'themeblvd' ),
+				'type'		=> 'select',
+				'std'		=> 'DESC',
+				'options'	=> array(
+			        'DESC' 	=> __( 'Descending (highest to lowest)', 'themeblvd' ),
+			        'ASC' 	=> __( 'Ascending (lowest to highest)', 'themeblvd' )
+				),
+				'class' 	=> 'hide receiver receiver-tag receiver-category'
+			),
+			array(
+		    	'id' 		=> 'query',
+				'name'		=> __( 'Custom Query', 'themeblvd' ),
+				'desc'		=> __( 'Enter in a <a href="http://codex.wordpress.org/Class_Reference/WP_Query#Parameters">custom query string</a>.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ&numberposts=10', 'themeblvd' ),
+				'type'		=> 'text',
+				'class' 	=> 'hide receiver receiver-query'
+			),
+			array(
+		    	'type'		=> 'subgroup_end'
+		    ),
+		    array(
+		    	'id' 		=> 'mobile_fallback',
+				'name'		=> __( 'How to display on mobile devices?', 'themeblvd' ),
+				'desc'		=> __( 'Select how you\'d like this slider to be displayed on mobile devices. Sometimes full, animated sliders can cause problems on mobile devices, and so you may find it\'s better to setup a fallback option.', 'themeblvd' ),
+				'type'		=> 'radio',
+				'std'		=> 'full_list',
+				'options'	=> array(
+					'full_list' 	=> __( 'List out slides for a more user-friendly mobile experience.', 'themeblvd' ),
+					'first_slide' 	=> __( 'Show first slide only for a more simple mobile experience.', 'themeblvd' ),
+					'display' 		=> __( 'Attempt to show full animated slider on mobile devices.', 'themeblvd' )
+				)
+			),
+		    array(
+		    	'id' 		=> 'visibility',
+				'name'		=> __( 'Responsive Visibility ', 'themeblvd' ),
+				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
+				'type'		=> 'multicheck',
+				'options'	=> array(
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
+				)
+			)
 		);
 		
 		// Slider
 		$element_slider = array(
+			array(
+				'id' 		=> 'slider_desc',
+				'desc' 		=> __( 'The "Slider" element works with the <a href="http://wordpress.org/extend/plugins/theme-blvd-sliders" target="_blank">Theme Blvd Sliders</a> plugin you\'ve installed. You can use it to pull any sliders you\'ve created from the Slider Manager.', 'themeblvd' ),
+				'type' 		=> 'info'
+			),
 		    array(
 		    	'id' 		=> 'slider_id',
 				'name'		=> __( 'Choose Slider', 'themeblvd' ),
@@ -1019,9 +1209,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -1117,9 +1307,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -1234,9 +1424,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
@@ -1285,9 +1475,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'desc'		=> __( 'Select any resolutions you\'d like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that\'s hidden only on standard screen resolutions to take its place.</em>', 'themeblvd' ),
 				'type'		=> 'multicheck',
 				'options'	=> array(
-					'hide_on_standard' 	=> 'Hide on Standard Resolutions',
-					'hide_on_tablet' 	=> 'Hide on Tablets',
-					'hide_on_mobile' 	=> 'Hide on Mobile Devices',
+					'hide_on_standard' 	=> __( 'Hide on Standard Resolutions', 'themeblvd' ),
+					'hide_on_tablet' 	=> __( 'Hide on Tablets', 'themeblvd' ),
+					'hide_on_mobile' 	=> __( 'Hide on Mobile Devices', 'themeblvd' )
 				)
 			)
 		);
