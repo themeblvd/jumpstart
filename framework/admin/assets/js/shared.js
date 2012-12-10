@@ -70,7 +70,7 @@
 	    		// time a new options set is inserted.
 	    		if(type == 'setup')
 	    		{
-	    		
+
 	    			// Fancy Select
 					$this.find('.tb-fancy-select').each(function(){
 						var el = $(this), value = el.find('select').val(), text = el.find('option[value='+value+']').text();
@@ -135,6 +135,13 @@
     					{
     						el.find('.receiver').show();
     					}    					
+    				});
+    				
+    				// Show/Hide toggle grouping (triggered with <select> to target specific options)
+    				$this.find('.show-hide-toggle').each(function(){
+    					var el = $(this), value = el.find('.trigger select').val();
+    					el.find('.receiver').hide();
+    					el.find('.receiver-'+value).show();
     				});
     				
     				// Configure logo
@@ -300,6 +307,13 @@
     					}    					
     				});
     				
+    				// Show/Hide toggle grouping (triggered with <select> to target specific options)
+    				$this.find('.show-hide-toggle select').live('change', function(){
+    					var el = $(this), value = el.val(), group = el.closest('.show-hide-toggle');
+    					group.find('.receiver').hide();
+    					group.find('.receiver-'+value).show();
+    				});
+
     				// Configure logo
     				$this.find('.section-logo .select-type select').live('change', function(){
     					var el = $(this), parent = el.closest('.section-logo'), value = el.val();
