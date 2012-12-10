@@ -14,7 +14,6 @@ if( ! function_exists( 'themeblvd_add_sanitization' ) ) {
 	function themeblvd_add_sanitization(){
 		add_filter( 'themeblvd_sanitize_text', 'themeblvd_sanitize_text' );
 		add_filter( 'themeblvd_sanitize_textarea', 'themeblvd_sanitize_textarea' );
-		add_filter( 'themeblvd_sanitize_info', 'themeblvd_sanitize_allowedtags' );
 		add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_enum', 10, 2 );
 		add_filter( 'themeblvd_sanitize_radio', 'themeblvd_sanitize_enum', 10, 2 );
 		add_filter( 'themeblvd_sanitize_images', 'themeblvd_sanitize_enum', 10, 2 );

@@ -399,8 +399,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				if( isset($value['name']) )
 					$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
 				if( isset( $value['desc'] ) )
-					$output .= apply_filters('themeblvd_sanitize_info', $value['desc'] ) . "\n";
-				$output .= '<div class="clear"></div></div>' . "\n";
+					$output .= $value['desc']."\n";
+				$output .= '<div class="clear"></div></div>'."\n";
 				break;
 			
 			/*---------------------------------------*/
