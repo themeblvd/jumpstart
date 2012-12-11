@@ -32,14 +32,15 @@ get_header();
 						<div class="primary-post-list element-post_list_paginated post_list<?php echo themeblvd_get_classes( 'element_post_list_paginated', true ); ?>">
 							<?php query_posts( themeblvd_get_att( 'query_string' ) ); ?>
 							<?php global $more; $more = 0; ?>
-							<?php if ( have_posts() ) : ?>
+							<?php if( have_posts() ) : ?>
 								<?php while ( have_posts() ) : the_post(); ?>
 									<?php get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) ); ?>
 								<?php endwhile; ?>
 							<?php else : ?>
 								<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
-							<?php endif; wp_reset_query(); ?>
+							<?php endif; ?>
 							<?php themeblvd_pagination(); ?>
+							<?php wp_reset_query(); ?>
 						</div><!-- .post_list (end) -->
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
