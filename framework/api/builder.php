@@ -1686,19 +1686,10 @@ if( ! function_exists( 'themeblvd_get_registered_elements' ) ) {
 			'post_list_paginated',
 			'post_list',
 			'post_list_slider',
-			'post_slider',
-			'slider',
-			// @todo -- Add quick slider element
 			'slogan',
 			'tabs',
 			'tweet'
 		);
-		// Remove slider elements if plugin isn't installed
-		if( ! defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ){
-			unset( $registered_elements['slider'] );
-			unset( $registered_elements['post_slider'] );
-			// @todo -- Add in unset for quick slider element.	
-		}
 		return apply_filters( 'themeblvd_registered_elements', $registered_elements );
 	}
 }
@@ -1737,7 +1728,6 @@ if( ! function_exists( 'themeblvd_is_element' ) ) {
 			if( in_array( $element_id, $_themeblvd_registered_elements ) )
 				$exists = true;
 		return $exists;
-		
 	}
 }
 
