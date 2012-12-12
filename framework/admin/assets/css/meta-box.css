@@ -21,9 +21,6 @@
 .tb-meta-box .section-radio label,.tb-meta-box .section-multicheck label{float:left;}
 .tb-meta-box input.checkbox,.tb-meta-box input.of-radio{width:30px;float:left;clear:both;}
 .tb-meta-box .controls .of-color{float:left;width:80px;margin-left:5px;margin-right:5px;}
-.tb-meta-box .controls .of-typography-size{width:80px;margin-left:5px;float:left;}
-.tb-meta-box .controls .of-typography-unit{width:50px;margin-left:5px;float:left;}
-.tb-meta-box .controls .of-typography-face{width:100px;margin-left:5px;float:left;}
 .tb-meta-box .controls .of-radio-img-img{border:3px solid #f9f9f9;display:none;cursor:pointer;float:left;margin:0 5px 10px 0;}
 .tb-meta-box .controls .of-radio-img-selected{border:3px solid #ccc;}
 .tb-meta-box .controls .of-radio-img-img:hover{opacity:.8;}
