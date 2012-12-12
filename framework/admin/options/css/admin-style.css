@@ -69,7 +69,9 @@
 /* Google Font (addon to typography) */
 #optionsframework .google-font{background:#ffffff;border:1px solid #dddddd;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;padding:10px;}
 #optionsframework .google-font .wrap{margin:0;}
-#optionsframework .google-font h5{margin:4px;}
+#optionsframework .google-font h5{font-size:12px;margin:4px 4px 10px 4px;}
+#optionsframework .google-font input{margin-bottom:5px;}
+#optionsframework .google-font .note{margin:0;}
 
 /* Fancy Selects */
 #optionsframework .tb-fancy-select { background: url(../../assets/images/fancy-select_2x.png) repeat-x; background-size: 7px 32px; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; -moz-box-shadow: 0 0 4px #eeeeee; -webkit-box-shadow: 0 0 4px #eeeeee; box-shadow: 0 0 4px #eeeeee; margin-bottom: 10px; position: relative; }
