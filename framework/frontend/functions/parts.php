@@ -166,7 +166,7 @@ if( ! function_exists( 'themeblvd_pagination' ) ) {
 			}
 		}
 		if( 1 != $pages ) {
-			echo '<div class="pagination-wrap"><div class=""><div class="btn-group clearfix">';
+			echo '<div class="pagination-wrap"><div class="pagination"><div class="btn-group clearfix">';
 			if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link(1).'">&laquo;</a>';
 			if($paged > 1 && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($paged - 1).'">&lsaquo;</a>';
 			for ( $i = 1; $i <= $pages; $i++ ) {
