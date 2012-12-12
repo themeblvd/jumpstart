@@ -761,7 +761,7 @@ if( ! function_exists( 'themeblvd_atts_init' ) ) {
 		/*---------------------------------*/
 		
 		if( is_single() ) {
-			
+
 			$show_meta = true;
 			if( themeblvd_get_option( 'single_meta', null, 'show' ) == 'hide' )
 				$show_meta = false;
@@ -769,8 +769,8 @@ if( ! function_exists( 'themeblvd_atts_init' ) ) {
 				$show_meta = false;
 			else if( get_post_meta( $post->ID, '_tb_meta', true ) == 'show' )
 				$show_meta = true;
-				
-			themeblvd_set_atts( apply_filters( 'themeblvd_single_atts', array( 'show_meta', $show_meta ) ) ); // Any atts you want available with themeblvd_get_att() in a template part can filtered on here.
+
+			themeblvd_set_atts( apply_filters( 'themeblvd_single_atts', array( 'show_meta' => $show_meta ) ) ); // Any atts you want available with themeblvd_get_att() in a template part can filtered on here.
 			
 		}
 		
