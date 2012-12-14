@@ -64,11 +64,11 @@ if( ! function_exists( 'themeblvd_button' ) ) {
 		$final_classes = 'btn';
 		if( ! $color )
 			$color = 'default';
-		if( in_array( $color, array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) )
+		if( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) ) )
 			$final_classes .= ' btn-'.$color;
 		else
 			$final_classes .= ' '.$color;
-		if( in_array( $size, array( 'mini', 'small', 'large', ) ) )
+		if( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'mini', 'small', 'large' ) ) ) )
 			$final_classes .= ' btn-'.$size;
 		if( $classes )
 			$final_classes .= ' '.$classes;
