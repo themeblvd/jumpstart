@@ -895,7 +895,7 @@ function themeblvd_colors( $bootstrap = true ) {
 	);
 	
 	// Merge colors
-	if( $boostrap )
+	if( $bootstrap )
 		$colors = array_merge( $colors, $boostrap_colors, $themeblvd_colors );
 	else
 		$colors = array_merge( $colors, $themeblvd_colors );
