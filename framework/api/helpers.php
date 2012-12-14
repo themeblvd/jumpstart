@@ -853,12 +853,25 @@ function themeblvd_get_select( $type ) {
  *
  * @since 2.0.0
  *
- * @return $colors array all colors in framework filtered
+ * @param boolean $bootstrap Whether to include Bootstrap colors or not
+ * @return array $colors All colors in framework filtered
  */
  
-function themeblvd_colors() {
+function themeblvd_colors( $bootstrap = true ) {
+	
+	// Setup colors separated out to begin with.
 	$colors = array(
-		'default'		=> __( 'Default Color', 'themeblvd' ),
+		'default'		=> __( 'Default Color', 'themeblvd' )
+	);
+	$boostrap_colors = array(
+		'primary' 		=> __( 'Bootstrap: Primary', 'themeblvd' ),
+		'info' 			=> __( 'Bootstrap: Info', 'themeblvd' ),
+		'success' 		=> __( 'Bootstrap: Success', 'themeblvd' ),
+		'warning' 		=> __( 'Bootstrap: Warning', 'themeblvd' ),
+		'danger' 		=> __( 'Bootstrap: Danger', 'themeblvd' ),
+		'inverse' 		=> __( 'Bootstrap: Inverse', 'themeblvd' )
+	);
+	$themeblvd_colors = array(
 		'black' 		=> __( 'Black', 'themeblvd' ),
 		'blue' 			=> __( 'Blue', 'themeblvd' ),
 		'brown' 		=> __( 'Brown', 'themeblvd' ),
@@ -880,7 +893,14 @@ function themeblvd_colors() {
 		'wheat'			=> __( 'Wheat', 'themeblvd' ),
 		'white'			=> __( 'White', 'themeblvd' )
 	);
-	return apply_filters( 'themeblvd_colors', $colors );
+	
+	// Merge colors
+	if( $boostrap )
+		$colors = array_merge( $colors, $boostrap_colors, $themeblvd_colors );
+	else
+		$colors = array_merge( $colors, $themeblvd_colors );
+		
+	return apply_filters( 'themeblvd_colors', $colors, $bootstrap );
 }
 
 /**
