@@ -2196,6 +2196,9 @@ div.pp_default .pp_description {
 	position: relative;
 	margin: 0; /* Bootstrap override */
 }
+.standard-slider .slide .themeblvd-video-wrapper {
+	margin-bottom: 0;
+}
 .standard-slider .slide .image-link {
 	position: absolute;
 	top: 0;
