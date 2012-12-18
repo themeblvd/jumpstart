@@ -824,7 +824,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', array( 'jquery', 'bootstrap', 'prettyphoto', 'superfish', 'themeblvd' ) );
 		
 		// Register scripts -- These scripts are only enque'd as needed.
-		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true  );
+		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.1', true  );
 		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
 		
 		// Enque Scripts
