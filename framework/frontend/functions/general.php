@@ -37,9 +37,9 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		// from anywhere including in or after the loop.
 		
 		global $post;
-		$primary = null;
+		$primary_id = null;
 		if( is_object( $post ) )
-			$primary = $post->ID;
+			$primary_id = $post->ID;
 		
 		/*------------------------------------------------------*/
 		/* Fake Conditional
@@ -71,7 +71,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 					$builder = 'wp-private';
 				} else {
 					// Determine ID of custom layout
-					$layout_id = get_post_meta( $post->ID, '_tb_custom_layout', true );
+					$layout_id = get_post_meta( $primary_id, '_tb_custom_layout', true );
 					if( $layout_id ) {
 						$builder = $layout_id;
 						$builder_post_id = themeblvd_post_id_by_name( $layout_id, 'tb_layout' );
@@ -175,7 +175,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		
 		if( ! $sidebar_layout ) {
 			if( is_page() || is_single() )
-				$sidebar_layout = get_post_meta( $post->ID, '_tb_sidebar_layout', true );
+				$sidebar_layout = get_post_meta( $primary_id, '_tb_sidebar_layout', true );
 		}
 		if( ! $sidebar_layout || 'default' == $sidebar_layout ) {
 			$sidebar_layout = themeblvd_get_option( 'sidebar_layout', null, apply_filters( 'themeblvd_default_sidebar_layout', 'sidebar_right' ) );
@@ -198,12 +198,12 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		$sidebars = array();
 		$sidebar_locations = themeblvd_get_sidebar_locations();
 		$custom_sidebars = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_posts('post_type=tb_sidebar&numberposts=-1') : null;
-		$sidebar_overrides = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_post_meta( $post->ID, '_tb_sidebars', true ) : null;
+		$sidebar_overrides = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_post_meta( $primary_id, '_tb_sidebars', true ) : null;
 		foreach( $sidebar_locations as $location_id => $default_sidebar ) {
     		
     		// By default, the sidebar ID will match the ID of the
     		// current location.
-    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id, $custom_sidebars, $sidebar_overrides, $post->ID );
+    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id, $custom_sidebars, $sidebar_overrides, $primary_id );
 
     		// Set current sidebar ID
     		$sidebars[$location_id]['id'] = $sidebar_id;
@@ -233,7 +233,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 		/*------------------------------------------------------*/
 		
 		$config = array(
-			'id'				=> $primary,			// global $post->ID that can be accessed anywhere
+			'id'				=> $primary_id,			// global $post->ID that can be accessed anywhere
 			'fake_conditional'	=> $fake_conditional,	// Fake conditional tag
 			'sidebar_layout'	=> $sidebar_layout,		// Sidebar layout
 			'builder'			=> $builder,			// ID of current custom layout if not false
