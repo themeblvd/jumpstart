@@ -821,7 +821,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		// Framework scripts. This can be used declare the 
 		// $deps of any enque'd JS files intended to come after 
 		// the framework.
-		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', array( 'jquery', 'bootstrap', 'prettyphoto', 'superfish', 'flexslider', 'roundabout', 'themeblvd' ) );
+		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', array( 'jquery', 'bootstrap', 'prettyphoto', 'superfish', 'themeblvd' ) );
 		
 		// Register scripts -- These scripts are only enque'd as needed.
 		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.0', true  );
