@@ -958,7 +958,7 @@ ul.sf-menu [class^="icon-"] {
 	-webkit-box-sizing: border-box; /* safari3 */
 	-khtml-box-sizing: border-box; /* konqueror */	
 	display: block;
-	height: auto;
+	height: 30px;
 	margin-bottom: 0;
 	width: 100%;
 }
