@@ -947,11 +947,35 @@ ul.sf-menu [class^="icon-"] {
 }
 
 /* Search Form */
-.themeblvd-search input.search-input {
-	max-width:210px;
+.themeblvd-search form {
+	max-width: 230px;
+	position: relative;
 }
-.widget .themeblvd-search input.search-input {
-	width: 70%;
+.themeblvd-search input.search-input {
+	box-sizing: border-box; /* css3 rec */
+	-moz-box-sizing: border-box; /* ff2 */
+	-ms-box-sizing: border-box; /* ie8 */
+	-webkit-box-sizing: border-box; /* safari3 */
+	-khtml-box-sizing: border-box; /* konqueror */	
+	display: block;
+	height: auto;
+	margin-bottom: 0;
+	width: 100%;
+}
+.themeblvd-search .btn {
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-moz-border-radius-topleft: 0;
+	-moz-border-radius-bottomleft: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.widget .themeblvd-search form {
+	margin-bottom: 0;
+	max-width: inherit;
 }
 
 /* Mini Post List */
