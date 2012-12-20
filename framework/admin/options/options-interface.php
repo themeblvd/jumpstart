@@ -97,16 +97,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			
 			// Start Output
 			$output .= '<div id="' . esc_attr( $id ) .'" class="' . esc_attr( $class ) . '">'."\n";
-			if( isset( $value['name'] ) ) // Name not required any more
+			if( ! empty( $value['name'] ) ) // Name not required any more
 				$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
-			$output .= '<div class="option">' . "\n" . '<div class="controls">' . "\n";
+			$output .= '<div class="option">' . "\n" . '<div class="controls">' . "\n";			
 		 }
 		
 		// Set default value to $val
 		if( isset( $value['std'] ) )
 			$val = $value['std'];
 		
-		// If the option is already saved, ovveride $val
+		// If the option is already saved, override $val
 		if( $value['type'] != 'heading' && $value['type'] != 'info' ) {
 			if( isset( $value['group'] ) ) {
 				// Set grouped value
