@@ -68,7 +68,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   		$output .= '<div class="postbox inner-section'.$class.'">';
 	   		if( $name )
 	   			$output .= '<h3>'.$name.'</h3>';
-	   		if( isset($value['desc']) ) $output .= '<div class="section-description">'.$value['desc'].'</div>';
+	   		if( ! empty($value['desc']) ) $output .= '<div class="section-description">'.$value['desc'].'</div>';
 	   		continue;
 	   	}
 	   	if( $value['type'] == 'section_end' ) {
