@@ -178,7 +178,10 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 				$sidebar_layout = get_post_meta( $primary_id, '_tb_sidebar_layout', true );
 		}
 		if( ! $sidebar_layout || 'default' == $sidebar_layout ) {
-			$sidebar_layout = themeblvd_get_option( 'sidebar_layout', null, apply_filters( 'themeblvd_default_sidebar_layout', 'sidebar_right' ) );
+			$sidebar_layout = themeblvd_get_option( 'sidebar_layout' );
+		}
+		if( ! $sidebar_layout ){
+			$sidebar_layout = apply_filters( 'themeblvd_default_sidebar_layout', 'sidebar_right', $sidebar_layout ); // Keeping for backwards compatibility, although is redundant with next filter.
 		}
 		$sidebar_layout = apply_filters( 'themeblvd_sidebar_layout', $sidebar_layout );
 		
