@@ -440,11 +440,10 @@ if( ! function_exists( 'themeblvd_get_formatted_options' ) ) {
  *
  * @param string $primary The primary ID of the option
  * @param string $secondary This would be the option ID only if we're grabbing it from a multi-dimensional array
- * @param string $default Default option to be used, and if not set, we'll pull from options array
  */
 
 if( ! function_exists( 'themeblvd_get_option' ) ) {
-	function themeblvd_get_option( $primary, $seconday = null, $default = null ) {
+	function themeblvd_get_option( $primary, $seconday = null ) {
 		global $_themeblvd_theme_settings; // We pull from a global array, so we're not using WordPress's get_option every single time.
 		$options = $_themeblvd_theme_settings;
 		$option = null;
