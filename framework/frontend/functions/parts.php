@@ -521,7 +521,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 				$image = '';
 				// Setup post thumbnail if user wants them to show
 				if( $thumb ) {
-					$image = themeblvd_get_post_thumbnail( 'primary', 'square_'.$thumb, true, false );
+					$image = themeblvd_get_post_thumbnail( 'primary', 'square_'.$thumb );
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
@@ -618,7 +618,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 				} else {
 					// Standard featured image output
 					$image = '';
-					$image = themeblvd_get_post_thumbnail( 'primary', 'square_'.$thumb, true, false );
+					$image = themeblvd_get_post_thumbnail( 'primary', 'square_'.$thumb );
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
