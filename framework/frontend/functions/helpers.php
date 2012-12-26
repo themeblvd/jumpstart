@@ -513,10 +513,10 @@ if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
 	function themeblvd_tweet_filter_default( $text, $username ) {
 		
 		// Removed any HTML special characters
-		$text = html_entity_decode( $text );
+		$text = htmlspecialchars_decode( $text, ENT_QUOTES );
 		
 		// Remove "UserName: " from Twitter API RSS on start of every tweet
-		$text = str_ireplace( $username.': ', '', $text ); // Not actually needed any more in updated Twitter RSS.
+		$text = str_ireplace( $username.': ', '', $text );
 		
 		// Format URL's to be links - http://whatever.com
 		$text = preg_replace('/\b([a-zA-Z]+:\/\/[\w_.\-]+\.[a-zA-Z]{2,6}[\/\w\-~.?=&%#+$*!]*)\b/i',"<a href=\"$1\" class=\"twitter-link\" target=\"_blank\">$1</a>", $text);
@@ -532,7 +532,7 @@ if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
 		
 		// Format @username as links
 		$text = preg_replace("/@(\w+)/", "<a class=\"twitter-link\" href=\"http://twitter.com/\\1\" target=\"_blank\">@\\1</a>", $text);
-	    
+
 	    return $text;
 	}
 }
