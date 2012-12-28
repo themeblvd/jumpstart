@@ -255,7 +255,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 			'thumbs'			=> 'default', 			// Size of featured iamges (list only) - default, small, full, hide
 			'content'			=> 'default', 			// Full content or excerpts (list only) - default, content, excerpt
 			'numberposts'		=> '-1',				// Total number of posts to query for slider
-			'orderby'			=> 'post_date', 		// Orderby param for posts query
+			'orderby'			=> 'date', 				// Orderby param for posts query
 			'order'				=> 'DESC', 				// Order param for posts query
 			'offset'			=> '0', 				// Offset param for posts query
 			'crop'				=> '', 					// Custom image crop size (grid only)	
@@ -458,7 +458,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 			'thumbs'		=> 'default',			// Size of featured iamges (list only) - default, small, full, hide
 			'content'		=> 'default',			// Full content or excerpts (list only) - default, content, excerpt
 			'numberposts'	=> '-1',				// Total number of posts to query (list only)
-			'orderby'		=> 'post_date',			// Orderby param for posts query
+			'orderby'		=> 'date',				// Orderby param for posts query
 			'order'			=> 'DESC',				// Order param for posts query
 			'offset'		=> '0',					// Offset param for posts query
 			'query'			=> '',					// Custom query string
@@ -578,7 +578,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 			'columns'			=> '3',					// Number of columns (grid only)
 			'rows'				=> '3',					// Number of rows (grid only)
 			'posts_per_page'	=> '6',					// Posts per page (list only)
-			'orderby'			=> 'post_date',			// Orderby param for posts query
+			'orderby'			=> 'date',				// Orderby param for posts query
 			'order'				=> 'DESC',				// Order param for posts query
 			'offset'			=> '0',					// Offset param for posts query
 			'query'				=> '',					// Custom query string
@@ -731,7 +731,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 			'tag' 				=> '',			// Tag to pull posts from
 			'category' 			=> '',			// Category slug to pull posts from
 			'numberposts' 		=> '5',			// Number of posts/slides
-			'orderby' 			=> 'post_date',	// Orderby param for posts query
+			'orderby' 			=> 'date',		// Orderby param for posts query
 			'order'				=> 'DESC',		// Order param for posts query
 			'query' 			=> '',			// Custom query string
 			'mobile_fallback' 	=> 'full_list',	// How to display on mobile - full_list, first_slide, display
