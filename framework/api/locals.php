@@ -116,11 +116,11 @@ function themeblvd_get_js_locals() {
 	// through our "themeblvd_global_config" filter. 
 	// This allows people to remove jQuery plugin files 
 	// w/out having to also remove functions from themeblvd.js.
-	if( themeblvd_supports( 'scripts', 'bootstrap' ) )
+	if( themeblvd_supports( 'assets', 'bootstrap' ) )
 		$locals['bootstrap'] = 'true';
-	if( themeblvd_supports( 'scripts', 'prettyphoto' ) )
+	if( themeblvd_supports( 'assets', 'prettyphoto' ) )
 		$locals['prettyphoto'] = 'true';
-	if( themeblvd_supports( 'scripts', 'superfish' ) )
+	if( themeblvd_supports( 'assets', 'superfish' ) )
 		$locals['superfish'] = 'true';
 	
 	// Return with framework's filter applied
