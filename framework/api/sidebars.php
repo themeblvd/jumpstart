@@ -401,29 +401,29 @@ if( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 		if( $layout == 'sidebar_'.$position || $layout == 'double_sidebar' ) {
 			do_action( 'themeblvd_fixed_sidebar_before', $position  );
 			themeblvd_display_sidebar( 'sidebar_'.$position, 'fixed' );
-			do_action( 'themeblvd_fixed_sidebar_after' );
+			do_action( 'themeblvd_fixed_sidebar_after', $position );
 		}
 		// Double Left Sidebars
 		if( $layout == 'double_sidebar_left' && $position == 'left' ) {
 			// Left Sidebar
 			do_action( 'themeblvd_fixed_sidebar_before', 'left'  );
 			themeblvd_display_sidebar( 'sidebar_left', 'fixed' );
-			do_action( 'themeblvd_fixed_sidebar_after' );
+			do_action( 'themeblvd_fixed_sidebar_after', 'left' );
 			// Right Sidebar
 			do_action( 'themeblvd_fixed_sidebar_before', 'right'  );
 			themeblvd_display_sidebar( 'sidebar_right', 'fixed' );
-			do_action( 'themeblvd_fixed_sidebar_after' );
+			do_action( 'themeblvd_fixed_sidebar_after', 'right' );
 		}
 		// Double Right Sidebars
 		if( $layout == 'double_sidebar_right' && $position == 'right' ) {
 			// Left Sidebar
 			do_action( 'themeblvd_fixed_sidebar_before', 'left'  );
 			themeblvd_display_sidebar( 'sidebar_left', 'fixed' );
-			do_action( 'themeblvd_fixed_sidebar_after' );
+			do_action( 'themeblvd_fixed_sidebar_after', 'left' );
 			// Right Sidebar
 			do_action( 'themeblvd_fixed_sidebar_before', 'right'  );
 			themeblvd_display_sidebar( 'sidebar_right', 'fixed' );
-			do_action( 'themeblvd_fixed_sidebar_after' );
+			do_action( 'themeblvd_fixed_sidebar_after', 'right' );
 		}
 	}
 }
