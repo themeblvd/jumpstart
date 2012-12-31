@@ -821,23 +821,42 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		
 		global $themeblvd_framework_scripts;
 		
-		// Framework scripts. This can be used declare the 
+		// Start framework scripts. This can be used declare the 
 		// $deps of any enque'd JS files intended to come after 
 		// the framework.
-		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', array( 'jquery', 'bootstrap', 'prettyphoto', 'superfish', 'themeblvd' ) );
-		
+		$scripts = array( 'jquery' );
+
 		// Register scripts -- These scripts are only enque'd as needed.
 		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider-2.js', array('jquery'), '2.1', true  );
 		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
 		
 		// Enque Scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.2.1', true );
-		wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.min.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
-		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
-		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
-		wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );
-		if( themeblvd_supports( 'display', 'responsive' ) )
+		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
+			$scripts[] = 'bootstrap';
+			wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.2.1', true );
+		}
+		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
+			$scripts[] = 'prettyphoto';
+			wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.min.js', array('jquery'), '3.1.3', true ); // Modified version of prettyPhoto by Jason Bobich
+		}
+		if( themeblvd_supports( 'assets', 'superfish' ) ) {
+			$scripts[] = 'superfish';
+			wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
+		}
+		if( themeblvd_supports( 'assets', 'primary_js' ) ) {
+			$scripts[] = 'themeblvd';
+			wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
+			// Localize primary themeblvd.js script. This allows us to pass any filterable 
+			// parameters through to our primary script. 
+			wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );
+		}
+		
+		// Final filter on framework script.
+		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
+		
+		// Enque ios orientation and comment reply scripts.
+		if( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) )
 			wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/frontend/assets/js/ios-orientationchange-fix.js', true );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' );
@@ -861,19 +880,32 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 		
 		global $themeblvd_framework_stylesheets;
 		
-		// Framework stylesheets. This can be used declare the 
+		// Start framework stylesheets. This can be used declare the 
 		// $deps of any enque'd CSS files intended to come after 
 		// the framework.
-		$themeblvd_framework_stylesheets = apply_filters( 'themeblvd_framework_stylesheets', array( 'bootstrap', 'fontawesome', 'prettyphoto', 'themeblvd' ) );
+		$styles = array();
 		
 		// Level 1 user styles
 		themeblvd_user_stylesheets( 1 ); // @deprecated
 		
 		// Register framework styles
-		wp_enqueue_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.2.1' );
-		wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
-		wp_enqueue_style( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
-		wp_enqueue_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.min.css', array(), TB_FRAMEWORK_VERSION );
+		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
+			$stylesheets[] = 'bootstrap';
+			wp_enqueue_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.2.1' );
+			$stylesheets[] = 'fontawesome';
+			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
+		}
+		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
+			$stylesheets[] = 'prettyphoto';
+			wp_enqueue_style( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/css/prettyPhoto.css', array(), '3.1.3' );
+		}
+		if( themeblvd_supports( 'assets', 'primary_css' ) ) {
+			$stylesheets[] = 'themeblvd';
+			wp_enqueue_style( 'themeblvd', TB_FRAMEWORK_URI . '/frontend/assets/css/themeblvd.min.css', array(), TB_FRAMEWORK_VERSION );
+		}
+		
+		// Final filter on framework stylesheets.
+		$themeblvd_framework_stylesheets = apply_filters( 'themeblvd_framework_stylesheets', $stylesheets );
 		
 		// Level 2 user styles
 		themeblvd_user_stylesheets( 2 ); // @deprecated

@@ -95,15 +95,34 @@ if( ! function_exists( 'themeblvd_get_local' ) ) {
  * themeblvd.js
  *
  * The filter "themeblvd_js_locals"
- * can be used to add/remove strings.
+ * can be used to add/remove strings or other 
+ * variables we want to pass through to our primary 
+ * "themeblvd" script.
  *
  * @since 2.2.0
  */
 
 function themeblvd_get_js_locals() {
+	
+	// Start $locals array with any miscellaneous stuff
 	$locals = array ( 
-		'prettyphoto_theme' => 'pp_default'
+		'prettyphoto_theme' 	=> 'pp_default',
+		'thumb_animations'		=> 'true',
+		'featured_animations'	=> 'true',
+		'retina_logo'			=> 'true'
 	);
+	
+	// Extend $locals to accomodate scripts being included 
+	// through our "themeblvd_global_config" filter. 
+	// This allows people to remove jQuery plugin files 
+	// w/out having to also remove functions from themeblvd.js.
+	if( themeblvd_supports( 'scripts', 'bootstrap' ) )
+		$locals['bootstrap'] = 'true';
+	if( themeblvd_supports( 'scripts', 'prettyphoto' ) )
+		$locals['prettyphoto'] = 'true';
+	if( themeblvd_supports( 'scripts', 'superfish' ) )
+		$locals['superfish'] = 'true';
+	
 	// Return with framework's filter applied
 	return apply_filters( 'themeblvd_js_locals', $locals );
 }

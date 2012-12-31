@@ -68,12 +68,15 @@ jQuery(document).ready(function($) {
 	// Menus
 	// ---------------------------------------------------------
 	
-	// Activate Superfish
-	$('ul.sf-menu').superfish().addClass('sf-menu-with-fontawesome'); 
-	
-	// Adjust sub indicators to use fontawesome
-	$('ul.sf-menu-with-fontawesome > li > a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-down"></i>');
-	$('ul.sf-menu-with-fontawesome ul li a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-right"></i>');
+	if(themeblvd.superfish)
+	{
+		// Activate Superfish
+		$('ul.sf-menu').superfish().addClass('sf-menu-with-fontawesome');
+		
+		// Adjust sub indicators to use fontawesome
+		$('ul.sf-menu-with-fontawesome > li > a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-down"></i>');
+		$('ul.sf-menu-with-fontawesome ul li a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-right"></i>');
+	}
 	
 	// Allow bootstrap "nav-header" class in menu items.
 	// Note: For primary navigation will only work on levels 2-3
@@ -111,126 +114,102 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 	// Gallery Shortcode Integration
 	// ---------------------------------------------------------
-
-	$('.gallery').append('<div class="clear"></div>');
-
-	$('.gallery').each(function(){
-
-		var current_gallery = $(this),
-			gallery_id = current_gallery.attr('id');
-		
-		current_gallery.find('.gallery-item a').each(function(){
-			// Add bootstrap thumbnail class
-			$(this).find('img').addClass('thumbnail');
-			// Append lightbox if it's an image
-			if(this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i)){
-			    $(this).attr('rel','themeblvd_lightbox['+gallery_id+']');
-			    $(this).addClass('image-button');
-			}
-		});
 	
-	});
+	// Since our gallery integration is specifically designed 
+	// to work with prettyPhoto, if prettyPhoto script isn't 
+	// included, we'll halt it all together. 
+	if(themeblvd.prettyphoto)
+	{
+		$('.gallery').append('<div class="clear"></div>');
+	
+		$('.gallery').each(function(){
+	
+			var current_gallery = $(this),
+				gallery_id = current_gallery.attr('id');
+			
+			current_gallery.find('.gallery-item a').each(function(){
+				// Add bootstrap thumbnail class
+				$(this).find('img').addClass('thumbnail');
+				// Append lightbox if it's an image
+				if(this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i)){
+				    $(this).attr('rel','themeblvd_lightbox['+gallery_id+']');
+				    $(this).addClass('image-button');
+				}
+			});
+		
+		});
+	}
 	
 	// ---------------------------------------------------------
 	// Lightbox
 	// ---------------------------------------------------------
+	
+	// Check for prettyPhoto script.
+	if(themeblvd.prettyphoto)
+	{
+		$('a[rel^="themeblvd_lightbox"], a[rel^="featured_themeblvd_lightbox"]').prettyPhoto({
+			theme: themeblvd.prettyphoto_theme, // Filter with themeblvd_js_locals
+			social_tools: false, // Share icons are not compatible with IE9
+			deeplinking: false,
+			overlay_gallery: false,
+			show_title: false
+		});
+	}
+	
+	// Animations on lightbox thumbnails.
+	if(themeblvd.thumb_animations)
+	{
+		$('a[rel^="themeblvd_lightbox"]').prepend('<span class="enlarge"></span>');
 		
-	$('a[rel^="themeblvd_lightbox"], a[rel^="featured_themeblvd_lightbox"]').prettyPhoto({
-		theme: themeblvd.prettyphoto_theme, // Filter with themeblvd_js_locals
-		social_tools: false, // Share icons are not compatible with IE9
-		deeplinking: false,
-		overlay_gallery: false,
-		show_title: false
-	});
-	
-	$('a[rel^="themeblvd_lightbox"]').prepend('<span class="enlarge"></span>');
-	
-	$('a[rel^="themeblvd_lightbox"]').hover(
-		function () {
-			var el = $(this);
-			el.find('.enlarge').stop(true, true).animate({
-				opacity: 1
-			}, 100 );
-			el.find('img').stop(true, true).animate({
-				opacity: 0.6
-			}, 100 );
-		}, 
-		function () {
-			var el = $(this);
-			el.find('.enlarge').stop(true, true).animate({
-				opacity: 0
-			}, 100 );
-			el.find('img').stop(true, true).animate({
-				opacity: 1
-			}, 100 );
-		}
-	);
+		$('a[rel^="themeblvd_lightbox"]').hover(
+			function () {
+				var el = $(this);
+				el.find('.enlarge').stop(true, true).animate({
+					opacity: 1
+				}, 100 );
+				el.find('img').stop(true, true).animate({
+					opacity: 0.6
+				}, 100 );
+			}, 
+			function () {
+				var el = $(this);
+				el.find('.enlarge').stop(true, true).animate({
+					opacity: 0
+				}, 100 );
+				el.find('img').stop(true, true).animate({
+					opacity: 1
+				}, 100 );
+			}
+		);
+	}
 	
 	// ---------------------------------------------------------
 	// Featured Image overlay links
 	// ---------------------------------------------------------
 	
-	$('.featured-image a').hover(
-		function () {
-			var el = $(this);
-			el.find('.image-overlay-bg').stop(true, true).animate({
-				opacity: 0.2
-			}, 300 );
-			el.find('.image-overlay-icon').stop(true, true).animate({
-				opacity: 1
-			}, 300 );
-		}, 
-		function () {
-			var el = $(this);
-			el.find('.image-overlay-bg').stop(true, true).animate({
-				opacity: 0
-			}, 300 );
-			el.find('.image-overlay-icon').stop(true, true).animate({
-				opacity: 0
-			}, 300 );
-		}
-	);
-	
-	// ---------------------------------------------------------
-	// Tabs
-	// ---------------------------------------------------------
-	
-	$('.tb-tabs').each(function(){
-		var el = $(this);
-		el.find('.tab-content').hide();
-		el.find('.tab-content:first').show();
-	});
-    $('.tb-tabs .tab-nav a').click(function() {
-		var el = $(this), parent = el.closest('.tb-tabs'), activetab = el.attr('href');
-		parent.find('.tab-nav li').removeClass('active');
-		el.closest('li').addClass('active');
-		parent.find('.tab-content').hide();
-		parent.find(activetab).show(); // Use show instead of nicer looking fade to avoid jumping
-        return false;
-    });
-    
-    // ---------------------------------------------------------
-	// Toggle
-	// ---------------------------------------------------------
-	
-	$('.tb-toggle').each(function(){
-		$(this).find('.toggle-content').hide();
-	});
-	$('.tb-toggle a.toggle-trigger').click(function(){
-		var el = $(this), parent = el.closest('.tb-toggle');
-		
-		if( el.hasClass('active') )
-		{
-			parent.find('.toggle-content').hide();
-			el.removeClass('active');
-		}
-		else
-		{
-			parent.find('.toggle-content').show();
-			el.addClass('active');
-		}
-		return false;
-	});
+	if(themeblvd.featured_animations)
+	{
+		$('.featured-image a').hover(
+			function () {
+				var el = $(this);
+				el.find('.image-overlay-bg').stop(true, true).animate({
+					opacity: 0.2
+				}, 300 );
+				el.find('.image-overlay-icon').stop(true, true).animate({
+					opacity: 1
+				}, 300 );
+			}, 
+			function () {
+				var el = $(this);
+				el.find('.image-overlay-bg').stop(true, true).animate({
+					opacity: 0
+				}, 300 );
+				el.find('.image-overlay-icon').stop(true, true).animate({
+					opacity: 0
+				}, 300 );
+			}
+		);
+	}
 	
 	// ---------------------------------------------------------
 	// Jump Menu
@@ -244,47 +223,53 @@ jQuery(document).ready(function($) {
 	// Logo w/retina display support
 	// ---------------------------------------------------------
 	
-	var image = $('.tb-image-logo img'),
-		image_2x = image.attr('data-image-2x');
-	
-	// If a retina-otimized image was detected 
-	// and should be displayed
-	if(window.devicePixelRatio >= 1.5 && image_2x)
+	if(themeblvd.retina_logo)
 	{
-		// Display 2x image w/fixed original width
-		image.attr({
-			src: image_2x
-		});
+		var image = $('.tb-image-logo img'),
+			image_2x = image.attr('data-image-2x');
+		
+		// If a retina-otimized image was detected 
+		// and should be displayed
+		if(window.devicePixelRatio >= 1.5 && image_2x)
+		{
+			// Display 2x image w/fixed original width
+			image.attr({
+				src: image_2x
+			});
+		}
 	}
 	
 	// ---------------------------------------------------------
 	// Bootstrap Integration
 	// ---------------------------------------------------------
 	
-	// Add standard table classes to calendar widget
-	$('#calendar_wrap table').addClass('table table-bordered');
-	
-	// Collapsables expanded
-	// This basically just toggles the Plus/Minus fontawesome 
-	// icon we've incorporated into the triggers for the toggles.
-	$('.collapse').on('show', function() {
-		// Toggle is opening, add "active-trigger" class and 
-		// change icon to a minus sign.
-		$(this).closest('.accordion-group').find('.accordion-toggle').addClass('active-trigger').find('.switch-me').removeClass('icon-plus-sign').addClass('icon-minus-sign');
-	});
-	$('.collapse').on('hide', function() {
-		// Toggle is closing, remove "active-trigger" class and 
-		// change icon to a plus sign.
-		$(this).closest('.accordion-group').find('.accordion-toggle').removeClass('active-trigger').find('.switch-me').removeClass('icon-minus-sign').addClass('icon-plus-sign');
-	});
-	// And now if the user has wrapped a set of "toggles" into an 
-	// accordian, this will attach them all.
-	var accordion_id;
-	$('.tb-accordion').each(function(){
-		accordion_id = $(this).attr('id');
-		$(this).find('.accordion-toggle').each(function(){
-			$(this).attr('data-parent', '#'+accordion_id);
+	if(themeblvd.boostrap)
+	{
+		// Add standard table classes to calendar widget
+		$('#calendar_wrap table').addClass('table table-bordered');
+		
+		// Collapsables expanded
+		// This basically just toggles the Plus/Minus fontawesome 
+		// icon we've incorporated into the triggers for the toggles.
+		$('.collapse').on('show', function() {
+			// Toggle is opening, add "active-trigger" class and 
+			// change icon to a minus sign.
+			$(this).closest('.accordion-group').find('.accordion-toggle').addClass('active-trigger').find('.switch-me').removeClass('icon-plus-sign').addClass('icon-minus-sign');
 		});
-	});
+		$('.collapse').on('hide', function() {
+			// Toggle is closing, remove "active-trigger" class and 
+			// change icon to a plus sign.
+			$(this).closest('.accordion-group').find('.accordion-toggle').removeClass('active-trigger').find('.switch-me').removeClass('icon-minus-sign').addClass('icon-plus-sign');
+		});
+		// And now if the user has wrapped a set of "toggles" into an 
+		// accordian, this will attach them all.
+		var accordion_id;
+		$('.tb-accordion').each(function(){
+			accordion_id = $(this).attr('id');
+			$(this).find('.accordion-toggle').each(function(){
+				$(this).attr('data-parent', '#'+accordion_id);
+			});
+		});
+	}
 	
 });

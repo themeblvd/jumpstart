@@ -111,6 +111,14 @@ function themeblvd_setup() {
 		),
 		'display' => array(
 			'responsive' 		=> true				// Responsive elements
+		),
+		'assets' => array(
+			'primary_js'		=> true,			// Primary "themeblvd" script
+			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
+			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
+			'prettyphoto'		=> true,			// "prettyphoto" script/stylesheet
+			'superfish'			=> true,			// "superfish" script
+			'ios_orientation'	=> true				// "ios-orientationchange-fix" script
 		)
 	);
 	return apply_filters( 'themeblvd_global_config', $setup );
