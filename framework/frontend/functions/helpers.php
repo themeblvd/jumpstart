@@ -832,6 +832,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 					<?php if( ! $options['nav_arrows'] ) echo 'directionNav: false,'; ?>
 					<?php if( ! $options['nav_standard'] ) echo 'controlNav: false,'; ?>
 					controlsContainer: ".slides-wrapper-<?php echo $id; ?>",
+					<?php do_action( 'themeblvd_flexslider_properties', $id, $options ); ?>
 					start: function(slider) {
 	    				<?php if( $options['pause_play'] && $options['timeout'] != '0' ) : ?>
 		    				$('#tb-slider-<?php echo $id; ?> .flex-direction-nav li:first-child').after('<li><a class="flex-pause" href="#"><i class="icon-pause"></i></a></li><li><a class="flex-play" href="#" style="display:none"><i class="icon-play"></i></a></li>');
