@@ -1,0 +1,240 @@
+/**
+ * Use this file to create a specific content color 
+ * variation of all framework style in themeblvd.css.
+ */
+
+/* =Bootstrap Mods
+----------------------------------------------- */
+
+/* Forms */
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+	border-color: #bbbbbb;
+	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+}
+:-moz-placeholder {
+  color: #bbbbbb;
+}
+:-ms-input-placeholder {
+  color: #bbbbbb;
+}
+::-webkit-input-placeholder {
+  color: #bbbbbb;
+}
+
+/* Match to buttons */
+.tb-button,
+.comment-reply-link,
+input[type="submit"] {
+	color: #333333;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	background-color: #f5f5f5;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(top, #ffffff, #e6e6e6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	*background-color: #e6e6e6;
+	/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	border: 1px solid #cccccc;
+	border-bottom-color: #b3b3b3;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.tb-button:hover,
+.comment-reply-link:hover,
+input[type="submit"]:hover,
+.tb-button:active, 
+.comment-reply-link:active,
+input[type="submit"]:active {
+	background-color: #e6e6e6;
+	*background-color: #d9d9d9;
+}
+.tb-button:active,
+.comment-reply-link:active,
+input[type="submit"]:active {
+	background-color: #cccccc \9;
+}
+.tb-button:hover,
+.comment-reply-link:hover,
+input[type="submit"]:hover {
+	color: #333333;
+	text-decoration: none;
+	background-color: #e6e6e6;
+	*background-color: #d9d9d9;
+}
+.tb-button:focus,
+.comment-reply-link:focus, 
+input[type="submit"]:focus{
+	outline: thin dotted #333;
+}
+
+/* Thumbnails */
+.thumbnail,
+.pretty,
+.wp-caption {/* Match .pretty class to bootstrap's .thumbnail */
+	border: 1px solid #ddd;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.pretty:hover,
+a.thumbnail:hover {
+  border-color: #bbbbbb;
+  -webkit-box-shadow: 0 1px 4px #cccccc;
+  -moz-box-shadow: 0 1px 4px #cccccc;
+  box-shadow: 0 1px 4px #cccccc;
+}
+
+/* Nav List - applies nav list CSS to WP's custom menu widget, and in some cases the primary nav . */
+.widget_nav_menu .menu > li > a:hover {
+  background-color: #eeeeee;
+}
+.widget_nav_menu .menu .nav-header span {
+  color: #999999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.widget_nav_menu .menu > li > a,
+.widget_nav_menu .menu .nav-header > span {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.widget_nav_menu .menu > .current-menu-item > a,
+.widget_nav_menu .menu > .current-menu-item > a:hover {
+  color: #ffffff;
+  background-color: #999999;
+}
+.widget_nav_menu .menu .divider,
+.sf-menu li li.divider {
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+}
+.widget_nav_menu div[class^="menu-"] {
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+}
+
+/* Tabs/Pills */
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+	background-color: #454545;
+}
+
+/* =Secondary Navigation
+-------------------------------------------------------------- */
+
+.subnav {
+	background-color: #eeeeee; /* Old browsers */
+	background-repeat: repeat-x; /* Repeat the gradient */
+	background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
+	background-image: -ms-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* IE10+ */
+	background-image: -o-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Opera 11.10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+	background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* W3C */
+	border: 1px solid #e5e5e5;
+}
+.subnav ul.nav > li > a,
+.subnav ul.nav > li.nav-header > span {
+	border-left: 1px solid #f5f5f5;
+	border-right: 1px solid #e5e5e5;
+}
+.subnav ul.nav > .current_page_item > a,
+.subnav ul.nav > .current_page_item > a:hover {
+	background-color: #e9e9e9;
+	border-right-color: #ddd;
+}
+.subnav li ul {
+	background: #ffffff;
+	border: 1px solid #dddddd;
+}
+.subnav li li a:hover {
+	background: #f2f2f2;
+}
+
+/* =Common Classes
+----------------------------------------------- */
+
+.tb-loader {
+	background-color: #ffffff url('../images/loader.gif') center center no-repeat;
+}
+
+/* =Shortcodes
+-------------------------------------------------------------- */
+
+.accordion-heading .accordion-toggle:hover {
+	background: #f5f5f5;
+}
+
+/* =Widgets
+-------------------------------------------------------------- */
+
+.tb-contact_widget ul.simple-contact li {
+	background: url('../images/parts/simple-contact.png') 0 0 no-repeat;
+}
+
+/* =Elements
+-------------------------------------------------------------- */
+
+.divider-dashed,
+.divider-solid {
+	border-color: #cccccc;
+}
+.slider-fallback li.slider-fallback-slide {
+	border-color: #dddddd;
+}
+.standard-slider-wrapper .slides-wrapper {
+	background: #f5f5f5;
+}
+.standard-slider-wrapper .flex-control-nav li a {
+	background-image: url('../images/elements/slider-nav.png');
+}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	/* Slider controls - Use 2x image for retina */
+	.standard-slider-wrapper .flex-control-nav li a {
+		background-image: url('../images/elements/slider-nav_2x.png');
+		background-size: 20px 11px;
+	}
+}
+.standard-slider-wrapper .flex-direction-nav li a {
+	color: #aaaaaa;
+	text-shadow: 1px 1px 0 #ffffff;
+}
+.standard-slider-wrapper .flex-direction-nav li a:hover {
+	color: #666666;
+}
+.carrousel-slider-wrapper .roundabout-nav a {
+	color: #999999;
+}
+.carrousel-slider-wrapper .roundabout-nav a:hover {
+	color: #666666;
+}
+.tb-tabs-framed .tab-content {
+	border-color: #dddddd;
+}
