@@ -194,6 +194,15 @@ a.thumbnail:hover {
 .tb-contact_widget ul.simple-contact li {
 	background: url('../images/parts/simple-contact.png') 0 0 no-repeat;
 }
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5),
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5) {
+	/* Use 2x image for retina */
+	.tb-contact_widget ul.simple-contact li {
+		background-image: url('../images/simple-contact_2x.png');
+	}
+}
 
 /* =Elements
 -------------------------------------------------------------- */
