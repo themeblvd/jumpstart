@@ -248,7 +248,7 @@ img.size-full {
 }
 
 /* Make sure graphic nav shows when expanding window back from tablet size */
-@media (min-width: 801px) {
+@media (min-width: 980px) {
 	#access {
 		height: auto !important;
 		overflow: visible !important;
@@ -530,7 +530,7 @@ img.size-full {
 /* =Optimized for Tablets
 ------------------------------------------------- */
 
-@media (max-width: 768px) {	
+@media (max-width: 979px) {	
 	
 	/* Primary Structure */
 	#top,
@@ -600,7 +600,7 @@ img.size-full {
 /* =Optimized for Mobile Devices
 ------------------------------------------------- */
 
-@media (max-width: 515px) {
+@media (max-width: 767px) {
 	
 	/* Primary Structure */
 	#container {
