@@ -294,7 +294,7 @@ a.thumbnail:hover {
 }
 .widget_nav_menu .menu > li > a,
 .widget_nav_menu .menu .nav-header > span {
- 	text-shadow: inherit;
+ 	text-shadow: 1px 1px 1px #000000;
 }
 .widget_nav_menu .menu > .current-menu-item > a,
 .widget_nav_menu .menu > .current-menu-item > a:hover {
