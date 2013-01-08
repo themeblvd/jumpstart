@@ -349,7 +349,7 @@ a.thumbnail:hover {
 ----------------------------------------------- */
 
 .tb-loader {
-	background: #242424 url('../images/loader.gif') center center no-repeat;
+	background: #242424 url('../images/elements/loader-dark.gif') center center no-repeat;
 	-moz-box-shadow: 1px 1px 1px #000000;
 	-webkit-box-shadow: 1px 1px 1px #000000;
 	box-shadow: 0 0 2px #000000;
@@ -366,7 +366,7 @@ a.thumbnail:hover {
 -------------------------------------------------------------- */
 
 .tb-contact_widget ul.simple-contact li {
-	background-image: url('../images/simple-contact-ffffff.png');
+	background-image: url('../images/elements/simple-contact-ffffff.png');
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -374,7 +374,7 @@ a.thumbnail:hover {
 		only screen and (min-device-pixel-ratio: 1.5) {
 	/* Use 2x image for retina */
 	.tb-contact_widget ul.simple-contact li {
-		background-image: url('../images/simple-contact-ffffff_2x.png');
+		background-image: url('../images/elements/simple-contact-ffffff_2x.png');
 	}
 }
 
@@ -392,7 +392,7 @@ a.thumbnail:hover {
 	background: #222222;
 }
 .standard-slider-wrapper .flex-control-nav li a {
-	background-image: url('../images/slider-nav.png');
+	background-image: url('../images/elements/slider-nav-dark.png');
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -400,7 +400,7 @@ a.thumbnail:hover {
 		only screen and (min-device-pixel-ratio: 1.5) {
 	/* Slider controls - Use 2x image for retina */
 	.standard-slider-wrapper .flex-control-nav li a {
-		background-image: url('../images/slider-nav_2x.png');
+		background-image: url('../images/elements/slider-nav-dark_2x.png');
 		background-size: 20px 11px;
 	}
 }
