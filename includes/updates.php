@@ -19,7 +19,7 @@ function jumpstart_updates(){
 	global $_tb_jumpstart_edd_updater;
 	global $_tb_jumpstart_license_admin;
 	
-	// Include class-tb-license-admin class for admin page.
+	// Include Theme_Blvd_License_Admin class for admin page.
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-tb-license-admin.php' );
 	
 	// Theme Data
