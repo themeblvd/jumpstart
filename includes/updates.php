@@ -20,7 +20,7 @@ function jumpstart_updates(){
 	global $_tb_jumpstart_license_admin;
 	
 	// Include class-tb-license-admin class for admin page.
-	include_once( get_template_directory() . '/includes/class-tb-license-admin.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-tb-license-admin.php' );
 	
 	// Theme Data
 	$theme_data = wp_get_theme( get_template() ); // Will ignore Child theme
@@ -42,7 +42,7 @@ function jumpstart_updates(){
 		return;
 	
 	// Include EDD_SL_Theme_Updater class to check and administer updates.
-	include_once( get_template_directory() . '/includes/class-edd-sl-theme-updater.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-edd-sl-theme-updater.php' );
 	
 	// Adjust args for EDD_SL_Theme_Updater class.
 	$args['license'] = $license_key;
