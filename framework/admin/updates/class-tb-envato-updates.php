@@ -25,7 +25,8 @@ class Theme_Blvd_Envato_Updates {
 		$defaults = array(
 			'envato_username'	=> '',
 			'envato_api_key'	=> '',
-			'author_name'		=> ''
+			'author_name'		=> 'Jason Bobich',
+			'backup'			=> true
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 
@@ -161,13 +162,12 @@ class Theme_Blvd_Envato_Updates {
 		// Make copy
 		$result = copy_dir( $from, $to );
 		if( is_wp_error( $result ) ) {
-			echo $result->get_error_message();
-			// @todo Can we delete downloaded at theme /upgrades/ if error?
-			wp_die();
+			// @todo Can we delete temporary downloaded theme at /upgrades/ if error?
+			wp_die($result->get_error_message());
 		}
 				
 		// End the process
-		$backup_path = '<code>/wp-content/themes/'.$theme.'-'.$old_version.'/</code>';
+		$backup_path = '<code>/wp-content/themes/'.$theme.'-'.$old_version.'/</code>'; // just for display purposes
 		show_message( sprintf( __('%2$s v%1$s has been backed up sucessfully to %3$s...', 'themeblvd' ), $old_version, $theme_name, $backup_path ) );
 		
 	}
