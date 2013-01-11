@@ -32,8 +32,14 @@ class Theme_Blvd_Envato_Updates {
 
 		// Add in our check for updates if we have all required arguments.
 		if( $this->args['envato_username'] && $this->args['envato_api_key'] && $this->args['author_name'] ) {
+			
+			// Check for updates with the standard WP system under Appearance > Themes
 			add_filter( 'pre_set_site_transient_update_themes', array( $this, 'check_for_updates' ) );
-			add_filter( 'upgrader_pre_install', array( $this, 'backup_theme' ) );
+			
+			// Add backups if enabled
+			if( $this->args['backup'] )
+				add_filter( 'upgrader_pre_install', array( $this, 'backup_theme' ) );
+				
 		}
 	}
 	
