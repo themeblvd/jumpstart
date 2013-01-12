@@ -530,8 +530,8 @@ a img.aligncenter {
 }
 .gallery-caption {}
 .sticky {}
-/* Mobile Devices */
-@media (max-width: 767px) {
+/* Mobile Devices (portrait) */
+@media (max-width: 320px) {
 	.alignright, 
 	.alignleft, 
 	a img.alignright, 
