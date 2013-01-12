@@ -951,31 +951,42 @@ ul.sf-menu [class^="icon-"] {
 	max-width: 230px;
 	position: relative;
 }
-.themeblvd-search input.search-input {
-	box-sizing: border-box; /* css3 rec */
-	-moz-box-sizing: border-box; /* ff2 */
-	-ms-box-sizing: border-box; /* ie8 */
-	-webkit-box-sizing: border-box; /* safari3 */
-	-khtml-box-sizing: border-box; /* konqueror */	
-	display: block;
-	height: 30px;
-	margin-bottom: 0;
-	width: 100%;
-}
-.themeblvd-search .btn {
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	-moz-border-radius-topleft: 0;
-	-moz-border-radius-bottomleft: 0;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	position: absolute;
-	top: 0;
-	right: 0;
-}
 .widget .themeblvd-search form {
 	margin-bottom: 0;
 	max-width: inherit;
+}
+.themeblvd-search input.search-input {
+	margin-bottom: 0;
+}
+@media (min-width: 768px) {
+	/* This happens when viewport is larger than mobile only. */
+	.themeblvd-search input.search-input {
+		box-sizing: border-box; /* css3 rec */
+		-moz-box-sizing: border-box; /* ff2 */
+		-ms-box-sizing: border-box; /* ie8 */
+		-webkit-box-sizing: border-box; /* safari3 */
+		-khtml-box-sizing: border-box; /* konqueror */	
+		display: block;
+		height: 30px;
+		width: 100%;
+	}
+	.themeblvd-search .btn {
+		-webkit-border-top-left-radius: 0;
+		-webkit-border-bottom-left-radius: 0;
+		-moz-border-radius-topleft: 0;
+		-moz-border-radius-bottomleft: 0;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+}
+@media (max-width: 767px) {
+	/* And this happens only for mobile. */
+	.themeblvd-search input.search-input {
+		max-width: 70%;
+	}	
 }
 
 /* Mini Post List */
