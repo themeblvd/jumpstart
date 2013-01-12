@@ -1771,6 +1771,11 @@ ul.tb-icon-list {
 	text-align: right;
 }
 
+/* Twitter Widget */
+.entry-content .twitter-tweet-rendered {
+	max-width: 100% !important; /* Override the Twitter embed fixed width */
+}
+
 /* Video */
 .tb-video_widget .tb-video_description {
 	display: block;
