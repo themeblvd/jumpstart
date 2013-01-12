@@ -59,7 +59,7 @@
 	.column {
 		float: none;
 		margin: 0 0 20px 0;
-		width: 100%;
+		width: auto;
 	}
 }
 
@@ -1066,7 +1066,7 @@ ul.sf-menu [class^="icon-"] {
 }
 .featured-image-wrapper a {
 	position: relative;
-	display: block;
+	display: inline-block;
 }
 .featured-image-wrapper img {
 	display: block;
