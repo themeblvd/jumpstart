@@ -126,7 +126,7 @@ if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 		<nav id="access" role="navigation">
 			<div class="access-inner">
 				<div class="access-content clearfix">
-					<?php wp_nav_menu( array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu','container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ); ?>
+					<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu','container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
 					<?php themeblvd_header_menu_addon(); ?>
 				</div><!-- .access-content (end) -->
 			</div><!-- .access-inner (end) -->
@@ -197,7 +197,7 @@ if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 					</div><!-- .copyright (end) -->
 					<div class="footer-nav">
 						<span class="footer-inner">
-							<?php wp_nav_menu( array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ); ?>
+							<?php wp_nav_menu( apply_filters( 'themeblvd_footer_menu_args', array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ) ); ?>
 						</span>
 					</div><!-- .copyright (end) -->
 				</div><!-- .footer_sub_content-content (end) -->
