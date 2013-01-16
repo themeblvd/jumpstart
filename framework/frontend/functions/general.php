@@ -843,7 +843,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		}
 		if( themeblvd_supports( 'assets', 'superfish' ) ) {
 			$scripts[] = 'superfish';
-			wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.js', array('jquery'), '1.4.8', true );
+			wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/frontend/assets/js/superfish.min.js', array('jquery'), '1.4.8', true ); // Modified version of Superfish by Jason Bobich
 		}
 		if( themeblvd_supports( 'assets', 'primary_js' ) ) {
 			$scripts[] = 'themeblvd';
