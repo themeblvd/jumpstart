@@ -825,6 +825,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 				);
 				$counter++;
 			}
+			wp_reset_postdata();
 		}
 		$slides = apply_filters( 'themeblvd_slider_auto_slides', $slides, $args, $posts );
 		
