@@ -626,6 +626,7 @@ if( ! function_exists( 'themeblvd_set_grid_atts' ) ) {
 				$query_string = themeblvd_query_string( $posts_per_page );
 			
 			}
+			$query_string = apply_filters( 'themeblvd_template_grid_query', $query_string, $custom_query_string, $post->ID );
 		}
 		
 		// Set attributes
@@ -674,7 +675,7 @@ if( ! function_exists( 'themeblvd_set_list_atts' ) ) {
 		
 		} elseif( is_page_template( 'template_list.php' ) ) {
 			
-			// If user has put ina custom query string to the page 
+			// If user has put in a custom query string to the page 
 			// template, we'll work with, but if not, we'll use 
 			// the default generated one. @uses "query" custom field.
 			$custom_query_string = get_post_meta( $post->ID, 'query', true );
@@ -693,6 +694,7 @@ if( ! function_exists( 'themeblvd_set_list_atts' ) ) {
 				// Generated query string
 				$query_string = themeblvd_query_string();
 			}
+			$query_string = apply_filters( 'themeblvd_template_list_query', $query_string, $custom_query_string, $post->ID );
 		}
 			
 		// Set attributes
