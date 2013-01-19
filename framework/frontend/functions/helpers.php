@@ -261,11 +261,17 @@ if( ! function_exists( 'themeblvd_query_string' ) ) {
 		$category_name_string = null;
 		$categories = null;
 		$posts_per_page_override = null;
-		// Blog page templates
+		// Post List/Post Grid page templates
 		if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
 			global $post;
-			// Categories (IDs)
-			$category_id_string = get_post_meta( $post->ID, 'categories', true );
+			// Categories (ID)
+			// This will coorespond to the "cat" parameter of a WP Query. 
+			// This custom field used to be "categories" but has since been 
+			// changed to "cat" to avoid confusion. There is a fallback here
+			// for that.
+			$category_id_string = get_post_meta( $post->ID, 'cat', true );
+			if( ! $category_id_string ) // check for @deprecated "categories" as fallback
+				$category_id_string = get_post_meta( $post->ID, 'categories', true );
 			if( $category_id_string )
 				$categories = 'cat='.$category_id_string; // Will get added to query_string towards end of function
 			// Categories (slug)
@@ -351,7 +357,7 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 		if( ! isset( $args['numberposts'] ) )
 			$args['numberposts'] = -1;
 		// Categories
-		if( isset( $options['categories'] ) && ! $options['categories']['all'] ) {
+		if( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
 			unset( $options['categories']['all'] );
 			$categories = '';
 			foreach( $options['categories'] as $category => $include ) {
