@@ -582,6 +582,11 @@ if( ! function_exists( 'themeblvd_set_grid_atts' ) ) {
 		$query_string = '';
 		if( is_home() ){
 			
+			// Note: This is a special case where the theme has added a
+			// custom option "index_grid_categories" for a theme that 
+			// uses a grid on the homepage. This is NOT the case in the 
+			// framework by default.
+
 			// Categories
 			$exclude = themeblvd_get_option( 'index_grid_categories' );
 			if( $exclude ) {
