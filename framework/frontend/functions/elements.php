@@ -627,7 +627,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 					}
 				}
 				if( $category_name ) {
-					$category_name = themeblvd_remove_trailing_char( $category_name, $char = ',' );
+					$category_name = themeblvd_remove_trailing_char( $category_name,',' );
 					$query_string .= 'category_name='.$category_name.'&';
 				}
 			}
