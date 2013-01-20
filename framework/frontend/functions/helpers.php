@@ -357,7 +357,13 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 		if( ! isset( $args['numberposts'] ) )
 			$args['numberposts'] = -1;
 		// Categories
-		if( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
+		if( ! empty( $options['cat'] ) ) {
+			// Category override option #1 -- cat
+			$args['cat'] = $options['cat'];
+		} elseif( ! empty( $options['category_name'] ) ) {
+			// Category override option #2 -- category_name
+			$args['category_name'] = $options['category_name'];
+		} elseif( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
 			unset( $options['categories']['all'] );
 			$categories = '';
 			foreach( $options['categories'] as $category => $include ) {
@@ -367,8 +373,8 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 				}
 			}
 			if( $categories ) {
-				$categories = themeblvd_remove_trailing_char( $categories, $char = ',' );
-				$args['category'] = $categories;
+				$categories = themeblvd_remove_trailing_char( $categories, ',' );
+				$args['cat'] = $categories;
 			}
 		}
 		// Additional args
