@@ -251,6 +251,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 			'categories'		=> array( 'all' => 1 ),	// Post categories to include
 			'category_name'		=> '',					// Force category_name string of query
 			'cat'				=> '',					// Force cat string of query
+			'tag'				=> '', 					// Force tag string of query
 			'columns'			=> '3', 				// Number of columns (grid only)
 			'rows'				=> '3', 				// Number of rows (grid only)
 			'posts_per_slide'	=> '', 					// Posts per slide (list only)
@@ -457,6 +458,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 			'categories'	=> array( 'all' => 1 ),	// Post categories to include
 			'category_name'	=> '',					// Force category_name string of query
 			'cat'			=> '',					// Force cat string of query
+			'tag'			=> '', 					// Force tag string of query
 			'columns'		=> '3',					// Number of columns (grid only)
 			'rows'			=> '3',					// Number of rows (grid only)
 			'thumbs'		=> 'default',			// Size of featured iamges (list only) - default, small, full, hide
