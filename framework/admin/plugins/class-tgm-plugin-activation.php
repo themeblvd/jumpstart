@@ -664,6 +664,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 								$linked_plugin_groups[] = '<a href="' . esc_url( $external_url ) . '" title="' . $plugin_group_single_name . '" target="_blank">' . $plugin_group_single_name . '</a>';
 							}
 							elseif ( ! $source || preg_match( '|^http://wordpress.org/extend/plugins/|', $source ) ) {
+								$admin_url = is_multisite() ? network_admin_url( 'plugin-install.php' ) : admin_url( 'plugin-install.php' );
 								$url = add_query_arg(
 									array(
 										'tab'       => 'plugin-information',
@@ -672,7 +673,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 										'width'     => '640',
 										'height'    => '500',
 									),
-									admin_url( 'plugin-install.php' )
+									$admin_url
 								);
 
 								$linked_plugin_groups[] = '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . $plugin_group_single_name . '">' . $plugin_group_single_name . '</a>';
@@ -1216,6 +1217,8 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 
 			/** We need to display the 'Install' hover link */
 			if ( ! isset( $installed_plugins[$item['file_path']] ) ) {
+				$parent_url_slug = TGM_Plugin_Activation::$instance->parent_url_slug;
+				$admin_url = is_multisite() ? network_admin_url( $parent_url_slug ) : admin_url( $parent_url_slug );
 				$actions = array(
 					'install' => sprintf(
 						'<a href="%1$s" title="Install %2$s">Install</a>',
@@ -1228,7 +1231,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 									'plugin_source' => $item['url'],
 									'tgmpa-install' => 'install-plugin',
 								),
-								admin_url( TGM_Plugin_Activation::$instance->parent_url_slug )
+								$admin_url
 							),
 							'tgmpa-install'
 						),
