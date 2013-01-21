@@ -338,7 +338,7 @@ if( ! function_exists( 'themeblvd_query_string' ) ) {
  *
  * @param array $options All options for query string
  * @param string $type Type of posts setup, grid or list
- * @param boolean $slider Whether or no this is a slider
+ * @param boolean $slider Whether or no this is a post list/grid slider (NOT auto slider)
  * @return array $args Arguments to get passed into get_posts()
  */
 
@@ -348,13 +348,13 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 		
 		// Number of posts
 		if( $type == 'grid' && ! $slider ) {
-			if( $options['rows'] )
+			if( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
 				$args['numberposts'] = $options['rows']*$options['columns'];
 		} else {
-			if( $options['numberposts'] ) 
+			if( ! empty( $options['numberposts'] ) ) 
 				$args['numberposts'] = $options['numberposts'];
 		}
-		if( ! isset( $args['numberposts'] ) )
+		if( empty( $args['numberposts'] ) )
 			$args['numberposts'] = -1;
 		// Categories
 		if( ! empty( $options['cat'] ) ) {
@@ -377,13 +377,32 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 				$args['cat'] = $categories;
 			}
 		}
+		// Tags
+		if( ! empty( $options['tag'] ) )
+			$args['tag'] = $options['tag'];
 		// Additional args
-		if( isset( $options['orderby'] ) ) 
+		if( ! empty( $options['orderby'] ) ) 
 			$args['orderby'] = $options['orderby'];
-		if( isset( $options['order'] ) ) 
+		if( ! empty( $options['order'] ) ) 
 			$args['order'] = $options['order'];
-		if( isset( $options['offset'] ) ) 
+		if( ! empty( $options['offset'] ) ) 
 			$args['offset'] = intval( $options['offset'] );
+
+		// Fixes for auto post slider that is specifying the 
+		// source of the posts. (NOT post grid/list sliders)
+		if( $type == 'auto_slider' && ! empty( $args['source'] ) ) {
+			switch( $args['source'] ) {
+				case 'category' :
+					unset( $args['tag'] );
+					if( ! empty( $options['category'] ) )
+							$args['category_name'] = $options['category'];
+					break;
+				case 'tag' :
+					unset( $args['category_name'] );
+					unset( $args['cat'] );
+					break;
+			}
+		}
 
 		return $args;
 	}
