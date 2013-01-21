@@ -248,7 +248,9 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 			'nav_standard' 		=> '1', 				// Show standard nav - true, false
 			'nav_arrows' 		=> '1', 				// Show nav arrows - true, false
 			'pause_play'		=> '1', 				// Show pause/play buttons - true, false 
-			'categories'		=> array( 'all' => 1 ),	// post categories to include
+			'categories'		=> array( 'all' => 1 ),	// Post categories to include
+			'category_name'		=> '',					// Force category_name string of query
+			'cat'				=> '',					// Force cat string of query
 			'columns'			=> '3', 				// Number of columns (grid only)
 			'rows'				=> '3', 				// Number of rows (grid only)
 			'posts_per_slide'	=> '', 					// Posts per slide (list only)
@@ -729,15 +731,16 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 			'image' 			=> 'full',		// How to display featured images - full, align-right, align-left
 			'image_link' 		=> 'permalink',	// Where image link goes - permalink, lightbox, none
 			'button' 			=> '',			// Text for button to lead to permalink - leave empty to hide
-			'source' 			=> 'tag',		// Source for the posts query
+			'source' 			=> '',			// Source for the posts query
 			'tag' 				=> '',			// Tag to pull posts from
 			'category' 			=> '',			// Category slug to pull posts from
+			'category_name'		=> '',			// Force category_name string of query
+			'cat'				=> '',			// Force cat string of query
 			'numberposts' 		=> '5',			// Number of posts/slides
 			'orderby' 			=> 'date',		// Orderby param for posts query
 			'order'				=> 'DESC',		// Order param for posts query
 			'query' 			=> '',			// Custom query string
-			'mobile_fallback' 	=> 'full_list',	// How to display on mobile - full_list, first_slide, display
-			
+			'mobile_fallback' 	=> 'full_list'	// How to display on mobile - full_list, first_slide, display
 		);
 		$args = wp_parse_args( $args, $defaults );		
 
@@ -755,20 +758,14 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 		);
 		$settings = apply_filters( 'themeblvd_slider_auto_settings', $settings, $args );
 		
+		// Setup query
+		if( ( ! $args['source'] && $args['query'] ) || ( $args['source'] == 'query' ) )
+			$query_args = $args['query'];
+		else
+			$query_args = themeblvd_get_posts_args( $args, 'auto_slider' );
+
 		// Get posts for slider
-		$query_string = '';
-		switch( $args['source'] ){
-			case 'tag' :
-				$query_string = 'tag='.$args['tag'].'&orderby='.$args['orderby'].'&order='.$args['order'].'&numberposts='.$args['numberposts'];
-				break;
-			case 'category' :
-				$query_string = 'category_name='.$args['category'].'&orderby='.$args['orderby'].'&order='.$args['order'].'&numberposts='.$args['numberposts'];
-				break;
-			case 'query' :
-				$query_string = $args['query'];
-				break;
-		}
-		$posts = get_posts( apply_filters( 'themeblvd_slider_auto_args', $query_string, $args ) );
+		$posts = get_posts( apply_filters( 'themeblvd_slider_auto_args', $query_args, $args ) );
 		
 		// Now loop through posts and setup an array of 
 		// slides that matches what would have been pulled 
