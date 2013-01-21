@@ -268,8 +268,8 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		
 		// Location and query string
 		$location = themeblvd_set_att( 'location', $current_location );
-		$query_string = themeblvd_get_posts_args( $args, $type, true );
-		$query_string = apply_filters( 'themeblvd_post_slider_args', $query_string, $args, $type, $current_location );
+		$query_args = themeblvd_get_posts_args( $args, $type, true );
+		$query_args = apply_filters( 'themeblvd_post_slider_args', $query_args, $args, $type, $current_location );
 
 		// Configure additional CSS classes
 		$classes = '';
@@ -292,7 +292,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		}
 		
 		// Get posts
-		$posts = get_posts( $query_string );
+		$posts = get_posts( $query_args );
 		
 		// Adjust offset if neccesary
 		if( $numberposts == -1 && $offset > 0 ) {
@@ -482,10 +482,10 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		if( ! empty( $query ) ) {
 			// Custom query string
 			$custom_query = true;
-			$query_string = html_entity_decode( $query );
+			$query_args = html_entity_decode( $query );
 		} else {
 			// Generated query args
-			$query_string = themeblvd_get_posts_args( $args, $type );
+			$query_args = themeblvd_get_posts_args( $args, $type );
 		}
 
 		// Config before query string
@@ -502,10 +502,10 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		}
 		
 		// Apply filters
-		$query_string = apply_filters( 'themeblvd_posts_args', $query_string, $args, $type, $current_location );
+		$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, $type, $current_location );
 		
 		// Get posts
-		$posts = get_posts( $query_string );
+		$posts = get_posts( $query_args );
 		
 		// Adjust offset if neccesary
 		if( ! $custom_query ) {
