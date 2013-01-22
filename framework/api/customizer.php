@@ -13,7 +13,6 @@
  
 if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
 	function themeblvd_add_customizer_section( $section_id, $section_name, $options, $priority = null ) {
-		if( ! is_admin() ) return;
 		global $_themeblvd_customizer_sections;
 		$_themeblvd_customizer_sections[$section_id] = array(
 			'id' 		=> $section_id,
