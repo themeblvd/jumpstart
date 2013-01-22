@@ -105,7 +105,7 @@ if( is_admin() ) {
 	add_filter( 'the_content_more_link', 'themeblvd_read_more_link' );
 	add_filter( 'use_default_gallery_style', '__return_false' );
 	add_filter( 'wp_title', 'themeblvd_wp_title' );
-	add_filter( 'template_include', 'themeblvd_private_layout' );
+	add_filter( 'template_include', 'themeblvd_private_page' );
 	
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );

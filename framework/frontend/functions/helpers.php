@@ -1009,20 +1009,31 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
 }
 
 /** 
- * If there a page with custom layout is set to 
- * be password protected, forward to the standard 
- * page.php template file.
+ * Forward password-protected pages using 
+ * page templates to page.php
  *
- * @since 2.2.0
+ * @since 2.2.1
  *
  * @param string $template Current template file
  * @return string $template Current theme location of page.php
  */
 
-if( ! function_exists( 'themeblvd_private_layout' ) ) {
-	function themeblvd_private_layout( $template ){	
-		if( themeblvd_config( 'builder' ) && post_password_required() )
-			$template = locate_template( 'page.php' );
+if( ! function_exists( 'themeblvd_private_page' ) ) {
+	function themeblvd_private_page( $template ){
+		if( post_password_required() ) {
+			// Custom Layouts
+			if( themeblvd_config( 'builder' ) )
+				$template = locate_template( 'page.php' );
+			// Page Templates
+			$page_template = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
+			foreach( $page_template as $page_template ) {
+				if( is_page_template( $page_template ) )
+					$template = locate_template( 'page.php' );	
+			}
+			// Removed hooked the_content on Post Grid/List templates
+			if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) )
+				remove_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
+		}
 		return $template;
 	}
 }
