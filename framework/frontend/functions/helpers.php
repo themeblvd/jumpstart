@@ -1025,8 +1025,8 @@ if( ! function_exists( 'themeblvd_private_page' ) ) {
 			if( themeblvd_config( 'builder' ) )
 				$template = locate_template( 'page.php' );
 			// Page Templates
-			$page_template = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
-			foreach( $page_template as $page_template ) {
+			$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
+			foreach( $page_templates as $page_template ) {
 				if( is_page_template( $page_template ) )
 					$template = locate_template( 'page.php' );	
 			}
