@@ -1256,8 +1256,8 @@ if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
 
 		// Convert to boolean
 		$show = $display == 'show' ? true : false;
-		
-		return $show;
+
+		return apply_filters( 'themeblvd_show_breadcrumbs', $show, $display );
 	}
 }
 
