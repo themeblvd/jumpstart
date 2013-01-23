@@ -427,21 +427,19 @@ if( ! function_exists( 'themeblvd_main_bottom_default' ) ) {
 
 if( ! function_exists( 'themeblvd_breadcrumbs_default' ) ) {
 	function themeblvd_breadcrumbs_default() {
-		wp_reset_query();
-		global $post;
-		$display = '';
-		// Pages and Posts
-		if( is_page() || is_single() )
-			$display = get_post_meta( $post->ID, '_tb_breadcrumbs', true );
-		// Standard site-wide option
-		if( ! $display || $display == 'default' )
-			$display = themeblvd_get_option( 'breadcrumbs', null, 'show' );
-		// Disable on posts homepage
-		if( is_home() )
-			$display = 'hide';
-		// Show breadcrumbs if not hidden
-		if( $display == 'show' )
-			echo themeblvd_get_breadcrumbs();
+		if( themeblvd_show_breadcrumbs() ){
+			?>
+			<div id="breadcrumbs">
+				<div class="breadcrumbs-inner">
+					<div class="breadcrumbs-content">
+						<div class="breadcrumb">
+							<?php echo themeblvd_get_breadcrumbs_trail(); ?>
+						</div><!-- .breadcrumb (end) -->
+					</div><!-- .breadcrumbs-content (end) -->
+				</div><!-- .breadcrumbs-inner (end) -->
+			</div><!-- #breadcrumbs (end) -->
+			<?php
+		}
 	}
 }
 

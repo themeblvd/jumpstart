@@ -182,115 +182,49 @@ if( ! function_exists( 'themeblvd_pagination' ) ) {
 }
 
 /** 
- * Breadcrumbs
+ * Get breadcrumb trail formatted for being displayed.
  *
- * @since 2.0.0
+ * @since 2.2.1
+ *
+ * @param string $var Description
+ * @return string $var Description
  */
 
-if( ! function_exists( 'themeblvd_get_breadcrumbs' ) ) {
-	function themeblvd_get_breadcrumbs() {
-		global $post;
+if( ! function_exists( 'themeblvd_get_breadcrumbs_trail' ) ) {
+	function themeblvd_get_breadcrumbs_trail(){
 		
 		// Filterable attributes
 		$atts = array(
-			'delimiter' => ' <span class="divider">/</span>',
-			'home' => themeblvd_get_local('home'),
-			'home_link' => home_url(),
-			'before' => '<span class="current">',
-			'after' => '</span>'
+			'delimiter'		=> ' <span class="divider">/</span> ',
+			'home' 			=> themeblvd_get_local('home'),
+			'home_link' 	=> home_url(),
+			'before' 		=> '<span class="current">',
+			'after' 		=> '</span>'
 		);
 		$atts = apply_filters( 'themeblvd_breadcrumb_atts', $atts );
 		
-		// Start output
-		$output = '<div id="breadcrumbs">'; 
-		$output .= '<div class="breadcrumbs-inner">';
-		$output .= '<div class="breadcrumbs-content">';
-		$output .= '<div class="breadcrumb">'; // This enables bootstrap styles
-		$output .= '<a href="'.$atts['home_link'].'" class="home-link" title="'.$atts['home'].'">'.$atts['home'].'</a>'.$atts['delimiter'].' ';
+		// Get filtered breadcrumb parts as an array so we 
+		// can use it to construct the display.
+		$parts = themeblvd_get_breadcrumb_parts( $atts );
 		
-		// Construct trail
+		// Use breadcrumb parts to construct display of trail
 		$trail = '';
-		if ( is_category() ) {
-			global $wp_query;
-			$cat_obj = $wp_query->get_queried_object();
-			$thisCat = $cat_obj->term_id;
-			$thisCat = get_category($thisCat);
-			$parentCat = get_category($thisCat->parent);
-			if( $thisCat->parent != 0 )
-				$trail .= ( get_category_parents( $parentCat, true, ' '.$atts['delimiter'].' ' ) );
-			$trail .= $atts['before'].single_cat_title('', false).$atts['after'];
-		} else if ( is_day() ) {
-			$trail .= '<a href="'.get_year_link(get_the_time('Y')).'">'.get_the_time('Y').'</a> '.$atts['delimiter'].' ';
-			$trail .= '<a href="'.get_month_link(get_the_time('Y'),get_the_time('m')).'">'.get_the_time('F').'</a> '.$atts['delimiter'].' ';
-			$trail .= $atts['before'].get_the_time('d').$atts['after'];
-		} else if ( is_month() ) {
-			$trail .= '<a href="'.get_year_link(get_the_time('Y')).'">'.get_the_time('Y').'</a> '.$atts['delimiter'].' ';
-			$trail .= $atts['before'].get_the_time('F').$atts['after'];
-		} else if ( is_year() ) {
-			$trail .= $atts['before'].get_the_time('Y').$atts['after'];
-		} else if ( is_single() ) {
-			if ( get_post_type() != 'post' ) {
-				$post_type = get_post_type_object(get_post_type());
-				$slug = $post_type->rewrite;
-				$trail .= '<a href="'.$atts['home_link'].'/'.$slug['slug'].'/">'.$post_type->labels->singular_name.'</a> '.$atts['delimiter'].' ';
-				$trail .= $atts['before'].get_the_title().$atts['after'];
-			} else {
-				$cat = get_the_category(); $cat = $cat[0];
-				$trail .= get_category_parents($cat, true, ' '.$atts['delimiter'].' ');
-				$trail .= $atts['before'].get_the_title().$atts['after'];
+		$count = 1;
+		$total = count($parts);
+		if( $parts ) {
+			foreach( $parts as $part ) {
+				$crumb = $part['text'];
+				if( ! empty( $part['link'] ) )
+					$crumb = '<a href="'.$part['link'].'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
+				if( $total == $count )
+					$crumb = $atts['before'].$crumb.$atts['after'];
+				else
+					$crumb = $crumb.$atts['delimiter'];
+				$trail .= $crumb;
+				$count++;
 			}
-		} else if ( is_search() ) {
-			$trail .= $atts['before'].themeblvd_get_local('crumb_search').' "'.get_search_query().'"'.$atts['after'];
-		} else if ( ! is_single() && ! is_page() && get_post_type() != 'post' && ! is_404() ) {
-			$post_type = get_post_type_object( get_post_type() );
-			$trail .= $atts['before'].$post_type->labels->singular_name.$atts['after'];
-		} else if ( is_attachment() ) {
-			$parent = get_post( $post->post_parent );
-			$cat = get_the_category( $parent->ID );
-			if( ! empty( $cat ) ) {
-				$cat = $cat[0];
-				$trail .= get_category_parents( $cat, true, ' '.$atts['delimiter'].' ' );
-			}
-			$trail .= '<a href="'.get_permalink( $parent ).'">'.$parent->post_title.'</a> '.$atts['delimiter'].' ';
-			$trail .= $atts['before'].get_the_title().$atts['after'];
-		} else if ( is_page() && !$post->post_parent ) {
-			$trail .= $atts['before'].get_the_title().$atts['after'];
-		} else if ( is_page() && $post->post_parent ) {
-			$parent_id  = $post->post_parent;
-			$breadcrumbs = array();
-			while( $parent_id ) {
-				$page = get_page( $parent_id );
-				$breadcrumbs[] = '<a href="'.get_permalink( $page->ID ).'">'.get_the_title( $page->ID ).'</a>';
-				$parent_id  = $page->post_parent;
-			}
-			$breadcrumbs = array_reverse( $breadcrumbs );
-			foreach( $breadcrumbs as $crumb ) {
-				$trail .= $crumb.' '.$atts['delimiter'].' ';
-			}
-			$trail .= $atts['before'].get_the_title().$atts['after'];
-		} else if ( is_tag() ) {
-			$trail .= $atts['before'].themeblvd_get_local('crumb_tag').' "'.single_tag_title('', false).'"'.$atts['after'];
-		} else if ( is_author() ) {
-			global $author;
-			$userdata = get_userdata( $author );
-			$trail .= $atts['before'].themeblvd_get_local('crumb_author').' '.$userdata->display_name.$atts['after'];
-		} else if ( is_404() ) {
-		  $trail .= $atts['before'].themeblvd_get_local('crumb_404').$atts['after'];
 		}
-		
-		// Here's your chance to extend it. Happy trails. Yes, pun intended.
-		$output .= apply_filters( 'themeblvd_breadcrumbs_trail', $trail, $atts );
-		
-		// Add page number if is paged
-		if ( get_query_var('paged') )
-			$output .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
-		
-		// Finish output
-		$output .= '</div><!-- .breadcrumb (end) -->';
-		$output .= '</div><!-- .breadcrumbs-content (end) -->';
-		$output .= '</div><!-- .breadcrumbs-inner (end) -->';
-		$output .= '</div><!-- #breadcrumbs (end) -->';
-		return $output;
+		return apply_filters( 'themeblvd_breadcrumbs_trail', $trail, $atts, $parts );
 	}
 }
 

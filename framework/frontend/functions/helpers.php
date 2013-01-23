@@ -1037,3 +1037,264 @@ if( ! function_exists( 'themeblvd_private_page' ) ) {
 		return $template;
 	}
 }
+
+/** 
+ * Construct parts of a breadcrumbs trail as an array 
+ * to be used when displaying breadcrumbs.
+ *
+ * @since 2.2.1
+ *
+ * @param string $atts Filtered attributes for breadcrumbs
+ * @return array $breadcrumbs Breadcrumbs parts to display trail
+ */
+
+if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
+	function themeblvd_get_breadcrumb_parts( $atts ) {
+		
+		global $post;
+		global $wp_query;
+		$breadcrumbs = array();
+		$parts = array();
+		wp_reset_query();
+
+		// Home
+		$breadcrumbs[] = array(
+			'link' 	=> $atts['home_link'],
+			'text' 	=> $atts['home'],
+			'type'	=> 'home'
+		);
+		
+		// Build parts
+		if( is_category() ) {
+			/* Category Archives */
+			$cat_obj = $wp_query->get_queried_object();
+			$current_cat = $cat_obj->term_id;
+			$current_cat = get_category( $current_cat );
+			if( $current_cat->parent && ( $current_cat->parent != $current_cat->term_id ) ) {
+				$parents = themeblvd_get_category_parents( $current_cat->parent );
+				$parts = array_merge( $parts, $parents );
+			}
+			// Add current category
+			$parts[] = array(
+				'link' 	=> esc_url( get_category_link( $current_cat->term_id ) ),
+				'text' 	=> $current_cat->name,
+				'type'	=> 'category'
+			);
+		} elseif( is_day() ) {
+			/* Day Archives */
+			// Year
+			$parts[] = array(
+				'link' 	=> get_year_link( get_the_time('Y') ),
+				'text' 	=> get_the_time('Y'),
+				'type'	=> 'year'
+			);
+			// Month
+			$parts[] = array(
+				'link' 	=> get_month_link( get_the_time('Y'), get_the_time('m') ),
+				'text' 	=> get_the_time('F'),
+				'type'	=> 'month'
+			);
+			// Day
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> get_the_time('d'),
+				'type'	=> 'day'
+			);
+		} elseif( is_month() ) {
+			/* Month Archives */
+			// Year
+			$parts[] = array(
+				'link' 	=> get_year_link( get_the_time('Y') ),
+				'text' 	=> get_the_time('Y'),
+				'type'	=> 'year'
+			);
+			// Month
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> get_the_time('F'),
+				'type'	=> 'month'
+			);
+		} elseif( is_year() ) {
+			/* Year Archives */
+			// Year
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> get_the_time('Y'),
+				'type'	=> 'year'
+			);
+		} elseif ( is_tag() ) {
+			/* Tag Archives */
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> themeblvd_get_local('crumb_tag').' "'.single_tag_title('', false).'"',
+				'type'	=> 'tag'
+			);
+		} elseif ( is_author() ) {
+			/* Author Archives */
+			global $author;
+			$userdata = get_userdata( $author );
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> themeblvd_get_local('crumb_author').' '.$userdata->display_name,
+				'type'	=> 'author'
+			);
+		} elseif( is_attachment() ) {
+			/* Attachment */
+			$parent = get_post( $post->post_parent );
+			if( ! empty( $parent ) ) {
+				$category = get_the_category( $parent->ID );
+				if( ! empty( $category ) ) {
+					$category = $category[0];
+					$parents = themeblvd_get_category_parents( $category->term_id );
+					$parts = array_merge( $parts, $parents );
+				}
+				$parts[] = array(
+					'link' 	=> get_permalink( $parent->ID ),
+					'text' 	=> $parent->post_title,
+					'type'	=> 'single'
+				);
+			}
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> get_the_title(),
+				'type'	=> 'attachment'
+			);
+		} elseif( is_single() ) {
+			/* Single Posts */
+			if ( get_post_type() == 'post' ) {
+				// Categories (only if standard post type)
+				$category = get_the_category();
+				$category = $category[0];
+				$parents = themeblvd_get_category_parents( $category->term_id );
+				$parts = array_merge( $parts, $parents );
+			}
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> get_the_title(),
+				'type'	=> 'single'
+			);
+		} elseif( is_search() ) {
+			/* Search Results */
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> themeblvd_get_local('crumb_search').' "'.get_search_query().'"',
+				'type'	=> 'search'
+			);
+		} elseif( is_page() ) {
+			/* Pages */
+			if( $post->post_parent ) {
+				// Parent pages
+				$parent_id  = $post->post_parent;
+				$parents = array();
+				while( $parent_id ) {
+					$page = get_page( $parent_id );
+					$parents[] = array(
+						'link' 	=> get_permalink( $page->ID ),
+						'text' 	=> get_the_title( $page->ID ),
+						'type'	=> 'page'
+					);
+					$parent_id = $page->post_parent;
+				}
+				$parents = array_reverse( $parents );
+				$parts = array_merge( $parts, $parents );
+			}
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> get_the_title(),
+				'type'	=> 'page'
+			);
+		} elseif( is_404() ) {
+			$parts[] = array(
+				'link' 	=> '',
+				'text' 	=> themeblvd_get_local('crumb_404'),
+				'type'	=> '404'
+			);
+		}
+
+		// Add page number if is paged
+		if( get_query_var('paged') ) {
+			$last = count($parts) - 1;
+			$parts[$last]['text'] .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
+		}
+
+		// Filter the trail before the Home link is 
+		// added to the start.
+		$parts = apply_filters( 'themeblvd_pre_breadcrumb_parts', $parts, $atts );
+		
+		// Final filter on entire breadcrumbs trail.
+		$breadcrumbs = apply_filters( 'themeblvd_breadcrumb_parts', array_merge( $breadcrumbs, $parts ), $atts );
+
+		return $breadcrumbs;
+	}
+}
+
+/** 
+ * Determine if breadcrumbs should show or not.
+ *
+ * @since 2.2.1
+ *
+ * @return boolean $show Whether breadcrumbs should show or not
+ */
+
+if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
+	function themeblvd_show_breadcrumbs(){
+		
+		global $post;
+		$display = '';
+		
+		// Pages and Posts
+		if( is_page() || is_single() )
+			$display = get_post_meta( $post->ID, '_tb_breadcrumbs', true );
+		
+		// Standard site-wide option
+		if( ! $display || $display == 'default' )
+			$display = themeblvd_get_option( 'breadcrumbs', null, 'show' );
+		
+		// Disable on posts homepage
+		if( is_home() )
+			$display = 'hide';
+
+		// Convert to boolean
+		$show = $display == 'show' ? true : false;
+		
+		return $show;
+	}
+}
+
+/** 
+ * Get parent category attributes
+ *
+ * @since 2.2.1
+ *
+ * @param int $id ID of closest category parent
+ * @param array $used Any categories in our chain that we've already used
+ * @return array $var Description
+ */
+
+if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
+	function themeblvd_get_category_parents( $id, $used = array() ){
+		
+		$chain = array();
+		$parent = get_category( $id );
+
+		// Get out of here if there's an error
+		if ( is_wp_error( $parent ) )
+			return $parent;
+
+		// Parent of the parent
+		if( $parent->parent && ( $parent->parent != $parent->term_id ) && ! in_array( $parent->parent, $used ) ) {
+			$used[] = $parent->parent;
+			$grand_parent = themeblvd_get_category_parents( $parent->parent, $used );
+			$chain = array_merge( $grand_parent, $chain );
+		}
+
+		// Final part of chain
+		$chain[] = array(
+			'link' 	=> esc_url( get_category_link( $id ) ),
+			'text' 	=> $parent->name,
+			'type'	=> 'category'
+		);
+
+		return $chain;
+	}
+}
