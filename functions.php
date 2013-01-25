@@ -1,6 +1,6 @@
 <?php
 /*-----------------------------------------------------------------------------------*/
-/* Run ThemeBlvd Framework
+/* Run Theme Blvd Framework
 /* 
 /* Below is the file needed to load the parent theme and theme framework. 
 /* It's included with require_once(). 
