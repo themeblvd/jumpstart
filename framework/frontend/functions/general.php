@@ -1226,7 +1226,7 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
 }
 
 /**
- * Add "btn" class to read more links.
+ * Use themeblvd_button() function for read more links.
  *
  * When a WP user uses the more tag <!--more-->, this filter 
  * will add the class "btn" to that link. This will allow 
@@ -1238,8 +1238,27 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_read_more_link' ) ) {
-	function themeblvd_read_more_link( $read_more ) {
-		// Add standard "btn" bootstrap class
-		return str_replace( 'class="more-link"', 'class="more-link btn btn-default"', $read_more );
+	function themeblvd_read_more_link( $read_more, $more_link_text ) {
+		
+		$args = apply_filters( 'themeblvd_the_content_more_args', array(
+			'text'			=> $more_link_text,
+			'url'			=> get_permalink(),
+			'color'			=> 'default',
+			'target' 		=> null,
+			'size'			=> null,
+			'classes'		=> null,
+			'title'			=> null,
+			'icon_before'	=> null, 
+			'icon_after'	=> null, 
+			'addon'			=> null,
+			'p'				=> true
+		));
+		
+		// Construct button based on filterable $args above
+		$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
+		if( $args['p'] )
+			$button = '<p>'.$button.'</p>';
+		
+		return $button;
 	}
 }

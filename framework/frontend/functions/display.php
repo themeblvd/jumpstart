@@ -549,11 +549,27 @@ if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 	function themeblvd_blog_content_default( $type ) {
 		if( $type == 'content' ) {
 			// Show full content
-			the_content( themeblvd_get_local('read_more').' &rarr;' );
+			the_content( apply_filters( 'themeblvd_the_content_more_text', themeblvd_get_local('read_more') ) );
 		} else {
 			// Show excerpt and read more button
+			$args = apply_filters( 'themeblvd_the_excerpt_more_args', array(
+				'text'			=> themeblvd_get_local('read_more'),
+				'url'			=> get_permalink(),
+				'color'			=> 'default',
+				'target' 		=> '_self',
+				'size'			=> null,
+				'classes'		=> null,
+				'title'			=> null,
+				'icon_before' 	=> null, 
+				'icon_after' 	=> null, 
+				'addon'			=> null,
+				'p'				=> true
+			));
 			the_excerpt();
-			echo '<p><a href="'.get_permalink( get_the_ID() ).'" class="btn btn-default">'.themeblvd_get_local( 'read_more' ).' &rarr;</a></p>';
+			$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
+			if( $args['p'] )
+				$button = '<p>'.$button.'</p>';
+			echo $button;
 		}
 	}
 }

@@ -102,7 +102,7 @@ if( is_admin() ) {
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
 	add_filter( 'themeblvd_tweet_filter', 'themeblvd_tweet_filter_default', 10, 2 );
 	add_filter( 'themeblvd_sidebar_layout', 'themeblvd_wpmultisite_signup_sidebar_layout' );
-	add_filter( 'the_content_more_link', 'themeblvd_read_more_link' );
+	add_filter( 'the_content_more_link', 'themeblvd_read_more_link', 10, 2 );
 	add_filter( 'use_default_gallery_style', '__return_false' );
 	add_filter( 'wp_title', 'themeblvd_wp_title' );
 	add_filter( 'template_include', 'themeblvd_private_page' );
