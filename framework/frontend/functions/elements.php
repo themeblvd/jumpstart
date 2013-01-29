@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Display set of columns.
@@ -316,6 +317,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 								<ul class="slides">
 									<?php
 									if ( ! empty( $posts ) ) {
+										do_action( 'themeblvd_post_'.$type.'_slider_before_loop', $args );
 										if( $type == 'grid' ) {
 											
 											/*-------------------------------------------*/
@@ -413,6 +415,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 											}
 											wp_reset_postdata();
 										}
+										do_action( 'themeblvd_post_'.$type.'_slider_after_loop', $args );
 									} else {
 										echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 									}
@@ -521,6 +524,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		// Start the loop
 		echo '<div class="post_'.$type.'">';
 		if ( ! empty( $posts ) ) {
+			do_action( 'themeblvd_post_'.$type.'_before_loop', $args );
 			if( $type == 'grid' ) {
 				// Loop for post grid (i.e. Portfolio)
 				$counter = themeblvd_set_att( 'counter', 1 );
@@ -543,6 +547,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 				}
 				wp_reset_postdata();
 			}
+			do_action( 'themeblvd_post_'.$type.'_after_loop', $args );
 		} else {
 			echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 		}
@@ -673,7 +678,8 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		
 		// Start the loop
 		echo '<div class="post_'.$type.'">';
-		if ( have_posts() ) {
+		if( have_posts() ) {
+			do_action( 'themeblvd_post_'.$type.'_paginated_before_loop', $args );
 			if( $type == 'grid' ) {
 				// Loop for post grid (i.e. Portfolio)
 				$counter = themeblvd_set_att( 'counter', 1 );
@@ -693,6 +699,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 					get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );
 				}
 			}
+			do_action( 'themeblvd_post_'.$type.'_paginated_after_loop', $args );
 		} else {
 			echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 		}
@@ -778,6 +785,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 		if( $args['button'] ) $includes[] = 'button';
 		$image_link_target = $args['image_link'] == 'permalink' ? '_self' : $args['image_link'];
 		if( $posts ) {
+			do_action( 'themeblvd_slider_auto_before_loop', $args );
 			foreach( $posts as $post ) {
 				
 				// Setup post data for loop
@@ -827,6 +835,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 				$counter++;
 			}
 			wp_reset_postdata();
+			do_action( 'themeblvd_slider_auto_after_loop', $args );
 		}
 		$slides = apply_filters( 'themeblvd_slider_auto_slides', $slides, $args, $posts );
 		
