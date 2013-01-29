@@ -222,9 +222,6 @@ img.pretty,
 img.wp-caption {
 	max-width: 98%;
 }
-.themeblvd-mini-post-grid .thumbnail {
-	padding: 3px;
-}
 
 /* Code elements */
 code {
@@ -1041,6 +1038,9 @@ ul.sf-menu [class^="icon-"] {
 	margin: 0;
 	padding: 5px 0 0 0;
 }
+.themeblvd-mini-post-grid ul li {
+	padding: 0;
+}
 .themeblvd-mini-post-grid ul.grid-align-left li {
 	float: left;
 }
@@ -1065,6 +1065,10 @@ ul.sf-menu [class^="icon-"] {
 }
 .themeblvd-mini-post-grid ul.smallest-thumbs li {
 	margin: 1px;
+}
+.themeblvd-mini-post-grid .thumbnail {
+	display: block;
+	padding: 3px;
 }
 
 /* Featured Image */

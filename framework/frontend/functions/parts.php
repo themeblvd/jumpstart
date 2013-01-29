@@ -482,7 +482,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 				$output .= '</li>';
 			}
 			wp_reset_postdata();
-			$output .= '<ul>';
+			$output .= '</ul>';
 			$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
 		} else {
 			$output = themeblvd_get_local( 'archive_no_posts' );
@@ -574,7 +574,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 				$output .= '</li>';
 			}
 			wp_reset_postdata();
-			$output .= '<ul>';
+			$output .= '</ul>';
 			$output .= '<div class="clear"></div>';
 			$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
 		} else {
