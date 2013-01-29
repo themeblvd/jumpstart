@@ -55,15 +55,19 @@ jQuery(document).ready(function($) {
 	/*-----------------------------------------------------------------------------------*/
 	
 	// Setup featured image link
-	var value;
-	$('.tb-meta-box .tb-thumb-link').hide();
-	$('.tb-meta-box .select-tb-thumb-link input:radio:checked').each(function() {
+	var value, meta_box = $('.tb-meta-box');
+	meta_box.find('.tb-thumb-link').hide();
+	meta_box.find('.select-tb-thumb-link input:radio:checked').each(function() {
 		value = $(this).val();
-		$('.tb-meta-box .tb-thumb-link-'+value).show();
+		meta_box.find('.tb-thumb-link-'+value).show();
+		if( value != 'inactive' )
+			meta_box.find('.tb-thumb-link-single').show();
 	});
-	$('.tb-meta-box .select-tb-thumb-link input:radio').change(function(){
+	meta_box.find('.select-tb-thumb-link input:radio').change(function(){
 		value = $(this).val();
-		$('.tb-meta-box .tb-thumb-link').hide();
-		$('.tb-meta-box .tb-thumb-link-'+value).show();
+		meta_box.find('.tb-thumb-link').hide();
+		meta_box.find('.tb-thumb-link-'+value).show();
+		if( value != 'inactive' )
+			meta_box.find('.tb-thumb-link-single').show();
 	});
 });

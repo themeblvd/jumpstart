@@ -11,7 +11,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ), themeblvd_get_att( 'size' ) ); ?>
+		<?php themeblvd_the_post_thumbnail( 'single', themeblvd_get_att( 'size' ) ); ?>
 		<?php the_content(); ?>
 		<?php themeblvd_blog_tags(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
