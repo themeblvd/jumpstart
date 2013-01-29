@@ -1242,7 +1242,7 @@ if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 		
 		$args = apply_filters( 'themeblvd_the_content_more_args', array(
 			'text'			=> $more_link_text,
-			'url'			=> get_permalink(),
+			'url'			=> get_permalink().'#more-'.get_the_ID(),
 			'color'			=> 'default',
 			'target' 		=> null,
 			'size'			=> null,
@@ -1250,15 +1250,12 @@ if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 			'title'			=> null,
 			'icon_before'	=> null, 
 			'icon_after'	=> null, 
-			'addon'			=> null,
-			'p'				=> true
+			'addon'			=> null
 		));
 		
 		// Construct button based on filterable $args above
 		$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
-		if( $args['p'] )
-			$button = '<p>'.$button.'</p>';
-		
+
 		return $button;
 	}
 }
