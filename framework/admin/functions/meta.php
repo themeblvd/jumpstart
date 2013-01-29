@@ -120,7 +120,7 @@ function setup_themeblvd_post_meta() {
 		'options' => array(
 			array(
 				'id' 		=> '_tb_meta',
-				'name' 		=> __( 'Meta Information', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Meta Information (the single post)', 'themeblvd' ), /* Required by Framework */
 				'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -132,7 +132,7 @@ function setup_themeblvd_post_meta() {
 			),
 			array(
 				'id' 		=> '_tb_comments',
-				'name' 		=> __( 'Comments', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ), /* Required by Framework */
 				'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -144,7 +144,7 @@ function setup_themeblvd_post_meta() {
 			),
 			array(
 				'id'		=> '_tb_breadcrumbs',
-				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
+				'name' 		=> __( 'Breadcrumbs (the single post)', 'themeblvd' ),
 				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this post or not.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -156,7 +156,7 @@ function setup_themeblvd_post_meta() {
 			),
 			array(
 				'id' 		=> '_tb_thumb',
-				'name' 		=> __( 'Featured Image Display', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Featured Image Display (the single post)', 'themeblvd' ), /* Required by Framework */
 				'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -169,7 +169,7 @@ function setup_themeblvd_post_meta() {
 			),
 			array(
 				'id'		=> '_tb_thumb_link',
-				'name' 		=> __( 'Featured Image Link', 'themeblvd' ), 
+				'name' 		=> __( 'Featured Image Link (everywhere)', 'themeblvd' ), 
 				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', 'themeblvd' ),
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
@@ -218,7 +218,7 @@ function setup_themeblvd_post_meta() {
 			),
 			array(
 				'id'		=> '_tb_thumb_link_single',
-				'name' 		=> __( 'Featured Image Link', 'themeblvd' ),
+				'name' 		=> __( 'Featured Image Link (the single post)', 'themeblvd' ),
 				'desc'		=> __( 'If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page or not.', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-single',
 				'std' 		=> 'yes',
