@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Display set of columns.
