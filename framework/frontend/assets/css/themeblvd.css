@@ -2326,17 +2326,6 @@ div.pp_default .pp_description {
 	width: 10px;
 	height: 11px;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
-		only screen and (-moz-min-device-pixel-ratio: 1.5), 
-		only screen and (-o-min-device-pixel-ratio: 1.5), 
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	/* Slider controls - Use 2x image for retina */
-	.standard-slider-wrapper .flex-control-nav li a {
-		background-image: url('../images/elements/slider-nav_2x.png');
-		background-size: 20px 11px;
-	}
-}
 .standard-slider-wrapper .flex-control-nav li a.flex-active { 
 	background-position: -10px 0;
 }
@@ -2352,16 +2341,54 @@ div.pp_default .pp_description {
 	padding: 0;
 }
 .standard-slider-wrapper .flex-direction-nav li a {
-	color: #aaaaaa;
+	background-image: url('../images/elements/slider-arrows.png');
+	background-position: 0 0;
+	background-repeat: no-repeat;
 	display: block;
-	font-size: 16px;
-	line-height: 1em;
+	margin: 0 1px;
 	outline: none;
-	text-shadow: 1px 1px 0 #ffffff;
-	width: 18px;
+	text-indent: -9999px;
+	width: 16px;
+	height: 16px;
 }
-.standard-slider-wrapper .flex-direction-nav li a:hover {
-	color: #666666;
+.standard-slider-wrapper .flex-direction-nav li a.flex-prev {
+	background-position: 0 0;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-prev:hover {
+	background-position: -16px 0;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-next {
+	background-position: 0 -16px;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-next:hover {
+	background-position: -16px -16px;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-play {
+	background-position: 0 -32px;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-play:hover {
+	background-position: -16px -32px;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-pause {
+	background-position: 0 -48px;
+}
+.standard-slider-wrapper .flex-direction-nav li a.flex-pause:hover {
+	background-position: -16px -48px;
+}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	/* Slider controls - Use 2x image for retina */
+	.standard-slider-wrapper .flex-control-nav li a {
+		background-image: url('../images/elements/slider-nav_2x.png');
+		background-size: 20px 11px;
+	}
+	.standard-slider-wrapper .flex-direction-nav li a {
+		background-image: url('../images/elements/slider-arrows_2x.png');
+		background-size: 32px 64px;
+	}
 }
 .sidebar_right .standard-slider, 
 .sidebar_left.standard-slider, 

@@ -220,6 +220,9 @@ a.thumbnail:hover {
 .standard-slider-wrapper .flex-control-nav li a {
 	background-image: url('../images/elements/slider-nav.png');
 }
+.standard-slider-wrapper .flex-direction-nav li a {
+	background-image: url('../images/elements/slider-arrows.png');
+}
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
 		only screen and (-moz-min-device-pixel-ratio: 1.5), 
 		only screen and (-o-min-device-pixel-ratio: 1.5), 
@@ -230,13 +233,10 @@ a.thumbnail:hover {
 		background-image: url('../images/elements/slider-nav_2x.png');
 		background-size: 20px 11px;
 	}
-}
-.standard-slider-wrapper .flex-direction-nav li a {
-	color: #aaaaaa;
-	text-shadow: 1px 1px 0 #ffffff;
-}
-.standard-slider-wrapper .flex-direction-nav li a:hover {
-	color: #666666;
+	.standard-slider-wrapper .flex-direction-nav li a {
+		background-image: url('../images/elements/slider-arrows_2x.png');
+		background-size: 32px 64px;
+	}
 }
 .carrousel-slider-wrapper .roundabout-nav a {
 	color: #999999;
