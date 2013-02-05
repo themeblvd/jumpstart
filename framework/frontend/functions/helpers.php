@@ -729,10 +729,10 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
 			'element_content' 				=> '',
 			'element_divider' 				=> '',
 			'element_headline' 				=> '',
-			'element_post_grid_paginated' 	=> '',
+			'element_post_grid_paginated' 	=> 'post_grid_paginated', // Match class used in template_grid.php
 			'element_post_grid' 			=> '',
 			'element_post_grid_slider' 		=> '',
-			'element_post_list_paginated' 	=> '',
+			'element_post_list_paginated' 	=> 'post_list_paginated', // Match class used in template_list.php
 			'element_post_list' 			=> '',
 			'element_post_list_slider' 		=> '',
 			'element_post_slider' 			=> '',
