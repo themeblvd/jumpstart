@@ -76,6 +76,11 @@
 html,
 body {
 	padding: 0;
+	font-size: 14px;
+	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
+}
+li {
+	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
 }
 
 /* Forms */
@@ -2184,7 +2189,7 @@ div.pp_default .pp_description {
 }
 .slider .slide {
 	overflow: hidden;
-	position:relative;
+	position: relative;
 }
 .slider ul.slides {
 	list-style: none;
