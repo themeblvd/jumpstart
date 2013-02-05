@@ -860,7 +860,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 				$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider({
 					useCSS: false, // Avoid CSS3 glitches
 					video: true, // Avoid CSS3 glitches
-					smoothHeight: true,
+					// smoothHeight: true,
 					prevText: '<i class="icon-circle-arrow-left"></i>',
 					nextText: '<i class="icon-circle-arrow-right"></i>',
 					animation: "<?php echo $options['fx']; ?>",
