@@ -1328,8 +1328,9 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 			array(
 				'id' 		=> 'height',
 				'name'		=> __( 'Fixed Height', 'themeblvd' ),
-				'desc'		=> __( 'Enter in a number of pixels for a fixed height if you\'d like to do so. Ex: 400<br><br>This can help with "page jumping" in the case that not all tabs have equal amount of content. It can also help in the case when you\'re getting unwanted scrollbars on the inner content areas of tabs. This is optional.', 'themeblvd' ),
-				'type'		=> 'text' 
+				'desc'		=> __( 'Apply automatic fixed height across all tabs.<br><br>This just takes the height of the tallest tab\'s content and applies that across all tabs. This can help with "page jumping" in the case that not all tabs have equal amount of content. It can also help in the case when you\'re getting unwanted scrollbars on the inner content areas of tabs.', 'themeblvd' ),
+				'std'		=> 1,
+				'type'		=> 'checkbox'
 			),
 			array(
 				'id' 		=> 'tab_1',

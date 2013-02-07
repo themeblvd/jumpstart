@@ -63,7 +63,7 @@
  */
 
 jQuery(document).ready(function($) {
-	
+
 	// ---------------------------------------------------------
 	// Menus
 	// ---------------------------------------------------------
@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
 		name = classes.substr(classes.indexOf('menu-icon') + 10).split(' ')[0];
 		$(this).find('> a, > span').prepend('<i class="icon-'+name+'"></i>');
 	});
-			
+		
 	// ---------------------------------------------------------
 	// No-click dropdowns
 	// ---------------------------------------------------------
@@ -242,12 +242,26 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 	// Bootstrap Integration
 	// ---------------------------------------------------------
-	
-	if(themeblvd.boostrap)
+
+	if(themeblvd.bootstrap)
 	{
+
 		// Add standard table classes to calendar widget
 		$('#calendar_wrap table').addClass('table table-bordered');
 		
+		// Tabs - Automatic fixed height
+		// This allows the user to have the set of tabs 
+		// automatically stay the height of the tallest tab.
+		$('.tabbable.fixed-height').each(function(){
+			var tallest = 0;
+			$(this).find('.tab-pane').each(function(){
+				var currentHeight = $(this).height();
+				if(currentHeight > tallest)
+					tallest = currentHeight;
+			});
+			$(this).find('.tab-pane').height(tallest);
+		});
+
 		// Collapsables expanded
 		// This basically just toggles the Plus/Minus fontawesome 
 		// icon we've incorporated into the triggers for the toggles.

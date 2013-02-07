@@ -934,12 +934,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 		$nav = array( 'tabs', 'above' ); // Backup for someone updating who doesn't have this saved yet.
 		$navigation = '';
 		$content = '';
-		$output = '';		
-		
-		// Fixed Height
-		$height = '';
-		if( $options['height'] )
-			$height = ' style="height:'.$options['height'].'px"';
+		$output = '';
 		
 		// Tabs or pills?
 		if( ! empty( $options['setup']['nav'] ) )
@@ -949,6 +944,8 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 		
 		// Container classes
 		$classes = 'tabbable';
+		if( ! empty($options['height']) )
+			$classes .= ' fixed-height';
 		if( $nav_type == 'tabs' )
 			$classes .= ' tabs-'.$nav_location;
 		$classes .= ' tb-tabs-'.$options['setup']['style'];
@@ -970,7 +967,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 		$content = '<div class="tab-content">';
 		foreach( $options['setup']['names'] as $key => $name ) {
 			$i == '0' ? $class = ' active' : $class = ''; 
-			$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix"'.$height.'>';
+			$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix">';
 			switch( $options[$key]['type'] ) {
 				case 'page' :
 					// Get WP internal ID for the page
