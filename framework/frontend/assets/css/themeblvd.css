@@ -2597,6 +2597,7 @@ div.pp_default .pp_description {
 	margin: 5px -1px 0 0;
 }
 .tb-tabs-framed .tab-content {
+	background: #ffffff;
 	border: 1px solid #dddddd;
 	padding: 20px;
 }

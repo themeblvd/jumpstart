@@ -245,5 +245,6 @@ a.thumbnail:hover {
 	color: #666666;
 }
 .tb-tabs-framed .tab-content {
+	background: #ffffff;
 	border-color: #dddddd;
 }
