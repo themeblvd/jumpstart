@@ -375,7 +375,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 		// Output
 		$input_names .= '<div class="tab-name tab-name-'.$number['value'].'">';
 		$input_names .= '<label for="tab-name-input='.$number['value'].'">'.sprintf( __('Tab #%d Name', 'themeblvd'), $number['value'] ).'</label>';
-		$input_names .= '<input id="tab-name-input='.$number['value'].'" type="text" name="'.esc_attr( $name.'['.$id.'][names][tab_'.$number['value'].']' ).'" value ="'.esc_attr($current_value).'" />';
+		$input_names .= '<input id="tab-name-input='.$number['value'].'" type="text" name="'.esc_attr( $name.'['.$id.'][names][tab_'.$number['value'].']' ).'" value ="'.stripslashes(esc_attr($current_value)).'" />';
 		$input_names .= '<div class="clear"></div>';
 		$input_names .= '</div>';
 	}
@@ -536,7 +536,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		$current_value = ! empty( $val ) && ! empty( $val['raw'] ) ? $val['raw'] : null;
 		
 		// Text area
-		$raw_content = '<textarea name="'.esc_attr( $name.'['.$id.'][raw]' ).'" class="of-input" cols="8" rows="8">'.$current_value.'</textarea>';
+		$raw_content = '<textarea name="'.esc_attr( $name.'['.$id.'][raw]' ).'" class="of-input" cols="8" rows="8">'.stripslashes(esc_textarea($current_value)).'</textarea>';
 		
 		// Checkbox for the_content filter (added in v2.0.6)
 		isset( $val['raw_format'] ) && ! $val['raw_format'] ? $checked = '' : $checked = ' checked'; // Should be checked if selected OR option never existed. This is for legacy purposes.

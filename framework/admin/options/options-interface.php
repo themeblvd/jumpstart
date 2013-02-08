@@ -136,7 +136,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			
 			case 'text':
 				$place_holder = ! empty( $value['pholder'] ) ? ' placeholder="'.$value['pholder'].'"' : null;
-				$output .= '<input id="'.esc_attr( $value['id'] ).'" class="of-input" name="'.esc_attr( $option_name.'['.$value['id'] . ']' ).'" type="text" value="'.esc_attr( $val ).'"'.$place_holder.' />';
+				$output .= '<input id="'.esc_attr( $value['id'] ).'" class="of-input" name="'.esc_attr($option_name.'['.$value['id'].']').'" type="text" value="'.stripslashes(esc_attr($val)).'"'.$place_holder.' />';
 				break;
 			
 			/*---------------------------------------*/
@@ -154,8 +154,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					else
 						$cols = '8';
 				}
-				$val = stripslashes( $val );
-				$output .= '<textarea id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" cols="'. esc_attr( $cols ) . '" rows="8"'.$place_holder.'>' . esc_textarea( $val ) . '</textarea>';
+				$output .= '<textarea id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . stripslashes(esc_attr($option_name . '[' . $value['id'] . ']')) . '" cols="'. esc_attr( $cols ) . '" rows="8"'.$place_holder.'>' . esc_textarea( $val ) . '</textarea>';
 				break;
 			
 			/*---------------------------------------*/
