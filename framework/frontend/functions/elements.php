@@ -261,14 +261,26 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 			'orderby'			=> 'date', 				// Orderby param for posts query
 			'order'				=> 'DESC', 				// Order param for posts query
 			'offset'			=> '0', 				// Offset param for posts query
-			'crop'				=> '', 					// Custom image crop size (grid only)	
+			'query'				=> '',					// Custom query string
+			'crop'				=> '' 					// Custom image crop size (grid only)	
+
 		);
 		$args = wp_parse_args( $args, $defaults );
 		extract( $args, EXTR_OVERWRITE );
 		
 		// Location and query string
 		$location = themeblvd_set_att( 'location', $current_location );
-		$query_args = themeblvd_get_posts_args( $args, $type, true );
+		
+		// Setup query args
+		$custom_query = false;
+		if( ! empty( $query ) ) {
+			// Custom query string
+			$custom_query = true;
+			$query_args = html_entity_decode( $query );
+		} else {
+			// Generated query args
+			$query_args = themeblvd_get_posts_args( $args, $type, true );
+		}
 		$query_args = apply_filters( 'themeblvd_post_slider_args', $query_args, $args, $type, $current_location );
 
 		// Configure additional CSS classes
@@ -294,12 +306,13 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		// Get posts
 		$posts = get_posts( $query_args );
 		
-		// Adjust offset if neccesary
-		if( $numberposts == -1 && $offset > 0 ) {
-			$i = 0;
-			while ( $i < $offset ) {
-				unset( $posts[$i] );
-				$i++;
+		if( ! $custom_query ) {
+			if( $numberposts == -1 && $offset > 0 ) {
+				$i = 0;
+				while( $i < $offset ) {
+					unset( $posts[$i] );
+					$i++;
+				}
 			}
 		}
 
