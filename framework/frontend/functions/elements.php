@@ -511,9 +511,9 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		
 		// Adjust offset if neccesary
 		if( ! $custom_query ) {
-			if( $numberposts == -1 && $offset > 0 ) {
+			if( $type != 'grid' && $numberposts == -1 && $offset > 0 ) {
 				$i = 0;
-				while ( $i < $offset ) {
+				while( $i < $offset ) {
 					unset( $posts[$i] );
 					$i++;
 				}
