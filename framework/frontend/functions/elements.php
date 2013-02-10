@@ -62,7 +62,7 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 						
 						// Standard WP loop, even though there should only be
 						// a single post (i.e. our external page).
-						while ( $the_query->have_posts() ) {
+						while( $the_query->have_posts() ) {
 							$the_query->the_post();
 							echo apply_filters( 'themeblvd_the_content', get_the_content() );
 						}
@@ -136,7 +136,7 @@ if( ! function_exists( 'themeblvd_content' ) ) {
 				
 				// Standard WP loop, even though there should only be
 				// a single post (i.e. our external page).
-				while ( $the_query->have_posts() ) {
+				while( $the_query->have_posts() ) {
 					$the_query->the_post();
 					$output = apply_filters( 'themeblvd_the_content', get_the_content() );
 				}
@@ -308,10 +308,8 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		
 		if( ! $custom_query ) {
 			if( $numberposts == -1 && $offset > 0 ) {
-				$i = 0;
-				while( $i < $offset ) {
+				for( $i = 0; $i < $offset; $i++ ) {
 					unset( $posts[$i] );
-					$i++;
 				}
 			}
 		}
@@ -525,10 +523,8 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		// Adjust offset if neccesary
 		if( ! $custom_query ) {
 			if( $type != 'grid' && $numberposts == -1 && $offset > 0 ) {
-				$i = 0;
-				while( $i < $offset ) {
+				for( $i = 0; $i < $offset; $i++ ) {
 					unset( $posts[$i] );
-					$i++;
 				}
 			}
 		}
@@ -695,7 +691,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 			if( $type == 'grid' ) {
 				// Loop for post grid (i.e. Portfolio)
 				$counter = themeblvd_set_att( 'counter', 1 );
-				while ( have_posts() ) { 
+				while( have_posts() ) { 
 					the_post();
 					if( $counter == 1 ) themeblvd_open_row();
 					get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
@@ -706,7 +702,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 				if( ($counter-1) != $posts_per_page ) themeblvd_close_row();
 			} else {
 				// Loop for post list (i.e. Blog)
-				while ( have_posts() ) { 
+				while( have_posts() ) { 
 					the_post();
 					get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );
 				}
@@ -993,7 +989,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 					
 					// Standard WP loop, even though there should only be
 					// a single post (i.e. our external page).
-					while ( $the_query->have_posts() ) {
+					while( $the_query->have_posts() ) {
 						$the_query->the_post();
 						$content .= apply_filters( 'themeblvd_the_content', get_the_content() );	
 					}
