@@ -4,18 +4,10 @@
 body {
 	color: #ffffff;
 }
-p small {
-	color: #cccccc;
-}
-h6 {
-	color: #cccccc;
-}
 .page-header {
 	border-bottom-color: #000000;
 }
 hr {
-	margin: 18px 0;
-	border: 0;
 	border-top-color: #000000;
 	border-bottom-color: #333333;
 }
