@@ -25,7 +25,7 @@ if( ! function_exists( 'themeblvd_contact_bar' ) ) {
 			$output = '<div class="themeblvd-contact-bar">';
 			$output .= '<ul class="social-media-'.$style.'">';
 			foreach( $buttons as $id => $url ) {
-				strpos( $url, 'mailto:' ) ? $target = '_self' : $target = '_blank'; // Change target if URL has 'mailto:'
+				$target = strpos( $url, 'mailto:' ) ? '_self' : '_blank'; // Change target if URL has 'mailto:'
 				$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
 			}
 			$output .= '</ul>';
