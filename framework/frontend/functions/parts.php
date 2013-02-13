@@ -406,12 +406,9 @@ if( ! function_exists( 'themeblvd_get_simple_contact' ) ) {
 	function themeblvd_get_simple_contact( $args ) {
 		// Setup icon links
 		$icons = array();
-		$i = 1; // 6 possible icons
-		while ( $i <= 6 ) {
+		for( $i = 1; $i <= 6; $i++ )
 			if( ! empty( $args['link_'.$i.'_url'] ) )
 				$icons[$args['link_'.$i.'_icon']] = $args['link_'.$i.'_url'];
-			$i++;
-		}
 		// Start Output
 		$module = '<ul class="simple-contact">';
 		// Phone #1
