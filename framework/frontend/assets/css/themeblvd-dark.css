@@ -261,8 +261,7 @@ input[type="submit"]:active {
 	-moz-box-shadow: 0 1px 1px #1e1e1e;
 	box-shadow: 0 1px 1px #1e1e1e;
 }
-a.thumbnail:hover,
-.pretty:hover,
+a.pretty:hover,
 a.thumbnail:hover {
 	background-color: transparent;
 	border-color: #000000;
