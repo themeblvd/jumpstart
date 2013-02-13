@@ -718,11 +718,12 @@ if( ! function_exists( 'themeblvd_adjust_color' ) ) {
  * @param boolean $end_space Whether there should be a space at end
  * @param string $type Type of element (only relevant if there is a filter added utilizing it)
  * @param array $options Options for element (only relevant if there is a filter added utilizing it)
+ * @param string $location Location of element - featured, primary, or featured_below (only relevant if there is a filter added utilizing it)
  * @return array $classes Classes for element.
  */
  
 if( ! function_exists( 'themeblvd_get_classes' ) ) {
-	function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array() ) {
+	function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
 		$classes = '';
 		$all_classes = array(
 			'element_columns' 				=> '',
@@ -743,7 +744,7 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
 			'slider_standard'				=> '',
 			'slider_carrousel'				=> '',
 		);
-		$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options );
+		$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options, $location );
 		if( ! empty( $all_classes[$element] ) ) {
 			if( $start_space ) $classes .= ' ';
 			$classes .= $all_classes[$element];
