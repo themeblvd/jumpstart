@@ -323,6 +323,54 @@ if( ! function_exists( 'themeblvd_twitter' ) ) {
 	}
 }
 
+/**
+ * Create new walker for WP's wp_nav_menu function. 
+ * Each menu item is an <option> with the $depth being 
+ * taken into account in its display.
+ * 
+ * We're using this with themeblvd_nav_menu_select 
+ * function.
+ * 
+ * @since 2.2.1
+ */
+
+class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
+
+	/**
+	 * Start level
+	 */
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		// do nothing ...
+	}
+
+	/**
+	 * End level
+	 */
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
+		// do nothing ...
+	}
+
+	/**
+	 * Start nav element
+	 */
+	function start_el( &$output, $item, $depth, $args ) {
+		$indent = '';
+		for( $i = 0; $i < $depth; $i++ )
+			$indent .= '-';
+		if( $indent )
+			$indent .= ' ';
+		$output .= '<option value="'.$item->url.'">'.$indent.$item->title;
+	}
+
+	/**
+	 * End nav element
+	 */
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
+		$output .= "</option>\n";
+	}
+
+}
+
 /** 
  * Responsive wp nav menu 
  *
@@ -334,23 +382,13 @@ if( ! function_exists( 'themeblvd_twitter' ) ) {
 
 if( ! function_exists( 'themeblvd_nav_menu_select' ) ) {
 	function themeblvd_nav_menu_select( $location ) {
-		$select_menu = '';
-		$locations = get_nav_menu_locations();
-		if( isset( $locations[$location] ) ) {
-			$menu = wp_get_nav_menu_object( $locations[$location] );
-			if( is_object( $menu ) ) {
-				$menu_items = wp_get_nav_menu_items( $menu->term_id );
-				if( ! empty( $menu_items ) ) {
-					$select_menu .= '<form class="responsive-nav" action="" method="post">';
-					$select_menu .= '<select class="tb-jump-menu">';
-					$select_menu .= '<option value="">'.themeblvd_get_local('navigation').'</option>';
-					foreach( $menu_items as $key => $item )
-						$select_menu .= '<option value="'.$item->url.'">'.$item->title.'</option>';
-					$select_menu .= '</select>';
-					$select_menu .= '</form>';
-				}
-			}
-		}
+		$select_menu = wp_nav_menu( apply_filters( 'themeblvd_nav_menu_select_args', array(
+			'theme_location'	=> $location, 
+			'container'			=> false,
+			'items_wrap'		=> '<form class="responsive-nav"><select>%3$s</select></form>',
+			'echo' 				=> false,
+			'walker' 			=> new ThemeBlvd_Select_Menu_Walker 
+		)));
 		return $select_menu;
 	}
 }
