@@ -215,7 +215,7 @@ input[type="submit"]:focus{
 	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-.pretty:hover,
+a.pretty:hover,
 a.thumbnail:hover {
   border-color: #bbbbbb;
   -webkit-box-shadow: 0 1px 4px #cccccc;
