@@ -725,30 +725,41 @@ if( ! function_exists( 'themeblvd_adjust_color' ) ) {
 if( ! function_exists( 'themeblvd_get_classes' ) ) {
 	function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
 		$classes = '';
+		
 		$all_classes = array(
-			'element_columns' 				=> '',
-			'element_content' 				=> '',
-			'element_divider' 				=> '',
-			'element_headline' 				=> '',
-			'element_post_grid_paginated' 	=> 'post_grid_paginated', // Match class used in template_grid.php
-			'element_post_grid' 			=> '',
-			'element_post_grid_slider' 		=> '',
-			'element_post_list_paginated' 	=> 'post_list_paginated', // Match class used in template_list.php
-			'element_post_list' 			=> '',
-			'element_post_list_slider' 		=> '',
-			'element_post_slider' 			=> '',
-			'element_slider' 				=> '',
-			'element_slogan' 				=> '',
-			'element_tabs' 					=> '',
-			'element_tweet' 				=> '',
-			'slider_standard'				=> '',
-			'slider_carrousel'				=> '',
+			'element_columns' 				=> array(),
+			'element_content' 				=> array(),
+			'element_divider' 				=> array(),
+			'element_headline' 				=> array(),
+			'element_post_grid_paginated' 	=> array('post_grid_paginated'), // Match class used in template_grid.php
+			'element_post_grid' 			=> array(),
+			'element_post_grid_slider' 		=> array(),
+			'element_post_list_paginated' 	=> array('post_list_paginated'), // Match class used in template_list.php
+			'element_post_list' 			=> array(),
+			'element_post_list_slider' 		=> array(),
+			'element_post_slider' 			=> array(),
+			'element_slider' 				=> array(),
+			'element_slogan' 				=> array(),
+			'element_tabs' 					=> array(),
+			'element_tweet' 				=> array(),
+			'slider_standard'				=> array(),
+			'slider_carrousel'				=> array(),
 		);
 		$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options, $location );
+		
 		if( ! empty( $all_classes[$element] ) ) {
-			if( $start_space ) $classes .= ' ';
-			$classes .= $all_classes[$element];
-			if( $end_space ) $classes .= ' ';
+			
+			if( $start_space ) 
+				$classes .= ' ';
+			
+			if( is_array( $all_classes[$element] ) )
+				$classes .= implode(' ', $all_classes[$element]);
+			else
+				$classes .= $all_classes[$element]; // Backward compatbility, $all_classes used to use strings
+			
+			if( $end_space ) 
+				$classes .= ' ';
+
 		}
 		return $classes;
 	}
