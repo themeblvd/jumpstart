@@ -648,14 +648,10 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 			if( isset($logo_options[$key]) )
 				$logo_atts[$key] = $logo_options[$key];
 		}
-		
 		// Begin output	
-		?>	
-		// Logo object
-		Logo = new Object();
-		<?php foreach( $logo_atts as $key => $value ) : ?>
-		Logo.<?php echo $key; ?> = '<?php echo $value; ?>';
-		<?php endforeach; ?>
+		?>
+		// Logo atts object
+		Logo = <?php echo json_encode($logo_atts); ?>;
 		
 		/* Logo - Type */
 		wp.customize('<?php echo $option_name; ?>[logo][type]',function( value ) {
@@ -821,17 +817,10 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 		}
 		?>
 		// Font stacks
-		fontStacks = new Object();
-		<?php foreach( $font_stacks as $key => $value ) : ?>
-		fontStacks.<?php echo $key; ?> = '<?php echo $value; ?>';
-		<?php endforeach; ?>
+		fontStacks = <?php echo json_encode($font_stacks); ?>;
 		
 		// Google font toggles
-		googleFonts = new Object();
-		<?php foreach( $google_fonts as $key => $value ) : ?>
-		googleFonts.<?php echo $key; ?>Name = "<?php echo $value['name']; ?>";
-		googleFonts.<?php echo $key; ?>Toggle = <?php echo $value['toggle']; ?>;
-		<?php endforeach; ?>
+		googleFonts = <?php echo json_encode($google_fonts); ?>;
 		<?php
 	}
 }
