@@ -794,26 +794,12 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 		
 		// Determine current google fonts with fake 
 		// booleans to be used in printed JS object.
-		$google_fonts = array(
-			'body' => array(
-				'name' => '',
-				'toggle' => 'false'
-			),
-			'header' => array(
-				'name' => '',
-				'toggle' => 'false'
-			),
-			'special' => array(
-				'name' => '',
-				'toggle' => 'false'
-			)
-		);
-		foreach( $google_fonts as $key => $value ) {
-			$font = themeblvd_get_option('typography_'.$key);
-			if( isset( $font['face']) && $font['face'] == 'google' )
-				$google_fonts[$key]['toggle'] = 'true';
-			if( isset( $font['google'] ) && $font['google'] )
-				$google_fonts[$key]['name'] = $font['google'];
+		$types = array('body', 'header', 'special');
+		$google_fonts = array();
+		foreach( $types as $type ) {
+			$font = themeblvd_get_option('typography_'.$type);
+			$google_fonts[$type.'Name'] = !empty($font['google']) && $font['google'] ? $font['google'] : '';
+			$google_fonts[$type.'Toggle'] = !empty($font['face']) && $font['face'] == 'google' ? 'true' : 'false';
 		}
 		?>
 		// Font stacks
