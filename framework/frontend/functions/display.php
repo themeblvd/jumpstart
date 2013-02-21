@@ -499,7 +499,7 @@ if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 		
 		?>
 		<div class="entry-meta">
-			<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><i class="icon-calendar"></i> <?php the_time( get_option('date_format') ); ?></time>
+			<time class="entry-date updated" datetime="<?php the_time('c'); ?>" pubdate><i class="icon-calendar"></i> <?php the_time( get_option('date_format') ); ?></time>
 			<span class="sep"> / </span>
 			<span class="author vcard"><i class="icon-user"></i> <a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo sprintf( esc_attr__( 'View all posts by %s', 'themeblvd' ), get_the_author() ); ?>" rel="author"><?php the_author(); ?></a></span>
 			<span class="sep"> / </span>
