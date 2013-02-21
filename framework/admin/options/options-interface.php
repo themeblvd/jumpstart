@@ -324,46 +324,51 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$background = $val;
 				
 				// Background Color		
-				$output .= '<div id="' . esc_attr( $value['id'] ) . '_color_picker" class="colorSelector"><div style="' . esc_attr( 'background-color:' . $background['color'] ) . '"></div></div>';
-				$output .= '<input class="of-color of-background of-background-color" name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" type="text" value="' . esc_attr( $background['color'] ) . '" />';
+				$current_color = !empty($background['color']) ? $background['color'] : '';
+				$output .= '<div id="' . esc_attr( $value['id'] ) . '_color_picker" class="colorSelector"><div style="' . esc_attr( 'background-color:' . $current_color ) . '"></div></div>';
+				$output .= '<input class="of-color of-background of-background-color" name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" type="text" value="' . esc_attr( $current_color ) . '" />';
 				
 				// Background Image - New AJAX Uploader using Media Library
 				if( ! isset( $background['image'] ) )
 					$background['image'] = '';
 				
 				// Currrent BG formatted correctly
-				$current_bg_image = array( 'url' => $background['image'], 'id' => '' );
+				$current_bg_url = !empty($background['image']) ? $background['image'] : '';
+				$current_bg_image = array( 'url' => $current_bg_url, 'id' => '' );
 				
 				// Start output
 				$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $current_bg_image, null, '', 0, 'image' );
 				$class = 'of-background-properties';
-				if( '' == $background['image'] )
+				if( empty($background['image']) )
 					$class .= ' hide';
 				$output .= '<div class="' . esc_attr( $class ) . '">';
 				
 				// Background Repeat
+				$current_repeat = !empty($background['repeat']) ? $background['repeat'] : '';
 				$output .= '<select class="of-background of-background-repeat" name="' . esc_attr( $option_name . '[' . $value['id'] . '][repeat]'  ) . '" id="' . esc_attr( $value['id'] . '_repeat' ) . '">';
 				$repeats = themeblvd_recognized_background_repeat();
 				foreach( $repeats as $key => $repeat )
-					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['repeat'], $key, false ) . '>'. esc_html( $repeat ) . '</option>';
+					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $current_repeat, $key, false ) . '>'. esc_html( $repeat ) . '</option>';
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
 				$output .= '<span class="textbox"></span>';
 				
 				// Background Position
+				$current_position = !empty($background['position']) ? $background['position'] : '';
 				$output .= '<select class="of-background of-background-position" name="' . esc_attr( $option_name . '[' . $value['id'] . '][position]' ) . '" id="' . esc_attr( $value['id'] . '_position' ) . '">';
 				$positions = themeblvd_recognized_background_position();
-				foreach( $positions as $key=>$position )
-					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['position'], $key, false ) . '>'. esc_html( $position ) . '</option>';
+				foreach( $positions as $key => $position )
+					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $current_position, $key, false ) . '>'. esc_html( $position ) . '</option>';
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
 				$output .= '<span class="textbox"></span>';
 				
 				// Background Attachment
+				$current_attachment = !empty($background['attachment']) ? $background['attachment'] : '';
 				$output .= '<select class="of-background of-background-attachment" name="' . esc_attr( $option_name . '[' . $value['id'] . '][attachment]' ) . '" id="' . esc_attr( $value['id'] . '_attachment' ) . '">';
 				$attachments = themeblvd_recognized_background_attachment();
 				foreach( $attachments as $key => $attachment )
-					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['attachment'], $key, false ) . '>' . esc_html( $attachment ) . '</option>';
+					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $current_attachment, $key, false ) . '>' . esc_html( $attachment ) . '</option>';
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
 				$output .= '<span class="textbox"></span>';
