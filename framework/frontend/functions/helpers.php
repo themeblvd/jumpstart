@@ -27,6 +27,13 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 		$image = null;
 		$title = null;
 
+		// If no thumbnail, we can skip everything. However, 
+		// we still want plugins to be able to filter in here 
+		// however they want. This same filter is applied below 
+		// on the final output.
+		if( ! has_post_thumbnail( $post->ID ) && $allow_filters )
+			return apply_filters( 'themeblvd_post_thumbnail', '', $location, $size, $link );
+
 		// Set size if it wasn't already passed into the function
 		if( ! $size ) {
 			// Primary posts page, blog page template, single posts, archives, and search results
@@ -124,9 +131,6 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 			}
 		}
 		
-		// Image check
-		$image = wp_get_attachment_image_src( $attachment_id, $size );
-		
 		// Attributes
 		$size_class = $size;
 		if( $size_class == 'tb_small' )
@@ -141,19 +145,16 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 			if( $thumb_link_meta != 'thumbnail' )
 				$anchor_class .= ' '.$thumb_link_meta;
 		}
-
 		// Final HTML output
-		if( has_post_thumbnail( $post->ID ) ) {
-			$output .= '<div class="featured-image-wrapper '.$classes.'">';
-			$output .= '<div class="featured-image">';
-			$output .= '<div class="featured-image-inner">';
-			if( $link ) $output .= '<a href="'.$link_url.'"'.$link_target.' class="'.$anchor_class.'"'.$title.'>';	
-			$output .= get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
-			if( $link ) $output .= $end_link.'</a>';
-			$output .= '</div><!-- .featured-image-inner (end) -->';
-			$output .= '</div><!-- .featured-image (end) -->';
-			$output .= '</div><!-- .featured-image-wrapper (end) -->';
-		}
+		$output .= '<div class="featured-image-wrapper '.$classes.'">';
+		$output .= '<div class="featured-image">';
+		$output .= '<div class="featured-image-inner">';
+		if( $link ) $output .= '<a href="'.$link_url.'"'.$link_target.' class="'.$anchor_class.'"'.$title.'>';	
+		$output .= get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
+		if( $link ) $output .= $end_link.'</a>';
+		$output .= '</div><!-- .featured-image-inner (end) -->';
+		$output .= '</div><!-- .featured-image (end) -->';
+		$output .= '</div><!-- .featured-image-wrapper (end) -->';
 		
 		// Apply filters if allowed
 		if( $allow_filters )
