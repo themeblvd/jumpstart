@@ -128,6 +128,7 @@ if( is_admin() ) {
 	add_action( 'wp_print_styles', 'themeblvd_deregister_stylesheets', 1000 );
 	
 	// <head> hooks
+	add_action( 'wp_head', 'themeblvd_analytics', 2 );
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 	add_action( 'wp_head', 'themeblvd_closing_styles', 11 );
 	
@@ -160,7 +161,6 @@ if( is_admin() ) {
 	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
 	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
-	add_action( 'wp_footer', 'themeblvd_analytics', 999 );
 
 	// Content
 	add_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );

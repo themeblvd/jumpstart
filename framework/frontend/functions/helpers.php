@@ -631,7 +631,7 @@ if( ! function_exists( 'themeblvd_analytics' ) ) {
 	function themeblvd_analytics() {
 		$analytics = themeblvd_get_option( 'analytics' );
 		if( $analytics )
-			echo $analytics;
+			echo $analytics."\n";
 	}
 }
 
