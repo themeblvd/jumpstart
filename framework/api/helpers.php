@@ -475,7 +475,7 @@ function themeblvd_get_textures() {
 			'repeat' 	=> 'repeat',
 		),
 		'carbon_diagonal' => array( 
-			'name' 		=> __( 'Carbon Diagonol', 'themeblvd' ),
+			'name' 		=> __( 'Carbon Diagonal', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_diagonal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
@@ -643,7 +643,7 @@ function themeblvd_get_textures() {
 			'repeat' 	=> 'repeat',
 		),
 		'carbon_diagonal_light' => array( 
-			'name' 		=> __( 'Light Carbon Diagonol', 'themeblvd' ),
+			'name' 		=> __( 'Light Carbon Diagonal', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_diagonal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
