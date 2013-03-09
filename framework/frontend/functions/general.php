@@ -845,7 +845,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		}
 		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 			$scripts[] = 'prettyphoto';
-			wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.min.js', array('jquery'), '3.1.4', true ); // Modified version of prettyPhoto by Jason Bobich
+			wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/js/prettyphoto.min.js', array('jquery'), '3.1.5', true ); // Modified version of prettyPhoto by Jason Bobich
 			// wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/frontend/assets/plugins/prettyphoto/js/jQuery.prettyPhoto.js', array('jquery'), '3.1.4', true ); // Unmodified version
 		}
 		if( themeblvd_supports( 'assets', 'superfish' ) ) {
