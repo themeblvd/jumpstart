@@ -84,7 +84,7 @@ if( ! function_exists( 'themeblvd_frontend_init' ) ) {
 			}
 			
 			// Custom Layout on homepage
-			if( is_home() ) {
+			if( is_home() && ! get_option( 'page_for_posts' ) ) {
 				$homepage_content = themeblvd_get_option( 'homepage_content', null, 'posts' );
 				if( $homepage_content == 'custom_layout' ) {
 					$layout_id = themeblvd_get_option( 'homepage_custom_layout' );
@@ -1128,7 +1128,7 @@ if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
 	    /* Homepage Custom Layouts
 	    /*---------------------------------*/
 	    
-		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && is_home() && $query->is_main_query() ) {
+		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && is_home() && !get_option('page_for_posts') && $query->is_main_query() ) {
 
 			// The framework has not run at this point, so 
 			// we manually need to check for a homepage layout.
