@@ -926,29 +926,34 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
  * amount of font arguments.
  *
  * @since 2.0.0
- *
- * @return string $stacks All current font stacks
  */
 
 if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
 	function themeblvd_include_google_fonts() {
 		$fonts = func_get_args();
+		$used = array();
 		if( ! empty( $fonts ) ) {
+			
 			// Before including files, determine if SSL is being 
 			// used because if we include an external file without https 
 			// on a secure server, they'll get an error.
-			if( isset( $_SERVER['HTTPS'] ) )
-				$protocol = 'https://'; // Google does support https
-			else
-				$protocol = 'http://';
+			$protocol = isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://';
+			
 			// Include each font file from google.
 			foreach( $fonts as $font ) {
 				if( $font['face'] == 'google' && $font['google'] ) {
+					
+					if( in_array( $font['google'], $used ) )
+						continue; // Skip duplicate
+
+					$used[] = $font['google'];
 					$name = themeblvd_remove_trailing_char( $font['google'] ); 
 					$name = str_replace( ' ', '+', $name );
 					echo '<link href="'.$protocol.'fonts.googleapis.com/css?family='.$name.'" rel="stylesheet" type="text/css">'."\n";
+				
 				}
 			}
+
 		}
 	}
 }
