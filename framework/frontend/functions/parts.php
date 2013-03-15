@@ -490,7 +490,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 				$image = '';
 				// Setup post thumbnail if user wants them to show
 				if( $thumb ) {
-					$image = themeblvd_get_post_thumbnail( 'primary', 'square_'.$thumb );
+					$image = themeblvd_get_post_thumbnail( 'primary', apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta ) );
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
@@ -572,7 +572,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 				$output .= '<li>';
 				if( $gallery ) {
 					// Gallery image output to simulate featured images
-					$thumbnail = wp_get_attachment_image_src( $post->ID, 'square_'.$thumb );
+					$thumbnail = wp_get_attachment_image_src( $post->ID, apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery ) );
 					$image = wp_get_attachment_image_src( $post->ID, 'full' );
 					$output .= '<div class="featured-image-wrapper">';
 					$output .= '<div class="featured-image">';
@@ -587,7 +587,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 				} else {
 					// Standard featured image output
 					$image = '';
-					$image = themeblvd_get_post_thumbnail( 'primary', 'square_'.$thumb );
+					$image = themeblvd_get_post_thumbnail( 'primary', apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery  ) );
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
