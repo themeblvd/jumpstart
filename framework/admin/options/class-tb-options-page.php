@@ -134,7 +134,7 @@ class Theme_Blvd_Options_Page {
 		        <?php endif; ?>
 		    </h2>
 		    <div class="metabox-holder">
-			    <div id="optionsframework">
+			    <div id="optionsframework" class="tb-options-js">
 					<form id="themeblvd_theme_options" action="options.php" method="post">
 						<?php settings_fields( $this->id ); ?>
 						<?php echo $return[0]; /* Settings */ ?>
