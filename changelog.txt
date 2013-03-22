@@ -38,7 +38,7 @@ Jump Start Changelog
 * Slight modifications to Post Options meta box to hopefully be easier to understand.
 * Moved `themeblvd_analytics` to `<head>`.
 * Bootstrap: Removed hover on class "pretty" for non-anchors for better continuity with Bootstrap's "thumbnail" class.
-* Bootstrap: Added missing Bootstrap "pagination" class to pagintation function output.
+* Bootstrap: Added missing Bootstrap "pagination" class to pagination function output.
 * Bootstrap: Added :active for all button colors to accomodate Bootstrap.
 * Bootstrap: Added filters on Bootstrap classes used in `themeblvd_button` function. -- `themeblvd_bootstrap_btn_colors` and `themeblvd_bootstrap_btn_sizes`
 * Bootstrap: Added Bootstrap colors to `themeblvd_colors` function.
