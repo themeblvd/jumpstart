@@ -960,8 +960,8 @@ ul.sf-menu [class^="icon-"] {
 .themeblvd-search input.search-input {
 	margin-bottom: 0;
 }
-@media (min-width: 768px) {
-	/* This happens when viewport is larger than mobile only. */
+@media (min-width: 980px) {
+	/* This happens when viewport is larger than tablet only. -- Avoids wierd side effects in iOS Safari */
 	.themeblvd-search input.search-input {
 		box-sizing: border-box; /* css3 rec */
 		-moz-box-sizing: border-box; /* ff2 */
@@ -984,8 +984,8 @@ ul.sf-menu [class^="icon-"] {
 		right: 0;
 	}
 }
-@media (max-width: 767px) {
-	/* And this happens only for mobile. */
+@media (max-width: 979px) {
+	/* And this happens only for tablets and below. */
 	.themeblvd-search input.search-input {
 		max-width: 70%;
 	}	
