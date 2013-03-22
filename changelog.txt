@@ -1,6 +1,71 @@
 Jump Start Changelog
 ====================
 
+1.0.1
+-----
+
+* Updated framework version to 2.2.1.
+* Adjusted default Jump Start's responsive structure to use the "snap effect."
+* Optimized database queries on frontend.
+* Fixed pagination bug with post list/grid page templates.
+* Fixed bug with showing/hiding meta data on single blog posts.
+* Fixed slider image links in IE.
+* Fixed any PHP notices from 404 pages where `$post` is not an object.
+* Fixed sidebar layout to find default when none exists.
+* Fixed issues with Plugin Installer on WP Multisite.
+* Fixed WP's built-in Twitter embed to work with responsive design.
+* Fixed bug with manual offset on post grids.
+* Fixed issue with mailto and link target in themeblvd_contact_bar.
+* Fixed HTML entity bug with Twitter RSS feed that was a result of WP 3.5's updated version of SimplePie.
+* Added left/right `$position` variable to "themeblvd_fixed_sidebar_after" action.
+* Added official Dark CSS file that can be included -- /framework/assets/css/themeblvd-dark.min.css
+* Added rtl.css for framework that gets imported into theme's main rtl.css.
+* Added more variables available with themeblvd_comment_form filter.
+* Added new filters on calls to `wp_nav_menu` -- "themeblvd_primary_menu_args" and "themeblvd_footer_menu_args"
+* Added support for "cat" custom field to post list/grid page templates to match logic of WP_Query.
+* Added filters for query string on post list/grid page templates. -- "themeblvd_template_grid_query" and "themeblvd_template_list_query"
+* Added support for password-protected pages throughout all framework page templates.
+* Added "updated" class for Google structural data in default blog post meta.
+* Added "themeblvd_frontend_options" filter -- Can alter options after they've been retrieved from database on frontend of website.
+* Added support for custom query in post grid/list sliders.
+* Added check for duplicate google fonts getting passed into `themeblvd_include_google_fonts` function.
+* Added filters for thumb sizes used for mini post list/grids -- "themeblvd_mini_post_list_thumb_size" and
+"themeblvd_mini_post_grid_thumb_size"
+* Now allowing filters on featured images in mini post list/grids.
+* Re-tooled `themeblvd_nav_menu_select` to visually accomodate nav menu tree structure.
+* Minor adjustments to framework's default search widget.
+* Total reconstruction of how breadcrumbs work to be more extendable. See `themeblvd_breadcrumbs_default` function in /framework/functions/display.php, new function `themeblvd_get_breadcrumbs_trail` in /framework/frontend/functions/parts.php, and new functions `themeblvd_get_breadcrumb_parts` and `themeblvd_show_breadcrumbs` in /framework/frontend/functions/helpers.php.
+* Slight modifications to Post Options meta box to hopefully be easier to understand.
+* Moved `themeblvd_analytics` to `<head>`.
+* Bootstrap: Removed hover on class "pretty" for non-anchors for better continuity with Bootstrap's "thumbnail" class.
+* Bootstrap: Added missing Bootstrap "pagination" class to pagintation function output.
+* Bootstrap: Added :active for all button colors to accomodate Bootstrap.
+* Bootstrap: Added filters on Bootstrap classes used in `themeblvd_button` function. -- "themeblvd_bootstrap_btn_colors" and "themeblvd_bootstrap_btn_sizes"
+* Bootstrap: Added Bootstrap colors to `themeblvd_colors` function.
+* Bootstrap: Changed default readmore buttons with `themeblvd_blog_content_default` to be more consistant with Bootstrap styling.
+* Theme Options API: Added "fancy" select menus for options framework along with some other minor styling improvements.
+* Theme Options API: Fixed admin styling quirks with WP 3.5.
+* Theme Options API: Added "pholder" parameter you can now use with text and textarea type options.
+* Theme Options API: Fixed bug with empty description showing when adding a section to options page.
+* Theme Options API: Fixed default "refresh" transport type for customizer options.
+* Theme Options API: Fixed bugs with using "upload" option type in builder elements.
+* Theme Options API: Fixed non-working "background" option type.
+* Plugin Compatibility: Added compatibility for updates to Sliders, Layout Builder, and Widget Area plugins.
+* Plugin Compatibility: Added "post slider" element that works when Sliders plugin is active. Layout Builder now has "Post Slider" element and Shortcodes plugin now has [post_slider] shortcode.
+* Plugin Compatibility: Localized Layout Builder element titles.
+* Plugin Compatibility: `themeblvd_posts` function now supports "cat" and "category_name" to match logic of WP_Query.
+* Plugin Compatibility: Homepage custom layout won't get applied to "posts page" in user-error of setting up options.
+* jQuery Plugins: Updated FlexSlider to v2.1.
+* jQuery Plugins: Incorporated images for Flexslider arrows instead of Fontawesome icons.
+* jQuery Plugins: Removed `smoothHeight: true` on default Flexslider call.
+* jQuery Plugins: New action "themeblvd_flexslider_properties" -- Use to insert FlexSlider parameters into framework's javascript call to `flexslider`.
+* jQuery Plugins: Updated prettyPhoto to v3.1.5.
+* jQuery Plugins: Fixed responsive mods with prettyPhoto to work with iPhone 5 landscape.
+* jQuery Plugins: Modified Superfish to work with jQuery 1.9.
+* jQuery Plugins: Improved how javascript assets are included with use of localized variables to allow you to more easily remove specific plugins like prettyPhoto, Superfish, etc without overriding entire framework javascript file. [Learn More](http://dev.themeblvd.com/tutorial/removing-framework-scripts/)
+* Moved Jump Start update classes to framework directory.
+* Added Envato update classes (not used in Jump Start).
+
 1.0.0
 -----
 
