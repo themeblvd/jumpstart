@@ -569,6 +569,7 @@ img.size-full {
 		margin-bottom: 10px;
 	}
 	#access li {
+		border: none;
 		float: none;
 		padding: 0;
 	}
