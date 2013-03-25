@@ -1,6 +1,11 @@
 Jump Start Changelog
 ====================
 
+1.0.2
+-----
+
+* Fixes for how featured images display responsively.
+
 1.0.1
 -----
 
