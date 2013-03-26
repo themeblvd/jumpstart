@@ -7,6 +7,7 @@ Jump Start Changelog
 * Fixed errors with how featured images display responsively as result of v1.0.1 update.
 * Fixed a couple styling quirks on default skin's main menu.
 * Fixed jQuery issues in selecting pages with slugs containing non-English characters in option interface. -- This was a result from the new "fancy" select menu addition from the last update.
+* Re-generated jumpstart.po for localization.
 
 1.0.1
 -----
