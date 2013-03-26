@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Fixes for how featured images display responsively.
+* Fixed a couple styling quirks on default skin's main menu.
 
 1.0.1
 -----
