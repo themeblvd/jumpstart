@@ -4,8 +4,9 @@ Jump Start Changelog
 1.0.2
 -----
 
-* Fixes for how featured images display responsively.
+* Fixed errors with how featured images display responsively as result of v1.0.1 update.
 * Fixed a couple styling quirks on default skin's main menu.
+* Fixed jQuery issues in selecting pages with slugs containing non-English characters in option interface. -- This was a result from the new "fancy" select menu addition from the last update.
 
 1.0.1
 -----
