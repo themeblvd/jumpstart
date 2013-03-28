@@ -4,6 +4,8 @@ Jump Start Changelog
 1.0.3
 -----
 
+* Fixed bug with "Category" source selection for Post Slider not working correctly.
+
 1.0.2
 -----
 

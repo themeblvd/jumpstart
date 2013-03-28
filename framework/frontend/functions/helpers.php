@@ -401,8 +401,8 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 
 		// Fixes for auto post slider that is specifying the 
 		// source of the posts. (NOT post grid/list sliders)
-		if( $type == 'auto_slider' && ! empty( $args['source'] ) ) {
-			switch( $args['source'] ) {
+		if( $type == 'auto_slider' && ! empty( $options['source'] ) ) {
+			switch( $options['source'] ) {
 				case 'category' :
 					unset( $args['tag'] );
 					if( ! empty( $options['category'] ) )
