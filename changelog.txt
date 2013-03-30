@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
+* Made Google+ icons standards-compliant.
 
 1.0.2
 -----
