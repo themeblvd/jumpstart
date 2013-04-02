@@ -11,10 +11,10 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php if ( wp_attachment_is_image( $post->ID ) ) : $att_image = wp_get_attachment_image_src( $post->ID, 'full' ); ?>
+		<?php if( wp_attachment_is_image( get_the_ID() ) ) : ?>
 			<p class="attachment">
-				<a href="<?php echo wp_get_attachment_url($post->ID); ?>" title="<?php the_title(); ?>" rel="attachment">
-					<img src="<?php echo $att_image[0];?>" width="<?php echo $att_image[1];?>" height="<?php echo $att_image[2];?>" alt="<?php $post->post_excerpt; ?>" />
+				<a href="<?php echo wp_get_attachment_url( get_the_ID() ); ?>" title="<?php the_title(); ?>" rel="attachment">
+					<?php echo wp_get_attachment_image( get_the_id(), 'full' ); ?>
 				</a>
 			</p>
 		<?php endif; ?>
