@@ -84,7 +84,8 @@ function themeblvd_setup() {
 			'options'			=> true,			// Theme Options
 			'sliders' 			=> true,			// Sliders page
 			'builder'			=> true,			// Layouts page
-			'sidebars'			=> true				// Sidebars page
+			'sidebars'			=> true,			// Sidebars page
+			'updates'			=> true				// Updates (if theme supports)
 		),
 		'meta' => array(
 			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"

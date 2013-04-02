@@ -84,7 +84,8 @@ class Theme_Blvd_License_Admin {
 	 * Add admin page.
 	 */
 	function add_page() {
-		add_theme_page( __( 'Theme License', 'themeblvd' ), __( 'Theme License', 'themeblvd' ), 'manage_options', 'themeblvd-license', array( $this, 'admin_page' ) );
+		if( themeblvd_supports('admin', 'updates') )
+			add_theme_page( __( 'Theme License', 'themeblvd' ), __( 'Theme License', 'themeblvd' ), 'manage_options', 'themeblvd-license', array( $this, 'admin_page' ) );
 	}
 	
 	/**
