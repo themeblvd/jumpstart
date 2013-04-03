@@ -185,7 +185,8 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 			'builder' 	=> 'edit_theme_options', 		// Role: Administrator
 			'options' 	=> 'edit_theme_options',		// Role: Administrator
 			'sidebars' 	=> 'edit_theme_options',		// Role: Administrator
-			'sliders' 	=> 'edit_theme_options'			// Role: Administrator
+			'sliders' 	=> 'edit_theme_options',		// Role: Administrator
+			'updates' 	=> 'edit_theme_options'			// Role: Administrator
 		);
 		$module_caps = apply_filters( 'themeblvd_admin_module_caps', $module_caps );
 		
