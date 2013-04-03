@@ -4,6 +4,7 @@ Jump Start Changelog
 1.0.3
 -----
 
+* Updated FontAwesome to v3.0 -- 40 new icons added.
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
 * Fixed issues with `FORCE_SSL_ADMIN` set to true on admin modules.
 * Made Google+ icons standards-compliant.
