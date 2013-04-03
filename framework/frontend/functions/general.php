@@ -901,7 +901,7 @@ if( ! function_exists( 'themeblvd_include_styles' ) ) {
 			$stylesheets[] = 'bootstrap';
 			wp_enqueue_style( 'bootstrap', TB_FRAMEWORK_URI . '/frontend/assets/plugins/bootstrap/css/bootstrap.min.css', array(), '2.2.1' );
 			$stylesheets[] = 'fontawesome';
-			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesomeness.min.css', array(), '2.0' );
+			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/frontend/assets/plugins/fontawesome/css/font-awesome.min.css', array(), '3.0.2' );
 		}
 		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 			$stylesheets[] = 'prettyphoto';
