@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
+* Fixed issues with `FORCE_SSL_ADMIN` set to true on admin modules.
 * Made Google+ icons standards-compliant.
 * Added ability to hide Theme License admin page via `themeblvd_global_config` filter.
 * Improved default `content-attachment.php`.
