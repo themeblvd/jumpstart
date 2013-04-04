@@ -490,7 +490,8 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 				$image = '';
 				// Setup post thumbnail if user wants them to show
 				if( $thumb ) {
-					$image = themeblvd_get_post_thumbnail( 'primary', apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta ) );
+					$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
+					$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
@@ -499,10 +500,10 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 						$post_format = get_post_format();
 						if ( ! $post_format ) 
 							$post_format = 'standard';
-						$image .= '<div class="featured-image-wrapper '.$classes.'">';
+						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
-						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image thumbnail" />';
+						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image" />';
 						$image .= '</div><!-- .featured-image-inner (end) -->';
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -586,8 +587,8 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 					$output .= '</div><!-- .featured-image-wrapper (end) -->';
 				} else {
 					// Standard featured image output
-					$image = '';
-					$image = themeblvd_get_post_thumbnail( 'primary', apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery  ) );
+					$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery );
+					$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
@@ -596,10 +597,10 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 						$post_format = get_post_format();
 						if ( ! $post_format ) 
 							$post_format = 'standard';
-						$image .= '<div class="featured-image-wrapper '.$classes.'">';
+						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
-						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image thumbnail" />';
+						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image" />';
 						$image .= '</div><!-- .featured-image-inner (end) -->';
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
