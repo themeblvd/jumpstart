@@ -1138,17 +1138,17 @@ ul.sf-menu [class^="icon-"] {
 	height: 42px;
 	z-index: 2;
 }
-.featured-image-wrapper a.video .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.thumbnail.video .image-overlay .image-overlay-icon {
 	background-position: 0 0;
 }
-.featured-image-wrapper a.thumbnail .image-overlay .image-overlay-icon, 
+.featured-image-wrapper a.thumbnail .image-overlay .image-overlay-icon, /* "image" class doesn't always get inserted, is default */
 .featured-image-wrapper a.image .image-overlay .image-overlay-icon {
 	background-position: 0 -42px;
 }
-.featured-image-wrapper a.post .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.thumbnail.post .image-overlay .image-overlay-icon {
 	background-position: 0 -84px;
 }
-.featured-image-wrapper a.external .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.thumbnail.external .image-overlay .image-overlay-icon {
 	background-position: 0 -126px;
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
