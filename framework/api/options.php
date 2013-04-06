@@ -94,7 +94,7 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 				'options' => array(	
 					'logo' => array( 
 						'name' 		=> __( 'Logo', 'themeblvd' ),
-						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.', 'themeblvd' ),
+						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.<br /><br />Use the "Upload" button to either upload an image or select an image from your media library. When inserting an image with the "Upload" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'themeblvd' ),
 						'id' 		=> 'logo',
 						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '220', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'

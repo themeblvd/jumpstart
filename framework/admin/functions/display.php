@@ -839,13 +839,10 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	
 	// Retina image (2x)
 	$image_upload .= '<div class="section-upload image-2x">';
-	$image_upload .= '<label class="inner-label"><strong>'.__( 'Retina-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
 	$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo_2x', $id, $current_retina, null, null, 0, 'image_2x' );
 	$image_upload .= '</div>';
 	
-	// Description
-	$image_upload .= '<p class="note">'.__( 'Use the "Upload" button to either upload an image or select an image from your media library. When inserting an image with the "Upload" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you\'re inputting a "Retina-optimized" image, it should be twice as large as you intend it to be displayed. Feel free to leave the retina image field blank if you\'d like it to simply not have any effect.', 'themeblvd' ).'</p>';
-
 	/*------------------------------------------------------*/
 	/* Primary Output
 	/*------------------------------------------------------*/
