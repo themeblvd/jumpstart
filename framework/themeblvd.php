@@ -109,6 +109,8 @@ if( is_admin() ) {
 	add_filter( 'use_default_gallery_style', '__return_false' );
 	add_filter( 'wp_title', 'themeblvd_wp_title' );
 	add_filter( 'template_include', 'themeblvd_private_page' );
+	add_filter( 'wp_link_pages_args', 'themeblvd_link_pages_args' );
+	add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
 	
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );

@@ -1061,6 +1061,66 @@ if( ! function_exists( 'themeblvd_private_page' ) ) {
 	}
 }
 
+/**
+ * When using wp_link_pages(), match surrounding markup 
+ * to themeblvd_pagination() and integration of Bootstrap.
+ *
+ * This function is attached to the filter wp_link_pages_args,
+ * but won't do anything unless WP version is 3.6+.
+ *
+ * @since 2.2.1
+ * 
+ * @param array $args Default arguments of wp_link_pages() to filter
+ * @return array $args Args for wp_link_pages() after we've altered them
+ */
+
+if( ! function_exists( 'themeblvd_link_pages_args' ) ) {
+	function themeblvd_link_pages_args( $args ) { 
+		
+		global $wp_version;
+
+		// Before WP 3.6, this filter can't be applied because the 
+		// wp_link_pages_link filter did not exist yet. Our changes 
+		// need to come together.
+		if( version_compare( $wp_version, '3.5.9', '<=' ) ) // @todo After WP 3.6 is released, change logic to version_compare( $wp_version, '3.6.0', '<' )
+			return $args;
+
+		// Add TB Framework/Bootstrap surrounding markup
+		$args['before'] = '<div class="pagination-wrap"><div class="pagination"><div class="btn-group clearfix">';
+		$args['after'] = "</div></div></div>\n";
+		
+		return $args; 
+	}
+}
+
+/**
+ * When using wp_link_pages(), match individual button markup 
+ * to themeblvd_pagination() and integration of Bootstrap.
+ *
+ * This function is attached to the wp_link_pages_link filter, 
+ * which only exists in WP 3.6+.
+ *
+ * @since 2.2.1
+ * 
+ * @param string $link Markup of individual link to be filtered
+ * @param int $i Page number of link being filtered
+ * @return string $link Markup for individual link after being filtered
+ */
+
+if( ! function_exists( 'themeblvd_link_pages_link' ) ) {
+	function themeblvd_link_pages_link( $link, $i ) { 
+		
+		global $page;
+		
+		if( $page == $i ) // If is current page
+			$link = '<a class="btn btn-default active" href="'.get_pagenum_link().'">'.$i.'</a>';
+		else
+			$link = str_replace( '<a', '<a class="btn btn-default"', $link );
+		
+		return $link;
+	}
+}
+
 /** 
  * Construct parts of a breadcrumbs trail as an array 
  * to be used when displaying breadcrumbs.
