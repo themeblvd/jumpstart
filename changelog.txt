@@ -13,6 +13,7 @@ Jump Start Changelog
 * Added filterable "edit_theme_options" capability to License admin page.
 * Improved default `content-attachment.php`.
 * Slight UI improvements to Logo option in default Theme Options panel.
+* In default `content.php` template part, removed anchor tag on post title for single posts.
 
 1.0.2
 -----
