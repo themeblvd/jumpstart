@@ -539,6 +539,21 @@ if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 }
 
 /**
+ * Add 100% width to <audio> tag of WP's built-in 
+ * audio player to make it responsive.
+ *
+ * @since 2.2.1
+ * 
+ * @param string $html HTML for output to be filtered
+ */
+
+if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
+	function themeblvd_audio_shortcode( $html ){
+		return str_replace( '<audio', '<audio width="100%"', $html );
+	}
+}
+
+/**
  * Filter Tweets
  * 
  * Special thanks to Allen Shaw & webmancers.com & Michael Voigt
