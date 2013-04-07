@@ -62,6 +62,7 @@ if( is_admin() ) {
 	add_action( 'customize_controls_print_scripts', 'themeblvd_customizer_scripts' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
+	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
 	
 	// Apply other hooks after theme has had a chance to add filters
 	add_action( 'after_setup_theme', 'themeblvd_format_options', 1000 );

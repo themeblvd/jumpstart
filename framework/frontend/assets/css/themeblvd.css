@@ -422,23 +422,9 @@ html {
 	height: 100%;
 }
 
-/* Audio (oEmbed) - Doesn't actually exist yet ;-) */
-.themeblvd-audio-wrapper {
-	position: relative;
-}
-.themeblvd-audio-wrapper .audio-inner {
-	padding-bottom: 0;
-	padding-top: 27px;
-	height: 0;
-}
-.themeblvd-audio-wrapper iframe, 
-.themeblvd-audio-wrapper embed, 
-.themeblvd-audio-wrapper object {
-	position: absolute;
-	top: 0;
-	left: 0; 
-	width: 100%;
-	height: 100%;
+/* Video Shortcode */
+.wp-video-shortcode {
+	max-width: 100%;
 }
 
 /* =WordPress Standard Classes

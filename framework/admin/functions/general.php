@@ -208,3 +208,21 @@ function themeblvd_disable_nag() {
     if ( isset( $_GET['tb_nag_ignore'] ) )
          add_user_meta( $current_user->ID, $_GET['tb_nag_ignore'], 'true', true );
 }
+
+/**
+ * Adjust frontend content width for admin panel. 
+ *
+ * This is a little ironic, as $content_width is only for 
+ * the frontend of the site. This was originally implemented 
+ * so videos can be displayed at a reasonable size with WP 3.6+ 
+ * in the admin panel when editing a video format post.
+ *
+ * @since 2.2.1
+ */
+
+if( ! function_exists( 'themeblvd_admin_content_width' ) ) {
+	function themeblvd_admin_content_width() {
+		global $content_width;
+		$content_width = 600;
+	}
+}

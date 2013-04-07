@@ -15,6 +15,7 @@ Jump Start Changelog
 * Slight UI improvements to Logo option in default Theme Options panel.
 * In default `content.php` template part, removed anchor tag on post title for single posts.
 * Filtered `wp_link_pages()` to match `themeblvd_pagination()` -- Will only be applied in WP 3.6+
+* Added responsive support for self-hosted videos. -- For WP 3.6+
 
 1.0.2
 -----
