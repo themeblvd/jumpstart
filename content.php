@@ -21,9 +21,9 @@
 	<div class="entry-content">
 		<?php themeblvd_the_post_thumbnail( 'single', themeblvd_get_att( 'size' ) ); ?>
 		<?php the_content(); ?>
+		<div class="clear"></div>
 		<?php themeblvd_blog_tags(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
-		<div class="clear"></div>
 		<?php edit_post_link( themeblvd_get_local( 'edit_page' ), '<p class="edit-link clearfix">', '</p>' ); ?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
