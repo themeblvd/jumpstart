@@ -11,12 +11,12 @@ Jump Start Changelog
 * Made Google+ icons standards-compliant.
 * Added ability to hide Theme License admin page via `themeblvd_global_config` filter.
 * Added filterable "edit_theme_options" capability to License admin page.
+* Added default styling for captions of a `[gallery]`.
 * Improved default `content-attachment.php`.
 * Slight UI improvements to Logo option in default Theme Options panel.
 * In default `content.php` and `content-attachment.php`, removed anchor tag on post title for single posts.
 * In default `content-list.php`, `content-grid.php`, and `content-archive.php`, changed linked titles to use `the_title_attribute()` for anchor titles.
 * In default `content.php` and `content-page.php`, moved clearfix to directly below `the_content()`.
-* In default
 * WP 3.6: Filtered `wp_link_pages()` to match `themeblvd_pagination()`
 * WP 3.6: Added responsive support for self-hosted videos.
 * WP 3.6: Added responsive support for self-hosted audio files.
