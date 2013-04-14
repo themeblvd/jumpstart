@@ -346,6 +346,18 @@ code.block {
 	margin-bottom: 0;
 }
 
+/* =Post Formats
+-------------------------------------------------------------- */
+
+/* Quote */
+.post-format-content figure.quote {
+	margin-right: 0;
+	margin-left: 0;
+}
+.post-format-content figure.quote blockquote {
+	margin-bottom: 5px;
+}
+
 /* =Responsive Elements
 -------------------------------------------------------------- */
 
