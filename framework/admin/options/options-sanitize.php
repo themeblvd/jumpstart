@@ -35,6 +35,7 @@ if( ! function_exists( 'themeblvd_add_sanitization' ) ) {
 		add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
 		add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
 		add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
+		add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
 	}
 }
 
@@ -506,6 +507,17 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 		);
 	}
 		
+	return $output;
+}
+
+/**
+ * Sanitize Editor option type
+ */
+function themeblvd_sanitize_editor( $input ) {
+	if( current_user_can( 'unfiltered_html' ) )
+		$output = $input;
+	else
+		$output = wp_kses($input, themeblvd_allowed_tags());
 	return $output;
 }
 

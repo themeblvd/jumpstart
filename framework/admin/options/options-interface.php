@@ -87,13 +87,11 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			$class = 'section ';
 			if( isset( $value['type'] ) ) {
 				$class .= ' section-' . $value['type'];
-				if( $value['type'] == 'logo' || $value['type'] == 'background' ) {
+				if( $value['type'] == 'logo' || $value['type'] == 'background' )
 					$class .= ' section-upload';
-				}
 			}
-			if( isset( $value['class'] ) ) {
+			if( ! empty( $value['class'] ) )
 				$class .= ' ' . $value['class'];
-			}
 			
 			// Start Output
 			$output .= '<div id="' . esc_attr( $id ) .'" class="' . esc_attr( $class ) . '">'."\n";
@@ -451,6 +449,63 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;                       
 			
 			/*---------------------------------------*/
+			/* Editor
+			/*---------------------------------------*/
+
+			case 'editor':
+				
+				// Settings
+				$editor_settings = array(
+					'wpautop' 			=> true,
+					'textarea_name' 	=> esc_attr( $option_name.'['.$value['id'].']' ),
+					'media_buttons'		=> true,
+					'tinymce' 			=> array( 'plugins' => 'wordpress' ),
+					'height'			=> 'small' // small, medium, large (Not part of WP's TinyMCE settings
+				);
+				
+				// @todo -- Add TB shortcode generator button. 
+				// This will work however currently there is a quirk that won't allow for 
+				// more than one editor on a page. Shortcodes will get inserted in whichever
+				// the last editor the cursor was in.
+				/*
+				if( defined('TB_SHORTCODES_PLUGIN_VERSION') && get_option('themeblvd_shortcode_generator') != 'no' )
+					$editor_settings['tinymce']['plugins'] .= ',ThemeBlvdShortcodes';
+				*/
+
+				if( ! empty( $value['settings'] ) )
+					$editor_settings = wp_parse_args( $value['settings'], $editor_settings );
+
+				// Setup description
+				if( ! empty( $value['desc_location'] ) && $value['desc_location'] == 'before' )
+					$desc_location = 'before';
+				else
+					$desc_location = 'after';
+
+				$explain_value = '';
+				$has_description = '';
+				if( ! empty( $value['desc'] ) ) {
+					$explain_value = $value['desc'];
+					$has_description = ' has-desc';
+				}
+
+				// Output description and editor
+				$output .= '<div class="tb-wp-editor desc-'.$desc_location.$has_description.' height-'.$editor_settings['height'].'">';
+
+				if( $desc_location == 'before' )
+					$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";								
+				
+				ob_start();
+				wp_editor( $val, uniqid( $value['id'].'_'.rand() ), $editor_settings );
+				$output .= ob_get_clean();
+
+				if( $desc_location == 'after' )
+					$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
+				
+				$output .= '</div><!-- .tb-wp-editor (end) -->';
+
+				break;
+
+			/*---------------------------------------*/
 			/* Heading for Navigation
 			/*---------------------------------------*/
 			
@@ -479,10 +534,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			if( $value['type'] != 'checkbox' )
 				$output .= '<br/>';
 			$explain_value = '';
-			if( isset( $value['desc'] ) )
+			if( ! empty( $value['desc'] ) )
 				$explain_value = $value['desc'];
 			$allowedtags = themeblvd_allowed_tags();
-			$output .= '</div><div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
+			$output .= '</div>';
+			if( $value['type'] != 'editor' ) // Editor displays description above it
+				$output .= '<div class="explain">'.wp_kses($explain_value, $allowedtags).'</div>'."\n";
 			$output .= '<div class="clear"></div></div></div>'."\n";
 		}
 	}

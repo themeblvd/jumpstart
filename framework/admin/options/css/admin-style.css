@@ -9,7 +9,7 @@
 #optionsframework .section{border-bottom:1px solid #dfdfdf;padding:15px;}
 #optionsframework .section-description{border-bottom:1px solid #dfdfdf;color:#888888;font-family:Georgia,"Times New Roman",Times,serif;font-size:12px;font-style:italic;line-height:1.5em;padding:15px;}
 #optionsframework .group .section:last-of-type{padding-bottom:40px;}
-#optionsframework .section .heading{font-size:1.1em;margin:0 0 15px 3px;padding:10px 5px;}
+#optionsframework .section .heading{font-size:1.1em;margin:0 0 15px 0;padding:10px 5px;}
 #optionsframework .section-info{ color:#888888;font-family:Georgia,"Times New Roman",Times,serif;font-size:12px;font-style:italic;line-height:1.5em;padding:15px; }
 #optionsframework .section-info p{margin:5px 0 0;padding:0 5px;}
 #optionsframework .section .controls{float:left;min-width:350px;width:54%;padding-right:2%;}
@@ -61,6 +61,20 @@
 		only screen and (min-resolution: 1.5dppx) {
 	#optionsframework .screenshot .mlu_remove{background-image:url(../../assets/images/icon-remove_2x.png);background-size:16px 16px;}
 }
+
+/* WP Editor */
+#optionsframework .section-editor .controls { float: none; max-width: none; padding: 0; width: auto; }
+#optionsframework .section-editor .explain { float: none; padding: 0 5px; width: auto; }
+#optionsframework .section-editor .desc-after.has-desc .explain { padding-top: 10px; }
+#optionsframework .section-editor .wp-editor-container{ background-color: #ffffff; }
+#optionsframework .section-editor .quicktags-toolbar input { width: auto; }
+#optionsframework .section-editor .controls textarea { margin: 0; }
+#optionsframework .section-editor .height-small .wp_themeSkin iframe { height: 150px !important; }
+#optionsframework .section-editor .height-medium .wp_themeSkin iframe { height: 250px !important; }
+#optionsframework .section-editor .height-large .wp_themeSkin iframe { height: 340px !important; }
+#optionsframework .section-editor .height-small textarea { height: 150px; }
+#optionsframework .section-editor .height-medium textarea { height: 250px; }
+#optionsframework .section-editor .height-large textarea { height: 340px; }
 
 /* Bottom Section */
 #optionsframework-submit{border-top:1px solid #ECECEC;background-color:#F1F1F1;background-image:0;padding:7px 10px;}
