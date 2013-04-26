@@ -194,6 +194,11 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				)
 			)
 		);
+
+		// The selection of a floating widget area is only 
+		// possible if the Widget Areas plugin is installed.
+		if( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) )
+			unset( $element_content[1]['options']['widget_area'], $element_content[5] );
 		
 		// Divider
 		$element_divider = array(
