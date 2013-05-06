@@ -739,33 +739,41 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 
 		// Setup $args
 		$defaults = array(
-			'fx' 				=> 'slide', 	// Effect for transitions
-			'timeout' 			=> '3',			// Time between auto trasitions in seconds
-			'nav_standard' 		=> '1',			// Show standard nav - true, false
-			'nav_arrows'		=> '1',			// Show nav arrows - true, false
-			'pause_play'		=> '1',			// Show pause/play buttons - true, false
-			'pause_on_hover' 	=> 'disable',	// Pause on hover - pause_on, pause_on_off, disable
-			'image' 			=> 'full',		// How to display featured images - full, align-right, align-left
-			'image_link' 		=> 'permalink',	// Where image link goes - permalink, lightbox, none
-			'button' 			=> '',			// Text for button to lead to permalink - leave empty to hide
-			'source' 			=> '',			// Source for the posts query
-			'tag' 				=> '',			// Tag to pull posts from
-			'category' 			=> '',			// Category slug to pull posts from
-			'category_name'		=> '',			// Force category_name string of query
-			'cat'				=> '',			// Force cat string of query
-			'numberposts' 		=> '5',			// Number of posts/slides
-			'orderby' 			=> 'date',		// Orderby param for posts query
-			'order'				=> 'DESC',		// Order param for posts query
-			'query' 			=> '',			// Custom query string
-			'mobile_fallback' 	=> 'full_list'	// How to display on mobile - full_list, first_slide, display
+			'fx' 				=> 'slide', 		// Effect for transitions
+			'smoothheight'		=> 'true',			// smoothHeight property if using "slide" transition
+			'timeout' 			=> '3',				// Time between auto trasitions in seconds
+			'nav_standard' 		=> '1',				// Show standard nav - true, false
+			'nav_arrows'		=> '1',				// Show nav arrows - true, false
+			'pause_play'		=> '1',				// Show pause/play buttons - true, false
+			'pause_on_hover' 	=> 'disable',		// Pause on hover - pause_on, pause_on_off, disable
+			'image' 			=> 'full',			// How to display featured images - full, align-right, align-left
+			'image_size'		=> 'slider-large', 	// Crop size for full-size images
+			'image_link' 		=> 'permalink',		// Where image link goes - option, permalink, lightbox, none
+			'button' 			=> '',				// Text for button to lead to permalink - leave empty to hide
+			'source' 			=> '',				// Source for the posts query
+			'tag' 				=> '',				// Tag to pull posts from
+			'category' 			=> '',				// Category slug to pull posts from
+			'category_name'		=> '',				// Force category_name string of query
+			'cat'				=> '',				// Force cat string of query
+			'numberposts' 		=> '5',				// Number of posts/slides
+			'orderby' 			=> 'date',			// Orderby param for posts query
+			'order'				=> 'DESC',			// Order param for posts query
+			'query' 			=> '',				// Custom query string
+			'mobile_fallback' 	=> 'full_list'		// How to display on mobile - full_list, first_slide, display
 		);
 		$args = wp_parse_args( $args, $defaults );		
+
+		// Image Size
+		$image_size = $args['image_size'];
+		if( $args['image'] == 'align-right' || $args['image'] == 'align-left' )
+			$image_size = 'slider-staged';
 
 		// Format settings array so it matches the array 
 		// pulled if we were getting to this from a 
 		// custom-built slider.
 		$settings = array(
 			'fx' 				=> $args['fx'],
+			'smoothheight' 		=> $args['smoothheight'],
 		    'timeout' 			=> $args['timeout'],
 		    'nav_standard' 		=> $args['nav_standard'],
 		    'nav_arrows' 		=> $args['nav_arrows'],
@@ -774,7 +782,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 		    'mobile_fallback' 	=> $args['mobile_fallback']
 		);
 		$settings = apply_filters( 'themeblvd_slider_auto_settings', $settings, $args );
-		
+
 		// Setup query
 		if( ( ! $args['source'] && $args['query'] ) || ( $args['source'] == 'query' ) )
 			$query_args = $args['query'];
@@ -789,32 +797,80 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 		// from a custom-built slider.
 		$slides = array();
 		$counter = 1;
-		$includes = array( 'image_link', 'headline', 'description' );
-		if( $args['button'] ) $includes[] = 'button';
-		$image_link_target = $args['image_link'] == 'permalink' ? '_self' : $args['image_link'];
+
 		if( $posts ) {
 			do_action( 'themeblvd_slider_auto_before_loop', $args );
 			foreach( $posts as $post ) {
 				
 				// Setup post data for loop
 				setup_postdata( $post );
-				
+
 				// Featured image ID
 				$featured_image_id = get_post_thumbnail_id( $post->ID );
-				
+				$featured_image = wp_get_attachment_image_src( $featured_image_id, $image_size );
+
+				// Image
+				$image = array(
+					'id' 		=> $featured_image_id,	// Attachment ID of image
+					'title'		=> get_the_title(),		// Attachment title
+					'mime_type'	=> 'image',				// Post mime type, i.e. image/jpeg, image/png, etc
+					'display'	=> $featured_image[0],	// Cropped Image URL for slider display
+					'width'		=> $featured_image[1],	// Width of cropped image
+					'height'	=> $featured_image[2],	// Height of cropped image
+					'size'		=> $image_size,			// Name of crop size, 'full' if not registered or selected by user
+					'crop'		=> null,				// Crop mode, true for hard or false for soft
+					'cropped'	=> null					// Whether the cropped image actually exists, or WP has returned original
+				);
+
+				// Elements to include in slide
+				$includes = array( 'headline', 'description' );
+				if( $args['button'] ) 
+					$includes[] = 'button';
+
 				// Image Link
+				$image_link_type = $args['image_link'];
+				$image_link_target = '';
 				$image_link_url = '';
-				switch( $args['image_link'] ) {
+				
+				// Use "Featured Image Link" setting from post
+				if( $image_link_type == 'option' ) {
+					switch( get_post_meta( get_the_ID(), '_tb_thumb_link', true ) ) {
+						case 'post' :
+							$image_link_type = 'permalink'; // Pass to next section
+							break;
+						case 'thumbnail' :
+							$image_link_type = 'lightbox'; // Pass to next section
+							break;
+						case 'image' :
+							$image_link_target = 'lightbox';
+							$image_link_url = get_post_meta( get_the_ID(), '_tb_image_link', true );
+							break;
+						case 'video' :
+							$image_link_target = 'lightbox_video';
+							$image_link_url = get_post_meta( get_the_ID(), '_tb_video_link', true );
+							break;
+						case 'external' :
+							$image_link_target = '_blank';
+							$image_link_url = get_post_meta( get_the_ID(), '_tb_external_link', true );
+							break;
+					}
+				}
+
+				switch( $image_link_type ) {
 					case 'permalink' :
+						$image_link_target = '_self';
 						$image_link_url = get_permalink();
 						break;
 					case 'lightbox' :
+						$image_link_target = 'lightbox';
 						$image_link_url = wp_get_attachment_url( $featured_image_id );
 						break;
 				}
+
+				if( $image_link_url )
+					$includes[] = 'image_link';
 				
 				// Elements
-				$include = array( 'image_link', 'headline', 'description' );
 				$elements = array(
 					'include'		=> $includes,
 					'image_link' 	=> array(
@@ -829,6 +885,16 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 						'url' 		=> get_permalink()
 					)
 				);
+
+				// In Sliders plugin v1.1+, buttons in full width sliders are 
+				// no longer supported; so this will add a new paragraph with 
+				// a link to the post, if relevant.
+				if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && version_compare( TB_SLIDERS_PLUGIN_VERSION, '1.1.0', '>=' ) ) {
+					if( in_array( 'button', $includes ) ) {
+						$elements['description'] .= "\n\n"; // Slider display uses wpautop
+						$elements['description'] .= sprintf('<a href="%s" title="%s">%s</a>', $elements['button']['url'], $elements['button']['text'], $elements['button']['text'] );
+					}
+				}
 				
 				// Add slide
 				$slides['slide_'.$counter] = array(
@@ -836,9 +902,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 					'position_image' 	=> $args['image'],
 					'position' 			=> $args['image'],
 					'elements' 			=> $elements,
-					'image'				=> array(
-						'id' => $featured_image_id
-					)
+					'image'				=> $image
 				);
 				$counter++;
 			}

@@ -1107,7 +1107,8 @@ ul.sf-menu [class^="icon-"] {
 .featured-image-wrapper img {
 	display: block;
 }
-.featured-image-wrapper .image-overlay .image-overlay-bg {
+.featured-image-wrapper .image-overlay .image-overlay-bg,
+.slide-thumbnail-link .image-overlay .image-overlay-bg {
 	background: #ffffff;
 	-moz-border-radius: 4px; 
 	-webkit-border-radius: 4px; 
@@ -1126,7 +1127,8 @@ ul.sf-menu [class^="icon-"] {
 	left: 0;
 	z-index: 1;
 }
-.featured-image-wrapper .image-overlay .image-overlay-icon {
+.featured-image-wrapper .image-overlay .image-overlay-icon,
+.slide-thumbnail-link .image-overlay .image-overlay-icon {
 	background: url('../images/elements/image-overlay-icon.png') no-repeat;
 	cursor: pointer;
 	margin: -21px 0 0 -22px;
@@ -1142,17 +1144,21 @@ ul.sf-menu [class^="icon-"] {
 	height: 42px;
 	z-index: 2;
 }
-.featured-image-wrapper a.thumbnail.video .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.thumbnail.video .image-overlay .image-overlay-icon,
+.slide-thumbnail-link.video .image-overlay .image-overlay-icon  {
 	background-position: 0 0;
 }
 .featured-image-wrapper a.thumbnail .image-overlay .image-overlay-icon, /* "image" class doesn't always get inserted, is default */
-.featured-image-wrapper a.image .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.image .image-overlay .image-overlay-icon,
+.slide-thumbnail-link.image .image-overlay .image-overlay-icon {
 	background-position: 0 -42px;
 }
-.featured-image-wrapper a.thumbnail.post .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.thumbnail.post .image-overlay .image-overlay-icon,
+.slide-thumbnail-link.post .image-overlay .image-overlay-icon {
 	background-position: 0 -84px;
 }
-.featured-image-wrapper a.thumbnail.external .image-overlay .image-overlay-icon {
+.featured-image-wrapper a.thumbnail.external .image-overlay .image-overlay-icon,
+.slide-thumbnail-link.external .image-overlay .image-overlay-icon {
 	background-position: 0 -126px;
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
@@ -1161,7 +1167,8 @@ ul.sf-menu [class^="icon-"] {
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
 	/* Use 2x images for retina */
-	.featured-image-wrapper .image-overlay .image-overlay-icon {
+	.featured-image-wrapper .image-overlay .image-overlay-icon,
+	.slide-thumbnail-link .image-overlay .image-overlay-icon {
 		background-image: url('../images/elements/image-overlay-icon_2x.png');
 		background-size: 44px 168px;
 	}
@@ -2267,7 +2274,7 @@ div.pp_default .pp_description {
 .standard-slider .slide .themeblvd-video-wrapper {
 	margin-bottom: 0;
 }
-.standard-slider .slide .image-link {
+.standard-slider .slide .image-link { /* @deprecated */
 	background: #ffffff; /* Triggers the anchor in IE */
     filter: alpha(opacity=0);
     -moz-opacity: 0;
@@ -2294,11 +2301,15 @@ div.pp_default .pp_description {
 	z-index: 2;
 }
 .standard-slider .media-full .content .content-inner {
-	padding: 15px 15px 0 15px;
+	padding: 15px 15px 10px 15px;
 }
 .standard-slider .media-full .content .slide-title {
 	font-size: 1.3em;
 	font-weight: bold;
+	margin: 0 0 5px 0;
+}
+.standard-slider .media-full .content .slide-description p {
+	margin: 0 0 5px 0;
 }
 .standard-slider .media-align-left .slide-body, 
 .standard-slider .media-align-right .slide-body {
@@ -2500,7 +2511,7 @@ div.pp_default .pp_description {
 	position:relative; 
 	/* width:320px; height:200px; */
 }
-.carrousel-slider-wrapper .carrousel-slider .slide .image-link {
+.carrousel-slider-wrapper .carrousel-slider .slide .image-link { /* @deprecated */
 	background: #666666;
 	-moz-border-radius: 99px; 
 	-webkit-border-radius: 99px; 
@@ -2562,6 +2573,28 @@ div.pp_default .pp_description {
 .double_sidebar .carrousel-slider-wrapper .carrousel-slider li {
 	max-height: 138px;
 	max-width: 200px;
+}
+.roundabout-moveable-item .slide-thumbnail-link .image-overlay {
+	display: none;
+}
+.roundabout-moveable-item.roundabout-in-focus .slide-thumbnail-link .image-overlay {
+	display: block;
+}
+.carrousel-slider-wrapper .tb-block-click {
+	background: #fff; /* For IE bug fix */
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;	
+}
+.carrousel-slider-wrapper .roundabout-in-focus .tb-block-click {
+	display: none;
 }
 
 /* Post List Slider */

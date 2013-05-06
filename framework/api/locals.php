@@ -106,10 +106,11 @@ function themeblvd_get_js_locals() {
 	
 	// Start $locals array with any miscellaneous stuff
 	$locals = array ( 
-		'prettyphoto_theme' 	=> 'pp_default',
-		'thumb_animations'		=> 'true',
-		'featured_animations'	=> 'true',
-		'retina_logo'			=> 'true'
+		'prettyphoto_theme' 		=> 'pp_default',
+		'thumb_animations'			=> 'true',
+		'featured_animations'		=> 'true',
+		'image_slide_animations'	=> 'true',
+		'retina_logo'				=> 'true'
 	);
 	
 	// Extend $locals to accomodate scripts being included 

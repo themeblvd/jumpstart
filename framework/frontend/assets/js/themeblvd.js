@@ -187,9 +187,17 @@ jQuery(document).ready(function($) {
 	// Featured Image overlay links
 	// ---------------------------------------------------------
 	
-	if(themeblvd.featured_animations)
+	if(themeblvd.featured_animations || themeblvd.image_slide_animations)
 	{
-		$('.featured-image a').hover(
+		var selector = "";
+		if(themeblvd.featured_animations && themeblvd.image_slide_animations)
+			selector = ".featured-image a, a.slide-thumbnail-link";
+		else if(themeblvd.featured_animations)
+			selector = ".featured-image a";
+		else if(themeblvd.image_slide_animations)
+			selector = "a.slide-thumbnail-link";
+
+		$(selector).hover(
 			function () {
 				var el = $(this);
 				el.find('.image-overlay-bg').stop(true, true).animate({

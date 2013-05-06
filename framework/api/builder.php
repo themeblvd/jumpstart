@@ -56,7 +56,7 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 		// Setup array for categories group of checkboxes
 		$categories_multicheck = $categories_select;
 		unset( $categories_multicheck['null'] );
-		
+
 		/*------------------------------------------------------*/
 		/* Element Options
 		/*------------------------------------------------------*/
@@ -1000,6 +1000,10 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'type' 		=> 'info'
 			),
 			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'show-hide-toggle'
+		    ),
+			array(
 		    	'id' 		=> 'fx',
 				'name'		=> __( 'Transition Effect', 'themeblvd' ),
 				'desc'		=> __( 'Select the effect you\'d like used to transition from one slide to the next.', 'themeblvd' ),
@@ -1008,8 +1012,24 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'options'	=> array(
 			        'fade' 	=> __( 'Fade', 'themeblvd' ),
 					'slide'	=> __( 'Slide', 'themeblvd' )
-				)
+				),
+				'class' 	=> 'trigger'
 			),
+			array(
+				'id'		=> 'smoothheight',
+				'name'		=> __( 'Smooth Height', 'themeblvd' ),
+				'desc'		=> __( 'When using the "Slide" transition, this will allow the height of each slide to adjust automatically if slides are not equal in height.', 'themeblvd' ),
+				'std'		=> 'true',
+				'type'		=> 'select',
+				'options'	=> array(
+		            'true' 	=> 'Yes, enable smoothHeight.',
+					'false'	=> 'No, display as height of tallest slide.'
+				),
+				'class'		=> 'hide receiver receiver-slide'
+			),
+			array(
+		    	'type'		=> 'subgroup_end'
+		    ),
 			array(
 		    	'id' 		=> 'timeout',
 				'name'		=> __( 'Speed', 'themeblvd' ),
@@ -1063,6 +1083,10 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				)
 			),
 			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'show-hide-toggle'
+		    ),
+			array(
 				'id'		=> 'image',
 				'name'		=> __( 'Image Display', 'themeblvd' ),
 				'desc'		=> __( 'Select how you\'d like the "featured image" from the post to be displayed in the slider.', 'themeblvd' ),
@@ -1072,8 +1096,20 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 					'full' 			=> __( 'Full Size', 'themeblvd' ),
 					'align-left'	=> __( 'Aligned Left', 'themeblvd' ),
 					'align-right'	=> __( 'Aligned Right', 'themeblvd' )
-				)
+				),
+				'class' 	=> 'trigger'
 			),
+			array(
+				'id'		=> 'image_size',
+				'name'		=> __( 'Image Crop Size', 'themeblvd' ),
+				'desc'		=> __( 'When your image is set to display "Full Size" you can enter a crustom crop size here.', 'themeblvd' ),
+				'std'		=> 'slider-large',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver receiver-full'
+			),
+			array(
+		    	'type'		=> 'subgroup_end'
+		    ),
 			array(
 				'id'		=> 'image_link',
 				'name'		=> __( 'Image Link', 'themeblvd' ),
@@ -1081,9 +1117,10 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 				'std'		=> 'permalink',
 				'type'		=> 'select',
 				'options'	=> array(
-					'permalink' => __( 'Link to post.', 'themeblvd' ),
-					'lightbox'	=> __( 'Link to enlarged featured image in lightbox.', 'themeblvd' ),
-					'none'		=> __( 'No image link.', 'themeblvd' )
+					'option' 	=> __( 'Use each post\'s current featured image link setting.', 'themeblvd' ),
+					'permalink' => __( 'Link each image to its post.', 'themeblvd' ),
+					'lightbox'	=> __( 'Link each image to enlarged featured image in lightbox.', 'themeblvd' ),
+					'none'		=> __( 'Images do not link anywhere.', 'themeblvd' )
 				)
 			),
 			array(

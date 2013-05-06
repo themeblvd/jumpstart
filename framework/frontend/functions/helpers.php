@@ -888,7 +888,9 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 				$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider({
 					useCSS: false, // Avoid CSS3 glitches
 					video: true, // Avoid CSS3 glitches
-					// smoothHeight: true,
+					<?php if( ! empty( $options['smoothheight'] ) && $options['smoothheight'] == 'true' ) : ?>
+					smoothHeight: true,
+					<?php endif; ?>
 					prevText: '<i class="icon-circle-arrow-left"></i>',
 					nextText: '<i class="icon-circle-arrow-right"></i>',
 					animation: "<?php echo $options['fx']; ?>",
@@ -1394,23 +1396,5 @@ if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 		);
 
 		return $chain;
-	}
-}
-
-/** 
- * Check if a URL's SSL matches the SSL of the site.
- *
- * @since 2.2.2
- *
- * @param string $url URL of some asset
- * @return boolean True if there's a conflict
- */
-
-if( ! function_exists( 'themeblvd_ssl_conflict' ) ) {
-	function themeblvd_ssl_conflict( $url ) {
-		if( ( ! is_ssl() && strpos( $url, 'https://' ) !== false ) || ( is_ssl() && strpos( $url, 'http://' ) !== false ) )
-			return true;
-		else
-			return false;
 	}
 }
