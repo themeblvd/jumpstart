@@ -72,5 +72,6 @@ jQuery(document).ready(function($) {
 	// ThemeBlvd namespace
 	$('.tb-options-js').themeblvd('init');
 	$('.tb-options-js').themeblvd('options', 'bind');
-	$('.tb-options-js').themeblvd('options', 'setup');		 		
+	$('.tb-options-js').themeblvd('options', 'setup');
+	$('.tb-options-js').themeblvd('options', 'media-uploader');		
 });	

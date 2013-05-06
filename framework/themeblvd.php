@@ -26,7 +26,8 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/meta.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-medialibrary-uploader.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader-legacy.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );

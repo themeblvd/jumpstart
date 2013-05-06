@@ -20,7 +20,6 @@
 #optionsframework .section-checkbox .explain{max-width:93%;}
 #optionsframework .section-color .controls{min-width:125px;}
 #optionsframework .controls input, #optionsframework .controls textarea{-webkit-box-shadow: 0 0 4px #eeeeee; box-shadow: 0 0 4px #eeeeee; margin-bottom:10px; outline:0; width:100%;}
-#optionsframework .controls input[type=text] { color: #666666; }
 #optionsframework .controls select { width: 100%; }
 #optionsframework .controls textarea { line-height:150%; }
 #optionsframework .section-radio label,#optionsframework .section-multicheck label{float:left;line-height:15px; display:block;}
@@ -43,17 +42,30 @@
 #optionsframework .tb-footer-text .tb-update-log {text-decoration:none;}
 
 /* Image Uploader */
-#optionsframework .controls input.upload{width:74%;}
-#optionsframework .controls input.upload_button{float:right;width:64px;cursor:pointer;border-color:#BBBBBB;}
-#optionsframework .controls input.upload_button:hover{color:#000;border-color:#666666;}
+#optionsframework .controls input.upload{width:79%;}
+#optionsframework .controls input.upload-button, #optionsframework .controls input.remove-file {float:right;width:auto;border-color:#BBBBBB;}
+#optionsframework .controls input.upload-button:hover, #optionsframework .controls input.remove-file:hover {color:#000;border-color:#666666;}
 #optionsframework .section-upload .section-upload.image-standard input.image-url {width:58%;}
 #optionsframework .section-upload .section-upload.image-standard input.image-width {width:15%;}
 #optionsframework .screenshot{float:left;margin-left:1px;position:relative;width:344px;margin-top:3px;}
 #optionsframework .screenshot img{background:#FAFAFA;float:left;max-width:334px;margin-bottom:10px;border-color:#ccc #eee #eee #ccc;border-style:solid;border-width:1px;padding:4px;}
-#optionsframework .screenshot .mlu_remove{background:url(../../assets/images/icon-remove.png) no-repeat;border:medium none;bottom:4px;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
+#optionsframework .screenshot .remove-image{background:url(../../assets/images/icon-remove.png) no-repeat;border:medium none;bottom:4px;cursor:pointer;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
 #optionsframework .screenshot .no_image .file_link{margin-left:20px;}
-#optionsframework .screenshot .no_image .mlu_remove{bottom:0;}
+#optionsframework .screenshot .no_image .remove-image{bottom:0;}
 #optionsframework .reset-button{margin-right:10px;float:left;cursor:pointer;}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+		only screen and (-moz-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	#optionsframework .screenshot .remove-image{background-image:url(../../assets/images/icon-remove_2x.png);background-size:16px 16px;}
+}
+
+/* Image Uploader (legacy) */
+#optionsframework .controls input.upload_button{float:right;width:64px;cursor:pointer;border-color:#BBBBBB;}
+#optionsframework .controls input.upload_button:hover{color:#000;border-color:#666666;}
+#optionsframework .screenshot .mlu_remove{background:url(../../assets/images/icon-remove.png) no-repeat;border:medium none;bottom:4px;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
+#optionsframework .screenshot .no_image .mlu_remove{bottom:0;}
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
 		only screen and (-moz-min-device-pixel-ratio: 1.5), 
 		only screen and (-o-min-device-pixel-ratio: 1.5), 
@@ -61,6 +73,9 @@
 		only screen and (min-resolution: 1.5dppx) {
 	#optionsframework .screenshot .mlu_remove{background-image:url(../../assets/images/icon-remove_2x.png);background-size:16px 16px;}
 }
+
+/* Modal Window */
+.tb-modal-hide-settings .attachment-details label.setting { display: none; }
 
 /* WP Editor */
 #optionsframework .section-editor .controls { float: none; max-width: none; padding: 0; width: auto; }

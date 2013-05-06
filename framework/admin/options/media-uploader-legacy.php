@@ -1,4 +1,6 @@
 <?php
+// @deprecated This is the media uploader used prior to WP 3.5
+
 /**
  * WooThemes Media Library-driven AJAX File Uploader Module (2010-11-05)
  *

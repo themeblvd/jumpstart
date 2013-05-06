@@ -58,7 +58,7 @@
 			});
     	},
     	
-    	// Setup custom option combos
+    	// Setup custom options
     	options : function( type )
     	{
     		return this.each(function(){
@@ -82,17 +82,12 @@
 	    				var el = $(this), value = el.find('select').val(), parent = el.closest('.subgroup');
 	    				
 	    				if(value == 'external')
-	    				{
 	    					parent.find('.page-content').show();
-	    				}
 	    				else if (value == 'raw')
-	    				{
 	    					parent.find('.raw-content').show();
-	    				}
 	    				else if (value == 'widget_area')
-	    				{
 	    					parent.find('.widget_area-content').show();
-	    				}
+
 	    			});
 	    			
 	    			// Columns only
@@ -132,9 +127,7 @@
     				$this.find('.show-hide').each(function(){
     					var el = $(this), checkbox = el.find('.trigger input');
     					if( checkbox.is(':checked') )
-    					{
     						el.find('.receiver').show();
-    					}    					
     				});
     				
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
@@ -158,13 +151,9 @@
 						el.find('.checkbox').each(function(){
 							var checkbox = $(this);
 							if( checkbox.is(':checked') )
-	    					{
 	    						checkbox.closest('.item').addClass('active').find('.social_media-input').show();
-	    					}
 	    					else
-	    					{
 	    						checkbox.closest('.item').removeClass('active').find('.social_media-input').hide();
-	    					}
 						});					
     				});
     				
@@ -172,22 +161,16 @@
     				$this.find('.section-typography .of-typography-face').each(function(){
     					var el = $(this), value = el.val();
     					if( value == 'google' )
-    					{
     						el.closest('.section-typography').find('.google-font').fadeIn('fast');
-    					}
     					else
-    					{
     						el.closest('.section-typography').find('.google-font').hide();
-    					}
     				});
     				
     				// Homepage Content
 	    			$this.find('#section-homepage_content').each(function(){
     					var value = $(this).find('input:checked').val();
     					if( value != 'custom_layout' )
-    					{
     						$this.find('#section-homepage_custom_layout').hide();
-    					}				
     				});
     				
     				// Color Picker
@@ -298,17 +281,13 @@
     				$this.find('.show-hide .trigger input').live('click', function(){
     					var checkbox = $(this);
     					if( checkbox.is(':checked') )
-    					{
     						checkbox.closest('.show-hide').find('.receiver').fadeIn('fast');
-    					}
     					else
-    					{
-    						checkbox.closest('.show-hide').find('.receiver').hide();
-    					}    					
+    						checkbox.closest('.show-hide').find('.receiver').hide();			
     				});
     				
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
-    				$this.find('.show-hide-toggle select').live('change', function(){
+    				$this.find('.show-hide-toggle .trigger select').live('change', function(){
     					var el = $(this), value = el.val(), group = el.closest('.show-hide-toggle');
     					group.find('.receiver').hide();
     					group.find('.receiver-'+value).show();
@@ -325,39 +304,41 @@
     				$this.find('.section-social_media .checkbox').live('click', function(){
     					var checkbox = $(this);
 						if( checkbox.is(':checked') )
-    					{
     						checkbox.closest('.item').addClass('active').find('.social_media-input').fadeIn('fast');
-    					}
     					else
-    					{
     						checkbox.closest('.item').removeClass('active').find('.social_media-input').hide();
-    					}
     				});
     				
     				// Google font selection
     				$this.find('.section-typography .of-typography-face').live('change', function(){
     					var el = $(this), value = el.val();
     					if( value == 'google' )
-    					{
     						el.closest('.section-typography').find('.google-font').fadeIn('fast');
-    					}
     					else
-    					{
     						el.closest('.section-typography').find('.google-font').hide();
-    					}
     				});
 
     				// Homepage Content
 	    			$this.find('#section-homepage_content input:checked').live('change', function() {  					
     					if( $(this).val() == 'custom_layout' )
-    					{
     						$this.find('#section-homepage_custom_layout').fadeIn('fast');
-    					}
     					else
-    					{
-    						$this.find('#section-homepage_custom_layout').fadeOut('fast');
-    					}			
+    						$this.find('#section-homepage_custom_layout').fadeOut('fast');		
     				});
+	    		}
+	    		// Apply media uploader from themeblvd_media_uploader object. 
+	    		// This incorporates the Media Uploader in WP 3.5+
+	    		else if(type == 'media-uploader')
+	    		{
+	    			// Check to make sure wp.media object exists.
+	    			// If it doesn't ... 
+	    			// (1) We're using an older version of WP and the 
+	    			// legacy uploader.
+	    			// (2) We're using a plugin that uses legacy uploader.
+	    			// (3) the WP 3.5+'s media uploader JS files haven't been 
+	    			// enqueued properly. 
+	    			if(typeof wp !== 'undefined' && typeof wp.media !== 'undefined')
+	    				themeblvd_media_uploader.init($this);
 	    		}
     		
     		});
@@ -402,32 +383,131 @@
 	
 	// Setup themeblvd namespace
 	$.fn.themeblvd = function(method) {
-
 		if( themeblvd_shared[method] )
-		{
 			return themeblvd_shared[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-		}
 		else if( typeof method === 'object' || ! method )
-		{
 			return themeblvd_shared.init.apply( this, arguments );
-		}
 		else
-		{
-			$.error( 'Method ' +  method + ' does not exist.' );
-		}    
-	
+			$.error( 'Method ' +  method + ' does not exist.' ); 
 	};
 
 })(jQuery);
+
+/**
+ * Media Uploader for WP 3.5+
+ */
+
+(function($) {
+	themeblvd_media_uploader = {
+		
+		/**
+		 * Apply click actions initially when loaded.
+		 */
+		init : function(options)
+		{
+			options.find('.upload-button').click(function(event){
+				themeblvd_media_uploader.add_file( $(this).closest('.section-upload') );
+			});
+			
+			options.find('.remove-image, .remove-file').click(function(){
+				themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
+			});
+		},
+
+		/**
+		 * Trigger media uploader modal to insert an image.
+		 */
+		add_file : function(current_option)
+		{
+			var file_frame,
+				upload_type = current_option.find('.trigger').data('type'),
+				title = current_option.find('.trigger').data('title'),
+				select = current_option.find('.trigger').data('select'),
+				css_class = current_option.find('.trigger').data('class'),
+				media_type = upload_type == 'standard' ? '' : 'image',
+				multiple = upload_type == 'quick_slider' ? true : false, // @todo future feature of Quick Slider
+				workflow = upload_type == 'quick_slider' ? 'post' : 'select'; // @todo future feature of Quick Slider
+
+			event.preventDefault();
+
+			// Create the media frame.
+			file_frame = wp.media.frames.file_frame = wp.media({
+				frame: workflow,
+				className: 'media-frame '+css_class, // Will break without "media-frame"
+				title: title,
+				library: {
+					type: media_type
+				},
+				button: {
+					text: select
+				},
+				multiple: multiple
+			});
+
+			// Image selected and inserted
+			file_frame.on( 'select', function() {
+				
+				// Grab the selected attachment.
+				var attachment = file_frame.state().get('selection').first(),
+					remove_text = current_option.find('.trigger').data('remove');
+				
+				current_option.find('.image-url').val(attachment.attributes.url);
+				if( attachment.attributes.type == 'image' )
+					current_option.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image">Remove</a>').slideDown('fast');
+
+				if(upload_type == 'logo')
+					current_option.find('.image-width').val(attachment.attributes.width);
+				
+				if(upload_type == 'slider')
+					current_option.find('.image-id').val(attachment.attributes.id);
+
+				current_option.find('.upload-button').unbind().addClass('remove-file').removeClass('upload-button').val(remove_text);
+				current_option.find('.of-background-properties').slideDown();
+				
+				current_option.find('.remove-image, .remove-file').click(function() {
+					themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
+		        });
+			});
+
+			// Modal window closed w/no insertion of an image. So, we need to 
+			// reset the upload button to avoid weird results.
+			file_frame.on( 'close', function() {
+				current_option.find('.upload-button').unbind('click');
+				current_option.find('.upload-button').click(function(){
+					themeblvd_media_uploader.add_file( $(this).closest('.section-upload') );
+				});
+			});
+
+			// Finally, open the modal.
+			file_frame.open();
+		},
+
+		/**
+		 * Remove current image and put back "Upload" button.
+		 */
+		remove_file : function(current_option)
+		{
+			var upload_text = current_option.find('.trigger').data('upload');
+			current_option.find('.remove-image').hide();
+			current_option.find('.upload').val('');
+			current_option.find('.of-background-properties').hide();
+			current_option.find('.screenshot').slideUp();
+			current_option.find('.remove-file').addClass('upload-button').removeClass('remove-file').val(upload_text);
+			current_option.find('.upload-button').click(function(){
+				themeblvd_media_uploader.add_file( $(this).closest('.section-upload') );
+			});
+		}
+	};
+})(jQuery);	
 
 /**
  * Show alert popup. Used for warnings and confirmations,
  * mostly intended to be used with AJAX actions.
  */
  
-(function ($) {
+(function($) {
 	tbc_alert = {
-		init: function(alert_text, alert_class, selector)
+		init : function(alert_text, alert_class, selector)
 		{
 		
 		  	// Available classes:

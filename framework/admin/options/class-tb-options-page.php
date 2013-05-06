@@ -37,10 +37,13 @@ class Theme_Blvd_Options_Page {
 		// Form options
 		$this->options = $options;
 		
-		// Hook it all into motion
+		// Add admin page and register settings
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
 		add_action( 'admin_init', array( $this, 'register' ) );
-		add_action( 'admin_init', 'optionsframework_mlu_init' );
+		
+		// Legacy media uploader
+		if( ! function_exists('wp_enqueue_media') )
+			add_action( 'admin_init', 'optionsframework_mlu_init' );
 		
 	}
 	
@@ -66,8 +69,11 @@ class Theme_Blvd_Options_Page {
 		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->id, array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
-		add_action( 'admin_print_styles-'.$admin_page, 'optionsframework_mlu_css', 0 );
-		add_action( 'admin_print_scripts-'.$admin_page, 'optionsframework_mlu_js', 0 );
+		if( ! function_exists('wp_enqueue_media') ){
+			// Legacy uploader
+			add_action( 'admin_print_styles-'.$admin_page, 'optionsframework_mlu_css', 0 );
+			add_action( 'admin_print_scripts-'.$admin_page, 'optionsframework_mlu_js', 0 );
+		}
 	}
 
 	/** 
@@ -86,8 +92,10 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * @since 2.2.0
 	 */
-	function load_scripts() {		
+	function load_scripts() {
 		wp_enqueue_script( 'jquery-ui-core');
+		if( function_exists( 'wp_enqueue_media' ) ) 
+			wp_enqueue_media();
 		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		wp_enqueue_script( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/js/options.min.js', array('jquery'), TB_FRAMEWORK_VERSION );

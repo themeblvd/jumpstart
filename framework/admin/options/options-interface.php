@@ -254,8 +254,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 			
 			case 'upload' :
-				$val = array( 'url' => $val, 'id' => '' );
-				$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $val ); // New AJAX Uploader using Media Library
+				if( function_exists('wp_enqueue_media') ) {
+					// Media uploader WP 3.5+
+					$args = array( 'option_name' => $option_name, 'type' => 'standard', 'id' => $value['id'], 'value' => $val );
+					$output .= themeblvd_media_uploader( $args );
+				} else {
+					// Legacy media uploader
+					$val = array( 'url' => $val, 'id' => '' );
+					$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $val ); // @deprecated
+				}
+
 				break;
 			
 			/*---------------------------------------*/
@@ -335,7 +343,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_bg_image = array( 'url' => $current_bg_url, 'id' => '' );
 				
 				// Start output
-				$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $current_bg_image, null, '', 0, 'image' );
+				
+				// Uploader
+				if( function_exists('wp_enqueue_media') )
+					$output .= themeblvd_media_uploader( array( 'option_name' => $option_name, 'type' => 'background', 'id' => $value['id'], 'value' => $current_bg_url, 'name' => 'image' ) );
+				else
+					$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $current_bg_image, null, '', 0, 'image' ); // @deprecated
+				
 				$class = 'of-background-properties';
 				if( empty($background['image']) )
 					$class .= ' hide';
