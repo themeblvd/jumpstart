@@ -11,7 +11,7 @@ function setup_themeblvd_page_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_page_options',						// make it unique	
-			'title' 	=> __( 'Page Options', 'themeblvd' ),	// title to show for entire meta box
+			'title' 	=> __( 'Page Options', 'themeblvd' ),		// title to show for entire meta box
 			'page'		=> array( 'page' ),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'high'									// high, core, default, or low
