@@ -428,7 +428,10 @@
 				multiple = upload_type == 'quick_slider' ? true : false, // @todo future feature of Quick Slider
 				workflow = upload_type == 'quick_slider' ? 'post' : 'select'; // @todo future feature of Quick Slider
 
-			event.preventDefault();
+			if( upload_type == 'video' )
+				media_type = 'video';
+
+			event.preventDefault();			
 
 			// Create the media frame.
 			file_frame = wp.media.frames.file_frame = wp.media({
@@ -461,12 +464,18 @@
 				if(upload_type == 'slider')
 					current_option.find('.image-id').val(attachment.attributes.id);
 
-				current_option.find('.upload-button').unbind().addClass('remove-file').removeClass('upload-button').val(remove_text);
-				current_option.find('.of-background-properties').slideDown();
-				
-				current_option.find('.remove-image, .remove-file').click(function() {
-					themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
-		        });
+				if(upload_type == 'video')
+					current_option.find('.video-url').val(attachment.attributes.url);
+
+				if( upload_type != 'video' )
+				{
+					current_option.find('.upload-button').unbind().addClass('remove-file').removeClass('upload-button').val(remove_text);
+					current_option.find('.of-background-properties').slideDown();
+					
+					current_option.find('.remove-image, .remove-file').click(function() {
+						themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
+			        });
+				}
 			});
 
 			// Modal window closed w/no insertion of an image. So, we need to 

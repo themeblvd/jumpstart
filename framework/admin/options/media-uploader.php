@@ -10,7 +10,7 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 
 		$defaults = array(
 			'option_name' 	=> '',			// Prefix for form name attributes
-			'type'			=> 'standard',	// Type of media uploader - standard, logo, logo_2x, background, slider
+			'type'			=> 'standard',	// Type of media uploader - standard, logo, logo_2x, background, slider, video
 			'id'			=> '', 			// A token to identify this field, extending onto option_name. -- option_name[id]
 			'value'			=> '',			// The value of the field, if present.
 			'value_id'		=> '',			// Attachment ID used in slider
@@ -75,6 +75,13 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 				$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="hidden" name="'.$name.'[url]" value="'.$value.'" />'."\n";
 				break;
 
+			case 'video' :
+				$data['title'] = __('Slide Video', 'themeblvd');
+				$data['select'] = __('Use for Slide', 'themeblvd');
+				$data['upload'] = __('Get Video', 'themeblvd');
+				$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Video Link', 'themeblvd') .'" />'."\n";
+				break;
+
 			case 'quick_slider' :
 				$data['title'] = __('Quick Slider', 'themeblvd');
 				$data['select'] = __('Use selected images', 'themeblvd');
@@ -107,14 +114,14 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 
 		$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
 		
-		if( ! $value )
+		if( ! $value || $type == 'video' )
 			$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['upload'].'" />'."\n";
 		else
 			$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['remove'].'" />'."\n";
 
 		$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";
 		
-		if( $value ) { 
+		if( $value && $type != 'video' ) { 
 			$remove = '<a class="remove-image">Remove</a>';
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
 			if( $image ) {
