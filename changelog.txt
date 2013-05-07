@@ -12,6 +12,9 @@ Jump Start Changelog
 * Added ability to hide Theme License admin page via `themeblvd_global_config` filter.
 * Added filterable "edit_theme_options" capability to License admin page.
 * Added default styling for captions of a `[gallery]`.
+* Added support for some new features of Sliders plugin v1.1+.
+* Added support for WP 3.5+ media uploader.
+* Expanded "Featured Image Link" video link to accept any WordPress oEmbed URL.
 * Slight UI improvements to Logo option in default Theme Options panel.
 * Improved default `content-attachment.php`.
 * In default `content.php` and `content-attachment.php`, removed anchor tag on post title for single posts.
