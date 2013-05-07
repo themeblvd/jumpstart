@@ -193,7 +193,7 @@ function setup_themeblvd_post_meta() {
 			array(
 				'id'		=> '_tb_video_link',
 				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL to a video page on YouTube or Vimeo. You can also enter a link to a Quicktime video file.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL to a video page supported by <a href="http://codex.wordpress.org/Embeds" target="_blank">WordPress\'s oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-video',
 				'type' 		=> 'text'
 			),

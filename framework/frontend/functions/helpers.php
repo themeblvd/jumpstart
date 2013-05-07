@@ -115,6 +115,12 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 						$link_target = ' rel="featured_themeblvd_lightbox"';
 						if( $gallery )
 							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
+						// WP oEmbed for non YouTube and Vimeo videos
+						if( ! themeblvd_prettyphoto_supported_file( $link_url ) ) {
+							$id = uniqid('inline-video-');
+							$output .= sprintf( '<div id="%s" class="hide">%s</div>', $id, wp_oembed_get($link_url) );
+							$link_url = "#{$id}";
+						}
 						break;
 					case 'external' :
 						$link_url = get_post_meta( $post->ID, '_tb_external_link', true );
@@ -1397,4 +1403,38 @@ if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 
 		return $chain;
 	}
+}
+
+/** 
+ * Determine if prettyPhoto can take the current URL and 
+ * display in the lightbox.
+ *
+ * @since 2.2.2
+ *
+ * @param string $url URL string to check
+ * @return boolean $supported True if URL can be linked through to prettyPhoto
+ */
+
+function themeblvd_prettyphoto_supported_file( $url ) {
+	
+	$supported = false;
+
+	// Link to Vimeo or YouTube page?
+	if( strpos( $url, 'vimeo.com' ) !== false || 
+		strpos( $url, 'youtube.com' ) !== false || 
+		strpos( $url, 'youtu.be' ) !== false )
+	$supported = true;
+	
+	if( ! $supported ) {
+		$parsed_url = parse_url( $url );
+		$type = wp_check_filetype( $parsed_url['path'] );
+		// Link to .mov file?
+		if( $type['ext'] == 'mov' )
+			$supported = true;
+		// Link to image file?
+		if( substr( $type['type'], 0, 5 ) == 'image' )
+			$supported = true;
+	}
+
+	return apply_filters( 'themeblvd_prettyphoto_supported_file', $supported, $url );
 }
