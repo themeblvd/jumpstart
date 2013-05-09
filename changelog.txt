@@ -4,6 +4,7 @@ Jump Start Changelog
 1.0.3
 -----
 
+* Updated framework version to 2.3.0.
 * Updated FontAwesome to v3.0 -- 40 new icons added.
 * Fixed CSS bug with video icon not showing on featured images linking to videos.
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
