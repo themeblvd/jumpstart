@@ -1442,3 +1442,42 @@ function themeblvd_conditionals_config() {
 	);
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );
 }
+
+/** 
+ * Determine if prettyPhoto can take the current URL and 
+ * display in the lightbox. 
+ *
+ * @since 2.3.0
+ *
+ * @param string $url URL string to check
+ * @return string $icon Type of URL (video or image) or blank if URL not supported
+ */
+
+if( ! function_exists( 'themeblvd_prettyphoto_supported_link' ) ) {
+	function themeblvd_prettyphoto_supported_link( $url ) {
+		
+		$icon = '';
+
+		if( $url ) {
+			
+			// Link to Vimeo or YouTube page?
+			if( strpos( $url, 'vimeo.com' ) !== false || 
+				strpos( $url, 'youtube.com' ) !== false || 
+				strpos( $url, 'youtu.be' ) !== false )
+			$icon = 'video';
+			
+			if( ! $icon ) {
+				$parsed_url = parse_url( $url );
+				$type = wp_check_filetype( $parsed_url['path'] );
+				// Link to .mov file?
+				if( $type['ext'] == 'mov' )
+					$icon = 'video';
+				// Link to image file?
+				if( substr( $type['type'], 0, 5 ) == 'image' )
+					$icon = 'image';
+			}
+		}
+
+		return apply_filters( 'themeblvd_prettyphoto_supported_link', $icon, $url );
+	}
+}

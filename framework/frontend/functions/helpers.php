@@ -116,7 +116,7 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 						if( $gallery )
 							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						// WP oEmbed for non YouTube and Vimeo videos
-						if( ! themeblvd_prettyphoto_supported_file( $link_url ) ) {
+						if( ! themeblvd_prettyphoto_supported_link( $link_url ) ) {
 							$id = uniqid('inline-video-');
 							$output .= sprintf( '<div id="%s" class="hide">%s</div>', $id, wp_oembed_get($link_url) );
 							$link_url = "#{$id}";
@@ -130,8 +130,6 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 						$link_target = ' target="'.$target.'"';
 						break;
 				}
-				$end_link = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';
-				$end_link = apply_filters( 'themeblvd_image_overlay', $end_link );
 			} else {
 				$link = false;
 			}
@@ -157,7 +155,7 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 		$output .= '<div class="featured-image-inner">';
 		if( $link ) $output .= '<a href="'.$link_url.'"'.$link_target.' class="'.$anchor_class.'"'.$title.'>';	
 		$output .= get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
-		if( $link ) $output .= $end_link.'</a>';
+		if( $link ) $output .= themeblvd_get_image_overlay().'</a>';
 		$output .= '</div><!-- .featured-image-inner (end) -->';
 		$output .= '</div><!-- .featured-image (end) -->';
 		$output .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -1378,7 +1376,7 @@ if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
-	function themeblvd_get_category_parents( $id, $used = array() ){
+	function themeblvd_get_category_parents( $id, $used = array() ) {
 		
 		$chain = array();
 		$parent = get_category( $id );
@@ -1406,35 +1404,17 @@ if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 }
 
 /** 
- * Determine if prettyPhoto can take the current URL and 
- * display in the lightbox.
+ * Get the overlay markup for a thumbnail that animates 
+ * in the video, enlarge, link, or arrow icon.
  *
- * @since 2.2.2
+ * @since 2.3.0
  *
- * @param string $url URL string to check
- * @return boolean $supported True if URL can be linked through to prettyPhoto
+ * @return string $overaly HTML markup to get inserted within anchor tag
  */
 
-function themeblvd_prettyphoto_supported_file( $url ) {
-	
-	$supported = false;
-
-	// Link to Vimeo or YouTube page?
-	if( strpos( $url, 'vimeo.com' ) !== false || 
-		strpos( $url, 'youtube.com' ) !== false || 
-		strpos( $url, 'youtu.be' ) !== false )
-	$supported = true;
-	
-	if( ! $supported ) {
-		$parsed_url = parse_url( $url );
-		$type = wp_check_filetype( $parsed_url['path'] );
-		// Link to .mov file?
-		if( $type['ext'] == 'mov' )
-			$supported = true;
-		// Link to image file?
-		if( substr( $type['type'], 0, 5 ) == 'image' )
-			$supported = true;
+if( ! function_exists( 'themeblvd_get_image_overlay' ) ) {
+	function themeblvd_get_image_overlay() {
+		$overlay = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';
+        return apply_filters( 'themeblvd_image_overlay', $overlay );
 	}
-
-	return apply_filters( 'themeblvd_prettyphoto_supported_file', $supported, $url );
 }
