@@ -835,7 +835,8 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 		// Register scripts -- These scripts are only enque'd as needed.
 		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/frontend/assets/js/flexslider.min.js', array('jquery'), '2.1', true  );
-		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.js', array('jquery'), '1.1', true );
+		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/frontend/assets/js/roundabout.min.js', array('jquery'), '1.1', true );
+		wp_register_script( 'nivo', TB_FRAMEWORK_URI . '/frontend/assets/js/nivo.min.js', array('jquery'), '3.2', true );
 		
 		// Enque Scripts
 		wp_enqueue_script( 'jquery' );
