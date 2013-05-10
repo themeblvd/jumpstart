@@ -1,6 +1,6 @@
-/**
- * Responsive navigation menu.
- */
+// ---------------------------------------------------------
+// Responsive navigation menu.
+// ---------------------------------------------------------
 
 (function($) {
     $.fn.toggleMenu = function(options) {
@@ -58,9 +58,9 @@
     };
 })(jQuery);
 
-/**
- * Prints out the inline javascript needed for the frontend framework. 
- */
+// ---------------------------------------------------------
+// Frontend jQuery on DOM load
+// ---------------------------------------------------------
 
 jQuery(document).ready(function($) {
 

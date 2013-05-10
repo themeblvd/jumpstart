@@ -1948,6 +1948,76 @@ html[xmlns] .slides {
 	display: block;
 }
 
+/* Nivo Slider (v3.2) */
+.nivoSlider {
+	position: relative;
+	width: 100%;
+	height: auto;
+	/* overflow: hidden; */
+}
+.nivoSlider img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	max-width: none;
+}
+.nivo-main-image {
+	display: block !important;
+	position: relative !important; 
+	width: 100% !important;
+}
+/* Nivo Slider: If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	z-index: 6;
+	display: none;
+	/*
+	background: white; 
+	filter: alpha(opacity=0); 
+	opacity: 0;
+	*/
+}
+
+/* Nivo Slider: The slices and boxes in the Slider */
+.nivo-slice {
+	display: block;
+	position: absolute;
+	z-index: 5;
+	height: 100%;
+	top: 0;
+}
+.nivo-box {
+	display: block;
+	position: absolute;
+	z-index: 5;
+	overflow: hidden;
+}
+.nivo-box img { display: block; }
+
+/* Nivo Slider: Caption placement */
+.nivo-caption {
+	position:absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 8;
+	overflow: hidden;
+	display: none;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+
 /* Contact Form 7 */
 div.wpcf7 {
 	margin: 0;
@@ -2252,19 +2322,21 @@ div.pp_default .pp_description {
 	}
 }
 
-/* Standard Slider */
-.standard-slider .tb-loader {
-	/* Theme needs to style loader to show initially for it to be used in specific situations. */
+/* Standard Slider + Nivo Slider */
+.tb-nivo-slider-wrapper .nivoSlider img {
 	display: none;
 }
-.standard-slider-wrapper .slides-wrapper {
+.standard-slider-wrapper .slides-wrapper,
+.tb-nivo-slider-wrapper .slides-wrapper {
 	background: #f5f5f5;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
+	min-height: 100px;
 	padding:0 0 40px 0;
 }
-.standard-slider-wrapper .hide-full_nav .slides-wrapper {
+.standard-slider-wrapper .hide-full_nav .slides-wrapper,
+.tb-nivo-slider-wrapper .hide-full_nav .slides-wrapper {
 	padding-bottom: 0;
 }
 .standard-slider .slide .media {
@@ -2290,7 +2362,8 @@ div.pp_default .pp_description {
 	height: 100%;
 	z-index: 1;
 }
-.standard-slider .media-full .content {
+.standard-slider .media-full .content,
+.tb-nivo-slider-wrapper .nivo-caption {
 	background: #000000; /* Fallback for non rgba-supporting browsers */
 	background: rgba(0, 0, 0, 0.75);
 	color: #ffffff;
@@ -2300,16 +2373,24 @@ div.pp_default .pp_description {
 	left: 0;
 	z-index: 2;
 }
-.standard-slider .media-full .content .content-inner {
+.tb-nivo-slider-wrapper .nivo-caption {
+	z-index: 8;
+}
+.standard-slider .media-full .content .content-inner,
+.tb-nivo-slider-wrapper .nivo-caption .content .content-inner {
 	padding: 15px 15px 10px 15px;
 }
-.standard-slider .media-full .content .slide-title {
+.standard-slider .media-full .content .slide-title,
+.tb-nivo-slider-wrapper .nivo-caption .content .slide-title {
 	font-size: 1.3em;
 	font-weight: bold;
-	margin: 0 0 5px 0;
+	margin: 0;
+	padding: 0 0 5px 0;
 }
-.standard-slider .media-full .content .slide-description p {
-	margin: 0 0 5px 0;
+.standard-slider .media-full .content .slide-description p,
+.tb-nivo-slider-wrapper .nivo-caption .content .slide-description p {
+	margin: 0;
+	padding: 0 0 5px 0;
 }
 .standard-slider .media-align-left .slide-body, 
 .standard-slider .media-align-right .slide-body {
@@ -2336,7 +2417,8 @@ div.pp_default .pp_description {
 .standard-slider .media-align-right .content-inner {
 	padding: 20px;
 }
-.standard-slider-wrapper .flex-control-nav {
+.standard-slider-wrapper .flex-control-nav,
+.tb-nivo-slider-wrapper .nivo-controlNav {
 	position: absolute;
 	bottom: 15px;
 	left: 10px;
@@ -2348,7 +2430,12 @@ div.pp_default .pp_description {
 	float: left;
 	padding: 2px;
 }
-.standard-slider-wrapper .flex-control-nav li a {
+.tb-nivo-slider-wrapper .nivo-controlNav a {
+	float: left;
+	margin: 2px;
+}
+.standard-slider-wrapper .flex-control-nav li a,
+.tb-nivo-slider-wrapper .nivo-controlNav a {
 	background: url('../images/elements/slider-nav.png') no-repeat;
 	cursor: pointer;
 	display: block;
@@ -2357,24 +2444,34 @@ div.pp_default .pp_description {
 	width: 10px;
 	height: 11px;
 }
-.standard-slider-wrapper .flex-control-nav li a.flex-active { 
+.standard-slider-wrapper .flex-control-nav li a.flex-active,
+.tb-nivo-slider-wrapper .nivo-controlNav a.active { 
 	background-position: -10px 0;
 }
-.standard-slider-wrapper .flex-direction-nav {
+.standard-slider-wrapper .flex-direction-nav,
+.tb-nivo-slider-wrapper .nivo-directionNav {
 	position: absolute;
 	bottom: 15px;
 	right: 10px;
 	height: 11px;
 	z-index: 4;
 }
+.tb-nivo-slider-wrapper .nivo-directionNav {
+	bottom: -23px;
+}
 .standard-slider-wrapper .flex-direction-nav li {
 	float: left;
 	padding: 0;
 }
-.standard-slider-wrapper .flex-direction-nav li a {
+.tb-nivo-slider-wrapper .nivo-directionNav a {
+	float: left;
+}
+.standard-slider-wrapper .flex-direction-nav li a,
+.tb-nivo-slider-wrapper .nivo-directionNav a {
 	background-image: url('../images/elements/slider-arrows.png');
 	background-position: 0 0;
 	background-repeat: no-repeat;
+	cursor: pointer;
 	display: block;
 	margin: 0 1px;
 	outline: none;
@@ -2382,16 +2479,20 @@ div.pp_default .pp_description {
 	width: 16px;
 	height: 16px;
 }
-.standard-slider-wrapper .flex-direction-nav li a.flex-prev {
+.standard-slider-wrapper .flex-direction-nav li a.flex-prev,
+.tb-nivo-slider-wrapper .nivo-directionNav a.nivo-prevNav {
 	background-position: 0 0;
 }
-.standard-slider-wrapper .flex-direction-nav li a.flex-prev:hover {
+.standard-slider-wrapper .flex-direction-nav li a.flex-prev:hover,
+.tb-nivo-slider-wrapper .nivo-directionNav a.nivo-prevNav:hover {
 	background-position: -16px 0;
 }
-.standard-slider-wrapper .flex-direction-nav li a.flex-next {
+.standard-slider-wrapper .flex-direction-nav li a.flex-next,
+.tb-nivo-slider-wrapper .nivo-directionNav a.nivo-nextNav {
 	background-position: 0 -16px;
 }
-.standard-slider-wrapper .flex-direction-nav li a.flex-next:hover {
+.standard-slider-wrapper .flex-direction-nav li a.flex-next:hover,
+.tb-nivo-slider-wrapper .nivo-directionNav a.nivo-nextNav:hover {
 	background-position: -16px -16px;
 }
 .standard-slider-wrapper .flex-direction-nav li a.flex-play {
@@ -2412,11 +2513,13 @@ div.pp_default .pp_description {
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
 	/* Slider controls - Use 2x image for retina */
-	.standard-slider-wrapper .flex-control-nav li a {
+	.standard-slider-wrapper .flex-control-nav li a,
+	.tb-nivo-slider-wrapper .nivo-controlNav a {
 		background-image: url('../images/elements/slider-nav_2x.png');
 		background-size: 20px 11px;
 	}
-	.standard-slider-wrapper .flex-direction-nav li a {
+	.standard-slider-wrapper .flex-direction-nav li a,
+	.tb-nivo-slider-wrapper .nivo-directionNav a {
 		background-image: url('../images/elements/slider-arrows_2x.png');
 		background-size: 32px 64px;
 	}

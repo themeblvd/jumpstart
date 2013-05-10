@@ -379,13 +379,16 @@ a.thumbnail:hover {
 .slider-fallback li.slider-fallback-slide {
 	border-color: #000000;
 }
-.standard-slider-wrapper .slides-wrapper {
+.standard-slider-wrapper .slides-wrapper,
+.tb-nivo-slider-wrapper .slides-wrapper {
 	background: #222222;
 }
-.standard-slider-wrapper .flex-control-nav li a {
+.standard-slider-wrapper .flex-control-nav li a,
+.tb-nivo-slider-wrapper .nivo-controlNav a {
 	background-image: url('../images/elements/slider-nav-dark.png');
 }
-.standard-slider-wrapper .flex-direction-nav li a {
+.standard-slider-wrapper .flex-direction-nav li a,
+.tb-nivo-slider-wrapper .nivo-directionNav a {
 	background-image: url('../images/elements/slider-arrows-dark.png');
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
@@ -393,11 +396,13 @@ a.thumbnail:hover {
 		only screen and (-o-min-device-pixel-ratio: 1.5), 
 		only screen and (min-device-pixel-ratio: 1.5) {
 	/* Slider controls - Use 2x image for retina */
-	.standard-slider-wrapper .flex-control-nav li a {
+	.standard-slider-wrapper .flex-control-nav li a,
+	.tb-nivo-slider-wrapper .nivo-controlNav a {
 		background-image: url('../images/elements/slider-nav-dark_2x.png');
 		background-size: 20px 11px;
 	}
-	.standard-slider-wrapper .flex-direction-nav li a {
+	.standard-slider-wrapper .flex-direction-nav li a,
+	.tb-nivo-slider-wrapper .nivo-directionNav a{
 		background-image: url('../images/elements/slider-arrows-dark_2x.png');
 		background-size: 32px 64px;
 	}
