@@ -14,6 +14,7 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 			'id'			=> '', 			// A token to identify this field, extending onto option_name. -- option_name[id]
 			'value'			=> '',			// The value of the field, if present.
 			'value_id'		=> '',			// Attachment ID used in slider
+			'value_title'	=> '',			// Title of attachment image (used for slider)
 			'value_width'	=> '',			// Width value used for logo option
 			'name'			=> ''			// Option to extend 'id' token -- option_name[id][name]
 		);
@@ -73,6 +74,7 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 				$output .= '<a href="#" class="help-icon tooltip-link" title="'.$help.'">Help</a>';
 				$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.$name.'[id]" placeholder="'.__('Image ID', 'themeblvd').'" value="'.$args['value_id'].'" /></span>'."\n";
 				$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="hidden" name="'.$name.'[url]" value="'.$value.'" />'."\n";
+				$output .= '<input id="'.$formfield.'_title" class="image-title upload'.$class.'" type="hidden" name="'.$name.'[title]" value="'.$args['value_title'].'" />'."\n";
 				break;
 
 			case 'video' :

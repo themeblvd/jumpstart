@@ -452,7 +452,8 @@
 				
 				// Grab the selected attachment.
 				var attachment = file_frame.state().get('selection').first(),
-					remove_text = current_option.find('.trigger').data('remove');
+					remove_text = current_option.find('.trigger').data('remove'),
+					helper_text;
 				
 				current_option.find('.image-url').val(attachment.attributes.url);
 				if( attachment.attributes.type == 'image' )
@@ -460,12 +461,19 @@
 
 				if(upload_type == 'logo')
 					current_option.find('.image-width').val(attachment.attributes.width);
-				
-				if(upload_type == 'slider')
-					current_option.find('.image-id').val(attachment.attributes.id);
 
 				if(upload_type == 'video')
 					current_option.find('.video-url').val(attachment.attributes.url);
+
+				if(upload_type == 'slider')
+				{
+					current_option.find('.image-id').val(attachment.attributes.id);
+					current_option.find('.image-title').val(attachment.attributes.title);
+
+					helper_text = current_option.find('.image-title').val();
+					if( helper_text )
+						current_option.closest('.widget').find('.slide-summary').text(helper_text).fadeIn(200);
+				}
 
 				if( upload_type != 'video' )
 				{
@@ -496,7 +504,12 @@
 		 */
 		remove_file : function(current_option)
 		{
-			var upload_text = current_option.find('.trigger').data('upload');
+			var upload_text = current_option.find('.trigger').data('upload'),
+				upload_type = current_option.find('.trigger').data('type');
+			
+			if( upload_type == 'slider' )
+				current_option.closest('.widget').find('.slide-summary').removeClass('image video').hide().text('');
+
 			current_option.find('.remove-image').hide();
 			current_option.find('.upload').val('');
 			current_option.find('.of-background-properties').hide();
