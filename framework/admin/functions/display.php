@@ -836,13 +836,13 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		// Standard Image
 		$image_upload  = '<div class="section-upload image-standard">';
 		$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
-		$image_upload .= themeblvd_media_uploader( array( 'name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'name' => 'image' ) );
+		$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'name' => 'image' ) );
 		$image_upload .= '</div>';
 		
 		// Retina image (2x)
 		$image_upload .= '<div class="section-upload image-2x">';
 		$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
-		$image_upload .= themeblvd_media_uploader( array( 'name' => $name, 'type' => 'logo_2x', 'id' => $id, 'value' => $current_retina['url'], 'name' => 'image_2x' ) );
+		$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo_2x', 'id' => $id, 'value' => $current_retina['url'], 'name' => 'image_2x' ) );
 		$image_upload .= '</div>';
 
 	} else {
