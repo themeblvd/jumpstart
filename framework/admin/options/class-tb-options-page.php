@@ -1,12 +1,38 @@
 <?php
 /**
- * Theme Blvd Options Page
+ * Theme Blvd Options Page. Create an options panel 
+ * using internal options framework.
+ * 
+ * @author		Jason Bobich
+ * @copyright	Copyright (c) Jason Bobich
+ * @link		http://jasonbobich.com
+ * @link		http://themeblvd.com
+ * @package 	Theme Blvd WordPress Framework
  */
-
 class Theme_Blvd_Options_Page {
 	
+	/**
+	 * ID that the options panel is going to be saved under.
+	 *
+	 * @since 2.2.0
+	 * @var array
+	 */
 	public $id;
+
+	/**
+	 * Options for the panel.
+	 *
+	 * @since 2.2.0
+	 * @var array
+	 */
 	public $options;
+
+	/**
+	 * Arguments to pass into add_submenu_page() function.
+	 *
+	 * @since 2.2.0
+	 * @var array
+	 */
 	public $args;
 	
 	/**
