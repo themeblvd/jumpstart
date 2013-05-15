@@ -1192,7 +1192,7 @@ if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
 					if( ! $columns ) $columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
 					// Rows
 					$rows = themeblvd_get_option( 'archive_grid_rows' );
-					if( ! $rows ) $rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+					if( ! $rows ) $rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
 					// Posts per page = $columns x $rows
 					$new_posts_per_page = $columns * $rows;
 				}
