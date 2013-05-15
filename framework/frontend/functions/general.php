@@ -557,7 +557,7 @@ if( ! function_exists( 'themeblvd_set_grid_atts' ) ) {
 		if( ! $columns )
 			$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
 		if( ! $rows )
-			$rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+			$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
 		
 		// Posts per page, used for the grid display and not 
 		// the actual main query of posts.
