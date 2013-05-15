@@ -1,5 +1,32 @@
 <?php
 /**
+ * Add page and post meta boxes.
+ *
+ * @since 2.0.1
+ */
+
+if( ! function_exists( 'themeblvd_add_meta_boxes' ) ) {
+	function themeblvd_add_meta_boxes() {
+
+		global $_themeblvd_page_meta_box;
+		global $_themeblvd_post_meta_box;
+
+		// Page meta box
+		if( themeblvd_supports( 'meta', 'page_options' ) ) {
+			$page_meta = setup_themeblvd_page_meta();
+			$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $page_meta['config'], $page_meta['options'] );
+		}
+
+		// Post meta box
+		if( themeblvd_supports( 'meta', 'post_options' ) ) {
+			$post_meta = setup_themeblvd_post_meta();
+			$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $post_meta['config'], $post_meta['options'] );
+		}
+
+	}
+}
+
+/**
  * Get settings for the Page Options meta box.
  *
  * @since 2.0.0
@@ -41,52 +68,6 @@ function setup_themeblvd_page_meta() {
 		)
 	);
 	return apply_filters( 'themeblvd_page_meta', $setup );
-}
-
-/**
- * Display page meta box
- *
- * @since 2.0.1
- */
-
-if( ! function_exists( 'display_themeblvd_page_meta' ) ) {
-	function display_themeblvd_page_meta() {
-		
-		global $post;
-    	$page_meta = setup_themeblvd_page_meta();
-    	
-    	// Make sure options framework exists so we can show 
-    	// the options form.
-    	if( ! function_exists( 'themeblvd_option_fields' ) ) {
-    		echo 'Options framework not found.';
-    		return;
-    	}
-    	
-    	// Start content
-    	echo '<div class="tb-meta-box">';
-    	
-    	// Gather any already saved settings or defaults for option types 
-    	// that need a starting value
-    	$settings = array();
-    	foreach( $page_meta['options'] as $option ) {
-    		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
-    		if( ! $settings[$option['id']] ) {
-    			if( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
-    				if( isset( $option['std'] ) )
-    					$settings[$option['id']] = $option['std'];
-    			}
-    		}
-    	}
-    	
-    	// Use options framework to display form elements
-    	$form = themeblvd_option_fields( 'themeblvd_meta', $page_meta['options'], $settings, false );
-    	echo $form[0];
-    	
-    	//  Finish content
-    	if( isset( $page_meta['config']['desc'] ) ) echo '<p class="tb-meta-desc">'.$page_meta['config']['desc'].'</p>';
-		echo '</div><!-- .tb-meta-box (end) -->';
-
-	}
 }
 
 /**
@@ -239,122 +220,6 @@ function setup_themeblvd_post_meta() {
 		)
 	);
 	return apply_filters( 'themeblvd_post_meta', $setup );
-}
-
-/**
- * Display post meta box
- *
- * @since 2.0.1
- */
-
-if( ! function_exists( 'display_themeblvd_post_meta' ) ) {
-	function display_themeblvd_post_meta() {
-		
-		global $post;
-    	$post_meta = setup_themeblvd_post_meta();
-    	
-    	// Make sure options framework exists so we can show 
-    	// the options form.
-    	if( ! function_exists( 'themeblvd_option_fields' ) ) {
-    		echo 'Options framework not found.';
-    		return;
-    	}
-    	
-    	// Start content
-    	echo '<div class="tb-meta-box">';
-    	
-    	// Gather any already saved settings or defaults for option types 
-    	// that need a starting value
-    	$settings = array();
-    	foreach( $post_meta['options'] as $option ) {
-    		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
-    		if( ! $settings[$option['id']] ) {
-    			if( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
-    				if( isset( $option['std'] ) )
-    					$settings[$option['id']] = $option['std'];
-    			}
-    		}
-    	}
-    	
-    	// Use options framework to display form elements
-    	$form = themeblvd_option_fields( 'themeblvd_meta', $post_meta['options'], $settings, false );
-    	echo $form[0];
-    	
-    	//  Finish content
-    	if( isset( $post_meta['config']['desc'] ) ) echo '<p class="tb-meta-desc">'.$post_meta['config']['desc'].'</p>';
-		echo '</div><!-- .tb-meta-box (end) -->';
-		
-	}
-}
-
-/**
- * Add page and post meta boxes.
- *
- * @since 2.0.1
- */
-
-if( ! function_exists( 'themeblvd_add_meta_boxes' ) ) {
-	function themeblvd_add_meta_boxes() {
-
-		// Page meta box
-		if( themeblvd_supports( 'meta', 'page_options' ) ) {
-			$page_meta = setup_themeblvd_page_meta();
-			foreach( $page_meta['config']['page'] as $page ) {
-	    		add_meta_box( 
-			        $page_meta['config']['id'],
-					$page_meta['config']['title'],
-					'display_themeblvd_page_meta',
-					$page,
-					$page_meta['config']['context'],
-					$page_meta['config']['priority']
-			    );
-	    	}
-	    }
-	
-		// Post meta box
-		if( themeblvd_supports( 'meta', 'post_options' ) ) {
-			$post_meta = setup_themeblvd_post_meta();
-			foreach( $post_meta['config']['page'] as $page ) {
-	    		add_meta_box( 
-			        $post_meta['config']['id'],
-					$post_meta['config']['title'],
-					'display_themeblvd_post_meta',
-					$page,
-					$post_meta['config']['context'],
-					$post_meta['config']['priority']
-			    );
-	    	}
-	    }
-
-	}
-}
-
-/**
- * Save page and post meta boxes.
- *
- * @since 2.0.1
- */
-
-if( ! function_exists( 'themeblvd_save_meta_boxes' ) ) {
-	function themeblvd_save_meta_boxes( $post_id ) {
-		
-		// Page meta boxes
-		$page_meta = setup_themeblvd_page_meta();
-		foreach( $page_meta['options'] as $option ) {
-			if( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
-				update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
-			}	
-		}
-		
-		// Post Meta boxes
-		$post_meta = setup_themeblvd_post_meta();
-		foreach( $post_meta['options'] as $option ) {
-			if( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
-				update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
-			}	
-		}
-		
-	}
 }
 
 /**
