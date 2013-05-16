@@ -16,6 +16,7 @@ Jump Start Changelog
 * Added support for some new features of Sliders plugin v1.1+.
 * Added support for WP 3.5+ media uploader.
 * Added support for Nivo Slider.
+* Added `themeblvd_default_sidebar_args` filter for arguments when registering default sidebar locations.
 * Updated Roundabout script to v2.4.2
 * Expanded "Featured Image Link" video link to accept any WordPress oEmbed URL.
 * Slight UI improvements to Logo option in default Theme Options panel.

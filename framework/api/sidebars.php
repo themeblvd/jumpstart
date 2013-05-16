@@ -285,7 +285,8 @@ if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 	function themeblvd_register_sidebars() {
 		$default_sidebars = themeblvd_get_sidebar_locations();
 		foreach( $default_sidebars as $sidebar ) {
-			register_sidebar( $sidebar['args'] );
+			$args = apply_filters( 'themeblvd_default_sidebar_args', $sidebar['args'], $sidebar, $sidebar['location']['id'] );
+			register_sidebar( $args );
 		}
 	}
 }
