@@ -938,7 +938,7 @@ if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
 			// Before including files, determine if SSL is being 
 			// used because if we include an external file without https 
 			// on a secure server, they'll get an error.
-			$protocol = isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://';
+			$protocol = is_ssl() ? 'https://' : 'http://';
 			
 			// Include each font file from google.
 			foreach( $fonts as $font ) {
