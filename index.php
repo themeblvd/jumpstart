@@ -29,14 +29,13 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
-						<?php if( themeblvd_get_part( 'index' ) == 'grid' || themeblvd_get_part( 'index' ) == 'index_grid' ) : ?>
+						<?php if( themeblvd_is_grid_mode() ) : ?>
 							
 							<!-- HOMEPAGE POST GRID (start) -->
 							
 							<div class="primary-post-grid post_grid_paginated post_grid">
 								<div class="grid-protection">
 									<?php
-									query_posts( themeblvd_get_att( 'query_string' ) );
 									$counter = themeblvd_set_att( 'counter', 1 );
 									$columns = themeblvd_get_att( 'columns' );
 									if ( have_posts() ) {
@@ -52,7 +51,6 @@ get_header();
 									} else {
 										echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 									}
-									wp_reset_query();
 									?>
 								</div><!-- .grid-protection (end) -->
 								<?php themeblvd_pagination(); ?>
@@ -65,14 +63,13 @@ get_header();
 							<!-- HOMEPAGE POST LIST (start) -->
 							
 							<div class="primary-post-list post_list_paginated post_list">
-								<?php query_posts( themeblvd_get_att( 'query_string' ) ); ?>
 								<?php if ( have_posts() ) : ?>
 									<?php while ( have_posts() ) : the_post(); ?>
 										<?php get_template_part( 'content', themeblvd_get_part( 'index' ) ); ?>
 									<?php endwhile; ?>
 								<?php else : ?>
 									<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
-								<?php endif; wp_reset_query(); ?>
+								<?php endif; ?>
 								<?php themeblvd_pagination(); ?>
 							</div><!-- .blogroll (end) -->
 							
