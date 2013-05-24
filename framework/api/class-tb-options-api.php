@@ -1,55 +1,177 @@
 <?php
 /**
- * Setup all core theme options of framework, which can 
- * then be altered at the theme level.
+ * Theme Blvd Options API
  *
- * @uses $_themeblvd_options 
- * @since 2.1.0
+ * This class establishes all of the Theme Blvd 
+ * framework's theme options, and sets up the API 
+ * system to allow these options to be modified 
+ * from the client-side.
  *
- * Layout
- *	- Header
- *		- logo
- *	- Main
- *		- breadcrumbs
- *		- sidebar_layout
- *	- Footer
- *		- start_footer_cols
- *		- footer_setup
- *		- footer_col_1
- *		- footer_col_2
- *		- footer_col_3
- *		- footer_col_4
- *		- footer_col_5
- *		- end_footer_cols
- *		- footer_copyright
- * Content
- *	- Single Posts
- *		- single_meta
- *		- single_thumbs
- *		- single_comments
- *	- Primary Posts Display
- *		- blog_thumbs
- *		- blog_content
- *		- blog_categories
- *		- start_featured
- *		- blog_featured
- *		- blog_slider
- *		- end_featured
- *	- Archives
- *		- archive_title
- *		- archive_thumbs
- *		- archive_content
- * Configuration
- *	- Analytics
- *		- analytics
+ * Also, this class provides access to the saved 
+ * settings cooresponding to the these theme options.
+ * 
+ * @author		Jason Bobich
+ * @copyright	Copyright (c) Jason Bobich
+ * @link		http://jasonbobich.com
+ * @link		http://themeblvd.com
+ * @package 	Theme Blvd WordPress Framework
  */
+class Theme_Blvd_Options_API {
+	
+	/*--------------------------------------------*/
+	/* Properties, private
+	/*--------------------------------------------*/
 
-if( ! function_exists( 'themeblvd_get_core_options' ) ) {
-	function themeblvd_get_core_options() {
+	/**
+	 * A single instance of this class.
+	 *
+	 * @since 2.3.0
+	 */
+	private static $instance = null;
+
+	/**
+	 * The options name associated with the the theme
+	 * options and settings. i.e. get_option({name})
+	 *
+	 * @since 2.3.0
+	 */
+	private $option_id = '';
+
+	/**
+	 * Raw options modified along the way by client.
+	 *
+	 * @since 2.3.0
+	 */
+	private $raw_options = array();
+
+	/**
+	 * Formatted options after client modifications.
+	 *
+	 * @since 2.3.0
+	 */
+	private $formatted_options = array();
+
+	/**
+	 * Settings saved in the DB for the current site.
+	 *
+	 * @since 2.3.0
+	 */
+	private $settings = array();
+
+
+	/*--------------------------------------------*/
+	/* Constructor
+	/*--------------------------------------------*/
+
+	/**
+     * Creates or returns an instance of this class.
+     *
+     * @since 2.3.0
+     *
+     * @return Theme_Blvd_Options_API A single instance of this class.
+     */
+	public static function get_instance() {
 		
-		/*-------------------------------------------------------*/
-		/* Setup Helper Items
-		/*-------------------------------------------------------*/
+		if( self::$instance == null )
+            self::$instance = new self;
+        
+        return self::$instance;
+	}
+
+	/**
+	 * Constructor. Hook everything in and setup API.
+	 *
+	 * @since 2.3.0
+	 */
+	private function __construct() {
+		
+		// Setup options
+		$this->set_option_id();
+		$this->set_raw_options();
+
+		// Format options, and store saved settings
+		add_action( 'after_setup_theme', array( $this, 'set_formatted_options' ), 1000 );
+		add_action( 'after_setup_theme', array( $this, 'set_settings' ), 1000 );
+		
+	}
+
+	/*--------------------------------------------*/
+	/* Methods, general mutators
+	/*--------------------------------------------*/
+
+	/**
+	 * Set option name that options and settings will 
+	 * be associated with.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $id Optional current ID to be applied.
+	 */
+	private function set_option_id( $id = '' ) {
+
+		if( $id ) {
+			$this->option_id = $id;
+			return;
+		}
+
+		// This gets the theme name from the stylesheet (lowercase and without spaces)
+		$theme_data = wp_get_theme( get_stylesheet() );
+		$themename = preg_replace('/\W/', '', strtolower( $theme_data->get('Name') ) );
+
+		$this->option_id = apply_filters( 'themeblvd_option_id', $themename );
+	}
+
+	/**
+	 * Setup raw options array for the start of the 
+	 * API process.
+	 *
+	 * Note: The framework used to reference these as 
+	 * "core options" before this class existed.
+	 *
+	 * @since 2.3.0
+	 *
+	 * Layout
+	 *	- Header
+	 *		- logo
+	 *	- Main
+	 *		- breadcrumbs
+	 *		- sidebar_layout
+	 *	- Footer
+	 *		- start_footer_cols
+	 *		- footer_setup
+	 *		- footer_col_1
+	 *		- footer_col_2
+	 *		- footer_col_3
+	 *		- footer_col_4
+	 *		- footer_col_5
+	 *		- end_footer_cols
+	 *		- footer_copyright
+	 * Content
+	 *	- Single Posts
+	 *		- single_meta
+	 *		- single_thumbs
+	 *		- single_comments
+	 *	- Primary Posts Display
+	 *		- blog_thumbs
+	 *		- blog_content
+	 *		- blog_categories
+	 *		- start_featured
+	 *		- blog_featured
+	 *		- blog_slider
+	 *		- end_featured
+	 *	- Archives
+	 *		- archive_title
+	 *		- archive_thumbs
+	 *		- archive_content
+	 * Configuration
+	 *	- Analytics
+	 *		- analytics
+	 */
+	private function set_raw_options() {
+
+		/*--------------------------------*/
+		/* Option helpers
+		/*--------------------------------*/
 		
 		// If using image radio buttons, define a directory path
 		$imagepath =  get_template_directory_uri() . '/framework/admin/assets/images/';
@@ -60,33 +182,21 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 			$layouts = themeblvd_sidebar_layouts();
 			foreach( $layouts as $layout )
 				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
-		}
-		
-		// Generate sliders options
-		$custom_sliders = array();
-		if( is_admin() ) {
-			$sliders = get_posts('post_type=tb_slider&numberposts=-1');
-			if( ! empty( $sliders ) ) {
-				foreach( $sliders as $slider )
-					$custom_sliders[$slider->post_name] = $slider->post_title;
-			} else {
-				$custom_sliders['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
-			}
 		}		
 		
 		// Pull all the categories into an array
 		$options_categories = array();  
 		if( is_admin() ) {
-			$options_categories_obj = get_categories();
+			$options_categories_obj = get_categories( array( 'hide_empty', false ) );
 			foreach ($options_categories_obj as $category) {
 		    	$options_categories[$category->cat_ID] = $category->cat_name;
 			}
 		}
-	
-		/*-------------------------------------------------------*/
-		/* Layout
-		/*-------------------------------------------------------*/
-		
+
+		/*--------------------------------*/
+		/* Tab #1: Layout
+		/*--------------------------------*/
+
 		$layout_options = array(
 			// Section: Header
 			'header' => array(
@@ -194,11 +304,11 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 				) // End footer options
 			)
 		);
-		
-		/*-------------------------------------------------------*/
-		/* Content
-		/*-------------------------------------------------------*/
-		
+
+		/*--------------------------------*/
+		/* Tab #2: Content
+		/*--------------------------------*/
+
 		$content_options = array(
 			// Section: Single Posts
 			'single' => array(
@@ -320,11 +430,11 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 				) // End archives options
 			)
 		);
-		
-		/*-------------------------------------------------------*/
-		/* Configuration
-		/*-------------------------------------------------------*/
-		
+
+		/*--------------------------------*/
+		/* Tab #3: Configuration
+		/*--------------------------------*/
+
 		$config_options = array(
 			// Section: Analytics
 			'analytics' => array(
@@ -339,12 +449,12 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 				) // End analytics options
 			)
 		);
-	
-		/*-------------------------------------------------------*/
-		/* Finalize
-		/*-------------------------------------------------------*/
-		
-		$options = array(
+
+		/*--------------------------------*/
+		/* Finalize and extend
+		/*--------------------------------*/
+
+		$this->raw_options = array(
 			'layout' 	=> array( 
 				'name' 		=> __( 'Layout', 'themeblvd' ),
 				'sections' 	=> $layout_options
@@ -358,173 +468,170 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 				'sections' 	=> $config_options
 			)
 		);
-		return apply_filters( 'themeblvd_core_options', $options );
+		
+		// The following filter probably won't be used often, 
+		// but if there's something that can't be accomplished 
+		// through the client mutator API methods, then this 
+		// provides a way to modify these raw options.
+		$this->raw_options = apply_filters( 'themeblvd_core_options', $this->raw_options );
+
 	}
-}
 
-/**
- * This sets up the global theme options after 
- * the theme level has had a chance to make 
- * modifications, as well as formatting properly 
- * to go into the Options Framework. It gets hooked 
- * in at  after_theme_setup but w/priority 1000.
- *
- * @uses $_themeblvd_options
- * @uses $_themeblvd_core_options 
- * @since 2.1.0
- */
+	/**
+	 * Format raw options after client has had a chance to 
+	 * modifty options. 
+	 * 
+	 * This works because our set_formatted_options()
+	 * mutator is hooked in to the WP loading process at
+	 * after_setup_theme. 
+	 *
+	 * @since 2.3.0
+	 */
+	public function set_formatted_options() {
 
-if( ! function_exists( 'themeblvd_format_options' ) ) {
-	function themeblvd_format_options() {
-		global $_themeblvd_core_options;
-		global $_themeblvd_options;
-		$_themeblvd_options = array();
+		$this->formatted_options = array();
+		
 		// Tab Level
-		foreach( $_themeblvd_core_options as $tab_id => $tab ) {	
+		foreach( $this->raw_options as $tab_id => $tab ) {	
+			
 			// Insert Tab Heading
-			$_themeblvd_options['tab_'.$tab_id] = array(
+			$this->formatted_options['tab_'.$tab_id] = array(
 				'id' 	=> $tab_id,
 				'name' 	=> $tab['name'],
 				'type' 	=> 'heading'
 			);
+			
 			// Section Level
 			if( $tab['sections'] ) {
 				foreach( $tab['sections'] as $section_id => $section ) {
+					
 					// Start section
-					$_themeblvd_options['start_section_'.$section_id] = array( 
+					$this->formatted_options['start_section_'.$section_id] = array( 
 						'name' => $section['name'],		
 						'type' => 'section_start'
 					);
+					
 					if( isset( $section['desc'] ) ) {
-						$_themeblvd_options['start_section_'.$section_id]['desc'] = $section['desc'];
+						$this->formatted_options['start_section_'.$section_id]['desc'] = $section['desc'];
 					}
+					
 					// Options Level
 					if( $section['options'] ) {
 						foreach( $section['options'] as $option_id => $option ) {
-							$_themeblvd_options[$option_id] = $option;
+							$this->formatted_options[$option_id] = $option;
 						}
 					}
+					
 					// End section
-					$_themeblvd_options['end_section_'.$section_id] = array( 	
+					$this->formatted_options['end_section_'.$section_id] = array( 	
 						'type' => 'section_end'
 					);
 				}
 			}
 		}
+
 		// Apply filters
-		$_themeblvd_options = apply_filters( 'themeblvd_formatted_options', $_themeblvd_options );
+		$this->formatted_options = apply_filters( 'themeblvd_formatted_options', $this->formatted_options );
+
 	}
-}
 
-/**
- * This retrieves the theme options based on the 
- * global $_themeblvd_options array created in 
- * themeblvd_format_options()
- *
- * @uses $_themeblvd_options 
- * @since 2.1.0
- */
+	/**
+	 * Set currently stored theme settings based on options.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param array $settings Optional current settings to be applied.
+	 */
+	public function set_settings( $settings = null ) {
 
-if( ! function_exists( 'themeblvd_get_formatted_options' ) ) {
-	function themeblvd_get_formatted_options() {
-		global $_themeblvd_options;
-		return apply_filters( 'themeblvd_formatted_options', $_themeblvd_options );
-	}
-}
-
-/**
- * Get theme option
- *
- * @since 2.0.0
- * @uses $_themeblvd_theme_settings
- *
- * @param string $primary The primary ID of the option
- * @param string $secondary This would be the option ID only if we're grabbing it from a multi-dimensional array
- */
-
-if( ! function_exists( 'themeblvd_get_option' ) ) {
-	function themeblvd_get_option( $primary, $seconday = null ) {
-		global $_themeblvd_theme_settings; // We pull from a global array, so we're not using WordPress's get_option every single time.
-		$options = $_themeblvd_theme_settings;
-		$option = null;
-		if( isset( $options[$primary] ) ) {
-			if( $seconday ) {
-				if( is_array( $options[$primary] ) && isset( $options[$primary][$seconday] ) )
-					$option = $options[$primary][$seconday];
-			} else {
-				$option = $options[$primary];
-			}
+		// Apply settings passed into function
+		if( $settings && is_array( $settings ) ) {
+			$this->settings = $settings;
+			return;
 		}
-		return $option;
+
+		// Or pull settings from DB
+		$this->settings = get_option( $this->option_id );
+		
+		// Do settings exist? If not, grab default values. 
+		// Only do this for the frontend.
+		if( ! $this->settings && ! is_admin() ) {
+			
+			// Because frontend, we need to add sanitiziation
+			themeblvd_add_sanitization();
+			
+			// Construct array of default values pulled from 
+			// formatted options.
+			$this->settings = themeblvd_get_option_defaults( $this->formatted_options );
+
+		}
+
+		$this->settings = apply_filters( 'themeblvd_frontend_options', $this->settings );
 	}
-}
 
-/**
- * Add theme option tab.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab to add
- * @param string $tab_name Name of the tab to add
- * @param boolean $top Whether the tab should be added to the start or not
- */
+	/*--------------------------------------------*/
+	/* Methods, client API mutators
+	/*--------------------------------------------*/
 
-if( ! function_exists( 'themeblvd_add_option_tab' ) ) {
-	function themeblvd_add_option_tab( $tab_id, $tab_name, $top = false ) {
-		global $_themeblvd_core_options;
+	/**
+	 * Add options panel tab.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab to add
+	 * @param string $tab_name Name of the tab to add
+	 * @param bool $top Whether the tab should be added to the start or not
+	 */
+	public function add_tab( $tab_id, $tab_name, $top = false ) {
 		
 		if( $top ) {
+			
 			// Add tab to the top of array 
 			$new_options = array();
 			$new_options[$tab_id] = array( 
 				'name' 		=> $tab_name,
 				'sections' 	=> array()
 			);
-			$_themeblvd_core_options = array_merge( $new_options, $_themeblvd_core_options );			
+			$this->raw_options = array_merge( $new_options, $this->raw_options );			
+		
 		} else {
+			
 			// Add tab to the end of global array
-			$_themeblvd_core_options[$tab_id] = array( 
+			$this->raw_options[$tab_id] = array( 
 				'name' 		=> $tab_name,
 				'sections' 	=> array()
 			);
+
 		}
 	}
-}
 
-/**
- * Remove theme option tab.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab to add
- */
-
-if( ! function_exists( 'themeblvd_remove_option_tab' ) ) {
-	function themeblvd_remove_option_tab( $tab_id ) {
-		global $_themeblvd_core_options;
-		unset( $_themeblvd_core_options[$tab_id] );
+	/**
+	 * Remove options panel tab.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab to add
+	 */
+	public function remove_tab( $tab_id ) {
+		unset( $this->raw_options[$tab_id] ); 
 	}
-}
 
-/**
- * Add theme option section.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab section will be located in
- * @param string $section_id ID of new section
- * @param string $section_name Name of new section
- * @param string $section_desc Description of new section
- * @param array $options Options array formatted for Options Framework
- * @param boolean $top Whether the option should be added to the top or not
- */
-
-if( ! function_exists( 'themeblvd_add_option_section' ) ) {
-	function themeblvd_add_option_section( $tab_id, $section_id, $section_name, $section_desc = null, $options = null, $top = false ) {
-		global $_themeblvd_core_options;
+	/**
+	 * Add section to an options panel tab.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab section will be located in
+	 * @param string $section_id ID of new section
+	 * @param string $section_name Name of new section
+	 * @param string $section_desc Description of new section
+	 * @param array $options Options array formatted for Options Framework
+	 * @param bool $top Whether the option should be added to the top or not
+	 */
+	public function add_section( $tab_id, $section_id, $section_name, $section_desc = '', $options = array(), $top = false ) {
 		
 		// Make sure tab exists
-		if( ! isset( $_themeblvd_core_options[$tab_id] ) )
+		if( ! isset( $this->raw_options[$tab_id] ) )
 			return;
 		
 		// Format options array
@@ -538,172 +645,193 @@ if( ! function_exists( 'themeblvd_add_option_section' ) ) {
 		}
 		
 		// Does the options section already exist?
-		if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) ) {
-			$_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'] = array_merge( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'], $new_options );
+		if( isset( $this->raw_options[$tab_id]['sections'][$section_id] ) ) {
+			$this->raw_options[$tab_id]['sections'][$section_id]['options'] = array_merge( $this->raw_options[$tab_id]['sections'][$section_id]['options'], $new_options );
 			return;
 		}
 		
 		// Add new section to top or bottom
 		if( $top ) {
-			$previous_sections = $_themeblvd_core_options[$tab_id]['sections'];
-			$_themeblvd_core_options[$tab_id]['sections'] = array(
+			
+			$previous_sections = $this->raw_options[$tab_id]['sections'];
+			
+			$this->raw_options[$tab_id]['sections'] = array(
 				$section_id => array(
-					'name' => $section_name,
-					'desc' => $section_desc,
-					'options' => $new_options
+					'name' 		=> $section_name,
+					'desc' 		=> $section_desc,
+					'options' 	=> $new_options
 				)
 			);
-			$_themeblvd_core_options[$tab_id]['sections'] = array_merge( $_themeblvd_core_options[$tab_id]['sections'], $previous_sections );
+			
+			$this->raw_options[$tab_id]['sections'] = array_merge( $this->raw_options[$tab_id]['sections'], $previous_sections );
+		
 		} else {
-			$_themeblvd_core_options[$tab_id]['sections'][$section_id] = array(
-				'name' => $section_name,
-				'desc' => $section_desc,
-				'options' => $new_options
+			
+			$this->raw_options[$tab_id]['sections'][$section_id] = array(
+				'name'		=> $section_name,
+				'desc'		=> $section_desc,
+				'options'	=> $new_options
 			);
+
 		}
+
 	}
-}
 
-/**
- * Remove theme option section.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab that section to remove belongs to
- * @param string $section_id ID of section to remove
- */
-
-if( ! function_exists( 'themeblvd_remove_option_section' ) ) {
-	function themeblvd_remove_option_section( $tab_id, $section_id ) {
-		global $_themeblvd_core_options;
-		unset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] );
+	/**
+	 * Remove section from an options panel tab.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab that section to remove belongs to
+	 * @param string $section_id ID of section to remove
+	 */
+	public function remove_section( $tab_id, $section_id ) {
+		unset( $this->raw_options[$tab_id]['sections'][$section_id] ); 
 	}
-}
 
-/**
- * Add theme option.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab to add option to
- * @param string $section_id ID of section to add to
- * @param array $option attributes for option, formatted for Options Framework
- * @param string $option_id ID of of your option, note that this id must also be present in $option array
- */
+	/**
+	 * Add option.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab to add option to
+	 * @param string $section_id ID of section to add to
+	 * @param array $option attributes for option, formatted for Options Framework
+	 * @param string $option_id ID of of your option, note that this id must also be present in $option array
+	 */
+	public function add_option( $tab_id, $section_id, $option_id, $option ) {
+		
+		if( ! isset( $this->raw_options[$tab_id] ) )
+			return;
 
-if( ! function_exists( 'themeblvd_add_option' ) ) {
-	function themeblvd_add_option( $tab_id, $section_id, $option_id, $option ) {
-		global $_themeblvd_core_options;
-		if( isset( $_themeblvd_core_options[$tab_id] ) )
-			if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) )
-				$_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] = $option;
+		if( ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
+			return;
+
+		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] = $option; 
 	}
-}
 
-/**
- * Remove theme option.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab to add option to
- * @param string $section_id ID of section to add to
- * @param string $option_id ID of of your option
- */
- 
-if( ! function_exists( 'themeblvd_remove_option' ) ) {
-	function themeblvd_remove_option( $tab_id, $section_id, $option_id ) {
-		global $_themeblvd_core_options;
-		if( isset( $_themeblvd_core_options[$tab_id] ) ) {
-			if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) ) {
-				if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
-					// If option has element's ID as key, we can find and 
-					// remove it faster.
-					unset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] );
-				} else {
-					// If this is an option added by a child theme or plugin, 
-					// and it doesn't have the element's ID as the key, this 
-					// is how we can remove it.
-					foreach( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'] as $key => $value ) {
-						if( $value['id'] == $option_id ) {
-							unset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$key] );
-						}
-					}
+	/**
+	 * Remove option.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab to add option to
+	 * @param string $section_id ID of section to add to
+	 * @param string $option_id ID of of your option
+	 */
+	public function remove_option( $tab_id, $section_id, $option_id ) {
+		
+		if( ! isset( $this->raw_options[$tab_id] ) || ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
+			return;
+
+		if( isset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
+			
+			// If option has element's ID as key, we can find and 
+			// remove it easier.
+			unset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] );
+		
+		} else {
+			
+			// If this is an option added by a child theme or plugin, 
+			// and it doesn't have the element's ID as the key, we'll 
+			// need to loop through to find it in order to remove it.
+			foreach( $this->raw_options[$tab_id]['sections'][$section_id]['options'] as $key => $value ) {
+				if( $value['id'] == $option_id ) {
+					unset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$key] );
 				}
 			}
+
 		}
 	}
-}
 
-/**
- * Remove theme option.
- *
- * @since 2.1.0
- *
- * @param string $tab_id ID of tab to add option to
- * @param string $section_id ID of section to add to
- * @param string $option_id ID of of your option
- * @param string $att Attribute of option to change
- * @param string $value New value for attribute
- */
- 
-if( ! function_exists( 'themeblvd_edit_option' ) ) {
-	function themeblvd_edit_option( $tab_id, $section_id, $option_id, $att, $value ) {
-		global $_themeblvd_core_options;
-		if( isset( $_themeblvd_core_options[$tab_id] ) )
-			if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) )
-				if( isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) )
-					$_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id][$att] = $value;
-	}
-}
-
-/**
- * For each theme, we use a unique identifier to store 
- * the theme's options in the database based on the current 
- * name of the theme. This is can be filtered with 
- * "themeblvd_option_id".
- *
- * @since 2.1.0
- */
-
-if( ! function_exists( 'themeblvd_get_option_name' ) ) {
-	function themeblvd_get_option_name() {
-	
-		// This gets the theme name from the stylesheet (lowercase and without spaces)
-		$theme_data = wp_get_theme( get_stylesheet() );
-		$themename = preg_replace('/\W/', '', strtolower( $theme_data->get('Name') ) );
+	/**
+	 * Edit option.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $tab_id ID of tab to add option to
+	 * @param string $section_id ID of section to add to
+	 * @param string $option_id ID of of your option
+	 * @param string $att Attribute of option to change
+	 * @param string $value New value for attribute
+	 */
+	public function edit_option( $tab_id, $section_id, $option_id, $att, $value ) {
 		
-		// This is what ID the options will be saved under in the database. 
-		// By default, it's generated from the current installed theme. 
-		// So that means if you activate a child theme, you'll then need 
-		// re-configure theme options.
-		return apply_filters( 'themeblvd_option_id', $themename );
+		if( ! isset( $_themeblvd_core_options[$tab_id] ) )
+			return;
+
+		if( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) )
+			return;
+
+		if( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) )
+			return;
+
+		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id][$att] = $value;
 	}
-}
 
-/**
- * Get default values for set of options
- *
- * @since 2.2.0
- *
- * @param array $options Options formatted for internal options framework
- * @return array $defaults Default values from options
- */
+	/*--------------------------------------------*/
+	/* Methods, accessors
+	/*--------------------------------------------*/
 
-if( ! function_exists( 'themeblvd_get_option_defaults' ) ) {
-	function themeblvd_get_option_defaults( $options ) {
-		$defaults = array();
-		foreach( (array) $options as $option ) {
-			// Skip if any vital items are not set.
-			if( ! isset( $option['id'] ) )
-				continue;
-			if( ! isset( $option['std'] ) )
-				continue;
-			if( ! isset( $option['type'] ) )
-				continue;
-			// Continue with adding the option in.
-			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) )
-				$defaults[$option['id']] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $option['std'], $option );
+	/**
+	 * Set option name that options and settings will 
+	 * be associated with.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return string $option_id
+	 */
+	public function get_option_id() {
+		return $this->option_id;
+	}
+
+	/**
+	 * Get core options.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return array $raw_options
+	 */
+	public function get_raw_options() {
+		return $this->raw_options;
+	}
+
+	/**
+	 * Get formatted options
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return array $formatted_options
+	 */
+	public function get_formatted_options() {
+		return $this->formatted_options;
+	}
+
+	/**
+	 * Get settings, or drill down and retrieve indiviual settings.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $primary Optional primary ID of the option
+	 * @param string $secondary Optional $secondary ID to traverse deeper into arrays
+	 * @return array|string $settings Entire settings array or individual setting string
+	 */
+	public function get_settings( $primary = '', $seconday = '' ) {
+		
+		if( ! $primary )
+			return $this->settings;
+
+		if( ! isset( $this->settings[$primary] ) )
+			return null;
+
+		if( $seconday ) {
+			if( isset( $this->settings[$primary][$seconday] ) )
+				return $this->settings[$primary][$seconday];
+			else 
+				return null;
 		}
-		return $defaults;
+
+		return $this->settings[$primary];
 	}
-}
+	
+} // End class Theme_Blvd_Options_API

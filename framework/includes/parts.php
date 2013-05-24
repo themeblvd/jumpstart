@@ -154,9 +154,7 @@ if( ! function_exists( 'themeblvd_archive_title' ) ) {
 if( ! function_exists( 'themeblvd_pagination' ) ) {
 	function themeblvd_pagination( $pages = '', $range = 2 ) {  
 		global $paged;
-		global $_themeblvd_paged;
-		$showitems = ($range * 2)+1;  	     
-		if( $_themeblvd_paged ) $paged = $_themeblvd_paged; // Static frontpage compatibility
+		$showitems = ($range * 2)+1;
 		if( empty( $paged ) ) $paged = 1;
 		if( $pages == '' ) {
 			global $wp_query;

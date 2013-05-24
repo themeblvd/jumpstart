@@ -7,22 +7,23 @@
  
 function themeblvd_admin_init() {
 
-	global $_themeblvd_theme_options_page;
-	
 	// Allow theme options page to run if framework filters
 	// have don't have it hidden it and user is capable.
 	if( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
 		
+		// Access Options API, instance should already be created.
+		$api = Theme_Blvd_Options_API::get_instance();
+
 		// Option ID the theme options are registered and 
 		// saved to. -- i.e. get_option( $option_name )
-		$option_name = themeblvd_get_option_name();
+		$option_id = $api->get_option_id();
 		
 		// All options constructed from framework and 
-		// potentially added to by API
-		$options = themeblvd_get_formatted_options();
+		// potentially added to by client API
+		$options = $api->get_formatted_options();
 		
-		// Theme Options object
-		$_themeblvd_theme_options_page = new Theme_Blvd_Options_Page( $option_name, $options );
+		// Theme Options Page
+		$options_page = new Theme_Blvd_Options_Page( $option_id, $options );
 		
 	}
 	
@@ -36,12 +37,14 @@ function themeblvd_admin_init() {
 
 if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 	function themeblvd_non_modular_assets() {
+		
 		global $pagenow;
 		
 		// Assets for editing posts
 		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
 			wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.min.css', false, false, 'screen' );
 			wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		}
 		
 		// Styles for all of WP admin -- Currently only applies to 

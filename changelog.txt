@@ -4,6 +4,9 @@ Jump Start Changelog
 1.1.0
 -----
 
+**If you're using the Layout Builder plugin, you must update it to v1.1.1+**
+**If you're using the Sliders plugin, you must update it to v1.1+**
+
 * Updated framework version to 2.3.0.
 * Updated FontAwesome to v3.0 -- 40 new icons added.
 * Fixed CSS bug with video icon not showing on featured images linking to videos.
@@ -17,9 +20,19 @@ Jump Start Changelog
 * Added support for WP 3.5+ media uploader.
 * Added support for Nivo Slider.
 * Added `themeblvd_default_sidebar_args` filter for arguments when registering default sidebar locations.
-* Updated Roundabout script to v2.4.2
+* Updated Roundabout script to v2.4.2.
 * Expanded "Featured Image Link" video link to accept any WordPress oEmbed URL.
 * Slight UI improvements to Logo option in default Theme Options panel.
+* Majorly reduced framework's footprint on `$GLOBAL` namespace with re-structuring.
+* API functionality for Widget Areas, Theme Options, and Stylesheets completely re-structured.
+* API functionality for Layout Builder and Sliders moved to their respective plugins.
+* Theme settings when loading site now available immediately following `after_setup_theme` hook in the loading process for using `themeblvd_get_option()`.
+* Improved overall query performance throughout theme; this results in huge improvements when using theme as traditional blog.
+* Post List template pages, Post Grid page template pages, and static pages with custom layouts, can now all be set as a static frontpage and maintain pagination.
+* Added `themeblvd_was()` function to check conditionals for a current page while in a secondary loop of posts. -- i.e. `if( themeblvd_was('page', 'example-page') )`
+* Added PHP Class you can use to create meta boxes objects utilizing internal options framework. -- `Theme_Blvd_Meta_Box`
+* [http://dev.themeblvd.com/tutorial/editable-content-files/ Template parts] are now setup and filtered before any secondary loops. -- Allows you to avoid weird quirks like [http://support.themeblvd.com/forums/topic/post-grid-conditional-tag/ this].
+* Some re-organizing of files in framework folder.
 * Improved default `content-attachment.php`.
 * In default `content.php` and `content-attachment.php`, removed anchor tag on post title for single posts.
 * In default `content-list.php`, `content-grid.php`, and `content-archive.php`, changed linked titles to use `the_title_attribute()` for anchor titles.

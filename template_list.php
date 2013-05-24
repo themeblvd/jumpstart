@@ -30,17 +30,20 @@ get_header();
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
 						<div class="primary-post-list element-post_list_paginated post_list<?php echo themeblvd_get_classes( 'element_post_list_paginated', true ); ?>">
-							<?php query_posts( themeblvd_get_att( 'query_string' ) ); ?>
-							<?php global $more; $more = 0; ?>
-							<?php if( have_posts() ) : ?>
-								<?php while ( have_posts() ) : the_post(); ?>
-									<?php get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) ); ?>
-								<?php endwhile; ?>
-							<?php else : ?>
-								<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
-							<?php endif; ?>
-							<?php themeblvd_pagination(); ?>
-							<?php wp_reset_query(); ?>
+							<?php
+							$post_list = new WP_Query( themeblvd_get_second_query() );
+							if( $post_list->have_posts() ) {
+								while( $post_list->have_posts() ) {
+									$post_list->the_post();
+									global $more; $more = 0;
+									get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );
+								}
+							} else {
+								printf( '<p>%s</p>', themeblvd_get_local( 'archive_no_posts' ) );
+							}
+							themeblvd_pagination( $post_list->max_num_pages );
+							wp_reset_postdata();
+							?>
 						</div><!-- .post_list (end) -->
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->

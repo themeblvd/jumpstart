@@ -1,199 +1,5 @@
 <?php
 /**
- * The post thumbnail (must be within the loop)
- *
- * @since 2.0.0
- *
- * @param string $location Whether the thumbnail is currently in the featured area or not, not always applicable
- * @param string $size Size of post thumbnail
- * @param string $link Where link will go if it's active
- * @param string $link_url URL where link will go if applicable
- * @param boolean $allow_filters Whether to allow filters to be applied or not
- * @return string $output HTML to output thumbnail
- */
-
-if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
-	function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
-		global $post;
-		$attachment_id = get_post_thumbnail_id( $post->ID );
-		$conditionals = apply_filters( 'thumbnail_conditionals', array( 'home', 'template_list.php', 'single', 'search', 'archive' ) );
-		$fake_conditional = themeblvd_config( 'fake_conditional' );
-		$sidebar_layout = themeblvd_config( 'sidebar_layout' );
-		$link_target = null;
-		$link_url = null;
-		$end_link = null;
-		$output = null;
-		$classes = null;
-		$image = null;
-		$title = null;
-
-		// If no thumbnail, we can skip everything. However, 
-		// we still want plugins to be able to filter in here 
-		// however they want. This same filter is applied below 
-		// on the final output.
-		if( ! has_post_thumbnail( $post->ID ) && $allow_filters )
-			return apply_filters( 'themeblvd_post_thumbnail', '', $location, $size, $link );
-
-		// Set size if it wasn't already passed into the function
-		if( ! $size ) {
-			// Primary posts page, blog page template, single posts, archives, and search results
-			if( in_array( $fake_conditional, $conditionals ) ) {
-				// Get default size option
-				if( $fake_conditional == 'home' || $fake_conditional == 'template_list.php' )	
-					$thumb_size_option = themeblvd_get_option( 'blog_thumbs', null, 'small' );
-				else if( $fake_conditional == 'search' || $fake_conditional == 'archive' )
-					$thumb_size_option = themeblvd_get_option( 'archive_thumbs', null, 'small' );
-				else if( $fake_conditional == 'single' )
-					$thumb_size_option = themeblvd_get_option( 'single_thumbs', null, 'small' );
-				// Single post page override
-				if( $fake_conditional == 'single' ) {
-					$thumb_size_meta = get_post_meta( $post->ID, '_tb_thumb', true );
-					if( $thumb_size_meta == 'full' || $thumb_size_meta == 'small' || $thumb_size_meta == 'hide' ) {
-						$thumb_size_option = $thumb_size_meta;
-					}
-				}
-				// Handle size option
-				if( $thumb_size_option ) {
-					switch( $thumb_size_option ) {
-						 case 'hide' :
-						 	$size = null;
-						 	break;
-						 case 'full' :
-						 	$sidebar_layout == 'full_width' ? $size = 'tb_large' : $size = 'tb_medium';
-						 	break;
-						 case 'small' :
-						 	$size = 'tb_small';
-						 	break;
-					}
-				}			
-			}
-		}
-		// Handle $size option if it was manually feed in (like in template_list.php)
-		if( $size == 'hide' )
-			$size = null;
-		if( $size == 'full' )
-			$location == 'featured' || $sidebar_layout == 'full_width' ? $size = 'tb_large' : $size = 'tb_medium';
-		if( $size == 'small' )
-			$size = 'tb_small';
-		
-		// If $size was set to null, it means the post 
-		// thumb should be hidden. So, return nothing.
-		if( $size == null )
-			return $output;
-
-		// Can we just skip the featured image?
-		$thumb_link_meta = get_post_meta( $post->ID, '_tb_thumb_link', true ); // used below in determining featured image link
-		if( $thumb_link_meta == 'inactive' )
-			$link = false;
-
-		// How about skipping featured image link on the single post?
-		if( $link && $location == 'single' && get_post_meta( $post->ID, '_tb_thumb_link_single', true ) == 'no' )
-			$link = false;
-
-		// Determine link for featured image
-		if( $link ) {
-			$possible_link_options = array( 'post', 'thumbnail', 'image', 'video', 'external' );
-			if( in_array( $thumb_link_meta, $possible_link_options ) ) {
-				switch( $thumb_link_meta ) {
-					case 'post' :
-						$link_url = get_permalink( $post->ID );
-						break;
-					case 'thumbnail' :
-						$link_url = wp_get_attachment_url( $attachment_id );
-						$link_target = ' rel="featured_themeblvd_lightbox"';
-						if( $gallery )
-							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
-						break;
-					case 'image' :
-						$link_url = get_post_meta( $post->ID, '_tb_image_link', true );
-						$link_target = ' rel="featured_themeblvd_lightbox"';
-						if( $gallery )
-							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
-						break;
-					case 'video' :
-						$link_url = get_post_meta( $post->ID, '_tb_video_link', true );
-						$link_target = ' rel="featured_themeblvd_lightbox"';
-						if( $gallery )
-							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
-						// WP oEmbed for non YouTube and Vimeo videos
-						if( ! themeblvd_prettyphoto_supported_link( $link_url ) ) {
-							$id = uniqid('inline-video-');
-							$output .= sprintf( '<div id="%s" class="hide">%s</div>', $id, wp_oembed_get($link_url) );
-							$link_url = "#{$id}";
-						}
-						break;
-					case 'external' :
-						$link_url = get_post_meta( $post->ID, '_tb_external_link', true );
-						$target = get_post_meta( $post->ID, '_tb_external_link_target', true );
-						if( ! $target )
-							$target = '_blank';
-						$link_target = ' target="'.$target.'"';
-						break;
-				}
-			} else {
-				$link = false;
-			}
-		}
-		
-		// Attributes
-		$size_class = $size;
-		if( $size_class == 'tb_small' )
-			$size_class = 'small';
-		$classes = 'attachment-'.$size_class.' wp-post-image';
-		if( ! $link ) {
-			$classes .= ' thumbnail';
-		} else {
-			if( is_single() ) 
-				$title = ' title="'.get_the_title($post->ID).'"';
-			$anchor_class = 'thumbnail';
-			if( $thumb_link_meta != 'thumbnail' )
-				$anchor_class .= ' '.$thumb_link_meta;
-		}
-		// Final HTML output
-		$output .= '<div class="featured-image-wrapper '.$classes.'">';
-		$output .= '<div class="featured-image">';
-		$output .= '<div class="featured-image-inner">';
-		if( $link ) $output .= '<a href="'.$link_url.'"'.$link_target.' class="'.$anchor_class.'"'.$title.'>';	
-		$output .= get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
-		if( $link ) $output .= themeblvd_get_image_overlay().'</a>';
-		$output .= '</div><!-- .featured-image-inner (end) -->';
-		$output .= '</div><!-- .featured-image (end) -->';
-		$output .= '</div><!-- .featured-image-wrapper (end) -->';
-		
-		// Apply filters if allowed
-		if( $allow_filters )
-			$output = apply_filters( 'themeblvd_post_thumbnail', $output, $location, $size, $link );
-		
-		// Return final output
-		return $output;
-	}
-}
-
-/** 
- * Grab placeholder image 
- *
- * @since 2.0.0
- *
- * @param $size string Size of image placeholder
- * @return $image_url string URL to image for placeholder
- */
-
-if( ! function_exists( 'themeblvd_placeholder_image' ) ) {
-	function themeblvd_placeholder_image( $size ) {
-		$image_url = null;
-		$images = array(
-			'slider-large' 	=> TB_FRAMEWORK_URI . '/frontend/assets/images/placeholders/slider-large.png',
-			'slider-staged' => TB_FRAMEWORK_URI . '/frontend/assets/images/placeholders/slider-large.png',
-		);
-		$images = apply_filters( 'themeblvd_placeholder_image', $images );
-		if( isset( $images[$size] ) )
-			$image_url = $images[$size];
-		
-		return $image_url;
-	}
-}
-
-/**
  * Remove trailing space from string.
  *
  * @since 2.0.0 
@@ -205,10 +11,15 @@ if( ! function_exists( 'themeblvd_placeholder_image' ) ) {
  
 if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
 	function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
+		if( ! $string )
+			return null;
+
 		$offset = strlen( $string ) - 1;
+		
 		$trailing_char = strpos( $string, $char, $offset );
 		if( $trailing_char )
 			$string = substr( $string, 0, -1 );
+		
 		return $string;
 	}
 }
@@ -224,17 +35,23 @@ if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
 
 if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 	function themeblvd_get_font_face( $option ) {
+		
 		$stack = null;
 		$stacks = themeblvd_font_stacks();
+		
 		if( $option['face'] == 'google'  ) {
+			
 			// Grab font face, making sure they didn't do the 
 			// super, sneaky trick of including font weight or type.
 			$name = explode( ':', $option['google'] ); 
+			
 			// And also check for accidental space at end
 			$name = themeblvd_remove_trailing_char( $name[0] ); 
+			
 			// Add the deafult font stack to the end of the 
 			// google font.
 			$stack = $name.', '.$stacks['default'];
+		
 		} else {
 			$stack = $stacks[$option['face']]; 
 		}
@@ -261,93 +78,7 @@ if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) {
 }
 
 /**
- * Generate the query string for a blog page.
- *
- * @since 2.0.0
- *
- * @param int $posts_per_page Optional number of posts per page
- * @return string $query_string Query string to get passed into query_posts()
- */
-
-if( ! function_exists( 'themeblvd_query_string' ) ) { 
-	function themeblvd_query_string( $posts_per_page = null ) {
-		global $_themeblvd_paged;
-		$query_string = null;
-		$category_name_string = null;
-		$categories = null;
-		$posts_per_page_override = null;
-		// Post List/Post Grid page templates
-		if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
-			global $post;
-			// Categories (ID)
-			// This will coorespond to the "cat" parameter of a WP Query. 
-			// This custom field used to be "categories" but has since been 
-			// changed to "cat" to avoid confusion. There is a fallback here
-			// for that.
-			$category_id_string = get_post_meta( $post->ID, 'cat', true );
-			if( ! $category_id_string ) // check for @deprecated "categories" as fallback
-				$category_id_string = get_post_meta( $post->ID, 'categories', true );
-			if( $category_id_string )
-				$categories = 'cat='.$category_id_string; // Will get added to query_string towards end of function
-			// Categories (slug)
-			$category_name_string = get_post_meta( $post->ID, 'category_name', true );
-			if( $category_name_string )
-				$query_string .= 'category_name='.$category_name_string.'&';
-			// Posts per page
-			$posts_per_page_override = get_post_meta( $post->ID, 'posts_per_page', true );
-			if( $posts_per_page_override )
-				$query_string .= 'posts_per_page='.$posts_per_page_override.'&';
-			// Orderby
-			$orderby = get_post_meta( $post->ID, 'orderby', true ); 
-			if( $orderby )
-				$query_string .= 'orderby='.$orderby.'&';
-			// Order
-			$order = get_post_meta( $post->ID, 'order', true ); // ACS or DESC
-			if( $order )
-				$query_string .= 'order='.$order.'&';
-			// Offset
-			$offset = get_post_meta( $post->ID, 'offset', true );
-			if( $offset )
-				$query_string .= 'offset='.$offset.'&';
-		}
-		// If the categories (IDs) weren't already setup with custom fields, 
-		// or this isn't even the page template, we'll look to the theme 
-		// options for any category excludes. This only applies to the blog 
-		// page template and primary posts page.
-		if( is_home() || is_page_template( 'template_list.php' ) ) {
-			if( ! $categories && ! $category_name_string ) {
-				$exclude = themeblvd_get_option( 'blog_categories' );
-				if( $exclude ) {
-					$categories = 'cat=';
-					foreach( $exclude as $key => $value )
-						if( $value )
-							$categories .= '-'.$key.',';
-					$categories = themeblvd_remove_trailing_char( $categories, ',' );
-				}
-			}
-		}
-		// Categories (IDs)
-		if( $categories )
-			$query_string .= $categories.'&';
-		// Posts per page
-		if( ! $posts_per_page_override && $posts_per_page )
-			$query_string .= 'posts_per_page='.$posts_per_page.'&';
-		// Pagination
-		if ( get_query_var('paged') )
-	        $paged = get_query_var('paged');
-	    else if ( get_query_var('page') )
-	        $paged = get_query_var('page'); // This provides compatiblity with static frontpage
-		else
-	        $paged = 1;
-		$_themeblvd_paged = $paged; // Set global variable for pagination compatiblity on static frontpage
-		$query_string .= 'paged='.$paged;
-		// Return query string
-		return apply_filters( 'themeblvd_query_string', $query_string );
-	}
-}
-
-/**
- * Setup arguement to pass into get_posts()
+ * Setup arguments to pass into get_posts()
  *
  * @since 2.0.0
  *
@@ -359,6 +90,7 @@ if( ! function_exists( 'themeblvd_query_string' ) ) {
 
 if( ! function_exists( 'themeblvd_get_posts_args' ) ) { 
 	function themeblvd_get_posts_args( $options, $type, $slider = false ) {
+		
 		$args = array();
 		
 		// Number of posts
@@ -371,35 +103,47 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 		}
 		if( empty( $args['numberposts'] ) )
 			$args['numberposts'] = -1;
+		
 		// Categories
 		if( ! empty( $options['cat'] ) ) {
+		
 			// Category override option #1 -- cat
 			$args['cat'] = $options['cat'];
+		
 		} elseif( ! empty( $options['category_name'] ) ) {
+		
 			// Category override option #2 -- category_name
 			$args['category_name'] = $options['category_name'];
+		
 		} elseif( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
+			
 			unset( $options['categories']['all'] );
 			$categories = '';
+			
 			foreach( $options['categories'] as $category => $include ) {
 				if( $include ) {
 					$current_category = get_term_by( 'slug', $category, 'category' );
 					$categories .= $current_category->term_id.',';
 				}
 			}
+			
 			if( $categories ) {
 				$categories = themeblvd_remove_trailing_char( $categories, ',' );
 				$args['cat'] = $categories;
 			}
 		}
+		
 		// Tags
 		if( ! empty( $options['tag'] ) )
 			$args['tag'] = $options['tag'];
+		
 		// Additional args
 		if( ! empty( $options['orderby'] ) ) 
 			$args['orderby'] = $options['orderby'];
+		
 		if( ! empty( $options['order'] ) ) 
 			$args['order'] = $options['order'];
+		
 		if( ! empty( $options['offset'] ) ) 
 			$args['offset'] = intval( $options['offset'] );
 
@@ -501,60 +245,6 @@ function themeblvd_open_row() {
 
 function themeblvd_close_row() {
 	echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
-}
-
-/**
- * Add wrapper around embedded videos to allow for respnsive videos.
- *
- * @since 2.0.0
- */
-
-if( ! function_exists( 'themeblvd_oembed_result' ) ) {
-	function themeblvd_oembed_result( $input, $url ) {
-		
-		// If this is a tweet, keep on movin' fella.
-		if( strpos( $url, 'twitter.com' ) )
-			return $input;
-		
-		// Since the framework applies this filter in two 
-		// spots, we must first check if the filter has 
-		// been applied or not. The reason for this is 
-		// because WP has issues with caching the oembed 
-		// result, and oembed_result doesn't always get 
-		// applied when it's supposed to.
-		if( strpos( $input, 'themeblvd-video-wrapper' ) ) 
-			return $input;
-		
-		// Apply YouTube wmode fix
-		if( strpos( $url, 'youtube' ) || strpos( $url, 'youtu.be' ) ) {
-			if( ! strpos( $input, 'wmode=transparent' ) )
-				$input = str_replace('feature=oembed', 'feature=oembed&wmode=transparent', $input);
-		}
-		
-		// Wrap output
-		$output  = '<div class="themeblvd-video-wrapper">';
-		$output .= '<div class="video-inner">';
-		$output .= $input;
-		$output .= '</div>';
-		$output .= '</div>';
-		
-		return $output;
-	}
-}
-
-/**
- * Add 100% width to <audio> tag of WP's built-in 
- * audio player to make it responsive.
- *
- * @since 2.2.1
- * 
- * @param string $html HTML for output to be filtered
- */
-
-if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
-	function themeblvd_audio_shortcode( $html ){
-		return str_replace( '<audio', '<audio width="100%"', $html );
-	}
 }
 
 /**

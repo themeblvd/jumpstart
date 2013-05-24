@@ -560,9 +560,10 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 			echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 		}
 		echo '</div><!-- .post_'.$type.' (end) -->';
+		
 		// Show link
 		if( $link )
-			echo '<a href="'.$link_url.'" target="'.$link_target.'" title="'.$link_text.'" class="lead-link">'.$link_text.'</a>';
+			printf( '<a href="%s" target="%s" title="%s" class="lead-link">%s</a>', $link_url, $link_target, $link_text, $link_text );
 			
 	}
 }
@@ -580,11 +581,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 	function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_location = 'primary' ) {
 		
-		global $wp_query;
-		global $_themeblvd_paged;
 		global $more;
-    	$more = 0;
-		$query_string = '';
 		
 		// Current location if relevant
 		$location = themeblvd_set_att( 'location', $current_location );
@@ -610,6 +607,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		if( $type == 'grid' ) {
 			$columns = themeblvd_set_att( 'columns', $columns );
 			$posts_per_page = $rows ? $columns*$rows : '-1';
+			$args['posts_per_page'] = $posts_per_page; // Set new value to $args for parsing query
 			$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );		
 			$crop = ! empty( $crop ) ? $crop : $size;
 			$crop = themeblvd_set_att( 'crop', $crop );
@@ -622,77 +620,33 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		}
 		
 		/*------------------------------------------------------*/
-		/* Query String (very similar to themeblvd_get_posts_args() 
-		/* in helpers.php - May combine functions later )
+		/* Query Args
 		/*------------------------------------------------------*/
 		
-		if( $query ) {
-			
-			// Custom query string
-			$query_string = html_entity_decode( $query );
-			$query_string .= '&';
-			if( $type == 'grid' )
-				$query_string .= 'posts_per_page='.$posts_per_page.'&'; // User can't use "posts_per_page" in custom query for grids
-			
-		} else {
-			
-			// Generate query string
-			if( isset( $categories['all'] ) && ! $categories['all'] ) {
-				unset( $categories['all'] );
-				$category_name = '';
-				foreach( $categories as $category => $include ) {
-					if( $include ) {
-						$category_name .= $category.',';
-					}
-				}
-				if( $category_name ) {
-					$category_name = themeblvd_remove_trailing_char( $category_name,',' );
-					$query_string .= 'category_name='.$category_name.'&';
-				}
-			}
-			if( $type == 'grid' ) {
-				$query_string .= 'posts_per_page='.$posts_per_page.'&';
-			} else {
-				if( $posts_per_page ) 
-					$query_string .= 'posts_per_page='.$posts_per_page.'&';
-			}
-			if( $orderby )
-				$query_string .= 'orderby='.$orderby.'&';
-			if( $order )
-				$query_string .= 'order='.$order.'&';
-			
-		}
-		
-		// Pagination
-		if ( get_query_var('paged') )
-	        $paged = get_query_var('paged');
-	    else if ( get_query_var('page') )
-	        $paged = get_query_var('page'); // This provides compatiblity with static frontpage
-		else
-	        $paged = 1;
-	        
-		$_themeblvd_paged = $paged; // Set global variable for pagination compatiblity on static frontpage
-		$query_string .= 'paged='.$paged;
+		// Set the second query in global $themeblvd_query. 
+		// We only do this for paginated queries.
+		$query_args = themeblvd_set_second_query( $args, $type );
 		
 		// Apply filters
-		$query_string = apply_filters( 'themeblvd_posts_args', $query_string, $args, $type, $current_location );
+		$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, $type, $current_location );
 
 		/*------------------------------------------------------*/
 		/* The Loop
 		/*------------------------------------------------------*/
 
 		// Query posts
-		query_posts( $query_string );
+		$posts = new WP_Query( $query_args );
 		
 		// Start the loop
 		echo '<div class="post_'.$type.'">';
-		if( have_posts() ) {
+		if( $posts->have_posts() ) {
 			do_action( 'themeblvd_post_'.$type.'_paginated_before_loop', $args );
 			if( $type == 'grid' ) {
-				// Loop for post grid (i.e. Portfolio)
+				// Loop for post grid
 				$counter = themeblvd_set_att( 'counter', 1 );
-				while( have_posts() ) { 
-					the_post();
+				while( $posts->have_posts() ) { 
+					$posts->the_post();
+					$more = 0;
 					if( $counter == 1 ) themeblvd_open_row();
 					get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
 					if( $counter % $columns == 0 ) themeblvd_close_row();
@@ -701,21 +655,22 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 				}
 				if( ($counter-1) != $posts_per_page ) themeblvd_close_row();
 			} else {
-				// Loop for post list (i.e. Blog)
-				while( have_posts() ) { 
-					the_post();
+				// Loop for post list
+				while( $posts->have_posts() ) { 
+					$posts->the_post();
+					$more = 0;
 					get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );
 				}
 			}
 			do_action( 'themeblvd_post_'.$type.'_paginated_after_loop', $args );
 		} else {
-			echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
+			printf( '<p>%s</p>', themeblvd_get_local( 'archive_no_posts' ) );
 		}
-		themeblvd_pagination();
+		themeblvd_pagination( $posts->max_num_pages );
 		echo '</div><!-- .post_'.$type.' (end) -->';	
 		
-		// Reset Query
-		wp_reset_query();	
+		// Reset Post Data
+		wp_reset_postdata();
 	}
 }
 

@@ -75,16 +75,11 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 	function themeblvd_customizer_init( $wp_customize ) {
 
 		global $_themeblvd_customizer_sections;
-	
-		// Determine options name
-		$option_name = themeblvd_get_option_name();
-	
-		// Alter current theme options and only modify our select 
-		// options controled with the customizer.
-		$theme_options = get_option( $option_name );
-		
-		// If theme options don't exist, yet set defaults for customizer.
-		$theme_option_defaults = themeblvd_get_option_defaults( themeblvd_get_formatted_options() );
+
+		// Get current theme settings.
+		$options_api = Theme_Blvd_Options_API::get_instance();
+		$option_name = $options_api->get_option_id();
+		$theme_settings = $options_api->get_settings();
 		
 		// Register sections of options
 		if( $_themeblvd_customizer_sections ) {
@@ -113,16 +108,10 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'custom_tagline' 	=> '',
 								'image' 			=> ''
 							);
-							if( isset( $theme_options[$option['id']] ) ) {
+							if( isset( $theme_settings[$option['id']] ) ) {
 								foreach( $defaults as $key => $value ) {
-									if( isset( $theme_options[$option['id']][$key] ) ) {
-										$defaults[$key] = $theme_options[$option['id']][$key];
-									}
-								}
-							} else if( isset( $theme_option_defaults[$option['id']] ) ) {
-								foreach( $defaults as $key => $value ) {
-									if( isset( $theme_option_defaults[$option['id']][$key] ) ) {
-										$defaults[$key] = $theme_option_defaults[$option['id']][$key];
+									if( isset( $theme_settings[$option['id']][$key] ) ) {
+										$defaults[$key] = $theme_settings[$option['id']][$key];
 									}
 								}
 							}
@@ -207,8 +196,8 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'color' 	=> '',
 								'google' 	=> ''
 							);
-							if( isset( $theme_options[$option['id']] ) )
-								$defaults = $theme_options[$option['id']];
+							if( isset( $theme_settings[$option['id']] ) )
+								$defaults = $theme_settings[$option['id']];
 							
 							// Transport
 							$transport = '';
@@ -302,8 +291,8 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							
 							// Default
 							$default = '';
-							if( isset( $theme_option_defaults[$option['id']] ) )
-								$default = $theme_option_defaults[$option['id']];
+							if( isset( $theme_settings[$option['id']] ) )
+								$default = $theme_settings[$option['id']];
 							
 							// Transport
 							$transport = '';

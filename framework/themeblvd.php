@@ -23,6 +23,7 @@ if( is_admin() ) {
 	
 	// Include files
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/meta.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
@@ -31,15 +32,14 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-api.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/locals.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
 	
 	// Filters
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
@@ -66,11 +66,10 @@ if( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
 	
 	// Apply other hooks after theme has had a chance to add filters
-	add_action( 'after_setup_theme', 'themeblvd_format_options', 1000 );
-	add_action( 'after_setup_theme', 'themeblvd_admin_init', 1000 );
-	add_action( 'after_setup_theme', 'themeblvd_add_theme_support', 1000 );
-	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1000 );
-	add_action( 'after_setup_theme', 'themeblvd_register_sidebars', 1000 );
+	// Note: Options API/Settings finalized at after_setup_theme, 1000
+	add_action( 'after_setup_theme', 'themeblvd_admin_init', 1001 );
+	add_action( 'after_setup_theme', 'themeblvd_add_theme_support', 1001 );
+	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1001 );
 
 } else {
 	
@@ -80,22 +79,24 @@ if( is_admin() ) {
 
 	// Include files
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' ); // Needed if options haven't been saved
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/builder.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-api.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/locals.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/options.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sidebars.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/api/sliders.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/elements.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/parts.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/actions.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/helpers.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/display.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/frontend/functions/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-query.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-frontend-init.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/actions.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/display.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/frontend.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/elements.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/helpers.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/media.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/parts.php' );
 
 	// Filters
-	add_filter( 'body_class', 'themeblvd_body_class' );
 	add_filter( 'body_class','themeblvd_browser_class' );
 	add_filter( 'oembed_result', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'embed_oembed_html', 'themeblvd_oembed_result', 10, 2 );
@@ -118,27 +119,21 @@ if( is_admin() ) {
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
-	add_action( 'pre_get_posts', 'themeblvd_posts_per_page' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
 	add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
-	add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles', 5 );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 	add_action( 'customize_register', 'themeblvd_customizer_init' );
 
 	// Apply other hooks after theme has had a chance to add filters
-	add_action( 'after_setup_theme', 'themeblvd_format_options', 1000 );
-	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1000 );
-	add_action( 'after_setup_theme', 'themeblvd_register_sidebars', 1000 );
-	add_action( 'wp', 'themeblvd_frontend_init', 5 ); // This needs to run before any plugins hook into it
-	add_action( 'wp', 'themeblvd_atts_init' );
-	add_action( 'wp_print_styles', 'themeblvd_deregister_stylesheets', 1000 );
+	// Note: Options API/Settings finalized at after_setup_theme, 1000
+	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1001 );
+	add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
 	
 	// <head> hooks
 	add_action( 'wp_head', 'themeblvd_analytics', 2 );
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
-	add_action( 'wp_head', 'themeblvd_closing_styles', 11 );
 	
 	// Header hooks
 	add_action( 'themeblvd_header_above', 'themeblvd_header_above_default' );

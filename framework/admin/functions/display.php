@@ -1042,19 +1042,18 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 
 if ( ! function_exists( 'themeblvd_options_footer_text_default' ) ) {
 	function themeblvd_options_footer_text_default() {
+		
 		// Theme info and text
 		$theme_data = wp_get_theme( get_template() );
 		$theme_title = $theme_data->get('Name');
 		$theme_version = $theme_data->get('Version');
-		// Changelog
-		$changelog = null;
-		if ( defined( 'TB_THEME_ID' ) ) {
-			$changelog .= ' ( <a href="'.apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID.'&TB_iframe=1', TB_THEME_ID ).'" class="thickbox tb-update-log" onclick="return false;">';
-			$changelog .= __( 'Changelog', 'themeblvd' );
-			$changelog .= '</a> )';
-		}
+		
+		// Changelog link
+		$changelog = '';
+		if( defined( 'TB_THEME_ID' ) )
+			$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), __( 'Changelog', 'themeblvd' ) );
+		
 		// Output
-		echo $theme_title.' <strong>'.$theme_version.'</strong> with Theme Blvd Framework <strong>'.TB_FRAMEWORK_VERSION.'</strong>';
-		echo $changelog;
+		printf('%s <strong>%s</strong> with Theme Blvd Framework <strong>%s</strong> %s', $theme_title, $theme_version, TB_FRAMEWORK_VERSION, $changelog );
 	}
 }
