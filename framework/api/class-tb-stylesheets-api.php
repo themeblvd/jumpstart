@@ -210,17 +210,16 @@ class Theme_Blvd_Stylesheets_API {
 
 			// Re-format array of client stylesheets that are left 
 			// to be organized by level.
-			if( $this->client_stylesheets ) {
-				
-				$temp_stylesheets = $this->client_stylesheets;
-				
-				$this->client_stylesheets = array(
-					'1' => array(),	// Level 1: Before Framework styles
-					'2' => array(),	// Level 2: After Framework styles
-					'3' => array(),	// Level 3: After Theme styles
-					'4' => array()	// Level 4: After Theme Options-generated styles
-				);
-				
+			$temp_stylesheets = $this->client_stylesheets;
+
+			$this->client_stylesheets = array(
+				'1' => array(),	// Level 1: Before Framework styles
+				'2' => array(),	// Level 2: After Framework styles
+				'3' => array(),	// Level 3: After Theme styles
+				'4' => array()	// Level 4: After Theme Options-generated styles
+			);
+
+			if( $temp_stylesheets ) {
 				foreach( $temp_stylesheets as $handle => $file ) {
 					$key = $file['level'];
 					$this->client_stylesheets[$key][$handle] = $file;
