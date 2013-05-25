@@ -416,6 +416,43 @@ class Theme_Blvd_Query {
 			}
 		}
 
+		// Apply pagination fix when homepage custom layout 
+		// set over home "posts page"
+		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && $q->is_home() && 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
+			
+			// Layout info
+			$kayout_name = themeblvd_get_option( 'homepage_custom_layout' );
+			$layout_post_id = themeblvd_post_id_by_name( $kayout_name, 'tb_layout' );
+			if( $layout_post_id )
+				$elements = get_post_meta( $layout_post_id, 'elements', true );
+			
+			// Loop through elements and look for that single 
+			// paginated element (there can only be one in a layout).
+			if( ! empty( $elements ) && is_array( $elements ) ) {
+				foreach( $elements as $area ) {
+					if( ! empty( $area ) ) {
+						foreach( $area as $element ) {
+							
+							switch( $element['type'] ) {
+							
+								case 'post_grid_paginated' :
+									if( ! empty( $element['options']['rows'] ) && ! empty( $element['options']['columns'] ) )
+										$posts_per_page = intval( $element['options']['rows'] ) * intval( $element['options']['columns'] );
+										$q->set( 'posts_per_page', $posts_per_page );
+									break;
+								
+								case 'post_list_paginated';
+									if( ! empty( $element['options']['posts_per_page'] ) )
+										$q->set( 'posts_per_page', $element['options']['posts_per_page'] );
+									break;
+							
+							}
+						}
+					}
+				}
+			}
+		}
+
 		do_action( 'themeblvd_pre_get_posts', $q );
 
 	} // end pre_get_posts()
