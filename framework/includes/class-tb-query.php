@@ -475,22 +475,22 @@ class Theme_Blvd_Query {
 				break;
 
 			case 'home' :
-				if( $this->was['was_home'] )
+				if( $this->was['home'] )
 					return true;
 				break;
 
 			case 'front_page' :
-				if( $this->was['was_front_page'] )
+				if( $this->was['front_page'] )
 					return true;
 				break;
 
 			case 'archive' :
-				if( $this->was['was_archive'] )
+				if( $this->was['archive'] )
 					return true;
 				break;
 
 			case 'search' :
-				if( $this->was['was_search'] )
+				if( $this->was['search'] )
 					return true;
 				break;
 		}
