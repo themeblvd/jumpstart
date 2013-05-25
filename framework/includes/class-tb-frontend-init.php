@@ -127,12 +127,21 @@ class Theme_Blvd_Frontend_Init {
 		
 		// Possible template part ID's that will trigger the 
 		// grid layout on main post loops
-		$grid_triggers = apply_filters( 'themeblvd_grid_mode_triggers', array( 'grid', 'index_grid', 'archive_grid' ) );
+		$grid_triggers = apply_filters( 'themeblvd_grid_mode_triggers', array( 'grid', 'index_grid', 'archive_grid', 'search_grid' ) );
 		
-		// If the index and archive parts are both triggers, set the 
-		// mode to grid.
-		if( in_array( $this->get_template_parts('archive'), $grid_triggers ) &&
-			in_array( $this->get_template_parts('index'), $grid_triggers ) )
+		// If this is the homepage, and "index" is one of the 
+		// triggers, set grid mode.
+		if( is_home() && in_array( $this->get_template_parts('index'), $grid_triggers ) )
+			$this->mode = 'grid';
+		
+		// If this is an archive, and "archive" is one of the 
+		// triggers, set grid mode.
+		if( is_archive() && in_array( $this->get_template_parts('archive'), $grid_triggers ) )
+			$this->mode = 'grid';
+
+		// If this is search results, and "search_results" is one of the 
+		// triggers, set grid mode.
+		if( is_search() && in_array( $this->get_template_parts('search_results'), $grid_triggers ) )
 			$this->mode = 'grid';
 
 		// Allow manual override.
@@ -193,7 +202,7 @@ class Theme_Blvd_Frontend_Init {
 				}
 			}
 			
-			// Custom Layout on homepage -- This method of setting a homepage layout is @deprecated
+			// Custom Layout over home "posts page"
 			if( is_home() && get_option( 'show_on_front' ) == 'posts' ) {
 				if( 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
 					$layout_name = themeblvd_get_option( 'homepage_custom_layout' );
@@ -304,13 +313,13 @@ class Theme_Blvd_Frontend_Init {
 
 		$locations = themeblvd_get_sidebar_locations();
 		$custom_sidebars = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_posts('post_type=tb_sidebar&numberposts=-1') : null;
-		$sidebar_overrides = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_post_meta( $primary_id, '_tb_sidebars', true ) : null;
-		
+		$sidebar_overrides = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_post_meta( $this->config['id'], '_tb_sidebars', true ) : null;
+
 		foreach( $locations as $location_id => $default_sidebar ) {
     		
     		// By default, the sidebar ID will match the ID of the
     		// current location.
-    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id, $custom_sidebars, $sidebar_overrides, $primary_id );
+    		$sidebar_id = apply_filters( 'themeblvd_custom_sidebar_id', $location_id, $custom_sidebars, $sidebar_overrides, $this->config['id'] );
 
     		// Set current sidebar ID
     		$this->config['sidebars'][$location_id]['id'] = $sidebar_id;
@@ -531,7 +540,7 @@ class Theme_Blvd_Frontend_Init {
 	public function atts_init() {
 
 		// Index/Archive
-		if( is_home() || is_archive() ) {
+		if( is_home() || is_archive() || is_search() ) {
 			if( $this->mode == 'grid' )
 				$this->atts = $this->get_default_grid_atts();
 			else
@@ -613,7 +622,7 @@ class Theme_Blvd_Frontend_Init {
 			$columns = themeblvd_get_option( 'index_grid_columns' );
 			$rows = themeblvd_get_option( 'index_grid_rows' );
 		
-		} elseif( is_archive() ) {
+		} elseif( is_archive() || is_search() ) {
 			
 			$columns = themeblvd_get_option( 'archive_grid_columns' );
 			$rows = themeblvd_get_option( 'archive_grid_rows' );
@@ -646,7 +655,7 @@ class Theme_Blvd_Frontend_Init {
 		
 			$crop = apply_filters( 'themeblvd_index_grid_crop_size', $size );
 		
-		} elseif( is_archive() ) {
+		} elseif( is_archive() || is_search() ) {
 		
 			$crop = apply_filters( 'themeblvd_archive_grid_crop_size', $size );
 		
