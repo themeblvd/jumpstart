@@ -250,3 +250,224 @@ if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
 		return str_replace( '<audio', '<audio width="100%"', $html );
 	}
 }
+
+/**
+ * Gallery slider 
+ *
+ * @since 2.3.0
+ *
+ * @param string $gallery Optional gallery shortcode usage like [gallery ids="1,2,3,4"]
+ * @param string $type Type of slider, supports nivo or standard
+ * @param string $size Image crop size for attachment images
+ */
+
+if( ! function_exists( 'themeblvd_gallery_slider' ) ) {
+	function themeblvd_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
+		echo themeblvd_get_gallery_slider( $gallery, $type, $size );
+	}
+}
+
+/**
+ * Get gallery slider 
+ *
+ * @since 2.3.0
+ *
+ * @param string $gallery Optional gallery shortcode usage like [gallery ids="1,2,3,4"]
+ * @param string $type Type of slider, supports nivo or standard
+ * @param string $size Image crop size for attachment images
+ * @return string $output Final HTML to output
+ */
+
+if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
+	function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
+		
+		$post_id = get_the_ID();
+		$type = apply_filters( 'themeblvd_gallery_slider_type', $type, $post_id );
+		$size = apply_filters( 'themeblvd_gallery_slider_size', $size, $post_id );
+
+		// Did user pass in a gallery shortcode?
+		if( $gallery )
+			$content = $gallery;
+		else
+			$content = get_the_content();
+
+		// Did user insert a gallery like [gallery ids="1,2,3,4"] 
+		// via $gallery param or anywhere in post?
+		$attachments = array();
+		$pattern = get_shortcode_regex();
+		
+		if( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] ) {
+			
+			$atts = shortcode_parse_atts( $match[3] );
+			
+			if( ! empty( $atts['ids'] ) ) {
+				$query = array(
+					'post_type'	=> 'attachment', 
+					'post__in' 	=> explode( ',', $atts['ids'] )
+				);
+				$attachments = get_posts($query);
+			}
+		}
+
+		// If no gallery present, pull from attachments of posts 
+		// (old school way before WP 3.5, less common)
+		if( ! $attachments ) {
+			$args = array(
+				'post_parent'		=> $post_id, 
+				'post_status'		=> 'inherit', 
+				'post_type'			=> 'attachment', 
+				'post_mime_type'	=> 'image'
+			);
+			$attachments = get_children( $args );
+		}
+
+		// Slider needs 2 or more attachments.
+		if( count( $attachments ) <= 1 ) {
+			if( is_user_logged_in() )
+				return sprintf( '<div class="alert warning"><p>%s</p></div>', __( 'Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post or attach some images to the post.', 'themeblvd' ) );
+			else
+				return;
+		}
+
+		// Build javascript properties
+		$props = array();
+		
+		if( $type == 'nivo' ) {
+
+			$props = array(
+				'effect'			=> 'random',
+				'slices'			=> '15',
+				'directionNav'		=> 'true',
+				'controlNav'		=> 'true',
+				'pauseOnHover'		=> 'true',
+				'pauseTime'			=> '5000',
+				'manualAdvance'		=> 'false'
+			);
+
+		} elseif( $type == 'standard' ) {
+
+			$props = array(
+				'animation'			=> 'slide',
+				'smoothHeight'		=> 'true',
+				'slideshow' 		=> 'false',
+				'controlNav' 		=> 'false',
+				'slideshowSpeed'	=> '5000',
+				'slideshow'			=> 'true',
+				'controlsContainer'	=> ".slides-wrapper-{$post_id}",
+				'directionNav'		=> 'true',
+				'controlNav'		=> 'true'
+			);
+
+		}
+		$props = apply_filters( 'themeblvd_gallery_slider_'.$type.'_props', $props, $post_id, $attachments );
+
+		$i = 1;
+		$count = count( $props );
+		$props_output = '';
+		
+		foreach( $props as $key => $value ) {
+			
+			$fmt = '%s: ';
+			if( $value == 'true' || $value == 'false' || intval($value) )
+				$fmt .= '%s'; // for bool or int, don't wrap in quotes
+			else
+				$fmt .= '"%s"';
+			
+			$props_output .= sprintf($fmt, $key, $value);
+			
+			if( $i < $count )
+				$props_output .= ",\n";
+			
+			$i++;
+		}
+
+		// CSS Classes
+		$wrap_class = "{$type}-slider-wrapper";
+		if( $type != 'standard' )
+			$wrap_class = "tb-{$wrap_class}";
+		
+		$class = apply_filters( 'themeblvd_gallery_slider_class', array('show-nav_standard', 'show-nav_arrows') );
+		$class = implode( ' ', $class );
+
+		// Slider Wrap
+		$slider_wrap  = "<div id=\"gallery-slider-{$post_id}\" class=\"slider-wrapper {$wrap_class} gallery-slider\">\n";
+		$slider_wrap .= "	<div class=\"slides-wrapper slides-wrapper-{$slider}\">\n";
+		$slider_wrap .= "		<div class=\"slides-inner {$class}\">\n";
+		$slider_wrap .= "			<div class=\"tb-loader\"></div>\n";
+		$slider_wrap .= "				%s\n";
+		$slider_wrap .= "		</div><!-- .slides-inner (end) -->\n";
+		$slider_wrap .= "	</div><!-- .slides-wrapper (end) -->\n";
+		$slider_wrap .= "</div><!-- .gallery-slider (end) -->\n";
+
+		// Start Output
+		$output = '';
+
+		if( $type == 'nivo' ) {
+
+			/*--------------------------------------------*/
+			/* Nivo Slider
+			/*--------------------------------------------*/
+
+			wp_enqueue_script( 'nivo' ); // add to wp_footer()
+
+			$js  = "<script>\n";
+			$js .= "jQuery(document).ready(function($) {\n";
+			$js .= "	$(window).load(function() {\n";
+			$js .= "		$('#gallery-slider-{$post_id} .nivoSlider').nivoSlider({\n";
+			$js .= "			%s\n";
+			$js .= "		}).parent().find('.tb-loader').fadeOut();\n";
+			$js .= "	});\n";
+			$js .= "});\n";
+			$js .= "</script>\n\n";
+
+			$output .= sprintf( $js, $props_output );
+
+			$slider  = "<div class=\"slider nivoSlider\">\n";
+
+			foreach( $attachments as $attachment ) {
+				$image = wp_get_attachment_image_src( $attachment->ID, $size );
+				$slider .= sprintf("<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title);
+			}
+
+			$slider .= "</div><!-- .nivoSlider (end) -->\n";
+			
+			$output .= sprintf( $slider_wrap, $slider );
+
+		} elseif( $type == 'standard' ) {
+
+			/*--------------------------------------------*/
+			/* Standard Slider
+			/*--------------------------------------------*/
+
+			wp_enqueue_script( 'flexslider' ); // add to wp_footer()
+
+			$js  = "<script>\n";
+			$js .= "jQuery(document).ready(function($) {\n";
+			$js .= "	$(window).load(function() {\n";
+			$js .= "		$('#gallery-slider-{$post_id} .flexslider').flexslider({\n";
+			$js .= "			%s\n";
+			$js .= "		}).parent().find('.tb-loader').fadeOut();\n";
+			$js .= "	});\n";
+			$js .= "});\n";
+			$js .= "</script>\n\n";
+
+			$output .= sprintf( $js, $props_output );
+			
+			$slider  = "<div class=\"slider standard-slider flexslider\">\n";
+			$slider .= "	<ul class=\"slides\">\n";
+
+			foreach( $attachments as $attachment ) {
+				$image = wp_get_attachment_image_src( $attachment->ID, $size );
+				$slider .= sprintf("<li><img src=\"%s\" alt=\"%s\" /></li>\n", $image[0], $attachment->post_title);
+			}
+
+			$slider .= "	</ul><!-- .slides (end) -->\n";
+			$slider .= "</div><!-- .flexslider (end) -->\n";
+			
+			$output .= sprintf( $slider_wrap, $slider );
+
+		}
+
+		return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $type, $attachments );
+	}
+}

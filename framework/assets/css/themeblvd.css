@@ -2426,6 +2426,9 @@ div.pp_default .pp_description {
 	height: 11px;
 	z-index: 3;
 }
+.tb-nivo-slider-wrapper .nivo-controlNav {
+	z-index: 100;
+}
 .standard-slider-wrapper .flex-control-nav li {
 	float: left;
 	padding: 2px;
@@ -2458,6 +2461,7 @@ div.pp_default .pp_description {
 }
 .tb-nivo-slider-wrapper .nivo-directionNav {
 	bottom: -23px;
+	z-index: 100;
 }
 .standard-slider-wrapper .flex-direction-nav li {
 	float: left;
