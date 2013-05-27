@@ -884,7 +884,7 @@ if( ! function_exists( 'themeblvd_slider' ) ) {
 		
 		// Kill it if there's no slider
 		if( ! $slider ) {
-			echo '<div class="tb-warning">'.themeblvd_get_local( 'no_slider_selected.' ).'</div>';
+			printf('<div class="alert warning"><p>%s</p></div>', themeblvd_get_local( 'no_slider_selected.' ) );
 			return;
 		}
 		
