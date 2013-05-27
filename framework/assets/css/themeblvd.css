@@ -350,11 +350,11 @@ code.block {
 -------------------------------------------------------------- */
 
 /* Quote */
-.post-format-content figure.quote {
+figure.quote {
 	margin-right: 0;
 	margin-left: 0;
 }
-.post-format-content figure.quote blockquote {
+figure.quote blockquote {
 	margin-bottom: 5px;
 }
 
