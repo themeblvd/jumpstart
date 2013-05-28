@@ -70,8 +70,10 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 if( ! function_exists( 'themeblvd_theme_activation' ) ) {
 	function themeblvd_theme_activation() {
 		global $pagenow;
-		if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){
-			wp_redirect( admin_url( 'themes.php?page='.themeblvd_get_option_name() ) );
+		if( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){
+			$api = Theme_Blvd_Options_API::get_instance();
+			$args = $api->get_args();
+			wp_redirect( admin_url( 'themes.php?page='.$args['menu_slug'] ) );
 			exit;
 		}
 	}
