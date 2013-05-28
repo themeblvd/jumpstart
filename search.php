@@ -29,6 +29,7 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
+
 						<?php if( themeblvd_is_grid_mode() ) : ?>
 							
 							<!-- SEARCH POST GRID (start) -->
@@ -77,7 +78,8 @@ get_header();
 							<!-- SEARCH POST LIST (end) -->
 							
 						<?php endif; ?>
-			
+						
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 			

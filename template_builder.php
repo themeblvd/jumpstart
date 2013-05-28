@@ -34,6 +34,7 @@ get_header();
 						<?php else : ?>
 							<p class="warning"><?php echo apply_filters( 'no_builder_message', themeblvd_get_local( 'no_builder_plugin' ) ); ?></p>
 						<?php endif; ?>
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

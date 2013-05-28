@@ -33,7 +33,8 @@ get_header();
 							<?php get_template_part( 'content', themeblvd_get_part( 'single' ) ); ?>
 							<?php themeblvd_single_footer(); ?>
 							<?php if( themeblvd_supports( 'comments', 'posts' ) ) comments_template( '', true ); ?>
-						<?php endwhile; ?>			
+						<?php endwhile; // end of the loop. ?>	
+						<?php themeblvd_content_bottom(); ?>		
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

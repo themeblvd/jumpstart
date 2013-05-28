@@ -29,6 +29,7 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
+						
 						<div class="primary-post-grid post_grid_paginated post_grid<?php echo themeblvd_get_classes( 'element_post_grid_paginated', true ); ?>">
 							<div class="grid-protection">
 								<?php
@@ -53,8 +54,9 @@ get_header();
 							</div><!-- .grid-protection (end) -->
 							<?php themeblvd_pagination( $post_grid->max_num_pages ); ?>
 							<?php wp_reset_postdata(); ?>
-							<?php //wp_reset_query(); ?>
 						</div><!-- .post_grid (end) -->
+					
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

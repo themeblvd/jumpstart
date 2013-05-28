@@ -30,6 +30,7 @@ get_header();
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>			
 						<?php get_template_part( 'content', themeblvd_get_part( '404' ) ); ?>
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

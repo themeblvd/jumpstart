@@ -46,6 +46,7 @@ function themeblvd_footer_after() { do_action( 'themeblvd_footer_after' ); } // 
 
 // Content
 function themeblvd_content_top() { do_action( 'themeblvd_content_top' ); }
+function themeblvd_content_bottom() { do_action( 'themeblvd_content_bottom' ); }
 function themeblvd_blog_meta() { do_action( 'themeblvd_blog_meta' ); }
 function themeblvd_blog_tags() { do_action( 'themeblvd_blog_tags' ); }
 function themeblvd_the_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) { do_action( 'themeblvd_the_post_thumbnail', $location, $size, $link, $allow_filters, $gallery ); }

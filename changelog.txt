@@ -13,6 +13,7 @@ Jump Start Changelog
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
 * Fixed issues with `FORCE_SSL_ADMIN` set to true on admin modules.
 * Made Google+ icons standards-compliant.
+* Added `themeblvd_content_bottom` action hook directly opposite of `themeblvd_content_top`.
 * Added ability to hide Theme License admin page via `themeblvd_global_config` filter.
 * Added filterable "edit_theme_options" capability to License admin page.
 * Added default styling for captions of a `[gallery]`.

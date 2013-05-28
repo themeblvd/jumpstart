@@ -29,6 +29,7 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
+						
 						<div class="primary-post-list element-post_list_paginated post_list<?php echo themeblvd_get_classes( 'element_post_list_paginated', true ); ?>">
 							<?php
 							$post_list = new WP_Query( themeblvd_get_second_query() );
@@ -45,6 +46,8 @@ get_header();
 							wp_reset_postdata();
 							?>
 						</div><!-- .post_list (end) -->
+					
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

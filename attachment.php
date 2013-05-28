@@ -28,10 +28,12 @@ get_header();
 				
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
+						<?php themeblvd_content_top(); ?>
 						<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'content', 'attachment' ); ?>
 							<?php if( themeblvd_supports( 'comments', 'attachments' ) ) comments_template( '', true ); ?>
 						<?php endwhile; ?>			
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					

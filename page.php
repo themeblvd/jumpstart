@@ -34,6 +34,7 @@ get_header();
 							<?php themeblvd_page_footer(); ?>
 							<?php if( themeblvd_supports( 'comments', 'pages' ) ) comments_template( '', true ); ?>
 						<?php endwhile; // end of the loop. ?>
+						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
 					
