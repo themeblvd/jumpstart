@@ -248,7 +248,7 @@ function themeblvd_sanitize_font_style( $value ) {
 	if( array_key_exists( $value, $recognized ) ) {
 		return $value;
 	}
-	return apply_filters( 'themeblvd_default_font_style', current( $recognized ) );
+	return apply_filters( 'themeblvd_default_font_style', 'normal' );
 }
 
 /**
@@ -568,7 +568,7 @@ function themeblvd_recognized_font_styles() {
 		'normal'      => 'Normal',
 		'italic'      => 'Italic',
 		'bold'        => 'Bold',
-		'bold italic' => 'Bold Italic'
+		'bold-italic' => 'Bold Italic'
 	);
 	return apply_filters( 'themeblvd_recognized_font_styles', $default );
 }

@@ -276,12 +276,33 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				
 				// Font Size
 				if( in_array( 'size', $value['atts'] ) ) {
+					
 					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-size" name="' . esc_attr( $option_name . '[' . $value['id'] . '][size]' ) . '" id="' . esc_attr( $value['id'] . '_size' ) . '">';
-					for ($i = 9; $i < 71; $i++) { 
+					
+					$sizes = themeblvd_recognized_font_sizes();
+					foreach( $sizes as $i ) {
 						$size = $i . 'px';
 						$output .= '<option value="' . esc_attr( $size ) . '" ' . selected( $typography_stored['size'], $size, false ) . '>' . esc_html( $size ) . '</option>';
 					}
+					
+					$output .= '</select>';
+					$output .= '<span class="trigger"></span>';
+					$output .= '<span class="textbox"></span>';
+					$output .= '</div><!-- .tb-fancy-select (end) -->';
+				}
+
+				// Font Style
+				if( in_array( 'style', $value['atts'] ) ) {
+					
+					$output .= '<div class="tb-fancy-select">';
+					$output .= '<select class="of-typography of-typography-style" name="' . esc_attr( $option_name . '[' . $value['id'] . '][style]' ) . '" id="' . esc_attr( $value['id'] . '_style' ) . '">';
+					
+					$styles = themeblvd_recognized_font_styles();
+					foreach( $styles as $key => $style ) {
+						$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['style'], $key, false ) . '>' . esc_html( $style ) . '</option>';
+					}
+
 					$output .= '</select>';
 					$output .= '<span class="trigger"></span>';
 					$output .= '<span class="textbox"></span>';
@@ -290,12 +311,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			
 				// Font Face
 				if( in_array( 'face', $value['atts'] ) ) {
+					
 					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
+					
 					$faces = themeblvd_recognized_font_faces();
-					foreach ( $faces as $key => $face ) {
+					foreach( $faces as $key => $face ) {
 						$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['face'], $key, false ) . '>' . esc_html( $face ) . '</option>';
 					}			
+					
 					$output .= '</select>';
 					$output .= '<span class="trigger"></span>';
 					$output .= '<span class="textbox"></span>';
