@@ -52,12 +52,17 @@ class Theme_Blvd_Options_Page {
 			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
+			'menu_slug'		=> '',
 			'icon'			=> '',
 			'closer'		=> true // Needs to be false if option page has no tabs
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 		
-		// Option ID -- get_option( $id )
+		// Options page menu slug
+		if( ! $this->args['menu_slug'] )
+			$this->args['menu_slug'] = $id;
+
+		// Option ID -- i.e. get_option( $id )
 		$this->id = $id;
 		
 		// Form options
@@ -92,7 +97,7 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	function add_page() {
-		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->id, array( $this, 'admin_page' ) );
+		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
 		if( ! function_exists('wp_enqueue_media') ){
