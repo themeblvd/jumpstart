@@ -132,7 +132,7 @@ class Theme_Blvd_Stylesheets_API {
 				'handle'	=> 'fontawesome',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/fontawesome/css/font-awesome.min.css',
 				'deps'		=> array(),
-				'ver'		=> '3.0.2',
+				'ver'		=> '3.1.0',
 				'media'		=> 'all'
 			);
 
