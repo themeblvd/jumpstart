@@ -58,6 +58,13 @@ class Theme_Blvd_Options_API {
 	 */
 	private $settings = array();
 
+	/**
+	 * The arguments for the Theme Options page that'll 
+	 * get passed through to Theme_Blvd_Options_Page class.
+	 *
+	 * @since 2.3.0
+	 */
+	private $args = array();
 
 	/*--------------------------------------------*/
 	/* Constructor
@@ -92,7 +99,8 @@ class Theme_Blvd_Options_API {
 		// Format options, and store saved settings
 		add_action( 'after_setup_theme', array( $this, 'set_formatted_options' ), 1000 );
 		add_action( 'after_setup_theme', array( $this, 'set_settings' ), 1000 );
-		
+		add_action( 'after_setup_theme', array( $this, 'set_args' ), 1000 );
+	
 	}
 
 	/*--------------------------------------------*/
@@ -552,7 +560,7 @@ class Theme_Blvd_Options_API {
 
 		// Or pull settings from DB
 		$this->settings = get_option( $this->option_id );
-		
+
 		// Do settings exist? If not, grab default values. 
 		// Only do this for the frontend.
 		if( ! $this->settings && ! is_admin() ) {
@@ -567,6 +575,25 @@ class Theme_Blvd_Options_API {
 		}
 
 		$this->settings = apply_filters( 'themeblvd_frontend_options', $this->settings );
+	}
+
+	/**
+	 * Set $args to be used for Theme_Blvd_Options_Page 
+	 * class instance for our main theme options page.
+	 *
+	 * @since 2.3.0
+	 */
+	public function set_args() {
+		$this->args = array(
+			'parent'		=> 'themes.php',
+			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
+			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
+			'cap'			=> themeblvd_admin_module_cap( 'options' ),
+			'menu_slug'		=> $this->option_id,
+			'icon'			=> '',
+			'closer'		=> true // Needs to be false if option page has no tabs
+		);
+		$this->args = apply_filters( 'themeblvd_theme_options_args', $this->args );
 	}
 
 	/*--------------------------------------------*/
@@ -832,6 +859,16 @@ class Theme_Blvd_Options_API {
 		}
 
 		return $this->settings[$primary];
+	}
+
+	/**
+	 * Get $args to be used for Theme_Blvd_Options_Page 
+	 * class instance for our main theme options page.
+	 *
+	 * @since 2.3.0
+	 */
+	public function get_args() {
+		return $this->args;
 	}
 	
 } // End class Theme_Blvd_Options_API

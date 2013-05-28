@@ -19,11 +19,15 @@ function themeblvd_admin_init() {
 		$option_id = $api->get_option_id();
 		
 		// All options constructed from framework and 
-		// potentially added to by client API
+		// potentially added to by client API.
 		$options = $api->get_formatted_options();
+
+		// Arguments for theme options admin page. 
+		// Filterable with "themeblvd_theme_options_args"
+		$args = $api->get_args();
 		
 		// Theme Options Page
-		$options_page = new Theme_Blvd_Options_Page( $option_id, $options );
+		$options_page = new Theme_Blvd_Options_Page( $option_id, $options, $args );
 		
 	}
 	
