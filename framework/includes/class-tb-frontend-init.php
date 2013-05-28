@@ -458,12 +458,14 @@ class Theme_Blvd_Frontend_Init {
 				}
 			}
 			
+			$sliders = apply_filters('themeblvd_slider_element_list', array('slider', 'post_slider', 'post_grid_slider', 'post_list_slider'));
+
 			// First element classes
 			$first_element = array_values( $elements[$area] );
 			$first_element = array_shift( $first_element );
 			$first_element = $first_element['type'];
 			
-			if( $first_element == 'slider' || $first_element == 'post_grid_slider' || $first_element == 'post_list_slider'  )
+			if( in_array( $last_element, $sliders ) )
 				$classes[] = 'slider_is_first';
 			
 			if( $first_element == 'post_grid' || $first_element == 'post_grid_slider' )
@@ -476,7 +478,7 @@ class Theme_Blvd_Frontend_Init {
 			$last_element = end( $elements[$area] );
 			$last_element = $last_element['type'];
 			
-			if( $last_element == 'slider' || $last_element == 'post_grid_slider' || $last_element == 'post_list_slider'  )
+			if( in_array( $last_element, $sliders ) )
 				$classes[] = 'slider_is_last';
 			
 			if( $last_element == 'post_grid' || $last_element == 'post_grid_slider'  )
