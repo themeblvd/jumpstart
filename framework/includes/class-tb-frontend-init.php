@@ -465,7 +465,7 @@ class Theme_Blvd_Frontend_Init {
 			$first_element = array_shift( $first_element );
 			$first_element = $first_element['type'];
 			
-			if( in_array( $last_element, $sliders ) )
+			if( in_array( $first_element, $sliders ) )
 				$classes[] = 'slider_is_first';
 			
 			if( $first_element == 'post_grid' || $first_element == 'post_grid_slider' )
