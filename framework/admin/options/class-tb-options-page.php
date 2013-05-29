@@ -215,7 +215,7 @@ class Theme_Blvd_Options_Page {
 		// button, the options defined in the theme's options.php
 		// file will be added to the option for the active theme.
 		
-		if ( isset( $_POST['reset'] ) ) {
+		if( isset( $_POST['reset'] ) ) {
 			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
 			return themeblvd_get_option_defaults( $this->options );
 		}
@@ -224,7 +224,7 @@ class Theme_Blvd_Options_Page {
 		// This gives the user a chance to clear the options from 
 		// the database.
 		 
-		if ( isset( $_POST['clear'] ) ) {
+		if( isset( $_POST['clear'] ) ) {
 			add_settings_error( $this->id, 'restore_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
 			return null;
 		}
@@ -261,6 +261,9 @@ class Theme_Blvd_Options_Page {
 				
 		}
 		
+		// Extend
+		$clean = apply_filters( 'themeblvd_options_sanitize_'.$this->id, $clean, $input );
+
 		// Add update message for page re-fresh
 		add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
 
