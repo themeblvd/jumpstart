@@ -156,7 +156,7 @@ function themeblvd_save_page_atts( $post_id ) {
 		if( isset( $_POST['_tb_sidebar_layout'] ) )
 			update_post_meta( $post_id, '_tb_sidebar_layout', $_POST['_tb_sidebar_layout'] );
 		// Save custom layout
-		if( isset( $_POST['_tb_custom_layout'] ) )
+		if( isset( $_POST['_tb_custom_layout'] ) ) // backwards compat
 			update_post_meta( $post_id, '_tb_custom_layout', $_POST['_tb_custom_layout'] );
 	}
 }
@@ -216,6 +216,20 @@ function themeblvd_disable_nag() {
 	global $current_user;
     if ( isset( $_GET['tb_nag_ignore'] ) )
          add_user_meta( $current_user->ID, $_GET['tb_nag_ignore'], 'true', true );
+}
+
+/**
+ * Clear set of options. Hooked to "admin_init".
+ *
+ * @since 2.3.0
+ */ 
+
+function themeblvd_clear_options() {
+	if( isset( $_POST['themeblvd_clear_options'] ) ) {
+		$option_id = $_POST['themeblvd_clear_options'];
+		delete_option( $option_id );
+		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
+	}
 }
 
 /**

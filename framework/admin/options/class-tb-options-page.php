@@ -34,6 +34,15 @@ class Theme_Blvd_Options_Page {
 	 * @var array
 	 */
 	public $args;
+
+	/**
+	 * If sanitization has run yet or not when saving 
+	 * options.
+	 *
+	 * @since 2.3.0
+	 * @var bool
+	 */
+	private $sanitized = false;
 	
 	/**
 	 * Constructor.
@@ -87,7 +96,7 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * @since 2.2.0
 	 */
-	function register() {
+	public function register() {
 		// Registers the settings fields and callback
 		register_setting( $this->id, $this->id, array( $this, 'validate' ) );
 	}
@@ -97,7 +106,7 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * @since 2.2.0
 	 */
-	function add_page() {
+	public function add_page() {
 		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
@@ -113,7 +122,7 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * @since 2.2.0
 	 */
-	function load_styles() {
+	public function load_styles() {
 		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
 		wp_enqueue_style( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
 		wp_enqueue_style( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/css/colorpicker.min.css' );
@@ -124,7 +133,7 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * @since 2.2.0
 	 */
-	function load_scripts() {
+	public function load_scripts() {
 		wp_enqueue_script( 'jquery-ui-core');
 		if( function_exists( 'wp_enqueue_media' ) ) 
 			wp_enqueue_media();
@@ -147,7 +156,7 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * @since 2.2.0
 	 */
-	function admin_page() {
+	public function admin_page() {
 
 		// Get any current settings from the database.
 		$settings = get_option( $this->id );
@@ -208,8 +217,8 @@ class Theme_Blvd_Options_Page {
 	 * @param array $input Input from submitted form
 	 * @return array $clean Sanitized options from submitted form
 	 */
-	function validate( $input ) {
-		
+	public function validate( $input ) {
+
 		// Restore Defaults --
 		// In the event that the user clicked the "Restore Defaults"
 		// button, the options defined in the theme's options.php
@@ -218,15 +227,6 @@ class Theme_Blvd_Options_Page {
 		if( isset( $_POST['reset'] ) ) {
 			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
 			return themeblvd_get_option_defaults( $this->options );
-		}
-		
-		// Clear options --
-		// This gives the user a chance to clear the options from 
-		// the database.
-		 
-		if( isset( $_POST['clear'] ) ) {
-			add_settings_error( $this->id, 'restore_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
-			return null;
 		}
 		 
 		// Update Settings --
@@ -265,7 +265,12 @@ class Theme_Blvd_Options_Page {
 		$clean = apply_filters( 'themeblvd_options_sanitize_'.$this->id, $clean, $input );
 
 		// Add update message for page re-fresh
-		add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
+		if( ! $this->sanitized ) // Avoid duplicates
+			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
+
+		// We know sanitization has happenned at least 
+		// once at this point; so set to true.
+		$this->sanitized = true;
 
 		// Return sanitized options
 		return $clean;

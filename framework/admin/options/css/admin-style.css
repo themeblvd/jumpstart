@@ -2,7 +2,7 @@
 /* OptionsFramework Admin Styles
 /*-------------------------------------------------------------------------------------------*/
 
-.updated{max-width:764px;margin-bottom:0!important;}
+.updated, .error {max-width:764px;margin-bottom:0!important;}
 #optionsframework{position:relative;z-index:0;max-width:780px;background:#fff;}
 #optionsframework p{margin-bottom:0;padding-bottom:10px;}
 #optionsframework .postbox h3 {cursor:inherit;}

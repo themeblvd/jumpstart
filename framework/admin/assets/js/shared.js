@@ -755,11 +755,20 @@ jQuery(document).ready(function($) {
 		{
 	    	if(r)
 	        {
+
+	        	var form = $('#themeblvd_options_page'),
+	        		option_id = form.find('input[name="option_page"]').val();
+
+	        	// Clear form's action so we don't go to options.php 
+	        	// and WP Settings API handling.
+	        	form.attr('action', '');
+
 	        	// Add in reset so our sanitizaiton callback reconizes.
-	        	$('#themeblvd_options_page').append('<input type="hidden" name="clear" value="true" />');
+	        	form.append('<input type="hidden" name="themeblvd_clear_options" value="'+option_id+'" />');
 	        	
 	        	// Submit form
-	        	$('#themeblvd_options_page').submit();
+	        	form.submit();
+
 	        }
 	    });
 	    return false;

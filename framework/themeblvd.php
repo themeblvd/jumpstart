@@ -51,6 +51,7 @@ if( is_admin() ) {
 	add_action( 'admin_init','themeblvd_theme_activation' );
 	add_action( 'admin_init', 'themeblvd_add_sanitization' );
 	add_action( 'admin_init', 'themeblvd_disable_nag' );
+	add_action( 'admin_init', 'themeblvd_clear_options' );
 	add_action( 'after_setup_theme', 'themeblvd_register_posts', 5 );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 	add_action( 'themeblvd_options_footer_text', 'themeblvd_options_footer_text_default' );
