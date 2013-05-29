@@ -735,31 +735,31 @@
  */
 
 jQuery(document).ready(function($) {
-    $('#themeblvd_theme_options .reset-button').click(function(){
+    $('#themeblvd_options_page .reset-button').click(function(){
 		tbc_confirm('<h3>'+themeblvd.reset_title+'</h3>'+themeblvd.reset, {'confirm':true}, function(r)
 		{
 	    	if(r)
 	        {
 	        	// Add in reset so our sanitizaiton callback reconizes.
-	        	$('#themeblvd_theme_options').append('<input type="hidden" name="reset" value="true" />');
+	        	$('#themeblvd_options_page').append('<input type="hidden" name="reset" value="true" />');
 	        	
 	        	// Submit form
-	        	$('#themeblvd_theme_options').submit();
+	        	$('#themeblvd_options_page').submit();
 	        }
 	    });
 	    return false;
 	});
 	
-	$('#themeblvd_theme_options .clear-button').click(function(){
+	$('#themeblvd_options_page .clear-button').click(function(){
 		tbc_confirm('<h3>'+themeblvd.clear_title+'</h3>'+themeblvd.clear, {'confirm':true}, function(r)
 		{
 	    	if(r)
 	        {
 	        	// Add in reset so our sanitizaiton callback reconizes.
-	        	$('#themeblvd_theme_options').append('<input type="hidden" name="clear" value="true" />');
+	        	$('#themeblvd_options_page').append('<input type="hidden" name="clear" value="true" />');
 	        	
 	        	// Submit form
-	        	$('#themeblvd_theme_options').submit();
+	        	$('#themeblvd_options_page').submit();
 	        }
 	    });
 	    return false;

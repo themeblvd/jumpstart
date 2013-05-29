@@ -54,6 +54,7 @@ class Theme_Blvd_Options_Page {
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'		=> '',
 			'icon'			=> '',
+			'form_action'	=> 'options.php',
 			'closer'		=> true // Needs to be false if option page has no tabs
 		);
 		$this->args = wp_parse_args( $args, $defaults );
@@ -174,7 +175,7 @@ class Theme_Blvd_Options_Page {
 		    </h2>
 		    <div class="metabox-holder">
 			    <div id="optionsframework" class="tb-options-js">
-					<form id="themeblvd_theme_options" action="options.php" method="post">
+					<form id="themeblvd_options_page" action="<?php echo $this->args['form_action']; ?>" method="post">
 						<?php settings_fields( $this->id ); ?>
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit">
