@@ -175,7 +175,7 @@ if( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
 				
 				// Single posts. First check for overrding meta value, then 
 				// move to default option from theme options page.
-				$size_meta = get_post_meta( $post->ID, '_tb_thumb', true );
+				$size_meta = get_post_meta( get_the_ID(), '_tb_thumb', true );
 				if( $size_meta == 'full' || $size_meta == 'small' || $size_meta == 'hide' )
 					$size = $size_meta;
 				else
