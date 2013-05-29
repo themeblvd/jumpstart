@@ -380,11 +380,15 @@ class Theme_Blvd_Query {
 			// Check to make sure we're in grid mode
 			if( themeblvd_is_grid_mode() ) {
 
-				$columns = themeblvd_get_option( 'archive_grid_columns' );
+				$key = 'archive';
+				if( $this->is_blog($q) )
+					$key = 'index';
+
+				$columns = themeblvd_get_option( "{$key}_grid_columns" );
 				if( ! $columns ) 
 					$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
 				
-				$rows = themeblvd_get_option( 'archive_grid_rows' );
+				$rows = themeblvd_get_option( "{$key}_grid_rows" );
 				if( ! $rows )
 					$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
 				
@@ -458,10 +462,10 @@ class Theme_Blvd_Query {
 	} // end pre_get_posts()
 
 	/**
-	 * If this is the home posts page, this will return 
+	 * If this is the home posts page; this will return 
 	 * false if the framework has swapped it out for a 
-	 * homepage layout. Checks against current WP_Query 
-	 * object at pre_get_posts.
+	 * homepage layout from theme options. Checks against 
+	 * current WP_Query object at pre_get_posts.
 	 *
 	 * @since 2.3.0
 	 * 
@@ -469,6 +473,7 @@ class Theme_Blvd_Query {
 	 * @return bool
 	 */
 	private function is_blog( $q ) {
+		
 		if( ! $q->is_home() )
 			return false;
 
@@ -477,6 +482,8 @@ class Theme_Blvd_Query {
 
 		if( get_option('show_on_front') == 'page' && get_option('page_for_posts') )
 			return true;
+
+		return false; // Shouldn't get this far
 	}
 
 	/*--------------------------------------------*/
