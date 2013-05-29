@@ -467,8 +467,10 @@ if( ! function_exists( 'themeblvd_simple_contact' ) ) {
 
 if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 	function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
+		
 		global $post;
 		$output = '';
+		
 		// CSS classes
 		$classes = '';
 		if( ! $thumb )
@@ -477,27 +479,38 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 			$classes .= $thumb.'-thumbs';
 		if( ! $meta )
 			$classes .= ' hide-meta';
+		
 		// Get posts
 		$posts = get_posts( html_entity_decode( $query ) );
+		
 		// Start output
 		if( $posts ) {
+			
 			$output  = '<div class="themeblvd-mini-post-list">';
 			$output .= '<ul class="'.$classes.'">';
+			
 			foreach( $posts as $post ) {
+				
 				setup_postdata( $post );
 				$image = '';
+				
 				// Setup post thumbnail if user wants them to show
 				if( $thumb ) {
+					
 					$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
 					$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
+					
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
 					if( ! $image ) {
-						$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/frontend/assets/images/thumbs/' );
+						
+						$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
+						
 						$post_format = get_post_format();
 						if ( ! $post_format ) 
 							$post_format = 'standard';
+						
 						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
@@ -507,17 +520,27 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
 					}
 				}
+				
 				$output .= '<li>';
-				if( $image ) $output .= $image;
+				
+				if( $image )
+					$output .= $image;
+				
 				$output .= '<div class="mini-post-list-content">';
 				$output .= '<h4><a href="'.get_permalink().'" title="'.get_the_title().'">'.get_the_title().'</a></h4>';
-				if( $meta ) $output .= '<span class="mini-meta">'.get_the_time(get_option('date_format')).'</span>';
+				
+				if( $meta )
+					$output .= '<span class="mini-meta">'.get_the_time(get_option('date_format')).'</span>';
+				
 				$output .= '</div>';
 				$output .= '</li>';
 			}
+			
 			wp_reset_postdata();
+			
 			$output .= '</ul>';
 			$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
+		
 		} else {
 			$output = themeblvd_get_local( 'archive_no_posts' );
 		}
@@ -550,26 +573,37 @@ if( ! function_exists( 'themeblvd_mini_post_list' ) ) {
 
 if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 	function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
+		
 		global $post;
 		$output = '';
+		
 		// CSS classes
 		$classes = $thumb.'-thumbs';
 		$classes .= ' grid-align-'.$align;
 		if( $gallery )
 			$classes .= ' gallery-override';
+		
 		// Check for gallery override
 		if( $gallery )
 			$query = 'post_type=attachment&post_parent='.$gallery.'&numberposts=-1';
+		
 		// Get posts
 		$posts = get_posts( html_entity_decode( $query ) );	
+		
 		// Start output
 		if( $posts ) {
+			
 			$output  = '<div class="themeblvd-mini-post-grid">';
 			$output .= '<ul class="'.$classes.'">';
+			
 			foreach( $posts as $post ) {
+				
 				setup_postdata( $post );
+				
 				$output .= '<li>';
+				
 				if( $gallery ) {
+					
 					// Gallery image output to simulate featured images
 					$thumbnail = wp_get_attachment_image_src( $post->ID, apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery ) );
 					$image = wp_get_attachment_image_src( $post->ID, 'full' );
@@ -583,18 +617,24 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 					$output .= '</div><!-- .featured-image-inner (end) -->';
 					$output .= '</div><!-- .featured-image (end) -->';
 					$output .= '</div><!-- .featured-image-wrapper (end) -->';
+				
 				} else {
+				
 					// Standard featured image output
 					$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery );
 					$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
+				
 					// If post thumbnail isn't set, pull default thumbnail 
 					// based on post format. If theme doesn't support post 
 					// formats, format will always be "standard".
 					if( ! $image ) {
-						$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/frontend/assets/images/thumbs/' );
+						
+						$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
+						
 						$post_format = get_post_format();
 						if ( ! $post_format ) 
 							$post_format = 'standard';
+						
 						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
@@ -603,14 +643,19 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
 					}
+
 					$output .= $image;	
+
 				}		
 				$output .= '</li>';
 			}
+
 			wp_reset_postdata();
+			
 			$output .= '</ul>';
 			$output .= '<div class="clear"></div>';
 			$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
+		
 		} else {
 			$output = themeblvd_get_local( 'archive_no_posts' );
 		}
