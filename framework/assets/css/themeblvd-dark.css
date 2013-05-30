@@ -159,15 +159,19 @@ input[type="submit"] {
 	text-shadow: 1px 1px 0 #000000;
 }
 .btn-default:hover,
+.btn-default:focus,
 .btn-default:active,
 .btn-default.active,
 .btn-default.disabled,
 .btn-default[disabled],
 .tb-button:hover,
-.comment-reply-link:hover,
-input[type="submit"]:hover,
+.tb-button:focus,
 .tb-button:active, 
+.comment-reply-link:hover,
+.comment-reply-link:focus,
 .comment-reply-link:active,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
 input[type="submit"]:active {
 	background-color: #222222;
 	*background-color: #151515;
@@ -177,25 +181,29 @@ input[type="submit"]:active {
 .btn-default.active {
 	background-color: #000000 \9;
 }
-.nav > li > a:hover {
+.nav > li > a:hover,
+.nav > li > a:focus {
 	background-color: #333333;
 }
 .nav-tabs {
 	border-bottom-color: #000000;
 }
-.nav-tabs > li > a:hover {
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
 	background-color: #454545;
 	border-color: #000000;
 }
 .nav-tabs > .active > a,
-.nav-tabs > .active > a:hover {
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
 	color: #ffffff;
 	background-color: #2c2c2c;
 	border-color: #000000;
 	border-bottom-color: transparent;
 }
 .nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
 	color: #ffffff;
 	background-color: #454545;
 }
@@ -205,39 +213,46 @@ input[type="submit"]:active {
 .nav-tabs.nav-stacked > li > a {
 	border-color: #000000;
 }
-.tabs-stacked .open > a:hover {
+.tabs-stacked .open > a:hover,
+.tabs-stacked .open > a:focus {
 	border-color: #000000;
 }
 .tabs-below > .nav-tabs {
 	border-top-color: #000000;
 }
-.tabs-below > .nav-tabs > li > a:hover {
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus {
 	border-bottom-color: #000000;
 	border-top-color: #000000;
 }
 .tabs-below > .nav-tabs > .active > a,
-.tabs-below > .nav-tabs > .active > a:hover {
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus {
 	border-color: transparent #000000 #000000 #000000;
 }
 .tabs-left > .nav-tabs {
 	border-right-color: #000000;
 }
-.tabs-left > .nav-tabs > li > a:hover {
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
 	border-color: #000000;
 }
 .tabs-left > .nav-tabs .active > a,
-.tabs-left > .nav-tabs .active > a:hover {
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
 	border-color: #000000 transparent #000000 #000000;
 	*border-right-color: #000000;
 }
 .tabs-right > .nav-tabs {
 	border-left-color: #000000;
 }
-.tabs-right > .nav-tabs > li > a:hover {
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus {
 	border-color: #000000;
 }
 .tabs-right > .nav-tabs .active > a,
-.tabs-right > .nav-tabs .active > a:hover {
+.tabs-right > .nav-tabs .active > a:hover
+.tabs-right > .nav-tabs .active > a:focus {
 	border-color: #000000 #000000 #000000 transparent;
 	*border-left-color: #000000;
 }
@@ -262,7 +277,9 @@ input[type="submit"]:active {
 	box-shadow: 0 1px 1px #1e1e1e;
 }
 a.pretty:hover,
-a.thumbnail:hover {
+a.pretty:focus,
+a.thumbnail:hover,
+a.thumbnail:focus {
 	background-color: transparent;
 	border-color: #000000;
 	-webkit-box-shadow: 0 1px 4px #000000;
@@ -276,7 +293,8 @@ a.thumbnail:hover {
 .accordion-inner {
  	border-color: #000000;
 }
-.widget_nav_menu .menu > li > a:hover {
+.widget_nav_menu .menu > li > a:hover,
+.widget_nav_menu .menu > li > a:focus {
 	background-color: #1a1a1a;
 	color: #ffffff;
 }
@@ -288,7 +306,8 @@ a.thumbnail:hover {
  	text-shadow: 1px 1px 1px #000000;
 }
 .widget_nav_menu .menu > .current-menu-item > a,
-.widget_nav_menu .menu > .current-menu-item > a:hover {
+.widget_nav_menu .menu > .current-menu-item > a:hover,
+.widget_nav_menu .menu > .current-menu-item > a:focus {
  	background-color: #1a1a1a;
 	color: #ffffff;
 }
@@ -324,7 +343,8 @@ a.thumbnail:hover {
 	text-shadow: 0 0 0 #000000;
 }
 .subnav ul.nav > .current_page_item > a,
-.subnav ul.nav > .current_page_item > a:hover {
+.subnav ul.nav > .current_page_item > a:hover,
+.subnav ul.nav > .current_page_item > a:focus {
 	background-color: #333333;
 	border-right-color: #000000;
 }
@@ -332,7 +352,8 @@ a.thumbnail:hover {
 	background: #333333;
 	border: 1px solid #000000;
 }
-.subnav li li a:hover {
+.subnav li li a:hover,
+.subnav li li a:focus {
 	background: #494949;
 }
 
@@ -349,7 +370,8 @@ a.thumbnail:hover {
 /* =Shortcodes
 -------------------------------------------------------------- */
 
-.accordion-heading .accordion-toggle:hover {
+.accordion-heading .accordion-toggle:hover,
+.accordion-heading .accordion-toggle:focus {
 	background: #333333;
 }
 
@@ -410,7 +432,8 @@ a.thumbnail:hover {
 .carrousel-slider-wrapper .roundabout-nav a {
 	color: #cccccc;
 }
-.carrousel-slider-wrapper .roundabout-nav a:hover {
+.carrousel-slider-wrapper .roundabout-nav a:hover,
+.carrousel-slider-wrapper .roundabout-nav a:focus {
 	color: #ffffff;
 }
 .tb-tabs-framed .tab-content {

@@ -65,7 +65,10 @@ a {
 }
 a:hover,
 .tb-text-logo:hover,
-.entry-title a:hover {
+.entry-title a:hover,
+a:focus,
+.tb-text-logo:focus,
+.entry-title a:focus {
 	color: #1a5a78;
 	text-decoration: none;
 }
@@ -226,7 +229,8 @@ img.size-full {
 #primary-menu li li a {
 	padding: 7px 10px;
 }
-#primary-menu li li a:hover {
+#primary-menu li li a:hover,
+#primary-menu li li a:focus {
 	background: #f2f2f2;
 }
 #primary-menu li li.nav-header {
@@ -358,7 +362,8 @@ img.size-full {
 	right: 5px;
 	bottom: 5px;
 }
-#comments .comment-body .reply a:hover {
+#comments .comment-body .reply a:hover,
+#comments .comment-body .reply a:focus {
 	background: #dddddd;
 }
 
