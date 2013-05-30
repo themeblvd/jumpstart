@@ -574,7 +574,7 @@ if( ! function_exists( 'themeblvd_get_sidebar_location_name' ) ) {
 		$api = Theme_Blvd_Sidebars_API::get_instance();
 		$sidebar = $api->get_locations( $location );
 
-		if( $sidebar )
+		if( isset( $sidebar['location']['name'] ) )
 			return $sidebar['location']['name'];
 
 		return __( 'Floating Widget Area', 'themeblvd' );
