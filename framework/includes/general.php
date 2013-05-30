@@ -84,74 +84,6 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
 }
 
 /**
- * Homepage posts_per_page bug fix with custom layouts.
- *
- * As of framework v2.3, in theory this shouldn't be needed 
- * any more. If anyone runs into the same issue as before, 
- * they can implement like this:
- *
- * add_action( 'pre_get_posts', 'themeblvd_posts_per_page' );
- *
- * @since 2.2.0
- */
-
-if( ! function_exists( 'themeblvd_posts_per_page' ) ) {
-	function themeblvd_posts_per_page( $query ) {
-
-		if( ! $query->is_main_query() )
-			return;
-
-		$new_posts_per_page = '';
-
-	    /*---------------------------------*/
-	    /* Homepage Custom Layouts
-	    /*---------------------------------*/
-	    
-		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && is_home() && get_option( 'show_on_front' ) == 'posts' ) {
-
-			// The framework has not run at this point, so 
-			// we manually need to check for a homepage layout.
-			$builder = '';
-			$option_name = themeblvd_get_option_name();
-			$theme_options = get_option( $option_name );
-			if( isset( $theme_options['homepage_content'] ) && $theme_options['homepage_content'] == 'custom_layout' ) {
-				if( ! empty( $theme_options['homepage_custom_layout'] ) ) {
-					// Determine custom layout info
-					$builder = $theme_options['homepage_custom_layout'];
-					$layout_post_id = themeblvd_post_id_by_name( $builder, 'tb_layout' );
-					$elements = get_post_meta( $layout_post_id, 'elements', true );
-					// Loop through elements searching for one with a primary query element
-					if( ! empty( $elements ) ) {
-						foreach( $elements as $area ) {
-							if( ! empty( $area ) ) {
-								foreach( $area as $element ) {
-									switch( $element['type'] ) {
-										case 'post_grid_paginated' :
-											if( $element['options']['rows'] && $element['options']['columns'] )
-												$new_posts_per_page = $element['options']['rows'] * $element['options']['columns'];
-											break;
-										case 'post_list_paginated';
-											if( $element['options']['posts_per_page'] )
-												$new_posts_per_page = $element['options']['posts_per_page'];
-											break;
-									}	
-								}
-							}
-						}
-					}
-				}
-			}	
-				
-	    }
-
-		// And after ALL that, if we end up with a new post per 
-		// page item, let's add it in!
-		if( $new_posts_per_page )
-			$query->set( 'posts_per_page', $new_posts_per_page );
-	}
-}
-
-/**
  * Get class used to determine width of column in primary layout.
  *
  * @since 2.2.0
@@ -325,6 +257,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 
 if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {  
 	function themeblvd_admin_module_cap( $module ) {
+		
 		// Setup default capabilities
 		$module_caps = array(
 			'builder' 	=> 'edit_theme_options', 		// Role: Administrator
@@ -356,10 +289,13 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 
 if( ! function_exists( 'themeblvd_compress' ) ) {  
 	function themeblvd_compress( $buffer ) {
-		/* remove comments */
+		
+		// Remove comments
 		$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-		/* remove tabs, spaces, newlines, etc. */
+		
+		// Remove tabs, spaces, newlines, etc.
 		$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+		
 		return $buffer;
 	}
 }
@@ -371,9 +307,14 @@ if( ! function_exists( 'themeblvd_compress' ) ) {
  */
 if( ! function_exists( 'themeblvd_register_posts' ) ) {  
 	function themeblvd_register_posts() {
-		
+
+		// Custom layouts posts are used by the 
+		// Layout Builder plugin. This is the only
+		// plugin's post type that is registered by
+		// default in the framework. 
+
 		// Custom Layouts
-		$args = array(
+		$args = apply_filters( 'themeblvd_builder_post_type_args', array(
 			'labels' 			=> array( 'name' => 'Layouts', 'singular_name' => 'Layout' ),
 			'public'			=> false,
 			//'show_ui' 		=> true,	// Can uncomment for debugging
@@ -383,8 +324,9 @@ if( ! function_exists( 'themeblvd_register_posts' ) ) {
 			'rewrite' 			=> false,
 			'supports' 			=> array( 'title', 'custom-fields' ), 
 			'can_export'		=> true
-		);
+		));
 		register_post_type( 'tb_layout', $args );
+
 	}
 }
 
@@ -459,6 +401,35 @@ if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
 }
 
 /**
+ * Get current page identifiers and keys for what we consider 
+ * admin modules. By default, this includeds:
+ * 1) Theme Options
+ * 2) Layout Builder 	(plugin)
+ * 3) Widget Areas 		(plugin)
+ * 4) Sliders 			(plugin)
+ *
+ * @since 2.3.0
+ */
+
+function themeblvd_get_admin_modules() {
+	
+	// Options page
+	$api = Theme_Blvd_Options_API::get_instance();
+	$args = $api->get_args();
+	$options_page = sprintf( '%s?page=%s', $args['parent'], $args['menu_slug'] );
+
+	// Admin modules
+	$modules = array(
+		'options'	=> $options_page,
+		'builder'	=> 'admin.php?page=themeblvd_builder',
+		'sidebars'	=> 'themes.php?page=themeblvd_widget_areas',
+		'sliders'	=> 'admin.php?page=themeblvd_sliders',
+	);
+
+	return apply_filters( 'themeblvd_admin_modules', $modules );
+}
+
+/**
  * Add items to admin menu bar. This needs to be here in general 
  * functions because admin bar appears on frontend as well.
  *
@@ -467,66 +438,71 @@ if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
 
 if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 	function themeblvd_admin_menu_bar() {
+		
 		global $wp_admin_bar;
-		if( ! is_admin() ) {
-			if( method_exists( $wp_admin_bar, 'add_menu' ) ) {
-				
-				// Theme Options
-				if( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {	
-					$wp_admin_bar->add_menu( 
-						array(
-							'id' => 'tb_theme_options',
-							'title' => __( 'Theme Options', 'themeblvd' ),
-							'parent' => 'site-name',
-							'href' => admin_url( 'themes.php?page='.themeblvd_get_option_name() )
-						)
-					);
-				}
-				
-				// Sidebars (if sidebar plugin is installed)
-				if( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
-					if( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {	
-						$wp_admin_bar->add_menu( 
-							array(
-								'id' => 'tb_sidebars',
-								'title' => __( 'Widget Areas', 'themeblvd' ),
-								'parent' => 'site-name',
-								'href' => admin_url( 'themes.php?page=themeblvd_widget_areas' )
-							)
-						);
-					}
-				}
-				
-				// Sliders (if sliders plugin is installed)
-				if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ) {
-					if( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
-						$wp_admin_bar->add_menu( 
-							array(
-								'id' => 'tb_sliders',
-								'title' => __( 'Sliders', 'themeblvd' ),
-								'parent' => 'site-name',
-								'href' => admin_url( 'admin.php?page=themeblvd_sliders' )
-							)
-						);
-					}
-				}
-				
-				// Builder (if layout builder plugin is installed)
-				if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
-					if( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
-						$wp_admin_bar->add_menu( 
-							array(
-								'id' => 'tb_builder',
-								'title' => __( 'Builder', 'themeblvd' ),
-								'parent' => 'site-name',
-								'href' => admin_url( 'admin.php?page=themeblvd_builder')
-							)
-						);
-					}
-				}
-				
-			} // end if method_exists()
-		} // end if is_admin()
+
+		if( is_admin() || ! method_exists( $wp_admin_bar, 'add_node' ) )
+			return;
+
+		// Get all admin modules
+		$modules = themeblvd_get_admin_modules();
+
+		if( ! $modules )
+			return;
+
+		// Theme Options
+		if( isset( $modules['options'] ) && themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {	
+			$wp_admin_bar->add_node( 
+				array(
+					'id'			=> 'tb_theme_options',
+					'title'			=> __( 'Theme Options', 'themeblvd' ),
+					'parent'		=> 'site-name',
+					'href'			=> admin_url( $modules['options'] )
+				)
+			);
+		}
+		
+		// Sliders (if sliders plugin is installed)
+		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && isset( $modules['sliders'] ) ) {
+			if( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
+				$wp_admin_bar->add_node( 
+					array(
+						'id'		=> 'tb_sliders',
+						'title'		=> __( 'Sliders', 'themeblvd' ),
+						'parent'	=> 'site-name',
+						'href'		=> admin_url( $modules['sliders'] )
+					)
+				);
+			}
+		}
+		
+		// Builder (if layout builder plugin is installed)
+		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && isset( $modules['builder'] ) ) {
+			if( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
+				$wp_admin_bar->add_node( 
+					array(
+						'id'		=> 'tb_builder',
+						'title'		=> __( 'Layout Builder', 'themeblvd' ),
+						'parent'	=> 'site-name',
+						'href'		=> admin_url( $modules['builder'] )
+					)
+				);
+			}
+		}
+
+		// Sidebars (if sidebar plugin is installed)
+		if( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) && isset( $modules['sidebars'] ) ){
+			if( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {	
+				$wp_admin_bar->add_node( 
+					array(
+						'id'		=> 'tb_sidebars',
+						'title'		=> __( 'Widget Areas', 'themeblvd' ),
+						'parent'	=> 'site-name',
+						'href' 		=> admin_url( $modules['sidebars'] )
+					)
+				);
+			}
+		}
 	}
 }
 

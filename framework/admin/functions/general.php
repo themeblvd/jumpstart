@@ -178,18 +178,8 @@ function themeblvd_is_admin_module() {
 	if( isset( $_GET['page'] ) )
 		$current_page .= sprintf( '?page=%s', $_GET['page'] );
 
-	// Options page
-	$api = Theme_Blvd_Options_API::get_instance();
-	$args = $api->get_args();
-	$options_page = sprintf( '%s?page=%s', $args['parent'], $args['menu_slug'] );
-
-	// Possible admin modules
-	$modules = apply_filters( 'themeblvd_admin_modules', array(
-		'options'	=> $options_page,
-		'builder'	=> 'admin.php?page=themeblvd_builder',
-		'sidebars'	=> 'themes.php?page=themeblvd_widget_areas',
-		'sliders'	=> 'admin.php?page=themeblvd_sliders',
-	) );
+	// Get admin modules
+	$modules = themeblvd_get_admin_modules();
 
 	return in_array( $current_page, $modules );
 }
