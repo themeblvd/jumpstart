@@ -75,9 +75,11 @@
 
 html,
 body {
-	padding: 0;
+	float: none !important; /* Fix for any body class containing "span" */
 	font-size: 14px;
 	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
+	margin: 0 !important; /* Fix for any body class containing "span" */
+	padding: 0;
 }
 li {
 	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
