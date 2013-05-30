@@ -308,7 +308,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		wp_enqueue_script( 'jquery' );
 		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 			$scripts[] = 'bootstrap';
-			wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.2.1', true );
+			wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', true );
 		}
 		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 			$scripts[] = 'prettyphoto';
