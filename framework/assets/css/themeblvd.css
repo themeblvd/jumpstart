@@ -2831,23 +2831,26 @@ div.pp_default .pp_description {
 }
 
 /* Breadcrumbs */
-#breadcrumbs .tb-wpml-breadcrumbs .breadcrumbs-content {
+#breadcrumbs.tb-wpml-breadcrumbs .breadcrumbs-content {
 	float: left;
 }
-#breadcrumbs .tb-wpml-breadcrumbs .tb-wpml-flaglist {
+#breadcrumbs.tb-wpml-breadcrumbs .tb-wpml-flaglist {
 	float: right;
+	padding: 7px 5px;
 }
-#main #breadcrumbs .tb-wpml-breadcrumbs .tb-wpml-flaglist a {
+#main #breadcrumbs.tb-wpml-breadcrumbs .tb-wpml-flaglist a {
 	border-bottom: none;
 	margin: 0 1px;
 }
 @media (max-width: 767px) {
 	/* Mobile */
-	#breadcrumbs .tb-wpml-breadcrumbs .breadcrumbs-content, 
-	#breadcrumbs .tb-wpml-breadcrumbs .tb-wpml-flaglist {
+	#breadcrumbs.tb-wpml-breadcrumbs .breadcrumb,
+	#breadcrumbs.tb-wpml-breadcrumbs .breadcrumbs-content, 
+	#breadcrumbs.tb-wpml-breadcrumbs .tb-wpml-flaglist {
 		float: none;
+		padding: 0;
 	}
-	#breadcrumbs .tb-wpml-breadcrumbs .tb-wpml-flaglist {
+	#breadcrumbs.tb-wpml-breadcrumbs .tb-wpml-flaglist {
 		margin-top: 5px;
 	}
 }
