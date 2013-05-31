@@ -30,13 +30,13 @@ if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
  * @since 2.0.0 
  *
  * @param array $option Current option set by user for the font
- * @return string $stack Name of font to be used in CSS
+ * @return string $stack CSS value for font-name property
  */
 
 if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 	function themeblvd_get_font_face( $option ) {
 		
-		$stack = null;
+		$stack = '';
 		$stacks = themeblvd_font_stacks();
 		
 		if( $option['face'] == 'google'  ) {
@@ -56,6 +56,50 @@ if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 			$stack = $stacks[$option['face']]; 
 		}
 		return $stack;
+	}
+}
+
+/**
+ * Get font style
+ *
+ * @since 2.3.0 
+ *
+ * @param array $option Current option set by user for the font
+ * @return string CSS value for font-style property
+ */
+
+if( ! function_exists( 'themeblvd_get_font_style' ) ) {
+	function themeblvd_get_font_style( $option ) {
+		
+		if( ! isset( $option['style'] ) )
+			return 'normal';
+		
+		if( $option['style'] == 'italic' || $option['style'] == 'bold-italic' )
+			return 'italic';
+
+		return 'normal';
+	}
+}
+
+/**
+ * Get font weight
+ *
+ * @since 2.3.0 
+ *
+ * @param array $option Current option set by user for the font
+ * @return string CSS value for font-weight property
+ */
+
+if( ! function_exists( 'themeblvd_get_font_weight' ) ) {
+	function themeblvd_get_font_weight( $option ) {
+		
+		if( ! isset( $option['style'] ) )
+			return 'normal';
+
+		if( $option['style'] == 'bold' || $option['style'] == 'bold-italic' )
+			return 'bold';
+
+		return 'normal';
 	}
 }
 
