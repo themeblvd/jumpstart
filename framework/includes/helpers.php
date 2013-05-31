@@ -135,7 +135,8 @@ if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) {
 if( ! function_exists( 'themeblvd_get_posts_args' ) ) { 
 	function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		
-		$args = array();
+		// Start $args
+		$args = array( 'suppress_filters' => false );
 		
 		// Number of posts
 		if( $type == 'grid' && ! $slider ) {
@@ -215,6 +216,7 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
  * Get posts per page for grid of posts.
  *
  * @since 2.0.0
+ * @deprecated 2.3.0
  *
  * @param string $type Type of grid, template or builder
  * @param string $columns Number of columns to use
@@ -594,16 +596,21 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 
 if( ! function_exists( 'themeblvd_wp_title' ) ) {
 	function themeblvd_wp_title( $title ) {
+		
 		global $page, $paged;
+		
 		// Add the blog name.
 		$title .= get_bloginfo( 'name' );
+		
 		// Add the blog description for the home/front page.
 		$site_description = get_bloginfo( 'description', 'display' );
-		if ( $site_description && ( is_home() || is_front_page() ) )
+		if( $site_description && ( is_home() || is_front_page() ) )
 			$title .= " | $site_description";
+		
 		// Add a page number if necessary:
-		if ( $paged >= 2 || $page >= 2 )
+		if( $paged >= 2 || $page >= 2 )
 			$title .= ' | ' . sprintf( themeblvd_get_local( 'page_num' ), max( $paged, $page ) );
+		
 		return $title;
 	}
 }
@@ -772,15 +779,19 @@ function themeblvd_get_comment_form_args() {
 
 if( ! function_exists( 'themeblvd_show_comments' ) ) {
 	function themeblvd_show_comments() {
+		
 		global $post;
-		$show = true;
+		$show = true; // default
+		
 		if( is_single() ) {
+			
 			if( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' )
 				$show = false;
 			if( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' )
 				$show = false;
 			else if( get_post_meta( $post->ID, '_tb_comments', true ) == 'show' )
 				$show = true;
+
 		}
 		return $show;
 	}	
@@ -798,20 +809,26 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
 
 if( ! function_exists( 'themeblvd_private_page' ) ) {
 	function themeblvd_private_page( $template ){
-		if( post_password_required() ) {
-			// Custom Layouts
-			if( themeblvd_config( 'builder' ) )
-				$template = locate_template( 'page.php' );
-			// Page Templates
-			$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
-			foreach( $page_templates as $page_template ) {
-				if( is_page_template( $page_template ) )
-					$template = locate_template( 'page.php' );	
-			}
-			// Removed hooked the_content on Post Grid/List templates
-			if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) )
-				remove_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
+		
+		// Only for password protected pages.
+		if( ! post_password_required() )
+			return $template;
+
+		// Custom Layouts
+		if( themeblvd_config( 'builder' ) )
+			$template = locate_template( 'page.php' );
+		
+		// Page Templates
+		$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
+		foreach( $page_templates as $page_template ) {
+			if( is_page_template( $page_template ) )
+				$template = locate_template( 'page.php' );	
 		}
+		
+		// Removed hooked the_content on Post Grid/List templates
+		if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) )
+			remove_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
+		
 		return $template;
 	}
 }

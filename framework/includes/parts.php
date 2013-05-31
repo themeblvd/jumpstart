@@ -10,24 +10,31 @@
 
 if( ! function_exists( 'themeblvd_contact_bar' ) ) {
 	function themeblvd_contact_bar( $buttons = array(), $style = null ) {
+		
 		// Set up buttons
 		if( ! $buttons )
 			$buttons = themeblvd_get_option( 'social_media' );
+		
 		// If buttons haven't been sanitized return nothing
 		if( is_array( $buttons ) && isset( $buttons['includes'] ) )
 			return null;
+		
 		// Set up style
 		if( ! $style )
 			$style = themeblvd_get_option( 'social_media_style', null, 'grey' );
+		
 		// Start output
 		$output = null;
 		if( is_array( $buttons ) && ! empty ( $buttons ) ) {
+			
 			$output = '<div class="themeblvd-contact-bar">';
 			$output .= '<ul class="social-media-'.$style.'">';
+			
 			foreach( $buttons as $id => $url ) {
 				$target = strpos( $url, 'mailto:' ) !== false ? '_self' : '_blank'; // Change target if URL has 'mailto:'
 				$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
 			}
+			
 			$output .= '</ul>';
 			$output .= '<div class="clear"></div>';
 			$output .= '</div><!-- .themeblvd-contact-bar (end) -->';
@@ -111,36 +118,54 @@ if( ! function_exists( 'themeblvd_button' ) ) {
 
 if( ! function_exists( 'themeblvd_archive_title' ) ) {
 	function themeblvd_archive_title() {
+		
 		global $post;
 		global $posts;
-	    if( $posts ) $post = $posts[0]; // Hack. Set $post so that the_date() works.
+	   
+	    if( $posts ) 
+	    	$post = $posts[0]; // Hack. Set $post so that the_date() works.
+	   
 	    if ( is_search() ) {
+		
 			// Search Results
 			echo themeblvd_get_local('crumb_search').' "'.get_search_query().'"';
+	    
 	    } else if ( is_category() ) {
+	    
 	    	// If this is a category archive 
 	    	// echo themeblvd_get_local( 'category' ).': ';
 	    	single_cat_title();
+	    
 	    } else if( is_tag() ) {
+	    
 	    	// If this is a tag archive 
 	    	echo themeblvd_get_local('crumb_tag').' "'.single_tag_title('', false).'"';
+	    
 	    } else if ( is_day() ) {
+	    
 	    	// If this is a daily archive 
 	    	echo themeblvd_get_local( 'archive' ).': ';
 	    	the_time('F jS, Y');
+	    
 	    } else if ( is_month()) {
+	    
 	    	// If this is a monthly archive 
 	    	echo themeblvd_get_local( 'archive' ).': ';
 	    	the_time('F, Y');
+	   
 	    } else if ( is_year()) {
+	   
 	    	// If this is a yearly archive 
 	    	echo themeblvd_get_local( 'archive' ).': ';
 	    	the_time('Y');
+	   
 	    } else if ( is_author()) {
+	    	
 	    	// If this is an author archive 
 	    	global $author;
 			$userdata = get_userdata($author);
 			echo themeblvd_get_local('crumb_author').' '.$userdata->display_name;
+	    
 	    }
 	}
 }
@@ -153,27 +178,43 @@ if( ! function_exists( 'themeblvd_archive_title' ) ) {
 
 if( ! function_exists( 'themeblvd_pagination' ) ) {
 	function themeblvd_pagination( $pages = '', $range = 2 ) {  
+		
 		global $paged;
+		global $wp_query;
+		
 		$showitems = ($range * 2)+1;
-		if( empty( $paged ) ) $paged = 1;
-		if( $pages == '' ) {
-			global $wp_query;
+		
+		if( empty( $paged ) ) 
+			$paged = 1;
+		
+		if( ! $pages ) {
 			$pages = $wp_query->max_num_pages;
-			if( !$pages ) {
+			if( ! $pages )
 				$pages = 1;
-			}
 		}
+		
 		if( 1 != $pages ) {
+		
 			echo '<div class="pagination-wrap"><div class="pagination"><div class="btn-group clearfix">';
-			if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link(1).'">&laquo;</a>';
-			if($paged > 1 && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($paged - 1).'">&lsaquo;</a>';
-			for ( $i = 1; $i <= $pages; $i++ ) {
+		
+			if( $paged > 2 && $paged > $range+1 && $showitems < $pages ) 
+				echo '<a class="btn btn-default" href="'.get_pagenum_link(1).'">&laquo;</a>';
+
+			if( $paged > 1 && $showitems < $pages )
+				echo '<a class="btn btn-default" href="'.get_pagenum_link($paged - 1).'">&lsaquo;</a>';
+			
+			for( $i = 1; $i <= $pages; $i++ ) {
 				if (1 != $pages &&( ! ( $i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
 					echo ( $paged == $i ) ? '<a class="btn btn-default active" href="'.get_pagenum_link($i).'">'.$i.'</a>' : '<a class="btn btn-default" href="'.get_pagenum_link($i).'">'.$i.'</a>';
 				}
 			}
-			if ($paged < $pages && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($paged + 1).'">&rsaquo;</a>';  
-			if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo '<a class="btn btn-default" href="'.get_pagenum_link($pages).'">&raquo;</a>';
+			
+			if( $paged < $pages && $showitems < $pages ) 
+				echo '<a class="btn btn-default" href="'.get_pagenum_link($paged + 1).'">&rsaquo;</a>';  
+			
+			if( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages )
+				echo '<a class="btn btn-default" href="'.get_pagenum_link($pages).'">&raquo;</a>';
+			
 			echo "</div></div></div>\n";
 		}
 	}
