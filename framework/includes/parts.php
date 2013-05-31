@@ -171,52 +171,58 @@ if( ! function_exists( 'themeblvd_archive_title' ) ) {
 }
 
 /**
+ * Get pagination
+ *
+ * @since 2.3.0
+ *
+ * @param int $pages Optional number of pages
+ * @param int $range Optional range for paginated buttons, helpful for many pages
+ * @return string $output Final HTML markup for pagination
+ */
+
+if( ! function_exists( 'themeblvd_get_pagination' ) ) {
+	function themeblvd_get_pagination( $pages = 0, $range = 2 ) { 
+		
+		// Get pagination parts
+		$parts = themeblvd_get_pagination_parts( $pages, $range );
+
+		// Pagination markup
+		$output = '';
+		if( $parts ) {
+			foreach( $parts as $part ) {
+				$class = 'btn btn-default';
+				if( $part['active'] )
+					$class .= ' active';
+				$output .= sprintf('<a class="%s" href="%s">%s</a>', $class, $part['href'], $part['text'] );
+			}
+		}
+
+		// Wrapping markup
+		$wrap  = '<div class="pagination-wrap">';
+		$wrap .= '	<div class="pagination">';
+		$wrap .= '		<div class="btn-group clearfix">';
+		$wrap .= '			%s';
+		$wrap .= '		</div>';
+		$wrap .= '	</div>';
+		$wrap .= '</div>';
+
+		$output = sprintf( $wrap, $output );
+
+		return apply_filters( 'themeblvd_pagination', $output, $parts );
+	}
+}
+/**
  * Pagination
  *
  * @since 2.0.0
+ *
+ * @param int $pages Optional number of pages
+ * @param int $range Optional range for paginated buttons, helpful for many pages
  */
 
 if( ! function_exists( 'themeblvd_pagination' ) ) {
-	function themeblvd_pagination( $pages = '', $range = 2 ) {  
-		
-		global $paged;
-		global $wp_query;
-		
-		$showitems = ($range * 2)+1;
-		
-		if( empty( $paged ) ) 
-			$paged = 1;
-		
-		if( ! $pages ) {
-			$pages = $wp_query->max_num_pages;
-			if( ! $pages )
-				$pages = 1;
-		}
-		
-		if( 1 != $pages ) {
-		
-			echo '<div class="pagination-wrap"><div class="pagination"><div class="btn-group clearfix">';
-		
-			if( $paged > 2 && $paged > $range+1 && $showitems < $pages ) 
-				echo '<a class="btn btn-default" href="'.get_pagenum_link(1).'">&laquo;</a>';
-
-			if( $paged > 1 && $showitems < $pages )
-				echo '<a class="btn btn-default" href="'.get_pagenum_link($paged - 1).'">&lsaquo;</a>';
-			
-			for( $i = 1; $i <= $pages; $i++ ) {
-				if (1 != $pages &&( ! ( $i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-					echo ( $paged == $i ) ? '<a class="btn btn-default active" href="'.get_pagenum_link($i).'">'.$i.'</a>' : '<a class="btn btn-default" href="'.get_pagenum_link($i).'">'.$i.'</a>';
-				}
-			}
-			
-			if( $paged < $pages && $showitems < $pages ) 
-				echo '<a class="btn btn-default" href="'.get_pagenum_link($paged + 1).'">&rsaquo;</a>';  
-			
-			if( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages )
-				echo '<a class="btn btn-default" href="'.get_pagenum_link($pages).'">&raquo;</a>';
-			
-			echo "</div></div></div>\n";
-		}
+	function themeblvd_pagination( $pages = 0, $range = 2 ) {  
+		echo themeblvd_get_pagination( $pages, $range );
 	}
 }
 

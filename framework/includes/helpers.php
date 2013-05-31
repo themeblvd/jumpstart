@@ -824,7 +824,7 @@ if( ! function_exists( 'themeblvd_private_page' ) ) {
 			if( is_page_template( $page_template ) )
 				$template = locate_template( 'page.php' );	
 		}
-		
+
 		// Removed hooked the_content on Post Grid/List templates
 		if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) )
 			remove_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
@@ -1151,6 +1151,84 @@ if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 		);
 
 		return $chain;
+	}
+}
+
+/**
+ * Get pagination parts.
+ *
+ * @since 2.3.0
+ *
+ * @param int $pages Optional number of pages
+ * @param int $range Optional range for paginated buttons, helpful for many pages
+ * @return array $parts Parts to construct pagination
+ */
+
+if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
+	function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
+		
+		global $paged;
+		global $wp_query;
+		
+		$parts = array();
+		$showitems = ($range * 2)+1;
+		
+		if( empty( $paged ) ) 
+			$paged = 1;
+		
+		if( ! $pages ) {
+			$pages = $wp_query->max_num_pages;
+			if( ! $pages )
+				$pages = 1;
+		}
+		
+		if( 1 != $pages ) {
+
+			if( $paged > 2 && $paged > $range+1 && $showitems < $pages ) {
+				$parts[] = array(
+					'href'		=> get_pagenum_link(1),
+					'text'		=> '&laquo;',
+					'active' 	=> false
+				);
+			}
+
+			if( $paged > 1 && $showitems < $pages ) {
+				$parts[] = array(
+					'href'		=> get_pagenum_link($paged-1),
+					'text'		=> '&lsaquo;',
+					'active' 	=> false
+				);
+			}
+			
+			for( $i = 1; $i <= $pages; $i++ ) {
+				if( ! ( $i >= $paged+$range+1 || $i <= $paged-$range-1 ) || $pages <= $showitems ) {
+					$active = ( $paged == $i ) ? true : false;
+					$parts[] = array(
+						'href'		=> get_pagenum_link($i),
+						'text'		=> $i,
+						'active' 	=> $active
+					);
+				}
+			}
+
+			if( $paged < $pages && $showitems < $pages ) {
+				$parts[] = array(
+					'href'		=> get_pagenum_link($paged + 1),
+					'text'		=> '&rsaquo;',
+					'active' 	=> false
+				);
+			} 
+			
+			if( $paged < $pages-1 && $paged+$range-1 < $pages && $showitems < $pages ) {
+				$parts[] = array(
+					'href'		=> get_pagenum_link($pages),
+					'text'		=> '&raquo;',
+					'active' 	=> false
+				);
+			}
+		
+		}
+		return apply_filters( 'themeblvd_pagination_parts', $parts );
 	}
 }
 

@@ -10,6 +10,7 @@ Jump Start Changelog
 * Updated framework version to 2.3.
 * Updated FontAwesome to v3.1.
 * Updated Twitter Bootstrap to v2.3.
+* Updated Roundabout script to v2.4.2.
 * Fixed CSS bug with video icon not showing on featured images linking to videos.
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
 * Fixed issues with `FORCE_SSL_ADMIN` set to true on admin modules.
@@ -22,7 +23,7 @@ Jump Start Changelog
 * Added support for WP 3.5+ media uploader.
 * Added support for Nivo Slider.
 * Added `themeblvd_default_sidebar_args` filter for arguments when registering default sidebar locations.
-* Updated Roundabout script to v2.4.2.
+* Reconstruction of how pagination works to be more extendable. See new function `themeblvd_get_pagination` in /framework/frontend/functions/parts.php, and new functions `themeblvd_get_pagination_parts` in /framework/frontend/functions/helpers.php.
 * Expanded "Featured Image Link" video link to accept any WordPress oEmbed URL.
 * Slight UI improvements to Logo option in default Theme Options panel.
 * Majorly reduced framework's footprint on `$GLOBAL` namespace with re-structuring.
@@ -85,7 +86,7 @@ Jump Start Changelog
 * Now allowing filters on featured images in mini post list/grids.
 * Re-tooled `themeblvd_nav_menu_select` to visually accomodate nav menu tree structure.
 * Minor adjustments to framework's default search widget.
-* Total reconstruction of how breadcrumbs work to be more extendable. See `themeblvd_breadcrumbs_default` function in /framework/functions/display.php, new function `themeblvd_get_breadcrumbs_trail` in /framework/frontend/functions/parts.php, and new functions `themeblvd_get_breadcrumb_parts` and `themeblvd_show_breadcrumbs` in /framework/frontend/functions/helpers.php.
+* Reconstruction of how breadcrumbs work to be more extendable. See `themeblvd_breadcrumbs_default` function in /framework/functions/display.php, new function `themeblvd_get_breadcrumbs_trail` in /framework/frontend/functions/parts.php, and new functions `themeblvd_get_breadcrumb_parts` and `themeblvd_show_breadcrumbs` in /framework/frontend/functions/helpers.php.
 * Slight modifications to Post Options meta box to hopefully be easier to understand.
 * Moved `themeblvd_analytics` to `<head>`.
 * Bootstrap: Removed hover on class "pretty" for non-anchors for better continuity with Bootstrap's "thumbnail" class.
