@@ -673,7 +673,17 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			
 			// Posts in Category	
 			case 'posts_in_category' :
-				$categories = get_categories();
+				
+				if( isset( $GLOBALS['sitepress'] ) ) {
+					// WPML compat
+					global $sitepress;
+					remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+					$categories = get_categories( array( 'hide_empty' => false ) );
+					add_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+				} else {
+					$categories = get_categories( array( 'hide_empty' => false ) );
+				}
+		        
 		        if( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
 		        	foreach ( $categories as $category ) {
@@ -689,7 +699,17 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			
 			// Category Archives	
 			case 'categories' :
-				$categories = get_categories();
+				
+				if( isset( $GLOBALS['sitepress'] ) ) {
+					// WPML compat
+					global $sitepress;
+					remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+					$categories = get_categories( array( 'hide_empty' => false ) );
+					add_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+				} else {
+					$categories = get_categories( array( 'hide_empty' => false ) );
+				}
+		        
 		        if( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
 		        	foreach ( $categories as $category ) {

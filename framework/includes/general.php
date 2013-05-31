@@ -948,7 +948,15 @@ function themeblvd_get_select( $type ) {
 		// Categories
 		case 'categories' :
 			$select['all'] = __( '<strong>All Categories</strong>', 'themeblvd' );
-			$categories = get_categories( array( 'hide_empty' => false ) );
+			if( isset( $GLOBALS['sitepress'] ) ) {
+				// WPML compat
+				global $sitepress;
+				remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+				$categories = get_categories( array( 'hide_empty' => false ) );
+				add_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+			} else {
+				$categories = get_categories( array( 'hide_empty' => false ) );
+			}
 			foreach( $categories as $category )
 				$select[$category->slug] = $category->name;
 			break;
