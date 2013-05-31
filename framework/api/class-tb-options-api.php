@@ -195,7 +195,7 @@ class Theme_Blvd_Options_API {
 		// Pull all the categories into an array
 		$options_categories = array();  
 		if( is_admin() ) {
-			$options_categories_obj = get_categories( array( 'hide_empty', false ) );
+			$options_categories_obj = get_categories( array( 'hide_empty' => false ) );
 			foreach ($options_categories_obj as $category) {
 		    	$options_categories[$category->cat_ID] = $category->cat_name;
 			}
