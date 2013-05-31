@@ -7,8 +7,9 @@ Jump Start Changelog
 **If you're using the Layout Builder plugin, you must update it to v1.1.1+**
 **If you're using the Sliders plugin, you must update it to v1.1+**
 
-* Updated framework version to 2.3.0.
+* Updated framework version to 2.3.
 * Updated FontAwesome to v3.1.
+* Updated Twitter Bootstrap to v2.3.
 * Fixed CSS bug with video icon not showing on featured images linking to videos.
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
 * Fixed issues with `FORCE_SSL_ADMIN` set to true on admin modules.
