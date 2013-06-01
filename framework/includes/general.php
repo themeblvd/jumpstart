@@ -301,36 +301,6 @@ if( ! function_exists( 'themeblvd_compress' ) ) {
 }
 
 /**
- * Register any post types used with framework.
- * 
- * @since 2.0.0
- */
-if( ! function_exists( 'themeblvd_register_posts' ) ) {  
-	function themeblvd_register_posts() {
-
-		// Custom layouts posts are used by the 
-		// Layout Builder plugin. This is the only
-		// plugin's post type that is registered by
-		// default in the framework. 
-
-		// Custom Layouts
-		$args = apply_filters( 'themeblvd_builder_post_type_args', array(
-			'labels' 			=> array( 'name' => 'Layouts', 'singular_name' => 'Layout' ),
-			'public'			=> false,
-			//'show_ui' 		=> true,	// Can uncomment for debugging
-			'query_var' 		=> true,
-			'capability_type' 	=> 'post',
-			'hierarchical' 		=> false,
-			'rewrite' 			=> false,
-			'supports' 			=> array( 'title', 'custom-fields' ), 
-			'can_export'		=> true
-		));
-		register_post_type( 'tb_layout', $args );
-
-	}
-}
-
-/**
  * Retrieves a post id given a post's slug and post type.
  *
  * @since 2.0.0
