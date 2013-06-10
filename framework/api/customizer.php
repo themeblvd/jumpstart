@@ -1,6 +1,6 @@
 <?php
 /**
- * Add option section for theme customizer 
+ * Add option section for theme customizer
  * added in WP 3.4
  *
  * @since 2.1.0
@@ -10,7 +10,7 @@
  * @param array $options Options to register for WP theme customizer
  * @param int $priority Priority for section
  */
- 
+
 if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
 	function themeblvd_add_customizer_section( $section_id, $section_name, $options, $priority = null ) {
 		global $_themeblvd_customizer_sections;
@@ -20,30 +20,30 @@ if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
 			'options' 	=> $options,
 			'priority'	=> $priority
 		);
-		
+
 	}
 }
 
 /**
- * Format options for customizer into array organized 
+ * Format options for customizer into array organized
  * with all sections together.
  *
- * This is needed because WordPress's customizer groups 
- * all options together when saving and doesn't take 
- * sections into account. So, we need to organize all 
- * options into an array that we can check against when 
- * saving our options in our custom action added to the 
+ * This is needed because WordPress's customizer groups
+ * all options together when saving and doesn't take
+ * sections into account. So, we need to organize all
+ * options into an array that we can check against when
+ * saving our options in our custom action added to the
  * WordPress customizer saving process.
  *
- * The structure of the array returned with this function 
- * is formatted in a specific way to work with the function 
+ * The structure of the array returned with this function
+ * is formatted in a specific way to work with the function
  * "themeblvd_save_customizer"
  *
  * @since 2.1.0
  *
  * @param array $options Options to format
  */
- 
+
 if( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
 	function themeblvd_registered_customizer_options( $sections ) {
 		$registered_options = array();
@@ -63,7 +63,7 @@ if( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
 /**
  * Setup everything we need for WordPress customizer.
  *
- * All custom controls used in this function can be 
+ * All custom controls used in this function can be
  * found in the following file:
  *
  * /framework/admin/classes/customizer.php
@@ -80,27 +80,27 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 		$options_api = Theme_Blvd_Options_API::get_instance();
 		$option_name = $options_api->get_option_id();
 		$theme_settings = $options_api->get_settings();
-		
+
 		// Register sections of options
 		if( $_themeblvd_customizer_sections ) {
 			foreach( $_themeblvd_customizer_sections as $section ) {
-				
+
 				// Add section
 				$wp_customize->add_section( $section['id'], array(
 					'title'    => $section['name'],
 					'priority' => $section['priority'],
 				) );
-				
+
 				$font_counter = 1;
-				
+
 				// Add Options
 				if( $section['options'] ) {
 					foreach( $section['options'] as $option ) {
-						
+
 						if( $option['type'] == 'logo' ) {
-							
+
 							// LOGO
-							
+
 							// Setup defaults
 							$defaults = array(
 								'type' 				=> '',
@@ -115,12 +115,12 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 									}
 								}
 							}
-							
+
 							// Transport
 							$transport = '';
 							if( isset( $option['transport'] ) )
 								$transport = $option['transport'];
-							
+
 							// Logo Type
 							$wp_customize->add_setting( $option_name.'['.$option['id'].'][type]', array(
 								'default'    	=> esc_attr( $defaults['type'] ),
@@ -141,7 +141,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 									'image' 		=> __( 'Image', 'themeblvd' )
 								)
 							) );
-							
+
 							// Custom Title
 							$wp_customize->add_setting( $option_name.'['.$option['id'].'][custom]', array(
 								'default'    	=> esc_attr( $defaults['custom'] ),
@@ -155,7 +155,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'label'      	=> __( 'Custom Title', 'themeblvd' ),
 								'section'    	=> $section['id']
 							) );
-							
+
 							// Custom Tagline
 							$wp_customize->add_setting( $option_name.'['.$option['id'].'][custom_tagline]', array(
 								'default'    	=> esc_attr( $defaults['custom_tagline'] ),
@@ -169,7 +169,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'label'      	=> __( 'Custom Tagline', 'themeblvd' ),
 								'section'    	=> $section['id']
 							) );
-							
+
 							// Logo Image
 							$wp_customize->add_setting( $option_name.'['.$option['id'].'][image]', array(
 								'default'    	=> esc_attr( $defaults['image'] ),
@@ -183,11 +183,11 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'label'   => $option['name'].' '.__( 'Image', 'themeblvd' ),
 								'section' => $section['id'],
 							) ) );
-							
+
 						} else if( $option['type'] == 'typography' ) {
-							
+
 							// TYPOGRAPHY
-							
+
 							// Setup defaults
 							$defaults = array(
 								'size' 		=> '',
@@ -198,15 +198,15 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							);
 							if( isset( $theme_settings[$option['id']] ) )
 								$defaults = $theme_settings[$option['id']];
-							
+
 							// Transport
 							$transport = '';
 							if( isset( $option['transport'] ) )
 								$transport = $option['transport'];
-							
+
 							// Loop through included attributes
 							foreach( $option['atts'] as $attribute ) {
-								
+
 								// Register options
 								$wp_customize->add_setting( $option_name.'['.$option['id'].']['.$attribute.']', array(
 									'default'    	=> esc_attr( $defaults[$attribute] ),
@@ -214,11 +214,11 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 									'capability' 	=> themeblvd_admin_module_cap( 'options' ),
 									'transport'		=> $transport
 								) );
-	
+
 								switch( $attribute ) {
 									case 'size' :
 										$size_options = array();
-										for($i = 9; $i < 71; $i++) { 
+										for($i = 9; $i < 71; $i++) {
 											$size = $i . 'px';
 											$size_options[$size] = $size;
 										}
@@ -256,7 +256,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 										$font_counter++;
 										break;
 									case 'style' :
-										// Currently not supported in Theme Blvd options 
+										// Currently not supported in Theme Blvd options
 										// $counter++;
 										break;
 									case 'color' :
@@ -269,7 +269,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 										$font_counter++;
 										break;
 								}
-								
+
 								// Divider line below each font
 								$wp_customize->add_setting( $option_name.'['.$option['id'].'][divider]', array(
 									'type'       	=> 'option',
@@ -282,27 +282,27 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 									'section'		=> $section['id']
 								) ) );
 								$font_counter++;
-								
+
 							}
-						
+
 						} else {
-							
+
 							// ALL OTHER OPTIONS
-							
+
 							// Default
 							$default = '';
 							if( isset( $theme_settings[$option['id']] ) )
 								$default = $theme_settings[$option['id']];
-							
+
 							// Transport
 							$transport = '';
 							if( isset( $option['transport'] ) )
 								$transport = $option['transport'];
-							
+
 							$priority = '';
 							if( isset( $option['priority'] ) )
 								$priority = $option['priority'];
-							
+
 							// Register option
 							$wp_customize->add_setting( $option_name.'['.$option['id'].']', array(
 								'default'    	=> esc_attr( $default ),
@@ -310,7 +310,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'capability' 	=> themeblvd_admin_module_cap( 'options' ),
 								'transport'		=> $transport
 							) );
-						
+
 							// Add controls
 							switch( $option['type'] ) {
 								// Standard text option
@@ -361,27 +361,27 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 										'label'			=> $option['name'],
 										'section'		=> $section['id']
 									) ) );
-									break;	
+									break;
 							}
-						
+
 						}
 					}
 				}
 			}
 		}
-		
+
 		// Remove irrelevant sections
 		$remove_sections = apply_filters( 'themeblvd_customizer_remove_sections', array( 'title_tagline' ) );
 		if( is_array( $remove_sections ) && $remove_sections )
 			foreach( $remove_sections as $section )
 				$wp_customize->remove_section( $section );
-		
+
 		// Modify sections
 		$modify_sections = apply_filters( 'themeblvd_customizer_modify_sections', array() );
 		if( ! empty( $modify_sections ) ) {
 			foreach( $modify_sections as $section ) {
-				// Currently only one section set to be modified. I'm doing this 
-				// loop to make it so you can stop items from being modified and 
+				// Currently only one section set to be modified. I'm doing this
+				// loop to make it so you can stop items from being modified and
 				// I can may add to this in the future.
 				switch( $section ) {
 					case 'static_front_page' :
@@ -416,7 +416,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								$custom_layouts[$layout->post_name] = $layout->post_title;
 						} else {
 							$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', 'themeblvd' );
-						}				
+						}
 						$wp_customize->add_setting( $option_name.'[homepage_custom_layout]', array(
 							'default'    	=> '',
 							'type'       	=> 'option',
@@ -430,7 +430,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							'choices'		=> $custom_layouts
 						) );
 						break;
-				}	
+				}
 			}
 		}
 	}
@@ -440,7 +440,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
  * Styles for WordPress cusomizer.
  *
  * @since 2.1.0
- */ 
+ */
 
 if( ! function_exists( 'themeblvd_customizer_styles' ) ) {
 	function themeblvd_customizer_styles() {
@@ -453,81 +453,81 @@ if( ! function_exists( 'themeblvd_customizer_styles' ) ) {
  * Scripts for WordPress cusomizer.
  *
  * @since 2.1.0
- */ 
+ */
 
 if( ! function_exists( 'themeblvd_customizer_scripts' ) ) {
 	function themeblvd_customizer_scripts() {
 		wp_register_script( 'themeblvd_customizer', get_template_directory_uri().'/framework/admin/assets/js/customizer.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 	    wp_enqueue_script( 'themeblvd_customizer' );
-	    wp_localize_script( 'themeblvd_customizer', 'themeblvd', themeblvd_get_admin_locals( 'customizer_js' ) );	
+	    wp_localize_script( 'themeblvd_customizer', 'themeblvd', themeblvd_get_admin_locals( 'customizer_js' ) );
 	}
 }
 
 /**
- * Customizer control extensions. 
+ * Customizer control extensions.
  */
 
 if( class_exists( 'WP_Customize_Control' ) ) {
-	
+
 	/**
-	 * Add control for textarea. 
+	 * Add control for textarea.
 	 */
-	
+
 	class WP_Customize_ThemeBlvd_Textarea extends WP_Customize_Control {
-		
+
 		public $type = 'textarea';
 		public $statuses;
-	
+
 		public function __construct( $manager, $id, $args = array() ) {
 			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
-		
+
 		public function to_json() {
 			parent::to_json();
 			$this->json['statuses'] = $this->statuses;
 		}
-		
+
 		public function render_content() {
-			?>		
+			?>
 			<label>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<textarea <?php $this->link(); ?>><?php echo esc_attr( $this->value() ); ?></textarea>
 			</label>
 			<?php
 		}
-	
-	} 
-	
+
+	}
+
 	/**
-	 * Add control to select font face. 
+	 * Add control to select font face.
 	 *
-	 * This is very similar to default select option but with our 
-	 * added class that allows us to use it as reference for the 
+	 * This is very similar to default select option but with our
+	 * added class that allows us to use it as reference for the
 	 * Google font input.
 	 */
-	
+
 	class WP_Customize_ThemeBlvd_Font_Face extends WP_Customize_Control {
-		
+
 		public $type = 'font_face';
 		public $statuses;
-	
+
 		public function __construct( $manager, $id, $args = array() ) {
 			$this->statuses = array( '' => __( 'Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
-		
+
 		public function enqueue() {
 			wp_enqueue_script( 'themeblvd_customizer' );
 			wp_enqueue_style( 'themeblvd_customizer' );
 		}
-		
+
 		public function to_json() {
 			parent::to_json();
 			$this->json['statuses'] = $this->statuses;
 		}
-		
-		public function render_content() {		
+
+		public function render_content() {
 			if ( empty( $this->choices ) )
 				return;
 			?>
@@ -542,35 +542,35 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 			</label>
 			<?php
 		}
-		
+
 	}
-	
+
 	/**
 	 * Add control to input Google font name.
 	 */
-	
+
 	class WP_Customize_ThemeBlvd_Google_Font extends WP_Customize_Control {
-		
+
 		public $type = 'google_font';
 		public $statuses;
-	
+
 		public function __construct( $manager, $id, $args = array() ) {
 			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
-		
+
 		public function enqueue() {
 			wp_enqueue_script( 'themeblvd_customizer' );
 			wp_enqueue_style( 'themeblvd_customizer' );
 		}
-		
+
 		public function to_json() {
 			parent::to_json();
 			$this->json['statuses'] = $this->statuses;
 		}
-		
+
 		public function render_content() {
-			?>		
+			?>
 			<label class="themeblvd-google-font">
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
@@ -579,38 +579,38 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 			</label>
 			<?php
 		}
-	
+
 	}
-	
+
 	/**
-	 * Add control for divider. 
+	 * Add control for divider.
 	 */
-	
+
 	class WP_Customize_ThemeBlvd_Divider extends WP_Customize_Control {
-		
+
 		public $type = 'divider';
 		public $statuses;
-	
+
 		public function __construct( $manager, $id, $args = array() ) {
 			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
 			parent::__construct( $manager, $id, $args );
 		}
-		
+
 		public function render_content() {
-			?>		
+			?>
 			<div class="themeblvd-divider"></div>
 			<?php
 		}
-	
-	} 
+
+	}
 
 } // End if class_exists('WP_Customize_Control')
 
 /**
  * Logo Customizer Preview
  *
- * Since the Javascript for the logo will get repeated in 
- * many themes, its being placed here so it can be easily 
+ * Since the Javascript for the logo will get repeated in
+ * many themes, its being placed here so it can be easily
  * placed in each theme that requires it.
  *
  * @since 2.1.0
@@ -618,10 +618,10 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 
 if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 	function themeblvd_customizer_preview_logo() {
-		
+
 		// Global option name
 		$option_name = themeblvd_get_option_name();
-		
+
 		// Setup for logo
 		$logo_options = themeblvd_get_option('logo');
 		$logo_atts = array(
@@ -637,24 +637,24 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 			if( isset($logo_options[$key]) )
 				$logo_atts[$key] = $logo_options[$key];
 		}
-		// Begin output	
+		// Begin output
 		?>
 		// Logo atts object
 		Logo = <?php echo json_encode($logo_atts); ?>;
-		
+
 		/* Logo - Type */
 		wp.customize('<?php echo $option_name; ?>[logo][type]',function( value ) {
 			value.bind(function(value) {
-				// Set global marker. This allows us to 
-				// know the currently selected logo type 
+				// Set global marker. This allows us to
+				// know the currently selected logo type
 				// from any other option.
 				Logo.type = value;
-				
-				// Remove classes specific to type so we 
+
+				// Remove classes specific to type so we
 				// can add tehm again depending on new type.
 				$('#branding .header_logo').removeClass('header_logo_title header_logo_title_tagline header_logo_custom header_logo_image header_logo_has_tagline');
-				
-				// Display markup depending on type of 
+
+				// Display markup depending on type of
 				// logo selected.
 				if( value == 'title' )
 				{
@@ -694,32 +694,32 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 				}
 			});
 		});
-		
+
 		/* Logo - Custom Title */
 		wp.customize('<?php echo $option_name; ?>[logo][custom]',function( value ) {
 			value.bind(function(value) {
 				// Set global marker
 				Logo.custom = value;
-				
-				// Only do if anything if the proper logo 
+
+				// Only do if anything if the proper logo
 				// type is currently selected.
 				if( Logo.type == 'custom' ) {
 					$('#branding .header_logo h1 a').text(value);
 				}
 			});
 		});
-		
+
 		/* Logo - Custom Tagline */
 		wp.customize('<?php echo $option_name; ?>[logo][custom_tagline]',function( value ) {
 			value.bind(function(value) {
 				// Set global marker
 				Logo.custom_tagline = value;
-				
+
 				// Remove previous tagline if needed.
 				$('#branding .header_logo').removeClass('header_logo_has_tagline');
 				$('#branding .header_logo .tagline').remove();
-				
-				// Only do if anything if the proper logo 
+
+				// Only do if anything if the proper logo
 				// type is currently selected.
 				if( Logo.type == 'custom' ) {
 					if(value)
@@ -730,14 +730,14 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 				}
 			});
 		});
-		
+
 		/* Logo - Image */
 		wp.customize('<?php echo $option_name; ?>[logo][image]',function( value ) {
 			value.bind(function(value) {
 				// Set global marker
 				Logo.image = value;
-				
-				// Only do if anything if the proper logo 
+
+				// Only do if anything if the proper logo
 				// type is currently selected.
 				if( Logo.type == 'image' ) {
 					var html;
@@ -754,18 +754,18 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 				}
 			});
 		});
-		<?php 
+		<?php
 	}
 }
 
 /**
  * Font Prep for customizer preview
  *
- * Since the Javascript for fonts will get repeated in 
- * many themes, its being placed here so it can be easily 
+ * Since the Javascript for fonts will get repeated in
+ * many themes, its being placed here so it can be easily
  * placed in each theme that requires it.
  *
- * This function sets up some objects we can use throughout 
+ * This function sets up some objects we can use throughout
  * all of our font options.
  *
  * @since 2.1.0
@@ -773,15 +773,15 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 
 if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 	function themeblvd_customizer_preview_font_prep() {
-		
+
 		// Global option name
 		$option_name = themeblvd_get_option_name();
-		
+
 		// Setup font stacks
 		$font_stacks = themeblvd_font_stacks();
 		unset( $font_stacks['google'] );
-		
-		// Determine current google fonts with fake 
+
+		// Determine current google fonts with fake
 		// booleans to be used in printed JS object.
 		$types = array('body', 'header', 'special');
 		$google_fonts = array();
@@ -793,7 +793,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 		?>
 		// Font stacks
 		fontStacks = <?php echo json_encode($font_stacks); ?>;
-		
+
 		// Google font toggles
 		googleFonts = <?php echo json_encode($google_fonts); ?>;
 		<?php
@@ -803,8 +803,8 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 /**
  * Primary (Body) Font Customizer Preview
  *
- * Since the Javascript for the fonts will get repeated in 
- * many themes, its being placed here so it can be easily 
+ * Since the Javascript for the fonts will get repeated in
+ * many themes, its being placed here so it can be easily
  * placed in each theme that requires it.
  *
  * @since 2.1.0
@@ -812,26 +812,26 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 
 if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 	function themeblvd_customizer_preview_primary_font() {
-		
+
 		// Global option name
 		$option_name = themeblvd_get_option_name();
-		
+
 		// Begin output
 		?>
 		// ---------------------------------------------------------
 		// Body Typography
 		// ---------------------------------------------------------
-		
+
 		/* Body Typography - Size */
 		wp.customize('<?php echo $option_name; ?>[typography_body][size]',function( value ) {
 			value.bind(function(size) {
-				// We're doing this odd-ball way so jQuery 
+				// We're doing this odd-ball way so jQuery
 				// doesn't apply body font to other elements.
 				$('.preview_body_font').remove();
-				$('head').append('<style class="preview_body_font">body{ font-size: '+size+';}</style>');	
+				$('head').append('<style class="preview_body_font">body{ font-size: '+size+';}</style>');
 			});
 		});
-		
+
 		/* Body Typography - Face */
 		wp.customize('<?php echo $option_name; ?>[typography_body][face]',function( value ) {
 			value.bind(function(face) {
@@ -851,50 +851,50 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 				}
 			});
 		});
-		
+
 		/* Body Typography - Google */
 		wp.customize('<?php echo $option_name; ?>[typography_body][google]',function( value ) {
 			value.bind(function(google_font) {
-				// Only proceed if user has actually selected for 
+				// Only proceed if user has actually selected for
 				// a google font to show in previous option.
 				if(googleFonts.bodyToggle)
 				{
-					// Set global google font for reference in 
+					// Set global google font for reference in
 					// other options.
 					googleFonts.bodyName = google_font;
-					
-					// Determine current header font so we don't 
+
+					// Determine current header font so we don't
 					// override it with our new body font.
 					var header_font_face = $('h1, h2, h3, h4, h5, h6').css('font-family');
-					
+
 					// Remove previous google font to avoid clutter.
 					$('.preview_google_body_font').remove();
-					
+
 					// Format font name for inclusion
 					var include_google_font = google_font.replace(/ /g,'+');
-					
+
 					// Include font
 					$('head').append('<link href="http://fonts.googleapis.com/css?family='+include_google_font+'" rel="stylesheet" type="text/css" class="preview_google_body_font" />');
-					
+
 					// Format for CSS
 					google_font = google_font.split(":");
 					google_font = google_font[0];
-					
+
 					// Apply font in CSS
 					$('body').css('font-family', google_font);
 					$('h1, h2, h3, h4, h5, h6').css('font-family', header_font_face); // Maintain header font when body font switches
 				}
 			});
 		});
-		<?php 
+		<?php
 	}
 }
 
 /**
  * Header (h1, h2, h3, h4, h5) Font Customizer Preview
  *
- * Since the Javascript for the fonts will get repeated in 
- * many themes, its being placed here so it can be easily 
+ * Since the Javascript for the fonts will get repeated in
+ * many themes, its being placed here so it can be easily
  * placed in each theme that requires it.
  *
  * @since 2.1.0
@@ -902,16 +902,16 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 
 if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 	function themeblvd_customizer_preview_header_font() {
-	
+
 		// Global option name
 		$option_name = themeblvd_get_option_name();
-	
+
 		// Begin Output
 		?>
 		// ---------------------------------------------------------
 		// Header Typography
 		// ---------------------------------------------------------
-		
+
 		/* Header Typography - Face */
 		wp.customize('<?php echo $option_name; ?>[typography_header][face]',function( value ) {
 			value.bind(function(face) {
@@ -928,45 +928,45 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 				}
 			});
 		});
-		
+
 		/* Header Typography - Google */
 		wp.customize('<?php echo $option_name; ?>[typography_header][google]',function( value ) {
 			value.bind(function(google_font) {
-				// Only proceed if user has actually selected for 
+				// Only proceed if user has actually selected for
 				// a google font to show in previous option.
 				if(googleFonts.headerToggle)
 				{
-					// Set global google font for reference in 
+					// Set global google font for reference in
 					// other options.
 					googleFonts.headerName = google_font;
-					
+
 					// Remove previous google font to avoid clutter.
 					$('.preview_google_header_font').remove();
-					
+
 					// Format font name for inclusion
 					var include_google_font = google_font.replace(/ /g,'+');
-					
+
 					// Include font
 					$('head').append('<link href="http://fonts.googleapis.com/css?family='+include_google_font+'" rel="stylesheet" type="text/css" class="preview_google_header_font" />');
-					
+
 					// Format for CSS
 					google_font = google_font.split(":");
 					google_font = google_font[0];
-					
+
 					// Apply font in CSS
 					$('h1, h2, h3, h4, h5, h6').css('font-family', google_font);
 				}
 			});
 		});
-		<?php 
+		<?php
 	}
 }
 
 /**
  * Custom CSS Customizer Preview
  *
- * Since the Javascript for the fonts will get repeated in 
- * many themes, its being placed here so it can be easily 
+ * Since the Javascript for the fonts will get repeated in
+ * many themes, its being placed here so it can be easily
  * placed in each theme that requires it.
  *
  * @since 2.1.0
@@ -974,19 +974,19 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 
 if( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
 	function themeblvd_customizer_preview_styles() {
-		
+
 		// Global option name
 		$option_name = themeblvd_get_option_name();
-		
+
 		// Output
-		?>		
+		?>
 		/* Custom CSS */
 		wp.customize('<?php echo $option_name; ?>[custom_styles]',function( value ) {
 			value.bind(function(css) {
 				$('.preview_custom_styles').remove();
-				$('head').append('<style class="preview_custom_styles">'+css+'</style>');		
+				$('head').append('<style class="preview_custom_styles">'+css+'</style>');
 			});
 		});
-		<?php 
+		<?php
 	}
 }

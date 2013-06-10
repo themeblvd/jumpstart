@@ -6,7 +6,7 @@
  */
 function themeblvd_frontend_init() {
 
-	/** 
+	/**
 	 * Setup frontend
 	 * (1) Template Parts
 	 * (2) Template Attributes
@@ -20,8 +20,8 @@ function themeblvd_frontend_init() {
 	 */
 	Theme_Blvd_Frontend_Init::get_instance();
 
-	/** 
-	 * Setup any secondary queries or hook any modifications 
+	/**
+	 * Setup any secondary queries or hook any modifications
 	 * to the primary query.
 	 */
 	Theme_Blvd_Query::get_instance();
@@ -34,7 +34,7 @@ function themeblvd_frontend_init() {
  * File name structure: content-{$part}.php
  *
  * @since 2.0.0
- * 
+ *
  * @param string $type Type of template part to get
  * @return string $part Extension to use for get_template_part
  */
@@ -47,22 +47,22 @@ if( ! function_exists( 'themeblvd_get_part' ) ) {
 }
 
 /**
- * Get the current mode of the framework, list or grid. 
- * This determines if archives and the posts page display 
- * as a grid. 
- * 
- * Grid mode is triggered when the template parts for "index" 
- * and "archive" are filtered to be either "grid", "archive_grid" 
+ * Get the current mode of the framework, list or grid.
+ * This determines if archives and the posts page display
+ * as a grid.
+ *
+ * Grid mode is triggered when the template parts for "index"
+ * and "archive" are filtered to be either "grid", "archive_grid"
  * or "index_grid".
  *
  * @since 2.3.0
- * 
+ *
  * @return bool
  */
 
 if( ! function_exists( 'themeblvd_is_grid_mode' ) ) {
 	function themeblvd_is_grid_mode() {
-		
+
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 
 		if( $config->get_mode() == 'grid' )
@@ -73,11 +73,11 @@ if( ! function_exists( 'themeblvd_is_grid_mode' ) ) {
 }
 
 /**
- * This function is used from within the theme's template 
+ * This function is used from within the theme's template
  * files to return the values setup in the frontend init.
  *
  * @since 2.0.0
- * 
+ *
  * @param mixed $key string $key to retrieve from frontend config object
  * @param mixed $secondary string Optional array key to traverse one level deeper
  * @return mixed Value from frontend config object
@@ -89,7 +89,7 @@ function themeblvd_config( $key = '', $secondary = '' ) {
 }
 
 /**
- * Display CSS class for current sidebar layout. 
+ * Display CSS class for current sidebar layout.
  *
  * @since 2.0.0
  */
@@ -102,38 +102,38 @@ if( ! function_exists( 'themeblvd_sidebar_layout_class' ) ) {
 }
 
 /**
- * At any time, this function can be called to effect 
- * the global template attributes array which can 
+ * At any time, this function can be called to effect
+ * the global template attributes array which can
  * be utilized within template files.
  *
- * This system provides a way for attributes to be set 
- * and retreived with themeblvd_get_att() from files 
+ * This system provides a way for attributes to be set
+ * and retreived with themeblvd_get_att() from files
  * included with WP's get_template_part.
  *
  * @since 2.2.0
  *
- * @param array $atts Attributes to be merged with global attributes 
+ * @param array $atts Attributes to be merged with global attributes
  * @param bool $flush Whether or not to flush previous attributes before merging
  */
 
 if( ! function_exists( 'themeblvd_set_atts' ) ) {
 	function themeblvd_set_atts( $atts, $flush = false ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
-		return $config->set_atts( $atts, $flush );		
+		return $config->set_atts( $atts, $flush );
 	}
 }
 
 /**
- * Working with the system established in the 
+ * Working with the system established in the
  * previous function, this function allows you
- * to set an individual att along with creating 
+ * to set an individual att along with creating
  * a new variable.
  *
  * @since 2.2.0
  *
  * @param string $key Key in $atts array to modify
  * @param mixed $value New value
- * @return mixed New value 
+ * @return mixed New value
  */
 
 if( ! function_exists( 'themeblvd_set_att' ) ) {
@@ -144,7 +144,7 @@ if( ! function_exists( 'themeblvd_set_att' ) ) {
 }
 
 /**
- * Retrieve a single attribute set with 
+ * Retrieve a single attribute set with
  * themeblvd_set_atts()
  *
  * @since 2.2.0
@@ -196,7 +196,7 @@ if( ! function_exists( 'themeblvd_set_second_query' ) ) {
  * Verify the state of the original query.
  *
  * @since 2.3.0
- * 
+ *
  * @param string $type The primary type of WP page being checked for
  * @param string $helper A secondary param if allowed with $type
  * @return bool
@@ -209,8 +209,8 @@ if( ! function_exists( 'themeblvd_was' ) ) {
 	}
 }
 
-/** 
- * Determine current web browser and generate a CSS class for 
+/**
+ * Determine current web browser and generate a CSS class for
  * it. This function gets filtered onto WP's body_class.
  *
  * @since 2.2.0
@@ -218,13 +218,13 @@ if( ! function_exists( 'themeblvd_was' ) ) {
  * @param array $classes Current body classes
  * @return array $classes Body classes with browser classes added
  */
- 
+
 if( ! function_exists( 'themeblvd_browser_class' ) ) {
 	function themeblvd_browser_class( $classes ) {
-	 
+
 		// Get current user agent
 		$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
-	 
+
 		// OS class
 		if( preg_match( "/Mac/", $browser ) )
 			$classes[] = 'mac';
@@ -234,7 +234,7 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 			$classes[] = 'linux';
 		else
 			$classes[] = 'unknown-os';
-	 
+
 		// Browser class
 		if( preg_match( "/Chrome/", $browser ) ) {
 			$classes[] = 'chrome';
@@ -243,7 +243,7 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 		} elseif( preg_match( "/Opera/", $browser ) ) {
 			$classes[] = 'opera';
 		} elseif( preg_match( "/MSIE/", $browser ) ) {
-			
+
 			// Internet Explorer... ugh, kill me now.
 			$classes[] = 'msie';
 			if( preg_match( "/MSIE 6.0/", $browser ) )
@@ -256,25 +256,25 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 				$classes[] = 'ie9';
 			elseif ( preg_match( "/MSIE 10.0/", $browser ) )
 				$classes[] = 'ie10';
-	
+
 		} elseif( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
 			$classes[] = 'firefox';
 		} else {
 			$classes[] = 'unknown-browser';
 		}
-		
+
 		return $classes;
 	}
 }
 
 /**
- * Load framework's JS scripts 
+ * Load framework's JS scripts
  *
- * To add scripts or remove unwanted scripts that you 
- * know you won't need to maybe save some frontend load 
- * time, this function can easily be re-done from a 
+ * To add scripts or remove unwanted scripts that you
+ * know you won't need to maybe save some frontend load
+ * time, this function can easily be re-done from a
  * child theme.
- * 
+ *
  * (1) jQuery - Already registered by WP, and enqueued for most our scripts.
  * (2) Twitter Bootstrap - All Bootstrap JS plugins combiled.
  * (3) prettyPhoto - Modified version by Jason to include responsive features.
@@ -282,7 +282,7 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
  * (5) FlexSlider - Responsive slider, controls framework's "standard" slider type.
  * (6) Roundabout - Carousel-style slider, controls framwork's "3D Carousel" slider type.
  * (7) Theme Blvd scripts - Anything used by the framework to set other items into motion.
- * (8) iOS Orientation Fix - Allows zooming to be enabled on iOS devices while still 
+ * (8) iOS Orientation Fix - Allows zooming to be enabled on iOS devices while still
  * allowing auto adjustment when switching between landscape and portrait.
  * (9) Already registered by WP, enable commentform to show when visitor clicks "Reply" on comment.
  *
@@ -291,11 +291,11 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 
 if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	function themeblvd_include_scripts() {
-		
+
 		global $themeblvd_framework_scripts;
-		
-		// Start framework scripts. This can be used declare the 
-		// $deps of any enque'd JS files intended to come after 
+
+		// Start framework scripts. This can be used declare the
+		// $deps of any enque'd JS files intended to come after
 		// the framework.
 		$scripts = array( 'jquery' );
 
@@ -303,7 +303,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1', true  );
 		wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/assets/js/roundabout.min.js', array('jquery'), '1.1', true );
 		wp_register_script( 'nivo', TB_FRAMEWORK_URI . '/assets/js/nivo.min.js', array('jquery'), '3.2', true );
-		
+
 		// Enque Scripts
 		wp_enqueue_script( 'jquery' );
 		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
@@ -322,19 +322,19 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		if( themeblvd_supports( 'assets', 'primary_js' ) ) {
 			$scripts[] = 'themeblvd';
 			wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
-			// Localize primary themeblvd.js script. This allows us to pass any filterable 
-			// parameters through to our primary script. 
+			// Localize primary themeblvd.js script. This allows us to pass any filterable
+			// parameters through to our primary script.
 			wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );
 		}
-		
+
 		// Final filter on framework script.
 		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
-		
+
 		// Enque ios orientation and comment reply scripts.
 		if( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) )
 			wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js', true );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' );
-		
+
 	}
 }

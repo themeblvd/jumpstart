@@ -1,7 +1,7 @@
 <?php
 /**
  * Media Uploader Using the WordPress Media Library in 3.5+.
- * 
+ *
  * @param array $args Arguments to setup option, see descriptions at start of function.
  */
 
@@ -26,7 +26,7 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 		$int = '';
 		$value = '';
 		$name = '';
-		
+
 		$id = strip_tags( strtolower( $args['id'] ) );
 		$type = $args['type'];
 
@@ -34,13 +34,13 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 		$value = '';
 		if( $args['value'] )
 			$value = $args['value'];
-		
+
 		// Set name formfield based on type.
 		if( $type == 'slider' )
 			$name = $args['option_name'].'[image]';
 		else
 			$name = $args['option_name'].'['.$id.']';
-		
+
 		// If passed name, set it.
 		if( $args['name'] ) {
 			$name = $name.'['.$args['name'].']';
@@ -50,7 +50,7 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 		if( $value )
 			$class = ' has-file';
 
-		// Allow multiple upload options on the same page with 
+		// Allow multiple upload options on the same page with
 		// same ID -- This could happen in the Layout Builder, for example.
 		$formfield = uniqid( $id.'_' );
 
@@ -90,23 +90,23 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 				$data['class'] = '';
 				// @todo -- Future feature
 				break;
-			
+
 			case 'logo' :
-				$data['title'] = __('Logo Image', 'themeblvd'); 
+				$data['title'] = __('Logo Image', 'themeblvd');
 				$data['select'] = __('Use for Logo', 'themeblvd');
 				$width_name = str_replace( '[image]', '[image_width]', $name );
 				$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd').'" />'."\n";
 				$output .= '<input id="'.$formfield.'_width" class="image-width upload'.$class.'" type="text" name="'.$width_name.'" value="'.$args['value_width'].'" placeholder="'.__('Width', 'themeblvd').'" />'."\n";
 				break;
-			
+
 			case 'logo_2x' :
 				$data['title'] = __('Logo HiDPI Image', 'themeblvd');
 				$data['select'] = __('Use for Logo', 'themeblvd');
 				$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('URL for image twice the size of standard image', 'themeblvd') .'" />'."\n";
 				break;
-			
+
 			case 'background' :
-				$data['title'] = __('Select Background Image', 'themeblvd'); 
+				$data['title'] = __('Select Background Image', 'themeblvd');
 				$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd') .'" />'."\n";
 				break;
 
@@ -115,15 +115,15 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 		}
 
 		$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
-		
+
 		if( ! $value || $type == 'video' )
 			$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['upload'].'" />'."\n";
 		else
 			$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['remove'].'" />'."\n";
 
 		$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";
-		
-		if( $value && $type != 'video' ) { 
+
+		if( $value && $type != 'video' ) {
 			$remove = '<a class="remove-image">Remove</a>';
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
 			if( $image ) {
@@ -132,11 +132,11 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 				$parts = explode( "/", $value );
 				for( $i = 0; $i < sizeof( $parts ); ++$i )
 					$title = $parts[$i];
-			
-				// Standard generic output if it's not an image.	
+
+				// Standard generic output if it's not an image.
 				$title = __( 'View File', 'themeblvd' );
 				$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
-			}	
+			}
 		}
 		$output .= '</div>' . "\n";
 		return $output;

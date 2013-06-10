@@ -4,7 +4,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 /**
- * Add viewport meta to wp_head if responsive 
+ * Add viewport meta to wp_head if responsive
  * design is enabled in framework.
  *
  * @since 2.2.0
@@ -26,9 +26,9 @@ if( ! function_exists( 'themeblvd_viewport_default' ) ) {
  *
  * @since 2.0.0
  */
- 
+
 if( ! function_exists( 'themeblvd_header_above_default' ) ) {
-	function themeblvd_header_above_default() {		
+	function themeblvd_header_above_default() {
 		echo '<div class="header-above">';
 		themeblvd_display_sidebar( 'ad_above_header' );
 		echo '</div><!-- .header-above (end) -->';
@@ -47,7 +47,7 @@ if( ! function_exists( 'themeblvd_header_content_default' ) ) {
 		<div id="header_content">
 			<div class="header_content-inner">
 				<div class="header_content-content clearfix">
-					<?php 
+					<?php
 					themeblvd_header_logo();
 					themeblvd_header_addon();
 					?>
@@ -99,7 +99,7 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 							$image_2x = $option['image_2x'];
 						if( ! empty( $option['image_width'] ) )
 							$image_width = $option['image_width'];
-						
+
 						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$image_1x.'" width="'.$image_width.'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
 						break;
 				}
@@ -183,7 +183,7 @@ if( ! function_exists( 'themeblvd_footer_content_default' ) ) {
  *
  * @since 2.0.0
  */
- 
+
 if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 	function themeblvd_footer_sub_content_default() {
 		?>
@@ -214,7 +214,7 @@ if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_footer_below_default' ) ) {
-	function themeblvd_footer_below_default() {		
+	function themeblvd_footer_below_default() {
 		echo '<div class="footer-below">';
 		themeblvd_display_sidebar( 'ad_below_footer' );
 		echo '</div><!-- .footer-below (end) -->';
@@ -255,7 +255,7 @@ if( ! function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) {
 /*-----------------------------------------------------------------------------------*/
 /* Featured Area (above)
 /*-----------------------------------------------------------------------------------*/
-	
+
 /**
  * Default display for action: themeblvd_featured_start
  *
@@ -273,7 +273,7 @@ if( ! function_exists( 'themeblvd_featured_start_default' ) ) {
 		}
 		?>
 		<!-- FEATURED (start) -->
-		
+
 		<div id="featured">
 			<div class="featured-inner<?php echo $classes; ?>">
 				<div class="featured-content">
@@ -286,7 +286,7 @@ if( ! function_exists( 'themeblvd_featured_start_default' ) ) {
  *
  * @since 2.0.0
  */
- 
+
 if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 	function themeblvd_featured_end_default() {
 		?>
@@ -294,7 +294,7 @@ if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 				</div><!-- .featured-content (end) -->
 			</div><!-- .featured-inner (end) -->
 		</div><!-- #featured (end) -->
-		
+
 		<!-- FEATURED (end) -->
 		<?php
 	}
@@ -303,7 +303,7 @@ if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 /*-----------------------------------------------------------------------------------*/
 /* Featured Area (below)
 /*-----------------------------------------------------------------------------------*/
-	
+
 /**
  * Default display for action: themeblvd_featured_below_start
  *
@@ -321,7 +321,7 @@ if( ! function_exists( 'themeblvd_featured_below_start_default' ) ) {
 		}
 		?>
 		<!-- FEATURED BELOW (start) -->
-		
+
 		<div id="featured_below">
 			<div class="featured_below-inner<?php echo $classes; ?>">
 				<div class="featured_below-content">
@@ -334,7 +334,7 @@ if( ! function_exists( 'themeblvd_featured_below_start_default' ) ) {
  *
  * @since 2.1.0
  */
- 
+
 if( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
 	function themeblvd_featured_below_end_default() {
 		?>
@@ -342,7 +342,7 @@ if( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
 				</div><!-- .featured_below-content (end) -->
 			</div><!-- .featured_below-inner (end) -->
 		</div><!-- #featured_below (end) -->
-		
+
 		<!-- FEATURED BELOW (end) -->
 		<?php
 	}
@@ -362,7 +362,7 @@ if( ! function_exists( 'themeblvd_main_start_default' ) ) {
 	function themeblvd_main_start_default() {
 		?>
 		<!-- MAIN (start) -->
-		
+
 		<div id="main" class="<?php themeblvd_sidebar_layout_class(); ?>">
 			<div class="main-inner">
 				<div class="main-content">
@@ -385,7 +385,7 @@ if( ! function_exists( 'themeblvd_main_end_default' ) ) {
 				</div><!-- .main-content (end) -->
 			</div><!-- .main-inner (end) -->
 		</div><!-- #main (end) -->
-		
+
 		<!-- MAIN (end) -->
 		<?php
 	}
@@ -398,7 +398,7 @@ if( ! function_exists( 'themeblvd_main_end_default' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_main_top_default' ) ) {
-	function themeblvd_main_top_default() {		
+	function themeblvd_main_top_default() {
 		echo '<div class="main-top">';
 		themeblvd_display_sidebar( 'ad_above_content' );
 		echo '</div><!-- .main-top (end) -->';
@@ -412,7 +412,7 @@ if( ! function_exists( 'themeblvd_main_top_default' ) ) {
  */
 
 if( ! function_exists( 'themeblvd_main_bottom_default' ) ) {
-	function themeblvd_main_bottom_default() {		
+	function themeblvd_main_bottom_default() {
 		echo '<div class="main-bottom">';
 		themeblvd_display_sidebar( 'ad_below_content' );
 		echo '</div><!-- .main-bottom (end) -->';
@@ -488,15 +488,15 @@ if( ! function_exists( 'themeblvd_content_top_default' ) ) {
 
 if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 	function themeblvd_blog_meta_default() {
-		
-		// Setup text strings so their run through the 
+
+		// Setup text strings so their run through the
 		// framework's frontend localization filter.
 		$text = array(
 			'comment' => themeblvd_get_local( 'comment' ),
 			'comments' => themeblvd_get_local( 'comments' ),
 			'no_comments' => themeblvd_get_local( 'no_comments' ),
 		);
-		
+
 		?>
 		<div class="entry-meta">
 			<time class="entry-date updated" datetime="<?php the_time('c'); ?>"><i class="icon-calendar"></i> <?php the_time( get_option( 'date_format' ) ); ?></time>
@@ -510,7 +510,7 @@ if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 				<i class="icon-comment"></i> <?php comments_popup_link( '<span class="leave-reply">'.$text['no_comments'].'</span>', '1 '.$text['comment'], '% '.$text['comments'] ); ?>
 			</span>
 			<?php endif; ?>
-		</div><!-- .entry-meta -->		
+		</div><!-- .entry-meta -->
 		<?php
 	}
 }
@@ -560,8 +560,8 @@ if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 				'size'			=> null,
 				'classes'		=> null,
 				'title'			=> null,
-				'icon_before' 	=> null, 
-				'icon_after' 	=> null, 
+				'icon_before' 	=> null,
+				'icon_after' 	=> null,
 				'addon'			=> null,
 				'p'				=> true
 			));

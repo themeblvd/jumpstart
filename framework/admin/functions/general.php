@@ -4,33 +4,33 @@
  *
  * @since 2.0.0
  */
- 
+
 function themeblvd_admin_init() {
 
 	// Allow theme options page to run if framework filters
 	// have don't have it hidden it and user is capable.
 	if( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
-		
+
 		// Access Options API, instance should already be created.
 		$api = Theme_Blvd_Options_API::get_instance();
 
-		// Option ID the theme options are registered and 
+		// Option ID the theme options are registered and
 		// saved to. -- i.e. get_option( $option_name )
 		$option_id = $api->get_option_id();
-		
-		// All options constructed from framework and 
+
+		// All options constructed from framework and
 		// potentially added to by client API.
 		$options = $api->get_formatted_options();
 
-		// Arguments for theme options admin page. 
+		// Arguments for theme options admin page.
 		// Filterable with "themeblvd_theme_options_args"
 		$args = $api->get_args();
-		
+
 		// Theme Options Page
 		$options_page = new Theme_Blvd_Options_Page( $option_id, $options, $args );
-		
+
 	}
-	
+
 }
 
 /**
@@ -41,22 +41,22 @@ function themeblvd_admin_init() {
 
 if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 	function themeblvd_non_modular_assets() {
-		
+
 		global $pagenow;
-		
+
 		// Assets for editing posts
 		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
 			wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.min.css', false, false, 'screen' );
 			wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 			wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		}
-		
-		// Styles for all of WP admin -- Currently only applies to 
+
+		// Styles for all of WP admin -- Currently only applies to
 		// Builder and Sliders plugin menu items and making them
 		// retina-compatible... Fancy, right?
 		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) )
 			wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
-		
+
 	}
 }
 
@@ -80,7 +80,7 @@ if( ! function_exists( 'themeblvd_theme_activation' ) ) {
 }
 
 /**
- * Gather all assignments for posts into a single 
+ * Gather all assignments for posts into a single
  * array organized by post ID.
  *
  * @since 2.0.0
@@ -90,7 +90,7 @@ if( ! function_exists( 'themeblvd_theme_activation' ) ) {
  */
 
 function themeblvd_get_assignment_conflicts( $posts ) {
-	
+
 	// Setup $conflicts/$non_conflicts arrays
 	$non_conflicts = array();
 	$conflicts = array();
@@ -105,11 +105,11 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 	// the $conflicts arrays off to the side by checking if items already
 	// exist in the $non_conflicts.
 	foreach( $posts as $post ) {
-		
+
 		// Determine location sidebar is assigned to.
 		$location = get_post_meta( $post->ID, 'location', true );
-		
-		// Only run check if a location exists and this 
+
+		// Only run check if a location exists and this
 		// is not a floating widget area.
 		if( $location && $location != 'floating' ) {
 			$assignments = get_post_meta( $post->ID, 'assignments', true );
@@ -118,7 +118,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 					if( $key != 'custom' && in_array( $key, $non_conflicts[$location] ) ) {
 						if( ! in_array( $key, $conflicts[$location] ) ) {
 							$conflicts[$location][] = $key;
-						}	
+						}
 					} else {
 						$non_conflicts[$location][] = $key;
 					}
@@ -130,12 +130,12 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 }
 
 /**
- * Hijack and modify default WP's "Page Attributes" 
+ * Hijack and modify default WP's "Page Attributes"
  * meta box.
  *
  * @since 2.0.0
- */ 
- 
+ */
+
 function themeblvd_hijack_page_atts() {
 	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		remove_meta_box( 'pageparentdiv', 'page', 'side' );
@@ -148,8 +148,8 @@ function themeblvd_hijack_page_atts() {
  * meta box.
  *
  * @since 2.0.0
- */ 
- 
+ */
+
 function themeblvd_save_page_atts( $post_id ) {
 	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		// Save sidebar layout
@@ -162,14 +162,14 @@ function themeblvd_save_page_atts( $post_id ) {
 }
 
 /**
- * Determine if current admin page is an admin 
+ * Determine if current admin page is an admin
  * module page.
  *
  * @since 2.2.0
- */ 
+ */
 
 function themeblvd_is_admin_module() {
-	
+
 	global $pagenow;
 	global $_GET;
 
@@ -187,9 +187,9 @@ function themeblvd_is_admin_module() {
 /**
  * Dismiss an admin notice.
  *
- * Plugins can use this to dismiss any admin notices 
- * by providing a link similar to the following, which 
- * will store meta data for the current user. 
+ * Plugins can use this to dismiss any admin notices
+ * by providing a link similar to the following, which
+ * will store meta data for the current user.
  *
  * An admin notice could be setup something like this:
  *
@@ -217,7 +217,7 @@ function themeblvd_disable_nag() {
  * Clear set of options. Hooked to "admin_init".
  *
  * @since 2.3.0
- */ 
+ */
 
 function themeblvd_clear_options() {
 	if( isset( $_POST['themeblvd_clear_options'] ) ) {
@@ -228,11 +228,11 @@ function themeblvd_clear_options() {
 }
 
 /**
- * Adjust frontend content width for admin panel. 
+ * Adjust frontend content width for admin panel.
  *
- * This is a little ironic, as $content_width is only for 
- * the frontend of the site. This was originally implemented 
- * so videos can be displayed at a reasonable size with WP 3.6+ 
+ * This is a little ironic, as $content_width is only for
+ * the frontend of the site. This was originally implemented
+ * so videos can be displayed at a reasonable size with WP 3.6+
  * in the admin panel when editing a video format post.
  *
  * @since 2.2.1

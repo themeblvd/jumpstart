@@ -4,10 +4,10 @@
  *
  * This function gets hooked to admin_init when the framework
  * runs on the admin side, but why have this in a function? --
- * Because on the frontend of the site, if the options have 
- * never been saved we can call this function to allow default 
- * option values to be generated. This will almost never happen, 
- * so this is our way of including them, but only if needed; 
+ * Because on the frontend of the site, if the options have
+ * never been saved we can call this function to allow default
+ * option values to be generated. This will almost never happen,
+ * so this is our way of including them, but only if needed;
  * no point in adding these filters every time the frontend loads.
  */
 if( ! function_exists( 'themeblvd_add_sanitization' ) ) {
@@ -90,7 +90,7 @@ function themeblvd_sanitize_multicheck( $input, $option ) {
 		}
 		foreach( $input as $key => $value ) {
 			if( array_key_exists( $key, $option['options'] ) && $value ) {
-				$output[$key] = "1"; 
+				$output[$key] = "1";
 			}
 		}
 	}
@@ -110,7 +110,7 @@ function themeblvd_sanitize_upload( $input ) {
 }
 
 /**
- * Check that the key value sent is valid 
+ * Check that the key value sent is valid
  */
 function themeblvd_sanitize_enum( $input, $option ) {
 	$output = '';
@@ -275,7 +275,7 @@ function themeblvd_sanitize_columns( $input ) {
 		$output['num'] = $input['num'];
 	else
 		$output['num'] = null;
-	
+
 	// Verify widths
 	foreach( $input['width'] as $key => $width ) {
 		$valid = false;
@@ -287,7 +287,7 @@ function themeblvd_sanitize_columns( $input ) {
 		else
 			$output['width'][$key] = null;
 	}
-	
+
 	return $output;
 }
 
@@ -295,23 +295,23 @@ function themeblvd_sanitize_columns( $input ) {
  * Tabs
  */
 function themeblvd_sanitize_tabs( $input ) {
-	
+
 	$output = array();
-	
+
 	// Verify number of tabs is an integer
 	if( is_numeric( $input['num'] ) )
 		$output['num'] = $input['num'];
 	else
 		$output['num'] = null;
-	
+
 	// Verify style
 	if( in_array( $input['style'], array( 'open', 'framed' ) ) )
 		$output['style'] = $input['style'];
-	
+
 	// Verify nav
 	if( in_array( $input['nav'], array( 'tabs_above', 'tabs_right', 'tabs_below', 'tabs_left', 'pills_above', 'pills_below' ) ) )
 		$output['nav'] = $input['nav'];
-	
+
 	// Verify name fields and only save the right amount of names
 	if( $output['num'] ) {
 		$total_num = intval( $output['num'] );
@@ -321,24 +321,24 @@ function themeblvd_sanitize_tabs( $input ) {
 			$i++;
 		}
 	}
-	return $output;	
+	return $output;
 }
 
 /**
- * Dynamic Content 
+ * Dynamic Content
  */
 function themeblvd_sanitize_content( $input ) {
-	
+
 	$allowedtags = themeblvd_allowed_tags();
 	$output = array();
-	
+
 	// Verify type
 	$types = array( 'widget', 'current', 'page', 'raw' );
 	if( in_array( $input['type'], $types ) )
 		$output['type'] = $input['type'];
 	else
 		$output['type'] = null;
-	
+
 	// Add type's corresponding option
 	switch( $output['type'] ) {
 		case 'widget' :
@@ -356,27 +356,27 @@ function themeblvd_sanitize_content( $input ) {
 			isset( $input['raw_format'] ) ? $output['raw_format'] = '1' : $output['raw_format'] = '0';
 			break;
 	}
-	
-	return $output;	
+
+	return $output;
 }
 
 /**
- * Logo 
+ * Logo
  */
 function themeblvd_sanitize_logo( $input ) {
-	
+
 	$output = array();
-	
-	// Type 
+
+	// Type
 	if( is_array( $input ) && isset( $input['type'] ) )
 		$output['type'] = $input['type'];
-	
+
 	// Custom
 	if( isset( $input['custom'] ) )
 		$output['custom'] = sanitize_text_field( $input['custom'] );
 	if( isset( $input['custom_tagline'] ) )
 		$output['custom_tagline'] = sanitize_text_field( $input['custom_tagline'] );
-	
+
 	// Image (standard)
 	if( isset( $input['image'] ) ) {
 		$filetype = wp_check_filetype( $input['image'] );
@@ -389,7 +389,7 @@ function themeblvd_sanitize_logo( $input ) {
 			$output['image_width'] = null;
 		}
 	}
-	
+
 	// Image (for retina)
 	if( isset( $input['image_2x'] ) ) {
 		$filetype = wp_check_filetype( $input['image_2x'] );
@@ -403,35 +403,35 @@ function themeblvd_sanitize_logo( $input ) {
 }
 
 /**
- * Social Media Buttons 
+ * Social Media Buttons
  */
 function themeblvd_sanitize_social_media( $input ) {
 	if( ! empty( $input ) && ! empty( $input['sources'] ) ) {
-		// The option is being sent from the actual 
-		// Theme Options page and so it hasn't been 
+		// The option is being sent from the actual
+		// Theme Options page and so it hasn't been
 		// formatted yet.
 		$output = array();
 		if( ! empty( $input['includes'] ) ) {
 			foreach( $input['includes'] as $include ) {
-				if( isset( $input['sources'][$include] ) )	
+				if( isset( $input['sources'][$include] ) )
 					$output[$include] = $input['sources'][$include];
 			}
 		}
 	} else {
-		// The option has already been formatted, 
+		// The option has already been formatted,
 		// so let it on through.
 		$output = $input;
-	}	
+	}
 	return $output;
 }
 
 /**
- * Conditionals 
+ * Conditionals
  */
 function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar_id = null ) {
 	$conditionals = themeblvd_conditionals_config();
 	$output = array();
-	// Prepare items that weren't straight-up arrays 
+	// Prepare items that weren't straight-up arrays
 	// gifted on a platter for us.
 	if( ! empty( $input['post'] ) ){
 		$input['post'] = str_replace(' ', '', $input['post'] );
@@ -443,43 +443,43 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 	}
 	// Now loop through each group and then each item
 	foreach( $input as $type => $group ) {
-		if( is_array( $group ) && ! empty( $group ) ) {	
+		if( is_array( $group ) && ! empty( $group ) ) {
 			foreach( $group as $item_id ) {
 				$name = '';
 				switch( $type ) {
-					
+
 					case 'page' :
 						$page_id = themeblvd_post_id_by_name( $item_id, 'page' );
 						$page = get_page( $page_id );
 						if( $page )
 							$name = $page->post_title;
 						break;
-					
+
 					case 'post' :
 						$post_id = themeblvd_post_id_by_name( $item_id );
 						$post = get_post( $post_id );
 						if( $post )
 							$name = $post->post_title;
 						break;
-					
+
 					case 'posts_in_category' :
 						$category = get_category_by_slug( $item_id );
 						if( $category )
 							$name = $category->slug;
 						break;
-					
+
 					case 'category' :
 						$category = get_category_by_slug( $item_id );
 						if( $category )
 							$name = $category->slug;
 						break;
-					
+
 					case 'tag' :
 						$tag = get_term_by( 'slug', $item_id, 'post_tag' );
 						if( $tag )
 							$name = $tag->name;
 						break;
-					
+
 					case 'top' :
 						$name = $conditionals['top']['items'][$item_id];
 						break;
@@ -506,7 +506,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 			'post_id' 	=> $sidebar_id
 		);
 	}
-		
+
 	return $output;
 }
 

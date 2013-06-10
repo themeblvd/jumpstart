@@ -30,14 +30,14 @@ if( ! function_exists( 'themeblvd_add_meta_boxes' ) ) {
  * Get settings for the Page Options meta box.
  *
  * @since 2.0.0
- * 
+ *
  * @return $setup filterable options for metabox
  */
- 
+
 function setup_themeblvd_page_meta() {
 	$setup = array(
 		'config' => array(
-			'id' 		=> 'tb_page_options',						// make it unique	
+			'id' 		=> 'tb_page_options',						// make it unique
 			'title' 	=> __( 'Page Options', 'themeblvd' ),		// title to show for entire meta box
 			'page'		=> array( 'page' ),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
@@ -74,12 +74,12 @@ function setup_themeblvd_page_meta() {
  * Get settings for the Post Options meta box.
  *
  * @since 2.0.0
- * 
+ *
  * @return $setup filterable options for metabox
  */
- 
+
 function setup_themeblvd_post_meta() {
-	
+
 	// If using image radio buttons, define a directory path
 	$imagepath =  get_template_directory_uri() . '/framework/admin/assets/images/';
 
@@ -89,10 +89,10 @@ function setup_themeblvd_post_meta() {
 	foreach( $layouts as $layout )
 		$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
 
-	
+
 	$setup = array(
 		'config' => array(
-			'id' 		=> 'tb_post_options',						// make it unique	
+			'id' 		=> 'tb_post_options',						// make it unique
 			'title' 	=> __( 'Post Options', 'themeblvd' ),		// title to show for entire meta box
 			'page'		=> array( 'post' ),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
@@ -150,7 +150,7 @@ function setup_themeblvd_post_meta() {
 			),
 			array(
 				'id'		=> '_tb_thumb_link',
-				'name' 		=> __( 'Featured Image Link (everywhere)', 'themeblvd' ), 
+				'name' 		=> __( 'Featured Image Link (everywhere)', 'themeblvd' ),
 				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', 'themeblvd' ),
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
@@ -209,7 +209,7 @@ function setup_themeblvd_post_meta() {
 					'no' 		=> __( 'No, don\'t apply featured image link to single post.', 'themeblvd' )
 				)
 			),
-			array( 
+			array(
 				'id' 		=> '_tb_sidebar_layout',
 				'name' 		=> __( 'Sidebar Layout', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', 'themeblvd' ),
@@ -229,13 +229,13 @@ function setup_themeblvd_post_meta() {
  */
 if( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) {
 	function themeblvd_page_attributes_meta_box($post) {
-		
+
 		// Kill it if disabled
-		if( ! themeblvd_supports( 'meta', 'hijack_atts' ) ) 
+		if( ! themeblvd_supports( 'meta', 'hijack_atts' ) )
 			return false;
-		
+
 		// Continue on with everything copied from WordPress core
-		
+
 		$post_type_object = get_post_type_object($post->post_type);
 		if ( $post_type_object->hierarchical ) {
 			$pages = wp_dropdown_pages(array('post_type' => $post->post_type, 'exclude_tree' => $post->ID, 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)', 'themeblvd'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
@@ -257,7 +257,7 @@ if( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) {
 </select>
 <?php
 	} ?>
-<?php 
+<?php
 /*-----------------------------------------------------------------------------------*/
 /* ThemeBlvd Modifications (start)
 /*-----------------------------------------------------------------------------------*/

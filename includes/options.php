@@ -1,17 +1,17 @@
 <?php
-// Jump Start contains no mods to framework options, however does 
+// Jump Start contains no mods to framework options, however does
 // include a starting point for the WordPress customizer...
 
 /**
  * Setup theme for customizer.
  */
- 
+
 if( ! function_exists( 'jumpstart_customizer' ) ) {
 	function jumpstart_customizer() {
-		
+
 		// Setup logo options
 		$logo_options = array(
-			'logo' => array( 
+			'logo' => array(
 				'name' 		=> __( 'Logo', 'themeblvd' ),
 				'id' 		=> 'logo',
 				'type' 		=> 'logo',
@@ -19,10 +19,10 @@ if( ! function_exists( 'jumpstart_customizer' ) ) {
 			)
 		);
 		themeblvd_add_customizer_section( 'logo', __( 'Logo', 'themeblvd' ), $logo_options, 1 );
-		
+
 		// Setup custom styles option
 		$custom_styles_options = array(
-			'custom_styles' => array( 
+			'custom_styles' => array(
 				'name' 		=> __( 'Enter styles to preview their results.', 'themeblvd' ),
 				'id' 		=> 'custom_styles',
 				'type' 		=> 'textarea',
@@ -49,30 +49,30 @@ if( ! function_exists( 'jumpstart_customizer_init' ) ) {
 add_action( 'customize_register', 'jumpstart_customizer_init' );
 
 /**
- * Setup javascript needed for customizer to link up 
+ * Setup javascript needed for customizer to link up
  * to real-time edit options.
  */
 
 if( ! function_exists( 'jumpstart_customizer_preview' ) ) {
 	function jumpstart_customizer_preview() {
-		// Begin output	
+		// Begin output
 		?>
 		<script type="text/javascript">
-		window.onload = function() { // window.onload for silly IE9 bug fix	
+		window.onload = function() { // window.onload for silly IE9 bug fix
 			(function($) {
-				
+
 				// ---------------------------------------------------------
 				// Logo
 				// ---------------------------------------------------------
-				
+
 				<?php themeblvd_customizer_preview_logo(); ?>
-				
+
 				// ---------------------------------------------------------
 				// Custom CSS
 				// ---------------------------------------------------------
-				
+
 				<?php themeblvd_customizer_preview_styles(); ?>
-				
+
 			})(jQuery);
 		} // End window.onload for silly IE9 bug
 		</script>

@@ -8,29 +8,29 @@
  * @param $columns array columns for table
  * @return $output string HTML output for table
  */
- 
+
 function themeblvd_post_table( $post_type, $columns ) {
-	
+
 	// Grab some details for post type
 	$post_type_object = get_post_type_object($post_type);
 	$name = $post_type_object->labels->name;
 	$singular_name = $post_type_object->labels->singular_name;
-	
+
 	// Get posts
 	$posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
-	
+
 	// Get conflicts if this is a sidebar table
 	if( $post_type == 'tb_sidebar' )
 		$conflicts = themeblvd_get_assignment_conflicts( $posts );
-	
+
 	// Setup header/footer
 	$header = '<tr>';
 	$header .= '<th scope="col" id="cb" class="manage-column column-cb check-column"><input type="checkbox"></th>';
 	foreach( $columns as $column ) {
-		$header .= '<th>'.$column['name'].'</th>'; 
+		$header .= '<th>'.$column['name'].'</th>';
 	}
 	$header .= '</tr>';
-	
+
 	// Start main output
 	$output  = '<table class="widefat">';
 	$output .= '<div class="tablenav top">';
@@ -46,17 +46,17 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
 	$output .= '</div>';
-	
+
 	// Table header
 	$output .= '<thead>';
 	$output .= $header;
 	$output .= '</thead>';
-	
+
 	// Table footer
 	$output .= '<tfoot>';
 	$output .= $header;
 	$output .= '</tfoot>';
-	
+
 	// Table body
 	$output .= '<tbody>';
 	if( ! empty( $posts ) ) {
@@ -77,17 +77,17 @@ function themeblvd_post_table( $post_type, $columns ) {
 						$output .= '</span>';
 						$output .= '</div>';
 						break;
-						
+
 					case 'id' :
 						$output .= '<td class="post-id">';
 						$output .= $post->ID;
 						break;
-					
+
 					case 'slug' :
 						$output .= '<td class="post-slug">';
 						$output .= $post->post_name;
 						break;
-						
+
 					case 'meta' :
 						$output .= '<td class="post-meta-'.$column['config'].'">';
 						$meta = get_post_meta( $post->ID, $column['config'], true );
@@ -98,12 +98,12 @@ function themeblvd_post_table( $post_type, $columns ) {
 							$output .= $meta;
 						}
 						break;
-						
+
 					case 'shortcode' :
 						$output .= '<td class="post-shortcode-'.$column['config'].'">';
 						$output .= '['.$column['config'].' id="'.$post->post_name.'"]';
 						break;
-						
+
 					case 'assignments' :
 						$output .= '<td class="post-assignments">';
 						$location = get_post_meta( $post->ID, 'location', true );
@@ -112,7 +112,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 							if( is_array( $assignments ) && ! empty( $assignments ) ) {
 								$output .= '<ul>';
 								foreach( $assignments as $key => $assignment ) {
-									in_array( $key, $conflicts[$location] ) ? $class = 'conflict' : $class = 'no-conflict';	
+									in_array( $key, $conflicts[$location] ) ? $class = 'conflict' : $class = 'no-conflict';
 									if( $assignment['type'] == 'top' )
 										$output .= '<li class="'.$class.'">'.$assignment['name'].'</li>';
 									elseif( $assignment['type'] == 'custom' )
@@ -128,7 +128,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 							$output .= '<span class="inactive">[floating]</span>';
 						}
 						break;
-					
+
 					case 'sidebar_location' :
 						$output .= '<td class="sidebar-location">';
 						$output .= themeblvd_get_sidebar_location_name( get_post_meta( $post->ID, 'location', true ) );
@@ -149,9 +149,9 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 /**
  * Generates option for configuring columns.
- * 
- * This has been moved to a separate function 
- * because it's a custom addition to the optionframework 
+ *
+ * This has been moved to a separate function
+ * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
  * @since 2.0.0
@@ -162,13 +162,13 @@ function themeblvd_post_table( $post_type, $columns ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
- 
+
 function themeblvd_columns_option( $type, $id, $name, $val ) {
 
 	/*------------------------------------------------------*/
 	/* Setup Internal Options
 	/*------------------------------------------------------*/
-	
+
 	// Dropdown for number of columns selection
 	$data_num = array (
 		array(
@@ -196,18 +196,18 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 			'value' => 5,
 		)
 	);
-	
+
 	// Dropdowns for column width configuration
 	$data_widths = themeblvd_column_widths();
-	
+
 	/*------------------------------------------------------*/
 	/* Construct <select> Menus
 	/*------------------------------------------------------*/
-	
+
 	// Number of columns
 	if( $type == 'element' )
 		unset( $data_num[0] );
-	
+
 	// Select number of columns
 	$select_number  = '<div class="tb-fancy-select">';
 	$select_number .= '<select class="column-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
@@ -219,7 +219,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	$select_number .= '<span class="trigger"></span>';
 	$select_number .= '<span class="textbox"></span>';
 	$select_number .= '</div><!-- .tb-fancy-select (end) -->';
-	
+
 	// Select column widths
 	$i = 1;
 	$select_widths = '<div class="column-width column-width-0"><p class="inactive">'.__( 'Columns will be hidden.', 'themeblvd' ).'</p></div>';
@@ -236,11 +236,11 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 		$select_widths .= '</div><!-- .tb-fancy-select (end) -->';
 		$i++;
 	}
-	
+
 	/*------------------------------------------------------*/
 	/* Primary Output
 	/*------------------------------------------------------*/
-	
+
 	$output = '<div class="select-wrap alignleft">';
 	$output .= $select_number;
 	$output .= '</div>';
@@ -248,15 +248,15 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	$output .= $select_widths;
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
-	
+
 	return $output;
 }
 
 /**
  * Generates option for configuring tabs.
- * 
- * This has been moved to a separate function 
- * because it's a custom addition to the optionframework 
+ *
+ * This has been moved to a separate function
+ * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
  * @since 2.0.0
@@ -268,11 +268,11 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
  */
 
 function themeblvd_tabs_option( $id, $name, $val ) {
-	
+
 	/*------------------------------------------------------*/
 	/* Build <select> for number of tabs
 	/*------------------------------------------------------*/
-	
+
 	$numbers = array (
 		array(
 			'name' 	=> '2 '.__( 'Tabs', 'themeblvd' ),
@@ -329,25 +329,25 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$select_number .= '<span class="trigger"></span>';
 	$select_number .= '<span class="textbox"></span>';
 	$select_number .= '</div><!-- .tb-fancy-select (end) -->';
-	
+
 	/*------------------------------------------------------*/
 	/* Build <select> for style of tabs
 	/*------------------------------------------------------*/
-	
+
 	$current_value = ! empty( $val ) && ! empty( $val['style'] ) ? $val['style'] : null;
 	$select_style  = '<div class="tb-fancy-select">';
-	$select_style .= '<select class="tabs-style" name="'.esc_attr( $name.'['.$id.'][style]' ).'">';	
+	$select_style .= '<select class="tabs-style" name="'.esc_attr( $name.'['.$id.'][style]' ).'">';
 	$select_style .= '<option value="open" '.selected( $current_value, 'open', false ).'>'.__( 'Open Style', 'themeblvd' ).'</option>';
 	$select_style .= '<option value="framed" '.selected( $current_value, 'framed', false ).'>'.__( 'Framed Style', 'themeblvd' ).'</option>';
 	$select_style .= '</select>';
 	$select_style .= '<span class="trigger"></span>';
 	$select_style .= '<span class="textbox"></span>';
 	$select_style .= '</div><!-- .tb-fancy-select (end) -->';
-	
+
 	/*------------------------------------------------------*/
 	/* Build <select> for nav of tabs
 	/*------------------------------------------------------*/
-	
+
 	$current_value = ! empty( $val ) && ! empty( $val['nav'] ) ? $val['nav'] : null;
 	$select_nav  = '<div class="tb-fancy-select">';
 	$select_nav .= '<select class="tabs-nav" name="'.esc_attr( $name.'['.$id.'][nav]' ).'">';
@@ -361,11 +361,11 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$select_nav .= '<span class="trigger"></span>';
 	$select_nav .= '<span class="textbox"></span>';
 	$select_nav .= '</div><!-- .tb-fancy-select (end) -->';
-		
+
 	/*------------------------------------------------------*/
 	/* Add in text fields for names of tabs
 	/*------------------------------------------------------*/
-	
+
 	// Add 1st tab
 	array_unshift( $numbers, array( 'value' => 1 ) );
 	$input_names = null;
@@ -379,11 +379,11 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 		$input_names .= '<div class="clear"></div>';
 		$input_names .= '</div>';
 	}
-	
+
 	/*------------------------------------------------------*/
 	/* Primary Output
 	/*------------------------------------------------------*/
-	
+
 	$output = '<div class="select-tab-num">';
 	$output .= $select_number;
 	$output .= '</div>';
@@ -396,18 +396,18 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$output .= '<div class="tab-names">';
 	$output .= $input_names;
 	$output .= '</div>';
-	
+
 	return $output;
-	
+
 }
 
 /**
- * Generates option for an individual block of content. 
- * This was mainly designed to be used within setting 
+ * Generates option for an individual block of content.
+ * This was mainly designed to be used within setting
  * up columns or tabs.
- * 
- * This has been moved to a separate function 
- * because it's a custom addition to the optionframework 
+ *
+ * This has been moved to a separate function
+ * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
  * @since 2.0.0
@@ -424,27 +424,27 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	/*------------------------------------------------------*/
 	/* Build <select> for type of content
 	/*------------------------------------------------------*/
-	
+
 	// Setup content types to choose from
 	$sources = array(
 		'null' 		=> __( '- Select Content Type -', 'themeblvd' ),
 	);
-	
+
 	if( in_array ( 'widget', $options ) )
 		$sources['widget'] = __( 'Floating Widget Area', 'themeblvd' );
-	
+
 	if( in_array ( 'current', $options ) )
 		$sources['current'] = __( 'Content of Current Page', 'themeblvd' );
-		
+
 	if( in_array ( 'page', $options ) )
 		$sources['page'] = __( 'Content of External Page', 'themeblvd' );
-	
+
 	if( in_array ( 'raw', $options ) )
 		$sources['raw'] = __( 'Raw Content', 'themeblvd' );
-	
+
 	// Set default value
 	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
-	
+
 	// Build <select>
 	$select_type  = '<div class="tb-fancy-select">';
 	$select_type .= '<select class="select-type" name= "'.esc_attr( $name.'['.$id.'][type]' ).'">';
@@ -455,30 +455,30 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	$select_type .= '<span class="trigger"></span>';
 	$select_type .= '<span class="textbox"></span>';
 	$select_type .= '</div><!-- .tb-fancy-select (end) -->';
-	
+
 	/*------------------------------------------------------*/
 	/* Build <select> for widget area
 	/*------------------------------------------------------*/
-	
+
 	if( in_array ( 'widget', $options ) ) {
-		
-		// The selection of a floating widget area is only 
+
+		// The selection of a floating widget area is only
 		// possible if the Widget Areas plugin is installed.
 		if( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
-			
-			// Message to get plugin	
+
+			// Message to get plugin
 			$select_sidebar = '<p class="warning">'.sprintf(__( 'In order for you to use this feature you need to have the %s plugin activated.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
-		
+
 		} else {
-			
+
 			$sidebars = array();
-		
+
 			// Set default value
 			$current_value = ! empty( $val ) && ! empty( $val['sidebar'] ) ? $val['sidebar'] : null;
-			
+
 			// Get all custom sidebars from custom post type
 			$sidebars = themeblvd_get_select( 'sidebars' );
-			
+
 			// Build <select>
 			if( ! empty( $sidebars ) ) {
 				$select_sidebar  = '<div class="tb-fancy-select">';
@@ -494,21 +494,21 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 				$select_sidebar = '<p class="warning">'.__( 'You haven\'t created any floating widget areas.', 'themeblvd' ).'</p>';
 			}
 		}
-		
+
 	}
-	
+
 	/*------------------------------------------------------*/
 	/* Build <select> for external page
 	/*------------------------------------------------------*/
-	
+
 	if( in_array ( 'page', $options ) ) {
-	
+
 		// Set default value
 		$current_value = ! empty( $val ) && ! empty( $val['page'] ) ? $val['page'] : null;
-		
+
 		// Get all pages from WP database
 		$pages = themeblvd_get_select( 'pages' );
-		
+
 		// Build <select>
 		if( ! empty( $pages ) ) {
 			$select_page  = '<div class="tb-fancy-select">';
@@ -523,56 +523,56 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		} else {
 			$select_page = '<p class="warning">'.__( 'You haven\'t created any pages.', 'themeblvd' ).'</p>';
 		}
-		
+
 	}
-	
+
 	/*------------------------------------------------------*/
 	/* Build raw content input
 	/*------------------------------------------------------*/
-	
+
 	if( in_array ( 'raw', $options ) ) {
-	
+
 		// Set default value
 		$current_value = ! empty( $val ) && ! empty( $val['raw'] ) ? $val['raw'] : null;
-		
+
 		// Text area
 		$raw_content = '<textarea name="'.esc_attr( $name.'['.$id.'][raw]' ).'" class="of-input" cols="8" rows="8">'.stripslashes(esc_textarea($current_value)).'</textarea>';
-		
+
 		// Checkbox for the_content filter (added in v2.0.6)
 		isset( $val['raw_format'] ) && ! $val['raw_format'] ? $checked = '' : $checked = ' checked'; // Should be checked if selected OR option never existed. This is for legacy purposes.
 		$raw_content .= '<input class="checkbox of-input" type="checkbox" name="'.esc_attr( $name.'['.$id.'][raw_format]' ).'"'.$checked.'>'.__( 'Apply WordPress automatic formatting.', 'themeblvd' );
 	}
-		
+
 	/*------------------------------------------------------*/
 	/* Primary Output
 	/*------------------------------------------------------*/
-	
+
 	$output = '<div class="column-content-types">';
 	$output .= $select_type;
-	
+
 	if( in_array ( 'widget', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-widget">';
 		$output .= $select_sidebar;
 		$output .= '<p class="note">'.__( 'Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way in the Widget Area manager.', 'themeblvd' ).'</p>';
 		$output .= '</div>';
 	}
-	
+
 	if( in_array ( 'page', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-page">';
 		$output .= $select_page;
 		$output .= '<p class="note">'.__( 'Select an external page to pull content from.', 'themeblvd' ).'</p>';
 		$output .= '</div>';
 	}
-	
+
 	if( in_array ( 'raw', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-raw">';
 		$output .= $raw_content;
 		$output .= '<p class="note">'.__( 'You can use basic HTML here, and most shortcodes.', 'themeblvd' ).'</p>';
 		$output .= '</div>';
 	}
-	
+
 	$output .= '</div><!-- .column-content-types (end) -->';
-	
+
 	return $output;
 }
 
@@ -587,10 +587,10 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
- 
+
 function themeblvd_conditionals_option( $id, $name, $val = null ) {
-	
-	// Create array of all assignments seperated 
+
+	// Create array of all assignments seperated
 	// by type to check against when displaying them
 	// back to the user.
 	$assignments = array(
@@ -627,23 +627,23 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				case 'custom' :
 					$assignments['custom'] = $item_id;
 					break;
-			}	
+			}
 		}
 	}
-	
+
 	// Grab all conditionals to choose from
 	$conditionals = themeblvd_conditionals_config();
-	
+
 	// Start output
 	$output = '<div class="accordion">';
-	
+
 	// Display each accordion element
 	foreach( $conditionals as $conditional ) {
 		$output .= '<div class="element">';
 		$output .= '<a href="#" class="element-trigger">'.$conditional['name'].'</a>';
 		$output .= '<div class="element-content">';
 		switch( $conditional['id'] ) {
-			
+
 			// Pages
 			case 'pages' :
 				$pages = get_pages( array( 'hierarchical' => false ) );
@@ -659,8 +659,8 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$output .= '<p class="warning">'.$conditional['empty'].'</p>';
 				}
 				break;
-			
-			// Posts	
+
+			// Posts
 			case 'posts' :
 				$assignment_list = '';
 				if( ! empty( $assignments['posts'] ) )
@@ -670,10 +670,10 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$output .= '<p class="note"><em>'.__( 'Example: post-1, post-2, post-3', 'themeblvd' ).'</em></p>';
 				$output .= '<p class="note"><em>'.__( 'Note: Any post slugs entered that don\'t exist won\'t be saved.', 'themeblvd' ).'</em></p>';
 				break;
-			
-			// Posts in Category	
+
+			// Posts in Category
 			case 'posts_in_category' :
-				
+
 				if( isset( $GLOBALS['sitepress'] ) ) {
 					// WPML compat
 					global $sitepress;
@@ -683,7 +683,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				} else {
 					$categories = get_categories( array( 'hide_empty' => false ) );
 				}
-		        
+
 		        if( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
 		        	foreach ( $categories as $category ) {
@@ -696,10 +696,10 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$output .= '<p class="warning">'.$conditional['empty'].'</p>';
 				}
 				break;
-			
-			// Category Archives	
+
+			// Category Archives
 			case 'categories' :
-				
+
 				if( isset( $GLOBALS['sitepress'] ) ) {
 					// WPML compat
 					global $sitepress;
@@ -709,7 +709,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				} else {
 					$categories = get_categories( array( 'hide_empty' => false ) );
 				}
-		        
+
 		        if( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
 		        	foreach ( $categories as $category ) {
@@ -722,7 +722,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$output .= '<p class="warning">'.$conditional['empty'].'</p>';
 				}
 				break;
-			
+
 			// Tag Archives
 			case 'tags' :
 				$assignment_list = '';
@@ -733,7 +733,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$output .= '<p class="note"><em>'.__( 'Example: tag-1, tag-2, tag-3', 'themeblvd' ).'</em></p>';
 				$output .= '<p class="note"><em>'.__( 'Note: Any tags entered that don\'t exist won\'t be saved.', 'themeblvd' ).'</em></p>';
 				break;
-			
+
 			// Hierarchy
 			case 'top' :
 				$items = $conditional['items'];
@@ -743,7 +743,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$checked = false;
 				}
 				break;
-				
+
 			// Custom
 			case 'custom' :
 				$disable = apply_filters( 'themeblvd_disable_sidebar_custom_conditional', false ); // If someone feels unsafe having this option which uses eval(), they can disable it here.
@@ -761,15 +761,15 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 		$output .= '</div><!-- .element (end) -->';
 	}
 	$output .= '</div><!-- .accordion (end) -->';
-	
+
 	return $output;
 }
 
 /**
  * Generates option to edit a logo.
- * 
- * This has been moved to a separate function 
- * because it's a custom addition to the optionframework 
+ *
+ * This has been moved to a separate function
+ * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
  * @since 2.0.0
@@ -781,11 +781,11 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
  */
 
 function themeblvd_logo_option( $id, $name, $val ) {
-	
+
 	/*------------------------------------------------------*/
 	/* Type of logo
 	/*------------------------------------------------------*/
-	
+
 	$types = array(
 		'title' 		=> __( 'Site Title', 'themeblvd' ),
 		'title_tagline' => __( 'Site Title + Tagline', 'themeblvd' ),
@@ -794,7 +794,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	);
 	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
 	$select_type  = '<div class="tb-fancy-select">';
-	$select_type .= '<select name="'.esc_attr( $name.'['.$id.'][type]' ).'">';	
+	$select_type .= '<select name="'.esc_attr( $name.'['.$id.'][type]' ).'">';
 	foreach( $types as $key => $type ) {
 		$select_type .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$type.'</option>';
 	}
@@ -802,21 +802,21 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	$select_type .= '<span class="trigger"></span>';
 	$select_type .= '<span class="textbox"></span>';
 	$select_type .= '</div><!-- .tb-fancy-select (end) -->';
-	
+
 	/*------------------------------------------------------*/
 	/* Site Title
 	/*------------------------------------------------------*/
-	
+
 	$site_title  = '<p class="note">';
 	$site_title .= __( 'Current Site Title', 'themeblvd' ).': <strong>';
 	$site_title .= get_bloginfo( 'name' ).'</strong><br><br>';
 	$site_title .= __( 'You can change your site title and tagline by going <a href="options-general.php" target="_blank">here</a>.', 'themeblvd' );
 	$site_title .= '</p>';
-	
+
 	/*------------------------------------------------------*/
 	/* Site Title + Tagline
 	/*------------------------------------------------------*/
-	
+
 	$site_title_tagline  = '<p class="note">';
 	$site_title_tagline .= __( 'Current Site Title', 'themeblvd' ).': <strong>';
 	$site_title_tagline .= get_bloginfo( 'name' ).'</strong><br>';
@@ -824,41 +824,41 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	$site_title_tagline .= get_bloginfo( 'description' ).'</strong><br><br>';
 	$site_title_tagline .= __( 'You can change your site title by going <a href="options-general.php" target="_blank">here</a>.', 'themeblvd' );
 	$site_title_tagline .= '</p>';
-	
+
 	/*------------------------------------------------------*/
 	/* Custom Text
 	/*------------------------------------------------------*/
-	
+
 	$current_value = ! empty( $val ) && ! empty( $val['custom'] ) ? $val['custom'] : null;
-	$current_tagline = ! empty( $val ) && ! empty( $val['custom_tagline'] ) ? $val['custom_tagline'] : null;	
+	$current_tagline = ! empty( $val ) && ! empty( $val['custom_tagline'] ) ? $val['custom_tagline'] : null;
 	$custom_text  = '<p><label class="inner-label"><strong>'.__( 'Title', 'themeblvd' ).'</strong></label>';
 	$custom_text .= '<input type="text" name="'.esc_attr( $name.'['.$id.'][custom]' ).'" value="'.esc_attr($current_value).'" /></p>';
 	$custom_text .= '<p><label class="inner-label"><strong>'.__( 'Tagline', 'themeblvd' ).'</strong> ('.__( 'optional', 'themeblvd' ).')</label>';
 	$custom_text .= '<input type="text" name="'.esc_attr( $name.'['.$id.'][custom_tagline]' ).'" value="'.esc_attr($current_tagline).'" /></p>';
 	$custom_text .= '<p class="note">'.__( 'Insert your custom text.', 'themeblvd' ).'</p>';
-	
+
 	/*------------------------------------------------------*/
 	/* Image
 	/*------------------------------------------------------*/
-	
+
 	if( function_exists('wp_enqueue_media') ) {
 
 		if( is_array( $val ) && isset( $val['image'] ) )
 			$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'] );
 		else
 			$current_value = array( 'url' => '', 'width' => '' );
-			
+
 		if( is_array( $val ) && isset( $val['image_2x'] ) )
 			$current_retina = array( 'url' => $val['image_2x'] );
 		else
 			$current_retina = array( 'url' => '' );
-		
+
 		// Standard Image
 		$image_upload  = '<div class="section-upload image-standard">';
 		$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
 		$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'name' => 'image' ) );
 		$image_upload .= '</div>';
-		
+
 		// Retina image (2x)
 		$image_upload .= '<div class="section-upload image-2x">';
 		$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
@@ -873,29 +873,29 @@ function themeblvd_logo_option( $id, $name, $val ) {
 			$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'], 'id' => '' );
 		else
 			$current_value = array( 'url' => '', 'width' => '', 'id' => '' );
-			
+
 		if( is_array( $val ) && isset( $val['image_2x'] ) )
 			$current_retina = array( 'url' => $val['image_2x'], 'id' => '' );
 		else
 			$current_retina = array( 'url' => '', 'id' => '' );
-		
+
 		// Standard Image
 		$image_upload  = '<div class="section-upload image-standard">';
 		$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
 		$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo', $id, $current_value, null, null, 0, 'image' );
 		$image_upload .= '</div>';
-		
+
 		// Retina image (2x)
 		$image_upload .= '<div class="section-upload image-2x">';
 		$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
 		$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo_2x', $id, $current_retina, null, null, 0, 'image_2x' );
 		$image_upload .= '</div>';
 	}
-	
+
 	/*------------------------------------------------------*/
 	/* Primary Output
 	/*------------------------------------------------------*/
-	
+
 	$output  = '<div class="select-type">';
 	$output .= $select_type;
 	$output .= '</div>';
@@ -911,15 +911,15 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	$output .= '<div class="logo-item image">';
 	$output .= $image_upload;
 	$output .= '</div>';
-	
+
 	return $output;
 }
 
 /**
  * Generates option to edit social media buttons.
- * 
- * This has been moved to a separate function 
- * because it's a custom addition to the optionframework 
+ *
+ * This has been moved to a separate function
+ * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
  * @since 2.0.0
@@ -931,7 +931,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
  */
 
 function themeblvd_social_media_option( $id, $name, $val ) {
-	
+
 	$sources = array(
 		'amazon' 		=> 'Amazon',
 		'delicious' 	=> 'del.icio.us',
@@ -966,7 +966,7 @@ function themeblvd_social_media_option( $id, $name, $val ) {
 		'rss' 			=> 'RSS'
 	);
 	$sources = apply_filters( 'themeblvd_social_media_buttons', $sources );
-	
+
 	$counter = 1;
 	$divider = round( count($sources)/2 );
 	$output = '<div class="column-1">';
@@ -993,13 +993,13 @@ function themeblvd_social_media_option( $id, $name, $val ) {
 		$counter++;
 	}
 	$output .= '</div><!-- .column-2 (end) -->';
-	
+
 	return $output;
 }
 
 /**
- * Option for selecting a sidebar layout that gets 
- * inserted into out Hi-jacked "Page Attributes" 
+ * Option for selecting a sidebar layout that gets
+ * inserted into out Hi-jacked "Page Attributes"
  * meta box.
  *
  * @since 2.0.0
@@ -1021,8 +1021,8 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
 }
 
 /**
- * Option for selecting a custom layout that gets 
- * inserted into out Hi-jacked "Page Attributes" 
+ * Option for selecting a custom layout that gets
+ * inserted into out Hi-jacked "Page Attributes"
  * meta box.
  *
  * @since 2.0.0
@@ -1030,15 +1030,15 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
  * @param $layout string current custom layout
  * @param $output string HTML to output
  */
- 
+
 function themeblvd_custom_layout_dropdown( $layout = null ) {
-	
+
 	// Make sure layout builder plugin is installed
 	if( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 		$message = sprintf( __( 'In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
 		return '<p class="tb_custom_layout"><em>'.$message.'</em></p>';
 	}
-	
+
 	$custom_layouts = get_posts('post_type=tb_layout&numberposts=-1');
 	$output = '<p><strong>'.__( 'Custom Layout', 'themeblvd' ).'</strong></p>';
 	if( ! empty( $custom_layouts ) ) {
@@ -1050,11 +1050,11 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 	} else {
 		$output .='<p class="tb_custom_layout"><em>'.__( 'You haven\'t created any custom layouts in the Layout builder yet.', 'themeblvd' ).'</em></p>';
 	}
-	
+
 	return $output;
 }
 
-/** 
+/**
  * Options footer text
  *
  * @since 2.2.0
@@ -1062,17 +1062,17 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 
 if ( ! function_exists( 'themeblvd_options_footer_text_default' ) ) {
 	function themeblvd_options_footer_text_default() {
-		
+
 		// Theme info and text
 		$theme_data = wp_get_theme( get_template() );
 		$theme_title = $theme_data->get('Name');
 		$theme_version = $theme_data->get('Version');
-		
+
 		// Changelog link
 		$changelog = '';
 		if( defined( 'TB_THEME_ID' ) )
 			$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), __( 'Changelog', 'themeblvd' ) );
-		
+
 		// Output
 		printf('%s <strong>%s</strong> with Theme Blvd Framework <strong>%s</strong> %s', $theme_title, $theme_version, TB_FRAMEWORK_VERSION, $changelog );
 	}

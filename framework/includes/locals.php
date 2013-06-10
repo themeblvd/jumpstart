@@ -1,7 +1,7 @@
 <?php
 /**
  * Setup user-read text strings. This function allows
- * to have all of the framework's common localized text 
+ * to have all of the framework's common localized text
  * strings in once place.
  *
  * The filter "themeblvd_frontend_locals"
@@ -11,7 +11,7 @@
  */
 
 function themeblvd_get_all_locals() {
-	$locals = array ( 
+	$locals = array (
 		'404'						=> __( 'Apologies, but the page you\'re looking for can\'t be found.', 'themeblvd_frontend' ),
 		'404_title'					=> __( '404 Error', 'themeblvd_frontend' ),
 		'archive_no_posts'			=> __( 'Apologies, but there are no posts to display.', 'themeblvd_frontend' ),
@@ -91,31 +91,31 @@ if( ! function_exists( 'themeblvd_get_local' ) ) {
 }
 
 /**
- * Setup JavaScript localized strings for 
+ * Setup JavaScript localized strings for
  * themeblvd.js
  *
  * The filter "themeblvd_js_locals"
- * can be used to add/remove strings or other 
- * variables we want to pass through to our primary 
+ * can be used to add/remove strings or other
+ * variables we want to pass through to our primary
  * "themeblvd" script.
  *
  * @since 2.2.0
  */
 
 function themeblvd_get_js_locals() {
-	
+
 	// Start $locals array with any miscellaneous stuff
-	$locals = array ( 
+	$locals = array (
 		'prettyphoto_theme' 		=> 'pp_default',
 		'thumb_animations'			=> 'true',
 		'featured_animations'		=> 'true',
 		'image_slide_animations'	=> 'true',
 		'retina_logo'				=> 'true'
 	);
-	
-	// Extend $locals to accomodate scripts being included 
-	// through our "themeblvd_global_config" filter. 
-	// This allows people to remove jQuery plugin files 
+
+	// Extend $locals to accomodate scripts being included
+	// through our "themeblvd_global_config" filter.
+	// This allows people to remove jQuery plugin files
 	// w/out having to also remove functions from themeblvd.js.
 	if( themeblvd_supports( 'assets', 'bootstrap' ) )
 		$locals['bootstrap'] = 'true';
@@ -123,7 +123,7 @@ function themeblvd_get_js_locals() {
 		$locals['prettyphoto'] = 'true';
 	if( themeblvd_supports( 'assets', 'superfish' ) )
 		$locals['superfish'] = 'true';
-	
+
 	// Return with framework's filter applied
 	return apply_filters( 'themeblvd_js_locals', $locals );
 }

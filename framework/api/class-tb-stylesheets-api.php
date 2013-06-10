@@ -2,17 +2,17 @@
 /**
  * Stylesheets API.
  *
- * (1) This class sets up the framework stylesheets that get 
+ * (1) This class sets up the framework stylesheets that get
  * enqueued on the frontend of the website.
  *
- * (2) Additionally, this class provides methods to add and 
- * remove stylesheets. Client API-added stylesheets are organized 
- * within four levels. 
+ * (2) Additionally, this class provides methods to add and
+ * remove stylesheets. Client API-added stylesheets are organized
+ * within four levels.
  *	- Level 1: Before Framework styles
  *	- Level 2: After Framework styles
  *	- Level 3: After Theme styles (implemented at theme level)
  *	- Level 4: After everything. (end of wp_head)
- * 
+ *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
@@ -20,7 +20,7 @@
  * @package 	Theme Blvd WordPress Framework
  */
 class Theme_Blvd_Stylesheets_API {
-	
+
 	/*--------------------------------------------*/
 	/* Properties, private
 	/*--------------------------------------------*/
@@ -33,7 +33,7 @@ class Theme_Blvd_Stylesheets_API {
 	private static $instance = null;
 
 	/**
-	 * Stylesheets to be removed from framework, 
+	 * Stylesheets to be removed from framework,
 	 * or those added by client API.
 	 *
 	 * @since 2.3.0
@@ -48,7 +48,7 @@ class Theme_Blvd_Stylesheets_API {
 	private $framework_stylesheets = array();
 
 	/**
-	 * And array of the framework stylesheets handles. 
+	 * And array of the framework stylesheets handles.
 	 * Can use to enqueue a stylesheet manually
 	 * after all framework stylesheets.
 	 * Same as using API to add at level 2.
@@ -76,10 +76,10 @@ class Theme_Blvd_Stylesheets_API {
      * @return Theme_Blvd_Frontend_Init A single instance of this class.
      */
 	public static function get_instance() {
-		
+
 		if( self::$instance == null )
             self::$instance = new self;
-        
+
         return self::$instance;
 	}
 
@@ -90,7 +90,7 @@ class Theme_Blvd_Stylesheets_API {
 	 */
 	private function __construct() {
 
-		// Setup stylesheets from Framework and Client API. 
+		// Setup stylesheets from Framework and Client API.
 		// No enqueuing yet.
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_framework_stylesheets' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_client_stylesheets' ), 1 );
@@ -116,7 +116,7 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Bootstrap/FontAwesome
 		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
-			
+
 			// Boostrap
 			$this->framework_stylesheets['bootstrap'] = array(
 				'handle'	=> 'bootstrap',
@@ -140,7 +140,7 @@ class Theme_Blvd_Stylesheets_API {
 
 		// prettyPhoto
 		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
-			
+
 			$this->framework_stylesheets['prettyphoto'] = array(
 				'handle'	=> 'prettyphoto',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/prettyphoto/css/prettyPhoto.css',
@@ -168,11 +168,11 @@ class Theme_Blvd_Stylesheets_API {
 		if( $this->remove_stylesheets ) {
 			foreach( $this->remove_stylesheets as $key => $handle ) {
 				if( isset( $this->framework_stylesheets[$handle] ) ) {
-					
+
 					// Remove framework stylesheet
 					unset( $this->framework_stylesheets[$handle] );
-					
-					// Now that we've found the stylesheet and removed it, 
+
+					// Now that we've found the stylesheet and removed it,
 					// we don't need to de-register it later.
 					unset( $this->remove_stylesheets[$key] );
 
@@ -198,17 +198,17 @@ class Theme_Blvd_Stylesheets_API {
 	 * @since 2.3.0
 	 */
 	public function set_client_stylesheets() {
-		
+
 		if( ! is_admin() ) {
 
 			// Remove stylesheets
 			if( $this->remove_stylesheets ) {
 				foreach( $this->remove_stylesheets as $handle ) {
-					unset( $this->remove_stylesheets[$handle] );	
+					unset( $this->remove_stylesheets[$handle] );
 				}
 			}
 
-			// Re-format array of client stylesheets that are left 
+			// Re-format array of client stylesheets that are left
 			// to be organized by level.
 			$temp_stylesheets = $this->client_stylesheets;
 
@@ -226,7 +226,7 @@ class Theme_Blvd_Stylesheets_API {
 				}
 
 			}
-		
+
 		}
 
 	}
@@ -267,7 +267,7 @@ class Theme_Blvd_Stylesheets_API {
 	 */
 	public function remove( $handle ) {
 		if( ! is_admin() ) {
-			$this->remove_stylesheets[] = $handle;	
+			$this->remove_stylesheets[] = $handle;
 		}
 	}
 
@@ -287,8 +287,8 @@ class Theme_Blvd_Stylesheets_API {
 	}
 
 	/**
-	 * Get framework stylesheets. Will only be fully 
-	 * available at the time it's enqueing everything. 
+	 * Get framework stylesheets. Will only be fully
+	 * available at the time it's enqueing everything.
 	 * Not very useful in most cases.
 	 *
 	 * @since 2.3.0
@@ -300,8 +300,8 @@ class Theme_Blvd_Stylesheets_API {
 	}
 
 	/**
-	 * Get an array that could be used as your $deps if 
-	 * manually trying to enqueue stylehsheet after 
+	 * Get an array that could be used as your $deps if
+	 * manually trying to enqueue stylehsheet after
 	 * framework stylesheets.
 	 *
 	 * @since 2.3.0
@@ -337,22 +337,22 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Level 1 client stylesheets
 		$this->print_styles(1);
-		
+
 		// Enqueue framework stylesheets
 		if( $this->framework_stylesheets ) {
 			foreach( $this->framework_stylesheets as $style ) {
 				wp_enqueue_style( $style['handle'], $style['src'], $style['deps'], $style['ver'], $style['media'] );
 			}
 		}
-		
+
 		// Level 2 client stylesheets
 		$this->print_styles(2);
-	
+
 	}
 
 	/**
-	 * Output closing stylesheets. Hooked to wp_head, giving 
-	 * a chance to for a stylesheet outside of WP's enqueue 
+	 * Output closing stylesheets. Hooked to wp_head, giving
+	 * a chance to for a stylesheet outside of WP's enqueue
 	 * system.
 	 *
 	 * @since 2.3.0
@@ -365,8 +365,8 @@ class Theme_Blvd_Stylesheets_API {
 	}
 
 	/**
-	 * Print stylesheets. For levels 1-3, this means using 
-	 * WP's wp_enqueue_style(), and for level 4, the stylesheet 
+	 * Print stylesheets. For levels 1-3, this means using
+	 * WP's wp_enqueue_style(), and for level 4, the stylesheet
 	 * is manually outputed at the end of wp_head.
 	 *
 	 * @since 2.3.0

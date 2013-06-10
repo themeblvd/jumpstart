@@ -1,9 +1,9 @@
 <?php
 /**
- * Run TGM class to tell users just installing 
- * the current theme which plugins they should 
- * be using. However, if the user has already 
- * dismissed the message, we will not even include 
+ * Run TGM class to tell users just installing
+ * the current theme which plugins they should
+ * be using. However, if the user has already
+ * dismissed the message, we will not even include
  * the class.
  *
  * remove_action( 'after_setup_theme', 'themeblvd_plugins' );
@@ -12,20 +12,20 @@
  */
 if( ! function_exists( 'themeblvd_plugins' ) ) {
 	function themeblvd_plugins() {
-		
-		/* @todo - Will evaluate whether to include this or 
-		not later on. This will save resources, however will 
-		also remove the "Recommended Plugins" menu item once 
+
+		/* @todo - Will evaluate whether to include this or
+		not later on. This will save resources, however will
+		also remove the "Recommended Plugins" menu item once
 		dismissing the prompt, which could be confusing.
-		
+
 		// Check if the user has already dismissed the prompt
 		if( get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) )
 			return;
 		*/
-		
+
 		// Include TGM_Plugin_Activation class
 		include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/class-tgm-plugin-activation.php' );
-		
+
 		// Hook in TGM Class registration
 		add_action( 'tgmpa_register', 'themeblvd_tgm_register' );
 
@@ -35,15 +35,15 @@ if( ! function_exists( 'themeblvd_plugins' ) ) {
 /**
  * Register the required/recommnended plugins.
  *
- * This function is hooked into tgmpa_register, which 
- * is fired within the TGM_Plugin_Activation class 
+ * This function is hooked into tgmpa_register, which
+ * is fired within the TGM_Plugin_Activation class
  * constructor.
  *
  * @since 2.2.0
  */
 if( ! function_exists( 'themeblvd_tgm_register' ) ) {
 	function themeblvd_tgm_register() {
-		
+
 		// Plugins to require/recommend
 		$plugins = array(
 			'builder' => array(
@@ -73,7 +73,7 @@ if( ! function_exists( 'themeblvd_tgm_register' ) ) {
 			)
 		);
 		$plugins = apply_filters( 'themeblvd_plugins', $plugins );
-	
+
 		// TGM Class config
 		$config = array(
 			'domain'       		=> 'themeblvd',         		// Text domain - likely want to be the same as your theme.
@@ -106,9 +106,9 @@ if( ! function_exists( 'themeblvd_tgm_register' ) ) {
 			)
 		);
 		$config = apply_filters( 'themeblvd_tgm_config', $config );
-		
+
 		// Run it.
 		tgmpa( $plugins, $config );
-	
+
 	}
 }

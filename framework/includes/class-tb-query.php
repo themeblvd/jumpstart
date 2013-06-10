@@ -1,8 +1,8 @@
 <?php
 /**
- * Setup any secondary queries or hook any modifications 
+ * Setup any secondary queries or hook any modifications
  * to the primary query.
- * 
+ *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
@@ -51,15 +51,15 @@ class Theme_Blvd_Query {
      * @return Theme_Blvd_Query A single instance of this class.
      */
 	public static function get_instance() {
-		
+
 		if( self::$instance == null )
             self::$instance = new self;
-        
+
         return self::$instance;
 	}
 
 	/**
-	 * Hook everything in. 
+	 * Hook everything in.
 	 *
 	 * @since 2.3.0
 	 */
@@ -71,7 +71,7 @@ class Theme_Blvd_Query {
 
 		// Query modifications
 		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
-	
+
 	}
 
 	/*--------------------------------------------*/
@@ -79,10 +79,10 @@ class Theme_Blvd_Query {
 	/*--------------------------------------------*/
 
 	/**
-	 * Set a secondary query for paginated elements. This is used 
-	 * for Post List and Post Grid page templates. It's also used 
-	 * for custom layouts that contain a pagianted post list or 
-	 * post grid. 
+	 * Set a secondary query for paginated elements. This is used
+	 * for Post List and Post Grid page templates. It's also used
+	 * for custom layouts that contain a pagianted post list or
+	 * post grid.
 	 *
 	 * @since 2.3.0
 	 *
@@ -92,7 +92,7 @@ class Theme_Blvd_Query {
 	 */
 	public function set_second_query( $args, $type = '' ) {
 
-		// If no $type is passed in, it means the $args 
+		// If no $type is passed in, it means the $args
 		// should already be formatted.
 		if( ! $type ) {
 			$this->second_query = wp_parse_args( $args );
@@ -132,7 +132,7 @@ class Theme_Blvd_Query {
 			// Order by (date, title, rand, etc)
 			if( $args['orderby'] )
 				$query['orderby'] = $args['orderby'];
-			
+
 			// Order (ASC or DESC)
 			if( $args['order'] )
 				$query['order'] = $args['order'];
@@ -156,14 +156,14 @@ class Theme_Blvd_Query {
 	}
 
 	/**
-	 * Set conditionals that can be used with the was() 
-	 * method to help determine the state of the original 
+	 * Set conditionals that can be used with the was()
+	 * method to help determine the state of the original
 	 * query.
 	 *
 	 * @since 2.3.0
 	 */
 	public function set_was() {
-		
+
 		global $post;
 
 		$this->was = array(
@@ -212,7 +212,7 @@ class Theme_Blvd_Query {
 	/* Methods, accessors
 	/*--------------------------------------------*/
 
-	/** 
+	/**
 	 * Get stored second query.
 	 *
 	 * @since 2.3.0
@@ -223,8 +223,8 @@ class Theme_Blvd_Query {
 		return $this->second_query;
 	}
 
-	/** 
-	 * Get stored "was" conditional parameters for 
+	/**
+	 * Get stored "was" conditional parameters for
 	 * original $post object.
 	 *
 	 * @since 2.3.0
@@ -240,14 +240,14 @@ class Theme_Blvd_Query {
 	/*--------------------------------------------*/
 
 	/**
-	 * Setup args for secondary query in the Post List/Grid 
+	 * Setup args for secondary query in the Post List/Grid
 	 * page templates. Hooked to "wp".
 	 */
 	public function templates_init() {
-		
+
 		global $post;
 
-		// If this isn't the Post List or Post Grid page 
+		// If this isn't the Post List or Post Grid page
 		// template, get out of here.
 		if( ! is_page() && ( ! is_page_template('template_list.php') || ! is_page_template('template_grid.php') ) )
 			return;
@@ -290,13 +290,13 @@ class Theme_Blvd_Query {
 
 		// Posts per page
 		$posts_per_page = '';
-		
+
 		if( $type == 'list' ) {
-			
+
 			$posts_per_page = get_post_meta( $post->ID, 'posts_per_page', true );
-		
+
 		} else if( $type == 'grid' ) {
-			
+
 			$columns = get_post_meta( $post->ID, 'columns', true );
 			if( ! $columns )
 				$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
@@ -307,15 +307,15 @@ class Theme_Blvd_Query {
 
 			$posts_per_page = $columns*$rows;
 		}
-		
+
 		if( $posts_per_page )
 			$query['posts_per_page'] = $posts_per_page;
 
 		// Orderby
-		$orderby = get_post_meta( $post->ID, 'orderby', true ); 
+		$orderby = get_post_meta( $post->ID, 'orderby', true );
 		if( $orderby )
 			$query['orderby'] = $orderby;
-		
+
 		// Order
 		$order = get_post_meta( $post->ID, 'order', true ); // ACS or DESC
 		if( $order )
@@ -350,11 +350,11 @@ class Theme_Blvd_Query {
 	/*--------------------------------------------*/
 
 	/**
-	 * Make any needed modifications to the main query 
+	 * Make any needed modifications to the main query
 	 * via pre_get_posts for the homepage or frontpage
 	 *
 	 * @since 2.3.0
-	 * 
+	 *
 	 * @param WP_Query $q Current WP_Query object at the time of pre_get_posts
 	 */
 	public function pre_get_posts( $q ) {
@@ -364,10 +364,10 @@ class Theme_Blvd_Query {
 
 		// Static frontpage
 		if( $q->is_page() && get_option( 'show_on_front' ) == 'page' && get_option('page_on_front') == $q->get('page_id') ) {
-			
+
 			$templates = apply_filters('themeblvd_paginated_templates', array('template_list.php', 'template_list.php', 'template_builder.php'));
 			$template = get_post_meta( $q->get('page_id'), '_wp_page_template', true );
-			
+
 			if( in_array( $template, $templates ) ) {
 				if( isset( $q->query['paged'] ) );
 					$q->set('paged', $q->query['paged'] );
@@ -385,13 +385,13 @@ class Theme_Blvd_Query {
 					$key = 'index';
 
 				$columns = themeblvd_get_option( "{$key}_grid_columns" );
-				if( ! $columns ) 
+				if( ! $columns )
 					$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
-				
+
 				$rows = themeblvd_get_option( "{$key}_grid_rows" );
 				if( ! $rows )
 					$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
-				
+
 				// Posts per page = $columns x $rows
 				$q->set('posts_per_page', $columns*$rows);
 
@@ -406,7 +406,7 @@ class Theme_Blvd_Query {
 				$exclude = themeblvd_get_option( 'grid_categories' );
 			else
 				$exclude = themeblvd_get_option( 'blog_categories' );
-			
+
 			if( $exclude ) {
 				foreach( $exclude as $key => $value ) {
 					if( $value )
@@ -420,36 +420,36 @@ class Theme_Blvd_Query {
 			}
 		}
 
-		// Apply pagination fix when homepage custom layout 
+		// Apply pagination fix when homepage custom layout
 		// set over home "posts page"
 		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && $q->is_home() && 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
-			
+
 			// Layout info
 			$kayout_name = themeblvd_get_option( 'homepage_custom_layout' );
 			$layout_post_id = themeblvd_post_id_by_name( $kayout_name, 'tb_layout' );
 			if( $layout_post_id )
 				$elements = get_post_meta( $layout_post_id, 'elements', true );
-			
-			// Loop through elements and look for that single 
+
+			// Loop through elements and look for that single
 			// paginated element (there can only be one in a layout).
 			if( ! empty( $elements ) && is_array( $elements ) ) {
 				foreach( $elements as $area ) {
 					if( ! empty( $area ) ) {
 						foreach( $area as $element ) {
-							
+
 							switch( $element['type'] ) {
-							
+
 								case 'post_grid_paginated' :
 									if( ! empty( $element['options']['rows'] ) && ! empty( $element['options']['columns'] ) )
 										$posts_per_page = intval( $element['options']['rows'] ) * intval( $element['options']['columns'] );
 										$q->set( 'posts_per_page', $posts_per_page );
 									break;
-								
+
 								case 'post_list_paginated';
 									if( ! empty( $element['options']['posts_per_page'] ) )
 										$q->set( 'posts_per_page', $element['options']['posts_per_page'] );
 									break;
-							
+
 							}
 						}
 					}
@@ -462,18 +462,18 @@ class Theme_Blvd_Query {
 	} // end pre_get_posts()
 
 	/**
-	 * If this is the home posts page; this will return 
-	 * false if the framework has swapped it out for a 
-	 * homepage layout from theme options. Checks against 
+	 * If this is the home posts page; this will return
+	 * false if the framework has swapped it out for a
+	 * homepage layout from theme options. Checks against
 	 * current WP_Query object at pre_get_posts.
 	 *
 	 * @since 2.3.0
-	 * 
+	 *
 	 * @param WP_Query $q Current WP_Query object being worked with
 	 * @return bool
 	 */
 	private function is_blog( $q ) {
-		
+
 		if( ! $q->is_home() )
 			return false;
 
@@ -494,15 +494,15 @@ class Theme_Blvd_Query {
 	 * Verify the state of the original query.
 	 *
 	 * @since 2.3.0
-	 * 
+	 *
 	 * @param string $type The primary type of WP page being checked for
 	 * @param string $helper A secondary param if allowed with $type
 	 * @return bool
 	 */
 	public function was( $type, $helper = '' ) {
-		
+
 		switch( $type ) {
-			
+
 			case 'single' :
 			case 'page' :
 				if( $this->was[$type] ) {

@@ -1,13 +1,13 @@
 <?php
 /**
  * The Header for our theme.
- * 
- * WARNING: This template file is a core part of the 
+ *
+ * WARNING: This template file is a core part of the
  * Theme Blvd WordPress Framework. It is advised
  * that any edits to the way this file displays its
  * content be done with via hooks, filters, and
  * template parts.
- * 
+ *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
@@ -30,11 +30,11 @@
 <?php themeblvd_before(); ?>
 <div id="wrapper">
 	<div id="container">
-		
+
 		<?php themeblvd_header_before(); ?>
-		
+
 		<!-- HEADER (start) -->
-		
+
 		<div id="top">
 			<header id="branding" role="banner">
 				<div class="content">
@@ -50,26 +50,26 @@
 				</div><!-- .content (end) -->
 			</header><!-- #branding (end) -->
 		</div><!-- #top (end) -->
-		
+
 		<!-- HEADER (end) -->
-		
-		<?php 
+
+		<?php
 		// After header
 		themeblvd_header_after();
-	
+
 		// Featured area (above)
 		if( themeblvd_config( 'featured' ) ) {
 			themeblvd_featured_start();
 			themeblvd_featured();
 			themeblvd_featured_end();
 		}
-		
+
 		// Start main area
 		themeblvd_main_start();
 		themeblvd_main_top();
-		
+
 		// Breadcrumbs
 		themeblvd_breadcrumbs();
-		
+
 		// Before sidebar+content layout
 		themeblvd_before_layout();

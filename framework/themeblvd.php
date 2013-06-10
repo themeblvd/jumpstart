@@ -1,7 +1,7 @@
 <?php
 /**
  * Theme Blvd WordPress Framework
- * 
+ *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
@@ -16,11 +16,11 @@ define( 'TB_FRAMEWORK_URI', get_template_directory_uri().'/framework' );
 
 // Run framework
 if( is_admin() ) {
-	
+
 	/*------------------------------------------------------*/
 	/* Admin Hooks, Filters, and Files
 	/*------------------------------------------------------*/
-	
+
 	// Include files
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
@@ -40,10 +40,10 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
-	
+
 	// Filters
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
-	
+
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
@@ -64,7 +64,7 @@ if( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
-	
+
 	// Apply other hooks after theme has had a chance to add filters
 	// Note: Options API/Settings finalized at after_setup_theme, 1000
 	add_action( 'after_setup_theme', 'themeblvd_admin_init', 1001 );
@@ -72,7 +72,7 @@ if( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1001 );
 
 } else {
-	
+
 	/*------------------------------------------------------*/
 	/* Front-end Hooks, Filters, and Files
 	/*------------------------------------------------------*/
@@ -115,7 +115,7 @@ if( is_admin() ) {
 	add_filter( 'template_include', 'themeblvd_private_page' );
 	add_filter( 'wp_link_pages_args', 'themeblvd_link_pages_args' );
 	add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
-	
+
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
@@ -129,35 +129,35 @@ if( is_admin() ) {
 	// Note: Options API/Settings finalized at after_setup_theme, 1000
 	add_action( 'after_setup_theme', 'themeblvd_register_navs', 1001 );
 	add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
-	
+
 	// <head> hooks
 	add_action( 'wp_head', 'themeblvd_analytics', 2 );
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
-	
+
 	// Header hooks
 	add_action( 'themeblvd_header_above', 'themeblvd_header_above_default' );
 	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
 	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
-	
+
 	// Sidebars
 	add_action( 'themeblvd_fixed_sidebar_before', 'themeblvd_fixed_sidebar_before_default' );
 	add_action( 'themeblvd_fixed_sidebar_after', 'themeblvd_fixed_sidebar_after_default' );
 	add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
-	
+
 	// Featured area hooks
 	add_action( 'themeblvd_featured_start', 'themeblvd_featured_start_default' );
 	add_action( 'themeblvd_featured_end', 'themeblvd_featured_end_default' );
 	add_action( 'themeblvd_featured_below_start', 'themeblvd_featured_below_start_default' );
 	add_action( 'themeblvd_featured_below_end', 'themeblvd_featured_below_end_default' );
-	
+
 	// Main content area hooks
 	add_action( 'themeblvd_main_start', 'themeblvd_main_start_default' );
 	add_action( 'themeblvd_main_top', 'themeblvd_main_top_default' );
 	add_action( 'themeblvd_main_bottom', 'themeblvd_main_bottom_default' );
 	add_action( 'themeblvd_main_end', 'themeblvd_main_end_default' );
 	add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
-	
+
 	// Footer
 	add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
 	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
@@ -170,17 +170,17 @@ if( is_admin() ) {
 	add_action( 'themeblvd_blog_tags', 'themeblvd_blog_tags_default' );
 	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 5 );
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
-	
+
 	// Elements
 	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 3 );
 	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 3 );
-	
+
 	// WordPress Multisite Signup
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );
 	add_action( 'after_signup_form', 'themeblvd_after_signup_form' );
 }
 
-// Optional Intervene for anything that needs to 
+// Optional Intervene for anything that needs to
 // happen before API is established.
 do_action( 'themeblvd_intervene' );
 

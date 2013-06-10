@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Envato Protected API
  *
@@ -9,7 +9,7 @@
  * @subpackage  Envato WordPress Toolkit
  * @author      Derek Herman <derek@envato.com>
  * @since       1.0
- */ 
+ */
 class Envato_Protected_API {
   /**
    * The buyer's Username
@@ -20,7 +20,7 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public $user_name;
-  
+
   /**
    * The buyer's API Key
    *
@@ -30,7 +30,7 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public $api_key;
-  
+
   /**
    * The default API URL
    *
@@ -40,7 +40,7 @@ class Envato_Protected_API {
    * @since     1.0
    */
   protected $public_url = 'http://marketplace.envato.com/api/edge/set.json';
-  
+
   /**
    * Error messages
    *
@@ -50,7 +50,7 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public $errors = array( 'errors' => '' );
-  
+
   /**
    * Class contructor method
    *
@@ -62,20 +62,20 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public function __construct( $user_name = '', $api_key = '' ) {
-  
+
     if ( $user_name == '' ) {
       $this->set_error( 'user_name', __( 'Please enter your Envato Marketplace Username.', 'envato' ) );
     }
-      
+
     if ( $api_key == '' ) {
       $this->set_error( 'api_key', __( 'Please enter your Envato Marketplace API Key.', 'envato' ) );
     }
-      
+
     $this->user_name  = $user_name;
     $this->api_key    = $api_key;
-    
+
   }
-  
+
   /**
    * Get private user data.
    *
@@ -89,50 +89,50 @@ class Envato_Protected_API {
    * @access    public
    * @since     1.0
    * @updated   1.3
-   */ 
-  public function private_user_data( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) { 
-    
+   */
+  public function private_user_data( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) {
+
     if ( $set == '' ) {
       $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
     }
-      
+
     if ( $user_name == '' ) {
       $user_name = $this->user_name;
     }
-      
+
     if ( $set_data !== '' ) {
       $set_data = ":$set_data";
     }
-      
+
     $url = "http://marketplace.envato.com/api/edge/$user_name/$this->api_key/$set$set_data.json";
-    
+
     /* set transient ID for later */
     $transient = $user_name . '_' . $set . $set_data;
-    
+
     if ( $allow_cache ) {
       $cache_results = $this->set_cache( $transient, $url, $timeout );
       $results = $cache_results;
     } else {
       $results = $this->remote_request( $url );
     }
-    
+
     if ( isset( $results->error ) ) {
       $this->set_error( 'error_' . $set, $results->error );
     }
-    
+
     if ( $errors = $this->api_errors() ) {
       $this->clear_cache( $transient );
       return $errors;
     }
-    
+
     if ( isset( $results->$set ) ) {
       return $results->$set;
     }
-    
+
     return false;
-    
+
   }
-  
+
   /**
    * Used to list purchased themes.
    *
@@ -145,11 +145,11 @@ class Envato_Protected_API {
    * @updated   1.3
    */
   public function wp_list_themes( $allow_cache = true, $timeout = 300 ) {
-  
+
     return $this->private_user_data( 'wp-list-themes', $this->user_name, '', $allow_cache, $timeout );
-    
+
   }
-  
+
   /**
    * Used to download a purchased item.
    *
@@ -160,28 +160,28 @@ class Envato_Protected_API {
    *
    * @access    public
    * @since     1.0
-   */ 
+   */
   public function wp_download( $item_id ) {
-    
+
     if ( ! isset( $item_id ) ) {
       $this->set_error( 'item_id', __( 'The Envato Marketplace "item ID" is a required parameter.', 'envato' ) );
     }
-      
+
     $download = $this->private_user_data( 'wp-download', $this->user_name, $item_id );
-    
+
     if ( $errors = $this->api_errors() ) {
       return $errors;
     } else if ( isset( $download->url ) ) {
       return $download->url;
     }
-    
+
     return false;
   }
-  
+
   /**
    * Retrieve the details for a specific marketplace item.
    *
-   * @param     string      $item_id The id of the item you need information for. 
+   * @param     string      $item_id The id of the item you need information for.
    * @return    object      Details for the given item.
    *
    * @access    public
@@ -189,36 +189,36 @@ class Envato_Protected_API {
    * @updated   1.3
    */
   public function item_details( $item_id, $allow_cache = true, $timeout = 300 ) {
-    
+
     $url = preg_replace( '/set/i', 'item:' . $item_id, $this->public_url );
-    
+
     /* set transient ID for later */
     $transient = 'item_' . $item_id;
-      
+
     if ( $allow_cache ) {
       $cache_results = $this->set_cache( $transient, $url, $timeout );
       $results = $cache_results;
     } else {
       $results = $this->remote_request( $url );
     }
-    
+
     if ( isset( $results->error ) ) {
       $this->set_error( 'error_item_' . $item_id, $results->error );
     }
-    
+
     if ( $errors = $this->api_errors() ) {
       $this->clear_cache( $transient );
       return $errors;
     }
-      
+
     if ( isset( $results->item ) ) {
       return $results->item;
     }
-    
+
     return false;
-    
+
   }
-  
+
   /**
    * Set cache with the Transients API.
    *
@@ -231,35 +231,35 @@ class Envato_Protected_API {
    *
    * @access    public
    * @since     1.3
-   */ 
+   */
   public function set_cache( $transient = '', $url = '', $timeout = 300 ) {
-  
+
     if ( $transient == '' || $url == '' ) {
       return false;
     }
-    
+
     /* keep the code below cleaner */
     $transient = $this->validate_transient( $transient );
     $transient_timeout = '_transient_timeout_' . $transient;
-    
+
     /* set original cache before we destroy it */
     $old_cache = get_option( $transient_timeout ) < time() ? get_option( $transient ) : '';
-    
+
     /* look for a cached result and return if exists */
     if ( false !== $results = get_transient( $transient ) ) {
       return $results;
     }
-    
+
     /* create the cache and allow filtering before it's saved */
     if ( $results = apply_filters( 'envato_api_set_cache', $this->remote_request( $url ), $transient ) ) {
       set_transient( $transient, $results, $timeout );
       return $results;
     }
-    
+
     return false;
-    
+
   }
-  
+
   /**
    * Clear cache with the Transients API.
    *
@@ -270,13 +270,13 @@ class Envato_Protected_API {
    *
    * @access    public
    * @since     1.3
-   */ 
+   */
   public function clear_cache( $transient = '' ) {
-  
+
     delete_transient( $transient );
-    
+
   }
-  
+
   /**
    * Helper function to validate transient ID's.
    *
@@ -289,9 +289,9 @@ class Envato_Protected_API {
   public function validate_transient( $id = '' ) {
 
     return preg_replace( '/[^A-Za-z0-9\_\-]/i', '', str_replace( ':', '_', $id ) );
-    
+
   }
-  
+
   /**
    * Helper function to set error messages.
    *
@@ -303,11 +303,11 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public function set_error( $id, $error ) {
-  
+
     $this->errors['errors'][$id] = $error;
-    
+
   }
-  
+
   /**
    * Helper function to return the set errors.
    *
@@ -317,13 +317,13 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public function api_errors() {
-  
+
     if ( ! empty( $this->errors['errors'] ) ) {
       return $this->errors['errors'];
     }
-    
+
   }
-  
+
   /**
    * Helper function to query the marketplace API via wp_remote_request.
    *
@@ -334,7 +334,7 @@ class Envato_Protected_API {
    * @since     1.0
    */
   protected function remote_request( $url ) {
-  
+
     if ( empty( $url ) ) {
       return false;
     }
@@ -342,20 +342,20 @@ class Envato_Protected_API {
     $request = wp_remote_request( $url );
 
     $data = json_decode( $request['body'] );
-    
+
     if ( $request['response']['code'] == 200 ) {
       return $data;
     } else {
       $this->set_error( 'http_code', $request['response']['code'] );
     }
-      
+
     if ( isset( $data->error ) ) {
-      $this->set_error( 'api_error', $data->error ); 
+      $this->set_error( 'api_error', $data->error );
     }
-    
+
     return false;
   }
-  
+
   /**
    * Helper function to print arrays to the screen ofr testing.
    *
@@ -366,11 +366,11 @@ class Envato_Protected_API {
    * @since     1.0
    */
   public function pretty_print( $array ) {
-  
+
     echo '<pre>';
     print_r( $array );
     echo '</pre>';
-    
+
   }
 }
 

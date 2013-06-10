@@ -2,18 +2,18 @@
 /**
  * Theme Blvd Widget Areas API.
  *
- * The framework is made up widget area "locations" 
- * and there is a default sidebar registered with 
- * WordPress for each location. This opens up a chance 
- * for the Widget Area plugin to filter in and replace 
- * locations with custom sidebars created by the end-user 
+ * The framework is made up widget area "locations"
+ * and there is a default sidebar registered with
+ * WordPress for each location. This opens up a chance
+ * for the Widget Area plugin to filter in and replace
+ * locations with custom sidebars created by the end-user
  * for specific pages of the website.
  *
- * This API controls setting up these locations and 
- * registering the default location sidebars. Also, there 
- * are some API methods to all locations to be added and 
+ * This API controls setting up these locations and
+ * registering the default location sidebars. Also, there
+ * are some API methods to all locations to be added and
  * removed.
- * 
+ *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich
  * @link		http://jasonbobich.com
@@ -21,7 +21,7 @@
  * @package 	Theme Blvd WordPress Framework
  */
 class Theme_Blvd_Sidebars_API {
-	
+
 	/*--------------------------------------------*/
 	/* Properties, private
 	/*--------------------------------------------*/
@@ -41,7 +41,7 @@ class Theme_Blvd_Sidebars_API {
 	private $core_locations = array();
 
 	/**
-	 * Sidebar locations added through client API 
+	 * Sidebar locations added through client API
 	 * mutators.
 	 *
 	 * @since 2.3.0
@@ -49,14 +49,14 @@ class Theme_Blvd_Sidebars_API {
 	private $client_locations = array();
 
 	/**
-	 * Sidebar locations to remove. 
+	 * Sidebar locations to remove.
 	 *
 	 * @since 2.3.0
 	 */
 	private $remove_locations = array();
 
 	/**
-	 * Final array of sidebar locations. This combines 
+	 * Final array of sidebar locations. This combines
 	 * $core_elements and $client_elements. WP-Admin only.
 	 *
 	 * @since 2.3.0
@@ -75,10 +75,10 @@ class Theme_Blvd_Sidebars_API {
      * @return Theme_Blvd_Sidebars_API A single instance of this class.
      */
 	public static function get_instance() {
-		
+
 		if( self::$instance == null )
             self::$instance = new self;
-        
+
         return self::$instance;
 	}
 
@@ -97,7 +97,7 @@ class Theme_Blvd_Sidebars_API {
 
 		// Regiser sidebars from locations.
 		add_action( 'after_setup_theme', array( $this, 'register' ), 1001 );
-		
+
 	}
 
 	/*--------------------------------------------*/
@@ -110,7 +110,7 @@ class Theme_Blvd_Sidebars_API {
 	 * @since 2.3.0
 	 */
 	private function set_core_locations() {
-		
+
 		$this->core_locations = array();
 
 		// Default Left Sidebar
@@ -163,7 +163,7 @@ class Theme_Blvd_Sidebars_API {
 			'location' => array(
 				'name' 	=> __( 'Ads Above Header', 'themeblvd' ),
 				'id'	=> 'ad_above_header'
-			),		
+			),
 			'assignments' => array(
 				'default' => array(
 					'type' 			=> 'default',
@@ -172,7 +172,7 @@ class Theme_Blvd_Sidebars_API {
 					'sidebar_id' 	=> 'ad_above_header'
 				)
 			),
-			'args' => array(		
+			'args' => array(
 			    'name' 			=> __( 'Location: Ads Above Header', 'themeblvd' ),
 			    'description' 	=> __( 'This is default placeholder for the "Ads Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
 			    'id' 			=> 'ad_above_header'
@@ -195,7 +195,7 @@ class Theme_Blvd_Sidebars_API {
 				)
 			),
 			'args' => array(
-			    'name' 			=> __( 'Location: Ads Above Content', 'themeblvd' ),			
+			    'name' 			=> __( 'Location: Ads Above Content', 'themeblvd' ),
 			    'id' 			=> 'ad_above_content'
 			)
 		);
@@ -218,7 +218,7 @@ class Theme_Blvd_Sidebars_API {
 			'args' => array(
 			    'name' 			=> __( 'Location: Ads Below Content', 'themeblvd' ),
 			    'description' 	=> __( 'This is default placeholder for the "Ads Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
-			    'id' 			=> 'ad_below_content'	
+			    'id' 			=> 'ad_below_content'
 			)
 		);
 
@@ -258,7 +258,7 @@ class Theme_Blvd_Sidebars_API {
 	}
 
 	/**
-	 * Set final sidebar locations. This sets the merged result 
+	 * Set final sidebar locations. This sets the merged result
 	 * of core locations and client API-added locations.
 	 *
 	 * @since 2.3.0
@@ -377,9 +377,9 @@ class Theme_Blvd_Sidebars_API {
 	}
 
 	/**
-	 * Get final sidebar locations. This is the merged result 
-	 * of core locations and client API-added locations. This 
-	 * is available after WP's "after_setup_theme" hook. 
+	 * Get final sidebar locations. This is the merged result
+	 * of core locations and client API-added locations. This
+	 * is available after WP's "after_setup_theme" hook.
 	 *
 	 * @since 2.3.0
 	 *
@@ -387,7 +387,7 @@ class Theme_Blvd_Sidebars_API {
 	 * @return array $locations All locations or specific location.
 	 */
 	public function get_locations( $location_id = '' ) {
-		
+
 		if( ! $location_id )
 			return $this->locations;
 
@@ -402,23 +402,23 @@ class Theme_Blvd_Sidebars_API {
 	/*--------------------------------------------*/
 
 	/**
-	 * Register sidebars with WordPress. Hooked to "after_setup_theme" 
+	 * Register sidebars with WordPress. Hooked to "after_setup_theme"
 	 * at priority 1001.
 	 *
 	 * @since 2.3.0
 	 */
 	public function register() {
-		
-		// Loop through locations and register a default 
+
+		// Loop through locations and register a default
 		// placeholder sidebar for each location.
 		foreach( $this->locations as $sidebar ) {
-			
+
 			// Filter args for each of default sidebar
 			$args = apply_filters( 'themeblvd_default_sidebar_args', $sidebar['args'], $sidebar, $sidebar['location']['id'] );
-			
+
 			// Register sidebar with WordPress
 			register_sidebar( $args );
-		
+
 		}
 
 	}
@@ -437,43 +437,43 @@ class Theme_Blvd_Sidebars_API {
 			return;
 
 		$type = $this->locations[$location]['type'];
-	
+
 		// Current configuration for sidebar
 		$sidebar = themeblvd_config( 'sidebars', $location );
-		
-		// If sidebar is set to false or sidebar doesn't 
+
+		// If sidebar is set to false or sidebar doesn't
 		// exist, kill it.
-		if( ! $sidebar ) 
+		if( ! $sidebar )
 			return;
-		
-		// If this is a collapsible default sidebar with 
-		// no errors, we'll want to just kill it if it 
+
+		// If this is a collapsible default sidebar with
+		// no errors, we'll want to just kill it if it
 		// has no widgets.
-		if( $type == 'collapsible' && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) ) 
-			return; 
-			
+		if( $type == 'collapsible' && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) )
+			return;
+
 		// Start display.
 		do_action( 'themeblvd_sidebar_'.$type.'_before' ); // Framework does not hook anything here by default
 		do_action( 'themeblvd_sidebar_'.$location.'_before' ); // Framework does not hook anything here by default
 		echo '<div class="widget-area widget-area-'.$type.'">';
-		
+
 		// Proceed, but check for error
 		if( $sidebar['error'] ) {
-			
+
 			// Only show error message if user is logged in.
 			if( is_user_logged_in() ) {
-				
+
 				// Set message
 				switch( $type ) {
 					case 'collapsible' :
 						$message = sprintf( __( 'This is a collapsible widget area with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', 'themeblvd' ), $sidebar['id'] );
 						break;
-						
+
 					case 'fixed' :
 						$message = sprintf( __( 'This is a fixed sidebar with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet.', 'themeblvd' ), $sidebar['id'] );
 						break;
 				}
-				
+
 				// Ouput message
 				echo '<div class="alert warning">';
 				echo '	<p>'.$message.'</p>';
@@ -482,13 +482,13 @@ class Theme_Blvd_Sidebars_API {
 			}
 
 		} else {
-			
+
 			// Sidebar ID exists and there are no errors.
 			// So, let's display the darn thing.
 			dynamic_sidebar( $sidebar['id'] );
 
 		}
-		
+
 		// End display
 		echo '</div><!-- .widget_area (end) -->';
 		do_action( 'themeblvd_sidebar_'.$location.'_after' ); // Framework does not hook anything here by default

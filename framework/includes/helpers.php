@@ -2,24 +2,24 @@
 /**
  * Remove trailing space from string.
  *
- * @since 2.0.0 
+ * @since 2.0.0
  *
  * @param string $string Current string to check
  * @param string $char Character to remove from end of string if exists
  * @return string $string String w/out trailing space, if it had one
  */
- 
+
 if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
 	function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
 		if( ! $string )
 			return null;
 
 		$offset = strlen( $string ) - 1;
-		
+
 		$trailing_char = strpos( $string, $char, $offset );
 		if( $trailing_char )
 			$string = substr( $string, 0, -1 );
-		
+
 		return $string;
 	}
 }
@@ -27,7 +27,7 @@ if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
 /**
  * Get the name for a font face to be used within the CSS.
  *
- * @since 2.0.0 
+ * @since 2.0.0
  *
  * @param array $option Current option set by user for the font
  * @return string $stack CSS value for font-name property
@@ -35,25 +35,25 @@ if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
 
 if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 	function themeblvd_get_font_face( $option ) {
-		
+
 		$stack = '';
 		$stacks = themeblvd_font_stacks();
-		
+
 		if( $option['face'] == 'google'  ) {
-			
-			// Grab font face, making sure they didn't do the 
+
+			// Grab font face, making sure they didn't do the
 			// super, sneaky trick of including font weight or type.
-			$name = explode( ':', $option['google'] ); 
-			
+			$name = explode( ':', $option['google'] );
+
 			// And also check for accidental space at end
-			$name = themeblvd_remove_trailing_char( $name[0] ); 
-			
-			// Add the deafult font stack to the end of the 
+			$name = themeblvd_remove_trailing_char( $name[0] );
+
+			// Add the deafult font stack to the end of the
 			// google font.
 			$stack = $name.', '.$stacks['default'];
-		
+
 		} else {
-			$stack = $stacks[$option['face']]; 
+			$stack = $stacks[$option['face']];
 		}
 		return $stack;
 	}
@@ -62,7 +62,7 @@ if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 /**
  * Get font style
  *
- * @since 2.3.0 
+ * @since 2.3.0
  *
  * @param array $option Current option set by user for the font
  * @return string CSS value for font-style property
@@ -70,10 +70,10 @@ if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 
 if( ! function_exists( 'themeblvd_get_font_style' ) ) {
 	function themeblvd_get_font_style( $option ) {
-		
+
 		if( ! isset( $option['style'] ) )
 			return 'normal';
-		
+
 		if( $option['style'] == 'italic' || $option['style'] == 'bold-italic' )
 			return 'italic';
 
@@ -84,7 +84,7 @@ if( ! function_exists( 'themeblvd_get_font_style' ) ) {
 /**
  * Get font weight
  *
- * @since 2.3.0 
+ * @since 2.3.0
  *
  * @param array $option Current option set by user for the font
  * @return string CSS value for font-weight property
@@ -92,7 +92,7 @@ if( ! function_exists( 'themeblvd_get_font_style' ) ) {
 
 if( ! function_exists( 'themeblvd_get_font_weight' ) ) {
 	function themeblvd_get_font_weight( $option ) {
-		
+
 		if( ! isset( $option['style'] ) )
 			return 'normal';
 
@@ -111,7 +111,7 @@ if( ! function_exists( 'themeblvd_get_font_weight' ) ) {
  * @since 2.0.0
  */
 
-if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) { 
+if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) {
 	function themeblvd_primary_menu_fallback() {
 		$home_text = themeblvd_get_local('home');
 		echo '<ul id="primary-menu" class="sf-menu">';
@@ -132,67 +132,67 @@ if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) {
  * @return array $args Arguments to get passed into get_posts()
  */
 
-if( ! function_exists( 'themeblvd_get_posts_args' ) ) { 
+if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 	function themeblvd_get_posts_args( $options, $type, $slider = false ) {
-		
+
 		// Start $args
 		$args = array( 'suppress_filters' => false );
-		
+
 		// Number of posts
 		if( $type == 'grid' && ! $slider ) {
 			if( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
 				$args['numberposts'] = $options['rows']*$options['columns'];
 		} else {
-			if( ! empty( $options['numberposts'] ) ) 
+			if( ! empty( $options['numberposts'] ) )
 				$args['numberposts'] = $options['numberposts'];
 		}
 		if( empty( $args['numberposts'] ) )
 			$args['numberposts'] = -1;
-		
+
 		// Categories
 		if( ! empty( $options['cat'] ) ) {
-		
+
 			// Category override option #1 -- cat
 			$args['cat'] = $options['cat'];
-		
+
 		} elseif( ! empty( $options['category_name'] ) ) {
-		
+
 			// Category override option #2 -- category_name
 			$args['category_name'] = $options['category_name'];
-		
+
 		} elseif( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
-			
+
 			unset( $options['categories']['all'] );
 			$categories = '';
-			
+
 			foreach( $options['categories'] as $category => $include ) {
 				if( $include ) {
 					$current_category = get_term_by( 'slug', $category, 'category' );
 					$categories .= $current_category->term_id.',';
 				}
 			}
-			
+
 			if( $categories ) {
 				$categories = themeblvd_remove_trailing_char( $categories, ',' );
 				$args['cat'] = $categories;
 			}
 		}
-		
+
 		// Tags
 		if( ! empty( $options['tag'] ) )
 			$args['tag'] = $options['tag'];
-		
+
 		// Additional args
-		if( ! empty( $options['orderby'] ) ) 
+		if( ! empty( $options['orderby'] ) )
 			$args['orderby'] = $options['orderby'];
-		
-		if( ! empty( $options['order'] ) ) 
+
+		if( ! empty( $options['order'] ) )
 			$args['order'] = $options['order'];
-		
-		if( ! empty( $options['offset'] ) ) 
+
+		if( ! empty( $options['offset'] ) )
 			$args['offset'] = intval( $options['offset'] );
 
-		// Fixes for auto post slider that is specifying the 
+		// Fixes for auto post slider that is specifying the
 		// source of the posts. (NOT post grid/list sliders)
 		if( $type == 'auto_slider' && ! empty( $options['source'] ) ) {
 			switch( $options['source'] ) {
@@ -295,38 +295,38 @@ function themeblvd_close_row() {
 
 /**
  * Filter Tweets
- * 
+ *
  * Special thanks to Allen Shaw & webmancers.com & Michael Voigt
- * The only mods from Allen and Michael I made are changing the 
+ * The only mods from Allen and Michael I made are changing the
  * links to open in new windows.
  *
  * @since 2.1.0
  *
  * @param string $text Tweet to filter
- * @return string $text Filtered tweet 
+ * @return string $text Filtered tweet
  */
 
 if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
 	function themeblvd_tweet_filter_default( $text, $username ) {
-		
+
 		// Removed any HTML special characters
 		$text = htmlspecialchars_decode( $text, ENT_QUOTES );
-		
+
 		// Remove "UserName: " from Twitter API RSS on start of every tweet
 		$text = str_ireplace( $username.': ', '', $text );
-		
+
 		// Format URL's to be links - http://whatever.com
 		$text = preg_replace('/\b([a-zA-Z]+:\/\/[\w_.\-]+\.[a-zA-Z]{2,6}[\/\w\-~.?=&%#+$*!]*)\b/i',"<a href=\"$1\" class=\"twitter-link\" target=\"_blank\">$1</a>", $text);
-		
+
 		// Format URL's to be links - http://www.whatever.com
-		$text = preg_replace('/\b(?<!:\/\/)(www\.[\w_.\-]+\.[a-zA-Z]{2,6}[\/\w\-~.?=&%#+$*!]*)\b/i',"<a href=\"http://$1\" class=\"twitter-link\" target=\"_blank\">$1</a>", $text);    
-		
+		$text = preg_replace('/\b(?<!:\/\/)(www\.[\w_.\-]+\.[a-zA-Z]{2,6}[\/\w\-~.?=&%#+$*!]*)\b/i',"<a href=\"http://$1\" class=\"twitter-link\" target=\"_blank\">$1</a>", $text);
+
 		// Format emails - you@yourmail.com
 		$text = preg_replace("/\b([a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]*\@[a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]{2,6})\b/i","<a href=\"mailto://$1\" class=\"twitter-link\">$1</a>", $text);
-		
+
 		// Format hash tags as links - #whatever
 		$text = preg_replace("/#(\w+)/", "<a class=\"twitter-link\" href=\"http://search.twitter.com/search?q=\\1\" target=\"_blank\">#\\1</a>", $text);
-		
+
 		// Format @username as links
 		$text = preg_replace("/@(\w+)/", "<a class=\"twitter-link\" href=\"http://twitter.com/\\1\" target=\"_blank\">@\\1</a>", $text);
 
@@ -335,9 +335,9 @@ if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
 }
 
 /**
- * This adjusts WordPress's transient lifetime for fetch_feed() 
- * from 12 hours to 2 hours. This was primarily implemented to 
- * work with the framework's retrieval of Twitter feeds. 
+ * This adjusts WordPress's transient lifetime for fetch_feed()
+ * from 12 hours to 2 hours. This was primarily implemented to
+ * work with the framework's retrieval of Twitter feeds.
  *
  * This function is used to filter: wp_feed_cache_transient_lifetime
  *
@@ -359,18 +359,18 @@ if( ! function_exists( 'themeblvd_feed_transient' ) ) {
 
 if( ! function_exists( 'themeblvd_get_twitter_rss_url' ) ) {
 	function themeblvd_get_twitter_rss_url( $username ) {
-		
-		// Non API version, but tweets expire eventually. Can safely use this 
-		// without transients working on server, because Twitter never cuts 
+
+		// Non API version, but tweets expire eventually. Can safely use this
+		// without transients working on server, because Twitter never cuts
 		// you off with this one.
 		// $url = 'http://search.twitter.com/search.atom?q=from:'.$username;
-		
-		// Use API, tweets never expire, but transients must work properly 
-		// on server. Sometimes there's issues with transients when using 
+
+		// Use API, tweets never expire, but transients must work properly
+		// on server. Sometimes there's issues with transients when using
 		// W3 Total Cache.
-		$url = 'http://api.twitter.com/1/statuses/user_timeline.rss?screen_name='.$username; 
-		
-		// Return with filter applied so it's possible to change your 
+		$url = 'http://api.twitter.com/1/statuses/user_timeline.rss?screen_name='.$username;
+
+		// Return with filter applied so it's possible to change your
 		// RSS method from a Child theme or plugin.
 		return apply_filters( 'themeblvd_twitter_rss', $url, $username );
 	}
@@ -379,9 +379,9 @@ if( ! function_exists( 'themeblvd_get_twitter_rss_url' ) ) {
 /**
  * Display Analytics code.
  *
- * @since 2.0.0 
+ * @since 2.0.0
  */
- 
+
 if( ! function_exists( 'themeblvd_analytics' ) ) {
 	function themeblvd_analytics() {
 		$analytics = themeblvd_get_option( 'analytics' );
@@ -392,7 +392,7 @@ if( ! function_exists( 'themeblvd_analytics' ) ) {
 
 /**
  * Determine color of text depending on background color.
- * 
+ *
  * Huge thank you to Oscar for providing this:
  * http://stackoverflow.com/questions/3015116/hex-code-brightness-php
  *
@@ -401,32 +401,32 @@ if( ! function_exists( 'themeblvd_analytics' ) ) {
  * @param string $bg_color Background color to determine text color for, ex: #ffffff
  * @return string $text_color Text color to show on inputed background color
  */
- 
+
 if( ! function_exists( 'themeblvd_text_color' ) ) {
 	function themeblvd_text_color( $bg_color ) {
-		
+
 		// Pop off '#' from start.
 		$bg_color = explode( '#', $bg_color );
 		$bg_color = $bg_color[1];
-		
+
 		// Break up the color in its RGB components
 		$r = hexdec( substr( $bg_color,0,2 ) );
 		$g = hexdec( substr( $bg_color,2,2 ) );
 		$b = hexdec( substr( $bg_color,4,2 ) );
-		
+
 		// Simple weighted average
 		if( $r + $g + $b > 382 )
 		    $text_color = apply_filters( 'themeblvd_dark_font', '#333333' ); // bright color, use dark font
 		else
 		    $text_color = apply_filters( 'themeblvd_light_font', '#ffffff' );; // dark color, use bright font
-		
+
 		return $text_color;
 	}
 }
 
 /**
  * Darken or Lighten a hex color
- * 
+ *
  * Huge thank you to Jonas John for providing this:
  * http://www.jonasjohn.de/snippets/php/darker-color.htm
  *
@@ -440,16 +440,16 @@ if( ! function_exists( 'themeblvd_text_color' ) ) {
 
 if( ! function_exists( 'themeblvd_adjust_color' ) ) {
 	function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken' ) {
-		
+
 		// Pop off '#' from start.
 		$color = explode( '#', $color );
 		$color = $color[1];
-		
-		// Send back in black if it's not a properly 
+
+		// Send back in black if it's not a properly
 		// formatted 6-digit hex
 		if ( strlen( $color ) != 6 )
 			return '#000000';
-		
+
 		// Build new color
 		$new_color = '';
 		for ( $x = 0; $x < 3; $x++ ) {
@@ -461,7 +461,7 @@ if( ! function_exists( 'themeblvd_adjust_color' ) ) {
 		    $new_color .= ( strlen( $c ) < 2 ) ? '0'.$c : $c;
 		}
 		return '#'.$new_color;
-	}	
+	}
 }
 
 /**
@@ -477,11 +477,11 @@ if( ! function_exists( 'themeblvd_adjust_color' ) ) {
  * @param string $location Location of element - featured, primary, or featured_below (only relevant if there is a filter added utilizing it)
  * @return array $classes Classes for element.
  */
- 
+
 if( ! function_exists( 'themeblvd_get_classes' ) ) {
 	function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
 		$classes = '';
-		
+
 		$all_classes = array(
 			'element_columns' 				=> array(),
 			'element_content' 				=> array(),
@@ -502,18 +502,18 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
 			'slider_carrousel'				=> array(),
 		);
 		$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options, $location );
-		
+
 		if( ! empty( $all_classes[$element] ) ) {
-			
-			if( $start_space ) 
+
+			if( $start_space )
 				$classes .= ' ';
-			
+
 			if( is_array( $all_classes[$element] ) )
 				$classes .= implode(' ', $all_classes[$element]);
 			else
 				$classes .= $all_classes[$element]; // Backward compatbility, $all_classes used to use strings
-			
-			if( $end_space ) 
+
+			if( $end_space )
 				$classes .= ' ';
 
 		}
@@ -523,7 +523,7 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
 
 /**
  * Get the class to be used for resposive visibility.
- * 
+ *
  * hide_on_standard
  * hide_on_standard_and_tablet
  * hide_on_standard_and_tablet_and_mobile
@@ -532,14 +532,14 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
  * hide_on_tablet_and_mobile
  * hide_on_mobile
  *
- * @since 2.1.0 
+ * @since 2.1.0
  *
  * @param array $devices Devices to be hidden on
  * @param boolean $start_space Whether there should be a space at start
  * @param boolean $end_space Whether there should be a space at end
  * @return var $class CSS class to use
  */
- 
+
 if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 	function themeblvd_responsive_visibility_class( $devices, $start_space = false, $end_space = false ) {
 		// Build class
@@ -549,7 +549,7 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 			foreach( $devices as $device )
 				if( $device )
 					$exists = true;
-		
+
 		// Only start buld if there's a class to build
 		if( $exists ) {
 			$class = 'hide_on_';
@@ -570,10 +570,10 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 				$class .= 'mobile';
 			}
 		}
-		
+
 		// Apply filter
 		$class = apply_filters( 'themeblvd_responsive_visibility_class', $class, $devices );
-		
+
 		// Start/End spaces
 		if( $class ) {
 			if( $start_space )
@@ -581,7 +581,7 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 			if( $end_space )
 				$class .= ' ';
 		}
-		
+
 		// Return class
 		return $class;
 	}
@@ -596,21 +596,21 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 
 if( ! function_exists( 'themeblvd_wp_title' ) ) {
 	function themeblvd_wp_title( $title ) {
-		
+
 		global $page, $paged;
-		
+
 		// Add the blog name.
 		$title .= get_bloginfo( 'name' );
-		
+
 		// Add the blog description for the home/front page.
 		$site_description = get_bloginfo( 'description', 'display' );
 		if( $site_description && ( is_home() || is_front_page() ) )
 			$title .= " | $site_description";
-		
+
 		// Add a page number if necessary:
 		if( $paged >= 2 || $page >= 2 )
 			$title .= ' | ' . sprintf( themeblvd_get_local( 'page_num' ), max( $paged, $page ) );
-		
+
 		return $title;
 	}
 }
@@ -628,7 +628,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 		<script>
 		jQuery(document).ready(function($) {
 			$(window).load(function() {
-				
+
 				// Initiate flexslider for this slider.
 				$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider({
 					useCSS: false, // Avoid CSS3 glitches
@@ -677,7 +677,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 	    				});
 	    			}
 				}).parent().find('.tb-loader').fadeOut();
-				
+
 				<?php if( isset( $options['pause_on_hover'] ) ) : ?>
 					<?php if( $options['pause_on_hover'] == 'pause_on' || $options['pause_on_hover'] == 'pause_on_off' ) : ?>
 					// Custom pause on hover funtionality
@@ -686,7 +686,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 							$('#tb-slider-<?php echo $id; ?> .flex-pause').hide();
 							$('#tb-slider-<?php echo $id; ?> .flex-play').show();
 							$('#tb-slider-<?php echo $id; ?> .flexslider').flexslider('pause');
-						}, 
+						},
 						function() {
 							<?php if( $options['pause_on_hover'] == 'pause_on_off' ) : ?>
 							$('#tb-slider-<?php echo $id; ?> .flex-play').hide();
@@ -697,7 +697,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 					);
 					<?php endif; ?>
 				<?php endif; ?>
-				
+
 			});
 		});
 		</script>
@@ -714,7 +714,7 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
  */
 
 function themeblvd_get_comment_list_args() {
-	$args = array( 
+	$args = array(
 		'avatar_size' 		=> 48,
 		'style' 			=> 'ul',
 		'type' 				=> 'all',
@@ -758,20 +758,20 @@ function themeblvd_get_comment_form_args() {
 }
 
 /**
- * Determine whether comments section should show on 
+ * Determine whether comments section should show on
  * a single post.
  *
- * At first glance, you're probably wondering why this 
- * would exist when you the WP user could just close 
- * the comments. When the user closes the comments, 
- * comments will still be present and in place of the 
+ * At first glance, you're probably wondering why this
+ * would exist when you the WP user could just close
+ * the comments. When the user closes the comments,
+ * comments will still be present and in place of the
  * comment form, it will say that the comments are closed.
- * 
- * However, in addition to that, this framework allows 
- * the user to completely hide the comments section all 
- * together in various ways. So, this extends further 
+ *
+ * However, in addition to that, this framework allows
+ * the user to completely hide the comments section all
+ * together in various ways. So, this extends further
  * up than simply haivng the comments for a post closed.
- * 
+ *
  * @since 2.2.0
  *
  * @return boolean $show Arguments to be passed into wp_list_comments()
@@ -779,12 +779,12 @@ function themeblvd_get_comment_form_args() {
 
 if( ! function_exists( 'themeblvd_show_comments' ) ) {
 	function themeblvd_show_comments() {
-		
+
 		global $post;
 		$show = true; // default
-		
+
 		if( is_single() ) {
-			
+
 			if( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' )
 				$show = false;
 			if( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' )
@@ -794,11 +794,11 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
 
 		}
 		return $show;
-	}	
+	}
 }
 
-/** 
- * Forward password-protected pages using 
+/**
+ * Forward password-protected pages using
  * page templates to page.php
  *
  * @since 2.2.1
@@ -809,7 +809,7 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
 
 if( ! function_exists( 'themeblvd_private_page' ) ) {
 	function themeblvd_private_page( $template ){
-		
+
 		// Only for password protected pages.
 		if( ! post_password_required() )
 			return $template;
@@ -817,42 +817,42 @@ if( ! function_exists( 'themeblvd_private_page' ) ) {
 		// Custom Layouts
 		if( themeblvd_config( 'builder' ) )
 			$template = locate_template( 'page.php' );
-		
+
 		// Page Templates
 		$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
 		foreach( $page_templates as $page_template ) {
 			if( is_page_template( $page_template ) )
-				$template = locate_template( 'page.php' );	
+				$template = locate_template( 'page.php' );
 		}
 
 		// Removed hooked the_content on Post Grid/List templates
 		if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) )
 			remove_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
-		
+
 		return $template;
 	}
 }
 
 /**
- * When using wp_link_pages(), match surrounding markup 
+ * When using wp_link_pages(), match surrounding markup
  * to themeblvd_pagination() and integration of Bootstrap.
  *
  * This function is attached to the filter wp_link_pages_args,
  * but won't do anything unless WP version is 3.6+.
  *
  * @since 2.2.1
- * 
+ *
  * @param array $args Default arguments of wp_link_pages() to filter
  * @return array $args Args for wp_link_pages() after we've altered them
  */
 
 if( ! function_exists( 'themeblvd_link_pages_args' ) ) {
-	function themeblvd_link_pages_args( $args ) { 
-		
+	function themeblvd_link_pages_args( $args ) {
+
 		global $wp_version;
 
-		// Before WP 3.6, this filter can't be applied because the 
-		// wp_link_pages_link filter did not exist yet. Our changes 
+		// Before WP 3.6, this filter can't be applied because the
+		// wp_link_pages_link filter did not exist yet. Our changes
 		// need to come together.
 		if( version_compare( $wp_version, '3.5.9', '<=' ) ) // @todo After WP 3.6 is released, change logic to version_compare( $wp_version, '3.6.0', '<' )
 			return $args;
@@ -860,41 +860,41 @@ if( ! function_exists( 'themeblvd_link_pages_args' ) ) {
 		// Add TB Framework/Bootstrap surrounding markup
 		$args['before'] = '<div class="pagination-wrap"><div class="pagination"><div class="btn-group clearfix">';
 		$args['after'] = "</div></div></div>\n";
-		
-		return $args; 
+
+		return $args;
 	}
 }
 
 /**
- * When using wp_link_pages(), match individual button markup 
+ * When using wp_link_pages(), match individual button markup
  * to themeblvd_pagination() and integration of Bootstrap.
  *
- * This function is attached to the wp_link_pages_link filter, 
+ * This function is attached to the wp_link_pages_link filter,
  * which only exists in WP 3.6+.
  *
  * @since 2.2.1
- * 
+ *
  * @param string $link Markup of individual link to be filtered
  * @param int $i Page number of link being filtered
  * @return string $link Markup for individual link after being filtered
  */
 
 if( ! function_exists( 'themeblvd_link_pages_link' ) ) {
-	function themeblvd_link_pages_link( $link, $i ) { 
-		
+	function themeblvd_link_pages_link( $link, $i ) {
+
 		global $page;
-		
+
 		if( $page == $i ) // If is current page
 			$link = '<a class="btn btn-default active" href="'.get_pagenum_link().'">'.$i.'</a>';
 		else
 			$link = str_replace( '<a', '<a class="btn btn-default"', $link );
-		
+
 		return $link;
 	}
 }
 
-/** 
- * Construct parts of a breadcrumbs trail as an array 
+/**
+ * Construct parts of a breadcrumbs trail as an array
  * to be used when displaying breadcrumbs.
  *
  * @since 2.2.1
@@ -905,7 +905,7 @@ if( ! function_exists( 'themeblvd_link_pages_link' ) ) {
 
 if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
 	function themeblvd_get_breadcrumb_parts( $atts ) {
-		
+
 		global $post;
 		global $wp_query;
 		$breadcrumbs = array();
@@ -918,7 +918,7 @@ if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
 			'text' 	=> $atts['home'],
 			'type'	=> 'home'
 		);
-		
+
 		// Build parts
 		if( is_category() ) {
 			/* Category Archives */
@@ -1072,10 +1072,10 @@ if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
 			$parts[$last]['text'] .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
 		}
 
-		// Filter the trail before the Home link is 
+		// Filter the trail before the Home link is
 		// added to the start.
 		$parts = apply_filters( 'themeblvd_pre_breadcrumb_parts', $parts, $atts );
-		
+
 		// Final filter on entire breadcrumbs trail.
 		$breadcrumbs = apply_filters( 'themeblvd_breadcrumb_parts', array_merge( $breadcrumbs, $parts ), $atts );
 
@@ -1083,7 +1083,7 @@ if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
 	}
 }
 
-/** 
+/**
  * Determine if breadcrumbs should show or not.
  *
  * @since 2.2.1
@@ -1093,18 +1093,18 @@ if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
 
 if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
 	function themeblvd_show_breadcrumbs(){
-		
+
 		global $post;
 		$display = '';
-		
+
 		// Pages and Posts
 		if( is_page() || is_single() )
 			$display = get_post_meta( $post->ID, '_tb_breadcrumbs', true );
-		
+
 		// Standard site-wide option
 		if( ! $display || $display == 'default' )
 			$display = themeblvd_get_option( 'breadcrumbs', null, 'show' );
-		
+
 		// Disable on posts homepage
 		if( is_home() )
 			$display = 'hide';
@@ -1116,7 +1116,7 @@ if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
 	}
 }
 
-/** 
+/**
  * Get parent category attributes
  *
  * @since 2.2.1
@@ -1128,7 +1128,7 @@ if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
 
 if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 	function themeblvd_get_category_parents( $id, $used = array() ) {
-		
+
 		$chain = array();
 		$parent = get_category( $id );
 
@@ -1166,22 +1166,22 @@ if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 
 if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
 	function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
-		
+
 		global $paged;
 		global $wp_query;
-		
+
 		$parts = array();
 		$showitems = ($range * 2)+1;
-		
-		if( empty( $paged ) ) 
+
+		if( empty( $paged ) )
 			$paged = 1;
-		
+
 		if( ! $pages ) {
 			$pages = $wp_query->max_num_pages;
 			if( ! $pages )
 				$pages = 1;
 		}
-		
+
 		if( 1 != $pages ) {
 
 			if( $paged > 2 && $paged > $range+1 && $showitems < $pages ) {
@@ -1199,7 +1199,7 @@ if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
 					'active' 	=> false
 				);
 			}
-			
+
 			for( $i = 1; $i <= $pages; $i++ ) {
 				if( ! ( $i >= $paged+$range+1 || $i <= $paged-$range-1 ) || $pages <= $showitems ) {
 					$active = ( $paged == $i ) ? true : false;
@@ -1217,8 +1217,8 @@ if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
 					'text'		=> '&rsaquo;',
 					'active' 	=> false
 				);
-			} 
-			
+			}
+
 			if( $paged < $pages-1 && $paged+$range-1 < $pages && $showitems < $pages ) {
 				$parts[] = array(
 					'href'		=> get_pagenum_link($pages),
@@ -1226,14 +1226,14 @@ if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
 					'active' 	=> false
 				);
 			}
-		
+
 		}
 		return apply_filters( 'themeblvd_pagination_parts', $parts );
 	}
 }
 
-/** 
- * Get the overlay markup for a thumbnail that animates 
+/**
+ * Get the overlay markup for a thumbnail that animates
  * in the video, enlarge, link, or arrow icon.
  *
  * @since 2.3.0

@@ -1,8 +1,8 @@
 <?php
 /**
  * Return user read text strings. This function allows
- * to have all of the framework's common localized text 
- * strings in once place. Also, the following filters can 
+ * to have all of the framework's common localized text
+ * strings in once place. Also, the following filters can
  * be used to add/remove strings.
  *
  * themeblvd_locals_js
@@ -12,14 +12,14 @@
  * @param string $type type of set, js or frontend
  * @return array $locals filtered array of localized text strings
  */
- 
+
 function themeblvd_get_admin_locals( $type ) {
 	$locals = array();
 	switch( $type ) {
-		
+
 		// General JS strings
 		case 'js' :
-			$locals = array ( 
+			$locals = array (
 				'clear'					=> __( 'By doing this, you will clear your database of this option set. In other words, you will lose any previously saved settings. Are you sure you want to continue?', 'themeblvd' ),
 				'clear_title'			=> __( 'Clear Options', 'themeblvd' ),
 				'no_name'				=> __( 'Oops! You forgot to enter a name.', 'themeblvd' ),
@@ -30,13 +30,13 @@ function themeblvd_get_admin_locals( $type ) {
 				'reset_title'			=> __( 'Restore Defaults', 'themeblvd' )
 			);
 			break;
-		
+
 		// Customizer JS strings
 		case 'customizer_js' :
 			$locals = array (
 				'disclaimer'			=> __( 'Note: The customizer provides a simulated preview, and results may vary slightly when published and viewed on your live website.', 'themeblvd' )
 			);
-		
+
 		// @todo Could add more types other than JS here later.
 	}
 	return apply_filters( 'themeblvd_locals_'.$type, $locals );

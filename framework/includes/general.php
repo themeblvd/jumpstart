@@ -1,6 +1,6 @@
 <?php
 /**
- * Include font from google. Accepts unlimited 
+ * Include font from google. Accepts unlimited
  * amount of font arguments.
  *
  * @since 2.0.0
@@ -11,21 +11,21 @@ if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
 		$fonts = func_get_args();
 		$used = array();
 		if( ! empty( $fonts ) ) {
-			
-			// Before including files, determine if SSL is being 
-			// used because if we include an external file without https 
+
+			// Before including files, determine if SSL is being
+			// used because if we include an external file without https
 			// on a secure server, they'll get an error.
 			$protocol = is_ssl() ? 'https://' : 'http://';
-			
+
 			// Include each font file from google.
 			foreach( $fonts as $font ) {
 				if( $font['face'] == 'google' && $font['google'] ) {
-					
+
 					if( in_array( $font['google'], $used ) )
 						continue; // Skip duplicate
 
 					$used[] = $font['google'];
-					$name = themeblvd_remove_trailing_char( $font['google'] ); 
+					$name = themeblvd_remove_trailing_char( $font['google'] );
 					$name = str_replace( ' ', '+', $name );
 					printf( '<link href="%sfonts.googleapis.com/css?family=%s" rel="stylesheet" type="text/css">'."\n", $protocol, $name );
 
@@ -63,9 +63,9 @@ function themeblvd_font_stacks() {
 }
 
 /**
- * Adjust sidebar layout to always be full_width if we're 
+ * Adjust sidebar layout to always be full_width if we're
  * on the WordPress Multisite signup page. This function is
- * added as a filter to themeblvd_sidebar_layout, which gets 
+ * added as a filter to themeblvd_sidebar_layout, which gets
  * applied in themeblvd_frontend_init.
  *
  * @since 2.1.0
@@ -73,12 +73,12 @@ function themeblvd_font_stacks() {
 
 if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
 	function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
-		
+
 		global $pagenow;
-		
+
 		if( $pagenow == 'wp-signup.php' )
 			$sidebar_layout = 'full_width';
-		
+
 		return $sidebar_layout;
 	}
 }
@@ -87,21 +87,21 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
  * Get class used to determine width of column in primary layout.
  *
  * @since 2.2.0
- * 
+ *
  * @param string $column Which column to retrieve class for
  * @return string $column_class The class to be used in grid system
  */
 
 if( ! function_exists( 'themeblvd_get_column_class' ) ) {
 	function themeblvd_get_column_class( $column ) {
-		
+
 		$column_class = '';
 		$sidebar_layouts = themeblvd_sidebar_layouts();
 		$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
-		
+
 		if( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) )
 			$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
-		
+
 		return $column_class;
 	}
 }
@@ -109,10 +109,10 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
 /**
  * Use themeblvd_button() function for read more links.
  *
- * When a WP user uses the more tag <!--more-->, this filter 
- * will add the class "btn" to that link. This will allow 
- * Bootstrap to style the link as one of its buttons. 
- * 
+ * When a WP user uses the more tag <!--more-->, this filter
+ * will add the class "btn" to that link. This will allow
+ * Bootstrap to style the link as one of its buttons.
+ *
  * This function is used with WP filter "the_content_more_link"
  *
  * @since 2.2.0
@@ -120,7 +120,7 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
 
 if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 	function themeblvd_read_more_link( $read_more, $more_link_text ) {
-		
+
 		$args = apply_filters( 'themeblvd_the_content_more_args', array(
 			'text'			=> $more_link_text,
 			'url'			=> get_permalink().'#more-'.get_the_ID(),
@@ -129,11 +129,11 @@ if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 			'size'			=> null,
 			'classes'		=> null,
 			'title'			=> null,
-			'icon_before'	=> null, 
-			'icon_after'	=> null, 
+			'icon_before'	=> null,
+			'icon_after'	=> null,
 			'addon'			=> null
 		));
-		
+
 		// Construct button based on filterable $args above
 		$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
 
@@ -143,9 +143,9 @@ if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 
 
 /**
- * Setup the config array for which features the 
- * framework supports. This can easily be filtered, so the 
- * theme author has a chance to disable the framework's 
+ * Setup the config array for which features the
+ * framework supports. This can easily be filtered, so the
+ * theme author has a chance to disable the framework's
  * various features. The filter is this:
  *
  * themeblvd_global_config
@@ -212,7 +212,7 @@ function themeblvd_setup() {
  * @return boolean $supports Whether feature is supported or not
  */
 
-if( ! function_exists( 'themeblvd_supports' ) ) {  
+if( ! function_exists( 'themeblvd_supports' ) ) {
 	function themeblvd_supports( $group, $feature ) {
 		$setup = themeblvd_setup();
 		$supports = false;
@@ -223,7 +223,7 @@ if( ! function_exists( 'themeblvd_supports' ) ) {
 }
 
 /**
- * Run warning if Theme Blvd function is deprecated 
+ * Run warning if Theme Blvd function is deprecated
  * and WP_DEBUG is on.
  *
  * @since 2.0.0
@@ -241,12 +241,12 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 		elseif ( ! is_null( $replacement ) )
 			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'themeblvd' ), $function, $version, $replacement ) );
 		else
-			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available.', 'themeblvd' ), $function, $version ) );	
+			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available.', 'themeblvd' ), $function, $version ) );
 	}
 }
 
 /**
- * Get capability for admin module so WordPress 
+ * Get capability for admin module so WordPress
  * can test this against current user-role.
  *
  * @since 2.1.0
@@ -255,9 +255,9 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
  * @return string $cap WP capability for current admin module
  */
 
-if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {  
+if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 	function themeblvd_admin_module_cap( $module ) {
-		
+
 		// Setup default capabilities
 		$module_caps = array(
 			'builder' 	=> 'edit_theme_options', 		// Role: Administrator
@@ -267,12 +267,12 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 			'updates' 	=> 'edit_theme_options'			// Role: Administrator
 		);
 		$module_caps = apply_filters( 'themeblvd_admin_module_caps', $module_caps );
-		
+
 		// Setup capability
 		$cap = '';
 		if( isset( $module_caps[$module] ) )
 			$cap = $module_caps[$module];
-		
+
 		return $cap;
 	}
 }
@@ -281,21 +281,21 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
  * Compress a chunk of code to output.
  *
  * @since 2.0.0
- * 
+ *
  * @param string $buffer Text to compress
  * @param string $buffer Buffered text
  * @return array $buffer Compressed text
  */
 
-if( ! function_exists( 'themeblvd_compress' ) ) {  
+if( ! function_exists( 'themeblvd_compress' ) ) {
 	function themeblvd_compress( $buffer ) {
-		
+
 		// Remove comments
 		$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-		
+
 		// Remove tabs, spaces, newlines, etc.
 		$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
-		
+
 		return $buffer;
 	}
 }
@@ -310,30 +310,30 @@ if( ! function_exists( 'themeblvd_compress' ) ) {
  * @param string $post_type post type for post.
  * @return string $id ID of post.
  */
-if( ! function_exists( 'themeblvd_post_id_by_name' ) ) { 
+if( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
 	function themeblvd_post_id_by_name( $slug, $post_type = null ) {
 		global $wpdb;
 		$null = null;
 		$slug = sanitize_title( $slug );
-		
+
 		// Grab posts from DB (hopefully there's only one!)
 		if( $post_type ) // More efficiant with post type
 			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND (post_type = %s)", $slug, $post_type ));
 		else
 			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s", $slug ));
-		
+
 		// If no results, return null
 		if ( empty( $posts ) )
 			return $null;
-		
-		// Run through our results and return the ID of the first. 
-		// Hopefully there was only one result, but if there was 
+
+		// Run through our results and return the ID of the first.
+		// Hopefully there was only one result, but if there was
 		// more than one, we'll just return a single ID.
 		foreach( $posts as $post )
 			if( $post->ID )
 				return $post->ID;
-		
-		// If for some odd reason, there was no ID in the returned 
+
+		// If for some odd reason, there was no ID in the returned
 		// post ID's, return nothing.
 		return $null;
 	}
@@ -345,7 +345,7 @@ if( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
  * @since 2.0.0
  */
 
-if( ! function_exists( 'themeblvd_register_navs' ) ) { 
+if( ! function_exists( 'themeblvd_register_navs' ) ) {
 	function themeblvd_register_navs() {
 		$menus = array(
 			'primary' => __( 'Primary Navigation', 'themeblvd' ),
@@ -371,7 +371,7 @@ if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
 }
 
 /**
- * Get current page identifiers and keys for what we consider 
+ * Get current page identifiers and keys for what we consider
  * admin modules. By default, this includeds:
  * 1) Theme Options
  * 2) Layout Builder 	(plugin)
@@ -382,7 +382,7 @@ if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
  */
 
 function themeblvd_get_admin_modules() {
-	
+
 	// Options page
 	$api = Theme_Blvd_Options_API::get_instance();
 	$args = $api->get_args();
@@ -400,7 +400,7 @@ function themeblvd_get_admin_modules() {
 }
 
 /**
- * Add items to admin menu bar. This needs to be here in general 
+ * Add items to admin menu bar. This needs to be here in general
  * functions because admin bar appears on frontend as well.
  *
  * @since 2.0.0
@@ -408,7 +408,7 @@ function themeblvd_get_admin_modules() {
 
 if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 	function themeblvd_admin_menu_bar() {
-		
+
 		global $wp_admin_bar;
 
 		if( is_admin() || ! method_exists( $wp_admin_bar, 'add_node' ) )
@@ -421,8 +421,8 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 			return;
 
 		// Theme Options
-		if( isset( $modules['options'] ) && themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {	
-			$wp_admin_bar->add_node( 
+		if( isset( $modules['options'] ) && themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
+			$wp_admin_bar->add_node(
 				array(
 					'id'			=> 'tb_theme_options',
 					'title'			=> __( 'Theme Options', 'themeblvd' ),
@@ -431,11 +431,11 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 				)
 			);
 		}
-		
+
 		// Sliders (if sliders plugin is installed)
 		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && isset( $modules['sliders'] ) ) {
 			if( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
-				$wp_admin_bar->add_node( 
+				$wp_admin_bar->add_node(
 					array(
 						'id'		=> 'tb_sliders',
 						'title'		=> __( 'Sliders', 'themeblvd' ),
@@ -445,11 +445,11 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 				);
 			}
 		}
-		
+
 		// Builder (if layout builder plugin is installed)
 		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && isset( $modules['builder'] ) ) {
 			if( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
-				$wp_admin_bar->add_node( 
+				$wp_admin_bar->add_node(
 					array(
 						'id'		=> 'tb_builder',
 						'title'		=> __( 'Layout Builder', 'themeblvd' ),
@@ -462,8 +462,8 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 
 		// Sidebars (if sidebar plugin is installed)
 		if( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) && isset( $modules['sidebars'] ) ){
-			if( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {	
-				$wp_admin_bar->add_node( 
+			if( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {
+				$wp_admin_bar->add_node(
 					array(
 						'id'		=> 'tb_sidebars',
 						'title'		=> __( 'Widget Areas', 'themeblvd' ),
@@ -551,335 +551,335 @@ function themeblvd_sidebar_layouts() {
  *
  * @return array $textures All current textures
  */
- 
+
 function themeblvd_get_textures() {
 	$imagepath = get_template_directory_uri().'/framework/frontend/assets/images/textures/';
 	$textures = array(
-		'boxy' => array( 
+		'boxy' => array(
 			'name' 		=> __( 'Boxy', 'themeblvd' ),
 			'url' 		=> $imagepath.'boxy.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'carbon_classic' => array( 
+		'carbon_classic' => array(
 			'name' 		=> __( 'Carbon Classic', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_classic.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'carbon_diagonal' => array( 
+		'carbon_diagonal' => array(
 			'name' 		=> __( 'Carbon Diagonal', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_diagonal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'carbon_weave' => array( 
+		'carbon_weave' => array(
 			'name' 		=> __( 'Carbon Weave', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_weave.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'chex' => array( 
+		'chex' => array(
 			'name' 		=> __( 'Chex', 'themeblvd' ),
 			'url' 		=> $imagepath.'chex.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'concrete' => array( 
+		'concrete' => array(
 			'name' 		=> __( 'Concrete', 'themeblvd' ),
 			'url' 		=> $imagepath.'concrete.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'cross' => array( 
+		'cross' => array(
 			'name' 		=> __( 'Crosses', 'themeblvd' ),
 			'url' 		=> $imagepath.'cross.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'denim' => array( 
+		'denim' => array(
 			'name' 		=> __( 'Denim', 'themeblvd' ),
 			'url' 		=> $imagepath.'denim.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'diagnol_thin' => array( 
+		'diagnol_thin' => array(
 			'name' 		=> __( 'Diagonal (thin)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thin.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'diagnol_thick' => array( 
+		'diagnol_thick' => array(
 			'name' 		=> __( 'Diagonal (thick)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thick.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'diamonds' => array( 
+		'diamonds' => array(
 			'name' 		=> __( 'Diamonds', 'themeblvd' ),
 			'url' 		=> $imagepath.'diamonds.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'grid' => array( 
+		'grid' => array(
 			'name' 		=> __( 'Grid', 'themeblvd' ),
 			'url' 		=> $imagepath.'grid.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'grunge' => array( 
+		'grunge' => array(
 			'name' 		=> __( 'Grunge', 'themeblvd' ),
 			'url' 		=> $imagepath.'grunge.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'honey_comb' => array( 
+		'honey_comb' => array(
 			'name' 		=> __( 'Honey Comb', 'themeblvd' ),
 			'url' 		=> $imagepath.'honey_comb.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'leather' => array( 
+		'leather' => array(
 			'name' 		=> __( 'Leather', 'themeblvd' ),
 			'url' 		=> $imagepath.'leather.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'metal' => array( 
+		'metal' => array(
 			'name' 		=> __( 'Metal', 'themeblvd' ),
 			'url' 		=> $imagepath.'metal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'mosaic' => array( 
+		'mosaic' => array(
 			'name' 		=> __( 'Mosaic', 'themeblvd' ),
 			'url' 		=> $imagepath.'mosaic.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'noise' => array( 
+		'noise' => array(
 			'name' 		=> __( 'Noise', 'themeblvd' ),
 			'url' 		=> $imagepath.'noise.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'paper' => array( 
+		'paper' => array(
 			'name' 		=> __( 'Paper', 'themeblvd' ),
 			'url' 		=> $imagepath.'paper.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'plaid' => array( 
+		'plaid' => array(
 			'name' 		=> __( 'Plaid', 'themeblvd' ),
 			'url' 		=> $imagepath.'plaid.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'rubber' => array( 
+		'rubber' => array(
 			'name' 		=> __( 'Rubber', 'themeblvd' ),
 			'url' 		=> $imagepath.'rubber.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'squares' => array( 
+		'squares' => array(
 			'name' 		=> __( 'Squares', 'themeblvd' ),
 			'url' 		=> $imagepath.'squares.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'textile' => array( 
+		'textile' => array(
 			'name' 		=> __( 'Textile', 'themeblvd' ),
 			'url' 		=> $imagepath.'textile.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'vertical_fabric' => array( 
+		'vertical_fabric' => array(
 			'name' 		=> __( 'Vertical Fabric', 'themeblvd' ),
 			'url' 		=> $imagepath.'vertical_fabric.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'vintage' => array( 
+		'vintage' => array(
 			'name' 		=> __( 'Vintage', 'themeblvd' ),
 			'url' 		=> $imagepath.'vintage.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'wood' => array( 
+		'wood' => array(
 			'name' 		=> __( 'Wood', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'wood_planks' => array( 
+		'wood_planks' => array(
 			'name' 		=> __( 'Wood Planks', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood_planks.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'divider' => array( 
+		'divider' => array(
 			'name' 		=> __( '---------------', 'themeblvd' ),
 			'url' 		=> null,
 			'position' 	=> null,
 			'repeat' 	=> null,
 		),
-		'boxy_light' => array( 
+		'boxy_light' => array(
 			'name' 		=> __( 'Light Boxy', 'themeblvd' ),
 			'url' 		=> $imagepath.'boxy_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'carbon_classic_light' => array( 
+		'carbon_classic_light' => array(
 			'name' 		=> __( 'Light Carbon Classic', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_classic_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'carbon_diagonal_light' => array( 
+		'carbon_diagonal_light' => array(
 			'name' 		=> __( 'Light Carbon Diagonal', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_diagonal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'carbon_weave_light' => array( 
+		'carbon_weave_light' => array(
 			'name' 		=> __( 'Light Carbon Weave', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_weave_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'chex_light' => array( 
+		'chex_light' => array(
 			'name' 		=> __( 'Light Chex', 'themeblvd' ),
 			'url' 		=> $imagepath.'chex_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'concrete_light' => array( 
+		'concrete_light' => array(
 			'name' 		=> __( 'Light Concrete', 'themeblvd' ),
 			'url' 		=> $imagepath.'concrete_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'cross_light' => array( 
+		'cross_light' => array(
 			'name' 		=> __( 'Light Crosses', 'themeblvd' ),
 			'url' 		=> $imagepath.'cross_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'denim_light' => array( 
+		'denim_light' => array(
 			'name' 		=> __( 'Light Denim', 'themeblvd' ),
 			'url' 		=> $imagepath.'denim_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'diagnol_thin_light' => array( 
+		'diagnol_thin_light' => array(
 			'name' 		=> __( 'Light Diagonal (thin)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thin_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'diagnol_thick_light' => array( 
+		'diagnol_thick_light' => array(
 			'name' 		=> __( 'Light Diagonal (thick)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thick_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'diamonds_light' => array( 
+		'diamonds_light' => array(
 			'name' 		=> __( 'Light Diamonds', 'themeblvd' ),
 			'url' 		=> $imagepath.'diamonds_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'grid_light' => array( 
+		'grid_light' => array(
 			'name' 		=> __( 'Light Grid', 'themeblvd' ),
 			'url' 		=> $imagepath.'grid_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'grunge_light' => array( 
+		'grunge_light' => array(
 			'name' 		=> __( 'Light Grunge', 'themeblvd' ),
 			'url' 		=> $imagepath.'grunge_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'honey_comb_light' => array( 
+		'honey_comb_light' => array(
 			'name' 		=> __( 'Light Honey Comb', 'themeblvd' ),
 			'url' 		=> $imagepath.'honey_comb_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'leather_light' => array( 
+		'leather_light' => array(
 			'name' 		=> __( 'Light Leather', 'themeblvd' ),
 			'url' 		=> $imagepath.'leather_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'metal_light' => array( 
+		'metal_light' => array(
 			'name' 		=> __( 'Light Metal', 'themeblvd' ),
 			'url' 		=> $imagepath.'metal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'mosaic_light' => array( 
+		'mosaic_light' => array(
 			'name' 		=> __( 'Light Mosaic', 'themeblvd' ),
 			'url' 		=> $imagepath.'mosaic_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'noise_light' => array( 
+		'noise_light' => array(
 			'name' 		=> __( 'Light Noise', 'themeblvd' ),
 			'url' 		=> $imagepath.'noise_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'paper_light' => array( 
+		'paper_light' => array(
 			'name' 		=> __( 'Light Paper', 'themeblvd' ),
 			'url' 		=> $imagepath.'paper_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'plaid_light' => array( 
+		'plaid_light' => array(
 			'name' 		=> __( 'Light Plaid', 'themeblvd' ),
 			'url' 		=> $imagepath.'plaid_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'rubber_light' => array( 
+		'rubber_light' => array(
 			'name' 		=> __( 'Light Rubber', 'themeblvd' ),
 			'url' 		=> $imagepath.'rubber_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'squares_light' => array( 
+		'squares_light' => array(
 			'name' 		=> __( 'Light Squares', 'themeblvd' ),
 			'url' 		=> $imagepath.'squares_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'textile_light' => array( 
+		'textile_light' => array(
 			'name' 		=> __( 'Light Textile', 'themeblvd' ),
 			'url' 		=> $imagepath.'textile_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'vertical_fabric_light' => array( 
+		'vertical_fabric_light' => array(
 			'name' 		=> __( 'Light Vertical Fabric', 'themeblvd' ),
 			'url' 		=> $imagepath.'vertical_fabric_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'vintage_light' => array( 
+		'vintage_light' => array(
 			'name' 		=> __( 'Light Vintage', 'themeblvd' ),
 			'url' 		=> $imagepath.'vintage_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'wood_light' => array( 
+		'wood_light' => array(
 			'name' 		=> __( 'Light Wood', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 		),
-		'wood_planks_light' => array( 
+		'wood_planks_light' => array(
 			'name' 		=> __( 'Light Wood Planks', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood_planks_light.png',
 			'position' 	=> '0 0',
@@ -891,7 +891,7 @@ function themeblvd_get_textures() {
 }
 
 /**
- * Generates array to be used in a select option 
+ * Generates array to be used in a select option
  * type of the options framework.
  *
  * @since 2.0.0
@@ -899,11 +899,11 @@ function themeblvd_get_textures() {
  * @param $type string type of select to return
  * @return $select array items for select
  */
- 
+
 function themeblvd_get_select( $type ) {
 	$select = array();
 	switch( $type ) {
-		
+
 		// Pages
 		case 'pages' :
 			$pages_select = array();
@@ -914,7 +914,7 @@ function themeblvd_get_select( $type ) {
 			else
 				$select['null'] = __( 'No pages exist.', 'themeblvd' );
 			break;
-		
+
 		// Categories
 		case 'categories' :
 			$select['all'] = __( '<strong>All Categories</strong>', 'themeblvd' );
@@ -930,9 +930,9 @@ function themeblvd_get_select( $type ) {
 			foreach( $categories as $category )
 				$select[$category->slug] = $category->name;
 			break;
-		
-		// Sliders	
-		case 'sliders' : 
+
+		// Sliders
+		case 'sliders' :
 			$sliders = get_posts( 'post_type=tb_slider&numberposts=-1' );
 			if( ! empty( $sliders ) )
 				foreach( $sliders as $slider )
@@ -940,7 +940,7 @@ function themeblvd_get_select( $type ) {
 			else
 				$select['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
 			break;
-			
+
 		// Floating Sidebars
 		case 'sidebars' :
 			$sidebars = get_posts('post_type=tb_sidebar&numberposts=-1');
@@ -952,7 +952,7 @@ function themeblvd_get_select( $type ) {
 				}
 			} // Handle error message for no sidebars outside of this function
 			break;
-		
+
 	}
 	return $select;
 }
@@ -965,9 +965,9 @@ function themeblvd_get_select( $type ) {
  * @param boolean $bootstrap Whether to include Bootstrap colors or not
  * @return array $colors All colors in framework filtered
  */
- 
+
 function themeblvd_colors( $bootstrap = true ) {
-	
+
 	// Setup colors separated out to begin with.
 	$colors = array(
 		'default'		=> __( 'Default Color', 'themeblvd' )
@@ -1002,13 +1002,13 @@ function themeblvd_colors( $bootstrap = true ) {
 		'wheat'			=> __( 'Wheat', 'themeblvd' ),
 		'white'			=> __( 'White', 'themeblvd' )
 	);
-	
+
 	// Merge colors
 	if( $bootstrap )
 		$colors = array_merge( $colors, $boostrap_colors, $themeblvd_colors );
 	else
 		$colors = array_merge( $colors, $themeblvd_colors );
-		
+
 	return apply_filters( 'themeblvd_colors', $colors, $bootstrap );
 }
 
@@ -1031,7 +1031,7 @@ function themeblvd_stats() {
 		$data = array();
 		$theme_data = wp_get_theme( get_template() );
 		$data['theme_name'] = str_replace( ' ', '', $theme_data->get('Name') ); // remove spaces to fix presstrend's bug
-		$data['theme_version'] = str_replace( ' ', '', $theme_data->get('Version') ); // remove spaces to fix presstrend's bug		
+		$data['theme_version'] = str_replace( ' ', '', $theme_data->get('Version') ); // remove spaces to fix presstrend's bug
 		// Continue on ...
 		$count_posts = wp_count_posts();
 		$count_pages = wp_count_posts('page');
@@ -1090,21 +1090,21 @@ if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
 /**
  * Get Image Sizes
  *
- * By having this in a separate function, hopefully 
- * it can be extended upon better. If any plugin or 
- * other feature of the framework requires these 
+ * By having this in a separate function, hopefully
+ * it can be extended upon better. If any plugin or
+ * other feature of the framework requires these
  * image sizes, they can grab 'em.
- * 
+ *
  * @since 2.2.0
  */
 
 function themeblvd_get_image_sizes() {
-	
+
 	global $content_width;
-	
+
 	// Content Width
 	$content_width = apply_filters( 'themeblvd_content_width', 940 ); // Default width of primary content area
-	
+
 	// Crop sizes
 	$sizes = array(
 		'tb_large' => array(
@@ -1180,7 +1180,7 @@ function themeblvd_get_image_sizes() {
 			'crop' 		=> true
 		)
 	);
-	
+
 	return apply_filters( 'themeblvd_image_sizes', $sizes );
 }
 
@@ -1192,23 +1192,23 @@ function themeblvd_get_image_sizes() {
 
 if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
 	function themeblvd_add_image_sizes() {
-		
+
 		// Get image sizes
 		$sizes = themeblvd_get_image_sizes();
-		
+
 		// Add image sizes
 		foreach( $sizes as $size => $atts ) {
 			add_image_size( $size, $atts['width'], $atts['height'], $atts['crop'] );
 		}
-		
+
 	}
 }
 
 /**
- * Show theme's image thumb sizes when inserting 
+ * Show theme's image thumb sizes when inserting
  * an image in a post or page.
  *
- * This function gets added as a filter to WP's 
+ * This function gets added as a filter to WP's
  * image_size_names_choose
  *
  * @since 2.1.0
@@ -1218,27 +1218,27 @@ if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
 
 if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
 	function themeblvd_image_size_names_choose( $sizes ) {
-		
+
 		// Get image sizes for framework that were registered.
 		$tb_raw_sizes = themeblvd_get_image_sizes();
-		
+
 		// Format sizes
 		$tb_sizes = array();
 		foreach( $tb_raw_sizes as $id => $atts ) {
 			$tb_sizes[$id] = $atts['name'];
 		}
-		
+
 		// Apply filter - Filter in filter... I know, I know.
 		$tb_sizes = apply_filters( 'themeblvd_choose_sizes', $tb_sizes );
-		
+
 		// Return merged with original WP sizes
 		return array_merge( $sizes, $tb_sizes );
 	}
 }
 
 /**
- * Set allowed tags in the admin panel. This works by 
- * adding the framework's allowed admin tags to WP's 
+ * Set allowed tags in the admin panel. This works by
+ * adding the framework's allowed admin tags to WP's
  * global $allowedtags.
  *
  * @since 2.0.0
@@ -1248,10 +1248,10 @@ if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
  */
 
 function themeblvd_allowed_tags() {
-	
+
 	global $allowedposttags;
-	
-	// Match Theme Blvd tags with global HTML 
+
+	// Match Theme Blvd tags with global HTML
 	// allowed for standard Posts/Pages.
 	$themeblvd_tags = $allowedposttags;
 
@@ -1270,7 +1270,7 @@ function themeblvd_allowed_tags() {
 		'type'					=> true,
 		'src' 					=> true
 	);
-	
+
 	return apply_filters( 'themeblvd_allowed_tags', $themeblvd_tags );
 }
 
@@ -1415,16 +1415,16 @@ function themeblvd_column_widths() {
 }
 
 /**
- * Setup all possible assignments (i.e. WordPress conditionals) 
- * that could be assigned to an item. An example where this is 
- * currently used is to assign custom sidebars to various WP 
+ * Setup all possible assignments (i.e. WordPress conditionals)
+ * that could be assigned to an item. An example where this is
+ * currently used is to assign custom sidebars to various WP
  * conditionals.
  *
  * @since 2.0.0
  *
  * @return array $conditionals Configuration of conditionals to choose from
  */
- 
+
 function themeblvd_conditionals_config() {
 	$conditionals = array(
 		'pages' => array(
@@ -1475,9 +1475,9 @@ function themeblvd_conditionals_config() {
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );
 }
 
-/** 
- * Determine if prettyPhoto can take the current URL and 
- * display in the lightbox. 
+/**
+ * Determine if prettyPhoto can take the current URL and
+ * display in the lightbox.
  *
  * @since 2.3.0
  *
@@ -1487,17 +1487,17 @@ function themeblvd_conditionals_config() {
 
 if( ! function_exists( 'themeblvd_prettyphoto_supported_link' ) ) {
 	function themeblvd_prettyphoto_supported_link( $url ) {
-		
+
 		$icon = '';
 
 		if( $url ) {
-			
+
 			// Link to Vimeo or YouTube page?
-			if( strpos( $url, 'vimeo.com' ) !== false || 
-				strpos( $url, 'youtube.com' ) !== false || 
+			if( strpos( $url, 'vimeo.com' ) !== false ||
+				strpos( $url, 'youtube.com' ) !== false ||
 				strpos( $url, 'youtu.be' ) !== false )
 			$icon = 'video';
-			
+
 			if( ! $icon ) {
 				$parsed_url = parse_url( $url );
 				$type = wp_check_filetype( $parsed_url['path'] );

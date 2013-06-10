@@ -6,20 +6,20 @@
  */
 ?>
 <?php if( themeblvd_show_comments() ) : ?>
-	
+
 	<?php if ( post_password_required() ) : ?>
 		<div id="comments" class="nopassword">
 			<p><?php echo themeblvd_get_local( 'comments_no_password' ); ?></p>
 		</div><!-- #comments  (end) -->
 		<?php return; ?>
 	<?php endif; ?>
-	
+
 	<div id="comments">
-		
+
 		<?php if ( have_comments() ) : // Comments to show ?>
-			
+
 			<!-- COMMENTS (start) -->
-			
+
 			<h2 id="comments-title">
 				<?php
 					printf( _n( themeblvd_get_local( 'comments_title_single' ), themeblvd_get_local( 'comments_title_multiple' ), get_comments_number() ),
@@ -36,27 +36,27 @@
 					<div class="nav-next"><?php next_comments_link( themeblvd_get_local( 'comments_newer' ) ); ?></div>
 				</nav>
 			<?php endif; ?>
-			
+
 			<!-- COMMENTS (end) -->
-			
+
 		<?php else : // No comments to show ?>
 
 			<?php if ( ! comments_open() && ! is_page() ) : ?>
 				<p class="nocomments"><?php echo themeblvd_get_local( 'comments_closed' ); ?></p>
 			<?php endif; ?>
-		
+
 		<?php endif; ?>
-		
+
 		<!-- COMMENT FORM (start) -->
-		
+
 		<div class="comment-form-wrapper">
 			<div class="comment-form-inner">
 				<?php comment_form( themeblvd_get_comment_form_args() ); ?>
 			</div><!-- .comment-form-inner (end) -->
 		</div><!-- .comment-form-wrapper (end) -->
-		
+
 		<!-- COMMENT FORM (end) -->
-		
+
 	</div><!-- #comments -->
-	
+
 <?php endif; ?>
