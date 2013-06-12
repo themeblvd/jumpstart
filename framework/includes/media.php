@@ -391,7 +391,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 
 		// Slider Wrap
 		$slider_wrap  = "<div id=\"gallery-slider-{$post_id}\" class=\"slider-wrapper {$wrap_class} gallery-slider\">\n";
-		$slider_wrap .= "	<div class=\"slides-wrapper slides-wrapper-{$slider}\">\n";
+		$slider_wrap .= "	<div class=\"slides-wrapper slides-wrapper-{$type}\">\n";
 		$slider_wrap .= "		<div class=\"slides-inner {$class}\">\n";
 		$slider_wrap .= "			<div class=\"tb-loader\"></div>\n";
 		$slider_wrap .= "				%s\n";
