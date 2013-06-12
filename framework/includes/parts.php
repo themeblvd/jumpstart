@@ -723,3 +723,47 @@ if( ! function_exists( 'themeblvd_mini_post_grid' ) ) {
 		echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
 	}
 }
+
+/**
+ * Get the_title() taking into account if it should
+ * wrapped in a link.
+ *
+ * @since 2.3.0
+ *
+ * @return $title The title of the post
+ */
+
+if( ! function_exists( 'themeblvd_get_the_title' ) ) {
+	function themeblvd_get_the_title() {
+
+		$url = '';
+		$title = get_the_title();
+
+		// If "link" post format, get URL from start of content.
+		if( has_post_format( 'link' ) )
+			$url = get_content_url( get_the_content() );
+
+		// If not a single post, get permalink for URL.
+		if( ! $url && ! themeblvd_was( 'single' ) )
+			$url = get_permalink();
+
+		// Wrap title in link if there's a URL.
+		if( $url )
+			$title = sprintf('<a href="%s" title="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $title );
+
+		return apply_filters( 'themeblvd_the_title', $title, $url );
+	}
+}
+
+/**
+ * Display the_title() taking into account if it should
+ * wrapped in a link.
+ *
+ * @since 2.3.0
+ */
+
+if( ! function_exists( 'themeblvd_the_title' ) ) {
+	function themeblvd_the_title() {
+		echo themeblvd_get_the_title();
+	}
+}
