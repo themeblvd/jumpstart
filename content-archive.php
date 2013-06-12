@@ -5,7 +5,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title  entry-title-with-meta"><a href="<?php the_permalink(); ?>" title="<?php echo the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+		<h1 class="entry-title  entry-title-with-meta"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 	</header><!-- .entry-header -->
 	<div class="meta-wrapper">
 		<?php themeblvd_blog_meta(); ?>
