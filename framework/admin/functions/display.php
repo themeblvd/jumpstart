@@ -27,7 +27,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$header = '<tr>';
 	$header .= '<th scope="col" id="cb" class="manage-column column-cb check-column"><input type="checkbox"></th>';
 	foreach( $columns as $column ) {
-		$header .= '<th>'.$column['name'].'</th>';
+		$header .= '<th class="head-'.$column['type'].'">'.$column['name'].'</th>';
 	}
 	$header .= '</tr>';
 
@@ -37,7 +37,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$output .= '<div class="alignleft actions">';
 	$output .= '<select name="action">';
 	$output .= '<option value="-1" selected="selected">'.__( 'Bulk Actions', 'themeblvd' ).'</option>';
-	$output .= '<option value="trash">'.__( 'Delete', 'themeblvd' ).' '.$name.'</option>';
+	$output .= '<option value="trash">'.__( 'Delete', 'themeblvd' ).' '.esc_attr($name).'</option>';
 	$output .= '</select>';
 	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.__( 'Apply', 'themeblvd' ).'">';
 	$output .= '</div>';
@@ -67,25 +67,25 @@ function themeblvd_post_table( $post_type, $columns ) {
 				switch( $column['type'] ) {
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';
-						$output .= '<strong><a href="#'.$post->ID.'" class="title-link edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.stripslashes($post->post_title).'</strong></a>';
+						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.stripslashes(esc_html($post->post_title)).'</strong></a>';
 						$output .= '<div class="row-actions">';
 						$output .= '<span class="edit">';
-						$output .= '<a href="#'.$post->ID.'" class="edit-post edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.__( 'Edit', 'themeblvd' ).'</a> | ';
+						$output .= '<a href="#'.esc_attr($post->ID).'" class="edit-post edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.__( 'Edit', 'themeblvd' ).'</a> | ';
 						$output .= '</span>';
 						$output .= '<span class="trash">';
-						$output .= '<a title="'.__( 'Delete', 'themeblvd' ).'" href="#'.$post->ID.'">'.__( 'Delete', 'themeblvd' ).'</a>';
+						$output .= '<a title="'.__( 'Delete', 'themeblvd' ).'" href="#'.esc_attr($post->ID).'">'.__( 'Delete', 'themeblvd' ).'</a>';
 						$output .= '</span>';
 						$output .= '</div>';
 						break;
 
 					case 'id' :
 						$output .= '<td class="post-id">';
-						$output .= $post->ID;
+						$output .= esc_html($post->ID);
 						break;
 
 					case 'slug' :
 						$output .= '<td class="post-slug">';
-						$output .= $post->post_name;
+						$output .= esc_html($post->post_name);
 						break;
 
 					case 'meta' :
@@ -93,9 +93,9 @@ function themeblvd_post_table( $post_type, $columns ) {
 						$meta = get_post_meta( $post->ID, $column['config'], true );
 						if( isset( $column['inner'] ) ) {
 							if( isset( $meta[$column['inner']] ) )
-								$output .= $meta[$column['inner']];
+								$output .= esc_html($meta[$column['inner']]);
 						} else {
-							$output .= $meta;
+							$output .= esc_html($meta);
 						}
 						break;
 
@@ -114,11 +114,11 @@ function themeblvd_post_table( $post_type, $columns ) {
 								foreach( $assignments as $key => $assignment ) {
 									in_array( $key, $conflicts[$location] ) ? $class = 'conflict' : $class = 'no-conflict';
 									if( $assignment['type'] == 'top' )
-										$output .= '<li class="'.$class.'">'.$assignment['name'].'</li>';
+										$output .= '<li class="'.$class.'">'.esc_html( $assignment['name'] ).'</li>';
 									elseif( $assignment['type'] == 'custom' )
-										$output .= '<li class="'.$class.'">'.ucfirst( $assignment['type'] ).': <code>'.$assignment['name'].'</code></li>';
+										$output .= '<li class="'.$class.'">'.ucfirst( esc_html( $assignment['type'] ) ).': <code>'.esc_html( $assignment['name'] ).'</code></li>';
 									else
-										$output .= '<li class="'.$class.'">'.ucfirst( $assignment['type'] ).': '.$assignment['name'].'</li>';
+										$output .= '<li class="'.$class.'">'.ucfirst( esc_html( $assignment['type'] ) ).': '.esc_html( $assignment['name'] ).'</li>';
 								}
 								$output .= '</ul>';
 							} else {
@@ -131,7 +131,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 					case 'sidebar_location' :
 						$output .= '<td class="sidebar-location">';
-						$output .= themeblvd_get_sidebar_location_name( get_post_meta( $post->ID, 'location', true ) );
+						$output .= themeblvd_get_sidebar_location_name( esc_html( get_post_meta( $post->ID, 'location', true ) ) );
 						break;
 				}
 				$output .= '</td>';
