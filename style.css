@@ -12,8 +12,8 @@ License: GPL
 ----------------------------------------------- */
 
 /**
- * Most of these styles will most likely be overridden 
- * These are meant to be as simple as possible in order 
+ * Most of these styles will most likely be overridden
+ * These are meant to be as simple as possible in order
  * to setup a quick boxed layout.
  */
 
@@ -29,6 +29,7 @@ body {
 /* =Global Elements and Typography
 -------------------------------------------------------------- */
 
+html,
 body {
 	color: #666666;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -37,7 +38,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
 	line-height: 130%;
-	margin-bottom: .4em;	
+	margin-bottom: .4em;
 }
 h1 {
 	font-size: 2.3em;
@@ -120,7 +121,7 @@ img[class*="wp-image-"] {
 	/* Style all inserted wp images. */
 }
 img.size-full {
-	max-width: 100%;	
+	max-width: 100%;
 	width: auto; /* Prevent stretching of full-size images in IE8 */
 }
 .entry-content img.wp-smiley {
@@ -212,7 +213,7 @@ img.size-full {
 	padding-right: 12px;
 }
 #primary-menu > [class^="menu-icon-"] > a {
-	/* If a top-level menu item has a an icon, reduce its left 
+	/* If a top-level menu item has a an icon, reduce its left
 	padding. You can add icons to main menu by adding class "menu-icon-{whatever}" */
 	padding-left: 12px;
 }
@@ -271,7 +272,7 @@ img.size-full {
 #featured {
 	padding: 10px 30px;
 }
-	
+
 /* =Main
 -------------------------------------------------------------- */
 
@@ -517,15 +518,15 @@ img.size-full {
 
 /* Elements by location */
 #featured .element {
-	/* Style elements of a custom layout 
+	/* Style elements of a custom layout
 	in the featured area ABOVE the content. */
 }
 #main .element {
-	/* Style elements of a custom layout 
+	/* Style elements of a custom layout
 	in the main content area. */
 }
 #featured_below .element {
-	/* Style elements of a custom layout 
+	/* Style elements of a custom layout
 	in the featured area BELOW the content. */
 }
 
@@ -533,7 +534,7 @@ img.size-full {
 ------------------------------------------------- */
 
 @media (max-width: 1000px) {
-	
+
 	/* Primary Structure */
 	#container {
 		max-width: 960px;
@@ -544,8 +545,8 @@ img.size-full {
 /* =Optimized for Tablets
 ------------------------------------------------- */
 
-@media (max-width: 979px) {	
-	
+@media (max-width: 979px) {
+
 	/* Primary Structure */
 	#container {
 		max-width: 748px;
@@ -561,13 +562,13 @@ img.size-full {
 
 	/* Header */
 	#branding {
-		border-bottom: 1px solid #eeeeee;	
+		border-bottom: 1px solid #eeeeee;
 	}
 	#branding .header_logo {
 		float: none;
 		text-align: center;
 	}
-	
+
 	/* Primary Navigation */
 	#access {
 		display: none;
@@ -589,16 +590,16 @@ img.size-full {
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
 	}
-	#access li li a { 
-		padding-left: 20px; 
+	#access li li a {
+		padding-left: 20px;
 	}
-	#access li li li a { 
+	#access li li li a {
 		padding-left: 30px;
 	}
 	#access .sf-menu ul {
 		border: none;
-		margin: 0; 
-		position: static; 
+		margin: 0;
+		position: static;
 		width: auto;
 	}
 	#access .sf-menu ul .sf-sub-indicator.icon-caret-right {
@@ -623,19 +624,19 @@ img.size-full {
 		margin-left: 5px;
 		padding: 4px 10px;
 	}
-	
+
 }
 
 /* =Optimized for Mobile Devices
 ------------------------------------------------- */
 
 @media (max-width: 767px) {
-	
+
 	/* Primary Structure */
 	#container {
 		max-width: 480px;
 	}
-	
+
 	/* Typography */
 	h1 {
 	  font-size: 24px;
@@ -648,7 +649,7 @@ img.size-full {
 		float: none;
 		margin: 0 0 10px 0;
 	}
-	.element-slogan .slogan .slogan-text { 
+	.element-slogan .slogan .slogan-text {
 		display: block;
 		font-size: 1.3em;
 		text-align: center;
@@ -658,12 +659,12 @@ img.size-full {
 	.divider-shadow {
 		background-size:100%;
 	}
-	
+
 	/* Posts */
 	.attachment-small {
 		width: 40%;
 	}
-	
+
 	/* Comments */
 	#comments {
 		font-size: .85em;
