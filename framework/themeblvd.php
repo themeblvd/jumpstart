@@ -95,6 +95,7 @@ if( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/media.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/parts.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/post-formats.php' );
 
 	// Filters
 	add_filter( 'body_class','themeblvd_browser_class' );
