@@ -10,4 +10,4 @@
 /* included here.
 /*-----------------------------------------------------------------------------------*/
 
-require_once ( get_template_directory() . '/framework/themeblvd.php' );
+require_once( get_template_directory() . '/framework/themeblvd.php' );
