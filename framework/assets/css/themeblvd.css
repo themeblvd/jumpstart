@@ -15,6 +15,14 @@
 	margin-right: 0;
 }
 
+/* Quote */
+blockquote {
+	margin: 0 0 5px 0;
+}
+blockquote cite {
+	font-size: .9rem;
+}
+
 /* Standard 12 Column Setup */
 .grid_2 {width: 13.33%;}
 .grid_3 {width: 22%;}
