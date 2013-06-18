@@ -561,7 +561,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
-						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image" />';
+						$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
 						$image .= '</div><!-- .featured-image-inner (end) -->';
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -574,10 +574,10 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 					$output .= $image;
 
 				$output .= '<div class="mini-post-list-content">';
-				$output .= '<h4><a href="'.get_permalink().'" title="'.get_the_title().'">'.get_the_title().'</a></h4>';
+				$output .= sprintf( '<h4>%s</h4>', themeblvd_get_the_title( $post->ID, true ) );
 
 				if( $meta )
-					$output .= '<span class="mini-meta">'.get_the_time(get_option('date_format')).'</span>';
+					$output .= sprintf('<span class="mini-meta">%s</span>', get_the_time( get_option('date_format') ) );
 
 				$output .= '</div>';
 				$output .= '</li>';
@@ -657,8 +657,8 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 					$output .= '<div class="featured-image-wrapper">';
 					$output .= '<div class="featured-image">';
 					$output .= '<div class="featured-image-inner">';
-					$output .= '<a href="'.$image[0].'" title="" class="image thumbnail" rel="themeblvd_lightbox[gallery_'.$gallery.']">';
-					$output .= '<img src="'.$thumbnail[0].'" alt="'.$post->post_title.'" />';
+					$output .= sprintf( '<a href="%s" title="" class="image thumbnail" rel="themeblvd_lightbox[gallery_%s]">', $image[0], $gallery );
+					$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
 					$output .= apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
 					$output .= '</a>';
 					$output .= '</div><!-- .featured-image-inner (end) -->';
@@ -685,7 +685,7 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 						$image .= '<div class="featured-image">';
 						$image .= '<div class="featured-image-inner">';
-						$image .= '<img src="'.$default_img_directory.$thumb.'_'.$post_format.'.png" class="wp-post-image" />';
+						$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
 						$image .= '</div><!-- .featured-image-inner (end) -->';
 						$image .= '</div><!-- .featured-image (end) -->';
 						$image .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -730,22 +730,24 @@ if( ! function_exists( 'themeblvd_mini_post_grid' ) ) {
  *
  * @since 2.3.0
  *
- * @return $title The title of the post
+ * @param int $post_id Can feed in a post ID if outside the loop.
+ * @param bool $foce_link Whether to force the title to link.
+ * @return string $title The title of the post
  */
 
 if( ! function_exists( 'themeblvd_get_the_title' ) ) {
-	function themeblvd_get_the_title() {
+	function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
 		$url = '';
-		$title = get_the_title();
+		$title = get_the_title( $post_id );
 
 		// If "link" post format, get URL from start of content.
-		if( has_post_format( 'link' ) )
-			$url = get_content_url( get_the_content() );
+		if( has_post_format( 'link', $post_id ) )
+			$url = get_content_url( get_the_content( $post_id ) );
 
 		// If not a single post, get permalink for URL.
-		if( ! $url && ! themeblvd_was( 'single' ) )
-			$url = get_permalink();
+		if( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) )
+			$url = get_permalink( $post_id );
 
 		// Wrap title in link if there's a URL.
 		if( $url )
@@ -760,10 +762,13 @@ if( ! function_exists( 'themeblvd_get_the_title' ) ) {
  * wrapped in a link.
  *
  * @since 2.3.0
+ *
+ * @param int $post_id Can feed in a post ID if outside the loop.
+ * @param bool $foce_link Whether to force the title to link.
  */
 
 if( ! function_exists( 'themeblvd_the_title' ) ) {
-	function themeblvd_the_title() {
-		echo themeblvd_get_the_title();
+	function themeblvd_the_title( $post_id = 0, $force_link = false ) {
+		echo themeblvd_get_the_title( $post_id, $force_link );
 	}
 }
