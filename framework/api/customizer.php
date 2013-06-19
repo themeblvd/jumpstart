@@ -191,6 +191,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 							// Setup defaults
 							$defaults = array(
 								'size' 		=> '',
+								'style'		=> '',
 								'face' 		=> '',
 								'style' 	=> '',
 								'color' 	=> '',
@@ -256,8 +257,15 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 										$font_counter++;
 										break;
 									case 'style' :
-										// Currently not supported in Theme Blvd options
-										// $counter++;
+										$wp_customize->add_control( $option['id'].'_'.$attribute, array(
+											'priority'		=> $font_counter,
+											'settings'		=> $option_name.'['.$option['id'].']['.$attribute.']',
+											'label'   		=> $option['name'].' '.ucfirst($attribute),
+											'section'    	=> $section['id'],
+											'type'       	=> 'select',
+											'choices'    	=> themeblvd_recognized_font_styles()
+										) );
+										$font_counter++;
 										break;
 									case 'color' :
 										$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $option['id'].'_'.$attribute, array(
@@ -827,8 +835,32 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 			value.bind(function(size) {
 				// We're doing this odd-ball way so jQuery
 				// doesn't apply body font to other elements.
-				$('.preview_body_font').remove();
-				$('head').append('<style class="preview_body_font">body{ font-size: '+size+';}</style>');
+				$('.preview_body_font_size').remove();
+				$('head').append('<style class="preview_body_font_size">body{ font-size: '+size+'; }</style>');
+			});
+		});
+
+		/* Body Typography - Style */
+		wp.customize('<?php echo $option_name; ?>[typography_body][style]',function( value ) {
+			value.bind(function(style) {
+
+				// We're doing this odd-ball way so jQuery
+				// doesn't apply body font to other elements.
+				$('.preview_body_font_style').remove();
+
+				// Possible choices: normal, bold, italic, bold-italic
+				var body_css_props;
+				if( style == 'normal' )
+					body_css_props = 'font-weight: normal; font-style: normal;';
+				else if( style == 'bold' )
+					body_css_props = 'font-weight: bold; font-style: normal;';
+				else if( style == 'italic' )
+					body_css_props = 'font-weight: normal; font-style: italic;';
+				else if( style == 'bold-italic' )
+					body_css_props = 'font-weight: bold; font-style: italic;';
+
+				$('head').append('<style class="preview_body_font_style">body{'+body_css_props+'}</style>');
+
 			});
 		});
 
@@ -911,6 +943,26 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 		// ---------------------------------------------------------
 		// Header Typography
 		// ---------------------------------------------------------
+
+		/* Header Typography - Style */
+		wp.customize('<?php echo $option_name; ?>[typography_header][style]',function( value ) {
+			value.bind(function(style) {
+				// Possible choices: normal, bold, italic, bold-italic
+				if( style == 'normal' ) {
+					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'normal');
+					$('h1, h2, h3, h4, h5, h6').css('font-style', 'normal');
+				} else if( style == 'bold' ) {
+					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'bold');
+					$('h1, h2, h3, h4, h5, h6').css('font-style', 'normal');
+				} else if( style == 'italic' ) {
+					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'normal');
+					$('h1, h2, h3, h4, h5, h6').css('font-style', 'italic');
+				} else if( style == 'bold-italic' ) {
+					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'bold');
+					$('h1, h2, h3, h4, h5, h6').css('font-style', 'italic');
+				}
+			});
+		});
 
 		/* Header Typography - Face */
 		wp.customize('<?php echo $option_name; ?>[typography_header][face]',function( value ) {
