@@ -553,7 +553,7 @@ function themeblvd_sidebar_layouts() {
  */
 
 function themeblvd_get_textures() {
-	$imagepath = get_template_directory_uri().'/framework/frontend/assets/images/textures/';
+	$imagepath = get_template_directory_uri().'/framework/assets/images/textures/';
 	$textures = array(
 		'boxy' => array(
 			'name' 		=> __( 'Boxy', 'themeblvd' ),

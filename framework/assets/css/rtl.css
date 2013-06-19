@@ -2,7 +2,7 @@
 Theme Blvd Framework
 
 You can include this file within your theme's main rtl.css file.
-@import url('framework/frontend/assets/css/rtl.css');
+@import url('framework/assets/css/rtl.css');
 */
 
 /* Basic Typography (from Bootstrap, not part of themeblvd.css) */
