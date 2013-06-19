@@ -36,7 +36,7 @@ if( ! function_exists( 'jumpstart_css' ) ) {
 
 	}
 }
-add_action( 'wp_print_styles', 'jumpstart_css' );
+add_action( 'wp_enqueue_scripts', 'jumpstart_css' );
 
 /**
  * Jump Start Scripts
