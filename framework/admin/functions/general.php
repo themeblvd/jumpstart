@@ -34,6 +34,16 @@ function themeblvd_admin_init() {
 }
 
 /**
+ * Save current version of framework to DB.
+ *
+ * @since 2.3.0
+ */
+
+function themeblvd_update_version(){
+	update_option( 'themeblvd_framework_version', TB_FRAMEWORK_VERSION );
+}
+
+/**
  * Non-modular Admin Assets
  *
  * @since 2.0.0
