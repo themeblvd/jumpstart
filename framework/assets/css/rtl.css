@@ -201,6 +201,11 @@ div.wpcf7 img.ajax-loader {
 	right: 0;
 }
 
+/* Tweeple */
+.tweeple-feed ul.tweets {
+    margin-right: 0;
+}
+
 /* WPML Bridge */
 .tb-wpml-flaglist ul li {
 	float: right;

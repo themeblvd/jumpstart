@@ -1,5 +1,5 @@
 /* =Grid
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /**
  * This grid is used internally for various elements, however
@@ -364,12 +364,12 @@ code.block {
 }
 
 /* =Post Formats
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /* @todo */
 
 /* =Responsive Elements
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /* Responsive visiblity classes */
 .hide_on_standard,
@@ -450,7 +450,7 @@ html {
 }
 
 /* =WordPress Standard Classes
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .gallery-item {
 	float: left;
@@ -565,7 +565,7 @@ a img.aligncenter {
 }
 
 /* =Primary Navigation
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .sf-menu,.sf-menu * {
 	list-style:none;
@@ -674,7 +674,7 @@ ul.sf-menu [class^="icon-"] {
 }
 
 /* =Secondary Navigation
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .subnav {
 	background-color: #eeeeee; /* Old browsers */
@@ -896,7 +896,7 @@ ul.sf-menu [class^="icon-"] {
 }
 
 /* =Moveable Parts
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /* Contact Bar */
 .themeblvd-contact-bar ul {
@@ -1188,7 +1188,7 @@ ul.sf-menu [class^="icon-"] {
 }
 
 /* =Colors
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .black,
 .blue,
@@ -1698,7 +1698,7 @@ ul.sf-menu [class^="icon-"] {
 }
 
 /* =Shortcodes
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /* Icon List */
 ul.tb-icon-list {
@@ -1853,7 +1853,7 @@ ul.tb-icon-list {
 }
 
 /* =Widgets
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /* Calendar Widget */
 #wp-calendar td,
@@ -2386,7 +2386,7 @@ div.pp_default .pp_description {
 }
 
 /* =Elements
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 /* General Classes */
 .element {
@@ -2921,7 +2921,22 @@ div.pp_default .pp_description {
 	border-bottom: none;
 }
 
-/* Tweet */
+/* =Tweeple
+-----------------------------------------------*/
+
+.tweeple-feed ul.tweets {
+    list-style: none;
+    margin-left: 0;
+}
+.tweeple-feed li.tweet {
+    margin-bottom: 10px;
+}
+.tweeple-feed .tweet-time a {
+    color: #888;
+    font-size: .9em;
+}
+
+/* "Tweet" Builder Element */
 .tb-tweet-wrapper {
 	position: relative;
 }
@@ -2943,7 +2958,7 @@ div.pp_default .pp_description {
 }
 
 /* =WPML Bridge
------------------------------------------------ */
+-----------------------------------------------*/
 
 .tb-wpml-flaglist ul {
 	margin: 0;

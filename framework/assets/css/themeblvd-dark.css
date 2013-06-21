@@ -166,7 +166,7 @@ input[type="submit"] {
 .btn-default[disabled],
 .tb-button:hover,
 .tb-button:focus,
-.tb-button:active, 
+.tb-button:active,
 .comment-reply-link:hover,
 .comment-reply-link:focus,
 .comment-reply-link:active,
@@ -322,7 +322,7 @@ a.thumbnail:focus {
 }
 
 /* =Secondary Navigation
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .subnav {
 	background-color: #494949;
@@ -368,7 +368,7 @@ a.thumbnail:focus {
 }
 
 /* =Shortcodes
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .accordion-heading .accordion-toggle:hover,
 .accordion-heading .accordion-toggle:focus {
@@ -376,14 +376,14 @@ a.thumbnail:focus {
 }
 
 /* =Widgets
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .tb-contact_widget ul.simple-contact li {
 	background-image: url('../images/elements/simple-contact-ffffff.png');
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5),
 		only screen and (min-device-pixel-ratio: 1.5) {
 	/* Use 2x image for retina */
 	.tb-contact_widget ul.simple-contact li {
@@ -392,7 +392,7 @@ a.thumbnail:focus {
 }
 
 /* =Elements
--------------------------------------------------------------- */
+-----------------------------------------------*/
 
 .divider-dashed,
 .divider-solid {
@@ -413,9 +413,9 @@ a.thumbnail:focus {
 .tb-nivo-slider-wrapper .nivo-directionNav a {
 	background-image: url('../images/elements/slider-arrows-dark.png');
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5), 
+		only screen and (-o-min-device-pixel-ratio: 1.5),
 		only screen and (min-device-pixel-ratio: 1.5) {
 	/* Slider controls - Use 2x image for retina */
 	.standard-slider-wrapper .flex-control-nav li a,
@@ -439,4 +439,11 @@ a.thumbnail:focus {
 .tb-tabs-framed .tab-content {
 	background: #333333;
 	border-color: #000000;
+}
+
+/* =Tweeple
+-----------------------------------------------*/
+
+.tweeple-feed .tweet-time a {
+    color: #cccccc;
 }
