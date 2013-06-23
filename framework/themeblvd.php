@@ -48,7 +48,6 @@ if( is_admin() ) {
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 	add_action( 'themeblvd_api', 'themeblvd_api_init' );
 	add_action( 'admin_enqueue_scripts', 'themeblvd_non_modular_assets' );
-	add_action( 'admin_init','themeblvd_theme_activation' );
 	add_action( 'admin_init', 'themeblvd_add_sanitization' );
 	add_action( 'admin_init', 'themeblvd_disable_nag' );
 	add_action( 'admin_init', 'themeblvd_clear_options' );

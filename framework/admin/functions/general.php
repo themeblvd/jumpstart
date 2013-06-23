@@ -71,25 +71,6 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 }
 
 /**
- * On activation of the theme, redirect user to the theme options
- * panel.
- *
- * @since 2.0.0
- */
-
-if( ! function_exists( 'themeblvd_theme_activation' ) ) {
-	function themeblvd_theme_activation() {
-		global $pagenow;
-		if( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){
-			$api = Theme_Blvd_Options_API::get_instance();
-			$args = $api->get_args();
-			wp_redirect( admin_url( 'themes.php?page='.$args['menu_slug'] ) );
-			exit;
-		}
-	}
-}
-
-/**
  * Gather all assignments for posts into a single
  * array organized by post ID.
  *
