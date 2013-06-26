@@ -368,10 +368,9 @@ class Theme_Blvd_Query {
 			$templates = apply_filters('themeblvd_paginated_templates', array('template_list.php', 'template_list.php', 'template_builder.php'));
 			$template = get_post_meta( $q->get('page_id'), '_wp_page_template', true );
 
-			if( in_array( $template, $templates ) ) {
-				if( isset( $q->query['paged'] ) );
-					$q->set('paged', $q->query['paged'] );
-			}
+			if( in_array( $template, $templates ) && isset( $q->query['paged'] ) )
+				$q->set('paged', $q->query['paged'] );
+
 		}
 
 		// Adjust posts_per_page if framework is in grid mode
