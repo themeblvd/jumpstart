@@ -5,7 +5,6 @@
 /**
  * Setup theme for customizer.
  */
-
 if( ! function_exists( 'jumpstart_customizer' ) ) {
 	function jumpstart_customizer() {
 
@@ -37,7 +36,6 @@ add_action( 'after_setup_theme', 'jumpstart_customizer' );
 /**
  * Add specific theme elements to customizer.
  */
-
 if( ! function_exists( 'jumpstart_customizer_init' ) ) {
 	function jumpstart_customizer_init( $wp_customize ) {
 		// Add real-time option edits
@@ -52,7 +50,6 @@ add_action( 'customize_register', 'jumpstart_customizer_init' );
  * Setup javascript needed for customizer to link up
  * to real-time edit options.
  */
-
 if( ! function_exists( 'jumpstart_customizer_preview' ) ) {
 	function jumpstart_customizer_preview() {
 		// Begin output

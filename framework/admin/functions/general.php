@@ -4,7 +4,6 @@
  *
  * @since 2.0.0
  */
-
 function themeblvd_admin_init() {
 
 	// Allow theme options page to run if framework filters
@@ -38,7 +37,6 @@ function themeblvd_admin_init() {
  *
  * @since 2.3.0
  */
-
 function themeblvd_update_version(){
 	update_option( 'themeblvd_framework_version', TB_FRAMEWORK_VERSION );
 }
@@ -48,7 +46,6 @@ function themeblvd_update_version(){
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 	function themeblvd_non_modular_assets() {
 
@@ -79,7 +76,6 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
  * @param $posts array all posts from WP's get_posts()
  * @return $assignments array assignments from all posts organized by ID
  */
-
 function themeblvd_get_assignment_conflicts( $posts ) {
 
 	// Setup $conflicts/$non_conflicts arrays
@@ -126,7 +122,6 @@ function themeblvd_get_assignment_conflicts( $posts ) {
  *
  * @since 2.0.0
  */
-
 function themeblvd_hijack_page_atts() {
 	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		remove_meta_box( 'pageparentdiv', 'page', 'side' );
@@ -140,7 +135,6 @@ function themeblvd_hijack_page_atts() {
  *
  * @since 2.0.0
  */
-
 function themeblvd_save_page_atts( $post_id ) {
 	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		// Save sidebar layout
@@ -158,7 +152,6 @@ function themeblvd_save_page_atts( $post_id ) {
  *
  * @since 2.2.0
  */
-
 function themeblvd_is_admin_module() {
 
 	global $pagenow;
@@ -197,7 +190,6 @@ function themeblvd_is_admin_module() {
  *
  * @since 2.2.1
  */
-
 function themeblvd_disable_nag() {
 	global $current_user;
     if ( isset( $_GET['tb_nag_ignore'] ) )
@@ -209,7 +201,6 @@ function themeblvd_disable_nag() {
  *
  * @since 2.3.0
  */
-
 function themeblvd_clear_options() {
 	if( isset( $_POST['themeblvd_clear_options'] ) ) {
 		$option_id = $_POST['themeblvd_clear_options'];
@@ -228,7 +219,6 @@ function themeblvd_clear_options() {
  *
  * @since 2.2.1
  */
-
 if( ! function_exists( 'themeblvd_admin_content_width' ) ) {
 	function themeblvd_admin_content_width() {
 		global $content_width;

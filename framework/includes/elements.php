@@ -8,7 +8,6 @@
  * @param string $widths Width for each column
  * @param array $columns Inidivual columns, number of array items must match $setup's number
  */
-
 if( ! function_exists( 'themeblvd_columns' ) ) {
 	function themeblvd_columns( $num, $widths, $columns ) {
 
@@ -98,7 +97,6 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
  * @param array $args Options for content
  * @return string $output HTML output for content
  */
-
 if( ! function_exists( 'themeblvd_content' ) ) {
 	function themeblvd_content( $args = array() ) {
 
@@ -177,7 +175,6 @@ if( ! function_exists( 'themeblvd_content' ) ) {
  * @param string $type Style of divider
  * @return string $output HTML output for divider
  */
-
 if( ! function_exists( 'themeblvd_divider' ) ) {
 	function themeblvd_divider( $type = 'solid' ) {
 		$output = '<div class="divider divider-'.$type.'"></div>';
@@ -193,7 +190,6 @@ if( ! function_exists( 'themeblvd_divider' ) ) {
  * @param array $args Options for headline
  * @return string $output HTML output for headline
  */
-
 if( ! function_exists( 'themeblvd_headline' ) ) {
 	function themeblvd_headline( $args = array() ) {
 
@@ -235,7 +231,6 @@ if( ! function_exists( 'themeblvd_headline' ) ) {
  * @param string $type Type of posts, grid or list
  * @param string $current_location Location of element, primary, featured, or featured_below
  */
-
 if( ! function_exists( 'themeblvd_post_slider' ) ) {
 	function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_location = 'primary' ) {
 
@@ -455,7 +450,6 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
  * @param string $type Type of posts, grid or list
  * @param string $current_location Current location of element, featured or primary
  */
-
 if( ! function_exists( 'themeblvd_posts' ) ) {
 	function themeblvd_posts( $args = array(), $type = 'list', $current_location = 'primary' ) {
 
@@ -577,7 +571,6 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
  * @param string $type Type of posts, grid or list
  * @param string $current_location Current location of element, featured or primary
  */
-
 if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 	function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_location = 'primary' ) {
 
@@ -686,7 +679,6 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
  *
  * @param string $slider Slug of custom-built slider to use
  */
-
 if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 	function themeblvd_slider_auto( $id, $args = array() ) {
 
@@ -878,7 +870,6 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
  *
  * @param string $slider Slug of custom-built slider to use
  */
-
 if( ! function_exists( 'themeblvd_slider' ) ) {
 	function themeblvd_slider( $slider ) {
 
@@ -913,7 +904,6 @@ if( ! function_exists( 'themeblvd_slider' ) ) {
  * @param array $args All options for slogan
  * @return string $output HTML output for slogan
  */
-
 if( ! function_exists( 'themeblvd_slogan' ) ) {
 	function themeblvd_slogan( $args = array() ) {
 
@@ -956,7 +946,6 @@ if( ! function_exists( 'themeblvd_slogan' ) ) {
  * @param array $options all options for tabs
  * @return string $output HTML output for tabs
  */
-
 if( ! function_exists( 'themeblvd_tabs' ) ) {
 	function themeblvd_tabs( $id, $options ) {
 		$nav = array( 'tabs', 'above' ); // Backup for someone updating who doesn't have this saved yet.
@@ -1058,7 +1047,6 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
  * @param array $args all options for tweet
  * @return string $output HTML output for tweet
  */
-
 if( ! function_exists( 'themeblvd_tweet' ) ) {
 	function themeblvd_tweet( $args = array() ) {
 

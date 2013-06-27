@@ -5,7 +5,6 @@
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
 	function themeblvd_include_google_fonts() {
 		$fonts = func_get_args();
@@ -43,7 +42,6 @@ if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
  *
  * @return string $stacks All current font stacks
  */
-
 function themeblvd_font_stacks() {
 	$stacks = array(
 		'default'		=> 'Arial, sans-serif', // Used to chain onto end of google font
@@ -70,7 +68,6 @@ function themeblvd_font_stacks() {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
 	function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
 
@@ -91,7 +88,6 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
  * @param string $column Which column to retrieve class for
  * @return string $column_class The class to be used in grid system
  */
-
 if( ! function_exists( 'themeblvd_get_column_class' ) ) {
 	function themeblvd_get_column_class( $column ) {
 
@@ -117,7 +113,6 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
  *
  * @since 2.2.0
  */
-
 if( ! function_exists( 'themeblvd_read_more_link' ) ) {
 	function themeblvd_read_more_link( $read_more, $more_link_text ) {
 
@@ -154,7 +149,6 @@ if( ! function_exists( 'themeblvd_read_more_link' ) ) {
  *
  * @return array $setup Features framework support
  */
-
 function themeblvd_setup() {
 	$setup = array(
 		'admin' => array(
@@ -211,7 +205,6 @@ function themeblvd_setup() {
  * @param string $feature Feature key to check
  * @return boolean $supports Whether feature is supported or not
  */
-
 if( ! function_exists( 'themeblvd_supports' ) ) {
 	function themeblvd_supports( $group, $feature ) {
 		$setup = themeblvd_setup();
@@ -233,7 +226,6 @@ if( ! function_exists( 'themeblvd_supports' ) ) {
  * @param string $replacement Name of suggested replacement function
  * @param string $message Message to display instead of auto-generated replacement statement.
  */
-
 function themeblvd_deprecated_function( $function, $version, $replacement = null, $message = null ) {
 	if( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
 		if ( ! is_null( $message ) )
@@ -254,7 +246,6 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
  * @param string $module Module ID to check
  * @return string $cap WP capability for current admin module
  */
-
 if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 	function themeblvd_admin_module_cap( $module ) {
 
@@ -286,7 +277,6 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
  * @param string $buffer Buffered text
  * @return array $buffer Compressed text
  */
-
 if( ! function_exists( 'themeblvd_compress' ) ) {
 	function themeblvd_compress( $buffer ) {
 
@@ -344,7 +334,6 @@ if( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_register_navs' ) ) {
 	function themeblvd_register_navs() {
 		$menus = array(
@@ -362,7 +351,6 @@ if( ! function_exists( 'themeblvd_register_navs' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
 	function themeblvd_add_theme_support() {
 		add_theme_support( 'automatic-feed-links' );
@@ -380,7 +368,6 @@ if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
  *
  * @since 2.3.0
  */
-
 function themeblvd_get_admin_modules() {
 
 	// Options page
@@ -405,7 +392,6 @@ function themeblvd_get_admin_modules() {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 	function themeblvd_admin_menu_bar() {
 
@@ -483,7 +469,6 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
  *
  * @return array $layouts All current sidebar layouts
  */
-
 function themeblvd_sidebar_layouts() {
 	$layouts = array(
 		'full_width' => array(
@@ -551,7 +536,6 @@ function themeblvd_sidebar_layouts() {
  *
  * @return array $textures All current textures
  */
-
 function themeblvd_get_textures() {
 	$imagepath = get_template_directory_uri().'/framework/assets/images/textures/';
 	$textures = array(
@@ -899,7 +883,6 @@ function themeblvd_get_textures() {
  * @param $type string type of select to return
  * @return $select array items for select
  */
-
 function themeblvd_get_select( $type ) {
 	$select = array();
 	switch( $type ) {
@@ -965,7 +948,6 @@ function themeblvd_get_select( $type ) {
  * @param boolean $bootstrap Whether to include Bootstrap colors or not
  * @return array $colors All colors in framework filtered
  */
-
 function themeblvd_colors( $bootstrap = true ) {
 
 	// Setup colors separated out to begin with.
@@ -1017,7 +999,6 @@ function themeblvd_colors( $bootstrap = true ) {
  *
  * @since 2.1.0
  */
-
 function themeblvd_stats() {
 	// API Key
 	$api_key = 'y0zr2c64abc1qvebamzpnk4m3izccxpxxlfh';
@@ -1079,7 +1060,6 @@ function themeblvd_stats() {
  *
  * @since 2.2.0
  */
-
 if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
 	function themeblvd_load_theme_textdomain() {
 		load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
@@ -1097,7 +1077,6 @@ if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
  *
  * @since 2.2.0
  */
-
 function themeblvd_get_image_sizes() {
 
 	global $content_width;
@@ -1189,7 +1168,6 @@ function themeblvd_get_image_sizes() {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
 	function themeblvd_add_image_sizes() {
 
@@ -1215,7 +1193,6 @@ if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
  *
  * @return array Framework's image sizes
  */
-
 if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
 	function themeblvd_image_size_names_choose( $sizes ) {
 
@@ -1246,7 +1223,6 @@ if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
  *
  * @return array $themeblvd_tags Allowed HTML tags for Theme Blvd options sanitation
  */
-
 function themeblvd_allowed_tags() {
 
 	global $allowedposttags;
@@ -1281,7 +1257,6 @@ function themeblvd_allowed_tags() {
  *
  * @return array $widths All column options with cooresponding widths.
  */
-
 function themeblvd_column_widths() {
 	$widths = array (
 		'1-col' => array (					// User selects 1 columns
@@ -1424,7 +1399,6 @@ function themeblvd_column_widths() {
  *
  * @return array $conditionals Configuration of conditionals to choose from
  */
-
 function themeblvd_conditionals_config() {
 	$conditionals = array(
 		'pages' => array(
@@ -1484,7 +1458,6 @@ function themeblvd_conditionals_config() {
  * @param string $url URL string to check
  * @return string $icon Type of URL (video or image) or blank if URL not supported
  */
-
 if( ! function_exists( 'themeblvd_prettyphoto_supported_link' ) ) {
 	function themeblvd_prettyphoto_supported_link( $url ) {
 

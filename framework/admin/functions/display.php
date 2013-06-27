@@ -8,7 +8,6 @@
  * @param $columns array columns for table
  * @return $output string HTML output for table
  */
-
 function themeblvd_post_table( $post_type, $columns ) {
 
 	// Grab some details for post type
@@ -162,7 +161,6 @@ function themeblvd_post_table( $post_type, $columns ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
-
 function themeblvd_columns_option( $type, $id, $name, $val ) {
 
 	/*------------------------------------------------------*/
@@ -266,7 +264,6 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
-
 function themeblvd_tabs_option( $id, $name, $val ) {
 
 	/*------------------------------------------------------*/
@@ -418,7 +415,6 @@ function themeblvd_tabs_option( $id, $name, $val ) {
  * @param $options array content sources to choose from
  * @return $output string HTML for option
  */
-
 function themeblvd_content_option( $id, $name, $val, $options ) {
 
 	/*------------------------------------------------------*/
@@ -587,7 +583,6 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
-
 function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 	// Create array of all assignments seperated
@@ -779,7 +774,6 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
-
 function themeblvd_logo_option( $id, $name, $val ) {
 
 	/*------------------------------------------------------*/
@@ -929,7 +923,6 @@ function themeblvd_logo_option( $id, $name, $val ) {
  * @param $val array currently saved data if exists
  * @return $output string HTML for option
  */
-
 function themeblvd_social_media_option( $id, $name, $val ) {
 
 	$sources = array(
@@ -1007,7 +1000,6 @@ function themeblvd_social_media_option( $id, $name, $val ) {
  * @param $layout string current sidebar layout
  * @param $output string HTML to output
  */
-
 function themeblvd_sidebar_layout_dropdown( $layout = null ) {
 	$sidebar_layouts = themeblvd_sidebar_layouts();
 	$output = '<p><strong>'.__( 'Sidebar Layout', 'themeblvd' ).'</strong></p>';
@@ -1030,7 +1022,6 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
  * @param $layout string current custom layout
  * @param $output string HTML to output
  */
-
 function themeblvd_custom_layout_dropdown( $layout = null ) {
 
 	// Make sure layout builder plugin is installed
@@ -1059,7 +1050,6 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
  *
  * @since 2.2.0
  */
-
 if ( ! function_exists( 'themeblvd_options_footer_text_default' ) ) {
 	function themeblvd_options_footer_text_default() {
 

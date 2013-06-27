@@ -17,7 +17,6 @@
  * @param boolean $close Whether to add closing </div>
  * @return array $form Final options form
  */
-
 function themeblvd_option_fields( $option_name, $options, $settings, $close = true ) {
 
     $counter = 0;

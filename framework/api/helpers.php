@@ -5,7 +5,6 @@
  * @global array $_themeblvd_customizer_sections
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_api_init' ) ) {
 	function themeblvd_api_init() {
 
@@ -40,7 +39,6 @@ if( ! function_exists( 'themeblvd_api_init' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_get_core_options' ) ) {
 	function themeblvd_get_core_options() {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -54,7 +52,6 @@ if( ! function_exists( 'themeblvd_get_core_options' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_get_formatted_options' ) ) {
 	function themeblvd_get_formatted_options() {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -70,7 +67,6 @@ if( ! function_exists( 'themeblvd_get_formatted_options' ) ) {
  * @param string $primary The primary ID of the option
  * @param string $secondary Optional $secondary ID to traverse deeper into arrays
  */
-
 if( ! function_exists( 'themeblvd_get_option' ) ) {
 	function themeblvd_get_option( $primary, $seconday = null ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -87,7 +83,6 @@ if( ! function_exists( 'themeblvd_get_option' ) ) {
  * @param string $tab_name Name of the tab to add
  * @param bool $top Whether the tab should be added to the start or not
  */
-
 if( ! function_exists( 'themeblvd_add_option_tab' ) ) {
 	function themeblvd_add_option_tab( $tab_id, $tab_name, $top = false ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -102,7 +97,6 @@ if( ! function_exists( 'themeblvd_add_option_tab' ) ) {
  *
  * @param string $tab_id ID of tab to add
  */
-
 if( ! function_exists( 'themeblvd_remove_option_tab' ) ) {
 	function themeblvd_remove_option_tab( $tab_id ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -122,7 +116,6 @@ if( ! function_exists( 'themeblvd_remove_option_tab' ) ) {
  * @param array $options Options array formatted for Options Framework
  * @param bool $top Whether the option should be added to the top or not
  */
-
 if( ! function_exists( 'themeblvd_add_option_section' ) ) {
 	function themeblvd_add_option_section( $tab_id, $section_id, $section_name, $section_desc = null, $options = null, $top = false ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -138,7 +131,6 @@ if( ! function_exists( 'themeblvd_add_option_section' ) ) {
  * @param string $tab_id ID of tab that section to remove belongs to
  * @param string $section_id ID of section to remove
  */
-
 if( ! function_exists( 'themeblvd_remove_option_section' ) ) {
 	function themeblvd_remove_option_section( $tab_id, $section_id ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -156,7 +148,6 @@ if( ! function_exists( 'themeblvd_remove_option_section' ) ) {
  * @param array $option attributes for option, formatted for Options Framework
  * @param string $option_id ID of of your option, note that this id must also be present in $option array
  */
-
 if( ! function_exists( 'themeblvd_add_option' ) ) {
 	function themeblvd_add_option( $tab_id, $section_id, $option_id, $option ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -173,7 +164,6 @@ if( ! function_exists( 'themeblvd_add_option' ) ) {
  * @param string $section_id ID of section to add to
  * @param string $option_id ID of of your option
  */
-
 if( ! function_exists( 'themeblvd_remove_option' ) ) {
 	function themeblvd_remove_option( $tab_id, $section_id, $option_id ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -192,7 +182,6 @@ if( ! function_exists( 'themeblvd_remove_option' ) ) {
  * @param string $att Attribute of option to change
  * @param string $value New value for attribute
  */
-
 if( ! function_exists( 'themeblvd_edit_option' ) ) {
 	function themeblvd_edit_option( $tab_id, $section_id, $option_id, $att, $value ) {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -208,7 +197,6 @@ if( ! function_exists( 'themeblvd_edit_option' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_get_option_name' ) ) {
 	function themeblvd_get_option_name() {
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -229,7 +217,6 @@ if( ! function_exists( 'themeblvd_get_option_name' ) ) {
  * @param array $options Options formatted for internal options framework
  * @return array $defaults Default values from options
  */
-
 if( ! function_exists( 'themeblvd_get_option_defaults' ) ) {
 	function themeblvd_get_option_defaults( $options ) {
 
@@ -267,7 +254,6 @@ if( ! function_exists( 'themeblvd_get_option_defaults' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
 	function themeblvd_get_core_elements() {
 
@@ -287,7 +273,6 @@ if( ! function_exists( 'themeblvd_get_core_elements' ) ) {
  *
  * @since 2.2.1
  */
-
 if( ! function_exists( 'themeblvd_get_registered_elements' ) ) {
 	function themeblvd_get_registered_elements() {
 
@@ -308,7 +293,6 @@ if( ! function_exists( 'themeblvd_get_registered_elements' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_get_elements' ) ) {
 	function themeblvd_get_elements() {
 
@@ -331,7 +315,6 @@ if( ! function_exists( 'themeblvd_get_elements' ) ) {
  * @param string $element_id ID of element type to check for
  * @return bool If element exists or not
  */
-
 if( ! function_exists( 'themeblvd_is_element' ) ) {
 	function themeblvd_is_element( $element_id ) {
 
@@ -357,7 +340,6 @@ if( ! function_exists( 'themeblvd_is_element' ) ) {
  * @param array $options Options formatted for Options Framework
  * @param string $callback Function to display element on frontend
  */
-
 if( ! function_exists( 'themeblvd_add_builder_element' ) ) {
 	function themeblvd_add_builder_element( $element_id, $element_name, $query_type, $options, $callback ) {
 
@@ -379,7 +361,6 @@ if( ! function_exists( 'themeblvd_add_builder_element' ) ) {
  *
  * @param string $element_id ID of element to remove
  */
-
 if( ! function_exists( 'themeblvd_remove_builder_element' ) ) {
 	function themeblvd_remove_builder_element( $element_id ) {
 
@@ -405,7 +386,6 @@ if( ! function_exists( 'themeblvd_remove_builder_element' ) ) {
  * @param array $options Options formatted for Options Framework
  * @param string $function_to_display Function to display element on frontend
  */
-
 if( ! function_exists( 'themeblvd_add_sample_layout' ) ) {
 	function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements ) {
 
@@ -427,7 +407,6 @@ if( ! function_exists( 'themeblvd_add_sample_layout' ) ) {
  *
  * @param string $element_id ID of element to remove
  */
-
 if( ! function_exists( 'themeblvd_remove_sample_layout' ) ) {
 	function themeblvd_remove_sample_layout( $layout_id ) {
 
@@ -460,7 +439,6 @@ if( ! function_exists( 'themeblvd_remove_sample_layout' ) ) {
  * @param array $options Options formatted for Options Framework
  * @param string $callback Function to display slider on frontend
  */
-
 if( ! function_exists( 'themeblvd_add_slider' ) ) {
 	function themeblvd_add_slider( $slider_id, $slider_name, $slide_types, $media_positions, $slide_elements, $options, $callback ) {
 
@@ -481,7 +459,6 @@ if( ! function_exists( 'themeblvd_add_slider' ) ) {
  *
  * @param string $slider_id ID for new slider type
  */
-
 if( ! function_exists( 'themthemeblvd_remove_slidereblvd_add_slider' ) ) {
 	function themeblvd_remove_slider( $slider_id ) {
 
@@ -509,7 +486,6 @@ if( ! function_exists( 'themthemeblvd_remove_slidereblvd_add_slider' ) ) {
  * @param string $type Type of location - fixed or collapsible
  * @param string $desc Description or widget area
  */
-
 if( ! function_exists( 'themeblvd_add_sidebar_location' ) ) {
 	function themeblvd_add_sidebar_location( $id, $name, $type, $desc = '' ) {
 		$api = Theme_Blvd_Sidebars_API::get_instance();
@@ -524,7 +500,6 @@ if( ! function_exists( 'themeblvd_add_sidebar_location' ) ) {
  *
  * @param string $id ID of location
  */
-
 if( ! function_exists( 'themeblvd_remove_sidebar_location' ) ) {
 	function themeblvd_remove_sidebar_location( $id ) {
 		$api = Theme_Blvd_Sidebars_API::get_instance();
@@ -537,7 +512,6 @@ if( ! function_exists( 'themeblvd_remove_sidebar_location' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
 	function themeblvd_get_sidebar_locations() {
 		$api = Theme_Blvd_Sidebars_API::get_instance();
@@ -550,7 +524,6 @@ if( ! function_exists( 'themeblvd_get_sidebar_locations' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
 	function themeblvd_register_sidebars() {
 		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebars_API class.', 'themeblvd' ) );
@@ -567,7 +540,6 @@ if( ! function_exists( 'themeblvd_register_sidebars' ) ) {
  * @param string $location ID of sidebar location
  * @return string $name name of sidebar location
  */
-
 if( ! function_exists( 'themeblvd_get_sidebar_location_name' ) ) {
 	function themeblvd_get_sidebar_location_name( $location ) {
 
@@ -593,7 +565,6 @@ if( ! function_exists( 'themeblvd_get_sidebar_location_name' ) ) {
  *
  * @param string $location the location for the sidebar
  */
-
 if( ! function_exists( 'themeblvd_display_sidebar' ) ) {
 	function themeblvd_display_sidebar( $location ) {
 		$api = Theme_Blvd_Sidebars_API::get_instance();
@@ -614,7 +585,6 @@ if( ! function_exists( 'themeblvd_display_sidebar' ) ) {
  *
  * @param string $position position of sidebar on page, left or right
  */
-
 if( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 	function themeblvd_fixed_sidebars( $position ) {
 
@@ -678,7 +648,6 @@ if( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
  * @param string $ver Version of stylesheet
  * @param string $media Type of media target for stylesheet
  */
-
 if( ! function_exists( 'themeblvd_add_stylesheet' ) ) {
 	function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $media = 'all' ) {
 		$api = Theme_Blvd_Stylesheets_API::get_instance();
@@ -693,7 +662,6 @@ if( ! function_exists( 'themeblvd_add_stylesheet' ) ) {
  *
  * @param string $handle ID for this stylesheet
  */
-
 if( ! function_exists( 'themeblvd_remove_stylesheet' ) ) {
 	function themeblvd_remove_stylesheet( $handle ) {
 		$api = Theme_Blvd_Stylesheets_API::get_instance();
@@ -708,7 +676,6 @@ if( ! function_exists( 'themeblvd_remove_stylesheet' ) ) {
  *
  * @param int $level Level to apply stylesheets - 1, 2, 3, 4
  */
-
 if( ! function_exists( 'themeblvd_print_styles' ) ) {
 	function themeblvd_print_styles( $level ) {
 		$api = Theme_Blvd_Stylesheets_API::get_instance();
@@ -724,7 +691,6 @@ if( ! function_exists( 'themeblvd_print_styles' ) ) {
  *
  * @param int $level Level to apply stylesheet - 1, 2, 3, 4
  */
-
 if( ! function_exists( 'themeblvd_user_stylesheets' ) ) {
 	function themeblvd_user_stylesheets( $level ) {
 		themeblvd_deprecated_function( __FUNCTION__, '2.2.0', 'themeblvd_print_styles' );

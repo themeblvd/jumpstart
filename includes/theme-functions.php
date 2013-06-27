@@ -17,7 +17,6 @@ include_once( get_template_directory() . '/includes/updates.php' );
  * time, this function can easily be re-done from a
  * child theme.
  */
-
 if( ! function_exists( 'jumpstart_css' ) ) {
 	function jumpstart_css() {
 
@@ -41,7 +40,6 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
 /**
  * Jump Start Scripts
  */
-
 if( ! function_exists( 'jumpstart_scripts' ) ) {
 	function jumpstart_scripts() {
 

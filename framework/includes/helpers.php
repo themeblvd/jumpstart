@@ -8,7 +8,6 @@
  * @param string $char Character to remove from end of string if exists
  * @return string $string String w/out trailing space, if it had one
  */
-
 if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
 	function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
 		if( ! $string )
@@ -32,7 +31,6 @@ if( ! function_exists( 'themeblvd_remove_trailing_char' ) ) {
  * @param array $option Current option set by user for the font
  * @return string $stack CSS value for font-name property
  */
-
 if( ! function_exists( 'themeblvd_get_font_face' ) ) {
 	function themeblvd_get_font_face( $option ) {
 
@@ -67,7 +65,6 @@ if( ! function_exists( 'themeblvd_get_font_face' ) ) {
  * @param array $option Current option set by user for the font
  * @return string CSS value for font-style property
  */
-
 if( ! function_exists( 'themeblvd_get_font_style' ) ) {
 	function themeblvd_get_font_style( $option ) {
 
@@ -89,7 +86,6 @@ if( ! function_exists( 'themeblvd_get_font_style' ) ) {
  * @param array $option Current option set by user for the font
  * @return string CSS value for font-weight property
  */
-
 if( ! function_exists( 'themeblvd_get_font_weight' ) ) {
 	function themeblvd_get_font_weight( $option ) {
 
@@ -110,7 +106,6 @@ if( ! function_exists( 'themeblvd_get_font_weight' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) {
 	function themeblvd_primary_menu_fallback() {
 		$home_text = themeblvd_get_local('home');
@@ -131,7 +126,6 @@ if( ! function_exists( 'themeblvd_primary_menu_fallback' ) ) {
  * @param boolean $slider Whether or no this is a post list/grid slider (NOT auto slider)
  * @return array $args Arguments to get passed into get_posts()
  */
-
 if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
 	function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
@@ -223,7 +217,6 @@ if( ! function_exists( 'themeblvd_get_posts_args' ) ) {
  * @param string $columns Number of rows to use
  * @return int $posts_per_page The number of posts per page for a grid.
  */
-
 if( ! function_exists( 'themeblvd_posts_page_page' ) ) {
 	function themeblvd_posts_page_page( $type, $columns = null, $rows = null ) {
 		if( $type == 'template' ) {
@@ -255,7 +248,6 @@ if( ! function_exists( 'themeblvd_posts_page_page' ) ) {
  * @param int $columns Number of columns
  * @return string $class class for each column of grid
  */
-
 if( ! function_exists( 'themeblvd_grid_class' ) ) {
 	function themeblvd_grid_class( $columns ) {
 		$class = 'grid_3'; // default
@@ -278,7 +270,6 @@ if( ! function_exists( 'themeblvd_grid_class' ) ) {
  *
  * @since 2.0.0
  */
-
 function themeblvd_open_row() {
 	echo apply_filters( 'themeblvd_open_row', '<div class="grid-row">' );
 }
@@ -288,7 +279,6 @@ function themeblvd_open_row() {
  *
  * @since 2.0.0
  */
-
 function themeblvd_close_row() {
 	echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
 }
@@ -305,7 +295,6 @@ function themeblvd_close_row() {
  * @param string $text Tweet to filter
  * @return string $text Filtered tweet
  */
-
 if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
 	function themeblvd_tweet_filter_default( $text, $username ) {
 
@@ -343,7 +332,6 @@ if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_feed_transient' ) ) {
 	function themeblvd_feed_transient( $seconds ) {
 		// Change the default feed cache recreation period to 2 hours
@@ -356,7 +344,6 @@ if( ! function_exists( 'themeblvd_feed_transient' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_get_twitter_rss_url' ) ) {
 	function themeblvd_get_twitter_rss_url( $username ) {
 
@@ -381,7 +368,6 @@ if( ! function_exists( 'themeblvd_get_twitter_rss_url' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_analytics' ) ) {
 	function themeblvd_analytics() {
 		$analytics = themeblvd_get_option( 'analytics' );
@@ -401,7 +387,6 @@ if( ! function_exists( 'themeblvd_analytics' ) ) {
  * @param string $bg_color Background color to determine text color for, ex: #ffffff
  * @return string $text_color Text color to show on inputed background color
  */
-
 if( ! function_exists( 'themeblvd_text_color' ) ) {
 	function themeblvd_text_color( $bg_color ) {
 
@@ -437,7 +422,6 @@ if( ! function_exists( 'themeblvd_text_color' ) ) {
  * @param string $direction 'lighten' or 'darken'
  * @return string $new_color Adjusted color
  */
-
 if( ! function_exists( 'themeblvd_adjust_color' ) ) {
 	function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken' ) {
 
@@ -477,7 +461,6 @@ if( ! function_exists( 'themeblvd_adjust_color' ) ) {
  * @param string $location Location of element - featured, primary, or featured_below (only relevant if there is a filter added utilizing it)
  * @return array $classes Classes for element.
  */
-
 if( ! function_exists( 'themeblvd_get_classes' ) ) {
 	function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
 		$classes = '';
@@ -539,7 +522,6 @@ if( ! function_exists( 'themeblvd_get_classes' ) ) {
  * @param boolean $end_space Whether there should be a space at end
  * @return var $class CSS class to use
  */
-
 if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
 	function themeblvd_responsive_visibility_class( $devices, $start_space = false, $end_space = false ) {
 		// Build class
@@ -593,7 +575,6 @@ if( ! function_exists( 'themeblvd_responsive_visibility_class' ) ) {
  *
  * @since 2.2.0
  */
-
 if( ! function_exists( 'themeblvd_wp_title' ) ) {
 	function themeblvd_wp_title( $title ) {
 
@@ -620,7 +601,6 @@ if( ! function_exists( 'themeblvd_wp_title' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
 	function themeblvd_standard_slider_js( $id, $options ) {
 		wp_enqueue_script( 'flexslider' ); // add to wp_footer()
@@ -712,7 +692,6 @@ if( ! function_exists( 'themeblvd_standard_slider_js' ) ) {
  *
  * @return array $args Arguments to be passed into wp_list_comments()
  */
-
 function themeblvd_get_comment_list_args() {
 	$args = array(
 		'avatar_size' 		=> 48,
@@ -734,7 +713,6 @@ function themeblvd_get_comment_list_args() {
  *
  * @return array $args Arguments to be passed into comment_form()
  */
-
 function themeblvd_get_comment_form_args() {
 	$commenter = wp_get_current_commenter();
 	$req = get_option( 'require_name_email' );
@@ -776,7 +754,6 @@ function themeblvd_get_comment_form_args() {
  *
  * @return boolean $show Arguments to be passed into wp_list_comments()
  */
-
 if( ! function_exists( 'themeblvd_show_comments' ) ) {
 	function themeblvd_show_comments() {
 
@@ -806,7 +783,6 @@ if( ! function_exists( 'themeblvd_show_comments' ) ) {
  * @param string $template Current template file
  * @return string $template Current theme location of page.php
  */
-
 if( ! function_exists( 'themeblvd_private_page' ) ) {
 	function themeblvd_private_page( $template ){
 
@@ -845,7 +821,6 @@ if( ! function_exists( 'themeblvd_private_page' ) ) {
  * @param array $args Default arguments of wp_link_pages() to filter
  * @return array $args Args for wp_link_pages() after we've altered them
  */
-
 if( ! function_exists( 'themeblvd_link_pages_args' ) ) {
 	function themeblvd_link_pages_args( $args ) {
 
@@ -878,7 +853,6 @@ if( ! function_exists( 'themeblvd_link_pages_args' ) ) {
  * @param int $i Page number of link being filtered
  * @return string $link Markup for individual link after being filtered
  */
-
 if( ! function_exists( 'themeblvd_link_pages_link' ) ) {
 	function themeblvd_link_pages_link( $link, $i ) {
 
@@ -902,7 +876,6 @@ if( ! function_exists( 'themeblvd_link_pages_link' ) ) {
  * @param string $atts Filtered attributes for breadcrumbs
  * @return array $breadcrumbs Breadcrumbs parts to display trail
  */
-
 if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
 	function themeblvd_get_breadcrumb_parts( $atts ) {
 
@@ -1090,7 +1063,6 @@ if( ! function_exists( 'themeblvd_get_breadcrumb_parts' ) ) {
  *
  * @return boolean $show Whether breadcrumbs should show or not
  */
-
 if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
 	function themeblvd_show_breadcrumbs(){
 
@@ -1125,7 +1097,6 @@ if( ! function_exists( 'themeblvd_show_breadcrumbs' ) ) {
  * @param array $used Any categories in our chain that we've already used
  * @return array $var Description
  */
-
 if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
 	function themeblvd_get_category_parents( $id, $used = array() ) {
 
@@ -1163,7 +1134,6 @@ if( ! function_exists( 'themeblvd_get_category_parents' ) ) {
  * @param int $range Optional range for paginated buttons, helpful for many pages
  * @return array $parts Parts to construct pagination
  */
-
 if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
 	function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
 
@@ -1240,7 +1210,6 @@ if( ! function_exists( 'themeblvd_get_pagination_parts' ) ) {
  *
  * @return string $overaly HTML markup to get inserted within anchor tag
  */
-
 if( ! function_exists( 'themeblvd_get_image_overlay' ) ) {
 	function themeblvd_get_image_overlay() {
 		$overlay = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';

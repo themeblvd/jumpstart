@@ -4,7 +4,6 @@
  *
  * @since 2.0.1
  */
-
 if( ! function_exists( 'themeblvd_add_meta_boxes' ) ) {
 	function themeblvd_add_meta_boxes() {
 
@@ -33,7 +32,6 @@ if( ! function_exists( 'themeblvd_add_meta_boxes' ) ) {
  *
  * @return $setup filterable options for metabox
  */
-
 function setup_themeblvd_page_meta() {
 	$setup = array(
 		'config' => array(
@@ -77,7 +75,6 @@ function setup_themeblvd_page_meta() {
  *
  * @return $setup filterable options for metabox
  */
-
 function setup_themeblvd_post_meta() {
 
 	// If using image radio buttons, define a directory path

@@ -38,7 +38,6 @@ function themeblvd_frontend_init() {
  * @param string $type Type of template part to get
  * @return string $part Extension to use for get_template_part
  */
-
 if( ! function_exists( 'themeblvd_get_part' ) ) {
 	function themeblvd_get_part( $type ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
@@ -59,7 +58,6 @@ if( ! function_exists( 'themeblvd_get_part' ) ) {
  *
  * @return bool
  */
-
 if( ! function_exists( 'themeblvd_is_grid_mode' ) ) {
 	function themeblvd_is_grid_mode() {
 
@@ -82,7 +80,6 @@ if( ! function_exists( 'themeblvd_is_grid_mode' ) ) {
  * @param mixed $secondary string Optional array key to traverse one level deeper
  * @return mixed Value from frontend config object
  */
-
 function themeblvd_config( $key = '', $secondary = '' ) {
 	$config = Theme_Blvd_Frontend_Init::get_instance();
 	return $config->get_config( $key, $secondary );
@@ -93,7 +90,6 @@ function themeblvd_config( $key = '', $secondary = '' ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_sidebar_layout_class' ) ) {
 	function themeblvd_sidebar_layout_class() {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
@@ -115,7 +111,6 @@ if( ! function_exists( 'themeblvd_sidebar_layout_class' ) ) {
  * @param array $atts Attributes to be merged with global attributes
  * @param bool $flush Whether or not to flush previous attributes before merging
  */
-
 if( ! function_exists( 'themeblvd_set_atts' ) ) {
 	function themeblvd_set_atts( $atts, $flush = false ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
@@ -135,7 +130,6 @@ if( ! function_exists( 'themeblvd_set_atts' ) ) {
  * @param mixed $value New value
  * @return mixed New value
  */
-
 if( ! function_exists( 'themeblvd_set_att' ) ) {
 	function themeblvd_set_att( $key, $value ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
@@ -152,7 +146,6 @@ if( ! function_exists( 'themeblvd_set_att' ) ) {
  * @param string $key Key in $atts array to retrieve
  * @return mixed Value of attribute
  */
-
 if( ! function_exists( 'themeblvd_get_att' ) ) {
 	function themeblvd_get_att( $key ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
@@ -169,7 +162,6 @@ if( ! function_exists( 'themeblvd_get_att' ) ) {
  * @param string $type Type of secondary query, list or grid
  * @return array $second_query Newly stored second query attribute
  */
-
 if( ! function_exists( 'themeblvd_get_second_query' ) ) {
 	function themeblvd_get_second_query() {
 		$query = Theme_Blvd_Query::get_instance();;
@@ -184,7 +176,6 @@ if( ! function_exists( 'themeblvd_get_second_query' ) ) {
  *
  * @return array The secondary query
  */
-
 if( ! function_exists( 'themeblvd_set_second_query' ) ) {
 	function themeblvd_set_second_query( $args, $type ) {
 		$query = Theme_Blvd_Query::get_instance();;
@@ -201,7 +192,6 @@ if( ! function_exists( 'themeblvd_set_second_query' ) ) {
  * @param string $helper A secondary param if allowed with $type
  * @return bool
  */
-
 if( ! function_exists( 'themeblvd_was' ) ) {
 	function themeblvd_was( $type, $helper = '' ) {
 		$query = Theme_Blvd_Query::get_instance();
@@ -218,7 +208,6 @@ if( ! function_exists( 'themeblvd_was' ) ) {
  * @param array $classes Current body classes
  * @return array $classes Body classes with browser classes added
  */
-
 if( ! function_exists( 'themeblvd_browser_class' ) ) {
 	function themeblvd_browser_class( $classes ) {
 
@@ -288,7 +277,6 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	function themeblvd_include_scripts() {
 

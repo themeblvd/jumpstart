@@ -12,7 +12,6 @@
  * @param string $type type of set, js or frontend
  * @return array $locals filtered array of localized text strings
  */
-
 function themeblvd_get_admin_locals( $type ) {
 	$locals = array();
 	switch( $type ) {

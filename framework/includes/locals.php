@@ -9,7 +9,6 @@
  *
  * @since 2.1.0
  */
-
 function themeblvd_get_all_locals() {
 	$locals = array (
 		'404'						=> __( 'Apologies, but the page you\'re looking for can\'t be found.', 'themeblvd_frontend' ),
@@ -78,7 +77,6 @@ function themeblvd_get_all_locals() {
  * @param string $id Key for $locals array
  * @return string $text Localized and filtered text string
  */
-
 if( ! function_exists( 'themeblvd_get_local' ) ) {
 	function themeblvd_get_local( $id ) {
 		$text = null;
@@ -101,7 +99,6 @@ if( ! function_exists( 'themeblvd_get_local' ) ) {
  *
  * @since 2.2.0
  */
-
 function themeblvd_get_js_locals() {
 
 	// Start $locals array with any miscellaneous stuff

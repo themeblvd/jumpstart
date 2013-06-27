@@ -10,7 +10,6 @@
  * @param array $options Options to register for WP theme customizer
  * @param int $priority Priority for section
  */
-
 if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
 	function themeblvd_add_customizer_section( $section_id, $section_name, $options, $priority = null ) {
 		global $_themeblvd_customizer_sections;
@@ -43,7 +42,6 @@ if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
  *
  * @param array $options Options to format
  */
-
 if( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
 	function themeblvd_registered_customizer_options( $sections ) {
 		$registered_options = array();
@@ -70,7 +68,6 @@ if( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 	function themeblvd_customizer_init( $wp_customize ) {
 
@@ -449,7 +446,6 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_styles' ) ) {
 	function themeblvd_customizer_styles() {
 		wp_register_style( 'themeblvd_customizer', get_template_directory_uri().'/framework/admin/assets/css/customizer.min.css', false, TB_FRAMEWORK_VERSION );
@@ -462,7 +458,6 @@ if( ! function_exists( 'themeblvd_customizer_styles' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_scripts' ) ) {
 	function themeblvd_customizer_scripts() {
 		wp_register_script( 'themeblvd_customizer', get_template_directory_uri().'/framework/admin/assets/js/customizer.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
@@ -474,13 +469,11 @@ if( ! function_exists( 'themeblvd_customizer_scripts' ) ) {
 /**
  * Customizer control extensions.
  */
-
 if( class_exists( 'WP_Customize_Control' ) ) {
 
 	/**
 	 * Add control for textarea.
 	 */
-
 	class WP_Customize_ThemeBlvd_Textarea extends WP_Customize_Control {
 
 		public $type = 'textarea';
@@ -514,7 +507,6 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 	 * added class that allows us to use it as reference for the
 	 * Google font input.
 	 */
-
 	class WP_Customize_ThemeBlvd_Font_Face extends WP_Customize_Control {
 
 		public $type = 'font_face';
@@ -556,7 +548,6 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 	/**
 	 * Add control to input Google font name.
 	 */
-
 	class WP_Customize_ThemeBlvd_Google_Font extends WP_Customize_Control {
 
 		public $type = 'google_font';
@@ -593,7 +584,6 @@ if( class_exists( 'WP_Customize_Control' ) ) {
 	/**
 	 * Add control for divider.
 	 */
-
 	class WP_Customize_ThemeBlvd_Divider extends WP_Customize_Control {
 
 		public $type = 'divider';
@@ -623,7 +613,6 @@ if( class_exists( 'WP_Customize_Control' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 	function themeblvd_customizer_preview_logo() {
 
@@ -778,7 +767,6 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 	function themeblvd_customizer_preview_font_prep() {
 
@@ -817,7 +805,6 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 	function themeblvd_customizer_preview_primary_font() {
 
@@ -931,7 +918,6 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 	function themeblvd_customizer_preview_header_font() {
 
@@ -1023,7 +1009,6 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
  *
  * @since 2.1.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
 	function themeblvd_customizer_preview_styles() {
 
@@ -1051,7 +1036,6 @@ if( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
  *
  * @since 2.3.0
  */
-
 if( ! function_exists( 'themeblvd_customizer_preview' ) ) {
 	function themeblvd_customizer_preview() {
 

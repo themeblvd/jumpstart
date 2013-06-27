@@ -2,7 +2,6 @@
 /**
  * Enable auto updates and license management.
  */
-
 function jumpstart_updates_init(){
 	if( is_admin() ) {
 		add_action( 'init', 'jumpstart_updates' );
@@ -13,7 +12,6 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
 /**
  * Setup auto updates.
  */
-
 function jumpstart_updates(){
 
 	global $_tb_jumpstart_edd_updater;

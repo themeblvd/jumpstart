@@ -7,7 +7,6 @@
  * @param array $buttons icons to use - array( 'twitter' => 'http://twitter.com/whatever', 'facebook' => 'http://facebook.com/whatever' )
  * @param string $style Style of buttons - dark, grey, light, color
  */
-
 if( ! function_exists( 'themeblvd_contact_bar' ) ) {
 	function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 
@@ -63,7 +62,6 @@ if( ! function_exists( 'themeblvd_contact_bar' ) ) {
  * @param string $addon Anything to add onto the anchor tag
  * @return $output string HTML to output for button
  */
-
 if( ! function_exists( 'themeblvd_button' ) ) {
 	function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = null, $classes = null, $title = null, $icon_before = null, $icon_after = null, $addon = null ) {
 
@@ -115,7 +113,6 @@ if( ! function_exists( 'themeblvd_button' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_archive_title' ) ) {
 	function themeblvd_archive_title() {
 
@@ -179,7 +176,6 @@ if( ! function_exists( 'themeblvd_archive_title' ) ) {
  * @param int $range Optional range for paginated buttons, helpful for many pages
  * @return string $output Final HTML markup for pagination
  */
-
 if( ! function_exists( 'themeblvd_get_pagination' ) ) {
 	function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 
@@ -219,7 +215,6 @@ if( ! function_exists( 'themeblvd_get_pagination' ) ) {
  * @param int $pages Optional number of pages
  * @param int $range Optional range for paginated buttons, helpful for many pages
  */
-
 if( ! function_exists( 'themeblvd_pagination' ) ) {
 	function themeblvd_pagination( $pages = 0, $range = 2 ) {
 		echo themeblvd_get_pagination( $pages, $range );
@@ -234,7 +229,6 @@ if( ! function_exists( 'themeblvd_pagination' ) ) {
  * @param string $var Description
  * @return string $var Description
  */
-
 if( ! function_exists( 'themeblvd_get_breadcrumbs_trail' ) ) {
 	function themeblvd_get_breadcrumbs_trail(){
 
@@ -284,7 +278,6 @@ if( ! function_exists( 'themeblvd_get_breadcrumbs_trail' ) ) {
  * @param string $exclude_replies Exclude replies, yes or no
  * @return string $output Final list of tweets
  */
-
 if( ! function_exists( 'themeblvd_get_twitter' ) ) {
 	function themeblvd_get_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
 
@@ -361,7 +354,6 @@ if( ! function_exists( 'themeblvd_get_twitter' ) ) {
  * @param string $exclude_replies Exclude replies, yes or no
  * @return string $filtered_tweet Final list of tweets
  */
-
 if( ! function_exists( 'themeblvd_twitter' ) ) {
 	function themeblvd_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
 		echo themeblvd_get_twitter( $count, $username, $time, $exclude_replies );
@@ -378,7 +370,6 @@ if( ! function_exists( 'themeblvd_twitter' ) ) {
  *
  * @since 2.2.1
  */
-
 class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
 
 	/**
@@ -424,7 +415,6 @@ class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
  * @param string $location Location of wp nav menu to grab
  * @return string $select_menu Select menu version of wp nav menu
  */
-
 if( ! function_exists( 'themeblvd_nav_menu_select' ) ) {
 	function themeblvd_nav_menu_select( $location ) {
 		$select_menu = wp_nav_menu( apply_filters( 'themeblvd_nav_menu_select_args', array(
@@ -446,7 +436,6 @@ if( ! function_exists( 'themeblvd_nav_menu_select' ) ) {
  * @param array $args Arguments to be used for the elements
  * @return $module HTML to output
  */
-
 if( ! function_exists( 'themeblvd_get_simple_contact' ) ) {
 	function themeblvd_get_simple_contact( $args ) {
 		// Setup icon links
@@ -494,7 +483,6 @@ if( ! function_exists( 'themeblvd_get_simple_contact' ) ) {
  *
  * @param array $args Arguments to be used for the elements
  */
-
 if( ! function_exists( 'themeblvd_simple_contact' ) ) {
 	function themeblvd_simple_contact( $args ) {
 		echo themeblvd_get_simple_contact( $args );
@@ -511,7 +499,6 @@ if( ! function_exists( 'themeblvd_simple_contact' ) ) {
  * @param boolean $meta Show date posted or not
  * @return string $output HTML to output
  */
-
 if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
 	function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
 
@@ -602,7 +589,6 @@ if( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
  *
  * @param array $options Options for many post list
  */
-
 if( ! function_exists( 'themeblvd_mini_post_list' ) ) {
 	function themeblvd_mini_post_list( $options ) {
 		echo themeblvd_get_mini_post_list( $options );
@@ -617,7 +603,6 @@ if( ! function_exists( 'themeblvd_mini_post_list' ) ) {
  * @param array $options Options for many post grid
  * @return string $output HTML to output
  */
-
 if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
 	function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 
@@ -717,7 +702,6 @@ if( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
  *
  * @param array $options Options for many post grid
  */
-
 if( ! function_exists( 'themeblvd_mini_post_grid' ) ) {
 	function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 		echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
@@ -734,7 +718,6 @@ if( ! function_exists( 'themeblvd_mini_post_grid' ) ) {
  * @param bool $foce_link Whether to force the title to link.
  * @return string $title The title of the post
  */
-
 if( ! function_exists( 'themeblvd_get_the_title' ) ) {
 	function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
@@ -766,7 +749,6 @@ if( ! function_exists( 'themeblvd_get_the_title' ) ) {
  * @param int $post_id Can feed in a post ID if outside the loop.
  * @param bool $foce_link Whether to force the title to link.
  */
-
 if( ! function_exists( 'themeblvd_the_title' ) ) {
 	function themeblvd_the_title( $post_id = 0, $force_link = false ) {
 		echo themeblvd_get_the_title( $post_id, $force_link );

@@ -1,6 +1,6 @@
 <?php
 /**
- * Filter out the first URL or HTML link of the 
+ * Filter out the first URL or HTML link of the
  * content in a "Link" format post.
  *
  * @since 2.3.0
@@ -8,7 +8,6 @@
  * @param string $content Content of post
  * @return string $content Filtered content of post
  */
-
 if( ! function_exists( 'themeblvd_content_format_link' ) ) {
 	function themeblvd_content_format_link( $content ){
 
@@ -39,7 +38,6 @@ if( ! function_exists( 'themeblvd_content_format_link' ) ) {
  * @param string $content Content of post
  * @return string $content Filtered content of post
  */
-
 if( ! function_exists( 'themeblvd_content_format_gallery' ) ) {
 	function themeblvd_content_format_gallery( $content ){
 

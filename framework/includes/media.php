@@ -11,7 +11,6 @@
  * @param boolean $allow_filters Whether to allow filters to be applied or not
  * @return string $output HTML to output thumbnail
  */
-
 if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 	function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
 
@@ -154,7 +153,6 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
  * @param $sidebar_layout string Optional current sidebar layout
  * @return $size Size after it's been formatted
  */
-
 if( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
 	function themeblvd_get_thumbnail_size( $size = '', $location = 'primary', $sidebar_layout = 'full_width' ) {
 
@@ -202,7 +200,6 @@ if( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
  *
  * @since 2.0.0
  */
-
 if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 	function themeblvd_oembed_result( $input, $url ) {
 
@@ -244,7 +241,6 @@ if( ! function_exists( 'themeblvd_oembed_result' ) ) {
  *
  * @param string $html HTML for output to be filtered
  */
-
 if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
 	function themeblvd_audio_shortcode( $html ){
 		return str_replace( '<audio', '<audio width="100%"', $html );
@@ -260,7 +256,6 @@ if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
  * @param string $type Type of slider, supports nivo or standard
  * @param string $size Image crop size for attachment images
  */
-
 if( ! function_exists( 'themeblvd_gallery_slider' ) ) {
 	function themeblvd_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
 		echo themeblvd_get_gallery_slider( $gallery, $type, $size );
@@ -277,7 +272,6 @@ if( ! function_exists( 'themeblvd_gallery_slider' ) ) {
  * @param string $size Image crop size for attachment images
  * @return string $output Final HTML to output
  */
-
 if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 	function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
 
