@@ -125,6 +125,7 @@ if( is_admin() ) {
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 	add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 	add_action( 'customize_register', 'themeblvd_customizer_init' );
+	add_action( 'wp_loaded', 'themeblvd_customizer_preview' );
 
 	// Apply other hooks after theme has had a chance to add filters
 	// Note: Options API/Settings finalized at after_setup_theme, 1000

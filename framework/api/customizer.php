@@ -1042,3 +1042,31 @@ if( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
 		<?php
 	}
 }
+
+/**
+ * Allow "refresh" transport type settings to
+ * work right in the Customizer.
+ *
+ * Note: Hooked to "wp_loaded".
+ *
+ * @since 2.3.0
+ */
+
+if( ! function_exists( 'themeblvd_customizer_preview' ) ) {
+	function themeblvd_customizer_preview() {
+
+		global $wp_customize;
+
+		// Check if customizer is running.
+		if( ! is_a( $wp_customize, 'WP_Customize_Manager' ) )
+			return;
+
+		// Reset themeblvd settings after Customizer
+		// has applied filters.
+		if( $wp_customize->is_preview() ) {
+			$api = Theme_Blvd_Options_API::get_instance();
+			$api->set_settings();
+		}
+
+	}
+}
