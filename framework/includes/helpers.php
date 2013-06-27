@@ -284,46 +284,6 @@ function themeblvd_close_row() {
 }
 
 /**
- * Filter Tweets
- *
- * Special thanks to Allen Shaw & webmancers.com & Michael Voigt
- * The only mods from Allen and Michael I made are changing the
- * links to open in new windows.
- *
- * @since 2.1.0
- *
- * @param string $text Tweet to filter
- * @return string $text Filtered tweet
- */
-if( ! function_exists( 'themeblvd_tweet_filter_default' ) ) {
-	function themeblvd_tweet_filter_default( $text, $username ) {
-
-		// Removed any HTML special characters
-		$text = htmlspecialchars_decode( $text, ENT_QUOTES );
-
-		// Remove "UserName: " from Twitter API RSS on start of every tweet
-		$text = str_ireplace( $username.': ', '', $text );
-
-		// Format URL's to be links - http://whatever.com
-		$text = preg_replace('/\b([a-zA-Z]+:\/\/[\w_.\-]+\.[a-zA-Z]{2,6}[\/\w\-~.?=&%#+$*!]*)\b/i',"<a href=\"$1\" class=\"twitter-link\" target=\"_blank\">$1</a>", $text);
-
-		// Format URL's to be links - http://www.whatever.com
-		$text = preg_replace('/\b(?<!:\/\/)(www\.[\w_.\-]+\.[a-zA-Z]{2,6}[\/\w\-~.?=&%#+$*!]*)\b/i',"<a href=\"http://$1\" class=\"twitter-link\" target=\"_blank\">$1</a>", $text);
-
-		// Format emails - you@yourmail.com
-		$text = preg_replace("/\b([a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]*\@[a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]{2,6})\b/i","<a href=\"mailto://$1\" class=\"twitter-link\">$1</a>", $text);
-
-		// Format hash tags as links - #whatever
-		$text = preg_replace("/#(\w+)/", "<a class=\"twitter-link\" href=\"http://search.twitter.com/search?q=\\1\" target=\"_blank\">#\\1</a>", $text);
-
-		// Format @username as links
-		$text = preg_replace("/@(\w+)/", "<a class=\"twitter-link\" href=\"http://twitter.com/\\1\" target=\"_blank\">@\\1</a>", $text);
-
-	    return $text;
-	}
-}
-
-/**
  * This adjusts WordPress's transient lifetime for fetch_feed()
  * from 12 hours to 2 hours. This was primarily implemented to
  * work with the framework's retrieval of Twitter feeds.

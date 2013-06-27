@@ -280,66 +280,7 @@ if( ! function_exists( 'themeblvd_get_breadcrumbs_trail' ) ) {
  */
 if( ! function_exists( 'themeblvd_get_twitter' ) ) {
 	function themeblvd_get_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
-
-		$filtered_message = null;
-		$output = null;
-		$iterations = 0;
-		$tweets = array();
-
-		// Use WordPress's SimplePie integration to retrieve Tweets
-		$rss = fetch_feed( themeblvd_get_twitter_rss_url( $username ) );
-
-		// Proceed if we could retrieve the RSS feed
-		if ( ! is_wp_error( $rss ) ) {
-
-			// Setup items from fetched feed
-			$maxitems = $rss->get_item_quantity();
-			$rss_items = $rss->get_items(0, $maxitems);
-
-			// Build Tweets array for display
-			if( $rss_items ) {
-				foreach ( $rss_items as $item ) {
-					// Only continue if we haven't reached the max number of tweets
-					if( $iterations == $count ) break;
-					// Set text of tweet
-					$text = (string) $item->get_title();
-					$text = str_ireplace( $username.': ', '', $text );
-					// Take "Exclude @ replies" option into account before adding
-					// tweet and increasing current number of tweets.
-					if( $exclude_replies == 'no' || ( $exclude_replies == 'yes' && $text[0] != "@") ) {
-					    $iterations++;
-					    $tweets[] = array(
-					    	'link' => $item->get_permalink(),
-					    	'text' => apply_filters( 'themeblvd_tweet_filter', $text, $username ),
-					    	'date' => $item->get_date( get_option('date_format') )
-					    );
-					}
-				}
-			}
-
-			// Start output of tweets
-			if( $tweets ) {
-				foreach( $tweets as $tweet) {
-					$output .= '<li class="tweet">';
-					$output .= '<div class="tweet-wrap">';
-					$output .= '<div class="tweet-text">'.$tweet['text'].'</div>';
-					if( $time == 'yes' ) $output .= '<div class="tweet-time"><a href="'.$tweet['link'].'" target="_blank">'.$tweet['date'].'</a></div>';
-					$output .= '</div><!-- .tweet-wrap (end) -->';
-					$output .= '</li>';
-				}
-			}
-
-			// Finish up output
-			if( $output )
-				$output = '<ul class="tweets">'.$output.'</ul>';
-			else
-				$output = '<ul class="tweets"><li>'.__( 'No public Tweets found', 'themeblvd' ).'</li></ul>';
-
-		} else {
-			// Received error with fetch_feed()
-			$output = '<ul class="tweets"><li>'.__( 'Could not fetch Twitter RSS feed.', 'themeblvd' ).'</li></ul>';
-		}
-		return $output;
+		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
 	}
 }
 
@@ -356,7 +297,7 @@ if( ! function_exists( 'themeblvd_get_twitter' ) ) {
  */
 if( ! function_exists( 'themeblvd_twitter' ) ) {
 	function themeblvd_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
-		echo themeblvd_get_twitter( $count, $username, $time, $exclude_replies );
+		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
 	}
 }
 

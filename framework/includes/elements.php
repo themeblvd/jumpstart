@@ -1044,103 +1044,12 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
  *
  * @since 2.0.0
  *
+ * @deprecated 2.3.0
  * @param array $args all options for tweet
  * @return string $output HTML output for tweet
  */
 if( ! function_exists( 'themeblvd_tweet' ) ) {
 	function themeblvd_tweet( $args = array() ) {
-
-		// Setup and extract $args
-		$defaults = array(
-			'account'	=> 'themeblvd',	// Twitter account username
-			'icon'		=> 'twitter',	// Font awesome icon ID
-			'meta'		=> 'show',		// Show meta info below tweet - show, hide
-			'replies'	=> 'no',		// Exclude @replies - yes, no
-		);
-		$args = wp_parse_args( $args, $defaults );
-		extract( $args, EXTR_OVERWRITE );
-
-		// In Framework verstion 2.1.0, this function was changed quite a bit.
-		// It's now setup in a way that is a little cumbersome for only
-		// displaying one tweet, however this will make it easier to add more
-		// options to this Tweet element in the future.
-
-		$tweets = array();
-		$iterations = 0;
-		$count = 1; // Being manually set currently
-		$output = '';
-		$exclude_replies = $replies; // Logic is confusing here, but we've got to stick to it at this point.
-
-		// Convert older icon option for those updating.
-		switch( $icon ) {
-			case 'message' :
-				$icon = 'comment';
-				break;
-			case 'alert' :
-				$icon = 'warning';
-				break;
-		}
-
-		// Wrapping CSS class
-		$wrap_class = 'tb-tweet-wrapper';
-		if( $icon )
-			$wrap_class .= ' has-icon';
-
-		// Use WordPress's SimplePie integration to retrieve Tweets
-		$rss = fetch_feed( themeblvd_get_twitter_rss_url( $account ) );
-
-		// Proceed if we could retrieve the RSS feed
-		if ( ! is_wp_error( $rss ) ) {
-
-			// Setup items from fetched feed
-			$maxitems = $rss->get_item_quantity();
-			$rss_items = $rss->get_items(0, $maxitems);
-
-			// Build Tweets array for display - (should only be 1 tweet currently)
-			if( $rss_items ) {
-				foreach ( $rss_items as $item ) {
-					// Only continue if we haven't reached the max number of tweets
-					if( $iterations == $count ) break;
-					// Set text of tweet
-					$text = (string) $item->get_title();
-					$text = str_ireplace( $account.': ', '', $text );
-					// Take "Exclude @ replies" option into account before adding
-					// tweet and increasing current number of tweets.
-					if( $exclude_replies == 'no' || ( $exclude_replies == 'yes' && $text[0] != "@") ) {
-					    $iterations++;
-					    $tweets[] = array(
-					    	'link' => $item->get_permalink(),
-					    	'text' => apply_filters( 'themeblvd_tweet_filter', $text, $account ),
-					    	'date' => $item->get_date( get_option('date_format') )
-					    );
-					}
-				}
-			}
-
-			// Start output of tweets - (should only be 1 tweet currently)
-			if( $tweets ) {
-				foreach( $tweets as $tweet) {
-					$output .= '<div class="'.$wrap_class.'">';
-					if( $icon )
-						$output .= '<div class="tweet-icon"><i class="icon-'.$icon.'"></i></div>';
-					$output .= '<div class="tweet-content">'.$tweet['text'].'</div>';
-					if( $meta == 'show' ) {
-						$output .= '<div class="tweet-meta"><a href="http://twitter.com/'.$account.'" target="_blank">@'.$account.'</a> ';
-						$output .= themeblvd_get_local('via').' Twitter, <a href="'.$tweet['link'].'" target="_blank">'.$tweet['date'].'</a></div>';
-					}
-					$output .= '</div><!-- .tweet-wrapper (end) -->';
-				}
-			}
-
-			// Finish up output
-			if( ! $output )
-				$output = __( 'No public Tweets found', 'themeblvd' );
-
-		} else {
-			// Received error with fetch_feed()
-			$output = __( 'Could not fetch Twitter RSS feed.', 'themeblvd' );
-		}
-
-		return $output;
+		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
 	}
 }
