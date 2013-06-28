@@ -260,7 +260,9 @@ class Theme_Blvd_Query {
 			$type = 'grid';
 
 		// Start building query args
-		$query = array();
+		$query = array(
+			'cat' => null
+		);
 
 		// Category Slugs
 		$category_name = get_post_meta( $post->ID, 'category_name', true );
@@ -273,7 +275,7 @@ class Theme_Blvd_Query {
 		if( ! $cat )
 			$cat = get_post_meta( $post->ID, 'categories', true ); // @deprecated "categories" custom field
 
-		if( ! $cat && ! $category_name ) {
+		if( $type == 'list' && ! $cat && ! $category_name ) {
 			$exclude = themeblvd_get_option( 'blog_categories' );
 			if( $exclude ) {
 				foreach( $exclude as $key => $value ) {
