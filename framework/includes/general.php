@@ -179,7 +179,7 @@ function themeblvd_setup() {
 		),
 		'comments' => array(
 			'pages'				=> false,			// Comments on pages
-			'posts'				=> true				// Commments on posts
+			'posts'				=> true				// Comments on posts
 		),
 		'display' => array(
 			'responsive' 		=> true				// Responsive elements
