@@ -509,6 +509,12 @@ if( ! function_exists( 'themeblvd_blog_tags_default' ) ) {
  * Default display for action: themeblvd_the_post_thumbnail
  *
  * @since 2.0.0
+ *
+ * @param string $location Where the thumbnail is being used -- primary, featured, single -- sort of a wild card to build on in the future as conflicts arise.
+ * @param string $size For the image crop size of the thumbnail
+ * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
+ * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
+ * @param string $gallery If thumb is linking to gallery, specify the prettyPhoto extension rel="themeblvd_lightbox[gallery]" -- i.e. the "gallery" part
  */
 if( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
 	function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
@@ -520,6 +526,8 @@ if( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
  * Default display for action: themeblvd_content
  *
  * @since 2.0.0
+ *
+ * @param string $type Type of content -- content or excerpt
  */
 if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 	function themeblvd_blog_content_default( $type ) {

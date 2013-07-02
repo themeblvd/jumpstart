@@ -4,11 +4,11 @@
  *
  * @since 2.0.0
  *
- * @param string $location Whether the thumbnail is currently in the featured area or not, not always applicable
- * @param string $size Size of post thumbnail
- * @param string $link Where link will go if it's active
- * @param string $link_url URL where link will go if applicable
- * @param boolean $allow_filters Whether to allow filters to be applied or not
+ * @param string $location Where the thumbnail is being used -- primary, featured, single -- sort of a wild card to build on in the future as conflicts arise.
+ * @param string $size For the image crop size of the thumbnail
+ * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
+ * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
+ * @param string $gallery If thumb is linking to gallery, specify the prettyPhoto extension rel="themeblvd_lightbox[gallery]" -- i.e. the "gallery" part
  * @return string $output HTML to output thumbnail
  */
 if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
