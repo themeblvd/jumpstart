@@ -279,7 +279,7 @@ if ( !function_exists( 'themeblvd_analytics' ) ) :
 function themeblvd_analytics() {
 	$analytics = themeblvd_get_option( 'analytics' );
 	if ( $analytics )
-		echo $analytics."\n";
+		echo wp_kses( $analytics, themeblvd_allowed_tags() )."\n";
 }
 endif;
 

@@ -46,7 +46,7 @@ function themeblvd_add_sanitization() {
  */
 function themeblvd_sanitize_text( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
-	$output = wp_kses( $input, $allowedtags);
+	$output = wp_kses( $input, $allowedtags );
 	$output = str_replace( "\r\n", "\n", $output );
 	return $output;
 }

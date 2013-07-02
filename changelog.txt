@@ -36,6 +36,7 @@ Jump Start Changelog
 * Added PHP Class you can use to create meta boxes objects utilizing internal options framework. -- `Theme_Blvd_Meta_Box`
 * [http://dev.themeblvd.com/tutorial/editable-content-files/ Template parts] are now setup and filtered before any secondary loops. -- Allows you to avoid weird quirks like [http://support.themeblvd.com/forums/topic/post-grid-conditional-tag/ this].
 * Some re-organizing of files in framework folder.
+* Added santization to outputting Analytics from database for security.
 * Improved default `content-attachment.php`.
 * In default `content.php` and `content-attachment.php`, removed anchor tag on post title for single posts.
 * In default `content-list.php`, `content-grid.php`, and `content-archive.php`, changed linked titles to use `the_title_attribute()` for anchor titles.
