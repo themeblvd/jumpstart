@@ -5,7 +5,7 @@
  * @param array $args Arguments to setup option, see descriptions at start of function.
  */
 
-if( ! function_exists( 'themeblvd_media_uploader' ) ) {
+if ( ! function_exists( 'themeblvd_media_uploader' ) ) {
 	function themeblvd_media_uploader( $args ) {
 
 		$defaults = array(
@@ -32,22 +32,22 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 
 		// If a value is passed and we don't have a stored value, use the value that's passed through.
 		$value = '';
-		if( $args['value'] )
+		if ( $args['value'] )
 			$value = $args['value'];
 
 		// Set name formfield based on type.
-		if( $type == 'slider' )
+		if ( $type == 'slider' )
 			$name = $args['option_name'].'[image]';
 		else
 			$name = $args['option_name'].'['.$id.']';
 
 		// If passed name, set it.
-		if( $args['name'] ) {
+		if ( $args['name'] ) {
 			$name = $name.'['.$args['name'].']';
 			$id = $id.'_'.$args['name'];
 		}
 
-		if( $value )
+		if ( $value )
 			$class = ' has-file';
 
 		// Allow multiple upload options on the same page with
@@ -116,17 +116,17 @@ if( ! function_exists( 'themeblvd_media_uploader' ) ) {
 
 		$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
 
-		if( ! $value || $type == 'video' )
+		if ( ! $value || $type == 'video' )
 			$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['upload'].'" />'."\n";
 		else
 			$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['remove'].'" />'."\n";
 
 		$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";
 
-		if( $value && $type != 'video' ) {
+		if ( $value && $type != 'video' ) {
 			$remove = '<a class="remove-image">Remove</a>';
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
-			if( $image ) {
+			if ( $image ) {
 				$output .= '<img src="' . $value . '" alt="" />' . $remove;
 			} else {
 				$parts = explode( "/", $value );

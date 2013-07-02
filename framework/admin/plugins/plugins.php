@@ -10,7 +10,7 @@
  *
  * @since 2.2.0
  */
-if( ! function_exists( 'themeblvd_plugins' ) ) {
+if ( ! function_exists( 'themeblvd_plugins' ) ) {
 	function themeblvd_plugins() {
 
 		/* @todo - Will evaluate whether to include this or
@@ -19,7 +19,7 @@ if( ! function_exists( 'themeblvd_plugins' ) ) {
 		dismissing the prompt, which could be confusing.
 
 		// Check if the user has already dismissed the prompt
-		if( get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) )
+		if ( get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) )
 			return;
 		*/
 
@@ -41,7 +41,7 @@ if( ! function_exists( 'themeblvd_plugins' ) ) {
  *
  * @since 2.2.0
  */
-if( ! function_exists( 'themeblvd_tgm_register' ) ) {
+if ( ! function_exists( 'themeblvd_tgm_register' ) ) {
 	function themeblvd_tgm_register() {
 
 		// Plugins to require/recommend

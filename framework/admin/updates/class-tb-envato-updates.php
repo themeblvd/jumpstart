@@ -31,13 +31,13 @@ class Theme_Blvd_Envato_Updates {
 		$this->args = wp_parse_args( $args, $defaults );
 
 		// Add in our check for updates if we have all required arguments.
-		if( $this->args['envato_username'] && $this->args['envato_api_key'] && $this->args['author_name'] ) {
+		if ( $this->args['envato_username'] && $this->args['envato_api_key'] && $this->args['author_name'] ) {
 
 			// Check for updates with the standard WP system under Appearance > Themes
 			add_filter( 'pre_set_site_transient_update_themes', array( $this, 'check_for_updates' ) );
 
 			// Add backups if enabled
-			if( $this->args['backup'] )
+			if ( $this->args['backup'] )
 				add_filter( 'upgrader_pre_install', array( $this, 'backup_theme' ) );
 
 		}
@@ -52,7 +52,7 @@ class Theme_Blvd_Envato_Updates {
 
 		// Only continue if this is our second time
 		// running through the filter.
-		if( ! isset( $updates->checked ) )
+		if ( ! isset( $updates->checked ) )
 			return;
 
 		// If user can't install themes, this shouldn't
@@ -70,9 +70,9 @@ class Theme_Blvd_Envato_Updates {
 		// as an array we can use to pull directly from.
 		$purchased_themes = array();
 		$purchased = $envato_api->wp_list_themes( true );
-		if( ! empty( $purchased ) ) {
+		if ( ! empty( $purchased ) ) {
 			foreach( $purchased as $theme ) {
-				if( $theme->author_name == $this->args['author_name'] ) {
+				if ( $theme->author_name == $this->args['author_name'] ) {
 					$purchased_themes[$theme->theme_name] = array(
 						'item_id' 		=> $theme->item_id,
 						'author_name' 	=> $theme->author_name,
@@ -87,14 +87,14 @@ class Theme_Blvd_Envato_Updates {
 
 		// Loop through current themes in WP directory and
 		// check if we need to apply our updates.
-		if( $installed_themes ) {
+		if ( $installed_themes ) {
 			foreach( $installed_themes as $installed_theme_id => $installed_theme ) {
 				// Make sure the current installed theme is one of
 				// the themes purchased from the current author.
-				if( isset( $purchased_themes[$installed_theme->Name] ) ) {
+				if ( isset( $purchased_themes[$installed_theme->Name] ) ) {
 					$current_theme = $purchased_themes[$installed_theme->Name];
-					if( version_compare( $installed_theme->Version, $current_theme['version'], '<' ) ) {
-						if( $url = $envato_api->wp_download( $current_theme['item_id'] ) ) {
+					if ( version_compare( $installed_theme->Version, $current_theme['version'], '<' ) ) {
+						if ( $url = $envato_api->wp_download( $current_theme['item_id'] ) ) {
 
 							// Get update rolling with WP
 							$updates->response[$installed_theme->Stylesheet] = array(
@@ -127,7 +127,7 @@ class Theme_Blvd_Envato_Updates {
 		global $wp_filesystem;
 
 		// Are we currently updating a theme?
-		if( $_REQUEST['action'] != 'upgrade-theme' )
+		if ( $_REQUEST['action'] != 'upgrade-theme' )
 			return;
 
 		// Update info
@@ -137,7 +137,7 @@ class Theme_Blvd_Envato_Updates {
 
 		// Is this one of our themes?
 		$type = apply_filters( 'themeblvd_envato_updates_type', 'themeblvd-envato' );
-		if( ! isset( $current_update['type'] ) || $current_update['type'] != $type )
+		if ( ! isset( $current_update['type'] ) || $current_update['type'] != $type )
 			return;
 
 		// Theme data
@@ -150,7 +150,7 @@ class Theme_Blvd_Envato_Updates {
 
 		// Make sure the themes directory can be found.
 		$themes_directory = WP_CONTENT_DIR . '/themes';
-		if( ! $wp_filesystem->find_folder( $themes_directory ) )
+		if ( ! $wp_filesystem->find_folder( $themes_directory ) )
 			wp_die( __( 'Unable to locate WordPress Theme directory.', 'themeblvd' ) );
 
 		// Locations
@@ -167,7 +167,7 @@ class Theme_Blvd_Envato_Updates {
 
 		// Make copy
 		$result = copy_dir( $from, $to );
-		if( is_wp_error( $result ) ) {
+		if ( is_wp_error( $result ) ) {
 			// @todo Can we delete temporary downloaded theme at /upgrades/ if error?
 			wp_die($result->get_error_message());
 		}

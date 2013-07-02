@@ -5,11 +5,11 @@
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
+if ( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
 	function themeblvd_include_google_fonts() {
 		$fonts = func_get_args();
 		$used = array();
-		if( ! empty( $fonts ) ) {
+		if ( ! empty( $fonts ) ) {
 
 			// Before including files, determine if SSL is being
 			// used because if we include an external file without https
@@ -18,9 +18,9 @@ if( ! function_exists( 'themeblvd_include_google_fonts' ) ) {
 
 			// Include each font file from google.
 			foreach( $fonts as $font ) {
-				if( $font['face'] == 'google' && $font['google'] ) {
+				if ( $font['face'] == 'google' && $font['google'] ) {
 
-					if( in_array( $font['google'], $used ) )
+					if ( in_array( $font['google'], $used ) )
 						continue; // Skip duplicate
 
 					$used[] = $font['google'];
@@ -68,12 +68,12 @@ function themeblvd_font_stacks() {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
+if ( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
 	function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
 
 		global $pagenow;
 
-		if( $pagenow == 'wp-signup.php' )
+		if ( $pagenow == 'wp-signup.php' )
 			$sidebar_layout = 'full_width';
 
 		return $sidebar_layout;
@@ -88,14 +88,14 @@ if( ! function_exists( 'themeblvd_wpmultisite_signup_sidebar_layout' ) ) {
  * @param string $column Which column to retrieve class for
  * @return string $column_class The class to be used in grid system
  */
-if( ! function_exists( 'themeblvd_get_column_class' ) ) {
+if ( ! function_exists( 'themeblvd_get_column_class' ) ) {
 	function themeblvd_get_column_class( $column ) {
 
 		$column_class = '';
 		$sidebar_layouts = themeblvd_sidebar_layouts();
 		$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
 
-		if( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) )
+		if ( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) )
 			$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
 
 		return $column_class;
@@ -113,7 +113,7 @@ if( ! function_exists( 'themeblvd_get_column_class' ) ) {
  *
  * @since 2.2.0
  */
-if( ! function_exists( 'themeblvd_read_more_link' ) ) {
+if ( ! function_exists( 'themeblvd_read_more_link' ) ) {
 	function themeblvd_read_more_link( $read_more, $more_link_text ) {
 
 		$args = apply_filters( 'themeblvd_the_content_more_args', array(
@@ -205,11 +205,11 @@ function themeblvd_setup() {
  * @param string $feature Feature key to check
  * @return boolean $supports Whether feature is supported or not
  */
-if( ! function_exists( 'themeblvd_supports' ) ) {
+if ( ! function_exists( 'themeblvd_supports' ) ) {
 	function themeblvd_supports( $group, $feature ) {
 		$setup = themeblvd_setup();
 		$supports = false;
-		if( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) )
+		if ( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) )
 			$supports = true;
 		return $supports;
 	}
@@ -227,7 +227,7 @@ if( ! function_exists( 'themeblvd_supports' ) ) {
  * @param string $message Message to display instead of auto-generated replacement statement.
  */
 function themeblvd_deprecated_function( $function, $version, $replacement = null, $message = null ) {
-	if( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
+	if ( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
 		if ( ! is_null( $message ) )
 			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd' ), $function, $version, $message ) );
 		elseif ( ! is_null( $replacement ) )
@@ -246,7 +246,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
  * @param string $module Module ID to check
  * @return string $cap WP capability for current admin module
  */
-if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
+if ( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 	function themeblvd_admin_module_cap( $module ) {
 
 		// Setup default capabilities
@@ -261,7 +261,7 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
 
 		// Setup capability
 		$cap = '';
-		if( isset( $module_caps[$module] ) )
+		if ( isset( $module_caps[$module] ) )
 			$cap = $module_caps[$module];
 
 		return $cap;
@@ -277,7 +277,7 @@ if( ! function_exists( 'themeblvd_admin_module_cap' ) ) {
  * @param string $buffer Buffered text
  * @return array $buffer Compressed text
  */
-if( ! function_exists( 'themeblvd_compress' ) ) {
+if ( ! function_exists( 'themeblvd_compress' ) ) {
 	function themeblvd_compress( $buffer ) {
 
 		// Remove comments
@@ -300,14 +300,14 @@ if( ! function_exists( 'themeblvd_compress' ) ) {
  * @param string $post_type post type for post.
  * @return string $id ID of post.
  */
-if( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
+if ( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
 	function themeblvd_post_id_by_name( $slug, $post_type = null ) {
 		global $wpdb;
 		$null = null;
 		$slug = sanitize_title( $slug );
 
 		// Grab posts from DB (hopefully there's only one!)
-		if( $post_type ) // More efficiant with post type
+		if ( $post_type ) // More efficiant with post type
 			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND (post_type = %s)", $slug, $post_type ));
 		else
 			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s", $slug ));
@@ -320,7 +320,7 @@ if( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
 		// Hopefully there was only one result, but if there was
 		// more than one, we'll just return a single ID.
 		foreach( $posts as $post )
-			if( $post->ID )
+			if ( $post->ID )
 				return $post->ID;
 
 		// If for some odd reason, there was no ID in the returned
@@ -334,7 +334,7 @@ if( ! function_exists( 'themeblvd_post_id_by_name' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_register_navs' ) ) {
+if ( ! function_exists( 'themeblvd_register_navs' ) ) {
 	function themeblvd_register_navs() {
 		$menus = array(
 			'primary' => __( 'Primary Navigation', 'themeblvd' ),
@@ -351,7 +351,7 @@ if( ! function_exists( 'themeblvd_register_navs' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_add_theme_support' ) ) {
+if ( ! function_exists( 'themeblvd_add_theme_support' ) ) {
 	function themeblvd_add_theme_support() {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-thumbnails' );
@@ -392,22 +392,22 @@ function themeblvd_get_admin_modules() {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
+if ( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 	function themeblvd_admin_menu_bar() {
 
 		global $wp_admin_bar;
 
-		if( is_admin() || ! method_exists( $wp_admin_bar, 'add_node' ) )
+		if ( is_admin() || ! method_exists( $wp_admin_bar, 'add_node' ) )
 			return;
 
 		// Get all admin modules
 		$modules = themeblvd_get_admin_modules();
 
-		if( ! $modules )
+		if ( ! $modules )
 			return;
 
 		// Theme Options
-		if( isset( $modules['options'] ) && themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
+		if ( isset( $modules['options'] ) && themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
 			$wp_admin_bar->add_node(
 				array(
 					'id'			=> 'tb_theme_options',
@@ -419,8 +419,8 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 		}
 
 		// Sliders (if sliders plugin is installed)
-		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && isset( $modules['sliders'] ) ) {
-			if( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
+		if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && isset( $modules['sliders'] ) ) {
+			if ( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
 				$wp_admin_bar->add_node(
 					array(
 						'id'		=> 'tb_sliders',
@@ -433,8 +433,8 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 		}
 
 		// Builder (if layout builder plugin is installed)
-		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && isset( $modules['builder'] ) ) {
-			if( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
+		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && isset( $modules['builder'] ) ) {
+			if ( themeblvd_supports( 'admin', 'builder' ) && current_user_can( themeblvd_admin_module_cap( 'builder' ) ) ) {
 				$wp_admin_bar->add_node(
 					array(
 						'id'		=> 'tb_builder',
@@ -447,8 +447,8 @@ if( ! function_exists( 'themeblvd_admin_menu_bar' ) ) {
 		}
 
 		// Sidebars (if sidebar plugin is installed)
-		if( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) && isset( $modules['sidebars'] ) ){
-			if( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {
+		if ( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) && isset( $modules['sidebars'] ) ){
+			if ( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {
 				$wp_admin_bar->add_node(
 					array(
 						'id'		=> 'tb_sidebars',
@@ -891,7 +891,7 @@ function themeblvd_get_select( $type ) {
 		case 'pages' :
 			$pages_select = array();
 			$pages = get_pages();
-			if( ! empty( $pages ) )
+			if ( ! empty( $pages ) )
 				foreach( $pages as $page )
 					$select[$page->post_name] = $page->post_title;
 			else
@@ -901,7 +901,7 @@ function themeblvd_get_select( $type ) {
 		// Categories
 		case 'categories' :
 			$select['all'] = __( '<strong>All Categories</strong>', 'themeblvd' );
-			if( isset( $GLOBALS['sitepress'] ) ) {
+			if ( isset( $GLOBALS['sitepress'] ) ) {
 				// WPML compat
 				global $sitepress;
 				remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
@@ -917,7 +917,7 @@ function themeblvd_get_select( $type ) {
 		// Sliders
 		case 'sliders' :
 			$sliders = get_posts( 'post_type=tb_slider&numberposts=-1' );
-			if( ! empty( $sliders ) )
+			if ( ! empty( $sliders ) )
 				foreach( $sliders as $slider )
 					$select[$slider->post_name] = $slider->post_title;
 			else
@@ -927,10 +927,10 @@ function themeblvd_get_select( $type ) {
 		// Floating Sidebars
 		case 'sidebars' :
 			$sidebars = get_posts('post_type=tb_sidebar&numberposts=-1');
-			if( ! empty( $sidebars ) ) {
+			if ( ! empty( $sidebars ) ) {
 				foreach( $sidebars as $sidebar ) {
 					$location = get_post_meta( $sidebar->ID, 'location', true );
-					if( $location == 'floating' )
+					if ( $location == 'floating' )
 						$select[$sidebar->post_name] = $sidebar->post_title;
 				}
 			} // Handle error message for no sidebars outside of this function
@@ -986,7 +986,7 @@ function themeblvd_colors( $bootstrap = true ) {
 	);
 
 	// Merge colors
-	if( $bootstrap )
+	if ( $bootstrap )
 		$colors = array_merge( $colors, $boostrap_colors, $themeblvd_colors );
 	else
 		$colors = array_merge( $colors, $themeblvd_colors );
@@ -1005,7 +1005,7 @@ function themeblvd_stats() {
 	// Start of Metrics
 	global $wpdb;
 	$data = get_transient( 'presstrends_data' );
-	if( ! $data || $data == '' ) {
+	if ( ! $data || $data == '' ) {
 		$api_base = 'http://api.presstrends.io/index.php/api/sites/update/api/';
 		$url = $api_base . $api_key . '/';
 		// Theme Data (by Jason)
@@ -1026,7 +1026,7 @@ function themeblvd_stats() {
 			$plugin_name .= '&';
 		}
 		$posts_with_comments = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}posts WHERE post_type='post' AND comment_count > 0");
-		if( $count_posts->publish > 0  ) // fix by Jason
+		if ( $count_posts->publish > 0  ) // fix by Jason
 			$comments_to_posts = number_format(($posts_with_comments / $count_posts->publish) * 100, 0, '.', '');
 		$pingback_result = $wpdb->get_var('SELECT COUNT(comment_ID) FROM '.$wpdb->comments.' WHERE comment_type = "pingback"');
 		$data['url'] = stripslashes(str_replace(array('http://', '/', ':' ), '', site_url()));
@@ -1047,7 +1047,7 @@ function themeblvd_stats() {
 			$url .= $k . '/' . $v . '/';
 		}
 		// Manually set theme name to avoid confusion with feed
-		if( defined( 'TB_THEME_NAME' ) )
+		if ( defined( 'TB_THEME_NAME' ) )
 			$data['theme_name'] = TB_THEME_NAME;
 		// Send response and set transient
 		$response = wp_remote_get( $url );
@@ -1060,7 +1060,7 @@ function themeblvd_stats() {
  *
  * @since 2.2.0
  */
-if( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
+if ( ! function_exists( 'themeblvd_load_theme_textdomain' ) ) {
 	function themeblvd_load_theme_textdomain() {
 		load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
 		load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
@@ -1168,7 +1168,7 @@ function themeblvd_get_image_sizes() {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
+if ( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
 	function themeblvd_add_image_sizes() {
 
 		// Get image sizes
@@ -1193,7 +1193,7 @@ if( ! function_exists( 'themeblvd_add_image_sizes' ) ) {
  *
  * @return array Framework's image sizes
  */
-if( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
+if ( ! function_exists( 'themeblvd_image_size_names_choose' ) ) {
 	function themeblvd_image_size_names_choose( $sizes ) {
 
 		// Get image sizes for framework that were registered.
@@ -1458,27 +1458,27 @@ function themeblvd_conditionals_config() {
  * @param string $url URL string to check
  * @return string $icon Type of URL (video or image) or blank if URL not supported
  */
-if( ! function_exists( 'themeblvd_prettyphoto_supported_link' ) ) {
+if ( ! function_exists( 'themeblvd_prettyphoto_supported_link' ) ) {
 	function themeblvd_prettyphoto_supported_link( $url ) {
 
 		$icon = '';
 
-		if( $url ) {
+		if ( $url ) {
 
 			// Link to Vimeo or YouTube page?
-			if( strpos( $url, 'vimeo.com' ) !== false ||
+			if ( strpos( $url, 'vimeo.com' ) !== false ||
 				strpos( $url, 'youtube.com' ) !== false ||
 				strpos( $url, 'youtu.be' ) !== false )
 			$icon = 'video';
 
-			if( ! $icon ) {
+			if ( ! $icon ) {
 				$parsed_url = parse_url( $url );
 				$type = wp_check_filetype( $parsed_url['path'] );
 				// Link to .mov file?
-				if( $type['ext'] == 'mov' )
+				if ( $type['ext'] == 'mov' )
 					$icon = 'video';
 				// Link to image file?
-				if( substr( $type['type'], 0, 5 ) == 'image' )
+				if ( substr( $type['type'], 0, 5 ) == 'image' )
 					$icon = 'image';
 			}
 		}

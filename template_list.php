@@ -33,7 +33,7 @@ get_header();
 						<div class="primary-post-list element-post_list_paginated post_list<?php echo themeblvd_get_classes( 'element_post_list_paginated', true ); ?>">
 							<?php
 							$post_list = new WP_Query( themeblvd_get_second_query() );
-							if( $post_list->have_posts() ) {
+							if ( $post_list->have_posts() ) {
 								while( $post_list->have_posts() ) {
 									$post_list->the_post();
 									global $more; $more = 0;

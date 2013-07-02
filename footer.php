@@ -20,7 +20,7 @@
 		themeblvd_main_end();
 
 		// Featured area (below)
-		if( themeblvd_config( 'featured_below' ) ) {
+		if ( themeblvd_config( 'featured_below' ) ) {
 			themeblvd_featured_below_start();
 			themeblvd_featured_below();
 			themeblvd_featured_below_end();

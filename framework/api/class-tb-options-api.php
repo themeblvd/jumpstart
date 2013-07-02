@@ -79,7 +79,7 @@ class Theme_Blvd_Options_API {
      */
 	public static function get_instance() {
 
-		if( self::$instance == null )
+		if ( self::$instance == null )
             self::$instance = new self;
 
         return self::$instance;
@@ -117,7 +117,7 @@ class Theme_Blvd_Options_API {
 	 */
 	private function set_option_id( $id = '' ) {
 
-		if( $id ) {
+		if ( $id ) {
 			$this->option_id = $id;
 			return;
 		}
@@ -186,7 +186,7 @@ class Theme_Blvd_Options_API {
 
 		// Generate sidebar layout options
 		$sidebar_layouts = array();
-		if( is_admin() ) {
+		if ( is_admin() ) {
 			$layouts = themeblvd_sidebar_layouts();
 			foreach( $layouts as $layout )
 				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
@@ -194,7 +194,7 @@ class Theme_Blvd_Options_API {
 
 		// Pull all the categories into an array
 		$options_categories = array();
-		if( is_admin() ) {
+		if ( is_admin() ) {
 			$options_categories_obj = get_categories( array( 'hide_empty' => false ) );
 			foreach ($options_categories_obj as $category) {
 		    	$options_categories[$category->cat_ID] = $category->cat_name;
@@ -510,7 +510,7 @@ class Theme_Blvd_Options_API {
 			);
 
 			// Section Level
-			if( $tab['sections'] ) {
+			if ( $tab['sections'] ) {
 				foreach( $tab['sections'] as $section_id => $section ) {
 
 					// Start section
@@ -519,12 +519,12 @@ class Theme_Blvd_Options_API {
 						'type' => 'section_start'
 					);
 
-					if( isset( $section['desc'] ) ) {
+					if ( isset( $section['desc'] ) ) {
 						$this->formatted_options['start_section_'.$section_id]['desc'] = $section['desc'];
 					}
 
 					// Options Level
-					if( $section['options'] ) {
+					if ( $section['options'] ) {
 						foreach( $section['options'] as $option_id => $option ) {
 							$this->formatted_options[$option_id] = $option;
 						}
@@ -553,7 +553,7 @@ class Theme_Blvd_Options_API {
 	public function set_settings( $settings = null ) {
 
 		// Apply settings passed into function
-		if( $settings && is_array( $settings ) ) {
+		if ( $settings && is_array( $settings ) ) {
 			$this->settings = $settings;
 			return;
 		}
@@ -563,7 +563,7 @@ class Theme_Blvd_Options_API {
 
 		// Do settings exist? If not, grab default values.
 		// Only do this for the frontend.
-		if( ! $this->settings && ! is_admin() ) {
+		if ( ! $this->settings && ! is_admin() ) {
 
 			// Because frontend, we need to add sanitiziation
 			themeblvd_add_sanitization();
@@ -611,7 +611,7 @@ class Theme_Blvd_Options_API {
 	 */
 	public function add_tab( $tab_id, $tab_name, $top = false ) {
 
-		if( $top ) {
+		if ( $top ) {
 
 			// Add tab to the top of array
 			$new_options = array();
@@ -658,27 +658,27 @@ class Theme_Blvd_Options_API {
 	public function add_section( $tab_id, $section_id, $section_name, $section_desc = '', $options = array(), $top = false ) {
 
 		// Make sure tab exists
-		if( ! isset( $this->raw_options[$tab_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id] ) )
 			return;
 
 		// Format options array
 		$new_options = array();
-		if( $options ) {
+		if ( $options ) {
 			foreach( $options as $option ) {
-				if( isset( $option['id'] ) ) {
+				if ( isset( $option['id'] ) ) {
 					$new_options[$option['id']] = $option;
 				}
 			}
 		}
 
 		// Does the options section already exist?
-		if( isset( $this->raw_options[$tab_id]['sections'][$section_id] ) ) {
+		if ( isset( $this->raw_options[$tab_id]['sections'][$section_id] ) ) {
 			$this->raw_options[$tab_id]['sections'][$section_id]['options'] = array_merge( $this->raw_options[$tab_id]['sections'][$section_id]['options'], $new_options );
 			return;
 		}
 
 		// Add new section to top or bottom
-		if( $top ) {
+		if ( $top ) {
 
 			$previous_sections = $this->raw_options[$tab_id]['sections'];
 
@@ -728,10 +728,10 @@ class Theme_Blvd_Options_API {
 	 */
 	public function add_option( $tab_id, $section_id, $option_id, $option ) {
 
-		if( ! isset( $this->raw_options[$tab_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id] ) )
 			return;
 
-		if( ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
 			return;
 
 		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] = $option;
@@ -748,10 +748,10 @@ class Theme_Blvd_Options_API {
 	 */
 	public function remove_option( $tab_id, $section_id, $option_id ) {
 
-		if( ! isset( $this->raw_options[$tab_id] ) || ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id] ) || ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
 			return;
 
-		if( isset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
+		if ( isset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
 
 			// If option has element's ID as key, we can find and
 			// remove it easier.
@@ -763,7 +763,7 @@ class Theme_Blvd_Options_API {
 			// and it doesn't have the element's ID as the key, we'll
 			// need to loop through to find it in order to remove it.
 			foreach( $this->raw_options[$tab_id]['sections'][$section_id]['options'] as $key => $value ) {
-				if( $value['id'] == $option_id ) {
+				if ( $value['id'] == $option_id ) {
 					unset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$key] );
 				}
 			}
@@ -784,13 +784,13 @@ class Theme_Blvd_Options_API {
 	 */
 	public function edit_option( $tab_id, $section_id, $option_id, $att, $value ) {
 
-		if( ! isset( $_themeblvd_core_options[$tab_id] ) )
+		if ( ! isset( $_themeblvd_core_options[$tab_id] ) )
 			return;
 
-		if( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) )
+		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) )
 			return;
 
-		if( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) )
+		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) )
 			return;
 
 		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id][$att] = $value;
@@ -845,14 +845,14 @@ class Theme_Blvd_Options_API {
 	 */
 	public function get_settings( $primary = '', $seconday = '' ) {
 
-		if( ! $primary )
+		if ( ! $primary )
 			return $this->settings;
 
-		if( ! isset( $this->settings[$primary] ) )
+		if ( ! isset( $this->settings[$primary] ) )
 			return null;
 
-		if( $seconday ) {
-			if( isset( $this->settings[$primary][$seconday] ) )
+		if ( $seconday ) {
+			if ( isset( $this->settings[$primary][$seconday] ) )
 				return $this->settings[$primary][$seconday];
 			else
 				return null;

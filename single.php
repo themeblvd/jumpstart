@@ -32,7 +32,7 @@ get_header();
 						<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'content', themeblvd_get_part( 'single' ) ); ?>
 							<?php themeblvd_single_footer(); ?>
-							<?php if( themeblvd_supports( 'comments', 'posts' ) ) comments_template( '', true ); ?>
+							<?php if ( themeblvd_supports( 'comments', 'posts' ) ) comments_template( '', true ); ?>
 						<?php endwhile; // end of the loop. ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->

@@ -19,7 +19,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
 
 	// Get conflicts if this is a sidebar table
-	if( $post_type == 'tb_sidebar' )
+	if ( $post_type == 'tb_sidebar' )
 		$conflicts = themeblvd_get_assignment_conflicts( $posts );
 
 	// Setup header/footer
@@ -58,7 +58,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 	// Table body
 	$output .= '<tbody>';
-	if( ! empty( $posts ) ) {
+	if ( ! empty( $posts ) ) {
 		foreach( $posts as $post ) {
 			$output .= '<tr id="row-'.$post->ID.'">';
 			$output .= '<th scope="row" class="check-column"><input type="checkbox" name="posts[]" value="'.$post->ID.'"></th>';
@@ -90,8 +90,8 @@ function themeblvd_post_table( $post_type, $columns ) {
 					case 'meta' :
 						$output .= '<td class="post-meta-'.$column['config'].'">';
 						$meta = get_post_meta( $post->ID, $column['config'], true );
-						if( isset( $column['inner'] ) ) {
-							if( isset( $meta[$column['inner']] ) )
+						if ( isset( $column['inner'] ) ) {
+							if ( isset( $meta[$column['inner']] ) )
 								$output .= esc_html($meta[$column['inner']]);
 						} else {
 							$output .= esc_html($meta);
@@ -106,15 +106,15 @@ function themeblvd_post_table( $post_type, $columns ) {
 					case 'assignments' :
 						$output .= '<td class="post-assignments">';
 						$location = get_post_meta( $post->ID, 'location', true );
-						if( $location && $location != 'floating' ) {
+						if ( $location && $location != 'floating' ) {
 							$assignments = get_post_meta( $post->ID, 'assignments', true );
-							if( is_array( $assignments ) && ! empty( $assignments ) ) {
+							if ( is_array( $assignments ) && ! empty( $assignments ) ) {
 								$output .= '<ul>';
 								foreach( $assignments as $key => $assignment ) {
 									in_array( $key, $conflicts[$location] ) ? $class = 'conflict' : $class = 'no-conflict';
-									if( $assignment['type'] == 'top' )
+									if ( $assignment['type'] == 'top' )
 										$output .= '<li class="'.$class.'">'.esc_html( $assignment['name'] ).'</li>';
-									elseif( $assignment['type'] == 'custom' )
+									elseif ( $assignment['type'] == 'custom' )
 										$output .= '<li class="'.$class.'">'.ucfirst( esc_html( $assignment['type'] ) ).': <code>'.esc_html( $assignment['name'] ).'</code></li>';
 									else
 										$output .= '<li class="'.$class.'">'.ucfirst( esc_html( $assignment['type'] ) ).': '.esc_html( $assignment['name'] ).'</li>';
@@ -203,7 +203,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	// Number of columns
-	if( $type == 'element' )
+	if ( $type == 'element' )
 		unset( $data_num[0] );
 
 	// Select number of columns
@@ -426,16 +426,16 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		'null' 		=> __( '- Select Content Type -', 'themeblvd' ),
 	);
 
-	if( in_array ( 'widget', $options ) )
+	if ( in_array ( 'widget', $options ) )
 		$sources['widget'] = __( 'Floating Widget Area', 'themeblvd' );
 
-	if( in_array ( 'current', $options ) )
+	if ( in_array ( 'current', $options ) )
 		$sources['current'] = __( 'Content of Current Page', 'themeblvd' );
 
-	if( in_array ( 'page', $options ) )
+	if ( in_array ( 'page', $options ) )
 		$sources['page'] = __( 'Content of External Page', 'themeblvd' );
 
-	if( in_array ( 'raw', $options ) )
+	if ( in_array ( 'raw', $options ) )
 		$sources['raw'] = __( 'Raw Content', 'themeblvd' );
 
 	// Set default value
@@ -456,11 +456,11 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	/* Build <select> for widget area
 	/*------------------------------------------------------*/
 
-	if( in_array ( 'widget', $options ) ) {
+	if ( in_array ( 'widget', $options ) ) {
 
 		// The selection of a floating widget area is only
 		// possible if the Widget Areas plugin is installed.
-		if( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
+		if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
 
 			// Message to get plugin
 			$select_sidebar = '<p class="warning">'.sprintf(__( 'In order for you to use this feature you need to have the %s plugin activated.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
@@ -476,7 +476,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$sidebars = themeblvd_get_select( 'sidebars' );
 
 			// Build <select>
-			if( ! empty( $sidebars ) ) {
+			if ( ! empty( $sidebars ) ) {
 				$select_sidebar  = '<div class="tb-fancy-select">';
 				$select_sidebar .= '<select class="select-sidebar" name= "'.esc_attr( $name.'['.$id.'][sidebar]' ).'">';
 				foreach( $sidebars as $key => $value ) {
@@ -497,7 +497,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	/* Build <select> for external page
 	/*------------------------------------------------------*/
 
-	if( in_array ( 'page', $options ) ) {
+	if ( in_array ( 'page', $options ) ) {
 
 		// Set default value
 		$current_value = ! empty( $val ) && ! empty( $val['page'] ) ? $val['page'] : null;
@@ -506,7 +506,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		$pages = themeblvd_get_select( 'pages' );
 
 		// Build <select>
-		if( ! empty( $pages ) ) {
+		if ( ! empty( $pages ) ) {
 			$select_page  = '<div class="tb-fancy-select">';
 			$select_page .= '<select name= "'.esc_attr( $name.'['.$id.'][page]' ).'">';
 			foreach( $pages as $key => $value ) {
@@ -526,7 +526,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	/* Build raw content input
 	/*------------------------------------------------------*/
 
-	if( in_array ( 'raw', $options ) ) {
+	if ( in_array ( 'raw', $options ) ) {
 
 		// Set default value
 		$current_value = ! empty( $val ) && ! empty( $val['raw'] ) ? $val['raw'] : null;
@@ -546,21 +546,21 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	$output = '<div class="column-content-types">';
 	$output .= $select_type;
 
-	if( in_array ( 'widget', $options ) ) {
+	if ( in_array ( 'widget', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-widget">';
 		$output .= $select_sidebar;
 		$output .= '<p class="note">'.__( 'Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way in the Widget Area manager.', 'themeblvd' ).'</p>';
 		$output .= '</div>';
 	}
 
-	if( in_array ( 'page', $options ) ) {
+	if ( in_array ( 'page', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-page">';
 		$output .= $select_page;
 		$output .= '<p class="note">'.__( 'Select an external page to pull content from.', 'themeblvd' ).'</p>';
 		$output .= '</div>';
 	}
 
-	if( in_array ( 'raw', $options ) ) {
+	if ( in_array ( 'raw', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-raw">';
 		$output .= $raw_content;
 		$output .= '<p class="note">'.__( 'You can use basic HTML here, and most shortcodes.', 'themeblvd' ).'</p>';
@@ -597,7 +597,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 		'top' 				=> array(),
 		'custom'			=> ''
 	);
-	if( is_array( $val ) && ! empty( $val ) ) {
+	if ( is_array( $val ) && ! empty( $val ) ) {
 		foreach( $val as $key => $group ) {
 			$item_id = $group['id'];
 			switch( $group['type'] ) {
@@ -642,7 +642,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Pages
 			case 'pages' :
 				$pages = get_pages( array( 'hierarchical' => false ) );
-				if( ! empty( $pages ) ) {
+				if ( ! empty( $pages ) ) {
 					$output .= '<ul>';
 					foreach( $pages as $page ) {
 						in_array( $page->post_name, $assignments['pages'] ) ? $checked = true : $checked = false;
@@ -658,7 +658,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Posts
 			case 'posts' :
 				$assignment_list = '';
-				if( ! empty( $assignments['posts'] ) )
+				if ( ! empty( $assignments['posts'] ) )
 					$assignment_list = implode( ', ', $assignments['posts'] );
 				$output .= '<textarea name="'.esc_attr( $name.'['.$id.'][post]' ).'">'.$assignment_list.'</textarea>';
 				$output .= '<p class="note">'.__( 'Enter in a comma-separated list of the post slugs you\'d like to add to the assignments.', 'themeblvd' ).'</p>';
@@ -669,7 +669,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Posts in Category
 			case 'posts_in_category' :
 
-				if( isset( $GLOBALS['sitepress'] ) ) {
+				if ( isset( $GLOBALS['sitepress'] ) ) {
 					// WPML compat
 					global $sitepress;
 					remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
@@ -679,7 +679,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$categories = get_categories( array( 'hide_empty' => false ) );
 				}
 
-		        if( ! empty( $categories ) ) {
+		        if ( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
 		        	foreach ( $categories as $category ) {
 						in_array( $category->slug, $assignments['posts_in_category'] ) ? $checked = true : $checked = false;
@@ -695,7 +695,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Category Archives
 			case 'categories' :
 
-				if( isset( $GLOBALS['sitepress'] ) ) {
+				if ( isset( $GLOBALS['sitepress'] ) ) {
 					// WPML compat
 					global $sitepress;
 					remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
@@ -705,7 +705,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					$categories = get_categories( array( 'hide_empty' => false ) );
 				}
 
-		        if( ! empty( $categories ) ) {
+		        if ( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
 		        	foreach ( $categories as $category ) {
 						in_array( $category->slug, $assignments['categories'] ) ? $checked = true : $checked = false;
@@ -721,7 +721,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Tag Archives
 			case 'tags' :
 				$assignment_list = '';
-				if( ! empty( $assignments['tags'] ) )
+				if ( ! empty( $assignments['tags'] ) )
 					$assignment_list = implode( ', ', $assignments['tags'] );
 				$output .= '<textarea name="'.esc_attr( $name.'['.$id.'][tag]' ).'">'.$assignment_list.'</textarea>';
 				$output .= '<p class="note">'.__( 'Enter in a comma-separated list of the tags you\'d like to add to the assignments.', 'themeblvd' ).'</p>';
@@ -742,7 +742,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Custom
 			case 'custom' :
 				$disable = apply_filters( 'themeblvd_disable_sidebar_custom_conditional', false ); // If someone feels unsafe having this option which uses eval(), they can disable it here.
-				if( ! $disable ) {
+				if ( ! $disable ) {
 					$output .= '<input type="text" name="'.esc_attr( $name.'['.$id.'][custom]' ).'" value="'.$assignments['custom'].'" />';
 					$output .= '<p class="note">'.__( 'Enter in a custom <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">conditional statement</a>.', 'themeblvd' ).'</p>';
 					$output .= '<p class="note"><em>'.__( 'Examples:', 'themeblvd' ).'</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>';
@@ -835,14 +835,14 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/* Image
 	/*------------------------------------------------------*/
 
-	if( function_exists('wp_enqueue_media') ) {
+	if ( function_exists('wp_enqueue_media') ) {
 
-		if( is_array( $val ) && isset( $val['image'] ) )
+		if ( is_array( $val ) && isset( $val['image'] ) )
 			$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'] );
 		else
 			$current_value = array( 'url' => '', 'width' => '' );
 
-		if( is_array( $val ) && isset( $val['image_2x'] ) )
+		if ( is_array( $val ) && isset( $val['image_2x'] ) )
 			$current_retina = array( 'url' => $val['image_2x'] );
 		else
 			$current_retina = array( 'url' => '' );
@@ -863,12 +863,12 @@ function themeblvd_logo_option( $id, $name, $val ) {
 
 		// Media uploader prior to WP 3.5 -- @deprecated
 
-		if( is_array( $val ) && isset( $val['image'] ) )
+		if ( is_array( $val ) && isset( $val['image'] ) )
 			$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'], 'id' => '' );
 		else
 			$current_value = array( 'url' => '', 'width' => '', 'id' => '' );
 
-		if( is_array( $val ) && isset( $val['image_2x'] ) )
+		if ( is_array( $val ) && isset( $val['image_2x'] ) )
 			$current_retina = array( 'url' => $val['image_2x'], 'id' => '' );
 		else
 			$current_retina = array( 'url' => '', 'id' => '' );
@@ -966,7 +966,7 @@ function themeblvd_social_media_option( $id, $name, $val ) {
 	foreach( $sources as $key => $source ) {
 		// Setup
 		$checked = is_array( $val ) && array_key_exists( $key, $val ) ? true : false;
-		if( ! empty( $val ) && ! empty( $val[$key] ) )
+		if ( ! empty( $val ) && ! empty( $val[$key] ) )
 			$value = $val[$key];
 		else
 			$value = $key == 'email' ? 'mailto:' : 'http://';
@@ -978,7 +978,7 @@ function themeblvd_social_media_option( $id, $name, $val ) {
 		$output .= '</span>';
 		$output .= '<input class="of-input social_media-input" value="'.esc_attr( $value ).'" type="text" name="'.esc_attr( $name.'['.$id.'][sources]['.$key.']' ).'" />';
 		$output .= '</div><!-- .item (end) -->';
-		if( $counter == $divider ) {
+		if ( $counter == $divider ) {
 			// Separate options into two columns
 			$output .= '</div><!-- .column-1 (end) -->';
 			$output .= '<div class="column-2">';
@@ -1025,14 +1025,14 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
 function themeblvd_custom_layout_dropdown( $layout = null ) {
 
 	// Make sure layout builder plugin is installed
-	if( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
+	if ( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 		$message = sprintf( __( 'In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
 		return '<p class="tb_custom_layout"><em>'.$message.'</em></p>';
 	}
 
 	$custom_layouts = get_posts('post_type=tb_layout&numberposts=-1');
 	$output = '<p><strong>'.__( 'Custom Layout', 'themeblvd' ).'</strong></p>';
-	if( ! empty( $custom_layouts ) ) {
+	if ( ! empty( $custom_layouts ) ) {
 		$output .= '<select name="_tb_custom_layout">';
 		foreach( $custom_layouts as $custom_layout ) {
 			$output .= '<option value="'.$custom_layout->post_name.'" '.selected( $custom_layout->post_name, $layout, false ).'>'.$custom_layout->post_title.'</option>';
@@ -1060,7 +1060,7 @@ if ( ! function_exists( 'themeblvd_options_footer_text_default' ) ) {
 
 		// Changelog link
 		$changelog = '';
-		if( defined( 'TB_THEME_ID' ) )
+		if ( defined( 'TB_THEME_ID' ) )
 			$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), __( 'Changelog', 'themeblvd' ) );
 
 		// Output

@@ -7,7 +7,7 @@
  * Slightly modified for use in the Options Framework.
  */
 
-if( is_admin() ) {
+if ( is_admin() ) {
 	// Load additional css and js for image uploads on the Options Framework page
 	$of_page = 'appearance_page_options-framework';
 	add_action( "admin_print_styles-$of_page", 'optionsframework_mlu_css', 0 );
@@ -19,7 +19,7 @@ if( is_admin() ) {
  * individual galleries for different uploaders.
  */
 
-if( ! function_exists( 'optionsframework_mlu_init' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_init' ) ) {
 	function optionsframework_mlu_init () {
 		register_post_type( 'optionsframework', array(
 			'labels' => array(
@@ -43,7 +43,7 @@ if( ! function_exists( 'optionsframework_mlu_init' ) ) {
  * on the pages where this function is called.
  */
 
-if( ! function_exists( 'optionsframework_mlu_css' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_css' ) ) {
 	function optionsframework_mlu_css() {
 		$_html = '';
 		$_html .= '<link rel="stylesheet" href="' . get_site_url() . '/' . WPINC . '/js/thickbox/thickbox.css" type="text/css" media="screen" />' . "\n";
@@ -60,7 +60,7 @@ if( ! function_exists( 'optionsframework_mlu_css' ) ) {
  * Media Library-driven AJAX File Uploader Module.
  */
 
-if( ! function_exists( 'optionsframework_mlu_js' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_js' ) ) {
 	function optionsframework_mlu_js () {
 		// Registers custom scripts for the Media Library AJAX uploader.
 		wp_register_script( 'of-medialibrary-uploader', TB_FRAMEWORK_URI .'/admin/options/js/of-medialibrary-uploader.min.js', array( 'jquery', 'thickbox' ) );
@@ -87,7 +87,7 @@ if( ! function_exists( 'optionsframework_mlu_js' ) ) {
  * - optionsframework_mlu_get_silentpost()
  */
 
-if( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
+if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 	function optionsframework_medialibrary_uploader( $option_name, $type, $_id, $_value, $_mode = 'full', $_desc = null, $_postid = 0, $_name = null, $_upload_text = null) {
 
 		$output = '';
@@ -97,7 +97,7 @@ if( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$value = array( 'url' => '', 'id' => '' );
 		$upload_text = __( 'Upload', 'themeblvd' );
 
-		if( $type == 'slider' )
+		if ( $type == 'slider' )
 			$name = $option_name.'[image]';
 		else
 			$name = $option_name.'['.$_id.']';
@@ -105,17 +105,17 @@ if( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$id = strip_tags( strtolower( $_id ) );
 
 		// If a value is passed and we don't have a stored value, use the value that's passed through.
-		if( $_value )
+		if ( $_value )
 			$value = $_value;
 
 		// If passed name, set it.
-		if( $_name ) {
+		if ( $_name ) {
 			$name = $name.'['.$_name.']';
 			$id = $id.'_'.$_name;
 		}
 
 		// Set the ID for the post.
-		if( $_postid )
+		if ( $_postid )
 			// Set ID to the one passed in.
 			$int = $_postid;
 		else
@@ -124,39 +124,39 @@ if( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 			$int = optionsframework_mlu_get_silentpost( $id );
 
 		// If passed upload button text, set it.
-		if( $_upload_text )
+		if ( $_upload_text )
 			$upload_text = $_upload_text;
 
-		if( $value['url'] ) { $class = ' has-file'; }
+		if ( $value['url'] ) { $class = ' has-file'; }
 
 		// Allow multiple upload options on the same page with
 		// same ID -- This could happen in the Layout Builder, for example.
 		$formfield = uniqid( $id.'_' );
 
-		if( $type == 'slider' ) {
+		if ( $type == 'slider' ) {
 			// Slider image ID input w/hidden image URL input for user admin display
 			$output .= '<span class="locked"><span></span><input id="' . $formfield . '_id" class="locked upload' . $class . '" type="text" name="'.$name.'[id]" value="' . $value['id'] . '" /></span>' . "\n";
 			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="hidden" name="'.$name.'[url]" value="' . $value['url'] . '" />' . "\n";
 			$output .= '<p class="explain">'.__( 'You must use the "Get Image" button to modify the image ID for this slide. This is what the locked icon represents.', 'themeblvd' ).'</p>';
-		} elseif( $type == 'logo' ){
+		} elseif ( $type == 'logo' ){
 			$width_name = str_replace( '[image]', '[image_width]', $name );
 			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL', 'themeblvd').'" />' . "\n";
 			$output .= '<input id="' . $formfield . '_width" class="image-width upload' . $class . '" type="text" name="'.$width_name.'" value="' . $value['width'] . '" placeholder="'.__('Width', 'themeblvd').'" />' . "\n";
-		} elseif( $type == 'logo_2x' ){
+		} elseif ( $type == 'logo_2x' ){
 			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL twice the size of standard image', 'themeblvd').'" />' . "\n";
 		} else {
 			// Standard image input
 			$output .= '<input id="' . $formfield . '" class="image-url upload' . $class . '" type="text" name="'.$name.'" value="' . $value['url'] . '" placeholder="'.__('Image URL', 'themeblvd').'" />' . "\n";
 		}
 		$output .= '<input id="upload_' . $formfield . '" class="upload_button button" type="button" value="' . $upload_text . '" data-upload-type="'. $type .'" rel="' . $int . '" />' . "\n";
-		if( $_desc != '' ) {
+		if ( $_desc != '' ) {
 			$output .= '<span class="of_metabox_desc">' . $_desc . '</span>' . "\n";
 		}
 		$output .= '<div class="screenshot" id="' . $id . '_image">' . "\n";
-		if( $value['url'] != '' ) {
+		if ( $value['url'] != '' ) {
 			$remove = '<a href="javascript:(void);" class="mlu_remove button">Remove</a>';
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value['url'] );
-			if( $image ) {
+			if ( $image ) {
 				$output .= '<img src="' . $value['url'] . '" alt="" />'.$remove.'';
 			} else {
 				$parts = explode( "/", $value['url'] );
@@ -190,7 +190,7 @@ if( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
  * optionsframework_mlu_get_silentpost ( 'of_logo' );
  */
 
-if( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 	function optionsframework_mlu_get_silentpost ( $_token ) {
 
 		global $wpdb;
@@ -202,8 +202,8 @@ if( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 
 		$_token = strtolower( str_replace( ' ', '_', $_token ) );
 
-		// if( in_array( $_token, $_whitelist ) ) {
-		if( $_token ) {
+		// if ( in_array( $_token, $_whitelist ) ) {
+		if ( $_token ) {
 
 			// Tell the function what to look for in a post.
 
@@ -219,7 +219,7 @@ if( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 			$_posts = $wpdb->get_row( $query );
 
 			// If we've got a post, loop through and get it's ID.
-			if( count( $_posts ) ) {
+			if ( count( $_posts ) ) {
 				$_id = $_posts->ID;
 			} else {
 
@@ -241,19 +241,19 @@ if( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
  * Trigger code inside the Media Library popup.
  */
 
-if( ! function_exists( 'optionsframework_mlu_insidepopup' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_insidepopup' ) ) {
 	function optionsframework_mlu_insidepopup () {
-		if( isset( $_REQUEST['is_optionsframework'] ) && $_REQUEST['is_optionsframework'] == 'yes' ) {
+		if ( isset( $_REQUEST['is_optionsframework'] ) && $_REQUEST['is_optionsframework'] == 'yes' ) {
 			add_action( 'admin_head', 'optionsframework_mlu_js_popup' );
 			add_filter( 'media_upload_tabs', 'optionsframework_mlu_modify_tabs' );
 		}
 	}
 }
 
-if( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 	function optionsframework_mlu_js_popup () {
 		$_of_title = $_REQUEST['of_title'];
-		if( ! $_of_title ) { $_of_title = 'file'; } // End IF Statement
+		if ( ! $_of_title ) { $_of_title = 'file'; } // End IF Statement
 		?>
 		<script type="text/javascript">
 		<!--
@@ -295,7 +295,7 @@ if( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 /**
  * Triggered inside the Media Library popup to modify the title of the "Gallery" tab.
  */
-if( ! function_exists( 'optionsframework_mlu_modify_tabs' ) ) {
+if ( ! function_exists( 'optionsframework_mlu_modify_tabs' ) ) {
 	function optionsframework_mlu_modify_tabs ( $tabs ) {
 		$tabs['gallery'] = str_replace( __( 'Gallery', 'themeblvd' ), __( 'Previously Uploaded', 'themeblvd' ), $tabs['gallery'] );
 		return $tabs;

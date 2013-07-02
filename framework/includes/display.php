@@ -9,9 +9,9 @@
  *
  * @since 2.2.0
  */
-if( ! function_exists( 'themeblvd_viewport_default' ) ) {
+if ( ! function_exists( 'themeblvd_viewport_default' ) ) {
 	function themeblvd_viewport_default() {
-		if( themeblvd_supports( 'display', 'responsive' ) )
+		if ( themeblvd_supports( 'display', 'responsive' ) )
 			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	}
 }
@@ -25,7 +25,7 @@ if( ! function_exists( 'themeblvd_viewport_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_header_above_default' ) ) {
+if ( ! function_exists( 'themeblvd_header_above_default' ) ) {
 	function themeblvd_header_above_default() {
 		echo '<div class="header-above">';
 		themeblvd_display_sidebar( 'ad_above_header' );
@@ -38,7 +38,7 @@ if( ! function_exists( 'themeblvd_header_above_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_header_content_default' ) ) {
+if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 	function themeblvd_header_content_default() {
 		?>
 		<div id="header_content">
@@ -60,20 +60,20 @@ if( ! function_exists( 'themeblvd_header_content_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
+if ( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 	function themeblvd_header_logo_default() {
 		$option = themeblvd_get_option( 'logo' );
 		$classes = 'header_logo header_logo_'.$option['type'];
-		if( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' )
+		if ( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' )
 			$classes .= ' header_logo_text';
-		if( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) )
+		if ( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) )
 			$classes .= ' header_logo_has_tagline';
-		if( $option['type'] == 'title_tagline' )
+		if ( $option['type'] == 'title_tagline' )
 			$classes .= ' header_logo_has_tagline';
 		?>
 		<div class="<?php echo $classes; ?>">
 			<?php
-			if( ! empty( $option['type'] ) ) {
+			if ( ! empty( $option['type'] ) ) {
 				switch( $option['type'] ) {
 					case 'title' :
 						echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
@@ -84,16 +84,16 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 						break;
 					case 'custom' :
 						echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.$option['custom'].'">'.$option['custom'].'</a></h1>';
-						if( $option['custom_tagline'] )
+						if ( $option['custom_tagline'] )
 							echo '<span class="tagline">'.$option['custom_tagline'].'</span>';
 						break;
 					case 'image' :
 						$image_1x = $option['image'];
 						$image_2x = '';
 						$image_width = '';
-						if( ! empty( $option['image_2x'] ) )
+						if ( ! empty( $option['image_2x'] ) )
 							$image_2x = $option['image_2x'];
-						if( ! empty( $option['image_width'] ) )
+						if ( ! empty( $option['image_width'] ) )
 							$image_width = $option['image_width'];
 
 						echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$image_1x.'" width="'.$image_width.'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
@@ -111,7 +111,7 @@ if( ! function_exists( 'themeblvd_header_logo_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
+if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 	function themeblvd_header_menu_default() {
 		do_action( 'themeblvd_header_menu_before' );
 		?>
@@ -140,14 +140,14 @@ if( ! function_exists( 'themeblvd_header_menu_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_footer_content_default' ) ) {
+if ( ! function_exists( 'themeblvd_footer_content_default' ) ) {
 	function themeblvd_footer_content_default() {
 		// Grab the setup
 		$footer_setup = themeblvd_get_option( 'footer_setup' );
 		// Make sure there's actually a footer option in the theme setup
-		if( is_array( $footer_setup ) ) {
+		if ( is_array( $footer_setup ) ) {
 			// Only move forward if user has selected for columns to show
-			if( $footer_setup['num'] > 0 ) {
+			if ( $footer_setup['num'] > 0 ) {
 				// Build array of columns
 				$i = 1;
 				$columns = array();
@@ -177,7 +177,7 @@ if( ! function_exists( 'themeblvd_footer_content_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
+if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 	function themeblvd_footer_sub_content_default() {
 		?>
 		<div id="footer_sub_content" class="clearfix">
@@ -205,7 +205,7 @@ if( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_footer_below_default' ) ) {
+if ( ! function_exists( 'themeblvd_footer_below_default' ) ) {
 	function themeblvd_footer_below_default() {
 		echo '<div class="footer-below">';
 		themeblvd_display_sidebar( 'ad_below_footer' );
@@ -223,7 +223,7 @@ if( ! function_exists( 'themeblvd_footer_below_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) {
+if ( ! function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) {
 	function themeblvd_fixed_sidebar_before_default( $side ) {
 		echo '<div class="fixed-sidebar '.$side.'-sidebar '.themeblvd_get_column_class( $side ).'">';
 		echo '<div class="fixed-sidebar-inner">';
@@ -235,7 +235,7 @@ if( ! function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) {
+if ( ! function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) {
 	function themeblvd_fixed_sidebar_after_default() {
 		echo '</div><!-- .fixed-sidebar-inner (end) -->';
 		echo '</div><!-- .fixed-sidebar (end) -->';
@@ -251,11 +251,11 @@ if( ! function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_featured_start_default' ) ) {
+if ( ! function_exists( 'themeblvd_featured_start_default' ) ) {
 	function themeblvd_featured_start_default() {
 		$classes = '';
 		$featured = themeblvd_config( 'featured' );
-		if( $featured ) {
+		if ( $featured ) {
 			foreach( $featured as $class )
 				$classes .= " $class";
 
@@ -275,7 +275,7 @@ if( ! function_exists( 'themeblvd_featured_start_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
+if ( ! function_exists( 'themeblvd_featured_end_default' ) ) {
 	function themeblvd_featured_end_default() {
 		?>
 					<div class="clear"></div>
@@ -297,11 +297,11 @@ if( ! function_exists( 'themeblvd_featured_end_default' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_featured_below_start_default' ) ) {
+if ( ! function_exists( 'themeblvd_featured_below_start_default' ) ) {
 	function themeblvd_featured_below_start_default() {
 		$classes = '';
 		$featured_below = themeblvd_config( 'featured_below' );
-		if( $featured_below ) {
+		if ( $featured_below ) {
 			foreach( $featured_below as $class )
 				$classes .= " $class";
 
@@ -321,7 +321,7 @@ if( ! function_exists( 'themeblvd_featured_below_start_default' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
+if ( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
 	function themeblvd_featured_below_end_default() {
 		?>
 					<div class="clear"></div>
@@ -343,7 +343,7 @@ if( ! function_exists( 'themeblvd_featured_below_end_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_main_start_default' ) ) {
+if ( ! function_exists( 'themeblvd_main_start_default' ) ) {
 	function themeblvd_main_start_default() {
 		?>
 		<!-- MAIN (start) -->
@@ -361,7 +361,7 @@ if( ! function_exists( 'themeblvd_main_start_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_main_end_default' ) ) {
+if ( ! function_exists( 'themeblvd_main_end_default' ) ) {
 	function themeblvd_main_end_default() {
 		?>
 						<div class="clear"></div>
@@ -380,7 +380,7 @@ if( ! function_exists( 'themeblvd_main_end_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_main_top_default' ) ) {
+if ( ! function_exists( 'themeblvd_main_top_default' ) ) {
 	function themeblvd_main_top_default() {
 		echo '<div class="main-top">';
 		themeblvd_display_sidebar( 'ad_above_content' );
@@ -393,7 +393,7 @@ if( ! function_exists( 'themeblvd_main_top_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_main_bottom_default' ) ) {
+if ( ! function_exists( 'themeblvd_main_bottom_default' ) ) {
 	function themeblvd_main_bottom_default() {
 		echo '<div class="main-bottom">';
 		themeblvd_display_sidebar( 'ad_below_content' );
@@ -406,9 +406,9 @@ if( ! function_exists( 'themeblvd_main_bottom_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_breadcrumbs_default' ) ) {
+if ( ! function_exists( 'themeblvd_breadcrumbs_default' ) ) {
 	function themeblvd_breadcrumbs_default() {
-		if( themeblvd_show_breadcrumbs() ){
+		if ( themeblvd_show_breadcrumbs() ){
 			?>
 			<div id="breadcrumbs">
 				<div class="breadcrumbs-inner">
@@ -433,10 +433,10 @@ if( ! function_exists( 'themeblvd_breadcrumbs_default' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_content_top_default' ) ) {
+if ( ! function_exists( 'themeblvd_content_top_default' ) ) {
 	function themeblvd_content_top_default() {
-		if( is_archive() ) {
-			if( themeblvd_get_option( 'archive_title', null, 'false' ) != 'false' ) {
+		if ( is_archive() ) {
+			if ( themeblvd_get_option( 'archive_title', null, 'false' ) != 'false' ) {
 				echo '<div class="element element-headline primary-entry-title">';
 				echo '<h1 class="entry-title">';
 				themeblvd_archive_title();
@@ -444,9 +444,9 @@ if( ! function_exists( 'themeblvd_content_top_default' ) ) {
 				echo '</div><!-- .element (end) -->';
 			}
 		}
-		if( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
+		if ( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
 			global $post;
-			if( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) {
+			if ( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) {
 				echo '<div class="element element-headline primary-entry-title">';
 				echo '<h1 class="entry-title">';
 				the_title();
@@ -465,7 +465,7 @@ if( ! function_exists( 'themeblvd_content_top_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
+if ( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 	function themeblvd_blog_meta_default() {
 
 		// Setup text strings so their run through the
@@ -499,7 +499,7 @@ if( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_blog_tags_default' ) ) {
+if ( ! function_exists( 'themeblvd_blog_tags_default' ) ) {
 	function themeblvd_blog_tags_default() {
 		the_tags( '<span class="tags"><i class="icon-tags"></i> ', ', ', '</span>' );
 	}
@@ -516,7 +516,7 @@ if( ! function_exists( 'themeblvd_blog_tags_default' ) ) {
  * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
  * @param string $gallery If thumb is linking to gallery, specify the prettyPhoto extension rel="themeblvd_lightbox[gallery]" -- i.e. the "gallery" part
  */
-if( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
+if ( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
 	function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
 		echo themeblvd_get_post_thumbnail( $location, $size, $link, $allow_filters, $gallery );
 	}
@@ -529,9 +529,9 @@ if( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
  *
  * @param string $type Type of content -- content or excerpt
  */
-if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
+if ( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 	function themeblvd_blog_content_default( $type ) {
-		if( $type == 'content' ) {
+		if ( $type == 'content' ) {
 			// Show full content
 			the_content( apply_filters( 'themeblvd_the_content_more_text', themeblvd_get_local('read_more') ) );
 		} else {
@@ -551,7 +551,7 @@ if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 			));
 			the_excerpt();
 			$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
-			if( $args['p'] )
+			if ( $args['p'] )
 				$button = '<p>'.$button.'</p>';
 			echo $button;
 		}
@@ -567,7 +567,7 @@ if( ! function_exists( 'themeblvd_blog_content_default' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_element_open_default' ) ) {
+if ( ! function_exists( 'themeblvd_element_open_default' ) ) {
 	function themeblvd_element_open_default( $type, $location, $classes ) {
 		echo '<div class="'.$classes.'">';
 		echo '<div class="element-inner">';
@@ -580,7 +580,7 @@ if( ! function_exists( 'themeblvd_element_open_default' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_element_close_default' ) ) {
+if ( ! function_exists( 'themeblvd_element_close_default' ) ) {
 	function themeblvd_element_close_default( $type, $location, $classes ) {
 		echo '</div><!-- .element-inner-wrap (end) -->';
 		echo '</div><!-- .element-inner (end) -->';
@@ -597,7 +597,7 @@ if( ! function_exists( 'themeblvd_element_close_default' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_before_signup_form' ) ) {
+if ( ! function_exists( 'themeblvd_before_signup_form' ) ) {
 	function themeblvd_before_signup_form() {
 		themeblvd_main_start();
 		themeblvd_main_top();
@@ -614,7 +614,7 @@ if( ! function_exists( 'themeblvd_before_signup_form' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_after_signup_form' ) ) {
+if ( ! function_exists( 'themeblvd_after_signup_form' ) ) {
 	function themeblvd_after_signup_form() {
 		echo '</div><!-- .grid-protection (end) -->';
 		echo '</div><!-- .sidebar_layout-inner (end) -->';

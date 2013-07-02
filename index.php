@@ -30,7 +30,7 @@ get_header();
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
 
-						<?php if( themeblvd_is_grid_mode() ) : ?>
+						<?php if ( themeblvd_is_grid_mode() ) : ?>
 
 							<!-- HOMEPAGE POST GRID (start) -->
 
@@ -42,13 +42,13 @@ get_header();
 									if ( have_posts() ) {
 										while ( have_posts() ) {
 											the_post();
-											if( $counter == 1 ) themeblvd_open_row();
+											if ( $counter == 1 ) themeblvd_open_row();
 											get_template_part( 'content', themeblvd_get_part( 'index' ) );
-											if( $counter % $columns == 0 ) themeblvd_close_row();
-											if( $counter % $columns == 0 && themeblvd_get_att( 'posts_per_page' ) != $counter ) themeblvd_open_row();
+											if ( $counter % $columns == 0 ) themeblvd_close_row();
+											if ( $counter % $columns == 0 && themeblvd_get_att( 'posts_per_page' ) != $counter ) themeblvd_open_row();
 											$counter = themeblvd_set_att( 'counter', $counter+1 );
 										}
-										if( ($counter-1) != themeblvd_get_att( 'posts_per_page' ) ) themeblvd_close_row();
+										if ( ($counter-1) != themeblvd_get_att( 'posts_per_page' ) ) themeblvd_close_row();
 									} else {
 										echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
 									}

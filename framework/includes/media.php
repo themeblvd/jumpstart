@@ -11,7 +11,7 @@
  * @param string $gallery If thumb is linking to gallery, specify the prettyPhoto extension rel="themeblvd_lightbox[gallery]" -- i.e. the "gallery" part
  * @return string $output HTML to output thumbnail
  */
-if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
+if ( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 	function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
 
 		global $post;
@@ -30,7 +30,7 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 		// we still want plugins to be able to filter in here
 		// however they want. This same filter is applied below
 		// on the final output.
-		if( ! has_post_thumbnail( $post->ID ) && $allow_filters )
+		if ( ! has_post_thumbnail( $post->ID ) && $allow_filters )
 			return apply_filters( 'themeblvd_post_thumbnail', '', $location, $size, $link );
 
 		// Determine correct thumbnail size string, or if wasn't
@@ -39,22 +39,22 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 
 		// If $size was set to null, it means the post
 		// thumb should be hidden. So, return nothing.
-		if( $size === null )
+		if ( $size === null )
 			return $output;
 
 		// Can we just skip the featured image?
 		$thumb_link_meta = get_post_meta( $post->ID, '_tb_thumb_link', true ); // used below in determining featured image link
-		if( $thumb_link_meta == 'inactive' )
+		if ( $thumb_link_meta == 'inactive' )
 			$link = false;
 
 		// How about skipping featured image link on the single post?
-		if( $link && $location == 'single' && get_post_meta( $post->ID, '_tb_thumb_link_single', true ) == 'no' )
+		if ( $link && $location == 'single' && get_post_meta( $post->ID, '_tb_thumb_link_single', true ) == 'no' )
 			$link = false;
 
 		// Determine link for featured image
-		if( $link ) {
+		if ( $link ) {
 			$possible_link_options = array( 'post', 'thumbnail', 'image', 'video', 'external' );
-			if( in_array( $thumb_link_meta, $possible_link_options ) ) {
+			if ( in_array( $thumb_link_meta, $possible_link_options ) ) {
 				switch( $thumb_link_meta ) {
 
 					case 'post' :
@@ -64,24 +64,24 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 					case 'thumbnail' :
 						$link_url = wp_get_attachment_url( $attachment_id );
 						$link_target = ' rel="featured_themeblvd_lightbox"';
-						if( $gallery )
+						if ( $gallery )
 							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						break;
 
 					case 'image' :
 						$link_url = get_post_meta( $post->ID, '_tb_image_link', true );
 						$link_target = ' rel="featured_themeblvd_lightbox"';
-						if( $gallery )
+						if ( $gallery )
 							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						break;
 
 					case 'video' :
 						$link_url = get_post_meta( $post->ID, '_tb_video_link', true );
 						$link_target = ' rel="featured_themeblvd_lightbox"';
-						if( $gallery )
+						if ( $gallery )
 							$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
 						// WP oEmbed for non YouTube and Vimeo videos
-						if( ! themeblvd_prettyphoto_supported_link( $link_url ) ) {
+						if ( ! themeblvd_prettyphoto_supported_link( $link_url ) ) {
 							$id = uniqid('inline-video-');
 							$output .= sprintf( '<div id="%s" class="hide">%s</div>', $id, wp_oembed_get($link_url) );
 							$link_url = "#{$id}";
@@ -91,7 +91,7 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 					case 'external' :
 						$link_url = get_post_meta( $post->ID, '_tb_external_link', true );
 						$target = get_post_meta( $post->ID, '_tb_external_link_target', true );
-						if( ! $target )
+						if ( ! $target )
 							$target = '_blank';
 						$link_target = ' target="'.$target.'"';
 						break;
@@ -104,24 +104,24 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 		// Attributes
 		$size_class = $size;
 
-		if( $size_class == 'tb_small' )
+		if ( $size_class == 'tb_small' )
 			$size_class = 'small';
 
 		$classes = 'attachment-'.$size_class.' wp-post-image';
 
-		if( ! $link ) {
+		if ( ! $link ) {
 			$classes .= ' thumbnail';
 		} else {
-			if( is_single() )
+			if ( is_single() )
 				$title = ' title="'.get_the_title($post->ID).'"';
 			$anchor_class = 'thumbnail';
-			if( $thumb_link_meta != 'thumbnail' )
+			if ( $thumb_link_meta != 'thumbnail' )
 				$anchor_class .= ' '.$thumb_link_meta;
 		}
 
 		// Image with link
 		$image = get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
-		if( $link )
+		if ( $link )
 			$image = sprintf('<a href="%s"%s class="%s"%s>%s%s</a>', $link_url, $link_target, $anchor_class, $title, $image, themeblvd_get_image_overlay() );
 
 		// Final HTML output
@@ -134,7 +134,7 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
 		$output .= '</div><!-- .featured-image-wrapper (end) -->';
 
 		// Apply filters if allowed
-		if( $allow_filters )
+		if ( $allow_filters )
 			$output = apply_filters( 'themeblvd_post_thumbnail', $output, $location, $size, $link );
 
 		// Return final output
@@ -153,28 +153,28 @@ if( ! function_exists( 'themeblvd_get_post_thumbnail' ) ) {
  * @param $sidebar_layout string Optional current sidebar layout
  * @return $size Size after it's been formatted
  */
-if( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
+if ( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
 	function themeblvd_get_thumbnail_size( $size = '', $location = 'primary', $sidebar_layout = 'full_width' ) {
 
 		// If no $size was passed in, we'll use the framework's options
 		// to determine one for different scenarios.
-		if( ! $size ) {
-			if( themeblvd_was('home') || themeblvd_was('page_template', 'template_list.php') ) {
+		if ( ! $size ) {
+			if ( themeblvd_was('home') || themeblvd_was('page_template', 'template_list.php') ) {
 
 				// "Primary Posts Display" (i.e. homepage or post list template)
 				$size = themeblvd_get_option( 'blog_thumbs' );
 
-			} else if( themeblvd_was('search') || themeblvd_was('archive') ) {
+			} else if ( themeblvd_was('search') || themeblvd_was('archive') ) {
 
 				// Search results and archives
 				$size = themeblvd_get_option( 'archive_thumbs' );
 
-			} else if( themeblvd_was('single') ) {
+			} else if ( themeblvd_was('single') ) {
 
 				// Single posts. First check for overrding meta value, then
 				// move to default option from theme options page.
 				$size_meta = get_post_meta( get_the_ID(), '_tb_thumb', true );
-				if( $size_meta == 'full' || $size_meta == 'small' || $size_meta == 'hide' )
+				if ( $size_meta == 'full' || $size_meta == 'small' || $size_meta == 'hide' )
 					$size = $size_meta;
 				else
 					$size = themeblvd_get_option( 'single_thumbs' );
@@ -182,13 +182,13 @@ if( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
 			}
 		}
 
-		if( $size == 'hide' )
+		if ( $size == 'hide' )
 			$size = null;
 
-		if( $size == 'full' )
+		if ( $size == 'full' )
 			$location == 'featured' || $sidebar_layout == 'full_width' ? $size = 'tb_large' : $size = 'tb_medium';
 
-		if( $size == 'small' )
+		if ( $size == 'small' )
 			$size = 'tb_small';
 
 		return apply_filters( 'themeblvd_get_thumbnail_size', $size, $location, $sidebar_layout );
@@ -200,11 +200,11 @@ if( ! function_exists( 'themeblvd_get_thumbnail_size' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_oembed_result' ) ) {
+if ( ! function_exists( 'themeblvd_oembed_result' ) ) {
 	function themeblvd_oembed_result( $input, $url ) {
 
 		// If this is a tweet, keep on movin' fella. @todo Create filterable list of items to skip other than twitter.com
-		if( strpos( $url, 'twitter.com' ) )
+		if ( strpos( $url, 'twitter.com' ) )
 			return $input;
 
 		// Since the framework applies this filter in two
@@ -213,12 +213,12 @@ if( ! function_exists( 'themeblvd_oembed_result' ) ) {
 		// because WP has issues with caching the oembed
 		// result, and oembed_result doesn't always get
 		// applied when it's supposed to.
-		if( strpos( $input, 'themeblvd-video-wrapper' ) )
+		if ( strpos( $input, 'themeblvd-video-wrapper' ) )
 			return $input;
 
 		// Apply YouTube wmode fix
-		if( strpos( $url, 'youtube' ) || strpos( $url, 'youtu.be' ) ) {
-			if( ! strpos( $input, 'wmode=transparent' ) )
+		if ( strpos( $url, 'youtube' ) || strpos( $url, 'youtu.be' ) ) {
+			if ( ! strpos( $input, 'wmode=transparent' ) )
 				$input = str_replace('feature=oembed', 'feature=oembed&wmode=transparent', $input);
 		}
 
@@ -241,7 +241,7 @@ if( ! function_exists( 'themeblvd_oembed_result' ) ) {
  *
  * @param string $html HTML for output to be filtered
  */
-if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
+if ( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
 	function themeblvd_audio_shortcode( $html ){
 		return str_replace( '<audio', '<audio width="100%"', $html );
 	}
@@ -256,7 +256,7 @@ if( ! function_exists( 'themeblvd_audio_shortcode' ) ) {
  * @param string $type Type of slider, supports nivo or standard
  * @param string $size Image crop size for attachment images
  */
-if( ! function_exists( 'themeblvd_gallery_slider' ) ) {
+if ( ! function_exists( 'themeblvd_gallery_slider' ) ) {
 	function themeblvd_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
 		echo themeblvd_get_gallery_slider( $gallery, $type, $size );
 	}
@@ -272,7 +272,7 @@ if( ! function_exists( 'themeblvd_gallery_slider' ) ) {
  * @param string $size Image crop size for attachment images
  * @return string $output Final HTML to output
  */
-if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
+if ( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 	function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
 
 		$post_id = get_the_ID();
@@ -280,7 +280,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 		$size = apply_filters( 'themeblvd_gallery_slider_size', $size, $post_id );
 
 		// Did user pass in a gallery shortcode?
-		if( $gallery )
+		if ( $gallery )
 			$content = $gallery;
 		else
 			$content = get_the_content();
@@ -290,11 +290,11 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 		$attachments = array();
 		$pattern = get_shortcode_regex();
 
-		if( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] ) {
+		if ( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] ) {
 
 			$atts = shortcode_parse_atts( $match[3] );
 
-			if( ! empty( $atts['ids'] ) ) {
+			if ( ! empty( $atts['ids'] ) ) {
 				$query = array(
 					'post_type'	=> 'attachment',
 					'post__in' 	=> explode( ',', $atts['ids'] )
@@ -305,7 +305,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 
 		// If no gallery present, pull from attachments of posts
 		// (old school way before WP 3.5, less common)
-		if( ! $attachments ) {
+		if ( ! $attachments ) {
 			$args = array(
 				'post_parent'		=> $post_id,
 				'post_status'		=> 'inherit',
@@ -316,8 +316,8 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 		}
 
 		// Slider needs 2 or more attachments.
-		if( count( $attachments ) <= 1 ) {
-			if( is_user_logged_in() )
+		if ( count( $attachments ) <= 1 ) {
+			if ( is_user_logged_in() )
 				return sprintf( '<div class="alert warning"><p>%s</p></div>', __( 'Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post or attach some images to the post.', 'themeblvd' ) );
 			else
 				return;
@@ -326,7 +326,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 		// Build javascript properties
 		$props = array();
 
-		if( $type == 'nivo' ) {
+		if ( $type == 'nivo' ) {
 
 			$props = array(
 				'effect'			=> 'random',
@@ -338,7 +338,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 				'manualAdvance'		=> 'false'
 			);
 
-		} elseif( $type == 'standard' ) {
+		} elseif ( $type == 'standard' ) {
 
 			$props = array(
 				'animation'			=> 'slide',
@@ -362,14 +362,14 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 		foreach( $props as $key => $value ) {
 
 			$fmt = '%s: ';
-			if( $value == 'true' || $value == 'false' || intval($value) )
+			if ( $value == 'true' || $value == 'false' || intval($value) )
 				$fmt .= '%s'; // for bool or int, don't wrap in quotes
 			else
 				$fmt .= '"%s"';
 
 			$props_output .= sprintf($fmt, $key, $value);
 
-			if( $i < $count )
+			if ( $i < $count )
 				$props_output .= ",\n";
 
 			$i++;
@@ -377,7 +377,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 
 		// CSS Classes
 		$wrap_class = "{$type}-slider-wrapper";
-		if( $type != 'standard' )
+		if ( $type != 'standard' )
 			$wrap_class = "tb-{$wrap_class}";
 
 		$class = apply_filters( 'themeblvd_gallery_slider_class', array('show-nav_standard', 'show-nav_arrows') );
@@ -396,7 +396,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 		// Start Output
 		$output = '';
 
-		if( $type == 'nivo' ) {
+		if ( $type == 'nivo' ) {
 
 			/*--------------------------------------------*/
 			/* Nivo Slider
@@ -427,7 +427,7 @@ if( ! function_exists( 'themeblvd_get_gallery_slider' ) ) {
 
 			$output .= sprintf( $slider_wrap, $slider );
 
-		} elseif( $type == 'standard' ) {
+		} elseif ( $type == 'standard' ) {
 
 			/*--------------------------------------------*/
 			/* Standard Slider

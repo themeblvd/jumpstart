@@ -38,7 +38,7 @@ function themeblvd_frontend_init() {
  * @param string $type Type of template part to get
  * @return string $part Extension to use for get_template_part
  */
-if( ! function_exists( 'themeblvd_get_part' ) ) {
+if ( ! function_exists( 'themeblvd_get_part' ) ) {
 	function themeblvd_get_part( $type ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 		return $config->get_template_parts( $type );
@@ -58,12 +58,12 @@ if( ! function_exists( 'themeblvd_get_part' ) ) {
  *
  * @return bool
  */
-if( ! function_exists( 'themeblvd_is_grid_mode' ) ) {
+if ( ! function_exists( 'themeblvd_is_grid_mode' ) ) {
 	function themeblvd_is_grid_mode() {
 
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 
-		if( $config->get_mode() == 'grid' )
+		if ( $config->get_mode() == 'grid' )
 			return true;
 
 		return false;
@@ -90,7 +90,7 @@ function themeblvd_config( $key = '', $secondary = '' ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_sidebar_layout_class' ) ) {
+if ( ! function_exists( 'themeblvd_sidebar_layout_class' ) ) {
 	function themeblvd_sidebar_layout_class() {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 		echo $config->get_config('sidebar_layout');
@@ -111,7 +111,7 @@ if( ! function_exists( 'themeblvd_sidebar_layout_class' ) ) {
  * @param array $atts Attributes to be merged with global attributes
  * @param bool $flush Whether or not to flush previous attributes before merging
  */
-if( ! function_exists( 'themeblvd_set_atts' ) ) {
+if ( ! function_exists( 'themeblvd_set_atts' ) ) {
 	function themeblvd_set_atts( $atts, $flush = false ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 		return $config->set_atts( $atts, $flush );
@@ -130,7 +130,7 @@ if( ! function_exists( 'themeblvd_set_atts' ) ) {
  * @param mixed $value New value
  * @return mixed New value
  */
-if( ! function_exists( 'themeblvd_set_att' ) ) {
+if ( ! function_exists( 'themeblvd_set_att' ) ) {
 	function themeblvd_set_att( $key, $value ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 		return $config->set_att( $key, $value );
@@ -146,7 +146,7 @@ if( ! function_exists( 'themeblvd_set_att' ) ) {
  * @param string $key Key in $atts array to retrieve
  * @return mixed Value of attribute
  */
-if( ! function_exists( 'themeblvd_get_att' ) ) {
+if ( ! function_exists( 'themeblvd_get_att' ) ) {
 	function themeblvd_get_att( $key ) {
 		$config = Theme_Blvd_Frontend_Init::get_instance();
 		return $config->get_att( $key );
@@ -162,7 +162,7 @@ if( ! function_exists( 'themeblvd_get_att' ) ) {
  * @param string $type Type of secondary query, list or grid
  * @return array $second_query Newly stored second query attribute
  */
-if( ! function_exists( 'themeblvd_get_second_query' ) ) {
+if ( ! function_exists( 'themeblvd_get_second_query' ) ) {
 	function themeblvd_get_second_query() {
 		$query = Theme_Blvd_Query::get_instance();;
 		return $query->get_second_query();
@@ -176,7 +176,7 @@ if( ! function_exists( 'themeblvd_get_second_query' ) ) {
  *
  * @return array The secondary query
  */
-if( ! function_exists( 'themeblvd_set_second_query' ) ) {
+if ( ! function_exists( 'themeblvd_set_second_query' ) ) {
 	function themeblvd_set_second_query( $args, $type ) {
 		$query = Theme_Blvd_Query::get_instance();;
 		return $query->set_second_query( $args, $type );
@@ -192,7 +192,7 @@ if( ! function_exists( 'themeblvd_set_second_query' ) ) {
  * @param string $helper A secondary param if allowed with $type
  * @return bool
  */
-if( ! function_exists( 'themeblvd_was' ) ) {
+if ( ! function_exists( 'themeblvd_was' ) ) {
 	function themeblvd_was( $type, $helper = '' ) {
 		$query = Theme_Blvd_Query::get_instance();
 		return $query->was( $type, $helper );
@@ -208,34 +208,34 @@ if( ! function_exists( 'themeblvd_was' ) ) {
  * @param array $classes Current body classes
  * @return array $classes Body classes with browser classes added
  */
-if( ! function_exists( 'themeblvd_browser_class' ) ) {
+if ( ! function_exists( 'themeblvd_browser_class' ) ) {
 	function themeblvd_browser_class( $classes ) {
 
 		// Get current user agent
 		$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
 
 		// OS class
-		if( preg_match( "/Mac/", $browser ) )
+		if ( preg_match( "/Mac/", $browser ) )
 			$classes[] = 'mac';
-		elseif( preg_match( "/Windows/", $browser ) )
+		elseif ( preg_match( "/Windows/", $browser ) )
 			$classes[] = 'windows';
-		elseif( preg_match( "/Linux/", $browser ) )
+		elseif ( preg_match( "/Linux/", $browser ) )
 			$classes[] = 'linux';
 		else
 			$classes[] = 'unknown-os';
 
 		// Browser class
-		if( preg_match( "/Chrome/", $browser ) ) {
+		if ( preg_match( "/Chrome/", $browser ) ) {
 			$classes[] = 'chrome';
-		} elseif( preg_match( "/Safari/", $browser ) ) {
+		} elseif ( preg_match( "/Safari/", $browser ) ) {
 			$classes[] = 'safari';
-		} elseif( preg_match( "/Opera/", $browser ) ) {
+		} elseif ( preg_match( "/Opera/", $browser ) ) {
 			$classes[] = 'opera';
-		} elseif( preg_match( "/MSIE/", $browser ) ) {
+		} elseif ( preg_match( "/MSIE/", $browser ) ) {
 
 			// Internet Explorer... ugh, kill me now.
 			$classes[] = 'msie';
-			if( preg_match( "/MSIE 6.0/", $browser ) )
+			if ( preg_match( "/MSIE 6.0/", $browser ) )
 				$classes[] = 'ie6';
 			elseif ( preg_match( "/MSIE 7.0/", $browser ) )
 				$classes[] = 'ie7';
@@ -246,7 +246,7 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
 			elseif ( preg_match( "/MSIE 10.0/", $browser ) )
 				$classes[] = 'ie10';
 
-		} elseif( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
+		} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
 			$classes[] = 'firefox';
 		} else {
 			$classes[] = 'unknown-browser';
@@ -277,7 +277,7 @@ if( ! function_exists( 'themeblvd_browser_class' ) ) {
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_include_scripts' ) ) {
+if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	function themeblvd_include_scripts() {
 
 		global $themeblvd_framework_scripts;
@@ -294,20 +294,20 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 		// Enque Scripts
 		wp_enqueue_script( 'jquery' );
-		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
+		if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 			$scripts[] = 'bootstrap';
 			wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', true );
 		}
-		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
+		if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 			$scripts[] = 'prettyphoto';
 			wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/assets/js/prettyphoto.min.js', array('jquery'), '3.1.5', true ); // Modified version of prettyPhoto by Jason Bobich
 			// wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/assets/plugins/prettyphoto/js/jQuery.prettyPhoto.js', array('jquery'), '3.1.4', true ); // Unmodified version
 		}
-		if( themeblvd_supports( 'assets', 'superfish' ) ) {
+		if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 			$scripts[] = 'superfish';
 			wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.4.8', true ); // Modified version of Superfish by Jason Bobich
 		}
-		if( themeblvd_supports( 'assets', 'primary_js' ) ) {
+		if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
 			$scripts[] = 'themeblvd';
 			wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
 			// Localize primary themeblvd.js script. This allows us to pass any filterable
@@ -319,7 +319,7 @@ if( ! function_exists( 'themeblvd_include_scripts' ) ) {
 		$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
 
 		// Enque ios orientation and comment reply scripts.
-		if( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) )
+		if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) )
 			wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js', true );
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 			wp_enqueue_script( 'comment-reply' );

@@ -15,7 +15,7 @@ define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory().'/framework' );
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri().'/framework' );
 
 // Run framework
-if( is_admin() ) {
+if ( is_admin() ) {
 
 	/*------------------------------------------------------*/
 	/* Admin Hooks, Filters, and Files

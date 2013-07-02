@@ -3,7 +3,7 @@
  * The template used for displaying posts in a grid.
  */
 ?>
-<div class="grid-item column <?php echo themeblvd_get_att( 'size' ); ?><?php if( themeblvd_get_att( 'counter' ) % themeblvd_get_att( 'columns' ) == 0 ) echo ' last'; ?>">
+<div class="grid-item column <?php echo themeblvd_get_att( 'size' ); ?><?php if ( themeblvd_get_att( 'counter' ) % themeblvd_get_att( 'columns' ) == 0 ) echo ' last'; ?>">
 	<div class="article-wrap">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">

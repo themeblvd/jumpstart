@@ -4,7 +4,7 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) : ?>
+	<?php if ( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) : ?>
 		<header class="entry-header">
 			<h1 class="entry-title">
 				<?php themeblvd_the_title(); ?>

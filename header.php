@@ -58,7 +58,7 @@
 		themeblvd_header_after();
 
 		// Featured area (above)
-		if( themeblvd_config( 'featured' ) ) {
+		if ( themeblvd_config( 'featured' ) ) {
 			themeblvd_featured_start();
 			themeblvd_featured();
 			themeblvd_featured_end();

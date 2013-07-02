@@ -8,7 +8,7 @@ function themeblvd_admin_init() {
 
 	// Allow theme options page to run if framework filters
 	// have don't have it hidden it and user is capable.
-	if( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
+	if ( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
 
 		// Access Options API, instance should already be created.
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -46,13 +46,13 @@ function themeblvd_update_version(){
  *
  * @since 2.0.0
  */
-if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
+if ( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 	function themeblvd_non_modular_assets() {
 
 		global $pagenow;
 
 		// Assets for editing posts
-		if( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
+		if ( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
 			wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.min.css', false, false, 'screen' );
 			wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 			wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
@@ -61,7 +61,7 @@ if( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
 		// Styles for all of WP admin -- Currently only applies to
 		// Builder and Sliders plugin menu items and making them
 		// retina-compatible... Fancy, right?
-		if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) )
+		if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) )
 			wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
 
 	}
@@ -98,12 +98,12 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 
 		// Only run check if a location exists and this
 		// is not a floating widget area.
-		if( $location && $location != 'floating' ) {
+		if ( $location && $location != 'floating' ) {
 			$assignments = get_post_meta( $post->ID, 'assignments', true );
-			if( is_array( $assignments ) && ! empty( $assignments ) ) {
+			if ( is_array( $assignments ) && ! empty( $assignments ) ) {
 				foreach( $assignments as $key => $assignment ) {
-					if( $key != 'custom' && in_array( $key, $non_conflicts[$location] ) ) {
-						if( ! in_array( $key, $conflicts[$location] ) ) {
+					if ( $key != 'custom' && in_array( $key, $non_conflicts[$location] ) ) {
+						if ( ! in_array( $key, $conflicts[$location] ) ) {
 							$conflicts[$location][] = $key;
 						}
 					} else {
@@ -123,7 +123,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
  * @since 2.0.0
  */
 function themeblvd_hijack_page_atts() {
-	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
+	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		remove_meta_box( 'pageparentdiv', 'page', 'side' );
 		add_meta_box( 'themeblvd_pageparentdiv', __( 'Page Attributes', 'themeblvd' ), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
 	}
@@ -136,12 +136,12 @@ function themeblvd_hijack_page_atts() {
  * @since 2.0.0
  */
 function themeblvd_save_page_atts( $post_id ) {
-	if( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
+	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		// Save sidebar layout
-		if( isset( $_POST['_tb_sidebar_layout'] ) )
+		if ( isset( $_POST['_tb_sidebar_layout'] ) )
 			update_post_meta( $post_id, '_tb_sidebar_layout', $_POST['_tb_sidebar_layout'] );
 		// Save custom layout
-		if( isset( $_POST['_tb_custom_layout'] ) ) // backwards compat
+		if ( isset( $_POST['_tb_custom_layout'] ) ) // backwards compat
 			update_post_meta( $post_id, '_tb_custom_layout', $_POST['_tb_custom_layout'] );
 	}
 }
@@ -159,7 +159,7 @@ function themeblvd_is_admin_module() {
 
 	// Current page
 	$current_page = $pagenow;
-	if( isset( $_GET['page'] ) )
+	if ( isset( $_GET['page'] ) )
 		$current_page .= sprintf( '?page=%s', $_GET['page'] );
 
 	// Get admin modules
@@ -179,7 +179,7 @@ function themeblvd_is_admin_module() {
  *
  * function my_admin_notice(){
  *		global $current_user;
- * 		if( ! get_user_meta( $current_user->ID, 'example_message' ) ){
+ * 		if ( ! get_user_meta( $current_user->ID, 'example_message' ) ){
  * 			echo '<div class="updated">';
  *			echo '<p>Some message to the user.</p>';
  * 			echo '<p><a href="?tb_nag_ignore=example_message">Dismiss this notice</a></p>';
@@ -202,7 +202,7 @@ function themeblvd_disable_nag() {
  * @since 2.3.0
  */
 function themeblvd_clear_options() {
-	if( isset( $_POST['themeblvd_clear_options'] ) ) {
+	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
 		$option_id = $_POST['themeblvd_clear_options'];
 		delete_option( $option_id );
 		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
@@ -219,7 +219,7 @@ function themeblvd_clear_options() {
  *
  * @since 2.2.1
  */
-if( ! function_exists( 'themeblvd_admin_content_width' ) ) {
+if ( ! function_exists( 'themeblvd_admin_content_width' ) ) {
 	function themeblvd_admin_content_width() {
 		global $content_width;
 		$content_width = 600;

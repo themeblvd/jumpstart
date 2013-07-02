@@ -64,7 +64,7 @@ class Theme_Blvd_Frontend_Init {
      */
 	public static function get_instance() {
 
-		if( self::$instance == null )
+		if ( self::$instance == null )
             self::$instance = new self;
 
         return self::$instance;
@@ -131,17 +131,17 @@ class Theme_Blvd_Frontend_Init {
 
 		// If this is the homepage, and "index" is one of the
 		// triggers, set grid mode.
-		if( is_home() && in_array( $this->get_template_parts('index'), $grid_triggers ) )
+		if ( is_home() && in_array( $this->get_template_parts('index'), $grid_triggers ) )
 			$this->mode = 'grid';
 
 		// If this is an archive, and "archive" is one of the
 		// triggers, set grid mode.
-		if( is_archive() && in_array( $this->get_template_parts('archive'), $grid_triggers ) )
+		if ( is_archive() && in_array( $this->get_template_parts('archive'), $grid_triggers ) )
 			$this->mode = 'grid';
 
 		// If this is search results, and "search_results" is one of the
 		// triggers, set grid mode.
-		if( is_search() && in_array( $this->get_template_parts('search_results'), $grid_triggers ) )
+		if ( is_search() && in_array( $this->get_template_parts('search_results'), $grid_triggers ) )
 			$this->mode = 'grid';
 
 		// Allow manual override.
@@ -174,20 +174,20 @@ class Theme_Blvd_Frontend_Init {
 		// Store the ID of the original $post object in case
 		// we modify the main query or need to ever access it.
 
-		if( is_object( $post ) )
+		if ( is_object( $post ) )
 			$this->config['id'] = $post->ID;
 
 		/*------------------------------------------------------*/
 		/* Custom Layout, Builder Name/ID
 		/*------------------------------------------------------*/
 
-		if( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
+		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 
 			$layout_name = '';
 
 			// Custom Layout on static page
-			if( is_page_template( 'template_builder.php' ) ) {
-				if( post_password_required() ) {
+			if ( is_page_template( 'template_builder.php' ) ) {
+				if ( post_password_required() ) {
 
 					// Password is currently required and so
 					// the custom layout doesn't get used.
@@ -196,23 +196,23 @@ class Theme_Blvd_Frontend_Init {
 				} else {
 
 					$layout_name = get_post_meta( $this->config['id'], '_tb_custom_layout', true );
-					if( ! $layout_name )
+					if ( ! $layout_name )
 						$layout_name = 'error';
 
 				}
 			}
 
 			// Custom Layout over home "posts page"
-			if( is_home() && get_option( 'show_on_front' ) == 'posts' ) {
-				if( 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
+			if ( is_home() && get_option( 'show_on_front' ) == 'posts' ) {
+				if ( 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
 					$layout_name = themeblvd_get_option( 'homepage_custom_layout' );
-					if( ! $layout_name )
+					if ( ! $layout_name )
 						$layout_name = 'error';
 				}
 			}
 
 			// If we have a layout name, setup it's ID and sidebar layout
-			if( $layout_name && $layout_name != 'error' && $layout_name != 'wp-private' ) {
+			if ( $layout_name && $layout_name != 'error' && $layout_name != 'wp-private' ) {
 
 				// Set name and ID
 				$this->config['builder'] = $layout_name;
@@ -233,53 +233,53 @@ class Theme_Blvd_Frontend_Init {
 		// enabled, it must contain at least one CSS class or else
 		// it won't be displayed for the current page.
 
-		if( $this->config['builder'] && $this->config['builder'] != 'error' && $this->config['builder'] != 'wp-private' ) {
+		if ( $this->config['builder'] && $this->config['builder'] != 'error' && $this->config['builder'] != 'wp-private' ) {
 			$elements = get_post_meta( $this->config['builder_post_id'], 'elements', true );
 			$this->config['featured'] = $this->featured_builder_classes( $elements, 'featured' );
 			$this->config['featured_below'] = $this->featured_builder_classes( $elements, 'featured_below' );
 		}
 
-		if( is_home() ) {
-			if( 'custom_layout' != themeblvd_get_option( 'homepage_content' ) ) {
-				if( themeblvd_get_option( 'blog_featured' ) || themeblvd_supports( 'featured', 'blog' ) )
+		if ( is_home() ) {
+			if ( 'custom_layout' != themeblvd_get_option( 'homepage_content' ) ) {
+				if ( themeblvd_get_option( 'blog_featured' ) || themeblvd_supports( 'featured', 'blog' ) )
 					$this->config['featured'][] = 'has_blog_featured';
-				if( themeblvd_supports( 'featured_below', 'blog' ) )
+				if ( themeblvd_supports( 'featured_below', 'blog' ) )
 					$this->config['featured_below'][] = 'has_blog_featured_below';
 			}
 		}
 
-		if( is_page_template( 'template_list.php' ) ) {
-			if( themeblvd_get_option( 'blog_featured' ) || themeblvd_supports( 'featured', 'blog' ) )
+		if ( is_page_template( 'template_list.php' ) ) {
+			if ( themeblvd_get_option( 'blog_featured' ) || themeblvd_supports( 'featured', 'blog' ) )
 				$this->config['featured'][] = 'has_blog_featured';
-			if( themeblvd_supports( 'featured_below', 'blog' ) )
+			if ( themeblvd_supports( 'featured_below', 'blog' ) )
 				$this->config['featured_below'][] = 'has_blog_featured_below';
 		}
 
-		if( is_page_template( 'template_grid.php' ) ) {
-			if( themeblvd_supports( 'featured', 'grid' ) )
+		if ( is_page_template( 'template_grid.php' ) ) {
+			if ( themeblvd_supports( 'featured', 'grid' ) )
 				$this->config['featured'][] = 'has_grid_featured';
-			if( themeblvd_supports( 'featured_below', 'grid' ) )
+			if ( themeblvd_supports( 'featured_below', 'grid' ) )
 				$this->config['featured_below'][] = 'has_grid_featured_below';
 		}
 
-		if( is_archive() || is_search() ) {
-			if( themeblvd_supports( 'featured', 'archive' ) )
+		if ( is_archive() || is_search() ) {
+			if ( themeblvd_supports( 'featured', 'archive' ) )
 				$this->config['featured'][] = 'has_archive_featured';
-			if( themeblvd_supports( 'featured_below', 'archive' ) )
+			if ( themeblvd_supports( 'featured_below', 'archive' ) )
 				$this->config['featured_below'][] = 'has_archive_featured_below';
 		}
 
-		if( is_page() && ! is_page_template( 'template_builder.php' ) ) {
-			if( themeblvd_supports( 'featured', 'page' ) )
+		if ( is_page() && ! is_page_template( 'template_builder.php' ) ) {
+			if ( themeblvd_supports( 'featured', 'page' ) )
 				$this->config['featured'][] = 'has_page_featured';
-			if( themeblvd_supports( 'featured_below', 'page' ) )
+			if ( themeblvd_supports( 'featured_below', 'page' ) )
 				$this->config['featured_below'][] = 'has_page_featured_below';
 		}
 
-		if( is_single() ) {
-			if( themeblvd_supports( 'featured', 'single' ) )
+		if ( is_single() ) {
+			if ( themeblvd_supports( 'featured', 'single' ) )
 				$this->config['featured'][] = 'has_single_featured';
-			if( themeblvd_supports( 'featured_below', 'single' ) )
+			if ( themeblvd_supports( 'featured_below', 'single' ) )
 				$this->config['featured_below'][] = 'has_single_featured_below';
 		}
 
@@ -290,13 +290,13 @@ class Theme_Blvd_Frontend_Init {
 		// The sidebar layout is how the left and right sidebar will
 		// be displayed on the current page.
 
-		if( ! $this->config['sidebar_layout'] && ( is_page() || is_single() ) )
+		if ( ! $this->config['sidebar_layout'] && ( is_page() || is_single() ) )
 			$this->config['sidebar_layout']= get_post_meta( $this->config['id'], '_tb_sidebar_layout', true );
 
-		if( ! $this->config['sidebar_layout']|| 'default' == $this->config['sidebar_layout'] )
+		if ( ! $this->config['sidebar_layout']|| 'default' == $this->config['sidebar_layout'] )
 			$this->config['sidebar_layout']= themeblvd_get_option( 'sidebar_layout' );
 
-		if( ! $this->config['sidebar_layout'])
+		if ( ! $this->config['sidebar_layout'])
 			$this->config['sidebar_layout']= apply_filters( 'themeblvd_default_sidebar_layout', 'sidebar_right', $this->config['sidebar_layout']); // Keeping for backwards compatibility, although is redundant with next filter.
 
 		$this->config['sidebar_layout']= apply_filters( 'themeblvd_sidebar_layout', $this->config['sidebar_layout']);
@@ -326,11 +326,11 @@ class Theme_Blvd_Frontend_Init {
     		$this->config['sidebars'][$location_id]['error'] = false;
 
     		// Determine sidebar error (i.e. sidebar is empty)
-    		if( ! is_active_sidebar( $sidebar_id ) ) {
-				if( $default_sidebar['type'] == 'collapsible' ) {
+    		if ( ! is_active_sidebar( $sidebar_id ) ) {
+				if ( $default_sidebar['type'] == 'collapsible' ) {
 
 					// Only an error if collapsible sidebar is custom.
-					if( $sidebar_id != $location_id )
+					if ( $sidebar_id != $location_id )
 						$this->config['sidebars'][$location_id]['error'] = true;
 
 	    		} else {
@@ -365,10 +365,10 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function get_template_parts( $part = '' ) {
 
-		if( ! $part )
+		if ( ! $part )
 			return $this->template_parts;
 
-		if( ! isset( $this->template_parts[$part] ) )
+		if ( ! isset( $this->template_parts[$part] ) )
 			return null;
 
 		return $this->template_parts[$part];
@@ -394,13 +394,13 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function get_config( $key = '', $secondary = '' ) {
 
-		if( ! $key )
+		if ( ! $key )
 			return $this->config;
 
-		if( $secondary && isset( $this->config[$key][$secondary] ) )
+		if ( $secondary && isset( $this->config[$key][$secondary] ) )
 			return $this->config[$key][$secondary];
 
-		if( isset( $this->config[$key] ) )
+		if ( isset( $this->config[$key] ) )
 			return $this->config[$key];
 
 		return null;
@@ -435,7 +435,7 @@ class Theme_Blvd_Frontend_Init {
 
 		$classes = array();
 
-		if( ! empty( $elements[$area] ) ) {
+		if ( ! empty( $elements[$area] ) ) {
 
 			$classes[] = 'has_builder';
 			foreach( $elements[$area] as $element ) {
@@ -465,26 +465,26 @@ class Theme_Blvd_Frontend_Init {
 			$first_element = array_shift( $first_element );
 			$first_element = $first_element['type'];
 
-			if( in_array( $first_element, $sliders ) )
+			if ( in_array( $first_element, $sliders ) )
 				$classes[] = 'slider_is_first';
 
-			if( $first_element == 'post_grid' || $first_element == 'post_grid_slider' )
+			if ( $first_element == 'post_grid' || $first_element == 'post_grid_slider' )
 				$classes[] = 'grid_is_first';
 
-			if( $first_element == 'slogan'  )
+			if ( $first_element == 'slogan'  )
 				$classes[] = 'slogan_is_first';
 
 			// Last element classes
 			$last_element = end( $elements[$area] );
 			$last_element = $last_element['type'];
 
-			if( in_array( $last_element, $sliders ) )
+			if ( in_array( $last_element, $sliders ) )
 				$classes[] = 'slider_is_last';
 
-			if( $last_element == 'post_grid' || $last_element == 'post_grid_slider'  )
+			if ( $last_element == 'post_grid' || $last_element == 'post_grid_slider'  )
 				$classes[] = 'grid_is_last';
 
-			if( $last_element == 'slogan'  )
+			if ( $last_element == 'slogan'  )
 				$classes[] = 'slogan_is_last';
 		}
 
@@ -507,19 +507,19 @@ class Theme_Blvd_Frontend_Init {
 	public function body_class( $classes ) {
 
 		// Featured Area
-		if( $this->config['featured'] )
+		if ( $this->config['featured'] )
 			$classes[] = 'show-featured-area';
 		else
 			$classes[] = 'hide-featured-area';
 
 		// Featured Area (below)
-		if( $this->config['featured_below'] )
+		if ( $this->config['featured_below'] )
 			$classes[] = 'show-featured-area-below';
 		else
 			$classes[] = 'hide-featured-area-above';
 
 		// Custom Layout
-		if( $this->config['builder'] ) {
+		if ( $this->config['builder'] ) {
 			$classes[] = 'custom-layout-'.$this->config['builder'];
 			$classes[] = 'has_custom_layout';
 		}
@@ -542,22 +542,22 @@ class Theme_Blvd_Frontend_Init {
 	public function atts_init() {
 
 		// Index/Archive
-		if( is_home() || is_archive() || is_search() ) {
-			if( $this->mode == 'grid' )
+		if ( is_home() || is_archive() || is_search() ) {
+			if ( $this->mode == 'grid' )
 				$this->atts = $this->get_default_grid_atts();
 			else
 				$this->atts = $this->get_default_list_atts();
 		}
 
 		// Single posts
-		if( is_single() ) {
+		if ( is_single() ) {
 
 			$show_meta = true;
-			if( themeblvd_get_option( 'single_meta', null, 'show' ) == 'hide' )
+			if ( themeblvd_get_option( 'single_meta', null, 'show' ) == 'hide' )
 				$show_meta = false;
-			if( get_post_meta( $this->config['id'], '_tb_meta', true ) == 'hide' )
+			if ( get_post_meta( $this->config['id'], '_tb_meta', true ) == 'hide' )
 				$show_meta = false;
-			else if( get_post_meta( $this->config['id'], '_tb_meta', true ) == 'show' )
+			else if ( get_post_meta( $this->config['id'], '_tb_meta', true ) == 'show' )
 				$show_meta = true;
 
 			$this->atts = apply_filters( 'themeblvd_single_atts', array( 'show_meta' => $show_meta ) );
@@ -565,11 +565,11 @@ class Theme_Blvd_Frontend_Init {
 		}
 
 		// Post List Page Template
-		if( is_page_template( 'template_list.php' ) )
+		if ( is_page_template( 'template_list.php' ) )
 			$this->atts = $this->get_default_list_atts();
 
 		// Post Grid Page Template
-		if( is_page_template( 'template_grid.php' ) )
+		if ( is_page_template( 'template_grid.php' ) )
 			$this->atts = $this->get_default_grid_atts();
 	}
 
@@ -584,11 +584,11 @@ class Theme_Blvd_Frontend_Init {
 
 		// Content
 		$content = 'content'; // Can be "content" or "excerpt"
-		if( is_home() )
+		if ( is_home() )
 			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_blog_content_default', 'content' ) );
-		elseif( is_archive() )
+		elseif ( is_archive() )
 			$content = themeblvd_get_option( 'archive_content', null, apply_filters( 'themeblvd_archive_content_default', 'content' ) );
-		elseif( is_page_template( 'template_list.php' ) )
+		elseif ( is_page_template( 'template_list.php' ) )
 			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_list_template_content_default', 'content' ) );
 
 		// Note: Thumbnail size could be passed here, but not needed
@@ -619,31 +619,31 @@ class Theme_Blvd_Frontend_Init {
 		$columns = '';
 		$rows = '';
 
-		if( is_home() ){
+		if ( is_home() ){
 
 			$columns = themeblvd_get_option( 'index_grid_columns' );
 			$rows = themeblvd_get_option( 'index_grid_rows' );
 
-		} elseif( is_archive() || is_search() ) {
+		} elseif ( is_archive() || is_search() ) {
 
 			$columns = themeblvd_get_option( 'archive_grid_columns' );
 			$rows = themeblvd_get_option( 'archive_grid_rows' );
 
-		} elseif( is_page_template( 'template_grid.php' ) ){
+		} elseif ( is_page_template( 'template_grid.php' ) ){
 
 			$possible_column_nums = array( 1, 2, 3, 4, 5 );
 			$custom_columns = get_post_meta( $this->config['id'], 'columns', true );
 
-			if( in_array( intval( $custom_columns ), $possible_column_nums ) )
+			if ( in_array( intval( $custom_columns ), $possible_column_nums ) )
 				$columns = $custom_columns;
 
 			$rows = get_post_meta( $this->config['id'], 'rows', true );
 		}
 
-		if( ! $columns )
+		if ( ! $columns )
 			$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
 
-		if( ! $rows )
+		if ( ! $rows )
 			$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
 
 		// Posts per page, used for the grid display and not
@@ -653,23 +653,23 @@ class Theme_Blvd_Frontend_Init {
 		// Thumbnail size
 		$size = themeblvd_grid_class( $columns );
 
-		if( is_home() ){
+		if ( is_home() ){
 
 			$crop = apply_filters( 'themeblvd_index_grid_crop_size', $size );
 
-		} elseif( is_archive() || is_search() ) {
+		} elseif ( is_archive() || is_search() ) {
 
 			$crop = apply_filters( 'themeblvd_archive_grid_crop_size', $size );
 
-		} elseif( is_page_template( 'template_grid.php' ) ) {
+		} elseif ( is_page_template( 'template_grid.php' ) ) {
 
 			$crop = get_post_meta( $this->config['id'], 'crop', true );
 
-			if( ! $crop )
+			if ( ! $crop )
 				$crop = apply_filters( 'themeblvd_template_grid_crop_size', $size );
 		}
 
-		if( empty( $crop ) )
+		if ( empty( $crop ) )
 			$crop = $size;
 
 		// Setup attributes
@@ -697,7 +697,7 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function set_atts( $atts, $flush = false ) {
 
-		if( $flush )
+		if ( $flush )
 			$this->atts = $atts;
 		else
 			$this->atts = array_merge( $this->atts, $atts );
@@ -740,7 +740,7 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function get_att( $key ) {
 
-		if( isset( $this->atts[$key] ) )
+		if ( isset( $this->atts[$key] ) )
 			return $this->atts[$key];
 
 		return null;

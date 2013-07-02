@@ -10,7 +10,7 @@
  * @param array $options Options to register for WP theme customizer
  * @param int $priority Priority for section
  */
-if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
+if ( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
 	function themeblvd_add_customizer_section( $section_id, $section_name, $options, $priority = null ) {
 		global $_themeblvd_customizer_sections;
 		$_themeblvd_customizer_sections[$section_id] = array(
@@ -42,12 +42,12 @@ if( ! function_exists( 'themeblvd_add_customizer_section' ) ) {
  *
  * @param array $options Options to format
  */
-if( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
+if ( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
 	function themeblvd_registered_customizer_options( $sections ) {
 		$registered_options = array();
-		if( $sections ) {
+		if ( $sections ) {
 			foreach( $sections as $section ) {
-				if( $section['options'] ) {
+				if ( $section['options'] ) {
 					foreach( $section['options'] as $option ) {
 						$registered_options[$option['id']] = $option;
 					}
@@ -68,7 +68,7 @@ if( ! function_exists( 'themeblvd_registered_customizer_options' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_init' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_init' ) ) {
 	function themeblvd_customizer_init( $wp_customize ) {
 
 		global $_themeblvd_customizer_sections;
@@ -79,7 +79,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 		$theme_settings = $options_api->get_settings();
 
 		// Register sections of options
-		if( $_themeblvd_customizer_sections ) {
+		if ( $_themeblvd_customizer_sections ) {
 			foreach( $_themeblvd_customizer_sections as $section ) {
 
 				// Add section
@@ -91,10 +91,10 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 				$font_counter = 1;
 
 				// Add Options
-				if( $section['options'] ) {
+				if ( $section['options'] ) {
 					foreach( $section['options'] as $option ) {
 
-						if( $option['type'] == 'logo' ) {
+						if ( $option['type'] == 'logo' ) {
 
 							// LOGO
 
@@ -105,9 +105,9 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'custom_tagline' 	=> '',
 								'image' 			=> ''
 							);
-							if( isset( $theme_settings[$option['id']] ) ) {
+							if ( isset( $theme_settings[$option['id']] ) ) {
 								foreach( $defaults as $key => $value ) {
-									if( isset( $theme_settings[$option['id']][$key] ) ) {
+									if ( isset( $theme_settings[$option['id']][$key] ) ) {
 										$defaults[$key] = $theme_settings[$option['id']][$key];
 									}
 								}
@@ -115,7 +115,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 
 							// Transport
 							$transport = '';
-							if( isset( $option['transport'] ) )
+							if ( isset( $option['transport'] ) )
 								$transport = $option['transport'];
 
 							// Logo Type
@@ -181,7 +181,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'section' => $section['id'],
 							) ) );
 
-						} else if( $option['type'] == 'typography' ) {
+						} else if ( $option['type'] == 'typography' ) {
 
 							// TYPOGRAPHY
 
@@ -194,12 +194,12 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 								'color' 	=> '',
 								'google' 	=> ''
 							);
-							if( isset( $theme_settings[$option['id']] ) )
+							if ( isset( $theme_settings[$option['id']] ) )
 								$defaults = $theme_settings[$option['id']];
 
 							// Transport
 							$transport = '';
-							if( isset( $option['transport'] ) )
+							if ( isset( $option['transport'] ) )
 								$transport = $option['transport'];
 
 							// Loop through included attributes
@@ -296,16 +296,16 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 
 							// Default
 							$default = '';
-							if( isset( $theme_settings[$option['id']] ) )
+							if ( isset( $theme_settings[$option['id']] ) )
 								$default = $theme_settings[$option['id']];
 
 							// Transport
 							$transport = '';
-							if( isset( $option['transport'] ) )
+							if ( isset( $option['transport'] ) )
 								$transport = $option['transport'];
 
 							$priority = '';
-							if( isset( $option['priority'] ) )
+							if ( isset( $option['priority'] ) )
 								$priority = $option['priority'];
 
 							// Register option
@@ -377,13 +377,13 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 
 		// Remove irrelevant sections
 		$remove_sections = apply_filters( 'themeblvd_customizer_remove_sections', array( 'title_tagline' ) );
-		if( is_array( $remove_sections ) && $remove_sections )
+		if ( is_array( $remove_sections ) && $remove_sections )
 			foreach( $remove_sections as $section )
 				$wp_customize->remove_section( $section );
 
 		// Modify sections
 		$modify_sections = apply_filters( 'themeblvd_customizer_modify_sections', array() );
-		if( ! empty( $modify_sections ) ) {
+		if ( ! empty( $modify_sections ) ) {
 			foreach( $modify_sections as $section ) {
 				// Currently only one section set to be modified. I'm doing this
 				// loop to make it so you can stop items from being modified and
@@ -416,7 +416,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
 						// Custom Layouts
 						$custom_layouts = array();
 						$custom_layout_posts = get_posts('post_type=tb_layout&numberposts=-1');
-						if( ! empty( $custom_layout_posts ) ) {
+						if ( ! empty( $custom_layout_posts ) ) {
 							foreach( $custom_layout_posts as $layout )
 								$custom_layouts[$layout->post_name] = $layout->post_title;
 						} else {
@@ -446,7 +446,7 @@ if( ! function_exists( 'themeblvd_customizer_init' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_styles' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_styles' ) ) {
 	function themeblvd_customizer_styles() {
 		wp_register_style( 'themeblvd_customizer', get_template_directory_uri().'/framework/admin/assets/css/customizer.min.css', false, TB_FRAMEWORK_VERSION );
 		wp_enqueue_style( 'themeblvd_customizer' );
@@ -458,7 +458,7 @@ if( ! function_exists( 'themeblvd_customizer_styles' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_scripts' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_scripts' ) ) {
 	function themeblvd_customizer_scripts() {
 		wp_register_script( 'themeblvd_customizer', get_template_directory_uri().'/framework/admin/assets/js/customizer.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 	    wp_enqueue_script( 'themeblvd_customizer' );
@@ -469,7 +469,7 @@ if( ! function_exists( 'themeblvd_customizer_scripts' ) ) {
 /**
  * Customizer control extensions.
  */
-if( class_exists( 'WP_Customize_Control' ) ) {
+if ( class_exists( 'WP_Customize_Control' ) ) {
 
 	/**
 	 * Add control for textarea.
@@ -613,7 +613,7 @@ if( class_exists( 'WP_Customize_Control' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 	function themeblvd_customizer_preview_logo() {
 
 		// Global option name
@@ -631,7 +631,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 			'image' 			=> '',
 		);
 		foreach( $logo_atts as $key => $value ) {
-			if( isset($logo_options[$key]) )
+			if ( isset($logo_options[$key]) )
 				$logo_atts[$key] = $logo_options[$key];
 		}
 		// Begin output
@@ -653,21 +653,21 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 
 				// Display markup depending on type of
 				// logo selected.
-				if( value == 'title' )
+				if ( value == 'title' )
 				{
 					$('#branding .header_logo').addClass('header_logo_title');
 					$('#branding .header_logo').html('<h1 class="tb-text-logo"><a href="'+Logo.site_url+'" title="'+Logo.title+'">'+Logo.title+'</a></h1>');
 				}
-				else if( value == 'title_tagline' )
+				else if ( value == 'title_tagline' )
 				{
 					$('#branding .header_logo').addClass('header_logo_title_tagline');
 					$('#branding .header_logo').addClass('header_logo_has_tagline');
 					$('#branding .header_logo').html('<h1 class="tb-text-logo"><a href="'+Logo.site_url+'" title="'+Logo.title+'">'+Logo.title+'</a></h1><span class="tagline">'+Logo.tagline+'</span>');
 				}
-				else if( value == 'custom' )
+				else if ( value == 'custom' )
 				{
 					var html = '<h1 class="tb-text-logo"><a href="'+Logo.site_url+'" title="'+Logo.custom+'">'+Logo.custom+'</a></h1>';
-					if(Logo.custom_tagline)
+					if (Logo.custom_tagline)
 					{
 						$('#branding .header_logo').addClass('header_logo_has_tagline');
 						html = html+'<span class="tagline">'+Logo.custom_tagline+'</span>';
@@ -675,10 +675,10 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 					$('#branding .header_logo').addClass('header_logo_custom');
 					$('#branding .header_logo').html(html);
 				}
-				else if( value == 'image' )
+				else if ( value == 'image' )
 				{
 					var html;
-					if(Logo.image)
+					if (Logo.image)
 					{
 						html = '<a href="'+Logo.site_url+'" title="'+Logo.title+'" class="tb-image-logo"><img src="'+Logo.image+'" alt="'+Logo.title+'" /></a>';
 					}
@@ -700,7 +700,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 
 				// Only do if anything if the proper logo
 				// type is currently selected.
-				if( Logo.type == 'custom' ) {
+				if ( Logo.type == 'custom' ) {
 					$('#branding .header_logo h1 a').text(value);
 				}
 			});
@@ -718,8 +718,8 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 
 				// Only do if anything if the proper logo
 				// type is currently selected.
-				if( Logo.type == 'custom' ) {
-					if(value)
+				if ( Logo.type == 'custom' ) {
+					if (value)
 					{
 						$('#branding .header_logo').addClass('header_logo_has_tagline');
 						$('#branding .header_logo').append('<span class="tagline">'+value+'</span>');
@@ -736,9 +736,9 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 
 				// Only do if anything if the proper logo
 				// type is currently selected.
-				if( Logo.type == 'image' ) {
+				if ( Logo.type == 'image' ) {
 					var html;
-					if(value)
+					if (value)
 					{
 						html = '<a href="'+Logo.site_url+'" title="'+Logo.title+'" class="tb-image-logo"><img src="'+Logo.image+'" alt="'+Logo.title+'" /></a>';
 					}
@@ -767,7 +767,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_logo' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
 	function themeblvd_customizer_preview_font_prep() {
 
 		// Global option name
@@ -805,7 +805,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_font_prep' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 	function themeblvd_customizer_preview_primary_font() {
 
 		// Global option name
@@ -837,13 +837,13 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 
 				// Possible choices: normal, bold, italic, bold-italic
 				var body_css_props;
-				if( style == 'normal' )
+				if ( style == 'normal' )
 					body_css_props = 'font-weight: normal; font-style: normal;';
-				else if( style == 'bold' )
+				else if ( style == 'bold' )
 					body_css_props = 'font-weight: bold; font-style: normal;';
-				else if( style == 'italic' )
+				else if ( style == 'italic' )
 					body_css_props = 'font-weight: normal; font-style: italic;';
-				else if( style == 'bold-italic' )
+				else if ( style == 'bold-italic' )
 					body_css_props = 'font-weight: bold; font-style: italic;';
 
 				$('head').append('<style class="preview_body_font_style">body{'+body_css_props+'}</style>');
@@ -855,7 +855,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 		wp.customize('<?php echo $option_name; ?>[typography_body][face]',function( value ) {
 			value.bind(function(face) {
 				var header_font_face = $('h1, h2, h3, h4, h5, h6').css('font-family');
-				if( face == 'google' ) {
+				if ( face == 'google' ) {
 					googleFonts.bodyToggle = true;
 					var google_font = googleFonts.bodyName.split(":"),
 						google_font = google_font[0];
@@ -876,7 +876,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
 			value.bind(function(google_font) {
 				// Only proceed if user has actually selected for
 				// a google font to show in previous option.
-				if(googleFonts.bodyToggle)
+				if (googleFonts.bodyToggle)
 				{
 					// Set global google font for reference in
 					// other options.
@@ -918,7 +918,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_primary_font' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 	function themeblvd_customizer_preview_header_font() {
 
 		// Global option name
@@ -934,16 +934,16 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 		wp.customize('<?php echo $option_name; ?>[typography_header][style]',function( value ) {
 			value.bind(function(style) {
 				// Possible choices: normal, bold, italic, bold-italic
-				if( style == 'normal' ) {
+				if ( style == 'normal' ) {
 					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'normal');
 					$('h1, h2, h3, h4, h5, h6').css('font-style', 'normal');
-				} else if( style == 'bold' ) {
+				} else if ( style == 'bold' ) {
 					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'bold');
 					$('h1, h2, h3, h4, h5, h6').css('font-style', 'normal');
-				} else if( style == 'italic' ) {
+				} else if ( style == 'italic' ) {
 					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'normal');
 					$('h1, h2, h3, h4, h5, h6').css('font-style', 'italic');
-				} else if( style == 'bold-italic' ) {
+				} else if ( style == 'bold-italic' ) {
 					$('h1, h2, h3, h4, h5, h6').css('font-weight', 'bold');
 					$('h1, h2, h3, h4, h5, h6').css('font-style', 'italic');
 				}
@@ -953,7 +953,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 		/* Header Typography - Face */
 		wp.customize('<?php echo $option_name; ?>[typography_header][face]',function( value ) {
 			value.bind(function(face) {
-				if( face == 'google' ) {
+				if ( face == 'google' ) {
 					googleFonts.headerToggle = true;
 					var google_font = googleFonts.headerName.split(":"),
 						google_font = google_font[0];
@@ -972,7 +972,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
 			value.bind(function(google_font) {
 				// Only proceed if user has actually selected for
 				// a google font to show in previous option.
-				if(googleFonts.headerToggle)
+				if (googleFonts.headerToggle)
 				{
 					// Set global google font for reference in
 					// other options.
@@ -1009,7 +1009,7 @@ if( ! function_exists( 'themeblvd_customizer_preview_header_font' ) ) {
  *
  * @since 2.1.0
  */
-if( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
 	function themeblvd_customizer_preview_styles() {
 
 		// Global option name
@@ -1036,18 +1036,18 @@ if( ! function_exists( 'themeblvd_customizer_preview_styles' ) ) {
  *
  * @since 2.3.0
  */
-if( ! function_exists( 'themeblvd_customizer_preview' ) ) {
+if ( ! function_exists( 'themeblvd_customizer_preview' ) ) {
 	function themeblvd_customizer_preview() {
 
 		global $wp_customize;
 
 		// Check if customizer is running.
-		if( ! is_a( $wp_customize, 'WP_Customize_Manager' ) )
+		if ( ! is_a( $wp_customize, 'WP_Customize_Manager' ) )
 			return;
 
 		// Reset themeblvd settings after Customizer
 		// has applied filters.
-		if( $wp_customize->is_preview() ) {
+		if ( $wp_customize->is_preview() ) {
 			$api = Theme_Blvd_Options_API::get_instance();
 			$api->set_settings();
 		}

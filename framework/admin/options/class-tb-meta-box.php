@@ -70,7 +70,7 @@ class Theme_Blvd_Meta_Box {
 
     	// Make sure options framework exists so we can show
     	// the options form.
-    	if( ! function_exists( 'themeblvd_option_fields' ) ) {
+    	if ( ! function_exists( 'themeblvd_option_fields' ) ) {
     		echo 'Options framework not found.';
     		return;
     	}
@@ -83,9 +83,9 @@ class Theme_Blvd_Meta_Box {
     	$settings = array();
     	foreach( $this->options as $option ) {
     		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
-    		if( ! $settings[$option['id']] ) {
-    			if( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
-    				if( isset( $option['std'] ) )
+    		if ( ! $settings[$option['id']] ) {
+    			if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
+    				if ( isset( $option['std'] ) )
     					$settings[$option['id']] = $option['std'];
     			}
     		}
@@ -96,7 +96,7 @@ class Theme_Blvd_Meta_Box {
     	echo $form[0];
 
     	//  Finish content
-    	if( ! empty( $this->args['desc'] ) )
+    	if ( ! empty( $this->args['desc'] ) )
     		printf( '<p class="tb-meta-desc">%s</p>', $this->args['desc'] );
 
 		echo '</div><!-- .tb-meta-box (end) -->';
@@ -109,7 +109,7 @@ class Theme_Blvd_Meta_Box {
 	 */
 	public function save( $post_id ) {
 		foreach( $this->options as $option ) {
-			if( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
+			if ( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
 				update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
 			}
 		}

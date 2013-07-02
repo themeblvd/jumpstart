@@ -69,7 +69,7 @@ class Theme_Blvd_Options_Page {
 		$this->args = wp_parse_args( $args, $defaults );
 
 		// Options page menu slug
-		if( ! $this->args['menu_slug'] )
+		if ( ! $this->args['menu_slug'] )
 			$this->args['menu_slug'] = $id;
 
 		// Option ID -- i.e. get_option( $id )
@@ -83,7 +83,7 @@ class Theme_Blvd_Options_Page {
 		add_action( 'admin_init', array( $this, 'register' ) );
 
 		// Legacy media uploader
-		if( ! function_exists('wp_enqueue_media') )
+		if ( ! function_exists('wp_enqueue_media') )
 			add_action( 'admin_init', 'optionsframework_mlu_init' );
 
 	}
@@ -110,7 +110,7 @@ class Theme_Blvd_Options_Page {
 		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
-		if( ! function_exists('wp_enqueue_media') ){
+		if ( ! function_exists('wp_enqueue_media') ){
 			// Legacy uploader
 			add_action( 'admin_print_styles-'.$admin_page, 'optionsframework_mlu_css', 0 );
 			add_action( 'admin_print_scripts-'.$admin_page, 'optionsframework_mlu_js', 0 );
@@ -135,7 +135,7 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function load_scripts() {
 		wp_enqueue_script( 'jquery-ui-core');
-		if( function_exists( 'wp_enqueue_media' ) )
+		if ( function_exists( 'wp_enqueue_media' ) )
 			wp_enqueue_media();
 		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
@@ -175,8 +175,8 @@ class Theme_Blvd_Options_Page {
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
 		    <?php screen_icon( $icon_id ); ?>
-		    <h2<?php if( $return[1] ) echo ' class="nav-tab-wrapper"' ?>>
-		        <?php if( $return[1] ) : ?>
+		    <h2<?php if ( $return[1] ) echo ' class="nav-tab-wrapper"' ?>>
+		        <?php if ( $return[1] ) : ?>
 		        	<?php echo $return[1]; ?>
 		        <?php else : ?>
 		        	<?php echo $this->args['page_title']; ?>
@@ -224,7 +224,7 @@ class Theme_Blvd_Options_Page {
 		// button, the options defined in the theme's options.php
 		// file will be added to the option for the active theme.
 
-		if( isset( $_POST['reset'] ) ) {
+		if ( isset( $_POST['reset'] ) ) {
 			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
 			return themeblvd_get_option_defaults( $this->options );
 		}
@@ -265,7 +265,7 @@ class Theme_Blvd_Options_Page {
 		$clean = apply_filters( 'themeblvd_options_sanitize_'.$this->id, $clean, $input );
 
 		// Add update message for page re-fresh
-		if( ! $this->sanitized ) // Avoid duplicates
+		if ( ! $this->sanitized ) // Avoid duplicates
 			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
 
 		// We know sanitization has happenned at least

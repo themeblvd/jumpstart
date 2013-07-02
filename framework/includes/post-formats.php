@@ -8,11 +8,11 @@
  * @param string $content Content of post
  * @return string $content Filtered content of post
  */
-if( ! function_exists( 'themeblvd_content_format_link' ) ) {
+if ( ! function_exists( 'themeblvd_content_format_link' ) ) {
 	function themeblvd_content_format_link( $content ){
 
 		// Only continue if this is a "link" format post.
-		if( ! has_post_format( 'link' ) )
+		if ( ! has_post_format( 'link' ) )
 			return $content;
 
 		// Removes link from content, but not actually
@@ -38,16 +38,16 @@ if( ! function_exists( 'themeblvd_content_format_link' ) ) {
  * @param string $content Content of post
  * @return string $content Filtered content of post
  */
-if( ! function_exists( 'themeblvd_content_format_gallery' ) ) {
+if ( ! function_exists( 'themeblvd_content_format_gallery' ) ) {
 	function themeblvd_content_format_gallery( $content ){
 
 		// Only continue if this is a "gallery" format post.
-		if( ! has_post_format( 'gallery' ) )
+		if ( ! has_post_format( 'gallery' ) )
 			return $content;
 
 		$pattern = get_shortcode_regex();
 
-		if( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] )
+		if ( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] )
 			$content = str_replace( $match[0], '', $content );
 
 		return $content;
@@ -73,7 +73,7 @@ if( ! function_exists( 'themeblvd_content_format_gallery' ) ) {
  * @param boolean $remove Whether to remove the found URL from the passed content.
  * @return string The found URL.
  */
-if( ! function_exists( 'get_content_url' ) ) {
+if ( ! function_exists( 'get_content_url' ) ) {
 	function get_content_url( &$content, $remove = false ) {
 		if ( empty( $content ) )
 			return '';

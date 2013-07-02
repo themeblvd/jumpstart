@@ -31,7 +31,7 @@ get_header();
 						<?php themeblvd_content_top(); ?>
 						<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'content', 'attachment' ); ?>
-							<?php if( themeblvd_supports( 'comments', 'attachments' ) ) comments_template( '', true ); ?>
+							<?php if ( themeblvd_supports( 'comments', 'attachments' ) ) comments_template( '', true ); ?>
 						<?php endwhile; ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->

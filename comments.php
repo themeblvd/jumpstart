@@ -5,7 +5,7 @@
  * @package Theme Blvd WordPress Framework
  */
 ?>
-<?php if( themeblvd_show_comments() ) : ?>
+<?php if ( themeblvd_show_comments() ) : ?>
 
 	<?php if ( post_password_required() ) : ?>
 		<div id="comments" class="nopassword">

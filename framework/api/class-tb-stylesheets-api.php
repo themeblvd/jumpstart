@@ -77,7 +77,7 @@ class Theme_Blvd_Stylesheets_API {
      */
 	public static function get_instance() {
 
-		if( self::$instance == null )
+		if ( self::$instance == null )
             self::$instance = new self;
 
         return self::$instance;
@@ -115,7 +115,7 @@ class Theme_Blvd_Stylesheets_API {
 		$this->framework_stylesheets = array();
 
 		// Bootstrap/FontAwesome
-		if( themeblvd_supports( 'assets', 'bootstrap' ) ) {
+		if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 
 			// Boostrap
 			$this->framework_stylesheets['bootstrap'] = array(
@@ -139,7 +139,7 @@ class Theme_Blvd_Stylesheets_API {
 		}
 
 		// prettyPhoto
-		if( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
+		if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 
 			$this->framework_stylesheets['prettyphoto'] = array(
 				'handle'	=> 'prettyphoto',
@@ -152,7 +152,7 @@ class Theme_Blvd_Stylesheets_API {
 		}
 
 		// Primary framework styles
-		if( themeblvd_supports( 'assets', 'primary_css' ) ) {
+		if ( themeblvd_supports( 'assets', 'primary_css' ) ) {
 
 			$this->framework_stylesheets['themeblvd'] = array(
 				'handle'	=> 'themeblvd',
@@ -165,9 +165,9 @@ class Theme_Blvd_Stylesheets_API {
 		}
 
 		// Remove stylesheets
-		if( $this->remove_stylesheets ) {
+		if ( $this->remove_stylesheets ) {
 			foreach( $this->remove_stylesheets as $key => $handle ) {
-				if( isset( $this->framework_stylesheets[$handle] ) ) {
+				if ( isset( $this->framework_stylesheets[$handle] ) ) {
 
 					// Remove framework stylesheet
 					unset( $this->framework_stylesheets[$handle] );
@@ -181,7 +181,7 @@ class Theme_Blvd_Stylesheets_API {
 		}
 
 		// Set framework $deps
-		if( $this->framework_stylesheets ) {
+		if ( $this->framework_stylesheets ) {
 			foreach( $this->framework_stylesheets as $handle => $args ) {
 				$this->framework_deps[] = $handle;
 			}
@@ -199,10 +199,10 @@ class Theme_Blvd_Stylesheets_API {
 	 */
 	public function set_client_stylesheets() {
 
-		if( ! is_admin() ) {
+		if ( ! is_admin() ) {
 
 			// Remove stylesheets
-			if( $this->remove_stylesheets ) {
+			if ( $this->remove_stylesheets ) {
 				foreach( $this->remove_stylesheets as $handle ) {
 					unset( $this->remove_stylesheets[$handle] );
 				}
@@ -219,7 +219,7 @@ class Theme_Blvd_Stylesheets_API {
 				'4' => array()	// Level 4: After Theme Options-generated styles
 			);
 
-			if( $temp_stylesheets ) {
+			if ( $temp_stylesheets ) {
 				foreach( $temp_stylesheets as $handle => $file ) {
 					$key = $file['level'];
 					$this->client_stylesheets[$key][$handle] = $file;
@@ -247,7 +247,7 @@ class Theme_Blvd_Stylesheets_API {
 	 * @param string $media Type of media target for stylesheet
 	 */
 	public function add( $handle, $src, $level = 4, $ver = null, $media = 'all' ) {
-		if( ! is_admin() ) {
+		if ( ! is_admin() ) {
 			$this->client_stylesheets[$handle] = array(
 				'handle' 	=> $handle,
 				'src' 		=> $src,
@@ -266,7 +266,7 @@ class Theme_Blvd_Stylesheets_API {
 	 * @param string $handle ID for this stylesheet
 	 */
 	public function remove( $handle ) {
-		if( ! is_admin() ) {
+		if ( ! is_admin() ) {
 			$this->remove_stylesheets[] = $handle;
 		}
 	}
@@ -339,7 +339,7 @@ class Theme_Blvd_Stylesheets_API {
 		$this->print_styles(1);
 
 		// Enqueue framework stylesheets
-		if( $this->framework_stylesheets ) {
+		if ( $this->framework_stylesheets ) {
 			foreach( $this->framework_stylesheets as $style ) {
 				wp_enqueue_style( $style['handle'], $style['src'], $style['deps'], $style['ver'], $style['media'] );
 			}
@@ -376,14 +376,14 @@ class Theme_Blvd_Stylesheets_API {
 	public function print_styles( $level = 1 ) {
 
 		// Only levels 1-4 currently exist
-		if( ! in_array( $level, array(1, 2, 3, 4) ) )
+		if ( ! in_array( $level, array(1, 2, 3, 4) ) )
 			return;
 
 		// Add styles
-		if( $level == 4 ) {
+		if ( $level == 4 ) {
 
 			// Manually insert level 4 stylesheets
-			if( $this->client_stylesheets[4] ) {
+			if ( $this->client_stylesheets[4] ) {
 				foreach( $this->client_stylesheets[4] as $file ) {
 					printf( "<link rel='stylesheet' id='%s' href='%s' type='text/css' media='%s' />\n", $file['handle'], $file['src'], $file['media'] );
 				}
@@ -392,7 +392,7 @@ class Theme_Blvd_Stylesheets_API {
 		} else {
 
 			// Use WordPress's enqueue system
-			if( $this->client_stylesheets[$level] ) {
+			if ( $this->client_stylesheets[$level] ) {
 				foreach( $this->client_stylesheets[$level] as $file ) {
 					wp_enqueue_style( $file['handle'], $file['src'], array(), $file['ver'], $file['media'] );
 				}

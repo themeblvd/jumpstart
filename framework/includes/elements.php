@@ -8,18 +8,18 @@
  * @param string $widths Width for each column
  * @param array $columns Inidivual columns, number of array items must match $setup's number
  */
-if( ! function_exists( 'themeblvd_columns' ) ) {
+if ( ! function_exists( 'themeblvd_columns' ) ) {
 	function themeblvd_columns( $num, $widths, $columns ) {
 
 		// Kill it if number of columns doesn't match the
 		// number of widths exploded from the string.
 		$widths = explode( '-', $widths );
-		if( $num != count( $widths ) )
+		if ( $num != count( $widths ) )
 			return;
 
 		// Kill it if number of columns doesn't match the
 		// number of columns feed into the function.
-		if( $num != count( $columns ) )
+		if ( $num != count( $columns ) )
 			return;
 
 		// Last column's key
@@ -29,7 +29,7 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 
 			// Set CSS classes for column
 			$classes = 'column '.$widths[$key];
-			if( $last == $key )
+			if ( $last == $key )
 				$classes .= ' last';
 
 			// Start display
@@ -38,7 +38,7 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 			// Column Content
 			switch( $column['type'] ) {
 				case 'widget' :
-					if( ! empty( $column['sidebar'] ) ) {
+					if ( ! empty( $column['sidebar'] ) ) {
 						echo '<div class="widget-area">';
 						dynamic_sidebar( $column['sidebar'] );
 						echo '</div><!-- .widget-area (end) -->';
@@ -50,7 +50,7 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 					echo apply_filters( 'the_content', $current_page->post_content );
 					break;
 				case 'page' :
-					if( ! empty( $column['page'] ) ) {
+					if ( ! empty( $column['page'] ) ) {
 						// Get WP internal ID for the page
 						$page_id = themeblvd_post_id_by_name( $column['page'], 'page' );
 
@@ -71,11 +71,11 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
 					}
 					break;
 				case 'raw' :
-					if( isset( $column['raw'] ) ) {
+					if ( isset( $column['raw'] ) ) {
 						// Only negate the "simulated" the_content filter if the option exists
 						// AND it's been unchecked. This is for legacy purposes, as this
 						// feature was added in v2.1.0
-						if( isset( $column['raw_format'] ) && ! $column['raw_format'] )
+						if ( isset( $column['raw_format'] ) && ! $column['raw_format'] )
 							echo do_shortcode( stripslashes( $column['raw'] ) ); // Shortcodes only
 						else
 							echo apply_filters( 'themeblvd_the_content', stripslashes( $column['raw'] ) );
@@ -97,7 +97,7 @@ if( ! function_exists( 'themeblvd_columns' ) ) {
  * @param array $args Options for content
  * @return string $output HTML output for content
  */
-if( ! function_exists( 'themeblvd_content' ) ) {
+if ( ! function_exists( 'themeblvd_content' ) ) {
 	function themeblvd_content( $args = array() ) {
 
 		// Setup and extract $args
@@ -145,7 +145,7 @@ if( ! function_exists( 'themeblvd_content' ) ) {
 
 			// Raw content input
 			case 'raw' :
-				if( $raw_format )
+				if ( $raw_format )
 					$output = apply_filters( 'themeblvd_the_content', stripslashes( $raw_content ) ); // WP auto formatting w/shortcodes
 				else
 					$output =  do_shortcode( stripslashes( $raw_content ) ); // Shortcodes only
@@ -153,7 +153,7 @@ if( ! function_exists( 'themeblvd_content' ) ) {
 
 			// Widget area
 			case 'widget_area' :
-				if( $widget_area ) {
+				if ( $widget_area ) {
 					$output = '<div class="widget-area">';
 					ob_start();
 					dynamic_sidebar( $widget_area );
@@ -175,7 +175,7 @@ if( ! function_exists( 'themeblvd_content' ) ) {
  * @param string $type Style of divider
  * @return string $output HTML output for divider
  */
-if( ! function_exists( 'themeblvd_divider' ) ) {
+if ( ! function_exists( 'themeblvd_divider' ) ) {
 	function themeblvd_divider( $type = 'solid' ) {
 		$output = '<div class="divider divider-'.$type.'"></div>';
 		return $output;
@@ -190,7 +190,7 @@ if( ! function_exists( 'themeblvd_divider' ) ) {
  * @param array $args Options for headline
  * @return string $output HTML output for headline
  */
-if( ! function_exists( 'themeblvd_headline' ) ) {
+if ( ! function_exists( 'themeblvd_headline' ) ) {
 	function themeblvd_headline( $args = array() ) {
 
 		// Setup and extract $args
@@ -210,7 +210,7 @@ if( ! function_exists( 'themeblvd_headline' ) ) {
 		$output = '<'.$tag.' class="text-'.$align.'">';
 		$output .= stripslashes( $text );
 		$output .= '</'.$tag.'>';
-		if( $tagline ) {
+		if ( $tagline ) {
 			$output .= '<p class="text-'.$align.'">';
 			$output .= stripslashes( $tagline );
 			$output .= '</p>';
@@ -231,7 +231,7 @@ if( ! function_exists( 'themeblvd_headline' ) ) {
  * @param string $type Type of posts, grid or list
  * @param string $current_location Location of element, primary, featured, or featured_below
  */
-if( ! function_exists( 'themeblvd_post_slider' ) ) {
+if ( ! function_exists( 'themeblvd_post_slider' ) ) {
 	function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_location = 'primary' ) {
 
 		global $post;
@@ -268,7 +268,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 
 		// Setup query args
 		$custom_query = false;
-		if( ! empty( $query ) ) {
+		if ( ! empty( $query ) ) {
 			// Custom query string
 			$custom_query = true;
 			$query_args = html_entity_decode( $query );
@@ -285,7 +285,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		$pause_play == '1' ? $classes .= ' show-pause_play' : $classes .= ' hide-pause_play';
 
 		// Config before query string
-		if( $type == 'grid' ) {
+		if ( $type == 'grid' ) {
 			$columns = themeblvd_set_att( 'columns', $columns );
 			$posts_per_slide = $columns*$rows;
 			$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
@@ -301,8 +301,8 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 		// Get posts
 		$posts = get_posts( $query_args );
 
-		if( ! $custom_query ) {
-			if( $numberposts == -1 && $offset > 0 ) {
+		if ( ! $custom_query ) {
+			if ( $numberposts == -1 && $offset > 0 ) {
 				for( $i = 0; $i < $offset; $i++ ) {
 					unset( $posts[$i] );
 				}
@@ -323,7 +323,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 									<?php
 									if ( ! empty( $posts ) ) {
 										do_action( 'themeblvd_post_'.$type.'_slider_before_loop', $args );
-										if( $type == 'grid' ) {
+										if ( $type == 'grid' ) {
 
 											/*-------------------------------------------*/
 											/* Post Grid Loop
@@ -336,7 +336,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 											foreach ( $posts as $post ) {
 												setup_postdata( $post );
 												// Start first slide and first row.
-												if( $counter == 1 ) {
+												if ( $counter == 1 ) {
 													echo '<li class="slide">';
 													echo '<div class="post_'.$type.'">';
 													themeblvd_open_row();
@@ -344,14 +344,14 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 												// Include the post
 												get_template_part( 'content', themeblvd_get_part( 'grid_slider' ) );
 												// Add in the complicated stuff to break up slides, rows, and columns
-												if( $per_slide_counter == $posts_per_slide ) {
+												if ( $per_slide_counter == $posts_per_slide ) {
 													// End of a slide and thus end the row
 													themeblvd_close_row();
 													echo '</div><!-- .post_'.$type.' (end) -->';
 													echo '</li>';
 													// And if posts aren't done yet, open a
 													// new slide and new row.
-													if( $number_of_posts != $counter ) {
+													if ( $number_of_posts != $counter ) {
 														echo '<li class="slide">';
 														echo '<div class="post_'.$type.'">';
 														themeblvd_open_row();
@@ -359,12 +359,12 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 													// Set the posts per slide counter back to
 													// 0 for the next slide.
 													$per_slide_counter = 1;
-												} elseif( $per_slide_counter % $columns == 0  ) {
+												} elseif ( $per_slide_counter % $columns == 0  ) {
 													// End row only
 													themeblvd_close_row();
 													// Open a new row if there are still post left
 													// in this slide.
-													if( $posts_per_slide != $per_slide_counter ) {
+													if ( $posts_per_slide != $per_slide_counter ) {
 														themeblvd_open_row();
 													}
 													// Increase number of posts per slide cause
@@ -392,19 +392,19 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
 
 											foreach ( $posts as $post ) {
 												setup_postdata( $post );
-												if( $counter == 1 ) {
+												if ( $counter == 1 ) {
 													echo '<li class="slide">';
 													echo '<div class="post_'.$type.'">';
 												}
 												get_template_part( 'content', themeblvd_get_part( 'list_slider' ) );
 												// Add in the complicated stuff
-												if( $per_slide_counter == $posts_per_slide ) {
+												if ( $per_slide_counter == $posts_per_slide ) {
 													// End of a slide and thus end the row
 													echo '</div><!-- .post_'.$type.' (end) -->';
 													echo '</li>';
 													// And if posts aren't done yet, open a
 													// new slide
-													if( $number_of_posts != $counter ) {
+													if ( $number_of_posts != $counter ) {
 														echo '<li class="slide">';
 														echo '<div class="post_'.$type.'">';
 													}
@@ -450,7 +450,7 @@ if( ! function_exists( 'themeblvd_post_slider' ) ) {
  * @param string $type Type of posts, grid or list
  * @param string $current_location Current location of element, featured or primary
  */
-if( ! function_exists( 'themeblvd_posts' ) ) {
+if ( ! function_exists( 'themeblvd_posts' ) ) {
 	function themeblvd_posts( $args = array(), $type = 'list', $current_location = 'primary' ) {
 
 		global $post;
@@ -486,7 +486,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 
 		// Setup query args
 		$custom_query = false;
-		if( ! empty( $query ) ) {
+		if ( ! empty( $query ) ) {
 			// Custom query string
 			$custom_query = true;
 			$query_args = html_entity_decode( $query );
@@ -496,7 +496,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		}
 
 		// Config before query string
-		if( $type == 'grid' ) {
+		if ( $type == 'grid' ) {
 			$columns = themeblvd_set_att( 'columns', $columns );
 			$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
 			$crop = ! empty( $crop ) ? $crop : $size;
@@ -515,8 +515,8 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		$posts = get_posts( $query_args );
 
 		// Adjust offset if neccesary
-		if( ! $custom_query ) {
-			if( $type != 'grid' && $numberposts == -1 && $offset > 0 ) {
+		if ( ! $custom_query ) {
+			if ( $type != 'grid' && $numberposts == -1 && $offset > 0 ) {
 				for( $i = 0; $i < $offset; $i++ ) {
 					unset( $posts[$i] );
 				}
@@ -527,20 +527,20 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		echo '<div class="post_'.$type.'">';
 		if ( ! empty( $posts ) ) {
 			do_action( 'themeblvd_post_'.$type.'_before_loop', $args );
-			if( $type == 'grid' ) {
+			if ( $type == 'grid' ) {
 				// Loop for post grid (i.e. Portfolio)
 				$counter = themeblvd_set_att( 'counter', 1 );
 				$number_of_posts = count( $posts );
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
-					if( $counter == 1 ) themeblvd_open_row();
+					if ( $counter == 1 ) themeblvd_open_row();
 					get_template_part( 'content', themeblvd_get_part( 'grid' ) );
-					if( $counter % $columns == 0 ) themeblvd_close_row();
-					if( $counter % $columns == 0 && $number_of_posts != $counter ) themeblvd_open_row();
+					if ( $counter % $columns == 0 ) themeblvd_close_row();
+					if ( $counter % $columns == 0 && $number_of_posts != $counter ) themeblvd_open_row();
 					$counter = themeblvd_set_att( 'counter', $counter+1 );
 				}
 				wp_reset_postdata();
-				if( $number_of_posts % $columns != 0 ) themeblvd_close_row();
+				if ( $number_of_posts % $columns != 0 ) themeblvd_close_row();
 			} else {
 				// Loop for post list (i.e. Blog)
 				foreach ( $posts as $post ) {
@@ -556,7 +556,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
 		echo '</div><!-- .post_'.$type.' (end) -->';
 
 		// Show link
-		if( $link )
+		if ( $link )
 			printf( '<a href="%s" target="%s" title="%s" class="lead-link">%s</a>', $link_url, $link_target, $link_text, $link_text );
 
 	}
@@ -571,7 +571,7 @@ if( ! function_exists( 'themeblvd_posts' ) ) {
  * @param string $type Type of posts, grid or list
  * @param string $current_location Current location of element, featured or primary
  */
-if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
+if ( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 	function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_location = 'primary' ) {
 
 		global $more;
@@ -597,7 +597,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 		extract( $args, EXTR_OVERWRITE );
 
 		// Config before query string
-		if( $type == 'grid' ) {
+		if ( $type == 'grid' ) {
 			$columns = themeblvd_set_att( 'columns', $columns );
 			$posts_per_page = $rows ? $columns*$rows : '-1';
 			$args['posts_per_page'] = $posts_per_page; // Set new value to $args for parsing query
@@ -632,21 +632,21 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
 
 		// Start the loop
 		echo '<div class="post_'.$type.'">';
-		if( $posts->have_posts() ) {
+		if ( $posts->have_posts() ) {
 			do_action( 'themeblvd_post_'.$type.'_paginated_before_loop', $args );
-			if( $type == 'grid' ) {
+			if ( $type == 'grid' ) {
 				// Loop for post grid
 				$counter = themeblvd_set_att( 'counter', 1 );
 				while( $posts->have_posts() ) {
 					$posts->the_post();
 					$more = 0;
-					if( $counter == 1 ) themeblvd_open_row();
+					if ( $counter == 1 ) themeblvd_open_row();
 					get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
-					if( $counter % $columns == 0 ) themeblvd_close_row();
-					if( $counter % $columns == 0 && $posts_per_page != $counter ) themeblvd_open_row();
+					if ( $counter % $columns == 0 ) themeblvd_close_row();
+					if ( $counter % $columns == 0 && $posts_per_page != $counter ) themeblvd_open_row();
 					$counter = themeblvd_set_att( 'counter', $counter+1 );
 				}
-				if( ($counter-1) != $posts_per_page ) themeblvd_close_row();
+				if ( ($counter-1) != $posts_per_page ) themeblvd_close_row();
 			} else {
 				// Loop for post list
 				while( $posts->have_posts() ) {
@@ -679,7 +679,7 @@ if( ! function_exists( 'themeblvd_posts_paginated' ) ) {
  *
  * @param string $slider Slug of custom-built slider to use
  */
-if( ! function_exists( 'themeblvd_slider_auto' ) ) {
+if ( ! function_exists( 'themeblvd_slider_auto' ) ) {
 	function themeblvd_slider_auto( $id, $args = array() ) {
 
 		global $post;
@@ -712,7 +712,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 
 		// Image Size
 		$image_size = $args['image_size'];
-		if( $args['image'] == 'align-right' || $args['image'] == 'align-left' )
+		if ( $args['image'] == 'align-right' || $args['image'] == 'align-left' )
 			$image_size = 'slider-staged';
 
 		// Format settings array so it matches the array
@@ -731,7 +731,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 		$settings = apply_filters( 'themeblvd_slider_auto_settings', $settings, $args );
 
 		// Setup query
-		if( ( ! $args['source'] && $args['query'] ) || ( $args['source'] == 'query' ) )
+		if ( ( ! $args['source'] && $args['query'] ) || ( $args['source'] == 'query' ) )
 			$query_args = $args['query'];
 		else
 			$query_args = themeblvd_get_posts_args( $args, 'auto_slider' );
@@ -745,7 +745,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 		$slides = array();
 		$counter = 1;
 
-		if( $posts ) {
+		if ( $posts ) {
 			do_action( 'themeblvd_slider_auto_before_loop', $args );
 			foreach( $posts as $post ) {
 
@@ -771,7 +771,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 
 				// Elements to include in slide
 				$includes = array( 'headline', 'description' );
-				if( $args['button'] )
+				if ( $args['button'] )
 					$includes[] = 'button';
 
 				// Image Link
@@ -780,7 +780,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 				$image_link_url = '';
 
 				// Use "Featured Image Link" setting from post
-				if( $image_link_type == 'option' ) {
+				if ( $image_link_type == 'option' ) {
 					switch( get_post_meta( get_the_ID(), '_tb_thumb_link', true ) ) {
 						case 'post' :
 							$image_link_type = 'permalink'; // Pass to next section
@@ -814,7 +814,7 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 						break;
 				}
 
-				if( $image_link_url )
+				if ( $image_link_url )
 					$includes[] = 'image_link';
 
 				// Elements
@@ -836,8 +836,8 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
 				// In Sliders plugin v1.1+, buttons in full width sliders are
 				// no longer supported; so this will add a new paragraph with
 				// a link to the post, if relevant.
-				if( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && version_compare( TB_SLIDERS_PLUGIN_VERSION, '1.1.0', '>=' ) ) {
-					if( in_array( 'button', $includes ) ) {
+				if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && version_compare( TB_SLIDERS_PLUGIN_VERSION, '1.1.0', '>=' ) ) {
+					if ( in_array( 'button', $includes ) ) {
 						$elements['description'] .= "\n\n"; // Slider display uses wpautop
 						$elements['description'] .= sprintf('<a href="%s" title="%s">%s</a>', $elements['button']['url'], $elements['button']['text'], $elements['button']['text'] );
 					}
@@ -870,18 +870,18 @@ if( ! function_exists( 'themeblvd_slider_auto' ) ) {
  *
  * @param string $slider Slug of custom-built slider to use
  */
-if( ! function_exists( 'themeblvd_slider' ) ) {
+if ( ! function_exists( 'themeblvd_slider' ) ) {
 	function themeblvd_slider( $slider ) {
 
 		// Kill it if there's no slider
-		if( ! $slider ) {
+		if ( ! $slider ) {
 			printf('<div class="alert warning"><p>%s</p></div>', themeblvd_get_local( 'no_slider_selected.' ) );
 			return;
 		}
 
 		// Get Slider ID
 		$slider_id = themeblvd_post_id_by_name( $slider, 'tb_slider' );
-		if( ! $slider_id ) {
+		if ( ! $slider_id ) {
 			echo themeblvd_get_local( 'no_slider' );
 			return;
 		}
@@ -904,7 +904,7 @@ if( ! function_exists( 'themeblvd_slider' ) ) {
  * @param array $args All options for slogan
  * @return string $output HTML output for slogan
  */
-if( ! function_exists( 'themeblvd_slogan' ) ) {
+if ( ! function_exists( 'themeblvd_slogan' ) ) {
 	function themeblvd_slogan( $args = array() ) {
 
 		// Setup and extract $args
@@ -927,7 +927,7 @@ if( ! function_exists( 'themeblvd_slogan' ) ) {
 
 		// Output
 		$output = '<div class="tb-slogan '.$class.'">';
-		if( $button ) {
+		if ( $button ) {
 			$output .= themeblvd_button( stripslashes($button_text), $button_url, $button_color, $button_target, $button_size );
 		}
 		$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( do_shortcode( $slogan ) ).'</span>';
@@ -946,7 +946,7 @@ if( ! function_exists( 'themeblvd_slogan' ) ) {
  * @param array $options all options for tabs
  * @return string $output HTML output for tabs
  */
-if( ! function_exists( 'themeblvd_tabs' ) ) {
+if ( ! function_exists( 'themeblvd_tabs' ) ) {
 	function themeblvd_tabs( $id, $options ) {
 		$nav = array( 'tabs', 'above' ); // Backup for someone updating who doesn't have this saved yet.
 		$navigation = '';
@@ -954,16 +954,16 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 		$output = '';
 
 		// Tabs or pills?
-		if( ! empty( $options['setup']['nav'] ) )
+		if ( ! empty( $options['setup']['nav'] ) )
 			$nav = explode( '_', $options['setup']['nav'] );
 		$nav_type = $nav[0];
 		$nav_location = $nav[1];
 
 		// Container classes
 		$classes = 'tabbable';
-		if( ! empty($options['height']) )
+		if ( ! empty($options['height']) )
 			$classes .= ' fixed-height';
-		if( $nav_type == 'tabs' )
+		if ( $nav_type == 'tabs' )
 			$classes .= ' tabs-'.$nav_location;
 		$classes .= ' tb-tabs-'.$options['setup']['style'];
 
@@ -972,7 +972,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 		$class = null;
 		$navigation .= '<ul class="nav nav-'.$nav_type.'">';
 		foreach( $options['setup']['names'] as $key => $name ) {
-			if( $i == 0 ) $class = 'active';
+			if ( $i == 0 ) $class = 'active';
 			$navigation .= '<li class="'.$class.'"><a href="#'.$id.'-'.$key.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
 			$class = null;
 			$i++;
@@ -1009,13 +1009,13 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 					// Only negate simulated the_content filter if the option exists AND it's
 					// been unchecked. This is for legacy purposes, as this feature
 					// was added in v2.1.0
-					if( isset( $options[$key]['raw_format'] ) && ! $options[$key]['raw_format'] )
+					if ( isset( $options[$key]['raw_format'] ) && ! $options[$key]['raw_format'] )
 						$content .= do_shortcode( stripslashes( $options[$key]['raw'] ) ); // Shortcodes only
 					else
 						$content .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
 					break;
 				case 'widget' :
-					if( ! empty( $options[$key]['sidebar'] ) ) {
+					if ( ! empty( $options[$key]['sidebar'] ) ) {
 						$content .= '<div class="widget-area">';
 						ob_start();
 						dynamic_sidebar( $options[$key]['sidebar'] );
@@ -1031,9 +1031,9 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
 
 		// Construct final output
 		$output = '<div class="'.$classes.'">';
-		if( $nav_location != 'below' ) $output .= $navigation;
+		if ( $nav_location != 'below' ) $output .= $navigation;
 		$output .= $content;
-		if( $nav_location == 'below' ) $output .= $navigation;
+		if ( $nav_location == 'below' ) $output .= $navigation;
 		$output .= '</div><!-- .tabbable (end) -->';
 
 		return $output;
@@ -1048,7 +1048,7 @@ if( ! function_exists( 'themeblvd_tabs' ) ) {
  * @param array $args all options for tweet
  * @return string $output HTML output for tweet
  */
-if( ! function_exists( 'themeblvd_tweet' ) ) {
+if ( ! function_exists( 'themeblvd_tweet' ) ) {
 	function themeblvd_tweet( $args = array() ) {
 		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
 	}

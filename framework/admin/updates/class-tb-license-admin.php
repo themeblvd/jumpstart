@@ -39,7 +39,7 @@ class Theme_Blvd_License_Admin {
 	 */
 	function sanitize_license( $new ) {
 		$old = get_option( 'themeblvd_license_key' );
-		if( $old && $old != $new ) {
+		if ( $old && $old != $new ) {
 			delete_option( 'themeblvd_license_key_status' ); // new license has been entered, so must reactivate
 		}
 		return $new;
@@ -50,9 +50,9 @@ class Theme_Blvd_License_Admin {
 	 */
 	function activate_license() {
 
-		if( isset( $_POST['themeblvd_license_activate'] ) ) {
+		if ( isset( $_POST['themeblvd_license_activate'] ) ) {
 
-		 	if( ! check_admin_referer( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ) )
+		 	if ( ! check_admin_referer( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ) )
 				return; // get out if we didn't click the Activate button
 
 			global $wp_version;
@@ -74,7 +74,7 @@ class Theme_Blvd_License_Admin {
 
 			// $license_data->license will be either "active" or "inactive"
 
-			if( isset( $license_data->license ) )
+			if ( isset( $license_data->license ) )
 				update_option( 'themeblvd_license_key_status', $license_data->license );
 
 		}
@@ -84,7 +84,7 @@ class Theme_Blvd_License_Admin {
 	 * Add admin page.
 	 */
 	function add_page() {
-		if( themeblvd_supports('admin', 'updates') && current_user_can( themeblvd_admin_module_cap( 'updates' ) ) )
+		if ( themeblvd_supports('admin', 'updates') && current_user_can( themeblvd_admin_module_cap( 'updates' ) ) )
 			add_theme_page( __( 'Theme License', 'themeblvd' ), __( 'Theme License', 'themeblvd' ), 'manage_options', 'themeblvd-license', array( $this, 'admin_page' ) );
 	}
 
@@ -110,13 +110,13 @@ class Theme_Blvd_License_Admin {
 								<label class="description" for="themeblvd_license_key"><?php _e('Enter your license key'); ?></label>
 							</td>
 						</tr>
-						<?php if( $license ) : ?>
+						<?php if ( $license ) : ?>
 							<tr valign="top">
 								<th scope="row" valign="top">
 									<?php _e( 'Activate License', 'themeblvd' ); ?>
 								</th>
 								<td>
-									<?php if( $status !== false && $status == 'valid' ) : ?>
+									<?php if ( $status !== false && $status == 'valid' ) : ?>
 										<span style="color:green;"><?php _e( 'active', 'themeblvd' ); ?></span>
 									<?php else : ?>
 										<?php wp_nonce_field( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ); ?>

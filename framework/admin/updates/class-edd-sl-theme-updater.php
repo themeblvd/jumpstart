@@ -48,7 +48,7 @@ class EDD_SL_Theme_Updater {
 
 		$api_response = get_transient( $this->response_key );
 
-		if( false === $api_response )
+		if ( false === $api_response )
 			return;
 
 		$update_url = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=' . urlencode( $this->theme_slug ), 'upgrade-theme_' . $this->theme_slug );

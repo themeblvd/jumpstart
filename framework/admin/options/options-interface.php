@@ -36,12 +36,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		// The primary reason for this is to help link certain options
 		// together in order to apply custom javascript for certain
 		// common groups.
-	   	if( $value['type'] == 'subgroup_start' ) {
-	   		if( isset( $value['class'] ) ) $class = ' '.$value['class'];
+	   	if ( $value['type'] == 'subgroup_start' ) {
+	   		if ( isset( $value['class'] ) ) $class = ' '.$value['class'];
 	   		$output .= '<div class="subgroup'.$class.'">';
 	   		continue;
 	   	}
-	   	if( $value['type'] == 'subgroup_end' ) {
+	   	if ( $value['type'] == 'subgroup_end' ) {
 	   		$output .= '</div><!-- .subgroup (end) -->';
 	   		continue;
 	   	}
@@ -50,7 +50,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   	// This allows certain options to be grouped together in the
 	   	// final saved options array by adding a common prefix to their
 	   	// name form attributes.
-	   	if( isset( $value['group'] ) )
+	   	if ( isset( $value['group'] ) )
 	   		$option_name .= '['.$value['group'].']';
 
 	   	// Sections --
@@ -58,25 +58,25 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		// is meant to create visual dividing styles between sections,
 		// opposed to sub groups, which are used to section off the code
 		// for hidden purposes.
-	   	if( $value['type'] == 'section_start' ) {
+	   	if ( $value['type'] == 'section_start' ) {
 	   		$name = ! empty( $value['name'] ) ? esc_html( $value['name'] ) : '';
-	   		if( isset( $value['class'] ) )
+	   		if ( isset( $value['class'] ) )
 	   			$class = ' '.$value['class'];
-	   		if( ! $name )
+	   		if ( ! $name )
 	   			$class .= ' no-name';
 	   		$output .= '<div class="postbox inner-section'.$class.'">';
-	   		if( $name )
+	   		if ( $name )
 	   			$output .= '<h3>'.$name.'</h3>';
-	   		if( ! empty($value['desc']) ) $output .= '<div class="section-description">'.$value['desc'].'</div>';
+	   		if ( ! empty($value['desc']) ) $output .= '<div class="section-description">'.$value['desc'].'</div>';
 	   		continue;
 	   	}
-	   	if( $value['type'] == 'section_end' ) {
+	   	if ( $value['type'] == 'section_end' ) {
 	   		$output .= '</div><!-- .inner-section (end) -->';
 	   		continue;
 	   	}
 
 		// Wrap all options
-		if( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
 
 			// Keep all ids lowercase with no spaces
 			$value['id'] = preg_replace('/\W/', '', strtolower($value['id']) );
@@ -84,41 +84,41 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			// Determine CSS classes
 			$id = 'section-'.$value['id'];
 			$class = 'section ';
-			if( isset( $value['type'] ) ) {
+			if ( isset( $value['type'] ) ) {
 				$class .= ' section-'.$value['type'];
-				if( $value['type'] == 'logo' || $value['type'] == 'background' )
+				if ( $value['type'] == 'logo' || $value['type'] == 'background' )
 					$class .= ' section-upload';
 			}
-			if( ! empty( $value['class'] ) )
+			if ( ! empty( $value['class'] ) )
 				$class .= ' '.$value['class'];
 
 			// Start Output
 			$output .= '<div id="'.esc_attr( $id ) .'" class="'.esc_attr( $class ).'">'."\n";
-			if( ! empty( $value['name'] ) ) // Name not required any more
+			if ( ! empty( $value['name'] ) ) // Name not required any more
 				$output .= '<h4 class="heading">'.esc_html( $value['name'] ).'</h4>'."\n";
 			$output .= '<div class="option">'."\n".'<div class="controls">'."\n";
 		 }
 
 		// Set default value to $val
-		if( isset( $value['std'] ) )
+		if ( isset( $value['std'] ) )
 			$val = $value['std'];
 
 		// If the option is already saved, override $val
-		if( $value['type'] != 'heading' && $value['type'] != 'info' ) {
-			if( isset( $value['group'] ) ) {
+		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+			if ( isset( $value['group'] ) ) {
 				// Set grouped value
-				if( isset( $settings[($value['group'])][($value['id'])] ) ) {
+				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
 					$val = $settings[($value['group'])][($value['id'])];
 					// Striping slashes of non-array options
-					if( ! is_array( $val ) )
+					if ( ! is_array( $val ) )
 						$val = stripslashes( $val );
 				}
 			} else {
 				// Set non-grouped value
-				if( isset($settings[($value['id'])]) ) {
+				if ( isset($settings[($value['id'])]) ) {
 					$val = $settings[($value['id'])];
 					// Striping slashes of non-array options
-					if( ! is_array( $val ) )
+					if ( ! is_array( $val ) )
 						$val = stripslashes( $val );
 				}
 			}
@@ -163,7 +163,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				// If this is a builder sample select, show preview images
-				if( isset( $value['class'] ) && $value['class'] == 'builder_samples' && function_exists( 'themeblvd_builder_sample_previews' ) ) {
+				if ( isset( $value['class'] ) && $value['class'] == 'builder_samples' && function_exists( 'themeblvd_builder_sample_previews' ) ) {
 					$output .= themeblvd_builder_sample_previews();
 				}
 				break;
@@ -238,7 +238,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'upload' :
-				if( function_exists('wp_enqueue_media') ) {
+				if ( function_exists('wp_enqueue_media') ) {
 					// Media uploader WP 3.5+
 					$args = array( 'option_name' => $option_name, 'type' => 'standard', 'id' => $value['id'], 'value' => $val );
 					$output .= themeblvd_media_uploader( $args );
@@ -259,7 +259,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$typography_stored = $val;
 
 				// Font Size
-				if( in_array( 'size', $value['atts'] ) ) {
+				if ( in_array( 'size', $value['atts'] ) ) {
 
 					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-size" name="'.esc_attr( $option_name.'['.$value['id'].'][size]' ).'" id="'.esc_attr( $value['id'].'_size' ).'">';
@@ -277,7 +277,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				// Font Style
-				if( in_array( 'style', $value['atts'] ) ) {
+				if ( in_array( 'style', $value['atts'] ) ) {
 
 					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-style" name="'.esc_attr( $option_name.'['.$value['id'].'][style]' ).'" id="'.esc_attr( $value['id'].'_style' ).'">';
@@ -294,7 +294,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				// Font Face
-				if( in_array( 'face', $value['atts'] ) ) {
+				if ( in_array( 'face', $value['atts'] ) ) {
 
 					$output .= '<div class="tb-fancy-select">';
 					$output .= '<select class="of-typography of-typography-face" name="'.esc_attr( $option_name.'['.$value['id'].'][face]' ).'" id="'.esc_attr( $value['id'].'_face' ).'">';
@@ -311,7 +311,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				// Font Color
-				if( in_array( 'color', $value['atts'] ) ) {
+				if ( in_array( 'color', $value['atts'] ) ) {
 					$output .= '<div id="'.esc_attr( $value['id'] ).'_color_picker" class="colorSelector"><div style="'.esc_attr( 'background-color:'.$typography_stored['color'] ).'"></div></div>';
 					$output .= '<input class="of-color of-typography of-typography-color" name="'.esc_attr( $option_name.'['.$value['id'].'][color]' ).'" id="'.esc_attr( $value['id'].'_color' ).'" type="text" value="'.esc_attr( $typography_stored['color'] ).'" />';
 				}
@@ -319,7 +319,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="clear"></div>';
 
 				// Google Font support
-				if( in_array( 'face', $value['atts'] ) ) {
+				if ( in_array( 'face', $value['atts'] ) ) {
 					$output .= '<div class="google-font hide">';
 					$output .= '<h5>'.__( 'Enter the name of a font from the <a href="http://www.google.com/webfonts" target="_blank">Google Font Directory</a>.', 'themeblvd' ).'</h5>';
 					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr( $typography_stored['google'] ).'" />';
@@ -343,7 +343,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<input class="of-color of-background of-background-color" name="'.esc_attr( $option_name.'['.$value['id'].'][color]' ).'" id="'.esc_attr( $value['id'].'_color' ).'" type="text" value="'.esc_attr( $current_color ).'" />';
 
 				// Background Image - New AJAX Uploader using Media Library
-				if( ! isset( $background['image'] ) )
+				if ( ! isset( $background['image'] ) )
 					$background['image'] = '';
 
 				// Currrent BG formatted correctly
@@ -353,13 +353,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Start output
 
 				// Uploader
-				if( function_exists('wp_enqueue_media') )
+				if ( function_exists('wp_enqueue_media') )
 					$output .= themeblvd_media_uploader( array( 'option_name' => $option_name, 'type' => 'background', 'id' => $value['id'], 'value' => $current_bg_url, 'name' => 'image' ) );
 				else
 					$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $current_bg_image, null, '', 0, 'image' ); // @deprecated
 
 				$class = 'of-background-properties';
-				if( empty( $background['image'] ) )
+				if ( empty( $background['image'] ) )
 					$class .= ' hide';
 				$output .= '<div class="'.esc_attr( $class ).'">';
 
@@ -404,16 +404,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Classes
 				$class = 'section';
-				if( isset( $value['type'] ) )
+				if ( isset( $value['type'] ) )
 					$class .= ' section-'.$value['type'];
-				if( isset( $value['class'] ) )
+				if ( isset( $value['class'] ) )
 					$class .= ' '.$value['class'];
 
 				// Start output
 				$output .= '<div class="'.esc_attr( $class ).'">'."\n";
-				if( isset($value['name']) )
+				if ( isset($value['name']) )
 					$output .= '<h4 class="heading">'.esc_html( $value['name'] ).'</h4>'."\n";
-				if( isset( $value['desc'] ) )
+				if ( isset( $value['desc'] ) )
 					$output .= $value['desc']."\n";
 				$output .= '<div class="clear"></div></div>'."\n";
 				break;
@@ -490,22 +490,22 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// more than one editor on a page. Shortcodes will get inserted in whichever
 				// the last editor the cursor was in.
 				/*
-				if( defined('TB_SHORTCODES_PLUGIN_VERSION') && get_option('themeblvd_shortcode_generator') != 'no' )
+				if ( defined('TB_SHORTCODES_PLUGIN_VERSION') && get_option('themeblvd_shortcode_generator') != 'no' )
 					$editor_settings['tinymce']['plugins'] .= ',ThemeBlvdShortcodes';
 				*/
 
-				if( ! empty( $value['settings'] ) )
+				if ( ! empty( $value['settings'] ) )
 					$editor_settings = wp_parse_args( $value['settings'], $editor_settings );
 
 				// Setup description
-				if( ! empty( $value['desc_location'] ) && $value['desc_location'] == 'before' )
+				if ( ! empty( $value['desc_location'] ) && $value['desc_location'] == 'before' )
 					$desc_location = 'before';
 				else
 					$desc_location = 'after';
 
 				$explain_value = '';
 				$has_description = '';
-				if( ! empty( $value['desc'] ) ) {
+				if ( ! empty( $value['desc'] ) ) {
 					$explain_value = $value['desc'];
 					$has_description = ' has-desc';
 				}
@@ -513,14 +513,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Output description and editor
 				$output .= '<div class="tb-wp-editor desc-'.$desc_location.$has_description.' height-'.$editor_settings['height'].'">';
 
-				if( $desc_location == 'before' )
+				if ( $desc_location == 'before' )
 					$output .= '<div class="explain">'.wp_kses( $explain_value, $allowedtags).'</div>'."\n";
 
 				ob_start();
 				wp_editor( $val, uniqid( $value['id'].'_'.rand() ), $editor_settings );
 				$output .= ob_get_clean();
 
-				if( $desc_location == 'after' )
+				if ( $desc_location == 'after' )
 					$output .= '<div class="explain">'.wp_kses( $explain_value, $allowedtags).'</div>'."\n";
 
 				$output .= '</div><!-- .tb-wp-editor (end) -->';
@@ -532,7 +532,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'heading' :
-				if( $counter >= 2 )
+				if ( $counter >= 2 )
 				   $output .= '</div>'."\n";
 				$id = ! empty( $value['id'] ) ? $value['id'] : $value['name'];
 				$jquery_click_hook = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($id) );
@@ -552,22 +552,22 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		$output = apply_filters( 'themeblvd_option_type', $output, $value, $option_name, $val );
 
 		// Finish off standard options and add description
-		if( $value['type'] != 'heading' && $value['type'] != 'info' ) {
-			if( $value['type'] != 'checkbox' )
+		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+			if ( $value['type'] != 'checkbox' )
 				$output .= '<br/>';
 			$explain_value = '';
-			if( ! empty( $value['desc'] ) )
+			if ( ! empty( $value['desc'] ) )
 				$explain_value = $value['desc'];
 			$allowedtags = themeblvd_allowed_tags();
 			$output .= '</div>';
-			if( $value['type'] != 'editor' ) // Editor displays description above it
+			if ( $value['type'] != 'editor' ) // Editor displays description above it
 				$output .= '<div class="explain">'.wp_kses($explain_value, $allowedtags).'</div>'."\n";
 			$output .= '<div class="clear"></div></div></div>'."\n";
 		}
 	}
 
 	// Optional closing div
-    if( $close )
+    if ( $close )
     	$output .= '</div>';
 
     // Construct final return
