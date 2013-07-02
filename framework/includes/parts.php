@@ -1,4 +1,5 @@
 <?php
+if ( !function_exists( 'themeblvd_contact_bar' ) ) : // pluggable for backwards compat
 /**
  * Contact button bar
  *
@@ -7,41 +8,41 @@
  * @param array $buttons icons to use - array( 'twitter' => 'http://twitter.com/whatever', 'facebook' => 'http://facebook.com/whatever' )
  * @param string $style Style of buttons - dark, grey, light, color
  */
-if ( ! function_exists( 'themeblvd_contact_bar' ) ) {
-	function themeblvd_contact_bar( $buttons = array(), $style = null ) {
+function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 
-		// Set up buttons
-		if ( ! $buttons )
-			$buttons = themeblvd_get_option( 'social_media' );
+	// Set up buttons
+	if ( ! $buttons )
+		$buttons = themeblvd_get_option( 'social_media' );
 
-		// If buttons haven't been sanitized return nothing
-		if ( is_array( $buttons ) && isset( $buttons['includes'] ) )
-			return null;
+	// If buttons haven't been sanitized return nothing
+	if ( is_array( $buttons ) && isset( $buttons['includes'] ) )
+		return null;
 
-		// Set up style
-		if ( ! $style )
-			$style = themeblvd_get_option( 'social_media_style', null, 'grey' );
+	// Set up style
+	if ( ! $style )
+		$style = themeblvd_get_option( 'social_media_style', null, 'grey' );
 
-		// Start output
-		$output = null;
-		if ( is_array( $buttons ) && ! empty ( $buttons ) ) {
+	// Start output
+	$output = null;
+	if ( is_array( $buttons ) && ! empty ( $buttons ) ) {
 
-			$output = '<div class="themeblvd-contact-bar">';
-			$output .= '<ul class="social-media-'.$style.'">';
+		$output = '<div class="themeblvd-contact-bar">';
+		$output .= '<ul class="social-media-'.$style.'">';
 
-			foreach( $buttons as $id => $url ) {
-				$target = strpos( $url, 'mailto:' ) !== false ? '_self' : '_blank'; // Change target if URL has 'mailto:'
-				$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
-			}
-
-			$output .= '</ul>';
-			$output .= '<div class="clear"></div>';
-			$output .= '</div><!-- .themeblvd-contact-bar (end) -->';
+		foreach( $buttons as $id => $url ) {
+			$target = strpos( $url, 'mailto:' ) !== false ? '_self' : '_blank'; // Change target if URL has 'mailto:'
+			$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
 		}
-		return $output;
-	}
-}
 
+		$output .= '</ul>';
+		$output .= '<div class="clear"></div>';
+		$output .= '</div><!-- .themeblvd-contact-bar (end) -->';
+	}
+	return apply_filters( 'themeblvd_contact_bar', $output );
+}
+endif;
+
+if ( ! function_exists( 'themeblvd_button' ) ) : // pluggable for backwards compat
 /**
  * Button
  *
@@ -62,110 +63,111 @@ if ( ! function_exists( 'themeblvd_contact_bar' ) ) {
  * @param string $addon Anything to add onto the anchor tag
  * @return $output string HTML to output for button
  */
-if ( ! function_exists( 'themeblvd_button' ) ) {
-	function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = null, $classes = null, $title = null, $icon_before = null, $icon_after = null, $addon = null ) {
+function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = null, $classes = null, $title = null, $icon_before = null, $icon_after = null, $addon = null ) {
 
-		// Classes for button
-		$final_classes = 'btn';
-		if ( ! $color )
-			$color = 'default';
-		if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) ) )
-			$final_classes .= ' btn-'.$color;
+	// Classes for button
+	$final_classes = 'btn';
+	if ( ! $color )
+		$color = 'default';
+	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) ) )
+		$final_classes .= ' btn-'.$color;
+	else
+		$final_classes .= ' '.$color;
+	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'mini', 'small', 'large' ) ) ) )
+		$final_classes .= ' btn-'.$size;
+	if ( $classes )
+		$final_classes .= ' '.$classes;
+
+	// Target
+	$final_target = '';
+	if ( $target ) {
+		if ( $target == 'lightbox' )
+			$final_target = ' rel="themeblvd_lightbox"';
 		else
-			$final_classes .= ' '.$color;
-		if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'mini', 'small', 'large' ) ) ) )
-			$final_classes .= ' btn-'.$size;
-		if ( $classes )
-			$final_classes .= ' '.$classes;
-
-		// Target
-		$final_target = '';
-		if ( $target ) {
-			if ( $target == 'lightbox' )
-				$final_target = ' rel="themeblvd_lightbox"';
-			else
-				$final_target = ' target="'.$target.'"';
-		}
-
-		// Title param
-		if ( ! $title )
-			$title = strip_tags( $text );
-
-		// Add icon before text?
-		if ( $icon_before )
-			$text = '<i class="icon-'.$icon_before.'"></i> '.$text;
-
-		// Add icon after text?
-		if ( $icon_after )
-			$text .= ' <i class="icon-'.$icon_after.'"></i>';
-
-		// Optional addon to anchor
-		if ( $addon )
-			$addon = ' '.$addon;
-
-		// Return final button
-		return '<a href="'.$url.'" title="'.$title.'" class="'.$final_classes.'"'.$final_target.$addon.'>'.$text.'</a>';
+			$final_target = ' target="'.$target.'"';
 	}
-}
 
+	// Title param
+	if ( ! $title )
+		$title = strip_tags( $text );
+
+	// Add icon before text?
+	if ( $icon_before )
+		$text = '<i class="icon-'.$icon_before.'"></i> '.$text;
+
+	// Add icon after text?
+	if ( $icon_after )
+		$text .= ' <i class="icon-'.$icon_after.'"></i>';
+
+	// Optional addon to anchor
+	if ( $addon )
+		$addon = ' '.$addon;
+
+	$button = sprintf( '<a href="%s" title="%s" class="%s"%s%s>%s</a>', $url, $title, $final_classes, $final_target, $addon, $text );
+
+	// Return final button
+	return apply_filters( 'themeblvd_button', $button, $text, $url, $color, $target, $size, $classes, $title, $icon_before, $icon_after, $addon );
+}
+endif;
+
+if ( !function_exists( 'themeblvd_archive_title' ) ) :
 /**
  * Display title for archive pages
  *
  * @since 2.0.0
  */
-if ( ! function_exists( 'themeblvd_archive_title' ) ) {
-	function themeblvd_archive_title() {
+function themeblvd_archive_title() {
 
-		global $post;
-		global $posts;
+	global $post;
+	global $posts;
 
-	    if ( $posts )
-	    	$post = $posts[0]; // Hack. Set $post so that the_date() works.
+    if ( $posts )
+    	$post = $posts[0]; // Hack. Set $post so that the_date() works.
 
-	    if ( is_search() ) {
+    if ( is_search() ) {
 
-			// Search Results
-			echo themeblvd_get_local('crumb_search').' "'.get_search_query().'"';
+		// Search Results
+		echo themeblvd_get_local('crumb_search').' "'.get_search_query().'"';
 
-	    } else if ( is_category() ) {
+    } else if ( is_category() ) {
 
-	    	// If this is a category archive
-	    	// echo themeblvd_get_local( 'category' ).': ';
-	    	single_cat_title();
+    	// If this is a category archive
+    	// echo themeblvd_get_local( 'category' ).': ';
+    	single_cat_title();
 
-	    } else if ( is_tag() ) {
+    } else if ( is_tag() ) {
 
-	    	// If this is a tag archive
-	    	echo themeblvd_get_local('crumb_tag').' "'.single_tag_title('', false).'"';
+    	// If this is a tag archive
+    	echo themeblvd_get_local('crumb_tag').' "'.single_tag_title('', false).'"';
 
-	    } else if ( is_day() ) {
+    } else if ( is_day() ) {
 
-	    	// If this is a daily archive
-	    	echo themeblvd_get_local( 'archive' ).': ';
-	    	the_time('F jS, Y');
+    	// If this is a daily archive
+    	echo themeblvd_get_local( 'archive' ).': ';
+    	the_time('F jS, Y');
 
-	    } else if ( is_month()) {
+    } else if ( is_month()) {
 
-	    	// If this is a monthly archive
-	    	echo themeblvd_get_local( 'archive' ).': ';
-	    	the_time('F, Y');
+    	// If this is a monthly archive
+    	echo themeblvd_get_local( 'archive' ).': ';
+    	the_time('F, Y');
 
-	    } else if ( is_year()) {
+    } else if ( is_year()) {
 
-	    	// If this is a yearly archive
-	    	echo themeblvd_get_local( 'archive' ).': ';
-	    	the_time('Y');
+    	// If this is a yearly archive
+    	echo themeblvd_get_local( 'archive' ).': ';
+    	the_time('Y');
 
-	    } else if ( is_author()) {
+    } else if ( is_author()) {
 
-	    	// If this is an author archive
-	    	global $author;
-			$userdata = get_userdata($author);
-			echo themeblvd_get_local('crumb_author').' '.$userdata->display_name;
+    	// If this is an author archive
+    	global $author;
+		$userdata = get_userdata($author);
+		echo themeblvd_get_local('crumb_author').' '.$userdata->display_name;
 
-	    }
-	}
+    }
 }
+endif;
 
 /**
  * Get pagination
@@ -176,37 +178,36 @@ if ( ! function_exists( 'themeblvd_archive_title' ) ) {
  * @param int $range Optional range for paginated buttons, helpful for many pages
  * @return string $output Final HTML markup for pagination
  */
-if ( ! function_exists( 'themeblvd_get_pagination' ) ) {
-	function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
+function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 
-		// Get pagination parts
-		$parts = themeblvd_get_pagination_parts( $pages, $range );
+	// Get pagination parts
+	$parts = themeblvd_get_pagination_parts( $pages, $range );
 
-		// Pagination markup
-		$output = '';
-		if ( $parts ) {
-			foreach( $parts as $part ) {
-				$class = 'btn btn-default';
-				if ( $part['active'] )
-					$class .= ' active';
-				$output .= sprintf('<a class="%s" href="%s">%s</a>', $class, $part['href'], $part['text'] );
-			}
+	// Pagination markup
+	$output = '';
+	if ( $parts ) {
+		foreach( $parts as $part ) {
+			$class = 'btn btn-default';
+			if ( $part['active'] )
+				$class .= ' active';
+			$output .= sprintf('<a class="%s" href="%s">%s</a>', $class, $part['href'], $part['text'] );
 		}
-
-		// Wrapping markup
-		$wrap  = '<div class="pagination-wrap">';
-		$wrap .= '	<div class="pagination">';
-		$wrap .= '		<div class="btn-group clearfix">';
-		$wrap .= '			%s';
-		$wrap .= '		</div>';
-		$wrap .= '	</div>';
-		$wrap .= '</div>';
-
-		$output = sprintf( $wrap, $output );
-
-		return apply_filters( 'themeblvd_pagination', $output, $parts );
 	}
+
+	// Wrapping markup
+	$wrap  = '<div class="pagination-wrap">';
+	$wrap .= '	<div class="pagination">';
+	$wrap .= '		<div class="btn-group clearfix">';
+	$wrap .= '			%s';
+	$wrap .= '		</div>';
+	$wrap .= '	</div>';
+	$wrap .= '</div>';
+
+	$output = sprintf( $wrap, $output );
+
+	return apply_filters( 'themeblvd_pagination', $output, $parts );
 }
+
 /**
  * Pagination
  *
@@ -215,10 +216,8 @@ if ( ! function_exists( 'themeblvd_get_pagination' ) ) {
  * @param int $pages Optional number of pages
  * @param int $range Optional range for paginated buttons, helpful for many pages
  */
-if ( ! function_exists( 'themeblvd_pagination' ) ) {
-	function themeblvd_pagination( $pages = 0, $range = 2 ) {
-		echo themeblvd_get_pagination( $pages, $range );
-	}
+function themeblvd_pagination( $pages = 0, $range = 2 ) {
+	echo themeblvd_get_pagination( $pages, $range );
 }
 
 /**
@@ -229,42 +228,40 @@ if ( ! function_exists( 'themeblvd_pagination' ) ) {
  * @param string $var Description
  * @return string $var Description
  */
-if ( ! function_exists( 'themeblvd_get_breadcrumbs_trail' ) ) {
-	function themeblvd_get_breadcrumbs_trail(){
+function themeblvd_get_breadcrumbs_trail(){
 
-		// Filterable attributes
-		$atts = array(
-			'delimiter'		=> ' <span class="divider">/</span> ',
-			'home' 			=> themeblvd_get_local('home'),
-			'home_link' 	=> home_url(),
-			'before' 		=> '<span class="current">',
-			'after' 		=> '</span>'
-		);
-		$atts = apply_filters( 'themeblvd_breadcrumb_atts', $atts );
+	// Filterable attributes
+	$atts = array(
+		'delimiter'		=> ' <span class="divider">/</span> ',
+		'home' 			=> themeblvd_get_local('home'),
+		'home_link' 	=> home_url(),
+		'before' 		=> '<span class="current">',
+		'after' 		=> '</span>'
+	);
+	$atts = apply_filters( 'themeblvd_breadcrumb_atts', $atts );
 
-		// Get filtered breadcrumb parts as an array so we
-		// can use it to construct the display.
-		$parts = themeblvd_get_breadcrumb_parts( $atts );
+	// Get filtered breadcrumb parts as an array so we
+	// can use it to construct the display.
+	$parts = themeblvd_get_breadcrumb_parts( $atts );
 
-		// Use breadcrumb parts to construct display of trail
-		$trail = '';
-		$count = 1;
-		$total = count($parts);
-		if ( $parts ) {
-			foreach( $parts as $part ) {
-				$crumb = $part['text'];
-				if ( ! empty( $part['link'] ) )
-					$crumb = '<a href="'.$part['link'].'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
-				if ( $total == $count )
-					$crumb = $atts['before'].$crumb.$atts['after'];
-				else
-					$crumb = $crumb.$atts['delimiter'];
-				$trail .= $crumb;
-				$count++;
-			}
+	// Use breadcrumb parts to construct display of trail
+	$trail = '';
+	$count = 1;
+	$total = count($parts);
+	if ( $parts ) {
+		foreach( $parts as $part ) {
+			$crumb = $part['text'];
+			if ( ! empty( $part['link'] ) )
+				$crumb = '<a href="'.$part['link'].'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
+			if ( $total == $count )
+				$crumb = $atts['before'].$crumb.$atts['after'];
+			else
+				$crumb = $crumb.$atts['delimiter'];
+			$trail .= $crumb;
+			$count++;
 		}
-		return apply_filters( 'themeblvd_breadcrumbs_trail', $trail, $atts, $parts );
 	}
+	return apply_filters( 'themeblvd_breadcrumbs_trail', $trail, $atts, $parts );
 }
 
 /**
@@ -278,10 +275,8 @@ if ( ! function_exists( 'themeblvd_get_breadcrumbs_trail' ) ) {
  * @param string $exclude_replies Exclude replies, yes or no
  * @return string $output Final list of tweets
  */
-if ( ! function_exists( 'themeblvd_get_twitter' ) ) {
-	function themeblvd_get_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
-		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
-	}
+function themeblvd_get_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
+	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
 }
 
 /**
@@ -295,10 +290,8 @@ if ( ! function_exists( 'themeblvd_get_twitter' ) ) {
  * @param string $exclude_replies Exclude replies, yes or no
  * @return string $filtered_tweet Final list of tweets
  */
-if ( ! function_exists( 'themeblvd_twitter' ) ) {
-	function themeblvd_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
-		themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
-	}
+function themeblvd_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
+	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
 }
 
 /**
@@ -356,17 +349,15 @@ class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
  * @param string $location Location of wp nav menu to grab
  * @return string $select_menu Select menu version of wp nav menu
  */
-if ( ! function_exists( 'themeblvd_nav_menu_select' ) ) {
-	function themeblvd_nav_menu_select( $location ) {
-		$select_menu = wp_nav_menu( apply_filters( 'themeblvd_nav_menu_select_args', array(
-			'theme_location'	=> $location,
-			'container'			=> false,
-			'items_wrap'		=> '<form class="responsive-nav"><select class="tb-jump-menu"><option value="">'.themeblvd_get_local('navigation').'</option>%3$s</select></form>',
-			'echo' 				=> false,
-			'walker' 			=> new ThemeBlvd_Select_Menu_Walker
-		)));
-		return $select_menu;
-	}
+function themeblvd_nav_menu_select( $location ) {
+	$select_menu = wp_nav_menu( apply_filters( 'themeblvd_nav_menu_select_args', array(
+		'theme_location'	=> $location,
+		'container'			=> false,
+		'items_wrap'		=> '<form class="responsive-nav"><select class="tb-jump-menu"><option value="">'.themeblvd_get_local('navigation').'</option>%3$s</select></form>',
+		'echo' 				=> false,
+		'walker' 			=> new ThemeBlvd_Select_Menu_Walker
+	)));
+	return apply_filters('themeblvd_nav_menu_select', $select_menu, $location );
 }
 
 /**
@@ -377,44 +368,42 @@ if ( ! function_exists( 'themeblvd_nav_menu_select' ) ) {
  * @param array $args Arguments to be used for the elements
  * @return $module HTML to output
  */
-if ( ! function_exists( 'themeblvd_get_simple_contact' ) ) {
-	function themeblvd_get_simple_contact( $args ) {
-		// Setup icon links
-		$icons = array();
-		for( $i = 1; $i <= 6; $i++ )
-			if ( ! empty( $args['link_'.$i.'_url'] ) )
-				$icons[$args['link_'.$i.'_icon']] = $args['link_'.$i.'_url'];
-		// Start Output
-		$module = '<ul class="simple-contact">';
-		// Phone #1
-		if ( ! empty( $args['phone_1'] ) )
-			$module .= '<li class="phone">'.$args['phone_1'].'</li>';
-		// Phone #2
-		if ( ! empty( $args['phone_2'] ) )
-			$module .= '<li class="phone">'.$args['phone_2'].'</li>';
-		// Email #1
-		if ( ! empty( $args['email_1'] ) )
-			$module .= '<li class="email"><a href="mailto:'.$args['email_1'].'">'.$args['email_1'].'</a></li>';
-		// Email #2
-		if ( ! empty( $args['email_2'] ) )
-			$module .= '<li class="email"><a href="mailto:'.$args['email_2'].'">'.$args['email_2'].'</a></li>';
-		// Contact Page
-		if ( ! empty( $args['contact'] ) )
-			$module .= '<li class="contact"><a href="'.$args['contact'].'">'.themeblvd_get_local( 'contact_us' ).'</a></li>';
-		// Skype
-		if ( ! empty( $args['skype'] ) )
-			$module .= '<li class="skype">'.$args['skype'].'</li>';
-		// Social Icons
-		if ( ! empty( $icons ) ) {
-			$module .= '<li class="link"><ul class="icons">';
-			foreach( $icons as $icon => $url ) {
-				$module .= '<li class="'.$icon.'"><a href="'.$url.'" target="_blank" title="'.ucfirst($icon).'">'.ucfirst($icon).'</a></li>';
-			}
-			$module .= '</ul></li>';
+function themeblvd_get_simple_contact( $args ) {
+	// Setup icon links
+	$icons = array();
+	for( $i = 1; $i <= 6; $i++ )
+		if ( ! empty( $args['link_'.$i.'_url'] ) )
+			$icons[$args['link_'.$i.'_icon']] = $args['link_'.$i.'_url'];
+	// Start Output
+	$module = '<ul class="simple-contact">';
+	// Phone #1
+	if ( ! empty( $args['phone_1'] ) )
+		$module .= '<li class="phone">'.$args['phone_1'].'</li>';
+	// Phone #2
+	if ( ! empty( $args['phone_2'] ) )
+		$module .= '<li class="phone">'.$args['phone_2'].'</li>';
+	// Email #1
+	if ( ! empty( $args['email_1'] ) )
+		$module .= '<li class="email"><a href="mailto:'.$args['email_1'].'">'.$args['email_1'].'</a></li>';
+	// Email #2
+	if ( ! empty( $args['email_2'] ) )
+		$module .= '<li class="email"><a href="mailto:'.$args['email_2'].'">'.$args['email_2'].'</a></li>';
+	// Contact Page
+	if ( ! empty( $args['contact'] ) )
+		$module .= '<li class="contact"><a href="'.$args['contact'].'">'.themeblvd_get_local( 'contact_us' ).'</a></li>';
+	// Skype
+	if ( ! empty( $args['skype'] ) )
+		$module .= '<li class="skype">'.$args['skype'].'</li>';
+	// Social Icons
+	if ( ! empty( $icons ) ) {
+		$module .= '<li class="link"><ul class="icons">';
+		foreach( $icons as $icon => $url ) {
+			$module .= '<li class="'.$icon.'"><a href="'.$url.'" target="_blank" title="'.ucfirst($icon).'">'.ucfirst($icon).'</a></li>';
 		}
-		$module .= '</ul>';
-		return $module;
+		$module .= '</ul></li>';
 	}
+	$module .= '</ul>';
+	return apply_filters( 'themeblvd_simple_contact', $module, $args );
 }
 
 /**
@@ -424,12 +413,11 @@ if ( ! function_exists( 'themeblvd_get_simple_contact' ) ) {
  *
  * @param array $args Arguments to be used for the elements
  */
-if ( ! function_exists( 'themeblvd_simple_contact' ) ) {
-	function themeblvd_simple_contact( $args ) {
-		echo themeblvd_get_simple_contact( $args );
-	}
+function themeblvd_simple_contact( $args ) {
+	echo themeblvd_get_simple_contact( $args );
 }
 
+if ( !function_exists( 'themeblvd_get_mini_post_list' ) ) : // pluggable for backwards compat
 /**
  * Get Mini Post List
  *
@@ -440,89 +428,89 @@ if ( ! function_exists( 'themeblvd_simple_contact' ) ) {
  * @param boolean $meta Show date posted or not
  * @return string $output HTML to output
  */
-if ( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
-	function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
+function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
 
-		global $post;
-		$output = '';
+	global $post;
+	$output = '';
 
-		// CSS classes
-		$classes = '';
-		if ( ! $thumb )
-			$classes .= 'hide-thumbs';
-		else
-			$classes .= $thumb.'-thumbs';
-		if ( ! $meta )
-			$classes .= ' hide-meta';
+	// CSS classes
+	$classes = '';
+	if ( ! $thumb )
+		$classes .= 'hide-thumbs';
+	else
+		$classes .= $thumb.'-thumbs';
+	if ( ! $meta )
+		$classes .= ' hide-meta';
 
-		// Get posts
-		$posts = get_posts( html_entity_decode( $query ) );
+	// Get posts
+	$posts = get_posts( html_entity_decode( $query ) );
 
-		// Start output
-		if ( $posts ) {
+	// Start output
+	if ( $posts ) {
 
-			$output  = '<div class="themeblvd-mini-post-list">';
-			$output .= '<ul class="'.$classes.'">';
+		$output  = '<div class="themeblvd-mini-post-list">';
+		$output .= '<ul class="'.$classes.'">';
 
-			foreach( $posts as $post ) {
+		foreach( $posts as $post ) {
 
-				setup_postdata( $post );
-				$image = '';
+			setup_postdata( $post );
+			$image = '';
 
-				// Setup post thumbnail if user wants them to show
-				if ( $thumb ) {
+			// Setup post thumbnail if user wants them to show
+			if ( $thumb ) {
 
-					$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
-					$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
+				$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
+				$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
 
-					// If post thumbnail isn't set, pull default thumbnail
-					// based on post format. If theme doesn't support post
-					// formats, format will always be "standard".
-					if ( ! $image ) {
+				// If post thumbnail isn't set, pull default thumbnail
+				// based on post format. If theme doesn't support post
+				// formats, format will always be "standard".
+				if ( ! $image ) {
 
-						$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
+					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
 
-						$post_format = get_post_format();
-						if ( ! $post_format )
-							$post_format = 'standard';
+					$post_format = get_post_format();
+					if ( ! $post_format )
+						$post_format = 'standard';
 
-						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
-						$image .= '<div class="featured-image">';
-						$image .= '<div class="featured-image-inner">';
-						$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
-						$image .= '</div><!-- .featured-image-inner (end) -->';
-						$image .= '</div><!-- .featured-image (end) -->';
-						$image .= '</div><!-- .featured-image-wrapper (end) -->';
-					}
+					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
+					$image .= '<div class="featured-image">';
+					$image .= '<div class="featured-image-inner">';
+					$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
+					$image .= '</div><!-- .featured-image-inner (end) -->';
+					$image .= '</div><!-- .featured-image (end) -->';
+					$image .= '</div><!-- .featured-image-wrapper (end) -->';
 				}
-
-				$output .= '<li>';
-
-				if ( $image )
-					$output .= $image;
-
-				$output .= '<div class="mini-post-list-content">';
-				$output .= sprintf( '<h4>%s</h4>', themeblvd_get_the_title( $post->ID, true ) );
-
-				if ( $meta )
-					$output .= sprintf('<span class="mini-meta">%s</span>', get_the_time( get_option('date_format') ) );
-
-				$output .= '</div>';
-				$output .= '</li>';
 			}
 
-			wp_reset_postdata();
+			$output .= '<li>';
 
-			$output .= '</ul>';
-			$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
+			if ( $image )
+				$output .= $image;
 
-		} else {
-			$output = themeblvd_get_local( 'archive_no_posts' );
+			$output .= '<div class="mini-post-list-content">';
+			$output .= sprintf( '<h4>%s</h4>', themeblvd_get_the_title( $post->ID, true ) );
+
+			if ( $meta )
+				$output .= sprintf('<span class="mini-meta">%s</span>', get_the_time( get_option('date_format') ) );
+
+			$output .= '</div>';
+			$output .= '</li>';
 		}
-		return $output;
-	}
-}
 
+		wp_reset_postdata();
+
+		$output .= '</ul>';
+		$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
+
+	} else {
+		$output = themeblvd_get_local( 'archive_no_posts' );
+	}
+	return $output;
+}
+endif;
+
+if ( !function_exists( 'themeblvd_mini_post_list' ) ) :
 /**
  * Display Mini Post List
  *
@@ -530,12 +518,12 @@ if ( ! function_exists( 'themeblvd_get_mini_post_list' ) ) {
  *
  * @param array $options Options for many post list
  */
-if ( ! function_exists( 'themeblvd_mini_post_list' ) ) {
-	function themeblvd_mini_post_list( $options ) {
-		echo themeblvd_get_mini_post_list( $options );
-	}
+function themeblvd_mini_post_list( $options ) {
+	echo themeblvd_get_mini_post_list( $options );
 }
+endif;
 
+if ( !function_exists( 'themeblvd_get_mini_post_grid' ) ) : // pluggable for backwards compat
 /**
  * Get Mini Post Grid
  *
@@ -544,98 +532,98 @@ if ( ! function_exists( 'themeblvd_mini_post_list' ) ) {
  * @param array $options Options for many post grid
  * @return string $output HTML to output
  */
-if ( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
-	function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
+function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 
-		global $post;
-		$output = '';
+	global $post;
+	$output = '';
 
-		// CSS classes
-		$classes = $thumb.'-thumbs';
-		$classes .= ' grid-align-'.$align;
-		if ( $gallery )
-			$classes .= ' gallery-override';
+	// CSS classes
+	$classes = $thumb.'-thumbs';
+	$classes .= ' grid-align-'.$align;
+	if ( $gallery )
+		$classes .= ' gallery-override';
 
-		// Check for gallery override
-		if ( $gallery )
-			$query = 'post_type=attachment&post_parent='.$gallery.'&numberposts=-1';
+	// Check for gallery override
+	if ( $gallery )
+		$query = 'post_type=attachment&post_parent='.$gallery.'&numberposts=-1';
 
-		// Get posts
-		$posts = get_posts( html_entity_decode( $query ) );
+	// Get posts
+	$posts = get_posts( html_entity_decode( $query ) );
 
-		// Start output
-		if ( $posts ) {
+	// Start output
+	if ( $posts ) {
 
-			$output  = '<div class="themeblvd-mini-post-grid">';
-			$output .= '<ul class="'.$classes.'">';
+		$output  = '<div class="themeblvd-mini-post-grid">';
+		$output .= '<ul class="'.$classes.'">';
 
-			foreach( $posts as $post ) {
+		foreach( $posts as $post ) {
 
-				setup_postdata( $post );
+			setup_postdata( $post );
 
-				$output .= '<li>';
+			$output .= '<li>';
 
-				if ( $gallery ) {
+			if ( $gallery ) {
 
-					// Gallery image output to simulate featured images
-					$thumbnail = wp_get_attachment_image_src( $post->ID, apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery ) );
-					$image = wp_get_attachment_image_src( $post->ID, 'full' );
-					$output .= '<div class="featured-image-wrapper">';
-					$output .= '<div class="featured-image">';
-					$output .= '<div class="featured-image-inner">';
-					$output .= sprintf( '<a href="%s" title="" class="image thumbnail" rel="themeblvd_lightbox[gallery_%s]">', $image[0], $gallery );
-					$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
-					$output .= apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
-					$output .= '</a>';
-					$output .= '</div><!-- .featured-image-inner (end) -->';
-					$output .= '</div><!-- .featured-image (end) -->';
-					$output .= '</div><!-- .featured-image-wrapper (end) -->';
+				// Gallery image output to simulate featured images
+				$thumbnail = wp_get_attachment_image_src( $post->ID, apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery ) );
+				$image = wp_get_attachment_image_src( $post->ID, 'full' );
+				$output .= '<div class="featured-image-wrapper">';
+				$output .= '<div class="featured-image">';
+				$output .= '<div class="featured-image-inner">';
+				$output .= sprintf( '<a href="%s" title="" class="image thumbnail" rel="themeblvd_lightbox[gallery_%s]">', $image[0], $gallery );
+				$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
+				$output .= apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
+				$output .= '</a>';
+				$output .= '</div><!-- .featured-image-inner (end) -->';
+				$output .= '</div><!-- .featured-image (end) -->';
+				$output .= '</div><!-- .featured-image-wrapper (end) -->';
 
-				} else {
+			} else {
 
-					// Standard featured image output
-					$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery );
-					$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
+				// Standard featured image output
+				$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery );
+				$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
 
-					// If post thumbnail isn't set, pull default thumbnail
-					// based on post format. If theme doesn't support post
-					// formats, format will always be "standard".
-					if ( ! $image ) {
+				// If post thumbnail isn't set, pull default thumbnail
+				// based on post format. If theme doesn't support post
+				// formats, format will always be "standard".
+				if ( ! $image ) {
 
-						$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
+					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
 
-						$post_format = get_post_format();
-						if ( ! $post_format )
-							$post_format = 'standard';
+					$post_format = get_post_format();
+					if ( ! $post_format )
+						$post_format = 'standard';
 
-						$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
-						$image .= '<div class="featured-image">';
-						$image .= '<div class="featured-image-inner">';
-						$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
-						$image .= '</div><!-- .featured-image-inner (end) -->';
-						$image .= '</div><!-- .featured-image (end) -->';
-						$image .= '</div><!-- .featured-image-wrapper (end) -->';
-					}
-
-					$output .= $image;
-
+					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
+					$image .= '<div class="featured-image">';
+					$image .= '<div class="featured-image-inner">';
+					$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
+					$image .= '</div><!-- .featured-image-inner (end) -->';
+					$image .= '</div><!-- .featured-image (end) -->';
+					$image .= '</div><!-- .featured-image-wrapper (end) -->';
 				}
-				$output .= '</li>';
+
+				$output .= $image;
+
 			}
-
-			wp_reset_postdata();
-
-			$output .= '</ul>';
-			$output .= '<div class="clear"></div>';
-			$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
-
-		} else {
-			$output = themeblvd_get_local( 'archive_no_posts' );
+			$output .= '</li>';
 		}
-		return $output;
-	}
-}
 
+		wp_reset_postdata();
+
+		$output .= '</ul>';
+		$output .= '<div class="clear"></div>';
+		$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
+
+	} else {
+		$output = themeblvd_get_local( 'archive_no_posts' );
+	}
+	return $output;
+}
+endif;
+
+if ( !function_exists( 'themeblvd_mini_post_grid' ) ) :
 /**
  * Display Mini Post Grid
  *
@@ -643,11 +631,10 @@ if ( ! function_exists( 'themeblvd_get_mini_post_grid' ) ) {
  *
  * @param array $options Options for many post grid
  */
-if ( ! function_exists( 'themeblvd_mini_post_grid' ) ) {
-	function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
-		echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
-	}
+function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
+	echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
 }
+endif;
 
 /**
  * Get the_title() taking into account if it should
@@ -659,28 +646,27 @@ if ( ! function_exists( 'themeblvd_mini_post_grid' ) ) {
  * @param bool $foce_link Whether to force the title to link.
  * @return string $title The title of the post
  */
-if ( ! function_exists( 'themeblvd_get_the_title' ) ) {
-	function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
+function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
-		$url = '';
-		$title = get_the_title( $post_id );
+	$url = '';
+	$title = get_the_title( $post_id );
 
-		// If "link" post format, get URL from start of content.
-		if ( has_post_format( 'link', $post_id ) )
-			$url = get_content_url( get_the_content( $post_id ) );
+	// If "link" post format, get URL from start of content.
+	if ( has_post_format( 'link', $post_id ) )
+		$url = get_content_url( get_the_content( $post_id ) );
 
-		// If not a single post, get permalink for URL.
-		if ( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) )
-			$url = get_permalink( $post_id );
+	// If not a single post, get permalink for URL.
+	if ( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) )
+		$url = get_permalink( $post_id );
 
-		// Wrap title in link if there's a URL.
-		if ( $url )
-			$title = sprintf('<a href="%s" title="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $title );
+	// Wrap title in link if there's a URL.
+	if ( $url )
+		$title = sprintf('<a href="%s" title="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $title );
 
-		return apply_filters( 'themeblvd_the_title', $title, $url );
-	}
+	return apply_filters( 'themeblvd_the_title', $title, $url );
 }
 
+if ( !function_exists( 'themeblvd_the_title' ) ) :
 /**
  * Display the_title() taking into account if it should
  * wrapped in a link.
@@ -690,8 +676,7 @@ if ( ! function_exists( 'themeblvd_get_the_title' ) ) {
  * @param int $post_id Can feed in a post ID if outside the loop.
  * @param bool $foce_link Whether to force the title to link.
  */
-if ( ! function_exists( 'themeblvd_the_title' ) ) {
-	function themeblvd_the_title( $post_id = 0, $force_link = false ) {
-		echo themeblvd_get_the_title( $post_id, $force_link );
-	}
+function themeblvd_the_title( $post_id = 0, $force_link = false ) {
+	echo themeblvd_get_the_title( $post_id, $force_link );
 }
+endif;

@@ -1,29 +1,29 @@
 <?php
+if ( !function_exists( 'themeblvd_add_meta_boxes' ) ) :
 /**
  * Add page and post meta boxes.
  *
  * @since 2.0.1
  */
-if ( ! function_exists( 'themeblvd_add_meta_boxes' ) ) {
-	function themeblvd_add_meta_boxes() {
+function themeblvd_add_meta_boxes() {
 
-		global $_themeblvd_page_meta_box;
-		global $_themeblvd_post_meta_box;
+	global $_themeblvd_page_meta_box;
+	global $_themeblvd_post_meta_box;
 
-		// Page meta box
-		if ( themeblvd_supports( 'meta', 'page_options' ) ) {
-			$page_meta = setup_themeblvd_page_meta();
-			$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $page_meta['config'], $page_meta['options'] );
-		}
-
-		// Post meta box
-		if ( themeblvd_supports( 'meta', 'post_options' ) ) {
-			$post_meta = setup_themeblvd_post_meta();
-			$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $post_meta['config'], $post_meta['options'] );
-		}
-
+	// Page meta box
+	if ( themeblvd_supports( 'meta', 'page_options' ) ) {
+		$page_meta = setup_themeblvd_page_meta();
+		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $page_meta['config'], $page_meta['options'] );
 	}
+
+	// Post meta box
+	if ( themeblvd_supports( 'meta', 'post_options' ) ) {
+		$post_meta = setup_themeblvd_post_meta();
+		$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $post_meta['config'], $post_meta['options'] );
+	}
+
 }
+endif;
 
 /**
  * Get settings for the Page Options meta box.
@@ -219,24 +219,24 @@ function setup_themeblvd_post_meta() {
 	return apply_filters( 'themeblvd_post_meta', $setup );
 }
 
+if ( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) :
 /**
  * Hijack and modify default Page Attributes meta box.
  *
  * @since 2.0.0
  */
-if ( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) {
-	function themeblvd_page_attributes_meta_box($post) {
+function themeblvd_page_attributes_meta_box($post) {
 
-		// Kill it if disabled
-		if ( ! themeblvd_supports( 'meta', 'hijack_atts' ) )
-			return false;
+	// Kill it if disabled
+	if ( ! themeblvd_supports( 'meta', 'hijack_atts' ) )
+		return false;
 
-		// Continue on with everything copied from WordPress core
+	// Continue on with everything copied from WordPress core
 
-		$post_type_object = get_post_type_object($post->post_type);
-		if ( $post_type_object->hierarchical ) {
-			$pages = wp_dropdown_pages(array('post_type' => $post->post_type, 'exclude_tree' => $post->ID, 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)', 'themeblvd'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
-			if ( ! empty($pages) ) {
+	$post_type_object = get_post_type_object($post->post_type);
+	if ( $post_type_object->hierarchical ) {
+		$pages = wp_dropdown_pages(array('post_type' => $post->post_type, 'exclude_tree' => $post->ID, 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)', 'themeblvd'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
+		if ( ! empty($pages) ) {
 ?>
 <p><strong><?php _e('Parent', 'themeblvd') ?></strong></p>
 <label class="screen-reader-text" for="parent_id"><?php _e('Parent', 'themeblvd') ?></label>
@@ -271,5 +271,5 @@ echo themeblvd_sidebar_layout_dropdown( $sidebar_layout );
 <p><label class="screen-reader-text" for="menu_order"><?php _e('Order', 'themeblvd') ?></label><input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo esc_attr($post->menu_order) ?>" /></p>
 <p><?php if ( 'page' == $post->post_type ) _e( 'Need help? Use the Help tab in the upper right of your screen.', 'themeblvd' ); ?></p>
 <?php
-	}
 }
+endif;

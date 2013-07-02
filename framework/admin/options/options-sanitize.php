@@ -9,38 +9,40 @@
  * option values to be generated. This will almost never happen,
  * so this is our way of including them, but only if needed;
  * no point in adding these filters every time the frontend loads.
+ *
+ * @since 2.2.0
  */
-if ( ! function_exists( 'themeblvd_add_sanitization' ) ) {
-	function themeblvd_add_sanitization(){
-		add_filter( 'themeblvd_sanitize_text', 'themeblvd_sanitize_text' );
-		add_filter( 'themeblvd_sanitize_textarea', 'themeblvd_sanitize_textarea' );
-		add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_enum', 10, 2 );
-		add_filter( 'themeblvd_sanitize_radio', 'themeblvd_sanitize_enum', 10, 2 );
-		add_filter( 'themeblvd_sanitize_images', 'themeblvd_sanitize_enum', 10, 2 );
-		add_filter( 'themeblvd_sanitize_checkbox', 'themeblvd_sanitize_checkbox' );
-		add_filter( 'themeblvd_sanitize_multicheck', 'themeblvd_sanitize_multicheck', 10, 2 );
-		add_filter( 'themeblvd_sanitize_color', 'themeblvd_sanitize_hex' );
-		add_filter( 'themeblvd_sanitize_upload', 'themeblvd_sanitize_upload' );
-		add_filter( 'themeblvd_sanitize_background', 'themeblvd_sanitize_background' );
-		add_filter( 'themeblvd_background_repeat', 'themeblvd_sanitize_background_repeat' );
-		add_filter( 'themeblvd_background_position', 'themeblvd_sanitize_background_position' );
-		add_filter( 'themeblvd_background_attachment', 'themeblvd_sanitize_background_attachment' );
-		add_filter( 'themeblvd_sanitize_typography', 'themeblvd_sanitize_typography' );
-		add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
-		add_filter( 'themeblvd_font_style', 'themeblvd_sanitize_font_style' );
-		add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
-		add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
-		add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
-		add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
-		add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
-		add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
-		add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
-		add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
-	}
+function themeblvd_add_sanitization() {
+	add_filter( 'themeblvd_sanitize_text', 'themeblvd_sanitize_text' );
+	add_filter( 'themeblvd_sanitize_textarea', 'themeblvd_sanitize_textarea' );
+	add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_enum', 10, 2 );
+	add_filter( 'themeblvd_sanitize_radio', 'themeblvd_sanitize_enum', 10, 2 );
+	add_filter( 'themeblvd_sanitize_images', 'themeblvd_sanitize_enum', 10, 2 );
+	add_filter( 'themeblvd_sanitize_checkbox', 'themeblvd_sanitize_checkbox' );
+	add_filter( 'themeblvd_sanitize_multicheck', 'themeblvd_sanitize_multicheck', 10, 2 );
+	add_filter( 'themeblvd_sanitize_color', 'themeblvd_sanitize_hex' );
+	add_filter( 'themeblvd_sanitize_upload', 'themeblvd_sanitize_upload' );
+	add_filter( 'themeblvd_sanitize_background', 'themeblvd_sanitize_background' );
+	add_filter( 'themeblvd_background_repeat', 'themeblvd_sanitize_background_repeat' );
+	add_filter( 'themeblvd_background_position', 'themeblvd_sanitize_background_position' );
+	add_filter( 'themeblvd_background_attachment', 'themeblvd_sanitize_background_attachment' );
+	add_filter( 'themeblvd_sanitize_typography', 'themeblvd_sanitize_typography' );
+	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
+	add_filter( 'themeblvd_font_style', 'themeblvd_sanitize_font_style' );
+	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
+	add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
+	add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
+	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
+	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
+	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
+	add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
+	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
 }
 
 /**
  * Text
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_text( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
@@ -51,6 +53,8 @@ function themeblvd_sanitize_text( $input ) {
 
 /**
  * Textarea
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_textarea( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
@@ -61,6 +65,8 @@ function themeblvd_sanitize_textarea( $input ) {
 
 /**
  * Info
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_allowedtags($input) {
 	$allowedtags = themeblvd_allowed_tags();
@@ -70,6 +76,8 @@ function themeblvd_sanitize_allowedtags($input) {
 
 /**
  * Checkbox
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_checkbox( $input ) {
 	if ( $input )
@@ -81,6 +89,8 @@ function themeblvd_sanitize_checkbox( $input ) {
 
 /**
  * Multicheck
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_multicheck( $input, $option ) {
 	$output = '';
@@ -99,6 +109,8 @@ function themeblvd_sanitize_multicheck( $input, $option ) {
 
 /**
  * Uploader
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_upload( $input ) {
 	$output = '';
@@ -111,6 +123,8 @@ function themeblvd_sanitize_upload( $input ) {
 
 /**
  * Check that the key value sent is valid
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_enum( $input, $option ) {
 	$output = '';
@@ -121,6 +135,8 @@ function themeblvd_sanitize_enum( $input, $option ) {
 
 /**
  * Background
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_background( $input ) {
 	$output = wp_parse_args( $input, array(
@@ -140,6 +156,8 @@ function themeblvd_sanitize_background( $input ) {
 
 /**
  * Background - repeat
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_background_repeat( $value ) {
 	$recognized = themeblvd_recognized_background_repeat();
@@ -150,6 +168,8 @@ function themeblvd_sanitize_background_repeat( $value ) {
 
 /**
  * Background - position
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_background_position( $value ) {
 	$recognized = themeblvd_recognized_background_position();
@@ -160,6 +180,8 @@ function themeblvd_sanitize_background_position( $value ) {
 
 /**
  * Background - attachment
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_background_attachment( $value ) {
 	$recognized = themeblvd_recognized_background_attachment();
@@ -170,6 +192,8 @@ function themeblvd_sanitize_background_attachment( $value ) {
 
 /**
  * Get recognized background positions
+ *
+ * @since 2.2.0
  */
 function themeblvd_recognized_background_position() {
 	$default = array(
@@ -188,6 +212,8 @@ function themeblvd_recognized_background_position() {
 
 /**
  * Get recognized background attachment
+ *
+ * @since 2.2.0
  */
 function themeblvd_recognized_background_attachment() {
 	$default = array(
@@ -199,6 +225,8 @@ function themeblvd_recognized_background_attachment() {
 
 /**
  * Get recognized background repeat settings
+ *
+ * @since 2.2.0
  */
 function themeblvd_recognized_background_repeat() {
 	$default = array(
@@ -212,6 +240,8 @@ function themeblvd_recognized_background_repeat() {
 
 /**
  * Typography
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_typography( $input ) {
 	$output = wp_parse_args( $input, array(
@@ -231,6 +261,8 @@ function themeblvd_sanitize_typography( $input ) {
 
 /**
  * Typography - font size
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_font_size( $value ) {
 	$recognized = themeblvd_recognized_font_sizes();
@@ -242,6 +274,8 @@ function themeblvd_sanitize_font_size( $value ) {
 
 /**
  * Typography - font style
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_font_style( $value ) {
 	$recognized = themeblvd_recognized_font_styles();
@@ -253,6 +287,8 @@ function themeblvd_sanitize_font_style( $value ) {
 
 /**
  * Typography - font face
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_font_face( $value ) {
 	$recognized = themeblvd_recognized_font_faces();
@@ -264,6 +300,8 @@ function themeblvd_sanitize_font_face( $value ) {
 
 /**
  * Columns
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_columns( $input ) {
 
@@ -293,6 +331,8 @@ function themeblvd_sanitize_columns( $input ) {
 
 /**
  * Tabs
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_tabs( $input ) {
 
@@ -326,6 +366,8 @@ function themeblvd_sanitize_tabs( $input ) {
 
 /**
  * Dynamic Content
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_content( $input ) {
 
@@ -362,6 +404,8 @@ function themeblvd_sanitize_content( $input ) {
 
 /**
  * Logo
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_logo( $input ) {
 
@@ -404,6 +448,8 @@ function themeblvd_sanitize_logo( $input ) {
 
 /**
  * Social Media Buttons
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_social_media( $input ) {
 	if ( ! empty( $input ) && ! empty( $input['sources'] ) ) {
@@ -427,6 +473,8 @@ function themeblvd_sanitize_social_media( $input ) {
 
 /**
  * Conditionals
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar_id = null ) {
 	$conditionals = themeblvd_conditionals_config();
@@ -512,6 +560,8 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 
 /**
  * Sanitize Editor option type
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_editor( $input ) {
 	if ( current_user_can( 'unfiltered_html' ) )
@@ -523,6 +573,8 @@ function themeblvd_sanitize_editor( $input ) {
 
 /**
  * Sanitize a color represented in hexidecimal notation.
+ *
+ * @since 2.2.0
  */
 function themeblvd_sanitize_hex( $hex, $default = '' ) {
 	if ( themeblvd_validate_hex( $hex ) )
@@ -532,6 +584,8 @@ function themeblvd_sanitize_hex( $hex, $default = '' ) {
 
 /**
  * Get recognized font sizes.
+ *
+ * @since 2.2.0
  */
 function themeblvd_recognized_font_sizes() {
 	$sizes = range( 9, 71 );
@@ -542,6 +596,8 @@ function themeblvd_recognized_font_sizes() {
 
 /**
  * Get recognized font faces.
+ *
+ * @since 2.2.0
  */
 function themeblvd_recognized_font_faces() {
 	$default = array(
@@ -562,6 +618,8 @@ function themeblvd_recognized_font_faces() {
 
 /**
  * Get recognized font styles.
+ *
+ * @since 2.2.0
  */
 function themeblvd_recognized_font_styles() {
 	$default = array(
@@ -575,6 +633,8 @@ function themeblvd_recognized_font_styles() {
 
 /**
  * Verify formatted in hexidecimal notation
+ *
+ * @since 2.2.0
  */
 function themeblvd_validate_hex( $hex ) {
 	$hex = trim( $hex );

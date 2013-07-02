@@ -77,15 +77,13 @@ function themeblvd_get_all_locals() {
  * @param string $id Key for $locals array
  * @return string $text Localized and filtered text string
  */
-if ( ! function_exists( 'themeblvd_get_local' ) ) {
-	function themeblvd_get_local( $id ) {
-		$text = null;
-		$locals = themeblvd_get_all_locals();
-		// Set text string
-		if ( isset( $locals[$id] ) )
-			$text = $locals[$id];
-		return $text;
-	}
+function themeblvd_get_local( $id ) {
+	$text = null;
+	$locals = themeblvd_get_all_locals();
+	// Set text string
+	if ( isset( $locals[$id] ) )
+		$text = $locals[$id];
+	return $text;
 }
 
 /**

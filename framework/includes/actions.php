@@ -277,19 +277,6 @@ function themeblvd_before_layout() {
 }
 
 /**
- * Display the sidebar(s) to the left or right of
- * the content.
- *
- * @since 2.0.0
- * @see themeblvd_fixed_sidebars()
- *
- * @param string $position The position of the sidebar(s) on the page, left or right
- */
-function themeblvd_sidebars( $position ) {
-	do_action( 'themeblvd_sidebars', $position );
-}
-
-/**
  * Just before the ending HTML markup for the
  * main sidebar layout area.
  *
@@ -311,7 +298,24 @@ function themeblvd_main_end() {
 }
 
 /*------------------------------------------------------------*/
-/* (7) Footer
+/* (7) Sidebars
+/*------------------------------------------------------------*/
+
+/**
+ * Display the sidebar(s) to the left or right of
+ * the content.
+ *
+ * @since 2.0.0
+ * @see themeblvd_fixed_sidebars()
+ *
+ * @param string $position The position of the sidebar(s) on the page, left or right
+ */
+function themeblvd_sidebars( $position ) {
+	do_action( 'themeblvd_sidebars', $position );
+}
+
+/*------------------------------------------------------------*/
+/* (8) Footer
 /*------------------------------------------------------------*/
 
 /**
@@ -385,7 +389,7 @@ function themeblvd_footer_after() {
 }
 
 /*------------------------------------------------------------*/
-/* (8) Content
+/* (9) Content
 /*------------------------------------------------------------*/
 
 /**

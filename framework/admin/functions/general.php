@@ -41,31 +41,31 @@ function themeblvd_update_version(){
 	update_option( 'themeblvd_framework_version', TB_FRAMEWORK_VERSION );
 }
 
+if ( !function_exists( 'themeblvd_non_modular_assets' ) ) :
 /**
  * Non-modular Admin Assets
  *
  * @since 2.0.0
  */
-if ( ! function_exists( 'themeblvd_non_modular_assets' ) ) {
-	function themeblvd_non_modular_assets() {
+function themeblvd_non_modular_assets() {
 
-		global $pagenow;
+	global $pagenow;
 
-		// Assets for editing posts
-		if ( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
-			wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.min.css', false, false, 'screen' );
-			wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
-			wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
-		}
-
-		// Styles for all of WP admin -- Currently only applies to
-		// Builder and Sliders plugin menu items and making them
-		// retina-compatible... Fancy, right?
-		if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) )
-			wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
-
+	// Assets for editing posts
+	if ( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
+		wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.min.css', false, false, 'screen' );
+		wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 	}
+
+	// Styles for all of WP admin -- Currently only applies to
+	// Builder and Sliders plugin menu items and making them
+	// retina-compatible... Fancy, right?
+	if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) )
+		wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
+
 }
+endif;
 
 /**
  * Gather all assignments for posts into a single
@@ -209,6 +209,7 @@ function themeblvd_clear_options() {
 	}
 }
 
+if ( !function_exists( 'themeblvd_admin_content_width' ) ) :
 /**
  * Adjust frontend content width for admin panel.
  *
@@ -219,9 +220,8 @@ function themeblvd_clear_options() {
  *
  * @since 2.2.1
  */
-if ( ! function_exists( 'themeblvd_admin_content_width' ) ) {
-	function themeblvd_admin_content_width() {
-		global $content_width;
-		$content_width = 600;
-	}
+function themeblvd_admin_content_width() {
+	global $content_width;
+	$content_width = 600;
 }
+endif;
