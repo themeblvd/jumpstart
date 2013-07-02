@@ -4,45 +4,46 @@
 
 /**
  * Setup theme for customizer.
+ *
+ * @since 1.0.0
  */
-if( ! function_exists( 'jumpstart_customizer' ) ) {
-	function jumpstart_customizer() {
+function jumpstart_customizer() {
 
-		// Setup logo options
-		$logo_options = array(
-			'logo' => array(
-				'name' 		=> __( 'Logo', 'themeblvd' ),
-				'id' 		=> 'logo',
-				'type' 		=> 'logo',
-				'transport'	=> 'postMessage'
-			)
-		);
-		themeblvd_add_customizer_section( 'logo', __( 'Logo', 'themeblvd' ), $logo_options, 1 );
+	// Setup logo options
+	$logo_options = array(
+		'logo' => array(
+			'name' 		=> __( 'Logo', 'themeblvd' ),
+			'id' 		=> 'logo',
+			'type' 		=> 'logo',
+			'transport'	=> 'postMessage'
+		)
+	);
+	themeblvd_add_customizer_section( 'logo', __( 'Logo', 'themeblvd' ), $logo_options, 1 );
 
-		// Setup custom styles option
-		$custom_styles_options = array(
-			'custom_styles' => array(
-				'name' 		=> __( 'Enter styles to preview their results.', 'themeblvd' ),
-				'id' 		=> 'custom_styles',
-				'type' 		=> 'textarea',
-				'transport'	=> 'postMessage'
-			)
-		);
-		themeblvd_add_customizer_section( 'custom_css', __( 'Custom CSS Preview', 'themeblvd' ), $custom_styles_options, 121 );
-	}
+	// Setup custom styles option
+	$custom_styles_options = array(
+		'custom_styles' => array(
+			'name' 		=> __( 'Enter styles to preview their results.', 'themeblvd' ),
+			'id' 		=> 'custom_styles',
+			'type' 		=> 'textarea',
+			'transport'	=> 'postMessage'
+		)
+	);
+	themeblvd_add_customizer_section( 'custom_css', __( 'Custom CSS Preview', 'themeblvd' ), $custom_styles_options, 121 );
 }
 add_action( 'after_setup_theme', 'jumpstart_customizer' );
 
 /**
  * Add specific theme elements to customizer.
+ *
+ * @since 1.0.0
  */
-if( ! function_exists( 'jumpstart_customizer_init' ) ) {
-	function jumpstart_customizer_init( $wp_customize ) {
-		// Add real-time option edits
-		if ( $wp_customize->is_preview() && ! is_admin() ) {
-			add_action( 'wp_footer', 'jumpstart_customizer_preview', 21 );
-		}
-	}
+function jumpstart_customizer_init( $wp_customize ) {
+
+	// Add real-time option edits
+	if ( $wp_customize->is_preview() && ! is_admin() )
+		add_action( 'wp_footer', 'jumpstart_customizer_preview', 21 );
+
 }
 add_action( 'customize_register', 'jumpstart_customizer_init' );
 
@@ -50,29 +51,27 @@ add_action( 'customize_register', 'jumpstart_customizer_init' );
  * Setup javascript needed for customizer to link up
  * to real-time edit options.
  */
-if( ! function_exists( 'jumpstart_customizer_preview' ) ) {
-	function jumpstart_customizer_preview() {
-		// Begin output
-		?>
-		<script type="text/javascript">
-		window.onload = function() { // window.onload for silly IE9 bug fix
-			(function($) {
+function jumpstart_customizer_preview() {
+	// Begin output
+	?>
+	<script type="text/javascript">
+	window.onload = function() { // window.onload for silly IE9 bug fix
+		(function($) {
 
-				// ---------------------------------------------------------
-				// Logo
-				// ---------------------------------------------------------
+			// ---------------------------------------------------------
+			// Logo
+			// ---------------------------------------------------------
 
-				<?php themeblvd_customizer_preview_logo(); ?>
+			<?php themeblvd_customizer_preview_logo(); ?>
 
-				// ---------------------------------------------------------
-				// Custom CSS
-				// ---------------------------------------------------------
+			// ---------------------------------------------------------
+			// Custom CSS
+			// ---------------------------------------------------------
 
-				<?php themeblvd_customizer_preview_styles(); ?>
+			<?php themeblvd_customizer_preview_styles(); ?>
 
-			})(jQuery);
-		} // End window.onload for silly IE9 bug
-		</script>
-		<?php
-	}
+		})(jQuery);
+	} // End window.onload for silly IE9 bug
+	</script>
+	<?php
 }

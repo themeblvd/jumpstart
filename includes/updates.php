@@ -1,6 +1,8 @@
 <?php
 /**
  * Enable auto updates and license management.
+ *
+ * @since 1.0.0
  */
 function jumpstart_updates_init(){
 	if( is_admin() ) {
@@ -11,6 +13,8 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
 
 /**
  * Setup auto updates.
+ *
+ * @since 1.0.0
  */
 function jumpstart_updates(){
 
