@@ -171,6 +171,7 @@ class Theme_Blvd_Query {
 			'name'			=> '',
 			'single'		=> 0,
 			'page'			=> 0,
+			'singular'		=> 0,
 			'page_template'	=> 0,
 			'home'			=> 0,
 			'front_page'	=> 0,
@@ -190,6 +191,9 @@ class Theme_Blvd_Query {
 				$this->was['page'] = 1;
 
 		}
+
+		if ( is_singular() )
+			$this->was['singular'] = 1;
 
 		if ( is_page_template() )
 			$this->was['page_template'] = basename( get_page_template() );
@@ -510,6 +514,11 @@ class Theme_Blvd_Query {
 					if ( ! $helper || $helper == $this->was['id'] || $helper == $this->was['id'] )
 						return true;
 				}
+				break;
+
+			case 'singular' :
+				if ( $this->was['singular'] )
+					return true;
 				break;
 
 			case 'page_template' :
