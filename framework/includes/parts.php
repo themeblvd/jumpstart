@@ -656,7 +656,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 		$url = get_content_url( get_the_content( $post_id ) );
 
 	// If not a single post or page, get permalink for URL.
-	if ( ! $url && ( ! themeblvd_was( 'singular' ) || $force_link ) )
+	if ( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) )
 		$url = get_permalink( $post_id );
 
 	// Wrap title in link if there's a URL.

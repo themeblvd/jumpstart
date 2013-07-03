@@ -7,7 +7,7 @@
 	<?php if ( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) : ?>
 		<header class="entry-header">
 			<h1 class="entry-title">
-				<?php themeblvd_the_title(); ?>
+				<?php the_title(); ?>
 			</h1>
 		</header><!-- .entry-header -->
 	<?php endif; ?>
