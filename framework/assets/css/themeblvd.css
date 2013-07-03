@@ -20,7 +20,8 @@ blockquote {
 	margin: 0 0 5px 0;
 }
 blockquote cite {
-	font-size: .9rem;
+	font-size: .92em; /* Fallback for older browsers */
+	font-size: .92rem;
 }
 
 /* Standard 12 Column Setup */
@@ -134,7 +135,8 @@ input[type="submit"] {
 	*zoom: 1;
 	padding: 4px 10px 4px;
 	margin-bottom: 0;
-	font-size: 13px;
+	font-size: 1em; /* Fallback for older browsers */
+	font-size: 1rem;
 	line-height: 18px;
 	*line-height: 20px;
 	color: #333333;
@@ -476,7 +478,8 @@ html {
 	display: inline-block;
 }
 .gallery-item .wp-caption-text {
-	font-size: .9em;
+	font-size: .9em; /* Fallback for older browsers */
+	font-size: .9rem;
 	line-height: 1.4em;
 	margin: 0;
 }
@@ -538,7 +541,8 @@ a img.aligncenter {
 	width: auto;
 }
 .wp-caption p.wp-caption-text {
-	font-size: .9em;
+	font-size: .9em; /* Fallback for older browsers */
+	font-size: .9rem;
 	line-height: 1.4em;
 	margin: 0;
 	padding: 4px 5px;
@@ -702,7 +706,8 @@ ul.sf-menu [class^="icon-"] {
 }
 .subnav ul.nav li a {
 	color: inherit;
-	font-size: .85em;
+	font-size: .85em; /* Fallback for older browsers */
+	font-size: .85rem;
 }
 .subnav ul.nav li.nav-header {
 	margin: 0;
@@ -1818,6 +1823,7 @@ ul.tb-icon-list {
 .dropcap {
 	float: left;
 	font-size: 300%;
+	font-size: 3rem;
 	font-weight: bold;
 	line-height: 100%;
 	margin: .42em .58em 0 0;
@@ -2229,27 +2235,27 @@ div.wpcf7-validation-errors {
 }
 span.wpcf7-not-valid-tip {
 	background: transparent;
-	border:none;
-	color:#c00000;
-	font-size:.9em;
-	line-height:100%;
-	padding:0;
-	position:absolute;
-	top:0;
-	left:10px;
-	width:280px;
-	z-index:100;
+	border: none;
+	color: #c00000;
+	font-size: .9em;
+	line-height: 100%;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 10px;
+	width: 280px;
+	z-index: 100;
 }
 span.wpcf7-not-valid-tip-no-ajax {
-	color:#f00;
-	font-size:.9em;
-	display:block;
+	color: #f00;
+	font-size: .9em;
+	display: block;
 }
 span.wpcf7-list-item {
 	margin-left: 0.5em;
 }
 .wpcf7-display-none {
-	display:none;
+	display: none;
 }
 div.wpcf7 img.ajax-loader {
 	border: none;
@@ -2532,7 +2538,8 @@ div.pp_default .pp_description {
 }
 .standard-slider .media-full .content .slide-title,
 .tb-nivo-slider-wrapper .nivo-caption .content .slide-title {
-	font-size: 1.3em;
+	font-size: 1.3em; /* Fallback for older browsers */
+	font-size: 1.3rem;
 	font-weight: bold;
 	margin: 0;
 	padding: 0 0 5px 0;
@@ -2556,12 +2563,10 @@ div.pp_default .pp_description {
 }
 .standard-slider .media-align-left .slide-title,
 .standard-slider .media-align-right .slide-title {
-	margin-bottom: 10px;
-}
-.standard-slider .media-align-left .slide-title span,
-.standard-slider .media-align-right .slide-title span {
-	font-size: 2em;
+	font-size: 2em; /* Fallback for older browsers */
+	font-size: 2rem;
 	font-weight: bold;
+	margin-bottom: 10px;
 }
 .standard-slider .media-align-left .content-inner,
 .standard-slider .media-align-right .content-inner {
@@ -2689,7 +2694,8 @@ div.pp_default .pp_description {
 .double_sidebar_right .standard-slider,
 .double_sidebar_left .standard-slider,
 .double_sidebar .standard-slider {
-	font-size: .85em;
+	font-size: 85em; /* Fallback for older browsers */
+	font-size: 85rem;
 }
 .sidebar_right .standard-slider p,
 .sidebar_left.standard-slider p,
@@ -2708,7 +2714,8 @@ div.pp_default .pp_description {
 .double_sidebar_right .standard-slider .media-align-right .slide-title span,
 .double_sidebar_left .standard-slider .media-align-right .slide-title span,
 .double_sidebar .standard-slider .media-align-right .slide-title span {
-	font-size: 1.25em;
+	font-size: 1.25em; /* Fallback for older browsers */
+	font-size: 1.25rem;
 }
 
 /* Carrousel Slider (Roundabout jQuery plugin) */
@@ -2874,15 +2881,18 @@ div.pp_default .pp_description {
 
 /* Slogan */
 .tb-slogan .slogan-text.text_large {
-	font-size: 1.5em;
+	font-size: 1.5em; /* Fallback for older browsers */
+	font-size: 1.5rem;
 	line-height: 1.25em;
 }
 .tb-slogan .slogan-text.text_medium {
-	font-size: 1.25em;
+	font-size: 1.25em; /* Fallback for older browsers */
+	font-size: 1.25rem;
 	line-height: 1.25em;
 }
 .tb-slogan .slogan-text.text_small {
-	font-size: .9em;
+	font-size: .92em; /* Fallback for older browsers */
+	font-size: .92rem;
 }
 .tb-slogan.text_only {
 	text-align: center;
@@ -2932,8 +2942,9 @@ div.pp_default .pp_description {
     margin-bottom: 10px;
 }
 .tweeple-feed .tweet-time a {
-    color: #888;
-    font-size: .9em;
+    color: #888888;
+    font-size: .92em; /* Fallback for older browsers */
+	font-size: .92rem;
 }
 
 /* "Tweet" Builder Element */
@@ -2953,7 +2964,8 @@ div.pp_default .pp_description {
 	width: 50px;
 }
 .tb-tweet-wrapper .tweet-content {
-	font-size: 1.9em;
+	font-size: 1.9em; /* Fallback for older browsers */
+	font-size: 1.9rem;
 	line-height: 125%;
 }
 
