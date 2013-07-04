@@ -306,7 +306,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __( 'Footer Copyright Text', 'themeblvd' ),
 						'desc' 		=> __( 'Enter the copyright text you\'d like to show in the footer of your site.', 'themeblvd' ),
 						'id' 		=> 'footer_copyright',
-						'std' 		=> '(c) '.date('Y').' '.get_bloginfo('site_title').' - Web Design by <a href="http://www.jasonbobich.com" target="_blank">Jason Bobich</a>',
+						'std' 		=> '(c) '.date('Y').' '.get_bloginfo('site_title').' - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
 						'type' 		=> 'text'
 					)
 				) // End footer options
