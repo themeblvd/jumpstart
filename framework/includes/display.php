@@ -525,26 +525,17 @@ if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_meta_default() {
-
-	// Setup text strings so their run through the
-	// framework's frontend localization filter.
-	$text = array(
-		'comment' => themeblvd_get_local( 'comment' ),
-		'comments' => themeblvd_get_local( 'comments' ),
-		'no_comments' => themeblvd_get_local( 'no_comments' ),
-	);
-
 	?>
 	<div class="entry-meta">
 		<time class="entry-date updated" datetime="<?php the_time('c'); ?>"><i class="icon-calendar"></i> <?php the_time( get_option( 'date_format' ) ); ?></time>
 		<span class="sep"> / </span>
-		<span class="author vcard"><i class="icon-user"></i> <a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo sprintf( esc_attr__( 'View all posts by %s', 'themeblvd' ), get_the_author() ); ?>" rel="author"><?php the_author(); ?></a></span>
+		<span class="author vcard"><i class="icon-user"></i> <a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php printf( esc_attr__( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() ); ?>" rel="author"><?php the_author(); ?></a></span>
 		<span class="sep"> / </span>
-		<span class="category"><i class="icon-reorder"></i>  <?php the_category(', '); ?></span>
+		<span class="category"><i class="icon-reorder"></i> <?php the_category(', '); ?></span>
 		<?php if ( comments_open() ) : ?>
 		<span class="sep"> / </span>
 		<span class="comments-link">
-			<i class="icon-comment"></i> <?php comments_popup_link( '<span class="leave-reply">'.$text['no_comments'].'</span>', '1 '.$text['comment'], '% '.$text['comments'] ); ?>
+			<i class="icon-comment"></i> <?php comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local( 'no_comments' ).'</span>', '1 '.themeblvd_get_local( 'comment' ), '% '.themeblvd_get_local( 'comments' ) ); ?>
 		</span>
 		<?php endif; ?>
 	</div><!-- .entry-meta -->
