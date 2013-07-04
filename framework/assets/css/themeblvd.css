@@ -249,6 +249,7 @@ code {
 	background: #eeeeee;
 	border: none;
 	color: #666666;
+	white-space: normal;
 }
 code.block {
 	display: block; /* More like a <pre> tag, but still different. */
