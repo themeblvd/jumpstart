@@ -51,7 +51,26 @@ function themeblvd_get_font_face( $option ) {
 	} else {
 		$stack = $stacks[$option['face']];
 	}
+
 	return apply_filters( 'themeblvd_font_face', $stack, $option, $stacks );
+}
+
+/**
+ * Get font size
+ *
+ * @since 2.3.0
+ *
+ * @param array $option Current option set by user for the font
+ * @return string $size CSS value for font-size property
+ */
+function themeblvd_get_font_size( $option ) {
+
+	$size = '13px';
+
+	if( isset( $option['size'] ) )
+		$size = $option['size'];
+
+	return apply_filters( 'themeblvd_font_size', $size, $option );
 }
 
 /**
@@ -60,17 +79,16 @@ function themeblvd_get_font_face( $option ) {
  * @since 2.3.0
  *
  * @param array $option Current option set by user for the font
- * @return string CSS value for font-style property
+ * @return string $style CSS value for font-style property
  */
 function themeblvd_get_font_style( $option ) {
 
-	if ( ! isset( $option['style'] ) )
-		return 'normal';
+	$style = 'normal';
 
-	if ( $option['style'] == 'italic' || $option['style'] == 'bold-italic' )
-		return 'italic';
+	if ( isset( $option['style'] ) && ( $option['style'] == 'italic' || $option['style'] == 'bold-italic' ) )
+		$style = 'italic';
 
-	return 'normal';
+	return apply_filters( 'themeblvd_font_style', $style, $option );
 }
 
 /**
@@ -79,17 +97,16 @@ function themeblvd_get_font_style( $option ) {
  * @since 2.3.0
  *
  * @param array $option Current option set by user for the font
- * @return string CSS value for font-weight property
+ * @return string $weight CSS value for font-weight property
  */
 function themeblvd_get_font_weight( $option ) {
 
-	if ( ! isset( $option['style'] ) )
-		return 'normal';
+	$weight = 'normal';
 
-	if ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' )
-		return 'bold';
+	if ( isset( $option['style'] ) && ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' ) )
+		$weight = 'bold';
 
-	return 'normal';
+	return apply_filters( 'themeblvd_font_weight', $weight, $option );
 }
 
 if ( !function_exists( 'themeblvd_primary_menu_fallback' ) ) :
