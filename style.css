@@ -317,7 +317,7 @@ img.size-full {
 .post_grid .entry-title {
 	font-size: 15px; /* Fallback for older browsers */
 	font-size: 1.15rem;
-	line-height: 15em;
+	line-height: 1.5em;
 }
 
 /* =Comments
