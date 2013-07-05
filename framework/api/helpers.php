@@ -68,7 +68,7 @@ if ( !function_exists( 'themeblvd_get_option' ) ) :
  */
 function themeblvd_get_option( $primary, $seconday = null ) {
 	$api = Theme_Blvd_Options_API::get_instance();
-	return $api->get_settings( $primary, $seconday );
+	return $api->get_setting( $primary, $seconday );
 }
 endif;
 

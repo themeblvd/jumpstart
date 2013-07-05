@@ -78,7 +78,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 	// Get current theme settings.
 	$options_api = Theme_Blvd_Options_API::get_instance();
 	$option_name = $options_api->get_option_id();
-	$theme_settings = $options_api->get_settings();
+	$theme_settings = $options_api->get_setting();
 
 	// Register sections of options
 	if ( $_themeblvd_customizer_sections ) {

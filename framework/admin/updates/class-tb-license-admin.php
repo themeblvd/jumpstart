@@ -106,8 +106,8 @@ class Theme_Blvd_License_Admin {
 								<?php _e('License Key', 'themeblvd'); ?>
 							</th>
 							<td>
-								<input id="themeblvd_license_key" name="themeblvd_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
-								<label class="description" for="themeblvd_license_key"><?php _e('Enter your license key'); ?></label>
+								<input id="themeblvd_license_key" name="themeblvd_license_key" type="text" class="regular-text" value="<?php esc_attr( $license ); ?>" />
+								<label class="description" for="themeblvd_license_key"><?php _e('Enter your license key', 'themeblvd'); ?></label>
 							</td>
 						</tr>
 						<?php if ( $license ) : ?>

@@ -843,7 +843,7 @@ class Theme_Blvd_Options_API {
 	 * @param string $secondary Optional $secondary ID to traverse deeper into arrays
 	 * @return array|string $settings Entire settings array or individual setting string
 	 */
-	public function get_settings( $primary = '', $seconday = '' ) {
+	public function get_setting( $primary = '', $seconday = '' ) {
 
 		if ( ! $primary )
 			return $this->settings;
