@@ -46,29 +46,9 @@ function themeblvd_tgm_register() {
 
 	// Plugins to require/recommend
 	$plugins = array(
-		'builder' => array(
-			'name' 		=> 'Theme Blvd Layout Builder',
-			'slug' 		=> 'theme-blvd-layout-builder',
-			'required' 	=> false
-		),
-		'sliders' => array(
-			'name' 		=> 'Theme Blvd Sliders',
-			'slug' 		=> 'theme-blvd-sliders',
-			'required' 	=> false
-		),
-		'sidebars' => array(
-			'name' 		=> 'Theme Blvd Widget Areas',
-			'slug' 		=> 'theme-blvd-widget-areas',
-			'required' 	=> false
-		),
-		'widgets' => array(
-			'name' 		=> 'Theme Blvd Widget Pack',
-			'slug' 		=> 'theme-blvd-widget-pack',
-			'required' 	=> false
-		),
-		'shortcodes' => array(
-			'name' 		=> 'Theme Blvd Shortcodes',
-			'slug' 		=> 'theme-blvd-shortcodes',
+		'bundle' => array(
+			'name' 		=> 'Theme Blvd Bundle',
+			'slug' 		=> 'theme-blvd-bundle',
 			'required' 	=> false
 		)
 	);
