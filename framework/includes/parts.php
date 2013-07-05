@@ -433,6 +433,8 @@ if ( !function_exists( 'themeblvd_get_mini_post_list' ) ) : // pluggable for bac
 function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
 
 	global $post;
+	global $_wp_additional_image_sizes;
+
 	$output = '';
 
 	// CSS classes
@@ -443,6 +445,10 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 		$classes .= $thumb.'-thumbs';
 	if ( ! $meta )
 		$classes .= ' hide-meta';
+
+	// Thumb size
+	$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
+	$thumb_width = $_wp_additional_image_sizes[$thumb_size]['width'];
 
 	// Get posts
 	$posts = get_posts( html_entity_decode( $query ) );
@@ -461,7 +467,6 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 			// Setup post thumbnail if user wants them to show
 			if ( $thumb ) {
 
-				$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
 				$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
 
 				// If post thumbnail isn't set, pull default thumbnail
@@ -469,7 +474,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 				// formats, format will always be "standard".
 				if ( ! $image ) {
 
-					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
+					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
 
 					$post_format = get_post_format();
 					if ( ! $post_format )
@@ -478,7 +483,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 					$image .= '<div class="featured-image">';
 					$image .= '<div class="featured-image-inner">';
-					$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
+					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
 					$image .= '</div><!-- .featured-image-inner (end) -->';
 					$image .= '</div><!-- .featured-image (end) -->';
 					$image .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -537,6 +542,8 @@ if ( !function_exists( 'themeblvd_get_mini_post_grid' ) ) : // pluggable for bac
 function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 
 	global $post;
+	global $_wp_additional_image_sizes;
+
 	$output = '';
 
 	// CSS classes
@@ -544,6 +551,10 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	$classes .= ' grid-align-'.$align;
 	if ( $gallery )
 		$classes .= ' gallery-override';
+
+	// Thumb size
+	$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query );
+	$thumb_width = $_wp_additional_image_sizes[$thumb_size]['width'];
 
 	// Check for gallery override
 	if ( $gallery )
@@ -583,7 +594,6 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 			} else {
 
 				// Standard featured image output
-				$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery );
 				$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
 
 				// If post thumbnail isn't set, pull default thumbnail
@@ -591,7 +601,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 				// formats, format will always be "standard".
 				if ( ! $image ) {
 
-					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/' );
+					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
 
 					$post_format = get_post_format();
 					if ( ! $post_format )
@@ -600,7 +610,9 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 					$image .= '<div class="featured-image">';
 					$image .= '<div class="featured-image-inner">';
-					$image .= sprintf( '<img src="%s.png" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format );
+					$image .= sprintf( '<a href="%s" title="%s">', get_permalink(), get_the_title() );
+					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
+					$image .= '</a>';
 					$image .= '</div><!-- .featured-image-inner (end) -->';
 					$image .= '</div><!-- .featured-image (end) -->';
 					$image .= '</div><!-- .featured-image-wrapper (end) -->';
