@@ -1,29 +1,5 @@
 <?php
 /**
- * Filter out the first URL or HTML link of the
- * content in a "Link" format post.
- *
- * @since 2.3.0
- *
- * @param string $content Content of post
- * @return string $content Filtered content of post
- */
-function themeblvd_content_format_link( $content ){
-
-	// Only continue if this is a "link" format post.
-	if ( ! has_post_format( 'link' ) )
-		return $content;
-
-	// Removes link from content, but not actually
-	// using returned $url here.
-	$url = get_content_url( $content, true );
-
-	return $content;
-
-}
-// add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
-
-/**
  * Remove the first instance of a [gallery]
  * shortcode from a block of content.
  *
@@ -51,6 +27,34 @@ function themeblvd_content_format_gallery( $content ){
 }
 // add_filter( 'the_content', 'themeblvd_content_format_gallery', 7 );
 
+/**
+ * Filter out the first URL or HTML link of the
+ * content in a "Link" format post.
+ *
+ * @since 2.3.0
+ *
+ * @param string $content Content of post
+ * @return string $content Filtered content of post
+ */
+function themeblvd_content_format_link( $content ){
+
+	// Only continue if this is a "link" format post.
+	if ( ! has_post_format( 'link' ) )
+		return $content;
+
+	// Get the URL from the content.
+	$url = get_content_url( $content );
+
+	// Remove that URL from the start of content,
+	// if that's where it was.
+	if ( $url && 0 === strpos( $content , $url ) )
+		$content = str_replace( $url, '', $content );
+
+	return $content;
+
+}
+// add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
+
 if ( !function_exists( 'get_content_url' ) ) :
 /**
  * Copied from WP 3.6 core for backwards compat. This
@@ -70,17 +74,15 @@ if ( !function_exists( 'get_content_url' ) ) :
  * @param boolean $remove Whether to remove the found URL from the passed content.
  * @return string The found URL.
  */
-function get_content_url( &$content, $remove = false ) {
+function get_content_url( $content ) {
 	if ( empty( $content ) )
 		return '';
 
 	// the content is a URL
 	$trimmed = trim( $content );
 	if ( 0 === stripos( $trimmed, 'http' ) && ! preg_match( '#\s#', $trimmed ) ) {
-		if ( $remove )
-			$content = '';
-
 		return $trimmed;
+
 	// the content is HTML so we grab the first href
 	} elseif ( preg_match( '/<a\s[^>]*?href=([\'"])(.+?)\1/is', $content, $matches ) ) {
 		return esc_url_raw( $matches[2] );
@@ -90,12 +92,8 @@ function get_content_url( &$content, $remove = false ) {
 	$line = trim( array_shift( $lines ) );
 
 	// the content is a URL followed by content
-	if ( 0 === stripos( $line, 'http' ) ) {
-		if ( $remove )
-			$content = trim( join( "\n", $lines ) );
-
+	if ( 0 === stripos( $line, 'http' ) )
 		return esc_url_raw( $line );
-	}
 
 	return '';
 }
