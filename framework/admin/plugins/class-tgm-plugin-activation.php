@@ -448,10 +448,10 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				/** Set plugin source to WordPress API link if available */
 				if ( isset( $plugin['source'] ) && 'repo' == $plugin['source'] ) {
 					$api = plugins_api( 'plugin_information', array( 'slug' => $plugin['slug'], 'fields' => array( 'sections' => false ) ) );
-					
+
 					if ( is_wp_error( $api ) )
 						wp_die( $this->strings['oops'] . var_dump( $api ) );
-						
+
 					if ( isset( $api->download_link ) )
 						$plugin['source'] = $api->download_link;
 				}
@@ -709,11 +709,11 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					$action_links = array_filter( $action_links ); // Remove any empty array items
 					if ( $action_links )
 						$rendered .= '<p>' . implode( ' | ', $action_links ) . '</p>';
-					
-					// Modifed admin nag by Theme Blvd to be outputted admin notice 
-					// and not with settings_errors(), which conflicted with tons of 
+
+					// Modifed admin nag by Theme Blvd to be outputted admin notice
+					// and not with settings_errors(), which conflicted with tons of
 					// other things.
-					
+
 					/** Register the nag messages and prepare them to be processed */
                		/*
                		if ( isset( $this->strings['nag_type'] ) )
@@ -725,14 +725,14 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 						echo '<div class="'.sanitize_html_class( strtolower( $this->strings['nag_type'] ), 'updated' ).'">'.$rendered.'</div>';
 					else
 						echo '<div class="updated">'.$rendered.'</div>';
-				
+
 				}
 			}
 
 			/** Admin options pages already output settings_errors, so this is to avoid duplication */
 			// if ( 'options-general' !== $current_screen->parent_base && ! themeblvd_is_admin_module() )
 				// settings_errors( 'tgmpa' );
-				
+
 		}
 
 		/**
@@ -925,7 +925,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
 			/** Set file_path parameter for any installed plugins */
 			$this->populate_file_path();
-			
+
 			$installed_plugins = get_plugins();
 
 			foreach ( $this->plugins as $plugin ) {
@@ -1127,24 +1127,24 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 
 				$i++;
 			}
-			
+
 			/** Sort plugins by Required/Recommended type and by alphabetical listing within each type */
 			$resort = array();
 			$req = array();
 			$rec = array();
-			
+
 			/** Grab all the plugin types */
 			foreach ( $table_data as $plugin )
 				$resort[] = $plugin['type'];
-			
+
 			/** Sort each plugin by type */
 			foreach ( $resort as $type )
 				if ( 'Required' == $type )
 					$req[] = $type;
 				else
 					$rec[] = $type;
-			
-			/** Sort alphabetically each plugin type array, merge them and then sort in reverse	(lists Required plugins first) */	
+
+			/** Sort alphabetically each plugin type array, merge them and then sort in reverse	(lists Required plugins first) */
 			sort( $req );
 			sort( $rec );
 			array_merge( $resort, $req, $rec );
