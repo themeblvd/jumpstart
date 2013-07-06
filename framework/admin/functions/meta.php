@@ -81,11 +81,11 @@ function setup_themeblvd_post_meta() {
 	$imagepath =  get_template_directory_uri() . '/framework/admin/assets/images/';
 
 	// Generate sidebar layout options
-	$sidebar_layouts = array( 'default' =>  $imagepath.'layout-default.png' );
+	$sidebar_layouts = array( 'default' =>  $imagepath.'layout-default_2x.png' );
 	$layouts = themeblvd_sidebar_layouts();
-	foreach( $layouts as $layout )
-		$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
-
+	foreach( $layouts as $layout ) {
+		$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
+	}
 
 	$setup = array(
 		'config' => array(
@@ -212,7 +212,8 @@ function setup_themeblvd_post_meta() {
 				'desc' 		=> __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'images',
-				'options' 	=> $sidebar_layouts
+				'options' 	=> $sidebar_layouts,
+				'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
 			)
 		)
 	);

@@ -189,7 +189,7 @@ class Theme_Blvd_Options_API {
 		if ( is_admin() ) {
 			$layouts = themeblvd_sidebar_layouts();
 			foreach( $layouts as $layout )
-				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
+				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
 		}
 
 		// Pull all the categories into an array
@@ -240,7 +240,8 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'sidebar_layout',
 						'std' 		=> 'sidebar_right',
 						'type' 		=> 'images',
-						'options' 	=> $sidebar_layouts
+						'options' 	=> $sidebar_layouts,
+						'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
 					)
 				) // End main options
 			),

@@ -154,8 +154,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-fancy-select">';
 				$output .= '<select class="of-input" name="'.esc_attr( $option_name.'['.$value['id'].']' ).'" id="'.esc_attr( $value['id'] ).'">';
 
-				foreach( $value['options'] as $key => $option )
+				foreach( $value['options'] as $key => $option ) {
 					$output .= '<option'.selected( $key, $val, false ).' value="'.esc_attr( $key ).'">'.esc_html( $option ).'</option>';
+				}
 
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
@@ -186,15 +187,24 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/* Image Selectors
 			/*---------------------------------------*/
 
-			case 'images':
+			case 'images' :
+
 				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
+
+				$width = '';
+				if( isset( $value['img_width'] ) )
+					$width = $value['img_width'];
+
 				foreach( $value['options'] as $key => $option ) {
+
 					$selected = '';
 					$checked = checked( $val, $key, false );
 					$selected = $checked ? ' of-radio-img-selected' : '';
-					$output .= '<input type="radio" id="'.esc_attr( $value['id'].'_'.$key).'" class="of-radio-img-radio" value="'.esc_attr( $key ).'" name="'.esc_attr( $name ).'" '.$checked.' />';
-					$output .= '<div class="of-radio-img-label">'.esc_html( $key ).'</div>';
-					$output .= '<img src="'.esc_url( $option ).'" alt="'.$option.'" class="of-radio-img-img'.$selected.'" onclick="document.getElementById(\''. esc_attr( $value['id'].'_'.$key ) .'\').checked=true;" />';
+
+					$output .= sprintf( '<input type="radio" id="%s" class="of-radio-img-radio" value="%s" name="%s" %s />', esc_attr($value['id'].'_'.$key), esc_attr($key), esc_attr($name), $checked );
+					$output .= sprintf( '<div class="of-radio-img-label">%s</div>', esc_html($key) );
+					$output .= sprintf( '<img src="%s" alt="%s" class="of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />', esc_url($option), $option, $selected, $width, esc_attr($value['id'].'_'.$key) );
+
 				}
 				break;
 
@@ -204,7 +214,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'checkbox' :
 				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
-				$output .= '<input id="'.esc_attr( $value['id'] ).'" class="checkbox of-input" type="checkbox" name="'.esc_attr( $name ).'" '.checked( $val, 1, false ).' />';
+				$output .= sprintf( '<input id="%s" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($value['id']), esc_attr( $name ), checked( $val, 1, false ) );
 				break;
 
 			/*---------------------------------------*/
