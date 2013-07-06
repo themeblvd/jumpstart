@@ -89,7 +89,5 @@ get_header();
 			</div><!-- .grid-protection (end) -->
 		</div><!-- .sidebar_layout-inner (end) -->
 	</div><!-- #sidebar_layout (end) -->
-	<?php
 
-// Footer
-get_footer();
+<?php get_footer(); ?>
