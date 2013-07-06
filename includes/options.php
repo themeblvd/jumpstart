@@ -1,6 +1,6 @@
 <?php
 // Jump Start contains no mods to framework options, however does
-// include a starting point for the WordPress customizer...
+// include a starting point for the WordPress customizer.
 
 /**
  * Setup theme for customizer.
@@ -50,6 +50,8 @@ add_action( 'customize_register', 'jumpstart_customizer_init' );
 /**
  * Setup javascript needed for customizer to link up
  * to real-time edit options.
+ *
+ * @since 1.0.0
  */
 function jumpstart_customizer_preview() {
 	// Begin output
