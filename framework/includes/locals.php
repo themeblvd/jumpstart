@@ -35,6 +35,7 @@ function themeblvd_get_all_locals() {
 		'crumb_search'				=> __( 'Search results for', 'themeblvd_frontend' ),
 		'crumb_tag'					=> __( 'Posts tagged', 'themeblvd_frontend' ),
 		'edit_page'					=> __( 'Edit Page', 'themeblvd_frontend' ),
+		'edit_post'					=> __( 'Edit Post', 'themeblvd_frontend' ),
 		'email'						=> __( 'Email', 'themeblvd_frontend' ),
 		'home'						=> __( 'Home', 'themeblvd_frontend' ),
 		'in'						=> __( 'in', 'themeblvd_frontend' ),
