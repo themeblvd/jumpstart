@@ -837,7 +837,7 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 			// no longer supported; so this will add a new paragraph with
 			// a link to the post, if relevant.
 			if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && version_compare( TB_SLIDERS_PLUGIN_VERSION, '1.1.0', '>=' ) ) {
-				if ( in_array( 'button', $includes ) ) {
+				if ( 'full' == $args['image'] && in_array( 'button', $includes ) ) {
 					$elements['description'] .= "\n\n"; // Slider display uses wpautop
 					$elements['description'] .= sprintf('<a href="%s" title="%s">%s</a>', $elements['button']['url'], $elements['button']['text'], $elements['button']['text'] );
 				}
