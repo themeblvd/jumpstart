@@ -2,6 +2,7 @@
 /**
  * The default template for displaying content in post list.
  */
+global $more; $more = 0;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
