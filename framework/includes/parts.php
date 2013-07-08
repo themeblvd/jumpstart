@@ -29,7 +29,7 @@ function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 		$output = '<div class="themeblvd-contact-bar">';
 		$output .= '<ul class="social-media-'.$style.'">';
 
-		foreach( $buttons as $id => $url ) {
+		foreach ( $buttons as $id => $url ) {
 			$target = strpos( $url, 'mailto:' ) !== false ? '_self' : '_blank'; // Change target if URL has 'mailto:'
 			$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
 		}
@@ -188,7 +188,7 @@ function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 	// Pagination markup
 	$output = '';
 	if ( $parts ) {
-		foreach( $parts as $part ) {
+		foreach ( $parts as $part ) {
 			$class = 'btn btn-default';
 			if ( $part['active'] )
 				$class .= ' active';
@@ -251,7 +251,7 @@ function themeblvd_get_breadcrumbs_trail(){
 	$count = 1;
 	$total = count($parts);
 	if ( $parts ) {
-		foreach( $parts as $part ) {
+		foreach ( $parts as $part ) {
 			$crumb = $part['text'];
 			if ( ! empty( $part['link'] ) )
 				$crumb = '<a href="'.$part['link'].'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
@@ -399,7 +399,7 @@ function themeblvd_get_simple_contact( $args ) {
 	// Social Icons
 	if ( ! empty( $icons ) ) {
 		$module .= '<li class="link"><ul class="icons">';
-		foreach( $icons as $icon => $url ) {
+		foreach ( $icons as $icon => $url ) {
 			$module .= '<li class="'.$icon.'"><a href="'.$url.'" target="_blank" title="'.ucfirst($icon).'">'.ucfirst($icon).'</a></li>';
 		}
 		$module .= '</ul></li>';
@@ -459,7 +459,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 		$output  = '<div class="themeblvd-mini-post-list">';
 		$output .= '<ul class="'.$classes.'">';
 
-		foreach( $posts as $post ) {
+		foreach ( $posts as $post ) {
 
 			setup_postdata( $post );
 			$image = '';
@@ -569,7 +569,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 		$output  = '<div class="themeblvd-mini-post-grid">';
 		$output .= '<ul class="'.$classes.'">';
 
-		foreach( $posts as $post ) {
+		foreach ( $posts as $post ) {
 
 			setup_postdata( $post );
 

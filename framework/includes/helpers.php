@@ -67,7 +67,7 @@ function themeblvd_get_font_size( $option ) {
 
 	$size = '13px';
 
-	if( isset( $option['size'] ) )
+	if ( isset( $option['size'] ) )
 		$size = $option['size'];
 
 	return apply_filters( 'themeblvd_font_size', $size, $option );
@@ -168,7 +168,7 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		unset( $options['categories']['all'] );
 		$categories = '';
 
-		foreach( $options['categories'] as $category => $include ) {
+		foreach ( $options['categories'] as $category => $include ) {
 			if ( $include ) {
 				$current_category = get_term_by( 'slug', $category, 'category' );
 				$categories .= $current_category->term_id.',';
@@ -446,7 +446,7 @@ function themeblvd_responsive_visibility_class( $devices, $start_space = false, 
 	$class = '';
 	$exists = false;
 	if ( is_array( $devices ) && ! empty( $devices ) )
-		foreach( $devices as $device )
+		foreach ( $devices as $device )
 			if ( $device )
 				$exists = true;
 
@@ -708,7 +708,7 @@ function themeblvd_private_page( $template ){
 
 	// Page Templates
 	$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
-	foreach( $page_templates as $page_template ) {
+	foreach ( $page_templates as $page_template ) {
 		if ( is_page_template( $page_template ) )
 			$template = locate_template( 'page.php' );
 	}
@@ -920,7 +920,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 			// Parent pages
 			$parent_id  = $post->post_parent;
 			$parents = array();
-			while( $parent_id ) {
+			while ( $parent_id ) {
 				$page = get_page( $parent_id );
 				$parents[] = array(
 					'link' 	=> get_permalink( $page->ID ),

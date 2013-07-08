@@ -17,7 +17,7 @@ function themeblvd_include_google_fonts() {
 		$protocol = is_ssl() ? 'https://' : 'http://';
 
 		// Include each font file from google.
-		foreach( $fonts as $font ) {
+		foreach ( $fonts as $font ) {
 			if ( $font['face'] == 'google' && $font['google'] ) {
 
 				if ( in_array( $font['google'], $used ) )
@@ -307,7 +307,7 @@ function themeblvd_post_id_by_name( $slug, $post_type = null ) {
 	// Run through our results and return the ID of the first.
 	// Hopefully there was only one result, but if there was
 	// more than one, we'll just return a single ID.
-	foreach( $posts as $post )
+	foreach ( $posts as $post )
 		if ( $post->ID )
 			return $post->ID;
 
@@ -880,7 +880,7 @@ function themeblvd_get_select( $type ) {
 			$pages_select = array();
 			$pages = get_pages();
 			if ( ! empty( $pages ) )
-				foreach( $pages as $page )
+				foreach ( $pages as $page )
 					$select[$page->post_name] = $page->post_title;
 			else
 				$select['null'] = __( 'No pages exist.', 'themeblvd' );
@@ -898,7 +898,7 @@ function themeblvd_get_select( $type ) {
 			} else {
 				$categories = get_categories( array( 'hide_empty' => false ) );
 			}
-			foreach( $categories as $category )
+			foreach ( $categories as $category )
 				$select[$category->slug] = $category->name;
 			break;
 
@@ -906,7 +906,7 @@ function themeblvd_get_select( $type ) {
 		case 'sliders' :
 			$sliders = get_posts( 'post_type=tb_slider&numberposts=-1' );
 			if ( ! empty( $sliders ) )
-				foreach( $sliders as $slider )
+				foreach ( $sliders as $slider )
 					$select[$slider->post_name] = $slider->post_title;
 			else
 				$select['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
@@ -916,7 +916,7 @@ function themeblvd_get_select( $type ) {
 		case 'sidebars' :
 			$sidebars = get_posts('post_type=tb_sidebar&numberposts=-1');
 			if ( ! empty( $sidebars ) ) {
-				foreach( $sidebars as $sidebar ) {
+				foreach ( $sidebars as $sidebar ) {
 					$location = get_post_meta( $sidebar->ID, 'location', true );
 					if ( $location == 'floating' )
 						$select[$sidebar->post_name] = $sidebar->post_title;
@@ -1009,7 +1009,7 @@ function themeblvd_stats() {
 		$plugin_count = count(get_option('active_plugins'));
 		$all_plugins = get_plugins();
 		$plugin_name = ''; // (added by Jason)
-		foreach( $all_plugins as $plugin_file => $plugin_data ) {
+		foreach ( $all_plugins as $plugin_file => $plugin_data ) {
 			$plugin_name .= $plugin_data['Name'];
 			$plugin_name .= '&';
 		}
@@ -1163,7 +1163,7 @@ function themeblvd_add_image_sizes() {
 	$sizes = themeblvd_get_image_sizes();
 
 	// Add image sizes
-	foreach( $sizes as $size => $atts ) {
+	foreach ( $sizes as $size => $atts ) {
 		add_image_size( $size, $atts['width'], $atts['height'], $atts['crop'] );
 	}
 
@@ -1188,7 +1188,7 @@ function themeblvd_image_size_names_choose( $sizes ) {
 
 	// Format sizes
 	$tb_sizes = array();
-	foreach( $tb_raw_sizes as $id => $atts ) {
+	foreach ( $tb_raw_sizes as $id => $atts ) {
 		$tb_sizes[$id] = $atts['name'];
 	}
 

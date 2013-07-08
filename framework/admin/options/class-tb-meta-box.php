@@ -47,7 +47,7 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function add() {
-		foreach( $this->args['page'] as $page ) {
+		foreach ( $this->args['page'] as $page ) {
     		add_meta_box(
 		        $this->args['id'],
 				$this->args['title'],
@@ -81,7 +81,7 @@ class Theme_Blvd_Meta_Box {
     	// Gather any already saved settings or defaults for option types
     	// that need a starting value
     	$settings = array();
-    	foreach( $this->options as $option ) {
+    	foreach ( $this->options as $option ) {
     		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
     		if ( ! $settings[$option['id']] ) {
     			if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
@@ -108,7 +108,7 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function save( $post_id ) {
-		foreach( $this->options as $option ) {
+		foreach ( $this->options as $option ) {
 			if ( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
 				update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
 			}

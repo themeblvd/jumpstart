@@ -71,7 +71,7 @@ class Theme_Blvd_Envato_Updates {
 		$purchased_themes = array();
 		$purchased = $envato_api->wp_list_themes( true );
 		if ( ! empty( $purchased ) ) {
-			foreach( $purchased as $theme ) {
+			foreach ( $purchased as $theme ) {
 				if ( $theme->author_name == $this->args['author_name'] ) {
 					$purchased_themes[$theme->theme_name] = array(
 						'item_id' 		=> $theme->item_id,
@@ -88,7 +88,7 @@ class Theme_Blvd_Envato_Updates {
 		// Loop through current themes in WP directory and
 		// check if we need to apply our updates.
 		if ( $installed_themes ) {
-			foreach( $installed_themes as $installed_theme_id => $installed_theme ) {
+			foreach ( $installed_themes as $installed_theme_id => $installed_theme ) {
 				// Make sure the current installed theme is one of
 				// the themes purchased from the current author.
 				if ( isset( $purchased_themes[$installed_theme->Name] ) ) {

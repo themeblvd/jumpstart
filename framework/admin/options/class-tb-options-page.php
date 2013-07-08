@@ -235,7 +235,7 @@ class Theme_Blvd_Options_Page {
 		// $input before sending back the final $clean array.
 
 		$clean = array();
-		foreach( $this->options as $option ){
+		foreach ( $this->options as $option ){
 
 			// Skip if we don't have an ID or type.
 			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) )

@@ -37,7 +37,7 @@ get_header();
 								$counter = themeblvd_set_att( 'counter', 1 );
 								$columns = themeblvd_get_att( 'columns' );
 								if ( $post_grid->have_posts() ) {
-									while( $post_grid->have_posts() ) {
+									while ( $post_grid->have_posts() ) {
 										$post_grid->the_post();
 										global $more; $more = 0;
 										if ( $counter == 1 ) themeblvd_open_row();

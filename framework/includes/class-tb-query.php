@@ -115,7 +115,7 @@ class Theme_Blvd_Query {
 				unset( $args['categories']['all'] );
 				$category_name = '';
 				if ( $args['categories'] ) {
-					foreach( $args['categories'] as $category => $include ) {
+					foreach ( $args['categories'] as $category => $include ) {
 						if ( $include ) {
 							$category_name .= $category.',';
 						}
@@ -282,7 +282,7 @@ class Theme_Blvd_Query {
 		if ( $type == 'list' && ! $cat && ! $category_name ) {
 			$exclude = themeblvd_get_option( 'blog_categories' );
 			if ( $exclude ) {
-				foreach( $exclude as $key => $value ) {
+				foreach ( $exclude as $key => $value ) {
 					if ( $value )
 						$cat .= sprintf('-%s,', $key);
 				}
@@ -413,7 +413,7 @@ class Theme_Blvd_Query {
 				$exclude = themeblvd_get_option( 'blog_categories' );
 
 			if ( $exclude ) {
-				foreach( $exclude as $key => $value ) {
+				foreach ( $exclude as $key => $value ) {
 					if ( $value )
 						$cat .= sprintf('-%s,', $key);
 				}
@@ -438,9 +438,9 @@ class Theme_Blvd_Query {
 			// Loop through elements and look for that single
 			// paginated element (there can only be one in a layout).
 			if ( ! empty( $elements ) && is_array( $elements ) ) {
-				foreach( $elements as $area ) {
+				foreach ( $elements as $area ) {
 					if ( ! empty( $area ) ) {
-						foreach( $area as $element ) {
+						foreach ( $area as $element ) {
 
 							switch( $element['type'] ) {
 

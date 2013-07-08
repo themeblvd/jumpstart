@@ -151,7 +151,7 @@ function themeblvd_featured_start_default() {
 	$classes = '';
 	$featured = themeblvd_config( 'featured' );
 	if ( $featured ) {
-		foreach( $featured as $class )
+		foreach ( $featured as $class )
 			$classes .= " $class";
 
 	}
@@ -197,7 +197,7 @@ function themeblvd_featured_below_start_default() {
 	$classes = '';
 	$featured_below = themeblvd_config( 'featured_below' );
 	if ( $featured_below ) {
-		foreach( $featured_below as $class )
+		foreach ( $featured_below as $class )
 			$classes .= " $class";
 
 	}
@@ -421,7 +421,7 @@ function themeblvd_footer_content_default() {
 			$i = 1;
 			$columns = array();
 			$num = $footer_setup['num'];
-			while( $i <= $num ) {
+			while ( $i <= $num ) {
 				$columns[] = themeblvd_get_option( 'footer_col_'.$i );
 				$i++;
 			}

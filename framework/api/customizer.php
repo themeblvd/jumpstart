@@ -48,9 +48,9 @@ if ( !function_exists( 'themeblvd_registered_customizer_options' ) ) :
 function themeblvd_registered_customizer_options( $sections ) {
 	$registered_options = array();
 	if ( $sections ) {
-		foreach( $sections as $section ) {
+		foreach ( $sections as $section ) {
 			if ( $section['options'] ) {
-				foreach( $section['options'] as $option ) {
+				foreach ( $section['options'] as $option ) {
 					$registered_options[$option['id']] = $option;
 				}
 			}
@@ -82,7 +82,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 	// Register sections of options
 	if ( $_themeblvd_customizer_sections ) {
-		foreach( $_themeblvd_customizer_sections as $section ) {
+		foreach ( $_themeblvd_customizer_sections as $section ) {
 
 			// Add section
 			$wp_customize->add_section( $section['id'], array(
@@ -94,7 +94,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 			// Add Options
 			if ( $section['options'] ) {
-				foreach( $section['options'] as $option ) {
+				foreach ( $section['options'] as $option ) {
 
 					if ( $option['type'] == 'logo' ) {
 
@@ -108,7 +108,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 							'image' 			=> ''
 						);
 						if ( isset( $theme_settings[$option['id']] ) ) {
-							foreach( $defaults as $key => $value ) {
+							foreach ( $defaults as $key => $value ) {
 								if ( isset( $theme_settings[$option['id']][$key] ) ) {
 									$defaults[$key] = $theme_settings[$option['id']][$key];
 								}
@@ -205,7 +205,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 							$transport = $option['transport'];
 
 						// Loop through included attributes
-						foreach( $option['atts'] as $attribute ) {
+						foreach ( $option['atts'] as $attribute ) {
 
 							// Register options
 							$wp_customize->add_setting( $option_name.'['.$option['id'].']['.$attribute.']', array(
@@ -380,13 +380,13 @@ function themeblvd_customizer_init( $wp_customize ) {
 	// Remove irrelevant sections
 	$remove_sections = apply_filters( 'themeblvd_customizer_remove_sections', array( 'title_tagline' ) );
 	if ( is_array( $remove_sections ) && $remove_sections )
-		foreach( $remove_sections as $section )
+		foreach ( $remove_sections as $section )
 			$wp_customize->remove_section( $section );
 
 	// Modify sections
 	$modify_sections = apply_filters( 'themeblvd_customizer_modify_sections', array() );
 	if ( ! empty( $modify_sections ) ) {
-		foreach( $modify_sections as $section ) {
+		foreach ( $modify_sections as $section ) {
 			// Currently only one section set to be modified. I'm doing this
 			// loop to make it so you can stop items from being modified and
 			// I can may add to this in the future.
@@ -419,7 +419,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 					$custom_layouts = array();
 					$custom_layout_posts = get_posts('post_type=tb_layout&numberposts=-1');
 					if ( ! empty( $custom_layout_posts ) ) {
-						foreach( $custom_layout_posts as $layout )
+						foreach ( $custom_layout_posts as $layout )
 							$custom_layouts[$layout->post_name] = $layout->post_title;
 					} else {
 						$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', 'themeblvd' );
@@ -632,7 +632,7 @@ if ( !function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 			'custom_tagline' 	=> '',
 			'image' 			=> '',
 		);
-		foreach( $logo_atts as $key => $value ) {
+		foreach ( $logo_atts as $key => $value ) {
 			if ( isset($logo_options[$key]) )
 				$logo_atts[$key] = $logo_options[$key];
 		}
@@ -783,7 +783,7 @@ function themeblvd_customizer_preview_font_prep() {
 	// booleans to be used in printed JS object.
 	$types = array('body', 'header', 'special');
 	$google_fonts = array();
-	foreach( $types as $type ) {
+	foreach ( $types as $type ) {
 		$font = themeblvd_get_option('typography_'.$type);
 		$google_fonts[$type.'Name'] = !empty($font['google']) && $font['google'] ? $font['google'] : '';
 		$google_fonts[$type.'Toggle'] = !empty($font['face']) && $font['face'] == 'google' ? 'true' : 'false';

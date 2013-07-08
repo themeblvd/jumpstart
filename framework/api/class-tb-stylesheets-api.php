@@ -166,7 +166,7 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Remove stylesheets
 		if ( $this->remove_stylesheets ) {
-			foreach( $this->remove_stylesheets as $key => $handle ) {
+			foreach ( $this->remove_stylesheets as $key => $handle ) {
 				if ( isset( $this->framework_stylesheets[$handle] ) ) {
 
 					// Remove framework stylesheet
@@ -182,7 +182,7 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Set framework $deps
 		if ( $this->framework_stylesheets ) {
-			foreach( $this->framework_stylesheets as $handle => $args ) {
+			foreach ( $this->framework_stylesheets as $handle => $args ) {
 				$this->framework_deps[] = $handle;
 			}
 		}
@@ -203,7 +203,7 @@ class Theme_Blvd_Stylesheets_API {
 
 			// Remove stylesheets
 			if ( $this->remove_stylesheets ) {
-				foreach( $this->remove_stylesheets as $handle ) {
+				foreach ( $this->remove_stylesheets as $handle ) {
 					unset( $this->remove_stylesheets[$handle] );
 				}
 			}
@@ -220,7 +220,7 @@ class Theme_Blvd_Stylesheets_API {
 			);
 
 			if ( $temp_stylesheets ) {
-				foreach( $temp_stylesheets as $handle => $file ) {
+				foreach ( $temp_stylesheets as $handle => $file ) {
 					$key = $file['level'];
 					$this->client_stylesheets[$key][$handle] = $file;
 				}
@@ -340,7 +340,7 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Enqueue framework stylesheets
 		if ( $this->framework_stylesheets ) {
-			foreach( $this->framework_stylesheets as $style ) {
+			foreach ( $this->framework_stylesheets as $style ) {
 				wp_enqueue_style( $style['handle'], $style['src'], $style['deps'], $style['ver'], $style['media'] );
 			}
 		}
@@ -384,7 +384,7 @@ class Theme_Blvd_Stylesheets_API {
 
 			// Manually insert level 4 stylesheets
 			if ( $this->client_stylesheets[4] ) {
-				foreach( $this->client_stylesheets[4] as $file ) {
+				foreach ( $this->client_stylesheets[4] as $file ) {
 					printf( "<link rel='stylesheet' id='%s' href='%s' type='text/css' media='%s' />\n", $file['handle'], $file['src'], $file['media'] );
 				}
 			}
@@ -393,7 +393,7 @@ class Theme_Blvd_Stylesheets_API {
 
 			// Use WordPress's enqueue system
 			if ( $this->client_stylesheets[$level] ) {
-				foreach( $this->client_stylesheets[$level] as $file ) {
+				foreach ( $this->client_stylesheets[$level] as $file ) {
 					wp_enqueue_style( $file['handle'], $file['src'], array(), $file['ver'], $file['media'] );
 				}
 			}

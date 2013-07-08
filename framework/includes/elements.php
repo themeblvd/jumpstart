@@ -25,7 +25,7 @@ function themeblvd_columns( $num, $widths, $columns ) {
 	// Last column's key
 	$last = $num - 1;
 
-	foreach( $columns as $key => $column ) {
+	foreach ( $columns as $key => $column ) {
 
 		// Set CSS classes for column
 		$classes = 'column '.$widths[$key];
@@ -61,7 +61,7 @@ function themeblvd_columns( $num, $widths, $columns ) {
 
 					// Standard WP loop, even though there should only be
 					// a single post (i.e. our external page).
-					while( $the_query->have_posts() ) {
+					while ( $the_query->have_posts() ) {
 						$the_query->the_post();
 						echo apply_filters( 'themeblvd_the_content', get_the_content() );
 					}
@@ -870,7 +870,7 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 
 	if ( $posts ) {
 		do_action( 'themeblvd_slider_auto_before_loop', $args );
-		foreach( $posts as $post ) {
+		foreach ( $posts as $post ) {
 
 			// Setup post data for loop
 			setup_postdata( $post );
@@ -1099,7 +1099,7 @@ function themeblvd_tabs( $id, $options ) {
 	$i = 0;
 	$class = null;
 	$navigation .= '<ul class="nav nav-'.$nav_type.'">';
-	foreach( $options['setup']['names'] as $key => $name ) {
+	foreach ( $options['setup']['names'] as $key => $name ) {
 
 		if ( $i == 0 )
 			$class = 'active';
@@ -1115,7 +1115,7 @@ function themeblvd_tabs( $id, $options ) {
 	$i = 0;
 	$content = '<div class="tab-content">';
 
-	foreach( $options['setup']['names'] as $key => $name ) {
+	foreach ( $options['setup']['names'] as $key => $name ) {
 
 		$class = '';
 		if ( $i == '0' )

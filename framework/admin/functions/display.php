@@ -25,7 +25,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	// Setup header/footer
 	$header = '<tr>';
 	$header .= '<th scope="col" id="cb" class="manage-column column-cb check-column"><input type="checkbox"></th>';
-	foreach( $columns as $column ) {
+	foreach ( $columns as $column ) {
 		$header .= '<th class="head-'.$column['type'].'">'.$column['name'].'</th>';
 	}
 	$header .= '</tr>';
@@ -59,10 +59,10 @@ function themeblvd_post_table( $post_type, $columns ) {
 	// Table body
 	$output .= '<tbody>';
 	if ( ! empty( $posts ) ) {
-		foreach( $posts as $post ) {
+		foreach ( $posts as $post ) {
 			$output .= '<tr id="row-'.$post->ID.'">';
 			$output .= '<th scope="row" class="check-column"><input type="checkbox" name="posts[]" value="'.$post->ID.'"></th>';
-			foreach( $columns as $column ) {
+			foreach ( $columns as $column ) {
 				switch( $column['type'] ) {
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';
@@ -110,7 +110,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 							$assignments = get_post_meta( $post->ID, 'assignments', true );
 							if ( is_array( $assignments ) && ! empty( $assignments ) ) {
 								$output .= '<ul>';
-								foreach( $assignments as $key => $assignment ) {
+								foreach ( $assignments as $key => $assignment ) {
 									in_array( $key, $conflicts[$location] ) ? $class = 'conflict' : $class = 'no-conflict';
 									if ( $assignment['type'] == 'top' )
 										$output .= '<li class="'.$class.'">'.esc_html( $assignment['name'] ).'</li>';
@@ -210,7 +210,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	$select_number  = '<div class="tb-fancy-select">';
 	$select_number .= '<select class="column-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
 	$current_value = ! empty( $val ) && ! empty( $val['num'] ) ? $val['num'] : null;
-	foreach( $data_num as $num ) {
+	foreach ( $data_num as $num ) {
 		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
 	}
 	$select_number .= '</select>';
@@ -221,11 +221,11 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	// Select column widths
 	$i = 1;
 	$select_widths = '<div class="column-width column-width-0"><p class="inactive">'.__( 'Columns will be hidden.', 'themeblvd' ).'</p></div>';
-	foreach( $data_widths as $widths ) {
+	foreach ( $data_widths as $widths ) {
 		$select_widths .= '<div class="tb-fancy-select column-width column-width-'.$i.'">';
 		$select_widths .= '<select name= "'.esc_attr( $name.'['.$id.'][width]['.$i.']' ).'">';
 		$current_value = ! empty( $val ) && ! empty( $val['width'][$i] ) ? $val['width'][$i] : null;
-		foreach( $widths as $width ) {
+		foreach ( $widths as $width ) {
 			$select_widths .= '<option value="'.$width['value'].'" '.selected( $current_value, $width['value'], false ).'>'.$width['name'].'</option>';
 		}
 		$select_widths .= '</select>';
@@ -319,7 +319,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	$current_value = ! empty( $val ) && ! empty( $val['num'] ) ? $val['num'] : null;
 	$select_number  = '<div class="tb-fancy-select">';
 	$select_number .= '<select class="tabs-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
-	foreach( $numbers as $num ) {
+	foreach ( $numbers as $num ) {
 		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
 	}
 	$select_number .= '</select>';
@@ -366,7 +366,7 @@ function themeblvd_tabs_option( $id, $name, $val ) {
 	// Add 1st tab
 	array_unshift( $numbers, array( 'value' => 1 ) );
 	$input_names = null;
-	foreach( $numbers as $number ) {
+	foreach ( $numbers as $number ) {
 		// Default value
 		$current_value = ! empty( $val ) && ! empty( $val['names']['tab_'.$number['value']] ) ? $val['names']['tab_'.$number['value']] : null;
 		// Output
@@ -444,7 +444,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	// Build <select>
 	$select_type  = '<div class="tb-fancy-select">';
 	$select_type .= '<select class="select-type" name= "'.esc_attr( $name.'['.$id.'][type]' ).'">';
-	foreach( $sources as $key => $value ) {
+	foreach ( $sources as $key => $value ) {
 		$select_type .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$value.'</option>';
 	}
 	$select_type .= '</select>';
@@ -479,7 +479,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			if ( ! empty( $sidebars ) ) {
 				$select_sidebar  = '<div class="tb-fancy-select">';
 				$select_sidebar .= '<select class="select-sidebar" name= "'.esc_attr( $name.'['.$id.'][sidebar]' ).'">';
-				foreach( $sidebars as $key => $value ) {
+				foreach ( $sidebars as $key => $value ) {
 					$select_sidebar .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$value.'</option>';
 				}
 				$select_sidebar .= '</select>';
@@ -509,7 +509,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		if ( ! empty( $pages ) ) {
 			$select_page  = '<div class="tb-fancy-select">';
 			$select_page .= '<select name= "'.esc_attr( $name.'['.$id.'][page]' ).'">';
-			foreach( $pages as $key => $value ) {
+			foreach ( $pages as $key => $value ) {
 				$select_page .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$value.'</option>';
 			}
 			$select_page .= '</select>';
@@ -598,7 +598,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 		'custom'			=> ''
 	);
 	if ( is_array( $val ) && ! empty( $val ) ) {
-		foreach( $val as $key => $group ) {
+		foreach ( $val as $key => $group ) {
 			$item_id = $group['id'];
 			switch( $group['type'] ) {
 				case 'page' :
@@ -633,7 +633,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 	$output = '<div class="accordion">';
 
 	// Display each accordion element
-	foreach( $conditionals as $conditional ) {
+	foreach ( $conditionals as $conditional ) {
 		$output .= '<div class="element">';
 		$output .= '<a href="#" class="element-trigger">'.$conditional['name'].'</a>';
 		$output .= '<div class="element-content">';
@@ -644,7 +644,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$pages = get_pages( array( 'hierarchical' => false ) );
 				if ( ! empty( $pages ) ) {
 					$output .= '<ul>';
-					foreach( $pages as $page ) {
+					foreach ( $pages as $page ) {
 						in_array( $page->post_name, $assignments['pages'] ) ? $checked = true : $checked = false;
 						$output .= '<li><input type="checkbox" '.checked( $checked, true, false ).' name="'.esc_attr( $name.'['.$id.'][page][]' ).'" value="'.$page->post_name.'" /> <span>'.$page->post_title.'</span></li>';
 						$checked = false;
@@ -732,7 +732,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Hierarchy
 			case 'top' :
 				$items = $conditional['items'];
-				foreach( $items as $item_id => $item_name ) {
+				foreach ( $items as $item_id => $item_name ) {
 					in_array( $item_id, $assignments['top'] ) ? $checked = true : $checked = false;
 					$output .= '<li><input type="checkbox" '.checked( $checked, true, false ).' name="'.esc_attr( $name.'['.$id.'][top][]' ).'" value="'.$item_id.'" /> <span>'.$item_name.'</span></li>';
 					$checked = false;
@@ -789,7 +789,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	$current_value = ! empty( $val ) && ! empty( $val['type'] ) ? $val['type'] : null;
 	$select_type  = '<div class="tb-fancy-select">';
 	$select_type .= '<select name="'.esc_attr( $name.'['.$id.'][type]' ).'">';
-	foreach( $types as $key => $type ) {
+	foreach ( $types as $key => $type ) {
 		$select_type .= '<option value="'.$key.'" '.selected( $current_value, $key, false ).'>'.$type.'</option>';
 	}
 	$select_type .= '</select>';
@@ -963,7 +963,7 @@ function themeblvd_social_media_option( $id, $name, $val ) {
 	$counter = 1;
 	$divider = round( count($sources)/2 );
 	$output = '<div class="column-1">';
-	foreach( $sources as $key => $source ) {
+	foreach ( $sources as $key => $source ) {
 		// Setup
 		$checked = is_array( $val ) && array_key_exists( $key, $val ) ? true : false;
 		if ( ! empty( $val ) && ! empty( $val[$key] ) )
@@ -1005,7 +1005,7 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
 	$output = '<p><strong>'.__( 'Sidebar Layout', 'themeblvd' ).'</strong></p>';
 	$output .= '<select name="_tb_sidebar_layout">';
 	$output .= '<option value="default">'.__( 'Default Sidebar Layout', 'themeblvd' ).'</option>';
-	foreach( $sidebar_layouts as $sidebar_layout ) {
+	foreach ( $sidebar_layouts as $sidebar_layout ) {
 		$output .= '<option value="'.$sidebar_layout['id'].'" '.selected( $sidebar_layout['id'], $layout, false ).'>'.$sidebar_layout['name'].'</option>';
 	}
 	$output .= '</select>';
@@ -1034,7 +1034,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 	$output = '<p><strong>'.__( 'Custom Layout', 'themeblvd' ).'</strong></p>';
 	if ( ! empty( $custom_layouts ) ) {
 		$output .= '<select name="_tb_custom_layout">';
-		foreach( $custom_layouts as $custom_layout ) {
+		foreach ( $custom_layouts as $custom_layout ) {
 			$output .= '<option value="'.$custom_layout->post_name.'" '.selected( $custom_layout->post_name, $layout, false ).'>'.$custom_layout->post_title.'</option>';
 		}
 		$output .= '</select>';

@@ -351,7 +351,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 	$count = count( $props );
 	$props_output = '';
 
-	foreach( $props as $key => $value ) {
+	foreach ( $props as $key => $value ) {
 
 		$fmt = '%s: ';
 		if ( $value == 'true' || $value == 'false' || intval($value) )
@@ -410,7 +410,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 
 		$slider  = "<div class=\"slider nivoSlider\">\n";
 
-		foreach( $attachments as $attachment ) {
+		foreach ( $attachments as $attachment ) {
 			$image = wp_get_attachment_image_src( $attachment->ID, $size );
 			$slider .= sprintf("<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title);
 		}
@@ -442,7 +442,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 		$slider  = "<div class=\"slider standard-slider flexslider\">\n";
 		$slider .= "	<ul class=\"slides\">\n";
 
-		foreach( $attachments as $attachment ) {
+		foreach ( $attachments as $attachment ) {
 			$image = wp_get_attachment_image_src( $attachment->ID, $size );
 			$slider .= sprintf("<li><img src=\"%s\" alt=\"%s\" /></li>\n", $image[0], $attachment->post_title);
 		}

@@ -34,7 +34,7 @@ get_header();
 							<?php
 							$post_list = new WP_Query( themeblvd_get_second_query() );
 							if ( $post_list->have_posts() ) {
-								while( $post_list->have_posts() ) {
+								while ( $post_list->have_posts() ) {
 									$post_list->the_post();
 									global $more; $more = 0;
 									get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );

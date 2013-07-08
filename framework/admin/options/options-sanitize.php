@@ -95,10 +95,10 @@ function themeblvd_sanitize_checkbox( $input ) {
 function themeblvd_sanitize_multicheck( $input, $option ) {
 	$output = '';
 	if ( is_array( $input ) ) {
-		foreach( $option['options'] as $key => $value ) {
+		foreach ( $option['options'] as $key => $value ) {
 			$output[$key] = "0";
 		}
-		foreach( $input as $key => $value ) {
+		foreach ( $input as $key => $value ) {
 			if ( array_key_exists( $key, $option['options'] ) && $value ) {
 				$output[$key] = "1";
 			}
@@ -315,9 +315,9 @@ function themeblvd_sanitize_columns( $input ) {
 		$output['num'] = null;
 
 	// Verify widths
-	foreach( $input['width'] as $key => $width ) {
+	foreach ( $input['width'] as $key => $width ) {
 		$valid = false;
-		foreach( $width_options[$key.'-col'] as $width_option )
+		foreach ( $width_options[$key.'-col'] as $width_option )
 			if ( $width == $width_option['value'] )
 				$valid = true;
 		if ( $valid )
@@ -356,7 +356,7 @@ function themeblvd_sanitize_tabs( $input ) {
 	if ( $output['num'] ) {
 		$total_num = intval( $output['num'] );
 		$i = 1;
-		while( $i <= $total_num ) {
+		while ( $i <= $total_num ) {
 			$output['names']['tab_'.$i] = sanitize_text_field( $input['names']['tab_'.$i] );
 			$i++;
 		}
@@ -458,7 +458,7 @@ function themeblvd_sanitize_social_media( $input ) {
 		// formatted yet.
 		$output = array();
 		if ( ! empty( $input['includes'] ) ) {
-			foreach( $input['includes'] as $include ) {
+			foreach ( $input['includes'] as $include ) {
 				if ( isset( $input['sources'][$include] ) )
 					$output[$include] = $input['sources'][$include];
 			}
@@ -490,9 +490,9 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 		$input['tag'] = explode( ',', $input['tag'] );
 	}
 	// Now loop through each group and then each item
-	foreach( $input as $type => $group ) {
+	foreach ( $input as $type => $group ) {
 		if ( is_array( $group ) && ! empty( $group ) ) {
-			foreach( $group as $item_id ) {
+			foreach ( $group as $item_id ) {
 				$name = '';
 				switch( $type ) {
 

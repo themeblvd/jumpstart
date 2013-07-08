@@ -188,7 +188,7 @@ class Theme_Blvd_Options_API {
 		$sidebar_layouts = array();
 		if ( is_admin() ) {
 			$layouts = themeblvd_sidebar_layouts();
-			foreach( $layouts as $layout )
+			foreach ( $layouts as $layout )
 				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
 		}
 
@@ -501,7 +501,7 @@ class Theme_Blvd_Options_API {
 		$this->formatted_options = array();
 
 		// Tab Level
-		foreach( $this->raw_options as $tab_id => $tab ) {
+		foreach ( $this->raw_options as $tab_id => $tab ) {
 
 			// Insert Tab Heading
 			$this->formatted_options['tab_'.$tab_id] = array(
@@ -512,7 +512,7 @@ class Theme_Blvd_Options_API {
 
 			// Section Level
 			if ( $tab['sections'] ) {
-				foreach( $tab['sections'] as $section_id => $section ) {
+				foreach ( $tab['sections'] as $section_id => $section ) {
 
 					// Start section
 					$this->formatted_options['start_section_'.$section_id] = array(
@@ -526,7 +526,7 @@ class Theme_Blvd_Options_API {
 
 					// Options Level
 					if ( $section['options'] ) {
-						foreach( $section['options'] as $option_id => $option ) {
+						foreach ( $section['options'] as $option_id => $option ) {
 							$this->formatted_options[$option_id] = $option;
 						}
 					}
@@ -665,7 +665,7 @@ class Theme_Blvd_Options_API {
 		// Format options array
 		$new_options = array();
 		if ( $options ) {
-			foreach( $options as $option ) {
+			foreach ( $options as $option ) {
 				if ( isset( $option['id'] ) ) {
 					$new_options[$option['id']] = $option;
 				}
@@ -763,7 +763,7 @@ class Theme_Blvd_Options_API {
 			// If this is an option added by a child theme or plugin,
 			// and it doesn't have the element's ID as the key, we'll
 			// need to loop through to find it in order to remove it.
-			foreach( $this->raw_options[$tab_id]['sections'][$section_id]['options'] as $key => $value ) {
+			foreach ( $this->raw_options[$tab_id]['sections'][$section_id]['options'] as $key => $value ) {
 				if ( $value['id'] == $option_id ) {
 					unset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$key] );
 				}

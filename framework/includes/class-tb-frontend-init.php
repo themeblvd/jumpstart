@@ -315,7 +315,7 @@ class Theme_Blvd_Frontend_Init {
 		$custom_sidebars = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_posts('post_type=tb_sidebar&numberposts=-1') : null;
 		$sidebar_overrides = defined('TB_SIDEBARS_PLUGIN_VERSION') ? get_post_meta( $this->config['id'], '_tb_sidebars', true ) : null;
 
-		foreach( $locations as $location_id => $default_sidebar ) {
+		foreach ( $locations as $location_id => $default_sidebar ) {
 
     		// By default, the sidebar ID will match the ID of the
     		// current location.
@@ -438,7 +438,7 @@ class Theme_Blvd_Frontend_Init {
 		if ( ! empty( $elements[$area] ) ) {
 
 			$classes[] = 'has_builder';
-			foreach( $elements[$area] as $element ) {
+			foreach ( $elements[$area] as $element ) {
 				switch( $element['type'] ) {
 					case 'slider' :
 						$classes[] = 'has_slider';

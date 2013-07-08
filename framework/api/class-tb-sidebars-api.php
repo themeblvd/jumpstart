@@ -245,7 +245,7 @@ class Theme_Blvd_Sidebars_API {
 		);
 
 		// Add in shared arguments
-		foreach( $this->core_locations as $id => $location ) {
+		foreach ( $this->core_locations as $id => $location ) {
 			$this->core_locations[$id]['args']['before_widget'] = '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">';
 			$this->core_locations[$id]['args']['after_widget'] 	= '</div></aside>';
 			$this->core_locations[$id]['args']['before_title'] 	= '<h3 class="widget-title">';
@@ -270,7 +270,7 @@ class Theme_Blvd_Sidebars_API {
 
 		// Remove locations
 		if ( $this->remove_locations ) {
-			foreach( $this->remove_locations as $location ) {
+			foreach ( $this->remove_locations as $location ) {
 				unset( $this->locations[$location] );
 			}
 		}
@@ -411,7 +411,7 @@ class Theme_Blvd_Sidebars_API {
 
 		// Loop through locations and register a default
 		// placeholder sidebar for each location.
-		foreach( $this->locations as $sidebar ) {
+		foreach ( $this->locations as $sidebar ) {
 
 			// Filter args for each of default sidebar
 			$args = apply_filters( 'themeblvd_default_sidebar_args', $sidebar['args'], $sidebar, $sidebar['location']['id'] );

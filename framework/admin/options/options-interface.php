@@ -23,7 +23,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	$menu = '';
 	$output = '';
 
-	foreach( $options as $value ) {
+	foreach ( $options as $value ) {
 
 		$counter++;
 		$val = '';
@@ -154,7 +154,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-fancy-select">';
 				$output .= '<select class="of-input" name="'.esc_attr( $option_name.'['.$value['id'].']' ).'" id="'.esc_attr( $value['id'] ).'">';
 
-				foreach( $value['options'] as $key => $option ) {
+				foreach ( $value['options'] as $key => $option ) {
 					$output .= '<option'.selected( $key, $val, false ).' value="'.esc_attr( $key ).'">'.esc_html( $option ).'</option>';
 				}
 
@@ -176,7 +176,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'radio' :
 				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
-				foreach( $value['options'] as $key => $option ) {
+				foreach ( $value['options'] as $key => $option ) {
 					$id = sprintf( '%s-%s-%s', $option_name, $value['id'], $key );
 					$output .= '<input class="of-input of-radio" type="radio" name="'.esc_attr( $name ).'" id="'.esc_attr( $id ).'" value="'.esc_attr( $key ).'" '.checked( $val, $key, false ).' />';
 					$output .= '<label for="'.esc_attr( $id ).'">'.esc_html( $option ).'</label>';
@@ -192,10 +192,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
 
 				$width = '';
-				if( isset( $value['img_width'] ) )
+				if ( isset( $value['img_width'] ) )
 					$width = $value['img_width'];
 
-				foreach( $value['options'] as $key => $option ) {
+				foreach ( $value['options'] as $key => $option ) {
 
 					$selected = '';
 					$checked = checked( $val, $key, false );
@@ -222,7 +222,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'multicheck' :
-				foreach( $value['options'] as $key => $option ) {
+				foreach ( $value['options'] as $key => $option ) {
 					$checked = isset( $val[$key] ) ? checked( $val[$key], 1, false ) : '';
 					$label = $option;
 					$option = preg_replace( '/\W/', '', strtolower( $key ) );
@@ -275,7 +275,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<select class="of-typography of-typography-size" name="'.esc_attr( $option_name.'['.$value['id'].'][size]' ).'" id="'.esc_attr( $value['id'].'_size' ).'">';
 
 					$sizes = themeblvd_recognized_font_sizes();
-					foreach( $sizes as $i ) {
+					foreach ( $sizes as $i ) {
 						$size = $i.'px';
 						$output .= '<option value="'.esc_attr( $size ).'" '.selected( $typography_stored['size'], $size, false ).'>'.esc_html( $size ).'</option>';
 					}
@@ -293,7 +293,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<select class="of-typography of-typography-style" name="'.esc_attr( $option_name.'['.$value['id'].'][style]' ).'" id="'.esc_attr( $value['id'].'_style' ).'">';
 
 					$styles = themeblvd_recognized_font_styles();
-					foreach( $styles as $key => $style ) {
+					foreach ( $styles as $key => $style ) {
 						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['style'], $key, false ).'>'.esc_html( $style ).'</option>';
 					}
 
@@ -310,7 +310,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<select class="of-typography of-typography-face" name="'.esc_attr( $option_name.'['.$value['id'].'][face]' ).'" id="'.esc_attr( $value['id'].'_face' ).'">';
 
 					$faces = themeblvd_recognized_font_faces();
-					foreach( $faces as $key => $face ) {
+					foreach ( $faces as $key => $face ) {
 						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['face'], $key, false ).'>'.esc_html( $face ).'</option>';
 					}
 
@@ -377,7 +377,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_repeat = !empty($background['repeat']) ? $background['repeat'] : '';
 				$output .= '<select class="of-background of-background-repeat" name="'.esc_attr( $option_name.'['.$value['id'].'][repeat]'  ).'" id="'.esc_attr( $value['id'].'_repeat' ).'">';
 				$repeats = themeblvd_recognized_background_repeat();
-				foreach( $repeats as $key => $repeat )
+				foreach ( $repeats as $key => $repeat )
 					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_repeat, $key, false ).'>'. esc_html( $repeat ).'</option>';
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
@@ -387,7 +387,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_position = !empty($background['position']) ? $background['position'] : '';
 				$output .= '<select class="of-background of-background-position" name="'.esc_attr( $option_name.'['.$value['id'].'][position]' ).'" id="'.esc_attr( $value['id'].'_position' ).'">';
 				$positions = themeblvd_recognized_background_position();
-				foreach( $positions as $key => $position )
+				foreach ( $positions as $key => $position )
 					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_position, $key, false ).'>'. esc_html( $position ).'</option>';
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
@@ -397,7 +397,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_attachment = !empty($background['attachment']) ? $background['attachment'] : '';
 				$output .= '<select class="of-background of-background-attachment" name="'.esc_attr( $option_name.'['.$value['id'].'][attachment]' ).'" id="'.esc_attr( $value['id'].'_attachment' ).'">';
 				$attachments = themeblvd_recognized_background_attachment();
-				foreach( $attachments as $key => $attachment )
+				foreach ( $attachments as $key => $attachment )
 					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_attachment, $key, false ).'>'.esc_html( $attachment ).'</option>';
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';

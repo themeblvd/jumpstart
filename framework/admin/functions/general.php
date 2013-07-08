@@ -82,7 +82,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 	$non_conflicts = array();
 	$conflicts = array();
 	$locations = themeblvd_get_sidebar_locations();
-	foreach( $locations as $location ) {
+	foreach ( $locations as $location ) {
 		$conflicts[$location['location']['id']] = array();
 		$non_conflicts[$location['location']['id']] = array();
 	}
@@ -91,7 +91,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 	// As we build the $non_conflicts arrays, we will be able to build
 	// the $conflicts arrays off to the side by checking if items already
 	// exist in the $non_conflicts.
-	foreach( $posts as $post ) {
+	foreach ( $posts as $post ) {
 
 		// Determine location sidebar is assigned to.
 		$location = get_post_meta( $post->ID, 'location', true );
@@ -101,7 +101,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 		if ( $location && $location != 'floating' ) {
 			$assignments = get_post_meta( $post->ID, 'assignments', true );
 			if ( is_array( $assignments ) && ! empty( $assignments ) ) {
-				foreach( $assignments as $key => $assignment ) {
+				foreach ( $assignments as $key => $assignment ) {
 					if ( $key != 'custom' && in_array( $key, $non_conflicts[$location] ) ) {
 						if ( ! in_array( $key, $conflicts[$location] ) ) {
 							$conflicts[$location][] = $key;

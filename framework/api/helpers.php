@@ -223,7 +223,7 @@ function themeblvd_get_option_defaults( $options ) {
 
 	$defaults = array();
 
-	foreach( $options as $option ) {
+	foreach ( $options as $option ) {
 
 		// Skip if any vital items are not set.
 		if ( ! isset( $option['id'] ) )

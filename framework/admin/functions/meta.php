@@ -83,7 +83,7 @@ function setup_themeblvd_post_meta() {
 	// Generate sidebar layout options
 	$sidebar_layouts = array( 'default' =>  $imagepath.'layout-default_2x.png' );
 	$layouts = themeblvd_sidebar_layouts();
-	foreach( $layouts as $layout ) {
+	foreach ( $layouts as $layout ) {
 		$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
 	}
 
