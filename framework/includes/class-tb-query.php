@@ -99,30 +99,58 @@ class Theme_Blvd_Query {
 			return $this->second_query;
 		}
 
-		// Start building secondary query
-		$query = array();
+		// Is there a query source? (i.e. category, tag, query)
+		$source = '';
+		if ( isset( $args['source'] ) )
+			$source = $args['source'];
 
 		// Custom query
-		if ( ! empty( $args['query'] ) ) {
-			$query = wp_parse_args( htmlspecialchars_decode( $args['query']) );
+		if ( ( 'query' == $source || ! $source ) && isset( $args['query'] ) ) {
+
+			// Convert string to query array
+			$query = wp_parse_args( htmlspecialchars_decode( $args['query'] ) );
+
+			// If they didn't set a posts_per_page on their
+			// custom query, let's do it for them.
+			if( ! isset( $query['posts_per_page'] ) )
+				$query['posts_per_page'] = get_option('posts_per_page');
+
+			// Force posts per page on grids
+			if( 'grid' == $type && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+				if( ! empty( $args['posts_per_page'] ) )
+					$query['posts_per_page'] = $args['posts_per_page'];
+			}
+
 		}
 
 		// If no custom query, let's build it.
-		if ( ! $query ) {
+		if ( empty( $query ) ) {
+
+			// Start building query args
+			$query = array(
+				'cat' => null
+			);
 
 			// Categories
-			if ( isset( $args['categories']['all'] ) && ! $args['categories']['all'] ) {
-				unset( $args['categories']['all'] );
-				$category_name = '';
-				if ( $args['categories'] ) {
-					foreach ( $args['categories'] as $category => $include ) {
-						if ( $include ) {
-							$category_name .= $category.',';
+			if ( 'category' == $source || ! $source ) {
+				if ( isset( $args['categories']['all'] ) && ! $args['categories']['all'] ) {
+					unset( $args['categories']['all'] );
+					$category_name = '';
+					if ( $args['categories'] ) {
+						foreach ( $args['categories'] as $category => $include ) {
+							if ( $include ) {
+								$category_name .= $category.',';
+							}
 						}
 					}
+					if ( $category_name )
+						$query['category_name'] = themeblvd_remove_trailing_char( $category_name, ',' );
 				}
-				if ( $category_name )
-					$query['category_name'] = themeblvd_remove_trailing_char( $category_name, ',' );
+			}
+
+			// Tags
+			if ( 'tag' == $source && ! empty( $args['tag'] ) ) {
+				$query['tag'] = $args['tag'];
 			}
 
 			// Posts per page
@@ -455,10 +483,10 @@ class Theme_Blvd_Query {
 
 								case 'post_list_paginated';
 
-									if ( isset( $element['options']['source'] ) && $element['options']['source'] == 'query' ) {
+									if ( isset( $element['options']['source'] ) && 'query' == $element['options']['source'] ) {
 
 										if ( ! empty( $element['options']['query'] ) )
-											wp_parse_str( $element['options']['query'], $custom_q );
+											 $custom_q = wp_parse_args( htmlspecialchars_decode( $element['options']['query'] ) );
 
 										if( isset( $custom_q['posts_per_page'] ) )
 											$q->set( 'posts_per_page', $custom_q['posts_per_page'] );

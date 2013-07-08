@@ -705,7 +705,7 @@ function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_lo
 
 	// Set the second query in global $themeblvd_query.
 	// We only do this for paginated queries.
-	$query_args = themeblvd_set_second_query( $args, $type );
+	$query_args = themeblvd_set_second_query( $args, $type ); // Sets global var and gets for local var
 
 	// Apply filters
 	$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, $type, $current_location );
