@@ -210,6 +210,7 @@ function themeblvd_headline( $args = array() ) {
 	$output = '<'.$tag.' class="text-'.$align.'">';
 	$output .= stripslashes( $text );
 	$output .= '</'.$tag.'>';
+
 	if ( $tagline ) {
 		$output .= '<p class="text-'.$align.'">';
 		$output .= stripslashes( $tagline );
@@ -1079,15 +1080,19 @@ function themeblvd_tabs( $id, $options ) {
 	// Tabs or pills?
 	if ( ! empty( $options['setup']['nav'] ) )
 		$nav = explode( '_', $options['setup']['nav'] );
+
 	$nav_type = $nav[0];
 	$nav_location = $nav[1];
 
 	// Container classes
 	$classes = 'tabbable';
+
 	if ( ! empty($options['height']) )
 		$classes .= ' fixed-height';
+
 	if ( $nav_type == 'tabs' )
 		$classes .= ' tabs-'.$nav_location;
+
 	$classes .= ' tb-tabs-'.$options['setup']['style'];
 
 	// Navigation
@@ -1095,9 +1100,13 @@ function themeblvd_tabs( $id, $options ) {
 	$class = null;
 	$navigation .= '<ul class="nav nav-'.$nav_type.'">';
 	foreach( $options['setup']['names'] as $key => $name ) {
-		if ( $i == 0 ) $class = 'active';
+
+		if ( $i == 0 )
+			$class = 'active';
+
 		$navigation .= '<li class="'.$class.'"><a href="#'.$id.'-'.$key.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
 		$class = null;
+
 		$i++;
 	}
 	$navigation .= '</ul>';
@@ -1105,11 +1114,20 @@ function themeblvd_tabs( $id, $options ) {
 	// Tab content
 	$i = 0;
 	$content = '<div class="tab-content">';
+
 	foreach( $options['setup']['names'] as $key => $name ) {
-		$i == '0' ? $class = ' active' : $class = '';
+
+		$class = '';
+		if ( $i == '0' )
+			$class = ' active';
+
 		$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix">';
+
 		switch( $options[$key]['type'] ) {
+
+			// External Page
 			case 'page' :
+
 				// Get WP internal ID for the page
 				$page_id = themeblvd_post_id_by_name( $options[$key]['page'], 'page' );
 
@@ -1128,7 +1146,10 @@ function themeblvd_tabs( $id, $options ) {
 				// Reset Post Data
 				wp_reset_postdata();
 				break;
+
+			// Raw content textarea
 			case 'raw' :
+
 				// Only negate simulated the_content filter if the option exists AND it's
 				// been unchecked. This is for legacy purposes, as this feature
 				// was added in v2.1.0
@@ -1137,7 +1158,10 @@ function themeblvd_tabs( $id, $options ) {
 				else
 					$content .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
 				break;
+
+			// Floating Widget Area
 			case 'widget' :
+
 				if ( ! empty( $options[$key]['sidebar'] ) ) {
 					$content .= '<div class="widget-area">';
 					ob_start();
@@ -1146,6 +1170,7 @@ function themeblvd_tabs( $id, $options ) {
 					$content .= '</div><!-- .widget-area (end) -->';
 				}
 				break;
+
 		}
 		$content .= '</div><!-- #'.$id.'-'.$key.' (end) -->';
 		$i++;
@@ -1154,9 +1179,15 @@ function themeblvd_tabs( $id, $options ) {
 
 	// Construct final output
 	$output = '<div class="'.$classes.'">';
-	if ( $nav_location != 'below' ) $output .= $navigation;
+
+	if ( $nav_location != 'below' )
+		$output .= $navigation;
+
 	$output .= $content;
-	if ( $nav_location == 'below' ) $output .= $navigation;
+
+	if ( $nav_location == 'below' )
+		$output .= $navigation;
+
 	$output .= '</div><!-- .tabbable (end) -->';
 
 	return $output;
