@@ -270,12 +270,16 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 	// Setup query args
 	$custom_query = false;
 	if ( ! empty( $query ) ) {
+
 		// Custom query string
 		$custom_query = true;
 		$query_args = html_entity_decode( $query );
+
 	} else {
+
 		// Generated query args
 		$query_args = themeblvd_get_posts_args( $args, $type, true );
+
 	}
 	$query_args = apply_filters( 'themeblvd_post_slider_args', $query_args, $args, $type, $current_location );
 
@@ -302,6 +306,7 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 	// Get posts
 	$posts = get_posts( $query_args );
 
+	// Manual offset
 	if ( ! $custom_query ) {
 		if ( $numberposts == -1 && $offset > 0 ) {
 			for( $i = 0; $i < $offset; $i++ ) {
@@ -323,7 +328,9 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 							<ul class="slides">
 								<?php
 								if ( ! empty( $posts ) ) {
+
 									do_action( 'themeblvd_post_'.$type.'_slider_before_loop', $args );
+
 									if ( $type == 'grid' ) {
 
 										/*-------------------------------------------*/
@@ -335,21 +342,27 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 										$number_of_posts = count( $posts );
 
 										foreach ( $posts as $post ) {
+
 											setup_postdata( $post );
+
 											// Start first slide and first row.
 											if ( $counter == 1 ) {
 												echo '<li class="slide">';
 												echo '<div class="post_'.$type.'">';
 												themeblvd_open_row();
 											}
-											// Include the post
+
+											// Include template part, framework default is content-grid.php
 											get_template_part( 'content', themeblvd_get_part( 'grid_slider' ) );
+
 											// Add in the complicated stuff to break up slides, rows, and columns
 											if ( $per_slide_counter == $posts_per_slide ) {
+
 												// End of a slide and thus end the row
 												themeblvd_close_row();
 												echo '</div><!-- .post_'.$type.' (end) -->';
 												echo '</li>';
+
 												// And if posts aren't done yet, open a
 												// new slide and new row.
 												if ( $number_of_posts != $counter ) {
@@ -357,25 +370,35 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 													echo '<div class="post_'.$type.'">';
 													themeblvd_open_row();
 												}
+
 												// Set the posts per slide counter back to
 												// 0 for the next slide.
 												$per_slide_counter = 1;
+
 											} elseif ( $per_slide_counter % $columns == 0  ) {
+
 												// End row only
 												themeblvd_close_row();
+
 												// Open a new row if there are still post left
 												// in this slide.
 												if ( $posts_per_slide != $per_slide_counter ) {
 													themeblvd_open_row();
 												}
+
 												// Increase number of posts per slide cause
 												// we're not done yet.
 												$per_slide_counter++;
+
 											} else {
+
 												// Increment posts per slide number
 												// if nothing else is happenning.
 												$per_slide_counter++;
+
 											}
+
+											// Increment the counter with global template attribute accounted for
 											$counter = themeblvd_set_att( 'counter', $counter+1 );
 
 										}
@@ -392,38 +415,59 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 										$number_of_posts = count( $posts );
 
 										foreach ( $posts as $post ) {
+
 											setup_postdata( $post );
+
+											// The first post
 											if ( $counter == 1 ) {
 												echo '<li class="slide">';
 												echo '<div class="post_'.$type.'">';
 											}
+
+											// Include template part, framework default is content-list.php
 											get_template_part( 'content', themeblvd_get_part( 'list_slider' ) );
+
 											// Add in the complicated stuff
 											if ( $per_slide_counter == $posts_per_slide ) {
+
 												// End of a slide and thus end the row
 												echo '</div><!-- .post_'.$type.' (end) -->';
 												echo '</li>';
+
 												// And if posts aren't done yet, open a
 												// new slide
 												if ( $number_of_posts != $counter ) {
 													echo '<li class="slide">';
 													echo '<div class="post_'.$type.'">';
 												}
+
 												// Set the posts per slide counter back to
 												// 0 for the next slide.
 												$per_slide_counter = 1;
+
 											} else {
+
 												// Increment posts per slide number
 												// if nothing else is happenning.
 												$per_slide_counter++;
+
 											}
+
+											// Increment the counter with global template attribute accounted for
 											$counter = themeblvd_set_att( 'counter', $counter+1 );
 										}
+
 										wp_reset_postdata();
+
 									}
+
 									do_action( 'themeblvd_post_'.$type.'_slider_after_loop', $args );
+
 								} else {
+
+									// No posts to display
 									echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
+
 								}
 								?>
 							</ul>
