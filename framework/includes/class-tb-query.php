@@ -439,20 +439,36 @@ class Theme_Blvd_Query {
 			// paginated element (there can only be one in a layout).
 			if ( ! empty( $elements ) && is_array( $elements ) ) {
 				foreach ( $elements as $area ) {
-					if ( ! empty( $area ) ) {
+					if ( ! empty( $area ) && is_array( $area ) ) {
 						foreach ( $area as $element ) {
 
 							switch ( $element['type'] ) {
 
 								case 'post_grid_paginated' :
+
 									if ( ! empty( $element['options']['rows'] ) && ! empty( $element['options']['columns'] ) )
 										$posts_per_page = intval( $element['options']['rows'] ) * intval( $element['options']['columns'] );
-										$q->set( 'posts_per_page', $posts_per_page );
+
+									$q->set( 'posts_per_page', $posts_per_page );
+
 									break;
 
 								case 'post_list_paginated';
-									if ( ! empty( $element['options']['posts_per_page'] ) )
+
+									if ( isset( $element['options']['source'] ) && $element['options']['source'] == 'query' ) {
+
+										if ( ! empty( $element['options']['query'] ) )
+											wp_parse_str( $element['options']['query'], $custom_q );
+
+										if( isset( $custom_q['posts_per_page'] ) )
+											$q->set( 'posts_per_page', $custom_q['posts_per_page'] );
+
+									} else if ( ! empty( $element['options']['posts_per_page'] ) ) {
+
 										$q->set( 'posts_per_page', $element['options']['posts_per_page'] );
+
+									}
+
 									break;
 
 							}
