@@ -489,10 +489,13 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 	// Setup query args
 	$custom_query = false;
 	if ( ! empty( $query ) ) {
+
 		// Custom query string
 		$custom_query = true;
 		$query_args = html_entity_decode( $query );
+
 	} else {
+
 		// Generated query args
 		$query_args = themeblvd_get_posts_args( $args, $type );
 	}
@@ -525,36 +528,71 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 		}
 	}
 
-	// Start the loop
+	// Start the output
 	echo '<div class="post_'.$type.'">';
+
 	if ( ! empty( $posts ) ) {
+
 		do_action( 'themeblvd_post_'.$type.'_before_loop', $args );
+
 		if ( $type == 'grid' ) {
-			// Loop for post grid (i.e. Portfolio)
+
+			// Loop for post grid
 			$counter = themeblvd_set_att( 'counter', 1 );
 			$number_of_posts = count( $posts );
+
 			foreach ( $posts as $post ) {
+
 				setup_postdata( $post );
-				if ( $counter == 1 ) themeblvd_open_row();
+
+				// If this is the very first post, open the first row
+				if ( $counter == 1 )
+					themeblvd_open_row();
+
+				// Get template part, framework default is content-grid.php
 				get_template_part( 'content', themeblvd_get_part( 'grid' ) );
-				if ( $counter % $columns == 0 ) themeblvd_close_row();
-				if ( $counter % $columns == 0 && $number_of_posts != $counter ) themeblvd_open_row();
+
+				// If last post in a row, close the row
+				if ( $counter % $columns == 0 )
+					themeblvd_close_row();
+
+				// If first post in a row, open the row
+				if ( $counter % $columns == 0 && $number_of_posts != $counter )
+					themeblvd_open_row();
+
+				// Increment the counter with global template attribute accounted for
 				$counter = themeblvd_set_att( 'counter', $counter+1 );
+
 			}
-			wp_reset_postdata();
-			if ( $number_of_posts % $columns != 0 ) themeblvd_close_row();
+
+			// In case the last row wasn't filled, close it now
+			if ( $number_of_posts % $columns != 0 )
+				themeblvd_close_row();
+
 		} else {
+
 			// Loop for post list (i.e. Blog)
 			foreach ( $posts as $post ) {
+
 				setup_postdata( $post );
+
+				// Get template part, framework default is content-list.php
 				get_template_part( 'content', themeblvd_get_part( 'list' ) );
+
 			}
-			wp_reset_postdata();
 		}
+
 		do_action( 'themeblvd_post_'.$type.'_after_loop', $args );
+
 	} else {
+
+		// No posts to display
 		echo '<p>'.themeblvd_get_local( 'archive_no_posts' ).'</p>';
+
 	}
+
+	wp_reset_postdata();
+
 	echo '</div><!-- .post_'.$type.' (end) -->';
 
 	// Show link
@@ -686,10 +724,12 @@ function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_lo
 			}
 
 		}
+
 		do_action( 'themeblvd_post_'.$type.'_paginated_after_loop', $args );
+
 	} else {
 
-		// No posts to display.
+		// No posts to display
 		printf( '<p>%s</p>', themeblvd_get_local( 'archive_no_posts' ) );
 
 	}
