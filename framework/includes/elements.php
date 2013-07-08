@@ -634,40 +634,74 @@ function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_lo
 	// Query posts
 	$posts = new WP_Query( $query_args );
 
-	// Start the loop
+	// Start output
 	echo '<div class="post_'.$type.'">';
 	if ( $posts->have_posts() ) {
+
 		do_action( 'themeblvd_post_'.$type.'_paginated_before_loop', $args );
+
 		if ( $type == 'grid' ) {
+
 			// Loop for post grid
 			$counter = themeblvd_set_att( 'counter', 1 );
 			while( $posts->have_posts() ) {
+
 				$posts->the_post();
 				$more = 0;
-				if ( $counter == 1 ) themeblvd_open_row();
+
+				// If this is the very first post, open the first row
+				if ( $counter == 1 )
+					themeblvd_open_row();
+
+				// Get template part, framework default is content-grid.php
 				get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
-				if ( $counter % $columns == 0 ) themeblvd_close_row();
-				if ( $counter % $columns == 0 && $posts_per_page != $counter ) themeblvd_open_row();
+
+				// If last post in a row, close the row
+				if ( $counter % $columns == 0 )
+					themeblvd_close_row();
+
+				// If first post in a row, open the row
+				if ( $counter % $columns == 0 && $posts_per_page != $counter )
+					themeblvd_open_row();
+
+				// Increment the counter with global template attribute accounted for
 				$counter = themeblvd_set_att( 'counter', $counter+1 );
 			}
-			if ( ($counter-1) != $posts_per_page ) themeblvd_close_row();
+
+			// In case the last row wasn't filled, close it now
+			if ( ($counter-1) != $posts_per_page )
+				themeblvd_close_row();
+
 		} else {
+
 			// Loop for post list
 			while( $posts->have_posts() ) {
+
 				$posts->the_post();
 				$more = 0;
+
+				// Get template part, framework default is content-list.php
 				get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );
+
 			}
+
 		}
 		do_action( 'themeblvd_post_'.$type.'_paginated_after_loop', $args );
 	} else {
+
+		// No posts to display.
 		printf( '<p>%s</p>', themeblvd_get_local( 'archive_no_posts' ) );
+
 	}
+
+	// Pagination
 	themeblvd_pagination( $posts->max_num_pages );
+
 	echo '</div><!-- .post_'.$type.' (end) -->';
 
 	// Reset Post Data
 	wp_reset_postdata();
+
 }
 endif;
 
