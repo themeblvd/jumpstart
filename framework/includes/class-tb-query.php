@@ -462,7 +462,7 @@ class Theme_Blvd_Query {
 			}
 		}
 
-		do_action( 'themeblvd_pre_get_posts', $q );
+		do_action( 'themeblvd_pre_get_posts', $q, $this );
 
 	} // end pre_get_posts()
 
