@@ -37,7 +37,7 @@ function themeblvd_admin_init() {
  *
  * @since 2.3.0
  */
-function themeblvd_update_version(){
+function themeblvd_update_version() {
 	update_option( 'themeblvd_framework_version', TB_FRAMEWORK_VERSION );
 }
 
@@ -177,9 +177,9 @@ function themeblvd_is_admin_module() {
  *
  * An admin notice could be setup something like this:
  *
- * function my_admin_notice(){
+ * function my_admin_notice() {
  *		global $current_user;
- * 		if ( ! get_user_meta( $current_user->ID, 'example_message' ) ){
+ * 		if ( ! get_user_meta( $current_user->ID, 'example_message' ) ) {
  * 			echo '<div class="updated">';
  *			echo '<p>Some message to the user.</p>';
  * 			echo '<p><a href="?tb_nag_ignore=example_message">Dismiss this notice</a></p>';

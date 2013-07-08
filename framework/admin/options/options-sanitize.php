@@ -382,7 +382,7 @@ function themeblvd_sanitize_content( $input ) {
 		$output['type'] = null;
 
 	// Add type's corresponding option
-	switch( $output['type'] ) {
+	switch ( $output['type'] ) {
 		case 'widget' :
 			if ( isset( $input['sidebar'] ) )
 				$output['sidebar'] = $input['sidebar'];
@@ -424,7 +424,7 @@ function themeblvd_sanitize_logo( $input ) {
 	// Image (standard)
 	if ( isset( $input['image'] ) ) {
 		$filetype = wp_check_filetype( $input['image'] );
-		if ( $filetype["ext"] ){
+		if ( $filetype["ext"] ) {
 			$output['image'] = $input['image'];
 			if ( isset( $input['image_width'] ) )
 				$output['image_width'] = $input['image_width'];
@@ -481,11 +481,11 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 	$output = array();
 	// Prepare items that weren't straight-up arrays
 	// gifted on a platter for us.
-	if ( ! empty( $input['post'] ) ){
+	if ( ! empty( $input['post'] ) ) {
 		$input['post'] = str_replace(' ', '', $input['post'] );
 		$input['post'] = explode( ',', $input['post'] );
 	}
-	if ( ! empty( $input['tag'] ) ){
+	if ( ! empty( $input['tag'] ) ) {
 		$input['tag'] = str_replace(' ', '', $input['tag'] );
 		$input['tag'] = explode( ',', $input['tag'] );
 	}
@@ -494,7 +494,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 		if ( is_array( $group ) && ! empty( $group ) ) {
 			foreach ( $group as $item_id ) {
 				$name = '';
-				switch( $type ) {
+				switch ( $type ) {
 
 					case 'page' :
 						$page_id = themeblvd_post_id_by_name( $item_id, 'page' );
@@ -545,7 +545,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 		}
 	}
 	// Add in cusotm conditional
-	if ( ! empty( $input['custom'] ) ){
+	if ( ! empty( $input['custom'] ) ) {
 		$output['custom'] = array(
 			'type' 		=> 'custom',
 			'id' 		=> themeblvd_sanitize_text( $input['custom'] ),

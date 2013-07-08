@@ -56,7 +56,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 	if ( $link ) {
 		$possible_link_options = array( 'post', 'thumbnail', 'image', 'video', 'external' );
 		if ( in_array( $thumb_link_meta, $possible_link_options ) ) {
-			switch( $thumb_link_meta ) {
+			switch ( $thumb_link_meta ) {
 
 				case 'post' :
 					$link_url = get_permalink( $post->ID );
@@ -238,7 +238,7 @@ function themeblvd_oembed_result( $input, $url ) {
  *
  * @param string $html HTML for output to be filtered
  */
-function themeblvd_audio_shortcode( $html ){
+function themeblvd_audio_shortcode( $html ) {
 	return str_replace( '<audio', '<audio width="100%"', $html );
 }
 

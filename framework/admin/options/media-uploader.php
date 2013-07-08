@@ -66,7 +66,7 @@ function themeblvd_media_uploader( $args ) {
 	);
 
 	// Start output
-	switch( $type ){
+	switch ( $type ) {
 		case 'slider' :
 			$data['title'] = __('Slide Image', 'themeblvd');
 			$data['select'] = __('Use for Slide', 'themeblvd');

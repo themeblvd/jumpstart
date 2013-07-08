@@ -12,7 +12,7 @@
  * @param string $content Content of post
  * @return string $content Filtered content of post
  */
-function themeblvd_content_format_gallery( $content ){
+function themeblvd_content_format_gallery( $content ) {
 
 	// Only continue if this is a "gallery" format post.
 	if ( ! has_post_format( 'gallery' ) )
@@ -36,7 +36,7 @@ function themeblvd_content_format_gallery( $content ){
  * @param string $content Content of post
  * @return string $content Filtered content of post
  */
-function themeblvd_content_format_link( $content ){
+function themeblvd_content_format_link( $content ) {
 
 	// Only continue if this is a "link" format post.
 	if ( ! has_post_format( 'link' ) )

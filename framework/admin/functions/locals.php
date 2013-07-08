@@ -14,7 +14,7 @@
  */
 function themeblvd_get_admin_locals( $type ) {
 	$locals = array();
-	switch( $type ) {
+	switch ( $type ) {
 
 		// General JS strings
 		case 'js' :

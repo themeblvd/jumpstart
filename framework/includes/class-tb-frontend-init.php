@@ -439,7 +439,7 @@ class Theme_Blvd_Frontend_Init {
 
 			$classes[] = 'has_builder';
 			foreach ( $elements[$area] as $element ) {
-				switch( $element['type'] ) {
+				switch ( $element['type'] ) {
 					case 'slider' :
 						$classes[] = 'has_slider';
 						break;
@@ -619,7 +619,7 @@ class Theme_Blvd_Frontend_Init {
 		$columns = '';
 		$rows = '';
 
-		if ( is_home() ){
+		if ( is_home() ) {
 
 			$columns = themeblvd_get_option( 'index_grid_columns' );
 			$rows = themeblvd_get_option( 'index_grid_rows' );
@@ -629,7 +629,7 @@ class Theme_Blvd_Frontend_Init {
 			$columns = themeblvd_get_option( 'archive_grid_columns' );
 			$rows = themeblvd_get_option( 'archive_grid_rows' );
 
-		} elseif ( is_page_template( 'template_grid.php' ) ){
+		} elseif ( is_page_template( 'template_grid.php' ) ) {
 
 			$possible_column_nums = array( 1, 2, 3, 4, 5 );
 			$custom_columns = get_post_meta( $this->config['id'], 'columns', true );
@@ -653,7 +653,7 @@ class Theme_Blvd_Frontend_Init {
 		// Thumbnail size
 		$size = themeblvd_grid_class( $columns );
 
-		if ( is_home() ){
+		if ( is_home() ) {
 
 			$crop = apply_filters( 'themeblvd_index_grid_crop_size', $size );
 

@@ -230,7 +230,7 @@ function themeblvd_pagination( $pages = 0, $range = 2 ) {
  * @param string $var Description
  * @return string $var Description
  */
-function themeblvd_get_breadcrumbs_trail(){
+function themeblvd_get_breadcrumbs_trail() {
 
 	// Filterable attributes
 	$atts = array(

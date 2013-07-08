@@ -36,7 +36,7 @@ function themeblvd_columns( $num, $widths, $columns ) {
 		echo '<div class="'.$classes.'">';
 
 		// Column Content
-		switch( $column['type'] ) {
+		switch ( $column['type'] ) {
 			case 'widget' :
 				if ( ! empty( $column['sidebar'] ) ) {
 					echo '<div class="widget-area">';
@@ -113,7 +113,7 @@ function themeblvd_content( $args = array() ) {
 
 	// Start output
 	$output = '';
-	switch( $source ) {
+	switch ( $source ) {
 
 		// Content from current page
 		case 'current' :
@@ -904,7 +904,7 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 
 			// Use "Featured Image Link" setting from post
 			if ( $image_link_type == 'option' ) {
-				switch( get_post_meta( get_the_ID(), '_tb_thumb_link', true ) ) {
+				switch ( get_post_meta( get_the_ID(), '_tb_thumb_link', true ) ) {
 					case 'post' :
 						$image_link_type = 'permalink'; // Pass to next section
 						break;
@@ -926,7 +926,7 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 				}
 			}
 
-			switch( $image_link_type ) {
+			switch ( $image_link_type ) {
 				case 'permalink' :
 					$image_link_target = '_self';
 					$image_link_url = get_permalink();
@@ -1123,7 +1123,7 @@ function themeblvd_tabs( $id, $options ) {
 
 		$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix">';
 
-		switch( $options[$key]['type'] ) {
+		switch ( $options[$key]['type'] ) {
 
 			// External Page
 			case 'page' :

@@ -215,7 +215,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 								'transport'		=> $transport
 							) );
 
-							switch( $attribute ) {
+							switch ( $attribute ) {
 								case 'size' :
 									$size_options = array();
 									for($i = 9; $i < 71; $i++) {
@@ -319,7 +319,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 						) );
 
 						// Add controls
-						switch( $option['type'] ) {
+						switch ( $option['type'] ) {
 							// Standard text option
 							case 'text' :
 								$wp_customize->add_control( $option['id'], array(
@@ -390,7 +390,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 			// Currently only one section set to be modified. I'm doing this
 			// loop to make it so you can stop items from being modified and
 			// I can may add to this in the future.
-			switch( $section ) {
+			switch ( $section ) {
 				case 'static_front_page' :
 					// Modify section's title
 					$wp_customize->add_section( 'static_front_page', array(

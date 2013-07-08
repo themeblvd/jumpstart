@@ -80,7 +80,7 @@ function themeblvd_header_logo_default() {
 	<div class="<?php echo $classes; ?>">
 		<?php
 		if ( ! empty( $option['type'] ) ) {
-			switch( $option['type'] ) {
+			switch ( $option['type'] ) {
 				case 'title' :
 					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
 					break;
@@ -303,7 +303,7 @@ if ( !function_exists( 'themeblvd_breadcrumbs_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_breadcrumbs_default() {
-	if ( themeblvd_show_breadcrumbs() ){
+	if ( themeblvd_show_breadcrumbs() ) {
 		?>
 		<div id="breadcrumbs">
 			<div class="breadcrumbs-inner">

@@ -435,7 +435,7 @@ function themeblvd_admin_menu_bar() {
 	}
 
 	// Sidebars (if sidebar plugin is installed)
-	if ( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) && isset( $modules['sidebars'] ) ){
+	if ( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) && isset( $modules['sidebars'] ) ) {
 		if ( themeblvd_supports( 'admin', 'sidebars' ) && current_user_can( themeblvd_admin_module_cap( 'sidebars' ) ) ) {
 			$wp_admin_bar->add_node(
 				array(
@@ -873,7 +873,7 @@ function themeblvd_get_textures() {
  */
 function themeblvd_get_select( $type ) {
 	$select = array();
-	switch( $type ) {
+	switch ( $type ) {
 
 		// Pages
 		case 'pages' :

@@ -110,7 +110,7 @@ class Theme_Blvd_Options_Page {
 		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
-		if ( ! function_exists('wp_enqueue_media') ){
+		if ( ! function_exists('wp_enqueue_media') ) {
 			// Legacy uploader
 			add_action( 'admin_print_styles-'.$admin_page, 'optionsframework_mlu_css', 0 );
 			add_action( 'admin_print_scripts-'.$admin_page, 'optionsframework_mlu_js', 0 );
@@ -235,7 +235,7 @@ class Theme_Blvd_Options_Page {
 		// $input before sending back the final $clean array.
 
 		$clean = array();
-		foreach ( $this->options as $option ){
+		foreach ( $this->options as $option ) {
 
 			// Skip if we don't have an ID or type.
 			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) )
@@ -250,7 +250,7 @@ class Theme_Blvd_Options_Page {
 
 			// Set each item in the multicheck to false if it wasn't sent in the $_POST
 			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
-				foreach ( $option['options'] as $key => $value ){
+				foreach ( $option['options'] as $key => $value ) {
 					$input[$id][$key] = '0';
 				}
 			}

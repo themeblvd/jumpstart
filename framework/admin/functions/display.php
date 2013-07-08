@@ -63,7 +63,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 			$output .= '<tr id="row-'.$post->ID.'">';
 			$output .= '<th scope="row" class="check-column"><input type="checkbox" name="posts[]" value="'.$post->ID.'"></th>';
 			foreach ( $columns as $column ) {
-				switch( $column['type'] ) {
+				switch ( $column['type'] ) {
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';
 						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.stripslashes(esc_html($post->post_title)).'</strong></a>';
@@ -460,7 +460,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 		// The selection of a floating widget area is only
 		// possible if the Widget Areas plugin is installed.
-		if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ){
+		if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
 
 			// Message to get plugin
 			$select_sidebar = '<p class="warning">'.sprintf(__( 'In order for you to use this feature you need to have the %s plugin activated.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
@@ -600,7 +600,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 	if ( is_array( $val ) && ! empty( $val ) ) {
 		foreach ( $val as $key => $group ) {
 			$item_id = $group['id'];
-			switch( $group['type'] ) {
+			switch ( $group['type'] ) {
 				case 'page' :
 					$assignments['pages'][] = $item_id;
 					break;
@@ -637,7 +637,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 		$output .= '<div class="element">';
 		$output .= '<a href="#" class="element-trigger">'.$conditional['name'].'</a>';
 		$output .= '<div class="element-content">';
-		switch( $conditional['id'] ) {
+		switch ( $conditional['id'] ) {
 
 			// Pages
 			case 'pages' :

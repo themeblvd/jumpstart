@@ -198,7 +198,7 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 	// Fixes for auto post slider that is specifying the
 	// source of the posts. (NOT post grid/list sliders)
 	if ( $type == 'auto_slider' && ! empty( $options['source'] ) ) {
-		switch( $options['source'] ) {
+		switch ( $options['source'] ) {
 			case 'category' :
 				unset( $args['tag'] );
 				if ( ! empty( $options['category'] ) )
@@ -565,7 +565,7 @@ function themeblvd_standard_slider_js( $id, $options ) {
 							$('#tb-slider-<?php echo $id; ?> .flex-play').show();
 						});
 					<?php endif; ?>
-    				$('#tb-slider-<?php echo $id; ?> .image-link').click(function(){
+    				$('#tb-slider-<?php echo $id; ?> .image-link').click(function() {
     					$('#tb-slider-<?php echo $id; ?> .flex-pause').hide();
     					$('#tb-slider-<?php echo $id; ?> .flex-play').show();
     					slider.pause();
@@ -696,7 +696,7 @@ function themeblvd_show_comments() {
  * @param string $template Current template file
  * @return string $template Current theme location of page.php
  */
-function themeblvd_private_page( $template ){
+function themeblvd_private_page( $template ) {
 
 	// Only for password protected pages.
 	if ( ! post_password_required() )
@@ -968,7 +968,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
  *
  * @return boolean $show Whether breadcrumbs should show or not
  */
-function themeblvd_show_breadcrumbs(){
+function themeblvd_show_breadcrumbs() {
 
 	global $post;
 	$display = '';

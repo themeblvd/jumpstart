@@ -158,8 +158,8 @@ class Theme_Blvd_Envato_Updates {
 		$to = $from.'-'.$old_version;
 
 		// Create destination if needed
-		if ( ! $wp_filesystem->exists( $to ) ){
-			if ( ! $wp_filesystem->mkdir( $to, FS_CHMOD_DIR ) ){
+		if ( ! $wp_filesystem->exists( $to ) ) {
+			if ( ! $wp_filesystem->mkdir( $to, FS_CHMOD_DIR ) ) {
 				show_message( __( 'Could not create directory for backup.', 'themeblvd' ) );
 				wp_die();
 			}

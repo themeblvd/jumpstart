@@ -125,7 +125,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		}
 
         // Add each option to output based on type.
-		switch( $value['type'] ) {
+		switch ( $value['type'] ) {
 
 			/*---------------------------------------*/
 			/* Basic Text Input
@@ -552,7 +552,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// $output .= '<h3>'.esc_html( $value['name'] ).'</h3>'."\n";
 				break;
 
-		} // end switch( $value['type'] )
+		} // end switch ( $value['type'] )
 
 		// Here's your chance to add in your own custom
 		// option type while we're looping through each

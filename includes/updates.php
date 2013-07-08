@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  */
-function jumpstart_updates_init(){
+function jumpstart_updates_init() {
 	if ( is_admin() ) {
 		add_action( 'init', 'jumpstart_updates' );
 	}
@@ -16,7 +16,7 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
  *
  * @since 1.0.0
  */
-function jumpstart_updates(){
+function jumpstart_updates() {
 
 	global $_tb_jumpstart_edd_updater;
 	global $_tb_jumpstart_license_admin;

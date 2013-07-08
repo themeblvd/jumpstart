@@ -442,7 +442,7 @@ class Theme_Blvd_Query {
 					if ( ! empty( $area ) ) {
 						foreach ( $area as $element ) {
 
-							switch( $element['type'] ) {
+							switch ( $element['type'] ) {
 
 								case 'post_grid_paginated' :
 									if ( ! empty( $element['options']['rows'] ) && ! empty( $element['options']['columns'] ) )
@@ -506,7 +506,7 @@ class Theme_Blvd_Query {
 	 */
 	public function was( $type, $helper = '' ) {
 
-		switch( $type ) {
+		switch ( $type ) {
 
 			case 'single' :
 			case 'page' :

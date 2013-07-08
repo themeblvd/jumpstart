@@ -464,7 +464,7 @@ class Theme_Blvd_Sidebars_API {
 			if ( is_user_logged_in() ) {
 
 				// Set message
-				switch( $type ) {
+				switch ( $type ) {
 					case 'collapsible' :
 						$message = sprintf( __( 'This is a collapsible widget area with ID, <strong>%s</strong>, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', 'themeblvd' ), $sidebar['id'] );
 						break;
