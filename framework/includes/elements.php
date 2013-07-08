@@ -243,6 +243,7 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 		'nav_standard' 		=> '1', 				// Show standard nav - true, false
 		'nav_arrows' 		=> '1', 				// Show nav arrows - true, false
 		'pause_play'		=> '1', 				// Show pause/play buttons - true, false
+		'source'			=> '',			// Source of posts - category, tag, query
 		'categories'		=> array( 'all' => 1 ),	// Post categories to include
 		'category_name'		=> '',					// Force category_name string of query
 		'cat'				=> '',					// Force cat string of query
@@ -462,6 +463,7 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 
 	// Setup and extract $args
 	$defaults = array(
+		'source'		=> '',					// Source of posts - category, tag, query
 		'categories'	=> array( 'all' => 1 ),	// Post categories to include
 		'category_name'	=> '',					// Force category_name string of query
 		'cat'			=> '',					// Force cat string of query
@@ -581,7 +583,9 @@ function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_lo
 
 	// Setup and extract $args
 	$defaults = array(
+		'source'			=> '',					// Source of posts - category, tag, query
 		'categories' 		=> array( 'all' => 1 ),	// Post categories to include
+		'tag'				=> '', 					// Tag to include
 		'thumbs'			=> 'default',			// Size of featured iamges (list only) - default, small, full, hide
 		'content'			=> 'default',			// Full content or excerpts (list only) - default, content, excerpt
 		'columns'			=> '3',					// Number of columns (grid only)
