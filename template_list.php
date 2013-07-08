@@ -32,15 +32,29 @@ get_header();
 
 						<div class="primary-post-list element-post_list_paginated post_list<?php echo themeblvd_get_classes( 'element_post_list_paginated', true ); ?>">
 							<?php
+							// Query the post list
 							$post_list = new WP_Query( themeblvd_get_second_query() );
+
+							// Start the loop
 							if ( $post_list->have_posts() ) {
+
 								while ( $post_list->have_posts() ) {
+
 									$post_list->the_post();
-									global $more; $more = 0;
+
+									global $more;
+									$more = 0;
+
+									// Get template part, framework default is content-list.php
 									get_template_part( 'content', themeblvd_get_part( 'list_paginated' ) );
+
 								}
+
 							} else {
+
+								// No posts to display
 								printf( '<p>%s</p>', themeblvd_get_local( 'archive_no_posts' ) );
+
 							}
 							themeblvd_pagination( $post_list->max_num_pages );
 							wp_reset_postdata();
