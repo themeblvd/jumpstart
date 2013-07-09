@@ -211,7 +211,7 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		}
 	}
 
-	return $args; // Filters applied on retrieval in various framework places.
+	return apply_filters( 'themeblvd_get_posts_args', $args, $options, $type, $slider );
 }
 
 /**
