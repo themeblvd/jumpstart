@@ -150,7 +150,7 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		$query = wp_parse_args( htmlspecialchars_decode( $options['query'] ) );
 
 		// Force posts per page on grids
-		if( 'grid' == $type && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+		if( 'grid' == $type && ! $slider && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
 			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
 				$query['numberposts'] = $options['rows']*$options['columns'];
 		}
@@ -166,10 +166,10 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		// Number of posts
 		if ( $type == 'grid' && ! $slider ) {
 			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
-				$query['numberposts'] = $options['rows']*$options['columns'];
+				$query['numberposts'] = intval($options['rows'])*intval($options['columns']);
 		} else {
 			if ( ! empty( $options['numberposts'] ) )
-				$query['numberposts'] = $options['numberposts'];
+				$query['numberposts'] = intval( $options['numberposts'] );
 		}
 		if ( empty( $query['numberposts'] ) )
 			$query['numberposts'] = -1;
@@ -225,10 +225,10 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 		// Additional args
 		if ( ! empty( $options['orderby'] ) )
-			$query['orderby'] = $options['orderby'];
+			$query['orderby'] = intval( $options['orderby'] );
 
 		if ( ! empty( $options['order'] ) )
-			$query['order'] = $options['order'];
+			$query['order'] = intval( $options['order'] );
 
 		if ( ! empty( $options['offset'] ) )
 			$query['offset'] = intval( $options['offset'] );

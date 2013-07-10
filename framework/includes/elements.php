@@ -268,22 +268,6 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 	// Location and query string
 	$location = themeblvd_set_att( 'location', $current_location );
 
-	// Setup query args
-	$custom_query = false;
-	if ( ! empty( $query ) ) {
-
-		// Custom query string
-		$custom_query = true;
-		$query_args = html_entity_decode( $query );
-
-	} else {
-
-		// Generated query args
-		$query_args = themeblvd_get_posts_args( $args, $type, true );
-
-	}
-	$query_args = apply_filters( 'themeblvd_post_slider_args', $query_args, $args, $type, $current_location );
-
 	// Configure additional CSS classes
 	$classes = '';
 	$nav_standard == '1' ? $classes .= ' show-nav_standard' : $classes .= ' hide-nav_standard';
@@ -304,11 +288,15 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 		$size = themeblvd_set_att( 'size', $size );
 	}
 
+	// Generated query args
+	$query_args = themeblvd_get_posts_args( $args, $type, true );
+	$query_args = apply_filters( 'themeblvd_post_slider_args', $query_args, $args, $type, $current_location );
+
 	// Get posts
 	$posts = get_posts( $query_args );
 
 	// Manual offset
-	if ( ! $custom_query ) {
+	if ( 'query' != $source || ( ! $source && ! $query ) ) { // check for custom query
 		if ( $numberposts == -1 && $offset > 0 ) {
 			for( $i = 0; $i < $offset; $i++ ) {
 				unset( $posts[$i] );
@@ -546,8 +534,6 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 
 	// Setup query args
 	$query_args = themeblvd_get_posts_args( $args, $type );
-
-	// Apply filters
 	$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, $type, $current_location );
 
 	// Get posts
