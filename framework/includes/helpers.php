@@ -225,10 +225,10 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 		// Additional args
 		if ( ! empty( $options['orderby'] ) )
-			$query['orderby'] = intval( $options['orderby'] );
+			$query['orderby'] = $options['orderby'];
 
 		if ( ! empty( $options['order'] ) )
-			$query['order'] = intval( $options['order'] );
+			$query['order'] = $options['order'];
 
 		if ( ! empty( $options['offset'] ) )
 			$query['offset'] = intval( $options['offset'] );
