@@ -138,80 +138,104 @@ endif;
  */
 function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
-	// Start $args
-	$args = array( 'suppress_filters' => false );
+	// Is there a query source? (i.e. category, tag, query)
+	$source = '';
+	if ( ! empty( $options['source'] ) )
+		$source = $options['source'];
 
-	// Number of posts
-	if ( $type == 'grid' && ! $slider ) {
-		if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
-			$args['numberposts'] = $options['rows']*$options['columns'];
-	} else {
-		if ( ! empty( $options['numberposts'] ) )
-			$args['numberposts'] = $options['numberposts'];
-	}
-	if ( empty( $args['numberposts'] ) )
-		$args['numberposts'] = -1;
+	// Custom query
+	if ( ( 'query' == $source && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
 
-	// Categories
-	if ( ! empty( $options['cat'] ) ) {
+		// Convert string to query array
+		$query = wp_parse_args( htmlspecialchars_decode( $options['query'] ) );
 
-		// Category override option #1 -- cat
-		$args['cat'] = $options['cat'];
-
-	} elseif ( ! empty( $options['category_name'] ) ) {
-
-		// Category override option #2 -- category_name
-		$args['category_name'] = $options['category_name'];
-
-	} elseif ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
-
-		unset( $options['categories']['all'] );
-		$categories = '';
-
-		foreach ( $options['categories'] as $category => $include ) {
-			if ( $include ) {
-				$current_category = get_term_by( 'slug', $category, 'category' );
-				$categories .= $current_category->term_id.',';
-			}
+		// Force posts per page on grids
+		if( 'grid' == $type && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
+				$query['numberposts'] = $options['rows']*$options['columns'];
 		}
 
-		if ( $categories ) {
-			$categories = themeblvd_remove_trailing_char( $categories, ',' );
-			$args['cat'] = $categories;
-		}
 	}
 
-	// Tags
-	if ( ! empty( $options['tag'] ) )
-		$args['tag'] = $options['tag'];
+	// If no custom query, let's build it.
+	if ( ! isset( $query ) ) {
 
-	// Additional args
-	if ( ! empty( $options['orderby'] ) )
-		$args['orderby'] = $options['orderby'];
+		// Start $query
+		$query = array( 'suppress_filters' => false );
 
-	if ( ! empty( $options['order'] ) )
-		$args['order'] = $options['order'];
+		// Number of posts
+		if ( $type == 'grid' && ! $slider ) {
+			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
+				$query['numberposts'] = $options['rows']*$options['columns'];
+		} else {
+			if ( ! empty( $options['numberposts'] ) )
+				$query['numberposts'] = $options['numberposts'];
+		}
+		if ( empty( $query['numberposts'] ) )
+			$query['numberposts'] = -1;
 
-	if ( ! empty( $options['offset'] ) )
-		$args['offset'] = intval( $options['offset'] );
+		// Categories
+		if ( 'category' == $source || ! $source ) {
 
-	// Fixes for auto post slider that is specifying the
-	// source of the posts. (NOT post grid/list sliders)
-	if ( $type == 'auto_slider' && ! empty( $options['source'] ) ) {
-		switch ( $options['source'] ) {
-			case 'category' :
-				unset( $args['tag'] );
+			if ( 'auto_slider' == $type ) {
+
+				// The "Post Slider" element
 				if ( ! empty( $options['category'] ) )
-						$args['category_name'] = $options['category'];
-				break;
-			case 'tag' :
-				unset( $args['category_name'] );
-				unset( $args['cat'] );
-				break;
+					$query['category_name'] = $options['category'];
+
+			} else {
+
+				if ( ! empty( $options['cat'] ) ) {
+
+					// Category override option #1 -- cat
+					$query['cat'] = $options['cat'];
+
+				} elseif ( ! empty( $options['category_name'] ) ) {
+
+					// Category override option #2 -- category_name
+					$query['category_name'] = $options['category_name'];
+
+				} elseif ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
+
+					unset( $options['categories']['all'] );
+					$categories = '';
+
+					foreach ( $options['categories'] as $category => $include ) {
+						if ( $include ) {
+							$current_category = get_term_by( 'slug', $category, 'category' );
+							$categories .= $current_category->term_id.',';
+						}
+					}
+
+					if ( $categories ) {
+						$categories = themeblvd_remove_trailing_char( $categories, ',' );
+						$query['cat'] = $categories;
+					}
+				}
+
+			}
+
 		}
+
+		// Tags
+		if ( 'tag' == $source || ! $source ) {
+			if ( ! empty( $options['tag'] ) )
+				$query['tag'] = $options['tag'];
+		}
+
+		// Additional args
+		if ( ! empty( $options['orderby'] ) )
+			$query['orderby'] = $options['orderby'];
+
+		if ( ! empty( $options['order'] ) )
+			$query['order'] = $options['order'];
+
+		if ( ! empty( $options['offset'] ) )
+			$query['offset'] = intval( $options['offset'] );
+
 	}
 
-	return apply_filters( 'themeblvd_get_posts_args', $args, $options, $type, $slider );
+	return apply_filters( 'themeblvd_get_posts_args', $query, $options, $type, $slider );
 }
 
 /**

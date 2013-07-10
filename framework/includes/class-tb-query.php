@@ -105,7 +105,7 @@ class Theme_Blvd_Query {
 			$source = $args['source'];
 
 		// Custom query
-		if ( ( 'query' == $source || ! $source ) && isset( $args['query'] ) ) {
+		if ( ( 'query' == $source && isset( $args['query'] ) ) || ( ! $source && ! empty( $args['query'] ) ) ) {
 
 			// Convert string to query array
 			$query = wp_parse_args( htmlspecialchars_decode( $args['query'] ) );

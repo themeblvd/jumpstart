@@ -531,21 +531,7 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_OVERWRITE );
 
-	// Setup query args
-	$custom_query = false;
-	if ( ! empty( $query ) ) {
-
-		// Custom query string
-		$custom_query = true;
-		$query_args = html_entity_decode( $query );
-
-	} else {
-
-		// Generated query args
-		$query_args = themeblvd_get_posts_args( $args, $type );
-	}
-
-	// Config before query string
+	// Config before query
 	if ( $type == 'grid' ) {
 		$columns = themeblvd_set_att( 'columns', $columns );
 		$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
@@ -558,6 +544,9 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 		$size = themeblvd_set_att( 'size', $size );
 	}
 
+	// Setup query args
+	$query_args = themeblvd_get_posts_args( $args, $type );
+
 	// Apply filters
 	$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, $type, $current_location );
 
@@ -565,9 +554,9 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 	$posts = get_posts( $query_args );
 
 	// Adjust offset if neccesary
-	if ( ! $custom_query ) {
-		if ( $type != 'grid' && $numberposts == -1 && $offset > 0 ) {
-			for( $i = 0; $i < $offset; $i++ ) {
+	if ( 'query' != $source || ( ! $source && ! $query ) ) { // check for custom query
+		if ( $type != 'grid' && intval($numberposts) == -1 && intval($offset) > 0 ) {
+			for( $i = 0; $i < intval($offset); $i++ ) {
 				unset( $posts[$i] );
 			}
 		}
