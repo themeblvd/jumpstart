@@ -2695,8 +2695,8 @@ div.pp_default .pp_description {
 .double_sidebar_right .standard-slider,
 .double_sidebar_left .standard-slider,
 .double_sidebar .standard-slider {
-	font-size: 85em; /* Fallback for older browsers */
-	font-size: 85rem;
+	font-size: .85em; /* Fallback for older browsers */
+	font-size: .85rem;
 }
 .sidebar_right .standard-slider p,
 .sidebar_left.standard-slider p,
