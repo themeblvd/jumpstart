@@ -244,7 +244,7 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 		'nav_standard' 		=> '1', 				// Show standard nav - true, false
 		'nav_arrows' 		=> '1', 				// Show nav arrows - true, false
 		'pause_play'		=> '1', 				// Show pause/play buttons - true, false
-		'source'			=> '',			// Source of posts - category, tag, query
+		'source'			=> '',					// Source of posts - category, tag, query
 		'categories'		=> array( 'all' => 1 ),	// Post categories to include
 		'category_name'		=> '',					// Force category_name string of query
 		'cat'				=> '',					// Force cat string of query
@@ -260,7 +260,6 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 		'offset'			=> '0', 				// Offset param for posts query
 		'query'				=> '',					// Custom query string
 		'crop'				=> '' 					// Custom image crop size (grid only)
-
 	);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_OVERWRITE );
@@ -829,10 +828,7 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 	$settings = apply_filters( 'themeblvd_slider_auto_settings', $settings, $args );
 
 	// Setup query
-	if ( ( ! $args['source'] && $args['query'] ) || ( $args['source'] == 'query' ) )
-		$query_args = $args['query'];
-	else
-		$query_args = themeblvd_get_posts_args( $args, 'auto_slider' );
+	$query_args = themeblvd_get_posts_args( $args, 'auto_slider' );
 
 	// Get posts for slider
 	$posts = get_posts( apply_filters( 'themeblvd_slider_auto_args', $query_args, $args ) );
