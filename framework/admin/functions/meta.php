@@ -42,7 +42,7 @@ function setup_themeblvd_page_meta() {
 			'priority'	=> 'high'									// high, core, default, or low
 		),
 		'options' => array(
-			array(
+			'tb_title' => array(
 				'id'		=> '_tb_title',
 				'name' 		=> __( 'Page Title', 'themeblvd' ),
 				'desc'		=> __( 'This option will be ignored if you\'re using this page with a custom layout built with the <a href="admin.php?page=builder_blvd">Layout Builder</a>.', 'themeblvd' ),
@@ -52,7 +52,7 @@ function setup_themeblvd_page_meta() {
 					'hide' => __( 'Hide page\'s title.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_breadcrumbs' => array(
 				'id'		=> '_tb_breadcrumbs',
 				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
 				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not.', 'themeblvd' ),
@@ -96,7 +96,7 @@ function setup_themeblvd_post_meta() {
 			'priority'	=> 'high'									// high, core, default, or low
 		),
 		'options' => array(
-			array(
+			'tb_meta' => array(
 				'id' 		=> '_tb_meta',
 				'name' 		=> __( 'Meta Information (the single post)', 'themeblvd' ), /* Required by Framework */
 				'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
@@ -108,7 +108,7 @@ function setup_themeblvd_post_meta() {
 					'hide' 		=> __( 'Hide meta info.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_comments' => array(
 				'id' 		=> '_tb_comments',
 				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ), /* Required by Framework */
 				'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
@@ -120,7 +120,7 @@ function setup_themeblvd_post_meta() {
 					'hide' 		=> __( 'Hide comments.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_breadcrumbs' => array(
 				'id'		=> '_tb_breadcrumbs',
 				'name' 		=> __( 'Breadcrumbs (the single post)', 'themeblvd' ),
 				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this post or not.', 'themeblvd' ),
@@ -132,7 +132,7 @@ function setup_themeblvd_post_meta() {
 					'hide' 		=> __( 'No, hide breadcrumbs.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_thumb' => array(
 				'id' 		=> '_tb_thumb',
 				'name' 		=> __( 'Featured Image Display (the single post)', 'themeblvd' ), /* Required by Framework */
 				'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post.', 'themeblvd' ),
@@ -145,7 +145,7 @@ function setup_themeblvd_post_meta() {
 					'hide' 		=> __( 'Hide featured image.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_thumb_link' => array(
 				'id'		=> '_tb_thumb_link',
 				'name' 		=> __( 'Featured Image Link (everywhere)', 'themeblvd' ),
 				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', 'themeblvd' ),
@@ -161,28 +161,28 @@ function setup_themeblvd_post_meta() {
 					'external' 	=> __( 'It links to a webpage.', 'themeblvd' ),
 				)
 			),
-			array(
+			'tb_image_link' => array(
 				'id'		=> '_tb_image_link',
 				'name' 		=> __( 'Featured Image - Image Link', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-image',
 				'type' 		=> 'text'
 			),
-			array(
+			'tb_video_link' => array(
 				'id'		=> '_tb_video_link',
 				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL to a video page supported by <a href="http://codex.wordpress.org/Embeds" target="_blank">WordPress\'s oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-video',
 				'type' 		=> 'text'
 			),
-			array(
+			'tb_external_link' => array(
 				'id'		=> '_tb_external_link',
 				'name' 		=> __( 'Featured Image - External Link', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-external',
 				'type' 		=> 'text'
 			),
-			array(
+			'tb_external_link_target' => array(
 				'id'		=> '_tb_external_link_target',
 				'name' 		=> __( 'Featured Image - External Link Target', 'themeblvd' ),
 				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', 'themeblvd' ),
@@ -194,7 +194,7 @@ function setup_themeblvd_post_meta() {
 					'_self' 	=> __( 'Open link in same window.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_thumb_link_single' => array(
 				'id'		=> '_tb_thumb_link_single',
 				'name' 		=> __( 'Featured Image Link (the single post)', 'themeblvd' ),
 				'desc'		=> __( 'If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page or not.', 'themeblvd' ),
@@ -206,7 +206,7 @@ function setup_themeblvd_post_meta() {
 					'no' 		=> __( 'No, don\'t apply featured image link to single post.', 'themeblvd' )
 				)
 			),
-			array(
+			'tb_sidebar_layout' => array(
 				'id' 		=> '_tb_sidebar_layout',
 				'name' 		=> __( 'Sidebar Layout', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', 'themeblvd' ),
