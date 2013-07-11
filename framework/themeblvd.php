@@ -60,10 +60,10 @@ if ( is_admin() ) {
 	add_action( 'customize_register', 'themeblvd_customizer_init' );
 	add_action( 'customize_controls_print_styles', 'themeblvd_customizer_styles' );
 	add_action( 'customize_controls_print_scripts', 'themeblvd_customizer_scripts' );
-	add_action( 'after_setup_theme', 'themeblvd_add_meta_boxes' );
 	add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
+	add_action( 'admin_init', 'themeblvd_add_meta_boxes' );
 
 	// Apply other hooks after theme has had a chance to add filters
 	// Note: Options API/Settings finalized at after_setup_theme, 1000
