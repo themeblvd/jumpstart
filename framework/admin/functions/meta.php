@@ -13,13 +13,13 @@ function themeblvd_add_meta_boxes() {
 	// Page meta box
 	if ( themeblvd_supports( 'meta', 'page_options' ) ) {
 		$page_meta = setup_themeblvd_page_meta();
-		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $page_meta['config'], $page_meta['options'] );
+		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $page_meta['config']['id'], $page_meta['config'], $page_meta['options'] );
 	}
 
 	// Post meta box
 	if ( themeblvd_supports( 'meta', 'post_options' ) ) {
 		$post_meta = setup_themeblvd_post_meta();
-		$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $post_meta['config'], $post_meta['options'] );
+		$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $post_meta['config']['id'], $post_meta['config'], $post_meta['options'] );
 	}
 
 }

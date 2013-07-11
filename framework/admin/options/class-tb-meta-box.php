@@ -32,9 +32,11 @@ class Theme_Blvd_Meta_Box {
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param string $args Setup array for meta box
+	 * @param array $args Setup array for meta box
+	 * @param array $options Settings for meta box
 	 */
-	public function __construct( $args, $options ) {
+	public function __construct( $id, $args, $options ) {
+		$this->id = $id;
 		$this->args = $args;
 		$this->options = $options;
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
@@ -47,9 +49,13 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function add() {
+
+		$this->args = apply_filters( 'themeblvd_meta_args_'.$this->id, $this->args );
+		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
+
 		foreach ( $this->args['page'] as $page ) {
     		add_meta_box(
-		        $this->args['id'],
+		        $this->id,
 				$this->args['title'],
 				array( $this, 'display' ),
 				$page,
@@ -74,6 +80,9 @@ class Theme_Blvd_Meta_Box {
     		echo 'Options framework not found.';
     		return;
     	}
+
+    	$this->args = apply_filters( 'themeblvd_meta_args_'.$this->id, $this->args );
+		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
 
     	// Start content
     	echo '<div class="tb-meta-box">';
@@ -108,6 +117,9 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function save( $post_id ) {
+
+		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
+
 		foreach ( $this->options as $option ) {
 			if ( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
 				update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
