@@ -834,7 +834,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 		}
 		// Add current category
 		$parts[] = array(
-			'link' 	=> esc_url( get_category_link( $current_cat->term_id ) ),
+			'link' 	=> '',
 			'text' 	=> $current_cat->name,
 			'type'	=> 'category'
 		);
@@ -969,15 +969,16 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 		);
 	}
 
+	// Filter the trail before the Home link is
+	// added to the start, or the page num is
+	// added to the end.
+	$parts = apply_filters( 'themeblvd_pre_breadcrumb_parts', $parts, $atts );
+
 	// Add page number if is paged
 	if ( get_query_var('paged') ) {
 		$last = count($parts) - 1;
 		$parts[$last]['text'] .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
 	}
-
-	// Filter the trail before the Home link is
-	// added to the start.
-	$parts = apply_filters( 'themeblvd_pre_breadcrumb_parts', $parts, $atts );
 
 	// Final filter on entire breadcrumbs trail.
 	$breadcrumbs = apply_filters( 'themeblvd_breadcrumb_parts', array_merge( $breadcrumbs, $parts ), $atts );
@@ -1025,9 +1026,22 @@ function themeblvd_show_breadcrumbs() {
  * @return array $var Description
  */
 function themeblvd_get_category_parents( $id, $used = array() ) {
+	return themeblvd_get_term_parents( $id, 'category', $used );
+}
+
+/**
+ * Get parent term attributes
+ *
+ * @since 2.3.0
+ *
+ * @param int $id ID of closest category parent
+ * @param array $used Any categories in our chain that we've already used
+ * @return array $var Description
+ */
+function themeblvd_get_term_parents( $id, $taxonomy = 'category', $used = array() ) {
 
 	$chain = array();
-	$parent = get_category( $id );
+	$parent = get_term( intval( $id ), $taxonomy );
 
 	// Get out of here if there's an error
 	if ( is_wp_error( $parent ) )
@@ -1036,19 +1050,20 @@ function themeblvd_get_category_parents( $id, $used = array() ) {
 	// Parent of the parent
 	if ( $parent->parent && ( $parent->parent != $parent->term_id ) && ! in_array( $parent->parent, $used ) ) {
 		$used[] = $parent->parent;
-		$grand_parent = themeblvd_get_category_parents( $parent->parent, $used );
+		$grand_parent = themeblvd_get_term_parents( $parent->parent, $taxonomy, $used );
 		$chain = array_merge( $grand_parent, $chain );
 	}
 
 	// Final part of chain
 	$chain[] = array(
-		'link' 	=> esc_url( get_category_link( $id ) ),
+		'link' 	=> esc_url( get_term_link( intval( $id ), $taxonomy ) ),
 		'text' 	=> $parent->name,
-		'type'	=> 'category'
+		'type'	=> $taxonomy
 	);
 
 	return $chain;
 }
+
 
 /**
  * Get pagination parts.
