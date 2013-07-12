@@ -77,8 +77,8 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function __construct() {
 
-		add_action( 'wp', array( $this, 'set_template_parts' ), 5 );
-		add_action( 'wp', array( $this, 'set_mode' ), 5 );
+		add_action( 'pre_get_posts', array( $this, 'set_template_parts' ), 5 );
+		add_action( 'pre_get_posts', array( $this, 'set_mode' ), 5 );
 		add_action( 'wp', array( $this, 'set_config' ), 5 );
 		add_action( 'wp', array( $this, 'atts_init' ) );
 		add_filter( 'body_class', array( $this, 'body_class' ) );
