@@ -36,9 +36,18 @@ class Theme_Blvd_Meta_Box {
 	 * @param array $options Settings for meta box
 	 */
 	public function __construct( $id, $args, $options ) {
+
 		$this->id = $id;
-		$this->args = $args;
 		$this->options = $options;
+
+		$defaults = array(
+			'page'			=> array( 'post' ),						// can contain post, page, link, or custom post type's slug
+			'context'		=> 'normal',							// normal, advanced, or side
+			'priority'		=> 'high',
+			'save_empty'	=> true 								// Save empty custom fields?
+		);
+		$this->args = wp_parse_args( $args, $defaults );
+
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 	}
@@ -122,7 +131,12 @@ class Theme_Blvd_Meta_Box {
 
 		foreach ( $this->options as $option ) {
 			if ( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
-				update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
+
+				if ( ! $this->args['save_empty'] && ! $_POST['themeblvd_meta'][$option['id']] )
+					delete_post_meta( $post_id, $option['id'] );
+				else
+					update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
+
 			}
 		}
 	}
