@@ -322,6 +322,12 @@ class Theme_Blvd_Query {
 		if ( $cat )
 			$query['cat'] = str_replace(' ', '', $cat );
 
+		// Tags
+		$tag = get_post_meta( $post->ID, 'tag', true );
+
+		if ( $tag )
+			$query['tag'] = str_replace(' ', '', $tag );
+
 		// Posts per page
 		$posts_per_page = '';
 
