@@ -567,7 +567,8 @@ class Theme_Blvd_Options_API {
 		if ( ! $this->settings ) {
 
 			// Because frontend, we need to add sanitiziation
-			themeblvd_add_sanitization();
+			if ( ! is_admin() )
+				themeblvd_add_sanitization();
 
 			// Construct array of default values pulled from
 			// formatted options.
