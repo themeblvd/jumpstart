@@ -1435,6 +1435,7 @@ function themeblvd_conditionals_config() {
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );
 }
 
+if ( !function_exists( 'themeblvd_prettyphoto_supported_link' ) ) :
 /**
  * Determine if prettyPhoto can take the current URL and
  * display in the lightbox.
@@ -1470,3 +1471,4 @@ function themeblvd_prettyphoto_supported_link( $url ) {
 
 	return apply_filters( 'themeblvd_prettyphoto_supported_link', $icon, $url );
 }
+endif;
