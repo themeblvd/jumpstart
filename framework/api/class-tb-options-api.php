@@ -564,14 +564,16 @@ class Theme_Blvd_Options_API {
 
 		// Do settings exist? If not, grab default values.
 		// Only do this for the frontend.
-		if ( ! $this->settings && ! is_admin() ) {
+		if ( ! $this->settings ) {
 
 			// Because frontend, we need to add sanitiziation
 			themeblvd_add_sanitization();
 
 			// Construct array of default values pulled from
 			// formatted options.
-			$this->settings = themeblvd_get_option_defaults( $this->formatted_options );
+			$defaults = themeblvd_get_option_defaults( $this->formatted_options );
+			$this->settings = $defaults;
+			add_option( $this->option_id, $defaults );
 
 		}
 
