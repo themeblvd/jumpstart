@@ -572,93 +572,41 @@ a img.aligncenter {
 /* =Primary Navigation
 -----------------------------------------------*/
 
-.sf-menu,.sf-menu * {
-	list-style:none;
-	margin:0;
-	padding:0;
-}
-.sf-menu {
-	line-height:1.0;
-}
-.sf-menu ul {
-	position:absolute;
-	top:-999em;
-	width:10em;
-}
-.sf-menu ul li {
-	width:100%;
-}
-.sf-menu li:hover {
-	visibility:inherit;
+.sf-menu, .sf-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 .sf-menu li {
-	float:left;
-	position:relative;
+	position: relative;
+}
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.sf-menu > li {
+	float: left;
+}
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+	display: block;
 }
 .sf-menu a {
-	display:block;
-	position:relative;
+	display: block;
+	position: relative;
 }
-.sf-menu li:hover ul,
-.sf-menu li.sfHover ul {
-	left:0;
-	top:0;
-	z-index:999;
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
 }
 .sf-menu a.sf-with-ul {
-	padding-right:2.25em;
-	min-width:1px;
-}
-.sf-sub-indicator {
-	background-position:-10px -100px;
-	background-repeat:no-repeat;
-	position:absolute;
-	display:block;
-	right:.75em;
-	top:1.05em;
-	width:10px;
-	height:10px;
-	text-indent:-999em;
-	overflow:hidden;
-}
-a > .sf-sub-indicator {
-	top:.8em;
-	background-position:0 -100px;
-}
-a:focus > .sf-sub-indicator,a:hover > .sf-sub-indicator,
-a:active > .sf-sub-indicator,li:hover > a > .sf-sub-indicator,
-li.sfHover > a > .sf-sub-indicator {
-	background-position:-10px -100px;
-}
-.sf-menu ul a > .sf-sub-indicator {
-	background-position:0 0;
-}
-.sf-shadow ul.sf-shadow-off {
-	background:transparent;
-}
-ul.sf-menu li:hover li ul,
-ul.sf-menu li.sfHover li ul,
-ul.sf-menu li li:hover li ul,
-ul.sf-menu li li.sfHover li ul {
-	top:-999em;
-}
-ul.sf-menu li li:hover ul,
-ul.sf-menu li li.sfHover ul,
-ul.sf-menu li li li:hover ul,
-ul.sf-menu li li li.sfHover ul {
-	left:10em;
-	top:0;
-}
-.sf-menu ul .sf-sub-indicator,
-.sf-menu ul a:focus > .sf-sub-indicator,
-.sf-menu ul a:hover > .sf-sub-indicator,
-.sf-menu ul a:active > .sf-sub-indicator,
-.sf-menu ul li:hover > a > .sf-sub-indicator,
-.sf-menu ul li.sfHover > a > .sf-sub-indicator {
-	background-position:-10px 0;
+	padding-right: 2.25em;
+	min-width: 1px;
 }
 ul.sf-menu-with-fontawesome .sf-sub-indicator {
-	background-image: none;
 	display: inline;
 	margin-left: 8px;
 	position: static;
@@ -668,6 +616,7 @@ ul.sf-menu-with-fontawesome .sf-sub-indicator {
 }
 ul.sf-menu-with-fontawesome ul .sf-sub-indicator {
 	position: absolute;
+	top:.8em;
 	right: 10px;
 }
 ul.sf-menu [class^="icon-"] {

@@ -249,11 +249,11 @@ if ( !function_exists( 'themeblvd_include_scripts' ) ) :
  * (1) jQuery - Already registered by WP, and enqueued for most our scripts.
  * (2) Twitter Bootstrap - All Bootstrap JS plugins combiled.
  * (3) prettyPhoto - Modified version by Jason to include responsive features.
- * (4) Super Fish - Used for primary navigation.
+ * (4) Super Fish/Hover Intent - Used for primary navigation.
  * (5) FlexSlider - Responsive slider, controls framework's "standard" slider type.
  * (6) Roundabout - Carousel-style slider, controls framwork's "3D Carousel" slider type.
  * (7) Theme Blvd scripts - Anything used by the framework to set other items into motion.
- * (8) iOS Orientation Fix - Allows zooming to be enabled on iOS devices while still
+ * (8) iOS Orientation Fix - Allows zooming to be enabled on [older] iOS devices while still
  * allowing auto adjustment when switching between landscape and portrait.
  * (9) Already registered by WP, enable commentform to show when visitor clicks "Reply" on comment.
  *
@@ -275,6 +275,7 @@ function themeblvd_include_scripts() {
 
 	// Enque Scripts
 	wp_enqueue_script( 'jquery' );
+
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
 		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', true );
@@ -288,7 +289,8 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 		$scripts[] = 'superfish';
-		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.4.8', true ); // Modified version of Superfish by Jason Bobich
+		wp_enqueue_script( 'hoverintent', TB_FRAMEWORK_URI . '/assets/js/hoverintent.min.js', array('jquery'), 'r7', true );
+		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4', true );
 	}
 
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {

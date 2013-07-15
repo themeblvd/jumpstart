@@ -71,11 +71,12 @@ jQuery(document).ready(function($) {
 	if(themeblvd.superfish)
 	{
 		// Activate Superfish
-		$('ul.sf-menu').superfish().addClass('sf-menu-with-fontawesome');
+		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
 
 		// Adjust sub indicators to use fontawesome
-		$('ul.sf-menu-with-fontawesome > li > a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-down"></i>');
-		$('ul.sf-menu-with-fontawesome ul li a .sf-sub-indicator').replaceWith('<i class="sf-sub-indicator icon-caret-right"></i>');
+		$('ul.sf-menu-with-fontawesome > li > a.sf-with-ul').append('<i class="sf-sub-indicator icon-caret-down"></i>');
+		$('ul.sf-menu-with-fontawesome ul li a.sf-with-ul').append('<i class="sf-sub-indicator icon-caret-right"></i>');
+
 	}
 
 	// Allow bootstrap "nav-header" class in menu items.

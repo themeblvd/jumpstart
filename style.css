@@ -260,7 +260,7 @@ img.size-full {
 #primary-menu > li > ul {
 	border-top: none;
 	margin-left: -1px; /* Shifts dropdowns to the left 1px so they line up with left borders. */
-	margin-top: 41px; /* Matches line-height of first level's anchors plus 1px for menu wrapper's bottom border, which positions the dropdown at the base of the anchors. */
+	margin-top: 1px;
 }
 
 /* Level 3 only */
@@ -584,6 +584,7 @@ img.size-full {
 
 	/* Primary Navigation */
 	#access {
+		background: #f7f7f7;
 		display: none;
 		margin-bottom: 10px;
 	}

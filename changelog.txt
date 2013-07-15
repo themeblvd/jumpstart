@@ -10,6 +10,7 @@ Jump Start Changelog
 * Updated framework to v2.3.
 * Updated FontAwesome to v3.2.
 * Updated Twitter Bootstrap to v2.3.
+* Updated Superfish to v1.7.4.
 * Updated Roundabout script to v2.4.2.
 * Fixed CSS bug with video icon not showing on featured images linking to videos.
 * Fixed bug with "Category" source selection for Post Slider not working correctly.
