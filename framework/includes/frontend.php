@@ -279,15 +279,18 @@ function themeblvd_include_scripts() {
 		$scripts[] = 'bootstrap';
 		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', true );
 	}
+
 	if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 		$scripts[] = 'prettyphoto';
 		wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/assets/js/prettyphoto.min.js', array('jquery'), '3.1.5', true ); // Modified version of prettyPhoto by Jason Bobich
 		// wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/assets/plugins/prettyphoto/js/jQuery.prettyPhoto.js', array('jquery'), '3.1.4', true ); // Unmodified version
 	}
+
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 		$scripts[] = 'superfish';
 		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.4.8', true ); // Modified version of Superfish by Jason Bobich
 	}
+
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
 		$scripts[] = 'themeblvd';
 		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
@@ -299,9 +302,11 @@ function themeblvd_include_scripts() {
 	// Final filter on framework script.
 	$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
 
-	// Enque ios orientation and comment reply scripts.
+	// iOS Orientation (for older iOS devices, not supported by default)
 	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) )
 		wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js', true );
+
+	// Comments reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 

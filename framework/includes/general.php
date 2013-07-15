@@ -184,7 +184,7 @@ function themeblvd_setup() {
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
 			'prettyphoto'		=> true,			// "prettyphoto" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
-			'ios_orientation'	=> true				// "ios-orientationchange-fix" script
+			'ios_orientation'	=> false			// "ios-orientationchange-fix" script
 		)
 	);
 	return apply_filters( 'themeblvd_global_config', $setup );
