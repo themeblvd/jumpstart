@@ -24,6 +24,7 @@ Jump Start Changelog
 * Added support for WP 3.5+ media uploader.
 * Added support for Nivo Slider.
 * Added `themeblvd_default_sidebar_args` filter for arguments when registering default sidebar locations.
+* Removed post meta from displaying when with pages in search results.
 * Reconstruction of how pagination works to be more extendable. See new function `themeblvd_get_pagination` in /framework/functions/parts.php, and new functions `themeblvd_get_pagination_parts` in /framework/functions/helpers.php.
 * Expanded "Featured Image Link" video link to accept any WordPress oEmbed URL.
 * Slight UI improvements to Logo option in default Theme Options panel.

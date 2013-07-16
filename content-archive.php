@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content in an archive.
+ * The default template for displaying content in an archive and search results.
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -9,9 +9,11 @@
 			<?php themeblvd_the_title(); ?>
 		</h1>
 	</header><!-- .entry-header -->
-	<div class="meta-wrapper">
-		<?php themeblvd_blog_meta(); ?>
-	</div><!-- .meta-wrapper (end) -->
+	<?php if ( 'page' != get_post_type() ) : ?>
+		<div class="meta-wrapper">
+			<?php themeblvd_blog_meta(); ?>
+		</div><!-- .meta-wrapper (end) -->
+	<?php endif; ?>
 	<div class="entry-content">
 		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ) ); ?>
 		<?php themeblvd_blog_content( themeblvd_get_att( 'content' ) ); ?>
