@@ -289,9 +289,12 @@ function themeblvd_get_meta( $sep = '' ) {
 	$output .= $author;
 
 	// Category
-	$category = sprintf( '<span class="category"><i class="icon-reorder"></i> %s</span>', get_the_category_list(', ') );
-	$output .= $sep;
-	$output .= $category;
+	$category = '';
+	if ( has_category() ) {
+		$category = sprintf( '<span class="category"><i class="icon-reorder"></i> %s</span>', get_the_category_list(', ') );
+		$output .= $sep;
+		$output .= $category;
+	}
 
 	// Comments
 	$comments = '';
