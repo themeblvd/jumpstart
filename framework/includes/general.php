@@ -172,8 +172,9 @@ function themeblvd_setup() {
 			'single'			=> false			// Featured area on/off by default
 		),
 		'comments' => array(
+			'posts'				=> true,			// Comments on posts
 			'pages'				=> false,			// Comments on pages
-			'posts'				=> true				// Comments on posts
+			'attachments'		=> false			// Comments on attachments
 		),
 		'display' => array(
 			'responsive' 		=> true				// Responsive elements
