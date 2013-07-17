@@ -71,6 +71,47 @@ blockquote cite {
 	}
 }
 
+/* =Sidebar Layouts
+-----------------------------------------------*/
+
+/**
+ * The goal here is ensure that no matter the
+ * sidebar layout chosen, the main content area
+ * will always appear at the top on mobile.
+ */
+@media (max-width: 767px) {
+	#sidebar_layout .sidebar_layout-inner > .row-fluid {
+		display: -webkit-box;			/* OLD - iOS 6-, Safari 3.1-6 */
+		/* display: -moz-box;			/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;			/* TWEENER - IE 10 */
+		display: -webkit-flex;			/* NEW - Chrome */
+		display: flex;					/* NEW, Spec - Opera 12.1, Firefox 20+ */
+		/* -moz-box-orient: vertical;	/* Firefox */
+		-webkit-box-orient: vertical;	/* Safari */
+		-webkit-flex-direction: column; /* Chrome */
+		-ms-flex-direction: column;		/* IE 10 */
+		box-orient: vertical;
+	}
+	#sidebar_layout #content {
+		-webkit-box-ordinal-group: 1;	/* OLD - iOS 6-, Safari 3.1-6 */
+		/* -moz-box-ordinal-group: 1;	/* OLD - Firefox 19- */
+		-ms-flex-order: 1;				/* TWEENER - IE 10 */
+		-webkit-order: 1;				/* NEW - Chrome */
+		order: 1;						/* NEW, Spec - Opera 12.1, Firefox 20+ */
+	}
+	#sidebar_layout .fixed-sidebar {
+		-webkit-box-ordinal-group: 2;	/* OLD - iOS 6-, Safari 3.1-6 */
+		/* -moz-box-ordinal-group: 2;	/* OLD - Firefox 19- */
+		-ms-flex-order: 2;				/* TWEENER - IE 10 */
+		-webkit-order: 2;				/* NEW - Chrome */
+		order: 2;						/* NEW, Spec - Opera 12.1, Firefox 20+ */
+		margin-bottom: 20px;
+	}
+	.firefox #sidebar_layout .sidebar_layout-inner > .row-fluid {
+		display: block;
+	}
+}
+
 /* =Bootstrap Mods
 ----------------------------------------------- */
 
