@@ -41,8 +41,9 @@ add_action( 'after_setup_theme', 'jumpstart_customizer' );
 function jumpstart_customizer_init( $wp_customize ) {
 
 	// Add real-time option edits
-	if ( $wp_customize->is_preview() && ! is_admin() )
+	if ( $wp_customize->is_preview() && ! is_admin() ) {
 		add_action( 'wp_footer', 'jumpstart_customizer_preview', 21 );
+	}
 
 }
 add_action( 'customize_register', 'jumpstart_customizer_init' );

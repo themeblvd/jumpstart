@@ -69,8 +69,9 @@ class Theme_Blvd_Options_Page {
 		$this->args = wp_parse_args( $args, $defaults );
 
 		// Options page menu slug
-		if ( ! $this->args['menu_slug'] )
+		if ( ! $this->args['menu_slug'] ) {
 			$this->args['menu_slug'] = $id;
+		}
 
 		// Option ID -- i.e. get_option( $id )
 		$this->id = $id;
@@ -83,8 +84,9 @@ class Theme_Blvd_Options_Page {
 		add_action( 'admin_init', array( $this, 'register' ) );
 
 		// Legacy media uploader
-		if ( ! function_exists('wp_enqueue_media') )
+		if ( ! function_exists( 'wp_enqueue_media' ) ) {
 			add_action( 'admin_init', 'optionsframework_mlu_init' );
+		}
 
 	}
 
@@ -135,8 +137,9 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function load_scripts() {
 		wp_enqueue_script( 'jquery-ui-core');
-		if ( function_exists( 'wp_enqueue_media' ) )
+		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
+		}
 		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		wp_enqueue_script( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/js/options.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
@@ -238,15 +241,17 @@ class Theme_Blvd_Options_Page {
 		foreach ( $this->options as $option ) {
 
 			// Skip if we don't have an ID or type.
-			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) )
+			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) ) {
 				continue;
+			}
 
 			// Make sure ID is formatted right.
 			$id = preg_replace( '/\W/', '', strtolower( $option['id'] ) );
 
 			// Set checkbox to false if it wasn't sent in the $_POST
-			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) )
+			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) ) {
 				$input[$id] = '0';
+			}
 
 			// Set each item in the multicheck to false if it wasn't sent in the $_POST
 			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
@@ -256,8 +261,9 @@ class Theme_Blvd_Options_Page {
 			}
 
 			// For a value to be submitted to database it must pass through a sanitization filter
-			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) )
+			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) ) {
 				$clean[$id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[$id], $option );
+			}
 
 		}
 
@@ -265,8 +271,10 @@ class Theme_Blvd_Options_Page {
 		$clean = apply_filters( 'themeblvd_options_sanitize_'.$this->id, $clean, $input );
 
 		// Add update message for page re-fresh
-		if ( ! $this->sanitized ) // Avoid duplicates
+		if ( ! $this->sanitized ) {
+			// Avoid duplicates
 			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
+		}
 
 		// We know sanitization has happenned at least
 		// once at this point; so set to true.

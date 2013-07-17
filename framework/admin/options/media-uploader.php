@@ -34,14 +34,16 @@ function themeblvd_media_uploader( $args ) {
 
 	// If a value is passed and we don't have a stored value, use the value that's passed through.
 	$value = '';
-	if ( $args['value'] )
+	if ( $args['value'] ) {
 		$value = $args['value'];
+	}
 
 	// Set name formfield based on type.
-	if ( $type == 'slider' )
+	if ( $type == 'slider' ) {
 		$name = $args['option_name'].'[image]';
-	else
+	} else {
 		$name = $args['option_name'].'['.$id.']';
+	}
 
 	// If passed name, set it.
 	if ( $args['name'] ) {
@@ -49,8 +51,9 @@ function themeblvd_media_uploader( $args ) {
 		$id = $id.'_'.$args['name'];
 	}
 
-	if ( $value )
+	if ( $value ) {
 		$class = ' has-file';
+	}
 
 	// Allow multiple upload options on the same page with
 	// same ID -- This could happen in the Layout Builder, for example.
@@ -67,6 +70,7 @@ function themeblvd_media_uploader( $args ) {
 
 	// Start output
 	switch ( $type ) {
+
 		case 'slider' :
 			$data['title'] = __('Slide Image', 'themeblvd');
 			$data['select'] = __('Use for Slide', 'themeblvd');
@@ -118,10 +122,11 @@ function themeblvd_media_uploader( $args ) {
 
 	$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
 
-	if ( ! $value || $type == 'video' )
+	if ( ! $value || $type == 'video' ) {
 		$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['upload'].'" />'."\n";
-	else
+	} else {
 		$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['remove'].'" />'."\n";
+	}
 
 	$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";
 

@@ -11,8 +11,9 @@ if ( !function_exists( 'themeblvd_viewport_default' ) ) :
  * @since 2.2.0
  */
 function themeblvd_viewport_default() {
-	if ( themeblvd_supports( 'display', 'responsive' ) )
+	if ( themeblvd_supports( 'display', 'responsive' ) ) {
 		echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
+	}
 }
 endif;
 
@@ -68,39 +69,55 @@ if ( !function_exists( 'themeblvd_header_logo_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_header_logo_default() {
+
 	$option = themeblvd_get_option( 'logo' );
 	$classes = 'header_logo header_logo_'.$option['type'];
-	if ( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' )
+
+	if ( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' ) {
 		$classes .= ' header_logo_text';
-	if ( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) )
+	}
+
+	if ( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) ) {
 		$classes .= ' header_logo_has_tagline';
-	if ( $option['type'] == 'title_tagline' )
+	}
+
+	if ( $option['type'] == 'title_tagline' ) {
 		$classes .= ' header_logo_has_tagline';
+	}
 	?>
 	<div class="<?php echo $classes; ?>">
 		<?php
 		if ( ! empty( $option['type'] ) ) {
 			switch ( $option['type'] ) {
+
 				case 'title' :
 					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
 					break;
+
 				case 'title_tagline' :
 					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
 					echo '<span class="tagline">'.get_bloginfo('description').'</span>';
 					break;
+
 				case 'custom' :
 					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.$option['custom'].'">'.$option['custom'].'</a></h1>';
-					if ( $option['custom_tagline'] )
+					if ( $option['custom_tagline'] ) {
 						echo '<span class="tagline">'.$option['custom_tagline'].'</span>';
+					}
 					break;
+
 				case 'image' :
 					$image_1x = $option['image'];
 					$image_2x = '';
 					$image_width = '';
-					if ( ! empty( $option['image_2x'] ) )
+
+					if ( ! empty( $option['image_2x'] ) ) {
 						$image_2x = $option['image_2x'];
-					if ( ! empty( $option['image_width'] ) )
+					}
+
+					if ( ! empty( $option['image_width'] ) ) {
 						$image_width = $option['image_width'];
+					}
 
 					echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$image_1x.'" width="'.$image_width.'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
 					break;
@@ -151,9 +168,9 @@ function themeblvd_featured_start_default() {
 	$classes = '';
 	$featured = themeblvd_config( 'featured' );
 	if ( $featured ) {
-		foreach ( $featured as $class )
+		foreach ( $featured as $class ) {
 			$classes .= " $class";
-
+		}
 	}
 	?>
 	<!-- FEATURED (start) -->
@@ -197,9 +214,9 @@ function themeblvd_featured_below_start_default() {
 	$classes = '';
 	$featured_below = themeblvd_config( 'featured_below' );
 	if ( $featured_below ) {
-		foreach ( $featured_below as $class )
+		foreach ( $featured_below as $class ) {
 			$classes .= " $class";
-
+		}
 	}
 	?>
 	<!-- FEATURED BELOW (start) -->
@@ -411,12 +428,16 @@ if ( !function_exists( 'themeblvd_footer_content_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_footer_content_default() {
+
 	// Grab the setup
 	$footer_setup = themeblvd_get_option( 'footer_setup' );
+
 	// Make sure there's actually a footer option in the theme setup
 	if ( is_array( $footer_setup ) ) {
+
 		// Only move forward if user has selected for columns to show
 		if ( $footer_setup['num'] > 0 ) {
+
 			// Build array of columns
 			$i = 1;
 			$columns = array();
@@ -567,9 +588,12 @@ if ( !function_exists( 'themeblvd_blog_content_default' ) ) :
  */
 function themeblvd_blog_content_default( $type ) {
 	if ( $type == 'content' ) {
+
 		// Show full content
 		the_content( apply_filters( 'themeblvd_the_content_more_text', themeblvd_get_local('read_more') ) );
+
 	} else {
+
 		// Show excerpt and read more button
 		$args = apply_filters( 'themeblvd_the_excerpt_more_args', array(
 			'text'			=> themeblvd_get_local('read_more'),
@@ -584,11 +608,19 @@ function themeblvd_blog_content_default( $type ) {
 			'addon'			=> null,
 			'p'				=> true
 		));
+
+		// Output excerpt
 		the_excerpt();
+
+		// Output button
 		$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
-		if ( $args['p'] )
+
+		if ( $args['p'] ) {
 			$button = '<p>'.$button.'</p>';
+		}
+
 		echo $button;
+
 	}
 }
 endif;

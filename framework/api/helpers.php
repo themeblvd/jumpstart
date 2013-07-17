@@ -218,24 +218,24 @@ if ( !function_exists( 'themeblvd_get_option_defaults' ) ) :
  */
 function themeblvd_get_option_defaults( $options ) {
 
-	if ( ! $options || ! is_array( $options ) )
+	if ( ! $options || ! is_array( $options ) ) {
 		return array();
+	}
 
 	$defaults = array();
 
 	foreach ( $options as $option ) {
 
 		// Skip if any vital items are not set.
-		if ( ! isset( $option['id'] ) )
+		if ( ! isset( $option['id'] ) || ! isset( $option['std'] ) || ! isset( $option['type'] ) ) {
 			continue;
-		if ( ! isset( $option['std'] ) )
-			continue;
-		if ( ! isset( $option['type'] ) )
-			continue;
+		}
 
 		// Continue with adding the option in.
-		if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) )
+		if ( has_filter( 'themeblvd_sanitize_'.$option['type'] ) ) {
 			$defaults[$option['id']] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $option['std'], $option );
+		}
+
 	}
 
 	return $defaults;
@@ -256,8 +256,9 @@ if ( !function_exists( 'themeblvd_get_core_elements' ) ) :
 function themeblvd_get_core_elements() {
 
 	// Get out if Builder API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Get registered elements
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -275,8 +276,9 @@ if ( !function_exists( 'themeblvd_get_registered_elements' ) ) :
 function themeblvd_get_registered_elements() {
 
 	// Get out if Builder API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Get registered elements
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -295,8 +297,9 @@ if ( !function_exists( 'themeblvd_get_elements' ) ) :
 function themeblvd_get_elements() {
 
 	// Get out if Builder API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Get elements
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -317,8 +320,9 @@ if ( !function_exists( 'themeblvd_is_element' ) ) :
 function themeblvd_is_element( $element_id ) {
 
 	// Get out if Builder API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return true; // Keep old Builder plugin from blowing up.
+	}
 
 	// Is this a registered element?
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -342,8 +346,9 @@ if ( !function_exists( 'themeblvd_add_builder_element' ) ) :
 function themeblvd_add_builder_element( $element_id, $element_name, $query_type, $options, $callback ) {
 
 	// Get out if Builder API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Add element
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -363,8 +368,9 @@ if ( !function_exists( 'themeblvd_remove_builder_element' ) ) :
 function themeblvd_remove_builder_element( $element_id ) {
 
 	// Get out if Builder API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Remove element
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -388,8 +394,9 @@ if ( !function_exists( 'themeblvd_add_sample_layout' ) ) :
 function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements ) {
 
 	// Get out on front end or if Builder API doesn't exist.
-	if ( ! is_admin() || ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! is_admin() || ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Add sample layout
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -409,8 +416,9 @@ if ( !function_exists( 'themeblvd_remove_sample_layout' ) ) :
 function themeblvd_remove_sample_layout( $layout_id ) {
 
 	// Get out this on front end or if Builder API doesn't exist.
-	if ( ! is_admin() || ! class_exists('Theme_Blvd_Builder_API') )
+	if ( ! is_admin() || ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
+	}
 
 	// Remove sample layout
 	$api = Theme_Blvd_Builder_API::get_instance();
@@ -441,8 +449,9 @@ if ( !function_exists( 'themeblvd_add_slider' ) ) :
 function themeblvd_add_slider( $slider_id, $slider_name, $slide_types, $media_positions, $slide_elements, $options, $callback ) {
 
 	// Get out if Sliders API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Sliders_API') )
+	if ( ! class_exists('Theme_Blvd_Sliders_API') ) {
 		return;
+	}
 
 	$api = Theme_Blvd_Sliders_API::get_instance();
 	$api->add( $slider_id, $slider_name, $slide_types, $media_positions, $slide_elements, $options, $callback );
@@ -461,8 +470,9 @@ if ( !function_exists( 'themeblvd_remove_slider' ) ) :
 function themeblvd_remove_slider( $slider_id ) {
 
 	// Get out if Sliders API doesn't exist.
-	if ( ! class_exists('Theme_Blvd_Sliders_API') )
+	if ( ! class_exists('Theme_Blvd_Sliders_API') ) {
 		return;
+	}
 
 	$api = Theme_Blvd_Sliders_API::get_instance();
 	$api->remove( $slider_id );
@@ -544,8 +554,9 @@ function themeblvd_get_sidebar_location_name( $location ) {
 	$api = Theme_Blvd_Sidebars_API::get_instance();
 	$sidebar = $api->get_locations( $location );
 
-	if ( isset( $sidebar['location']['name'] ) )
+	if ( isset( $sidebar['location']['name'] ) ) {
 		return $sidebar['location']['name'];
+	}
 
 	return __( 'Floating Widget Area', 'themeblvd' );
 }

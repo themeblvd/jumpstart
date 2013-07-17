@@ -79,11 +79,15 @@ function themeblvd_get_all_locals() {
  * @return string $text Localized and filtered text string
  */
 function themeblvd_get_local( $id ) {
+
 	$text = null;
 	$locals = themeblvd_get_all_locals();
+
 	// Set text string
-	if ( isset( $locals[$id] ) )
+	if ( isset( $locals[$id] ) ) {
 		$text = $locals[$id];
+	}
+
 	return $text;
 }
 
@@ -113,12 +117,17 @@ function themeblvd_get_js_locals() {
 	// through our "themeblvd_global_config" filter.
 	// This allows people to remove jQuery plugin files
 	// w/out having to also remove functions from themeblvd.js.
-	if ( themeblvd_supports( 'assets', 'bootstrap' ) )
+	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$locals['bootstrap'] = 'true';
-	if ( themeblvd_supports( 'assets', 'prettyphoto' ) )
+	}
+
+	if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
 		$locals['prettyphoto'] = 'true';
-	if ( themeblvd_supports( 'assets', 'superfish' ) )
+	}
+
+	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 		$locals['superfish'] = 'true';
+	}
 
 	// Return with framework's filter applied
 	return apply_filters( 'themeblvd_js_locals', $locals );

@@ -14,13 +14,15 @@ function themeblvd_columns( $num, $widths, $columns ) {
 	// Kill it if number of columns doesn't match the
 	// number of widths exploded from the string.
 	$widths = explode( '-', $widths );
-	if ( $num != count( $widths ) )
+	if ( $num != count( $widths ) ) {
 		return;
+	}
 
 	// Kill it if number of columns doesn't match the
 	// number of columns feed into the function.
-	if ( $num != count( $columns ) )
+	if ( $num != count( $columns ) ) {
 		return;
+	}
 
 	// Last column's key
 	$last = $num - 1;
@@ -29,14 +31,16 @@ function themeblvd_columns( $num, $widths, $columns ) {
 
 		// Set CSS classes for column
 		$classes = 'column '.$widths[$key];
-		if ( $last == $key )
+		if ( $last == $key ) {
 			$classes .= ' last';
+		}
 
 		// Start display
 		echo '<div class="'.$classes.'">';
 
 		// Column Content
 		switch ( $column['type'] ) {
+
 			case 'widget' :
 				if ( ! empty( $column['sidebar'] ) ) {
 					echo '<div class="widget-area">';
@@ -44,11 +48,13 @@ function themeblvd_columns( $num, $widths, $columns ) {
 					echo '</div><!-- .widget-area (end) -->';
 				}
 				break;
+
 			case 'current' :
 				$current_page_id = themeblvd_config( 'id' );
 				$current_page = get_page( $current_page_id );
 				echo apply_filters( 'the_content', $current_page->post_content );
 				break;
+
 			case 'page' :
 				if ( ! empty( $column['page'] ) ) {
 					// Get WP internal ID for the page
@@ -70,15 +76,17 @@ function themeblvd_columns( $num, $widths, $columns ) {
 					wp_reset_postdata();
 				}
 				break;
+
 			case 'raw' :
 				if ( isset( $column['raw'] ) ) {
 					// Only negate the "simulated" the_content filter if the option exists
 					// AND it's been unchecked. This is for legacy purposes, as this
 					// feature was added in v2.1.0
-					if ( isset( $column['raw_format'] ) && ! $column['raw_format'] )
+					if ( isset( $column['raw_format'] ) && ! $column['raw_format'] ) {
 						echo do_shortcode( stripslashes( $column['raw'] ) ); // Shortcodes only
-					else
+					} else {
 						echo apply_filters( 'themeblvd_the_content', stripslashes( $column['raw'] ) );
+					}
 				}
 				break;
 		}
@@ -145,10 +153,13 @@ function themeblvd_content( $args = array() ) {
 
 		// Raw content input
 		case 'raw' :
-			if ( $raw_format )
-				$output = apply_filters( 'themeblvd_the_content', stripslashes( $raw_content ) ); // WP auto formatting w/shortcodes
-			else
-				$output =  do_shortcode( stripslashes( $raw_content ) ); // Shortcodes only
+			if ( $raw_format ) {
+				// WP auto formatting w/shortcodes
+				$output = apply_filters( 'themeblvd_the_content', stripslashes( $raw_content ) );
+			} else {
+				// Shortcodes only
+				$output =  do_shortcode( stripslashes( $raw_content ) );
+			}
 			break;
 
 		// Widget area
@@ -565,19 +576,22 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 				setup_postdata( $post );
 
 				// If this is the very first post, open the first row
-				if ( $counter == 1 )
+				if ( $counter == 1 ) {
 					themeblvd_open_row();
+				}
 
 				// Get template part, framework default is content-grid.php
 				get_template_part( 'content', themeblvd_get_part( 'grid' ) );
 
 				// If last post in a row, close the row
-				if ( $counter % $columns == 0 )
+				if ( $counter % $columns == 0 ) {
 					themeblvd_close_row();
+				}
 
 				// If first post in a row, open the row
-				if ( $counter % $columns == 0 && $number_of_posts != $counter )
+				if ( $counter % $columns == 0 && $number_of_posts != $counter ) {
 					themeblvd_open_row();
+				}
 
 				// Increment the counter with global template attribute accounted for
 				$counter = themeblvd_set_att( 'counter', $counter+1 );
@@ -585,8 +599,9 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 			}
 
 			// In case the last row wasn't filled, close it now
-			if ( $number_of_posts % $columns != 0 )
+			if ( $number_of_posts % $columns != 0 ) {
 				themeblvd_close_row();
+			}
 
 		} else {
 
@@ -615,8 +630,9 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 	echo '</div><!-- .post_'.$type.' (end) -->';
 
 	// Show link
-	if ( $link )
+	if ( $link ) {
 		printf( '<a href="%s" target="%s" title="%s" class="lead-link">%s</a>', $link_url, $link_target, $link_text, $link_text );
+	}
 
 }
 endif;
@@ -707,27 +723,31 @@ function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_lo
 				$more = 0;
 
 				// If this is the very first post, open the first row
-				if ( $counter == 1 )
+				if ( $counter == 1 ) {
 					themeblvd_open_row();
+				}
 
 				// Get template part, framework default is content-grid.php
 				get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
 
 				// If last post in a row, close the row
-				if ( $counter % $columns == 0 )
+				if ( $counter % $columns == 0 ) {
 					themeblvd_close_row();
+				}
 
 				// If first post in a row, open the row
-				if ( $counter % $columns == 0 && $posts_per_page != $counter )
+				if ( $counter % $columns == 0 && $posts_per_page != $counter ) {
 					themeblvd_open_row();
+				}
 
 				// Increment the counter with global template attribute accounted for
 				$counter = themeblvd_set_att( 'counter', $counter+1 );
 			}
 
 			// In case the last row wasn't filled, close it now
-			if ( ($counter-1) != $posts_per_page )
+			if ( ($counter-1) != $posts_per_page ) {
 				themeblvd_close_row();
+			}
 
 		} else {
 
@@ -809,8 +829,9 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 
 	// Image Size
 	$image_size = $args['image_size'];
-	if ( $args['image'] == 'align-right' || $args['image'] == 'align-left' )
+	if ( $args['image'] == 'align-right' || $args['image'] == 'align-left' ) {
 		$image_size = 'slider-staged';
+	}
 
 	// Format settings array so it matches the array
 	// pulled if we were getting to this from a
@@ -865,8 +886,9 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 
 			// Elements to include in slide
 			$includes = array( 'headline', 'description' );
-			if ( $args['button'] )
+			if ( $args['button'] ) {
 				$includes[] = 'button';
+			}
 
 			// Image Link
 			$image_link_type = $args['image_link'];
@@ -908,8 +930,9 @@ function themeblvd_slider_auto( $id, $args = array() ) {
 					break;
 			}
 
-			if ( $image_link_url )
+			if ( $image_link_url ) {
 				$includes[] = 'image_link';
+			}
 
 			// Elements
 			$elements = array(
@@ -1049,8 +1072,9 @@ function themeblvd_tabs( $id, $options ) {
 	$output = '';
 
 	// Tabs or pills?
-	if ( ! empty( $options['setup']['nav'] ) )
+	if ( ! empty( $options['setup']['nav'] ) ) {
 		$nav = explode( '_', $options['setup']['nav'] );
+	}
 
 	$nav_type = $nav[0];
 	$nav_location = $nav[1];
@@ -1058,11 +1082,13 @@ function themeblvd_tabs( $id, $options ) {
 	// Container classes
 	$classes = 'tabbable';
 
-	if ( ! empty($options['height']) )
+	if ( ! empty($options['height']) ) {
 		$classes .= ' fixed-height';
+	}
 
-	if ( $nav_type == 'tabs' )
+	if ( $nav_type == 'tabs' ) {
 		$classes .= ' tabs-'.$nav_location;
+	}
 
 	$classes .= ' tb-tabs-'.$options['setup']['style'];
 
@@ -1072,8 +1098,9 @@ function themeblvd_tabs( $id, $options ) {
 	$navigation .= '<ul class="nav nav-'.$nav_type.'">';
 	foreach ( $options['setup']['names'] as $key => $name ) {
 
-		if ( $i == 0 )
+		if ( $i == 0 ) {
 			$class = 'active';
+		}
 
 		$navigation .= '<li class="'.$class.'"><a href="#'.$id.'-'.$key.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
 		$class = null;
@@ -1089,8 +1116,9 @@ function themeblvd_tabs( $id, $options ) {
 	foreach ( $options['setup']['names'] as $key => $name ) {
 
 		$class = '';
-		if ( $i == '0' )
+		if ( $i == '0' ) {
 			$class = ' active';
+		}
 
 		$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix">';
 
@@ -1124,10 +1152,11 @@ function themeblvd_tabs( $id, $options ) {
 				// Only negate simulated the_content filter if the option exists AND it's
 				// been unchecked. This is for legacy purposes, as this feature
 				// was added in v2.1.0
-				if ( isset( $options[$key]['raw_format'] ) && ! $options[$key]['raw_format'] )
+				if ( isset( $options[$key]['raw_format'] ) && ! $options[$key]['raw_format'] ) {
 					$content .= do_shortcode( stripslashes( $options[$key]['raw'] ) ); // Shortcodes only
-				else
+				} else {
 					$content .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
+				}
 				break;
 
 			// Floating Widget Area
@@ -1151,13 +1180,15 @@ function themeblvd_tabs( $id, $options ) {
 	// Construct final output
 	$output = '<div class="'.$classes.'">';
 
-	if ( $nav_location != 'below' )
+	if ( $nav_location != 'below' ) {
 		$output .= $navigation;
+	}
 
 	$output .= $content;
 
-	if ( $nav_location == 'below' )
+	if ( $nav_location == 'below' ) {
 		$output .= $navigation;
+	}
 
 	$output .= '</div><!-- .tabbable (end) -->';
 

@@ -6,7 +6,6 @@
  * marketplace through WordPress theme updater system
  * and Envato API.
  */
-
 class Theme_Blvd_Envato_Updates {
 
 	protected $args;
@@ -37,8 +36,9 @@ class Theme_Blvd_Envato_Updates {
 			add_filter( 'pre_set_site_transient_update_themes', array( $this, 'check_for_updates' ) );
 
 			// Add backups if enabled
-			if ( $this->args['backup'] )
+			if ( $this->args['backup'] ) {
 				add_filter( 'upgrader_pre_install', array( $this, 'backup_theme' ) );
+			}
 
 		}
 	}
@@ -52,13 +52,15 @@ class Theme_Blvd_Envato_Updates {
 
 		// Only continue if this is our second time
 		// running through the filter.
-		if ( ! isset( $updates->checked ) )
+		if ( ! isset( $updates->checked ) ) {
 			return;
+		}
 
 		// If user can't install themes, this shouldn't
 		// be happenning.
-		if ( ! current_user_can( 'install_themes' ) )
+		if ( ! current_user_can( 'install_themes' ) ) {
 			return;
+		}
 
 		// Temporarily increase http_request_timeout to 300 seconds.
 		add_filter( 'http_request_timeout', array( $this, 'bumb_request_timeout' ) );
@@ -89,10 +91,13 @@ class Theme_Blvd_Envato_Updates {
 		// check if we need to apply our updates.
 		if ( $installed_themes ) {
 			foreach ( $installed_themes as $installed_theme_id => $installed_theme ) {
+
 				// Make sure the current installed theme is one of
 				// the themes purchased from the current author.
 				if ( isset( $purchased_themes[$installed_theme->Name] ) ) {
+
 					$current_theme = $purchased_themes[$installed_theme->Name];
+
 					if ( version_compare( $installed_theme->Version, $current_theme['version'], '<' ) ) {
 						if ( $url = $envato_api->wp_download( $current_theme['item_id'] ) ) {
 
@@ -127,8 +132,9 @@ class Theme_Blvd_Envato_Updates {
 		global $wp_filesystem;
 
 		// Are we currently updating a theme?
-		if ( $_REQUEST['action'] != 'upgrade-theme' )
+		if ( $_REQUEST['action'] != 'upgrade-theme' ) {
 			return;
+		}
 
 		// Update info
 		$theme = $_REQUEST['theme'];
@@ -137,8 +143,9 @@ class Theme_Blvd_Envato_Updates {
 
 		// Is this one of our themes?
 		$type = apply_filters( 'themeblvd_envato_updates_type', 'themeblvd-envato' );
-		if ( ! isset( $current_update['type'] ) || $current_update['type'] != $type )
+		if ( ! isset( $current_update['type'] ) || $current_update['type'] != $type ) {
 			return;
+		}
 
 		// Theme data
 		$theme_data = wp_get_theme($theme);
@@ -150,8 +157,9 @@ class Theme_Blvd_Envato_Updates {
 
 		// Make sure the themes directory can be found.
 		$themes_directory = WP_CONTENT_DIR . '/themes';
-		if ( ! $wp_filesystem->find_folder( $themes_directory ) )
+		if ( ! $wp_filesystem->find_folder( $themes_directory ) ) {
 			wp_die( __( 'Unable to locate WordPress Theme directory.', 'themeblvd' ) );
+		}
 
 		// Locations
 		$from = $themes_directory.'/'.$theme;

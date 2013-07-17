@@ -77,8 +77,9 @@ class Theme_Blvd_Stylesheets_API {
      */
 	public static function get_instance() {
 
-		if ( self::$instance == null )
+		if ( self::$instance == null ) {
             self::$instance = new self;
+        }
 
         return self::$instance;
 	}
@@ -376,8 +377,9 @@ class Theme_Blvd_Stylesheets_API {
 	public function print_styles( $level = 1 ) {
 
 		// Only levels 1-4 currently exist
-		if ( ! in_array( $level, array(1, 2, 3, 4) ) )
+		if ( ! in_array( $level, array(1, 2, 3, 4) ) ) {
 			return;
+		}
 
 		// Add styles
 		if ( $level == 4 ) {

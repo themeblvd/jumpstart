@@ -80,10 +80,11 @@ function themeblvd_sanitize_allowedtags($input) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_checkbox( $input ) {
-	if ( $input )
+	if ( $input ) {
 		$output = "1";
-	else
+	} else {
 		$output = "0";
+	}
 	return $output;
 }
 
@@ -128,8 +129,9 @@ function themeblvd_sanitize_upload( $input ) {
  */
 function themeblvd_sanitize_enum( $input, $option ) {
 	$output = '';
-	if ( array_key_exists( $input, $option['options'] ) )
+	if ( array_key_exists( $input, $option['options'] ) ) {
 		$output = $input;
+	}
 	return $output;
 }
 
@@ -161,8 +163,9 @@ function themeblvd_sanitize_background( $input ) {
  */
 function themeblvd_sanitize_background_repeat( $value ) {
 	$recognized = themeblvd_recognized_background_repeat();
-	if ( array_key_exists( $value, $recognized ) )
+	if ( array_key_exists( $value, $recognized ) ) {
 		return $value;
+	}
 	return apply_filters( 'themeblvd_default_background_repeat', current( $recognized ) );
 }
 
@@ -173,8 +176,9 @@ function themeblvd_sanitize_background_repeat( $value ) {
  */
 function themeblvd_sanitize_background_position( $value ) {
 	$recognized = themeblvd_recognized_background_position();
-	if ( array_key_exists( $value, $recognized ) )
+	if ( array_key_exists( $value, $recognized ) ) {
 		return $value;
+	}
 	return apply_filters( 'themeblvd_default_background_position', current( $recognized ) );
 }
 
@@ -185,8 +189,9 @@ function themeblvd_sanitize_background_position( $value ) {
  */
 function themeblvd_sanitize_background_attachment( $value ) {
 	$recognized = themeblvd_recognized_background_attachment();
-	if ( array_key_exists( $value, $recognized ) )
+	if ( array_key_exists( $value, $recognized ) ) {
 		return $value;
+	}
 	return apply_filters( 'themeblvd_default_background_attachment', current( $recognized ) );
 }
 
@@ -267,8 +272,9 @@ function themeblvd_sanitize_typography( $input ) {
 function themeblvd_sanitize_font_size( $value ) {
 	$recognized = themeblvd_recognized_font_sizes();
 	$value = preg_replace('/px/','', $value);
-	if ( in_array( (int) $value, $recognized ) )
+	if ( in_array( (int) $value, $recognized ) ) {
 		return (int) $value;
+	}
 	return (int) apply_filters( 'themeblvd_default_font_size', $recognized );
 }
 
@@ -309,21 +315,28 @@ function themeblvd_sanitize_columns( $input ) {
 	$output = array();
 
 	// Verify number of columns is an integer
-	if ( is_numeric( $input['num'] ) )
+	if ( is_numeric( $input['num'] ) ) {
 		$output['num'] = $input['num'];
-	else
+	} else {
 		$output['num'] = null;
+	}
 
 	// Verify widths
 	foreach ( $input['width'] as $key => $width ) {
+
 		$valid = false;
-		foreach ( $width_options[$key.'-col'] as $width_option )
-			if ( $width == $width_option['value'] )
+
+		foreach ( $width_options[$key.'-col'] as $width_option ) {
+			if ( $width == $width_option['value'] ) {
 				$valid = true;
-		if ( $valid )
+			}
+		}
+
+		if ( $valid ) {
 			$output['width'][$key] = $width;
-		else
+		} else {
 			$output['width'][$key] = null;
+		}
 	}
 
 	return $output;
@@ -339,18 +352,21 @@ function themeblvd_sanitize_tabs( $input ) {
 	$output = array();
 
 	// Verify number of tabs is an integer
-	if ( is_numeric( $input['num'] ) )
+	if ( is_numeric( $input['num'] ) ) {
 		$output['num'] = $input['num'];
-	else
+	} else {
 		$output['num'] = null;
+	}
 
 	// Verify style
-	if ( in_array( $input['style'], array( 'open', 'framed' ) ) )
+	if ( in_array( $input['style'], array( 'open', 'framed' ) ) ) {
 		$output['style'] = $input['style'];
+	}
 
 	// Verify nav
-	if ( in_array( $input['nav'], array( 'tabs_above', 'tabs_right', 'tabs_below', 'tabs_left', 'pills_above', 'pills_below' ) ) )
+	if ( in_array( $input['nav'], array( 'tabs_above', 'tabs_right', 'tabs_below', 'tabs_left', 'pills_above', 'pills_below' ) ) ) {
 		$output['nav'] = $input['nav'];
+	}
 
 	// Verify name fields and only save the right amount of names
 	if ( $output['num'] ) {
@@ -376,26 +392,34 @@ function themeblvd_sanitize_content( $input ) {
 
 	// Verify type
 	$types = array( 'widget', 'current', 'page', 'raw' );
-	if ( in_array( $input['type'], $types ) )
+	if ( in_array( $input['type'], $types ) ) {
 		$output['type'] = $input['type'];
-	else
+	} else {
 		$output['type'] = null;
+	}
 
 	// Add type's corresponding option
 	switch ( $output['type'] ) {
+
 		case 'widget' :
-			if ( isset( $input['sidebar'] ) )
+			if ( isset( $input['sidebar'] ) ) {
 				$output['sidebar'] = $input['sidebar'];
-			else
+			} else {
 				$output['sidebar'] = null;
+			}
 			break;
+
 		case 'page' :
 			$output['page'] = $input['page'];
 			break;
+
 		case 'raw' :
 			$output['raw'] = wp_kses( $input['raw'], $allowedtags );
 			$output['raw'] = str_replace( "\r\n", "\n", $output['raw'] );
-			isset( $input['raw_format'] ) ? $output['raw_format'] = '1' : $output['raw_format'] = '0';
+			$output['raw_format'] = '0';
+			if ( isset( $input['raw_format'] ) ) {
+				$output['raw_format'] = '1';
+			}
 			break;
 	}
 
@@ -412,22 +436,26 @@ function themeblvd_sanitize_logo( $input ) {
 	$output = array();
 
 	// Type
-	if ( is_array( $input ) && isset( $input['type'] ) )
+	if ( is_array( $input ) && isset( $input['type'] ) ) {
 		$output['type'] = $input['type'];
+	}
 
 	// Custom
-	if ( isset( $input['custom'] ) )
+	if ( isset( $input['custom'] ) ) {
 		$output['custom'] = sanitize_text_field( $input['custom'] );
-	if ( isset( $input['custom_tagline'] ) )
+	}
+	if ( isset( $input['custom_tagline'] ) ) {
 		$output['custom_tagline'] = sanitize_text_field( $input['custom_tagline'] );
+	}
 
 	// Image (standard)
 	if ( isset( $input['image'] ) ) {
 		$filetype = wp_check_filetype( $input['image'] );
 		if ( $filetype["ext"] ) {
 			$output['image'] = $input['image'];
-			if ( isset( $input['image_width'] ) )
+			if ( isset( $input['image_width'] ) ) {
 				$output['image_width'] = $input['image_width'];
+			}
 		} else {
 			$output['image'] = null;
 			$output['image_width'] = null;
@@ -437,10 +465,11 @@ function themeblvd_sanitize_logo( $input ) {
 	// Image (for retina)
 	if ( isset( $input['image_2x'] ) ) {
 		$filetype = wp_check_filetype( $input['image_2x'] );
-		if ( $filetype["ext"] )
+		if ( $filetype["ext"] ) {
 			$output['image_2x'] = $input['image_2x'];
-		else
+		} else {
 			$output['image_2x'] = null;
+		}
 	}
 
 	return $output;
@@ -459,8 +488,9 @@ function themeblvd_sanitize_social_media( $input ) {
 		$output = array();
 		if ( ! empty( $input['includes'] ) ) {
 			foreach ( $input['includes'] as $include ) {
-				if ( isset( $input['sources'][$include] ) )
+				if ( isset( $input['sources'][$include] ) ) {
 					$output[$include] = $input['sources'][$include];
+				}
 			}
 		}
 	} else {
@@ -477,8 +507,10 @@ function themeblvd_sanitize_social_media( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar_id = null ) {
+
 	$conditionals = themeblvd_conditionals_config();
 	$output = array();
+
 	// Prepare items that weren't straight-up arrays
 	// gifted on a platter for us.
 	if ( ! empty( $input['post'] ) ) {
@@ -489,6 +521,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 		$input['tag'] = str_replace(' ', '', $input['tag'] );
 		$input['tag'] = explode( ',', $input['tag'] );
 	}
+
 	// Now loop through each group and then each item
 	foreach ( $input as $type => $group ) {
 		if ( is_array( $group ) && ! empty( $group ) ) {
@@ -499,33 +532,38 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 					case 'page' :
 						$page_id = themeblvd_post_id_by_name( $item_id, 'page' );
 						$page = get_page( $page_id );
-						if ( $page )
+						if ( $page ) {
 							$name = $page->post_title;
+						}
 						break;
 
 					case 'post' :
 						$post_id = themeblvd_post_id_by_name( $item_id );
 						$post = get_post( $post_id );
-						if ( $post )
+						if ( $post ) {
 							$name = $post->post_title;
+						}
 						break;
 
 					case 'posts_in_category' :
 						$category = get_category_by_slug( $item_id );
-						if ( $category )
+						if ( $category ) {
 							$name = $category->slug;
+						}
 						break;
 
 					case 'category' :
 						$category = get_category_by_slug( $item_id );
-						if ( $category )
+						if ( $category ) {
 							$name = $category->slug;
+						}
 						break;
 
 					case 'tag' :
 						$tag = get_term_by( 'slug', $item_id, 'post_tag' );
-						if ( $tag )
+						if ( $tag ) {
 							$name = $tag->name;
+						}
 						break;
 
 					case 'top' :
@@ -564,10 +602,11 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
  * @since 2.2.0
  */
 function themeblvd_sanitize_editor( $input ) {
-	if ( current_user_can( 'unfiltered_html' ) )
+	if ( current_user_can( 'unfiltered_html' ) ) {
 		$output = $input;
-	else
-		$output = wp_kses($input, themeblvd_allowed_tags());
+	} else {
+		$output = wp_kses( $input, themeblvd_allowed_tags() );
+	}
 	return $output;
 }
 
@@ -577,8 +616,9 @@ function themeblvd_sanitize_editor( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_hex( $hex, $default = '' ) {
-	if ( themeblvd_validate_hex( $hex ) )
+	if ( themeblvd_validate_hex( $hex ) ) {
 		return $hex;
+	}
 	return $default;
 }
 
@@ -637,15 +677,21 @@ function themeblvd_recognized_font_styles() {
  * @since 2.2.0
  */
 function themeblvd_validate_hex( $hex ) {
+
 	$hex = trim( $hex );
+
 	/* Strip recognized prefixes. */
-	if ( 0 === strpos( $hex, '#' ) )
+	if ( 0 === strpos( $hex, '#' ) ) {
 		$hex = substr( $hex, 1 );
-	else if ( 0 === strpos( $hex, '%23' ) )
+	} else if ( 0 === strpos( $hex, '%23' ) ) {
 		$hex = substr( $hex, 3 );
+	}
+
 	/* Regex match. */
-	if ( 0 === preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) )
+	if ( 0 === preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
 		return false;
-	else
+	} else {
 		return true;
+	}
+
 }

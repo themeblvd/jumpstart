@@ -41,8 +41,9 @@ function jumpstart_updates() {
 	$license_key_status = get_option('themeblvd_license_key_status');
 
 	// No license key or it isn't activated? Let's blow this joint.
-	if ( ! $license_key || ! $license_key_status )
+	if ( ! $license_key || ! $license_key_status ) {
 		return;
+	}
 
 	// Include EDD_SL_Theme_Updater class to check and administer updates.
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-edd-sl-theme-updater.php' );

@@ -52,8 +52,9 @@ class Theme_Blvd_License_Admin {
 
 		if ( isset( $_POST['themeblvd_license_activate'] ) ) {
 
-		 	if ( ! check_admin_referer( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ) )
+		 	if ( ! check_admin_referer( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ) ) {
 				return; // get out if we didn't click the Activate button
+			}
 
 			global $wp_version;
 
@@ -67,15 +68,17 @@ class Theme_Blvd_License_Admin {
 
 			$response = wp_remote_get( add_query_arg( $api_params, $this->remote_api_url ) );
 
-			if ( is_wp_error( $response ) )
+			if ( is_wp_error( $response ) ) {
 				return false;
+			}
 
 			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
 			// $license_data->license will be either "active" or "inactive"
 
-			if ( isset( $license_data->license ) )
+			if ( isset( $license_data->license ) ) {
 				update_option( 'themeblvd_license_key_status', $license_data->license );
+			}
 
 		}
 	}
@@ -84,8 +87,9 @@ class Theme_Blvd_License_Admin {
 	 * Add admin page.
 	 */
 	function add_page() {
-		if ( themeblvd_supports('admin', 'updates') && current_user_can( themeblvd_admin_module_cap( 'updates' ) ) )
+		if ( themeblvd_supports('admin', 'updates') && current_user_can( themeblvd_admin_module_cap( 'updates' ) ) ) {
 			add_theme_page( __( 'Theme License', 'themeblvd' ), __( 'Theme License', 'themeblvd' ), 'manage_options', 'themeblvd-license', array( $this, 'admin_page' ) );
+		}
 	}
 
 	/**

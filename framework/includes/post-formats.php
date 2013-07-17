@@ -15,13 +15,15 @@
 function themeblvd_content_format_gallery( $content ) {
 
 	// Only continue if this is a "gallery" format post.
-	if ( ! has_post_format( 'gallery' ) )
+	if ( ! has_post_format( 'gallery' ) ) {
 		return $content;
+	}
 
 	$pattern = get_shortcode_regex();
 
-	if ( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] )
+	if ( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] ) {
 		$content = str_replace( $match[0], '', $content );
+	}
 
 	return $content;
 }
@@ -39,16 +41,18 @@ function themeblvd_content_format_gallery( $content ) {
 function themeblvd_content_format_link( $content ) {
 
 	// Only continue if this is a "link" format post.
-	if ( ! has_post_format( 'link' ) )
+	if ( ! has_post_format( 'link' ) ) {
 		return $content;
+	}
 
 	// Get the URL from the content.
 	$url = get_content_url( $content );
 
 	// Remove that URL from the start of content,
 	// if that's where it was.
-	if ( $url && 0 === strpos( $content , $url ) )
+	if ( $url && 0 === strpos( $content , $url ) ) {
 		$content = str_replace( $url, '', $content );
+	}
 
 	return $content;
 
@@ -75,8 +79,10 @@ if ( !function_exists( 'get_content_url' ) ) :
  * @return string The found URL.
  */
 function get_content_url( $content ) {
-	if ( empty( $content ) )
+
+	if ( empty( $content ) ) {
 		return '';
+	}
 
 	// the content is a URL
 	$trimmed = trim( $content );
@@ -92,8 +98,9 @@ function get_content_url( $content ) {
 	$line = trim( array_shift( $lines ) );
 
 	// the content is a URL followed by content
-	if ( 0 === stripos( $line, 'http' ) )
+	if ( 0 === stripos( $line, 'http' ) ) {
 		return esc_url_raw( $line );
+	}
 
 	return '';
 }

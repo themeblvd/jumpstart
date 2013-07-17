@@ -103,8 +103,9 @@ class Theme_Blvd_Meta_Box {
     		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
     		if ( ! $settings[$option['id']] ) {
     			if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
-    				if ( isset( $option['std'] ) )
+    				if ( isset( $option['std'] ) ) {
     					$settings[$option['id']] = $option['std'];
+    				}
     			}
     		}
     	}
@@ -114,8 +115,9 @@ class Theme_Blvd_Meta_Box {
     	echo $form[0];
 
     	//  Finish content
-    	if ( ! empty( $this->args['desc'] ) )
+    	if ( ! empty( $this->args['desc'] ) ) {
     		printf( '<p class="tb-meta-desc">%s</p>', $this->args['desc'] );
+    	}
 
 		echo '</div><!-- .tb-meta-box (end) -->';
 	}
@@ -132,10 +134,11 @@ class Theme_Blvd_Meta_Box {
 		foreach ( $this->options as $option ) {
 			if ( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
 
-				if ( ! $this->args['save_empty'] && ! $_POST['themeblvd_meta'][$option['id']] )
+				if ( ! $this->args['save_empty'] && ! $_POST['themeblvd_meta'][$option['id']] ) {
 					delete_post_meta( $post_id, $option['id'] );
-				else
+				} else {
 					update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
+				}
 
 			}
 		}

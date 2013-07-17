@@ -61,8 +61,9 @@ function themeblvd_is_grid_mode() {
 
 	$config = Theme_Blvd_Frontend_Init::get_instance();
 
-	if ( $config->get_mode() == 'grid' )
+	if ( $config->get_mode() == 'grid' ) {
 		return true;
+	}
 
 	return false;
 }
@@ -197,14 +198,15 @@ function themeblvd_browser_class( $classes ) {
 	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
 
 	// OS class
-	if ( preg_match( "/Mac/", $browser ) )
+	if ( preg_match( "/Mac/", $browser ) ) {
 		$classes[] = 'mac';
-	elseif ( preg_match( "/Windows/", $browser ) )
+	} elseif ( preg_match( "/Windows/", $browser ) ) {
 		$classes[] = 'windows';
-	elseif ( preg_match( "/Linux/", $browser ) )
+	} elseif ( preg_match( "/Linux/", $browser ) ) {
 		$classes[] = 'linux';
-	else
+	} else {
 		$classes[] = 'unknown-os';
+	}
 
 	// Browser class
 	if ( preg_match( "/Chrome/", $browser ) ) {
@@ -217,16 +219,17 @@ function themeblvd_browser_class( $classes ) {
 
 		// Internet Explorer... ugh, kill me now.
 		$classes[] = 'msie';
-		if ( preg_match( "/MSIE 6.0/", $browser ) )
+		if ( preg_match( "/MSIE 6.0/", $browser ) ) {
 			$classes[] = 'ie6';
-		elseif ( preg_match( "/MSIE 7.0/", $browser ) )
+		} elseif ( preg_match( "/MSIE 7.0/", $browser ) ) {
 			$classes[] = 'ie7';
-		elseif ( preg_match( "/MSIE 8.0/", $browser ) )
+		} elseif ( preg_match( "/MSIE 8.0/", $browser ) ) {
 			$classes[] = 'ie8';
-		elseif ( preg_match( "/MSIE 9.0/", $browser ) )
+		} elseif ( preg_match( "/MSIE 9.0/", $browser ) ) {
 			$classes[] = 'ie9';
-		elseif ( preg_match( "/MSIE 10.0/", $browser ) )
+		} elseif ( preg_match( "/MSIE 10.0/", $browser ) ) {
 			$classes[] = 'ie10';
+		}
 
 	} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
 		$classes[] = 'firefox';
@@ -305,12 +308,14 @@ function themeblvd_include_scripts() {
 	$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
 
 	// iOS Orientation (for older iOS devices, not supported by default)
-	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) )
+	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) ) {
 		wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js', true );
+	}
 
 	// Comments reply
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
 
 }
 endif;

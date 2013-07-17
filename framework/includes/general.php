@@ -7,8 +7,10 @@ if ( !function_exists( 'themeblvd_include_google_fonts' ) ) :
  * @since 2.0.0
  */
 function themeblvd_include_google_fonts() {
+
 	$fonts = func_get_args();
 	$used = array();
+
 	if ( ! empty( $fonts ) ) {
 
 		// Before including files, determine if SSL is being
@@ -20,8 +22,10 @@ function themeblvd_include_google_fonts() {
 		foreach ( $fonts as $font ) {
 			if ( $font['face'] == 'google' && $font['google'] ) {
 
-				if ( in_array( $font['google'], $used ) )
-					continue; // Skip duplicate
+				if ( in_array( $font['google'], $used ) ) {
+					// Skip duplicate
+					continue;
+				}
 
 				$used[] = $font['google'];
 				$name = themeblvd_remove_trailing_char( $font['google'] );
@@ -72,8 +76,9 @@ function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
 
 	global $pagenow;
 
-	if ( $pagenow == 'wp-signup.php' )
+	if ( $pagenow == 'wp-signup.php' ) {
 		$sidebar_layout = 'full_width';
+	}
 
 	return apply_filters( 'themeblvd_wpmultisite_signup_sidebar_layout', $sidebar_layout );
 }
@@ -92,8 +97,9 @@ function themeblvd_get_column_class( $column ) {
 	$sidebar_layouts = themeblvd_sidebar_layouts();
 	$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
 
-	if ( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) )
+	if ( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) ) {
 		$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
+	}
 
 	return apply_filters( 'themeblvd_column_class', $column_class );
 }
@@ -201,10 +207,14 @@ function themeblvd_setup() {
  * @return boolean $supports Whether feature is supported or not
  */
 function themeblvd_supports( $group, $feature ) {
+
 	$setup = themeblvd_setup();
 	$supports = false;
-	if ( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) )
+
+	if ( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) ) {
 		$supports = true;
+	}
+
 	return $supports;
 }
 
@@ -221,12 +231,19 @@ function themeblvd_supports( $group, $feature ) {
  */
 function themeblvd_deprecated_function( $function, $version, $replacement = null, $message = null ) {
 	if ( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
-		if ( ! is_null( $message ) )
+		if ( ! is_null( $message ) ) {
+
 			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd' ), $function, $version, $message ) );
-		elseif ( ! is_null( $replacement ) )
+
+		} elseif ( ! is_null( $replacement ) ) {
+
 			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'themeblvd' ), $function, $version, $replacement ) );
-		else
+
+		} else {
+
 			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available.', 'themeblvd' ), $function, $version ) );
+
+		}
 	}
 }
 
@@ -253,8 +270,9 @@ function themeblvd_admin_module_cap( $module ) {
 
 	// Setup capability
 	$cap = '';
-	if ( isset( $module_caps[$module] ) )
+	if ( isset( $module_caps[$module] ) ) {
 		$cap = $module_caps[$module];
+	}
 
 	return $cap;
 }
@@ -291,26 +309,32 @@ if ( !function_exists( 'themeblvd_post_id_by_name' ) ) :
  * @return string $id ID of post.
  */
 function themeblvd_post_id_by_name( $slug, $post_type = null ) {
+
 	global $wpdb;
 	$null = null;
 	$slug = sanitize_title( $slug );
 
 	// Grab posts from DB (hopefully there's only one!)
-	if ( $post_type ) // More efficiant with post type
+	if ( $post_type ) {
+		// More efficiant with post type
 		$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND (post_type = %s)", $slug, $post_type ));
-	else
+	} else {
 		$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s", $slug ));
+	}
 
 	// If no results, return null
-	if ( empty( $posts ) )
+	if ( empty( $posts ) ) {
 		return $null;
+	}
 
 	// Run through our results and return the ID of the first.
 	// Hopefully there was only one result, but if there was
 	// more than one, we'll just return a single ID.
-	foreach ( $posts as $post )
-		if ( $post->ID )
+	foreach ( $posts as $post ) {
+		if ( $post->ID ) {
 			return $post->ID;
+		}
+	}
 
 	// If for some odd reason, there was no ID in the returned
 	// post ID's, return nothing.
@@ -325,12 +349,17 @@ if ( !function_exists( 'themeblvd_register_navs' ) ) :
  * @since 2.0.0
  */
 function themeblvd_register_navs() {
+
+	// Setup nav menus
 	$menus = array(
 		'primary' => __( 'Primary Navigation', 'themeblvd' ),
 		'footer' => __( 'Footer Navigation', 'themeblvd' )
 	);
 	$menus = apply_filters( 'themeblvd_nav_menus', $menus );
+
+	// Register nav menus with WP
 	register_nav_menus( $menus );
+
 }
 endif;
 
@@ -386,14 +415,16 @@ function themeblvd_admin_menu_bar() {
 
 	global $wp_admin_bar;
 
-	if ( is_admin() || ! method_exists( $wp_admin_bar, 'add_node' ) )
+	if ( is_admin() || ! method_exists( $wp_admin_bar, 'add_node' ) ) {
 		return;
+	}
 
 	// Get all admin modules
 	$modules = themeblvd_get_admin_modules();
 
-	if ( ! $modules )
+	if ( ! $modules ) {
 		return;
+	}
 
 	// Theme Options
 	if ( isset( $modules['options'] ) && themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
@@ -873,44 +904,56 @@ function themeblvd_get_textures() {
  * @return $select array items for select
  */
 function themeblvd_get_select( $type ) {
+
 	$select = array();
+
 	switch ( $type ) {
 
 		// Pages
 		case 'pages' :
 			$pages_select = array();
 			$pages = get_pages();
-			if ( ! empty( $pages ) )
-				foreach ( $pages as $page )
+
+			if ( ! empty( $pages ) ) {
+				foreach ( $pages as $page ) {
 					$select[$page->post_name] = $page->post_title;
-			else
+				}
+			} else {
 				$select['null'] = __( 'No pages exist.', 'themeblvd' );
+			}
 			break;
 
 		// Categories
 		case 'categories' :
 			$select['all'] = __( '<strong>All Categories</strong>', 'themeblvd' );
+
 			if ( isset( $GLOBALS['sitepress'] ) ) {
+
 				// WPML compat
 				global $sitepress;
 				remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
 				$categories = get_categories( array( 'hide_empty' => false ) );
 				add_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
+
 			} else {
 				$categories = get_categories( array( 'hide_empty' => false ) );
 			}
-			foreach ( $categories as $category )
+
+			foreach ( $categories as $category ) {
 				$select[$category->slug] = $category->name;
+			}
 			break;
 
 		// Sliders
 		case 'sliders' :
 			$sliders = get_posts( 'post_type=tb_slider&numberposts=-1' );
-			if ( ! empty( $sliders ) )
-				foreach ( $sliders as $slider )
+			if ( ! empty( $sliders ) ) {
+				foreach ( $sliders as $slider ) {
 					$select[$slider->post_name] = $slider->post_title;
-			else
+				}
+			} else {
 				$select['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
+			}
 			break;
 
 		// Floating Sidebars
@@ -919,8 +962,9 @@ function themeblvd_get_select( $type ) {
 			if ( ! empty( $sidebars ) ) {
 				foreach ( $sidebars as $sidebar ) {
 					$location = get_post_meta( $sidebar->ID, 'location', true );
-					if ( $location == 'floating' )
+					if ( $location == 'floating' ) {
 						$select[$sidebar->post_name] = $sidebar->post_title;
+					}
 				}
 			} // Handle error message for no sidebars outside of this function
 			break;
@@ -975,10 +1019,11 @@ function themeblvd_colors( $bootstrap = true ) {
 	);
 
 	// Merge colors
-	if ( $bootstrap )
+	if ( $bootstrap ) {
 		$colors = array_merge( $colors, $boostrap_colors, $themeblvd_colors );
-	else
+	} else {
 		$colors = array_merge( $colors, $themeblvd_colors );
+	}
 
 	return apply_filters( 'themeblvd_colors', $colors, $bootstrap );
 }
@@ -989,19 +1034,25 @@ function themeblvd_colors( $bootstrap = true ) {
  * @since 2.1.0
  */
 function themeblvd_stats() {
+
 	// API Key
 	$api_key = 'y0zr2c64abc1qvebamzpnk4m3izccxpxxlfh';
+
 	// Start of Metrics
 	global $wpdb;
 	$data = get_transient( 'presstrends_data' );
+
 	if ( ! $data || $data == '' ) {
+
 		$api_base = 'http://api.presstrends.io/index.php/api/sites/update/api/';
 		$url = $api_base . $api_key . '/';
+
 		// Theme Data (by Jason)
 		$data = array();
 		$theme_data = wp_get_theme( get_template() );
 		$data['theme_name'] = str_replace( ' ', '', $theme_data->get('Name') ); // remove spaces to fix presstrend's bug
 		$data['theme_version'] = str_replace( ' ', '', $theme_data->get('Version') ); // remove spaces to fix presstrend's bug
+
 		// Continue on ...
 		$count_posts = wp_count_posts();
 		$count_pages = wp_count_posts('page');
@@ -1010,13 +1061,19 @@ function themeblvd_stats() {
 		$plugin_count = count(get_option('active_plugins'));
 		$all_plugins = get_plugins();
 		$plugin_name = ''; // (added by Jason)
+
 		foreach ( $all_plugins as $plugin_file => $plugin_data ) {
 			$plugin_name .= $plugin_data['Name'];
 			$plugin_name .= '&';
 		}
+
 		$posts_with_comments = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}posts WHERE post_type='post' AND comment_count > 0");
-		if ( $count_posts->publish > 0  ) // fix by Jason
+
+		// fix by Jason
+		if ( $count_posts->publish > 0  ) {
 			$comments_to_posts = number_format(($posts_with_comments / $count_posts->publish) * 100, 0, '.', '');
+		}
+
 		$pingback_result = $wpdb->get_var('SELECT COUNT(comment_ID) FROM '.$wpdb->comments.' WHERE comment_type = "pingback"');
 		$data['url'] = stripslashes(str_replace(array('http://', '/', ':' ), '', site_url()));
 		$data['posts'] = $count_posts->publish;
@@ -1032,15 +1089,20 @@ function themeblvd_stats() {
 		$data['plugins'] = $plugin_count;
 		$data['plugin'] = urlencode($plugin_name);
 		$data['wpversion'] = get_bloginfo('version');
+
 		foreach ( $data as $k => $v ) {
 			$url .= $k . '/' . $v . '/';
 		}
+
 		// Manually set theme name to avoid confusion with feed
-		if ( defined( 'TB_THEME_NAME' ) )
+		if ( defined( 'TB_THEME_NAME' ) ) {
 			$data['theme_name'] = TB_THEME_NAME;
+		}
+
 		// Send response and set transient
 		$response = wp_remote_get( $url );
 		set_transient('presstrends_data', $data, 60*60*24); // 1 day transient
+
 	}
 }
 
@@ -1453,20 +1515,25 @@ function themeblvd_prettyphoto_supported_link( $url ) {
 	if ( $url ) {
 
 		// Link to Vimeo or YouTube page?
-		if ( strpos( $url, 'vimeo.com' ) !== false ||
-			strpos( $url, 'youtube.com' ) !== false ||
-			strpos( $url, 'youtu.be' ) !== false )
-		$icon = 'video';
+		if ( strpos( $url, 'vimeo.com' ) !== false || strpos( $url, 'youtube.com' ) !== false || strpos( $url, 'youtu.be' ) !== false ) {
+			$icon = 'video';
+		}
 
 		if ( ! $icon ) {
+
 			$parsed_url = parse_url( $url );
 			$type = wp_check_filetype( $parsed_url['path'] );
+
 			// Link to .mov file?
-			if ( $type['ext'] == 'mov' )
+			if ( $type['ext'] == 'mov' ) {
 				$icon = 'video';
+			}
+
 			// Link to image file?
-			if ( substr( $type['type'], 0, 5 ) == 'image' )
+			if ( substr( $type['type'], 0, 5 ) == 'image' ) {
 				$icon = 'image';
+			}
+
 		}
 	}
 

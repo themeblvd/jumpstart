@@ -10,14 +10,16 @@
  */
 function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
 
-	if ( ! $string )
+	if ( ! $string ) {
 		return null;
+	}
 
 	$offset = strlen( $string ) - 1;
 
 	$trailing_char = strpos( $string, $char, $offset );
-	if ( $trailing_char )
+	if ( $trailing_char ) {
 		$string = substr( $string, 0, -1 );
+	}
 
 	return $string;
 }
@@ -67,8 +69,9 @@ function themeblvd_get_font_size( $option ) {
 
 	$size = '13px';
 
-	if ( isset( $option['size'] ) )
+	if ( isset( $option['size'] ) ) {
 		$size = $option['size'];
+	}
 
 	return apply_filters( 'themeblvd_font_size', $size, $option );
 }
@@ -85,8 +88,9 @@ function themeblvd_get_font_style( $option ) {
 
 	$style = 'normal';
 
-	if ( isset( $option['style'] ) && ( $option['style'] == 'italic' || $option['style'] == 'bold-italic' ) )
+	if ( isset( $option['style'] ) && ( $option['style'] == 'italic' || $option['style'] == 'bold-italic' ) ) {
 		$style = 'italic';
+	}
 
 	return apply_filters( 'themeblvd_font_style', $style, $option );
 }
@@ -103,8 +107,9 @@ function themeblvd_get_font_weight( $option ) {
 
 	$weight = 'normal';
 
-	if ( isset( $option['style'] ) && ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' ) )
+	if ( isset( $option['style'] ) && ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' ) ) {
 		$weight = 'bold';
+	}
 
 	return apply_filters( 'themeblvd_font_weight', $weight, $option );
 }
@@ -140,8 +145,9 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 	// Is there a query source? (i.e. category, tag, query)
 	$source = '';
-	if ( ! empty( $options['source'] ) )
+	if ( ! empty( $options['source'] ) ) {
 		$source = $options['source'];
+	}
 
 	// Custom query
 	if ( ( 'query' == $source && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
@@ -151,8 +157,9 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 		// Force posts per page on grids
 		if( 'grid' == $type && ! $slider && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
-			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
+			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
 				$query['numberposts'] = $options['rows']*$options['columns'];
+			}
 		}
 
 	}
@@ -165,14 +172,22 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 		// Number of posts
 		if ( $type == 'grid' && ! $slider ) {
-			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) )
+
+			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
 				$query['numberposts'] = intval($options['rows'])*intval($options['columns']);
+			}
+
 		} else {
-			if ( ! empty( $options['numberposts'] ) )
+
+			if ( ! empty( $options['numberposts'] ) ) {
 				$query['numberposts'] = intval( $options['numberposts'] );
+			}
+
 		}
-		if ( empty( $query['numberposts'] ) )
+
+		if ( empty( $query['numberposts'] ) ) {
 			$query['numberposts'] = -1;
+		}
 
 		// Categories
 		if ( 'category' == $source || ! $source ) {
@@ -180,8 +195,9 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 			if ( 'auto_slider' == $type ) {
 
 				// The "Post Slider" element
-				if ( ! empty( $options['category'] ) )
+				if ( ! empty( $options['category'] ) ) {
 					$query['category_name'] = $options['category'];
+				}
 
 			} else {
 
@@ -219,19 +235,23 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 		// Tags
 		if ( 'tag' == $source || ! $source ) {
-			if ( ! empty( $options['tag'] ) )
+			if ( ! empty( $options['tag'] ) ) {
 				$query['tag'] = $options['tag'];
+			}
 		}
 
 		// Additional args
-		if ( ! empty( $options['orderby'] ) )
+		if ( ! empty( $options['orderby'] ) ) {
 			$query['orderby'] = $options['orderby'];
+		}
 
-		if ( ! empty( $options['order'] ) )
+		if ( ! empty( $options['order'] ) ) {
 			$query['order'] = $options['order'];
+		}
 
-		if ( ! empty( $options['offset'] ) )
+		if ( ! empty( $options['offset'] ) ) {
 			$query['offset'] = intval( $options['offset'] );
+		}
 
 	}
 
@@ -250,23 +270,33 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
  * @return int $posts_per_page The number of posts per page for a grid.
  */
 function themeblvd_posts_page_page( $type, $columns = null, $rows = null ) {
+
 	if ( $type == 'template' ) {
 		if ( ! $columns || ! $rows ) {
+
 			global $post;
+
 			$possible_column_nums = array( 1, 2, 3, 4, 5 );
 			$posts_per_page = null;
+
 			// Columns
 			$columns = get_post_meta( $post->ID, 'columns', true );
-			if ( ! in_array( intval($columns), $possible_column_nums ) )
+			if ( ! in_array( intval($columns), $possible_column_nums ) ) {
 				$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
+			}
+
 			// Rows
 			$rows = get_post_meta( $post->ID, 'rows', true );
-			if ( ! $rows )
+			if ( ! $rows ) {
 				$rows = apply_filters( 'themeblvd_default_grid_columns', 4 );
+			}
+
 		}
 	}
+
 	// Posts per page
 	$posts_per_page = $columns * $rows;
+
 	return apply_filters('themeblvd_posts_page_page', $posts_per_page, $type, $columns, $rows );
 }
 
@@ -279,17 +309,21 @@ function themeblvd_posts_page_page( $type, $columns = null, $rows = null ) {
  * @return string $class class for each column of grid
  */
 function themeblvd_grid_class( $columns ) {
+
 	$class = 'grid_3'; // default
-	if ( $columns == 1 )
+
+	if ( $columns == 1 ) {
 		$class = 'grid_12';
-	else if ( $columns == 2 )
+	} else if ( $columns == 2 ) {
 		$class = 'grid_6';
-	else if ( $columns == 3 )
+	} else if ( $columns == 3 ) {
 		$class = 'grid_4';
-	else if ( $columns == 4 )
+	} else if ( $columns == 4 ) {
 		$class = 'grid_3';
-	else if ( $columns == 5 )
+	} else if ( $columns == 5 ) {
 		$class = 'grid_fifth_1';
+	}
+
 	return apply_filters( 'themeblvd_grid_class', $class, $columns );
 }
 
@@ -319,8 +353,9 @@ if ( !function_exists( 'themeblvd_analytics' ) ) :
  */
 function themeblvd_analytics() {
 	$analytics = themeblvd_get_option( 'analytics' );
-	if ( $analytics )
+	if ( $analytics ) {
 		echo wp_kses( $analytics, themeblvd_allowed_tags() )."\n";
+	}
 }
 endif;
 
@@ -347,10 +382,13 @@ function themeblvd_text_color( $bg_color ) {
 	$b = hexdec( substr( $bg_color,4,2 ) );
 
 	// Simple weighted average
-	if ( $r + $g + $b > 382 )
-	    $text_color = apply_filters( 'themeblvd_dark_font', '#333333' ); // bright color, use dark font
-	else
-	    $text_color = apply_filters( 'themeblvd_light_font', '#ffffff' );; // dark color, use bright font
+	if ( $r + $g + $b > 382 ) {
+		// bright color, use dark font
+	    $text_color = apply_filters( 'themeblvd_dark_font', '#333333' );
+	} else {
+		// dark color, use bright font
+	    $text_color = apply_filters( 'themeblvd_light_font', '#ffffff' );
+	}
 
 	return apply_filters( 'themeblvd_text_color', $text_color, $bg_color );
 }
@@ -376,18 +414,29 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 
 	// Send back in black if it's not a properly
 	// formatted 6-digit hex
-	if ( strlen( $color ) != 6 )
+	if ( strlen( $color ) != 6 ) {
 		return '#000000';
+	}
 
 	// Build new color
 	$new_color = '';
 	for ( $x = 0; $x < 3; $x++ ) {
-	    if ( $direction == 'lighten' )
+
+	    if ( $direction == 'lighten' ) {
 	    	$c = hexdec( substr( $color, ( 2*$x ), 2 ) ) + $difference;
-	    else
+	    } else {
 			$c = hexdec( substr( $color, ( 2*$x ), 2 ) ) - $difference;
-	    $c = ( $c < 0 ) ? 0 : dechex( $c );
-	    $new_color .= ( strlen( $c ) < 2 ) ? '0'.$c : $c;
+		}
+
+		$c = dechex($c);
+		if ( $c < 0 ) {
+			$c = 0;
+		}
+
+		$new_color = $c;
+		if ( strlen($c) < 2 )
+			$new_color = '0'.$c;
+
 	}
 
 	return apply_filters( 'themeblvd_adjust_color', '#'.$new_color, $color, $difference, $direction );
@@ -432,16 +481,20 @@ function themeblvd_get_classes( $element, $start_space = false, $end_space = fal
 
 	if ( ! empty( $all_classes[$element] ) ) {
 
-		if ( $start_space )
+		if ( $start_space ) {
 			$classes .= ' ';
+		}
 
-		if ( is_array( $all_classes[$element] ) )
+		if ( is_array( $all_classes[$element] ) ) {
 			$classes .= implode(' ', $all_classes[$element]);
-		else
-			$classes .= $all_classes[$element]; // Backward compatbility, $all_classes used to use strings
+		} else {
+			// Backward compatbility, $all_classes used to use strings
+			$classes .= $all_classes[$element];
+		}
 
-		if ( $end_space )
+		if ( $end_space ) {
 			$classes .= ' ';
+		}
 
 	}
 	return $classes;
@@ -466,32 +519,49 @@ function themeblvd_get_classes( $element, $start_space = false, $end_space = fal
  * @return var $class CSS class to use
  */
 function themeblvd_responsive_visibility_class( $devices, $start_space = false, $end_space = false ) {
+
 	// Build class
 	$class = '';
 	$exists = false;
-	if ( is_array( $devices ) && ! empty( $devices ) )
-		foreach ( $devices as $device )
-			if ( $device )
+
+	if ( is_array( $devices ) && ! empty( $devices ) ) {
+		foreach ( $devices as $device ) {
+			if ( $device ) {
 				$exists = true;
+			}
+		}
+	}
 
 	// Only start buld if there's a class to build
 	if ( $exists ) {
+
 		$class = 'hide_on_';
+
 		if ( $devices['hide_on_standard'] ) {
+
 			// Standard Devices
 			$class .= 'standard';
-			if ( $devices['hide_on_tablet'] )
+			if ( $devices['hide_on_tablet'] ) {
 				$class .= '_and_tablet';
-			if ( $devices['hide_on_mobile'] )
+			}
+
+			if ( $devices['hide_on_mobile'] ) {
 				$class .= '_and_mobile';
+			}
+
 		} else if ( $devices['hide_on_tablet'] ) {
+
 			// Tablets
 			$class .= 'tablet';
-			if ( $devices['hide_on_mobile'] )
+			if ( $devices['hide_on_mobile'] ) {
 				$class .= '_and_mobile';
+			}
+
 		} else if ( $devices['hide_on_mobile'] ) {
+
 			// Mobile
 			$class .= 'mobile';
+
 		}
 	}
 
@@ -500,10 +570,15 @@ function themeblvd_responsive_visibility_class( $devices, $start_space = false, 
 
 	// Start/End spaces
 	if ( $class ) {
-		if ( $start_space )
+
+		if ( $start_space ) {
 			$class = ' '.$class;
-		if ( $end_space )
+		}
+
+		if ( $end_space ) {
 			$class .= ' ';
+		}
+
 	}
 
 	// Return class
@@ -525,12 +600,14 @@ function themeblvd_wp_title( $title ) {
 
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
+	if ( $site_description && ( is_home() || is_front_page() ) ) {
 		$title .= " | $site_description";
+	}
 
 	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
+	if ( $paged >= 2 || $page >= 2 ) {
 		$title .= ' | ' . sprintf( themeblvd_get_local( 'page_num' ), max( $paged, $page ) );
+	}
 
 	return apply_filters( 'themeblvd_wp_title', $title );
 }
@@ -700,12 +777,15 @@ function themeblvd_show_comments() {
 
 	if ( is_single() ) {
 
-		if ( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' )
+		if ( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' ) {
 			$show = false;
-		if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' )
+		}
+
+		if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' ) {
 			$show = false;
-		else if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'show' )
+		} else if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'show' ) {
 			$show = true;
+		}
 
 	}
 	return $show;
@@ -723,23 +803,27 @@ function themeblvd_show_comments() {
 function themeblvd_private_page( $template ) {
 
 	// Only for password protected pages.
-	if ( ! post_password_required() )
+	if ( ! post_password_required() ) {
 		return $template;
+	}
 
 	// Custom Layouts
-	if ( themeblvd_config( 'builder' ) )
+	if ( themeblvd_config( 'builder' ) ) {
 		$template = locate_template( 'page.php' );
+	}
 
 	// Page Templates
 	$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
 	foreach ( $page_templates as $page_template ) {
-		if ( is_page_template( $page_template ) )
+		if ( is_page_template( $page_template ) ) {
 			$template = locate_template( 'page.php' );
+		}
 	}
 
 	// Removed hooked the_content on Post Grid/List templates
-	if ( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) )
+	if ( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
 		remove_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
+	}
 
 	return $template;
 }
@@ -763,8 +847,9 @@ function themeblvd_link_pages_args( $args ) {
 	// Before WP 3.6, this filter can't be applied because the
 	// wp_link_pages_link filter did not exist yet. Our changes
 	// need to come together.
-	if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
+	if ( version_compare( $wp_version, '3.6-alpha', '<' ) ) {
 		return $args;
+	}
 
 	// Add TB Framework/Bootstrap surrounding markup
 	$args['before'] = '<div class="pagination-wrap"><div class="pagination"><div class="btn-group clearfix">';
@@ -790,10 +875,12 @@ function themeblvd_link_pages_link( $link, $i ) {
 
 	global $page;
 
-	if ( $page == $i ) // If is current page
+	if ( $page == $i ) {
+		// If is current page
 		$link = '<a class="btn btn-default active" href="'.get_pagenum_link().'">'.$i.'</a>';
-	else
+	} else {
 		$link = str_replace( '<a', '<a class="btn btn-default"', $link );
+	}
 
 	return $link;
 }
@@ -824,101 +911,135 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 
 	// Build parts
 	if ( is_category() ) {
+
 		/* Category Archives */
+
 		$cat_obj = $wp_query->get_queried_object();
 		$current_cat = $cat_obj->term_id;
 		$current_cat = get_category( $current_cat );
+
 		if ( $current_cat->parent && ( $current_cat->parent != $current_cat->term_id ) ) {
 			$parents = themeblvd_get_category_parents( $current_cat->parent );
 			$parts = array_merge( $parts, $parents );
 		}
+
 		// Add current category
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> $current_cat->name,
 			'type'	=> 'category'
 		);
+
 	} elseif ( is_day() ) {
+
 		/* Day Archives */
+
 		// Year
 		$parts[] = array(
 			'link' 	=> get_year_link( get_the_time('Y') ),
 			'text' 	=> get_the_time('Y'),
 			'type'	=> 'year'
 		);
+
 		// Month
 		$parts[] = array(
 			'link' 	=> get_month_link( get_the_time('Y'), get_the_time('m') ),
 			'text' 	=> get_the_time('F'),
 			'type'	=> 'month'
 		);
+
 		// Day
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> get_the_time('d'),
 			'type'	=> 'day'
 		);
+
 	} elseif ( is_month() ) {
+
 		/* Month Archives */
+
 		// Year
 		$parts[] = array(
 			'link' 	=> get_year_link( get_the_time('Y') ),
 			'text' 	=> get_the_time('Y'),
 			'type'	=> 'year'
 		);
+
 		// Month
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> get_the_time('F'),
 			'type'	=> 'month'
 		);
+
 	} elseif ( is_year() ) {
+
 		/* Year Archives */
+
 		// Year
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> get_the_time('Y'),
 			'type'	=> 'year'
 		);
+
 	} elseif ( is_tag() ) {
+
 		/* Tag Archives */
+
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> themeblvd_get_local('crumb_tag').' "'.single_tag_title('', false).'"',
 			'type'	=> 'tag'
 		);
+
 	} elseif ( is_author() ) {
+
 		/* Author Archives */
+
 		global $author;
 		$userdata = get_userdata( $author );
+
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> themeblvd_get_local('crumb_author').' '.$userdata->display_name,
 			'type'	=> 'author'
 		);
+
 	} elseif ( is_attachment() ) {
+
 		/* Attachment */
+
 		$parent = get_post( $post->post_parent );
 		if ( ! empty( $parent ) ) {
+
 			$category = get_the_category( $parent->ID );
+
 			if ( ! empty( $category ) ) {
 				$category = $category[0];
 				$parents = themeblvd_get_category_parents( $category->term_id );
 				$parts = array_merge( $parts, $parents );
 			}
+
 			$parts[] = array(
 				'link' 	=> get_permalink( $parent->ID ),
 				'text' 	=> $parent->post_title,
 				'type'	=> 'single'
 			);
+
 		}
+
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> get_the_title(),
 			'type'	=> 'attachment'
 		);
+
 	} elseif ( is_single() ) {
+
 		/* Single Posts */
+
 		if ( get_post_type() == 'post' ) {
 			// Categories (only if standard post type)
 			$category = get_the_category();
@@ -926,24 +1047,33 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 			$parents = themeblvd_get_category_parents( $category->term_id );
 			$parts = array_merge( $parts, $parents );
 		}
+
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> get_the_title(),
 			'type'	=> 'single'
 		);
+
 	} elseif ( is_search() ) {
+
 		/* Search Results */
+
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> themeblvd_get_local('crumb_search').' "'.get_search_query().'"',
 			'type'	=> 'search'
 		);
+
 	} elseif ( is_page() ) {
+
 		/* Pages */
+
 		if ( $post->post_parent ) {
+
 			// Parent pages
 			$parent_id  = $post->post_parent;
 			$parents = array();
+
 			while ( $parent_id ) {
 				$page = get_page( $parent_id );
 				$parents[] = array(
@@ -953,20 +1083,27 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 				);
 				$parent_id = $page->post_parent;
 			}
+
 			$parents = array_reverse( $parents );
 			$parts = array_merge( $parts, $parents );
+
 		}
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> get_the_title(),
 			'type'	=> 'page'
 		);
+
 	} elseif ( is_404() ) {
+
+		/* 404 */
+
 		$parts[] = array(
 			'link' 	=> '',
 			'text' 	=> themeblvd_get_local('crumb_404'),
 			'type'	=> '404'
 		);
+
 	}
 
 	// Filter the trail before the Home link is
@@ -999,19 +1136,25 @@ function themeblvd_show_breadcrumbs() {
 	$display = '';
 
 	// Pages and Posts
-	if ( is_page() || is_single() )
+	if ( is_page() || is_single() ) {
 		$display = get_post_meta( $post->ID, '_tb_breadcrumbs', true );
+	}
 
 	// Standard site-wide option
-	if ( ! $display || $display == 'default' )
+	if ( ! $display || $display == 'default' ) {
 		$display = themeblvd_get_option( 'breadcrumbs', null, 'show' );
+	}
 
 	// Disable on posts homepage
-	if ( is_home() )
+	if ( is_home() ) {
 		$display = 'hide';
+	}
 
 	// Convert to boolean
-	$show = $display == 'show' ? true : false;
+	$show = false;
+	if ( $display == 'show' ) {
+		$show = true;
+	}
 
 	return apply_filters( 'themeblvd_show_breadcrumbs', $show, $display );
 }
@@ -1044,8 +1187,9 @@ function themeblvd_get_term_parents( $id, $taxonomy = 'category', $used = array(
 	$parent = get_term( intval( $id ), $taxonomy );
 
 	// Get out of here if there's an error
-	if ( is_wp_error( $parent ) )
+	if ( is_wp_error( $parent ) ) {
 		return $parent;
+	}
 
 	// Parent of the parent
 	if ( $parent->parent && ( $parent->parent != $parent->term_id ) && ! in_array( $parent->parent, $used ) ) {
@@ -1064,7 +1208,6 @@ function themeblvd_get_term_parents( $id, $taxonomy = 'category', $used = array(
 	return $chain;
 }
 
-
 /**
  * Get pagination parts.
  *
@@ -1082,13 +1225,15 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
 	$parts = array();
 	$showitems = ($range * 2)+1;
 
-	if ( empty( $paged ) )
+	if ( empty( $paged ) ) {
 		$paged = 1;
+	}
 
 	if ( ! $pages ) {
 		$pages = $wp_query->max_num_pages;
-		if ( ! $pages )
+		if ( ! $pages ) {
 			$pages = 1;
+		}
 	}
 
 	if ( 1 != $pages ) {

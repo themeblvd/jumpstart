@@ -61,8 +61,9 @@ function themeblvd_non_modular_assets() {
 	// Styles for all of WP admin -- Currently only applies to
 	// Builder and Sliders plugin menu items and making them
 	// retina-compatible... Fancy, right?
-	if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) )
+	if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 		wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
+	}
 
 }
 endif;
@@ -99,9 +100,12 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 		// Only run check if a location exists and this
 		// is not a floating widget area.
 		if ( $location && $location != 'floating' ) {
+
 			$assignments = get_post_meta( $post->ID, 'assignments', true );
+
 			if ( is_array( $assignments ) && ! empty( $assignments ) ) {
 				foreach ( $assignments as $key => $assignment ) {
+
 					if ( $key != 'custom' && in_array( $key, $non_conflicts[$location] ) ) {
 						if ( ! in_array( $key, $conflicts[$location] ) ) {
 							$conflicts[$location][] = $key;
@@ -109,6 +113,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 					} else {
 						$non_conflicts[$location][] = $key;
 					}
+
 				}
 			}
 		}
@@ -137,12 +142,17 @@ function themeblvd_hijack_page_atts() {
  */
 function themeblvd_save_page_atts( $post_id ) {
 	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
+
 		// Save sidebar layout
-		if ( isset( $_POST['_tb_sidebar_layout'] ) )
+		if ( isset( $_POST['_tb_sidebar_layout'] ) ) {
 			update_post_meta( $post_id, '_tb_sidebar_layout', $_POST['_tb_sidebar_layout'] );
+		}
+
 		// Save custom layout
-		if ( isset( $_POST['_tb_custom_layout'] ) ) // backwards compat
+		if ( isset( $_POST['_tb_custom_layout'] ) ) { // backwards compat
 			update_post_meta( $post_id, '_tb_custom_layout', $_POST['_tb_custom_layout'] );
+		}
+
 	}
 }
 
@@ -159,8 +169,9 @@ function themeblvd_is_admin_module() {
 
 	// Current page
 	$current_page = $pagenow;
-	if ( isset( $_GET['page'] ) )
+	if ( isset( $_GET['page'] ) ) {
 		$current_page .= sprintf( '?page=%s', $_GET['page'] );
+	}
 
 	// Get admin modules
 	$modules = themeblvd_get_admin_modules();
@@ -191,9 +202,12 @@ function themeblvd_is_admin_module() {
  * @since 2.2.1
  */
 function themeblvd_disable_nag() {
+
 	global $current_user;
-    if ( isset( $_GET['tb_nag_ignore'] ) )
-         add_user_meta( $current_user->ID, $_GET['tb_nag_ignore'], 'true', true );
+
+    if ( isset( $_GET['tb_nag_ignore'] ) ) {
+		add_user_meta( $current_user->ID, $_GET['tb_nag_ignore'], 'true', true );
+	}
 }
 
 /**

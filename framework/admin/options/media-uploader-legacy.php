@@ -97,16 +97,18 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$value = array( 'url' => '', 'id' => '' );
 		$upload_text = __( 'Upload', 'themeblvd' );
 
-		if ( $type == 'slider' )
+		if ( $type == 'slider' ) {
 			$name = $option_name.'[image]';
-		else
+		} else {
 			$name = $option_name.'['.$_id.']';
+		}
 
 		$id = strip_tags( strtolower( $_id ) );
 
 		// If a value is passed and we don't have a stored value, use the value that's passed through.
-		if ( $_value )
+		if ( $_value ) {
 			$value = $_value;
+		}
 
 		// If passed name, set it.
 		if ( $_name ) {
@@ -115,19 +117,23 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		}
 
 		// Set the ID for the post.
-		if ( $_postid )
+		if ( $_postid ) {
 			// Set ID to the one passed in.
 			$int = $_postid;
-		else
+		} else {
 			// Change for each field, using a "silent" post.
 			// If no post is present, one will be created.
 			$int = optionsframework_mlu_get_silentpost( $id );
+		}
 
 		// If passed upload button text, set it.
-		if ( $_upload_text )
+		if ( $_upload_text ) {
 			$upload_text = $_upload_text;
+		}
 
-		if ( $value['url'] ) { $class = ' has-file'; }
+		if ( $value['url'] ) {
+			$class = ' has-file';
+		}
 
 		// Allow multiple upload options on the same page with
 		// same ID -- This could happen in the Layout Builder, for example.
@@ -160,6 +166,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 				$output .= '<img src="' . $value['url'] . '" alt="" />'.$remove.'';
 			} else {
 				$parts = explode( "/", $value['url'] );
+
 				for( $i = 0; $i < sizeof( $parts ); ++$i ) {
 					$title = $parts[$i];
 				}
@@ -253,7 +260,9 @@ if ( ! function_exists( 'optionsframework_mlu_insidepopup' ) ) {
 if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 	function optionsframework_mlu_js_popup () {
 		$_of_title = $_REQUEST['of_title'];
-		if ( ! $_of_title ) { $_of_title = 'file'; } // End IF Statement
+		if ( ! $_of_title ) {
+			$_of_title = 'file';
+		} // End IF Statement
 		?>
 		<script type="text/javascript">
 		<!--

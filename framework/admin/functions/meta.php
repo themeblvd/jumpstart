@@ -229,8 +229,9 @@ if ( ! function_exists( 'themeblvd_page_attributes_meta_box' ) ) :
 function themeblvd_page_attributes_meta_box($post) {
 
 	// Kill it if disabled
-	if ( ! themeblvd_supports( 'meta', 'hijack_atts' ) )
+	if ( ! themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		return false;
+	}
 
 	// Continue on with everything copied from WordPress core
 

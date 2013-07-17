@@ -79,8 +79,9 @@ class Theme_Blvd_Options_API {
      */
 	public static function get_instance() {
 
-		if ( self::$instance == null )
+		if ( self::$instance == null ) {
             self::$instance = new self;
+        }
 
         return self::$instance;
 	}
@@ -196,7 +197,7 @@ class Theme_Blvd_Options_API {
 		$options_categories = array();
 		if ( is_admin() ) {
 			$options_categories_obj = get_categories( array( 'hide_empty' => false ) );
-			foreach ($options_categories_obj as $category) {
+			foreach ( $options_categories_obj as $category ) {
 		    	$options_categories[$category->cat_ID] = $category->cat_name;
 			}
 		}
@@ -567,8 +568,9 @@ class Theme_Blvd_Options_API {
 		if ( ! $this->settings ) {
 
 			// Because frontend, we need to add sanitiziation
-			if ( ! is_admin() )
+			if ( ! is_admin() ) {
 				themeblvd_add_sanitization();
+			}
 
 			// Construct array of default values pulled from
 			// formatted options.
@@ -732,11 +734,13 @@ class Theme_Blvd_Options_API {
 	 */
 	public function add_option( $tab_id, $section_id, $option_id, $option ) {
 
-		if ( ! isset( $this->raw_options[$tab_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id] ) ) {
 			return;
+		}
 
-		if ( ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) ) {
 			return;
+		}
 
 		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] = $option;
 	}
@@ -752,8 +756,9 @@ class Theme_Blvd_Options_API {
 	 */
 	public function remove_option( $tab_id, $section_id, $option_id ) {
 
-		if ( ! isset( $this->raw_options[$tab_id] ) || ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) )
+		if ( ! isset( $this->raw_options[$tab_id] ) || ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) ) {
 			return;
+		}
 
 		if ( isset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
 
@@ -788,14 +793,17 @@ class Theme_Blvd_Options_API {
 	 */
 	public function edit_option( $tab_id, $section_id, $option_id, $att, $value ) {
 
-		if ( ! isset( $_themeblvd_core_options[$tab_id] ) )
+		if ( ! isset( $_themeblvd_core_options[$tab_id] ) ) {
 			return;
+		}
 
-		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) )
+		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) ) {
 			return;
+		}
 
-		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) )
+		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
 			return;
+		}
 
 		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id][$att] = $value;
 	}
@@ -849,17 +857,20 @@ class Theme_Blvd_Options_API {
 	 */
 	public function get_setting( $primary = '', $seconday = '' ) {
 
-		if ( ! $primary )
+		if ( ! $primary ) {
 			return $this->settings;
+		}
 
-		if ( ! isset( $this->settings[$primary] ) )
+		if ( ! isset( $this->settings[$primary] ) ) {
 			return null;
+		}
 
 		if ( $seconday ) {
-			if ( isset( $this->settings[$primary][$seconday] ) )
+			if ( isset( $this->settings[$primary][$seconday] ) ) {
 				return $this->settings[$primary][$seconday];
-			else
+			} else {
 				return null;
+			}
 		}
 
 		return $this->settings[$primary];

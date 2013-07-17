@@ -117,8 +117,9 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 						// Transport
 						$transport = '';
-						if ( isset( $option['transport'] ) )
+						if ( isset( $option['transport'] ) ) {
 							$transport = $option['transport'];
+						}
 
 						// Logo Type
 						$wp_customize->add_setting( $option_name.'['.$option['id'].'][type]', array(
@@ -127,6 +128,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 							'capability' 	=> themeblvd_admin_module_cap( 'options' ),
 							'transport'		=> $transport
 						) );
+
 						$wp_customize->add_control( $option['id'].'_type', array(
 							'priority'		=> 1,
 							'settings'		=> $option_name.'['.$option['id'].'][type]',
@@ -196,13 +198,15 @@ function themeblvd_customizer_init( $wp_customize ) {
 							'color' 	=> '',
 							'google' 	=> ''
 						);
-						if ( isset( $theme_settings[$option['id']] ) )
+						if ( isset( $theme_settings[$option['id']] ) ) {
 							$defaults = $theme_settings[$option['id']];
+						}
 
 						// Transport
 						$transport = '';
-						if ( isset( $option['transport'] ) )
+						if ( isset( $option['transport'] ) ) {
 							$transport = $option['transport'];
+						}
 
 						// Loop through included attributes
 						foreach ( $option['atts'] as $attribute ) {
@@ -216,6 +220,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 							) );
 
 							switch ( $attribute ) {
+
 								case 'size' :
 									$size_options = array();
 									for($i = 9; $i < 71; $i++) {
@@ -232,6 +237,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									) );
 									$font_counter++;
 									break;
+
 								case 'face' :
 									$wp_customize->add_control( new WP_Customize_ThemeBlvd_Font_Face( $wp_customize, $option['id'].'_'.$attribute, array(
 										'priority'		=> $font_counter,
@@ -255,6 +261,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									) ) );
 									$font_counter++;
 									break;
+
 								case 'style' :
 									$wp_customize->add_control( $option['id'].'_'.$attribute, array(
 										'priority'		=> $font_counter,
@@ -266,6 +273,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									) );
 									$font_counter++;
 									break;
+
 								case 'color' :
 									$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $option['id'].'_'.$attribute, array(
 										'priority'		=> $font_counter,
@@ -298,17 +306,20 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 						// Default
 						$default = '';
-						if ( isset( $theme_settings[$option['id']] ) )
+						if ( isset( $theme_settings[$option['id']] ) ) {
 							$default = $theme_settings[$option['id']];
+						}
 
 						// Transport
 						$transport = '';
-						if ( isset( $option['transport'] ) )
+						if ( isset( $option['transport'] ) ) {
 							$transport = $option['transport'];
+						}
 
 						$priority = '';
-						if ( isset( $option['priority'] ) )
+						if ( isset( $option['priority'] ) ) {
 							$priority = $option['priority'];
+						}
 
 						// Register option
 						$wp_customize->add_setting( $option_name.'['.$option['id'].']', array(
@@ -320,6 +331,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 						// Add controls
 						switch ( $option['type'] ) {
+
 							// Standard text option
 							case 'text' :
 								$wp_customize->add_control( $option['id'], array(
@@ -329,6 +341,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									'section'		=> $section['id']
 								) );
 								break;
+
 							// Textarea
 							case 'textarea' :
 								$wp_customize->add_control( new WP_Customize_ThemeBlvd_Textarea( $wp_customize, $option['id'], array(
@@ -338,6 +351,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									'section' 		=> $section['id']
 								) ) );
 								break;
+
 							// Select box
 							case 'select' :
 								$wp_customize->add_control( $option['id'], array(
@@ -349,6 +363,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									'choices'		=> $option['options']
 								) );
 								break;
+
 							// Radio set
 							case 'radio' :
 								$wp_customize->add_control( $option['id'], array(
@@ -360,6 +375,7 @@ function themeblvd_customizer_init( $wp_customize ) {
 									'choices'		=> $option['options']
 								) );
 								break;
+
 							// Color
 							case 'color' :
 								$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $option['id'], array(
@@ -379,9 +395,11 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 	// Remove irrelevant sections
 	$remove_sections = apply_filters( 'themeblvd_customizer_remove_sections', array( 'title_tagline' ) );
-	if ( is_array( $remove_sections ) && $remove_sections )
-		foreach ( $remove_sections as $section )
+	if ( is_array( $remove_sections ) && $remove_sections ) {
+		foreach ( $remove_sections as $section ) {
 			$wp_customize->remove_section( $section );
+		}
+	}
 
 	// Modify sections
 	$modify_sections = apply_filters( 'themeblvd_customizer_modify_sections', array() );
@@ -392,18 +410,21 @@ function themeblvd_customizer_init( $wp_customize ) {
 			// I can may add to this in the future.
 			switch ( $section ) {
 				case 'static_front_page' :
+
 					// Modify section's title
 					$wp_customize->add_section( 'static_front_page', array(
 						'title'         => __( 'Homepage', 'themeblvd' ),
 						'priority'      => 120,
 						'description'   => __( 'Your theme supports a static front page.', 'themeblvd' ),
 					) );
+
 					// Add custom homepage option
 					$wp_customize->add_setting( $option_name.'[homepage_content]', array(
 						'default'    	=> '',
 						'type'       	=> 'option',
 						'capability' 	=> themeblvd_admin_module_cap( 'options' )
 					) );
+
 					$wp_customize->add_control( 'homepage_content', array(
 						'settings'		=> $option_name.'[homepage_content]',
 						'label'			=> __( 'Homepage Content', 'themeblvd' ),
@@ -414,21 +435,26 @@ function themeblvd_customizer_init( $wp_customize ) {
 							'custom_layout' => __( 'Custom Layout', 'themeblvd' )
 						)
 					) );
+
 					// Add custom layout selection
 					// Custom Layouts
 					$custom_layouts = array();
 					$custom_layout_posts = get_posts('post_type=tb_layout&numberposts=-1');
+
 					if ( ! empty( $custom_layout_posts ) ) {
-						foreach ( $custom_layout_posts as $layout )
+						foreach ( $custom_layout_posts as $layout ) {
 							$custom_layouts[$layout->post_name] = $layout->post_title;
+						}
 					} else {
 						$custom_layouts['null'] = __( 'You haven\'t created any custom layouts yet.', 'themeblvd' );
 					}
+
 					$wp_customize->add_setting( $option_name.'[homepage_custom_layout]', array(
 						'default'    	=> '',
 						'type'       	=> 'option',
 						'capability' 	=> themeblvd_admin_module_cap( 'options' )
 					) );
+
 					$wp_customize->add_control( 'homepage_custom_layout', array(
 						'settings'		=> $option_name.'[homepage_custom_layout]',
 						'label'			=> __( 'Homepage Custom Layout', 'themeblvd' ),
@@ -530,15 +556,17 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		}
 
 		public function render_content() {
-			if ( empty( $this->choices ) )
+			if ( empty( $this->choices ) ) {
 				return;
+			}
 			?>
 			<label class="themeblvd-font-face">
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<select <?php $this->link(); ?>>
 					<?php
-					foreach ( $this->choices as $value => $label )
-						echo '<option value="' . esc_attr( $value ) . '"' . selected( $this->value(), $value, false ) . '>' . $label . '</option>';
+					foreach ( $this->choices as $value => $label ) {
+						printf( '<option value="%s"%s>%s</option>', esc_attr($value), selected( $this->value(), $value, false ), $label );
+					}
 					?>
 				</select>
 			</label>
@@ -632,10 +660,13 @@ if ( !function_exists( 'themeblvd_customizer_preview_logo' ) ) {
 			'custom_tagline' 	=> '',
 			'image' 			=> '',
 		);
+
 		foreach ( $logo_atts as $key => $value ) {
-			if ( isset($logo_options[$key]) )
+			if ( isset($logo_options[$key]) ) {
 				$logo_atts[$key] = $logo_options[$key];
+			}
 		}
+
 		// Begin output
 		?>
 		// Logo atts object
@@ -1044,8 +1075,9 @@ function themeblvd_customizer_preview() {
 	global $wp_customize;
 
 	// Check if customizer is running.
-	if ( ! is_a( $wp_customize, 'WP_Customize_Manager' ) )
+	if ( ! is_a( $wp_customize, 'WP_Customize_Manager' ) ) {
 		return;
+	}
 
 	// Reset themeblvd settings after Customizer
 	// has applied filters.

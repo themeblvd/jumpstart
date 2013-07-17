@@ -11,16 +11,19 @@ if ( !function_exists( 'themeblvd_contact_bar' ) ) : // pluggable for backwards 
 function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 
 	// Set up buttons
-	if ( ! $buttons )
+	if ( ! $buttons ) {
 		$buttons = themeblvd_get_option( 'social_media' );
+	}
 
 	// If buttons haven't been sanitized return nothing
-	if ( is_array( $buttons ) && isset( $buttons['includes'] ) )
+	if ( is_array( $buttons ) && isset( $buttons['includes'] ) ) {
 		return null;
+	}
 
 	// Set up style
-	if ( ! $style )
+	if ( ! $style ) {
 		$style = themeblvd_get_option( 'social_media_style', null, 'grey' );
+	}
 
 	// Start output
 	$output = null;
@@ -30,7 +33,13 @@ function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 		$output .= '<ul class="social-media-'.$style.'">';
 
 		foreach ( $buttons as $id => $url ) {
-			$target = strpos( $url, 'mailto:' ) !== false ? '_self' : '_blank'; // Change target if URL has 'mailto:'
+
+			// Link target
+			$target = '_blank';
+			if ( strpos( $url, 'mailto:' ) !== false ) {
+				$target = '_self';
+			}
+
 			$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
 		}
 
@@ -67,41 +76,54 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 
 	// Classes for button
 	$final_classes = 'btn';
-	if ( ! $color )
+
+	if ( ! $color ) {
 		$color = 'default';
-	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) ) )
+	}
+
+	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) ) ) {
 		$final_classes .= ' btn-'.$color;
-	else
+	} else {
 		$final_classes .= ' '.$color;
-	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'mini', 'small', 'large' ) ) ) )
+	}
+
+	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'mini', 'small', 'large' ) ) ) ) {
 		$final_classes .= ' btn-'.$size;
-	if ( $classes )
+	}
+
+	if ( $classes ) {
 		$final_classes .= ' '.$classes;
+	}
 
 	// Target
 	$final_target = '';
 	if ( $target ) {
-		if ( $target == 'lightbox' )
+		if ( $target == 'lightbox' ) {
 			$final_target = ' rel="themeblvd_lightbox"';
-		else
+		} else {
 			$final_target = ' target="'.$target.'"';
+		}
 	}
 
 	// Title param
-	if ( ! $title )
+	if ( ! $title ) {
 		$title = strip_tags( $text );
+	}
 
 	// Add icon before text?
-	if ( $icon_before )
+	if ( $icon_before ) {
 		$text = '<i class="icon-'.$icon_before.'"></i> '.$text;
+	}
 
 	// Add icon after text?
-	if ( $icon_after )
+	if ( $icon_after ) {
 		$text .= ' <i class="icon-'.$icon_after.'"></i>';
+	}
 
 	// Optional addon to anchor
-	if ( $addon )
+	if ( $addon ) {
 		$addon = ' '.$addon;
+	}
 
 	$button = sprintf( '<a href="%s" title="%s" class="%s"%s%s>%s</a>', $url, $title, $final_classes, $final_target, $addon, $text );
 
@@ -121,8 +143,9 @@ function themeblvd_archive_title() {
 	global $post;
 	global $posts;
 
-    if ( $posts )
+    if ( $posts ) {
     	$post = $posts[0]; // Hack. Set $post so that the_date() works.
+    }
 
     if ( is_search() ) {
 
@@ -190,8 +213,9 @@ function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 	if ( $parts ) {
 		foreach ( $parts as $part ) {
 			$class = 'btn btn-default';
-			if ( $part['active'] )
+			if ( $part['active'] ) {
 				$class .= ' active';
+			}
 			$output .= sprintf('<a class="%s" href="%s">%s</a>', $class, $part['href'], $part['text'] );
 		}
 	}
@@ -249,13 +273,19 @@ function themeblvd_get_breadcrumbs_trail() {
 	$total = count($parts);
 	if ( $parts ) {
 		foreach ( $parts as $part ) {
+
 			$crumb = $part['text'];
-			if ( ! empty( $part['link'] ) )
+
+			if ( ! empty( $part['link'] ) ) {
 				$crumb = '<a href="'.$part['link'].'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
-			if ( $total == $count )
+			}
+
+			if ( $total == $count ) {
 				$crumb = $atts['before'].$crumb.$atts['after'];
-			else
+			} else {
 				$crumb = $crumb.$atts['delimiter'];
+			}
+
 			$trail .= $crumb;
 			$count++;
 		}
@@ -271,8 +301,9 @@ function themeblvd_get_breadcrumbs_trail() {
 function themeblvd_get_meta( $sep = '' ) {
 
 	// Separator
-	if ( ! $sep )
+	if ( ! $sep ) {
 		$sep = apply_filters( 'themeblvd_meta_separator', '<span class="sep"> / </span>' );
+	}
 
 	// Start output
 	$output  = '<div class="entry-meta">';
@@ -381,10 +412,15 @@ class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
 	 */
 	function start_el( &$output, $item, $depth, $args ) {
 		$indent = '';
-		for( $i = 0; $i < $depth; $i++ )
+
+		for( $i = 0; $i < $depth; $i++ ) {
 			$indent .= '-';
-		if ( $indent )
+		}
+
+		if ( $indent ) {
 			$indent .= ' ';
+		}
+
 		$output .= '<option value="'.$item->url.'">'.$indent.$item->title;
 	}
 
@@ -425,31 +461,48 @@ function themeblvd_nav_menu_select( $location ) {
  * @return $module HTML to output
  */
 function themeblvd_get_simple_contact( $args ) {
+
 	// Setup icon links
 	$icons = array();
-	for( $i = 1; $i <= 6; $i++ )
-		if ( ! empty( $args['link_'.$i.'_url'] ) )
+	for ( $i = 1; $i <= 6; $i++ ) {
+		if ( ! empty( $args['link_'.$i.'_url'] ) ) {
 			$icons[$args['link_'.$i.'_icon']] = $args['link_'.$i.'_url'];
+		}
+	}
+
 	// Start Output
 	$module = '<ul class="simple-contact">';
+
 	// Phone #1
-	if ( ! empty( $args['phone_1'] ) )
+	if ( ! empty( $args['phone_1'] ) ) {
 		$module .= '<li class="phone">'.$args['phone_1'].'</li>';
+	}
+
 	// Phone #2
-	if ( ! empty( $args['phone_2'] ) )
+	if ( ! empty( $args['phone_2'] ) ) {
 		$module .= '<li class="phone">'.$args['phone_2'].'</li>';
+	}
+
 	// Email #1
-	if ( ! empty( $args['email_1'] ) )
+	if ( ! empty( $args['email_1'] ) ) {
 		$module .= '<li class="email"><a href="mailto:'.$args['email_1'].'">'.$args['email_1'].'</a></li>';
+	}
+
 	// Email #2
-	if ( ! empty( $args['email_2'] ) )
+	if ( ! empty( $args['email_2'] ) ) {
 		$module .= '<li class="email"><a href="mailto:'.$args['email_2'].'">'.$args['email_2'].'</a></li>';
+	}
+
 	// Contact Page
-	if ( ! empty( $args['contact'] ) )
+	if ( ! empty( $args['contact'] ) ) {
 		$module .= '<li class="contact"><a href="'.$args['contact'].'">'.themeblvd_get_local( 'contact_us' ).'</a></li>';
+	}
+
 	// Skype
-	if ( ! empty( $args['skype'] ) )
+	if ( ! empty( $args['skype'] ) ) {
 		$module .= '<li class="skype">'.$args['skype'].'</li>';
+	}
+
 	// Social Icons
 	if ( ! empty( $icons ) ) {
 		$module .= '<li class="link"><ul class="icons">';
@@ -459,6 +512,7 @@ function themeblvd_get_simple_contact( $args ) {
 		$module .= '</ul></li>';
 	}
 	$module .= '</ul>';
+
 	return apply_filters( 'themeblvd_simple_contact', $module, $args );
 }
 
@@ -493,12 +547,15 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 
 	// CSS classes
 	$classes = '';
-	if ( ! $thumb )
+	if ( ! $thumb ) {
 		$classes .= 'hide-thumbs';
-	else
+	} else {
 		$classes .= $thumb.'-thumbs';
-	if ( ! $meta )
+	}
+
+	if ( ! $meta ) {
 		$classes .= ' hide-meta';
+	}
 
 	// Thumb size
 	$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
@@ -531,8 +588,9 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
 
 					$post_format = get_post_format();
-					if ( ! $post_format )
+					if ( ! $post_format ) {
 						$post_format = 'standard';
+					}
 
 					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 					$image .= '<div class="featured-image">';
@@ -546,14 +604,16 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 
 			$output .= '<li>';
 
-			if ( $image )
+			if ( $image ) {
 				$output .= $image;
+			}
 
 			$output .= '<div class="mini-post-list-content">';
 			$output .= sprintf( '<h4>%s</h4>', themeblvd_get_the_title( $post->ID, true ) );
 
-			if ( $meta )
+			if ( $meta ) {
 				$output .= sprintf('<span class="mini-meta">%s</span>', get_the_time( get_option('date_format') ) );
+			}
 
 			$output .= '</div>';
 			$output .= '</li>';
@@ -603,16 +663,18 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	// CSS classes
 	$classes = $thumb.'-thumbs';
 	$classes .= ' grid-align-'.$align;
-	if ( $gallery )
+	if ( $gallery ) {
 		$classes .= ' gallery-override';
+	}
 
 	// Thumb size
 	$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query );
 	$thumb_width = $_wp_additional_image_sizes[$thumb_size]['width'];
 
 	// Check for gallery override
-	if ( $gallery )
+	if ( $gallery ) {
 		$query = 'post_type=attachment&post_parent='.$gallery.'&numberposts=-1';
+	}
 
 	// Get posts
 	$posts = get_posts( html_entity_decode( $query ) );
@@ -658,8 +720,9 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
 
 					$post_format = get_post_format();
-					if ( ! $post_format )
+					if ( ! $post_format ) {
 						$post_format = 'standard';
+					}
 
 					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
 					$image .= '<div class="featured-image">';
@@ -720,16 +783,19 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 	$title = get_the_title( $post_id );
 
 	// If "link" post format, get URL from start of content.
-	if ( has_post_format( 'link', $post_id ) )
+	if ( has_post_format( 'link', $post_id ) ) {
 		$url = get_content_url( get_the_content( $post_id ) );
+	}
 
 	// If not a single post or page, get permalink for URL.
-	if ( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) )
+	if ( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) ) {
 		$url = get_permalink( $post_id );
+	}
 
 	// Wrap title in link if there's a URL.
-	if ( $url )
+	if ( $url ) {
 		$title = sprintf('<a href="%s" title="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $title );
+	}
 
 	return apply_filters( 'themeblvd_the_title', $title, $url );
 }

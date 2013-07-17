@@ -76,8 +76,9 @@ class Theme_Blvd_Sidebars_API {
      */
 	public static function get_instance() {
 
-		if ( self::$instance == null )
+		if ( self::$instance == null ) {
             self::$instance = new self;
+        }
 
         return self::$instance;
 	}
@@ -297,8 +298,9 @@ class Theme_Blvd_Sidebars_API {
 	public function add_location( $id, $name, $type, $desc = '' ) {
 
 		// Description
-		if ( ! $desc )
+		if ( ! $desc ) {
 			$desc = sprintf( __( 'This is default placeholder for the "%s" location.', 'themeblvd'), $name );
+		}
 
 		// Add Sidebar location
 		$this->client_locations[$id] = array(
@@ -388,11 +390,13 @@ class Theme_Blvd_Sidebars_API {
 	 */
 	public function get_locations( $location_id = '' ) {
 
-		if ( ! $location_id )
+		if ( ! $location_id ) {
 			return $this->locations;
+		}
 
-		if ( isset( $this->locations[$location_id] ) )
+		if ( isset( $this->locations[$location_id] ) ) {
 			return $this->locations[$location_id];
+		}
 
 		return array();
 	}
@@ -433,8 +437,9 @@ class Theme_Blvd_Sidebars_API {
 	public function display( $location ) {
 
 		// Setup type
-		if ( ! isset( $this->locations[$location]['type'] ) )
+		if ( ! isset( $this->locations[$location]['type'] ) ) {
 			return;
+		}
 
 		$type = $this->locations[$location]['type'];
 
@@ -443,14 +448,16 @@ class Theme_Blvd_Sidebars_API {
 
 		// If sidebar is set to false or sidebar doesn't
 		// exist, kill it.
-		if ( ! $sidebar )
+		if ( ! $sidebar ) {
 			return;
+		}
 
 		// If this is a collapsible default sidebar with
 		// no errors, we'll want to just kill it if it
 		// has no widgets.
-		if ( $type == 'collapsible' && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) )
+		if ( $type == 'collapsible' && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) ) {
 			return;
+		}
 
 		// Start display.
 		do_action( 'themeblvd_sidebar_'.$type.'_before' ); // Framework does not hook anything here by default
