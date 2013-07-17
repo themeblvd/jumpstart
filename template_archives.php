@@ -29,8 +29,13 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
+
 						<?php get_template_part( 'content', 'template_archives' ); ?>
-						<?php if ( themeblvd_supports( 'comments', 'pages' ) ) comments_template( '', true ); ?>
+
+						<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
+							<?php comments_template( '', true ); ?>
+						<?php endif; ?>
+
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->

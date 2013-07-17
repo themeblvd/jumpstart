@@ -49,26 +49,30 @@ get_header();
 										$more = 0;
 
 										// If this is the very first post, open the first row
-										if ( $counter == 1 )
+										if ( $counter == 1 ) {
 											themeblvd_open_row();
+										}
 
 										// Get template part, framework default is content-grid.php
 										get_template_part( 'content', themeblvd_get_part( 'grid_paginated' ) );
 
 										// If last post in a row, close the row
-										if ( $counter % $columns == 0 )
+										if ( $counter % $columns == 0 ) {
 											themeblvd_close_row();
+										}
 
 										// If first post in a row, open the row
-										if ( $counter % $columns == 0 && themeblvd_get_att( 'posts_per_page' ) != $counter )
+										if ( $counter % $columns == 0 && themeblvd_get_att( 'posts_per_page' ) != $counter ) {
 											themeblvd_open_row();
+										}
 
 										// Increment the counter with global template attribute accounted for
 										$counter = themeblvd_set_att( 'counter', $counter+1 );
 									}
 
-									if ( ($counter-1) != themeblvd_get_att( 'posts_per_page' ) )
+									if ( ($counter-1) != themeblvd_get_att( 'posts_per_page' ) ) {
 										themeblvd_close_row();
+									}
 
 								} else {
 
