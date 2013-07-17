@@ -1540,3 +1540,52 @@ function themeblvd_prettyphoto_supported_link( $url ) {
 	return apply_filters( 'themeblvd_prettyphoto_supported_link', $icon, $url );
 }
 endif;
+
+/**
+ * Get social media sources and their respective names.
+ *
+ * @since 2.3.0
+ *
+ * @return array $sources All social media buttons
+ */
+function themeblvd_get_social_media_sources() {
+
+ 	$sources = array(
+		'amazon' 		=> 'Amazon',
+		'delicious' 	=> 'del.icio.us',
+		'deviantart' 	=> 'Deviant Art',
+		'digg' 			=> 'Digg',
+		'dribbble' 		=> 'Dribbble',
+		'ebay' 			=> 'Ebay',
+		'email' 		=> 'Email',
+		'facebook' 		=> 'Facebook',
+		'feedburner' 	=> 'Feedburner',
+		'flickr' 		=> 'Flickr',
+		'forrst' 		=> 'Forrst',
+		'foursquare' 	=> 'Foursquare',
+		'github' 		=> 'Github',
+		'google' 		=> 'Google+',
+		'instagram' 	=> 'Instagram',
+		'linkedin' 		=> 'Linkedin',
+		'myspace' 		=> 'MySpace',
+		'paypal' 		=> 'PayPal',
+		'picasa' 		=> 'Picasa',
+		'pinterest' 	=> 'Pinterest',
+		'reddit' 		=> 'Reddit',
+		'scribd' 		=> 'Sribd',
+		'squidoo' 		=> 'Squidoo',
+		'technorati' 	=> 'Technorati',
+		'tumblr' 		=> 'Tumblr',
+		'twitter' 		=> 'Twitter',
+		'vimeo' 		=> 'Vimeo',
+		'xbox' 			=> 'Xbox',
+		'yahoo' 		=> 'Yahoo',
+		'youtube' 		=> 'YouTube',
+		'rss' 			=> 'RSS'
+	);
+
+ 	// Backwards compat filter
+ 	$sources = apply_filters( 'themeblvd_social_media_buttons', $sources );
+
+	return apply_filters( 'themeblvd_social_media_sources', $sources );
+}

@@ -1018,40 +1018,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
  */
 function themeblvd_social_media_option( $id, $name, $val ) {
 
-	$sources = array(
-		'amazon' 		=> 'Amazon',
-		'delicious' 	=> 'del.icio.us',
-		'deviantart' 	=> 'Deviant Art',
-		'digg' 			=> 'Digg',
-		'dribbble' 		=> 'Dribbble',
-		'ebay' 			=> 'Ebay',
-		'email' 		=> 'Email',
-		'facebook' 		=> 'Facebook',
-		'feedburner' 	=> 'Feedburner',
-		'flickr' 		=> 'Flickr',
-		'forrst' 		=> 'Forrst',
-		'foursquare' 	=> 'Foursquare',
-		'github' 		=> 'Github',
-		'google' 		=> 'Google+',
-		'instagram' 	=> 'Instagram',
-		'linkedin' 		=> 'Linkedin',
-		'myspace' 		=> 'MySpace',
-		'paypal' 		=> 'PayPal',
-		'picasa' 		=> 'Picasa',
-		'pinterest' 	=> 'Pinterest',
-		'reddit' 		=> 'Reddit',
-		'scribd' 		=> 'Sribd',
-		'squidoo' 		=> 'Squidoo',
-		'technorati' 	=> 'Technorati',
-		'tumblr' 		=> 'Tumblr',
-		'twitter' 		=> 'Twitter',
-		'vimeo' 		=> 'Vimeo',
-		'xbox' 			=> 'Xbox',
-		'yahoo' 		=> 'Yahoo',
-		'youtube' 		=> 'YouTube',
-		'rss' 			=> 'RSS'
-	);
-	$sources = apply_filters( 'themeblvd_social_media_buttons', $sources );
+	$sources = themeblvd_get_social_media_buttons();
 
 	$counter = 1;
 	$divider = round( count($sources)/2 );

@@ -25,6 +25,9 @@ function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 		$style = themeblvd_get_option( 'social_media_style', null, 'grey' );
 	}
 
+	// Social media sources
+	$sources = themeblvd_get_social_media_sources();
+
 	// Start output
 	$output = null;
 	if ( is_array( $buttons ) && ! empty ( $buttons ) ) {
@@ -40,7 +43,13 @@ function themeblvd_contact_bar( $buttons = array(), $style = null ) {
 				$target = '_self';
 			}
 
-			$output .= '<li><a href="'.$url.'" title="'.ucfirst( $id ).'" class="'.$id.'" target="'.$target.'">'.ucfirst( $id ).'</a></li>';
+			// Link Title
+			$title = '';
+			if ( isset( $sources[$id] ) ) {
+				$title = $sources[$id];
+			}
+
+			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s">%s</a></li>', $url, $title, $id, $target, $title );
 		}
 
 		$output .= '</ul>';
@@ -475,40 +484,53 @@ function themeblvd_get_simple_contact( $args ) {
 
 	// Phone #1
 	if ( ! empty( $args['phone_1'] ) ) {
-		$module .= '<li class="phone">'.$args['phone_1'].'</li>';
+		$module .= sprintf( '<li class="phone">%s</li>', $args['phone_1'] );
 	}
 
 	// Phone #2
 	if ( ! empty( $args['phone_2'] ) ) {
-		$module .= '<li class="phone">'.$args['phone_2'].'</li>';
+		$module .= sprintf( '<li class="phone">%s</li>', $args['phone_2'] );
 	}
 
 	// Email #1
 	if ( ! empty( $args['email_1'] ) ) {
-		$module .= '<li class="email"><a href="mailto:'.$args['email_1'].'">'.$args['email_1'].'</a></li>';
+		$module .= sprintf( '<li class="email"><a href="mailto:%s">%s</a></li>', $args['email_1'], $args['email_1'] );
 	}
 
 	// Email #2
 	if ( ! empty( $args['email_2'] ) ) {
-		$module .= '<li class="email"><a href="mailto:'.$args['email_2'].'">'.$args['email_2'].'</a></li>';
+		$module .= sprintf( '<li class="email"><a href="mailto:%s">%s</a></li>', $args['email_2'], $args['email_2'] );
 	}
 
 	// Contact Page
 	if ( ! empty( $args['contact'] ) ) {
-		$module .= '<li class="contact"><a href="'.$args['contact'].'">'.themeblvd_get_local( 'contact_us' ).'</a></li>';
+		$module .= sprintf( '<li class="contact"><a href="%s">%s</a></li>', $args['contact'], themeblvd_get_local( 'contact_us' ) );
 	}
 
 	// Skype
 	if ( ! empty( $args['skype'] ) ) {
-		$module .= '<li class="skype">'.$args['skype'].'</li>';
+		$module .= sprintf( '<li class="skype">%s</li>', $args['skype'] );
 	}
 
 	// Social Icons
 	if ( ! empty( $icons ) ) {
+
+		// Social media sources
+		$sources = themeblvd_get_social_media_sources();
+
 		$module .= '<li class="link"><ul class="icons">';
+
 		foreach ( $icons as $icon => $url ) {
-			$module .= '<li class="'.$icon.'"><a href="'.$url.'" target="_blank" title="'.ucfirst($icon).'">'.ucfirst($icon).'</a></li>';
+
+			// Link title
+			$title = '';
+			if ( isset( $sources[$icon] ) ) {
+				$title = $sources[$icon];
+			}
+
+			$module .= sprintf( '<li class="%s"><a href="%s" target="_blank" title="%s">%s</a></li>', $icon, $url, $title, $title );
 		}
+
 		$module .= '</ul></li>';
 	}
 	$module .= '</ul>';
