@@ -571,10 +571,9 @@ if ( !function_exists( 'themeblvd_the_post_thumbnail_default' ) ) :
  * @param string $size For the image crop size of the thumbnail
  * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
  * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
- * @param string $gallery If thumb is linking to gallery, specify the prettyPhoto extension rel="themeblvd_lightbox[gallery]" -- i.e. the "gallery" part
  */
-function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
-	echo themeblvd_get_post_thumbnail( $location, $size, $link, $allow_filters, $gallery );
+function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true ) {
+	echo themeblvd_get_post_thumbnail( $location, $size, $link, $allow_filters );
 }
 endif;
 
