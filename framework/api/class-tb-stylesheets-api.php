@@ -139,14 +139,14 @@ class Theme_Blvd_Stylesheets_API {
 
 		}
 
-		// prettyPhoto
-		if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
+		// Magnific Popup
+		if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
 
-			$this->framework_stylesheets['prettyphoto'] = array(
-				'handle'	=> 'prettyphoto',
-				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/prettyphoto/css/prettyPhoto.css',
+			$this->framework_stylesheets['magnific_popup'] = array(
+				'handle'	=> 'magnific_popup',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/magnificpopup.min.css',
 				'deps'		=> array(),
-				'ver'		=> '3.1.3',
+				'ver'		=> '0.9.3',
 				'media'		=> 'all'
 			);
 

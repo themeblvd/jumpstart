@@ -42,6 +42,8 @@ function themeblvd_get_all_locals() {
 		'invalid_layout'			=> __( 'Invalid Layout ID: The layout ID currently assigned to this page no longer exists.', 'themeblvd_frontend' ),
 		'label_submit'				=> __( 'Post Comment', 'themeblvd_frontend' ),
 		'last_30'					=> __( 'The Last 30 Posts', 'themeblvd_frontend' ),
+		'lightbox_error'			=> __( 'The lightbox media could not be loaded.', 'themeblvd_frontend' ),
+		'link_to_lightbox'			=> __( 'Link to lightbox', 'themeblvd_frontend' ),
 		'login_text'				=> __( 'Log in to Reply', 'themeblvd_frontend' ),
 		'monthly_archives'			=> __( 'Monthly Archives', 'themeblvd_frontend' ),
 		'name'						=> __( 'Name', 'themeblvd_frontend' ),
@@ -66,6 +68,7 @@ function themeblvd_get_all_locals() {
 		'via'						=> __( 'via', 'themeblvd_frontend' ),
 		'website'					=> __( 'Website', 'themeblvd_frontend' )
 	);
+
 	// Return with framework's filter applied
 	return apply_filters( 'themeblvd_frontend_locals', $locals );
 }
@@ -106,11 +109,11 @@ function themeblvd_get_js_locals() {
 
 	// Start $locals array with any miscellaneous stuff
 	$locals = array (
-		'prettyphoto_theme' 		=> 'pp_default',
 		'thumb_animations'			=> 'true',
 		'featured_animations'		=> 'true',
 		'image_slide_animations'	=> 'true',
-		'retina_logo'				=> 'true'
+		'retina_logo'				=> 'true',
+		'lightbox_error'			=> themeblvd_get_local('lightbox_error')
 	);
 
 	// Extend $locals to accomodate scripts being included
@@ -121,8 +124,8 @@ function themeblvd_get_js_locals() {
 		$locals['bootstrap'] = 'true';
 	}
 
-	if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
-		$locals['prettyphoto'] = 'true';
+	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
+		$locals['magnific_popup'] = 'true';
 	}
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {

@@ -120,26 +120,27 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Since our gallery integration is specifically designed
-	// to work with prettyPhoto, if prettyPhoto script isn't
-	// included, we'll halt it all together.
-	if(themeblvd.prettyphoto)
+	// to work with Magnific Popup, if it isn't included,
+	// we'll halt it all together.
+	if(themeblvd.magnific_popup)
 	{
+
 		$('.gallery').append('<div class="clear"></div>');
 
 		$('.gallery').each(function(){
 
-			var current_gallery = $(this),
-				gallery_id = current_gallery.attr('id');
+			var gallery = $(this);
 
-			current_gallery.find('.gallery-item a').each(function(){
+			gallery.addClass('themeblvd-gallery');
+
+			gallery.find('.gallery-item a').each(function(){
 
 				// Add bootstrap thumbnail class
 				$(this).find('img').addClass('thumbnail');
 
-				// Append lightbox if it's an image
+				// Append lightbox and hover effect if thumb links to an image
 				if(this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i)) {
-				    $(this).attr('rel','themeblvd_lightbox['+gallery_id+']');
-				    $(this).addClass('image-button');
+				   	$(this).addClass('lightbox-gallery-item mfp-image image-button');
 				}
 
 			});
@@ -151,24 +152,39 @@ jQuery(document).ready(function($) {
 	// Lightbox
 	// ---------------------------------------------------------
 
-	// Check for prettyPhoto script.
-	if(themeblvd.prettyphoto)
+	// Bind magnifico
+	if(themeblvd.magnific_popup)
 	{
-		$('a[rel^="themeblvd_lightbox"], a[rel^="featured_themeblvd_lightbox"]').prettyPhoto({
-			theme: themeblvd.prettyphoto_theme, // Filter with themeblvd_js_locals
-			social_tools: false, // Share icons are not compatible with IE9
-			deeplinking: false,
-			overlay_gallery: false,
-			show_title: false
+
+		// Standard, non-gallery lightbox links
+		$('.themeblvd-lightbox').magnificPopup({
+			image: {
+				cursor: null,
+				tError: themeblvd.lightbox_error
+			}
 		});
+
+		// Galleries
+		$('.themeblvd-gallery').each(function() {
+			$(this).magnificPopup({
+				delegate: 'a.lightbox-gallery-item',
+				gallery: { enabled: true },
+				image: {
+					cursor: null,
+					tError: themeblvd.lightbox_error
+				}
+			});
+		});
+
 	}
 
 	// Animations on lightbox thumbnails.
 	if(themeblvd.thumb_animations)
 	{
-		$('a[rel^="themeblvd_lightbox"]').prepend('<span class="enlarge"></span>');
 
-		$('a[rel^="themeblvd_lightbox"]').hover(
+		$('.image-button').prepend('<span class="enlarge"></span>');
+
+		$('.image-button').hover(
 			function () {
 				var el = $(this);
 				el.find('.enlarge').stop(true, true).animate({

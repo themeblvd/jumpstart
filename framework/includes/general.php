@@ -189,7 +189,7 @@ function themeblvd_setup() {
 			'primary_js'		=> true,			// Primary "themeblvd" script
 			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
-			'prettyphoto'		=> true,			// "prettyphoto" script/stylesheet
+			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
 			'ios_orientation'	=> false			// "ios-orientationchange-fix" script
 		)

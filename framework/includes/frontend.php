@@ -251,7 +251,7 @@ if ( !function_exists( 'themeblvd_include_scripts' ) ) :
  *
  * (1) jQuery - Already registered by WP, and enqueued for most our scripts.
  * (2) Twitter Bootstrap - All Bootstrap JS plugins combiled.
- * (3) prettyPhoto - Modified version by Jason to include responsive features.
+ * (3) Magnific Popup - Handles all default lightbox functionality.
  * (4) Super Fish/Hover Intent - Used for primary navigation.
  * (5) FlexSlider - Responsive slider, controls framework's "standard" slider type.
  * (6) Roundabout - Carousel-style slider, controls framwork's "3D Carousel" slider type.
@@ -284,10 +284,9 @@ function themeblvd_include_scripts() {
 		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', true );
 	}
 
-	if ( themeblvd_supports( 'assets', 'prettyphoto' ) ) {
-		$scripts[] = 'prettyphoto';
-		wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/assets/js/prettyphoto.min.js', array('jquery'), '3.1.5', true ); // Modified version of prettyPhoto by Jason Bobich
-		// wp_enqueue_script( 'prettyphoto', TB_FRAMEWORK_URI . '/assets/plugins/prettyphoto/js/jQuery.prettyPhoto.js', array('jquery'), '3.1.4', true ); // Unmodified version
+	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
+		$scripts[] = 'magnific_popup';
+		wp_enqueue_script( 'magnific_popup', TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js', array('jquery'), '0.9.3', true );
 	}
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
@@ -296,9 +295,9 @@ function themeblvd_include_scripts() {
 		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4', true );
 	}
 
-	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
+	if ( themeblvd_supports( 'assets', 'primary_js' ) ) { // @TODO change back to min
 		$scripts[] = 'themeblvd';
-		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
+		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
 		// Localize primary themeblvd.js script. This allows us to pass any filterable
 		// parameters through to our primary script.
 		wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );
