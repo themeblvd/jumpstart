@@ -1498,36 +1498,46 @@ function themeblvd_conditionals_config() {
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );
 }
 
-if ( !function_exists( 'themeblvd_prettyphoto_supported_link' ) ) :
 /**
- * Determine if prettyPhoto can take the current URL and
- * display in the lightbox.
+ * Determine if valid lightbox URL. If this is not a valid
+ * lightbox URL, return false. If it is valid return an icon
+ * type that can be associated with it.
  *
  * @since 2.3.0
  *
  * @param string $url URL string to check
  * @return string $icon Type of URL (video or image) or blank if URL not supported
  */
-function themeblvd_prettyphoto_supported_link( $url ) {
+function themeblvd_is_lightbox_url( $url ) {
 
-	$icon = '';
+	$icon = false;
 
 	if ( $url ) {
 
-		// Link to Vimeo or YouTube page?
-		if ( strpos( $url, 'vimeo.com' ) !== false || strpos( $url, 'youtube.com' ) !== false || strpos( $url, 'youtu.be' ) !== false ) {
+		// Link to Vimeo page?
+		if ( strpos( $url, 'vimeo.com' ) !== false ) {
 			$icon = 'video';
+		}
+
+		// Link to YouTube page?
+		if ( strpos( $url, 'youtube.com' ) !== false ) {
+			$icon = 'video';
+		}
+
+		// Link to Google map?
+		if ( strpos( $url, 'maps.google.com' ) !== false ) {
+			$icon = 'image'; // represents more of an "enlarge" icon
+		}
+
+		// Link to inline popup?
+		if ( strpos( $url, '#' ) === 0 ) {
+			$icon = 'image'; // represents more of an "enlarge" icon
 		}
 
 		if ( ! $icon ) {
 
 			$parsed_url = parse_url( $url );
 			$type = wp_check_filetype( $parsed_url['path'] );
-
-			// Link to .mov file?
-			if ( $type['ext'] == 'mov' ) {
-				$icon = 'video';
-			}
 
 			// Link to image file?
 			if ( substr( $type['type'], 0, 5 ) == 'image' ) {
@@ -1537,9 +1547,8 @@ function themeblvd_prettyphoto_supported_link( $url ) {
 		}
 	}
 
-	return apply_filters( 'themeblvd_prettyphoto_supported_link', $icon, $url );
+	return apply_filters( 'themeblvd_is_lightbox_url', $icon, $url );
 }
-endif;
 
 /**
  * Get social media sources and their respective names.
