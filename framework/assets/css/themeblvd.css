@@ -2239,6 +2239,16 @@ div.wpcf7 .watermark {
 	color: #888888;
 }
 
+/* Lightbox */
+.white-popup {
+	background: #ffffff;
+	margin: 20px auto;
+	max-width: 500px;
+	padding: 20px;
+	position: relative;
+	width: auto;
+}
+
 /* =Elements
 -----------------------------------------------*/
 
