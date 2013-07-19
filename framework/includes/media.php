@@ -510,6 +510,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		'title' 	=> '', 										// Title for link
 		'type'		=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
 		'class' 	=> '', 										// Additional CSS classes to add
+		'addon'		=> '',										// Optional addon for anchor tag, i.e. data="whatever"
 		'gallery' 	=> false									// Whether this is part of a gallery
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -532,6 +533,10 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		if ( strpos( $link, 'youtube.com' ) !== false || strpos( $link, 'vimeo.com' ) !== false || strpos( $link, 'maps.google.com' ) !== false ) {
 
 			$type = 'iframe';
+
+		} else if ( strpos( $link, '#' ) === 0 ) {
+
+			$type = 'inline';
 
 		} else {
 
@@ -559,8 +564,14 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		$class = sprintf( 'themeblvd-lightbox mfp-%s %s', $type, $args['class'] );
 	}
 
+	// Addon
+	$addon = $args['addon'];
+	if ( $addon ) {
+		$addon = ' '.$addon;
+	}
+
 	// Output
-	$output = sprintf( '<a href="%s" title="%s" class="%s">%s</a>', $link, $title, $class, $item );
+	$output = sprintf( '<a href="%s" title="%s" class="%s"%s>%s</a>', $link, $title, $class, $addon, $item );
 
 	return apply_filters( 'themeblvd_link_to_lightbox', $output, $link, $title, $class, $item, $args );
 }

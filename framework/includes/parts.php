@@ -104,16 +104,6 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 		$final_classes .= ' '.$classes;
 	}
 
-	// Target
-	$final_target = '';
-	if ( $target ) {
-		if ( $target == 'lightbox' ) {
-			$final_target = ' rel="themeblvd_lightbox"';
-		} else {
-			$final_target = ' target="'.$target.'"';
-		}
-	}
-
 	// Title param
 	if ( ! $title ) {
 		$title = strip_tags( $text );
@@ -134,7 +124,27 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 		$addon = ' '.$addon;
 	}
 
-	$button = sprintf( '<a href="%s" title="%s" class="%s"%s%s>%s</a>', $url, $title, $final_classes, $final_target, $addon, $text );
+	// Finalize button
+	if ( $target == 'lightbox' ) {
+
+		// Button linking to lightbox
+		$args = array(
+			'item' 	=> $text,
+			'link' 	=> $url,
+			'title' => $title,
+			'class' => $final_classes,
+			'addon'	=> $addon
+		);
+
+		$button = themeblvd_get_link_to_lightbox( $args );
+
+
+	} else {
+
+		// Standard button
+		$button = sprintf( '<a href="%s" title="%s" class="%s" target="%s"%s>%s</a>', $url, $title, $final_classes, $target, $addon, $text );
+
+	}
 
 	// Return final button
 	return apply_filters( 'themeblvd_button', $button, $text, $url, $color, $target, $size, $classes, $title, $icon_before, $icon_after, $addon );
