@@ -24,6 +24,7 @@ Jump Start Changelog
 * Added support for WP 3.5+ media uploader.
 * Added support for Nivo Slider.
 * Added `themeblvd_default_sidebar_args` filter for arguments when registering default sidebar locations.
+* Mini post grid now accepts `[gallery]` shortcode for the gallery override feature.
 * On mobile, main content area now always displays above sidebars for all sidebar layouts.
 * Removed post meta from displaying when with pages in search results.
 * Reconstruction of how pagination works to be more extendable. See new function `themeblvd_get_pagination` in /framework/functions/parts.php, and new functions `themeblvd_get_pagination_parts` in /framework/functions/helpers.php.

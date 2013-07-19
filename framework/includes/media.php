@@ -505,11 +505,12 @@ function themeblvd_link_to_lightbox( $args ) {
 function themeblvd_get_link_to_lightbox( $args ) {
 
 	$defaults = array(
-		'item' 	=> themeblvd_get_local('link_to_lightbox'), // HTML Markup to be wrapped in link
-		'link' 	=> '',										// Source for media in lightbox
-		'title' => '', 										// Title for link
-		'type'	=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
-		'class' => '' 										// Additional CSS classes to add
+		'item' 		=> themeblvd_get_local('link_to_lightbox'), // HTML Markup to be wrapped in link
+		'link' 		=> '',										// Source for media in lightbox
+		'title' 	=> '', 										// Title for link
+		'type'		=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
+		'class' 	=> '', 										// Additional CSS classes to add
+		'gallery' 	=> false									// Whether this is part of a gallery
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -552,7 +553,11 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	$item = $args['item'];
 
 	// CSS classes
-	$class = sprintf( 'themeblvd-lightbox mfp-%s %s', $type, $args['class'] );
+	if ( $args['gallery'] ) {
+		$class = sprintf( 'lightbox-gallery-item mfp-%s %s', $type, $args['class'] );
+	} else {
+		$class = sprintf( 'themeblvd-lightbox mfp-%s %s', $type, $args['class'] );
+	}
 
 	// Output
 	$output = sprintf( '<a href="%s" title="%s" class="%s">%s</a>', $link, $title, $class, $item );

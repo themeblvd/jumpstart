@@ -686,7 +686,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	$classes = $thumb.'-thumbs';
 	$classes .= ' grid-align-'.$align;
 	if ( $gallery ) {
-		$classes .= ' gallery-override';
+		$classes .= ' gallery-override themeblvd-gallery';
 	}
 
 	// Thumb size
@@ -694,12 +694,36 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	$thumb_width = $_wp_additional_image_sizes[$thumb_size]['width'];
 
 	// Check for gallery override
+	$gallery_link = '';
+
 	if ( $gallery ) {
-		$query = 'post_type=attachment&post_parent='.$gallery.'&numberposts=-1';
+
+		$pattern = get_shortcode_regex();
+
+		if ( preg_match( "/$pattern/s", $gallery, $match ) && 'gallery' == $match[2] ) {
+
+			$atts = shortcode_parse_atts( $match[3] );
+
+			if( isset( $atts['link'] ) && 'file' == $atts['link'] ) {
+				$gallery_link = 'file';
+			}
+
+			if ( ! empty( $atts['ids'] ) ) {
+				$query = array(
+					'post_type'	=> 'attachment',
+					'post__in' 	=> explode( ',', $atts['ids'] )
+				);
+			}
+		}
+	}
+
+	// Format query
+	if ( ! is_array( $query ) ) {
+		$query = html_entity_decode( $query );
 	}
 
 	// Get posts
-	$posts = get_posts( html_entity_decode( $query ) );
+	$posts = get_posts( $query );
 
 	// Start output
 	if ( $posts ) {
@@ -717,14 +741,34 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 
 				// Gallery image output to simulate featured images
 				$thumbnail = wp_get_attachment_image_src( $post->ID, apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery ) );
-				$image = wp_get_attachment_image_src( $post->ID, 'full' );
 				$output .= '<div class="featured-image-wrapper">';
 				$output .= '<div class="featured-image">';
 				$output .= '<div class="featured-image-inner">';
-				$output .= sprintf( '<a href="%s" title="" class="image thumbnail" rel="themeblvd_lightbox[gallery_%s]">', $image[0], $gallery );
-				$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
-				$output .= apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
-				$output .= '</a>';
+
+				if ( 'file' == $gallery_link ) {
+
+					$image = wp_get_attachment_image_src( $post->ID, 'full' );
+					$item = sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
+
+					$args = array(
+						'item'		=> $item.themeblvd_get_image_overlay(),
+						'link'		=> $image[0],
+						'title'		=> $post->post_title,
+						'class'		=> 'image thumbnail',
+						'gallery' 	=> true
+					);
+
+					$output .= themeblvd_get_link_to_lightbox( $args );
+
+				} else {
+
+					$output .= sprintf( '<a href="%s" title="%s" class="image thumbnail">', get_permalink($post->ID), $post->post_title, $gallery );
+					$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
+					$output .= themeblvd_get_image_overlay();
+					$output .= '</a>';
+
+				}
+
 				$output .= '</div><!-- .featured-image-inner (end) -->';
 				$output .= '</div><!-- .featured-image (end) -->';
 				$output .= '</div><!-- .featured-image-wrapper (end) -->';
