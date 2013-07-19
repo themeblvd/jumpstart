@@ -172,6 +172,17 @@ jQuery(document).ready(function($) {
 				image: {
 					cursor: null,
 					tError: themeblvd.lightbox_error
+				},
+				iframe: {
+					// Add bottom bar for iframes in gallery
+					markup: '<div class="mfp-iframe-scaler">'+
+					            '<div class="mfp-close"></div>'+
+					            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+					            '<div class="mfp-bottom-bar">'+
+					              '<div class="mfp-title"></div>'+
+					              '<div class="mfp-counter"></div>'+
+					            '</div>'+
+					          '</div>'
 				}
 			});
 		});
