@@ -9,19 +9,19 @@ if ( !function_exists( 'themeblvd_get_post_thumbnail' ) ) : // pluggable for bac
  * @param string $size For the image crop size of the thumbnail
  * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
  * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
- * @param string $gallery If thumb is linking to gallery, specify the prettyPhoto extension rel="themeblvd_lightbox[gallery]" -- i.e. the "gallery" part
  * @return string $output HTML to output thumbnail
  */
 
-function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true, $gallery = 'gallery' ) {
+function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link = true, $allow_filters = true ) {
 
 	global $post;
 
 	$attachment_id = get_post_thumbnail_id( $post->ID );
 	$sidebar_layout = themeblvd_config( 'sidebar_layout' );
+	$lightbox = false;
 	$link_target = '';
 	$link_url = '';
-	$end_link = '';
+	$anchor_class = '';
 	$output = '';
 	$classes = '';
 	$image = '';
@@ -63,46 +63,33 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 			switch ( $thumb_link_meta ) {
 
 				case 'post' :
+					$title = get_the_title();
 					$link_url = get_permalink( $post->ID );
 					break;
 
 				case 'thumbnail' :
+					$title = get_the_title( $attachment_id );
 					$link_url = wp_get_attachment_url( $attachment_id );
-					$link_target = ' rel="featured_themeblvd_lightbox"';
-					if ( $gallery ) {
-						$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
-					}
+					$lightbox = true;
 					break;
 
 				case 'image' :
+					$title = get_the_title();
 					$link_url = get_post_meta( $post->ID, '_tb_image_link', true );
-					$link_target = ' rel="featured_themeblvd_lightbox"';
-					if ( $gallery ) {
-						$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
-					}
+					$lightbox = true;
 					break;
 
 				case 'video' :
 					$link_url = get_post_meta( $post->ID, '_tb_video_link', true );
-					$link_target = ' rel="featured_themeblvd_lightbox"';
-					if ( $gallery ) {
-						$link_target = str_replace( 'featured_themeblvd_lightbox', 'featured_themeblvd_lightbox['.$gallery.']', $link_target );
-					}
-					// WP oEmbed for non YouTube and Vimeo videos
-					if ( ! themeblvd_prettyphoto_supported_link( $link_url ) ) {
-						$id = uniqid('inline-video-');
-						$output .= sprintf( '<div id="%s" class="hide">%s</div>', $id, wp_oembed_get($link_url) );
-						$link_url = "#{$id}";
-					}
+					$lightbox = true;
 					break;
 
 				case 'external' :
 					$link_url = get_post_meta( $post->ID, '_tb_external_link', true );
-					$target = get_post_meta( $post->ID, '_tb_external_link_target', true );
-					if ( ! $target ) {
-						$target = '_blank';
+					$link_target = get_post_meta( $post->ID, '_tb_external_link_target', true );
+					if ( ! $link_target ) {
+						$link_target = '_blank';
 					}
-					$link_target = ' target="'.$target.'"';
 					break;
 			}
 		} else {
@@ -122,21 +109,33 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 	if ( ! $link ) {
 		$classes .= ' thumbnail';
 	} else {
-
-		if ( is_single() ) {
-			$title = ' title="'.get_the_title($post->ID).'"';
-		}
-
 		$anchor_class = 'thumbnail';
 		if ( $thumb_link_meta != 'thumbnail' ) {
 			$anchor_class .= ' '.$thumb_link_meta;
 		}
 	}
 
-	// Image with link
+	// Initial image without link
 	$image = get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
+
+	// Wrap image in link
 	if ( $link ) {
-		$image = sprintf('<a href="%s"%s class="%s"%s>%s%s</a>', $link_url, $link_target, $anchor_class, $title, $image, themeblvd_get_image_overlay() );
+		if ( $lightbox ) {
+
+			$args = apply_filters( 'themeblvd_featured_image_lightbox_args', array(
+				'item'	=> $image.themeblvd_get_image_overlay(),
+				'link'	=> $link_url,
+				'class'	=> $anchor_class,
+				'title'	=> $title
+			), $post->ID, $attachment_id );
+
+			$image = themeblvd_get_link_to_lightbox( $args );
+
+		} else {
+
+			$image = sprintf('<a href="%s" target="%s" class="%s" title="%s">%s%s</a>', $link_url, $link_target, $anchor_class, $title, $image, themeblvd_get_image_overlay() );
+
+		}
 	}
 
 	// Final HTML output
@@ -150,7 +149,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 
 	// Apply filters if allowed
 	if ( $allow_filters ) {
-		$output = apply_filters( 'themeblvd_post_thumbnail', $output, $location, $size, $link );
+		$output = apply_filters( 'themeblvd_post_thumbnail', $output, $location, $size, $link, $image );
 	}
 
 	// Return final output
@@ -482,4 +481,81 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 	}
 
 	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $type, $attachments );
+}
+
+/**
+ * Take a piece of markup and wrap it in a link to a lightbox.
+ *
+ * @since 2.3.0
+ *
+ * @param $args array Arguments for lightbox link
+ */
+function themeblvd_link_to_lightbox( $args ) {
+	echo themeblvd_get_link_to_lightbox( $args );
+}
+
+/**
+ * Take a piece of markup and wrap it in a link to a lightbox.
+ *
+ * @since 2.3.0
+ *
+ * @param $args array Arguments for lightbox link
+ * @return $output string Final HTML to output
+ */
+function themeblvd_get_link_to_lightbox( $args ) {
+
+	$defaults = array(
+		'item' 	=> themeblvd_get_local('link_to_lightbox'), // HTML Markup to be wrapped in link
+		'link' 	=> '',										// Source for media in lightbox
+		'title' => '', 										// Title for link
+		'type'	=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
+		'class' => '' 										// Additional CSS classes to add
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// Link
+	$link = $args['link'];
+
+	// Fix for youtu.be links
+	if ( strpos( $link, 'http://youtu.be/' ) !== false ) {
+		$link = str_replace( 'http://youtu.be/', 'http://youtube.com/watch?v=', $link );
+	}
+
+	// Lightbox type
+	$types = array( 'image', 'iframe', 'inline', 'ajax' );
+	$type = $args['type'];
+
+	if ( ! in_array( $type, $types ) ) {
+
+		// Auto lightbox type detection
+		if ( strpos( $link, 'youtube.com' ) !== false || strpos( $link, 'vimeo.com' ) !== false || strpos( $link, 'maps.google.com' ) !== false ) {
+
+			$type = 'iframe';
+
+		} else {
+
+			$parsed_url = parse_url( $link );
+			$filetype = wp_check_filetype( $parsed_url['path'] );
+
+			// Link to image file?
+			if ( substr( $filetype['type'], 0, 5 ) == 'image' ) {
+				$type = 'image';
+			}
+		}
+
+	}
+
+	// Title of popup
+	$title = $args['title'];
+
+	// Item markup to wrap link around
+	$item = $args['item'];
+
+	// CSS classes
+	$class = sprintf( 'themeblvd-lightbox mfp-%s %s', $type, $args['class'] );
+
+	// Output
+	$output = sprintf( '<a href="%s" title="%s" class="%s">%s</a>', $link, $title, $class, $item );
+
+	return apply_filters( 'themeblvd_link_to_lightbox', $output, $link, $title, $class, $item, $args );
 }
