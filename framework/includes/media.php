@@ -80,6 +80,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 					break;
 
 				case 'video' :
+					$title = get_the_title( $attachment_id );
 					$link_url = get_post_meta( $post->ID, '_tb_video_link', true );
 					$lightbox = true;
 					break;
@@ -510,17 +511,25 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		'title' 	=> '', 										// Title for link
 		'type'		=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
 		'class' 	=> '', 										// Additional CSS classes to add
-		'addon'		=> '',										// Optional addon for anchor tag, i.e. data="whatever"
+		'props'		=> array(),									// Additional properties for anchor tag, i.e. array( 'data-something' => 'whatever' )
+		'addon'		=> '',										// Optional addon for anchor tag, i.e. data-something="whatever"
 		'gallery' 	=> false									// Whether this is part of a gallery
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	// Link
-	$link = $args['link'];
+	// Item markup to wrap link around
+	$item = $args['item'];
+
+	// Start building link properties
+	$props = array(
+		'href'	=> $args['link'],
+		'title'	=> $args['title'],
+		'class'	=> ''
+	);
 
 	// Fix for youtu.be links
-	if ( strpos( $link, 'http://youtu.be/' ) !== false ) {
-		$link = str_replace( 'http://youtu.be/', 'http://youtube.com/watch?v=', $link );
+	if ( strpos( $props['href'], 'http://youtu.be/' ) !== false ) {
+		$props['href'] = str_replace( 'http://youtu.be/', 'http://youtube.com/watch?v=', $props['href'] );
 	}
 
 	// Lightbox type
@@ -530,17 +539,17 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	if ( ! in_array( $type, $types ) ) {
 
 		// Auto lightbox type detection
-		if ( strpos( $link, 'youtube.com' ) !== false || strpos( $link, 'vimeo.com' ) !== false || strpos( $link, 'maps.google.com' ) !== false ) {
+		if ( strpos( $props['href'], 'youtube.com' ) !== false || strpos( $props['href'], 'vimeo.com' ) !== false || strpos( $props['href'], 'maps.google.com' ) !== false ) {
 
 			$type = 'iframe';
 
-		} else if ( strpos( $link, '#' ) === 0 ) {
+		} else if ( strpos( $props['href'], '#' ) === 0 ) {
 
 			$type = 'inline';
 
 		} else {
 
-			$parsed_url = parse_url( $link );
+			$parsed_url = parse_url( $props['href'] );
 			$filetype = wp_check_filetype( $parsed_url['path'] );
 
 			// Link to image file?
@@ -551,16 +560,10 @@ function themeblvd_get_link_to_lightbox( $args ) {
 
 	}
 
-	// Title of popup
-	$title = $args['title'];
-
-	// Item markup to wrap link around
-	$item = $args['item'];
-
 	// CSS classes
 	if ( $args['gallery'] ) {
 
-		$class = sprintf( 'lightbox-gallery-item mfp-%s %s', $type, $args['class'] );
+		$class = array( 'lightbox-gallery-item', "mfp-{$type}" );
 
 	} else {
 
@@ -570,18 +573,41 @@ function themeblvd_get_link_to_lightbox( $args ) {
 			$type_class = "mfp-{$type}";
 		}
 
-		$class = sprintf( 'themeblvd-lightbox %s %s', $type_class, $args['class'] );
+		$class = array( 'themeblvd-lightbox', $type_class );
 
 	}
 
-	// Addon
-	$addon = $args['addon'];
-	if ( $addon ) {
-		$addon = ' '.$addon;
+	$user_class = $args['class'];
+	if ( ! is_array( $args['class'] ) ) {
+		$user_class = explode(' ', $args['class'] );
 	}
 
-	// Output
-	$output = sprintf( '<a href="%s" title="%s" class="%s"%s>%s</a>', $link, $title, $class, $addon, $item );
+	$class = array_merge( $class, $user_class );
+	$class = apply_filters( 'themeblvd_lightbox_class', $class, $args, $type, $item ); // Filter while still an array
+	$props['class'] = implode( ' ', $class );
 
-	return apply_filters( 'themeblvd_link_to_lightbox', $output, $link, $title, $class, $item, $args );
+	// Add user any additional properties passed in
+	if ( is_array( $args['props'] ) ) {
+		$props = array_merge( $props, $args['props'] );
+	}
+
+	// Extend link properties
+	$props = apply_filters( 'themeblvd_lightbox_props', $props, $args, $type, $item, $class );
+
+	// Use properties array to build anchor tag
+	$output = '<a ';
+	foreach ( $props as $key => $value ) {
+		$output .= "{$key}=\"{$value}\" ";
+	}
+	$output = themeblvd_remove_trailing_char( $output, ' ' );
+
+	// Manual addon
+	if ( $args['addon'] ) {
+		$output .= ' '.$args['addon'];
+	}
+
+	// Finish link
+	$output .= sprintf( '>%s</a>', $item );
+
+	return apply_filters( 'themeblvd_link_to_lightbox', $output, $args, $props, $type, $item, $class );
 }
