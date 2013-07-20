@@ -127,6 +127,7 @@ function themeblvd_get_js_locals() {
 		$locals['bootstrap'] = 'true';
 	}
 
+	// Magnific Popup Lightbox integration
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
 
 		$locals['magnific_popup'] = 'true';
@@ -165,6 +166,7 @@ function themeblvd_get_js_locals() {
 
 	}
 
+	// Superfish for drop down menus
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 		$locals['superfish'] = 'true';
 	}
