@@ -157,35 +157,105 @@ jQuery(document).ready(function($) {
 	{
 
 		// Standard, non-gallery lightbox links
-		$('.themeblvd-lightbox').magnificPopup({
-			image: {
-				cursor: null,
-				tError: themeblvd.lightbox_error
-			}
-		});
+		if ( themeblvd.lightbox_animation == 'none' ) {
 
-		// Galleries
-		$('.themeblvd-gallery').each(function() {
-			$(this).magnificPopup({
-				delegate: 'a.lightbox-gallery-item',
-				gallery: { enabled: true },
+			// No animation
+			$('.themeblvd-lightbox').magnificPopup({
+				disableOn: themeblvd.lightbox_mobile,
 				image: {
 					cursor: null,
-					tError: themeblvd.lightbox_error
-				},
-				iframe: {
-					// Add bottom bar for iframes in gallery
-					markup: '<div class="mfp-iframe-scaler">'+
-					            '<div class="mfp-close"></div>'+
-					            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-					            '<div class="mfp-bottom-bar">'+
-					              '<div class="mfp-title"></div>'+
-					              '<div class="mfp-counter"></div>'+
-					            '</div>'+
-					          '</div>'
 				}
 			});
-		});
+
+		} else {
+
+			// Animated
+			$('.themeblvd-lightbox').magnificPopup({
+				disableOn: themeblvd.lightbox_mobile,
+				removalDelay: 160,
+				mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation,
+				image: {
+					cursor: null,
+				}
+			});
+
+		}
+
+		// Specific lightbox for iframe (videos, google maps)
+		// so we can designate a separate option to disable
+		// on mobile. -- Videos seem to be harder to view in
+		// the lightbox than images on mobile.
+		if ( themeblvd.lightbox_animation == 'none' ) {
+
+			$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
+				disableOn: themeblvd.lightbox_mobile_iframe,
+				type: 'iframe'
+			});
+
+		} else {
+
+			// Animated
+			$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
+				disableOn: themeblvd.lightbox_mobile,
+				type: 'iframe',
+				removalDelay: 160,
+				mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation
+			});
+
+		}
+
+		// Galleries
+		if ( themeblvd.lightbox_animation == 'none' ) {
+
+			$('.themeblvd-gallery').each(function() {
+				$(this).magnificPopup({
+					disableOn: themeblvd.lightbox_mobile_gallery,
+					delegate: 'a.lightbox-gallery-item',
+					gallery: { enabled: true },
+					image: {
+						cursor: null,
+					},
+					iframe: {
+						// Add bottom bar for iframes in gallery
+						markup: '<div class="mfp-iframe-scaler">'+
+						            '<div class="mfp-close"></div>'+
+						            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+						            '<div class="mfp-bottom-bar">'+
+						              '<div class="mfp-title"></div>'+
+						              '<div class="mfp-counter"></div>'+
+						            '</div>'+
+						          '</div>'
+					}
+				});
+			});
+
+		} else {
+
+			$('.themeblvd-gallery').each(function() {
+				$(this).magnificPopup({
+					disableOn: themeblvd.lightbox_mobile_gallery,
+					delegate: 'a.lightbox-gallery-item',
+					gallery: { enabled: true },
+					image: {
+						cursor: null,
+					},
+					iframe: {
+						// Add bottom bar for iframes in gallery
+						markup: '<div class="mfp-iframe-scaler">'+
+						            '<div class="mfp-close"></div>'+
+						            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+						            '<div class="mfp-bottom-bar">'+
+						              '<div class="mfp-title"></div>'+
+						              '<div class="mfp-counter"></div>'+
+						            '</div>'+
+						          '</div>'
+					},
+					removalDelay: 160,
+					mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation
+				});
+			});
+
+		}
 
 	}
 

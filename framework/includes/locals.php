@@ -125,7 +125,33 @@ function themeblvd_get_js_locals() {
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
+
 		$locals['magnific_popup'] = 'true';
+
+		// Magnific Popup animation
+		$locals['lightbox_animation'] = themeblvd_get_option( 'lightbox_animation' );
+
+		// Disable standard lightbox on mobile?
+		if ( 'yes' == themeblvd_get_option( 'lightbox_mobile' ) ) {
+			$locals['lightbox_mobile'] = '768';
+		} else {
+			$locals['lightbox_mobile'] = '0';
+		}
+
+		// Disable iframe lightboxes (i.e. video, google maps) on mobile?
+		if ( 'yes' == themeblvd_get_option( 'lightbox_mobile_iframe' ) ) {
+			$locals['lightbox_mobile_iframe'] = '768';
+		} else {
+			$locals['lightbox_mobile_iframe'] = '0';
+		}
+
+		// Disable gallery lightboxes on mobile?
+		if ( 'yes' == themeblvd_get_option( 'lightbox_mobile_gallery' ) ) {
+			$locals['lightbox_mobile_gallery'] = '768';
+		} else {
+			$locals['lightbox_mobile_gallery'] = '0';
+		}
+
 	}
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {

@@ -2239,7 +2239,10 @@ div.wpcf7 .watermark {
 	color: #888888;
 }
 
-/* Lightbox */
+/* =Lightbox
+-----------------------------------------------*/
+
+/* Basic inline popup styling */
 .white-popup {
 	background: #ffffff;
 	margin: 20px auto;
@@ -2248,8 +2251,48 @@ div.wpcf7 .watermark {
 	position: relative;
 	width: auto;
 }
+
+/* Bottom bar for iframe popups in a gallery */
 .mfp-iframe-holder .mfp-bottom-bar {
 	margin-top: 5px;
+}
+
+.mfp-iframe-holder .mfp-iframe-scaler {
+	background: #000;
+}
+
+/* General iframe animation fix */
+.mfp-iframe-scaler.mfp-with-anim {
+	overflow: visible;
+}
+
+/* Fade animation */
+.themeblvd-mfp-fade.mfp-bg {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	transition: all 0.15s ease-out;
+}
+.themeblvd-mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.8;
+}
+.themeblvd-mfp-fade.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+.themeblvd-mfp-fade.mfp-wrap .mfp-content,
+.themeblvd-mfp-fade.mfp-wrap button {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	transition: all 0.15s ease-out;
+}
+.themeblvd-mfp-fade.mfp-wrap.mfp-ready .mfp-content,
+.themeblvd-mfp-fade.mfp-wrap.mfp-ready button {
+	opacity: 1;
+}
+.themeblvd-mfp-fade.mfp-wrap.mfp-removing .mfp-content,
+.themeblvd-mfp-fade.mfp-wrap.mfp-removing button {
+	opacity: 0;
 }
 
 /* =Elements

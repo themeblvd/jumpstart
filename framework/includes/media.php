@@ -559,9 +559,19 @@ function themeblvd_get_link_to_lightbox( $args ) {
 
 	// CSS classes
 	if ( $args['gallery'] ) {
+
 		$class = sprintf( 'lightbox-gallery-item mfp-%s %s', $type, $args['class'] );
+
 	} else {
-		$class = sprintf( 'themeblvd-lightbox mfp-%s %s', $type, $args['class'] );
+
+		if ( 'iframe' == $type ) {
+			$type_class = 'lightbox-iframe'; // Enables framework's separate JS for iframe video handling
+		} else {
+			$type_class = "mfp-{$type}";
+		}
+
+		$class = sprintf( 'themeblvd-lightbox %s %s', $type_class, $args['class'] );
+
 	}
 
 	// Addon

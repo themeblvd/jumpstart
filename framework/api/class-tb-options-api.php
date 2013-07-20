@@ -438,7 +438,57 @@ class Theme_Blvd_Options_API {
 						)
 					)
 				) // End archives options
-			)
+			),
+			'lightbox' => array(
+				'name' => __( 'Lightbox', 'themeblvd' ),
+				'desc' => __( 'These settings apply to the built-in lightbox functionality, which utilizes the <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a> script.', 'themeblvd' ),
+				'options' => array(
+					'lightbox_animation' => array(
+						'name' 		=> __( 'Animate lightboxes?', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like lightboxes to animate as they open and close.', 'themeblvd' ),
+						'id' 		=> 'lightbox_animation',
+						'std' 		=> 'fade',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'none'		=> __( 'No animation', 'themeblvd' ),
+							'fade' 		=> __( 'Fade animation', 'themeblvd' )
+						)
+					),
+					'lightbox_mobile' => array(
+						'name' 		=> __( 'Disable standard lightboxes for mobile?', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the lightbox to be disabled for mobile users viewing a standard lightbox instance.', 'themeblvd' ),
+						'id' 		=> 'lightbox_mobile',
+						'std' 		=> 'no',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'yes'		=> __( 'Yes, disable for mobile.', 'themeblvd' ),
+							'no' 		=> __( 'No, do not disable for mobile.', 'themeblvd' )
+						)
+					),
+					'lightbox_mobile_iframe' => array(
+						'name' 		=> __( 'Disable iframe lightboxes for mobile?', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup.', 'themeblvd' ),
+						'id' 		=> 'lightbox_mobile_iframe',
+						'std' 		=> 'yes',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'yes'		=> __( 'Yes, disable for mobile.', 'themeblvd' ),
+							'no' 		=> __( 'No, do not disable for mobile.', 'themeblvd' )
+						)
+					),
+					'lightbox_mobile_gallery' => array(
+						'name' 		=> __( 'Disable gallery lightboxes for mobile?', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the lightbox to be disabled for mobile users when viewing a gallery.', 'themeblvd' ),
+						'id' 		=> 'lightbox_mobile_gallery',
+						'std' 		=> 'no',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'yes'		=> __( 'Yes, disable for mobile.', 'themeblvd' ),
+							'no' 		=> __( 'No, do not disable for mobile.', 'themeblvd' )
+						)
+					)
+				)
+			) // End archives options
 		);
 
 		/*--------------------------------*/
