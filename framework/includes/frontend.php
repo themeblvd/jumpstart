@@ -297,7 +297,7 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) { // @TODO change back to min
 		$scripts[] = 'themeblvd';
-		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
+		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
 		// Localize primary themeblvd.js script. This allows us to pass any filterable
 		// parameters through to our primary script.
 		wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );
