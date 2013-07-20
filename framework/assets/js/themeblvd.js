@@ -22,7 +22,7 @@
 
 			// Toggle on click
 			el.click(function(){
-				if( target.hasClass(settings.openClass) )
+				if (  target.hasClass(settings.openClass) )
 					target.slideUp().removeClass(settings.openClass).addClass(settings.closedClass);
 				else
 					target.slideDown().removeClass(settings.closedClass).addClass(settings.openClass);
@@ -38,19 +38,20 @@
 
 				timeout = setTimeout( function() {
 					currentViewport = $(window).width();
-					if( currentViewport > settings.viewport )
-					{
+					if (  currentViewport > settings.viewport ) {
+
 						// Add class "expanded" so we can keep track of
 						// whether this re-sizing is occuring on a mobile
 						// device or not. If we're on mobile, the "forced_open"
 						// class should never get added.
 						target.show().removeClass(settings.openClass+' '+settings.closedClass).addClass('expanded');
-					}
-					else
-					{
+
+					} else {
+
 						// Make sure this wasn't triggered by re-sizing on mobile
-						if( target.hasClass('expanded') )
+						if (  target.hasClass('expanded') )
 							target.hide().removeClass('expanded');
+
 					}
 
 				}, 100 );
@@ -73,8 +74,8 @@ jQuery(document).ready(function($) {
 	// Menus
 	// ---------------------------------------------------------
 
-	if(themeblvd.superfish)
-	{
+	if ( themeblvd.superfish ) {
+
 		// Activate Superfish
 		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
 
@@ -124,8 +125,7 @@ jQuery(document).ready(function($) {
 	// Since our gallery integration is specifically designed
 	// to work with Magnific Popup, if it isn't included,
 	// we'll halt it all together.
-	if(themeblvd.magnific_popup)
-	{
+	if ( themeblvd.magnific_popup ) {
 
 		$('.gallery').append('<div class="clear"></div>');
 
@@ -141,7 +141,7 @@ jQuery(document).ready(function($) {
 				$(this).find('img').addClass('thumbnail');
 
 				// Append lightbox and hover effect if thumb links to an image
-				if(this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i)) {
+				if ( this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i ) ) {
 				   	$(this).addClass('lightbox-gallery-item mfp-image image-button');
 				}
 
@@ -155,8 +155,7 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Bind magnifico
-	if(themeblvd.magnific_popup)
-	{
+	if ( themeblvd.magnific_popup ) {
 
 		// Standard, non-gallery lightbox links
 		if ( themeblvd.lightbox_animation == 'none' ) {
@@ -279,8 +278,7 @@ jQuery(document).ready(function($) {
 	}
 
 	// Animations on lightbox thumbnails.
-	if(themeblvd.thumb_animations && window_width >= 768 )
-	{
+	if ( themeblvd.thumb_animations && window_width >= 768 ) {
 
 		$('.image-button').prepend('<span class="enlarge"></span>');
 
@@ -311,14 +309,15 @@ jQuery(document).ready(function($) {
 	// Featured Image overlay links
 	// ---------------------------------------------------------
 
-	if(themeblvd.featured_animations || themeblvd.image_slide_animations)
-	{
+	if ( themeblvd.featured_animations || themeblvd.image_slide_animations ) {
+
 		var selector = "";
-		if(themeblvd.featured_animations && themeblvd.image_slide_animations)
+
+		if ( themeblvd.featured_animations && themeblvd.image_slide_animations)
 			selector = ".featured-image a, a.slide-thumbnail-link";
-		else if(themeblvd.featured_animations)
+		else if ( themeblvd.featured_animations)
 			selector = ".featured-image a";
-		else if(themeblvd.image_slide_animations)
+		else if ( themeblvd.image_slide_animations)
 			selector = "a.slide-thumbnail-link";
 
 		if ( window_width >= 768 ) {
@@ -359,15 +358,13 @@ jQuery(document).ready(function($) {
 	// Logo w/retina display support
 	// ---------------------------------------------------------
 
-	if(themeblvd.retina_logo)
-	{
+	if ( themeblvd.retina_logo ) {
 		var image = $('.tb-image-logo img'),
 			image_2x = image.attr('data-image-2x');
 
 		// If a retina-otimized image was detected
 		// and should be displayed
-		if(window.devicePixelRatio >= 1.5 && image_2x)
-		{
+		if ( window.devicePixelRatio >= 1.5 && image_2x ) {
 			// Display 2x image w/fixed original width
 			image.attr({
 				src: image_2x
@@ -379,8 +376,7 @@ jQuery(document).ready(function($) {
 	// Bootstrap Integration
 	// ---------------------------------------------------------
 
-	if(themeblvd.bootstrap)
-	{
+	if ( themeblvd.bootstrap ) {
 
 		// Add standard table classes to calendar widget
 		$('#calendar_wrap table').addClass('table table-bordered');
@@ -389,12 +385,18 @@ jQuery(document).ready(function($) {
 		// This allows the user to have the set of tabs
 		// automatically stay the height of the tallest tab.
 		$('.tabbable.fixed-height').each(function(){
+
 			var tallest = 0;
+
 			$(this).find('.tab-pane').each(function(){
+
 				var currentHeight = $(this).height();
-				if(currentHeight > tallest)
+
+				if ( currentHeight > tallest )
 					tallest = currentHeight;
+
 			});
+
 			$(this).find('.tab-pane').height(tallest);
 		});
 
@@ -402,15 +404,21 @@ jQuery(document).ready(function($) {
 		// This basically just toggles the Plus/Minus fontawesome
 		// icon we've incorporated into the triggers for the toggles.
 		$('.collapse').on('show', function() {
+
 			// Toggle is opening, add "active-trigger" class and
 			// change icon to a minus sign.
 			$(this).closest('.accordion-group').find('.accordion-toggle').addClass('active-trigger').find('.switch-me').removeClass('icon-plus-sign').addClass('icon-minus-sign');
+
 		});
+
 		$('.collapse').on('hide', function() {
+
 			// Toggle is closing, remove "active-trigger" class and
 			// change icon to a plus sign.
 			$(this).closest('.accordion-group').find('.accordion-toggle').removeClass('active-trigger').find('.switch-me').removeClass('icon-minus-sign').addClass('icon-plus-sign');
+
 		});
+
 		// And now if the user has wrapped a set of "toggles" into an
 		// accordian, this will attach them all.
 		var accordion_id;
