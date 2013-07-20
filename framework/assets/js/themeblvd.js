@@ -257,6 +257,23 @@ jQuery(document).ready(function($) {
 
 		}
 
+		// Localize
+		$.extend( true, $.magnificPopup.defaults, {
+			tClose: themeblvd.lightbox_close,
+			tLoading: themeblvd.lightbox_loading,
+			gallery: {
+				tPrev: themeblvd.lightbox_previous,
+				tNext: themeblvd.lightbox_next,
+				tCounter: themeblvd.lightbox_counter
+			},
+			image: {
+				tError: themeblvd.lightbox_error
+			},
+			ajax: {
+				tError: themeblvd.lightbox_error
+			}
+		});
+
 	}
 
 	// Animations on lightbox thumbnails.

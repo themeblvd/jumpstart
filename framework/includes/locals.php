@@ -42,8 +42,10 @@ function themeblvd_get_all_locals() {
 		'invalid_layout'			=> __( 'Invalid Layout ID: The layout ID currently assigned to this page no longer exists.', 'themeblvd_frontend' ),
 		'label_submit'				=> __( 'Post Comment', 'themeblvd_frontend' ),
 		'last_30'					=> __( 'The Last 30 Posts', 'themeblvd_frontend' ),
+		'lightbox_counter'			=> __( '%curr% of %total%', 'themeblvd_frontend' ),
 		'lightbox_error'			=> __( 'The lightbox media could not be loaded.', 'themeblvd_frontend' ),
 		'link_to_lightbox'			=> __( 'Link to lightbox', 'themeblvd_frontend' ),
+		'loading'					=> __( 'Loading...', 'themeblvd_frontend' ),
 		'login_text'				=> __( 'Log in to Reply', 'themeblvd_frontend' ),
 		'monthly_archives'			=> __( 'Monthly Archives', 'themeblvd_frontend' ),
 		'name'						=> __( 'Name', 'themeblvd_frontend' ),
@@ -54,10 +56,12 @@ function themeblvd_get_all_locals() {
 		'posted_on'					=> __( 'Posted on', 'themeblvd_frontend' ),
 		'posts_per_category'		=> __( 'Posts per category', 'themeblvd_frontend' ),
 		'navigation' 				=> __( 'Navigation', 'themeblvd_frontend' ),
+		'next'						=> __( 'Next', 'themeblvd_frontend' ),
 		'no_comments'				=> __( 'No Comments', 'themeblvd_frontend' ),
 		'no_slider' 				=> __( 'Slider does not exist.', 'themeblvd_frontend' ),
 		'no_slider_selected' 		=> __( 'Oops! You have not selected a slider in your layout.', 'themeblvd_frontend' ),
 		'no_video'					=> __( 'The video url could not retrieve a video.', 'themeblvd_frontend' ),
+		'next'						=> __( 'Previous', 'themeblvd_frontend' ),
 		'read_more'					=> __( 'Read More', 'themeblvd_frontend' ),
 		'reply'						=> __( 'Reply', 'themeblvd_frontend' ),
 		'search'					=> __( 'Search the site...', 'themeblvd_frontend' ),
@@ -112,8 +116,7 @@ function themeblvd_get_js_locals() {
 		'thumb_animations'			=> 'true',
 		'featured_animations'		=> 'true',
 		'image_slide_animations'	=> 'true',
-		'retina_logo'				=> 'true',
-		'lightbox_error'			=> themeblvd_get_local('lightbox_error')
+		'retina_logo'				=> 'true'
 	);
 
 	// Extend $locals to accomodate scripts being included
@@ -151,6 +154,14 @@ function themeblvd_get_js_locals() {
 		} else {
 			$locals['lightbox_mobile_gallery'] = '0';
 		}
+
+		// Text strings
+		$locals['lightbox_error'] = themeblvd_get_local('lightbox_error');
+		$locals['lightbox_close'] = themeblvd_get_local('close');
+		$locals['lightbox_loading'] = themeblvd_get_local('loading');
+		$locals['lightbox_counter'] = themeblvd_get_local('lightbox_counter');
+		$locals['lightbox_next'] = themeblvd_get_local('next');
+		$locals['lightbox_previous'] = themeblvd_get_local('previous');
 
 	}
 
