@@ -67,6 +67,8 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
+	var window_width = $(window).width();
+
 	// ---------------------------------------------------------
 	// Menus
 	// ---------------------------------------------------------
@@ -196,7 +198,7 @@ jQuery(document).ready(function($) {
 
 			// Animated
 			$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
-				disableOn: themeblvd.lightbox_mobile,
+				disableOn: themeblvd.lightbox_mobile_iframe,
 				type: 'iframe',
 				removalDelay: 160,
 				mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation
@@ -277,7 +279,7 @@ jQuery(document).ready(function($) {
 	}
 
 	// Animations on lightbox thumbnails.
-	if(themeblvd.thumb_animations)
+	if(themeblvd.thumb_animations && window_width >= 768 )
 	{
 
 		$('.image-button').prepend('<span class="enlarge"></span>');
@@ -302,6 +304,7 @@ jQuery(document).ready(function($) {
 				}, 100 );
 			}
 		);
+
 	}
 
 	// ---------------------------------------------------------
@@ -318,26 +321,30 @@ jQuery(document).ready(function($) {
 		else if(themeblvd.image_slide_animations)
 			selector = "a.slide-thumbnail-link";
 
-		$(selector).hover(
-			function () {
-				var el = $(this);
-				el.find('.image-overlay-bg').stop(true, true).animate({
-					opacity: 0.2
-				}, 300 );
-				el.find('.image-overlay-icon').stop(true, true).animate({
-					opacity: 1
-				}, 300 );
-			},
-			function () {
-				var el = $(this);
-				el.find('.image-overlay-bg').stop(true, true).animate({
-					opacity: 0
-				}, 300 );
-				el.find('.image-overlay-icon').stop(true, true).animate({
-					opacity: 0
-				}, 300 );
-			}
-		);
+		if ( window_width >= 768 ) {
+
+			$(selector).hover(
+				function () {
+					var el = $(this);
+					el.find('.image-overlay-bg').stop(true, true).animate({
+						opacity: 0.2
+					}, 300 );
+					el.find('.image-overlay-icon').stop(true, true).animate({
+						opacity: 1
+					}, 300 );
+				},
+				function () {
+					var el = $(this);
+					el.find('.image-overlay-bg').stop(true, true).animate({
+						opacity: 0
+					}, 300 );
+					el.find('.image-overlay-icon').stop(true, true).animate({
+						opacity: 0
+					}, 300 );
+				}
+			);
+
+		}
 	}
 
 	// ---------------------------------------------------------
