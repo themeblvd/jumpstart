@@ -172,6 +172,11 @@ class Theme_Blvd_Options_API {
 	 *		- archive_title
 	 *		- archive_thumbs
 	 *		- archive_content
+	 *	- Lightbox
+	 *		- lightbox_animation
+	 *		- lightbox_mobile
+	 *		- lightbox_mobile_iframe
+	 *		- lightbox_mobile_gallery
 	 * Configuration
 	 *	- Analytics
 	 *		- analytics
