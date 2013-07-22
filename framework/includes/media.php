@@ -561,20 +561,10 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	}
 
 	// CSS classes
-	if ( $args['gallery'] ) {
+	$class = array( 'themeblvd-lightbox', "mfp-{$type}" );
 
-		$class = array( 'lightbox-gallery-item', "mfp-{$type}" );
-
-	} else {
-
-		if ( 'iframe' == $type ) {
-			$type_class = 'lightbox-iframe'; // Enables framework's separate JS for iframe video handling
-		} else {
-			$type_class = "mfp-{$type}";
-		}
-
-		$class = array( 'themeblvd-lightbox', $type_class );
-
+	if ( 'iframe' == $type ) {
+		$class[] = 'lightbox-iframe'; // Enables framework's separate JS for iframe video handling in non-galleries
 	}
 
 	$user_class = $args['class'];

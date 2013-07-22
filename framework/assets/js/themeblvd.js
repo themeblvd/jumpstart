@@ -157,106 +157,64 @@ jQuery(document).ready(function($) {
 	// Bind magnifico
 	if ( themeblvd.magnific_popup ) {
 
-		// Standard, non-gallery lightbox links
-		if ( themeblvd.lightbox_animation == 'none' ) {
+		var remove_delay = 0, main_class = '';
 
-			// No animation
-			$('.themeblvd-lightbox').magnificPopup({
-				disableOn: themeblvd.lightbox_mobile,
-				image: {
-					cursor: null,
-				}
-			});
-
-		} else {
-
-			// Animated
-			$('.themeblvd-lightbox').magnificPopup({
-				disableOn: themeblvd.lightbox_mobile,
-				removalDelay: 160,
-				mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation,
-				image: {
-					cursor: null,
-				}
-			});
-
+		if ( themeblvd.lightbox_animation != 'none' ) {
+			remove_delay = 160;
+			main_class = 'themeblvd-mfp-'+themeblvd.lightbox_animation;
 		}
+
+		// Galleries
+		$('.themeblvd-gallery').each(function() {
+
+			$(this).find('.themeblvd-lightbox').each(function(){
+				$(this).removeClass('themeblvd-lightbox').addClass('lightbox-gallery-item');
+			});
+
+			$(this).magnificPopup({
+				disableOn: themeblvd.lightbox_mobile_gallery,
+				delegate: 'a.lightbox-gallery-item',
+				gallery: { enabled: true },
+				image: {
+					cursor: null,
+				},
+				iframe: {
+					// Add bottom bar for iframes in gallery
+					markup: '<div class="mfp-iframe-scaler">'+
+					            '<div class="mfp-close"></div>'+
+					            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+					            '<div class="mfp-bottom-bar">'+
+					              '<div class="mfp-title"></div>'+
+					              '<div class="mfp-counter"></div>'+
+					            '</div>'+
+					          '</div>'
+				},
+				removalDelay: remove_delay,
+				mainClass: main_class
+			});
+
+		});
+
+		// Standard, non-gallery lightbox links
+		$('.themeblvd-lightbox').magnificPopup({
+			disableOn: themeblvd.lightbox_mobile,
+			removalDelay: remove_delay,
+			mainClass: main_class,
+			image: {
+				cursor: null,
+			}
+		});
 
 		// Specific lightbox for iframe (videos, google maps)
 		// so we can designate a separate option to disable
 		// on mobile. -- Videos seem to be harder to view in
 		// the lightbox than images on mobile.
-		if ( themeblvd.lightbox_animation == 'none' ) {
-
-			$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
-				disableOn: themeblvd.lightbox_mobile_iframe,
-				type: 'iframe'
-			});
-
-		} else {
-
-			// Animated
-			$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
-				disableOn: themeblvd.lightbox_mobile_iframe,
-				type: 'iframe',
-				removalDelay: 160,
-				mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation
-			});
-
-		}
-
-		// Galleries
-		if ( themeblvd.lightbox_animation == 'none' ) {
-
-			$('.themeblvd-gallery').each(function() {
-				$(this).magnificPopup({
-					disableOn: themeblvd.lightbox_mobile_gallery,
-					delegate: 'a.lightbox-gallery-item',
-					gallery: { enabled: true },
-					image: {
-						cursor: null,
-					},
-					iframe: {
-						// Add bottom bar for iframes in gallery
-						markup: '<div class="mfp-iframe-scaler">'+
-						            '<div class="mfp-close"></div>'+
-						            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-						            '<div class="mfp-bottom-bar">'+
-						              '<div class="mfp-title"></div>'+
-						              '<div class="mfp-counter"></div>'+
-						            '</div>'+
-						          '</div>'
-					}
-				});
-			});
-
-		} else {
-
-			$('.themeblvd-gallery').each(function() {
-				$(this).magnificPopup({
-					disableOn: themeblvd.lightbox_mobile_gallery,
-					delegate: 'a.lightbox-gallery-item',
-					gallery: { enabled: true },
-					image: {
-						cursor: null,
-					},
-					iframe: {
-						// Add bottom bar for iframes in gallery
-						markup: '<div class="mfp-iframe-scaler">'+
-						            '<div class="mfp-close"></div>'+
-						            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-						            '<div class="mfp-bottom-bar">'+
-						              '<div class="mfp-title"></div>'+
-						              '<div class="mfp-counter"></div>'+
-						            '</div>'+
-						          '</div>'
-					},
-					removalDelay: 160,
-					mainClass: 'themeblvd-mfp-'+themeblvd.lightbox_animation
-				});
-			});
-
-		}
+		$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
+			disableOn: themeblvd.lightbox_mobile_iframe,
+			type: 'iframe',
+			removalDelay: remove_delay,
+			mainClass: main_class
+		});
 
 		// Localize
 		$.extend( true, $.magnificPopup.defaults, {

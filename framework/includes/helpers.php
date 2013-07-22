@@ -456,6 +456,7 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
  * @return array $classes Classes for element.
  */
 function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
+
 	$classes = '';
 
 	$all_classes = array(
@@ -463,10 +464,10 @@ function themeblvd_get_classes( $element, $start_space = false, $end_space = fal
 		'element_content' 				=> array(),
 		'element_divider' 				=> array(),
 		'element_headline' 				=> array(),
-		'element_post_grid_paginated' 	=> array('post_grid_paginated'), // Match class used in template_grid.php
-		'element_post_grid' 			=> array(),
-		'element_post_grid_slider' 		=> array(),
-		'element_post_list_paginated' 	=> array('post_list_paginated'), // Match class used in template_list.php
+		'element_post_grid_paginated' 	=> array('themeblvd-gallery'),
+		'element_post_grid' 			=> array('themeblvd-gallery'),
+		'element_post_grid_slider' 		=> array('themeblvd-gallery'),
+		'element_post_list_paginated' 	=> array(),
 		'element_post_list' 			=> array(),
 		'element_post_list_slider' 		=> array(),
 		'element_post_slider' 			=> array(),
@@ -666,7 +667,7 @@ function themeblvd_standard_slider_js( $id, $options ) {
 							$('#tb-slider-<?php echo $id; ?> .flex-play').show();
 						});
 					<?php endif; ?>
-    				$('#tb-slider-<?php echo $id; ?> .image-link').click(function() {
+    				$('#tb-slider-<?php echo $id; ?> .slide-thumbnail-link').click(function() {
     					$('#tb-slider-<?php echo $id; ?> .flex-pause').hide();
     					$('#tb-slider-<?php echo $id; ?> .flex-play').show();
     					slider.pause();
