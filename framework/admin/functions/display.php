@@ -1018,7 +1018,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
  */
 function themeblvd_social_media_option( $id, $name, $val ) {
 
-	$sources = themeblvd_get_social_media_buttons();
+	$sources = themeblvd_get_social_media_sources();
 
 	$counter = 1;
 	$divider = round( count($sources)/2 );
