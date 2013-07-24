@@ -28,7 +28,6 @@ Jump Start Changelog
 * On mobile, main content area now always displays above sidebars for all sidebar layouts.
 * Removed post meta from displaying when with pages in search results.
 * Reconstruction of how pagination works to be more extendable. See new function `themeblvd_get_pagination` in /framework/functions/parts.php, and new functions `themeblvd_get_pagination_parts` in /framework/functions/helpers.php.
-* Expanded "Featured Image Link" video link to accept any WordPress oEmbed URL.
 * Slight UI improvements to Logo option in default Theme Options panel.
 * Majorly reduced framework's footprint on `$GLOBAL` namespace with re-structuring.
 * API functionality for Widget Areas, Theme Options, and Stylesheets completely re-structured.
