@@ -4,6 +4,8 @@ Jump Start Changelog
 1.1.0
 -----
 
+*Warning: Make sure to checkout this article before updating: [Updating to Jump Start 1.1](http://support.themeblvd.com/updating-to-jump-start-1-1/).*
+
 **If you're using the Layout Builder plugin, you must update it to v1.2+**
 **If you're using the Sliders plugin, you must update it to v1.1+**
 
