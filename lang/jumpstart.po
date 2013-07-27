@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jump Start\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-26 12:04-1000\n"
-"PO-Revision-Date: 2013-03-26 12:04-1000\n"
+"POT-Creation-Date: 2013-07-27 16:01-0800\n"
+"PO-Revision-Date: 2013-07-27 16:01-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgid "Bulk Actions"
 msgstr ""
 
 #: ../framework/admin/functions/display.php:40
-#: ../framework/admin/functions/display.php:76
+#: ../framework/admin/functions/display.php:77
 msgid "Delete"
 msgstr ""
 
@@ -26,257 +26,255 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:70
-#: ../framework/admin/functions/display.php:73
+#: ../framework/admin/functions/display.php:71
+#: ../framework/admin/functions/display.php:74
 msgid "Edit"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:125
+#: ../framework/admin/functions/display.php:142
 msgid "No Assignments"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:143
+#: ../framework/admin/functions/display.php:160
 msgid "No items have been created yet. Click the Add tab above to get started."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:175
+#: ../framework/admin/functions/display.php:191
 msgid "Hide Columns"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:179
+#: ../framework/admin/functions/display.php:195
 msgid "Column"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:183
-#: ../framework/admin/functions/display.php:187
-#: ../framework/admin/functions/display.php:191
-#: ../framework/admin/functions/display.php:195
+#: ../framework/admin/functions/display.php:199
+#: ../framework/admin/functions/display.php:203
+#: ../framework/admin/functions/display.php:207
+#: ../framework/admin/functions/display.php:211
 msgid "Columns"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:225
+#: ../framework/admin/functions/display.php:248
 msgid "Columns will be hidden."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:278
-#: ../framework/admin/functions/display.php:282
-#: ../framework/admin/functions/display.php:286
-#: ../framework/admin/functions/display.php:290
-#: ../framework/admin/functions/display.php:294
-#: ../framework/admin/functions/display.php:298
-#: ../framework/admin/functions/display.php:302
-#: ../framework/admin/functions/display.php:306
-#: ../framework/admin/functions/display.php:310
-#: ../framework/admin/functions/display.php:314
-#: ../framework/admin/functions/display.php:318
+#: ../framework/admin/functions/display.php:303
+#: ../framework/admin/functions/display.php:307
+#: ../framework/admin/functions/display.php:311
+#: ../framework/admin/functions/display.php:315
+#: ../framework/admin/functions/display.php:319
+#: ../framework/admin/functions/display.php:323
+#: ../framework/admin/functions/display.php:327
+#: ../framework/admin/functions/display.php:331
+#: ../framework/admin/functions/display.php:335
+#: ../framework/admin/functions/display.php:339
+#: ../framework/admin/functions/display.php:343
 msgid "Tabs"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:340
+#: ../framework/admin/functions/display.php:365
 msgid "Open Style"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:341
+#: ../framework/admin/functions/display.php:366
 msgid "Framed Style"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:354
+#: ../framework/admin/functions/display.php:379
 msgid "Tabs on Top"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:355
+#: ../framework/admin/functions/display.php:380
 msgid "Tabs on Right"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:356
+#: ../framework/admin/functions/display.php:381
 msgid "Tabs on Bottom"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:357
+#: ../framework/admin/functions/display.php:382
 msgid "Tabs on Left"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:358
+#: ../framework/admin/functions/display.php:383
 msgid "Pills on Top"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:359
+#: ../framework/admin/functions/display.php:384
 msgid "Pills on Bottom"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:377
+#: ../framework/admin/functions/display.php:402
 #, php-format
 msgid "Tab #%d Name"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:430
+#: ../framework/admin/functions/display.php:454
 msgid "- Select Content Type -"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:434
+#: ../framework/admin/functions/display.php:458
 msgid "Floating Widget Area"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:437
+#: ../framework/admin/functions/display.php:462
 msgid "Content of Current Page"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:440
+#: ../framework/admin/functions/display.php:466
 msgid "Content of External Page"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:443
+#: ../framework/admin/functions/display.php:470
 msgid "Raw Content"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:470
+#: ../framework/admin/functions/display.php:501
 #, php-format
 msgid "In order for you to use this feature you need to have the %s plugin activated."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:494
+#: ../framework/admin/functions/display.php:525
 msgid "You haven't created any floating widget areas."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:524
+#: ../framework/admin/functions/display.php:558
 msgid "You haven't created any pages."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:543
+#: ../framework/admin/functions/display.php:587
 msgid "Apply WordPress automatic formatting."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:556
+#: ../framework/admin/functions/display.php:600
 msgid "Select from your floating custom widget areas. In order for a custom widget area to be \"floating\" you must have it configured this way in the Widget Area manager."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:563
+#: ../framework/admin/functions/display.php:607
 msgid "Select an external page to pull content from."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:570
+#: ../framework/admin/functions/display.php:614
 msgid "You can use basic HTML here, and most shortcodes."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:669
+#: ../framework/admin/functions/display.php:722
 msgid "Enter in a comma-separated list of the post slugs you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:670
+#: ../framework/admin/functions/display.php:723
 msgid "Example: post-1, post-2, post-3"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:671
+#: ../framework/admin/functions/display.php:724
 msgid "Note: Any post slugs entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:712
+#: ../framework/admin/functions/display.php:802
 msgid "Enter in a comma-separated list of the tags you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:713
+#: ../framework/admin/functions/display.php:803
 msgid "Example: tag-1, tag-2, tag-3"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:714
+#: ../framework/admin/functions/display.php:804
 msgid "Note: Any tags entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:732
+#: ../framework/admin/functions/display.php:835
 msgid "Enter in a custom <a href=\"http://codex.wordpress.org/Conditional_Tags\" target=\"_blank\">conditional statement</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:733
+#: ../framework/admin/functions/display.php:836
 msgid "Examples:"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:734
+#: ../framework/admin/functions/display.php:837
 msgid "Warning: Make sure you know what you're doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:770
+#: ../framework/admin/functions/display.php:872
 msgid "Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:771
+#: ../framework/admin/functions/display.php:873
 msgid "Site Title + Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:772
+#: ../framework/admin/functions/display.php:874
 msgid "Custom Text"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:773
+#: ../framework/admin/functions/display.php:875
 msgid "Image"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:791
-#: ../framework/admin/functions/display.php:801
+#: ../framework/admin/functions/display.php:900
+#: ../framework/admin/functions/display.php:910
 msgid "Current Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:793
+#: ../framework/admin/functions/display.php:902
 msgid "You can change your site title and tagline by going <a href=\"options-general.php\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:803
+#: ../framework/admin/functions/display.php:912
 msgid "Current Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:805
+#: ../framework/admin/functions/display.php:914
 msgid "You can change your site title by going <a href=\"options-general.php\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:814
+#: ../framework/admin/functions/display.php:931
 msgid "Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:816
+#: ../framework/admin/functions/display.php:933
 msgid "Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:816
+#: ../framework/admin/functions/display.php:933
 msgid "optional"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:818
+#: ../framework/admin/functions/display.php:935
 msgid "Insert your custom text."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:836
+#: ../framework/admin/functions/display.php:955
+#: ../framework/admin/functions/display.php:981
 msgid "Standard Image"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:842
-msgid "Retina-optimized Image (optional)"
+#: ../framework/admin/functions/display.php:961
+#: ../framework/admin/functions/display.php:987
+msgid "HiDPI-optimized Image (optional)"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:847
-msgid "Use the \"Upload\" button to either upload an image or select an image from your media library. When inserting an image with the \"Upload\" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you're inputting a \"Retina-optimized\" image, it should be twice as large as you intend it to be displayed. Feel free to leave the retina image field blank if you'd like it to simply not have any effect."
-msgstr ""
-
-#: ../framework/admin/functions/display.php:967
+#: ../framework/admin/functions/display.php:1082
 msgid "Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:969
+#: ../framework/admin/functions/display.php:1084
 msgid "Default Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:992
+#: ../framework/admin/functions/display.php:1109
 #, php-format
 msgid "In order to use the \"Custom Layout\" template, you must have the %s plugin installed."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:997
+#: ../framework/admin/functions/display.php:1114
 msgid "Custom Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1005
+#: ../framework/admin/functions/display.php:1125
 msgid "You haven't created any custom layouts in the Layout builder yet."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1027
+#: ../framework/admin/functions/display.php:1147
 msgid "Changelog"
 msgstr ""
 
@@ -284,8 +282,12 @@ msgstr ""
 msgid "Page Attributes"
 msgstr ""
 
+#: ../framework/admin/functions/general.php:222
+msgid "Options cleared from database."
+msgstr ""
+
 #: ../framework/admin/functions/locals.php:22
-msgid "By doing this, you will clear your database of this theme's options. In other words, you will lose any previously saved settings. Are you sure you want to continue?"
+msgid "By doing this, you will clear your database of this option set. In other words, you will lose any previously saved settings. Are you sure you want to continue?"
 msgstr ""
 
 #: ../framework/admin/functions/locals.php:23
@@ -293,376 +295,412 @@ msgid "Clear Options"
 msgstr ""
 
 #: ../framework/admin/functions/locals.php:24
-msgid "Edit Layout"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:26
-msgid "Edit Slider"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:27
-msgid "Are you sure you want to delete the layout(s)?"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:28
-msgid "Are you sure you want to delete the widget area(s)?"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:29
-msgid "Are you sure you want to delete the slider(s)?"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:30
 msgid "Oops! You forgot to enter a name."
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:31
+#: ../framework/admin/functions/locals.php:25
 msgid "Oops! The name you entered is either taken or too close to another name you've already used."
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:32
-msgid "Oops! Somehow, you've entered an invalid slider type."
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:33
-msgid "Layout created!"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:34
+#: ../framework/admin/functions/locals.php:26
 msgid "Publish"
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:35
-msgid "Would you like to save the current layout before switching?"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:36
-msgid "Widget Area created!"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:37
-msgid "With how you've selected to start your layout, there is already a sidebar layout applied."
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:38
-msgid "Slider created!"
-msgstr ""
-
-#: ../framework/admin/functions/locals.php:39
+#: ../framework/admin/functions/locals.php:27
 msgid "Oops! You can only have one primary query element per layout. A paginated post list or paginated post grid would be examples of primary query elements."
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:40
+#: ../framework/admin/functions/locals.php:28
 msgid "By doing this, all of your default theme settings will be saved, and you will lose any previously saved settings. Are you sure you want to continue?"
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:41
+#: ../framework/admin/functions/locals.php:29
 msgid "Restore Defaults"
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:47
+#: ../framework/admin/functions/locals.php:36
 msgid "Note: The customizer provides a simulated preview, and results may vary slightly when published and viewed on your live website."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:14
+#: ../framework/admin/functions/meta.php:39
 msgid "Page Options"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:22
+#: ../framework/admin/functions/meta.php:47
 msgid "Page Title"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:23
+#: ../framework/admin/functions/meta.php:48
 msgid "This option will be ignored if you're using this page with a custom layout built with the <a href=\"admin.php?page=builder_blvd\">Layout Builder</a>."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:26
+#: ../framework/admin/functions/meta.php:51
 msgid "Show page's title."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:27
+#: ../framework/admin/functions/meta.php:52
 msgid "Hide page's title."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:32
+#: ../framework/admin/functions/meta.php:57
+#: ../framework/api/class-tb-options-api.php:233
 msgid "Breadcrumbs"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:33
+#: ../framework/admin/functions/meta.php:58
 msgid "Select whether you'd like breadcrumbs to show on this page or not."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:36
-#: ../framework/admin/functions/meta.php:152
+#: ../framework/admin/functions/meta.php:61
+#: ../framework/admin/functions/meta.php:130
 msgid "Use default setting."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:37
-#: ../framework/admin/functions/meta.php:153
+#: ../framework/admin/functions/meta.php:62
+#: ../framework/admin/functions/meta.php:131
+#: ../framework/api/class-tb-options-api.php:239
 msgid "Yes, show breadcrumbs."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:38
-#: ../framework/admin/functions/meta.php:154
+#: ../framework/admin/functions/meta.php:63
+#: ../framework/admin/functions/meta.php:132
+#: ../framework/api/class-tb-options-api.php:240
 msgid "No, hide breadcrumbs."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:115
+#: ../framework/admin/functions/meta.php:93
 msgid "Post Options"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:123
+#: ../framework/admin/functions/meta.php:101
 msgid "Meta Information (the single post)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:124
+#: ../framework/admin/functions/meta.php:102
 msgid "Select if you'd like the meta information (date posted, author, etc) to show at the top of the post. If you're going for a portfolio-type setup, you may want to hide the meta info. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:128
-#: ../framework/admin/functions/meta.php:140
-#: ../framework/admin/functions/meta.php:164
+#: ../framework/admin/functions/meta.php:106
+#: ../framework/admin/functions/meta.php:118
+#: ../framework/admin/functions/meta.php:142
 msgid "Use default post setting."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:129
+#: ../framework/admin/functions/meta.php:107
+#: ../framework/api/class-tb-options-api.php:340
 msgid "Show meta info."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:130
+#: ../framework/admin/functions/meta.php:108
+#: ../framework/api/class-tb-options-api.php:341
 msgid "Hide meta info."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:135
+#: ../framework/admin/functions/meta.php:113
 msgid "Comments (the single post)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:136
+#: ../framework/admin/functions/meta.php:114
 msgid "Select if you'd like to completely hide comments or not below the post. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:141
+#: ../framework/admin/functions/meta.php:119
+#: ../framework/api/class-tb-options-api.php:363
 msgid "Show comments."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:142
+#: ../framework/admin/functions/meta.php:120
+#: ../framework/api/class-tb-options-api.php:364
 msgid "Hide comments."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:147
+#: ../framework/admin/functions/meta.php:125
 msgid "Breadcrumbs (the single post)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:148
+#: ../framework/admin/functions/meta.php:126
 msgid "Select whether you'd like breadcrumbs to show on this post or not."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:159
+#: ../framework/admin/functions/meta.php:137
 msgid "Featured Image Display (the single post)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:160
+#: ../framework/admin/functions/meta.php:138
 msgid "Select how you'd like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:165
+#: ../framework/admin/functions/meta.php:143
 msgid "Show small thumbnail."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:166
+#: ../framework/admin/functions/meta.php:144
 msgid "Show full-width thumbnail."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:167
+#: ../framework/admin/functions/meta.php:145
 msgid "Hide featured image."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:172
+#: ../framework/admin/functions/meta.php:150
 msgid "Featured Image Link (everywhere)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:173
+#: ../framework/admin/functions/meta.php:151
 msgid "Here you can select how you'd like this post's featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:178
+#: ../framework/admin/functions/meta.php:156
 msgid "Featured image is not a link."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:179
+#: ../framework/admin/functions/meta.php:157
 msgid "It links to its post."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:180
+#: ../framework/admin/functions/meta.php:158
 msgid "It links to its enlarged lightbox version."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:181
+#: ../framework/admin/functions/meta.php:159
 msgid "It links to a custom lightbox image."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:182
+#: ../framework/admin/functions/meta.php:160
 msgid "It links to a lightbox video."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:183
+#: ../framework/admin/functions/meta.php:161
 msgid "It links to a webpage."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:188
+#: ../framework/admin/functions/meta.php:166
 msgid "Featured Image - Image Link"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:189
+#: ../framework/admin/functions/meta.php:167
 msgid "Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:195
+#: ../framework/admin/functions/meta.php:173
 msgid "Featured Image - Video Link"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:196
-msgid "Enter the full URL to a video page on YouTube or Vimeo. You can also enter a link to a Quicktime video file.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250"
+#: ../framework/admin/functions/meta.php:174
+msgid "Enter the full URL to a video page supported by <a href=\"http://codex.wordpress.org/Embeds\" target=\"_blank\">WordPress's oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:202
+#: ../framework/admin/functions/meta.php:180
 msgid "Featured Image - External Link"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:203
+#: ../framework/admin/functions/meta.php:181
 msgid "Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:209
+#: ../framework/admin/functions/meta.php:187
 msgid "Featured Image - External Link Target"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:210
+#: ../framework/admin/functions/meta.php:188
 msgid "Select whether you'd like the external link to open in a new window or not."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:215
+#: ../framework/admin/functions/meta.php:193
 msgid "Open link in new window."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:216
+#: ../framework/admin/functions/meta.php:194
 msgid "Open link in same window."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:221
+#: ../framework/admin/functions/meta.php:199
 msgid "Featured Image Link (the single post)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:222
+#: ../framework/admin/functions/meta.php:200
 msgid "If you've selected a featured image link above, select whether you'd like the image link to be applied to the featured image on the single post page or not."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:227
+#: ../framework/admin/functions/meta.php:205
 msgid "Yes, apply featured image link to single post."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:228
+#: ../framework/admin/functions/meta.php:206
 msgid "No, don't apply featured image link to single post."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:234
+#: ../framework/admin/functions/meta.php:212
 msgid "Choose the sidebar layout for this specific post. Keeping it set to \"Website Default\" will allow this post to continue using the sidebar layout selected on the Theme Options page."
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:376
+#: ../framework/admin/functions/meta.php:240
 msgid "(no parent)"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:379
-#: ../framework/admin/functions/meta.php:380
+#: ../framework/admin/functions/meta.php:243
+#: ../framework/admin/functions/meta.php:244
 msgid "Parent"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:388
+#: ../framework/admin/functions/meta.php:252
 msgid "Template"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:389
+#: ../framework/admin/functions/meta.php:253
 msgid "Page Template"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:390
+#: ../framework/admin/functions/meta.php:254
 msgid "Default Template"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:408
-#: ../framework/admin/functions/meta.php:409
-#: ../framework/api/builder.php:321
-#: ../framework/api/builder.php:450
-#: ../framework/api/builder.php:589
-#: ../framework/api/builder.php:682
-#: ../framework/api/builder.php:817
-#: ../framework/api/builder.php:961
-#: ../framework/api/builder.php:1147
+#: ../framework/admin/functions/meta.php:272
+#: ../framework/admin/functions/meta.php:273
 msgid "Order"
 msgstr ""
 
-#: ../framework/admin/functions/meta.php:410
+#: ../framework/admin/functions/meta.php:274
 msgid "Need help? Use the Help tab in the upper right of your screen."
 msgstr ""
 
-#: ../framework/admin/options/class-tb-options-page.php:26
-#: ../framework/admin/options/class-tb-options-page.php:27
-#: ../framework/api/helpers.php:332
+#: ../framework/admin/options/class-tb-options-page.php:61
+#: ../framework/admin/options/class-tb-options-page.php:62
+#: ../framework/api/class-tb-options-api.php:650
+#: ../framework/api/class-tb-options-api.php:651
 msgid "Theme Options"
 msgstr ""
 
-#: ../framework/admin/options/class-tb-options-page.php:179
+#: ../framework/admin/options/class-tb-options-page.php:231
 msgid "Default options restored."
 msgstr ""
 
-#: ../framework/admin/options/class-tb-options-page.php:188
-msgid "Options cleared from database."
-msgstr ""
-
-#: ../framework/admin/options/class-tb-options-page.php:225
+#: ../framework/admin/options/class-tb-options-page.php:276
 msgid "Options saved."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:310
-msgid "Enter the name of a font from the <a href=\"http://www.google.com/webfonts\" target=\"_blank\">Google Font Directory</a>."
-msgstr ""
-
-#: ../framework/admin/options/options-medialibrary-uploader.php:24
+#: ../framework/admin/options/media-uploader-legacy.php:26
 msgid "Options Framework Internal Container"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:96
+#: ../framework/admin/options/media-uploader-legacy.php:98
+#: ../framework/admin/options/media-uploader.php:66
 msgid "Upload"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:138
+#: ../framework/admin/options/media-uploader-legacy.php:146
 msgid "You must use the \"Get Image\" button to modify the image ID for this slide. This is what the locked icon represents."
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:141
-#: ../framework/admin/options/options-medialibrary-uploader.php:147
+#: ../framework/admin/options/media-uploader-legacy.php:149
+#: ../framework/admin/options/media-uploader-legacy.php:155
+#: ../framework/admin/options/media-uploader.php:104
+#: ../framework/admin/options/media-uploader.php:116
 msgid "Image URL"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:142
+#: ../framework/admin/options/media-uploader-legacy.php:150
+#: ../framework/admin/options/media-uploader.php:105
 msgid "Width"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:144
+#: ../framework/admin/options/media-uploader-legacy.php:152
 msgid "Image URL twice the size of standard image"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:169
+#: ../framework/admin/options/media-uploader-legacy.php:178
+#: ../framework/admin/options/media-uploader.php:144
 msgid "View File"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:298
+#: ../framework/admin/options/media-uploader-legacy.php:309
 msgid "Gallery"
 msgstr ""
 
-#: ../framework/admin/options/options-medialibrary-uploader.php:298
+#: ../framework/admin/options/media-uploader-legacy.php:309
 msgid "Previously Uploaded"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:64
+msgid "Select Media"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:65
+msgid "Select"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:67
+msgid "Remove"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:75
+msgid "Slide Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:76
+#: ../framework/admin/options/media-uploader.php:88
+msgid "Use for Slide"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:77
+msgid "Get Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:78
+msgid "You must use the 'Get Image' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents."
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:81
+msgid "Image ID"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:87
+msgid "Slide Video"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:89
+msgid "Get Video"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:90
+msgid "Video Link"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:94
+msgid "Quick Slider"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:95
+msgid "Use selected images"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:101
+msgid "Logo Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:102
+#: ../framework/admin/options/media-uploader.php:110
+msgid "Use for Logo"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:109
+msgid "Logo HiDPI Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:111
+msgid "URL for image twice the size of standard image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:115
+msgid "Select Background Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:120
+msgid "No file chosen"
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:380
+msgid "Enter the name of a font from the <a href=\"http://www.google.com/webfonts\" target=\"_blank\">Google Font Directory</a>."
 msgstr ""
 
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:164
@@ -760,7 +798,6 @@ msgid "Source"
 msgstr ""
 
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:1313
-#: ../framework/api/customizer.php:145
 msgid "Type"
 msgstr ""
 
@@ -898,2334 +935,1246 @@ msgstr ""
 msgid "The Envato Marketplace \"item ID\" is a required parameter."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:149
+#: ../framework/admin/updates/class-tb-envato-updates.php:156
 #, php-format
 msgid "Backing up %2$s v%1$s before udpating to new version..."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:154
+#: ../framework/admin/updates/class-tb-envato-updates.php:161
 msgid "Unable to locate WordPress Theme directory."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:163
+#: ../framework/admin/updates/class-tb-envato-updates.php:171
 msgid "Could not create directory for backup."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:177
+#: ../framework/admin/updates/class-tb-envato-updates.php:185
 #, php-format
 msgid "%2$s v%1$s has been backed up sucessfully to %3$s..."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:87
-#: ../framework/admin/updates/class-tb-license-admin.php:98
+#: ../framework/admin/updates/class-tb-license-admin.php:91
+#: ../framework/admin/updates/class-tb-license-admin.php:103
 msgid "Theme License"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:105
+#: ../framework/admin/updates/class-tb-license-admin.php:110
 msgid "License Key"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:109
+#: ../framework/admin/updates/class-tb-license-admin.php:114
 msgid "Enter your license key"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:115
-#: ../framework/admin/updates/class-tb-license-admin.php:122
+#: ../framework/admin/updates/class-tb-license-admin.php:120
+#: ../framework/admin/updates/class-tb-license-admin.php:127
 msgid "Activate License"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:119
+#: ../framework/admin/updates/class-tb-license-admin.php:124
 msgid "active"
 msgstr ""
 
-#: ../framework/api/builder.php:48
-msgid "You haven't created any floating widget areas yet."
-msgstr ""
-
-#: ../framework/api/builder.php:50
-msgid "You need to have the Theme Blvd Widget Areas plugin installed for this feature."
-msgstr ""
-
-#: ../framework/api/builder.php:72
-msgid "Setup Columns"
-msgstr ""
-
-#: ../framework/api/builder.php:73
-msgid "Choose the number of columns along with the corresponding width configurations."
-msgstr ""
-
-#: ../framework/api/builder.php:79
-msgid "Column #1"
-msgstr ""
-
-#: ../framework/api/builder.php:80
-msgid "Configure the content for the first column."
-msgstr ""
-
-#: ../framework/api/builder.php:87
-msgid "Column #2"
-msgstr ""
-
-#: ../framework/api/builder.php:88
-msgid "Configure the content for the second column."
-msgstr ""
-
-#: ../framework/api/builder.php:95
-msgid "Column #3"
-msgstr ""
-
-#: ../framework/api/builder.php:96
-msgid "Configure the content for the third column."
-msgstr ""
-
-#: ../framework/api/builder.php:103
-msgid "Column #4"
-msgstr ""
-
-#: ../framework/api/builder.php:104
-msgid "Configure the content for the fourth column."
-msgstr ""
-
-#: ../framework/api/builder.php:111
-msgid "Column #5"
-msgstr ""
-
-#: ../framework/api/builder.php:112
-msgid "Configure the content for the fifth column."
-msgstr ""
-
-#: ../framework/api/builder.php:122
-#: ../framework/api/builder.php:187
-#: ../framework/api/builder.php:213
-#: ../framework/api/builder.php:265
-#: ../framework/api/builder.php:394
-#: ../framework/api/builder.php:475
-#: ../framework/api/builder.php:614
-#: ../framework/api/builder.php:749
-#: ../framework/api/builder.php:835
-#: ../framework/api/builder.php:979
-#: ../framework/api/builder.php:1181
-#: ../framework/api/builder.php:1208
-#: ../framework/api/builder.php:1306
-#: ../framework/api/builder.php:1424
-#: ../framework/api/builder.php:1475
-msgid "Responsive Visibility "
-msgstr ""
-
-#: ../framework/api/builder.php:123
-#: ../framework/api/builder.php:188
-#: ../framework/api/builder.php:214
-#: ../framework/api/builder.php:266
-#: ../framework/api/builder.php:395
-#: ../framework/api/builder.php:476
-#: ../framework/api/builder.php:615
-#: ../framework/api/builder.php:750
-#: ../framework/api/builder.php:836
-#: ../framework/api/builder.php:980
-#: ../framework/api/builder.php:1182
-#: ../framework/api/builder.php:1209
-#: ../framework/api/builder.php:1307
-#: ../framework/api/builder.php:1425
-#: ../framework/api/builder.php:1476
-msgid "Select any resolutions you'd like to <em>hide</em> this element on. This is optional, but can be utilized to deliver different content to different devices.<br><br><em>Example: Hide an element on tablets and mobile devices & then create a second element that's hidden only on standard screen resolutions to take its place.</em>"
-msgstr ""
-
-#: ../framework/api/builder.php:126
-#: ../framework/api/builder.php:191
-#: ../framework/api/builder.php:217
-#: ../framework/api/builder.php:269
-#: ../framework/api/builder.php:398
-#: ../framework/api/builder.php:479
-#: ../framework/api/builder.php:618
-#: ../framework/api/builder.php:753
-#: ../framework/api/builder.php:839
-#: ../framework/api/builder.php:983
-#: ../framework/api/builder.php:1185
-#: ../framework/api/builder.php:1212
-#: ../framework/api/builder.php:1310
-#: ../framework/api/builder.php:1428
-#: ../framework/api/builder.php:1479
-msgid "Hide on Standard Resolutions"
-msgstr ""
-
-#: ../framework/api/builder.php:127
-#: ../framework/api/builder.php:192
-#: ../framework/api/builder.php:218
-#: ../framework/api/builder.php:270
-#: ../framework/api/builder.php:399
-#: ../framework/api/builder.php:480
-#: ../framework/api/builder.php:619
-#: ../framework/api/builder.php:754
-#: ../framework/api/builder.php:840
-#: ../framework/api/builder.php:984
-#: ../framework/api/builder.php:1186
-#: ../framework/api/builder.php:1213
-#: ../framework/api/builder.php:1311
-#: ../framework/api/builder.php:1429
-#: ../framework/api/builder.php:1480
-msgid "Hide on Tablets"
-msgstr ""
-
-#: ../framework/api/builder.php:128
-#: ../framework/api/builder.php:193
-#: ../framework/api/builder.php:219
-#: ../framework/api/builder.php:271
-#: ../framework/api/builder.php:400
-#: ../framework/api/builder.php:481
-#: ../framework/api/builder.php:620
-#: ../framework/api/builder.php:755
-#: ../framework/api/builder.php:841
-#: ../framework/api/builder.php:985
-#: ../framework/api/builder.php:1187
-#: ../framework/api/builder.php:1214
-#: ../framework/api/builder.php:1312
-#: ../framework/api/builder.php:1430
-#: ../framework/api/builder.php:1481
-msgid "Hide on Mobile Devices"
-msgstr ""
-
-#: ../framework/api/builder.php:140
-msgid "Content Source"
-msgstr ""
-
-#: ../framework/api/builder.php:141
-msgid "Choose where you'd like to have content feed from. The content can either be from the current page you're applying this layout to or an external page."
-msgstr ""
-
-#: ../framework/api/builder.php:144
-msgid "Content from current page"
-msgstr ""
-
-#: ../framework/api/builder.php:145
-msgid "Content from external page"
-msgstr ""
-
-#: ../framework/api/builder.php:146
-msgid "Raw content"
-msgstr ""
-
-#: ../framework/api/builder.php:153
-msgid "External Page"
-msgstr ""
-
-#: ../framework/api/builder.php:154
-msgid "Choose the external page you'd like to pull content from."
-msgstr ""
-
-#: ../framework/api/builder.php:162
-msgid "Enter in the content you'd like to show. You may use basic HTML, and most shortcodes."
-msgstr ""
-
-#: ../framework/api/builder.php:168
-msgid "Raw Content Formatting"
-msgstr ""
-
-#: ../framework/api/builder.php:202
-msgid "Divider Type"
-msgstr ""
-
-#: ../framework/api/builder.php:203
-msgid "Select which style of divider you'd like to use here."
-msgstr ""
-
-#: ../framework/api/builder.php:206
-msgid "Dashed Line"
-msgstr ""
-
-#: ../framework/api/builder.php:207
-msgid "Shadow Line"
-msgstr ""
-
-#: ../framework/api/builder.php:208
-msgid "Solid Line"
-msgstr ""
-
-#: ../framework/api/builder.php:228
-msgid "Headline Text"
-msgstr ""
-
-#: ../framework/api/builder.php:229
-msgid "Enter in the text you'd like to use for your headline. It is better if you use plain text here and not try and use HTML tags. Additionally, if you'd like to automatically pull the title from the current page, insert <em>%page_title%</em> here."
-msgstr ""
-
-#: ../framework/api/builder.php:235
-msgid "Enter any text you'd like to display below the headline as a tagline. Feel free to leave this blank. It is better if you use plain text here and not try and use HTML tags."
-msgstr ""
-
-#: ../framework/api/builder.php:240
-msgid "Headline Tag"
-msgstr ""
-
-#: ../framework/api/builder.php:241
-msgid "Select the type of header tag you'd like to wrap this headline."
-msgstr ""
-
-#: ../framework/api/builder.php:244
-msgid "&lt;h1&gt;Your Headline&lt;/h1&gt;"
-msgstr ""
-
-#: ../framework/api/builder.php:245
-msgid "&lt;h2&gt;Your Headline&lt;/h2&gt;"
-msgstr ""
-
-#: ../framework/api/builder.php:246
-msgid "&lt;h3&gt;Your Headline&lt;/h3&gt;"
-msgstr ""
-
-#: ../framework/api/builder.php:247
-msgid "&lt;h4&gt;Your Headline&lt;/h4&gt;"
-msgstr ""
-
-#: ../framework/api/builder.php:248
-msgid "&lt;h5&gt;Your Headline&lt;/h5&gt;"
-msgstr ""
-
-#: ../framework/api/builder.php:249
-msgid "&lt;h6&gt;Your Headline&lt;/h6&gt;"
-msgstr ""
-
-#: ../framework/api/builder.php:254
-msgid "Headline Alignment"
-msgstr ""
-
-#: ../framework/api/builder.php:255
-msgid "Select how you'd like the text in this title to align."
-msgstr ""
-
-#: ../framework/api/builder.php:258
-msgid "Align Left"
-msgstr ""
-
-#: ../framework/api/builder.php:259
-msgid "Center"
-msgstr ""
-
-#: ../framework/api/builder.php:260
-msgid "Align Right"
-msgstr ""
-
-#: ../framework/api/builder.php:280
-#: ../framework/api/builder.php:409
-#: ../framework/api/builder.php:541
-#: ../framework/api/builder.php:629
-#: ../framework/api/builder.php:764
-#: ../framework/api/builder.php:901
-msgid "Categories"
-msgstr ""
-
-#: ../framework/api/builder.php:281
-#: ../framework/api/builder.php:410
-#: ../framework/api/builder.php:542
-#: ../framework/api/builder.php:630
-#: ../framework/api/builder.php:765
-#: ../framework/api/builder.php:902
-msgid "Select the categories you'd like to pull posts from. Note that selecting \"All Categories\" will override any other selections."
-msgstr ""
-
-#: ../framework/api/builder.php:289
-#: ../framework/api/builder.php:418
-#: ../framework/api/builder.php:550
-msgid "Select how many posts per row you'd like displayed."
-msgstr ""
-
-#: ../framework/api/builder.php:293
-#: ../framework/api/builder.php:422
-#: ../framework/api/builder.php:554
-msgid "2 Columns"
-msgstr ""
-
-#: ../framework/api/builder.php:294
-#: ../framework/api/builder.php:423
-#: ../framework/api/builder.php:555
-msgid "3 Columns"
-msgstr ""
-
-#: ../framework/api/builder.php:295
-#: ../framework/api/builder.php:424
-#: ../framework/api/builder.php:556
-msgid "4 Columns"
-msgstr ""
-
-#: ../framework/api/builder.php:296
-#: ../framework/api/builder.php:425
-#: ../framework/api/builder.php:557
-msgid "5 Columns"
-msgstr ""
-
-#: ../framework/api/builder.php:301
-msgid "Rows"
-msgstr ""
-
-#: ../framework/api/builder.php:302
-msgid "Enter in the number of rows you'd like to show. The number you enter here will be multiplied by the amount of columns you selected in the previous option to figure out how many posts should be showed. You can leave this option blank if you'd like to show all posts from the categories you've selected."
-msgstr ""
-
-#: ../framework/api/builder.php:308
-#: ../framework/api/builder.php:437
-#: ../framework/api/builder.php:576
-#: ../framework/api/builder.php:669
-#: ../framework/api/builder.php:804
-#: ../framework/api/builder.php:948
-#: ../framework/api/builder.php:1133
-msgid "Order By"
-msgstr ""
-
-#: ../framework/api/builder.php:309
-#: ../framework/api/builder.php:438
-#: ../framework/api/builder.php:577
-#: ../framework/api/builder.php:670
-#: ../framework/api/builder.php:805
-#: ../framework/api/builder.php:949
-#: ../framework/api/builder.php:1134
-msgid "Select what attribute you'd like the posts ordered by."
-msgstr ""
-
-#: ../framework/api/builder.php:313
-#: ../framework/api/builder.php:442
-#: ../framework/api/builder.php:581
-#: ../framework/api/builder.php:674
-#: ../framework/api/builder.php:809
-#: ../framework/api/builder.php:953
-#: ../framework/api/builder.php:1138
-msgid "Publish Date"
-msgstr ""
-
-#: ../framework/api/builder.php:314
-#: ../framework/api/builder.php:443
-#: ../framework/api/builder.php:582
-#: ../framework/api/builder.php:675
-#: ../framework/api/builder.php:810
-#: ../framework/api/builder.php:954
-#: ../framework/api/builder.php:1139
-msgid "Post Title"
-msgstr ""
-
-#: ../framework/api/builder.php:315
-#: ../framework/api/builder.php:444
-#: ../framework/api/builder.php:583
-#: ../framework/api/builder.php:676
-#: ../framework/api/builder.php:811
-#: ../framework/api/builder.php:955
-#: ../framework/api/builder.php:1140
-msgid "Number of Comments"
-msgstr ""
-
-#: ../framework/api/builder.php:316
-#: ../framework/api/builder.php:445
-#: ../framework/api/builder.php:584
-#: ../framework/api/builder.php:677
-#: ../framework/api/builder.php:812
-#: ../framework/api/builder.php:956
-#: ../framework/api/builder.php:1141
-msgid "Random"
-msgstr ""
-
-#: ../framework/api/builder.php:322
-#: ../framework/api/builder.php:451
-#: ../framework/api/builder.php:590
-#: ../framework/api/builder.php:683
-#: ../framework/api/builder.php:818
-#: ../framework/api/builder.php:962
-#: ../framework/api/builder.php:1148
-msgid "Select the order in which you'd like the posts displayed based on the previous orderby parameter.<br><br><em>Note that a traditional WordPress setup would have posts ordered by <strong>Publish Date</strong> and be ordered <strong>Descending</strong>.</em>"
-msgstr ""
-
-#: ../framework/api/builder.php:326
-#: ../framework/api/builder.php:455
-#: ../framework/api/builder.php:594
-#: ../framework/api/builder.php:687
-#: ../framework/api/builder.php:822
-#: ../framework/api/builder.php:966
-#: ../framework/api/builder.php:1152
-msgid "Descending (highest to lowest)"
-msgstr ""
-
-#: ../framework/api/builder.php:327
-#: ../framework/api/builder.php:456
-#: ../framework/api/builder.php:595
-#: ../framework/api/builder.php:688
-#: ../framework/api/builder.php:823
-#: ../framework/api/builder.php:967
-#: ../framework/api/builder.php:1153
-msgid "Ascending (lowest to highest)"
-msgstr ""
-
-#: ../framework/api/builder.php:332
-#: ../framework/api/builder.php:600
-#: ../framework/api/builder.php:693
-#: ../framework/api/builder.php:972
-msgid "Offset"
-msgstr ""
-
-#: ../framework/api/builder.php:333
-#: ../framework/api/builder.php:601
-#: ../framework/api/builder.php:694
-#: ../framework/api/builder.php:973
-msgid "Enter the number of posts you'd like to offset the query by. In most cases, you will just leave this at <em>0</em>. Utilizing this option could be useful, for example, if you wanted to have the first post in an element above this one, and then you could offset this set by <em>1</em> so the posts start after that post in the previous element. If that makes no sense, just ignore this option and leave it at <em>0</em>!"
-msgstr ""
-
-#: ../framework/api/builder.php:339
-#: ../framework/api/builder.php:461
-#: ../framework/api/builder.php:700
-#: ../framework/api/builder.php:828
-msgid "Custom Query String (optional)"
-msgstr ""
-
-#: ../framework/api/builder.php:340
-msgid "Enter in a <a href=\"http://codex.wordpress.org/Class_Reference/WP_Query#Parameters\">custom query string</a>. This will override any other query-related options.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ&numberposts=10<br><br><em>Note: Putting anything in this option will cause the following options to not have any effect: Categories, Orderby, Order, and Offset</em>"
-msgstr ""
-
-#: ../framework/api/builder.php:346
-#: ../framework/api/builder.php:468
-#: ../framework/api/builder.php:607
-msgid "Custom Image Crop Size (optional)"
-msgstr ""
-
-#: ../framework/api/builder.php:347
-#: ../framework/api/builder.php:469
-#: ../framework/api/builder.php:608
-msgid "Enter in a custom image crop size. Always leave this blank unless you know what you're doing here; when left blank, the theme will generate this crop size for you depending on the amount of columns in your post grid."
-msgstr ""
-
-#: ../framework/api/builder.php:357
-#: ../framework/api/builder.php:711
-msgid "Link"
-msgstr ""
-
-#: ../framework/api/builder.php:358
-#: ../framework/api/builder.php:712
-msgid "Show link after posts to direct visitors somewhere?"
-msgstr ""
-
-#: ../framework/api/builder.php:364
-#: ../framework/api/builder.php:718
-msgid "Link Text"
-msgstr ""
-
-#: ../framework/api/builder.php:365
-#: ../framework/api/builder.php:719
-msgid "Enter the text for the link."
-msgstr ""
-
-#: ../framework/api/builder.php:372
-#: ../framework/api/builder.php:726
-#: ../framework/api/builder.php:1283
-msgid "Link URL"
-msgstr ""
-
-#: ../framework/api/builder.php:373
-#: ../framework/api/builder.php:727
-msgid "Enter the full URL where you want this link to go to."
-msgstr ""
-
-#: ../framework/api/builder.php:380
-#: ../framework/api/builder.php:734
-#: ../framework/api/builder.php:1291
-msgid "Link Target"
-msgstr ""
-
-#: ../framework/api/builder.php:381
-#: ../framework/api/builder.php:735
-msgid "Select how you want the link to open."
-msgstr ""
-
-#: ../framework/api/builder.php:385
-#: ../framework/api/builder.php:740
-#: ../framework/api/builder.php:1296
-msgid "Same Window"
-msgstr ""
-
-#: ../framework/api/builder.php:386
-#: ../framework/api/builder.php:741
-#: ../framework/api/builder.php:1297
-msgid "New Window"
-msgstr ""
-
-#: ../framework/api/builder.php:430
-msgid "Rows per page"
-msgstr ""
-
-#: ../framework/api/builder.php:431
-msgid "Enter in the number of rows <strong>per page</strong> you'd like to show. The number you enter here will be multiplied by the amount of columns you selected in the previous option to figure out how many posts should be showed on each page. You can leave this option blank if you'd like to show all posts from the categories you've selected on a single page."
-msgstr ""
-
-#: ../framework/api/builder.php:462
-msgid "Enter in a <a href=\"http://codex.wordpress.org/Class_Reference/WP_Query#Parameters\">custom query string</a>. This will override any other query-related options.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ<br><br><em>Note: Putting anything in this option will cause the following options to not have any effect: Categories, Orderby, and Order. Additionally, you can't use \"posts_per_page\" as this is generated in a grid based on the rows and columns.</em>"
-msgstr ""
-
-#: ../framework/api/builder.php:490
-#: ../framework/api/builder.php:850
-#: ../framework/api/builder.php:999
-msgid "Transition Effect"
-msgstr ""
-
-#: ../framework/api/builder.php:491
-#: ../framework/api/builder.php:851
-#: ../framework/api/builder.php:1000
-msgid "Select the effect you'd like used to transition from one slide to the next."
-msgstr ""
-
-#: ../framework/api/builder.php:495
-#: ../framework/api/builder.php:1004
-msgid "Fade"
-msgstr ""
-
-#: ../framework/api/builder.php:496
-#: ../framework/api/builder.php:1005
-msgid "Slide"
-msgstr ""
-
-#: ../framework/api/builder.php:501
-#: ../framework/api/builder.php:861
-#: ../framework/api/builder.php:1010
-msgid "Speed"
-msgstr ""
-
-#: ../framework/api/builder.php:502
-#: ../framework/api/builder.php:862
-#: ../framework/api/builder.php:1011
-msgid "Enter the number of seconds you'd like in between trasitions. You may use <em>0</em> to disable the slider from auto advancing."
-msgstr ""
-
-#: ../framework/api/builder.php:508
-#: ../framework/api/builder.php:868
-#: ../framework/api/builder.php:1017
-msgid "Show standard slideshow navigation?"
-msgstr ""
-
-#: ../framework/api/builder.php:509
-#: ../framework/api/builder.php:869
-#: ../framework/api/builder.php:1018
-msgid "The standard navigation are the little dots that appear below the slider."
-msgstr ""
-
-#: ../framework/api/builder.php:513
-#: ../framework/api/builder.php:873
-#: ../framework/api/builder.php:1022
-msgid "Yes, show navigation."
-msgstr ""
-
-#: ../framework/api/builder.php:514
-#: ../framework/api/builder.php:536
-#: ../framework/api/builder.php:874
-#: ../framework/api/builder.php:896
-#: ../framework/api/builder.php:1023
-#: ../framework/api/builder.php:1045
-msgid "No, don't show it."
-msgstr ""
-
-#: ../framework/api/builder.php:519
-#: ../framework/api/builder.php:879
-#: ../framework/api/builder.php:1028
-msgid "Show next/prev slideshow arrows?"
-msgstr ""
-
-#: ../framework/api/builder.php:520
-#: ../framework/api/builder.php:880
-#: ../framework/api/builder.php:1029
-msgid "These arrows allow the user to navigation from one slide to the next."
-msgstr ""
-
-#: ../framework/api/builder.php:524
-#: ../framework/api/builder.php:884
-#: ../framework/api/builder.php:1033
-msgid "Yes, show arrows."
-msgstr ""
-
-#: ../framework/api/builder.php:525
-#: ../framework/api/builder.php:885
-#: ../framework/api/builder.php:1034
-msgid "No, don't show them."
-msgstr ""
-
-#: ../framework/api/builder.php:530
-#: ../framework/api/builder.php:890
-#: ../framework/api/builder.php:1039
-msgid "Show pause/play button?"
-msgstr ""
-
-#: ../framework/api/builder.php:531
-#: ../framework/api/builder.php:891
-msgid "Note that if you have the speed set to 0, this option will be ignored. "
-msgstr ""
-
-#: ../framework/api/builder.php:535
-#: ../framework/api/builder.php:895
-#: ../framework/api/builder.php:1044
-msgid "Yes, show pause/play button."
-msgstr ""
-
-#: ../framework/api/builder.php:562
-msgid "Rows per slide"
-msgstr ""
-
-#: ../framework/api/builder.php:563
-msgid "Enter in the number of rows <strong>per slide</strong> you'd like to show. The number you enter here will be multiplied by the amount of columns you selected in the previous option to figure out how many posts should be showed on each slide."
-msgstr ""
-
-#: ../framework/api/builder.php:569
-#: ../framework/api/builder.php:941
-#: ../framework/api/builder.php:1125
-msgid "Total Number of Posts"
-msgstr ""
-
-#: ../framework/api/builder.php:570
-#: ../framework/api/builder.php:942
-msgid "Enter the maximum number of posts you'd like to show from the categories selected. You can use <em>-1</em> to show all posts from the selected categories."
-msgstr ""
-
-#: ../framework/api/builder.php:637
-#: ../framework/api/builder.php:772
-#: ../framework/api/builder.php:909
-msgid "Featured Images"
-msgstr ""
-
-#: ../framework/api/builder.php:638
-#: ../framework/api/builder.php:773
-#: ../framework/api/builder.php:910
-msgid "Select the size of the post list's thumbnails or whether you'd like to hide them all together when posts are listed."
-msgstr ""
-
-#: ../framework/api/builder.php:642
-#: ../framework/api/builder.php:655
-#: ../framework/api/builder.php:777
-#: ../framework/api/builder.php:790
-#: ../framework/api/builder.php:914
-#: ../framework/api/builder.php:927
-msgid "Use default blog setting."
-msgstr ""
-
-#: ../framework/api/builder.php:643
-#: ../framework/api/builder.php:778
-#: ../framework/api/builder.php:915
-msgid "Show small thumbnails."
-msgstr ""
-
-#: ../framework/api/builder.php:644
-#: ../framework/api/builder.php:779
-#: ../framework/api/builder.php:916
-msgid "Show full-width thumbnails."
-msgstr ""
-
-#: ../framework/api/builder.php:645
-#: ../framework/api/builder.php:780
-#: ../framework/api/builder.php:917
-msgid "Hide thumbnails."
-msgstr ""
-
-#: ../framework/api/builder.php:650
-#: ../framework/api/builder.php:785
-#: ../framework/api/builder.php:922
-msgid "Show excerpts of full content?"
-msgstr ""
-
-#: ../framework/api/builder.php:651
-#: ../framework/api/builder.php:786
-#: ../framework/api/builder.php:923
-msgid "Choose whether you want to show full content or post excerpts only."
-msgstr ""
-
-#: ../framework/api/builder.php:656
-#: ../framework/api/builder.php:791
-#: ../framework/api/builder.php:928
-msgid "Show full content."
-msgstr ""
-
-#: ../framework/api/builder.php:657
-#: ../framework/api/builder.php:792
-#: ../framework/api/builder.php:929
-msgid "Show excerpt only."
-msgstr ""
-
-#: ../framework/api/builder.php:662
-msgid "Number of Posts"
-msgstr ""
-
-#: ../framework/api/builder.php:663
-msgid "Enter in the <strong>total number</strong> of posts you'd like to show. You can enter <em>-1</em> if you'd like to show all posts from the categories you've selected."
-msgstr ""
-
-#: ../framework/api/builder.php:701
-msgid "Enter in a <a href=\"http://codex.wordpress.org/Class_Reference/WP_Query#Parameters\">custom query string</a>. This will override any other query-related options.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ&numberposts=10<br><br><em>Note: Putting anything in this option will cause the following options to not have any effect: Categories, Number of Posts, Orderby, Order, and Offset</em>"
-msgstr ""
-
-#: ../framework/api/builder.php:797
-msgid "Posts per page"
-msgstr ""
-
-#: ../framework/api/builder.php:798
-msgid "Enter in the number of posts <strong>per page</strong> you'd like to show. You can enter <em>-1</em> if you'd like to show all posts from the categories you've selected on a single page."
-msgstr ""
-
-#: ../framework/api/builder.php:829
-msgid "Enter in a <a href=\"http://codex.wordpress.org/Class_Reference/WP_Query#Parameters\">custom query string</a>. This will override any other query-related options.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ&posts_per_page=10<br><br><em>Note: Putting anything in this option will cause the following options to not have any effect: Categories, Posts per page, Orderby, and Order</em>"
-msgstr ""
-
-#: ../framework/api/builder.php:934
-msgid "Posts per slide"
-msgstr ""
-
-#: ../framework/api/builder.php:935
-msgid "Enter in the number of posts <strong>per slide</strong> you'd like to show."
-msgstr ""
-
-#: ../framework/api/builder.php:994
-msgid "The \"Post Slider\" element works with the <a href=\"http://wordpress.org/extend/plugins/theme-blvd-sliders\" target=\"_blank\">Theme Blvd Sliders</a> plugin you've installed. It works a little differently than the framework's default \"Post List Slider\" and \"Post Grid Slider\" elements. The point of this element is to mimic custom sliders setup under the Slider Manager, but provide you a way to automatically set them up by feeding the slides directly from posts."
-msgstr ""
-
-#: ../framework/api/builder.php:1040
-msgid "Note that if you have the speed set to 0, this option will be ignored."
-msgstr ""
-
-#: ../framework/api/builder.php:1050
-msgid "Enable pause on hover?"
-msgstr ""
-
-#: ../framework/api/builder.php:1051
-msgid "Select if you'd like to implement the pause on hover feature."
-msgstr ""
-
-#: ../framework/api/builder.php:1055
-msgid "Pause on hover only."
-msgstr ""
-
-#: ../framework/api/builder.php:1056
-msgid "Pause on hover and resume when hovering off."
-msgstr ""
-
-#: ../framework/api/builder.php:1057
-msgid "No, disable this all together."
-msgstr ""
-
-#: ../framework/api/builder.php:1062
-msgid "Image Display"
-msgstr ""
-
-#: ../framework/api/builder.php:1063
-msgid "Select how you'd like the \"featured image\" from the post to be displayed in the slider."
-msgstr ""
-
-#: ../framework/api/builder.php:1067
-msgid "Full Size"
-msgstr ""
-
-#: ../framework/api/builder.php:1068
-msgid "Aligned Left"
-msgstr ""
-
-#: ../framework/api/builder.php:1069
-msgid "Aligned Right"
-msgstr ""
-
-#: ../framework/api/builder.php:1074
-msgid "Image Link"
-msgstr ""
-
-#: ../framework/api/builder.php:1075
-msgid "Select how you'd like the image link to work for each post."
-msgstr ""
-
-#: ../framework/api/builder.php:1079
-msgid "Link to post."
-msgstr ""
-
-#: ../framework/api/builder.php:1080
-msgid "Link to enlarged featured image in lightbox."
-msgstr ""
-
-#: ../framework/api/builder.php:1081
-msgid "No image link."
-msgstr ""
-
-#: ../framework/api/builder.php:1086
-msgid "Button Text Leading to Post"
-msgstr ""
-
-#: ../framework/api/builder.php:1087
-msgid "Enter in the text you'd like for the button placed after the excerpt leading to the post. Leave blank to not include a button at all.<br><br>Ex: Read More"
-msgstr ""
-
-#: ../framework/api/builder.php:1088
-msgid "Leave blank for no button..."
-msgstr ""
-
-#: ../framework/api/builder.php:1098
-msgid "Where to pull posts from?"
-msgstr ""
-
-#: ../framework/api/builder.php:1099
-msgid "Select how you'd like to pull posts to generate this slider."
-msgstr ""
-
-#: ../framework/api/builder.php:1103
-#: ../framework/api/builder.php:1111
-msgid "Tag"
-msgstr ""
-
-#: ../framework/api/builder.php:1104
-#: ../framework/api/builder.php:1118
-msgid "Category"
-msgstr ""
-
-#: ../framework/api/builder.php:1105
-#: ../framework/api/builder.php:1159
-msgid "Custom Query"
-msgstr ""
-
-#: ../framework/api/builder.php:1112
-msgid "Enter a tag to pull most recent posts from."
-msgstr ""
-
-#: ../framework/api/builder.php:1119
-msgid "Enter a category slug to pull most recent posts from."
-msgstr ""
-
-#: ../framework/api/builder.php:1126
-msgid "Enter the maximum number of posts you'd like to pull. You can use <em>-1</em> to show all posts from the selected criteria."
-msgstr ""
-
-#: ../framework/api/builder.php:1160
-msgid "Enter in a <a href=\"http://codex.wordpress.org/Class_Reference/WP_Query#Parameters\">custom query string</a>.<br><br>Ex: tag=cooking<br>Ex: post_type=XYZ&numberposts=10"
-msgstr ""
-
-#: ../framework/api/builder.php:1169
-msgid "How to display on mobile devices?"
-msgstr ""
-
-#: ../framework/api/builder.php:1170
-msgid "Select how you'd like this slider to be displayed on mobile devices. Sometimes full, animated sliders can cause problems on mobile devices, and so you may find it's better to setup a fallback option."
-msgstr ""
-
-#: ../framework/api/builder.php:1174
-msgid "List out slides for a more user-friendly mobile experience."
-msgstr ""
-
-#: ../framework/api/builder.php:1175
-msgid "Show first slide only for a more simple mobile experience."
-msgstr ""
-
-#: ../framework/api/builder.php:1176
-msgid "Attempt to show full animated slider on mobile devices."
-msgstr ""
-
-#: ../framework/api/builder.php:1196
-msgid "The \"Slider\" element works with the <a href=\"http://wordpress.org/extend/plugins/theme-blvd-sliders\" target=\"_blank\">Theme Blvd Sliders</a> plugin you've installed. You can use it to pull any sliders you've created from the Slider Manager."
-msgstr ""
-
-#: ../framework/api/builder.php:1201
-msgid "Choose Slider"
-msgstr ""
-
-#: ../framework/api/builder.php:1202
-msgid "Choose from the sliders you've created. You can edit these sliders at any time under the 'Sliders' tab above."
-msgstr ""
-
-#: ../framework/api/builder.php:1223
-msgid "Setup Slogan"
-msgstr ""
-
-#: ../framework/api/builder.php:1224
-msgid "Enter the text you'd like to show."
-msgstr ""
-
-#: ../framework/api/builder.php:1229
-msgid "Slogan Text Size"
-msgstr ""
-
-#: ../framework/api/builder.php:1230
-msgid "Select how large you'd like the text in the slogan to be."
-msgstr ""
-
-#: ../framework/api/builder.php:1234
-#: ../framework/api/builder.php:1276
-msgid "Small"
-msgstr ""
-
-#: ../framework/api/builder.php:1235
-#: ../framework/api/builder.php:1277
-msgid "Normal"
-msgstr ""
-
-#: ../framework/api/builder.php:1236
-msgid "Medium"
-msgstr ""
-
-#: ../framework/api/builder.php:1237
-#: ../framework/api/builder.php:1278
-msgid "Large"
-msgstr ""
-
-#: ../framework/api/builder.php:1246
-msgid "Button"
-msgstr ""
-
-#: ../framework/api/builder.php:1247
-msgid "Show call-to-action button next to slogan?"
-msgstr ""
-
-#: ../framework/api/builder.php:1253
-msgid "Button Text"
-msgstr ""
-
-#: ../framework/api/builder.php:1254
-msgid "Enter the text for the button."
-msgstr ""
-
-#: ../framework/api/builder.php:1261
-msgid "Button Color"
-msgstr ""
-
-#: ../framework/api/builder.php:1262
-msgid "Select what color you'd like to use for this button."
-msgstr ""
-
-#: ../framework/api/builder.php:1269
-msgid "Button Size"
-msgstr ""
-
-#: ../framework/api/builder.php:1270
-msgid "Select the size you'd like used for this button."
-msgstr ""
-
-#: ../framework/api/builder.php:1275
-msgid "Mini"
-msgstr ""
-
-#: ../framework/api/builder.php:1284
-msgid "Enter the full URL where you want the button's link to go."
-msgstr ""
-
-#: ../framework/api/builder.php:1292
-msgid "Select how you want the button to open the webpage."
-msgstr ""
-
-#: ../framework/api/builder.php:1298
-msgid "Lightbox Popup"
-msgstr ""
-
-#: ../framework/api/builder.php:1324
-msgid "Setup Tabs"
-msgstr ""
-
-#: ../framework/api/builder.php:1325
-msgid "Choose the number of tabs along with inputting a name for each one. These names are what will appear on the actual tab buttons across the top of the tab set."
-msgstr ""
-
-#: ../framework/api/builder.php:1330
-msgid "Fixed Height"
-msgstr ""
-
-#: ../framework/api/builder.php:1331
-msgid "Apply automatic fixed height across all tabs.<br><br>This just takes the height of the tallest tab's content and applies that across all tabs. This can help with \"page jumping\" in the case that not all tabs have equal amount of content. It can also help in the case when you're getting unwanted scrollbars on the inner content areas of tabs."
-msgstr ""
-
-#: ../framework/api/builder.php:1337
-msgid "Tab #1 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1338
-msgid "Configure the content for the first tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1344
-msgid "Tab #2 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1345
-msgid "Configure the content for the second tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1351
-msgid "Tab #3 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1352
-msgid "Configure the content for the third tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1358
-msgid "Tab #4 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1359
-msgid "Configure the content for the fourth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1365
-msgid "Tab #5 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1366
-msgid "Configure the content for the fifth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1372
-msgid "Tab #6 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1373
-msgid "Configure the content for the sixth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1379
-msgid "Tab #7 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1380
-msgid "Configure the content for the seventh tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1386
-msgid "Tab #8 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1387
-msgid "Configure the content for the eighth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1393
-msgid "Tab #9 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1394
-msgid "Configure the content for the ninth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1400
-msgid "Tab #10 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1401
-msgid "Configure the content for the tenth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1407
-msgid "Tab #11 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1408
-msgid "Configure the content for the eleventh tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1414
-msgid "Tab #12 Content"
-msgstr ""
-
-#: ../framework/api/builder.php:1415
-msgid "Configure the content for the twelfth tab."
-msgstr ""
-
-#: ../framework/api/builder.php:1439
-msgid "Twitter Account"
-msgstr ""
-
-#: ../framework/api/builder.php:1440
-msgid "Enter the Twitter username you'd like to pull the most recent tweet from."
-msgstr ""
-
-#: ../framework/api/builder.php:1446
-msgid "Icon"
-msgstr ""
-
-#: ../framework/api/builder.php:1447
-msgid "Enter any Font Awesome icon ID; this icon will then display next to the Tweet. Set this option blank to not use any icon. Examples: twitter, pencil, warning-sign, etc. "
-msgstr ""
-
-#: ../framework/api/builder.php:1453
-msgid "Tweet Meta Info"
-msgstr ""
-
-#: ../framework/api/builder.php:1454
-msgid "Select whether you'd like information about the current tweet displayed below it."
-msgstr ""
-
-#: ../framework/api/builder.php:1458
-msgid "Show meta info below tweet."
-msgstr ""
-
-#: ../framework/api/builder.php:1459
-msgid "Hide meta info below tweet."
-msgstr ""
-
-#: ../framework/api/builder.php:1464
-msgid "Exclude @replies?"
-msgstr ""
-
-#: ../framework/api/builder.php:1465
-msgid "Select whether or not you'd like to exclude @replies for the current tweet."
-msgstr ""
-
-#: ../framework/api/builder.php:1469
-msgid "Yes, exclude @replies."
-msgstr ""
-
-#: ../framework/api/builder.php:1470
-msgid "No, do not exclude @replies."
-msgstr ""
-
-#: ../framework/api/builder.php:1498
-msgid "Row of columns with custom content"
-msgstr ""
-
-#: ../framework/api/builder.php:1509
-msgid "Content from external page or current page"
-msgstr ""
-
-#: ../framework/api/builder.php:1515
-msgid "Divider"
-msgstr ""
-
-#: ../framework/api/builder.php:1520
-msgid "Simple divider line to break up content"
-msgstr ""
-
-#: ../framework/api/builder.php:1526
-msgid "Headline"
-msgstr ""
-
-#: ../framework/api/builder.php:1531
-msgid "Simple <H> header title"
-msgstr ""
-
-#: ../framework/api/builder.php:1537
-msgid "Post Grid (paginated)"
-msgstr ""
-
-#: ../framework/api/builder.php:1542
-msgid "Full paginated grid of posts"
-msgstr ""
-
-#: ../framework/api/builder.php:1548
-msgid "Post Grid"
-msgstr ""
-
-#: ../framework/api/builder.php:1553
-msgid "Grid of posts followed by optional link"
-msgstr ""
-
-#: ../framework/api/builder.php:1559
-msgid "Post Grid Slider"
-msgstr ""
-
-#: ../framework/api/builder.php:1564
-msgid "Slider of posts in a grid"
-msgstr ""
-
-#: ../framework/api/builder.php:1570
-msgid "Post List (paginated)"
-msgstr ""
-
-#: ../framework/api/builder.php:1575
-msgid "Full paginated list of posts"
-msgstr ""
-
-#: ../framework/api/builder.php:1581
-msgid "Post List"
-msgstr ""
-
-#: ../framework/api/builder.php:1586
-msgid "List of posts followed by optional link"
-msgstr ""
-
-#: ../framework/api/builder.php:1592
-msgid "Post List Slider"
-msgstr ""
-
-#: ../framework/api/builder.php:1597
-msgid "Slider of posts listed out"
-msgstr ""
-
-#: ../framework/api/builder.php:1603
-msgid "Post Slider"
-msgstr ""
-
-#: ../framework/api/builder.php:1608
-msgid "Slider generated from group of posts"
-msgstr ""
-
-#: ../framework/api/builder.php:1614
-msgid "Slider"
-msgstr ""
-
-#: ../framework/api/builder.php:1619
-msgid "User-built slideshow"
-msgstr ""
-
-#: ../framework/api/builder.php:1625
-msgid "Slogan"
-msgstr ""
-
-#: ../framework/api/builder.php:1630
-msgid "Slogan with optional button"
-msgstr ""
-
-#: ../framework/api/builder.php:1641
-msgid "Set of tabbed content"
-msgstr ""
-
-#: ../framework/api/builder.php:1647
-msgid "Tweet"
-msgstr ""
-
-#: ../framework/api/builder.php:1652
-msgid "Shows the most recent tweet from a Twitter account"
-msgstr ""
-
-#: ../framework/api/customizer.php:166
-msgid "Custom Title"
-msgstr ""
-
-#: ../framework/api/customizer.php:180
-msgid "Custom Tagline"
-msgstr ""
-
-#: ../framework/api/customizer.php:264
-msgid "Google Font Name"
-msgstr ""
-
-#: ../framework/api/customizer.php:401
-#: ../framework/api/helpers.php:1425
-msgid "Homepage"
-msgstr ""
-
-#: ../framework/api/customizer.php:403
-msgid "Your theme supports a static front page."
-msgstr ""
-
-#: ../framework/api/customizer.php:413
-msgid "Homepage Content"
-msgstr ""
-
-#: ../framework/api/customizer.php:417
-msgid "WordPress Default"
-msgstr ""
-
-#: ../framework/api/customizer.php:429
-msgid "You haven't created any custom layouts yet."
-msgstr ""
-
-#: ../framework/api/customizer.php:438
-msgid "Homepage Custom Layout"
-msgstr ""
-
-#: ../framework/api/customizer.php:493
-#: ../framework/api/customizer.php:527
-#: ../framework/api/customizer.php:569
-#: ../framework/api/customizer.php:606
-msgid "Default"
-msgstr ""
-
-#: ../framework/api/customizer.php:588
-msgid "Example"
-msgstr ""
-
-#: ../framework/api/customizer.php:589
-msgid "Browse Google Fonts"
-msgstr ""
-
-#: ../framework/api/helpers.php:142
-#, php-format
-msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s"
-msgstr ""
-
-#: ../framework/api/helpers.php:144
-#, php-format
-msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead."
-msgstr ""
-
-#: ../framework/api/helpers.php:146
-#, php-format
-msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available."
-msgstr ""
-
-#: ../framework/api/helpers.php:292
-msgid "Primary Navigation"
-msgstr ""
-
-#: ../framework/api/helpers.php:293
-msgid "Footer Navigation"
-msgstr ""
-
-#: ../framework/api/helpers.php:345
-msgid "Widget Areas"
-msgstr ""
-
-#: ../framework/api/helpers.php:359
-msgid "Sliders"
-msgstr ""
-
-#: ../framework/api/helpers.php:373
-msgid "Builder"
-msgstr ""
-
-#: ../framework/api/helpers.php:466
-msgid "Boxy"
-msgstr ""
-
-#: ../framework/api/helpers.php:472
-msgid "Carbon Classic"
-msgstr ""
-
-#: ../framework/api/helpers.php:478
-msgid "Carbon Diagonal"
-msgstr ""
-
-#: ../framework/api/helpers.php:484
-msgid "Carbon Weave"
-msgstr ""
-
-#: ../framework/api/helpers.php:490
-msgid "Chex"
-msgstr ""
-
-#: ../framework/api/helpers.php:496
-msgid "Concrete"
-msgstr ""
-
-#: ../framework/api/helpers.php:502
-msgid "Crosses"
-msgstr ""
-
-#: ../framework/api/helpers.php:508
-msgid "Denim"
-msgstr ""
-
-#: ../framework/api/helpers.php:514
-msgid "Diagonal (thin)"
-msgstr ""
-
-#: ../framework/api/helpers.php:520
-msgid "Diagonal (thick)"
-msgstr ""
-
-#: ../framework/api/helpers.php:526
-msgid "Diamonds"
-msgstr ""
-
-#: ../framework/api/helpers.php:532
-msgid "Grid"
-msgstr ""
-
-#: ../framework/api/helpers.php:538
-msgid "Grunge"
-msgstr ""
-
-#: ../framework/api/helpers.php:544
-msgid "Honey Comb"
-msgstr ""
-
-#: ../framework/api/helpers.php:550
-msgid "Leather"
-msgstr ""
-
-#: ../framework/api/helpers.php:556
-msgid "Metal"
-msgstr ""
-
-#: ../framework/api/helpers.php:562
-msgid "Mosaic"
-msgstr ""
-
-#: ../framework/api/helpers.php:568
-msgid "Noise"
-msgstr ""
-
-#: ../framework/api/helpers.php:574
-msgid "Paper"
-msgstr ""
-
-#: ../framework/api/helpers.php:580
-msgid "Plaid"
-msgstr ""
-
-#: ../framework/api/helpers.php:586
-msgid "Rubber"
-msgstr ""
-
-#: ../framework/api/helpers.php:592
-msgid "Squares"
-msgstr ""
-
-#: ../framework/api/helpers.php:598
-msgid "Textile"
-msgstr ""
-
-#: ../framework/api/helpers.php:604
-msgid "Vertical Fabric"
-msgstr ""
-
-#: ../framework/api/helpers.php:610
-msgid "Vintage"
-msgstr ""
-
-#: ../framework/api/helpers.php:616
-msgid "Wood"
-msgstr ""
-
-#: ../framework/api/helpers.php:622
-msgid "Wood Planks"
-msgstr ""
-
-#: ../framework/api/helpers.php:628
-msgid "---------------"
-msgstr ""
-
-#: ../framework/api/helpers.php:634
-msgid "Light Boxy"
-msgstr ""
-
-#: ../framework/api/helpers.php:640
-msgid "Light Carbon Classic"
-msgstr ""
-
-#: ../framework/api/helpers.php:646
-msgid "Light Carbon Diagonal"
-msgstr ""
-
-#: ../framework/api/helpers.php:652
-msgid "Light Carbon Weave"
-msgstr ""
-
-#: ../framework/api/helpers.php:658
-msgid "Light Chex"
-msgstr ""
-
-#: ../framework/api/helpers.php:664
-msgid "Light Concrete"
-msgstr ""
-
-#: ../framework/api/helpers.php:670
-msgid "Light Crosses"
-msgstr ""
-
-#: ../framework/api/helpers.php:676
-msgid "Light Denim"
-msgstr ""
-
-#: ../framework/api/helpers.php:682
-msgid "Light Diagonal (thin)"
-msgstr ""
-
-#: ../framework/api/helpers.php:688
-msgid "Light Diagonal (thick)"
-msgstr ""
-
-#: ../framework/api/helpers.php:694
-msgid "Light Diamonds"
-msgstr ""
-
-#: ../framework/api/helpers.php:700
-msgid "Light Grid"
-msgstr ""
-
-#: ../framework/api/helpers.php:706
-msgid "Light Grunge"
-msgstr ""
-
-#: ../framework/api/helpers.php:712
-msgid "Light Honey Comb"
-msgstr ""
-
-#: ../framework/api/helpers.php:718
-msgid "Light Leather"
-msgstr ""
-
-#: ../framework/api/helpers.php:724
-msgid "Light Metal"
-msgstr ""
-
-#: ../framework/api/helpers.php:730
-msgid "Light Mosaic"
-msgstr ""
-
-#: ../framework/api/helpers.php:736
-msgid "Light Noise"
-msgstr ""
-
-#: ../framework/api/helpers.php:742
-msgid "Light Paper"
-msgstr ""
-
-#: ../framework/api/helpers.php:748
-msgid "Light Plaid"
-msgstr ""
-
-#: ../framework/api/helpers.php:754
-msgid "Light Rubber"
-msgstr ""
-
-#: ../framework/api/helpers.php:760
-msgid "Light Squares"
-msgstr ""
-
-#: ../framework/api/helpers.php:766
-msgid "Light Textile"
-msgstr ""
-
-#: ../framework/api/helpers.php:772
-msgid "Light Vertical Fabric"
-msgstr ""
-
-#: ../framework/api/helpers.php:778
-msgid "Light Vintage"
-msgstr ""
-
-#: ../framework/api/helpers.php:784
-msgid "Light Wood"
-msgstr ""
-
-#: ../framework/api/helpers.php:790
-msgid "Light Wood Planks"
-msgstr ""
-
-#: ../framework/api/helpers.php:822
-msgid "No pages exist."
-msgstr ""
-
-#: ../framework/api/helpers.php:827
-msgid "<strong>All Categories</strong>"
-msgstr ""
-
-#: ../framework/api/helpers.php:840
-msgid "You haven't created any custom sliders yet."
-msgstr ""
-
-#: ../framework/api/helpers.php:872
-msgid "Default Color"
-msgstr ""
-
-#: ../framework/api/helpers.php:875
-msgid "Bootstrap: Primary"
-msgstr ""
-
-#: ../framework/api/helpers.php:876
-msgid "Bootstrap: Info"
-msgstr ""
-
-#: ../framework/api/helpers.php:877
-msgid "Bootstrap: Success"
-msgstr ""
-
-#: ../framework/api/helpers.php:878
-msgid "Bootstrap: Warning"
-msgstr ""
-
-#: ../framework/api/helpers.php:879
-msgid "Bootstrap: Danger"
-msgstr ""
-
-#: ../framework/api/helpers.php:880
-msgid "Bootstrap: Inverse"
-msgstr ""
-
-#: ../framework/api/helpers.php:883
-msgid "Black"
-msgstr ""
-
-#: ../framework/api/helpers.php:884
-msgid "Blue"
-msgstr ""
-
-#: ../framework/api/helpers.php:885
-msgid "Brown"
-msgstr ""
-
-#: ../framework/api/helpers.php:886
-msgid "Dark Blue"
-msgstr ""
-
-#: ../framework/api/helpers.php:887
-msgid "Dark Brown"
-msgstr ""
-
-#: ../framework/api/helpers.php:888
-msgid "Dark Green"
-msgstr ""
-
-#: ../framework/api/helpers.php:889
-msgid "Green"
-msgstr ""
-
-#: ../framework/api/helpers.php:890
-msgid "Mauve"
-msgstr ""
-
-#: ../framework/api/helpers.php:891
-msgid "Orange"
-msgstr ""
-
-#: ../framework/api/helpers.php:892
-msgid "Pearl"
-msgstr ""
-
-#: ../framework/api/helpers.php:893
-msgid "Pink"
-msgstr ""
-
-#: ../framework/api/helpers.php:894
-msgid "Purple"
-msgstr ""
-
-#: ../framework/api/helpers.php:895
-msgid "Red"
-msgstr ""
-
-#: ../framework/api/helpers.php:896
-msgid "Slate Grey"
-msgstr ""
-
-#: ../framework/api/helpers.php:897
-msgid "Silver"
-msgstr ""
-
-#: ../framework/api/helpers.php:898
-msgid "Steel Blue"
-msgstr ""
-
-#: ../framework/api/helpers.php:899
-msgid "Teal"
-msgstr ""
-
-#: ../framework/api/helpers.php:900
-msgid "Yellow"
-msgstr ""
-
-#: ../framework/api/helpers.php:901
-msgid "Wheat"
-msgstr ""
-
-#: ../framework/api/helpers.php:902
-msgid "White"
-msgstr ""
-
-#: ../framework/api/helpers.php:992
-msgid "Either use wp_enque_style() or if you need your CSS file to come after all theme-generated styles attached to wp_head, you can manually output it by hooking your function to wp_head."
-msgstr ""
-
-#: ../framework/api/helpers.php:1077
-msgid "TB Large"
-msgstr ""
-
-#: ../framework/api/helpers.php:1083
-msgid "TB Medium"
-msgstr ""
-
-#: ../framework/api/helpers.php:1089
-msgid "TB Small"
-msgstr ""
-
-#: ../framework/api/helpers.php:1095
-msgid "Small Square"
-msgstr ""
-
-#: ../framework/api/helpers.php:1101
-msgid "Smaller Square"
-msgstr ""
-
-#: ../framework/api/helpers.php:1107
-msgid "Smallest Square"
-msgstr ""
-
-#: ../framework/api/helpers.php:1113
-msgid "Slider Full Width"
-msgstr ""
-
-#: ../framework/api/helpers.php:1119
-msgid "Slider Staged"
-msgstr ""
-
-#: ../framework/api/helpers.php:1125
-msgid "1/5 Column of Grid"
-msgstr ""
-
-#: ../framework/api/helpers.php:1131
-msgid "1/4 Column of Grid"
-msgstr ""
-
-#: ../framework/api/helpers.php:1137
-msgid "1/3 Column of Grid"
-msgstr ""
-
-#: ../framework/api/helpers.php:1143
-msgid "1/2 Column of Grid"
-msgstr ""
-
-#: ../framework/api/helpers.php:1398
-msgid "Pages"
-msgstr ""
-
-#: ../framework/api/helpers.php:1399
-msgid "No pages to display."
-msgstr ""
-
-#: ../framework/api/helpers.php:1403
-msgid "Posts"
-msgstr ""
-
-#: ../framework/api/helpers.php:1404
-msgid "No posts to display."
-msgstr ""
-
-#: ../framework/api/helpers.php:1408
-msgid "Posts in Category"
-msgstr ""
-
-#: ../framework/api/helpers.php:1409
-#: ../framework/api/helpers.php:1414
-msgid "No categories to display."
-msgstr ""
-
-#: ../framework/api/helpers.php:1413
-msgid "Category Archives"
-msgstr ""
-
-#: ../framework/api/helpers.php:1418
-msgid "Tag Archives"
-msgstr ""
-
-#: ../framework/api/helpers.php:1419
-msgid "No tags to display."
-msgstr ""
-
-#: ../framework/api/helpers.php:1423
-msgid "Hierarchy"
-msgstr ""
-
-#: ../framework/api/helpers.php:1426
-msgid "All Posts"
-msgstr ""
-
-#: ../framework/api/helpers.php:1427
-msgid "All Pages"
-msgstr ""
-
-#: ../framework/api/helpers.php:1428
-msgid "All Archives"
-msgstr ""
-
-#: ../framework/api/helpers.php:1429
-msgid "All Category Archives"
-msgstr ""
-
-#: ../framework/api/helpers.php:1430
-msgid "All Tag Archives"
-msgstr ""
-
-#: ../framework/api/helpers.php:1431
-msgid "All Author Archives"
-msgstr ""
-
-#: ../framework/api/helpers.php:1432
-msgid "Search Results"
-msgstr ""
-
-#: ../framework/api/helpers.php:1433
-msgid "404 Page"
-msgstr ""
-
-#: ../framework/api/helpers.php:1438
-msgid "Custom"
-msgstr ""
-
-#: ../framework/api/locals.php:15
-msgid "Apologies, but the page you're looking for can't be found."
-msgstr ""
-
-#: ../framework/api/locals.php:16
-msgid "404 Error"
-msgstr ""
-
-#: ../framework/api/locals.php:17
-msgid "Apologies, but there are no posts to display."
-msgstr ""
-
-#: ../framework/api/locals.php:18
-msgid "Archive"
-msgstr ""
-
-#: ../framework/api/locals.php:19
-msgid "by"
-msgstr ""
-
-#: ../framework/api/locals.php:20
-msgid "Cancel reply"
-msgstr ""
-
-#: ../framework/api/locals.php:23
-msgid "Close"
-msgstr ""
-
-#: ../framework/api/locals.php:24
-msgid "Comment navigation"
-msgstr ""
-
-#: ../framework/api/locals.php:25
-msgid "Comment"
-msgstr ""
-
-#: ../framework/api/locals.php:26
-msgid "Comments"
-msgstr ""
-
-#: ../framework/api/locals.php:27
-msgid "Comments are closed."
-msgstr ""
-
-#: ../framework/api/locals.php:28
-msgid "Newer Comments &rarr;"
-msgstr ""
-
-#: ../framework/api/locals.php:29
-msgid "This post is password protected. Enter the password to view any comments."
-msgstr ""
-
-#: ../framework/api/locals.php:30
-msgid "&larr; Older Comments"
-msgstr ""
-
-#: ../framework/api/locals.php:31
-#, php-format
-msgid "One comment on &ldquo;%2$s&rdquo;"
-msgstr ""
-
-#: ../framework/api/locals.php:32
-#, php-format
-msgid "%1$s comments on &ldquo;%2$s&rdquo;"
-msgstr ""
-
-#: ../framework/api/locals.php:33
-msgid "Contact Us"
-msgstr ""
-
-#: ../framework/api/locals.php:34
-msgid "Error 404"
-msgstr ""
-
-#: ../framework/api/locals.php:35
-msgid "Articles posted by"
-msgstr ""
-
-#: ../framework/api/locals.php:36
-msgid "Search results for"
-msgstr ""
-
-#: ../framework/api/locals.php:37
-msgid "Posts tagged"
-msgstr ""
-
-#: ../framework/api/locals.php:38
-msgid "Edit Page"
-msgstr ""
-
-#: ../framework/api/locals.php:39
-msgid "Email"
-msgstr ""
-
-#: ../framework/api/locals.php:40
-msgid "Home"
-msgstr ""
-
-#: ../framework/api/locals.php:41
-msgid "in"
-msgstr ""
-
-#: ../framework/api/locals.php:42
-msgid "Invalid Layout ID: The layout ID currently assigned to this page no longer exists."
-msgstr ""
-
-#: ../framework/api/locals.php:43
-msgid "Post Comment"
-msgstr ""
-
-#: ../framework/api/locals.php:44
-msgid "The Last 30 Posts"
-msgstr ""
-
-#: ../framework/api/locals.php:45
-msgid "Log in to Reply"
-msgstr ""
-
-#: ../framework/api/locals.php:46
-msgid "Monthly Archives"
-msgstr ""
-
-#: ../framework/api/locals.php:47
-msgid "Name"
-msgstr ""
-
-#: ../framework/api/locals.php:48
-#, php-format
-msgid "In order for your custom layout to be displayed, you must be have the %s plugin installed."
-msgstr ""
-
-#: ../framework/api/locals.php:49
-msgid "Page"
-msgstr ""
-
-#: ../framework/api/locals.php:51
-#, php-format
-msgid "Page %s"
-msgstr ""
-
-#: ../framework/api/locals.php:52
-msgid "Posted on"
-msgstr ""
-
-#: ../framework/api/locals.php:53
-msgid "Posts per category"
-msgstr ""
-
-#: ../framework/api/locals.php:54
-msgid "Navigation"
-msgstr ""
-
-#: ../framework/api/locals.php:55
-msgid "No Comments"
-msgstr ""
-
-#: ../framework/api/locals.php:56
-msgid "Slider does not exist."
-msgstr ""
-
-#: ../framework/api/locals.php:57
-msgid "Oops! You have not selected a slider in your layout."
-msgstr ""
-
-#: ../framework/api/locals.php:58
-msgid "The video url could not retrieve a video."
-msgstr ""
-
-#: ../framework/api/locals.php:59
-msgid "Read More"
-msgstr ""
-
-#: ../framework/api/locals.php:60
-msgid "Reply"
-msgstr ""
-
-#: ../framework/api/locals.php:61
-msgid "Search the site..."
-msgstr ""
-
-#: ../framework/api/locals.php:62
-msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
-msgstr ""
-
-#: ../framework/api/locals.php:64
-msgid "Leave a Reply"
-msgstr ""
-
-#: ../framework/api/locals.php:65
-#, php-format
-msgid "Leave a Reply to %s"
-msgstr ""
-
-#: ../framework/api/locals.php:66
-msgid "via"
-msgstr ""
-
-#: ../framework/api/locals.php:67
-msgid "Website"
-msgstr ""
-
-#: ../framework/api/options.php:93
+#: ../framework/api/class-tb-options-api.php:217
 msgid "Header"
 msgstr ""
 
-#: ../framework/api/options.php:96
-#: ../includes/options.php:15
-#: ../includes/options.php:21
+#: ../framework/api/class-tb-options-api.php:220
 msgid "Logo"
 msgstr ""
 
-#: ../framework/api/options.php:97
-msgid "Configure the primary branding logo for the header of your site."
+#: ../framework/api/class-tb-options-api.php:221
+msgid "Configure the primary branding logo for the header of your site.<br /><br />Use the \"Upload\" button to either upload an image or select an image from your media library. When inserting an image with the \"Upload\" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you're inputting a \"HiDPI-optimized\" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you'd like it to simply not have any effect."
 msgstr ""
 
-#: ../framework/api/options.php:106
+#: ../framework/api/class-tb-options-api.php:230
 msgid "Main"
 msgstr ""
 
-#: ../framework/api/options.php:110
+#: ../framework/api/class-tb-options-api.php:234
 msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
 msgstr ""
 
-#: ../framework/api/options.php:121
+#: ../framework/api/class-tb-options-api.php:245
 msgid "Choose the default sidebar layout for the main content area of your site.<br><br><em>Note: This will be the default sidebar layout throughout your site, but you can be override this setting for any specific page or custom layout.</em>"
 msgstr ""
 
-#: ../framework/api/options.php:131
+#: ../framework/api/class-tb-options-api.php:256
 msgid "Footer"
 msgstr ""
 
-#: ../framework/api/options.php:145
+#: ../framework/api/class-tb-options-api.php:263
+msgid "Setup Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:264
+msgid "Choose the number of columns along with the corresponding width configurations."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:270
 msgid "Footer Column #1"
 msgstr ""
 
-#: ../framework/api/options.php:153
+#: ../framework/api/class-tb-options-api.php:271
+msgid "Configure the content for the first column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:278
 msgid "Footer Column #2"
 msgstr ""
 
-#: ../framework/api/options.php:161
+#: ../framework/api/class-tb-options-api.php:279
+msgid "Configure the content for the second column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:286
 msgid "Footer Column #3"
 msgstr ""
 
-#: ../framework/api/options.php:169
+#: ../framework/api/class-tb-options-api.php:287
+msgid "Configure the content for the third column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:294
 msgid "Footer Column #4"
 msgstr ""
 
-#: ../framework/api/options.php:177
+#: ../framework/api/class-tb-options-api.php:295
+msgid "Configure the content for the fourth column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:302
 msgid "Footer Column #5"
 msgstr ""
 
-#: ../framework/api/options.php:188
+#: ../framework/api/class-tb-options-api.php:303
+msgid "Configure the content for the fifth column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:313
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: ../framework/api/options.php:189
+#: ../framework/api/class-tb-options-api.php:314
 msgid "Enter the copyright text you'd like to show in the footer of your site."
 msgstr ""
 
-#: ../framework/api/options.php:205
+#: ../framework/api/class-tb-options-api.php:330
 msgid "Single Posts"
 msgstr ""
 
-#: ../framework/api/options.php:206
+#: ../framework/api/class-tb-options-api.php:331
 msgid "These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid."
 msgstr ""
 
-#: ../framework/api/options.php:209
+#: ../framework/api/class-tb-options-api.php:334
 msgid "Show meta information at top of posts?"
 msgstr ""
 
-#: ../framework/api/options.php:210
+#: ../framework/api/class-tb-options-api.php:335
 msgid "Select if you'd like the meta information (date posted, author, etc) to show at the top of the post. If you're going for a portfolio-type setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/api/options.php:220
+#: ../framework/api/class-tb-options-api.php:345
 msgid "Show featured images at top of posts?"
 msgstr ""
 
-#: ../framework/api/options.php:221
+#: ../framework/api/class-tb-options-api.php:346
 msgid "Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don't want them to show on the actual posts themeselves."
 msgstr ""
 
-#: ../framework/api/options.php:232
+#: ../framework/api/class-tb-options-api.php:351
+#: ../framework/api/class-tb-options-api.php:381
+#: ../framework/api/class-tb-options-api.php:429
+msgid "Show small thumbnails."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:352
+#: ../framework/api/class-tb-options-api.php:382
+#: ../framework/api/class-tb-options-api.php:430
+msgid "Show full-width thumbnails."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:353
+#: ../framework/api/class-tb-options-api.php:383
+#: ../framework/api/class-tb-options-api.php:431
+msgid "Hide thumbnails."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:357
 msgid "Show comments below posts?"
 msgstr ""
 
-#: ../framework/api/options.php:233
+#: ../framework/api/class-tb-options-api.php:358
 msgid "Select if you'd like to completely hide comments or not below the post."
 msgstr ""
 
-#: ../framework/api/options.php:246
+#: ../framework/api/class-tb-options-api.php:371
 msgid "Primary Posts Display"
 msgstr ""
 
-#: ../framework/api/options.php:247
+#: ../framework/api/class-tb-options-api.php:372
 msgid "These settings apply to your primary posts page that you've selected under Settings > Reading and <strong>all</strong> instances of the \"Post List\" page template. Note that if you want to use the post list page template for multiple pages with different categories on each, you can accomplish this on each specific page with custom fields - <a href=\"http://vimeo.com/32754998\">Learn More</a>."
 msgstr ""
 
-#: ../framework/api/options.php:251
+#: ../framework/api/class-tb-options-api.php:375
+msgid "Featured Images"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:376
 msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
 msgstr ""
 
-#: ../framework/api/options.php:262
-#: ../framework/api/options.php:310
+#: ../framework/api/class-tb-options-api.php:387
+#: ../framework/api/class-tb-options-api.php:435
 msgid "Show excerpts or full content?"
 msgstr ""
 
-#: ../framework/api/options.php:263
+#: ../framework/api/class-tb-options-api.php:388
 msgid "Choose whether you want to show full content or post excerpts only.<br><br><em>Note: Because this theme uses post formats, this option will not apply to all post formats.</em>"
 msgstr ""
 
-#: ../framework/api/options.php:273
+#: ../framework/api/class-tb-options-api.php:393
+#: ../framework/api/class-tb-options-api.php:441
+msgid "Show full content."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:394
+#: ../framework/api/class-tb-options-api.php:442
+msgid "Show excerpt only."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:398
 msgid "Exclude Categories"
 msgstr ""
 
-#: ../framework/api/options.php:274
+#: ../framework/api/class-tb-options-api.php:399
 msgid "Select any categories you'd like to be excluded from your blog."
 msgstr ""
 
-#: ../framework/api/options.php:283
+#: ../framework/api/class-tb-options-api.php:408
 msgid "Archives"
 msgstr ""
 
-#: ../framework/api/options.php:284
+#: ../framework/api/class-tb-options-api.php:409
 msgid "These settings apply any time you're viewing search results or posts specific to a category, tag, date, author, etc."
 msgstr ""
 
-#: ../framework/api/options.php:287
+#: ../framework/api/class-tb-options-api.php:412
 msgid "Show title on archive pages?"
 msgstr ""
 
-#: ../framework/api/options.php:288
+#: ../framework/api/class-tb-options-api.php:413
 msgid "Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages."
 msgstr ""
 
-#: ../framework/api/options.php:293
+#: ../framework/api/class-tb-options-api.php:418
 msgid "Yes, show main title at the top of archive pages."
 msgstr ""
 
-#: ../framework/api/options.php:294
+#: ../framework/api/class-tb-options-api.php:419
 msgid "No, hide the title."
 msgstr ""
 
-#: ../framework/api/options.php:298
+#: ../framework/api/class-tb-options-api.php:423
 msgid "Show featured images on archive pages?"
 msgstr ""
 
-#: ../framework/api/options.php:299
+#: ../framework/api/class-tb-options-api.php:424
 msgid "Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages."
 msgstr ""
 
-#: ../framework/api/options.php:331
+#: ../framework/api/class-tb-options-api.php:436
+msgid "Choose whether you want to show full content or post excerpts only."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:448
+msgid "Lightbox"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:449
+msgid "These settings apply to the built-in lightbox functionality, which utilizes the <a href=\"http://dimsemenov.com/plugins/magnific-popup/\" target=\"_blank\">Magnific Popup</a> script."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:452
+msgid "Animate lightboxes?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:453
+msgid "Select if you'd like lightboxes to animate as they open and close."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:458
+msgid "No animation"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:459
+msgid "Fade animation"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:463
+msgid "Disable standard lightboxes for mobile?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:464
+msgid "Select if you'd like the lightbox to be disabled for mobile users viewing a standard lightbox instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:469
+#: ../framework/api/class-tb-options-api.php:480
+#: ../framework/api/class-tb-options-api.php:491
+msgid "Yes, disable for mobile."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:470
+#: ../framework/api/class-tb-options-api.php:481
+#: ../framework/api/class-tb-options-api.php:492
+msgid "No, do not disable for mobile."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:474
+msgid "Disable iframe lightboxes for mobile?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:475
+msgid "Select if you'd like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:485
+msgid "Disable gallery lightboxes for mobile?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:486
+msgid "Select if you'd like the lightbox to be disabled for mobile users when viewing a gallery."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:506
 msgid "Analytics"
 msgstr ""
 
-#: ../framework/api/options.php:334
+#: ../framework/api/class-tb-options-api.php:509
 msgid "Analytics Code"
 msgstr ""
 
-#: ../framework/api/options.php:335
+#: ../framework/api/class-tb-options-api.php:510
 msgid "Paste in the code provided by your Analytics service.<br><br>If you're looking for a free analytics service, definitely check out <a href=\"http://www.google.com/analytics/\">Google Analytics</a>."
 msgstr ""
 
-#: ../framework/api/options.php:349
+#: ../framework/api/class-tb-options-api.php:524
 msgid "Layout"
 msgstr ""
 
-#: ../framework/api/options.php:353
+#: ../framework/api/class-tb-options-api.php:528
 msgid "Content"
 msgstr ""
 
-#: ../framework/api/options.php:357
+#: ../framework/api/class-tb-options-api.php:532
 msgid "Configuration"
 msgstr ""
 
-#: ../framework/api/sidebars.php:21
+#: ../framework/api/class-tb-sidebars-api.php:121
+msgid "Left Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:133
+msgid "Location: Left Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:134
+msgid "This is default placeholder for the \"Left Sidebar\" location."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:143
+msgid "Right Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:155
+msgid "Location: Right Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:156
+msgid "This is default placeholder for the \"Right Sidebar\" location."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:165
+msgid "Ads Above Header"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:177
+msgid "Location: Ads Above Header"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:178
+msgid "This is default placeholder for the \"Ads Above Header\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:187
+msgid "Ads Above Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:199
+msgid "Location: Ads Above Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:208
+msgid "Ads Below Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:220
+msgid "Location: Ads Below Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:221
+msgid "This is default placeholder for the \"Ads Below Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:230
+msgid "Ads Below Footer"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:242
+msgid "Location: Ads Below Footer"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:243
+msgid "This is default placeholder for the \"Ads Below Footer\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:302
 #, php-format
 msgid "This is default placeholder for the \"%s\" location."
 msgstr ""
 
-#: ../framework/api/sidebars.php:39
-msgid "Location: "
+#: ../framework/api/class-tb-sidebars-api.php:321
+#, php-format
+msgid "Location: %s"
 msgstr ""
 
-#: ../framework/api/sidebars.php:112
-msgid "Left Sidebar"
-msgstr ""
-
-#: ../framework/api/sidebars.php:124
-msgid "Location: Left Sidebar"
-msgstr ""
-
-#: ../framework/api/sidebars.php:125
-msgid "This is default placeholder for the \"Left Sidebar\" location."
-msgstr ""
-
-#: ../framework/api/sidebars.php:138
-msgid "Right Sidebar"
-msgstr ""
-
-#: ../framework/api/sidebars.php:150
-msgid "Location: Right Sidebar"
-msgstr ""
-
-#: ../framework/api/sidebars.php:151
-msgid "This is default placeholder for the \"Right Sidebar\" location."
-msgstr ""
-
-#: ../framework/api/sidebars.php:164
-msgid "Ads Above Header"
-msgstr ""
-
-#: ../framework/api/sidebars.php:176
-msgid "Location: Ads Above Header"
-msgstr ""
-
-#: ../framework/api/sidebars.php:177
-msgid "This is default placeholder for the \"Ads Above Header\" location, which is designed for banner ads, and so not all widgets will appear as expected."
-msgstr ""
-
-#: ../framework/api/sidebars.php:190
-msgid "Ads Above Content"
-msgstr ""
-
-#: ../framework/api/sidebars.php:202
-msgid "Location: Ads Above Content"
-msgstr ""
-
-#: ../framework/api/sidebars.php:203
-msgid "This is default placeholder for the \"Ads Above Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
-msgstr ""
-
-#: ../framework/api/sidebars.php:216
-msgid "Ads Below Content"
-msgstr ""
-
-#: ../framework/api/sidebars.php:228
-msgid "Location: Ads Below Content"
-msgstr ""
-
-#: ../framework/api/sidebars.php:229
-msgid "This is default placeholder for the \"Ads Below Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
-msgstr ""
-
-#: ../framework/api/sidebars.php:242
-msgid "Ads Below Footer"
-msgstr ""
-
-#: ../framework/api/sidebars.php:254
-msgid "Location: Ads Below Footer"
-msgstr ""
-
-#: ../framework/api/sidebars.php:255
-msgid "This is default placeholder for the \"Ads Below Footer\" location, which is designed for banner ads, and so not all widgets will appear as expected."
-msgstr ""
-
-#: ../framework/api/sidebars.php:358
+#: ../framework/api/class-tb-sidebars-api.php:476
 #, php-format
 msgid "This is a collapsible widget area with ID, <strong>%s</strong>, but you haven't put any widgets in it yet. Normally this wouldn't show at all when empty, but since you have assigned a custom widget area here and didn't put any widgets in it, you are seeing this message."
 msgstr ""
 
-#: ../framework/api/sidebars.php:362
+#: ../framework/api/class-tb-sidebars-api.php:480
 #, php-format
 msgid "This is a fixed sidebar with ID, <strong>%s</strong>, but you haven't put any widgets in it yet."
 msgstr ""
 
-#: ../framework/api/sliders.php:28
-msgid "Image Slide"
+#: ../framework/api/customizer.php:156
+msgid "Custom Title"
 msgstr ""
 
-#: ../framework/api/sliders.php:29
-msgid "Setup Image"
+#: ../framework/api/customizer.php:170
+msgid "Custom Tagline"
 msgstr ""
 
-#: ../framework/api/sliders.php:34
-msgid "Video Slide"
+#: ../framework/api/customizer.php:259
+msgid "Google Font Name"
 msgstr ""
 
-#: ../framework/api/sliders.php:35
-msgid "Video Link"
+#: ../framework/api/customizer.php:416
+#: ../framework/includes/general.php:1482
+msgid "Homepage"
 msgstr ""
 
-#: ../framework/api/sliders.php:40
-msgid "Custom Slide"
+#: ../framework/api/customizer.php:418
+msgid "Your theme supports a static front page."
 msgstr ""
 
-#: ../framework/api/sliders.php:41
-msgid "Setup Custom Content"
+#: ../framework/api/customizer.php:430
+msgid "Homepage Content"
 msgstr ""
 
-#: ../framework/frontend/functions/elements.php:1130
-#: ../framework/frontend/functions/parts.php:298
-msgid "No public Tweets found"
+#: ../framework/api/customizer.php:434
+msgid "WordPress Default"
 msgstr ""
 
-#: ../framework/frontend/functions/elements.php:1134
-#: ../framework/frontend/functions/parts.php:302
-msgid "Could not fetch Twitter RSS feed."
+#: ../framework/api/customizer.php:449
+msgid "You haven't created any custom layouts yet."
+msgstr ""
+
+#: ../framework/api/customizer.php:460
+msgid "Homepage Custom Layout"
+msgstr ""
+
+#: ../framework/api/customizer.php:511
+#: ../framework/api/customizer.php:544
+#: ../framework/api/customizer.php:587
+#: ../framework/api/customizer.php:623
+msgid "Default"
+msgstr ""
+
+#: ../framework/api/customizer.php:606
+msgid "Example"
+msgstr ""
+
+#: ../framework/api/customizer.php:607
+msgid "Browse Google Fonts"
+msgstr ""
+
+#: ../framework/api/helpers.php:537
+msgid "Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebars_API class."
+msgstr ""
+
+#: ../framework/includes/actions.php:13
+msgid "Hook your custom head functionality to wp_head."
+msgstr ""
+
+#: ../framework/includes/elements.php:1210
+#: ../framework/includes/parts.php:385
+#: ../framework/includes/parts.php:400
+msgid "Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd \"Tweeple\" plugin found in the WordPress plugin repository."
+msgstr ""
+
+#: ../framework/includes/general.php:236
+#, php-format
+msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s"
+msgstr ""
+
+#: ../framework/includes/general.php:240
+#, php-format
+msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead."
+msgstr ""
+
+#: ../framework/includes/general.php:244
+#, php-format
+msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available."
+msgstr ""
+
+#: ../framework/includes/general.php:355
+msgid "Primary Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:356
+msgid "Footer Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:447
+msgid "Sliders"
+msgstr ""
+
+#: ../framework/includes/general.php:461
+msgid "Layout Builder"
+msgstr ""
+
+#: ../framework/includes/general.php:475
+msgid "Widget Areas"
+msgstr ""
+
+#: ../framework/includes/general.php:563
+msgid "Boxy"
+msgstr ""
+
+#: ../framework/includes/general.php:569
+msgid "Carbon Classic"
+msgstr ""
+
+#: ../framework/includes/general.php:575
+msgid "Carbon Diagonal"
+msgstr ""
+
+#: ../framework/includes/general.php:581
+msgid "Carbon Weave"
+msgstr ""
+
+#: ../framework/includes/general.php:587
+msgid "Chex"
+msgstr ""
+
+#: ../framework/includes/general.php:593
+msgid "Concrete"
+msgstr ""
+
+#: ../framework/includes/general.php:599
+msgid "Crosses"
+msgstr ""
+
+#: ../framework/includes/general.php:605
+msgid "Denim"
+msgstr ""
+
+#: ../framework/includes/general.php:611
+msgid "Diagonal (thin)"
+msgstr ""
+
+#: ../framework/includes/general.php:617
+msgid "Diagonal (thick)"
+msgstr ""
+
+#: ../framework/includes/general.php:623
+msgid "Diamonds"
+msgstr ""
+
+#: ../framework/includes/general.php:629
+msgid "Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:635
+msgid "Grunge"
+msgstr ""
+
+#: ../framework/includes/general.php:641
+msgid "Honey Comb"
+msgstr ""
+
+#: ../framework/includes/general.php:647
+msgid "Leather"
+msgstr ""
+
+#: ../framework/includes/general.php:653
+msgid "Metal"
+msgstr ""
+
+#: ../framework/includes/general.php:659
+msgid "Mosaic"
+msgstr ""
+
+#: ../framework/includes/general.php:665
+msgid "Noise"
+msgstr ""
+
+#: ../framework/includes/general.php:671
+msgid "Paper"
+msgstr ""
+
+#: ../framework/includes/general.php:677
+msgid "Plaid"
+msgstr ""
+
+#: ../framework/includes/general.php:683
+msgid "Rubber"
+msgstr ""
+
+#: ../framework/includes/general.php:689
+msgid "Squares"
+msgstr ""
+
+#: ../framework/includes/general.php:695
+msgid "Textile"
+msgstr ""
+
+#: ../framework/includes/general.php:701
+msgid "Vertical Fabric"
+msgstr ""
+
+#: ../framework/includes/general.php:707
+msgid "Vintage"
+msgstr ""
+
+#: ../framework/includes/general.php:713
+msgid "Wood"
+msgstr ""
+
+#: ../framework/includes/general.php:719
+msgid "Wood Planks"
+msgstr ""
+
+#: ../framework/includes/general.php:725
+msgid "---------------"
+msgstr ""
+
+#: ../framework/includes/general.php:731
+msgid "Light Boxy"
+msgstr ""
+
+#: ../framework/includes/general.php:737
+msgid "Light Carbon Classic"
+msgstr ""
+
+#: ../framework/includes/general.php:743
+msgid "Light Carbon Diagonal"
+msgstr ""
+
+#: ../framework/includes/general.php:749
+msgid "Light Carbon Weave"
+msgstr ""
+
+#: ../framework/includes/general.php:755
+msgid "Light Chex"
+msgstr ""
+
+#: ../framework/includes/general.php:761
+msgid "Light Concrete"
+msgstr ""
+
+#: ../framework/includes/general.php:767
+msgid "Light Crosses"
+msgstr ""
+
+#: ../framework/includes/general.php:773
+msgid "Light Denim"
+msgstr ""
+
+#: ../framework/includes/general.php:779
+msgid "Light Diagonal (thin)"
+msgstr ""
+
+#: ../framework/includes/general.php:785
+msgid "Light Diagonal (thick)"
+msgstr ""
+
+#: ../framework/includes/general.php:791
+msgid "Light Diamonds"
+msgstr ""
+
+#: ../framework/includes/general.php:797
+msgid "Light Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:803
+msgid "Light Grunge"
+msgstr ""
+
+#: ../framework/includes/general.php:809
+msgid "Light Honey Comb"
+msgstr ""
+
+#: ../framework/includes/general.php:815
+msgid "Light Leather"
+msgstr ""
+
+#: ../framework/includes/general.php:821
+msgid "Light Metal"
+msgstr ""
+
+#: ../framework/includes/general.php:827
+msgid "Light Mosaic"
+msgstr ""
+
+#: ../framework/includes/general.php:833
+msgid "Light Noise"
+msgstr ""
+
+#: ../framework/includes/general.php:839
+msgid "Light Paper"
+msgstr ""
+
+#: ../framework/includes/general.php:845
+msgid "Light Plaid"
+msgstr ""
+
+#: ../framework/includes/general.php:851
+msgid "Light Rubber"
+msgstr ""
+
+#: ../framework/includes/general.php:857
+msgid "Light Squares"
+msgstr ""
+
+#: ../framework/includes/general.php:863
+msgid "Light Textile"
+msgstr ""
+
+#: ../framework/includes/general.php:869
+msgid "Light Vertical Fabric"
+msgstr ""
+
+#: ../framework/includes/general.php:875
+msgid "Light Vintage"
+msgstr ""
+
+#: ../framework/includes/general.php:881
+msgid "Light Wood"
+msgstr ""
+
+#: ../framework/includes/general.php:887
+msgid "Light Wood Planks"
+msgstr ""
+
+#: ../framework/includes/general.php:922
+msgid "No pages exist."
+msgstr ""
+
+#: ../framework/includes/general.php:928
+msgid "<strong>All Categories</strong>"
+msgstr ""
+
+#: ../framework/includes/general.php:955
+msgid "You haven't created any custom sliders yet."
+msgstr ""
+
+#: ../framework/includes/general.php:988
+msgid "Default Color"
+msgstr ""
+
+#: ../framework/includes/general.php:991
+msgid "Bootstrap: Primary"
+msgstr ""
+
+#: ../framework/includes/general.php:992
+msgid "Bootstrap: Info"
+msgstr ""
+
+#: ../framework/includes/general.php:993
+msgid "Bootstrap: Success"
+msgstr ""
+
+#: ../framework/includes/general.php:994
+msgid "Bootstrap: Warning"
+msgstr ""
+
+#: ../framework/includes/general.php:995
+msgid "Bootstrap: Danger"
+msgstr ""
+
+#: ../framework/includes/general.php:996
+msgid "Bootstrap: Inverse"
+msgstr ""
+
+#: ../framework/includes/general.php:999
+msgid "Black"
+msgstr ""
+
+#: ../framework/includes/general.php:1000
+msgid "Blue"
+msgstr ""
+
+#: ../framework/includes/general.php:1001
+msgid "Brown"
+msgstr ""
+
+#: ../framework/includes/general.php:1002
+msgid "Dark Blue"
+msgstr ""
+
+#: ../framework/includes/general.php:1003
+msgid "Dark Brown"
+msgstr ""
+
+#: ../framework/includes/general.php:1004
+msgid "Dark Green"
+msgstr ""
+
+#: ../framework/includes/general.php:1005
+msgid "Green"
+msgstr ""
+
+#: ../framework/includes/general.php:1006
+msgid "Mauve"
+msgstr ""
+
+#: ../framework/includes/general.php:1007
+msgid "Orange"
+msgstr ""
+
+#: ../framework/includes/general.php:1008
+msgid "Pearl"
+msgstr ""
+
+#: ../framework/includes/general.php:1009
+msgid "Pink"
+msgstr ""
+
+#: ../framework/includes/general.php:1010
+msgid "Purple"
+msgstr ""
+
+#: ../framework/includes/general.php:1011
+msgid "Red"
+msgstr ""
+
+#: ../framework/includes/general.php:1012
+msgid "Slate Grey"
+msgstr ""
+
+#: ../framework/includes/general.php:1013
+msgid "Silver"
+msgstr ""
+
+#: ../framework/includes/general.php:1014
+msgid "Steel Blue"
+msgstr ""
+
+#: ../framework/includes/general.php:1015
+msgid "Teal"
+msgstr ""
+
+#: ../framework/includes/general.php:1016
+msgid "Yellow"
+msgstr ""
+
+#: ../framework/includes/general.php:1017
+msgid "Wheat"
+msgstr ""
+
+#: ../framework/includes/general.php:1018
+msgid "White"
+msgstr ""
+
+#: ../framework/includes/general.php:1141
+msgid "TB Large"
+msgstr ""
+
+#: ../framework/includes/general.php:1147
+msgid "TB Medium"
+msgstr ""
+
+#: ../framework/includes/general.php:1153
+msgid "TB Small"
+msgstr ""
+
+#: ../framework/includes/general.php:1159
+msgid "Small Square"
+msgstr ""
+
+#: ../framework/includes/general.php:1165
+msgid "Smaller Square"
+msgstr ""
+
+#: ../framework/includes/general.php:1171
+msgid "Smallest Square"
+msgstr ""
+
+#: ../framework/includes/general.php:1177
+msgid "Slider Full Width"
+msgstr ""
+
+#: ../framework/includes/general.php:1183
+msgid "Slider Staged"
+msgstr ""
+
+#: ../framework/includes/general.php:1189
+msgid "1/5 Column of Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:1195
+msgid "1/4 Column of Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:1201
+msgid "1/3 Column of Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:1207
+msgid "1/2 Column of Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:1455
+#: ../framework/includes/locals.php:54
+msgid "Pages"
+msgstr ""
+
+#: ../framework/includes/general.php:1456
+msgid "No pages to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1460
+msgid "Posts"
+msgstr ""
+
+#: ../framework/includes/general.php:1461
+msgid "No posts to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1465
+msgid "Posts in Category"
+msgstr ""
+
+#: ../framework/includes/general.php:1466
+#: ../framework/includes/general.php:1471
+msgid "No categories to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1470
+msgid "Category Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1475
+msgid "Tag Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1476
+msgid "No tags to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1480
+msgid "Hierarchy"
+msgstr ""
+
+#: ../framework/includes/general.php:1483
+msgid "All Posts"
+msgstr ""
+
+#: ../framework/includes/general.php:1484
+msgid "All Pages"
+msgstr ""
+
+#: ../framework/includes/general.php:1485
+msgid "All Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1486
+msgid "All Category Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1487
+msgid "All Tag Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1488
+msgid "All Author Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1489
+msgid "Search Results"
+msgstr ""
+
+#: ../framework/includes/general.php:1490
+msgid "404 Page"
+msgstr ""
+
+#: ../framework/includes/general.php:1495
+msgid "Custom"
+msgstr ""
+
+#: ../framework/includes/locals.php:14
+msgid "Apologies, but the page you're looking for can't be found."
+msgstr ""
+
+#: ../framework/includes/locals.php:15
+msgid "404 Error"
+msgstr ""
+
+#: ../framework/includes/locals.php:16
+msgid "Apologies, but there are no posts to display."
+msgstr ""
+
+#: ../framework/includes/locals.php:17
+msgid "Archive"
+msgstr ""
+
+#: ../framework/includes/locals.php:18
+msgid "by"
+msgstr ""
+
+#: ../framework/includes/locals.php:19
+msgid "Cancel reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:20
+msgid "Categories"
+msgstr ""
+
+#: ../framework/includes/locals.php:21
+msgid "Category"
+msgstr ""
+
+#: ../framework/includes/locals.php:22
+msgid "Close"
+msgstr ""
+
+#: ../framework/includes/locals.php:23
+msgid "Comment navigation"
+msgstr ""
+
+#: ../framework/includes/locals.php:24
+msgid "Comment"
+msgstr ""
+
+#: ../framework/includes/locals.php:25
+msgid "Comments"
+msgstr ""
+
+#: ../framework/includes/locals.php:26
+msgid "Comments are closed."
+msgstr ""
+
+#: ../framework/includes/locals.php:27
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../framework/includes/locals.php:28
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../framework/includes/locals.php:29
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../framework/includes/locals.php:30
+#, php-format
+msgid "One comment on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: ../framework/includes/locals.php:31
+#, php-format
+msgid "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: ../framework/includes/locals.php:32
+msgid "Contact Us"
+msgstr ""
+
+#: ../framework/includes/locals.php:33
+msgid "Error 404"
+msgstr ""
+
+#: ../framework/includes/locals.php:34
+msgid "Articles posted by"
+msgstr ""
+
+#: ../framework/includes/locals.php:35
+msgid "Search results for"
+msgstr ""
+
+#: ../framework/includes/locals.php:36
+msgid "Posts tagged"
+msgstr ""
+
+#: ../framework/includes/locals.php:37
+msgid "Edit Page"
+msgstr ""
+
+#: ../framework/includes/locals.php:38
+msgid "Edit Post"
+msgstr ""
+
+#: ../framework/includes/locals.php:39
+msgid "Email"
+msgstr ""
+
+#: ../framework/includes/locals.php:40
+msgid "Home"
+msgstr ""
+
+#: ../framework/includes/locals.php:41
+msgid "in"
+msgstr ""
+
+#: ../framework/includes/locals.php:42
+msgid "Invalid Layout ID: The layout ID currently assigned to this page no longer exists."
+msgstr ""
+
+#: ../framework/includes/locals.php:43
+msgid "Post Comment"
+msgstr ""
+
+#: ../framework/includes/locals.php:44
+msgid "The Last 30 Posts"
+msgstr ""
+
+#: ../framework/includes/locals.php:45
+msgid "%curr% of %total%"
+msgstr ""
+
+#: ../framework/includes/locals.php:46
+msgid "The lightbox media could not be loaded."
+msgstr ""
+
+#: ../framework/includes/locals.php:47
+msgid "Link to lightbox"
+msgstr ""
+
+#: ../framework/includes/locals.php:48
+msgid "Loading..."
+msgstr ""
+
+#: ../framework/includes/locals.php:49
+msgid "Log in to Reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:50
+msgid "Monthly Archives"
+msgstr ""
+
+#: ../framework/includes/locals.php:51
+msgid "Name"
+msgstr ""
+
+#: ../framework/includes/locals.php:52
+#, php-format
+msgid "In order for your custom layout to be displayed, you must be have the %s plugin installed."
+msgstr ""
+
+#: ../framework/includes/locals.php:53
+msgid "Page"
+msgstr ""
+
+#: ../framework/includes/locals.php:55
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:56
+msgid "Posted on"
+msgstr ""
+
+#: ../framework/includes/locals.php:57
+msgid "Posts per category"
+msgstr ""
+
+#: ../framework/includes/locals.php:58
+msgid "Navigation"
+msgstr ""
+
+#: ../framework/includes/locals.php:59
+msgid "Next"
+msgstr ""
+
+#: ../framework/includes/locals.php:60
+msgid "No Comments"
+msgstr ""
+
+#: ../framework/includes/locals.php:61
+msgid "Slider does not exist."
+msgstr ""
+
+#: ../framework/includes/locals.php:62
+msgid "Oops! You have not selected a slider in your layout."
+msgstr ""
+
+#: ../framework/includes/locals.php:63
+msgid "The video url could not retrieve a video."
+msgstr ""
+
+#: ../framework/includes/locals.php:64
+msgid "Previous"
+msgstr ""
+
+#: ../framework/includes/locals.php:65
+msgid "Read More"
+msgstr ""
+
+#: ../framework/includes/locals.php:66
+msgid "Reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:67
+msgid "Search the site..."
+msgstr ""
+
+#: ../framework/includes/locals.php:68
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: ../framework/includes/locals.php:69
+msgid "Tag"
+msgstr ""
+
+#: ../framework/includes/locals.php:70
+msgid "Leave a Reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:71
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:72
+msgid "via"
+msgstr ""
+
+#: ../framework/includes/locals.php:73
+msgid "Website"
+msgstr ""
+
+#: ../framework/includes/media.php:336
+msgid "Oops! Couldn't find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post or attach some images to the post."
+msgstr ""
+
+#: ../framework/includes/parts.php:336
+#, php-format
+msgid "View all posts by %s"
 msgstr ""
 
 #: ../includes/options.php:26
