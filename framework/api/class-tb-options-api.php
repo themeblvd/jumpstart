@@ -94,8 +94,8 @@ class Theme_Blvd_Options_API {
 	private function __construct() {
 
 		// Setup options
-		$this->set_option_id();
 		$this->set_raw_options();
+		add_action( 'after_setup_theme', array( $this, 'set_option_id' ) );
 
 		// Format options, and store saved settings
 		add_action( 'after_setup_theme', array( $this, 'set_formatted_options' ), 1000 );
@@ -116,7 +116,7 @@ class Theme_Blvd_Options_API {
 	 *
 	 * @param string $id Optional current ID to be applied.
 	 */
-	private function set_option_id( $id = '' ) {
+	public function set_option_id( $id = '' ) {
 
 		if ( $id ) {
 			$this->option_id = $id;
