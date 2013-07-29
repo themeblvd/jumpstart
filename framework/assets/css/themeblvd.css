@@ -1118,6 +1118,11 @@ ul.sf-menu [class^="icon-"] {
 	left: 0;
 	z-index: 1;
 }
+.slide-thumbnail-link .image-overlay .image-overlay-bg {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
 .featured-image-wrapper .image-overlay .image-overlay-icon,
 .slide-thumbnail-link .image-overlay .image-overlay-icon {
 	background: url('../images/elements/image-overlay-icon.png') no-repeat;
@@ -2655,6 +2660,9 @@ div.wpcf7 .watermark {
 	cursor: auto;
 	padding: 0 0 30px 0;
 }
+.carrousel-slider-wrapper a.slide-thumbnail-link {
+	position: relative;
+}
 .carrousel-slider-wrapper .roundabout-moveable-item img {
 	display: block;
 	max-width: 100%;
@@ -2768,6 +2776,7 @@ div.wpcf7 .watermark {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	z-index: 2;
 }
 .carrousel-slider-wrapper .roundabout-in-focus .tb-block-click {
 	display: none;
