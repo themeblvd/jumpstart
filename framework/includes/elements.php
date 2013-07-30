@@ -1082,7 +1082,7 @@ function themeblvd_tabs( $id, $options ) {
 	// Container classes
 	$classes = 'tabbable';
 
-	if ( ! empty($options['height']) ) {
+	if ( $options['height'] ) {
 		$classes .= ' fixed-height';
 	}
 

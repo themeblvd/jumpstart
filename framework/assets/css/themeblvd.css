@@ -2837,6 +2837,9 @@ div.wpcf7 .watermark {
 	border: 1px solid #dddddd;
 	padding: 20px;
 }
+.tb-tabs-open .tab-content {
+	padding: 10px 5px;
+}
 .tabs-above.tb-tabs-framed .tab-content {
 	border-top:none;
 }
