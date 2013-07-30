@@ -81,7 +81,8 @@
 #optionsframework .section-color .controls {
 	min-width: 125px;
 }
-#optionsframework .controls input[type="input"], #optionsframework .controls textarea {
+#optionsframework .controls input[type="input"],
+#optionsframework .controls textarea {
 	-webkit-box-shadow: 0 0 4px #eeeeee;
 	box-shadow: 0 0 4px #eeeeee;
 	margin-bottom: 10px;
@@ -94,12 +95,18 @@
 #optionsframework .controls textarea {
 	line-height: 150%;
 }
-#optionsframework .section-radio label,#optionsframework .section-multicheck label {
+#optionsframework .radio-input {
+	overflow: hidden;
+	padding: 2px 0;
+}
+#optionsframework .section-radio label,
+#optionsframework .section-multicheck label {
 	float: left;
 	line-height: 15px;
 	display: block;
 }
-#optionsframework input.checkbox,#optionsframework input.of-radio {
+#optionsframework input.checkbox,
+#optionsframework input.of-radio {
 	float: left;
 	clear: both;
 	vertical-align: middle;
@@ -146,17 +153,21 @@
 	max-width: 340px;
 	margin: 3px 0 18px;
 }
-#optionsframework .mini .controls select,#optionsframework .section .mini .controls {
+#optionsframework .mini .controls select,
+#optionsframework .section .mini .controls {
 	width: 140px;
 }
-#optionsframework .mini .controls input,#optionsframework .mini .controls {
+#optionsframework .mini .controls input,
+#optionsframework .mini .controls {
 	min-width: 140px;
 	width: 140px;
 }
 #optionsframework .mini .explain {
 	max-width: 74%;
 }
-#optionsframework .controls .of-background-repeat,#optionsframework .controls .of-background-position,#optionsframework .controls .of-background-attachment {
+#optionsframework .controls .of-background-repeat,
+#optionsframework .controls .of-background-position,
+#optionsframework .controls .of-background-attachment {
 	width: 125px;
 	margin-right: 5px;
 	float: left;
@@ -177,12 +188,14 @@
 #optionsframework .controls input.upload {
 	width:79%;
 }
-#optionsframework .controls input.upload-button, #optionsframework .controls input.remove-file  {
+#optionsframework .controls input.upload-button,
+#optionsframework .controls input.remove-file  {
 	border-color: #BBBBBB;
 	float: right;
 	width: auto;
 }
-#optionsframework .controls input.upload-button: hover, #optionsframework .controls input.remove-file: hover  {
+#optionsframework .controls input.upload-button: hover,
+#optionsframework .controls input.remove-file: hover  {
 	border-color: #666666;
 	color: #000;
 }
