@@ -177,9 +177,6 @@ class Theme_Blvd_Options_API {
 	 *		- lightbox_mobile
 	 *		- lightbox_mobile_iframe
 	 *		- lightbox_mobile_gallery
-	 * Configuration
-	 *	- Analytics
-	 *		- analytics
 	 */
 	private function set_raw_options() {
 
@@ -497,25 +494,6 @@ class Theme_Blvd_Options_API {
 		);
 
 		/*--------------------------------*/
-		/* Tab #3: Configuration
-		/*--------------------------------*/
-
-		$config_options = array(
-			// Section: Analytics
-			'analytics' => array(
-				'name' => __( 'Analytics', 'themeblvd' ),
-				'options' => array(
-					'analytics' => array(
-						'name' 		=> __( 'Analytics Code', 'themeblvd' ),
-						'desc' 		=> __( 'Paste in the code provided by your Analytics service.<br><br>If you\'re looking for a free analytics service, definitely check out <a href="http://www.google.com/analytics/">Google Analytics</a>.', 'themeblvd' ),
-						'id' 		=> 'analytics',
-						'type' 		=> 'textarea'
-					)
-				) // End analytics options
-			)
-		);
-
-		/*--------------------------------*/
 		/* Finalize and extend
 		/*--------------------------------*/
 
@@ -527,10 +505,6 @@ class Theme_Blvd_Options_API {
 			'content' 	=> array(
 				'name' 		=> __( 'Content', 'themeblvd' ),
 				'sections' 	=> $content_options
-			),
-			'config' 	=> array(
-				'name' 		=> __( 'Configuration', 'themeblvd' ),
-				'sections' 	=> $config_options
 			)
 		);
 
@@ -671,6 +645,12 @@ class Theme_Blvd_Options_API {
 	 * @param bool $top Whether the tab should be added to the start or not
 	 */
 	public function add_tab( $tab_id, $tab_name, $top = false ) {
+
+		// Can't create a tab that already exists. 
+		// Must use remove_tab() first to modify.
+		if ( isset( $this->raw_options[$tab_id] ) ) {
+			return;
+		}
 
 		if ( $top ) {
 

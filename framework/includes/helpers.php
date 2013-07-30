@@ -345,20 +345,6 @@ function themeblvd_close_row() {
 	echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
 }
 
-if ( !function_exists( 'themeblvd_analytics' ) ) :
-/**
- * Display Analytics code.
- *
- * @since 2.0.0
- */
-function themeblvd_analytics() {
-	$analytics = themeblvd_get_option( 'analytics' );
-	if ( $analytics ) {
-		echo wp_kses( $analytics, themeblvd_allowed_tags() )."\n";
-	}
-}
-endif;
-
 /**
  * Determine color of text depending on background color.
  *

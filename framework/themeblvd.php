@@ -131,7 +131,6 @@ if ( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
 
 	// <head> hooks
-	add_action( 'wp_head', 'themeblvd_analytics', 2 );
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 
 	// Header hooks
