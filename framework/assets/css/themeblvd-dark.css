@@ -197,7 +197,7 @@ input[type="submit"]:active {
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
 	color: #ffffff;
-	background-color: #2c2c2c;
+	background-color: #333333;
 	border-color: #000000;
 	border-bottom-color: transparent;
 }
@@ -206,9 +206,6 @@ input[type="submit"]:active {
 .nav-pills > .active > a:focus {
 	color: #ffffff;
 	background-color: #454545;
-}
-.tab-content {
-	background-color: #2c2c2c;
 }
 .nav-tabs.nav-stacked > li > a {
 	border-color: #000000;
@@ -251,10 +248,9 @@ input[type="submit"]:active {
 	border-color: #000000;
 }
 .tabs-right > .nav-tabs .active > a,
-.tabs-right > .nav-tabs .active > a:hover
+.tabs-right > .nav-tabs .active > a:hover,
 .tabs-right > .nav-tabs .active > a:focus {
 	border-color: #000000 #000000 #000000 transparent;
-	*border-left-color: #000000;
 }
 .breadcrumb {
 	-webkit-box-shadow: inherit;
