@@ -559,14 +559,14 @@ tb-warning .tb-alert-inner {
 /* =Confirmation prompt (Originally from Apprise plugin)
 -----------------------------------------------*/
 
-.appriseOverla {
+.appriseOverlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	background: rgba(0,0,0,0.3);
 	display: none; z-index: 999;
 }
-.appriseOute {
+.appriseOuter {
 	background: #eee;
 	border: 1px solid #fff;
 	box-shadow: 0 3px 7px #333;
@@ -583,12 +583,12 @@ tb-warning .tb-alert-inner {
 	position: fixed;
 	display: none; width:350px;
 }
-.appriseInne {
+.appriseInner {
 	color: #333;
 	text-shadow: 0 1px 0 #fff;
 	padding: 20px;
 }
-.appriseInner butto {
+.appriseInner button {
 	border: 1px solid #bbb;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -606,14 +606,14 @@ tb-warning .tb-alert-inner {
 	margin: 0 3px;
 	padding: 4px 10px;
 }
-.appriseInner button:hove {
+.appriseInner button:hover {
 	color: #5b92d4;
 }
-.aButtons,.aInpu {
+.aButtons,.aInput {
 	text-align: center;
 	margin: 20px 10px 0;
 }
-.aTextbo {
+.aTextbox {
 	border: 1px solid #aaa;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
