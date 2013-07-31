@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jump Start\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-27 16:01-0800\n"
-"PO-Revision-Date: 2013-07-27 16:01-0800\n"
+"POT-Creation-Date: 2013-07-30 17:58-1000\n"
+"PO-Revision-Date: 2013-07-30 17:59-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -343,7 +343,7 @@ msgid "Hide page's title."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:57
-#: ../framework/api/class-tb-options-api.php:233
+#: ../framework/api/class-tb-options-api.php:230
 msgid "Breadcrumbs"
 msgstr ""
 
@@ -358,13 +358,13 @@ msgstr ""
 
 #: ../framework/admin/functions/meta.php:62
 #: ../framework/admin/functions/meta.php:131
-#: ../framework/api/class-tb-options-api.php:239
+#: ../framework/api/class-tb-options-api.php:236
 msgid "Yes, show breadcrumbs."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:63
 #: ../framework/admin/functions/meta.php:132
-#: ../framework/api/class-tb-options-api.php:240
+#: ../framework/api/class-tb-options-api.php:237
 msgid "No, hide breadcrumbs."
 msgstr ""
 
@@ -387,12 +387,12 @@ msgid "Use default post setting."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:107
-#: ../framework/api/class-tb-options-api.php:340
+#: ../framework/api/class-tb-options-api.php:337
 msgid "Show meta info."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:108
-#: ../framework/api/class-tb-options-api.php:341
+#: ../framework/api/class-tb-options-api.php:338
 msgid "Hide meta info."
 msgstr ""
 
@@ -405,12 +405,12 @@ msgid "Select if you'd like to completely hide comments or not below the post. T
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:119
-#: ../framework/api/class-tb-options-api.php:363
+#: ../framework/api/class-tb-options-api.php:360
 msgid "Show comments."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:120
-#: ../framework/api/class-tb-options-api.php:364
+#: ../framework/api/class-tb-options-api.php:361
 msgid "Hide comments."
 msgstr ""
 
@@ -566,8 +566,8 @@ msgstr ""
 
 #: ../framework/admin/options/class-tb-options-page.php:61
 #: ../framework/admin/options/class-tb-options-page.php:62
-#: ../framework/api/class-tb-options-api.php:650
-#: ../framework/api/class-tb-options-api.php:651
+#: ../framework/api/class-tb-options-api.php:624
+#: ../framework/api/class-tb-options-api.php:625
 msgid "Theme Options"
 msgstr ""
 
@@ -699,7 +699,7 @@ msgstr ""
 msgid "No file chosen"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:380
+#: ../framework/admin/options/options-interface.php:382
 msgid "Enter the name of a font from the <a href=\"http://www.google.com/webfonts\" target=\"_blank\">Google Font Directory</a>."
 msgstr ""
 
@@ -975,301 +975,285 @@ msgstr ""
 msgid "active"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:217
+#: ../framework/api/class-tb-options-api.php:214
 msgid "Header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:220
+#: ../framework/api/class-tb-options-api.php:217
 msgid "Logo"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:221
+#: ../framework/api/class-tb-options-api.php:218
 msgid "Configure the primary branding logo for the header of your site.<br /><br />Use the \"Upload\" button to either upload an image or select an image from your media library. When inserting an image with the \"Upload\" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you're inputting a \"HiDPI-optimized\" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you'd like it to simply not have any effect."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:230
+#: ../framework/api/class-tb-options-api.php:227
 msgid "Main"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:234
+#: ../framework/api/class-tb-options-api.php:231
 msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:245
+#: ../framework/api/class-tb-options-api.php:242
 msgid "Choose the default sidebar layout for the main content area of your site.<br><br><em>Note: This will be the default sidebar layout throughout your site, but you can be override this setting for any specific page or custom layout.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:256
+#: ../framework/api/class-tb-options-api.php:253
 msgid "Footer"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:263
+#: ../framework/api/class-tb-options-api.php:260
 msgid "Setup Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:264
+#: ../framework/api/class-tb-options-api.php:261
 msgid "Choose the number of columns along with the corresponding width configurations."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:270
+#: ../framework/api/class-tb-options-api.php:267
 msgid "Footer Column #1"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:271
+#: ../framework/api/class-tb-options-api.php:268
 msgid "Configure the content for the first column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:278
+#: ../framework/api/class-tb-options-api.php:275
 msgid "Footer Column #2"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:279
+#: ../framework/api/class-tb-options-api.php:276
 msgid "Configure the content for the second column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:286
+#: ../framework/api/class-tb-options-api.php:283
 msgid "Footer Column #3"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:287
+#: ../framework/api/class-tb-options-api.php:284
 msgid "Configure the content for the third column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:294
+#: ../framework/api/class-tb-options-api.php:291
 msgid "Footer Column #4"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:295
+#: ../framework/api/class-tb-options-api.php:292
 msgid "Configure the content for the fourth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:302
+#: ../framework/api/class-tb-options-api.php:299
 msgid "Footer Column #5"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:303
+#: ../framework/api/class-tb-options-api.php:300
 msgid "Configure the content for the fifth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:313
+#: ../framework/api/class-tb-options-api.php:310
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:314
+#: ../framework/api/class-tb-options-api.php:311
 msgid "Enter the copyright text you'd like to show in the footer of your site."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:330
+#: ../framework/api/class-tb-options-api.php:327
 msgid "Single Posts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:331
+#: ../framework/api/class-tb-options-api.php:328
 msgid "These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:334
+#: ../framework/api/class-tb-options-api.php:331
 msgid "Show meta information at top of posts?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:335
+#: ../framework/api/class-tb-options-api.php:332
 msgid "Select if you'd like the meta information (date posted, author, etc) to show at the top of the post. If you're going for a portfolio-type setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:345
+#: ../framework/api/class-tb-options-api.php:342
 msgid "Show featured images at top of posts?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:346
+#: ../framework/api/class-tb-options-api.php:343
 msgid "Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don't want them to show on the actual posts themeselves."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:351
-#: ../framework/api/class-tb-options-api.php:381
-#: ../framework/api/class-tb-options-api.php:429
+#: ../framework/api/class-tb-options-api.php:348
+#: ../framework/api/class-tb-options-api.php:378
+#: ../framework/api/class-tb-options-api.php:426
 msgid "Show small thumbnails."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:352
-#: ../framework/api/class-tb-options-api.php:382
-#: ../framework/api/class-tb-options-api.php:430
+#: ../framework/api/class-tb-options-api.php:349
+#: ../framework/api/class-tb-options-api.php:379
+#: ../framework/api/class-tb-options-api.php:427
 msgid "Show full-width thumbnails."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:353
-#: ../framework/api/class-tb-options-api.php:383
-#: ../framework/api/class-tb-options-api.php:431
+#: ../framework/api/class-tb-options-api.php:350
+#: ../framework/api/class-tb-options-api.php:380
+#: ../framework/api/class-tb-options-api.php:428
 msgid "Hide thumbnails."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:357
+#: ../framework/api/class-tb-options-api.php:354
 msgid "Show comments below posts?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:358
+#: ../framework/api/class-tb-options-api.php:355
 msgid "Select if you'd like to completely hide comments or not below the post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:371
+#: ../framework/api/class-tb-options-api.php:368
 msgid "Primary Posts Display"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:372
+#: ../framework/api/class-tb-options-api.php:369
 msgid "These settings apply to your primary posts page that you've selected under Settings > Reading and <strong>all</strong> instances of the \"Post List\" page template. Note that if you want to use the post list page template for multiple pages with different categories on each, you can accomplish this on each specific page with custom fields - <a href=\"http://vimeo.com/32754998\">Learn More</a>."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:375
+#: ../framework/api/class-tb-options-api.php:372
 msgid "Featured Images"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:376
+#: ../framework/api/class-tb-options-api.php:373
 msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:387
-#: ../framework/api/class-tb-options-api.php:435
+#: ../framework/api/class-tb-options-api.php:384
+#: ../framework/api/class-tb-options-api.php:432
 msgid "Show excerpts or full content?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:388
+#: ../framework/api/class-tb-options-api.php:385
 msgid "Choose whether you want to show full content or post excerpts only.<br><br><em>Note: Because this theme uses post formats, this option will not apply to all post formats.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:393
-#: ../framework/api/class-tb-options-api.php:441
+#: ../framework/api/class-tb-options-api.php:390
+#: ../framework/api/class-tb-options-api.php:438
 msgid "Show full content."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:394
-#: ../framework/api/class-tb-options-api.php:442
+#: ../framework/api/class-tb-options-api.php:391
+#: ../framework/api/class-tb-options-api.php:439
 msgid "Show excerpt only."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:398
+#: ../framework/api/class-tb-options-api.php:395
 msgid "Exclude Categories"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:399
+#: ../framework/api/class-tb-options-api.php:396
 msgid "Select any categories you'd like to be excluded from your blog."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:408
+#: ../framework/api/class-tb-options-api.php:405
 msgid "Archives"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:409
+#: ../framework/api/class-tb-options-api.php:406
 msgid "These settings apply any time you're viewing search results or posts specific to a category, tag, date, author, etc."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:412
+#: ../framework/api/class-tb-options-api.php:409
 msgid "Show title on archive pages?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:413
+#: ../framework/api/class-tb-options-api.php:410
 msgid "Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:418
+#: ../framework/api/class-tb-options-api.php:415
 msgid "Yes, show main title at the top of archive pages."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:419
+#: ../framework/api/class-tb-options-api.php:416
 msgid "No, hide the title."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:423
+#: ../framework/api/class-tb-options-api.php:420
 msgid "Show featured images on archive pages?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:424
+#: ../framework/api/class-tb-options-api.php:421
 msgid "Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:436
+#: ../framework/api/class-tb-options-api.php:433
 msgid "Choose whether you want to show full content or post excerpts only."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:448
+#: ../framework/api/class-tb-options-api.php:445
 msgid "Lightbox"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:449
+#: ../framework/api/class-tb-options-api.php:446
 msgid "These settings apply to the built-in lightbox functionality, which utilizes the <a href=\"http://dimsemenov.com/plugins/magnific-popup/\" target=\"_blank\">Magnific Popup</a> script."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:452
+#: ../framework/api/class-tb-options-api.php:449
 msgid "Animate lightboxes?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:453
+#: ../framework/api/class-tb-options-api.php:450
 msgid "Select if you'd like lightboxes to animate as they open and close."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:458
+#: ../framework/api/class-tb-options-api.php:455
 msgid "No animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:459
+#: ../framework/api/class-tb-options-api.php:456
 msgid "Fade animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:463
+#: ../framework/api/class-tb-options-api.php:460
 msgid "Disable standard lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:464
+#: ../framework/api/class-tb-options-api.php:461
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing a standard lightbox instance."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:469
-#: ../framework/api/class-tb-options-api.php:480
-#: ../framework/api/class-tb-options-api.php:491
+#: ../framework/api/class-tb-options-api.php:466
+#: ../framework/api/class-tb-options-api.php:477
+#: ../framework/api/class-tb-options-api.php:488
 msgid "Yes, disable for mobile."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:470
-#: ../framework/api/class-tb-options-api.php:481
-#: ../framework/api/class-tb-options-api.php:492
+#: ../framework/api/class-tb-options-api.php:467
+#: ../framework/api/class-tb-options-api.php:478
+#: ../framework/api/class-tb-options-api.php:489
 msgid "No, do not disable for mobile."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:474
+#: ../framework/api/class-tb-options-api.php:471
 msgid "Disable iframe lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:475
+#: ../framework/api/class-tb-options-api.php:472
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:485
+#: ../framework/api/class-tb-options-api.php:482
 msgid "Disable gallery lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:486
+#: ../framework/api/class-tb-options-api.php:483
 msgid "Select if you'd like the lightbox to be disabled for mobile users when viewing a gallery."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:506
-msgid "Analytics"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:509
-msgid "Analytics Code"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:510
-msgid "Paste in the code provided by your Analytics service.<br><br>If you're looking for a free analytics service, definitely check out <a href=\"http://www.google.com/analytics/\">Google Analytics</a>."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:524
+#: ../framework/api/class-tb-options-api.php:502
 msgid "Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:528
+#: ../framework/api/class-tb-options-api.php:506
 msgid "Content"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:532
-msgid "Configuration"
 msgstr ""
 
 #: ../framework/api/class-tb-sidebars-api.php:121
