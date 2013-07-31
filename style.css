@@ -659,16 +659,37 @@ img.size-full {
 	}
 
 	/* Builder - Slogan */
-	.element-slogan .has_button .btn-large {
-		display: block;
-		float: none;
-		margin: 0 0 10px 0;
+	.element-slogan .tb-slogan {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		box-orient: vertical;
 	}
-	.element-slogan .slogan .slogan-text {
+	.element-slogan .tb-slogan .slogan-text {
 		display: block;
 		font-size: 17px; /* Fallback for older browsers */
 		font-size: 1.3rem;
 		text-align: center;
+		-webkit-box-ordinal-group: 1;
+		-ms-flex-order: 1;
+		-webkit-order: 1;
+		order: 1;
+		margin-bottom: 20px;
+	}
+	.element-slogan .tb-slogan .btn-large {
+		display: block;
+		float: none;
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 2;
+		-webkit-order: 2;
+		order: 2;
+	}
+	.firefox .element-slogan .tb-slogan {
+		display: block;
 	}
 
 	/* Builder - Divider */

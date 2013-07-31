@@ -28,6 +28,7 @@ Jump Start Changelog
 * Added `themeblvd_default_sidebar_args` filter for arguments when registering default sidebar locations.
 * Mini post grid now accepts `[gallery]` shortcode for the gallery override feature.
 * On mobile, main content area now always displays above sidebars for all sidebar layouts.
+* On mobile, slogan element of Layout Builder displays button after slogan text.
 * Removed post meta from displaying when with pages in search results.
 * Removed "Configuration" tab from default framework Theme Options.
 * Removed analytics option from Theme Options.
