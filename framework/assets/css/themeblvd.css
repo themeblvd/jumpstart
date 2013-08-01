@@ -1091,7 +1091,8 @@ ul.sf-menu [class^="icon-"] {
 	float: left;
 	margin-right: 20px;
 }
-.featured-image-wrapper a {
+.featured-image-wrapper a,
+a.slide-thumbnail-link {
 	position: relative;
 	display: block;
 }
@@ -2659,9 +2660,6 @@ div.wpcf7 .watermark {
 	background-image: url('../images/elements/carrousel-shadow-focus.png');
 	cursor: auto;
 	padding: 0 0 30px 0;
-}
-.carrousel-slider-wrapper a.slide-thumbnail-link {
-	position: relative;
 }
 .carrousel-slider-wrapper .roundabout-moveable-item img {
 	display: block;
