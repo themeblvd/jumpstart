@@ -398,7 +398,7 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 	$color = explode( '#', $color );
 	$color = $color[1];
 
-	// Send back in black if it's not a properly
+	// Send back in black if it's not a properly 
 	// formatted 6-digit hex
 	if ( strlen( $color ) != 6 ) {
 		return '#000000';
@@ -407,22 +407,12 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 	// Build new color
 	$new_color = '';
 	for ( $x = 0; $x < 3; $x++ ) {
-
-	    if ( $direction == 'lighten' ) {
+	    if( $direction == 'lighten' )
 	    	$c = hexdec( substr( $color, ( 2*$x ), 2 ) ) + $difference;
-	    } else {
+	    else
 			$c = hexdec( substr( $color, ( 2*$x ), 2 ) ) - $difference;
-		}
-
-		$c = dechex($c);
-		if ( $c < 0 ) {
-			$c = 0;
-		}
-
-		$new_color = $c;
-		if ( strlen($c) < 2 )
-			$new_color = '0'.$c;
-
+	    $c = ( $c < 0 ) ? 0 : dechex( $c );
+	    $new_color .= ( strlen( $c ) < 2 ) ? '0'.$c : $c;
 	}
 
 	return apply_filters( 'themeblvd_adjust_color', '#'.$new_color, $color, $difference, $direction );
