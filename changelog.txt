@@ -4,12 +4,12 @@ Jump Start Changelog
 1.1.0
 -----
 
-*Warning: Make sure to checkout this article before updating: [Updating to Jump Start 1.1](http://support.themeblvd.com/updating-to-jump-start-1-1/).*
+*Warning: Make sure to checkout this article before updating: [Updating to Jump Start 1.1](http://support.themeblvd.com/updating-to-jump-start-1-1/)*
 
-**If you're using the Layout Builder plugin, you must update it to v1.2+**
+**If you're using the Layout Builder plugin, you must update it to v1.2+**<br />
 **If you're using the Sliders plugin, you must update it to v1.1+**
 
-* Updated framework to v2.3.
+* **Updated Theme Blvd Framework to v2.3.**
 * Updated FontAwesome to v3.2.
 * Updated Twitter Bootstrap to v2.3.
 * Updated Superfish to v1.7.4.
@@ -20,7 +20,7 @@ Jump Start Changelog
 * Made Google+ icons standards-compliant.
 * Added `themeblvd_content_bottom` action hook directly opposite of `themeblvd_content_top`.
 * Added ability to hide Theme License admin page via `themeblvd_global_config` filter.
-* Added filterable "edit_theme_options" capability to License admin page.
+* Added filterable `edit_theme_options` capability to License admin page.
 * Added default styling for captions of a `[gallery]`.
 * Added support for some new features of Sliders plugin v1.1+.
 * Added support for WP 3.5+ media uploader.
@@ -29,10 +29,10 @@ Jump Start Changelog
 * Mini post grid now accepts `[gallery]` shortcode for the gallery override feature.
 * On mobile, main content area now always displays above sidebars for all sidebar layouts.
 * On mobile, slogan element of Layout Builder displays button after slogan text.
-* Removed post meta from displaying when with pages in search results.
+* Removed post meta from displaying with pages in search results.
 * Removed "Configuration" tab from default framework Theme Options.
 * Removed analytics option from Theme Options.
-* Reconstruction of how pagination works to be more extendable. See new function `themeblvd_get_pagination` in /framework/functions/parts.php, and new functions `themeblvd_get_pagination_parts` in /framework/functions/helpers.php.
+* Reconstruction of how pagination works to be more extendable. See new function `themeblvd_get_pagination` in */framework/includes/parts.php*, and new functions `themeblvd_get_pagination_parts` in */framework/includes/helpers.php*.
 * Slight UI improvements to Logo option in default Theme Options panel.
 * Majorly reduced framework's footprint on `$GLOBAL` namespace with re-structuring.
 * API functionality for Widget Areas, Theme Options, and Stylesheets completely re-structured.
@@ -42,14 +42,13 @@ Jump Start Changelog
 * Post List template pages, Post Grid page template pages, and static pages with custom layouts, can now all be set as a static frontpage and maintain pagination.
 * Added `themeblvd_was()` function to check conditionals for a current page while in a secondary loop of posts. -- i.e. `if( themeblvd_was('page', 'example-page') )`
 * Added PHP Class you can use to create meta boxes objects utilizing internal options framework. -- `Theme_Blvd_Meta_Box`
-* [http://dev.themeblvd.com/tutorial/editable-content-files/ Template parts] are now setup and filtered before any secondary loops. -- Allows you to avoid weird quirks like [http://support.themeblvd.com/forums/topic/post-grid-conditional-tag/ this].
+* [Template parts](http://dev.themeblvd.com/tutorial/editable-content-files/) are now setup and filtered before any secondary loops. -- Allows you to avoid weird quirks like [this](http://support.themeblvd.com/forums/topic/post-grid-conditional-tag/).
 * Some re-organizing of files in framework folder.
 * Improved default `content-attachment.php`.
-* In default `content.php` and `content-attachment.php`, removed anchor tag on post title for single posts.
-* In default `content-list.php`, `content-grid.php`, and `content-archive.php`, changed linked titles to use `the_title_attribute()` for anchor titles.
+* In default `content.php`, `content-attachment.php`, `content-list.php`, `content-grid.php`, and `content-archive.php`, now using new `themeblvd_the_title()` to determine of title should be wrapped in a link.
 * In default `content.php` and `content-page.php`, moved clearfix to directly below `the_content()`.
-* New tools for working with post formats.
-* WP 3.6: Filtered `wp_link_pages()` to match `themeblvd_pagination()`
+* New internal functions for working with post formats. -- See */framework/includes/post-formats.php* and */framework/includes/media.php*
+* WP 3.6: Filtered `wp_link_pages()` to match `themeblvd_pagination()`.
 * WP 3.6: Added responsive support for self-hosted videos.
 * WP 3.6: Added responsive support for self-hosted audio files.
 
