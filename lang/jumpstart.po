@@ -1131,7 +1131,7 @@ msgid "Show excerpts or full content?"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:385
-msgid "Choose whether you want to show full content or post excerpts only.<br><br><em>Note: Because this theme uses post formats, this option will not apply to all post formats.</em>"
+msgid "Choose whether you want to show full content or post excerpts only."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:390

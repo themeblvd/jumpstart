@@ -382,7 +382,7 @@ class Theme_Blvd_Options_API {
 					),
 					'blog_content' => array(
 						'name' 		=> __( 'Show excerpts or full content?', 'themeblvd' ),
-						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.<br><br><em>Note: Because this theme uses post formats, this option will not apply to all post formats.</em>', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
 						'id' 		=> 'blog_content',
 						'std' 		=> 'content',
 						'type' 		=> 'radio',
