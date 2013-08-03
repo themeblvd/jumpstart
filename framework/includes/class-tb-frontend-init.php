@@ -654,7 +654,7 @@ class Theme_Blvd_Frontend_Init {
 
 			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_blog_content_default', 'content' ) );
 
-		} elseif ( is_archive() ) {
+		} elseif ( is_archive() || is_search() ) {
 
 			$content = themeblvd_get_option( 'archive_content', null, apply_filters( 'themeblvd_archive_content_default', 'content' ) );
 
