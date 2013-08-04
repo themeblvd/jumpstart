@@ -113,7 +113,7 @@
 }
 #optionsframework .controls .of-color {
 	float: left;
-	width: 80px;
+	width: 80px !important;
 	margin-left: 5px;
 	margin-right: 5px;
 }
