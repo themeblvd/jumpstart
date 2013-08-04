@@ -223,7 +223,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				foreach ( $value['options'] as $key => $option ) {
 					$id = sprintf( '%s-%s-%s', $option_name, $value['id'], $key );
-					$output .= '<div class="radio-input">';
+					$output .= '<div class="radio-input clearfix">';
 					$output .= sprintf( '<input class="of-input of-radio" type="radio" name="%s" id="%s" value="%s" %s />', esc_attr($name), esc_attr($id), esc_attr($key), checked( $val, $key, false ) );
 					$output .= sprintf( '<label for="%s">%s</label>', esc_attr($id), esc_html($option) );
 					$output .= '</div><!-- .radio-input (end) -->';

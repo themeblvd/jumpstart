@@ -1,6 +1,13 @@
 /* =General Classes
 -----------------------------------------------*/
 
+#optionsframework .clearfix:after {
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
 #optionsframework .warning {
 	background: #f7f7f7;
 	border: 1px solid #eeeeee;
