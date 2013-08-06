@@ -177,7 +177,7 @@ function themeblvd_featured_start_default() {
 
 	<div id="featured">
 		<div class="featured-inner<?php echo $classes; ?>">
-			<div class="featured-content">
+			<div class="featured-content clearfix">
 	<?php
 }
 endif;
@@ -190,7 +190,6 @@ if ( !function_exists( 'themeblvd_featured_end_default' ) ) :
  */
 function themeblvd_featured_end_default() {
 	?>
-				<div class="clear"></div>
 			</div><!-- .featured-content (end) -->
 		</div><!-- .featured-inner (end) -->
 	</div><!-- #featured (end) -->
@@ -223,7 +222,7 @@ function themeblvd_featured_below_start_default() {
 
 	<div id="featured_below">
 		<div class="featured_below-inner<?php echo $classes; ?>">
-			<div class="featured_below-content">
+			<div class="featured_below-content clearfix">
 	<?php
 }
 endif;
@@ -236,7 +235,6 @@ if ( !function_exists( 'themeblvd_featured_below_end_default' ) ) :
  */
 function themeblvd_featured_below_end_default() {
 	?>
-				<div class="clear"></div>
 			</div><!-- .featured_below-content (end) -->
 		</div><!-- .featured_below-inner (end) -->
 	</div><!-- #featured_below (end) -->
@@ -263,7 +261,7 @@ function themeblvd_main_start_default() {
 	<div id="main" class="<?php themeblvd_sidebar_layout_class(); ?>">
 		<div class="main-inner">
 			<div class="main-content">
-				<div class="grid-protection">
+				<div class="grid-protection clearfix">
 	<?php
 }
 endif;
@@ -276,7 +274,6 @@ if ( !function_exists( 'themeblvd_main_end_default' ) ) :
  */
 function themeblvd_main_end_default() {
 	?>
-					<div class="clear"></div>
 				</div><!-- .grid-protection (end) -->
 			</div><!-- .main-content (end) -->
 		</div><!-- .main-inner (end) -->
