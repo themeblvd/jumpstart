@@ -1,6 +1,12 @@
 Jump Start Changelog
 ====================
 
+1.1.1
+-----
+
+* Fixed admin bugs in Firefox, media uploader and radio button options.
+* Fixed bug with archive content/excerpt option not being respected on search results.
+
 1.1.0
 -----
 
