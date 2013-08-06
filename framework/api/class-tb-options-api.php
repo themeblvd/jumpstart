@@ -95,7 +95,7 @@ class Theme_Blvd_Options_API {
 
 		// Setup options
 		$this->set_raw_options();
-		add_action( 'after_setup_theme', array( $this, 'set_option_id' ) );
+		$this->set_option_id();
 
 		// Format options, and store saved settings
 		add_action( 'after_setup_theme', array( $this, 'set_formatted_options' ), 1000 );
@@ -119,7 +119,7 @@ class Theme_Blvd_Options_API {
 	public function set_option_id( $id = '' ) {
 
 		if ( $id ) {
-			$this->option_id = $id;
+			$this->option_id = apply_filters( 'themeblvd_set_option_id', $id );
 			return;
 		}
 
@@ -127,7 +127,7 @@ class Theme_Blvd_Options_API {
 		$theme_data = wp_get_theme( get_stylesheet() );
 		$themename = preg_replace('/\W/', '', strtolower( $theme_data->get('Name') ) );
 
-		$this->option_id = apply_filters( 'themeblvd_option_id', $themename );
+		$this->option_id = apply_filters( 'themeblvd_set_option_id', $themename );
 	}
 
 	/**
@@ -590,7 +590,7 @@ class Theme_Blvd_Options_API {
 		}
 
 		// Or pull settings from DB
-		$this->settings = get_option( $this->option_id );
+		$this->settings = get_option( $this->get_option_id() );
 
 		// Do settings exist? If not, grab default values.
 		// Only do this for the frontend.
@@ -605,7 +605,7 @@ class Theme_Blvd_Options_API {
 			// formatted options.
 			$defaults = themeblvd_get_option_defaults( $this->formatted_options );
 			$this->settings = $defaults;
-			add_option( $this->option_id, $defaults );
+			add_option( $this->get_option_id(), $defaults );
 
 		}
 
@@ -624,7 +624,7 @@ class Theme_Blvd_Options_API {
 			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
-			'menu_slug'		=> $this->option_id,
+			'menu_slug'		=> $this->get_option_id(),
 			'icon'			=> '',
 			'closer'		=> true // Needs to be false if option page has no tabs
 		);
@@ -828,15 +828,15 @@ class Theme_Blvd_Options_API {
 	 */
 	public function edit_option( $tab_id, $section_id, $option_id, $att, $value ) {
 
-		if ( ! isset( $_themeblvd_core_options[$tab_id] ) ) {
+		if ( ! isset( $this->raw_options[$tab_id] ) ) {
 			return;
 		}
 
-		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id] ) ) {
+		if ( ! isset( $this->raw_options[$tab_id]['sections'][$section_id] ) ) {
 			return;
 		}
 
-		if ( ! isset( $_themeblvd_core_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
+		if ( ! isset( $this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id] ) ) {
 			return;
 		}
 
@@ -856,7 +856,7 @@ class Theme_Blvd_Options_API {
 	 * @return string $option_id
 	 */
 	public function get_option_id() {
-		return $this->option_id;
+		return apply_filters( 'themeblvd_option_id', $this->option_id );
 	}
 
 	/**
