@@ -888,6 +888,7 @@ ul.sf-menu [class^="icon-"] {
 .themeblvd-contact-bar li a {
 	background-image: url('../images/parts/social-media-grey_24x24.png');
 	display: block;
+	outline: none;
 	width: 24px;
 	height: 24px;
 	text-indent: -9999px;
