@@ -61,7 +61,7 @@ function themeblvd_get_all_locals() {
 		'no_slider' 				=> __( 'Slider does not exist.', 'themeblvd_frontend' ),
 		'no_slider_selected' 		=> __( 'Oops! You have not selected a slider in your layout.', 'themeblvd_frontend' ),
 		'no_video'					=> __( 'The video url could not retrieve a video.', 'themeblvd_frontend' ),
-		'next'						=> __( 'Previous', 'themeblvd_frontend' ),
+		'previous'					=> __( 'Previous', 'themeblvd_frontend' ),
 		'read_more'					=> __( 'Read More', 'themeblvd_frontend' ),
 		'reply'						=> __( 'Reply', 'themeblvd_frontend' ),
 		'search'					=> __( 'Search the site...', 'themeblvd_frontend' ),
