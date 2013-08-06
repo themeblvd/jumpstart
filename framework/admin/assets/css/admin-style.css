@@ -123,7 +123,8 @@ optionsframework #publishing-action .ajax-loading {
 	display: block;
 	position: absolute;
 	-ms-filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=20);
-	filter: alpha(opacity=20);-moz-opacity: 0.2;
+	filter: alpha(opacity=20);
+	-moz-opacity: 0.2;
 	-khtml-opacity: 0.2;
 	opacity: .2;
 	width: 100%;
@@ -131,7 +132,7 @@ optionsframework #publishing-action .ajax-loading {
 }
 #optionsframework span.locked input {
 	color: #888;
-	line-height: 18px;
+	height: 26px;
 	padding-left: 25px;
 }
 #optionsframework .section-columns .select-wrap {
