@@ -10,6 +10,8 @@ Jump Start Changelog
 * Fixed Magnific popup localization with Next/Previous buttons.
 * Adjusted for `themeblvd_get_option_name()` to be available earlier, like prior to framework v2.3.
 
+--------------------------------------------------------------
+
 1.1.0
 -----
 
@@ -61,6 +63,8 @@ Jump Start Changelog
 * WP 3.6: Added responsive support for self-hosted videos.
 * WP 3.6: Added responsive support for self-hosted audio files.
 
+--------------------------------------------------------------
+
 1.0.2
 -----
 
@@ -68,6 +72,8 @@ Jump Start Changelog
 * Fixed a couple styling quirks on default skin's main menu.
 * Fixed jQuery issues in selecting pages with slugs containing non-English characters in option interface. -- This was a result from the new "fancy" select menu addition from the last update.
 * Re-generated jumpstart.po for localization.
+
+--------------------------------------------------------------
 
 1.0.1
 -----
@@ -133,6 +139,8 @@ Jump Start Changelog
 * jQuery Plugins: Improved how javascript assets are included with use of localized variables to allow you to more easily remove specific plugins like prettyPhoto, Superfish, etc without overriding entire framework javascript file. [Learn More](http://dev.themeblvd.com/tutorial/removing-framework-scripts/)
 * Moved Jump Start update classes to framework directory.
 * Added Envato update classes (not used in Jump Start).
+
+--------------------------------------------------------------
 
 1.0.0
 -----
