@@ -4,7 +4,7 @@ Jump Start Changelog
 1.1.1
 -----
 
-* Fixed admin bugs in Firefox, media uploader, radio buttons, and color pickers.
+* Fixed admin bugs in Firefox and IE, media uploader, radio buttons, and color pickers.
 * Fixed bug with archive content/excerpt option not being respected on search results.
 * Fixed bug with `themeblvd_edit_option()` in Options API.
 * Fixed Magnific popup localization with Next/Previous buttons.
