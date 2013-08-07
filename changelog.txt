@@ -10,6 +10,7 @@ Jump Start Changelog
 * Fixed Magnific popup localization with Next/Previous buttons.
 * Adjusted for `themeblvd_get_option_name()` to be available earlier, like prior to framework v2.3.
 * Applied proper clearfix to #featured, #main, #featured_below containers.
+* Fixed line-height CSS issues with slider headlines.
 
 --------------------------------------------------------------
 

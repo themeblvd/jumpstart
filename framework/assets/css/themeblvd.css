@@ -2452,6 +2452,7 @@ div.wpcf7 .watermark {
 	font-size: 1.3em; /* Fallback for older browsers */
 	font-size: 1.3rem;
 	font-weight: bold;
+	line-height: 1.15em;
 	margin: 0;
 	padding: 0 0 5px 0;
 }
@@ -2477,6 +2478,7 @@ div.wpcf7 .watermark {
 	font-size: 2em; /* Fallback for older browsers */
 	font-size: 2rem;
 	font-weight: bold;
+	line-height: 1.15em;
 	margin-bottom: 10px;
 }
 .standard-slider .media-align-left .content-inner,
