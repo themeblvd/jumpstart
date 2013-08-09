@@ -925,7 +925,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 
 	$current_tagline = '';
 	if ( ! empty( $val ) && ! empty( $val['custom_tagline'] ) ) {
-		$current_value = $val['custom_tagline'];
+		$current_tagline = $val['custom_tagline'];
 	}
 
 	$custom_text  = sprintf( '<p><label class="inner-label"><strong>%s</strong></label>', __( 'Title', 'themeblvd' ) );

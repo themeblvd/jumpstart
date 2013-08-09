@@ -4,6 +4,8 @@ Jump Start Changelog
 1.1.2
 -----
 
+* Fixed bug with saving "Custom Text" logo option.
+
 --------------------------------------------------------------
 
 1.1.1
