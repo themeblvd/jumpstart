@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Fixed bug with saving "Custom Text" logo option.
+* Fixed issues with main menu dropdowns not displaying over some items.
 
 --------------------------------------------------------------
 
