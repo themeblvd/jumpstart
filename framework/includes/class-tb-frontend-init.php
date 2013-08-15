@@ -479,7 +479,7 @@ class Theme_Blvd_Frontend_Init {
 	 * @param array $area Area to use, featured or featured_below
 	 * @return array $classes Classes to use
 	 */
-	private function featured_builder_classes( $elements, $area ) {
+	public function featured_builder_classes( $elements, $area ) {
 
 		$classes = array();
 

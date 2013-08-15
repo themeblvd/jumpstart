@@ -7,6 +7,7 @@ Jump Start Changelog
 * Fixed bug with saving "Custom Text" logo option.
 * Fixed issues with main menu dropdowns not displaying over some items.
 * Fixed handling of private and password-protected pages with custom layouts.
+* Fixed compatibility with [Theme Blvd Layouts to Posts](http://wordpress.org/plugins/theme-blvd-layouts-to-posts/) plugin.
 
 --------------------------------------------------------------
 
