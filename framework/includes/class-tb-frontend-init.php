@@ -191,7 +191,7 @@ class Theme_Blvd_Frontend_Init {
 
 			// Custom Layout on static page
 			if ( is_page_template( 'template_builder.php' ) ) {
-				if ( post_password_required() ) {
+				if ( post_password_required() || ( 'private' == get_post_status() && ! current_user_can( 'edit_posts' ) ) ) {
 
 					// Password is currently required and so
 					// the custom layout doesn't get used.
@@ -217,11 +217,13 @@ class Theme_Blvd_Frontend_Init {
 				}
 			}
 
+			// Set name, which can also be "error" or "wp-private"
+			$this->config['builder'] = $layout_name;
+
 			// If we have a layout name, setup it's ID and sidebar layout
 			if ( $layout_name && $layout_name != 'error' && $layout_name != 'wp-private' ) {
 
-				// Set name and ID
-				$this->config['builder'] = $layout_name;
+				// Set ID
 				$this->config['builder_post_id'] = themeblvd_post_id_by_name( $layout_name, 'tb_layout' );
 
 				// Sidebar layout
@@ -389,6 +391,7 @@ class Theme_Blvd_Frontend_Init {
 		/*------------------------------------------------------*/
 
 		$this->config = apply_filters( 'themeblvd_frontend_config', $this->config );
+
 	}
 
 	/*--------------------------------------------*/
