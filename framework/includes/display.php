@@ -322,9 +322,7 @@ function themeblvd_breadcrumbs_default() {
 		<div id="breadcrumbs">
 			<div class="breadcrumbs-inner">
 				<div class="breadcrumbs-content">
-					<div class="breadcrumb">
-						<?php echo themeblvd_get_breadcrumbs_trail(); ?>
-					</div><!-- .breadcrumb (end) -->
+					<?php echo themeblvd_get_breadcrumbs_trail(); ?>
 				</div><!-- .breadcrumbs-content (end) -->
 			</div><!-- .breadcrumbs-inner (end) -->
 		</div><!-- #breadcrumbs (end) -->

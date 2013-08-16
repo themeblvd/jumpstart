@@ -274,7 +274,7 @@ function themeblvd_get_breadcrumbs_trail() {
 
 	// Filterable attributes
 	$atts = array(
-		'delimiter'		=> ' <span class="divider">/</span> ',
+		'delimiter'		=> '<span class="divider">/</span>',
 		'home' 			=> themeblvd_get_local('home'),
 		'home_link' 	=> home_url(),
 		'before' 		=> '<span class="current">',
@@ -291,7 +291,10 @@ function themeblvd_get_breadcrumbs_trail() {
 	$count = 1;
 	$total = count($parts);
 	if ( $parts ) {
-		foreach ( $parts as $part ) {
+
+        $trail .= '<ul class="breadcrumb">';
+
+        foreach ( $parts as $part ) {
 
 			$crumb = $part['text'];
 
@@ -300,14 +303,17 @@ function themeblvd_get_breadcrumbs_trail() {
 			}
 
 			if ( $total == $count ) {
-				$crumb = $atts['before'].$crumb.$atts['after'];
+				$crumb = '<li class="active">'.$atts['before'].$crumb.$atts['after'].'</li>';
 			} else {
-				$crumb = $crumb.$atts['delimiter'];
+				$crumb = '<li>'.$crumb.$atts['delimiter'].'</li>';
 			}
 
 			$trail .= $crumb;
 			$count++;
 		}
+
+        $trail .= '</ul><!-- .breadcrumb (end) -->';
+
 	}
 	return apply_filters( 'themeblvd_breadcrumbs_trail', $trail, $atts, $parts );
 }
