@@ -4,6 +4,8 @@ Jump Start Changelog
 1.1.3
 -----
 
+* Fixed image logo display in IE when no image width is set.
+
 1.1.2
 -----
 

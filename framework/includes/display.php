@@ -107,19 +107,21 @@ function themeblvd_header_logo_default() {
 					break;
 
 				case 'image' :
-					$image_1x = $option['image'];
-					$image_2x = '';
-					$image_width = '';
 
-					if ( ! empty( $option['image_2x'] ) ) {
-						$image_2x = $option['image_2x'];
-					}
+					echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo">';
+
+					echo '<img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" ';
 
 					if ( ! empty( $option['image_width'] ) ) {
-						$image_width = $option['image_width'];
+						echo 'width="'.$option['image_width'].'" ';
 					}
 
-					echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo"><img src="'.$image_1x.'" width="'.$image_width.'" alt="'.get_bloginfo('name').'" data-image-2x="'.$image_2x.'" /></a>';
+					if ( ! empty( $option['image_2x'] ) ) {
+						echo 'data-image-2x="'.$option['image_2x'].'" ';
+					}
+
+					echo '/></a>';
+
 					break;
 			}
 		}
