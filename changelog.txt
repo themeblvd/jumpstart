@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Fixed image logo display in IE when no image width is set.
+* Fixed Gallery Override feature of mini post grid being limited to 5 images.
 
 1.1.2
 -----

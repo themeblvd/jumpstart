@@ -726,8 +726,9 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 
 			if ( ! empty( $atts['ids'] ) ) {
 				$query = array(
-					'post_type'	=> 'attachment',
-					'post__in' 	=> explode( ',', $atts['ids'] )
+					'post_type'			=> 'attachment',
+					'post__in' 			=> explode( ',', $atts['ids'] ),
+					'posts_per_page' 	=> -1
 				);
 			}
 		}
