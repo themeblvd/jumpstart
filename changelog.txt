@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Fixed image logo display in IE when no image width is set.
 * Fixed Gallery Override feature of mini post grid being limited to 5 images.
+* Added filter to `themeblvd_show_comments`.
 
 1.1.2
 -----

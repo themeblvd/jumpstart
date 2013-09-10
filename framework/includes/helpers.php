@@ -765,7 +765,7 @@ function themeblvd_show_comments() {
 		}
 
 	}
-	return $show;
+	return apply_filters( 'themeblvd_show_comments', $show );
 }
 
 /**
