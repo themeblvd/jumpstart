@@ -341,6 +341,13 @@ class Envato_Protected_API {
 
     $request = wp_remote_request( $url );
 
+    // Fix by Theme Blvd for receiving WP Error
+    // from no Internet connection ...
+    // or any other reason.
+    if ( is_wp_error( $request ) ) {
+      return false;
+    }
+
     $data = json_decode( $request['body'] );
 
     if ( $request['response']['code'] == 200 ) {
