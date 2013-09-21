@@ -14,7 +14,7 @@
     		var $this = this;
 
     		// Toggle widgets
-			$this.find('.widget-name-arrow').live('click', function(){
+			$this.on( 'click', '.widget-name-arrow', function() {
 				var el = $(this), closed = el.closest('.widget-name').hasClass('widget-name-closed');
 				if(closed)
 				{
@@ -30,14 +30,14 @@
 			});
 
 			// Help tooltips
-			$this.find('.tooltip-link').live('click', function(){
+			$this.on( 'click', '.tooltip-link', function() {
 				var message = $(this).attr('title');
 				tbc_confirm(message, {'textOk':'Ok'});
 				return false;
 			});
 
 			// Delete item by ID passed through link's href
-			$this.find('.delete-me').live('click', function(){
+			$this.on( 'click', '.delete-me', function() {
 				var item = $(this).attr('href');
 				tbc_confirm($(this).attr('title'), {'confirm':true}, function(r)
 				{
@@ -210,13 +210,13 @@
 	    		{
 
 	    			// Fancy Select
-	    			$this.find('.tb-fancy-select select').live('change', function(){
+	    			$this.on( 'change', '.tb-fancy-select select', function() {
 		    			var el = $(this), value = el.val(), text = el.find('option[value="'+value+'"]').text();
 						el.closest('.tb-fancy-select').find('.textbox').text(text);
 	    			});
 
 	    			// Custom content
-	    			$this.find('.custom-content-types select').live('change', function(){
+	    			$this.on( 'change', '.custom-content-types select', function() {
 	    				var el = $(this), value = el.val(), parent = el.closest('.subgroup');
 	    				if(value == 'current')
 	    				{
@@ -245,7 +245,7 @@
 	    			});
 
 	    			// Column widths and number
-	    			$this.find('.columns .column-num').live('change', function(){
+	    			$this.on( 'change', '.columns .column-num', function() {
 	    				var el = $(this), i = 1, num = el.val(), parent = el.closest('.columns');
 	    				parent.find('.column-width').hide();
 	    				parent.find('.column-width-'+num).fadeIn('fast');
@@ -258,7 +258,7 @@
 	    			});
 
 	    			// Tabs number
-	    			$this.find('.tabs .tabs-num').live('change', function(){
+	    			$this.on( 'change', '.tabs .tabs-num', function() {
 	    				var el = $(this), i = 1, num = el.val(), parent = el.closest('.tabs');
 	    				parent.find('.tab-names .tab-name').hide();
 	    				parent.find('.section-content').hide();
@@ -271,14 +271,14 @@
 	    			});
 
 	    			// Column/Tab content types
-	    			$this.find('.column-content-types select.select-type').live('change', function(){
+	    			$this.on( 'change', '.column-content-types select.select-type', function() {
 						var section = $(this).closest('.section-content'), type = $(this).val();
 	    				section.find('.column-content-type').hide();
 	    				section.find('.column-content-type-'+type).show();
 	    			});
 
 	    			// Show/Hide groupings
-    				$this.find('.show-hide .trigger input').live('click', function(){
+    				$this.on( 'click', '.show-hide .trigger input', function() {
     					var checkbox = $(this);
     					if( checkbox.is(':checked') )
     						checkbox.closest('.show-hide').find('.receiver').fadeIn('fast');
@@ -287,21 +287,21 @@
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
-    				$this.find('.show-hide-toggle .trigger select').live('change', function(){
+    				$this.on( 'change', '.show-hide-toggle .trigger select', function() {
     					var el = $(this), value = el.val(), group = el.closest('.show-hide-toggle');
     					group.find('.receiver').hide();
     					group.find('.receiver-'+value).show();
     				});
 
     				// Configure logo
-    				$this.find('.section-logo .select-type select').live('change', function(){
+    				$this.on( 'change', '.section-logo .select-type select', function() {
     					var el = $(this), parent = el.closest('.section-logo'), value = el.val();
 						parent.find('.logo-item').hide();
 						parent.find('.'+value).show();
     				});
 
     				// Configure social media buttons
-    				$this.find('.section-social_media .checkbox').live('click', function(){
+    				$this.on( 'click', '.section-social_media .checkbox', function() {
     					var checkbox = $(this);
 						if( checkbox.is(':checked') )
     						checkbox.closest('.item').addClass('active').find('.social_media-input').fadeIn('fast');
@@ -310,7 +310,7 @@
     				});
 
     				// Google font selection
-    				$this.find('.section-typography .of-typography-face').live('change', function(){
+    				$this.on( 'change', '.section-typography .of-typography-face', function() {
     					var el = $(this), value = el.val();
     					if( value == 'google' )
     						el.closest('.section-typography').find('.google-font').fadeIn('fast');
@@ -319,7 +319,7 @@
     				});
 
     				// Homepage Content
-	    			$this.find('#section-homepage_content input:checked').live('change', function() {
+	    			$this.on( 'change', '#section-homepage_content input:checked', function() {
     					if( $(this).val() == 'custom_layout' )
     						$this.find('#section-homepage_custom_layout').fadeIn('fast');
     					else
