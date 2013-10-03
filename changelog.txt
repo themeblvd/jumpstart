@@ -8,6 +8,7 @@ Jump Start Changelog
 * Fixed Gallery Override feature of mini post grid being limited to 5 images.
 * Added filter to `themeblvd_show_comments`.
 * Admin jQuery improvements for 1.9 - Converted all .live() to .on()
+* Fixed `ThemeBlvd_Select_Menu_Walker::start_el()` PHP 5.4 strict error.
 
 1.1.2
 -----

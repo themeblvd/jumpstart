@@ -435,7 +435,7 @@ class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Start nav element
 	 */
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = '';
 
 		for( $i = 0; $i < $depth; $i++ ) {
