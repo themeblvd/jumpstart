@@ -2085,6 +2085,9 @@ html[xmlns] .slides {
 }
 
 /* Nivo Slider (v3.2) */
+.tb-nivo-slider-wrapper {
+	overflow: hidden;
+}
 .nivoSlider {
 	position: relative;
 	width: 100%;

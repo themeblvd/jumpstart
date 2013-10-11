@@ -9,6 +9,7 @@ Jump Start Changelog
 * Added filter to `themeblvd_show_comments`.
 * Admin jQuery improvements for 1.9 - Converted all .live() to .on()
 * Fixed `ThemeBlvd_Select_Menu_Walker::start_el()` PHP 5.4 strict error.
+* Fixed CSS overflow quirk with Nivo slider type.
 
 1.1.2
 -----
