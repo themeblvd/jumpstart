@@ -897,7 +897,9 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 
 		if ( $current_cat->parent && ( $current_cat->parent != $current_cat->term_id ) ) {
 			$parents = themeblvd_get_category_parents( $current_cat->parent );
-			$parts = array_merge( $parts, $parents );
+			if ( is_array( $parents ) ) {
+				$parts = array_merge( $parts, $parents );
+			}
 		}
 
 		// Add current category
@@ -996,7 +998,9 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 			if ( ! empty( $category ) ) {
 				$category = $category[0];
 				$parents = themeblvd_get_category_parents( $category->term_id );
-				$parts = array_merge( $parts, $parents );
+				if ( is_array( $parents ) ) {
+					$parts = array_merge( $parts, $parents );
+				}
 			}
 
 			$parts[] = array(
@@ -1022,7 +1026,9 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 			$category = get_the_category();
 			$category = $category[0];
 			$parents = themeblvd_get_category_parents( $category->term_id );
-			$parts = array_merge( $parts, $parents );
+			if ( is_array( $parents ) ) {
+				$parts = array_merge( $parts, $parents );
+			}
 		}
 
 		$parts[] = array(
