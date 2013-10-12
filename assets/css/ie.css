@@ -10,6 +10,7 @@
 .type-attachment .attachment img {
 	width: auto;
 }
+
 /* Fix small floated thumbnails in IE8 */
 .attachment-small img.wp-post-image,
 .attachment-tb_small img.wp-post-image,
@@ -17,4 +18,12 @@
 .attachment-square_smaller img.wp-post-image,
 .attachment-square_smallest img.wp-post-image {
 	max-width: inherit;
+}
+
+/* Carrousel slider fix in IE8 */
+.carrousel-slider-wrapper .roundabout-moveable-item img {
+	max-width: inherit;
+}
+.carrousel-slider-wrapper .tb-block-click {
+	display: none;
 }
