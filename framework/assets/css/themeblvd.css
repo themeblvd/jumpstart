@@ -2695,7 +2695,7 @@ div.wpcf7 .watermark {
 	right: 5px;
 }
 .carrousel-slider-wrapper .carrousel-slider .slide {
-	position:relative;
+	position: relative;
 	/* width:320px; height:200px; */
 }
 .carrousel-slider-wrapper .carrousel-slider .slide .image-link { /* @deprecated */
