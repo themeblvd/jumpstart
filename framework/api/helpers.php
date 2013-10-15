@@ -64,11 +64,12 @@ if ( !function_exists( 'themeblvd_get_option' ) ) :
  * @since 2.0.0
  *
  * @param string $primary The primary ID of the option
- * @param string $secondary Optional $secondary ID to traverse deeper into arrays
+ * @param string $secondary Optional secondary ID to traverse deeper into arrays
  */
-function themeblvd_get_option( $primary, $seconday = null ) {
+function themeblvd_get_option( $primary, $secondary = null ) {
 	$api = Theme_Blvd_Options_API::get_instance();
-	return $api->get_setting( $primary, $seconday );
+	$setting = $api->get_setting( $primary, $secondary );
+	return apply_filters( 'themeblvd_get_option', $setting, $primary, $secondary );
 }
 endif;
 
