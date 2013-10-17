@@ -572,6 +572,11 @@ function themeblvd_wp_title( $title ) {
 
 	global $page, $paged;
 
+	// Don't screw with RSS feed titles
+	if ( is_feed() ) {
+		return $title;
+	}
+
 	// Add the blog name.
 	$title .= get_bloginfo( 'name' );
 

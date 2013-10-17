@@ -12,6 +12,7 @@ Jump Start Changelog
 * Fixed `ThemeBlvd_Select_Menu_Walker::start_el()` PHP 5.4 strict error.
 * Fixed CSS overflow quirk with Nivo slider type.
 * Fixed IE8 Carrousel slider display bug.
+* Fixed double website title bug in Feeds.
 
 1.1.2
 -----
