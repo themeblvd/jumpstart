@@ -2085,7 +2085,7 @@ html[xmlns] .slides {
 }
 
 /* Nivo Slider (v3.2) */
-.tb-nivo-slider-wrapper {
+.tb-nivo-slider-wrapper .slides-wrapper {
 	overflow: hidden;
 }
 .nivoSlider {
