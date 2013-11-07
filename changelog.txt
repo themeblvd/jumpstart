@@ -14,6 +14,8 @@ Jump Start Changelog
 * Fixed IE8 Carrousel slider display bug.
 * Fixed double website title bug in Feeds.
 
+--------------------------------------------------------------
+
 1.1.2
 -----
 
