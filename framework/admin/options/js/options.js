@@ -4,24 +4,24 @@
  */
 
 jQuery(document).ready(function($) {
-	
+
 	// Fade out the save message
 	$('.fade').delay(2000).fadeOut(1000);
-	
+
 	// Switches option sections
 	$('.tb-options-js .group').hide();
 	var activetab = '';
-	
+
 	if( typeof(localStorage) != 'undefined' )
 		activetab = localStorage.getItem("activetab");
-	
+
 	if( activetab != '' && $(activetab).length )
 		$(activetab).fadeIn();
 	else
 		$('.tb-options-js .group:first').fadeIn();
 
 	$('.tb-options-js .group .collapsed').each(function(){
-		$(this).find('input:checked').parent().parent().parent().nextAll().each( 
+		$(this).find('input:checked').parent().parent().parent().nextAll().each(
 			function(){
 				if($(this).hasClass('last'))
 				{
@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 				$(this).filter('.hidden').removeClass('hidden');
 			});
 	});
-	
+
 	if( activetab != '' && $(activetab + '-tab').length )
 		$(activetab + '-tab').addClass('nav-tab-active');
 	else
@@ -47,9 +47,9 @@ jQuery(document).ready(function($) {
 		$(clicked_group).fadeIn();
 		evt.preventDefault();
 	});
-           					
+
 	$('.tb-options-js .group .collapsed input:checkbox').click(unhideHidden);
-				
+
 	function unhideHidden(){
 		if($(this).attr('checked'))
 		{
@@ -57,21 +57,21 @@ jQuery(document).ready(function($) {
 		}
 		else
 		{
-			$(this).parent().parent().parent().nextAll().each( 
+			$(this).parent().parent().parent().nextAll().each(
 			function(){
 				if($(this).filter('.last').length)
 				{
 					$(this).addClass('hidden');
-					return false;		
+					return false;
 				}
 				$(this).addClass('hidden');
-			});					
+			});
 		}
 	}
-	
+
 	// ThemeBlvd namespace
 	$('.tb-options-js').themeblvd('init');
 	$('.tb-options-js').themeblvd('options', 'bind');
 	$('.tb-options-js').themeblvd('options', 'setup');
-	$('.tb-options-js').themeblvd('options', 'media-uploader');		
-});	
+	$('.tb-options-js').themeblvd('options', 'media-uploader');
+});
