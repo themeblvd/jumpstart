@@ -43,6 +43,7 @@ if ( is_admin() ) {
 
 	// Filters
 	add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
+	add_filter( 'admin_body_class', 'themeblvd_mp6' );
 
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );

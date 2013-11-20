@@ -219,7 +219,7 @@ function themeblvd_clear_options() {
 	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
 		$option_id = $_POST['themeblvd_clear_options'];
 		delete_option( $option_id );
-		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'error fade' );
+		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'themeblvd-error error fade' );
 	}
 }
 
@@ -239,3 +239,33 @@ function themeblvd_admin_content_width() {
 	$content_width = 600;
 }
 endif;
+
+/**
+ * Integrate MP6 admin styling.
+ *
+ * This function will help the transition period as we go
+ * from MP6 to these new admin styles being incorporated
+ * into WP core.
+ *
+ * @todo Remove sometime after WP 3.8 has been released. No rush.
+ *
+ * @since 2.4.0
+ */
+function themeblvd_mp6( $classes ) {
+
+	global $wp_version;
+
+	// If WordPress 3.8+, add mp6 class
+	if ( version_compare( floatval( $wp_version ), '3.8', '<' ) ) {
+
+		$classes = explode( " ", $classes );
+
+	    if ( ! in_array( 'mp6', $classes ) ) {
+	        $classes[] = 'mp6';
+	    }
+
+	    $classes = implode( " ", $classes );
+	}
+
+	return $classes;
+}
