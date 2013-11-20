@@ -363,6 +363,7 @@
 				// Set it up
 				el.find('.element-content').hide();
 				el.find('.element-content:first').show();
+				el.find('.element-trigger:first').addClass('active');
 
 				// The click
 				el.find('.element-trigger').click(function(){
@@ -457,7 +458,7 @@
 
 				current_option.find('.image-url').val(attachment.attributes.url);
 				if( attachment.attributes.type == 'image' )
-					current_option.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image">Remove</a>').slideDown('fast');
+					current_option.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image"></a>').slideDown('fast');
 
 				if(upload_type == 'logo')
 					current_option.find('.image-width').val(attachment.attributes.width);

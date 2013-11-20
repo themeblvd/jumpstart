@@ -122,3 +122,76 @@
 .tb-meta-box .mini .explain {
 	max-width: 74%;
 }
+
+/* =WordPress 3.8 (MP6)
+-----------------------------------------------*/
+
+/* Theme Options Page Basics */
+.branch-3-8 .tb-meta-box .section {
+	border-bottom-color: #eeeeee;
+}
+.branch-3-8 .tb-meta-box .section:last-child {
+	border-bottom: none;
+}
+.branch-3-8 .tb-meta-box .section-description {
+	border-bottom-color: #eeeeee;
+	font-family: inherit;
+	font-size: inherit;
+}
+.branch-3-8 .tb-meta-box .section .heading {
+	font-size: 1.1em;
+	margin: 10px 2px;
+	padding: 0;
+}
+.branch-3-8 .tb-meta-box .section .explain {
+	color: #666666;
+	font-size: inherit;
+	line-height: 18px;
+}
+.branch-3-8 .themeblvd-updated,
+.branch-3-8 .themeblvd-error {
+	width: 752px;
+}
+
+/* Options */
+.branch-3-8 .tb-meta-box .section-radio label,
+.branch-3-8 .tb-meta-box .section-multicheck label {
+	font-size: 14px;
+	line-height: 1.2em;
+}
+.branch-3-8 .tb-meta-box input.checkbox,
+.branch-3-8 .tb-meta-box input.of-radio {
+	margin-top: 0;
+	width: auto;
+}
+.branch-3-8 .tb-meta-box .section-multicheck label,
+.branch-3-8 .tb-meta-box .section-multicheck input.checkbox {
+	margin-top: 4px;
+}
+.branch-3-8 .tb-meta-box .column-content-type-raw input.checkbox {
+	margin-top: -1px;
+}
+.branch-3-8 .tb-meta-box .radio-input {
+	margin: 3.5px 0 7px 0;
+	padding: 0;
+}
+.branch-3-8 .tb-meta-box .screenshot .remove-image {
+	background-image: none;
+	position: absolute;
+	color: #d54e21;
+	left: -10px;
+	bottom: 3px;
+	text-indent: 0;
+	width: 24px;
+	height: 24px;
+}
+.branch-3-8 .tb-meta-box .screenshot .remove-image:hover {
+	color: #ff4000;
+}
+.branch-3-8 .tb-meta-box .screenshot .remove-image:before {
+	/* content: '\f153'; */
+	content: '\f158';
+	font-family: 'dashicons';
+	font-size: 24px;
+	line-height: 1em;
+}

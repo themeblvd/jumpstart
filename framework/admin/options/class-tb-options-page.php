@@ -190,7 +190,7 @@ class Theme_Blvd_Options_Page {
 					<form id="themeblvd_options_page" action="<?php echo $this->args['form_action']; ?>" method="post">
 						<?php settings_fields( $this->id ); ?>
 						<?php echo $return[0]; /* Settings */ ?>
-				        <div id="optionsframework-submit">
+				        <div id="optionsframework-submit" class="options-page-footer">
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
 							<input type="submit" class="reset-button button-secondary" value="<?php esc_attr_e( 'Restore Defaults', 'themeblvd' ); ?>" />
 							<input type="submit" class="clear-button button-secondary" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
@@ -228,7 +228,7 @@ class Theme_Blvd_Options_Page {
 		// file will be added to the option for the active theme.
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'error fade' );
+			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'themeblvd-error error fade' );
 			return themeblvd_get_option_defaults( $this->options );
 		}
 
@@ -273,7 +273,7 @@ class Theme_Blvd_Options_Page {
 		// Add update message for page re-fresh
 		if ( ! $this->sanitized ) {
 			// Avoid duplicates
-			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'updated fade' );
+			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'themeblvd-updated updated fade' );
 		}
 
 		// We know sanitization has happenned at least

@@ -77,7 +77,7 @@ function themeblvd_media_uploader( $args ) {
 			$data['upload'] = __('Get Image', 'themeblvd');
 			$help = __( 'You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'themeblvd' );
 			$output .= '<span class="locked"><span></span>';
-			$output .= '<a href="#" class="help-icon tooltip-link" title="'.$help.'">Help</a>';
+			$output .= '<a href="#" class="help-icon tb-icon-help-circled tooltip-link" title="'.$help.'"></a>';
 			$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.$name.'[id]" placeholder="'.__('Image ID', 'themeblvd').'" value="'.$args['value_id'].'" /></span>'."\n";
 			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="hidden" name="'.$name.'[url]" value="'.$value.'" />'."\n";
 			$output .= '<input id="'.$formfield.'_title" class="image-title upload'.$class.'" type="hidden" name="'.$name.'[title]" value="'.$args['value_title'].'" />'."\n";
@@ -131,7 +131,7 @@ function themeblvd_media_uploader( $args ) {
 	$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";
 
 	if ( $value && $type != 'video' ) {
-		$remove = '<a class="remove-image">Remove</a>';
+		$remove = '<a class="remove-image"></a>';
 		$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
 		if ( $image ) {
 			$output .= '<img src="' . $value . '" alt="" />' . $remove;

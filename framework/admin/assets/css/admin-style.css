@@ -1,3 +1,53 @@
+/* =Icon Fonts
+-----------------------------------------------*/
+
+/* Note: @font-face included from /framework/admin/assets/css/admin-global.css */
+
+[class^="tb-icon-"]:before,
+[class*=" tb-icon-"]:before {
+	font-family: "theme-blvd-admin";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+}
+.tb-icon-logo-circled:before { content: '\e80b'; } /* '' */
+.tb-icon-roadblock:before { content: '\e80c'; } /* '' */
+.tb-icon-logo-simple:before { content: '\e810'; } /* '' */
+.tb-icon-plus-circled:before { content: '\e80a'; } /* '' */
+.tb-icon-lock:before { content: '\e80d'; } /* '' */
+.tb-icon-picture:before { content: '\e801'; } /* '' */
+.tb-icon-link:before { content: '\e811'; } /* '' */
+.tb-icon-quote:before { content: '\e812'; } /* '' */
+.tb-icon-down-dir:before { content: '\e805'; } /* '' */
+.tb-icon-logo-stroke:before { content: '\e80f'; } /* '' */
+.tb-icon-right-dir:before { content: '\e807'; } /* '' */
+.tb-icon-up-dir:before { content: '\e808'; } /* '' */
+.tb-icon-arrows-ccw:before { content: '\e809'; } /* '' */
+.tb-icon-briefcase:before { content: '\e813'; } /* '' */
+.tb-icon-ok-circled:before { content: '\e80e'; } /* '' */
+.tb-icon-cancel-circled:before { content: '\e803'; } /* '' */
+.tb-icon-help-circled:before { content: '\e802'; } /* '' */
+.tb-icon-attention:before { content: '\e804'; } /* '' */
+.tb-icon-commercial-building:before { content: '\e800'; } /* '' */
+.tb-icon-left-dir:before { content: '\e806'; } /* '' */
+
 /* =General Classes
 -----------------------------------------------*/
 
@@ -390,7 +440,7 @@ tb-warning .tb-alert-inner {
 	overflow: auto;
 	padding: 10px;
 }
-#optionsframework .accordion .element .element-content .note{
+#optionsframework .accordion .element .element-content .note {
 	border-top: none;
 	font-size: 12px;
 	margin-top: 5px;
@@ -455,7 +505,6 @@ tb-warning .tb-alert-inner {
 	border-radius: 3px;
 }
 #optionsframework .widget-name h3 {
-	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
 	font-weight: normal;
 	font-size: 15px;
 	line-height: 34px;
@@ -477,10 +526,12 @@ tb-warning .tb-alert-inner {
 	background-position: 5px -26px;
 }
 #optionsframework .widget-name select,#slidersframework #edit_slider .widget-name select {
-	float: right;width: 175px;margin: 4px 10px 0 0;
+	float: right;
+	width: 175px;
+	margin: 4px 10px 0 0;
 }
 #optionsframework .widget-content {
-	background-color: #FCFCFC;
+	background-color: #fcfcfc;
 	-moz-border-radius-bottomleft: 3px;
 	-moz-border-radius-bottomright: 3px;
 	-webkit-border-bottom-right-radius: 3px;
@@ -634,4 +685,53 @@ tb-warning .tb-alert-inner {
 	font-size: 12px;
 	font-weight: 700;
 	padding: 5px 10px;
+}
+
+/* =WordPress 3.8 (MP6)
+-----------------------------------------------*/
+
+.mp6 #optionsframework .conflict,
+.mp6 #optionsframework .no-conflict {
+	background: none;
+	padding: 0;
+}
+.mp6 #optionsframework .conflict:before,
+.mp6 #optionsframework .no-conflict:before {
+	font-family: 'theme-blvd-admin';
+	margin-right: 5px;
+}
+.mp6 #optionsframework .conflict:before {
+	content: '\e804';
+	color: #ee8a14;
+}
+.mp6 #optionsframework .no-conflict:before {
+	content: '\e80e';
+	color: #57da23;
+}
+.mp6 #optionsframework .ajax-overlay {
+	background: #eeeeee;
+}
+.mp6 #optionsframework .widget-name {
+	background: #ffffff;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+.mp6 #optionsframework .widget-name h3 {
+	margin: 0 !important;
+}
+.mp6 #optionsframework .widget-name .widget-name-arrow {
+	border-left: none;
+	-moz-transition-property: none;
+	-moz-transition-duration: 0;
+	-moz-transition-timing-function: none;
+	-webkit-transition-property: none;
+	-webkit-transition-duration: 0;
+	-webkit-transition-timing-function: none;
+	transition-property: none;
+	transition-duration: 0;
+	transition-timing-function: none;
+}
+.mp6 #optionsframework .widget-content {
+	background: #ffffff;
 }

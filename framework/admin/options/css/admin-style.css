@@ -1,8 +1,8 @@
 /* =OptionsFramework Admin Styles
 -----------------------------------------------*/
 
-.updated,
-.error {
+.themeblvd-updated,
+.themeblvd-error {
 	max-width: 764px;
 	margin-bottom: 0!important;
 }
@@ -179,13 +179,16 @@
 	font-style: italic;
 	padding: 10px;
 }
+#optionsframework .tb-footer-text i {
+	font-size: 15px;
+}
 #optionsframework .tb-footer-text .tb-update-log {
 	text-decoration: none;
 }
 
 /* Image Uploader */
 #optionsframework .controls input.upload {
-	width:79%;
+	width: 79%;
 }
 #optionsframework .controls input.upload-button,
 #optionsframework .controls input.remove-file  {
@@ -358,9 +361,9 @@
 	position: relative;
 }
 #optionsframework .tb-fancy-select select  {
-	margin-bottom: 0; 
+	margin-bottom: 0;
 	filter: alpha(opacity=0);
-	-moz-opacity: 0; 
+	-moz-opacity: 0;
 	-khtml-opacity: 0;
 	opacity: 0;
 	position: relative;
@@ -372,12 +375,11 @@
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
-	color: #666666; 
+	color: #666666;
 	display: block;
 	line-height: 33px;
 	padding: 0 10px;
-	position: 
-	absolute; 
+	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -393,4 +395,114 @@
 	right: 0;
 	width: 25px;
 	height: 33px;
+}
+
+/* =WordPress 3.8 (MP6)
+-----------------------------------------------*/
+
+/* Theme Options Page Basics */
+.mp6 #optionsframework {
+	background: transparent;
+}
+.mp6 #optionsframework .section {
+	border-bottom-color: #eeeeee;
+}
+.mp6 #optionsframework .section-description {
+	border-bottom-color: #eeeeee;
+	font-family: inherit;
+	font-size: inherit;
+}
+.mp6 #optionsframework .section .heading {
+	margin: 10px 2px;
+	padding: 0;
+}
+.mp6 #optionsframework .section .explain {
+	color: #666666;
+	font-size: inherit;
+	line-height: 18px;
+}
+.mp6 .themeblvd-updated,
+.mp6 .themeblvd-error {
+	width: 752px;
+}
+.mp6 #optionsframework .note code,
+.mp6  #optionsframework .widefat code {
+	padding: 0;
+}
+
+/* Theme Options Footer */
+.mp6 #optionsframework-submit.options-page-footer {
+	background: #ffffff;
+	border: 1px solid #dedede;
+}
+.mp6 #optionsframework .tb-footer-text {
+	border: 1px solid #dedede;
+	border-top: none;
+}
+
+/* General Options Footer */
+.mp6 #optionsframework-submit {
+	background: transparent;
+	border-top: none;
+}
+
+/* Options */
+.mp6 #optionsframework .section-radio label,
+.mp6 #optionsframework .section-multicheck label {
+	font-size: 14px;
+	line-height: 1.2em;
+}
+.mp6 #optionsframework input.checkbox,
+.mp6 #optionsframework input.of-radio {
+	margin-top: 0;
+	width: auto;
+}
+.mp6 #optionsframework .section-multicheck label,
+.mp6 #optionsframework .section-multicheck input.checkbox {
+	margin-top: 4px;
+}
+.mp6 #optionsframework .column-content-type-raw input.checkbox {
+	margin-top: -1px;
+}
+.mp6 #optionsframework .radio-input {
+	margin: 3.5px 0 7px 0;
+	padding: 0;
+}
+.mp6 #optionsframework .section-checkbox .controls {
+	padding-right: 0;
+}
+.mp6 #optionsframework .screenshot .remove-image {
+	background-image: none;
+	position: absolute;
+	color: #d54e21;
+	left: -10px;
+	bottom: 3px;
+	text-indent: 0;
+	width: 24px;
+	height: 24px;
+}
+.mp6 #optionsframework .screenshot .remove-image:hover {
+	color: #ff4000;
+}
+.mp6 #optionsframework .screenshot .remove-image:before {
+	/* content: '\f153'; */
+	content: '\f158';
+	font-family: 'dashicons';
+	font-size: 24px;
+	line-height: 1em;
+}
+
+/* Elements */
+.mp6  #optionsframework .accordion .element .element-trigger {
+	background: #ffffff;
+	text-shadow: none;
+}
+.mp6  #optionsframework .accordion .element .element-trigger.active,
+.mp6  #optionsframework .accordion .element .element-trigger:hover {
+	background: #f2f2f2;
+}
+
+/* Tables */
+.mp6  #optionsframework .widefat tr:nth-child(odd) {
+	background: #f9f9f9;
 }
