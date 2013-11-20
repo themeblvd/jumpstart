@@ -1148,6 +1148,6 @@ function themeblvd_options_footer_text_default() {
 	}
 
 	// Output
-	printf('%s <strong>%s</strong> with Theme Blvd Framework <strong>%s</strong> %s', $theme_title, $theme_version, TB_FRAMEWORK_VERSION, $changelog );
+	printf( '<i class="tb-icon-logo-stroke mp6-text-highlight"></i> %s <strong>%s</strong> with Theme Blvd Framework <strong>%s</strong> %s', $theme_title, $theme_version, TB_FRAMEWORK_VERSION, $changelog );
 }
 endif;
