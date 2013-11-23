@@ -38,6 +38,7 @@ body {
 	line-height: 150%;
 }
 h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
 	line-height: 130%;
 	margin-bottom: .4em;
 }
