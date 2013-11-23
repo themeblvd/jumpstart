@@ -482,7 +482,7 @@ class Theme_Blvd_Sidebars_API {
 				}
 
 				// Ouput message
-				echo '<div class="alert warning">';
+				echo '<div class="alert alert-warning">';
 				echo '	<p>'.$message.'</p>';
 				echo '</div><!-- .tb-warning (end) -->';
 
