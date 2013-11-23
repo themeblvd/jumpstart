@@ -191,8 +191,9 @@ class Theme_Blvd_Options_API {
 		$sidebar_layouts = array();
 		if ( is_admin() ) {
 			$layouts = themeblvd_sidebar_layouts();
-			foreach ( $layouts as $layout )
+			foreach ( $layouts as $layout ) {
 				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
+			}
 		}
 
 		// Pull all the categories into an array

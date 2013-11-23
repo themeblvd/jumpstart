@@ -495,7 +495,7 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Full Width',
 			'id'		=> 'full_width',
 			'columns'	=> array(
-				'content' 	=> 'span12',
+				'content' 	=> 'col-sm-12',
 				'left' 		=> '',
 				'right' 	=> ''
 			)
@@ -504,17 +504,17 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Sidebar Right',
 			'id'		=> 'sidebar_right',
 			'columns'	=> array(
-				'content' 	=> 'span8',
+				'content' 	=> 'col-sm-8',
 				'left' 		=> '',
-				'right' 	=> 'span4'
+				'right' 	=> 'col-sm-4'
 			)
 		),
 		'sidebar_left' => array(
 			'name' 		=> 'Sidebar Left',
 			'id'		=> 'sidebar_left',
 			'columns'	=> array(
-				'content' 	=> 'span8',
-				'left' 		=> 'span4',
+				'content' 	=> 'col-sm-8',
+				'left' 		=> 'col-sm-4',
 				'right' 	=> ''
 			)
 		),
@@ -522,27 +522,27 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Double Sidebar',
 			'id'		=> 'double_sidebar',
 			'columns'	=> array(
-				'content' 	=> 'span6',
-				'left' 		=> 'span3',
-				'right' 	=> 'span3'
+				'content' 	=> 'col-sm-6',
+				'left' 		=> 'col-sm-3',
+				'right' 	=> 'col-sm-3'
 			)
 		),
 		'double_sidebar_left' => array(
 			'name' 		=> 'Double Left Sidebars',
 			'id'		=> 'double_sidebar_left',
 			'columns'	=> array(
-				'content' 	=> 'span6',
-				'left' 		=> 'span3',
-				'right' 	=> 'span3'
+				'content' 	=> 'col-sm-6',
+				'left' 		=> 'col-sm-3',
+				'right' 	=> 'col-sm-3'
 			)
 		),
 		'double_sidebar_right' => array(
 			'name' 		=> 'Double Right Sidebars',
 			'id'		=> 'double_sidebar_right',
 			'columns'	=> array(
-				'content' 	=> 'span6',
-				'left' 		=> 'span3',
-				'right' 	=> 'span3'
+				'content' 	=> 'col-sm-6',
+				'left' 		=> 'col-sm-3',
+				'right' 	=> 'col-sm-3'
 			)
 		)
 	);

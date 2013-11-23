@@ -80,7 +80,7 @@ blockquote cite {
  * will always appear at the top on mobile.
  */
 @media (max-width: 767px) {
-	#sidebar_layout .sidebar_layout-inner > .row-fluid {
+	#sidebar_layout .sidebar_layout-inner > .row {
 		display: -webkit-box;			/* OLD - iOS 6-, Safari 3.1-6 */
 		/* display: -moz-box;			/* OLD - Firefox 19- (buggy but mostly works) */
 		display: -ms-flexbox;			/* TWEENER - IE 10 */
@@ -107,7 +107,7 @@ blockquote cite {
 		order: 2;						/* NEW, Spec - Opera 12.1, Firefox 20+ */
 		margin-bottom: 20px;
 	}
-	.firefox #sidebar_layout .sidebar_layout-inner > .row-fluid {
+	.firefox #sidebar_layout .sidebar_layout-inner > .row {
 		display: block;
 	}
 }

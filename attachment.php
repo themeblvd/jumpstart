@@ -20,7 +20,7 @@ get_header();
 
 	<div id="sidebar_layout" class="clearfix">
 		<div class="sidebar_layout-inner">
-			<div class="row-fluid grid-protection">
+			<div class="row grid-protection">
 
 				<?php get_sidebar( 'left' ); ?>
 
