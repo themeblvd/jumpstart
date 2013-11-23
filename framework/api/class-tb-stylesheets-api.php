@@ -123,7 +123,7 @@ class Theme_Blvd_Stylesheets_API {
 				'handle'	=> 'bootstrap',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/bootstrap/css/bootstrap.min.css',
 				'deps'		=> array(),
-				'ver'		=> '2.3.2',
+				'ver'		=> '3.0.2',
 				'media'		=> 'all'
 
 			);

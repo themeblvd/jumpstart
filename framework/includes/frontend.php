@@ -271,7 +271,7 @@ function themeblvd_include_scripts() {
 	// the framework.
 	$scripts = array( 'jquery' );
 
-	// Register scripts -- These scripts are only enque'd as needed.
+	// Register scripts -- These scripts are only enqueued as needed.
 	wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1', true  );
 	wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/assets/js/roundabout.min.js', array('jquery'), '1.1', true );
 	wp_register_script( 'nivo', TB_FRAMEWORK_URI . '/assets/js/nivo.min.js', array('jquery'), '3.2', true );
@@ -281,7 +281,7 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
-		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '2.3.2', true );
+		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.0.2', true );
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
