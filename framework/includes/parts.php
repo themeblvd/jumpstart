@@ -274,7 +274,7 @@ function themeblvd_get_breadcrumbs_trail() {
 
 	// Filterable attributes
 	$atts = array(
-		'delimiter'		=> '<span class="divider">/</span>',
+		'delimiter'		=> '', // Previously <span class="divider">/</span> w/Bootstrap 2.x, now inserted w/CSS.
 		'home' 			=> themeblvd_get_local('home'),
 		'home_link' 	=> home_url(),
 		'before' 		=> '<span class="current">',
