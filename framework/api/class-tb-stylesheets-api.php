@@ -91,6 +91,12 @@ class Theme_Blvd_Stylesheets_API {
 	 */
 	private function __construct() {
 
+		// For plugins not inserting their scripts/stylesheets
+		// correctly in the admin.
+		if ( is_admin() ) {
+			return;
+		}
+
 		// Setup stylesheets from Framework and Client API.
 		// No enqueuing yet.
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_framework_stylesheets' ), 1 );

@@ -16,6 +16,12 @@ include_once( get_template_directory() . '/includes/updates.php' );
  */
 function jumpstart_css() {
 
+	// For plugins not inserting their scripts/stylesheets
+	// correctly in the admin.
+	if ( is_admin() ) {
+		return;
+	}
+
 	// Get stylesheet API
 	$api = Theme_Blvd_Stylesheets_API::get_instance();
 
