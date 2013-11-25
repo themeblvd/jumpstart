@@ -73,7 +73,7 @@ if ( ! function_exists( 'themeblvd_button' ) ) : // pluggable for backwards comp
  * @param string $color Color class of button
  * @param string $url URL where the button points to
  * @param string $target Anchor tag's target, _self, _blank, or lightbox
- * @param string $size Size of button - small, medium, or large
+ * @param string $size Size of button - small, medium, default, or large
  * @param string $classes CSS classes to attach onto button
  * @param string $title Title for anchor tag
  * @param string $icon_before Optional fontawesome icon before text
@@ -90,15 +90,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 		$color = 'default';
 	}
 
-	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger', 'inverse' ) ) ) ) {
-		$final_classes .= ' btn-'.$color;
-	} else {
-		$final_classes .= ' '.$color;
-	}
-
-	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'mini', 'small', 'large' ) ) ) ) {
-		$final_classes .= ' btn-'.$size;
-	}
+	$final_classes = themeblvd_get_button_class( $color, $size );
 
 	if ( $classes ) {
 		$final_classes .= ' '.$classes;

@@ -393,7 +393,7 @@ img.size-full {
 /* Top Level */
 #comments ol {
 	list-style: none;
-	margin: 0;
+	padding: 0;
 }
 
 /* Children */
@@ -411,7 +411,8 @@ img.size-full {
 #reply-title {
 	margin: 10px 0;
 }
-#commentform input[type=text] {
+#commentform input.form-control {
+	display: inline-block;
 	margin-right: 10px;
 	width: 40%;
 }
@@ -433,7 +434,7 @@ img.size-full {
 
 .widget ul {
 	list-style: none;
-	margin-left: 0;
+	padding-left: 0;
 }
 .widget ul li {
 	padding: 3px 0;

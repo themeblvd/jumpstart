@@ -115,6 +115,7 @@ if ( is_admin() ) {
 	add_filter( 'template_include', 'themeblvd_private_page' );
 	add_filter( 'wp_link_pages_args', 'themeblvd_link_pages_args' );
 	add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
+	add_filter( 'comment_reply_link', 'themeblvd_comment_reply_link' );
 
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
@@ -173,6 +174,10 @@ if ( is_admin() ) {
 	// Elements
 	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 3 );
 	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 3 );
+
+	// Comments
+	add_action( 'comment_form_before', 'themeblvd_comment_form_before' );
+	add_action( 'comment_form_after', 'themeblvd_comment_form_after' );
 
 	// WordPress Multisite Signup
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );

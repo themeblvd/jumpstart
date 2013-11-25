@@ -652,7 +652,39 @@ function themeblvd_element_close_default( $type, $location, $classes ) {
 endif;
 
 /*------------------------------------------------------------*/
-/* (11) WordPress Multisite
+/* (11) Comment Form
+/*------------------------------------------------------------*/
+
+if ( !function_exists( 'themeblvd_comment_form_before' ) ) :
+/**
+ * Before comment_form()
+ *
+ * @since 2.4.0
+ */
+function themeblvd_comment_form_before() {
+
+	$class = themeblvd_get_comment_form_class();
+	$class = implode( " ", $class );
+
+	echo '<div class="'.$class.'">';
+	echo '<div class="comment-form-inner">';
+}
+endif;
+
+if ( !function_exists( 'themeblvd_comment_form_after' ) ) :
+/**
+ * After comment_form()
+ *
+ * @since 2.4.0
+ */
+function themeblvd_comment_form_after() {
+	echo '</div><!-- .comment-form-inner (end) -->';
+	echo '</div><!-- .comment-form-wrapper (end) -->';
+}
+endif;
+
+/*------------------------------------------------------------*/
+/* (12) WordPress Multisite
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_before_signup_form' ) ) :

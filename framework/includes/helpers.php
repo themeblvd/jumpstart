@@ -398,7 +398,7 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 	$color = explode( '#', $color );
 	$color = $color[1];
 
-	// Send back in black if it's not a properly 
+	// Send back in black if it's not a properly
 	// formatted 6-digit hex
 	if ( strlen( $color ) != 6 ) {
 		return '#000000';
@@ -717,20 +717,46 @@ function themeblvd_get_comment_form_args() {
 	$aria_req = ( $req ? " aria-required='true'" : '' );
 	$args = array(
 		'fields' => array(
-			'author' => '<p class="comment-form-author"><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
+			'author' => '<p class="comment-form-author"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
 						'<label for="author">' . themeblvd_get_local( 'name' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-			'email'  => '<p class="comment-form-email"><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
+			'email'  => '<p class="comment-form-email"><input id="email" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
 						'<label for="email">' . themeblvd_get_local( 'email' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-			'url'    => '<p class="comment-form-url"><input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
+			'url'    => '<p class="comment-form-url"><input id="url" class="form-control" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
 						'<label for="url">' .themeblvd_get_local( 'website' ) . '</label></p>'
 		),
-		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
+		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" class="form-control" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
 		'title_reply'			=> themeblvd_get_local( 'title_reply' ),
 		'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
 		'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
 		'label_submit'			=> themeblvd_get_local( 'label_submit' )
 	);
 	return apply_filters( 'themeblvd_comment_form', $args, $commenter, $req, $aria_req );
+}
+
+/**
+ * Get comment form CSS classes for wrapper.
+ *
+ * @since 2.4.0
+ *
+ * @return array $class CSS classes for wrapper around comment_form()
+ */
+function themeblvd_get_comment_form_class() {
+
+	$class = array( 'comment-form-wrapper', 'tb-input-button' );
+
+	// Gradient (classic Bootstrap 2 style)
+	if ( apply_filters( 'themeblvd_btn_gradient', false ) ) {
+		$class[] = 'input-gradient';
+	}
+
+	// Size of submit button
+	$size = apply_filters( 'themeblvd_comment_submit_size', '' ); // xs, sm, or lg -- blank for normal size
+
+	if ( $size ) {
+		$class[] = sprintf( 'input-%s', $size );
+	}
+
+	return apply_filters( 'themeblvd_comment_form_class', $class );
 }
 
 /**
@@ -857,14 +883,35 @@ function themeblvd_link_pages_link( $link, $i ) {
 
 	global $page;
 
+	$color = apply_filters( 'themeblvd_link_pages_button_color', 'default' );
+	$size = apply_filters( 'themeblvd_link_pages_button_size', 'default' );
+	$class = themeblvd_get_button_class( $color, $size );
+
+	// If is current page
 	if ( $page == $i ) {
-		// If is current page
-		$link = '<a class="btn btn-default active" href="'.get_pagenum_link().'">'.$i.'</a>';
+		$class .= ' active';
+		$link = sprintf( '<a href="%s" class="%s">%s</a>', get_pagenum_link($i), $class, $i );
 	} else {
-		$link = str_replace( '<a', '<a class="btn btn-default"', $link );
+		$link = str_replace( '<a', '<a class="'.$class.'"', $link ); // Getting actual URL to rebuild link is a bitch
 	}
 
 	return $link;
+}
+
+/**
+ * Add CSS classes to reply link to they are styled as
+ * a Bootstrap button.
+ *
+ * @since 2.4.0
+ *
+ * @param string $formatted_link Current HTML to modify for button
+ * @return string|bool|null Link to show comment form, if successful. False, if comments are closed.
+ */
+function themeblvd_comment_reply_link( $formatted_link ) {
+	$color = apply_filters( 'themeblvd_comment_reply_button_color', 'default' );
+	$size = apply_filters( 'themeblvd_comment_reply_button_size', 'small' );
+	$class = themeblvd_get_button_class( $color, $size );
+	return str_replace( 'comment-reply-link', sprintf( 'comment-reply-link %s', $class ), $formatted_link );
 }
 
 /**
@@ -1279,9 +1326,58 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
  *
  * @since 2.3.0
  *
- * @return string $overaly HTML markup to get inserted within anchor tag
+ * @return string $overlay HTML markup to get inserted within anchor tag
  */
 function themeblvd_get_image_overlay() {
 	$overlay = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';
     return apply_filters( 'themeblvd_image_overlay', $overlay );
+}
+
+/**
+ * Get class for buttons.
+ *
+ * @since 2.4.0
+ *
+ * @param string $color Color of button
+ * @param string $size Size of button
+ * @return string $class HTML Class to be outputted into button <a> markup
+ */
+function themeblvd_get_button_class( $color = '', $size = '' ) {
+
+	$class = 'btn';
+
+	// Gradient (classic Bootstrap 2 style)
+	if ( apply_filters( 'themeblvd_btn_gradient', false ) ) {
+		$class .= ' btn-gradient';
+	}
+
+	// Color
+	if ( ! $color ) {
+		$color = 'default';
+	}
+
+	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger' ) ) ) ) {
+		$class .= sprintf( ' btn-%s', $color );
+	} else {
+		$class .= sprintf( ' %s', $color );
+	}
+
+	// Size
+	switch ( $size ) {
+		case 'mini' :
+			$size = 'xs';
+			break;
+		case 'small' :
+			$size = 'sm';
+			break;
+		case 'large' :
+			$size = 'lg';
+			break;
+	}
+
+	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg' ) ) ) ) {
+		$class .= sprintf( ' btn-%s', $size );
+	}
+
+    return apply_filters( 'themeblvd_get_button_class', $class, $color, $size );
 }
