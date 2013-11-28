@@ -393,7 +393,7 @@ class Theme_Blvd_Query {
 		// Order
 		$order = get_post_meta( $post->ID, 'order', true ); // ACS or DESC
 		if ( $order ) {
-			$query['order'] = $offset;
+			$query['order'] = $order;
 		}
 
 		// Offset
