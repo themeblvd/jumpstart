@@ -197,6 +197,7 @@ class Theme_Blvd_Sidebars_API {
 			),
 			'args' => array(
 			    'name' 			=> __( 'Location: Ads Above Content', 'themeblvd' ),
+			    'description' 	=> __( 'This is default placeholder for the "Ads Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'themeblvd' ),
 			    'id' 			=> 'ad_above_content'
 			)
 		);
