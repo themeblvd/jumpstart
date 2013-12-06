@@ -133,6 +133,9 @@ body {
 li {
 	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
 }
+h1, h2, h3 {
+	margin-top: 0;
+}
 
 /* Forms */
 .form-control:focus {
@@ -841,46 +844,8 @@ ul.sf-menu [class^="icon-"] {
 }
 
 /* Search Form */
-.themeblvd-search form {
+.entry-content .themeblvd-search {
 	max-width: 230px;
-	position: relative;
-}
-.widget .themeblvd-search form {
-	margin-bottom: 0;
-	max-width: inherit;
-}
-.themeblvd-search input.search-input {
-	margin-bottom: 0;
-}
-@media (min-width: 980px) {
-	/* This happens when viewport is larger than tablet only. -- Avoids wierd side effects in iOS Safari */
-	.themeblvd-search input.search-input {
-		box-sizing: border-box; /* css3 rec */
-		-moz-box-sizing: border-box; /* ff2 */
-		-ms-box-sizing: border-box; /* ie8 */
-		-webkit-box-sizing: border-box; /* safari3 */
-		-khtml-box-sizing: border-box; /* konqueror */
-		display: block;
-		height: 30px;
-		width: 100%;
-	}
-	.themeblvd-search .btn {
-		-webkit-border-top-left-radius: 0;
-		-webkit-border-bottom-left-radius: 0;
-		-moz-border-radius-topleft: 0;
-		-moz-border-radius-bottomleft: 0;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
-}
-@media (max-width: 979px) {
-	/* And this happens only for tablets and below. */
-	.themeblvd-search input.search-input {
-		max-width: 70%;
-	}
 }
 
 /* Mini Post List */
