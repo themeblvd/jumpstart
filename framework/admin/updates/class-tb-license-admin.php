@@ -61,12 +61,18 @@ class Theme_Blvd_License_Admin {
 			$license = trim( get_option( 'themeblvd_license_key' ) );
 
 			$api_params = array(
-				'edd_action' 	=> 'activate_license',
-				'license' 		=> $license,
-				'item_name' 	=> urlencode( $this->item_name )
+				'edd_action'	=> 'activate_license',
+				'license'		=> $license,
+				'item_name'		=> urlencode( $this->item_name )
 			);
 
-			$response = wp_remote_get( add_query_arg( $api_params, $this->remote_api_url ) );
+			$remote_post_args = apply_filters( 'themeblvd_update_remote_post_args', array(
+				'timeout'		=> 20,
+				'sslverify'		=> false,
+				'body'			=> $api_params
+			));
+
+			$response = wp_remote_post( $this->remote_api_url, $remote_post_args );
 
 			if ( is_wp_error( $response ) ) {
 				return false;
