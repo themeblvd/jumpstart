@@ -256,7 +256,7 @@ function themeblvd_mp6( $classes ) {
 	global $wp_version;
 
 	// If WordPress 3.8+, add mp6 class
-	if ( version_compare( floatval( $wp_version ), '3.8', '<' ) ) {
+	if ( version_compare( floatval( $wp_version ), '3.8', '>=' ) ) {
 
 		$classes = explode( " ", $classes );
 
