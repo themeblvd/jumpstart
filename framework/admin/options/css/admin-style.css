@@ -401,77 +401,77 @@
 -----------------------------------------------*/
 
 /* Theme Options Page Basics */
-.mp6 #optionsframework {
+.themeblvd-ui #optionsframework {
 	background: transparent;
 }
-.mp6 #optionsframework .section {
+.themeblvd-ui #optionsframework .section {
 	border-bottom-color: #eeeeee;
 }
-.mp6 #optionsframework .section-description {
+.themeblvd-ui #optionsframework .section-description {
 	border-bottom-color: #eeeeee;
 	font-family: inherit;
 	font-size: inherit;
 }
-.mp6 #optionsframework .section .heading {
+.themeblvd-ui #optionsframework .section .heading {
 	margin: 10px 2px;
 	padding: 0;
 }
-.mp6 #optionsframework .section .explain {
+.themeblvd-ui #optionsframework .section .explain {
 	color: #666666;
 	font-size: inherit;
 	line-height: 18px;
 }
-.mp6 .themeblvd-updated,
-.mp6 .themeblvd-error {
+.themeblvd-ui .themeblvd-updated,
+.themeblvd-ui .themeblvd-error {
 	width: 752px;
 }
-.mp6 #optionsframework .note code,
-.mp6  #optionsframework .widefat code {
+.themeblvd-ui #optionsframework .note code,
+.themeblvd-ui #optionsframework .widefat code {
 	padding: 0;
 }
 
 /* Theme Options Footer */
-.mp6 #optionsframework-submit.options-page-footer {
+.themeblvd-ui #optionsframework-submit.options-page-footer {
 	background: #ffffff;
 	border: 1px solid #dedede;
 }
-.mp6 #optionsframework .tb-footer-text {
+.themeblvd-ui #optionsframework .tb-footer-text {
 	border: 1px solid #dedede;
 	border-top: none;
 }
 
 /* General Options Footer */
-.mp6 #optionsframework-submit {
+.themeblvd-ui #optionsframework-submit {
 	background: transparent;
 	border-top: none;
 }
 
 /* Options */
-.mp6 #optionsframework .section-radio label,
-.mp6 #optionsframework .section-multicheck label {
+.themeblvd-ui #optionsframework .section-radio label,
+.themeblvd-ui #optionsframework .section-multicheck label {
 	font-size: 14px;
 	line-height: 1.2em;
 }
-.mp6 #optionsframework input.checkbox,
-.mp6 #optionsframework input.of-radio {
+.themeblvd-ui #optionsframework input.checkbox,
+.themeblvd-ui #optionsframework input.of-radio {
 	margin-top: 0;
 	width: auto;
 }
-.mp6 #optionsframework .section-multicheck label,
-.mp6 #optionsframework .section-multicheck input.checkbox {
+.themeblvd-ui #optionsframework .section-multicheck label,
+.themeblvd-ui #optionsframework .section-multicheck input.checkbox {
 	margin-top: 4px;
 }
-.mp6 #optionsframework .column-content-type-raw input.checkbox {
+.themeblvd-ui #optionsframework .column-content-type-raw input.checkbox {
 	margin-top: -1px;
 }
-.mp6 #optionsframework .radio-input {
+.themeblvd-ui #optionsframework .radio-input {
 	margin: 3.5px 0 7px 0;
 	padding: 0;
 }
-.mp6 #optionsframework .section-checkbox .controls {
+.themeblvd-ui #optionsframework .section-checkbox .controls {
 	padding-right: 0;
 }
-.mp6 #optionsframework .screenshot .remove-image {
+.themeblvd-ui #optionsframework .screenshot .remove-image {
 	background-image: none;
 	position: absolute;
 	color: #d54e21;
@@ -481,10 +481,10 @@
 	width: 24px;
 	height: 24px;
 }
-.mp6 #optionsframework .screenshot .remove-image:hover {
+.themeblvd-ui #optionsframework .screenshot .remove-image:hover {
 	color: #ff4000;
 }
-.mp6 #optionsframework .screenshot .remove-image:before {
+.themeblvd-ui #optionsframework .screenshot .remove-image:before {
 	/* content: '\f153'; */
 	content: '\f158';
 	font-family: 'dashicons';
@@ -493,16 +493,16 @@
 }
 
 /* Elements */
-.mp6  #optionsframework .accordion .element .element-trigger {
+.themeblvd-ui #optionsframework .accordion .element .element-trigger {
 	background: #ffffff;
 	text-shadow: none;
 }
-.mp6  #optionsframework .accordion .element .element-trigger.active,
-.mp6  #optionsframework .accordion .element .element-trigger:hover {
+.themeblvd-ui #optionsframework .accordion .element .element-trigger.active,
+.themeblvd-ui #optionsframework .accordion .element .element-trigger:hover {
 	background: #f2f2f2;
 }
 
 /* Tables */
-.mp6  #optionsframework .widefat tr:nth-child(odd) {
+.themeblvd-ui #optionsframework .widefat tr:nth-child(odd) {
 	background: #f9f9f9;
 }

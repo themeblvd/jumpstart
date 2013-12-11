@@ -690,37 +690,37 @@ tb-warning .tb-alert-inner {
 /* =WordPress 3.8 (MP6)
 -----------------------------------------------*/
 
-.mp6 #optionsframework .conflict,
-.mp6 #optionsframework .no-conflict {
+.themeblvd-ui #optionsframework .conflict,
+.themeblvd-ui #optionsframework .no-conflict {
 	background: none;
 	padding: 0;
 }
-.mp6 #optionsframework .conflict:before,
-.mp6 #optionsframework .no-conflict:before {
+.themeblvd-ui #optionsframework .conflict:before,
+.themeblvd-ui #optionsframework .no-conflict:before {
 	font-family: 'theme-blvd-admin';
 	margin-right: 5px;
 }
-.mp6 #optionsframework .conflict:before {
+.themeblvd-ui #optionsframework .conflict:before {
 	content: '\e804';
 	color: #ee8a14;
 }
-.mp6 #optionsframework .no-conflict:before {
+.themeblvd-ui #optionsframework .no-conflict:before {
 	content: '\e80e';
 	color: #57da23;
 }
-.mp6 #optionsframework .ajax-overlay {
+.themeblvd-ui #optionsframework .ajax-overlay {
 	background: #eeeeee;
 }
-.mp6 #optionsframework .widget-name {
+.themeblvd-ui #optionsframework .widget-name {
 	background: #ffffff;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
 }
-.mp6 #optionsframework .widget-name h3 {
+.themeblvd-ui #optionsframework .widget-name h3 {
 	margin: 0 !important;
 }
-.mp6 #optionsframework .widget-name .widget-name-arrow {
+.themeblvd-ui #optionsframework .widget-name .widget-name-arrow {
 	border-left: none;
 	-moz-transition-property: none;
 	-moz-transition-duration: 0;
@@ -732,6 +732,6 @@ tb-warning .tb-alert-inner {
 	transition-duration: 0;
 	transition-timing-function: none;
 }
-.mp6 #optionsframework .widget-content {
+.themeblvd-ui #optionsframework .widget-content {
 	background: #ffffff;
 }

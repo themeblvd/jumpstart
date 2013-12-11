@@ -241,7 +241,7 @@ function themeblvd_admin_content_width() {
 endif;
 
 /**
- * Integrate MP6 admin styling.
+ * Integrate 3.8+ admin styling.
  *
  * This function will help the transition period as we go
  * from MP6 to these new admin styles being incorporated
@@ -251,17 +251,17 @@ endif;
  *
  * @since 2.4.0
  */
-function themeblvd_mp6( $classes ) {
+function themeblvd_admin_body_class( $classes ) {
 
 	global $wp_version;
 
-	// If WordPress 3.8+, add mp6 class
+	// If WordPress 3.8+, add themeblvd-ui class
 	if ( version_compare( floatval( $wp_version ), '3.8', '>=' ) ) {
 
 		$classes = explode( " ", $classes );
 
-	    if ( ! in_array( 'mp6', $classes ) ) {
-	        $classes[] = 'mp6';
+	    if ( ! in_array( 'themeblvd-ui', $classes ) ) {
+	        $classes[] = 'themeblvd-ui';
 	    }
 
 	    $classes = implode( " ", $classes );

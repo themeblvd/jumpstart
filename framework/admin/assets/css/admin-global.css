@@ -48,29 +48,29 @@
 /* =Menu Icons for WordPress 3.8+ and MP6
 -----------------------------------------------*/
 
-.mp6 #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image,
-.mp6 #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image,
-.mp6 #adminmenu #menu-posts-portfolio_item div.wp-menu-image {
+.themeblvd-ui #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image,
+.themeblvd-ui #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image,
+.themeblvd-ui #adminmenu #menu-posts-portfolio_item div.wp-menu-image {
 	background-image: none;
 }
-.mp6 #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image:before,
-.mp6 #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image:before,
-.mp6 #adminmenu #menu-posts-portfolio_item div.wp-menu-image:before {
+.themeblvd-ui #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image:before,
+.themeblvd-ui #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image:before,
+.themeblvd-ui #adminmenu #menu-posts-portfolio_item div.wp-menu-image:before {
 	font-family: "theme-blvd-admin" !important;
 	font-size: 18px !important;
 }
-.mp6 #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image:before {
+.themeblvd-ui #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image:before {
 	content: '\e800';
 }
-.mp6 #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image:before {
+.themeblvd-ui #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image:before {
 	content: '\e801';
 }
-.mp6 #adminmenu #menu-posts-portfolio_item div.wp-menu-image:before {
+.themeblvd-ui #adminmenu #menu-posts-portfolio_item div.wp-menu-image:before {
 	content: '\e813';
 }
-.mp6 #adminmenu #menu-posts-portfolio_item div.wp-menu-image {
+.themeblvd-ui #adminmenu #menu-posts-portfolio_item div.wp-menu-image {
 	text-indent: 0;
 }
-.mp6 #adminmenu #menu-posts-portfolio_item div.wp-menu-image img {
+.themeblvd-ui #adminmenu #menu-posts-portfolio_item div.wp-menu-image img {
 	display: none;
 }
