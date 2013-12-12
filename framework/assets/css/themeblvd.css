@@ -306,6 +306,13 @@ code.block {
 	margin-bottom: 0;
 }
 
+/* Main Navigation */
+#primary-menu ul {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
 /* =Post Formats
 -----------------------------------------------*/
 
