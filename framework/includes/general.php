@@ -84,27 +84,6 @@ function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
 }
 
 /**
- * Get class used to determine width of column in primary layout.
- *
- * @since 2.2.0
- *
- * @param string $column Which column to retrieve class for
- * @return string $column_class The class to be used in grid system
- */
-function themeblvd_get_column_class( $column ) {
-
-	$column_class = '';
-	$sidebar_layouts = themeblvd_sidebar_layouts();
-	$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
-
-	if ( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) ) {
-		$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
-	}
-
-	return apply_filters( 'themeblvd_column_class', $column_class );
-}
-
-/**
  * Use themeblvd_button() function for read more links.
  *
  * When a WP user uses the more tag <!--more-->, this filter
@@ -135,7 +114,6 @@ function themeblvd_read_more_link( $read_more, $more_link_text ) {
 
 	return apply_filters( 'themeblvd_read_more_link', $button );
 }
-
 
 /**
  * Setup the config array for which features the
@@ -547,6 +525,41 @@ function themeblvd_sidebar_layouts() {
 		)
 	);
 	return apply_filters( 'themeblvd_sidebar_layouts', $layouts );
+}
+
+/**
+ * Get class used to determine width of column in primary layout.
+ *
+ * @since 2.2.0
+ *
+ * @param string $column Which column to retrieve class for
+ * @return string $column_class The class to be used in grid system
+ */
+function themeblvd_get_column_class( $column ) {
+
+	$column_class = '';
+	$sidebar_layouts = themeblvd_sidebar_layouts();
+	$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
+
+	if ( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) ) {
+		$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
+	}
+
+	return apply_filters( 'themeblvd_column_class', $column_class );
+}
+
+/**
+ * Convert scaffolding CSS classes from Boostrap 1 and 2
+ * to default classes used in Bootstrap 3. This is a
+ * fallback for anyone who was filtering "themeblvd_sidebar_layouts"
+ * prior to framework 2.4 and Bootstrap 3.
+ *
+ * @since 2.4.0
+ *
+ * @param string $class Current sidebar layout column class
+ */
+function themeblvd_column_class_legacy( $class ) {
+	return str_replace( 'span', 'col-sm-', $class );
 }
 
 /**
