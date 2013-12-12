@@ -559,11 +559,11 @@ ul.sf-menu-with-fontawesome ul .sf-sub-indicator {
 	top:.8em;
 	right: 10px;
 }
-ul.sf-menu [class^="icon-"] {
+ul.sf-menu .fa {
 	margin-right: 5px;
 }
 #primary-menu > li > a .sf-sub-indicator,
-#primary-menu > [class^="menu-icon-"] > a [class^="icon-"]{
+#primary-menu > [class^="menu-icon-"] > a .fa {
 	line-height: 1em;
 }
 

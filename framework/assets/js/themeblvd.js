@@ -80,8 +80,8 @@ jQuery(document).ready(function($) {
 		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
 
 		// Adjust sub indicators to use fontawesome
-		$('ul.sf-menu-with-fontawesome > li > a.sf-with-ul').append('<i class="sf-sub-indicator icon-caret-down"></i>');
-		$('ul.sf-menu-with-fontawesome ul li a.sf-with-ul').append('<i class="sf-sub-indicator icon-caret-right"></i>');
+		$('ul.sf-menu-with-fontawesome > li > a.sf-with-ul').append('<i class="sf-sub-indicator fa fa-caret-down"></i>');
+		$('ul.sf-menu-with-fontawesome ul li a.sf-with-ul').append('<i class="sf-sub-indicator fa fa-caret-right"></i>');
 
 	}
 
@@ -107,7 +107,7 @@ jQuery(document).ready(function($) {
 		// class inputted on the menu item.
 		classes = $(this).attr('class');
 		name = classes.substr(classes.indexOf('menu-icon') + 10).split(' ')[0];
-		$(this).find('> a, > span').prepend('<i class="icon-'+name+'"></i>');
+		$(this).find('> a, > span').prepend('<i class="fa fa-'+name+'"></i>');
 	});
 
 	// ---------------------------------------------------------
