@@ -79,9 +79,10 @@ if ( ! function_exists( 'themeblvd_button' ) ) : // pluggable for backwards comp
  * @param string $icon_before Optional fontawesome icon before text
  * @param string $icon_after Optional fontawesome icon after text
  * @param string $addon Anything to add onto the anchor tag
+ * @param bool $block Whether the button displays as block (true) or inline (false)
  * @return $output string HTML to output for button
  */
-function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = null, $classes = null, $title = null, $icon_before = null, $icon_after = null, $addon = null ) {
+function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $size = null, $classes = null, $title = null, $icon_before = null, $icon_after = null, $addon = null, $block = false ) {
 
 	// Classes for button
 	$final_classes = 'btn';
@@ -90,7 +91,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 		$color = 'default';
 	}
 
-	$final_classes = themeblvd_get_button_class( $color, $size );
+	$final_classes = themeblvd_get_button_class( $color, $size, $block );
 
 	if ( $classes ) {
 		$final_classes .= ' '.$classes;
@@ -139,7 +140,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	}
 
 	// Return final button
-	return apply_filters( 'themeblvd_button', $button, $text, $url, $color, $target, $size, $classes, $title, $icon_before, $icon_after, $addon );
+	return apply_filters( 'themeblvd_button', $button, $text, $url, $color, $target, $size, $classes, $title, $icon_before, $icon_after, $addon, $block );
 }
 endif;
 

@@ -1340,9 +1340,10 @@ function themeblvd_get_image_overlay() {
  *
  * @param string $color Color of button
  * @param string $size Size of button
+ * @param bool $block Whether the button displays as block (true) or inline (false)
  * @return string $class HTML Class to be outputted into button <a> markup
  */
-function themeblvd_get_button_class( $color = '', $size = '' ) {
+function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 
 	$class = 'btn';
 
@@ -1377,6 +1378,11 @@ function themeblvd_get_button_class( $color = '', $size = '' ) {
 
 	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg' ) ) ) ) {
 		$class .= sprintf( ' btn-%s', $size );
+	}
+
+	// Block
+	if ( $block ) {
+		$class .= ' btn-block';
 	}
 
     return apply_filters( 'themeblvd_get_button_class', $class, $color, $size );
