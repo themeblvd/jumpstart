@@ -361,19 +361,19 @@ jQuery(document).ready(function($) {
 		// Collapsables expanded
 		// This basically just toggles the Plus/Minus fontawesome
 		// icon we've incorporated into the triggers for the toggles.
-		$('.collapse').on('show', function() {
+		$('.collapse').on('show.bs.collapse', function() {
 
 			// Toggle is opening, add "active-trigger" class and
 			// change icon to a minus sign.
-			$(this).closest('.accordion-group').find('.accordion-toggle').addClass('active-trigger').find('.switch-me').removeClass('icon-plus-sign').addClass('icon-minus-sign');
+			$(this).closest('.panel').find('.panel-heading a').addClass('active-trigger').find('.switch-me').removeClass('fa-plus-circle').addClass('fa-minus-circle');
 
 		});
 
-		$('.collapse').on('hide', function() {
+		$('.collapse').on('hide.bs.collapse', function() {
 
 			// Toggle is closing, remove "active-trigger" class and
 			// change icon to a plus sign.
-			$(this).closest('.accordion-group').find('.accordion-toggle').removeClass('active-trigger').find('.switch-me').removeClass('icon-minus-sign').addClass('icon-plus-sign');
+			$(this).closest('.panel').find('.panel-heading a').removeClass('active-trigger').find('.switch-me').removeClass('fa-minus-circle').addClass('fa-plus-circle');
 
 		});
 
@@ -382,7 +382,7 @@ jQuery(document).ready(function($) {
 		var accordion_id;
 		$('.tb-accordion').each(function(){
 			accordion_id = $(this).attr('id');
-			$(this).find('.accordion-toggle').each(function(){
+			$(this).find('.panel-heading a').each(function(){
 				$(this).attr('data-parent', '#'+accordion_id);
 			});
 		});

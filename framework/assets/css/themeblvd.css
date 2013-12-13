@@ -2072,31 +2072,41 @@ ul.tb-icon-list {
 }
 
 /* Toggles */
-.accordion-group-last,
-.tb-accordion {
-	margin-bottom: 20px;
-}
-.accordion-heading .accordion-toggle {
-	color: inherit;
+.tb-panel {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
+	margin-top: 5px;
+	margin-bottom: 0;
 }
-.accordion-heading .active-trigger {
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	-moz-border-radius-bottomright: 0;
-	-moz-border-radius-bottomleft: 0;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+.panel-group-last,
+.tb-accordion {
+	margin-bottom: 20px;
 }
-.accordion-heading .accordion-toggle:hover,
-.accordion-heading .accordion-toggle:focus {
-	background: #f5f5f5;
-	color: inherit;
+.tb-panel .panel-heading {
+	border-bottom: none;
+	padding: 0;
 }
-.accordion-heading .accordion-toggle .switch-me {
+.tb-panel .panel-heading + .panel-collapse .panel-body {
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+.tb-panel .panel-title {
+	display: block;
+	font-size: 1rem;
+	padding: 10px 15px;
+}
+.tb-panel .panel-heading .switch-me {
 	margin-right: 5px;
+}
+.tb-panel.panel-default .panel-title {
+	color: #666666;
+}
+.tb-panel.panel-default > .panel-heading {
+	background: #ffffff;
+}
+.tb-panel.panel-default > .panel-heading .panel-title:hover {
+	background: #f5f5f5;
 }
 
 /* =Widgets
