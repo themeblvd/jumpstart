@@ -107,17 +107,22 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 
 	$classes = 'attachment-'.$size_class.' wp-post-image';
 
-	if ( ! $link ) {
-		$classes .= ' thumbnail';
-	} else {
+	if ( $link ) {
+
 		$anchor_class = 'thumbnail';
+
 		if ( $thumb_link_meta != 'thumbnail' ) {
 			$anchor_class .= ' '.$thumb_link_meta;
 		}
 	}
 
 	// Initial image without link
-	$image = get_the_post_thumbnail( $post->ID, $size, array( 'class' => '' ) );
+	$image_class = '';
+	if ( ! $link ) {
+		$image_class = 'thumbnail';
+	}
+
+	$image = get_the_post_thumbnail( $post->ID, $size, array( 'class' => $image_class ) );
 
 	// Wrap image in link
 	if ( $link ) {
