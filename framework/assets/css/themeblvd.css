@@ -207,86 +207,86 @@ code.block {
 
 /* Nav List - applies nav list CSS to WP's custom menu widget, and in some cases the primary nav . */
 .widget_nav_menu .menu {
-  margin-left: 0;
-  margin-bottom: 18px;
-  list-style: none;
+	margin-left: 0;
+	margin-bottom: 18px;
+	list-style: none;
 }
 .widget_nav_menu .menu > li > a {
-  display: block;
+	display: block;
 }
 .widget_nav_menu .menu > li > a:hover,
 .widget_nav_menu .menu > li > a:focus {
-  text-decoration: none;
-  background-color: #eeeeee;
+	background-color: #eeeeee;
+	text-decoration: none;
 }
 .widget_nav_menu .menu > .pull-right {
-  float: right;
+	float: right;
 }
 .widget_nav_menu .menu .nav-header span {
-  display: block;
-  padding: 3px 15px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #999999;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
+	display: block;
+	padding: 3px 15px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #999999;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
 }
 .widget_nav_menu .menu li + .nav-header span {
-  margin-top: 9px;
+	margin-top: 9px;
 }
 .widget_nav_menu .menu {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 0;
+	margin-bottom: 0;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 .widget_nav_menu .menu > li > a,
 .widget_nav_menu .menu .nav-header > span {
-  margin-left: -15px;
-  margin-right: -15px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	margin-left: -15px;
+	margin-right: -15px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .widget_nav_menu .menu > li > a {
-  padding: 3px 15px;
+	padding: 3px 15px;
 }
 .widget_nav_menu .menu > .current-menu-item > a,
 .widget_nav_menu .menu > .current-menu-item > a:hover,
 .widget_nav_menu .menu > .current-menu-item > a:focus {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #999999;
+	background-color: #999999;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
-.widget_nav_menu .menu [class^="icon-"] {
-  margin-right: 2px;
+.widget_nav_menu .menu .fa {
+	margin-right: 2px;
 }
 .widget_nav_menu .menu .divider,
 .sf-menu li li.divider {
-  *width: 100%;
-  height: 1px;
-  margin: 8px 1px;
-  *margin: -5px 0 5px;
-  padding: 0; /* Override any default widget list styles */
-  overflow: hidden;
-  background-color: #e5e5e5;
-  border-bottom: 1px solid #ffffff;
+	*width: 100%;
+	height: 1px;
+	margin: 8px 1px;
+	*margin: -5px 0 5px;
+	padding: 0; /* Override any default widget list styles */
+	overflow: hidden;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #ffffff;
 }
 .widget_nav_menu .menu ul,
 .fixed-sidebar .widget_nav_menu ul.sub-menu {
 	margin-left: 10px;
 }
 .widget_nav_menu div[class^="menu-"] {
-  min-height: 20px;
-  padding: 8px 0;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #eee;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	min-height: 20px;
+	padding: 8px 0;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #eee;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 /* Tabs/Pills */
