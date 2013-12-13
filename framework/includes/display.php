@@ -554,7 +554,7 @@ if ( !function_exists( 'themeblvd_blog_tags_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_tags_default() {
-	the_tags( '<span class="tags"><i class="icon-tags"></i> ', ', ', '</span>' );
+	the_tags( '<span class="tags"><i class="fa fa-tags"></i> ', ', ', '</span>' );
 }
 endif;
 
