@@ -295,9 +295,9 @@ code.block {
 	color: inherit;
 	outline: none;
 }
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus {
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
 	background-color: #454545;
 }
 
@@ -3101,25 +3101,17 @@ div.wpcf7 .watermark {
 .tb-tabs-framed .nav-pills {
 	margin: 5px 0;
 }
-.tabs-right.tb-tabs-framed .nav-tabs {
-	margin: 5px 0 0 -1px;
-}
-.tabs-left.tb-tabs-framed .nav-tabs {
-	margin: 5px -1px 0 0;
-}
 .tb-tabs-framed .tab-content {
 	background: #ffffff;
 	border: 1px solid #dddddd;
+	border-top-width: 0;
 	padding: 20px;
+}
+.tb-tabs-framed.tb-tabs-pills .tab-content {
+	border-top-width: 1px;
 }
 .tb-tabs-open .tab-content {
 	padding: 10px 5px;
-}
-.tabs-above.tb-tabs-framed .tab-content {
-	border-top:none;
-}
-.tabs-below.tb-tabs-framed .tab-content {
-	border-bottom: none;
 }
 
 /* =Tweeple

@@ -1072,12 +1072,19 @@ function themeblvd_tabs( $id, $options ) {
 	$output = '';
 
 	// Tabs or pills?
-	if ( ! empty( $options['setup']['nav'] ) ) {
-		$nav = explode( '_', $options['setup']['nav'] );
-	}
+	$nav_type = $options['setup']['nav'];
 
-	$nav_type = $nav[0];
-	$nav_location = $nav[1];
+	// For those using old method for tabs
+    if ( 'tabs_above' == $nav_type || 'tabs_right' == $nav_type || 'tabs_below' == $nav_type || 'tabs_left' == $nav_type ) {
+        $nav_type = 'tabs';
+    } else if ( 'pills_above' == $nav_type || 'pills_below' == $nav_type ) {
+        $nav_type = 'pills';
+    }
+
+    // Backup
+    if ( 'tabs' != $nav_type && 'pills' != $nav_type ) {
+    	$nav_type = 'tabs';
+    }
 
 	// Container classes
 	$classes = 'tabbable';
@@ -1086,11 +1093,11 @@ function themeblvd_tabs( $id, $options ) {
 		$classes .= ' fixed-height';
 	}
 
-	if ( $nav_type == 'tabs' ) {
-		$classes .= ' tabs-'.$nav_location;
-	}
-
 	$classes .= ' tb-tabs-'.$options['setup']['style'];
+
+	if ( 'pills' == $nav_type ) {
+		$classes .= ' tb-tabs-pills';
+	}
 
 	// Navigation
 	$i = 0;
@@ -1179,17 +1186,8 @@ function themeblvd_tabs( $id, $options ) {
 
 	// Construct final output
 	$output = '<div class="'.$classes.'">';
-
-	if ( $nav_location != 'below' ) {
-		$output .= $navigation;
-	}
-
+	$output .= $navigation;
 	$output .= $content;
-
-	if ( $nav_location == 'below' ) {
-		$output .= $navigation;
-	}
-
 	$output .= '</div><!-- .tabbable (end) -->';
 
 	return $output;
