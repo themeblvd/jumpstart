@@ -104,12 +104,12 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 
 	// Add icon before text?
 	if ( $icon_before ) {
-		$text = '<i class="icon-'.$icon_before.'"></i> '.$text;
+		$text = '<i class="fa fa-'.$icon_before.'"></i> '.$text;
 	}
 
 	// Add icon after text?
 	if ( $icon_after ) {
-		$text .= ' <i class="icon-'.$icon_after.'"></i>';
+		$text .= ' <i class="fa fa-'.$icon_after.'"></i>';
 	}
 
 	// Optional addon to anchor
