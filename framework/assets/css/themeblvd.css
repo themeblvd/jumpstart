@@ -15,15 +15,6 @@
 	margin-right: 0;
 }
 
-/* Quote */
-blockquote {
-	margin: 0 0 5px 0;
-}
-blockquote cite {
-	font-size: .92em; /* Fallback for older browsers */
-	font-size: .92rem;
-}
-
 /* Standard 12 Column Setup */
 .grid_2 {width: 13.33%;}
 .grid_3 {width: 22%;}
@@ -121,20 +112,26 @@ blockquote cite {
  * framework, and also merge any necessary framework items
  * with Boostrap default CSS.
  */
-
 html,
 body {
-	float: none !important; /* Fix for any body class containing "span" */
-	font-size: 14px;
-	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
-	margin-left: 0 !important; /* Fix for any body class containing "span" */
 	padding: 0;
 }
-li {
-	line-height: 140%; /* Get rid of static line-height Bootstrap puts in */
-}
-h1, h2, h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin-top: 0;
+}
+
+/* Quote */
+blockquote {
+	margin: 0 0 5px 0;
+}
+blockquote cite {
+	font-size: .92em; /* Fallback for older browsers */
+	font-size: .92rem;
 }
 
 /* Forms */
@@ -144,39 +141,34 @@ h1, h2, h3 {
 	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
 	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
 }
-:-moz-placeholder {
-  color: #bbbbbb;
-}
-:-ms-input-placeholder {
-  color: #bbbbbb;
-}
-::-webkit-input-placeholder {
-  color: #bbbbbb;
-}
 
 /* Thumbnails */
 .thumbnail,
 .pretty,
-.wp-caption {/* Match .pretty class to bootstrap's .thumbnail */
-	display: block;
+.wp-caption {/* Match framework's thumb classes to bootstrap's .thumbnail */
 	padding: 4px;
-	line-height: 1;
-	border: 1px solid #ddd;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
+	line-height: 1.428571429;
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
 	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-bottom: 20px;
 }
 a.pretty:hover,
 a.pretty:focus,
+a.pretty:active,
 a.thumbnail:hover,
-a.thumbnail:focus {
-  border-color: #bbbbbb;
-  -webkit-box-shadow: 0 1px 4px #cccccc;
-  -moz-box-shadow: 0 1px 4px #cccccc;
-  box-shadow: 0 1px 4px #cccccc;
+a.thumbnail:focus,
+a.thumbnail:active {
+	border-color: #bbbbbb;
+	-webkit-box-shadow: 0 1px 4px #cccccc;
+	-moz-box-shadow: 0 1px 4px #cccccc;
+	box-shadow: 0 1px 4px #cccccc;
 }
 img.thumbnail,
 img.pretty,
@@ -199,13 +191,11 @@ code.block {
 /* Simplify Breadcrumbs */
 .breadcrumb {
 	background: transparent;
-	filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
-	border: none;
 	margin: 0 0 5px 0;
 	padding: 7px 5px;
 }
 
-/* Nav List - applies nav list CSS to WP's custom menu widget, and in some cases the primary nav . */
+/* Nav List - applies nav list CSS to WP's custom menu widget, and in some cases the primary nav. */
 .widget_nav_menu .menu {
 	margin-left: 0;
 	margin-bottom: 18px;
@@ -678,7 +668,7 @@ ul.sf-menu .fa {
 .subnav ul.nav > li > ul {
 	border-top: none;
 	margin-left: -1px;
-	margin-top: 31px; /* Height of top level plus 1px */
+	margin-top: 1px;
 }
 .subnav ul.sf-menu li li:hover ul,
 .subnav ul.sf-menu li li.sfHover ul,
