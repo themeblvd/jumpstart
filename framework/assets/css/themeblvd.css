@@ -333,7 +333,7 @@ code.block {
 .hide_on_mobile {
 	display: block;
 }
-@media (max-width: 979px) {
+@media (max-width: 992px) {
 	/* Tablets */
 	.hide_on_standard,
 	.hide_on_standard_and_mobile,
@@ -3177,7 +3177,7 @@ div.wpcf7 .watermark {
 	line-height: 100%;
 	padding: 0;
 }
-@media (max-width: 979px) {
+@media (max-width: 992px) {
 	/* Tablets */
 	#access .tb-wpml-flaglist {
 		padding: 13px 7px 0 0;
