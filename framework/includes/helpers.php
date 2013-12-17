@@ -601,7 +601,6 @@ if ( !function_exists( 'themeblvd_standard_slider_js' ) ) :
  * @since 2.0.0
  */
 function themeblvd_standard_slider_js( $id, $options ) {
-	wp_enqueue_script( 'flexslider' ); // add to wp_footer()
 	?>
 	<script>
 	jQuery(document).ready(function($) {

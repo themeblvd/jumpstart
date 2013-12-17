@@ -271,33 +271,43 @@ function themeblvd_include_scripts() {
 	// the framework.
 	$scripts = array( 'jquery' );
 
-	// Register scripts -- These scripts are only enqueued as needed.
-	wp_register_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1', true  );
-	wp_register_script( 'roundabout', TB_FRAMEWORK_URI . '/assets/js/roundabout.min.js', array('jquery'), '1.1', true );
-	wp_register_script( 'nivo', TB_FRAMEWORK_URI . '/assets/js/nivo.min.js', array('jquery'), '3.2', true );
-
 	// Enque Scripts
 	wp_enqueue_script( 'jquery' );
 
+	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
+		$scripts[] = 'flexslider';
+		wp_enqueue_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1' );
+	}
+
+	if ( themeblvd_supports( 'assets', 'roundabout' ) ) {
+		$scripts[] = 'roundabout';
+		wp_enqueue_script( 'roundabout', TB_FRAMEWORK_URI . '/assets/js/roundabout.min.js', array('jquery'), '2.4.2' );
+	}
+
+	if ( themeblvd_supports( 'assets', 'nivo' ) ) {
+		$scripts[] = 'nivo';
+		wp_enqueue_script( 'nivo', TB_FRAMEWORK_URI . '/assets/js/nivo.min.js', array('jquery'), '3.2' );
+	}
+
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
-		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.0.2', true );
+		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.0.2' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
 		$scripts[] = 'magnific_popup';
-		wp_enqueue_script( 'magnific_popup', TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js', array('jquery'), '0.9.3', true );
+		wp_enqueue_script( 'magnific_popup', TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js', array('jquery'), '0.9.3' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 		$scripts[] = 'superfish';
-		wp_enqueue_script( 'hoverintent', TB_FRAMEWORK_URI . '/assets/js/hoverintent.min.js', array('jquery'), 'r7', true );
-		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4', true );
+		wp_enqueue_script( 'hoverintent', TB_FRAMEWORK_URI . '/assets/js/hoverintent.min.js', array('jquery'), 'r7' );
+		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
 		$scripts[] = 'themeblvd';
-		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION, true );
+		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		// Localize primary themeblvd.js script. This allows us to pass any filterable
 		// parameters through to our primary script.
 		wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );
@@ -308,7 +318,7 @@ function themeblvd_include_scripts() {
 
 	// iOS Orientation (for older iOS devices, not supported by default)
 	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) ) {
-		wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js', true );
+		wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js' );
 	}
 
 	// Comments reply

@@ -166,6 +166,9 @@ function themeblvd_setup() {
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script
 			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
+			'flexslider'		=> true,			// Flexslider script by WooThemes
+			'roundabout'		=> true,			// Roundabout script by FredHQ
+			'nivo'				=> true,			// Nivo script by Dev7studios
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
 			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
