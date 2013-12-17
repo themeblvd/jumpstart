@@ -91,7 +91,7 @@ body {
 
 /* Widgets */
 .widget ul {
-	margin-right: 0;
+	padding-right: 0;
 }
 
 /* Small Desktops */

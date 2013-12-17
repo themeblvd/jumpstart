@@ -5,16 +5,9 @@ You can include this file within your theme's main rtl.css file.
 @import url('framework/assets/css/rtl.css');
 */
 
-/* Basic Typography (from Bootstrap, not part of themeblvd.css) */
-ul,
-ol {
-	margin: 0 25px 10px 0;
-}
-blockquote {
-	margin: 0 20px 0 0;
-	border-left: none;
-	border-right: 5px solid #eeeeee;
-}
+/* Bootstrap RTL by Morteza Ansarinia */
+/* https://github.com/morteza/bootstrap-rtl */
+@import url('bootstrap-rtl.min.css');
 
 /* Bootstrap Mods */
 .widget_nav_menu .menu {
@@ -23,12 +16,12 @@ blockquote {
 .widget_nav_menu .menu > .pull-right {
 	float: left;
 }
-.widget_nav_menu .menu [class^="icon-"] {
+.widget_nav_menu .menu .fa {
 	margin-left: 2px;
 }
 .widget_nav_menu .menu ul,
 .fixed-sidebar .widget_nav_menu ul.sub-menu {
-	margin-right: 10px;	
+	margin-right: 10px;
 }
 
 /* WordPress Standard Classes */
@@ -51,7 +44,7 @@ a img.alignnone,
 .sf-menu li {
 	float: right;
 }
-.sf-menu li:hover ul, 
+.sf-menu li:hover ul,
 .sf-menu li.sfHover ul {
 	left: inherit;
 	right: 0;
@@ -61,17 +54,16 @@ a img.alignnone,
 	padding-left: 2.25em;
 }
 .sf-sub-indicator {
-	right:inherit;
-	left:.75em;
+	right: inherit;
+	left: .75em;
 	margin-right: 5px;
 }
-
 ul.sf-menu li li:hover ul,
 ul.sf-menu li li.sfHover ul,
 ul.sf-menu li li li:hover ul,
 ul.sf-menu li li li.sfHover ul {
-	left:inherit;
-	right:10em;
+	left: inherit;
+	right: 10em;
 }
 
 /* Secondary Navigation */
@@ -169,7 +161,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 /* Plugins */
-div.wpcf7 input[type="text"], 
+div.wpcf7 input[type="text"],
 div.wpcf7 select {
 	margin-right: inherit;
 	margin-left: 10px;
@@ -216,7 +208,7 @@ div.wpcf7 img.ajax-loader {
 	float: left;
 	padding: 12px 0 0 15px;
 }
-@media (max-width: 979px) {
+@media (max-width: 992px) {
 	#access .tb-wpml-flaglist {
 		padding: 13px 0 0 7px;
 	}
@@ -239,7 +231,7 @@ div.wpcf7 img.ajax-loader {
 }
 @media (max-width: 767px) {
 	/* Mobile */
-	#breadcrumbs .tb-wpml-breadcrumbs .breadcrumbs-content, 
+	#breadcrumbs .tb-wpml-breadcrumbs .breadcrumbs-content,
 	#breadcrumbs .tb-wpml-breadcrumbs .tb-wpml-flaglist {
 		float: none;
 	}
