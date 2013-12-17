@@ -648,7 +648,7 @@ ul.sf-menu .fa {
 	border-radius: 4px 0 0 4px;
 }
 .subnav ul.nav > li > a .sf-sub-indicator,
-.subnav ul.nav > [class^="menu-icon-"] > a [class^="icon-"]{
+.subnav ul.nav > [class^="menu-icon-"] > a fa {
 	line-height: 1em;
 }
 .subnav ul.nav > li > a.sf-with-ul {
@@ -1949,15 +1949,15 @@ a.slide-thumbnail-link {
 /* Icon List */
 ul.tb-icon-list {
 	list-style: none !important;
-	margin-left: 0 !important;
-	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 /* Icon Link */
 .tb-icon-link {
 	padding: 0 5px;
 }
-.tb-icon-link [class^="icon-"] {
+.tb-icon-link .fa {
 	margin-right: 5px;
 }
 
