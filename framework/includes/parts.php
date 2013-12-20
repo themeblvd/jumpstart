@@ -860,7 +860,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
 	// If "link" post format, get URL from start of content.
 	if ( has_post_format( 'link', $post_id ) ) {
-		$url = get_content_url( get_the_content( $post_id ) );
+		$url = themeblvd_get_content_url( get_the_content( $post_id ) );
 	}
 
 	// If not a single post or page, get permalink for URL.
@@ -888,5 +888,94 @@ if ( !function_exists( 'themeblvd_the_title' ) ) :
  */
 function themeblvd_the_title( $post_id = 0, $force_link = false ) {
 	echo themeblvd_get_the_title( $post_id, $force_link );
+}
+endif;
+
+/**
+ * Get blockquote formatted correctly for Bootstrap
+ *
+ * @since 2.4.0
+ *
+ * @param array $args Arguments for blockquote.
+ */
+function themeblvd_get_blockquote( $args ) {
+
+	$defaults = array(
+		'quote'			=> '',
+		'source' 		=> '',		// Source of quote
+		'source_link'	=> '',		// URL to link source to
+		'align'			=> '',		// How to align blockquote - left, right
+		'max_width'		=> '',		// Meant to be used with align left/right - 300px, 50%, etc
+		'class'			=> '' 		// Any additional CSS classes
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// CSS classes
+	$class = 'tb-blockquote';
+
+	if ( $args['align'] ) {
+		if ( 'left' == $args['align'] ) {
+			$class .= ' pull-left';
+		} else if ( 'right' == $args['align'] ) {
+			$class .= ' pull-right';
+		}
+	}
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
+	}
+
+	// Max width
+	$style = '';
+
+	if ( $args['max_width'] ) {
+
+		if ( false === strpos( $args['max_width'], 'px' ) && false === strpos( $args['max_width'], '%' ) ) {
+			$args['max_width'] = $args['max_width'].'px';
+		}
+
+		$style = sprintf('max-width: %s;', $args['max_width'] );
+	}
+
+	// Quote
+	$quote = $args['quote'];
+
+	if ( false === strpos( $quote, '<p>' ) ) {
+		$quote = wpautop( $quote );
+	}
+
+	// Source
+	$source = '';
+
+	if ( $args['source'] ) {
+
+		$source = $args['source'];
+
+		if ( $args['source_link'] ) {
+			$source = sprintf( '<a href="%s" title="%s" target="_blank">%s</a>', $args['source_link'], $source, $source );
+		}
+
+		$source = sprintf( '<small><cite>%s</cite></small>', $source );
+
+		$quote .= $source;
+
+	}
+
+	// Output
+	$output = sprintf( '<blockquote class="%s" style="%s">%s</blockquote>', $class, $style, $quote );
+
+	return apply_filters( 'themeblvd_blockquote', $output, $args, $quote, $source, $class, $style );
+}
+
+if ( !function_exists( 'themeblvd_blockquote' ) ) :
+/**
+ * Display blockquote formatted correctly for Bootstrap
+ *
+ * @since 2.4.0
+ *
+ * @param array $args Arguments for blockquote.
+ */
+function themeblvd_blockquote( $args ) {
+	echo themeblvd_get_blockquote( $args );
 }
 endif;

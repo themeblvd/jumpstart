@@ -127,11 +127,19 @@ h6 {
 
 /* Quote */
 blockquote {
-	margin: 0 0 5px 0;
+	margin-bottom: 5px;
 }
-blockquote cite {
-	font-size: .92em; /* Fallback for older browsers */
-	font-size: .92rem;
+blockquote.pull-right {
+	padding-left: 20px;
+}
+blockquote p {
+	margin-bottom: 10px;
+}
+blockquote p:last-of-type {
+	margin-bottom: 0;
+}
+blockquote small {
+	margin-top: 5px;
 }
 
 /* Forms */
