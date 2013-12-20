@@ -46,7 +46,7 @@ function themeblvd_content_format_link( $content ) {
 	}
 
 	// Get the URL from the content.
-	$url = get_content_url( $content );
+	$url = themeblvd_get_content_url( $content );
 
 	// Remove that URL from the start of content,
 	// if that's where it was.
@@ -59,26 +59,17 @@ function themeblvd_content_format_link( $content ) {
 }
 // add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
 
-if ( !function_exists( 'get_content_url' ) ) :
 /**
- * Copied from WP 3.6 core for backwards compat. This
- * function only gets implemented if using WP version
- * prior to 3.6.
- *
- * @since 2.3.0
- *
- * =======
  * Extract a URL from passed content, if possible
  * Checks for a URL on the first line of the content or
  * the first encountered href attribute.
  *
- * @since 3.6.0
+ * @since 2.4.0
  *
  * @param string $content A string which might contain a URL, passed by reference.
- * @param boolean $remove Whether to remove the found URL from the passed content.
  * @return string The found URL.
  */
-function get_content_url( $content ) {
+function themeblvd_get_content_url( $content ) {
 
 	if ( empty( $content ) ) {
 		return '';
@@ -104,4 +95,3 @@ function get_content_url( $content ) {
 
 	return '';
 }
-endif;
