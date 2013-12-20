@@ -613,7 +613,7 @@ class Theme_Blvd_Query {
 			case 'single' :
 			case 'page' :
 				if ( $this->was[$type] ) {
-					if ( ! $helper || $helper == $this->was['id'] || $helper == $this->was['id'] ) {
+					if ( ! $helper || $helper == $this->was['id'] || $helper == $this->was['name'] ) {
 						return true;
 					}
 				}
