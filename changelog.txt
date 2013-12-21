@@ -4,6 +4,12 @@ Jump Start Changelog
 1.2.0
 -----
 
+* Updated to Bootstrap 3.
+* Updated to FontAwesome 4.
+* Admin styling adjustments for WordPress 3.8.
+* Fixed bug with "order" custom field not working for Post List/Grid page templates.
+* Minor improvements to Jump Start update handling.
+
 --------------------------------------------------------------
 
 1.1.3
