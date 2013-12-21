@@ -451,8 +451,10 @@ function themeblvd_get_classes( $element, $start_space = false, $end_space = fal
 		'element_slogan' 				=> array(),
 		'element_tabs' 					=> array(),
 		'element_tweet' 				=> array(),
-		'slider_standard'				=> array(),
+		'slider_bootstrap'				=> array(),
 		'slider_carrousel'				=> array(),
+		'slider_nivo'					=> array(),
+		'slider_standard'				=> array()
 	);
 	$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options, $location );
 
