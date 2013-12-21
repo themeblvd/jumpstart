@@ -327,20 +327,20 @@ function themeblvd_get_meta( $sep = '' ) {
 	$output  = '<div class="entry-meta">';
 
 	// Time
-	$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="icon-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option( 'date_format' ) ) );
+	$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option( 'date_format' ) ) );
 	$output .= $time;
 
 	// Author
 	$author_url = get_author_posts_url( get_the_author_meta('ID') );
 	$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
-	$author = sprintf( '<span class="author vcard"><i class="icon-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
+	$author = sprintf( '<span class="author vcard"><i class="fa fa-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
 	$output .= $sep;
 	$output .= $author;
 
 	// Category
 	$category = '';
 	if ( has_category() ) {
-		$category = sprintf( '<span class="category"><i class="icon-reorder"></i> %s</span>', get_the_category_list(', ') );
+		$category = sprintf( '<span class="category"><i class="fa fa-bars"></i> %s</span>', get_the_category_list(', ') );
 		$output .= $sep;
 		$output .= $category;
 	}
@@ -357,7 +357,7 @@ function themeblvd_get_meta( $sep = '' ) {
 		comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local( 'no_comments' ).'</span>', '1 '.themeblvd_get_local( 'comment' ), '% '.themeblvd_get_local( 'comments' ) );
 		$comment_link = ob_get_clean();
 
-		$comments .= sprintf( '<i class="icon-comment"></i> %s', $comment_link, $sep );
+		$comments .= sprintf( '<i class="fa fa-comment"></i> %s', $comment_link, $sep );
 		$comments .= '</span>';
 
 		$output .= $comments;

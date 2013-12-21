@@ -112,7 +112,7 @@ article {
 	font-weight: bold;
 	margin: 5px 2px 15px 2px;
 }
-.entry-meta [class^="icon-"] {
+.entry-meta .fa {
 	padding-right: 5px;
 }
 .entry-meta .sep {
