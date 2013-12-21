@@ -141,7 +141,7 @@ function themeblvd_header_menu_default() {
 	do_action( 'themeblvd_header_menu_before' );
 	?>
 	<a href="#access" class="btn-navbar">
-		<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="icon-reorder"></i>' ); ?>
+		<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
 	</a>
 	<nav id="access" role="navigation">
 		<div class="access-inner">
