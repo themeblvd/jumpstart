@@ -779,6 +779,7 @@ ul.sf-menu .fa {
 /* Contact Bar */
 .themeblvd-contact-bar ul {
 	margin: 0;
+	padding: 0;
 }
 .themeblvd-contact-bar li {
 	float:left;
