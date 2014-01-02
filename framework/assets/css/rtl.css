@@ -131,7 +131,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 /* Shortcodes */
-.tb-icon-link [class^="icon-"] {
+.tb-icon-link .fa {
 	margin-right: inherit;
 	margin-left: 5px;
 }
