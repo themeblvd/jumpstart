@@ -4,6 +4,7 @@ Jump Start Changelog
 1.2.0
 -----
 
+* **Updated Theme Blvd framework to 2.4.0**
 * Updated to Bootstrap 3.
 * Updated to FontAwesome 4.
 * Admin styling adjustments for WordPress 3.8.
