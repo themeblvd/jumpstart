@@ -72,7 +72,7 @@ get_header();
 
 									<?php else : ?>
 
-										<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
+										<?php get_template_part( 'content', themeblvd_get_part( 'search' ) ); ?>
 
 									<?php endif; ?>
 
@@ -97,7 +97,7 @@ get_header();
 									<?php get_template_part( 'content', themeblvd_get_part( 'search' ) ); ?>
 								<?php endif; ?>
 								<?php themeblvd_pagination(); ?>
-							</div><!-- .blogroll (end) -->
+							</div><!-- .post_list (end) -->
 
 							<!-- SEARCH POST LIST (end) -->
 
