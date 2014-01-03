@@ -166,7 +166,6 @@ blockquote small {
 	height: auto;
 	display: block;
 	margin-bottom: 20px;
-	max-width: 98%;
 }
 a.pretty:hover,
 a.pretty:focus,
@@ -894,9 +893,6 @@ ul.sf-menu .fa {
 .themeblvd-mini-post-list ul.smallest-thumbs .mini-post-list-content h4 {
 	font-size: 13px;
 	padding-top: 0;
-}
-.themeblvd-mini-post-list .thumbnail{
-	max-width: none;
 }
 
 /* Mini Post Grid */

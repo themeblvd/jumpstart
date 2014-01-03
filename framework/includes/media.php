@@ -117,15 +117,12 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 	}
 
 	// Initial image without link
-	$image_class = '';
-	if ( ! $link ) {
-		$image_class = 'thumbnail';
-	}
+	$image = get_the_post_thumbnail( $post->ID, $size, array( 'class' => apply_filters('themeblvd_post_thumbnail_img_class', '') ) );
 
-	$image = get_the_post_thumbnail( $post->ID, $size, array( 'class' => $image_class ) );
-
-	// Wrap image in link
 	if ( $link ) {
+
+		// Wrap image in link
+
 		if ( $lightbox ) {
 
 			$args = apply_filters( 'themeblvd_featured_image_lightbox_args', array(
@@ -142,6 +139,15 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 			$image = sprintf('<a href="%s" target="%s" class="%s" title="%s">%s%s</a>', $link_url, $link_target, $anchor_class, $title, $image, themeblvd_get_image_overlay() );
 
 		}
+
+	} else {
+
+		// If the image isn't linked, wrap the thumbnail class
+		// outside of the image. This allows for linked and non-linked
+		// images to have the same width after padding.
+
+		$image = sprintf( '<div class="thumbnail">%s</div>', $image );
+
 	}
 
 	// Final HTML output
