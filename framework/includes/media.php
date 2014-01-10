@@ -65,6 +65,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 				case 'post' :
 					$title = get_the_title();
 					$link_url = get_permalink( $post->ID );
+					$link_target = '_self';
 					break;
 
 				case 'thumbnail' :
