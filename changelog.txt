@@ -4,6 +4,8 @@ Jump Start Changelog
 1.2.0
 -----
 
+*Warning: Make sure to read this article before updating: [Updating to Jump Start 1.2](http://support.themeblvd.com/updating-to-jump-start-1-2/)*
+
 * **Updated Theme Blvd framework to 2.4.0**
 * Updated to Bootstrap 3.
 * Updated to FontAwesome 4.
