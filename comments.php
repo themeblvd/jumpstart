@@ -49,7 +49,11 @@
 
 		<!-- COMMENT FORM (start) -->
 
-		<?php comment_form( themeblvd_get_comment_form_args() ); ?>
+		<div class="comment-form-wrapper">
+			<div class="comment-form-inner">
+				<?php comment_form( themeblvd_get_comment_form_args() ); ?>
+			</div><!-- .comment-form-inner (end) -->
+		</div><!-- .comment-form-wrapper (end) -->
 
 		<!-- COMMENT FORM (end) -->
 

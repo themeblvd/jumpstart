@@ -177,8 +177,6 @@ if ( is_admin() ) {
 	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 3 );
 
 	// Comments
-	add_action( 'comment_form_before', 'themeblvd_comment_form_before' );
-	add_action( 'comment_form_after', 'themeblvd_comment_form_after' );
 	add_action( 'comment_form_top', 'themeblvd_comment_form_top' );
 	add_action( 'comment_form', 'themeblvd_comment_form' );
 

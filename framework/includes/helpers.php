@@ -735,15 +735,15 @@ function themeblvd_get_comment_form_args() {
 }
 
 /**
- * Get comment form CSS classes for wrapper.
+ * Get CSS classes to wrap around fields of the comment form.
  *
  * @since 2.4.0
  *
- * @return array $class CSS classes for wrapper around comment_form()
+ * @return array $class CSS classes for insude <for> tag of comment_form()
  */
-function themeblvd_get_comment_form_class() {
+function themeblvd_get_comment_fields_wrap_class() {
 
-	$class = array( 'comment-form-wrapper' );
+	$class = array( 'tb-input-button', 'tb-input-button-comment-form' );
 
 	// Gradient (classic Bootstrap 2 style)
 	if ( apply_filters( 'themeblvd_btn_gradient', false ) ) {
