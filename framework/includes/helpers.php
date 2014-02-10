@@ -743,7 +743,7 @@ function themeblvd_get_comment_form_args() {
  */
 function themeblvd_get_comment_form_class() {
 
-	$class = array( 'comment-form-wrapper', 'tb-input-button' );
+	$class = array( 'comment-form-wrapper' );
 
 	// Gradient (classic Bootstrap 2 style)
 	if ( apply_filters( 'themeblvd_btn_gradient', false ) ) {

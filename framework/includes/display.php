@@ -683,6 +683,28 @@ function themeblvd_comment_form_after() {
 }
 endif;
 
+if ( !function_exists( 'themeblvd_comment_form_top' ) ) :
+/**
+ * Before comment form fields, inside opening <form>.
+ *
+ * @since 2.4.0
+ */
+function themeblvd_comment_form_top() {
+	echo '<div class="tb-input-button tb-input-button-comment-form">';
+}
+endif;
+
+if ( !function_exists( 'themeblvd_comment_form' ) ) :
+/**
+ * After comment form fields, inside closing </form>.
+ *
+ * @since 2.4.0
+ */
+function themeblvd_comment_form() {
+	echo '</div><!-- .tb-input-button (end) -->';
+}
+endif;
+
 /*------------------------------------------------------------*/
 /* (12) WordPress Multisite
 /*------------------------------------------------------------*/
