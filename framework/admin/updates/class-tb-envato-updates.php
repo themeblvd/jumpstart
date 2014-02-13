@@ -53,13 +53,13 @@ class Theme_Blvd_Envato_Updates {
 		// Only continue if this is our second time
 		// running through the filter.
 		if ( ! isset( $updates->checked ) ) {
-			return;
+			return $updates;
 		}
 
 		// If user can't install themes, this shouldn't
 		// be happenning.
 		if ( ! current_user_can( 'install_themes' ) ) {
-			return;
+			return $updates;
 		}
 
 		// Temporarily increase http_request_timeout to 300 seconds.
@@ -72,8 +72,15 @@ class Theme_Blvd_Envato_Updates {
 		// as an array we can use to pull directly from.
 		$purchased_themes = array();
 		$purchased = $envato_api->wp_list_themes( true );
+
 		if ( ! empty( $purchased ) ) {
 			foreach ( $purchased as $theme ) {
+
+				// Check if Envato has temporarily locked us out
+				if ( ! is_object( $theme ) ) {
+					return $updates;
+				}
+
 				if ( $theme->author_name == $this->args['author_name'] ) {
 					$purchased_themes[$theme->theme_name] = array(
 						'item_id' 		=> $theme->item_id,
