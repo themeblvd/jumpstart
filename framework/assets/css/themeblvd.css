@@ -306,6 +306,11 @@ code.block {
 	box-sizing: content-box;
 }
 
+/* Carousel */
+.carousel-control {
+	z-index: 15;
+}
+
 /* =Post Formats
 -----------------------------------------------*/
 
