@@ -623,10 +623,12 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 						$post_format = 'standard';
 					}
 
-					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
+					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.'">';
 					$image .= '<div class="featured-image">';
 					$image .= '<div class="featured-image-inner">';
+					$image .= '<div class="thumbnail">';
 					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
+					$image .= '</div><!-- .thumbnail (end) -->';
 					$image .= '</div><!-- .featured-image-inner (end) -->';
 					$image .= '</div><!-- .featured-image (end) -->';
 					$image .= '</div><!-- .featured-image-wrapper (end) -->';
@@ -800,10 +802,10 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 						$post_format = 'standard';
 					}
 
-					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.' thumbnail">';
+					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.'">';
 					$image .= '<div class="featured-image">';
 					$image .= '<div class="featured-image-inner">';
-					$image .= sprintf( '<a href="%s" title="%s">', get_permalink(), get_the_title() );
+					$image .= sprintf( '<a href="%s" title="%s" class="thumbnail">', get_permalink(), get_the_title() );
 					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
 					$image .= '</a>';
 					$image .= '</div><!-- .featured-image-inner (end) -->';
