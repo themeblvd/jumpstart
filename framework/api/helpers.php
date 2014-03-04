@@ -65,11 +65,19 @@ if ( !function_exists( 'themeblvd_get_option' ) ) :
  *
  * @param string $primary The primary ID of the option
  * @param string $secondary Optional secondary ID to traverse deeper into arrays
+ * @param string $default Optional default value to be applied if value is empty
  */
-function themeblvd_get_option( $primary, $secondary = null ) {
+function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
+
 	$api = Theme_Blvd_Options_API::get_instance();
 	$setting = $api->get_setting( $primary, $secondary );
-	return apply_filters( 'themeblvd_get_option', $setting, $primary, $secondary );
+
+	if ( empty( $setting ) ) {
+		$setting = $default;
+	}
+
+
+	return apply_filters( 'themeblvd_get_option', $setting, $primary, $secondary, $default );
 }
 endif;
 
