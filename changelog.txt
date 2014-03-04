@@ -4,6 +4,8 @@ Jump Start Changelog
 1.2.1
 -----
 
+* Minor fixes to themeblvd-dark.css
+
 --------------------------------------------------------------
 
 1.2.0
