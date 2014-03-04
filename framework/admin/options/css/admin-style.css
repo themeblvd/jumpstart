@@ -451,6 +451,7 @@
 .themeblvd-ui #optionsframework .section-multicheck label {
 	font-size: 14px;
 	line-height: 1.2em;
+	max-width: 330px;
 }
 .themeblvd-ui #optionsframework input.checkbox,
 .themeblvd-ui #optionsframework input.of-radio {

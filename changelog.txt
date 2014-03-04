@@ -4,7 +4,9 @@ Jump Start Changelog
 1.2.1
 -----
 
+* Updated Theme Blvd framework to 2.4.1
 * Minor fixes to themeblvd-dark.css
+* Minor fixes to admin option styles
 
 --------------------------------------------------------------
 
