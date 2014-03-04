@@ -285,7 +285,7 @@ function themeblvd_audio_shortcode( $html ) {
  * @param string $type Type of slider, supports nivo or standard
  * @param string $size Image crop size for attachment images
  */
-function themeblvd_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
+function themeblvd_gallery_slider( $gallery = '', $type = 'bootstrap', $size = 'full' ) {
 	echo themeblvd_get_gallery_slider( $gallery, $type, $size );
 }
 
@@ -295,11 +295,11 @@ function themeblvd_gallery_slider( $gallery = '', $type = 'standard', $size = 'f
  * @since 2.3.0
  *
  * @param string $gallery Optional gallery shortcode usage like [gallery ids="1,2,3,4"]
- * @param string $type Type of slider, supports nivo or standard
+ * @param string $type Type of slider, supports nivo, bootstrap, or standard
  * @param string $size Image crop size for attachment images
  * @return string $output Final HTML to output
  */
-function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size = 'full' ) {
+function themeblvd_get_gallery_slider( $gallery = '', $type = 'bootstrap', $size = 'full' ) {
 
 	$post_id = get_the_ID();
 	$type = apply_filters( 'themeblvd_gallery_slider_type', $type, $post_id );
@@ -415,14 +415,18 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 	$class = implode( ' ', $class );
 
 	// Slider Wrap
-	$slider_wrap  = "<div id=\"gallery-slider-{$post_id}\" class=\"slider-wrapper {$wrap_class} gallery-slider\">\n";
-	$slider_wrap .= "	<div class=\"slides-wrapper slides-wrapper-{$type}\">\n";
-	$slider_wrap .= "		<div class=\"slides-inner {$class}\">\n";
-	$slider_wrap .= "			<div class=\"tb-loader\"></div>\n";
-	$slider_wrap .= "				%s\n";
-	$slider_wrap .= "		</div><!-- .slides-inner (end) -->\n";
-	$slider_wrap .= "	</div><!-- .slides-wrapper (end) -->\n";
-	$slider_wrap .= "</div><!-- .gallery-slider (end) -->\n";
+	$slider_wrap = '%s';
+
+	if ( $type != 'bootstrap' ) {
+		$slider_wrap .= "<div id=\"gallery-slider-{$post_id}\" class=\"slider-wrapper {$wrap_class} gallery-slider\">\n";
+		$slider_wrap .= "	<div class=\"slides-wrapper slides-wrapper-{$type}\">\n";
+		$slider_wrap .= "		<div class=\"slides-inner {$class}\">\n";
+		$slider_wrap .= "			<div class=\"tb-loader\"></div>\n";
+		$slider_wrap .= "			%s\n";
+		$slider_wrap .= "		</div><!-- .slides-inner (end) -->\n";
+		$slider_wrap .= "	</div><!-- .slides-wrapper (end) -->\n";
+		$slider_wrap .= "</div><!-- .gallery-slider (end) -->\n";
+	}
 
 	// Start Output
 	$output = '';
@@ -432,8 +436,6 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 		/*--------------------------------------------*/
 		/* Nivo Slider
 		/*--------------------------------------------*/
-
-		wp_enqueue_script( 'nivo' ); // add to wp_footer()
 
 		$js  = "<script>\n";
 		$js .= "jQuery(document).ready(function($) {\n";
@@ -458,13 +460,76 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'standard', $size 
 
 		$output .= sprintf( $slider_wrap, $slider );
 
+	} elseif ( $type == 'bootstrap' ) {
+
+		/*--------------------------------------------*/
+		/* Bootstrap Slider
+		/*--------------------------------------------*/
+
+		$slider  = "<div id=\"gallery-slider-{$post_id}\" class=\"tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide\" data-ride=\"carousel\">\n";
+
+		$slider .= "<ol class=\"carousel-indicators\">\n";
+
+		// Navigation
+		$counter = 0;
+
+		foreach ( $attachments as $attachment ) {
+
+			$class = '';
+
+			if ( $counter == 0 ) {
+				$class = 'active';
+			}
+
+			$slider .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s"></li>', $post_id, $counter, $class );
+			$slider .= "\n";
+
+			$counter++;
+		}
+
+		$slider .= "</ol>\n";
+
+		// Slides
+		$slider .= "<div class=\"carousel-inner\">\n";
+
+		$counter = 0;
+
+		foreach ( $attachments as $attachment ) {
+
+			$class = 'item';
+
+			if ( $counter == 0 ) {
+				$class .= ' active';
+			}
+
+			$image = wp_get_attachment_image_src( $attachment->ID, $size );
+			$slider .= sprintf( "<div class=\"%s\">\n", $class );
+			$slider .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
+			$slider .= "</div><!-- .item (end) -->\n";
+
+			$counter++;
+		}
+
+		$slider .= "</div><!-- .carousel-inner (end) -->\n";
+
+		// Controls
+		$slider .= "<a class=\"left carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"prev\">\n";
+		$slider .= "<span class=\"glyphicon glyphicon-chevron-left\"></span>\n";
+		$slider .= "</a>\n";
+
+		$slider .= "<a class=\"right carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"next\">\n";
+		$slider .= "<span class=\"glyphicon glyphicon-chevron-right\"></span>\n";
+		$slider .= "</a>\n";
+
+		$slider .= "</div><!-- .carousel (end) -->\n";
+
+		$output .= sprintf( $slider_wrap, $slider );
+
 	} elseif ( $type == 'standard' ) {
 
 		/*--------------------------------------------*/
 		/* Standard Slider
 		/*--------------------------------------------*/
-
-		wp_enqueue_script( 'flexslider' ); // add to wp_footer()
 
 		$js  = "<script>\n";
 		$js .= "jQuery(document).ready(function($) {\n";
