@@ -176,10 +176,6 @@ if ( is_admin() ) {
 	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 3 );
 	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 3 );
 
-	// Comments
-	add_action( 'comment_form_top', 'themeblvd_comment_form_top' );
-	add_action( 'comment_form', 'themeblvd_comment_form' );
-
 	// WordPress Multisite Signup
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );
 	add_action( 'after_signup_form', 'themeblvd_after_signup_form' );

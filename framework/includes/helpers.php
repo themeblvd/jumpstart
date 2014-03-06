@@ -735,32 +735,6 @@ function themeblvd_get_comment_form_args() {
 }
 
 /**
- * Get CSS classes to wrap around fields of the comment form.
- *
- * @since 2.4.0
- *
- * @return array $class CSS classes for insude <for> tag of comment_form()
- */
-function themeblvd_get_comment_fields_wrap_class() {
-
-	$class = array( 'tb-input-button', 'tb-input-button-comment-form' );
-
-	// Gradient (classic Bootstrap 2 style)
-	if ( apply_filters( 'themeblvd_btn_gradient', false ) ) {
-		$class[] = 'input-gradient';
-	}
-
-	// Size of submit button
-	$size = apply_filters( 'themeblvd_comment_submit_size', '' ); // xs, sm, or lg -- blank for normal size
-
-	if ( $size ) {
-		$class[] = sprintf( 'input-%s', $size );
-	}
-
-	return apply_filters( 'themeblvd_comment_form_class', $class );
-}
-
-/**
  * Determine whether comments section should show on
  * a single post.
  *
@@ -1347,11 +1321,6 @@ function themeblvd_get_image_overlay() {
 function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 
 	$class = 'btn';
-
-	// Gradient (classic Bootstrap 2 style)
-	if ( apply_filters( 'themeblvd_btn_gradient', false ) ) {
-		$class .= ' btn-gradient';
-	}
 
 	// Color
 	if ( ! $color ) {

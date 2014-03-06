@@ -655,29 +655,7 @@ endif;
 /* (11) Comment Form
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_comment_form_top' ) ) :
-/**
- * Before comment form fields, inside opening <form>.
- *
- * @since 2.4.0
- */
-function themeblvd_comment_form_top() {
-	$class = themeblvd_get_comment_fields_wrap_class();
-	$class = implode( " ", $class );
-	printf( '<div class="%s">', $class );
-}
-endif;
-
-if ( !function_exists( 'themeblvd_comment_form' ) ) :
-/**
- * After comment form fields, inside closing </form>.
- *
- * @since 2.4.0
- */
-function themeblvd_comment_form() {
-	echo '</div><!-- .tb-input-button (end) -->';
-}
-endif;
+// ...
 
 /*------------------------------------------------------------*/
 /* (12) WordPress Multisite

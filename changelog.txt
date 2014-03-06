@@ -7,6 +7,7 @@ Jump Start Changelog
 * Updated Theme Blvd framework to 2.4.1
 * Minor fixes to themeblvd-dark.css
 * Minor fixes to admin option styles
+* Improved default styling for forms from third-party plugins
 
 --------------------------------------------------------------
 
