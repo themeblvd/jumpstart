@@ -463,7 +463,7 @@ function themeblvd_nav_menu_select( $location ) {
 	$select_menu = wp_nav_menu( apply_filters( 'themeblvd_nav_menu_select_args', array(
 		'theme_location'	=> $location,
 		'container'			=> false,
-		'items_wrap'		=> '<form class="responsive-nav"><select class="tb-jump-menu"><option value="">'.themeblvd_get_local('navigation').'</option>%3$s</select></form>',
+		'items_wrap'		=> '<form class="responsive-nav"><select class="tb-jump-menu form-control"><option value="">'.themeblvd_get_local('navigation').'</option>%3$s</select></form>',
 		'echo' 				=> false,
 		'walker' 			=> new ThemeBlvd_Select_Menu_Walker
 	)));
