@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Updated Theme Blvd framework to 2.4.2
 * Added additional HTML5 inputs to general form styling.
+* Improved sidebar layouts in IE8.
 
 --------------------------------------------------------------
 

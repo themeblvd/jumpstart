@@ -471,12 +471,33 @@ endif;
  * @return array $layouts All current sidebar layouts
  */
 function themeblvd_sidebar_layouts() {
+
+	// Bootstrap column size -- In Bootstrap 3+,
+	// this is used to determine how small the viewport
+	// is before stacking the columns. By using "sm"
+	// we are having columns drop responsively at the
+	// 767px or less (i.e. mobile viewports).
+	$size = 'sm';
+
+	// ... And then because old versions of IE are horrible,
+	// they do not accurately know the viewport size.
+
+	// So, is this IE8?
+	if ( preg_match( "/MSIE 8.0/", $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
+
+		// If this is IE8, change the size
+		// to "xs" as a fail-safe. This is okay because
+		// responsive behavior here is irrelvant, anyway.
+		$size = 'xs';
+
+	}
+
 	$layouts = array(
 		'full_width' => array(
 			'name' 		=> 'Full Width',
 			'id'		=> 'full_width',
 			'columns'	=> array(
-				'content' 	=> 'col-sm-12',
+				'content' 	=> "col-{$size}-12",
 				'left' 		=> '',
 				'right' 	=> ''
 			)
@@ -485,17 +506,17 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Sidebar Right',
 			'id'		=> 'sidebar_right',
 			'columns'	=> array(
-				'content' 	=> 'col-sm-8',
+				'content' 	=> "col-{$size}-8",
 				'left' 		=> '',
-				'right' 	=> 'col-sm-4'
+				'right' 	=> "col-{$size}-4"
 			)
 		),
 		'sidebar_left' => array(
 			'name' 		=> 'Sidebar Left',
 			'id'		=> 'sidebar_left',
 			'columns'	=> array(
-				'content' 	=> 'col-sm-8',
-				'left' 		=> 'col-sm-4',
+				'content' 	=> "col-{$size}-8",
+				'left' 		=> "col-{$size}-4",
 				'right' 	=> ''
 			)
 		),
@@ -503,27 +524,27 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Double Sidebar',
 			'id'		=> 'double_sidebar',
 			'columns'	=> array(
-				'content' 	=> 'col-sm-6',
-				'left' 		=> 'col-sm-3',
-				'right' 	=> 'col-sm-3'
+				'content' 	=> "col-{$size}-6",
+				'left' 		=> "col-{$size}-3",
+				'right' 	=> "col-{$size}-3"
 			)
 		),
 		'double_sidebar_left' => array(
 			'name' 		=> 'Double Left Sidebars',
 			'id'		=> 'double_sidebar_left',
 			'columns'	=> array(
-				'content' 	=> 'col-sm-6',
-				'left' 		=> 'col-sm-3',
-				'right' 	=> 'col-sm-3'
+				'content' 	=> "col-{$size}-6",
+				'left' 		=> "col-{$size}-3",
+				'right' 	=> "col-{$size}-3"
 			)
 		),
 		'double_sidebar_right' => array(
 			'name' 		=> 'Double Right Sidebars',
 			'id'		=> 'double_sidebar_right',
 			'columns'	=> array(
-				'content' 	=> 'col-sm-6',
-				'left' 		=> 'col-sm-3',
-				'right' 	=> 'col-sm-3'
+				'content' 	=> "col-{$size}-6",
+				'left' 		=> "col-{$size}-3",
+				'right' 	=> "col-{$size}-3"
 			)
 		)
 	);
