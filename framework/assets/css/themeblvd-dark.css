@@ -155,19 +155,14 @@ fieldset[disabled] .form-control {
 .btn:focus {
     color: #ffffff;
 }
-.btn-default,
-.tb-input-button input[type="submit"] {
+.btn-default {
     color: #ffffff;
     background-color: #292929;
     border-color: #000000;
 }
 .btn-default:hover,
 .btn-default:focus,
-.btn-default:active,
-.tb-input-button input[type="submit"]:hover,
-.tb-input-button input[type="submit"]:focus,
-.tb-input-button input[type="submit"]:active,
-.open .dropdown-toggle.btn-default {
+.btn-default:active {
     color: #ffffff;
     background-color: #151515;
     border-color: #000000;
@@ -424,6 +419,14 @@ a.list-group-item.active:focus {
 ----------------------------------------------- */
 
 input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime"],
+input[type="month"],
 textarea,
 select {
     color: #ffffff;
@@ -434,6 +437,14 @@ select {
     box-shadow: inset 0 0 0 #000000;
 }
 input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="month"]:focus,
 textarea:focus {
     border-color: #000000;
     -webkit-box-shadow: 0 0 8px #000000;
