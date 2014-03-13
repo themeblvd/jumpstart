@@ -285,8 +285,8 @@ function themeblvd_audio_shortcode( $html ) {
  * @param string $type Type of slider, supports nivo or standard
  * @param string $size Image crop size for attachment images
  */
-function themeblvd_gallery_slider( $gallery = '', $type = 'bootstrap', $size = 'full' ) {
-	echo themeblvd_get_gallery_slider( $gallery, $type, $size );
+function themeblvd_gallery_slider( $gallery = '', $size = 'full' ) {
+	echo themeblvd_get_gallery_slider( $gallery, $size );
 }
 
 /**
@@ -295,15 +295,24 @@ function themeblvd_gallery_slider( $gallery = '', $type = 'bootstrap', $size = '
  * @since 2.3.0
  *
  * @param string $gallery Optional gallery shortcode usage like [gallery ids="1,2,3,4"]
- * @param string $type Type of slider, supports nivo, bootstrap, or standard
- * @param string $size Image crop size for attachment images
  * @return string $output Final HTML to output
  */
-function themeblvd_get_gallery_slider( $gallery = '', $type = 'bootstrap', $size = 'full' ) {
+function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
+
+	$defaults = apply_filters( 'themeblvd_gallery_slider_args', array(
+		'size'			=> '',					// Crop size for images
+		'thumb_size'	=> 'square_smallest', 	// Size of nav thumbnail images
+		'interval'		=> '5000',				// Milliseconds between transitions
+		'pause'			=> true,				// Whether to pause on hover
+		'wrap'			=> true,				// Whether sliders continues auto rotate after first pass
+		'nav_standard'	=> false,				// Whether to show standard nav indicator dots
+		'nav_arrows'	=> true,				// Whether to show standard nav arrows
+		'nav_thumbs'	=> true					// Whether to show nav thumbnails (added by Theme Blvd framework)
+	));
+	$args = wp_parse_args( $args, $defaults );
 
 	$post_id = get_the_ID();
-	$type = apply_filters( 'themeblvd_gallery_slider_type', $type, $post_id );
-	$size = apply_filters( 'themeblvd_gallery_slider_size', $size, $post_id );
+	$size = apply_filters( 'themeblvd_gallery_slider_size', $args['size'], $post_id );
 
 	// Did user pass in a gallery shortcode?
 	if ( $gallery ) {
@@ -351,126 +360,18 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'bootstrap', $size
 		}
 	}
 
-	// Build javascript properties
-	$props = array();
+	/*--------------------------------------------*/
+	/* Bootstrap Slider
+	/*--------------------------------------------*/
 
-	if ( $type == 'nivo' ) {
+	$output  = "<div id=\"gallery-slider-{$post_id}\" class=\"tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide\" data-ride=\"carousel\">\n";
+	$output .= "<div class=\"carousel-control-wrap\">\n";
 
-		$props = array(
-			'effect'			=> 'random',
-			'slices'			=> '15',
-			'directionNav'		=> 'true',
-			'controlNav'		=> 'true',
-			'pauseOnHover'		=> 'true',
-			'pauseTime'			=> '5000',
-			'manualAdvance'		=> 'false'
-		);
+	// Standard nav indicators
+	if ( $args['nav_standard'] ) {
 
-	} elseif ( $type == 'standard' ) {
+		$output .= "<ol class=\"carousel-indicators\">\n";
 
-		$props = array(
-			'animation'			=> 'slide',
-			'smoothHeight'		=> 'true',
-			'slideshow' 		=> 'false',
-			'controlNav' 		=> 'false',
-			'slideshowSpeed'	=> '5000',
-			'slideshow'			=> 'true',
-			'controlsContainer'	=> ".slides-wrapper-{$post_id}",
-			'directionNav'		=> 'true',
-			'controlNav'		=> 'true'
-		);
-
-	}
-	$props = apply_filters( 'themeblvd_gallery_slider_'.$type.'_props', $props, $post_id, $attachments );
-
-	$i = 1;
-	$count = count( $props );
-	$props_output = '';
-
-	foreach ( $props as $key => $value ) {
-
-		$fmt = '%s: ';
-		if ( $value == 'true' || $value == 'false' || intval($value) ) {
-			$fmt .= '%s'; // for bool or int, don't wrap in quotes
-		} else {
-			$fmt .= '"%s"';
-		}
-
-		$props_output .= sprintf($fmt, $key, $value);
-
-		if ( $i < $count ) {
-			$props_output .= ",\n";
-		}
-
-		$i++;
-	}
-
-	// CSS Classes
-	$wrap_class = "{$type}-slider-wrapper";
-	if ( $type != 'standard' ) {
-		$wrap_class = "tb-{$wrap_class}";
-	}
-
-	$class = apply_filters( 'themeblvd_gallery_slider_class', array('show-nav_standard', 'show-nav_arrows') );
-	$class = implode( ' ', $class );
-
-	// Slider Wrap
-	$slider_wrap = '%s';
-
-	if ( $type != 'bootstrap' ) {
-		$slider_wrap .= "<div id=\"gallery-slider-{$post_id}\" class=\"slider-wrapper {$wrap_class} gallery-slider\">\n";
-		$slider_wrap .= "	<div class=\"slides-wrapper slides-wrapper-{$type}\">\n";
-		$slider_wrap .= "		<div class=\"slides-inner {$class}\">\n";
-		$slider_wrap .= "			<div class=\"tb-loader\"></div>\n";
-		$slider_wrap .= "			%s\n";
-		$slider_wrap .= "		</div><!-- .slides-inner (end) -->\n";
-		$slider_wrap .= "	</div><!-- .slides-wrapper (end) -->\n";
-		$slider_wrap .= "</div><!-- .gallery-slider (end) -->\n";
-	}
-
-	// Start Output
-	$output = '';
-
-	if ( $type == 'nivo' ) {
-
-		/*--------------------------------------------*/
-		/* Nivo Slider
-		/*--------------------------------------------*/
-
-		$js  = "<script>\n";
-		$js .= "jQuery(document).ready(function($) {\n";
-		$js .= "	$(window).load(function() {\n";
-		$js .= "		$('#gallery-slider-{$post_id} .nivoSlider').nivoSlider({\n";
-		$js .= "			%s\n";
-		$js .= "		}).parent().find('.tb-loader').fadeOut();\n";
-		$js .= "	});\n";
-		$js .= "});\n";
-		$js .= "</script>\n\n";
-
-		$output .= sprintf( $js, $props_output );
-
-		$slider  = "<div class=\"slider nivoSlider\">\n";
-
-		foreach ( $attachments as $attachment ) {
-			$image = wp_get_attachment_image_src( $attachment->ID, $size );
-			$slider .= sprintf("<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title);
-		}
-
-		$slider .= "</div><!-- .nivoSlider (end) -->\n";
-
-		$output .= sprintf( $slider_wrap, $slider );
-
-	} elseif ( $type == 'bootstrap' ) {
-
-		/*--------------------------------------------*/
-		/* Bootstrap Slider
-		/*--------------------------------------------*/
-
-		$slider  = "<div id=\"gallery-slider-{$post_id}\" class=\"tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide\" data-ride=\"carousel\">\n";
-
-		$slider .= "<ol class=\"carousel-indicators\">\n";
-
-		// Navigation
 		$counter = 0;
 
 		foreach ( $attachments as $attachment ) {
@@ -481,84 +382,85 @@ function themeblvd_get_gallery_slider( $gallery = '', $type = 'bootstrap', $size
 				$class = 'active';
 			}
 
-			$slider .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s"></li>', $post_id, $counter, $class );
-			$slider .= "\n";
+			$output .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s"></li>', $post_id, $counter, $class );
+			$output .= "\n";
 
 			$counter++;
 		}
 
-		$slider .= "</ol>\n";
+		$output .= "</ol>\n";
 
-		// Slides
-		$slider .= "<div class=\"carousel-inner\">\n";
+	}
+
+	// Slides
+	$output .= "<div class=\"carousel-inner\">\n";
+
+	$counter = 0;
+
+	foreach ( $attachments as $attachment ) {
+
+		$class = 'item';
+
+		if ( $counter == 0 ) {
+			$class .= ' active';
+		}
+
+		$image = wp_get_attachment_image_src( $attachment->ID, $size );
+		$output .= sprintf( "<div class=\"%s\">\n", $class );
+		$output .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
+		$output .= "</div><!-- .item (end) -->\n";
+
+		$counter++;
+	}
+
+	$output .= "</div><!-- .carousel-inner (end) -->\n";
+
+	// Nav arrows
+	if ( $args['nav_arrows'] ) {
+
+		$output .= "<a class=\"left carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"prev\">\n";
+		$output .= "<span class=\"glyphicon glyphicon-chevron-left\"></span>\n";
+		$output .= "</a>\n";
+
+		$output .= "<a class=\"right carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"next\">\n";
+		$output .= "<span class=\"glyphicon glyphicon-chevron-right\"></span>\n";
+		$output .= "</a>\n";
+
+	}
+
+	$output .= "</div><!-- .carousel-control-wrap (end) -->";
+
+	// Thumbnail navigation
+	if ( $args['nav_thumbs'] ) {
+
+		$output .= "<ol class=\"carousel-thumb-nav list-unstyled clearfix\">\n";
 
 		$counter = 0;
 
 		foreach ( $attachments as $attachment ) {
 
-			$class = 'item';
+			$class = '';
 
 			if ( $counter == 0 ) {
-				$class .= ' active';
+				$class = 'active';
 			}
 
-			$image = wp_get_attachment_image_src( $attachment->ID, $size );
-			$slider .= sprintf( "<div class=\"%s\">\n", $class );
-			$slider .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
-			$slider .= "</div><!-- .item (end) -->\n";
+			$output .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s">', $post_id, $counter, $class );
+			$image = wp_get_attachment_image_src( $attachment->ID, $args['thumb_size'] );
+			$output .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
+			$output .= '</li>';
+			$output .= "\n";
 
 			$counter++;
 		}
 
-		$slider .= "</div><!-- .carousel-inner (end) -->\n";
-
-		// Controls
-		$slider .= "<a class=\"left carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"prev\">\n";
-		$slider .= "<span class=\"glyphicon glyphicon-chevron-left\"></span>\n";
-		$slider .= "</a>\n";
-
-		$slider .= "<a class=\"right carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"next\">\n";
-		$slider .= "<span class=\"glyphicon glyphicon-chevron-right\"></span>\n";
-		$slider .= "</a>\n";
-
-		$slider .= "</div><!-- .carousel (end) -->\n";
-
-		$output .= sprintf( $slider_wrap, $slider );
-
-	} elseif ( $type == 'standard' ) {
-
-		/*--------------------------------------------*/
-		/* Standard Slider
-		/*--------------------------------------------*/
-
-		$js  = "<script>\n";
-		$js .= "jQuery(document).ready(function($) {\n";
-		$js .= "	$(window).load(function() {\n";
-		$js .= "		$('#gallery-slider-{$post_id} .flexslider').flexslider({\n";
-		$js .= "			%s\n";
-		$js .= "		}).parent().find('.tb-loader').fadeOut();\n";
-		$js .= "	});\n";
-		$js .= "});\n";
-		$js .= "</script>\n\n";
-
-		$output .= sprintf( $js, $props_output );
-
-		$slider  = "<div class=\"slider standard-slider flexslider\">\n";
-		$slider .= "	<ul class=\"slides\">\n";
-
-		foreach ( $attachments as $attachment ) {
-			$image = wp_get_attachment_image_src( $attachment->ID, $size );
-			$slider .= sprintf("<li><img src=\"%s\" alt=\"%s\" /></li>\n", $image[0], $attachment->post_title);
-		}
-
-		$slider .= "	</ul><!-- .slides (end) -->\n";
-		$slider .= "</div><!-- .flexslider (end) -->\n";
-
-		$output .= sprintf( $slider_wrap, $slider );
+		$output .= "</ol>\n";
 
 	}
 
-	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $type, $attachments );
+	$output .= "</div><!-- .carousel (end) -->\n";
+
+	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $attachments, $args );
 }
 
 /**
