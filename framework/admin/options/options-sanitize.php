@@ -47,6 +47,7 @@ function themeblvd_add_sanitization() {
 function themeblvd_sanitize_text( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
 	$output = wp_kses( $input, $allowedtags );
+	$output = htmlspecialchars_decode( $output );
 	$output = str_replace( "\r\n", "\n", $output );
 	return $output;
 }
@@ -58,7 +59,8 @@ function themeblvd_sanitize_text( $input ) {
  */
 function themeblvd_sanitize_textarea( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
-	$output = wp_kses( $input, $allowedtags);
+	$output = wp_kses( $input, $allowedtags );
+	$output = htmlspecialchars_decode( $output );
 	$output = str_replace( "\r\n", "\n", $output );
 	return $output;
 }
