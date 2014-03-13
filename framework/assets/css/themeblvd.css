@@ -25,7 +25,7 @@
 .grid_12 {width: 100%;}
 
 /* Tight 12 Column Setup */
-.tight .grid_2 {width: 50%;}
+.tight .grid_2 {width: 16.66%;}
 .tight .grid_3 {width: 25%;}
 .tight .grid_4 {width: 33.33%;}
 .tight .grid_6 {width: 50%;}
@@ -46,8 +46,8 @@
 .tight .grid_fifth_4 {width: 80%;}
 
 /* Tenths */
-.grid_tenth_3 {width: 26%;}
-.grid_tenth_7 {width: 66%;}
+.grid_tenth_3 {width: 28.8%;}
+.grid_tenth_7 {width: 67.2%;}
 
 /* Tight Tenths */
 .tight .grid_tenth_3 {width: 30%;}
