@@ -307,8 +307,39 @@ code.block {
 }
 
 /* Carousel */
-.carousel-control {
+.tb-bootstrap-carousel .carousel-control {
 	z-index: 15;
+}
+.tb-bootstrap-carousel .carousel-control-wrap {
+	position: relative;
+}
+.tb-bootstrap-carousel .carousel-thumb-nav {
+	margin: 0;
+}
+.tb-bootstrap-carousel .carousel-thumb-nav li {
+	cursor: pointer;
+	float: left;
+	opacity: .5;
+	padding: 5px 5px 0 0;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.tb-bootstrap-carousel .carousel-thumb-nav li:hover,
+.tb-bootstrap-carousel .carousel-thumb-nav li.active {
+	opacity: 1;
+	-webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.ie8 .tb-bootstrap-carousel .carousel-thumb-nav {
+	padding: 5px 0 0 0;
+}
+.ie8 .tb-bootstrap-carousel .carousel-thumb-nav li {
+	display: inline;
+	float: none;
 }
 
 /* =Post Formats

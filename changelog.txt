@@ -8,6 +8,7 @@ Jump Start Changelog
 * Added additional HTML5 inputs to general form styling.
 * Improved sidebar layouts in IE8.
 * Fixed inconsistencies with internal grid system.
+* Added support for thumbnail navigation with Boostrap Carousel slider (requires Theme Blvd Sliders v1.2.1+).
 
 --------------------------------------------------------------
 

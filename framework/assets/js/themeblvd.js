@@ -386,6 +386,24 @@ jQuery(document).ready(function($) {
 				$(this).attr('data-parent', '#'+accordion_id);
 			});
 		});
+
+		// Carousel thumbnail navigation
+		$('.carousel .carousel-thumb-nav li').click(function(){
+			var el = $(this);
+			el.closest('.carousel-thumb-nav').find('li').removeClass('active');
+			el.addClass('active');
+		});
+
+		$('.carousel').on('slid.bs.carousel', function () {
+
+			var el = $(this),
+				data = el.data('bs.carousel'),
+				current = data.getActiveIndex()+1;
+
+			el.find('.carousel-thumb-nav li').removeClass('active');
+			el.find('.carousel-thumb-nav li:nth-child('+current+')').addClass('active');
+
+		});
 	}
 
 });

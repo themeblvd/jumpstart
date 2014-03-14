@@ -23,6 +23,10 @@ You can include this file within your theme's main rtl.css file.
 .fixed-sidebar .widget_nav_menu ul.sub-menu {
 	margin-right: 10px;
 }
+.tb-bootstrap-carousel .carousel-thumb-nav li {
+	float: right;
+	padding: 5px 0 0 5px;
+}
 
 /* WordPress Standard Classes */
 .gallery-item {
