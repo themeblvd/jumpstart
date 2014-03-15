@@ -2667,6 +2667,15 @@ div.wpcf7 .watermark {
 	clear: both;
 	padding-bottom: 20px;
 }
+.element-unstyled,
+.element-unstyled .element-inner,
+.element-unstyled .element-inner .element-inner-wrap {
+	background-color: transparent !important;
+	background-image: none !important;
+	border: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
 
 /* Headline */
 .element-headline {

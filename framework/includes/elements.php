@@ -241,7 +241,7 @@ if ( !function_exists( 'themeblvd_jumbotron' ) ) :
  * @param array $args Arguments for Jumbotron.
  */
 function themeblvd_jumbotron( $args ) {
-	
+
 	$defaults = array(
 		// Rest of $args are verified in themeblvd_get_jumbotron() ...
 		'button' 		=> 0,
