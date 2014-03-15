@@ -1029,8 +1029,7 @@ function themeblvd_colors( $bootstrap = true ) {
 		'info' 			=> __( 'Bootstrap: Info', 'themeblvd' ),
 		'success' 		=> __( 'Bootstrap: Success', 'themeblvd' ),
 		'warning' 		=> __( 'Bootstrap: Warning', 'themeblvd' ),
-		'danger' 		=> __( 'Bootstrap: Danger', 'themeblvd' ),
-		'inverse' 		=> __( 'Bootstrap: Inverse', 'themeblvd' )
+		'danger' 		=> __( 'Bootstrap: Danger', 'themeblvd' )
 	);
 	$themeblvd_colors = array(
 		'black' 		=> __( 'Black', 'themeblvd' ),
