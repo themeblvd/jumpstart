@@ -307,6 +307,9 @@ code.block {
 }
 
 /* Carousel */
+.entry-content .tb-bootstrap-carousel {
+	margin-bottom: 20px;
+}
 .tb-bootstrap-carousel .carousel-control {
 	z-index: 15;
 }
@@ -340,6 +343,12 @@ code.block {
 .ie8 .tb-bootstrap-carousel .carousel-thumb-nav li {
 	display: inline;
 	float: none;
+}
+
+/* Jumbotron */
+.jumbotron {
+	color: #333333;
+	line-height: 1.428571429;
 }
 
 /* =Post Formats
@@ -3135,10 +3144,18 @@ div.wpcf7 .watermark {
 .tb-post-list-slider .slides-wrapper {
 	padding: 20px;
 }
+.tb-post-list-slider .post_list article:last-of-type {
+	margin-bottom: 0;
+}
 
 /* Post Grid Slider */
 .tb-post-grid-slider .slides-wrapper {
-	padding: 20px;
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.tb-post-grid-slider .post_grid .grid-row:last-of-type article {
+	margin-bottom: 0;
 }
 
 /* Slogan */

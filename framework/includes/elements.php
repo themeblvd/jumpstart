@@ -232,6 +232,44 @@ function themeblvd_headline( $args = array() ) {
 }
 endif;
 
+if ( !function_exists( 'themeblvd_jumbotron' ) ) :
+/**
+ * Display Bootstrap Jumbotron
+ *
+ * @since 2.4.2
+ *
+ * @param array $args Arguments for Jumbotron.
+ */
+function themeblvd_jumbotron( $args ) {
+	
+	$defaults = array(
+		// Rest of $args are verified in themeblvd_get_jumbotron() ...
+		'button' 		=> 0,
+		'button_text' 	=> 'Get Started Today!',
+		'button_color' 	=> 'default',
+		'button_size'	=> 'large',
+		'button_url' 	=> 'http://www.your-site.com/your-landing-page',
+		'button_target' => '_self'
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// Setup content
+	$content = '';
+
+	if ( ! empty( $args['content'] ) ) {
+		$content = $args['content'];
+	}
+
+	// Add buttont to content?
+	if ( $args['button'] ) {
+		$content .= "\n\n".themeblvd_button( $args['button_text'], $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, $args['button_text'] );
+	}
+
+	echo themeblvd_get_jumbotron( $args, $content );
+
+}
+endif;
+
 if ( !function_exists( 'themeblvd_post_slider' ) ) :
 /**
  * Display post slider.

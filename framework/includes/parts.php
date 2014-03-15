@@ -981,3 +981,77 @@ function themeblvd_blockquote( $args ) {
 	echo themeblvd_get_blockquote( $args );
 }
 endif;
+
+if ( !function_exists( 'themeblvd_get_jumbotron' ) ) :
+/**
+ * Get Bootstrap Jumbotron
+ *
+ * @since 2.4.2
+ *
+ * @param array $args Arguments for jumbotron
+ * @param string $args Content within jumbotron
+ * @return string $output Final content to output
+ */
+function themeblvd_get_jumbotron( $args, $content ) {
+
+	$output = '';
+
+	$defaults = array(
+        'title'         => '',      // Title of unit
+        'text_align'    => 'left',  // How to align text - left, right, center
+        'align'         => '',      // How to align jumbotron - left, right, center, blank for no alignment
+        'max_width'     => '',      // Meant to be used with align left/right/center - 300px, 50%, etc
+        'class'         => '',      // Any additional CSS classes
+        'wpautop'		=> true 	// Whether to apply wpautop on content
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    // CSS classes
+    $class = sprintf( 'jumbotron text-%s', $args['text_align'] );
+
+    if ( $args['class'] ) {
+    	$class .= ' '.$args['class'];
+    }
+
+    // WP auto?
+    if ( $args['wpautop'] ) {
+    	$content = wpautop( $content );
+    }
+
+    // Construct initial jumbotron
+    if ( $args['title'] ) {
+    	$title = sprintf( '<h1>%s</h1>', $args['title'] );
+    	$content = $title.$content;
+    }
+
+    $jumbotron = sprintf('<div class="jumbotron">%s</div>', do_shortcode( $content ) );
+
+    // Wrap the unit
+	$wrap_class = 'jumbotron-wrap';
+
+	// Align jumbotron right or left?
+	if ( $args['align'] == 'left' ) {
+		$wrap_class .= ' pull-left';
+	} else if ( $args['align'] == 'right' ) {
+		$wrap_class .= ' pull-right';
+	}
+
+	// Inline styles
+	$style = '';
+
+	// Align jumbotron center?
+	if ( $args['align'] == 'center' ) {
+		$style .= 'margin-left: auto; margin-right: auto; ';
+	}
+
+	// Max width?
+	if ( $args['max_width'] ) {
+		$style .= sprintf( 'max-width: %s;', $args['max_width'] );
+	}
+
+	// Final output
+	$output = sprintf( '<div class="%s" style="%s">%s</div>', $wrap_class, $style, $jumbotron );
+
+	return apply_filters( 'themeblvd_jumbotron', $output, $args, $content, $jumbotron );
+}
+endif;

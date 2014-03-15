@@ -440,6 +440,7 @@ function themeblvd_get_classes( $element, $start_space = false, $end_space = fal
 		'element_content' 				=> array(),
 		'element_divider' 				=> array(),
 		'element_headline' 				=> array(),
+		'element_jumbotron' 			=> array('element-unstyled'),
 		'element_post_grid_paginated' 	=> array('themeblvd-gallery'),
 		'element_post_grid' 			=> array('themeblvd-gallery'),
 		'element_post_grid_slider' 		=> array('themeblvd-gallery'),
