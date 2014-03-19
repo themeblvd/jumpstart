@@ -81,7 +81,8 @@ a:focus,
 	color: #1a5a78;
 	text-decoration: none;
 }
-p {
+p,
+pre {
 	margin-bottom: 1.38em;
 }
 

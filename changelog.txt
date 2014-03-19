@@ -9,7 +9,8 @@ Jump Start Changelog
 * Improved sidebar layouts in IE8.
 * Fixed inconsistencies with internal grid system.
 * Added support for thumbnail navigation with Boostrap Carousel slider (requires Theme Blvd Sliders v1.2.1+).
-* Added support for Jumbotron, can be used with Theme Blvd Shortcodes 1.3+, Theme Blvd Layout Builder 1.3+.
+* Added support for Jumbotron, can be used with Theme Blvd Shortcodes 1.3+, Theme Blvd Layout Builder 1.2.3+.
+* Added support for Gallery slider, can be used with Theme Blvd Shortcodes 1.3+.
 
 --------------------------------------------------------------
 

@@ -427,6 +427,7 @@ input[type="number"],
 input[type="date"],
 input[type="time"],
 input[type="datetime"],
+input[type="datetime-local"],
 input[type="month"],
 textarea,
 select {
@@ -446,6 +447,7 @@ input[type="number"]:focus,
 input[type="date"]:focus,
 input[type="time"]:focus,
 input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
 input[type="month"]:focus,
 textarea:focus {
     border-color: #000000;
@@ -479,6 +481,9 @@ input[type="time"]::-webkit-input-placeholder,
 input[type="datetime"]::-moz-placeholder,
 input[type="datetime"]:-ms-input-placeholder,
 input[type="datetime"]::-webkit-input-placeholder,
+input[type="datetime-local"]::-moz-placeholder,
+input[type="datetime-local"]:-ms-input-placeholder,
+input[type="datetime-local"]::-webkit-input-placeholder,
 input[type="month"]::-moz-placeholder,
 input[type="month"]:-ms-input-placeholder,
 input[type="month"]::-webkit-input-placeholder {
@@ -486,14 +491,26 @@ input[type="month"]::-webkit-input-placeholder {
 }
 
 /* Submit Buttons - Match to Bootstrap .btn */
-input[type="submit"] {
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
     color: #333333;
     background-color: #ffffff;
     border-color: #cccccc;
 }
 input[type="submit"]:hover,
 input[type="submit"]:focus,
-input[type="submit"]:active {
+input[type="submit"]:active,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:active,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="button"]:active,
+button:hover,
+button:focus,
+button:active {
     color: #333333;
     background-color: #ebebeb;
     border-color: #adadad;
