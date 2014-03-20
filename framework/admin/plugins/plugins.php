@@ -76,18 +76,17 @@ function themeblvd_tgm_register() {
 
 	// TGM Class config
 	$config = array(
-		'domain'       		=> 'themeblvd',         		// Text domain - likely want to be the same as your theme.
-		'default_path' 		=> '',                         	// Default absolute path to pre-packaged plugins
-		'parent_menu_slug' 	=> 'themes.php', 				// Default parent menu slug
-		'parent_url_slug' 	=> 'themes.php', 				// Default parent URL slug
-		'menu'         		=> 'install-plugins', 			// Menu slug
-		'has_notices'      	=> true,                       	// Show admin notices or not
-		'is_automatic'    	=> false,					   	// Automatically activate plugins after installation or not
-		'message' 			=> '',							// Message to output right before the plugins table
+		'default_path' 		=> '',                      // Default absolute path to pre-packaged plugins
+		'menu'         		=> 'install-plugins',		// Menu slug
+		'has_notices'  		=> true,                    // Show admin notices or not.
+        'dismissable'  		=> true,                    // If false, a user cannot dismiss the nag message.
+        'dismiss_msg'  		=> '',                      // If 'dismissable' is false, this message will be output at top of nag.
+        'is_automatic' 		=> false,                   // Automatically activate plugins after installation or not.
+		'message' 			=> '',						// Message to output right before the plugins table
 		'strings'      		=> array(
 			'page_title'                       			=> __( 'Install Recommended Plugins', 'themeblvd' ),
 			'menu_title'                       			=> __( 'Theme Plugins', 'themeblvd' ),
-			'installing'                       			=> __( 'Installing Plugin: %s', 'themeblvd' ), // %1$s = plugin name
+			'installing'                       			=> __( 'Installing Plugin: %s', 'themeblvd' ), // %s = plugin name.
 			'oops'                             			=> __( 'Something went wrong with the plugin API.', 'themeblvd' ),
 			'notice_can_install_required'     			=> _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s)
 			'notice_can_install_recommended'			=> _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ), // %1$s = plugin name(s)
@@ -101,8 +100,7 @@ function themeblvd_tgm_register() {
 			'activate_link' 				  			=> _n_noop( 'Activate installed plugin', 'Activate installed plugins' ),
 			'return'                           			=> __( 'Return to Required Plugins Installer', 'themeblvd' ),
 			'plugin_activated'                 			=> __( 'Plugin activated successfully.', 'themeblvd' ),
-			'complete' 									=> __( 'All plugins installed and activated successfully. %s', 'themeblvd' ), // %1$s = dashboard link
-			'nag_type'									=> 'updated' // Determines admin notice type - can only be 'updated' or 'error'
+			'complete' 									=> __( 'All plugins installed and activated successfully. %s', 'themeblvd' ) // %s = dashboard link.
 		)
 	);
 	$config = apply_filters( 'themeblvd_tgm_config', $config );
