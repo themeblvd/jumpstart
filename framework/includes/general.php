@@ -1106,6 +1106,7 @@ function themeblvd_stats() {
 		$posts_with_comments = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}posts WHERE post_type='post' AND comment_count > 0");
 
 		// fix by Jason
+		$comments_to_posts = 0;
 		if ( $count_posts->publish > 0  ) {
 			$comments_to_posts = number_format(($posts_with_comments / $count_posts->publish) * 100, 0, '.', '');
 		}
