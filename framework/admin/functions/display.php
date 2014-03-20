@@ -677,6 +677,13 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 	// Grab all conditionals to choose from
 	$conditionals = themeblvd_conditionals_config();
 
+	// WPML compat
+	if ( isset( $GLOBALS['sitepress'] ) ) {
+		remove_filter( 'get_pages', array( $GLOBALS['sitepress'], 'exclude_other_language_pages2' ) );
+		remove_filter( 'get_terms_args', array( $GLOBALS['sitepress'], 'get_terms_args_filter' ) );
+		remove_filter( 'terms_clauses', array( $GLOBALS['sitepress'], 'terms_clauses' ) );
+	}
+
 	// Start output
 	$output = '<div class="accordion">';
 
@@ -727,17 +734,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Posts in Category
 			case 'posts_in_category' :
 
-				if ( isset( $GLOBALS['sitepress'] ) ) {
-
-					// WPML compat
-					global $sitepress;
-					remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
-					$categories = get_categories( array( 'hide_empty' => false ) );
-					add_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
-
-				} else {
-					$categories = get_categories( array( 'hide_empty' => false ) );
-				}
+				$categories = get_categories( array( 'hide_empty' => false ) );
 
 		        if ( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
@@ -760,17 +757,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			// Category Archives
 			case 'categories' :
 
-				if ( isset( $GLOBALS['sitepress'] ) ) {
-
-					// WPML compat
-					global $sitepress;
-					remove_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
-					$categories = get_categories( array( 'hide_empty' => false ) );
-					add_filter('terms_clauses', array( $sitepress, 'terms_clauses' ));
-
-				} else {
-					$categories = get_categories( array( 'hide_empty' => false ) );
-				}
+				$categories = get_categories( array( 'hide_empty' => false ) );
 
 		        if ( ! empty( $categories ) ) {
 		        	$output .= '<ul>';
@@ -844,6 +831,13 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 		$output .= '</div><!-- .element (end) -->';
 	}
 	$output .= '</div><!-- .accordion (end) -->';
+
+	// Put WPML filters back
+	if ( isset( $GLOBALS['sitepress'] ) ) {
+		add_filter( 'get_pages', array( $GLOBALS['sitepress'], 'exclude_other_language_pages2' ) );
+		add_filter( 'get_terms_args', array( $GLOBALS['sitepress'], 'get_terms_args_filter' ) );
+		add_filter( 'terms_clauses', array( $GLOBALS['sitepress'], 'terms_clauses' ), 10, 4 );
+	}
 
 	return $output;
 }
