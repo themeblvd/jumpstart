@@ -444,10 +444,10 @@ function themeblvd_footer_content_default() {
 				$i++;
 			}
 			?>
-			<div id="footer_content" class="clearfix">
+			<div id="footer_content">
 				<div class="footer_content-inner">
 					<div class="footer_content-content">
-						<div class="grid-protection">
+						<div class="grid-protection clearfix">
 							<?php themeblvd_columns( $num, $footer_setup['width'][$num], $columns ); ?>
 						</div><!-- .grid-protection (end) -->
 					</div><!-- .footer_content-content (end) -->
@@ -467,9 +467,9 @@ if ( !function_exists( 'themeblvd_footer_sub_content_default' ) ) :
  */
 function themeblvd_footer_sub_content_default() {
 	?>
-	<div id="footer_sub_content" class="clearfix">
+	<div id="footer_sub_content">
 		<div class="footer_sub_content-inner">
-			<div class="footer_sub_content-content">
+			<div class="footer_sub_content-content clearfix">
 				<div class="copyright">
 					<span class="copyright-inner">
 						<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
