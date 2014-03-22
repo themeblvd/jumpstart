@@ -2208,6 +2208,9 @@ ul.tb-icon-list {
 }
 .tb-panel .panel-heading {
 	border-bottom: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	padding: 0;
 }
 .tb-panel .panel-heading + .panel-collapse .panel-body {
@@ -2215,9 +2218,21 @@ ul.tb-icon-list {
 	border-top-style: solid;
 }
 .tb-panel .panel-title {
+	border-bottom: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	display: block;
 	font-size: 1rem;
 	padding: 10px 15px;
+}
+.tb-panel .panel-title.active-trigger {
+	-webkit-border-bottom-left-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-moz-border-radius-bottomright: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 }
 .tb-panel .panel-heading .switch-me {
 	margin-right: 5px;
