@@ -284,8 +284,6 @@ a.list-group-item.active:focus {
 }
 .panel {
     background-color: transparent;
-    -webkit-box-shadow: 0 1px 1px #000000;
-    box-shadow: 0 1px 1px #000000;
 }
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive {
