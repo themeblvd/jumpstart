@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jump Start\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-08 12:31-0500\n"
-"PO-Revision-Date: 2013-08-08 12:31-0500\n"
+"POT-Creation-Date: 2014-03-22 10:04-1000\n"
+"PO-Revision-Date: 2014-03-22 10:04-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -158,123 +158,123 @@ msgstr ""
 msgid "You can use basic HTML here, and most shortcodes."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:722
+#: ../framework/admin/functions/display.php:729
 msgid "Enter in a comma-separated list of the post slugs you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:723
+#: ../framework/admin/functions/display.php:730
 msgid "Example: post-1, post-2, post-3"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:724
+#: ../framework/admin/functions/display.php:731
 msgid "Note: Any post slugs entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:802
+#: ../framework/admin/functions/display.php:789
 msgid "Enter in a comma-separated list of the tags you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:803
+#: ../framework/admin/functions/display.php:790
 msgid "Example: tag-1, tag-2, tag-3"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:804
+#: ../framework/admin/functions/display.php:791
 msgid "Note: Any tags entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:835
+#: ../framework/admin/functions/display.php:822
 msgid "Enter in a custom <a href=\"http://codex.wordpress.org/Conditional_Tags\" target=\"_blank\">conditional statement</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:836
+#: ../framework/admin/functions/display.php:823
 msgid "Examples:"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:837
+#: ../framework/admin/functions/display.php:824
 msgid "Warning: Make sure you know what you're doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:872
+#: ../framework/admin/functions/display.php:866
 msgid "Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:873
+#: ../framework/admin/functions/display.php:867
 msgid "Site Title + Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:874
+#: ../framework/admin/functions/display.php:868
 msgid "Custom Text"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:875
+#: ../framework/admin/functions/display.php:869
 msgid "Image"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:900
-#: ../framework/admin/functions/display.php:910
+#: ../framework/admin/functions/display.php:894
+#: ../framework/admin/functions/display.php:904
 msgid "Current Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:902
+#: ../framework/admin/functions/display.php:896
 msgid "You can change your site title and tagline by going <a href=\"options-general.php\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:912
+#: ../framework/admin/functions/display.php:906
 msgid "Current Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:914
+#: ../framework/admin/functions/display.php:908
 msgid "You can change your site title by going <a href=\"options-general.php\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:931
+#: ../framework/admin/functions/display.php:925
 msgid "Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:933
+#: ../framework/admin/functions/display.php:927
 msgid "Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:933
+#: ../framework/admin/functions/display.php:927
 msgid "optional"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:935
+#: ../framework/admin/functions/display.php:929
 msgid "Insert your custom text."
+msgstr ""
+
+#: ../framework/admin/functions/display.php:949
+#: ../framework/admin/functions/display.php:975
+msgid "Standard Image"
 msgstr ""
 
 #: ../framework/admin/functions/display.php:955
 #: ../framework/admin/functions/display.php:981
-msgid "Standard Image"
-msgstr ""
-
-#: ../framework/admin/functions/display.php:961
-#: ../framework/admin/functions/display.php:987
 msgid "HiDPI-optimized Image (optional)"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1082
+#: ../framework/admin/functions/display.php:1076
 msgid "Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1084
+#: ../framework/admin/functions/display.php:1078
 msgid "Default Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1109
+#: ../framework/admin/functions/display.php:1103
 #, php-format
 msgid "In order to use the \"Custom Layout\" template, you must have the %s plugin installed."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1114
+#: ../framework/admin/functions/display.php:1108
 msgid "Custom Layout"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1125
+#: ../framework/admin/functions/display.php:1119
 msgid "You haven't created any custom layouts in the Layout builder yet."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1147
+#: ../framework/admin/functions/display.php:1141
 msgid "Changelog"
 msgstr ""
 
@@ -343,7 +343,7 @@ msgid "Hide page's title."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:57
-#: ../framework/api/class-tb-options-api.php:230
+#: ../framework/api/class-tb-options-api.php:231
 msgid "Breadcrumbs"
 msgstr ""
 
@@ -358,13 +358,13 @@ msgstr ""
 
 #: ../framework/admin/functions/meta.php:62
 #: ../framework/admin/functions/meta.php:131
-#: ../framework/api/class-tb-options-api.php:236
+#: ../framework/api/class-tb-options-api.php:237
 msgid "Yes, show breadcrumbs."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:63
 #: ../framework/admin/functions/meta.php:132
-#: ../framework/api/class-tb-options-api.php:237
+#: ../framework/api/class-tb-options-api.php:238
 msgid "No, hide breadcrumbs."
 msgstr ""
 
@@ -387,12 +387,12 @@ msgid "Use default post setting."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:107
-#: ../framework/api/class-tb-options-api.php:337
+#: ../framework/api/class-tb-options-api.php:338
 msgid "Show meta info."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:108
-#: ../framework/api/class-tb-options-api.php:338
+#: ../framework/api/class-tb-options-api.php:339
 msgid "Hide meta info."
 msgstr ""
 
@@ -405,12 +405,12 @@ msgid "Select if you'd like to completely hide comments or not below the post. T
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:119
-#: ../framework/api/class-tb-options-api.php:360
+#: ../framework/api/class-tb-options-api.php:361
 msgid "Show comments."
 msgstr ""
 
 #: ../framework/admin/functions/meta.php:120
-#: ../framework/api/class-tb-options-api.php:361
+#: ../framework/api/class-tb-options-api.php:362
 msgid "Hide comments."
 msgstr ""
 
@@ -566,8 +566,8 @@ msgstr ""
 
 #: ../framework/admin/options/class-tb-options-page.php:61
 #: ../framework/admin/options/class-tb-options-page.php:62
-#: ../framework/api/class-tb-options-api.php:624
 #: ../framework/api/class-tb-options-api.php:625
+#: ../framework/api/class-tb-options-api.php:626
 msgid "Theme Options"
 msgstr ""
 
@@ -703,214 +703,214 @@ msgstr ""
 msgid "Enter the name of a font from the <a href=\"http://www.google.com/webfonts\" target=\"_blank\">Google Font Directory</a>."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:164
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:161
 msgid "Install Required Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:165
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:162
 msgid "Install Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:166
-#: ../framework/admin/plugins/plugins.php:90
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:163
+#: ../framework/admin/plugins/plugins.php:89
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:167
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:164
 msgid "Something went wrong."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:178
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:490
-#: ../framework/admin/plugins/plugins.php:102
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:175
+#: ../framework/admin/plugins/plugins.php:101
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:179
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1860
-#: ../framework/admin/plugins/plugins.php:103
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:176
+msgid "Return to the dashboard"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:177
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1951
+#: ../framework/admin/plugins/plugins.php:102
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:180
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:178
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:179
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:517
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2072
-msgid "Return to the Dashboard"
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:545
-#, php-format
-msgid "The following plugin was activated successfully: %s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:705
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:180
 msgid "Dismiss this notice"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1103
-msgid "External Link"
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:534
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2168
+msgid "Return to the Dashboard"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1108
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1175
 msgid "Private Repository"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1111
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1178
 msgid "Pre-Packaged"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1115
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1183
 msgid "WordPress Repository"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1118
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1186
 msgid "Required"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1118
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1186
 msgid "Recommended"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1121
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1189
 msgid "Not Installed"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1123
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1191
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1295
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1296
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1404
+msgid "Install"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1318
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1405
+msgid "Activate"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1367
 #, php-format
 msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1311
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1383
 msgid "Plugin"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1312
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1384
 msgid "Source"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1313
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1385
 msgid "Type"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1314
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1386
 msgid "Status"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1332
-msgid "Install"
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1333
-msgid "Activate"
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1843
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1934
 msgid "Install package not available."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1844
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1935
 #, php-format
 msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1845
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1936
 msgid "Unpacking the package&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1846
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1937
 msgid "Installing the plugin&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1847
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1938
 msgid "Plugin install failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1848
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1939
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1859
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1950
 msgid "Plugin activation failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1969
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2064
 msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1970
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2065
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1970
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1979
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2065
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2074
 msgid "Show Details"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1970
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1979
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2065
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2074
 msgid "Hide Details"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1971
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2066
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1972
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2067
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1976
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2071
 msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1977
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2072
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1978
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2073
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1979
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2074
 #, php-format
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1980
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2075
 msgid "All installations have been completed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1981
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2076
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../framework/admin/plugins/plugins.php:88
+#: ../framework/admin/plugins/plugins.php:87
 msgid "Install Recommended Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/plugins.php:89
+#: ../framework/admin/plugins/plugins.php:88
 msgid "Theme Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/plugins.php:91
+#: ../framework/admin/plugins/plugins.php:90
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: ../framework/admin/plugins/plugins.php:104
+#: ../framework/admin/plugins/plugins.php:103
 #, php-format
 msgid "All plugins installed and activated successfully. %s"
 msgstr ""
@@ -935,321 +935,321 @@ msgstr ""
 msgid "The Envato Marketplace \"item ID\" is a required parameter."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:156
+#: ../framework/admin/updates/class-tb-envato-updates.php:163
 #, php-format
 msgid "Backing up %2$s v%1$s before udpating to new version..."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:161
+#: ../framework/admin/updates/class-tb-envato-updates.php:168
 msgid "Unable to locate WordPress Theme directory."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:171
+#: ../framework/admin/updates/class-tb-envato-updates.php:178
 msgid "Could not create directory for backup."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-envato-updates.php:185
+#: ../framework/admin/updates/class-tb-envato-updates.php:192
 #, php-format
 msgid "%2$s v%1$s has been backed up sucessfully to %3$s..."
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:91
-#: ../framework/admin/updates/class-tb-license-admin.php:103
+#: ../framework/admin/updates/class-tb-license-admin.php:97
+#: ../framework/admin/updates/class-tb-license-admin.php:109
 msgid "Theme License"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:110
+#: ../framework/admin/updates/class-tb-license-admin.php:116
 msgid "License Key"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:114
+#: ../framework/admin/updates/class-tb-license-admin.php:120
 msgid "Enter your license key"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:120
-#: ../framework/admin/updates/class-tb-license-admin.php:127
+#: ../framework/admin/updates/class-tb-license-admin.php:126
+#: ../framework/admin/updates/class-tb-license-admin.php:133
 msgid "Activate License"
 msgstr ""
 
-#: ../framework/admin/updates/class-tb-license-admin.php:124
+#: ../framework/admin/updates/class-tb-license-admin.php:130
 msgid "active"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:214
+#: ../framework/api/class-tb-options-api.php:215
 msgid "Header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:217
+#: ../framework/api/class-tb-options-api.php:218
 msgid "Logo"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:218
+#: ../framework/api/class-tb-options-api.php:219
 msgid "Configure the primary branding logo for the header of your site.<br /><br />Use the \"Upload\" button to either upload an image or select an image from your media library. When inserting an image with the \"Upload\" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you're inputting a \"HiDPI-optimized\" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you'd like it to simply not have any effect."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:227
+#: ../framework/api/class-tb-options-api.php:228
 msgid "Main"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:231
+#: ../framework/api/class-tb-options-api.php:232
 msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:242
+#: ../framework/api/class-tb-options-api.php:243
 msgid "Choose the default sidebar layout for the main content area of your site.<br><br><em>Note: This will be the default sidebar layout throughout your site, but you can be override this setting for any specific page or custom layout.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:253
+#: ../framework/api/class-tb-options-api.php:254
 msgid "Footer"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:260
+#: ../framework/api/class-tb-options-api.php:261
 msgid "Setup Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:261
+#: ../framework/api/class-tb-options-api.php:262
 msgid "Choose the number of columns along with the corresponding width configurations."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:267
+#: ../framework/api/class-tb-options-api.php:268
 msgid "Footer Column #1"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:268
+#: ../framework/api/class-tb-options-api.php:269
 msgid "Configure the content for the first column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:275
+#: ../framework/api/class-tb-options-api.php:276
 msgid "Footer Column #2"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:276
+#: ../framework/api/class-tb-options-api.php:277
 msgid "Configure the content for the second column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:283
+#: ../framework/api/class-tb-options-api.php:284
 msgid "Footer Column #3"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:284
+#: ../framework/api/class-tb-options-api.php:285
 msgid "Configure the content for the third column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:291
+#: ../framework/api/class-tb-options-api.php:292
 msgid "Footer Column #4"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:292
+#: ../framework/api/class-tb-options-api.php:293
 msgid "Configure the content for the fourth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:299
+#: ../framework/api/class-tb-options-api.php:300
 msgid "Footer Column #5"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:300
+#: ../framework/api/class-tb-options-api.php:301
 msgid "Configure the content for the fifth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:310
+#: ../framework/api/class-tb-options-api.php:311
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:311
+#: ../framework/api/class-tb-options-api.php:312
 msgid "Enter the copyright text you'd like to show in the footer of your site."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:327
+#: ../framework/api/class-tb-options-api.php:328
 msgid "Single Posts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:328
+#: ../framework/api/class-tb-options-api.php:329
 msgid "These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:331
+#: ../framework/api/class-tb-options-api.php:332
 msgid "Show meta information at top of posts?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:332
+#: ../framework/api/class-tb-options-api.php:333
 msgid "Select if you'd like the meta information (date posted, author, etc) to show at the top of the post. If you're going for a portfolio-type setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:342
+#: ../framework/api/class-tb-options-api.php:343
 msgid "Show featured images at top of posts?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:343
+#: ../framework/api/class-tb-options-api.php:344
 msgid "Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don't want them to show on the actual posts themeselves."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:348
-#: ../framework/api/class-tb-options-api.php:378
-#: ../framework/api/class-tb-options-api.php:426
-msgid "Show small thumbnails."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:349
 #: ../framework/api/class-tb-options-api.php:379
 #: ../framework/api/class-tb-options-api.php:427
-msgid "Show full-width thumbnails."
+msgid "Show small thumbnails."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:350
 #: ../framework/api/class-tb-options-api.php:380
 #: ../framework/api/class-tb-options-api.php:428
+msgid "Show full-width thumbnails."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:351
+#: ../framework/api/class-tb-options-api.php:381
+#: ../framework/api/class-tb-options-api.php:429
 msgid "Hide thumbnails."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:354
+#: ../framework/api/class-tb-options-api.php:355
 msgid "Show comments below posts?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:355
+#: ../framework/api/class-tb-options-api.php:356
 msgid "Select if you'd like to completely hide comments or not below the post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:368
+#: ../framework/api/class-tb-options-api.php:369
 msgid "Primary Posts Display"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:369
+#: ../framework/api/class-tb-options-api.php:370
 msgid "These settings apply to your primary posts page that you've selected under Settings > Reading and <strong>all</strong> instances of the \"Post List\" page template. Note that if you want to use the post list page template for multiple pages with different categories on each, you can accomplish this on each specific page with custom fields - <a href=\"http://vimeo.com/32754998\">Learn More</a>."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:372
+#: ../framework/api/class-tb-options-api.php:373
 msgid "Featured Images"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:373
+#: ../framework/api/class-tb-options-api.php:374
 msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:384
-#: ../framework/api/class-tb-options-api.php:432
-msgid "Show excerpts or full content?"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:385
 #: ../framework/api/class-tb-options-api.php:433
-msgid "Choose whether you want to show full content or post excerpts only."
+msgid "Show excerpts or full content?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:390
-#: ../framework/api/class-tb-options-api.php:438
-msgid "Show full content."
+#: ../framework/api/class-tb-options-api.php:386
+#: ../framework/api/class-tb-options-api.php:434
+msgid "Choose whether you want to show full content or post excerpts only."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:391
 #: ../framework/api/class-tb-options-api.php:439
+msgid "Show full content."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:392
+#: ../framework/api/class-tb-options-api.php:440
 msgid "Show excerpt only."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:395
+#: ../framework/api/class-tb-options-api.php:396
 msgid "Exclude Categories"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:396
+#: ../framework/api/class-tb-options-api.php:397
 msgid "Select any categories you'd like to be excluded from your blog."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:405
+#: ../framework/api/class-tb-options-api.php:406
 msgid "Archives"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:406
+#: ../framework/api/class-tb-options-api.php:407
 msgid "These settings apply any time you're viewing search results or posts specific to a category, tag, date, author, etc."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:409
+#: ../framework/api/class-tb-options-api.php:410
 msgid "Show title on archive pages?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:410
+#: ../framework/api/class-tb-options-api.php:411
 msgid "Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:415
+#: ../framework/api/class-tb-options-api.php:416
 msgid "Yes, show main title at the top of archive pages."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:416
+#: ../framework/api/class-tb-options-api.php:417
 msgid "No, hide the title."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:420
+#: ../framework/api/class-tb-options-api.php:421
 msgid "Show featured images on archive pages?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:421
+#: ../framework/api/class-tb-options-api.php:422
 msgid "Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:445
+#: ../framework/api/class-tb-options-api.php:446
 msgid "Lightbox"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:446
+#: ../framework/api/class-tb-options-api.php:447
 msgid "These settings apply to the built-in lightbox functionality, which utilizes the <a href=\"http://dimsemenov.com/plugins/magnific-popup/\" target=\"_blank\">Magnific Popup</a> script."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:449
+#: ../framework/api/class-tb-options-api.php:450
 msgid "Animate lightboxes?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:450
+#: ../framework/api/class-tb-options-api.php:451
 msgid "Select if you'd like lightboxes to animate as they open and close."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:455
+#: ../framework/api/class-tb-options-api.php:456
 msgid "No animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:456
+#: ../framework/api/class-tb-options-api.php:457
 msgid "Fade animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:460
+#: ../framework/api/class-tb-options-api.php:461
 msgid "Disable standard lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:461
+#: ../framework/api/class-tb-options-api.php:462
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing a standard lightbox instance."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:466
-#: ../framework/api/class-tb-options-api.php:477
-#: ../framework/api/class-tb-options-api.php:488
-msgid "Yes, disable for mobile."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:467
 #: ../framework/api/class-tb-options-api.php:478
 #: ../framework/api/class-tb-options-api.php:489
+msgid "Yes, disable for mobile."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:468
+#: ../framework/api/class-tb-options-api.php:479
+#: ../framework/api/class-tb-options-api.php:490
 msgid "No, do not disable for mobile."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:471
+#: ../framework/api/class-tb-options-api.php:472
 msgid "Disable iframe lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:472
+#: ../framework/api/class-tb-options-api.php:473
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:482
+#: ../framework/api/class-tb-options-api.php:483
 msgid "Disable gallery lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:483
+#: ../framework/api/class-tb-options-api.php:484
 msgid "Select if you'd like the lightbox to be disabled for mobile users when viewing a gallery."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:502
+#: ../framework/api/class-tb-options-api.php:503
 msgid "Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:506
+#: ../framework/api/class-tb-options-api.php:507
 msgid "Content"
 msgstr ""
 
@@ -1297,46 +1297,50 @@ msgstr ""
 msgid "Location: Ads Above Content"
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:208
+#: ../framework/api/class-tb-sidebars-api.php:200
+msgid "This is default placeholder for the \"Ads Above Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebars-api.php:209
 msgid "Ads Below Content"
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:220
+#: ../framework/api/class-tb-sidebars-api.php:221
 msgid "Location: Ads Below Content"
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:221
+#: ../framework/api/class-tb-sidebars-api.php:222
 msgid "This is default placeholder for the \"Ads Below Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:230
+#: ../framework/api/class-tb-sidebars-api.php:231
 msgid "Ads Below Footer"
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:242
+#: ../framework/api/class-tb-sidebars-api.php:243
 msgid "Location: Ads Below Footer"
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:243
+#: ../framework/api/class-tb-sidebars-api.php:244
 msgid "This is default placeholder for the \"Ads Below Footer\" location, which is designed for banner ads, and so not all widgets will appear as expected."
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:302
+#: ../framework/api/class-tb-sidebars-api.php:303
 #, php-format
 msgid "This is default placeholder for the \"%s\" location."
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:321
+#: ../framework/api/class-tb-sidebars-api.php:322
 #, php-format
 msgid "Location: %s"
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:476
+#: ../framework/api/class-tb-sidebars-api.php:477
 #, php-format
 msgid "This is a collapsible widget area with ID, <strong>%s</strong>, but you haven't put any widgets in it yet. Normally this wouldn't show at all when empty, but since you have assigned a custom widget area here and didn't put any widgets in it, you are seeing this message."
 msgstr ""
 
-#: ../framework/api/class-tb-sidebars-api.php:480
+#: ../framework/api/class-tb-sidebars-api.php:481
 #, php-format
 msgid "This is a fixed sidebar with ID, <strong>%s</strong>, but you haven't put any widgets in it yet."
 msgstr ""
@@ -1354,7 +1358,7 @@ msgid "Google Font Name"
 msgstr ""
 
 #: ../framework/api/customizer.php:416
-#: ../framework/includes/general.php:1482
+#: ../framework/includes/general.php:1524
 msgid "Homepage"
 msgstr ""
 
@@ -1393,7 +1397,7 @@ msgstr ""
 msgid "Browse Google Fonts"
 msgstr ""
 
-#: ../framework/api/helpers.php:537
+#: ../framework/api/helpers.php:546
 msgid "Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebars_API class."
 msgstr ""
 
@@ -1401,510 +1405,506 @@ msgstr ""
 msgid "Hook your custom head functionality to wp_head."
 msgstr ""
 
-#: ../framework/includes/elements.php:1210
-#: ../framework/includes/parts.php:385
-#: ../framework/includes/parts.php:400
+#: ../framework/includes/elements.php:1246
+#: ../framework/includes/parts.php:384
+#: ../framework/includes/parts.php:399
 msgid "Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd \"Tweeple\" plugin found in the WordPress plugin repository."
 msgstr ""
 
-#: ../framework/includes/general.php:236
+#: ../framework/includes/general.php:217
 #, php-format
 msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s"
 msgstr ""
 
-#: ../framework/includes/general.php:240
+#: ../framework/includes/general.php:221
 #, php-format
 msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead."
 msgstr ""
 
-#: ../framework/includes/general.php:244
+#: ../framework/includes/general.php:225
 #, php-format
 msgid "%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available."
 msgstr ""
 
-#: ../framework/includes/general.php:355
+#: ../framework/includes/general.php:336
 msgid "Primary Navigation"
 msgstr ""
 
-#: ../framework/includes/general.php:356
+#: ../framework/includes/general.php:337
 msgid "Footer Navigation"
 msgstr ""
 
-#: ../framework/includes/general.php:447
+#: ../framework/includes/general.php:428
 msgid "Sliders"
 msgstr ""
 
-#: ../framework/includes/general.php:461
+#: ../framework/includes/general.php:442
 msgid "Layout Builder"
 msgstr ""
 
-#: ../framework/includes/general.php:475
+#: ../framework/includes/general.php:456
 msgid "Widget Areas"
 msgstr ""
 
-#: ../framework/includes/general.php:563
+#: ../framework/includes/general.php:600
 msgid "Boxy"
 msgstr ""
 
-#: ../framework/includes/general.php:569
+#: ../framework/includes/general.php:606
 msgid "Carbon Classic"
 msgstr ""
 
-#: ../framework/includes/general.php:575
+#: ../framework/includes/general.php:612
 msgid "Carbon Diagonal"
 msgstr ""
 
-#: ../framework/includes/general.php:581
+#: ../framework/includes/general.php:618
 msgid "Carbon Weave"
 msgstr ""
 
-#: ../framework/includes/general.php:587
+#: ../framework/includes/general.php:624
 msgid "Chex"
 msgstr ""
 
-#: ../framework/includes/general.php:593
+#: ../framework/includes/general.php:630
 msgid "Concrete"
 msgstr ""
 
-#: ../framework/includes/general.php:599
+#: ../framework/includes/general.php:636
 msgid "Crosses"
 msgstr ""
 
-#: ../framework/includes/general.php:605
+#: ../framework/includes/general.php:642
 msgid "Denim"
 msgstr ""
 
-#: ../framework/includes/general.php:611
+#: ../framework/includes/general.php:648
 msgid "Diagonal (thin)"
 msgstr ""
 
-#: ../framework/includes/general.php:617
+#: ../framework/includes/general.php:654
 msgid "Diagonal (thick)"
 msgstr ""
 
-#: ../framework/includes/general.php:623
+#: ../framework/includes/general.php:660
 msgid "Diamonds"
 msgstr ""
 
-#: ../framework/includes/general.php:629
+#: ../framework/includes/general.php:666
 msgid "Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:635
+#: ../framework/includes/general.php:672
 msgid "Grunge"
 msgstr ""
 
-#: ../framework/includes/general.php:641
+#: ../framework/includes/general.php:678
 msgid "Honey Comb"
 msgstr ""
 
-#: ../framework/includes/general.php:647
+#: ../framework/includes/general.php:684
 msgid "Leather"
 msgstr ""
 
-#: ../framework/includes/general.php:653
+#: ../framework/includes/general.php:690
 msgid "Metal"
 msgstr ""
 
-#: ../framework/includes/general.php:659
+#: ../framework/includes/general.php:696
 msgid "Mosaic"
 msgstr ""
 
-#: ../framework/includes/general.php:665
+#: ../framework/includes/general.php:702
 msgid "Noise"
 msgstr ""
 
-#: ../framework/includes/general.php:671
+#: ../framework/includes/general.php:708
 msgid "Paper"
 msgstr ""
 
-#: ../framework/includes/general.php:677
+#: ../framework/includes/general.php:714
 msgid "Plaid"
 msgstr ""
 
-#: ../framework/includes/general.php:683
+#: ../framework/includes/general.php:720
 msgid "Rubber"
 msgstr ""
 
-#: ../framework/includes/general.php:689
+#: ../framework/includes/general.php:726
 msgid "Squares"
 msgstr ""
 
-#: ../framework/includes/general.php:695
+#: ../framework/includes/general.php:732
 msgid "Textile"
 msgstr ""
 
-#: ../framework/includes/general.php:701
+#: ../framework/includes/general.php:738
 msgid "Vertical Fabric"
 msgstr ""
 
-#: ../framework/includes/general.php:707
+#: ../framework/includes/general.php:744
 msgid "Vintage"
 msgstr ""
 
-#: ../framework/includes/general.php:713
+#: ../framework/includes/general.php:750
 msgid "Wood"
 msgstr ""
 
-#: ../framework/includes/general.php:719
+#: ../framework/includes/general.php:756
 msgid "Wood Planks"
 msgstr ""
 
-#: ../framework/includes/general.php:725
+#: ../framework/includes/general.php:762
 msgid "---------------"
 msgstr ""
 
-#: ../framework/includes/general.php:731
+#: ../framework/includes/general.php:768
 msgid "Light Boxy"
 msgstr ""
 
-#: ../framework/includes/general.php:737
+#: ../framework/includes/general.php:774
 msgid "Light Carbon Classic"
 msgstr ""
 
-#: ../framework/includes/general.php:743
+#: ../framework/includes/general.php:780
 msgid "Light Carbon Diagonal"
 msgstr ""
 
-#: ../framework/includes/general.php:749
+#: ../framework/includes/general.php:786
 msgid "Light Carbon Weave"
 msgstr ""
 
-#: ../framework/includes/general.php:755
+#: ../framework/includes/general.php:792
 msgid "Light Chex"
 msgstr ""
 
-#: ../framework/includes/general.php:761
+#: ../framework/includes/general.php:798
 msgid "Light Concrete"
 msgstr ""
 
-#: ../framework/includes/general.php:767
+#: ../framework/includes/general.php:804
 msgid "Light Crosses"
 msgstr ""
 
-#: ../framework/includes/general.php:773
+#: ../framework/includes/general.php:810
 msgid "Light Denim"
 msgstr ""
 
-#: ../framework/includes/general.php:779
+#: ../framework/includes/general.php:816
 msgid "Light Diagonal (thin)"
 msgstr ""
 
-#: ../framework/includes/general.php:785
+#: ../framework/includes/general.php:822
 msgid "Light Diagonal (thick)"
 msgstr ""
 
-#: ../framework/includes/general.php:791
+#: ../framework/includes/general.php:828
 msgid "Light Diamonds"
 msgstr ""
 
-#: ../framework/includes/general.php:797
+#: ../framework/includes/general.php:834
 msgid "Light Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:803
+#: ../framework/includes/general.php:840
 msgid "Light Grunge"
 msgstr ""
 
-#: ../framework/includes/general.php:809
+#: ../framework/includes/general.php:846
 msgid "Light Honey Comb"
 msgstr ""
 
-#: ../framework/includes/general.php:815
+#: ../framework/includes/general.php:852
 msgid "Light Leather"
 msgstr ""
 
-#: ../framework/includes/general.php:821
+#: ../framework/includes/general.php:858
 msgid "Light Metal"
 msgstr ""
 
-#: ../framework/includes/general.php:827
+#: ../framework/includes/general.php:864
 msgid "Light Mosaic"
 msgstr ""
 
-#: ../framework/includes/general.php:833
+#: ../framework/includes/general.php:870
 msgid "Light Noise"
 msgstr ""
 
-#: ../framework/includes/general.php:839
+#: ../framework/includes/general.php:876
 msgid "Light Paper"
 msgstr ""
 
-#: ../framework/includes/general.php:845
+#: ../framework/includes/general.php:882
 msgid "Light Plaid"
 msgstr ""
 
-#: ../framework/includes/general.php:851
+#: ../framework/includes/general.php:888
 msgid "Light Rubber"
 msgstr ""
 
-#: ../framework/includes/general.php:857
+#: ../framework/includes/general.php:894
 msgid "Light Squares"
 msgstr ""
 
-#: ../framework/includes/general.php:863
+#: ../framework/includes/general.php:900
 msgid "Light Textile"
 msgstr ""
 
-#: ../framework/includes/general.php:869
+#: ../framework/includes/general.php:906
 msgid "Light Vertical Fabric"
 msgstr ""
 
-#: ../framework/includes/general.php:875
+#: ../framework/includes/general.php:912
 msgid "Light Vintage"
 msgstr ""
 
-#: ../framework/includes/general.php:881
+#: ../framework/includes/general.php:918
 msgid "Light Wood"
 msgstr ""
 
-#: ../framework/includes/general.php:887
+#: ../framework/includes/general.php:924
 msgid "Light Wood Planks"
 msgstr ""
 
-#: ../framework/includes/general.php:922
+#: ../framework/includes/general.php:966
 msgid "No pages exist."
 msgstr ""
 
-#: ../framework/includes/general.php:928
+#: ../framework/includes/general.php:972
 msgid "<strong>All Categories</strong>"
 msgstr ""
 
-#: ../framework/includes/general.php:955
+#: ../framework/includes/general.php:989
 msgid "You haven't created any custom sliders yet."
 msgstr ""
 
-#: ../framework/includes/general.php:988
+#: ../framework/includes/general.php:1030
 msgid "Default Color"
 msgstr ""
 
-#: ../framework/includes/general.php:991
+#: ../framework/includes/general.php:1033
 msgid "Bootstrap: Primary"
 msgstr ""
 
-#: ../framework/includes/general.php:992
+#: ../framework/includes/general.php:1034
 msgid "Bootstrap: Info"
 msgstr ""
 
-#: ../framework/includes/general.php:993
+#: ../framework/includes/general.php:1035
 msgid "Bootstrap: Success"
 msgstr ""
 
-#: ../framework/includes/general.php:994
+#: ../framework/includes/general.php:1036
 msgid "Bootstrap: Warning"
 msgstr ""
 
-#: ../framework/includes/general.php:995
+#: ../framework/includes/general.php:1037
 msgid "Bootstrap: Danger"
 msgstr ""
 
-#: ../framework/includes/general.php:996
-msgid "Bootstrap: Inverse"
-msgstr ""
-
-#: ../framework/includes/general.php:999
+#: ../framework/includes/general.php:1040
 msgid "Black"
 msgstr ""
 
-#: ../framework/includes/general.php:1000
+#: ../framework/includes/general.php:1041
 msgid "Blue"
 msgstr ""
 
-#: ../framework/includes/general.php:1001
+#: ../framework/includes/general.php:1042
 msgid "Brown"
 msgstr ""
 
-#: ../framework/includes/general.php:1002
+#: ../framework/includes/general.php:1043
 msgid "Dark Blue"
 msgstr ""
 
-#: ../framework/includes/general.php:1003
+#: ../framework/includes/general.php:1044
 msgid "Dark Brown"
 msgstr ""
 
-#: ../framework/includes/general.php:1004
+#: ../framework/includes/general.php:1045
 msgid "Dark Green"
 msgstr ""
 
-#: ../framework/includes/general.php:1005
+#: ../framework/includes/general.php:1046
 msgid "Green"
 msgstr ""
 
-#: ../framework/includes/general.php:1006
+#: ../framework/includes/general.php:1047
 msgid "Mauve"
 msgstr ""
 
-#: ../framework/includes/general.php:1007
+#: ../framework/includes/general.php:1048
 msgid "Orange"
 msgstr ""
 
-#: ../framework/includes/general.php:1008
+#: ../framework/includes/general.php:1049
 msgid "Pearl"
 msgstr ""
 
-#: ../framework/includes/general.php:1009
+#: ../framework/includes/general.php:1050
 msgid "Pink"
 msgstr ""
 
-#: ../framework/includes/general.php:1010
+#: ../framework/includes/general.php:1051
 msgid "Purple"
 msgstr ""
 
-#: ../framework/includes/general.php:1011
+#: ../framework/includes/general.php:1052
 msgid "Red"
 msgstr ""
 
-#: ../framework/includes/general.php:1012
+#: ../framework/includes/general.php:1053
 msgid "Slate Grey"
 msgstr ""
 
-#: ../framework/includes/general.php:1013
+#: ../framework/includes/general.php:1054
 msgid "Silver"
 msgstr ""
 
-#: ../framework/includes/general.php:1014
+#: ../framework/includes/general.php:1055
 msgid "Steel Blue"
 msgstr ""
 
-#: ../framework/includes/general.php:1015
+#: ../framework/includes/general.php:1056
 msgid "Teal"
 msgstr ""
 
-#: ../framework/includes/general.php:1016
+#: ../framework/includes/general.php:1057
 msgid "Yellow"
 msgstr ""
 
-#: ../framework/includes/general.php:1017
+#: ../framework/includes/general.php:1058
 msgid "Wheat"
 msgstr ""
 
-#: ../framework/includes/general.php:1018
+#: ../framework/includes/general.php:1059
 msgid "White"
 msgstr ""
 
-#: ../framework/includes/general.php:1141
+#: ../framework/includes/general.php:1183
 msgid "TB Large"
 msgstr ""
 
-#: ../framework/includes/general.php:1147
+#: ../framework/includes/general.php:1189
 msgid "TB Medium"
 msgstr ""
 
-#: ../framework/includes/general.php:1153
+#: ../framework/includes/general.php:1195
 msgid "TB Small"
 msgstr ""
 
-#: ../framework/includes/general.php:1159
+#: ../framework/includes/general.php:1201
 msgid "Small Square"
 msgstr ""
 
-#: ../framework/includes/general.php:1165
+#: ../framework/includes/general.php:1207
 msgid "Smaller Square"
 msgstr ""
 
-#: ../framework/includes/general.php:1171
+#: ../framework/includes/general.php:1213
 msgid "Smallest Square"
 msgstr ""
 
-#: ../framework/includes/general.php:1177
+#: ../framework/includes/general.php:1219
 msgid "Slider Full Width"
 msgstr ""
 
-#: ../framework/includes/general.php:1183
+#: ../framework/includes/general.php:1225
 msgid "Slider Staged"
 msgstr ""
 
-#: ../framework/includes/general.php:1189
+#: ../framework/includes/general.php:1231
 msgid "1/5 Column of Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:1195
+#: ../framework/includes/general.php:1237
 msgid "1/4 Column of Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:1201
+#: ../framework/includes/general.php:1243
 msgid "1/3 Column of Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:1207
+#: ../framework/includes/general.php:1249
 msgid "1/2 Column of Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:1455
+#: ../framework/includes/general.php:1497
 #: ../framework/includes/locals.php:54
 msgid "Pages"
 msgstr ""
 
-#: ../framework/includes/general.php:1456
+#: ../framework/includes/general.php:1498
 msgid "No pages to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1460
+#: ../framework/includes/general.php:1502
 msgid "Posts"
 msgstr ""
 
-#: ../framework/includes/general.php:1461
+#: ../framework/includes/general.php:1503
 msgid "No posts to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1465
+#: ../framework/includes/general.php:1507
 msgid "Posts in Category"
 msgstr ""
 
-#: ../framework/includes/general.php:1466
-#: ../framework/includes/general.php:1471
+#: ../framework/includes/general.php:1508
+#: ../framework/includes/general.php:1513
 msgid "No categories to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1470
+#: ../framework/includes/general.php:1512
 msgid "Category Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1475
+#: ../framework/includes/general.php:1517
 msgid "Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1476
+#: ../framework/includes/general.php:1518
 msgid "No tags to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1480
+#: ../framework/includes/general.php:1522
 msgid "Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:1483
+#: ../framework/includes/general.php:1525
 msgid "All Posts"
 msgstr ""
 
-#: ../framework/includes/general.php:1484
+#: ../framework/includes/general.php:1526
 msgid "All Pages"
 msgstr ""
 
-#: ../framework/includes/general.php:1485
+#: ../framework/includes/general.php:1527
 msgid "All Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1486
+#: ../framework/includes/general.php:1528
 msgid "All Category Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1487
+#: ../framework/includes/general.php:1529
 msgid "All Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1488
+#: ../framework/includes/general.php:1530
 msgid "All Author Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1489
+#: ../framework/includes/general.php:1531
 msgid "Search Results"
 msgstr ""
 
-#: ../framework/includes/general.php:1490
+#: ../framework/includes/general.php:1532
 msgid "404 Page"
 msgstr ""
 
-#: ../framework/includes/general.php:1495
+#: ../framework/includes/general.php:1537
 msgid "Custom"
 msgstr ""
 
@@ -2149,11 +2149,11 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: ../framework/includes/media.php:336
+#: ../framework/includes/media.php:357
 msgid "Oops! Couldn't find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post or attach some images to the post."
 msgstr ""
 
-#: ../framework/includes/parts.php:336
+#: ../framework/includes/parts.php:335
 #, php-format
 msgid "View all posts by %s"
 msgstr ""
