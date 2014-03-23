@@ -35,36 +35,31 @@ body {
 	color: #666666;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
-	line-height: 150%;
+	line-height: 1.5;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
-	line-height: 130%;
-	margin-bottom: .4em;
+	line-height: 1.1;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 h1 {
-	font-size: 27px; /* Fallback for older browsers */
-	font-size: 2.3rem;
+	font-size: 27px;
 }
 h2 {
-	font-size: 24px; /* Fallback for older browsers */
-	font-size: 1.85rem;
+	font-size: 24px;
 }
 h3 {
-	font-size: 18px; /* Fallback for older browsers */
-	font-size: 1.4rem;
+	font-size: 18px;
 }
 h4 {
-	font-size: 14px; /* Fallback for older browsers */
-	font-size: 1.1rem;
+	font-size: 14px;
 }
 h5 {
-	font-size: 13px; /* Fallback for older browsers */
-	font-size: 1rem;
+	font-size: 13px;
 }
 h6 {
-	font-size: 11px; /* Fallback for older browsers */
-	font-size: .85rem;
+	font-size: 11px;
 	color: #999999;
 	text-transform: uppercase;
 }
