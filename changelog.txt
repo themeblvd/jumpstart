@@ -4,6 +4,8 @@ Jump Start Changelog
 1.2.3
 -----
 
+* Fixed some minor styling issues with Mini Post Grids.
+
 --------------------------------------------------------------
 
 1.2.2

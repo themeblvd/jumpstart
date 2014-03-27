@@ -954,7 +954,8 @@ ul.sf-menu .fa {
 	margin: 0;
 	padding: 5px 0 0 0;
 }
-.themeblvd-mini-post-grid ul li {
+.themeblvd-mini-post-grid ul li,
+.widget .themeblvd-mini-post-grid ul li {
 	padding: 0;
 }
 .themeblvd-mini-post-grid ul.grid-align-left li {
@@ -984,6 +985,7 @@ ul.sf-menu .fa {
 }
 .themeblvd-mini-post-grid .thumbnail {
 	display: block;
+	margin: 0;
 	padding: 3px;
 }
 

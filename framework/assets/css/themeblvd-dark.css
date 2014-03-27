@@ -249,6 +249,9 @@ fieldset[disabled] .form-control {
 .wp-caption {
     background-color: transparent;
     border-color: #1e1e1e;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 a.thumbnail:hover,
 a.thumbnail:focus,
