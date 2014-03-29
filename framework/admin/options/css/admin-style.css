@@ -3,14 +3,14 @@
 
 .themeblvd-updated,
 .themeblvd-error {
-	max-width: 764px;
-	margin-bottom: 0!important;
+	margin-bottom: 0 !important;
+	width: 752px;
 }
 #optionsframework {
 	position: relative;
 	z-index: 0;
 	max-width: 780px;
-	background: #fff;
+	background: transparent;
 }
 #optionsframework p {
 	margin-bottom: 0;
@@ -20,24 +20,22 @@
 	cursor: inherit;
 }
 #optionsframework .section {
-	border-bottom: 1px solid #dfdfdf;
+	border-bottom: 1px solid #eeeeee;
 	padding: 15px;
 }
 #optionsframework .section-description {
-	border-bottom: 1px solid #dfdfdf;
+	border-bottom: 1px solid #eeeeee;
 	color: #888888;
-	font-family: Georgia,"Times New Roman",Times,serif;font-size: 12px;
+	font-family: inherit;
+	font-size: inherit;
 	font-style: italic;
 	line-height: 1.5em;
 	padding: 15px;
 }
-#optionsframework .group .section: last-of-type {
-	padding-bottom: 40px;
-}
 #optionsframework .section .heading {
 	font-size: 1.1em;
-	margin: 0 0 15px 0;
-	padding: 10px 5px;
+	margin: 10px 2px;
+	padding: 0;
 }
 #optionsframework .section-info {
 	color: #888888;
@@ -58,11 +56,11 @@
 	padding-right: 2%;
 }
 #optionsframework .section .explain {
-	max-width: 38%;
+	color: #666666;
 	float: left;
-	font-size: 12px;
-	line-height: 16px;
-	color: #777;
+	font-size: inherit;
+	line-height: 18px;
+	max-width: 38%;
 }
 #optionsframework .section-description .controls {
 	display: none;
@@ -73,6 +71,7 @@
 }
 #optionsframework .section-checkbox .controls {
 	min-width: 25px;
+	padding-right: 0;
 	width: 25px;
 }
 #optionsframework .section-checkbox .explain {
@@ -96,20 +95,28 @@
 	line-height: 150%;
 }
 #optionsframework .radio-input {
-	padding: 2px 0;
+	margin: 3.5px 0 7px 0;
+	padding: 0;
 }
 #optionsframework .section-radio label,
 #optionsframework .section-multicheck label {
 	float: left;
-	line-height: 15px;
+	font-size: 14px;
+	line-height: 1.2em;
 	display: block;
+	max-width: 330px;
 }
 #optionsframework input.checkbox,
 #optionsframework input.of-radio {
 	float: left;
 	clear: both;
+	margin-top: 0;
 	vertical-align: middle;
-	width: 25px;
+	width: auto;
+}
+#optionsframework .section-multicheck label,
+#optionsframework .section-multicheck input.checkbox {
+	margin-top: 4px;
 }
 #optionsframework .controls .of-color {
 	float: left;
@@ -173,7 +180,7 @@
 }
 #optionsframework .tb-footer-text {
 	background-color: #f8f8f8;
-	border: 1px solid #f2f2f2;
+	border: 1px solid #dedede;
 	border-top: none;
 	color: #999999;
 	font-style: italic;
@@ -184,6 +191,13 @@
 }
 #optionsframework .tb-footer-text .tb-update-log {
 	text-decoration: none;
+}
+#optionsframework .note code,
+#optionsframework .widefat code {
+	padding: 0;
+}
+#optionsframework .column-content-type-raw input.checkbox {
+	margin-top: -1px;
 }
 
 /* Image Uploader */
@@ -225,7 +239,29 @@
 	padding: 4px;
 }
 #optionsframework .screenshot .remove-image {
-	background: url(../../assets/images/icon-remove.png) no-repeat;border: medium none;bottom: 4px;cursor: pointer;display: block;float: left;height: 16px;position: absolute;left: -4px;text-indent: -9999px;width: 16px;padding: 0;
+	background-image: none;
+	border: medium none;
+	color: #d54e21;
+	cursor: pointer;
+	display: block;
+	float: left;
+	padding: 0;
+	position: absolute;
+	left: -10px;
+	bottom: 3px;
+	text-indent: 0;
+	width: 24px;
+	height: 24px;
+}
+#optionsframework .screenshot .remove-image:hover {
+	color: #ff4000;
+}
+#optionsframework .screenshot .remove-image:before {
+	/* content: '\f153'; */
+	content: '\f158';
+	font-family: 'dashicons';
+	font-size: 24px;
+	line-height: 1em;
 }
 #optionsframework .screenshot .no_image .file_link {
 	margin-left: 20px;
@@ -237,16 +273,6 @@
 	margin-right: 10px;
 	float: left;
 	cursor: pointer;
-}
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5),
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	#optionsframework .screenshot .remove-image {
-		background-image:url(../../assets/images/icon-remove_2x.png);
-		background-size:16px 16px;
-	}
 }
 
 /* Image Uploader (legacy) */
@@ -315,10 +341,14 @@
 
 /* Bottom Section */
 #optionsframework-submit {
-	border-top: 1px solid #ECECEC;
-	background-color: #F1F1F1;
-	background-image: 0;
+	border-top: none;
+	background-color: transparent;
+	background-image: none;
 	padding: 7px 10px;
+}
+#optionsframework-submit.options-page-footer {
+	background: #ffffff;
+	border: 1px solid #dedede;
 }
 #optionsframework .button-primary {
 	float: right;
@@ -397,113 +427,17 @@
 	height: 33px;
 }
 
-/* =WordPress 3.8 (MP6)
------------------------------------------------*/
-
-/* Theme Options Page Basics */
-.themeblvd-ui #optionsframework {
-	background: transparent;
-}
-.themeblvd-ui #optionsframework .section {
-	border-bottom-color: #eeeeee;
-}
-.themeblvd-ui #optionsframework .section-description {
-	border-bottom-color: #eeeeee;
-	font-family: inherit;
-	font-size: inherit;
-}
-.themeblvd-ui #optionsframework .section .heading {
-	margin: 10px 2px;
-	padding: 0;
-}
-.themeblvd-ui #optionsframework .section .explain {
-	color: #666666;
-	font-size: inherit;
-	line-height: 18px;
-}
-.themeblvd-ui .themeblvd-updated,
-.themeblvd-ui .themeblvd-error {
-	width: 752px;
-}
-.themeblvd-ui #optionsframework .note code,
-.themeblvd-ui #optionsframework .widefat code {
-	padding: 0;
-}
-
-/* Theme Options Footer */
-.themeblvd-ui #optionsframework-submit.options-page-footer {
-	background: #ffffff;
-	border: 1px solid #dedede;
-}
-.themeblvd-ui #optionsframework .tb-footer-text {
-	border: 1px solid #dedede;
-	border-top: none;
-}
-
-/* General Options Footer */
-.themeblvd-ui #optionsframework-submit {
-	background: transparent;
-	border-top: none;
-}
-
-/* Options */
-.themeblvd-ui #optionsframework .section-radio label,
-.themeblvd-ui #optionsframework .section-multicheck label {
-	font-size: 14px;
-	line-height: 1.2em;
-	max-width: 330px;
-}
-.themeblvd-ui #optionsframework input.checkbox,
-.themeblvd-ui #optionsframework input.of-radio {
-	margin-top: 0;
-	width: auto;
-}
-.themeblvd-ui #optionsframework .section-multicheck label,
-.themeblvd-ui #optionsframework .section-multicheck input.checkbox {
-	margin-top: 4px;
-}
-.themeblvd-ui #optionsframework .column-content-type-raw input.checkbox {
-	margin-top: -1px;
-}
-.themeblvd-ui #optionsframework .radio-input {
-	margin: 3.5px 0 7px 0;
-	padding: 0;
-}
-.themeblvd-ui #optionsframework .section-checkbox .controls {
-	padding-right: 0;
-}
-.themeblvd-ui #optionsframework .screenshot .remove-image {
-	background-image: none;
-	position: absolute;
-	color: #d54e21;
-	left: -10px;
-	bottom: 3px;
-	text-indent: 0;
-	width: 24px;
-	height: 24px;
-}
-.themeblvd-ui #optionsframework .screenshot .remove-image:hover {
-	color: #ff4000;
-}
-.themeblvd-ui #optionsframework .screenshot .remove-image:before {
-	/* content: '\f153'; */
-	content: '\f158';
-	font-family: 'dashicons';
-	font-size: 24px;
-	line-height: 1em;
-}
-
 /* Elements */
-.themeblvd-ui #optionsframework .accordion .element .element-trigger {
+#optionsframework .accordion .element .element-trigger {
 	background: #ffffff;
 	text-shadow: none;
 }
-.themeblvd-ui #optionsframework .accordion .element .element-trigger.active,
-.themeblvd-ui #optionsframework .accordion .element .element-trigger:hover {
+#optionsframework .accordion .element .element-trigger.active,
+#optionsframework .accordion .element .element-trigger:hover {
 	background: #f2f2f2;
 }
 
 /* Tables */
-.themeblvd-ui #optionsframework .widefat tr:nth-child(odd) {
+#optionsframework .widefat tr:nth-child(odd) {
 	background: #f9f9f9;
 }

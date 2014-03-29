@@ -4,7 +4,9 @@ Jump Start Changelog
 1.2.3
 -----
 
-* Fixed some minor styling issues with Mini Post Grids.
+* Updated Theme Blvd framework to 2.4.2
+* Minor styling fixes for upcoming WP 3.9.
+* Minor styling fixes for Mini Post Grids.
 
 --------------------------------------------------------------
 
