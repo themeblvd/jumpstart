@@ -74,7 +74,7 @@ jQuery(document).ready(function($) {
 	// Menus
 	// ---------------------------------------------------------
 
-	if ( themeblvd.superfish ) {
+	if ( themeblvd.superfish == 'true' ) {
 
 		// Activate Superfish
 		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
 	// Since our gallery integration is specifically designed
 	// to work with Magnific Popup, if it isn't included,
 	// we'll halt it all together.
-	if ( themeblvd.magnific_popup ) {
+	if ( themeblvd.magnific_popup == 'true' ) {
 
 		$('.gallery').append('<div class="clear"></div>');
 
@@ -155,7 +155,7 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Bind magnifico
-	if ( themeblvd.magnific_popup ) {
+	if ( themeblvd.magnific_popup == 'true' ) {
 
 		var remove_delay = 0, main_class = '';
 
@@ -236,7 +236,7 @@ jQuery(document).ready(function($) {
 	}
 
 	// Animations on lightbox thumbnails.
-	if ( themeblvd.thumb_animations && window_width >= 768 ) {
+	if ( themeblvd.thumb_animations == 'true' && window_width >= 768 ) {
 
 		$('.image-button').prepend('<span class="enlarge"></span>');
 
@@ -267,16 +267,17 @@ jQuery(document).ready(function($) {
 	// Featured Image overlay links
 	// ---------------------------------------------------------
 
-	if ( themeblvd.featured_animations || themeblvd.image_slide_animations ) {
+	if ( themeblvd.featured_animations == 'true' || themeblvd.image_slide_animations == 'true' ) {
 
 		var selector = "";
 
-		if ( themeblvd.featured_animations && themeblvd.image_slide_animations)
+		if ( themeblvd.featured_animations == 'true' && themeblvd.image_slide_animations == 'true' ) {
 			selector = ".featured-image a, a.slide-thumbnail-link";
-		else if ( themeblvd.featured_animations)
+		} else if ( themeblvd.featured_animations == 'true' ) {
 			selector = ".featured-image a";
-		else if ( themeblvd.image_slide_animations)
+		} else if ( themeblvd.image_slide_animations == 'true' ) {
 			selector = "a.slide-thumbnail-link";
+		}
 
 		if ( window_width >= 768 ) {
 
@@ -316,7 +317,7 @@ jQuery(document).ready(function($) {
 	// Logo w/retina display support
 	// ---------------------------------------------------------
 
-	if ( themeblvd.retina_logo ) {
+	if ( themeblvd.retina_logo == 'true' ) {
 		var image = $('.tb-image-logo img'),
 			image_2x = image.attr('data-image-2x');
 
@@ -334,7 +335,7 @@ jQuery(document).ready(function($) {
 	// Bootstrap Integration
 	// ---------------------------------------------------------
 
-	if ( themeblvd.bootstrap ) {
+	if ( themeblvd.bootstrap == 'true' ) {
 
 		// Add standard table classes to calendar widget
 		$('#calendar_wrap table').addClass('table table-bordered');
