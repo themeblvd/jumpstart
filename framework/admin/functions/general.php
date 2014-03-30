@@ -58,12 +58,8 @@ function themeblvd_non_modular_assets() {
 		wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 	}
 
-	// Styles for all of WP admin -- Currently only applies to
-	// Builder and Sliders plugin menu items and making them
-	// retina-compatible... Fancy, right?
-	if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) || defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
-		wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
-	}
+	// Includes Theme Blvd admin icon font
+	wp_enqueue_style( 'tb_admin_global', TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css', null, TB_FRAMEWORK_VERSION );
 
 }
 endif;
