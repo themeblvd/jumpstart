@@ -7,6 +7,7 @@ Jump Start Changelog
 * Updated Theme Blvd framework to 2.4.2
 * Minor styling fixes for upcoming WP 3.9.
 * Minor improvements to Mini Post Grids.
+* Fixed some non working options with recently added `[gallery_slider]`
 
 --------------------------------------------------------------
 

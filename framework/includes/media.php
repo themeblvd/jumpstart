@@ -282,11 +282,11 @@ function themeblvd_audio_shortcode( $html ) {
  * @since 2.3.0
  *
  * @param string $gallery Optional gallery shortcode usage like [gallery ids="1,2,3,4"]
- * @param string $type Type of slider, supports nivo or standard
+ * @param array $args Options for slider
  * @param string $size Image crop size for attachment images
  */
-function themeblvd_gallery_slider( $gallery = '', $size = 'full' ) {
-	echo themeblvd_get_gallery_slider( $gallery, $size );
+function themeblvd_gallery_slider( $gallery = '', $args = array() ) {
+	echo themeblvd_get_gallery_slider( $gallery, $args );
 }
 
 /**
@@ -295,6 +295,7 @@ function themeblvd_gallery_slider( $gallery = '', $size = 'full' ) {
  * @since 2.3.0
  *
  * @param string $gallery Optional gallery shortcode usage like [gallery ids="1,2,3,4"]
+ * @param array $args Options for slider
  * @return string $output Final HTML to output
  */
 function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
@@ -302,9 +303,9 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	$defaults = apply_filters( 'themeblvd_gallery_slider_args', array(
 		'size'			=> '',					// Crop size for images
 		'thumb_size'	=> 'square_smallest', 	// Size of nav thumbnail images
-		'interval'		=> '5000',				// Milliseconds between transitions
-		'pause'			=> true,				// Whether to pause on hover
-		'wrap'			=> true,				// Whether sliders continues auto rotate after first pass
+		'interval'		=> 'false',				// Milliseconds between transitions, false for no auto rotation (PHP string to output as JS boolean)
+		'pause'			=> 'true',				// Whether to pause on hover (PHP string to output as JS boolean)
+		'wrap'			=> 'true',				// Whether sliders continues auto rotate after first pass (PHP string to output as JS boolean)
 		'nav_standard'	=> false,				// Whether to show standard nav indicator dots
 		'nav_arrows'	=> true,				// Whether to show standard nav arrows
 		'nav_thumbs'	=> true					// Whether to show nav thumbnails (added by Theme Blvd framework)
@@ -318,7 +319,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	if ( $gallery ) {
 		$content = $gallery;
 	} else {
-		$content = get_the_content();
+		$content = get_the_content(); // Would need to be within the loop
 	}
 
 	// Did user insert a gallery like [gallery ids="1,2,3,4"]
@@ -333,7 +334,8 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		if ( ! empty( $atts['ids'] ) ) {
 			$query = array(
 				'post_type'	=> 'attachment',
-				'post__in' 	=> explode( ',', $atts['ids'] )
+				'post__in' 	=> explode( ',', $atts['ids'] ),
+				'orderby'   => 'post__in'
 			);
 			$attachments = get_posts($query);
 		}
@@ -364,8 +366,8 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	/* Bootstrap Slider
 	/*--------------------------------------------*/
 
-	$output  = "<div id=\"gallery-slider-{$post_id}\" class=\"tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide\" data-ride=\"carousel\">\n";
-	$output .= "<div class=\"carousel-control-wrap\">\n";
+	$output  = sprintf( '<div id="gallery-slider-%s" class="tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $post_id, $args['interval'], $args['pause'], $args['wrap'] );
+	$output .= "\n<div class=\"carousel-control-wrap\">\n";
 
 	// Standard nav indicators
 	if ( $args['nav_standard'] ) {
