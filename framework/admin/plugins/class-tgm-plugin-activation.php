@@ -69,7 +69,11 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          *
          * @var string
          */
-        public $menu = 'tgmpa-install-plugins';
+        // public $menu = 'tgmpa-install-plugins';
+        // Modifed default $menu by Theme Blvd as temporary fix until
+        // v2.4.1 is released, fixing issue #185.
+        // @url https://github.com/thomasgriffin/TGM-Plugin-Activation/issues/185
+        public $menu = 'install-plugins';
 
         /**
          * Default absolute path to folder containing pre-packaged plugin zip files.
