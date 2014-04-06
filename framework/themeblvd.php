@@ -117,6 +117,7 @@ if ( is_admin() ) {
 	add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
 	add_filter( 'comment_reply_link', 'themeblvd_comment_reply_link' );
 	add_filter( 'themeblvd_column_class', 'themeblvd_column_class_legacy' );
+	add_filter( 'walker_nav_menu_start_el', 'themeblvd_nav_menu_start_el', 10, 4 );
 
 	// Apply initial hooks
 	add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );

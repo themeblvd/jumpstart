@@ -79,36 +79,7 @@ jQuery(document).ready(function($) {
 		// Activate Superfish
 		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
 
-		// Adjust sub indicators to use fontawesome
-		$('ul.sf-menu-with-fontawesome > li > a.sf-with-ul').append('<i class="sf-sub-indicator fa fa-caret-down"></i>');
-		$('ul.sf-menu-with-fontawesome ul li a.sf-with-ul').append('<i class="sf-sub-indicator fa fa-caret-right"></i>');
-
 	}
-
-	// Allow bootstrap "nav-header" class in menu items.
-	// Note: For primary navigation will only work on levels 2-3
-	// (1) ".sf-menu li li.nav-header" 	=> Primary nav dropdowns
-	// (2) ".menu li.nav-header" 		=> Standard custom menu widget
-	// (3) ".subnav li.nav-header" 		=> Theme Blvd Horizontal Menu widget
-	var menu_text;
-	$('.sf-menu li li.nav-header, .menu li.nav-header, .subnav li.nav-header').each(function(){
-		menu_text = $(this).find('> a').text();
-		$(this).prepend('<span>'+menu_text+'</span>').find('> a').remove();
-	});
-
-	// Allow bootstrap "divider" class in menu items.
-	// Note: For primary navigation will only work on levels 2-3
-	$('.sf-menu li li.divider, .menu li.divider').html('');
-
-	// Fontawesome icons in menu items
-	var classes, name;
-	$('[class^="menu-icon-"]').each(function(){
-		// For this to work, "menu-icon-whatever" must be the first
-		// class inputted on the menu item.
-		classes = $(this).attr('class');
-		name = classes.substr(classes.indexOf('menu-icon') + 10).split(' ')[0];
-		$(this).find('> a, > span').prepend('<i class="fa fa-'+name+'"></i>');
-	});
 
 	// ---------------------------------------------------------
 	// No-click dropdowns

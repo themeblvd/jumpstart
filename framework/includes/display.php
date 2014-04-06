@@ -146,7 +146,7 @@ function themeblvd_header_menu_default() {
 	<nav id="access" role="navigation">
 		<div class="access-inner">
 			<div class="access-content clearfix">
-				<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu','container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
+				<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
 				<?php themeblvd_header_menu_addon(); ?>
 			</div><!-- .access-content (end) -->
 		</div><!-- .access-inner (end) -->

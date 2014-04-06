@@ -9,6 +9,7 @@ Jump Start Changelog
 * Minor improvements to Mini Post Grids.
 * Fixed some non working options with recently added `[gallery_slider]`.
 * Fixed error when installing theme recommended plugins in bulk under *Appearance > Theme Plugins*.
+* Improved how menu item icons are handled on frontend.
 
 --------------------------------------------------------------
 
