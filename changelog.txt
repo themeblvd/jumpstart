@@ -4,7 +4,7 @@ Jump Start Changelog
 1.2.3
 -----
 
-* Updated Theme Blvd framework to 2.4.2
+* Updated Theme Blvd framework to 2.4.3
 * Minor styling fixes for upcoming WP 3.9.
 * Minor improvements to Mini Post Grids.
 * Fixed some non working options with recently added `[gallery_slider]`.
