@@ -1137,6 +1137,9 @@ function themeblvd_tabs( $id, $options ) {
 		$classes .= ' tb-tabs-pills';
 	}
 
+	// Allow deep linking directly to individual tabs?
+	$deep = apply_filters( 'themeblvd_tabs_deep_linking', false );
+
 	// Navigation
 	$i = 0;
 	$class = null;
@@ -1147,7 +1150,14 @@ function themeblvd_tabs( $id, $options ) {
 			$class = 'active';
 		}
 
-		$navigation .= '<li class="'.$class.'"><a href="#'.$id.'-'.$key.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
+		if ( $deep ) {
+			$tab_id = str_replace( ' ', '_', $name );
+			$tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
+		} else {
+			$tab_id = $id.'-'.$key;
+		}
+
+		$navigation .= '<li class="'.$class.'"><a href="#'.$tab_id.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
 		$class = null;
 
 		$i++;
@@ -1165,7 +1175,14 @@ function themeblvd_tabs( $id, $options ) {
 			$class = ' active';
 		}
 
-		$content .= '<div id="'.$id.'-'.$key.'" class="tab-pane fade'.$class.' in clearfix">';
+		if ( $deep ) {
+			$tab_id = str_replace( ' ', '_', $name );
+			$tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
+		} else {
+			$tab_id = $id.'-'.$key;
+		}
+
+		$content .= '<div id="'.$tab_id.'" class="tab-pane fade'.$class.' in clearfix">';
 
 		switch ( $options[$key]['type'] ) {
 

@@ -171,6 +171,10 @@ function themeblvd_get_js_locals() {
 		$locals['superfish'] = 'true';
 	}
 
+	if ( apply_filters( 'themeblvd_tabs_deep_linking', false ) ) {
+		$locals['tabs_deep_linking'] = 'true';
+	}
+
 	// Return with framework's filter applied
 	return apply_filters( 'themeblvd_js_locals', $locals );
 }

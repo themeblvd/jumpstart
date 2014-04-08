@@ -376,6 +376,20 @@ jQuery(document).ready(function($) {
 			el.find('.carousel-thumb-nav li:nth-child('+current+')').addClass('active');
 
 		});
+
+		// Deep linking Bootstrap tabs
+		if ( themeblvd.tabs_deep_linking == 'true' ) {
+
+			// Note: To deep link to a tab, you need to prefix
+			// the ID of the tab with "tab_" like this:
+			// http://your-site.com/page-with-tabs/#tab_id_of_tab
+
+			var hash = document.location.hash;
+
+			if ( hash && hash.indexOf('tab_') != -1 ) {
+				$('.element-tabs a[href="'+hash.replace('tab_', '')+'"]').tab('show');
+			}
+		}
 	}
 
 });
