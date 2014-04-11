@@ -1003,6 +1003,16 @@ function themeblvd_get_select( $type ) {
 			} // Handle error message for no sidebars outside of this function
 			break;
 
+		// All registered widget areas
+		case 'sidebars_all' :
+			global $wp_registered_sidebars;
+			if ( ! empty( $wp_registered_sidebars ) ) {
+				foreach ( $wp_registered_sidebars as $sidebar ) {
+					$select[$sidebar['id']] = $sidebar['name'];
+				}
+			}
+			break;
+
 	}
 
 	// Put WPML filters back
