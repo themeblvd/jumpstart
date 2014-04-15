@@ -15,17 +15,34 @@
 
     		// Toggle widgets
 			$this.on( 'click', '.widget-name-arrow', function() {
-				var el = $(this), closed = el.closest('.widget-name').hasClass('widget-name-closed');
-				if(closed)
-				{
+
+				var el = $(this),
+					closed = el.closest('.widget-name').hasClass('widget-name-closed');
+
+				if ( closed ) {
+
+					// Show widget
 					el.closest('.widget').find('.widget-content').show();
 					el.closest('.widget').find('.widget-name').removeClass('widget-name-closed');
-				}
-				else
-				{
+
+					// Refresh any code editor options
+					el.closest('.widget').find('.section-code').each(function(){
+
+						var code_option = $(this),
+							editor = code_option.find('textarea').data('CodeMirrorInstance');
+
+						if ( editor ) {
+							editor.refresh();
+						}
+					});
+
+				} else {
+
+					// Close widget
 					el.closest('.widget').find('.widget-content').hide();
 					el.closest('.widget').find('.widget-name').addClass('widget-name-closed');
 				}
+
 				return false;
 			});
 
@@ -68,8 +85,7 @@
 	    		// Apply all actions that need applying when an
 	    		// option set is loaded. This will be called any
 	    		// time a new options set is inserted.
-	    		if(type == 'setup')
-	    		{
+	    		if(type == 'setup') {
 
 	    			// Fancy Select
 					$this.find('.tb-fancy-select').each(function(){
@@ -203,11 +219,33 @@
 					$this.find('.of-radio-img-img').show();
 					$this.find('.of-radio-img-radio').hide();
 
+					// WP Color Picker
+					if ( typeof wpColorPicker !== 'undefined' ) {
+						$this.find('.tb-color-picker').wpColorPicker();
+					}
+
+					// Remove tooltips if hovered link is clicked
+					$this.find('.tb-tooltip-link').click(function(){
+
+    					// Remove Tooltip
+    					$('.themeblvd-tooltip').remove();
+
+    					// Toggle text
+    					var link = $(this),
+    						toggle = link.data('tooltip-toggle');
+
+    					if ( toggle == 2 ) {
+    						link.data('tooltip-toggle', 1);
+    					} else {
+    						link.data('tooltip-toggle', 2);
+    					}
+
+    				});
+
 	    		}
 	    		// Apply all binded actions. This will only need
 	    		// to be called once on the original page load.
-	    		else if(type == 'bind')
-	    		{
+	    		else if(type == 'bind') {
 
 	    			// Fancy Select
 	    			$this.on( 'change', '.tb-fancy-select select', function() {
@@ -325,11 +363,97 @@
     					else
     						$this.find('#section-homepage_custom_layout').fadeOut('fast');
     				});
+
+	    			// Modals
+	    			if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
+	    				$this.find('.tb-modal-link').ThemeBlvdModal();
+	    			}
+
+    				// Tooltips
+    				$this.on( 'mouseenter', '.tb-tooltip-link', function() {
+
+    					var link = $(this);
+
+    					var	position = link.data('tooltip-position'),
+    						x = link.offset().left,
+							y = link.offset().top,
+							text = link.data('tooltip-text'),
+							markup =  '<div class="themeblvd-tooltip %position%"> \
+										   <div class="tooltip-inner"> \
+										     %text% \
+										   </div> \
+										   <div class="tooltip-arrow"></div> \
+										</div>';
+
+						// Check for text toggle
+						if ( ! text && link.data('tooltip-toggle') ) {
+							text = link.data('tooltip-text-'+ link.data('tooltip-toggle') );
+						}
+
+						// If no text found at data-tooltip-text, then pull from title
+						if ( ! text ) {
+							text = link.attr('title');
+						}
+
+						// If no position found at data-tooltip-position, set to "top"
+						if ( ! position ) {
+							position = 'top';
+						}
+
+						// Setup markup
+						markup = markup.replace('%position%', position);
+						markup = markup.replace('%text%', text);
+
+						// Append tooltip to page
+						$('body').append( markup );
+
+						// Setup and display tooltip
+						var tooltip = $('.themeblvd-tooltip'),
+							tooltip_height = tooltip.outerHeight(),
+							tooltip_width = tooltip.outerWidth();
+
+						// Position of tooltip relative to link
+						switch ( position ) {
+
+							case 'left' :
+								x = x-tooltip_width-5; // 5px for arrow
+								y = y+(.5*link.outerHeight());
+								y = y-tooltip_height/2;
+								break;
+
+							case 'right' :
+								x = x+link.outerWidth()+5; // 5px for arrow
+								y = y+(.5*link.outerHeight());
+								y = y-tooltip_height/2;
+								break;
+
+							case 'bottom' :
+								x = x+(.5*link.outerWidth());
+								x = x-tooltip_width/2;
+								y = y+link.outerHeight()+2;
+								break;
+
+							case 'top' :
+							default :
+								x = x+(.5*link.outerWidth());
+								x = x-tooltip_width/2;
+								y = y-tooltip_height-2;
+						}
+
+						tooltip.css({
+							'top' : y+'px',
+							'left' : x+'px'
+						}).addClass('fade in');
+    				});
+
+    				$this.on( 'mouseleave', '.tb-tooltip-link', function() {
+    					$('.themeblvd-tooltip').remove();
+    				});
+
 	    		}
 	    		// Apply media uploader from themeblvd_media_uploader object.
 	    		// This incorporates the Media Uploader in WP 3.5+
-	    		else if(type == 'media-uploader')
-	    		{
+	    		else if(type == 'media-uploader') {
 	    			// Check to make sure wp.media object exists.
 	    			// If it doesn't ...
 	    			// (1) We're using an older version of WP and the
@@ -337,10 +461,247 @@
 	    			// (2) We're using a plugin that uses legacy uploader.
 	    			// (3) the WP 3.5+'s media uploader JS files haven't been
 	    			// enqueued properly.
-	    			if(typeof wp !== 'undefined' && typeof wp.media !== 'undefined')
+	    			if ( typeof wp !== 'undefined' && typeof wp.media !== 'undefined' ) {
 	    				themeblvd_media_uploader.init($this);
+	    			}
 	    		}
+	    		// Incorporate WP Editors
+	    		else if(type == 'editor') {
 
+	    			// Modal Editor
+					if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
+						$this.find('.tb-textarea-editor-link').ThemeBlvdModal({
+					        build: false,
+					        padding: true,
+					        size: 'custom', // Something other than "large" to trigger auto height
+					        on_load: function() {
+
+					        	// Temporary override WP's active editor
+					        	wpActiveEditor = 'themeblvd_editor';
+
+					            var self = this,
+					            	editor,
+					            	editor_id = 'themeblvd_editor',
+					            	textarea,
+					            	field_name,
+					            	content = '',
+									has_tinymce = typeof tinymce !== 'undefined',
+					            	modal_window = self.$modal_window;
+
+					            if ( self.$elem.is('.tb-content-block-editor-link') ) {
+					            	field_name = self.$elem.closest('.content-block').data('field-name');
+					            	textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[content]"]');
+					            } else {
+					            	textarea = self.$elem.closest('.textarea-wrap').find('textarea');
+					            }
+
+					            // Get initial raw content
+					            content = textarea.val();
+
+					            // Height of editor
+					            modal_window.find('.wp-editor-area, iframe').height(300);
+
+					            if ( modal_window.find('.wp-editor-wrap').is('.tmce-active') ) {
+
+					            	// Get the current editor by ID
+						            if ( has_tinymce ) {
+						            	editor = tinymce.get( editor_id );
+						            }
+
+						            // To "Visual" editor
+						            if ( editor ) {
+										content = window.switchEditors.wpautop( content );
+					            		editor.setContent( content, {format:'raw'} );
+						            }
+
+					            } else {
+
+					            	// To "Text" editor
+					            	modal_window.find('textarea').val( content );
+
+					            }
+
+					            // Prevent textarea scroll to show over modal
+					            textarea.css('overflow', 'hidden');
+
+					        },
+					        on_save: function() {
+
+					        	// Put back WP's active editor
+					        	wpActiveEditor = 'content';
+
+								var self = this,
+									editor,
+					            	editor_id = 'themeblvd_editor',
+					            	content,
+					            	field_name,
+					            	textarea,
+									has_tinymce = typeof tinymce !== 'undefined',
+					            	modal_window = self.$modal_window;
+
+					            if ( self.$elem.is('.tb-content-block-editor-link') ) {
+					            	field_name = self.$elem.closest('.content-block').data('field-name');
+					            	textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[content]"]');
+					            } else {
+					            	textarea = self.$elem.closest('.textarea-wrap').find('textarea');
+					            }
+
+								if ( modal_window.find('.wp-editor-wrap').is('.tmce-active') ) {
+
+									if ( has_tinymce ) {
+					            		editor = tinymce.get( editor_id );
+					            	}
+
+									// From "Visual" editor
+									if ( editor ) {
+										content = editor.getContent();
+										content = window.switchEditors.pre_wpautop(content);
+									}
+
+					            } else {
+
+					            	// From "Text" editor
+					            	content = modal_window.find('.wp-editor-area').val();
+
+					            }
+
+								// Update options textara with new contnet from Editor
+								textarea.val( content );
+
+								// Put back textarea scrolling
+					            textarea.css('overflow', 'visible');
+
+					        },
+					        on_cancel: function() {
+
+					        	// Put back WP's active editor
+					        	wpActiveEditor = 'content';
+
+								// Put back textarea scrolling
+					        	this.$elem.closest('.textarea-wrap').find('textarea').css('overflow', 'visible');
+
+					        }
+					    });
+					}
+
+					/*
+					TinyMCE Integration
+					This all works, for the most part, but there
+					are too many little odd quirks that happen.
+					Current Issues:
+					(1) Will not use cookie to show "Text" tab
+					initially if it's supposed to.
+    				(2) If cookie is set to "Text", visual Editor
+    				comes up with "mce-flow-layout"
+    				(3) Random page jumping when opening an element
+    				with an editor. Only happens every once in awhile,
+    				can't figur out why.
+    				*/
+    				/*
+    				$this.find('.section-editor').each(function(){
+
+						var section 	= $(this),
+							has_tinymce	= typeof tinymce !== 'undefined',
+							textarea 	= section.find('textarea.wp-editor-area'),
+							el_id		= textarea.attr('id'),
+							parent		= textarea.closest('.wp-editor-wrap'),
+							switch_btn	= section.find('.wp-switch-editor').removeAttr("onclick"),
+							q_settings	= {id: el_id, buttons: "strong,em,link,block,del,ins,img,ul,ol,li,code,spell,close"};
+
+						if ( ! has_tinymce ) {
+							return;
+						}
+
+						quicktags(q_settings);
+						QTags._buttonsInit();
+
+						switch_btn.on( 'click', function() {
+
+							var button = $(this), content;
+
+							if( button.is('.switch-tmce') ) {
+								parent.removeClass('html-active').addClass('tmce-active');
+								tinymce.execCommand('mceAddEditor', true, el_id);
+								content = switchEditors.wpautop( textarea.val() );
+								tinymce.get(el_id).setContent( content, {format:'raw'} );
+							} else {
+								parent.removeClass('tmce-active').addClass('html-active');
+								tinymce.execCommand('mceRemoveEditor', true, el_id);
+								content = textarea.val();
+								content = window.switchEditors.pre_wpautop(content);
+								textarea.val(content);
+							}
+
+							return false;
+
+						}).trigger('click');
+
+					});
+					*/
+	    		}
+	    		// Incorporate code Editors
+	    		else if(type == 'code-editor' && typeof CodeMirror !== 'undefined') {
+
+	    			// Code editor from textarea to modal popup
+    				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
+						$this.find('.tb-textarea-code-link').ThemeBlvdModal({
+							code_editor: true,
+							size: 'medium'
+						});
+	    			}
+
+	    			// Code editor directly in options panel
+	    			$this.find('.section-code').each(function(){
+
+	    				var section = $(this),
+	    					textarea = section.find('textarea'),
+	    					lang = textarea.data('code-lang'),
+	    					mode,
+	    					editor;
+
+	    				// Look for existing instance of this editor
+                		editor = textarea.data('CodeMirrorInstance');
+
+                		// Editor doesn't exist, so let's create one
+                		if ( ! editor ) {
+
+		    				// Setup mode for CodeMirror
+		    				if ( lang == 'html' ) {
+								mode = {
+			                        name: "htmlmixed",
+			                        scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+			                                       mode: null},
+			                                      {matches: /(text|application)\/(x-)?vb(a|script)/i,
+			                                       mode: "vbscript"}]
+			                    };
+			                } else {
+			                	mode = lang;
+			                }
+
+			                // Setup CodeMirror instance
+							editor = CodeMirror.fromTextArea(document.getElementById( textarea.attr('id') ), {
+								mode: mode,
+								lineNumbers: true,
+			                    theme: 'themeblvd',
+			                    indentUnit: 4,
+			                    tabSize: 4,
+			                    indentWithTabs: true
+			                });
+
+							// Make sure that code editor content
+							// gets sent back to form's textarea
+							editor.on('blur', function(){
+							    textarea.val( editor.getValue() );
+							});
+
+							// Store CodeMirror instance with textarea
+							// so we can access it again later.
+							textarea.data('CodeMirrorInstance', editor);
+
+						}
+	    			});
+
+	    		}
     		});
     	},
 
@@ -406,12 +767,13 @@
 		 */
 		init : function(options)
 		{
-			options.find('.upload-button').click(function(event){
-				themeblvd_media_uploader.add_file( $(this).closest('.section-upload') );
+
+			options.find('.upload-button').on( 'click', function(){
+				themeblvd_media_uploader.add_file( $(this).closest('.section-upload, .section-media') );
 			});
 
-			options.find('.remove-image, .remove-file').click(function(){
-				themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
+			options.find('.remove-image, .remove-file').on( 'click', function(){
+				themeblvd_media_uploader.remove_file( $(this).closest('.section-upload, .section-media') );
 			});
 		},
 
@@ -425,12 +787,25 @@
 				title = current_option.find('.trigger').data('title'),
 				select = current_option.find('.trigger').data('select'),
 				css_class = current_option.find('.trigger').data('class'),
-				media_type = upload_type == 'standard' ? '' : 'image',
-				multiple = upload_type == 'quick_slider' ? true : false, // @todo future feature of Quick Slider
-				workflow = upload_type == 'quick_slider' ? 'post' : 'select'; // @todo future feature of Quick Slider
+				media_type = 'image',
+				multiple = false, // @todo future feature of Quick Slider
+				workflow = 'select'; // @todo future feature of Quick Slider
 
-			if( upload_type == 'video' )
+			if ( upload_type == 'video' ) {
 				media_type = 'video';
+			}
+
+			if ( upload_type == 'standard' || upload_type == 'media' ) {
+				media_type = '';
+			}
+
+			if ( upload_type == 'quick_slider' || upload_type == 'media' ) {
+				multiple = true;
+			}
+
+			if ( upload_type == 'media' ) {
+				workflow = 'post';
+			}
 
 			// event.preventDefault();
 
@@ -457,27 +832,32 @@
 					helper_text;
 
 				current_option.find('.image-url').val(attachment.attributes.url);
-				if( attachment.attributes.type == 'image' )
+
+				if ( attachment.attributes.type == 'image' ) {
 					current_option.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image"></a>').slideDown('fast');
+				}
 
-				if(upload_type == 'logo')
+				if ( upload_type == 'logo' ) {
 					current_option.find('.image-width').val(attachment.attributes.width);
+				}
 
-				if(upload_type == 'video')
+				if ( upload_type == 'video' ) {
 					current_option.find('.video-url').val(attachment.attributes.url);
+				}
 
-				if(upload_type == 'slider')
-				{
+				if ( upload_type == 'slider' ) {
+
 					current_option.find('.image-id').val(attachment.attributes.id);
 					current_option.find('.image-title').val(attachment.attributes.title);
 
 					helper_text = current_option.find('.image-title').val();
-					if( helper_text )
+
+					if ( helper_text ) {
 						current_option.closest('.widget').find('.slide-summary').text(helper_text).fadeIn(200);
+					}
 				}
 
-				if( upload_type != 'video' )
-				{
+				if ( upload_type != 'video' && upload_type != 'media' ) {
 					current_option.find('.upload-button').unbind().addClass('remove-file').removeClass('upload-button').val(remove_text);
 					current_option.find('.of-background-properties').slideDown();
 
@@ -485,15 +865,23 @@
 						themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
 			        });
 				}
+
+				if ( upload_type == 'media' ) {
+					// ...
+				}
+
 			});
 
 			// Modal window closed w/no insertion of an image. So, we need to
 			// reset the upload button to avoid weird results.
 			file_frame.on( 'close', function() {
+
 				current_option.find('.upload-button').unbind('click');
-				current_option.find('.upload-button').click(function(){
-					themeblvd_media_uploader.add_file( $(this).closest('.section-upload') );
+
+				current_option.find('.upload-button').on( 'click', function(){
+					themeblvd_media_uploader.add_file( $(this).closest('.section-upload, .section-media') );
 				});
+
 			});
 
 			// Finally, open the modal.
@@ -508,8 +896,9 @@
 			var upload_text = current_option.find('.trigger').data('upload'),
 				upload_type = current_option.find('.trigger').data('type');
 
-			if( upload_type == 'slider' )
+			if ( upload_type == 'slider' ) {
 				current_option.closest('.widget').find('.slide-summary').removeClass('image video').hide().text('');
+			}
 
 			current_option.find('.remove-image').hide();
 			current_option.find('.upload').val('');
@@ -589,141 +978,85 @@
 (function($){
 	tbc_confirm = function(string, args, callback)
 	{
-		var default_args =
-			{
+		var default_args = {
 			'confirm'		:	false, 		// Ok and Cancel buttons
 			'verify'		:	false,		// Yes and No buttons
 			'input'			:	false, 		// Text input (can be true or string for default text)
-			'animate'		:	false,		// Groovy animation (can true or number, default is 400)
 			'textOk'		:	'Ok',		// Ok button default text
 			'textCancel'	:	'Cancel',	// Cancel button default text
 			'textYes'		:	'Yes',		// Yes button default text
 			'textNo'		:	'No'		// No button default text
-			}
+		};
 
-		if(args)
-		{
-			for(var index in default_args)
-			{
-				if(typeof args[index] == "undefined") args[index] = default_args[index];
+		if( args ) {
+			for(var index in default_args) {
+				if( typeof args[index] == "undefined" ) {
+					args[index] = default_args[index];
+				}
 			}
 		}
 
-		var aHeight = $(document).height();
-		var aWidth = $(document).width();
 		$('body').append('<div class="appriseOverlay" id="aOverlay"></div>');
-		$('.appriseOverlay').css('height', aHeight).css('width', aWidth).fadeIn(100);
 		$('body').append('<div class="appriseOuter"></div>');
 		$('.appriseOuter').append('<div class="appriseInner"></div>');
 		$('.appriseInner').append(string);
-		$('.appriseOuter').css("left", ( $(window).width() - $('.appriseOuter').width() ) / 2+$(window).scrollLeft() + "px");
-
-		if(args)
-		{
-			if(args['animate'])
-			{
-				var aniSpeed = args['animate'];
-				if(isNaN(aniSpeed)) { aniSpeed = 400; }
-				$('.appriseOuter').css('top', '-200px').show().animate({top:"100px"}, aniSpeed);
-			}
-			else
-			{
-				$('.appriseOuter').css('top', '100px').fadeIn(200);
-			}
-		}
-		else
-		{
-			$('.appriseOuter').css('top', '100px').fadeIn(200);
-		}
-
-		if(args)
-		{
-			if(args['input'])
-			{
-				if(typeof(args['input'])=='string')
-				{
-					$('.appriseInner').append('<div class="aInput"><input type="text" class="aTextbox" t="aTextbox" value="'+args['input']+'" /></div>');
-				}
-				else
-				{
-					$('.appriseInner').append('<div class="aInput"><input type="text" class="aTextbox" t="aTextbox" /></div>');
-				}
-				$('.aTextbox').focus();
-			}
-		}
-
+		$('.appriseOuter').css('left', ( $(window).width() - $('.appriseOuter').width() ) / 2+$(window).scrollLeft() + "px");
+		$('.appriseOuter').css('top', '100px').fadeIn(200);
 		$('.appriseInner').append('<div class="aButtons"></div>');
-		if(args)
-		{
-			if(args['confirm'] || args['input'])
-			{
-				$('.aButtons').append('<button value="ok">'+args['textOk']+'</button>');
-				$('.aButtons').append('<button value="cancel">'+args['textCancel']+'</button>');
+
+		if ( args ) {
+			if ( args['confirm'] || args['input'] ) {
+				$('.aButtons').append('<button class="button-primary" value="ok">'+args['textOk']+'</button>');
+				$('.aButtons').append('<button class="button-secondary" value="cancel">'+args['textCancel']+'</button>');
+			} else if ( args['verify'] ) {
+				$('.aButtons').append('<button class="button-primary" value="ok">'+args['textYes']+'</button>');
+				$('.aButtons').append('<button class="button-secondary" value="cancel">'+args['textNo']+'</button>');
+			} else {
+				$('.aButtons').append('<button class="button-primary" value="ok">'+args['textOk']+'</button>');
 			}
-			else if(args['verify'])
-			{
-				$('.aButtons').append('<button value="ok">'+args['textYes']+'</button>');
-				$('.aButtons').append('<button value="cancel">'+args['textNo']+'</button>');
-			}
-			else
-			{
-				$('.aButtons').append('<button value="ok">'+args['textOk']+'</button>');
-			}
-		}
-		else
-		{
-			$('.aButtons').append('<button value="ok">Ok</button>');
+		} else {
+			$('.aButtons').append('<button class="button-primary" value="ok">Ok</button>');
 		}
 
-		$(document).keydown(function(e)
-		{
-			if($('.appriseOverlay').is(':visible'))
-			{
-				if(e.keyCode == 13)
-				{
+		$(document).keydown(function(e) {
+			if ( $('.appriseOverlay').is(':visible')) {
+				if ( e.keyCode == 13) {
 					$('.aButtons > button[value="ok"]').click();
 				}
-				if(e.keyCode == 27)
-				{
+				if ( e.keyCode == 27) {
 					$('.aButtons > button[value="cancel"]').click();
 				}
 			}
 		});
 
 		var aText = $('.aTextbox').val();
-		if(!aText) { aText = false; }
-		$('.aTextbox').keyup(function()
-		{
+
+		if ( ! aText) {
+			aText = false;
+		}
+
+		$('.aTextbox').keyup(function() {
 			aText = $(this).val();
 		});
 
-		$('.aButtons > button').click(function()
-		{
+		$('.aButtons > button').click(function() {
+
 			$('.appriseOverlay').remove();
 			$('.appriseOuter').remove();
-			if(callback)
-			{
+
+			if ( callback) {
 				var wButton = $(this).attr("value");
-				if(wButton=='ok')
-				{
-					if(args)
-					{
-						if(args['input'])
-						{
+				if ( wButton=='ok') {
+					if ( args) {
+						if ( args['input']) {
 							callback(aText);
-						}
-						else
-						{
+						} else {
 							callback(true);
 						}
-					}
-					else
-					{
+					} else {
 						callback(true);
 					}
-				}
-				else if(wButton=='cancel')
-				{
+				} else if(wButton=='cancel') {
 					callback(false);
 				}
 			}

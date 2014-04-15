@@ -35,10 +35,16 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$output  = '<table class="widefat">';
 	$output .= '<div class="tablenav top">';
 	$output .= '<div class="alignleft actions">';
+
+	//$output .= '<div class="tb-fancy-select condensed">';
 	$output .= '<select name="action">';
 	$output .= '<option value="-1" selected="selected">'.__( 'Bulk Actions', 'themeblvd' ).'</option>';
 	$output .= '<option value="trash">'.__( 'Delete', 'themeblvd' ).' '.esc_attr($name).'</option>';
 	$output .= '</select>';
+	//$output .= '<span class="trigger"></span>';
+	//$output .= '<span class="textbox"></span>';
+	//$output .= '</div>';
+
 	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.__( 'Apply', 'themeblvd' ).'">';
 	$output .= '</div>';
 	$output .= '<div class="alignright tablenav-pages">';
@@ -1120,6 +1126,74 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 	}
 
 	return $output;
+}
+
+/**
+ * Outputs Editor in hidden modal window that can
+ * be accessed by other options.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_editor( $args = array() ) {
+
+	$defaults = array(
+		'delete' 	=> false,
+		'duplicate'	=> false
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	ob_start();
+	wp_editor( '', 'themeblvd_editor' );
+	$editor = ob_get_clean();
+	?>
+	<div id="themeblvd-editor-modal" class="themeblvd-modal-wrap hide">
+		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-editor">
+
+			<a class="media-modal-close" href="#" title="Close">
+				<span class="media-modal-icon"></span>
+			</a>
+
+			<div class="media-modal-content">
+				<div class="media-frame wp-core-ui hide-menu hide-router">
+
+					<div class="media-frame-title">
+						<h1><?php _e('Edit Content', 'themeblvd'); ?></h1>
+					</div><!-- .media-frame-title (end) -->
+
+					<div class="media-frame-content">
+						<div class="media-frame-content-inner">
+							<div class="content-mitt">
+								<?php echo $editor; ?>
+							</div>
+						</div><!-- .media-frame-content-inner (end) -->
+					</div><!-- .media-frame-content (end) -->
+
+					<div class="media-frame-toolbar">
+						<div class="media-toolbar">
+							<?php if ( $args['delete'] || $args['duplicate'] ) : ?>
+								<div class="media-toolbar-secondary">
+									<?php if ( $args['delete'] ) : ?>
+										<a href="#" class="button media-button button-secondary button-large media-button-delete"><?php _e('Delete', 'themeblvd'); ?></a>
+									<?php endif; ?>
+									<?php if ( $args['duplicate'] ) : ?>
+										<a href="#" class="button media-button button-secondary button-large media-button-secondary"><?php _e('Duplicate', 'themeblvd'); ?></a>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
+							<div class="media-toolbar-primary">
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php _e('Save', 'themeblvd'); ?></a>
+							</div>
+						</div><!-- .media-toolbar (end) -->
+					</div><!-- .media-frame-toolbar (end) -->
+
+				</div><!-- .media-frame (end) -->
+			</div><!-- .media-modal-content (end) -->
+
+		</div><!-- .media-modal (end) -->
+
+		<div class="media-modal-backdrop"></div>
+	</div>
+	<?php
 }
 
 if ( !function_exists( 'themeblvd_options_footer_text_default' ) ) :

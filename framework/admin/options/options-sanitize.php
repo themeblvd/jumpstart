@@ -37,6 +37,8 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
 	add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
 	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
+	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
+	add_filter( 'themeblvd_sanitize_code', 'themeblvd_sanitize_editor' );
 }
 
 /**
@@ -131,8 +133,21 @@ function themeblvd_sanitize_upload( $input ) {
  */
 function themeblvd_sanitize_enum( $input, $option ) {
 	$output = '';
-	if ( array_key_exists( $input, $option['options'] ) ) {
-		$output = $input;
+	if ( isset( $option['options'] ) && is_array( $option['options'] ) ) {
+
+		// Manual select, with standard options set
+		if ( array_key_exists( $input, $option['options'] ) ) {
+			$output = $input;
+		}
+
+	} else if ( isset( $option['select'] ) ) {
+
+		// Dynamic Select
+		$options = themeblvd_get_select( $option['select'] );
+
+		if ( array_key_exists( $input, $options ) ) {
+			$output = $input;
+		}
 	}
 	return $output;
 }

@@ -1,8 +1,8 @@
 /* =Icon Fonts
 -----------------------------------------------*/
 
-/* Note: @font-face included from /framework/admin/assets/css/admin-global.css */
 
+/* Note: @font-face included from /framework/admin/assets/css/admin-global.css */
 [class^="tb-icon-"]:before,
 [class*=" tb-icon-"]:before {
 	font-family: "theme-blvd-admin";
@@ -25,28 +25,119 @@
 	/* Animation center compensation - margins should be symmetric */
 	/* remove if not needed */
 	margin-left: .2em;
-
 }
-.tb-icon-logo-circled:before { content: '\e80b'; } /* '' */
-.tb-icon-roadblock:before { content: '\e80c'; } /* '' */
-.tb-icon-logo-simple:before { content: '\e810'; } /* '' */
-.tb-icon-plus-circled:before { content: '\e80a'; } /* '' */
-.tb-icon-lock:before { content: '\e80d'; } /* '' */
-.tb-icon-picture:before { content: '\e801'; } /* '' */
-.tb-icon-link:before { content: '\e811'; } /* '' */
-.tb-icon-quote:before { content: '\e812'; } /* '' */
-.tb-icon-down-dir:before { content: '\e805'; } /* '' */
-.tb-icon-logo-stroke:before { content: '\e80f'; } /* '' */
-.tb-icon-right-dir:before { content: '\e807'; } /* '' */
-.tb-icon-up-dir:before { content: '\e808'; } /* '' */
-.tb-icon-arrows-ccw:before { content: '\e809'; } /* '' */
-.tb-icon-briefcase:before { content: '\e813'; } /* '' */
-.tb-icon-ok-circled:before { content: '\e80e'; } /* '' */
-.tb-icon-cancel-circled:before { content: '\e803'; } /* '' */
-.tb-icon-help-circled:before { content: '\e802'; } /* '' */
-.tb-icon-attention:before { content: '\e804'; } /* '' */
-.tb-icon-commercial-building:before { content: '\e800'; } /* '' */
-.tb-icon-left-dir:before { content: '\e806'; } /* '' */
+.tb-icon-code:before {
+	content: "\e607";
+}
+.tb-icon-up-dir:before {
+	content: "\e808";
+}
+.tb-icon-unlock:before {
+	content: "\e601";
+}
+.tb-icon-sort:before {
+	content: "\e602";
+}
+.tb-icon-roadblock:before {
+	content: "\e80c";
+}
+.tb-icon-right-dir:before {
+	content: "\e807";
+}
+.tb-icon-quote:before {
+	content: "\e812";
+}
+.tb-icon-plus-circled:before {
+	content: "\e80a";
+}
+.tb-icon-pictures:before {
+	content: "\e801";
+}
+.tb-icon-picture:before {
+	content: "\e608";
+}
+.tb-icon-pencil:before {
+	content: "\e609";
+}
+.tb-icon-ok-circled:before {
+	content: "\e80e";
+}
+.tb-icon-logo-stroke:before {
+	content: "\e80f";
+}
+.tb-icon-logo-simple:before {
+	content: "\e810";
+}
+.tb-icon-logo-circled:before {
+	content: "\e80b";
+}
+.tb-icon-lock:before {
+	content: "\e80d";
+}
+.tb-icon-link:before {
+	content: "\e811";
+}
+.tb-icon-left-dir:before {
+	content: "\e806";
+}
+.tb-icon-info-sign:before {
+	content: "\e611";
+}
+.tb-icon-help-circled:before {
+	content: "\e802";
+}
+.tb-icon-film:before {
+	content: "\e613";
+}
+.tb-icon-down-dir:before {
+	content: "\e805";
+}
+.tb-icon-commerical-building:before, /* An old typo */
+.tb-icon-commercial-building:before {
+	content: "\e800";
+}
+.tb-icon-circle-arrow-up:before {
+	content: "\e616";
+}
+.tb-icon-circle-arrow-right:before {
+	content: "\e617";
+}
+.tb-icon-circle-arrow-left:before {
+	content: "\e618";
+}
+.tb-icon-circle-arrow-down:before {
+	content: "\e619";
+}
+.tb-icon-cancel-circled:before {
+	content: "\e803";
+}
+.tb-icon-attention:before {
+	content: "\e804";
+}
+.tb-icon-arrows-ccw:before {
+	content: "\e809";
+}
+.tb-icon-move:before {
+	content: "\e60a";
+}
+.tb-icon-copy:before {
+	content: "\e60b";
+}
+.tb-icon-cart:before {
+	content: "\e600";
+}
+.tb-icon-wrench:before {
+	content: "\e603";
+}
+.tb-icon-cogs:before {
+	content: "\e604";
+}
+.tb-icon-cog:before {
+	content: "\e605";
+}
+.tb-icon-spinner:before {
+	content: "\e606";
+}
 
 /* =General Classes
 -----------------------------------------------*/
@@ -57,6 +148,21 @@
 	display: block;
 	height: 0;
 	clear: both;
+}
+#optionsframework .tb-loader {
+	display: none;
+	visibility: visible;
+	z-index: 4;
+}
+#optionsframework .tb-loader i {
+	-webkit-animation: spin 2s infinite linear;
+	-moz-animation: spin 2s infinite linear;
+	-o-animation: spin 2s infinite linear;
+	animation: spin 2s infinite linear;
+	display: block;
+	font-size: 16px;
+	width: 22px;
+	height: 16px;
 }
 #optionsframework .warning {
 	background: #f7f7f7;
@@ -594,62 +700,169 @@ tb-warning .tb-alert-inner {
 	}
 }
 
+/* =Framework Tooltips
+-----------------------------------------------*/
+
+.themeblvd-tooltip {
+	position: absolute;
+	z-index: 10000;
+	display: block;
+	visibility: visible;
+	font-size: 12px;
+	line-height: 1.4;
+	padding: 5px 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.themeblvd-tooltip.fade {
+	opacity: 0;
+	-webkit-transition: opacity 0.15s linear;
+	transition: opacity 0.15s linear;
+}
+.themeblvd-tooltip.fade.in {
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+}
+.themeblvd-tooltip .tooltip-inner {
+	max-width: 400px;
+	padding: 3px 8px;
+	color: #ffffff;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000000;
+	border-radius: 4px;
+}
+.tooltip-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+}
+.themeblvd-tooltip.top .tooltip-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px 5px 0;
+	border-top-color: #000000;
+}
+.themeblvd-tooltip.right .tooltip-arrow {
+	top: 50%;
+	left: -5px;
+	margin-top: -5px;
+	border-width: 5px 5px 5px 0;
+	border-right-color: #000000;
+}
+.themeblvd-tooltip.bottom .tooltip-arrow {
+	top: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 0 5px 5px;
+	border-bottom-color: #000000;
+}
+.themeblvd-tooltip.left .tooltip-arrow {
+	top: 50%;
+	right: -5px;
+	margin-top: -5px;
+	border-width: 5px 0 5px 5px;
+	border-left-color: #000000;
+}
+
+/* =Framework Modal
+-----------------------------------------------*/
+
+body.themeblvd-stop-scroll {
+	height: 100%;
+	overflow: hidden;
+}
+.themeblvd-modal-wrap.hide {
+	display: none;
+}
+.themeblvd-modal-wrap .themeblvd-modal {
+	z-index: 100001;
+}
+.themeblvd-modal-wrap .media-modal-backdrop {
+	z-index: 100000;
+}
+.themeblvd-modal-wrap.small-modal .media-modal-content {
+	min-height: 0;
+}
+
+/* Modal Sizes */
+.themeblvd-modal-wrap .small-modal {
+	max-height: 500px; /* overriden with JS */
+	margin-left: -250px;
+	right: auto;
+	left: 50%;
+	width: 500px;
+}
+.themeblvd-modal-wrap .small-modal .media-modal-content {
+	min-height: 0;
+}
+.themeblvd-modal-wrap .medium-modal {
+	max-height: 500px; /* overriden with JS */
+	margin-left: -400px;
+	right: auto;
+	left: 50%;
+	width: 800px;
+}
+.themeblvd-modal-wrap .medium-modal .media-modal-content {
+	min-height: 0;
+}
+
+/* Code editor in modal */
+.themeblvd-modal .CodeMirror {
+	height: 400px;
+}
+
+/* Inner */
+.themeblvd-modal-wrap .button,
+.themeblvd-modal-wrap .button:hover {
+	text-decoration: none !important; /* Override for when hidden modal is in wp_footer */
+}
+
 /* =Confirmation prompt (Originally from Apprise plugin)
 -----------------------------------------------*/
 
 .appriseOverlay {
+	background: #000000;
+	min-height: 360px;
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
 	position: fixed;
 	top: 0;
 	left: 0;
-	background: rgba(0,0,0,0.3);
-	display: none; z-index: 999;
+	right: 0;
+	bottom: 0;
+	z-index: 101000;
 }
 .appriseOuter {
-	background: #eee;
-	border: 1px solid #fff;
+	background: #ffffff;
 	box-shadow: 0 3px 7px #333;
 	-moz-box-shadow: 0 3px 7px #333;
 	-webkit-box-shadow: 0 3px 7px #333;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	-khtml-border-radius: 4px;
 	z-index: 99999999;
 	min-width: 200px;
 	min-height: 50px;
 	max-width: 75%;
 	position: fixed;
-	display: none; width:350px;
+	display: none;
+	width:350px;
 }
 .appriseInner {
-	color: #333;
-	text-shadow: 0 1px 0 #fff;
 	padding: 20px;
 }
-.appriseInner button {
-	border: 1px solid #bbb;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-khtml-border-radius: 3px;
-	background: 0;
-	color: #232d3d;
-	font-size: 12px;
-	font-weight: 700;
-	text-shadow: 0 1px 0 #fff;
-	cursor: pointer;
-	box-shadow: 0 1px 2px #ccc;
-	-moz-box-shadow: 0 1px 2px #ccc;
-	-webkit-box-shadow: 0 1px 2px #ccc;
-	margin: 0 3px;
-	padding: 4px 10px;
+.appriseInner .button-secondary {
+	margin: 0 2px;
 }
-.appriseInner button:hover {
-	color: #5b92d4;
-}
-.aButtons,.aInput {
+.aButtons,
+.aInput {
+	background: #fcfcfc;
+	border-top: 1px solid #dddddd;
+	margin: 20px -20px -20px -20px;
+	padding: 10px;
 	text-align: center;
-	margin: 20px 10px 0;
 }
 .aTextbox {
 	border: 1px solid #aaa;

@@ -61,7 +61,7 @@ if ( typeof Object.create !== 'function' ) {
                     self.$modal_window.find('.media-frame-content-inner').css('padding', '20px');
                 }
 
-                // Setup() callback
+                // on_load() callback
                 self.options.on_load.call(self);
 
                 // Bind close
@@ -78,6 +78,16 @@ if ( typeof Object.create !== 'function' ) {
                     self.close();
                     return false;
                 });
+
+                // Secondary button
+                if ( self.options.button_secondary ) {
+                    self.$modal_window.find('.media-button-secondary').on( 'click', function(){
+                        self.options.on_secondary.call(self);
+                        self.dup_block(); // If this is set of content block options, will duplcate the content block
+                        self.close();
+                        return false;
+                    });
+                }
 
                 // Delete
                 if ( self.options.button_delete ) {
@@ -147,7 +157,7 @@ if ( typeof Object.create !== 'function' ) {
             self.popup = self.popup.replace( '%button_text%', self.options.button );
 
             if ( self.options.code_editor ) {
-                self.popup = self.popup.replace( '%content%', '<form><textarea id="'+self.id+'-editor" name="code"></textarea></form>' );
+                self.popup = self.popup.replace( '%content%', '<form><textarea id="'+self.id+'_editor" name="code"></textarea></form>' );
             }
 
             if ( self.options.form ) {
@@ -158,21 +168,26 @@ if ( typeof Object.create !== 'function' ) {
             // completely when modal is closed.
             $('body').append( self.popup );
 
+            // Duplicate Button?
+            if ( self.options.button_secondary ) {
+                $('#'+self.id+' .media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-secondary">'+self.options.button_secondary+'</a></div>');
+            }
+
             // Delete button?
             if ( self.options.button_delete ) {
-                 $('#'+self.id+' .media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-delete">'+self.options.button_delete+'</a></div>');
+                $('#'+self.id+' .media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-delete">'+self.options.button_delete+'</a></div>');
             }
 
             if ( self.options.code_editor ) {
 
                 if ( self.$elem.is('.tb-content-block-code-link') ) {
                     var field_name = self.$elem.closest('.content-block').data('field-name');
-                    content = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[content]"]').val();
+                    content = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[html]"]').val();
                 } else {
                     content = self.$elem.closest('.textarea-wrap').find('textarea').val();
                 }
 
-                $('#'+self.id+'-editor').val(content);
+                $('#'+self.id+'_editor').val(content);
 
             } else {
 
@@ -205,34 +220,41 @@ if ( typeof Object.create !== 'function' ) {
             // Setup code editor with CodeMirror
             if ( self.options.code_editor && typeof CodeMirror !== 'undefined'  ) {
 
-                var mode;
+                var editor, mode;
 
-                if ( self.options.code_lang == 'css' || self.options.code_lang == 'javascript' ) {
-                    mode = self.options.code_lang;
-                } else {
-                    mode = {
-                        name: "htmlmixed",
-                        scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
-                                       mode: null},
-                                      {matches: /(text|application)\/(x-)?vb(a|script)/i,
-                                       mode: "vbscript"}]
-                    };
-                }
+                // Look for existing instance of this editor
+                editor = $('#'+self.id+'_editor').data('CodeMirrorInstance');
 
-                // Create editor instance
-                var editor = CodeMirror.fromTextArea(document.getElementById( self.id+'-editor'), {
-                    mode: mode,
-                    lineNumbers: true,
-                    theme: 'themeblvd',
-                    indentUnit: 4,
-                    tabSize: 4,
-                    indentWithTabs: true,
-                    autofocus: true
-                });
+                // Editor doesn't exist, so let's create one
+                if ( ! editor ) {
 
-                // If editor was created successfully, store it for access later.
-                if ( editor ) {
-                    $('#'+self.id+'-editor').data('CodeMirrorInstance', editor);
+                    if ( self.options.code_lang == 'css' || self.options.code_lang == 'javascript' ) {
+                        mode = self.options.code_lang;
+                    } else {
+                        mode = {
+                            name: "htmlmixed",
+                            scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+                                           mode: null},
+                                          {matches: /(text|application)\/(x-)?vb(a|script)/i,
+                                           mode: "vbscript"}]
+                        };
+                    }
+
+                    // Create editor instance
+                    var editor = CodeMirror.fromTextArea(document.getElementById(self.id+'_editor'), {
+                        mode: mode,
+                        lineNumbers: true,
+                        theme: 'themeblvd',
+                        indentUnit: 4,
+                        tabSize: 4,
+                        indentWithTabs: true,
+                        autofocus: true
+                    });
+
+                    // If editor was created successfully, store it for access later.
+                    if ( editor ) {
+                        $('#'+self.id+'_editor').data('CodeMirrorInstance', editor);
+                    }
                 }
 
             }
@@ -252,6 +274,13 @@ if ( typeof Object.create !== 'function' ) {
                 self.$modal_window.find('.themeblvd-modal').css('max-height', height+'px');
             }
 
+            // Make sure any scripts for options run
+            if ( self.options.form ) {
+                self.$modal_window.themeblvd('options', 'setup');
+                self.$modal_window.themeblvd('options', 'bind');
+                self.$modal_window.themeblvd('options', 'media-uploader');
+            }
+
         },
 
         close: function() {
@@ -265,8 +294,10 @@ if ( typeof Object.create !== 'function' ) {
             }
 
             // Unbind links within modal
+            self.$modal_window.find('.media-button-secondary').off('click');
             self.$modal_window.find('.media-modal-close, .media-modal-backdrop').off('click');
             self.$modal_window.find('.media-button-insert').off('click');
+            self.$modal_window.find('.media-button-delete').off('click');
 
             // Hide or Remove modal
             if ( self.options.build ) {
@@ -288,13 +319,13 @@ if ( typeof Object.create !== 'function' ) {
             // from modal back to the textarea in the options.
             if ( self.options.code_editor ) {
 
-                var editor = $('#'+self.id+'-editor').data('CodeMirrorInstance'),
+                var editor = $('#'+self.id+'_editor').data('CodeMirrorInstance'),
                     content = editor.getValue(),
                     textarea;
 
                 if ( self.$elem.is('.tb-content-block-code-link') ) {
                     var field_name = self.$elem.closest('.content-block').data('field-name');
-                    textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[content]"]');
+                    textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[html]"]');
                 } else {
                     textarea = self.$elem.closest('.textarea-wrap').find('textarea');
                 }
@@ -308,6 +339,7 @@ if ( typeof Object.create !== 'function' ) {
 
             var self = this,
                 $column,
+                $block,
                 column_content = '';
 
             // Cache column before we remove the widget
@@ -315,13 +347,93 @@ if ( typeof Object.create !== 'function' ) {
 
             // Remove content block
             if ( self.$elem.parent().is('.content-block-nav') ) {
-                self.$elem.closest('.content-block').remove();
+
+                $block = self.$elem.closest('.content-block');
+                $block.addClass('delete fade-out');
+
+                window.setTimeout(function(){
+
+                    $block.remove();
+
+                    // Add "mini-empty" class to column, if empty
+                    if ( ! $column.html().trim().length ) {
+                        $column.addClass('mini-empty');
+                    }
+                }, 500);
+
+            }
+        },
+
+        dup_block: function() {
+
+            var self = this,
+                nonce = $('#builder_blvd').find('input[name="_tb_save_builder_nonce"]').val(),
+                data,
+                $block = self.$elem.closest('.content-block'),
+                $new_block;
+
+            if ( self.$elem.is('.tb-content-block-editor-link') || self.$elem.is('.tb-content-block-code-link') ) {
+
+                // Save any options being worked on.
+                self.options.on_save.call(self);
+                self.save();
+
+                // Now that it's saved, retrieve data from form.
+                data = $block.find('input, select, textarea').serialize();
+
+            } else {
+
+                // Retrieve data from form being worked on in
+                // its current state.
+                data = self.$modal_window.find('input, select, textarea').serialize();
             }
 
-            // Add "mini-empty" class to column, if empty
-            if ( ! $column.html().trim().length ) {
-                $column.addClass('mini-empty');
-            }
+            $.ajax({
+                type: "POST",
+                url: ajaxurl,
+                data:
+                {
+                    action: 'themeblvd_dup_block',
+                    security: nonce,
+                    data: data
+                },
+                success: function(response) {
+
+                    // [0] => Element ID
+                    // [1] => Block ID
+                    // [2] => Column number
+                    // [3] => HTML of new content block
+                    response = response.split('[(=>)]');
+
+                    // Add HTML for new content block
+                    $block.after( response[3] );
+
+                    // Cache the new HTML element we just appended
+                    $new_block = $('#'+response[1]);
+
+                    // Temporarily add green border/shadow to the newly added element.
+                    $new_block.addClass('add');
+                    window.setTimeout(function(){
+                        $new_block.removeClass('add');
+                    }, 500);
+
+                    // Setup Theme Blvd namespace options
+                    $new_block.themeblvd('options', 'setup');
+                    $new_block.themeblvd('options', 'media-uploader');
+                    $new_block.themeblvd('options', 'editor');
+                    $new_block.themeblvd('options', 'code-editor');
+
+                    // And bind the modal window for the settings link
+                    $new_block.find('.tb-content-block-options-link').ThemeBlvdModal({
+                        build: true,
+                        form: true,
+                        padding: false,
+                        size: 'small',
+                        on_load: builder_blvd.content_block_options_load
+                    });
+
+                }
+            });
         }
     };
 
@@ -336,7 +448,8 @@ if ( typeof Object.create !== 'function' ) {
     $.fn.ThemeBlvdModal.options = {
         title: 'Setup',                 // Title of modal window
         button: 'Save',                 // Button text
-        button_delete: '',              // Text for red button in lower left - if blank, no button.
+        button_delete: '',              // Text for delete button in lower left - if blank, no button.
+        button_secondary: '',           // Text for duplicate button in lower left - if blank, no button.
         size: 'large',                  // Size of modal - small, medium, large
         build: true,                    // Whether to build the HTML markup for the popup
         form: false,                    // Whether this modal is a set of options
@@ -347,7 +460,8 @@ if ( typeof Object.create !== 'function' ) {
         on_load: function(modal){},     // Callback before modal window is displayed
         on_cancel: function(modal){},   // Callback when close button is clicked, before modal is closed
         on_save: function(modal){},     // Callback when save button is clicked, before modal is closed
-        on_delete: function(modal){}    // Callback when save button is clicked, before modal is closed
+        on_delete: function(modal){},   // Callback when delete button is clicked, before modal is closed
+        on_secondary: function(modal){} // Callback when secondary button is clicked, before modal is closed
     };
 
 })(jQuery);

@@ -45,6 +45,22 @@ class Theme_Blvd_Options_Page {
 	private $sanitized = false;
 
 	/**
+	 * Whether options page has editor modal.
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $editor = false;
+
+	/**
+	 * Whether options page has code editor modal.
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $code_editor = false;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 2.2.0
@@ -82,6 +98,40 @@ class Theme_Blvd_Options_Page {
 		// Add admin page and register settings
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
 		add_action( 'admin_init', array( $this, 'register' ) );
+
+		// Whether options page has an Editor modal
+		foreach ( $this->options as $option ) {
+			if ( $option['type'] == 'textarea' ) {
+
+				if ( isset( $option['editor'] ) && $option['editor'] ) {
+					$this->editor = true;
+				}
+
+				if ( isset( $option['code'] ) && $option['code'] ) {
+					$this->code_editor = true;
+				}
+
+				if ( $this->editor && $this->code_editor ) {
+					break;
+				}
+
+			}
+		}
+
+		// Add Editor into footer, which any textarea type
+		// options with "editor" set to true can utilize.
+		if ( $this->editor ) {
+
+			add_action( 'current_screen', array( $this, 'add_editor' ) );
+
+			// Shortcode generator for Editor modal
+			if ( defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+				if ( isset( $GLOBALS['_themeblvd_shortcode_generator'] ) ) {
+					add_action( 'admin_footer-appearance_page_'.$this->id, array( $GLOBALS['_themeblvd_shortcode_generator'], 'add_modal' ) );
+				}
+
+			}
+		}
 
 		// Legacy media uploader
 		if ( ! function_exists( 'wp_enqueue_media' ) ) {
@@ -125,9 +175,25 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	public function load_styles() {
+
+		// WP Built-in styles
+		wp_enqueue_style( 'wp-color-picker' );
+
+		// Framework
 		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
 		wp_enqueue_style( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_style( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/css/colorpicker.min.css' );
+
+		// Shortcode Generator
+		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css', null, TB_FRAMEWORK_VERSION );
+			wp_enqueue_style( 'tb_shortcode_generator', TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css', false, TB_SHORTCODES_PLUGIN_VERSION );
+		}
+
+		// Code Editor
+		if ( $this->code_editor ) {
+			wp_enqueue_style( 'codemirror', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css', null, '4.0' );
+			wp_enqueue_style( 'codemirror-theme', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/themeblvd.min.css', null, '4.0' );
+		}
 	}
 
 	/**
@@ -136,14 +202,32 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	public function load_scripts() {
+
+		// WP Built-in scripts
 		wp_enqueue_script( 'jquery-ui-core');
+		wp_enqueue_script( 'wp-color-picker' );
+
+		// WP Built-in Media Modal
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
+
+		// Framework
 		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_modal', TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		wp_enqueue_script( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/js/options.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_enqueue_script( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/js/colorpicker.min.js', array('jquery') );
+
+		// Shortcode Generator
+		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+			wp_enqueue_script( 'tb_shortcode_generator', TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/js/generator.min.js', false, TB_SHORTCODES_PLUGIN_VERSION );
+		}
+
+		// Code Editor
+		if ( $this->code_editor ) {
+			wp_enqueue_script( 'codemirror', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.js', null, '4.0' );
+			wp_enqueue_script( 'codemirror-modes', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js', null, '4.0' );
+		}
 	}
 
 	/**
@@ -282,6 +366,20 @@ class Theme_Blvd_Options_Page {
 
 		// Return sanitized options
 		return $clean;
+	}
+
+	/**
+	 * Hook in hidden editor modal.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_editor() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', 'themeblvd_editor' );
+		}
 	}
 
 }

@@ -112,9 +112,11 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			// Start Output
 			$output .= '<div id="'.esc_attr( $id ) .'" class="'.esc_attr( $class ).'">'."\n";
+
 			if ( ! empty( $value['name'] ) ) { // Name not required
 				$output .= '<h4 class="heading">'.esc_html( $value['name'] ).'</h4>'."\n";
 			}
+
 			$output .= '<div class="option">'."\n".'<div class="controls">'."\n";
 		 }
 
@@ -185,7 +187,18 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$cols = $value['options']['cols'];
 				}
 
+				$output .= '<div class="textarea-wrap">';
+
+				if ( isset( $value['editor'] ) && $value['editor'] ) {
+					$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+				}
+
+				if ( isset( $value['code'] ) && in_array( $value['code'], array( 'html', 'javascript', 'css' ) ) ) {
+					$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.$value['name'].'" data-code_lang="'.$value['code'].'"><i class="tb-icon-code"></i></a>';
+				}
+
 				$output .= sprintf( '<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $value['id'] ), stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_attr( $cols ), $place_holder, esc_textarea( $val ) );
+				$output .= '</div><!-- .textarea-wrap (end) -->';
 				break;
 
 			/*---------------------------------------*/
@@ -194,6 +207,66 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'select' :
 
+				$error = '';
+
+				// Dynamic select types
+				if ( ! isset( $value['options'] ) && isset( $value['select'] ) ) {
+
+					$value['options'] = array();
+
+					switch ( $value['select'] ) {
+
+						case 'pages' :
+
+							$value['options'] = themeblvd_get_select( 'pages' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('No pages were found.', 'themeblvd');
+							}
+							break;
+
+						case 'categories' :
+
+							$value['options'] = themeblvd_get_select( 'categories' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('No categories sidebars were found.', 'themeblvd');
+							}
+							break;
+
+						case 'sidebars' :
+
+							if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
+								$error = __('You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area.', 'themeblvd');
+							}
+
+							$value['options'] = themeblvd_get_select( 'sidebars' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('No floating widget areas were found.', 'themeblvd');
+							}
+							break;
+
+						case 'sidebars_all' :
+
+							$value['options'] = themeblvd_get_select( 'sidebars_all' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('No registered sidebars were found.', 'themeblvd');
+							}
+							break;
+					}
+
+				}
+
+				// If any dynamic selects caused errors,
+				// don't display a select menu.
+				if ( $error ) {
+					$output .= sprintf('<p class="warning">%s</p>', $error);
+					break;
+				}
+
+				// Start output for <select>
 				$output .= '<div class="tb-fancy-select">';
 				$output .= sprintf( '<select class="of-input" name="%s" id="%s">', esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($value['id']) );
 
@@ -211,7 +284,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= themeblvd_builder_sample_previews();
 				}
 				break;
-
 
 			/*---------------------------------------*/
 			/* Radio
@@ -287,8 +359,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'color' :
-				$output .= sprintf( '<div id="%s" class="colorSelector"><div style="%s"></div></div>', esc_attr( $value['id'].'_picker' ), esc_attr( 'background-color:'.$val ) );
-				$output .= sprintf( '<input class="of-color" name="%s" id="%s" type="text" value="%s" />', esc_attr($option_name.'['.$value['id'].']'), esc_attr($value['id']), esc_attr($val) );
+				$output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr( $val ), esc_attr( $value['std'] ) );
 				break;
 
 			/*---------------------------------------*/
@@ -298,11 +369,19 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'upload' :
 				if ( function_exists('wp_enqueue_media') ) {
 					// Media uploader WP 3.5+
-					$args = array( 'option_name' => $option_name, 'type' => 'standard', 'id' => $value['id'], 'value' => $val );
+					$args = array(
+						'option_name'	=> $option_name,
+						'type'			=> 'standard',
+						'id'			=> $value['id'],
+						'value'			=> $val
+					);
 					$output .= themeblvd_media_uploader( $args );
 				} else {
 					// Legacy media uploader
-					$val = array( 'url' => $val, 'id' => '' );
+					$val = array(
+						'url' 	=> $val,
+						'id' 	=> ''
+					);
 					$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $val ); // @deprecated
 				}
 
@@ -605,7 +684,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-wp-editor desc-'.$desc_location.$has_description.' height-'.$editor_settings['height'].'">';
 
 				if ( $desc_location == 'before' ) {
-					$output .= '<div class="explain">'.wp_kses( $explain_value, $allowedtags).'</div>'."\n";
+					$output .= '<div class="explain">'.$explain_value.'</div>'."\n";
 				}
 
 				ob_start();
@@ -613,10 +692,39 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= ob_get_clean();
 
 				if ( $desc_location == 'after' ) {
-					$output .= '<div class="explain">'.wp_kses( $explain_value, $allowedtags).'</div>'."\n";
+					$output .= '<div class="explain">'.$explain_value.'</div>'."\n";
 				}
 
 				$output .= '</div><!-- .tb-wp-editor (end) -->';
+
+				break;
+
+			/*---------------------------------------*/
+			/* Editor that opens up in a modal
+			/* (Use this editor type for any AJAX
+			/* requsted options)
+			/*---------------------------------------*/
+
+			case 'editor_modal' :
+				$output .= sprintf( '<textarea id="%s" class="editor-modal-content" name="%s" cols="8" rows="8">%s</textarea>', esc_textarea( $value['id'] ), stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_textarea( $val ) );
+				break;
+
+			/*---------------------------------------*/
+			/* Code Editor
+			/*---------------------------------------*/
+
+			case 'code' :
+
+				$id = uniqid('code_editor_');
+
+				$lang = 'html';
+				if ( isset( $value['lang'] ) && in_array( $value['lang'], array( 'javascript', 'html', 'css' )) ) {
+					$lang = $value['lang'];
+				}
+
+				$output .= '<div class="textarea-wrap">';
+				$output .= sprintf( '<textarea id="%s" data-code-lang="%s" name="%s" rows="8">%s</textarea>', $id, $lang, stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_textarea( $val ) );
+				$output .= '</div><!-- .textarea-wrap (end) -->';
 
 				break;
 
@@ -655,9 +763,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		// Finish off standard options and add description
 		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
 
-			if ( $value['type'] != 'checkbox' ) {
-				$output .= '<br/>';
-			}
 			$output .= '</div>';
 
 			$explain_value = '';
