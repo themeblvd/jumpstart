@@ -61,6 +61,22 @@ class Theme_Blvd_Options_Page {
 	public $code_editor = false;
 
 	/**
+	 * Whether options page has vector icon browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $icons_vector = false;
+
+	/**
+	 * Whether options page has image icon browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $icons_image = false;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 2.2.0
@@ -99,8 +115,25 @@ class Theme_Blvd_Options_Page {
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
 		add_action( 'admin_init', array( $this, 'register' ) );
 
-		// Whether options page has an Editor modal
+		// Whether options page has hidden modals
 		foreach ( $this->options as $option ) {
+
+			// Text option, looking for icon browsers
+			if ( $option['type'] == 'text' ) {
+
+				if ( isset( $option['icon'] ) ) {
+
+					if ( $option['icon'] == 'vector' ) {
+						$this->icons_vector = true;
+					}
+
+					if ( $option['icon'] == 'image' ) {
+						$this->icons_image = true;
+					}
+				}
+			}
+
+			// Textareas, looking for visual or code editor
 			if ( $option['type'] == 'textarea' ) {
 
 				if ( isset( $option['editor'] ) && $option['editor'] ) {
@@ -110,12 +143,16 @@ class Theme_Blvd_Options_Page {
 				if ( isset( $option['code'] ) && $option['code'] ) {
 					$this->code_editor = true;
 				}
-
-				if ( $this->editor && $this->code_editor ) {
-					break;
-				}
-
 			}
+
+			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image ) {
+				break;
+			}
+		}
+
+		// Add icon browsers into footer
+		if ( $this->icons_vector || $this->icons_image ) {
+			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
 		}
 
 		// Add Editor into footer, which any textarea type
@@ -187,6 +224,11 @@ class Theme_Blvd_Options_Page {
 		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
 			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css', null, TB_FRAMEWORK_VERSION );
 			wp_enqueue_style( 'tb_shortcode_generator', TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css', false, TB_SHORTCODES_PLUGIN_VERSION );
+		}
+
+		// Icon Browser (vector)
+		if ( $this->icons_vector ) {
+			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css', null, TB_FRAMEWORK_VERSION );
 		}
 
 		// Code Editor
@@ -379,6 +421,30 @@ class Theme_Blvd_Options_Page {
 
 		if ( $page->base == 'appearance_page_'.$this->id ) {
 			add_action( 'in_admin_header', 'themeblvd_editor' );
+		}
+	}
+
+	/**
+	 * Hook in hidden icon browser modal(s).
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_icon_browser() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', array( $this, 'display_icon_browser' ) );
+		}
+	}
+	public function display_icon_browser() {
+
+		if ( $this->icons_vector ) {
+			themeblvd_icon_browser( array( 'type' => 'vector' ) );
+		}
+
+		if ( $this->icons_image ) {
+			themeblvd_icon_browser( array( 'type' => 'image' ) );
 		}
 	}
 

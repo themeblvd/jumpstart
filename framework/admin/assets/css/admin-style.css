@@ -705,7 +705,7 @@ tb-warning .tb-alert-inner {
 
 .themeblvd-tooltip {
 	position: absolute;
-	z-index: 10000;
+	z-index: 1000000;
 	display: block;
 	visibility: visible;
 	font-size: 12px;
@@ -809,10 +809,63 @@ body.themeblvd-stop-scroll {
 .themeblvd-modal-wrap .medium-modal .media-modal-content {
 	min-height: 0;
 }
+@media (max-width: 820px) {
+	.themeblvd-modal-wrap .medium-modal {
+		margin: 0;
+		width: auto;
+		top: 10px;
+		right: 10px;
+		left: 10px;
+	}
+	.themeblvd-modal-wrap .medium-modal .media-frame-title {
+		display: block;
+		top: 0;
+	}
+	.themeblvd-modal-wrap .medium-modal .media-frame-content {
+		top: 56px !important;
+	}
+}
 
 /* Code editor in modal */
 .themeblvd-modal .CodeMirror {
 	height: 400px;
+}
+
+/* Icon Browser in modal */
+.themeblvd-icon-browser .themeblvd-modal {
+	z-index: 100002;
+}
+.themeblvd-icon-browser .select-icon {
+	color: #666666;
+	display: inline-block;
+	margin: 10px 5px;
+	outline: 0;
+}
+.themeblvd-icon-browser .select-image-icon {
+	width: 48px;
+}
+.themeblvd-icon-browser .select-icon:hover {
+	color: #d54e21;
+}
+.themeblvd-icon-browser .select-icon.selected {
+	color: #2ea2cc;
+}
+.themeblvd-icon-browser .media-toolbar-secondary .fa {
+	float: left;
+	margin-top: 17px;
+	margin-left: 23px;
+}
+.themeblvd-icon-browser .media-toolbar-secondary img {
+	float: left;
+	margin-top: 4px;
+	margin-left: 20px;
+}
+.themeblvd-icon-browser .media-toolbar-secondary span {
+	color: #888;
+	float: left;
+	font-style: italic;
+	margin-top: 21px;
+	margin-left: 10px;
 }
 
 /* Inner */

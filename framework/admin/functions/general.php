@@ -265,3 +265,111 @@ function themeblvd_admin_body_class( $classes ) {
 
 	return $classes;
 }
+
+/**
+ * Get array of framework icons
+ *
+ * @since 2.3.0
+ *
+ * @param string $type Type of icons to retrieve - vector, image
+ * @return array $icons Array of icons
+ */
+function themeblvd_get_icons( $type ) {
+
+	$icons = get_transient( 'themeblvd_'.get_template().'_'.$type.'_icons' );
+
+	if ( ! $icons ) {
+
+		$icons = array();
+
+		switch ( $type ) {
+
+			case 'vector' :
+
+				$fetch_icons = array();
+				$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
+
+				if ( file_exists( $file_location ) ) {
+
+					$file = fopen( $file_location, "r" );
+
+					// Run through each line of font-awesome.css, and
+					// look for anything that could resemble a font ID.
+					while ( !feof( $file ) ) {
+
+						$line = fgets( $file );
+
+						if ( strpos( $line, '.fa-' ) !== false && strpos( $line, ':before' ) !== false ) {
+							$icon = str_replace( '.fa-', '', $line );
+							$icon = str_replace( ':before {', '', $icon );
+							$icon = str_replace( ':before,', '', $icon );
+							$fetch_icons[] = trim( $icon );
+						}
+
+					}
+
+					// Close file
+					fclose( $file );
+
+					// Sort icons alphebetically
+					sort( $fetch_icons );
+
+					// Format array for use in options framework
+					foreach ( $fetch_icons as $icon ) {
+						$icons[$icon] = $icon;
+					}
+
+				}
+				break;
+
+			case 'image' :
+
+				// Icons from the parent theme
+				$parent_icons = array();
+				$icons_url = TB_FRAMEWORK_URI.'/assets/images/shortcodes/icons';
+				$icons_dir = TB_FRAMEWORK_DIRECTORY.'/assets/images/shortcodes/icons';
+
+				if ( file_exists( $icons_dir ) ) {
+					$parent_icons = scandir( $icons_dir );
+				}
+
+				// Display icons
+				if ( count( $parent_icons ) > 0 ) {
+					foreach ( $parent_icons as $icon ) {
+						if ( strpos( $icon, '.png' ) !== false ) {
+							$id = str_replace( '.png', '', $icon );
+							$icons[$id] = sprintf( '%s/%s.png', $icons_url, $id );
+						}
+					}
+				}
+
+				// Check for icons in the child theme
+				$child_icons = array();
+				$child_icons_url = get_stylesheet_directory_uri().'/icons';
+				$child_icons_dir = get_stylesheet_directory().'/assets/images/shortcodes/icons';
+
+				if ( file_exists( $child_icons_dir ) ) {
+					$child_icons = scandir( $child_icons_dir );
+				}
+
+				// Display icons
+				if ( count( $child_icons ) > 0 ) {
+					foreach ( $child_icons as $icon ) {
+						if ( strpos( $icon, '.png' ) !== false ) {
+							$id = str_replace( '.png', '', $icon );
+							$icons[$id] = sprintf( '%s/%s.png', $child_icons_url, $id );
+						}
+					}
+				}
+
+				break;
+
+			}
+
+			// Cache result
+			set_transient( 'themeblvd_'.$type.'_icons', $icons, '86400' ); // 1 day
+
+		}
+
+		return apply_filters( 'themeblvd_'.$type.'_icons', $icons );
+}

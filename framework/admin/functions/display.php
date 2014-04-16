@@ -1202,6 +1202,82 @@ function themeblvd_editor( $args = array() ) {
 	<?php
 }
 
+/**
+ * Outputs Editor in hidden modal window that can
+ * be accessed by other options.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_icon_browser( $args = array() ) {
+
+	$defaults = array(
+		'type' => 'vector' // image, vector
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// Get icons from framework (cached for 24 hours)
+	$icons = themeblvd_get_icons( $args['type'] );
+	?>
+	<div id="themeblvd-icon-browser-<?php echo $args['type']; ?>" class="themeblvd-modal-wrap themeblvd-icon-browser hide">
+		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
+
+			<a class="media-modal-close" href="#" title="Close">
+				<span class="media-modal-icon"></span>
+			</a>
+
+			<div class="media-modal-content">
+				<div class="media-frame wp-core-ui hide-menu hide-router">
+
+					<div class="media-frame-title">
+						<h1><?php _e('Select an Icon', 'themeblvd'); ?></h1>
+					</div><!-- .media-frame-title (end) -->
+
+					<div class="media-frame-content">
+						<div class="media-frame-content-inner">
+							<div class="content-mitt">
+								<div class="icon-browser">
+									<?php
+									if ( $args['type'] == 'vector' ) {
+
+										foreach ( $icons as $icon ) {
+											printf( '<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="%1$s" data-tooltip-text="%1$s"><i class="fa fa-%1$s fa-fw fa-2x"></i></a>', $icon );
+										}
+
+									} else if ( $args['type'] == 'image' ) {
+
+										foreach ( $icons as $icon_id => $icon_url ) {
+											printf( '<a href="#" class="select-icon select-image-icon tb-tooltip-link" data-icon="%1$s" data-tooltip-text="%1$s"><img src="%2$s" /></a>', $icon_id, $icon_url );
+										}
+
+									}
+									?>
+								</div>
+							</div>
+						</div><!-- .media-frame-content-inner (end) -->
+					</div><!-- .media-frame-content (end) -->
+
+					<div class="media-frame-toolbar">
+						<div class="media-toolbar-secondary">
+							<input type="hidden" class="icon-selection" value="" />
+						</div><!-- .media-toolbar-secondary (end) -->
+						<div class="media-toolbar">
+							<div class="media-toolbar-primary">
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php _e('Use Icon', 'themeblvd'); ?></a>
+							</div>
+						</div><!-- .media-toolbar (end) -->
+					</div><!-- .media-frame-toolbar (end) -->
+
+				</div><!-- .media-frame (end) -->
+			</div><!-- .media-modal-content (end) -->
+
+		</div><!-- .media-modal (end) -->
+
+		<div class="media-modal-backdrop"></div>
+	</div>
+	<?php
+
+}
+
 if ( !function_exists( 'themeblvd_options_footer_text_default' ) ) :
 /**
  * Options footer text

@@ -384,6 +384,20 @@
 	color: #000000;
 }
 
+/* Icon Browser */
+#optionsframework .section-text .input-wrap {
+	position: relative;
+}
+#optionsframework .section-text .tb-input-icon-link {
+	color: #666666;
+	position: absolute;
+	top: 6px;
+	right: 4px;
+}
+#optionsframework .section-text .tb-input-icon-link:hover {
+	color: #000000;
+}
+
 /* Bottom Section */
 #optionsframework-submit {
 	border-top: none;

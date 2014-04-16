@@ -242,6 +242,43 @@
 
     				});
 
+    				// Link to icon browsers -- @TODO need to move to "setup" ??
+    				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
+						$this.find('.tb-input-icon-link').ThemeBlvdModal({
+					        build: false,
+					        padding: true,
+					        size: 'custom', // Something other than "large" to trigger auto height
+					    	on_display: function() {
+
+					    		var self = this,
+									$elem = self.$elem,
+									$browser = self.$modal_window,
+									icon = $elem.closest('.input-wrap').find('input').val();
+
+								// Reset icon browser
+								$browser.find('.media-frame-content').scrollTop(0);
+								$browser.find('.select-icon').removeClass('selected');
+								$browser.find('.media-toolbar-secondary').find('.fa, span, img').remove();
+
+								// If valid icon exists in text input, apply the selection
+								if ( $browser.find('[data-icon="'+icon+'"]').length > 0 ) {
+									$browser.find('[data-icon="'+icon+'"]').addClass('selected');
+									$browser.find('.icon-selection').val(icon);
+									$browser.find('.media-toolbar-secondary').append('<i class="fa fa-'+icon+' fa-2x fa-fw"></i><span>'+icon+'</span>');
+								}
+
+					    	},
+					    	on_save: function() {
+
+					    		var self = this,
+					    			icon = self.$modal_window.find('.icon-selection').val();
+
+					    		// Send selection back to input
+					    		self.$elem.closest('.input-wrap').find('input').val(icon);
+					    	}
+					    });
+					}
+
 	    		}
 	    		// Apply all binded actions. This will only need
 	    		// to be called once on the original page load.
@@ -974,7 +1011,6 @@
 /**
  * Confirmation
  */
-
 (function($){
 	tbc_confirm = function(string, args, callback)
 	{
@@ -1065,15 +1101,38 @@
 })(jQuery);
 
 /**
- * Theme Options reset handling
+ * Any items that needs to executed
+ * after DOM is loaded.
  */
-
 jQuery(document).ready(function($) {
+
+	$('.themeblvd-icon-browser').themeblvd('options', 'setup');
+	$('.themeblvd-icon-browser').themeblvd('options', 'bind');
+
+	$('.themeblvd-icon-browser .select-icon').on( 'click', function(){
+
+		var $elem = $(this),
+			$browser = $elem.closest('.themeblvd-icon-browser'),
+			icon = $elem.data('icon');
+
+		$browser.find('.select-icon').removeClass('selected');
+		$elem.addClass('selected');
+
+		$browser.find('.icon-selection').val(icon);
+		$browser.find('.media-toolbar-secondary').find('.fa, span, img').remove();
+
+		if ( $elem.hasClass('select-image-icon') ) {
+			$browser.find('.media-toolbar-secondary').append('<img src="'+$elem.find('img').attr('src')+'" /><span>'+icon+'</span>');
+		} else {
+			$browser.find('.media-toolbar-secondary').append('<i class="fa fa-'+icon+' fa-2x fa-fw"></i><span>'+icon+'</span>');
+		}
+		return false;
+	});
+
+	// Theme Options reset handling
     $('#themeblvd_options_page .reset-button').click(function(){
-		tbc_confirm('<h3>'+themeblvd.reset_title+'</h3>'+themeblvd.reset, {'confirm':true}, function(r)
-		{
-	    	if(r)
-	        {
+		tbc_confirm('<h3>'+themeblvd.reset_title+'</h3>'+themeblvd.reset, {'confirm':true}, function(r) {
+	    	if(r) {
 	        	// Add in reset so our sanitizaiton callback reconizes.
 	        	$('#themeblvd_options_page').append('<input type="hidden" name="reset" value="true" />');
 
@@ -1085,10 +1144,8 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#themeblvd_options_page .clear-button').click(function(){
-		tbc_confirm('<h3>'+themeblvd.clear_title+'</h3>'+themeblvd.clear, {'confirm':true}, function(r)
-		{
-	    	if(r)
-	        {
+		tbc_confirm('<h3>'+themeblvd.clear_title+'</h3>'+themeblvd.clear, {'confirm':true}, function(r) {
+	    	if(r) {
 
 	        	var form = $('#themeblvd_options_page'),
 	        		option_id = form.find('input[name="option_page"]').val();

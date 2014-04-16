@@ -168,7 +168,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$place_holder = ' placeholder="'.$value['pholder'].'"';
 				}
 
+				$output .= '<div class="input-wrap">';
+
+				if ( isset( $value['icon'] ) && ( $value['icon'] == 'image' || $value['icon'] == 'vector' ) ) {
+					$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$value['icon'].'" data-icon-type="'.$value['icon'].'" data-tooltip-text="'.__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+				}
+
 				$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s"%s />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ), $place_holder );
+				$output .= '</div><!-- .input-wrap (end) -->';
 				break;
 
 			/*---------------------------------------*/
