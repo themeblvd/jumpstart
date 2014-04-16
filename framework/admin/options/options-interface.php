@@ -187,14 +187,24 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$cols = $value['options']['cols'];
 				}
 
-				$output .= '<div class="textarea-wrap">';
+				if ( isset( $value['editor'] ) || isset( $value['code'] ) ) {
 
-				if ( isset( $value['editor'] ) && $value['editor'] ) {
-					$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
-				}
+					$output .= '<div class="textarea-wrap with-editor-nav">';
 
-				if ( isset( $value['code'] ) && in_array( $value['code'], array( 'html', 'javascript', 'css' ) ) ) {
-					$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.$value['name'].'" data-code_lang="'.$value['code'].'"><i class="tb-icon-code"></i></a>';
+					$output .= '<nav class="editor-nav">';
+
+					if ( isset( $value['editor'] ) && $value['editor'] ) {
+						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+					}
+
+					if ( isset( $value['code'] ) && in_array( $value['code'], array( 'html', 'javascript', 'css' ) ) ) {
+						$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.$value['name'].'" data-code_lang="'.$value['code'].'"><i class="tb-icon-code"></i></a>';
+					}
+
+					$output .= '</nav>';
+
+				} else {
+					$output .= '<div class="textarea-wrap">';
 				}
 
 				$output .= sprintf( '<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $value['id'] ), stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_attr( $cols ), $place_holder, esc_textarea( $val ) );

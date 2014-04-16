@@ -309,10 +309,12 @@ class Theme_Blvd_Options_API {
 					),
 					'footer_copyright' => array(
 						'name' 		=> __( 'Footer Copyright Text', 'themeblvd' ),
-						'desc' 		=> __( 'Enter the copyright text you\'d like to show in the footer of your site.', 'themeblvd' ),
+						'desc' 		=> __( '<p>Enter the copyright text you\'d like to show in the footer of your site.</p><p><em>%year%</em> &mdash; Show current year.<br /><em>%site_title%</em> &mdash; Show your site title.</p>', 'themeblvd' ),
 						'id' 		=> 'footer_copyright',
-						'std' 		=> '(c) '.date('Y').' '.get_bloginfo('site_title').' - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
-						'type' 		=> 'text'
+						'std' 		=> '(c) %year% %site_title% - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
+						'type' 		=> 'textarea',
+						'editor'	=> true,
+						'code'		=> 'html'
 					)
 				) // End footer options
 			)

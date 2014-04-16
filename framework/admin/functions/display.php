@@ -579,7 +579,13 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		}
 
 		// Text area
-		$raw_content = sprintf( '<textarea name="%s" class="of-input" cols="8" rows="8">%s</textarea>', esc_attr( $name.'['.$id.'][raw]' ), stripslashes( esc_textarea( $current_value ) ) );
+		$raw_content  = '<div class="textarea-wrap with-editor-nav">';
+		$raw_content .= '<nav class="editor-nav clearfix">';
+		$raw_content .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+		$raw_content .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $id.'_raw' ).'" data-title="'.__('Edit HTML', 'themeblvd').'" data-code_lang="html"><i class="tb-icon-code"></i></a>';
+		$raw_content .= '</nav>';
+		$raw_content .= sprintf( '<textarea id="%s" name="%s" class="of-input" cols="8" rows="8">%s</textarea>', esc_textarea( $id.'_raw' ), esc_attr( $name.'['.$id.'][raw]' ), stripslashes( esc_textarea( $current_value ) ) );
+		$raw_content .= '</div><!-- .textarea-wrap (end) -->';
 
 		// Checkbox for the_content filter (added in v2.0.6)
 		// Should be checked if selected OR option never existed.
