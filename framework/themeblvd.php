@@ -163,6 +163,7 @@ if ( is_admin() ) {
 
 	// Footer
 	add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
+	add_filter( 'themeblvd_footer_copyright', 'themeblvd_footer_copyright_default' );
 	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
 

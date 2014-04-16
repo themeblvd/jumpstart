@@ -1358,3 +1358,17 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 
     return apply_filters( 'themeblvd_get_button_class', $class, $color, $size );
 }
+
+/**
+ * Filter applied on copyright text to allow
+ * dynamic variables and shortcodes.
+ *
+ * @since 2.5.0
+ *
+ * @return string Text to filter
+ */
+function themeblvd_footer_copyright_default( $text ) {
+	$text = str_replace( '%year%', date('Y'), $text );
+	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
+	return apply_filters( 'themeblvd_the_content', $text );
+}
