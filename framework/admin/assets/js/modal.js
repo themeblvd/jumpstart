@@ -111,6 +111,9 @@ if ( typeof Object.create !== 'function' ) {
                 // Display it
                 self.display();
 
+                // on_display() callback
+                self.options.on_display.call(self);
+
                 return false;
             });
 
@@ -457,7 +460,8 @@ if ( typeof Object.create !== 'function' ) {
         code_lang: 'html',              // If code editor, code language -- html, css, javascript
         padding: false,                 // Size of modal - small, medium, large
         send_back: null,                // An object of something you want send to info back to, which you can utilize from callbacks
-        on_load: function(modal){},     // Callback before modal window is displayed
+        on_load: function(modal){},     // Callback before modal window is displayed,
+        on_display: function(modal){},  // Callback just after modal has been displayed
         on_cancel: function(modal){},   // Callback when close button is clicked, before modal is closed
         on_save: function(modal){},     // Callback when save button is clicked, before modal is closed
         on_delete: function(modal){},   // Callback when delete button is clicked, before modal is closed
