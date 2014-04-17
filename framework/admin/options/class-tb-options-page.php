@@ -288,7 +288,7 @@ class Theme_Blvd_Options_Page {
 	public function admin_page() {
 
 		// Get any current settings from the database.
-		$settings = get_option( $this->id );
+		$settings = apply_filters( 'themeblvd_frontend_options', get_option( $this->id ) ); // Name of filter isn't very logical, but has been around through many versions, so must remain
 
 	    // Setup options form
 		$return = themeblvd_option_fields( $this->id, $this->options, $settings, $this->args['closer'] );
