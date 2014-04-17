@@ -19,6 +19,7 @@ if ( typeof Object.create !== 'function' ) {
 
             self.elem = elem;
             self.$elem = $(elem);
+            self.secondary = false;
 
             // Setup plugin options
             self.options = $.extend( {}, $.fn.ThemeBlvdModal.options, options );
@@ -45,6 +46,11 @@ if ( typeof Object.create !== 'function' ) {
                 // Setup popup
                 self.popup = '';
 
+                // Is another modal already open?
+                if ( $('body').hasClass('themeblvd-modal-on') ) {
+                    self.secondary = true;
+                }
+
                 // ID for modal
                 self.id = self.target;
 
@@ -56,6 +62,9 @@ if ( typeof Object.create !== 'function' ) {
 
                 self.$modal_window =  $('#'+self.id);
 
+                // Store target so it can be referenced outside of the object
+                self.$modal_window.data('target', self.target);
+
                 // Optional padding on content
                 if ( self.options.padding ) {
                     self.$modal_window.find('.media-frame-content-inner').css('padding', '20px');
@@ -65,7 +74,7 @@ if ( typeof Object.create !== 'function' ) {
                 self.options.on_load.call(self);
 
                 // Bind close
-                self.$modal_window.find('.media-modal-close, .media-modal-backdrop').on( 'click', function(){
+                self.$modal_window.find('.media-modal-close').on( 'click', function(){
                     self.options.on_cancel.call(self);
                     self.close();
                     return false;
@@ -123,7 +132,7 @@ if ( typeof Object.create !== 'function' ) {
 
             var self = this,
                 content,
-                markup = '<div id="%id%" class="themeblvd-modal-wrap" style="display:none;"> \
+                markup = '<div id="%id%" class="themeblvd-modal-wrap build" style="display:none;"> \
                                 <div class="themeblvd-modal %size%-modal media-modal wp-core-ui hide"> \
                                     <a class="media-modal-close" href="#" title="Close"> \
                                         <span class="media-modal-icon"></span> \
@@ -150,7 +159,6 @@ if ( typeof Object.create !== 'function' ) {
                                         </div><!-- .media-frame (end) --> \
                                     </div><!-- .media-modal-content (end) --> \
                                  </div><!-- .themeblvd-modal (end) --> \
-                                 <div class="media-modal-backdrop"></div> \
                              </div>';
 
             self.popup = markup;
@@ -212,10 +220,32 @@ if ( typeof Object.create !== 'function' ) {
         display: function() {
 
             var self = this,
+                $body = $('body'),
                 height;
 
-            // Disable scrolling on page behind modal
-            $('body').addClass('themeblvd-stop-scroll');
+            if ( self.secondary ) {
+
+                // Another modal is already open, and this
+                // one is appearing above it.
+                $body.addClass('themeblvd-secondary-modal-on');
+
+            } else {
+
+                $body.addClass('themeblvd-modal-on');
+
+                // Disable scrolling on page behind modal
+                $body.addClass('themeblvd-stop-scroll');
+
+                // Add backdrop
+                $body.append('<div id="themeblvd-modal-backdrop" class="media-modal-backdrop"></div>');
+
+                // Close all open modals
+                $('#themeblvd-modal-backdrop').on( 'click', function(){
+                    self.options.on_cancel.call(self);
+                    self.close_all();
+                    return false;
+                });
+            }
 
             // Show modal
             self.$modal_window.show();
@@ -288,7 +318,8 @@ if ( typeof Object.create !== 'function' ) {
 
         close: function() {
 
-            var self = this;
+            var self = this,
+                $body = $('body');
 
             // Put content from modal back to
             // original location.
@@ -298,7 +329,7 @@ if ( typeof Object.create !== 'function' ) {
 
             // Unbind links within modal
             self.$modal_window.find('.media-button-secondary').off('click');
-            self.$modal_window.find('.media-modal-close, .media-modal-backdrop').off('click');
+            self.$modal_window.find('.media-modal-close').off('click');
             self.$modal_window.find('.media-button-insert').off('click');
             self.$modal_window.find('.media-button-delete').off('click');
 
@@ -309,9 +340,47 @@ if ( typeof Object.create !== 'function' ) {
                 self.$modal_window.hide();
             }
 
-            // Allow page to be scrollable again
-            $('body').removeClass('themeblvd-stop-scroll');
+            // Put everything outside of the modal back
+            if ( self.secondary ) {
 
+                // Closing a modal on top of another modal,
+                // so only remove class, nothing else.
+                $body.removeClass('themeblvd-secondary-modal-on');
+
+            } else {
+
+                $body.removeClass('themeblvd-modal-on');
+
+                // Allow page to be scrollable again
+                $body.removeClass('themeblvd-stop-scroll');
+
+                // Remove backdrop
+                $('#themeblvd-modal-backdrop').remove();
+
+            }
+        },
+
+        close_all: function() {
+            $('.themeblvd-modal-wrap').each(function(){
+
+                var $el = $(this), id, target;
+
+                if ( $el.hasClass('build') ) {
+
+                    id = $el.attr('id');
+                    target = $el.data('target');
+
+                    $('#'+id+'_marker').after( $('#'+target) ).remove();
+
+                    $el.remove();
+
+                } else {
+                    $el.hide();
+                }
+
+                $('#themeblvd-modal-backdrop').remove();
+                $('body').removeClass('themeblvd-modal-on themeblvd-secondary-modal-on themeblvd-stop-scroll');
+            });
         },
 
         save: function() {

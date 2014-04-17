@@ -1196,8 +1196,6 @@ function themeblvd_editor( $args = array() ) {
 			</div><!-- .media-modal-content (end) -->
 
 		</div><!-- .media-modal (end) -->
-
-		<div class="media-modal-backdrop"></div>
 	</div>
 	<?php
 }
@@ -1271,8 +1269,6 @@ function themeblvd_icon_browser( $args = array() ) {
 			</div><!-- .media-modal-content (end) -->
 
 		</div><!-- .media-modal (end) -->
-
-		<div class="media-modal-backdrop"></div>
 	</div>
 	<?php
 
