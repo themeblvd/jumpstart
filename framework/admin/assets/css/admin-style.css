@@ -330,34 +330,6 @@ optionsframework #publishing-action .ajax-loading {
 #optionsframework .section-logo .screenshot img {
 	float: none;
 }
-#optionsframework .section-social_media input.checkbox {
-	float: none;
-	margin-bottom: 0;
-}
-#optionsframework .section-social_media .item {
-	padding: 3px;
-}
-#optionsframework .section-social_media div span {
-	display: block;
-	line-height: 20px;
-}
-#optionsframework .section-social_media .social_media-input {
-	margin-top: 10px;
-}
-#optionsframework .section-social_media .active {
-	border: 1px solid #f2f2f2;
-	margin: 0 0 4px;
-	padding: 4px 7px;
-}
-#optionsframework .section-social_media .column-1 {
-	float: left;
-	width: 48%;
-	margin: 0 2% 0 0;
-}
-#optionsframework .section-social_media .column-2 {
-	float: left;
-	width: 48%;
-}
 #optionsframework .section-upload .section-upload {
 	background: #ffffff;
 	border: 1px solid #dfdfdf;
@@ -665,9 +637,9 @@ tb-warning .tb-alert-inner {
 	text-decoration: none;
 }
 #optionsframework .ui-sortable-placeholder {
-	border: 2px dashed #cccccc;
-	height: 50px!important;
-	visibility: visible!important;
+	border: 2px dashed #cccccc !important;
+	height: 50px !important;
+	visibility: visible !important;
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -678,6 +650,55 @@ tb-warning .tb-alert-inner {
 		background-image: url(../images/arrows_2x.png);
 		background-size: 15px 50px;
 	}
+}
+
+/* Widgets Animation */
+#optionsframework .widget,
+#optionsframework .widget .widget-name,
+#optionsframework .widget .widget-content,
+#optionsframework .widget .item-handle,
+#optionsframework .widget .item-content {
+	-webkit-transition: border 500ms ease-in, box-shadow 500ms ease-in;
+    -o-transition: border 500ms ease-in, box-shadow 500ms ease-in;
+    -moz-transition: border 500ms ease-in, box-shadow 500ms ease-in;
+    -ms-transition: border 500ms ease-in, box-shadow 500ms ease-in;
+    transition: border 500ms ease-in, box-shadow 500ms ease-in;
+}
+#optionsframework .widget.fade-out {
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+	-webkit-transition: opacity 500ms ease-in;
+    -o-transition: opacity 500ms ease-in;
+    -moz-transition: opacity 500ms ease-in;
+    -ms-transition: opacity 500ms ease-in;
+    transition: opacity 500ms ease-in;
+}
+
+/* Item being deleted */
+#optionsframework .widget.delete {
+	-moz-box-shadow: 0 0 10px #e9d1d1;
+	-webkit-box-shadow: 0 0 10px #e9d1d1;
+	box-shadow: 0 0 10px #e9d1d1;
+}
+#optionsframework .widget.delete .widget-name,
+#optionsframework .widget.delete .widget-content,
+#optionsframework .widget.delete .item-handle,
+#optionsframework .widget.delete .item-content {
+	border-color: #dfa9a9;
+}
+
+/* Item being added */
+#optionsframework .widget.add {
+	-moz-box-shadow: 0 0 10px #d3e9da;
+	-webkit-box-shadow: 0 0 10px #d3e9da;
+	box-shadow: 0 0 10px #d3e9da;
+}
+#optionsframework .widget.add .widget-name,
+#optionsframework .widget.add .widget-content,
+#optionsframework .widget.add .item-handle,
+#optionsframework .widget.add .item-content {
+	border-color: #9adfa9;
 }
 
 /* =Framework Sidebar UI Widgets (not WP widgets)

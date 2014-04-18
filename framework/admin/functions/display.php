@@ -1009,69 +1009,6 @@ function themeblvd_logo_option( $id, $name, $val ) {
 }
 
 /**
- * Generates option to edit social media buttons.
- *
- * This has been moved to a separate function
- * because it's a custom addition to the optionframework
- * module and it's pretty lengthy.
- *
- * @since 2.0.0
- *
- * @param $id string unique ID for option
- * @param $name string prefix for form name value
- * @param $val array currently saved data if exists
- * @return $output string HTML for option
- */
-function themeblvd_social_media_option( $id, $name, $val ) {
-
-	$sources = themeblvd_get_social_media_sources();
-
-	$counter = 1;
-	$divider = round( count($sources)/2 );
-
-	$output = '<div class="column-1">';
-
-	foreach ( $sources as $key => $source ) {
-
-		// Setup
-		$checked = false;
-		if ( is_array( $val ) && array_key_exists( $key, $val ) ) {
-			$checked = true;
-		}
-
-		if ( ! empty( $val ) && ! empty( $val[$key] ) ) {
-			$value = $val[$key];
-		} else {
-
-			$value = 'http://';
-			if ( $key == 'email' ) {
-				$value = 'mailto:';
-			}
-		}
-
-		// Add to output
-		$output .= '<div class="item">';
-		$output .= '<span>';
-		$output .= sprintf( '<input class="checkbox of-input" value="%s" type="checkbox" %s name="%s" />', $key, checked( $checked, true, false ), esc_attr( $name.'['.$id.'][includes][]' ) );
-		$output .= $source;
-		$output .= '</span>';
-		$output .= sprintf( '<input class="of-input social_media-input" value="%s" type="text" name="%s" />', esc_attr( $value ), esc_attr( $name.'['.$id.'][sources]['.$key.']' ) );
-		$output .= '</div><!-- .item (end) -->';
-
-		if ( $counter == $divider ) {
-			// Separate options into two columns
-			$output .= '</div><!-- .column-1 (end) -->';
-			$output .= '<div class="column-2">';
-		}
-
-		$counter++;
-	}
-	$output .= '</div><!-- .column-2 (end) -->';
-
-	return $output;
-}
-
-/**
  * Option for selecting a sidebar layout that gets
  * inserted into out Hi-jacked "Page Attributes"
  * meta box.

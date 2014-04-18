@@ -498,23 +498,16 @@ function themeblvd_sanitize_logo( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_social_media( $input ) {
-	if ( ! empty( $input ) && ! empty( $input['sources'] ) ) {
-		// The option is being sent from the actual
-		// Theme Options page and so it hasn't been
-		// formatted yet.
-		$output = array();
-		if ( ! empty( $input['includes'] ) ) {
-			foreach ( $input['includes'] as $include ) {
-				if ( isset( $input['sources'][$include] ) ) {
-					$output[$include] = $input['sources'][$include];
-				}
-			}
-		}
-	} else {
-		// The option has already been formatted,
-		// so let it on through.
-		$output = $input;
+
+	$output = array();
+
+	foreach ( $input as $item_id => $item ) {
+		$output[$item_id] = array();
+		$output[$item_id]['icon'] = wp_kses( $item['icon'], array() );
+		$output[$item_id]['url'] = wp_kses( $item['url'], array() );
+		$output[$item_id]['label'] = wp_kses( $item['label'], array() );
 	}
+
 	return $output;
 }
 

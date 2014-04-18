@@ -95,5 +95,6 @@ jQuery(document).ready(function($) {
 	$('.tb-options-js').themeblvd('options', 'media-uploader');
 	$('.tb-options-js').themeblvd('options', 'editor');
 	$('.tb-options-js').themeblvd('options', 'code-editor');
+	$('.tb-options-js').themeblvd('options', 'sortable');
 
 });

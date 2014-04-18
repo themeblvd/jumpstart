@@ -22,6 +22,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
     $counter = 0;
 	$menu = '';
 	$output = '';
+	$advanced = Theme_Blvd_Advanced_Options::get_instance();
 
 	foreach ( $options as $value ) {
 
@@ -100,12 +101,20 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			// Determine CSS classes
 			$id = 'section-'.$value['id'];
 			$class = 'section ';
+
 			if ( isset( $value['type'] ) ) {
+
 				$class .= ' section-'.$value['type'];
+
+				if ( $advanced->is_sortable( $value['type'] ) ) {
+					$class .= ' section-sortable';
+				}
+
 				if ( $value['type'] == 'logo' || $value['type'] == 'background' ) {
 					$class .= ' section-upload';
 				}
 			}
+
 			if ( ! empty( $value['class'] ) ) {
 				$class .= ' '.$value['class'];
 			}
@@ -652,7 +661,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'social_media' :
-				$output .= themeblvd_social_media_option( $value['id'], $option_name, $val );
+				$social_media = $advanced->get('social_media');
+				$output .= $social_media->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/

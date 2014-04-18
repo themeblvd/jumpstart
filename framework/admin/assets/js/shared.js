@@ -160,19 +160,6 @@
 						el.find('.'+value).show();
     				});
 
-    				// Configure social media buttons
-    				$this.find('.section-social_media').each(function(){
-    					var el = $(this);
-						el.find('.social_media-input').hide();
-						el.find('.checkbox').each(function(){
-							var checkbox = $(this);
-							if( checkbox.is(':checked') )
-	    						checkbox.closest('.item').addClass('active').find('.social_media-input').show();
-	    					else
-	    						checkbox.closest('.item').removeClass('active').find('.social_media-input').hide();
-						});
-    				});
-
     				// Google font selection
     				$this.find('.section-typography .of-typography-face').each(function(){
     					var el = $(this), value = el.val();
@@ -242,7 +229,7 @@
 
     				});
 
-    				// Link to icon browsers -- @TODO need to move to "setup" ??
+    				// Link to icon browsers
     				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
 						$this.find('.tb-input-icon-link').ThemeBlvdModal({
 					        build: false,
@@ -373,15 +360,6 @@
     					var el = $(this), parent = el.closest('.section-logo'), value = el.val();
 						parent.find('.logo-item').hide();
 						parent.find('.'+value).show();
-    				});
-
-    				// Configure social media buttons
-    				$this.on( 'click', '.section-social_media .checkbox', function() {
-    					var checkbox = $(this);
-						if( checkbox.is(':checked') )
-    						checkbox.closest('.item').addClass('active').find('.social_media-input').fadeIn('fast');
-    					else
-    						checkbox.closest('.item').removeClass('active').find('.social_media-input').hide();
     				});
 
     				// Google font selection
@@ -738,6 +716,130 @@
 						}
 	    			});
 
+	    		}
+	    		// Sortable option type
+	    		else if (type == 'sortable') {
+
+	    			// Sortable option type
+					$this.find('.tb-sortable-option').each(function(){
+
+						var $option = $(this),
+							$section = $option.closest('.section-sortable');
+
+						// Setup sortables
+						$section.find('.item-container').sortable({
+							handle: '.item-handle'
+						});
+
+						// Bind "Add Item" button
+						$section.find('.add-item').on( 'click', function(){
+
+							var $new_item;
+
+							var data = {
+								action: 'themeblvd_add_'+$option.data('type')+'_item',
+								security: $option.data('security'),
+								data: {
+									option_name: $option.data('name'),
+									option_id: $option.data('id')
+								}
+							};
+
+							$.post(ajaxurl, data, function( response ){
+
+								// Append new item
+								$section.find('.item-container').append( response );
+
+								// Cache new item we just appended
+								$new_item = $section.find('.item').last();
+
+								// Make it green for a bit to indicate it was just added
+								$new_item.addClass('add');
+								window.setTimeout(function(){
+									$new_item.removeClass('add');
+								}, 500);
+
+								// Bind toggle for displaying options
+								$new_item.find('.toggle').on('click', function(){
+
+									var $el = $(this);
+
+									if ( $el.closest('.item-handle').hasClass('closed') ) {
+										$el.closest('.item-handle').removeClass('closed');
+										$el.closest('.item').find('.item-content').show();
+									} else {
+										$el.closest('.item-handle').addClass('closed');
+										$el.closest('.item').find('.item-content').hide();
+									}
+
+									return false;
+								});
+
+								$new_item.find('.item-handle h3').each(function(){
+
+									var $el = $(this),
+										$trigger = $el.closest('.item').find('.handle-trigger');
+
+									if ( $trigger.is('select') ) {
+										$el.closest('.item').find('.item-handle h3').text( $trigger.find('option[value="'+$trigger.val()+'"]').text() );
+									} else {
+										$el.closest('.item').find('.item-handle h3').text( $trigger.val() );
+									}
+								});
+
+								$new_item.find('.handle-trigger').on( 'change', function(){
+
+									var $el = $(this);
+
+									if ( $el.is('select') ) {
+										$el.closest('.item').find('.item-handle h3').text( $el.find('option[value="'+$el.val()+'"]').text() );
+									} else {
+										$el.closest('.item').find('.item-handle h3').text( $el.val() );
+									}
+
+								});
+
+								// Setup general scripts for options
+								$new_item.themeblvd('options', 'setup');
+							});
+
+							return false;
+						});
+
+						// Bind toggle for items
+						$section.find('.toggle').on('click', function(){
+
+							var $el = $(this);
+
+							if ( $el.closest('.item-handle').hasClass('closed') ) {
+								$el.closest('.item-handle').removeClass('closed');
+								$el.closest('.item').find('.item-content').show();
+							} else {
+								$el.closest('.item-handle').addClass('closed');
+								$el.closest('.item').find('.item-content').hide();
+							}
+
+							return false;
+						});
+
+						$section.find('.item-handle h3').each(function(){
+
+							var $el = $(this),
+								$trigger = $el.closest('.item').find('.handle-trigger');
+
+							if ( $trigger.is('select') ) {
+								$el.closest('.item').find('.item-handle h3').text( $trigger.find('option[value="'+$trigger.val()+'"]').text() );
+							} else {
+								$el.closest('.item').find('.item-handle h3').text( $trigger.val() );
+							}
+						});
+
+						$section.find('.handle-trigger').on( 'change', function(){
+							var $el = $(this);
+							$el.closest('.item').find('.item-handle h3').text( $el.val() );
+						});
+
+					});
 	    		}
     		});
     	},
