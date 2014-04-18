@@ -32,6 +32,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );

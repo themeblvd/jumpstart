@@ -175,6 +175,16 @@ class Theme_Blvd_Options_Page {
 			add_action( 'admin_init', 'optionsframework_mlu_init' );
 		}
 
+		// Create any objects needed for certain types of
+		// options. Our create() method will ensure no
+		// duplicates are created, and only objects are created
+		// on neccessary option types.
+		$advanced = Theme_Blvd_Advanced_Options::get_instance();
+
+		foreach ( $this->options as $option ) {
+			$advanced->create( $option['type'] );
+		}
+
 	}
 
 	/**
@@ -247,6 +257,7 @@ class Theme_Blvd_Options_Page {
 
 		// WP Built-in scripts
 		wp_enqueue_script( 'jquery-ui-core');
+		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'wp-color-picker' );
 
 		// WP Built-in Media Modal
