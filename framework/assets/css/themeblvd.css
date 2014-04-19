@@ -545,6 +545,7 @@ p.wp-caption-text {
 	margin: 0;
 }
 .has-caption {
+	display: inline-block;
 	margin-bottom: 8px;
 }
 .gallery-caption {}
