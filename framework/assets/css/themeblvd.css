@@ -501,7 +501,7 @@ a img.alignright {
 	margin: 5px 0 20px 20px;
 }
 a img.alignnone {
-	margin: 5px 20px 20px 0;
+	margin: 5px 0 20px 0;
 }
 a img.alignleft {
 	float: left;
@@ -518,7 +518,7 @@ a img.aligncenter {
 	text-align: center;
 }
 .wp-caption.alignnone {
-	margin: 5px 20px 20px 0;
+	margin: 5px 0 20px 0;
 }
 .wp-caption.alignleft {
 	margin: 5px 20px 20px 0;
@@ -534,12 +534,19 @@ a img.aligncenter {
 	padding:0;
 	width: auto;
 }
-.wp-caption p.wp-caption-text {
+p.wp-caption-text {
 	font-size: .9em; /* Fallback for older browsers */
 	font-size: .9rem;
 	line-height: 1.4em;
+	text-align: center;
+}
+.wp-caption p.wp-caption-text {
+	padding: 10px 5px;
 	margin: 0;
-	padding: 4px 5px;
+}
+.has-caption {
+	display: inline-block;
+	margin-bottom: 8px;
 }
 .gallery-caption {}
 .sticky {}
