@@ -500,7 +500,7 @@ if ( typeof Object.create !== 'function' ) {
                         build: true,
                         form: true,
                         padding: false,
-                        size: 'small',
+                        size: 'medium',
                         on_load: builder_blvd.content_block_options_load
                     });
 
