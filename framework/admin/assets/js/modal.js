@@ -133,7 +133,7 @@ if ( typeof Object.create !== 'function' ) {
             var self = this,
                 content,
                 markup = '<div id="%id%" class="themeblvd-modal-wrap build" style="display:none;"> \
-                                <div class="themeblvd-modal %size%-modal media-modal wp-core-ui hide"> \
+                                <div class="themeblvd-modal %size%-modal %height%-height-modal media-modal wp-core-ui hide"> \
                                     <a class="media-modal-close" href="#" title="Close"> \
                                         <span class="media-modal-icon"></span> \
                                     </a> \
@@ -164,6 +164,7 @@ if ( typeof Object.create !== 'function' ) {
             self.popup = markup;
             self.popup = self.popup.replace( '%id%', self.id);
             self.popup = self.popup.replace( '%size%', self.options.size);
+            self.popup = self.popup.replace( '%height%', self.options.height);
             self.popup = self.popup.replace( '%title%', self.options.title );
             self.popup = self.popup.replace( '%button_text%', self.options.button );
 
@@ -293,7 +294,9 @@ if ( typeof Object.create !== 'function' ) {
             }
 
             // Adjust height if modal is not full size
-            if ( this.options.size != 'large' ) {
+            if ( self.options.height == 'auto' ) {
+
+                var viewport_height = $(window).height();
 
                 height = self.$modal_window.find('.media-frame-content-inner').outerHeight();
                 height = 57 + height + 60; // 57 for title, 60 for footer
@@ -304,7 +307,14 @@ if ( typeof Object.create !== 'function' ) {
                     height += 10;
                 }
 
-                self.$modal_window.find('.themeblvd-modal').css('max-height', height+'px');
+                self.$modal_window.find('.themeblvd-modal').css({
+                    'max-height': height+'px',
+                    'top': (viewport_height-height)/2+'px'
+                });
+
+                $(window).resize(function() {
+                    self.$modal_window.find('.themeblvd-modal').css('top', ($(window).height()-height)/2+'px');
+                });
             }
 
             // Make sure any scripts for options run
@@ -522,7 +532,8 @@ if ( typeof Object.create !== 'function' ) {
         button: 'Save',                 // Button text
         button_delete: '',              // Text for delete button in lower left - if blank, no button.
         button_secondary: '',           // Text for duplicate button in lower left - if blank, no button.
-        size: 'large',                  // Size of modal - small, medium, large
+        size: 'large',                  // Width of modal - small, medium, large
+        height: 'large',                // Height of modal - small, medium, large, or auto
         build: true,                    // Whether to build the HTML markup for the popup
         form: false,                    // Whether this modal is a set of options
         code_editor: false,             // Whether this modal is a code editor

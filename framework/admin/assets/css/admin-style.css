@@ -811,7 +811,6 @@ body.themeblvd-stop-scroll {
 
 /* Modal Sizes */
 .themeblvd-modal-wrap .small-modal {
-	max-height: 500px; /* overriden with JS */
 	margin-left: -250px;
 	right: auto;
 	left: 50%;
@@ -821,7 +820,6 @@ body.themeblvd-stop-scroll {
 	min-height: 0;
 }
 .themeblvd-modal-wrap .medium-modal {
-	max-height: 500px; /* overriden with JS */
 	margin-left: -400px;
 	right: auto;
 	left: 50%;
@@ -845,6 +843,16 @@ body.themeblvd-stop-scroll {
 	.themeblvd-modal-wrap .medium-modal .media-frame-content {
 		top: 56px !important;
 	}
+}
+
+/* Modal Heights */
+.themeblvd-modal-wrap .small-height-modal {
+	top: 30%;
+	bottom: 30%;
+}
+.themeblvd-modal-wrap .medium-height-modal {
+	top: 20%;
+	bottom: 20%;
 }
 
 /* Code editor in modal */
