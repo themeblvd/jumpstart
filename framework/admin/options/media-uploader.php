@@ -12,12 +12,17 @@ function themeblvd_media_uploader( $args ) {
 
 	$defaults = array(
 		'option_name' 	=> '',			// Prefix for form name attributes
-		'type'			=> 'standard',	// Type of media uploader - standard, logo, logo_2x, background, slider, video
+		'type'			=> 'standard',	// Type of media uploader - standard (an image), advanced (an image w/crop settings) logo, logo_2x, background, slider, video, media
+		'send_back'		=> 'url',		// On type "standard" send back image url or attachment ID to text input - url, id
 		'id'			=> '', 			// A token to identify this field, extending onto option_name. -- option_name[id]
 		'value'			=> '',			// The value of the field, if present.
-		'value_id'		=> '',			// Attachment ID used in slider
+		'value_id'		=> '',			// Attachment ID used in slider, or stored ID in advanced option
+		'value_src'		=> '',			// Image URL used in advanced option
 		'value_title'	=> '',			// Title of attachment image (used for slider)
-		'value_width'	=> '',			// Width value used for logo option
+		'value_width'	=> '',			// Width value used for logo option and advanced option
+		'value_height'	=> '',			// Height baclue used for advanced option
+		'value_title'	=> '',			// Title of image, used with advanced type
+		'value_crop'	=> '',			// Crop size of image, used with advanced type
 		'name'			=> ''			// Option to extend 'id' token -- option_name[id][name]
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -36,6 +41,8 @@ function themeblvd_media_uploader( $args ) {
 	$value = '';
 	if ( $args['value'] ) {
 		$value = $args['value'];
+	} else if ( isset( $args['value_src'] ) ) {
+		$value = $args['value_src'];
 	}
 
 	// Set name formfield based on type.
@@ -61,10 +68,11 @@ function themeblvd_media_uploader( $args ) {
 
 	// Data passed to wp.media
 	$data = array(
-		'title' 	=> __('Select Media', 'themeblvd'),
-		'select'	=> __('Select', 'themeblvd'),
+		'title' 	=> __( 'Select Media', 'themeblvd'),
+		'select'	=> __( 'Select', 'themeblvd'),
 		'upload'	=> __( 'Upload', 'themeblvd' ),
 		'remove'	=> __( 'Remove', 'themeblvd' ),
+		'send_back'	=> $args['send_back'],
 		'class'		=> 'tb-modal-hide-settings'
 	);
 
@@ -84,17 +92,10 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'video' :
-			$data['title'] = __('Slide Video', 'themeblvd');
-			$data['select'] = __('Use for Slide', 'themeblvd');
+			$data['title'] = __('Select Video', 'themeblvd');
+			$data['select'] = __('Use Video', 'themeblvd');
 			$data['upload'] = __('Get Video', 'themeblvd');
 			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Video Link', 'themeblvd') .'" />'."\n";
-			break;
-
-		case 'quick_slider' :
-			$data['title'] = __('Quick Slider', 'themeblvd');
-			$data['select'] = __('Use selected images', 'themeblvd');
-			$data['class'] = '';
-			// @todo -- Future feature
 			break;
 
 		case 'logo' :
@@ -116,36 +117,67 @@ function themeblvd_media_uploader( $args ) {
 			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd') .'" />'."\n";
 			break;
 
+		case 'media' :
+			$data['select'] = __('Insert Media', 'themeblvd');
+			$data['class'] = '';
+			$output .= '<textarea id="'.$formfield.'" class="image-url upload'.$class.'" name="'.$name.'" value="'.$value.'"></textarea>'."\n";
+			break;
+
+		case 'advanced' :
+			$data['title'] = __('Select Image', 'themeblvd');
+			$data['class'] = str_replace( 'tb-modal-hide-settings', 'tb-modal-advanced-image', $data['class'] );
+			$data['select'] = __('Use Image', 'themeblvd');
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'[src]" value="'.$args['value_src'].'" placeholder="'.__('No image chosen', 'themeblvd') .'" />'."\n";
+			break;
+
 		default :
 			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('No file chosen', 'themeblvd') .'" />'."\n";
 	}
 
 	$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
 
-	if ( ! $value || $type == 'video' ) {
-		$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['upload'].'" />'."\n";
+	if ( ! $value || $type == 'video' || $type == 'media' ) {
+		$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" data-send-back="'.$data['send_back'].'" value="'.$data['upload'].'" />'."\n";
 	} else {
-		$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" value="'.$data['remove'].'" />'."\n";
+		$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" data-send-back="'.$data['send_back'].'" value="'.$data['remove'].'" />'."\n";
 	}
 
 	$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";
 
-	if ( $value && $type != 'video' ) {
+	if ( ( $value || $args['value_src'] ) && $type != 'video' && $type != 'media' ) {
+
 		$remove = '<a class="remove-image"></a>';
+
 		$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
+
 		if ( $image ) {
+
 			$output .= '<img src="' . $value . '" alt="" />' . $remove;
+
 		} else {
+
 			$parts = explode( "/", $value );
-			for( $i = 0; $i < sizeof( $parts ); ++$i )
+
+			for ( $i = 0; $i < sizeof( $parts ); ++$i ) {
 				$title = $parts[$i];
+			}
 
 			// Standard generic output if it's not an image.
 			$title = __( 'View File', 'themeblvd' );
 			$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
 		}
 	}
+
 	$output .= '</div>' . "\n";
+
+	if ( $type == 'advanced' ) {
+		$output .= '<input id="id-'.$formfield.'" class="image-id" name="'.$name.'[id]" type="hidden" value="'.$args['value_id'].'" />';
+		$output .= '<input id="title-'.$formfield.'" class="image-title" name="'.$name.'[title]" type="hidden" value="'.$args['value_title'].'" />';
+		$output .= '<input id="crop-'.$formfield.'" class="image-crop" name="'.$name.'[crop]" type="hidden" value="'.$args['value_crop'].'" />';
+		$output .= '<input id="width-'.$formfield.'" class="image-width" name="'.$name.'[width]" type="hidden" value="'.$args['value_width'].'" />';
+		$output .= '<input id="height-'.$formfield.'" class="image-height" name="'.$name.'[height]" type="hidden" value="'.$args['value_height'].'" />';
+	}
+
 	return $output;
 }
 endif;

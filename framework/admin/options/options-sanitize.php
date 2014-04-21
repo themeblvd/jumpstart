@@ -118,10 +118,43 @@ function themeblvd_sanitize_multicheck( $input, $option ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_upload( $input ) {
-	$output = '';
-	$filetype = wp_check_filetype($input);
-	if ( $filetype["ext"] ) {
-		$output = $input;
+
+	if ( is_array( $input ) ) {
+
+		$output = array(
+			'src'		=> '',
+			'title'		=> '',
+			'size'		=> '',
+			'width'		=> 0,
+			'height'	=> 0
+		);
+
+		if ( isset( $input['src'] ) ) {
+			$output['src'] = wp_kses( $input['src'], array() );
+		}
+
+		if ( isset( $input['id'] ) ) {
+			$output['id'] = intval( $input['id'] );
+		}
+
+		if ( isset( $input['title'] ) ) {
+			$output['title'] = wp_kses( $input['title'], array() );
+		}
+
+		if ( isset( $input['crop'] ) ) {
+			$output['crop'] = wp_kses( $input['crop'], array() );
+		}
+
+		if ( isset( $input['width'] ) ) {
+			$output['width'] = intval( $input['width'] );
+		}
+
+		if ( isset( $input['height'] ) ) {
+			$output['height'] = intval( $input['height'] );
+		}
+
+	} else {
+		$output = wp_kses( $input, array() );
 	}
 	return $output;
 }

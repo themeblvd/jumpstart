@@ -203,13 +203,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$cols = $value['options']['cols'];
 				}
 
-				if ( isset( $value['editor'] ) || isset( $value['code'] ) ) {
+				if ( ! empty( $value['editor'] ) ) {
 
 					$output .= '<div class="textarea-wrap with-editor-nav">';
 
 					$output .= '<nav class="editor-nav">';
 
-					if ( isset( $value['editor'] ) && $value['editor'] ) {
+					if ( ! empty( $value['editor'] ) ) {
 						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 					}
 
@@ -394,14 +394,61 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'upload' :
 				if ( function_exists('wp_enqueue_media') ) {
+
 					// Media uploader WP 3.5+
 					$args = array(
 						'option_name'	=> $option_name,
-						'type'			=> 'standard',
-						'id'			=> $value['id'],
-						'value'			=> $val
+						'id'			=> $value['id']
 					);
+
+					if ( ! empty( $value['advanced'] ) ) {
+
+						// Advanced type will allow for selecting
+						// image crop size for URL.
+						$args['type'] = 'advanced';
+
+						if ( isset( $val['src'] ) ) {
+							$args['value_src'] = $val['src'];
+						}
+
+						if ( isset( $val['id'] ) ) {
+							$args['value_id'] = $val['id'];
+						}
+
+						if ( isset( $val['title'] ) ) {
+							$args['value_title'] = $val['title'];
+						}
+
+						if ( isset( $val['crop'] ) ) {
+							$args['value_crop'] = $val['crop'];
+						}
+
+						if ( isset( $val['width'] ) ) {
+							$args['value_width'] = $val['width'];
+						}
+
+						if ( isset( $val['height'] ) ) {
+							$args['value_height'] = $val['height'];
+						}
+
+					} else {
+
+						$args['value'] = $val;
+						$args['type'] = 'standard';
+
+						if ( isset( $value['send_back'] ) ) {
+							$args['send_back'] = $value['send_back'];
+						} else {
+							$args['send_back'] = 'url';
+						}
+
+						if ( ! empty( $value['video'] ) ) {
+							$args['type'] = 'video';
+						}
+					}
+
 					$output .= themeblvd_media_uploader( $args );
+
 				} else {
 					// Legacy media uploader
 					$val = array(
