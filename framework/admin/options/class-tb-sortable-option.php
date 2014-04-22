@@ -7,6 +7,7 @@
  * @link		http://jasonbobich.com
  * @link		http://themeblvd.com
  * @package 	Theme Blvd WordPress Framework
+ * @since 		2.5.0
  */
 abstract class Theme_Blvd_Sortable_Option {
 
@@ -29,14 +30,6 @@ abstract class Theme_Blvd_Sortable_Option {
 	private $options = array();
 
 	/**
-	 * Text strings for managing items.
-	 *
-	 * @since 2.5.0
-	 * @var array
-	 */
-	private $labels = array();
-
-	/**
 	 * Trigger option. This option's value will
 	 * get feed to the toggle's handle as its updated.
 	 *
@@ -48,6 +41,14 @@ abstract class Theme_Blvd_Sortable_Option {
 	/*--------------------------------------------*/
 	/* Properties, protected
 	/*--------------------------------------------*/
+
+	/**
+	 * Text strings for managing items.
+	 *
+	 * @since 2.5.0
+	 * @var array
+	 */
+	protected $labels = array();
 
 	/**
 	 * Current advanced option type. Set by child class.
@@ -66,13 +67,15 @@ abstract class Theme_Blvd_Sortable_Option {
 	 *
 	 * @since 2.5.0
 	 */
-	public function __construct() {
+	public function __construct( $ajax = true ) {
 
 		// Setup labels
 		$this->labels = array(
-			'add' 				=> __('Add Item', 'themeblvd'),
-			'delete'			=> __('Delete Item', 'themeblvd'),
-			'delete_confirm'	=> __('Are you sure you want to delete this item?', 'themeblvd')
+			'add' 					=> __('Add Item', 'themeblvd'),
+			'delete'				=> __('Delete Item', 'themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this item?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Items','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all items?','themeblvd')
 		);
 
 		// Set labels (inherited from child class)
@@ -88,11 +91,14 @@ abstract class Theme_Blvd_Sortable_Option {
 			}
 		}
 
-		// Make sure there's no duplicate AJAX actions added
-		remove_all_actions( 'wp_ajax_themeblvd_add_'.$this->type.'_item' );
+		if ( $ajax ) {
 
-		// Add item with AJAX - Use: themeblvd_add_{$type}_item
-		add_action( 'wp_ajax_themeblvd_add_'.$this->type.'_item', array( $this, 'add_item' ) );
+			// Make sure there's no duplicate AJAX actions added
+			remove_all_actions( 'wp_ajax_themeblvd_add_'.$this->type.'_item' );
+
+			// Add item with AJAX - Use: themeblvd_add_{$type}_item
+			add_action( 'wp_ajax_themeblvd_add_'.$this->type.'_item', array( $this, 'add_item' ) );
+		}
 	}
 
 	/*--------------------------------------------*/
@@ -110,6 +116,9 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s">', $ajax_nonce, $option_name, $option_id, $this->type );
 
+		// Header (blank by default)
+		$output .= $this->get_display_header( $option_id, $option_name, $items );
+
 		// Start sortable section
 		$output .= '<div class="item-container">';
 
@@ -122,11 +131,33 @@ abstract class Theme_Blvd_Sortable_Option {
 		$output .= '</div><!-- .item-container (end) -->';
 
 		// Footer and button to add items
-		$output .= sprintf( '<footer><a href="#" class="add-item button-secondary">%s</a></footer>', $this->labels['add'] );
+		$output .= $this->get_display_footer( $option_id, $option_name, $items );
 
 		$output .= '</div><!-- .tb-sortable-option (end) -->';
 
 		return $output;
+	}
+
+	/**
+	 * Display the header.
+	 *
+	 * @since 2.5.0
+	 */
+	protected function get_display_header( $option_id, $option_name, $items ) {
+		return '';
+	}
+
+	/**
+	 * Display the footer.
+	 *
+	 * @since 2.5.0
+	 */
+	protected function get_display_footer( $option_id, $option_name, $items ) {
+		$footer  = '<footer>';
+		$footer .= sprintf( '<a href="#" class="add-item button-secondary">%s</a>', $this->labels['add'] );
+		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
+		$footer .= '</footer>';
+		return $footer;
 	}
 
 	/**
@@ -138,27 +169,60 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		$item_output  = sprintf( '<div id="%s" class="widget item">', $item_id );
 
-		// $item .= $this->get_handle();
-		$item_output .= '<div class="item-handle closed">';
-		$item_output .= '<h3>&nbsp;</h3>'; // ... @TODO What about image type? Make method like get_handle() that can be overriden from child class?
-		$item_output .= '<span class="tb-icon-sort"></span>';
-		$item_output .= '<a href="#" class="toggle"><span class="tb-icon-up-dir"></span></a>';
-		$item_output .= '</div>';
+		$item_output .= $this->get_item_handle( $item );
 
 		$item_output .= '<div class="item-content">';
 
 		foreach ( $this->options as $option ) {
 
-			$item_output .= sprintf( '<div class="section section-%s">', $option['type'] );
+			// Wrap a some of the options in a DIV
+			// to be utilized from the javascript.
 
-			$item_output .= sprintf( '<h4>%s</h4>', $option['name'] );
+			if ( $option['type'] == 'subgroup_start' ) {
+				$class = 'subgroup';
+				if ( isset( $option['class'] ) ) {
+					$class .= ' '.$option['class'];
+				}
+
+				$item_output .= sprintf('<div class="%s">', $class);
+				continue;
+			}
+
+			if ( $option['type'] == 'subgroup_end' ) {
+				$item_output .= '</div><!-- .subgroup (end) -->';
+				continue;
+			}
+
+			// Continue with normal form items
+			$class = 'section-'.$option['type'];
+			if ( isset( $option['class'] ) ) {
+				$class .= ' '.$option['class'];
+			}
+
+			$item_output .= sprintf( '<div class="section %s">', $class );
+
+			if ( isset( $option['name'] ) && $option['name'] ) {
+				$item_output .= sprintf( '<h4>%s</h4>', $option['name'] );
+			}
+
+			$item_output .= '<div class="option clearfix">';
+			$item_output .= '<div class="controls">';
 
 			$current = '';
-			if ( isset( $item[$option['id']] ) ) {
+			if ( isset($option['id']) && isset( $item[$option['id']] ) ) {
 				$current = $item[$option['id']];
 			}
 
 			switch ( $option['type'] ) {
+
+				// Hidden input
+				case 'hidden' :
+					$class = 'of-input';
+					if ( $this->trigger == $option['id'] ) {
+						$class .= ' handle-trigger';
+					}
+					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
+					break;
 
 				// Text input
 				case 'text':
@@ -249,18 +313,42 @@ abstract class Theme_Blvd_Sortable_Option {
 					break;
 			}
 
+			$item_output .= '</div><!-- .controls (end) -->';
+
+			if ( ! empty( $option['desc'] ) ) {
+				$item_output .= '<div class="explain">';
+				$item_output .= $option['desc'];
+				$item_output .= '</div><!-- .explain (end) -->';
+			}
+
+			$item_output .= '</div><!-- .options (end) -->';
+
 			$item_output .= '</div><!-- .section (end) -->';
 		}
 
 		// Delete item
 		$item_output .= '<div class="section">';
-		$item_output .= sprintf( '<a href="#%s" class="delete-me" title="%s">%s</a>', $item_id, $this->labels['delete_confirm'], $this->labels['delete'] );
+		$item_output .= sprintf( '<a href="#%s" class="delete-sortable-item" title="%s">%s</a>', $item_id, $this->labels['delete_confirm'], $this->labels['delete'] );
 		$item_output .= '</div>';
 
 		$item_output .= '</div><!-- .item-content (end) -->';
 		$item_output .= '</div>';
 
 		return $item_output;
+	}
+
+	/**
+	 * Get the handle for an item.
+	 *
+	 * @since 2.5.0
+	 */
+	protected function get_item_handle( $item ) {
+		$handle  = '<div class="item-handle closed">';
+		$handle .= '<h3>&nbsp;</h3>';
+		$handle .= '<span class="tb-icon-sort"></span>';
+		$handle .= '<a href="#" class="toggle"><span class="tb-icon-up-dir"></span></a>';
+		$handle .= '</div>';
+		return $handle;
 	}
 
 	/**
@@ -295,12 +383,165 @@ abstract class Theme_Blvd_Sortable_Option {
 }
 
 /**
+ * Slider option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'slider';
+
+		// Run parent
+		parent::__construct();
+	}
+
+	/**
+	 * Display the footer.
+	 *
+	 * @since 2.5.0
+	 */
+	protected function get_display_footer( $option_id, $option_name, $items ) {
+		$footer  = '<footer>';
+		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid('slider_'), $this->labels['modal_title'], $this->labels['modal_button'], $this->labels['add'] );
+		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
+		$footer .= '</footer>';
+		return $footer;
+	}
+
+	/**
+	 * Get the handle for an item.
+	 *
+	 * @since 2.5.0
+	 */
+	protected function get_item_handle( $item ) {
+
+		$handle  = '<div class="item-handle closed">';
+
+		if ( isset( $item['thumb'] ) ) {
+			$handle .= sprintf( '<span class="preview"><img src="%s" /></span>', $item['thumb'] );
+		}
+
+		$handle .= '<h3>&nbsp;</h3>';
+		$handle .= '<span class="tb-icon-sort"></span>';
+		$handle .= '<a href="#" class="toggle"><span class="tb-icon-up-dir"></span></a>';
+		$handle .= '</div>';
+
+		return $handle;
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'id',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'alt',
+				'type'		=> 'hidden',
+				'std'		=> '',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'crop',
+				'type'		=> 'hidden',
+				'std'		=> 'slider-large',
+				'class'		=> 'match' // Will match with image crop selection
+			),
+			array(
+				'id' 		=> 'thumb',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'title',
+				'name'		=> __('Title (optional)', 'themeblvd'),
+				'desc'		=> __('If you\'d like a headline to show on the slide, you may enter it here.', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'desc',
+				'name'		=> __('Description (optional)', 'themeblvd'),
+				'desc'		=> __('If you\'d like a description to show on the slide, you may enter it here.', 'themeblvd'),
+				'type'		=> 'textarea',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'link',
+				'name'		=> __('Link URL (optional)', 'themeblvd'),
+				'desc'		=> __('If you\'d like slide to be wrapped in a link, you may enter url of the link here.', 'themeblvd'),
+				'type'		=> 'text',
+				'pholder'	=> 'http://',
+				'std'		=> ''
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Images','themeblvd'),
+			'delete' 				=> __('Remove Image','themeblvd'),
+			'delete_all' 			=> __('Remove All Images','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to remove all images?','themeblvd'),
+			'modal_title'			=> __('Select Images','themeblvd'),
+			'modal_button'			=> __('Add Images','themeblvd')
+		);
+		return $labels;
+	}
+
+	/**
+	 * Add item via Ajax.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_item() {
+		check_ajax_referer( 'themeblvd_sortable_option', 'security' );
+		$items = $_POST['data']['items'];
+
+		foreach ( $items as $item ) {
+			$val = array(
+				'id' 	=> $item['id'],
+				'alt'	=> $item['title'],
+				'thumb'	=> $item['preview']
+			);
+			echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_'.rand() ), $val, $_POST['data']['option_name'] );
+		}
+		die();
+	}
+
+}
+
+/**
  * Social Media buttons option type
+ *
+ * @since 2.5.0
  */
 class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 
 	/**
 	 * Constructor
+	 *
+	 * @since 2.5.0
 	 */
 	public function __construct() {
 
@@ -314,6 +555,8 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 
 	/**
 	 * Get options
+	 *
+	 * @since 2.5.0
 	 */
 	public function get_options() {
 		$options = array(
@@ -343,11 +586,16 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 
 	/**
 	 * Get labels
+	 *
+	 * @since 2.5.0
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 		=> __('Add Icon','themeblvd'),
-			'delete' 	=> __('Delete Icon','themeblvd')
+			'add' 					=> __('Add Icon','themeblvd'),
+			'delete' 				=> __('Delete Icon','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this icon?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Icons','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all icons?','themeblvd')
 		);
 		return $labels;
 	}

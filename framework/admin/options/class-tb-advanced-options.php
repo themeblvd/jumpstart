@@ -24,10 +24,6 @@ class Theme_Blvd_Advanced_Options {
 	 */
 	private static $instance = null;
 
-	/*--------------------------------------------*/
-	/* Properties, private
-	/*--------------------------------------------*/
-
 	/**
 	 * Reference of all advanced option types.
 	 * These are available types, not instantiated
@@ -85,6 +81,7 @@ class Theme_Blvd_Advanced_Options {
 	 */
 	public function set_reference() {
 		$this->reference = array(
+			'slider',
 			'social_media'
 		);
 	}
@@ -107,10 +104,13 @@ class Theme_Blvd_Advanced_Options {
 		}
 
 		switch ( $type ) {
+			case 'slider':
+				$this->types[$type] = new Theme_Blvd_Slider_Option();
+				break;
+
 			case 'social_media':
 				$this->types[$type] = new Theme_Blvd_Social_Option();
 				break;
-			// ...
 		}
 
 	}
@@ -131,7 +131,6 @@ class Theme_Blvd_Advanced_Options {
 		}
 
 		return $this->types[$type];
-
 	}
 
 	/**
@@ -149,7 +148,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'social_media' ) );
+		return in_array( $type, array( 'slider', 'social_media' ) );
 	}
 
 }

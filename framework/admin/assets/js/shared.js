@@ -9,7 +9,7 @@
 	var themeblvd_shared = {
 
     	// All general binded events
-    	init : function()
+    	init: function()
     	{
     		var $this = this;
 
@@ -56,10 +56,8 @@
 			// Delete item by ID passed through link's href
 			$this.on( 'click', '.delete-me', function() {
 				var item = $(this).attr('href');
-				tbc_confirm($(this).attr('title'), {'confirm':true}, function(r)
-				{
-			    	if(r)
-			        {
+				tbc_confirm($(this).attr('title'), {'confirm':true}, function(r) {
+			    	if(r) {
 			        	$(item).remove();
 			        }
 			    });
@@ -76,7 +74,7 @@
     	},
 
     	// Setup custom options
-    	options : function( type )
+    	options: function( type )
     	{
     		return this.each(function(){
 
@@ -210,6 +208,12 @@
 					if ( typeof wpColorPicker !== 'undefined' ) {
 						$this.find('.tb-color-picker').wpColorPicker();
 					}
+
+					// Match options
+					$this.find('.match-trigger .of-input').each(function(){
+						var $el = $(this);
+						$el.closest('.subgroup').find('.match .of-input').val($el.val());
+					});
 
 					// Remove tooltips if hovered link is clicked
 					$this.find('.tb-tooltip-link').click(function(){
@@ -379,6 +383,12 @@
     						$this.find('#section-homepage_custom_layout').fadeOut('fast');
     				});
 
+	    			// Match options
+					$this.on( 'change', '.match-trigger .of-input', function(){
+						var $el = $(this);
+						$el.closest('.subgroup').find('.match .of-input').val($el.val());
+					});
+
 	    			// Modals
 	    			if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
 	    				$this.find('.tb-modal-link').ThemeBlvdModal();
@@ -488,7 +498,7 @@
 						$this.find('.tb-textarea-editor-link').ThemeBlvdModal({
 					        build: false,
 					        padding: true,
-					        size: 'custom', // Something other than "large" to trigger auto height
+					        height: 'auto',
 					        on_load: function() {
 
 					        	// Temporary override WP's active editor
@@ -661,7 +671,8 @@
     				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
 						$this.find('.tb-textarea-code-link').ThemeBlvdModal({
 							code_editor: true,
-							size: 'medium'
+							size: 'medium',
+							height: 'auto'
 						});
 	    			}
 
@@ -720,11 +731,90 @@
 	    		// Sortable option type
 	    		else if (type == 'sortable') {
 
+	    			// We'll store all of the setup for an item
+	    			// within this variable so we can call it again
+	    			// on AJAX success of adding new items.
+	    			var sortable_item_setup = function( $item ) {
+
+	    				// Bind "Delete Item" button
+	    				$item.find('.delete-sortable-item').off('click');
+						$item.find('.delete-sortable-item').on( 'click', function(){
+
+							var $link = $(this),
+								$option = $link.closest('.section-sortable'),
+								$item = $link.closest('.item');
+
+							tbc_confirm($link.attr('title'), {'confirm':true}, function(r) {
+						    	if(r) {
+									$item.addClass('delete');
+									window.setTimeout(function(){
+										$item.remove();
+										if ( ! $option.find('.item-container .item').length ) {
+											$option.find('.delete-sortable-items').fadeOut(200);
+										}
+									}, 500);
+						        }
+						    });
+						    return false;
+						});
+
+						// Bind toggle for items
+						$item.find('.toggle').off('click');
+						$item.find('.toggle').on('click', function(){
+
+							var $el = $(this);
+
+							if ( $el.closest('.item-handle').hasClass('closed') ) {
+								$el.closest('.item-handle').removeClass('closed');
+								$el.closest('.item').find('.item-content').show();
+							} else {
+								$el.closest('.item-handle').addClass('closed');
+								$el.closest('.item').find('.item-content').hide();
+							}
+
+							return false;
+						});
+
+						$item.find('.item-handle h3').each(function(){
+
+							var $el = $(this),
+								$trigger = $el.closest('.item').find('.handle-trigger');
+
+							if ( $trigger.is('select') ) {
+								$el.closest('.item').find('.item-handle h3').text( $trigger.find('option[value="'+$trigger.val()+'"]').text() );
+							} else {
+								$el.closest('.item').find('.item-handle h3').text( $trigger.val() );
+							}
+						});
+
+						$item.find('.handle-trigger').off('change');
+						$item.find('.handle-trigger').on( 'change', function(){
+
+							var $el = $(this);
+
+							if ( $el.is('select') ) {
+								$el.closest('.item').find('.item-handle h3').text( $el.find('option[value="'+$el.val()+'"]').text() );
+							} else {
+								$el.closest('.item').find('.item-handle h3').text( $el.val() );
+							}
+						});
+
+	    			};
+
 	    			// Sortable option type
 					$this.find('.tb-sortable-option').each(function(){
 
 						var $option = $(this),
 							$section = $option.closest('.section-sortable');
+
+						// Setup sortable items
+						$section.find('.item').each(function() {
+							sortable_item_setup( $(this) );
+						});
+
+						if ( $option.find('.item-container .item').length ) {
+							$option.find('.delete-sortable-items').show();
+						}
 
 						// Setup sortables
 						$section.find('.item-container').sortable({
@@ -759,84 +849,38 @@
 									$new_item.removeClass('add');
 								}, 500);
 
-								// Bind toggle for displaying options
-								$new_item.find('.toggle').on('click', function(){
+								// Show "Delete All Items" button
+								$section.find('.delete-sortable-items').fadeIn(200);
 
-									var $el = $(this);
-
-									if ( $el.closest('.item-handle').hasClass('closed') ) {
-										$el.closest('.item-handle').removeClass('closed');
-										$el.closest('.item').find('.item-content').show();
-									} else {
-										$el.closest('.item-handle').addClass('closed');
-										$el.closest('.item').find('.item-content').hide();
-									}
-
-									return false;
-								});
-
-								$new_item.find('.item-handle h3').each(function(){
-
-									var $el = $(this),
-										$trigger = $el.closest('.item').find('.handle-trigger');
-
-									if ( $trigger.is('select') ) {
-										$el.closest('.item').find('.item-handle h3').text( $trigger.find('option[value="'+$trigger.val()+'"]').text() );
-									} else {
-										$el.closest('.item').find('.item-handle h3').text( $trigger.val() );
-									}
-								});
-
-								$new_item.find('.handle-trigger').on( 'change', function(){
-
-									var $el = $(this);
-
-									if ( $el.is('select') ) {
-										$el.closest('.item').find('.item-handle h3').text( $el.find('option[value="'+$el.val()+'"]').text() );
-									} else {
-										$el.closest('.item').find('.item-handle h3').text( $el.val() );
-									}
-
-								});
+								// Setup scripts within item
+								sortable_item_setup( $new_item );
 
 								// Setup general scripts for options
 								$new_item.themeblvd('options', 'setup');
+
 							});
 
 							return false;
 						});
 
-						// Bind toggle for items
-						$section.find('.toggle').on('click', function(){
+						// Bind "Delete All Items" button
+						$section.find('.delete-sortable-items').off('click'); // avoid duplicates
+						$section.find('.delete-sortable-items').on( 'click', function(){
 
-							var $el = $(this);
+							var $link = $(this),
+								$option = $link.closest('.tb-sortable-option'),
+								$items = $option.find('.item');
 
-							if ( $el.closest('.item-handle').hasClass('closed') ) {
-								$el.closest('.item-handle').removeClass('closed');
-								$el.closest('.item').find('.item-content').show();
-							} else {
-								$el.closest('.item-handle').addClass('closed');
-								$el.closest('.item').find('.item-content').hide();
-							}
-
-							return false;
-						});
-
-						$section.find('.item-handle h3').each(function(){
-
-							var $el = $(this),
-								$trigger = $el.closest('.item').find('.handle-trigger');
-
-							if ( $trigger.is('select') ) {
-								$el.closest('.item').find('.item-handle h3').text( $trigger.find('option[value="'+$trigger.val()+'"]').text() );
-							} else {
-								$el.closest('.item').find('.item-handle h3').text( $trigger.val() );
-							}
-						});
-
-						$section.find('.handle-trigger').on( 'change', function(){
-							var $el = $(this);
-							$el.closest('.item').find('.item-handle h3').text( $el.val() );
+							tbc_confirm($link.attr('title'), {'confirm':true}, function(r) {
+						    	if(r) {
+									$items.addClass('delete');
+									window.setTimeout(function(){
+										$items.remove();
+										$option.find('.delete-sortable-items').fadeOut(200);
+									}, 500);
+						        }
+						    });
+						    return false;
 						});
 
 					});
@@ -845,7 +889,7 @@
     	},
 
     	// Widgets
-		widgets : function()
+		widgets: function()
 		{
 			return this.each(function(){
 				var el = $(this);
@@ -855,7 +899,7 @@
 		},
 
 		// Accordion
-		accordion : function()
+		accordion: function()
 		{
 			return this.each(function(){
 				var el = $(this);
@@ -902,55 +946,83 @@
 	themeblvd_media_uploader = {
 
 		/**
+		 * Manage any media modals that are created.
+		 */
+		media_frame: [],
+
+		/**
 		 * Apply click actions initially when loaded.
 		 */
-		init : function(options)
-		{
+		init: function( $options ) {
 
-			options.find('.upload-button').on( 'click', function(){
-				themeblvd_media_uploader.add_file( $(this).closest('.section-upload, .section-media') );
+			var self = this;
+
+			// Avoid multiple bindings
+			$options.find('.upload-button').off('click');
+			$options.find('.remove-image, .remove-file').off('click');
+			$options.find('.add-images').off('click');
+
+			// Bind button actions
+			$options.find('.upload-button').on( 'click', function(event){
+				event.preventDefault();
+				self.add_file( $(this).closest('.section-upload, .section-media') );
 			});
 
-			options.find('.remove-image, .remove-file').on( 'click', function(){
-				themeblvd_media_uploader.remove_file( $(this).closest('.section-upload, .section-media') );
+			$options.find('.remove-image, .remove-file').on( 'click', function(event){
+				event.preventDefault();
+				self.remove_file( $(this).closest('.section-upload, .section-media') );
+			});
+
+			// Bind "Add Images" button for "slider" option type
+			$options.find('.add-images').on( 'click', function(event){
+				event.preventDefault();
+				self.add_images( $(this), $(this).closest('.section-sortable') );
 			});
 		},
 
 		/**
 		 * Trigger media uploader modal to insert an image.
 		 */
-		add_file : function(current_option)
-		{
-			var file_frame,
-				upload_type = current_option.find('.trigger').data('type'),
-				title = current_option.find('.trigger').data('title'),
-				select = current_option.find('.trigger').data('select'),
-				css_class = current_option.find('.trigger').data('class'),
+		add_file: function( $current_option ) {
+
+			var self = this,
+				frame_id = $current_option.find('input.upload').attr('id');
+
+			// If we've already created the media frame, open it,
+			// and get the heck out of here.
+			if ( self.media_frame[frame_id] ) {
+				self.media_frame[frame_id].open();
+				return;
+			}
+
+			var new_frame,
+				upload_type = $current_option.find('.trigger').data('type'),
+				title = $current_option.find('.trigger').data('title'),
+				select = $current_option.find('.trigger').data('select'),
+				css_class = $current_option.find('.trigger').data('class'),
+				send_back = $current_option.find('.trigger').data('send-back'),
 				media_type = 'image',
+				workflow = 'select',
 				multiple = false, // @todo future feature of Quick Slider
-				workflow = 'select'; // @todo future feature of Quick Slider
+				state = 'library';
 
 			if ( upload_type == 'video' ) {
 				media_type = 'video';
 			}
 
-			if ( upload_type == 'standard' || upload_type == 'media' ) {
+			if ( upload_type == 'media' ) {
 				media_type = '';
-			}
-
-			if ( upload_type == 'quick_slider' || upload_type == 'media' ) {
 				multiple = true;
 			}
 
-			if ( upload_type == 'media' ) {
-				workflow = 'post';
+			if ( upload_type == 'advanced' ) {
+				state = 'themeblvd_advanced';
 			}
 
-			// event.preventDefault();
-
 			// Create the media frame.
-			file_frame = wp.media.frames.file_frame = wp.media({
+			new_frame = self.media_frame[frame_id] = wp.media.frames.file_frame = wp.media({
 				frame: workflow,
+				state: state,
 				className: 'media-frame '+css_class, // Will break without "media-frame"
 				title: title,
 				library: {
@@ -962,45 +1034,85 @@
 				multiple: multiple
 			});
 
-			// Image selected and inserted
-			file_frame.on( 'select', function() {
+			// Setup advanced image selection
+			if ( upload_type == 'advanced' ) {
+
+				// Create "themeblvd_advanced" state
+				new_frame.states.add([
+
+					new wp.media.controller.Library({
+						id: 'themeblvd_advanced',
+						title: title,
+						priority: 20,
+						toolbar: 'select',
+						filterable: 'uploaded',
+						library: wp.media.query( new_frame.options.library ),
+						multiple: false,
+						editable: true,
+						displayUserSettings: false,
+						displaySettings: true,
+						allowLocalEdits: true
+						// AttachmentView: media.view.Attachment.Library
+					})
+
+				]);
+			}
+
+			// When media item is inserted
+			new_frame.on( 'select', function() {
 
 				// Grab the selected attachment.
-				var attachment = file_frame.state().get('selection').first(),
-					remove_text = current_option.find('.trigger').data('remove'),
+				var attachment = new_frame.state().get('selection').first(),
+					remove_text = $current_option.find('.trigger').data('remove'),
+					size,
+					image_url,
+					link,
+					link_url,
 					helper_text;
 
-				current_option.find('.image-url').val(attachment.attributes.url);
+				// Determine Image URL. If it "advanced" will pull from crop size selection
+				if ( upload_type == 'advanced' ) {
+					size = new_frame.$el.find('.attachment-display-settings select[name="size"]').val();
+					image_url = attachment.attributes.sizes[size].url;
+				} else {
+					image_url = attachment.attributes.url;
+				}
+
+				if ( send_back == 'id' ) {
+					$current_option.find('.image-url').val(attachment.attributes.id);
+				} else {
+					$current_option.find('.image-url').val(image_url);
+				}
 
 				if ( attachment.attributes.type == 'image' ) {
-					current_option.find('.screenshot').empty().hide().append('<img src="' + attachment.attributes.url + '"><a class="remove-image"></a>').slideDown('fast');
+					$current_option.find('.screenshot').empty().hide().append('<img src="'+image_url+'"><a class="remove-image"></a>').slideDown('fast');
 				}
 
 				if ( upload_type == 'logo' ) {
-					current_option.find('.image-width').val(attachment.attributes.width);
+					$current_option.find('.image-width').val(attachment.attributes.width);
 				}
 
 				if ( upload_type == 'video' ) {
-					current_option.find('.video-url').val(attachment.attributes.url);
+					$current_option.find('.video-url').val(attachment.attributes.url);
 				}
 
 				if ( upload_type == 'slider' ) {
 
-					current_option.find('.image-id').val(attachment.attributes.id);
-					current_option.find('.image-title').val(attachment.attributes.title);
+					$current_option.find('.image-id').val(attachment.attributes.id);
+					$current_option.find('.image-title').val(attachment.attributes.title);
 
-					helper_text = current_option.find('.image-title').val();
+					helper_text = $current_option.find('.image-title').val();
 
 					if ( helper_text ) {
-						current_option.closest('.widget').find('.slide-summary').text(helper_text).fadeIn(200);
+						$current_option.closest('.widget').find('.slide-summary').text(helper_text).fadeIn(200);
 					}
 				}
 
 				if ( upload_type != 'video' && upload_type != 'media' ) {
-					current_option.find('.upload-button').unbind().addClass('remove-file').removeClass('upload-button').val(remove_text);
-					current_option.find('.of-background-properties').slideDown();
+					$current_option.find('.upload-button').unbind().addClass('remove-file').removeClass('upload-button').val(remove_text);
+					$current_option.find('.of-background-properties').slideDown();
 
-					current_option.find('.remove-image, .remove-file').click(function() {
+					$current_option.find('.remove-image, .remove-file').click(function() {
 						themeblvd_media_uploader.remove_file( $(this).closest('.section-upload') );
 			        });
 				}
@@ -1009,44 +1121,223 @@
 					// ...
 				}
 
-			});
+				if ( upload_type == 'advanced' ) {
 
-			// Modal window closed w/no insertion of an image. So, we need to
-			// reset the upload button to avoid weird results.
-			file_frame.on( 'close', function() {
+					// Send Title back
+					$current_option.find('.image-id').val(attachment.attributes.id);
+					$current_option.find('.image-title').val(attachment.attributes.title);
+					$current_option.find('.image-crop').val(size);
+					$current_option.find('.image-width').val(attachment.attributes.sizes[size].width);
+					$current_option.find('.image-height').val(attachment.attributes.sizes[size].height);
 
-				current_option.find('.upload-button').unbind('click');
+					// Send Link back
+					link = new_frame.$el.find('.attachment-display-settings .link-to').val();
 
-				current_option.find('.upload-button').on( 'click', function(){
-					themeblvd_media_uploader.add_file( $(this).closest('.section-upload, .section-media') );
-				});
+					if ( link != 'none' ) {
+						link_url = new_frame.$el.find('.attachment-display-settings .link-to-custom').val();
+						console.log(link_url);
+						$current_option.closest('.advanced-image-upload').find('.receive-link-url input').val(link_url);
+					}
+
+				}
 
 			});
 
 			// Finally, open the modal.
-			file_frame.open();
+			new_frame.open();
+
+			if ( upload_type == 'advanced' ) {
+				new_frame.$el.addClass('hide-menu');
+				new_frame.$el.find('.attachment-display-settings label:first-of-type').remove();
+			}
+
 		},
 
 		/**
 		 * Remove current image and put back "Upload" button.
 		 */
-		remove_file : function(current_option)
-		{
-			var upload_text = current_option.find('.trigger').data('upload'),
-				upload_type = current_option.find('.trigger').data('type');
+		remove_file: function( $current_option ) {
+
+			var self = this,
+				upload_text = $current_option.find('.trigger').data('upload'),
+				upload_type = $current_option.find('.trigger').data('type');
 
 			if ( upload_type == 'slider' ) {
-				current_option.closest('.widget').find('.slide-summary').removeClass('image video').hide().text('');
+				$current_option.closest('.widget').find('.slide-summary').removeClass('image video').hide().text('');
 			}
 
-			current_option.find('.remove-image').hide();
-			current_option.find('.upload').val('');
-			current_option.find('.of-background-properties').hide();
-			current_option.find('.screenshot').slideUp();
-			current_option.find('.remove-file').addClass('upload-button').removeClass('remove-file').val(upload_text);
-			current_option.find('.upload-button').click(function(){
-				themeblvd_media_uploader.add_file( $(this).closest('.section-upload') );
+			$current_option.find('.remove-image').hide();
+			$current_option.find('.upload').val('');
+			$current_option.find('.of-background-properties').hide();
+			$current_option.find('.screenshot').slideUp();
+			$current_option.find('.remove-file').addClass('upload-button').removeClass('remove-file').val(upload_text);
+
+			$current_option.find('.upload-button').click(function(event){
+				event.preventDefault();
+				self.add_file( $(this).closest('.section-upload') );
 			});
+		},
+
+		/**
+		 * Add images, used for "slider" advanced sortable option type
+		 */
+		add_images: function( $button, $current_option ) {
+
+			var self = this,
+				frame_id = $button.attr('id');
+
+			// If we've already created the media frame, open it,
+			// and get the heck out of here.
+			if ( self.media_frame[frame_id] ) {
+				self.media_frame[frame_id].open();
+				return;
+			}
+
+			// Create the media frame.
+			var new_frame = self.media_frame[frame_id] = wp.media.frames.file_frame = wp.media({
+				frame: 'select',
+				className: 'media-frame tb-modal-hide-settings', // Will break without "media-frame"
+				title: $button.data('title'),
+				library: {
+					type: 'image'
+				},
+				button: {
+					text: $button.data('button')
+				},
+				multiple: 'add'
+			});
+
+			// Insert images
+			new_frame.on( 'select update insert', function(event) {
+
+				var selection,
+					state = new_frame.state(),
+					i = 0,
+					images = [],
+					element,
+					data,
+					$option = $current_option.find('.tb-sortable-option'),
+					$new_items;
+
+				if ( typeof event !== 'undefined' ) {
+	 				selection = event; // multiple items
+	 			} else {
+	 				selection = state.get('selection'); // single item
+	 			}
+
+				selection.map( function( attachment ){
+					element = attachment.toJSON();
+					images[i] = {
+						id: element.id,
+						title: element.title,
+						preview: element.sizes['thumbnail'].url
+					}
+					i++;
+				});
+
+				data = {
+					action: 'themeblvd_add_slider_item',
+					security: $option.data('security'),
+					data: {
+						option_name: $option.data('name'),
+						option_id: $option.data('id'),
+						items: images
+					}
+				};
+
+				$.post(ajaxurl, data, function( response ){
+
+					// Append new item
+					$current_option.find('.item-container').append( response );
+
+					// Cache the items just added
+					var $new_items = $current_option.find('.item-container .item').slice(-images.length);
+
+					// Make it green for a bit to indicate it was just added
+					$new_items.addClass('add');
+					window.setTimeout(function(){
+						$new_items.removeClass('add');
+					}, 500);
+
+					// Show "Delete All Items" button
+					$current_option.find('.delete-sortable-items').fadeIn(200);
+
+					// Bind "Delete Item" button
+					$new_items.find('.delete-sortable-item').on( 'click', function(){
+
+						var $link = $(this),
+							$option = $link.closest('.section-sortable'),
+							$item = $link.closest('.item');
+
+						tbc_confirm($link.attr('title'), {'confirm':true}, function(r) {
+					    	if(r) {
+								$item.addClass('delete');
+								window.setTimeout(function(){
+									$item.remove();
+									if ( ! $option.find('.item-container .item').length ) {
+										$option.find('.delete-sortable-items').fadeOut(200);
+									}
+								}, 500);
+					        }
+					    });
+					    return false;
+					});
+
+					// Bind toggle for displaying options
+					$new_items.find('.toggle').on('click', function(){
+
+						var $el = $(this);
+
+						if ( $el.closest('.item-handle').hasClass('closed') ) {
+							$el.closest('.item-handle').removeClass('closed');
+							$el.closest('.item').find('.item-content').show();
+						} else {
+							$el.closest('.item-handle').addClass('closed');
+							$el.closest('.item').find('.item-content').hide();
+						}
+
+						return false;
+					});
+
+					$new_items.find('.item-handle h3').each(function(){
+
+						var $el = $(this),
+							$trigger = $el.closest('.item').find('.handle-trigger');
+
+						if ( $trigger.is('select') ) {
+							$el.closest('.item').find('.item-handle h3').text( $trigger.find('option[value="'+$trigger.val()+'"]').text() );
+						} else {
+							$el.closest('.item').find('.item-handle h3').text( $trigger.val() );
+						}
+					});
+
+					$new_items.find('.handle-trigger').on( 'change', function(){
+
+						var $el = $(this);
+
+						if ( $el.is('select') ) {
+							$el.closest('.item').find('.item-handle h3').text( $el.find('option[value="'+$el.val()+'"]').text() );
+						} else {
+							$el.closest('.item').find('.item-handle h3').text( $el.val() );
+						}
+
+					});
+
+					// Match options
+					$new_items.closest('.subgroup').find('.match-trigger .of-input').each(function(){
+						var $el = $(this);
+						$el.closest('.subgroup').find('.match .of-input').val($el.val());
+					});
+
+					// Setup general scripts for options
+					$new_items.themeblvd('options', 'setup');
+
+				});
+
+			});
+
+			// Open the modal.
+			new_frame.open();
 		}
 	};
 })(jQuery);
@@ -1058,8 +1349,7 @@
 
 (function($) {
 	tbc_alert = {
-		init : function(alert_text, alert_class, selector)
-		{
+		init: function( alert_text, alert_class, selector ) {
 
 		  	// Available classes:
 			// success (green)
@@ -1114,8 +1404,7 @@
  * Confirmation
  */
 (function($){
-	tbc_confirm = function(string, args, callback)
-	{
+	tbc_confirm = function( string, args, callback ) {
 		var default_args = {
 			'confirm'		:	false, 		// Ok and Cancel buttons
 			'verify'		:	false,		// Yes and No buttons

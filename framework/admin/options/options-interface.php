@@ -281,6 +281,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 								$error = __('No registered sidebars were found.', 'themeblvd');
 							}
 							break;
+
+						case 'crop' :
+							$value['options'] = themeblvd_get_select( 'crop' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('No registered crop sizes were found.', 'themeblvd');
+							}
+							break;
 					}
 
 				}
@@ -701,6 +709,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'logo' :
 				$output .= themeblvd_logo_option( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
+			/* Slider
+			/*---------------------------------------*/
+
+			case 'slider' :
+				$slider = $advanced->get('slider');
+				$output .= $slider->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/

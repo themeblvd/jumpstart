@@ -1013,6 +1013,55 @@ function themeblvd_get_select( $type ) {
 			}
 			break;
 
+		// All registered crop sizes
+		case 'crop' :
+
+			$registered = get_intermediate_image_sizes();
+			$atts = $GLOBALS['_wp_additional_image_sizes'];
+
+			$select['full'] = __('Full Size','themeblvd');
+
+			foreach ( $registered as $size ) {
+
+				// Skip some sizes
+				if ( in_array( $size, array('thumbnail', 'square_small', 'square_smaller', 'square_smallest' ) ) ) {
+					continue;
+				}
+
+				// Determine width, height, and crop mode
+				if ( isset( $atts[$size]['width'] ) ) {
+					$width = intval( $atts[$size]['width'] );
+				} else {
+					$width = get_option( "{$size}_size_w" );
+				}
+
+				if ( isset( $atts[$size]['height'] ) ) {
+					$height = intval( $atts[$size]['height'] );
+				} else {
+					$height = get_option( "{$size}_size_h" );
+				}
+
+				if ( isset( $atts[$size]['crop'] ) ) {
+					$crop = intval( $atts[$size]['crop'] );
+				} else {
+					$crop = get_option( "{$size}_crop" );
+				}
+
+				// Crop mode message
+				if ( $crop ) {
+					$crop_desc = __('hard crop', 'themeblvd');
+				} else if ( $height == 9999 ) {
+					$crop_desc = __('no height crop', 'themeblvd');
+				} else {
+					$crop_desc = __('soft crop', 'themeblvd');
+				}
+
+				// Piece it all together
+				$select[$size] = sprintf( '%s (%d x %d, %s)', $size, $width, $height, $crop_desc );
+
+			}
+			break;
+
 	}
 
 	// Put WPML filters back

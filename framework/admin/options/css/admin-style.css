@@ -302,6 +302,15 @@
 .tb-modal-hide-settings .attachment-details label.setting {
 	display: none;
 }
+.tb-modal-advanced-image .media-sidebar .attachment-details .setting[data-setting="caption"],
+.tb-modal-advanced-image .media-sidebar .attachment-details .setting[data-setting="alt"],
+.tb-modal-advanced-image .media-sidebar .attachment-details .setting[data-setting="description"],
+.tb-modal-advanced-image .media-sidebar .attachment-display-settings label.setting {
+	display: none;
+}
+.tb-modal-advanced-image .media-sidebar .attachment-display-settings label.setting:last-child {
+	display: block;
+}
 
 /* WP Editor */
 #optionsframework .section-editor .controls {
@@ -550,6 +559,25 @@
 }
 
 /* Sortables */
+#optionsframework .section-sortable > .option > .controls {
+	position: relative;
+}
+#optionsframework .tb-sortable-option footer {
+	background: #f8f8f8;
+	padding: 5px;
+	position: relative;
+}
+#optionsframework .section-sortable .delete-sortable-items {
+	font-size: 16px;
+	color: #c61f1f;
+	outline: 0;
+	position: absolute;
+	right: 5px;
+	top: 10px;
+}
+#optionsframework .section-sortable .delete-sortable-items:hover {
+	color: #f12323;
+}
 #optionsframework .tb-sortable-option .item {
 	background: #ffffff;
 	margin-bottom: 5px;
@@ -575,6 +603,8 @@
 	padding: 0 10px 0 22px;
 	height: 32px; /* Fix for if <h3> happens to be empty */
 	line-height: 32px;
+	margin: 0;
+	overflow: hidden;
 	padding: 0 10px 0 22px;
 }
 #optionsframework .tb-sortable-option .item-handle .tb-icon-sort {
@@ -614,17 +644,79 @@
 #optionsframework .tb-sortable-option .section {
 	padding: 10px;
 }
-#optionsframework .tb-sortable-option .section:last-child {
+#optionsframework .tb-sortable-option > .section:last-child {
 	border-bottom: none;
 }
 #optionsframework .tb-sortable-option .section h4 {
 	margin: 0 0 8px 4px;
 }
-#optionsframework .tb-sortable-option .delete-me {
+#optionsframework .tb-sortable-option .section-hidden {
+	display: none;
+}
+#optionsframework .tb-sortable-option .delete-sortable-item {
 	color: #c61f1f;
 	font-size: 12px;
 	text-decoration: none;
 }
-#optionsframework .tb-sortable-option .delete-me:hover {
+#optionsframework .tb-sortable-option .delete-sortable-item:hover {
 	color: #f12323;
 }
+#optionsframework .tb-sortable-option textarea {
+	height: 100px;
+}
+
+/* Sortables - slider */
+#optionsframework .section-slider > .option > .controls {
+	float: none;
+	min-width: 0;
+	margin-bottom: 10px;
+	padding: 0;
+	width: auto;
+}
+#optionsframework .section-slider > .option > .explain {
+	float: none;
+	max-width: none;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle .preview {
+	background: #ffffff;
+	border: 1px solid #dfdfdf;
+	padding: 4px;
+	position: absolute;
+	top: 5px;
+	left: 25px;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle {
+	background-color: #ffffff;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f7f7f7));
+	background-image: -webkit-linear-gradient(top, #ffffff, #f7f7f7);
+	background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
+	background-image: -o-linear-gradient(top, #ffffff, #f7f7f7);
+	background-image: -ms-linear-gradient(top, #ffffff, #f7f7f7);
+	background-image: linear-gradient(top, #ffffff, #f7f7f7);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#f7f7f7');
+	-moz-box-shadow: inset 0 -1px 0 #ffffff;
+	-webkit-box-shadow: inset 0 -1px 0 #ffffff;
+	box-shadow: inset inset 0 -1px 0 #ffffff;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle .preview img {
+	display: block;
+	width: 40px;
+	height: 40px;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle h3 {
+	line-height: 60px;
+	padding-left: 84px;
+	height: 60px;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle .tb-icon-sort {
+	top: 24px;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle a.toggle {
+	height: 60px;
+	line-height: 60px;
+}
+/*
+#optionsframework .section-slider .delete-sortable-items {
+	right: 6px;
+}
+*/
