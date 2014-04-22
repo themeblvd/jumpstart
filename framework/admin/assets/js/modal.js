@@ -322,6 +322,7 @@ if ( typeof Object.create !== 'function' ) {
                 self.$modal_window.themeblvd('options', 'setup');
                 self.$modal_window.themeblvd('options', 'bind');
                 self.$modal_window.themeblvd('options', 'media-uploader');
+                self.$modal_window.themeblvd('options', 'sortable');
             }
 
         },
@@ -504,6 +505,7 @@ if ( typeof Object.create !== 'function' ) {
                     $new_block.themeblvd('options', 'media-uploader');
                     $new_block.themeblvd('options', 'editor');
                     $new_block.themeblvd('options', 'code-editor');
+                    $new_block.themeblvd('options', 'sortable');
 
                     // And bind the modal window for the settings link
                     $new_block.find('.tb-content-block-options-link').ThemeBlvdModal({
