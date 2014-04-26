@@ -111,8 +111,13 @@ jQuery(document).ready(function($) {
 				// Add bootstrap thumbnail class
 				$(this).find('img').addClass('thumbnail');
 
+				// Account for any parameters being added to
+				// URL, like with W3 Total Cache, for example.
+				var url = this.href.split('?');
+					url = url[0];
+
 				// Append lightbox and hover effect if thumb links to an image
-				if ( this.href.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i ) ) {
+				if ( url.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i ) ) {
 				   	$(this).addClass('lightbox-gallery-item mfp-image image-button');
 				}
 
@@ -390,6 +395,7 @@ jQuery(document).ready(function($) {
 				$('.element-tabs a[href="'+hash.replace('tab_', '')+'"]').tab('show');
 			}
 		}
+
 	}
 
 });
