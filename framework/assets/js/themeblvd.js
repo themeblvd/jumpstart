@@ -382,6 +382,20 @@ jQuery(document).ready(function($) {
 
 		});
 
+		// Carousel indicator dots navigation -- This fix allows
+		// us to integrate links on the slides better by reducing
+		// the space around navigation indicator dots.
+		$('.carousel-indicators').each(function(){
+
+			var $el = $(this),
+				width = 14 * $el.find('li').length;
+
+			$el.css({
+				'width': width + 'px',
+				'margin-left': '-'+(width/2)+'px'
+			});
+		});
+
 		// Deep linking Bootstrap tabs
 		if ( themeblvd.tabs_deep_linking == 'true' ) {
 

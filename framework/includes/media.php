@@ -303,17 +303,31 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	$defaults = apply_filters( 'themeblvd_gallery_slider_args', array(
 		'size'			=> '',					// Crop size for images
 		'thumb_size'	=> 'square_smallest', 	// Size of nav thumbnail images
+		'thumb_width'	=> '',					// Width to display thumbnail
 		'interval'		=> 'false',				// Milliseconds between transitions, false for no auto rotation (PHP string to output as JS boolean)
 		'pause'			=> 'true',				// Whether to pause on hover (PHP string to output as JS boolean)
 		'wrap'			=> 'true',				// Whether sliders continues auto rotate after first pass (PHP string to output as JS boolean)
 		'nav_standard'	=> false,				// Whether to show standard nav indicator dots
 		'nav_arrows'	=> true,				// Whether to show standard nav arrows
-		'nav_thumbs'	=> true					// Whether to show nav thumbnails (added by Theme Blvd framework)
+		'nav_thumbs'	=> true,				// Whether to show nav thumbnails (added by Theme Blvd framework)
+		'title'			=> false,				// Display title of attachments on slides
+		'caption'		=> false 				// Display captions of attachments on slides
 	));
 	$args = wp_parse_args( $args, $defaults );
 
 	$post_id = get_the_ID();
+
+	// Size
 	$size = apply_filters( 'themeblvd_gallery_slider_size', $args['size'], $post_id );
+
+	// Thumb size
+	if ( ! $args['thumb_width'] ) {
+		if ( isset( $GLOBALS['_wp_additional_image_sizes'][$args['thumb_size']]['width'] ) ) {
+			$args['thumb_width'] = $GLOBALS['_wp_additional_image_sizes'][$args['thumb_size']]['width'];
+		} else {
+			$args['thumb_width'] = get_option( $args['thumb_size'].'_size_w' );
+		}
+	}
 
 	// Did user pass in a gallery shortcode?
 	if ( $gallery ) {
@@ -362,21 +376,119 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		}
 	}
 
-	/*--------------------------------------------*/
-	/* Bootstrap Slider
-	/*--------------------------------------------*/
+	// Prepare images
+	$images = array();
 
-	$output  = sprintf( '<div id="gallery-slider-%s" class="tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $post_id, $args['interval'], $args['pause'], $args['wrap'] );
-	$output .= "\n<div class=\"carousel-control-wrap\">\n";
+	foreach ( $attachments as $attachment ) {
+
+		$title = '';
+		if ( $args['title'] ) {
+			$title = $attachment->post_title;
+		}
+
+		$caption = '';
+		if ( $args['caption'] ) {
+			$caption = $attachment->post_excerpt;
+		}
+
+		$img = wp_get_attachment_image_src( $attachment->ID, $size );
+		$thumb = wp_get_attachment_image_src( $attachment->ID, $args['thumb_size'] );
+
+		$images[] = array(
+			'crop'		=> $size,
+			'alt'		=> $attachment->post_title,
+			'src'		=> $img[0],
+			'width'		=> $img[1],
+			'height'	=> $img[2],
+			'thumb'		=> $thumb[0],
+			'title'		=> $title,
+			'desc'		=> $caption,
+		);
+
+	}
+
+	// Prepare slider options
+	$options = $args;
+	$options['crop'] = $size;
+	unset( $options['size'], $options['title'], $options['caption'] );
+
+	// Get our slider
+	$output = themeblvd_get_simple_slider( $images, $options );
+
+	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $attachments, $args );
+}
+
+/**
+ * Get bootstrap carousel slider from passed
+ * in image URL's, no DB queries involved.
+ *
+ * @since 2.5.0
+ *
+ * @param array $images Images for simple slider
+ * @param array $args Options for simple slider
+ * @return string $output Final slider HTML to output
+ */
+function themeblvd_get_simple_slider( $images, $args ) {
+
+	$defaults = array(
+		'id'			=> uniqid('slider_'),
+		'crop'			=> 'slider-large',
+		'interval'		=> '5',
+		'pause'			=> true,
+		'wrap'			=> true,
+		'nav_standard'	=> true,
+		'nav_arrows'	=> true,
+		'nav_thumbs'	=> false,
+		'thumb_link'	=> true,
+		'thumb_width'	=> '45',
+		'dark_text'		=> false
+	);
+	$args = apply_filters( 'themeblvd_simple_slider_args', wp_parse_args( $args, $defaults ) );
+
+	// Make sure $images array is setup properly
+	foreach ( $images as $img_id => $img ) {
+		$images[$img_id] = wp_parse_args( $img, array(
+			'crop'		=> $args['crop'],
+			'id'		=> 0,
+			'alt'		=> '',
+			'src'		=> '',
+			'width'		=> 0,
+			'height'	=> 0,
+			'thumb'		=> '',
+			'title'		=> '',
+			'desc'		=> '',
+			'link'		=> '',
+			'link_url'	=> ''
+		));
+	}
+
+	$interval = 'false';
+	if ( $args['interval'] != '0' ) {
+
+		$interval = $args['interval'];
+
+		if ( intval( $interval ) < 100 ) {
+			$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
+		}
+	}
+
+	$class = 'tb-bootstrap-carousel carousel slide';
+
+	if ( $args['dark_text'] ) {
+		$class .= ' dark-text';
+	}
+
+	$output  = sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $args['id'], $class, $interval, $args['pause'], $args['wrap'] );
+	$output .= '<div class="carousel-control-wrap">';
 
 	// Standard nav indicators
 	if ( $args['nav_standard'] ) {
 
-		$output .= "<ol class=\"carousel-indicators\">\n";
+		$output .= '<ol class="carousel-indicators">';
 
 		$counter = 0;
 
-		foreach ( $attachments as $attachment ) {
+		foreach ( $images as $img ) {
 
 			$class = '';
 
@@ -384,62 +496,118 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 				$class = 'active';
 			}
 
-			$output .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s"></li>', $post_id, $counter, $class );
-			$output .= "\n";
+			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $args['id'], $counter, $class );
 
 			$counter++;
 		}
 
-		$output .= "</ol>\n";
-
+		$output .= '</ol>';
 	}
 
 	// Slides
-	$output .= "<div class=\"carousel-inner\">\n";
+	$output .= '<div class="carousel-inner">';
 
 	$counter = 0;
 
-	foreach ( $attachments as $attachment ) {
+	if ( count( $images ) > 1 ) {
+		foreach ( $images as $img ) {
 
-		$class = 'item';
+			$class = 'item';
 
-		if ( $counter == 0 ) {
-			$class .= ' active';
+			if ( $counter == 0 ) {
+				$class .= ' active';
+			}
+
+			$output .= sprintf( '<div class="%s">', $class );
+
+			$image = sprintf( '<img src="%s" alt="%s" />', $img['src'], $img['alt'] );
+
+			if ( $img['link'] ) {
+
+				$a_class = 'slide-link';
+
+				if ( $args['nav_thumbs'] ) {
+					$a_class .= ' slide-thumbnail-link';
+					$image .= themeblvd_get_image_overlay();
+				}
+
+				if ( $img['link'] == 'image' || $img['link'] == 'video' ) {
+
+					if ( $args['nav_thumbs'] ) {
+						$a_class .= ' '.$img['link'];
+					}
+
+					$lightbox = array(
+						'item' 		=> $image,
+						'link' 		=> $img['link_url'],
+						'title' 	=> $img['alt'],
+						'class' 	=> $a_class.' '.$img['link']
+					);
+					$output .= themeblvd_get_link_to_lightbox( $lightbox );
+
+				} else {
+
+					if ( $args['nav_thumbs'] ) {
+						if ( $img['link'] == '_self' ) {
+							$a_class .= ' post';
+						} else if ( $img['link'] == '_blank' ) {
+							$a_class .= ' external';
+						}
+					}
+
+					$output .= sprintf( '<a href="%s" title="%s" target="%s">%s</a>', $img['link_url'], $img['alt'], $img['link'], $image );
+				}
+
+			} else {
+				$output .= $image;
+			}
+
+			if ( $img['title'] || $img['desc'] ) {
+
+				$output .= '<div class="carousel-caption">';
+
+				if ( $img['title'] ) {
+					$output .= sprintf( '<h3>%s</h3>', $img['title'] );
+				}
+
+				if ( $img['desc'] ) {
+					$output .= wpautop( $img['desc'] );
+				}
+
+				$output .= '</div>';
+			}
+
+			$output .= '</div><!-- .item (end) -->';
+
+			$counter++;
 		}
-
-		$image = wp_get_attachment_image_src( $attachment->ID, $size );
-		$output .= sprintf( "<div class=\"%s\">\n", $class );
-		$output .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
-		$output .= "</div><!-- .item (end) -->\n";
-
-		$counter++;
 	}
 
-	$output .= "</div><!-- .carousel-inner (end) -->\n";
+	$output .= '</div><!-- .carousel-inner (end) -->';
 
 	// Nav arrows
 	if ( $args['nav_arrows'] ) {
 
-		$output .= "<a class=\"left carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"prev\">\n";
-		$output .= "<span class=\"glyphicon glyphicon-chevron-left\"></span>\n";
-		$output .= "</a>\n";
+		$output .= '<a class="left carousel-control" href="#'.$args['id'].'" data-slide="prev">';
+		$output .= '<span class="glyphicon glyphicon-chevron-left"></span>';
+		$output .= '</a>';
 
-		$output .= "<a class=\"right carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"next\">\n";
-		$output .= "<span class=\"glyphicon glyphicon-chevron-right\"></span>\n";
-		$output .= "</a>\n";
+		$output .= '<a class="right carousel-control" href="#'.$args['id'].'" data-slide="next">';
+		$output .= '<span class="glyphicon glyphicon-chevron-right"></span>';
+		$output .= '</a>';
 
 	}
 
-	$output .= "</div><!-- .carousel-control-wrap (end) -->";
+	$output .= '</div><!-- .carousel-control-wrap (end) -->';
 
 	// Thumbnail navigation
 	if ( $args['nav_thumbs'] ) {
 
-		$output .= "<ol class=\"carousel-thumb-nav list-unstyled clearfix\">\n";
+		$output .= '<ol class="carousel-thumb-nav list-unstyled clearfix">';
 
 		$counter = 0;
 
-		foreach ( $attachments as $attachment ) {
+		foreach ( $images as $img ) {
 
 			$class = '';
 
@@ -447,22 +615,19 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 				$class = 'active';
 			}
 
-			$output .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s">', $post_id, $counter, $class );
-			$image = wp_get_attachment_image_src( $attachment->ID, $args['thumb_size'] );
-			$output .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
+			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s">', $args['id'], $counter, $class );
+			$output .= sprintf( '<img src="%s" alt="%s" width="%s" />', $img['thumb'], $img['alt'], $args['thumb_width'] );
 			$output .= '</li>';
-			$output .= "\n";
 
 			$counter++;
 		}
 
 		$output .= "</ol>\n";
-
 	}
 
-	$output .= "</div><!-- .carousel (end) -->\n";
+	$output .= '</div><!-- .carousel (end) -->';
 
-	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $attachments, $args );
+	return apply_filters( 'themeblvd_simple_slider', $output, $args );
 }
 
 /**
@@ -581,4 +746,121 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	$output .= sprintf( '>%s</a>', $item );
 
 	return apply_filters( 'themeblvd_link_to_lightbox', $output, $args, $props, $type, $item, $class );
+}
+
+/**
+ * Get image display from a set of options
+ *
+ * @since 2.5.0
+ *
+ * @param array $img_atts Attributes for image file
+ * @param array $args Additional options for image
+ * @return string $output Final image HTML to output
+ */
+function themeblvd_get_image( $img_atts, $args ) {
+
+	$has_link = false;
+	if ( $args['link'] != 'none' ) {
+		$has_link = true;
+	}
+
+	$has_frame = false;
+	if ( $args['frame'] ) {
+		$has_frame = true;
+	}
+
+	// Image class
+	$img_class = sprintf( 'size-%s wp-image-%s', $img_atts['crop'], $img_atts['id'] );
+
+	if ( ! $has_link ) {
+		$img_class .= ' alignnone';
+	}
+
+	if ( $has_frame && ! $has_link ) {
+		$img_class .= ' thumbnail';
+	}
+
+	if ( ! $has_link && ! empty( $args['class'] ) ) {
+		$img_class .= ' '.$args['class'];
+	}
+
+	// Setup intial image
+	$img = sprintf( '<img src="%s" alt="%s" width="%s" height="%s" class="%s" />', $img_atts['src'], $img_atts['title'], $img_atts['width'], $img_atts['height'], $img_class );
+
+	// Start output
+	$output = $img;
+
+	// Add image overlay if framed thumbnail
+    if( $has_frame && $has_link ) {
+        $output .= themeblvd_get_image_overlay();
+    }
+
+	// Wrap image in link
+	if ( $has_link ) {
+
+		$anchor_classes = 'thumbnail';
+
+		if ( ! empty( $args['class'] ) ) {
+			$anchor_classes .= ' '.$args['class'];
+		}
+
+		if ( $args['link'] == 'image' || $args['link'] == 'video' ) {
+
+			$anchor_classes .= ' '.$args['link']; // video or image
+
+			$args = array(
+				'item' 		=> $output,
+				'link' 		=> $args['link_url'],
+				'title' 	=> $img_atts['title'],
+				'class' 	=> $anchor_classes
+			);
+			$output = themeblvd_get_link_to_lightbox( $args );
+
+		} else {
+
+			if ( $has_frame ) {
+
+				if ( $args['link'] == '_self' ) {
+					$anchor_classes .= ' post';
+				} else if ( $args['link'] == '_blank' ) {
+					$anchor_classes .= ' external';
+				}
+			}
+
+			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s">%s</a>', $args['link_url'], $anchor_classes, $img_atts['title'], $args['link'], $output );
+
+		}
+	}
+
+	// Wrap linked image in frame
+	$wrap = '';
+
+	if ( $has_frame ) {
+
+        $wrap .= '<div class="featured-image-wrapper">';
+        $wrap .= '<div class="featured-image">';
+        $wrap .= '<div class="featured-image-inner">';
+        $wrap .= '%s';
+        $wrap .= '</div><!-- .featured-image-inner (end) -->';
+        $wrap .= '</div><!-- .featured-image (end) -->';
+        $wrap .= '</div><!-- .featured-image-wrapper (end) -->';
+
+        $output = sprintf( $wrap, $output );
+
+	}
+
+	return apply_filters( 'themeblvd_image', $output, $img, $img_atts, $args );
+}
+
+/**
+ * Get video
+ *
+ * @since 2.5.0
+ *
+ * @param string $video_url URL to video, file URL or oEmbed compatible link
+ * @param array $args Any extra arguments, currently not being used
+ * @return string $output Final image HTML to output
+ */
+function themeblvd_get_video( $video_url, $args = array() ) {
+	return apply_filters( 'themeblvd_video', themeblvd_get_content( $video_url ), $video_url, $args );
 }

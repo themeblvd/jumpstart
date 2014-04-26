@@ -983,7 +983,78 @@ function themeblvd_blockquote( $args ) {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_get_jumbotron' ) ) :
+/**
+ * Display panel formatted correctly for Bootstrap
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel.
+ * @param content for panel
+ */
+function themeblvd_get_panel( $args, $content = '' ) {
+
+	$defaults = array(
+        'style'         => 'default',   // Style of panel - primary, success, info, warning, danger
+        'title'         => '',          // Header for panel
+        'footer'        => '',          // Footer for panel
+        'text_align'    => 'left',      // How to align text - left, right, center
+        'align'         => '',          // How to align jumbotron - left, right
+        'max_width'     => '',          // Meant to be used with align left/right - 300px, 50%, etc
+        'class'         => '',          // Any additional CSS classes
+        'wpautop'       => 'true'       // Whether to apply wpautop on content
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    // CSS classes
+    $class = sprintf( 'panel panel-%s text-%s', $args['style'], $args['text_align'] );
+
+    if ( $args['class'] ) {
+        $class .= ' '.$args['class'];
+    }
+
+    // How are we getting the content?
+    if ( ! $content && ! empty( $args['content'] ) ) {
+    	$content = $args['content'];
+    }
+
+    // WP auto?
+    if ( $args['wpautop'] == 'true' ) {
+        $content = themeblvd_get_content( $content );
+    } else {
+    	$content = do_shortcode( $content );
+    }
+
+    // Construct intial panel
+    $output = sprintf( '<div class="%s">', $class );
+
+    if ( $args['title'] ) {
+        $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', $args['title'] );
+    }
+
+    $output .= sprintf( '<div class="panel-body">%s</div>', do_shortcode( $content ) );
+
+    if ( $args['footer'] ) {
+        $output .= sprintf( '<div class="panel-footer">%s</div>', $args['footer'] );
+    }
+
+    $output .= '</div><!-- .panel (end) -->';
+
+    return apply_filters( 'themeblvd_panel', $output );
+}
+
+if ( !function_exists( 'themeblvd_panel' ) ) :
+/**
+ * Display panel formatted correctly for Bootstrap
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel.
+ */
+function themeblvd_panel( $args, $content = '' ) {
+	echo themeblvd_get_panel( $args, $content );
+}
+endif;
+
 /**
  * Get Bootstrap Jumbotron
  *
@@ -1055,4 +1126,3 @@ function themeblvd_get_jumbotron( $args, $content ) {
 
 	return apply_filters( 'themeblvd_jumbotron', $output, $args, $content, $jumbotron );
 }
-endif;

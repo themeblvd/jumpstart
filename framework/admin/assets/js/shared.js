@@ -146,9 +146,16 @@
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
     				$this.find('.show-hide-toggle').each(function(){
-    					var el = $(this), value = el.find('.trigger select').val();
+    					var el = $(this), value = el.find('.trigger .of-input').val();
     					el.find('.receiver').hide();
     					el.find('.receiver-'+value).show();
+    				});
+
+    				// Where one option's value determines which description displays on another option
+    				$this.find('.desc-toggle').each(function(){
+    					var el = $(this), value = el.find('.trigger .of-input').val();
+    					el.find('.receiver .explain').hide();
+    					el.find('.receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -353,10 +360,17 @@
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
-    				$this.on( 'change', '.show-hide-toggle .trigger select', function() {
+    				$this.on( 'change', '.show-hide-toggle .trigger .of-input', function() {
     					var el = $(this), value = el.val(), group = el.closest('.show-hide-toggle');
     					group.find('.receiver').hide();
     					group.find('.receiver-'+value).show();
+    				});
+
+    				// Where one option's value determines which description displays on another option
+    				$this.on( 'change', '.desc-toggle .trigger .of-input', function() {
+    					var el = $(this), value = el.val(), group = el.closest('.desc-toggle');
+    					group.find('.receiver .explain').hide();
+    					group.find('.receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -1001,6 +1015,7 @@
 				select = $current_option.find('.trigger').data('select'),
 				css_class = $current_option.find('.trigger').data('class'),
 				send_back = $current_option.find('.trigger').data('send-back'),
+				link = $current_option.find('.trigger').data('link'),
 				media_type = 'image',
 				workflow = 'select',
 				multiple = false, // @todo future feature of Quick Slider
@@ -1066,7 +1081,7 @@
 					remove_text = $current_option.find('.trigger').data('remove'),
 					size,
 					image_url,
-					link,
+					link_option,
 					link_url,
 					helper_text;
 
@@ -1123,7 +1138,7 @@
 
 				if ( upload_type == 'advanced' ) {
 
-					// Send Title back
+					// Send info back
 					$current_option.find('.image-id').val(attachment.attributes.id);
 					$current_option.find('.image-title').val(attachment.attributes.title);
 					$current_option.find('.image-crop').val(size);
@@ -1131,12 +1146,15 @@
 					$current_option.find('.image-height').val(attachment.attributes.sizes[size].height);
 
 					// Send Link back
-					link = new_frame.$el.find('.attachment-display-settings .link-to').val();
+					if ( link ){
 
-					if ( link != 'none' ) {
-						link_url = new_frame.$el.find('.attachment-display-settings .link-to-custom').val();
-						console.log(link_url);
-						$current_option.closest('.advanced-image-upload').find('.receive-link-url input').val(link_url);
+						link_option = new_frame.$el.find('.attachment-display-settings .link-to').val();
+
+						if ( link_option != 'none' ) {
+							link_url = new_frame.$el.find('.attachment-display-settings .link-to-custom').val();
+							console.log(link_url);
+							$current_option.closest('.advanced-image-upload').find('.receive-link-url input').val(link_url);
+						}
 					}
 
 				}
@@ -1147,8 +1165,15 @@
 			new_frame.open();
 
 			if ( upload_type == 'advanced' ) {
+
 				new_frame.$el.addClass('hide-menu');
 				new_frame.$el.find('.attachment-display-settings label:first-of-type').remove();
+
+				if ( ! link ) {
+					console.log('hiding link options...');
+					console.log(new_frame.$el.find('.attachment-display-settings div.setting'));
+					new_frame.$el.find('.attachment-display-settings div.setting').remove();
+				}
 			}
 
 		},

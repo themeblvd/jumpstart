@@ -581,7 +581,15 @@ function themeblvd_sanitize_slider( $input ) {
 		$output[$item_id]['title'] = wp_kses( $item['title'], array() );
 		$output[$item_id]['desc'] = wp_kses( $item['desc'], themeblvd_allowed_tags() );
 		$output[$item_id]['desc'] = str_replace( "\r\n", "\n", $output[$item_id]['desc'] );
+
+		// Link
 		$output[$item_id]['link'] = wp_kses( $item['link'], array() );
+
+		if ( $output[$item_id]['link'] == 'none' ) {
+			$output[$item_id]['link'] = '';
+		}
+
+		$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
 	}
 
 	return $output;

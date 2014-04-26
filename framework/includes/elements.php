@@ -1,182 +1,21 @@
 <?php
-if ( !function_exists( 'themeblvd_columns' ) ) :
-/**
- * Display set of columns.
- *
- * @since 2.0.0
- *
- * @param array $num Number of columns
- * @param string $widths Width for each column
- * @param array $columns Inidivual columns, number of array items must match $setup's number
- */
-function themeblvd_columns( $num, $widths, $columns ) {
-
-	// Kill it if number of columns doesn't match the
-	// number of widths exploded from the string.
-	$widths = explode( '-', $widths );
-	if ( $num != count( $widths ) ) {
-		return;
-	}
-
-	// Kill it if number of columns doesn't match the
-	// number of columns feed into the function.
-	if ( $num != count( $columns ) ) {
-		return;
-	}
-
-	// Last column's key
-	$last = $num - 1;
-
-	foreach ( $columns as $key => $column ) {
-
-		// Set CSS classes for column
-		$classes = 'column '.$widths[$key];
-		if ( $last == $key ) {
-			$classes .= ' last';
-		}
-
-		// Start display
-		echo '<div class="'.$classes.'">';
-
-		// Column Content
-		switch ( $column['type'] ) {
-
-			case 'widget' :
-				if ( ! empty( $column['sidebar'] ) ) {
-					echo '<div class="widget-area">';
-					dynamic_sidebar( $column['sidebar'] );
-					echo '</div><!-- .widget-area (end) -->';
-				}
-				break;
-
-			case 'current' :
-				$current_page_id = themeblvd_config( 'id' );
-				$current_page = get_page( $current_page_id );
-				echo apply_filters( 'the_content', $current_page->post_content );
-				break;
-
-			case 'page' :
-				if ( ! empty( $column['page'] ) ) {
-					// Get WP internal ID for the page
-					$page_id = themeblvd_post_id_by_name( $column['page'], 'page' );
-
-					// Use WP_Query to retrieve external page. We do it
-					// this way to allow certain primary query-dependent
-					// items such as galleries to work properly.
-					$the_query = new WP_Query( 'page_id='.$page_id );
-
-					// Standard WP loop, even though there should only be
-					// a single post (i.e. our external page).
-					while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-						echo apply_filters( 'themeblvd_the_content', get_the_content() );
-					}
-
-					// Reset Post Data
-					wp_reset_postdata();
-				}
-				break;
-
-			case 'raw' :
-				if ( isset( $column['raw'] ) ) {
-					// Only negate the "simulated" the_content filter if the option exists
-					// AND it's been unchecked. This is for legacy purposes, as this
-					// feature was added in v2.1.0
-					if ( isset( $column['raw_format'] ) && ! $column['raw_format'] ) {
-						echo do_shortcode( stripslashes( $column['raw'] ) ); // Shortcodes only
-					} else {
-						echo apply_filters( 'themeblvd_the_content', stripslashes( $column['raw'] ) );
-					}
-				}
-				break;
-		}
-
-		// End display
-		echo '</div><!-- .column (end) -->';
-	}
-}
-endif;
-
-if ( !function_exists( 'themeblvd_content' ) ) :
-/**
- * Display content.
- *
- * @since 2.0.0
- *
- * @param array $args Options for content
- * @return string $output HTML output for content
- */
-function themeblvd_content( $args = array() ) {
-
-	// Setup and extract $args
-	$defaults = array(
-		'source' 		=> 'current',	// Source of content
-		'page_id' 		=> '',			// If source is external, this is the slug of that page
-		'raw_content' 	=> '',			// If source is raw, this is the content
-		'raw_format' 	=> 1,			// If source is raw, true will apply WP auto formatting
-		'widget_area' 	=> ''			// If source is widget_area, this is the ID of the widget area
-	);
-	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_OVERWRITE );
-
-	// Start output
-	$output = '';
-	switch ( $source ) {
-
-		// Content from current page
-		case 'current' :
-			$current_page_id = themeblvd_config( 'id' );
-			$current_page = get_page( $current_page_id );
-			$output = apply_filters( 'the_content', $current_page->post_content );
-			break;
-
-		// Content from external page
-		case 'external' :
-			// Get WP internal ID for the page
-			$page_num_id = themeblvd_post_id_by_name( $page_id, 'page' );
-
-			// Use WP_Query to retrieve external page. We do it
-			// this way to allow certain primary query-dependent
-			// items such as galleries to work properly.
-			$the_query = new WP_Query( 'page_id='.$page_num_id );
-
-			// Standard WP loop, even though there should only be
-			// a single post (i.e. our external page).
-			while( $the_query->have_posts() ) {
-				$the_query->the_post();
-				$output = apply_filters( 'themeblvd_the_content', get_the_content() );
-			}
-
-			// Reset Post Data
-			wp_reset_postdata();
-			break;
-
-		// Raw content input
-		case 'raw' :
-			if ( $raw_format ) {
-				// WP auto formatting w/shortcodes
-				$output = apply_filters( 'themeblvd_the_content', stripslashes( $raw_content ) );
-			} else {
-				// Shortcodes only
-				$output =  do_shortcode( stripslashes( $raw_content ) );
-			}
-			break;
-
-		// Widget area
-		case 'widget_area' :
-			if ( $widget_area ) {
-				$output = '<div class="widget-area">';
-				ob_start();
-				dynamic_sidebar( $widget_area );
-				$output .= ob_get_clean();
-				$output .= '</div><!-- .widget-area (end) -->';
-			}
-			break;
-
-	}
-	return $output;
-}
-endif;
+/*------------------------------------------------------------*/
+/* Elements
+/*
+/* - columns: 1-5 columns of content blocks (see /farmework/includes/content.php)
+/* - divider: Basic divider line to break up content
+/* - headline: Simple heading and optional slogan
+/* - image: An image with optional link
+/* - post_slider: Slider of posts, list or grid
+/* - posts: Non-paginated display of posts, list or grid
+/* - posts_paginated: Paginated display of posts, list or grid
+/* - simple_slider: Simple slider utilizing Bootstrap carousel
+/* - slider_auto: Slider of posts modeled after custom, standard slider
+/* - slider: Custom built-slider from Theme Blvd Sliders plugin
+/* - slogan: Slogan text plus optional call-to-action button
+/* - tabs: Set of tabs utilizing Bootstrap tabs
+/* - video: A video displayed using WordPress's embedding
+/*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_divider' ) ) :
 /**
@@ -189,7 +28,7 @@ if ( !function_exists( 'themeblvd_divider' ) ) :
  */
 function themeblvd_divider( $type = 'solid' ) {
 	$output = '<div class="divider divider-'.$type.'"></div>';
-	return $output;
+	return apply_filters( 'themeblvd_divider', $output, $type );
 }
 endif;
 
@@ -228,7 +67,22 @@ function themeblvd_headline( $args = array() ) {
 		$output .= '</p>';
 	}
 
-	return $output;
+	return apply_filters( 'themeblvd_headline', $output, $args );
+}
+endif;
+
+if ( !function_exists( 'themeblvd_image' ) ) :
+/**
+ * Display image.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Options for from "Image" element
+ */
+function themeblvd_image( $options ) {
+	$image = $options['image'];
+	unset( $options['image'] );
+	echo themeblvd_get_image( $image, $options );
 }
 endif;
 
@@ -1051,6 +905,21 @@ function themeblvd_slider( $slider ) {
 }
 endif;
 
+if ( !function_exists( 'themeblvd_simple_slider' ) ) :
+/**
+ * Display bootstrap coursel slider.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args All options for simple slider
+ */
+function themeblvd_simple_slider( $options ) {
+	$images = $options['images'];
+	unset( $options['images'] );
+	echo themeblvd_get_simple_slider( $images, $options );
+}
+endif;
+
 if ( !function_exists( 'themeblvd_slogan' ) ) :
 /**
  * Display slogan.
@@ -1248,6 +1117,26 @@ function themeblvd_tabs( $id, $options ) {
 	return $output;
 }
 endif;
+
+
+if ( !function_exists( 'themeblvd_video' ) ) :
+/**
+ * Display video
+ *
+ * @since 2.5.0
+ *
+ * @param string $video_url URL to video, file URL or oEmbed compatible link
+ * @param array $args Any extra arguments, currently not being used
+ * @return string $output Final image HTML to output
+ */
+function themeblvd_video( $video_url, $args = array() ) {
+	echo themeblvd_get_video( $video_url, $args );
+}
+endif;
+
+/*------------------------------------------------------------*/
+/* Deprecated Elements
+/*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_tweet' ) ) :
 /**

@@ -344,6 +344,18 @@ code.block {
 	display: inline;
 	float: none;
 }
+.tb-bootstrap-carousel.dark-text .carousel-caption {
+	color: #333333;
+	text-shadow: none;
+}
+.tb-bootstrap-carousel.dark-text .carousel-indicators li,
+.tb-bootstrap-carousel.dark-text .carousel-control {
+	border-color: #333333;
+	color: #333333;
+}
+.tb-bootstrap-carousel.dark-text .carousel-indicators .active {
+	background-color: #333333;
+}
 
 /* Jumbotron */
 .jumbotron {
@@ -2600,6 +2612,8 @@ button.mfp-arrow {
 	background-color: transparent !important;
 	border: none !important;
 	outline: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
 }
 
 /* Bottom bar for iframe popups in a gallery */

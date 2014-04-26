@@ -433,14 +433,17 @@ function themeblvd_footer_content_default() {
 	if ( is_array( $footer_setup ) ) {
 
 		// Only move forward if user has selected for columns to show
-		if ( $footer_setup['num'] > 0 ) {
+		if ( intval( $footer_setup['num'] ) > 0 ) {
+
+			$args = array();
+			$args['num'] = $footer_setup['num'];
+			$args['widths'] = $footer_setup['width'][$args['num']];
 
 			// Build array of columns
 			$i = 1;
 			$columns = array();
-			$num = $footer_setup['num'];
-			while ( $i <= $num ) {
-				$columns[] = themeblvd_get_option( 'footer_col_'.$i );
+			while ( $i <= $args['num'] ) {
+				$columns[$i] = themeblvd_get_option( 'footer_col_'.$i );
 				$i++;
 			}
 			?>
@@ -448,7 +451,7 @@ function themeblvd_footer_content_default() {
 				<div class="footer_content-inner">
 					<div class="footer_content-content">
 						<div class="grid-protection clearfix">
-							<?php themeblvd_columns( $num, $footer_setup['width'][$num], $columns ); ?>
+							<?php themeblvd_columns( $args, $columns ); ?>
 						</div><!-- .grid-protection (end) -->
 					</div><!-- .footer_content-content (end) -->
 				</div><!-- .footer_content-inner (end) -->

@@ -305,11 +305,23 @@
 .tb-modal-advanced-image .media-sidebar .attachment-details .setting[data-setting="caption"],
 .tb-modal-advanced-image .media-sidebar .attachment-details .setting[data-setting="alt"],
 .tb-modal-advanced-image .media-sidebar .attachment-details .setting[data-setting="description"],
-.tb-modal-advanced-image .media-sidebar .attachment-display-settings label.setting {
+.tb-modal-advanced-image .media-sidebar .attachment-display-settings h3,
+.tb-modal-advanced-image .media-sidebar .attachment-display-settings .setting {
 	display: none;
 }
 .tb-modal-advanced-image .media-sidebar .attachment-display-settings label.setting:last-child {
 	display: block;
+}
+.tb-modal-advanced-image .media-sidebar .setting span {
+	max-width: 12%;
+	min-width: 0;
+	text-align: left;
+}
+.tb-modal-advanced-image .media-sidebar .setting input,
+.tb-modal-advanced-image .media-sidebar .setting select {
+	float: left;
+	max-width: 100%;
+	width: 80%;
 }
 
 /* WP Editor */
@@ -715,8 +727,3 @@
 	height: 60px;
 	line-height: 60px;
 }
-/*
-#optionsframework .section-slider .delete-sortable-items {
-	right: 6px;
-}
-*/

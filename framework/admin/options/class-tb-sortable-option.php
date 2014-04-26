@@ -301,8 +301,8 @@ abstract class Theme_Blvd_Sortable_Option {
 
 					$item_output .= sprintf( '<select class="%s" name="%s" id="%s">', $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($option['id']) );
 
-					foreach ( $option['options'] as $key => $option ) {
-						$item_output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $current, false ), esc_attr( $key ), esc_html($option) );
+					foreach ( $option['options'] as $key => $value ) {
+						$item_output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $current, false ), esc_attr( $key ), esc_html( $value ) );
 					}
 
 					$item_output .= '</select>';
@@ -316,9 +316,17 @@ abstract class Theme_Blvd_Sortable_Option {
 			$item_output .= '</div><!-- .controls (end) -->';
 
 			if ( ! empty( $option['desc'] ) ) {
-				$item_output .= '<div class="explain">';
-				$item_output .= $option['desc'];
-				$item_output .= '</div><!-- .explain (end) -->';
+				if ( is_array( $option['desc'] ) ) {
+					foreach ( $option['desc'] as $desc_id => $desc ) {
+						$item_output .= '<div class="explain hide '.$desc_id.'">';
+						$item_output .= wp_kses( $desc, themeblvd_allowed_tags() );
+						$item_output .= '</div>';
+					}
+				} else {
+					$item_output .= '<div class="explain">';
+					$item_output .= wp_kses( $option['desc'], themeblvd_allowed_tags() );
+					$item_output .= '</div>';
+				}
 			}
 
 			$item_output .= '</div><!-- .options (end) -->';
@@ -481,13 +489,40 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 				'std'		=> ''
 			),
 			array(
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle desc-toggle'
+			),
+			array(
 				'id' 		=> 'link',
-				'name'		=> __('Link URL (optional)', 'themeblvd'),
-				'desc'		=> __('If you\'d like slide to be wrapped in a link, you may enter url of the link here.', 'themeblvd'),
+				'name'		=> __( 'Link', 'themeblvd_builder' ),
+				'desc'		=> __( 'Select if and how this image should be linked.', 'themeblvd_builder' ),
+				'type'		=> 'select',
+				'options'	=> array(
+			        'none'		=> __( 'No Link', 'themeblvd' ),
+			        '_self' 	=> __( 'Link to webpage in same window.', 'themeblvd_builder' ),
+			        '_blank' 	=> __( 'Link to webpage in new window.', 'themeblvd_builder' ),
+			        'image' 	=> __( 'Link to image in lightbox popup.', 'themeblvd_builder' ),
+			        'video' 	=> __( 'Link to video in lightbox popup.', 'themeblvd_builder' )
+				),
+				'class'		=> 'trigger'
+			),
+			array(
+				'id' 		=> 'link_url',
+				'name'		=> __( 'Link URL', 'themeblvd_builder' ),
+				'desc'		=> array(
+			        '_self' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd_builder' ),
+			        '_blank' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd_builder' ),
+			        'image' 	=> __( 'Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd_builder' ),
+			        'video' 	=> __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250‎</br />Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd_builder' )
+				),
 				'type'		=> 'text',
+				'std'		=> '',
 				'pholder'	=> 'http://',
-				'std'		=> ''
-			)
+				'class'		=> 'receiver receiver-_self receiver-_blank receiver-image receiver-video'
+			),
+			array(
+				'type' 		=> 'subgroup_end'
+			),
 		);
 		return $options;
 	}

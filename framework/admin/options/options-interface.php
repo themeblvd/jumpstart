@@ -81,7 +81,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   			$output .= '<h3>'.$name.'</h3>';
 	   		}
 
-	   		if ( ! empty($value['desc']) ) {
+	   		if ( ! empty( $value['desc'] ) ) {
 	   			$output .= '<div class="section-description">'.$value['desc'].'</div>';
 	   		}
 
@@ -856,13 +856,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			$output .= '</div>';
 
-			$explain_value = '';
-			if ( ! empty( $value['desc'] ) ) {
-				$explain_value = $value['desc'];
-			}
-
 			if ( $value['type'] != 'editor' ) { // Editor displays description above it
-				$output .= '<div class="explain">'.wp_kses( $explain_value, themeblvd_allowed_tags() ).'</div>'."\n";
+				if ( ! empty( $value['desc'] ) ) {
+					if ( is_array( $value['desc'] ) ) {
+						foreach ( $value['desc'] as $desc_id => $desc ) {
+							$output .= '<div class="explain hide '.$desc_id.'">'.wp_kses( $desc, themeblvd_allowed_tags() ).'</div>'."\n";
+						}
+					} else {
+						$output .= '<div class="explain">'.wp_kses( $value['desc'], themeblvd_allowed_tags() ).'</div>'."\n";
+					}
+				}
 			}
 
 			$output .= '<div class="clear"></div></div></div>'."\n";

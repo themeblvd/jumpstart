@@ -90,6 +90,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-query.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-frontend-init.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/actions.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/frontend.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/elements.php' );
