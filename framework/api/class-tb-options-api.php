@@ -531,7 +531,17 @@ class Theme_Blvd_Options_API {
 	 */
 	public function set_formatted_options() {
 
-		$this->formatted_options = array();
+		// Hidden options
+		$this->formatted_options = array(
+			'framework_version' => array(
+				'id' 	=> 'framework_version',
+				'type'	=> 'hidden'
+			),
+			'theme_version' => array(
+				'id' 	=> 'theme_version',
+				'type'	=> 'hidden'
+			)
+		);
 
 		// Tab Level
 		foreach ( $this->raw_options as $tab_id => $tab ) {
@@ -612,6 +622,7 @@ class Theme_Blvd_Options_API {
 
 		}
 
+		$this->settings = $this->verify( $this->settings );
 		$this->settings = apply_filters( 'themeblvd_frontend_options', $this->settings );
 	}
 
@@ -634,6 +645,93 @@ class Theme_Blvd_Options_API {
 		$this->args = apply_filters( 'themeblvd_theme_options_args', $this->args );
 	}
 
+	/**
+	 * Verify theme options have been saved properly, and
+	 * make any updates needed. This method will expanded
+	 * over time as the framework changes. The idea here is
+	 * that if we make any modification in how data is saved,
+	 * we can handle it once here, and not worry aboutt it
+	 * throughout the framework.
+	 *
+	 * @since 2.5.0
+	 */
+	public function verify( $settings ) {
+
+		// Whether to update the options in the database,
+		// which we, of course, want to avoid.
+		$update = false;
+
+		// Get framework version the options page was last
+		// saved with. Before v2.5.0, this option will be blank.
+		$version = '0';
+		if ( ! empty( $settings['framework_version'] ) ) {
+			$version = $settings['framework_version'];
+		}
+
+		// If options were last saved with current version of
+		// the framework, we know we don't need to do anything.
+		if ( version_compare( TB_FRAMEWORK_VERSION, $version, '==' ) ) {
+			return $settings;
+		} else {
+			$update = true;
+			$theme = wp_get_theme( get_template() );
+			$settings['theme_version'] = $theme->get('Version');
+			$settings['framework_version'] = TB_FRAMEWORK_VERSION;
+		}
+
+		// 2.5.0 -- The structure of the "columns" option type
+		// has changed. Default framework option ID is "footer_setup"
+		// which utilizes this option type.
+		if ( ! empty( $settings['footer_setup'] ) && is_array( $settings['footer_setup'] ) ) {
+
+			$val = $settings['footer_setup'];
+
+			if ( ! empty( $val['width'] ) && ! empty( $val['num'] ) ) {
+
+				$widths = $val['width'][$val['num']];
+				$widths = explode('-', $widths);
+
+				foreach ( $widths as $key => $value ) {
+					$widths[$key] = themeblvd_grid_fraction($value);
+				}
+
+				$settings['footer_setup'] = implode('-', $widths);
+
+			}
+		}
+
+		// 2.5.0 -- The structure of the "social_media" option type
+		// has changed. No framework default option with this type,
+		// but many themes use an option with id "social_media".
+		if ( ! empty( $settings['social_media'] ) ) {
+
+			// Has it been saved with framework 2.5+?
+			if ( ! is_array( current( $settings['social_media'] ) ) ) {
+
+				$i = 1;
+				$val = array();
+
+				foreach ( $settings['social_media'] as $icon => $url ) {
+					$val['item_'.$i] = array(
+						'icon'	=> $icon,
+						'url'	=> $url,
+						'label'	=> ucfirst($icon)
+					);
+					$i++;
+				}
+
+				$settings['social_media'] = $val;
+			}
+		}
+
+		// If update flag was set, make the DB call.
+		if ( $update ) {
+			update_option( $this->get_option_id(), $settings );
+		}
+
+		return get_option( $this->get_option_id() );
+	}
+
 	/*--------------------------------------------*/
 	/* Methods, client API mutators
 	/*--------------------------------------------*/
@@ -649,7 +747,7 @@ class Theme_Blvd_Options_API {
 	 */
 	public function add_tab( $tab_id, $tab_name, $top = false ) {
 
-		// Can't create a tab that already exists. 
+		// Can't create a tab that already exists.
 		// Must use remove_tab() first to modify.
 		if ( isset( $this->raw_options[$tab_id] ) ) {
 			return;
