@@ -180,7 +180,8 @@ function themeblvd_post_slider( $id, $args = array(), $type = 'grid', $current_l
 	if ( $type == 'grid' ) {
 		$columns = themeblvd_set_att( 'columns', $columns );
 		$posts_per_slide = $columns*$rows;
-		$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
+		$class = themeblvd_set_att( 'class', themeblvd_grid_class( $columns ) );
+		$size = themeblvd_set_att( 'size', themeblvd_grid_thumb_class( $columns ) );
 		$crop = ! empty( $crop ) ? $crop : $size;
 		$crop = themeblvd_set_att( 'crop', $crop );
 	} else {
@@ -424,7 +425,8 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 	// Config before query
 	if ( $type == 'grid' ) {
 		$columns = themeblvd_set_att( 'columns', $columns );
-		$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
+		$class = themeblvd_set_att( 'class', themeblvd_grid_class( $columns ) );
+		$size = themeblvd_set_att( 'size', themeblvd_grid_thumb_class( $columns ) );
 		$crop = ! empty( $crop ) ? $crop : $size;
 		$crop = themeblvd_set_att( 'crop', $crop );
 	} else {
@@ -570,7 +572,8 @@ function themeblvd_posts_paginated( $args = array(), $type = 'list', $current_lo
 		$columns = themeblvd_set_att( 'columns', $columns );
 		$posts_per_page = $rows ? $columns*$rows : '-1';
 		$args['posts_per_page'] = $posts_per_page; // Set new value to $args for parsing query
-		$size = themeblvd_set_att( 'size', themeblvd_grid_class( $columns ) );
+		$class = themeblvd_set_att( 'class', themeblvd_grid_class( $columns ) );
+		$size = themeblvd_set_att( 'size', themeblvd_grid_thumb_class( $columns ) );
 		$crop = ! empty( $crop ) ? $crop : $size;
 		$crop = themeblvd_set_att( 'crop', $crop );
 	} else {

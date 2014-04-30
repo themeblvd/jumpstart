@@ -2,6 +2,15 @@
 -----------------------------------------------*/
 
 /**
+ * Extended Bootstrap Grid system
+ */
+@import url('grid-extended.min.css');
+
+/* =Grid
+/* @deprecated 2.5.0
+-----------------------------------------------*/
+
+/**
  * This grid is used internally for various elements, however
  * keep in mind that the primary layout of the theme is determined
  * with Bootstrap's 12-column fluid grid system.

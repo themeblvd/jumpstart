@@ -429,35 +429,30 @@ function themeblvd_footer_content_default() {
 	// Grab the setup
 	$footer_setup = themeblvd_get_option( 'footer_setup' );
 
-	// Make sure there's actually a footer option in the theme setup
-	if ( is_array( $footer_setup ) ) {
+	if ( $footer_setup ) {
 
-		// Only move forward if user has selected for columns to show
-		if ( intval( $footer_setup['num'] ) > 0 ) {
+		$args = array();
+		$args['num'] = count( explode( '-', $footer_setup ) );
+		$args['widths'] = $footer_setup;
 
-			$args = array();
-			$args['num'] = $footer_setup['num'];
-			$args['widths'] = $footer_setup['width'][$args['num']];
-
-			// Build array of columns
-			$i = 1;
-			$columns = array();
-			while ( $i <= $args['num'] ) {
-				$columns[$i] = themeblvd_get_option( 'footer_col_'.$i );
-				$i++;
-			}
-			?>
-			<div id="footer_content">
-				<div class="footer_content-inner">
-					<div class="footer_content-content">
-						<div class="grid-protection clearfix">
-							<?php themeblvd_columns( $args, $columns ); ?>
-						</div><!-- .grid-protection (end) -->
-					</div><!-- .footer_content-content (end) -->
-				</div><!-- .footer_content-inner (end) -->
-			</div><!-- .footer_content (end) -->
-			<?php
+		// Build array of columns
+		$i = 1;
+		$columns = array();
+		while ( $i <= $args['num'] ) {
+			$columns[$i] = themeblvd_get_option( 'footer_col_'.$i );
+			$i++;
 		}
+		?>
+		<div id="footer_content">
+			<div class="footer_content-inner">
+				<div class="footer_content-content">
+					<div class="grid-protection clearfix">
+						<?php themeblvd_columns( $args, $columns ); ?>
+					</div><!-- .grid-protection (end) -->
+				</div><!-- .footer_content-content (end) -->
+			</div><!-- .footer_content-inner (end) -->
+		</div><!-- .footer_content (end) -->
+		<?php
 	}
 }
 endif;
