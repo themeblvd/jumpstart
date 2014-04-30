@@ -124,20 +124,27 @@
     					section.find('.column-content-type-'+type).show();
     				});
 
-    				// Show correct number of columns (theme options)
+    				// Show correct number of columns (theme options), and
+    				// whether to show column widths option
 	    			$this.find('.columns').each(function(){
-	    				var el = $(this), i, num = el.find('.select-col-num').val();
-	    				el.find('.section-content').hide();
+	    				var $el = $(this), i, num = $el.find('.select-col-num').val();
+	    				if ( num > 0 ) {
+	    					$el.find('.section-column_widths').show();
+	    				} else {
+	    					$el.find('.section-column_widths').hide();
+	    				}
+	    				$el.find('.section-content').hide();
 	    				for ( i = 1; i <= num; i++) {
-							el.find('.col_'+i).show();
+							$el.find('.col_'+i).show();
 	    				}
 	    			});
 
     				// Show/Hide groupings
     				$this.find('.show-hide').each(function(){
     					var el = $(this), checkbox = el.find('.trigger input');
-    					if( checkbox.is(':checked') )
+    					if( checkbox.is(':checked') ) {
     						el.find('.receiver').show();
+    					}
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
@@ -361,6 +368,21 @@
 						var section = $(this).closest('.section-content'), type = $(this).val();
 	    				section.find('.column-content-type').hide();
 	    				section.find('.column-content-type-'+type).show();
+	    			});
+
+	    			// Show correct number of columns (theme options), and
+    				// whether to show column widths option
+	    			$this.on( 'change', '.select-col-num', function() {
+	    				var $el = $(this), i, num = $el.val(), $container = $el.closest('.columns');
+	    				if ( num > 0 ) {
+	    					$container.find('.section-column_widths').show();
+	    				} else {
+	    					$container.find('.section-column_widths').hide();
+	    				}
+	    				$container.find('.section-content').hide();
+	    				for ( i = 1; i <= num; i++) {
+							$container.find('.col_'+i).show();
+	    				}
 	    			});
 
 	    			// Show/Hide groupings
@@ -1654,20 +1676,7 @@
 		change: function (){
 
 			var $el = $(this),
-				$slider = $('#'+$el.data('slider')),
-				columns = 0;
-
-			if ( $el.is('.select-col-num') ) {
-				columns = $el.val();
-			} else {
-				columns = $el.closest('.section').find('.select-col-num').val();
-			}
-
-			if ( columns == 0 ) {
-				$el.closest('.subgroup.columns').find('.section-column_widths').hide();
-			} else {
-				$el.closest('.subgroup.columns').find('.section-column_widths').show();
-			}
+				$slider = $('#'+$el.data('slider'));
 
 			if ( $slider.data('uiSlider') ) {
 				$slider.slider('destroy');
@@ -1675,23 +1684,6 @@
 
 			$slider.html('').closest('.column-widths-wrap').find('.column-width-input').val('');
 			themeblvd_column_widths.run( $el.closest('.subgroup.columns') );
-
-			if ( $el.is('.select-col-num') ) {
-
-				var $container = $el.closest('.subgroup.columns');
-				$container.find('.section-content').hide();
-
-				// If non-content block columns element, this will
-				// show/hide approriate column edit areas.
-				for ( var i = 1; i <= columns; i++ ) {
-					$container.find('.section-content.col_'+i).show();
-				}
-
-				// If content-block edit, change number of columns in
-				// edit area - Adjust the CSS for class, which will
-    			// handle displaying the correct amount of columns.
-    			$container.closest('.element-options').find('.columns-config').removeClass('columns-1 columns-2 columns-3 columns-4 columns-5').addClass('columns-'+columns);
-			}
 		},
 
 		/**
