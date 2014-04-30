@@ -13,6 +13,7 @@
  * @since 2.2.0
  */
 function themeblvd_add_sanitization() {
+	add_filter( 'themeblvd_sanitize_hidden', 'themeblvd_sanitize_hidden', 10, 2 );
 	add_filter( 'themeblvd_sanitize_text', 'themeblvd_sanitize_text' );
 	add_filter( 'themeblvd_sanitize_textarea', 'themeblvd_sanitize_textarea' );
 	add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_enum', 10, 2 );
@@ -35,11 +36,39 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
 	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
 	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
+	add_filter( 'themeblvd_sanitize_slide', 'themeblvd_sanitize_slide' );
 	add_filter( 'themeblvd_sanitize_slider', 'themeblvd_sanitize_slider' );
 	add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
 	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_code', 'themeblvd_sanitize_editor' );
+}
+
+/**
+ * Hidden
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_hidden( $input ) {
+
+	if ( $option['id'] == 'framework_version' ) {
+
+		$output = TB_FRAMEWORK_VERSION;
+
+	} else if ( $option['id'] == 'theme_version' ) {
+
+		$theme = wp_get_theme( get_template() );
+		$output = $theme->get('Version');
+
+	} else {
+
+		$allowedtags = themeblvd_allowed_tags();
+		$output = wp_kses( $input, $allowedtags );
+		$output = htmlspecialchars_decode( $output );
+		$output = str_replace( "\r\n", "\n", $output );
+
+	}
+	return $output;
 }
 
 /**
@@ -73,7 +102,7 @@ function themeblvd_sanitize_textarea( $input ) {
  *
  * @since 2.2.0
  */
-function themeblvd_sanitize_allowedtags($input) {
+function themeblvd_sanitize_allowedtags( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
 	$output = wpautop(wp_kses( $input, $allowedtags));
 	return $output;
@@ -361,36 +390,7 @@ function themeblvd_sanitize_font_face( $value ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_columns( $input ) {
-
-	$width_options = themeblvd_column_widths();
-	$output = array();
-
-	// Verify number of columns is an integer
-	if ( is_numeric( $input['num'] ) ) {
-		$output['num'] = $input['num'];
-	} else {
-		$output['num'] = null;
-	}
-
-	// Verify widths
-	foreach ( $input['width'] as $key => $width ) {
-
-		$valid = false;
-
-		foreach ( $width_options[$key.'-col'] as $width_option ) {
-			if ( $width == $width_option['value'] ) {
-				$valid = true;
-			}
-		}
-
-		if ( $valid ) {
-			$output['width'][$key] = $width;
-		} else {
-			$output['width'][$key] = null;
-		}
-	}
-
-	return $output;
+	return wp_kses( $input, array() );
 }
 
 /**
@@ -546,7 +546,16 @@ function themeblvd_sanitize_social_media( $input ) {
 }
 
 /**
- * Simple Slider // @TODO fix sanitization, no nested items!!! fix in sortable class too
+ * jQuery UI slider
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_slide( $input ) {
+	return wp_kses( $input, array() );
+}
+
+/**
+ * Simple Slider
  *
  * @since 2.5.0
  */

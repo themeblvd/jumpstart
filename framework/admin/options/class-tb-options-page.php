@@ -258,6 +258,7 @@ class Theme_Blvd_Options_Page {
 		// WP Built-in scripts
 		wp_enqueue_script( 'jquery-ui-core');
 		wp_enqueue_script( 'jquery-ui-sortable' );
+		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'wp-color-picker' );
 
 		// WP Built-in Media Modal

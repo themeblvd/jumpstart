@@ -297,13 +297,6 @@ optionsframework #publishing-action .ajax-loading {
 	height: 26px;
 	padding-left: 25px;
 }
-#optionsframework .section-columns .select-wrap {
-	margin-right: 3%;
-	width: 47%;
-}
-#optionsframework .section-columns .inactive {
-	margin: 5px 0 0;
-}
 #optionsframework .tab-names {
 	border: 1px solid #eeeeee;
 	-moz-border-radius: 5px;

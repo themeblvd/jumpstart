@@ -92,6 +92,54 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   		continue;
 	   	}
 
+		// Set default value to $val
+		if ( isset( $value['std'] ) ) {
+			$val = $value['std'];
+		}
+
+		// If the option is already saved, override $val
+		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+			if ( isset( $value['group'] ) ) {
+
+				// Set grouped value
+				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
+
+					$val = $settings[($value['group'])][($value['id'])];
+
+					// Striping slashes of non-array options
+					if ( ! is_array( $val ) ) {
+						$val = stripslashes( $val );
+					}
+				}
+			} else {
+
+				// Set non-grouped value
+				if ( isset($settings[($value['id'])]) ) {
+
+					$val = $settings[($value['id'])];
+
+					// Striping slashes of non-array options
+					if ( ! is_array( $val ) ) {
+						$val = stripslashes( $val );
+					}
+				}
+			}
+		}
+
+		// Hidden options
+		if ( $value['type'] == 'hidden' ) {
+
+			$class = 'section section-hidden hide';
+			if ( ! empty( $value['class'] ) ) {
+				$class .= ' '.$value['class'];
+			}
+
+			$output .= sprintf('<div class="%s">', $class);
+			$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
+			$output .= '</div>';
+			continue;
+		}
+
 		// Wrap all options
 		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
 
@@ -127,40 +175,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			}
 
 			$output .= '<div class="option">'."\n".'<div class="controls">'."\n";
-		 }
-
-		// Set default value to $val
-		if ( isset( $value['std'] ) ) {
-			$val = $value['std'];
-		}
-
-		// If the option is already saved, override $val
-		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
-			if ( isset( $value['group'] ) ) {
-
-				// Set grouped value
-				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
-
-					$val = $settings[($value['group'])][($value['id'])];
-
-					// Striping slashes of non-array options
-					if ( ! is_array( $val ) ) {
-						$val = stripslashes( $val );
-					}
-				}
-			} else {
-
-				// Set non-grouped value
-				if ( isset($settings[($value['id'])]) ) {
-
-					$val = $settings[($value['id'])];
-
-					// Striping slashes of non-array options
-					if ( ! is_array( $val ) ) {
-						$val = stripslashes( $val );
-					}
-				}
-			}
 		}
 
         // Add each option to output based on type.
@@ -479,19 +493,26 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Font Size
 				if ( in_array( 'size', $value['atts'] ) ) {
 
-					$output .= '<div class="tb-fancy-select">';
-					$output .= '<select class="of-typography of-typography-size" name="'.esc_attr( $option_name.'['.$value['id'].'][size]' ).'" id="'.esc_attr( $value['id'].'_size' ).'">';
+					$output .= '<div class="jquery-ui-slider-wrap">';
 
 					$sizes = themeblvd_recognized_font_sizes();
-					foreach ( $sizes as $i ) {
-						$size = $i.'px';
-						$output .= '<option value="'.esc_attr( $size ).'" '.selected( $typography_stored['size'], $size, false ).'>'.esc_html( $size ).'</option>';
+					$options = array();
+					$options['min'] = intval($sizes[0]);
+					$options['max']	= intval(end($sizes));
+					$options['step'] = intval($sizes[1])-intval($sizes[0]);
+					$options['units'] = 'px';
+
+					$output .= '<div class="jquery-ui-slider"';
+
+					foreach ( $options as $param_id => $param ) {
+						$output .= sprintf( ' data-%s="%s"', $param_id, $param );
 					}
 
-					$output .= '</select>';
-					$output .= '<span class="trigger"></span>';
-					$output .= '<span class="textbox"></span>';
-					$output .= '</div><!-- .tb-fancy-select (end) -->';
+					$output .= '></div>';
+
+					$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'].'_size' ), esc_attr( $option_name.'['.$value['id'].'][size]' ), $typography_stored['size'] );
+					$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
+
 				}
 
 				// Font Style
@@ -711,6 +732,38 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= themeblvd_logo_option( $value['id'], $option_name, $val );
 				break;
 
+
+			/*---------------------------------------*/
+			/* Slide (jQuery UI slider)
+			/*---------------------------------------*/
+
+			case 'slide' :
+
+				$output .= '<div class="jquery-ui-slider-wrap">';
+
+				$options = array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1',
+					'units'	=> '' // for display only
+				);
+
+				if ( isset( $value['options'] ) ) {
+					$options = wp_parse_args( $value['options'], $options );
+				}
+
+				$output .= '<div class="jquery-ui-slider"';
+
+				foreach ( $options as $param_id => $param ) {
+					$output .= sprintf( ' data-%s="%s"', $param_id, $param );
+				}
+
+				$output .= '></div>';
+
+				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
+				$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
+				break;
+
 			/*---------------------------------------*/
 			/* Slider
 			/*---------------------------------------*/
@@ -825,7 +878,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'heading' :
 
-				if ( $counter >= 2 ) {
+				if ( $menu ) {
 				   $output .= '</div>'."\n";
 				}
 

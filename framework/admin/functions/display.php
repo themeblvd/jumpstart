@@ -187,40 +187,34 @@ function themeblvd_post_table( $post_type, $columns ) {
  */
 function themeblvd_columns_option( $type, $id, $name, $val ) {
 
+	$slider_id = uniqid('ui_slider_');
+
 	/*------------------------------------------------------*/
 	/* Setup Internal Options
 	/*------------------------------------------------------*/
 
 	// Dropdown for number of columns selection
-	$data_num = array (
-		array(
-			'name' 	=> __( 'Hide Columns', 'themeblvd' ),
-			'value' => 0,
-		),
-		array(
-			'name' 	=> '1 '.__( 'Column', 'themeblvd' ),
-			'value' => 1,
-		),
-		array(
-			'name' 	=> '2 '.__( 'Columns', 'themeblvd' ),
-			'value' => 2,
-		),
-		array(
-			'name' 	=> '3 '.__( 'Columns', 'themeblvd' ),
-			'value' => 3,
-		),
-		array(
-			'name' 	=> '4 '.__( 'Columns', 'themeblvd' ),
-			'value' => 4,
-		),
-		array(
-			'name' 	=> '5 '.__( 'Columns', 'themeblvd' ),
-			'value' => 5,
-		)
-	);
+	$data_num = array();
+
+	for ( $i = 0; $i <= 6; $i++  ) {
+		switch( $i ) {
+			case 0:
+				$message = __( 'Hide Columns', 'themeblvd' );
+				break;
+			case 1:
+				$message = __( '1 Column', 'themeblvd' );
+				break;
+			default:
+				$message = strval($i).' '.__( 'Columns', 'themeblvd' );
+		}
+		$data_num[$i] = $message;
+	}
 
 	// Dropdowns for column width configuration
-	$data_widths = themeblvd_column_widths();
+	$data_grid = array(
+		'10' => __( '10-Column Grid', 'themeblvd' ),
+		'12' => __( '12-Column Grid', 'themeblvd' )
+	);
 
 	/*------------------------------------------------------*/
 	/* Construct <select> Menus
@@ -228,20 +222,30 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 
 	// Number of columns
 	if ( $type == 'element' ) {
+		// Columns in Builder, 1-5 columns
 		unset( $data_num[0] );
+		unset( $data_num[6] );
+	} else if( $type == 'shortcode' ) {
+		// Group of [column] shortcodes, 2-6 columns
+		unset( $data_num[0] );
+		unset( $data_num[1] );
+	} else {
+		// Standard option, 0-5 columns (ex: Footer Columns)
+		unset( $data_num[6] );
 	}
 
 	// Select number of columns
 	$select_number  = '<div class="tb-fancy-select">';
-	$select_number .= '<select class="column-num" name="'.esc_attr( $name.'['.$id.'][num]' ).'">';
+	$select_number .= '<select class="select-col-num" data-slider="'.$slider_id.'">';
 
-	$current_value = '';
-	if ( ! empty( $val ) && ! empty( $val['num'] ) ) {
-		$current_value = $val['num'];
+	$count = 0;
+
+	if ( $val && is_string($val) ) {
+		$count = count( explode('-', $val) );
 	}
 
-	foreach ( $data_num as $num ) {
-		$select_number .= '<option value="'.$num['value'].'" '.selected( $current_value, $num['value'], false ).'>'.$num['name'].'</option>';
+	foreach ( $data_num as $key => $value ) {
+		$select_number .= '<option value="'.$key.'" '.selected( $count, $key, false ).'>'.$value.'</option>';
 	}
 
 	$select_number .= '</select>';
@@ -249,37 +253,49 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	$select_number .= '<span class="textbox"></span>';
 	$select_number .= '</div><!-- .tb-fancy-select (end) -->';
 
-	// Select column widths
-	$i = 1;
-	$select_widths = '<div class="column-width column-width-0"><p class="inactive">'.__( 'Columns will be hidden.', 'themeblvd' ).'</p></div>';
-	foreach ( $data_widths as $widths ) {
+	// Select grid system
+	$select_grid  = '<div class="tb-fancy-select">';
+	$select_grid .= '<select class="select-grid-system" data-slider="'.$slider_id.'">';
 
-		$select_widths .= '<div class="tb-fancy-select column-width column-width-'.$i.'">';
-		$select_widths .= '<select name= "'.esc_attr( $name.'['.$id.'][width]['.$i.']' ).'">';
-
-		$current_value = '';
-		if ( ! empty( $val ) && ! empty( $val['width'][$i] ) ) {
-			$current_value = $val['width'][$i];
-		}
-
-		foreach ( $widths as $width ) {
-			$select_widths .= '<option value="'.$width['value'].'" '.selected( $current_value, $width['value'], false ).'>'.$width['name'].'</option>';
-		}
-
-		$select_widths .= '</select>';
-		$select_widths .= '<span class="trigger"></span>';
-		$select_widths .= '<span class="textbox"></span>';
-		$select_widths .= '</div><!-- .tb-fancy-select (end) -->';
-		$i++;
+	$grid = '12';
+	if ( $val ) {
+		$grid = themeblvd_grid_type($val);
 	}
+
+	foreach ( $data_grid as $key => $value ) {
+		$select_grid .= '<option value="'.$key.'" '.selected( $grid, $key, false ).'>'.$value.'</option>';
+	}
+
+	$select_grid .= '</select>';
+	$select_grid .= '<span class="trigger"></span>';
+	$select_grid .= '<span class="textbox"></span>';
+	$select_grid .= '</div><!-- .tb-fancy-select (end) -->';
+
+	/*------------------------------------------------------*/
+	/* Construct width option, using jQuery UI slider
+	/*------------------------------------------------------*/
+
+	$width_option  = sprintf( '<div id="%s" class="slider"></div>', $slider_id );
+	$width_option .= sprintf( '<input id="%s" class="of-input column-width-input" name="%s" type="hidden" value="%s" />', esc_attr($id), esc_attr($name.'['.$id.']'), esc_attr($val) );
+	$width_option .= '<p class="explain">'.__('Click and drag the above column dividers left or right.', 'themeblvd').'</p>';
 
 	/*------------------------------------------------------*/
 	/* Primary Output
 	/*------------------------------------------------------*/
 
 	$output  = sprintf( '<div class="select-wrap alignleft">%s</div>', $select_number );
-	$output .= sprintf( '<div class="select-wrap alignleft">%s</div>', $select_widths );
+	$output .= sprintf( '<div class="select-wrap alignleft">%s</div>', $select_grid );
+
 	$output .= '<div class="clear"></div>';
+	$output .= '</div><!-- .controls (end) -->';
+	$output .= '</div><!-- .option (end) -->';
+	$output .= '</div><!-- .section (end) -->';
+
+	$output .= '<div class="section section-column_widths">';
+	$output .= '<div class="option">';
+	$output .= '<div class="controls">';
+
+	$output .= sprintf( '<div class="column-widths-wrap">%s</div>', $width_option );
 
 	return $output;
 }

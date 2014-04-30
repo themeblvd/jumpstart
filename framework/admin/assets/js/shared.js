@@ -104,19 +104,6 @@
 
 	    			});
 
-	    			// Columns only
-	    			$this.find('.columns').each(function(){
-	    				var el = $(this), i = 1, num = el.find('.column-num').val();
-	    				el.find('.column-width').hide();
-	    				el.find('.column-width-'+num).show();
-	    				el.find('.section-content').hide();
-	    				while (i <= num)
-						{
-							el.find('.col_'+i).show();
-							i++;
-	    				}
-	    			});
-
 	    			// Tabs only
 	    			$this.find('.tabs').each(function(){
 	    				var el = $(this), i = 1, num = el.find('.tabs-num').val();
@@ -136,6 +123,15 @@
     					section.find('.column-content-type').hide();
     					section.find('.column-content-type-'+type).show();
     				});
+
+    				// Show correct number of columns (theme options)
+	    			$this.find('.columns').each(function(){
+	    				var el = $(this), i, num = el.find('.select-col-num').val();
+	    				el.find('.section-content').hide();
+	    				for ( i = 1; i <= num; i++) {
+							el.find('.col_'+i).show();
+	    				}
+	    			});
 
     				// Show/Hide groupings
     				$this.find('.show-hide').each(function(){
@@ -211,16 +207,46 @@
 					$this.find('.of-radio-img-img').show();
 					$this.find('.of-radio-img-radio').hide();
 
-					// WP Color Picker
-					if ( typeof wpColorPicker !== 'undefined' ) {
-						$this.find('.tb-color-picker').wpColorPicker();
-					}
 
 					// Match options
 					$this.find('.match-trigger .of-input').each(function(){
 						var $el = $(this);
 						$el.closest('.subgroup').find('.match .of-input').val($el.val());
 					});
+
+					// jQuery UI slider
+					$this.find('.jquery-ui-slider').each(function(){
+
+						var $el = $(this),
+							$input = $el.closest('.jquery-ui-slider-wrap').find('.slider-input'),
+							units = $el.data('units');
+
+						$el.slider({
+							min: $el.data('min'),
+							max: $el.data('max'),
+							step: $el.data('step'),
+							value: parseInt($input.val()),
+							create: function( event, ui ) {
+
+								$el.find('.ui-slider-handle').append('<span class="display-value"><span class="display-value-text"></span><span class="display-value-arrow"></span></span>');
+
+								var $display = $el.find('.display-value');
+								$display.css('margin-left', '-'+($display.outerWidth()/2)+'px');
+								$display.find('.display-value-text').text( $input.val() );
+
+							},
+							slide: function( event, ui ) {
+								$input.val( ui.value+units );
+								$el.find('.display-value-text').text( ui.value+units );
+							}
+						});
+
+					});
+
+					// WP Color Picker
+					if ( typeof wpColorPicker !== 'undefined' ) {
+						$this.find('.tb-color-picker').wpColorPicker();
+					}
 
 					// Remove tooltips if hovered link is clicked
 					$this.find('.tb-tooltip-link').click(function(){
@@ -314,19 +340,6 @@
 	    					parent.find('.widget_area-content').fadeIn('fast');
 	    					parent.find('.raw-content').hide();
 	    					parent.find('.page-content').hide();
-	    				}
-	    			});
-
-	    			// Column widths and number
-	    			$this.on( 'change', '.columns .column-num', function() {
-	    				var el = $(this), i = 1, num = el.val(), parent = el.closest('.columns');
-	    				parent.find('.column-width').hide();
-	    				parent.find('.column-width-'+num).fadeIn('fast');
-	    				parent.find('.section-content').hide();
-	    				while (i <= num)
-						{
-							parent.find('.col_'+i).show();
-							i++;
 	    				}
 	    			});
 
@@ -742,6 +755,10 @@
 	    			});
 
 	    		}
+	    		// Column Widths
+	    		else if(type == 'column-widths') {
+	    			themeblvd_column_widths.init($this);
+	    		}
 	    		// Sortable option type
 	    		else if (type == 'sortable') {
 
@@ -955,7 +972,6 @@
 /**
  * Media Uploader for WP 3.5+
  */
-
 (function($) {
 	themeblvd_media_uploader = {
 
@@ -1368,10 +1384,333 @@
 })(jQuery);
 
 /**
+ * Use jQuery UI slider to setup an option
+ * for the user to change column widths.
+ */
+(function($) {
+	themeblvd_column_widths = {
+
+		/**
+		 * Apply click actions initially when loaded.
+		 */
+		init: function( $options ) {
+
+			$options.find('.section-column_widths').each(function(){
+				themeblvd_column_widths.run( $(this).closest('.subgroup.columns') );
+			});
+
+		},
+
+		/**
+		 * Create the slider object
+		 */
+		run: function( $section ) {
+
+			var defaults = {
+				10: {
+					2: {
+						values: [0, 5, 10],
+						display: ['1/2', '1/2']
+					},
+					3: {
+						values: [0, 3, 7, 10],
+						display: ['3/10', '2/5', '3/10']
+					},
+					4: {
+						values: [0, 2, 5, 8, 10],
+						display: ['1/5', '3/10', '3/10', '1/5']
+					},
+					5: {
+						values: [0, 2, 4, 6, 8, 10],
+						display: ['1/5', '1/5', '1/5', '1/5', '1/5']
+					},
+					6: {
+						values: [0, 1, 3, 5, 7, 9, 10],
+						display: ['1/10', '1/5', '1/5', '1/5', '1/5', '1/10']
+					}
+				},
+				12: {
+					2: {
+						values: [0, 6, 12],
+						display: ['1/2', '1/2']
+					},
+					3: {
+						values: [0, 4, 8, 12],
+						display: ['1/3', '1/3', '1/3']
+					},
+					4: {
+						values: [0, 3, 6, 9, 12],
+						display: ['1/4', '1/4', '1/4', '1/4']
+					},
+					5: {
+						values: [0, 2, 4, 8, 10, 12],
+						display: ['1/6', '1/6', '1/3', '1/6', '1/6']
+					},
+					6: {
+						values: [0, 2, 4, 6, 8, 10, 12],
+						display: ['1/6', '1/6', '1/6', '1/6', '1/6', '1/6']
+					}
+				}
+			};
+
+			var id = $section.find('.slider').attr('id'),
+				grid = 12, // 10 or 12
+				columns = 3, // 1-5
+				total = 0,
+				fraction = '',
+				numerator = 0,
+				denominator = 0,
+				current = $section.find('.column-width-input').val(),
+				init_values = [];
+
+			grid = $section.find('.select-grid-system').val(); // 10 or 12
+			columns = $section.find('.select-col-num').val();
+
+			// Bind changes
+			$section.find('.select-col-num').off('change.ui-slider'); // Avoid duplicates
+			$section.find('.select-col-num').on('change.ui-slider', themeblvd_column_widths.change );
+
+			$section.find('.select-grid-system').off('change.ui-slider'); // Avoid duplicates
+			$section.find('.select-grid-system').on('change.ui-slider', themeblvd_column_widths.change );
+
+			// If one or no columns, don't run jQuery ui slider
+			if ( columns == 0 ) {
+				return;
+			} else if ( columns == 1 ) {
+				$section.find('.slider').append('<div class="column-preview col-1" style="width:100%"><span class="text">100%</span></div>');
+				$section.find('.column-width-input').val('1/1');
+				return;
+			}
+
+			if ( current ) {
+
+				current = current.split('-');
+				columns = current.length;
+
+				for ( var i = 0; i <= columns; i++ ) {
+					if ( i === 0 ) {
+						init_values[i] = 0;
+					} else if ( i == columns ) {
+						init_values[i] = grid;
+					} else {
+						fraction = current[i-1].split('/');
+						total += (grid*fraction[0])/fraction[1];
+						init_values[i] = total;
+					}
+				}
+			} else {
+				init_values = defaults[grid][columns]['values'];
+				current = defaults[grid][columns]['display'];
+				$section.find('.column-width-input').val(current.join('-'));
+				$section.find('.column-width-input').trigger('themeblvd_update_columns');
+			}
+
+			// Setup jQuery UI slider instance
+			$('#'+id).slider({
+				range: 'max',
+				min: 0,
+				max: grid,
+				step: 1,
+				values: init_values,
+				create: function( event, ui ) {
+
+					var i,
+						left = 0,
+						width = 0,
+						grid_display = '';
+
+					// Setup display columns with visible
+					// fractions for the user.
+					for ( i = 1; i <= columns; i++ ) {
+
+						$section.find('.slider').append('<div class="column-preview col-'+i+'"><span class="text">'+current[i-1]+'</span></div>');
+
+						width = ((init_values[i]-init_values[i-1])/grid)*100;
+						$section.find('.col-'+i).css('width', width+'%');
+
+						if ( i > 1 ) {
+							$section.find('.col-'+i).css('left', left+'%');
+						}
+
+						left += width;
+					}
+
+					// Add grid presentation
+					left = 0;
+					grid_display = '<div class="grid-display grid-'+grid+'">';
+
+					for ( i = 1; i <= grid; i++ ) {
+						grid_display += '<div class="grid-column grid-col-'+i+'"></div>';
+					}
+
+					grid_display += '</div>';
+
+					$section.find('.slider').append(grid_display);
+
+					for ( i = 1; i <= grid; i++ ) {
+						left += ((1/grid)*100);
+						$section.find('.grid-col-'+i).css('left', left+'%' );
+					}
+
+				},
+				slide: function( event, ui ) {
+
+					var index = $(ui.handle).index(),
+						values = ui.values,
+						count = values.length;
+
+					// First and last can't be moved
+					if ( index == 1 || index == count ) {
+						return false;
+					}
+
+					var $container = $(ui.handle).closest('.column-widths-wrap'),
+						$option = $container.find('.column-width-input'),
+						current_val = ui.value,
+						next_val = values[index],
+						prev_val = values[index-2],
+						next_col = 0,
+						prev_col = 0,
+						prev_col_fraction = '',
+						next_col_fraction = '',
+						next_numerator = 0,
+						prev_numerator = 0,
+						prev_final = '',
+						final_val = '',
+						final_fractions = [],
+						left = 0,
+						width = 0;
+
+					// Do not allow handles to pass or touch each other
+					if ( current_val <= prev_val || current_val >= next_val ) {
+						return false;
+					}
+
+					// Size columns before and after handle
+					prev_numerator = current_val-prev_val;
+					next_numerator = next_val-current_val;
+					prev_col = index-1;
+					next_col = index;
+
+					// Reduce previous column fraction
+					prev_col_fraction = themeblvd_column_widths.reduce(prev_numerator, grid);
+					prev_col_fraction = prev_col_fraction[0].toString()+'/'+prev_col_fraction[1].toString();
+
+					// Reduce next column fraction
+					next_col_fraction = themeblvd_column_widths.reduce(next_numerator, grid);
+					next_col_fraction = next_col_fraction[0].toString()+'/'+next_col_fraction[1].toString();
+
+					// Set hidden fraction placeholders for reference
+					$container.find('input[name="col['+prev_col+']"]').val(prev_col_fraction);
+					$container.find('input[name="col['+next_col+']"]').val(next_col_fraction);
+
+					// Update final option
+					prev_final = $option.val();
+					prev_final = prev_final.split('-');
+
+					for ( var i = 1; i <= prev_final.length; i++ ) {
+
+						if ( i == prev_col ) {
+							final_val += prev_col_fraction;
+						} else if ( i == next_col ) {
+							final_val += next_col_fraction;
+						} else {
+							final_val += prev_final[i-1];
+						}
+
+						if ( i != prev_final.length ) {
+							final_val += '-';
+						}
+
+					}
+
+					$option.val(final_val);
+					$option.trigger('themeblvd_update_columns');
+
+					// Re-set display columns with visible
+					// fractions for the user.
+					final_fractions = final_val.split('-');
+
+					for ( i = 1; i <= columns; i++ ) {
+
+						width = ((values[i]-values[i-1])/grid)*100;
+						$section.find('.col-'+i).css('width', width+'%');
+						$section.find('.col-'+i+' .text').text(final_fractions[i-1]);
+
+						if ( i > 1 ) {
+							$section.find('.col-'+i).css('left', left+'%');
+						}
+
+						left += width;
+					}
+				}
+			});
+
+		},
+
+		/**
+		 * Adjust the number of columns or grid system, and re-run
+		 */
+		change: function (){
+
+			var $el = $(this),
+				$slider = $('#'+$el.data('slider')),
+				columns = 0;
+
+			if ( $el.is('.select-col-num') ) {
+				columns = $el.val();
+			} else {
+				columns = $el.closest('.section').find('.select-col-num').val();
+			}
+
+			if ( columns == 0 ) {
+				$el.closest('.subgroup.columns').find('.section-column_widths').hide();
+			} else {
+				$el.closest('.subgroup.columns').find('.section-column_widths').show();
+			}
+
+			if ( $slider.data('uiSlider') ) {
+				$slider.slider('destroy');
+			}
+
+			$slider.html('').closest('.column-widths-wrap').find('.column-width-input').val('');
+			themeblvd_column_widths.run( $el.closest('.subgroup.columns') );
+
+			if ( $el.is('.select-col-num') ) {
+
+				var $container = $el.closest('.subgroup.columns');
+				$container.find('.section-content').hide();
+
+				// If non-content block columns element, this will
+				// show/hide approriate column edit areas.
+				for ( var i = 1; i <= columns; i++ ) {
+					$container.find('.section-content.col_'+i).show();
+				}
+
+				// If content-block edit, change number of columns in
+				// edit area - Adjust the CSS for class, which will
+    			// handle displaying the correct amount of columns.
+    			$container.closest('.element-options').find('.columns-config').removeClass('columns-1 columns-2 columns-3 columns-4 columns-5').addClass('columns-'+columns);
+			}
+		},
+
+		/**
+		 * Reduce fraction
+		 */
+		reduce: function (numerator, denominator){
+			var gcd = function gcd(a,b){
+				return b ? gcd(b, a%b) : a;
+			};
+			gcd = gcd(numerator,denominator);
+			return [numerator/gcd, denominator/gcd];
+		}
+	};
+})(jQuery);
+
+/**
  * Show alert popup. Used for warnings and confirmations,
  * mostly intended to be used with AJAX actions.
  */
-
 (function($) {
 	tbc_alert = {
 		init: function( alert_text, alert_class, selector ) {

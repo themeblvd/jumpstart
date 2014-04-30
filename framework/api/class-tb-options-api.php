@@ -259,8 +259,10 @@ class Theme_Blvd_Options_API {
 					),
 					'footer_setup' => array(
 						'name'		=> __( 'Setup Columns', 'themeblvd' ),
-						'desc'		=> __( 'Choose the number of columns along with the corresponding width configurations.', 'themeblvd' ),
+						'desc'		=> null,
 						'id' 		=> 'footer_setup',
+						//'std'		=> '1/3-1/3-1/3',
+						'std'		=> '',
 						'type'		=> 'columns',
 						'options'	=> 'standard'
 					),
