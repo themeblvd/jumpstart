@@ -301,51 +301,6 @@ function themeblvd_posts_page_page( $type, $columns = null, $rows = null ) {
 }
 
 /**
- * Get the class to be used for a grid column.
- *
- * @since 2.0.0
- *
- * @param int $columns Number of columns
- * @return string $class class for each column of grid
- */
-function themeblvd_grid_class( $columns ) {
-
-	$class = 'grid_3'; // default
-
-	if ( $columns == 1 ) {
-		$class = 'grid_12';
-	} else if ( $columns == 2 ) {
-		$class = 'grid_6';
-	} else if ( $columns == 3 ) {
-		$class = 'grid_4';
-	} else if ( $columns == 4 ) {
-		$class = 'grid_3';
-	} else if ( $columns == 5 ) {
-		$class = 'grid_fifth_1';
-	}
-
-	return apply_filters( 'themeblvd_grid_class', $class, $columns );
-}
-
-/**
- * Open a row in a post grid
- *
- * @since 2.0.0
- */
-function themeblvd_open_row() {
-	echo apply_filters( 'themeblvd_open_row', '<div class="grid-row">' );
-}
-
-/**
- * Close a row in a post grid
- *
- * @since 2.0.0
- */
-function themeblvd_close_row() {
-	echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
-}
-
-/**
  * Determine color of text depending on background color.
  *
  * Huge thank you to Oscar for providing this:
@@ -1305,8 +1260,7 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
  * @return string $overlay HTML markup to get inserted within anchor tag
  */
 function themeblvd_get_image_overlay() {
-	$overlay = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';
-    return apply_filters( 'themeblvd_image_overlay', $overlay );
+    return apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
 }
 
 /**
@@ -1370,5 +1324,5 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 function themeblvd_footer_copyright_default( $text ) {
 	$text = str_replace( '%year%', date('Y'), $text );
 	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
-	return apply_filters( 'themeblvd_the_content', $text );
+	return themeblvd_get_content( $text );
 }

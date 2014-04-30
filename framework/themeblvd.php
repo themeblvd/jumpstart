@@ -41,6 +41,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/grid.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
 
 	// Filters
@@ -92,9 +93,10 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/actions.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/display.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/frontend.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/elements.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/frontend.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/grid.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/media.php' );

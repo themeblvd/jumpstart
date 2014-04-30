@@ -728,7 +728,7 @@ class Theme_Blvd_Frontend_Init {
 		$posts_per_page = intval($columns)*intval($rows);
 
 		// Thumbnail size
-		$size = themeblvd_grid_class( $columns );
+		$size = themeblvd_grid_thumb_class( $columns );
 
 		if ( is_home() ) {
 
@@ -759,7 +759,8 @@ class Theme_Blvd_Frontend_Init {
 			'posts_per_page' 	=> $posts_per_page,
 			'counter'			=> 0,
 			'size'				=> $size,
-			'crop'				=> $crop 			// Will be equal to "size" if not overridden
+			'crop'				=> $crop, // Will be equal to "size" if not overridden
+			'class'				=> themeblvd_grid_class($columns)
 		);
 
 		return apply_filters( 'themeblvd_grid_atts', $atts );

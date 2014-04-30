@@ -132,11 +132,11 @@ function themeblvd_columns( $args, $columns = null ) {
 		return;
 	}
 
-	echo '<div class="row">';
+	themeblvd_open_row();
 
 	for ( $i = 1; $i <= $num; $i++ ) {
 
-		$class = themeblvd_get_grid_class( $widths[$i-1] );
+		$class = themeblvd_grid_class( $widths[$i-1] );
 
 		echo '<div class="'.$class.'">';
 
@@ -158,11 +158,11 @@ function themeblvd_columns( $args, $columns = null ) {
 
 		}
 
-		echo '</div><!-- .column (end) -->';
+		echo '</div><!-- .'.$class.' (end) -->';
 
 	}
 
-	echo '</div><!-- .row (end) -->';
+	themeblvd_close_row();
 }
 endif;
 
@@ -204,9 +204,9 @@ function themeblvd_page_content( $page = 0 ) {
 endif;
 
 /**
- * Take in some content and display it with formatting.
+ * Take in some content and return it with formatting.
  *
- * @since 2.0.0
+ * @since 2.5.0
  *
  * @param array $content Content to display
  * @return string Formatted content
@@ -214,6 +214,15 @@ endif;
 function themeblvd_get_content( $content ) {
 	return apply_filters( 'themeblvd_the_content', stripslashes( $content ) );
 }
+
+/**
+ * Take in some content and display it with formatting.
+ *
+ * @since 2.5.0
+ *
+ * @param array $content Content to display
+ * @return string Formatted content
+ */
 function themeblvd_content( $content ) {
 	echo themeblvd_get_content( $content );
 }
