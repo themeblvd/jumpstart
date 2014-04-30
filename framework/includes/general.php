@@ -477,7 +477,7 @@ function themeblvd_sidebar_layouts() {
 	// is before stacking the columns. By using "sm"
 	// we are having columns drop responsively at the
 	// 767px or less (i.e. mobile viewports).
-	$size = 'sm';
+	$stack = 'sm';
 
 	// ... And then because old versions of IE are horrible,
 	// they do not accurately know the viewport size.
@@ -488,7 +488,7 @@ function themeblvd_sidebar_layouts() {
 		// If this is IE8, change the size
 		// to "xs" as a fail-safe. This is okay because
 		// responsive behavior here is irrelvant, anyway.
-		$size = 'xs';
+		$stack = 'xs';
 
 	}
 
@@ -497,7 +497,7 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Full Width',
 			'id'		=> 'full_width',
 			'columns'	=> array(
-				'content' 	=> "col-{$size}-12",
+				'content' 	=> "col-{$stack}-12",
 				'left' 		=> '',
 				'right' 	=> ''
 			)
@@ -506,17 +506,17 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Sidebar Right',
 			'id'		=> 'sidebar_right',
 			'columns'	=> array(
-				'content' 	=> "col-{$size}-8",
+				'content' 	=> "col-{$stack}-8",
 				'left' 		=> '',
-				'right' 	=> "col-{$size}-4"
+				'right' 	=> "col-{$stack}-4"
 			)
 		),
 		'sidebar_left' => array(
 			'name' 		=> 'Sidebar Left',
 			'id'		=> 'sidebar_left',
 			'columns'	=> array(
-				'content' 	=> "col-{$size}-8",
-				'left' 		=> "col-{$size}-4",
+				'content' 	=> "col-{$stack}-8",
+				'left' 		=> "col-{$stack}-4",
 				'right' 	=> ''
 			)
 		),
@@ -524,31 +524,31 @@ function themeblvd_sidebar_layouts() {
 			'name' 		=> 'Double Sidebar',
 			'id'		=> 'double_sidebar',
 			'columns'	=> array(
-				'content' 	=> "col-{$size}-6",
-				'left' 		=> "col-{$size}-3",
-				'right' 	=> "col-{$size}-3"
+				'content' 	=> "col-{$stack}-6",
+				'left' 		=> "col-{$stack}-3",
+				'right' 	=> "col-{$stack}-3"
 			)
 		),
 		'double_sidebar_left' => array(
 			'name' 		=> 'Double Left Sidebars',
 			'id'		=> 'double_sidebar_left',
 			'columns'	=> array(
-				'content' 	=> "col-{$size}-6",
-				'left' 		=> "col-{$size}-3",
-				'right' 	=> "col-{$size}-3"
+				'content' 	=> "col-{$stack}-6",
+				'left' 		=> "col-{$stack}-3",
+				'right' 	=> "col-{$stack}-3"
 			)
 		),
 		'double_sidebar_right' => array(
 			'name' 		=> 'Double Right Sidebars',
 			'id'		=> 'double_sidebar_right',
 			'columns'	=> array(
-				'content' 	=> "col-{$size}-6",
-				'left' 		=> "col-{$size}-3",
-				'right' 	=> "col-{$size}-3"
+				'content' 	=> "col-{$stack}-6",
+				'left' 		=> "col-{$stack}-3",
+				'right' 	=> "col-{$stack}-3"
 			)
 		)
 	);
-	return apply_filters( 'themeblvd_sidebar_layouts', $layouts );
+	return apply_filters( 'themeblvd_sidebar_layouts', $layouts, $stack );
 }
 
 /**
@@ -556,20 +556,86 @@ function themeblvd_sidebar_layouts() {
  *
  * @since 2.2.0
  *
- * @param string $column Which column to retrieve class for
+ * @param string $column Which column to retrieve class for - left, right, or content
  * @return string $column_class The class to be used in grid system
  */
 function themeblvd_get_column_class( $column ) {
 
-	$column_class = '';
-	$sidebar_layouts = themeblvd_sidebar_layouts();
-	$current_sidebar_layout = themeblvd_config( 'sidebar_layout' );
+	$class = '';
 
-	if ( isset( $sidebar_layouts[$current_sidebar_layout]['columns'][$column] ) ) {
-		$column_class = $sidebar_layouts[$current_sidebar_layout]['columns'][$column];
+	// Make sure valid $column
+	if ( ! in_array( $column, array( 'content', 'left', 'right' ) ) ) {
+		return $class;
 	}
 
-	return apply_filters( 'themeblvd_column_class', $column_class );
+	$layouts = themeblvd_sidebar_layouts();
+	$layout = themeblvd_config( 'sidebar_layout' );
+
+	if ( isset( $layouts[$layout]['columns'][$column] ) ) {
+
+		// Get intial class
+		$class = $layouts[$layout]['columns'][$column];
+
+		// If this layout has a left sidebar, it'll require some push/pull
+		if ( in_array( $layout, array('sidebar_left', 'double_sidebar', 'double_sidebar_left' )) ) {
+
+			// What is the current stack?
+			$stack = 'sm';
+
+			if ( strpos($class, 'xs') !== false ) {
+				$stack = 'sx';
+			} else if( strpos($class, 'md') !== false ) {
+				$stack = 'md';
+			} else if( strpos($class, 'lg') !== false ) {
+				$stack = 'lg';
+			}
+
+			// Push/pull columns based on the layout
+			if ( $layout == 'sidebar_left' || $layout == 'double_sidebar' ) {
+
+				if ( $column == 'content' ) {
+
+					// Content push = left sidebar width
+					$class .= ' '.str_replace( "col-{$stack}-", "col-{$stack}-push-", $layouts[$layout]['columns']['left'] );
+
+				} else if ( $column == 'left' ) {
+
+					// Left sidebar pull = content width
+					$class .= ' '.str_replace( "col-{$stack}-", "col-{$stack}-pull-", $layouts[$layout]['columns']['content'] );
+
+				}
+
+			} else if ( 'double_sidebar_left' ) {
+
+				if ( $column == 'content' ) {
+
+					// Content push = left sidebar width + right right sidebar width.
+					$push_1 = str_replace( "col-{$stack}-", '', $layouts['double_sidebar_left']['columns']['left'] );
+					$push_2 = str_replace( "col-{$stack}-", '', $layouts['double_sidebar_left']['columns']['right']);
+
+					$push = trim( intval($push_1) + intval($push_2) );
+
+					if ( strpos($push_1, '0') === 0 && strpos($push_2, '0') === 0 ) {
+						$push = '0'.$push;
+					}
+
+					$push = "col-{$stack}-push-{$push}";
+					$class .= ' '.$push;
+
+				} else {
+
+					// Left/Right sidebar pull = content width
+					$class = ' '.str_replace( "col-{$stack}-", "col-{$stack}-pull-", $layouts['double_sidebar_left']['columns']['content'] );
+
+				}
+
+			}
+
+		}
+
+	}
+
+	return apply_filters( 'themeblvd_column_class', $class, $column, $layout );
 }
 
 /**
