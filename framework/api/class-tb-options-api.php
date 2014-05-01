@@ -611,20 +611,26 @@ class Theme_Blvd_Options_API {
 		// Only do this for the frontend.
 		if ( ! $this->settings ) {
 
-			// Because frontend, we need to add sanitiziation
 			if ( ! is_admin() ) {
-				themeblvd_add_sanitization();
-			}
 
-			// Construct array of default values pulled from
-			// formatted options.
-			$defaults = themeblvd_get_option_defaults( $this->formatted_options );
-			$this->settings = $defaults;
-			add_option( $this->get_option_id(), $defaults );
+				// Because frontend, we need to add sanitiziation
+				themeblvd_add_sanitization();
+
+				// Construct array of default values pulled from
+				// formatted options.
+				$defaults = themeblvd_get_option_defaults( $this->formatted_options );
+				$this->settings = $defaults;
+				add_option( $this->get_option_id(), $defaults );
+
+			}
 
 		}
 
-		$this->settings = $this->verify( $this->settings );
+		// Verify data is saved properly
+		if ( $this->settings ) {
+			$this->settings = $this->verify( $this->settings );
+		}
+
 		$this->settings = apply_filters( 'themeblvd_frontend_options', $this->settings );
 	}
 
@@ -642,7 +648,9 @@ class Theme_Blvd_Options_API {
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'		=> $this->get_option_id(),
 			'icon'			=> '',
-			'closer'		=> true // Needs to be false if option page has no tabs
+			'closer'		=> true, // Needs to be false if option page has no tabs
+			'export'		=> true,
+			'import'		=> true
 		);
 		$this->args = apply_filters( 'themeblvd_theme_options_args', $this->args );
 	}

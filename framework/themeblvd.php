@@ -26,10 +26,13 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/meta.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-export.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader-legacy.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-export-options.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-import-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );

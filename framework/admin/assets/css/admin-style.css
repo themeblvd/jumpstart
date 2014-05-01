@@ -953,3 +953,11 @@ body.themeblvd-stop-scroll {
 	font-weight: 700;
 	padding: 5px 10px;
 }
+.appriseInner h1,
+.appriseInner h2,
+.appriseInner h3,
+.appriseInner h4,
+.appriseInner h5,
+.appriseInner h6 {
+	margin-top: 0;
+}

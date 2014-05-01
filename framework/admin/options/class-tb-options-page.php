@@ -77,6 +77,14 @@ class Theme_Blvd_Options_Page {
 	public $icons_image = false;
 
 	/**
+	 * URL to importer, if enabled
+	 *
+	 * @since 2.5.0
+	 * @var string
+	 */
+	public $importer_url = '';
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 2.2.0
@@ -96,7 +104,9 @@ class Theme_Blvd_Options_Page {
 			'menu_slug'		=> '',
 			'icon'			=> '',
 			'form_action'	=> 'options.php',
-			'closer'		=> true // Needs to be false if option page has no tabs
+			'closer'		=> true, // Needs to be false if option page has no tabs
+			'export'		=> false,
+			'import'		=> false
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 
@@ -183,6 +193,24 @@ class Theme_Blvd_Options_Page {
 
 		foreach ( $this->options as $option ) {
 			$advanced->create( $option['type'] );
+		}
+
+		// Allow for exporting
+		if ( $this->args['export'] ) {
+			$args = array(
+				'base_url'	=> admin_url($this->args['parent'].'?page='.$this->id),
+				'cancel'	=> __('Nothing to export. Theme Options have never been saved.', 'themeblvd')
+			);
+			$export = new Theme_Blvd_Export_Options( $this->id, $args );
+		}
+
+		// Allow for importing
+		if ( $this->args['import'] ) {
+			$args = array(
+				'redirect' => admin_url($this->args['parent'].'?page='.$this->id) // Current options page URL
+			);
+			$import = new Theme_Blvd_Import_Options( $this->id, $args );
+			$this->importer_url = $import->get_url(); // URL of page where importer is
 		}
 
 	}
@@ -326,8 +354,14 @@ class Theme_Blvd_Options_Page {
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit" class="options-page-footer">
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
-							<input type="submit" class="reset-button button-secondary" value="<?php esc_attr_e( 'Restore Defaults', 'themeblvd' ); ?>" />
-							<input type="submit" class="clear-button button-secondary" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
+							<input type="submit" class="reset-button button-secondary hide" value="<?php esc_attr_e( 'Restore Defaults', 'themeblvd' ); ?>" />
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
+							<?php if ( $this->args['export'] ) : ?>
+								<a href="<?php echo admin_url($this->args['parent'].'?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
+				           	<?php endif; ?>
+				           	<?php if ( $this->args['import'] ) : ?>
+								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd' ); ?></a>
+				           	<?php endif; ?>
 				           	<div class="clear"></div>
 						</div>
 					</form>

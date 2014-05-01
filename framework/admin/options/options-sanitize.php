@@ -49,7 +49,7 @@ function themeblvd_add_sanitization() {
  *
  * @since 2.5.0
  */
-function themeblvd_sanitize_hidden( $input ) {
+function themeblvd_sanitize_hidden( $input, $option ) {
 
 	if ( $option['id'] == 'framework_version' ) {
 
