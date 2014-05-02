@@ -4,9 +4,9 @@ Jump Start Changelog
 1.2.4
 -----
 
-@TODO Framework 2.5 currently under dev, may jump tp v1.3 and framework 2.5
-
 * Updated Theme Blvd framework to 2.4.4
+* Fixed Gallery Slider only allowing five images.
+* Fixed Gallery Slider only allowing one instance on a page.
 * Added deep linking in Tabs element by filtering `themeblvd_tabs_deep_linking` to true.
 
 --------------------------------------------------------------

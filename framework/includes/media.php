@@ -313,6 +313,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	$post_id = get_the_ID();
+	$unique_id = uniqid('gallery_slider_');
 	$size = apply_filters( 'themeblvd_gallery_slider_size', $args['size'], $post_id );
 
 	// Did user pass in a gallery shortcode?
@@ -333,9 +334,10 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 		if ( ! empty( $atts['ids'] ) ) {
 			$query = array(
-				'post_type'	=> 'attachment',
-				'post__in' 	=> explode( ',', $atts['ids'] ),
-				'orderby'   => 'post__in'
+				'post_type'		=> 'attachment',
+				'post__in' 		=> explode( ',', $atts['ids'] ),
+				'orderby'   	=> 'post__in',
+				'numberposts'	=> -1
 			);
 			$attachments = get_posts($query);
 		}
@@ -366,7 +368,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	/* Bootstrap Slider
 	/*--------------------------------------------*/
 
-	$output  = sprintf( '<div id="gallery-slider-%s" class="tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $post_id, $args['interval'], $args['pause'], $args['wrap'] );
+	$output  = sprintf( '<div id="%s" class="tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $unique_id, $args['interval'], $args['pause'], $args['wrap'] );
 	$output .= "\n<div class=\"carousel-control-wrap\">\n";
 
 	// Standard nav indicators
@@ -384,7 +386,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 				$class = 'active';
 			}
 
-			$output .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s"></li>', $post_id, $counter, $class );
+			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $unique_id, $counter, $class );
 			$output .= "\n";
 
 			$counter++;
@@ -420,11 +422,11 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	// Nav arrows
 	if ( $args['nav_arrows'] ) {
 
-		$output .= "<a class=\"left carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"prev\">\n";
+		$output .= "<a class=\"left carousel-control\" href=\"#{$unique_id}\" data-slide=\"prev\">\n";
 		$output .= "<span class=\"glyphicon glyphicon-chevron-left\"></span>\n";
 		$output .= "</a>\n";
 
-		$output .= "<a class=\"right carousel-control\" href=\"#gallery-slider-{$post_id}\" data-slide=\"next\">\n";
+		$output .= "<a class=\"right carousel-control\" href=\"#{$unique_id}\" data-slide=\"next\">\n";
 		$output .= "<span class=\"glyphicon glyphicon-chevron-right\"></span>\n";
 		$output .= "</a>\n";
 
@@ -447,7 +449,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 				$class = 'active';
 			}
 
-			$output .= sprintf( '<li data-target="#gallery-slider-%s" data-slide-to="%s" class="%s">', $post_id, $counter, $class );
+			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s">', $unique_id, $counter, $class );
 			$image = wp_get_attachment_image_src( $attachment->ID, $args['thumb_size'] );
 			$output .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
 			$output .= '</li>';
@@ -462,7 +464,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 	$output .= "</div><!-- .carousel (end) -->\n";
 
-	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $attachments, $args );
+	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $attachments, $args, $unique_id );
 }
 
 /**
