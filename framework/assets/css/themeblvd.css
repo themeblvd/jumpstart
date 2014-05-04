@@ -980,6 +980,9 @@ ul.sf-menu .fa {
 .featured-image-wrapper {
 	margin-bottom: 10px;
 }
+.featured-image-wrapper .thumbnail {
+	margin-bottom: 0;
+}
 .featured-image-wrapper.attachment-grid_fifth_1 > .featured-image {
     max-width: 200px;
 }
