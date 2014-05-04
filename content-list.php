@@ -9,7 +9,9 @@ global $more; $more = 0;
 		<h1 class="entry-title entry-title-with-meta">
 			<?php themeblvd_the_title(); ?>
 		</h1>
-		<?php themeblvd_blog_meta(); ?>
+		<div class="meta-wrapper">
+			<?php themeblvd_blog_meta(); ?>
+		</div><!-- .meta-wrapper (end) -->
 	</header><!-- .entry-header (end) -->
 	<div class="entry-content">
 		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ), themeblvd_get_att( 'size' ) ); ?>

@@ -9,7 +9,9 @@
 			<?php themeblvd_the_title(); ?>
 		</h1>
 		<?php if ( themeblvd_get_att( 'show_meta' ) ) : ?>
-			<?php themeblvd_blog_meta(); ?>
+			<div class="meta-wrapper">
+				<?php themeblvd_blog_meta(); ?>
+			</div><!-- .meta-wrapper (end) -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">

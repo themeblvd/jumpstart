@@ -8,12 +8,12 @@
 		<h1 class="entry-title entry-title-with-meta">
 			<?php themeblvd_the_title(); ?>
 		</h1>
+		<?php if ( 'page' != get_post_type() ) : ?>
+			<div class="meta-wrapper">
+				<?php themeblvd_blog_meta(); ?>
+			</div><!-- .meta-wrapper (end) -->
+		<?php endif; ?>
 	</header><!-- .entry-header -->
-	<?php if ( 'page' != get_post_type() ) : ?>
-		<div class="meta-wrapper">
-			<?php themeblvd_blog_meta(); ?>
-		</div><!-- .meta-wrapper (end) -->
-	<?php endif; ?>
 	<div class="entry-content">
 		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ) ); ?>
 		<?php themeblvd_blog_content( themeblvd_get_att( 'content' ) ); ?>
