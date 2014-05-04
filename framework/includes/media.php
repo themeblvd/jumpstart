@@ -347,9 +347,10 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 		if ( ! empty( $atts['ids'] ) ) {
 			$query = array(
-				'post_type'	=> 'attachment',
-				'post__in' 	=> explode( ',', $atts['ids'] ),
-				'orderby'   => 'post__in'
+				'post_type'		=> 'attachment',
+				'post__in' 		=> explode( ',', $atts['ids'] ),
+				'orderby'   	=> 'post__in',
+				'numberposts'	=> -1
 			);
 			$attachments = get_posts($query);
 		}
