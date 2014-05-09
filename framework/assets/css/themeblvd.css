@@ -1279,8 +1279,7 @@ button:active {
 .steel_blue,
 .teal,
 .yellow,
-.wheat,
-.white {
+.wheat {
 	color: #ffffff;
 }
 .black:hover,
@@ -1320,9 +1319,7 @@ button:active {
 .yellow:hover,
 .yellow:focus,
 .wheat:hover,
-.wheat:focus,
-.white:hover
-.white:focus {
+.wheat:focus {
 	color: #ffffff;
 }
 
