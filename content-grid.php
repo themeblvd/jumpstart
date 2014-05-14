@@ -3,7 +3,7 @@
  * The template used for displaying posts in a grid.
  */
 ?>
-<div class="grid-item column <?php echo themeblvd_get_att( 'class' ); ?>">
+<div class="grid-item <?php echo themeblvd_get_att( 'class' ); ?>">
 	<div class="article-wrap">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">
