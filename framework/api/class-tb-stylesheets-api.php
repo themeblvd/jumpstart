@@ -73,7 +73,7 @@ class Theme_Blvd_Stylesheets_API {
      *
      * @since 2.3.0
      *
-     * @return Theme_Blvd_Frontend_Init A single instance of this class.
+     * @return Theme_Blvd_Stylesheets_API A single instance of this class.
      */
 	public static function get_instance() {
 
