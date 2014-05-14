@@ -329,7 +329,22 @@ class Theme_Blvd_Import {
 						$id = (string)$setting->id;
 						$value = (string)$setting->value;
 
-						update_option( $id, maybe_unserialize($value) );
+						$value = maybe_unserialize($value);
+
+						// For custom menu widget, we need to attempt
+						// to convert menu slugs back to ID's.
+						if ( ( $id == 'widget_nav_menu' || $id == 'widget_themeblvd_horz_menu_widget' ) && is_array($value) ) {
+							foreach ( $value as $key => $instance ) {
+								if ( ! empty( $instance['nav_menu'] ) ) {
+									$menu = get_term_by( 'slug', $instance['nav_menu'], 'nav_menu' );
+									if ( $menu ) {
+										$value[$key]['nav_menu'] = $menu->term_id;
+									}
+								}
+							}
+						}
+
+						update_option( $id, $value );
 					}
 				}
 
