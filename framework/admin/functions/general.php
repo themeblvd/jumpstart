@@ -33,6 +33,24 @@ function themeblvd_admin_init() {
 }
 
 /**
+ * Run the theme demo importer.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_import(){
+
+	// Check if WordPress's importer plugin
+	// is setup and running.
+	if ( ! defined( 'WP_LOAD_IMPORTERS' ) ) {
+		return;
+	}
+
+	// Run importer
+	$importer = Theme_Blvd_Import::get_instance();
+
+}
+
+/**
  * Save current version of framework to DB.
  *
  * @since 2.3.0

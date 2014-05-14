@@ -1,7 +1,7 @@
 <?php
 /**
  * Extend the Theme_Blvd_Export, which holds the
- * basic structure for exporting via an AJAX hook.
+ * basic structure for exporting.
  *
  * See Theme_Blvd_Export class documentation at
  * /framework/tools/tb-class-export.php
