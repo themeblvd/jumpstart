@@ -144,15 +144,9 @@ class Theme_Blvd_Import_Options {
 
 		if ( $imported ) {
 			foreach ( $imported as $setting ) {
-
 				$id = (string)$setting->id;
 				$value = (string)$setting->value;
-
-				if ( $setting->type == 'array' ) {
-					$value = unserialize($value);
-				}
-
-				$settings[$id] = $value;
+				$settings[$id] = maybe_unserialize($value);
 			}
 		}
 
