@@ -242,15 +242,9 @@ class Theme_Blvd_Import {
 
 				if ( $imported ) {
 					foreach ( $imported as $setting ) {
-
 						$id = (string)$setting->id;
 						$value = (string)$setting->value;
-
-						if ( $setting->type == 'array' ) {
-							$value = unserialize($value);
-						}
-
-						$settings[$id] = $value;
+						$settings[$id] = maybe_unserialize(base64_decode($value));
 					}
 				}
 
@@ -329,7 +323,7 @@ class Theme_Blvd_Import {
 						$id = (string)$setting->id;
 						$value = (string)$setting->value;
 
-						$value = maybe_unserialize($value);
+						$value = maybe_unserialize(base64_decode($value));
 
 						// For custom menu widget, we need to attempt
 						// to convert menu slugs back to ID's.

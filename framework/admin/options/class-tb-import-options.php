@@ -146,7 +146,7 @@ class Theme_Blvd_Import_Options {
 			foreach ( $imported as $setting ) {
 				$id = (string)$setting->id;
 				$value = (string)$setting->value;
-				$settings[$id] = maybe_unserialize($value);
+				$settings[$id] = maybe_unserialize(base64_decode($value));
 			}
 		}
 
