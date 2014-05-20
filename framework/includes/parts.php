@@ -934,12 +934,17 @@ function themeblvd_get_blockquote( $args ) {
 		'source_link'	=> '',		// URL to link source to
 		'align'			=> '',		// How to align blockquote - left, right
 		'max_width'		=> '',		// Meant to be used with align left/right - 300px, 50%, etc
+		'reverse'		=> 'false',	// Whether to add "blockquote-reverse" Bootstrap class, which will align text to right; this is different than pull-right, which will float.
 		'class'			=> '' 		// Any additional CSS classes
 	);
 	$args = wp_parse_args( $args, $defaults );
 
 	// CSS classes
 	$class = 'tb-blockquote';
+
+	if ( $args['reverse'] == 'true' ) {
+		$class .= ' blockquote-reverse';
+	}
 
 	if ( $args['align'] ) {
 		if ( 'left' == $args['align'] ) {

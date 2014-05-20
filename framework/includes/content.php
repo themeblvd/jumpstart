@@ -81,6 +81,10 @@ function themeblvd_content_block( $id, $type, $options ) {
 			themeblvd_panel( $options );
 			break;
 
+		case 'quote' :
+			themeblvd_blockquote( $options );
+			break;
+
 		case 'raw' :
 			if ( $options['raw_format'] ) {
 				themeblvd_content( $options['raw'] );
