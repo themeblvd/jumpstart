@@ -119,6 +119,11 @@ abstract class Theme_Blvd_Sortable_Option {
 		// Header (blank by default)
 		$output .= $this->get_display_header( $option_id, $option_name, $items );
 
+		// Output blank option for the sortable items. If the user doesn't
+		// setup any sortable items and then they save, this will ensure that
+		// at least a blank value get saved to the option.
+		$output .= sprintf( '<input type="hidden" name="%s" />', $option_name.'['.$option_id.']' );
+
 		// Start sortable section
 		$output .= '<div class="item-container">';
 

@@ -535,11 +535,14 @@ function themeblvd_sanitize_social_media( $input ) {
 
 	$output = array();
 
-	foreach ( $input as $item_id => $item ) {
-		$output[$item_id] = array();
-		$output[$item_id]['icon'] = wp_kses( $item['icon'], array() );
-		$output[$item_id]['url'] = wp_kses( $item['url'], array() );
-		$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['icon'] = wp_kses( $item['icon'], array() );
+			$output[$item_id]['url'] = wp_kses( $item['url'], array() );
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+			$output[$item_id]['target'] = wp_kses( $item['target'], array() );
+		}
 	}
 
 	return $output;
@@ -563,42 +566,44 @@ function themeblvd_sanitize_slider( $input ) {
 
 	$output = array();
 
-	foreach ( $input as $item_id => $item ) {
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
 
-		$output[$item_id] = array();
+			$output[$item_id] = array();
 
-		// Crop size
-		$output[$item_id]['crop'] = wp_kses( $item['crop'], array() );
+			// Crop size
+			$output[$item_id]['crop'] = wp_kses( $item['crop'], array() );
 
-		// Attachment ID
-		$output[$item_id]['id'] = intval( $item['id'] );
+			// Attachment ID
+			$output[$item_id]['id'] = intval( $item['id'] );
 
-		// Attachment title
-		$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
+			// Attachment title
+			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
 
-		// Attachment Image
-		$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $output[$item_id]['crop'] );
-		$output[$item_id]['src'] = $attachment[0];
-		$output[$item_id]['width'] = $attachment[1];
-		$output[$item_id]['height'] = $attachment[2];
+			// Attachment Image
+			$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $output[$item_id]['crop'] );
+			$output[$item_id]['src'] = $attachment[0];
+			$output[$item_id]['width'] = $attachment[1];
+			$output[$item_id]['height'] = $attachment[2];
 
-		// Thumbnail
-		$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], apply_filters('themeblvd_simple_slider_thumb_crop', 'square_small') );
-		$output[$item_id]['thumb'] = $thumb[0];
+			// Thumbnail
+			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], apply_filters('themeblvd_simple_slider_thumb_crop', 'square_small') );
+			$output[$item_id]['thumb'] = $thumb[0];
 
-		// Slide info
-		$output[$item_id]['title'] = wp_kses( $item['title'], array() );
-		$output[$item_id]['desc'] = wp_kses( $item['desc'], themeblvd_allowed_tags() );
-		$output[$item_id]['desc'] = str_replace( "\r\n", "\n", $output[$item_id]['desc'] );
+			// Slide info
+			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
+			$output[$item_id]['desc'] = wp_kses( $item['desc'], themeblvd_allowed_tags() );
+			$output[$item_id]['desc'] = str_replace( "\r\n", "\n", $output[$item_id]['desc'] );
 
-		// Link
-		$output[$item_id]['link'] = wp_kses( $item['link'], array() );
+			// Link
+			$output[$item_id]['link'] = wp_kses( $item['link'], array() );
 
-		if ( $output[$item_id]['link'] == 'none' ) {
-			$output[$item_id]['link'] = '';
+			if ( $output[$item_id]['link'] == 'none' ) {
+				$output[$item_id]['link'] = '';
+			}
+
+			$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
 		}
-
-		$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
 	}
 
 	return $output;
