@@ -53,6 +53,10 @@ function themeblvd_content_block( $id, $type, $options ) {
 			themeblvd_content( $options['content'] );
 			break;
 
+		case 'contact' :
+			themeblvd_contact_bar( $options['buttons'], $options );
+			break;
+
 		case 'current' :
 			themeblvd_page_content();
 			break;
