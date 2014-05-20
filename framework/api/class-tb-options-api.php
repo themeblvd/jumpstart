@@ -723,9 +723,10 @@ class Theme_Blvd_Options_API {
 
 				foreach ( $settings['social_media'] as $icon => $url ) {
 					$val['item_'.$i] = array(
-						'icon'	=> $icon,
-						'url'	=> $url,
-						'label'	=> ucfirst($icon)
+						'icon'		=> $icon,
+						'url'		=> $url,
+						'label'		=> ucfirst($icon),
+						'target'	=> '_blank'
 					);
 					$i++;
 				}

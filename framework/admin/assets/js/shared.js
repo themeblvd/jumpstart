@@ -875,6 +875,7 @@
 						});
 
 						// Bind "Add Item" button
+						$section.find('.add-item').off('click'); // avoid duplicates
 						$section.find('.add-item').on( 'click', function(){
 
 							var $new_item;

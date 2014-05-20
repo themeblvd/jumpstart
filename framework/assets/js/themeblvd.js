@@ -410,6 +410,9 @@ jQuery(document).ready(function($) {
 			}
 		}
 
+		// Tooltips
+		$('.themeblvd-tooltip').tooltip();
+
 	}
 
 });

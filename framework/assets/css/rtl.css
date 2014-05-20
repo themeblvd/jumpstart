@@ -102,10 +102,12 @@ ul.sf-menu li li li.sfHover ul {
 	text-align: left;
 }
 
-/* Moveable Parts */
+/* Social Icons */
 .themeblvd-contact-bar li {
 	float: right;
 }
+
+/* Moveable Parts */
 .themeblvd-mini-post-list ul li .featured-image-wrapper {
 	left: inherit;
 	right: 0;

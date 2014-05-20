@@ -614,7 +614,17 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 				'name'		=> __('Label', 'themeblvd'),
 				'type'		=> 'text',
 				'std'		=> ''
-			)
+			),
+			array(
+				'id' 		=> 'target',
+				'name'		=> __('Link Target', 'themeblvd'),
+				'type'		=> 'select',
+				'std'		=> '_blank',
+				'options'	=> array(
+					'_blank'	=> __('New Window', 'themeblvd'),
+					'_self' 	=> __('Same Window', 'themeblvd')
+				)
+			),
 		);
 		return $options;
 	}

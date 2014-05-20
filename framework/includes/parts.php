@@ -1,66 +1,93 @@
 <?php
-if ( !function_exists( 'themeblvd_contact_bar' ) ) : // pluggable for backwards compat
+if ( !function_exists( 'themeblvd_contact_bar' ) ) :
 /**
  * Contact button bar
  *
  * @since 2.0.0
  *
- * @param array $buttons icons to use - array( 'twitter' => 'http://twitter.com/whatever', 'facebook' => 'http://facebook.com/whatever' )
- * @param string $style Style of buttons - dark, grey, light, color
+ * @param array $buttons icons to use
+ * @param array $args Any options for contact bar
  */
-function themeblvd_contact_bar( $buttons = array(), $style = null ) {
+function themeblvd_contact_bar( $buttons = array(), $args = array() ) {
+	echo themeblvd_get_contact_bar( $buttons, $args );
+}
+endif;
+
+/**
+ * Get contact button bar
+ *
+ * $buttons array should be formatted like this:
+ * array(
+ *		array(
+ * 			'icon' 		=> 'facebook',
+ * 			'url' 		=> 'http://facebook.com/example',
+ * 			'label' 	=> 'Facebook',
+ * 			'target' 	=> '_blank'
+ *		),
+ *		array(
+ * 			'icon' 		=> 'twitter',
+ * 			'url' 		=> 'http://twitter.com/example',
+ * 			'label' 	=> 'Twitter',
+ * 			'target' 	=> '_blank'
+ *		)
+ * )
+ *
+ * @since 2.5.0
+ *
+ * @param array $buttons icons to use
+ * @param array $args Any options for contact bar
+ * @return string Output for contact bar
+ */
+function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 	// Set up buttons
 	if ( ! $buttons ) {
 		$buttons = themeblvd_get_option( 'social_media' );
 	}
 
-	// If buttons haven't been sanitized return nothing
-	if ( is_array( $buttons ) && isset( $buttons['includes'] ) ) {
-		return null;
-	}
-
-	// Set up style
-	if ( ! $style ) {
-		$style = themeblvd_get_option( 'social_media_style', null, 'grey' );
-	}
-
-	// Social media sources
-	$sources = themeblvd_get_social_media_sources();
+	// Setup arguments
+	$defaults = apply_filters('themeblvd_contact_bar_defaults', array(
+		'style'		=> themeblvd_get_option( 'social_media_style', null, 'grey' ),	// color, grey, light, dark
+		'tooltip'	=> 'top'														// top, right, left, bottom, false
+	));
+	$args = wp_parse_args( $args, $defaults );
 
 	// Start output
-	$output = null;
-	if ( is_array( $buttons ) && ! empty ( $buttons ) ) {
+	$output = '';
 
-		$output = '<div class="themeblvd-contact-bar">';
-		$output .= '<ul class="social-media-'.$style.'">';
+	if ( $buttons && is_array($buttons) ) {
 
-		foreach ( $buttons as $id => $url ) {
+		$output .= '<div class="themeblvd-contact-bar '.$args['style'].'">';
+		$output .= '<ul class="social-media">';
 
-			// Link target
-			$target = '_blank';
-			if ( strpos( $url, 'mailto:' ) !== false ) {
-				$target = '_self';
+		foreach ( $buttons as $button ) {
+
+			// Link class
+			$class = $button['icon'];
+			if ( $args['style'] != 'color' ) { // Note: "color" means to use colored image icons; otherwise, we use icon font.
+				$class .= ' tb-icon tb-icon-'.$class;
+			}
+			if ( $args['tooltip'] && $args['tooltip'] != 'disable' ) {
+				$class .= ' tb-tooltip';
 			}
 
 			// Link Title
 			$title = '';
-			if ( isset( $sources[$id] ) ) {
-				$title = $sources[$id];
+			if ( ! empty( $button['label']) ) {
+				$title = $button['label'];
 			}
 
-			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s">%s</a></li>', $url, $title, $id, $target, $title );
+			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s"></a></li>', $button['url'], $title, $class, $button['target'], $args['tooltip'] );
 		}
 
 		$output .= '</ul>';
 		$output .= '<div class="clear"></div>';
 		$output .= '</div><!-- .themeblvd-contact-bar (end) -->';
 	}
-	return apply_filters( 'themeblvd_contact_bar', $output );
+	return apply_filters( 'themeblvd_contact_bar', $output, $buttons, $args );
 }
-endif;
 
-if ( ! function_exists( 'themeblvd_button' ) ) : // pluggable for backwards compat
+if ( ! function_exists( 'themeblvd_button' ) ) : // pluggable for backwards compat, use themeblvd_button filter instead
 /**
  * Button
  *

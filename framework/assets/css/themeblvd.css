@@ -812,77 +812,540 @@ ul.sf-menu .fa {
 	overflow: hidden;
 }
 
-/* =Moveable Parts
+/* =Social Icons
 -----------------------------------------------*/
 
+/* Custom Icon Font by Theme Blvd */
+@font-face {
+	font-family: 'themeblvd-social';
+	src:url('../font/themeblvd-social.eot?r790bm');
+	src:url('../font/themeblvd-social.eot?#iefixr790bm') format('embedded-opentype'),
+		url('../font/themeblvd-social.woff?r790bm') format('woff'),
+		url('../font/themeblvd-social.ttf?r790bm') format('truetype'),
+		url('../font/themeblvd-social.svg?r790bm#themeblvd-social') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+.tb-icon {
+	font-family: 'themeblvd-social';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.tb-icon-chat:before {
+	content: "\e600";
+}
+.tb-icon-cloud:before {
+	content: "\e601";
+}
+.tb-icon-email:before,
+.tb-icon-mail:before {
+	content: "\e602";
+}
+.tb-icon-movie:before {
+	content: "\e603";
+}
+.tb-icon-music:before {
+	content: "\e604";
+}
+.tb-icon-rss:before {
+	content: "\e605";
+}
+.tb-icon-store:before {
+	content: "\e606";
+}
+.tb-icon-write:before {
+	content: "\e607";
+}
+.tb-icon-500px:before {
+	content: "\e608";
+}
+.tb-icon-amazon:before {
+	content: "\e609";
+}
+.tb-icon-android:before {
+	content: "\e60a";
+}
+.tb-icon-behance:before {
+	content: "\e60b";
+}
+.tb-icon-delicious:before {
+	content: "\e60c";
+}
+.tb-icon-flickr:before {
+	content: "\e60d";
+}
+.tb-icon-deviantart:before {
+	content: "\e60e";
+}
+.tb-icon-dribbble:before {
+	content: "\e60f";
+}
+.tb-icon-dropbox:before {
+	content: "\e610";
+}
+.tb-icon-digg:before {
+	content: "\e611";
+}
+.tb-icon-ebay:before {
+	content: "\e612";
+}
+.tb-icon-envato:before {
+	content: "\e613";
+}
+.tb-icon-facebook:before {
+	content: "\e614";
+}
+.tb-icon-feedburner:before {
+	content: "\e615";
+}
+.tb-icon-forrst:before {
+	content: "\e616";
+}
+.tb-icon-foursquare:before {
+	content: "\e617";
+}
+.tb-icon-github:before {
+	content: "\e618";
+}
+.tb-icon-google:before {
+	content: "\e619";
+}
+.tb-icon-instragram:before {
+	content: "\e61a";
+}
+.tb-icon-linkedin:before {
+	content: "\e61b";
+}
+.tb-icon-mac:before {
+	content: "\e61c";
+}
+.tb-icon-macapp:before {
+	content: "\e61d";
+}
+.tb-icon-myspace:before {
+	content: "\e61e";
+}
+.tb-icon-picasa:before {
+	content: "\e61f";
+}
+.tb-icon-paypal:before {
+	content: "\e620";
+}
+.tb-icon-pinterest:before {
+	content: "\e621";
+}
+.tb-icon-playstation:before {
+	content: "\e622";
+}
+.tb-icon-reddit:before {
+	content: "\e623";
+}
+.tb-icon-scribd:before {
+	content: "\e624";
+}
+.tb-icon-soundcloud:before {
+	content: "\e625";
+}
+.tb-icon-squidoo:before {
+	content: "\e626";
+}
+.tb-icon-technorati:before {
+	content: "\e627";
+}
+.tb-icon-themeblvd:before {
+	content: "\e628";
+}
+.tb-icon-tumblr:before {
+	content: "\e629";
+}
+.tb-icon-twitter:before {
+	content: "\e62a";
+}
+.tb-icon-vimeo:before {
+	content: "\e62b";
+}
+.tb-icon-windows:before {
+	content: "\e62c";
+}
+.tb-icon-wordpress:before {
+	content: "\e62d";
+}
+.tb-icon-xbox:before {
+	content: "\e62e";
+}
+.tb-icon-xing:before {
+	content: "\e62f";
+}
+.tb-icon-yahoo:before {
+	content: "\e630";
+}
+.tb-icon-youtube:before {
+	content: "\e631";
+}
+
 /* Contact Bar */
+.content-block-contact .themeblvd-contact-bar {
+	margin-bottom: 20px;
+}
 .themeblvd-contact-bar ul {
 	margin: 0;
 	padding: 0;
 }
-.themeblvd-contact-bar li {
-	float:left;
+.themeblvd-contact-bar ul > li {
+	float: left;
 	list-style: none !important;
-	padding: 1px;
+	margin: 0 1px;
+	padding: 0;
 }
-.themeblvd-contact-bar li a {
-	background-image: url('../images/parts/social-media-grey_24x24.png');
+.themeblvd-contact-bar ul > li > a {
+	font-size: 24px;
+	color: inherit;
 	display: block;
 	outline: none;
 	width: 24px;
 	height: 24px;
-	text-indent: -9999px;
 }
-.themeblvd-contact-bar ul.social-media-dark li a {background-image:url('../images/parts/social-media-dark_24x24.png');}
-.themeblvd-contact-bar ul.social-media-grey li a {background-image:url('../images/parts/social-media-grey_24x24.png');}
-.themeblvd-contact-bar ul.social-media-light li a {background-image:url('../images/parts/social-media-light_24x24.png');}
-.themeblvd-contact-bar ul.social-media-color li a {background-image:url('../images/parts/social-media-color_24x24.png');}
-.themeblvd-contact-bar li .amazon {background-position:0 0;}
-.themeblvd-contact-bar li .delicious {background-position:0 -24px;}
-.themeblvd-contact-bar li .deviantart {background-position:0 -48px;}
-.themeblvd-contact-bar li .digg {background-position:0 -72px;}
-.themeblvd-contact-bar li .dribbble {background-position:0 -96px;}
-.themeblvd-contact-bar li .ebay {background-position:0 -120px;}
-.themeblvd-contact-bar li .email {background-position:0 -144px;}
-.themeblvd-contact-bar li .facebook {background-position:0 -168px;}
-.themeblvd-contact-bar li .feedburner {background-position:0 -192px;}
-.themeblvd-contact-bar li .flickr {background-position:0 -216px;}
-.themeblvd-contact-bar li .forrst {background-position:0 -240px;}
-.themeblvd-contact-bar li .foursquare {background-position:0 -264px;}
-.themeblvd-contact-bar li .github {background-position:0 -288px;}
-.themeblvd-contact-bar li .google {background-position:0 -312px;}
-.themeblvd-contact-bar li .instagram {background-position:0 -336px;}
-.themeblvd-contact-bar li .linkedin {background-position:0 -360px;}
-.themeblvd-contact-bar li .myspace {background-position:0 -384px;}
-.themeblvd-contact-bar li .paypal {background-position:0 -408px;}
-.themeblvd-contact-bar li .picasa {background-position:0 -432px;}
-.themeblvd-contact-bar li .pinterest {background-position:0 -456px;}
-.themeblvd-contact-bar li .reddit {background-position:0 -480px;}
-.themeblvd-contact-bar li .rss {background-position:0 -504px;}
-.themeblvd-contact-bar li .scribd {background-position:0 -528px;}
-.themeblvd-contact-bar li .squidoo {background-position:0 -552px;}
-.themeblvd-contact-bar li .technorati {background-position:0 -576px;}
-.themeblvd-contact-bar li .tumblr {background-position:0 -600px;}
-.themeblvd-contact-bar li .twitter {background-position:0 -624px;}
-.themeblvd-contact-bar li .vimeo {background-position:0 -648px;}
-.themeblvd-contact-bar li .xbox {background-position:0 -672px;}
-.themeblvd-contact-bar li .yahoo {background-position:0 -696px;}
-.themeblvd-contact-bar li .youtube {background-position:0 -720px;}
+.themeblvd-contact-bar.dark ul > li > a {
+	color: #101010;
+}
+.themeblvd-contact-bar.dark ul > li > a:hover {
+	color: #000000;
+}
+.themeblvd-contact-bar.grey ul > li > a {
+	color: #8b8b8b;
+}
+.themeblvd-contact-bar.grey ul > li > a:hover {
+	color: #696969;
+}
+.themeblvd-contact-bar.light ul > li > a {
+	color: #eeeeee;
+}
+.themeblvd-contact-bar.light ul > li > a:hover {
+	color: #ffffff;
+}
+
+/* Color (i.e. image) Social Icons */
+.themeblvd-contact-bar.color ul > li > a {
+	background-size: 24px 24px;
+}
+.themeblvd-contact-bar.color ul > li > .chat {
+	background-image: url('../images/social/24/chat.png');
+}
+.themeblvd-contact-bar.color ul > li > .cloud {
+	background-image: url('../images/social/24/cloud.png');
+}
+.themeblvd-contact-bar.color ul > li > .email {
+	background-image: url('../images/social/24/email.png');
+}
+.themeblvd-contact-bar.color ul > li > .movie {
+	background-image: url('../images/social/24/movie.png');
+}
+.themeblvd-contact-bar.color ul > li > .music {
+	background-image: url('../images/social/24/music.png');
+}
+.themeblvd-contact-bar.color ul > li > .rss  {
+	background-image: url('../images/social/24/rss.png');
+}
+.themeblvd-contact-bar.color ul > li > .store {
+	background-image: url('../images/social/24/store.png');
+}
+.themeblvd-contact-bar.color ul > li > .write {
+	background-image: url('../images/social/24/write.png');
+}
+.themeblvd-contact-bar.color ul > li > .500px {
+	background-image: url('../images/social/24/500px.png');
+}
+.themeblvd-contact-bar.color ul > li > .amazon  {
+	background-image: url('../images/social/24/amazon.png');
+}
+.themeblvd-contact-bar.color ul > li > .android {
+	background-image: url('../images/social/24/android.png');
+}
+.themeblvd-contact-bar.color ul > li > .behance {
+	background-image: url('../images/social/24/behance.png');
+}
+.themeblvd-contact-bar.color ul > li > .delicious  {
+	background-image: url('../images/social/24/delicious.png');
+}
+.themeblvd-contact-bar.color ul > li > .deviantart  {
+	background-image: url('../images/social/24/deviantart.png');
+}
+.themeblvd-contact-bar.color ul > li > .digg  {
+	background-image: url('../images/social/24/digg.png');
+}
+.themeblvd-contact-bar.color ul > li > .dribbble  {
+	background-image: url('../images/social/24/dribbble.png');
+}
+.themeblvd-contact-bar.color ul > li > .dropbox {
+	background-image: url('../images/social/24/dropbox.png');
+}
+.themeblvd-contact-bar.color ul > li > .ebay  {
+	background-image: url('../images/social/24/ebay.png');
+}
+.themeblvd-contact-bar.color ul > li > .envato {
+	background-image: url('../images/social/24/envato.png');
+}
+.themeblvd-contact-bar.color ul > li > .facebook  {
+	background-image: url('../images/social/24/facebook.png');
+}
+.themeblvd-contact-bar.color ul > li > .feedburner  {
+	background-image: url('../images/social/24/feedburner.png');
+}
+.themeblvd-contact-bar.color ul > li > .flickr  {
+	background-image: url('../images/social/24/flickr.png');
+}
+.themeblvd-contact-bar.color ul > li > .forrst  {
+	background-image: url('../images/social/24/forrst.png');
+}
+.themeblvd-contact-bar.color ul > li > .foursquare  {
+	background-image: url('../images/social/24/foursquare.png');
+}
+.themeblvd-contact-bar.color ul > li > .github  {
+	background-image: url('../images/social/24/github.png');
+}
+.themeblvd-contact-bar.color ul > li > .google  {
+	background-image: url('../images/social/24/google.png');
+}
+.themeblvd-contact-bar.color ul > li > .instagram  {
+	background-image: url('../images/social/24/instagram.png');
+}
+.themeblvd-contact-bar.color ul > li > .linkedin  {
+	background-image: url('../images/social/24/linkedin.png');
+}
+.themeblvd-contact-bar.color ul > li > .mac {
+	background-image: url('../images/social/24/mac.png');
+}
+.themeblvd-contact-bar.color ul > li > .macapp {
+	background-image: url('../images/social/24/macapp.png');
+}
+.themeblvd-contact-bar.color ul > li > .myspace  {
+	background-image: url('../images/social/24/myspace.png');
+}
+.themeblvd-contact-bar.color ul > li > .paypal  {
+	background-image: url('../images/social/24/paypal.png');
+}
+.themeblvd-contact-bar.color ul > li > .picasa  {
+	background-image: url('../images/social/24/picasa.png');
+}
+.themeblvd-contact-bar.color ul > li > .pinterest  {
+	background-image: url('../images/social/24/pinterest.png');
+}
+.themeblvd-contact-bar.color ul > li > .playstation {
+	background-image: url('../images/social/24/playstation.png');
+}
+.themeblvd-contact-bar.color ul > li > .reddit  {
+	background-image: url('../images/social/24/reddit.png');
+}
+.themeblvd-contact-bar.color ul > li > .scribd  {
+	background-image: url('../images/social/24/scribd.png');
+}
+.themeblvd-contact-bar.color ul > li > .soundcloud {
+	background-image: url('../images/social/24/soundcloud.png');
+}
+.themeblvd-contact-bar.color ul > li > .squidoo  {
+	background-image: url('../images/social/24/squidoo.png');
+}
+.themeblvd-contact-bar.color ul > li > .technorati  {
+	background-image: url('../images/social/24/technorati.png');
+}
+.themeblvd-contact-bar.color ul > li > .themeblvd {
+	background-image: url('../images/social/24/themeblvd.png');
+}
+.themeblvd-contact-bar.color ul > li > .tumblr  {
+	background-image: url('../images/social/24/tumblr.png');
+}
+.themeblvd-contact-bar.color ul > li > .twitter  {
+	background-image: url('../images/social/24/twitter.png');
+}
+.themeblvd-contact-bar.color ul > li > .vimeo  {
+	background-image: url('../images/social/24/vimeo.png');
+}
+.themeblvd-contact-bar.color ul > li > .windows {
+	background-image: url('../images/social/24/windows.png');
+}
+.themeblvd-contact-bar.color ul > li > .wordpress {
+	background-image: url('../images/social/24/wordpress.png');
+}
+.themeblvd-contact-bar.color ul > li > .xbox  {
+	background-image: url('../images/social/24/xbox.png');
+}
+.themeblvd-contact-bar.color ul > li > .xing {
+	background-image: url('../images/social/24/xing.png');
+}
+.themeblvd-contact-bar.color ul > li > .yahoo  {
+	background-image: url('../images/social/24/yahoo.png');
+}
+.themeblvd-contact-bar.color ul > li > .youtube  {
+	background-image: url('../images/social/24/youtube.png');
+}
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
 		only screen and (-o-min-device-pixel-ratio: 1.5),
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
 	/* Use 2x images for retina */
-	.themeblvd-contact-bar li a {
-		background-image: url('../images/parts/social-media-grey_48x48.png');
-		background-size: 24px 744px;
+	.themeblvd-contact-bar.color ul > li > .chat {
+		background-image: url('../images/social/48/chat.png');
 	}
-	.themeblvd-contact-bar ul.social-media-dark li a {background-image:url('../images/parts/social-media-dark_48x48.png');}
-	.themeblvd-contact-bar ul.social-media-grey li a {background-image:url('../images/parts/social-media-grey_48x48.png');}
-	.themeblvd-contact-bar ul.social-media-light li a {background-image:url('../images/parts/social-media-light_48x48.png');}
-	.themeblvd-contact-bar ul.social-media-color li a {background-image:url('../images/parts/social-media-color_48x48.png');}
+	.themeblvd-contact-bar.color ul > li > .cloud {
+		background-image: url('../images/social/48/cloud.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .email {
+		background-image: url('../images/social/48/email.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .movie {
+		background-image: url('../images/social/48/movie.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .music {
+		background-image: url('../images/social/48/music.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .rss  {
+		background-image: url('../images/social/48/rss.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .store {
+		background-image: url('../images/social/48/store.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .write {
+		background-image: url('../images/social/48/write.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .500px {
+		background-image: url('../images/social/48/500px.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .amazon  {
+		background-image: url('../images/social/48/amazon.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .android {
+		background-image: url('../images/social/48/android.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .behance {
+		background-image: url('../images/social/48/behance.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .delicious  {
+		background-image: url('../images/social/48/delicious.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .deviantart  {
+		background-image: url('../images/social/48/deviantart.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .digg  {
+		background-image: url('../images/social/48/digg.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .dribbble  {
+		background-image: url('../images/social/48/dribbble.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .dropbox {
+		background-image: url('../images/social/48/dropbox.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .ebay  {
+		background-image: url('../images/social/48/ebay.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .envato {
+		background-image: url('../images/social/48/envato.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .facebook  {
+		background-image: url('../images/social/48/facebook.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .feedburner  {
+		background-image: url('../images/social/48/feedburner.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .flickr  {
+		background-image: url('../images/social/48/flickr.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .forrst  {
+		background-image: url('../images/social/48/forrst.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .foursquare  {
+		background-image: url('../images/social/48/foursquare.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .github  {
+		background-image: url('../images/social/48/github.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .google  {
+		background-image: url('../images/social/48/google.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .instagram  {
+		background-image: url('../images/social/48/instagram.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .linkedin  {
+		background-image: url('../images/social/48/linkedin.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .mac {
+		background-image: url('../images/social/48/mac.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .macapp {
+		background-image: url('../images/social/48/macapp.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .myspace  {
+		background-image: url('../images/social/48/myspace.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .paypal  {
+		background-image: url('../images/social/48/paypal.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .picasa  {
+		background-image: url('../images/social/48/picasa.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .pinterest  {
+		background-image: url('../images/social/48/pinterest.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .playstation {
+		background-image: url('../images/social/48/playstation.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .reddit  {
+		background-image: url('../images/social/48/reddit.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .scribd  {
+		background-image: url('../images/social/48/scribd.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .soundcloud {
+		background-image: url('../images/social/48/soundcloud.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .squidoo  {
+		background-image: url('../images/social/48/squidoo.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .technorati  {
+		background-image: url('../images/social/48/technorati.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .themeblvd {
+		background-image: url('../images/social/48/themeblvd.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .tumblr  {
+		background-image: url('../images/social/48/tumblr.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .twitter  {
+		background-image: url('../images/social/48/twitter.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .vimeo  {
+		background-image: url('../images/social/48/vimeo.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .windows {
+		background-image: url('../images/social/48/windows.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .wordpress {
+		background-image: url('../images/social/48/wordpress.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .xbox  {
+		background-image: url('../images/social/48/xbox.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .xing {
+		background-image: url('../images/social/48/xing.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .yahoo  {
+		background-image: url('../images/social/48/yahoo.png');
+	}
+	.themeblvd-contact-bar.color ul > li > .youtube  {
+		background-image: url('../images/social/48/youtube.png');
+	}
 }
+
+/* =Moveable Parts
+-----------------------------------------------*/
 
 /* Search Form */
 .entry-content .themeblvd-search {
@@ -2275,6 +2738,17 @@ ul.tb-icon-list {
 	margin: 2px 0 !important;
 	padding: 0 0 0 30px;
 }
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+		only screen and (-moz-min-device-pixel-ratio: 1.5),
+		only screen and (-o-min-device-pixel-ratio: 1.5),
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	/* Use 2x images for retina */
+	.tb-contact_widget ul.simple-contact li {
+		background-image:url('../images/parts/simple-contact_2x.png');
+		background-size: 20px 120px;
+	}
+}
 .tb-contact_widget ul.simple-contact li a {
 	border:none;
 }
@@ -2306,6 +2780,7 @@ ul.tb-icon-list {
 }
 .tb-contact_widget ul.simple-contact ul.icons li a {
 	background: url('../images/parts/social-media-color_16x16.png') 0 0 no-repeat;
+	background-size: 16px 16px;
 	display: block;
 	line-height: 1;
 	margin: 2px 2px 0 0;
@@ -2314,106 +2789,155 @@ ul.tb-icon-list {
 	width: 16px;
 	height: 16px;
 }
-.tb-contact_widget ul.simple-contact ul.icons li a:hover,
-.tb-contact_widget ul.simple-contact ul.icons li a:focus {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-	filter: alpha(opacity=80);
-	-moz-opacity: 0.8;
-	-khtml-opacity: 0.8;
-	opacity: 0.8;
+.tb-contact_widget ul.simple-contact ul.icons li.chat a {
+	background-image: url(../images/social/16/chat.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.amazon a {
-	background-position: 0 0;
-}
-.tb-contact_widget ul.simple-contact ul.icons li.delicious a {
-	background-position: 0 -16px;
-}
-.tb-contact_widget ul.simple-contact ul.icons li.deviantart a {
-	background-position: 0 -32px;
-}
-.tb-contact_widget ul.simple-contact ul.icons li.digg a {
-	background-position: 0 -48px;
-}
-.tb-contact_widget ul.simple-contact ul.icons li.dribbble a {
-	background-position: 0 -64px;
-}
-.tb-contact_widget ul.simple-contact ul.icons li.ebay a {
-	background-position: 0 -80px;
+.tb-contact_widget ul.simple-contact ul.icons li.cloud a {
+	background-image: url(../images/social/16/cloud.png);
 }
 .tb-contact_widget ul.simple-contact ul.icons li.email a {
-	background-position: 0 -96px;
+	background-image: url(../images/social/16/email.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.facebook a {
-	background-position: 0 -112px;
+.tb-contact_widget ul.simple-contact ul.icons li.movie a {
+	background-image: url(../images/social/16/movie.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.feedburner a {
-	background-position: 0 -128px;
+.tb-contact_widget ul.simple-contact ul.icons li.music a {
+	background-image: url(../images/social/16/music.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.flickr a {
-	background-position: 0 -144px;
+.tb-contact_widget ul.simple-contact ul.icons li.rss  a {
+	background-image: url(../images/social/16/rss.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.forrst a {
-	background-position: 0 -160px;
+.tb-contact_widget ul.simple-contact ul.icons li.store a {
+	background-image: url(../images/social/16/store.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.foursquare a {
-	background-position: 0 -176px;
+.tb-contact_widget ul.simple-contact ul.icons li.write a {
+	background-image: url(../images/social/16/write.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.github a {
-	background-position: 0 -192px;
+.tb-contact_widget ul.simple-contact ul.icons li.500px a {
+	background-image: url(../images/social/16/500px.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.google a {
-	background-position: 0 -208px;
+.tb-contact_widget ul.simple-contact ul.icons li.amazon  a {
+	background-image: url(../images/social/16/amazon.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.instagram a {
-	background-position: 0 -224px;
+.tb-contact_widget ul.simple-contact ul.icons li.android a {
+	background-image: url(../images/social/16/android.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.linkedin a {
-	background-position: 0 -240px;
+.tb-contact_widget ul.simple-contact ul.icons li.behance a {
+	background-image: url(../images/social/16/behance.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.myspace a {
-	background-position: 0 -256px;
+.tb-contact_widget ul.simple-contact ul.icons li.delicious  a {
+	background-image: url(../images/social/16/delicious.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.paypal a {
-	background-position: 0 -272px;
+.tb-contact_widget ul.simple-contact ul.icons li.deviantart  a {
+	background-image: url(../images/social/16/deviantart.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.picassa a {
-	background-position: 0 -288px;
+.tb-contact_widget ul.simple-contact ul.icons li.digg  a {
+	background-image: url(../images/social/16/digg.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.pinterest a {
-	background-position: 0 -304px;
+.tb-contact_widget ul.simple-contact ul.icons li.dribbble  a {
+	background-image: url(../images/social/16/dribbble.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.reddit a {
-	background-position: 0 -320px;
+.tb-contact_widget ul.simple-contact ul.icons li.dropbox a {
+	background-image: url(../images/social/16/dropbox.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.rss a {
-	background-position: 0 -336px;
+.tb-contact_widget ul.simple-contact ul.icons li.ebay  a {
+	background-image: url(../images/social/16/ebay.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.scribd a {
-	background-position: 0 -352px;
+.tb-contact_widget ul.simple-contact ul.icons li.envato a {
+	background-image: url(../images/social/16/envato.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.squidoo a {
-	background-position: 0 -368px;
+.tb-contact_widget ul.simple-contact ul.icons li.facebook  a {
+	background-image: url(../images/social/16/facebook.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.technorati a {
-	background-position: 0 -384px;
+.tb-contact_widget ul.simple-contact ul.icons li.feedburner  a {
+	background-image: url(../images/social/16/feedburner.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.tumblr a {
-	background-position: 0 -400px;
+.tb-contact_widget ul.simple-contact ul.icons li.flickr  a {
+	background-image: url(../images/social/16/flickr.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.twitter a {
-	background-position: 0 -416px;
+.tb-contact_widget ul.simple-contact ul.icons li.forrst  a {
+	background-image: url(../images/social/16/forrst.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.vimeo a {
-	background-position: 0 -432px;
+.tb-contact_widget ul.simple-contact ul.icons li.foursquare  a {
+	background-image: url(../images/social/16/foursquare.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.xbox a {
-	background-position: 0 -448px;
+.tb-contact_widget ul.simple-contact ul.icons li.github  a {
+	background-image: url(../images/social/16/github.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.yahoo a {
-	background-position: 0 -464px;
+.tb-contact_widget ul.simple-contact ul.icons li.google  a {
+	background-image: url(../images/social/16/google.png);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.youtube a {
-	background-position: 0 -480px;
+.tb-contact_widget ul.simple-contact ul.icons li.instagram  a {
+	background-image: url(../images/social/16/instagram.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.linkedin  a {
+	background-image: url(../images/social/16/linkedin.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.mac a {
+	background-image: url(../images/social/16/mac.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.macapp a {
+	background-image: url(../images/social/16/macapp.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.myspace  a {
+	background-image: url(../images/social/16/myspace.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.paypal  a {
+	background-image: url(../images/social/16/paypal.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.picasa  a {
+	background-image: url(../images/social/16/picasa.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.pinterest  a {
+	background-image: url(../images/social/16/pinterest.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.playstation a {
+	background-image: url(../images/social/16/playstation.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.reddit  a {
+	background-image: url(../images/social/16/reddit.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.scribd  a {
+	background-image: url(../images/social/16/scribd.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.soundcloud a {
+	background-image: url(../images/social/16/soundcloud.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.squidoo  a {
+	background-image: url(../images/social/16/squidoo.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.technorati  a {
+	background-image: url(../images/social/16/technorati.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.themeblvd a {
+	background-image: url(../images/social/16/themeblvd.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.tumblr  a {
+	background-image: url(../images/social/16/tumblr.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.twitter  a {
+	background-image: url(../images/social/16/twitter.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.vimeo  a {
+	background-image: url(../images/social/16/vimeo.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.windows a {
+	background-image: url(../images/social/16/windows.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.wordpress a {
+	background-image: url(../images/social/16/wordpress.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.xbox  a {
+	background-image: url(../images/social/16/xbox.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.xing a {
+	background-image: url(../images/social/16/xing.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.yahoo  a {
+	background-image: url(../images/social/16/yahoo.png);
+}
+.tb-contact_widget ul.simple-contact ul.icons li.youtube  a {
+	background-image: url(../images/social/16/youtube.png);
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -2421,13 +2945,155 @@ ul.tb-icon-list {
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
 	/* Use 2x images for retina */
-	.tb-contact_widget ul.simple-contact li {
-		background-image:url('../images/parts/simple-contact_2x.png');
-		background-size: 20px 120px;
+	.tb-contact_widget ul.simple-contact ul.icons li.chat a {
+		background-image: url(../images/social/32/chat.png);
 	}
-	.tb-contact_widget ul.simple-contact ul.icons li a {
-		background-image:url('../images/parts/social-media-color_32x32.png');
-		background-size: 16px 496px;
+	.tb-contact_widget ul.simple-contact ul.icons li.cloud a {
+		background-image: url(../images/social/32/cloud.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.email a {
+		background-image: url(../images/social/32/email.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.movie a {
+		background-image: url(../images/social/32/movie.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.music a {
+		background-image: url(../images/social/32/music.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.rss  a {
+		background-image: url(../images/social/32/rss.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.store a {
+		background-image: url(../images/social/32/store.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.write a {
+		background-image: url(../images/social/32/write.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.500px a {
+		background-image: url(../images/social/32/500px.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.amazon  a {
+		background-image: url(../images/social/32/amazon.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.android a {
+		background-image: url(../images/social/32/android.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.behance a {
+		background-image: url(../images/social/32/behance.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.delicious  a {
+		background-image: url(../images/social/32/delicious.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.deviantart  a {
+		background-image: url(../images/social/32/deviantart.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.digg  a {
+		background-image: url(../images/social/32/digg.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.dribbble  a {
+		background-image: url(../images/social/32/dribbble.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.dropbox a {
+		background-image: url(../images/social/32/dropbox.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.ebay  a {
+		background-image: url(../images/social/32/ebay.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.envato a {
+		background-image: url(../images/social/32/envato.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.facebook  a {
+		background-image: url(../images/social/32/facebook.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.feedburner  a {
+		background-image: url(../images/social/32/feedburner.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.flickr  a {
+		background-image: url(../images/social/32/flickr.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.forrst  a {
+		background-image: url(../images/social/32/forrst.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.foursquare  a {
+		background-image: url(../images/social/32/foursquare.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.github  a {
+		background-image: url(../images/social/32/github.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.google  a {
+		background-image: url(../images/social/32/google.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.instagram  a {
+		background-image: url(../images/social/32/instagram.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.linkedin  a {
+		background-image: url(../images/social/32/linkedin.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.mac a {
+		background-image: url(../images/social/32/mac.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.macapp a {
+		background-image: url(../images/social/32/macapp.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.myspace  a {
+		background-image: url(../images/social/32/myspace.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.paypal  a {
+		background-image: url(../images/social/32/paypal.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.picasa  a {
+		background-image: url(../images/social/32/picasa.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.pinterest  a {
+		background-image: url(../images/social/32/pinterest.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.playstation a {
+		background-image: url(../images/social/32/playstation.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.reddit  a {
+		background-image: url(../images/social/32/reddit.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.scribd  a {
+		background-image: url(../images/social/32/scribd.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.soundcloud a {
+		background-image: url(../images/social/32/soundcloud.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.squidoo  a {
+		background-image: url(../images/social/32/squidoo.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.technorati  a {
+		background-image: url(../images/social/32/technorati.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.themeblvd a {
+		background-image: url(../images/social/32/themeblvd.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.tumblr  a {
+		background-image: url(../images/social/32/tumblr.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.twitter  a {
+		background-image: url(../images/social/32/twitter.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.vimeo  a {
+		background-image: url(../images/social/32/vimeo.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.windows a {
+		background-image: url(../images/social/32/windows.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.wordpress a {
+		background-image: url(../images/social/32/wordpress.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.xbox  a {
+		background-image: url(../images/social/32/xbox.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.xing a {
+		background-image: url(../images/social/32/xing.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.yahoo  a {
+		background-image: url(../images/social/32/yahoo.png);
+	}
+	.tb-contact_widget ul.simple-contact ul.icons li.youtube  a {
+		background-image: url(../images/social/32/youtube.png);
 	}
 }
 
