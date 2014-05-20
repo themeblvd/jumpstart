@@ -906,7 +906,6 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 	return apply_filters( 'themeblvd_the_title', $title, $url );
 }
 
-if ( !function_exists( 'themeblvd_the_title' ) ) :
 /**
  * Display the_title() taking into account if it should
  * wrapped in a link.
@@ -919,7 +918,6 @@ if ( !function_exists( 'themeblvd_the_title' ) ) :
 function themeblvd_the_title( $post_id = 0, $force_link = false ) {
 	echo themeblvd_get_the_title( $post_id, $force_link );
 }
-endif;
 
 /**
  * Get blockquote formatted correctly for Bootstrap
@@ -997,7 +995,6 @@ function themeblvd_get_blockquote( $args ) {
 	return apply_filters( 'themeblvd_blockquote', $output, $args, $quote, $source, $class, $style );
 }
 
-if ( !function_exists( 'themeblvd_blockquote' ) ) :
 /**
  * Display blockquote formatted correctly for Bootstrap
  *
@@ -1008,15 +1005,15 @@ if ( !function_exists( 'themeblvd_blockquote' ) ) :
 function themeblvd_blockquote( $args ) {
 	echo themeblvd_get_blockquote( $args );
 }
-endif;
 
 /**
  * Display panel formatted correctly for Bootstrap
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for panel.
- * @param content for panel
+ * @param array $args Arguments for panel
+ * @param string $content content for panel, optional
+ * @return string $output Output for panel
  */
 function themeblvd_get_panel( $args, $content = '' ) {
 
@@ -1069,18 +1066,72 @@ function themeblvd_get_panel( $args, $content = '' ) {
     return apply_filters( 'themeblvd_panel', $output );
 }
 
-if ( !function_exists( 'themeblvd_panel' ) ) :
 /**
  * Display panel formatted correctly for Bootstrap
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for panel.
+ * @param array $args Arguments for panel
+ * @param string $content content for panel, optional
  */
 function themeblvd_panel( $args, $content = '' ) {
 	echo themeblvd_get_panel( $args, $content );
 }
-endif;
+
+/**
+ * Display alert formatted correctly for Bootstrap
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for alert
+ * @param string $content content for alert, optional
+ * @return string $output Output for alert
+ */
+function themeblvd_get_alert( $args, $content = '' ) {
+
+	$defaults = array(
+        'style'         => 'default',   // Style of panel - primary, success, info, warning, danger
+        'class'         => '',          // Any additional CSS classes
+        'wpautop'       => 'true'       // Whether to apply wpautop on content
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    // CSS classes
+    $class = sprintf( 'alert alert-%s', $args['style'] );
+
+    if ( $args['class'] ) {
+        $class .= ' '.$args['class'];
+    }
+
+    // How are we getting the content?
+    if ( ! $content && ! empty( $args['content'] ) ) {
+    	$content = $args['content'];
+    }
+
+    // WP auto?
+    if ( $args['wpautop'] == 'true' ) {
+        $content = themeblvd_get_content( $content );
+    } else {
+    	$content = do_shortcode( $content );
+    }
+
+    // Construct alert
+    $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', $class, do_shortcode( $content ) );
+
+    return apply_filters( 'themeblvd_alert', $output );
+}
+
+/**
+ * Display alert formatted correctly for Bootstrap
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ * @param string $content content for panel, optional
+ */
+function themeblvd_alert( $args, $content = '' ) {
+	echo themeblvd_get_alert( $args, $content );
+}
 
 /**
  * Get Bootstrap Jumbotron
