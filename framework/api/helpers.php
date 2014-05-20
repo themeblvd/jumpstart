@@ -394,13 +394,13 @@ if ( !function_exists( 'themeblvd_add_sample_layout' ) ) :
  *
  * @since 2.1.0
  *
- * @param string $element_id ID of element to add
- * @param string $element_name Name of element to add
- * @param string $query_type Type of query if any - none, secondary, or primary
- * @param array $options Options formatted for Options Framework
- * @param string $function_to_display Function to display element on frontend
+ * @param string $layout_id Unique ID of sample layout
+ * @param string $layout_name Name of the sample layout
+ * @param string $preview URL to preview image of layout
+ * @param string $sidebar_layout Default sidebar layout for layout
+ * @param string $import Absolute path on server to XML file containing layout elements
  */
-function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements ) {
+function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $import ) {
 
 	// Get out on front end or if Builder API doesn't exist.
 	if ( ! is_admin() || ! class_exists('Theme_Blvd_Builder_API') ) {
@@ -409,7 +409,7 @@ function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sideb
 
 	// Add sample layout
 	$api = Theme_Blvd_Builder_API::get_instance();
-	$api->add_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements );
+	$api->add_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $import );
 
 }
 endif;
