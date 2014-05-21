@@ -107,6 +107,10 @@ function themeblvd_content_block( $id, $type, $options ) {
 			echo '</div><!-- .widget-area (end) -->';
 			break;
 
+		// Allow to add on custom content block that's
+		// not in the framework
+		do_action( 'themeblvd_content_block_'.$type, $id, $options );
+
 	}
 
 	echo '</div><!-- .content-block-inner-wrap (end) -->';
