@@ -911,6 +911,8 @@
 
 								// Setup general scripts for options
 								$new_item.themeblvd('options', 'setup');
+								$new_item.themeblvd('options', 'editor');
+								$new_item.themeblvd('options', 'code-editor');
 
 							});
 

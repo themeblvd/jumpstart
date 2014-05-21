@@ -982,18 +982,17 @@ function themeblvd_tabs( $id, $options ) {
 	$output = '';
 
 	// Tabs or pills?
-	$nav_type = $options['setup']['nav'];
+	$nav_type = $options['nav'];
 
-	// For those using old method for tabs
-    if ( 'tabs_above' == $nav_type || 'tabs_right' == $nav_type || 'tabs_below' == $nav_type || 'tabs_left' == $nav_type ) {
-        $nav_type = 'tabs';
-    } else if ( 'pills_above' == $nav_type || 'pills_below' == $nav_type ) {
-        $nav_type = 'pills';
+    if ( $nav_type != 'tabs' && $nav_type != 'pills' ) {
+    	$nav_type = 'tabs';
     }
 
-    // Backup
-    if ( 'tabs' != $nav_type && 'pills' != $nav_type ) {
-    	$nav_type = 'tabs';
+    // Style
+    $style = $options['style'];
+
+    if ( $style != 'framed' && $style != 'open' ) {
+    	$style = 'framed';
     }
 
 	// Container classes
@@ -1003,9 +1002,9 @@ function themeblvd_tabs( $id, $options ) {
 		$classes .= ' fixed-height';
 	}
 
-	$classes .= ' tb-tabs-'.$options['setup']['style'];
+	$classes .= ' tb-tabs-'.$style;
 
-	if ( 'pills' == $nav_type ) {
+	if ( $nav_type == 'pills' ) {
 		$classes .= ' tb-tabs-pills';
 	}
 
@@ -1013,101 +1012,61 @@ function themeblvd_tabs( $id, $options ) {
 	$deep = apply_filters( 'themeblvd_tabs_deep_linking', false );
 
 	// Navigation
-	$i = 0;
-	$class = null;
+	$i = 1;
 	$navigation .= '<ul class="nav nav-'.$nav_type.'">';
-	foreach ( $options['setup']['names'] as $key => $name ) {
+	if ( $options['tabs'] && is_array($options['tabs']) ) {
+		foreach ( $options['tabs'] as $tab_id => $tab ) {
 
-		if ( $i == 0 ) {
-			$class = 'active';
+			$class = '';
+
+			if ( $i == 1 ) {
+				$class = 'active';
+			}
+
+			$name = $tab['title'];
+
+			if ( $deep ) {
+				$tab_id = str_replace( ' ', '_', $name );
+				$tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
+			} else {
+				$tab_id = $id.'-'.$tab_id;
+			}
+
+			$navigation .= '<li class="'.$class.'"><a href="#'.$tab_id.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
+
+			$i++;
 		}
-
-		if ( $deep ) {
-			$tab_id = str_replace( ' ', '_', $name );
-			$tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
-		} else {
-			$tab_id = $id.'-'.$key;
-		}
-
-		$navigation .= '<li class="'.$class.'"><a href="#'.$tab_id.'" data-toggle="'.str_replace('s', '', $nav_type).'" title="'.stripslashes($name).'">'.stripslashes($name).'</a></li>';
-		$class = null;
-
-		$i++;
 	}
 	$navigation .= '</ul>';
 
 	// Tab content
-	$i = 0;
+	$i = 1;
 	$content = '<div class="tab-content">';
 
-	foreach ( $options['setup']['names'] as $key => $name ) {
+	if ( $options['tabs'] && is_array($options['tabs']) ) {
+		foreach ( $options['tabs'] as $tab_id => $tab ) {
 
-		$class = '';
-		if ( $i == '0' ) {
-			$class = ' active';
+			$class = '';
+			if ( $i == 1 ) {
+				$class = ' active';
+			}
+
+			if ( $deep ) {
+				$tab_id = str_replace( ' ', '_', $name );
+				$tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
+			} else {
+				$tab_id = $id.'-'.$tab_id;
+			}
+
+			$content .= '<div id="'.$tab_id.'" class="tab-pane fade'.$class.' in clearfix">';
+
+			ob_start();
+			themeblvd_content_block( $tab_id, $tab['content']['type'], $tab['content'] );
+			$content .= ob_get_clean();
+
+			$content .= '</div><!-- #'.$tab_id.' (end) -->';
+			$i++;
 		}
-
-		if ( $deep ) {
-			$tab_id = str_replace( ' ', '_', $name );
-			$tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
-		} else {
-			$tab_id = $id.'-'.$key;
-		}
-
-		$content .= '<div id="'.$tab_id.'" class="tab-pane fade'.$class.' in clearfix">';
-
-		switch ( $options[$key]['type'] ) {
-
-			// External Page
-			case 'page' :
-
-				// Get WP internal ID for the page
-				$page_id = themeblvd_post_id_by_name( $options[$key]['page'], 'page' );
-
-				// Use WP_Query to retrieve external page. We do it
-				// this way to allow certain primary query-dependent
-				// items such as galleries to work properly.
-				$the_query = new WP_Query( 'page_id='.$page_id );
-
-				// Standard WP loop, even though there should only be
-				// a single post (i.e. our external page).
-				while( $the_query->have_posts() ) {
-					$the_query->the_post();
-					$content .= apply_filters( 'themeblvd_the_content', get_the_content() );
-				}
-
-				// Reset Post Data
-				wp_reset_postdata();
-				break;
-
-			// Raw content textarea
-			case 'raw' :
-
-				// Only negate simulated the_content filter if the option exists AND it's
-				// been unchecked. This is for legacy purposes, as this feature
-				// was added in v2.1.0
-				if ( isset( $options[$key]['raw_format'] ) && ! $options[$key]['raw_format'] ) {
-					$content .= do_shortcode( stripslashes( $options[$key]['raw'] ) ); // Shortcodes only
-				} else {
-					$content .= apply_filters( 'themeblvd_the_content', stripslashes( $options[$key]['raw'] ) );
-				}
-				break;
-
-			// Floating Widget Area
-			case 'widget' :
-
-				if ( ! empty( $options[$key]['sidebar'] ) ) {
-					$content .= '<div class="widget-area">';
-					ob_start();
-					dynamic_sidebar( $options[$key]['sidebar'] );
-					$content .= ob_get_clean();
-					$content .= '</div><!-- .widget-area (end) -->';
-				}
-				break;
-
-		}
-		$content .= '</div><!-- #'.$id.'-'.$key.' (end) -->';
-		$i++;
 	}
 	$content .= '</div><!-- .tab-content (end) -->';
 

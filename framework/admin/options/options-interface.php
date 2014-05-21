@@ -697,14 +697,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
-			/* Tabs Setup
-			/*---------------------------------------*/
-
-			case 'tabs' :
-				$output .= themeblvd_tabs_option( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
 			/* Content --
 			/* Originally designed to work in conjunction
 			/* with setting up columns and tabs.
@@ -780,6 +772,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'social_media' :
 				$social_media = $advanced->get('social_media');
 				$output .= $social_media->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
+			/* Tabs
+			/*---------------------------------------*/
+
+			case 'tabs' :
+				$tabs = $advanced->get('tabs');
+				$output .= $tabs->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/

@@ -295,6 +295,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 					break;
 
+				// <select> menu
 				case 'select':
 
 					$item_output .= '<div class="tb-fancy-select">';
@@ -315,6 +316,11 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= '<span class="textbox"></span>';
 					$item_output .= '</div><!-- .tb-fancy-select (end) -->';
 
+					break;
+
+				// Content option type
+				case 'content' :
+					$item_output .= themeblvd_content_option( $option['id'], $option_name.'['.$option_id.']['.$item_id.']', $current, $option['options'] );
 					break;
 			}
 
@@ -629,7 +635,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 					'_blank'	=> __('New Window', 'themeblvd'),
 					'_self' 	=> __('Same Window', 'themeblvd')
 				)
-			),
+			)
 		);
 		return $options;
 	}
@@ -646,6 +652,72 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 			'delete_confirm'		=> __('Are you sure you want to delete this icon?', 'themeblvd'),
 			'delete_all' 			=> __('Delete All Icons','themeblvd'),
 			'delete_all_confirm' 	=> __('Are you sure you want to delete all icons?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Tabs option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'tabs';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'title',
+				'name'		=> __('Tab Title', 'themeblvd'),
+				'desc'		=> __('Enter a short title to represent this tab.', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> 'Tab Title',
+				'trigger'	=> true // Triggers this option's value to be used in toggle
+			),
+			array(
+				'id' 		=> 'content',
+				'name'		=> __('Tab Content', 'themeblvd'),
+				'desc'		=> __('Configure the content of the tab. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within a set of tabs.', 'themeblvd'),
+				'type'		=> 'content',
+				'options'	=> array( 'page', 'raw', 'widget' )
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Tab','themeblvd'),
+			'delete' 				=> __('Delete Tab','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Tabs','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all tabs?','themeblvd')
 		);
 		return $labels;
 	}

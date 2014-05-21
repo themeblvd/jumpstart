@@ -402,32 +402,14 @@ function themeblvd_sanitize_tabs( $input ) {
 
 	$output = array();
 
-	// Verify number of tabs is an integer
-	if ( is_numeric( $input['num'] ) ) {
-		$output['num'] = $input['num'];
-	} else {
-		$output['num'] = null;
-	}
-
-	// Verify style
-	if ( in_array( $input['style'], array( 'open', 'framed' ) ) ) {
-		$output['style'] = $input['style'];
-	}
-
-	// Verify nav
-	if ( in_array( $input['nav'], array( 'tabs_above', 'tabs_right', 'tabs_below', 'tabs_left', 'pills_above', 'pills_below' ) ) ) {
-		$output['nav'] = $input['nav'];
-	}
-
-	// Verify name fields and only save the right amount of names
-	if ( $output['num'] ) {
-		$total_num = intval( $output['num'] );
-		$i = 1;
-		while ( $i <= $total_num ) {
-			$output['names']['tab_'.$i] = sanitize_text_field( $input['names']['tab_'.$i] );
-			$i++;
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['title'] = themeblvd_sanitize_text( $item['title'] );
+			$output[$item_id]['content'] = themeblvd_sanitize_content( $item['content'] );
 		}
 	}
+
 	return $output;
 }
 
