@@ -784,6 +784,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Toggles
+			/*---------------------------------------*/
+
+			case 'toggles' :
+				$toggles = $advanced->get('toggles');
+				$output .= $toggles->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
 			/* Editor
 			/*---------------------------------------*/
 

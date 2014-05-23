@@ -33,6 +33,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
 	add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
+	add_filter( 'themeblvd_sanitize_toggles', 'themeblvd_sanitize_toggles' );
 	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
 	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
 	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
@@ -407,6 +408,40 @@ function themeblvd_sanitize_tabs( $input ) {
 			$output[$item_id] = array();
 			$output[$item_id]['title'] = themeblvd_sanitize_text( $item['title'] );
 			$output[$item_id]['content'] = themeblvd_sanitize_content( $item['content'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Toggles
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_toggles( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			$output[$item_id]['title'] = themeblvd_sanitize_text( $item['title'] );
+			$output[$item_id]['content'] = themeblvd_sanitize_textarea( $item['content'] );
+
+			$output[$item_id]['wpautop'] = '0';
+
+			if ( isset($item['wpautop']) ) {
+				$output[$item_id]['wpautop'] = '1';
+			}
+
+			$output[$item_id]['open'] = '0';
+
+			if ( isset($item['open']) ) {
+				$output[$item_id]['open'] = '1';
+			}
 		}
 	}
 

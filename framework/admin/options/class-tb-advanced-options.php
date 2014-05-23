@@ -83,7 +83,8 @@ class Theme_Blvd_Advanced_Options {
 		$this->reference = array(
 			'slider',
 			'social_media',
-			'tabs'
+			'tabs',
+			'toggles'
 		);
 	}
 
@@ -115,6 +116,10 @@ class Theme_Blvd_Advanced_Options {
 
 			case 'tabs':
 				$this->types[$type] = new Theme_Blvd_Tabs_Option();
+				break;
+
+			case 'toggles':
+				$this->types[$type] = new Theme_Blvd_Toggles_Option();
 				break;
 		}
 
@@ -153,7 +158,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'slider', 'social_media', 'tabs' ) );
+		return in_array( $type, array( 'slider', 'social_media', 'tabs', 'toggles' ) );
 	}
 
 }

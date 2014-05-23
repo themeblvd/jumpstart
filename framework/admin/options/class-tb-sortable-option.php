@@ -318,6 +318,11 @@ abstract class Theme_Blvd_Sortable_Option {
 
 					break;
 
+				// Checkbox
+				case 'checkbox':
+					$item_output .= sprintf( '<input id="%s" class="of-input" name="%s" type="checkbox" %s />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), checked( $current, 1, false ) );
+					break;
+
 				// Content option type
 				case 'content' :
 					$item_output .= themeblvd_content_option( $option['id'], $option_name.'['.$option_id.']['.$item_id.']', $current, $option['options'] );
@@ -718,6 +723,87 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
 			'delete_all' 			=> __('Delete All Tabs','themeblvd'),
 			'delete_all_confirm' 	=> __('Are you sure you want to delete all tabs?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Tabs option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'toggles';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'title',
+				'name'		=> __('Title', 'themeblvd'),
+				'desc'		=> __('Enter a short title to represent this toggle.', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> 'Toggle Title',
+				'trigger'	=> true // Triggers this option's value to be used in toggle
+			),
+			array(
+				'id' 		=> 'content',
+				'name'		=> __('Content', 'themeblvd'),
+				'desc'		=> __('Configure the content of the toggle. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden.', 'themeblvd'),
+				'type'		=> 'textarea',
+				'editor'	=> true,
+				'code'		=> 'html'
+			),
+			array(
+				'id' 		=> 'wpautop',
+				'name'		=> __('Content Formatting', 'themeblvd'),
+				'desc'		=> __('Apply WordPress automatic formatting.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '1'
+			),
+			array(
+				'id' 		=> 'open',
+				'name'		=> __('Initial State', 'themeblvd'),
+				'desc'		=> __('Toggle is open when the page intially loads.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '0'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Toggle','themeblvd'),
+			'delete' 				=> __('Delete Toggle','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Toggles','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all toggles?','themeblvd')
 		);
 		return $labels;
 	}
