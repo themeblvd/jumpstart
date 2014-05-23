@@ -1012,7 +1012,7 @@ function themeblvd_blockquote( $args ) {
 }
 
 /**
- * Display panel formatted correctly for Bootstrap
+ * Get panel formatted correctly for Bootstrap
  *
  * @since 2.5.0
  *
@@ -1047,7 +1047,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
     }
 
     // WP auto?
-    if ( $args['wpautop'] == 'true' ) {
+    if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
         $content = themeblvd_get_content( $content );
     } else {
     	$content = do_shortcode( $content );
@@ -1084,6 +1084,91 @@ function themeblvd_panel( $args, $content = '' ) {
 }
 
 /**
+ * Get toggle formatted correctly for Bootstrap,
+ * using the panel.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for alert
+ * @param string $content content for alert, optional
+ * @return string $output Output for alert
+ */
+function themeblvd_get_toggle( $args ) {
+
+	$defaults = array(
+        'title'       	=> '',   	// Title of toggle
+        'content'       => '',   	// Hidden content of toggle
+        'wpautop'       => 'true',  // Whether to apply wpautop on content
+        'open'       	=> 'false', // Whether toggle is initially open
+        'class'         => '',		// Any additional CSS classes
+    	'last'			=> false	// Whether this is the last toggle of a group; this only applies if it's not part of an accordion
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    // Bootstrap color
+	$color = apply_filters( 'themeblvd_toggle_color', 'default' );
+
+    // CSS classes
+    $class = sprintf( 'tb-panel panel panel-%s', $color );
+
+    if ( $args['class'] ) {
+        $class .= ' '.$args['class'];
+    }
+
+    if ( $args['last'] ) {
+        $class .= '  panel-last';
+    }
+
+    // WP auto?
+    if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
+        $content = themeblvd_get_content( $args['content'] );
+    } else {
+    	$content = do_shortcode( $args['content'] );
+    }
+
+    // Is toggle open?
+    $state = 'panel-collapse collapse';
+    $icon = 'plus-circle';
+    if( $args['open'] == 'true' || $args['open'] == '1' ) {
+        $state .= ' in';
+        $icon = 'minus-circle';
+    }
+
+	// Individual toggle ID (NOT the Accordion ID)
+	$toggle_id = uniqid( 'toggle_'.rand() );
+
+    // Bootstrap 3 output
+    $output = '
+        <div class="'.$class.'">
+            <div class="panel-heading">
+                <a class="panel-title" data-toggle="collapse" data-parent="" href="#'.$toggle_id.'">
+                    <i class="fa fa-'.$icon.' switch-me"></i> '.$args['title'].'
+                </a>
+            </div><!-- .panel-heading (end) -->
+            <div id="'.$toggle_id.'" class="'.$state.'">
+                <div class="panel-body">
+                    '.$content.'
+                </div><!-- .panel-body (end) -->
+            </div><!-- .panel-collapse (end) -->
+        </div><!-- .panel (end) -->';
+
+    return apply_filters( 'themeblvd_toggle', $output );
+}
+
+/**
+ * Display toggle formatted correctly for Bootstrap,
+ * using the panel.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ * @param string $content content for panel, optional
+ */
+function themeblvd_toggle( $args, $content = '' ) {
+	echo themeblvd_get_toggle( $args, $content );
+}
+
+/**
  * Display alert formatted correctly for Bootstrap
  *
  * @since 2.5.0
@@ -1114,7 +1199,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
     }
 
     // WP auto?
-    if ( $args['wpautop'] == 'true' ) {
+    if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
         $content = themeblvd_get_content( $content );
     } else {
     	$content = do_shortcode( $content );

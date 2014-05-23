@@ -14,6 +14,7 @@
 /* - slider: Custom built-slider from Theme Blvd Sliders plugin
 /* - slogan: Slogan text plus optional call-to-action button
 /* - tabs: Set of tabs utilizing Bootstrap tabs
+/* - toggles: Set of toggles utilizing Bootstrap panels
 /* - video: A video displayed using WordPress's embedding
 /*------------------------------------------------------------*/
 
@@ -1076,10 +1077,48 @@ function themeblvd_tabs( $id, $options ) {
 	$output .= $content;
 	$output .= '</div><!-- .tabbable (end) -->';
 
-	return $output;
+	return apply_filters('themeblvd_tabs', $output);
 }
 endif;
 
+if ( !function_exists( 'themeblvd_toggles' ) ) :
+/**
+ * Display set of toggles.
+ *
+ * @since 2.5.0
+ *
+ * @param array $id unique ID for toggle set
+ * @param array $options all options for tabs
+ * @return string $output HTML output for tabs
+ */
+function themeblvd_toggles( $id, $options ) {
+
+	$accordion = false;
+
+	if ( $options['accordion'] == 'true' || $options['accordion'] == '1' ) {
+		$accordion = true;
+	}
+
+	$output = '';
+
+	if ( $options['toggles'] && is_array($options['toggles']) ) {
+		foreach ( $options['toggles'] as $toggle ) {
+
+			if ( ! $accordion && $toggle == end($options['toggles']) ) {
+				$toggle['last'] = true;
+			}
+
+			$output .= themeblvd_get_toggle( $toggle );
+		}
+	}
+
+	if ( $accordion ) {
+		$output = sprintf( '<div id="%s" class="tb-accordion panel-group">%s</div>', $id, $output );
+	}
+
+	return apply_filters('themeblvd_toggles', $output);
+}
+endif;
 
 if ( !function_exists( 'themeblvd_video' ) ) :
 /**
