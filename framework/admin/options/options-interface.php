@@ -757,6 +757,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Milestones
+			/*---------------------------------------*/
+
+			case 'milestones' :
+				$milestones = $advanced->get('milestones');
+				$output .= $milestones->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
 			/* Slider
 			/*---------------------------------------*/
 

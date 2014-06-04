@@ -58,6 +58,14 @@ abstract class Theme_Blvd_Sortable_Option {
 	 */
 	protected $type = '';
 
+	/**
+	 * Optional maximum number of sortable items
+	 *
+	 * @since 2.5.0
+	 * @var int
+	 */
+	protected $max = 0;
+
 	/*--------------------------------------------*/
 	/* Constructor
 	/*--------------------------------------------*/
@@ -114,7 +122,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		$ajax_nonce = wp_create_nonce( 'themeblvd_sortable_option' );
 
-		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s">', $ajax_nonce, $option_name, $option_id, $this->type );
+		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s" data-max="%s">', $ajax_nonce, $option_name, $option_id, $this->type, $this->max );
 
 		// Header (blank by default)
 		$output .= $this->get_display_header( $option_id, $option_name, $items );
@@ -158,10 +166,23 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * @since 2.5.0
 	 */
 	protected function get_display_footer( $option_id, $option_name, $items ) {
-		$footer  = '<footer>';
-		$footer .= sprintf( '<a href="#" class="add-item button-secondary">%s</a>', $this->labels['add'] );
+
+		$footer  = '<footer class="clearfix">';
+
+		$disabled = '';
+		if ( $this->max && count($items) >= $this->max ) {
+			$disabled = 'disabled';
+		}
+
+		$footer .= sprintf( '<input type="button" class="add-item button-secondary" value="%s" %s />', $this->labels['add'], $disabled );
+
+		if ( $this->max ) {
+			$footer .= sprintf('<div class="max">%s: %s</div>', __('Maximum', 'themeblvd'), $this->max);
+		}
+
 		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
 		$footer .= '</footer>';
+
 		return $footer;
 	}
 
@@ -327,6 +348,15 @@ abstract class Theme_Blvd_Sortable_Option {
 				case 'content' :
 					$item_output .= themeblvd_content_option( $option['id'], $option_name.'['.$option_id.']['.$item_id.']', $current, $option['options'] );
 					break;
+
+				// Color
+				case 'color' :
+					$def_color = '';
+					if ( ! empty( $option['std'] ) ) {
+						$def_color = $option['std'];
+					}
+					$item_output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr( $current ), $def_color );
+					break;
 			}
 
 			$item_output .= '</div><!-- .controls (end) -->';
@@ -402,6 +432,93 @@ abstract class Theme_Blvd_Sortable_Option {
 		check_ajax_referer( 'themeblvd_sortable_option', 'security' );
 		echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_'.rand() ), $this->get_default(), $_POST['data']['option_name'] );
 		die();
+	}
+
+}
+
+/**
+ * Milestones option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Milestones_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'milestones';
+
+		// Set max items
+		$this->max = 6;
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'milestone',
+				'name'		=> __('Milestone Number', 'themeblvd'),
+				'desc'		=> __('Enter a number for the milestone. Ex: 500', 'themeblvd'),
+				'type'		=> 'text'
+			),
+
+			array(
+				'id' 		=> 'before',
+				'name'		=> __('Milestone Symbol/Unit (before)', 'themeblvd'),
+				'desc'		=> __('Optional symbol or unit before the milestone number. Ex: $, +, etc.', 'themeblvd'),
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'after',
+				'name'		=> __('Milestone Symbol/Unit (after)', 'themeblvd'),
+				'desc'		=> __('Optional symbol or unit after the milestone number. Ex: +, k, etc.', 'themeblvd'),
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'color',
+				'name'		=> __('Milestone Color', 'themeblvd'),
+				'desc'		=> __('Text color for the milestone number.', 'themeblvd'),
+				'std'		=> '#0c9df0',
+				'type'		=> 'color'
+			),
+			array(
+				'id' 		=> 'text',
+				'name'		=> __('Description', 'themeblvd'),
+				'desc'		=> __('Enter a very simple description for the milestone number.', 'themeblvd'),
+				'type'		=> 'text',
+				'trigger'	=> true // Triggers this option's value to be used in toggle
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Milestone','themeblvd'),
+			'delete' 				=> __('Delete Milestone','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this milestone?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Milestones','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all milestone?','themeblvd')
+		);
+		return $labels;
 	}
 
 }
@@ -730,7 +847,7 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 }
 
 /**
- * Tabs option type
+ * Toggles option type
  *
  * @since 2.5.0
  */

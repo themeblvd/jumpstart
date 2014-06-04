@@ -43,6 +43,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_code', 'themeblvd_sanitize_editor' );
+	add_filter( 'themeblvd_sanitize_milestones', 'themeblvd_sanitize_milestones' );
 }
 
 /**
@@ -753,7 +754,7 @@ function themeblvd_sanitize_hex( $hex, $default = '' ) {
  * @since 2.2.0
  */
 function themeblvd_recognized_font_sizes() {
-	$sizes = range( 9, 71 );
+	$sizes = range( 9, 70 );
 	$sizes = apply_filters( 'themeblvd_recognized_font_sizes', $sizes );
 	$sizes = array_map( 'absint', $sizes );
 	return $sizes;
@@ -819,4 +820,27 @@ function themeblvd_validate_hex( $hex ) {
 		return true;
 	}
 
+}
+
+/**
+ * Milestones
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_milestones( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['milestone'] = wp_kses( $item['milestone'], array() );
+			$output[$item_id]['before'] = wp_kses( $item['before'], array() );
+			$output[$item_id]['after'] = wp_kses( $item['after'], array() );
+			$output[$item_id]['color'] = themeblvd_sanitize_hex( $item['color'] );
+			$output[$item_id]['text'] = wp_kses( $item['text'], array() );
+		}
+	}
+
+	return $output;
 }
