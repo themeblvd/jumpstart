@@ -3336,6 +3336,17 @@ button.mfp-arrow {
 	height:8px;
 }
 
+/* Milestones */
+.tb-milestones .milestone,
+.tb-milestones .text {
+	display: block;
+	line-height: 1.1;
+	text-align: center;
+}
+.tb-milestones .milestone {
+	font-weight: bold;
+}
+
 /* Post List/Post Grid */
 .lead-link,
 .lead-link {
