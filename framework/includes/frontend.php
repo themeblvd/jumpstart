@@ -237,6 +237,15 @@ function themeblvd_browser_class( $classes ) {
 		$classes[] = 'unknown-browser';
 	}
 
+	// Add "mobile" class if this actually a mobile device,
+	// and not the curious user screwing around with their
+	// browser window.
+	if ( wp_is_mobile() ) {
+		$classes[] = 'mobile';
+	} else {
+		$classes[] = 'desktop';
+	}
+
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
 }
 
