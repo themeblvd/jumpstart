@@ -251,9 +251,7 @@
 					});
 
 					// WP Color Picker
-					if ( typeof wpColorPicker !== 'undefined' ) {
-						$this.find('.tb-color-picker').wpColorPicker();
-					}
+					$this.find('.tb-color-picker').wpColorPicker();
 
 					// Remove tooltips if hovered link is clicked
 					$this.find('.tb-tooltip-link').click(function(){
@@ -795,7 +793,8 @@
 
 							var $link = $(this),
 								$option = $link.closest('.section-sortable'),
-								$item = $link.closest('.item');
+								$item = $link.closest('.item'),
+								max = $link.closest('.tb-sortable-option').data('max');
 
 							tbc_confirm($link.attr('title'), {'confirm':true}, function(r) {
 						    	if(r) {
@@ -804,6 +803,9 @@
 										$item.remove();
 										if ( ! $option.find('.item-container .item').length ) {
 											$option.find('.delete-sortable-items').fadeOut(200);
+										}
+										if ( max > 0 && $option.find('.item-container > .item').length < max ) {
+											$option.find('.add-item').prop('disabled', false);
 										}
 									}, 500);
 						        }
@@ -858,7 +860,8 @@
 					$this.find('.tb-sortable-option').each(function(){
 
 						var $option = $(this),
-							$section = $option.closest('.section-sortable');
+							$section = $option.closest('.section-sortable'),
+							max = $option.data('max');
 
 						// Setup sortable items
 						$section.find('.item').each(function() {
@@ -878,7 +881,8 @@
 						$section.find('.add-item').off('click'); // avoid duplicates
 						$section.find('.add-item').on( 'click', function(){
 
-							var $new_item;
+							var $new_item,
+								$button = $(this);
 
 							var data = {
 								action: 'themeblvd_add_'+$option.data('type')+'_item',
@@ -914,6 +918,10 @@
 								$new_item.themeblvd('options', 'editor');
 								$new_item.themeblvd('options', 'code-editor');
 
+								if ( max > 0 && $option.find('.item-container > .item').length >= max ) {
+									$button.prop('disabled', true);
+								}
+
 							});
 
 							return false;
@@ -933,6 +941,7 @@
 									window.setTimeout(function(){
 										$items.remove();
 										$option.find('.delete-sortable-items').fadeOut(200);
+										$option.find('.add-item').prop('disabled', false);
 									}, 500);
 						        }
 						    });

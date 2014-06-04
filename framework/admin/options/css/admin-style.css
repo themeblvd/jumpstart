@@ -764,6 +764,16 @@
 	padding: 5px;
 	position: relative;
 }
+#optionsframework .section-sortable .add-item {
+	float: left;
+}
+#optionsframework .section-sortable .max {
+	color: #888;
+	float: left;
+	font-size: 11px;
+	margin-top: 5px;
+	margin-left: 10px;
+}
 #optionsframework .section-sortable .delete-sortable-items {
 	font-size: 16px;
 	color: #c61f1f;
@@ -914,7 +924,8 @@
 	line-height: 60px;
 }
 
-/* Sortables - tabs/toggles */
+/* Sortables - tabs, toggles, milestones */
+#optionsframework .section-milestones > .option > .controls,
 #optionsframework .section-tabs > .option > .controls,
 #optionsframework .section-toggles > .option > .controls {
 	float: none;
@@ -923,11 +934,13 @@
 	padding: 0;
 	width: auto;
 }
+#optionsframework .section-milestones > .option > .explain,
 #optionsframework .section-tabs > .option > .explain,
 #optionsframework .section-toggles > .option > .explain {
 	float: none;
 	max-width: none;
 }
+#optionsframework .section-milestones .tb-sortable-option textarea,
 #optionsframework .section-tabs .tb-sortable-option textarea,
 #optionsframework .section-toggles .tb-sortable-option textarea {
 	height: auto;
