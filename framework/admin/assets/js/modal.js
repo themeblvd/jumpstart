@@ -41,7 +41,8 @@ if ( typeof Object.create !== 'function' ) {
             }
 
             // Open modal
-            self.$elem.on( 'click', function(){
+            self.$elem.off( 'click.themeblvd-modal' );
+            self.$elem.on( 'click.themeblvd-modal', function(){
 
                 // Setup popup
                 self.popup = '';
@@ -74,14 +75,16 @@ if ( typeof Object.create !== 'function' ) {
                 self.options.on_load.call(self);
 
                 // Bind close
-                self.$modal_window.find('.media-modal-close').on( 'click', function(){
+                self.$modal_window.find('.media-modal-close').off( 'click.themeblvd-modal-close' );
+                self.$modal_window.find('.media-modal-close').on( 'click.themeblvd-modal-close', function(){
                     self.options.on_cancel.call(self);
                     self.close();
                     return false;
                 });
 
                 // Save
-                self.$modal_window.find('.media-button-insert').on( 'click', function(){
+                self.$modal_window.find('.media-button-insert').off( 'click.themeblvd-modal-insert' );
+                self.$modal_window.find('.media-button-insert').on( 'click.themeblvd-modal-insert', function(){
                     self.options.on_save.call(self);
                     self.save();
                     self.close();
@@ -90,7 +93,8 @@ if ( typeof Object.create !== 'function' ) {
 
                 // Secondary button
                 if ( self.options.button_secondary ) {
-                    self.$modal_window.find('.media-button-secondary').on( 'click', function(){
+                    self.$modal_window.find('.media-button-secondary').off( 'click.themeblvd-modal-secondary' );
+                    self.$modal_window.find('.media-button-secondary').on( 'click.themeblvd-modal-secondary', function(){
                         self.options.on_secondary.call(self);
                         self.dup_block(); // If this is set of content block options, will duplcate the content block
                         self.close();
@@ -103,7 +107,8 @@ if ( typeof Object.create !== 'function' ) {
 
                     var delete_msg = self.$elem.parent().is('.content-block-nav') ? themeblvd.delete_block : themeblvd.delete_item;
 
-                    self.$modal_window.find('.media-button-delete').on( 'click', function(){
+                    self.$modal_window.find('.media-button-delete').off( 'click.themeblvd-modal-delete' );
+                    self.$modal_window.find('.media-button-delete').on( 'click.themeblvd-modal-delete', function(){
                         tbc_confirm( delete_msg, {'confirm': true}, function(r){
                             if(r) {
                                 self.options.on_delete.call(self);
@@ -241,7 +246,8 @@ if ( typeof Object.create !== 'function' ) {
                 $body.append('<div id="themeblvd-modal-backdrop" class="media-modal-backdrop"></div>');
 
                 // Close all open modals
-                $('#themeblvd-modal-backdrop').on( 'click', function(){
+                $('#themeblvd-modal-backdrop').off( 'click.themeblvd-modal-backdrop' );
+                $('#themeblvd-modal-backdrop').on( 'click.themeblvd-modal-backdrop', function(){
                     self.options.on_cancel.call(self);
                     self.close_all();
                     return false;
@@ -339,10 +345,10 @@ if ( typeof Object.create !== 'function' ) {
             }
 
             // Unbind links within modal
-            self.$modal_window.find('.media-button-secondary').off('click');
-            self.$modal_window.find('.media-modal-close').off('click');
-            self.$modal_window.find('.media-button-insert').off('click');
-            self.$modal_window.find('.media-button-delete').off('click');
+            self.$modal_window.find('.media-button-secondary').off('click.themeblvd-modal-secondary');
+            self.$modal_window.find('.media-modal-close').off('click.themeblvd-modal-close');
+            self.$modal_window.find('.media-button-insert').off('click.themeblvd-modal-indert');
+            self.$modal_window.find('.media-button-delete').off('click.themeblvd-modal-delete');
 
             // Hide or Remove modal
             if ( self.options.build ) {
