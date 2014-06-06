@@ -318,8 +318,29 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-fancy-select">';
 				$output .= sprintf( '<select class="of-input" name="%s" id="%s">', esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($value['id']) );
 
-				foreach ( $value['options'] as $key => $option ) {
-					$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr( $key ), esc_html($option) );
+				$first = reset($value['options']);
+
+				if ( is_array( $first ) ) {
+
+					// Option groups
+					foreach ( $value['options'] as $optgroup_id => $optgroup ) {
+
+						$output .= sprintf('<optgroup label="%s">', $optgroup['label']);
+
+						foreach ( $optgroup['options'] as $key => $option ) {
+							$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr( $key ), esc_html($option) );
+						}
+
+						$output .= '</optgroup>';
+					}
+
+				} else {
+
+					// Standard
+					foreach ( $value['options'] as $key => $option ) {
+						$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr( $key ), esc_html($option) );
+					}
+
 				}
 
 				$output .= '</select>';
