@@ -303,6 +303,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 								$error = __('No registered crop sizes were found.', 'themeblvd');
 							}
 							break;
+
+						case 'textures' :
+							$value['options'] = themeblvd_get_select( 'textures' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('No textures were found.', 'themeblvd');
+							}
+							break;
 					}
 
 				}
