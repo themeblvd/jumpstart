@@ -1194,7 +1194,20 @@ function themeblvd_get_select( $type, $force_single = false ) {
 			global $wp_registered_sidebars;
 			if ( ! empty( $wp_registered_sidebars ) ) {
 				foreach ( $wp_registered_sidebars as $sidebar ) {
-					$select[$sidebar['id']] = $sidebar['name'];
+
+					// Exclude collapsible widget area locations. It
+					// could work to include these, but it's just sort
+					// of confusing, conceptually.
+					if ( in_array( $sidebar['id'], array( 'ad_above_header', 'ad_above_content', 'ad_below_content', 'ad_below_footer' ) ) ) {
+						continue;
+					}
+
+					// Remove the word "Location" to avoid confusion,
+					// as the concept of locations doesn't really apply
+					// in this instance.
+					$name = str_replace( __('Location:', 'themeblvd'), __('Default', 'themeblvd'), $sidebar['name'] );
+
+					$select[$sidebar['id']] = $name;
 				}
 			}
 			break;
