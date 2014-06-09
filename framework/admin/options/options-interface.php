@@ -248,6 +248,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'select' :
 
 				$error = '';
+				$textures = false;
 
 				// Dynamic select types
 				if ( ! isset( $value['options'] ) && isset( $value['select'] ) ) {
@@ -305,6 +306,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							break;
 
 						case 'textures' :
+							$textures = true;
+
 							$value['options'] = themeblvd_get_select( 'textures' );
 
 							if ( count( $value['options'] ) < 1 ) {
@@ -355,6 +358,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<span class="trigger"></span>';
 				$output .= '<span class="textbox"></span>';
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
+
+				if ( $textures ) {
+					$output .= '<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">'.__('Browse Textures', 'themeblvd').'</a>';
+				}
 
 				// If this is a builder sample select, show preview images
 				if ( isset( $value['class'] ) && $value['class'] == 'builder_samples' && function_exists( 'themeblvd_builder_sample_previews' ) ) {
@@ -605,14 +612,24 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$background = $val;
 
-				// Background Color
-				$current_color = '';
-				if ( ! empty( $background['color'] ) ) {
-					$current_color = $background['color'];
+				// Show background color?
+				$color = true;
+				if ( isset( $value['color'] ) ) {
+					$color = $value['color'];
 				}
 
-				$output .= sprintf( '<div id="%s_color_picker" class="colorSelector"><div style="%s"></div></div>', esc_attr( $value['id'] ), esc_attr( 'background-color:'.$current_color ) );
-				$output .= sprintf( '<input class="of-color of-background of-background-color" name="%s" id="%s" type="text" value="%s" />', esc_attr( $option_name.'['.$value['id'].'][color]' ), esc_attr( $value['id'].'_color' ), esc_attr( $current_color ) );
+				// Background Color
+				if ( $color ) {
+
+					$current_color = '';
+					if ( ! empty( $background['color'] ) ) {
+						$current_color = $background['color'];
+					}
+
+					$output .= sprintf( '<input id="%s_color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].'][color]' ), esc_attr( $current_color ), esc_attr( $current_color ));
+					$output .= '<br />';
+
+				}
 
 				// Background Image - New AJAX Uploader using Media Library
 				if ( ! isset( $background['image'] ) ) {
@@ -633,11 +650,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Start output
 
 				// Uploader
-				if ( function_exists('wp_enqueue_media') ) {
-					$output .= themeblvd_media_uploader( array( 'option_name' => $option_name, 'type' => 'background', 'id' => $value['id'], 'value' => $current_bg_url, 'name' => 'image' ) );
-				} else {
-					$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $current_bg_image, null, '', 0, 'image' ); // @deprecated
-				}
+				$output .= themeblvd_media_uploader( array( 'option_name' => $option_name, 'type' => 'background', 'id' => $value['id'], 'value' => $current_bg_url, 'name' => 'image' ) );
 
 				$class = 'of-background-properties';
 				if ( empty( $background['image'] ) ) {
@@ -676,6 +689,26 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_attachment = !empty($background['attachment']) ? $background['attachment'] : '';
 				$output .= '<select class="of-background of-background-attachment" name="'.esc_attr( $option_name.'['.$value['id'].'][attachment]' ).'" id="'.esc_attr( $value['id'].'_attachment' ).'">';
 				$attachments = themeblvd_recognized_background_attachment();
+
+				// Parallax scrolling
+				$parallax = false;
+				if ( isset( $value['parallax'] ) ) {
+					$parallax = $value['parallax'];
+				}
+
+				if ( ! $parallax ) {
+					unset( $attachments['parallax'] );
+				}
+
+				// Fixed position scrolling (will only work if being applied to <body>)
+				$fixed = false;
+				if ( isset( $value['fixed'] ) ) {
+					$fixed = $value['fixed'];
+				}
+
+				if ( ! $fixed ) {
+					unset( $attachments['fixed'] );
+				}
 
 				foreach ( $attachments as $key => $attachment ) {
 					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_attachment, $key, false ).'>'.esc_html( $attachment ).'</option>';

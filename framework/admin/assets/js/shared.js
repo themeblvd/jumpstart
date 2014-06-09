@@ -128,7 +128,7 @@
     				// whether to show column widths option
 	    			$this.find('.columns').each(function(){
 	    				var $el = $(this), i, num = $el.find('.select-col-num').val();
-	    				if ( num > 0 ) {
+	    				if ( num > 1 ) {
 	    					$el.find('.section-column_widths').show();
 	    				} else {
 	    					$el.find('.section-column_widths').hide();
@@ -141,24 +141,24 @@
 
     				// Show/Hide groupings
     				$this.find('.show-hide').each(function(){
-    					var el = $(this), checkbox = el.find('.trigger input');
+    					var el = $(this), checkbox = el.children('.trigger').find('input');
     					if( checkbox.is(':checked') ) {
-    						el.find('.receiver').show();
+    						el.children('.receiver').show();
     					}
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
     				$this.find('.show-hide-toggle').each(function(){
-    					var el = $(this), value = el.find('.trigger .of-input').val();
-    					el.find('.receiver').hide();
-    					el.find('.receiver-'+value).show();
+    					var el = $(this), value = el.children('.trigger').find('.of-input').val();
+    					el.children('.receiver').hide();
+    					el.children('.receiver-'+value).show();
     				});
 
     				// Where one option's value determines which description displays on another option
     				$this.find('.desc-toggle').each(function(){
-    					var el = $(this), value = el.find('.trigger .of-input').val();
-    					el.find('.receiver .explain').hide();
-    					el.find('.receiver .explain.'+value).show();
+    					var el = $(this), value = el.children('.trigger').find('.of-input').val();
+    					el.children('.receiver .explain').hide();
+    					el.children('.receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -308,6 +308,48 @@
 					    });
 					}
 
+					// Link to texture browsers
+    				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
+						$this.find('.tb-texture-browser-link').ThemeBlvdModal({
+					        build: false,
+					        padding: true,
+					        size: 'custom', // Something other than "large" to trigger auto height
+					    	on_display: function() {
+
+					    		var self = this,
+									$elem = self.$elem,
+									$browser = self.$modal_window,
+									texture = $elem.closest('.controls').find('.of-input').val();
+
+								$browser.find('.media-frame-content').scrollTop(0);
+
+								$browser.find('.select-texture').each(function(){
+
+									$a = $(this);
+									$a.removeClass('selected');
+
+									if ( $a.data('texture') == texture ) {
+										$a.addClass('selected');
+										$browser.find('.texture-selection').val( $a.data('texture') );
+										$browser.find('.current-texture').text( $a.data('texture-name') );
+									}
+								});
+
+					    	},
+					    	on_save: function() {
+
+					    		var self = this,
+					    			$select = self.$elem.closest('.controls').find('.of-input'),
+					    			texture = self.$modal_window.find('.texture-selection').val();
+
+					    		// Send selection back to select
+					    		$select.val(texture);
+					    		$select.closest('.tb-fancy-select').find('.textbox').text( $select.find('option[value="'+texture+'"]').text() );
+
+					    	}
+					    });
+					}
+
 	    		}
 	    		// Apply all binded actions. This will only need
 	    		// to be called once on the original page load.
@@ -372,7 +414,7 @@
     				// whether to show column widths option
 	    			$this.on( 'change', '.select-col-num', function() {
 	    				var $el = $(this), i, num = $el.val(), $container = $el.closest('.columns');
-	    				if ( num > 0 ) {
+	    				if ( num > 1 ) {
 	    					$container.find('.section-column_widths').show();
 	    				} else {
 	    					$container.find('.section-column_widths').hide();
@@ -384,26 +426,27 @@
 	    			});
 
 	    			// Show/Hide groupings
-    				$this.on( 'click', '.show-hide .trigger input', function() {
+    				$this.on( 'click', '.show-hide > .trigger input', function() {
     					var checkbox = $(this);
-    					if( checkbox.is(':checked') )
-    						checkbox.closest('.show-hide').find('.receiver').fadeIn('fast');
-    					else
-    						checkbox.closest('.show-hide').find('.receiver').hide();
+    					if( checkbox.is(':checked') ) {
+    						checkbox.closest('.show-hide').children('.receiver').fadeIn('fast');
+    					} else {
+    						checkbox.closest('.show-hide').children('.receiver').hide();
+    					}
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
-    				$this.on( 'change', '.show-hide-toggle .trigger .of-input', function() {
+    				$this.on( 'change', '.show-hide-toggle > .trigger .of-input', function() {
     					var el = $(this), value = el.val(), group = el.closest('.show-hide-toggle');
-    					group.find('.receiver').hide();
-    					group.find('.receiver-'+value).show();
+    					group.children('.receiver').hide();
+    					group.children('.receiver-'+value).show();
     				});
 
     				// Where one option's value determines which description displays on another option
-    				$this.on( 'change', '.desc-toggle .trigger .of-input', function() {
+    				$this.on( 'change', '.desc-toggle > .trigger .of-input', function() {
     					var el = $(this), value = el.val(), group = el.closest('.desc-toggle');
-    					group.find('.receiver .explain').hide();
-    					group.find('.receiver .explain.'+value).show();
+    					group.children('.receiver .explain').hide();
+    					group.children('.receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -1865,6 +1908,7 @@
  */
 jQuery(document).ready(function($) {
 
+	// Icon Browser
 	$('.themeblvd-icon-browser').themeblvd('options', 'setup');
 	$('.themeblvd-icon-browser').themeblvd('options', 'bind');
 
@@ -1885,6 +1929,35 @@ jQuery(document).ready(function($) {
 		} else {
 			$browser.find('.media-toolbar-secondary').append('<i class="fa fa-'+icon+' fa-2x fa-fw"></i><span>'+icon+'</span>');
 		}
+		return false;
+	});
+
+	// Texture browser
+	$('.themeblvd-texture-browser').themeblvd('options', 'setup');
+	$('.themeblvd-texture-browser').themeblvd('options', 'bind');
+
+	$('#texture-browser-perview-color').wpColorPicker({
+		change: function() {
+			$('.themeblvd-texture-browser .select-texture span').css('background-color', $('#texture-browser-perview-color').val() );
+		}
+	});
+
+	$('.themeblvd-texture-browser .wp-color-result').attr('title', 'Temporary Preview Color');
+	$('.themeblvd-texture-browser .select-texture span').css('background-color', $('#texture-browser-perview-color').val() );
+
+	$('.themeblvd-texture-browser .select-texture').on( 'click', function(){
+
+		var $el = $(this);
+
+		$el.closest('.themeblvd-texture-browser').find('.select-texture').each(function(){
+			$(this).removeClass('selected');
+		});
+
+		$el.addClass('selected');
+
+		$el.closest('.themeblvd-texture-browser').find('.texture-selection').val( $el.data('texture') );
+		$el.closest('.themeblvd-texture-browser').find('.current-texture').text( $el.data('texture-name') );
+
 		return false;
 	});
 

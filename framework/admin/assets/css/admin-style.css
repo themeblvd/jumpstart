@@ -309,10 +309,6 @@ optionsframework #publishing-action .ajax-loading {
 	line-height: 30px;
 	width: 30%;
 }
-#optionsframework .section-tabs input {
-	float: left;
-	width: 68%;
-}
 #optionsframework .section-logo .controls input {
 	margin-bottom: 0;
 }
@@ -801,6 +797,9 @@ body.themeblvd-stop-scroll {
 .themeblvd-modal-wrap.small-modal .media-modal-content {
 	min-height: 0;
 }
+.themeblvd-modal-wrap .media-frame .wp-color-result {
+	border: 1px solid #cccccc;
+}
 
 /* Modal Sizes */
 .themeblvd-modal-wrap .small-modal {
@@ -888,6 +887,54 @@ body.themeblvd-stop-scroll {
 	font-style: italic;
 	margin-top: 21px;
 	margin-left: 10px;
+}
+
+/* Texture Browser */
+.themeblvd-texture-browser .themeblvd-modal {
+	z-index: 100002;
+}
+.themeblvd-texture-browser .wp-picker-container {
+	position: absolute;
+	top: 19px;
+	left: 210px;
+}
+.themeblvd-texture-browser .media-frame .wp-color-picker {
+	padding: 3px 5px;
+}
+.themeblvd-texture-browser h2 span {
+	font-size: 12px;
+	font-style: italic;
+	color: #888888;
+}
+.themeblvd-texture-browser .select-texture-wrap {
+	display: inline-block;
+	padding-right: 10px;
+}
+.themeblvd-texture-browser .select-texture {
+	border: 4px solid #ffffff;
+	display: inline-block;
+	outline: none;
+}
+.themeblvd-texture-browser .select-texture.selected {
+	-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+.themeblvd-texture-browser .select-texture span {
+	display: block;
+	width: 100px;
+	height: 100px;
+}
+.themeblvd-texture-browser .texture-label {
+	font-size: 11px;
+	color: #888888;
+	margin-top: 0;
+	text-align: center;
+}
+.themeblvd-texture-browser .current-texture {
+	color: #888888;
+	display: block;
+	font-size: 14px;
+	margin: 20px 0 0 20px;
 }
 
 /* Inner */

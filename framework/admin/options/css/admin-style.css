@@ -135,9 +135,6 @@
 	clear: both;
 	margin-top: 18px;
 }
-#optionsframework div.section-background .controls input.upload {
-	width: 47%;
-}
 #optionsframework .controls .of-radio-img-img {
 	border: 3px solid #f9f9f9;
 	cursor: pointer;

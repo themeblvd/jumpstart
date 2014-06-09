@@ -662,167 +662,227 @@ function themeblvd_column_class_legacy( $class ) {
 function themeblvd_get_textures() {
 	$imagepath = apply_filters( 'themeblvd_textures_img_path', get_template_directory_uri().'/framework/assets/images/textures/' );
 	$textures = array(
+		'arches' => array(
+			'name' 		=> __( 'Arches', 'themeblvd' ),
+			'url' 		=> $imagepath.'arches.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+			'size'		=> '103px 23px'
+		),
 		'boxy' => array(
 			'name' 		=> __( 'Boxy', 'themeblvd' ),
 			'url' 		=> $imagepath.'boxy.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
+		),
+		'brick_wall' => array(
+			'name' 		=> __( 'Brick Wall', 'themeblvd' ),
+			'url' 		=> $imagepath.'brick_wall.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
 		),
 		'carbon_classic' => array(
 			'name' 		=> __( 'Carbon Classic', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_classic.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'carbon_diagonal' => array(
 			'name' 		=> __( 'Carbon Diagonal', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_diagonal.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'carbon_weave' => array(
 			'name' 		=> __( 'Carbon Weave', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_weave.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'chex' => array(
 			'name' 		=> __( 'Chex', 'themeblvd' ),
 			'url' 		=> $imagepath.'chex.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'concrete' => array(
 			'name' 		=> __( 'Concrete', 'themeblvd' ),
 			'url' 		=> $imagepath.'concrete.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
+		),
+		'climpek' => array(
+			'name' 		=> __( 'Climpek', 'themeblvd' ),
+			'url' 		=> $imagepath.'climpek.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
 		),
 		'cross' => array(
 			'name' 		=> __( 'Crosses', 'themeblvd' ),
 			'url' 		=> $imagepath.'cross.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'denim' => array(
 			'name' 		=> __( 'Denim', 'themeblvd' ),
 			'url' 		=> $imagepath.'denim.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'diagnol_thin' => array(
 			'name' 		=> __( 'Diagonal (thin)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thin.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'diagnol_thick' => array(
 			'name' 		=> __( 'Diagonal (thick)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thick.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'diamonds' => array(
 			'name' 		=> __( 'Diamonds', 'themeblvd' ),
 			'url' 		=> $imagepath.'diamonds.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'escheresque' => array(
+			'name' 		=> __( 'Escheresque', 'themeblvd' ),
+			'url' 		=> $imagepath.'escheresque.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '46px 29px'
 		),
 		'grid' => array(
 			'name' 		=> __( 'Grid', 'themeblvd' ),
 			'url' 		=> $imagepath.'grid.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'grunge' => array(
 			'name' 		=> __( 'Grunge', 'themeblvd' ),
 			'url' 		=> $imagepath.'grunge.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'feather' => array(
+			'name' 		=> __( 'Feather', 'themeblvd' ),
+			'url' 		=> $imagepath.'feather.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '500px 333px'
 		),
 		'honey_comb' => array(
 			'name' 		=> __( 'Honey Comb', 'themeblvd' ),
 			'url' 		=> $imagepath.'honey_comb.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'leather' => array(
 			'name' 		=> __( 'Leather', 'themeblvd' ),
 			'url' 		=> $imagepath.'leather.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'metal' => array(
 			'name' 		=> __( 'Metal', 'themeblvd' ),
 			'url' 		=> $imagepath.'metal.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'mosaic' => array(
 			'name' 		=> __( 'Mosaic', 'themeblvd' ),
 			'url' 		=> $imagepath.'mosaic.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
+		),
+		'mosaic_triangles' => array(
+			'name' 		=> __( 'Mosaic Triangles', 'themeblvd' ),
+			'url' 		=> $imagepath.'mosaic_triangles.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
 		),
 		'noise' => array(
 			'name' 		=> __( 'Noise', 'themeblvd' ),
 			'url' 		=> $imagepath.'noise.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'paper' => array(
 			'name' 		=> __( 'Paper', 'themeblvd' ),
 			'url' 		=> $imagepath.'paper.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'plaid' => array(
 			'name' 		=> __( 'Plaid', 'themeblvd' ),
 			'url' 		=> $imagepath.'plaid.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'pixel_weave' => array(
+			'name' 		=> __( 'Pixel Weave', 'themeblvd' ),
+			'url' 		=> $imagepath.'pixel_weave.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '64px 64px'
 		),
 		'rubber' => array(
 			'name' 		=> __( 'Rubber', 'themeblvd' ),
 			'url' 		=> $imagepath.'rubber.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'squares' => array(
 			'name' 		=> __( 'Squares', 'themeblvd' ),
 			'url' 		=> $imagepath.'squares.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'stacked_circles' => array(
+			'name' 		=> __( 'Stacked Circles', 'themeblvd' ),
+			'url' 		=> $imagepath.'stacked_circles.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '9px 9px'
+		),
+		'swirl' => array(
+			'name' 		=> __( 'Swirl', 'themeblvd' ),
+			'url' 		=> $imagepath.'swirl.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+			'size'		=> '100px 100px'
 		),
 		'textile' => array(
 			'name' 		=> __( 'Textile', 'themeblvd' ),
 			'url' 		=> $imagepath.'textile.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'vertical_fabric' => array(
 			'name' 		=> __( 'Vertical Fabric', 'themeblvd' ),
 			'url' 		=> $imagepath.'vertical_fabric.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'vintage' => array(
 			'name' 		=> __( 'Vintage', 'themeblvd' ),
 			'url' 		=> $imagepath.'vintage.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'wood' => array(
 			'name' 		=> __( 'Wood', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'wood_planks' => array(
 			'name' 		=> __( 'Wood Planks', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood_planks.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'divider' => array(
 			'name' 		=> __( '---------------', 'themeblvd' ),
@@ -830,167 +890,227 @@ function themeblvd_get_textures() {
 			'position' 	=> null,
 			'repeat' 	=> null,
 		),
+		'arches_light' => array(
+			'name' 		=> __( 'Light Arches', 'themeblvd' ),
+			'url' 		=> $imagepath.'arches_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+			'size'		=> '103px 23px'
+		),
 		'boxy_light' => array(
 			'name' 		=> __( 'Light Boxy', 'themeblvd' ),
 			'url' 		=> $imagepath.'boxy_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
+		),
+		'brick_wall_light' => array(
+			'name' 		=> __( 'Light Brick Wall', 'themeblvd' ),
+			'url' 		=> $imagepath.'brick_wall_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
 		),
 		'carbon_classic_light' => array(
 			'name' 		=> __( 'Light Carbon Classic', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_classic_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'carbon_diagonal_light' => array(
 			'name' 		=> __( 'Light Carbon Diagonal', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_diagonal_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'carbon_weave_light' => array(
 			'name' 		=> __( 'Light Carbon Weave', 'themeblvd' ),
 			'url' 		=> $imagepath.'carbon_weave_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'chex_light' => array(
 			'name' 		=> __( 'Light Chex', 'themeblvd' ),
 			'url' 		=> $imagepath.'chex_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'concrete_light' => array(
 			'name' 		=> __( 'Light Concrete', 'themeblvd' ),
 			'url' 		=> $imagepath.'concrete_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
+		),
+		'climpek_light' => array(
+			'name' 		=> __( 'Light Climpek', 'themeblvd' ),
+			'url' 		=> $imagepath.'climpek_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
 		),
 		'cross_light' => array(
 			'name' 		=> __( 'Light Crosses', 'themeblvd' ),
 			'url' 		=> $imagepath.'cross_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'denim_light' => array(
 			'name' 		=> __( 'Light Denim', 'themeblvd' ),
 			'url' 		=> $imagepath.'denim_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'diagnol_thin_light' => array(
 			'name' 		=> __( 'Light Diagonal (thin)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thin_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'diagnol_thick_light' => array(
 			'name' 		=> __( 'Light Diagonal (thick)', 'themeblvd' ),
 			'url' 		=> $imagepath.'diagnol_thick_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'diamonds_light' => array(
 			'name' 		=> __( 'Light Diamonds', 'themeblvd' ),
 			'url' 		=> $imagepath.'diamonds_light.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'escheresque_light' => array(
+			'name' 		=> __( 'Light Escheresque', 'themeblvd' ),
+			'url' 		=> $imagepath.'escheresque_light.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '46px 29px'
 		),
 		'grid_light' => array(
 			'name' 		=> __( 'Light Grid', 'themeblvd' ),
 			'url' 		=> $imagepath.'grid_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'grunge_light' => array(
 			'name' 		=> __( 'Light Grunge', 'themeblvd' ),
 			'url' 		=> $imagepath.'grunge_light.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'feather_light' => array(
+			'name' 		=> __( 'Light Feather', 'themeblvd' ),
+			'url' 		=> $imagepath.'feather_light.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '500px 333px'
 		),
 		'honey_comb_light' => array(
 			'name' 		=> __( 'Light Honey Comb', 'themeblvd' ),
 			'url' 		=> $imagepath.'honey_comb_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'leather_light' => array(
 			'name' 		=> __( 'Light Leather', 'themeblvd' ),
 			'url' 		=> $imagepath.'leather_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'metal_light' => array(
 			'name' 		=> __( 'Light Metal', 'themeblvd' ),
 			'url' 		=> $imagepath.'metal_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'mosaic_light' => array(
 			'name' 		=> __( 'Light Mosaic', 'themeblvd' ),
 			'url' 		=> $imagepath.'mosaic_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
+		),
+		'mosaic_triangles_light' => array(
+			'name' 		=> __( 'Light Mosaic Triangles', 'themeblvd' ),
+			'url' 		=> $imagepath.'mosaic_triangles_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
 		),
 		'noise_light' => array(
 			'name' 		=> __( 'Light Noise', 'themeblvd' ),
 			'url' 		=> $imagepath.'noise_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'paper_light' => array(
 			'name' 		=> __( 'Light Paper', 'themeblvd' ),
 			'url' 		=> $imagepath.'paper_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'plaid_light' => array(
 			'name' 		=> __( 'Light Plaid', 'themeblvd' ),
 			'url' 		=> $imagepath.'plaid_light.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'pixel_weave_light' => array(
+			'name' 		=> __( 'Light Pixel Weave', 'themeblvd' ),
+			'url' 		=> $imagepath.'pixel_weave_light.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '64px 64px'
 		),
 		'rubber_light' => array(
 			'name' 		=> __( 'Light Rubber', 'themeblvd' ),
 			'url' 		=> $imagepath.'rubber_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'squares_light' => array(
 			'name' 		=> __( 'Light Squares', 'themeblvd' ),
 			'url' 		=> $imagepath.'squares_light.png',
 			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat'
+		),
+		'stacked_circles_light' => array(
+			'name' 		=> __( 'Light Stacked Circles', 'themeblvd' ),
+			'url' 		=> $imagepath.'stacked_circles_light.png',
+			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
+			'size'		=> '9px 9px'
+		),
+		'swirl_light' => array(
+			'name' 		=> __( 'Light Swirl', 'themeblvd' ),
+			'url' 		=> $imagepath.'swirl_light.png',
+			'position' 	=> '0 0',
+			'repeat' 	=> 'repeat',
+			'size'		=> '100px 100px'
 		),
 		'textile_light' => array(
 			'name' 		=> __( 'Light Textile', 'themeblvd' ),
 			'url' 		=> $imagepath.'textile_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'vertical_fabric_light' => array(
 			'name' 		=> __( 'Light Vertical Fabric', 'themeblvd' ),
 			'url' 		=> $imagepath.'vertical_fabric_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'vintage_light' => array(
 			'name' 		=> __( 'Light Vintage', 'themeblvd' ),
 			'url' 		=> $imagepath.'vintage_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'wood_light' => array(
 			'name' 		=> __( 'Light Wood', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		),
 		'wood_planks_light' => array(
 			'name' 		=> __( 'Light Wood Planks', 'themeblvd' ),
 			'url' 		=> $imagepath.'wood_planks_light.png',
 			'position' 	=> '0 0',
-			'repeat' 	=> 'repeat',
+			'repeat' 	=> 'repeat'
 		)
 
 	);
@@ -1006,7 +1126,7 @@ function themeblvd_get_textures() {
  * @param $type string type of select to return
  * @return $select array items for select
  */
-function themeblvd_get_select( $type ) {
+function themeblvd_get_select( $type, $force_single = false ) {
 
 	// WPML compat
 	if ( isset( $GLOBALS['sitepress'] ) ) {
@@ -1124,6 +1244,45 @@ function themeblvd_get_select( $type ) {
 
 				// Piece it all together
 				$select[$size] = sprintf( '%s (%d x %d, %s)', $size, $width, $height, $crop_desc );
+
+			}
+			break;
+
+		// Framework textures
+		case 'textures' :
+
+			$textures = themeblvd_get_textures();
+
+			if ( $force_single ) {
+
+				foreach ( $textures as $texture_id => $texture ) {
+					$select[$texture_id] = $texture['name'];
+				}
+
+			} else {
+
+				$select = array(
+					'dark' => array(
+						'label' 	=> __('For Darker Background Color', 'themeblvd'),
+						'options'	=> array()
+					),
+					'light' => array(
+						'label' 	=> __('For Lighter Background Color', 'themeblvd'),
+						'options'	=> array()
+					)
+				);
+
+				$optgroup = 'dark';
+
+				foreach ( $textures as $texture_id => $texture ) {
+
+					if ( $texture_id == 'divider' ) {
+						$optgroup = 'light';
+						continue;
+					}
+
+					$select[$optgroup]['options'][$texture_id] = $texture['name'];
+				}
 
 			}
 			break;

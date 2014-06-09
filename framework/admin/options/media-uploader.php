@@ -114,6 +114,7 @@ function themeblvd_media_uploader( $args ) {
 
 		case 'background' :
 			$data['title'] = __('Select Background Image', 'themeblvd');
+			$data['upload'] = __('Get Image', 'themeblvd');
 			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd') .'" />'."\n";
 			break;
 

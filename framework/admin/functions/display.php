@@ -1013,7 +1013,7 @@ function themeblvd_editor( $args = array() ) {
 }
 
 /**
- * Outputs Editor in hidden modal window that can
+ * Outputs icon browser in hidden modal window that can
  * be accessed by other options.
  *
  * @since 2.5.0
@@ -1084,6 +1084,86 @@ function themeblvd_icon_browser( $args = array() ) {
 	</div>
 	<?php
 
+}
+
+/**
+ * Outputs texture browser in hidden modal window that can
+ * be accessed by other options.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_texture_browser( $args = array() ) {
+
+	// Get icons from framework (cached for 24 hours)
+	$textures = themeblvd_get_textures();
+	?>
+	<div id="themeblvd-texture-browser" class="themeblvd-modal-wrap themeblvd-texture-browser hide">
+		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
+
+			<a class="media-modal-close" href="#" title="Close">
+				<span class="media-modal-icon"></span>
+			</a>
+
+			<div class="media-modal-content">
+				<div class="media-frame wp-core-ui hide-menu hide-router">
+
+					<div class="media-frame-title">
+						<h1><?php _e('Select a texture', 'themeblvd'); ?></h1>
+						<input id="texture-browser-perview-color" type="text" value="#00366d" data-default-color="#00366d" />
+					</div><!-- .media-frame-title (end) -->
+
+					<div class="media-frame-content">
+						<div class="media-frame-content-inner">
+							<div class="content-mitt">
+								<div class="icon-browser">
+									<?php
+									echo '<div class="texture-header">';
+									echo '<h2>'.__('Dark Textures', 'themeblvd').'</h2>';
+									echo '</div>';
+
+									foreach ( $textures as $id => $texture ) {
+
+										if ( $id == 'divider' ) {
+											echo '<div class="texture-header">';
+											echo '<h2>'.__('Light Textures <span>(Above textures tweaked slightly to be overlaid on lighter background colors)</span>', 'themeblvd').'</h2>';
+											echo '</div>';
+											continue;
+										}
+
+										$size = '';
+										if ( isset( $texture['size'] ) ) {
+											$size = $texture['size'];
+										}
+
+										echo '<div class="select-texture-wrap">';
+										printf( '<a href="#" class="select-texture texture-%s" data-texture="%s" data-texture-name="%s"><span style="background-image: url(%s); background-position: %s; background-repeat: %s; background-size: %s;"></span></a>', $id, $id, $texture['name'], $texture['url'], $texture['position'], $texture['repeat'], $size );
+										printf( '<p class="texture-label">%s</p>', str_replace('Light ', '', $texture['name']) );
+										echo '</div><!-- .select-texture-wrap (end) -->';
+									}
+									?>
+								</div>
+							</div>
+						</div><!-- .media-frame-content-inner (end) -->
+					</div><!-- .media-frame-content (end) -->
+
+					<div class="media-frame-toolbar">
+						<div class="media-toolbar-secondary">
+							<input type="hidden" class="texture-selection" value="" />
+							<span class="current-texture"></span>
+						</div><!-- .media-toolbar-secondary (end) -->
+						<div class="media-toolbar">
+							<div class="media-toolbar-primary">
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php _e('Use Texture', 'themeblvd'); ?></a>
+							</div>
+						</div><!-- .media-toolbar (end) -->
+					</div><!-- .media-frame-toolbar (end) -->
+
+				</div><!-- .media-frame (end) -->
+			</div><!-- .media-modal-content (end) -->
+
+		</div><!-- .media-modal (end) -->
+	</div>
+	<?php
 }
 
 if ( !function_exists( 'themeblvd_options_footer_text_default' ) ) :

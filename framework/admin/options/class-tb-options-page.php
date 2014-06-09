@@ -77,6 +77,14 @@ class Theme_Blvd_Options_Page {
 	public $icons_image = false;
 
 	/**
+	 * Whether options page has texture browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $textures = false;
+
+	/**
 	 * URL to importer, if enabled
 	 *
 	 * @since 2.5.0
@@ -155,14 +163,28 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
-			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image ) {
+			// Selects, looking for texture browser
+			if ( $option['type'] == 'select' ) {
+
+				if ( isset( $option['select'] ) && $option['select'] == 'textures' ) {
+					$this->textures = true;
+				}
+
+			}
+
+			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->textures ) {
 				break;
 			}
 		}
 
-		// Add icon browsers into footer
+		// Add icon browsers
 		if ( $this->icons_vector || $this->icons_image ) {
 			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
+		}
+
+		// Add texture browsers
+		if ( $this->textures ) {
+			add_action( 'current_screen', array( $this, 'add_texture_browser' ) );
 		}
 
 		// Add Editor into footer, which any textarea type
@@ -178,11 +200,6 @@ class Theme_Blvd_Options_Page {
 				}
 
 			}
-		}
-
-		// Legacy media uploader
-		if ( ! function_exists( 'wp_enqueue_media' ) ) {
-			add_action( 'admin_init', 'optionsframework_mlu_init' );
 		}
 
 		// Create any objects needed for certain types of
@@ -487,6 +504,20 @@ class Theme_Blvd_Options_Page {
 
 		if ( $this->icons_image ) {
 			themeblvd_icon_browser( array( 'type' => 'image' ) );
+		}
+	}
+
+	/**
+	 * Hook in hidden texture browser modal.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_texture_browser() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', 'themeblvd_texture_browser' );
 		}
 	}
 
