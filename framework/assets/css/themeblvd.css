@@ -3765,6 +3765,11 @@ button.mfp-arrow {
 	padding: 0 !important;
 }
 
+/* Columns */
+.element-columns .col.has-bg {
+	padding: 30px;
+}
+
 /* Headline */
 .element-headline {
 	padding-bottom: 0;

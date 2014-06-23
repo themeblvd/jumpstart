@@ -231,7 +231,7 @@ function themeblvd_columns( $args, $columns = null ) {
 
 		if ( $args['layout_id'] == 0 && $columns ) {
 
-			echo '<div class="'.$grid_class.'">';
+			echo '<div class="col '.$grid_class.'">';
 
 			if ( isset( $columns[$i] ) ) {
 
@@ -265,7 +265,7 @@ function themeblvd_columns( $args, $columns = null ) {
 			}
 
 			// Start column
-			printf('<div class="%s %s" style="%s" data-parallax="%s">', $grid_class, themeblvd_get_display_class($display), themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
+			printf('<div class="col %s %s" style="%s" data-parallax="%s">', $grid_class, themeblvd_get_display_class($display), themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
 
 			// Content blocks
 			if ( ! empty( $column['blocks'] ) ) {
