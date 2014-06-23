@@ -234,6 +234,9 @@ if ( typeof Object.create !== 'function' ) {
                 // Another modal is already open, and this
                 // one is appearing above it.
                 $body.addClass('themeblvd-secondary-modal-on');
+                self.$modal_window.find('.themeblvd-modal').removeClass('themeblvd-first-modal').addClass('themeblvd-second-modal');
+
+                $body.find('.themeblvd-first-modal').prepend('<div class="inline-media-modal-backdrop"></div>');
 
             } else {
 
@@ -244,6 +247,9 @@ if ( typeof Object.create !== 'function' ) {
 
                 // Add backdrop
                 $body.append('<div id="themeblvd-modal-backdrop" class="media-modal-backdrop"></div>');
+
+                // Add class to denote original base modal
+                self.$modal_window.find('.themeblvd-modal').addClass('themeblvd-first-modal');
 
                 // Close all open modals
                 $('#themeblvd-modal-backdrop').off( 'click.themeblvd-modal-backdrop' );
@@ -360,9 +366,11 @@ if ( typeof Object.create !== 'function' ) {
             // Put everything outside of the modal back
             if ( self.secondary ) {
 
-                // Closing a modal on top of another modal,
-                // so only remove class, nothing else.
+                // Closing a modal on top of another modal.
+                // Remove body class and extra backdrop.
                 $body.removeClass('themeblvd-secondary-modal-on');
+                $body.find('.themeblvd-modal-wrap .inline-media-modal-backdrop').remove();
+
 
             } else {
 
