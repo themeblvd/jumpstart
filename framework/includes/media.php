@@ -431,18 +431,25 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
  */
 function themeblvd_get_simple_slider( $images, $args ) {
 
+	$output = '';
+
 	$defaults = array(
-		'id'			=> uniqid('slider_'),
-		'crop'			=> 'slider-large',
-		'interval'		=> '5',
-		'pause'			=> true,
-		'wrap'			=> true,
-		'nav_standard'	=> true,
-		'nav_arrows'	=> true,
-		'nav_thumbs'	=> false,
-		'thumb_link'	=> true,
-		'thumb_width'	=> '45',
-		'dark_text'		=> false
+		'id'				=> uniqid('slider_'),	// Unique ID for the slider
+		'crop'				=> 'slider-large',		// Crop size for images
+		'interval'			=> '5',					// How fast to auto rotate betweens slides
+		'pause'				=> true,				// Whether to pause slider on hover
+		'wrap'				=> true,				// When slider auto-rotates, whether it continuously cycles
+		'nav_standard'		=> true,				// Whether to show standard navigation dots
+		'nav_arrows'		=> true,				// Whether to show navigation arrows
+		'nav_thumbs'		=> false,				// Whether to show navigation image thumbnails
+		'thumb_link'		=> true,				// Whether linked slides have animated hover overlay effect
+		'thumb_width'		=> '45',				// Pixel width of thumbnail navigation images
+		'dark_text'			=> false,				// Whether to use dark text for title/descriptions/standard nav, use when images are light
+		'cover'				=> false,				// Whether images horizontal space 100%
+		'position'			=> 'middle center',		// If cover is true, how slider images are positioned (i.e. with background-position)
+		'height_desktop'	=> '400',				// If cover is true, slider height for desktop viewport
+		'height_tablet'		=> '300',				// If cover is true, slider height for tablet viewport
+		'height_mobile'		=> '200',				// If cover is true, slider height for mobile viewport
 	);
 	$args = apply_filters( 'themeblvd_simple_slider_args', wp_parse_args( $args, $defaults ) );
 
@@ -479,7 +486,39 @@ function themeblvd_get_simple_slider( $images, $args ) {
 		$class .= ' dark-text';
 	}
 
-	$output  = sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $args['id'], $class, $interval, $args['pause'], $args['wrap'] );
+	if ( $args['cover'] ) {
+		$class .= ' cover';
+	}
+
+	// Inline styles for popout slider with background images that cover full width
+	if ( $args['cover'] ) {
+
+		$style = "\n<style>\n";
+
+		$style .= sprintf( "#%s .image {\n", $args['id'] );
+		$style .= sprintf( "background-position: %s;\n", $args['position'] );
+		$style .= sprintf( "height: %spx;\n", $args['height_desktop'] );
+		$style .= "}\n";
+
+		$style .= "@media (max-width: 992px) {\n";
+		$style .= sprintf( "#%s .image {\n", $args['id'] );
+		$style .= sprintf( "height: %spx;\n", $args['height_tablet'] );
+		$style .= "}\n";
+		$style .= "}\n";
+
+		$style .= "@media (max-width: 767px) {\n";
+		$style .= sprintf( "#%s .image {\n", $args['id'] );
+		$style .= sprintf( "height: %spx;\n", $args['height_mobile'] );
+		$style .= "}\n";
+		$style .= "}\n";
+
+		$style .= "</style>\n";
+
+		$output .= apply_filters( 'themeblvd_simple_slider_cover_style', $style, $args );
+
+	}
+
+	$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $args['id'], $class, $interval, $args['pause'], $args['wrap'] );
 	$output .= '<div class="carousel-control-wrap">';
 
 	// Standard nav indicators
@@ -521,20 +560,26 @@ function themeblvd_get_simple_slider( $images, $args ) {
 
 			$output .= sprintf( '<div class="%s">', $class );
 
-			$image = sprintf( '<img src="%s" alt="%s" />', $img['src'], $img['alt'] );
+			$image = '';
+
+			if ( $args['cover'] ) {
+				$image = sprintf( '<div class="image" style="background-image: url(%s);"></div>', $img['src'] );
+			} else {
+				$image = sprintf( '<img src="%s" alt="%s" />', $img['src'], $img['alt'] );
+			}
 
 			if ( $img['link'] ) {
 
 				$a_class = 'slide-link';
 
-				if ( $args['nav_thumbs'] ) {
+				if ( $args['thumb_link'] ) {
 					$a_class .= ' slide-thumbnail-link';
 					$image .= themeblvd_get_image_overlay();
 				}
 
 				if ( $img['link'] == 'image' || $img['link'] == 'video' ) {
 
-					if ( $args['nav_thumbs'] ) {
+					if ( $args['thumb_link'] ) {
 						$a_class .= ' '.$img['link'];
 					}
 
@@ -542,13 +587,13 @@ function themeblvd_get_simple_slider( $images, $args ) {
 						'item' 		=> $image,
 						'link' 		=> $img['link_url'],
 						'title' 	=> $img['alt'],
-						'class' 	=> $a_class.' '.$img['link']
+						'class' 	=> $a_class
 					);
 					$output .= themeblvd_get_link_to_lightbox( $lightbox );
 
 				} else {
 
-					if ( $args['nav_thumbs'] ) {
+					if ( $args['thumb_link'] ) {
 						if ( $img['link'] == '_self' ) {
 							$a_class .= ' post';
 						} else if ( $img['link'] == '_blank' ) {
@@ -556,7 +601,7 @@ function themeblvd_get_simple_slider( $images, $args ) {
 						}
 					}
 
-					$output .= sprintf( '<a href="%s" title="%s" target="%s">%s</a>', $img['link_url'], $img['alt'], $img['link'], $image );
+					$output .= sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $img['link_url'], $img['alt'], $a_class, $img['link'], $image );
 				}
 
 			} else {
