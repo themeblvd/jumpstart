@@ -64,12 +64,15 @@
 			themeblvd_featured_end();
 		}
 
-		// Start main area
-		themeblvd_main_start();
-		themeblvd_main_top();
+		// Start main area (if not a custom layout)
+		if ( ! themeblvd_config( 'builder_post_id' ) ) {
 
-		// Breadcrumbs
-		themeblvd_breadcrumbs();
+			themeblvd_main_start();
+			themeblvd_main_top();
+
+			// Breadcrumbs
+			themeblvd_breadcrumbs();
+		}
 
 		// Before sidebar+content layout
 		themeblvd_before_layout();

@@ -509,3 +509,70 @@
         margin-left: 10%;
     }
 }
+
+/* Equal height columns */
+.container-xs-height {
+    display: table;
+    padding-left: 0;
+    padding-right: 0;
+}
+.row-xs-height {
+    display: table-row;
+}
+.col-xs-height {
+    display: table-cell;
+    float: none;
+}
+@media (min-width: 768px) {
+    .container-sm-height {
+        display: table;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .row-sm-height {
+        display: table-row;
+    }
+    .col-sm-height {
+        display: table-cell;
+        float: none;
+    }
+}
+@media (min-width: 992px) {
+    .container-md-height {
+        display: table;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .row-md-height {
+        display: table-row;
+    }
+    .col-md-height {
+        display: table-cell;
+        float: none;
+    }
+}
+@media (min-width: 1200px) {
+    .container-lg-height {
+        display: table;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .row-lg-height {
+        display: table-row;
+    }
+    .col-lg-height {
+        display: table-cell;
+        float: none;
+    }
+}
+
+/* Alignment for equal height columns */
+.col-top {
+    vertical-align: top;
+}
+.col-middle {
+    vertical-align: middle;
+}
+.col-bottom {
+    vertical-align: bottom;
+}

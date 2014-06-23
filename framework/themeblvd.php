@@ -187,8 +187,10 @@ if ( is_admin() ) {
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
 
 	// Elements
-	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 3 );
-	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 3 );
+	add_action( 'themeblvd_section_open', 'themeblvd_section_open_default' );
+	add_action( 'themeblvd_section_close', 'themeblvd_section_close_default' );
+	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 4 );
+	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 4 );
 
 	// WordPress Multisite Signup
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );

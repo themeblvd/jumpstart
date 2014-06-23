@@ -130,8 +130,10 @@
 	    				var $el = $(this), i, num = $el.find('.select-col-num').val();
 	    				if ( num > 1 ) {
 	    					$el.find('.section-column_widths').show();
+	    					$el.closest('.widget-content').find('.column-height').show();
 	    				} else {
 	    					$el.find('.section-column_widths').hide();
+	    					$el.closest('.widget-content').find('.column-height').hide();
 	    				}
 	    				$el.find('.section-content').hide();
 	    				for ( i = 1; i <= num; i++) {
@@ -141,24 +143,24 @@
 
     				// Show/Hide groupings
     				$this.find('.show-hide').each(function(){
-    					var el = $(this), checkbox = el.children('.trigger').find('input');
+    					var $el = $(this), checkbox = $el.children('.trigger').find('input');
     					if( checkbox.is(':checked') ) {
-    						el.children('.receiver').show();
+    						$el.children('.receiver').show();
     					}
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
     				$this.find('.show-hide-toggle').each(function(){
-    					var el = $(this), value = el.children('.trigger').find('.of-input').val();
-    					el.children('.receiver').hide();
-    					el.children('.receiver-'+value).show();
+    					var $el = $(this), value = $el.children('.trigger').find('.of-input').val();
+    					$el.children('.receiver').hide();
+    					$el.children('.receiver-'+value).show();
     				});
 
     				// Where one option's value determines which description displays on another option
     				$this.find('.desc-toggle').each(function(){
-    					var el = $(this), value = el.children('.trigger').find('.of-input').val();
-    					el.children('.receiver .explain').hide();
-    					el.children('.receiver .explain.'+value).show();
+    					var $el = $(this), value = $el.children('.trigger').find('.of-input').val();
+    					$el.find('.receiver .explain').hide();
+    					$el.find('.receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -221,6 +223,23 @@
 						$el.closest('.subgroup').find('.match .of-input').val($el.val());
 					});
 
+					// Background options
+					$this.find('.select-parallax').each(function(){
+
+						var $el = $(this),
+							val = $el.find('.of-background-attachment').val();
+
+						if ( val == 'parallax' ) {
+							$el.find('.of-background-position').closest('.tb-fancy-select').hide();
+							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
+							$el.find('.parallax').show();
+						} else {
+							$el.find('.of-background-position').closest('.tb-fancy-select').show();
+							$el.find('.of-background-size').closest('.tb-fancy-select').show();
+							$el.find('.parallax').hide();
+						}
+					});
+
 					// jQuery UI slider
 					$this.find('.jquery-ui-slider').each(function(){
 
@@ -251,7 +270,9 @@
 					});
 
 					// WP Color Picker
-					$this.find('.tb-color-picker').wpColorPicker();
+					if ( $.isFunction( $.fn.wpColorPicker ) ) {
+						$this.find('.tb-color-picker').wpColorPicker();
+					}
 
 					// Remove tooltips if hovered link is clicked
 					$this.find('.tb-tooltip-link').click(function(){
@@ -416,8 +437,10 @@
 	    				var $el = $(this), i, num = $el.val(), $container = $el.closest('.columns');
 	    				if ( num > 1 ) {
 	    					$container.find('.section-column_widths').show();
+	    					$container.closest('.widget-content').find('.column-height').show();
 	    				} else {
 	    					$container.find('.section-column_widths').hide();
+	    					$container.closest('.widget-content').find('.column-height').hide();
 	    				}
 	    				$container.find('.section-content').hide();
 	    				for ( i = 1; i <= num; i++) {
@@ -437,16 +460,16 @@
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
     				$this.on( 'change', '.show-hide-toggle > .trigger .of-input', function() {
-    					var el = $(this), value = el.val(), group = el.closest('.show-hide-toggle');
-    					group.children('.receiver').hide();
-    					group.children('.receiver-'+value).show();
+    					var $el = $(this), value = $el.val(), $group = $el.closest('.show-hide-toggle');
+    					$group.children('.receiver').hide();
+    					$group.children('.receiver-'+value).show();
     				});
 
     				// Where one option's value determines which description displays on another option
     				$this.on( 'change', '.desc-toggle > .trigger .of-input', function() {
-    					var el = $(this), value = el.val(), group = el.closest('.desc-toggle');
-    					group.children('.receiver .explain').hide();
-    					group.children('.receiver .explain.'+value).show();
+    					var $el = $(this), value = $el.val(), $group = $el.closest('.desc-toggle');
+    					$group.find('.receiver .explain').hide();
+    					$group.find('.receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -477,6 +500,22 @@
 					$this.on( 'change', '.match-trigger .of-input', function(){
 						var $el = $(this);
 						$el.closest('.subgroup').find('.match .of-input').val($el.val());
+					});
+
+					// Background options
+					$this.on( 'change', '.select-parallax .of-background-attachment', function(){
+
+						var $el = $(this).closest('.select-parallax');
+
+						if ( $(this).val() == 'parallax' ) {
+							$el.find('.of-background-position').closest('.tb-fancy-select').hide();
+							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
+							$el.find('.parallax').show();
+						} else {
+							$el.find('.of-background-position').closest('.tb-fancy-select').show();
+							$el.find('.of-background-size').closest('.tb-fancy-select').show();
+							$el.find('.parallax').hide();
+						}
 					});
 
 	    			// Modals
@@ -1936,11 +1975,13 @@ jQuery(document).ready(function($) {
 	$('.themeblvd-texture-browser').themeblvd('options', 'setup');
 	$('.themeblvd-texture-browser').themeblvd('options', 'bind');
 
-	$('#texture-browser-perview-color').wpColorPicker({
-		change: function() {
-			$('.themeblvd-texture-browser .select-texture span').css('background-color', $('#texture-browser-perview-color').val() );
-		}
-	});
+	if ( $.isFunction( $.fn.wpColorPicker ) ) {
+		$('#texture-browser-perview-color').wpColorPicker({
+			change: function() {
+				$('.themeblvd-texture-browser .select-texture span').css('background-color', $('#texture-browser-perview-color').val() );
+			}
+		});
+	}
 
 	$('.themeblvd-texture-browser .wp-color-result').attr('title', 'Temporary Preview Color');
 	$('.themeblvd-texture-browser .select-texture span').css('background-color', $('#texture-browser-perview-color').val() );

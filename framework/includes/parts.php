@@ -1027,7 +1027,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
         'title'         => '',          // Header for panel
         'footer'        => '',          // Footer for panel
         'text_align'    => 'left',      // How to align text - left, right, center
-        'align'         => '',          // How to align jumbotron - left, right
+        'align'         => '',          // How to align panel - left, right
         'max_width'     => '',          // Meant to be used with align left/right - 300px, 50%, etc
         'class'         => '',          // Any additional CSS classes
         'wpautop'       => 'true'       // Whether to apply wpautop on content
@@ -1060,7 +1060,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
         $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', $args['title'] );
     }
 
-    $output .= sprintf( '<div class="panel-body">%s</div>', do_shortcode( $content ) );
+    $output .= sprintf( '<div class="panel-body text-%s">%s</div>', apply_filters( 'themeblvd_panel_text', 'dark' ), do_shortcode($content) );
 
     if ( $args['footer'] ) {
         $output .= sprintf( '<div class="panel-footer">%s</div>', $args['footer'] );
@@ -1134,6 +1134,9 @@ function themeblvd_get_toggle( $args ) {
         $icon = 'minus-circle';
     }
 
+    // Content text color
+	$text = apply_filters( 'themeblvd_toggle_body_text', 'dark' );
+
 	// Individual toggle ID (NOT the Accordion ID)
 	$toggle_id = uniqid( 'toggle_'.rand() );
 
@@ -1146,7 +1149,7 @@ function themeblvd_get_toggle( $args ) {
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="'.$toggle_id.'" class="'.$state.'">
-                <div class="panel-body">
+                <div class="panel-body text-'.$text.'">
                     '.$content.'
                 </div><!-- .panel-body (end) -->
             </div><!-- .panel-collapse (end) -->
@@ -1238,6 +1241,8 @@ function themeblvd_get_jumbotron( $args, $content ) {
 
 	$defaults = array(
         'title'         => '',      // Title of unit
+        'bg_color'		=> '',		// Background color - Ex: #000000
+        'text_color'	=> '',		// Text color - Ex: #000000
         'text_align'    => 'left',  // How to align text - left, right, center
         'align'         => '',      // How to align jumbotron - left, right, center, blank for no alignment
         'max_width'     => '',      // Meant to be used with align left/right/center - 300px, 50%, etc
@@ -1258,13 +1263,24 @@ function themeblvd_get_jumbotron( $args, $content ) {
     	$content = wpautop( $content );
     }
 
+    // Setup inline styles
+    $style = '';
+
+    if ( $args['bg_color'] ) {
+    	$style .= sprintf( 'background-color:%s;', $args['bg_color'] );
+    }
+
+    if ( $args['text_color'] ) {
+    	$style .= sprintf( 'color:%s;', $args['text_color'] );
+    }
+
     // Construct initial jumbotron
     if ( $args['title'] ) {
     	$title = sprintf( '<h1>%s</h1>', $args['title'] );
     	$content = $title.$content;
     }
 
-    $jumbotron = sprintf('<div class="jumbotron">%s</div>', do_shortcode( $content ) );
+    $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, do_shortcode( $content ) );
 
     // Wrap the unit
 	$wrap_class = 'jumbotron-wrap';

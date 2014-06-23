@@ -417,8 +417,24 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'checkbox' :
+
+				if ( ! empty( $value['inactive'] ) ) {
+					if ( $value['inactive'] === 'true' ) {
+						$val = 1;
+					} else if( $value['inactive'] === 'false' ) {
+						$val = 0;
+					}
+				}
+
 				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
-				$output .= sprintf( '<input id="%s" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($value['id']), esc_attr( $name ), checked( $val, 1, false ) );
+				$checkbox = sprintf( '<input id="%s" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($value['id']), esc_attr($name), checked( $val, 1, false ) );
+
+				if ( ! empty( $value['inactive'] ) ) {
+					$checkbox = str_replace( '/>', 'disabled="disabled" />', $checkbox );
+				}
+
+				$output .= $checkbox;
+
 				break;
 
 			/*---------------------------------------*/
@@ -631,7 +647,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				}
 
-				// Background Image - New AJAX Uploader using Media Library
+				// Background Image
 				if ( ! isset( $background['image'] ) ) {
 					$background['image'] = '';
 				}
@@ -661,6 +677,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Background Repeat
 				$current_repeat = !empty($background['repeat']) ? $background['repeat'] : '';
+				$output .= '<div class="tb-fancy-select condensed">';
 				$output .= '<select class="of-background of-background-repeat" name="'.esc_attr( $option_name.'['.$value['id'].'][repeat]'  ).'" id="'.esc_attr( $value['id'].'_repeat' ).'">';
 				$repeats = themeblvd_recognized_background_repeat();
 
@@ -671,22 +688,11 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
 				$output .= '<span class="textbox"></span>';
-
-				// Background Position
-				$current_position = !empty($background['position']) ? $background['position'] : '';
-				$output .= '<select class="of-background of-background-position" name="'.esc_attr( $option_name.'['.$value['id'].'][position]' ).'" id="'.esc_attr( $value['id'].'_position' ).'">';
-				$positions = themeblvd_recognized_background_position();
-
-				foreach ( $positions as $key => $position ) {
-					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_position, $key, false ).'>'. esc_html( $position ).'</option>';
-				}
-
-				$output .= '</select>';
-				$output .= '<span class="trigger"></span>';
-				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				// Background Attachment
 				$current_attachment = !empty($background['attachment']) ? $background['attachment'] : '';
+				$output .= '<div class="tb-fancy-select condensed">';
 				$output .= '<select class="of-background of-background-attachment" name="'.esc_attr( $option_name.'['.$value['id'].'][attachment]' ).'" id="'.esc_attr( $value['id'].'_attachment' ).'">';
 				$attachments = themeblvd_recognized_background_attachment();
 
@@ -700,16 +706,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					unset( $attachments['parallax'] );
 				}
 
-				// Fixed position scrolling (will only work if being applied to <body>)
-				$fixed = false;
-				if ( isset( $value['fixed'] ) ) {
-					$fixed = $value['fixed'];
-				}
-
-				if ( ! $fixed ) {
-					unset( $attachments['fixed'] );
-				}
-
 				foreach ( $attachments as $key => $attachment ) {
 					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_attachment, $key, false ).'>'.esc_html( $attachment ).'</option>';
 				}
@@ -717,6 +713,39 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</select>';
 				$output .= '<span class="trigger"></span>';
 				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
+
+				// Background Position
+				$current_position = !empty($background['position']) ? $background['position'] : '';
+				$output .= '<div class="tb-fancy-select condensed">';
+				$output .= '<select class="of-background of-background-position" name="'.esc_attr( $option_name.'['.$value['id'].'][position]' ).'" id="'.esc_attr( $value['id'].'_position' ).'">';
+				$positions = themeblvd_recognized_background_position();
+
+				foreach ( $positions as $key => $position ) {
+					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_position, $key, false ).'>'. esc_html( $position ).'</option>';
+				}
+
+				$output .= '</select>';
+				$output .= '<span class="trigger"></span>';
+				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
+
+				// Background Size
+				$current_size = !empty($background['size']) ? $background['size'] : '';
+				$output .= '<div class="tb-fancy-select condensed">';
+				$output .= '<select class="of-background of-background-size" name="'.esc_attr( $option_name.'['.$value['id'].'][size]' ).'" id="'.esc_attr( $value['id'].'_size' ).'">';
+
+				$sizes = themeblvd_recognized_background_size();
+
+				foreach ( $sizes as $key => $size ) {
+					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_size, $key, false ).'>'. esc_html( $size ).'</option>';
+				}
+
+				$output .= '</select>';
+				$output .= '<span class="trigger"></span>';
+				$output .= '<span class="textbox"></span>';
+				$output .= '</div><!-- .tb-fancy-select (end) -->';
+
 				$output .= '</div>';
 
 				break;

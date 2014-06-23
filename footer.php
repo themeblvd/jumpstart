@@ -15,9 +15,11 @@
  * @package 	Theme Blvd WordPress Framework
  */
 
-		// End main area
-		themeblvd_main_bottom();
-		themeblvd_main_end();
+		// End main area (if not a custom layout)
+		if ( ! themeblvd_config( 'builder_post_id' ) ) {
+			themeblvd_main_bottom();
+			themeblvd_main_end();
+		}
 
 		// Featured area (below)
 		if ( themeblvd_config( 'featured_below' ) ) {

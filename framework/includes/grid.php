@@ -247,8 +247,17 @@ function themeblvd_grid_thumb_class( $columns ){
  *
  * @since 2.5.0
  */
-function themeblvd_get_open_row() {
-	return apply_filters( 'themeblvd_open_row', '<div class="row">' );
+function themeblvd_get_open_row( $class = 'row', $style = '' ) {
+
+	$output = sprintf( '<div class="%s"', $class );
+
+	if ( $style ) {
+		$output .= sprintf(' style="%s"', $style);
+	}
+
+	$output .= '>';
+
+	return apply_filters( 'themeblvd_open_row', $output, $class, $style );
 }
 
 /**
@@ -256,8 +265,8 @@ function themeblvd_get_open_row() {
  *
  * @since 2.0.0
  */
-function themeblvd_open_row() {
-	echo themeblvd_get_open_row();
+function themeblvd_open_row( $class = 'row', $style = '' ) {
+	echo themeblvd_get_open_row( $class, $style );
 }
 
 /**

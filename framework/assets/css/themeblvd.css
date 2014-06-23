@@ -256,6 +256,12 @@ code.block {
 	color: inherit;
 	outline: none;
 }
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus,
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+	color: #666666
+}
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
@@ -277,6 +283,14 @@ code.block {
 /* Carousel */
 .entry-content .tb-bootstrap-carousel {
 	margin-bottom: 20px;
+}
+.tb-bootstrap-carousel .carousel-indicators li {
+	float: left;
+	display: block;
+	margin: 1px 2px;
+}
+.tb-bootstrap-carousel .carousel-indicators li.active {
+	margin: 0 1px;
 }
 .tb-bootstrap-carousel .carousel-control {
 	z-index: 15;
@@ -324,6 +338,15 @@ code.block {
 .tb-bootstrap-carousel.dark-text .carousel-indicators .active {
 	background-color: #333333;
 }
+.tb-bootstrap-carousel.cover .item .image {
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+.tb-bootstrap-carousel .carousel-inner > .item > img,
+.tb-bootstrap-carousel .carousel-inner > .item > a >img {
+	margin: 0 auto;
+}
 
 /* Jumbotron */
 .jumbotron {
@@ -337,6 +360,9 @@ code.block {
 /* Panels */
 .panel p:last-of-type {
 	margin-bottom: 0;
+}
+.panel-footer {
+	color: #666666;
 }
 
 /* =Post Formats
@@ -2518,6 +2544,398 @@ button:active {
 	border-color: #28a4c9;
 }
 
+/* =Textures
+-----------------------------------------------*/
+
+.tb-texture-arches {
+	background-image: url('../images/textures/arches.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 103px 23px;
+}
+.tb-texture-arches_light {
+	background-image: url('../images/textures/arches_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 103px 23px;
+}
+.tb-texture-boxy {
+	background-image: url('../images/textures/boxy.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-boxy_light {
+	background-image: url('../images/textures/boxy_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-brick_wall {
+	background-image: url('../images/textures/brick_wall.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-brick_wall_light {
+	background-image: url('../images/textures/brick_wall_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-carbon_classic {
+	background-image: url('../images/textures/carbon_classic.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-carbon_classic_light {
+	background-image: url('../images/textures/carbon_classic_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-carbon_diagonal {
+	background-image: url('../images/textures/carbon_diagonal.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-carbon_diagonal_light {
+	background-image: url('../images/textures/carbon_diagonal_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-carbon_weave {
+	background-image: url('../images/textures/carbon_weave.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-carbon_weave_light {
+	background-image: url('../images/textures/carbon_weave_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-chex {
+	background-image: url('../images/textures/chex.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-chex_light {
+	background-image: url('../images/textures/chex_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-concrete {
+	background-image: url('../images/textures/concrete.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-concrete_light {
+	background-image: url('../images/textures/concrete_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-climpek {
+	background-image: url('../images/textures/climpek.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 103px 23px;
+}
+.tb-texture-climpek_light {
+	background-image: url('../images/textures/climpek_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 103px 23px;
+}
+.tb-texture-cross {
+	background-image: url('../images/textures/cross.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-cross_light {
+	background-image: url('../images/textures/cross_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-denim {
+	background-image: url('../images/textures/denim.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-denim_light {
+	background-image: url('../images/textures/denim_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-diagnol_thin {
+	background-image: url('../images/textures/diagnol_thin.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-diagnol_thin_light {
+	background-image: url('../images/textures/diagnol_thin_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-diagnol_thick {
+	background-image: url('../images/textures/diagnol_thick.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-diagnol_thick_light {
+	background-image: url('../images/textures/diagnol_thick_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-diamonds {
+	background-image: url('../images/textures/diamonds.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-diamonds_light {
+	background-image: url('../images/textures/diamonds_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-escheresque {
+	background-image: url('../images/textures/escheresque.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 46px 29px;
+}
+.tb-texture-escheresque_light {
+	background-image: url('../images/textures/escheresque_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 46px 29px;
+}
+.tb-texture-grid {
+	background-image: url('../images/textures/grid.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-grid_light {
+	background-image: url('../images/textures/grid_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-grunge {
+	background-image: url('../images/textures/grunge.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-grunge_light {
+	background-image: url('../images/textures/grunge_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-feather {
+	background-image: url('../images/textures/feather.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 500px 333px;
+}
+.tb-texture-feather_light {
+	background-image: url('../images/textures/feather_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 500px 333px;
+}
+.tb-texture-honey_comb {
+	background-image: url('../images/textures/honey_comb.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-honey_comb_light {
+	background-image: url('../images/textures/honey_comb_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-leather {
+	background-image: url('../images/textures/leather.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-leather_light {
+	background-image: url('../images/textures/leather_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-metal {
+	background-image: url('../images/textures/metal.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-metal_light {
+	background-image: url('../images/textures/metal_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-mosaic {
+	background-image: url('../images/textures/mosaic.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-mosaic_light {
+	background-image: url('../images/textures/mosaic_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-mosaic_triangles {
+	background-image: url('../images/textures/mosaic_triangles.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-mosaic_triangles_light {
+	background-image: url('../images/textures/mosaic_triangles_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-noise {
+	background-image: url('../images/textures/noise.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-noise_light {
+	background-image: url('../images/textures/noise_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-paper {
+	background-image: url('../images/textures/paper.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-paper_light {
+	background-image: url('../images/textures/paper_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-plaid {
+	background-image: url('../images/textures/plaid.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-plaid_light {
+	background-image: url('../images/textures/plaid_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-pixel_weave {
+	background-image: url('../images/textures/pixel_weave.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 64px 64px;
+}
+.tb-texture-pixel_weave_light {
+	background-image: url('../images/textures/pixel_weave_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 64px 64px;
+}
+.tb-texture-rubber {
+	background-image: url('../images/textures/rubber.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-rubber_light {
+	background-image: url('../images/textures/rubber_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-squares {
+	background-image: url('../images/textures/squares.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-squares_light {
+	background-image: url('../images/textures/squares_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-stacked_circles {
+	background-image: url('../images/textures/stacked_circles.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 9px 9px;
+}
+.tb-texture-stacked_circles_light {
+	background-image: url('../images/textures/stacked_circles_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 9px 9px;
+}
+.tb-texture-swirl {
+	background-image: url('../images/textures/swirl.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 100px 100px;
+}
+.tb-texture-swirl_light {
+	background-image: url('../images/textures/swirl_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: 100px 100px;
+}
+.tb-texture-textile {
+	background-image: url('../images/textures/textile.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-textile_light {
+	background-image: url('../images/textures/textile_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-vertical_fabric {
+	background-image: url('../images/textures/vertical_fabric.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-vertical_fabric_light {
+	background-image: url('../images/textures/vertical_fabric_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-vintage {
+	background-image: url('../images/textures/vintage.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-vintage_light {
+	background-image: url('../images/textures/vintage_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-wood {
+	background-image: url('../images/textures/wood.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-wood_light {
+	background-image: url('../images/textures/wood_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-wood_planks {
+	background-image: url('../images/textures/wood_planks.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+.tb-texture-wood_planks_light {
+	background-image: url('../images/textures/wood_planks_light.png');
+	background-position: 0 0;
+	background-repeat: repeat;
+}
+
+
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+		only screen and (-moz-min-device-pixel-ratio: 1.5),
+		only screen and (-o-min-device-pixel-ratio: 1.5),
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	/* Use 2x images for retina */
+	/*
+	.tb-texture-honey_comb {
+		background-image: url('../images/textures/honey_comb_2x.png');
+	}
+	*/
+}
+
 /* =Shortcodes
 -----------------------------------------------*/
 
@@ -3293,14 +3711,50 @@ button.mfp-arrow {
 	opacity: 0;
 }
 
+/* =Parallax background
+-----------------------------------------------*/
+
+.tb-parallax {
+	background-position: 50% 0;
+}
+
 /* =Elements
 -----------------------------------------------*/
 
-/* General Classes */
-.element {
-	clear: both;
-	padding-bottom: 20px;
+/* Element Sections */
+.element-section {
+	padding: 30px;
+	position: relative;
 }
+.element-section > .element {
+	clear: both;
+	margin-bottom: 30px;
+	padding: 0.02px; /* margin overflow fix */
+}
+.element-section > .element:last-child {
+	margin-bottom: 0;
+}
+
+/* Section BG shade */
+.element-section.has-bg-shade > .bg-shade {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+.element-section.has-bg-shade > .element {
+	position: relative;
+	z-index: 2;
+}
+
+/* Popout section */
+.element-section.popout {
+	padding: 0;
+}
+
+/* Unstyled element */
 .element-unstyled,
 .element-unstyled .element-inner,
 .element-unstyled .element-inner .element-inner-wrap {
@@ -3334,6 +3788,15 @@ button.mfp-arrow {
 .divider-shadow {
 	background: url('../images/elements/divider-shadow.png') center top no-repeat;
 	height:8px;
+}
+
+/* Jumbotron */
+.element-jumbotron .jumbotron {
+	background-color: transparent;
+	padding: 0;
+}
+.element-jumbotron.text-light .jumbotron {
+	color: #ffffff;
 }
 
 /* Milestones */
@@ -3966,4 +4429,288 @@ button.mfp-arrow {
 	#breadcrumbs.tb-wpml-breadcrumbs .tb-wpml-flaglist {
 		margin-top: 5px;
 	}
+}
+
+/* =Light Text Color
+-----------------------------------------------*/
+
+.text-light {
+	color: #ffffff;
+}
+
+/* Breadcrumbs */
+.text-light .breadcrumb > li > a {
+	color: inherit;
+}
+.text-light .breadcrumb > li + li:before {
+    color: #cccccc;
+}
+.text-light .breadcrumb > .active {
+    color: #ffffff;
+}
+
+/* Thumbnails */
+.text-light .thumbnail,
+.text-light .pretty,
+.text-light .wp-caption {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-color: rgba(0, 0, 0, 0.7);
+}
+.text-light a.pretty:hover,
+.text-light a.pretty:focus,
+.text-light a.pretty:active,
+.text-light a.thumbnail:hover,
+.text-light a.thumbnail:focus,
+.text-light a.thumbnail:active {
+	border-color: rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Forms */
+.text-light .form-control {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
+}
+.text-light .form-control:focus {
+    border-color: rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.text-light input[type="text"],
+.text-light input[type="password"],
+.text-light input[type="email"],
+.text-light input[type="url"],
+.text-light input[type="tel"],
+.text-light input[type="number"],
+.text-light input[type="date"],
+.text-light input[type="time"],
+.text-light input[type="datetime"],
+.text-light input[type="datetime-local"],
+.text-light input[type="month"],
+.text-light textarea,
+.text-light select {
+	color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-color: rgba(0, 0, 0, 0.9);
+}
+.text-light input[type="text"]:focus,
+.text-light input[type="password"]:focus,
+.text-light input[type="email"]:focus,
+.text-light input[type="url"]:focus,
+.text-light input[type="tel"]:focus,
+.text-light input[type="number"]:focus,
+.text-light input[type="date"]:focus,
+.text-light input[type="time"]:focus,
+.text-light input[type="datetime"]:focus,
+.text-light input[type="datetime-local"]:focus,
+.text-light input[type="month"]:focus,
+.text-light textarea:focus {
+	border-color: rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.text-light input[type="text"]::-moz-placeholder,
+.text-light input[type="text"]:-ms-input-placeholder,
+.text-light input[type="text"]::-webkit-input-placeholder,
+.text-light input[type="password"]::-moz-placeholder,
+.text-light input[type="password"]:-ms-input-placeholder,
+.text-light input[type="password"]::-webkit-input-placeholder,
+.text-light input[type="email"]::-moz-placeholder,
+.text-light input[type="email"]:-ms-input-placeholder,
+.text-light input[type="email"]::-webkit-input-placeholder,
+.text-light input[type="url"]::-moz-placeholder,
+.text-light input[type="url"]:-ms-input-placeholder,
+.text-light input[type="url"]::-webkit-input-placeholder,
+.text-light input[type="tel"]::-moz-placeholder,
+.text-light input[type="tel"]:-ms-input-placeholder,
+.text-light input[type="tel"]::-webkit-input-placeholder,
+.text-light input[type="number"]::-moz-placeholder,
+.text-light input[type="number"]:-ms-input-placeholder,
+.text-light input[type="number"]::-webkit-input-placeholder,
+.text-light input[type="date"]::-moz-placeholder,
+.text-light input[type="date"]:-ms-input-placeholder,
+.text-light input[type="date"]::-webkit-input-placeholder,
+.text-light input[type="time"]::-moz-placeholder,
+.text-light input[type="time"]:-ms-input-placeholder,
+.text-light input[type="time"]::-webkit-input-placeholder,
+.text-light input[type="datetime"]::-moz-placeholder,
+.text-light input[type="datetime"]:-ms-input-placeholder,
+.text-light input[type="datetime"]::-webkit-input-placeholder,
+.text-light input[type="datetime-local"]::-moz-placeholder,
+.text-light input[type="datetime-local"]:-ms-input-placeholder,
+.text-light input[type="datetime-local"]::-webkit-input-placeholder,
+.text-light input[type="month"]::-moz-placeholder,
+.text-light input[type="month"]:-ms-input-placeholder,
+.text-light input[type="month"]::-webkit-input-placeholder {
+	color: #cccccc;
+}
+
+/* Form Buttons - Match to Bootstrap .btn */
+.text-light input[type="submit"],
+.text-light input[type="reset"],
+.text-light input[type="button"],
+.text-light button {
+	color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-color: rgba(0, 0, 0, 0.9);
+}
+.text-light input[type="submit"]:hover,
+.text-light input[type="submit"]:focus,
+.text-light input[type="submit"]:active,
+.text-light input[type="reset"]:hover,
+.text-light input[type="reset"]:focus,
+.text-light input[type="reset"]:active,
+.text-light input[type="button"]:hover,
+.text-light input[type="button"]:focus,
+.text-light input[type="button"]:active,
+.text-light button:hover,
+.text-light button:focus,
+.text-light button:active {
+	color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-color: rgba(0, 0, 0, 0.9);
+}
+
+/* =Dark Text Color
+-----------------------------------------------*/
+
+.text-dark {
+	color: #666666;
+}
+
+/* Thumbnails */
+.text-dark .thumbnail,
+.text-dark .pretty,
+.text-dark .wp-caption {
+	background-color: #ffffff;
+	border-color: #dddddd;
+}
+.text-dark a.pretty:hover,
+.text-dark a.pretty:focus,
+.text-dark a.pretty:active,
+.text-dark a.thumbnail:hover,
+.text-dark a.thumbnail:focus,
+.text-dark a.thumbnail:active {
+	border-color: #bbbbbb;
+	-webkit-box-shadow: 0 1px 4px #cccccc;
+	-moz-box-shadow: 0 1px 4px #cccccc;
+	box-shadow: 0 1px 4px #cccccc;
+}
+
+/* Forms */
+.text-dark .form-control {
+    color: #ffffff;
+    background-color: #ffffff;
+    border-color: #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.text-dark .form-control:focus {
+	border-color: #bbbbbb;
+	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+}
+.text-dark input[type="text"],
+.text-dark input[type="password"],
+.text-dark input[type="email"],
+.text-dark input[type="url"],
+.text-dark input[type="tel"],
+.text-dark input[type="number"],
+.text-dark input[type="date"],
+.text-dark input[type="time"],
+.text-dark input[type="datetime"],
+.text-dark input[type="datetime-local"],
+.text-dark input[type="month"],
+.text-dark textarea,
+.text-dark select {
+	color: #555555;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.text-dark input[type="text"]:focus,
+.text-dark input[type="password"]:focus,
+.text-dark input[type="email"]:focus,
+.text-dark input[type="url"]:focus,
+.text-dark input[type="tel"]:focus,
+.text-dark input[type="number"]:focus,
+.text-dark input[type="date"]:focus,
+.text-dark input[type="time"]:focus,
+.text-dark input[type="datetime"]:focus,
+.text-dark input[type="datetime-local"]:focus,
+.text-dark input[type="month"]:focus,
+.text-dark textarea:focus {
+	border-color: #bbbbbb;
+	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+}
+.text-dark input[type="text"]::-moz-placeholder,
+.text-dark input[type="text"]:-ms-input-placeholder,
+.text-dark input[type="text"]::-webkit-input-placeholder,
+.text-dark input[type="password"]::-moz-placeholder,
+.text-dark input[type="password"]:-ms-input-placeholder,
+.text-dark input[type="password"]::-webkit-input-placeholder,
+.text-dark input[type="email"]::-moz-placeholder,
+.text-dark input[type="email"]:-ms-input-placeholder,
+.text-dark input[type="email"]::-webkit-input-placeholder,
+.text-dark input[type="url"]::-moz-placeholder,
+.text-dark input[type="url"]:-ms-input-placeholder,
+.text-dark input[type="url"]::-webkit-input-placeholder,
+.text-dark input[type="tel"]::-moz-placeholder,
+.text-dark input[type="tel"]:-ms-input-placeholder,
+.text-dark input[type="tel"]::-webkit-input-placeholder,
+.text-dark input[type="number"]::-moz-placeholder,
+.text-dark input[type="number"]:-ms-input-placeholder,
+.text-dark input[type="number"]::-webkit-input-placeholder,
+.text-dark input[type="date"]::-moz-placeholder,
+.text-dark input[type="date"]:-ms-input-placeholder,
+.text-dark input[type="date"]::-webkit-input-placeholder,
+.text-dark input[type="time"]::-moz-placeholder,
+.text-dark input[type="time"]:-ms-input-placeholder,
+.text-dark input[type="time"]::-webkit-input-placeholder,
+.text-dark input[type="datetime"]::-moz-placeholder,
+.text-dark input[type="datetime"]:-ms-input-placeholder,
+.text-dark input[type="datetime"]::-webkit-input-placeholder,
+.text-dark input[type="datetime-local"]::-moz-placeholder,
+.text-dark input[type="datetime-local"]:-ms-input-placeholder,
+.text-dark input[type="datetime-local"]::-webkit-input-placeholder,
+.text-dark input[type="month"]::-moz-placeholder,
+.text-dark input[type="month"]:-ms-input-placeholder,
+.text-dark input[type="month"]::-webkit-input-placeholder {
+	color: #999999;
+}
+
+/* Form Buttons - Match to Bootstrap .btn */
+.text-dark input[type="submit"],
+.text-dark input[type="reset"],
+.text-dark input[type="button"],
+.text-dark button {
+	color: #333333;
+	background-color: #ffffff;
+	border-color: #cccccc;
+}
+.text-dark input[type="submit"]:hover,
+.text-dark input[type="submit"]:focus,
+.text-dark input[type="submit"]:active,
+.text-dark input[type="reset"]:hover,
+.text-dark input[type="reset"]:focus,
+.text-dark input[type="reset"]:active,
+.text-dark input[type="button"]:hover,
+.text-dark input[type="button"]:focus,
+.text-dark input[type="button"]:active,
+.text-dark button:hover,
+.text-dark button:focus,
+.text-dark button:active {
+	color: #333333;
+	background-color: #ebebeb;
+	border-color: #adadad;
 }

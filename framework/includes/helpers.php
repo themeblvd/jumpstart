@@ -374,6 +374,267 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 }
 
 /**
+ * Get an rgb or rgba value based on color hex value.
+ *
+ * @since 2.5.0
+ *
+ * @param string $hex Color hex - ex: #000 or 000
+ * @param string $opacity Opacity value to determine rgb vs rgba - ex: 0.5
+ * @return array $classes Classes for element.
+ */
+function themeblvd_get_rgb( $color, $opacity = '' ) {
+
+	$default = 'rgb(0,0,0)';
+
+	if ( ! $color ) {
+		return $default;
+	}
+
+	// Sanitize $color if "#" is provided
+	$color = str_replace('#', '', $color);
+
+    // Check if color has 6 or 3 characters and get values
+    if ( strlen($color) == 6 ) {
+		$hex = array( $color[0].$color[1], $color[2].$color[3], $color[4].$color[5] );
+    } elseif ( strlen($color) == 3 ) {
+		$hex = array( $color[0].$color[0], $color[1].$color[1], $color[2].$color[2] );
+    } else {
+		return $default;
+    }
+
+    // Convert hexadec to rgb
+    $rgb =  array_map( 'hexdec', $hex );
+
+    // Check if opacity is set(rgba or rgb)
+    if ( $opacity ) {
+
+		if( abs($opacity) > 1 ) {
+    		$opacity = '1.0';
+    	}
+
+    	$output = 'rgba('.implode(',', $rgb).','.$opacity.')';
+
+    } else {
+    	$output = 'rgb('.implode(',', $rgb).')';
+    }
+
+    return $output;
+}
+
+/**
+ * Get class for a set of display options.
+ *
+ * @since 2.5.0
+ *
+ * @param array $display Display options
+ * @return string $style Inline style line to be used
+ */
+function themeblvd_get_display_class( $display ) {
+
+	$class = array();
+
+	if ( ! empty( $display['bg_type'] ) ) {
+
+		$bg_type = $display['bg_type'];
+
+		if ( $bg_type == 'none' ) {
+
+			if ( empty( $display['apply_popout'] ) ) {
+				$class[] = 'standard';
+			}
+
+		} else {
+
+			$class[] = 'has-bg';
+			$class[] = $bg_type;
+
+			if ( $bg_type == 'color' || $bg_type == 'image' || $bg_type == 'texture' ) {
+				if ( ! empty( $display['text_color'] ) ) {
+					$class[] = 'text-'.$display['text_color'];
+				}
+			}
+
+			if ( $bg_type == 'image' && ! empty( $display['apply_bg_shade'] ) ) {
+				$class[] = 'has-bg-shade';
+			}
+
+		}
+
+		if ( $bg_type == 'texture' ) {
+
+			if ( ! empty( $display['apply_bg_texture_parallax'] ) ) {
+				$class[] = 'tb-parallax';
+			}
+
+		} else if ( $bg_type == 'image' ) {
+
+			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
+
+				$class[] = 'tb-parallax';
+
+				if ( ! empty( $display['bg_image_parallax_stretch'] ) ) {
+					$class[] = 'tb-bg-cover';
+				}
+
+			}
+
+		}
+
+		if ( ! empty( $display['apply_popout'] ) ) {
+			$class[] = 'popout';
+		}
+
+	}
+
+	return implode( ' ', apply_filters( 'themeblvd_display_class', $class, $display ) );
+}
+
+/**
+ * If parallax is applicable for section, get the intensity.
+ *
+ * @since 2.5.0
+ *
+ * @param array $display Display options
+ * @return string $intensity Intensity of the effect, 1-10
+ */
+function themeblvd_get_parallax_intensity( $display ) {
+
+	$intensity = 0;
+
+	$bg_type = '';
+
+	if ( ! empty( $display['bg_type'] ) ) {
+		$bg_type = $display['bg_type'];
+	}
+
+	if ( $bg_type == 'texture' ) {
+
+		if ( ! empty( $display['apply_bg_texture_parallax'] ) && ! empty( $display['bg_texture_parallax'] ) ) {
+			$intensity = $display['bg_texture_parallax'];
+		}
+
+	} else if ( $bg_type == 'image' ) {
+
+		if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' && ! empty( $display['bg_image_parallax'] ) ) {
+			$intensity = $display['bg_image_parallax'];
+		}
+
+	}
+
+	return apply_filters( 'themeblvd_parallax_intensity', $intensity, $display );
+}
+
+/**
+ * Get inline styles for a set of display options.
+ *
+ * @since 2.5.0
+ *
+ * @param array $display Display options
+ * @return string $style Inline style line to be used
+ */
+function themeblvd_get_display_inline_style( $display ) {
+
+	$bg_type = '';
+	$style = '';
+	$params = array();
+
+	if ( empty( $display['bg_type'] ) ) {
+		return $style;
+	} else {
+		$bg_type = $display['bg_type'];
+	}
+
+	if ( in_array( $bg_type, array('color', 'texture', 'image') ) ) {
+
+		if ( ! empty( $display['bg_color'] ) ) {
+
+			$bg_color = $display['bg_color'];
+
+			if ( ! empty( $display['bg_color_opacity'] ) ) {
+				$bg_color = themeblvd_get_rgb( $bg_color, $display['bg_color_opacity'] );
+			}
+
+			$params['background-color'] = $bg_color;
+
+		}
+
+		if ( $bg_type == 'texture' ) {
+
+			$textures = themeblvd_get_textures();
+
+			if ( ! empty( $display['bg_texture'] ) && ! empty( $textures[$display['bg_texture']] ) ) {
+
+				$texture = $textures[$display['bg_texture']];
+
+				$params['background-image'] = sprintf('url(%s)', $texture['url']);
+				$params['background-position'] = $texture['position'];
+				$params['background-repeat'] = $texture['repeat'];
+				$params['background-size'] = $texture['size'];
+
+			}
+
+		} else if ( $bg_type == 'image' ) {
+
+			if ( ! empty( $display['bg_image']['image'] ) ) {
+				$params['background-image'] = sprintf('url(%s)', $display['bg_image']['image']);
+			}
+
+			if ( ! empty( $display['bg_image']['repeat'] ) ) {
+				$params['background-repeat'] = $display['bg_image']['repeat'];
+			}
+
+			$parallax = false;
+
+			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
+				$parallax = true;
+			}
+
+			if ( ! $parallax && ! empty( $display['bg_image']['attachment'] ) ) {
+				$params['background-attachment'] = $display['bg_image']['attachment'];
+			}
+
+			if ( ! $parallax && ! empty( $display['bg_image']['position'] ) ) {
+				$params['background-position'] = $display['bg_image']['position'];
+			}
+
+			if ( ! $parallax && ! empty( $display['bg_image']['size'] ) ) {
+				$params['background-size'] = $display['bg_image']['size'];
+			}
+
+		}
+
+	}
+
+	if ( ! empty( $display['apply_padding'] ) ) {
+
+		if ( ! empty( $display['padding_top'] ) ) {
+			$params['padding-top'] = $display['padding_top'];
+		}
+
+		if ( ! empty( $display['padding_right'] ) ) {
+			$params['padding-right'] = $display['padding_right'];
+		}
+
+		if ( ! empty( $display['padding_bottom'] ) ) {
+			$params['padding-bottom'] = $display['padding_bottom'];
+		}
+
+		if ( ! empty( $display['padding_left'] ) ) {
+			$params['padding-left'] = $display['padding_left'];
+		}
+
+	}
+
+	$params = apply_filters( 'themeblvd_display_inline_style', $params, $display );
+
+	foreach ( $params as $key => $value ) {
+		$style .= sprintf( '%s: %s;', $key, $value );
+	}
+
+	return $style;
+}
+
+/**
  * Get additional classes for elements.
  *
  * @since 2.0.3
@@ -383,7 +644,7 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
  * @param boolean $end_space Whether there should be a space at end
  * @param string $type Type of element (only relevant if there is a filter added utilizing it)
  * @param array $options Options for element (only relevant if there is a filter added utilizing it)
- * @param string $location Location of element - featured, primary, or featured_below (only relevant if there is a filter added utilizing it)
+ * @param string $location Location of element - featured, primary, or featured_below (@deprecated as of framework 2.5)
  * @return array $classes Classes for element.
  */
 function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
@@ -395,7 +656,7 @@ function themeblvd_get_classes( $element, $start_space = false, $end_space = fal
 		'element_content' 				=> array(),
 		'element_divider' 				=> array(),
 		'element_headline' 				=> array(),
-		'element_jumbotron' 			=> array('element-unstyled'),
+		'element_jumbotron' 			=> array(),
 		'element_post_grid_paginated' 	=> array('themeblvd-gallery'),
 		'element_post_grid' 			=> array('themeblvd-gallery'),
 		'element_post_grid_slider' 		=> array('themeblvd-gallery'),

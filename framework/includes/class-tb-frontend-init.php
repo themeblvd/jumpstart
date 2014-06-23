@@ -227,8 +227,7 @@ class Theme_Blvd_Frontend_Init {
 				$this->config['builder_post_id'] = themeblvd_post_id_by_name( $layout_name, 'tb_layout' );
 
 				// Sidebar layout
-				$layout_settings = get_post_meta( $this->config['builder_post_id'], 'settings', true );
-				$this->config['sidebar_layout'] = $layout_settings['sidebar_layout'];
+				$this->config['sidebar_layout'] = 'full_width';
 
 			}
 		}
@@ -241,29 +240,9 @@ class Theme_Blvd_Frontend_Init {
 		// enabled, it must contain at least one CSS class or else
 		// it won't be displayed for the current page.
 
-		if ( $this->config['builder'] && $this->config['builder'] != 'error' && $this->config['builder'] != 'wp-private' ) {
-			$elements = get_post_meta( $this->config['builder_post_id'], 'elements', true );
-			$this->config['featured'] = $this->featured_builder_classes( $elements, 'featured' );
-			$this->config['featured_below'] = $this->featured_builder_classes( $elements, 'featured_below' );
-		}
-
-		if ( is_home() ) {
-			if ( 'custom_layout' != themeblvd_get_option( 'homepage_content' ) ) {
-
-				if ( themeblvd_get_option( 'blog_featured' ) || themeblvd_supports( 'featured', 'blog' ) ) {
-					$this->config['featured'][] = 'has_blog_featured';
-				}
-
-				if ( themeblvd_supports( 'featured_below', 'blog' ) ) {
-					$this->config['featured_below'][] = 'has_blog_featured_below';
-				}
-
-			}
-		}
-
 		if ( is_page_template( 'template_list.php' ) ) {
 
-			if ( themeblvd_get_option( 'blog_featured' ) || themeblvd_supports( 'featured', 'blog' ) ) {
+			if ( themeblvd_supports( 'featured', 'blog' ) ) {
 				$this->config['featured'][] = 'has_blog_featured';
 			}
 

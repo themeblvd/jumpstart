@@ -7,11 +7,10 @@ if ( !function_exists( 'themeblvd_content_blocks' ) ) :
  *
  * @param array $blocks A set of content blocks
  */
-function themeblvd_content_blocks( $layout_id, $element_id, $col = 1 ) {
+function themeblvd_content_blocks( $blocks ) {
 
-	$blocks = get_post_meta( $layout_id, $element_id.'_col_'.strval($col), true );
+	if ( $blocks ) {
 
-	if ( $blocks && is_array($blocks) && count($blocks) >= 1 ) {
 		foreach ( $blocks as $id => $block ) {
 
 			$type = '';
@@ -73,12 +72,40 @@ function themeblvd_content_block( $id, $type, $options ) {
 			themeblvd_image( $options );
 			break;
 
+		case 'jumbotron' :
+			themeblvd_jumbotron( $options );
+			break;
+
 		case 'page' :
 			themeblvd_page_content( $options['page'] );
 			break;
 
 		case 'panel' :
 			themeblvd_panel( $options );
+			break;
+
+		case 'post_grid' :
+			themeblvd_posts( $options, 'grid' );
+			break;
+
+		case 'post_grid_paginated' :
+			themeblvd_posts_paginated( $options, 'grid' );
+			break;
+
+		case 'post_grid_slider' :
+			themeblvd_post_slider( $id, $options, 'grid' );
+			break;
+
+		case 'post_list' :
+			themeblvd_posts( $options, 'list' );
+			break;
+
+		case 'post_list_paginated' :
+			themeblvd_posts_paginated( $options, 'list' );
+			break;
+
+		case 'post_list_slider' :
+			themeblvd_post_slider( $id, $options, 'grid' );
 			break;
 
 		case 'quote' :
@@ -95,6 +122,14 @@ function themeblvd_content_block( $id, $type, $options ) {
 
 		case 'simple_slider' :
 			themeblvd_simple_slider( $options );
+			break;
+
+		case 'tabs' :
+			echo themeblvd_tabs( $id, $options );
+			break;
+
+		case 'toggles' :
+			echo themeblvd_toggles( $id, $options );
 			break;
 
 		case 'video' :
@@ -127,6 +162,7 @@ if ( !function_exists( 'themeblvd_columns' ) ) :
  * @since 2.5.0
  *
  * @param array $args
+ * @param array Optionally force-feed column data
  */
 function themeblvd_columns( $args, $columns = null ) {
 
@@ -134,12 +170,17 @@ function themeblvd_columns( $args, $columns = null ) {
 		'layout_id'		=> 0,
 		'element_id'	=> 'element_',
 		'num'			=> 1,
-		'widths'		=> 'grid_12'
+		'widths'		=> 'grid_12',
+		'height'		=> 0,
+		'align'			=> 'top'
 	);
 	$args = wp_parse_args( $args, $defaults );
 
 	// Number of columns
 	$num = intval( $args['num'] );
+
+	// Bootstrap stack point
+	$stack = apply_filters('themeblvd_columns_stack', 'sm');
 
 	// Kill it if number of columns doesn't match the
 	// number of widths exploded from the string.
@@ -148,15 +189,49 @@ function themeblvd_columns( $args, $columns = null ) {
 		return;
 	}
 
-	themeblvd_open_row();
+	// Column margins
+	$margin_left = '-15px';
+	$margin_right = '-15px';
 
 	for ( $i = 1; $i <= $num; $i++ ) {
 
-		$class = themeblvd_grid_class( $widths[$i-1] );
+		// If first or last
+		if ( $i == 1 || $i == $num ) {
 
-		echo '<div class="'.$class.'">';
+			$column = get_post_meta( $args['layout_id'], $args['element_id'].'_col_'.strval($i), true );
+
+			if ( ! empty( $column['display']['bg_type'] ) ) {
+				if ( in_array( $column['display']['bg_type'], array( 'color', 'image', 'texture' ) ) ) {
+
+					if ( $i == 1 ) {
+						$margin_left = '0';
+					} else if ( $i == $num ) {
+						$margin_right = '0';
+					}
+
+				}
+			}
+		}
+	}
+
+	$margin = sprintf( 'margin: 0 %s 0 %s;', $margin_right, $margin_left );
+
+	// Open column row
+	if ( $args['height'] && $args['layout_id'] != 0 && ! $columns ) {
+		printf( '<div class="container-%s-height">', $stack );
+		themeblvd_open_row("row row-{$stack}-height", $margin);
+	} else {
+		themeblvd_open_row('row', $margin);
+	}
+
+	// Display columns
+	for ( $i = 1; $i <= $num; $i++ ) {
+
+		$grid_class = themeblvd_grid_class( $widths[$i-1], $stack );
 
 		if ( $args['layout_id'] == 0 && $columns ) {
+
+			echo '<div class="'.$grid_class.'">';
 
 			if ( isset( $columns[$i] ) ) {
 
@@ -166,19 +241,50 @@ function themeblvd_columns( $args, $columns = null ) {
 
 			}
 
+			echo '</div><!-- .'.$grid_class.' (end) -->';
+
 		} else {
 
-			// Get content blocks from stored meta data
-			// for individual column of multiple blocks.
-			themeblvd_content_blocks( $args['layout_id'], $args['element_id'], $i );
+			$blocks = array();
+			$display = array();
+			$column = get_post_meta( $args['layout_id'], $args['element_id'].'_col_'.strval($i), true );
+
+			// Display options
+			if ( ! empty( $column['display'] ) ) {
+				$display = $column['display'];
+			}
+
+			// Equal height columns?
+			if ( $args['height'] ) {
+
+				$grid_class .= " col-{$stack}-height";
+
+				if ( in_array( $args['align'], array( 'top', 'middle', 'bottom' ) ) ) {
+					$grid_class .= ' col-'.$args['align'];
+				}
+			}
+
+			// Start column
+			printf('<div class="%s %s" style="%s" data-parallax="%s">', $grid_class, themeblvd_get_display_class($display), themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
+
+			// Content blocks
+			if ( ! empty( $column['blocks'] ) ) {
+				$blocks = $column['blocks'];
+			}
+
+			themeblvd_content_blocks( $blocks );
+
+			echo '</div><!-- .'.$grid_class.' (end) -->';
 
 		}
-
-		echo '</div><!-- .'.$class.' (end) -->';
 
 	}
 
 	themeblvd_close_row();
+
+	if ( $args['height'] ) {
+		echo '</div><!-- .container-{$stack}-height (end) -->';
+	}
 }
 endif;
 

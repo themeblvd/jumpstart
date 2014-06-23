@@ -178,7 +178,7 @@
 #optionsframework .controls .of-background-repeat,
 #optionsframework .controls .of-background-position,
 #optionsframework .controls .of-background-attachment {
-	width: 125px;
+	/* width: 125px; */
 	margin-right: 5px;
 	float: left;
 }
@@ -319,6 +319,15 @@
 	float: left;
 	max-width: 100%;
 	width: 80%;
+}
+.themeblvd-modal-wrap .media-frame .wp-color-result {
+	border: 1px solid #cccccc;
+}
+.themeblvd-modal-wrap .media-frame .tb-color-picker {
+	padding: 3px 5px
+}
+.themeblvd-modal-wrap #optionsframework .tb-fancy-select {
+	width: 99%;
 }
 
 /* WP Editor */

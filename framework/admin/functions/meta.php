@@ -45,7 +45,7 @@ function setup_themeblvd_page_meta() {
 			'tb_title' => array(
 				'id'		=> '_tb_title',
 				'name' 		=> __( 'Page Title', 'themeblvd' ),
-				'desc'		=> __( 'This option will be ignored if you\'re using this page with a custom layout built with the <a href="admin.php?page=builder_blvd">Layout Builder</a>.', 'themeblvd' ),
+				'desc'		=> __( 'This option will be ignored if you\'ve applyed a custom layout.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
 					'show' => __( 'Show page\'s title.', 'themeblvd' ),
@@ -55,7 +55,7 @@ function setup_themeblvd_page_meta() {
 			'tb_breadcrumbs' => array(
 				'id'		=> '_tb_breadcrumbs',
 				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
-				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not.', 'themeblvd' ),
+				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not. This option will be ignored if you\'ve applyed a custom layout.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
 					'default' => __( 'Use default setting.', 'themeblvd' ),

@@ -246,6 +246,117 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
+	// Parallax background effect
+	// ---------------------------------------------------------
+
+	$('.desktop .tb-parallax').each(function(){
+
+		var $el = $(this),
+			$window = $(window),
+			intensity = $el.data('parallax'),
+			y = 0,
+			y_pos = 0,
+			diff = 0,
+			bg_repeat = $el.css('background-repeat'),
+			img_url = $el.css('background-image'),
+			img_url = img_url.match(/^url\("?(.+?)"?\)$/),
+			img;
+
+		// Setup parallax intensity
+		switch ( intensity ) {
+			case 1: // Least intensity
+				y_pos = 10;
+				break;
+			case 2:
+				y_pos = 9;
+				break;
+			case 3:
+				y_pos = 8;
+				break;
+			case 4:
+				y_pos = 7;
+				break;
+			case 5:
+				y_pos = 6;
+				break;
+			case 6:
+				y_pos = 5;
+				break;
+			case 7:
+				y_pos = 4;
+				break;
+			case 8:
+				y_pos = 3;
+				break;
+			case 9:
+				y_pos = 2;
+				break;
+			case 10: // Highest intensity
+				y_pos = 1;
+				break;
+		}
+
+		if ( img_url[1] ) {
+
+		    img_url = img_url[1];
+		    img = new Image();
+
+		    // just in case it is not already loaded
+		    $(img).load(function () {
+
+		    	var scrollTop     = $window.scrollTop(),
+				    elementOffset = $el.offset().top,
+				    distance      = (elementOffset - scrollTop);
+
+				y = - ( distance / y_pos );
+
+				$el.css({ 'background-position': 'center '+ y + 'px' });
+
+		    	// Parallax effect
+		    	$window.scroll(function() {
+
+		        	// Disable for tablet/mobile viewport size
+		        	if ( $window.width() <= 992 ) {
+		        		return;
+		        	}
+
+					scrollTop = $window.scrollTop(),
+				    elementOffset = $el.offset().top,
+				    distance = (elementOffset - scrollTop);
+
+					y = - ( distance / y_pos );
+
+		            $el.css({ 'background-position': 'center '+ y + 'px' });
+
+		        });
+
+		    	// Apply background cover, only when container
+			    // is wider than background image.
+		    	if ( $el.hasClass('tb-bg-cover') && bg_repeat == 'no-repeat' ) {
+
+			        if ( $el.outerWidth() > img.width ) {
+						$el.css('background-size', 'cover');
+					} else {
+						$el.css('background-size', 'auto');
+					}
+
+					$window.resize(function(){
+						if ( $el.outerWidth() > img.width ) {
+							$el.css('background-size', 'cover');
+						} else {
+							$el.css('background-size', 'auto');
+						}
+					});
+				}
+
+		    }); // end image on load
+
+		    img.src = img_url;
+
+		}
+	});
+
+	// ---------------------------------------------------------
 	// Bootstrap Integration
 	// ---------------------------------------------------------
 
@@ -326,11 +437,22 @@ jQuery(document).ready(function($) {
 		$('.carousel-indicators').each(function(){
 
 			var $el = $(this),
-				width = 14 * $el.find('li').length;
+				width = ( 14 * $el.find('li').length );
 
 			$el.css({
 				'width': width + 'px',
 				'margin-left': '-'+(width/2)+'px'
+			});
+		});
+
+		// When user interacts with carousel controls or slide links,
+		// stop auto rotate.
+		$('.carousel').each(function(){
+
+			var $el = $(this);
+
+			$el.find('.slide-link, .carousel-indicators li, .carousel-control').on('click', function(){
+				$el.carousel('pause');
 			});
 		});
 

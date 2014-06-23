@@ -435,7 +435,11 @@ class Theme_Blvd_Options_Page {
 
 			// Set checkbox to false if it wasn't sent in the $_POST
 			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) ) {
-				$input[$id] = '0';
+				if ( ! empty( $option['inactive'] ) && $option['inactive'] === 'true' ) {
+					$input[$id] = '1';
+				} else {
+					$input[$id] = '0';
+				}
 			}
 
 			// Set each item in the multicheck to false if it wasn't sent in the $_POST

@@ -449,11 +449,7 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 		'order'			=> 'DESC',				// Order param for posts query
 		'offset'		=> '0',					// Offset param for posts query
 		'query'			=> '',					// Custom query string
-		'crop'			=> '',					// Custom image crop size (grid only)
-		'link'			=> '0',					// Show link below posts - true, false
-		'link_text'		=> '',					// Text of link
-		'link_url'		=> '',					// Href att of link
-		'link_target'	=> ''					// Target att of anchor - _self, _blank
+		'crop'			=> ''					// Custom image crop size (grid only)
 	);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_OVERWRITE );
@@ -558,11 +554,6 @@ function themeblvd_posts( $args = array(), $type = 'list', $current_location = '
 	wp_reset_postdata();
 
 	echo '</div><!-- .post_'.$type.' (end) -->';
-
-	// Show link
-	if ( $link ) {
-		printf( '<a href="%s" target="%s" title="%s" class="lead-link">%s</a>', $link_url, $link_target, $link_text, $link_text );
-	}
 
 }
 endif;
@@ -1034,7 +1025,7 @@ function themeblvd_tabs( $id, $options ) {
 	// Container classes
 	$classes = 'tabbable';
 
-	if ( $options['height'] ) {
+	if ( ! empty( $options['height'] ) ) {
 		$classes .= ' fixed-height';
 	}
 
@@ -1077,7 +1068,13 @@ function themeblvd_tabs( $id, $options ) {
 
 	// Tab content
 	$i = 1;
-	$content = '<div class="tab-content">';
+	$content_class = 'tab-content';
+
+	if ( $style == 'framed' ) {
+		$content_class .= ' '.apply_filters( 'themeblvd_toggle_body_text', 'dark' );
+	}
+
+	$content = '<div class="'.$content_class.'">';
 
 	if ( $options['tabs'] && is_array($options['tabs']) ) {
 		foreach ( $options['tabs'] as $tab_id => $tab ) {
@@ -1130,20 +1127,26 @@ function themeblvd_toggles( $id, $options ) {
 
 	$accordion = false;
 
-	if ( $options['accordion'] == 'true' || $options['accordion'] == '1' ) {
-		$accordion = true;
+	if ( isset($options['accordion']) ) {
+		if( $options['accordion'] == 'true' || $options['accordion'] == '1' || $options['accordion'] === 1 ) {
+			$accordion = true;
+		}
 	}
 
+	$counter = 1;
+	$total = count($options['toggles']);
 	$output = '';
 
 	if ( $options['toggles'] && is_array($options['toggles']) ) {
 		foreach ( $options['toggles'] as $toggle ) {
 
-			if ( ! $accordion && $toggle == end($options['toggles']) ) {
+			if ( ! $accordion && $counter == $total ) {
 				$toggle['last'] = true;
 			}
 
 			$output .= themeblvd_get_toggle( $toggle );
+
+			$counter++;
 		}
 	}
 

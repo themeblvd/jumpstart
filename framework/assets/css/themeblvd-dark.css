@@ -201,6 +201,10 @@ fieldset[disabled] .form-control {
 .nav-tabs {
     border-bottom: 1px solid #000000;
 }
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+    color: #ffffff;
+}
 .nav-tabs > li > a:hover {
     border-color: #000000;
 }
@@ -226,6 +230,10 @@ fieldset[disabled] .form-control {
     .nav-tabs.nav-justified > .active > a:focus {
         border-bottom-color: #000000;
     }
+}
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+    color: #ffffff;
 }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,

@@ -1094,7 +1094,7 @@ function themeblvd_icon_browser( $args = array() ) {
  */
 function themeblvd_texture_browser( $args = array() ) {
 
-	// Get icons from framework (cached for 24 hours)
+	// Get textures from framework
 	$textures = themeblvd_get_textures();
 	?>
 	<div id="themeblvd-texture-browser" class="themeblvd-modal-wrap themeblvd-texture-browser hide">
