@@ -22,6 +22,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_checkbox', 'themeblvd_sanitize_checkbox' );
 	add_filter( 'themeblvd_sanitize_multicheck', 'themeblvd_sanitize_multicheck', 10, 2 );
 	add_filter( 'themeblvd_sanitize_color', 'themeblvd_sanitize_hex' );
+	add_filter( 'themeblvd_sanitize_gradient', 'themeblvd_sanitize_gradient' );
 	add_filter( 'themeblvd_sanitize_upload', 'themeblvd_sanitize_upload' );
 	add_filter( 'themeblvd_sanitize_background', 'themeblvd_sanitize_background' );
 	add_filter( 'themeblvd_background_repeat', 'themeblvd_sanitize_background_repeat' );
@@ -773,6 +774,30 @@ function themeblvd_sanitize_editor( $input ) {
 	}
 	return $output;
 }
+
+/**
+ * Sanitize gradient option type
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_gradient( $input ){
+
+	$output = array(
+		'start'	=> '',
+		'end'	=> ''
+	);
+
+	if ( isset( $input['start'] ) ) {
+		$output['start'] = apply_filters( 'themeblvd_sanitize_hex', $input['start'] );
+	}
+
+	if ( isset( $input['end'] ) ) {
+		$output['end'] = apply_filters( 'themeblvd_sanitize_hex', $input['end'] );
+	}
+
+	return $output;
+}
+
 
 /**
  * Sanitize a color represented in hexidecimal notation.

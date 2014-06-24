@@ -751,6 +751,50 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Gradient
+			/*---------------------------------------*/
+
+			case 'gradient':
+
+				$start = '';
+				$start_def = '#000000';
+				$end = '';
+				$end_def = '#000000';
+
+				if ( ! empty( $val['start'] ) ) {
+					$start = $val['start'];
+				}
+
+				if ( ! empty( $val['end'] ) ) {
+					$end = $val['end'];
+				}
+
+				if ( ! empty( $value['std']['start'] ) ) {
+					$start_def = $value['std']['start'];
+				}
+
+				if ( ! empty( $value['std']['end'] ) ) {
+					$end_def = $value['std']['end'];
+				}
+
+				$output .= '<div class="gradient-wrap">';
+
+				// Start color
+				$output .= '<div class="color-start">';
+				$output .= sprintf( '<input id="%s_start" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][start]'), esc_attr($start), esc_attr($start_def) );
+				$output .= '<span class="color-label">'.__('Top Color', 'themeblvd').'</span>';
+				$output .= '</div><!-- .color-start (end) -->';
+
+				// End color
+				$output .= '<div class="color-end">';
+				$output .= sprintf( '<input id="%s_end" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][end]'), esc_attr($end), esc_attr($end_def) );
+				$output .= '<span class="color-label">'.__('Bottom Color', 'themeblvd').'</span>';
+				$output .= '</div><!-- .color-end (end) -->';
+
+				$output .= '</div><!-- .gradient-wrap (end) -->';
+				break;
+
+			/*---------------------------------------*/
 			/* Info
 			/*---------------------------------------*/
 

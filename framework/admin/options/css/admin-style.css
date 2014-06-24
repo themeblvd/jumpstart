@@ -295,6 +295,22 @@
 	}
 }
 
+/* Gradient option type */
+#optionsframework .section-gradient .color-start,
+#optionsframework .section-gradient .color-end {
+	float: left;
+}
+#optionsframework .section-gradient .color-label {
+	color: #999999;
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	margin: 0 0 10px 2px;
+}
+#optionsframework .section-gradient .iris-picker {
+	margin-bottom: 10px;
+}
+
 /* Modal Window */
 .tb-modal-hide-settings .attachment-details label.setting {
 	display: none;
