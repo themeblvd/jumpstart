@@ -1750,6 +1750,15 @@ button:active {
 /* =Buttons
 -----------------------------------------------*/
 
+/* Extra Large (size added to Bootstrap defaults) */
+.btn-xl {
+	border-radius: 6px;
+	font-size: 22px;
+	line-height: 1.2;
+	padding: 15px 30px;
+}
+
+/* Colors */
 .black,
 .blue,
 .brown,

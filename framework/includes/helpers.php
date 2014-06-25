@@ -1559,10 +1559,12 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 			break;
 		case 'large' :
 			$size = 'lg';
+		case 'x-large' :
+			$size = 'xl';
 			break;
 	}
 
-	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg' ) ) ) ) {
+	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg', 'xl' ) ) ) ) {
 		$class .= sprintf( ' btn-%s', $size );
 	}
 
