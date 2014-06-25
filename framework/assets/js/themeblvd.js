@@ -357,6 +357,28 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
+	// Custom Buttons
+	// ---------------------------------------------------------
+
+	if ( themeblvd.custom_buttons == 'true' ) {
+		$('.tb-custom-button').hover(
+			function() {
+				var $el = $(this);
+				$el.css({
+					'background-color': $el.data('bg-hover'),
+					'color': $el.data('text-hover')
+				});
+			}, function() {
+				var $el = $(this);
+				$el.css({
+					'background-color': $el.data('bg'),
+					'color': $el.data('text')
+				});
+			}
+		);
+	}
+
+	// ---------------------------------------------------------
 	// Bootstrap Integration
 	// ---------------------------------------------------------
 

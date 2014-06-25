@@ -1545,6 +1545,8 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 
 	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger' ) ) ) ) {
 		$class .= sprintf( ' btn-%s', $color );
+	} else if ( $color == 'custom' ) {
+		$class .= ' tb-custom-button';
 	} else {
 		$class .= sprintf( ' %s', $color );
 	}

@@ -1387,7 +1387,8 @@ function themeblvd_colors( $bootstrap = true ) {
 
 	// Setup colors separated out to begin with.
 	$colors = array(
-		'default'		=> __( 'Default Color', 'themeblvd' )
+		'default'		=> __( 'Default Color', 'themeblvd' ),
+		'custom'		=> __( 'Custom Color', 'themeblvd' ),
 	);
 	$boostrap_colors = array(
 		'primary' 		=> __( 'Bootstrap: Primary', 'themeblvd' ),

@@ -116,7 +116,8 @@ function themeblvd_get_js_locals() {
 		'thumb_animations'			=> 'true',
 		'featured_animations'		=> 'true',
 		'image_slide_animations'	=> 'true',
-		'retina_logo'				=> 'true'
+		'retina_logo'				=> 'true',
+		'custom_buttons'			=> 'true'
 	);
 
 	// Extend $locals to accomodate scripts being included

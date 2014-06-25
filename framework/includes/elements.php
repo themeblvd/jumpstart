@@ -135,8 +135,17 @@ function themeblvd_jumbotron( $args ) {
 	$defaults = array(
 		// Rest of $args are verified in themeblvd_get_jumbotron() ...
 		'button' 		=> 0,
-		'button_text' 	=> 'Get Started Today!',
 		'button_color' 	=> 'default',
+		'button_custom'	=> array(
+			'bg' 				=> '#ffffff',
+			'bg_hover'			=> '#ebebeb',
+			'border' 			=> '#cccccc',
+			'text'				=> '#333333',
+			'text_hover'		=> '#333333',
+			'include_bg'		=> 1,
+			'include_border'	=> 1
+		),
+		'button_text' 	=> 'Get Started Today!',
 		'button_size'	=> 'large',
 		'button_url' 	=> 'http://www.your-site.com/your-landing-page',
 		'button_target' => '_self'
@@ -152,7 +161,29 @@ function themeblvd_jumbotron( $args ) {
 
 	// Add buttont to content?
 	if ( $args['button'] ) {
-		$content .= "\n\n".themeblvd_button( $args['button_text'], $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, $args['button_text'] );
+
+		// Custom button styling
+		$addon = '';
+
+		if ( $args['button_color'] == 'custom' ) {
+
+			if ( $args['button_custom']['include_bg'] ) {
+				$bg = $args['button_custom']['bg'];
+			} else {
+				$bg = 'transparent';
+			}
+
+			if ( $args['button_custom']['include_border'] ) {
+				$border = $args['button_custom']['border'];
+			} else {
+				$border = 'transparent';
+			}
+
+			$addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', $bg, $border, $args['button_custom']['text'], $args['button_custom']['bg_hover'], $args['button_custom']['text_hover'] );
+
+		}
+
+		$content .= "\n\n".themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, null, null, $addon );
 	}
 
 	echo themeblvd_get_jumbotron( $args, $content );
@@ -966,25 +997,57 @@ function themeblvd_slogan( $args = array() ) {
 		'slogan'		=> '',						// Text for slogan
 		'text_size'		=> 'large',					// Size of text - small, normal, medium, large
 		'button'		=> 1,						// Show button - true, false
+		'button_color' 	=> 'default',				// Color of button - Use themeblvd_colors() to generate list
+		'button_custom'	=> array(
+			'bg' 				=> '#ffffff',
+			'bg_hover'			=> '#ebebeb',
+			'border' 			=> '#cccccc',
+			'text'				=> '#333333',
+			'text_hover'		=> '#333333',
+			'include_bg'		=> 1,
+			'include_border'	=> 1
+		),
 		'button_text'	=> 'Get Started Today!',	// Text for button
-		'button_color'	=> 'default',				// Color of button - Use themeblvd_colors() to generate list
 		'button_size'	=> 'large',					// Size of button - mini, small, default, large
 		'button_url'	=> '',						// URL button goes to
 		'button_target'	=> '_self'					// Button target - _self, _blank
 	);
 	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_OVERWRITE );
 
 	// Wrapping class
-	$class  = $button ? 'has_button' : 'text_only';
-	$text_class = 'text_'.$text_size;
+	$class  = $args['button'] ? 'has_button' : 'text_only';
+	$text_class = 'text_'.$args['text_size'];
 
 	// Output
 	$output = '<div class="tb-slogan '.$class.'">';
-	if ( $button ) {
-		$output .= themeblvd_button( stripslashes($button_text), $button_url, $button_color, $button_target, $button_size );
+
+	// Button
+	if ( $args['button'] ) {
+
+		// Custom button styling
+		$addon = '';
+
+		if ( $args['button_color'] == 'custom' ) {
+
+			if ( $args['button_custom']['include_bg'] ) {
+				$bg = $args['button_custom']['bg'];
+			} else {
+				$bg = 'transparent';
+			}
+
+			if ( $args['button_custom']['include_border'] ) {
+				$border = $args['button_custom']['border'];
+			} else {
+				$border = 'transparent';
+			}
+
+			$addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', $bg, $border, $args['button_custom']['text'], $args['button_custom']['bg_hover'], $args['button_custom']['text_hover'] );
+
+		}
+
+		$output .= themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, null, null, $addon );
 	}
-	$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( do_shortcode( $slogan ) ).'</span>';
+	$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( do_shortcode( $args['slogan'] ) ).'</span>';
 	$output .= '</div><!-- .slogan (end) -->';
 
 	return $output;
