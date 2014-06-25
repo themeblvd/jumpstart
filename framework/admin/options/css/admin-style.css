@@ -311,6 +311,28 @@
 	margin-bottom: 10px;
 }
 
+/* Button option type */
+#optionsframework .section-button input[type="text"].color-picker {
+	margin-bottom: 0;
+	width: 65px;
+}
+#optionsframework .section-button .include {
+	margin-top: 10px;
+}
+#optionsframework .section-button .include-controls {
+	float: left;
+	min-width: 25px;
+	padding-right: 0;
+	width: 25px;
+}
+#optionsframework .section-button .include-explain {
+	color: #666;
+	float: left;
+	font-size: inherit;
+	line-height: 18px;
+	max-width: 93%;
+}
+
 /* Modal Window */
 .tb-modal-hide-settings .attachment-details label.setting {
 	display: none;

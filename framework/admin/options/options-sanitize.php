@@ -23,6 +23,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_multicheck', 'themeblvd_sanitize_multicheck', 10, 2 );
 	add_filter( 'themeblvd_sanitize_color', 'themeblvd_sanitize_hex' );
 	add_filter( 'themeblvd_sanitize_gradient', 'themeblvd_sanitize_gradient' );
+	add_filter( 'themeblvd_sanitize_button', 'themeblvd_sanitize_button' );
 	add_filter( 'themeblvd_sanitize_upload', 'themeblvd_sanitize_upload' );
 	add_filter( 'themeblvd_sanitize_background', 'themeblvd_sanitize_background' );
 	add_filter( 'themeblvd_background_repeat', 'themeblvd_sanitize_background_repeat' );
@@ -798,6 +799,33 @@ function themeblvd_sanitize_gradient( $input ){
 	return $output;
 }
 
+/**
+ * Sanitize button option type
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_button( $input ){
+
+	$output = array(
+		'bg' 				=> '',
+		'bg_hover'			=> '',
+		'border' 			=> '',
+		'text'				=> '',
+		'text_hover'		=> '',
+		'include_bg'		=> 1,
+		'include_border'	=> 1
+	);
+
+	$output['bg'] = apply_filters( 'themeblvd_sanitize_hex', $input['bg'] );
+	$output['bg_hover'] = apply_filters( 'themeblvd_sanitize_hex', $input['bg_hover'] );
+	$output['border'] = apply_filters( 'themeblvd_sanitize_hex', $input['border'] );
+	$output['text'] = apply_filters( 'themeblvd_sanitize_hex', $input['text'] );
+	$output['text_hover'] = apply_filters( 'themeblvd_sanitize_hex', $input['text_hover'] );
+	$output['include_bg'] = apply_filters( 'themeblvd_sanitize_checkbox', $input['include_bg'] );
+	$output['include_border'] = apply_filters( 'themeblvd_sanitize_checkbox', $input['include_border'] );
+
+	return $output;
+}
 
 /**
  * Sanitize a color represented in hexidecimal notation.

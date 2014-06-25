@@ -442,6 +442,17 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
+			// For button option type, set checkbox to false if it wasn't
+			// sent in the $_POST
+			if ( 'button' == $option['type'] ) {
+				if ( ! isset( $input[$id]['include_bg'] ) ) {
+					$input[$id]['include_bg'] = '0';
+				}
+				if ( ! isset( $input[$id]['include_border'] ) ) {
+					$input[$id]['include_border'] = '0';
+				}
+			}
+
 			// Set each item in the multicheck to false if it wasn't sent in the $_POST
 			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
 				foreach ( $option['options'] as $key => $value ) {

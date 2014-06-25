@@ -274,6 +274,33 @@
 						$this.find('.tb-color-picker').wpColorPicker();
 					}
 
+					// Button option type
+					if ( $.isFunction( $.fn.wpColorPicker ) ) {
+						$this.find('.section-button').each(function(){
+
+							var $el = $(this);
+
+							// Color picker
+							$el.find('.color-picker').wpColorPicker();
+							$el.find('.color.bg .wp-color-result').attr('title', 'Background Color');
+							$el.find('.color.bg_hover .wp-color-result').attr('title', 'Background Hover Color');
+							$el.find('.color.border .wp-color-result').attr('title', 'Border Color');
+							$el.find('.color.text .wp-color-result').attr('title', 'Text Color');
+							$el.find('.color.text_hover .wp-color-result').attr('title', 'Text Hover Color');
+
+							// Show/Hide BG color
+							if ( $el.find('.include.bg input').is(':checked') ) {
+								$el.find('.color.bg').show();
+							}
+
+							// Show/Hide border color
+							if ( $el.find('.include.border input').is(':checked') ) {
+								$el.find('.color.border').show();
+							}
+
+						});
+					}
+
 					// Remove tooltips if hovered link is clicked
 					$this.find('.tb-tooltip-link').click(function(){
 
@@ -603,6 +630,24 @@
     				$this.on( 'mouseleave', '.tb-tooltip-link', function() {
     					$('.themeblvd-tooltip').remove();
     				});
+
+    				// Button option type
+					$this.on( 'click', '.section-button .include input', function(){
+
+						var $el = $(this),
+							type = 'bg';
+
+						if ( $el.closest('.include').hasClass('border') ) {
+							type = 'border';
+						}
+
+						if ( $el.is(':checked') ) {
+							$el.closest('.section-button').find('.color.'+type).show();
+						} else {
+							$el.closest('.section-button').find('.color.'+type).hide();
+						}
+
+					});
 
 	    		}
 	    		// Apply media uploader from themeblvd_media_uploader object.
