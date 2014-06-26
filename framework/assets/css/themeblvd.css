@@ -2948,6 +2948,14 @@ button:active {
 /* =Shortcodes
 -----------------------------------------------*/
 
+/* Buttons */
+.btn-shortcode {
+	margin-bottom: 10px;
+}
+p .btn-shortcode {
+	margin-bottom: 0;
+}
+
 /* Icon List */
 ul.tb-icon-list {
 	list-style: none !important;
