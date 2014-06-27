@@ -134,9 +134,9 @@ function themeblvd_jumbotron( $args ) {
 
 	$defaults = array(
 		// Rest of $args are verified in themeblvd_get_jumbotron() ...
-		'button' 		=> 0,
-		'button_color' 	=> 'default',
-		'button_custom'	=> array(
+		'button' 				=> 0,
+		'button_color' 			=> 'default',
+		'button_custom'			=> array(
 			'bg' 				=> '#ffffff',
 			'bg_hover'			=> '#ebebeb',
 			'border' 			=> '#cccccc',
@@ -145,10 +145,12 @@ function themeblvd_jumbotron( $args ) {
 			'include_bg'		=> 1,
 			'include_border'	=> 1
 		),
-		'button_text' 	=> 'Get Started Today!',
-		'button_size'	=> 'large',
-		'button_url' 	=> 'http://www.your-site.com/your-landing-page',
-		'button_target' => '_self'
+		'button_text' 			=> 'Get Started Today!',
+		'button_size'			=> 'large',
+		'button_url' 			=> 'http://www.your-site.com/your-landing-page',
+		'button_target' 		=> '_self',
+		'button_icon_before'	=> '',
+		'button_icon_after'		=> '',
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -183,7 +185,7 @@ function themeblvd_jumbotron( $args ) {
 
 		}
 
-		$content .= "\n\n".themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, null, null, $addon );
+		$content .= "\n\n".themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
 	}
 
 	echo themeblvd_get_jumbotron( $args, $content );
@@ -994,11 +996,11 @@ function themeblvd_slogan( $args = array() ) {
 
 	// Setup and extract $args
 	$defaults = array(
-		'slogan'		=> '',						// Text for slogan
-		'text_size'		=> 'large',					// Size of text - small, normal, medium, large
-		'button'		=> 1,						// Show button - true, false
-		'button_color' 	=> 'default',				// Color of button - Use themeblvd_colors() to generate list
-		'button_custom'	=> array(
+		'slogan'				=> '',						// Text for slogan
+		'text_size'				=> 'large',					// Size of text - small, normal, medium, large
+		'button'				=> 1,						// Show button - true, false
+		'button_color' 			=> 'default',				// Color of button - Use themeblvd_colors() to generate list
+		'button_custom'			=> array(
 			'bg' 				=> '#ffffff',
 			'bg_hover'			=> '#ebebeb',
 			'border' 			=> '#cccccc',
@@ -1007,10 +1009,12 @@ function themeblvd_slogan( $args = array() ) {
 			'include_bg'		=> 1,
 			'include_border'	=> 1
 		),
-		'button_text'	=> 'Get Started Today!',	// Text for button
-		'button_size'	=> 'large',					// Size of button - mini, small, default, large
-		'button_url'	=> '',						// URL button goes to
-		'button_target'	=> '_self'					// Button target - _self, _blank
+		'button_text'			=> 'Get Started Today!',	// Text for button
+		'button_size'			=> 'large',					// Size of button - mini, small, default, large
+		'button_url'			=> '',						// URL button goes to
+		'button_target'			=> '_self',					// Button target - _self, _blank
+		'button_icon_before'	=> '',						// FontAwesome Icon before button text
+		'button_icon_after'		=> ''						// FontAwesome Icon afters button text
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -1045,7 +1049,7 @@ function themeblvd_slogan( $args = array() ) {
 
 		}
 
-		$output .= themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, null, null, $addon );
+		$output .= themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
 	}
 	$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( do_shortcode( $args['slogan'] ) ).'</span>';
 	$output .= '</div><!-- .slogan (end) -->';
