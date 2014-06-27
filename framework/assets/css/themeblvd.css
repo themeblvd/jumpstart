@@ -6,71 +6,6 @@
  */
 @import url('grid-extended.min.css');
 
-/* =Grid
-/* @deprecated 2.5.0
------------------------------------------------*/
-
-/**
- * This grid is used internally for various elements, however
- * keep in mind that the primary layout of the theme is determined
- * with Bootstrap's 12-column fluid grid system.
- */
-.column {
-	float: left;
-	margin-right: 4%;
-	min-height: 20px;
-}
-.last {
-	margin-right: 0;
-}
-
-/* Standard 12 Column Setup */
-.grid_2 {width: 13.33%;}
-.grid_3 {width: 22%;}
-.grid_4 {width: 30.66%;}
-.grid_6 {width: 48%;}
-.grid_8 {width: 65.33%;}
-.grid_9 {width: 74%;}
-.grid_12 {width: 100%;}
-
-/* Tight 12 Column Setup */
-.tight .grid_2 {width: 16.66%;}
-.tight .grid_3 {width: 25%;}
-.tight .grid_4 {width: 33.33%;}
-.tight .grid_6 {width: 50%;}
-.tight .grid_8 {width: 66.66%;}
-.tight .grid_9 {width: 75%;}
-.tight .grid_12 {width: 100%;}
-
-/* Standard Fifths */
-.grid_fifth_1 {width: 16.8%;}
-.grid_fifth_2 {width: 37.6%;}
-.grid_fifth_3 {width: 57.6%;}
-.grid_fifth_4 {width: 79.2%;}
-
-/* Tight Fifths */
-.tight .grid_fifth_1 {width: 20%;}
-.tight .grid_fifth_2 {width: 40%;}
-.tight .grid_fifth_3 {width: 60%;}
-.tight .grid_fifth_4 {width: 80%;}
-
-/* Tenths */
-.grid_tenth_3 {width: 27.2%;}
-.grid_tenth_7 {width: 68.8%;}
-
-/* Tight Tenths */
-.tight .grid_tenth_3 {width: 30%;}
-.tight .grid_tenth_7 {width: 70%;}
-
-/* Mobile Devices */
-@media (max-width: 767px) {
-	.column {
-		float: none;
-		margin: 0 0 20px 0;
-		width: auto;
-	}
-}
-
 /* =Bootstrap Mods
 ----------------------------------------------- */
 
@@ -3738,7 +3673,12 @@ button.mfp-arrow {
 /* =Elements
 -----------------------------------------------*/
 
-/* Element Sections */
+/* Stray Elements */
+.entry-content > .element {
+	margin-bottom: 10px;
+}
+
+/* Builder Element Sections */
 .element-section {
 	padding: 30px;
 	position: relative;
@@ -3961,17 +3901,9 @@ button.mfp-arrow {
 .standard-slider .media-align-right .slide-body {
 	padding: 10px;
 }
-.standard-slider .media-align-left .grid_fifth_2,
-.standard-slider .media-align-right .grid_fifth_3 {
-	float: right;
-}
-.standard-slider .media-align-left .grid_fifth_3,
-.standard-slider .media-align-right .grid_fifth_2 {
-	float: left;
-}
 .standard-slider .media-align-left .slide-title,
 .standard-slider .media-align-right .slide-title {
-	font-size: 2em; /* Fallback for older browsers */
+	font-size: 2em;
 	font-size: 2rem;
 	font-weight: bold;
 	line-height: 1.15em;
