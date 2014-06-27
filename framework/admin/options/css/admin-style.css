@@ -206,21 +206,17 @@
 
 /* Image Uploader */
 #optionsframework .controls input.upload {
-	width: 79%;
+	width: 73%;
 }
 #optionsframework .controls input.upload-button,
 #optionsframework .controls input.remove-file  {
-	border-color: #BBBBBB;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 	float: right;
-	width: auto;
-}
-#optionsframework .controls input.upload-button: hover,
-#optionsframework .controls input.remove-file: hover  {
-	border-color: #666666;
-	color: #000;
+	width: 25%;
 }
 #optionsframework .section-upload .section-upload.image-standard input.image-url  {
-	width: 58%;
+	width: 56%;
 }
 #optionsframework .section-upload .section-upload.image-standard input.image-width  {
 	width: 15%;
