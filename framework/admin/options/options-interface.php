@@ -883,7 +883,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Include BG
 				$include_bg = 1;
 
-				if ( ! empty( $val['include_bg'] ) ) {
+				if ( isset( $val['include_bg'] ) ) {
 					$include_bg = $val['include_bg'];
 				}
 
@@ -895,7 +895,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Include border
 				$include_border = 1;
 
-				if ( ! empty( $val['include_border'] ) ) {
+				if ( isset( $val['include_border'] ) ) {
 					$include_border = $val['include_border'];
 				}
 
