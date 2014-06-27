@@ -381,9 +381,12 @@ html {
 	height: 100%;
 }
 
-/* Video Shortcode */
+/* Self-hosted video embed */
 .wp-video-shortcode {
 	max-width: 100%;
+}
+.wp-video {
+	width: 100% !important;
 }
 
 /* =WordPress Standard Classes
