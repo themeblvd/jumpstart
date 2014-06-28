@@ -1313,6 +1313,57 @@ function themeblvd_icon_box( $args ) {
 }
 
 /**
+ * Get content block
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_get_content_block( $args ){
+
+	$defaults = array(
+        'content'		=> '',			// Content to display
+        'wrap'			=> '0',			// Whether to wrap in DIV with BG color
+        'bg_color'		=> '#cccccc',	// Background color, if wrap is true
+        'bg_opacity'	=> '1',			// Background color opacity, if wrap is true
+        'text_color'	=> 'dark'		// Color of text, dark or light
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+	// CSS class
+	$class = 'tb-content-block';
+
+	if ( $args['wrap'] ) {
+		$class .= ' has-bg text-'.$args['text_color'];
+	}
+
+	// Inline styles
+	$style = '';
+
+	if ( $args['wrap'] ) {
+		$style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+	}
+
+	// Final output
+	$output = sprintf( '<div class="%s" style="%s">%s</div>', $class, $style, themeblvd_get_content( $args['content'] ) );
+
+	return apply_filters( 'themeblvd_content_block', $output, $args );
+}
+
+/**
+ * Display content block
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_content_block( $args ){
+	echo themeblvd_get_content_block( $args );
+}
+
+/**
  * Get Bootstrap Jumbotron
  *
  * @since 2.4.2

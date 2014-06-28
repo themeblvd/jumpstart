@@ -1542,6 +1542,15 @@ a.slide-thumbnail-link {
 	margin-bottom: 0;
 }
 
+/* Content Block */
+.tb-content-block.has-bg {
+	margin: 0 0 10px 0;
+	padding: 20px;
+}
+.tb-content-block.has-bg p:last-child {
+	margin-bottom: 0;
+}
+
 /* =Forms
 ----------------------------------------------- */
 
