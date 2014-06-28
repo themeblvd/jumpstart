@@ -999,6 +999,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '></div>';
 
+				if ( ! $val ) { // $val can't be empty or else the UI slider won't work
+					$val = $options['min'].$options['units'];
+				}
+
 				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
 				$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 				break;
