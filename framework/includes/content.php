@@ -124,6 +124,10 @@ function themeblvd_content_block( $id, $type, $options ) {
 			themeblvd_simple_slider( $options );
 			break;
 
+		case 'slogan' :
+			echo themeblvd_slogan( $options );
+			break;
+
 		case 'tabs' :
 			echo themeblvd_tabs( $id, $options );
 			break;

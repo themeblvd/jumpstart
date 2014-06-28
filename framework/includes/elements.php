@@ -1051,7 +1051,7 @@ function themeblvd_slogan( $args = array() ) {
 
 		$output .= themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
 	}
-	$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( do_shortcode( $args['slogan'] ) ).'</span>';
+	$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( themeblvd_get_content( $args['slogan'] ) ).'</span>';
 	$output .= '</div><!-- .slogan (end) -->';
 
 	return $output;
