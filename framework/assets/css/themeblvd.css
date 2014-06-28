@@ -1506,6 +1506,42 @@ a.slide-thumbnail-link {
 	}
 }
 
+/* Icon Box */
+.tb-icon-box {
+	margin-bottom: 20px;
+}
+.tb-icon-box.icon-above,
+.tb-icon-box .icon {
+	text-align: center;
+}
+.tb-icon-box.icon-side {
+	position: relative;
+}
+.tb-icon-box .icon {
+	line-height: 1;
+}
+.tb-icon-box.icon-side .icon {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.tb-icon-box.icon-side .content {
+	/* inline left padding based on width of icon */
+}
+.tb-icon-box.icon-above .content {
+	margin-top: 10px;
+}
+.tb-icon-box.icon-circled .icon {
+	-webkit-border-radius: 99px; 
+	border-radius: 99px;
+	box-sizing: content-box;
+	display: inline-block;
+	padding: 15px;
+}
+.tb-icon-box .content > p:last-child {
+	margin-bottom: 0;
+}
+
 /* =Forms
 ----------------------------------------------- */
 

@@ -1211,7 +1211,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
     // Construct alert
     $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', $class, do_shortcode( $content ) );
 
-    return apply_filters( 'themeblvd_alert', $output );
+    return apply_filters( 'themeblvd_alert', $output, $args, $content );
 }
 
 /**
@@ -1224,6 +1224,92 @@ function themeblvd_get_alert( $args, $content = '' ) {
  */
 function themeblvd_alert( $args, $content = '' ) {
 	echo themeblvd_get_alert( $args, $content );
+}
+
+/**
+ * Get icon box.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for alert
+ * @return string $output Output for alert
+ */
+function themeblvd_get_icon_box( $args ) {
+
+	$defaults = array(
+        'icon'			=> '',			// FontAwesome icon ID
+        'size'			=> '20px',		// Font size of font icon
+        'location'		=> 'above',		// Location of icon
+        'color'			=> '#666666',	// Color of the icon
+        'circle'		=> '0',			// Whether to circle the icon
+        'circle_color'	=> '#cccccc',	// BG color of the circle
+        'title'			=> '',			// Title of the block
+        'text'			=> ''			// Content of the block
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    // Class for icon box
+    $class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
+
+    if ( $args['circle'] ) {
+    	$class .= ' icon-circled';
+    }
+
+    // Icon
+    $icon_style = sprintf( 'color: %s; font-size: %s;', $args['color'], $args['size'] );
+
+    if ( $args['circle'] ) {
+    	$icon_style .= sprintf( ' background-color: %s;', $args['circle_color'] );
+    }
+
+    $icon = sprintf( '<div class="icon" style="%s"><i class="fa fa-%s" style="width:%s;"></i></div>', $icon_style, $args['icon'], $args['size'] );
+
+    // Content style
+    $content_style = '';
+
+    if ( $args['location'] == 'side' ) {
+
+    	$padding = intval( str_replace( 'px', '', $args['size'] ) );
+
+    	if ( $args['circle'] ) {
+    		$padding = $padding + 30; // Account for 15px of padding both sides of circled icon
+    	}
+
+    	$padding = $padding + 10;
+
+    	if ( is_rtl() ) {
+    		$content_style = sprintf( 'padding-right: %spx;', $padding );
+    	} else {
+    		$content_style = sprintf( 'padding-left: %spx;', $padding );
+    	}
+    }
+
+    // Final output
+	$output  = '<div class="'.$class.'">';
+
+	$output .= $icon;
+
+	if ( $args['title'] || $args['text'] ) {
+		$output .= '<div class="content" style="'.$content_style.'">';
+		$output .= '<h3>'.$args['title'].'</h3>';
+		$output .= themeblvd_get_content( $args['text'] );
+		$output .= '</div><!-- .content (end) -->';
+	}
+
+	$output .= '</div><!-- .tb-icon-box (end) -->';
+
+	return apply_filters( 'themeblvd_icon_box', $output, $args, $icon );
+}
+
+/**
+ * Display icon box.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ */
+function themeblvd_icon_box( $args ) {
+	echo themeblvd_get_icon_box( $args );
 }
 
 /**

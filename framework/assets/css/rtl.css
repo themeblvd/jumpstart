@@ -124,16 +124,14 @@ ul.sf-menu li li li.sfHover ul {
 	margin-left: inherit;
 	margin-right: 70px;
 }
-.themeblvd-mini-post-grid ul.grid-align-left li {
-	float: right;
-}
-.themeblvd-mini-post-grid ul.grid-align-right li {
-	float: left;
-}
 .attachment-small {
 	float: right;
 	margin-right: inherit;
 	margin-left: 20px;
+}
+.tb-icon-box.icon-side .icon {
+	left: inherit;
+	right: 0;
 }
 
 /* Shortcodes */

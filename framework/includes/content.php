@@ -68,6 +68,10 @@ function themeblvd_content_block( $id, $type, $options ) {
 			echo stripslashes( $options['html'] );
 			break;
 
+		case 'icon_box' :
+			themeblvd_icon_box( $options );
+			break;
+
 		case 'image' :
 			themeblvd_image( $options );
 			break;
