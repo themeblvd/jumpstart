@@ -1,5 +1,5 @@
 <?php
-if ( !function_exists( 'themeblvd_content_blocks' ) ) :
+if ( !function_exists( 'themeblvd_blocks' ) ) :
 /**
  * Get column of content blocks.
  *
@@ -7,7 +7,7 @@ if ( !function_exists( 'themeblvd_content_blocks' ) ) :
  *
  * @param array $blocks A set of content blocks
  */
-function themeblvd_content_blocks( $blocks ) {
+function themeblvd_blocks( $blocks ) {
 
 	if ( $blocks ) {
 
@@ -23,14 +23,14 @@ function themeblvd_content_blocks( $blocks ) {
 				$options = $block['options'];
 			}
 
-			themeblvd_content_block( $id, $type, $options );
+			themeblvd_block( $id, $type, $options );
 		}
 	}
 
 }
 endif;
 
-if ( !function_exists( 'themeblvd_content_block' ) ) :
+if ( !function_exists( 'themeblvd_block' ) ) :
 /**
  * Display individual column block;
  *
@@ -38,7 +38,7 @@ if ( !function_exists( 'themeblvd_content_block' ) ) :
  *
  * @param array $blocks A set of content blocks
  */
-function themeblvd_content_block( $id, $type, $options ) {
+function themeblvd_block( $id, $type, $options ) {
 
 	$class = sprintf( 'content-block content-block-%s', $type );
 
@@ -49,7 +49,7 @@ function themeblvd_content_block( $id, $type, $options ) {
 	switch ( $type ) {
 
 		case 'content' :
-			themeblvd_content( $options['content'] );
+			themeblvd_content_block( $options );
 			break;
 
 		case 'alert' :
@@ -245,7 +245,7 @@ function themeblvd_columns( $args, $columns = null ) {
 
 				// Display individual content block for
 				// the column of passed in data.
-				themeblvd_content_block( uniqid('block_'), $columns[$i]['type'], $columns[$i] );
+				themeblvd_block( uniqid('block_'), $columns[$i]['type'], $columns[$i] );
 
 			}
 
@@ -280,7 +280,7 @@ function themeblvd_columns( $args, $columns = null ) {
 				$blocks = $column['blocks'];
 			}
 
-			themeblvd_content_blocks( $blocks );
+			themeblvd_blocks( $blocks );
 
 			echo '</div><!-- .'.$grid_class.' (end) -->';
 
