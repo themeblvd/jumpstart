@@ -1532,7 +1532,7 @@ a.slide-thumbnail-link {
 	margin-top: 10px;
 }
 .tb-icon-box.icon-circled .icon {
-	-webkit-border-radius: 99px; 
+	-webkit-border-radius: 99px;
 	border-radius: 99px;
 	box-sizing: content-box;
 	display: inline-block;
@@ -1540,6 +1540,25 @@ a.slide-thumbnail-link {
 }
 .tb-icon-box .content > p:last-child {
 	margin-bottom: 0;
+}
+
+/* Team Member */
+.tb-team-member .member-info {
+	margin-bottom: 10px;
+}
+.tb-team-member .member-identity {
+	float: left;
+}
+.tb-team-member .member-name,
+.tb-team-member .member-tagline {
+	display: block;
+}
+.tb-team-member .member-name {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.tb-team-member .member-contact {
+	float: right;
 }
 
 /* Content Block */

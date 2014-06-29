@@ -136,6 +136,10 @@ function themeblvd_block( $id, $type, $options ) {
 			echo themeblvd_tabs( $id, $options );
 			break;
 
+		case 'team_member' :
+			echo themeblvd_team_member( $options );
+			break;
+
 		case 'toggles' :
 			echo themeblvd_toggles( $id, $options );
 			break;

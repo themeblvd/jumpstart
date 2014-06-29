@@ -48,7 +48,8 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_contact_bar_defaults', array(
 		'style'		=> themeblvd_get_option( 'social_media_style', null, 'grey' ),	// color, grey, light, dark
-		'tooltip'	=> 'top'														// top, right, left, bottom, false
+		'tooltip'	=> 'top',
+		'class'		=> ''													// top, right, left, bottom, false
 	));
 	$args = wp_parse_args( $args, $defaults );
 
@@ -57,7 +58,13 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 	if ( $buttons && is_array($buttons) ) {
 
-		$output .= '<div class="themeblvd-contact-bar '.$args['style'].'">';
+		$class = 'themeblvd-contact-bar '.$args['style'];
+
+		if ( $args['class'] ) {
+			$class .= ' '.$args['class'];
+		}
+
+		$output .= '<div class="'.$class.'">';
 		$output .= '<ul class="social-media">';
 
 		foreach ( $buttons as $button ) {
@@ -1349,6 +1356,76 @@ function themeblvd_get_content_block( $args ){
 	$output = sprintf( '<div class="%s" style="%s">%s</div>', $class, $style, themeblvd_get_content( $args['content'] ) );
 
 	return apply_filters( 'themeblvd_content_block', $output, $args );
+}
+
+/**
+ * Display team member.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ */
+function themeblvd_team_member( $args ) {
+	echo themeblvd_get_team_member( $args );
+}
+
+/**
+ * Get team member.
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_get_team_member( $args ){
+
+	$defaults = array(
+        'image'			=> '',		// Image URL of person
+        'name'			=> '',		// Name of person
+        'tagline'		=> '',		// Tagline for person, Ex: Founder and CEO
+        'icons'			=> array(),	// Social icons for themeblvd_contact_bar()
+        'icons_style'	=> 'grey',	// Style of social icons - grey, light, dark, or color
+        'text'			=> ''		// Description for person
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    $output = '<div class="tb-team-member">';
+
+    if ( $args['image'] ) {
+    	$output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" class="thumbnail" /></div>', $args['image'], $args['name'] );
+    }
+
+    $output .= '<div class="member-info clearfix">';
+
+    $output .= '<div class="member-identity">';
+
+    if ( $args['name'] ) {
+    	$output .= sprintf( '<span class="member-name">%s</span>', $args['name'] );
+    }
+
+    if ( $args['tagline'] ) {
+    	$output .= sprintf( '<span class="member-tagline">%s</span>', $args['tagline'] );
+    }
+
+    $output .= '</div><!-- .member-identity (end) -->';
+
+    if ( $args['icons'] ) {
+    	$icon_args = array(
+    		'style' => $args['icons_style'],
+    		'class'	=> 'member-contact'
+    	);
+		$output .= themeblvd_get_contact_bar( $args['icons'], $icon_args );
+    }
+
+    $output .= '</div><!-- .member-info (end) -->';
+
+    if ( $args['text'] ) {
+	    $output .= sprintf('<div class="member-text">%s</div><!-- .member-text (end) -->', themeblvd_get_content($args['text']) );
+    }
+
+    $output .= '</div><!-- .tb-team-member (end) -->';
+
+    return apply_filters( 'themeblvd_team_member', $output, $args );
 }
 
 /**
