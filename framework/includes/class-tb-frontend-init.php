@@ -688,8 +688,9 @@ class Theme_Blvd_Frontend_Init {
 			$possible_column_nums = array( 1, 2, 3, 4, 5 );
 			$custom_columns = get_post_meta( $this->config['id'], 'columns', true );
 
-			if ( in_array( intval( $custom_columns ), $possible_column_nums ) )
+			if ( in_array( intval( $custom_columns ), $possible_column_nums ) ) {
 				$columns = $custom_columns;
+			}
 
 			$rows = get_post_meta( $this->config['id'], 'rows', true );
 		}
@@ -739,7 +740,7 @@ class Theme_Blvd_Frontend_Init {
 			'counter'			=> 0,
 			'size'				=> $size,
 			'crop'				=> $crop, // Will be equal to "size" if not overridden
-			'class'				=> themeblvd_grid_class($columns)
+			'class'				=> themeblvd_grid_class(intval($columns))
 		);
 
 		return apply_filters( 'themeblvd_grid_atts', $atts );
