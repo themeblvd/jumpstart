@@ -64,6 +64,10 @@ function themeblvd_block( $id, $type, $options ) {
 			themeblvd_page_content();
 			break;
 
+		case 'divider' :
+			echo themeblvd_divider( $options );
+			break;
+
 		case 'html' :
 			echo stripslashes( $options['html'] );
 			break;

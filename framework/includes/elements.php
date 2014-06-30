@@ -29,9 +29,31 @@ if ( !function_exists( 'themeblvd_divider' ) ) :
  * @param string $type Style of divider
  * @return string $output HTML output for divider
  */
-function themeblvd_divider( $type = 'solid' ) {
-	$output = '<div class="divider divider-'.$type.'"></div>';
-	return apply_filters( 'themeblvd_divider', $output, $type );
+function themeblvd_divider( $args = array() ) {
+
+	// Setup and extract $args
+	$defaults = array(
+		'type' 		=> 'shadow',	// Style of divider - dashed, shadow, solid, double-solid, double-dashed
+		'width' 	=> '',			// A width for the divider in pixels
+		'placement'	=> 'equal'		// Where the divider sits between the content - equal, above (closer to content above), below (closer to content below)
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	$class = sprintf( 'tb-divider %s', $args['type'] );
+
+	if ( $args['placement'] == 'up' || $args['placement'] == 'down' ) {
+		$class .= ' suck-'.$args['placement'];
+	}
+
+	$style = '';
+
+	if ( $args['width'] ) {
+		$style .= sprintf( 'max-width: %spx;', $args['width'] );
+	}
+
+	$output = sprintf( '<div class="%s" style="%s"></div>', $class, $style );
+
+	return apply_filters( 'themeblvd_divider', $output, $args['type'] );
 }
 endif;
 
