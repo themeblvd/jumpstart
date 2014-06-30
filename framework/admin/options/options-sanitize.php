@@ -36,6 +36,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
 	add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
+	add_filter( 'themeblvd_sanitize_testimonials', 'themeblvd_sanitize_testimonials' );
 	add_filter( 'themeblvd_sanitize_toggles', 'themeblvd_sanitize_toggles' );
 	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
 	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
@@ -449,6 +450,30 @@ function themeblvd_sanitize_tabs( $input ) {
 			$output[$item_id] = array();
 			$output[$item_id]['title'] = themeblvd_sanitize_text( $item['title'] );
 			$output[$item_id]['content'] = themeblvd_sanitize_content( $item['content'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Testimonials
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_testimonials( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['text'] = themeblvd_sanitize_textarea( $item['text'] );
+			$output[$item_id]['name'] = themeblvd_sanitize_text( $item['name'] );
+			$output[$item_id]['tagline'] = themeblvd_sanitize_text( $item['tagline'] );
+			$output[$item_id]['company'] = themeblvd_sanitize_text( $item['company'] );
+			$output[$item_id]['company_url'] = themeblvd_sanitize_text( $item['company_url'] );
+			$output[$item_id]['image'] = themeblvd_sanitize_upload( $item['image'] );
 		}
 	}
 

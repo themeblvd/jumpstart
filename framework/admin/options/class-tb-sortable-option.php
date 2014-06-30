@@ -235,13 +235,16 @@ abstract class Theme_Blvd_Sortable_Option {
 			$item_output .= '<div class="controls">';
 
 			$current = '';
-			if ( isset($option['id']) && isset( $item[$option['id']] ) ) {
+			if ( isset($option['id']) && isset($item[$option['id']]) ) {
 				$current = $item[$option['id']];
 			}
 
 			switch ( $option['type'] ) {
 
-				// Hidden input
+				/*---------------------------------------*/
+				/* Hidden input
+				/*---------------------------------------*/
+
 				case 'hidden' :
 					$class = 'of-input';
 					if ( $this->trigger == $option['id'] ) {
@@ -250,7 +253,10 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
 					break;
 
-				// Text input
+				/*---------------------------------------*/
+				/* Text input
+				/*---------------------------------------*/
+
 				case 'text':
 
 					$place_holder = '';
@@ -273,7 +279,10 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= '</div><!-- .input-wrap (end) -->';
 					break;
 
-				// Textarea
+				/*---------------------------------------*/
+				/* Textarea
+				/*---------------------------------------*/
+
 				case 'textarea':
 
 					$place_holder = '';
@@ -316,7 +325,10 @@ abstract class Theme_Blvd_Sortable_Option {
 
 					break;
 
-				// <select> menu
+				/*---------------------------------------*/
+				/* <select> menu
+				/*---------------------------------------*/
+
 				case 'select':
 
 					$item_output .= '<div class="tb-fancy-select">';
@@ -339,17 +351,26 @@ abstract class Theme_Blvd_Sortable_Option {
 
 					break;
 
-				// Checkbox
+				/*---------------------------------------*/
+				/* Checkbox
+				/*---------------------------------------*/
+
 				case 'checkbox':
 					$item_output .= sprintf( '<input id="%s" class="of-input" name="%s" type="checkbox" %s />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), checked( $current, 1, false ) );
 					break;
 
-				// Content option type
+				/*---------------------------------------*/
+				/* Content option type
+				/*---------------------------------------*/
+
 				case 'content' :
 					$item_output .= themeblvd_content_option( $option['id'], $option_name.'['.$option_id.']['.$item_id.']', $current, $option['options'] );
 					break;
 
-				// Color
+				/*---------------------------------------*/
+				/* Color
+				/*---------------------------------------*/
+
 				case 'color' :
 					$def_color = '';
 					if ( ! empty( $option['std'] ) ) {
@@ -357,6 +378,65 @@ abstract class Theme_Blvd_Sortable_Option {
 					}
 					$item_output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr( $current ), $def_color );
 					break;
+
+				/*---------------------------------------*/
+				/* Uploader
+				/*---------------------------------------*/
+
+				case 'upload' :
+
+					$args = array(
+						'option_name'	=> $option_name.'['.$option_id.']['.$item_id.']',
+						'id'			=> $option['id']
+					);
+
+					if ( ! empty( $option['advanced'] ) ) {
+
+						// Advanced type will allow for selecting
+						// image crop size for URL.
+						$args['type'] = 'advanced';
+
+						if ( isset( $current['src'] ) ) {
+							$args['value_src'] = $current['src'];
+						}
+
+						if ( isset( $current['id'] ) ) {
+							$args['value_id'] = $current['id'];
+						}
+
+						if ( isset( $current['title'] ) ) {
+							$args['value_title'] = $current['title'];
+						}
+
+						if ( isset( $current['crop'] ) ) {
+							$args['value_crop'] = $current['crop'];
+						}
+
+						if ( isset( $current['width'] ) ) {
+							$args['value_width'] = $current['width'];
+						}
+
+						if ( isset( $current['height'] ) ) {
+							$args['value_height'] = $current['height'];
+						}
+
+					} else {
+
+						$args['value'] = $current;
+						$args['type'] = 'standard';
+
+						if ( isset( $option['send_back'] ) ) {
+							$args['send_back'] = $option['send_back'];
+						} else {
+							$args['send_back'] = 'url';
+						}
+
+						if ( ! empty( $option['video'] ) ) {
+							$args['type'] = 'video';
+						}
+					}
+
+					$item_output .= themeblvd_media_uploader( $args );
 			}
 
 			$item_output .= '</div><!-- .controls (end) -->';
@@ -840,6 +920,98 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
 			'delete_all' 			=> __('Delete All Tabs','themeblvd'),
 			'delete_all_confirm' 	=> __('Are you sure you want to delete all tabs?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Toggles option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'testimonials';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			'text' => array(
+				'id' 		=> 'text',
+				'name' 		=> __( 'Testimonial Text', 'themeblvd_builder'),
+				'desc'		=> __( 'Enter any text of the testimonial.', 'themeblvd_builder'),
+				'type'		=> 'textarea',
+				'editor'	=> true,
+				'code'		=> 'html'
+		    ),
+			'name' => array(
+				'id' 		=> 'name',
+				'name' 		=> __( 'Name', 'themeblvd_builder'),
+				'desc'		=> __( 'Enter the name of the person giving the testimonial.', 'themeblvd_builder'),
+				'type'		=> 'text',
+				'trigger'	=> true // Triggers this option's value to be used in toggle
+		    ),
+		    'tagline' => array(
+				'id' 		=> 'tagline',
+				'name' 		=> __( 'Tagline (optional)', 'themeblvd_builder'),
+				'desc'		=> __( 'Enter a tagline for the person giving the testimonial.<br>Ex: Founder and CEO', 'themeblvd_builder'),
+				'type'		=> 'text'
+		    ),
+		    'company' => array(
+				'id' 		=> 'company',
+				'name' 		=> __( 'Company (optional)', 'themeblvd_builder'),
+				'desc'		=> __( 'Enter the company the person giving the testimonial belongs to.', 'themeblvd_builder'),
+				'type'		=> 'text'
+		    ),
+		    'company_url' => array(
+				'id' 		=> 'company_url',
+				'name' 		=> __( 'Company URL (optional)', 'themeblvd_builder'),
+				'desc'		=> __( 'Enter the website URL for the company or the person giving the testimonial.', 'themeblvd_builder'),
+				'type'		=> 'text',
+				'pholder'	=> 'http://'
+		    ),
+		    'image' => array(
+				'id' 		=> 'image',
+				'name' 		=> __( 'Image (optional)', 'themeblvd_builder'),
+				'desc'		=> __( 'Select a small image for the person giving the testimonial.', 'themeblvd_builder'),
+				'type'		=> 'upload',
+				'advanced'	=> true
+		    )
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Testimonial','themeblvd'),
+			'delete' 				=> __('Delete Testimonial','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this testimonial?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Testimonials','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all testimonials?','themeblvd')
 		);
 		return $labels;
 	}

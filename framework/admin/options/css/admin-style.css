@@ -964,9 +964,10 @@
 	line-height: 60px;
 }
 
-/* Sortables - tabs, toggles, milestones */
+/* Sortables - milestones, tabs, testimonials, toggles */
 #optionsframework .section-milestones > .option > .controls,
 #optionsframework .section-tabs > .option > .controls,
+#optionsframework .section-testimonials > .option > .controls,
 #optionsframework .section-toggles > .option > .controls {
 	float: none;
 	min-width: 0;
@@ -976,12 +977,14 @@
 }
 #optionsframework .section-milestones > .option > .explain,
 #optionsframework .section-tabs > .option > .explain,
+#optionsframework .section-testimonials > .option > .explain,
 #optionsframework .section-toggles > .option > .explain {
 	float: none;
 	max-width: none;
 }
 #optionsframework .section-milestones .tb-sortable-option textarea,
 #optionsframework .section-tabs .tb-sortable-option textarea,
+#optionsframework .section-testimonials .tb-sortable-option textarea,
 #optionsframework .section-toggles .tb-sortable-option textarea {
 	height: auto;
 }

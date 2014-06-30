@@ -85,6 +85,7 @@ class Theme_Blvd_Advanced_Options {
 			'slider',
 			'social_media',
 			'tabs',
+			'testimonials',
 			'toggles'
 		);
 	}
@@ -121,6 +122,10 @@ class Theme_Blvd_Advanced_Options {
 
 			case 'tabs':
 				$this->types[$type] = new Theme_Blvd_Tabs_Option();
+				break;
+
+			case 'testimonials':
+				$this->types[$type] = new Theme_Blvd_Testimonials_Option();
 				break;
 
 			case 'toggles':
@@ -163,7 +168,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'milestones', 'slider', 'social_media', 'tabs', 'toggles' ) );
+		return in_array( $type, array( 'milestones', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
 	}
 
 }

@@ -1025,6 +1025,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Testimonials
+			/*---------------------------------------*/
+
+			case 'testimonials' :
+				$testimonials = $advanced->get('testimonials');
+				$output .= $testimonials->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
 			/* Tabs
 			/*---------------------------------------*/
 

@@ -424,6 +424,23 @@ a.list-group-item.active:focus {
 	box-shadow: 0 0 2px #000000;
 }
 
+/* =Moveable Parts
+-----------------------------------------------*/
+
+.tb-testimonial-slider .flex-control-nav li a {
+    background-image: url('../images/elements/slider-nav-dark.png');
+}
+@media  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+        only screen and (-moz-min-device-pixel-ratio: 1.5),
+        only screen and (-o-min-device-pixel-ratio: 1.5),
+        only screen and (min-device-pixel-ratio: 1.5),
+        only screen and (min-resolution: 1.5dppx) {
+    .tb-testimonial-slider .flex-control-nav li a {
+        background-image: url('../images/elements/slider-nav-dark_2x.png');
+        background-size: 20px 11px;
+    }
+}
+
 /* =Forms
 ----------------------------------------------- */
 

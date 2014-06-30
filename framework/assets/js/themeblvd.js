@@ -246,6 +246,42 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
+	// Testimonial slider
+	// ---------------------------------------------------------
+
+	$('.tb-testimonial-slider').each(function(){
+
+		var $slider = $(this),
+			speed = $slider.data('timeout'),
+			slideshow = false,
+			nav = $slider.data('nav');
+
+		if ( speed && speed !== '0' ) {
+			speed = speed+'000';
+			slideshow = true;
+		}
+
+		if ( nav && nav !== '0' ) {
+			nav = true;
+		} else {
+			nav = false;
+		}
+
+		$(window).load(function() {
+			$slider.flexslider({
+				animation: 'fade',
+				slideshowSpeed: speed,
+				slideshow: slideshow,
+				pauseOnHover: true,
+				directionNav: false,
+				controlNav: nav,
+				pauseOnHover: true,
+				pauseOnAction: true
+			});
+		});
+	});
+
+	// ---------------------------------------------------------
 	// Parallax background effect
 	// ---------------------------------------------------------
 

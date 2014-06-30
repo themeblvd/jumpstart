@@ -1044,6 +1044,7 @@
 								$new_item.themeblvd('options', 'setup');
 								$new_item.themeblvd('options', 'editor');
 								$new_item.themeblvd('options', 'code-editor');
+								$new_item.themeblvd('options', 'media-uploader');
 
 								if ( max > 0 && $option.find('.item-container > .item').length >= max ) {
 									$button.prop('disabled', true);

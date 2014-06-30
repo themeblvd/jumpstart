@@ -1380,7 +1380,7 @@ function themeblvd_team_member( $args ) {
 function themeblvd_get_team_member( $args ){
 
 	$defaults = array(
-        'image'			=> '',		// Image URL of person
+        'image'			=> array(),	// Image of person
         'name'			=> '',		// Name of person
         'tagline'		=> '',		// Tagline for person, Ex: Founder and CEO
         'icons'			=> array(),	// Social icons for themeblvd_contact_bar()
@@ -1391,8 +1391,8 @@ function themeblvd_get_team_member( $args ){
 
     $output = '<div class="tb-team-member">';
 
-    if ( $args['image'] ) {
-    	$output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" class="thumbnail" /></div>', $args['image'], $args['name'] );
+    if ( ! empty( $args['image']['src'] ) ) {
+    	$output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" class="img-thumbnail" /></div>', $args['image']['src'], $args['image']['title'] );
     }
 
     $output .= '<div class="member-info clearfix">';
@@ -1426,6 +1426,152 @@ function themeblvd_get_team_member( $args ){
     $output .= '</div><!-- .tb-team-member (end) -->';
 
     return apply_filters( 'themeblvd_team_member', $output, $args );
+}
+
+/**
+ * Display testimonial.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ */
+function themeblvd_testimonial( $args ) {
+	echo themeblvd_get_testimonial( $args );
+}
+
+/**
+ * Get testimonial.
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_get_testimonial( $args ){
+
+	$defaults = array(
+        'text'			=> '',		// Text for testimonial
+        'name'			=> '', 		// Name of person giving testimonial
+        'tagline'		=> '',		// Tagline or position of person giving testimonial
+        'company'		=> '',		// Company of person giving testimonial
+        'company_url'	=> '',		// Company URL of person giving testimonial
+        'image'			=> array()	// Image of person giving testimonial
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    $class = 'tb-testimonial';
+
+	if ( ! empty( $args['image']['src'] ) ) {
+		$class .= ' has-image';
+	}
+
+	if ( $args['name'] && ( $args['tagline'] || $args['company'] ) ) {
+		$class .= ' tag-two-line';
+	} else if ( $args['name'] || $args['tagline'] || $args['company'] ) {
+		$class .= ' tag-one-line';
+	}
+
+	$output = '<div class="'.$class.'">';
+
+	$output .= sprintf( '<div class="testimonial-text"><span class="arrow"></span>%s</div>', themeblvd_get_content($args['text']) );
+
+	if ( $args['name'] ) {
+
+		$output .= '<div class="author">';
+
+		if ( ! empty( $args['image']['src'] ) ) {
+			$output .= sprintf( '<span class="author-image"><img src="%s" alt="%s" /></span>', $args['image']['src'], $args['image']['title'] );
+		}
+
+		$output .= sprintf( '<span class="author-name">%s</span>', $args['name'] );
+
+		if ( $args['tagline'] || $args['company'] ) {
+
+			$tagline = '';
+
+			if ( $args['tagline'] ) {
+				$tagline .= $args['tagline'];
+			}
+
+			if ( $args['company'] ) {
+
+				$company = $args['company'];
+
+				if ( $args['company_url'] ) {
+					$company = sprintf( '<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', $args['company_url'], $company );
+				}
+
+				if ( $tagline ) {
+					$tagline .= ', '.$company;
+				} else {
+					$tagline .= $company;
+				}
+
+			}
+
+			$output .= sprintf( '<span class="author-tagline">%s</span>', $tagline );
+
+		}
+
+		$output .= '</div><!-- .author (end) -->';
+	}
+
+    $output .= '</div><!-- .tb-testimonial (end) -->';
+
+    return apply_filters( 'themeblvd_testiomnial', $output, $args );
+}
+
+/**
+ * Display testimonial slider.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ */
+function themeblvd_testimonial_slider( $args ) {
+	echo themeblvd_get_testimonial_slider( $args );
+}
+
+/**
+ * Get testimonial slider.
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_get_testimonial_slider( $args ){
+
+	$defaults = array(
+        'testimonials'	=> array(),		// The testimonials, each formatted for themeblvd_get_testimonial
+        'timeout'		=> '3',			// Secods in between transitions, can be 0 for no auto rotation
+        'nav_standard'	=> true			// Whether to show slider navigation below
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    $class = 'tb-testimonial-slider flexslider';
+
+    if ( $args['nav_standard'] ) {
+    	$class .= ' has-nav';
+    }
+
+    $output = sprintf('<div class="%s" data-timeout="%s" data-nav="%s">', $class, $args['timeout'], $args['nav_standard'] );
+
+    if ( $args['testimonials'] ) {
+
+    	$output .= '<ul class="slides">';
+
+    	foreach ( $args['testimonials'] as $testimonial ) {
+    		$output .= sprintf( '<li class="slide">%s</li>', themeblvd_get_testimonial($testimonial) );
+    	}
+
+    	$output .= '</ul>';
+
+    }
+
+    $output .= '</div><!-- .tb-testimonial-slider (end) -->';
+
+    return apply_filters( 'themeblvd_testiomnial_slider', $output, $args );
 }
 
 /**

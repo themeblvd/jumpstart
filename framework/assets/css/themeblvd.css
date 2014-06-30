@@ -696,6 +696,130 @@ ul.sf-menu .fa {
 	}
 }
 
+/* =Plugins
+----------------------------------------------- */
+
+/* FlexSlider */
+.flex-container a:active,
+.flexslider a:active {
+	outline: none;
+}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.flexslider {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.flexslider .slides > li {
+	display: none; /* Hide the slides before the JS is loaded. Avoids image jumping */
+}
+.flexslider .slides img {
+	max-width: 100%;
+	display: block;
+}
+.flex-pauseplay span {
+	text-transform: capitalize;
+}
+.slides:after { /* Clearfix for the .slides element */
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+html[xmlns] .slides {
+	display: block;
+}
+* html .slides {
+	height: 1%;
+}
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {
+	display: block;
+}
+
+/* Nivo Slider (v3.2) */
+.tb-nivo-slider-wrapper .slides-wrapper {
+	overflow: hidden;
+}
+.nivoSlider {
+	position: relative;
+	width: 100%;
+	height: auto;
+	/* overflow: hidden; */
+}
+.nivoSlider img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	max-width: none;
+}
+.nivo-main-image {
+	display: block !important;
+	position: relative !important;
+	width: 100% !important;
+}
+/* Nivo Slider: If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	z-index: 6;
+	display: none;
+	/*
+	background: white;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	*/
+}
+
+/* Nivo Slider: The slices and boxes in the Slider */
+.nivo-slice {
+	display: block;
+	position: absolute;
+	z-index: 5;
+	height: 100%;
+	top: 0;
+}
+.nivo-box {
+	display: block;
+	position: absolute;
+	z-index: 5;
+	overflow: hidden;
+}
+.nivo-box img { display: block; }
+
+/* Nivo Slider: Caption placement */
+.nivo-caption {
+	position:absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 8;
+	overflow: hidden;
+	display: none;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+
 /* =Common Classes
 ----------------------------------------------- */
 
@@ -1532,8 +1656,7 @@ a.slide-thumbnail-link {
 	margin-top: 10px;
 }
 .tb-icon-box.icon-circled .icon {
-	-webkit-border-radius: 99px;
-	border-radius: 99px;
+	border-radius: 50%;
 	box-sizing: content-box;
 	display: inline-block;
 	padding: 15px;
@@ -1543,6 +1666,7 @@ a.slide-thumbnail-link {
 }
 
 /* Team Member */
+.tb-team-member .member-image,
 .tb-team-member .member-info {
 	margin-bottom: 10px;
 }
@@ -1559,6 +1683,109 @@ a.slide-thumbnail-link {
 }
 .tb-team-member .member-contact {
 	float: right;
+}
+
+/* Testimonial */
+.tb-testimonial {
+	margin-bottom: 20px;
+}
+.tb-testimonial .testimonial-text {
+	background-color: #eeeeee; /* Matches Bootstrap jumobotron */
+	border-radius: 4px;
+	color: #333333; /* Matches Bootstrap jumobotron */
+	padding: 15px;
+	position: relative;
+}
+.tb-testimonial .testimonial-text p:last-child {
+	margin-bottom: 0;
+}
+.tb-testimonial .arrow {
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #eeeeee;
+	display: block;
+	position: absolute;
+	bottom: -5px;
+	left: 20px;
+	width: 0;
+	height: 0;
+}
+.tb-testimonial .author {
+	padding-top: 5px;
+	padding-left: 10px;
+}
+.tb-testimonial .author-name,
+.tb-testimonial .author-tagline {
+	display: block;
+}
+.tb-testimonial .author-name {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.tb-testimonial.has-image .arrow {
+	left: 30px;
+}
+.tb-testimonial.has-image .author {
+	height: 65px;
+	padding-top: 15px;
+	padding-left: 70px; /* 10px + 50px + 10px */
+	position: relative;
+}
+.tb-testimonial.has-image.tag-one-line .author {
+	padding-top: 25px;
+}
+.tb-testimonial.has-image .author-image {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.tb-testimonial.has-image .author-image img {
+	border-radius: 50%;
+	width: 50px;
+}
+
+/* Testimonial Slider */
+.tb-testimonial-slider {
+	margin-bottom: 20px;
+}
+.tb-testimonial-slider.has-nav {
+	padding-top: 20px;
+	position: relative;
+}
+.tb-testimonial-slider .tb-testimonial {
+	margin-bottom: 0;
+}
+.tb-testimonial-slider .flex-control-nav {
+	position: absolute;
+	top: 0;
+	left: 5px;
+}
+.tb-testimonial-slider .flex-control-nav li {
+	float: left;
+	padding: 2px;
+}
+.tb-testimonial-slider .flex-control-nav li a {
+	background: url('../images/elements/slider-nav.png') no-repeat;
+	cursor: pointer;
+	display: block;
+	outline: none;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+}
+.tb-testimonial-slider .flex-control-nav li a.flex-active {
+	background-position: -10px 0;
+}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+		only screen and (-moz-min-device-pixel-ratio: 1.5),
+		only screen and (-o-min-device-pixel-ratio: 1.5),
+		only screen and (min-device-pixel-ratio: 1.5),
+		only screen and (min-resolution: 1.5dppx) {
+	/* Slider controls - Use 2x image for retina */
+	.tb-testimonial-slider .flex-control-nav li a {
+		background-image: url('../images/elements/slider-nav_2x.png');
+		background-size: 20px 11px;
+	}
 }
 
 /* Content Block */
@@ -3532,130 +3759,6 @@ ul.tb-icon-list {
 	.tb-contact_widget ul.simple-contact ul.icons li.youtube  a {
 		background-image: url(../images/social/32/youtube.png);
 	}
-}
-
-/* =Plugins
------------------------------------------------ */
-
-/* FlexSlider */
-.flex-container a:active,
-.flexslider a:active {
-	outline: none;
-}
-.slides,
-.flex-control-nav,
-.flex-direction-nav {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-.flexslider {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-.flexslider .slides > li {
-	display: none; /* Hide the slides before the JS is loaded. Avoids image jumping */
-}
-.flexslider .slides img {
-	max-width: 100%;
-	display: block;
-}
-.flex-pauseplay span {
-	text-transform: capitalize;
-}
-.slides:after { /* Clearfix for the .slides element */
-	content: ".";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-}
-html[xmlns] .slides {
-	display: block;
-}
-* html .slides {
-	height: 1%;
-}
-/* No JavaScript Fallback */
-/* If you are not using another script, such as Modernizr, make sure you
- * include js that eliminates this class on page load */
-.no-js .slides > li:first-child {
-	display: block;
-}
-
-/* Nivo Slider (v3.2) */
-.tb-nivo-slider-wrapper .slides-wrapper {
-	overflow: hidden;
-}
-.nivoSlider {
-	position: relative;
-	width: 100%;
-	height: auto;
-	/* overflow: hidden; */
-}
-.nivoSlider img {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	max-width: none;
-}
-.nivo-main-image {
-	display: block !important;
-	position: relative !important;
-	width: 100% !important;
-}
-/* Nivo Slider: If an image is wrapped in a link */
-.nivoSlider a.nivo-imageLink {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	z-index: 6;
-	display: none;
-	/*
-	background: white;
-	filter: alpha(opacity=0);
-	opacity: 0;
-	*/
-}
-
-/* Nivo Slider: The slices and boxes in the Slider */
-.nivo-slice {
-	display: block;
-	position: absolute;
-	z-index: 5;
-	height: 100%;
-	top: 0;
-}
-.nivo-box {
-	display: block;
-	position: absolute;
-	z-index: 5;
-	overflow: hidden;
-}
-.nivo-box img { display: block; }
-
-/* Nivo Slider: Caption placement */
-.nivo-caption {
-	position:absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	z-index: 8;
-	overflow: hidden;
-	display: none;
-}
-.nivo-caption a {
-	display:inline !important;
-}
-.nivo-html-caption {
-    display:none;
 }
 
 /* =Lightbox

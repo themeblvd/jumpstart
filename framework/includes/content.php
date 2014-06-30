@@ -140,6 +140,14 @@ function themeblvd_block( $id, $type, $options ) {
 			echo themeblvd_team_member( $options );
 			break;
 
+		case 'testimonial' :
+			echo themeblvd_testimonial( $options );
+			break;
+
+		case 'testimonial_slider' :
+			echo themeblvd_testimonial_slider( $options );
+			break;
+
 		case 'toggles' :
 			echo themeblvd_toggles( $id, $options );
 			break;

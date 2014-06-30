@@ -133,13 +133,45 @@ ul.sf-menu li li li.sfHover ul {
 	left: inherit;
 	right: 0;
 }
+.tb-team-member .member-identity {
+	float: right;
+}
+.tb-team-member .member-contact {
+	float: left;
+}
+.tb-testimonial .arrow {
+	left: inherit;
+	right: 20px;
+}
+.tb-testimonial .author {
+	padding-left: 0;
+	padding-right: 10px;
+}
+.tb-testimonial.has-image .arrow {
+	left: inherit;
+	right: 30px;
+}
+.tb-testimonial.has-image .author {
+	padding-left: 0;
+	padding-right: 70px; /* 10px + 50px + 10px */
+}
+.tb-testimonial.has-image .author-image {
+	left: inherit;
+	right: 10px;
+}
+.tb-testimonial-slider .flex-control-nav {
+	left: inherit;
+	right: 5px;
+}
+.tb-testimonial-slider .flex-control-nav li {
+	float: right;
+}
 
 /* Shortcodes */
 .tb-icon-link .fa {
 	margin-right: inherit;
 	margin-left: 5px;
 }
-
 .info-box-has-icon {
 	padding-left: inherit;
 	padding-right: 36px;
@@ -164,21 +196,6 @@ ul.sf-menu li li li.sfHover ul {
 	padding: 0 30px 0 0;
 }
 
-/* Plugins */
-div.wpcf7 input[type="text"],
-div.wpcf7 select {
-	margin-right: inherit;
-	margin-left: 10px;
-}
-span.wpcf7-list-item {
-	margin-left: inherit;
-	margin-right: 0.5em;
-}
-div.wpcf7 img.ajax-loader {
-	margin-left: 0;
-	margin-right: 4px;
-}
-
 /* Elements */
 .tb-slogan.has_button .btn {
 	float: left;
@@ -187,7 +204,6 @@ div.wpcf7 img.ajax-loader {
 .tabs-left.tb-tabs-framed .nav-tabs {
 	margin: 5px 0 0 -1px;
 }
-
 .tb-tweet-wrapper.has-icon {
 	padding-left: inherit;
 	padding-right: 70px;
