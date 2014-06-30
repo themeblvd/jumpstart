@@ -610,8 +610,10 @@ button:active {
 /* =Elements
 -----------------------------------------------*/
 
-.divider-dashed,
-.divider-solid {
+.tb-divider.solid,
+.tb-divider.double-solid,
+.tb-divider.dashed,
+.tb-divider.double-dashed {
 	border-color: #000000;
 }
 .slider-fallback li.slider-fallback-slide {

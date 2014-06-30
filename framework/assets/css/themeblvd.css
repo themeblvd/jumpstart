@@ -3904,22 +3904,58 @@ button.mfp-arrow {
 
 /* Divider */
 .element-divider {
+	margin-bottom: 0;
 	padding-bottom: 0;
 }
-.divider-dashed,
-.divider-solid,
-.divider-shadow {
-	margin: 30px 0;
+.tb-divider {
+	margin: 30px auto;
+	max-width: 960px;
 }
-.divider-dashed {
-	border-top: 1px dashed #cccccc;
+.tb-divider.suck-up {
+	margin-top: 10px;
 }
-.divider-solid {
+.tb-divider.suck-down {
+	margin-bottom: 10px;
+}
+.element-divider .tb-divider {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.tb-divider.solid {
 	border-top: 1px solid #cccccc;
 }
-.divider-shadow {
-	background: url('../images/elements/divider-shadow.png') center top no-repeat;
-	height:8px;
+.tb-divider.double-solid {
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	height: 7px;
+}
+.tb-divider.dashed {
+	border-top: 1px dashed #cccccc;
+}
+.tb-divider.double-dashed {
+	border-top: 1px dashed #cccccc;
+	border-bottom: 1px dashed #cccccc;
+	height: 7px;
+}
+.tb-divider.shadow {
+	background: none;
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(150, 150, 150, 0)), color-stop(15%, rgba(150, 150, 150, 0)), color-stop(50%, rgba(150, 150, 150, 0.65)), color-stop(85%, rgba(150, 150, 150, 0)), color-stop(100%, rgba(150, 150, 150, 0)));
+	background: -webkit-linear-gradient(left, rgba(150, 150, 150, 0) 0%, rgba(150, 150, 150, 0) 15%, rgba(150, 150, 150, 0.65) 50%, rgba(150, 150, 150, 0) 85%, rgba(150, 150, 150, 0) 100%);
+	background: -moz-linear-gradient(left, rgba(150, 150, 150, 0) 0%, rgba(150, 150, 150, 0) 15%, rgba(150, 150, 150, 0.65) 50%, rgba(150, 150, 150, 0) 85%, rgba(150, 150, 150, 0) 100%);
+	background: linear-gradient(left, rgba(150, 150, 150, 0) 0%, rgba(150, 150, 150, 0) 15%, rgba(150, 150, 150, 0.65) 50%, rgba(150, 150, 150, 0) 85%, rgba(150, 150, 150, 0) 100%);
+	border: none;
+	height: 1px;
+	overflow: visible;
+}
+.tb-divider.shadow:after {
+	content: '';
+	background: -webkit-radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 65%);
+	background: -moz-radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 80%);
+	background: radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 65%);
+	display: block;
+	margin-top: 10px;
+	height: 6px;
+	width: 100%;
 }
 
 /* Jumbotron */
