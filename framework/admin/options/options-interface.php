@@ -467,70 +467,60 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'upload' :
-				if ( function_exists('wp_enqueue_media') ) {
 
-					// Media uploader WP 3.5+
-					$args = array(
-						'option_name'	=> $option_name,
-						'id'			=> $value['id']
-					);
+				// Media uploader WP 3.5+
+				$args = array(
+					'option_name'	=> $option_name,
+					'id'			=> $value['id']
+				);
 
-					if ( ! empty( $value['advanced'] ) ) {
+				if ( ! empty( $value['advanced'] ) ) {
 
-						// Advanced type will allow for selecting
-						// image crop size for URL.
-						$args['type'] = 'advanced';
+					// Advanced type will allow for selecting
+					// image crop size for URL.
+					$args['type'] = 'advanced';
 
-						if ( isset( $val['src'] ) ) {
-							$args['value_src'] = $val['src'];
-						}
-
-						if ( isset( $val['id'] ) ) {
-							$args['value_id'] = $val['id'];
-						}
-
-						if ( isset( $val['title'] ) ) {
-							$args['value_title'] = $val['title'];
-						}
-
-						if ( isset( $val['crop'] ) ) {
-							$args['value_crop'] = $val['crop'];
-						}
-
-						if ( isset( $val['width'] ) ) {
-							$args['value_width'] = $val['width'];
-						}
-
-						if ( isset( $val['height'] ) ) {
-							$args['value_height'] = $val['height'];
-						}
-
-					} else {
-
-						$args['value'] = $val;
-						$args['type'] = 'standard';
-
-						if ( isset( $value['send_back'] ) ) {
-							$args['send_back'] = $value['send_back'];
-						} else {
-							$args['send_back'] = 'url';
-						}
-
-						if ( ! empty( $value['video'] ) ) {
-							$args['type'] = 'video';
-						}
+					if ( isset( $val['src'] ) ) {
+						$args['value_src'] = $val['src'];
 					}
 
-					$output .= themeblvd_media_uploader( $args );
+					if ( isset( $val['id'] ) ) {
+						$args['value_id'] = $val['id'];
+					}
+
+					if ( isset( $val['title'] ) ) {
+						$args['value_title'] = $val['title'];
+					}
+
+					if ( isset( $val['crop'] ) ) {
+						$args['value_crop'] = $val['crop'];
+					}
+
+					if ( isset( $val['width'] ) ) {
+						$args['value_width'] = $val['width'];
+					}
+
+					if ( isset( $val['height'] ) ) {
+						$args['value_height'] = $val['height'];
+					}
 
 				} else {
-					// Legacy media uploader
-					$val = array(
-						'url' 	=> $val,
-						'id' 	=> ''
-					);
-					$output .= optionsframework_medialibrary_uploader( $option_name, 'standard', $value['id'], $val ); // @deprecated
+
+					$args['value'] = $val;
+					$args['type'] = 'standard';
+
+					if ( isset( $value['send_back'] ) ) {
+						$args['send_back'] = $value['send_back'];
+					} else {
+						$args['send_back'] = 'url';
+					}
+
+					if ( ! empty( $value['video'] ) ) {
+						$args['type'] = 'video';
+					}
 				}
+
+				$output .= themeblvd_media_uploader( $args );
 
 				break;
 

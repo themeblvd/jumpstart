@@ -819,56 +819,27 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/* Image
 	/*------------------------------------------------------*/
 
-	if ( function_exists( 'wp_enqueue_media' ) ) { // WP 3.5+
-
-		$current_value = array( 'url' => '', 'width' => '' );
-		if ( is_array( $val ) && isset( $val['image'] ) ) {
-			$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'] );
-		}
-
-		$current_retina = array( 'url' => '' );
-		if ( is_array( $val ) && isset( $val['image_2x'] ) ) {
-			$current_retina = array( 'url' => $val['image_2x'] );
-		}
-
-		// Standard Image
-		$image_upload  = '<div class="section-upload image-standard">';
-		$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
-		$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'name' => 'image' ) );
-		$image_upload .= '</div>';
-
-		// Retina image (2x)
-		$image_upload .= '<div class="section-upload image-2x">';
-		$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
-		$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo_2x', 'id' => $id, 'value' => $current_retina['url'], 'name' => 'image_2x' ) );
-		$image_upload .= '</div>';
-
-	} else {
-
-		// Media uploader prior to WP 3.5 -- @deprecated
-
-		$current_value = array( 'url' => '', 'width' => '', 'id' => '' );
-		if ( is_array( $val ) && isset( $val['image'] ) ) {
-			$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'], 'id' => '' );
-		}
-
-		$current_retina = array( 'url' => '', 'id' => '' );
-		if ( is_array( $val ) && isset( $val['image_2x'] ) ) {
-			$current_retina = array( 'url' => $val['image_2x'], 'id' => '' );
-		}
-
-		// Standard Image
-		$image_upload  = '<div class="section-upload image-standard">';
-		$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
-		$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo', $id, $current_value, null, null, 0, 'image' );
-		$image_upload .= '</div>';
-
-		// Retina image (2x)
-		$image_upload .= '<div class="section-upload image-2x">';
-		$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
-		$image_upload .= optionsframework_medialibrary_uploader( $name, 'logo_2x', $id, $current_retina, null, null, 0, 'image_2x' );
-		$image_upload .= '</div>';
+	$current_value = array( 'url' => '', 'width' => '' );
+	if ( is_array( $val ) && isset( $val['image'] ) ) {
+		$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'] );
 	}
+
+	$current_retina = array( 'url' => '' );
+	if ( is_array( $val ) && isset( $val['image_2x'] ) ) {
+		$current_retina = array( 'url' => $val['image_2x'] );
+	}
+
+	// Standard Image
+	$image_upload  = '<div class="section-upload image-standard">';
+	$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
+	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'name' => 'image' ) );
+	$image_upload .= '</div>';
+
+	// Retina image (2x)
+	$image_upload .= '<div class="section-upload image-2x">';
+	$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
+	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo_2x', 'id' => $id, 'value' => $current_retina['url'], 'name' => 'image_2x' ) );
+	$image_upload .= '</div>';
 
 	/*------------------------------------------------------*/
 	/* Primary Output

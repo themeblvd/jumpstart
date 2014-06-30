@@ -356,18 +356,6 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		}
 	}
 
-	// If no gallery present, pull from attachments of posts
-	// (old school way before WP 3.5, less common)
-	if ( ! $attachments ) {
-		$args = array(
-			'post_parent'		=> $post_id,
-			'post_status'		=> 'inherit',
-			'post_type'			=> 'attachment',
-			'post_mime_type'	=> 'image'
-		);
-		$attachments = get_children( $args );
-	}
-
 	// Slider needs 2 or more attachments.
 	if ( count( $attachments ) <= 1 ) {
 		if ( is_user_logged_in() ) {
