@@ -1008,7 +1008,7 @@ endif;
 
 if ( !function_exists( 'themeblvd_slogan' ) ) :
 /**
- * Display slogan.
+ * Display slogan (i.e. Promo Box)
  *
  * @since 2.0.0
  *
@@ -1019,8 +1019,14 @@ function themeblvd_slogan( $args = array() ) {
 
 	// Setup and extract $args
 	$defaults = array(
-		'slogan'				=> '',						// Text for slogan
+		'slogan'				=> '',						// Text for slogan (used by element)
+		'content'				=> '',						// Text for slogan (used by block)
+		'wpautop'				=> 1,						// Whether to apply wpautop on content
 		'text_size'				=> 'large',					// Size of text - small, normal, medium, large
+		'style'					=> 'none',					// Custom styling class
+        'bg_color'				=> '',						// Background color - Ex: #000000
+        'bg_opacity'			=> '1',						// BG color opacity for rgba()
+        'text_color'			=> '',						// Text color - Ex: #000000
 		'button'				=> 1,						// Show button - true, false
 		'button_color' 			=> 'default',				// Color of button - Use themeblvd_colors() to generate list
 		'button_custom'			=> array(
@@ -1041,12 +1047,39 @@ function themeblvd_slogan( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	// Wrapping class
-	$class  = $args['button'] ? 'has_button' : 'text_only';
-	$text_class = 'text_'.$args['text_size'];
+	// CSS classes
+    $class = sprintf( 'tb-slogan text-%s', $args['text_size'] );
+
+    if ( $args['button'] ) {
+    	$class .= ' has-button';
+    } else {
+    	$class .= ' text-only';
+    }
+
+    // Inline styles
+    $style = '';
+
+	if ( $args['style'] == 'custom' ) {
+
+		if ( $args['bg_color'] ) {
+	    	$style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
+	    	$style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+	    	$class .= ' has-bg';
+	    }
+
+	    if ( $args['text_color'] ) {
+	    	$style .= sprintf( 'color:%s;', $args['text_color'] );
+	    }
+
+	}
+
+    // Custom CSS classes
+	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
+		$class .= ' '.$args['style'];
+	}
 
 	// Output
-	$output = '<div class="tb-slogan '.$class.'">';
+	$output = sprintf( '<div class="%s" style="%s">', $class, $style );
 
 	// Button
 	if ( $args['button'] ) {
@@ -1074,7 +1107,20 @@ function themeblvd_slogan( $args = array() ) {
 
 		$output .= themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
 	}
-	$output .= '<span class="slogan-text '.$text_class.'">'.stripslashes( themeblvd_get_content( $args['slogan'] ) ).'</span>';
+
+	// Content
+	$content = stripslashes($args['slogan']);
+
+	if ( ! $content ) {
+		$content = stripslashes($args['content']);
+	}
+
+	// WP auto?
+    if ( $args['wpautop'] ) {
+    	$content = wpautop( $content );
+    }
+
+	$output .= sprintf( '<span class="slogan-text">%s</span>', do_shortcode($content) );
 	$output .= '</div><!-- .slogan (end) -->';
 
 	return $output;

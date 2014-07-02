@@ -1623,10 +1623,15 @@ a.slide-thumbnail-link {
 	background-color: transparent;
 	color: #333333;
 	line-height: 1.428571429;
+	margin-bottom: 0;
 	padding: 0;
 }
 .jumbotron.has-bg {
+	margin-bottom: 10px;
 	padding: 48px 30px 48px 30px; /* Bootstrap default */
+}
+.jumbotron > h2 {
+	font-size: 45px;
 }
 .jumbotron p:last-of-type {
 	margin-bottom: 0;
@@ -1801,7 +1806,7 @@ a.slide-thumbnail-link {
 /* Content Block */
 .tb-content-block.has-bg {
 	margin: 0 0 10px 0;
-	padding: 20px;
+	padding: 30px;
 }
 .tb-content-block.has-bg p:last-child {
 	margin-bottom: 0;
@@ -4438,27 +4443,35 @@ button.mfp-arrow {
 }
 
 /* Slogan */
-.tb-slogan .slogan-text.text_large {
+.tb-slogan.has-bg {
+	margin-bottom: 10px;
+	padding: 30px;
+}
+.tb-slogan.text-large .slogan-text {
 	font-size: 20px;
 	line-height: 1.25;
 }
-.tb-slogan .slogan-text.text_medium {
+.tb-slogan.text-medium .slogan-text {
 	font-size: 16px;
 	line-height: 1.25;
 }
-.tb-slogan .slogan-text.text_small {
+.tb-slogan.text-small .slogan-text {
 	font-size: 11px;
 }
-.tb-slogan.text_only {
+.tb-slogan.text-only {
 	text-align: center;
 }
-.tb-slogan.has_button .btn {
+.tb-slogan.has-button .btn {
 	float: right;
 	margin: 0 0 0 20px;
 }
-.tb-slogan.has_button .btn-large {
+.tb-slogan.has-button .btn-large {
 	font-size: 20px;
 	padding: 15px;
+}
+.tb-slogan.has-bg .slogan-text p:last-child,
+.element-slogan .slogan-text p:last-child {
+	margin-bottom: 0;
 }
 
 /* Tabs */

@@ -1784,7 +1784,7 @@ function themeblvd_get_jumbotron( $args, $content ) {
 
     // Construct initial jumbotron
     if ( $args['title'] ) {
-    	$title = sprintf( '<h1>%s</h1>', $args['title'] );
+    	$title = sprintf( '<h2>%s</h2>', $args['title'] );
     	$content = $title.$content;
     }
 
