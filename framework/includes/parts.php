@@ -1575,6 +1575,135 @@ function themeblvd_get_testimonial_slider( $args ){
 }
 
 /**
+ * Get Google Map
+ *
+ * @since 2.4.2
+ *
+ * @param array $args Arguments for jumbotron
+ * @return string $output Final content to output
+ */
+function themeblvd_get_map( $args ) {
+
+	wp_enqueue_script( 'google_maps' );
+
+	$defaults = array(
+		'id'			=> uniqid('map_'),	// Unique ID for map
+		'markers'		=> array(),			// Location markers for map
+		'height'		=> '400',			// CSS height of map
+		'center_type'	=> 'default',		// If default, will be first location - default or custom
+		'center'		=> array(),			// If above is custom, this will be the center point of map
+        'zoom'			=> '15',			// Zoom level of initial map- [1, 20]
+		'lightness'		=> '0',				// Map brightness - [-100, 100]
+		'saturation'	=> '0',				// Map color saturation - [-100, 100]
+		'has_hue'		=> '0',				// Whether map has overlay color
+		'hue'			=> '',				// Overlay color for map (i.e. hue)
+		'zoom_control'	=> '1',				// Whether user has zoom control
+		'pan_control'	=> '1',				// Whether user has pan control
+		'draggable'		=> '1'				// Whether user can drag map around
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    $hue = '0';
+    if ( $args['has_hue'] && $args['hue'] ) {
+    	$hue = $args['hue'];
+    }
+
+    // Start map with config options
+    $output = sprintf( '<div class="tb-map" data-zoom="%s" data-lightness="%s" data-saturation="%s" data-hue="%s" data-zoom_control="%s" data-pan_control="%s" data-draggable="%s">', $args['zoom'], $args['lightness'], $args['saturation'], $hue, $args['zoom_control'], $args['pan_control'], $args['draggable'] );
+
+    // Map gets inserted into this DIV
+    $output .= sprintf( '<div id="%s" class="map-canvas" style="height: %spx;"></div>', $args['id'], $args['height'] );
+
+    // Map center point
+    $center_lat = '0';
+    $center_long = '0';
+
+    if ( $args['center_type'] == 'custom' ) {
+
+		// Custom center point
+		if ( isset( $args['center']['lat'] ) ) {
+			$center_lat = $args['center']['lat'];
+		}
+		if ( isset( $args['center']['long'] ) ) {
+			$center_long = $args['center']['long'];
+		}
+
+    } else {
+
+		// Default: Use first marker as center point
+		if ( $args['markers'] ) {
+			foreach ( $args['markers'] as $marker ) {
+				if ( isset( $marker['geo']['lat'] ) ) {
+					$center_lat = $marker['geo']['lat'];
+				}
+				if ( isset( $marker['geo']['long'] ) ) {
+					$center_long = $marker['geo']['long'];
+				}
+				break;
+			}
+		}
+
+    }
+
+    $output .= sprintf('<div class="map-center" data-lat="%s" data-long="%s"></div>', $center_lat, $center_long );
+
+    // Map markers
+    if ( $args['markers'] ) {
+
+		$output .= '<div class="map-markers hide">';
+
+		foreach ( $args['markers'] as $marker ) {
+
+			$name = '';
+			if ( ! empty( $marker['name'] ) ) {
+				$name = $marker['name'];
+			}
+
+			$lat = '0';
+			if ( ! empty( $marker['geo']['lat'] ) ) {
+				$lat = $marker['geo']['lat'];
+			}
+
+			$long = '0';
+			if ( ! empty( $marker['geo']['long'] ) ) {
+				$long = $marker['geo']['long'];
+			}
+
+			$info = '';
+			if ( ! empty( $marker['info'] ) ) {
+				$info = $marker['info'];
+			}
+
+			$image = '';
+			if ( ! empty( $marker['image']['src'] ) ) {
+				$image = $marker['image']['src'];
+			}
+
+			$output .= sprintf('<div class="map-marker" data-name="%s" data-lat="%s" data-long="%s" data-image="%s">', $name, $lat, $long, $image );
+			$output .= sprintf( '<div class="map-marker-info">%s</div>', themeblvd_get_content($info) );
+			$output .= '</div><!-- .map-marker (end) -->';
+		}
+
+		$output .= '</div><!-- .map-markers (end) -->';
+	}
+
+    $output .= '</div><!-- .tb-map (end) -->';
+
+	return apply_filters( 'themeblvd_map', $output, $args );
+}
+
+/**
+ * Display Google map
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for Google Map.
+ */
+function themeblvd_map( $args ) {
+	echo themeblvd_get_map( $args );
+}
+
+/**
  * Display content block
  *
  * @since 2.5.0

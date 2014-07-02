@@ -283,6 +283,10 @@ function themeblvd_include_scripts() {
 	// Enque Scripts
 	wp_enqueue_script( 'jquery' );
 
+	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
+		wp_register_script( 'google_maps', 'https://maps.googleapis.com/maps/api/js', array(), null );
+	}
+
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 		$scripts[] = 'flexslider';
 		wp_enqueue_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1' );

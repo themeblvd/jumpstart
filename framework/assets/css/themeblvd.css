@@ -1788,6 +1788,14 @@ a.slide-thumbnail-link {
 	}
 }
 
+/* Google Maps */
+.tb-map img {
+	max-width: none; /* fixes display of zoom controls */
+}
+.tb-map .map-marker-info p:last-child {
+	margin-bottom: 0;
+}
+
 /* Content Block */
 .tb-content-block.has-bg {
 	margin: 0 0 10px 0;

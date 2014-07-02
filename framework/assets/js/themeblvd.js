@@ -275,7 +275,6 @@ jQuery(document).ready(function($) {
 				pauseOnHover: true,
 				directionNav: false,
 				controlNav: nav,
-				pauseOnHover: true,
 				pauseOnAction: true
 			});
 		});
@@ -412,6 +411,93 @@ jQuery(document).ready(function($) {
 				});
 			}
 		);
+	}
+
+	// ---------------------------------------------------------
+	// Google Maps
+	// ---------------------------------------------------------
+
+	if ( typeof google === 'object' && typeof google.maps === 'object' ) {
+		$('.tb-map').each(function(){
+
+			var $map = $(this);
+
+			var init = function() {
+
+		        var map_id = $map.find('.map-canvas').attr('id'),
+		        	map_options,
+		            map;
+
+		        map_options = {
+		            center: new google.maps.LatLng( $map.find('.map-center').data('lat'), $map.find('.map-center').data('long') ),
+		            zoom: $map.data('zoom'),
+		            draggable: $map.data('draggable'),
+		            panControl: $map.data('pan_control'),
+		            zoomControl: $map.data('zoom_control'),
+		            mapMaker: false,
+		            mapTypeControl: false,
+		            mapTypeId: google.maps.MapTypeId.ROADMAP,
+		            backgroundColor: 'transparent',
+		            streetViewControl: false,
+		            scrollwheel: false
+		        };
+
+		        map = new google.maps.Map( document.getElementById(map_id), map_options );
+
+		        // Markers
+		        $map.find('.map-marker').each(function(){
+
+		        	var $marker = $(this);
+
+			        var marker = new google.maps.Marker({
+			            position: new google.maps.LatLng( $marker.data('lat'), $marker.data('long') ),
+			            map: map,
+			            title: $marker.data('name'),
+			            icon: $marker.data('image'),
+			            animation: google.maps.Animation.DROP
+			        });
+
+			        var infowindow = new google.maps.InfoWindow({
+			            content: '<div class="map-marker-info">'+$marker.find('.map-marker-info').html()+'</div>'
+			        });
+
+			        console.log($marker.find('.map-marker-info').html());
+
+			        google.maps.event.addListener(marker, 'click', function() {
+			            infowindow.open(map,marker);
+			        });
+
+			    });
+
+
+		        // Style map
+		        var stylers = [], style = [], map_type;
+
+		        stylers.push({saturation: $map.data('saturation')});
+		        stylers.push({lightness: $map.data('lightness')});
+
+		        if ( $map.data('hue') ) {
+		        	stylers.push({hue: $map.data('hue')});
+		        }
+
+		        if ( stylers.length ) {
+
+		            style = [{
+		                featureType: "all",
+		                elementType: "all",
+		                stylers: stylers
+		            }];
+
+		            map_type = new google.maps.StyledMapType(style, {name:'tb_map_style'});
+		            map.mapTypes.set('tb_map_style', map_type);
+		            map.setMapTypeId('tb_map_style');
+		        }
+
+		    };
+
+		    google.maps.event.addDomListener(window, 'load', init);
+
+		});
 	}
 
 	// ---------------------------------------------------------

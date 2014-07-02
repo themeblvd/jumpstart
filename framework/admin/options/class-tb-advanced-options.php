@@ -81,6 +81,7 @@ class Theme_Blvd_Advanced_Options {
 	 */
 	public function set_reference() {
 		$this->reference = array(
+			'locations',
 			'milestones',
 			'slider',
 			'social_media',
@@ -108,6 +109,10 @@ class Theme_Blvd_Advanced_Options {
 		}
 
 		switch ( $type ) {
+			case 'locations':
+				$this->types[$type] = new Theme_Blvd_Locations_Option();
+				break;
+
 			case 'milestones':
 				$this->types[$type] = new Theme_Blvd_Milestones_Option();
 				break;
@@ -168,7 +173,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'milestones', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
+		return in_array( $type, array( 'locations', 'milestones', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
 	}
 
 }

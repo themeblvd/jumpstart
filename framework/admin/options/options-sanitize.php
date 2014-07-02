@@ -48,6 +48,8 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_code', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_milestones', 'themeblvd_sanitize_milestones' );
+	add_filter( 'themeblvd_sanitize_locations', 'themeblvd_sanitize_locations' );
+	add_filter( 'themeblvd_sanitize_geo', 'themeblvd_sanitize_geo' );
 }
 
 /**
@@ -955,6 +957,61 @@ function themeblvd_sanitize_milestones( $input ) {
 			$output[$item_id]['after'] = wp_kses( $item['after'], array() );
 			$output[$item_id]['color'] = themeblvd_sanitize_hex( $item['color'] );
 			$output[$item_id]['text'] = wp_kses( $item['text'], array() );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Locations
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_locations( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['name'] = wp_kses( $item['name'], array() );
+			$output[$item_id]['geo'] = themeblvd_sanitize_geo( $item['geo'] );
+			$output[$item_id]['info'] = themeblvd_sanitize_textarea( $item['info'] );
+			$output[$item_id]['image'] = themeblvd_sanitize_upload( $item['image'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Geo (latitude and longitude)
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_geo( $input ) {
+
+	$output = array(
+		'lat' 	=> 0,
+		'long'	=> 0
+	);
+
+	if ( ! empty( $input['lat'] ) ) {
+
+		$lat = floatval($input['lat']);
+
+		if ( $lat > -90 && $lat < 90  ) {
+			$output['lat'] = $lat;
+		}
+	}
+
+	if ( ! empty( $input['long'] ) ) {
+
+		$long = floatval($input['long']);
+
+		if ( $long > -180 && $long < 180  ) {
+			$output['long'] = $long;
 		}
 	}
 

@@ -174,6 +174,7 @@ function themeblvd_setup() {
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
 			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
+			'gmap'				=> true,			// Google maps API v3
 			'ios_orientation'	=> false			// "ios-orientationchange-fix" script
 		)
 	);

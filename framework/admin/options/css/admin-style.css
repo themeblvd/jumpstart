@@ -307,6 +307,79 @@
 	margin-bottom: 10px;
 }
 
+/* Geo option type */
+#optionsframework .section-geo .geo-wrap {
+	margin-bottom: 10px;
+}
+#optionsframework .section-geo .geo-lat,
+#optionsframework .section-geo .geo-long,
+#optionsframework .section-geo .geo-button {
+	box-sizing: border-box;
+	float: left;
+}
+#optionsframework .section-geo .geo-lat,
+#optionsframework .section-geo .geo-long {
+	width: 48%;
+}
+#optionsframework .section-geo .geo-lat {
+	margin-right: 2%;
+}
+#optionsframework .section-geo .geo-label {
+	color: #999999;
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	margin-left: 5px;
+}
+#optionsframework .section-geo .controls .geo-input {
+	margin: 0 0 5px 2px;
+}
+#optionsframework .section-geo .geo-generate {
+	background: #ffffff;
+	border: 1px solid #dddddd;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	padding: 10px;
+	position: relative;
+}
+#optionsframework .section-geo .geo-generate .overlay {
+	background: #ffffff;
+	border-radius: 5px;
+	display: none;
+	opacity: .8;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+#optionsframework .section-geo .geo-generate .overlay .tb-loader {
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	left: 50%;
+	margin-left: -11px;
+}
+#optionsframework .section-geo .geo-generate h5 {
+	font-size: 12px;
+	margin: 4px 4px 10px 4px;
+}
+#optionsframework .section-geo .geo-generate input {
+	float: left;
+	margin: 1px 2% 5px 0;
+	width: 75%;
+}
+#optionsframework .section-geo .geo-generate .geo-insert-lat-long {
+	float: left;
+	text-align: center;
+	width: 23%;
+}
+#optionsframework .section-geo .geo-generate .note {
+	margin: 0;
+}
+
 /* Button option type */
 #optionsframework .section-button input[type="text"].color-picker {
 	margin-bottom: 0;
@@ -964,7 +1037,8 @@
 	line-height: 60px;
 }
 
-/* Sortables - milestones, tabs, testimonials, toggles */
+/* Sortables - locations, milestones, tabs, testimonials, toggles */
+#optionsframework .section-locations > .option > .controls,
 #optionsframework .section-milestones > .option > .controls,
 #optionsframework .section-tabs > .option > .controls,
 #optionsframework .section-testimonials > .option > .controls,
@@ -975,6 +1049,7 @@
 	padding: 0;
 	width: auto;
 }
+#optionsframework .section-locations > .option > .explain,
 #optionsframework .section-milestones > .option > .explain,
 #optionsframework .section-tabs > .option > .explain,
 #optionsframework .section-testimonials > .option > .explain,
@@ -982,6 +1057,7 @@
 	float: none;
 	max-width: none;
 }
+#optionsframework .section-locations .tb-sortable-option textarea,
 #optionsframework .section-milestones .tb-sortable-option textarea,
 #optionsframework .section-tabs .tb-sortable-option textarea,
 #optionsframework .section-testimonials .tb-sortable-option textarea,

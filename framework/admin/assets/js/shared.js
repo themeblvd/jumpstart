@@ -649,6 +649,46 @@
 
 					});
 
+					// Google Maps latitude and longitude
+					if ( typeof google === 'object' && typeof google.maps === 'object' ) {
+						$this.on( 'click', '.section-geo .geo-insert-lat-long', function(){
+
+							var $el = $(this),
+								$overlay = $el.closest('.geo-generate').find('.overlay'),
+								geocoder = new google.maps.Geocoder(),
+								address = $el.prev('.address').val(),
+								latitude = '0',
+								longitude = '0';
+
+							$overlay.fadeIn(100);
+
+							geocoder.geocode( { 'address': address}, function(results, status) {
+
+								if ( status == google.maps.GeocoderStatus.OK ) {
+									latitude = results[0].geometry.location.lat();
+									longitude = results[0].geometry.location.lng();
+								}
+
+								setTimeout(function() {
+
+									$el.closest('.controls').find('.geo-lat .geo-input').val(latitude);
+									$el.closest('.controls').find('.geo-long .geo-input').val(longitude);
+
+									if ( status != google.maps.GeocoderStatus.OK ) {
+										tbc_confirm( $el.data('oops'), {'textOk':'Ok'} );
+									} else {
+										$el.prev('.address').val('');
+									}
+
+									$overlay.fadeOut(100);
+
+								}, 1500);
+							});
+
+							return false;
+						});
+					}
+
 	    		}
 	    		// Apply media uploader from themeblvd_media_uploader object.
 	    		// This incorporates the Media Uploader in WP 3.5+

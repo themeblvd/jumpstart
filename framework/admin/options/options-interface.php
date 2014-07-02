@@ -897,6 +897,55 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Geo (Latitude and Longitude)
+			/*---------------------------------------*/
+
+			case 'geo' :
+
+				// Values
+				$lat = '';
+				if ( isset( $val['lat'] ) ) {
+					$lat = $val['lat'];
+				}
+
+				$long = '';
+				if ( isset( $val['long'] ) ) {
+					$long = $val['long'];
+				}
+
+				$output .= '<div class="geo-wrap clearfix">';
+
+				// Latitude
+				$output .= '<div class="geo-lat">';
+				$output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][lat]' ), esc_attr($lat) );
+				$output .= '<span class="geo-label">'.__('Latitude', 'themeblvd').'</span>';
+				$output .= '</div><!-- .geo-lat (end) -->';
+
+				// Longitude
+				$output .= '<div class="geo-long">';
+				$output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][long]' ), esc_attr($long) );
+				$output .= '<span class="geo-label">'.__('Longitude', 'themeblvd').'</span>';
+				$output .= '</div><!-- .geo-long (end) -->';
+
+				$output .= '</div><!-- .geo-wrap (end) -->';
+
+				// Generate lat and long
+				$output .= '<div class="geo-generate">';
+				$output .= '<h5>'.__('Generate Coordinates', 'themeblvd').'</h5>';
+				$output .= '<div class="data clearfix">';
+				$output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
+				$output .= '<input type="text" value="" class="address" />';
+				$output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', __('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), __('Generate', 'themeblvd') );
+				$output .= '</div><!-- .data (end) -->';
+				$output .= '<p class="note">';
+				$output .= __('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
+				$output .= __('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
+				$output .= '</p>';
+				$output .= '</div><!-- .geo-generate (end) -->';
+
+				break;
+
+			/*---------------------------------------*/
 			/* Info
 			/*---------------------------------------*/
 
@@ -989,12 +1038,21 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '></div>';
 
-				if ( ! $val ) { // $val can't be empty or else the UI slider won't work
+				if ( ! $val && $val !== '0' ) { // $val can't be empty or else the UI slider won't work
 					$val = $options['min'].$options['units'];
 				}
 
 				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
 				$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
+				break;
+
+			/*---------------------------------------*/
+			/* Locations
+			/*---------------------------------------*/
+
+			case 'locations' :
+				$locations = $advanced->get('locations');
+				$output .= $locations->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/

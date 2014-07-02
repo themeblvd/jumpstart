@@ -85,6 +85,14 @@ class Theme_Blvd_Options_Page {
 	public $textures = false;
 
 	/**
+	 * Whether options page needs google maps
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $gmap = false;
+
+	/**
 	 * URL to importer, if enabled
 	 *
 	 * @since 2.5.0
@@ -172,7 +180,12 @@ class Theme_Blvd_Options_Page {
 
 			}
 
-			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->textures ) {
+			// Look for "geo" option type
+			if ( $option['type'] == 'geo' ) {
+				$this->gmap = true;
+			}
+
+			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->textures && $this->gmap ) {
 				break;
 			}
 		}
@@ -309,6 +322,11 @@ class Theme_Blvd_Options_Page {
 		// WP Built-in Media Modal
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
+		}
+
+		// Google maps
+		if ( $this->gmap ) {
+			wp_enqueue_script( 'themeblvd_gmap', 'https://maps.googleapis.com/maps/api/js', array(), null );
 		}
 
 		// Framework

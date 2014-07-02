@@ -437,6 +437,56 @@ abstract class Theme_Blvd_Sortable_Option {
 					}
 
 					$item_output .= themeblvd_media_uploader( $args );
+
+					break;
+
+				/*---------------------------------------*/
+				/* Geo (Latitude and Longitude)
+				/*---------------------------------------*/
+
+				case 'geo' :
+
+					// Values
+					$lat = '';
+					if ( isset( $current['lat'] ) ) {
+						$lat = $current['lat'];
+					}
+
+					$long = '';
+					if ( isset( $current['long'] ) ) {
+						$long = $current['long'];
+					}
+
+					$item_output .= '<div class="geo-wrap clearfix">';
+
+					// Latitude
+					$item_output .= '<div class="geo-lat">';
+					$item_output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][lat]' ), esc_attr($lat) );
+					$item_output .= '<span class="geo-label">'.__('Latitude', 'themeblvd').'</span>';
+					$item_output .= '</div><!-- .geo-lat (end) -->';
+
+					// Longitude
+					$item_output .= '<div class="geo-long">';
+					$item_output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][long]' ), esc_attr($long) );
+					$item_output .= '<span class="geo-label">'.__('Longitude', 'themeblvd').'</span>';
+					$item_output .= '</div><!-- .geo-long (end) -->';
+
+					$item_output .= '</div><!-- .geo-wrap (end) -->';
+
+					// Generate lat and long
+					$item_output .= '<div class="geo-generate">';
+					$item_output .= '<h5>'.__('Generate Coordinates', 'themeblvd').'</h5>';
+					$item_output .= '<div class="data clearfix">';
+					$item_output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
+					$item_output .= '<input type="text" value="" class="address" />';
+					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', __('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), __('Generate', 'themeblvd') );
+					$item_output .= '</div><!-- .data (end) -->';
+					$item_output .= '<p class="note">';
+					$item_output .= __('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
+					$item_output .= __('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
+					$item_output .= '</p>';
+					$item_output .= '</div><!-- .geo-generate (end) -->';
+
 			}
 
 			$item_output .= '</div><!-- .controls (end) -->';
@@ -517,6 +567,90 @@ abstract class Theme_Blvd_Sortable_Option {
 }
 
 /**
+ * Markers option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'locations';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'name',
+				'name'		=> __('Location Name', 'themeblvd'),
+				'desc'		=> __('Enter a name for this location.', 'themeblvd'),
+				'type'		=> 'text',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'geo',
+				'name'		=> __('Location Latitude and Longitude', 'themeblvd'),
+				'desc'		=> __('For this marker to be displayed, there needs to be a latitude and longitude saved. You can use the tool below the text fields to generate the coordinates.', 'themeblvd'),
+				'std'		=> array(
+					'lat'	=> 0,
+					'long'	=> 0
+				),
+				'type'		=> 'geo'
+			),
+			array(
+				'id' 		=> 'info',
+				'name'		=> __('Location Information (optional)', 'themeblvd'),
+				'desc'		=> __('When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don\'t get too carried away.', 'themeblvd'),
+				'type'		=> 'textarea',
+				'editor'	=> true,
+				'code'		=> 'html'
+			),
+			array(
+				'id' 		=> 'image',
+				'name'		=> __('Custom Marker Image (optional)', 'themeblvd'),
+				'desc'		=> __('If you\'d like a custom image to replace the default Google Map marker, you can insert it here.', 'themeblvd'),
+				'std'		=> '',
+				'type'		=> 'upload',
+				'advanced'	=> true
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Map Location','themeblvd'),
+			'delete' 				=> __('Delete Location','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this location?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Locations','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all map locations?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
  * Milestones option type
  *
  * @since 2.5.0
@@ -554,7 +688,6 @@ class Theme_Blvd_Milestones_Option extends Theme_Blvd_Sortable_Option {
 				'desc'		=> __('Enter a number for the milestone. Ex: 500', 'themeblvd'),
 				'type'		=> 'text'
 			),
-
 			array(
 				'id' 		=> 'before',
 				'name'		=> __('Milestone Symbol/Unit (before)', 'themeblvd'),

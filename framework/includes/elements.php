@@ -7,6 +7,7 @@
 /* - headline: Simple heading and optional slogan
 /* - image: An image with optional link
 /* - jumbotron: Bootstrap jumbotron
+/* - map: Google map (NOTE: located in parts.php)
 /* - milestones: Milestone numbers with taglines
 /* - post_slider: Slider of posts, list or grid
 /* - posts: Non-paginated display of posts, list or grid
