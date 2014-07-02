@@ -634,7 +634,7 @@ function themeblvd_section_open_default( $display ) {
 	printf( '<section class="element-section %s" style="%s" data-parallax="%s">', themeblvd_get_display_class($display), themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
 
 	if ( $display['bg_type'] == 'image' && $display['apply_bg_shade'] ) {
-		printf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) );
+		printf( '<div class="bg-shade" style="background-color: %s; background-color: %s;"></div>', $display['bg_shade_color'], themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) );
 	}
 }
 endif;

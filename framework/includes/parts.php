@@ -1331,24 +1331,29 @@ function themeblvd_get_content_block( $args ){
 
 	$defaults = array(
         'content'		=> '',			// Content to display
-        'wrap'			=> '0',			// Whether to wrap in DIV with BG color
+        'style'			=> '',			// Custom styling class
+		'text_color'	=> 'dark',		// Color of text, dark or light
         'bg_color'		=> '#cccccc',	// Background color, if wrap is true
-        'bg_opacity'	=> '1',			// Background color opacity, if wrap is true
-        'text_color'	=> 'dark'		// Color of text, dark or light
+        'bg_opacity'	=> '1'			// Background color opacity, if wrap is true
     );
     $args = wp_parse_args( $args, $defaults );
 
 	// CSS class
 	$class = 'tb-content-block';
 
-	if ( $args['wrap'] ) {
+	if ( $args['style'] == 'custom' ) {
 		$class .= ' has-bg text-'.$args['text_color'];
+	}
+
+	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
+		$class .= ' '.$args['style'];
 	}
 
 	// Inline styles
 	$style = '';
 
-	if ( $args['wrap'] ) {
+	if ( $args['style'] == 'custom' ) {
+		$style = sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
 		$style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
 	}
 
@@ -1359,14 +1364,15 @@ function themeblvd_get_content_block( $args ){
 }
 
 /**
- * Display team member.
+ * Display content block
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for panel
+ * @param string $args Options for content block
+ * @return string $output Content output
  */
-function themeblvd_team_member( $args ) {
-	echo themeblvd_get_team_member( $args );
+function themeblvd_content_block( $args ){
+	echo themeblvd_get_content_block( $args );
 }
 
 /**
@@ -1429,14 +1435,14 @@ function themeblvd_get_team_member( $args ){
 }
 
 /**
- * Display testimonial.
+ * Display team member.
  *
  * @since 2.5.0
  *
  * @param array $args Arguments for panel
  */
-function themeblvd_testimonial( $args ) {
-	echo themeblvd_get_testimonial( $args );
+function themeblvd_team_member( $args ) {
+	echo themeblvd_get_team_member( $args );
 }
 
 /**
@@ -1521,15 +1527,16 @@ function themeblvd_get_testimonial( $args ){
     return apply_filters( 'themeblvd_testiomnial', $output, $args );
 }
 
+
 /**
- * Display testimonial slider.
+ * Display testimonial.
  *
  * @since 2.5.0
  *
  * @param array $args Arguments for panel
  */
-function themeblvd_testimonial_slider( $args ) {
-	echo themeblvd_get_testimonial_slider( $args );
+function themeblvd_testimonial( $args ) {
+	echo themeblvd_get_testimonial( $args );
 }
 
 /**
@@ -1575,11 +1582,22 @@ function themeblvd_get_testimonial_slider( $args ){
 }
 
 /**
+ * Display testimonial slider.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for panel
+ */
+function themeblvd_testimonial_slider( $args ) {
+	echo themeblvd_get_testimonial_slider( $args );
+}
+
+/**
  * Get Google Map
  *
  * @since 2.4.2
  *
- * @param array $args Arguments for jumbotron
+ * @param array $args Arguments for map
  * @return string $output Final content to output
  */
 function themeblvd_get_map( $args ) {
@@ -1704,18 +1722,6 @@ function themeblvd_map( $args ) {
 }
 
 /**
- * Display content block
- *
- * @since 2.5.0
- *
- * @param string $args Options for content block
- * @return string $output Content output
- */
-function themeblvd_content_block( $args ){
-	echo themeblvd_get_content_block( $args );
-}
-
-/**
  * Get Bootstrap Jumbotron
  *
  * @since 2.4.2
@@ -1729,38 +1735,51 @@ function themeblvd_get_jumbotron( $args, $content ) {
 	$output = '';
 
 	$defaults = array(
-        'title'         => '',      // Title of unit
+        'title'        	=> '',      // Title of unit
+        'style'			=> 'none',	// Custom styling class
         'bg_color'		=> '',		// Background color - Ex: #000000
+        'bg_opacity'	=> '1',		// BG color opacity for rgba()
         'text_color'	=> '',		// Text color - Ex: #000000
-        'text_align'    => 'left',  // How to align text - left, right, center
-        'align'         => '',      // How to align jumbotron - left, right, center, blank for no alignment
-        'max_width'     => '',      // Meant to be used with align left/right/center - 300px, 50%, etc
-        'class'         => '',      // Any additional CSS classes
+        'text_align'   	=> 'left',  // How to align text - left, right, center
+        'align'        	=> '',      // How to align jumbotron - left, right, center, blank for no alignment
+        'max_width'    	=> '',      // Meant to be used with align left/right/center - 300px, 50%, etc
+        'class'        	=> '',      // Any additional CSS classes
         'wpautop'		=> true 	// Whether to apply wpautop on content
     );
     $args = wp_parse_args( $args, $defaults );
-
-    // CSS classes
-    $class = sprintf( 'jumbotron text-%s', $args['text_align'] );
-
-    if ( $args['class'] ) {
-    	$class .= ' '.$args['class'];
-    }
 
     // WP auto?
     if ( $args['wpautop'] ) {
     	$content = wpautop( $content );
     }
 
+    // CSS classes
+    $class = sprintf( 'jumbotron text-%s', $args['text_align'] );
+
     // Setup inline styles
     $style = '';
 
-    if ( $args['bg_color'] ) {
-    	$style .= sprintf( 'background-color:%s;', $args['bg_color'] );
-    }
+    if ( $args['style'] == 'custom' ) {
 
-    if ( $args['text_color'] ) {
-    	$style .= sprintf( 'color:%s;', $args['text_color'] );
+	    if ( $args['bg_color'] ) {
+	    	$style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
+	    	$style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+	    	$class .= ' has-bg';
+	    }
+
+	    if ( $args['text_color'] ) {
+	    	$style .= sprintf( 'color:%s;', $args['text_color'] );
+	    }
+
+	}
+
+	// Custom CSS classes
+	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
+		$class .= ' '.$args['style'];
+	}
+
+    if ( $args['class'] ) {
+    	$class .= ' '.$args['class'];
     }
 
     // Construct initial jumbotron

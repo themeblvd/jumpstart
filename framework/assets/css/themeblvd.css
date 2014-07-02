@@ -283,15 +283,6 @@ code.block {
 	margin: 0 auto;
 }
 
-/* Jumbotron */
-.jumbotron {
-	color: #333333;
-	line-height: 1.428571429;
-}
-.jumbotron p:last-of-type {
-	margin-bottom: 0;
-}
-
 /* Panels */
 .panel p:last-of-type {
 	margin-bottom: 0;
@@ -1432,7 +1423,7 @@ html[xmlns] .slides {
 	}
 }
 
-/* =Moveable Parts
+/* =Moveable Parts and Blocks
 -----------------------------------------------*/
 
 /* Search Form */
@@ -1628,6 +1619,20 @@ a.slide-thumbnail-link {
 		background-image: url('../images/elements/image-overlay-icon_2x.png');
 		background-size: 44px 168px;
 	}
+}
+
+/* Jumbotron */
+.jumbotron {
+	background-color: transparent;
+	color: #333333;
+	line-height: 1.428571429;
+	padding: 0;
+}
+.jumbotron.has-bg {
+	padding: 48px 30px 48px 30px; /* Bootstrap default */
+}
+.jumbotron p:last-of-type {
+	margin-bottom: 0;
 }
 
 /* Icon Box */
@@ -3967,10 +3972,6 @@ button.mfp-arrow {
 }
 
 /* Jumbotron */
-.element-jumbotron .jumbotron {
-	background-color: transparent;
-	padding: 0;
-}
 .element-jumbotron.text-light .jumbotron {
 	color: #ffffff;
 }

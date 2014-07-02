@@ -1125,7 +1125,7 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 		    'image' => array(
 				'id' 		=> 'image',
 				'name' 		=> __( 'Image (optional)', 'themeblvd_builder'),
-				'desc'		=> __( 'Select a small image for the person giving the testimonial.', 'themeblvd_builder'),
+				'desc'		=> __( 'Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'themeblvd_builder'),
 				'type'		=> 'upload',
 				'advanced'	=> true
 		    )
