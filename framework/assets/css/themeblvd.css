@@ -91,7 +91,7 @@ code {
 }
 code.block {
 	display: block; /* More like a <pre> tag, but still different. */
-	margin-bottom: 1.38em;
+	margin-bottom: 10px;
 }
 
 /* Simplify Breadcrumbs */
@@ -407,9 +407,8 @@ html {
 	display: inline-block;
 }
 .gallery-item .wp-caption-text {
-	font-size: .9em; /* Fallback for older browsers */
-	font-size: .9rem;
-	line-height: 1.4em;
+	font-size: 11px;
+	line-height: 1.4;
 	margin: 0;
 }
 .alignnone {
@@ -470,9 +469,8 @@ a img.aligncenter {
 	width: auto;
 }
 p.wp-caption-text {
-	font-size: .9em; /* Fallback for older browsers */
-	font-size: .9rem;
-	line-height: 1.4em;
+	font-size: 11px;
+	line-height: 1.4;
 	text-align: center;
 }
 .wp-caption p.wp-caption-text {
@@ -559,7 +557,7 @@ ul.sf-menu .fa {
 }
 #primary-menu > li > a .sf-sub-indicator,
 #primary-menu > [class^="menu-icon-"] > a .fa {
-	line-height: 1em;
+	line-height: 1;
 }
 
 /* =Secondary Navigation
@@ -591,8 +589,7 @@ ul.sf-menu .fa {
 }
 .subnav ul.nav li a {
 	color: inherit;
-	font-size: .85em; /* Fallback for older browsers */
-	font-size: .85rem;
+	font-size: 11px;
 }
 .subnav ul.nav li.nav-header {
 	margin: 0;
@@ -637,7 +634,7 @@ ul.sf-menu .fa {
 }
 .subnav ul.nav > li > a .sf-sub-indicator,
 .subnav ul.nav > [class^="menu-icon-"] > a fa {
-	line-height: 1em;
+	line-height: 1;
 }
 .subnav ul.nav > li > a.sf-with-ul {
 	/* If a top-level menu item has a dropdown, reduce its right padding. */
@@ -3309,17 +3306,17 @@ ul.tb-icon-list {
 .text-highlight {
 	background-color: #FFFFAA;
 	color: #666666;
-	padding: .25em .2em;
+	padding: 3px 2px;
 }
 
 /* Drop Caps */
 .dropcap {
 	float: left;
 	font-size: 300%;
-	font-size: 3rem;
+	font-size: 35px;
 	font-weight: bold;
-	line-height: 100%;
-	margin: .42em .58em 0 0;
+	line-height: 1;
+	margin: 5px 7px 0 0;
 	position: relative;
 }
 
@@ -4100,10 +4097,9 @@ button.mfp-arrow {
 }
 .standard-slider .media-full .content .slide-title,
 .tb-nivo-slider-wrapper .nivo-caption .content .slide-title {
-	font-size: 1.3em; /* Fallback for older browsers */
-	font-size: 1.3rem;
+	font-size: 17px;
 	font-weight: bold;
-	line-height: 1.15em;
+	line-height: 1.15;
 	margin: 0;
 	padding: 0 0 5px 0;
 }
@@ -4118,10 +4114,9 @@ button.mfp-arrow {
 }
 .standard-slider .media-align-left .slide-title,
 .standard-slider .media-align-right .slide-title {
-	font-size: 2em;
-	font-size: 2rem;
+	font-size: 26px;
 	font-weight: bold;
-	line-height: 1.15em;
+	line-height: 1.15;
 	margin-bottom: 10px;
 }
 .standard-slider .media-align-left .content-inner,
@@ -4250,15 +4245,14 @@ button.mfp-arrow {
 .double_sidebar_right .standard-slider,
 .double_sidebar_left .standard-slider,
 .double_sidebar .standard-slider {
-	font-size: .85em; /* Fallback for older browsers */
-	font-size: .85rem;
+	font-size: 11px;
 }
 .sidebar_right .standard-slider p,
 .sidebar_left.standard-slider p,
 .double_sidebar_right .standard-slider p,
 .double_sidebar_left .standard-slider p,
 .double_sidebar .standard-slider p {
-	margin-bottom: 1em;
+	margin-bottom: 10px;
 }
 .sidebar_right .standard-slider .media-align-left .slide-title span,
 .sidebar_left .standard-slider .media-align-left .slide-title span,
@@ -4270,8 +4264,7 @@ button.mfp-arrow {
 .double_sidebar_right .standard-slider .media-align-right .slide-title span,
 .double_sidebar_left .standard-slider .media-align-right .slide-title span,
 .double_sidebar .standard-slider .media-align-right .slide-title span {
-	font-size: 1.25em; /* Fallback for older browsers */
-	font-size: 1.25rem;
+	font-size: 16px;
 }
 
 /* Carrousel Slider (Roundabout jQuery plugin) */
@@ -4279,7 +4272,7 @@ button.mfp-arrow {
 	font-size: 12px;
 	padding-top: 20px;
 	position: relative;
-	height: 18em;
+	height: 235px;
 }
 .carrousel-slider-wrapper .slider-inner {
 	display: none;
@@ -4289,10 +4282,10 @@ button.mfp-arrow {
 	margin: 0 auto;
 	padding: 0;
 	width: 75%;
-	height: 18em;
+	height: 235px;
 }
 .carrousel-slider-wrapper .carrousel-slider .stage {
-	padding:.4em;
+	padding: 5px;
 }
 .carrousel-slider-wrapper .roundabout-moveable-item {
 	overflow: hidden;
@@ -4446,18 +4439,15 @@ button.mfp-arrow {
 
 /* Slogan */
 .tb-slogan .slogan-text.text_large {
-	font-size: 1.5em; /* Fallback for older browsers */
-	font-size: 1.5rem;
-	line-height: 1.25em;
+	font-size: 20px;
+	line-height: 1.25;
 }
 .tb-slogan .slogan-text.text_medium {
-	font-size: 1.25em; /* Fallback for older browsers */
-	font-size: 1.25rem;
-	line-height: 1.25em;
+	font-size: 16px;
+	line-height: 1.25;
 }
 .tb-slogan .slogan-text.text_small {
-	font-size: .92em; /* Fallback for older browsers */
-	font-size: .92rem;
+	font-size: 11px;
 }
 .tb-slogan.text_only {
 	text-align: center;
@@ -4503,8 +4493,7 @@ button.mfp-arrow {
 }
 .tweeple-feed .tweet-time a {
     color: #888888;
-    font-size: .92em; /* Fallback for older browsers */
-	font-size: .92rem;
+    font-size: 11px;
 }
 
 /* "Tweet" Builder Element */
@@ -4524,9 +4513,8 @@ button.mfp-arrow {
 	width: 50px;
 }
 .tb-tweet-wrapper .tweet-content {
-	font-size: 1.9em; /* Fallback for older browsers */
-	font-size: 1.9rem;
-	line-height: 125%;
+	font-size: 24px;
+	line-height: 1.25;
 }
 
 /* =WPML Bridge
