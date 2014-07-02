@@ -1552,7 +1552,7 @@ function themeblvd_get_testimonial_slider( $args ){
 	$defaults = array(
         'testimonials'	=> array(),		// The testimonials, each formatted for themeblvd_get_testimonial
         'timeout'		=> '3',			// Secods in between transitions, can be 0 for no auto rotation
-        'nav_standard'	=> true			// Whether to show slider navigation below
+        'nav_standard'	=> false		// Whether to show slider navigation below (currently not accessible from Builder)
     );
     $args = wp_parse_args( $args, $defaults );
 
