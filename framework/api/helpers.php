@@ -352,7 +352,7 @@ if ( !function_exists( 'themeblvd_add_builder_element' ) ) :
  * @param array $options Options formatted for Options Framework
  * @param string $callback Function to display element on frontend
  */
-function themeblvd_add_builder_element( $element_id, $element_name, $query_type, $options, $callback ) {
+function themeblvd_add_builder_element( $element_id, $element_name, $query_type, $options, $callback, $support = array() ) {
 
 	// Get out if Builder API doesn't exist.
 	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
@@ -361,7 +361,7 @@ function themeblvd_add_builder_element( $element_id, $element_name, $query_type,
 
 	// Add element
 	$api = Theme_Blvd_Builder_API::get_instance();
-	$api->add_element( $element_id, $element_name, $query_type, $options, $callback );
+	$api->add_element( $element_id, $element_name, $query_type, $options, $callback, $support );
 
 }
 endif;
@@ -384,6 +384,54 @@ function themeblvd_remove_builder_element( $element_id ) {
 	// Remove element
 	$api = Theme_Blvd_Builder_API::get_instance();
 	$api->remove_element( $element_id );
+
+}
+endif;
+
+if ( !function_exists( 'themeblvd_add_builder_block' ) ) :
+/**
+ * Add block to layout builder.
+ *
+ * @since 2.5.0
+ *
+ * @param string $block_id ID of block to add
+ * @param string $block_name Name of block to add
+ * @param string $query_type Type of query if any - none, secondary, or primary
+ * @param array $options Options formatted for Options Framework
+ * @param string $callback Function to display block on frontend
+ */
+function themeblvd_add_builder_block( $block_id, $block_name, $query_type, $options, $callback ) {
+
+	// Get out if Builder API doesn't exist.
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
+		return;
+	}
+
+	// Add block
+	$api = Theme_Blvd_Builder_API::get_instance();
+	$api->add_block( $block_id, $block_name, $query_type, $options, $callback );
+
+}
+endif;
+
+if ( !function_exists( 'themeblvd_remove_builder_block' ) ) :
+/**
+ * Remove block from layout builder.
+ *
+ * @since 2.5.0
+ *
+ * @param string $block_id ID of block to remove
+ */
+function themeblvd_remove_builder_block( $block_id ) {
+
+	// Get out if Builder API doesn't exist.
+	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
+		return;
+	}
+
+	// Remove block
+	$api = Theme_Blvd_Builder_API::get_instance();
+	$api->remove_block( $block_id );
 
 }
 endif;
