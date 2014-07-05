@@ -8,7 +8,6 @@
 /* - image: An image with optional link
 /* - jumbotron: Bootstrap jumbotron
 /* - map: Google map (NOTE: located in parts.php)
-/* - milestones: Milestone numbers with taglines
 /* - post_slider: Slider of posts, list or grid
 /* - posts: Non-paginated display of posts, list or grid
 /* - posts_paginated: Paginated display of posts, list or grid
@@ -109,39 +108,6 @@ function themeblvd_image( $options ) {
 	$image = $options['image'];
 	unset( $options['image'] );
 	echo themeblvd_get_image( $image, $options );
-}
-endif;
-
-if ( !function_exists( 'themeblvd_milestones' ) ) :
-/**
- * Display milestones.
- *
- * @since 2.5.0
- *
- * @param array $args Options for from "Milestones" element
- */
-function themeblvd_milestones( $options ) {
-
-	$grid_class = '';
-
-	$num = count($options['milestones']);
-
-	if ( $num  >= 1 ) {
-		$grid_class = themeblvd_grid_class( $num, apply_filters('themeblvd_milestones_stack', 'sm') );
-	}
-
-	$output = '<div class="tb-milestones row">';
-
-	foreach ( $options['milestones'] as $milestone ) {
-		$output .= sprintf('<div class="milestone-wrap %s">', $grid_class);
-		$output .= sprintf('<span class="milestone" style="color: %s; font-size: %s;">%s<span class="num">%s</span>%s</span>', $milestone['color'], themeblvd_get_font_size($options['milestone_size']), $milestone['before'], $milestone['milestone'], $milestone['after']);
-		$output .= sprintf('<span class="text" style="font-size: %s;">%s</span>', themeblvd_get_font_size($options['text_size']), $milestone['text']);
-		$output .= '</div><!-- .milestone-wrap (end) -->';
-	}
-
-	$output .= '</div><!-- .tb-milestones (end) -->';
-
-	return apply_filters( 'themeblvd_milestones', $output );
 }
 endif;
 
