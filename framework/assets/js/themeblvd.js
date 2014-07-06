@@ -619,25 +619,80 @@ jQuery(document).ready(function($) {
 
 	}
 
+
 	// ---------------------------------------------------------
-	// Milestones
+	// Charts
 	// ---------------------------------------------------------
 
-	$('.desktop .tb-milestones .milestone').each(function() {
-		$(this).appear(function() {
+	// Milestone percent
+	if( $.fn.easyPieChart != 'undefined' && ! $('body').hasClass('scroll-effects') ) {
+		$('.tb-milestone-percent').each(function(){
 
-			var $el = $(this),
-				num = parseInt($el.find('.num').text());
+			var $chart = $(this).find('.chart');
+
+			$chart.easyPieChart({
+				lineWidth: 10,
+				size: 140,
+				animate: 1000,
+				barColor: $chart.data('color'),
+				trackColor: $chart.data('track-color'),
+				scaleColor: false,
+				lineCap: 'square',
+				easing: 'easeOutBounce'
+			});
+		});
+	}
+
+	// ---------------------------------------------------------
+	// Scroll effects
+	// ---------------------------------------------------------
+
+	// Milestone standard
+	$('.desktop.scroll-effects .tb-milestone .milestone').each(function() {
+
+		var $el = $(this),
+			num = parseInt($el.find('.num').text());
+
+		$el.appear(function() {
 
 			$el.find('.num').countTo({
 				from: 0,
 				to: num,
-				speed: 1500,
+				speed: 900,
 				refreshInterval: 30
 			});
 
 		},{accX: 0, accY: 0});
 	});
+
+	// Milestone percent
+	if( $.fn.easyPieChart != 'undefined' ) {
+		$('.desktop.scroll-effects .tb-milestone-percent').each(function(){
+
+			var $chart = $(this).find('.chart');
+
+			$chart.css('opacity', '0');
+
+			$chart.appear(function() {
+
+				$chart.easyPieChart({
+					lineWidth: 10,
+					size: 140,
+					animate: 1000,
+					barColor: $chart.data('color'),
+					trackColor: $chart.data('track-color'),
+					scaleColor: false,
+					lineCap: 'square',
+					easing: 'easeOutBounce',
+					onStart: function() {
+						$chart.css('opacity', '1');
+					}
+				});
+
+			},{accX: 0, accY: 0});
+
+		});
+	}
 
 });
 

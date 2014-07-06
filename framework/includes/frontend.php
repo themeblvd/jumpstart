@@ -246,6 +246,11 @@ function themeblvd_browser_class( $classes ) {
 		$classes[] = 'desktop';
 	}
 
+	// Scroll effects
+	if ( themeblvd_supports( 'display', 'scroll_effects' ) ) {
+		$classes[] = 'scroll-effects';
+	}
+
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
 }
 
@@ -316,6 +321,11 @@ function themeblvd_include_scripts() {
 		$scripts[] = 'superfish';
 		wp_enqueue_script( 'hoverintent', TB_FRAMEWORK_URI . '/assets/js/hoverintent.min.js', array('jquery'), 'r7' );
 		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4' );
+	}
+
+	if ( themeblvd_supports( 'assets', 'easypiechart' ) ) {
+		$scripts[] = 'easypiechart';
+		wp_enqueue_script( 'easypiechart', TB_FRAMEWORK_URI . '/assets/js/easypiechart.min.js', array('jquery'), '2.1.5' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {

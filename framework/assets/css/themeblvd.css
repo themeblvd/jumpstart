@@ -1803,6 +1803,65 @@ a.slide-thumbnail-link {
 	margin-bottom: 0;
 }
 
+/* Milestone */
+.tb-milestone {
+	margin-bottom: 10px;
+}
+.tb-milestone.boxed {
+	border: 1px solid #dddddd;
+	padding: 20px 40px;
+}
+.tb-milestone .milestone,
+.tb-milestone .text {
+	display: block;
+	line-height: 1.1;
+	text-align: center;
+}
+.tb-milestone .milestone {
+	font-size: 50px;
+	font-weight: bold;
+}
+.tb-milestone .tb-divider {
+	margin-top: 2px;
+	margin-bottom: 7px;
+}
+
+/* Milestone Percent */
+.tb-milestone-percent {
+	margin-bottom: 10px;
+}
+.tb-milestone-percent.boxed {
+	border: 1px solid #dddddd;
+	padding: 20px 40px;
+}
+.tb-milestone-percent .milestone {
+	margin: 0 auto;
+	position: relative;
+	width: 140px;
+	height: 140px;
+}
+.tb-milestone-percent.has-text .milestone {
+	margin-bottom: 10px;
+}
+.tb-milestone-percent .display {
+	font-size: 18px;
+	line-height: 140px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+}
+.tb-milestone-percent .display .fa {
+	font-size: 40px;
+	line-height: 140px;
+}
+.tb-milestone-percent .content > h3:last-child,
+.tb-milestone-percent .content > p:last-child {
+	margin-bottom: 0;
+}
+
 /* Content Block */
 .tb-content-block.has-bg {
 	margin: 0 0 10px 0;
@@ -3976,17 +4035,6 @@ button.mfp-arrow {
 /* Jumbotron */
 .element-jumbotron.text-light .jumbotron {
 	color: #ffffff;
-}
-
-/* Milestones */
-.tb-milestones .milestone,
-.tb-milestones .text {
-	display: block;
-	line-height: 1.1;
-	text-align: center;
-}
-.tb-milestones .milestone {
-	font-weight: bold;
 }
 
 /* Post List/Post Grid */

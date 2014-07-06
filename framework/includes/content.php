@@ -84,6 +84,14 @@ function themeblvd_block( $id, $type, $options ) {
 			themeblvd_jumbotron( $options );
 			break;
 
+		case 'milestone' :
+			themeblvd_milestone( $options );
+			break;
+
+		case 'milestone_percent' :
+			themeblvd_milestone_percent( $options );
+			break;
+
 		case 'page' :
 			themeblvd_page_content( $options['page'] );
 			break;

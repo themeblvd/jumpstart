@@ -427,6 +427,12 @@ a.list-group-item.active:focus {
 /* =Moveable Parts
 -----------------------------------------------*/
 
+/* Jumbotron */
+.jumbotron {
+    color: #ffffff;
+}
+
+/* Testimonial Slider */
 .tb-testimonial-slider .flex-control-nav li a {
     background-image: url('../images/elements/slider-nav-dark.png');
 }
@@ -439,6 +445,16 @@ a.list-group-item.active:focus {
         background-image: url('../images/elements/slider-nav-dark_2x.png');
         background-size: 20px 11px;
     }
+}
+
+/* Milestone */
+.tb-milestone.boxed {
+    border-color: #000000;
+}
+
+/* Milestone Percent */
+.tb-milestone-percent.boxed {
+    border-color: #000000;
 }
 
 /* =Forms

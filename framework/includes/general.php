@@ -163,7 +163,8 @@ function themeblvd_setup() {
 			'attachments'		=> false			// Comments on attachments
 		),
 		'display' => array(
-			'responsive' 		=> true				// Responsive elements
+			'responsive' 		=> true,			// Responsive elements
+			'scroll_effects'	=> true 			// Effects as user scrolls down page
 		),
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script
@@ -174,7 +175,8 @@ function themeblvd_setup() {
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
 			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
-			'gmap'				=> true,			// Google maps API v3
+			'easypiechart'		=> true,			// "EasyPieChart" scrip
+			'gmap'				=> true,			// Google Maps API v3
 			'ios_orientation'	=> false			// "ios-orientationchange-fix" script
 		)
 	);
