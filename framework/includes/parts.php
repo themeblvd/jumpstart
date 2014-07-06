@@ -1075,7 +1075,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
 
     $output .= '</div><!-- .panel (end) -->';
 
-    return apply_filters( 'themeblvd_panel', $output );
+    return apply_filters( 'themeblvd_panel', $output, $args );
 }
 
 /**
@@ -1162,7 +1162,7 @@ function themeblvd_get_toggle( $args ) {
             </div><!-- .panel-collapse (end) -->
         </div><!-- .panel (end) -->';
 
-    return apply_filters( 'themeblvd_toggle', $output );
+    return apply_filters( 'themeblvd_toggle', $output, $args );
 }
 
 /**
