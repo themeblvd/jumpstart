@@ -56,6 +56,18 @@ function themeblvd_block( $id, $type, $options ) {
 			themeblvd_alert( $options );
 			break;
 
+		case 'chart_bar' :
+			themeblvd_chart( 'bar', $options );
+			break;
+
+		case 'chart_line' :
+			themeblvd_chart( 'line', $options );
+			break;
+
+		case 'chart_pie' :
+			themeblvd_chart( 'pie', $options );
+			break;
+
 		case 'contact' :
 			themeblvd_contact_bar( $options['buttons'], $options );
 			break;

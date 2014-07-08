@@ -166,6 +166,14 @@ ul.sf-menu li li li.sfHover ul {
 .tb-testimonial-slider .flex-control-nav li {
 	float: right;
 }
+.tb-chart .legend li {
+	padding: 2px 26px 2px 2px;
+	text-align: right;
+}
+.tb-chart .legend li span {
+	left: 2px;
+	left: inherit;
+}
 
 /* Shortcodes */
 .tb-icon-link .fa {

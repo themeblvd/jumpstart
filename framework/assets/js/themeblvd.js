@@ -6,7 +6,8 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	var window_width = $(window).width();
+	var window_width = $(window).width(),
+		$body = $('body');
 
 	// ---------------------------------------------------------
 	// Menus
@@ -461,8 +462,6 @@ jQuery(document).ready(function($) {
 			            content: '<div class="map-marker-info">'+$marker.find('.map-marker-info').html()+'</div>'
 			        });
 
-			        console.log($marker.find('.map-marker-info').html());
-
 			        google.maps.event.addListener(marker, 'click', function() {
 			            infowindow.open(map,marker);
 			        });
@@ -625,26 +624,163 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Milestone percent
-	if( $.fn.easyPieChart != 'undefined' && ! $('body').hasClass('scroll-effects') ) {
-		$('.tb-milestone-percent').each(function(){
+	if ( $.fn.easyPieChart != 'undefined' ) {
+		if ( ! $body.hasClass('scroll-effects') || $body.hasClass('mobile') ) {
+			$('.tb-milestone-percent').each(function(){
 
-			var $chart = $(this).find('.chart');
+				var $chart = $(this).find('.chart');
 
-			$chart.easyPieChart({
-				lineWidth: 10,
-				size: 140,
-				animate: 1000,
-				barColor: $chart.data('color'),
-				trackColor: $chart.data('track-color'),
-				scaleColor: false,
-				lineCap: 'square',
-				easing: 'easeOutBounce'
+				$chart.easyPieChart({
+					lineWidth: 10,
+					size: 140,
+					animate: 1000,
+					barColor: $chart.data('color'),
+					trackColor: $chart.data('track-color'),
+					scaleColor: false,
+					lineCap: 'square',
+					easing: 'easeOutBounce'
+				});
 			});
+		}
+	}
+
+	// Bar, Doughnut, Line, and Bar charts
+	if ( typeof Chart !== 'undefined' ) {
+
+		// Global settings
+		// Chart.defaults.global.responsive = true;
+
+		// Pie/Doughnut charts
+		$('.tb-chart.pie, .tb-chart.doughnut').each(function(){
+
+			var $el = $(this),
+				type = 'pie',
+				context = $el.find('canvas').get(0).getContext('2d'),
+				data = [],
+				chart;
+
+			if ( $el.hasClass('doughnut') ) {
+				type = 'doughnut';
+			}
+
+			$el.find('.data').each(function(){
+
+				var $data = $(this);
+
+				data.push({
+					value: $data.data('value'),
+					color: $data.data('color'),
+					highlight: $data.data('highlight'),
+					label: $data.data('label')
+				});
+			});
+
+			if ( type == 'doughnut' ) {
+
+				chart = new Chart(context).Doughnut(data, {
+					showTooltips: $el.data('tooltips')
+				});
+
+			} else {
+
+				chart = new Chart(context).Pie(data, {
+					showTooltips: $el.data('tooltips')
+				});
+
+			}
+
+			// Legend
+			if ( $el.data('legend') ) {
+				$el.append( '<div class="legend">'+chart.generateLegend()+'</div>' );
+			}
+
+			// Scroll effects
+			if ( $body.hasClass('scroll-effects') && $body.hasClass('desktop') ) {
+
+				$el.find('.chart-wrap').css('opacity', '0');
+
+				$el.appear(function() {
+					$el.find('.chart-wrap').css('opacity', '1');
+					chart.render();
+				},{accX: 0, accY: 0});
+			}
+		});
+
+		// Bar/Line charts
+		$('.tb-chart.bar, .tb-chart.line').each(function(){
+
+			var $el = $(this),
+				type = 'line',
+				context = $el.find('canvas').get(0).getContext('2d'),
+				data = [],
+				datasets = [],
+				chart;
+
+			if ( $el.hasClass('bar') ) {
+				type = 'bar';
+			}
+
+			$el.find('.data').each(function(){
+
+				var $data = $(this);
+
+				datasets.push({
+					label: $data.data('label'),
+					fillColor: $data.data('fill'),
+					strokeColor: $data.data('stroke'),
+					pointColor: $data.data('point'),
+					data: $data.data('values').split(',')
+				});
+
+			});
+
+			data = {
+				labels: $el.data('labels').split(','),
+				datasets: datasets
+			};
+
+			if ( type == 'bar' ) {
+
+				chart = new Chart(context).Bar(data, {
+					barShowStroke: false,
+					scaleBeginAtZero: $el.data('start'),
+					showTooltips: $el.data('tooltips')
+				});
+
+			} else {
+
+				chart = new Chart(context).Line(data, {
+					bezierCurve: $el.data('curve'),
+					datasetFill: $el.data('fill'),
+					pointDot: $el.data('dot'),
+					scaleBeginAtZero: $el.data('start'),
+					showTooltips: $el.data('tooltips')
+				});
+
+			}
+
+			// Legend
+			if ( $el.data('legend') ) {
+				$el.append( '<div class="legend">'+chart.generateLegend()+'</div>' );
+			}
+
+			// Scroll effects
+			if ( $body.hasClass('scroll-effects') && $body.hasClass('desktop') ) {
+
+				$el.find('.chart-wrap').css('opacity', '0');
+
+				$el.appear(function() {
+					$el.find('.chart-wrap').css('opacity', '1');
+					chart.render();
+				},{accX: 0, accY: 0});
+			}
+
 		});
 	}
 
+
 	// ---------------------------------------------------------
-	// Scroll effects
+	// Scroll effects (separate)
 	// ---------------------------------------------------------
 
 	// Milestone standard

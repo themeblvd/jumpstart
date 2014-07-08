@@ -263,17 +263,6 @@ if ( !function_exists( 'themeblvd_include_scripts' ) ) :
  * time, this function can easily be re-done from a
  * child theme.
  *
- * (1) jQuery - Already registered by WP, and enqueued for most our scripts.
- * (2) Twitter Bootstrap - All Bootstrap JS plugins combiled.
- * (3) Magnific Popup - Handles all default lightbox functionality.
- * (4) Super Fish/Hover Intent - Used for primary navigation.
- * (5) FlexSlider - Responsive slider, controls framework's "standard" slider type.
- * (6) Roundabout - Carousel-style slider, controls framwork's "3D Carousel" slider type.
- * (7) Theme Blvd scripts - Anything used by the framework to set other items into motion.
- * (8) iOS Orientation Fix - Allows zooming to be enabled on [older] iOS devices while still
- * allowing auto adjustment when switching between landscape and portrait.
- * (9) Already registered by WP, enable commentform to show when visitor clicks "Reply" on comment.
- *
  * @since 2.0.0
  */
 function themeblvd_include_scripts() {
@@ -285,12 +274,17 @@ function themeblvd_include_scripts() {
 	// the framework.
 	$scripts = array( 'jquery' );
 
-	// Enque Scripts
-	wp_enqueue_script( 'jquery' );
-
+	// Register scripts that get enqueued as needed
 	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
 		wp_register_script( 'google_maps', 'https://maps.googleapis.com/maps/api/js', array(), null );
 	}
+
+	if ( themeblvd_supports( 'assets', 'charts' ) ) {
+		wp_register_script( 'charts', TB_FRAMEWORK_URI . '/assets/js/Chart.min.js', array(), null );
+	}
+
+	// Enque Scripts
+	wp_enqueue_script( 'jquery' );
 
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 		$scripts[] = 'flexslider';

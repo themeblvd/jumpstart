@@ -1050,18 +1050,27 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/* Locations
 			/*---------------------------------------*/
 
+			case 'datasets' :
+				$datasets = $advanced->get('datasets');
+				$output .= $datasets->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
+			/* Locations
+			/*---------------------------------------*/
+
 			case 'locations' :
 				$locations = $advanced->get('locations');
 				$output .= $locations->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/
-			/* Milestones
+			/* Sectors
 			/*---------------------------------------*/
 
-			case 'milestones' :
-				$milestones = $advanced->get('milestones');
-				$output .= $milestones->get_display( $value['id'], $option_name, $val );
+			case 'sectors' :
+				$sectors = $advanced->get('sectors');
+				$output .= $sectors->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/

@@ -1037,8 +1037,10 @@
 	line-height: 60px;
 }
 
-/* Sortables - locations, tabs, testimonials, toggles */
+/* Sortables - datasets, locations, sectors, tabs, testimonials, toggles */
+#optionsframework .section-datasets > .option > .controls,
 #optionsframework .section-locations > .option > .controls,
+#optionsframework .section-sectors > .option > .controls,
 #optionsframework .section-tabs > .option > .controls,
 #optionsframework .section-testimonials > .option > .controls,
 #optionsframework .section-toggles > .option > .controls {
@@ -1048,14 +1050,18 @@
 	padding: 0;
 	width: auto;
 }
+#optionsframework .section-datasets > .option > .explain,
 #optionsframework .section-locations > .option > .explain,
+#optionsframework .section-sectors > .option > .explain,
 #optionsframework .section-tabs > .option > .explain,
 #optionsframework .section-testimonials > .option > .explain,
 #optionsframework .section-toggles > .option > .explain {
 	float: none;
 	max-width: none;
 }
+#optionsframework .section-datasets .tb-sortable-option textarea,
 #optionsframework .section-locations .tb-sortable-option textarea,
+#optionsframework .section-sectors .tb-sortable-option textarea,
 #optionsframework .section-tabs .tb-sortable-option textarea,
 #optionsframework .section-testimonials .tb-sortable-option textarea,
 #optionsframework .section-toggles .tb-sortable-option textarea {

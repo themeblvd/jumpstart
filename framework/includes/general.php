@@ -177,6 +177,7 @@ function themeblvd_setup() {
 			'superfish'			=> true,			// "superfish" script
 			'easypiechart'		=> true,			// "EasyPieChart" scrip
 			'gmap'				=> true,			// Google Maps API v3
+			'charts'			=> true,			// Charts.js
 			'ios_orientation'	=> false			// "ios-orientationchange-fix" script
 		)
 	);

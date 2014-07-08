@@ -457,6 +457,11 @@ a.list-group-item.active:focus {
     border-color: #000000;
 }
 
+/* Charts */
+.tb-chart .legend ul {
+    border-color: #000000;
+}
+
 /* =Forms
 ----------------------------------------------- */
 

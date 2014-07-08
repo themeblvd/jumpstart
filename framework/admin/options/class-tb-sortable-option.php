@@ -567,6 +567,78 @@ abstract class Theme_Blvd_Sortable_Option {
 }
 
 /**
+ * Datasets option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'datasets';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'label',
+				'name'		=> __('Label', 'themeblvd'),
+				'desc'		=> __('Enter a label for this dataset.', 'themeblvd'),
+				'type'		=> 'text',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'values',
+				'name'		=> __('Values', 'themeblvd'),
+				'desc'		=> __('Enter a comma separated list of values for this data set.<br>Ex: 10, 20, 30, 40, 50, 60', 'themeblvd'),
+				'std'		=> '',
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'color',
+				'name'		=> __('Color', 'themeblvd'),
+				'desc'		=> __('Select a color that represents this data set.', 'themeblvd'),
+				'std'		=> '#cccccc',
+				'type'		=> 'color'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Data Set','themeblvd'),
+			'delete' 				=> __('Delete Data Set','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this data set?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Data Sets','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all data sets?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
  * Markers option type
  *
  * @since 2.5.0
@@ -644,6 +716,78 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 			'delete_confirm'		=> __('Are you sure you want to delete this location?', 'themeblvd'),
 			'delete_all' 			=> __('Delete All Locations','themeblvd'),
 			'delete_all_confirm' 	=> __('Are you sure you want to delete all map locations?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Sectors option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'sectors';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'label',
+				'name'		=> __('Label', 'themeblvd'),
+				'desc'		=> __('Enter a label for this sector.', 'themeblvd'),
+				'type'		=> 'text',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'value',
+				'name'		=> __('Value', 'themeblvd'),
+				'desc'		=> __('Enter a numeric value for this sector.', 'themeblvd'),
+				'std'		=> '0',
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'color',
+				'name'		=> __('Color', 'themeblvd'),
+				'desc'		=> __('Select a color that represents this sector.', 'themeblvd'),
+				'std'		=> '#cccccc',
+				'type'		=> 'color'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Sector','themeblvd'),
+			'delete' 				=> __('Delete Sector','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this sector?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Sectors','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all sectors?','themeblvd')
 		);
 		return $labels;
 	}
