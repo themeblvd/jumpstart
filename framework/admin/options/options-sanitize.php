@@ -51,6 +51,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_geo', 'themeblvd_sanitize_geo' );
 	add_filter( 'themeblvd_sanitize_sectors', 'themeblvd_sanitize_sectors' );
 	add_filter( 'themeblvd_sanitize_datasets', 'themeblvd_sanitize_datasets' );
+	add_filter( 'themeblvd_sanitize_bars', 'themeblvd_sanitize_bars' );
 }
 
 /**
@@ -1031,6 +1032,29 @@ function themeblvd_sanitize_datasets( $input ) {
 			$output[$item_id] = array();
 			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
 			$output[$item_id]['values'] = wp_kses( $item['values'], array() );
+			$output[$item_id]['color'] = themeblvd_sanitize_hex( $item['color'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Progress Bars
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_bars( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+			$output[$item_id]['label_value'] = wp_kses( $item['label_value'], array() );
+			$output[$item_id]['value'] = wp_kses( $item['value'], array() );
+			$output[$item_id]['total'] = wp_kses( $item['total'], array() );
 			$output[$item_id]['color'] = themeblvd_sanitize_hex( $item['color'] );
 		}
 	}

@@ -1037,7 +1037,8 @@
 	line-height: 60px;
 }
 
-/* Sortables - datasets, locations, sectors, tabs, testimonials, toggles */
+/* Sortables - bars, datasets, locations, sectors, tabs, testimonials, toggles */
+#optionsframework .section-bars > .option > .controls,
 #optionsframework .section-datasets > .option > .controls,
 #optionsframework .section-locations > .option > .controls,
 #optionsframework .section-sectors > .option > .controls,
@@ -1050,6 +1051,7 @@
 	padding: 0;
 	width: auto;
 }
+#optionsframework .section-bars > .option > .explain,
 #optionsframework .section-datasets > .option > .explain,
 #optionsframework .section-locations > .option > .explain,
 #optionsframework .section-sectors > .option > .explain,
@@ -1059,6 +1061,7 @@
 	float: none;
 	max-width: none;
 }
+#optionsframework .section-bars .tb-sortable-option textarea,
 #optionsframework .section-datasets .tb-sortable-option textarea,
 #optionsframework .section-locations .tb-sortable-option textarea,
 #optionsframework .section-sectors .tb-sortable-option textarea,

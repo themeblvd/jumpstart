@@ -789,6 +789,8 @@ jQuery(document).ready(function($) {
 		var $el = $(this),
 			num = parseInt($el.find('.num').text());
 
+		$el.find('.num').text('0');
+
 		$el.appear(function() {
 
 			$el.find('.num').countTo({
@@ -829,6 +831,18 @@ jQuery(document).ready(function($) {
 
 		});
 	}
+
+
+	// Milestone standard
+	$('.desktop.scroll-effects .tb-progress .progress-bar').each(function(){
+
+		var $bar = $(this);
+
+		$bar.appear(function() {
+			$bar.animate({width:$bar.data('percent')+'%'}, 400);
+		},{accX: 0, accY: 0});
+
+	});
 
 });
 

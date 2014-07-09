@@ -81,6 +81,7 @@ class Theme_Blvd_Advanced_Options {
 	 */
 	public function set_reference() {
 		$this->reference = array(
+			'bars',
 			'datasets',
 			'locations',
 			'sectors',
@@ -110,6 +111,10 @@ class Theme_Blvd_Advanced_Options {
 		}
 
 		switch ( $type ) {
+
+			case 'bars':
+				$this->types[$type] = new Theme_Blvd_Bars_Option();
+				break;
 
 			case 'datasets':
 				$this->types[$type] = new Theme_Blvd_Datasets_Option();
@@ -179,7 +184,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'datasets', 'locations', 'sectors', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
+		return in_array( $type, array( 'bars', 'datasets', 'locations', 'sectors', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
 	}
 
 }

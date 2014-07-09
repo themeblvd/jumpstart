@@ -136,6 +136,10 @@ function themeblvd_block( $id, $type, $options ) {
 			themeblvd_post_slider( $id, $options, 'grid' );
 			break;
 
+		case 'progress_bars' :
+			themeblvd_progress_bars( $options );
+			break;
+
 		case 'quote' :
 			themeblvd_blockquote( $options );
 			break;

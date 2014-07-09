@@ -173,7 +173,7 @@ function themeblvd_get_milestone_percent( $args ) {
 	$defaults = array(
 		'percent'		=> '75',		// Percentage for pie chart
 		'color'			=> '#0c9df0',	// Color of the milestone percentage
-		'track_color'	=> '#eeeeee',	// Color track containing milestone ring
+		'track_color'	=> '#eeeeee',	// Color track containing milestone ring (currently no option in builder, may add in the future)
 		'display'		=> '',			// Text in the middle of the pie chart
 		'title'			=> '',			// Title below pie chart
 		'text'			=> '',			// Description below title
@@ -231,4 +231,113 @@ function themeblvd_get_milestone_percent( $args ) {
  */
 function themeblvd_milestone_percent( $args ) {
 	echo themeblvd_get_milestone_percent( $args );
+}
+
+/**
+ * Get individual progress bar
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for milestone block.
+ */
+function themeblvd_get_progress_bar( $args ) {
+
+    $defaults = array(
+        'label'         => '',          // Label of what this bar represents, like "Graphic Design"
+        'label_value'   => '50%',       // Label for value, like "80%""
+        'value'         => '50',        // The actual numeric value
+        'total'         => '100',       // The number that the value should be devided into
+        'color'         => '#428bca',   // Color of the progress bar
+        'striped'       => '0'          // Whether they contain striped effect
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    $class = 'tb-progress';
+
+    if ( $args['label'] || $args['label_value'] ) {
+        $class .= ' has-label';
+    }
+
+    $output = sprintf( '<div class="%s">', $class );
+
+    if ( $args['label'] ) {
+        $output .= sprintf('<span class="label text">%s</span>', $args['label']);
+    }
+
+    if ( $args['label_value'] ) {
+        $output .= sprintf('<span class="label value">%s</span>', $args['label_value']);
+    }
+
+    $class = 'progress';
+
+    if ( $args['striped'] ) {
+        $class .= ' progress-striped';
+    }
+
+    $output .= sprintf('<div class="%s">', $class);
+
+    $percent = ( intval($args['value']) / intval($args['total']) ) * 100;
+
+    $display = '0';
+    if ( ! themeblvd_supports( 'display', 'scroll_effects' ) || wp_is_mobile() ) {
+        $display = $percent;
+    }
+
+    $output .= sprintf( '<div class="progress-bar" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="background-color: %s; width: %s%%"></div>', $percent, $args['total'], $percent, $args['color'], $display );
+
+    $output .= '</div><!-- .progress (end) -->';
+    $output .= '</div><!-- .tb-progress (end) -->';
+
+    return apply_filters( 'themeblvd_progress_bar', $output, $args );
+}
+
+/**
+ * Display individual progress bar
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for milestone block.
+ */
+function themeblvd_progress_bar( $args ) {
+    echo themeblvd_get_progress_bar( $args );
+}
+
+/**
+ * Get set of progress bars
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for milestone block.
+ */
+function themeblvd_get_progress_bars( $args ) {
+
+    $defaults = array(
+        'bars'      => array(),     // Progress bars
+        'striped'   => '0'          // Whether they contain striped effect
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    $output = '<div class="tb-progress-bars">';
+
+    if ( $args['bars'] ) {
+        foreach ( $args['bars'] as $bar ) {
+            $bar['striped'] = $args['striped'];
+            $output .= themeblvd_progress_bar( $bar );
+        }
+    }
+
+    $output .= '</div><!-- .tb-progress-bars (end) -->';
+
+    return apply_filters( 'themeblvd_progress_bars', $output, $args );
+}
+
+/**
+ * Display set of progress bars
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for milestone block.
+ */
+function themeblvd_progress_bars( $args ) {
+    echo themeblvd_get_progress_bars( $args );
 }

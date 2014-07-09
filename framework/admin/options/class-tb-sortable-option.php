@@ -567,6 +567,91 @@ abstract class Theme_Blvd_Sortable_Option {
 }
 
 /**
+ * Progress Bars option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'bars';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'label',
+				'name'		=> __('Display Label', 'themeblvd'),
+				'desc'		=> __('Enter a label for this display.<br>Ex: Graphic Design', 'themeblvd'),
+				'type'		=> 'text',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'label_value',
+				'name'		=> __('Value Display Label', 'themeblvd'),
+				'desc'		=> __('Enter a label to display the value.<br>Ex: 80%', 'themeblvd'),
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'value',
+				'name'		=> __('Value', 'themeblvd'),
+				'desc'		=> __('Enter a number for the value.<br>Ex: 80', 'themeblvd'),
+				'std'		=> '',
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'total',
+				'name'		=> __('Total', 'themeblvd'),
+				'desc'		=> __('Enter a number, which your above value should be divided into. If your above value is meant to represent a straight percantage, then this "total" number should be 100.', 'themeblvd'),
+				'std'		=> '100',
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'color',
+				'name'		=> __('Color', 'themeblvd'),
+				'desc'		=> __('Select a color that represents this progress bar.', 'themeblvd'),
+				'std'		=> '#cccccc',
+				'type'		=> 'color'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Progress Bar','themeblvd'),
+			'delete' 				=> __('Delete Progress Bar','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this progress bar?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Progress Bars','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all progress bars?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
  * Datasets option type
  *
  * @since 2.5.0

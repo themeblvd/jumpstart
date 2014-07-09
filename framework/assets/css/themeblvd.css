@@ -1909,6 +1909,30 @@ a.slide-thumbnail-link {
 	height: 20px;
 }
 
+/* Progress Bars */
+.tb-progress {
+	position: relative;
+}
+.tb-progress.has-label {
+	padding-top: 16px;
+}
+.tb-progress .label {
+	color: inherit;
+	display: block;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1;
+	padding: 0;
+	position: absolute;
+	top: 0;
+}
+.tb-progress .label.text {
+	left: 5px;
+}
+.tb-progress .label.value {
+	right: 5px;
+}
+
 /* =Forms
 ----------------------------------------------- */
 

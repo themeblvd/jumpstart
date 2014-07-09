@@ -1047,7 +1047,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
-			/* Locations
+			/* Progress Bars
+			/*---------------------------------------*/
+
+			case 'bars' :
+				$bars = $advanced->get('bars');
+				$output .= $bars->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
+			/* Data Sets
 			/*---------------------------------------*/
 
 			case 'datasets' :
