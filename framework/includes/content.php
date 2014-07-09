@@ -100,8 +100,8 @@ function themeblvd_block( $id, $type, $options ) {
 			themeblvd_milestone( $options );
 			break;
 
-		case 'milestone_percent' :
-			themeblvd_milestone_percent( $options );
+		case 'milestone_ring' :
+			themeblvd_milestone_ring( $options );
 			break;
 
 		case 'page' :
