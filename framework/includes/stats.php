@@ -122,8 +122,6 @@ function themeblvd_get_milestone( $args ) {
 
 	$defaults = array(
 		'milestone'		=> '100',		// The number for the milestone
-		'before'		=> '',			// Symbol before milestone number
-		'after'			=> '',			// Symbol after milestone number
 		'color'			=> '#0c9df0',	// Color of text for milestone number
 		'text'			=> '',			// Brief text to describe milestone
 		'boxed'			=> '0'			// Whether to wrap milestone in borered box
@@ -138,7 +136,16 @@ function themeblvd_get_milestone( $args ) {
 
     $output = sprintf( '<div class="%s">', $class );
 
-    $output .= sprintf( '<span class="milestone" style="color: %s;">%s<span class="num">%s</span>%s</span>', $args['color'], $args['before'], $args['milestone'], $args['after'] );
+    $num = filter_var( $args['milestone'], FILTER_SANITIZE_NUMBER_INT );
+    $num = str_replace('-', '', $num);
+    $num = str_replace('+', '', $num);
+    $milestone = str_replace( $num, '<span class="num">'.$num.'</span>', $args['milestone'] );
+
+    if ( themeblvd_supports('display', 'scroll_effects') && ! wp_is_mobile() ) {
+        $milestone = str_replace( $num, '0', $milestone );
+    }
+
+    $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', $args['color'], $num, $milestone );
 
     if ( $args['text'] ) {
     	$output .= themeblvd_divider( array('type' => 'solid', 'width' => '50') );
@@ -168,7 +175,7 @@ function themeblvd_milestone( $args ) {
  *
  * @param array $args Options for from "Milestone" block
  */
-function themeblvd_get_milestone_percent( $args ) {
+function themeblvd_get_milestone_ring( $args ) {
 
 	$defaults = array(
 		'percent'		=> '75',		// Percentage for pie chart
@@ -219,7 +226,7 @@ function themeblvd_get_milestone_percent( $args ) {
 
     $output .= '</div><!-- .tb-milestone (end) -->';
 
-    return apply_filters( 'themeblvd_milestone_percent', $output, $args );
+    return apply_filters( 'themeblvd_milestone_ring', $output, $args );
 }
 
 /**
@@ -229,8 +236,8 @@ function themeblvd_get_milestone_percent( $args ) {
  *
  * @param array $args Arguments for milestone block.
  */
-function themeblvd_milestone_percent( $args ) {
-	echo themeblvd_get_milestone_percent( $args );
+function themeblvd_milestone_ring( $args ) {
+	echo themeblvd_get_milestone_ring( $args );
 }
 
 /**
@@ -244,7 +251,7 @@ function themeblvd_get_progress_bar( $args ) {
 
     $defaults = array(
         'label'         => '',          // Label of what this bar represents, like "Graphic Design"
-        'label_value'   => '50%',       // Label for value, like "80%""
+        'label_value'   => '',          // Label for value, like "80%"
         'value'         => '50',        // The actual numeric value
         'total'         => '100',       // The number that the value should be devided into
         'color'         => '#428bca',   // Color of the progress bar
@@ -268,14 +275,6 @@ function themeblvd_get_progress_bar( $args ) {
         $output .= sprintf('<span class="label value">%s</span>', $args['label_value']);
     }
 
-    $class = 'progress';
-
-    if ( $args['striped'] ) {
-        $class .= ' progress-striped';
-    }
-
-    $output .= sprintf('<div class="%s">', $class);
-
     $percent = ( intval($args['value']) / intval($args['total']) ) * 100;
 
     $display = '0';
@@ -283,7 +282,23 @@ function themeblvd_get_progress_bar( $args ) {
         $display = $percent;
     }
 
-    $output .= sprintf( '<div class="progress-bar" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="background-color: %s; width: %s%%"></div>', $percent, $args['total'], $percent, $args['color'], $display );
+    $style = sprintf( 'width: %s%%;', $display );
+
+    $class = 'progress';
+
+    if ( $args['striped'] ) {
+        $class .= ' progress-striped';
+    }
+
+    if ( strpos($args['color'], '#') === 0 ) {
+        $style .= sprintf( ' background-color: %s;', $args['color']);
+    } else {
+        $class .= ' progress-'.$args['color'];
+    }
+
+    $output .= sprintf('<div class="%s">', $class);
+
+    $output .= sprintf( '<div class="progress-bar" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>', $percent, $args['total'], $percent, $style );
 
     $output .= '</div><!-- .progress (end) -->';
     $output .= '</div><!-- .tb-progress (end) -->';
