@@ -787,9 +787,7 @@ jQuery(document).ready(function($) {
 	$('.desktop.scroll-effects .tb-milestone .milestone').each(function() {
 
 		var $el = $(this),
-			num = parseInt($el.find('.num').text());
-
-		$el.find('.num').text('0');
+			num = parseInt($el.data('num'));
 
 		$el.appear(function() {
 
@@ -801,6 +799,7 @@ jQuery(document).ready(function($) {
 			});
 
 		},{accX: 0, accY: 0});
+
 	});
 
 	// Milestone percent
