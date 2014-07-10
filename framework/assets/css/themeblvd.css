@@ -3994,6 +3994,15 @@ button.mfp-arrow {
 	margin-bottom: 30px;
 	padding: 0.02px; /* margin overflow fix */
 }
+.element-section > .element.suck-down {
+	margin-bottom: 5px;
+}
+.element-section > .element.suck-up {
+	margin-top: -25px;
+}
+.element-section > .element:first-child {
+	margin-top: 0;
+}
 .element-section > .element:last-child {
 	margin-bottom: 0;
 }
