@@ -1074,6 +1074,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Logos
+			/*---------------------------------------*/
+
+			case 'logos' :
+				$logos = $advanced->get('logos');
+				$output .= $logos->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
 			/* Sectors
 			/*---------------------------------------*/
 

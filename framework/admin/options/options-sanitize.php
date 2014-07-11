@@ -43,6 +43,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
 	add_filter( 'themeblvd_sanitize_slide', 'themeblvd_sanitize_slide' );
 	add_filter( 'themeblvd_sanitize_slider', 'themeblvd_sanitize_slider' );
+	add_filter( 'themeblvd_sanitize_logos', 'themeblvd_sanitize_logos' );
 	add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
 	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
@@ -679,8 +680,7 @@ function themeblvd_sanitize_slider( $input ) {
 
 			// Slide info
 			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
-			$output[$item_id]['desc'] = wp_kses( $item['desc'], themeblvd_allowed_tags() );
-			$output[$item_id]['desc'] = str_replace( "\r\n", "\n", $output[$item_id]['desc'] );
+			$output[$item_id]['desc'] = themeblvd_sanitize_textarea( $item['desc'] );
 
 			// Link
 			$output[$item_id]['link'] = wp_kses( $item['link'], array() );
@@ -690,6 +690,47 @@ function themeblvd_sanitize_slider( $input ) {
 			}
 
 			$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Partner Logos
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_logos( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			// Attachment ID
+			$output[$item_id]['id'] = intval( $item['id'] );
+
+			// Attachment title
+			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
+
+			// Attachment Image
+			$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], 'full' );
+			$output[$item_id]['src'] = $attachment[0];
+			$output[$item_id]['width'] = $attachment[1];
+			$output[$item_id]['height'] = $attachment[2];
+
+			// Thumbnail
+			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], apply_filters('themeblvd_simple_slider_thumb_crop', 'square_small') );
+			$output[$item_id]['thumb'] = $thumb[0];
+
+			// Partner Name, description, and Link
+			$output[$item_id]['name'] = wp_kses( $item['name'], array() );
+			//$output[$item_id]['desc'] = wp_kses( $item['desc'], array() );
+			$output[$item_id]['link'] = wp_kses( $item['link'], array() );
+
 		}
 	}
 

@@ -1479,7 +1479,7 @@
 				});
 
 				data = {
-					action: 'themeblvd_add_slider_item',
+					action: 'themeblvd_add_'+$option.data('type')+'_item',
 					security: $option.data('security'),
 					data: {
 						option_name: $option.data('name'),

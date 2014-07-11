@@ -893,8 +893,12 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function __construct() {
 
-		// Set type
-		$this->type = 'slider';
+		// Set type -- Check to make sure type
+		// is not set to allow child classes
+		// of this child.
+		if ( ! $this->type ) {
+			$this->type = 'slider';
+		}
 
 		// Run parent
 		parent::__construct();
@@ -1011,7 +1015,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'type' 		=> 'subgroup_end'
-			),
+			)
 		);
 		return $options;
 	}
@@ -1051,6 +1055,97 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_'.rand() ), $val, $_POST['data']['option_name'] );
 		}
 		die();
+	}
+
+}
+
+/**
+ * Logos option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'logos';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'id',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'alt',
+				'type'		=> 'hidden',
+				'std'		=> '',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'thumb',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'name',
+				'name'		=> __('Partner Name', 'themeblvd'),
+				'desc'		=> __('Enter a name that corresponds to this logo.', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> ''
+			),
+			/*
+			array(
+				'id' 		=> 'desc',
+				'name'		=> __('Partner Description (optional)', 'themeblvd'),
+				'desc'		=> __('Enter very brief description that will display as a tooltip when the user hovers on the logo.', 'themeblvd'),
+				'type'		=> 'textarea',
+				'std'		=> ''
+			),
+			*/
+			array(
+				'id' 		=> 'link',
+				'name'		=> __( 'Partner Link (optional)', 'themeblvd_builder' ),
+				'desc'		=> __( 'Enter a URL you\'d like this logo to link to.<br>Ex: http://partersite.com', 'themeblvd_builder' ),
+				'type'		=> 'text',
+				'pholder'	=> 'http://'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Logos','themeblvd'),
+			'delete' 				=> __('Remove Logo','themeblvd'),
+			'delete_all' 			=> __('Remove All Logos','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to remove all logos?','themeblvd'),
+			'modal_title'			=> __('Select Logos','themeblvd'),
+			'modal_button'			=> __('Add Logos','themeblvd')
+		);
+		return $labels;
 	}
 
 }
