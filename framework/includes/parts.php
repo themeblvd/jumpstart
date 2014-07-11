@@ -1593,9 +1593,159 @@ function themeblvd_testimonial_slider( $args ) {
 }
 
 /**
+ * Get Partner Logos
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for map
+ * @return string $output Final content to output
+ */
+function themeblvd_get_logos( $args ) {
+
+	$defaults = array(
+		'logos'		=> array(),		// Logos to display
+		'title'		=> '',			// Title for unit
+		'display'	=> 'slider',	// How to display logos, grid or slider
+		'slide'		=> '4',			// If slider, number of logos per slide
+		'nav'		=> '1',			// If slider, whether to display nav
+		'timeout'	=> '3',			// If slider, seconds in between auto rotation
+		'grid'		=> '4',			// If grid, number of logos per row
+		'height'	=> '100',		// Height across all logo blocks
+		'boxed'		=> '1',			// Whether to dispay box arond logo
+		'greyscale'	=> '1'			// Whether to display logos as black and white
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+	$class = 'tb-logos '.$args['display'];
+
+	if ( $args['boxed'] ) {
+		$class .= ' has-boxed';
+	}
+
+	if ( $args['title'] ) {
+		$class .= ' has-title';
+	}
+
+	if ( $args['display'] == 'slider' ) {
+
+		$class .= ' flexslider';
+
+		if ( $args['nav'] ) {
+			$class .= ' has-nav';
+		}
+	}
+
+    $output = sprintf( '<div class="%s" data-timeout="%s" data-nav="%s">', $class, $args['timeout'], $args['nav'] );
+
+    if ( $args['title'] ) {
+		$output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
+	}
+
+	$output .= '<div class="tb-logos-inner">';
+
+	if ( $args['display'] == 'slider' && $args['nav'] ) {
+		$output .= '<ul class="tb-slider-arrows">';
+		$output .= sprintf( '<li><a href="#" title="%s" class="prev"><i class="fa fa-chevron-left"></i></a></li>', themeblvd_get_local('previous') );
+		$output .= sprintf( '<li><a href="#" title="%s" class="next"><i class="fa fa-chevron-right"></i></a></li>', themeblvd_get_local('next') );
+		$output .= '</ul>';
+	}
+
+    if ( $args['logos'] ) {
+
+		$img_class = '';
+
+		if ( $args['greyscale'] ) {
+			$img_class .= 'greyscale';
+		}
+
+		$wrap_class = 'tb-logo';
+
+		if ( $args['boxed'] ) {
+			$wrap_class .= ' boxed';
+		}
+
+		$wrap_style = '';
+
+		if ( $args['height'] ) {
+			$wrap_style .= sprintf( 'height: %spx;', $args['height'] );
+		}
+
+		if ( $args['display'] == 'slider' ) {
+			$num_per = intval($args['slide']);
+		} else {
+			$num_per = intval($args['grid']);
+		}
+
+		$grid_class = themeblvd_grid_class($num_per);
+
+    	if ( $args['display'] == 'slider' ) {
+    		$output .= '<ul class="slides">';
+    		$output .= '<li class="slide">';
+    	}
+
+    	$output .= themeblvd_get_open_row();
+
+    	$total = count($args['logos']);
+    	$i = 1;
+
+    	foreach ( $args['logos'] as $logo ) {
+
+    		$img = sprintf( '<img src="%s" alt="%s" class="%s" />', $logo['src'], $logo['alt'], $img_class );
+
+    		if ( $logo['link'] ) {
+    			$img = sprintf( '<a href="%s" title="%s" class="%s" style="%s" target="_blank">%s</a>', $logo['link'], $logo['name'], $wrap_class, $wrap_style, $img );
+    		} else {
+    			$img = sprintf( '<div class="%s" style="%s">%s</div>', $logo['name'], $wrap_class, $wrap_style, $img );
+    		}
+
+    		$output .= sprintf( '<div class="col %s">%s</div>', $grid_class, $img );
+
+    		if ( $i % $num_per == 0 && $i < $total ) {
+
+    			$output .= themeblvd_get_close_row();
+
+    			if ( $args['display'] == 'slider' ) {
+		    		$output .= '</li>';
+		    		$output .= '<li class="slide">';
+		    	}
+
+		    	$output .= themeblvd_get_open_row();
+
+    		}
+
+    		$i++;
+
+    	}
+
+    	$output .= themeblvd_get_close_row();
+
+    	if ( $args['display'] == 'slider' ) {
+    		$output .= '</li>';
+    		$output .= '</ul>';
+    	}
+    }
+
+    $output .= '</div><!-- .tb-logos-inner (end) -->';
+    $output .= '</div><!-- .tb-logos (end) -->';
+
+	return apply_filters( 'themeblvd_logos', $output, $args );
+}
+
+/**
+ * Display partner logos
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for Google Map.
+ */
+function themeblvd_logos( $args ) {
+	echo themeblvd_get_logos( $args );
+}
+
+/**
  * Get Google Map
  *
- * @since 2.4.2
+ * @since 2.5.0
  *
  * @param array $args Arguments for map
  * @return string $output Final content to output

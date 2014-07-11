@@ -112,6 +112,10 @@ function themeblvd_block( $id, $type, $options ) {
 			themeblvd_panel( $options );
 			break;
 
+		case 'partners' :
+			themeblvd_logos( $options );
+			break;
+
 		case 'post_grid' :
 			themeblvd_posts( $options, 'grid' );
 			break;

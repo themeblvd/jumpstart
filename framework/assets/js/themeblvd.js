@@ -282,6 +282,68 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
+	// Partner Logo slider @TODO... merge with testimonial slider
+	// ---------------------------------------------------------
+
+	$('.tb-logos.slider').each(function(){
+
+		var $slider = $(this),
+			speed = $slider.data('timeout'),
+			slideshow = false,
+			nav = $slider.data('nav'),
+			pause = false;
+
+		if ( speed && speed !== '0' ) {
+			speed = speed+'000';
+			slideshow = true;
+		}
+
+		if ( nav && nav !== '0' ) {
+			nav = true;
+		} else {
+			nav = false;
+		}
+
+		if ( ! nav ) {
+			pause = true;
+		}
+
+		$(window).load(function() {
+			$slider.flexslider({
+				animation: 'slide',
+				easing: 'swing',
+				slideshowSpeed: speed,
+				animationSpeed: '1000',
+				//slideshow: slideshow,
+				directionNav: false,
+				controlNav: false,
+				pauseOnHover: pause,	// If nav exists, replace with manual action below
+				pauseOnAction: false 	// replaced with manual actino below
+			});
+		});
+
+		if ( nav ) {
+
+			$slider.on('mouseover', function(){
+				$slider.data('flexslider').flexslider('pause');
+			});
+
+			$slider.find('.tb-slider-arrows a').on('click', function(){
+
+				if ( $(this).hasClass('next') ) {
+					$slider.data('flexslider').flexslider('next');
+				} else {
+					$slider.data('flexslider').flexslider('prev');
+				}
+
+				$slider.data('flexslider').flexslider('pause');
+
+				return false;
+			});
+		}
+	});
+
+	// ---------------------------------------------------------
 	// Parallax background effect
 	// ---------------------------------------------------------
 

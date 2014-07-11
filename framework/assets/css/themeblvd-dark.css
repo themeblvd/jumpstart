@@ -462,6 +462,15 @@ a.list-group-item.active:focus {
     border-color: #000000;
 }
 
+/* Common slider arrows */
+.tb-slider-arrows li a {
+    background-color: #212121;
+    color: #ffffff;
+}
+.tb-slider-arrows li a:hover {
+    background-color: #000000;
+}
+
 /* =Forms
 ----------------------------------------------- */
 

@@ -832,8 +832,8 @@ function themeblvd_standard_slider_js( $id, $options ) {
 				<?php if ( ! empty( $options['smoothheight'] ) && $options['smoothheight'] == 'true' ) : ?>
 				smoothHeight: true,
 				<?php endif; ?>
-				prevText: '<i class="icon-circle-arrow-left"></i>',
-				nextText: '<i class="icon-circle-arrow-right"></i>',
+				prevText: '<i class="fa fa-chevron-left"></i>',
+				nextText: '<i class="fa fa-chevron-right"></i>',
 				animation: "<?php echo $options['fx']; ?>",
 				// pauseOnHover: true - This was replaced with a custom solution to work with other controls, see below with "pause_on_hover" option.
 				<?php if ( $options['timeout'] ) : ?>
