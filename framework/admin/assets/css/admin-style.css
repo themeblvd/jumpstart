@@ -1,7 +1,6 @@
 /* =Icon Fonts
 -----------------------------------------------*/
 
-
 /* Note: @font-face included from /framework/admin/assets/css/admin-global.css */
 [class^="tb-icon-"]:before,
 [class*=" tb-icon-"]:before {
@@ -137,6 +136,9 @@
 }
 .tb-icon-spinner:before {
 	content: "\e606";
+}
+.tb-icon-briefcase:before {
+	content: "\e813";
 }
 
 /* =General Classes
