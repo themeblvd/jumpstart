@@ -12,7 +12,7 @@
 					<?php themeblvd_the_title(); ?>
 				</h2>
 				<?php the_excerpt(); ?>
-				<?php echo themeblvd_button( themeblvd_get_local( 'read_more' ), get_permalink( get_the_ID() ), 'default', '_self', 'small', 'read-more', get_the_title( get_the_ID() )  ); ?>
+				<?php echo themeblvd_button( themeblvd_get_local( 'read_more' ), get_permalink( get_the_ID() ), 'default', '_self', 'default', 'read-more', get_the_title( get_the_ID() )  ); ?>
 			</div><!-- .entry-content -->
 		</article><!-- #post-<?php the_ID(); ?> -->
 	</div><!-- .article-wrap (end) -->
