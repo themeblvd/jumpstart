@@ -178,8 +178,9 @@ class Theme_Blvd_Frontend_Init {
 		// Store the ID of the original $post object in case
 		// we modify the main query or need to ever access it.
 
-		if ( is_object( $post ) )
+		if ( is_object( $post ) ) {
 			$this->config['id'] = $post->ID;
+		}
 
 		/*------------------------------------------------------*/
 		/* Custom Layout, Builder Name/ID
@@ -187,7 +188,8 @@ class Theme_Blvd_Frontend_Init {
 
 		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 
-			$layout_name = '';
+			$layout = '';
+			$sync_id = 0;
 
 			// Custom Layout on static page
 			if ( is_page_template( 'template_builder.php' ) ) {
@@ -195,39 +197,38 @@ class Theme_Blvd_Frontend_Init {
 
 					// Password is currently required and so
 					// the custom layout doesn't get used.
-					$layout_name = 'wp-private';
+					$layout = 'wp-private';
 
 				} else {
 
-					$layout_name = get_post_meta( $this->config['id'], '_tb_custom_layout', true );
-					if ( ! $layout_name ) {
-						$layout_name = 'error';
+					$layout = get_post_meta( $this->config['id'], '_tb_custom_layout', true );
+
+					if ( $layout ) {
+
+						$sync_id = themeblvd_post_id_by_name( $layout, 'tb_layout' );
+
+						if ( ! $sync_id ) {
+							$layout = 'error';
+						}
+
+					} else {
+						$layout = true; // Will pull from current page's meta data
 					}
 
 				}
 			}
 
-			// Custom Layout over home "posts page"
-			if ( is_home() && get_option( 'show_on_front' ) == 'posts' ) {
-				if ( 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
-					$layout_name = themeblvd_get_option( 'homepage_custom_layout' );
-					if ( ! $layout_name ) {
-						$layout_name = 'error';
-					}
+			if ( $layout ) {
+
+				$this->config['builder'] = $layout;
+
+				if ( $sync_id ) {
+					$this->config['builder_post_id'] = $sync_id;
+					$this->config['sidebar_layout'] = 'full_width';
+				} else if ( $layout === true ) {
+					$this->config['builder_post_id'] = $post->ID;
+					$this->config['sidebar_layout'] = 'full_width';
 				}
-			}
-
-			// Set name, which can also be "error" or "wp-private"
-			$this->config['builder'] = $layout_name;
-
-			// If we have a layout name, setup it's ID and sidebar layout
-			if ( $layout_name && $layout_name != 'error' && $layout_name != 'wp-private' ) {
-
-				// Set ID
-				$this->config['builder_post_id'] = themeblvd_post_id_by_name( $layout_name, 'tb_layout' );
-
-				// Sidebar layout
-				$this->config['sidebar_layout'] = 'full_width';
 
 			}
 		}
@@ -370,6 +371,9 @@ class Theme_Blvd_Frontend_Init {
 		/*------------------------------------------------------*/
 
 		$this->config = apply_filters( 'themeblvd_frontend_config', $this->config );
+
+		// DEBUG:
+		// echo '<pre>'; print_r($this->config); echo '</pre>';
 
 	}
 

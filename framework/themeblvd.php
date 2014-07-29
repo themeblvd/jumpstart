@@ -105,11 +105,13 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-query.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-frontend-init.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/actions.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/components.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/display.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/elements.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/frontend.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/helpers.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/layout.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/loop.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/media.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/post-formats.php' );
@@ -184,12 +186,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_blog_tags', 'themeblvd_blog_tags_default' );
 	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 5 );
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
-
-	// Elements
-	add_action( 'themeblvd_section_open', 'themeblvd_section_open_default' );
-	add_action( 'themeblvd_section_close', 'themeblvd_section_close_default' );
-	add_action( 'themeblvd_element_open', 'themeblvd_element_open_default', 9, 4 );
-	add_action( 'themeblvd_element_close', 'themeblvd_element_close_default', 9, 4 );
 
 	// WordPress Multisite Signup
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );

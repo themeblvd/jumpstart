@@ -346,6 +346,24 @@ function themeblvd_get_breadcrumbs_trail() {
 }
 
 /**
+ * A default full display for breacrumbs with surrounding
+ * HTML markup. If you're looking for a custom way to wrap
+ * a breadcrumbs output create your own function and use
+ * themeblvd_get_breadcrumbs_trail() to get just the trail.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_the_breadcrumbs(){
+	echo '<div id="breadcrumbs">';
+	echo '<div class="breadcrumbs-inner">';
+	echo '<div class="breadcrumbs-content">';
+	echo themeblvd_get_breadcrumbs_trail();
+	echo '</div><!-- .breadcrumbs-content (end) -->';
+	echo '</div><!-- .breadcrumbs-inner (end) -->';
+	echo '</div><!-- #breadcrumbs (end) -->';
+}
+
+/**
  * Get default meta for blogroll.
  *
  * @since 2.3.0
@@ -726,6 +744,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	global $_wp_additional_image_sizes;
 
 	$output = '';
+	$frame = apply_filters( 'themeblvd_featured_thumb_frame', false );
 
 	// CSS classes
 	$classes = $thumb.'-thumbs';
@@ -797,11 +816,17 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					$image = wp_get_attachment_image_src( $post->ID, 'full' );
 					$item = sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
 
+					$class = 'tb-thumb-link image';
+
+					if ( $frame ) {
+						$class .= ' thumbnail';
+					}
+
 					$args = array(
-						'item'		=> $item.themeblvd_get_image_overlay(),
+						'item'		=> $item,
 						'link'		=> $image[0],
 						'title'		=> $post->post_title,
-						'class'		=> 'image thumbnail',
+						'class'		=> $class,
 						'gallery' 	=> true
 					);
 
@@ -809,9 +834,14 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 
 				} else {
 
-					$output .= sprintf( '<a href="%s" title="%s" class="image thumbnail">', get_permalink($post->ID), $post->post_title, $gallery );
+					$class = 'tb-thumb-link image';
+
+					if ( $frame ) {
+						$class .= ' thumbnail';
+					}
+
+					$output .= sprintf( '<a href="%s" title="%s" class="%s">', get_permalink($post->ID), $post->post_title, $gallery, $class );
 					$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
-					$output .= themeblvd_get_image_overlay();
 					$output .= '</a>';
 
 				}
@@ -837,10 +867,16 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 						$post_format = 'standard';
 					}
 
+					$class = 'tb-thumb-link post';
+
+					if ( $frame ) {
+						$class .= ' thumbnail';
+					}
+
 					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.'">';
 					$image .= '<div class="featured-image">';
 					$image .= '<div class="featured-image-inner">';
-					$image .= sprintf( '<a href="%s" title="%s" class="thumbnail">', get_permalink(), get_the_title() );
+					$image .= sprintf( '<a href="%s" title="%s" class="%s">', get_permalink(), get_the_title(), $class );
 					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
 					$image .= '</a>';
 					$image .= '</div><!-- .featured-image-inner (end) -->';
@@ -927,1044 +963,50 @@ function themeblvd_the_title( $post_id = 0, $force_link = false ) {
 }
 
 /**
- * Get blockquote formatted correctly for Bootstrap
- *
- * @since 2.4.0
- *
- * @param array $args Arguments for blockquote.
- */
-function themeblvd_get_blockquote( $args ) {
-
-	$defaults = array(
-		'quote'			=> '',
-		'source' 		=> '',		// Source of quote
-		'source_link'	=> '',		// URL to link source to
-		'align'			=> '',		// How to align blockquote - left, right
-		'max_width'		=> '',		// Meant to be used with align left/right - 300px, 50%, etc
-		'reverse'		=> 'false',	// Whether to add "blockquote-reverse" Bootstrap class, which will align text to right; this is different than pull-right, which will float.
-		'class'			=> '' 		// Any additional CSS classes
-	);
-	$args = wp_parse_args( $args, $defaults );
-
-	// CSS classes
-	$class = 'tb-blockquote';
-
-	if ( $args['reverse'] == 'true' ) {
-		$class .= ' blockquote-reverse';
-	}
-
-	if ( $args['align'] ) {
-		if ( 'left' == $args['align'] ) {
-			$class .= ' pull-left';
-		} else if ( 'right' == $args['align'] ) {
-			$class .= ' pull-right';
-		}
-	}
-
-	if ( $args['class'] ) {
-		$class .= ' '.$args['class'];
-	}
-
-	// Max width
-	$style = '';
-
-	if ( $args['max_width'] ) {
-
-		if ( false === strpos( $args['max_width'], 'px' ) && false === strpos( $args['max_width'], '%' ) ) {
-			$args['max_width'] = $args['max_width'].'px';
-		}
-
-		$style = sprintf('max-width: %s;', $args['max_width'] );
-	}
-
-	// Quote
-	$quote = $args['quote'];
-
-	if ( false === strpos( $quote, '<p>' ) ) {
-		$quote = wpautop( $quote );
-	}
-
-	// Source
-	$source = '';
-
-	if ( $args['source'] ) {
-
-		$source = $args['source'];
-
-		if ( $args['source_link'] ) {
-			$source = sprintf( '<a href="%s" title="%s" target="_blank">%s</a>', $args['source_link'], $source, $source );
-		}
-
-		$source = sprintf( '<small><cite>%s</cite></small>', $source );
-
-		$quote .= $source;
-
-	}
-
-	// Output
-	$output = sprintf( '<blockquote class="%s" style="%s">%s</blockquote>', $class, $style, $quote );
-
-	return apply_filters( 'themeblvd_blockquote', $output, $args, $quote, $source, $class, $style );
-}
-
-/**
- * Display blockquote formatted correctly for Bootstrap
- *
- * @since 2.4.0
- *
- * @param array $args Arguments for blockquote.
- */
-function themeblvd_blockquote( $args ) {
-	echo themeblvd_get_blockquote( $args );
-}
-
-/**
- * Get panel formatted correctly for Bootstrap
+ * Get moveable slider controls
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for panel
- * @param string $content content for panel, optional
- * @return string $output Output for panel
- */
-function themeblvd_get_panel( $args, $content = '' ) {
-
-	$defaults = array(
-        'style'         => 'default',   // Style of panel - primary, success, info, warning, danger
-        'title'         => '',          // Header for panel
-        'footer'        => '',          // Footer for panel
-        'text_align'    => 'left',      // How to align text - left, right, center
-        'align'         => '',          // How to align panel - left, right
-        'max_width'     => '',          // Meant to be used with align left/right - 300px, 50%, etc
-        'class'         => '',          // Any additional CSS classes
-        'wpautop'       => 'true'       // Whether to apply wpautop on content
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    // CSS classes
-    $class = sprintf( 'panel panel-%s text-%s', $args['style'], $args['text_align'] );
-
-    if ( $args['class'] ) {
-        $class .= ' '.$args['class'];
-    }
-
-    // How are we getting the content?
-    if ( ! $content && ! empty( $args['content'] ) ) {
-    	$content = $args['content'];
-    }
-
-    // WP auto?
-    if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
-        $content = themeblvd_get_content( $content );
-    } else {
-    	$content = do_shortcode( $content );
-    }
-
-    // Construct intial panel
-    $output = sprintf( '<div class="%s">', $class );
-
-    if ( $args['title'] ) {
-        $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', $args['title'] );
-    }
-
-    $output .= sprintf( '<div class="panel-body text-%s">%s</div>', apply_filters( 'themeblvd_panel_text', 'dark' ), do_shortcode($content) );
-
-    if ( $args['footer'] ) {
-        $output .= sprintf( '<div class="panel-footer">%s</div>', $args['footer'] );
-    }
-
-    $output .= '</div><!-- .panel (end) -->';
-
-    return apply_filters( 'themeblvd_panel', $output, $args );
-}
-
-/**
- * Display panel formatted correctly for Bootstrap
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- * @param string $content content for panel, optional
- */
-function themeblvd_panel( $args, $content = '' ) {
-	echo themeblvd_get_panel( $args, $content );
-}
-
-/**
- * Get toggle formatted correctly for Bootstrap,
- * using the panel.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for alert
- * @param string $content content for alert, optional
- * @return string $output Output for alert
- */
-function themeblvd_get_toggle( $args ) {
-
-	$defaults = array(
-        'title'       	=> '',   	// Title of toggle
-        'content'       => '',   	// Hidden content of toggle
-        'wpautop'       => 'true',  // Whether to apply wpautop on content
-        'open'       	=> 'false', // Whether toggle is initially open
-        'class'         => '',		// Any additional CSS classes
-    	'last'			=> false	// Whether this is the last toggle of a group; this only applies if it's not part of an accordion
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    // Bootstrap color
-	$color = apply_filters( 'themeblvd_toggle_color', 'default' );
-
-    // CSS classes
-    $class = sprintf( 'tb-panel panel panel-%s', $color );
-
-    if ( $args['class'] ) {
-        $class .= ' '.$args['class'];
-    }
-
-    if ( $args['last'] ) {
-        $class .= '  panel-last';
-    }
-
-    // WP auto?
-    if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
-        $content = themeblvd_get_content( $args['content'] );
-    } else {
-    	$content = do_shortcode( $args['content'] );
-    }
-
-    // Is toggle open?
-    $state = 'panel-collapse collapse';
-    $icon = 'plus-circle';
-    if( $args['open'] == 'true' || $args['open'] == '1' ) {
-        $state .= ' in';
-        $icon = 'minus-circle';
-    }
-
-    // Content text color
-	$text = apply_filters( 'themeblvd_toggle_body_text', 'dark' );
-
-	// Individual toggle ID (NOT the Accordion ID)
-	$toggle_id = uniqid( 'toggle_'.rand() );
-
-    // Bootstrap 3 output
-    $output = '
-        <div class="'.$class.'">
-            <div class="panel-heading">
-                <a class="panel-title" data-toggle="collapse" data-parent="" href="#'.$toggle_id.'">
-                    <i class="fa fa-'.$icon.' switch-me"></i> '.$args['title'].'
-                </a>
-            </div><!-- .panel-heading (end) -->
-            <div id="'.$toggle_id.'" class="'.$state.'">
-                <div class="panel-body text-'.$text.'">
-                    '.$content.'
-                </div><!-- .panel-body (end) -->
-            </div><!-- .panel-collapse (end) -->
-        </div><!-- .panel (end) -->';
-
-    return apply_filters( 'themeblvd_toggle', $output, $args );
-}
-
-/**
- * Display toggle formatted correctly for Bootstrap,
- * using the panel.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- * @param string $content content for panel, optional
- */
-function themeblvd_toggle( $args, $content = '' ) {
-	echo themeblvd_get_toggle( $args, $content );
-}
-
-/**
- * Display alert formatted correctly for Bootstrap
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for alert
- * @param string $content content for alert, optional
- * @return string $output Output for alert
- */
-function themeblvd_get_alert( $args, $content = '' ) {
-
-	$defaults = array(
-        'style'         => 'default',   // Style of panel - primary, success, info, warning, danger
-        'class'         => '',          // Any additional CSS classes
-        'wpautop'       => 'true'       // Whether to apply wpautop on content
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    // CSS classes
-    $class = sprintf( 'alert alert-%s', $args['style'] );
-
-    if ( $args['class'] ) {
-        $class .= ' '.$args['class'];
-    }
-
-    // How are we getting the content?
-    if ( ! $content && ! empty( $args['content'] ) ) {
-    	$content = $args['content'];
-    }
-
-    // WP auto?
-    if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
-        $content = themeblvd_get_content( $content );
-    } else {
-    	$content = do_shortcode( $content );
-    }
-
-    // Construct alert
-    $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', $class, do_shortcode( $content ) );
-
-    return apply_filters( 'themeblvd_alert', $output, $args, $content );
-}
-
-/**
- * Display alert formatted correctly for Bootstrap
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- * @param string $content content for panel, optional
- */
-function themeblvd_alert( $args, $content = '' ) {
-	echo themeblvd_get_alert( $args, $content );
-}
-
-/**
- * Get icon box.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for alert
- * @return string $output Output for alert
- */
-function themeblvd_get_icon_box( $args ) {
-
-	$defaults = array(
-        'icon'			=> '',			// FontAwesome icon ID
-        'size'			=> '20px',		// Font size of font icon
-        'location'		=> 'above',		// Location of icon
-        'color'			=> '#666666',	// Color of the icon
-        'circle'		=> '0',			// Whether to circle the icon
-        'circle_color'	=> '#cccccc',	// BG color of the circle
-        'title'			=> '',			// Title of the block
-        'text'			=> ''			// Content of the block
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    // Class for icon box
-    $class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
-
-    if ( $args['circle'] ) {
-    	$class .= ' icon-circled';
-    }
-
-    // Icon
-    $icon_style = sprintf( 'color: %s; font-size: %s;', $args['color'], $args['size'] );
-
-    if ( $args['circle'] ) {
-    	$icon_style .= sprintf( ' background-color: %s;', $args['circle_color'] );
-    }
-
-    $icon = sprintf( '<div class="icon" style="%s"><i class="fa fa-%s" style="width:%s;"></i></div>', $icon_style, $args['icon'], $args['size'] );
-
-    // Content style
-    $content_style = '';
-
-    if ( $args['location'] == 'side' ) {
-
-    	$padding = intval( str_replace( 'px', '', $args['size'] ) );
-
-    	if ( $args['circle'] ) {
-    		$padding = $padding + 30; // Account for 15px of padding both sides of circled icon
-    	}
-
-    	$padding = $padding + 10;
-
-    	if ( is_rtl() ) {
-    		$content_style = sprintf( 'padding-right: %spx;', $padding );
-    	} else {
-    		$content_style = sprintf( 'padding-left: %spx;', $padding );
-    	}
-    }
-
-    // Final output
-	$output  = '<div class="'.$class.'">';
-
-	$output .= $icon;
-
-	if ( $args['title'] || $args['text'] ) {
-		$output .= '<div class="content" style="'.$content_style.'">';
-		$output .= '<h3>'.$args['title'].'</h3>';
-		$output .= themeblvd_get_content( $args['text'] );
-		$output .= '</div><!-- .content (end) -->';
-	}
-
-	$output .= '</div><!-- .tb-icon-box (end) -->';
-
-	return apply_filters( 'themeblvd_icon_box', $output, $args, $icon );
-}
-
-/**
- * Display icon box.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- */
-function themeblvd_icon_box( $args ) {
-	echo themeblvd_get_icon_box( $args );
-}
-
-/**
- * Get content block
- *
- * @since 2.5.0
- *
- * @param string $args Options for content block
- * @return string $output Content output
- */
-function themeblvd_get_content_block( $args ){
-
-	$defaults = array(
-        'content'		=> '',			// Content to display
-        'style'			=> '',			// Custom styling class
-		'text_color'	=> 'dark',		// Color of text, dark or light
-        'bg_color'		=> '#cccccc',	// Background color, if wrap is true
-        'bg_opacity'	=> '1'			// Background color opacity, if wrap is true
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-	// CSS class
-	$class = 'tb-content-block';
-
-	if ( $args['style'] == 'custom' ) {
-		$class .= ' has-bg text-'.$args['text_color'];
-	}
-
-	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
-		$class .= ' '.$args['style'];
-	}
-
-	// Inline styles
-	$style = '';
-
-	if ( $args['style'] == 'custom' ) {
-		$style = sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
-		$style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
-	}
-
-	// Final output
-	$output = sprintf( '<div class="%s" style="%s">%s</div>', $class, $style, themeblvd_get_content( $args['content'] ) );
-
-	return apply_filters( 'themeblvd_content_block', $output, $args );
-}
-
-/**
- * Display content block
- *
- * @since 2.5.0
- *
- * @param string $args Options for content block
- * @return string $output Content output
- */
-function themeblvd_content_block( $args ){
-	echo themeblvd_get_content_block( $args );
-}
-
-/**
- * Get team member.
- *
- * @since 2.5.0
- *
- * @param string $args Options for content block
- * @return string $output Content output
- */
-function themeblvd_get_team_member( $args ){
-
-	$defaults = array(
-        'image'			=> array(),	// Image of person
-        'name'			=> '',		// Name of person
-        'tagline'		=> '',		// Tagline for person, Ex: Founder and CEO
-        'icons'			=> array(),	// Social icons for themeblvd_contact_bar()
-        'icons_style'	=> 'grey',	// Style of social icons - grey, light, dark, or color
-        'text'			=> ''		// Description for person
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    $output = '<div class="tb-team-member">';
-
-    if ( ! empty( $args['image']['src'] ) ) {
-    	$output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" class="img-thumbnail" /></div>', $args['image']['src'], $args['image']['title'] );
-    }
-
-    $output .= '<div class="member-info clearfix">';
-
-    $output .= '<div class="member-identity">';
-
-    if ( $args['name'] ) {
-    	$output .= sprintf( '<span class="member-name">%s</span>', $args['name'] );
-    }
-
-    if ( $args['tagline'] ) {
-    	$output .= sprintf( '<span class="member-tagline">%s</span>', $args['tagline'] );
-    }
-
-    $output .= '</div><!-- .member-identity (end) -->';
-
-    if ( $args['icons'] ) {
-    	$icon_args = array(
-    		'style' => $args['icons_style'],
-    		'class'	=> 'member-contact'
-    	);
-		$output .= themeblvd_get_contact_bar( $args['icons'], $icon_args );
-    }
-
-    $output .= '</div><!-- .member-info (end) -->';
-
-    if ( $args['text'] ) {
-	    $output .= sprintf('<div class="member-text">%s</div><!-- .member-text (end) -->', themeblvd_get_content($args['text']) );
-    }
-
-    $output .= '</div><!-- .tb-team-member (end) -->';
-
-    return apply_filters( 'themeblvd_team_member', $output, $args );
-}
-
-/**
- * Display team member.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- */
-function themeblvd_team_member( $args ) {
-	echo themeblvd_get_team_member( $args );
-}
-
-/**
- * Get testimonial.
- *
- * @since 2.5.0
- *
- * @param string $args Options for content block
- * @return string $output Content output
- */
-function themeblvd_get_testimonial( $args ){
-
-	$defaults = array(
-        'text'			=> '',		// Text for testimonial
-        'name'			=> '', 		// Name of person giving testimonial
-        'tagline'		=> '',		// Tagline or position of person giving testimonial
-        'company'		=> '',		// Company of person giving testimonial
-        'company_url'	=> '',		// Company URL of person giving testimonial
-        'image'			=> array()	// Image of person giving testimonial
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    $class = 'tb-testimonial';
-
-	if ( ! empty( $args['image']['src'] ) ) {
-		$class .= ' has-image';
-	}
-
-	if ( $args['name'] && ( $args['tagline'] || $args['company'] ) ) {
-		$class .= ' tag-two-line';
-	} else if ( $args['name'] || $args['tagline'] || $args['company'] ) {
-		$class .= ' tag-one-line';
-	}
-
-	$output = '<div class="'.$class.'">';
-
-	$output .= sprintf( '<div class="testimonial-text"><span class="arrow"></span>%s</div>', themeblvd_get_content($args['text']) );
-
-	if ( $args['name'] ) {
-
-		$output .= '<div class="author">';
-
-		if ( ! empty( $args['image']['src'] ) ) {
-			$output .= sprintf( '<span class="author-image"><img src="%s" alt="%s" /></span>', $args['image']['src'], $args['image']['title'] );
-		}
-
-		$output .= sprintf( '<span class="author-name">%s</span>', $args['name'] );
-
-		if ( $args['tagline'] || $args['company'] ) {
-
-			$tagline = '';
-
-			if ( $args['tagline'] ) {
-				$tagline .= $args['tagline'];
-			}
-
-			if ( $args['company'] ) {
-
-				$company = $args['company'];
-
-				if ( $args['company_url'] ) {
-					$company = sprintf( '<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', $args['company_url'], $company );
-				}
-
-				if ( $tagline ) {
-					$tagline .= ', '.$company;
-				} else {
-					$tagline .= $company;
-				}
-
-			}
-
-			$output .= sprintf( '<span class="author-tagline">%s</span>', $tagline );
-
-		}
-
-		$output .= '</div><!-- .author (end) -->';
-	}
-
-    $output .= '</div><!-- .tb-testimonial (end) -->';
-
-    return apply_filters( 'themeblvd_testiomnial', $output, $args );
-}
-
-
-/**
- * Display testimonial.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- */
-function themeblvd_testimonial( $args ) {
-	echo themeblvd_get_testimonial( $args );
-}
-
-/**
- * Get testimonial slider.
- *
- * @since 2.5.0
- *
- * @param string $args Options for content block
- * @return string $output Content output
- */
-function themeblvd_get_testimonial_slider( $args ){
-
-	$defaults = array(
-        'testimonials'	=> array(),		// The testimonials, each formatted for themeblvd_get_testimonial
-        'timeout'		=> '3',			// Secods in between transitions, can be 0 for no auto rotation
-        'nav_standard'	=> false		// Whether to show slider navigation below (currently not accessible from Builder)
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    $class = 'tb-testimonial-slider flexslider';
-
-    if ( $args['nav_standard'] ) {
-    	$class .= ' has-nav';
-    }
-
-    $output = sprintf('<div class="%s" data-timeout="%s" data-nav="%s">', $class, $args['timeout'], $args['nav_standard'] );
-
-    if ( $args['testimonials'] ) {
-
-    	$output .= '<ul class="slides">';
-
-    	foreach ( $args['testimonials'] as $testimonial ) {
-    		$output .= sprintf( '<li class="slide">%s</li>', themeblvd_get_testimonial($testimonial) );
-    	}
-
-    	$output .= '</ul>';
-
-    }
-
-    $output .= '</div><!-- .tb-testimonial-slider (end) -->';
-
-    return apply_filters( 'themeblvd_testiomnial_slider', $output, $args );
-}
-
-/**
- * Display testimonial slider.
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for panel
- */
-function themeblvd_testimonial_slider( $args ) {
-	echo themeblvd_get_testimonial_slider( $args );
-}
-
-/**
- * Get Partner Logos
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for map
+ * @param array $args Arguments for slider controls
  * @return string $output Final content to output
  */
-function themeblvd_get_logos( $args ) {
+function themeblvd_get_slider_controls( $args = array() ) {
 
 	$defaults = array(
-		'logos'		=> array(),		// Logos to display
-		'title'		=> '',			// Title for unit
-		'display'	=> 'slider',	// How to display logos, grid or slider
-		'slide'		=> '4',			// If slider, number of logos per slide
-		'nav'		=> '1',			// If slider, whether to display nav
-		'timeout'	=> '3',			// If slider, seconds in between auto rotation
-		'grid'		=> '4',			// If grid, number of logos per row
-		'height'	=> '100',		// Height across all logo blocks
-		'boxed'		=> '1',			// Whether to dispay box arond logo
-		'greyscale'	=> '1'			// Whether to display logos as black and white
+		'direction' 	=> 'horz', 						// horz or vert
+		'prev' 			=> themeblvd_get_local('prev'),	// Text for previous button
+		'next' 			=> themeblvd_get_local('next'),	// Text for next button
     );
     $args = wp_parse_args( $args, $defaults );
 
-	$class = 'tb-logos '.$args['display'];
-
-	if ( $args['boxed'] ) {
-		$class .= ' has-boxed';
+    if ( $args['direction'] == 'horz' ) {
+		$icon_prev = 'chevron-left';
+	    $icon_next = 'chevron-right';
+	} else {
+		$icon_prev = 'chevron-up';
+		$icon_next = 'chevron-down';
 	}
 
-	if ( $args['title'] ) {
-		$class .= ' has-title';
-	}
-
-	if ( $args['display'] == 'slider' ) {
-
-		$class .= ' flexslider';
-
-		if ( $args['nav'] ) {
-			$class .= ' has-nav';
-		}
-	}
-
-    $output = sprintf( '<div class="%s" data-timeout="%s" data-nav="%s">', $class, $args['timeout'], $args['nav'] );
-
-    if ( $args['title'] ) {
-		$output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
-	}
-
-	$output .= '<div class="tb-logos-inner">';
-
-	if ( $args['display'] == 'slider' && $args['nav'] ) {
-		$output .= '<ul class="tb-slider-arrows">';
-		$output .= sprintf( '<li><a href="#" title="%s" class="prev"><i class="fa fa-chevron-left"></i></a></li>', themeblvd_get_local('previous') );
-		$output .= sprintf( '<li><a href="#" title="%s" class="next"><i class="fa fa-chevron-right"></i></a></li>', themeblvd_get_local('next') );
-		$output .= '</ul>';
-	}
-
-    if ( $args['logos'] ) {
-
-		$img_class = '';
-
-		if ( $args['greyscale'] ) {
-			$img_class .= 'greyscale';
-		}
-
-		$wrap_class = 'tb-logo';
-
-		if ( $args['boxed'] ) {
-			$wrap_class .= ' boxed';
-		}
-
-		$wrap_style = '';
-
-		if ( $args['height'] ) {
-			$wrap_style .= sprintf( 'height: %spx;', $args['height'] );
-		}
-
-		if ( $args['display'] == 'slider' ) {
-			$num_per = intval($args['slide']);
-		} else {
-			$num_per = intval($args['grid']);
-		}
-
-		$grid_class = themeblvd_grid_class($num_per);
-
-    	if ( $args['display'] == 'slider' ) {
-    		$output .= '<ul class="slides">';
-    		$output .= '<li class="slide">';
-    	}
-
-    	$output .= themeblvd_get_open_row();
-
-    	$total = count($args['logos']);
-    	$i = 1;
-
-    	foreach ( $args['logos'] as $logo ) {
-
-    		$img = sprintf( '<img src="%s" alt="%s" class="%s" />', $logo['src'], $logo['alt'], $img_class );
-
-    		if ( $logo['link'] ) {
-    			$img = sprintf( '<a href="%s" title="%s" class="%s" style="%s" target="_blank">%s</a>', $logo['link'], $logo['name'], $wrap_class, $wrap_style, $img );
-    		} else {
-    			$img = sprintf( '<div class="%s" style="%s">%s</div>', $logo['name'], $wrap_class, $wrap_style, $img );
-    		}
-
-    		$output .= sprintf( '<div class="col %s">%s</div>', $grid_class, $img );
-
-    		if ( $i % $num_per == 0 && $i < $total ) {
-
-    			$output .= themeblvd_get_close_row();
-
-    			if ( $args['display'] == 'slider' ) {
-		    		$output .= '</li>';
-		    		$output .= '<li class="slide">';
-		    	}
-
-		    	$output .= themeblvd_get_open_row();
-
-    		}
-
-    		$i++;
-
-    	}
-
-    	$output .= themeblvd_get_close_row();
-
-    	if ( $args['display'] == 'slider' ) {
-    		$output .= '</li>';
-    		$output .= '</ul>';
-    	}
+    if ( is_rtl() && $args['direction'] == 'horz' ) {
+    	$icon_prev = 'chevron-right';
+	    $icon_next = 'chevron-left';
     }
 
-    $output .= '</div><!-- .tb-logos-inner (end) -->';
-    $output .= '</div><!-- .tb-logos (end) -->';
+    $output  = '<ul class="tb-slider-arrows">';
+	$output .= sprintf( '<li><a href="#" title="%s" class="prev"><i class="fa fa-%s"></i></a></li>', $args['prev'], $icon_prev );
+	$output .= sprintf( '<li><a href="#" title="%s" class="next"><i class="fa fa-%s"></i></a></li>', $args['prev'], $icon_next );
+	$output .= '</ul>';
 
-	return apply_filters( 'themeblvd_logos', $output, $args );
+    return apply_filters( 'themeblvd_slider_controls', $output, $args );
 }
 
 /**
- * Display partner logos
+ * Display moveable slider controls
  *
  * @since 2.5.0
  *
  * @param array $args Arguments for Google Map.
  */
-function themeblvd_logos( $args ) {
-	echo themeblvd_get_logos( $args );
-}
-
-/**
- * Get Google Map
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for map
- * @return string $output Final content to output
- */
-function themeblvd_get_map( $args ) {
-
-	wp_enqueue_script( 'google_maps' );
-
-	$defaults = array(
-		'id'			=> uniqid('map_'),	// Unique ID for map
-		'markers'		=> array(),			// Location markers for map
-		'height'		=> '400',			// CSS height of map
-		'center_type'	=> 'default',		// If default, will be first location - default or custom
-		'center'		=> array(),			// If above is custom, this will be the center point of map
-        'zoom'			=> '15',			// Zoom level of initial map- [1, 20]
-		'lightness'		=> '0',				// Map brightness - [-100, 100]
-		'saturation'	=> '0',				// Map color saturation - [-100, 100]
-		'has_hue'		=> '0',				// Whether map has overlay color
-		'hue'			=> '',				// Overlay color for map (i.e. hue)
-		'zoom_control'	=> '1',				// Whether user has zoom control
-		'pan_control'	=> '1',				// Whether user has pan control
-		'draggable'		=> '1'				// Whether user can drag map around
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    $hue = '0';
-    if ( $args['has_hue'] && $args['hue'] ) {
-    	$hue = $args['hue'];
-    }
-
-    // Start map with config options
-    $output = sprintf( '<div class="tb-map" data-zoom="%s" data-lightness="%s" data-saturation="%s" data-hue="%s" data-zoom_control="%s" data-pan_control="%s" data-draggable="%s">', $args['zoom'], $args['lightness'], $args['saturation'], $hue, $args['zoom_control'], $args['pan_control'], $args['draggable'] );
-
-    // Map gets inserted into this DIV
-    $output .= sprintf( '<div id="%s" class="map-canvas" style="height: %spx;"></div>', $args['id'], $args['height'] );
-
-    // Map center point
-    $center_lat = '0';
-    $center_long = '0';
-
-    if ( $args['center_type'] == 'custom' ) {
-
-		// Custom center point
-		if ( isset( $args['center']['lat'] ) ) {
-			$center_lat = $args['center']['lat'];
-		}
-		if ( isset( $args['center']['long'] ) ) {
-			$center_long = $args['center']['long'];
-		}
-
-    } else {
-
-		// Default: Use first marker as center point
-		if ( $args['markers'] ) {
-			foreach ( $args['markers'] as $marker ) {
-				if ( isset( $marker['geo']['lat'] ) ) {
-					$center_lat = $marker['geo']['lat'];
-				}
-				if ( isset( $marker['geo']['long'] ) ) {
-					$center_long = $marker['geo']['long'];
-				}
-				break;
-			}
-		}
-
-    }
-
-    $output .= sprintf('<div class="map-center" data-lat="%s" data-long="%s"></div>', $center_lat, $center_long );
-
-    // Map markers
-    if ( $args['markers'] ) {
-
-		$output .= '<div class="map-markers hide">';
-
-		foreach ( $args['markers'] as $marker ) {
-
-			$name = '';
-			if ( ! empty( $marker['name'] ) ) {
-				$name = $marker['name'];
-			}
-
-			$lat = '0';
-			if ( ! empty( $marker['geo']['lat'] ) ) {
-				$lat = $marker['geo']['lat'];
-			}
-
-			$long = '0';
-			if ( ! empty( $marker['geo']['long'] ) ) {
-				$long = $marker['geo']['long'];
-			}
-
-			$info = '';
-			if ( ! empty( $marker['info'] ) ) {
-				$info = $marker['info'];
-			}
-
-			$image = '';
-			if ( ! empty( $marker['image']['src'] ) ) {
-				$image = $marker['image']['src'];
-			}
-
-			$output .= sprintf('<div class="map-marker" data-name="%s" data-lat="%s" data-long="%s" data-image="%s">', $name, $lat, $long, $image );
-			$output .= sprintf( '<div class="map-marker-info">%s</div>', themeblvd_get_content($info) );
-			$output .= '</div><!-- .map-marker (end) -->';
-		}
-
-		$output .= '</div><!-- .map-markers (end) -->';
-	}
-
-    $output .= '</div><!-- .tb-map (end) -->';
-
-	return apply_filters( 'themeblvd_map', $output, $args );
-}
-
-/**
- * Display Google map
- *
- * @since 2.5.0
- *
- * @param array $args Arguments for Google Map.
- */
-function themeblvd_map( $args ) {
-	echo themeblvd_get_map( $args );
-}
-
-/**
- * Get Bootstrap Jumbotron
- *
- * @since 2.4.2
- *
- * @param array $args Arguments for jumbotron
- * @param string $args Content within jumbotron
- * @return string $output Final content to output
- */
-function themeblvd_get_jumbotron( $args, $content ) {
-
-	$output = '';
-
-	$defaults = array(
-        'title'        	=> '',      // Title of unit
-        'style'			=> 'none',	// Custom styling class
-        'bg_color'		=> '',		// Background color - Ex: #000000
-        'bg_opacity'	=> '1',		// BG color opacity for rgba()
-        'text_color'	=> '',		// Text color - Ex: #000000
-        'text_align'   	=> 'left',  // How to align text - left, right, center
-        'align'        	=> '',      // How to align jumbotron - left, right, center, blank for no alignment
-        'max_width'    	=> '',      // Meant to be used with align left/right/center - 300px, 50%, etc
-        'class'        	=> '',      // Any additional CSS classes
-        'wpautop'		=> true 	// Whether to apply wpautop on content
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    // WP auto?
-    if ( $args['wpautop'] ) {
-    	$content = wpautop( $content );
-    }
-
-    // CSS classes
-    $class = sprintf( 'jumbotron text-%s', $args['text_align'] );
-
-    // Setup inline styles
-    $style = '';
-
-    if ( $args['style'] == 'custom' ) {
-
-	    if ( $args['bg_color'] ) {
-	    	$style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
-	    	$style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
-	    	$class .= ' has-bg';
-	    }
-
-	    if ( $args['text_color'] ) {
-	    	$style .= sprintf( 'color:%s;', $args['text_color'] );
-	    }
-
-	}
-
-	// Custom CSS classes
-	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
-		$class .= ' '.$args['style'];
-	}
-
-    if ( $args['class'] ) {
-    	$class .= ' '.$args['class'];
-    }
-
-    // Construct initial jumbotron
-    if ( $args['title'] ) {
-    	$title = sprintf( '<h2>%s</h2>', $args['title'] );
-    	$content = $title.$content;
-    }
-
-    $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, do_shortcode( $content ) );
-
-    // Wrap the unit
-	$wrap_class = 'jumbotron-wrap';
-
-	// Align jumbotron right or left?
-	if ( $args['align'] == 'left' ) {
-		$wrap_class .= ' pull-left';
-	} else if ( $args['align'] == 'right' ) {
-		$wrap_class .= ' pull-right';
-	}
-
-	// Inline styles
-	$style = '';
-
-	// Align jumbotron center?
-	if ( $args['align'] == 'center' ) {
-		$style .= 'margin-left: auto; margin-right: auto; ';
-	}
-
-	// Max width?
-	if ( $args['max_width'] ) {
-		$style .= sprintf( 'max-width: %s;', $args['max_width'] );
-	}
-
-	// Final output
-	$output = sprintf( '<div class="%s" style="%s">%s</div>', $wrap_class, $style, $jumbotron );
-
-	return apply_filters( 'themeblvd_jumbotron', $output, $args, $content, $jumbotron );
+function themeblvd_slider_controls( $args = array() ) {
+	echo themeblvd_get_slider_controls( $args );
 }

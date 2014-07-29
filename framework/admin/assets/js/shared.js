@@ -14,19 +14,29 @@
     		var $this = this;
 
     		// Toggle widgets
-			$this.on( 'click', '.widget-name-arrow', function() {
+    		$this.off('click.tb-widget');
+    		$this.on('click.tb-widget', '.widget-name-arrow, .block-widget-name-arrow', function() {
 
-				var el = $(this),
-					closed = el.closest('.widget-name').hasClass('widget-name-closed');
+				var $button = $(this),
+					type = 'widget',
+					closed = false;
+
+				if ( $button.hasClass('block-widget-name-arrow') ) {
+					type = 'block-widget';
+				}
+
+				if ( $button.closest('.'+type+'-name').hasClass(type+'-name-closed') ) {
+					closed = true;
+				}
 
 				if ( closed ) {
 
 					// Show widget
-					el.closest('.widget').find('.widget-content').show();
-					el.closest('.widget').find('.widget-name').removeClass('widget-name-closed');
+					$button.closest('.'+type).find('.'+type+'-content').show();
+					$button.closest('.'+type).find('.'+type+'-name').removeClass(type+'-name-closed');
 
 					// Refresh any code editor options
-					el.closest('.widget').find('.section-code').each(function(){
+					$button.closest('.'+type).find('.section-code').each(function(){
 
 						var code_option = $(this),
 							editor = code_option.find('textarea').data('CodeMirrorInstance');
@@ -39,8 +49,8 @@
 				} else {
 
 					// Close widget
-					el.closest('.widget').find('.widget-content').hide();
-					el.closest('.widget').find('.widget-name').addClass('widget-name-closed');
+					$button.closest('.'+type).find('.'+type+'-content').hide();
+					$button.closest('.'+type).find('.'+type+'-name').addClass(type+'-name-closed');
 				}
 
 				return false;
@@ -159,8 +169,8 @@
     				// Where one option's value determines which description displays on another option
     				$this.find('.desc-toggle').each(function(){
     					var $el = $(this), value = $el.children('.trigger').find('.of-input').val();
-    					$el.find('.receiver .explain').hide();
-    					$el.find('.receiver .explain.'+value).show();
+    					$el.find('.desc-receiver .explain').hide();
+    					$el.find('.desc-receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -302,22 +312,24 @@
 					}
 
 					// Remove tooltips if hovered link is clicked
-					$this.find('.tb-tooltip-link').click(function(){
+					if ( ! $('body').hasClass('mobile') ) {
+						$this.find('.tb-tooltip-link').click(function(){
 
-    					// Remove Tooltip
-    					$('.themeblvd-tooltip').remove();
+	    					// Remove Tooltip
+	    					$('.themeblvd-tooltip').remove();
 
-    					// Toggle text
-    					var link = $(this),
-    						toggle = link.data('tooltip-toggle');
+	    					// Toggle text
+	    					var link = $(this),
+	    						toggle = link.data('tooltip-toggle');
 
-    					if ( toggle == 2 ) {
-    						link.data('tooltip-toggle', 1);
-    					} else {
-    						link.data('tooltip-toggle', 2);
-    					}
+	    					if ( toggle == 2 ) {
+	    						link.data('tooltip-toggle', 1);
+	    					} else {
+	    						link.data('tooltip-toggle', 2);
+	    					}
 
-    				});
+	    				});
+					}
 
     				// Link to icon browsers
     				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
@@ -495,8 +507,8 @@
     				// Where one option's value determines which description displays on another option
     				$this.on( 'change', '.desc-toggle > .trigger .of-input', function() {
     					var $el = $(this), value = $el.val(), $group = $el.closest('.desc-toggle');
-    					$group.find('.receiver .explain').hide();
-    					$group.find('.receiver .explain.'+value).show();
+    					$group.find('.desc-receiver .explain').hide();
+    					$group.find('.desc-receiver .explain.'+value).show();
     				});
 
     				// Configure logo
@@ -529,6 +541,26 @@
 						$el.closest('.subgroup').find('.match .of-input').val($el.val());
 					});
 
+					// Categories multicheck
+					$this.on( 'click', '.select-categories input', function(){
+
+						var $current = $(this),
+							$option = $current.closest('.controls');
+
+						if ( $current.prop('checked') ) {
+							if ( $current.hasClass('all') ) {
+								$option.find('input').each(function(){
+									if ( ! $(this).hasClass('all') ) {
+										$(this).prop('checked', false);
+									}
+								});
+							} else {
+								$option.find('input.all').prop('checked', false);
+							}
+						}
+
+					});
+
 					// Background options
 					$this.on( 'change', '.select-parallax .of-background-attachment', function(){
 
@@ -551,85 +583,89 @@
 	    			}
 
     				// Tooltips
-    				$this.on( 'mouseenter', '.tb-tooltip-link', function() {
+    				if ( ! $('body').hasClass('mobile') ) {
 
-    					var link = $(this);
+	    				$this.on( 'mouseenter', '.tb-tooltip-link', function() {
 
-    					var	position = link.data('tooltip-position'),
-    						x = link.offset().left,
-							y = link.offset().top,
-							text = link.data('tooltip-text'),
-							markup =  '<div class="themeblvd-tooltip %position%"> \
-										   <div class="tooltip-inner"> \
-										     %text% \
-										   </div> \
-										   <div class="tooltip-arrow"></div> \
-										</div>';
+	    					var link = $(this);
 
-						// Check for text toggle
-						if ( ! text && link.data('tooltip-toggle') ) {
-							text = link.data('tooltip-text-'+ link.data('tooltip-toggle') );
-						}
+	    					var	position = link.data('tooltip-position'),
+	    						x = link.offset().left,
+								y = link.offset().top,
+								text = link.data('tooltip-text'),
+								markup =  '<div class="themeblvd-tooltip %position%"> \
+											   <div class="tooltip-inner"> \
+											     %text% \
+											   </div> \
+											   <div class="tooltip-arrow"></div> \
+											</div>';
 
-						// If no text found at data-tooltip-text, then pull from title
-						if ( ! text ) {
-							text = link.attr('title');
-						}
+							// Check for text toggle
+							if ( ! text && link.data('tooltip-toggle') ) {
+								text = link.data('tooltip-text-'+ link.data('tooltip-toggle') );
+							}
 
-						// If no position found at data-tooltip-position, set to "top"
-						if ( ! position ) {
-							position = 'top';
-						}
+							// If no text found at data-tooltip-text, then pull from title
+							if ( ! text ) {
+								text = link.attr('title');
+							}
 
-						// Setup markup
-						markup = markup.replace('%position%', position);
-						markup = markup.replace('%text%', text);
+							// If no position found at data-tooltip-position, set to "top"
+							if ( ! position ) {
+								position = 'top';
+							}
 
-						// Append tooltip to page
-						$('body').append( markup );
+							// Setup markup
+							markup = markup.replace('%position%', position);
+							markup = markup.replace('%text%', text);
 
-						// Setup and display tooltip
-						var tooltip = $('.themeblvd-tooltip'),
-							tooltip_height = tooltip.outerHeight(),
-							tooltip_width = tooltip.outerWidth();
+							// Append tooltip to page
+							$('body').append( markup );
 
-						// Position of tooltip relative to link
-						switch ( position ) {
+							// Setup and display tooltip
+							var tooltip = $('.themeblvd-tooltip'),
+								tooltip_height = tooltip.outerHeight(),
+								tooltip_width = tooltip.outerWidth();
 
-							case 'left' :
-								x = x-tooltip_width-5; // 5px for arrow
-								y = y+(.5*link.outerHeight());
-								y = y-tooltip_height/2;
-								break;
+							// Position of tooltip relative to link
+							switch ( position ) {
 
-							case 'right' :
-								x = x+link.outerWidth()+5; // 5px for arrow
-								y = y+(.5*link.outerHeight());
-								y = y-tooltip_height/2;
-								break;
+								case 'left' :
+									x = x-tooltip_width-5; // 5px for arrow
+									y = y+(.5*link.outerHeight());
+									y = y-tooltip_height/2;
+									break;
 
-							case 'bottom' :
-								x = x+(.5*link.outerWidth());
-								x = x-tooltip_width/2;
-								y = y+link.outerHeight()+2;
-								break;
+								case 'right' :
+									x = x+link.outerWidth()+5; // 5px for arrow
+									y = y+(.5*link.outerHeight());
+									y = y-tooltip_height/2;
+									break;
 
-							case 'top' :
-							default :
-								x = x+(.5*link.outerWidth());
-								x = x-tooltip_width/2;
-								y = y-tooltip_height-2;
-						}
+								case 'bottom' :
+									x = x+(.5*link.outerWidth());
+									x = x-tooltip_width/2;
+									y = y+link.outerHeight()+2;
+									break;
 
-						tooltip.css({
-							'top' : y+'px',
-							'left' : x+'px'
-						}).addClass('fade in');
-    				});
+								case 'top' :
+								default :
+									x = x+(.5*link.outerWidth());
+									x = x-tooltip_width/2;
+									y = y-tooltip_height-2;
+							}
 
-    				$this.on( 'mouseleave', '.tb-tooltip-link', function() {
-    					$('.themeblvd-tooltip').remove();
-    				});
+							tooltip.css({
+								'top' : y+'px',
+								'left' : x+'px'
+							}).addClass('fade in');
+	    				});
+
+	    				$this.on( 'mouseleave', '.tb-tooltip-link', function() {
+	    					$('.themeblvd-tooltip').remove();
+	    				});
+
+	    			}
 
     				// Button option type
 					$this.on( 'click', '.section-button .include input', function(){
@@ -727,9 +763,9 @@
 									has_tinymce = typeof tinymce !== 'undefined',
 					            	modal_window = self.$modal_window;
 
-					            if ( self.$elem.is('.tb-content-block-editor-link') ) {
-					            	field_name = self.$elem.closest('.content-block').data('field-name');
-					            	textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[content]"]');
+					            if ( self.$elem.is('.tb-block-editor-link') ) {
+					            	field_name = self.$elem.closest('.block').data('field-name');
+					            	textarea = self.$elem.closest('.block').find('textarea[name="'+field_name+'[content]"]');
 					            } else {
 					            	textarea = self.$elem.closest('.textarea-wrap').find('textarea');
 					            }
@@ -778,9 +814,9 @@
 									has_tinymce = typeof tinymce !== 'undefined',
 					            	modal_window = self.$modal_window;
 
-					            if ( self.$elem.is('.tb-content-block-editor-link') ) {
-					            	field_name = self.$elem.closest('.content-block').data('field-name');
-					            	textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[content]"]');
+					            if ( self.$elem.is('.tb-block-editor-link') ) {
+					            	field_name = self.$elem.closest('.block').data('field-name');
+					            	textarea = self.$elem.closest('.block').find('textarea[name="'+field_name+'[content]"]');
 					            } else {
 					            	textarea = self.$elem.closest('.textarea-wrap').find('textarea');
 					            }
@@ -1125,9 +1161,17 @@
 		widgets: function()
 		{
 			return this.each(function(){
-				var el = $(this);
-				el.find('.widget-content').hide();
-				el.find('.widget-name').addClass('widget-name-closed');
+
+				var $el = $(this);
+
+				// Top level widgets
+				$el.find('.widget-content').hide();
+				$el.find('.widget-name').addClass('widget-name-closed');
+
+				// Inner widgets (i.e. blocks)
+				$el.find('.block-content').hide();
+				$el.find('.block-handle').addClass('block-handle-closed');
+
 			});
 		},
 
@@ -1680,7 +1724,7 @@
 				return;
 			} else if ( columns == 1 ) {
 				$section.find('.slider').append('<div class="column-preview col-1" style="width:100%"><span class="text">100%</span></div>');
-				$section.find('.column-width-input').val('1/1');
+				$section.find('.column-width-input').val('1/1').trigger('themeblvd_update_columns');
 				return;
 			}
 
@@ -1703,8 +1747,7 @@
 			} else {
 				init_values = defaults[grid][columns]['values'];
 				current = defaults[grid][columns]['display'];
-				$section.find('.column-width-input').val(current.join('-'));
-				$section.find('.column-width-input').trigger('themeblvd_update_columns');
+				$section.find('.column-width-input').val(current.join('-')).trigger('themeblvd_update_columns');
 			}
 
 			// Setup jQuery UI slider instance
@@ -1826,8 +1869,7 @@
 
 					}
 
-					$option.val(final_val);
-					$option.trigger('themeblvd_update_columns');
+					$option.val(final_val).trigger('themeblvd_update_columns');
 
 					// Re-set display columns with visible
 					// fractions for the user.
@@ -1941,14 +1983,19 @@
  */
 (function($){
 	tbc_confirm = function( string, args, callback ) {
+
+		var $body = $('body'), $window = $(window), $outer, $inner, $buttons;
+
 		var default_args = {
 			'confirm'		:	false, 		// Ok and Cancel buttons
 			'verify'		:	false,		// Yes and No buttons
 			'input'			:	false, 		// Text input (can be true or string for default text)
+			'input_desc'	:	'',			// Description for below input
 			'textOk'		:	'Ok',		// Ok button default text
 			'textCancel'	:	'Cancel',	// Cancel button default text
 			'textYes'		:	'Yes',		// Yes button default text
-			'textNo'		:	'No'		// No button default text
+			'textNo'		:	'No',		// No button default text
+			'class'			:	''			// CSS class to add
 		};
 
 		if( args ) {
@@ -1959,26 +2006,57 @@
 			}
 		}
 
-		$('body').append('<div class="appriseOverlay" id="aOverlay"></div>');
-		$('body').append('<div class="appriseOuter"></div>');
-		$('.appriseOuter').append('<div class="appriseInner"></div>');
-		$('.appriseInner').append(string);
-		$('.appriseOuter').css('left', ( $(window).width() - $('.appriseOuter').width() ) / 2+$(window).scrollLeft() + "px");
-		$('.appriseOuter').css('top', '100px').fadeIn(200);
-		$('.appriseInner').append('<div class="aButtons"></div>');
+		// Append intial output
+		$body.append('<div class="appriseOverlay" id="aOverlay"></div>');
+		$body.append('<div class="appriseOuter"></div>');
+		$outer = $('.appriseOuter');
+		$outer.append('<div class="appriseInner"></div>');
+		$inner = $('.appriseInner');
+		$inner.append(string);
+		$outer.css('left', ( $window.width() - $outer.width() ) / 2+$window.scrollLeft() + "px");
+		$outer.css('top', '100px').fadeIn(200);
+
+		// CSS class
+		if ( args && args['class'] ) {
+			$outer.addClass(args['class']);
+		}
+
+		// Append text input
+		if ( args && args['input'] ) {
+
+            if ( typeof(args['input']) == 'string') {
+                $inner.append('<div class="aInput"><input type="text" class="aTextbox" t="aTextbox" value="' + args['input'] + '" /></div>');
+            } else if ( typeof(args['input']) == 'object') {
+                $inner.append($('<div class="aInput"></div>').append(args['input']));
+            } else {
+                $inner.append('<div class="aInput"><input type="text" class="aTextbox" t="aTextbox" /></div>');
+            }
+
+            if ( args['input_desc'] ) {
+            	$outer.find('.aTextbox').after('<label>'+args['input_desc']+'</label>');
+            }
+
+            $outer.find('.aTextbox').focus();
+		}
+
+		// Append buttons
+		$inner.append('<div class="aButtons"></div>');
+		$buttons = $('.aButtons');
 
 		if ( args ) {
+
 			if ( args['confirm'] || args['input'] ) {
-				$('.aButtons').append('<button class="button-primary" value="ok">'+args['textOk']+'</button>');
-				$('.aButtons').append('<button class="button-secondary" value="cancel">'+args['textCancel']+'</button>');
+				$buttons.append('<button class="button-primary" value="ok">'+args['textOk']+'</button>');
+				$buttons.append('<button class="button-secondary" value="cancel">'+args['textCancel']+'</button>');
 			} else if ( args['verify'] ) {
-				$('.aButtons').append('<button class="button-primary" value="ok">'+args['textYes']+'</button>');
-				$('.aButtons').append('<button class="button-secondary" value="cancel">'+args['textNo']+'</button>');
+				$buttons.append('<button class="button-primary" value="ok">'+args['textYes']+'</button>');
+				$buttons.append('<button class="button-secondary" value="cancel">'+args['textNo']+'</button>');
 			} else {
-				$('.aButtons').append('<button class="button-primary" value="ok">'+args['textOk']+'</button>');
+				$buttons.append('<button class="button-primary" value="ok">'+args['textOk']+'</button>');
 			}
+
 		} else {
-			$('.aButtons').append('<button class="button-primary" value="ok">Ok</button>');
+			$buttons.append('<button class="button-primary" value="ok">Ok</button>');
 		}
 
 		$(document).keydown(function(e) {
@@ -1994,18 +2072,14 @@
 
 		var aText = $('.aTextbox').val();
 
-		if ( ! aText) {
-			aText = false;
-		}
-
 		$('.aTextbox').keyup(function() {
 			aText = $(this).val();
 		});
 
-		$('.aButtons > button').click(function() {
+		$buttons.find('button').on('click', function() {
 
 			$('.appriseOverlay').remove();
-			$('.appriseOuter').remove();
+			$outer.remove();
 
 			if ( callback) {
 				var wButton = $(this).attr("value");

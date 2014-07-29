@@ -163,7 +163,7 @@ class Theme_Blvd_Stylesheets_API {
 
 			$this->framework_stylesheets['themeblvd'] = array(
 				'handle'	=> 'themeblvd',
-				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd.min.css',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd.css', // @TODO Change back to .min
 				'deps'		=> array(),
 				'ver'		=> TB_FRAMEWORK_VERSION,
 				'media'		=> 'all'

@@ -320,15 +320,7 @@ if ( !function_exists( 'themeblvd_breadcrumbs_default' ) ) :
  */
 function themeblvd_breadcrumbs_default() {
 	if ( themeblvd_show_breadcrumbs() ) {
-		?>
-		<div id="breadcrumbs">
-			<div class="breadcrumbs-inner">
-				<div class="breadcrumbs-content">
-					<?php echo themeblvd_get_breadcrumbs_trail(); ?>
-				</div><!-- .breadcrumbs-content (end) -->
-			</div><!-- .breadcrumbs-inner (end) -->
-		</div><!-- #breadcrumbs (end) -->
-		<?php
+		themeblvd_the_breadcrumbs();
 	}
 }
 endif;
@@ -623,58 +615,7 @@ endif;
 /* (10) Layout Builder Elements
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_section_open_default' ) ) :
-/**
- * Default display for action: themeblvd_section_open
- *
- * @since 2.5.0
- */
-function themeblvd_section_open_default( $display ) {
-
-	printf( '<section class="element-section %s" style="%s" data-parallax="%s">', themeblvd_get_display_class($display), themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
-
-	if ( $display['bg_type'] == 'image' && $display['apply_bg_shade'] ) {
-		printf( '<div class="bg-shade" style="background-color: %s; background-color: %s;"></div>', $display['bg_shade_color'], themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) );
-	}
-}
-endif;
-
-if ( !function_exists( 'themeblvd_section_close_default' ) ) :
-/**
- * Default display for action: themeblvd_section_close
- *
- * @since 2.5.0
- */
-function themeblvd_section_close_default( $display ) {
-	echo '</section><!-- .element-section (end) -->';
-}
-endif;
-
-if ( !function_exists( 'themeblvd_element_open_default' ) ) :
-/**
- * Default display for action: themeblvd_element_open
- *
- * @since 2.1.0
- */
-function themeblvd_element_open_default( $type, $location, $class, $display ) {
-	echo '<div class="'.$class.'">';
-	echo '<div class="element-inner">';
-	echo '<div class="element-inner-wrap">';
-}
-endif;
-
-if ( !function_exists( 'themeblvd_element_close_default' ) ) :
-/**
- * Default display for action: themeblvd_element_close
- *
- * @since 2.1.0
- */
-function themeblvd_element_close_default( $type, $location, $class, $display ) {
-	echo '</div><!-- .element-inner-wrap (end) -->';
-	echo '</div><!-- .element-inner (end) -->';
-	echo '</div><!-- .element (end) -->';
-}
-endif;
+// ...
 
 /*------------------------------------------------------------*/
 /* (11) Comment Form

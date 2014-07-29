@@ -26,6 +26,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 	$classes = '';
 	$image = '';
 	$title = '';
+	$frame = apply_filters( 'themeblvd_featured_thumb_frame', false );
 
 	// If no thumbnail, we can skip everything. However,
 	// we still want plugins to be able to filter in here
@@ -110,9 +111,15 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 
 	if ( $link ) {
 
-		$anchor_class = 'thumbnail';
+		$anchor_class = 'tb-thumb-link';
 
-		if ( $thumb_link_meta != 'thumbnail' ) {
+		if ( $frame ) {
+			$anchor_class .= ' thumbnail';
+		}
+
+		if ( $thumb_link_meta == 'thumbnail' || $thumb_link_meta == 'image' ) {
+			$anchor_class .= ' image';
+		} else {
 			$anchor_class .= ' '.$thumb_link_meta;
 		}
 	}
@@ -127,7 +134,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 		if ( $lightbox ) {
 
 			$args = apply_filters( 'themeblvd_featured_image_lightbox_args', array(
-				'item'	=> $image.themeblvd_get_image_overlay(),
+				'item'	=> $image,
 				'link'	=> $link_url,
 				'class'	=> $anchor_class,
 				'title'	=> $title
@@ -137,7 +144,7 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 
 		} else {
 
-			$image = sprintf('<a href="%s" target="%s" class="%s" title="%s">%s%s</a>', $link_url, $link_target, $anchor_class, $title, $image, themeblvd_get_image_overlay() );
+			$image = sprintf('<a href="%s" target="%s" class="%s" title="%s">%s</a>', $link_url, $link_target, $anchor_class, $title, $image );
 
 		}
 
@@ -146,8 +153,9 @@ function themeblvd_get_post_thumbnail( $location = 'primary', $size = '', $link 
 		// If the image isn't linked, wrap the thumbnail class
 		// outside of the image. This allows for linked and non-linked
 		// images to have the same width after padding.
-
-		$image = sprintf( '<div class="thumbnail">%s</div>', $image );
+		if ( $frame ) {
+			$image = sprintf( '<div class="thumbnail">%s</div>', $image );
+		}
 
 	}
 
@@ -417,7 +425,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
  * @param array $args Options for simple slider
  * @return string $output Final slider HTML to output
  */
-function themeblvd_get_simple_slider( $images, $args ) {
+function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 	$output = '';
 
@@ -425,50 +433,60 @@ function themeblvd_get_simple_slider( $images, $args ) {
 		'id'				=> uniqid('slider_'),	// Unique ID for the slider
 		'crop'				=> 'slider-large',		// Crop size for images
 		'interval'			=> '5',					// How fast to auto rotate betweens slides
-		'pause'				=> true,				// Whether to pause slider on hover
-		'wrap'				=> true,				// When slider auto-rotates, whether it continuously cycles
-		'nav_standard'		=> true,				// Whether to show standard navigation dots
-		'nav_arrows'		=> true,				// Whether to show navigation arrows
-		'nav_thumbs'		=> false,				// Whether to show navigation image thumbnails
-		'thumb_link'		=> true,				// Whether linked slides have animated hover overlay effect
+		'pause'				=> '1',					// Whether to pause slider on hover
+		'wrap'				=> '1',					// When slider auto-rotates, whether it continuously cycles
+		'nav_standard'		=> '1',					// Whether to show standard navigation dots
+		'nav_arrows'		=> '1',					// Whether to show navigation arrows
+		'nav_thumbs'		=> '0',					// Whether to show navigation image thumbnails
+		'link'				=> '1',					// Whether linked slides have animated hover overlay effect
 		'thumb_width'		=> '45',				// Pixel width of thumbnail navigation images
-		'dark_text'			=> false,				// Whether to use dark text for title/descriptions/standard nav, use when images are light
-		'cover'				=> false,				// Whether images horizontal space 100%
-		'position'			=> 'middle center',		// If cover is true, how slider images are positioned (i.e. with background-position)
-		'height_desktop'	=> '400',				// If cover is true, slider height for desktop viewport
-		'height_tablet'		=> '300',				// If cover is true, slider height for tablet viewport
-		'height_mobile'		=> '200',				// If cover is true, slider height for mobile viewport
+		'dark_text'			=> '0',					// Whether to use dark text for title/descriptions/standard nav, use when images are light
+		'cover'				=> '0',					// popout: Whether images horizontal space 100%
+		'position'			=> 'middle center',		// popout: If cover is true, how slider images are positioned (i.e. with background-position)
+		'height_desktop'	=> '400',				// popout: If cover is true, slider height for desktop viewport
+		'height_tablet'		=> '300',				// popout: If cover is true, slider height for tablet viewport
+		'height_mobile'		=> '200',				// popout: If cover is true, slider height for mobile viewport
+		'class'				=> ''					// Any CSS classes to add
 	);
 	$args = apply_filters( 'themeblvd_simple_slider_args', wp_parse_args( $args, $defaults ) );
 
 	// Make sure $images array is setup properly
 	foreach ( $images as $img_id => $img ) {
 		$images[$img_id] = wp_parse_args( $img, array(
-			'crop'		=> $args['crop'],
-			'id'		=> 0,
-			'alt'		=> '',
-			'src'		=> '',
-			'width'		=> 0,
-			'height'	=> 0,
-			'thumb'		=> '',
-			'title'		=> '',
-			'desc'		=> '',
-			'link'		=> '',
-			'link_url'	=> ''
+			'crop'			=> $args['crop'],
+			'id'			=> 0,
+			'alt'			=> '',
+			'src'			=> '',
+			'width'			=> 0,
+			'height'		=> 0,
+			'thumb'			=> '',
+			'title'			=> '',
+			'desc'			=> '',
+			'desc_wpautop'	=> '1',
+			'link'			=> '',
+			'link_url'		=> ''
 		));
 	}
 
-	$interval = 'false';
-	if ( $args['interval'] != '0' ) {
+	// Slider auto rotate speed
+	$interval = $args['interval'];
 
-		$interval = $args['interval'];
-
-		if ( intval( $interval ) < 100 ) {
-			$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
-		}
+	if ( $interval && intval( $interval ) < 100 ) {
+		$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
 	}
 
-	$class = 'tb-bootstrap-carousel carousel slide';
+	// Whether to pause on hover
+	$pause = '';
+
+	if ( $args['pause'] ) {
+		$pause = 'hover';
+	}
+
+	$class = 'tb-simple-slider carousel slide';
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
+	}
 
 	if ( $args['dark_text'] ) {
 		$class .= ' dark-text';
@@ -506,7 +524,7 @@ function themeblvd_get_simple_slider( $images, $args ) {
 
 	}
 
-	$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $args['id'], $class, $interval, $args['pause'], $args['wrap'] );
+	$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $args['id'], $class, $interval, $pause, $args['wrap'] );
 	$output .= '<div class="carousel-control-wrap">';
 
 	// Standard nav indicators
@@ -561,8 +579,7 @@ function themeblvd_get_simple_slider( $images, $args ) {
 				$a_class = 'slide-link';
 
 				if ( $args['thumb_link'] ) {
-					$a_class .= ' slide-thumbnail-link';
-					$image .= themeblvd_get_image_overlay();
+					$a_class .= ' tb-thumb-link';
 				}
 
 				if ( $img['link'] == 'image' || $img['link'] == 'video' ) {
@@ -605,7 +622,11 @@ function themeblvd_get_simple_slider( $images, $args ) {
 				}
 
 				if ( $img['desc'] ) {
-					$output .= wpautop( $img['desc'] );
+					if ( $img['desc_wpautop'] ) {
+						$output .= wpautop( $img['desc'] );
+					} else {
+						$output .= $img['desc'];
+					}
 				}
 
 				$output .= '</div>';
@@ -662,6 +683,17 @@ function themeblvd_get_simple_slider( $images, $args ) {
 	$output .= '</div><!-- .carousel (end) -->';
 
 	return apply_filters( 'themeblvd_simple_slider', $output, $args );
+}
+
+/**
+ * Display bootstrap coursel slider.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args All options for simple slider
+ */
+function themeblvd_simple_slider( $images, $args = array() ) {
+	echo themeblvd_get_simple_slider( $images, $args );
 }
 
 /**
@@ -791,16 +823,34 @@ function themeblvd_get_link_to_lightbox( $args ) {
  * @param array $args Additional options for image
  * @return string $output Final image HTML to output
  */
-function themeblvd_get_image( $img_atts, $args ) {
+function themeblvd_get_image( $img_atts, $args = array() ) {
 
+	// Attributes for the image
+	$defaults = array(
+		'id'		=> 0,
+		'src'		=> '',
+		'full'		=> '',
+		'title'		=> '',
+		'crop'		=> '',
+		'width'		=> 0,
+		'height'	=> 0
+	);
+	$img_atts = wp_parse_args( $img_atts, $defaults );
+
+	// Additional options for image display
+	$defaults = array(
+		'link' 		=> 'none',
+    	'link_url'	=> '',
+    	'frame' 	=> '0',
+    	'class'		=> ''
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// Is this image going to be linked?
 	$has_link = false;
+
 	if ( $args['link'] != 'none' ) {
 		$has_link = true;
-	}
-
-	$has_frame = false;
-	if ( $args['frame'] ) {
-		$has_frame = true;
 	}
 
 	// Image class
@@ -810,7 +860,7 @@ function themeblvd_get_image( $img_atts, $args ) {
 		$img_class .= ' alignnone';
 	}
 
-	if ( $has_frame && ! $has_link ) {
+	if ( $args['frame'] && ! $has_link ) {
 		$img_class .= ' thumbnail';
 	}
 
@@ -824,27 +874,36 @@ function themeblvd_get_image( $img_atts, $args ) {
 	// Start output
 	$output = $img;
 
-	// Add image overlay if framed thumbnail
-    if( $has_frame && $has_link ) {
-        $output .= themeblvd_get_image_overlay();
-    }
-
 	// Wrap image in link
 	if ( $has_link ) {
 
-		$anchor_classes = 'thumbnail';
+		$anchor_classes = 'tb-thumb-link';
+
+		if ( $args['frame'] ) {
+			$anchor_classes .= ' thumbnail';
+		}
 
 		if ( ! empty( $args['class'] ) ) {
 			$anchor_classes .= ' '.$args['class'];
 		}
 
-		if ( $args['link'] == 'image' || $args['link'] == 'video' ) {
+		if ( $args['link'] == 'image' || $args['link'] == 'full' || $args['link'] == 'video' ) {
 
-			$anchor_classes .= ' '.$args['link']; // video or image
+			if ( $args['link'] == 'image' || $args['link'] == 'full' ) {
+				$anchor_classes .= ' image';
+			} else {
+				$anchor_classes .= ' video';
+			}
+
+			if ( $args['link'] == 'full' ) {
+				$link = $img_atts['full'];
+			} else {
+				$link = $args['link_url'];
+			}
 
 			$args = array(
 				'item' 		=> $output,
-				'link' 		=> $args['link_url'],
+				'link' 		=> $link,
 				'title' 	=> $img_atts['title'],
 				'class' 	=> $anchor_classes
 			);
@@ -852,7 +911,7 @@ function themeblvd_get_image( $img_atts, $args ) {
 
 		} else {
 
-			if ( $has_frame ) {
+			if ( $args['frame'] ) {
 
 				if ( $args['link'] == '_self' ) {
 					$anchor_classes .= ' post';
@@ -866,24 +925,18 @@ function themeblvd_get_image( $img_atts, $args ) {
 		}
 	}
 
-	// Wrap linked image in frame
-	$wrap = '';
-
-	if ( $has_frame ) {
-
-        $wrap .= '<div class="featured-image-wrapper">';
-        $wrap .= '<div class="featured-image">';
-        $wrap .= '<div class="featured-image-inner">';
-        $wrap .= '%s';
-        $wrap .= '</div><!-- .featured-image-inner (end) -->';
-        $wrap .= '</div><!-- .featured-image (end) -->';
-        $wrap .= '</div><!-- .featured-image-wrapper (end) -->';
-
-        $output = sprintf( $wrap, $output );
-
-	}
-
 	return apply_filters( 'themeblvd_image', $output, $img, $img_atts, $args );
+}
+
+/**
+ * Display image.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Options for from "Image" element
+ */
+function themeblvd_image( $img_atts, $args = array() ) {
+	echo themeblvd_get_image( $img_atts, $args );
 }
 
 /**
@@ -897,4 +950,48 @@ function themeblvd_get_image( $img_atts, $args ) {
  */
 function themeblvd_get_video( $video_url, $args = array() ) {
 	return apply_filters( 'themeblvd_video', themeblvd_get_content( $video_url ), $video_url, $args );
+}
+
+/**
+ * Display video
+ *
+ * @since 2.5.0
+ *
+ * @param string $video_url URL to video, file URL or oEmbed compatible link
+ * @param array $args Any extra arguments, currently not being used
+ * @return string $output Final image HTML to output
+ */
+function themeblvd_video( $video_url, $args = array() ) {
+	echo themeblvd_get_video( $video_url, $args );
+}
+
+/**
+ * Display custom slider from Theme Blvd Sliders plugin.
+ *
+ * @since 2.0.0
+ *
+ * @param string $slider Slug of custom-built slider to use
+ */
+function themeblvd_slider( $slider ) {
+
+	// Kill it if there's no slider
+	if ( ! $slider ) {
+		printf('<div class="alert warning"><p>%s</p></div>', themeblvd_get_local( 'no_slider_selected.' ) );
+		return;
+	}
+
+	// Get Slider ID
+	$slider_id = themeblvd_post_id_by_name( $slider, 'tb_slider' );
+	if ( ! $slider_id ) {
+		echo themeblvd_get_local( 'no_slider' );
+		return;
+	}
+
+	// Gather info
+	$type = get_post_meta( $slider_id, 'type', true );
+	$settings = get_post_meta( $slider_id, 'settings', true );
+	$slides = get_post_meta( $slider_id, 'slides', true );
+
+	// Display slider based on its slider type
+	do_action( 'themeblvd_'.$type.'_slider', $slider, $settings, $slides );
 }

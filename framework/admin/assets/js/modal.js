@@ -35,11 +35,6 @@ if ( typeof Object.create !== 'function' ) {
             self.target = self.$elem.data('target');
             self.$target = $('#'+self.target);
 
-            // Delete button
-            if ( self.$elem.parent().is('.content-block-nav') ) {
-                self.options.button_delete = themeblvd.delete_text;
-            }
-
             // Open modal
             self.$elem.off( 'click.themeblvd-modal' );
             self.$elem.on( 'click.themeblvd-modal', function(){
@@ -96,7 +91,6 @@ if ( typeof Object.create !== 'function' ) {
                     self.$modal_window.find('.media-button-secondary').off( 'click.themeblvd-modal-secondary' );
                     self.$modal_window.find('.media-button-secondary').on( 'click.themeblvd-modal-secondary', function(){
                         self.options.on_secondary.call(self);
-                        self.dup_block(); // If this is set of content block options, will duplcate the content block
                         self.close();
                         return false;
                     });
@@ -105,16 +99,13 @@ if ( typeof Object.create !== 'function' ) {
                 // Delete
                 if ( self.options.button_delete ) {
 
-                    var delete_msg = self.$elem.parent().is('.content-block-nav') ? themeblvd.delete_block : themeblvd.delete_item;
+                    var delete_msg = self.$elem.parent().is('.block-nav') ? themeblvd.delete_block : themeblvd.delete_item;
 
                     self.$modal_window.find('.media-button-delete').off( 'click.themeblvd-modal-delete' );
                     self.$modal_window.find('.media-button-delete').on( 'click.themeblvd-modal-delete', function(){
                         tbc_confirm( delete_msg, {'confirm': true}, function(r){
                             if(r) {
                                 self.options.on_delete.call(self);
-                                if ( self.$elem.parent().is('.content-block-nav') ) {
-                                    self.delete_block();
-                                }
                                 self.close();
                             }
                         });
@@ -185,21 +176,23 @@ if ( typeof Object.create !== 'function' ) {
             // completely when modal is closed.
             $('body').append( self.popup );
 
+            var $current = $('#'+self.id);
+
             // Duplicate Button?
             if ( self.options.button_secondary ) {
-                $('#'+self.id+' .media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-secondary">'+self.options.button_secondary+'</a></div>');
+                $current.find('.media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-secondary">'+self.options.button_secondary+'</a></div>');
             }
 
             // Delete button?
             if ( self.options.button_delete ) {
-                $('#'+self.id+' .media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-delete">'+self.options.button_delete+'</a></div>');
+                $current.find('.media-toolbar').prepend('<div class="media-toolbar-secondary"><a href="#" class="button media-button button-secondary button-large media-button-delete">'+self.options.button_delete+'</a></div>');
             }
 
             if ( self.options.code_editor ) {
 
-                if ( self.$elem.is('.tb-content-block-code-link') ) {
-                    var field_name = self.$elem.closest('.content-block').data('field-name');
-                    content = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[html]"]').val();
+                if ( self.$elem.is('.tb-block-code-link') ) {
+                    var field_name = self.$elem.closest('.block').data('field-name');
+                    content = self.$elem.closest('.block').find('textarea[name="'+field_name+'[html]"]').val();
                 } else {
                     content = self.$elem.closest('.textarea-wrap').find('textarea').val();
                 }
@@ -214,9 +207,9 @@ if ( typeof Object.create !== 'function' ) {
 
                 // Apend user content
                 if ( self.options.form ) {
-                    $('#'+self.id).find('#optionsframework').append( self.$target );
+                   $current.find('#optionsframework').append( self.$target );
                 } else {
-                    $('#'+self.id).find('.content-mitt').append( self.$target );
+                   $current.find('.content-mitt').append( self.$target );
                 }
 
             }
@@ -258,6 +251,11 @@ if ( typeof Object.create !== 'function' ) {
                     self.close_all();
                     return false;
                 });
+            }
+
+            // Custom CSS class?
+            if ( self.options.css_class ) {
+                self.$modal_window.find('.themeblvd-modal').addClass( self.options.css_class );
             }
 
             // Show modal
@@ -420,9 +418,9 @@ if ( typeof Object.create !== 'function' ) {
                     content = editor.getValue(),
                     textarea;
 
-                if ( self.$elem.is('.tb-content-block-code-link') ) {
-                    var field_name = self.$elem.closest('.content-block').data('field-name');
-                    textarea = self.$elem.closest('.content-block').find('textarea[name="'+field_name+'[html]"]');
+                if ( self.$elem.is('.tb-block-code-link') ) {
+                    var field_name = self.$elem.closest('.block').data('field-name');
+                    textarea = self.$elem.closest('.block').find('textarea[name="'+field_name+'[html]"]');
                 } else {
                     textarea = self.$elem.closest('.textarea-wrap').find('textarea');
                 }
@@ -430,108 +428,6 @@ if ( typeof Object.create !== 'function' ) {
                 textarea.val(content);
 
             }
-        },
-
-        delete_block: function() {
-
-            var self = this,
-                $column,
-                $block,
-                column_content = '';
-
-            // Cache column before we remove the widget
-            $column = self.$elem.closest('.column-blocks');
-
-            // Remove content block
-            if ( self.$elem.parent().is('.content-block-nav') ) {
-
-                $block = self.$elem.closest('.content-block');
-                $block.addClass('delete fade-out');
-
-                window.setTimeout(function(){
-
-                    $block.remove();
-
-                    // Add "mini-empty" class to column, if empty
-                    if ( ! $column.html().trim().length ) {
-                        $column.addClass('mini-empty');
-                    }
-                }, 500);
-
-            }
-        },
-
-        dup_block: function() {
-
-            var self = this,
-                nonce = $('#builder_blvd').find('input[name="_tb_save_builder_nonce"]').val(),
-                data,
-                $block = self.$elem.closest('.content-block'),
-                $new_block;
-
-            if ( self.$elem.is('.tb-content-block-editor-link') || self.$elem.is('.tb-content-block-code-link') ) {
-
-                // Save any options being worked on.
-                self.options.on_save.call(self);
-                self.save();
-
-                // Now that it's saved, retrieve data from form.
-                data = $block.find('input, select, textarea').serialize();
-
-            } else {
-
-                // Retrieve data from form being worked on in
-                // its current state.
-                data = self.$modal_window.find('input, select, textarea').serialize();
-            }
-
-            $.ajax({
-                type: "POST",
-                url: ajaxurl,
-                data:
-                {
-                    action: 'themeblvd_dup_block',
-                    security: nonce,
-                    data: data
-                },
-                success: function(response) {
-
-                    // [0] => Element ID
-                    // [1] => Block ID
-                    // [2] => Column number
-                    // [3] => HTML of new content block
-                    response = response.split('[(=>)]');
-
-                    // Add HTML for new content block
-                    $block.after( response[3] );
-
-                    // Cache the new HTML element we just appended
-                    $new_block = $('#'+response[1]);
-
-                    // Temporarily add green border/shadow to the newly added element.
-                    $new_block.addClass('add');
-                    window.setTimeout(function(){
-                        $new_block.removeClass('add');
-                    }, 500);
-
-                    // Setup Theme Blvd namespace options
-                    $new_block.themeblvd('options', 'setup');
-                    $new_block.themeblvd('options', 'media-uploader');
-                    $new_block.themeblvd('options', 'editor');
-                    $new_block.themeblvd('options', 'code-editor');
-                    $new_block.themeblvd('options', 'sortable');
-
-                    // And bind the modal window for the settings link
-                    $new_block.find('.tb-content-block-options-link').ThemeBlvdModal({
-                        build: true,
-                        form: true,
-                        padding: false,
-                        size: 'medium',
-                        on_load: builder_blvd.content_block_options_load
-                    });
-
-                }
-            });
         }
     };
 
@@ -556,6 +452,7 @@ if ( typeof Object.create !== 'function' ) {
         code_lang: 'html',              // If code editor, code language -- html, css, javascript
         padding: false,                 // Size of modal - small, medium, large
         send_back: null,                // An object of something you want send to info back to, which you can utilize from callbacks
+        css_class: '',                  // Optional CSS class to add to modal
         on_load: function(modal){},     // Callback before modal window is displayed,
         on_display: function(modal){},  // Callback just after modal has been displayed
         on_cancel: function(modal){},   // Callback when close button is clicked, before modal is closed

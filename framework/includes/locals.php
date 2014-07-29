@@ -114,8 +114,6 @@ function themeblvd_get_js_locals() {
 	// Start $locals array with any miscellaneous stuff
 	$locals = array (
 		'thumb_animations'			=> 'true',
-		'featured_animations'		=> 'true',
-		'image_slide_animations'	=> 'true',
 		'retina_logo'				=> 'true',
 		'custom_buttons'			=> 'true'
 	);

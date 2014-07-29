@@ -163,12 +163,20 @@ function themeblvd_sanitize_upload( $input ) {
 	if ( is_array( $input ) ) {
 
 		$output = array(
+			'id'		=> 0,
 			'src'		=> '',
+			'full'		=> '',
 			'title'		=> '',
-			'size'		=> '',
+			'crop'		=> '',
 			'width'		=> 0,
 			'height'	=> 0
 		);
+
+		if ( isset( $input['id'] ) ) {
+			$output['id'] = intval( $input['id'] );
+			$full = wp_get_attachment_image_src( $output['id'], 'full' );
+			$output['full'] = $full[0];
+		}
 
 		if ( isset( $input['src'] ) ) {
 			$output['src'] = wp_kses( $input['src'], array() );

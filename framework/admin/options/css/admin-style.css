@@ -39,7 +39,6 @@
 }
 #optionsframework .section-info {
 	color: #888888;
-	font-family: Georgia,"Times New Roman",Times,serif;
 	font-size: 12px;
 	font-style: italic;
 	line-height: 1.5em;
@@ -1045,7 +1044,8 @@
 	line-height: 60px;
 }
 
-/* Sortables - bars, datasets, locations, sectors, tabs, testimonials, toggles */
+/* Sortables and Full Width options - bars, datasets, locations, sectors, tabs, testimonials, toggles */
+#optionsframework .full-width > .option > .controls,
 #optionsframework .section-bars > .option > .controls,
 #optionsframework .section-datasets > .option > .controls,
 #optionsframework .section-locations > .option > .controls,
@@ -1059,6 +1059,7 @@
 	padding: 0;
 	width: auto;
 }
+#optionsframework .full-width > .option > .explain,
 #optionsframework .section-bars > .option > .explain,
 #optionsframework .section-datasets > .option > .explain,
 #optionsframework .section-locations > .option > .explain,
@@ -1068,7 +1069,9 @@
 #optionsframework .section-toggles > .option > .explain {
 	float: none;
 	max-width: none;
+	margin-top: 5px;
 }
+#optionsframework .full-width .tb-sortable-option textarea,
 #optionsframework .section-bars .tb-sortable-option textarea,
 #optionsframework .section-datasets .tb-sortable-option textarea,
 #optionsframework .section-locations .tb-sortable-option textarea,

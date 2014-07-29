@@ -1,381 +1,95 @@
 <?php
-if ( !function_exists( 'themeblvd_blocks' ) ) :
 /**
- * Get column of content blocks.
+ * Get blockquote formatted correctly for Bootstrap
  *
- * @since 2.5.0
+ * @since 2.4.0
  *
- * @param array $blocks A set of content blocks
+ * @param array $args Arguments for blockquote.
  */
-function themeblvd_blocks( $blocks ) {
-
-	if ( $blocks ) {
-
-		foreach ( $blocks as $id => $block ) {
-
-			$type = '';
-			if ( isset( $block['type'] ) ) {
-				$type = $block['type'];
-			}
-
-			$options = array();
-			if ( isset( $block['options'] ) ) {
-				$options = $block['options'];
-			}
-
-			themeblvd_block( $id, $type, $options );
-		}
-	}
-
-}
-endif;
-
-if ( !function_exists( 'themeblvd_block' ) ) :
-/**
- * Display individual column block;
- *
- * @since 2.5.0
- *
- * @param array $blocks A set of content blocks
- */
-function themeblvd_block( $id, $type, $options ) {
-
-	$class = sprintf( 'content-block content-block-%s', $type );
-
-	echo '<div class="'.$class.'">';
-	echo '<div class="content-block-inner">';
-	echo '<div class="content-block-inner-wrap">';
-
-	switch ( $type ) {
-
-		case 'content' :
-			themeblvd_content_block( $options );
-			break;
-
-		case 'alert' :
-			themeblvd_alert( $options );
-			break;
-
-		case 'chart_bar' :
-			themeblvd_chart( 'bar', $options );
-			break;
-
-		case 'chart_line' :
-			themeblvd_chart( 'line', $options );
-			break;
-
-		case 'chart_pie' :
-			themeblvd_chart( 'pie', $options );
-			break;
-
-		case 'contact' :
-			themeblvd_contact_bar( $options['buttons'], $options );
-			break;
-
-		case 'current' :
-			themeblvd_page_content();
-			break;
-
-		case 'divider' :
-			echo themeblvd_divider( $options );
-			break;
-
-		case 'html' :
-			echo stripslashes( $options['html'] );
-			break;
-
-		case 'icon_box' :
-			themeblvd_icon_box( $options );
-			break;
-
-		case 'image' :
-			themeblvd_image( $options );
-			break;
-
-		case 'jumbotron' :
-			themeblvd_jumbotron( $options );
-			break;
-
-		case 'milestone' :
-			themeblvd_milestone( $options );
-			break;
-
-		case 'milestone_ring' :
-			themeblvd_milestone_ring( $options );
-			break;
-
-		case 'page' :
-			themeblvd_page_content( $options['page'] );
-			break;
-
-		case 'panel' :
-			themeblvd_panel( $options );
-			break;
-
-		case 'partners' :
-			themeblvd_logos( $options );
-			break;
-
-		case 'post_grid' :
-			themeblvd_posts( $options, 'grid' );
-			break;
-
-		case 'post_grid_paginated' :
-			themeblvd_posts_paginated( $options, 'grid' );
-			break;
-
-		case 'post_grid_slider' :
-			themeblvd_post_slider( $id, $options, 'grid' );
-			break;
-
-		case 'post_list' :
-			themeblvd_posts( $options, 'list' );
-			break;
-
-		case 'post_list_paginated' :
-			themeblvd_posts_paginated( $options, 'list' );
-			break;
-
-		case 'post_list_slider' :
-			themeblvd_post_slider( $id, $options, 'grid' );
-			break;
-
-		case 'progress_bars' :
-			themeblvd_progress_bars( $options );
-			break;
-
-		case 'quote' :
-			themeblvd_blockquote( $options );
-			break;
-
-		case 'raw' :
-			if ( $options['raw_format'] ) {
-				themeblvd_content( $options['raw'] );
-			} else {
-				echo do_shortcode( stripslashes( $options['raw'] ) );
-			}
-			break;
-
-		case 'simple_slider' :
-			themeblvd_simple_slider( $options );
-			break;
-
-		case 'slogan' :
-			echo themeblvd_slogan( $options );
-			break;
-
-		case 'tabs' :
-			echo themeblvd_tabs( $id, $options );
-			break;
-
-		case 'team_member' :
-			echo themeblvd_team_member( $options );
-			break;
-
-		case 'testimonial' :
-			echo themeblvd_testimonial( $options );
-			break;
-
-		case 'testimonial_slider' :
-			echo themeblvd_testimonial_slider( $options );
-			break;
-
-		case 'toggles' :
-			echo themeblvd_toggles( $id, $options );
-			break;
-
-		case 'video' :
-			themeblvd_video( $options['video'] );
-			break;
-
-		case 'widget' :
-			echo '<div class="widget-area">';
-			dynamic_sidebar( $options['sidebar'] );
-			echo '</div><!-- .widget-area (end) -->';
-			break;
-
-	}
-
-	// Allow to add on custom content block that's
-	// not in the framework
-	do_action( 'themeblvd_block_'.$type, $id, $options );
-
-	echo '</div><!-- .content-block-inner-wrap (end) -->';
-	echo '</div><!-- .content-block-inner (end) -->';
-	echo '</div><!-- .content-block (end) -->';
-
-}
-endif;
-
-if ( !function_exists( 'themeblvd_columns' ) ) :
-/**
- * Dislay set of columns.
- *
- * @since 2.5.0
- *
- * @param array $args
- * @param array Optionally force-feed column data
- */
-function themeblvd_columns( $args, $columns = null ) {
+function themeblvd_get_blockquote( $args ) {
 
 	$defaults = array(
-		'layout_id'		=> 0,
-		'element_id'	=> 'element_',
-		'num'			=> 1,
-		'widths'		=> 'grid_12',
-		'height'		=> 0,
-		'align'			=> 'top'
+		'quote'			=> '',
+		'source' 		=> '',		// Source of quote
+		'source_link'	=> '',		// URL to link source to
+		'align'			=> '',		// How to align blockquote - left, right
+		'max_width'		=> '',		// Meant to be used with align left/right - 300px, 50%, etc
+		'reverse'		=> 'false',	// Whether to add "blockquote-reverse" Bootstrap class, which will align text to right; this is different than pull-right, which will float.
+		'class'			=> '' 		// Any additional CSS classes
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	// Number of columns
-	$num = intval( $args['num'] );
+	// CSS classes
+	$class = 'tb-blockquote';
 
-	// Bootstrap stack point
-	$stack = apply_filters('themeblvd_columns_stack', 'sm');
-
-	// Kill it if number of columns doesn't match the
-	// number of widths exploded from the string.
-	$widths = explode( '-', $args['widths'] );
-	if ( $num != count( $widths ) ) {
-		return;
+	if ( $args['reverse'] == 'true' ) {
+		$class .= ' blockquote-reverse';
 	}
 
-	// Column margins
-	$margin_left = '-15px';
-	$margin_right = '-15px';
-
-	for ( $i = 1; $i <= $num; $i++ ) {
-
-		// If first or last
-		if ( $i == 1 || $i == $num ) {
-
-			$column = get_post_meta( $args['layout_id'], $args['element_id'].'_col_'.strval($i), true );
-
-			if ( ! empty( $column['display']['bg_type'] ) ) {
-				if ( in_array( $column['display']['bg_type'], array( 'color', 'image', 'texture' ) ) ) {
-
-					if ( $i == 1 ) {
-						$margin_left = '0';
-					} else if ( $i == $num ) {
-						$margin_right = '0';
-					}
-
-				}
-			}
+	if ( $args['align'] ) {
+		if ( 'left' == $args['align'] ) {
+			$class .= ' pull-left';
+		} else if ( 'right' == $args['align'] ) {
+			$class .= ' pull-right';
 		}
 	}
 
-	$margin = sprintf( 'margin: 0 %s 0 %s;', $margin_right, $margin_left );
-
-	// Open column row
-	if ( $args['height'] && $args['layout_id'] != 0 && ! $columns ) {
-		printf( '<div class="container-%s-height">', $stack );
-		themeblvd_open_row("row row-{$stack}-height", $margin);
-	} else {
-		themeblvd_open_row('row', $margin);
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
 	}
 
-	// Display columns
-	for ( $i = 1; $i <= $num; $i++ ) {
+	// Max width
+	$style = '';
 
-		$grid_class = themeblvd_grid_class( $widths[$i-1], $stack );
+	if ( $args['max_width'] ) {
 
-		if ( $args['layout_id'] == 0 && $columns ) {
-
-			echo '<div class="col '.$grid_class.'">';
-
-			if ( isset( $columns[$i] ) ) {
-
-				// Display individual content block for
-				// the column of passed in data.
-				themeblvd_block( uniqid('block_'), $columns[$i]['type'], $columns[$i] );
-
-			}
-
-			echo '</div><!-- .'.$grid_class.' (end) -->';
-
-		} else {
-
-			$blocks = array();
-			$display = array();
-			$column = get_post_meta( $args['layout_id'], $args['element_id'].'_col_'.strval($i), true );
-
-			// Display options
-			if ( ! empty( $column['display'] ) ) {
-				$display = $column['display'];
-			}
-
-			// Equal height columns?
-			if ( $args['height'] ) {
-
-				$grid_class .= " col-{$stack}-height";
-
-				if ( in_array( $args['align'], array( 'top', 'middle', 'bottom' ) ) ) {
-					$grid_class .= ' col-'.$args['align'];
-				}
-			}
-
-			// Start column
-			printf('<div class="col %s %s" style="%s" data-parallax="%s">', $grid_class, themeblvd_get_display_class($display), themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
-
-			// Content blocks
-			if ( ! empty( $column['blocks'] ) ) {
-				$blocks = $column['blocks'];
-			}
-
-			themeblvd_blocks( $blocks );
-
-			echo '</div><!-- .'.$grid_class.' (end) -->';
-
+		if ( false === strpos( $args['max_width'], 'px' ) && false === strpos( $args['max_width'], '%' ) ) {
+			$args['max_width'] = $args['max_width'].'px';
 		}
 
+		$style = sprintf('max-width: %s;', $args['max_width'] );
 	}
 
-	themeblvd_close_row();
+	// Quote
+	$quote = $args['quote'];
 
-	if ( $args['height'] ) {
-		echo '</div><!-- .container-{$stack}-height (end) -->';
+	if ( false === strpos( $quote, '<p>' ) ) {
+		$quote = wpautop( $quote );
 	}
+
+	// Source
+	$source = '';
+
+	if ( $args['source'] ) {
+
+		$source = $args['source'];
+
+		if ( $args['source_link'] ) {
+			$source = sprintf( '<a href="%s" title="%s" target="_blank">%s</a>', $args['source_link'], $source, $source );
+		}
+
+		$source = sprintf( '<small><cite>%s</cite></small>', $source );
+
+		$quote .= $source;
+
+	}
+
+	// Output
+	$output = sprintf( '<blockquote class="%s" style="%s">%s</blockquote>', $class, $style, $quote );
+
+	return apply_filters( 'themeblvd_blockquote', $output, $args, $quote, $source, $class, $style );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_page_content' ) ) :
 /**
- * Display content of current page, or inputted page slug or ID.
+ * Display blockquote formatted correctly for Bootstrap
  *
- * @since 2.5.0
+ * @since 2.4.0
  *
- * @param int|string $page Page ID or slug to pull content from
+ * @param array $args Arguments for blockquote.
  */
-function themeblvd_page_content( $page = 0 ) {
-
-	$page_id = 0;
-	$current_page = false;
-
-	// If no ID, get current page's ID
-	if ( ! $page ) {
-		$current_page = true;
-		$page_id = themeblvd_config('id');
-	}
-
-	// Page slug?
-	if ( is_string( $page ) ) {
-		$page_id = themeblvd_post_id_by_name( $page, 'page' );
-	}
-
-	$get_page = get_post( $page_id );
-
-	if ( $get_page ) {
-		if ( $current_page ) {
-			echo apply_filters( 'the_content', $get_page->post_content );
-		} else {
-			themeblvd_content( $get_page->post_content );
-		}
-	}
-
+function themeblvd_blockquote( $args ) {
+	echo themeblvd_get_blockquote( $args );
 }
-endif;
 
 /**
  * Take in some content and return it with formatting.
@@ -399,4 +113,204 @@ function themeblvd_get_content( $content ) {
  */
 function themeblvd_content( $content ) {
 	echo themeblvd_get_content( $content );
+}
+
+/**
+ * Get content block
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_get_content_block( $args ){
+
+	$defaults = array(
+        'content'		=> '',			// Content to display
+        'raw_format'	=> '1',			// Whether to apply wpautop
+        'style'			=> '',			// Custom styling class
+		'text_color'	=> 'dark',		// Color of text, dark or light
+        'bg_color'		=> '#cccccc',	// Background color, if wrap is true
+        'bg_opacity'	=> '1'			// Background color opacity, if wrap is true
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+	// CSS class
+	$class = 'tb-content-block';
+
+	if ( $args['style'] == 'custom' ) {
+		$class .= ' has-bg text-'.$args['text_color'];
+	}
+
+	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
+		$class .= ' '.$args['style'];
+	}
+
+	// Inline styles
+	$style = '';
+
+	if ( $args['style'] == 'custom' ) {
+		$style = sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
+		$style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+	}
+
+	// Setup content
+	if ( $args['raw_format'] ) {
+		$content = themeblvd_get_content( $args['content'] );
+	} else {
+		$content = do_shortcode( $args['content'] );
+	}
+
+	// Final output
+	$output = sprintf( '<div class="%s" style="%s">%s</div>', $class, $style, $content );
+
+	return apply_filters( 'themeblvd_content_block', $output, $args );
+}
+
+/**
+ * Display content block
+ *
+ * @since 2.5.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_content_block( $args ){
+	echo themeblvd_get_content_block( $args );
+}
+
+/**
+ * Display headline.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Options for headline
+ * @return string $output HTML output for headline
+ */
+function themeblvd_get_headline( $args ) {
+
+	// Setup and extract $args
+	$defaults = array(
+		'text' 		=> '',		// Hadline text
+		'tagline' 	=> '',		// Tagline below headline
+		'tag' 		=> 'h1',	// Header wrapping headline - h1, h2, h3, etc
+		'align' 	=> 'left'	// How to align the header - left, center, right
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// Swap in current page's title for %page_title%
+	$text = str_replace( '%page_title%', get_the_title( themeblvd_config( 'id' ) ), $args['text'] );
+
+	// Output
+	$output = '<'.$args['tag'].' class="text-'.$args['align'].'">';
+	$output .= stripslashes( $text );
+	$output .= '</'.$args['tag'].'>';
+
+	if ( $args['tagline'] ) {
+		$output .= sprintf( '<p class="text-%s">%s</p>', $args['align'], stripslashes($args['tagline']) );
+	}
+
+	return apply_filters( 'themeblvd_headline', $output, $args );
+}
+
+/**
+ * Display headline
+ *
+ * @since 2.0.0
+ *
+ * @param string $args Options for content block
+ * @return string $output Content output
+ */
+function themeblvd_headline( $args ){
+	echo themeblvd_get_headline( $args );
+}
+
+/**
+ * Get content of current post, or inputted
+ * post slug or ID.
+ *
+ * @since 2.5.0
+ *
+ * @param int|string $page Page ID or slug to pull content from
+ */
+function themeblvd_get_post_content( $post = 0, $post_type = '' ) {
+
+	$content = '';
+	$post_id = 0;
+	$current_post = false;
+
+	// If no ID, get current post's ID
+	if ( ! $post ) {
+		$current_post = true;
+		$post_id = themeblvd_config('id');
+	}
+
+	// Page slug?
+	if ( is_string( $post ) ) {
+		$post_id = themeblvd_post_id_by_name( $post, $post_type );
+	}
+
+	$get_post = get_post( $post_id );
+
+	if ( $get_post ) {
+		if ( $current_post ) {
+			$content = apply_filters( 'the_content', $get_post->post_content );
+		} else {
+			$content = themeblvd_get_content( $get_post->post_content );
+		}
+	}
+
+	return $content;
+}
+
+/**
+ * Display content of current post, or inputted post slug or ID.
+ *
+ * @since 2.5.0
+ *
+ * @param int|string $page Page ID or slug to pull content from
+ */
+function themeblvd_post_content( $post = 0 ) {
+	echo themeblvd_get_post_content( $post );
+}
+
+/**
+ * Get widgets from widget area
+ *
+ * @since 2.5.0
+ *
+ * @param array $sidebar Sidebar ID to pull widgets from
+ * @param string $context Context of how widget area is used, element or block
+ * @return string Formatted content
+ */
+function themeblvd_get_widgets( $sidebar, $context = 'element' ) {
+
+	// CSS class
+	$class = 'widget-area '.$sidebar;
+
+	if ( in_array( $context, array( 'block', 'column', 'sidebar' ) ) ) {
+		$class .= ' fixed-sidebar';
+	}
+
+	// Widgets
+	ob_start();
+	dynamic_sidebar( $sidebar );
+	$widgets = ob_get_clean();
+
+	// Wrap widgets for final output
+	$output = sprintf( '<div class="%s">%s</div><!-- .widget-area (end) -->', $class, $widgets );
+
+	return apply_filters( 'themeblvd_widgets', $output, $widgets, $sidebar, $context );
+}
+
+/**
+ * Display widgets from widget area
+ *
+ * @since 2.5.0
+ *
+ * @param array $content Content to display
+ * @return string Formatted content
+ */
+function themeblvd_widgets( $sidebar, $context = 'element' ) {
+	echo themeblvd_get_widgets( $sidebar, $context );
 }

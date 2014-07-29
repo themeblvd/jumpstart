@@ -107,26 +107,47 @@ class Theme_Blvd_Query {
 		}
 
 		// Custom query
-		if ( ( 'query' == $source && isset( $args['query'] ) ) || ( ! $source && ! empty( $args['query'] ) ) ) {
+		if ( ( $source == 'query' && isset( $args['query'] ) ) || ( ! $source && ! empty( $args['query'] ) ) ) {
 
 			// Convert string to query array
 			$query = wp_parse_args( htmlspecialchars_decode( $args['query'] ) );
 
 			// If they didn't set a posts_per_page on their
 			// custom query, let's do it for them.
-			if( ! isset( $query['posts_per_page'] ) )
+			if( ! isset( $query['posts_per_page'] ) ) {
 				$query['posts_per_page'] = get_option('posts_per_page');
+			}
 
 			// Force posts per page on grids
-			if( 'grid' == $type && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
-				if( ! empty( $args['posts_per_page'] ) )
+			if( $type == 'grid' && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+				if( ! empty( $args['posts_per_page'] ) ) {
 					$query['posts_per_page'] = $args['posts_per_page'];
+				}
 			}
 
 		}
 
+		// List of pages
+		if ( ! isset( $query ) && $source == 'pages' && ! empty( $args['pages'] ) ) {
+
+			$pages = str_replace( ' ', '', $args['pages'] );
+			$pages = explode( ',', $pages );
+
+			$query = array(
+				'post_type' => 'page',
+				'post__in' 	=> array(),
+				'orderby'	=> 'post__in'
+			);
+
+			if ( $pages ) {
+				foreach ( $pages as $pagename ) {
+					$query['post__in'][] = themeblvd_post_id_by_name( $pagename, 'page' );
+				}
+			}
+		}
+
 		// If no custom query, let's build it.
-		if ( empty( $query ) ) {
+		if ( ! isset( $query ) ) {
 
 			// Start building query args
 			$query = array(
@@ -300,7 +321,7 @@ class Theme_Blvd_Query {
 
 		// If this isn't the Post List or Post Grid page
 		// template, get out of here.
-		if ( ! is_page() && ( ! is_page_template('template_list.php') || ! is_page_template('template_grid.php') ) ) {
+		if ( ! is_page_template('template_list.php') && ! is_page_template('template_grid.php') ) {
 			return;
 		}
 
@@ -504,13 +525,14 @@ class Theme_Blvd_Query {
 			}
 		}
 
+		// @TODO -- This needs to modified to match current post list and post grid elements
 		// Apply pagination fix when homepage custom layout
 		// set over home "posts page"
 		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && $q->is_home() && 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
 
 			// Layout info
-			$kayout_name = themeblvd_get_option( 'homepage_custom_layout' );
-			$layout_post_id = themeblvd_post_id_by_name( $kayout_name, 'tb_layout' );
+			$layout_name = themeblvd_get_option( 'homepage_custom_layout' );
+			$layout_post_id = themeblvd_post_id_by_name( $layout_name, 'tb_layout' );
 			if ( $layout_post_id ) {
 				$elements = get_post_meta( $layout_post_id, 'elements', true );
 			}

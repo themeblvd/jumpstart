@@ -179,48 +179,6 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
-	// Featured Image overlay links
-	// ---------------------------------------------------------
-
-	if ( themeblvd.featured_animations == 'true' || themeblvd.image_slide_animations == 'true' ) {
-
-		var selector = "";
-
-		if ( themeblvd.featured_animations == 'true' && themeblvd.image_slide_animations == 'true' ) {
-			selector = ".featured-image a, a.slide-thumbnail-link";
-		} else if ( themeblvd.featured_animations == 'true' ) {
-			selector = ".featured-image a";
-		} else if ( themeblvd.image_slide_animations == 'true' ) {
-			selector = "a.slide-thumbnail-link";
-		}
-
-		if ( window_width >= 768 ) {
-
-			$(selector).hover(
-				function () {
-					var el = $(this);
-					el.find('.image-overlay-bg').stop(true, true).animate({
-						opacity: 0.2
-					}, 300 );
-					el.find('.image-overlay-icon').stop(true, true).animate({
-						opacity: 1
-					}, 300 );
-				},
-				function () {
-					var el = $(this);
-					el.find('.image-overlay-bg').stop(true, true).animate({
-						opacity: 0
-					}, 300 );
-					el.find('.image-overlay-icon').stop(true, true).animate({
-						opacity: 0
-					}, 300 );
-				}
-			);
-
-		}
-	}
-
-	// ---------------------------------------------------------
 	// Jump Menu
 	// ---------------------------------------------------------
 
@@ -247,55 +205,25 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
-	// Testimonial slider
+	// Block sliders
 	// ---------------------------------------------------------
 
-	$('.tb-testimonial-slider').each(function(){
+	$('.tb-block-slider').each(function(){
 
 		var $slider = $(this),
+			fx = 'slide',
 			speed = $slider.data('timeout'),
-			slideshow = false,
-			nav = $slider.data('nav');
-
-		if ( speed && speed !== '0' ) {
-			speed = speed+'000';
-			slideshow = true;
-		}
-
-		if ( nav && nav !== '0' ) {
-			nav = true;
-		} else {
-			nav = false;
-		}
-
-		$(window).load(function() {
-			$slider.flexslider({
-				animation: 'fade',
-				slideshowSpeed: speed,
-				slideshow: slideshow,
-				pauseOnHover: true,
-				directionNav: false,
-				controlNav: nav,
-				pauseOnAction: true
-			});
-		});
-	});
-
-	// ---------------------------------------------------------
-	// Partner Logo slider @TODO... merge with testimonial slider
-	// ---------------------------------------------------------
-
-	$('.tb-logos.slider').each(function(){
-
-		var $slider = $(this),
-			speed = $slider.data('timeout'),
-			slideshow = false,
+			//slideshow = false,
 			nav = $slider.data('nav'),
 			pause = false;
 
+		if ( $slider.data('fx') ) {
+			fx = $slider.data('fx');
+		}
+
 		if ( speed && speed !== '0' ) {
 			speed = speed+'000';
-			slideshow = true;
+			//slideshow = true;
 		}
 
 		if ( nav && nav !== '0' ) {
@@ -310,7 +238,7 @@ jQuery(document).ready(function($) {
 
 		$(window).load(function() {
 			$slider.flexslider({
-				animation: 'slide',
+				animation: fx,
 				easing: 'swing',
 				slideshowSpeed: speed,
 				animationSpeed: '1000',
@@ -611,6 +539,7 @@ jQuery(document).ready(function($) {
 		// And now if the user has wrapped a set of "toggles" into an
 		// accordian, this will attach them all.
 		var accordion_id;
+
 		$('.tb-accordion').each(function(){
 			accordion_id = $(this).attr('id');
 			$(this).find('.panel-heading a').each(function(){
@@ -619,27 +548,27 @@ jQuery(document).ready(function($) {
 		});
 
 		// Carousel thumbnail navigation
-		$('.carousel .carousel-thumb-nav li').click(function(){
-			var el = $(this);
-			el.closest('.carousel-thumb-nav').find('li').removeClass('active');
-			el.addClass('active');
+		$('.tb-simple-slider .carousel-thumb-nav li').click(function(){
+			var $el = $(this);
+			$el.closest('.carousel-thumb-nav').find('li').removeClass('active');
+			$el.addClass('active');
 		});
 
-		$('.carousel').on('slid.bs.carousel', function () {
+		$('.tb-simple-slider').on('slid.bs.carousel', function () {
 
-			var el = $(this),
-				data = el.data('bs.carousel'),
+			var $el = $(this),
+				data = $el.data('bs.carousel'),
 				current = data.getActiveIndex()+1;
 
-			el.find('.carousel-thumb-nav li').removeClass('active');
-			el.find('.carousel-thumb-nav li:nth-child('+current+')').addClass('active');
+			$el.find('.carousel-thumb-nav li').removeClass('active');
+			$el.find('.carousel-thumb-nav li:nth-child('+current+')').addClass('active');
 
 		});
 
 		// Carousel indicator dots navigation -- This fix allows
 		// us to integrate links on the slides better by reducing
 		// the space around navigation indicator dots.
-		$('.carousel-indicators').each(function(){
+		$('.tb-simple-slider .carousel-indicators').each(function(){
 
 			var $el = $(this),
 				width = ( 14 * $el.find('li').length );
@@ -652,11 +581,11 @@ jQuery(document).ready(function($) {
 
 		// When user interacts with carousel controls or slide links,
 		// stop auto rotate.
-		$('.carousel').each(function(){
+		$('.tb-simple-slider').each(function(){
 
 			var $el = $(this);
 
-			$el.find('.slide-link, .carousel-indicators li, .carousel-control').on('click', function(){
+			$el.find('.tb-thumb-link, .carousel-indicators li, .carousel-control').on('click', function(){
 				$el.carousel('pause');
 			});
 		});

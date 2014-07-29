@@ -138,10 +138,9 @@ endif;
  *
  * @param array $options All options for query string
  * @param string $type Type of posts setup, grid or list
- * @param boolean $slider Whether or no this is a post list/grid slider (NOT auto slider)
  * @return array $args Arguments to get passed into get_posts()
  */
-function themeblvd_get_posts_args( $options, $type, $slider = false ) {
+function themeblvd_get_posts_args( $options, $type ) {
 
 	// Is there a query source? (i.e. category, tag, query)
 	$source = '';
@@ -150,18 +149,37 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 	}
 
 	// Custom query
-	if ( ( 'query' == $source && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
+	if ( ( $source == 'query' && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
 
 		// Convert string to query array
 		$query = wp_parse_args( htmlspecialchars_decode( $options['query'] ) );
 
 		// Force posts per page on grids
-		if( 'grid' == $type && ! $slider && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+		if( $type == 'grid' && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
 			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
-				$query['numberposts'] = $options['rows']*$options['columns'];
+				$query['posts_per_page'] = $options['rows']*$options['columns'];
 			}
 		}
 
+	}
+
+	// List of pages
+	if ( ! isset( $query ) && $source == 'pages' && ! empty( $options['pages'] ) ) {
+
+		$options['pages'] = str_replace( ' ', '', $options['pages'] );
+		$options['pages'] = explode( ',', $options['pages'] );
+
+		$query = array(
+			'post_type' => 'page',
+			'post__in' 	=> array(),
+			'orderby'	=> 'post__in'
+		);
+
+		if ( $options['pages'] ) {
+			foreach ( $options['pages'] as $pagename ) {
+				$query['post__in'][] = themeblvd_post_id_by_name( $pagename, 'page' );
+			}
+		}
 	}
 
 	// If no custom query, let's build it.
@@ -171,70 +189,67 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		$query = array( 'suppress_filters' => false );
 
 		// Number of posts
-		if ( $type == 'grid' && ! $slider ) {
+		if ( $type == 'grid' ) {
 
-			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
-				$query['numberposts'] = intval($options['rows'])*intval($options['columns']);
+			if ( ! empty( $options['columns'] ) ) {
+
+				if ( ! empty( $options['display'] ) && $options['display'] == 'slider' && ! empty( $options['slides'] ) ) {
+					// slider post grid
+					$query['posts_per_page'] = intval($options['slides'])*intval($options['columns']);
+				} else if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
+					// standard post grid
+					$query['posts_per_page'] = intval($options['rows'])*intval($options['columns']);
+				}
+
 			}
 
 		} else {
 
-			if ( ! empty( $options['numberposts'] ) ) {
-				$query['numberposts'] = intval( $options['numberposts'] );
+			if ( ! empty( $options['posts_per_page'] ) ) {
+				$query['posts_per_page'] = intval( $options['posts_per_page'] );
 			}
 
 		}
 
-		if ( empty( $query['numberposts'] ) ) {
-			$query['numberposts'] = -1;
+		if ( empty( $query['posts_per_page'] ) ) {
+			$query['posts_per_page'] = -1;
 		}
 
 		// Categories
-		if ( 'category' == $source || ! $source ) {
+		if ( $source == 'category' || ! $source ) {
 
-			if ( 'auto_slider' == $type ) {
+			if ( ! empty( $options['cat'] ) ) {
 
-				// The "Post Slider" element
-				if ( ! empty( $options['category'] ) ) {
-					$query['category_name'] = $options['category'];
-				}
+				// Category override option #1 -- cat
+				$query['cat'] = $options['cat'];
 
-			} else {
+			} else if ( ! empty( $options['category_name'] ) ) {
 
-				if ( ! empty( $options['cat'] ) ) {
+				// Category override option #2 -- category_name
+				$query['category_name'] = $options['category_name'];
 
-					// Category override option #1 -- cat
-					$query['cat'] = $options['cat'];
+			} else if ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
 
-				} elseif ( ! empty( $options['category_name'] ) ) {
+				unset( $options['categories']['all'] );
+				$categories = '';
 
-					// Category override option #2 -- category_name
-					$query['category_name'] = $options['category_name'];
-
-				} elseif ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
-
-					unset( $options['categories']['all'] );
-					$categories = '';
-
-					foreach ( $options['categories'] as $category => $include ) {
-						if ( $include ) {
-							$current_category = get_term_by( 'slug', $category, 'category' );
-							$categories .= $current_category->term_id.',';
-						}
-					}
-
-					if ( $categories ) {
-						$categories = themeblvd_remove_trailing_char( $categories, ',' );
-						$query['cat'] = $categories;
+				foreach ( $options['categories'] as $category => $include ) {
+					if ( $include ) {
+						$current_category = get_term_by( 'slug', $category, 'category' );
+						$categories .= $current_category->term_id.',';
 					}
 				}
 
+				if ( $categories ) {
+					$categories = themeblvd_remove_trailing_char( $categories, ',' );
+					$query['cat'] = $categories;
+				}
 			}
 
 		}
 
 		// Tags
-		if ( 'tag' == $source || ! $source ) {
+		if (  $source == 'tag' || ! $source ) {
 			if ( ! empty( $options['tag'] ) ) {
 				$query['tag'] = $options['tag'];
 			}
@@ -255,7 +270,7 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 
 	}
 
-	return apply_filters( 'themeblvd_get_posts_args', $query, $options, $type, $slider );
+	return apply_filters( 'themeblvd_get_posts_args', $query, $options, $type );
 }
 
 /**
@@ -419,281 +434,6 @@ function themeblvd_get_rgb( $color, $opacity = '' ) {
     }
 
     return $output;
-}
-
-/**
- * Get class for a set of display options.
- *
- * @since 2.5.0
- *
- * @param array $display Display options
- * @return string $style Inline style line to be used
- */
-function themeblvd_get_display_class( $display ) {
-
-	$class = array();
-
-	if ( ! empty( $display['bg_type'] ) ) {
-
-		$bg_type = $display['bg_type'];
-
-		if ( $bg_type == 'none' ) {
-
-			if ( empty( $display['apply_popout'] ) ) {
-				$class[] = 'standard';
-			}
-
-		} else {
-
-			$class[] = 'has-bg';
-			$class[] = $bg_type;
-
-			if ( $bg_type == 'color' || $bg_type == 'image' || $bg_type == 'texture' ) {
-				if ( ! empty( $display['text_color'] ) ) {
-					$class[] = 'text-'.$display['text_color'];
-				}
-			}
-
-			if ( $bg_type == 'image' && ! empty( $display['apply_bg_shade'] ) ) {
-				$class[] = 'has-bg-shade';
-			}
-
-		}
-
-		if ( $bg_type == 'texture' ) {
-
-			if ( ! empty( $display['apply_bg_texture_parallax'] ) ) {
-				$class[] = 'tb-parallax';
-			}
-
-		} else if ( $bg_type == 'image' ) {
-
-			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
-
-				$class[] = 'tb-parallax';
-
-				if ( ! empty( $display['bg_image_parallax_stretch'] ) ) {
-					$class[] = 'tb-bg-cover';
-				}
-
-			}
-
-		}
-
-		if ( ! empty( $display['apply_popout'] ) ) {
-			$class[] = 'popout';
-		}
-
-	}
-
-	return implode( ' ', apply_filters( 'themeblvd_display_class', $class, $display ) );
-}
-
-/**
- * If parallax is applicable for section, get the intensity.
- *
- * @since 2.5.0
- *
- * @param array $display Display options
- * @return string $intensity Intensity of the effect, 1-10
- */
-function themeblvd_get_parallax_intensity( $display ) {
-
-	$intensity = 0;
-
-	$bg_type = '';
-
-	if ( ! empty( $display['bg_type'] ) ) {
-		$bg_type = $display['bg_type'];
-	}
-
-	if ( $bg_type == 'texture' ) {
-
-		if ( ! empty( $display['apply_bg_texture_parallax'] ) && ! empty( $display['bg_texture_parallax'] ) ) {
-			$intensity = $display['bg_texture_parallax'];
-		}
-
-	} else if ( $bg_type == 'image' ) {
-
-		if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' && ! empty( $display['bg_image_parallax'] ) ) {
-			$intensity = $display['bg_image_parallax'];
-		}
-
-	}
-
-	return apply_filters( 'themeblvd_parallax_intensity', $intensity, $display );
-}
-
-/**
- * Get inline styles for a set of display options.
- *
- * @since 2.5.0
- *
- * @param array $display Display options
- * @return string $style Inline style line to be used
- */
-function themeblvd_get_display_inline_style( $display ) {
-
-	$bg_type = '';
-	$style = '';
-	$params = array();
-
-	if ( empty( $display['bg_type'] ) ) {
-		return $style;
-	} else {
-		$bg_type = $display['bg_type'];
-	}
-
-	if ( in_array( $bg_type, array('color', 'texture', 'image') ) ) {
-
-		if ( ! empty( $display['bg_color'] ) ) {
-
-			$bg_color = $display['bg_color'];
-
-			if ( ! empty( $display['bg_color_opacity'] ) ) {
-				$bg_color = themeblvd_get_rgb( $bg_color, $display['bg_color_opacity'] );
-			}
-
-			$params['background-color'] = $bg_color;
-
-		}
-
-		if ( $bg_type == 'texture' ) {
-
-			$textures = themeblvd_get_textures();
-
-			if ( ! empty( $display['bg_texture'] ) && ! empty( $textures[$display['bg_texture']] ) ) {
-
-				$texture = $textures[$display['bg_texture']];
-
-				$params['background-image'] = sprintf('url(%s)', $texture['url']);
-				$params['background-position'] = $texture['position'];
-				$params['background-repeat'] = $texture['repeat'];
-				$params['background-size'] = $texture['size'];
-
-			}
-
-		} else if ( $bg_type == 'image' ) {
-
-			if ( ! empty( $display['bg_image']['image'] ) ) {
-				$params['background-image'] = sprintf('url(%s)', $display['bg_image']['image']);
-			}
-
-			if ( ! empty( $display['bg_image']['repeat'] ) ) {
-				$params['background-repeat'] = $display['bg_image']['repeat'];
-			}
-
-			$parallax = false;
-
-			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
-				$parallax = true;
-			}
-
-			if ( ! $parallax && ! empty( $display['bg_image']['attachment'] ) ) {
-				$params['background-attachment'] = $display['bg_image']['attachment'];
-			}
-
-			if ( ! $parallax && ! empty( $display['bg_image']['position'] ) ) {
-				$params['background-position'] = $display['bg_image']['position'];
-			}
-
-			if ( ! $parallax && ! empty( $display['bg_image']['size'] ) ) {
-				$params['background-size'] = $display['bg_image']['size'];
-			}
-
-		}
-
-	}
-
-	if ( ! empty( $display['apply_padding'] ) ) {
-
-		if ( ! empty( $display['padding_top'] ) ) {
-			$params['padding-top'] = $display['padding_top'];
-		}
-
-		if ( ! empty( $display['padding_right'] ) ) {
-			$params['padding-right'] = $display['padding_right'];
-		}
-
-		if ( ! empty( $display['padding_bottom'] ) ) {
-			$params['padding-bottom'] = $display['padding_bottom'];
-		}
-
-		if ( ! empty( $display['padding_left'] ) ) {
-			$params['padding-left'] = $display['padding_left'];
-		}
-
-	}
-
-	$params = apply_filters( 'themeblvd_display_inline_style', $params, $display );
-
-	foreach ( $params as $key => $value ) {
-		$style .= sprintf( '%s: %s;', $key, $value );
-	}
-
-	return $style;
-}
-
-/**
- * Get additional classes for elements.
- *
- * @since 2.0.3
- *
- * @param string $element Element to get classes for
- * @param boolean $start_space Whether there should be a space at start
- * @param boolean $end_space Whether there should be a space at end
- * @param string $type Type of element (only relevant if there is a filter added utilizing it)
- * @param array $options Options for element (only relevant if there is a filter added utilizing it)
- * @param string $location Location of element - featured, primary, or featured_below (@deprecated as of framework 2.5)
- * @return array $classes Classes for element.
- */
-function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
-
-	$classes = '';
-
-	$all_classes = array(
-		'element_columns' 				=> array(),
-		'element_content' 				=> array(),
-		'element_divider' 				=> array(),
-		'element_headline' 				=> array(),
-		'element_jumbotron' 			=> array(),
-		'element_post_grid_paginated' 	=> array('themeblvd-gallery'),
-		'element_post_grid' 			=> array('themeblvd-gallery'),
-		'element_post_grid_slider' 		=> array('themeblvd-gallery'),
-		'element_post_list_paginated' 	=> array(),
-		'element_post_list' 			=> array(),
-		'element_post_list_slider' 		=> array(),
-		'element_post_slider' 			=> array(),
-		'element_slider' 				=> array(),
-		'element_slogan' 				=> array(),
-		'element_tabs' 					=> array(),
-		'element_tweet' 				=> array(),
-		'slider_bootstrap'				=> array(),
-		'slider_carrousel'				=> array(),
-		'slider_nivo'					=> array(),
-		'slider_standard'				=> array()
-	);
-	$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options, $location );
-
-	if ( ! empty( $all_classes[$element] ) ) {
-
-		if ( $start_space ) {
-			$classes .= ' ';
-		}
-
-		if ( is_array( $all_classes[$element] ) ) {
-			$classes .= implode(' ', $all_classes[$element]);
-		} else {
-			// Backward compatbility, $all_classes used to use strings
-			$classes .= $all_classes[$element];
-		}
-
-		if ( $end_space ) {
-			$classes .= ' ';
-		}
-
-	}
-	return $classes;
 }
 
 /**
@@ -1355,7 +1095,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
  *
  * @since 2.2.1
  *
- * @return boolean $show Whether breadcrumbs should show or not
+ * @return bool $show Whether breadcrumbs should show or not
  */
 function themeblvd_show_breadcrumbs() {
 
@@ -1374,6 +1114,11 @@ function themeblvd_show_breadcrumbs() {
 
 	// Disable on posts homepage
 	if ( is_home() ) {
+		$display = 'hide';
+	}
+
+	// Disable on custom layouts (can be added in layout from Builder)
+	if ( is_page_template('template_builder.php') ) {
 		$display = 'hide';
 	}
 
@@ -1510,18 +1255,6 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
 
 	}
 	return apply_filters( 'themeblvd_pagination_parts', $parts );
-}
-
-/**
- * Get the overlay markup for a thumbnail that animates
- * in the video, enlarge, link, or arrow icon.
- *
- * @since 2.3.0
- *
- * @return string $overlay HTML markup to get inserted within anchor tag
- */
-function themeblvd_get_image_overlay() {
-    return apply_filters( 'themeblvd_image_overlay', '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>' );
 }
 
 /**

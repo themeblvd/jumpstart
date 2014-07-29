@@ -233,20 +233,6 @@
 #optionsframework .widefat td ul {
 	margin-top: 0;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5),
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	#optionsframework .conflict {
-		background-image: url(../images/icon-error_2x.png);
-		background-size: 16px 16px;
-	}
-	#optionsframework .no-conflict{
-		background-image: url(../images/icon-check_2x.png);
-		background-size: 16px 16px;
-	}
-}
 
 /* =Form Elements
 -----------------------------------------------*/
@@ -983,21 +969,29 @@ body.themeblvd-stop-scroll {
 	display: none;
 	width:350px;
 }
+.appriseOuter.text-center {
+	text-align: center;
+}
 .appriseInner {
 	padding: 20px;
 }
 .appriseInner .button-secondary {
 	margin: 0 2px;
 }
-.aButtons,
-.aInput {
+.appriseInner .aButtons,
+.appriseInner .aInput {
 	background: #fcfcfc;
 	border-top: 1px solid #dddddd;
 	margin: 20px -20px -20px -20px;
 	padding: 10px;
 	text-align: center;
 }
-.aTextbox {
+.appriseInner .aInput label {
+	color: #888888;
+	display: block;
+	padding: 8px 0 0 0;
+}
+.appriseInner .aTextbox {
 	border: 1px solid #aaa;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;

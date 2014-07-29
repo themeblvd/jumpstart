@@ -443,6 +443,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'multicheck' :
 				foreach ( $value['options'] as $key => $option ) {
+
 					$checked = isset( $val[$key] ) ? checked( $val[$key], 1, false ) : '';
 					$label = $option;
 					$option = preg_replace( '/\W/', '', strtolower( $key ) );
@@ -450,7 +451,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$id = sprintf( '%s-%s-%s', $option_name, $value['id'], $option );
 					$name = sprintf( '%s[%s][%s]', $option_name, $value['id'], $key );
 
-					$output .= sprintf( '<input id="%s" class="checkbox of-input" type="checkbox" name="%s" %s /><label for="%s">%s</label>', esc_attr($id), esc_attr($name), $checked, esc_attr($id), $label );
+					$class = 'checkbox of-input';
+
+					if ( $key == 'all' ) {
+						$class .= ' all';
+					}
+
+					$output .= sprintf( '<input id="%s" class="%s" type="checkbox" name="%s" %s /><label for="%s">%s</label>', esc_attr($id), $class, esc_attr($name), $checked, esc_attr($id), $label );
 				}
 				break;
 
