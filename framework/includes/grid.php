@@ -247,17 +247,30 @@ function themeblvd_grid_thumb_class( $columns ){
  *
  * @since 2.5.0
  */
-function themeblvd_get_open_row( $class = 'row', $style = '' ) {
+function themeblvd_get_open_row( $args = array() ) {
 
-	$output = sprintf( '<div class="%s"', $class );
+	$output = '';
 
-	if ( $style ) {
-		$output .= sprintf(' style="%s"', $style);
+	$defaults = array(
+		'wrap'	=> '',
+		'class'	=> 'row',
+		'style'	=> ''
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	if ( $args['wrap'] ) {
+		$output .= sprintf( '<div class="%s">', $args['wrap'] );
+	}
+
+	$output .= sprintf( '<div class="%s"', $args['class'] );
+
+	if ( $args['style'] ) {
+		$output .= sprintf(' style="%s"', $args['style']);
 	}
 
 	$output .= '>';
 
-	return apply_filters( 'themeblvd_open_row', $output, $class, $style );
+	return apply_filters( 'themeblvd_open_row', $output, $args );
 }
 
 /**
@@ -265,8 +278,8 @@ function themeblvd_get_open_row( $class = 'row', $style = '' ) {
  *
  * @since 2.0.0
  */
-function themeblvd_open_row( $class = 'row', $style = '' ) {
-	echo themeblvd_get_open_row( $class, $style );
+function themeblvd_open_row( $args = array() ) {
+	echo themeblvd_get_open_row( $args );
 }
 
 /**
@@ -274,8 +287,20 @@ function themeblvd_open_row( $class = 'row', $style = '' ) {
  *
  * @since 2.5.0
  */
-function themeblvd_get_close_row() {
-	return apply_filters( 'themeblvd_close_row', '</div><!-- .row (end) -->' );
+function themeblvd_get_close_row( $args = array() ) {
+
+	$defaults = array(
+		'wrap'	=> false
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	$output = '</div><!-- .row (end) -->';
+
+	if ( $args['wrap'] ) {
+		$output .= '</div><!-- Row-Wrapping DIV (end) -->';
+	}
+
+	return apply_filters( 'themeblvd_close_row', $output, $args );
 }
 
 /**
@@ -283,6 +308,6 @@ function themeblvd_get_close_row() {
  *
  * @since 2.0.0
  */
-function themeblvd_close_row() {
-	echo themeblvd_get_close_row();
+function themeblvd_close_row( $args = array() ) {
+	echo themeblvd_get_close_row( $args );
 }

@@ -243,6 +243,11 @@ function themeblvd_element( $args ) {
 			themeblvd_image( $args['options']['image'], $args['options'] );
 			break;
 
+		// Slider (Custom, requires Theme Blvd Sliders plugin)
+		case 'slider' :
+			themeblvd_slider( $args['options']['slider_id'] );
+			break;
+
 		// Simple Slider (standard and popout)
 		case 'simple_slider' :
 		case 'simple_slider_popout' :
@@ -444,11 +449,7 @@ function themeblvd_get_element_class( $args ) {
 		'element_slider' 				=> array(),
 		'element_slogan' 				=> array(),
 		'element_tabs' 					=> array(),
-		'element_tweet' 				=> array(),
-		'slider_bootstrap'				=> array(),
-		'slider_carrousel'				=> array(),
-		'slider_nivo'					=> array(),
-		'slider_standard'				=> array()
+		'element_tweet' 				=> array()
 	), $args['type'], $args['options'], $args['section'] );
 
 	foreach ( $deprecated as $key => $value ) {
@@ -754,11 +755,15 @@ function themeblvd_columns( $args, $columns = null ) {
 	}
 
 	// Column Margins
+	//
 	// Problem: By default with Bootstrap, a row of columns
 	// has -15px margin on the sides. However, when a background is
 	// applied to a column, we need to eliminate that so the background
-	// of the column doesn't overhange outside of the container.
-	// Solution: If it's the first column and has BG, change row
+	// of the column doesn't over hang outside of the container.
+	// Note: Using Bootstrap's "container-fluid" class will not work
+	// in this case, because we're doing this per individual side.
+	//
+	// Solution: If it's the first column and has a BG, change row
 	// left margin to 0, and if the last column has a BG, change row
 	// right margin to 0.
 	$margin_left = '-15px';
@@ -789,16 +794,34 @@ function themeblvd_columns( $args, $columns = null ) {
 
 	// Open column row
 	if ( $args['height'] && $args['layout_id'] != 0 && ! $columns ) {
-		printf( '<div class="container-%s-height">', $stack );
-		themeblvd_open_row("row row-{$stack}-height", $margin);
+		$open_row = array(
+			'wrap'	=> "container-{$stack}-height",
+			'class'	=> "row row-{$stack}-height",
+			'style'	=> $margin
+		);
 	} else {
-		themeblvd_open_row('row', $margin);
+		$open_row = array(
+			'class'	=> 'row',
+			'style'	=> $margin
+		);
 	}
+
+	themeblvd_open_row($open_row);
 
 	// Display columns
 	for ( $i = 1; $i <= $num; $i++ ) {
 
 		$grid_class = themeblvd_grid_class( $widths[$i-1], $stack );
+
+		// Equal height columns?
+		if ( $args['height'] ) {
+
+			$grid_class .= " col-{$stack}-height";
+
+			if ( in_array( $args['align'], array( 'top', 'middle', 'bottom' ) ) ) {
+				$grid_class .= ' col-'.$args['align'];
+			}
+		}
 
 		if ( $args['layout_id'] == 0 && $columns ) {
 
@@ -841,16 +864,6 @@ function themeblvd_columns( $args, $columns = null ) {
 				$display = $column['display'];
 			}
 
-			// Equal height columns?
-			if ( $args['height'] ) {
-
-				$grid_class .= " col-{$stack}-height";
-
-				if ( in_array( $args['align'], array( 'top', 'middle', 'bottom' ) ) ) {
-					$grid_class .= ' col-'.$args['align'];
-				}
-			}
-
 			// Start column
 			$display_class = implode( ' ', themeblvd_get_display_class( $display ) );
 			printf('<div class="col %s %s" style="%s" data-parallax="%s">', $grid_class, $display_class, themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
@@ -868,9 +881,9 @@ function themeblvd_columns( $args, $columns = null ) {
 
 	}
 
-	themeblvd_close_row();
-
 	if ( $args['height'] ) {
-		echo "</div><!-- .container-{$stack}-height (end) -->";
+		themeblvd_close_row( array('wrap' => true) );
+	} else {
+		themeblvd_close_row();
 	}
 }
