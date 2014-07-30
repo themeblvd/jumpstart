@@ -27,7 +27,7 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
-						<?php themeblvd_post_grid( array('display' => 'paginated') ); ?>
+						<?php themeblvd_post_grid(); ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->

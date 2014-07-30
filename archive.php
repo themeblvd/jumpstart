@@ -32,51 +32,9 @@ get_header();
 
 							<!-- ARCHIVE POST GRID (start) -->
 
-							<div class="post_grid post_grid_paginated archive">
-								<div class="grid-protection">
-									<?php
-									global $more;
-									$more = 0;
-									$counter = themeblvd_set_att( 'counter', 1 );
-									$columns = themeblvd_get_att( 'columns' );
-									?>
-									<?php if ( have_posts() ) : ?>
-
-										<!-- ROW (start) -->
-										<?php themeblvd_open_row(); ?>
-
-										<?php while ( have_posts() ) : the_post(); ?>
-
-											<?php get_template_part( 'content', themeblvd_get_part( 'archive' ) ); ?>
-
-											<?php if ( $counter % $columns == 0 ) : ?>
-												<?php themeblvd_close_row(); ?>
-												<!-- ROW (end) -->
-											<?php endif; ?>
-
-											<?php if ( $counter % $columns == 0 && themeblvd_get_att( 'posts_per_page' ) != $counter ) : ?>
-												<!-- ROW (start) -->
-												<?php themeblvd_open_row(); ?>
-											<?php endif; ?>
-
-											<?php $counter = themeblvd_set_att( 'counter', $counter+1 ); ?>
-
-										<?php endwhile; ?>
-
-										<?php if ( ($counter-1) != themeblvd_get_att( 'posts_per_page' ) ) : ?>
-											<?php themeblvd_close_row(); ?>
-											<!-- ROW (end) -->
-										<?php endif; ?>
-
-									<?php else : ?>
-
-										<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
-
-									<?php endif; ?>
-
-								</div><!-- .grid-protection (end) -->
-
-								<?php themeblvd_pagination(); ?>
+							<div class="post_grid_paginated post_grid archive">
+								<?php themeblvd_post_grid( array('primary' => true) ); ?>
+							</div><!-- .primary-post-grid (end) -->
 
 							</div><!-- .post_grid (end) -->
 
@@ -86,16 +44,9 @@ get_header();
 
 							<!-- ARCHIVE POST LIST (start) -->
 
-							<div class="post_list post_list_paginated archive">
-								<?php if ( have_posts() ) : ?>
-									<?php while ( have_posts() ) : the_post(); ?>
-										<?php get_template_part( 'content', themeblvd_get_part( 'archive' ) ); ?>
-									<?php endwhile; ?>
-								<?php else : ?>
-									<p><?php echo themeblvd_get_local( 'archive_no_posts' ); ?></p>
-								<?php endif; ?>
-								<?php themeblvd_pagination(); ?>
-							</div><!-- .blogroll (end) -->
+							<div class="post_list_paginated post_list archive">
+								<?php themeblvd_post_list( array('primary' => true) ); ?>
+							</div><!-- .primary-post-list (end) -->
 
 							<!-- ARCHIVE POST LIST (end) -->
 

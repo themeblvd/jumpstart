@@ -35,51 +35,7 @@ get_header();
 							<!-- SEARCH POST GRID (start) -->
 
 							<div class="post_grid post_grid_paginated archive search-results">
-								<div class="grid-protection">
-									<?php
-									global $more;
-									$more = 0;
-									$counter = themeblvd_set_att( 'counter', 1 );
-									$columns = themeblvd_get_att( 'columns' );
-									?>
-									<?php if ( have_posts() ) : ?>
-
-										<!-- ROW (start) -->
-										<?php themeblvd_open_row(); ?>
-
-										<?php while ( have_posts() ) : the_post(); ?>
-
-											<?php get_template_part( 'content', themeblvd_get_part( 'search_results' ) ); ?>
-
-											<?php if ( $counter % $columns == 0 ) : ?>
-												<?php themeblvd_close_row(); ?>
-												<!-- ROW (end) -->
-											<?php endif; ?>
-
-											<?php if ( $counter % $columns == 0 && themeblvd_get_att( 'posts_per_page' ) != $counter ) : ?>
-												<!-- ROW (start) -->
-												<?php themeblvd_open_row(); ?>
-											<?php endif; ?>
-
-											<?php $counter = themeblvd_set_att( 'counter', $counter+1 ); ?>
-
-										<?php endwhile; ?>
-
-										<?php if ( ($counter-1) != themeblvd_get_att( 'posts_per_page' ) ) : ?>
-											<?php themeblvd_close_row(); ?>
-											<!-- ROW (end) -->
-										<?php endif; ?>
-
-									<?php else : ?>
-
-										<?php get_template_part( 'content', themeblvd_get_part( 'search' ) ); ?>
-
-									<?php endif; ?>
-
-								</div><!-- .grid-protection (end) -->
-
-								<?php themeblvd_pagination(); ?>
-
+								<?php themeblvd_post_grid( array('primary' => true) ); ?>
 							</div><!-- .post_grid (end) -->
 
 							<!-- SEARCH POST GRID (end) -->
@@ -89,14 +45,7 @@ get_header();
 							<!-- SEARCH POST LIST (start) -->
 
 							<div class="post_list post_list_paginated archive search-results">
-								<?php if ( have_posts() ) : ?>
-									<?php while ( have_posts() ) : the_post(); ?>
-										<?php get_template_part( 'content', themeblvd_get_part( 'search_results' ) ); ?>
-									<?php endwhile; ?>
-								<?php else : ?>
-									<?php get_template_part( 'content', themeblvd_get_part( 'search' ) ); ?>
-								<?php endif; ?>
-								<?php themeblvd_pagination(); ?>
+								<?php themeblvd_post_list( array('primary' => true) ); ?>
 							</div><!-- .post_list (end) -->
 
 							<!-- SEARCH POST LIST (end) -->
