@@ -796,111 +796,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'button':
-
-				// BG color
-				$bg = '#ffffff';
-				$bg_def = '#ffffff';
-
-				if ( ! empty( $val['bg'] ) ) {
-					$bg = $val['bg'];
-				}
-
-				if ( ! empty( $value['std']['bg'] ) ) {
-					$bg_def = $value['std']['bg'];
-				}
-
-				$output .= '<div class="color bg hide">';
-				$output .= sprintf( '<input id="%s_bg" name="%s" type="text" value="%s" class="color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][bg]'), esc_attr($bg), esc_attr($bg_def) );
-				$output .= '</div><!-- .color.bg (end) -->';
-
-				// Setup BG hover color
-				$bg_hover = '#ebebeb';
-				$bg_hover_def = '#ebebeb';
-
-				if ( ! empty( $val['bg_hover'] ) ) {
-					$bg_hover = $val['bg_hover'];
-				}
-
-				if ( ! empty( $value['std']['bg_hover'] ) ) {
-					$bg_hover_def = $value['std']['bg_hover'];
-				}
-
-				$output .= '<div class="color bg_hover">';
-				$output .= sprintf( '<input id="%s_bg_hover" name="%s" type="text" value="%s" class="color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][bg_hover]'), esc_attr($bg_hover), esc_attr($bg_hover_def) );
-				$output .= '</div><!-- .color.bg_hover (end) -->';
-
-				// Setup border color
-				$border = '#cccccc';
-				$border_def = '#cccccc';
-
-				if ( ! empty( $val['border'] ) ) {
-					$border = $val['border'];
-				}
-
-				if ( ! empty( $value['std']['border'] ) ) {
-					$border_def = $value['std']['border'];
-				}
-
-				$output .= '<div class="color border hide">';
-				$output .= sprintf( '<input id="%s_border" name="%s" type="text" value="%s" class="color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][border]'), esc_attr($border), esc_attr($border_def) );
-				$output .= '</div><!-- .color.border (end) -->';
-
-				// Setup text color
-				$text = '#333333';
-				$text_def = '#333333';
-
-				if ( ! empty( $val['text'] ) ) {
-					$text = $val['text'];
-				}
-
-				if ( ! empty( $value['std']['text'] ) ) {
-					$text_def = $value['std']['text'];
-				}
-
-				$output .= '<div class="color text">';
-				$output .= sprintf( '<input id="%s_text" name="%s" type="text" value="%s" class="color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][text]'), esc_attr($text), esc_attr($text_def) );
-				$output .= '</div><!-- .color.text (end) -->';
-
-				// Setup text hover color
-				$text_hover = '#333333';
-				$text_hover_def = '#333333';
-
-				if ( ! empty( $val['text_hover'] ) ) {
-					$text_hover = $val['text_hover'];
-				}
-
-				if ( ! empty( $value['std']['text_hover'] ) ) {
-					$text_hover_def = $value['std']['text_hover'];
-				}
-
-				$output .= '<div class="color text_hover">';
-				$output .= sprintf( '<input id="%s_text_hover" name="%s" type="text" value="%s" class="color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][text_hover]'), esc_attr($text_hover), esc_attr($text_hover_def) );
-				$output .= '</div><!-- .color.text_hover (end) -->';
-
-				// Include BG
-				$include_bg = 1;
-
-				if ( isset( $val['include_bg'] ) ) {
-					$include_bg = $val['include_bg'];
-				}
-
-				$output .= '<div class="include bg clearfix">';
-				$output .= sprintf( '<div class="include-controls"><input id="%s_include_bg" class="checkbox of-input" type="checkbox" name="%s" %s /></div>', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][include_bg]'), checked( $include_bg, 1, false ) );
-				$output .= '<div class="include-explain">'.__('Button has background color', 'themeblvd').'</div>';
-				$output .= '</div><!-- .include (end) -->';
-
-				// Include border
-				$include_border = 1;
-
-				if ( isset( $val['include_border'] ) ) {
-					$include_border = $val['include_border'];
-				}
-
-				$output .= '<div class="include border clearfix">';
-				$output .= sprintf( '<div class="include-controls"><input id="%s_include_border" class="checkbox of-input" type="checkbox" name="%s" %s /></div>', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][include_border]'), checked( $include_border, 1, false ) );
-				$output .= '<div class="include-explain">'.__('Button has border', 'themeblvd').'</div>';
-				$output .= '</div><!-- .include (end) -->';
-
+				$output .= themeblvd_button_option( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/
@@ -1060,6 +956,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'bars' :
 				$bars = $advanced->get('bars');
 				$output .= $bars->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
+			/* Buttons
+			/*---------------------------------------*/
+
+			case 'buttons' :
+				$buttons = $advanced->get('buttons');
+				$output .= $buttons->get_display( $value['id'], $option_name, $val );
 				break;
 
 			/*---------------------------------------*/

@@ -1044,9 +1044,10 @@
 	line-height: 60px;
 }
 
-/* Sortables and Full Width options - bars, datasets, locations, sectors, tabs, testimonials, toggles */
+/* Sortables and Full Width options - bars, buttons, datasets, locations, sectors, tabs, testimonials, toggles */
 #optionsframework .full-width > .option > .controls,
 #optionsframework .section-bars > .option > .controls,
+#optionsframework .section-buttons > .option > .controls,
 #optionsframework .section-datasets > .option > .controls,
 #optionsframework .section-locations > .option > .controls,
 #optionsframework .section-sectors > .option > .controls,
@@ -1061,6 +1062,7 @@
 }
 #optionsframework .full-width > .option > .explain,
 #optionsframework .section-bars > .option > .explain,
+#optionsframework .section-buttons > .option > .explain,
 #optionsframework .section-datasets > .option > .explain,
 #optionsframework .section-locations > .option > .explain,
 #optionsframework .section-sectors > .option > .explain,
@@ -1073,6 +1075,7 @@
 }
 #optionsframework .full-width .tb-sortable-option textarea,
 #optionsframework .section-bars .tb-sortable-option textarea,
+#optionsframework .section-buttons .tb-sortable-option textarea,
 #optionsframework .section-datasets .tb-sortable-option textarea,
 #optionsframework .section-locations .tb-sortable-option textarea,
 #optionsframework .section-sectors .tb-sortable-option textarea,

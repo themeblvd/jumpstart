@@ -53,6 +53,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_sectors', 'themeblvd_sanitize_sectors' );
 	add_filter( 'themeblvd_sanitize_datasets', 'themeblvd_sanitize_datasets' );
 	add_filter( 'themeblvd_sanitize_bars', 'themeblvd_sanitize_bars' );
+	add_filter( 'themeblvd_sanitize_buttons', 'themeblvd_sanitize_buttons' );
 }
 
 /**
@@ -899,7 +900,17 @@ function themeblvd_sanitize_button( $input ){
 	$output['border'] = apply_filters( 'themeblvd_sanitize_hex', $input['border'] );
 	$output['text'] = apply_filters( 'themeblvd_sanitize_hex', $input['text'] );
 	$output['text_hover'] = apply_filters( 'themeblvd_sanitize_hex', $input['text_hover'] );
+
+	if ( empty( $input['include_bg'] ) ) {
+		$input['include_bg'] = '';
+	}
+
 	$output['include_bg'] = apply_filters( 'themeblvd_sanitize_checkbox', $input['include_bg'] );
+
+	if ( empty( $input['include_border'] ) ) {
+		$input['include_border'] = '';
+	}
+
 	$output['include_border'] = apply_filters( 'themeblvd_sanitize_checkbox', $input['include_border'] );
 
 	return $output;
@@ -1105,6 +1116,32 @@ function themeblvd_sanitize_bars( $input ) {
 			$output[$item_id]['value'] = wp_kses( $item['value'], array() );
 			$output[$item_id]['total'] = wp_kses( $item['total'], array() );
 			$output[$item_id]['color'] = themeblvd_sanitize_hex( $item['color'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Buttons
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_buttons( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['color'] = wp_kses( $item['color'], array() );
+			$output[$item_id]['custom'] = themeblvd_sanitize_button( $item['custom'] );
+			$output[$item_id]['text'] = themeblvd_sanitize_text( $item['text'] );
+			$output[$item_id]['size'] = wp_kses( $item['size'], array() );
+			$output[$item_id]['url'] = wp_kses( $item['url'], array() );
+			$output[$item_id]['target'] = wp_kses( $item['target'], array() );
+			$output[$item_id]['icon_before'] = wp_kses( $item['icon_before'], array() );
+			$output[$item_id]['icon_after'] = wp_kses( $item['icon_after'], array() );
 		}
 	}
 

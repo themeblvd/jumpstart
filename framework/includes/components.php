@@ -331,8 +331,7 @@ function themeblvd_get_jumbotron( $args, $content ) {
 
     $defaults = array(
         'title'         => '',      // Title of unit
-        'style'         => 'none',  // Custom styling class
-        'bg_color'      => '',      // Background color - Ex: #000000
+        'bg_color'      => '',      // Background color - Ex: #000000 (no option in Builder)
         'bg_opacity'    => '1',     // BG color opacity for rgba()
         'text_color'    => '',      // Text color - Ex: #000000
         'text_align'    => 'left',  // How to align text - left, right, center
@@ -354,25 +353,17 @@ function themeblvd_get_jumbotron( $args, $content ) {
     // Setup inline styles
     $style = '';
 
-    if ( $args['style'] == 'custom' ) {
+    if ( $args['bg_color'] ) {
+        $style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
+        $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+        $class .= ' has-bg';
+    }
 
-        if ( $args['bg_color'] ) {
-            $style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
-            $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
-            $class .= ' has-bg';
-        }
-
-        if ( $args['text_color'] ) {
-            $style .= sprintf( 'color:%s;', $args['text_color'] );
-        }
-
+    if ( $args['text_color'] ) {
+        $style .= sprintf( 'color:%s;', $args['text_color'] );
     }
 
     // Custom CSS classes
-    if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
-        $class .= ' '.$args['style'];
-    }
-
     if ( $args['class'] ) {
         $class .= ' '.$args['class'];
     }
@@ -425,23 +416,9 @@ function themeblvd_jumbotron( $args ) {
 
     $defaults = array(
         // Rest of $args are verified in themeblvd_get_jumbotron() ...
-        'button'                => 0,
-        'button_color'          => 'default',
-        'button_custom'         => array(
-            'bg'                => '#ffffff',
-            'bg_hover'          => '#ebebeb',
-            'border'            => '#cccccc',
-            'text'              => '#333333',
-            'text_hover'        => '#333333',
-            'include_bg'        => 1,
-            'include_border'    => 1
-        ),
-        'button_text'           => 'Get Started Today!',
-        'button_size'           => 'large',
-        'button_url'            => 'http://www.your-site.com/your-landing-page',
-        'button_target'         => '_self',
-        'button_icon_before'    => '',
-        'button_icon_after'     => '',
+        'buttons'       => array(), // Any buttons to include
+        'buttons_stack' => '0',     // Whether buttons appear stacked
+        'buttons_block' => '0'      // Whether buttons are displayed as block-level
     );
     $args = wp_parse_args( $args, $defaults );
 
@@ -452,31 +429,16 @@ function themeblvd_jumbotron( $args ) {
         $content = $args['content'];
     }
 
-    // Add buttont to content?
-    if ( $args['button'] ) {
+    if ( $args['buttons'] ) {
 
-        // Custom button styling
-        $addon = '';
-
-        if ( $args['button_color'] == 'custom' ) {
-
-            if ( $args['button_custom']['include_bg'] ) {
-                $bg = $args['button_custom']['bg'];
-            } else {
-                $bg = 'transparent';
+        if ( $args['buttons_block'] ) {
+            foreach ( $args['buttons'] as $key => $value ) {
+                $args['buttons'][$key]['block'] = true;
             }
-
-            if ( $args['button_custom']['include_border'] ) {
-                $border = $args['button_custom']['border'];
-            } else {
-                $border = 'transparent';
-            }
-
-            $addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', $bg, $border, $args['button_custom']['text'], $args['button_custom']['bg_hover'], $args['button_custom']['text_hover'] );
-
         }
 
-        $content .= "\n\n".themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
+        $content .= "\n\n".themeblvd_get_buttons( $args['buttons'], array( 'stack' => $args['buttons_stack'] ) );
+
     }
 
     echo themeblvd_get_jumbotron( $args, $content );

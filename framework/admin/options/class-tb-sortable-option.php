@@ -441,6 +441,14 @@ abstract class Theme_Blvd_Sortable_Option {
 					break;
 
 				/*---------------------------------------*/
+				/* Button
+				/*---------------------------------------*/
+
+				case 'button' :
+					$item_output .= themeblvd_button_option( $option['id'], $option_name.'['.$option_id.']['.$item_id.']', $current );
+					break;
+
+				/*---------------------------------------*/
 				/* Geo (Latitude and Longitude)
 				/*---------------------------------------*/
 
@@ -645,6 +653,142 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 			'delete_confirm'		=> __('Are you sure you want to delete this progress bar?', 'themeblvd'),
 			'delete_all' 			=> __('Delete All Progress Bars','themeblvd'),
 			'delete_all_confirm' 	=> __('Are you sure you want to delete all progress bars?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Buttons option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'buttons';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'show-hide-toggle'
+		    ),
+			array(
+				'id' 		=> 'color',
+				'name'		=> __( 'Button Color', 'themeblvd_builder' ),
+				'desc'		=> __( 'Select what color you\'d like to use for this button.', 'themeblvd_builder' ),
+				'type'		=> 'select',
+				'class'		=> 'trigger',
+				'options'	=> themeblvd_colors()
+			),
+			array(
+				'id' 		=> 'custom',
+				'name'		=> __( 'Custom Button Color', 'themeblvd_builder' ),
+				'desc'		=> __( 'Configure a custom style for the button.', 'themeblvd_builder' ),
+				'std'		=> array(
+					'bg' 				=> '#ffffff',
+					'bg_hover'			=> '#ebebeb',
+					'border' 			=> '#cccccc',
+					'text'				=> '#333333',
+					'text_hover'		=> '#333333',
+					'include_bg'		=> 1,
+					'include_border'	=> 1
+				),
+				'type'		=> 'button',
+				'class'		=> 'hide receiver receiver-custom'
+			),
+			array(
+		    	'type'		=> 'subgroup_end'
+		    ),
+			array(
+				'id' 		=> 'text',
+				'name'		=> __( 'Button Text', 'themeblvd_builder' ),
+				'desc'		=> __( 'Enter the text for the button.', 'themeblvd_builder' ),
+				'std'		=> 'Get Started Today!',
+				'type'		=> 'text',
+				'trigger'	=> true
+			),
+			array(
+				'id' 		=> 'size',
+				'name'		=> __( 'Button Size', 'themeblvd_builder' ),
+				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd_builder' ),
+				'type'		=> 'select',
+				'std'		=> 'large',
+				'options'	=> array(
+					'mini' 		=> __( 'Mini', 'themeblvd_builder' ),
+					'small' 	=> __( 'Small', 'themeblvd_builder' ),
+					'default' 	=> __( 'Normal', 'themeblvd_builder' ),
+					'large' 	=> __( 'Large', 'themeblvd_builder' ),
+					'x-large' 	=> __( 'Extra Large', 'themeblvd_builder' )
+				)
+			),
+			array(
+				'id' 		=> 'url',
+				'name'		=> __( 'Link URL', 'themeblvd_builder' ),
+				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd_builder' ),
+				'std'		=> 'http://www.your-site.com/your-landing-page',
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'target',
+				'name'		=> __( 'Link Target', 'themeblvd_builder' ),
+				'desc'		=> __( 'Select how you want the button to open the webpage.', 'themeblvd_builder' ),
+				'type'		=> 'select',
+				'options'	=> array(
+			        '_self' 	=> __( 'Same Window', 'themeblvd_builder' ),
+			        '_blank' 	=> __( 'New Window', 'themeblvd_builder' ),
+			        'lightbox' 	=> __( 'Lightbox Popup', 'themeblvd_builder' )
+				)
+			),
+			array(
+				'id' 		=> 'icon_before',
+				'name'		=> __( 'Icon Before Button Text (optional)', 'themeblvd_builder' ),
+				'desc'		=> __( 'Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd_builder' ),
+				'type'		=> 'text',
+				'icon'		=> 'vector'
+			),
+			array(
+				'id' 		=> 'icon_after',
+				'name'		=> __( 'Icon After Button Text (optional)', 'themeblvd_builder' ),
+				'desc'		=> __( 'Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd_builder' ),
+				'type'		=> 'text',
+				'icon'		=> 'vector'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Button','themeblvd'),
+			'delete' 				=> __('Delete Button','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this button?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Buttons','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all buttons?','themeblvd')
 		);
 		return $labels;
 	}

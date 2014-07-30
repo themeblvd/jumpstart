@@ -94,7 +94,6 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 	return apply_filters( 'themeblvd_contact_bar', $output, $buttons, $args );
 }
 
-if ( ! function_exists( 'themeblvd_button' ) ) : // pluggable for backwards compat, use themeblvd_button filter instead
 /**
  * Button
  *
@@ -176,7 +175,107 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	// Return final button
 	return apply_filters( 'themeblvd_button', $button, $text, $url, $color, $target, $size, $classes, $title, $icon_before, $icon_after, $addon, $block );
 }
-endif;
+
+/**
+ * Get group of buttons
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_buttons( $buttons, $args ) {
+
+	$defaults = array(
+		'stack'	=> false
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// Default button atts
+	$btn_std = array(
+		'color'				=> 'default',
+		'custom'			=> array(),
+		'text'				=> '',
+		'size'				=> 'default',
+		'url'				=> '',
+		'target'			=> '_self',
+		'icon_before'		=> '',
+		'icon_after'		=> '',
+		'block'				=> false
+	);
+
+	// Default custom button atts
+	$btn_custom_std = array(
+		'bg'				=> '',
+		'bg_hover'			=> '',
+		'border'			=> '',
+		'text'				=> '',
+		'text_hover'		=> '',
+		'include_border'	=> '1',
+		'include_bg'		=> '1'
+	);
+
+	$output = '';
+
+	$total = count($buttons);
+	$i = 1;
+
+	if ( $buttons ) {
+		foreach ( $buttons as $btn ) {
+
+			$btn = wp_parse_args( $btn, $btn_std );
+
+			if ( ! $btn['text'] ) {
+				continue;
+			}
+
+			if ( $args['stack'] ) {
+				$output .= '<p class="has-btn">';
+			}
+
+			$addon = '';
+
+			if ( $btn['custom'] ) {
+
+				$custom = wp_parse_args( $btn['custom'], $btn_custom_std );
+
+				if ( $custom['include_bg'] ) {
+	                $bg = $custom['bg'];
+	            } else {
+	                $bg = 'transparent';
+	            }
+
+	            if ( $custom['include_border'] ) {
+	                $border = $custom['border'];
+	            } else {
+	                $border = 'transparent';
+	            }
+
+	            $addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', $bg, $border, $custom['text'], $custom['bg_hover'], $custom['text_hover'] );
+
+	        }
+
+			$output .= themeblvd_button( $btn['text'], $btn['url'], $btn['color'], $btn['target'], $btn['size'], null, null, $btn['icon_before'], $btn['icon_after'], $addon, $btn['block'] );
+
+			if ( $args['stack'] ) {
+				$output .= '</p>';
+			} else if ( $i < $total ) {
+				$output .= ' ';
+			}
+
+			$i++;
+		}
+	}
+
+	return apply_filters( 'themeblvd_buttons', $output, $buttons );
+
+}
+
+/**
+ * Display group of buttons
+ *
+ * @since 2.5.0
+ */
+function themeblvd_buttons( $buttons ) {
+	echo themeblvd_get_buttons( $buttons );
+}
 
 if ( !function_exists( 'themeblvd_archive_title' ) ) :
 /**
