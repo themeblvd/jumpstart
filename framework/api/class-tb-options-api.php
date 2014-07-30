@@ -347,7 +347,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __( 'Show featured images at top of posts?', 'themeblvd' ),
 						'desc' 		=> __( 'Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don\'t want them to show on the actual posts themeselves.', 'themeblvd' ),
 						'id' 		=> 'single_thumbs',
-						'std' 		=> 'small',
+						'std' 		=> 'full',
 						'type' 		=> 'radio',
 						'options' 	=> array(
 							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
@@ -377,7 +377,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
 						'desc' 		=> __( 'Select the size of the blog\'s post thumbnail or whether you\'d like to hide them all together when posts are listed.', 'themeblvd' ),
 						'id' 		=> 'blog_thumbs',
-						'std' 		=> 'small',
+						'std' 		=> 'full',
 						'type' 		=> 'radio',
 						'options' 	=> array(
 							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
