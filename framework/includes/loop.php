@@ -9,13 +9,14 @@
  */
 function themeblvd_post_list( $args = array() ){
 
+	global $wp_query;
 	global $post;
 	global $more;
 
 	// Setup and extract $args
 	$defaults = array(
 		'title'				=> '',						// Title for element
-		'display'			=> 'list',					// How to display, grid, paginated, or slider
+		'display'			=> 'paginated',				// How to display - list or paginated
 		'source'			=> '',						// Source of posts - category, tag, query
 		'categories'		=> array('all' => 1),		// Post categories to include
 		'category_name'		=> '',						// Force category_name string of query
@@ -28,7 +29,8 @@ function themeblvd_post_list( $args = array() ){
 		'order'				=> 'DESC',					// Order param for posts query
 		'offset'			=> '0',						// Offset param for posts query
 		'query'				=> '',						// Custom query string
-		'part'				=> ''						// For custom template part for each post
+		'part'				=> '',						// For custom template part for each post
+		'primary'			=> '0'						// Whether to pull from the primary query
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -71,30 +73,39 @@ function themeblvd_post_list( $args = array() ){
 
 	$size = themeblvd_set_att( 'size', $size );
 
-	// Setup query
-	if ( $paginated ) {
+	if ( $args['primary'] ) {
 
-		// There can only be one "second query"; so if one
-		// already exists, that's our boy.
-		$query_args = themeblvd_get_second_query();
-
-		if ( ! $query_args ) {
-			// Set the second query in global $themeblvd_query.
-			// We only do this for paginated queries.
-			$query_args = themeblvd_set_second_query( $args, 'list' ); // Sets global var and gets for local var
-		}
+		// Pull from primary query
+		$posts = $wp_query;
 
 	} else {
 
-		// Standard query for non-paginated posts
-		$query_args = themeblvd_get_posts_args( $args, 'list' );
+		// Setup query
+		if ( $paginated ) {
+
+			// There can only be one "second query"; so if one
+			// already exists, that's our boy.
+			$query_args = themeblvd_get_second_query();
+
+			if ( ! $query_args ) {
+				// Set the second query in global $themeblvd_query.
+				// We only do this for paginated queries.
+				$query_args = themeblvd_set_second_query( $args, 'list' ); // Sets global var and gets for local var
+			}
+
+		} else {
+
+			// Standard query for non-paginated posts
+			$query_args = themeblvd_get_posts_args( $args, 'list' );
+
+		}
+
+		$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, 'list' );
+
+		// Get posts
+		$posts = new WP_Query( $query_args );
 
 	}
-
-	$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, 'list' );
-
-	// Get posts
-	$posts = new WP_Query( $query_args );
 
 	// Start output
 	$class = 'post_list';
@@ -165,7 +176,7 @@ function themeblvd_post_grid( $args = array() ){
 	// Setup and extract $args
 	$defaults = array(
 		'title'				=> '',								// Title for element
-		'display'			=> 'grid',							// How to display, grid, paginated, or slider
+		'display'			=> 'paginated',						// How to display, grid, paginated, or slider
 		'source'			=> '',								// Source of posts - category, tag, query
 		'categories'		=> array( 'all' 	=> 1 ),			// Post categories to include
 		'category_name'		=> '',								// Force category_name string of query
@@ -182,7 +193,8 @@ function themeblvd_post_grid( $args = array() ){
 		'timeout'			=> '3',								// If slider, seconds between trasitinos
 		'nav'				=> '1',								// If slider, whether to show controls
 		'crop'				=> '',								// Custom image crop size
-		'part'				=> ''								// For custom template part for each post
+		'part'				=> '',								// For custom template part for each post
+		'primary'			=> '0'								// Whether to pull from the primary query
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -217,7 +229,7 @@ function themeblvd_post_grid( $args = array() ){
 	$columns = themeblvd_set_att( 'columns', $columns );
 
 	// Global grid class
-	$class = themeblvd_set_att( 'class', 'col '.themeblvd_grid_class( intval($columns) ) );
+	$class = themeblvd_set_att( 'class', sprintf( 'col %s', themeblvd_grid_class(intval($columns)) ) );
 
 	// Crop and size
 	$size = themeblvd_set_att( 'size', themeblvd_grid_thumb_class( $columns ) );
@@ -229,44 +241,53 @@ function themeblvd_post_grid( $args = array() ){
 
 	$crop = themeblvd_set_att( 'crop', $crop );
 
-	// Setup query
-	if ( $paginated ) {
+	if ( $args['primary'] ) {
 
-		// There can only be one "second query"; so if one
-		// already exists, that's our boy.
-		$query_args = themeblvd_get_second_query();
-
-		if ( ! $query_args ) {
-
-			// Set the second query in global $themeblvd_query.
-			// We only do this for paginated queries.
-			$args['posts_per_page'] = '-1';
-
-			if ( $args['display'] == 'paginated' && $args['rows'] ) {
-				$args['posts_per_page'] = $args['rows']*$columns;
-			}
-
-			$query_args = themeblvd_set_second_query( $args, 'grid' ); // Sets global var and gets for local var
-		}
+		// Pull from primary query
+		$posts = $wp_query;
 
 	} else {
 
-		// Standard query for non-paginated posts
-		$query_args = themeblvd_get_posts_args( $args, 'grid' );
+		// Setup query
+		if ( $paginated ) {
+
+			// There can only be one "second query"; so if one
+			// already exists, that's our boy.
+			$query_args = themeblvd_get_second_query();
+
+			if ( ! $query_args ) {
+
+				// Set the second query in global $themeblvd_query.
+				// We only do this for paginated queries.
+				$args['posts_per_page'] = '-1';
+
+				if ( $args['display'] == 'paginated' && $args['rows'] ) {
+					$args['posts_per_page'] = $args['rows']*$columns;
+				}
+
+				$query_args = themeblvd_set_second_query( $args, 'grid' ); // Sets global var and gets for local var
+			}
+
+		} else {
+
+			// Standard query for non-paginated posts
+			$query_args = themeblvd_get_posts_args( $args, 'grid' );
+
+		}
+
+		$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, 'grid' );
+
+		// If it's a post grid slider, pass it on with the query.
+		if ( $args['display'] == 'slider' ) {
+			$args['query'] = $query_args;
+			themeblvd_grid_slider($args);
+			return;
+		}
+
+		// Get posts
+		$posts = new WP_Query( $query_args );
 
 	}
-
-	$query_args = apply_filters( 'themeblvd_posts_args', $query_args, $args, 'grid' );
-
-	// If it's a post grid slider, pass it on with the query.
-	if ( $args['display'] == 'slider' ) {
-		$args['query'] = $query_args;
-		themeblvd_grid_slider($args);
-		return;
-	}
-
-	// Get posts
-	$posts = new WP_Query( $query_args );
 
 	// Start output
 	$class = 'post_grid';
@@ -614,7 +635,7 @@ function themeblvd_get_post_slider( $args ) {
 
 			} else if ( $args['slide_link'] == 'image_link' ) {
 
-				// Link the full image slide to whatever the user 
+				// Link the full image slide to whatever the user
 				// has setup as the featured image link
 				$type = get_post_meta( $post->ID, '_tb_thumb_link', true );
 
