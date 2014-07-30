@@ -34,7 +34,7 @@ get_header();
 							<!-- HOMEPAGE POST GRID (start) -->
 
 							<div class="primary-post-grid post_grid_paginated post_grid">
-								<?php themeblvd_post_grid( array('primary' => true) ); ?>
+								<?php themeblvd_the_post_grid(); ?>
 							</div><!-- .primary-post-grid (end) -->
 
 							<!-- HOMEPAGE POST GRID (end) -->
@@ -44,7 +44,7 @@ get_header();
 							<!-- HOMEPAGE POST LIST (start) -->
 
 							<div class="primary-post-list post_list_paginated post_list">
-								<?php themeblvd_post_list( array('primary' => true) ); ?>
+								<?php themeblvd_the_post_list(); ?>
 							</div><!-- .primary-post-list (end) -->
 
 							<!-- HOMEPAGE POST LIST (end) -->

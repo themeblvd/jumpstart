@@ -35,7 +35,7 @@ get_header();
 							<!-- SEARCH POST GRID (start) -->
 
 							<div class="post_grid post_grid_paginated archive search-results">
-								<?php themeblvd_post_grid( array('primary' => true) ); ?>
+								<?php themeblvd_the_post_grid(); ?>
 							</div><!-- .post_grid (end) -->
 
 							<!-- SEARCH POST GRID (end) -->
@@ -45,7 +45,7 @@ get_header();
 							<!-- SEARCH POST LIST (start) -->
 
 							<div class="post_list post_list_paginated archive search-results">
-								<?php themeblvd_post_list( array('primary' => true) ); ?>
+								<?php themeblvd_the_post_list(); ?>
 							</div><!-- .post_list (end) -->
 
 							<!-- SEARCH POST LIST (end) -->

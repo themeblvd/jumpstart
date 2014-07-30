@@ -30,7 +30,7 @@ function themeblvd_post_list( $args = array() ){
 		'offset'			=> '0',						// Offset param for posts query
 		'query'				=> '',						// Custom query string
 		'part'				=> '',						// For custom template part for each post
-		'primary'			=> '0'						// Whether to pull from the primary query
+		'wp_query'			=> false					// Whether to pull from primary WP query
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -73,7 +73,7 @@ function themeblvd_post_list( $args = array() ){
 
 	$size = themeblvd_set_att( 'size', $size );
 
-	if ( $args['primary'] ) {
+	if ( $args['wp_query'] ) {
 
 		// Pull from primary query
 		$posts = $wp_query;
@@ -161,6 +161,22 @@ function themeblvd_post_list( $args = array() ){
 }
 
 /**
+ * Post List (primary loop)
+ *
+ * @since 2.5.0
+ */
+function themeblvd_the_post_list() {
+
+	$args = apply_filters('themeblvd_the_post_list_args', array(
+		'display'	=> 'paginated',
+		'wp_query' 	=> true
+	));
+
+	themeblvd_post_list( $args );
+
+}
+
+/**
  * Post Grid (secondary loops)
  *
  * @since 2.5.0
@@ -194,7 +210,7 @@ function themeblvd_post_grid( $args = array() ){
 		'nav'				=> '1',								// If slider, whether to show controls
 		'crop'				=> '',								// Custom image crop size
 		'part'				=> '',								// For custom template part for each post
-		'primary'			=> '0'								// Whether to pull from the primary query
+		'wp_query'			=> false							// Whether to pull from primary WP query
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -241,7 +257,7 @@ function themeblvd_post_grid( $args = array() ){
 
 	$crop = themeblvd_set_att( 'crop', $crop );
 
-	if ( $args['primary'] ) {
+	if ( $args['wp_query'] ) {
 
 		// Pull from primary query
 		$posts = $wp_query;
@@ -363,6 +379,22 @@ function themeblvd_post_grid( $args = array() ){
 
 	// End output
 	echo '</div><!-- .post_grid (end) -->';
+}
+
+/**
+ * Post Grid (primary loop)
+ *
+ * @since 2.5.0
+ */
+function themeblvd_the_post_grid() {
+
+	$args = apply_filters('themeblvd_the_post_grid_args', array(
+		'display'	=> 'paginated',
+		'wp_query' 	=> true
+	));
+
+	themeblvd_post_grid( $args );
+
 }
 
 /**

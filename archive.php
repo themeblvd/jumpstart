@@ -33,7 +33,7 @@ get_header();
 							<!-- ARCHIVE POST GRID (start) -->
 
 							<div class="post_grid_paginated post_grid archive">
-								<?php themeblvd_post_grid( array('primary' => true) ); ?>
+								<?php themeblvd_the_post_grid(); ?>
 							</div><!-- .primary-post-grid (end) -->
 
 							</div><!-- .post_grid (end) -->
@@ -45,7 +45,7 @@ get_header();
 							<!-- ARCHIVE POST LIST (start) -->
 
 							<div class="post_list_paginated post_list archive">
-								<?php themeblvd_post_list( array('primary' => true) ); ?>
+								<?php themeblvd_the_post_list(); ?>
 							</div><!-- .primary-post-list (end) -->
 
 							<!-- ARCHIVE POST LIST (end) -->
