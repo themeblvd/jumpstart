@@ -75,7 +75,7 @@ function themeblvd_element( $args ) {
 
 	// Open element
 	do_action( 'themeblvd_element_'.$args['type'].'_before', $args['id'], $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_before
-	printf( '<div id="%s" class="%s">', $args['id'], $class );
+	printf( '<div id="%s" class="%s" style="%s">', $args['id'], $class, themeblvd_get_display_inline_style($args['display']) );
 	do_action( 'themeblvd_element_'.$args['type'].'_top', $args['id'], $args['options'], $args['section'], $args['display'], $args['context'] ); // Top of element: themeblvd_element_{type}_top
 
 	// Display element
@@ -625,7 +625,7 @@ function themeblvd_get_display_inline_style( $display ) {
 	$params = array();
 
 	if ( empty( $display['bg_type'] ) ) {
-		return $style;
+		$bg_type = 'none';
 	} else {
 		$bg_type = $display['bg_type'];
 	}
