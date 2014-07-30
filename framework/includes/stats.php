@@ -105,7 +105,7 @@ function themeblvd_get_chart( $type, $args ) {
  * @since 2.5.0
  *
  * @param string $type Type of chart - pie, line, graph
- * @param array $args Arguments for milestone block.
+ * @param array $args Arguments for chart.
  */
 function themeblvd_chart( $type, $args ) {
     echo themeblvd_get_chart( $type, $args );
@@ -148,7 +148,6 @@ function themeblvd_get_milestone( $args ) {
     $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', $args['color'], $num, $milestone );
 
     if ( $args['text'] ) {
-    	$output .= themeblvd_divider( array('type' => 'solid', 'width' => '50') );
     	$output .= sprintf( '<span class="text">%s</span>', $args['text'] );
     }
 
