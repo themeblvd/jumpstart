@@ -180,6 +180,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'themeblvd_footer_copyright', 'themeblvd_footer_copyright_default' );
 	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
+	add_action( 'themeblvd_after', 'themeblvd_to_top' );
 
 	// Content
 	add_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );

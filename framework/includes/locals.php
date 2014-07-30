@@ -113,6 +113,7 @@ function themeblvd_get_js_locals() {
 
 	// Start $locals array with any miscellaneous stuff
 	$locals = array (
+		'scroll_to_top'				=> 'true',
 		'thumb_animations'			=> 'true',
 		'retina_logo'				=> 'true',
 		'custom_buttons'			=> 'true'

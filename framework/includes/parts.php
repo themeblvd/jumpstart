@@ -1013,8 +1013,43 @@ function themeblvd_get_slider_controls( $args = array() ) {
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for Google Map.
+ * @param array $args Arguments slider controls
  */
 function themeblvd_slider_controls( $args = array() ) {
 	echo themeblvd_get_slider_controls( $args );
+}
+
+/**
+ * Get scroll to top button
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for button
+ * @return string $output Final content to output
+ */
+function themeblvd_get_to_top( $args = array() ) {
+
+	$defaults = array(
+		'class'	=> ''
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	$output = sprintf('<a href="#" class="tb-scroll-to-top %s"><i class="fa fa-chevron-up"></i></a>', $args['class']);
+
+    return apply_filters( 'themeblvd_to_top', $output, $args );
+}
+
+/**
+ * Display scroll to top button. Incorporates theme option
+ * so it can be easily hooked; so if you're manually outputting
+ * the item, use themeblvd_get_to_top() and echo it out.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for button
+ */
+function themeblvd_to_top( $args = array() ) {
+	if ( themeblvd_get_option('scroll_to_top') == 'show' ) {
+		echo themeblvd_get_to_top( $args );
+	}
 }

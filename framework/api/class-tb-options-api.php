@@ -155,6 +155,8 @@ class Theme_Blvd_Options_API {
 	 *		- footer_col_5
 	 *		- end_footer_cols
 	 *		- footer_copyright
+	 *	- Extras
+	 *		- scroll_to_top
 	 * Content
 	 *	- Single Posts
 	 *		- single_meta
@@ -319,6 +321,23 @@ class Theme_Blvd_Options_API {
 						'code'		=> 'html'
 					)
 				) // End footer options
+			),
+			// Section: Extras
+			'extras' => array(
+				'name' => __( 'Extras', 'themeblvd' ),
+				'options' => array(
+					'scroll_to_top' => array(
+						'name' 		=> __( 'Scroll-to-Top Button', 'themeblvd' ),
+						'desc' 		=> __( 'If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website.', 'themeblvd' ),
+						'id' 		=> 'scroll_to_top',
+						'std' 		=> 'show',
+						'type' 		=> 'radio',
+						'options'	=> array(
+							'show'	=> __('Yes, show button.', 'themeblvd'),
+							'hide'	=> __('No, don\'t show it.', 'themeblvd'),
+						)
+					)
+				)
 			)
 		);
 
