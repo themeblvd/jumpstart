@@ -36,8 +36,8 @@
 		<!-- HEADER (start) -->
 
 		<div id="top">
-			<header id="branding" role="banner">
-				<div class="content">
+			<header id="branding" class="site-header" role="banner">
+				<div class="wrap clearfix">
 					<?php
 					/**
 					 * Display header elements.
@@ -47,7 +47,7 @@
 					themeblvd_header_content();
 					themeblvd_header_menu();
 					?>
-				</div><!-- .content (end) -->
+				</div><!-- .wrap (end) -->
 			</header><!-- #branding (end) -->
 		</div><!-- #top (end) -->
 

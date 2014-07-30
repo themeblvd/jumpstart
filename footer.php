@@ -34,8 +34,8 @@
 		<!-- FOOTER (start) -->
 
 		<div id="bottom">
-			<footer id="colophon" role="contentinfo">
-				<div class="colophon-inner">
+			<footer id="colophon" class="site-footer" role="contentinfo">
+				<div class="wrap clearfix">
 					<?php
 					/**
 					 * Display footer elements.
@@ -45,7 +45,7 @@
 					themeblvd_footer_sub_content();
 					themeblvd_footer_below();
 					?>
-				</div><!-- .content (end) -->
+				</div><!-- .wrap (end) -->
 			</footer><!-- #colophon (end) -->
 		</div><!-- #bottom (end) -->
 

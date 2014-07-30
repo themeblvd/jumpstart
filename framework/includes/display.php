@@ -34,9 +34,13 @@ if ( !function_exists( 'themeblvd_header_above_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_header_above_default() {
-	echo '<div class="header-above">';
-	themeblvd_display_sidebar( 'ad_above_header' );
-	echo '</div><!-- .header-above (end) -->';
+	?>
+	<div class="header-above">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_above_header' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-above (end) -->
+	<?php
 }
 endif;
 
@@ -48,16 +52,14 @@ if ( !function_exists( 'themeblvd_header_content_default' ) ) :
  */
 function themeblvd_header_content_default() {
 	?>
-	<div id="header_content">
-		<div class="header_content-inner">
-			<div class="header_content-content clearfix">
-				<?php
-				themeblvd_header_logo();
-				themeblvd_header_addon();
-				?>
-			</div><!-- .header_content-content (end) -->
-		</div><!-- .header_content-inner (end) -->
-	</div><!-- #header_content (end) -->
+	<div class="header-content" role="banner">
+		<div class="wrap clearfix">
+			<?php
+			themeblvd_header_logo();
+			themeblvd_header_addon();
+			?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-content (end) -->
 	<?php
 }
 endif;
@@ -140,16 +142,14 @@ if ( !function_exists( 'themeblvd_header_menu_default' ) ) :
 function themeblvd_header_menu_default() {
 	do_action( 'themeblvd_header_menu_before' );
 	?>
-	<a href="#access" class="btn-navbar">
-		<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
-	</a>
-	<nav id="access" role="navigation">
-		<div class="access-inner">
-			<div class="access-content clearfix">
-				<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
-				<?php themeblvd_header_menu_addon(); ?>
-			</div><!-- .access-content (end) -->
-		</div><!-- .access-inner (end) -->
+	<nav id="access" class="header-nav" role="navigation">
+		<a href="#" class="btn-navbar" data-toggle="#access>.wrap">
+			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
+		</a>
+		<div class="wrap clearfix">
+			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
+			<?php themeblvd_header_menu_addon(); ?>
+		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->
 	<?php
 	do_action( 'themeblvd_header_menu_after' );
@@ -260,10 +260,8 @@ function themeblvd_main_start_default() {
 	?>
 	<!-- MAIN (start) -->
 
-	<div id="main" class="<?php themeblvd_sidebar_layout_class(); ?>">
-		<div class="main-inner">
-			<div class="main-content">
-				<div class="grid-protection clearfix">
+	<div id="main" class="site-inner <?php themeblvd_sidebar_layout_class(); ?>">
+		<div class="wrap clearfix">
 	<?php
 }
 endif;
@@ -276,9 +274,7 @@ if ( !function_exists( 'themeblvd_main_end_default' ) ) :
  */
 function themeblvd_main_end_default() {
 	?>
-				</div><!-- .grid-protection (end) -->
-			</div><!-- .main-content (end) -->
-		</div><!-- .main-inner (end) -->
+		</div><!-- .wrap (end) -->
 	</div><!-- #main (end) -->
 
 	<!-- MAIN (end) -->
@@ -293,9 +289,13 @@ if ( !function_exists( 'themeblvd_main_top_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_main_top_default() {
-	echo '<div class="main-top">';
-	themeblvd_display_sidebar( 'ad_above_content' );
-	echo '</div><!-- .main-top (end) -->';
+	?>
+	<div class="main-top">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_above_content' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .main-top (end) -->
+	<?php
 }
 endif;
 
@@ -306,9 +306,13 @@ if ( !function_exists( 'themeblvd_main_bottom_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_main_bottom_default() {
-	echo '<div class="main-bottom">';
-	themeblvd_display_sidebar( 'ad_below_content' );
-	echo '</div><!-- .main-bottom (end) -->';
+	?>
+	<div class="main-bottom">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_below_content' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .main-bottom (end) -->
+	<?php
 }
 endif;
 
@@ -435,15 +439,11 @@ function themeblvd_footer_content_default() {
 			$i++;
 		}
 		?>
-		<div id="footer_content">
-			<div class="footer_content-inner">
-				<div class="footer_content-content">
-					<div class="grid-protection clearfix">
-						<?php themeblvd_columns( $args, $columns ); ?>
-					</div><!-- .grid-protection (end) -->
-				</div><!-- .footer_content-content (end) -->
-			</div><!-- .footer_content-inner (end) -->
-		</div><!-- .footer_content (end) -->
+		<div class="footer-contnet">
+			<div class="wrap clearfix">
+				<?php themeblvd_columns( $args, $columns ); ?>
+			</div><!-- .wrap (end) -->
+		</div><!-- .footer-content (end) -->
 		<?php
 	}
 }
@@ -457,22 +457,20 @@ if ( !function_exists( 'themeblvd_footer_sub_content_default' ) ) :
  */
 function themeblvd_footer_sub_content_default() {
 	?>
-	<div id="footer_sub_content">
-		<div class="footer_sub_content-inner">
-			<div class="footer_sub_content-content clearfix">
-				<div class="copyright">
-					<span class="copyright-inner">
-						<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
-					</span>
-				</div><!-- .copyright (end) -->
-				<div class="footer-nav">
-					<span class="footer-inner">
-						<?php wp_nav_menu( apply_filters( 'themeblvd_footer_menu_args', array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ) ); ?>
-					</span>
-				</div><!-- .copyright (end) -->
-			</div><!-- .footer_sub_content-content (end) -->
-		</div><!-- .footer_sub_content-inner (end) -->
-	</div><!-- .footer_sub_content (end) -->
+	<div class="footer-sub-content">
+		<div class="wrap clearfix">
+			<div class="copyright">
+				<div class="copyright-inner">
+					<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
+				</div>
+			</div><!-- .copyright (end) -->
+			<div class="footer-nav">
+				<div class="footer-nav-inner">
+					<?php wp_nav_menu( apply_filters( 'themeblvd_footer_menu_args', array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ) ); ?>
+				</div>
+			</div><!-- .copyright (end) -->
+		</div><!-- .wrap (end) -->
+	</div><!-- .footer-sub-content (end) -->
 	<?php
 }
 endif;
@@ -484,9 +482,13 @@ endif;
  */
 if ( !function_exists( 'themeblvd_footer_below_default' ) ) {
 	function themeblvd_footer_below_default() {
-		echo '<div class="footer-below">';
-		themeblvd_display_sidebar( 'ad_below_footer' );
-		echo '</div><!-- .footer-below (end) -->';
+		?>
+		<div class="footer-below">
+			<div class="wrap clearfix">
+				<?php themeblvd_display_sidebar( 'ad_below_footer' ); ?>
+			</div><!-- .wrap (end) -->
+		</div><!-- .footer-below (end) -->
+		<?php
 	}
 }
 
