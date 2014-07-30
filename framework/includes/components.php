@@ -18,7 +18,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
     $args = wp_parse_args( $args, $defaults );
 
     // CSS classes
-    $class = sprintf( 'alert alert-%s', $args['style'] );
+    $class = sprintf( 'tb-alert alert alert-%s', $args['style'] );
 
     if ( $args['class'] ) {
         $class .= ' '.$args['class'];
@@ -1064,16 +1064,17 @@ function themeblvd_team_member( $args ) {
 function themeblvd_get_testimonial( $args ){
 
     $defaults = array(
-        'text'          => '',      // Text for testimonial
-        'name'          => '',      // Name of person giving testimonial
-        'tagline'       => '',      // Tagline or position of person giving testimonial
-        'company'       => '',      // Company of person giving testimonial
-        'company_url'   => '',      // Company URL of person giving testimonial
-        'image'         => array()  // Image of person giving testimonial
+        'text'          => '',          // Text for testimonial
+        'name'          => '',          // Name of person giving testimonial
+        'tagline'       => '',          // Tagline or position of person giving testimonial
+        'company'       => '',          // Company of person giving testimonial
+        'company_url'   => '',          // Company URL of person giving testimonial
+        'image'         => array(),     // Image of person giving testimonial,
+        'display'       => 'standard'   // How to display the testimonial, showcase or standard
     );
     $args = wp_parse_args( $args, $defaults );
 
-    $class = 'tb-testimonial';
+    $class = sprintf( 'tb-testimonial %s', $args['display'] );
 
     if ( ! empty( $args['image']['src'] ) ) {
         $class .= ' has-image';
@@ -1090,6 +1091,10 @@ function themeblvd_get_testimonial( $args ){
     $output .= sprintf( '<div class="testimonial-text"><span class="arrow"></span>%s</div>', themeblvd_get_content($args['text']) );
 
     if ( $args['name'] ) {
+
+        if ( $args['display'] == 'showcase' ) {
+            $output .= themeblvd_get_divider();
+        }
 
         $output .= '<div class="author">';
 
@@ -1155,30 +1160,31 @@ function themeblvd_testimonial( $args ) {
  * @param string $args Options for content block
  * @return string $output Content output
  */
-function themeblvd_get_testimonial_slider( $args ){
+function themeblvd_get_testimonial_slider( $args ) {
 
     $defaults = array(
         'testimonials'  => array(),     // The testimonials, each formatted for themeblvd_get_testimonial
         'title'         => '',          // Title for unit
         'fx'            => 'slide',     // Slide transition effect
         'timeout'       => '3',         // Secods in between transitions, can be 0 for no auto rotation
-        'nav'           => '1'          // Whether to show slider navigation
+        'nav'           => '1',         // Whether to show slider navigation
+        'display'       => 'standard'   // How to display the slider, showcase or standard
     );
     $args = wp_parse_args( $args, $defaults );
 
-    $class = 'tb-testimonial-slider tb-block-slider flexslider';
+    $class = sprintf( 'tb-testimonial-slider tb-block-slider %s flexslider', $args['display'] );
 
     if ( $args['nav'] ) {
         $class .= ' has-nav';
     }
 
-    if ( $args['title'] ) {
+    if ( $args['title'] && $args['display'] == 'standard' ) {
         $class .= ' has-title';
     }
 
     $output = sprintf('<div class="%s" data-timeout="%s" data-nav="%s" data-fx="%s">', $class, $args['timeout'], $args['nav'], $args['fx'] );
 
-    if ( $args['title'] ) {
+    if ( $args['title'] && $args['display'] == 'standard' ) {
         $output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
     }
 
@@ -1193,7 +1199,11 @@ function themeblvd_get_testimonial_slider( $args ){
         $output .= '<ul class="slides">';
 
         foreach ( $args['testimonials'] as $testimonial ) {
+
+            $testimonial['display'] = $args['display'];
+
             $output .= sprintf( '<li class="slide">%s</li>', themeblvd_get_testimonial($testimonial) );
+
         }
 
         $output .= '</ul>';
