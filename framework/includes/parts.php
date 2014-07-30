@@ -355,11 +355,9 @@ function themeblvd_get_breadcrumbs_trail() {
  */
 function themeblvd_the_breadcrumbs(){
 	echo '<div id="breadcrumbs">';
-	echo '<div class="breadcrumbs-inner">';
-	echo '<div class="breadcrumbs-content">';
+	echo '<div class="wrap">';
 	echo themeblvd_get_breadcrumbs_trail();
-	echo '</div><!-- .breadcrumbs-content (end) -->';
-	echo '</div><!-- .breadcrumbs-inner (end) -->';
+	echo '</div><!-- .wrap (end) -->';
 	echo '</div><!-- #breadcrumbs (end) -->';
 }
 
@@ -627,6 +625,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 	global $_wp_additional_image_sizes;
 
 	$output = '';
+	$frame = apply_filters( 'themeblvd_featured_thumb_frame', false );
 
 	// CSS classes
 	$classes = '';
@@ -671,6 +670,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
 
 					$post_format = get_post_format();
+
 					if ( ! $post_format ) {
 						$post_format = 'standard';
 					}
@@ -678,9 +678,17 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.'">';
 					$image .= '<div class="featured-image">';
 					$image .= '<div class="featured-image-inner">';
-					$image .= '<div class="thumbnail">';
+
+					if ( $frame ) {
+						$image .= '<div class="thumbnail">';
+					}
+
 					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
-					$image .= '</div><!-- .thumbnail (end) -->';
+
+					if ( $frame ) {
+						$image .= '</div><!-- .thumbnail (end) -->';
+					}
+
 					$image .= '</div><!-- .featured-image-inner (end) -->';
 					$image .= '</div><!-- .featured-image (end) -->';
 					$image .= '</div><!-- .featured-image-wrapper (end) -->';
