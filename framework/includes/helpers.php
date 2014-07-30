@@ -1324,3 +1324,20 @@ function themeblvd_footer_copyright_default( $text ) {
 	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
 	return themeblvd_get_content( $text );
 }
+
+/**
+ * Add to the post_class() function of WordPress.
+ *
+ * @since 2.5.0
+ *
+ * @param array $class Current classes
+ * @return array $class Modified classes
+ */
+function themeblvd_post_class( $class ) {
+
+	if ( is_single() ) {
+		$class[] = 'single';
+	}
+
+	return $class;
+}
