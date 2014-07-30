@@ -1,5 +1,4 @@
 <?php
-if ( !function_exists( 'themeblvd_include_google_fonts' ) ) :
 /**
  * Include font from google. Accepts unlimited
  * amount of font arguments.
@@ -37,7 +36,6 @@ function themeblvd_include_google_fonts() {
 
 	}
 }
-endif;
 
 /**
  * Get all current font stacks
@@ -284,7 +282,6 @@ function themeblvd_compress( $buffer ) {
 	return $buffer;
 }
 
-if ( !function_exists( 'themeblvd_post_id_by_name' ) ) :
 /**
  * Retrieves a post id given a post's slug and post type.
  *
@@ -327,9 +324,7 @@ function themeblvd_post_id_by_name( $slug, $post_type = null ) {
 	// post ID's, return nothing.
 	return $null;
 }
-endif;
 
-if ( !function_exists( 'themeblvd_register_navs' ) ) :
 /**
  * Register theme's nav menus.
  *
@@ -348,9 +343,7 @@ function themeblvd_register_navs() {
 	register_nav_menus( $menus );
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_add_theme_support' ) ) :
 /**
  * Any occurances of WordPress's add_theme_support() happen here.
  * Can override function from Child Theme.
@@ -358,10 +351,20 @@ if ( !function_exists( 'themeblvd_add_theme_support' ) ) :
  * @since 2.0.0
  */
 function themeblvd_add_theme_support() {
+
+	// Post Thumbnails
 	add_theme_support( 'automatic-feed-links' );
+
+	// Post Thumbnails
 	add_theme_support( 'post-thumbnails' );
+
+	// HTML5
+	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list') );
+
+	// Post Formats
+	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery') );
+
 }
-endif;
 
 /**
  * Get current page identifiers and keys for what we consider
@@ -391,7 +394,6 @@ function themeblvd_get_admin_modules() {
 	return apply_filters( 'themeblvd_admin_modules', $modules );
 }
 
-if ( !function_exists( 'themeblvd_admin_menu_bar' ) ) :
 /**
  * Add items to admin menu bar. This needs to be here in general
  * functions because admin bar appears on frontend as well.
@@ -467,7 +469,6 @@ function themeblvd_admin_menu_bar() {
 		}
 	}
 }
-endif;
 
 /**
  * Get all sidebar layouts.
@@ -617,7 +618,7 @@ function themeblvd_get_column_class( $column ) {
 
 					// Content push = left sidebar width + right right sidebar width.
 					$push_1 = str_replace( "col-{$stack}-", '', $layouts['double_sidebar_left']['columns']['left'] );
-					$push_2 = str_replace( "col-{$stack}-", '', $layouts['double_sidebar_left']['columns']['right']);
+					$push_2 = str_replace( "col-{$stack}-", '', $layouts['double_sidebar_left']['columns']['right'] );
 
 					$push = trim( intval($push_1) + intval($push_2) );
 
@@ -631,7 +632,7 @@ function themeblvd_get_column_class( $column ) {
 				} else {
 
 					// Left/Right sidebar pull = content width
-					$class = ' '.str_replace( "col-{$stack}-", "col-{$stack}-pull-", $layouts['double_sidebar_left']['columns']['content'] );
+					$class .= ' '.str_replace( "col-{$stack}-", "col-{$stack}-pull-", $layouts['double_sidebar_left']['columns']['content'] );
 
 				}
 
@@ -1513,7 +1514,6 @@ function themeblvd_stats() {
 	}
 }
 
-if ( !function_exists( 'themeblvd_load_theme_textdomain' ) ) :
 /**
  * Load theme text domains
  *
@@ -1523,7 +1523,6 @@ function themeblvd_load_theme_textdomain() {
 	load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
 	load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
 }
-endif;
 
 /**
  * Get Image Sizes
@@ -1540,7 +1539,7 @@ function themeblvd_get_image_sizes() {
 	global $content_width;
 
 	// Content Width
-	$content_width = apply_filters( 'themeblvd_content_width', 940 ); // Default width of primary content area
+	$content_width = apply_filters( 'themeblvd_content_width', 1170 ); // based on 1200px container w/15px gutters
 
 	// Crop sizes
 	$sizes = array(
@@ -1552,7 +1551,7 @@ function themeblvd_get_image_sizes() {
 		),
 		'tb_medium' => array(
 			'name' 		=> __( 'TB Medium', 'themeblvd' ),
-			'width' 	=> 620,
+			'width' 	=> 800,
 			'height'	=> 9999,
 			'crop' 		=> false
 		),
@@ -1582,38 +1581,38 @@ function themeblvd_get_image_sizes() {
 		),
 		'slider-large' => array(
 			'name' 		=> __( 'Slider Full Width', 'themeblvd' ),
-			'width' 	=> 940,
-			'height' 	=> 350,
+			'width' 	=> 1170, // based on 1200px container w/15px gutters
+			'height' 	=> 435,
 			'crop' 		=> true
 		),
 		'slider-staged' => array(
 			'name' 		=> __( 'Slider Staged', 'themeblvd' ),
-			'width' 	=> 550,
-			'height' 	=> 340,
+			'width' 	=> 690,
+			'height' 	=> 415,
 			'crop' 		=> true
 		),
 		'grid_fifth_1' => array(
 			'name' 		=> __( '1/5 Column of Grid', 'themeblvd' ),
-			'width' 	=> 200,
-			'height' 	=> 125,
-			'crop' 		=> true
-		),
-		'grid_3' => array(
-			'name' 		=> __( '1/4 Column of Grid', 'themeblvd' ),
 			'width' 	=> 240,
 			'height' 	=> 150,
 			'crop' 		=> true
 		),
+		'grid_3' => array(
+			'name' 		=> __( '1/4 Column of Grid', 'themeblvd' ),
+			'width' 	=> 300,
+			'height' 	=> 185,
+			'crop' 		=> true
+		),
 		'grid_4' => array(
 			'name' 		=> __( '1/3 Column of Grid', 'themeblvd' ),
-			'width' 	=> 320,
-			'height' 	=> 200,
+			'width' 	=> 400,
+			'height' 	=> 250,
 			'crop' 		=> true
 		),
 		'grid_6' => array(
 			'name' 		=> __( '1/2 Column of Grid', 'themeblvd' ),
-			'width' 	=> 472,
-			'height' 	=> 295,
+			'width' 	=> 600,
+			'height' 	=> 375,
 			'crop' 		=> true
 		)
 	);
@@ -1621,7 +1620,6 @@ function themeblvd_get_image_sizes() {
 	return apply_filters( 'themeblvd_image_sizes', $sizes );
 }
 
-if ( !function_exists( 'themeblvd_add_image_sizes' ) ) :
 /**
  * Register Image Sizes
  *
@@ -1638,7 +1636,6 @@ function themeblvd_add_image_sizes() {
 	}
 
 }
-endif;
 
 /**
  * Show theme's image thumb sizes when inserting
