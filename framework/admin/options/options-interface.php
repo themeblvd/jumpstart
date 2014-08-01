@@ -364,8 +364,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				// If this is a builder sample select, show preview images
-				if ( isset( $value['class'] ) && $value['class'] == 'builder_samples' && function_exists( 'themeblvd_builder_sample_previews' ) ) {
-					$output .= themeblvd_builder_sample_previews();
+				if ( isset( $value['class'] ) && strpos($value['class'], 'builder-samples') !== false ) {
+					if ( function_exists( 'themeblvd_builder_sample_previews' ) ) {
+						$output .= themeblvd_builder_sample_previews();
+					}
 				}
 				break;
 

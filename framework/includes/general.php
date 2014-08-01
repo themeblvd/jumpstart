@@ -2021,3 +2021,29 @@ function themeblvd_get_social_media_sources() {
 
 	return apply_filters( 'themeblvd_social_media_sources', $sources );
 }
+
+/**
+ * Find all instances of image URL strings within
+ * 	a text block.
+ *
+ * @since 2.5.0
+ *
+ * @param string $str Text string to search for images within
+ * @return array $images Array of Image URL's
+ */
+function themeblvd_get_img_urls( $str ) {
+
+	$protocols = array('http://', 'https://');
+	$extentions = array('.gif', '.jpeg', '.jpg', '.png');
+	$images = array();
+
+	foreach ( $protocols as $protocol ) {
+		foreach ( $extentions as $ext ) {
+			$pattern = sprintf( '/%s(.*?)%s/', preg_quote( $protocol, '/'), preg_quote( $ext, '/') );
+			preg_match_all( $pattern, $str, $img );
+			$images = array_merge( $images, $img[0] );
+		}
+	}
+
+	return $images;
+}

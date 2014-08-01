@@ -126,7 +126,7 @@ function themeblvd_sanitize_allowedtags( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_checkbox( $input ) {
-	if ( $input ) {
+	if ( $input && $input !== '0' ) {
 		$output = "1";
 	} else {
 		$output = "0";
