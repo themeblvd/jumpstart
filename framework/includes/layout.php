@@ -121,8 +121,7 @@ function themeblvd_element( $args ) {
 
 		// External Page/Post content
 		case 'external' :
-			// @TODO -- Figure out a way to get post_id from user, need new option
-			// themeblvd_post_content( $args['options']['post_id'], $args['options']['post_type'] );
+			themeblvd_post_content( intval($args['options']['post_id']) );
 			break;
 
 		// Headline

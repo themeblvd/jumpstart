@@ -236,24 +236,23 @@ function themeblvd_headline( $args ){
 function themeblvd_get_post_content( $post = 0, $post_type = '' ) {
 
 	$content = '';
-	$post_id = 0;
-	$current_post = false;
+	$current = false;
 
 	// If no ID, get current post's ID
 	if ( ! $post ) {
-		$current_post = true;
-		$post_id = themeblvd_config('id');
+		$current = true;
+		$post = themeblvd_config('id');
 	}
 
-	// Page slug?
+	// Post slug?
 	if ( is_string( $post ) ) {
-		$post_id = themeblvd_post_id_by_name( $post, $post_type );
+		$post = themeblvd_post_id_by_name( $post, $post_type );
 	}
 
-	$get_post = get_post( $post_id );
+	$get_post = get_post( $post );
 
 	if ( $get_post ) {
-		if ( $current_post ) {
+		if ( $current ) {
 			$content = apply_filters( 'the_content', $get_post->post_content );
 		} else {
 			$content = themeblvd_get_content( $get_post->post_content );
