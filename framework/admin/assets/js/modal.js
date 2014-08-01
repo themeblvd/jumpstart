@@ -453,7 +453,7 @@ if ( typeof Object.create !== 'function' ) {
         padding: false,                 // Size of modal - small, medium, large
         send_back: null,                // An object of something you want send to info back to, which you can utilize from callbacks
         css_class: '',                  // Optional CSS class to add to modal
-        on_load: function(modal){},     // Callback before modal window is displayed,
+        on_load: function(modal){},     // Callback before modal window is displayed
         on_display: function(modal){},  // Callback just after modal has been displayed
         on_cancel: function(modal){},   // Callback when close button is clicked, before modal is closed
         on_save: function(modal){},     // Callback when save button is clicked, before modal is closed

@@ -77,6 +77,14 @@ class Theme_Blvd_Options_Page {
 	public $icons_image = false;
 
 	/**
+	 * Whether options page has post ID browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $find_post_id = false;
+
+	/**
 	 * Whether options page has texture browser
 	 *
 	 * @since 2.5.0
@@ -156,6 +164,10 @@ class Theme_Blvd_Options_Page {
 					if ( $option['icon'] == 'image' ) {
 						$this->icons_image = true;
 					}
+
+					if ( $option['icon'] == 'post_id' ) {
+						$this->find_post_id = true;
+					}
 				}
 			}
 
@@ -185,7 +197,7 @@ class Theme_Blvd_Options_Page {
 				$this->gmap = true;
 			}
 
-			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->textures && $this->gmap ) {
+			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->find_post_id && $this->textures && $this->gmap ) {
 				break;
 			}
 		}
@@ -193,6 +205,11 @@ class Theme_Blvd_Options_Page {
 		// Add icon browsers
 		if ( $this->icons_vector || $this->icons_image ) {
 			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
+		}
+
+		// Add Post ID browser
+		if ( $this->find_post_id ) {
+			add_action( 'current_screen', array( $this, 'add_post_browser' ) );
 		}
 
 		// Add texture browsers
@@ -537,6 +554,20 @@ class Theme_Blvd_Options_Page {
 
 		if ( $this->icons_image ) {
 			themeblvd_icon_browser( array( 'type' => 'image' ) );
+		}
+	}
+
+	/**
+	 * Hook in hidden post browser modal.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_post_browser() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', 'themeblvd_post_browser' );
 		}
 	}
 

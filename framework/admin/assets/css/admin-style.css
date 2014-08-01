@@ -140,6 +140,9 @@
 .tb-icon-briefcase:before {
 	content: "\e813";
 }
+.tb-icon-barcode:before {
+	content: "\e60c";
+}
 
 /* =General Classes
 -----------------------------------------------*/
@@ -932,6 +935,34 @@ body.themeblvd-stop-scroll {
 	display: block;
 	font-size: 14px;
 	margin: 20px 0 0 20px;
+}
+
+/* Post Browser */
+.themeblvd-post-browser .media-frame-content {
+	border-bottom: none;
+	bottom: 0;
+}
+.themeblvd-post-browser .post-browser-head {
+	margin-bottom: 10px;
+}
+.themeblvd-post-browser .search-box {
+	float: left;
+}
+.themeblvd-post-browser .tb-loader {
+	float: left;
+	font-size: 17px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.themeblvd-post-browser #optionsframework .widefat {
+	margin-bottom: 0;
+}
+.themeblvd-post-browser th {
+	min-width: 10%;
+}
+.themeblvd-post-browser a,
+.themeblvd-post-browser input {
+	outline: none;
 }
 
 /* Inner */

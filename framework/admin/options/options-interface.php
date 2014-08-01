@@ -193,8 +193,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '<div class="input-wrap">';
 
-				if ( isset( $value['icon'] ) && ( $value['icon'] == 'image' || $value['icon'] == 'vector' ) ) {
-					$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$value['icon'].'" data-icon-type="'.$value['icon'].'" data-tooltip-text="'.__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+				if ( isset($value['icon']) ) {
+					if ( $value['icon'] == 'image' || $value['icon'] == 'vector' ) {
+						$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$value['icon'].'" data-icon-type="'.$value['icon'].'" data-tooltip-text="'.__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+					} else if ( $value['icon'] == 'post_id' ) {
+						$output .= '<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="'.__('Find Post or Page ID', 'themeblvd').'"><i class="tb-icon-barcode"></i></a>';
+					}
 				}
 
 				$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s"%s />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ), $place_holder );

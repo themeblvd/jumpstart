@@ -1179,6 +1179,104 @@ function themeblvd_icon_browser( $args = array() ) {
 }
 
 /**
+ * Outputs post browser in hidden modal window that can
+ * be accessed by other options.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_post_browser( $args = array() ) {
+	?>
+	<div id="themeblvd-post-browser" class="themeblvd-modal-wrap themeblvd-post-browser hide">
+		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
+
+			<a class="media-modal-close" href="#" title="Close">
+				<span class="media-modal-icon"></span>
+			</a>
+
+			<div class="media-modal-content">
+				<div class="media-frame wp-core-ui hide-menu hide-router">
+
+					<div class="media-frame-title">
+						<h1><?php _e('Find Post or Page ID', 'themeblvd'); ?></h1>
+					</div><!-- .media-frame-title (end) -->
+
+					<div class="media-frame-content">
+						<div class="media-frame-content-inner">
+							<div id="optionsframework" class="content-mitt">
+								<div class="post-browser">
+									<div class="post-browser-head clearfix">
+										<div class="search-box">
+											<input type="search" id="post-search-input" name="s" value="">
+											<input type="submit" name="" id="search-submit" class="button" value="<?php _e('Search Posts & Pages', 'themeblvd'); ?>">
+										</div>
+										<span class="tb-loader ajax-loading">
+	  										<i class="tb-icon-spinner"></i>
+	  									</span>
+	  								</div>
+									<div class="search-results ajax-mitt">
+									</div>
+								</div>
+							</div>
+						</div><!-- .media-frame-content-inner (end) -->
+					</div><!-- .media-frame-content (end) -->
+
+				</div><!-- .media-frame (end) -->
+			</div><!-- .media-modal-content (end) -->
+
+		</div><!-- .media-modal (end) -->
+	</div>
+	<?php
+}
+
+/**
+ * Ajax action function for searching posts and
+ * displaying table of results.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_ajax_post_browser(){
+
+	$query = array(
+		's' => $_POST['data'],
+		'post_type' => 'any'
+	);
+
+	$posts = get_posts($query);
+	?>
+	<table class="widefat">
+		<thead>
+			<tr>
+				<th class="head-title"><?php _e('Title', 'themeblvd'); ?></th>
+				<th class="head-slug"><?php _e('Slug', 'themeblvd'); ?></th>
+				<th class="head-type"><?php _e('Type', 'themeblvd'); ?></th>
+				<th class="head-id"><?php _e('ID', 'themeblvd'); ?></th>
+				<th class="head-select"><?php _e('Select', 'themeblvd'); ?></th>
+			</tr>
+		</thead>
+		<?php if ( $posts ) : ?>
+			<?php foreach ( $posts as $post ) :
+				$type = get_post_type_object($post->post_type);
+				?>
+				<tr>
+					<td><?php echo $post->post_title; ?></td>
+					<td><?php echo $post->post_name; ?></td>
+					<td><?php echo $type->labels->singular_name; ?></td>
+					<td><?php echo $post->ID; ?></td>
+					<td><a href="#" data-post-id="<?php echo $post->ID; ?>" class="select-post button-secondary"><?php _e('Use Post', 'themeblvd'); ?></a></td>
+				</tr>
+			<?php endforeach; ?>
+		<?php else : ?>
+			<tr>
+				<td colspan="5"><?php _e('No posts found.', 'themeblvd'); ?></td>
+			</tr>
+		<?php endif; ?>
+	</table>
+	<?php
+	die();
+}
+add_action( 'wp_ajax_themeblvd_post_browser', 'themeblvd_ajax_post_browser' );
+
+/**
  * Outputs texture browser in hidden modal window that can
  * be accessed by other options.
  *
