@@ -382,12 +382,12 @@ function themeblvd_get_icons( $type ) {
 
 				break;
 
-			}
+		} // end switch $type
 
-			// Cache result
-			set_transient( 'themeblvd_'.$type.'_icons', $icons, '86400' ); // 1 day
+		// Cache result
+		set_transient( 'themeblvd_'.$type.'_icons', $icons, '86400' ); // 1 day
 
-		}
+	} // end if $icons
 
-		return apply_filters( 'themeblvd_'.$type.'_icons', $icons );
+	return apply_filters( 'themeblvd_'.$type.'_icons', $icons );
 }
