@@ -368,6 +368,58 @@
 					    });
 					}
 
+					// Link to Post ID browser
+					if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
+						$this.find('.tb-input-post-id-link').ThemeBlvdModal({
+					        build: false,
+					        padding: true,
+					        button: '',
+					        size: 'custom', // Something other than "large" to trigger auto height
+					    	on_display: function() {
+
+					    		var self = this,
+									$elem = self.$elem,
+									$browser = self.$modal_window;
+
+								// Bind search ajax
+								$browser.find('#search-submit').off('click.tb-search-posts');
+								$browser.find('#search-submit').on('click.tb-search-posts', function() {
+
+									var $search = $(this).closest('.post-browser-head'),
+										data = {
+											action: 'themeblvd_post_browser',
+											data: $search.find('#post-search-input').val()
+										};
+
+									$search.find('.tb-loader').fadeIn(200);
+
+									$.post(ajaxurl, data, function(r) {
+										$browser.find('.ajax-mitt').html('').append(r);
+										$search.find('.tb-loader').fadeOut(200);
+									});
+
+									return false;
+								});
+
+								// Select a post and close modal
+								$browser.off('click.tb-select-post', '.select-post');
+								$browser.on('click.tb-select-post', '.select-post', function(){
+									$browser.find('#post-search-input').val('');
+									$browser.find('.ajax-mitt').html('');
+									$elem.closest('.input-wrap').find('.of-input').val($(this).data('post-id'));
+									self.close();
+                    				return false;
+								});
+
+					    	},
+					    	on_cancel: function() {
+					    		$browser = this.$modal_window;
+								$browser.find('#post-search-input').val('');
+					    		$browser.find('.ajax-mitt').html('');
+					    	}
+					    });
+					}
+
 					// Link to texture browsers
     				if ( $.isFunction( $.fn.ThemeBlvdModal ) ) {
 						$this.find('.tb-texture-browser-link').ThemeBlvdModal({
