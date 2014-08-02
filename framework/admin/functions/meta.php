@@ -75,6 +75,15 @@ function setup_themeblvd_page_meta() {
 			)
 		)
 	);
+
+	if ( ! themeblvd_supports('display', 'hide_top') && ! themeblvd_supports('display', 'hide_bottom') ) {
+		unset( $setup['options']['tb_theme_layout'] );
+	} else if ( ! themeblvd_supports('display', 'hide_top') ) {
+		unset( $setup['options']['tb_theme_layout']['options']['hide_top'] );
+	} else if ( ! themeblvd_supports('display', 'hide_bottom') ) {
+		unset( $setup['options']['tb_theme_layout']['options']['hide_bottom'] );
+	}
+
 	return apply_filters( 'themeblvd_page_meta', $setup );
 }
 

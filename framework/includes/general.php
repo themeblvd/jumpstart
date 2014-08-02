@@ -162,7 +162,9 @@ function themeblvd_setup() {
 		),
 		'display' => array(
 			'responsive' 		=> true,			// Responsive elements
-			'scroll_effects'	=> true 			// Effects as user scrolls down page
+			'scroll_effects'	=> true, 			// Effects as user scrolls down page
+			'hide_top'			=> true,			// Whether theme supports hiding the #top
+			'hide_bottom'		=> true 			// Whether theme supports hiding the #bottom
 		),
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script
