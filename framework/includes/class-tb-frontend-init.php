@@ -162,13 +162,15 @@ class Theme_Blvd_Frontend_Init {
 		global $post;
 
 		$this->config = array(
-			'id'				=> 0,			// global $post->ID that can be accessed anywhere
-			'builder'			=> false,		// ID of current custom layout if not false
-			'builder_post_id'	=> 0,			// Numerical Post ID of tb_layout custom post
-			'sidebar_layout'	=> '',			// Sidebar layout
-			'featured'			=> array(),		// Classes for featured area, if empty area won't show
-			'featured_below'	=> array(),		// Classes for featured below area, if empty area won't show
-			'sidebars'			=> array() 		// Array of sidbar ID's for all corresponding locations
+			'id'						=> 0,			// global $post->ID that can be accessed anywhere
+			'builder'					=> false,		// ID of current custom layout if not false
+			'builder_post_id'			=> 0,			// Numerical Post ID of tb_layout custom post
+			'sidebar_layout'			=> '',			// Sidebar layout
+			'featured'					=> array(),		// Classes for featured area, if empty area won't show
+			'featured_below'			=> array(),		// Classes for featured below area, if empty area won't show
+			'sidebars'					=> array(), 	// Array of sidbar ID's for all corresponding locations
+			'top'						=> true,		// Whether to show entire #top section (header)
+			'bottom'					=> true 		// Whether to show entire #bottom section (bottom)
 		);
 
 		/*------------------------------------------------------*/
@@ -364,6 +366,20 @@ class Theme_Blvd_Frontend_Init {
 				}
 			}
 
+		}
+
+		/*------------------------------------------------------*/
+		/* Theme Layout
+		/*------------------------------------------------------*/
+
+		$theme = get_post_meta( $this->config['id'], '_tb_theme_layout', true );
+
+		if ( ! empty( $theme['hide_top'] ) ) {
+			$this->config['top'] = false;
+		}
+
+		if ( ! empty( $theme['hide_bottom'] ) ) {
+			$this->config['bottom'] = false;
 		}
 
 		/*------------------------------------------------------*/

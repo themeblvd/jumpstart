@@ -110,8 +110,19 @@ class Theme_Blvd_Meta_Box {
     		}
     	}
 
+    	// Adden hidden form trigger for save()
+    	$hidden = array(
+			'placeholder' => array(
+				'id' 	=> '_tb_placeholder',
+				'std'	=> 1,
+				'type'	=> 'hidden'
+			)
+		);
+
+		$options = array_merge( $hidden, $this->options );
+
     	// Use options framework to display form elements
-    	$form = themeblvd_option_fields( 'themeblvd_meta', $this->options, $settings, false );
+    	$form = themeblvd_option_fields( 'themeblvd_meta['.$this->id.']', $options, $settings, false );
     	echo $form[0];
 
     	//  Finish content
@@ -131,13 +142,49 @@ class Theme_Blvd_Meta_Box {
 
 		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
 
-		foreach ( $this->options as $option ) {
-			if ( isset( $_POST['themeblvd_meta'][$option['id']] ) ) {
+		$input = $_POST['themeblvd_meta'][$this->id];
 
-				if ( ! $this->args['save_empty'] && ! $_POST['themeblvd_meta'][$option['id']] ) {
-					delete_post_meta( $post_id, $option['id'] );
+		if ( $input ) {
+			foreach ( $this->options as $option ) {
+
+				$id = $option['id'];
+
+				// Set checkbox to false if it wasn't sent in the $_POST
+				if ( $option['type'] == 'checkbox' && ! isset($input[$id]) ) {
+					if ( ! empty($option['inactive']) && $option['inactive'] === 'true' ) {
+						$current = '1';
+					} else {
+						$current = '0';
+					}
+				}
+
+				// For button option type, set checkbox to false if it wasn't
+				// sent in the $_POST
+				if ( $option['type'] == 'button' ) {
+					if ( ! isset( $input[$id]['include_bg'] ) ) {
+						$input[$id]['include_bg'] = '0';
+					}
+					if ( ! isset( $input[$id]['include_border'] ) ) {
+						$input[$id]['include_border'] = '0';
+					}
+				}
+
+				// Set each item in the multicheck to false if it wasn't sent in the $_POST
+				if ( $option['type'] == 'multicheck' && ! isset($input[$id]) && ! empty($option['options']) ) {
+					foreach ( $option['options'] as $key => $value ) {
+						$input[$id][$key] = '0';
+					}
+				}
+
+				if ( ! $this->args['save_empty'] && ! $input[$id] ) {
+
+					delete_post_meta( $post_id, $id );
+
 				} else {
-					update_post_meta( $post_id, $option['id'], strip_tags( $_POST['themeblvd_meta'][$option['id']] ) );
+
+					$input[$id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[$id], $option );
+					update_post_meta( $post_id, $id, $input[$id] );
+
 				}
 
 			}

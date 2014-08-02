@@ -62,6 +62,7 @@
 }
 .tb-meta-box .section-checkbox .controls {
 	min-width: 25px;
+	padding-right: 0;
 	width: 25px;
 }
 .tb-meta-box .section-checkbox .explain {

@@ -48,8 +48,8 @@ function setup_themeblvd_page_meta() {
 				'desc'		=> __( 'This option will be ignored if you\'ve applyed a custom layout.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'show' => __( 'Show page\'s title.', 'themeblvd' ),
-					'hide' => __( 'Hide page\'s title.', 'themeblvd' )
+					'show' 		=> __( 'Show page\'s title', 'themeblvd' ),
+					'hide' 		=> __( 'Hide page\'s title', 'themeblvd' )
 				)
 			),
 			'tb_breadcrumbs' => array(
@@ -58,9 +58,19 @@ function setup_themeblvd_page_meta() {
 				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not. This option will be ignored if you\'ve applyed a custom layout.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default' => __( 'Use default setting.', 'themeblvd' ),
-					'show' => __( 'Yes, show breadcrumbs.', 'themeblvd' ),
-					'hide' => __( 'No, hide breadcrumbs.', 'themeblvd' )
+					'default' 	=> __( 'Use default setting', 'themeblvd' ),
+					'show' 		=> __( 'Yes, show breadcrumbs', 'themeblvd' ),
+					'hide' 		=> __( 'No, hide breadcrumbs', 'themeblvd' )
+				)
+			),
+			'tb_theme_layout' => array(
+				'id'		=> '_tb_theme_layout',
+				'name' 		=> __( 'Theme Layout', 'themeblvd' ),
+				'desc'		=> __( 'Select if you\'d like to hide any theme elements that normally display across your entire website by default.', 'themeblvd' ),
+				'type' 		=> 'multicheck',
+				'options'	=> array(
+					'hide_top'		=> __( 'Hide theme header on this page', 'themeblvd' ),
+					'hide_bottom'	=> __( 'Hide theme footer on this page', 'themeblvd' )
 				)
 			)
 		)
@@ -104,8 +114,8 @@ function setup_themeblvd_post_meta() {
 				'type' 		=> 'radio',
 				'options' 	=> array(
 					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
-					'show'		=> __( 'Show meta info.', 'themeblvd' ),
-					'hide' 		=> __( 'Hide meta info.', 'themeblvd' )
+					'show'		=> __( 'Show meta info', 'themeblvd' ),
+					'hide' 		=> __( 'Hide meta info', 'themeblvd' )
 				)
 			),
 			'tb_comments' => array(
@@ -116,8 +126,8 @@ function setup_themeblvd_post_meta() {
 				'type' 		=> 'radio',
 				'options' 	=> array(
 					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
-					'show'		=> __( 'Show comments.', 'themeblvd' ),
-					'hide' 		=> __( 'Hide comments.', 'themeblvd' )
+					'show'		=> __( 'Show comments', 'themeblvd' ),
+					'hide' 		=> __( 'Hide comments', 'themeblvd' )
 				)
 			),
 			'tb_breadcrumbs' => array(
@@ -127,9 +137,9 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options'	=> array(
-					'default' 	=> __( 'Use default setting.', 'themeblvd' ),
-					'show' 		=> __( 'Yes, show breadcrumbs.', 'themeblvd' ),
-					'hide' 		=> __( 'No, hide breadcrumbs.', 'themeblvd' )
+					'default' 	=> __( 'Use default setting', 'themeblvd' ),
+					'show' 		=> __( 'Yes, show breadcrumbs', 'themeblvd' ),
+					'hide' 		=> __( 'No, hide breadcrumbs', 'themeblvd' )
 				)
 			),
 			'tb_thumb' => array(
@@ -139,10 +149,10 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
-					'small'		=> __( 'Show small thumbnail.', 'themeblvd' ),
-					'full' 		=> __( 'Show full-width thumbnail.', 'themeblvd' ),
-					'hide' 		=> __( 'Hide featured image.', 'themeblvd' )
+					'default'	=> __( 'Use default post setting', 'themeblvd' ),
+					'small'		=> __( 'Show small thumbnail', 'themeblvd' ),
+					'full' 		=> __( 'Show full-width thumbnail', 'themeblvd' ),
+					'hide' 		=> __( 'Hide featured image', 'themeblvd' )
 				)
 			),
 			'tb_thumb_link' => array(
@@ -153,12 +163,12 @@ function setup_themeblvd_post_meta() {
 				'std'		=> 'inactive',
 				'class'		=> 'select-tb-thumb-link',
 				'options'	=> array(
-					'inactive'	=> __( 'Featured image is not a link.', 'themeblvd' ),
-					'post' 		=> __( 'It links to its post.', 'themeblvd' ),
-					'thumbnail' => __( 'It links to its enlarged lightbox version.', 'themeblvd' ),
-					'image' 	=> __( 'It links to a custom lightbox image.', 'themeblvd' ),
-					'video' 	=> __( 'It links to a lightbox video.', 'themeblvd' ),
-					'external' 	=> __( 'It links to a webpage.', 'themeblvd' ),
+					'inactive'	=> __( 'Featured image is not a link', 'themeblvd' ),
+					'post' 		=> __( 'It links to its post', 'themeblvd' ),
+					'thumbnail' => __( 'It links to its enlarged lightbox version', 'themeblvd' ),
+					'image' 	=> __( 'It links to a custom lightbox image', 'themeblvd' ),
+					'video' 	=> __( 'It links to a lightbox video', 'themeblvd' ),
+					'external' 	=> __( 'It links to a webpage', 'themeblvd' ),
 				)
 			),
 			'tb_image_link' => array(
@@ -190,8 +200,8 @@ function setup_themeblvd_post_meta() {
 				'type' 		=> 'radio',
 				'std'		=> '_blank',
 				'options'	=> array(
-					'_blank'	=> __( 'Open link in new window.', 'themeblvd' ),
-					'_self' 	=> __( 'Open link in same window.', 'themeblvd' )
+					'_blank'	=> __( 'Open link in new window', 'themeblvd' ),
+					'_self' 	=> __( 'Open link in same window', 'themeblvd' )
 				)
 			),
 			'tb_thumb_link_single' => array(
@@ -202,8 +212,8 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'yes',
 				'type' 		=> 'radio',
 				'options'	=> array(
-					'yes'		=> __( 'Yes, apply featured image link to single post.', 'themeblvd' ),
-					'no' 		=> __( 'No, don\'t apply featured image link to single post.', 'themeblvd' )
+					'yes'		=> __( 'Yes, apply featured image link to single post', 'themeblvd' ),
+					'no' 		=> __( 'No, don\'t apply featured image link to single post', 'themeblvd' )
 				)
 			),
 			'tb_sidebar_layout' => array(

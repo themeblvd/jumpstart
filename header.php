@@ -35,21 +35,25 @@
 
 		<!-- HEADER (start) -->
 
-		<div id="top">
-			<header id="branding" class="site-header" role="banner">
-				<div class="wrap clearfix">
-					<?php
-					/**
-					 * Display header elements.
-					 */
-					themeblvd_header_top();
-					themeblvd_header_above();
-					themeblvd_header_content();
-					themeblvd_header_menu();
-					?>
-				</div><!-- .wrap (end) -->
-			</header><!-- #branding (end) -->
-		</div><!-- #top (end) -->
+		<?php if ( themeblvd_config( 'top' ) ) : ?>
+
+			<div id="top">
+				<header id="branding" class="site-header" role="banner">
+					<div class="wrap clearfix">
+						<?php
+						/**
+						 * Display header elements.
+						 */
+						themeblvd_header_top();
+						themeblvd_header_above();
+						themeblvd_header_content();
+						themeblvd_header_menu();
+						?>
+					</div><!-- .wrap (end) -->
+				</header><!-- #branding (end) -->
+			</div><!-- #top (end) -->
+
+		<?php endif; ?>
 
 		<!-- HEADER (end) -->
 

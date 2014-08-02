@@ -33,21 +33,25 @@
 
 		<!-- FOOTER (start) -->
 
-		<div id="bottom">
-			<footer id="colophon" class="site-footer" role="contentinfo">
-				<div class="wrap clearfix">
-					<?php
-					/**
-					 * Display footer elements.
-					 */
-					themeblvd_footer_above();
-					themeblvd_footer_content();
-					themeblvd_footer_sub_content();
-					themeblvd_footer_below();
-					?>
-				</div><!-- .wrap (end) -->
-			</footer><!-- #colophon (end) -->
-		</div><!-- #bottom (end) -->
+		<?php if ( themeblvd_config( 'bottom' ) ) : ?>
+
+			<div id="bottom">
+				<footer id="colophon" class="site-footer" role="contentinfo">
+					<div class="wrap clearfix">
+						<?php
+						/**
+						 * Display footer elements.
+						 */
+						themeblvd_footer_above();
+						themeblvd_footer_content();
+						themeblvd_footer_sub_content();
+						themeblvd_footer_below();
+						?>
+					</div><!-- .wrap (end) -->
+				</footer><!-- #colophon (end) -->
+			</div><!-- #bottom (end) -->
+
+		<?php endif; ?>
 
 		<!-- FOOTER (end) -->
 
