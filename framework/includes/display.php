@@ -439,7 +439,7 @@ function themeblvd_footer_content_default() {
 			$i++;
 		}
 		?>
-		<div class="footer-contnet">
+		<div class="footer-content">
 			<div class="wrap clearfix">
 				<?php themeblvd_columns( $args, $columns ); ?>
 			</div><!-- .wrap (end) -->
