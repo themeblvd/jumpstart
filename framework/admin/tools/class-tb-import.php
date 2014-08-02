@@ -168,6 +168,8 @@ class Theme_Blvd_Import {
 	 */
 	public function import() {
 
+		global $_POST;
+
 		if ( ! empty( $_POST['themeblvd_import_theme_settings'] ) || ! empty( $_POST['themeblvd_import_site_settings'] ) || ! empty( $_POST['themeblvd_import_site_widgets'] ) ) {
 			if ( ! function_exists( 'simplexml_load_file' ) ) {
 				$this->error = __('Simple XML not found in your server\'s PHP configuration.', 'themeblvd');
@@ -359,6 +361,9 @@ class Theme_Blvd_Import {
 	 */
 	public function doing_import() {
 
+		global $_GET;
+		global $_FILES;
+
 		$screen = get_current_screen();
 
 		if ( $screen->base != 'admin' ) {
@@ -374,6 +379,14 @@ class Theme_Blvd_Import {
 		}
 
 		if ( $_GET['step'] != '1' ) {
+			return false;
+		}
+
+		if ( ! isset( $_FILES['import']['name'] ) ) {
+			return false;
+		}
+
+		if ( $_FILES['import']['name'] != apply_filters('themeblvd_theme_demo_xml', get_template().'-demo.xml') ) {
 			return false;
 		}
 
