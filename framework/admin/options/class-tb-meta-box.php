@@ -142,9 +142,11 @@ class Theme_Blvd_Meta_Box {
 
 		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
 
-		$input = $_POST['themeblvd_meta'][$this->id];
+		if ( isset( $_POST['themeblvd_meta'][$this->id] ) ) {
+			$input = $_POST['themeblvd_meta'][$this->id];
+		}
 
-		if ( $input ) {
+		if ( ! empty( $input ) ) {
 			foreach ( $this->options as $option ) {
 
 				$id = $option['id'];
