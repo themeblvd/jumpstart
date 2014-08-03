@@ -257,7 +257,7 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'start_footer_cols' => array(
 						'type'		=> 'subgroup_start',
-						'class'		=> 'columns'
+						'class'		=> 'columns standard-footer-setup'
 					),
 					'footer_setup' => array(
 						'name'		=> __( 'Setup Columns', 'themeblvd' ),
@@ -318,7 +318,8 @@ class Theme_Blvd_Options_API {
 						'std' 		=> '(c) %year% %site_title% - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
 						'type' 		=> 'textarea',
 						'editor'	=> true,
-						'code'		=> 'html'
+						'code'		=> 'html',
+						'class'		=> 'standard-footer-setup'
 					)
 				) // End footer options
 			),

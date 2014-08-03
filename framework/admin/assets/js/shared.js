@@ -462,6 +462,25 @@
 					    });
 					}
 
+					// Footer Sync
+					if ( $this.find('#tb-footer-sync').is(':checked') ) {
+						$this.find('.standard-footer-setup').hide();
+						$this.find('.footer-template-setup').show();
+					} else {
+						$this.find('.standard-footer-setup').show();
+						$this.find('.footer-template-setup').hide();
+					}
+
+					$this.find('#tb-footer-sync').on('click', function(){
+						if ( $(this).is(':checked') ) {
+							$this.find('.standard-footer-setup').hide();
+							$this.find('.footer-template-setup').show();
+						} else {
+							$this.find('.standard-footer-setup').show();
+							$this.find('.footer-template-setup').hide();
+						}
+					});
+
 	    		}
 	    		// Apply all binded actions. This will only need
 	    		// to be called once on the original page load.

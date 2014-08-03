@@ -164,7 +164,8 @@ function themeblvd_setup() {
 			'responsive' 		=> true,			// Responsive elements
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
-			'hide_bottom'		=> true 			// Whether theme supports hiding the #bottom
+			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
+			'footer_sync'		=> true				// Whether theme suppors syncing footer with template
 		),
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script
@@ -1211,7 +1212,6 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 		// Pages
 		case 'pages' :
-			$pages_select = array();
 			$pages = get_pages();
 
 			if ( ! empty( $pages ) ) {
@@ -1367,6 +1367,17 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					$select[$optgroup]['options'][$texture_id] = $texture['name'];
 				}
 
+			}
+			break;
+
+		case 'templates' :
+
+			$templates = get_posts('post_type=tb_layout&orderby=title&order=ASC&numberposts=-1');
+
+			if ( $templates ) {
+				foreach ( $templates as $template ) {
+					$select[$template->post_name] = $template->post_title;
+				}
 			}
 			break;
 

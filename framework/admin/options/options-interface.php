@@ -24,13 +24,18 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	$output = '';
 	$advanced = Theme_Blvd_Advanced_Options::get_instance();
 
-	foreach ( $options as $value ) {
+	foreach ( $options as $option_key => $value ) {
 
 		$counter++;
 		$val = '';
 		$select_value = '';
 		$checked = '';
 		$class = '';
+
+		// Footer sync option is just a placeholder, skip it
+		if ( $option_key === 'footer_sync' ) { // Need strict because 0 == 'footer_sync'
+			continue;
+		}
 
 		// Sub Groups --
 		// This allows for a wrapping div around groups of elements.
@@ -80,6 +85,20 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   		if ( $name ) {
 	   			$output .= '<h3>'.$name.'</h3>';
 	   		}
+
+   			if ( $option_key == 'start_section_footer' && isset( $options['footer_sync'] ) ) {
+
+	   			$val = 0;
+
+	   			if ( ! empty( $settings['footer_sync'] ) ) {
+	   				$val = 1;
+	   			}
+
+	   			$output .= '<div class="footer-sync-wrap">';
+	   			$output .= sprintf( '<input id="tb-footer-sync" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($option_name.'[footer_sync]'), checked( $val, 1, false ) );
+	   			$output .= sprintf( '<label for="footer_sync">%s</label>', __('Template Sync', 'themeblvd') );
+	   			$output .= '</div><!-- .footer-sync-wrap (end) -->';
+   			}
 
 	   		if ( ! empty( $value['desc'] ) ) {
 	   			$output .= '<div class="section-description">'.$value['desc'].'</div>';
@@ -302,6 +321,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							break;
 
 						case 'crop' :
+
 							$value['options'] = themeblvd_get_select( 'crop' );
 
 							if ( count( $value['options'] ) < 1 ) {
@@ -310,6 +330,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							break;
 
 						case 'textures' :
+
 							$textures = true;
 
 							$value['options'] = themeblvd_get_select( 'textures' );
@@ -318,6 +339,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 								$error = __('No textures were found.', 'themeblvd');
 							}
 							break;
+
+						case 'templates' :
+
+							$value['options'] = themeblvd_get_select( 'templates' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('You haven\'t created any custom templates yet.', 'themeblvd');
+							}
+							break;
+
 					}
 
 				}

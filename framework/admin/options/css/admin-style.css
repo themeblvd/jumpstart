@@ -1089,3 +1089,24 @@
 #optionsframework .section-toggles .tb-sortable-option textarea {
 	height: auto;
 }
+
+/* Footer Template Sync */
+#optionsframework .footer-sync-wrap {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#optionsframework .footer-sync-wrap label,
+#optionsframework .footer-sync-wrap input.checkbox {
+	clear: none;
+	float: right;
+}
+#optionsframework .footer-sync-wrap label {
+	color: #888888;
+	cursor: default;
+	font-style: italic;
+	margin-top: 12px;
+}
+#optionsframework .footer-sync-wrap input.checkbox {
+	margin: 10px;
+}

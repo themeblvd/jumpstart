@@ -18,10 +18,10 @@
 get_header();
 ?>
 
-	<div id="custom-layout" class="clearfix" role="main">
+	<div id="custom-main" class="clearfix" role="main">
 		<?php themeblvd_content_top(); ?>
 		<?php if ( has_action( 'themeblvd_builder_content' ) ) : ?>
-			<?php do_action( 'themeblvd_builder_content' ); ?>
+			<?php do_action( 'themeblvd_builder_content', 'main' ); ?>
 		<?php else : ?>
 			<p class="warning"><?php echo apply_filters( 'no_builder_message', themeblvd_get_local( 'no_builder_plugin' ) ); ?></p>
 		<?php endif; ?>
