@@ -6,17 +6,156 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	var window_width = $(window).width(),
-		$body = $('body');
+	var $window = $(window),
+		window_width = $window.width(),
+		$body = $('body'),
+		$primary_menu = $('#primary-menu');
+
+	// ---------------------------------------------------------
+	// Dynamic Body Classes
+	// ---------------------------------------------------------
+
+	// Add "mobile-on" and "tablet-on" classes
+	// to body, depending on viewport.
+	if ( window_width <= 767 ) {
+		$body.addClass('mobile-on');
+		$body.removeClass('tablet-on');
+	} else if ( window_width <= 992 ) {
+		$body.addClass('tablet-on');
+		$body.removeClass('mobile-on');
+	}
+
+	$window.resize(function(){
+
+		var window_width = $window.width();
+
+		if ( window_width <= 767 ) {
+			$body.addClass('mobile-on');
+			$body.removeClass('tablet-on');
+		} else if ( window_width <= 992 ) {
+			$body.addClass('tablet-on');
+			$body.removeClass('mobile-on');
+		} else {
+			$body.removeClass('tablet-on');
+			$body.removeClass('mobile-on');
+		}
+	});
 
 	// ---------------------------------------------------------
 	// Menus
 	// ---------------------------------------------------------
 
+	// Activate Superfish
 	if ( themeblvd.superfish == 'true' ) {
-
-		// Activate Superfish
 		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
+	}
+
+	// Side Menu, general
+	var tb_side_menu = function() {
+		$('.tb-side-menu').off('click.tb-side-menu-toggle', '.tb-side-menu-toggle');
+		$('.tb-side-menu').on('click.tb-side-menu-toggle', '.tb-side-menu-toggle', function() {
+			var $el = $(this);
+			if ( $el.hasClass('open') ) {
+				$el.next('.sub-menu').slideUp(100);
+				$el.removeClass('open fa-'+$el.data('close'));
+				$el.addClass('fa-'+$el.data('open'));
+			} else {
+				$el.next('.sub-menu').slideDown(100);
+				$el.removeClass('fa-'+$el.data('open'));
+				$el.addClass('open fa-'+$el.data('close'));
+			}
+		});
+	};
+
+	// Side Menu Init
+	tb_side_menu();
+
+	// Responsive side menu
+	if ( themeblvd.mobile_side_menu == 'true' && $primary_menu.hasClass('tb-to-side-menu') ) {
+
+		var $side_holder = $('#tb-side-menu-wrapper > .wrap'),
+			$main_holder = $('#access > .wrap'),
+			$toggle = $('#primary-menu-toggle'),
+			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
+			max = parseInt(themeblvd.mobile_menu_viewport_max);
+
+		// If the main menu is located in a different area, this can
+		// be utilized by changing the markup of the side menu holder
+		// like this: <div id="tb-side-menu-wrapper" data-from="#my-menu-wrap"></div>
+		if ( $side_holder.data('from') ) {
+			$main_holder = $($side_holder.data('from'));
+		}
+
+		// Add initial class that denotes the menu is hidden on
+		// page load. The menu will be hidden on its own, but
+		// this allows for CSS3 transitions.
+		$body.addClass('side-menu-off');
+
+		// If we're in the set viewport, the menu will be moved
+		// TO the side menu wrapper, or moved back.
+		var tb_build_side_menu = function() {
+
+			if ( $window.width() <= max ) {
+
+				// Destroy superfish
+				if ( themeblvd.superfish == 'true' ) {
+					$primary_menu.superfish('destroy');
+				}
+
+				// Remove standard menu styling classes
+				$primary_menu.removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
+
+				// Move items to the side menu area
+				$primary_menu.appendTo($side_holder);
+
+				// Re-bind toggle effects
+				tb_side_menu();
+				// ... @TODO $extras.appendTo($holder); ... make an array of them with .each() ?
+
+			} else {
+
+				// Activate superfish
+				if ( themeblvd.superfish == 'true' && ! $primary_menu.data('sfOptions') ) {
+					$primary_menu.superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');;
+					$primary_menu.addClass('sf-menu');
+				}
+
+				// Add back "standard" class
+				$primary_menu.removeClass('tb-side-menu').addClass('tb-primary-menu');
+
+				// Move items back
+				$primary_menu.appendTo($main_holder);
+				// ... @TODO $extras.appendTo($holder);
+
+				// In case side menu wrapper was showing, hide it
+				$body.removeClass('side-menu-on');
+				$body.addClass('side-menu-off');
+
+			}
+		};
+
+		// Init
+		tb_build_side_menu();
+
+		// Re-evaluate on browser resize
+		$window.resize(tb_build_side_menu);
+
+		// Click to show/hide the side menu
+		$toggle.on('click', function(){
+			if ( $body.hasClass('side-menu-on') ) {
+				// Close menu
+				$body.removeClass('side-menu-on');
+				$body.addClass('side-menu-off');
+			} else {
+				// Show menu
+				$body.removeClass('side-menu-off');
+				$body.addClass('side-menu-on');
+			}
+		});
+		$('#wrapper').on('click', function(){
+			$body.removeClass('side-menu-on');
+			$body.addClass('side-menu-off');
+		});
 
 	}
 
@@ -27,6 +166,29 @@ jQuery(document).ready(function($) {
 	$('ul.sf-menu .no-click').find('a:first').click(function(){
 		return false;
 	});
+
+	// ---------------------------------------------------------
+	// Scroll-to-Top Button
+	// ---------------------------------------------------------
+
+	if ( themeblvd.scroll_to_top == 'true' ) {
+
+		var $scroll_to_top = $('.tb-scroll-to-top');
+
+		$window.scroll(function(){
+			if ( $(this).scrollTop() > 400 ) {
+				$scroll_to_top.fadeIn();
+			} else {
+				$scroll_to_top.fadeOut();
+			}
+		});
+
+		$scroll_to_top.on( 'click', function(){
+			$('html, body').animate({scrollTop : 0}, 400);
+			return false;
+		});
+
+	}
 
 	// ---------------------------------------------------------
 	// Gallery Shortcode Integration
@@ -236,26 +398,31 @@ jQuery(document).ready(function($) {
 			pause = true;
 		}
 
-		$(window).load(function() {
+		$window.load(function() {
 			$slider.flexslider({
 				animation: fx,
 				easing: 'swing',
 				slideshowSpeed: speed,
 				animationSpeed: '1000',
 				//slideshow: slideshow,
-				directionNav: false,
+				directionNav: false,	// Using custom slider controls outputted with slider markup
 				controlNav: false,
 				pauseOnHover: pause,	// If nav exists, replace with manual action below
-				pauseOnAction: false 	// replaced with manual actino below
+				pauseOnAction: false, 	// Replaced with manual action below
+				start: function(){
+					$slider.find('.tb-slider-arrows').fadeIn(100);
+				}
 			});
 		});
 
 		if ( nav ) {
 
+			// Manual pause on hover, will not continue when hovered off
 			$slider.on('mouseover', function(){
 				$slider.data('flexslider').flexslider('pause');
 			});
 
+			// Custom slider controls
 			$slider.find('.tb-slider-arrows a').on('click', function(){
 
 				if ( $(this).hasClass('next') ) {
@@ -278,7 +445,6 @@ jQuery(document).ready(function($) {
 	$('.desktop .tb-parallax').each(function(){
 
 		var $el = $(this),
-			$window = $(window),
 			intensity = $el.data('parallax'),
 			y = 0,
 			y_pos = 0,
@@ -1087,26 +1253,34 @@ jQuery(document).ready(function($) {
         // Run it
         this.each(function(){
 
-			var el = $(this),
-				target = $(el.attr('href')),
+			var $el = $(this),
+				$target,
 				currentViewport,
 				timeout = false;
 
-			// Toggle on click
-			el.click(function(){
-				if (  target.hasClass(settings.openClass) )
-					target.slideUp().removeClass(settings.openClass).addClass(settings.closedClass);
-				else
-					target.slideDown().removeClass(settings.closedClass).addClass(settings.openClass);
+			if ( $el.data('toggle') ) {
+				$target = $($el.data('toggle'));
+			} else {
+				$target = $($el.attr('href'));
+			}
 
+			// Toggle on click
+			$el.click(function(){
+				if ( $target.hasClass(settings.openClass) ) {
+					$target.slideUp().removeClass(settings.openClass).addClass(settings.closedClass);
+				} else {
+					$target.slideDown().removeClass(settings.closedClass).addClass(settings.openClass);
+				}
 				return false;
 			});
 
 			// Window re-sizing  - For those people screwing with the
 			// browser window and are not actually on a mobile device.
-		    $( window ).resize( function() {
-				if ( false !== timeout )
+		    $(window).resize( function() {
+
+				if ( false !== timeout ) {
 					clearTimeout( timeout );
+				}
 
 				timeout = setTimeout( function() {
 					currentViewport = $(window).width();
@@ -1116,14 +1290,14 @@ jQuery(document).ready(function($) {
 						// whether this re-sizing is occuring on a mobile
 						// device or not. If we're on mobile, the "forced_open"
 						// class should never get added.
-						target.show().removeClass(settings.openClass+' '+settings.closedClass).addClass('expanded');
+						$target.show().removeClass(settings.openClass+' '+settings.closedClass).addClass('expanded');
 
 					} else {
 
 						// Make sure this wasn't triggered by re-sizing on mobile
-						if (  target.hasClass('expanded') )
-							target.hide().removeClass('expanded');
-
+						if ( $target.hasClass('expanded') ) {
+							$target.hide().removeClass('expanded');
+						}
 					}
 
 				}, 100 );

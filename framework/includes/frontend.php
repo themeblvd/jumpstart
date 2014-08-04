@@ -362,14 +362,27 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 	// Arrow indicators on drop down menus
 	if ( in_array( 'menu-item-has-children', $item->classes ) && strpos( $args->menu_class, 'sf-menu' ) !== false ) {
 
+		// Standard indicators for desktop view
 		$direction = 'down';
 		if ( $depth > 0 ) {
 			$direction = 'right';
 		}
 
-		$indicator = sprintf( '<i class="sf-sub-indicator fa fa-caret-%s"></i></a>', $direction );
+		$indicator = sprintf( '<i class="sf-sub-indicator fa fa-caret-%s"></i>', $direction );
 		$indicator = apply_filters( 'themeblvd_menu_sub_indicator', $indicator, $depth );
 		$item_output = str_replace( '</a>', $indicator.'</a>', $item_output );
+
+	}
+
+	// Indicators for top-level toggle menus
+	if ( in_array( 'menu-item-has-children', $item->classes ) && $depth < 1 ) {
+		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->menu_id == 'primary-menu' && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
+			$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
+			$icon_close = apply_filters( 'themeblvd_side_menu_icon_close', 'minus' );
+			$icon = apply_filters( 'themeblvd_side_menu_icon', sprintf( '<i class="tb-side-menu-toggle fa fa-%1$s" data-open="%1$s" data-close="%2$s"></i>', $icon_open, $icon_close ) );
+			$item_output = str_replace( '</a>', '</a>'.$icon, $item_output );
+		}
+
 	}
 
 	// Allow bootstrap "nav-header" class in menu items.

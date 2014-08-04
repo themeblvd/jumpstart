@@ -162,6 +162,7 @@ function themeblvd_setup() {
 		),
 		'display' => array(
 			'responsive' 		=> true,			// Responsive elements
+			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
 			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
@@ -484,10 +485,10 @@ function themeblvd_sidebar_layouts() {
 
 	// Bootstrap column size -- In Bootstrap 3+,
 	// this is used to determine how small the viewport
-	// is before stacking the columns. By using "sm"
+	// is before stacking the columns. By using "md"
 	// we are having columns drop responsively at the
-	// 767px or less (i.e. mobile viewports).
-	$stack = 'sm';
+	// 992px or less (i.e. tablet/mobile viewports).
+	$stack = 'md';
 
 	// ... And then because old versions of IE are horrible,
 	// they do not accurately know the viewport size.

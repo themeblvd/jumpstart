@@ -21,7 +21,18 @@ endif;
 /* (2) Before and after site
 /*------------------------------------------------------------*/
 
-// No default hooked functions.
+if ( !function_exists( 'themeblvd_responsive_side_menu' ) ) :
+/**
+ * Default display for action: themeblvd_before
+ *
+ * @since 2.0.0
+ */
+function themeblvd_responsive_side_menu() {
+	if ( themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) {
+		echo '<div id="tb-side-menu-wrapper"><div class="wrap"></div></div>';
+	}
+}
+endif;
 
 /*------------------------------------------------------------*/
 /* (3) Header
@@ -143,11 +154,11 @@ function themeblvd_header_menu_default() {
 	do_action( 'themeblvd_header_menu_before' );
 	?>
 	<nav id="access" class="header-nav" role="navigation">
-		<a href="#" class="btn-navbar" data-toggle="#access>.wrap">
+		<a href="#" id="primary-menu-toggle" class="btn-navbar">
 			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
 		</a>
 		<div class="wrap clearfix">
-			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
+			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
 			<?php themeblvd_header_menu_addon(); ?>
 		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->
@@ -348,7 +359,7 @@ function themeblvd_fixed_sidebars( $position ) {
 	// Sidebar Left, Sidebar Right, Double Sidebars
 	if ( $layout == 'sidebar_'.$position || $layout == 'double_sidebar' ) {
 
-		do_action( 'themeblvd_fixed_sidebar_before', $position  );
+		do_action( 'themeblvd_fixed_sidebar_before', $position );
 		themeblvd_display_sidebar( 'sidebar_'.$position );
 		do_action( 'themeblvd_fixed_sidebar_after', $position );
 

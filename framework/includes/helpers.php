@@ -124,7 +124,8 @@ if ( !function_exists( 'themeblvd_primary_menu_fallback' ) ) :
  */
 function themeblvd_primary_menu_fallback() {
 	$home_text = themeblvd_get_local('home');
-	echo '<ul id="primary-menu" class="sf-menu">';
+	$args = apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) );
+	echo '<ul id="'.$args['menu_id'].'" class="'.$args['menu_class'].'">';
 	echo '<li class="home"><a href="'.home_url().'" title="'.$home_text.'">'.$home_text.'</a></li>';
 	wp_list_pages('title_li=');
 	echo '</ul>';
