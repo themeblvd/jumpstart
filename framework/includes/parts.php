@@ -232,7 +232,7 @@ function themeblvd_get_buttons( $buttons, $args ) {
 
 			$addon = '';
 
-			if ( $btn['custom'] ) {
+			if ( $btn['color'] == 'custom' && $btn['custom'] ) {
 
 				$custom = wp_parse_args( $btn['custom'], $btn_custom_std );
 
