@@ -142,6 +142,10 @@ class Theme_Blvd_Options_API {
 	 * Layout
 	 *	- Header
 	 *		- logo
+	 *		- header_text
+	 *		- social_media
+	 *		- social_media_style
+	 *		- searchform
 	 *	- Main
 	 *		- breadcrumbs
 	 *		- sidebar_layout
@@ -296,8 +300,8 @@ class Theme_Blvd_Options_API {
 						'std'		=> 'show',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'show' => __( 'Yes, show breadcrumbs.', 'themeblvd' ),
-							'hide' => __( 'No, hide breadcrumbs.', 'themeblvd' )
+							'show' => __( 'Yes, show breadcrumbs', 'themeblvd' ),
+							'hide' => __( 'No, hide breadcrumbs', 'themeblvd' )
 						)
 					),
 					'sidebar_layout' => array(
@@ -394,8 +398,8 @@ class Theme_Blvd_Options_API {
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
 						'options'	=> array(
-							'show'	=> __('Yes, show button.', 'themeblvd'),
-							'hide'	=> __('No, don\'t show it.', 'themeblvd'),
+							'show'	=> __('Yes, show button', 'themeblvd'),
+							'hide'	=> __('No, don\'t show it', 'themeblvd'),
 						)
 					)
 				)
@@ -410,40 +414,39 @@ class Theme_Blvd_Options_API {
 			// Section: Single Posts
 			'single' => array(
 				'name' => __( 'Single Posts', 'themeblvd' ),
-				'desc' => __( 'These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid.', 'themeblvd' ),
+				'desc' => __( 'These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid. Additionally, most of these settings can be overridden in the Post Options section when editing individual posts.', 'themeblvd' ),
 				'options' => array(
 					'single_meta' => array(
-						'name' 		=> __( 'Show meta information at top of posts?', 'themeblvd' ),
-						'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info.', 'themeblvd' ),
+						'name' 		=> __( 'Meta Information', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show on the single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
 						'id' 		=> 'single_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'show'		=> __( 'Show meta info.', 'themeblvd' ),
-							'hide' 		=> __( 'Hide meta info.', 'themeblvd' )
+							'show'		=> __( 'Show meta info', 'themeblvd' ),
+							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
 						)
 					),
 					'single_thumbs' => array(
-						'name' 		=> __( 'Show featured images at top of posts?', 'themeblvd' ),
-						'desc' 		=> __( 'Choose how you want your featured images to show at the top of the posts. It can be useful to turn this off if you want to have featured images over on your blogroll or post grid sections, but you don\'t want them to show on the actual posts themeselves.', 'themeblvd' ),
+						'name' 		=> __( 'Featured Images', 'themeblvd' ),
+						'desc' 		=> __( 'Choose how you want your featured images to show on the single post. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'themeblvd' ),
 						'id' 		=> 'single_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
-							'full' 		=> __( 'Show full-width thumbnails.', 'themeblvd' ),
-							'hide' 		=> __( 'Hide thumbnails.', 'themeblvd' )
+							'full' 		=> __( 'Show featured images', 'themeblvd' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),
 					'single_comments' => array(
-						'name' 		=> __( 'Show comments below posts?', 'themeblvd' ),
-						'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post.', 'themeblvd' ),
+						'name' 		=> __( 'Comments', 'themeblvd' ),
+						'desc' 		=> __( 'This will hide the presence of comments on the single post page.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
 						'id' 		=> 'single_comments',
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'show'		=> __( 'Show comments.', 'themeblvd' ),
-							'hide' 		=> __( 'Hide comments.', 'themeblvd' )
+							'show'		=> __( 'Show comments', 'themeblvd' ),
+							'hide' 		=> __( 'Hide comments', 'themeblvd' )
 						)
 					)
 				) // End single options
@@ -460,20 +463,19 @@ class Theme_Blvd_Options_API {
 						'std' 		=> 'full',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
-							'full' 		=> __( 'Show full-width thumbnails.', 'themeblvd' ),
-							'hide' 		=> __( 'Hide thumbnails.', 'themeblvd' )
+							'full' 		=> __( 'Show featured images', 'themeblvd' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),
 					'blog_content' => array(
-						'name' 		=> __( 'Show excerpts or full content?', 'themeblvd' ),
+						'name' 		=> __( 'Excerpts of Full Content', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
 						'id' 		=> 'blog_content',
 						'std' 		=> 'content',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'content'	=> __( 'Show full content.', 'themeblvd' ),
-							'excerpt' 	=> __( 'Show excerpt only.', 'themeblvd' )
+							'content'	=> __( 'Show full content', 'themeblvd' ),
+							'excerpt' 	=> __( 'Show excerpt only', 'themeblvd' )
 						)
 					),
 					'blog_categories' => array(
@@ -488,33 +490,32 @@ class Theme_Blvd_Options_API {
 			// Section: Archives
 			'archives' => array(
 				'name' => __( 'Archives', 'themeblvd' ),
-				'desc' => __( 'These settings apply any time you\'re viewing search results or posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
+				'desc' => __( 'These settings apply any time you\'re viewing posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
 				'options' => array(
 					'archive_title' => array(
-						'name' 		=> __( 'Show title on archive pages?', 'themeblvd' ),
+						'name' 		=> __( 'Archive Page Titles', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages.', 'themeblvd' ),
 						'id' 		=> 'archive_title',
 						'std' 		=> 'false',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'true'	=> __( 'Yes, show main title at the top of archive pages.', 'themeblvd' ),
-							'false' => __( 'No, hide the title.', 'themeblvd' )
+							'true'	=> __( 'Yes, show main title at the top of archive pages', 'themeblvd' ),
+							'false' => __( 'No, hide the title', 'themeblvd' )
 						)
 					),
 					'archive_thumbs' => array(
-						'name' 		=> __( 'Show featured images on archive pages?', 'themeblvd' ),
+						'name' 		=> __( 'Featured Images', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages.', 'themeblvd' ),
 						'id' 		=> 'archive_thumbs',
-						'std' 		=> 'small',
+						'std' 		=> 'full',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'small'		=> __( 'Show small thumbnails.', 'themeblvd' ),
-							'full' 		=> __( 'Show full-width thumbnails.', 'themeblvd' ),
-							'hide' 		=> __( 'Hide thumbnails.', 'themeblvd' )
+							'full' 		=> __( 'Show featured images', 'themeblvd' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),
 					'archive_content' => array(
-						'name' 		=> __( 'Show excerpts or full content?', 'themeblvd' ),
+						'name' 		=> __( 'Excerpts of Full Content', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
 						'id' 		=> 'archive_content',
 						'std' 		=> 'excerpt',

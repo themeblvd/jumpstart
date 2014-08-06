@@ -159,8 +159,8 @@ function setup_themeblvd_post_meta() {
 				'type' 		=> 'radio',
 				'options' 	=> array(
 					'default'	=> __( 'Use default post setting', 'themeblvd' ),
-					'small'		=> __( 'Show small thumbnail', 'themeblvd' ),
-					'full' 		=> __( 'Show full-width thumbnail', 'themeblvd' ),
+					//'small'		=> __( 'Show small thumbnail', 'themeblvd' ),
+					'full' 		=> __( 'Show featured image', 'themeblvd' ),
 					'hide' 		=> __( 'Hide featured image', 'themeblvd' )
 				)
 			),
