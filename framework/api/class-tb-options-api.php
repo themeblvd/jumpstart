@@ -218,11 +218,71 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'logo' => array(
 						'name' 		=> __( 'Logo', 'themeblvd' ),
-						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.<br /><br />Use the "Upload" button to either upload an image or select an image from your media library. When inserting an image with the "Upload" button, the URL and width will be inserted for you automatically. You can also type in the URL to an image in the text field along with a manually-entered width.<br /><br />If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'themeblvd' ),
+						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.<br /><br /><em>Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.</em>', 'themeblvd' ),
 						'id' 		=> 'logo',
-						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '220', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '250', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'
-					)
+					),
+					'header_text' => array(
+						'name' 		=> __( 'Header Text', 'themeblvd' ),
+						'desc'		=> __( 'Enter a very brief piece of text you\'d like to show You can use basic HTML here..', 'themeblvd' ),
+						'id'		=> 'header_text',
+						'std'		=> 'Welcome to our website!',
+						'type' 		=> 'text'
+					),
+					'social_media' => array(
+						'name' 		=> __( 'Social Media Buttons', 'themeblvd' ),
+						'desc' 		=> __( 'Configure the social media buttons you\'d like to show.', 'themeblvd' ),
+						'id' 		=> 'social_media',
+						'std' 		=> array(
+							'item_1' => array(
+								'icon'	=> 'facebook',
+								'url'	=> 'http://facebook.com/jasonbobich',
+								'label'	=> 'Facebook'
+							),
+							'item_2' => array(
+								'icon'	=> 'google',
+								'url'	=> 'https://plus.google.com/116531311472104544767/posts',
+								'label'	=> 'Google+'
+							),
+							'item_3' => array(
+								'icon'	=> 'twitter',
+								'url'	=> 'http://twitter.com/jasonbobich',
+								'label'	=> 'Twitter'
+							),
+							'item_4' => array(
+								'icon'	=> 'rss',
+								'url'	=> get_feed_link(),
+								'label'	=> 'RSS Feed'
+							)
+						),
+						'type' 		=> 'social_media'
+					),
+					'social_media_style' => array(
+						'name' 		=> __( 'Social Media Style', 'themeblvd' ),
+						'desc'		=> __( 'Select the color you\'d like applied to the social icons.', 'themeblvd' ),
+						'id'		=> 'social_media_style',
+						'std'		=> 'flat',
+						'type' 		=> 'select',
+						'options'	=> array(
+							'flat'			=> __( 'Flat Color', 'themeblvd' ),
+							'dark' 			=> __( 'Flat Dark', 'themeblvd' ),
+							'grey' 			=> __( 'Flat Grey', 'themeblvd' ),
+							'light' 		=> __( 'Flat Light', 'themeblvd' ),
+							'color'			=> __( 'Color', 'themeblvd' )
+						)
+					),
+					'searchform' => array(
+						'name' 		=> __( 'Search Form', 'themeblvd' ),
+						'desc'		=> __( 'Select whether you\'d like to show a search form.', 'themeblvd' ),
+						'id'		=> 'searchform',
+						'std'		=> 'show',
+						'type' 		=> 'select',
+						'options'	=> array(
+							'show'			=> __( 'Show search form', 'themeblvd' ),
+							'hide' 			=> __( 'Hide search form', 'themeblvd' )
+						)
+					),
 				) // End header options
 			),
 			// Section: Main

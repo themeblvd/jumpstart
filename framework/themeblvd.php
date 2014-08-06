@@ -152,6 +152,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 
 	// Header hooks
+	add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 	add_action( 'themeblvd_header_above', 'themeblvd_header_above_default' );
 	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );

@@ -38,6 +38,34 @@ endif;
 /* (3) Header
 /*------------------------------------------------------------*/
 
+if ( !function_exists( 'themeblvd_header_top_default' ) ) :
+/**
+ * Default display for action: themeblvd_header_top
+ *
+ * @since 2.0.0
+ */
+function themeblvd_header_top_default() {
+	?>
+	<div class="header-top">
+		<div class="wrap clearfix">
+
+			<?php if ( themeblvd_get_option('header_text') ) : ?>
+				<div class="header-top-text"><?php echo themeblvd_get_option('header_text'); ?></div>
+			<?php endif; ?>
+
+			<ul class="header-top-nav list-unstyled">
+				<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
+					<li><?php themeblvd_search_popup(); ?></li>
+				<?php endif; ?>
+				<li><?php themeblvd_contact_bar(); ?></li>
+			</ul>
+
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-above (end) -->
+	<?php
+}
+endif;
+
 if ( !function_exists( 'themeblvd_header_above_default' ) ) :
 /**
  * Default display for action: themeblvd_header_above
