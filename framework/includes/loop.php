@@ -167,10 +167,20 @@ function themeblvd_post_list( $args = array() ){
  */
 function themeblvd_the_post_list() {
 
-	$args = apply_filters('themeblvd_the_post_list_args', array(
+	$args = array(
 		'display'	=> 'paginated',
 		'wp_query' 	=> true
-	));
+	);
+
+	if ( is_search() ) {
+		$args['part'] = 'search';
+	} else if ( is_archive() ) {
+		$args['part'] = 'archive';
+	} else if ( is_home() ) {
+		$args['parts'] = 'index';
+	}
+
+	$args = apply_filters( 'themeblvd_the_post_list_args', $args );
 
 	themeblvd_post_list( $args );
 
