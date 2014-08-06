@@ -592,7 +592,20 @@ if ( !function_exists( 'themeblvd_blog_tags_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_tags_default() {
-	the_tags( '<span class="tags"><i class="fa fa-tags"></i> ', ', ', '</span>' );
+	the_tags( '<span class="tb-tags tags"><i class="fa fa-tags"></i> ', ', ', '</span>' );
+}
+endif;
+
+if ( !function_exists( 'themeblvd_blog_cats_default' ) ) :
+/**
+ * Default display for action: themeblvd_cats
+ *
+ * @since 2.0.0
+ */
+function themeblvd_blog_cats_default() {
+	echo '<span class="tb-cats categories"><i class="fa fa-bars"></i> ';
+	the_category(', ');
+	echo '</span>';
 }
 endif;
 

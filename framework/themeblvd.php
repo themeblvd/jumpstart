@@ -188,6 +188,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
 	add_action( 'themeblvd_blog_meta', 'themeblvd_blog_meta_default' );
 	add_action( 'themeblvd_blog_tags', 'themeblvd_blog_tags_default' );
+	add_action( 'themeblvd_blog_cats', 'themeblvd_blog_cats_default' );
 	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 5 );
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
 

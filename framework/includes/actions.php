@@ -442,6 +442,16 @@ function themeblvd_blog_tags() {
 }
 
 /**
+ * Displays the categories for a blog post.
+ *
+ * @since 2.5.0
+ * @see themeblvd_blog_cats_default()
+ */
+function themeblvd_blog_cats() {
+	do_action( 'themeblvd_blog_cats' );
+}
+
+/**
  * Display the featured image, accounting for framework's
  * Image Link settings.
  *
