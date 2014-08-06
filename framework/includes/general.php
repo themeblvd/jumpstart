@@ -180,7 +180,8 @@ function themeblvd_setup() {
 			'easypiechart'		=> true,			// "EasyPieChart" scrip
 			'gmap'				=> true,			// Google Maps API v3
 			'charts'			=> true,			// Charts.js
-			'ios_orientation'	=> false			// "ios-orientationchange-fix" script
+			'ios_orientation'	=> false,			// "ios-orientationchange-fix" script
+			'tag_cloud'			=> true 			// Framework tag cloud styling
 		)
 	);
 	return apply_filters( 'themeblvd_global_config', $setup );

@@ -118,7 +118,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/stats.php' );
 
 	// Filters
-	add_filter( 'body_class','themeblvd_browser_class' );
+	add_filter( 'body_class','themeblvd_body_class' );
 	add_filter( 'post_class', 'themeblvd_post_class' );
 	add_filter( 'oembed_result', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'embed_oembed_html', 'themeblvd_oembed_result', 10, 2 );

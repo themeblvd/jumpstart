@@ -184,7 +184,8 @@ function themeblvd_was( $type, $helper = '' ) {
 }
 
 /**
- * Determine current web browser and generate a CSS class for
+ * All default body classes puts on framework, including
+ * determining current web browser and generate a CSS class for
  * it. This function gets filtered onto WP's body_class.
  *
  * @since 2.2.0
@@ -192,7 +193,7 @@ function themeblvd_was( $type, $helper = '' ) {
  * @param array $classes Current body classes
  * @return array $classes Body classes with browser classes added
  */
-function themeblvd_browser_class( $classes ) {
+function themeblvd_body_class( $classes ) {
 
 	// Get current user agent
 	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
@@ -248,7 +249,12 @@ function themeblvd_browser_class( $classes ) {
 
 	// Scroll effects
 	if ( themeblvd_supports( 'display', 'scroll_effects' ) ) {
-		$classes[] = 'scroll-effects';
+		$classes[] = 'tb-scroll-effects';
+	}
+
+	// Tag Cloud styling
+	if ( themeblvd_supports( 'assets', 'tag_cloud' ) ) {
+		$classes[] = 'tb-tag-cloud';
 	}
 
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
