@@ -1987,7 +1987,7 @@ function themeblvd_get_social_media_sources() {
  		'rss' 			=> __('General: RSS', 'themeblvd_front'),
  		'store' 		=> __('General: Store', 'themeblvd_front'),
  		'write' 		=> __('General: Write', 'themeblvd_front'),
-		'500px' 		=> __('500px', 'themeblvd_front'),
+		'fivehundredpx' => __('500px', 'themeblvd_front'),
 		'amazon' 		=> __('Amazon', 'themeblvd_front'),
 		'android' 		=> __('Android', 'themeblvd_front'),
 		'behance' 		=> __('Behance', 'themeblvd_front'),
