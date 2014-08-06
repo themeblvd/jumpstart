@@ -160,6 +160,26 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
+	// Search popup
+	// ---------------------------------------------------------
+
+	$('.tb-search-popup .search-trigger').on('click', function(){
+
+		var $el = $(this),
+			$popup = $el.closest('.tb-search-popup').find('.search-holder');
+
+		if ( $el.hasClass('open') ) {
+			$el.stop().removeClass('open').html('<i class="fa fa-'+$el.data('open')+'"></i>');
+			$popup.stop().fadeOut(200);
+		} else {
+			$el.stop().addClass('open').html('<i class="fa fa-'+$el.data('close')+'"></i>');
+			$popup.stop().fadeIn(200);
+		}
+
+		return false;
+	});
+
+	// ---------------------------------------------------------
 	// No-click dropdowns
 	// ---------------------------------------------------------
 

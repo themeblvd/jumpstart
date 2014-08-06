@@ -1,18 +1,4 @@
 <?php
-if ( !function_exists( 'themeblvd_contact_bar' ) ) :
-/**
- * Contact button bar
- *
- * @since 2.0.0
- *
- * @param array $buttons icons to use
- * @param array $args Any options for contact bar
- */
-function themeblvd_contact_bar( $buttons = array(), $args = array() ) {
-	echo themeblvd_get_contact_bar( $buttons, $args );
-}
-endif;
-
 /**
  * Get contact button bar
  *
@@ -42,14 +28,14 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 	// Set up buttons
 	if ( ! $buttons ) {
-		$buttons = themeblvd_get_option( 'social_media' );
+		$buttons = themeblvd_get_option('social_media');
 	}
 
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_contact_bar_defaults', array(
-		'style'		=> themeblvd_get_option( 'social_media_style', null, 'grey' ),	// color, grey, light, dark
-		'tooltip'	=> 'top',
-		'class'		=> ''													// top, right, left, bottom, false
+		'style'		=> themeblvd_get_option( 'social_media_style', null, 'flat' ),	// color, grey, light, dark, flat
+		'tooltip'	=> 'bottom',
+		'class'		=> ''															// top, right, left, bottom, false
 	));
 	$args = wp_parse_args( $args, $defaults );
 
@@ -92,6 +78,83 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 		$output .= '</div><!-- .themeblvd-contact-bar (end) -->';
 	}
 	return apply_filters( 'themeblvd_contact_bar', $output, $buttons, $args );
+}
+
+/**
+ * Contact button bar
+ *
+ * @since 2.0.0
+ *
+ * @param array $buttons icons to use
+ * @param array $args Any options for contact bar
+ */
+function themeblvd_contact_bar( $buttons = array(), $args = array() ) {
+	echo themeblvd_get_contact_bar( $buttons, $args );
+}
+
+/**
+ * Searchform popup, uses searchform.php for actual
+ * search form portion
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ * @return string $output HTML to output for searchform
+ */
+function themeblvd_get_search_popup( $args = array() ) {
+
+	// Setup arguments
+	$defaults = apply_filters('themeblvd_search_popup_defaults', array(
+		'open'			=> 'search',	// FontAwesome icon to open
+		'close'			=> 'times',		// FontAwesome icon to close
+		'placement-x'	=> '', 			// left, right
+		'placement-y'	=> 'bottom', 	// top, bottom
+		'class'			=> '' 			// Optional CSS class to add
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	$x = $args['placement-x'];
+
+	if ( ! $x ) {
+		if ( is_rtl() ) {
+			$x = 'right';
+		} else {
+			$x = 'left';
+		}
+	}
+
+	$class = sprintf( 'tb-search-popup %s %s', $x, $args['placement-y'] );
+
+	if ( $args['class'] ) {
+		$class .= $args['class'];
+	}
+
+	$output = sprintf( '<div class="%s">', $class );
+
+	// Trigger Button
+	$output .= sprintf( '<a href="#" class="search-trigger" data-open="%1$s" data-close="%2$s"><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+
+	// Search popup
+	$output .= '<div class="search-holder">';
+	$output .= '<span class="arrow"></span>';
+	$output .= get_search_form(false);
+	$output .= '</div><!-- .search-holder (end) -->';
+
+	$output .= '</div><!-- .tb-search-popup (end) -->';
+
+	return apply_filters( 'themeblvd_search_popup', $output, $args );
+}
+
+/**
+ * Searchform popup, uses searchform.php for actual
+ * search form portion
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ */
+function themeblvd_search_popup( $args = array() ) {
+	echo themeblvd_get_search_popup( $args );
 }
 
 /**
