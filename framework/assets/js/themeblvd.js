@@ -15,8 +15,12 @@ jQuery(document).ready(function($) {
 	// Dynamic Body Classes
 	// ---------------------------------------------------------
 
-	// Add "mobile-on" and "tablet-on" classes
-	// to body, depending on viewport.
+	// Add "mobile-on" and "tablet-on" classes to body,
+	// only depending on viewport size.
+	//
+	// NOTE: These are different than the default "mobile"
+	// and "desktop" classes filtered onto WP's body_class(),
+	// which denote if user is on a true mobile device
 	if ( window_width <= 767 ) {
 		$body.addClass('mobile-on');
 		$body.removeClass('tablet-on');
@@ -75,7 +79,8 @@ jQuery(document).ready(function($) {
 
 		var $side_holder = $('#tb-side-menu-wrapper > .wrap'),
 			$main_holder = $('#access > .wrap'),
-			$toggle = $('#primary-menu-toggle'),
+			$toggle_open = $('#primary-menu-open'),
+			$toggle_close = $('#primary-menu-close'),
 			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
 			max = parseInt(themeblvd.mobile_menu_viewport_max);
 
@@ -130,6 +135,8 @@ jQuery(document).ready(function($) {
 				// In case side menu wrapper was showing, hide it
 				$body.removeClass('side-menu-on');
 				$body.addClass('side-menu-off');
+				$toggle_open.show();
+				$toggle_close.hide();
 
 			}
 		};
@@ -140,21 +147,26 @@ jQuery(document).ready(function($) {
 		// Re-evaluate on browser resize
 		$window.resize(tb_build_side_menu);
 
-		// Click to show/hide the side menu
-		$toggle.on('click', function(){
-			if ( $body.hasClass('side-menu-on') ) {
-				// Close menu
-				$body.removeClass('side-menu-on');
-				$body.addClass('side-menu-off');
-			} else {
-				// Show menu
-				$body.removeClass('side-menu-off');
-				$body.addClass('side-menu-on');
-			}
+		// Show menu
+		$toggle_open.on('click', function(){
+			$body.removeClass('side-menu-off');
+			$body.addClass('side-menu-on');
+			$toggle_open.hide();
+			$toggle_close.show();
+		});
+
+		// Close menu
+		$toggle_close.on('click', function(){
+			$body.removeClass('side-menu-on');
+			$body.addClass('side-menu-off');
+			$toggle_close.hide();
+			$toggle_open.show();
 		});
 		$('#wrapper').on('click', function(){
 			$body.removeClass('side-menu-on');
 			$body.addClass('side-menu-off');
+			$toggle_close.hide();
+			$toggle_open.show();
 		});
 
 	}
@@ -802,7 +814,7 @@ jQuery(document).ready(function($) {
 
 	// Milestone percent
 	if ( $.fn.easyPieChart != 'undefined' ) {
-		if ( ! $body.hasClass('scroll-effects') || $body.hasClass('mobile') ) {
+		if ( ! $body.hasClass('tb-scroll-effects') || $body.hasClass('mobile') ) {
 			$('.tb-milestone-percent').each(function(){
 
 				var $chart = $(this).find('.chart');
@@ -872,7 +884,7 @@ jQuery(document).ready(function($) {
 			}
 
 			// Scroll effects
-			if ( $body.hasClass('scroll-effects') && $body.hasClass('desktop') ) {
+			if ( $body.hasClass('tb-scroll-effects') && $body.hasClass('desktop') ) {
 
 				$el.find('.chart-wrap').css('opacity', '0');
 
@@ -942,7 +954,7 @@ jQuery(document).ready(function($) {
 			}
 
 			// Scroll effects
-			if ( $body.hasClass('scroll-effects') && $body.hasClass('desktop') ) {
+			if ( $body.hasClass('tb-scroll-effects') && $body.hasClass('desktop') ) {
 
 				$el.find('.chart-wrap').css('opacity', '0');
 
@@ -961,7 +973,7 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Milestone standard
-	$('.desktop.scroll-effects .tb-milestone .milestone').each(function() {
+	$('.desktop.tb-scroll-effects .tb-milestone .milestone').each(function() {
 
 		var $el = $(this),
 			num = parseInt($el.data('num'));
@@ -981,7 +993,7 @@ jQuery(document).ready(function($) {
 
 	// Milestone percent
 	if( $.fn.easyPieChart != 'undefined' ) {
-		$('.desktop.scroll-effects .tb-milestone-percent').each(function(){
+		$('.desktop.tb-scroll-effects .tb-milestone-percent').each(function(){
 
 			var $chart = $(this).find('.chart');
 
@@ -1010,7 +1022,7 @@ jQuery(document).ready(function($) {
 
 
 	// Milestone standard
-	$('.desktop.scroll-effects .tb-progress .progress-bar').each(function(){
+	$('.desktop.tb-scroll-effects .tb-progress .progress-bar').each(function(){
 
 		var $bar = $(this);
 

@@ -49,6 +49,16 @@ function themeblvd_header_top_default() {
 	<div class="header-top">
 		<div class="wrap clearfix">
 
+			<div id="primary-menu-toggle">
+				<a href="#" id="primary-menu-open" class="btn-navbar open">
+					<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
+				</a>
+
+				<a href="#" id="primary-menu-close" class="btn-navbar close">
+					<?php echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' ); ?>
+				</a>
+			</div>
+
 			<?php if ( themeblvd_get_option('header_text') ) : ?>
 				<div class="header-top-text"><?php echo themeblvd_get_option('header_text'); ?></div>
 			<?php endif; ?>
@@ -182,9 +192,6 @@ function themeblvd_header_menu_default() {
 	do_action( 'themeblvd_header_menu_before' );
 	?>
 	<nav id="access" class="header-nav" role="navigation">
-		<a href="#" id="primary-menu-toggle" class="btn-navbar">
-			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
-		</a>
 		<div class="wrap clearfix">
 			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
 			<?php themeblvd_header_menu_addon(); ?>
