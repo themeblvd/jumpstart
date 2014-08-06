@@ -165,6 +165,8 @@ class Theme_Blvd_Frontend_Init {
 			'id'						=> 0,			// global $post->ID that can be accessed anywhere
 			'builder'					=> false,		// ID of current custom layout if not false
 			'builder_post_id'			=> 0,			// Numerical Post ID of tb_layout custom post
+			'bottom_builder'			=> false,		// ID of current custom layout for footer if not false
+			'bottom_builder_post_id'	=> 0,			// Numerical Post ID of tb_layout custom post
 			'sidebar_layout'			=> '',			// Sidebar layout
 			'featured'					=> array(),		// Classes for featured area, if empty area won't show
 			'featured_below'			=> array(),		// Classes for featured below area, if empty area won't show
@@ -230,6 +232,27 @@ class Theme_Blvd_Frontend_Init {
 				} else if ( $layout === true ) {
 					$this->config['builder_post_id'] = $post->ID;
 					$this->config['sidebar_layout'] = 'full_width';
+				}
+
+			}
+
+			// Custom template for footer
+			if ( themeblvd_supports( 'display', 'footer_sync' ) ) {
+
+				$footer_sync = themeblvd_get_option('footer_sync');
+
+				if ( $footer_sync ) {
+
+					$bottom_template = themeblvd_get_option( 'footer_template' );
+
+					if ( $bottom_template ) {
+						$bottom_template_id = themeblvd_post_id_by_name( $bottom_template, 'tb_layout' );
+					}
+				}
+
+				if ( ! empty( $bottom_template_id ) ) {
+					$this->config['bottom_builder'] = $bottom_template;
+					$this->config['bottom_builder_post_id'] = $bottom_template_id;
 				}
 
 			}
@@ -374,11 +397,11 @@ class Theme_Blvd_Frontend_Init {
 
 		$theme = get_post_meta( $this->config['id'], '_tb_theme_layout', true );
 
-		if ( ! empty( $theme['hide_top'] ) ) {
+		if ( themeblvd_supports( 'display', 'hide_top' ) && ! empty( $theme['hide_top'] ) ) {
 			$this->config['top'] = false;
 		}
 
-		if ( ! empty( $theme['hide_bottom'] ) ) {
+		if ( themeblvd_supports( 'display', 'hide_bottom' ) && ! empty( $theme['hide_bottom'] ) ) {
 			$this->config['bottom'] = false;
 		}
 
