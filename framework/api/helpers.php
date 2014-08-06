@@ -76,6 +76,27 @@ function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
 }
 
 /**
+ * Check if an option is registered. This can be helpful when
+ * theme options have been changed in a theme, but maybe the
+ * settings haven't been re-saved by the user.
+ *
+ * @since 2.5.0
+ *
+ * @param string $option_id ID of the option to check for
+ * @return bool Whether option exists
+ */
+function themeblvd_has_option( $option_id ) {
+
+	$options = themeblvd_get_formatted_options();
+
+	if ( isset( $options[$option_id] ) ) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * Add theme option tab.
  *
  * @since 2.1.0
