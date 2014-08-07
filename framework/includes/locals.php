@@ -50,7 +50,7 @@ function themeblvd_get_all_locals() {
 		'login_text'				=> __( 'Log in to Reply', 'themeblvd_frontend' ),
 		'monthly_archives'			=> __( 'Monthly Archives', 'themeblvd_frontend' ),
 		'name'						=> __( 'Name', 'themeblvd_frontend' ),
-		'no_builder_plugin'			=> sprintf( __( 'In order for your custom layout to be displayed, you must be have the %s plugin installed.', 'themeblvd_frontend' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' ),
+		'no_builder_plugin'			=> __( 'In order for your custom layout to be displayed, you must be have the %s plugin installed.', 'themeblvd_frontend' ),
 		'page'						=> __( 'Page', 'themeblvd_frontend' ),
 		'pages'						=> __( 'Pages', 'themeblvd_frontend' ),
 		'page_num'					=> __( 'Page %s', 'themeblvd_frontend' ),
