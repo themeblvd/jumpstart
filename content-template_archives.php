@@ -7,7 +7,7 @@
 	<div class="entry-content">
 		<?php rewind_posts(); ?>
         <?php the_content(); ?>
-		<?php edit_post_link( themeblvd_get_local( 'edit_page' ), '<p class="edit-link clearfix">', '</p>' ); ?>
+		<?php edit_post_link( themeblvd_get_local( 'edit_page' ), '<div class="edit-link">', '</div>' ); ?>
         <h2><?php echo themeblvd_get_local( 'last_30' ); ?></h2>
         <ul>
             <?php query_posts('showposts=30'); ?>

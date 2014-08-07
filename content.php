@@ -21,6 +21,6 @@
 		<?php themeblvd_blog_tags(); ?>
 		<?php themeblvd_blog_cats(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
-		<?php edit_post_link( themeblvd_get_local( 'edit_post' ), '<p class="edit-link clearfix">', '</p>' ); ?>
+		<?php edit_post_link( themeblvd_get_local( 'edit_post' ), '<div class="edit-link">', '</div>' ); ?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
