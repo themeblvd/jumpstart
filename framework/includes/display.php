@@ -585,6 +585,20 @@ function themeblvd_blog_meta_default() {
 }
 endif;
 
+if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
+/**
+ * Default display for action: themeblvd_meta
+ *
+ * @since 2.0.0
+ */
+function themeblvd_blog_sub_meta_default() {
+	echo '<div class="sub-meta">';
+	themeblvd_blog_tags();
+	themeblvd_blog_cats();
+	echo '</div><!-- .sub-meta (end) -->';
+}
+endif;
+
 if ( !function_exists( 'themeblvd_blog_tags_default' ) ) :
 /**
  * Default display for action: themeblvd_tags
@@ -592,7 +606,8 @@ if ( !function_exists( 'themeblvd_blog_tags_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_tags_default() {
-	the_tags( '<span class="tb-tags tags"><i class="fa fa-tags"></i> ', ', ', '</span>' );
+	$before = sprintf( '<span class="tb-tags tags">%s: ', themeblvd_get_local('tags') );
+	the_tags( $before, ', ', '</span>' );
 }
 endif;
 
@@ -603,7 +618,7 @@ if ( !function_exists( 'themeblvd_blog_cats_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_cats_default() {
-	echo '<span class="tb-cats categories"><i class="fa fa-bars"></i> ';
+	echo '<span class="tb-cats categories">'.themeblvd_get_local('posted_in').': ';
 	the_category(', ');
 	echo '</span>';
 }

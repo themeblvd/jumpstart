@@ -18,8 +18,7 @@
 		<?php themeblvd_the_post_thumbnail( 'single', themeblvd_get_att( 'size' ) ); ?>
 		<?php the_content(); ?>
 		<div class="clear"></div>
-		<?php themeblvd_blog_tags(); ?>
-		<?php themeblvd_blog_cats(); ?>
+		<?php themeblvd_blog_sub_meta(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
 		<?php edit_post_link( themeblvd_get_local( 'edit_post' ), '<div class="edit-link">', '</div>' ); ?>
 	</div><!-- .entry-content -->

@@ -432,6 +432,17 @@ function themeblvd_blog_meta() {
 }
 
 /**
+ * The meta info that generally displays with a blog
+ * post after the post content.
+ *
+ * @since 2.5.0
+ * @see themeblvd_blog_sub_meta_default()
+ */
+function themeblvd_blog_sub_meta() {
+	do_action( 'themeblvd_blog_sub_meta' );
+}
+
+/**
  * Displays the tags for a blog post.
  *
  * @since 2.0.0
