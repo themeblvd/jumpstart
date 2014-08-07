@@ -675,21 +675,32 @@ function themeblvd_get_comment_form_args() {
 	$req = get_option( 'require_name_email' );
 	$aria_req = ( $req ? " aria-required='true'" : '' );
 	$args = array(
-		'fields' => array(
-			'author' => '<p class="comment-form-author"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
-						'<label for="author">' . themeblvd_get_local( 'name' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-			'email'  => '<p class="comment-form-email"><input id="email" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
-						'<label for="email">' . themeblvd_get_local( 'email' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-			'url'    => '<p class="comment-form-url"><input id="url" class="form-control" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
-						'<label for="url">' .themeblvd_get_local( 'website' ) . '</label></p>'
-		),
-		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" class="form-control" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
+		'comment_field'			=> '<p class="comment-form-comment"><label for="comment">'.themeblvd_get_local('comment').'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 		'title_reply'			=> themeblvd_get_local( 'title_reply' ),
 		'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
 		'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
-		'label_submit'			=> themeblvd_get_local( 'label_submit' )
+		'label_submit'			=> themeblvd_get_local( 'label_submit' ),
+		'comment_notes_after'	=> '<p class="form-allowed-tags">' . sprintf( themeblvd_get_local('comments_notes_after'), '</p><code class="block">' . allowed_tags() . '</code>' ) . '</p>'
 	);
 	return apply_filters( 'themeblvd_comment_form', $args, $commenter, $req, $aria_req );
+}
+
+/**
+ * If default language is English, this will swap in our
+ * filtered framework text strings. This helps us to keep
+ * control of all text strings being outputted on the frontend
+ * of the theme.
+ *
+ * Filtered onto WP's "comment_form_default_fields"
+ *
+ * @param array $fields Current fields from WP's comment form
+ * @return array $fields Modified fields
+ */
+function themeblvd_comment_form_fields( $fields ) {
+	$fields['author'] = str_replace( 'Name', themeblvd_get_local('name'), $fields['author'] );
+	$fields['email'] = str_replace( 'Email', themeblvd_get_local('email'), $fields['email'] );
+	$fields['url'] = str_replace( 'Website ', themeblvd_get_local('website'), $fields['url'] );
+	return $fields;
 }
 
 /**

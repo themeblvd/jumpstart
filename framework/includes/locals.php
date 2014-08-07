@@ -26,6 +26,7 @@ function themeblvd_get_all_locals() {
 		'comments_closed'			=> __( 'Comments are closed.', 'themeblvd_frontend' ),
 		'comments_newer'			=> __( 'Newer Comments &rarr;', 'themeblvd_frontend' ),
 		'comments_no_password'		=> __( 'This post is password protected. Enter the password to view any comments.', 'themeblvd_frontend' ),
+		'comments_notes_after'		=> __( 'You may use these HTML tags and attributes: %s' ),
 		'comments_older'			=> __( '&larr; Older Comments', 'themeblvd_frontend' ),
 		'comments_title_single'		=> __( 'One comment on &ldquo;%2$s&rdquo;', 'themeblvd_frontend' ),
 		'comments_title_multiple'	=> __( '%1$s comments on &ldquo;%2$s&rdquo;', 'themeblvd_frontend' ),
