@@ -118,23 +118,35 @@ function setup_themeblvd_post_meta() {
 			'tb_meta' => array(
 				'id' 		=> '_tb_meta',
 				'name' 		=> __( 'Meta Information (the single post)', 'themeblvd' ), /* Required by Framework */
-				'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show at the top of the post. If you\'re going for a portfolio-type setup, you may want to hide the meta info. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
+				'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show on this single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
+					'default'	=> __( 'Use default post setting', 'themeblvd' ),
 					'show'		=> __( 'Show meta info', 'themeblvd' ),
 					'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+				)
+			),
+			'tb_sub_meta' => array(
+				'id' 		=> '_tb_sub_meta',
+				'name' 		=> __( 'Sub Meta Information (the single post)', 'themeblvd' ), /* Required by Framework */
+				'desc' 		=> __( 'Select if you\'d like the sub meta information (like tags, categories, etc) to show on this single post.', 'themeblvd' ),
+				'std' 		=> 'default',
+				'type' 		=> 'radio',
+				'options' 	=> array(
+					'default'	=> __( 'Use default post setting', 'themeblvd' ),
+					'show'		=> __( 'Show sub meta info', 'themeblvd' ),
+					'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
 				)
 			),
 			'tb_comments' => array(
 				'id' 		=> '_tb_comments',
 				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ), /* Required by Framework */
-				'desc' 		=> __( 'Select if you\'d like to completely hide comments or not below the post. This does not apply to when this post is listed in a post list or post grid format. This option only refers to this single post.', 'themeblvd' ),
+				'desc' 		=> __( 'This will hide the presence of comments on this single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting.', 'themeblvd' ),
+					'default'	=> __( 'Use default post setting', 'themeblvd' ),
 					'show'		=> __( 'Show comments', 'themeblvd' ),
 					'hide' 		=> __( 'Hide comments', 'themeblvd' )
 				)

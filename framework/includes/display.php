@@ -592,10 +592,20 @@ if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_sub_meta_default() {
-	echo '<div class="sub-meta">';
-	themeblvd_blog_tags();
-	themeblvd_blog_cats();
-	echo '</div><!-- .sub-meta (end) -->';
+	if ( has_tag() || has_category() ) {
+
+		echo '<div class="sub-meta">';
+
+		if ( has_category() ) {
+			themeblvd_blog_cats();
+		}
+
+		if ( has_tag() ) {
+			themeblvd_blog_tags();
+		}
+
+		echo '</div><!-- .sub-meta (end) -->';
+	}
 }
 endif;
 

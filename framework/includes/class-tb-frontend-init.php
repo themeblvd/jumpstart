@@ -551,6 +551,7 @@ class Theme_Blvd_Frontend_Init {
 		// Single posts
 		if ( is_single() ) {
 
+			// Meta information (i.e. date posted, author)
 			$show_meta = true;
 
 			if ( themeblvd_get_option( 'single_meta', null, 'show' ) == 'hide' ) {
@@ -563,7 +564,23 @@ class Theme_Blvd_Frontend_Init {
 				$show_meta = true;
 			}
 
-			$this->atts = apply_filters( 'themeblvd_single_atts', array( 'show_meta' => $show_meta ) );
+			// Sub meta information (i.e. tags, categories)
+			$show_sub_meta = true;
+
+			if ( themeblvd_get_option( 'single_sub_meta', null, 'show' ) == 'hide' ) {
+				$show_sub_meta = false;
+			}
+
+			if ( get_post_meta( $this->config['id'], '_tb_sub_meta', true ) == 'hide' ) {
+				$show_sub_meta = false;
+			} else if ( get_post_meta( $this->config['id'], '_tb_sub_meta', true ) == 'show' ) {
+				$show_meta = true;
+			}
+
+			$this->atts = apply_filters( 'themeblvd_single_atts', array(
+				'show_meta' => $show_meta,
+				'show_sub_meta' => $show_sub_meta
+			));
 
 		}
 

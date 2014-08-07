@@ -418,13 +418,24 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'single_meta' => array(
 						'name' 		=> __( 'Meta Information', 'themeblvd' ),
-						'desc' 		=> __( 'Select if you\'d like the meta information (date posted, author, etc) to show on the single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show on the single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
 						'id' 		=> 'single_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
 						'options' 	=> array(
 							'show'		=> __( 'Show meta info', 'themeblvd' ),
 							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+						)
+					),
+					'single_sub_meta' => array(
+						'name' 		=> __( 'Sub Meta Information', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the sub meta information (like tags, categories, etc) to show on the single post.', 'themeblvd' ),
+						'id' 		=> 'single_sub_meta',
+						'std' 		=> 'show',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'show'		=> __( 'Show sub meta info', 'themeblvd' ),
+							'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
 						)
 					),
 					'single_thumbs' => array(
@@ -440,7 +451,7 @@ class Theme_Blvd_Options_API {
 					),
 					'single_comments' => array(
 						'name' 		=> __( 'Comments', 'themeblvd' ),
-						'desc' 		=> __( 'This will hide the presence of comments on the single post page.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
+						'desc' 		=> __( 'This will hide the presence of comments on the single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
 						'id' 		=> 'single_comments',
 						'std' 		=> 'show',
 						'type' 		=> 'radio',
