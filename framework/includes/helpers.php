@@ -1306,6 +1306,7 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 			break;
 		case 'large' :
 			$size = 'lg';
+			break;
 		case 'x-large' :
 			$size = 'xl';
 			break;
