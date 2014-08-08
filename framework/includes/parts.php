@@ -44,7 +44,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 	if ( $buttons && is_array($buttons) ) {
 
-		$class = 'themeblvd-contact-bar '.$args['style'];
+		$class = 'themeblvd-contact-bar tb-social-icons '.$args['style'];
 
 		if ( $args['class'] ) {
 			$class .= ' '.$args['class'];
@@ -123,7 +123,7 @@ function themeblvd_get_search_popup( $args = array() ) {
 		}
 	}
 
-	$class = sprintf( 'tb-search-popup %s %s', $x, $args['placement-y'] );
+	$class = sprintf( 'tb-floater tb-search-popup %s %s', $x, $args['placement-y'] );
 
 	if ( $args['class'] ) {
 		$class .= $args['class'];
@@ -132,10 +132,10 @@ function themeblvd_get_search_popup( $args = array() ) {
 	$output = sprintf( '<div class="%s">', $class );
 
 	// Trigger Button
-	$output .= sprintf( '<a href="#" class="search-trigger" data-open="%1$s" data-close="%2$s"><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+	$output .= sprintf( '<a href="#" class="floater-trigger search-trigger" data-open="%1$s" data-close="%2$s"><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
 
 	// Search popup
-	$output .= '<div class="search-holder">';
+	$output .= '<div class="floater-popup search-popup">';
 	$output .= '<span class="arrow"></span>';
 	$output .= get_search_form(false);
 	$output .= '</div><!-- .search-holder (end) -->';
@@ -584,33 +584,144 @@ function themeblvd_get_meta( $sep = '' ) {
 }
 
 /**
- * Get Recent Tweets
+ * Show/Get blog categories for a post (in loop)
  *
- * @since 2.0.0
+ * @since 2.5.0
  *
- * @param string $count Number of tweets to display
- * @param string $username Twitter username to pull tweets from
- * @param string $time Display time of tweets, yes or no
- * @param string $exclude_replies Exclude replies, yes or no
- * @return string $output Final list of tweets
+ * @param bool $echo Whether to echo out the categories
  */
-function themeblvd_get_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
-	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
+function themeblvd_blog_cats( $echo = true ) {
+
+	$output = '';
+
+	if ( has_category() ) {
+		$output .= '<div class="tb-cats categories">';
+		$output .= sprintf( '<span class="title">%s:</span>', themeblvd_get_local('posted_in') );
+		ob_start();
+		the_category(', ');
+		$output .= ob_get_clean();
+		$output .= '</div><!-- .tb-cats (end) -->';
+	}
+
+	$output = apply_filters( 'themeblvd_blog_cats', $output, get_the_ID() );
+
+	if ( $echo ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 }
 
 /**
- * Display Recent Tweets
+ * Show/Get blog tags for a post (in loop)
  *
- * @since 2.1.0
+ * @since 2.0.0
  *
- * @param string $count Number of tweets to display
- * @param string $username Twitter username to pull tweets from
- * @param string $time Display time of tweets, yes or no
- * @param string $exclude_replies Exclude replies, yes or no
- * @return string $filtered_tweet Final list of tweets
+ * @param bool $echo Whether to echo out the tags
  */
-function themeblvd_twitter( $count, $username, $time = 'yes', $exclude_replies = 'yes' ) {
-	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Twitter functionality is no longer built into the Theme Blvd framework. Use Theme Blvd "Tweeple" plugin found in the WordPress plugin repository.', 'themeblvd' ) );
+function themeblvd_blog_tags( $echo = true ) {
+
+	$output = '';
+
+	if ( has_tag() ) {
+		$output .= '<div class="tb-tags tags">';
+		$before = sprintf( '<span class="title">%s:</span>', themeblvd_get_local('tags') );
+		ob_start();
+		the_tags( $before, ', ' );
+		$output .= ob_get_clean();
+		$output .= '</div><!-- .tb-tags (end) -->';
+	}
+
+	$output = apply_filters( 'themeblvd_blog_tags', $output, get_the_ID() );
+
+	if ( $echo ) {
+		echo $output;
+	} else {
+		return $output;
+	}
+}
+
+/**
+ * Show/Get blog sharing buttons (in loop)
+ *
+ * @since 2.5.0
+ *
+ * @param bool $echo Whether to echo out the buttons
+ */
+function themeblvd_blog_share( $echo = true ) {
+
+	$output = '';
+	$buttons = themeblvd_get_option('share');
+
+	if ( $buttons && is_array($buttons) ) {
+
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' );
+		$patterns = themeblvd_get_share_patterns();
+		$style = themeblvd_get_option('share_style');
+		$permalink = get_permalink();
+		$shortlink = wp_get_shortlink();
+		$title = get_the_title();
+		$excerpt = get_the_excerpt();
+
+		$output .= sprintf( '<div class="tb-social-icons tb-share %s clearfix">', $style );
+		$output .= '<ul class="social-media">';
+
+		foreach ( $buttons as $button ) {
+
+			$network = $button['icon'];
+
+			// Link class
+			$class = 'tb-share-button tb-tooltip '.$network;
+
+			if ( $network != 'email' ) {
+				$class .= ' popup';
+			}
+
+			if ( $style != 'color' ) { // Note: "color" means to use colored image icons; otherwise, we use icon font.
+				$class .= ' tb-icon tb-icon-'.$network;
+			}
+
+			// Link URL
+			$link = '';
+
+			if ( isset( $patterns[$network] ) ) {
+
+				$link = $patterns[$network]['pattern'];
+
+				if ( $patterns[$network]['encode_urls'] ) {
+					$link = str_replace( '[permalink]', rawurlencode($permalink), $link );
+					$link = str_replace( '[shortlink]', rawurlencode($shortlink), $link );
+					$link = str_replace( '[thumbnail]', rawurlencode($thumb[0]), $link );
+				} else {
+					$link = str_replace( '[permalink]', $permalink, $link );
+					$link = str_replace( '[shortlink]', $shortlink, $link );
+					$link = str_replace( '[thumbnail]', $thumb[0], $link );
+				}
+
+				if ( $patterns[$network]['encode'] ) {
+					$link = str_replace( '[title]', rawurlencode($title), $link );
+					$link = str_replace( '[excerpt]', rawurlencode($excerpt), $link );
+				} else {
+					$link = str_replace( '[title]', $title, $link );
+					$link = str_replace( '[excerpt]', $excerpt, $link );
+				}
+			}
+
+			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"></a></li>', $link, $button['label'], $class );
+		}
+
+		$output .= '</ul>';
+		$output .= '</div><!-- .tb-share (end) -->';
+
+	}
+
+	$output = apply_filters( 'themeblvd_blog_share', $output, get_the_ID(), $buttons, $style );
+
+	if ( $echo ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 }
 
 /**
@@ -772,7 +883,6 @@ function themeblvd_simple_contact( $args ) {
 	echo themeblvd_get_simple_contact( $args );
 }
 
-if ( !function_exists( 'themeblvd_get_mini_post_list' ) ) : // pluggable for backwards compat
 /**
  * Get Mini Post List
  *
@@ -886,9 +996,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 	}
 	return $output;
 }
-endif;
 
-if ( !function_exists( 'themeblvd_mini_post_list' ) ) :
 /**
  * Display Mini Post List
  *
@@ -899,9 +1007,7 @@ if ( !function_exists( 'themeblvd_mini_post_list' ) ) :
 function themeblvd_mini_post_list( $options ) {
 	echo themeblvd_get_mini_post_list( $options );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_mini_post_grid' ) ) : // pluggable for backwards compat
 /**
  * Get Mini Post Grid
  *
@@ -1073,9 +1179,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	}
 	return $output;
 }
-endif;
 
-if ( !function_exists( 'themeblvd_mini_post_grid' ) ) :
 /**
  * Display Mini Post Grid
  *
@@ -1086,7 +1190,6 @@ if ( !function_exists( 'themeblvd_mini_post_grid' ) ) :
 function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 	echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
 }
-endif;
 
 /**
  * Get the_title() taking into account if it should

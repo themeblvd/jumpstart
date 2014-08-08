@@ -577,8 +577,22 @@ class Theme_Blvd_Frontend_Init {
 				$show_meta = true;
 			}
 
+			if ( get_post_type($this->config['id']) == 'post' ) {
+
+				if ( ! has_term('', 'post_category', $this->config['id']) && ! has_term('', 'post_tag', $this->config['id']) ) {
+					$show_sub_meta = false;
+				}
+
+			} else if ( get_post_type($this->config['id']) == 'portfolio_item' ) {
+
+				if ( ! has_term('', 'portfolio', $this->config['id']) && ! has_term('', 'portfolio_tag', $this->config['id']) ) {
+					$show_sub_meta = false;
+				}
+
+			}
+
 			$this->atts = apply_filters( 'themeblvd_single_atts', array(
-				'show_meta' => $show_meta,
+				'show_meta' 	=> $show_meta,
 				'show_sub_meta' => $show_sub_meta
 			));
 

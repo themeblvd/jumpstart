@@ -1376,6 +1376,72 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 }
 
 /**
+ * Share buttons option type -- similar to
+ * social_media, but simplified.
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'share';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'icon',
+				'name'		=> __('Social Icon', 'themeblvd'),
+				'type'		=> 'select',
+				'std'		=> 'facebook',
+				'options'	=> themeblvd_get_share_sources(),
+				'trigger'	=> true // Triggers this option's value to be used in toggle
+			),
+			array(
+				'id' 		=> 'label',
+				'name'		=> __('Label', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> ''
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Share Icon','themeblvd'),
+			'delete' 				=> __('Delete Share Icon','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this share icon?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Share Icons','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all share icons?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
  * Tabs option type
  *
  * @since 2.5.0

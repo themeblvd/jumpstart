@@ -1980,62 +1980,146 @@ function themeblvd_is_lightbox_url( $url ) {
 function themeblvd_get_social_media_sources() {
 
  	$sources = array(
-		'chat' 			=> __('General: Chat', 'themeblvd_front'),
-		'cloud' 		=> __('General: Cloud', 'themeblvd_front'),
-		'email' 		=> __('General: Mail', 'themeblvd_front'),
-		'movie' 		=> __('General: Movie', 'themeblvd_front'),
-		'music' 		=> __('General: Music', 'themeblvd_front'),
- 		'rss' 			=> __('General: RSS', 'themeblvd_front'),
- 		'store' 		=> __('General: Store', 'themeblvd_front'),
- 		'write' 		=> __('General: Write', 'themeblvd_front'),
-		'fivehundredpx' => __('500px', 'themeblvd_front'),
-		'amazon' 		=> __('Amazon', 'themeblvd_front'),
-		'android' 		=> __('Android', 'themeblvd_front'),
-		'behance' 		=> __('Behance', 'themeblvd_front'),
-		'delicious' 	=> __('Delicious', 'themeblvd_front'),
-		'deviantart' 	=> __('Deviant Art', 'themeblvd_front'),
-		'digg' 			=> __('Digg', 'themeblvd_front'),
-		'dribbble' 		=> __('Dribbble', 'themeblvd_front'),
-		'dropbox' 		=> __('Dropbox', 'themeblvd_front'),
-		'ebay' 			=> __('Ebay', 'themeblvd_front'),
-		'envato' 		=> __('Envato', 'themeblvd_front'),
-		'facebook' 		=> __('Facebook', 'themeblvd_front'),
-		'feedburner' 	=> __('Feedburner', 'themeblvd_front'),
-		'flickr' 		=> __('Flickr', 'themeblvd_front'),
-		'forrst' 		=> __('Forrst', 'themeblvd_front'),
-		'foursquare' 	=> __('Foursquare', 'themeblvd_front'),
-		'github' 		=> __('Github', 'themeblvd_front'),
-		'google' 		=> __('Google+', 'themeblvd_front'),
-		'instagram' 	=> __('Instagram', 'themeblvd_front'),
-		'linkedin' 		=> __('Linkedin', 'themeblvd_front'),
-		'mac' 			=> __('Mac', 'themeblvd_front'),
-		'macapp' 		=> __('Mac App Store', 'themeblvd_front'),
-		'myspace' 		=> __('MySpace', 'themeblvd_front'),
-		'paypal' 		=> __('PayPal', 'themeblvd_front'),
-		'picasa' 		=> __('Picasa', 'themeblvd_front'),
-		'pinterest' 	=> __('Pinterest', 'themeblvd_front'),
-		'playstation' 	=> __('PlayStation', 'themeblvd_front'),
-		'reddit' 		=> __('Reddit', 'themeblvd_front'),
-		'scribd' 		=> __('Sribd', 'themeblvd_front'),
-		'soundcloud' 	=> __('SoundCloud', 'themeblvd_front'),
-		'squidoo' 		=> __('Squidoo', 'themeblvd_front'),
-		'technorati' 	=> __('Technorati', 'themeblvd_front'),
-		'themeblvd' 	=> __('Theme Blvd', 'themeblvd_front'),
-		'tumblr' 		=> __('Tumblr', 'themeblvd_front'),
-		'twitter' 		=> __('Twitter', 'themeblvd_front'),
-		'vimeo' 		=> __('Vimeo', 'themeblvd_front'),
-		'windows' 		=> __('Windows', 'themeblvd_front'),
-		'wordpress' 	=> __('WordPress', 'themeblvd_front'),
-		'xbox' 			=> __('Xbox', 'themeblvd_front'),
-		'xing' 			=> __('Xing', 'themeblvd_front'),
-		'yahoo' 		=> __('Yahoo', 'themeblvd_front'),
-		'youtube' 		=> __('YouTube', 'themeblvd_front')
+		'chat' 			=> __('General: Chat', 'themeblvd'),
+		'cloud' 		=> __('General: Cloud', 'themeblvd'),
+		'email' 		=> __('General: Mail', 'themeblvd'),
+		'movie' 		=> __('General: Movie', 'themeblvd'),
+		'music' 		=> __('General: Music', 'themeblvd'),
+ 		'rss' 			=> __('General: RSS', 'themeblvd'),
+ 		'store' 		=> __('General: Store', 'themeblvd'),
+ 		'write' 		=> __('General: Write', 'themeblvd'),
+		'fivehundredpx' => __('500px', 'themeblvd'),
+		'amazon' 		=> __('Amazon', 'themeblvd'),
+		'android' 		=> __('Android', 'themeblvd'),
+		'behance' 		=> __('Behance', 'themeblvd'),
+		'delicious' 	=> __('Delicious', 'themeblvd'),
+		'deviantart' 	=> __('Deviant Art', 'themeblvd'),
+		'digg' 			=> __('Digg', 'themeblvd'),
+		'dribbble' 		=> __('Dribbble', 'themeblvd'),
+		'dropbox' 		=> __('Dropbox', 'themeblvd'),
+		'ebay' 			=> __('Ebay', 'themeblvd'),
+		'envato' 		=> __('Envato', 'themeblvd'),
+		'facebook' 		=> __('Facebook', 'themeblvd'),
+		'feedburner' 	=> __('Feedburner', 'themeblvd'),
+		'flickr' 		=> __('Flickr', 'themeblvd'),
+		'forrst' 		=> __('Forrst', 'themeblvd'),
+		'foursquare' 	=> __('Foursquare', 'themeblvd'),
+		'github' 		=> __('Github', 'themeblvd'),
+		'google' 		=> __('Google+', 'themeblvd'),
+		'instagram' 	=> __('Instagram', 'themeblvd'),
+		'linkedin' 		=> __('Linkedin', 'themeblvd'),
+		'mac' 			=> __('Mac', 'themeblvd'),
+		'macapp' 		=> __('Mac App Store', 'themeblvd'),
+		'myspace' 		=> __('MySpace', 'themeblvd'),
+		'paypal' 		=> __('PayPal', 'themeblvd'),
+		'picasa' 		=> __('Picasa', 'themeblvd'),
+		'pinterest' 	=> __('Pinterest', 'themeblvd'),
+		'playstation' 	=> __('PlayStation', 'themeblvd'),
+		'reddit' 		=> __('Reddit', 'themeblvd'),
+		'scribd' 		=> __('Sribd', 'themeblvd'),
+		'soundcloud' 	=> __('SoundCloud', 'themeblvd'),
+		'squidoo' 		=> __('Squidoo', 'themeblvd'),
+		'technorati' 	=> __('Technorati', 'themeblvd'),
+		'themeblvd' 	=> __('Theme Blvd', 'themeblvd'),
+		'tumblr' 		=> __('Tumblr', 'themeblvd'),
+		'twitter' 		=> __('Twitter', 'themeblvd'),
+		'vimeo' 		=> __('Vimeo', 'themeblvd'),
+		'windows' 		=> __('Windows', 'themeblvd'),
+		'wordpress' 	=> __('WordPress', 'themeblvd'),
+		'xbox' 			=> __('Xbox', 'themeblvd'),
+		'xing' 			=> __('Xing', 'themeblvd'),
+		'yahoo' 		=> __('Yahoo', 'themeblvd'),
+		'youtube' 		=> __('YouTube', 'themeblvd')
 	);
 
  	// Backwards compat filter
  	$sources = apply_filters( 'themeblvd_social_media_buttons', $sources );
 
 	return apply_filters( 'themeblvd_social_media_sources', $sources );
+}
+
+/**
+ * Get social media share sources.
+ *
+ * @since 2.5.0
+ *
+ * @return array $sources All social media buttons
+ */
+function themeblvd_get_share_sources() {
+
+	$sources = array(
+		'digg' 			=> __('Digg', 'themeblvd'),
+		'email' 		=> __('Email', 'themeblvd'),
+		'facebook' 		=> __('Facebook', 'themeblvd'),
+		'google' 		=> __('Google+', 'themeblvd'),
+		'linkedin' 		=> __('Linkedin', 'themeblvd'),
+		'pinterest' 	=> __('Pinterest', 'themeblvd'),
+		'reddit' 		=> __('Reddit', 'themeblvd'),
+		'tumblr' 		=> __('Tumblr', 'themeblvd'),
+		'twitter' 		=> __('Twitter', 'themeblvd')
+	);
+
+	return apply_filters( 'themeblvd_share_sources', $sources );
+}
+
+/**
+ * Get social media share patterns.
+ *
+ * @since 2.5.0
+ *
+ * @return array $sources All social media buttons
+ */
+function themeblvd_get_share_patterns() {
+
+	$patterns = array(
+		'digg' => array(
+			'pattern'		=> 'http://digg.com/submit?url=[permalink]&title=[title]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		),
+		'email' => array(
+			'pattern'		=> 'mailto:?subject=[title]&amp;body=[permalink]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		),
+		'facebook' => array(
+			'pattern'		=> 'http://www.facebook.com/sharer.php?u=[permalink]&amp;t=[title]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		),
+		'google' => array(
+			'pattern'		=> 'https://plus.google.com/share?url=[permalink]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		),
+		'linkedin' => array(
+			'pattern'		=> 'http://linkedin.com/shareArticle?mini=true&amp;url=[permalink]&amp;title=[title]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		),
+		'pinterest' => array(
+			'pattern'		=> 'http://pinterest.com/pin/create/button/?url=[permalink]&amp;description=[title]&amp;media=[thumbnail]',
+			'encode'		=> true,
+			'encode_urls' 	=> true
+		),
+		'reddit' => array(
+			'pattern'		=> 'http://reddit.com/submit?url=[permalink]&amp;title=[title]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		),
+		'tumblr' => array(
+			'pattern'		=> 'http://www.tumblr.com/share/link?url=[permalink]&amp;name=[title]&amp;description=[excerpt]',
+			'encode'		=> true,
+			'encode_urls' 	=> true
+		),
+		'twitter' => array(
+			'pattern'		=> 'http://twitter.com/home?status=[title] [shortlink]',
+			'encode'		=> true,
+			'encode_urls' 	=> false
+		)
+	);
+
+	return apply_filters( 'themeblvd_share_patterns', $patterns );
 }
 
 /**

@@ -41,6 +41,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
 	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
 	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
+	add_filter( 'themeblvd_sanitize_share', 'themeblvd_sanitize_share' );
 	add_filter( 'themeblvd_sanitize_slide', 'themeblvd_sanitize_slide' );
 	add_filter( 'themeblvd_sanitize_slider', 'themeblvd_sanitize_slider' );
 	add_filter( 'themeblvd_sanitize_logos', 'themeblvd_sanitize_logos' );
@@ -624,7 +625,7 @@ function themeblvd_sanitize_logo( $input ) {
 /**
  * Social Media Buttons
  *
- * @since 2.2.0
+ * @since 2.5.0
  */
 function themeblvd_sanitize_social_media( $input ) {
 
@@ -637,6 +638,26 @@ function themeblvd_sanitize_social_media( $input ) {
 			$output[$item_id]['url'] = wp_kses( $item['url'], array() );
 			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
 			$output[$item_id]['target'] = wp_kses( $item['target'], array() );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Social Media Buttons
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_share( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['icon'] = wp_kses( $item['icon'], array() );
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
 		}
 	}
 

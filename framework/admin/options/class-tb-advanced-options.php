@@ -87,6 +87,7 @@ class Theme_Blvd_Advanced_Options {
 			'locations',
 			'logos',
 			'sectors',
+			'share',
 			'slider',
 			'social_media',
 			'tabs',
@@ -136,6 +137,10 @@ class Theme_Blvd_Advanced_Options {
 
 			case 'sectors':
 				$this->types[$type] = new Theme_Blvd_Sectors_Option();
+				break;
+
+			case 'share':
+				$this->types[$type] = new Theme_Blvd_Share_Option();
 				break;
 
 			case 'slider':
@@ -194,7 +199,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'sectors', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
+		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'sectors', 'share', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
 	}
 
 }

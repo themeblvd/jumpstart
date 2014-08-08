@@ -1041,6 +1041,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Share Icons
+			/*---------------------------------------*/
+
+			case 'share' :
+				$share = $advanced->get('share');
+				$output .= $share->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
 			/* Slider
 			/*---------------------------------------*/
 

@@ -438,6 +438,44 @@ class Theme_Blvd_Options_API {
 							'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
 						)
 					),
+					'share' => array( // generic name "share" so it can be thoertically moved to another option section, if applied to more than just signle post
+						'name' 		=> __( 'Share Icons', 'themeblvd' ),
+						'desc' 		=> __( 'Configure any share icons you\'d like displayed within the Sub Meta of the single post.', 'themeblvd' ),
+						'id' 		=> 'share',
+						'std' 		=> array(
+							'item_1' => array(
+								'icon'	=> 'facebook',
+								'label'	=> 'Share this on Facebook'
+							),
+							'item_2' => array(
+								'icon'	=> 'google',
+								'label'	=> 'Share this on Google+'
+							),
+							'item_3' => array(
+								'icon'	=> 'twitter',
+								'label'	=> 'Share this on Twitter'
+							),
+							'item_4' => array(
+								'icon'	=> 'email',
+								'label'	=> 'Share this via Email'
+							)
+						),
+						'type' 		=> 'share'
+					),
+					'share_style' => array(
+						'name' 		=> __( 'Share Icon Style', 'themeblvd' ),
+						'desc'		=> __( 'Select the color you\'d like applied to the share icons on the single post.', 'themeblvd' ),
+						'id'		=> 'share_style',
+						'std'		=> 'flat',
+						'type' 		=> 'select',
+						'options'	=> array(
+							'flat'			=> __( 'Flat Color', 'themeblvd' ),
+							'dark' 			=> __( 'Flat Dark', 'themeblvd' ),
+							'grey' 			=> __( 'Flat Grey', 'themeblvd' ),
+							'light' 		=> __( 'Flat Light', 'themeblvd' ),
+							'color'			=> __( 'Color', 'themeblvd' )
+						)
+					),
 					'single_thumbs' => array(
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
 						'desc' 		=> __( 'Choose how you want your featured images to show on the single post. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'themeblvd' ),
