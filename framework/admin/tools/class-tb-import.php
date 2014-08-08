@@ -176,10 +176,13 @@ class Theme_Blvd_Import {
 			}
 		}
 
+		$did_something = false;
+
 		// Import theme settings
 		if ( ! $this->error && ! empty( $_POST['themeblvd_import_theme_settings'] ) ) {
 			if ( $this->has_file('theme-settings') ) {
 				$this->do_import('theme-settings');
+				$did_something = true;
 			} else {
 				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
 			}
@@ -189,6 +192,7 @@ class Theme_Blvd_Import {
 		if ( ! $this->error && ! empty( $_POST['themeblvd_import_site_settings'] ) ) {
 			if ( $this->has_file('site-settings') ) {
 				$this->do_import('site-settings');
+				$did_something = true;
 			} else {
 				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
 			}
@@ -198,18 +202,22 @@ class Theme_Blvd_Import {
 		if ( ! $this->error && ! empty( $_POST['themeblvd_import_site_widgets'] ) ) {
 			if ( $this->has_file('site-widgets') ) {
 				$this->do_import('site-widgets');
+				$did_something = true;
 			} else {
 				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
 			}
 		}
 
 		// Output message to user whether was successful or not
-		$theme = wp_get_theme();
+		if ( $did_something ) {
 
-		if ( $this->error ) {
-			echo '<p>'.sprintf(__('There was an error with setting up your site like the %s demo. %s', 'themeblvd'), $theme->get('Name'), $error).'</p>';
-		} else {
-			echo '<p>'.sprintf(__('%s demo data has been setup successfully.', 'themeblvd'), $theme->get('Name')).'</p>';
+			$theme = wp_get_theme();
+
+			if ( $this->error ) {
+				echo '<p>'.sprintf(__('There was an error with setting up your site like the %s demo. %s', 'themeblvd'), $theme->get('Name'), $error).'</p>';
+			} else {
+				echo '<p>'.sprintf(__('%s demo data has been setup successfully.', 'themeblvd'), $theme->get('Name')).'</p>';
+			}
 		}
 
 
