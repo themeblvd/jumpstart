@@ -25,7 +25,7 @@ get_header();
 				<!-- CONTENT (start) -->
 
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
-					<div class="inner">
+					<div class="inner  sitemap-template-archives">
 						<?php themeblvd_content_top(); ?>
 
 						<?php get_template_part( 'content', 'template_archives' ); ?>
