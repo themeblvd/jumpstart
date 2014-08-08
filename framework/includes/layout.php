@@ -99,9 +99,11 @@ function themeblvd_element( $args ) {
 				'element_id' 	=> $args['id'],
 				'num'			=> $num,
 				'widths'		=> $args['options']['setup'],
+				'stack' 		=> $args['options']['stack'],
 				'height'		=> $args['options']['height'],
 				'align'			=> $args['options']['align']
 			);
+
 			themeblvd_columns( $col_args );
 			break;
 
@@ -735,6 +737,7 @@ function themeblvd_columns( $args, $columns = null ) {
 		'element_id'	=> 'element_',
 		'num'			=> 1,
 		'widths'		=> 'grid_12',
+		'stack'			=> 'md',
 		'height'		=> 0,
 		'align'			=> 'top'
 	);
@@ -744,7 +747,7 @@ function themeblvd_columns( $args, $columns = null ) {
 	$num = intval( $args['num'] );
 
 	// Bootstrap stack point
-	$stack = apply_filters('themeblvd_columns_stack', 'sm');
+	$stack = $args['stack'];
 
 	// Kill it if number of columns doesn't match the
 	// number of widths exploded from the string.
