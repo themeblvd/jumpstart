@@ -122,21 +122,21 @@ if ( !function_exists( 'themeblvd_header_logo_default' ) ) :
 function themeblvd_header_logo_default() {
 
 	$option = themeblvd_get_option( 'logo' );
-	$classes = 'header_logo header_logo_'.$option['type'];
+	$class = 'header-logo header_logo header_logo_'.$option['type'];
 
 	if ( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' ) {
-		$classes .= ' header_logo_text';
+		$class .= ' header_logo_text';
 	}
 
 	if ( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) ) {
-		$classes .= ' header_logo_has_tagline';
+		$class .= ' header_logo_has_tagline';
 	}
 
 	if ( $option['type'] == 'title_tagline' ) {
-		$classes .= ' header_logo_has_tagline';
+		$class .= ' header_logo_has_tagline';
 	}
 	?>
-	<div class="<?php echo $classes; ?>">
+	<div class="<?php echo $class; ?>">
 		<?php
 		if ( ! empty( $option['type'] ) ) {
 			switch ( $option['type'] ) {
