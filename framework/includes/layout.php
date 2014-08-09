@@ -133,7 +133,7 @@ function themeblvd_element( $args ) {
 
 		// HTML
 		case 'html' :
-			echo stripslashes( $args['options']['html'] );
+			printf( '<div class="entry-content">%s</div>', stripslashes($args['options']['html']) );
 			break;
 
 		// Quote
@@ -827,7 +827,7 @@ function themeblvd_columns( $args, $columns = null ) {
 
 		if ( $args['layout_id'] == 0 && $columns ) {
 
-			echo '<div class="col '.$grid_class.'">';
+			echo '<div class="col entry-content '.$grid_class.'">'; // "entry-content" class only because not using elements
 
 			if ( isset( $columns[$i] ) ) {
 

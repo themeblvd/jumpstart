@@ -18,7 +18,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
     $args = wp_parse_args( $args, $defaults );
 
     // CSS classes
-    $class = sprintf( 'tb-alert alert alert-%s', $args['style'] );
+    $class = sprintf( 'tb-alert alert alert-%s entry-content', $args['style'] );
 
     if ( $args['class'] ) {
         $class .= ' '.$args['class'];
@@ -37,7 +37,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
     }
 
     // Construct alert
-    $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', $class, do_shortcode( $content ) );
+    $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', $class, $content );
 
     return apply_filters( 'themeblvd_alert', $output, $args, $content );
 }
@@ -47,8 +47,8 @@ function themeblvd_get_alert( $args, $content = '' ) {
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for panel
- * @param string $content content for panel, optional
+ * @param array $args Arguments for alert
+ * @param string $content content for alert, optional
  */
 function themeblvd_alert( $args, $content = '' ) {
 	echo themeblvd_get_alert( $args, $content );
@@ -294,7 +294,7 @@ function themeblvd_get_icon_box( $args ) {
     $output .= $icon;
 
     if ( $args['title'] || $args['text'] ) {
-        $output .= '<div class="content" style="'.$content_style.'">';
+        $output .= '<div class="entry-content" style="'.$content_style.'">';
         $output .= '<h3>'.$args['title'].'</h3>';
         $output .= themeblvd_get_content( $args['text'] );
         $output .= '</div><!-- .content (end) -->';
@@ -310,7 +310,7 @@ function themeblvd_get_icon_box( $args ) {
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for panel
+ * @param array $args Arguments for icon box
  */
 function themeblvd_icon_box( $args ) {
     echo themeblvd_get_icon_box( $args );
@@ -348,7 +348,7 @@ function themeblvd_get_jumbotron( $args, $content ) {
     }
 
     // CSS classes
-    $class = sprintf( 'tb-jumbotron jumbotron text-%s', $args['text_align'] );
+    $class = sprintf( 'tb-jumbotron jumbotron entry-content text-%s', $args['text_align'] );
 
     // Setup inline styles
     $style = '';
@@ -641,7 +641,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
         $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', $args['title'] );
     }
 
-    $output .= sprintf( '<div class="panel-body text-%s">%s</div>', apply_filters( 'themeblvd_panel_text', 'dark' ), do_shortcode($content) );
+    $output .= sprintf( '<div class="panel-body entry-content text-%s">%s</div>', apply_filters( 'themeblvd_panel_text', 'dark' ), $content );
 
     if ( $args['footer'] ) {
         $output .= sprintf( '<div class="panel-footer">%s</div>', $args['footer'] );
@@ -705,7 +705,7 @@ function themeblvd_get_slogan( $args ) {
     $args = wp_parse_args( $args, $defaults );
 
     // CSS classes
-    $class = sprintf( 'tb-slogan text-%s', $args['text_size'] );
+    $class = sprintf( 'tb-slogan clearfix text-%s', $args['text_size'] );
 
     if ( $args['button'] ) {
         $class .= ' has-button';
@@ -777,7 +777,7 @@ function themeblvd_get_slogan( $args ) {
         $content = wpautop( $content );
     }
 
-    $output .= sprintf( '<span class="slogan-text">%s</span>', do_shortcode($content) );
+    $output .= sprintf( '<span class="slogan-text entry-content">%s</span>', do_shortcode($content) );
     $output .= '</div><!-- .slogan (end) -->';
 
     return apply_filters( 'themeblvd_slogan', $output, $args );
@@ -883,7 +883,7 @@ function themeblvd_get_tabs( $id, $args ) {
     if ( $args['tabs'] && is_array($args['tabs']) ) {
         foreach ( $args['tabs'] as $tab_id => $tab ) {
 
-            $class = 'tab-pane fade in clearfix';
+            $class = 'tab-pane entry-content fade in clearfix';
             if ( $i == 1 ) {
                 $class .= ' active';
             }
@@ -996,7 +996,7 @@ function themeblvd_get_team_member( $args ){
     $output .= '</div><!-- .member-info (end) -->';
 
     if ( $args['text'] ) {
-        $output .= sprintf('<div class="member-text">%s</div><!-- .member-text (end) -->', themeblvd_get_content($args['text']) );
+        $output .= sprintf('<div class="member-text entry-content">%s</div><!-- .member-text (end) -->', themeblvd_get_content($args['text']) );
     }
 
     $output .= '</div><!-- .tb-team-member (end) -->';
@@ -1050,7 +1050,7 @@ function themeblvd_get_testimonial( $args ){
 
     $output = '<div class="'.$class.'">';
 
-    $output .= sprintf( '<div class="testimonial-text"><span class="arrow"></span>%s</div>', themeblvd_get_content($args['text']) );
+    $output .= sprintf( '<div class="testimonial-text entry-content"><span class="arrow"></span>%s</div>', themeblvd_get_content($args['text']) );
 
     if ( $args['name'] ) {
 
@@ -1255,7 +1255,7 @@ function themeblvd_get_toggle( $args ) {
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="'.$toggle_id.'" class="'.$state.'">
-                <div class="panel-body text-'.$text.'">
+                <div class="panel-body entry-content text-'.$text.'">
                     '.$content.'
                 </div><!-- .panel-body (end) -->
             </div><!-- .panel-collapse (end) -->

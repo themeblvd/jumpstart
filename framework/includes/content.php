@@ -136,7 +136,7 @@ function themeblvd_get_content_block( $args ){
     $args = wp_parse_args( $args, $defaults );
 
 	// CSS class
-	$class = 'tb-content-block';
+	$class = 'tb-content-block entry-content';
 
 	if ( $args['style'] == 'custom' ) {
 		$class .= ' has-bg text-'.$args['text_color'];
@@ -259,7 +259,7 @@ function themeblvd_get_post_content( $post = 0, $post_type = '' ) {
 		}
 	}
 
-	return $content;
+	return sprintf( '<div class="entry-content">%s</div>', $content );
 }
 
 /**
