@@ -15,6 +15,6 @@
 		<?php the_content(); ?>
 		<div class="clear"></div>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
-		<?php edit_post_link( themeblvd_get_local( 'edit_page' ), '<div class="edit-link">', '</div>' ); ?>
+		<?php edit_post_link( themeblvd_get_local( 'edit_page' ), '<div class="edit-link"><i class="fa fa-edit"></i> ', '</div>' ); ?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

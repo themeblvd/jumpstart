@@ -41,7 +41,7 @@ function themeblvd_content_format_gallery( $content ) {
 function themeblvd_content_format_link( $content ) {
 
 	// Only continue if this is a "link" format post.
-	if ( ! has_post_format( 'link' ) ) {
+	if ( ! has_post_format('link') ) {
 		return $content;
 	}
 
@@ -50,8 +50,8 @@ function themeblvd_content_format_link( $content ) {
 
 	// Remove that URL from the start of content,
 	// if that's where it was.
-	if ( $url && 0 === strpos( $content , $url ) ) {
-		$content = str_replace( $url, '', $content );
+	if ( $url ) {
+		$content = str_replace( $url[0], '', $content ); // $url[0] is first line of content
 	}
 
 	return $content;
@@ -75,22 +75,51 @@ function themeblvd_get_content_url( $content ) {
 		return '';
 	}
 
-	// the content is a URL
-	$trimmed = trim( $content );
-	if ( 0 === stripos( $trimmed, 'http' ) && ! preg_match( '#\s#', $trimmed ) ) {
-		return $trimmed;
-
-	// the content is HTML so we grab the first href
-	} elseif ( preg_match( '/<a\s[^>]*?href=([\'"])(.+?)\1/is', $content, $matches ) ) {
-		return esc_url_raw( $matches[2] );
-	}
-
+	$trimmed = trim($content);
 	$lines = explode( "\n", $trimmed );
-	$line = trim( array_shift( $lines ) );
+	$line = trim( array_shift($lines) );
 
-	// the content is a URL followed by content
-	if ( 0 === stripos( $line, 'http' ) ) {
-		return esc_url_raw( $line );
+	$find_link = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
+
+  	if ( preg_match("/$find_link/siU", $line, $matches) ) {
+
+  		// First line of content is HTML link
+  		return array( $line, $matches[2] );
+
+  	} else if ( stripos( $line, 'http' ) === 0 ) {
+
+  		// First line of content is URL
+  		return array( $line, esc_url_raw($line) );
+
+  	}
+
+	return '';
+}
+
+/**
+ * Get the FontAwesome icon ID to represent a post format
+ *
+ * @since 2.5.0
+ *
+ * @param string $format Post format
+ * @return string FontAwesime icon ID
+ */
+function themeblvd_get_format_icon( $format ) {
+
+	$icons = apply_filters('themeblvd_format_icons', array(
+		'standard'	=> '',
+		'aside'		=> 'thumb-tack',
+		'chat'		=> 'comments',
+		'gallery'	=> 'picture-o',
+		'image'		=> 'camera',
+		'link'		=> 'link',
+		'quote'		=> 'quote-left',
+		'status'	=> 'clock',
+		'video'		=> 'film'
+	));
+
+	if ( ! empty( $icons[$format] ) ) {
+		return $icons[$format];
 	}
 
 	return '';

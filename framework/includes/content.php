@@ -274,6 +274,62 @@ function themeblvd_post_content( $post = 0 ) {
 }
 
 /**
+ * Get the_title() taking into account if it should
+ * wrapped in a link.
+ *
+ * @since 2.3.0
+ *
+ * @param int $post_id Can feed in a post ID if outside the loop.
+ * @param bool $foce_link Whether to force the title to link.
+ * @return string $title The title of the post
+ */
+function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
+
+	$url = '';
+	$target = '_self';
+	$title = get_the_title( $post_id );
+
+	// If "link" post format, get URL from start of content.
+	if ( has_post_format( 'link', $post_id ) ) {
+
+		$find = themeblvd_get_content_url( get_the_content( $post_id ) );
+
+		if ( $find ) {
+			$target = '_blank';
+			$url = $find[1];
+			$title = $title.' <i class="fa fa-external-link"></i>';
+		}
+	}
+
+	// If not a single post or page, get permalink for URL.
+	if ( ! $url ) {
+		if ( $force_link || ! is_single() || ( is_single() && themeblvd_get_att('doing_second_loop') ) ) {
+			$url = get_permalink( $post_id );
+		}
+	}
+
+	// Wrap title in link if there's a URL.
+	if ( $url ) {
+		$title = sprintf('<a href="%s" title="%s" target="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $target, $title );
+	}
+
+	return apply_filters( 'themeblvd_the_title', $title, $url );
+}
+
+/**
+ * Display the_title() taking into account if it should
+ * wrapped in a link.
+ *
+ * @since 2.3.0
+ *
+ * @param int $post_id Can feed in a post ID if outside the loop.
+ * @param bool $foce_link Whether to force the title to link.
+ */
+function themeblvd_the_title( $post_id = 0, $force_link = false ) {
+	echo themeblvd_get_the_title( $post_id, $force_link );
+}
+
+/**
  * Get widgets from widget area
  *
  * @since 2.5.0

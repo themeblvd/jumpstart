@@ -100,19 +100,25 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function set_template_parts() {
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
-			'404'				=> '404',
-			'archive'			=> 'archive',	// Note: To set framework to grid mode, can change to 'archive_grid' or 'grid' to be compatible with archive.php
+			// content.php (standard blogroll)
+			'archive'			=> '',					// Note: To set framework to grid mode, can change to 'archive_grid' or 'grid' to be compatible with archive.php
+			'index' 			=> '',					// Note: To set framework to grid mode, can change to 'index_grid' or 'grid' to be compatible with index.php
+			'list'				=> '',
+			'list_paginated'	=> '',
+			'single'			=> '',
+
 			'grid' 				=> 'grid',
+			'grid_shortcode' 	=> 'grid',
 			'grid_paginated' 	=> 'grid',
 			'grid_slider' 		=> 'grid',
-			'index' 			=> 'list',		// Note: To set framework to grid mode, can change to 'index_grid' or 'grid' to be compatible with index.php
-			'list'				=> 'list',
-			'list_paginated'	=> 'list',
-			'list_slider'		=> 'list',
+			'list_shortcode'	=> 'list-shortcode',
+
 			'page' 				=> 'page',
-			'search'			=> 'search',	// Note: This is for displaying content when no search results were found.
-			'search_results'	=> 'archive',
-			'single'			=> ''			// Note: For blog style theme, this could be changed to match "list"
+			'404'				=> '404',
+
+			// ... @TODO search results
+			'search'			=> 'search',			// Note: This is for displaying content when no search results were found.
+			'search_results'	=> 'archive'
 		));
 	}
 
@@ -577,25 +583,20 @@ class Theme_Blvd_Frontend_Init {
 				$show_meta = true;
 			}
 
-			if ( get_post_type($this->config['id']) == 'post' ) {
-
-				if ( ! has_term('', 'post_category', $this->config['id']) && ! has_term('', 'post_tag', $this->config['id']) ) {
-					$show_sub_meta = false;
-				}
-
-			} else if ( get_post_type($this->config['id']) == 'portfolio_item' ) {
-
-				if ( ! has_term('', 'portfolio', $this->config['id']) && ! has_term('', 'portfolio_tag', $this->config['id']) ) {
-					$show_sub_meta = false;
-				}
-
-			}
-
 			$this->atts = apply_filters( 'themeblvd_single_atts', array(
+				'content'		=> 'content', // We don't want excerpts to show on a single post!
 				'show_meta' 	=> $show_meta,
 				'show_sub_meta' => $show_sub_meta
 			));
 
+		}
+
+		// Archives
+		if ( is_archive() ) {
+			$this->atts = apply_filters( 'themeblvd_archive_atts', array(
+				'content'		=> themeblvd_get_option('archive_content', null, 'excerpt'),
+				'show_meta' 	=> true,
+			));
 		}
 
 		// Post List Page Template

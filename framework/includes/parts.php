@@ -538,14 +538,24 @@ function themeblvd_get_meta( $sep = '' ) {
 	// Start output
 	$output  = '<div class="entry-meta">';
 
+	// Post Format
+	$format = get_post_format();
+	$icon = themeblvd_get_format_icon($format);
+
+	if ( $icon ) {
+		// Note: URL to post format archive => esc_url( get_post_format_link($format) )
+		$output .= sprintf( '<span class="post-format"><i class="fa fa-%s"></i> %s</span>', $icon, themeblvd_get_local($format) );
+		$output .= $sep;
+	}
+
 	// Time
-	$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option( 'date_format' ) ) );
+	$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option('date_format') ) );
 	$output .= $time;
 
 	// Author
-	$author_url = get_author_posts_url( get_the_author_meta('ID') );
+	$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
 	$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
-	$author = sprintf( '<span class="author vcard"><i class="fa fa-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
+	$author = sprintf( '<span class="byline author vcard"><i class="fa fa-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
 	$output .= $sep;
 	$output .= $author;
 
@@ -568,7 +578,7 @@ function themeblvd_get_meta( $sep = '' ) {
 		$comments .= '<span class="comments-link">';
 
 		ob_start();
-		comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local( 'no_comments' ).'</span>', '1 '.themeblvd_get_local( 'comment' ), '% '.themeblvd_get_local( 'comments' ) );
+		comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('leave_comment').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
 		$comment_link = ob_get_clean();
 
 		$comments .= sprintf( '<i class="fa fa-comment"></i> %s', $comment_link, $sep );
@@ -1189,52 +1199,6 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
  */
 function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 	echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
-}
-
-/**
- * Get the_title() taking into account if it should
- * wrapped in a link.
- *
- * @since 2.3.0
- *
- * @param int $post_id Can feed in a post ID if outside the loop.
- * @param bool $foce_link Whether to force the title to link.
- * @return string $title The title of the post
- */
-function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
-
-	$url = '';
-	$title = get_the_title( $post_id );
-
-	// If "link" post format, get URL from start of content.
-	if ( has_post_format( 'link', $post_id ) ) {
-		$url = themeblvd_get_content_url( get_the_content( $post_id ) );
-	}
-
-	// If not a single post or page, get permalink for URL.
-	if ( ! $url && ( ! themeblvd_was( 'single' ) || $force_link ) ) {
-		$url = get_permalink( $post_id );
-	}
-
-	// Wrap title in link if there's a URL.
-	if ( $url ) {
-		$title = sprintf('<a href="%s" title="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $title );
-	}
-
-	return apply_filters( 'themeblvd_the_title', $title, $url );
-}
-
-/**
- * Display the_title() taking into account if it should
- * wrapped in a link.
- *
- * @since 2.3.0
- *
- * @param int $post_id Can feed in a post ID if outside the loop.
- * @param bool $foce_link Whether to force the title to link.
- */
-function themeblvd_the_title( $post_id = 0, $force_link = false ) {
-	echo themeblvd_get_the_title( $post_id, $force_link );
 }
 
 /**

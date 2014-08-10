@@ -1348,7 +1348,7 @@ function themeblvd_footer_copyright_default( $text ) {
  */
 function themeblvd_post_class( $class ) {
 
-	if ( is_single() ) {
+	if ( ! themeblvd_get_att('doing_second_loop') && is_single( themeblvd_config('id') ) ) {
 		$class[] = 'single';
 	}
 

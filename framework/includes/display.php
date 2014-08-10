@@ -549,6 +549,9 @@ if ( !function_exists( 'themeblvd_content_top_default' ) ) :
  * @since 2.1.0
  */
 function themeblvd_content_top_default() {
+
+	global $post;
+
 	if ( is_archive() ) {
 		if ( themeblvd_get_option( 'archive_title', null, 'false' ) != 'false' ) {
 			echo '<div class="element element-headline primary-entry-title">';
@@ -558,9 +561,13 @@ function themeblvd_content_top_default() {
 			echo '</div><!-- .element (end) -->';
 		}
 	}
+
+	if ( is_category() ) {
+		echo '<article class="category-desc">'.category_description().'</article>';
+	}
+
 	if ( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
-		global $post;
-		if ( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) {
+		if ( get_post_meta( $post->ID, '_tb_title', true ) != 'hide' ) {
 			echo '<div class="element element-headline primary-entry-title">';
 			echo '<h1 class="entry-title">';
 			the_title();
@@ -623,6 +630,7 @@ if ( !function_exists( 'themeblvd_blog_content_default' ) ) :
  * @param string $type Type of content -- content or excerpt
  */
 function themeblvd_blog_content_default( $type ) {
+
 	if ( $type == 'content' ) {
 
 		// Show full content

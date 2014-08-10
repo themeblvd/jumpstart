@@ -23,13 +23,14 @@ function themeblvd_post_list( $args = array() ){
 		'cat'				=> '',						// Force cat string of query
 		'tag'				=> '', 						// Force tag string of query
 		'posts_per_page'	=> '6',						// Number of posts
-		'thumbs'			=> 'default',				// Size of featured iamges - default, small, full, hide
+		'thumbs'			=> 'default',				// Size of featured images - default, small, full, hide ("small" no always supported)
 		'content'			=> 'default',				// Full content or excerpts - default, content, excerpt
 		'orderby'			=> 'date',					// Orderby param for posts query
 		'order'				=> 'DESC',					// Order param for posts query
 		'offset'			=> '0',						// Offset param for posts query
 		'query'				=> '',						// Custom query string
 		'part'				=> '',						// For custom template part for each post
+		'class'				=> 'list-wrap',				// Class for DIV just inside .post_list
 		'wp_query'			=> false					// Whether to pull from primary WP query
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -50,19 +51,26 @@ function themeblvd_post_list( $args = array() ){
 
 		$part = 'list';
 
-		if ( $paginated ) {
+		if ( strpos( $args['class'], 'shortcode-list-wrap' ) !== false ) {
+			$part = 'list_shortcode';
+		} else if ( $paginated ) {
 			$part = 'list_paginated';
 		}
+
 	}
 
-	// Content or excerpt
-	if ( $args['content'] == 'default' ) {
-		$content = themeblvd_get_option( 'blog_content', null, 'content' );
-	} else {
-		$content = $args['content'];
-	}
+	// Content or excerpt (if main wp_query, this will already be globally set)
+	if ( ! $args['wp_query'] ) {
 
-	$content = themeblvd_set_att( 'content', $content );
+		if ( $args['content'] == 'default' ) {
+			$content = themeblvd_get_option( 'blog_content', null, 'content' );
+		} else {
+			$content = $args['content'];
+		}
+
+		$content = themeblvd_set_att( 'content', $content );
+
+	}
 
 	// Thumbnails
 	if ( $args['thumbs'] == 'default' ) {
@@ -122,9 +130,19 @@ function themeblvd_post_list( $args = array() ){
 
 	if ( $posts->have_posts() ) {
 
+		// Let the world know we're doing a secondary loop
+		if ( ! $args['wp_query'] ) {
+			themeblvd_set_att('doing_second_loop', true);
+		}
+
+		// For default framework setup, we want secondary loops to show meta
+		themeblvd_set_att('show_meta', true);
+
+		// If you need to modify any global attributes for passing
+		// to template parts, hook in here!
 		do_action( 'themeblvd_post_list_before_loop', $args );
 
-		echo '<div class="list-wrap">';
+		echo '<div class="'.$args['class'].'">'; // default is .list-wrap, [post_list] shortcode will override
 
 		while( $posts->have_posts() ) {
 
@@ -139,6 +157,11 @@ function themeblvd_post_list( $args = array() ){
 		echo '</div><!-- .list-wrap (end) -->';
 
 		do_action( 'themeblvd_post_list_after_loop', $args );
+
+		// Let the world know we've finished our secondary loop
+		if ( ! $args['wp_query'] ) {
+			themeblvd_set_att('doing_second_loop', false);
+		}
 
 	} else {
 
@@ -204,7 +227,7 @@ function themeblvd_post_grid( $args = array() ){
 		'title'				=> '',								// Title for element
 		'display'			=> 'paginated',						// How to display, grid, paginated, or slider
 		'source'			=> '',								// Source of posts - category, tag, query
-		'categories'		=> array( 'all' 	=> 1 ),			// Post categories to include
+		'categories'		=> array( 'all' => 1 ),				// Post categories to include
 		'category_name'		=> '',								// Force category_name string of query
 		'cat'				=> '',								// Force cat string of query
 		'tag'				=> '', 								// Force tag string of query
@@ -220,6 +243,7 @@ function themeblvd_post_grid( $args = array() ){
 		'nav'				=> '1',								// If slider, whether to show controls
 		'crop'				=> '',								// Custom image crop size
 		'part'				=> '',								// For custom template part for each post
+		'class'				=> 'grid-wrap',						// Class for DIV just inside .post_grid
 		'wp_query'			=> false							// Whether to pull from primary WP query
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -240,9 +264,12 @@ function themeblvd_post_grid( $args = array() ){
 
 		$part = 'grid';
 
-		if ( $paginated ) {
+		if ( strpos( $args['class'], 'grid-list-wrap' ) !== false ) {
+			$part = 'grid_shortcode';
+		} else if ( $paginated ) {
 			$part = 'grid_paginated';
 		}
+
 	}
 
 	// Number of columns (i.e. posts per row)
@@ -330,9 +357,14 @@ function themeblvd_post_grid( $args = array() ){
 
 	if ( $posts->have_posts() ) {
 
+		// Let the world know we're doing a secondary loop
+		if ( ! $args['wp_query'] ) {
+			themeblvd_set_att('doing_second_loop', true);
+		}
+
 		do_action( 'themeblvd_post_grid_before_loop', $args );
 
-		echo '<div class="grid-wrap">';
+		echo '<div class="'.$args['class'].'">'; // default is .grid-wrap, [post_grid] shortcode will override
 
 		$counter = themeblvd_set_att( 'counter', 1 );
 		$total = $posts->post_count;
@@ -371,6 +403,11 @@ function themeblvd_post_grid( $args = array() ){
 		echo '</div><!-- .grid-wrap (end) -->';
 
 		do_action( 'themeblvd_post_grid_after_loop', $args );
+
+		// Let the world know we've finished our secondary loop
+		if ( ! $args['wp_query'] ) {
+			themeblvd_set_att('doing_second_loop', false);
+		}
 
 	} else {
 

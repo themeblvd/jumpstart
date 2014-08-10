@@ -170,10 +170,6 @@ class Theme_Blvd_Options_API {
 	 *		- blog_thumbs
 	 *		- blog_content
 	 *		- blog_categories
-	 *		- start_featured
-	 *		- blog_featured
-	 *		- blog_slider
-	 *		- end_featured
 	 *	- Archives
 	 *		- archive_title
 	 *		- archive_thumbs
@@ -711,6 +707,16 @@ class Theme_Blvd_Options_API {
 						'type' => 'section_end'
 					);
 				}
+			}
+		}
+
+		// Adjust some option descriptions if post formats are enabled.
+		if ( current_theme_supports('post-formats') ) {
+
+			$options = apply_filters('themeblvd_apply_post_format_warning', array('single_thumbs', 'blog_content', 'blog_thumbs', 'archive_content', 'archive_thumbs'));
+
+			foreach ( $options as $option_id ) {
+				$this->formatted_options[$option_id]['desc'] .= '<br><br><em>Note: The result of this option may vary with posts that are not the "standard" post format.</em>';
 			}
 		}
 
