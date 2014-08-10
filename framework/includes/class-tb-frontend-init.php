@@ -584,6 +584,7 @@ class Theme_Blvd_Frontend_Init {
 			}
 
 			$this->atts = apply_filters( 'themeblvd_single_atts', array(
+				'location'		=> 'single',
 				'content'		=> 'content', // We don't want excerpts to show on a single post!
 				'show_meta' 	=> $show_meta,
 				'show_sub_meta' => $show_sub_meta

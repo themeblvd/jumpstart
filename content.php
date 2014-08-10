@@ -24,7 +24,7 @@
 	<?php if ( has_post_format('gallery') ) : ?>
 		<?php themeblvd_gallery_slider(); ?>
 	<?php elseif ( ! has_post_format('video') ) : ?>
-		<?php themeblvd_the_post_thumbnail( 'single', themeblvd_get_att('size') ); ?>
+		<?php themeblvd_the_post_thumbnail( themeblvd_get_att('location'), themeblvd_get_att('size') ); ?>
 	<?php endif; ?>
 
 	<div class="entry-content">

@@ -59,7 +59,8 @@ function themeblvd_post_list( $args = array() ){
 
 	}
 
-	// Content or excerpt (if main wp_query, this will already be globally set)
+	// Content or excerpt (if main wp_query, this will
+	// already be globally set)
 	if ( ! $args['wp_query'] ) {
 
 		if ( $args['content'] == 'default' ) {
@@ -73,22 +74,28 @@ function themeblvd_post_list( $args = array() ){
 	}
 
 	// Thumbnails
-	if ( $args['thumbs'] == 'default' ) {
-		$size = themeblvd_get_option( 'blog_thumbs', null, 'small' );
-	} else {
-		$size = $args['thumbs'];
+	if ( ! is_archive() ) {
+
+		if ( $args['thumbs'] == 'default' ) {
+			$size = themeblvd_get_option( 'blog_thumbs', null, 'small' );
+		} else {
+			$size = $args['thumbs'];
+		}
+
+		$size = themeblvd_set_att( 'size', $size );
 	}
 
-	$size = themeblvd_set_att( 'size', $size );
+	// Make sure if this was a single post, that location
+	// doesn't get passed onto featured images of this loop.
+	themeblvd_set_att('location', 'primary');
 
+	// Query
 	if ( $args['wp_query'] ) {
 
-		// Pull from primary query
-		$posts = $wp_query;
+		$posts = $wp_query; // Pull from primary query
 
 	} else {
 
-		// Setup query
 		if ( $paginated ) {
 
 			// There can only be one "second query"; so if one
