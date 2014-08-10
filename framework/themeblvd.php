@@ -40,11 +40,8 @@ add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 add_action( 'customize_register', 'themeblvd_customizer_init' );
-
-// Apply following hooks after theme has had a chance to add filters
-// Note: Options API/Settings finalized at after_setup_theme, 1000
-add_action( 'after_setup_theme', 'themeblvd_add_theme_support', 1001 );
-add_action( 'after_setup_theme', 'themeblvd_register_navs', 1001 );
+add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
+add_action( 'after_setup_theme', 'themeblvd_register_navs' );
 
 /*------------------------------------------------------*/
 /* Admin Hooks, Filters, and Files
@@ -140,6 +137,10 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'comment_reply_link', 'themeblvd_comment_reply_link' );
 	add_filter( 'themeblvd_column_class', 'themeblvd_column_class_legacy' );
 	add_filter( 'walker_nav_menu_start_el', 'themeblvd_nav_menu_start_el', 10, 4 );
+
+	// Post Formats (if enabled)
+	add_filter( 'the_content', 'themeblvd_content_format_gallery', 7 );
+	add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
 
 	// Apply initial hooks
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
