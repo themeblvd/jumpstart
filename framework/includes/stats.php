@@ -289,15 +289,17 @@ function themeblvd_get_progress_bar( $args ) {
         $class .= ' progress-striped';
     }
 
+    $output .= sprintf('<div class="%s">', $class);
+
+    $class = 'progress-bar';
+
     if ( strpos($args['color'], '#') === 0 ) {
         $style .= sprintf( ' background-color: %s;', $args['color']);
     } else {
-        $class .= ' progress-'.$args['color'];
+        $class .= ' progress-bar-'.$args['color'];
     }
 
-    $output .= sprintf('<div class="%s">', $class);
-
-    $output .= sprintf( '<div class="progress-bar" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>', $percent, $args['total'], $percent, $style );
+    $output .= sprintf( '<div class="%s" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>', $class, $percent, $args['total'], $percent, $style );
 
     $output .= '</div><!-- .progress (end) -->';
     $output .= '</div><!-- .tb-progress (end) -->';

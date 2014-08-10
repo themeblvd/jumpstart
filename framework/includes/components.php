@@ -641,7 +641,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
         $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', $args['title'] );
     }
 
-    $output .= sprintf( '<div class="panel-body entry-content text-%s">%s</div>', apply_filters( 'themeblvd_panel_text', 'dark' ), $content );
+    $output .= sprintf( '<div class="panel-body entry-content">%s</div>', $content );
 
     if ( $args['footer'] ) {
         $output .= sprintf( '<div class="panel-footer">%s</div>', $args['footer'] );
@@ -968,7 +968,7 @@ function themeblvd_get_team_member( $args ){
     $output = '<div class="tb-team-member">';
 
     if ( ! empty( $args['image']['src'] ) ) {
-        $output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" class="img-thumbnail" /></div>', $args['image']['src'], $args['image']['title'] );
+        $output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" /></div>', $args['image']['src'], $args['image']['title'] );
     }
 
     $output .= '<div class="member-info clearfix">';
@@ -1240,9 +1240,6 @@ function themeblvd_get_toggle( $args ) {
         $icon = 'minus-circle';
     }
 
-    // Content text color
-    $text = apply_filters( 'themeblvd_toggle_body_text', 'dark' );
-
     // Individual toggle ID (NOT the Accordion ID)
     $toggle_id = uniqid( 'toggle_'.rand() );
 
@@ -1255,7 +1252,7 @@ function themeblvd_get_toggle( $args ) {
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="'.$toggle_id.'" class="'.$state.'">
-                <div class="panel-body entry-content text-'.$text.'">
+                <div class="panel-body entry-content">
                     '.$content.'
                 </div><!-- .panel-body (end) -->
             </div><!-- .panel-collapse (end) -->
