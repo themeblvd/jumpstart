@@ -114,7 +114,7 @@ function themeblvd_get_format_icon( $format ) {
 		'image'		=> 'camera',
 		'link'		=> 'link',
 		'quote'		=> 'quote-left',
-		'status'	=> 'clock',
+		'status'	=> 'clock-o',
 		'video'		=> 'film'
 	));
 
