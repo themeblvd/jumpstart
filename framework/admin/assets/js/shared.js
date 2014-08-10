@@ -159,11 +159,23 @@
     					}
     				});
 
-    				// Show/Hide toggle grouping (triggered with <select> to target specific options)
+    				// Show/Hide toggle grouping (triggered with <select> or
+    				// radio group to target specific options)
     				$this.find('.show-hide-toggle').each(function(){
-    					var $el = $(this), value = $el.children('.trigger').find('.of-input').val();
+
+    					var $el = $(this),
+    						$trigger = $el.children('.trigger'),
+    						value = '';
+
+    					if ( $trigger.hasClass('section-radio') ) {
+    						value = $trigger.find('.of-radio:checked').val();
+    					} else {
+    						value = $trigger.find('.of-input').val();
+    					}
+
     					$el.children('.receiver').hide();
     					$el.children('.receiver-'+value).show();
+
     				});
 
     				// Where one option's value determines which description displays on another option
@@ -569,7 +581,14 @@
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
-    				$this.on( 'change', '.show-hide-toggle > .trigger .of-input', function() {
+    				$this.on( 'change', '.show-hide-toggle > .trigger select.of-input', function() {
+    					var $el = $(this), value = $el.val(), $group = $el.closest('.show-hide-toggle');
+    					$group.children('.receiver').hide();
+    					$group.children('.receiver-'+value).show();
+    				});
+
+    				// Show/Hide toggle grouping (triggered with radio group to target specific options)
+    				$this.on( 'click', '.show-hide-toggle > .trigger .of-radio', function() {
     					var $el = $(this), value = $el.val(), $group = $el.closest('.show-hide-toggle');
     					$group.children('.receiver').hide();
     					$group.children('.receiver-'+value).show();
