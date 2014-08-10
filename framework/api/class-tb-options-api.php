@@ -569,6 +569,13 @@ class Theme_Blvd_Options_API {
 							'content'	=> __( 'Show full content.', 'themeblvd' ),
 							'excerpt' 	=> __( 'Show excerpt only.', 'themeblvd' )
 						)
+					),
+					'archive_posts_per_page' => array(
+						'name' 		=> __( 'Posts Per Page', 'themeblvd' ),
+						'desc' 		=> __( 'Enter how many posts you\'d like shown per page in your archives.', 'themeblvd' ),
+						'id' 		=> 'archive_posts_per_page',
+						'std' 		=> '10',
+						'type' 		=> 'text'
 					)
 				) // End archives options
 			),

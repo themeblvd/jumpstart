@@ -525,7 +525,13 @@ class Theme_Blvd_Query {
 			}
 		}
 
-		// @TODO -- This needs to modified to match current post list and post grid elements
+		// Archive Posts Per Page
+		if ( $q->is_archive() ) {
+			$default = get_option('posts_per_page');
+			$q->set( 'posts_per_page', intval(themeblvd_get_option('archive_posts_per_page', null, $default)) );
+		}
+
+		// ... @TODO -- For 2.5, this needs to modified to match current paginated elements
 		// Apply pagination fix when homepage custom layout
 		// set over home "posts page"
 		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && $q->is_home() && 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
