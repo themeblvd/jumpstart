@@ -1050,6 +1050,17 @@
 }
 
 /* Sortables and Full Width options - bars, buttons, datasets, locations, sectors, tabs, testimonials, toggles */
+#optionsframework .full-width .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-bars .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-datasets .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-locations .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-sectors .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-tabs .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-testimonials .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
+	right: -2px;
+}
 #optionsframework .full-width > .option > .controls,
 #optionsframework .section-bars > .option > .controls,
 #optionsframework .section-buttons > .option > .controls,
