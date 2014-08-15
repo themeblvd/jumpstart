@@ -524,73 +524,95 @@ function themeblvd_the_breadcrumbs(){
 }
 
 /**
- * Get default meta for blogroll.
+ * Get meta display for a post
  *
  * @since 2.3.0
  */
-function themeblvd_get_meta( $sep = '' ) {
+function themeblvd_get_meta( $args = array() ) {
+
+	$defaults = array(
+		'sep' 		=> apply_filters( 'themeblvd_meta_separator', '<span class="sep"> / </span>' ),
+		'include'	=> array('format', 'time', 'author', 'comments'), // possible: author, category, comments, format, portfolio, time
+		'comments'	=> 'standard',	// can be string "mini"
+		'time'		=> 'standard'	// can be string "ago"
+	);
+	$args = wp_parse_args( $args, $defaults );
 
 	// Separator
-	if ( ! $sep ) {
-		$sep = apply_filters( 'themeblvd_meta_separator', '<span class="sep"> / </span>' );
-	}
+	$sep = $args['sep'];
 
 	// Start output
 	$output  = '<div class="entry-meta">';
 
-	// Post Format
-	$format = get_post_format();
-	$icon = themeblvd_get_format_icon($format);
+	foreach ( $args['include'] as $item ) {
+		switch ( $item ) {
 
-	if ( $icon ) {
-		// Note: URL to post format archive => esc_url( get_post_format_link($format) )
-		$output .= sprintf( '<span class="post-format"><i class="fa fa-%s"></i> %s</span>', $icon, themeblvd_get_local($format) );
-		$output .= $sep;
-	}
+			case 'author' :
+				$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
+				$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
+				$author = sprintf( '<span class="byline author vcard"><i class="fa fa-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
+				$output .= $sep;
+				$output .= $author;
+				break;
 
-	// Time
-	$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option('date_format') ) );
-	$output .= $time;
+			case 'category' :
+				$category = sprintf( '<span class="category"><i class="fa fa-bars"></i> %s</span>', get_the_category_list(', ') );
+				$output .= $sep;
+				$output .= $category;
+				break;
 
-	// Author
-	$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
-	$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
-	$author = sprintf( '<span class="byline author vcard"><i class="fa fa-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
-	$output .= $sep;
-	$output .= $author;
+			case 'comments' :
+				if ( comments_open() ) {
 
-	// Category
-	/*
-	$category = '';
-	if ( has_category() ) {
-		$category = sprintf( '<span class="category"><i class="fa fa-bars"></i> %s</span>', get_the_category_list(', ') );
-		$output .= $sep;
-		$output .= $category;
-	}
-	*/
+					$output .= $sep;
+					$comments = '<span class="comments-link">';
 
-	// Comments
-	$comments = '';
+					ob_start();
+					if ( $args['comments'] === 'mini' ) {
+						comments_popup_link( '0', '1', '%' );
+					} else {
+						comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('leave_comment').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
+					}
+					$comment_link = ob_get_clean();
 
-	if( comments_open() ) {
+					$comments .= sprintf( '<i class="fa fa-comment"></i> %s', $comment_link, $sep );
+					$comments .= '</span>';
 
-		$output .= $sep;
-		$comments .= '<span class="comments-link">';
+					$output .= $comments;
+				}
+				break;
 
-		ob_start();
-		comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('leave_comment').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
-		$comment_link = ob_get_clean();
+			case 'format' :
+				$format = get_post_format();
+				$icon = themeblvd_get_format_icon($format);
 
-		$comments .= sprintf( '<i class="fa fa-comment"></i> %s', $comment_link, $sep );
-		$comments .= '</span>';
+				if ( $icon ) {
+					// Note: URL to post format archive => esc_url( get_post_format_link($format) )
+					$output .= sprintf( '<span class="post-format"><i class="fa fa-%s"></i> %s</span>', $icon, themeblvd_get_local($format) );
+					$output .= $sep;
+				}
+				break;
 
-		$output .= $comments;
+			case 'portfolio' :
+				$portfolio = sprintf( '<span class="portfolio"><i class="fa fa-briefcase"></i> %s</span>', get_the_term_list(get_the_ID(), 'portfolio', '', ', ') );
+				$output .= $sep;
+				$output .= $portfolio;
+				break;
 
+			case 'time' :
+				if ( $args['time'] === 'ago' ) {
+					$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-clock-o"></i> %s</time>', get_the_time('c'), themeblvd_get_time_ago( get_the_ID() ) );
+				} else {
+					$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option('date_format') ) );
+				}
+				$output .= $time;
+				break;
+		}
 	}
 
 	$output .= '</div><!-- .entry-meta -->';
 
-	return apply_filters( 'themeblvd_meta', $output, $time, $author, $category, $comments, $sep );
+	return apply_filters( 'themeblvd_meta', $output, $args );
 }
 
 /**
@@ -665,7 +687,7 @@ function themeblvd_blog_share( $echo = true ) {
 
 	if ( $buttons && is_array($buttons) ) {
 
-		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' );
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'tb_thumb' );
 		$patterns = themeblvd_get_share_patterns();
 		$style = themeblvd_get_option('share_style');
 		$permalink = get_permalink();
@@ -894,314 +916,6 @@ function themeblvd_simple_contact( $args ) {
 }
 
 /**
- * Get Mini Post List
- *
- * @since 2.1.0
- *
- * @param string $query Options for many post list
- * @param string $thumb Thumbnail sizes - small, smaller, or smallest
- * @param boolean $meta Show date posted or not
- * @return string $output HTML to output
- */
-function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
-
-	global $post;
-	global $_wp_additional_image_sizes;
-
-	$output = '';
-	$frame = apply_filters( 'themeblvd_featured_thumb_frame', false );
-
-	// CSS classes
-	$classes = '';
-	if ( ! $thumb ) {
-		$classes .= 'hide-thumbs';
-	} else {
-		$classes .= $thumb.'-thumbs';
-	}
-
-	if ( ! $meta ) {
-		$classes .= ' hide-meta';
-	}
-
-	// Thumb size
-	$thumb_size = apply_filters( 'themeblvd_mini_post_list_thumb_size', 'square_'.$thumb, $thumb, $query, $meta );
-	$thumb_width = $_wp_additional_image_sizes[$thumb_size]['width'];
-
-	// Get posts
-	$posts = get_posts( html_entity_decode( $query ) );
-
-	// Start output
-	if ( $posts ) {
-
-		$output  = '<div class="themeblvd-mini-post-list">';
-		$output .= '<ul class="'.$classes.'">';
-
-		foreach ( $posts as $post ) {
-
-			setup_postdata( $post );
-			$image = '';
-
-			// Setup post thumbnail if user wants them to show
-			if ( $thumb ) {
-
-				$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
-
-				// If post thumbnail isn't set, pull default thumbnail
-				// based on post format. If theme doesn't support post
-				// formats, format will always be "standard".
-				if ( ! $image ) {
-
-					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
-
-					$post_format = get_post_format();
-
-					if ( ! $post_format ) {
-						$post_format = 'standard';
-					}
-
-					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.'">';
-					$image .= '<div class="featured-image">';
-					$image .= '<div class="featured-image-inner">';
-
-					if ( $frame ) {
-						$image .= '<div class="thumbnail">';
-					}
-
-					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
-
-					if ( $frame ) {
-						$image .= '</div><!-- .thumbnail (end) -->';
-					}
-
-					$image .= '</div><!-- .featured-image-inner (end) -->';
-					$image .= '</div><!-- .featured-image (end) -->';
-					$image .= '</div><!-- .featured-image-wrapper (end) -->';
-				}
-			}
-
-			$output .= '<li>';
-
-			if ( $image ) {
-				$output .= $image;
-			}
-
-			$output .= '<div class="mini-post-list-content">';
-			$output .= sprintf( '<h4>%s</h4>', themeblvd_get_the_title( $post->ID, true ) );
-
-			if ( $meta ) {
-				$output .= sprintf('<span class="mini-meta">%s</span>', get_the_time( get_option('date_format') ) );
-			}
-
-			$output .= '</div>';
-			$output .= '</li>';
-		}
-
-		wp_reset_postdata();
-
-		$output .= '</ul>';
-		$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
-
-	} else {
-		$output = themeblvd_get_local( 'archive_no_posts' );
-	}
-	return $output;
-}
-
-/**
- * Display Mini Post List
- *
- * @since 2.1.0
- *
- * @param array $options Options for many post list
- */
-function themeblvd_mini_post_list( $options ) {
-	echo themeblvd_get_mini_post_list( $options );
-}
-
-/**
- * Get Mini Post Grid
- *
- * @since 2.1.0
- *
- * @param array $options Options for many post grid
- * @return string $output HTML to output
- */
-function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
-
-	global $post;
-	global $_wp_additional_image_sizes;
-
-	$output = '';
-	$frame = apply_filters( 'themeblvd_featured_thumb_frame', false );
-
-	// CSS classes
-	$classes = $thumb.'-thumbs';
-	$classes .= ' grid-align-'.$align;
-	if ( $gallery ) {
-		$classes .= ' gallery-override themeblvd-gallery';
-	}
-
-	// Thumb size
-	$thumb_size = apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query );
-	$thumb_width = $_wp_additional_image_sizes[$thumb_size]['width'];
-
-	// Check for gallery override
-	$gallery_link = '';
-
-	if ( $gallery ) {
-
-		$pattern = get_shortcode_regex();
-
-		if ( preg_match( "/$pattern/s", $gallery, $match ) && 'gallery' == $match[2] ) {
-
-			$atts = shortcode_parse_atts( $match[3] );
-
-			if( isset( $atts['link'] ) && 'file' == $atts['link'] ) {
-				$gallery_link = 'file';
-			}
-
-			if ( ! empty( $atts['ids'] ) ) {
-				$query = array(
-					'post_type'			=> 'attachment',
-					'post__in' 			=> explode( ',', $atts['ids'] ),
-					'orderby'           => 'post__in',
-					'posts_per_page' 	=> -1
-				);
-			}
-		}
-	}
-
-	// Format query
-	if ( ! is_array( $query ) ) {
-		$query = html_entity_decode( $query );
-	}
-
-	// Get posts
-	$posts = get_posts( $query );
-
-	// Start output
-	if ( $posts ) {
-
-		$output  = '<div class="themeblvd-mini-post-grid">';
-		$output .= '<ul class="'.$classes.'">';
-
-		foreach ( $posts as $post ) {
-
-			setup_postdata( $post );
-
-			$output .= '<li>';
-
-			if ( $gallery ) {
-
-				// Gallery image output to simulate featured images
-				$thumbnail = wp_get_attachment_image_src( $post->ID, apply_filters( 'themeblvd_mini_post_grid_thumb_size', 'square_'.$thumb, $thumb, $query, $align, $gallery ) );
-				$output .= '<div class="featured-image-wrapper">';
-				$output .= '<div class="featured-image">';
-				$output .= '<div class="featured-image-inner">';
-
-				if ( 'file' == $gallery_link ) {
-
-					$image = wp_get_attachment_image_src( $post->ID, 'full' );
-					$item = sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
-
-					$class = 'tb-thumb-link image';
-
-					if ( $frame ) {
-						$class .= ' thumbnail';
-					}
-
-					$args = array(
-						'item'		=> $item,
-						'link'		=> $image[0],
-						'title'		=> $post->post_title,
-						'class'		=> $class,
-						'gallery' 	=> true
-					);
-
-					$output .= themeblvd_get_link_to_lightbox( $args );
-
-				} else {
-
-					$class = 'tb-thumb-link image';
-
-					if ( $frame ) {
-						$class .= ' thumbnail';
-					}
-
-					$output .= sprintf( '<a href="%s" title="%s" class="%s">', get_permalink($post->ID), $post->post_title, $gallery, $class );
-					$output .= sprintf( '<img src="%s" alt="%s" />', $thumbnail[0], $post->post_title );
-					$output .= '</a>';
-
-				}
-
-				$output .= '</div><!-- .featured-image-inner (end) -->';
-				$output .= '</div><!-- .featured-image (end) -->';
-				$output .= '</div><!-- .featured-image-wrapper (end) -->';
-
-			} else {
-
-				// Standard featured image output
-				$image = themeblvd_get_post_thumbnail( 'primary', $thumb_size );
-
-				// If post thumbnail isn't set, pull default thumbnail
-				// based on post format. If theme doesn't support post
-				// formats, format will always be "standard".
-				if ( ! $image ) {
-
-					$default_img_directory = apply_filters( 'themeblvd_thumbnail_directory', get_template_directory_uri() . '/framework/assets/images/thumbs/2x/' );
-
-					$post_format = get_post_format();
-					if ( ! $post_format ) {
-						$post_format = 'standard';
-					}
-
-					$class = 'tb-thumb-link post';
-
-					if ( $frame ) {
-						$class .= ' thumbnail';
-					}
-
-					$image .= '<div class="featured-image-wrapper attachment-'.$thumb_size.'">';
-					$image .= '<div class="featured-image">';
-					$image .= '<div class="featured-image-inner">';
-					$image .= sprintf( '<a href="%s" title="%s" class="%s">', get_permalink(), get_the_title(), $class );
-					$image .= sprintf( '<img src="%s.png" width="%s" class="wp-post-image" />', $default_img_directory.$thumb.'_'.$post_format, $thumb_width );
-					$image .= '</a>';
-					$image .= '</div><!-- .featured-image-inner (end) -->';
-					$image .= '</div><!-- .featured-image (end) -->';
-					$image .= '</div><!-- .featured-image-wrapper (end) -->';
-				}
-
-				$output .= $image;
-
-			}
-			$output .= '</li>';
-		}
-
-		wp_reset_postdata();
-
-		$output .= '</ul>';
-		$output .= '<div class="clear"></div>';
-		$output .= '</div><!-- .themeblvd-mini-post-list (end) -->';
-
-	} else {
-		$output = themeblvd_get_local( 'archive_no_posts' );
-	}
-	return $output;
-}
-
-/**
- * Display Mini Post Grid
- *
- * @since 2.1.0
- *
- * @param array $options Options for many post grid
- */
-function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
-	echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
-}
-
-/**
  * Get moveable slider controls
  *
  * @since 2.5.0
@@ -1212,6 +926,8 @@ function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'small
 function themeblvd_get_slider_controls( $args = array() ) {
 
 	$defaults = array(
+		'carousel'		=> false,						// If using Bootstrap carousel, the ID
+		'color'			=> 'primary',					// Color of buttons (use "trans" for transparent style)
 		'direction' 	=> 'horz', 						// horz or vert
 		'prev' 			=> themeblvd_get_local('prev'),	// Text for previous button
 		'next' 			=> themeblvd_get_local('next'),	// Text for next button
@@ -1232,9 +948,15 @@ function themeblvd_get_slider_controls( $args = array() ) {
     }
 
     $output  = '<ul class="tb-slider-arrows">';
-	$output .= sprintf( '<li><a href="#" title="%s" class="prev"><i class="fa fa-%s"></i></a></li>', $args['prev'], $icon_prev );
-	$output .= sprintf( '<li><a href="#" title="%s" class="next"><i class="fa fa-%s"></i></a></li>', $args['prev'], $icon_next );
+	$output .= sprintf( '<li><a href="#" title="%s" class="%s prev"><i class="fa fa-%s"></i></a></li>', $args['prev'], $args['color'], $icon_prev );
+	$output .= sprintf( '<li><a href="#" title="%s" class="%s next"><i class="fa fa-%s"></i></a></li>', $args['prev'], $args['color'], $icon_next );
 	$output .= '</ul>';
+
+	if ( $args['carousel'] ) {
+		$output = str_replace( '#', '#'.$args['carousel'], $output );
+		$output = str_replace( 'prev">', 'prev" data-slide="prev">', $output );
+		$output = str_replace( 'next">', 'next" data-slide="next">', $output );
+	}
 
     return apply_filters( 'themeblvd_slider_controls', $output, $args );
 }
@@ -1283,4 +1005,24 @@ function themeblvd_to_top( $args = array() ) {
 	if ( themeblvd_get_option('scroll_to_top') == 'show' ) {
 		echo themeblvd_get_to_top( $args );
 	}
+}
+
+/**
+ * Get loader
+ *
+ * @since 2.5.0
+ *
+ * @return string $output Final content to output
+ */
+function themeblvd_get_loader() {
+    return apply_filters( 'themeblvd_loader', '<div class="tb-loader"><i class="fa fa-circle-o-notch fa-spin"></i></div>' );
+}
+
+/**
+ * Display loader
+ *
+ * @since 2.5.0
+ */
+function themeblvd_loader() {
+	echo themeblvd_loader();
 }

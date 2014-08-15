@@ -215,34 +215,6 @@ function themeblvd_gcd( $a, $b ) {
 }
 
 /**
- * Get the class for thumbnail images of a post grid depending,
- *  on how many columns in the grid.
- *
- * @since 2.5.0
- *
- * @param int|string $columns Number of columns in a grid
- * @return string $var Description
- */
-function themeblvd_grid_thumb_class( $columns ){
-
-	$class = 'grid_3'; // default
-
-	if ( $columns == 1 ) {
-		$class = 'grid_12';
-	} else if ( $columns == 2 ) {
-		$class = 'grid_6';
-	} else if ( $columns == 3 ) {
-		$class = 'grid_4';
-	} else if ( $columns == 4 ) {
-		$class = 'grid_3';
-	} else if ( $columns == 5 ) {
-		$class = 'grid_fifth_1';
-	}
-
-	return apply_filters( 'themeblvd_grid_thumb_class', $class, $columns );
-}
-
-/**
  * Get the markup to open a row of a grid.
  *
  * @since 2.5.0
@@ -310,4 +282,76 @@ function themeblvd_get_close_row( $args = array() ) {
  */
 function themeblvd_close_row( $args = array() ) {
 	echo themeblvd_get_close_row( $args );
+}
+
+/**
+ * Attempt to estimate the maximum width of a container
+ * depending on the context of the situation.
+ *
+ * @since 2.5.0
+ *
+ * @param string $var Description
+ * @return string $var Description
+ */
+function themeblvd_get_max_width( $args = '' ) {
+
+	// If a single string is passed in, it is assumed
+	// to be the $context
+	if ( ! is_array($args) ) {
+		$args = array(
+			'context' => $args
+		);
+	}
+
+	$defaults = array(
+		'context'	=> '',		// blog, list, grid, element, block
+		'col'		=> '',		// If in a column, the fraction width of the column
+		'cols'		=> 2 		// If "grid" the number of columns
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	// The framework uses WP's global "content_width" as the
+	// width of the main container
+	$max = $container = $GLOBALS['content_width'];
+
+	$n = 0;
+	$d = 0;
+
+	if ( $args['context'] == 'block' && $args['col'] ) {
+
+		$fraction = explode('/', $args['col']);
+		$n = $fraction[0];
+		$d = $fraction[1];
+
+		$max = ($n/$d) * $container;
+
+	} else {
+
+		$layouts = themeblvd_sidebar_layouts();
+		$layout = themeblvd_config('sidebar_layout');
+		$n = $layouts[$layout]['columns']['content'];
+
+		$n = str_replace('col-xs-', '', $n);
+		$n = str_replace('col-sm-', '', $n);
+		$n = str_replace('col-md-', '', $n);
+		$n = str_replace('col-lg-', '', $n);
+
+		if ( strpos($n, '0') === 0 ) { // 10-col grid system uses 010, 020, 030, etc
+			$n = str_replace('0', '', $n);
+			$d = 10;
+		} else {
+			$d = 12;
+		}
+
+		$n = intval($n);
+
+		if ( $args['context'] == 'grid' && $args['cols'] ) {
+			$cols = intval($args['cols']);
+			$max = (1/$cols) * ($n/$d) * $container;
+		} else {
+			$max = ($n/$d) * $container;
+		}
+	}
+
+	return intval(round($max));
 }

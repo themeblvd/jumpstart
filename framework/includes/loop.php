@@ -23,14 +23,19 @@ function themeblvd_post_list( $args = array() ){
 		'cat'				=> '',						// Force cat string of query
 		'tag'				=> '', 						// Force tag string of query
 		'posts_per_page'	=> '6',						// Number of posts
-		'thumbs'			=> 'default',				// Size of featured images - default, small, full, hide ("small" no always supported)
-		'content'			=> 'default',				// Full content or excerpts - default, content, excerpt
 		'orderby'			=> 'date',					// Orderby param for posts query
 		'order'				=> 'DESC',					// Order param for posts query
 		'offset'			=> '0',						// Offset param for posts query
 		'query'				=> '',						// Custom query string
+		'thumbs'			=> '',						// Size of featured images - default, small, full, hide ("small" not always supported)
+		'content'			=> '',						// Full content or excerpts - default, content, excerpt (not supported with "list" $context)
+		'meta'				=> '',						// Whether to show meta (supported with "list" $context only)
+		'more'				=> '',						// Read More - text, button, none (supported with "list" $context only)
+		'more_text'			=> '',						// If Read More is text or button, text to use (supported with "list" $context only)
 		'part'				=> '',						// For custom template part for each post
-		'class'				=> 'list-wrap',				// Class for DIV just inside .post_list
+		'context'			=> '',						// Context of this post display
+		'class'				=> '',						// Any additional CSS class to add
+		'max_width'			=> 0,						// Container max width - if coming from element, this should be set
 		'wp_query'			=> false					// Whether to pull from primary WP query
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -42,47 +47,95 @@ function themeblvd_post_list( $args = array() ){
 		$paginated = true;
 	}
 
+	// In what context are these posts being displayed?
+	// Note: If the post list is in secondary context, like
+	// a shortcode, widget, etc, and you don't want the
+	// $context to be overridden with generic, top-level
+	// conditionals, you need to pass in a $context here.
+	$context = $args['context']; // blog or list
+
+	if ( ! $context ) {
+		if ( is_home() || is_archive() || is_page_template('template_blog.php') ) {
+			$context = 'blog';
+		}
+	}
+
+	if ( ! $context ) {
+		$context = 'list';
+	}
+
+	// Max width of the container holding this post list
+	$max_width = $args['max_width'];
+
+	if ( ! $max_width ) {
+		$max_width = themeblvd_get_max_width($context);
+	}
+
 	// What template part should we include?
-	if ( $args['part'] ) {
+	$part = $args['part']; // This should be set if we called themeblvd_the_post_list()
 
-		$part = $args['part'];
+	if ( ! $part ) {
 
-	} else {
+		if ( $context == 'blog' ) {
 
-		$part = 'list';
+			$part = 'blog';
 
-		if ( strpos( $args['class'], 'shortcode-list-wrap' ) !== false ) {
-			$part = 'list_shortcode';
-		} else if ( $paginated ) {
-			$part = 'list_paginated';
+		} else if ( $context == 'list' ) {
+
+			if ( $paginated ) {
+				$part = 'list_paginated';
+			} else {
+				$part = 'list';
+			}
+
 		}
-
 	}
 
-	// Content or excerpt (if main wp_query, this will
-	// already be globally set)
-	if ( ! $args['wp_query'] ) {
+	// Set atts to pass to template parts
+	if ( $context == 'list' && ! is_page_template('template_list.php') ) {
 
-		if ( $args['content'] == 'default' ) {
-			$content = themeblvd_get_option( 'blog_content', null, 'content' );
-		} else {
-			$content = $args['content'];
-		}
-
-		$content = themeblvd_set_att( 'content', $content );
-
-	}
-
-	// Thumbnails
-	if ( ! is_archive() ) {
-
+		// Featured images
 		if ( $args['thumbs'] == 'default' ) {
-			$size = themeblvd_get_option( 'blog_thumbs', null, 'small' );
+			$thumbs = themeblvd_get_option('list_thumbs', null, 'full');
 		} else {
-			$size = $args['thumbs'];
+			$thumbs = $args['thumbs'];
 		}
 
-		$size = themeblvd_set_att( 'size', $size );
+		if ( $thumbs == 'hide' ) {
+			themeblvd_set_att( 'thumbs', false );
+		} else {
+			themeblvd_set_att( 'thumbs', $thumbs );
+		}
+
+		themeblvd_set_att('placeholder', true);
+
+		// Meta
+		if ( $args['meta'] == 'default' ) {
+			$meta = themeblvd_get_option('list_meta', null, 'show');
+		} else {
+			$meta = $args['meta'];
+		}
+
+		if ( $meta == 'show' ) {
+			themeblvd_set_att( 'show_meta', true );
+		} else {
+			themeblvd_set_att( 'show_meta', false );
+		}
+
+		// Read More Link or Button
+		if ( $args['more'] == 'default' ) {
+			themeblvd_set_att( 'more', themeblvd_get_option('list_more', null, 'text') );
+		} else {
+			themeblvd_set_att( 'more', $args['more'] );
+		}
+
+		// Read More text
+		if ( $args['more_text'] == 'default' ) {
+			themeblvd_set_att( 'more_text', themeblvd_get_option('list_more_text', null, 'text') );
+		} else {
+			themeblvd_set_att( 'more_text', $args['more_text'] );
+		}
+
 	}
 
 	// Make sure if this was a single post, that location
@@ -123,10 +176,25 @@ function themeblvd_post_list( $args = array() ){
 	}
 
 	// Start output
-	$class = 'post_list';
+	if ( $context == 'blog' ) {
 
-	if ( $paginated ) {
-		$class .= ' post_list_paginated';
+		$class = 'blog';
+
+		if ( $paginated ) {
+			$class .= ' paginated';
+		}
+
+	} else {
+
+		$class = 'post_list';
+
+		if ( $paginated ) {
+			$class .= ' post_list_paginated';
+		}
+	}
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
 	}
 
 	echo '<div class="'.$class.'">';
@@ -142,14 +210,11 @@ function themeblvd_post_list( $args = array() ){
 			themeblvd_set_att('doing_second_loop', true);
 		}
 
-		// For default framework setup, we want secondary loops to show meta
-		themeblvd_set_att('show_meta', true);
-
 		// If you need to modify any global attributes for passing
 		// to template parts, hook in here!
 		do_action( 'themeblvd_post_list_before_loop', $args );
 
-		echo '<div class="'.$args['class'].'">'; // default is .list-wrap, [post_list] shortcode will override
+		echo '<div class="'.$context.'-wrap">';
 
 		while( $posts->have_posts() ) {
 
@@ -202,12 +267,18 @@ function themeblvd_the_post_list() {
 		'wp_query' 	=> true
 	);
 
-	if ( is_search() ) {
-		$args['part'] = 'search';
-	} else if ( is_archive() ) {
+	if ( is_archive() || is_home() ) {
+		$args['context'] = 'blog';
+	}
+
+	if ( is_archive() ) {
 		$args['part'] = 'archive';
 	} else if ( is_home() ) {
-		$args['parts'] = 'index';
+		$args['part'] = 'index';
+	}
+
+	if ( ! empty($args['thumbs']) && $args['thumbs'] == 'hide' ) {
+		$args['thumbs'] = false;
 	}
 
 	$args = apply_filters( 'themeblvd_the_post_list_args', $args );
@@ -234,11 +305,11 @@ function themeblvd_post_grid( $args = array() ){
 		'title'				=> '',								// Title for element
 		'display'			=> 'paginated',						// How to display, grid, paginated, or slider
 		'source'			=> '',								// Source of posts - category, tag, query
-		'categories'		=> array( 'all' => 1 ),				// Post categories to include
+		'categories'		=> array('all'=>1),					// Post categories to include
 		'category_name'		=> '',								// Force category_name string of query
 		'cat'				=> '',								// Force cat string of query
 		'tag'				=> '', 								// Force tag string of query
-		'columns'			=> themeblvd_get_att( 'columns' ),	// Number of columns
+		'columns'			=> themeblvd_get_att('columns'),	// Number of columns
 		'rows'				=> '3',								// Number of rows
 		'slides'			=> '3',								// Number of slides
 		'orderby'			=> 'date',							// Orderby param for posts query
@@ -248,9 +319,16 @@ function themeblvd_post_grid( $args = array() ){
 		'query'				=> '',								// Custom query string
 		'timeout'			=> '3',								// If slider, seconds between trasitinos
 		'nav'				=> '1',								// If slider, whether to show controls
+		'thumbs'			=> '',								// Size of featured images - default, small, full, hide ("small" not always supported)
+		'meta'				=> '',								// Whether to show meta (supported with "grid" $context only)
+		'excerpt'			=> '',								// Whether to show excerpt (supported with "grid" $context only)
+		'more'				=> '',								// Read More - text, button, none (supported with "grid" $context only)
+		'more_text'			=> '',								// If Read More is text or button, text to use (supported with "grid" $context only)
 		'crop'				=> '',								// Custom image crop size
 		'part'				=> '',								// For custom template part for each post
-		'class'				=> 'grid-wrap',						// Class for DIV just inside .post_grid
+		'context'			=> '',								// Context of this post display
+		'class'				=> '',								// Any additional CSS class to add
+		'max_width'			=> 0,								// Container max width - if coming from element, this should be set
 		'wp_query'			=> false							// Whether to pull from primary WP query
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -262,23 +340,6 @@ function themeblvd_post_grid( $args = array() ){
 		$paginated = true;
 	}
 
-	// What template part should we include?
-	if ( $args['part'] ) {
-
-		$part = $args['part'];
-
-	} else {
-
-		$part = 'grid';
-
-		if ( strpos( $args['class'], 'grid-list-wrap' ) !== false ) {
-			$part = 'grid_shortcode';
-		} else if ( $paginated ) {
-			$part = 'grid_paginated';
-		}
-
-	}
-
 	// Number of columns (i.e. posts per row)
 	$columns = '3';
 
@@ -288,18 +349,144 @@ function themeblvd_post_grid( $args = array() ){
 
 	$columns = themeblvd_set_att( 'columns', $columns );
 
-	// Global grid class
-	$class = themeblvd_set_att( 'class', sprintf( 'col %s', themeblvd_grid_class(intval($columns)) ) );
+	// In what context are these posts being displayed?
+	// Note: If the post grid is in secondary context, like
+	// a shortcode, widget, etc, and you don't want the
+	// $context to be overridden with generic, top-level
+	// conditionals, you need to pass in a $context here.
+	$context = $args['context']; // blog or grid
 
-	// Crop and size
-	$size = themeblvd_set_att( 'size', themeblvd_grid_thumb_class( $columns ) );
-	$crop = $size;
-
-	if ( $args['crop'] ) {
-		$crop = $args['crop'];
+	if ( ! $context ) {
+		if ( is_home() || is_archive() || is_page_template('template_blog.php') ) {
+			$context = 'blog';
+		}
 	}
 
-	$crop = themeblvd_set_att( 'crop', $crop );
+	if ( ! $context ) {
+		$context = 'grid';
+	}
+
+	// Max width of the container holding this post grid
+	$max_width = $args['max_width'];
+
+	if ( $max_width ) {
+		$max_width = (1/$columns) * $args['max_width'];
+		$max_width = intval(round($max_width));
+	} else {
+		$max_width = themeblvd_get_max_width(array('context' => $context, 'cols' => $columns));
+	}
+
+	// What template part should we include?
+	$part = $args['part']; // This should be set if we called themeblvd_the_post_grid()
+
+	if ( ! $part ) {
+
+		if ( $context == 'blog' ) {
+
+			$part = 'blog';
+
+		} else if ( $context == 'grid' ) {
+
+			if ( $paginated ) {
+				$part = 'grid_paginated';
+			} else {
+				$part = 'grid';
+			}
+
+		}
+	}
+
+	// Set atts to pass to template parts
+	if ( $context == 'grid' && ! is_page_template('template_grid.php') ) {
+
+		// Featured images
+		if ( $args['thumbs'] == 'default' || ! $args['thumbs'] ) {
+			$thumbs = themeblvd_get_option('grid_thumbs', null, 'full');
+		} else {
+			$thumbs = $args['thumbs'];
+		}
+
+		if ( $thumbs == 'hide' ) {
+			themeblvd_set_att( 'thumbs', false );
+		} else {
+			themeblvd_set_att( 'thumbs', $thumbs );
+		}
+
+		// Meta
+		if ( $args['meta'] == 'default' ) {
+			$meta = themeblvd_get_option('grid_meta', null, 'show');
+		} else {
+			$meta = $args['meta'];
+		}
+
+		if ( $meta == 'show' ) {
+			themeblvd_set_att( 'show_meta', true );
+		} else {
+			themeblvd_set_att( 'show_meta', false );
+		}
+
+		// Meta
+		if ( $args['excerpt'] == 'default' ) {
+			$excerpt = themeblvd_get_option('grid_excerpt', null, 'show');
+		} else {
+			$excerpt = $args['excerpt'];
+		}
+
+		if ( $excerpt == 'show' ) {
+			themeblvd_set_att( 'excerpt', true );
+		} else {
+			themeblvd_set_att( 'excerpt', false );
+		}
+
+		// Read More Link or Button
+		if ( $args['more'] == 'default' ) {
+			themeblvd_set_att( 'more', themeblvd_get_option('grid_more', null, 'text') );
+		} else {
+			themeblvd_set_att( 'more', $args['more'] );
+		}
+
+		// Read More text
+		if ( $args['more_text'] == 'default' ) {
+			themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, 'text') );
+		} else {
+			themeblvd_set_att( 'more_text', $args['more_text'] );
+		}
+
+		// Grid class
+		$class = $size = sprintf( 'col %s', themeblvd_grid_class(intval($columns)) );
+
+		if ( themeblvd_get_att('thumbs') ) {
+			$class .= ' has-thumb';
+		}
+
+		if ( themeblvd_get_att('show_meta') ) {
+			$class .= ' has-meta';
+		}
+
+		if ( themeblvd_get_att('excerpt') ) {
+			$class .= ' has-excerpt';
+		}
+
+		if ( themeblvd_get_att('more') == 'button' || themeblvd_get_att('more') == 'text' ) {
+			$class .= ' has-more';
+		}
+
+		themeblvd_set_att('class', $class);
+		themeblvd_set_att('size', $class); // backwards compat
+
+		if ( $args['crop'] ) {
+			$crop = $args['crop'];
+		} else {
+			$crop = 'tb_grid';
+		}
+
+		themeblvd_set_att( 'crop', $crop );
+
+		$crop_atts = themeblvd_get_image_sizes($crop);
+		themeblvd_set_att( 'crop_w', $crop_atts['width'] );
+		themeblvd_set_att( 'crop_h', $crop_atts['height'] );
+
+	}
 
 	if ( $args['wp_query'] ) {
 
@@ -350,10 +537,25 @@ function themeblvd_post_grid( $args = array() ){
 	}
 
 	// Start output
-	$class = 'post_grid';
+	if ( $context == 'blog' ) {
 
-	if ( $paginated ) {
-		$class .= ' post_grid_paginated';
+		$class = 'blog_grid themeblvd-gallery';
+
+		if ( $paginated ) {
+			$class .= ' paginated';
+		}
+
+	} else {
+
+		$class = 'post_grid themeblvd-gallery';
+
+		if ( $paginated ) {
+			$class .= ' post_grid_paginated';
+		}
+	}
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
 	}
 
 	echo '<div class="'.$class.'">';
@@ -371,7 +573,7 @@ function themeblvd_post_grid( $args = array() ){
 
 		do_action( 'themeblvd_post_grid_before_loop', $args );
 
-		echo '<div class="'.$args['class'].'">'; // default is .grid-wrap, [post_grid] shortcode will override
+		echo '<div class="'.$context.'-wrap">';
 
 		$counter = themeblvd_set_att( 'counter', 1 );
 		$total = $posts->post_count;
@@ -447,6 +649,18 @@ function themeblvd_the_post_grid() {
 		'wp_query' 	=> true
 	));
 
+	if ( is_archive() || is_home() ) {
+		$args['context'] = 'blog';
+	}
+
+	if ( is_archive() ) {
+		$args['part'] = 'archive';
+	} else if ( is_home() ) {
+		$args['parts'] = 'index';
+	}
+
+	$args = apply_filters( 'themeblvd_the_post_grid_args', $args );
+
 	themeblvd_post_grid( $args );
 
 }
@@ -479,7 +693,7 @@ function themeblvd_get_grid_slider( $args ) {
     	return __('Error: No query supplied.', 'themeblvd');
     }
 
-	$class = 'tb-grid-slider tb-block-slider post_grid flexslider';
+	$class = 'tb-grid-slider tb-block-slider post_grid';
 
 	if ( $args['title'] ) {
 		$class .= ' has-title';
@@ -495,7 +709,9 @@ function themeblvd_get_grid_slider( $args ) {
 		$output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
 	}
 
-	$output .= '<div class="tb-grid-slider-inner tb-block-slider-inner">';
+	$output .= '<div class="tb-grid-slider-inner tb-block-slider-inner flexslider">';
+
+	$output .= themeblvd_get_loader();
 
 	// Get posts
 	$query_args = apply_filters( 'themeblvd_post_slider_args', $args['query'], $args, 'grid' );
@@ -733,7 +949,7 @@ function themeblvd_get_post_slider( $args ) {
 							break;
 						case 'thumbnail' :
 							$image['link'] = 'image';
-							$full = wp_get_attachment_image_src( $featured_image_id, 'full' );
+							$full = wp_get_attachment_image_src( $featured_image_id, 'tb_x_large' );
 							$image['link_url'] = $full[0];
 							break;
 						case 'image' :
@@ -783,4 +999,142 @@ function themeblvd_get_post_slider( $args ) {
  */
 function themeblvd_post_slider( $args ) {
 	echo themeblvd_get_post_slider( $args );
+}
+
+/**
+ * Get Mini Post List
+ *
+ * @since 2.1.0
+ *
+ * @param string $query Query params and any other options
+ * @param string|bool $thumb Thumbnail display size (not image crop) - small, smaller, smallest, or FALSE
+ * @param boolean $meta Show meta info or not
+ * @return string $output HTML to output
+ */
+function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
+
+	$class = 'tb-mini-post-list';
+
+	if ( $thumb && $thumb !== 'hide' ) {
+		$class .= ' thumb-'.$thumb;
+		themeblvd_set_att('thumbs', true);
+	} else {
+		$class .= ' thumb-hide';
+		themeblvd_set_att('thumbs', false);
+	}
+
+	if ( $meta ) {
+		themeblvd_set_att('show_meta', true);
+	} else {
+		themeblvd_set_att('show_meta', false);
+	}
+
+	$args = array(
+		'display'	=> 'mini-list',
+		'context'	=> 'mini-list',
+		'part'		=> 'list_mini',	// by default, content-mini-list.php
+		'class'		=> $class
+	);
+
+	if ( is_string($query) ) {
+		$args['query'] = str_replace('numberposts', 'posts_per_page', $query);
+	} else {
+		$args = array_merge( $args, $query );
+	}
+
+	ob_start();
+	themeblvd_post_list($args);
+	return apply_filters( 'themeblvd_mini_post_list', ob_get_clean(), $query, $thumb, $meta );
+}
+
+/**
+ * Display Mini Post List
+ *
+ * @since 2.1.0
+ *
+ * @param string $query Query params and any other options
+ * @param string|bool $thumb Thumbnail display size (not image crop) - small, smaller, smallest, or FALSE
+ * @param boolean $meta Show meta info or not
+ * @return string $output HTML to output
+ */
+function themeblvd_mini_post_list( $query = '', $thumb = 'smaller', $meta = true ) {
+	echo themeblvd_get_mini_post_list( $query, $thumb, $meta );
+}
+
+/**
+ * Get Mini Post Grid
+ *
+ * @since 2.1.0
+ *
+ * @param
+ * @return string $output HTML to output
+ */
+function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
+
+	if ( $gallery ) {
+
+		themeblvd_set_att('gallery', true);
+		$query = array();
+		$pattern = get_shortcode_regex();
+
+		if ( preg_match( "/$pattern/s", $gallery, $match ) && 'gallery' == $match[2] ) {
+
+			$atts = shortcode_parse_atts( $match[3] );
+
+			if ( ! empty( $atts['ids'] ) ) {
+				$query = array(
+					'post_type'			=> 'attachment',
+					'post_status'		=> 'inherit',
+					'post__in' 			=> explode( ',', $atts['ids'] ),
+					'orderby'           => 'post__in',
+					'posts_per_page' 	=> -1
+				);
+			} else {
+				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', __('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'themeblvd_front'));
+			}
+
+		} else {
+			return sprintf('<div class="alert alert-warning">%s</div>', __('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'themeblvd_front'));
+		}
+
+	} else {
+
+		themeblvd_set_att('gallery', false);
+
+		if ( is_string($query) ) {
+			$query = str_replace('numberposts', 'posts_per_page', $query); // Backwards compat
+			$query .= '&meta_key=_thumbnail_id'; // Only query posts with featured image
+		} else {
+			$query['meta_key'] = '_thumbnail_id';
+		}
+
+	}
+
+	$args = array(
+		'display'	=> 'mini-grid',
+		'context'	=> 'mini-grid',
+		'part'		=> 'grid_mini',	// by default, content-mini-list.php
+		'class'		=> sprintf('tb-mini-post-grid clearfix themeblvd-gallery thumb-%s thumb-align-%s', $thumb, $align)
+	);
+
+	if ( $gallery || is_string($query) ) {
+		$args['query'] = $query;
+	} else {
+		$args = array_merge( $args, $query );
+	}
+
+	ob_start();
+	themeblvd_post_list($args); // using *_list() because not true grid with cols and rows
+	return apply_filters( 'themeblvd_mini_post_grid', ob_get_clean(), $align, $thumb, $gallery );
+}
+
+/**
+ * Display Mini Post Grid
+ *
+ * @since 2.1.0
+ *
+ * @param array $options Options for many post grid
+ */
+function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
+	echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
 }

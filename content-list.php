@@ -2,21 +2,65 @@
 /**
  * The default template for displaying content in post list.
  */
-global $more; $more = 0;
+$class  = themeblvd_get_att('thumbs') ? 'has-thumbnail' : ''; // Whether thumb displays, not if it has one
+$class .= themeblvd_get_att('show_meta') ? ' has-meta' : '';
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article <?php post_class($class); ?>>
+
+	<?php if ( themeblvd_get_att('thumbs') ) : ?>
+		<div class="thumb-wrapper">
+			<?php themeblvd_the_post_thumbnail('tb_thumb'); ?>
+		</div><!-- .thumb-wrapper (end) -->
+	<?php endif; ?>
+
 	<header class="entry-header">
-		<h1 class="entry-title entry-title-with-meta">
-			<?php themeblvd_the_title(); ?>
-		</h1>
-		<div class="meta-wrapper">
-			<?php themeblvd_blog_meta(); ?>
-		</div><!-- .meta-wrapper (end) -->
+
+		<?php if ( ! has_post_format('quote') && ! has_post_format('aside') ) : ?>
+			<h2 class="entry-title"><?php themeblvd_the_title(); ?></h2>
+		<?php endif; ?>
+
+		<?php if ( themeblvd_get_att('show_meta') ) : ?>
+			<div class="meta-wrapper">
+				<?php themeblvd_blog_meta(); ?>
+			</div><!-- .meta-wrapper (end) -->
+		<?php endif; ?>
+
 	</header><!-- .entry-header (end) -->
+
 	<div class="entry-content">
-		<?php themeblvd_the_post_thumbnail( themeblvd_get_att( 'location' ), themeblvd_get_att( 'size' ) ); ?>
-		<?php themeblvd_blog_content( themeblvd_get_att( 'content' ) ); ?>
-		<?php themeblvd_blog_tags(); ?>
-		<div class="clear"></div>
+
+		<?php if ( has_post_format('gallery') ) : ?>
+
+			<div class="featured-item gallery">
+				<?php themeblvd_mini_gallery_slider(); ?>
+			</div><!-- .gallery (end) -->
+
+		<?php elseif ( has_post_format('video') ) : ?>
+
+			<div class="featured-item video">
+				<?php themeblvd_content_video(); ?>
+			</div><!-- .video (end) -->
+
+		<?php elseif ( has_post_format('audio') ) : ?>
+
+			<div class="featured-item audio">
+				<?php themeblvd_content_audio(false); ?>
+			</div><!-- .audio (end) -->
+
+		<?php endif; ?>
+
+		<?php if ( has_post_format('quote') ) : ?>
+			<?php themeblvd_content_quote(); ?>
+		<?php else : ?>
+			<?php the_excerpt(); ?>
+		<?php endif; ?>
+
+		<?php if ( themeblvd_get_att('more') == 'button' ) : ?>
+			<?php echo themeblvd_button( themeblvd_get_att('more_text'), get_permalink( get_the_ID() ), 'default', '_self', 'small', 'read-more', get_the_title( get_the_ID() ) ); ?>
+		<?php elseif ( themeblvd_get_att('more') == 'text' ) : ?>
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php echo themeblvd_get_att('more_text'); ?></a>
+		<?php endif; ?>
+
 	</div><!-- .entry-content (end) -->
+
 </article><!-- #post-<?php the_ID(); ?> -->

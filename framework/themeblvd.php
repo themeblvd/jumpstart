@@ -28,6 +28,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/grid.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/includes/media.php' );
 
 // Filters
 add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
@@ -109,7 +110,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/layout.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/loop.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/media.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/post-formats.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/stats.php' );
@@ -138,9 +138,12 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'themeblvd_column_class', 'themeblvd_column_class_legacy' );
 	add_filter( 'walker_nav_menu_start_el', 'themeblvd_nav_menu_start_el', 10, 4 );
 
-	// Post Formats (if enabled)
+	// Post Formats (if using)
+	add_filter( 'the_content', 'themeblvd_content_format_audio', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_gallery', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
+	add_filter( 'the_content', 'themeblvd_content_format_quote', 7 );
+	add_filter( 'the_content', 'themeblvd_content_format_video', 7 );
 
 	// Apply initial hooks
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
@@ -193,7 +196,8 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_share', 10, 0 );
 	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_cats', 10, 0 );
 	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_tags', 10, 0 );
-	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 5 );
+	add_action( 'themeblvd_grid_meta', 'themeblvd_grid_meta_default' );
+	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 2 );
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
 
 	// WordPress Multisite Signup

@@ -176,7 +176,7 @@ function themeblvd_sanitize_upload( $input ) {
 
 		if ( isset( $input['id'] ) ) {
 			$output['id'] = intval( $input['id'] );
-			$full = wp_get_attachment_image_src( $output['id'], 'full' );
+			$full = wp_get_attachment_image_src( $output['id'], 'tb_x_large' );
 			$output['full'] = $full[0];
 		}
 
@@ -688,7 +688,7 @@ function themeblvd_sanitize_slider( $input ) {
 			$output[$item_id] = array();
 
 			// Crop size
-			$output[$item_id]['crop'] = wp_kses( $item['crop'], array() );
+			$output[$item_id]['crop'] = wp_kses( $input[$item_id]['crop'], array() );
 
 			// Attachment ID
 			$output[$item_id]['id'] = intval( $item['id'] );
@@ -703,7 +703,7 @@ function themeblvd_sanitize_slider( $input ) {
 			$output[$item_id]['height'] = $attachment[2];
 
 			// Thumbnail
-			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], apply_filters('themeblvd_simple_slider_thumb_crop', 'square_small') );
+			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
 			$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
 
 			// Slide info
@@ -751,7 +751,7 @@ function themeblvd_sanitize_logos( $input ) {
 			$output[$item_id]['height'] = $attachment[2];
 
 			// Thumbnail
-			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], apply_filters('themeblvd_simple_slider_thumb_crop', 'square_small') );
+			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
 			$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
 
 			// Partner Name, description, and Link

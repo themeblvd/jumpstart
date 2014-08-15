@@ -588,7 +588,30 @@ if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_meta_default() {
-	echo themeblvd_get_meta();
+
+	$args = apply_filters('themeblvd_blog_meta_args', array(
+		'include' => array('format', 'time', 'author', 'comments')
+	));
+
+	echo themeblvd_get_meta($args);
+}
+endif;
+
+if ( !function_exists( 'themeblvd_grid_meta_default' ) ) :
+/**
+ * Default display for action: themeblvd_grid_meta
+ *
+ * @since 2.0.0
+ */
+function themeblvd_grid_meta_default() {
+
+	$args = apply_filters('themeblvd_grid_meta_args', array(
+		'include'	=> array('time', 'author', 'comments'),
+		'comments'	=> 'mini',
+		//'time'	=> 'ago'
+	));
+
+	echo themeblvd_get_meta($args);
 }
 endif;
 
@@ -616,8 +639,8 @@ if ( !function_exists( 'themeblvd_the_post_thumbnail_default' ) ) :
  * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
  * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
  */
-function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true ) {
-	echo themeblvd_get_post_thumbnail( $location, $size, $link, $allow_filters );
+function themeblvd_the_post_thumbnail_default( $size = '', $args = array() ) {
+	echo themeblvd_get_post_thumbnail( $size, $args );
 }
 endif;
 

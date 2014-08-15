@@ -58,10 +58,6 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function add() {
-
-		$this->args = apply_filters( 'themeblvd_meta_args_'.$this->id, $this->args );
-		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
-
 		foreach ( $this->args['page'] as $page ) {
     		add_meta_box(
 		        $this->id,
@@ -89,9 +85,6 @@ class Theme_Blvd_Meta_Box {
     		echo 'Options framework not found.';
     		return;
     	}
-
-    	$this->args = apply_filters( 'themeblvd_meta_args_'.$this->id, $this->args );
-		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
 
     	// Start content
     	echo '<div class="tb-meta-box">';
@@ -139,8 +132,6 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function save( $post_id ) {
-
-		$this->options = apply_filters( 'themeblvd_meta_options_'.$this->id, $this->options );
 
 		if ( isset( $_POST['themeblvd_meta'][$this->id] ) ) {
 			$input = $_POST['themeblvd_meta'][$this->id];

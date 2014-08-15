@@ -137,7 +137,8 @@ function themeblvd_setup() {
 		'meta' => array(
 			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
 			'page_options'		=> true,			// Meta box for basic page options
-			'post_options'		=> true				// Meta box for basic post options
+			'post_options'		=> true,			// Meta box for basic post options
+			'pto'				=> true				// Meta box for "Post Grid/List" page template
 		),
 		'featured' => array(
 			'style'				=> false,			// Whether current theme has special styling for featured area
@@ -367,7 +368,7 @@ function themeblvd_add_theme_support() {
 	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list') );
 
 	// Post Formats
-	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery') );
+	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status') );
 
 }
 
@@ -488,8 +489,8 @@ function themeblvd_sidebar_layouts() {
 	// this is used to determine how small the viewport
 	// is before stacking the columns. By using "md"
 	// we are having columns drop responsively at the
-	// 992px or less (i.e. tablet/mobile viewports).
-	$stack = 'md';
+	// 992px or less (i.e. tablet viewport).
+	$stack = apply_filters( 'themeblvd_sidebar_layout_stack', 'md' );
 
 	// ... And then because old versions of IE are horrible,
 	// they do not accurately know the viewport size.
@@ -581,7 +582,7 @@ function themeblvd_get_column_class( $column ) {
 	}
 
 	$layouts = themeblvd_sidebar_layouts();
-	$layout = themeblvd_config( 'sidebar_layout' );
+	$layout = themeblvd_config('sidebar_layout');
 
 	if ( isset( $layouts[$layout]['columns'][$column] ) ) {
 
@@ -592,10 +593,10 @@ function themeblvd_get_column_class( $column ) {
 		if ( in_array( $layout, array('sidebar_left', 'double_sidebar', 'double_sidebar_left' )) ) {
 
 			// What is the current stack?
-			$stack = 'sm';
+			$stack = 'xs';
 
-			if ( strpos($class, 'xs') !== false ) {
-				$stack = 'sx';
+			if ( strpos($class, 'sm') !== false ) {
+				$stack = 'sm';
 			} else if( strpos($class, 'md') !== false ) {
 				$stack = 'md';
 			} else if( strpos($class, 'lg') !== false ) {
@@ -1295,7 +1296,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 			foreach ( $registered as $size ) {
 
 				// Skip some sizes
-				if ( in_array( $size, array('thumbnail', 'square_small', 'square_smaller', 'square_smallest' ) ) ) {
+				if ( in_array( $size, array('thumbnail', 'tb_thumb' ) ) ) {
 					continue;
 				}
 
@@ -1538,119 +1539,6 @@ function themeblvd_stats() {
 function themeblvd_load_theme_textdomain() {
 	load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
 	load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
-}
-
-/**
- * Get Image Sizes
- *
- * By having this in a separate function, hopefully
- * it can be extended upon better. If any plugin or
- * other feature of the framework requires these
- * image sizes, they can grab 'em.
- *
- * @since 2.2.0
- */
-function themeblvd_get_image_sizes() {
-
-	global $content_width;
-
-	// Content Width
-	$content_width = apply_filters( 'themeblvd_content_width', 1170 ); // based on 1200px container w/15px gutters
-
-	// Crop sizes
-	$sizes = array(
-		'tb_large' => array(
-			'name' 		=> __( 'TB Large', 'themeblvd' ),
-			'width' 	=> $content_width,
-			'height' 	=> 9999,
-			'crop' 		=> false
-		),
-		'tb_medium' => array(
-			'name' 		=> __( 'TB Medium', 'themeblvd' ),
-			'width' 	=> 800,
-			'height'	=> 9999,
-			'crop' 		=> false
-		),
-		'tb_small' => array(
-			'name' 		=> __( 'TB Small', 'themeblvd' ),
-			'width' 	=> 195,
-			'height' 	=> 195,
-			'crop' 		=> false
-		),
-		'square_small' => array(
-			'name' 		=> __( 'Small Square', 'themeblvd' ),
-			'width' 	=> 130,
-			'height' 	=> 130,
-			'crop' 		=> true
-		),
-		'square_smaller' => array(
-			'name' 		=> __( 'Smaller Square', 'themeblvd' ),
-			'width' 	=> 70,
-			'height' 	=> 70,
-			'crop' 		=> true
-		),
-		'square_smallest' => array(
-			'name' 		=> __( 'Smallest Square', 'themeblvd' ),
-			'width' 	=> 45,
-			'height' 	=> 45,
-			'crop' 		=> true
-		),
-		'slider-large' => array(
-			'name' 		=> __( 'Slider Full Width', 'themeblvd' ),
-			'width' 	=> 1170, // based on 1200px container w/15px gutters
-			'height' 	=> 435,
-			'crop' 		=> true
-		),
-		'slider-staged' => array(
-			'name' 		=> __( 'Slider Staged', 'themeblvd' ),
-			'width' 	=> 690,
-			'height' 	=> 415,
-			'crop' 		=> true
-		),
-		'grid_fifth_1' => array(
-			'name' 		=> __( '1/5 Column of Grid', 'themeblvd' ),
-			'width' 	=> 240,
-			'height' 	=> 150,
-			'crop' 		=> true
-		),
-		'grid_3' => array(
-			'name' 		=> __( '1/4 Column of Grid', 'themeblvd' ),
-			'width' 	=> 300,
-			'height' 	=> 185,
-			'crop' 		=> true
-		),
-		'grid_4' => array(
-			'name' 		=> __( '1/3 Column of Grid', 'themeblvd' ),
-			'width' 	=> 400,
-			'height' 	=> 250,
-			'crop' 		=> true
-		),
-		'grid_6' => array(
-			'name' 		=> __( '1/2 Column of Grid', 'themeblvd' ),
-			'width' 	=> 600,
-			'height' 	=> 375,
-			'crop' 		=> true
-		)
-	);
-
-	return apply_filters( 'themeblvd_image_sizes', $sizes );
-}
-
-/**
- * Register Image Sizes
- *
- * @since 2.1.0
- */
-function themeblvd_add_image_sizes() {
-
-	// Get image sizes
-	$sizes = themeblvd_get_image_sizes();
-
-	// Add image sizes
-	foreach ( $sizes as $size => $atts ) {
-		add_image_size( $size, $atts['width'], $atts['height'], $atts['crop'] );
-	}
-
 }
 
 /**
@@ -2053,6 +1941,7 @@ function themeblvd_get_share_sources() {
 		'facebook' 		=> __('Facebook', 'themeblvd'),
 		'google' 		=> __('Google+', 'themeblvd'),
 		'linkedin' 		=> __('Linkedin', 'themeblvd'),
+		// 'wordpress' 	=> __('Press This', 'themeblvd'),
 		'pinterest' 	=> __('Pinterest', 'themeblvd'),
 		'reddit' 		=> __('Reddit', 'themeblvd'),
 		'tumblr' 		=> __('Tumblr', 'themeblvd'),
@@ -2117,6 +2006,13 @@ function themeblvd_get_share_patterns() {
 			'encode'		=> true,
 			'encode_urls' 	=> false
 		)
+		/*
+		'wordpress' => array(
+			'pattern'		=> '[site_url]/wp-admin/press-this.php?u=[permalink]&amp;t=[title]&amp;v=4',
+			'encode'		=> true,
+			'encode_urls' 	=> true
+		)
+		*/
 	);
 
 	return apply_filters( 'themeblvd_share_patterns', $patterns );

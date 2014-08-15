@@ -496,6 +496,8 @@ function themeblvd_get_logos( $args ) {
 
     $output .= '<div class="tb-logos-inner tb-block-slider-inner">';
 
+    $output .= themeblvd_get_loader();
+
     if ( $args['display'] == 'slider' && $args['nav'] ) {
         $output .= themeblvd_get_slider_controls();
     }
@@ -1127,12 +1129,20 @@ function themeblvd_get_testimonial_slider( $args ) {
     $defaults = array(
         'testimonials'  => array(),     // The testimonials, each formatted for themeblvd_get_testimonial
         'title'         => '',          // Title for unit
-        'fx'            => 'slide',     // Slide transition effect
+        'fx'            => '',          // Slide transition effect (slide or fade)
         'timeout'       => '3',         // Secods in between transitions, can be 0 for no auto rotation
         'nav'           => '1',         // Whether to show slider navigation
         'display'       => 'standard'   // How to display the slider, showcase or standard
     );
     $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['fx'] ) {
+        if ( $args['display'] == 'showcase' ) {
+            $args['fx'] = 'slide';
+        } else {
+            $args['fx'] = 'fade';
+        }
+    }
 
     $class = sprintf( 'tb-testimonial-slider tb-block-slider %s flexslider', $args['display'] );
 
@@ -1151,6 +1161,8 @@ function themeblvd_get_testimonial_slider( $args ) {
     }
 
     $output .= '<div class="tb-testimonial-slider tb-block-slider-inner">';
+
+    $output .= themeblvd_get_loader();
 
     if ( $args['nav'] ) {
         $output .= themeblvd_get_slider_controls();

@@ -22,17 +22,39 @@
 	</header><!-- .entry-header -->
 
 	<?php if ( has_post_format('gallery') ) : ?>
-		<?php themeblvd_gallery_slider(); ?>
-	<?php elseif ( ! has_post_format('video') ) : ?>
-		<?php themeblvd_the_post_thumbnail( themeblvd_get_att('location'), themeblvd_get_att('size') ); ?>
+
+		<div class="featured-item gallery">
+			<?php themeblvd_gallery_slider(); ?>
+		</div><!-- .gallery (end) -->
+
+	<?php elseif ( has_post_format('video') ) : ?>
+
+		<div class="featured-item video">
+			<?php themeblvd_content_video(); ?>
+		</div><!-- .video (end) -->
+
+	<?php elseif ( has_post_format('audio') ) : ?>
+
+		<div class="featured-item audio">
+			<?php themeblvd_content_audio(); ?>
+		</div><!-- .audio (end) -->
+
+	<?php elseif ( has_post_format('quote') ) : ?>
+
+		<div class="featured-item quote">
+			<?php themeblvd_content_quote(); ?>
+		</div><!-- .quote (end) -->
+
+	<?php elseif ( has_post_thumbnail() && themeblvd_get_att('thumbs') ) : ?>
+
+		<div class="featured-item">
+			<?php themeblvd_the_post_thumbnail(); ?>
+		</div><!-- .featured-item(end) -->
+
 	<?php endif; ?>
 
 	<div class="entry-content">
-		<?php if ( has_post_format('quote') || has_post_format('aside') || has_post_format('chat') ) : ?>
-			<?php themeblvd_blog_content('content'); // Force content ?>
-		<?php else : ?>
-			<?php themeblvd_blog_content( themeblvd_get_att('content') ); // Abide by relevant excerpt vs content theme option ?>
-		<?php endif; ?>
+		<?php themeblvd_blog_content( themeblvd_get_att('content') ); // Abide by relevant excerpt vs content theme option ?>
 	</div><!-- .entry-content -->
 
 	<?php if ( themeblvd_get_att('show_sub_meta') ) : ?>

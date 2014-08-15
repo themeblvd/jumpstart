@@ -172,13 +172,13 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
-	// Search popup
+	// Floater popup
 	// ---------------------------------------------------------
 
-	$('.tb-search-popup .search-trigger').on('click', function(){
+	$('.tb-floater .floater-trigger').on('click', function(){
 
 		var $el = $(this),
-			$popup = $el.closest('.tb-search-popup').find('.search-holder');
+			$popup = $el.closest('.tb-floater').find('.floater-popup');
 
 		if ( $el.hasClass('open') ) {
 			$el.stop().removeClass('open').html('<i class="fa fa-'+$el.data('open')+'"></i>');
@@ -221,6 +221,17 @@ jQuery(document).ready(function($) {
 		});
 
 	}
+
+	// ---------------------------------------------------------
+	// Social Share Buttons
+	// ---------------------------------------------------------
+
+	$('.tb-share-button.popup').on('click', function(){
+		if ( ! window.open( $(this).attr('href'), '', 'height=320, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no' ) ) {
+			document.location.href = $(this).attr('href');
+		}
+		return false;
+	});
 
 	// ---------------------------------------------------------
 	// Gallery Shortcode Integration
@@ -404,11 +415,12 @@ jQuery(document).ready(function($) {
 
 	$('.tb-block-slider').each(function(){
 
-		var $slider = $(this),
+		var $slider_wrap = $(this),
+			$slider = $slider_wrap.find('.tb-block-slider-inner'),
 			fx = 'slide',
-			speed = $slider.data('timeout'),
+			speed = $slider_wrap.data('timeout'),
 			//slideshow = false,
-			nav = $slider.data('nav'),
+			nav = $slider_wrap.data('nav'),
 			pause = false;
 
 		if ( $slider.data('fx') ) {
@@ -432,17 +444,19 @@ jQuery(document).ready(function($) {
 
 		$window.load(function() {
 			$slider.flexslider({
+				// smoothHeight: true,
 				animation: fx,
 				easing: 'swing',
 				slideshowSpeed: speed,
 				animationSpeed: '1000',
-				//slideshow: slideshow,
+				// slideshow: slideshow,
 				directionNav: false,	// Using custom slider controls outputted with slider markup
 				controlNav: false,
 				pauseOnHover: pause,	// If nav exists, replace with manual action below
 				pauseOnAction: false, 	// Replaced with manual action below
 				start: function(){
-					$slider.find('.tb-slider-arrows').fadeIn(100);
+					$slider_wrap.find('.tb-slider-arrows').fadeIn(100);
+					$slider_wrap.find('.tb-loader').fadeOut(100);
 				}
 			});
 		});
@@ -455,7 +469,7 @@ jQuery(document).ready(function($) {
 			});
 
 			// Custom slider controls
-			$slider.find('.tb-slider-arrows a').on('click', function(){
+			$slider_wrap.find('.tb-slider-arrows a').on('click', function(){
 
 				if ( $(this).hasClass('next') ) {
 					$slider.data('flexslider').flexslider('next');
@@ -803,7 +817,7 @@ jQuery(document).ready(function($) {
 		}
 
 		// Tooltips
-		$('.tb-tooltip').tooltip();
+		$('.desktop .tb-tooltip').tooltip();
 
 	}
 

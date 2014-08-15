@@ -321,7 +321,7 @@ class Theme_Blvd_Query {
 
 		// If this isn't the Post List or Post Grid page
 		// template, get out of here.
-		if ( ! is_page_template('template_list.php') && ! is_page_template('template_grid.php') ) {
+		if ( ! is_page_template('template_list.php') && ! is_page_template('template_grid.php') && ! is_page_template('template_blog.php') ) {
 			return;
 		}
 
@@ -331,6 +331,12 @@ class Theme_Blvd_Query {
 			$type = 'list';
 		} else if ( is_page_template('template_grid.php') ) {
 			$type = 'grid';
+		} else if ( is_page_template('template_blog.php') ) {
+			if ( themeblvd_is_grid_mode() ) {
+				$type = 'grid';
+			} else {
+				$type = 'list';
+			}
 		}
 
 		// Start building query args

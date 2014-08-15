@@ -152,8 +152,12 @@ function themeblvd_get_posts_args( $options, $type ) {
 	// Custom query
 	if ( ( $source == 'query' && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
 
+		$query = $options['query'];
+
 		// Convert string to query array
-		$query = wp_parse_args( htmlspecialchars_decode( $options['query'] ) );
+		if ( ! is_array( $query ) ) {
+			$query = wp_parse_args( htmlspecialchars_decode($query) );
+		}
 
 		// Force posts per page on grids
 		if( $type == 'grid' && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
@@ -267,6 +271,14 @@ function themeblvd_get_posts_args( $options, $type ) {
 
 		if ( ! empty( $options['offset'] ) ) {
 			$query['offset'] = intval( $options['offset'] );
+		}
+
+		if ( ! empty( $options['meta_key'] ) ) {
+			$query['meta_key'] = $options['meta_key'];
+		}
+
+		if ( ! empty( $options['meta_value'] ) ) {
+			$query['meta_value'] = $options['meta_value'];
 		}
 
 	}
@@ -1353,4 +1365,90 @@ function themeblvd_post_class( $class ) {
 	}
 
 	return $class;
+}
+
+/**
+ * Get the the length of time since a post was published
+ * @props bbPress
+ *
+ * @since 2.5.0
+ *
+ * @param int $post_id ID of post
+ * @return string $output Final time ago string
+ */
+function themeblvd_get_time_ago( $post_id = 0 ) {
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$date = get_post_time('G', true, $post_id);
+
+	$locals = apply_filters('themeblvd_time_ago_locals', array(
+		'year' 		=> __('year', 'themeblvd_front'),
+		'years' 	=> __('years', 'themeblvd_front'),
+		'month' 	=> __('month', 'themeblvd_front'),
+		'months' 	=> __('months', 'themeblvd_front'),
+		'week' 		=> __('week', 'themeblvd_front'),
+		'weeks' 	=> __('weeks', 'themeblvd_front'),
+		'day' 		=> __('day', 'themeblvd_front'),
+		'days' 		=> __('days', 'themeblvd_front'),
+		'hour' 		=> __('hour', 'themeblvd_front'),
+		'hours' 	=> __('hours', 'themeblvd_front'),
+		'minute' 	=> __('minute', 'themeblvd_front'),
+		'minutes' 	=> __('minutes', 'themeblvd_front'),
+		'second' 	=> __('second', 'themeblvd_front'),
+		'seconds' 	=> __('seconds', 'themeblvd_front'),
+		'ago'		=> __('ago', 'themeblvd_front'),
+		'error' 	=> __('sometime', 'themeblvd_front')
+	));
+
+	// Array of time period chunks
+	$chunks = array(
+		array( 60 * 60 * 24 * 365 , $locals['year'], $locals['years'] ),
+		array( 60 * 60 * 24 * 30 , $locals['month'], $locals['months'] ),
+		array( 60 * 60 * 24 * 7, $locals['week'], $locals['weeks'] ),
+		array( 60 * 60 * 24 , $locals['day'], $locals['days'] ),
+		array( 60 * 60 , $locals['hour'], $locals['hours'] ),
+		array( 60 , $locals['minute'], $locals['minutes'] ),
+		array( 1, $locals['second'], $locals['seconds'] )
+	);
+
+	if ( !is_numeric( $date ) ) {
+		$time_chunks = explode( ':', str_replace( ' ', ':', $date ) );
+		$date_chunks = explode( '-', str_replace( ' ', '-', $date ) );
+		$date = gmmktime( (int)$time_chunks[1], (int)$time_chunks[2], (int)$time_chunks[3], (int)$date_chunks[1], (int)$date_chunks[2], (int)$date_chunks[0] );
+	}
+
+	$current_time = current_time( 'mysql', $gmt = 0 );
+	$newer_date = strtotime( $current_time );
+
+	// Difference in seconds
+	$since = $newer_date - $date;
+
+	// Something went wrong with date calculation and we ended up with a negative date.
+	if ( 0 > $since ) {
+		return $locals['error'];
+	}
+
+	// Step one: the first chunk
+	for ( $i = 0, $j = count($chunks); $i < $j; $i++) {
+	$seconds = $chunks[$i][0];
+
+	// Finding the biggest chunk (if the chunk fits, break)
+	if ( ( $count = floor($since / $seconds) ) != 0 )
+		break;
+	}
+
+	// Set output var
+	$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
+
+
+	if ( !(int)trim($output) ){
+		$output = '0 ' . $locals['seconds'];
+	}
+
+	$output .= ' '.$locals['ago'];
+
+	return $output;
 }

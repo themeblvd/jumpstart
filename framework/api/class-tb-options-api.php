@@ -150,14 +150,12 @@ class Theme_Blvd_Options_API {
 	 *		- breadcrumbs
 	 *		- sidebar_layout
 	 *	- Footer
-	 *		- start_footer_cols
 	 *		- footer_setup
 	 *		- footer_col_1
 	 *		- footer_col_2
 	 *		- footer_col_3
 	 *		- footer_col_4
 	 *		- footer_col_5
-	 *		- end_footer_cols
 	 *		- footer_copyright
 	 *	- Extras
 	 *		- scroll_to_top
@@ -174,6 +172,17 @@ class Theme_Blvd_Options_API {
 	 *		- archive_title
 	 *		- archive_thumbs
 	 *		- archive_content
+	 *	- Post Lists
+	 *		- list_thumbs
+	 *		- list_meta
+	 *		- list_more
+	 *		- list_more_text
+	 *	- Post Grids
+	 *		- grid_thumbs
+	 *		- grid_meta
+	 *		- grid_excerpt
+	 *		- grid_more
+	 *		- grid_more_text
 	 *	- Lightbox
 	 *		- lightbox_animation
 	 *		- lightbox_mobile
@@ -407,6 +416,7 @@ class Theme_Blvd_Options_API {
 		/*--------------------------------*/
 
 		$content_options = array(
+
 			// Section: Single Posts
 			'single' => array(
 				'name' => __( 'Single Posts', 'themeblvd' ),
@@ -496,10 +506,11 @@ class Theme_Blvd_Options_API {
 					)
 				) // End single options
 			),
+
 			// Section: Primary Posts Display
 			'blog' => array(
-				'name' => __( 'Primary Posts Display', 'themeblvd' ),
-				'desc' => __( 'These settings apply to your primary posts page that you\'ve selected under Settings > Reading and <strong>all</strong> instances of the "Post List" page template. Note that if you want to use the post list page template for multiple pages with different categories on each, you can accomplish this on each specific page with custom fields - <a href="http://vimeo.com/32754998">Learn More</a>.', 'themeblvd' ),
+				'name' => __( 'Blog Display', 'themeblvd' ),
+				'desc' => __( 'These settings apply to your main theme index page, "posts page" that you\'ve selected under Settings > Reading, and <strong>all</strong> instances of the "Blog" page template. .', 'themeblvd' ),
 				'options' => array(
 					'blog_thumbs' => array(
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
@@ -516,7 +527,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __( 'Excerpts of Full Content', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
 						'id' 		=> 'blog_content',
-						'std' 		=> 'content',
+						'std' 		=> 'excerpt',
 						'type' 		=> 'radio',
 						'options' 	=> array(
 							'content'	=> __( 'Show full content', 'themeblvd' ),
@@ -532,10 +543,11 @@ class Theme_Blvd_Options_API {
 					)
 				) // End blog options
 			),
+
 			// Section: Archives
 			'archives' => array(
 				'name' => __( 'Archives', 'themeblvd' ),
-				'desc' => __( 'These settings apply any time you\'re viewing posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
+				'desc' => __( 'These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
 				'options' => array(
 					'archive_title' => array(
 						'name' 		=> __( 'Archive Page Titles', 'themeblvd' ),
@@ -566,8 +578,8 @@ class Theme_Blvd_Options_API {
 						'std' 		=> 'excerpt',
 						'type' 		=> 'radio',
 						'options' 	=> array(
-							'content'	=> __( 'Show full content.', 'themeblvd' ),
-							'excerpt' 	=> __( 'Show excerpt only.', 'themeblvd' )
+							'content'	=> __( 'Show full content', 'themeblvd' ),
+							'excerpt' 	=> __( 'Show excerpt only', 'themeblvd' )
 						)
 					),
 					'archive_posts_per_page' => array(
@@ -579,6 +591,135 @@ class Theme_Blvd_Options_API {
 					)
 				) // End archives options
 			),
+
+			// Section: Post Lists
+			'list' => array(
+				'name' => __( 'Post Lists', 'themeblvd' ),
+				'desc' => __( 'These settings allow you to setup the default configuration for using post lists.', 'themeblvd' ),
+				'options' => array(
+					'list_thumbs' => array(
+						'name' 		=> __( 'Featured Images', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether or not you want featured images to show for each post.', 'themeblvd' ),
+						'id' 		=> 'list_thumbs',
+						'std' 		=> 'full',
+						'type' 		=> 'radio',
+						'options' => array(
+							'full'		=> __( 'Show featured images', 'themeblvd_builder' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd_builder' )
+						)
+					),
+					'list_meta' => array(
+						'name' 		=> __( 'Meta Information', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'themeblvd' ),
+						'id' 		=> 'list_meta',
+						'std' 		=> 'show',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'show'		=> __( 'Show meta info', 'themeblvd' ),
+							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+						)
+					),
+					'list_sub_group_start' => array(
+						'type' 		=> 'subgroup_start',
+						'class'		=> 'show-hide-toggle'
+					),
+					'list_more' => array(
+						'name' 		=> __( 'Read More', 'themeblvd' ),
+						'desc' 		=> __( 'What would you like to show for each post to lead the reader to the full post?', 'themeblvd' ),
+						'id' 		=> 'list_more',
+						'std' 		=> 'text',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'text' 		=> __( 'Show text link', 'themeblvd' ),
+							'button'	=> __( 'Show button', 'themeblvd' ),
+							'none'		=> __( 'Show no button or text link', 'themeblvd' )
+						),
+						'class'		=> 'trigger'
+					),
+					'list_more_text' => array(
+						'name' 		=> __( 'Read More Text', 'themeblvd' ),
+						'desc' 		=> __( 'Enter the text you\'d like to use to lead the reader to the full post.', 'themeblvd' ),
+						'id' 		=> 'list_more_text',
+						'std' 		=> 'Read More <i class="fa fa-long-arrow-right"></i>',
+						'type' 		=> 'text',
+						'class'		=> 'hide receiver receiver-text receiver-button'
+					),
+					'list_sub_group_end' => array(
+						'type' 		=> 'subgroup_end'
+					)
+				) // End post list options
+			),
+
+			// Section: Post Grids
+			'grid' => array(
+				'name' => __( 'Post Grids', 'themeblvd' ),
+				'desc' => __( 'These settings allow you to setup the default configuration for using post grids.', 'themeblvd' ),
+				'options' => array(
+					'grid_thumbs' => array(
+						'name' 		=> __( 'Featured Images', 'themeblvd' ),
+						'desc' 		=> __( 'Choose whether or not you want featured images to show for each post.', 'themeblvd' ),
+						'id' 		=> 'grid_thumbs',
+						'std' 		=> 'full',
+						'type' 		=> 'radio',
+						'options' => array(
+							'full'		=> __( 'Show featured images', 'themeblvd_builder' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd_builder' )
+						)
+					),
+					'grid_meta' => array(
+						'name' 		=> __( 'Meta Information', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'themeblvd' ),
+						'id' 		=> 'grid_meta',
+						'std' 		=> 'show',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'show'		=> __( 'Show meta info', 'themeblvd' ),
+							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+						)
+					),
+					'grid_excerpt' => array(
+						'name' 		=> __( 'Excerpt', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to show the excerpt or not for each post.', 'themeblvd' ),
+						'id' 		=> 'grid_excerpt',
+						'std' 		=> 'show',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'show'		=> __( 'Show excerpts', 'themeblvd' ),
+							'hide' 		=> __( 'Hide excerpts', 'themeblvd' )
+						)
+					),
+					'grid_sub_group_start' => array(
+						'type' 		=> 'subgroup_start',
+						'class'		=> 'show-hide-toggle'
+					),
+					'grid_more' => array(
+						'name' 		=> __( 'Read More', 'themeblvd' ),
+						'desc' 		=> __( 'What would you like to show for each post to lead the reader to the full post?', 'themeblvd' ),
+						'id' 		=> 'grid_more',
+						'std' 		=> 'button',
+						'type' 		=> 'radio',
+						'options' 	=> array(
+							'text' 		=> __( 'Show text link', 'themeblvd' ),
+							'button'	=> __( 'Show button', 'themeblvd' ),
+							'none'		=> __( 'Show no button or text link', 'themeblvd' )
+						),
+						'class'		=> 'trigger'
+					),
+					'grid_more_text' => array(
+						'name' 		=> __( 'Read More Text', 'themeblvd' ),
+						'desc' 		=> __( 'Enter the text you\'d like to use to lead the reader to the full post.', 'themeblvd' ),
+						'id' 		=> 'grid_more_text',
+						'std' 		=> 'Read More',
+						'type' 		=> 'text',
+						'class'		=> 'hide receiver receiver-text receiver-button'
+					),
+					'grid_sub_group_end' => array(
+						'type' 		=> 'subgroup_end'
+					)
+				) // End post grid options
+			),
+
+			// Section: Lightbox
 			'lightbox' => array(
 				'name' => __( 'Lightbox', 'themeblvd' ),
 				'desc' => __( 'These settings apply to the built-in lightbox functionality, which utilizes the <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a> script.', 'themeblvd' ),
@@ -720,7 +861,7 @@ class Theme_Blvd_Options_API {
 		// Adjust some option descriptions if post formats are enabled.
 		if ( current_theme_supports('post-formats') ) {
 
-			$options = apply_filters('themeblvd_apply_post_format_warning', array('single_thumbs', 'blog_content', 'blog_thumbs', 'archive_content', 'archive_thumbs'));
+			$options = apply_filters('themeblvd_apply_post_format_warning', array('single_thumbs', 'blog_thumbs', 'archive_thumbs'));
 
 			foreach ( $options as $option_id ) {
 				$this->formatted_options[$option_id]['desc'] .= '<br><br><em>Note: The result of this option may vary with posts that are not the "standard" post format.</em>';

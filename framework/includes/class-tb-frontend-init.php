@@ -100,23 +100,30 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function set_template_parts() {
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
-			// content.php (standard blogroll)
+
+			// Blog (default content.php)
 			'archive'			=> '',					// Note: To set framework to grid mode, can change to 'archive_grid' or 'grid' to be compatible with archive.php
 			'index' 			=> '',					// Note: To set framework to grid mode, can change to 'index_grid' or 'grid' to be compatible with index.php
-			'list'				=> '',
-			'list_paginated'	=> '',
+			'blog'				=> '',
 			'single'			=> '',
 
+			// Post List
+			'list'				=> 'list',
+			'list_paginated'	=> 'list',
+			'list_mini'			=> 'mini-list',
+
+			// Post Grid
 			'grid' 				=> 'grid',
-			'grid_shortcode' 	=> 'grid',
 			'grid_paginated' 	=> 'grid',
 			'grid_slider' 		=> 'grid',
-			'list_shortcode'	=> 'list-shortcode',
+			'grid_mini'			=> 'mini-grid',
 
+			// Pages
 			'page' 				=> 'page',
 			'404'				=> '404',
 
 			// ... @TODO search results
+			// Search
 			'search'			=> 'search',			// Note: This is for displaying content when no search results were found.
 			'search_results'	=> 'archive'
 		));
@@ -545,17 +552,21 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function atts_init() {
 
-		// Index/Archive
-		if ( is_home() || is_archive() || is_search() ) {
-			if ( $this->mode == 'grid' ) {
-				$this->atts = $this->get_default_grid_atts();
-			} else {
-				$this->atts = $this->get_default_list_atts();
-			}
-		}
-
 		// Single posts
 		if ( is_single() ) {
+
+			// Featured images
+			$thumbs = true;
+
+			if ( themeblvd_get_option( 'single_thumbs', null, 'full' ) == 'hide' ) {
+				$thumbs = false;
+			}
+
+			if ( get_post_meta( $this->config['id'], '_tb_thumb', true ) == 'hide' ) {
+				$thumbs = false;
+			} else if ( get_post_meta( $this->config['id'], '_tb_thumb', true ) == 'full' ) {
+				$thumbs = true;
+			}
 
 			// Meta information (i.e. date posted, author)
 			$show_meta = true;
@@ -586,18 +597,21 @@ class Theme_Blvd_Frontend_Init {
 			$this->atts = apply_filters( 'themeblvd_single_atts', array(
 				'location'		=> 'single',
 				'content'		=> 'content', // We don't want excerpts to show on a single post!
+				'thumbs'		=> $thumbs,
 				'show_meta' 	=> $show_meta,
 				'show_sub_meta' => $show_sub_meta
 			));
 
 		}
 
-		// Archives
-		if ( is_archive() ) {
-			$this->atts = apply_filters( 'themeblvd_archive_atts', array(
-				'content'		=> themeblvd_get_option('archive_content', null, 'excerpt'),
-				'show_meta' 	=> true,
-			));
+		// Blog
+		if ( is_home() || is_archive() || is_page_template('template_blog.php') ) {
+
+			if ( $this->mode == 'grid' ) {
+				$this->atts = $this->get_default_grid_atts();
+			} else {
+				$this->atts = $this->get_default_list_atts();
+			}
 		}
 
 		// Post List Page Template
@@ -613,7 +627,8 @@ class Theme_Blvd_Frontend_Init {
 	}
 
 	/**
-	 * Generate default template attributes for post list pages.
+	 * Generate default template attributes for pages
+	 * which list out posts.
 	 *
 	 * @since 2.3.0
 	 *
@@ -621,32 +636,52 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	private function get_default_list_atts() {
 
-		// Content
-		$content = 'content'; // Can be "content" or "excerpt"
-		if ( is_home() ) {
+		$placeholder = false;
+		$more = '';
+		$more_text = '';
 
-			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_blog_content_default', 'content' ) );
-
-		} elseif ( is_archive() || is_search() ) {
-
-			$content = themeblvd_get_option( 'archive_content', null, apply_filters( 'themeblvd_archive_content_default', 'content' ) );
-
-		} elseif ( is_page_template( 'template_list.php' ) ) {
-
-			$content = themeblvd_get_option( 'blog_content', null, apply_filters( 'themeblvd_list_template_content_default', 'content' ) );
+		if ( is_page_template('template_list.php') ) {
+			$context = 'list';
+			$placeholder = true;
+			$thumbs = themeblvd_get_option('list_thumbs', null, 'full');
+			$meta = themeblvd_get_option('list_meta', null, 'show');
+			$content = 'excerpt';
+			$more = themeblvd_get_option('list_more', null, 'show');
+			$more_text = themeblvd_get_option('list_more_text', null, 'show');
+		} else if ( is_archive() ) {
+			$context = 'archive';
+			$thumbs = themeblvd_get_option('archive_thumbs', null, 'full');
+			$content = themeblvd_get_option('archive_content', null, 'excerpt');
+			$meta = true;
+		} else { // is_home() or is_page_template('template_blog.php')
+			$context = 'blog';
+			$thumbs = themeblvd_get_option('blog_thumbs', null, 'full');
+			$content = themeblvd_get_option('blog_content', null, 'excerpt');
+			$meta = true;
 		}
 
-		// Note: Thumbnail size could be passed here, but not needed
-		// because it gets determined in themeblvd_get_post_thumbnail()
-		// when left blank.
+		if ( $thumbs == 'hide' ) {
+			$thumbs = false;
+		}
 
-		// Set attributes
+		if ( $meta === 'hide' ) {
+			$meta = false;
+		}
+
+		if ( $more == 'none' ) {
+			$more = false;
+		}
+
 		$atts = array(
-			'content' => $content
+			'thumbs'		=> $thumbs,
+			'placeholder'	=> $placeholder,
+			'content'		=> $content,
+			'show_meta' 	=> $meta,
+			'more'			=> $more,
+			'more_text'		=> $more_text
 		);
 
-		return apply_filters( 'themeblvd_list_atts', $atts );
-
+		return apply_filters( 'themeblvd_'.$context.'_atts', $atts );
 	}
 
 	/**
@@ -669,7 +704,7 @@ class Theme_Blvd_Frontend_Init {
 			$columns = themeblvd_get_option( 'index_grid_columns' );
 			$rows = themeblvd_get_option( 'index_grid_rows' );
 
-		} elseif ( is_archive() || is_search() ) {
+		} elseif ( is_archive() ) {
 
 			$columns = themeblvd_get_option( 'archive_grid_columns' );
 			$rows = themeblvd_get_option( 'archive_grid_rows' );
@@ -694,33 +729,84 @@ class Theme_Blvd_Frontend_Init {
 			$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
 		}
 
+		// Meta
+		$meta = themeblvd_get_option('grid_meta', null, 'show');
+
+		if ( $meta == 'hide' ) {
+			$meta = false;
+		}
+
+		// Excerpt
+		$excerpt = themeblvd_get_option('grid_excerpt', null, 'show');
+
+		if ( $excerpt == 'hide' ) {
+			$excerpt = false;
+		}
+
+		// Read More button
+		$more = themeblvd_get_option('grid_more', null, 'show');
+		$more_text = themeblvd_get_option('grid_more_text', null, 'show');
+
+		if ( $more == 'none' ) {
+			$more == false;
+		}
+
 		// Posts per page, used for the grid display and not
 		// the actual main query of posts.
 		$posts_per_page = intval($columns)*intval($rows);
 
-		// Thumbnail size
-		$size = themeblvd_grid_thumb_class( $columns );
+		// Thumbnails
+		$thumbs = themeblvd_get_option('grid_thumbs', null, 'full');
+
+		if ( $thumbs == 'hide' ) {
+			$thumbs = false;
+		}
+
+		$crop = '';
 
 		if ( is_home() ) {
 
-			$crop = apply_filters( 'themeblvd_index_grid_crop_size', $size );
+			$crop = apply_filters( 'themeblvd_index_grid_crop_size', $crop );
 
-		} elseif ( is_archive() || is_search() ) {
+		} elseif ( is_archive() ) {
 
-			$crop = apply_filters( 'themeblvd_archive_grid_crop_size', $size );
+			$crop = apply_filters( 'themeblvd_archive_grid_crop_size', $crop );
 
 		} elseif ( is_page_template( 'template_grid.php' ) ) {
 
 			$crop = get_post_meta( $this->config['id'], 'crop', true );
 
 			if ( ! $crop ) {
-				$crop = apply_filters( 'themeblvd_template_grid_crop_size', $size );
+				$crop = apply_filters( 'themeblvd_template_grid_crop_size', $crop );
 			}
 
 		}
 
-		if ( empty( $crop ) ) {
-			$crop = $size;
+		if ( ! $crop ) {
+			$crop = 'tb_grid';
+		}
+
+		$crop_atts = themeblvd_get_image_sizes($crop);
+		$crop_w = $crop_atts['width'];
+		$crop_h = $crop_atts['height'];
+
+		// Class
+		$class = themeblvd_grid_class(intval($columns));
+
+		if ( $thumbs ) {
+			$class .= ' has-thumb';
+		}
+
+		if ( $meta ) {
+			$class .= ' has-meta';
+		}
+
+		if ( $excerpt ) {
+			$class .= ' has-excerpt';
+		}
+
+		if ( $more == 'button' || $more == 'text' ) {
+			$class .= ' has-more';
 		}
 
 		// Setup attributes
@@ -729,13 +815,19 @@ class Theme_Blvd_Frontend_Init {
 			'rows' 				=> $rows,
 			'posts_per_page' 	=> $posts_per_page,
 			'counter'			=> 0,
-			'size'				=> $size,
-			'crop'				=> $crop, // Will be equal to "size" if not overridden
-			'class'				=> themeblvd_grid_class(intval($columns))
+			'crop'				=> $crop,
+			'crop_w'			=> $crop_w,
+			'crop_h'			=> $crop_h,
+			'thumbs'			=> $thumbs, // bool to show/hide thumbnail
+			'placeholder'		=> true,
+			'class'				=> $class,
+			'show_meta'			=> $meta,
+			'excerpt'			=> $excerpt,
+			'more'				=> $more,
+			'more_text'			=> $more_text
 		);
 
 		return apply_filters( 'themeblvd_grid_atts', $atts );
-
 	}
 
 	/**

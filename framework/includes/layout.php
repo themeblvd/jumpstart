@@ -4,12 +4,20 @@
  *
  * @since 2.5.0
  *
+ * @param string $section_id ID of current section holding elements
  * @param array $elements All elements to loop through and display
  * @param string $context Context for elements, element or block (within a column)
+ * @param int $max Maximum width of container
  */
-function themeblvd_elements( $section_id, $elements, $context = 'element' ) { // $context can be element or block
+function themeblvd_elements( $section_id, $elements, $context = 'element', $max = 0 ) {
 
 	if ( $elements ) {
+
+		// Maximum width of container for elements. If the
+		// context is "block" this shouldn't be empty to start.
+		if ( ! $max ) {
+			$max = themeblvd_get_max_width('element');
+		}
 
 		$i = 1;
 		$total = count($elements);
@@ -21,7 +29,8 @@ function themeblvd_elements( $section_id, $elements, $context = 'element' ) { //
 				'id'		=> $id,
 				'num'		=> $i,
 				'total'		=> $total,
-				'context'	=> $context
+				'context'	=> $context,
+				'max_width'	=> $max
 			);
 
 			if ( isset( $element['type'] ) ) {
@@ -66,9 +75,14 @@ function themeblvd_element( $args ) {
 		'display'	=> array(),		// Display settings for this element
 		'num'		=> 1,			// Current count for the element being displayed
 		'total'		=> 1,			// Total number of elements in parent section
-		'context'	=> 'element'	// Context for elements, element or block (within a column)
+		'context'	=> 'element',	// Context for elements, element or block (within a column)
+		'max_width'	=> ''
 	);
 	$args = wp_parse_args( $args, $defaults );
+
+	// Allow any elements to utilize the container
+	// max width
+	$args['options']['max_width'] = $args['max_width'];
 
 	// Element class
 	$class = implode( ' ', themeblvd_get_element_class( $args ) );
@@ -219,20 +233,56 @@ function themeblvd_element( $args ) {
 		/* Posts (loop.php)
 		/*------------------------------------------------------*/
 
+		// Blog
+		case 'blog' :
+
+			$args['options']['context'] = 'blog';
+
+			if ( themeblvd_is_grid_mode() ) {
+				themeblvd_post_grid( $args['options'] );
+			} else {
+				themeblvd_post_list( $args['options'] );
+			}
+			break;
+
 		// Post Grid
 		case 'post_grid' :
+			$args['options']['context'] = 'grid';
 			themeblvd_post_grid( $args['options'] );
 			break;
 
 		// Post List
 		case 'post_list' :
+			$args['options']['context'] = 'list';
 			themeblvd_post_list( $args['options'] );
 			break;
 
-		// Post Slider
+		// Post Slider // @TODO -- Add 2nd post slider style
 		case 'post_slider' :
 		case 'post_slider_popout' :
 			themeblvd_post_slider( $args['options'] );
+			break;
+
+		// Mini Post List
+		case 'mini_post_list' :
+			themeblvd_mini_post_list( $args['options'], $args['options']['thumbs'], $args['options']['meta'] );
+			break;
+
+		// Mini Post Grid
+		case 'mini_post_grid' :
+
+			$gallery = '';
+
+			if ( $args['options']['source'] == 'gallery' ) {
+
+				$gallery = $args['options']['gallery'];
+
+				if ( ! $gallery ) {
+					$gallery = 'error';
+				}
+			}
+
+			themeblvd_mini_post_grid( $args['options'], $args['options']['align'], $args['options']['thumbs'], $gallery );
 			break;
 
 		/*------------------------------------------------------*/
@@ -875,7 +925,14 @@ function themeblvd_columns( $args, $columns = null ) {
 				$blocks = $column['elements'];
 			}
 
-			themeblvd_elements( $args['section'], $blocks, 'block' );
+			// Max container width for elements
+			$width_atts = array(
+				'context'	=> 'block',
+				'col'		=> $widths[$i-1]
+			);
+
+			// Display elements
+			themeblvd_elements( $args['section'], $blocks, 'block', themeblvd_get_max_width($width_atts) );
 
 			echo '</div><!-- .'.$grid_class.' (end) -->';
 

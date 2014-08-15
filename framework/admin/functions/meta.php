@@ -1,5 +1,4 @@
 <?php
-if ( !function_exists( 'themeblvd_add_meta_boxes' ) ) :
 /**
  * Add page and post meta boxes.
  *
@@ -8,22 +7,28 @@ if ( !function_exists( 'themeblvd_add_meta_boxes' ) ) :
 function themeblvd_add_meta_boxes() {
 
 	global $_themeblvd_page_meta_box;
+	global $_themeblvd_post_template_meta_box;
 	global $_themeblvd_post_meta_box;
 
-	// Page meta box
+	// General page meta box
 	if ( themeblvd_supports( 'meta', 'page_options' ) ) {
-		$page_meta = setup_themeblvd_page_meta();
-		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $page_meta['config']['id'], $page_meta['config'], $page_meta['options'] );
+		$meta = setup_themeblvd_page_meta();
+		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
-	// Post meta box
+	// "Post Grid" and "Post List" page template meta box
+	if ( themeblvd_supports( 'meta', 'pto' ) ) {
+		$meta = setup_themeblvd_pto_meta();
+		$_themeblvd_post_template_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
+	}
+
+	// General post meta box
 	if ( themeblvd_supports( 'meta', 'post_options' ) ) {
-		$post_meta = setup_themeblvd_post_meta();
-		$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $post_meta['config']['id'], $post_meta['config'], $post_meta['options'] );
+		$meta = setup_themeblvd_post_meta();
+		$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 }
-endif;
 
 /**
  * Get settings for the Page Options meta box.
@@ -88,6 +93,89 @@ function setup_themeblvd_page_meta() {
 }
 
 /**
+ * Get settings for the Post Grid Template Options meta box.
+ *
+ * @since 2.5.0
+ *
+ * @return $setup filterable options for metabox
+ */
+function setup_themeblvd_pto_meta() {
+	$setup = array(
+		'config' => array(
+			'id' 			=> 'pto',										// make it unique
+			'title' 		=> __( 'Post Template Options', 'themeblvd' ),	// title to show for entire meta box
+			'page'			=> array('page'),								// can contain post, page, link, or custom post type's slug
+			'context' 		=> 'normal',									// normal, advanced, or side
+			'priority'  	=> 'low',										// high, core, default, or low
+            'save_empty'	=> false										// Whether to save empty values to custom fields
+		),
+		'options' => array(
+			'desc' => array(
+                'id'        => 'desc',
+                'desc'      => __( 'Below are the custom fields you can use with the Blog, Post List, and Post Grid page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the <a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>.', 'themeblvd_pto' ),
+                'type'      => 'info'
+            ),
+            'cat' => array(
+                'id'        => 'cat',
+                'name'      => __( 'cat', 'themeblvd_pto' ),
+                'desc'      => __( 'Category ID(s) to include/exclude.<br>Ex: 1<br>Ex: 1,2,3<br>Ex: -1,-2,-3', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'category_name' => array(
+                'id'        => 'category_name',
+                'name'      => __( 'category_name', 'themeblvd_pto' ),
+                'desc'      => __( 'Category slug(s) to include.<br>Ex: cat-1<br>Ex: cat-1,cat-2', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'tag' => array(
+                'id'        => 'tag',
+                'name'      => __( 'tag', 'themeblvd_pto' ),
+                'desc'      => __( 'Tag(s) to include.<br>Ex: tag-1<br>Ex: tag-1,tag-2', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'posts_per_page' => array(
+                'id'        => 'posts_per_page',
+                'name'      => __( 'posts_per_page', 'themeblvd_pto' ),
+                'desc'      => __( 'Number of posts per page. Only for Post List template; Post Grid uses rows*columns.', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'orderby' => array(
+                'id'        => 'orderby',
+                'name'      => __( 'orderby', 'themeblvd_pto' ),
+                'desc'      => __( 'What to order posts by -- date, title, rand, etc.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'order' => array(
+                'id'        => 'order',
+                'name'      => __( 'order', 'themeblvd_pto' ),
+                'desc'      => __( 'How to order posts -- ASC or DESC.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'query' => array(
+                'id'        => 'query',
+                'name'      => __( 'query', 'themeblvd_pto' ),
+                'desc'      => __( 'A custom query string. This will override other options.<br>Ex: tag=baking<br>Ex: post_type=my_type&my_tax=my_term', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'columns' => array(
+                'id'        => 'columns',
+                'name'      => __( 'columns', 'themeblvd_pto' ),
+                'desc'      => __( 'Number of columns for Post Grid template. When empty, this will default to 3.', 'themeblvd_pto' ),
+                'type'      => 'text'
+            ),
+            'rows' => array(
+                'id'        => 'rows',
+                'name'      => __( 'rows', 'themeblvd_pto' ),
+                'desc'      => __( 'Number of rows for Post Grid template. When empty, this will default to 4.', 'themeblvd_pto' ),
+                'type'      => 'text'
+            )
+		)
+	);
+
+	return apply_filters( 'themeblvd_pto_meta', $setup );
+}
+
+/**
  * Get settings for the Post Options meta box.
  *
  * @since 2.0.0
@@ -122,7 +210,7 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting', 'themeblvd' ),
+					'default'	=> __( 'Use default setting', 'themeblvd' ),
 					'show'		=> __( 'Show meta info', 'themeblvd' ),
 					'hide' 		=> __( 'Hide meta info', 'themeblvd' )
 				)
@@ -134,7 +222,7 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting', 'themeblvd' ),
+					'default'	=> __( 'Use default setting', 'themeblvd' ),
 					'show'		=> __( 'Show sub meta info', 'themeblvd' ),
 					'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
 				)
@@ -146,7 +234,7 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting', 'themeblvd' ),
+					'default'	=> __( 'Use default setting', 'themeblvd' ),
 					'show'		=> __( 'Show comments', 'themeblvd' ),
 					'hide' 		=> __( 'Hide comments', 'themeblvd' )
 				)
@@ -170,7 +258,7 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default post setting', 'themeblvd' ),
+					'default'	=> __( 'Use default setting', 'themeblvd' ),
 					//'small'		=> __( 'Show small thumbnail', 'themeblvd' ),
 					'full' 		=> __( 'Show featured image', 'themeblvd' ),
 					'hide' 		=> __( 'Hide featured image', 'themeblvd' )
@@ -228,13 +316,14 @@ function setup_themeblvd_post_meta() {
 			'tb_thumb_link_single' => array(
 				'id'		=> '_tb_thumb_link_single',
 				'name' 		=> __( 'Featured Image Link (the single post)', 'themeblvd' ),
-				'desc'		=> __( 'If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page or not.', 'themeblvd' ),
+				'desc'		=> __( 'If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'themeblvd' ),
 				'class'		=> 'tb-thumb-link tb-thumb-link-single',
 				'std' 		=> 'yes',
 				'type' 		=> 'radio',
 				'options'	=> array(
 					'yes'		=> __( 'Yes, apply featured image link to single post', 'themeblvd' ),
-					'no' 		=> __( 'No, don\'t apply featured image link to single post', 'themeblvd' )
+					'no' 		=> __( 'No, don\'t apply featured image link to single post', 'themeblvd' ),
+					'thumbnail'	=> __( 'Link it to its enlarged lightbox version', 'themeblvd' )
 				)
 			),
 			'tb_sidebar_layout' => array(
