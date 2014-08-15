@@ -331,7 +331,7 @@ function themeblvd_get_content_video( $content, $run = true ) {
  * @param string $content A string which might contain a URL, passed by reference.
  * @return string The found URL.
  */
-function themeblvd_content_video() {
+function themeblvd_content_video( $placeholder = false ) {
 
 	// Only continue if this is a "video" format post.
 	if ( ! has_post_format('video') ) {
@@ -342,7 +342,7 @@ function themeblvd_content_video() {
 
 	if ( $video && apply_filters('themeblvd_featured_thumb_frame', false) ) {
 		$video = sprintf('<div class="thumbnail">%s</div>', $video);
-	} else if ( ! $video && themeblvd_get_att('placeholder') ) {
+	} else if ( ! $video && $placeholder ) {
 		$video = themeblvd_get_media_placeholder();
 	}
 
@@ -432,7 +432,7 @@ function themeblvd_get_content_audio( $content, $run = true ) {
  * @param string $content A string which might contain a URL, passed by reference.
  * @return string The found URL.
  */
-function themeblvd_content_audio( $placeholder = null ) {
+function themeblvd_content_audio( $placeholder = false ) {
 
 	// Only continue if this is a "audio" format post.
 	if ( ! has_post_format('audio') ) {
@@ -441,10 +441,6 @@ function themeblvd_content_audio( $placeholder = null ) {
 
 	$audio = themeblvd_get_content_audio( get_the_content(), false );
 	$img = themeblvd_get_post_thumbnail( themeblvd_get_att('crop'), array('link' => false, 'placeholder' => false) );
-
-	if ( $placeholder === null ) {
-		$placeholder = themeblvd_get_att('placeholder');
-	}
 
 	if ( ! $img && $placeholder && strpos($audio, '[audio' ) !== false ) {
 		$img = themeblvd_get_media_placeholder();

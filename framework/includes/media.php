@@ -74,8 +74,12 @@ function themeblvd_get_image_sizes( $size = '' ) {
 
 	$sizes = apply_filters( 'themeblvd_image_sizes', $sizes );
 
-	if ( $size && isset( $sizes[$size] ) ) {
-		return $sizes[$size];
+	if ( $size ) {
+		if ( isset( $sizes[$size] ) ) {
+			return $sizes[$size];
+		} else {
+			return false;
+		}
 	} else {
 		return $sizes;
 	}
@@ -122,7 +126,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	$defaults = array(
 		'attachment_id'	=> get_post_thumbnail_id($post->ID),
 		'location'		=> themeblvd_get_att('location'),
-		'placeholder'	=> themeblvd_get_att('placeholder'),
+		'placeholder'	=> false,
 		'frame'			=> apply_filters('themeblvd_featured_thumb_frame', false),
 		'link'			=> null // FALSE to force no link, post, or thumbnail
 	);

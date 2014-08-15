@@ -636,13 +636,11 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	private function get_default_list_atts() {
 
-		$placeholder = false;
 		$more = '';
 		$more_text = '';
 
 		if ( is_page_template('template_list.php') ) {
 			$context = 'list';
-			$placeholder = true;
 			$thumbs = themeblvd_get_option('list_thumbs', null, 'full');
 			$meta = themeblvd_get_option('list_meta', null, 'show');
 			$content = 'excerpt';
@@ -674,7 +672,6 @@ class Theme_Blvd_Frontend_Init {
 
 		$atts = array(
 			'thumbs'		=> $thumbs,
-			'placeholder'	=> $placeholder,
 			'content'		=> $content,
 			'show_meta' 	=> $meta,
 			'more'			=> $more,
@@ -819,7 +816,6 @@ class Theme_Blvd_Frontend_Init {
 			'crop_w'			=> $crop_w,
 			'crop_h'			=> $crop_h,
 			'thumbs'			=> $thumbs, // bool to show/hide thumbnail
-			'placeholder'		=> true,
 			'class'				=> $class,
 			'show_meta'			=> $meta,
 			'excerpt'			=> $excerpt,

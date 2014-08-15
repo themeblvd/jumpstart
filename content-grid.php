@@ -9,25 +9,25 @@
 		<?php if ( has_post_format('gallery') ) : ?>
 
 			<div class="featured-item gallery">
-				<?php themeblvd_mini_gallery_slider( get_the_content(), array('size' => 'tb_grid')  ); ?>
+				<?php themeblvd_mini_gallery_slider( get_the_content(), array('size' => themeblvd_get_att('crop'))  ); ?>
 			</div><!-- .gallery (end) -->
 
 		<?php elseif ( has_post_format('video') ) : ?>
 
 			<div class="featured-item video">
-				<?php themeblvd_content_video(); ?>
+				<?php themeblvd_content_video(true); ?>
 			</div><!-- .video (end) -->
 
 		<?php elseif ( has_post_format('audio') ) : ?>
 
 			<div class="featured-item audio">
-				<?php themeblvd_content_audio(); ?>
+				<?php themeblvd_content_audio(true); ?>
 			</div><!-- .audio (end) -->
 
 		<?php elseif ( themeblvd_get_att('thumbs') ) : ?>
 
 			<div class="featured-item">
-				<?php themeblvd_the_post_thumbnail(); ?>
+				<?php themeblvd_the_post_thumbnail( themeblvd_get_att('crop'), array('placeholder' => true) ); ?>
 			</div><!-- .featured-item (end) -->
 
 		<?php endif; ?>

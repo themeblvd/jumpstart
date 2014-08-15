@@ -107,8 +107,6 @@ function themeblvd_post_list( $args = array() ){
 			themeblvd_set_att( 'thumbs', $thumbs );
 		}
 
-		themeblvd_set_att('placeholder', true);
-
 		// Meta
 		if ( $args['meta'] == 'default' ) {
 			$meta = themeblvd_get_option('list_meta', null, 'show');
@@ -483,9 +481,14 @@ function themeblvd_post_grid( $args = array() ){
 		themeblvd_set_att( 'crop', $crop );
 
 		$crop_atts = themeblvd_get_image_sizes($crop);
-		themeblvd_set_att( 'crop_w', $crop_atts['width'] );
-		themeblvd_set_att( 'crop_h', $crop_atts['height'] );
 
+		if ( $crop_atts && intval($crop_atts['height']) < 1000 ) {
+			themeblvd_set_att( 'crop_w', $crop_atts['width'] );
+			themeblvd_set_att( 'crop_h', $crop_atts['height'] );
+		} else {
+			themeblvd_set_att( 'crop_w', '640' );
+			themeblvd_set_att( 'crop_h', '360' );
+		}
 	}
 
 	if ( $args['wp_query'] ) {

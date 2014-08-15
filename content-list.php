@@ -9,7 +9,7 @@ $class .= themeblvd_get_att('show_meta') ? ' has-meta' : '';
 
 	<?php if ( themeblvd_get_att('thumbs') ) : ?>
 		<div class="thumb-wrapper">
-			<?php themeblvd_the_post_thumbnail('tb_thumb'); ?>
+			<?php themeblvd_the_post_thumbnail('tb_thumb', array('placeholder' => true)); ?>
 		</div><!-- .thumb-wrapper (end) -->
 	<?php endif; ?>
 
