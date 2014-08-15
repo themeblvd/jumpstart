@@ -681,14 +681,14 @@ tb-warning .tb-alert-inner {
 	border-color: #9adfa9;
 }
 
-/* =Framework Sidebar UI Widgets (not WP widgets)
+/* =Framework standard toggle postbox (separate from Layout Builder)
 -----------------------------------------------*/
 
 #optionsframework .postbox .handlediv {
-	background:url(../images/arrows.png) 5px 7px no-repeat;
+	background:url(../images/arrows.png) 4px 10px no-repeat;
 }
 #optionsframework .postbox .handlediv:hover {
-	background-position:5px -28px;
+	background-position: 4px -25px;
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio:1.5),
 		only screen and (-moz-min-device-pixel-ratio:1.5),
@@ -696,8 +696,8 @@ tb-warning .tb-alert-inner {
 		only screen and (min-device-pixel-ratio:1.5),
 		only screen and (min-resolution:1.5dppx) {
 	#optionsframework .postbox .handlediv {
-		background-image:url(../images/arrows_2x.png);
-		background-size:15px 50px;
+		background-image: url(../images/arrows_2x.png);
+		background-size: 15px 50px;
 	}
 }
 

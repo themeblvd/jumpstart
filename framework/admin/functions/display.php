@@ -1356,6 +1356,97 @@ function themeblvd_texture_browser( $args = array() ) {
 	<?php
 }
 
+/**
+ * Dispay set of preset option values user can click
+ * to populate part of the options page.
+ *
+ * @since 2.5.0
+ *
+ * @param array $preset
+ */
+function themeblvd_display_presets( $args, $option_name = '' ) {
+
+	$defaults = array(
+		'id'			=> '',
+		'options'		=> array(),
+		'sets'			=> array(),
+		'icon_width'	=> '',
+		'level'			=> 1
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	$class = 'tb-presets level-'.$args['level'];
+
+	if ( $args['icon_width'] ) {
+		$class .= ' has-images';
+	}
+
+	$output = '<div class="'.$class.'">';
+
+	if ( $args['options'] ) {
+
+		$output .= '<ul class="presets-menu">';
+
+		foreach ( $args['options'] as $key => $value ) {
+
+			if ( ! empty( $args['sets'][$key] ) ) {
+
+				$output .= '<li>';
+
+				if ( $args['icon_width'] ) {
+					$item = sprintf('<img src="%s" width="%s" />', $value, $args['icon_width']);
+				} else {
+					$item = $value;
+				}
+
+				$output .= sprintf('<a href="#" class="tb-tooltip-link" data-set="%s" data-id="%s" data-tooltip-text="%s">%s</a>', $key, $args['id'], __('Apply Preset', 'themeblvd'), $item );
+
+				$output .= '</li>';
+
+			}
+
+		}
+
+		$output .= '</ul>';
+
+	}
+
+	if ( $args['sets'] ) {
+
+		$output .= "\n<script type=\"text/javascript\">\n";
+		$output .= "/* <![CDATA[ */\n";
+		$output .= "themeblvd_presets['".$args['id']."'] = {\n";
+
+		$last = end($args['sets']);
+
+		foreach ( $args['sets'] as $key => $value ) {
+
+			if ( $option_name ) {
+				$old_value = $value;
+				$value = array();
+				$value[$option_name] = $old_value;
+			}
+
+			$output .= sprintf('%s: %s', $key, json_encode($value));
+
+			if ( $value != $last ) {
+				$output .= ',';
+			}
+
+			$output .= "\n";
+		}
+
+		$output .= "};\n";
+		$output .= "/* ]]> */\n";
+		$output .= "</script>\n";
+
+	}
+
+	$output .= '</div><!-- .option-presets (end) -->';
+
+	return $output;
+}
+
 if ( !function_exists( 'themeblvd_options_footer_text_default' ) ) :
 /**
  * Options footer text

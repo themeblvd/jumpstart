@@ -80,10 +80,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   			$class .= ' no-name';
 	   		}
 
-	   		$output .= '<div class="postbox inner-section'.$class.'">';
+	   		$id = str_replace( array('start_section_', 'section_start_'), '', $option_key );
+
+	   		$output .= '<div id="'.$id.'" class="postbox inner-section'.$class.' closed">';
+
+	   		$output .= '<a href="#" class="section-toggle"><i class="tb-icon-up-dir"></i></a>';
 
 	   		if ( $name ) {
-	   			$output .= '<h3>'.$name.'</h3>';
+	   			$output .= '<h3 class="hndle">'.$name.'</h3>';
 	   		}
 
    			if ( $option_key == 'start_section_footer' && isset( $options['footer_sync'] ) ) {
@@ -100,13 +104,22 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   			$output .= '</div><!-- .footer-sync-wrap (end) -->';
    			}
 
+   			$output .= '<div class="inner-section-content hide">';
+
 	   		if ( ! empty( $value['desc'] ) ) {
 	   			$output .= '<div class="section-description">'.$value['desc'].'</div>';
+	   		}
+
+	   		if ( ! empty( $value['preset'] ) ) {
+	   			$output .= '<div class="section-presets">';
+	   			$output .= themeblvd_display_presets($value['preset'], $option_name);
+	   			$output .= '</div>';
 	   		}
 
 	   		continue;
 	   	}
 	   	if ( $value['type'] == 'section_end' ) {
+	   		$output .= '</div><!-- .inner-section-content (end) -->';
 	   		$output .= '</div><!-- .inner-section (end) -->';
 	   		continue;
 	   	}
@@ -240,7 +253,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$cols = $value['options']['cols'];
 				}
 
-				if ( ! empty( $value['editor'] ) ) {
+				if ( ! empty( $value['editor'] ) || ! empty( $value['code'] ) ) {
 
 					$output .= '<div class="textarea-wrap with-editor-nav">';
 
@@ -1204,6 +1217,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$menu .= sprintf( '<a id="%s-tab" class="nav-tab" title="%s" href="%s">%s</a>', $jquery_click_hook, esc_attr($value['name']), esc_attr('#'.$jquery_click_hook), esc_html($value['name']) );
 				$output .= sprintf( '<div class="group" id="%s">', $jquery_click_hook );
+
+				if ( ! empty( $value['preset'] ) ) {
+	   				$output .= themeblvd_display_presets($value['preset'], $option_name);
+	   			}
 
 				break;
 

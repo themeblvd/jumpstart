@@ -347,6 +347,7 @@ class Theme_Blvd_Options_Page {
 		}
 
 		// Framework
+		wp_enqueue_script( 'populate', TB_FRAMEWORK_URI . '/admin/options/js/populate.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_enqueue_script( 'themeblvd_modal', TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
@@ -362,6 +363,12 @@ class Theme_Blvd_Options_Page {
 			wp_enqueue_script( 'codemirror', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.js', null, '4.0' );
 			wp_enqueue_script( 'codemirror-modes', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js', null, '4.0' );
 		}
+
+		echo "\n<script type=\"text/javascript\">\n";
+		echo "/* <![CDATA[ */\n";
+		echo "var themeblvd_presets = {};\n";
+		echo "/* ]]> */\n";
+		echo "</script>\n";
 	}
 
 	/**

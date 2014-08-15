@@ -248,6 +248,18 @@ function themeblvd_get_option_defaults( $options ) {
 	return $defaults;
 }
 
+/**
+ * Add option presets
+ *
+ * @since 2.5.0
+ *
+ * @param array $args
+ */
+function themeblvd_add_option_presets( $args ) {
+	$api = Theme_Blvd_Options_API::get_instance();
+	$api->add_presets($args);
+}
+
 /*------------------------------------------------------------*/
 /* (2) Builder API Helpers
 /* Requires Theme Blvd Layout Builder plugin v1.1.1+

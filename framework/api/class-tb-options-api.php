@@ -829,6 +829,10 @@ class Theme_Blvd_Options_API {
 				'type' 	=> 'heading'
 			);
 
+			if ( isset( $tab['preset'] ) ) {
+				$this->formatted_options['tab_'.$tab_id]['preset'] = $tab['preset'];
+			}
+
 			// Section Level
 			if ( $tab['sections'] ) {
 				foreach ( $tab['sections'] as $section_id => $section ) {
@@ -838,6 +842,10 @@ class Theme_Blvd_Options_API {
 						'name' => $section['name'],
 						'type' => 'section_start'
 					);
+
+					if ( isset( $section['preset'] ) ) {
+						$this->formatted_options['start_section_'.$section_id]['preset'] = $section['preset'];
+					}
 
 					if ( isset( $section['desc'] ) ) {
 						$this->formatted_options['start_section_'.$section_id]['desc'] = $section['desc'];
@@ -1237,6 +1245,59 @@ class Theme_Blvd_Options_API {
 		}
 
 		$this->raw_options[$tab_id]['sections'][$section_id]['options'][$option_id][$att] = $value;
+	}
+
+	/**
+	 * Add set of preset option values user can populate
+	 * portion of form with.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_presets( $args ) {
+
+		$defaults = array(
+			'id'		=> '',			// Unique ID for preset group (required)
+			'tab' 		=> '',			// Tab to display at (required)
+			'section'	=> '',			// Section within that tab (optional)
+			'options'	=> array(
+				'set_1' => 'img.jpg',
+				'set_2'	=> 'img2.jpg'
+			),
+			'sets'		=> array(
+				'set_1' => array(
+					'foo' 	=> 'bar',
+					'foo2' 	=> 'bar2'
+				),
+				'set_2' => array(
+					'foo' 	=> 'bar3',
+					'foo2' 	=> 'bar4'
+				)
+			),
+			'icon_width'	=> ''			// Display width for image options, if empty, assumed using Text
+		);
+		$args = wp_parse_args( $args, $defaults );
+
+		if ( ! $args['tab'] ) {
+			return;
+		}
+
+		if ( $args['section'] ) {
+			$level = 2;
+		} else {
+			$level = 1;
+		}
+
+		$preset = $args;
+		$preset['id'] = 'preset_'.$preset['id'];
+		$preset['level'] = $level;
+		unset( $preset['tab'], $preset['section'] );
+
+		if ( $level == 2 ) {
+			$this->raw_options[$args['tab']]['sections'][$args['section']]['preset'] = $preset;
+		} else if ( $level == 1 ) {
+			$this->raw_options[$args['tab']]['preset'] = $preset;
+		}
+
 	}
 
 	/*--------------------------------------------*/

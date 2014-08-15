@@ -1,3 +1,91 @@
+/* =Options Page Setup
+-----------------------------------------------*/
+
+#themeblvd_options_page .postbox {
+	margin-bottom: 10px;
+}
+#themeblvd_options_page .postbox.closed .hndle {
+	border-bottom: none;
+}
+#themeblvd_options_page .postbox > .section-toggle {
+	color: #a5a5a5;
+	display: block;
+	float: right;
+	font-size: 16px;
+	line-height: 34px;
+	outline: none;
+	width: 34px;
+	text-align: center;
+}
+#themeblvd_options_page .postbox > .section-toggle:hover {
+	color: #5a5a5a;
+}
+#themeblvd_options_page .postbox.closed > .section-toggle {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/* Presets */
+#themeblvd_options_page .tb-presets {
+	overflow: hidden;
+}
+#themeblvd_options_page .tb-presets.level-1 {
+	margin-bottom: 10px;
+}
+#themeblvd_options_page .tb-presets ul {
+	margin: 0;
+}
+#themeblvd_options_page .tb-presets li {
+	display: block;
+	float: left;
+	margin: 0;
+}
+#themeblvd_options_page .tb-presets li a {
+	border: 1px solid #dddddd;
+	display: block;
+	font-size: 12px;
+	line-height: 1;
+	margin: 2px 4px 2px 0;
+	padding: 5px 7px;
+}
+#themeblvd_options_page .tb-presets.has-images li a {
+	padding: 2px;
+}
+#themeblvd_options_page .tb-presets.has-images li a:hover {
+	opacity: 0.8;
+}
+#themeblvd_options_page .tb-presets.has-images li a img {
+	display: block;
+}
+#themeblvd_options_page .tb-presets li a {
+	text-decoration: none !important;
+}
+
+/* Footer Template Sync */
+#themeblvd_options_page .footer-sync-wrap {
+	position: absolute;
+	top: 0;
+	right: 20px;
+}
+#themeblvd_options_page .footer-sync-wrap label,
+#themeblvd_options_page .footer-sync-wrap input.checkbox {
+	clear: none;
+	float: right;
+}
+#themeblvd_options_page .footer-sync-wrap label {
+	color: #888888;
+	cursor: default;
+	font-style: italic;
+	margin-top: 12px;
+}
+#themeblvd_options_page .footer-sync-wrap input.checkbox {
+	margin: 10px;
+}
+
 /* =OptionsFramework Admin Styles
 -----------------------------------------------*/
 
@@ -30,6 +118,10 @@
 	font-size: inherit;
 	font-style: italic;
 	line-height: 1.5em;
+	padding: 15px;
+}
+#optionsframework .section-presets {
+	border-bottom: 1px solid #eeeeee;
 	padding: 15px;
 }
 #optionsframework .section .heading {
@@ -1099,25 +1191,4 @@
 #optionsframework .section-testimonials .tb-sortable-option textarea,
 #optionsframework .section-toggles .tb-sortable-option textarea {
 	height: auto;
-}
-
-/* Footer Template Sync */
-#optionsframework .footer-sync-wrap {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-#optionsframework .footer-sync-wrap label,
-#optionsframework .footer-sync-wrap input.checkbox {
-	clear: none;
-	float: right;
-}
-#optionsframework .footer-sync-wrap label {
-	color: #888888;
-	cursor: default;
-	font-style: italic;
-	margin-top: 12px;
-}
-#optionsframework .footer-sync-wrap input.checkbox {
-	margin: 10px;
 }

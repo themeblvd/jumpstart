@@ -38,11 +38,10 @@
 					// Refresh any code editor options
 					$button.closest('.'+type).find('.section-code').each(function(){
 
-						var code_option = $(this),
-							editor = code_option.find('textarea').data('CodeMirrorInstance');
+						var $editor = $(this).find('textarea').data('CodeMirrorInstance');
 
-						if ( editor ) {
-							editor.refresh();
+						if ( $editor ) {
+							$editor.refresh();
 						}
 					});
 
@@ -1607,7 +1606,7 @@
 					images[i] = {
 						id: element.id,
 						title: element.title,
-						preview: element.sizes['thumbnail'].url
+						preview: element.sizes['tb_thumb'].url
 					}
 					i++;
 				});
