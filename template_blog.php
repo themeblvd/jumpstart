@@ -27,31 +27,7 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
-
-						<?php if ( themeblvd_is_grid_mode() ) : ?>
-
-							<!-- BLOG POST GRID (start) -->
-
-							<div class="post_grid_paginated post_grid blog">
-								<?php themeblvd_post_grid(); ?>
-							</div><!-- .primary-post-grid (end) -->
-
-							</div><!-- .post_grid (end) -->
-
-							<!-- BLOG POST GRID (end) -->
-
-						<?php else : ?>
-
-							<!-- BLOG POST LIST (start) -->
-
-							<div class="post_list_paginated post_list blog">
-								<?php themeblvd_post_list(); ?>
-							</div><!-- .primary-post-list (end) -->
-
-							<!-- BLOG POST LIST (end) -->
-
-						<?php endif; ?>
-
+						<?php themeblvd_loop(); ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->

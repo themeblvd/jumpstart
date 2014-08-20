@@ -27,7 +27,7 @@ get_header();
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner list-template-wrap">
 						<?php themeblvd_content_top(); ?>
-						<?php themeblvd_post_list(); ?>
+						<?php themeblvd_loop(); ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
