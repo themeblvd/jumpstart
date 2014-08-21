@@ -320,7 +320,11 @@ function themeblvd_loop( $args = array() ){
 			// already exists, that's our boy.
 			$query_args = themeblvd_get_second_query();
 
-			if ( ! $query_args ) {
+			if ( $query_args ) {
+
+				$doing_the_second_loop = true;
+
+			} else {
 
 				if ( $context == 'grid' ) {
 
@@ -399,7 +403,7 @@ function themeblvd_loop( $args = array() ){
 
 	// Output title and content of current page, if this is a
 	// page template displaying secondary loop.
-	if ( is_page_template('template_blog.php') || is_page_template('template_list.php') || is_page_template('template_grid.php') ) {
+	if ( ! empty($doing_the_second_loop) && ( is_page_template('template_blog.php') || is_page_template('template_list.php') || is_page_template('template_grid.php') ) ) {
 		themeblvd_page_info();
 	}
 
