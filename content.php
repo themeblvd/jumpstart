@@ -53,7 +53,7 @@
 
 	<?php endif; ?>
 
-	<div class="entry-content">
+	<div class="entry-content clearfix">
 		<?php themeblvd_blog_content( themeblvd_get_att('content') ); // Abide by relevant excerpt vs content theme option ?>
 	</div><!-- .entry-content -->
 
