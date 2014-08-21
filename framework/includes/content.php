@@ -369,3 +369,51 @@ function themeblvd_get_widgets( $sidebar, $context = 'element' ) {
 function themeblvd_widgets( $sidebar, $context = 'element' ) {
 	echo themeblvd_get_widgets( $sidebar, $context );
 }
+
+/**
+ * Get title and content for a page, intended to be used with
+ * page templates that list out posts so that the title and
+ * content can optionally be displayed above the posts.
+ *
+ * @since 2.5.0
+ *
+ * @param array $content Content to of page
+ * @return string Content with post display attached
+ */
+function themeblvd_get_page_info() {
+
+	if ( get_query_var('paged') >= 2 ) {
+		return;
+	}
+
+	$post_id = themeblvd_config('id');
+	$output = $title = $content = '';
+
+	if ( get_post_meta( $post_id , '_tb_title', true ) != 'hide' ) {
+		$title = sprintf( '<h1 class="info-box-title archive-title">%s</h1>', get_the_title($post_id) );
+	}
+
+	$content = get_the_content($post_id);
+	$content = apply_filters( 'the_content', $content );
+	$content = str_replace( ']]>', ']]&gt;', $content );
+
+	$class = apply_filters('themeblvd_tax_info_class', 'tb-info-box tb-page-info'); // Filtering to allow "content-bg" to be added
+
+	if ( $title || $content ) {
+		$output = sprintf( '<section class="%s"><div class="inner">%s</div></section>', $class, $title.$content );
+	}
+
+	echo apply_filters( 'themeblvd_page_info', $output );
+}
+
+/**
+ * Display title and content for a page.
+ *
+ * @since 2.5.0
+ *
+ * @param array $content Content to of page
+ * @return string Content with post display attached
+ */
+function themeblvd_page_info() {
+	echo themeblvd_get_page_info();
+}
