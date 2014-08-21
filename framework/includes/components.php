@@ -678,10 +678,9 @@ function themeblvd_get_slogan( $args ) {
 
     // Setup and extract $args
     $defaults = array(
-        'slogan'                => '',                      // Text for slogan (used by element)
-        'content'               => '',                      // Text for slogan (used by block)
+        'headline'              => '',                      // Text for slogan
+        'desc'                  => '',                      // Text for slogan
         'wpautop'               => 1,                       // Whether to apply wpautop on content
-        'text_size'             => 'large',                 // Size of text - small, normal, medium, large
         'style'                 => 'none',                  // Custom styling class
         'bg_color'              => '',                      // Background color - Ex: #000000
         'bg_opacity'            => '1',                     // BG color opacity for rgba()
@@ -697,8 +696,9 @@ function themeblvd_get_slogan( $args ) {
             'include_bg'        => 1,
             'include_border'    => 1
         ),
-        'button_text'           => 'Get Started Today!',    // Text for button
+        'button_text'           => 'Purchase Now',          // Text for button
         'button_size'           => 'large',                 // Size of button - mini, small, default, large
+        'button_placement'      => 'right',                 // Placement of button - left, right, below
         'button_url'            => '',                      // URL button goes to
         'button_target'         => '_self',                 // Button target - _self, _blank
         'button_icon_before'    => '',                      // FontAwesome Icon before button text
@@ -707,12 +707,30 @@ function themeblvd_get_slogan( $args ) {
     $args = wp_parse_args( $args, $defaults );
 
     // CSS classes
-    $class = sprintf( 'tb-slogan clearfix text-%s', $args['text_size'] );
+    $class = sprintf( 'tb-slogan clearfix' );
 
     if ( $args['button'] ) {
+
         $class .= ' has-button';
+
+        if ( $args['button_placement'] == 'left' ) {
+            $class .= ' button-left';
+        } else if ( $args['button_placement'] == 'right' ) {
+            $class .= ' button-right';
+        } else {
+            $class .= ' button-below';
+        }
+
     } else {
         $class .= ' text-only';
+    }
+
+    if ( $args['headline'] ) {
+        $class .= ' has-headline';
+    }
+
+    if ( $args['desc'] ) {
+        $class .= ' has-desc';
     }
 
     // Inline styles
@@ -732,15 +750,9 @@ function themeblvd_get_slogan( $args ) {
 
     }
 
-    // Custom CSS classes
-    if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
-        $class .= ' '.$args['style'];
-    }
-
-    // Output
-    $output = sprintf( '<div class="%s" style="%s">', $class, $style );
-
     // Button
+    $button = '';
+
     if ( $args['button'] ) {
 
         // Custom button styling
@@ -764,19 +776,39 @@ function themeblvd_get_slogan( $args ) {
 
         }
 
-        $output .= themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
+        $button = themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
     }
 
-    // Content
-    $content = stripslashes($args['slogan']);
+    // Custom CSS classes
+    if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
+        $class .= ' '.$args['style'];
+    }
 
-    if ( ! $content ) {
-        $content = stripslashes($args['content']);
+    // Output
+    $output = sprintf( '<div class="%s" style="%s">', $class, $style );
+
+    // Content
+    $content = '';
+
+    if ( $args['headline'] ) {
+        $content .= sprintf('<div class="headline">%s</div>', stripslashes($args['headline']));
+    }
+
+    if ( $args['desc'] ) {
+        $content .= sprintf('<div class="desc">%s</div>', stripslashes($args['desc']));
     }
 
     // WP auto?
     if ( $args['wpautop'] ) {
         $content = wpautop( $content );
+    }
+
+    if ( $button ) {
+        if ( $args['button_placement'] == 'left' || $args['button_placement'] == 'right' ) {
+            $content = $button.$content;
+        } else {
+            $content .= $button;
+        }
     }
 
     $output .= sprintf( '<span class="slogan-text entry-content">%s</span>', do_shortcode($content) );
