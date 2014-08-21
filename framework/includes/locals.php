@@ -33,6 +33,11 @@ function themeblvd_get_all_locals() {
 		'comments_older'			=> __( '&larr; Older Comments', 'themeblvd_frontend' ),
 		'comments_title_single'		=> __( 'One comment on &ldquo;%2$s&rdquo;', 'themeblvd_frontend' ),
 		'comments_title_multiple'	=> __( '%1$s comments on &ldquo;%2$s&rdquo;', 'themeblvd_frontend' ),
+		'contact_facebook'			=> __( 'Facebook', 'themeblvd_frontend' ),
+		'contact_gplus'				=> __( 'Google+', 'themeblvd_frontend' ),
+		'contact_linkedin'			=> __( 'LinkedIn', 'themeblvd_frontend' ),
+		'contact_pinterest'			=> __( 'Pinterest', 'themeblvd_frontend' ),
+		'contact_twitter'			=> __( 'Twitter', 'themeblvd_frontend' ),
 		'contact_us'				=> __( 'Contact Us', 'themeblvd_frontend' ),
 		'crumb_404'					=> __( 'Error 404', 'themeblvd_frontend' ),
 		'crumb_author'				=> __( 'Articles posted by', 'themeblvd_frontend' ),
@@ -73,6 +78,7 @@ function themeblvd_get_all_locals() {
 		'previous'					=> __( 'Previous', 'themeblvd_frontend' ),
 		'quote'						=> __( 'Quote', 'themeblvd_frontend' ),
 		'read_more'					=> __( 'Read More', 'themeblvd_frontend' ),
+		'related_posts'				=> __( 'Related Posts', 'themeblvd_frontend' ),
 		'reply'						=> __( 'Reply', 'themeblvd_frontend' ),
 		'search'					=> __( 'Search the site...', 'themeblvd_frontend' ),
 		'search_no_results'			=> __( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'themeblvd_frontend' ),
@@ -84,6 +90,7 @@ function themeblvd_get_all_locals() {
 		'via'						=> __( 'via', 'themeblvd_frontend' ),
 		'video'						=> __( 'Video', 'themeblvd_frontend' ),
 		'view_post'					=> __( 'View Post', 'themeblvd_frontend' ),
+		'view_posts_by'				=> __( 'View all posts by %s', 'themeblvd_frontend' ),
 		'website'					=> __( 'Website', 'themeblvd_frontend' )
 	);
 

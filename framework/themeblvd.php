@@ -19,7 +19,9 @@ define( 'TB_FRAMEWORK_URI', get_template_directory_uri().'/framework' );
 /*------------------------------------------------------*/
 
 // Include files
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' ); // Needed on frontend if options haven't been saved
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' ); 	// Needed on frontend if options haven't been saved
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' );	// Needed on frontend to grab user contact icons
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );	// Needed on frontend to retrieve fake tax meta
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-api.php' );
@@ -54,7 +56,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/meta.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/meta.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-export.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-import.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
@@ -190,7 +192,8 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_after', 'themeblvd_responsive_side_menu' );
 
 	// Content
-	add_action( 'themeblvd_content_top', 'themeblvd_content_top_default' );
+	add_action( 'themeblvd_content_top', 'themeblvd_archive_info' );
+	add_action( 'themeblvd_single_footer', 'themeblvd_single_footer_default' );
 	add_action( 'themeblvd_blog_meta', 'themeblvd_blog_meta_default' );
 	add_action( 'themeblvd_blog_sub_meta', 'themeblvd_blog_sub_meta_default' );
 	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_share', 10, 0 );

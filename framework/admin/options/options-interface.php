@@ -362,6 +362,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							}
 							break;
 
+						case 'authors' :
+
+							$value['options'] = themeblvd_get_select( 'authors' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('Couldn\'t find any authors.', 'themeblvd');
+							}
+							break;
+
 					}
 
 				}

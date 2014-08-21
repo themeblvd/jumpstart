@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------*/
-/* (1) <head>
+/* <head>
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_viewport_default' ) ) :
@@ -18,7 +18,7 @@ function themeblvd_viewport_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (2) Before and after site
+/* Before and after site
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_responsive_side_menu' ) ) :
@@ -35,7 +35,7 @@ function themeblvd_responsive_side_menu() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (3) Header
+/* Header
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_header_top_default' ) ) :
@@ -203,7 +203,7 @@ function themeblvd_header_menu_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (4) Featured Area (above)
+/* Featured Area (above)
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_featured_start_default' ) ) :
@@ -248,7 +248,7 @@ function themeblvd_featured_end_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (5) Featured Area (below)
+/* Featured Area (below)
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_featured_below_start_default' ) ) :
@@ -293,7 +293,7 @@ function themeblvd_featured_below_end_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (6) Main content area
+/* Main content area
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_main_start_default' ) ) :
@@ -376,7 +376,7 @@ function themeblvd_breadcrumbs_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (7) Sidebars
+/* Sidebars
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_fixed_sidebars' ) ) :
@@ -457,7 +457,7 @@ function themeblvd_fixed_sidebar_after_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (8) Footer
+/* Footer
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_footer_content_default' ) ) :
@@ -542,44 +542,111 @@ if ( !function_exists( 'themeblvd_footer_below_default' ) ) {
 /* (9) Content
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_content_top_default' ) ) :
 /**
- * Default display for action: themeblvd_content_top
+ * Display info boxes at the top of archives.
+ * Hooked to themeblvd_content_top by default.
  *
- * @since 2.1.0
+ * @since 2.5.0
  */
-function themeblvd_content_top_default() {
-
-	global $post;
+function themeblvd_archive_info() {
 
 	if ( is_archive() ) {
-		if ( themeblvd_get_option( 'archive_title', null, 'false' ) != 'false' ) {
-			echo '<div class="element element-headline primary-entry-title">';
-			echo '<h1 class="entry-title">';
-			themeblvd_archive_title();
-			echo '</h1>';
-			echo '</div><!-- .element (end) -->';
-		}
-	}
 
-	if ( is_category() ) {
-		echo '<article class="category-desc">'.category_description().'</article>';
-	}
+		if ( is_category() || is_tag() ) {
 
-	if ( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
-		if ( get_post_meta( $post->ID, '_tb_title', true ) != 'hide' ) {
-			echo '<div class="element element-headline primary-entry-title">';
-			echo '<h1 class="entry-title">';
-			the_title();
-			echo '</h1>';
-			echo '</div><!-- .element (end) -->';
+			$setting = '';
+
+			if ( is_category() ) {
+
+				$setting = themeblvd_get_tax_meta( 'category', get_query_var('category_name'), 'info', 'default' );
+
+				if ( ! $setting || $setting == 'default' ) {
+					$setting = themeblvd_get_option('category_info', null, 'hide');
+				}
+
+				if ( $setting == 'show' ) {
+					$tax = 'category';
+					$term = get_query_var('category_name');
+				}
+
+			} else if ( is_tag() ) {
+
+				$setting = themeblvd_get_tax_meta( 'post_tag', get_query_var('tag'), 'info', 'default' );
+
+				if ( ! $setting || $setting == 'default' ) {
+					$setting = themeblvd_get_option('tag_info', null, 'hide');
+				}
+
+				if ( $setting == 'show' ) {
+					$tax = 'post_tag';
+					$term = get_query_var('tag');
+				}
+
+			}
+
+			if ( $setting == 'show' ) {
+				themeblvd_tax_info();
+			}
+
+		} else if ( is_author() ) {
+
+			$user = get_user_by( 'slug', get_query_var('author_name') );
+			$setting = get_user_meta( $user->ID, '_tb_box_archive', true );
+
+			if ( $setting === '1' ) {
+				themeblvd_author_info($user, 'archive');
+			}
+
 		}
-		the_content();
-	}
+
+		/**
+		 * Hook anything here that you want to display at the
+		 * top of archives.
+		 *
+		 * If you wanted to use themeblvd_tax_info() for a taxonomy
+		 * other than category or post_tag, this would be a good
+		 * place to do it.
+		 */
+		do_action('themeblvd_archive_info');
+
+	} // end if is_archive()
 }
-endif;
 
 // The following must happen within the loop!
+
+if ( !function_exists( 'themeblvd_single_footer_default' ) ) :
+/**
+ * Default display for action: themeblvd_single_footer
+ *
+ * @since 2.5.0
+ */
+function themeblvd_single_footer_default() {
+
+	// Author Box
+	$user = get_user_by( 'id', get_the_author_meta('ID') );
+	$setting = get_post_meta( get_the_ID(), '_tb_author_box', true );
+
+	if ( ! $setting || $setting == 'default' ) {
+		$setting = get_user_meta( $user->ID, '_tb_box_single', true );
+	}
+
+	if ( $setting === '1' ) {
+		themeblvd_author_info($user, 'single');
+	}
+
+	// Related Posts
+	$setting = get_post_meta( get_the_ID(), '_tb_related_posts', true );
+
+	if ( ! $setting || $setting == 'default' ) {
+		$setting = themeblvd_get_option('single_related_posts', null, 'tag');
+	}
+
+	if ( $setting != 'hide' ) {
+		themeblvd_related_posts(array('related_by' => $setting));
+	}
+
+}
+endif;
 
 if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
 /**
@@ -693,19 +760,7 @@ function themeblvd_blog_content_default( $type ) {
 endif;
 
 /*------------------------------------------------------------*/
-/* (10) Layout Builder Elements
-/*------------------------------------------------------------*/
-
-// ...
-
-/*------------------------------------------------------------*/
-/* (11) Comment Form
-/*------------------------------------------------------------*/
-
-// ...
-
-/*------------------------------------------------------------*/
-/* (12) WordPress Multisite
+/* WordPress Multisite
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_before_signup_form' ) ) :
@@ -715,9 +770,16 @@ if ( !function_exists( 'themeblvd_before_signup_form' ) ) :
  * @since 2.1.0
  */
 function themeblvd_before_signup_form() {
-	echo '<div id="sidebar_layout" class="clearfix">';
-	echo '<div class="sidebar_layout-inner">';
-	echo '<div class="grid-protection">';
+	?>
+	<div id="sidebar_layout" class="clearfix">
+		<div class="sidebar_layout-inner">
+			<div class="row grid-protection">
+
+				<!-- CONTENT (start) -->
+
+				<div id="content" class="col-md-12 clearfix" role="main">
+					<div class="inner">
+						<?php themeblvd_content_top();
 }
 endif;
 
@@ -728,8 +790,24 @@ if ( !function_exists( 'themeblvd_after_signup_form' ) ) :
  * @since 2.1.0
  */
 function themeblvd_after_signup_form() {
-	echo '</div><!-- .grid-protection (end) -->';
-	echo '</div><!-- .sidebar_layout-inner (end) -->';
-	echo '</div><!-- .sidebar-layout-wrapper (end) -->';
+
+						themeblvd_content_bottom(); ?>
+					</div><!-- .inner (end) -->
+				</div><!-- #content (end) -->
+
+				<!-- CONTENT (end) -->
+
+				<!-- SIDEBARS (start) -->
+
+				<?php get_sidebar( 'left' ); ?>
+
+				<?php get_sidebar( 'right' ); ?>
+
+				<!-- SIDEBARS (end) -->
+
+			</div><!-- .grid-protection (end) -->
+		</div><!-- .sidebar_layout-inner (end) -->
+	</div><!-- .#sidebar_layout (end) -->
+	<?php
 }
 endif;

@@ -33,9 +33,10 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_contact_bar_defaults', array(
-		'style'		=> themeblvd_get_option( 'social_media_style', null, 'flat' ),	// color, grey, light, dark, flat
-		'tooltip'	=> 'bottom',
-		'class'		=> ''															// top, right, left, bottom, false
+		'style'			=> themeblvd_get_option( 'social_media_style', null, 'flat' ),	// color, grey, light, dark, flat
+		'tooltip'		=> 'bottom',
+		'class'			=> '',															// top, right, left, bottom, false
+		'authorship'	=> false
 	));
 	$args = wp_parse_args( $args, $defaults );
 
@@ -57,17 +58,30 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 			// Link class
 			$class = $button['icon'];
+
 			if ( $args['style'] != 'color' ) { // Note: "color" means to use colored image icons; otherwise, we use icon font.
 				$class .= ' tb-icon tb-icon-'.$class;
 			}
+
 			if ( $args['tooltip'] && $args['tooltip'] != 'disable' ) {
 				$class .= ' tb-tooltip';
 			}
 
 			// Link Title
 			$title = '';
+
 			if ( ! empty( $button['label']) ) {
 				$title = $button['label'];
+			}
+
+			$title = str_replace('[url]', $button['url'], $title);
+			$title = str_replace(array('http://', 'https://'), '', $title);
+
+			// Google+ authorship
+			if ( $args['authorship'] && $button['icon'] == 'google' ) {
+				if ( strpos($button['url'], '?rel=author') === false ) {
+					$button['url'] .= '?rel=author';
+				}
 			}
 
 			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s"></a></li>', $button['url'], $title, $class, $button['target'], $args['tooltip'] );
@@ -1025,4 +1039,252 @@ function themeblvd_get_loader() {
  */
 function themeblvd_loader() {
 	echo themeblvd_loader();
+}
+
+/**
+ * Get archive info box
+ *
+ * @since 2.5.0
+ *
+ * @param string $tax Slug of taxonomy
+ * @param string $term Slug of term
+ * @return string $output Final content to output
+ */
+function themeblvd_get_tax_info() {
+
+	global $wp_query;
+
+	if ( ! is_category() && ! is_tag() && ! is_tax() ) {
+		return;
+	}
+
+	if ( get_query_var('paged') >= 2 ) {
+		return;
+	}
+
+	if ( is_tax() ) {
+		$term = get_term_by( 'slug', get_query_var('term'), get_query_var('taxonomy') );
+	} else {
+		$term = $wp_query->get_queried_object();
+	}
+
+	if ( ! $term ) {
+		return;
+	}
+
+	$output = $name = $desc = '';
+
+	if ( $term->name ) {
+		$name = sprintf( '<h1 class="info-box-title archive-title">%s</h1>', strip_tags($term->name) );
+	}
+
+	if ( $term->description ) {
+		$desc = apply_filters('themeblvd_tax_info_desc', themeblvd_get_content($term->description));
+	}
+
+	$class = apply_filters('themeblvd_tax_info_class', 'tb-info-box tb-tax-info'); // Filtering to allow "content-bg" to be added
+
+	if ( $name || $desc ) {
+		$output = sprintf( '<section class="%s"><div class="inner">%s</div></section>', $class, $name.$desc );
+	}
+
+	return apply_filters( 'themeblvd_tax_info', $output, $term );
+}
+
+/**
+ * Display archive info box
+ *
+ * @since 2.5.0
+ */
+function themeblvd_tax_info() {
+	echo themeblvd_get_tax_info();
+}
+
+/**
+ * Get author box
+ *
+ * @since 2.5.0
+ *
+ * @return string $output Final content to output
+ */
+function themeblvd_get_author_info( $user = null, $context = 'single' ) {
+
+	$gravatar_size = apply_filters('themeblvd_author_box_gravatar_size', 70);
+	$gravatar = get_avatar( $user->user_email, $gravatar_size );
+	$desc = get_user_meta( $user->ID, 'description', true );
+
+	$class = apply_filters('themeblvd_tax_info_class', 'tb-info-box tb-author-box '.$context); // Filtering to allow "content-bg" to be added
+
+	$output = sprintf('<section class="%s">', $class);
+	$output .= '<div class="inner">';
+
+	// User info
+	if ( $gravatar ) {
+		$class = apply_filters('themeblvd_author_box_avatar_class', 'avatar-wrap');
+		$output .= sprintf('<div class="%s">%s</div>', $class, $gravatar);
+	}
+
+	if ( $context == 'archive' ) {
+		$output .= sprintf('<h1 class="info-box-title archive-title">%s</h1>', $user->display_name);
+	} else {
+		$output .= sprintf('<h3 class="info-box-title">%s</h3>', $user->display_name);
+	}
+
+	// Link to archive of user posts
+	if ( $context == 'single' && get_user_meta( $user->ID, '_tb_box_archive_link', true ) === '1' ) {
+		$text = sprintf(themeblvd_get_local('view_posts_by'), $user->display_name);
+		$desc .= "\n\n";
+		$desc .= sprintf('<a href="%s" class="view-posts-link">%s</a>', get_author_posts_url($user->ID), $text);
+	}
+
+	if ( $desc ) {
+		$output .= themeblvd_get_content($desc);;
+	}
+
+	// Contact icons
+	$style = get_user_meta( $user->ID, '_tb_box_icons', true );
+
+	if ( ! $style ) {
+		$style = 'flat';
+	}
+
+	$icons = Theme_Blvd_User_Options::get_icons();
+	$display = array();
+
+	if ( get_user_meta( $user->ID, '_tb_box_email', true ) === '1' ) {
+		$display[] = array(
+			'icon' 		=> 'email',
+			'url' 		=> 'mailto:'.$user->user_email,
+			'label' 	=> themeblvd_get_local('email'),
+			'target' 	=> '_self'
+		);
+	}
+
+	foreach ( $icons as $icon_id => $info ) {
+
+		$url = get_user_meta( $user->ID, $info['key'], true );
+
+		if ( $icon_id == 'website' ) {
+			$icon_id = 'anchor';
+			$url = $user->user_url;
+		}
+
+		if ( $url ) {
+
+			$display[$icon_id] = array(
+				'icon' 		=> $icon_id,
+				'url' 		=> $url,
+				'target' 	=> '_blank'
+			);
+
+			if ( $icon_id == 'anchor' ) {
+				$display[$icon_id]['label'] = $icons['website']['label'];
+			} else {
+				$display[$icon_id]['label'] = $icons[$icon_id]['label'];
+			}
+		}
+
+	}
+
+	if ( $display ) {
+		$output .= themeblvd_get_contact_bar( $display, array('style' => $style, 'tooltip' => 'top', 'class' => 'author-box', 'authorship' => true) );
+	}
+
+	$output .= '</div><!-- .inner (end) -->';
+	$output .= '</section><!-- .tb-author-box (end) -->';
+
+	return apply_filters( 'themeblvd_author_info', $output, $user, $context );
+}
+
+/**
+ * Display author info box
+ *
+ * @since 2.5.0
+ */
+function themeblvd_author_info( $user = null, $context = 'single' ) {
+	echo themeblvd_get_author_info($user, $context);
+}
+
+/**
+ * Get related posts
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_related_posts( $args = array() ) {
+
+	$defaults = apply_filters('themeblvd_related_posts_args', array(
+		'post_id'		=> themeblvd_config('id'),
+		'post_type'		=> 'post',
+		'columns' 		=> 2,
+		'total'			=> 6,
+		'related_by'	=> themeblvd_get_option('single_related_posts', null, 'tag'),
+		'thumbs'		=> 'smaller',
+		'meta'			=> true,
+		'query'			=> ''
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	if ( get_post_type() != $args['post_type'] ) {
+		return '';
+	}
+
+	if ( ! $args['query'] ) {
+
+		$args['query'] = array(
+            'post_type' 			=> $args['post_type'],
+            'post__not_in'			=> array($args['post_id']),
+            'orderby'				=> 'rand',
+            'ignore_sticky_posts'	=> 1,
+            'posts_per_page'		=> $args['total']
+        );
+
+		if ( $args['related_by'] == 'tag' ) {
+
+			$tag_ids = array();
+			$tags = get_the_tags($args['post_id']);
+
+			if ( $tags ) {
+				foreach ( $tags as $tag ) {
+					$tag_ids[] = $tag->term_id;
+				}
+			}
+
+			$args['query']['tag__in'] = $tag_ids;
+
+		} else if ( $args['related_by'] == 'category' ) {
+
+			$cat_ids = array();
+			$cats = get_the_category($args['post_id']);
+
+			if ( $cats ) {
+				foreach ( $cats as $cat ) {
+					$cat_ids[] = $cat->term_id;
+				}
+			}
+
+			$args['query']['category__in'] = $cat_ids;
+
+		}
+
+		$args['query'] = apply_filters( 'themeblvd_related_posts_args', $args['query'], $args );
+
+	}
+
+	$output = '<section class="tb-related-posts">';
+	$output .= sprintf('<h2 class="related-posts-title">%s</h2>', themeblvd_get_local('related_posts'));
+	$output .= '<div class="inner">';
+	$output .= themeblvd_get_mini_post_list( $args, $args['thumbs'], $args['meta'] );
+	$output .= '</div><!-- .inner (end) -->';
+	$output .= '</section><!-- .tb-related-posts (end) -->';
+
+	return apply_filters( 'themeblvd_author_info', $output, $args );
+}
+
+/**
+ * Display related posts
+ *
+ * @since 2.5.0
+ */
+function themeblvd_related_posts( $args = array() ) {
+	echo themeblvd_get_related_posts($args);
 }
