@@ -205,7 +205,7 @@ function setup_themeblvd_post_meta() {
 		'options' => array(
 			'tb_meta' => array(
 				'id' 		=> '_tb_meta',
-				'name' 		=> __( 'Meta Information (the single post)', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Meta Information (the single post)', 'themeblvd' ),
 				'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show on this single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -217,7 +217,7 @@ function setup_themeblvd_post_meta() {
 			),
 			'tb_sub_meta' => array(
 				'id' 		=> '_tb_sub_meta',
-				'name' 		=> __( 'Sub Meta Information (the single post)', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Sub Meta Information (the single post)', 'themeblvd' ),
 				'desc' 		=> __( 'Select if you\'d like the sub meta information (like tags, categories, etc) to show on this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -227,9 +227,34 @@ function setup_themeblvd_post_meta() {
 					'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
 				)
 			),
+			'tb_author_box' => array(
+				'id' 		=> '_tb_author_box',
+				'name' 		=> __( 'Author Box (the single post)', 'themeblvd' ),
+				'desc' 		=> __( 'Select if you\'d like to display a box with information about the post\'s author.', 'themeblvd' ),
+				'std' 		=> 'default',
+				'type' 		=> 'radio',
+				'options' 	=> array(
+					'default'	=> __( 'Use WordPress user\'s default setting', 'themeblvd' ),
+					'1'			=> __( 'Show author box', 'themeblvd' ), // Use "1" to match default user checkbox option
+					'hide' 		=> __( 'Hide author box', 'themeblvd' )
+				)
+			),
+			'tb_related_posts' => array(
+				'id' 		=> '_tb_related_posts',
+				'name' 		=> __( 'Related Posts (the single post)', 'themeblvd' ),
+				'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ),
+				'std' 		=> 'default',
+				'type' 		=> 'radio',
+				'options' 	=> array(
+					'default'	=> __( 'Use default setting', 'themeblvd' ),
+					'tag'		=> __( 'Show related posts by tag', 'themeblvd' ),
+					'category'	=> __( 'Show related posts by category', 'themeblvd' ),
+					'hide' 		=> __( 'Hide related posts', 'themeblvd' )
+				)
+			),
 			'tb_comments' => array(
 				'id' 		=> '_tb_comments',
-				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ),
 				'desc' 		=> __( 'This will hide the presence of comments on this single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
@@ -253,7 +278,7 @@ function setup_themeblvd_post_meta() {
 			),
 			'tb_thumb' => array(
 				'id' 		=> '_tb_thumb',
-				'name' 		=> __( 'Featured Image Display (the single post)', 'themeblvd' ), /* Required by Framework */
+				'name' 		=> __( 'Featured Image Display (the single post)', 'themeblvd' ),
 				'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',

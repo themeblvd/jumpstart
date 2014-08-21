@@ -146,9 +146,6 @@ class Theme_Blvd_Options_API {
 	 *		- social_media
 	 *		- social_media_style
 	 *		- searchform
-	 *	- Main
-	 *		- breadcrumbs
-	 *		- sidebar_layout
 	 *	- Footer
 	 *		- footer_setup
 	 *		- footer_col_1
@@ -157,32 +154,49 @@ class Theme_Blvd_Options_API {
 	 *		- footer_col_4
 	 *		- footer_col_5
 	 *		- footer_copyright
+	 *  - Sidebar Layouts
+	 *		- sidebar_layout
+	 *		- single_sidebar_layout
+	 *		- page_sidebar_layout
+	 *		- archive_sidebar_layout
 	 *	- Extras
+	 *		- breadcrumbs
 	 *		- scroll_to_top
 	 * Content
 	 *	- Single Posts
 	 *		- single_meta
+	 *		- single_sub_meta
+	 *		- share
+	 *		- share_style
 	 *		- single_thumbs
+	 *		- single_related_posts
 	 *		- single_comments
-	 *	- Primary Posts Display
+	 *	- Archives
+	 *		- archive_mode
+	 *		- category_info
+	 *		- tag_info
+	 *	- Blog
 	 *		- blog_thumbs
 	 *		- blog_content
 	 *		- blog_categories
-	 *	- Archives
-	 *		- archive_title
-	 *		- archive_thumbs
-	 *		- archive_content
 	 *	- Post Lists
 	 *		- list_thumbs
 	 *		- list_meta
+	 *		- list_sub_group_start
 	 *		- list_more
 	 *		- list_more_text
+	 *		- list_sub_group_end
+	 *		- list_posts_per_page
 	 *	- Post Grids
 	 *		- grid_thumbs
 	 *		- grid_meta
 	 *		- grid_excerpt
+	 *		- grid_sub_group_start
 	 *		- grid_more
 	 *		- grid_more_text
+	 *		- grid_sub_group_end
+	 *		- grid_columns
+	 *		- grid_rows
 	 *	- Lightbox
 	 *		- lightbox_animation
 	 *		- lightbox_mobile
@@ -221,6 +235,7 @@ class Theme_Blvd_Options_API {
 		/*--------------------------------*/
 
 		$layout_options = array(
+
 			// Section: Header
 			'header' => array(
 				'name' => __( 'Header', 'themeblvd' ),
@@ -294,32 +309,7 @@ class Theme_Blvd_Options_API {
 					),
 				) // End header options
 			),
-			// Section: Main
-			'main' => array(
-				'name' => __( 'Main', 'themeblvd' ),
-				'options' => array(
-					'breadcrumbs' => array(
-						'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
-						'desc'		=> __( 'Select whether you\'d like breadcrumbs to show throughout the site or not.', 'themeblvd' ),
-						'id'		=> 'breadcrumbs',
-						'std'		=> 'show',
-						'type' 		=> 'select',
-						'options'	=> array(
-							'show' => __( 'Yes, show breadcrumbs', 'themeblvd' ),
-							'hide' => __( 'No, hide breadcrumbs', 'themeblvd' )
-						)
-					),
-					'sidebar_layout' => array(
-						'name' 		=> __( 'Default Sidebar Layout', 'themeblvd' ),
-						'desc' 		=> __( 'Choose the default sidebar layout for the main content area of your site.<br><br><em>Note: This will be the default sidebar layout throughout your site, but you can be override this setting for any specific page or custom layout.</em>', 'themeblvd' ),
-						'id' 		=> 'sidebar_layout',
-						'std' 		=> 'sidebar_right',
-						'type' 		=> 'images',
-						'options' 	=> $sidebar_layouts,
-						'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
-					)
-				) // End main options
-			),
+
 			// Section: Footer
 			'footer' => array(
 				'name' => __( 'Footer', 'themeblvd' ),
@@ -392,16 +382,72 @@ class Theme_Blvd_Options_API {
 					)
 				) // End footer options
 			),
+
+			// Section: Sidebar Layouts
+			'sidebar_layouts' => array(
+				'name' => __( 'Sidebar Layout', 'themeblvd' ),
+				//'desc' => __( 'These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
+				'options' => array(
+					'sidebar_layout' => array(
+						'name' 		=> __( 'Default', 'themeblvd' ),
+						'desc' 		=> __( 'Choose the default sidebar layout for the main content area of your site.', 'themeblvd' ),
+						'id' 		=> 'sidebar_layout',
+						'std' 		=> 'sidebar_right',
+						'type' 		=> 'images',
+						'options' 	=> $sidebar_layouts,
+						'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
+					),
+					'single_sidebar_layout' => array(
+						'name' 		=> __( 'Single Posts', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a single post, what do you want to use for the sidebar layout?', 'themeblvd' ),
+						'id' 		=> 'single_sidebar_layout',
+						'std' 		=> 'default',
+						'type' 		=> 'images',
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
+					),
+					'page_sidebar_layout' => array(
+						'name' 		=> __( 'Pages', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a standard page, what do you want to use for the sidebar layout?', 'themeblvd' ),
+						'id' 		=> 'page_sidebar_layout',
+						'std' 		=> 'default',
+						'type' 		=> 'images',
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
+					),
+					'archive_sidebar_layout' => array(
+						'name' 		=> __( 'Archives', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a general archive of posts, what do you want to use for the sidebar layout?', 'themeblvd' ),
+						'id' 		=> 'archive_sidebar_layout',
+						'std' 		=> 'default',
+						'type' 		=> 'images',
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
+					)
+				)
+			),
+
 			// Section: Extras
 			'extras' => array(
 				'name' => __( 'Extras', 'themeblvd' ),
 				'options' => array(
+					'breadcrumbs' => array(
+						'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
+						'desc'		=> __( 'Select whether you\'d like breadcrumbs to show throughout the site or not.', 'themeblvd' ),
+						'id'		=> 'breadcrumbs',
+						'std'		=> 'show',
+						'type' 		=> 'select',
+						'options'	=> array(
+							'show' => __( 'Yes, show breadcrumbs', 'themeblvd' ),
+							'hide' => __( 'No, hide breadcrumbs', 'themeblvd' )
+						)
+					),
 					'scroll_to_top' => array(
 						'name' 		=> __( 'Scroll-to-Top Button', 'themeblvd' ),
 						'desc' 		=> __( 'If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website.', 'themeblvd' ),
 						'id' 		=> 'scroll_to_top',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options'	=> array(
 							'show'	=> __('Yes, show button', 'themeblvd'),
 							'hide'	=> __('No, don\'t show it', 'themeblvd'),
@@ -427,7 +473,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show on the single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
 						'id' 		=> 'single_meta',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'show'		=> __( 'Show meta info', 'themeblvd' ),
 							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
@@ -438,7 +484,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the sub meta information (like tags, categories, etc) to show on the single post.', 'themeblvd' ),
 						'id' 		=> 'single_sub_meta',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'show'		=> __( 'Show sub meta info', 'themeblvd' ),
 							'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
@@ -487,10 +533,22 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Choose how you want your featured images to show on the single post. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'themeblvd' ),
 						'id' 		=> 'single_thumbs',
 						'std' 		=> 'full',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'full' 		=> __( 'Show featured images', 'themeblvd' ),
 							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
+						)
+					),
+					'single_related_posts' => array(
+						'name' 		=> __( 'Related Posts', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ),
+						'id' 		=> 'single_related_posts',
+						'std' 		=> 'tag',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'tag'		=> __( 'Show related posts by tag', 'themeblvd' ),
+							'category'	=> __( 'Show related posts by category', 'themeblvd' ),
+							'hide' 		=> __( 'Hide related posts', 'themeblvd' )
 						)
 					),
 					'single_comments' => array(
@@ -498,7 +556,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'This will hide the presence of comments on the single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
 						'id' 		=> 'single_comments',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'show'		=> __( 'Show comments', 'themeblvd' ),
 							'hide' 		=> __( 'Hide comments', 'themeblvd' )
@@ -507,17 +565,55 @@ class Theme_Blvd_Options_API {
 				) // End single options
 			),
 
+			// Section: Archives
+			'archives' => array(
+				'name' => __( 'Archives', 'themeblvd' ),
+				//'desc' => __( 'These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
+				'options' => array(
+					'archive_mode' => array(
+						'name' 		=> __( 'Post Display', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing an archive of posts, how do you want them displayed by default?', 'themeblvd' ),
+						'id' 		=> 'archive_mode',
+						'std' 		=> 'blog',
+						'type' 		=> 'select',
+						'options' 	=> themeblvd_get_modes()
+					),
+					'category_info' => array(
+						'name' 		=> __( 'Category Info Boxes', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?', 'themeblvd' ),
+						'id' 		=> 'category_info',
+						'std' 		=> 'hide',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'	=> __( 'Yes, show info boxes', 'themeblvd' ),
+							'hide' 	=> __( 'No, hide info boxes', 'themeblvd' )
+						)
+					),
+					'tag_info' => array(
+						'name' 		=> __( 'Tag Info Boxes', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?', 'themeblvd' ),
+						'id' 		=> 'tag_info',
+						'std' 		=> 'hide',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'	=> __( 'Yes, show info boxes', 'themeblvd' ),
+							'hide' 	=> __( 'No, hide info boxes', 'themeblvd' )
+						)
+					)
+				) // End archives options
+			),
+
 			// Section: Primary Posts Display
 			'blog' => array(
-				'name' => __( 'Blog Display', 'themeblvd' ),
-				'desc' => __( 'These settings apply to your main theme index page, "posts page" that you\'ve selected under Settings > Reading, and <strong>all</strong> instances of the "Blog" page template. .', 'themeblvd' ),
+				'name' => __( 'Post Display: Blog', 'themeblvd' ),
+				'desc' => __( 'These settings apply to your main theme index page, "posts page" that you\'ve selected under Settings > Reading, and <strong>all</strong> instances of the "Blog" page template. Additionally, any archives you select to display in the "Blog" post layout will use these settings.', 'themeblvd' ),
 				'options' => array(
 					'blog_thumbs' => array(
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
 						'desc' 		=> __( 'Select the size of the blog\'s post thumbnail or whether you\'d like to hide them all together when posts are listed.', 'themeblvd' ),
 						'id' 		=> 'blog_thumbs',
 						'std' 		=> 'full',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'full' 		=> __( 'Show featured images', 'themeblvd' ),
 							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
@@ -528,7 +624,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
 						'id' 		=> 'blog_content',
 						'std' 		=> 'excerpt',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'content'	=> __( 'Show full content', 'themeblvd' ),
 							'excerpt' 	=> __( 'Show excerpt only', 'themeblvd' )
@@ -536,7 +632,7 @@ class Theme_Blvd_Options_API {
 					),
 					'blog_categories' => array(
 						'name' 		=> __( 'Exclude Categories', 'themeblvd' ),
-						'desc' 		=> __( 'Select any categories you\'d like to be excluded from your blog.', 'themeblvd' ),
+						'desc' 		=> __( 'Select any categories you\'d like to be excluded from your blog.<br><br><em>Note: This only applies to the main index blog (or your "posts page").</em>', 'themeblvd' ),
 						'id' 		=> 'blog_categories',
 						'type' 		=> 'multicheck',
 						'options' 	=> $options_categories
@@ -544,57 +640,9 @@ class Theme_Blvd_Options_API {
 				) // End blog options
 			),
 
-			// Section: Archives
-			'archives' => array(
-				'name' => __( 'Archives', 'themeblvd' ),
-				'desc' => __( 'These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', 'themeblvd' ),
-				'options' => array(
-					'archive_title' => array(
-						'name' 		=> __( 'Archive Page Titles', 'themeblvd' ),
-						'desc' 		=> __( 'Choose whether or not you want the title to show on tag archives, category archives, date archives, author archives and search result pages.', 'themeblvd' ),
-						'id' 		=> 'archive_title',
-						'std' 		=> 'false',
-						'type' 		=> 'radio',
-						'options' 	=> array(
-							'true'	=> __( 'Yes, show main title at the top of archive pages', 'themeblvd' ),
-							'false' => __( 'No, hide the title', 'themeblvd' )
-						)
-					),
-					'archive_thumbs' => array(
-						'name' 		=> __( 'Featured Images', 'themeblvd' ),
-						'desc' 		=> __( 'Choose whether or not you want featured images to show on tag archives, category archives, date archives, author archives and search result pages.', 'themeblvd' ),
-						'id' 		=> 'archive_thumbs',
-						'std' 		=> 'full',
-						'type' 		=> 'radio',
-						'options' 	=> array(
-							'full' 		=> __( 'Show featured images', 'themeblvd' ),
-							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
-						)
-					),
-					'archive_content' => array(
-						'name' 		=> __( 'Excerpts of Full Content', 'themeblvd' ),
-						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
-						'id' 		=> 'archive_content',
-						'std' 		=> 'excerpt',
-						'type' 		=> 'radio',
-						'options' 	=> array(
-							'content'	=> __( 'Show full content', 'themeblvd' ),
-							'excerpt' 	=> __( 'Show excerpt only', 'themeblvd' )
-						)
-					),
-					'archive_posts_per_page' => array(
-						'name' 		=> __( 'Posts Per Page', 'themeblvd' ),
-						'desc' 		=> __( 'Enter how many posts you\'d like shown per page in your archives.', 'themeblvd' ),
-						'id' 		=> 'archive_posts_per_page',
-						'std' 		=> '10',
-						'type' 		=> 'text'
-					)
-				) // End archives options
-			),
-
 			// Section: Post Lists
 			'list' => array(
-				'name' => __( 'Post Lists', 'themeblvd' ),
+				'name' => __( 'Post Display: List', 'themeblvd' ),
 				'desc' => __( 'These settings allow you to setup the default configuration for using post lists.', 'themeblvd' ),
 				'options' => array(
 					'list_thumbs' => array(
@@ -602,10 +650,10 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Choose whether or not you want featured images to show for each post.', 'themeblvd' ),
 						'id' 		=> 'list_thumbs',
 						'std' 		=> 'full',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' => array(
-							'full'		=> __( 'Show featured images', 'themeblvd_builder' ),
-							'hide' 		=> __( 'Hide featured images', 'themeblvd_builder' )
+							'full'		=> __( 'Show featured images', 'themeblvd' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),
 					'list_meta' => array(
@@ -613,7 +661,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'themeblvd' ),
 						'id' 		=> 'list_meta',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'show'		=> __( 'Show meta info', 'themeblvd' ),
 							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
@@ -628,7 +676,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'What would you like to show for each post to lead the reader to the full post?', 'themeblvd' ),
 						'id' 		=> 'list_more',
 						'std' 		=> 'text',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'text' 		=> __( 'Show text link', 'themeblvd' ),
 							'button'	=> __( 'Show button', 'themeblvd' ),
@@ -646,13 +694,20 @@ class Theme_Blvd_Options_API {
 					),
 					'list_sub_group_end' => array(
 						'type' 		=> 'subgroup_end'
-					)
+					),
+					'list_posts_per_page' => array(
+						'name' 		=> __( 'Posts Per Page', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post list, what is the maximum number of posts to display on each page?', 'themeblvd' ),
+						'id' 		=> 'list_posts_per_page',
+						'std' 		=> '10',
+						'type' 		=> 'text'
+					),
 				) // End post list options
 			),
 
 			// Section: Post Grids
 			'grid' => array(
-				'name' => __( 'Post Grids', 'themeblvd' ),
+				'name' => __( 'Post Display: Grid', 'themeblvd' ),
 				'desc' => __( 'These settings allow you to setup the default configuration for using post grids.', 'themeblvd' ),
 				'options' => array(
 					'grid_thumbs' => array(
@@ -660,10 +715,10 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Choose whether or not you want featured images to show for each post.', 'themeblvd' ),
 						'id' 		=> 'grid_thumbs',
 						'std' 		=> 'full',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' => array(
-							'full'		=> __( 'Show featured images', 'themeblvd_builder' ),
-							'hide' 		=> __( 'Hide featured images', 'themeblvd_builder' )
+							'full'		=> __( 'Show featured images', 'themeblvd' ),
+							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),
 					'grid_meta' => array(
@@ -671,18 +726,18 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'themeblvd' ),
 						'id' 		=> 'grid_meta',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'show'		=> __( 'Show meta info', 'themeblvd' ),
 							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
 						)
 					),
 					'grid_excerpt' => array(
-						'name' 		=> __( 'Excerpt', 'themeblvd' ),
+						'name' 		=> __( 'Excerpts', 'themeblvd' ),
 						'desc' 		=> __( 'Select if you\'d like to show the excerpt or not for each post.', 'themeblvd' ),
 						'id' 		=> 'grid_excerpt',
 						'std' 		=> 'show',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'show'		=> __( 'Show excerpts', 'themeblvd' ),
 							'hide' 		=> __( 'Hide excerpts', 'themeblvd' )
@@ -697,7 +752,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'What would you like to show for each post to lead the reader to the full post?', 'themeblvd' ),
 						'id' 		=> 'grid_more',
 						'std' 		=> 'button',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'text' 		=> __( 'Show text link', 'themeblvd' ),
 							'button'	=> __( 'Show button', 'themeblvd' ),
@@ -715,6 +770,26 @@ class Theme_Blvd_Options_API {
 					),
 					'grid_sub_group_end' => array(
 						'type' 		=> 'subgroup_end'
+					),
+					'grid_columns' => array(
+						'name' 		=> __( 'Columns', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post grid, how many columns should the posts be separated into?', 'themeblvd' ),
+						'id' 		=> 'grid_columns',
+						'std' 		=> '3',
+						'type' 		=> 'select',
+						'options' => array(
+							'2'			=> __( '2 Columns', 'themeblvd' ),
+							'3' 		=> __( '3 Columns', 'themeblvd' ),
+							'4' 		=> __( '4 Columns', 'themeblvd' ),
+							'5' 		=> __( '5 Columns', 'themeblvd' )
+						)
+					),
+					'grid_rows' => array(
+						'name' 		=> __( 'Rows', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?<br><br><em>Note: The total posts on the page will be the number of rows times the number of columns.</em>', 'themeblvd' ),
+						'id' 		=> 'grid_rows',
+						'std' 		=> '3',
+						'type' 		=> 'text'
 					)
 				) // End post grid options
 			),
@@ -729,7 +804,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like lightboxes to animate as they open and close.', 'themeblvd' ),
 						'id' 		=> 'lightbox_animation',
 						'std' 		=> 'fade',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'none'		=> __( 'No animation', 'themeblvd' ),
 							'fade' 		=> __( 'Fade animation', 'themeblvd' )
@@ -740,7 +815,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the lightbox to be disabled for mobile users viewing a standard lightbox instance.', 'themeblvd' ),
 						'id' 		=> 'lightbox_mobile',
 						'std' 		=> 'no',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'yes'		=> __( 'Yes, disable for mobile.', 'themeblvd' ),
 							'no' 		=> __( 'No, do not disable for mobile.', 'themeblvd' )
@@ -751,7 +826,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup.', 'themeblvd' ),
 						'id' 		=> 'lightbox_mobile_iframe',
 						'std' 		=> 'yes',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'yes'		=> __( 'Yes, disable for mobile.', 'themeblvd' ),
 							'no' 		=> __( 'No, do not disable for mobile.', 'themeblvd' )
@@ -762,7 +837,7 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'Select if you\'d like the lightbox to be disabled for mobile users when viewing a gallery.', 'themeblvd' ),
 						'id' 		=> 'lightbox_mobile_gallery',
 						'std' 		=> 'no',
-						'type' 		=> 'radio',
+						'type' 		=> 'select',
 						'options' 	=> array(
 							'yes'		=> __( 'Yes, disable for mobile.', 'themeblvd' ),
 							'no' 		=> __( 'No, do not disable for mobile.', 'themeblvd' )
@@ -869,7 +944,7 @@ class Theme_Blvd_Options_API {
 		// Adjust some option descriptions if post formats are enabled.
 		if ( current_theme_supports('post-formats') ) {
 
-			$options = apply_filters('themeblvd_apply_post_format_warning', array('single_thumbs', 'blog_thumbs', 'archive_thumbs'));
+			$options = apply_filters('themeblvd_apply_post_format_warning', array('single_thumbs', 'blog_thumbs'));
 
 			foreach ( $options as $option_id ) {
 				$this->formatted_options[$option_id]['desc'] .= '<br><br><em>Note: The result of this option may vary with posts that are not the "standard" post format.</em>';

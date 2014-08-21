@@ -8,7 +8,7 @@ function themeblvd_admin_init() {
 
 	// Allow theme options page to run if framework filters
 	// have don't have it hidden it and user is capable.
-	if ( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
+	if ( themeblvd_supports('admin', 'options') && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
 
 		// Access Options API, instance should already be created.
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -28,6 +28,16 @@ function themeblvd_admin_init() {
 		// Theme Options Page
 		$options_page = new Theme_Blvd_Options_Page( $option_id, $options, $args );
 
+	}
+
+	// User profile options
+	if ( themeblvd_supports('admin', 'user') ) {
+		$user_options = Theme_Blvd_User_Options::get_instance();
+	}
+
+	// User profile options
+	if ( themeblvd_supports('admin', 'tax') ) {
+		$tax_options = Theme_Blvd_Tax_Options::get_instance();
 	}
 
 }
