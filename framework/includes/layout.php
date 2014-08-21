@@ -237,34 +237,33 @@ function themeblvd_element( $args ) {
 		case 'blog' :
 
 			$args['options']['context'] = 'blog';
-
-			if ( themeblvd_is_grid_mode() ) {
-				themeblvd_post_grid( $args['options'] );
-			} else {
-				themeblvd_post_list( $args['options'] );
-			}
+			$args['options']['element'] = true;
+			themeblvd_loop( $args['options'] );
 			break;
 
 		// Post Grid
 		case 'post_grid' :
 			$args['options']['context'] = 'grid';
-			themeblvd_post_grid( $args['options'] );
+			$args['options']['element'] = true;
+			themeblvd_loop( $args['options'] );
 			break;
 
 		// Post List
 		case 'post_list' :
 			$args['options']['context'] = 'list';
-			themeblvd_post_list( $args['options'] );
+			themeblvd_loop( $args['options'] );
 			break;
 
 		// Post Slider // @TODO -- Add 2nd post slider style
 		case 'post_slider' :
 		case 'post_slider_popout' :
+			$args['options']['element'] = true;
 			themeblvd_post_slider( $args['options'] );
 			break;
 
 		// Mini Post List
 		case 'mini_post_list' :
+			$args['options']['element'] = true;
 			themeblvd_mini_post_list( $args['options'], $args['options']['thumbs'], $args['options']['meta'] );
 			break;
 
@@ -281,6 +280,8 @@ function themeblvd_element( $args ) {
 					$gallery = 'error';
 				}
 			}
+
+			$args['options']['element'] = true;
 
 			themeblvd_mini_post_grid( $args['options'], $args['options']['align'], $args['options']['thumbs'], $gallery );
 			break;
@@ -315,6 +316,11 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 		/* Parts (parts.php)
 		/*------------------------------------------------------*/
+
+		// Author Box
+		case 'author_box' :
+			themeblvd_author_info( get_user_by('slug', $args['options']['user']) );
+			break;
 
 		// Breacrumbs
 		case 'breadcrumbs' :
