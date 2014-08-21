@@ -419,7 +419,7 @@ jQuery(document).ready(function($) {
 			$slider = $slider_wrap.find('.tb-block-slider-inner'),
 			fx = 'slide',
 			speed = $slider_wrap.data('timeout'),
-			//slideshow = false,
+			slideshow = true,
 			nav = $slider_wrap.data('nav'),
 			pause = false;
 
@@ -429,7 +429,8 @@ jQuery(document).ready(function($) {
 
 		if ( speed && speed !== '0' ) {
 			speed = speed+'000';
-			//slideshow = true;
+		} else {
+			slideshow = false;
 		}
 
 		if ( nav && nav !== '0' ) {
@@ -449,7 +450,7 @@ jQuery(document).ready(function($) {
 				easing: 'swing',
 				slideshowSpeed: speed,
 				animationSpeed: '1000',
-				// slideshow: slideshow,
+				slideshow: slideshow,
 				directionNav: false,	// Using custom slider controls outputted with slider markup
 				controlNav: false,
 				pauseOnHover: pause,	// If nav exists, replace with manual action below
