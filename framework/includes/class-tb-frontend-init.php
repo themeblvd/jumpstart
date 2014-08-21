@@ -33,7 +33,7 @@ class Theme_Blvd_Frontend_Init {
 	 *
 	 * @since 2.3.0
 	 */
-	private $mode = 'list';
+	private $mode = 'blog';
 
 	/**
 	 * Configuration array for page being loaded.
@@ -102,9 +102,8 @@ class Theme_Blvd_Frontend_Init {
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
 
 			// Blog (default content.php)
-			'archive'			=> '',					// Note: To set framework to grid mode, can change to 'archive_grid' or 'grid' to be compatible with archive.php
-			'index' 			=> '',					// Note: To set framework to grid mode, can change to 'index_grid' or 'grid' to be compatible with index.php
 			'blog'				=> '',
+			'blog_paginated'	=> '',
 			'single'			=> '',
 
 			// Post List
@@ -134,35 +133,66 @@ class Theme_Blvd_Frontend_Init {
 	 *
 	 * @since 2.3.0
 	 */
-	public function set_mode() {
+	public function set_mode( $q ) {
 
-		// Default
-		$this->mode = 'list';
-
-		// Possible template part ID's that will trigger the
-		// grid layout on main post loops
-		$grid_triggers = apply_filters( 'themeblvd_grid_mode_triggers', array( 'grid', 'index_grid', 'archive_grid', 'search_grid' ) );
-
-		// If this is the homepage, and "index" is one of the
-		// triggers, set grid mode.
-		if ( is_home() && in_array( $this->get_template_parts('index'), $grid_triggers ) ) {
-			$this->mode = 'grid';
+		if ( ! $q->is_main_query() ) {
+			return;
 		}
 
-		// If this is an archive, and "archive" is one of the
-		// triggers, set grid mode.
-		if ( is_archive() && in_array( $this->get_template_parts('archive'), $grid_triggers ) ) {
-			$this->mode = 'grid';
-		}
+		$this->mode = '';
 
-		// If this is search results, and "search_results" is one of the
-		// triggers, set grid mode.
-		if ( is_search() && in_array( $this->get_template_parts('search_results'), $grid_triggers ) ) {
-			$this->mode = 'grid';
+		if ( $q->is_home() ) {
+
+			$this->mode = 'blog';
+
+		} else if ( $q->is_archive() ) {
+
+			if ( $q->is_author() ) {
+
+				$user = get_user_by('slug', get_query_var('author_name'));
+				$this->mode = get_user_meta( $user->ID, '_tb_archive_mode', true );
+
+			} else if ( $q->is_category() ) {
+
+				$this->mode = themeblvd_get_tax_meta( 'category', get_query_var('category_name'), 'mode', 'default' );
+
+			} else if ( $q->is_tag() ) {
+
+				$this->mode = themeblvd_get_tax_meta( 'post_tag', get_query_var('tag'), 'mode', 'default' );
+
+			}
+
+			if ( ! $this->mode || $this->mode == 'default' ) {
+				$this->mode = themeblvd_get_option( 'archive_mode', null, 'blog' );
+			}
+
+		} else if ( $q->is_page() ) {
+
+			$page_id = 0;
+
+			if ( $q->get('page_id') ) { // most likely static frontpage
+				$page_id = $q->get('page_id');
+			} else if ( isset($q->queried_object_id) ) { // page in standard context
+				$page_id = $q->queried_object_id;
+			}
+
+			$template = get_post_meta( $page_id, '_wp_page_template', true );
+
+			switch ( $template ) {
+				case 'template_blog.php' :
+					$this->mode = 'blog';
+					break;
+				case 'template_list.php' :
+					$this->mode = 'list';
+					break;
+				case 'template_grid.php' :
+					$this->mode = 'grid';
+			}
+
 		}
 
 		// Allow manual override.
-		$this->mode = apply_filters( 'themeblvd_theme_mode_override', $this->mode );
+		$this->mode = apply_filters( 'themeblvd_theme_mode_override', $this->mode, $q );
 	}
 
 	/**
@@ -176,6 +206,7 @@ class Theme_Blvd_Frontend_Init {
 
 		$this->config = array(
 			'id'						=> 0,			// global $post->ID that can be accessed anywhere
+			'mode'						=> $this->mode,	// Mode used for displaying posts - blog, list, or grid
 			'builder'					=> false,		// ID of current custom layout if not false
 			'builder_post_id'			=> 0,			// Numerical Post ID of tb_layout custom post
 			'bottom_builder'			=> false,		// ID of current custom layout for footer if not false
@@ -241,10 +272,8 @@ class Theme_Blvd_Frontend_Init {
 
 				if ( $sync_id ) {
 					$this->config['builder_post_id'] = $sync_id;
-					$this->config['sidebar_layout'] = 'full_width';
 				} else if ( $layout === true ) {
 					$this->config['builder_post_id'] = $post->ID;
-					$this->config['sidebar_layout'] = 'full_width';
 				}
 
 			}
@@ -346,11 +375,41 @@ class Theme_Blvd_Frontend_Init {
 		// The sidebar layout is how the left and right sidebar will
 		// be displayed on the current page.
 
-		if ( ! $this->config['sidebar_layout'] && ( is_page() || is_single() ) ) {
-			$this->config['sidebar_layout']= get_post_meta( $this->config['id'], '_tb_sidebar_layout', true );
+		if ( is_page_template('template_builder.php') ) {
+			$this->config['sidebar_layout'] = 'full_width';
 		}
 
-		if ( ! $this->config['sidebar_layout']|| 'default' == $this->config['sidebar_layout'] ) {
+		if ( ! $this->config['sidebar_layout'] && is_archive() ) {
+
+			if ( is_category() ) {
+				$this->config['sidebar_layout'] = themeblvd_get_tax_meta( 'category', get_query_var('category_name'), 'sidebar_layout', 'default' );
+			} else if ( is_tag() ) {
+				$this->config['sidebar_layout'] = themeblvd_get_tax_meta( 'post_tag', get_query_var('tag'), 'sidebar_layout', 'default' );
+			} else if ( is_author() ) {
+				$user = get_user_by('slug', get_query_var('author_name'));
+				$this->config['sidebar_layout']= get_user_meta( $user->ID, '_tb_sidebar_layout', true );
+			}
+
+			if ( ! $this->config['sidebar_layout'] || $this->config['sidebar_layout'] == 'default' ) {
+				$this->config['sidebar_layout'] = themeblvd_get_option('archive_sidebar_layout', null, 'default');
+			}
+
+		}
+
+		if ( ! $this->config['sidebar_layout'] && ( is_page() || is_single() ) ) {
+
+			$this->config['sidebar_layout'] = get_post_meta( $this->config['id'], '_tb_sidebar_layout', true );
+
+			if ( ! $this->config['sidebar_layout'] || $this->config['sidebar_layout'] == 'default' ) {
+				if ( is_page() ) {
+					$this->config['sidebar_layout'] = themeblvd_get_option( 'page_sidebar_layout' );
+				} else {
+					$this->config['sidebar_layout'] = themeblvd_get_option( 'single_sidebar_layout' );
+				}
+			}
+		}
+
+		if ( ! $this->config['sidebar_layout'] || $this->config['sidebar_layout'] == 'default' ) {
 			$this->config['sidebar_layout']= themeblvd_get_option( 'sidebar_layout' );
 		}
 
@@ -604,25 +663,28 @@ class Theme_Blvd_Frontend_Init {
 
 		}
 
-		// Blog
-		if ( is_home() || is_archive() || is_page_template('template_blog.php') ) {
+		// @TODO Delete below...
 
-			if ( $this->mode == 'grid' ) {
-				$this->atts = $this->get_default_grid_atts();
-			} else {
-				$this->atts = $this->get_default_list_atts();
-			}
-		}
+		// // Blog
+		// if ( is_home() || is_archive() || is_page_template('template_blog.php') ) {
 
-		// Post List Page Template
-		if ( is_page_template( 'template_list.php' ) ) {
-			$this->atts = $this->get_default_list_atts();
-		}
+		// 	if ( $this->mode == 'grid' ) {
+		// 		$this->atts = $this->get_default_grid_atts();
+		// 	} else {
+		// 		$this->atts = $this->get_default_list_atts();
+		// 	}
 
-		// Post Grid Page Template
-		if ( is_page_template( 'template_grid.php' ) ) {
-			$this->atts = $this->get_default_grid_atts();
-		}
+		// }
+
+		// // Post List Page Template
+		// if ( is_page_template( 'template_list.php' ) ) {
+		// 	$this->atts = $this->get_default_list_atts();
+		// }
+
+		// // Post Grid Page Template
+		// if ( is_page_template( 'template_grid.php' ) ) {
+		// 	$this->atts = $this->get_default_grid_atts();
+		// }
 
 	}
 

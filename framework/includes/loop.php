@@ -176,7 +176,7 @@ function themeblvd_loop( $args = array() ){
 			}
 
 			// Read More text
-			themeblvd_set_att( 'more_text', themeblvd_get_option('list_more_text', null, 'text') );
+			themeblvd_set_att( 'more_text', themeblvd_get_option('list_more_text', null, themeblvd_get_local('read_more')) );
 
 			break;
 
@@ -232,7 +232,7 @@ function themeblvd_loop( $args = array() ){
 			}
 
 			// Read More text
-			themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, 'text') );
+			themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, themeblvd_get_local('read_more')) );
 
 			// Number of columns (i.e. posts per row)
 			$columns = '3';
@@ -380,18 +380,30 @@ function themeblvd_loop( $args = array() ){
 			$class .= ' post_'.$context.'_paginated';
 		}
 
-		if ( ! $args['element'] && ! $args['shortcode'] ) {
-			$class .= ' bg-content';
-		}
 	}
 
 	if ( $args['class'] ) {
 		$class .= ' '.$args['class'];
 	}
 
+	if ( $args['shortcode'] ) {
+		$class .= ' loop-shortcode';
+	}
+
+	if ( $args['element'] ) {
+		$class .= ' loop-element';
+	}
+
 	// Start output
 	echo '<div class="'.$class.'">';
 
+	// Output title and content of current page, if this is a
+	// page template displaying secondary loop.
+	if ( is_page_template('template_blog.php') || is_page_template('template_list.php') || is_page_template('template_grid.php') ) {
+		themeblvd_page_info();
+	}
+
+	// Optional title passed in from shortcodes/elements
 	if ( $args['title'] ) {
 		printf( '<h3 class="title">%s</h3>', $args['title'] );
 	}
@@ -415,8 +427,8 @@ function themeblvd_loop( $args = array() ){
 		// Posts per column
 		$ppc = 0;
 
-		if ( $args['columns'] && ! $args['rows'] ) {
-			$ppc = round( $total / intval($args['columns']) );
+		if ( ! $args['rows'] && intval($args['columns']) >= 2 ) {
+			$ppc = ceil( $total / intval($args['columns']) );
 		}
 
 		$ppc_class = themeblvd_grid_class( intval($args['columns']) );
@@ -563,7 +575,6 @@ function themeblvd_get_grid_slider( $args ) {
 	$defaults = array(
 		'query'		=> null,		// Query for posts
 		'title'		=> '',			// Title for unit
-		'display'	=> 'slider',	// How to display logos, grid or slider
 		'columns'	=> '3',			// Number of logos per slide
 		'nav'		=> '1',			// If slider, whether to display nav
 		'timeout'	=> '3',			// If slider, seconds in between auto rotation
@@ -574,7 +585,7 @@ function themeblvd_get_grid_slider( $args ) {
     	return __('Error: No query supplied.', 'themeblvd');
     }
 
-	$class = 'tb-grid-slider tb-block-slider post_grid';
+	$class = 'tb-grid-slider tb-block-slider post_grid themeblvd-gallery';
 
 	if ( $args['title'] ) {
 		$class .= ' has-title';
@@ -904,7 +915,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 		themeblvd_set_att('thumbs', false);
 	}
 
-	if ( $meta ) {
+	if ( $meta && $meta !== 'hide' ) {
 		themeblvd_set_att('show_meta', true);
 	} else {
 		themeblvd_set_att('show_meta', false);

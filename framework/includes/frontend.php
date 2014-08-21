@@ -45,13 +45,7 @@ function themeblvd_get_part( $type ) {
 }
 
 /**
- * Get the current mode of the framework, list or grid.
- * This determines if archives and the posts page display
- * as a grid.
- *
- * Grid mode is triggered when the template parts for "index"
- * and "archive" are filtered to be either "grid", "archive_grid"
- * or "index_grid".
+ * Determine if the current post display mode of the framework is "grid"
  *
  * @since 2.3.0
  *
@@ -59,9 +53,7 @@ function themeblvd_get_part( $type ) {
  */
 function themeblvd_is_grid_mode() {
 
-	$config = Theme_Blvd_Frontend_Init::get_instance();
-
-	if ( $config->get_mode() == 'grid' ) {
+	if ( themeblvd_config('mode') == 'grid' ) {
 		return true;
 	}
 

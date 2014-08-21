@@ -1,5 +1,21 @@
 <?php
 /**
+ * Get post display modes
+ *
+ * @since 2.5.0
+ *
+ * @param string $var Description
+ * @return string $var Description
+ */
+function themeblvd_get_modes() {
+	return apply_filters('themeblvd_modes', array(
+		'blog' => __('Blog', 'themeblvd'),
+		'list' => __('List', 'themeblvd'),
+		'grid' => __('Grid', 'themeblvd')
+	));
+}
+
+/**
  * Include font from google. Accepts unlimited
  * amount of font arguments.
  *
@@ -132,7 +148,10 @@ function themeblvd_setup() {
 			'sliders' 			=> true,			// Sliders page
 			'builder'			=> true,			// Layouts page
 			'sidebars'			=> true,			// Sidebars page
-			'updates'			=> true				// Updates (if theme supports)
+			'updates'			=> true,			// Updates (if theme supports)
+			'user'				=> true,			// User profile options
+			'tax'				=> true				// Taxonomy options
+
 		),
 		'meta' => array(
 			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
@@ -1384,6 +1403,16 @@ function themeblvd_get_select( $type, $force_single = false ) {
 			}
 			break;
 
+		case 'authors' :
+
+			$users = get_users();
+
+			if ( $users ) {
+				foreach ( $users as $user ) {
+					$select[$user->user_login] = sprintf('%s (%s)', $user->display_name, $user->user_login);
+				}
+			}
+
 	}
 
 	// Put WPML filters back
@@ -1870,6 +1899,7 @@ function themeblvd_get_social_media_sources() {
  	$sources = array(
 		'chat' 			=> __('General: Chat', 'themeblvd'),
 		'cloud' 		=> __('General: Cloud', 'themeblvd'),
+		'anchor' 		=> __('General: Link', 'themeblvd'),
 		'email' 		=> __('General: Mail', 'themeblvd'),
 		'movie' 		=> __('General: Movie', 'themeblvd'),
 		'music' 		=> __('General: Music', 'themeblvd'),

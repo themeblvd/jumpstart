@@ -332,11 +332,7 @@ class Theme_Blvd_Query {
 		} else if ( is_page_template('template_grid.php') ) {
 			$type = 'grid';
 		} else if ( is_page_template('template_blog.php') ) {
-			if ( themeblvd_is_grid_mode() ) {
-				$type = 'grid';
-			} else {
-				$type = 'list';
-			}
+			$type = 'blog';
 		}
 
 		// Start building query args
@@ -357,23 +353,6 @@ class Theme_Blvd_Query {
 			$cat = get_post_meta( $post->ID, 'categories', true ); // @deprecated "categories" custom field
 		}
 
-		if ( $type == 'list' && ! $cat && ! $category_name ) {
-			$exclude = themeblvd_get_option( 'blog_categories' );
-			if ( $exclude ) {
-
-				foreach ( $exclude as $key => $value ) {
-					if ( $value ) {
-						$cat .= sprintf('-%s,', $key);
-					}
-				}
-
-				if ( $cat ) {
-					$cat = themeblvd_remove_trailing_char( $cat, ',' );
-				}
-
-			}
-		}
-
 		if ( $cat ) {
 			$query['cat'] = str_replace(' ', '', $cat );
 		}
@@ -388,20 +367,26 @@ class Theme_Blvd_Query {
 		// Posts per page
 		$posts_per_page = '';
 
-		if ( $type == 'list' ) {
+		if ( $type == 'list' || $type == 'blog' ) {
 
 			$posts_per_page = get_post_meta( $post->ID, 'posts_per_page', true );
+
+			if ( ! $posts_per_page && $type == 'list' ) {
+				$posts_per_page = themeblvd_get_option('list_posts_per_page');
+			}
 
 		} else if ( $type == 'grid' ) {
 
 			$columns = get_post_meta( $post->ID, 'columns', true );
+
 			if ( ! $columns ) {
-				$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
+				$columns = intval(themeblvd_get_option('grid_columns', null, '3'));
 			}
 
 			$rows = get_post_meta( $post->ID, 'rows', true );
+
 			if ( ! $rows ) {
-				$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
+				$rows = intval(themeblvd_get_option('rows_columns', null, '3'));
 			}
 
 			$posts_per_page = $columns*$rows;
@@ -413,24 +398,28 @@ class Theme_Blvd_Query {
 
 		// Orderby
 		$orderby = get_post_meta( $post->ID, 'orderby', true );
+
 		if ( $orderby ) {
 			$query['orderby'] = $orderby;
 		}
 
 		// Order
 		$order = get_post_meta( $post->ID, 'order', true ); // ACS or DESC
+
 		if ( $order ) {
 			$query['order'] = $order;
 		}
 
 		// Offset
 		$offset = get_post_meta( $post->ID, 'offset', true );
+
 		if ( $offset ) {
 			$query['offset'] = $offset;
 		}
 
 		// Custom query string
 		$custom = get_post_meta( $post->ID, 'query', true );
+
 		if ( $custom ) {
 			$query = wp_parse_args( htmlspecialchars_decode( $custom ), $query );
 		}
@@ -469,53 +458,43 @@ class Theme_Blvd_Query {
 		}
 
 		// Static frontpage
-		if ( $q->is_page() && get_option( 'show_on_front' ) == 'page' && get_option('page_on_front') == $q->get('page_id') ) {
+		if ( $q->is_page() && get_option('show_on_front') == 'page' && get_option('page_on_front') == $q->get('page_id') ) {
 
-			$templates = apply_filters('themeblvd_paginated_templates', array('template_list.php', 'template_list.php', 'template_builder.php'));
+			$templates = apply_filters('themeblvd_paginated_templates', array('template_blog.php', 'template_list.php', 'template_grid.php', 'template_builder.php'));
 			$template = get_post_meta( $q->get('page_id'), '_wp_page_template', true );
 
-			if ( in_array( $template, $templates ) && isset( $q->query['paged'] ) ) {
+			if ( in_array( $template, $templates ) && $q->get('page') >= 2 ) {
 				$q->set('paged', $q->query['paged'] );
 			}
 
 		}
 
-		// Adjust posts_per_page if framework is in grid mode
-		if ( $q->is_archive() || $this->is_blog($q) ) {
+		// Adjust posts_per_page
+		if ( $q->is_archive() ) {
 
-			// Check to make sure we're in grid mode
-			if ( themeblvd_is_grid_mode() ) {
+			$config = Theme_Blvd_Frontend_Init::get_instance();
+			$mode = $config->get_mode();
 
-				$key = 'archive';
-				if ( $this->is_blog($q) ) {
-					$key = 'index';
-				}
+			if ( $mode == 'grid' ) {
 
-				$columns = themeblvd_get_option( "{$key}_grid_columns" );
-				if ( ! $columns ) {
-					$columns = apply_filters( 'themeblvd_default_grid_columns', 3 );
-				}
+				$columns = intval(themeblvd_get_option('grid_columns', null, '3'));
+				$rows = intval(themeblvd_get_option('grid_rows', null, '3'));
 
-				$rows = themeblvd_get_option( "{$key}_grid_rows" );
-				if ( ! $rows ) {
-					$rows = apply_filters( 'themeblvd_default_grid_rows', 4 );
-				}
-
-				// Posts per page = $columns x $rows
 				$q->set('posts_per_page', $columns*$rows);
+
+			} else if ( $mode == 'list' ) {
+
+				$default = get_option('posts_per_page');
+				$q->set( 'posts_per_page', intval(themeblvd_get_option('list_posts_per_page', null, $default)) );
 
 			}
 		}
 
 		// Exclude any categories from posts page
-		if ( $this->is_blog($q) ) {
+		if ( $q->is_home() ) {
 
 			$cat = '';
-			if ( themeblvd_is_grid_mode() ) {
-				$exclude = themeblvd_get_option( 'grid_categories' );
-			} else {
-				$exclude = themeblvd_get_option( 'blog_categories' );
-			}
+			$exclude = themeblvd_get_option( 'blog_categories' );
 
 			if ( $exclude ) {
 				foreach ( $exclude as $key => $value ) {
@@ -531,101 +510,9 @@ class Theme_Blvd_Query {
 			}
 		}
 
-		// Archive Posts Per Page
-		if ( $q->is_archive() ) {
-			$default = get_option('posts_per_page');
-			$q->set( 'posts_per_page', intval(themeblvd_get_option('archive_posts_per_page', null, $default)) );
-		}
-
-		// ... @TODO -- For 2.5, this needs to modified to match current paginated elements
-		// Apply pagination fix when homepage custom layout
-		// set over home "posts page"
-		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) && $q->is_home() && 'custom_layout' == themeblvd_get_option( 'homepage_content' ) ) {
-
-			// Layout info
-			$layout_name = themeblvd_get_option( 'homepage_custom_layout' );
-			$layout_post_id = themeblvd_post_id_by_name( $layout_name, 'tb_layout' );
-			if ( $layout_post_id ) {
-				$elements = get_post_meta( $layout_post_id, 'elements', true );
-			}
-
-			// Loop through elements and look for that single
-			// paginated element (there can only be one in a layout).
-			if ( ! empty( $elements ) && is_array( $elements ) ) {
-				foreach ( $elements as $area ) {
-					if ( ! empty( $area ) && is_array( $area ) ) {
-						foreach ( $area as $element ) {
-
-							switch ( $element['type'] ) {
-
-								case 'post_grid_paginated' :
-
-									if ( ! empty( $element['options']['rows'] ) && ! empty( $element['options']['columns'] ) ) {
-										$posts_per_page = intval( $element['options']['rows'] ) * intval( $element['options']['columns'] );
-									}
-
-									$q->set( 'posts_per_page', $posts_per_page );
-
-									break;
-
-								case 'post_list_paginated';
-
-									if ( isset( $element['options']['source'] ) && 'query' == $element['options']['source'] ) {
-
-										if ( ! empty( $element['options']['query'] ) ) {
-											$custom_q = wp_parse_args( htmlspecialchars_decode( $element['options']['query'] ) );
-										}
-
-										if( isset( $custom_q['posts_per_page'] ) ) {
-											$q->set( 'posts_per_page', $custom_q['posts_per_page'] );
-										}
-
-									} else if ( ! empty( $element['options']['posts_per_page'] ) ) {
-
-										$q->set( 'posts_per_page', $element['options']['posts_per_page'] );
-
-									}
-
-									break;
-
-							}
-						}
-					}
-				}
-			}
-		}
-
 		do_action( 'themeblvd_pre_get_posts', $q, $this );
 
 	} // end pre_get_posts()
-
-	/**
-	 * If this is the home posts page; this will return
-	 * false if the framework has swapped it out for a
-	 * homepage layout from theme options. Checks against
-	 * current WP_Query object at pre_get_posts.
-	 *
-	 * @since 2.3.0
-	 *
-	 * @param WP_Query $q Current WP_Query object being worked with
-	 * @return bool
-	 */
-	private function is_blog( $q ) {
-
-		if ( ! $q->is_home() ) {
-			return false;
-		}
-
-		if ( themeblvd_get_option( 'homepage_content' ) == 'posts' ) {
-			return true;
-		}
-
-		if ( get_option('show_on_front') == 'page' && get_option('page_for_posts') ) {
-			return true;
-		}
-
-		return false; // Shouldn't get this far
-	}
 
 	/*--------------------------------------------*/
 	/* Methods, conditionals
