@@ -1062,7 +1062,9 @@ function themeblvd_get_testimonial( $args ){
 
         $output .= '<div class="author">';
 
-        if ( ! empty( $args['image']['src'] ) ) {
+        if ( empty($args['image']['src']) ) {
+            $output .= '<span class="author-image"><i class="fa fa-user"></i></span>';
+        } else {
             $output .= sprintf( '<span class="author-image"><img src="%s" alt="%s" /></span>', $args['image']['src'], $args['image']['title'] );
         }
 
