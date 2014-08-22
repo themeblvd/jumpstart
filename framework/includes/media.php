@@ -121,6 +121,84 @@ function themeblvd_add_image_sizes() {
 }
 
 /**
+ * Remove constraints on image URL's generated in the
+ * admin.
+ *
+ * This function isn't by defualt filtered on, but it
+ * can be applied/removed as needed onto WP's
+ * "editor_max_image_size".
+ *
+ * @since 2.5.0
+ */
+function themeblvd_editor_max_image_size() {
+	return array(1200, 1200);
+}
+
+/**
+ * If we're retrieving an crop size that is in one of our
+ * stacks, and it doesn't exist, the default WP action would
+ * be to just return the full-size image. Instead, we can
+ * call this function to try and find the next crop size in
+ * the stack.
+ *
+ * This process helps to downsize the quality of an image,
+ * but still maintain the same aspect ratio, as each stack shares
+ * a common downsize pattern.
+ *
+ * @since 2.5.0
+ *
+ * @param array $attachment Attachment from original call to get_attachment_image_src()
+ * @param string $id Original attachment ID
+ * @param string $crop
+ */
+function themeblvd_image_downsize( $attachment, $attachmen_id, $crop = 'tb_x_large' ) {
+
+	if ( ! empty( $attachment[3] ) ) {
+		return $attachment;
+	}
+
+	$stacks = array(
+		array( 'tb_x_large', 'tb_large', 'tb_medium' ),
+		array( 'tb_square_x_large', 'tb_square_large', 'tb_square_medium' ),
+		array( 'slider-x-large', 'slider-large', 'slider-medium' )
+	);
+
+	$scaled = $attachment;
+
+	foreach ( $stacks as $stack ) {
+		if ( in_array($crop, $stack) ) {
+
+			$key = array_search($crop, $stack);
+
+			if ( $key > 0 ) {
+				for ( $i = 0; $i <= $key; $i++ ) {
+					unset($stack[$i]);
+				}
+			}
+
+			if ( $stack ) {
+				foreach ( $stack as $size ) {
+
+					$scaled = wp_get_attachment_image_src( $attachmen_id, $size );
+
+					if ( $scaled[3] ) {
+						break;
+					}
+				}
+			}
+
+			if ( empty( $scaled[3] ) ) {
+				$scaled = $attachment;
+			}
+
+			break;
+		}
+	}
+
+	return $scaled;
+}
+
+/**
  * Display the featured image of a post, taking into
  * account framework image linking.
  *
@@ -483,8 +561,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 	// Prepare images
 	$images = array();
-	$sizes = themeblvd_get_image_sizes();
-	$search = array('slider-x-large', 'slider-large', 'slider-medium');
+	$crop = apply_filters('themeblvd_gallery_slider_crop', 'slider-x-large');
 
 	if ( $args['size'] ) {
 		array_unshift( $search, $args['size'] );
@@ -502,15 +579,8 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 			$caption = $attachment->post_excerpt;
 		}
 
-		// Find image that matches one of our crop sizes exactly
-		foreach ( $search  as $size ) {
-
-			$img = wp_get_attachment_image_src( $attachment->ID, $size );
-
-			if ( $img[3] && $img[1] == $sizes[$size]['width'] && $img[2] == $sizes[$size]['height'] ) {
-				break;
-			}
-		}
+		$img = wp_get_attachment_image_src( $attachment->ID, $crop );
+		$img = themeblvd_image_downsize( $img, $attachment->ID, $crop );
 
 		$thumb = wp_get_attachment_image_src( $attachment->ID, 'tb_thumb' );
 
@@ -629,6 +699,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			'link_url'		=> ''
 		));
 	}
+echo '<pre>'; print_r($images); echo '</pre>';
 
 	// Slider auto rotate speed
 	$interval = $args['interval'];

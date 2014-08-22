@@ -164,6 +164,9 @@ function themeblvd_sanitize_upload( $input ) {
 
 	if ( is_array( $input ) ) {
 
+		// Remove admin attachment restrains
+		add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
 		$output = array(
 			'id'		=> 0,
 			'src'		=> '',
@@ -204,9 +207,13 @@ function themeblvd_sanitize_upload( $input ) {
 			$output['height'] = intval( $input['height'] );
 		}
 
+		// Restore admin attachment restrains
+		remove_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
 	} else {
 		$output = wp_kses( $input, array() );
 	}
+
 	return $output;
 }
 
@@ -680,15 +687,19 @@ function themeblvd_sanitize_slide( $input ) {
  */
 function themeblvd_sanitize_slider( $input ) {
 
+	// Remove admin attachment restrains
+	add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
 	$output = array();
 
 	if ( $input && is_array($input) ) {
+
 		foreach ( $input as $item_id => $item ) {
 
 			$output[$item_id] = array();
 
 			// Crop size
-			$output[$item_id]['crop'] = wp_kses( $input[$item_id]['crop'], array() );
+			$output[$item_id]['crop'] = $crop = wp_kses( $input[$item_id]['crop'], array() );
 
 			// Attachment ID
 			$output[$item_id]['id'] = intval( $item['id'] );
@@ -697,10 +708,11 @@ function themeblvd_sanitize_slider( $input ) {
 			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
 
 			// Attachment Image
-			$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $output[$item_id]['crop'] );
-			$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $attachment[0] );
-			$output[$item_id]['width'] = $attachment[1];
-			$output[$item_id]['height'] = $attachment[2];
+			$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $crop );
+			$downsize = themeblvd_image_downsize( $attachment, $output[$item_id]['id'], $crop );
+			$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $downsize[0] );
+			$output[$item_id]['width'] = $downsize[1];
+			$output[$item_id]['height'] = $downsize[2];
 
 			// Thumbnail
 			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
@@ -720,6 +732,9 @@ function themeblvd_sanitize_slider( $input ) {
 			$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
 		}
 	}
+
+	// Restore admin attachment restrains
+	remove_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
 
 	return $output;
 }
