@@ -46,6 +46,24 @@ function themeblvd_get_image_sizes( $size = '' ) {
 			'height' 	=> 360,
 			'crop' 		=> true
 		),
+		'tb_square_x_large' => array(
+			'name' 		=> __( 'Theme Blvd XL Square', 'themeblvd' ),
+			'width' 	=> 1200,
+			'height' 	=> 1200,
+			'crop' 		=> true
+		),
+		'tb_square_large' => array(
+			'name' 		=> __( 'Theme Blvd L Square', 'themeblvd' ),
+			'width' 	=> 960,
+			'height' 	=> 960,
+			'crop' 		=> true
+		),
+		'tb_square_medium' => array(
+			'name' 		=> __( 'Theme Blvd M Square', 'themeblvd' ),
+			'width' 	=> 800,
+			'height' 	=> 800,
+			'crop' 		=> true
+		),
 		'slider-x-large' => array(
 			'name' 		=> __( 'Slider Extra Large', 'themeblvd' ),
 			'width' 	=> 1200,
