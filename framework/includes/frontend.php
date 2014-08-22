@@ -193,9 +193,9 @@ function themeblvd_body_class( $classes ) {
 	// OS class
 	if ( preg_match( "/Mac/", $browser ) ) {
 		$classes[] = 'mac';
-	} elseif ( preg_match( "/Windows/", $browser ) ) {
+	} else if ( preg_match( "/Windows/", $browser ) ) {
 		$classes[] = 'windows';
-	} elseif ( preg_match( "/Linux/", $browser ) ) {
+	} else if ( preg_match( "/Linux/", $browser ) ) {
 		$classes[] = 'linux';
 	} else {
 		$classes[] = 'unknown-os';
@@ -204,27 +204,27 @@ function themeblvd_body_class( $classes ) {
 	// Browser class
 	if ( preg_match( "/Chrome/", $browser ) ) {
 		$classes[] = 'chrome';
-	} elseif ( preg_match( "/Safari/", $browser ) ) {
+	} else if ( preg_match( "/Safari/", $browser ) ) {
 		$classes[] = 'safari';
-	} elseif ( preg_match( "/Opera/", $browser ) ) {
+	} else if ( preg_match( "/Opera/", $browser ) ) {
 		$classes[] = 'opera';
-	} elseif ( preg_match( "/MSIE/", $browser ) ) {
+	} else if ( preg_match( "/MSIE/", $browser ) ) {
 
 		// Internet Explorer... ugh, kill me now.
 		$classes[] = 'msie';
 		if ( preg_match( "/MSIE 6.0/", $browser ) ) {
 			$classes[] = 'ie6';
-		} elseif ( preg_match( "/MSIE 7.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 7.0/", $browser ) ) {
 			$classes[] = 'ie7';
-		} elseif ( preg_match( "/MSIE 8.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 8.0/", $browser ) ) {
 			$classes[] = 'ie8';
-		} elseif ( preg_match( "/MSIE 9.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 9.0/", $browser ) ) {
 			$classes[] = 'ie9';
-		} elseif ( preg_match( "/MSIE 10.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 10.0/", $browser ) ) {
 			$classes[] = 'ie10';
 		}
 
-	} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
+	} else if ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
 		$classes[] = 'firefox';
 	} else {
 		$classes[] = 'unknown-browser';
