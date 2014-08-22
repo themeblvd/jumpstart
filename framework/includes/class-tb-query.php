@@ -109,6 +109,10 @@ class Theme_Blvd_Query {
 		// Custom query
 		if ( ( $source == 'query' && isset( $args['query'] ) ) || ( ! $source && ! empty( $args['query'] ) ) ) {
 
+			if ( strpos($args['query'], 'custom_field=') === 0 ) {
+				$args['query'] = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $args['query']), true );
+			}
+
 			// Convert string to query array
 			$query = wp_parse_args( htmlspecialchars_decode( $args['query'] ) );
 

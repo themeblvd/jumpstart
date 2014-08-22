@@ -135,6 +135,18 @@ function themeblvd_element( $args ) {
 			themeblvd_post_content();
 			break;
 
+		// Custom Field
+		case 'custom_field' :
+
+			$value = get_post_meta( themeblvd_config('id'), $args['options']['key'], true );
+
+			if ( $args['options']['wpautop'] ) {
+				echo themeblvd_get_content($value);
+			} else {
+				echo do_shortcode($value);
+			}
+			break;
+
 		// External Page/Post content
 		case 'external' :
 			themeblvd_post_content( intval($args['options']['post_id']) );

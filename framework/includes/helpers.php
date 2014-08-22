@@ -154,6 +154,10 @@ function themeblvd_get_posts_args( $options, $type ) {
 
 		$query = $options['query'];
 
+		if ( is_string( $query ) && strpos($query, 'custom_field=') === 0 ) {
+			$query = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $query), true );
+		}
+
 		// Convert string to query array
 		if ( ! is_array( $query ) ) {
 			$query = wp_parse_args( htmlspecialchars_decode($query) );
