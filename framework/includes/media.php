@@ -41,7 +41,7 @@ function themeblvd_get_image_sizes( $size = '' ) {
 			'crop' 		=> true
 		),
 		'tb_grid' => array(
-			'name' 		=> __( 'Theme Blvd Grid', 'themeblvd' ), // 16:9
+			'name' 		=> __( 'Theme Blvd 16:9', 'themeblvd' ), // 16:9
 			'width' 	=> 640,
 			'height' 	=> 360,
 			'crop' 		=> true
