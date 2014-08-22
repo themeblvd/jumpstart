@@ -40,11 +40,13 @@ function themeblvd_tgm_register() {
 			'slug'		=> 'theme-blvd-layout-builder',
 			'required'	=> false
 		),
+		/* Not a default recommended plugin as of v2.5
 		'sliders' => array(
 			'name'		=> 'Theme Blvd Sliders',
 			'slug'		=> 'theme-blvd-sliders',
 			'required'	=> false
 		),
+		*/
 		'sidebars' => array(
 			'name'		=> 'Theme Blvd Widget Areas',
 			'slug'		=> 'theme-blvd-widget-areas',
