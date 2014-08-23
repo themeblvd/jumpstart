@@ -12,25 +12,19 @@ jQuery(document).ready(function($) {
 	var page_atts = $('#themeblvd_pageparentdiv'),
 		template = page_atts.find('select[name="page_template"]').val();
 
-	if( template == 'template_builder.php' )
-	{
+	if( template == 'template_builder.php' || template == 'template_blank.php' ) {
 		page_atts.find('select[name="_tb_sidebar_layout"]').hide().prev('p').hide();
-	}
-	else
-	{
+	} else {
 		page_atts.find('p.tb_custom_layout').hide().prev('p').hide();
 	}
 
 	// Show the proper option when user changes <select>
 	page_atts.find('select[name="page_template"]').change(function(){
 		var template = $(this).val();
-		if( template == 'template_builder.php' )
-		{
+		if( template == 'template_builder.php' || template == 'template_blank.php' ) {
 			page_atts.find('select[name="_tb_sidebar_layout"]').hide().prev('p').hide();
 			page_atts.find('p.tb_custom_layout').show().prev('p').show();
-		}
-		else
-		{
+		} else {
 			page_atts.find('p.tb_custom_layout').hide().prev('p').hide();
 			page_atts.find('select[name="_tb_sidebar_layout"]').show().prev('p').show();
 		}

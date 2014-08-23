@@ -50,7 +50,7 @@ function setup_themeblvd_page_meta() {
 			'tb_title' => array(
 				'id'		=> '_tb_title',
 				'name' 		=> __( 'Page Title', 'themeblvd' ),
-				'desc'		=> __( 'This option will be ignored if you\'ve applyed a custom layout.', 'themeblvd' ),
+				'desc'		=> __( 'This option will be ignored if you\'ve applied the "Custom Layout" template.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
 					'show' 		=> __( 'Show page\'s title', 'themeblvd' ),
@@ -60,7 +60,7 @@ function setup_themeblvd_page_meta() {
 			'tb_breadcrumbs' => array(
 				'id'		=> '_tb_breadcrumbs',
 				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
-				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not. This option will be ignored if you\'ve applyed a custom layout.', 'themeblvd' ),
+				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not. This option will be ignored if you\'ve applied the "Custom Layout" or "Blank Page" templates.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
 					'default' 	=> __( 'Use default setting', 'themeblvd' ),
@@ -71,7 +71,7 @@ function setup_themeblvd_page_meta() {
 			'tb_theme_layout' => array(
 				'id'		=> '_tb_theme_layout',
 				'name' 		=> __( 'Theme Layout', 'themeblvd' ),
-				'desc'		=> __( 'Select if you\'d like to hide any theme elements that normally display across your entire website by default.', 'themeblvd' ),
+				'desc'		=> __( 'Select if you\'d like to hide any theme elements that normally display across your entire website by default. This option will be ignored if you\'ve applied the "Blank Page" template.', 'themeblvd' ),
 				'type' 		=> 'multicheck',
 				'options'	=> array(
 					'hide_top'		=> __( 'Hide theme header on this page', 'themeblvd' ),
