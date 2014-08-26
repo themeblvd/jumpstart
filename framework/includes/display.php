@@ -682,6 +682,30 @@ function themeblvd_grid_meta_default() {
 }
 endif;
 
+if ( !function_exists( 'themeblvd_search_meta_default' ) ) :
+/**
+ * Default display for action: themeblvd_search_meta
+ *
+ * @since 2.0.0
+ */
+function themeblvd_search_meta_default() {
+
+	$args = array(
+		'include'	=> array('time'),
+		'time'		=> 'ago'
+	);
+
+	if ( get_post_type() == 'post' ) {
+		$args['include'][] = 'author';
+		$args['include'][] = 'comments';
+	}
+
+	$args = apply_filters( 'themeblvd_search_meta_args', $args );
+
+	echo themeblvd_get_meta($args);
+}
+endif;
+
 if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
 /**
  * Default display for action: themeblvd_meta

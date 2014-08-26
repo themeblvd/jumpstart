@@ -13,6 +13,7 @@ function themeblvd_get_all_locals() {
 	$locals = array (
 		'404'						=> __( 'Apologies, but the page you\'re looking for can\'t be found.', 'themeblvd_frontend' ),
 		'404_title'					=> __( '404 Error', 'themeblvd_frontend' ),
+		'all'						=> __( 'All', 'themeblvd_frontend' ),
 		'archive_no_posts'			=> __( 'Apologies, but there are no posts to display.', 'themeblvd_frontend' ),
 		'archive'					=> __( 'Archive', 'themeblvd_frontend' ),
 		'aside'						=> __( 'Aside', 'themeblvd_frontend' ),
@@ -82,6 +83,7 @@ function themeblvd_get_all_locals() {
 		'reply'						=> __( 'Reply', 'themeblvd_frontend' ),
 		'search'					=> __( 'Search the site...', 'themeblvd_frontend' ),
 		'search_no_results'			=> __( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'themeblvd_frontend' ),
+		'search_results'			=> __( '%s total search results found for: %s', 'themeblvd_frontend' ),
 		'status'					=> __( 'Status', 'themeblvd_frontend' ),
 		'tag'						=> __( 'Tag', 'themeblvd_frontend' ),
 		'tags'						=> __( 'Tags', 'themeblvd_frontend' ),

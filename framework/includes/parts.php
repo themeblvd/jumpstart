@@ -771,77 +771,6 @@ function themeblvd_blog_share( $echo = true ) {
 }
 
 /**
- * Create new walker for WP's wp_nav_menu function.
- * Each menu item is an <option> with the $depth being
- * taken into account in its display.
- *
- * We're using this with themeblvd_nav_menu_select
- * function.
- *
- * @since 2.2.1
- */
-class ThemeBlvd_Select_Menu_Walker extends Walker_Nav_Menu {
-
-	/**
-	 * Start level
-	 */
-	function start_lvl( &$output, $depth = 0, $args = array() ) {
-		// do nothing ...
-	}
-
-	/**
-	 * End level
-	 */
-	function end_lvl( &$output, $depth = 0, $args = array() ) {
-		// do nothing ...
-	}
-
-	/**
-	 * Start nav element
-	 */
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$indent = '';
-
-		for( $i = 0; $i < $depth; $i++ ) {
-			$indent .= '-';
-		}
-
-		if ( $indent ) {
-			$indent .= ' ';
-		}
-
-		$output .= '<option value="'.$item->url.'">'.$indent.$item->title;
-	}
-
-	/**
-	 * End nav element
-	 */
-	function end_el( &$output, $item, $depth = 0, $args = array() ) {
-		$output .= "</option>\n";
-	}
-
-}
-
-/**
- * Responsive wp nav menu
- *
- * @since 2.0.0
- *
- * @param string $location Location of wp nav menu to grab
- * @return string $select_menu Select menu version of wp nav menu
- */
-function themeblvd_nav_menu_select( $location ) {
-	$select_menu = wp_nav_menu( apply_filters( 'themeblvd_nav_menu_select_args', array(
-		'theme_location'	=> $location,
-		'container'			=> false,
-		'items_wrap'		=> '<form class="responsive-nav"><select class="tb-jump-menu form-control"><option value="">'.themeblvd_get_local('navigation').'</option>%3$s</select></form>',
-		'echo' 				=> false,
-		'walker' 			=> new ThemeBlvd_Select_Menu_Walker
-	)));
-	return apply_filters('themeblvd_nav_menu_select', $select_menu, $location );
-}
-
-/**
  * Get Simple Contact module (primary meant for simple contact widget)
  *
  * @since 2.0.3
@@ -1287,4 +1216,47 @@ function themeblvd_get_related_posts( $args = array() ) {
  */
 function themeblvd_related_posts( $args = array() ) {
 	echo themeblvd_get_related_posts($args);
+}
+
+function themeblvd_get_refine_search_menu() {
+
+	$output = '';
+	$types = themeblvd_get_search_types();
+
+	if ( $types ) {
+
+		$active = 'all';
+
+		if ( ! empty($_GET['s_type']) ) {
+			$active = $_GET['s_type'];
+		}
+
+		$url = untrailingslashit(home_url('/')).'/?s='.str_replace(' ', '+', get_search_query());
+
+		$output .= '<div class="tb-inline-menu">';
+		$output .= '<ul class="list-inline search-refine-menu">';
+
+		if ( $active == 'all' ) {
+			$output .= sprintf( '<li><span class="active">%s</span></li>', themeblvd_get_local('all') );
+		} else {
+			$output .= sprintf( '<li><a href="%s">%s</a></li>', $url, themeblvd_get_local('all') );
+		}
+
+		foreach ( $types as $type => $name ) {
+			if ( $active == $type ) {
+				$output .= sprintf( '<li><span class="active">%s</span></li>', $name );
+			} else {
+				$output .= sprintf( '<li><a href="%s&s_type=%s">%s</a></li>', $url, $type, $name );
+			}
+		}
+
+		$output .= '</ul>';
+		$output .= '</div><!-- .tb-inline-mini (end) -->';
+
+	}
+
+	return apply_filters( 'themeblvd_refine_search_menu', $output );
+}
+function themeblvd_refine_search_menu() {
+	echo themeblvd_get_refine_search_menu();
 }

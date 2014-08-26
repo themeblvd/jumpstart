@@ -46,7 +46,8 @@ function themeblvd_loop( $args = array() ){
 		'crop'				=> '',						// Optional custom crop size
 		'class'				=> '',						// Any additional CSS class to add
 		'max_width'			=> 0,						// Container max width - if coming from element, this should be set
-		'wp_query'			=> false					// Whether to pull from primary WP query
+		'wp_query'			=> false,					// Whether to pull from primary WP query
+		'msg_no_posts'		=> themeblvd_get_local('archive_no_posts')
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -90,7 +91,7 @@ function themeblvd_loop( $args = array() ){
 
 		$part = $context;
 
-		if ( $paginated ) {
+		if ( $paginated && $context != 'search_results' ) {
 			$part .= '_paginated';
 		}
 	}
@@ -431,7 +432,7 @@ function themeblvd_loop( $args = array() ){
 		// Posts per column
 		$ppc = 0;
 
-		if ( ! $args['rows'] && intval($args['columns']) >= 2 ) {
+		if ( $context != 'grid' && intval($args['columns']) >= 2 ) {
 			$ppc = ceil( $total / intval($args['columns']) );
 		}
 
@@ -447,7 +448,7 @@ function themeblvd_loop( $args = array() ){
 			printf('<div class="%s">', $ppc_class);
 		}
 
-		while( $posts->have_posts() ) {
+		while ( $posts->have_posts() ) {
 
 			$posts->the_post();
 			$more = 0;
@@ -504,12 +505,12 @@ function themeblvd_loop( $args = array() ){
 	} else {
 
 		// No posts to display
-		printf( '<p>%s</p>', themeblvd_get_local( 'archive_no_posts' ) );
+		printf( '<p>%s</p>', $args['msg_no_posts'] );
 
 	}
 
 	// Pagination
-	if ( $paginated ) {
+	if ( $paginated && $posts->max_num_pages >= 2 ) {
 		themeblvd_pagination( $posts->max_num_pages );
 	}
 
@@ -517,7 +518,7 @@ function themeblvd_loop( $args = array() ){
 	wp_reset_postdata();
 
 	// End output
-	echo '</div><!-- .post_list (end) -->';
+	echo '</div><!-- .*-loop (end) -->';
 
 }
 
@@ -549,14 +550,23 @@ function themeblvd_the_loop() {
 		} else if ( is_tax('portfolio') || is_tax('portfolio_tag') ) {
 			$class .= ' portfolio-loop';
 		}
+
 	}
 
-	$args = apply_filters( 'themeblvd_the_loop_args', array(
+	$args = array(
 		'display'	=> 'paginated',
 		'context'	=> themeblvd_config('mode'),
 		'class'		=> $class,
 		'wp_query' 	=> true
-	));
+	);
+
+	if ( is_search() ) {
+		$args['context'] = 'search_results';
+		$args['class'] = 'search-loop';
+		$args['msg_no_posts'] = themeblvd_get_local('search_no_results');
+	}
+
+	$args = apply_filters( 'themeblvd_the_loop_args', $args );
 
 	themeblvd_loop( $args );
 

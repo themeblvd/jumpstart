@@ -457,7 +457,7 @@ class Theme_Blvd_Query {
 	 */
 	public function pre_get_posts( $q ) {
 
-		if ( ! $q->is_main_query() || ( ! $q->is_home() && ! $q->is_page() && ! $q->is_archive() ) ) {
+		if ( ! $q->is_main_query() || ( ! $q->is_home() && ! $q->is_page() && ! $q->is_archive() && ! $q->is_search() ) ) {
 			return;
 		}
 
@@ -512,6 +512,11 @@ class Theme_Blvd_Query {
 				$cat = themeblvd_remove_trailing_char($cat, ',');
 				$q->set('cat', $cat);
 			}
+		}
+
+		// Search results
+		if ( $q->is_search() && ! empty($_GET['s_type']) ) {
+			$q->set('post_type', $_GET['s_type']);
 		}
 
 		do_action( 'themeblvd_pre_get_posts', $q, $this );

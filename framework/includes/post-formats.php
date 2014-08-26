@@ -49,7 +49,7 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 		'gallery'	=> 'picture-o',
 		'image'		=> 'camera',
 		'link'		=> 'link',
-		'page'		=> 'fa-file-o',
+		'page'		=> 'file-o',
 		'portfolio'	=> 'briefcase',
 		'product'	=> 'shopping-cart',
 		'quote'		=> 'quote-left',

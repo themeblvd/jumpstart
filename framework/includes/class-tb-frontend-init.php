@@ -121,10 +121,9 @@ class Theme_Blvd_Frontend_Init {
 			'page' 				=> 'page',
 			'404'				=> '404',
 
-			// ... @TODO search results
 			// Search
-			'search'			=> 'search',			// Note: This is for displaying content when no search results were found.
-			'search_results'	=> 'archive'
+			'search'			=> 'search',
+			'search_results'	=> 'search-result'
 		));
 	}
 

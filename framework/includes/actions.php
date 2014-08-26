@@ -454,6 +454,17 @@ function themeblvd_grid_meta() {
 }
 
 /**
+ * The meta info that generally displays with a post
+ * in search results.
+ *
+ * @since 2.5.0
+ * @see themeblvd_search_meta_default()
+ */
+function themeblvd_search_meta() {
+	do_action( 'themeblvd_search_meta' );
+}
+
+/**
  * Display the featured image, accounting for framework's
  * Image Link settings.
  *

@@ -202,6 +202,9 @@ function themeblvd_setup() {
 			'charts'			=> true,			// Charts.js
 			'ios_orientation'	=> false,			// "ios-orientationchange-fix" script
 			'tag_cloud'			=> true 			// Framework tag cloud styling
+		),
+		'plugins' => array(
+			'bbpress'			=> true				// bbPress by Automattic
 		)
 	);
 	return apply_filters( 'themeblvd_global_config', $setup );
