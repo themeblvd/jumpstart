@@ -150,8 +150,8 @@ function themeblvd_setup() {
 			'sidebars'			=> true,			// Sidebars page
 			'updates'			=> true,			// Updates (if theme supports)
 			'user'				=> true,			// User profile options
-			'tax'				=> true				// Taxonomy options
-
+			'tax'				=> true,			// Taxonomy options
+			'menus'				=> true 			// Options added to WP menu builder
 		),
 		'meta' => array(
 			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"

@@ -193,7 +193,7 @@ function themeblvd_header_menu_default() {
 	?>
 	<nav id="access" class="header-nav" role="navigation">
 		<div class="wrap clearfix">
-			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
+			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'walker' => new ThemeBlvd_Main_Menu_Walker(), 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu sf-menu-with-fontawesome clearfix', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
 			<?php themeblvd_header_menu_addon(); ?>
 		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->

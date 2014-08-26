@@ -35,9 +35,14 @@ function themeblvd_admin_init() {
 		$user_options = Theme_Blvd_User_Options::get_instance();
 	}
 
-	// User profile options
+	// Category/Tag options
 	if ( themeblvd_supports('admin', 'tax') ) {
 		$tax_options = Theme_Blvd_Tax_Options::get_instance();
+	}
+
+	// Menu options
+	if ( themeblvd_supports('admin', 'menus') ) {
+		$menu_options = Theme_Blvd_Menu_Options::get_instance();
 	}
 
 }

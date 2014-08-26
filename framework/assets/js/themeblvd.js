@@ -51,7 +51,10 @@ jQuery(document).ready(function($) {
 
 	// Activate Superfish
 	if ( themeblvd.superfish == 'true' ) {
-		$('ul.sf-menu').superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');
+		$('ul.sf-menu').superfish({
+			speed: 200,
+			popUpSelector: '.non-mega-sub-menu,.sf-mega'
+		});
 	}
 
 	// Side Menu, general
@@ -60,11 +63,11 @@ jQuery(document).ready(function($) {
 		$('.tb-side-menu').on('click.tb-side-menu-toggle', '.tb-side-menu-toggle', function() {
 			var $el = $(this);
 			if ( $el.hasClass('open') ) {
-				$el.next('.sub-menu').slideUp(100);
+				$el.next('.sub-menu, .sf-mega').slideUp(100);
 				$el.removeClass('open fa-'+$el.data('close'));
 				$el.addClass('fa-'+$el.data('open'));
 			} else {
-				$el.next('.sub-menu').slideDown(100);
+				$el.next('.sub-menu,  .sf-mega').slideDown(100);
 				$el.removeClass('fa-'+$el.data('open'));
 				$el.addClass('open fa-'+$el.data('close'));
 			}
@@ -121,7 +124,10 @@ jQuery(document).ready(function($) {
 
 				// Activate superfish
 				if ( themeblvd.superfish == 'true' && ! $primary_menu.data('sfOptions') ) {
-					$primary_menu.superfish({ speed: 200 }).addClass('sf-menu-with-fontawesome');;
+					$primary_menu.superfish({
+						speed: 200,
+						popUpSelector: '.non-mega-sub-menu,.sf-mega'
+					});
 					$primary_menu.addClass('sf-menu');
 				}
 

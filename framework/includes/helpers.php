@@ -114,24 +114,6 @@ function themeblvd_get_font_weight( $option ) {
 	return apply_filters( 'themeblvd_font_weight', $weight, $option );
 }
 
-if ( !function_exists( 'themeblvd_primary_menu_fallback' ) ) :
-/**
- * List pages as a main navigation menu when user
- * has not set one under Apperance > Menus in the
- * WordPress admin panel.
- *
- * @since 2.0.0
- */
-function themeblvd_primary_menu_fallback() {
-	$home_text = themeblvd_get_local('home');
-	$args = apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) );
-	echo '<ul id="'.$args['menu_id'].'" class="'.$args['menu_class'].'">';
-	echo '<li class="home"><a href="'.home_url().'" title="'.$home_text.'">'.$home_text.'</a></li>';
-	wp_list_pages('title_li=');
-	echo '</ul>';
-}
-endif;
-
 /**
  * Setup arguments to pass into get_posts()
  *
@@ -1436,17 +1418,18 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	}
 
 	// Step one: the first chunk
-	for ( $i = 0, $j = count($chunks); $i < $j; $i++) {
-	$seconds = $chunks[$i][0];
+	for ( $i = 0, $j = count($chunks); $i < $j; $i++ ) {
 
-	// Finding the biggest chunk (if the chunk fits, break)
-	if ( ( $count = floor($since / $seconds) ) != 0 )
-		break;
+		$seconds = $chunks[$i][0];
+
+		// Finding the biggest chunk (if the chunk fits, break)
+		if ( ( $count = floor($since / $seconds) ) != 0 ) {
+			break;
+		}
 	}
 
 	// Set output var
 	$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
-
 
 	if ( !(int)trim($output) ){
 		$output = '0 ' . $locals['seconds'];
@@ -1455,4 +1438,37 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	$output .= ' '.$locals['ago'];
 
 	return $output;
+}
+
+/**
+ * Get search result post types
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_search_types() {
+
+	// Because we need all the results, and not just
+	// the current page, we have to get the search
+	// results again.
+	$results = new WP_Query('s='.get_search_query().'&posts_per_page=-1');
+
+	// Build list of custom post types from results
+	$types = array();
+
+	if ( $results->have_posts() ) {
+		while ( $results->have_posts() ) {
+
+			$results->the_post();
+			$type = get_post_type();
+
+			if ( ! isset( $types[$type] ) ) {
+				$post_type = get_post_type_object($type);
+				$types[$type] = $post_type->labels->name;
+			}
+		}
+	}
+
+	wp_reset_postdata();
+
+	return $types;
 }
