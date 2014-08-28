@@ -393,9 +393,9 @@ p.bbp-user-reply-count {
 .bbp-user-replies-created .bbp-admin-links {
 	display: none;
 }
-#bbp-user-favorites li.bbp-body ul.topic,
-#bbp-user-subscriptions li.bbp-body ul.topic,
-#bbp-user-subscriptions li.bbp-body ul.forum {
+.logged-in #bbp-user-favorites li.bbp-body ul.topic,
+.logged-in #bbp-user-subscriptions li.bbp-body ul.topic,
+.logged-in #bbp-user-subscriptions li.bbp-body ul.forum {
 	padding-left: 40px;
 	position: relative;
 }
@@ -668,9 +668,9 @@ body.rtl #bbpress-forums #bbp-single-user-details #bbp-user-navigation {
 	margin-right: 15px;
 	margin-left: 0;
 }
-body.rtl #bbp-user-favorites li.bbp-body ul.topic,
-body.rtl #bbp-user-subscriptions li.bbp-body ul.topic,
-body.rtl #bbp-user-subscriptions li.bbp-body ul.forum {
+body.rtl.logged-in #bbp-user-favorites li.bbp-body ul.topic,
+body.rtl.logged-in #bbp-user-subscriptions li.bbp-body ul.topic,
+body.rtl.logged-in #bbp-user-subscriptions li.bbp-body ul.forum {
 	padding-right: 40px;
 	padding-left: 0;
 }
