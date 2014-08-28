@@ -102,16 +102,22 @@ class Theme_Blvd_Menu_Options {
 			update_post_meta( $item_id, '_tb_mega_menu_hide_headers', '1' );
 		}
 
+		if ( empty( $_POST['_tb_bold'][$item_id] ) ) {
+			update_post_meta( $item_id, '_tb_bold', '0' );
+		} else {
+			update_post_meta( $item_id, '_tb_bold', '1' );
+		}
+
 		if ( empty( $_POST['_tb_deactivate_link'][$item_id] ) ) {
 			update_post_meta( $item_id, '_tb_deactivate_link', '0' );
 		} else {
 			update_post_meta( $item_id, '_tb_deactivate_link', '1' );
 		}
 
-		if ( empty( $_POST['_tb_bold'][$item_id] ) ) {
-			update_post_meta( $item_id, '_tb_bold', '0' );
+		if ( empty( $_POST['_tb_placeholder'][$item_id] ) ) {
+			update_post_meta( $item_id, '_tb_placeholder', '0' );
 		} else {
-			update_post_meta( $item_id, '_tb_bold', '1' );
+			update_post_meta( $item_id, '_tb_placeholder', '1' );
 		}
 
 	}

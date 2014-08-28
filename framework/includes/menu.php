@@ -39,14 +39,26 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			// prominent item in the 3rd level.
 			if ( $this->current_header ) {
 
-				if ( get_post_meta($this->current_header->ID, '_tb_deactivate_link', true) ) {
-					$output .= sprintf('<li class="menu-item-has-children"><span class="mega-section-header">%s</span></li>', apply_filters( 'the_title', $this->current_header->title, $this->current_header->ID ) );
+				if ( get_post_meta($this->current_header->ID, '_tb_deactivate_link', true) || get_post_meta($this->current_header->ID, '_tb_placeholder', true) ) {
+
+					$class = 'menu-item-has-children';
+
+					if ( get_post_meta($this->current_header->ID, '_tb_placeholder', true) ) {
+						$class .= ' placeholder';
+					}
+
+					$output .= sprintf('<li class="%s"><span class="mega-section-header">%s</span></li>', $class, apply_filters( 'the_title', $this->current_header->title, $this->current_header->ID ) );
+
 				} else {
+
 					$args->before = '<span class="mega-section-header">';
 					$args->after = '</span>';
+
 					parent::start_el( $output, $this->current_header, 2, $args );
 					parent::end_el( $output, $this->current_header, 2, $args );
+
 					$args->before = $args->after = '';
+
 				}
 
 				$output = substr_replace($output, "<ul class=\"sub-menu mega-sub-menu level-2\">\n", -5); // Replace last </li> with opening <ul>
@@ -131,22 +143,26 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 		}
 
 		// Deactivate link, if enabled
-		if ( $depth > 0 && get_post_meta($item->ID, '_tb_deactivate_link', true) ) {
+		if ( $depth > 0 && ( get_post_meta($item->ID, '_tb_deactivate_link', true) || get_post_meta($item->ID, '_tb_placeholder', true) ) ) {
 
-			$class = 'menu-btn';
+			$class = 'menu-item menu-item-'.$item->ID;
+
+			if ( get_post_meta($item->ID, '_tb_placeholder', true) ) {
+				$class .= ' placeholder';
+			}
 
 			if ( get_post_meta($item->ID, '_tb_bold', true) ) {
 				$class .= ' bold';
 			}
 
-			$output .= sprintf('<span class="%s">%s</span>', $class, apply_filters( 'the_title', $item->title, $item->ID ) );
+			$output .= sprintf('<li id="menu-item-%s" class="%s"><span class="menu-btn">%s</span></li>', $item->ID, $class, apply_filters( 'the_title', $item->title, $item->ID ) );
 			return;
 		}
 
-		// Add "has-mega-menu" class to list item holding mega menu
-		if ( $this->doing_mega && $depth == 0 ) {
-			$output = str_replace( sprintf('<li id="menu-item-%s" class="', $item->ID), sprintf('<li id="menu-item-%s" class="has-mega-menu mega-col-%s ', $item->ID, $this->count), $output);
-		}
+		// Add bold class
+		if ( get_post_meta($item->ID, '_tb_bold', true) ) {
+			$item->classes[] = 'bold';
+		};
 
 		parent::start_el( $output, $item, $depth, $args, $id );
 
