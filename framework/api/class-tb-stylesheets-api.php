@@ -134,6 +134,17 @@ class Theme_Blvd_Stylesheets_API {
 
 			);
 
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['bootstrap'] = array(
+					'handle'	=> 'bootstrap_rtl',
+					'src'		=> TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css',
+					'deps'		=> array(),
+					'ver'		=> TB_FRAMEWORK_VERSION,
+					'media'		=> 'all'
+
+				);
+			}
+
 			// FontAwesome
 			$this->framework_stylesheets['fontawesome'] = array(
 				'handle'	=> 'fontawesome',
@@ -166,6 +177,16 @@ class Theme_Blvd_Stylesheets_API {
 				'ver'		=> TB_FRAMEWORK_VERSION,
 				'media'		=> 'all'
 			);
+
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['themeblvd'] = array(
+					'handle'	=> 'themeblvd_rtl',
+					'src'		=> TB_FRAMEWORK_URI.'/assets/css/rtl.css',
+					'deps'		=> array(),
+					'ver'		=> TB_FRAMEWORK_VERSION,
+					'media'		=> 'all'
+				);
+			}
 		}
 
 		// Primary dark css, re-styles themeblvd.css for dark content bg color
