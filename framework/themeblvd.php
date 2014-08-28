@@ -65,6 +65,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-export-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-import-options.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-menu-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );
@@ -114,6 +115,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/layout.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/loop.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/menu.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/post-formats.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/stats.php' );
