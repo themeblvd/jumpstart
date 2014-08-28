@@ -182,6 +182,7 @@ function themeblvd_setup() {
 		),
 		'display' => array(
 			'responsive' 		=> true,			// Responsive elements
+			'dark'				=> false,			// Whether to display as dark theme
 			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
@@ -191,6 +192,7 @@ function themeblvd_setup() {
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script
 			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
+			'primary_dark_css'	=> true,			// Primary "themeblvd_dark" stylesheet (if supports display=>dark)
 			'flexslider'		=> true,			// Flexslider script by WooThemes
 			'roundabout'		=> true,			// Roundabout script by FredHQ
 			'nivo'				=> true,			// Nivo script by Dev7studios

@@ -139,7 +139,7 @@ class Theme_Blvd_Stylesheets_API {
 				'handle'	=> 'fontawesome',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/fontawesome/css/font-awesome.min.css',
 				'deps'		=> array(),
-				'ver'		=> '4.0.3',
+				'ver'		=> '4.1.0',
 				'media'		=> 'all'
 			);
 
@@ -147,7 +147,6 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Magnific Popup
 		if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
-
 			$this->framework_stylesheets['magnific_popup'] = array(
 				'handle'	=> 'magnific_popup',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/css/magnificpopup.min.css',
@@ -155,7 +154,6 @@ class Theme_Blvd_Stylesheets_API {
 				'ver'		=> '0.9.3',
 				'media'		=> 'all'
 			);
-
 		}
 
 		// Primary framework styles
@@ -168,7 +166,17 @@ class Theme_Blvd_Stylesheets_API {
 				'ver'		=> TB_FRAMEWORK_VERSION,
 				'media'		=> 'all'
 			);
+		}
 
+		// Primary dark css, re-styles themeblvd.css for dark content bg color
+		if ( themeblvd_supports( 'display', 'dark' ) && themeblvd_supports( 'assets', 'primary_dark_css' ) ) {
+			$this->framework_stylesheets['themeblvd_dark'] = array(
+				'handle'	=> 'themeblvd_dark',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd-dark.min.css',
+				'deps'		=> array('themeblvd'),
+				'ver'		=> TB_FRAMEWORK_VERSION,
+				'media'		=> 'all'
+			);
 		}
 
 		// Remove stylesheets
@@ -231,7 +239,6 @@ class Theme_Blvd_Stylesheets_API {
 					$key = $file['level'];
 					$this->client_stylesheets[$key][$handle] = $file;
 				}
-
 			}
 
 		}
