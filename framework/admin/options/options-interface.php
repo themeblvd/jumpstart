@@ -371,6 +371,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							}
 							break;
 
+						case 'sliders' :
+
+							$value['options'] = themeblvd_get_select( 'sliders' );
+
+							if ( count( $value['options'] ) < 1 ) {
+								$error = __('Couldn\'t find any sliders.', 'themeblvd');
+							}
+							break;
+
 					}
 
 				}

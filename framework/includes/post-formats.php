@@ -10,9 +10,10 @@
  */
 function themeblvd_get_format_icon( $format = '', $force = false ) {
 
-	if ( ! $format && $force ) {
+	$icon = '';
+	$post_type = get_post_type();
 
-		$post_type = get_post_type();
+	if ( ! $format && $force ) {
 
 		switch ( $post_type ) {
 			case 'page' :
@@ -29,11 +30,6 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 			case 'download' : 			// EDD
 				$format = 'product';
 				break;
-			case 'forum' :				// bbPress
-			case 'topic' :				// bbPress
-			case 'reply' :				// bbPress
-				$format = 'forum';
-				break;
 			default :					// Standard Post
 				$format = 'standard';
 		}
@@ -45,7 +41,6 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 		'aside'		=> 'thumb-tack', 	// Alt: file-text
 		'attachment'=> 'picture-o',
 		'chat'		=> 'comments',
-		'forum'		=> 'comments-o',
 		'gallery'	=> 'picture-o',
 		'image'		=> 'camera',
 		'link'		=> 'link',
@@ -58,10 +53,10 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 	));
 
 	if ( ! empty( $icons[$format] ) ) {
-		return $icons[$format];
+		$icon = $icons[$format];
 	}
 
-	return '';
+	return apply_filters( 'themeblvd_format_icon', $icon, $format, $force, $post_type );
 }
 
 /**

@@ -27,6 +27,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-api.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/grid.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/locals.php' );
@@ -43,6 +44,7 @@ add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 add_action( 'customize_register', 'themeblvd_customizer_init' );
+add_action( 'after_setup_theme', 'themeblvd_plugin_compat' );
 add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 add_action( 'after_setup_theme', 'themeblvd_register_navs' );
 
@@ -200,6 +202,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_cats', 10, 0 );
 	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_tags', 10, 0 );
 	add_action( 'themeblvd_grid_meta', 'themeblvd_grid_meta_default' );
+	add_action( 'themeblvd_search_meta', 'themeblvd_search_meta_default' );
 	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 2 );
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
 

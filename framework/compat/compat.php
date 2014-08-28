@@ -1,13 +1,13 @@
 <?php
 /**
- * Include compatibility fixes for select plugins.
+ * Include compatibility integration for select plugins.
  *
  * @since 2.5.0
  */
 function themeblvd_plugin_compat() {
 
 	// bbPress by Automattic
-	if ( themeblvd_supports('plugins', 'bbpress') ) {
+	if ( class_exists('bbPress') && themeblvd_supports('plugins', 'bbpress') ) {
 
 		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/bbpress/class-tb-compat-bbpress.php' );
 
@@ -15,6 +15,7 @@ function themeblvd_plugin_compat() {
 
 	}
 
-	// ... @TODO more plugins
+	// WooCommerce by WooThemes
+	// ... @TODO
 
 }

@@ -1094,10 +1094,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 		$parts[$last]['text'] .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
 	}
 
-	// Final filter on entire breadcrumbs trail.
-	$breadcrumbs = apply_filters( 'themeblvd_breadcrumb_parts', array_merge( $breadcrumbs, $parts ), $atts );
-
-	return $breadcrumbs;
+	return apply_filters( 'themeblvd_breadcrumb_parts', array_merge($breadcrumbs, $parts), $atts );
 }
 
 /**

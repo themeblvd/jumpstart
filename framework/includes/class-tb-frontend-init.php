@@ -122,7 +122,7 @@ class Theme_Blvd_Frontend_Init {
 			'404'				=> '404',
 
 			// Search
-			'search'			=> 'search',
+			'search'			=> 'page-search',
 			'search_results'	=> 'search-result'
 		));
 	}
