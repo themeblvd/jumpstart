@@ -244,6 +244,13 @@ function themeblvd_body_class( $classes ) {
 		$classes[] = 'tb-scroll-effects';
 	}
 
+	// Dark/Light content
+	if ( themeblvd_supports( 'assets', 'dark' ) ) {
+		$classes[] = 'content_dark';
+	} else {
+		$classes[] = 'content_light';
+	}
+
 	// Tag Cloud styling
 	if ( themeblvd_supports( 'assets', 'tag_cloud' ) ) {
 		$classes[] = 'tb-tag-cloud';
