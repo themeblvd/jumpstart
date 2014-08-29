@@ -369,38 +369,6 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 }
 
 /**
- * Get thumbnail size based on passed in size and/or
- * framework options.
- *
- * @since 2.3.0
- *
- * @param $size string Optional current size of image
- * @param $location string Optional location for thumbnail
- * @param $sidebar_layout string Optional current sidebar layout
- * @return $size Size after it's been formatted
- */
-function themeblvd_get_thumbnail_size( $max, $context = 'full' ) {
-
-	$size = 'full';
-	$sizes = themeblvd_get_image_sizes();
-
-	if ( $context == 'full' ) {
-		$keys = array('tb_x_large', 'tb_large', 'tb_medium');
-	}
-
-	if ( ! empty($keys) ) {
-		foreach ( $keys as $key ) {
-			if ( $sizes[$key]['width'] <= $max ) {
-				$size = $key;
-			}
-		}
-	}
-
-	return $size;
-
-}
-
-/**
  * Get a placeholder for media when not present
  *
  * @since 2.5.0
@@ -517,6 +485,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		'nav_thumbs'	=> true,				// Whether to show nav thumbnails (added by Theme Blvd framework)
 		'title'			=> false,				// Display title of attachments on slides
 		'caption'		=> false, 				// Display captions of attachments on slides
+		'dark_text'		=> false,				// Whether to use dark text for title/descriptions/standard nav, use when images are light
 		'frame'			=> apply_filters('themeblvd_featured_thumb_frame', false)
 	));
 	$args = wp_parse_args( $args, $defaults );
@@ -561,10 +530,11 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 	// Prepare images
 	$images = array();
-	$crop = apply_filters('themeblvd_gallery_slider_crop', 'slider-x-large');
 
 	if ( $args['size'] ) {
-		array_unshift( $search, $args['size'] );
+		$crop = $args['size'];
+	} else {
+		$crop = apply_filters('themeblvd_gallery_slider_default_crop', 'slider-x-large');
 	}
 
 	foreach ( $attachments as $attachment ) {
@@ -585,7 +555,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		$thumb = wp_get_attachment_image_src( $attachment->ID, 'tb_thumb' );
 
 		$images[] = array(
-			'crop'		=> $size,
+			'crop'		=> $crop,
 			'alt'		=> $attachment->post_title,
 			'src'		=> $img[0],
 			'width'		=> $img[1],
@@ -603,7 +573,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 	// Prepare slider options
 	$options = $args;
-	$options['crop'] = $size;
+	$options['crop'] = $crop;
 	unset( $options['size'], $options['title'], $options['caption'] );
 
 	// Get our slider
@@ -696,10 +666,10 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			'desc'			=> '',
 			'desc_wpautop'	=> '1',
 			'link'			=> '',
-			'link_url'		=> ''
+			'link_url'		=> '',
+			'addon'			=> ''
 		));
 	}
-echo '<pre>'; print_r($images); echo '</pre>';
 
 	// Slider auto rotate speed
 	$interval = $args['interval'];
@@ -862,7 +832,12 @@ echo '<pre>'; print_r($images); echo '</pre>';
 					}
 				}
 
-				$output .= '</div>';
+				$output .= '</div><!-- .carousel-caption-wrap (end) -->';
+
+			}
+
+			if ( $img['addon'] ) {
+				$output .= $img['addon'];
 			}
 
 			$output .= '</div><!-- .item (end) -->';

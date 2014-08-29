@@ -123,7 +123,7 @@ function themeblvd_get_font_weight( $option ) {
  * @param string $type Type of posts setup, grid or list
  * @return array $args Arguments to get passed into get_posts()
  */
-function themeblvd_get_posts_args( $options, $type ) {
+function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 	// Is there a query source? (i.e. category, tag, query)
 	$source = '';
@@ -240,10 +240,16 @@ function themeblvd_get_posts_args( $options, $type ) {
 		}
 
 		// Tags
-		if (  $source == 'tag' || ! $source ) {
+		if ( $source == 'tag' || ! $source ) {
 			if ( ! empty( $options['tag'] ) ) {
 				$query['tag'] = $options['tag'];
 			}
+		}
+
+		// If post slider (NOT grid slider), we only want
+		// images with featured images set.
+		if ( $type == 'slider' ) {
+			$query['meta_key'] = '_thumbnail_id';
 		}
 
 		// Additional args

@@ -709,12 +709,13 @@ function themeblvd_get_post_slider( $args ) {
 		'category_name'		=> '',						// Force category_name string of query
 		'cat'				=> '',						// Force cat string of query
 		'tag'				=> '', 						// Force tag string of query
-		'posts_per_page'	=> '6',						// Number of rows (grid only)
+		'posts_per_page'	=> '6',						// Number of posts
 		'orderby'			=> 'date',					// Orderby param for posts query
 		'order'				=> 'DESC',					// Order param for posts query
 		'offset'			=> '0',						// Offset param for posts query
 		'query'				=> '',						// Custom query string
     	'crop'				=> 'slider-large',			// Crop size for slide images
+    	'style'				=> 'style-1',				// Preset styles for post slider - style-1, style-2, style-3
     	'slide_link'		=> 'button',				// How to handle links from slides - none, image_post, image_link, or button
     	'button_color'		=> 'custom',				// If slide_link == button, color of button
     	'button_custom'		=> array(),					// Custom button color atts
@@ -727,18 +728,25 @@ function themeblvd_get_post_slider( $args ) {
 		'nav_arrows'		=> '1',						// Whether to show navigation arrows
 		'nav_thumbs'		=> '0',						// Whether to show navigation image thumbnails
 		'link'				=> '1',						// Whether linked slides have animated hover overlay effect
+    	'title'				=> '1',						// Whether to include post title on each slide
     	'meta'				=> '1',						// Whether to include post meta on each slide
+    	'excerpt'			=> '0',						// Whether to include post excerpt on each slide
     	'cover'				=> '0',						// popout: Whether images horizontal space 100%
 		'position'			=> 'middle center',			// popout: If cover is true, how slider images are positioned (i.e. with background-position)
 		'height_desktop'	=> '400',					// popout: If cover is true, slider height for desktop viewport
 		'height_tablet'		=> '300',					// popout: If cover is true, slider height for tablet viewport
-		'height_mobile'		=> '200',					// popout: If cover is true, slider height for mobile viewport
+		'height_mobile'		=> '200'					// popout: If cover is true, slider height for mobile viewport
     );
     $args = wp_parse_args( $args, $defaults );
 
     // Pass a class onto the slider so we know
     // it's the post slider for styling
-    $args['class'] = 'tb-post-slider';
+    $args['class'] = sprintf('tb-post-slider %s', $args['style']);
+
+    // Do we need mini controls?
+    if ( $args['style'] == 'style-2' || $args['style'] == 'style-3' ) {
+    	$args['arrows'] = 'mini';
+    }
 
     // Setup buttons, if included
     if ( $args['slide_link'] == 'button' ) {
@@ -814,24 +822,49 @@ function themeblvd_get_post_slider( $args ) {
 				'width'			=> $featured_image[1],
 				'height'		=> $featured_image[2],
 				'thumb'			=> '',
-				'title'			=> get_the_title(),
+				'title'			=> '',
 				'desc'			=> '',
 				'desc_wpautop'	=> false,
 				'link'			=> '',
-				'link_url'		=> ''
+				'link_url'		=> '',
+				'addon'			=> ''
 			);
 
 			// Thumbnail
 			if ( $args['nav_thumbs'] ) {
-				$thumb = wp_get_attachment_image_src( $featured_image_id, apply_filters('themeblvd_simple_slider_thumb_crop', 'square_small') );
+				$thumb = wp_get_attachment_image_src( $featured_image_id, apply_filters('themeblvd_simple_slider_thumb_crop', 'tb_thumb') );
 				$image['thumb'] = $thumb[0];
+			}
+
+			// Title
+			if ( $args['title'] ) {
+				$image['title'] = get_the_title();
 			}
 
 			// Description (meta)
 			if ( $args['meta'] ) {
-				ob_start();
-				themeblvd_blog_meta();
-				$image['desc'] = apply_filters( 'themeblvd_post_slider_meta', ob_get_clean() );
+				switch( $args['style'] ) {
+
+					case 'style-1' :
+						$image['desc'] = themeblvd_get_meta( apply_filters('themeblvd_post_slider_style_1_args', array('include' => array('format', 'time', 'author', 'comments')) ) );
+						break;
+
+					case 'style-2' :
+						$image['desc'] = themeblvd_get_meta( apply_filters('themeblvd_post_slider_style_2_args', array('include' => array('time', 'author', 'comments'), 'time' => 'ago', 'comments' => 'mini') ) );
+						break;
+
+					case 'style-3' :
+						if ( has_category() ) {
+							$image['addon'] .= sprintf( '<div class="category-label bg-primary">%s</div>', get_the_category_list(', ') );
+						}
+						$image['addon'] .= themeblvd_get_meta( apply_filters('themeblvd_post_slider_style_3_args', array('include' => array('time', 'comments'), 'comments' => 'mini') ) );
+
+				}
+			}
+
+			// Description (excerpts)
+			if ( $args['excerpts'] ) {
+				$image['desc'] .= '<p class="carousel-excerpt">'.get_the_excerpt().'</p>';
 			}
 
 			// Link / Button
