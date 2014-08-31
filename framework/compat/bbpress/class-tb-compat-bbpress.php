@@ -47,9 +47,16 @@ class Theme_Blvd_Compat_bbPress {
 	 */
 	public function __construct() {
 
-		// Custom stylesheet
+		// Custom styles. We're not creating a new theme or
+		// completely replacing default stylesheet, but just overriding
+		// select styles of the current bbPress default theme.
 		add_action( 'wp_enqueue_scripts', array($this, 'assets') );
 		add_filter( 'themeblvd_framework_stylesheets', array($this, 'add_style') );
+		add_filter( 'body_class', array($this, 'body_class') );
+		add_filter( 'post_class', array($this, 'post_class'), 10, 3 );
+
+		// Sidebar layouts
+		add_filter( 'themeblvd_sidebar_layout', array($this, 'sidebar_layout') );
 
 		// Remove redundant descriptions
 		add_filter( 'bbp_get_single_forum_description', array($this, 'remove_desc'), 10, 2 );
@@ -80,8 +87,16 @@ class Theme_Blvd_Compat_bbPress {
 		add_filter( 'bbp_get_topic_author_link', array($this, 'strip') );
 		add_filter( 'bbp_get_reply_author_link', array($this, 'strip') );
 
-        // Add wrapping classes for bbPress pages
-        add_filter( 'post_class', array($this, 'post_class'), 10, 3 );
+		// Remove inline breaks (separators) from author details
+		add_filter( 'bbp_after_get_topic_author_link_parse_args', array($this, 'author') );
+		add_filter( 'bbp_after_get_reply_author_link_parse_args', array($this, 'author') );
+
+        // Output wrapped subscribe/fav links for more conistent styling
+        add_action( 'bbp_template_before_forums_index', array($this, 'forum_subscribe') );
+		add_action( 'bbp_template_before_single_forum', array($this, 'forum_subscribe') );
+
+		// Lead topic
+        add_action( 'wp', array($this, 'lead_topic') );
 
 	}
 
@@ -110,6 +125,70 @@ class Theme_Blvd_Compat_bbPress {
 	public function add_style( $deps ) {
 		$deps[] = 'bbpress';
 		return $deps;
+	}
+
+	/**
+	 * Any classes needed for <body> tag
+	 *
+	 * @since 2.5.0
+	 * @see body_class()
+	 */
+	public function body_class( $classes ) {
+
+		if ( bbp_is_topic() && bbp_show_lead_topic() ) {
+			$classes[] = 'bbp-show-lead-topic';
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Add to article wrap for bbPress pages
+	 *
+	 * @since 2.5.0
+	 * @see post_class()
+	 */
+	public function post_class( $classes, $class, $post_id ) {
+
+		if ( is_bbpress() ) {
+
+			if ( get_post_type($post_id) == bbp_get_topic_post_type() || get_post_type($post_id) == bbp_get_reply_post_type() ) {
+				$classes[] = 'clearfix';
+			}
+
+			if ( in_array('top', $class) ) {
+				$classes[] = 'bbp-page';
+				$classes[] = 'page';
+			}
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Apply sidebar layouts from theme options
+	 *
+	 * @since 2.5.0
+	 */
+	public function sidebar_layout( $layout ) {
+
+		if ( is_bbpress() ) {
+
+			if ( bbp_is_single_topic() || bbp_is_single_reply() || bbp_is_topic_edit() || bbp_is_topic_merge() || bbp_is_topic_split() || bbp_is_reply_edit() || bbp_is_reply_move() ) {
+				$layout = themeblvd_get_option('bbp_topic_sidebar_layout');
+			} else if ( bbp_is_single_user() ) {
+				$layout = themeblvd_get_option('bbp_user_sidebar_layout');
+			} else {
+				$layout = themeblvd_get_option('bbp_sidebar_layout');
+			}
+
+			if ( ! $layout || $layout == 'default' ) {
+				$layout = themeblvd_get_option('sidebar_layout');
+			}
+
+		}
+
+		return $layout;
 	}
 
 	/**
@@ -331,19 +410,138 @@ class Theme_Blvd_Compat_bbPress {
 	}
 
 	/**
-	 * Add to article wrap for bbPress pages
+	 * Wrap forum subscribe link. Why not filter the
+	 * subscribe link itself? In case any plugins are
+	 * filtering additional links with the forum subscribe
+	 * link, we want to style those links, as well.
 	 *
 	 * @since 2.5.0
-	 * @see post_class()
 	 */
-	public function post_class( $classes, $class, $post_id ) {
+	public function forum_subscribe() {
+		if ( bbp_get_user_subscribe_link() ) {
+			echo '<div class="tb-bbp-buttons forum-subscribe">';
+			bbp_forum_subscription_link();
+			echo '</div><!-- .tb-bbp-buttons (end) -->';
+		}
+	}
 
-		if ( is_bbpress() && ! $post_id ) {
-			$classes[] = 'bbp-page';
-			$classes[] = 'page';
+	/**
+	 * Remove any default separators from author details.
+	 *
+	 * @since 2.5.0
+	 */
+	public function author( $args ) {
+		$args['sep'] = '';
+		return $args;
+	}
+
+	/**
+	 * Setup lead topic. Hooked to "wp" action so we make use
+	 * of themeblvd_get_option()
+	 *
+	 * @since 2.5.0
+	 */
+	public function lead_topic( $classes, $class, $post_id ) {
+		 if ( apply_filters('themeblvd_bbp_show_lead_topic', themeblvd_get_option('bbp_lead_topic') ) ) { // @TODO if not lead topic, need to add in links and tags
+        	add_filter( 'bbp_show_lead_topic', '__return_true' );
+        	add_filter( 'get_post_metadata', array($this, 'hide_lead_title'), 10, 4 );
+        	add_action( 'bbp_template_before_lead_topic', array($this, 'lead_before') );
+        	add_action( 'bbp_template_after_lead_topic', array($this, 'lead_after') );
+        } else {
+        	add_action( 'bbp_template_before_replies_loop', array($this, 'topic_header') );
+        }
+	}
+
+	/**
+	 * On a single topic, hide the title. We're doing this
+	 * so we can display the title below with the lead topic.
+	 *
+	 * @since 2.5.0
+	 * @see get_metadata()
+	 */
+	public function hide_lead_title( $value, $object_id, $meta_key, $single ) {
+
+		if ( $meta_key == '_tb_title' && bbp_is_single_topic() && $single ) {
+			$value = 'hide';
 		}
 
-		return $classes;
+		return $value;
+	}
+
+	/**
+	 * Before lead topic. Output opening DIV and new title section.
+	 *
+	 * @since 2.5.0
+	 */
+	public function lead_before( $value, $object_id, $meta_key, $single ) {
+		?>
+		<div class="tb-lead-topic">
+			<div class="wrap">
+				<header class="lead-topic-header clearfix">
+					<h1 class="entry-title"><?php the_title(); ?></h1>
+				</header>
+		<?php
+	}
+
+	/**
+	 * After lead topic. Output closing DIV.
+	 *
+	 * @since 2.5.0
+	 */
+	public function lead_after( $value, $object_id, $meta_key, $single ) {
+		$tags = array(
+			'before' 	=> '<div class="tb-tags bbp-tags tags"><i class="fa fa-tags"></i>',
+			'after' 	=> '</div><!-- .tb-tags (end) -->'
+		);
+		?>
+			</div><!-- .wrap (end) -->
+
+			<div class="clearfix">
+
+				<?php bbp_topic_tag_list( bbp_get_topic_id(), $tags ); ?>
+
+				<?php if ( is_user_logged_in() ) : ?>
+					<div class="tb-bbp-buttons topic-subscribe clearfix">
+						<?php bbp_topic_subscription_link(); ?>
+						<?php bbp_topic_favorite_link(); ?>
+					</div>
+				<?php endif; ?>
+
+			</div>
+
+		</div><!-- .tb-lead-topic" (end) -->
+		<?php
+	}
+
+	/**
+	 * Output subscribe links for a topic, when not using the
+	 * lead topic display.
+	 *
+	 * @since 2.5.0
+	 */
+	public function topic_header() {
+
+		$tags = array(
+			'before' 	=> '<div class="tb-tags bbp-tags tags"><i class="fa fa-tags"></i>',
+			'after' 	=> '</div><!-- .tb-tags (end) -->'
+		);
+
+		if ( is_user_logged_in() || $tag_list = bbp_get_topic_tag_list(bbp_get_topic_id(), $tags) ) {
+
+			echo '<div class="topic-header clearfix">';
+
+			echo $tag_list;
+
+			if ( is_user_logged_in() ) {
+				echo '<div class="tb-bbp-buttons topic-subscribe clearfix">';
+				bbp_topic_subscription_link();
+				bbp_user_favorites_link();
+				echo '</div><!-- .tb-bbp-buttons (end) -->';
+			}
+
+			echo '</div>';
+
+		}
 	}
 
 }

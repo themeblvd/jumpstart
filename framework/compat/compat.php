@@ -7,7 +7,7 @@
 function themeblvd_plugin_compat() {
 
 	// bbPress by Automattic
-	if ( class_exists('bbPress') && themeblvd_supports('plugins', 'bbpress') ) {
+	if ( themeblvd_installed('bbpress') && themeblvd_supports('plugins', 'bbpress') ) {
 
 		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/bbpress/class-tb-compat-bbpress.php' );
 
@@ -15,7 +15,51 @@ function themeblvd_plugin_compat() {
 
 	}
 
+	// WPML by OnTheGoSystems
+	// ... @TODO
+
 	// WooCommerce by WooThemes
 	// ... @TODO
 
+}
+
+/**
+ * Get all plugins that the framework provideds
+ * compatibility for.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_compat() {
+	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'sitepress')); // @TODO woocommerce
+}
+
+/**
+ * Check if a compatible plugin is installed.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_installed( $plugin = '' ) {
+
+	if ( $plugin ) {
+		switch ( $plugin ) {
+
+			case 'bbpress' :
+				if ( class_exists('bbPress') ) {
+					return true;
+				}
+				break;
+
+			case 'wpml' :
+				if ( class_exists('SitePress') ) {
+					return true;
+				}
+
+			case 'woocommerce' :
+				if ( class_exists('WooCommerce') ) {
+					return true;
+				}
+		}
+	}
+
+	return false;
 }

@@ -2,7 +2,8 @@
 /**
  * The template used for displaying page content in page.php
  */
-$page_class = get_post_meta( $post->ID, '_tb_title', true ) != 'hide' ? 'has-title' : 'no-title';
+$page_class  = 'top'; // Help to force consistency for plugins like bbPress using in non-page context
+$page_class .= get_post_meta( $post->ID, '_tb_title', true ) != 'hide' ? ' has-title' : ' no-title';
 $page_class .= get_the_content() ? ' has-content' : ' no-content';
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class($page_class); ?>>

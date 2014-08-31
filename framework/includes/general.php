@@ -206,7 +206,9 @@ function themeblvd_setup() {
 			'tag_cloud'			=> true 			// Framework tag cloud styling
 		),
 		'plugins' => array(
-			'bbpress'			=> true				// bbPress by Automattic
+			'bbpress'			=> true,			// bbPress by Automattic
+			'wpml'				=> true,			// WPML by On The Go Systems
+			'woocommerce'		=> true				// WooCommerce by WooThemes
 		)
 	);
 	return apply_filters( 'themeblvd_global_config', $setup );
