@@ -86,6 +86,22 @@
 	margin: 10px;
 }
 
+/* Plugin Options */
+.tb-theme-options-wrap #of-option-plugins-tab,
+.tb-theme-options-wrap #bbpress,
+.tb-theme-options-wrap #woocommerce {
+	display: none;
+}
+.tb-theme-options-wrap.plugins-installed #of-option-plugins-tab {
+	display: inline-block;
+}
+.tb-theme-options-wrap.bbpress-installed #bbpress {
+	display: block;
+}
+.tb-theme-options-wrap.woocommerce-installed #woocommerce {
+	display: block;
+}
+
 /* =OptionsFramework Admin Styles
 -----------------------------------------------*/
 

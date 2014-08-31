@@ -394,8 +394,32 @@ class Theme_Blvd_Options_Page {
 
 		// Display any errors or update messages.
 		settings_errors( $this->id );
+
+		// Wrap classes
+		$class = 'wrap';
+
+		if ( $this->id == themeblvd_get_option_name() ) {
+
+			$class .= ' tb-theme-options-wrap';
+
+			foreach ( themeblvd_get_compat() as $plugin ) {
+				if ( themeblvd_installed($plugin) ) {
+					$class .= sprintf(' %s-installed', $plugin);
+				}
+			}
+
+			if ( strpos($class, 'installed') !== false ) {
+				$class .= ' plugins-installed';
+			}
+
+			// If we want to add options for another plugin, you
+			// can ensure the "Plugins" tab is shown by making sure
+			// "plugins-installed" class is filtered on here.
+			$class = apply_filters('themeblvd_theme_options_wrap_class', $class, $this->id);
+
+		}
 		?>
-		<div class="wrap">
+		<div class="<?php echo $class; ?>">
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
