@@ -58,6 +58,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/meta.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-export.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-import.php' );
@@ -66,7 +67,6 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-export-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-import-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-menu-options.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-sortable-option.php' );
