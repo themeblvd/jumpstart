@@ -441,7 +441,7 @@ class Theme_Blvd_Compat_bbPress {
 	 *
 	 * @since 2.5.0
 	 */
-	public function lead_topic( $classes, $class, $post_id ) {
+	public function lead_topic() {
 		 if ( apply_filters('themeblvd_bbp_show_lead_topic', themeblvd_get_option('bbp_lead_topic') ) ) { // @TODO if not lead topic, need to add in links and tags
         	add_filter( 'bbp_show_lead_topic', '__return_true' );
         	add_filter( 'get_post_metadata', array($this, 'hide_lead_title'), 10, 4 );
