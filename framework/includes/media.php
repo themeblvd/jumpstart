@@ -296,76 +296,122 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		$output = wp_get_attachment_image( $args['attachment_id'], $size, false, array('class' => $class) );
 	}
 
-	// Shall this image be wrapped in a link?
+	// Wrap image in link, if necessary
 	if ( $link ) {
 
-		$class = 'featured-image tb-thumb-link';
+		$link = themeblvd_get_post_thumbnail_link( $post->ID, $args['attachment_id'], $link );
 
 		if ( $args['frame'] ) {
-			$class .= ' thumbnail';
+			$link['class'] .= ' thumbnail';
 		}
 
-		$parts = array();
-
-		switch ( $link ) {
-
-			case 'post' :
-				$parts['href'] = get_permalink($post->ID);
-				$parts['title'] = get_the_title();
-				$parts['target'] = '_self';
-				$class .= ' post';
-				break;
-
-			case 'thumbnail' :
-				$enlarge = wp_get_attachment_image_src( $args['attachment_id'], 'tb_x_large' );
-				$parts['href'] = $enlarge[0];
-				$parts['title'] = get_the_title($args['attachment_id']);
-				$parts['target'] = 'lightbox';
-				$class .= ' image';
-				break;
-
-			case 'image' :
-				$parts['href'] = get_post_meta( $post->ID, '_tb_image_link', true );
-				$parts['title'] = get_the_title();
-				$parts['target'] = 'lightbox';
-				$class .= ' image';
-				break;
-
-			case 'video' :
-				$parts['href'] = get_post_meta( $post->ID, '_tb_video_link', true );
-				$parts['title'] = get_the_title($args['attachment_id']);
-				$parts['target'] = 'lightbox';
-				$class .= ' video';
-				break;
-
-			case 'external' :
-				$parts['href'] = get_post_meta( $post->ID, '_tb_external_link', true );
-				$parts['title'] = get_the_title();
-				$parts['target'] = get_post_meta( $post->ID, '_tb_external_link_target', true );
-				$class .= ' external';
-				break;
-		}
-
-		$class = apply_filters('themeblvd_post_thumbnail_a_class', $class, $post->ID, $args['attachment_id']);
-
-		if ( $parts['target'] == 'lightbox' ) {
+		if ( $link['target'] == 'lightbox' ) {
 
 			$lightbox = apply_filters( 'themeblvd_featured_image_lightbox_args', array(
 				'item'	=> $output,
-				'link'	=> $parts['href'],
-				'class'	=> $class,
-				'title'	=> $parts['title']
+				'link'	=> $link['href'],
+				'class'	=> $link['class'],
+				'title'	=> $link['title']
 			), $post->ID, $args['attachment_id'] );
 
 			$output = themeblvd_get_link_to_lightbox($lightbox);
 
 		} else {
-			$output = sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $parts['href'], $parts['title'], $class, $parts['target'], $output );
+			$output = sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $link['href'], $link['title'], $link['class'], $link['target'], $output );
 		}
 
 	}
 
 	return apply_filters( 'themeblvd_post_thumbnail', $output, $args );
+}
+
+/**
+ * Get the image link for a featured image, set
+ * from the standard framework featured image
+ * link meta options.
+ *
+ * @since 2.5.0
+ *
+ * @param int $post_id ID of post to pull meta data from
+ * @param int $thumb_id ID of attachment post set as featured image
+ * @param string $link Override pulling type directly from _tb_thumb_link
+ */
+function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link = '' ) {
+
+	if ( $link === false ) {
+		return false;
+	}
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$params = array(
+		'href' 		=> '',
+		'title' 	=> '',
+		'target'	=> '',
+		'class'		=> 'featured-image tb-thumb-link'
+	);
+
+	if ( ! $link ) {
+		$link = get_post_meta( $post_id, '_tb_thumb_link', true );
+	}
+
+	if ( $link == 'inactive' || ! $link ) {
+		return false;
+	}
+
+	if ( ! $thumb_id  && ( $link == 'thumbnail' || $link == 'video' ) ) {
+		$thumb_id = get_post_thumbnail_id($post_id);
+	}
+
+	switch ( $link ) {
+
+		// Link to post's permalink
+		case 'post' :
+			$params['href'] = get_permalink($post_id);
+			$params['title'] = get_the_title();
+			$params['target'] = '_self';
+			$params['class'] .= ' post';
+			break;
+
+		// Linked to enlarged version of the current featured image in a lightbox
+		case 'thumbnail' :
+			$enlarge = wp_get_attachment_image_src( $thumb_id, 'tb_x_large' );
+			$params['href'] = $enlarge[0];
+			$params['title'] = get_the_title($thumb_id);
+			$params['target'] = 'lightbox';
+			$params['class'] .= ' image';
+			break;
+
+		// Link to an inputted image URL in a lightbox
+		case 'image' :
+			$params['href'] = get_post_meta( $post_id, '_tb_image_link', true );
+			$params['title'] = get_the_title();
+			$params['target'] = 'lightbox';
+			$params['class'] .= ' image';
+			break;
+
+		// Link to a Vimeo or YouTube video in a lightbox
+		case 'video' :
+			$params['href'] = get_post_meta( $post_id, '_tb_video_link', true );
+			$params['title'] = get_the_title($thumb_id);
+			$params['target'] = 'lightbox';
+			$params['class'] .= ' video';
+			break;
+
+		// Link to an external URL
+		case 'external' :
+			$params['href'] = get_post_meta( $post_id, '_tb_external_link', true );
+			$params['title'] = get_the_title();
+			$params['target'] = get_post_meta( $post_id, '_tb_external_link_target', true );
+			$params['class'] .= ' external';
+
+	}
+
+	$params['class'] = apply_filters('themeblvd_post_thumbnail_a_class', $params['class'], $post_id, $args['attachment_id']); // backwards compat
+
+	return apply_filters( 'themeblvd_post_thumbnail_link', $params, $post_id, $link );
 }
 
 /**
@@ -1191,6 +1237,75 @@ function themeblvd_get_video( $video_url, $args = array() ) {
  */
 function themeblvd_video( $video_url, $args = array() ) {
 	echo themeblvd_get_video( $video_url, $args );
+}
+
+/**
+ * Get featured banner
+ *
+ * @since 2.5.0
+ *
+ * @param int $post_id ID of post to pull featured image from
+ * @param int $thumb_id ID of attachment to pull from
+ * @return string $output Final HTML to output
+ */
+function themeblvd_get_featured_banner( $post_id = 0, $thumb_id = 0 ) {
+
+	$output = '';
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( ! $thumb_id ) {
+		$thumb_id = get_post_thumbnail_id();
+	}
+
+	$src = wp_get_attachment_image_src( $thumb_id, apply_filters('themeblvd_banner_size', 'tb_x_large') );
+
+	if ( $src ) {
+
+		$output = sprintf( '<span class="banner img" style="background-image: url(%s);"></span>', $src[0] );
+
+		$class = 'tb-featured-banner';
+
+		if ( $link = themeblvd_get_post_thumbnail_link($post_id, $thumb_id) ) {
+
+			$class .= ' has-link';
+
+			if ( $link['target'] == 'lightbox' ) {
+
+				$lightbox = apply_filters( 'themeblvd_featured_banner_lightbox_args', array(
+					'item'	=> $output,
+					'link'	=> $link['href'],
+					'class'	=> $link['class'],
+					'title'	=> $link['title']
+				), $post_id, $args['attachment_id'] );
+
+				$output .= themeblvd_get_link_to_lightbox($lightbox);
+
+			} else {
+				$output .= sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $link['href'], $link['title'], $link['class'], $link['target'], $output );
+			}
+
+		}
+
+		$output = sprintf( '<div class="%s">%s</div>', $class, $output );
+
+	}
+
+	return apply_filters( 'themeblvd_featured_banner', $output, $post_id, $thumb_id );
+}
+
+/**
+ * Display featured banner
+ *
+ * @since 2.5.0
+ *
+ * @param int $post_id ID of post to pull featured image from
+ * @param int $thumb_id ID of attachment to pull from
+ */
+function themeblvd_featured_banner( $post_id = 0, $thumb_id = 0 ) {
+	echo themeblvd_get_featured_banner( $post_id, $thumb_id );
 }
 
 /**

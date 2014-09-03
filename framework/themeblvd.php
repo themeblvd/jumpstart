@@ -168,6 +168,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
 	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
+	add_action( 'themeblvd_header_after', 'themeblvd_header_after_default' );
 
 	// Sidebars
 	add_action( 'themeblvd_fixed_sidebar_before', 'themeblvd_fixed_sidebar_before_default' );
