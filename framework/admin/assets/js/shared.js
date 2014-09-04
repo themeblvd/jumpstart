@@ -1456,6 +1456,7 @@
 
 				if ( upload_type == 'logo' ) {
 					$current_option.find('.image-width').val(attachment.attributes.width);
+					$current_option.find('.image-height').val(attachment.attributes.height);
 				}
 
 				if ( upload_type == 'video' ) {

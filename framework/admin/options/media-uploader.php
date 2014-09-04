@@ -102,8 +102,8 @@ function themeblvd_media_uploader( $args ) {
 			$data['title'] = __('Logo Image', 'themeblvd');
 			$data['select'] = __('Use for Logo', 'themeblvd');
 			$width_name = str_replace( '[image]', '[image_width]', $name );
+			$height_name = str_replace( '[image]', '[image_height]', $name );
 			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd').'" />'."\n";
-			$output .= '<input id="'.$formfield.'_width" class="image-width upload'.$class.'" type="text" name="'.$width_name.'" value="'.$args['value_width'].'" placeholder="'.__('Width', 'themeblvd').'" />'."\n";
 			break;
 
 		case 'logo_2x' :
@@ -141,6 +141,26 @@ function themeblvd_media_uploader( $args ) {
 		$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" data-send-back="'.$data['send_back'].'" value="'.$data['upload'].'" />'."\n";
 	} else {
 		$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" data-send-back="'.$data['send_back'].'" value="'.$data['remove'].'" />'."\n";
+	}
+
+	if ( $type == 'logo' ) {
+
+		// $output .= '<span class="logo-label logo-url-label">'.__('Image URL', 'themeblvd').'</span>';
+
+		$output .= '<div class="logo-atts clearfix">';
+
+		$output .= '<div class="logo-width">';
+		$output .= '<input id="'.$formfield.'_width" class="image-width upload'.$class.'" type="text" name="'.$width_name.'" value="'.$args['value_width'].'" />'."\n";
+		$output .= '<span class="logo-label logo-width-label">'.__('Width', 'themeblvd').'</span>';
+		$output .= '</div>';
+
+		$output .= '<div class="logo-height">';
+		$output .= '<input id="'.$formfield.'_height" class="image-height upload'.$class.'" type="text" name="'.$height_name.'" value="'.$args['value_height'].'" />'."\n";
+		$output .= '<span class="logo-label logo-height-label">'.__('Height', 'themeblvd').'</span>';
+		$output .= '</div>';
+
+		$output .= '</div><!-- .logo-atts (end) -->';
+
 	}
 
 	$output .= '<div class="screenshot" id="' . $formfield . '-image">' . "\n";

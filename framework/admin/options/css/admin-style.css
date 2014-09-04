@@ -313,6 +313,8 @@
 
 /* Image Uploader */
 #optionsframework .controls input.upload {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 	width: 73%;
 }
 #optionsframework .controls input.upload-button,
@@ -321,12 +323,6 @@
 	box-sizing: border-box;
 	float: right;
 	width: 25%;
-}
-#optionsframework .section-upload .section-upload.image-standard input.image-url  {
-	width: 56%;
-}
-#optionsframework .section-upload .section-upload.image-standard input.image-width  {
-	width: 15%;
 }
 #optionsframework .screenshot {
 	float: left;
@@ -382,20 +378,55 @@
 	cursor: pointer;
 }
 
-/* Image Uploader (legacy) */
-#optionsframework .controls input.upload_button{float:right;width:64px;cursor:pointer;border-color:#BBBBBB;}
-#optionsframework .controls input.upload_button:hover{color:#000;border-color:#666666;}
-#optionsframework .screenshot .mlu_remove{background:url(../../assets/images/icon-remove.png) no-repeat;border:medium none;bottom:4px;display:block;float:left;height:16px;position:absolute;left:-4px;text-indent:-9999px;width:16px;padding:0;}
-#optionsframework .screenshot .no_image .mlu_remove{bottom:0;}
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5),
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	#optionsframework .screenshot .mlu_remove{
-		background-image:url(../../assets/images/icon-remove_2x.png);
-		background-size:16px 16px;
-	}
+/* Logo */
+#optionsframework .section-logo .section-upload.image-standard input.image-url {
+	margin-bottom: 5px;
+}
+#optionsframework .section-logo .logo-atts {
+	width: 73%;
+}
+#optionsframework .section-logo .logo-width,
+#optionsframework .section-logo .logo-height {
+	box-sizing: border-box;
+	float: left;
+	width: 50%;
+}
+#optionsframework .section-logo .logo-width {
+	padding: 0 1px 5px 0;
+}
+#optionsframework .section-logo .logo-height {
+	padding: 0 0 5px 1px;
+}
+#optionsframework .section-logo .logo-label {
+	color: #999999;
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	margin-left: 5px;
+}
+#optionsframework .section-logo .logo-url-label {
+	margin-bottom: 5px;
+}
+#optionsframework .section-logo .controls input.image-width,
+#optionsframework .section-logo .controls input.image-height {
+	margin-bottom: 5px;
+	width: 100%;
+}
+#optionsframework .section-logo .screenshot {
+	float: none;
+	margin-top: 15px;
+}
+#optionsframework .section-logo .screenshot img {
+	float: none;
+}
+#optionsframework .section-upload .section-upload {
+	background: #ffffff;
+	border: 1px solid #dfdfdf;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	margin: 0 0 10px 0;
+	padding: 12px 15px;
 }
 
 /* Gradient option type */

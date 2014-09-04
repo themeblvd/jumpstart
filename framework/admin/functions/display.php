@@ -750,11 +750,16 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	$types = array(
+		'default'		=> __( 'Default Logo', 'themeblvd' ),
 		'title' 		=> __( 'Site Title', 'themeblvd' ),
 		'title_tagline' => __( 'Site Title + Tagline', 'themeblvd' ),
 		'custom' 		=> __( 'Custom Text', 'themeblvd' ),
 		'image' 		=> __( 'Image', 'themeblvd' )
 	);
+
+	if ( $id != 'trans_logo' ) {
+		unset( $types['default'] );
+	}
 
 	$current_value = '';
 	if ( ! empty( $val ) && ! empty( $val['type'] ) ) {
@@ -819,12 +824,22 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/* Image
 	/*------------------------------------------------------*/
 
-	$current_value = array( 'url' => '', 'width' => '' );
-	if ( is_array( $val ) && isset( $val['image'] ) ) {
-		$current_value = array( 'url' => $val['image'], 'width' => $val['image_width'] );
+	$current_value = array( 'url' => '', 'width' => '', 'height' => '' );
+
+	if ( isset($val['image']) ) {
+		$current_value['url'] = $val['image'];
+	}
+
+	if ( isset($val['image_width']) ) {
+		$current_value['width'] = $val['image_width'];
+	}
+
+	if ( isset($val['image_height']) ) {
+		$current_value['height'] = $val['image_height'];
 	}
 
 	$current_retina = array( 'url' => '' );
+
 	if ( is_array( $val ) && isset( $val['image_2x'] ) ) {
 		$current_retina = array( 'url' => $val['image_2x'] );
 	}
@@ -832,7 +847,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	// Standard Image
 	$image_upload  = '<div class="section-upload image-standard">';
 	$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
-	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'name' => 'image' ) );
+	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'value_height' => $current_value['height'], 'name' => 'image' ) );
 	$image_upload .= '</div>';
 
 	// Retina image (2x)

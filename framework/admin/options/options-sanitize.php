@@ -604,15 +604,25 @@ function themeblvd_sanitize_logo( $input ) {
 
 	// Image (standard)
 	if ( isset( $input['image'] ) ) {
+
 		$filetype = wp_check_filetype( $input['image'] );
+
 		if ( $filetype["ext"] ) {
+
 			$output['image'] = $input['image'];
+
 			if ( isset( $input['image_width'] ) ) {
-				$output['image_width'] = $input['image_width'];
+				$output['image_width'] = wp_kses( $input['image_width'], array() );
 			}
+
+			if ( isset( $input['image_height'] ) ) {
+				$output['image_height'] = wp_kses( $input['image_height'], array() );
+			}
+
 		} else {
 			$output['image'] = null;
 			$output['image_width'] = null;
+			$output['image_height'] = null;
 		}
 	}
 
