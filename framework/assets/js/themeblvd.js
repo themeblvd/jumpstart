@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
 	var $window = $(window),
 		window_width = $window.width(),
 		$body = $('body'),
+		$header = $('#branding'),
 		$primary_menu = $('#primary-menu');
 
 	// ---------------------------------------------------------
@@ -22,8 +23,15 @@ jQuery(document).ready(function($) {
 	// and "desktop" classes filtered onto WP's body_class(),
 	// which denote if user is on a true mobile device
 	if ( window_width <= 767 ) {
+
 		$body.addClass('mobile-on');
 		$body.removeClass('tablet-on');
+
+		if ( $header.hasClass('transparent') ) {
+			$header.removeClass('transparent');
+			$header.addClass('transparent-off');
+		}
+
 	} else if ( window_width <= 992 ) {
 		$body.addClass('tablet-on');
 		$body.removeClass('mobile-on');
@@ -34,14 +42,34 @@ jQuery(document).ready(function($) {
 		var window_width = $window.width();
 
 		if ( window_width <= 767 ) {
+
 			$body.addClass('mobile-on');
 			$body.removeClass('tablet-on');
+
+			if ( $header.hasClass('transparent') ) {
+				$header.removeClass('transparent');
+				$header.addClass('transparent-off');
+			}
+
 		} else if ( window_width <= 992 ) {
+
 			$body.addClass('tablet-on');
 			$body.removeClass('mobile-on');
+
+			if ( $header.hasClass('transparent-off') ) {
+				$header.removeClass('transparent-off');
+				$header.addClass('transparent');
+			}
+
 		} else {
+
 			$body.removeClass('tablet-on');
 			$body.removeClass('mobile-on');
+
+			if ( $header.hasClass('transparent-off') ) {
+				$header.removeClass('transparent-off');
+				$header.addClass('transparent');
+			}
 		}
 	});
 
@@ -402,17 +430,22 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	if ( themeblvd.retina_logo == 'true' ) {
-		var image = $('.tb-image-logo img'),
-			image_2x = image.attr('data-image-2x');
 
 		// If a retina-otimized image was detected
 		// and should be displayed
-		if ( window.devicePixelRatio >= 1.5 && image_2x ) {
-			// Display 2x image w/fixed original width
-			image.attr({
-				src: image_2x
+		if ( window.devicePixelRatio >= 1.5 ) {
+			$('.tb-image-logo').each(function(){
+
+				var $logo = $(this).find('img'),
+					img_2x = $logo.data('image-2x');
+
+				if (img_2x) {
+					$logo.attr('src', img_2x);
+				}
+
 			});
 		}
+
 	}
 
 	// ---------------------------------------------------------

@@ -38,7 +38,7 @@
 		<?php if ( themeblvd_config( 'top' ) ) : ?>
 
 			<div id="top">
-				<header id="branding" class="site-header" role="banner">
+				<header id="branding" <?php themeblvd_header_class(); ?> role="banner">
 					<div class="wrap clearfix">
 						<?php
 						/**

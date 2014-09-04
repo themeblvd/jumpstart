@@ -214,6 +214,7 @@ class Theme_Blvd_Frontend_Init {
 			'featured'					=> array(),		// Classes for featured area, if empty area won't show
 			'featured_below'			=> array(),		// Classes for featured below area, if empty area won't show
 			'sidebars'					=> array(), 	// Array of sidbar ID's for all corresponding locations
+			'suck_up'					=> false,		// Whether to suck content up into transparent header
 			'top'						=> true,		// Whether to show entire #top section (header)
 			'bottom'					=> true 		// Whether to show entire #bottom section (bottom)
 		);
@@ -466,13 +467,15 @@ class Theme_Blvd_Frontend_Init {
 		/* Theme Layout
 		/*------------------------------------------------------*/
 
-		$theme = get_post_meta( $this->config['id'], '_tb_theme_layout', true );
+		$header = get_post_meta( $this->config['id'], '_tb_layout_header', true );
 
-		if ( themeblvd_supports( 'display', 'hide_top' ) && ! empty( $theme['hide_top'] ) ) {
+		if ( $header == 'suck_up' && themeblvd_supports('display', 'suck_up') ) {
+			$this->config['suck_up'] = true;
+		} else if ( $header == 'hide' && themeblvd_supports('display', 'hide_top') ) {
 			$this->config['top'] = false;
 		}
 
-		if ( themeblvd_supports( 'display', 'hide_bottom' ) && ! empty( $theme['hide_bottom'] ) ) {
+		if ( themeblvd_supports('display', 'hide_bottom') && get_post_meta( $this->config['id'], '_tb_layout_footer', true ) == 'hide' ) {
 			$this->config['bottom'] = false;
 		}
 

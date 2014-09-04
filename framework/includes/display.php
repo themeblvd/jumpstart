@@ -121,64 +121,27 @@ if ( !function_exists( 'themeblvd_header_logo_default' ) ) :
  */
 function themeblvd_header_logo_default() {
 
-	$option = themeblvd_get_option( 'logo' );
-	$class = 'header-logo header_logo header_logo_'.$option['type'];
+	$logo = themeblvd_get_option('logo');
+	$trans = themeblvd_get_option('trans_logo');
 
-	if ( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' ) {
-		$class .= ' header_logo_text';
-	}
+	if ( $logo ) {
+		if ( themeblvd_config('suck_up') && ! empty($trans['type']) && $trans['type'] != 'default' ) {
 
-	if ( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) ) {
-		$class .= ' header_logo_has_tagline';
-	}
+			$logo['class'] = 'logo-standard';
+			echo themeblvd_get_logo($logo);
 
-	if ( $option['type'] == 'title_tagline' ) {
-		$class .= ' header_logo_has_tagline';
-	}
-	?>
-	<div class="<?php echo $class; ?>">
-		<?php
-		if ( ! empty( $option['type'] ) ) {
-			switch ( $option['type'] ) {
-
-				case 'title' :
-					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
-					break;
-
-				case 'title_tagline' :
-					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
-					echo '<span class="tagline">'.get_bloginfo('description').'</span>';
-					break;
-
-				case 'custom' :
-					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.$option['custom'].'">'.$option['custom'].'</a></h1>';
-					if ( $option['custom_tagline'] ) {
-						echo '<span class="tagline">'.$option['custom_tagline'].'</span>';
-					}
-					break;
-
-				case 'image' :
-
-					echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo">';
-
-					echo '<img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" ';
-
-					if ( ! empty( $option['image_width'] ) ) {
-						echo 'width="'.$option['image_width'].'" ';
-					}
-
-					if ( ! empty( $option['image_2x'] ) ) {
-						echo 'data-image-2x="'.$option['image_2x'].'" ';
-					}
-
-					echo '/></a>';
-
-					break;
+			if ( $trans ) {
+				$trans['class'] = 'logo-trans';
+				echo themeblvd_get_logo($trans);
 			}
+
+		} else {
+
+			echo themeblvd_get_logo($logo);
+
 		}
-		?>
-	</div><!-- .tbc_header_logo (end) -->
-	<?php
+	}
+
 }
 endif;
 

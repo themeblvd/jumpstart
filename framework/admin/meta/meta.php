@@ -7,6 +7,7 @@
 function themeblvd_add_meta_boxes() {
 
 	global $_themeblvd_page_meta_box;
+	global $_themeblvd_layout_meta_box;
 	global $_themeblvd_post_template_meta_box;
 	global $_themeblvd_post_meta_box;
 
@@ -14,6 +15,12 @@ function themeblvd_add_meta_boxes() {
 	if ( themeblvd_supports( 'meta', 'page_options' ) ) {
 		$meta = setup_themeblvd_page_meta();
 		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
+	}
+
+	// Banner (posts and pages)
+	if ( themeblvd_supports( 'meta', 'layout' ) ) {
+		$meta = setup_themeblvd_layout_meta();
+		$_themeblvd_layout_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 	// "Post Grid" and "Post List" page template meta box
@@ -38,6 +45,7 @@ function themeblvd_add_meta_boxes() {
  * @return $setup filterable options for metabox
  */
 function setup_themeblvd_page_meta() {
+
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_page_options',						// make it unique
@@ -53,8 +61,8 @@ function setup_themeblvd_page_meta() {
 				'desc'		=> __( 'This option will be ignored if you\'ve applied the "Custom Layout" template.', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'show' 		=> __( 'Show page\'s title', 'themeblvd' ),
-					'hide' 		=> __( 'Hide page\'s title', 'themeblvd' )
+					'show' 		=> __( 'Show page\'s title above content', 'themeblvd' ),
+					'hide' 		=> __( 'Hide page\'s title above content', 'themeblvd' )
 				)
 			),
 			'tb_breadcrumbs' => array(
@@ -68,15 +76,60 @@ function setup_themeblvd_page_meta() {
 					'hide' 		=> __( 'No, hide breadcrumbs', 'themeblvd' )
 				)
 			),
-			'tb_theme_layout' => array(
-				'id'		=> '_tb_theme_layout',
-				'name' 		=> __( 'Theme Layout', 'themeblvd' ),
-				'desc'		=> __( 'Select if you\'d like to hide any theme elements that normally display across your entire website by default. This option will be ignored if you\'ve applied the "Blank Page" template.', 'themeblvd' ),
-				'type' 		=> 'multicheck',
+			'section_start' => array(
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle'
+			),
+			'tb_thumb_link' => array(
+				'id'		=> '_tb_thumb_link',
+				'name' 		=> __( 'Featured Image Link', 'themeblvd' ),
+				'desc'		=> __( 'Here you can select how you\'d like this page\'s featured image to react when clicked, if you\'ve set one.', 'themeblvd' ),
+				'type' 		=> 'radio',
+				'std'		=> 'inactive',
 				'options'	=> array(
-					'hide_top'		=> __( 'Hide theme header on this page', 'themeblvd' ),
-					'hide_bottom'	=> __( 'Hide theme footer on this page', 'themeblvd' )
-				)
+					'inactive'	=> __( 'Featured image is not a link', 'themeblvd' ),
+					'thumbnail' => __( 'It links to its enlarged lightbox version', 'themeblvd' ),
+					'image' 	=> __( 'It links to a custom lightbox image', 'themeblvd' ),
+					'video' 	=> __( 'It links to a lightbox video', 'themeblvd' ),
+					'external' 	=> __( 'It links to a webpage', 'themeblvd' ),
+				),
+				'class'		=> 'trigger'
+			),
+			'tb_image_link' => array(
+				'id'		=> '_tb_image_link',
+				'name' 		=> __( 'Featured Image - Image Link', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', 'themeblvd' ),
+				'type' 		=> 'text',
+				'class'		=> 'hide receiver receiver-image'
+			),
+			'tb_video_link' => array(
+				'id'		=> '_tb_video_link',
+				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL to a video page supported by <a href="http://codex.wordpress.org/Embeds" target="_blank">WordPress\'s oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
+				'type' 		=> 'text',
+				'class'		=> 'hide receiver receiver-video'
+			),
+			'tb_external_link' => array(
+				'id'		=> '_tb_external_link',
+				'name' 		=> __( 'Featured Image - External Link', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', 'themeblvd' ),
+				'type' 		=> 'text',
+				'class'		=> 'hide receiver receiver-external'
+			),
+			'tb_external_link_target' => array(
+				'id'		=> '_tb_external_link_target',
+				'name' 		=> __( 'Featured Image - External Link Target', 'themeblvd' ),
+				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', 'themeblvd' ),
+				'type' 		=> 'radio',
+				'std'		=> '_blank',
+				'options'	=> array(
+					'_blank'	=> __( 'Open link in new window', 'themeblvd' ),
+					'_self' 	=> __( 'Open link in same window', 'themeblvd' )
+				),
+				'class'		=> 'hide receiver receiver-external'
+			),
+			'section_end' => array(
+				'type' 		=> 'subgroup_end'
 			)
 		)
 	);
@@ -93,6 +146,63 @@ function setup_themeblvd_page_meta() {
 }
 
 /**
+ * Get settings for the "Banner" meta box.
+ *
+ * @since 2.5.0
+ *
+ * @return $setup filterable options for metabox
+ */
+function setup_themeblvd_layout_meta() {
+
+	$setup = array(
+		'config' => array(
+			'id' 		=> 'tb_banner_options',						// make it unique
+			'title' 	=> __( 'Theme Layout', 'themeblvd' ),		// title to show for entire meta box
+			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
+			'context' 	=> 'side',									// normal, advanced, or side
+			'priority'	=> 'core'									// high, core, default, or low
+		),
+		'options' => array(
+			'tb_layout_header' => array(
+				'id'		=> '_tb_layout_header',
+				'name' 		=> __( 'Header', 'themeblvd' ),
+				'desc'		=> __( '<em>Note: The transparent header option will work better when a featured image or custom layout is applied to the page.</em>', 'themeblvd' ),
+				'type' 		=> 'select',
+				'options'	=> array(
+					'default'		=> __( 'Display header', 'themeblvd' ),
+					'suck_up'		=> __( 'Display transparent header over content', 'themeblvd' ),
+					'hide'			=> __( 'Hide header', 'themeblvd' )
+				)
+			),
+			'tb_layout_footer' => array(
+				'id'		=> '_tb_layout_footer',
+				'name' 		=> __( 'Footer', 'themeblvd' ),
+				'type' 		=> 'select',
+				'options'	=> array(
+					'default'		=> __( 'Display footer', 'themeblvd' ),
+					'hide'			=> __( 'Hide footer', 'themeblvd' )
+				)
+			)
+		)
+	);
+
+	if ( ! themeblvd_supports('display', 'suck_up') && ! themeblvd_supports('display', 'hide_top') ) {
+		unset($setup['options']['tb_layout_header']);
+	} else if ( ! themeblvd_supports('display', 'suck_up') ) {
+		unset($setup['options']['tb_layout_header']['options']['suck_up']);
+		unset($setup['options']['tb_layout_header']['desc']);
+	} else if ( ! themeblvd_supports('display', 'hide_top') ) {
+		unset($setup['options']['tb_layout_header']['options']['hide']);
+	}
+
+	if ( ! themeblvd_supports('display', 'hide_bottom') ) {
+		unset($setup['options']['tb_layout_footer']);
+	}
+
+	return apply_filters( 'themeblvd_banner_meta', $setup );
+}
+
+/**
  * Get settings for the Post Grid Template Options meta box.
  *
  * @since 2.5.0
@@ -100,6 +210,7 @@ function setup_themeblvd_page_meta() {
  * @return $setup filterable options for metabox
  */
 function setup_themeblvd_pto_meta() {
+
 	$setup = array(
 		'config' => array(
 			'id' 			=> 'pto',										// make it unique
@@ -289,13 +400,16 @@ function setup_themeblvd_post_meta() {
 					'hide' 		=> __( 'Hide featured image', 'themeblvd' )
 				)
 			),
+			'section_start' => array(
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle'
+			),
 			'tb_thumb_link' => array(
 				'id'		=> '_tb_thumb_link',
 				'name' 		=> __( 'Featured Image Link (everywhere)', 'themeblvd' ),
 				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', 'themeblvd' ),
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
-				'class'		=> 'select-tb-thumb-link',
 				'options'	=> array(
 					'inactive'	=> __( 'Featured image is not a link', 'themeblvd' ),
 					'post' 		=> __( 'It links to its post', 'themeblvd' ),
@@ -303,53 +417,57 @@ function setup_themeblvd_post_meta() {
 					'image' 	=> __( 'It links to a custom lightbox image', 'themeblvd' ),
 					'video' 	=> __( 'It links to a lightbox video', 'themeblvd' ),
 					'external' 	=> __( 'It links to a webpage', 'themeblvd' ),
-				)
+				),
+				'class'		=> 'trigger'
 			),
 			'tb_image_link' => array(
 				'id'		=> '_tb_image_link',
 				'name' 		=> __( 'Featured Image - Image Link', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', 'themeblvd' ),
-				'class'		=> 'tb-thumb-link tb-thumb-link-image',
-				'type' 		=> 'text'
+				'type' 		=> 'text',
+				'class'		=> 'hide receiver receiver-image'
 			),
 			'tb_video_link' => array(
 				'id'		=> '_tb_video_link',
 				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL to a video page supported by <a href="http://codex.wordpress.org/Embeds" target="_blank">WordPress\'s oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
-				'class'		=> 'tb-thumb-link tb-thumb-link-video',
-				'type' 		=> 'text'
+				'type' 		=> 'text',
+				'class'		=> 'hide receiver receiver-video'
 			),
 			'tb_external_link' => array(
 				'id'		=> '_tb_external_link',
 				'name' 		=> __( 'Featured Image - External Link', 'themeblvd' ),
 				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', 'themeblvd' ),
-				'class'		=> 'tb-thumb-link tb-thumb-link-external',
-				'type' 		=> 'text'
+				'type' 		=> 'text',
+				'class'		=> 'hide receiver receiver-external'
 			),
 			'tb_external_link_target' => array(
 				'id'		=> '_tb_external_link_target',
 				'name' 		=> __( 'Featured Image - External Link Target', 'themeblvd' ),
 				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', 'themeblvd' ),
-				'class'		=> 'tb-thumb-link tb-thumb-link-external',
 				'type' 		=> 'radio',
 				'std'		=> '_blank',
 				'options'	=> array(
 					'_blank'	=> __( 'Open link in new window', 'themeblvd' ),
 					'_self' 	=> __( 'Open link in same window', 'themeblvd' )
-				)
+				),
+				'class'		=> 'hide receiver receiver-external'
 			),
 			'tb_thumb_link_single' => array(
 				'id'		=> '_tb_thumb_link_single',
 				'name' 		=> __( 'Featured Image Link (the single post)', 'themeblvd' ),
 				'desc'		=> __( 'If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'themeblvd' ),
-				'class'		=> 'tb-thumb-link tb-thumb-link-single',
 				'std' 		=> 'yes',
 				'type' 		=> 'radio',
 				'options'	=> array(
 					'yes'		=> __( 'Yes, apply featured image link to single post', 'themeblvd' ),
 					'no' 		=> __( 'No, don\'t apply featured image link to single post', 'themeblvd' ),
 					'thumbnail'	=> __( 'Link it to its enlarged lightbox version', 'themeblvd' )
-				)
+				),
+				'class'		=> 'hide receiver receiver-post receiver-thumbnail receiver-image receiver-video receiver-external'
+			),
+			'section_end' => array(
+				'type' 		=> 'subgroup_end'
 			),
 			'tb_sidebar_layout' => array(
 				'id' 		=> '_tb_sidebar_layout',
@@ -358,7 +476,7 @@ function setup_themeblvd_post_meta() {
 				'std' 		=> 'default',
 				'type' 		=> 'images',
 				'options' 	=> $sidebar_layouts,
-				'img_width'	=> '65' // HiDPI compatibility, 1/2 of images' natural widths
+				'img_width'	=> '45'
 			)
 		)
 	);

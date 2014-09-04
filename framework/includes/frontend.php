@@ -244,6 +244,11 @@ function themeblvd_body_class( $classes ) {
 		$classes[] = 'tb-scroll-effects';
 	}
 
+	// Suck up custom layout into header
+	if ( themeblvd_config('suck_up') ) {
+		$classes[] = 'tb-suck-up';
+	}
+
 	// Dark/Light content
 	if ( themeblvd_supports( 'assets', 'dark' ) ) {
 		$classes[] = 'content_dark';
@@ -257,6 +262,25 @@ function themeblvd_body_class( $classes ) {
 	}
 
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
+}
+
+/**
+ * Display HTML class for site header.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_header_class() {
+
+	$class = array('site-header');
+
+	if ( themeblvd_config('suck_up') ) {
+		$class[] = 'transparent';
+	}
+
+	if ( $class = apply_filters('themeblvd_header_class', $class ) ) {
+		printf('class="%s"', implode(' ', $class) );
+	}
+
 }
 
 if ( !function_exists( 'themeblvd_include_scripts' ) ) :

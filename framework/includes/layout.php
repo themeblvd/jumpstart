@@ -552,9 +552,9 @@ function themeblvd_get_element_class( $args ) {
  * @param int $count Number of elements in the current section
  * @return string $class CSS class to return
  */
-function themeblvd_get_section_class( $data, $count ) {
+function themeblvd_get_section_class( $id, $data, $count ) {
 
-	$class = array( 'element-section', 'element-count-'.$count );
+	$class = array( $id, 'element-section', 'element-count-'.$count );
 
 	// Label
 	if ( $data['label'] && $data['label'] != '...' ) {
@@ -685,9 +685,10 @@ function themeblvd_get_parallax_intensity( $display ) {
  * @since 2.5.0
  *
  * @param array $display Display options
+ * @param string $print How to return the styles, use "inline" or "external"
  * @return string $style Inline style line to be used
  */
-function themeblvd_get_display_inline_style( $display ) {
+function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 	$bg_type = '';
 	$style = '';
@@ -780,13 +781,57 @@ function themeblvd_get_display_inline_style( $display ) {
 
 	}
 
-	$params = apply_filters( 'themeblvd_display_inline_style', $params, $display );
+	if ( $print == 'external' ) {
 
-	foreach ( $params as $key => $value ) {
-		$style .= sprintf( '%s: %s;', $key, $value );
+		$params = array(
+			'general'	=> $params,
+			'desktop'	=> array(),
+			'tablet'	=> array(),
+			'mobile'	=> array()
+		);
+
+		foreach ( $params as $key => $value ) {
+
+			if ( $key == 'general' ) {
+				continue;
+			}
+
+			if ( ! empty( $display['apply_padding_'.$key] ) ) {
+
+				if ( ! empty( $display['padding_top_'.$key] ) ) {
+					$params[$key]['padding-top'] = $display['padding_top_'.$key];
+				}
+
+				if ( ! empty( $display['padding_right_'.$key] ) ) {
+					$params[$key]['padding-right'] = $display['padding_right_'.$key];
+				}
+
+				if ( ! empty( $display['padding_bottom_'.$key] ) ) {
+					$params[$key]['padding-bottom'] = $display['padding_bottom_'.$key];
+				}
+
+				if ( ! empty( $display['padding_left_'.$key] ) ) {
+					$params[$key]['padding-left'] = $display['padding_left_'.$key];
+				}
+
+			}
+
+		}
+
 	}
 
-	return $style;
+	$params = apply_filters( 'themeblvd_display_inline_style', $params, $display );
+
+	if ( $print == 'inline' ) {
+
+		foreach ( $params as $key => $value ) {
+			$style .= sprintf( '%s: %s;', $key, $value );
+		}
+
+		return $style;
+	}
+
+	return $params;
 }
 
 /**

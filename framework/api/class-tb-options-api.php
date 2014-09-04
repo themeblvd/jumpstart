@@ -146,6 +146,9 @@ class Theme_Blvd_Options_API {
 	 *		- social_media
 	 *		- social_media_style
 	 *		- searchform
+	 *	- Transparent Header
+	 *		- trans_logo
+	 *		- trans_social_media_style
 	 *	- Footer
 	 *		- footer_setup
 	 *		- footer_col_1
@@ -242,9 +245,9 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'logo' => array(
 						'name' 		=> __( 'Logo', 'themeblvd' ),
-						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.<br /><br /><em>Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.</em>', 'themeblvd' ),
+						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.<br /><br /><em>Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.</em>', 'themeblvd' ),
 						'id' 		=> 'logo',
-						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '250', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '250', 'image_height' => '75', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'
 					),
 					'header_text' => array(
@@ -307,6 +310,35 @@ class Theme_Blvd_Options_API {
 							'hide' 			=> __( 'Hide search form', 'themeblvd' )
 						)
 					),
+				) // End header options
+			),
+
+			// Section: Transparent Header
+			'header_trans' => array(
+				'name' => __( 'Transparent Header', 'themeblvd' ),
+				'desc' => __( 'When you\'re configuring a page, if you select to "display transparent header over content" in the <strong>Theme Layout</strong> box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature works best when you\'ve applied a featured image or a custom layout to the page.', 'themeblvd' ),
+				'options' => array(
+					'trans_logo' => array(
+						'name' 		=> __( 'Logo', 'themeblvd' ),
+						'desc' 		=> __( 'Configure the primary branding logo for the header of your site.<br /><br /><em>Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.</em>', 'themeblvd' ),
+						'id' 		=> 'trans_logo',
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-trans.png', 'image_width' => '250', 'image_height' => '75', 'image_2x' => get_template_directory_uri().'/assets/images/logo-trans_2x.png' ),
+						'type' 		=> 'logo'
+					),
+					'trans_social_media_style' => array(
+						'name' 		=> __( 'Social Media Style', 'themeblvd' ),
+						'desc'		=> __( 'Select the color you\'d like applied to the social icons.', 'themeblvd' ),
+						'id'		=> 'trans_social_media_style',
+						'std'		=> 'flat',
+						'type' 		=> 'select',
+						'options'	=> array(
+							'flat'			=> __( 'Flat Color', 'themeblvd' ),
+							'dark' 			=> __( 'Flat Dark', 'themeblvd' ),
+							'grey' 			=> __( 'Flat Grey', 'themeblvd' ),
+							'light' 		=> __( 'Flat Light', 'themeblvd' ),
+							'color'			=> __( 'Color', 'themeblvd' )
+						)
+					)
 				) // End header options
 			),
 
@@ -955,6 +987,11 @@ class Theme_Blvd_Options_API {
 				'type'	=> 'hidden'
 			)
 		);
+
+		// Remove any options for unsupported features
+		if ( ! themeblvd_supports('display', 'suck_up') && isset( $this->raw_options['layout']['sections']['header_trans'] ) ) {
+			unset ($this->raw_options['layout']['sections']['header_trans'] );
+		}
 
 		// Tab Level
 		foreach ( $this->raw_options as $tab_id => $tab ) {

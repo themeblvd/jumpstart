@@ -157,7 +157,8 @@ function themeblvd_setup() {
 			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
 			'page_options'		=> true,			// Meta box for basic page options
 			'post_options'		=> true,			// Meta box for basic post options
-			'pto'				=> true				// Meta box for "Post Grid/List" page template
+			'pto'				=> true,			// Meta box for "Post Grid/List" page template
+			'layout'			=> true				// Meta box for theme layout adjustments
 		),
 		'featured' => array(
 			'style'				=> false,			// Whether current theme has special styling for featured area
@@ -185,9 +186,11 @@ function themeblvd_setup() {
 			'dark'				=> false,			// Whether to display as dark theme
 			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
+			'banner'			=> true,			// Featured image banners for pages
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
 			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
-			'footer_sync'		=> true				// Whether theme suppors syncing footer with template
+			'footer_sync'		=> true,			// Whether theme suppors syncing footer with template
+			'suck_up'			=> true				// Whether theme supports sucking custom layout content up into header
 		),
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script

@@ -1338,3 +1338,103 @@ function themeblvd_slider( $slider ) {
 	// Display slider based on its slider type
 	do_action( 'themeblvd_'.$type.'_slider', $slider, $settings, $slides );
 }
+
+/**
+ * Get main site logo
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_logo( $logo = array(), $trans = false ) {
+
+	$output = '';
+
+	$defaults = array(
+		'type' 				=> 'image',
+	    'custom' 			=> '',
+	    'custom_tagline' 	=> '',
+	    'image' 			=> '',
+	    'image_width' 		=> 0,
+	    'image_height' 		=> 0,
+	    'image_2x'			=> '',
+	    'class'				=> ''
+	);
+
+	if ( ! $logo || ( isset($logo['type']) && $logo['type'] == 'image' && empty($logo['image']) ) ) {
+		$logo = themeblvd_get_option('logo');
+	}
+
+	$logo = wp_parse_args( $logo, $defaults );
+
+	if ( $logo ) {
+
+		$class = 'header-logo header_logo header_logo_'.$logo['type'];
+
+		if ( $logo['type'] == 'custom' || $logo['type'] == 'title' || $logo['type'] == 'title_tagline' ) {
+			$class .= ' header_logo_text';
+		}
+
+		if ( $logo['type'] == 'custom' && ! empty( $logo['custom_tagline'] ) ) {
+			$class .= ' header_logo_has_tagline';
+		}
+
+		if ( $logo['type'] == 'title_tagline' ) {
+			$class .= ' header_logo_has_tagline';
+		}
+
+		if ( $logo['class'] ) {
+			$class .= ' '.$logo['class'];
+		}
+
+		$output .= sprintf( '<div class="%s">', $class, $style );
+
+		if ( ! empty( $logo['type'] ) ) {
+			switch ( $logo['type'] ) {
+
+				case 'title' :
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), get_bloginfo('name') );
+					break;
+
+				case 'title_tagline' :
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), get_bloginfo('name') );
+					$output .= sprintf( '<span class="tagline">%s</span>', get_bloginfo('description') );
+					break;
+
+				case 'custom' :
+
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%s" title="%s">%s</a></h1>', themeblvd_get_home_url(), $logo['custom'], $logo['custom'] );
+
+					if ( $logo['custom_tagline'] ) {
+						$output .= sprintf( '<span class="tagline">%s</span>', $logo['custom_tagline'] );
+					}
+					break;
+
+				case 'image' :
+
+					$output .= sprintf('<a href="%s" title="%s" class="tb-image-logo">', themeblvd_get_home_url(), get_bloginfo('name') );
+					$output .= sprintf( '<img src="%s" alt="%s" ', $logo['image'], get_bloginfo('name') );
+
+					if ( ! empty( $logo['image_width'] ) ) {
+						$output .= sprintf( 'width="%s" ', $logo['image_width'] );
+					}
+
+					if ( ! empty( $logo['image_height'] ) ) {
+						$output .= sprintf( 'height="%s" ', $logo['image_height'] );
+					}
+
+					if ( ! empty( $logo['image_2x'] ) ) {
+						$output .= sprintf( 'data-image-2x="%s" ', $logo['image_2x'] );
+					}
+
+					$output .= '/></a>';
+
+					break;
+			}
+		}
+
+		$output .= '</div><!-- .header-logo (end) -->';
+
+	}
+
+
+	return apply_filters( 'themeblvd_logo', $output );
+}

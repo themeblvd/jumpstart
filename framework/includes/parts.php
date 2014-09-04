@@ -51,6 +51,8 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 			$class .= ' '.$args['class'];
 		}
 
+		$class .= ' clearfix';
+
 		$output .= '<div class="'.$class.'">';
 		$output .= '<ul class="social-media">';
 
@@ -88,7 +90,6 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 		}
 
 		$output .= '</ul>';
-		$output .= '<div class="clear"></div>';
 		$output .= '</div><!-- .themeblvd-contact-bar (end) -->';
 	}
 	return apply_filters( 'themeblvd_contact_bar', $output, $buttons, $args );
@@ -102,8 +103,19 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
  * @param array $buttons icons to use
  * @param array $args Any options for contact bar
  */
-function themeblvd_contact_bar( $buttons = array(), $args = array() ) {
+function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = true ) {
+
 	echo themeblvd_get_contact_bar( $buttons, $args );
+
+	if ( $trans && themeblvd_config('suck_up') ) {
+
+		$args = wp_parse_args( $args, array(
+			'style' => themeblvd_get_option( 'trans_social_media_style', null, 'flat' ),
+			'class'	=> 'social-trans'
+		));
+
+		echo themeblvd_get_contact_bar( themeblvd_get_option('trans_social_media'), $args );
+	}
 }
 
 /**
