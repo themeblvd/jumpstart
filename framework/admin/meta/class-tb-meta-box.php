@@ -40,6 +40,10 @@ class Theme_Blvd_Meta_Box {
 		$this->id = $id;
 		$this->options = $options;
 
+		if ( ! $this->options ) {
+			return;
+		}
+
 		$defaults = array(
 			'page'			=> array( 'post' ),						// can contain post, page, link, or custom post type's slug
 			'context'		=> 'normal',							// normal, advanced, or side
@@ -86,14 +90,26 @@ class Theme_Blvd_Meta_Box {
     		return;
     	}
 
+    	$class = 'tb-meta-box';
+
+    	if ( $this->args['context'] == 'side' ) {
+    		$class .= ' side';
+    	}
+
     	// Start content
-    	echo '<div class="tb-meta-box">';
+    	echo '<div id="optionsframework" class="'.$class.'">';
 
     	// Gather any already saved settings or defaults for option types
     	// that need a starting value
     	$settings = array();
     	foreach ( $this->options as $option ) {
+
+    		if ( empty($option['id']) ) {
+    			continue;
+    		}
+
     		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
+
     		if ( ! $settings[$option['id']] ) {
     			if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
     				if ( isset( $option['std'] ) ) {

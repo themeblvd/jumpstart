@@ -31,37 +31,16 @@ jQuery(document).ready(function($) {
 	});
 
 	/*-----------------------------------------------------------------------------------*/
-	/* Options Framework imports for meta boxes
+	/* Apply framework scripts to our meta boxes
 	/*-----------------------------------------------------------------------------------*/
 
-	// Image Options
-	$('.of-radio-img-img').click(function(){
-		$(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
-		$(this).addClass('of-radio-img-selected');
-	});
+	$('.tb-meta-box').themeblvd('init');
+	$('.tb-meta-box').themeblvd('options', 'bind');
+	$('.tb-meta-box').themeblvd('options', 'setup');
+	$('.tb-meta-box').themeblvd('options', 'media-uploader');
+	$('.tb-meta-box').themeblvd('options', 'editor');
+	$('.tb-meta-box').themeblvd('options', 'code-editor');
+	$('.tb-meta-box').themeblvd('options', 'column-widths');
+	$('.tb-meta-box').themeblvd('options', 'sortable');
 
-	$('.of-radio-img-label').hide();
-	$('.of-radio-img-img').show();
-	$('.of-radio-img-radio').hide();
-
-	/*-----------------------------------------------------------------------------------*/
-	/* Edit Post Meta Box
-	/*-----------------------------------------------------------------------------------*/
-
-	// Setup featured image link
-	var value, meta_box = $('.tb-meta-box');
-	meta_box.find('.tb-thumb-link').hide();
-	meta_box.find('.select-tb-thumb-link input:radio:checked').each(function() {
-		value = $(this).val();
-		meta_box.find('.tb-thumb-link-'+value).show();
-		if( value != 'inactive' )
-			meta_box.find('.tb-thumb-link-single').show();
-	});
-	meta_box.find('.select-tb-thumb-link input:radio').change(function(){
-		value = $(this).val();
-		meta_box.find('.tb-thumb-link').hide();
-		meta_box.find('.tb-thumb-link-'+value).show();
-		if( value != 'inactive' )
-			meta_box.find('.tb-thumb-link-single').show();
-	});
 });

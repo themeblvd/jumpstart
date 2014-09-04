@@ -300,25 +300,6 @@ optionsframework #publishing-action .ajax-loading {
 	line-height: 30px;
 	width: 30%;
 }
-#optionsframework .section-logo .controls input {
-	margin-bottom: 0;
-}
-#optionsframework .section-logo .screenshot {
-	float: none;
-	margin-top: 15px;
-}
-#optionsframework .section-logo .screenshot img {
-	float: none;
-}
-#optionsframework .section-upload .section-upload {
-	background: #ffffff;
-	border: 1px solid #dfdfdf;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	margin: 0 0 10px 0;
-	padding: 12px 15px;
-}
 
 /* =Sidebar Layouts - needed for WordPress 3.4+
 -----------------------------------------------*/
@@ -969,6 +950,37 @@ body.themeblvd-stop-scroll {
 .themeblvd-modal-wrap .button,
 .themeblvd-modal-wrap .button:hover {
 	text-decoration: none !important; /* Override for when hidden modal is in wp_footer */
+}
+
+/* =Meta Boxes
+-----------------------------------------------*/
+
+.tb-meta-box {
+	margin-right: -12px;
+	margin-left: -12px;
+	max-width: none !important;
+}
+.tb-meta-box > .section:last-child {
+	border-bottom: none !important;
+}
+.tb-meta-box.side {
+	margin-top: -6px;
+}
+.tb-meta-box.side .section .heading {
+	margin: 0 2px 10px 2px !important;
+}
+.tb-meta-box.side .section .controls {
+	float: none !important;
+	min-width: 0 !important;
+	width: auto !important;
+}
+.tb-meta-box.side .tb-fancy-select {
+	margin-bottom: 0 !important;
+}
+.tb-meta-box.side .section .explain {
+	float: none !important;
+	margin-top: 10px;
+	max-width: none !important;
 }
 
 /* =Confirmation prompt (Originally from Apprise plugin)
