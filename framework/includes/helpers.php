@@ -1137,6 +1137,7 @@ function themeblvd_show_breadcrumbs() {
 
 	// Convert to boolean
 	$show = false;
+
 	if ( $display == 'show' ) {
 		$show = true;
 	}
@@ -1474,4 +1475,20 @@ function themeblvd_get_search_types() {
 	wp_reset_postdata();
 
 	return $types;
+}
+
+/**
+ * Get site's home url
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_home_url() {
+
+	if ( function_exists('icl_get_home_url') ) {
+        $url = icl_get_home_url();
+    } else {
+    	$url = get_home_url();
+    }
+
+    return apply_filters( 'themeblvd_home_url', trailingslashit($url) );
 }
