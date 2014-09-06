@@ -193,19 +193,28 @@ function themeblvd_get_js_locals() {
 	}
 
 	// Superfish for drop down menus
-	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
+	if ( themeblvd_supports('assets', 'superfish') ) {
 		$locals['superfish'] = 'true';
 	}
 
 	// Responsive nav menu fixed to the side on mobile
 	if ( themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) {
 		$locals['mobile_side_menu'] = 'true';
+		$locals['mobile_side_menu_icon_color'] = apply_filters('themeblvd_mobile_side_menu_social_media_color', 'light');
 	}
 
+	// Sticky header
+	$locals['sticky'] = 'false';
+
+	if ( themeblvd_config('sticky') ) {
+		$locals['sticky'] = apply_filters('themeblvd_sticky_selector', '#branding');
+		$locals['sticky_offset'] = apply_filters('themeblvd_sticky_offset', '10');
+	}
+
+	// Tab deep linking -- i.e. link to a tab on a page and set it open
 	if ( apply_filters( 'themeblvd_tabs_deep_linking', false ) ) {
 		$locals['tabs_deep_linking'] = 'true';
 	}
 
-	// Return with framework's filter applied
 	return apply_filters( 'themeblvd_js_locals', $locals );
 }

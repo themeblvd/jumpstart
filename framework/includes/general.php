@@ -184,6 +184,7 @@ function themeblvd_setup() {
 		'display' => array(
 			'responsive' 		=> true,			// Responsive elements
 			'dark'				=> false,			// Whether to display as dark theme
+			'sticky'			=> true,			// Sticky header as user scrolls past header
 			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
 			'banner'			=> true,			// Featured image banners for pages

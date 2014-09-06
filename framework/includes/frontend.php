@@ -277,6 +277,11 @@ function themeblvd_header_class() {
 		$class[] = 'transparent';
 	}
 
+	if ( themeblvd_config('sticky') ) {
+		$class[] = 'has-sticky';
+		$class[] = 'visible';
+	}
+
 	if ( $class = apply_filters('themeblvd_header_class', $class ) ) {
 		printf('class="%s"', implode(' ', $class) );
 	}

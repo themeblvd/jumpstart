@@ -18,23 +18,6 @@ function themeblvd_viewport_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* Before and after site
-/*------------------------------------------------------------*/
-
-if ( !function_exists( 'themeblvd_responsive_side_menu' ) ) :
-/**
- * Default display for action: themeblvd_before
- *
- * @since 2.0.0
- */
-function themeblvd_responsive_side_menu() {
-	if ( themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) {
-		echo '<div id="tb-side-menu-wrapper"><div class="wrap"></div></div>';
-	}
-}
-endif;
-
-/*------------------------------------------------------------*/
 /* Header
 /*------------------------------------------------------------*/
 

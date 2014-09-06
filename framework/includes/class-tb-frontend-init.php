@@ -214,6 +214,7 @@ class Theme_Blvd_Frontend_Init {
 			'featured'					=> array(),		// Classes for featured area, if empty area won't show
 			'featured_below'			=> array(),		// Classes for featured below area, if empty area won't show
 			'sidebars'					=> array(), 	// Array of sidbar ID's for all corresponding locations
+			'sticky'					=> false,		// Whether to include sticky header
 			'suck_up'					=> false,		// Whether to suck content up into transparent header
 			'top'						=> true,		// Whether to show entire #top section (header)
 			'bottom'					=> true 		// Whether to show entire #bottom section (bottom)
@@ -461,6 +462,14 @@ class Theme_Blvd_Frontend_Init {
 				}
 			}
 
+		}
+
+		/*------------------------------------------------------*/
+		/* Sticky Header
+		/*------------------------------------------------------*/
+
+		if ( themeblvd_supports('display', 'sticky') && themeblvd_get_option('sticky') != 'hide' ) {
+			$this->config['sticky'] = true;
 		}
 
 		/*------------------------------------------------------*/

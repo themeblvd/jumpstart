@@ -463,6 +463,17 @@ class Theme_Blvd_Options_API {
 			'extras' => array(
 				'name' => __( 'Extras', 'themeblvd' ),
 				'options' => array(
+					'sticky' => array(
+						'name' 		=> __( 'Sticky Header', 'themeblvd' ),
+						'desc' 		=> __( 'If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page.', 'themeblvd' ),
+						'id' 		=> 'sticky',
+						'std' 		=> 'show',
+						'type' 		=> 'select',
+						'options'	=> array(
+							'show'	=> __('Yes, show sticky header', 'themeblvd'),
+							'hide'	=> __('No, don\'t show it', 'themeblvd'),
+						)
+					),
 					'breadcrumbs' => array(
 						'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
 						'desc'		=> __( 'Select whether you\'d like breadcrumbs to show throughout the site or not.', 'themeblvd' ),
@@ -990,7 +1001,11 @@ class Theme_Blvd_Options_API {
 
 		// Remove any options for unsupported features
 		if ( ! themeblvd_supports('display', 'suck_up') && isset( $this->raw_options['layout']['sections']['header_trans'] ) ) {
-			unset ($this->raw_options['layout']['sections']['header_trans'] );
+			unset( $this->raw_options['layout']['sections']['header_trans'] );
+		}
+
+		if ( ! themeblvd_supports('display', 'sticky') && isset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] ) ) {
+			unset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] );
 		}
 
 		// Tab Level

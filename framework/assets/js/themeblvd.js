@@ -77,132 +77,107 @@ jQuery(document).ready(function($) {
 	// Menus
 	// ---------------------------------------------------------
 
-	// Activate Superfish
-	if ( themeblvd.superfish == 'true' ) {
-		$('ul.sf-menu').superfish({
-			speed: 200,
-			popUpSelector: '.non-mega-sub-menu,.sf-mega'
-		});
-	}
-
-	// Side Menu, general
-	var tb_side_menu = function() {
-		$('.tb-side-menu').off('click.tb-side-menu-toggle', '.tb-side-menu-toggle');
-		$('.tb-side-menu').on('click.tb-side-menu-toggle', '.tb-side-menu-toggle', function() {
-			var $el = $(this);
-			if ( $el.hasClass('open') ) {
-				$el.next('.sub-menu, .sf-mega').slideUp(100);
-				$el.removeClass('open fa-'+$el.data('close'));
-				$el.addClass('fa-'+$el.data('open'));
-			} else {
-				$el.next('.sub-menu,  .sf-mega').slideDown(100);
-				$el.removeClass('fa-'+$el.data('open'));
-				$el.addClass('open fa-'+$el.data('close'));
-			}
-		});
-	};
-
-	// Side Menu Init
-	tb_side_menu();
-
 	// Responsive side menu
 	if ( themeblvd.mobile_side_menu == 'true' && $primary_menu.hasClass('tb-to-side-menu') ) {
-
-		var $side_holder = $('#tb-side-menu-wrapper > .wrap'),
-			$main_holder = $('#access > .wrap'),
-			$toggle_open = $('#primary-menu-open'),
-			$toggle_close = $('#primary-menu-close'),
-			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
-			max = parseInt(themeblvd.mobile_menu_viewport_max);
-
-		// If the main menu is located in a different area, this can
-		// be utilized by changing the markup of the side menu holder
-		// like this: <div id="tb-side-menu-wrapper" data-from="#my-menu-wrap"></div>
-		if ( $side_holder.data('from') ) {
-			$main_holder = $($side_holder.data('from'));
-		}
 
 		// Add initial class that denotes the menu is hidden on
 		// page load. The menu will be hidden on its own, but
 		// this allows for CSS3 transitions.
 		$body.addClass('side-menu-off');
 
-		// If we're in the set viewport, the menu will be moved
-		// TO the side menu wrapper, or moved back.
-		var tb_build_side_menu = function() {
+		// Create empty wrapper for the side menu
+		$('#wrapper').after('<div id="tb-side-menu-wrapper"><div class="wrap"></div></div>');
 
-			if ( $window.width() <= max ) {
+		// Generate content for side menu
+		var $side_holder = $('#tb-side-menu-wrapper > .wrap'),
+			$toggle_open = $('#primary-menu-open'),
+			$toggle_close = $('#primary-menu-close'),
+			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
+			max = parseInt(themeblvd.mobile_menu_viewport_max);
 
-				// Destroy superfish
-				if ( themeblvd.superfish == 'true' ) {
-					$primary_menu.superfish('destroy');
-				}
+		$header.find('.tb-search').clone().addClass('mini').appendTo( $side_holder );
+		$primary_menu.clone().appendTo( $side_holder );
+		$header.find('.tb-social-icons:first-child').clone().appendTo( $side_holder );
 
-				// Remove standard menu styling classes
-				$primary_menu.removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
+		// Adjust menu classes
+		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
 
-				// Move items to the side menu area
-				$primary_menu.appendTo($side_holder);
-
-				// Re-bind toggle effects
-				tb_side_menu();
-				// ... @TODO $extras.appendTo($holder); ... make an array of them with .each() ?
-
-			} else {
-
-				// Activate superfish
-				if ( themeblvd.superfish == 'true' && ! $primary_menu.data('sfOptions') ) {
-					$primary_menu.superfish({
-						speed: 200,
-						popUpSelector: '.non-mega-sub-menu,.sf-mega'
-					});
-					$primary_menu.addClass('sf-menu');
-				}
-
-				// Add back "standard" class
-				$primary_menu.removeClass('tb-side-menu').addClass('tb-primary-menu');
-
-				// Move items back
-				$primary_menu.appendTo($main_holder);
-				// ... @TODO $extras.appendTo($holder);
-
-				// In case side menu wrapper was showing, hide it
-				$body.removeClass('side-menu-on');
-				$body.addClass('side-menu-off');
-				$toggle_open.show();
-				$toggle_close.hide();
-
-			}
-		};
-
-		// Init
-		tb_build_side_menu();
-
-		// Re-evaluate on browser resize
-		$window.resize(tb_build_side_menu);
+		// Adjust social media icon color
+		if ( themeblvd.mobile_side_menu_icon_color ) {
+			$side_holder.find('.tb-social-icons').removeClass('grey dark light flat color').addClass(themeblvd.mobile_side_menu_icon_color);
+		}
 
 		// Show menu
 		$toggle_open.on('click', function(){
-			$body.removeClass('side-menu-off');
-			$body.addClass('side-menu-on');
+			$body.removeClass('side-menu-off').addClass('side-menu-on');
 			$toggle_open.hide();
 			$toggle_close.show();
 		});
 
 		// Close menu
 		$toggle_close.on('click', function(){
-			$body.removeClass('side-menu-on');
-			$body.addClass('side-menu-off');
-			$toggle_close.hide();
-			$toggle_open.show();
-		});
-		$('#wrapper').on('click', function(){
-			$body.removeClass('side-menu-on');
-			$body.addClass('side-menu-off');
+			$body.removeClass('side-menu-on').addClass('side-menu-off');
 			$toggle_close.hide();
 			$toggle_open.show();
 		});
 
+		$('#wrapper').on('click', function(){
+			$body.removeClass('side-menu-on').addClass('side-menu-off');
+			$toggle_close.hide();
+			$toggle_open.show();
+		});
+
+		$window.resize(function(){
+			if ( $window.width() > max ) {
+				$body.removeClass('side-menu-on').addClass('side-menu-off');
+				$toggle_close.hide();
+				$toggle_open.show();
+			}
+		});
+
+	}
+
+	// All side menus
+	$('.tb-side-menu').on('click', '.tb-side-menu-toggle', function() {
+
+		var $el = $(this);
+
+		if ( $el.hasClass('open') ) {
+			$el.next('.sub-menu, .sf-mega').slideUp(100);
+			$el.removeClass('open fa-'+$el.data('close'));
+			$el.addClass('fa-'+$el.data('open'));
+		} else {
+			$el.next('.sub-menu,  .sf-mega').slideDown(100);
+			$el.removeClass('fa-'+$el.data('open'));
+			$el.addClass('open fa-'+$el.data('close'));
+		}
+	});
+
+	if ( themeblvd.sticky !== 'false' ) {
+
+		// Build sticky menu
+		var $sticky_spy = $(themeblvd.sticky),
+			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"></div></div>').appendTo( $sticky_spy );
+
+		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
+		$header.find('.tb-search-popup').clone().appendTo( $sticky.find('.sticky-wrap') );
+		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap') );
+
+		// Sticky menu, make selector dynamic
+		$sticky_spy.viewportChecker({
+			classToAdd: 'visible',
+			repeat: true,
+			offset: parseInt(themeblvd.sticky_offset)
+		});
+
+	}
+
+	// Activate Superfish
+	if ( themeblvd.superfish == 'true' ) {
+		$('ul.sf-menu').superfish({
+			speed: 200,
+			popUpSelector: '.non-mega-sub-menu,.sf-mega'
+		});
 	}
 
 	// ---------------------------------------------------------
@@ -939,13 +914,14 @@ jQuery(document).ready(function($) {
 
 			// Scroll effects
 			if ( $body.hasClass('tb-scroll-effects') && $body.hasClass('desktop') ) {
-
-				$el.find('.chart-wrap').css('opacity', '0');
-
-				$el.appear(function() {
-					$el.find('.chart-wrap').css('opacity', '1');
-					chart.render();
-				},{accX: 0, accY: 0});
+				$el.find('.chart-wrap').css('opacity', '0').viewportChecker({
+					classToAdd: 'visible',
+					offset: 0,
+					callbackFunction: function($elem, action){
+						$elem.css('opacity', '1');
+						chart.render();
+					}
+				});
 			}
 		});
 
@@ -1009,13 +985,14 @@ jQuery(document).ready(function($) {
 
 			// Scroll effects
 			if ( $body.hasClass('tb-scroll-effects') && $body.hasClass('desktop') ) {
-
-				$el.find('.chart-wrap').css('opacity', '0');
-
-				$el.appear(function() {
-					$el.find('.chart-wrap').css('opacity', '1');
-					chart.render();
-				},{accX: 0, accY: 0});
+				$el.find('.chart-wrap').css('opacity', '0').viewportChecker({
+					classToAdd: 'visible',
+					offset: 0,
+					callbackFunction: function($elem, action){
+						$elem.css('opacity', '1');
+						chart.render();
+					}
+				});
 			}
 
 		});
@@ -1032,16 +1009,18 @@ jQuery(document).ready(function($) {
 		var $el = $(this),
 			num = parseInt($el.data('num'));
 
-		$el.appear(function() {
-
-			$el.find('.num').countTo({
-				from: 0,
-				to: num,
-				speed: 900,
-				refreshInterval: 30
-			});
-
-		},{accX: 0, accY: 0});
+		$el.viewportChecker({
+			classToAdd: 'visible',
+			offset: 0,
+			callbackFunction: function($elem, action){
+				$elem.find('.num').countTo({
+					from: 0,
+					to: num,
+					speed: 900,
+					refreshInterval: 30
+				});
+			}
+		});
 
 	});
 
@@ -1051,25 +1030,25 @@ jQuery(document).ready(function($) {
 
 			var $chart = $(this).find('.chart');
 
-			$chart.css('opacity', '0');
-
-			$chart.appear(function() {
-
-				$chart.easyPieChart({
-					lineWidth: 10,
-					size: 140,
-					animate: 1000,
-					barColor: $chart.data('color'),
-					trackColor: $chart.data('track-color'),
-					scaleColor: false,
-					lineCap: 'square',
-					easing: 'easeOutBounce',
-					onStart: function() {
-						$chart.css('opacity', '1');
-					}
-				});
-
-			},{accX: 0, accY: 0});
+			$chart.css('opacity', '0').viewportChecker({
+				classToAdd: 'visible',
+				offset: 0,
+				callbackFunction: function($elem, action){
+					$elem.easyPieChart({
+						lineWidth: 10,
+						size: 140,
+						animate: 1000,
+						barColor: $chart.data('color'),
+						trackColor: $chart.data('track-color'),
+						scaleColor: false,
+						lineCap: 'square',
+						easing: 'easeOutBounce',
+						onStart: function() {
+							$chart.css('opacity', '1');
+						}
+					});
+				}
+			});
 
 		});
 	}
@@ -1078,161 +1057,101 @@ jQuery(document).ready(function($) {
 	// Milestone standard
 	$('.desktop.tb-scroll-effects .tb-progress .progress-bar').each(function(){
 
-		var $bar = $(this);
-
-		$bar.appear(function() {
-			$bar.animate({width:$bar.data('percent')+'%'}, 400);
-		},{accX: 0, accY: 0});
+		$(this).viewportChecker({
+			classToAdd: 'visible',
+			offset: 0,
+			callbackFunction: function($elem, action){
+				$elem.animate({width:$elem.data('percent')+'%'}, 400);
+			}
+		});
 
 	});
 
 });
 
 // ---------------------------------------------------------
-// Allow animation when items appear w/scroll
-// script by Michael Hixson and Alexander Brovikov
+// Allow adding a class when item comes into viewport,
+// and performing a callback.
 // ---------------------------------------------------------
 
-(function($) {
-    $.fn.appear = function(fn, options) {
+/*
+    Version 1.4.2
+    The MIT License (MIT)
 
-        var settings = $.extend({
+    Copyright (c) 2014 Dirk Groenen
 
-            //arbitrary data to pass to fn
-            data: undefined,
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:
 
-            //call fn only on the first appear?
-            one: true,
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+*/
 
-            // X & Y accuracy
-            accX: 0,
-            accY: 0
+(function($){
+    $.fn.viewportChecker = function(useroptions){
+        // Define options and extend with user
+        var options = {
+            classToAdd: 'visible',
+            offset: 100,
+            repeat: false,
+            callbackFunction: function(elem, action){}
+        };
+        $.extend(options, useroptions);
 
-        }, options);
+        // Cache the given element and height of the browser
+        var $elem = this,
+            windowHeight = $(window).height(),
+            scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
 
-        return this.each(function() {
+        this.checkElements = function(){
 
-            var t = $(this);
+            // Set some vars to check with
+            var viewportTop = $(scrollElem).scrollTop(),
+                viewportBottom = (viewportTop + windowHeight);
 
-            //whether the element is currently visible
-            t.appeared = false;
-
-            if (!fn) {
-
-                //trigger the custom event
-                t.trigger('appear', settings.data);
-                return;
-            }
-
-            var w = $(window);
-
-            //fires the appear event when appropriate
-            var check = function() {
-
-                //is the element hidden?
-                if (!t.is(':visible')) {
-
-                    //it became hidden
-                    t.appeared = false;
+            $elem.each(function(){
+                var $obj = $(this);
+                // If class already exists; quit
+                if ($obj.hasClass(options.classToAdd) && !options.repeat){
                     return;
                 }
 
-                //is the element inside the visible window?
-                var a = w.scrollLeft();
-                var b = w.scrollTop();
-                var o = t.offset();
-                var x = o.left;
-                var y = o.top;
+                // define the top position of the element and include the offset which makes is appear earlier or later
+                var elemTop = Math.round( $obj.offset().top ) + options.offset,
+                    elemBottom = elemTop + ($obj.height());
 
-                var ax = settings.accX;
-                var ay = settings.accY;
-                var th = t.height();
-                var wh = w.height();
-                var tw = t.width();
-                var ww = w.width();
+                // Add class if in viewport
+                if ((elemTop < viewportBottom) && (elemBottom > viewportTop)){
+                    $obj.addClass(options.classToAdd);
 
-                if (y + th + ay >= b &&
-                    y <= b + wh + ay &&
-                    x + tw + ax >= a &&
-                    x <= a + ww + ax) {
+                    // Do the callback function. Callback wil send the jQuery object as parameter
+                    options.callbackFunction($obj, "add");
 
-                    //trigger the custom event
-                    if (!t.appeared) t.trigger('appear', settings.data);
+                // Remove class if not in viewport and repeat is true
+                } else if ($obj.hasClass(options.classToAdd) && (options.repeat)){
+                    $obj.removeClass(options.classToAdd);
 
-                } else {
-
-                    //it scrolled out of view
-                    t.appeared = false;
+                    // Do the callback function.
+                    options.callbackFunction($obj, "remove");
                 }
-            };
+            });
 
-            //create a modified fn with some additional logic
-            var modifiedFn = function() {
+        };
 
-                //mark the element as visible
-                t.appeared = true;
+        // Run checkelements on load and scroll
+        $(window).bind("load scroll touchmove", this.checkElements);
 
-                //is this supposed to happen only once?
-                if (settings.one) {
-
-                    //remove the check
-                    w.unbind('scroll', check);
-                    var i = $.inArray(check, $.fn.appear.checks);
-                    if (i >= 0) $.fn.appear.checks.splice(i, 1);
-                }
-
-                //trigger the original fn
-                fn.apply(this, arguments);
-            };
-
-            //bind the modified fn to the element
-            if (settings.one) t.one('appear', settings.data, modifiedFn);
-            else t.bind('appear', settings.data, modifiedFn);
-
-            //check whenever the window scrolls
-            w.scroll(check);
-
-            //check whenever the dom changes
-            $.fn.appear.checks.push(check);
-
-            //check now
-            (check)();
+        // On resize change the height var
+        $(window).resize(function(e){
+            windowHeight = e.currentTarget.innerHeight;
         });
+
+        return this;
     };
-
-    //keep a queue of appearance checks
-    $.extend($.fn.appear, {
-
-        checks: [],
-        timeout: null,
-
-        //process the queue
-        checkAll: function() {
-            var length = $.fn.appear.checks.length;
-            if (length > 0) while (length--) ($.fn.appear.checks[length])();
-        },
-
-        //check the queue asynchronously
-        run: function() {
-            if ($.fn.appear.timeout) clearTimeout($.fn.appear.timeout);
-            $.fn.appear.timeout = setTimeout($.fn.appear.checkAll, 20);
-        }
-    });
-
-    //run checks when these methods are called
-    $.each(['append', 'prepend', 'after', 'before', 'attr',
-        'removeAttr', 'addClass', 'removeClass', 'toggleClass',
-        'remove', 'css', 'show', 'hide'], function(i, n) {
-        var old = $.fn[n];
-        if (old) {
-            $.fn[n] = function() {
-                var r = old.apply(this, arguments);
-                $.fn.appear.run();
-                return r;
-            }
-        }
-    });
-
 })(jQuery);
 
 // ---------------------------------------------------------
