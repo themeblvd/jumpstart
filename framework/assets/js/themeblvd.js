@@ -181,6 +181,48 @@ jQuery(document).ready(function($) {
 	}
 
 	// ---------------------------------------------------------
+	// Sorting/Masonry
+	// ---------------------------------------------------------
+
+	$window.load(function() {
+		$('.tb-isotope').each(function(){
+
+			var $container = $(this),
+				mode = 'fitRows';
+
+			if ( $container.hasClass('tb-masonry') ) {
+				mode = 'masonry';
+			}
+
+			$container.find('.post-wrap > .row').fadeIn(400, function(){
+
+				var $iso = $container.find('.post-wrap > .row').isotope({
+					layoutMode: mode,
+					itemSelector: '.iso-item',
+					filter: '*'
+				});
+
+				$container.find('.tb-loader').fadeOut(100);
+
+				if ( $container.hasClass('tb-filter') ) {
+
+					$container.find('.tb-filter-nav').fadeIn(400);
+
+					$container.find('.filter-menu > li > a').on('click', function(){
+						var $link = $(this);
+						$container.find('.filter-menu > li').removeClass('active');
+						$link.closest('li').addClass('active');
+						$iso.isotope({ filter: $(this).data('filter') });
+						return false;
+					});
+				}
+
+			});
+
+		});
+	});
+
+	// ---------------------------------------------------------
 	// Floater popup
 	// ---------------------------------------------------------
 

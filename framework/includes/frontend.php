@@ -356,6 +356,11 @@ function themeblvd_include_scripts() {
 		wp_enqueue_script( 'easypiechart', TB_FRAMEWORK_URI . '/assets/js/easypiechart.min.js', array('jquery'), '2.1.5' );
 	}
 
+	if ( themeblvd_supports( 'assets', 'isotope' ) ) {
+		$scripts[] = 'isotope';
+		wp_enqueue_script( 'isotope', TB_FRAMEWORK_URI . '/assets/js/isotope.min.js', array('jquery'), '2.0.1' );
+	}
+
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
 		$scripts[] = 'themeblvd';
 		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.js', array('jquery'), TB_FRAMEWORK_VERSION );

@@ -247,7 +247,6 @@ function themeblvd_element( $args ) {
 
 		// Blog
 		case 'blog' :
-
 			$args['options']['context'] = 'blog';
 			$args['options']['element'] = true;
 			themeblvd_loop( $args['options'] );
@@ -263,10 +262,18 @@ function themeblvd_element( $args ) {
 		// Post List
 		case 'post_list' :
 			$args['options']['context'] = 'list';
+			$args['options']['element'] = true;
 			themeblvd_loop( $args['options'] );
 			break;
 
-		// Post Slider // @TODO -- Add 2nd post slider style
+		// Post Showcase
+		case 'post_showcase' :
+			$args['options']['context'] = 'showcase';
+			$args['options']['element'] = true;
+			themeblvd_loop( $args['options'] );
+			break;
+
+		// Post Slider
 		case 'post_slider' :
 		case 'post_slider_popout' :
 			$args['options']['element'] = true;

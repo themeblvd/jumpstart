@@ -15,8 +15,8 @@ function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
 	}
 
 	$offset = strlen( $string ) - 1;
-
 	$trailing_char = strpos( $string, $char, $offset );
+
 	if ( $trailing_char ) {
 		$string = substr( $string, 0, -1 );
 	}
@@ -127,8 +127,16 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 	// Is there a query source? (i.e. category, tag, query)
 	$source = '';
+
 	if ( ! empty( $options['source'] ) ) {
 		$source = $options['source'];
+	}
+
+	// How are we displaying?
+	$display = $type;
+
+	if ( ! empty( $options['display'] ) ) {
+		$display = $options['display'];
 	}
 
 	// Custom query
@@ -146,7 +154,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 		}
 
 		// Force posts per page on grids
-		if( $type == 'grid' && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+		if( ( $display == 'grid' || $display == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
 			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
 				$query['posts_per_page'] = $options['rows']*$options['columns'];
 			}
@@ -178,33 +186,6 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 		// Start $query
 		$query = array( 'suppress_filters' => false );
-
-		// Number of posts
-		if ( $type == 'grid' ) {
-
-			if ( ! empty( $options['columns'] ) ) {
-
-				if ( ! empty( $options['display'] ) && $options['display'] == 'slider' && ! empty( $options['slides'] ) ) {
-					// slider post grid
-					$query['posts_per_page'] = intval($options['slides'])*intval($options['columns']);
-				} else if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
-					// standard post grid
-					$query['posts_per_page'] = intval($options['rows'])*intval($options['columns']);
-				}
-
-			}
-
-		} else {
-
-			if ( ! empty( $options['posts_per_page'] ) ) {
-				$query['posts_per_page'] = intval( $options['posts_per_page'] );
-			}
-
-		}
-
-		if ( empty( $query['posts_per_page'] ) ) {
-			$query['posts_per_page'] = -1;
-		}
 
 		// Categories
 		if ( $source == 'category' || ! $source ) {
@@ -271,6 +252,40 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 		if ( ! empty( $options['meta_value'] ) ) {
 			$query['meta_value'] = $options['meta_value'];
+		}
+
+	}
+
+	// Posts per page
+	if ( empty( $query['posts_per_page'] ) ) {
+
+		// Number of posts
+		if ( $type == 'grid' || $type == 'showcase' ) {
+
+			if ( ! empty( $options['columns'] ) ) {
+
+				if ( $display == 'slider' && ! empty( $options['slides'] ) ) {
+					$query['posts_per_page'] = intval($options['slides'])*intval($options['columns']);
+				} else if ( $display == 'masonry' && ! empty( $options['posts_per_page'] ) ) {
+					$query['posts_per_page'] = $options['posts_per_page'];
+				} else if ( ( $display == 'filter' || $display == 'masonry_filter' ) && ! empty( $options['filter_max'] ) ) {
+					$query['posts_per_page'] = $options['filter_max'];
+				} else if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
+					$query['posts_per_page'] = intval($options['rows'])*intval($options['columns']);
+				}
+
+			}
+
+		} else {
+
+			if ( ! empty( $options['posts_per_page'] ) ) {
+				$query['posts_per_page'] = intval( $options['posts_per_page'] );
+			}
+
+		}
+
+		if ( empty( $query['posts_per_page'] ) ) {
+			$query['posts_per_page'] = -1;
 		}
 
 	}
@@ -1445,6 +1460,22 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 }
 
 /**
+ * Get site's home url
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_home_url() {
+
+	if ( function_exists('icl_get_home_url') ) {
+        $url = icl_get_home_url();
+    } else {
+    	$url = get_home_url();
+    }
+
+    return apply_filters( 'themeblvd_home_url', trailingslashit($url) );
+}
+
+/**
  * Get search result post types
  *
  * @since 2.5.0
@@ -1478,17 +1509,29 @@ function themeblvd_get_search_types() {
 }
 
 /**
- * Get site's home url
+ * Get the value for data-filter of an item in
+ * filterable post display.
  *
  * @since 2.5.0
+ *
+ * @param string $tax Taxonomy we're sorting the showcase by
+ * @param int $post_id ID of current post
+ * @return string $value Value to get used in HTML, i.e. data-sort="$value"
  */
-function themeblvd_get_home_url() {
+function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ){
 
-	if ( function_exists('icl_get_home_url') ) {
-        $url = icl_get_home_url();
-    } else {
-    	$url = get_home_url();
-    }
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
 
-    return apply_filters( 'themeblvd_home_url', trailingslashit($url) );
+	$value = '';
+	$terms = get_the_terms($post_id, $tax);
+
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			$value .= sprintf('filter-%s ', $term->slug);
+		}
+	}
+
+	return apply_filters( 'themeblvd_filter_val', trim($value), $tax, $post_id );
 }

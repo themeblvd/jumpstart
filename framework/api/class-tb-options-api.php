@@ -180,6 +180,7 @@ class Theme_Blvd_Options_API {
 	 *		- tag_info
 	 *	- Blog
 	 *		- blog_thumbs
+	 *		- blog_meta
 	 *		- blog_content
 	 *		- blog_categories
 	 *	- Post Lists
@@ -191,15 +192,32 @@ class Theme_Blvd_Options_API {
 	 *		- list_sub_group_end
 	 *		- list_posts_per_page
 	 *	- Post Grids
+	 *		- grid_sub_group_start_1
 	 *		- grid_thumbs
+	 *		- grid_crop
+	 *		- grid_sub_group_end_1
 	 *		- grid_meta
 	 *		- grid_excerpt
-	 *		- grid_sub_group_start
+	 *		- grid_sub_group_start_2
 	 *		- grid_more
 	 *		- grid_more_text
-	 *		- grid_sub_group_end
+	 *		- grid_sub_group_end_2
+	 *		- grid_sub_group_start_3
+	 *		- grid_display
 	 *		- grid_columns
 	 *		- grid_rows
+	 *		- grid_posts_per_page
+	 *		- grid_sub_group_end_3
+	 *	- Post Showcase
+	 *		- showcase_crop
+	 *		- showcase_titles
+	 *		- showcase_excerpt
+	 *		- showcase_sub_group_start_1
+	 *		- showcase_display
+	 *		- showcase_columns
+	 *		- showcase_rows
+	 *		- showcase_posts_per_page
+	 *		- showcase_sub_group_end_1
 	 *	- Lightbox
 	 *		- lightbox_animation
 	 *		- lightbox_mobile
@@ -662,6 +680,17 @@ class Theme_Blvd_Options_API {
 							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),
+					'blog_meta' => array(
+						'name' 		=> __( 'Meta Information', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'themeblvd' ),
+						'id' 		=> 'blog_meta',
+						'std' 		=> 'show',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'		=> __( 'Show meta info', 'themeblvd' ),
+							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+						)
+					),
 					'blog_content' => array(
 						'name' 		=> __( 'Excerpts of Full Content', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether you want to show full content or post excerpts only.', 'themeblvd' ),
@@ -686,7 +715,7 @@ class Theme_Blvd_Options_API {
 			// Section: Post Lists
 			'list' => array(
 				'name' => __( 'Post Display: List', 'themeblvd' ),
-				'desc' => __( 'These settings allow you to setup the default configuration for using post lists.', 'themeblvd' ),
+				'desc' => __( 'These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the "Post List" page template and any archives you\'ve set to display post lists. For more control over a specifc post list, you can apply the "Post List" element of the Builder or use the [post_list] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'themeblvd' ),
 				'options' => array(
 					'list_thumbs' => array(
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
@@ -751,8 +780,12 @@ class Theme_Blvd_Options_API {
 			// Section: Post Grids
 			'grid' => array(
 				'name' => __( 'Post Display: Grid', 'themeblvd' ),
-				'desc' => __( 'These settings allow you to setup the default configuration for using post grids.', 'themeblvd' ),
+				'desc' => __( 'These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the "Post Grid" page template and any archives you\'ve set to display post grids. For more control over a specifc post grid, you can apply the "Post Grid" element of the Builder or use the [post_grid] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'themeblvd' ),
 				'options' => array(
+					'grid_sub_group_start_1' => array(
+						'type' 		=> 'subgroup_start',
+						'class'		=> 'show-hide-toggle'
+					),
 					'grid_thumbs' => array(
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
 						'desc' 		=> __( 'Choose whether or not you want featured images to show for each post.', 'themeblvd' ),
@@ -762,7 +795,20 @@ class Theme_Blvd_Options_API {
 						'options' => array(
 							'full'		=> __( 'Show featured images', 'themeblvd' ),
 							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
-						)
+						),
+						'class'		=> 'trigger'
+					),
+					'grid_crop' => array(
+				    	'id' 		=> 'grid_crop',
+						'name'		=> __( 'Featured Image Crop Size', 'themeblvd_builder' ),
+						'desc'		=> __( 'Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.<br><br><em>Note: Images are scaled proportionally to fit within their current containers.</em>', 'themeblvd_builder' ),
+						'type'		=> 'select',
+						'select'	=> 'crop',
+						'std'		=> 'tb_grid',
+						'class'		=> 'hide receiver receiver-full'
+					),
+					'grid_sub_group_end_1' => array(
+						'type' 		=> 'subgroup_end'
 					),
 					'grid_meta' => array(
 						'name' 		=> __( 'Meta Information', 'themeblvd' ),
@@ -786,7 +832,7 @@ class Theme_Blvd_Options_API {
 							'hide' 		=> __( 'Hide excerpts', 'themeblvd' )
 						)
 					),
-					'grid_sub_group_start' => array(
+					'grid_sub_group_start_2' => array(
 						'type' 		=> 'subgroup_start',
 						'class'		=> 'show-hide-toggle'
 					),
@@ -811,8 +857,24 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'text',
 						'class'		=> 'hide receiver receiver-text receiver-button'
 					),
-					'grid_sub_group_end' => array(
+					'grid_sub_group_end_2' => array(
 						'type' 		=> 'subgroup_end'
+					),
+					'grid_sub_group_start_3' => array(
+						'type' 		=> 'subgroup_start',
+						'class'		=> 'show-hide-toggle'
+					),
+					'grid_display' => array(
+						'name' 		=> __( 'Display', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post grid, how should they be displayed?', 'themeblvd' ),
+						'id' 		=> 'grid_display',
+						'std' 		=> 'paginated',
+						'type' 		=> 'select',
+						'options' => array(
+							'paginated' 		=> __( 'Standard Grid', 'themeblvd' ),
+							'masonry_paginated' => __( 'Masonry Grid', 'themeblvd' )
+						),
+						'class'		=> 'trigger'
 					),
 					'grid_columns' => array(
 						'name' 		=> __( 'Columns', 'themeblvd' ),
@@ -832,9 +894,107 @@ class Theme_Blvd_Options_API {
 						'desc' 		=> __( 'When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?<br><br><em>Note: The total posts on the page will be the number of rows times the number of columns.</em>', 'themeblvd' ),
 						'id' 		=> 'grid_rows',
 						'std' 		=> '3',
-						'type' 		=> 'text'
+						'type' 		=> 'text',
+						'class'		=> 'hide receiver receiver-paginated'
+					),
+					'grid_posts_per_page' => array(
+						'name' 		=> __( 'Posts Per Page', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?', 'themeblvd' ),
+						'id' 		=> 'grid_posts_per_page',
+						'std' 		=> '12',
+						'type' 		=> 'text',
+						'class'		=> 'hide receiver receiver-masonry_paginated'
+					),
+					'grid_sub_group_end_3' => array(
+						'type' 		=> 'subgroup_end'
 					)
 				) // End post grid options
+			),
+
+			// Section: Post Grids
+			'showcase' => array(
+				'name' => __( 'Post Display: Showcase', 'themeblvd' ),
+				'desc' => __( 'These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the "Post Showcase" page template and any archives you\'ve set to display the post showcase. For more control over a specifc post showcase, you can apply the "Post Showcase" element of the Builder or use the [post_showcase] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'themeblvd' ),
+				'options' => array(
+					'showcase_crop' => array(
+				    	'id' 		=> 'showcase_crop',
+						'name'		=> __( 'Featured Image Crop Size', 'themeblvd_builder' ),
+						'desc'		=> __( 'Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.<br><br><em>Note: Images are scaled proportionally to fit within their current containers.</em>', 'themeblvd_builder' ),
+						'type'		=> 'select',
+						'select'	=> 'crop',
+						'std'		=> 'tb_large'
+					),
+					'showcase_titles' => array(
+						'name' 		=> __( 'Titles', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to show the title or not for each post.', 'themeblvd' ),
+						'id' 		=> 'showcase_titles',
+						'std' 		=> 'show',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'		=> __( 'Show titles', 'themeblvd' ),
+							'hide' 		=> __( 'Hide titles', 'themeblvd' )
+						)
+					),
+					'showcase_excerpt' => array(
+						'name' 		=> __( 'Excerpts', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to show the excerpt or not for each post.', 'themeblvd' ),
+						'id' 		=> 'showcase_excerpt',
+						'std' 		=> 'hide',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'		=> __( 'Show excerpts', 'themeblvd' ),
+							'hide' 		=> __( 'Hide excerpts', 'themeblvd' )
+						)
+					),
+					'showcase_sub_group_start_1' => array(
+						'type' 		=> 'subgroup_start',
+						'class'		=> 'show-hide-toggle'
+					),
+					'showcase_display' => array(
+						'name' 		=> __( 'Display', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post showcase, how should they be displayed?', 'themeblvd' ),
+						'id' 		=> 'showcase_display',
+						'std' 		=> 'masonry_paginated',
+						'type' 		=> 'select',
+						'options' => array(
+							'paginated' 		=> __( 'Standard Showcase Grid', 'themeblvd' ),
+							'masonry_paginated' => __( 'Masonry Showcase', 'themeblvd' )
+						),
+						'class'		=> 'trigger'
+					),
+					'showcase_columns' => array(
+						'name' 		=> __( 'Columns', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post showcase, how many columns should the posts be separated into?', 'themeblvd' ),
+						'id' 		=> 'showcase_columns',
+						'std' 		=> '3',
+						'type' 		=> 'select',
+						'options' => array(
+							'2'			=> __( '2 Columns', 'themeblvd' ),
+							'3' 		=> __( '3 Columns', 'themeblvd' ),
+							'4' 		=> __( '4 Columns', 'themeblvd' ),
+							'5' 		=> __( '5 Columns', 'themeblvd' )
+						)
+					),
+					'showcase_rows' => array(
+						'name' 		=> __( 'Rows', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?<br><br><em>Note: The total posts on the page will be the number of rows times the number of columns.</em>', 'themeblvd' ),
+						'id' 		=> 'showcase_rows',
+						'std' 		=> '3',
+						'type' 		=> 'text',
+						'class'		=> 'hide receiver receiver-paginated'
+					),
+					'showcase_posts_per_page' => array(
+						'name' 		=> __( 'Posts Per Page', 'themeblvd' ),
+						'desc' 		=> __( 'When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?', 'themeblvd' ),
+						'id' 		=> 'showcase_posts_per_page',
+						'std' 		=> '12',
+						'type' 		=> 'text',
+						'class'		=> 'hide receiver receiver-masonry_paginated'
+					),
+					'showcase_sub_group_end_1' => array(
+						'type' 		=> 'subgroup_end'
+					),
+				) // End post showcase options
 			),
 
 			// Section: Lightbox

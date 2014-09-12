@@ -2,10 +2,8 @@
 /**
  * The default template for displaying content in post list.
  */
-$class  = themeblvd_get_att('thumbs') ? 'has-thumbnail' : ''; // Whether thumb displays, not if it has one
-$class .= themeblvd_get_att('show_meta') ? ' has-meta' : '';
 ?>
-<article <?php post_class($class); ?>>
+<article <?php post_class(themeblvd_get_att('class')); ?>>
 
 	<?php if ( themeblvd_get_att('thumbs') ) : ?>
 		<div class="thumb-wrapper">

@@ -350,7 +350,8 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 		'href' 		=> '',
 		'title' 	=> '',
 		'target'	=> '',
-		'class'		=> 'featured-image tb-thumb-link'
+		'class'		=> 'featured-image tb-thumb-link',
+		'icon'		=> ''
 	);
 
 	if ( ! $link ) {
@@ -373,6 +374,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 			$params['title'] = get_the_title();
 			$params['target'] = '_self';
 			$params['class'] .= ' post';
+			$params['tooltip'] = themeblvd_get_local('view_item');
 			break;
 
 		// Linked to enlarged version of the current featured image in a lightbox
@@ -382,6 +384,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 			$params['title'] = get_the_title($thumb_id);
 			$params['target'] = 'lightbox';
 			$params['class'] .= ' image';
+			$params['tooltip'] = themeblvd_get_local('enlarge');
 			break;
 
 		// Link to an inputted image URL in a lightbox
@@ -390,6 +393,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 			$params['title'] = get_the_title();
 			$params['target'] = 'lightbox';
 			$params['class'] .= ' image';
+			$params['tooltip'] = themeblvd_get_local('enlarge');
 			break;
 
 		// Link to a Vimeo or YouTube video in a lightbox
@@ -398,6 +402,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 			$params['title'] = get_the_title($thumb_id);
 			$params['target'] = 'lightbox';
 			$params['class'] .= ' video';
+			$params['tooltip'] = themeblvd_get_local('play');
 			break;
 
 		// Link to an external URL
@@ -406,12 +411,67 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 			$params['title'] = get_the_title();
 			$params['target'] = get_post_meta( $post_id, '_tb_external_link_target', true );
 			$params['class'] .= ' external';
+			$params['tooltip'] = themeblvd_get_local('go_to_link');
 
 	}
 
 	$params['class'] = apply_filters('themeblvd_post_thumbnail_a_class', $params['class'], $post_id, $args['attachment_id']); // backwards compat
 
 	return apply_filters( 'themeblvd_post_thumbnail_link', $params, $post_id, $link );
+}
+
+/**
+ * Generally we use the featured image link to
+ * wrap the featured image, but this function
+ * can be used to display a button respresentation
+ * of the link.
+ *
+ * @since 2.5.0
+ *
+ * @param int $post_id ID of post to pull featured image link for
+ * @param bool|string $to_post Whether to allow this button to link to the post, "force" if force this link to go to post
+ */
+function themeblvd_post_thumbnail_link_badge( $post_id = 0, $to_post = false ) {
+
+	$output = '';
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( $to_post == 'force' ) {
+		$type = 'post';
+	} else {
+		$type = get_post_meta( $post_id, '_tb_thumb_link', true );
+	}
+
+	if ( $to_post || ( ! $to_post && $type != 'post' ) ) {
+
+		$link = themeblvd_get_post_thumbnail_link( $post_id, 0, $type );
+
+		if ( $link ) {
+
+			$link['class'] = str_replace('tb-thumb-link', 'tb-thumb-link-badge tb-tooltip bg-primary', $link['class']);
+
+			if ( $link['target'] == 'lightbox' ) {
+
+				$lightbox = apply_filters( 'themeblvd_featured_image_lightbox_args', array(
+					'item'	=> '',
+					'link'	=> $link['href'],
+					'class'	=> $link['class'],
+					'title'	=> $link['tooltip']
+				), $post->ID, $args['attachment_id'] );
+
+				$output = themeblvd_get_link_to_lightbox($lightbox);
+
+			} else {
+				$output = sprintf( '<a href="%s" title="%s" class="%s" target="%s"></a>', $link['href'], $link['tooltip'], $link['class'], $link['target'] );
+			}
+		}
+
+	}
+
+	echo apply_filters('themeblvd_post_thumbnail_link_badge', $output);
 }
 
 /**
@@ -1264,7 +1324,8 @@ function themeblvd_get_featured_banner( $post_id = 0, $thumb_id = 0 ) {
 
 	if ( $src ) {
 
-		$output = sprintf( '<span class="banner img" style="background-image: url(%s);"></span>', $src[0] );
+		// @TODO ... Make alignment and parallax for a new "Pages" section of the theme options... maybe banner height option?
+		$output = sprintf( '<span class="banner img tb-parallax" data-parallax="8" style="background-image: url(%s);"></span>', $src[0] );
 
 		$class = 'tb-featured-banner';
 

@@ -117,6 +117,10 @@ class Theme_Blvd_Frontend_Init {
 			'grid_slider' 		=> 'grid',
 			'grid_mini'			=> 'mini-grid',
 
+			// Showcase
+			'showcase' 			=> 'showcase',
+			'showcase_paginated'=> 'showcase',
+
 			// Pages
 			'page' 				=> 'page',
 			'404'				=> '404',
@@ -186,7 +190,9 @@ class Theme_Blvd_Frontend_Init {
 					break;
 				case 'template_grid.php' :
 					$this->mode = 'grid';
-
+					break;
+				case 'template_showcase.php' :
+					$this->mode = 'showcase';
 			}
 
 		}
@@ -228,7 +234,9 @@ class Theme_Blvd_Frontend_Init {
 		// Store the ID of the original $post object in case
 		// we modify the main query or need to ever access it.
 
-		if ( is_object( $post ) ) {
+		$this->config['id'] = 0;
+
+		if ( is_singular() && is_a($post, 'WP_Post') ) {
 			$this->config['id'] = $post->ID;
 		}
 

@@ -48,7 +48,9 @@ function themeblvd_get_all_locals() {
 		'edit_post'					=> __( 'Edit Post', 'themeblvd_frontend' ),
 		'edit_profile'				=> __( 'Edit Profile', 'themeblvd_frontend' ),
 		'email'						=> __( 'Email', 'themeblvd_frontend' ),
+		'enlarge'					=> __( 'Enlarge Image', 'themeblvd_frontend' ),
 		'gallery'					=> __( 'Gallery', 'themeblvd_frontend' ),
+		'go_to_link'				=> __( 'Visit Website', 'themeblvd_frontend' ),
 		'home'						=> __( 'Home', 'themeblvd_frontend' ),
 		'image'						=> __( 'Image', 'themeblvd_frontend' ),
 		'in'						=> __( 'in', 'themeblvd_frontend' ),
@@ -69,6 +71,7 @@ function themeblvd_get_all_locals() {
 		'page'						=> __( 'Page', 'themeblvd_frontend' ),
 		'pages'						=> __( 'Pages', 'themeblvd_frontend' ),
 		'page_num'					=> __( 'Page %s', 'themeblvd_frontend' ),
+		'play'						=> __( 'Play Movie', 'themeblvd_frontend' ),
 		'posted_on'					=> __( 'Posted on', 'themeblvd_frontend' ),
 		'posted_in'					=> __( 'Posted in', 'themeblvd_frontend' ),
 		'posts_per_category'		=> __( 'Posts per category', 'themeblvd_frontend' ),
@@ -94,6 +97,7 @@ function themeblvd_get_all_locals() {
 		'via'						=> __( 'via', 'themeblvd_frontend' ),
 		'video'						=> __( 'Video', 'themeblvd_frontend' ),
 		'view_post'					=> __( 'View Post', 'themeblvd_frontend' ),
+		'view_item'					=> __( 'View Item Details', 'themeblvd_frontend' ),
 		'view_posts_by'				=> __( 'View all posts by %s', 'themeblvd_frontend' ),
 		'website'					=> __( 'Website', 'themeblvd_frontend' )
 	);
@@ -208,7 +212,7 @@ function themeblvd_get_js_locals() {
 
 	if ( themeblvd_config('sticky') ) {
 		$locals['sticky'] = apply_filters('themeblvd_sticky_selector', '#branding');
-		$locals['sticky_offset'] = apply_filters('themeblvd_sticky_offset', '10');
+		$locals['sticky_offset'] = apply_filters('themeblvd_sticky_offset', '40');
 	}
 
 	// Tab deep linking -- i.e. link to a tab on a page and set it open

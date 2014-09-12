@@ -3,7 +3,7 @@
  * The default template for displaying content of posts.
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(themeblvd_get_att('class')); ?>>
 
 	<header class="entry-header">
 

@@ -9,9 +9,10 @@
  */
 function themeblvd_get_modes() {
 	return apply_filters('themeblvd_modes', array(
-		'blog' => __('Blog', 'themeblvd'),
-		'list' => __('List', 'themeblvd'),
-		'grid' => __('Grid', 'themeblvd')
+		'blog' 		=> __('Blog', 'themeblvd'),
+		'list' 		=> __('List', 'themeblvd'),
+		'grid' 		=> __('Grid', 'themeblvd'),
+		'showcase' 	=> __('Showcase', 'themeblvd')
 	));
 }
 
@@ -206,7 +207,7 @@ function themeblvd_setup() {
 			'easypiechart'		=> true,			// "EasyPieChart" scrip
 			'gmap'				=> true,			// Google Maps API v3
 			'charts'			=> true,			// Charts.js
-			'ios_orientation'	=> false,			// "ios-orientationchange-fix" script
+			'isotope'			=> true,			// Isotope script for sorting
 			'tag_cloud'			=> true 			// Framework tag cloud styling
 		),
 		'plugins' => array(
@@ -1326,9 +1327,9 @@ function themeblvd_get_select( $type, $force_single = false ) {
 			foreach ( $registered as $size ) {
 
 				// Skip some sizes
-				if ( in_array( $size, array('thumbnail', 'tb_thumb' ) ) ) {
-					continue;
-				}
+				// if ( in_array( $size, array('thumbnail', 'tb_thumb' ) ) ) {
+				// 	continue;
+				// }
 
 				// Determine width, height, and crop mode
 				if ( isset( $atts[$size]['width'] ) ) {

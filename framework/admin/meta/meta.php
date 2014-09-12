@@ -223,62 +223,73 @@ function setup_themeblvd_pto_meta() {
 		'options' => array(
 			'desc' => array(
                 'id'        => 'desc',
-                'desc'      => __( 'Below are the custom fields you can use with the Blog, Post List, and Post Grid page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the <a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>.', 'themeblvd_pto' ),
+                'desc'      => __( 'Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the <a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>.', 'themeblvd' ),
                 'type'      => 'info'
             ),
             'cat' => array(
                 'id'        => 'cat',
-                'name'      => __( 'cat', 'themeblvd_pto' ),
-                'desc'      => __( 'Category ID(s) to include/exclude.<br>Ex: 1<br>Ex: 1,2,3<br>Ex: -1,-2,-3', 'themeblvd_pto' ),
+                'name'      => __( 'cat', 'themeblvd' ),
+                'desc'      => __( 'Category ID(s) to include/exclude.<br>Ex: 1<br>Ex: 1,2,3<br>Ex: -1,-2,-3', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'category_name' => array(
                 'id'        => 'category_name',
-                'name'      => __( 'category_name', 'themeblvd_pto' ),
-                'desc'      => __( 'Category slug(s) to include.<br>Ex: cat-1<br>Ex: cat-1,cat-2', 'themeblvd_pto' ),
+                'name'      => __( 'category_name', 'themeblvd' ),
+                'desc'      => __( 'Category slug(s) to include.<br>Ex: cat-1<br>Ex: cat-1,cat-2', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'tag' => array(
                 'id'        => 'tag',
-                'name'      => __( 'tag', 'themeblvd_pto' ),
-                'desc'      => __( 'Tag(s) to include.<br>Ex: tag-1<br>Ex: tag-1,tag-2', 'themeblvd_pto' ),
+                'name'      => __( 'tag', 'themeblvd' ),
+                'desc'      => __( 'Tag(s) to include.<br>Ex: tag-1<br>Ex: tag-1,tag-2', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'posts_per_page' => array(
                 'id'        => 'posts_per_page',
-                'name'      => __( 'posts_per_page', 'themeblvd_pto' ),
-                'desc'      => __( 'Number of posts per page. Only for Post List template; Post Grid uses rows*columns.', 'themeblvd_pto' ),
+                'name'      => __( 'posts_per_page', 'themeblvd' ),
+                'desc'      => __( 'Number of posts per page. This option gets used for the Blog template, Post List template, and when using "masonry" style display for the Post Grid and Post Showcase template. Standard grid view for Post Grid and Post Showcase templates use rows*columns.', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'orderby' => array(
                 'id'        => 'orderby',
-                'name'      => __( 'orderby', 'themeblvd_pto' ),
-                'desc'      => __( 'What to order posts by -- date, title, rand, etc.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd_pto' ),
+                'name'      => __( 'orderby', 'themeblvd' ),
+                'desc'      => __( 'What to order posts by -- date, title, rand, etc.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'order' => array(
                 'id'        => 'order',
-                'name'      => __( 'order', 'themeblvd_pto' ),
-                'desc'      => __( 'How to order posts -- ASC or DESC.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd_pto' ),
+                'name'      => __( 'order', 'themeblvd' ),
+                'desc'      => __( 'How to order posts -- ASC or DESC.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'query' => array(
                 'id'        => 'query',
-                'name'      => __( 'query', 'themeblvd_pto' ),
-                'desc'      => __( 'A custom query string. This will override other options.<br>Ex: tag=baking<br>Ex: post_type=my_type&my_tax=my_term', 'themeblvd_pto' ),
+                'name'      => __( 'query', 'themeblvd' ),
+                'desc'      => __( 'A custom query string. This will override other options.<br>Ex: <small>tag=baking</small><br>Ex: <small>post_type=my_type&my_tax=my_term</small>', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'columns' => array(
                 'id'        => 'columns',
-                'name'      => __( 'columns', 'themeblvd_pto' ),
-                'desc'      => __( 'Number of columns for Post Grid template. When empty, this will default to 3.', 'themeblvd_pto' ),
+                'name'      => __( 'columns', 'themeblvd' ),
+                'desc'      => __( 'Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, this will default to 3.', 'themeblvd' ),
                 'type'      => 'text'
             ),
             'rows' => array(
                 'id'        => 'rows',
-                'name'      => __( 'rows', 'themeblvd_pto' ),
-                'desc'      => __( 'Number of rows for Post Grid template. When empty, this will default to 4.', 'themeblvd_pto' ),
+                'name'      => __( 'rows', 'themeblvd' ),
+                'desc'      => __( 'Number of rows for Post Grid and Post Showcase templates. When empty, this will default to 4.<br><br><em>Note: This option does not apply when using masonry.</em>', 'themeblvd' ),
                 'type'      => 'text'
+            ),
+            'tb_display' => array(
+                'id'        => 'tb_display',
+                'name'      => __( 'tb_display', 'themeblvd' ),
+                'desc'      => __( 'When using Post Grid and Post Showcase template, this custom field allows you to override the default display option.', 'themeblvd' ),
+                'type'    	=> 'select',
+                'options'	=> array(
+                	'0'					=> __( 'Use default setting', 'themeblvd' ),
+                	'paginated' 		=> __( 'Standard', 'themeblvd' ),
+					'masonry_paginated' => __( 'Masonry', 'themeblvd' )
+                )
             )
 		)
 	);

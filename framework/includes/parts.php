@@ -970,7 +970,7 @@ function themeblvd_to_top( $args = array() ) {
  * @return string $output Final content to output
  */
 function themeblvd_get_loader() {
-    return apply_filters( 'themeblvd_loader', '<div class="tb-loader"><i class="fa fa-circle-o-notch fa-spin"></i></div>' );
+    return apply_filters( 'themeblvd_loader', '<div class="tb-loader"><i class="fa fa-spinner fa-spin"></i></div>' );
 }
 
 /**
@@ -979,7 +979,7 @@ function themeblvd_get_loader() {
  * @since 2.5.0
  */
 function themeblvd_loader() {
-	echo themeblvd_loader();
+	echo themeblvd_get_loader();
 }
 
 /**
@@ -1230,6 +1230,11 @@ function themeblvd_related_posts( $args = array() ) {
 	echo themeblvd_get_related_posts($args);
 }
 
+/**
+ * Get menu of post types to refine search results
+ *
+ * @since 2.5.0
+ */
 function themeblvd_get_refine_search_menu() {
 
 	$output = '';
@@ -1269,6 +1274,77 @@ function themeblvd_get_refine_search_menu() {
 
 	return apply_filters( 'themeblvd_refine_search_menu', $output );
 }
+
+/**
+ * Display menu of post types to refine search results
+ *
+ * @since 2.5.0
+ */
 function themeblvd_refine_search_menu() {
 	echo themeblvd_get_refine_search_menu();
+}
+
+/**
+ * Get navigation to filter post results
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) {
+
+	$output = '';
+	$terms = array();
+
+	if ( ! is_a( $posts, 'WP_Query' ) ) {
+		return $output;
+	}
+
+	$defaults = apply_filters('themeblvd_filter_nav_args', array(
+		// ...
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	if ( $posts->have_posts() ) {
+		while ( $posts->have_posts() ) {
+
+			$posts->the_post();
+			$current = get_the_terms( get_the_ID(), $tax );
+
+			if ( $current ) {
+				foreach ( $current as $term ) {
+					$terms[$term->slug] = $term->name;
+				}
+			}
+		}
+
+	}
+
+	if ( $terms ) {
+
+		asort($terms);
+
+		$output .= '<div class="tb-inline-menu tb-filter-nav">';
+		$output .= '<ul class="list-inline filter-menu">';
+		$output .= sprintf('<li class="active"><a href="#" data-filter=".iso-item" title="%1$s">%1$s</a></li>', themeblvd_get_local('all'));
+
+		foreach ( $terms as $key => $value ) {
+			$output .= sprintf('<li><a href="#" data-filter=".filter-%1$s" title="%2$s">%2$s</a></li>', $key, $value);
+		}
+
+		$output .= '</ul>';
+		$output .= '</div><!-- .tb-inline-mini (end) -->';
+
+	}
+
+	wp_reset_postdata();
+
+	return apply_filters( 'themeblvd_filter_nav', $output );
+}
+
+/**
+ * Display navigation to filter showcase results
+ *
+ * @since 2.5.0
+ */
+function themeblvd_filter_nav( $posts, $tax = 'category', $args = array() ) {
+	echo themeblvd_get_filter_nav($posts, $tax, $args);
 }

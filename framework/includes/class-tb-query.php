@@ -88,7 +88,7 @@ class Theme_Blvd_Query {
 	 * @since 2.3.0
 	 *
 	 * @param array|string $args Arguments to parse into query
-	 * @param string $type Type of secondary query, list or grid
+	 * @param string $type Type of secondary query, list, grid, or showcase
 	 * @return array $second_query Newly stored second query attribute
 	 */
 	public function set_second_query( $args, $type = '' ) {
@@ -118,12 +118,12 @@ class Theme_Blvd_Query {
 
 			// If they didn't set a posts_per_page on their
 			// custom query, let's do it for them.
-			if( ! isset( $query['posts_per_page'] ) ) {
+			if ( ! isset( $query['posts_per_page'] ) ) {
 				$query['posts_per_page'] = get_option('posts_per_page');
 			}
 
 			// Force posts per page on grids
-			if( $type == 'grid' && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+			if ( ( $type == 'grid' || $type == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
 				if( ! empty( $args['posts_per_page'] ) ) {
 					$query['posts_per_page'] = $args['posts_per_page'];
 				}
@@ -325,16 +325,19 @@ class Theme_Blvd_Query {
 
 		// If this isn't the Post List or Post Grid page
 		// template, get out of here.
-		if ( ! is_page_template('template_list.php') && ! is_page_template('template_grid.php') && ! is_page_template('template_blog.php') ) {
+		if ( ! is_page_template('template_list.php') && ! is_page_template('template_grid.php') && ! is_page_template('template_blog.php') && ! is_page_template('template_showcase.php') ) {
 			return;
 		}
 
 		// What type of template are we dealing with?
 		$type = '';
+
 		if ( is_page_template('template_list.php') ) {
 			$type = 'list';
 		} else if ( is_page_template('template_grid.php') ) {
 			$type = 'grid';
+		} else if ( is_page_template('template_showcase.php') ) {
+			$type = 'showcase';
 		} else if ( is_page_template('template_blog.php') ) {
 			$type = 'blog';
 		}
@@ -346,6 +349,7 @@ class Theme_Blvd_Query {
 
 		// Category Slugs
 		$category_name = get_post_meta( $post->ID, 'category_name', true );
+
 		if ( $category_name ) {
 			$query['category_name'] = str_replace( ' ', '', $category_name );
 		}
@@ -379,21 +383,41 @@ class Theme_Blvd_Query {
 				$posts_per_page = themeblvd_get_option('list_posts_per_page');
 			}
 
-		} else if ( $type == 'grid' ) {
+		} else if ( $type == 'grid' || $type == 'showcase' ) {
 
-			$columns = get_post_meta( $post->ID, 'columns', true );
-
-			if ( ! $columns ) {
-				$columns = intval(themeblvd_get_option('grid_columns', null, '3'));
+			if ( $meta_display = get_post_meta( $post->ID, 'tb_display', true ) ) {
+				$display = $meta_display;
+			} else if( $template == 'grid' ) {
+				$display = themeblvd_get_option( 'grid_display', null, 'paginated' );
+			} else if( $template == 'showcase' ) {
+				$display = themeblvd_get_option( 'showcase_display', null, 'masonry_paginated' );
 			}
 
-			$rows = get_post_meta( $post->ID, 'rows', true );
+			if ( $display == 'paginated' ) {
 
-			if ( ! $rows ) {
-				$rows = intval(themeblvd_get_option('rows_columns', null, '3'));
+				$columns = get_post_meta( $post->ID, 'columns', true );
+
+				if ( ! $columns ) {
+					$columns = intval(themeblvd_get_option($type.'_columns', null, '3'));
+				}
+
+				$rows = get_post_meta( $post->ID, 'rows', true );
+
+				if ( ! $rows ) {
+					$rows = intval(themeblvd_get_option($type.'_rows', null, '3'));
+				}
+
+				$posts_per_page = $columns*$rows;
+
+			} else { // paginated_masonry
+
+				$posts_per_page = get_post_meta( $post->ID, 'posts_per_page', true );
+
+				if ( ! $posts_per_page ) {
+					$posts_per_page = themeblvd_get_option($type.'_posts_per_page');
+				}
+
 			}
-
-			$posts_per_page = $columns*$rows;
 		}
 
 		if ( $posts_per_page ) {

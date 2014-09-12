@@ -32,9 +32,7 @@
 
 		<?php endif; ?>
 
-		<h2 class="entry-title">
-			<?php themeblvd_the_title(); ?>
-		</h2>
+		<h2 class="entry-title"><?php themeblvd_the_title(); ?></h2>
 
 		<?php if ( themeblvd_get_att('show_meta') ) : ?>
 			<?php themeblvd_grid_meta(); ?>
