@@ -25,9 +25,9 @@ get_header();
 				<!-- CONTENT (start) -->
 
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
-					<div class="inner">
+					<div class="inner blog-template-wrap">
 						<?php themeblvd_content_top(); ?>
-						<?php themeblvd_loop(); ?>
+						<?php themeblvd_loop( themeblvd_get_template_loop_args('blog') ); ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
