@@ -372,11 +372,6 @@ function themeblvd_include_scripts() {
 	// Final filter on framework script.
 	$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
 
-	// iOS Orientation (for older iOS devices, not supported by default)
-	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) ) {
-		wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js' );
-	}
-
 	// Comments reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
