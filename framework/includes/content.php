@@ -397,6 +397,10 @@ function themeblvd_get_page_info() {
 	$content = apply_filters( 'the_content', $content );
 	$content = str_replace( ']]>', ']]&gt;', $content );
 
+	if ( $edit = get_edit_post_link($post_id) ) {
+		$content .= sprintf( '<div class="edit-link"><i class="fa fa-edit"></i> <a href="%s">%s</a></div>', $edit, themeblvd_get_local('edit_page') );
+	}
+
 	$class = apply_filters('themeblvd_tax_info_class', 'tb-info-box tb-page-info'); // Filtering to allow "content-bg" to be added
 
 	if ( $title || $content ) {
