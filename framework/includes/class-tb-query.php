@@ -109,24 +109,40 @@ class Theme_Blvd_Query {
 		// Custom query
 		if ( ( $source == 'query' && isset( $args['query'] ) ) || ( ! $source && ! empty( $args['query'] ) ) ) {
 
-			if ( strpos($args['query'], 'custom_field=') === 0 ) {
-				$args['query'] = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $args['query']), true );
-			}
+			/**
+			 * If user is passing some sort of identfier key that they can
+			 * catch with a custom filter, let's just send it through, or
+			 * else we can continue to process the custom query.
+			 * If the custom query has no equal sign "=", then we can assume
+			 * they're not intending it to be an actual query string, and thus
+			 * just sent it through.
+			 */
+			if ( strpos($args['query'], '=') === false ) {
 
-			// Convert string to query array
-			$query = wp_parse_args( htmlspecialchars_decode( $args['query'] ) );
+				$query = $args['query']; // just send on through; nothing to see here, folks.
 
-			// If they didn't set a posts_per_page on their
-			// custom query, let's do it for them.
-			if ( ! isset( $query['posts_per_page'] ) ) {
-				$query['posts_per_page'] = get_option('posts_per_page');
-			}
+			} else {
 
-			// Force posts per page on grids
-			if ( ( $type == 'grid' || $type == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
-				if( ! empty( $args['posts_per_page'] ) ) {
-					$query['posts_per_page'] = $args['posts_per_page'];
+				if ( strpos($args['query'], 'custom_field=') === 0 ) {
+					$args['query'] = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $args['query']), true );
 				}
+
+				// Convert string to query array
+				$query = wp_parse_args( htmlspecialchars_decode( $args['query'] ) );
+
+				// If they didn't set a posts_per_page on their
+				// custom query, let's do it for them.
+				if ( ! isset( $query['posts_per_page'] ) ) {
+					$query['posts_per_page'] = get_option('posts_per_page');
+				}
+
+				// Force posts per page on grids
+				if ( ( $type == 'grid' || $type == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+					if( ! empty( $args['posts_per_page'] ) ) {
+						$query['posts_per_page'] = $args['posts_per_page'];
+					}
+				}
+
 			}
 
 		}
@@ -448,12 +464,22 @@ class Theme_Blvd_Query {
 		// Custom query string
 		$custom = get_post_meta( $post->ID, 'query', true );
 
-		if ( $custom ) {
-			$query = wp_parse_args( htmlspecialchars_decode( $custom ), $query );
+		/**
+		 * If user is passing some sort of identfier key that they can
+		 * catch with a custom filter, let's just send it through, or
+		 * else we can continue to process the custom query.
+		 * If the custom query has no equal sign "=", then we can assume
+		 * they're not intending it to be an actual query string, and thus
+		 * just sent it through.
+		 */
+		if ( $custom && strpos($custom, '=') === false ) {
+			$query = $custom;
+		} else {
+			$query = wp_parse_args( htmlspecialchars_decode($custom), $query );
 		}
 
 		// Pagination
-		if ( empty( $query['paged'] ) ) {
+		if ( is_array( $query ) && empty( $query['paged'] ) ) {
 			if ( get_query_var('paged') ) {
 				$query['paged'] = get_query_var('paged');
 			} else if ( get_query_var('page') ) {

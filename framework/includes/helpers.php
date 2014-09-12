@@ -144,20 +144,32 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 		$query = $options['query'];
 
-		if ( is_string( $query ) && strpos($query, 'custom_field=') === 0 ) {
-			$query = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $query), true );
-		}
+		/**
+		 * If user is passing some sort of identfier key that they can
+		 * catch with a custom filter, let's just send it through, or
+		 * else we can continue to process the custom query.
+		 * If the custom query has no equal sign "=", then we can assume
+		 * they're not intending it to be an actual query string, and thus
+		 * just sent it through.
+		 */
+		if ( strpos($query, '=') !== false ) {
 
-		// Convert string to query array
-		if ( ! is_array( $query ) ) {
-			$query = wp_parse_args( htmlspecialchars_decode($query) );
-		}
-
-		// Force posts per page on grids
-		if( ( $display == 'grid' || $display == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
-			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
-				$query['posts_per_page'] = $options['rows']*$options['columns'];
+			if ( is_string( $query ) && strpos($query, 'custom_field=') === 0 ) {
+				$query = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $query), true );
 			}
+
+			// Convert string to query array
+			if ( ! is_array( $query ) ) {
+				$query = wp_parse_args( htmlspecialchars_decode($query) );
+			}
+
+			// Force posts per page on grids
+			if( ( $display == 'grid' || $display == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+				if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
+					$query['posts_per_page'] = $options['rows']*$options['columns'];
+				}
+			}
+
 		}
 
 	}
