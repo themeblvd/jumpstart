@@ -14,6 +14,12 @@ $page_class .= get_the_content() ? ' has-content' : ' no-content';
 		</header><!-- .entry-header -->
 	<?php endif; ?>
 
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="featured-item">
+			<?php themeblvd_the_post_thumbnail(); ?>
+		</div><!-- .featured-item(end) -->
+	<?php endif; ?>
+
 	<div class="entry-content clearfix">
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
