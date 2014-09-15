@@ -146,7 +146,7 @@ function themeblvd_get_js_locals() {
 		'thumb_animations'			=> 'true',
 		'retina_logo'				=> 'true',
 		'custom_buttons'			=> 'true',
-		'mobile_menu_viewport_max'	=> '992'
+		'mobile_menu_viewport_max'	=> '767'
 	);
 
 	// Extend $locals to accomodate scripts being included

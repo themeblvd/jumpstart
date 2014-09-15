@@ -223,8 +223,11 @@ class Theme_Blvd_Frontend_Init {
 			'sidebars'					=> array(), 	// Array of sidbar ID's for all corresponding locations
 			'sticky'					=> false,		// Whether to include sticky header
 			'suck_up'					=> false,		// Whether to suck content up into transparent header
+			'top_height'				=> 0,			// If using suck up, figure out the height of the header
+			'top_height_tablet'			=> 0,			// If using suck up, figure out the height of the header
 			'top'						=> true,		// Whether to show entire #top section (header)
-			'bottom'					=> true 		// Whether to show entire #bottom section (bottom)
+			'bottom'					=> true, 		// Whether to show entire #bottom section (bottom)
+			'banner'					=> false		// Whether to show featured banner
 		);
 
 		/*------------------------------------------------------*/
@@ -488,13 +491,41 @@ class Theme_Blvd_Frontend_Init {
 		$header = get_post_meta( $this->config['id'], '_tb_layout_header', true );
 
 		if ( $header == 'suck_up' && themeblvd_supports('display', 'suck_up') ) {
+
 			$this->config['suck_up'] = true;
+
+			// The theme's base height for the header before the
+			// user's logo height is dynamically added
+			$addend = apply_filters('themeblvd_top_height_addend', 140);
+
+			$logo = themeblvd_get_option('trans_logo');
+			$logo_height = 65;
+
+			if ( $logo && $logo['type'] == 'image' && ! empty( $logo['image_height'] ) ) {
+				$logo_height = intval($logo['image_height']);
+			}
+
+			$this->config['top_height'] = apply_filters('themeblvd_top_height', $addend+$logo_height);
+
 		} else if ( $header == 'hide' && themeblvd_supports('display', 'hide_top') ) {
 			$this->config['top'] = false;
 		}
 
 		if ( themeblvd_supports('display', 'hide_bottom') && get_post_meta( $this->config['id'], '_tb_layout_footer', true ) == 'hide' ) {
 			$this->config['bottom'] = false;
+		}
+
+		/*------------------------------------------------------*/
+		/* Banner
+		/*------------------------------------------------------*/
+
+		if ( is_singular() && themeblvd_supports('display', 'banner') ) {
+
+			$banner = get_post_meta( $this->config['id'], '_tb_banner', true );
+
+			if ( $banner && ! empty($banner['bg_type']) && $banner['bg_type'] != 'none' ) {
+				$this->config['banner'] = $banner;
+			}
 		}
 
 		/*------------------------------------------------------*/

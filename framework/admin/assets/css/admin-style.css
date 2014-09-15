@@ -956,12 +956,16 @@ body.themeblvd-stop-scroll {
 -----------------------------------------------*/
 
 .tb-meta-box {
-	margin-right: -12px;
-	margin-left: -12px;
+	margin: -6px -12px;
 	max-width: none !important;
 }
-.tb-meta-box > .section:last-child {
+.tb-meta-box .section {
+	border-top: 1px solid #eeeeee;
 	border-bottom: none !important;
+}
+.tb-meta-box > .section:nth-child(2),
+.tb-meta-box > .subgroup:nth-child(2) > .section:first-child {
+	border-top: none;
 }
 .tb-meta-box.side {
 	margin-top: -6px;

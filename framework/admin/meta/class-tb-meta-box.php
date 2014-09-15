@@ -102,24 +102,33 @@ class Theme_Blvd_Meta_Box {
     	// Gather any already saved settings or defaults for option types
     	// that need a starting value
     	$settings = array();
-    	foreach ( $this->options as $option ) {
 
-    		if ( empty($option['id']) ) {
-    			continue;
-    		}
+    	if ( ! empty($this->args['group']) ) {
 
-    		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
+    		$settings = get_post_meta( $post->ID, $this->args['group'], true );
 
-    		if ( ! $settings[$option['id']] ) {
-    			if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
-    				if ( isset( $option['std'] ) ) {
-    					$settings[$option['id']] = $option['std'];
-    				}
-    			}
-    		}
-    	}
+    	} else {
 
-    	// Adden hidden form trigger for save()
+	    	foreach ( $this->options as $option ) {
+
+	    		if ( empty($option['id']) ) {
+	    			continue;
+	    		}
+
+	    		$settings[$option['id']] = get_post_meta( $post->ID, $option['id'], true );
+
+	    		if ( ! $settings[$option['id']] ) {
+	    			if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
+	    				if ( isset( $option['std'] ) ) {
+	    					$settings[$option['id']] = $option['std'];
+	    				}
+	    			}
+	    		}
+	    	}
+
+	    }
+
+    	// Add hidden form trigger for save()
     	$hidden = array(
 			'placeholder' => array(
 				'id' 	=> '_tb_placeholder',
@@ -148,6 +157,8 @@ class Theme_Blvd_Meta_Box {
 	 * @since 2.3.0
 	 */
 	public function save( $post_id ) {
+
+		$clean = array(); // Use for grouped options only
 
 		if ( isset( $_POST['themeblvd_meta'][$this->id] ) ) {
 			$input = $_POST['themeblvd_meta'][$this->id];
@@ -191,11 +202,20 @@ class Theme_Blvd_Meta_Box {
 
 				} else {
 
-					$input[$id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[$id], $option );
-					update_post_meta( $post_id, $id, $input[$id] );
+					$input[$id] = apply_filters( 'themeblvd_sanitize_'.$option['type'], $input[$id], $option );
+
+					if ( ! empty($this->args['group']) ) {
+						$clean[$id] = $input[$id];
+					} else {
+						update_post_meta( $post_id, $id, $input[$id] );
+					}
 
 				}
 
+			}
+
+			if ( ! empty($this->args['group']) ) {
+				update_post_meta( $post_id, $this->args['group'], $clean );
 			}
 		}
 	}

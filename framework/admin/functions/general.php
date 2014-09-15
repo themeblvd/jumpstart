@@ -409,3 +409,39 @@ function themeblvd_get_icons( $type ) {
 
 	return apply_filters( 'themeblvd_'.$type.'_icons', $icons );
 }
+
+/**
+ * Get background selection types
+ *
+ * @since 2.5.0
+ *
+ * @param string $context Context in which BG is being applied
+ * @return array $types Background types to select from
+ */
+function themeblvd_get_bg_types( $context = 'section' ) {
+
+	$types = array(
+		'none'		=> __('No background', 'themeblvd'),
+		'color'		=> __('Custom color', 'themeblvd'),
+		'texture'	=> __('Custom color + texture', 'themeblvd'),
+		'image'		=> __('Custom color + image', 'themeblvd')
+	);
+
+	if ( $context == 'section' || $context == 'banner' ) {
+
+		if ( themeblvd_supports( 'featured', 'style' ) ) {
+			$types['featured'] = __('Theme\'s preset "Featured" area background', 'themeblvd_builder');
+		}
+
+		if ( themeblvd_supports( 'featured_below', 'style' ) ) {
+			$types['featured_below'] = __('Theme\'s preset "Featured Below" area background', 'themeblvd_builder');
+		}
+
+	}
+
+	if ( $context == 'banner' ) {
+		$types['none'] = __('No banner', 'themeblvd');
+	}
+
+	return apply_filters( "themeblvd_{$context}_bg_types", $types );
+}

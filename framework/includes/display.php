@@ -155,14 +155,8 @@ if ( !function_exists( 'themeblvd_header_after_default' ) ) :
  * @since 2.5.0
  */
 function themeblvd_header_after_default() {
-	if ( is_page() && themeblvd_supports('display', 'banner') && has_post_thumbnail() ) {
-		?>
-		<div id="featured-banner">
-			<div class="wrap">
-				<?php themeblvd_featured_banner(); ?>
-			</div><!-- .wrap (end) -->
-		</div><!-- #featured-banner (end) -->
-		<?php
+	if (  themeblvd_config('banner') ) {
+		themeblvd_banner();
 	}
 }
 endif;

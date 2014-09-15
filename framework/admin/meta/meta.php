@@ -17,10 +17,16 @@ function themeblvd_add_meta_boxes() {
 		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
-	// Banner (posts and pages)
+	// Theme Layout meta box (posts and pages)
 	if ( themeblvd_supports( 'meta', 'layout' ) ) {
 		$meta = setup_themeblvd_layout_meta();
 		$_themeblvd_layout_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
+	}
+
+	// Banner meta box (posts and pages)
+	if ( themeblvd_supports( 'meta', 'banner' ) && themeblvd_supports( 'display', 'banner' ) ) {
+		$meta = setup_themeblvd_banner_meta();
+		$_themeblvd_banner_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 	// "Post Grid" and "Post List" page template meta box
@@ -146,7 +152,7 @@ function setup_themeblvd_page_meta() {
 }
 
 /**
- * Get settings for the "Banner" meta box.
+ * Get settings for the "Layout" meta box.
  *
  * @since 2.5.0
  *
@@ -156,17 +162,17 @@ function setup_themeblvd_layout_meta() {
 
 	$setup = array(
 		'config' => array(
-			'id' 		=> 'tb_banner_options',						// make it unique
+			'id' 		=> 'tb_layout_options',						// make it unique
 			'title' 	=> __( 'Theme Layout', 'themeblvd' ),		// title to show for entire meta box
 			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'side',									// normal, advanced, or side
 			'priority'	=> 'core'									// high, core, default, or low
 		),
 		'options' => array(
-			'tb_layout_header' => array(
+			'layout_header' => array(
 				'id'		=> '_tb_layout_header',
 				'name' 		=> __( 'Header', 'themeblvd' ),
-				'desc'		=> __( '<em>Note: The transparent header option will work better when a featured image or custom layout is applied to the page.</em>', 'themeblvd' ),
+				'desc'		=> __( '<em>Note: The transparent header option will work better when a banner or custom layout is applied to the page.</em>', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
 					'default'		=> __( 'Display header', 'themeblvd' ),
@@ -174,7 +180,7 @@ function setup_themeblvd_layout_meta() {
 					'hide'			=> __( 'Hide header', 'themeblvd' )
 				)
 			),
-			'tb_layout_footer' => array(
+			'layout_footer' => array(
 				'id'		=> '_tb_layout_footer',
 				'name' 		=> __( 'Footer', 'themeblvd' ),
 				'type' 		=> 'select',
@@ -198,6 +204,162 @@ function setup_themeblvd_layout_meta() {
 	if ( ! themeblvd_supports('display', 'hide_bottom') ) {
 		unset($setup['options']['tb_layout_footer']);
 	}
+
+	return apply_filters( 'themeblvd_layout_meta', $setup );
+}
+
+/**
+ * Get settings for the "Banner" meta box.
+ *
+ * @since 2.5.0
+ *
+ * @return $setup filterable options for metabox
+ */
+function setup_themeblvd_banner_meta() {
+
+	$setup = array(
+		'config' => array(
+			'id' 		=> 'tb_banner_options',						// make it unique
+			'title' 	=> __( 'Banner', 'themeblvd' ),				// title to show for entire meta box
+			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
+			'context' 	=> 'normal',								// normal, advanced, or side
+			'priority'	=> 'core',									// high, core, default, or low
+			'group'		=> '_tb_banner'								// save all option to single meta entry "_tb_banner"
+		),
+		'options' => array(
+			'subgroup_start_1' => array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle'
+			),
+			'bg_type' => array(
+				'id'		=> 'bg_type',
+				'name'		=> __('Apply Banner', 'themeblvd'),
+				'desc'		=> __('Select if you\'d like to apply a custom banner and how you want to set it up.', 'themeblvd'),
+				'std'		=> 'none',
+				'type'		=> 'select',
+				'options'	=> themeblvd_get_bg_types('banner'),
+				'class'		=> 'trigger'
+			),
+			'bg_color' => array(
+				'id'		=> 'bg_color',
+				'name'		=> __('Background Color', 'themeblvd'),
+				'desc'		=> __('Select a background color.', 'themeblvd'),
+				'std'		=> '#202020',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver receiver-color receiver-texture receiver-image'
+			),
+			'bg_texture' => array(
+				'id'		=> 'bg_texture',
+				'name'		=> __('Background Texture', 'themeblvd'),
+				'desc'		=> __('Select a background texture.', 'themeblvd'),
+				'type'		=> 'select',
+				'select'	=> 'textures',
+				'class'		=> 'hide receiver receiver-texture'
+			),
+			'subgroup_start_2' => array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'show-hide hide receiver receiver-texture'
+			),
+			'apply_bg_texture_parallax' => array(
+				'id'		=> 'apply_bg_texture_parallax',
+				'name'		=> null,
+				'desc'		=> __('Apply parallax scroll effect to background texture.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'bg_texture_parallax' => array(
+				'id'		=> 'bg_texture_parallax',
+				'name'		=> __('Parallax Intensity', 'themeblvd'),
+				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
+				'type'		=> 'slide',
+				'std'		=> '5',
+				'options'	=> array(
+					'min'	=> '1',
+					'max'	=> '10',
+					'step'	=> '1'
+				),
+				'class'		=> 'hide receiver'
+			),
+			'subgroup_end_2' => array(
+				'type'		=> 'subgroup_end'
+			),
+			'subgroup_start_3' => array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'select-parallax hide receiver receiver-image'
+			),
+			'bg_image' => array(
+				'id'		=> 'bg_image',
+				'name'		=> __('Background Image', 'themeblvd'),
+				'desc'		=> __('Select a background image.', 'themeblvd'),
+				'type'		=> 'background',
+				'color'		=> false,
+				'parallax'	=> true
+			),
+			'bg_image_parallax_stretch' => array(
+				'id'		=> 'bg_image_parallax_stretch',
+				'name'		=> __('Parallax: Stretch Background', 'themeblvd'),
+				'desc'		=> __('When this is checked, your background image will be expanded to fit horizontally, but never condensed. &mdash; <em>Note: This will only work if Background Repeat is set to "No Repeat."</em>', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '1',
+				'class'		=> 'hide parallax'
+			),
+			'bg_image_parallax' => array(
+				'id'		=> 'bg_image_parallax',
+				'name'		=> __('Parallax: Intensity', 'themeblvd'),
+				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
+				'type'		=> 'slide',
+				'std'		=> '2',
+				'options'	=> array(
+					'min'	=> '1',
+					'max'	=> '10',
+					'step'	=> '1'
+				),
+				'class'		=> 'hide parallax'
+			),
+			'subgroup_end_3' => array(
+				'type'		=> 'subgroup_end'
+			),
+			'subgroup_start_5' => array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle hide receiver receiver-color receiver-texture receiver-image'
+			),
+			'headline' => array(
+				'id'		=> 'headline',
+				'name'		=> __('Banner Headline (optional)', 'themeblvd'),
+				'desc'		=> __('Select if you\'d like the banner to contain a headline.', 'themeblvd'),
+				'std'		=> 'none',
+				'type'		=> 'select',
+				'options'	=> array(
+					'none'		=> __('No headline', 'themeblvd'),
+					'title'		=> __('Display current title', 'themeblvd'),
+					'custom'	=> __('Display custom text', 'themeblvd'),
+				),
+				'class'		=> 'trigger'
+			),
+			'headline_custom' => array(
+				'id'		=> 'headline_custom',
+				'name'		=> __('Custom Headline', 'themeblvd'),
+				'desc'		=> __('Enter the text for the headline.', 'themeblvd'),
+				'std'		=> '',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver receiver-custom'
+			),
+			'tagline' => array(
+				'id'		=> 'tagline',
+				'name'		=> __('Banner Tagline (optional)', 'themeblvd'),
+				'desc'		=> __('If you want a brief tagline to appear below the headline, enter it here.', 'themeblvd'),
+				'std'		=> '',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver receiver-title receiver-custom'
+			),
+			'subgroup_end_5' => array(
+				'type' 		=> 'subgroup_end'
+			),
+			'subgroup_end_1' => array(
+				'type'		=> 'subgroup_end'
+			)
+		)
+	);
 
 	return apply_filters( 'themeblvd_banner_meta', $setup );
 }

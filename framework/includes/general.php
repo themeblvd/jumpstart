@@ -159,6 +159,7 @@ function themeblvd_setup() {
 			'page_options'		=> true,			// Meta box for basic page options
 			'post_options'		=> true,			// Meta box for basic post options
 			'pto'				=> true,			// Meta box for "Post Grid/List" page template
+			'banner'			=> true,			// Meta box for page banner
 			'layout'			=> true				// Meta box for theme layout adjustments
 		),
 		'featured' => array(

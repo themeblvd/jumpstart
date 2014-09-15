@@ -832,10 +832,10 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 	if ( $print == 'inline' ) {
 
 		foreach ( $params as $key => $value ) {
-			$style .= sprintf( '%s: %s;', $key, $value );
+			$style .= sprintf( '%s: %s; ', $key, $value );
 		}
 
-		return $style;
+		return trim($style);
 	}
 
 	return $params;

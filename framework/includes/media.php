@@ -1308,53 +1308,69 @@ function themeblvd_video( $video_url, $args = array() ) {
  * @param int $thumb_id ID of attachment to pull from
  * @return string $output Final HTML to output
  */
-function themeblvd_get_featured_banner( $post_id = 0, $thumb_id = 0 ) {
+function themeblvd_get_banner( $args = array() ) {
 
-	$output = '';
-
-	if ( ! $post_id ) {
-		$post_id = get_the_ID();
+	if ( ! $args ) {
+		$args = themeblvd_config('banner');
 	}
 
-	if ( ! $thumb_id ) {
-		$thumb_id = get_post_thumbnail_id();
+	if ( ! $args ) {
+		return null;
 	}
 
-	$src = wp_get_attachment_image_src( $thumb_id, apply_filters('themeblvd_banner_size', 'tb_x_large') );
+	$defaults = array(
+		'id'						=> 'featured-banner',
+		'post_id'					=> themeblvd_config('id'),
+		'bg_type' 					=> 'none',
+	    'bg_color' 					=> '#202020',
+	    'bg_texture' 				=> 'arches',
+	    'apply_bg_texture_parallax'	=> '0',
+	    'bg_texture_parallax' 		=> '5',
+	    'bg_image' 					=> array(),
+		'bg_image_parallax_stretch' => '1',
+	    'bg_image_parallax' 		=> '2',
+	    'headline' 					=> 'none',
+	    'headline_custom' 			=> '',
+	    'tagline'					=> ''
+	);
+	$args = wp_parse_args( $args, $defaults );
 
-	if ( $src ) {
+	$style = themeblvd_get_display_inline_style($args);
 
-		// @TODO ... Make alignment and parallax for a new "Pages" section of the theme options... maybe banner height option?
-		$output = sprintf( '<span class="banner img tb-parallax" data-parallax="8" style="background-image: url(%s);"></span>', $src[0] );
+	if ( themeblvd_config('suck_up') && themeblvd_config('top_height') ) {
+		$style .= sprintf( 'padding-top: %spx;', themeblvd_config('top_height') );
+	}
 
-		$class = 'tb-featured-banner';
+	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s" data-parallax="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style, themeblvd_get_parallax_intensity($args) );
+	$output .= '<div class="wrap">';
 
-		if ( $link = themeblvd_get_post_thumbnail_link($post_id, $thumb_id) ) {
+	// Banner content
+	$content = '';
 
-			$class .= ' has-link';
+	if ( $args['headline'] && $args['headline'] != 'none' ) {
 
-			if ( $link['target'] == 'lightbox' ) {
+		$class = 'banner-content';
 
-				$lightbox = apply_filters( 'themeblvd_featured_banner_lightbox_args', array(
-					'item'	=> $output,
-					'link'	=> $link['href'],
-					'class'	=> $link['class'],
-					'title'	=> $link['title']
-				), $post_id, $args['attachment_id'] );
-
-				$output .= themeblvd_get_link_to_lightbox($lightbox);
-
-			} else {
-				$output .= sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $link['href'], $link['title'], $link['class'], $link['target'], $output );
-			}
-
+		if ( $args['headline'] == 'title' ) {
+			$content .= sprintf( '<h1 class="banner-title">%s</h1>', get_the_title($args['post_id']) );
+		} else if ( $args['headline'] == 'custom' ) {
+			$content .= sprintf( '<h1 class="banner-title">%s</h1>', stripslashes($args['headline_custom']) );
 		}
 
-		$output = sprintf( '<div class="%s">%s</div>', $class, $output );
-
+		if ( $args['tagline'] ) {
+			$class .= ' has-tagline';
+			$content .= sprintf( '<span class="banner-tagline ">%s</span>', stripslashes($args['tagline']) );
+		}
 	}
 
-	return apply_filters( 'themeblvd_featured_banner', $output, $post_id, $thumb_id );
+	if ( $content ) {
+		$output .= sprintf( '<div class="%s">%s</div>', $class, $content );
+	}
+
+	$output .= '</div><!-- .wrap (end) -->';
+	$output .= '</div><!-- .tb-featured-banner (end) -->';
+
+	return apply_filters( 'themeblvd_featured_banner', $output, $args );
 }
 
 /**
@@ -1365,8 +1381,8 @@ function themeblvd_get_featured_banner( $post_id = 0, $thumb_id = 0 ) {
  * @param int $post_id ID of post to pull featured image from
  * @param int $thumb_id ID of attachment to pull from
  */
-function themeblvd_featured_banner( $post_id = 0, $thumb_id = 0 ) {
-	echo themeblvd_get_featured_banner( $post_id, $thumb_id );
+function themeblvd_banner( $args = array() ) {
+	echo themeblvd_get_banner( $args );
 }
 
 /**
