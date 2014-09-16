@@ -7,7 +7,11 @@
 
 	<?php if ( themeblvd_get_att('thumbs') ) : ?>
 		<div class="thumb-wrapper">
-			<?php themeblvd_the_post_thumbnail('tb_thumb', array('placeholder' => true)); ?>
+			<?php if ( themeblvd_get_att('thumbs') == 'date' ) : ?>
+				<?php themeblvd_date_block(); ?>
+			<?php else : ?>
+				<?php themeblvd_the_post_thumbnail('tb_thumb', array('placeholder' => true)); ?>
+			<?php endif; ?>
 		</div><!-- .thumb-wrapper (end) -->
 	<?php endif; ?>
 

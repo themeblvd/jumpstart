@@ -725,6 +725,7 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'select',
 						'options' => array(
 							'full'		=> __( 'Show featured images', 'themeblvd' ),
+							'date'		=> __( 'Show date block', 'themeblvd' ),
 							'hide' 		=> __( 'Hide featured images', 'themeblvd' )
 						)
 					),

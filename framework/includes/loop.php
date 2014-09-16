@@ -1137,7 +1137,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 
 	if ( $thumb && $thumb !== 'hide' ) {
 		$class .= ' thumb-'.$thumb;
-		themeblvd_set_att('thumbs', true);
+		themeblvd_set_att('thumbs', $thumb);
 	} else {
 		$class .= ' thumb-hide';
 		themeblvd_set_att('thumbs', false);

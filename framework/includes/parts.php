@@ -1348,3 +1348,32 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 function themeblvd_filter_nav( $posts, $tax = 'category', $args = array() ) {
 	echo themeblvd_get_filter_nav($posts, $tax, $args);
 }
+
+/**
+ * Get date block to replace of a featured image.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_date_block( $post_id = 0 ) {
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$output  = '<div class="tb-date-block">';
+	$output .= sprintf('<span class="bg-primary day">%s</span>', get_the_date( 'd', $post_id ));
+	$output .= sprintf('<span class="month">%s</span>', get_the_date( 'M', $post_id ));
+	$output .= '</div><!-- .tb-date-block (end) -->';
+
+	return apply_filters( 'themeblvd_date_block', $output, $post_id );
+
+}
+
+/**
+ * Display date block in place of a featured image.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_date_block( $post_id = 0 ) {
+	echo themeblvd_get_date_block( $post_id );
+}
