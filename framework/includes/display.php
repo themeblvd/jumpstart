@@ -155,7 +155,7 @@ if ( !function_exists( 'themeblvd_header_after_default' ) ) :
  * @since 2.5.0
  */
 function themeblvd_header_after_default() {
-	if (  themeblvd_config('banner') ) {
+	if ( themeblvd_config('banner') ) {
 		themeblvd_banner();
 	}
 }

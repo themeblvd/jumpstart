@@ -352,6 +352,31 @@ function setup_themeblvd_banner_meta() {
 				'type'		=> 'text',
 				'class'		=> 'hide receiver receiver-title receiver-custom'
 			),
+			'text_color' => array(
+				'id'		=> 'text_color',
+				'name'		=> __('Text Color'),
+				'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'themeblvd_builder'),
+				'std'		=> 'light',
+				'type'		=> 'select',
+				'options'	=> array(
+					'dark'		=> __('Dark Text', 'themeblvd'),
+					'light'		=> __('Light Text', 'themeblvd')
+				),
+				'class'		=> 'hide receiver receiver-title receiver-custom'
+			),
+			'text_align' => array(
+				'id'		=> 'text_align',
+				'name'		=> __('Text Align'),
+				'desc'		=> __('Select how to align the text of the headline and tagline.', 'themeblvd'),
+				'std'		=> 'left',
+				'type'		=> 'select',
+				'options'	=> array(
+					'left'		=> __('Left', 'themeblvd'),
+					'center'	=> __('Center', 'themeblvd'),
+					'right'		=> __('Right', 'themeblvd')
+				),
+				'class'		=> 'hide receiver receiver-title receiver-custom'
+			),
 			'subgroup_end_5' => array(
 				'type' 		=> 'subgroup_end'
 			),

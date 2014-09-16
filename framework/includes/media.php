@@ -1331,7 +1331,9 @@ function themeblvd_get_banner( $args = array() ) {
 	    'bg_image_parallax' 		=> '2',
 	    'headline' 					=> 'none',
 	    'headline_custom' 			=> '',
-	    'tagline'					=> ''
+	    'tagline'					=> '',
+	    'text_color'				=> 'light',
+	    'text_align'				=> 'left'
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -1349,7 +1351,7 @@ function themeblvd_get_banner( $args = array() ) {
 
 	if ( $args['headline'] && $args['headline'] != 'none' ) {
 
-		$class = 'banner-content';
+		$class = sprintf( 'banner-content text-%s text-%s', $args['text_color'], $args['text_align'] );
 
 		if ( $args['headline'] == 'title' ) {
 			$content .= sprintf( '<h1 class="banner-title">%s</h1>', get_the_title($args['post_id']) );
@@ -1361,6 +1363,7 @@ function themeblvd_get_banner( $args = array() ) {
 			$class .= ' has-tagline';
 			$content .= sprintf( '<span class="banner-tagline ">%s</span>', stripslashes($args['tagline']) );
 		}
+
 	}
 
 	if ( $content ) {
