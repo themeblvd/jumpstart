@@ -1515,6 +1515,63 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 
 	}
 
-
 	return apply_filters( 'themeblvd_logo', $output );
+}
+
+/**
+ * Get background slideshow.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_bg_slideshow( $id, $images ) {
+
+	$output = '';
+
+	if ( ! $images || ! is_array( $images ) ) {
+		return $output;
+	}
+
+	foreach ( $images as $img_id => $img ) {
+		$images[$img_id] = wp_parse_args( $img, array(
+			'crop'			=> $args['crop'],
+			'id'			=> 0,
+			'alt'			=> '',
+			'src'			=> ''
+		));
+	}
+
+	$output .= sprintf( '<div id="bg-slideshow-%s" class="tb-bg-slideshow carousel" data-ride="carousel" data-interval="%s" data-pause="0" data-wrap="1">', $id, apply_filters('themeblvd_bg_slideshow_interval', 5000) );
+	$output .= '<div class="carousel-control-wrap">';
+	$output .= '<div class="carousel-inner">';
+
+	$counter = 0;
+
+	foreach ( $images as $img_id => $img ) {
+
+		$class = 'item';
+
+		if ( $counter == 0 ) {
+			$class .= ' active';
+		}
+
+		$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, $img['src'] );
+
+		$counter++;
+
+	}
+
+	$output .= '</div><!-- .carousel-inner (end) -->';
+	$output .= '</div><!-- .carousel-control-wrap (end) -->';
+	$output .= '</div><!-- .tb-bg-slideshow (end) -->';
+
+	return apply_filters( 'themeblvd_bg_slideshow', $output, $images );
+}
+
+/**
+ * Display background slideshow.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_bg_slideshow( $id, $images ) {
+	echo themeblvd_get_bg_slideshow( $id, $images );
 }

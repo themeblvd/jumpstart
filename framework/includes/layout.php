@@ -604,7 +604,7 @@ function themeblvd_get_display_class( $display ) {
 			$class[] = 'has-bg';
 			$class[] = $bg_type;
 
-			if ( $bg_type == 'color' || $bg_type == 'image' || $bg_type == 'texture' ) {
+			if ( $bg_type == 'color' || $bg_type == 'image' || $bg_type == 'texture' || $bg_type == 'slideshow' ) {
 				if ( ! empty( $display['text_color'] ) ) {
 					$class[] = 'text-'.$display['text_color'];
 				}
@@ -633,6 +633,10 @@ function themeblvd_get_display_class( $display ) {
 				}
 
 			}
+
+		} else if ( $bg_type == 'slideshow' ) {
+
+			$class[] = 'has-bg-slideshow';
 
 		}
 

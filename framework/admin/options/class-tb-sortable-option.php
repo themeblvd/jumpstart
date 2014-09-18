@@ -1116,18 +1116,20 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 				'name'		=> __('Title (optional)', 'themeblvd'),
 				'desc'		=> __('If you\'d like a headline to show on the slide, you may enter it here.', 'themeblvd'),
 				'type'		=> 'text',
-				'std'		=> ''
+				'std'		=> '',
+				'class'		=> 'slide-title'
 			),
 			array(
 				'id' 		=> 'desc',
 				'name'		=> __('Description (optional)', 'themeblvd'),
 				'desc'		=> __('If you\'d like a description to show on the slide, you may enter it here.', 'themeblvd'),
 				'type'		=> 'textarea',
-				'std'		=> ''
+				'std'		=> '',
+				'class'		=> 'slide-desc'
 			),
 			array(
 				'type' 		=> 'subgroup_start',
-				'class'		=> 'show-hide-toggle desc-toggle'
+				'class'		=> 'slide-link show-hide-toggle desc-toggle'
 			),
 			array(
 				'id' 		=> 'link',

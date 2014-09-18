@@ -170,10 +170,19 @@ function themeblvd_loop( $args = array() ){
 			}
 
 			if ( $thumbs == 'hide' ) {
+
 				themeblvd_set_att( 'thumbs', false );
+
 			} else {
+
 				themeblvd_set_att( 'thumbs', $thumbs );
-				$post_class .= ' has-thumbnail';
+
+				if ( $thumbs == 'date' ) {
+					$post_class .= ' has-date';
+				} else {
+					$post_class .= ' has-thumbnail';
+				}
+
 			}
 
 			// Meta

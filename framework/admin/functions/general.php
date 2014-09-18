@@ -424,8 +424,13 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 		'none'		=> __('No background', 'themeblvd'),
 		'color'		=> __('Custom color', 'themeblvd'),
 		'texture'	=> __('Custom color + texture', 'themeblvd'),
-		'image'		=> __('Custom color + image', 'themeblvd')
+		'image'		=> __('Custom color + image', 'themeblvd'),
+		'slideshow'	=> __('Custom image slideshow', 'themeblvd')
 	);
+
+	if ( $context != 'section' ) {
+		unset($types['slider']);
+	}
 
 	if ( $context == 'section' || $context == 'banner' ) {
 
