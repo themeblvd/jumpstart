@@ -877,10 +877,16 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			$image = '';
 
+			$img_src = $img['src'];
+
+			if ( is_ssl() ) {
+				$img_src = str_replace('http://', 'https://', $img_src);
+			}
+
 			if ( $args['cover'] ) {
-				$image = sprintf( '<div class="image" style="background-image: url(%s);"></div>', $img['src'] );
+				$image = sprintf( '<div class="image" style="background-image: url(%s);"></div>', $img_src );
 			} else {
-				$image = sprintf( '<img src="%s" alt="%s" />', $img['src'], $img['alt'] );
+				$image = sprintf( '<img src="%s" alt="%s" />', $img_src, $img['alt'] );
 			}
 
 			if ( $img['link'] ) {
@@ -1202,8 +1208,14 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		$img_class .= ' '.$args['class'];
 	}
 
+	$img_src = $img_atts['src'];
+
+	if ( is_ssl() ) {
+		$img_src = str_replace('http://', 'https://', $img_src);
+	}
+
 	// Setup intial image
-	$img = sprintf( '<img src="%s" alt="%s" width="%s" height="%s" class="%s" />', $img_atts['src'], $img_atts['title'], $img_atts['width'], $img_atts['height'], $img_class );
+	$img = sprintf( '<img src="%s" alt="%s" width="%s" height="%s" class="%s" />', $img_src, $img_atts['title'], $img_atts['width'], $img_atts['height'], $img_class );
 
 	// Start output
 	$output = $img;
@@ -1554,7 +1566,13 @@ function themeblvd_get_bg_slideshow( $id, $images ) {
 			$class .= ' active';
 		}
 
-		$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, $img['src'] );
+		$img_src = $img['src'];
+
+		if ( is_ssl() ) {
+			$img_src = str_replace('http://', 'https://', $img_src);
+		}
+
+		$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, $img_src );
 
 		$counter++;
 
