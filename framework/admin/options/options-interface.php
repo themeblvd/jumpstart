@@ -1063,6 +1063,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				break;
 
 			/*---------------------------------------*/
+			/* Pricing Table Columns
+			/*---------------------------------------*/
+
+			case 'price_cols' :
+				$price_cols = $advanced->get('price_cols');
+				$output .= $price_cols->get_display( $value['id'], $option_name, $val );
+				break;
+
+			/*---------------------------------------*/
 			/* Sectors
 			/*---------------------------------------*/
 

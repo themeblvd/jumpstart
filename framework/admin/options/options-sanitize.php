@@ -45,6 +45,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_slide', 'themeblvd_sanitize_slide' );
 	add_filter( 'themeblvd_sanitize_slider', 'themeblvd_sanitize_slider' );
 	add_filter( 'themeblvd_sanitize_logos', 'themeblvd_sanitize_logos' );
+	add_filter( 'themeblvd_sanitize_price_cols', 'themeblvd_sanitize_price_cols' );
 	add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
 	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
 	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
@@ -782,6 +783,53 @@ function themeblvd_sanitize_logos( $input ) {
 			// Partner Name, description, and Link
 			$output[$item_id]['name'] = wp_kses( $item['name'], array() );
 			$output[$item_id]['link'] = wp_kses( $item['link'], array() );
+
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Pricing table columns
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_price_cols( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			$output[$item_id]['highlight'] = wp_kses( $item['highlight'], array() );
+			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
+			$output[$item_id]['title_subline'] = wp_kses( $item['title_subline'], array() );
+			$output[$item_id]['price'] = wp_kses( $item['price'], array() );
+			$output[$item_id]['price_subline'] = wp_kses( $item['price_subline'], array() );
+			$output[$item_id]['features'] = apply_filters( 'themeblvd_sanitize_textarea', $item['features'] );
+
+			$output[$item_id]['button_color'] = wp_kses( $item['button_color'], array() );
+			$output[$item_id]['button_custom'] = apply_filters( 'themeblvd_sanitize_button', $item['button_custom'] );
+			$output[$item_id]['button_text'] = wp_kses( $item['button_text'], array() );
+			$output[$item_id]['button_url'] = wp_kses( $item['button_url'], array() );
+			$output[$item_id]['button_size'] = wp_kses( $item['button_size'], array() );
+			$output[$item_id]['button_icon_before'] = wp_kses( $item['button_icon_before'], array() );
+			$output[$item_id]['button_icon_after'] = wp_kses( $item['button_icon_after'], array() );
+
+			if ( empty( $item['popout'] ) ) {
+				$output[$item_id]['popout'] = '0';
+			} else {
+				$output[$item_id]['popout'] = '1';
+			}
+
+			if ( empty( $item['button'] ) ) {
+				$output[$item_id]['button'] = '0';
+			} else {
+				$output[$item_id]['button'] = '1';
+			}
 
 		}
 	}

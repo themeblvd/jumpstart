@@ -86,6 +86,7 @@ class Theme_Blvd_Advanced_Options {
 			'datasets',
 			'locations',
 			'logos',
+			'price_cols',
 			'sectors',
 			'share',
 			'slider',
@@ -133,6 +134,10 @@ class Theme_Blvd_Advanced_Options {
 
 			case 'logos':
 				$this->types[$type] = new Theme_Blvd_Logos_Option();
+				break;
+
+			case 'price_cols':
+				$this->types[$type] = new Theme_Blvd_Price_Cols_Option();
 				break;
 
 			case 'sectors':
@@ -199,7 +204,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'sectors', 'share', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
+		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'price_cols', 'sectors', 'share', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
 	}
 
 }

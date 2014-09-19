@@ -1360,7 +1360,7 @@ function themeblvd_get_toggles( $id, $options ) {
         $output = sprintf( '<div id="%s" class="tb-accordion panel-group">%s</div>', $id, $output );
     }
 
-    return apply_filters('themeblvd_toggles', $output);
+    return apply_filters('themeblvd_toggles', $output, $options);
 }
 
 /**
@@ -1373,4 +1373,203 @@ function themeblvd_get_toggles( $id, $options ) {
  */
 function themeblvd_toggles( $id, $options ) {
     echo themeblvd_get_toggles( $id, $options );
+}
+
+/**
+ * Display pricing table
+ *
+ * @since 2.5.0
+ *
+ * @param array $id unique ID for toggle set
+ * @param array $options all options for toggles
+ */
+function themeblvd_get_pricing_table( $cols, $args ) {
+
+    $defaults = array(
+        'currency'              => '$',
+        'currency_placement'    => 'before'
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( $cols ) {
+
+        $grid_class = themeblvd_grid_class( count($cols) );
+
+        $has_popout = false;
+
+        foreach ( $cols as $col ) {
+            if ( ! empty($col['popout']) ) {
+                $has_popout = true;
+                break;
+            }
+        }
+
+        $class = 'tb-pricing-table row';
+
+        if ( $has_popout ) {
+            $class .= ' has-popout';
+        }
+
+        $output = sprintf('<div class="%s">', $class);
+
+        foreach ( $cols as $col ) {
+
+            $col = wp_parse_args( $col, array(
+                'highlight'             => 'default',
+                'popout'                => '0',
+                'title'                 => '',
+                'title_subline'         => '',
+                'price'                 => '',
+                'price_subline'         => '',
+                'features'              => '',
+                'button'                => '0',
+                'button_color'          => 'default',
+                'button_custom'         => array(),
+                'button_text'           => '',
+                'button_url'            => '',
+                'button_size'           => '',
+                'button_icon_before'    => '',
+                'button_icon_after'     => ''
+            ));
+
+            $class = sprintf('col %s price-column', $grid_class);
+
+            if ( $col['highlight'] == 'none' ) {
+                $class .= ' no-highlight';
+            } else {
+                if ( in_array($col['highlight'], array('primary', 'info', 'success', 'warning', 'danger')) ) {
+                    $class .= ' bg-'.$col['highlight'];
+                } else {
+                    $class .= ' '.$col['highlight'];
+                }
+            }
+
+            if ( $col['popout'] ) {
+
+                $class .= ' popout';
+
+                if ( $col['title_subline'] ) {
+                    $class .= ' has-title-subline';
+                } else {
+                    $class .= ' no-title-subline';
+                }
+            }
+
+            if ( $col['price_subline'] ) {
+                $class .= ' has-price-subline';
+            } else {
+                $class .= ' no-price-subline';
+            }
+
+            if ( $col['button'] ) {
+                $class .= ' has-button';
+            }
+
+            $output .= sprintf('<div class="%s">', $class);
+
+            // Title
+            $output .= '<div class="title-wrap">';
+            $output .= sprintf('<span class="title">%s</span>', $col['title']);
+
+            if ( $col['popout'] && $col['title_subline'] ) {
+                $output .= sprintf('<span class="title-subline">%s</span>', $col['title_subline']);
+            }
+
+            $output .= '</div>';
+
+            // Price
+            $output .= sprintf('<div class="price-wrap currency-%s">', $args['currency_placement']);
+
+            $output .= '<span class="price">';
+
+            if ( $args['currency'] && $args['currency_placement'] == 'before' ) {
+                $output .= sprintf('<span class="currency">%s</span>', $args['currency']);
+            }
+
+            $output .= $col['price'];
+
+            if ( $args['currency'] && $args['currency_placement'] == 'after' ) {
+                $output .= sprintf('<span class="currency">%s</span>', $args['currency']);
+            }
+
+            $output .= '</span>';
+
+            if ( $col['price_subline'] ) {
+                $output .= sprintf('<span class="price-subline">%s</span>', $col['price_subline']);
+            }
+
+            $output .= '</div>';
+
+            // Features
+            $output .= '<div class="features">';
+
+            if ( $col['features'] ) {
+
+                $features = explode("\n", str_replace("\n\n", "\n", $col['features']));
+
+                $output .= '<ul class="list-unstyled feature-list">';
+
+                foreach ( $features as $feature ) {
+                    $output .= sprintf('<li class="feature">%s</li>', do_shortcode($feature));
+                }
+
+                $output .= '</ul>';
+
+            }
+
+            $output .= '</div>';
+
+            // Button
+            $button = '';
+
+            if ( $col['button'] ) {
+
+                // Custom button styling
+                $addon = '';
+
+                if ( $col['button_color'] == 'custom' ) {
+
+                    if ( $col['button_custom']['include_bg'] ) {
+                        $bg = $col['button_custom']['bg'];
+                    } else {
+                        $bg = 'transparent';
+                    }
+
+                    if ( $col['button_custom']['include_border'] ) {
+                        $border = $col['button_custom']['border'];
+                    } else {
+                        $border = 'transparent';
+                    }
+
+                    $addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', $bg, $border, $col['button_custom']['text'], $col['button_custom']['bg_hover'], $col['button_custom']['text_hover'] );
+
+                }
+
+                $output .= '<div class="button-wrap">';
+                $output .= themeblvd_button( stripslashes($col['button_text']), $col['button_url'], $col['button_color'], $col['button_target'], $col['button_size'], null, null, $col['button_icon_before'], $col['button_icon_after'], $addon );
+                $output .= '</div>';
+
+            }
+
+            $output .= '</div><!-- .col.price-column (end) -->';
+
+        }
+
+        $output .= '</div><!-- .tb-pricing-table (end) -->';
+
+    }
+
+    return apply_filters('themeblvd_pricing_table', $output, $cols, $args);
+}
+
+/**
+ * Display pricing table
+ *
+ * @since 2.5.0
+ *
+ * @param array $id unique ID for toggle set
+ * @param array $options all options for toggles
+ */
+function themeblvd_pricing_table( $cols, $args ) {
+    echo themeblvd_get_pricing_table( $cols, $args );
 }

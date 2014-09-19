@@ -9,7 +9,7 @@
  * 3: A classic grid key for 12-col - grid_{1-12}
  * 4: A classic grid key for fifths - grid_fifth_{1-5}
  * 5: A classic grid key for tenths - grid_tenth_{1-10}
- * 6: An integer from 2-6, representing the number of equal-width columns
+ * 6: An integer from 1-6, representing the number of equal-width columns
  *
  * @since 2.0.0
  *
@@ -29,6 +29,9 @@ function themeblvd_grid_class( $key, $stack = 'sm' ) {
 
 		if ( is_int($key) && $key >= 2 && $key <= 6 ) {
 			switch ( $key ) {
+				case 1:
+					$key = '12';
+					break;
 				case 2:
 					$key = '6';
 					break;

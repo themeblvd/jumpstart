@@ -1188,12 +1188,13 @@
 	line-height: 60px;
 }
 
-/* Sortables and Full Width options - bars, buttons, datasets, locations, sectors, tabs, testimonials, toggles */
+/* Sortables and Full Width options - bars, buttons, datasets, locations, pricing tables, sectors, tabs, testimonials, toggles */
 #optionsframework .full-width .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-bars .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-datasets .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-locations .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-price_cols .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-sectors .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-tabs .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-testimonials .tb-sortable-option .item-handle.closed a.toggle,
@@ -1205,6 +1206,7 @@
 #optionsframework .section-buttons > .option > .controls,
 #optionsframework .section-datasets > .option > .controls,
 #optionsframework .section-locations > .option > .controls,
+#optionsframework .section-price_cols > .option > .controls,
 #optionsframework .section-sectors > .option > .controls,
 #optionsframework .section-tabs > .option > .controls,
 #optionsframework .section-testimonials > .option > .controls,
@@ -1220,6 +1222,7 @@
 #optionsframework .section-buttons > .option > .explain,
 #optionsframework .section-datasets > .option > .explain,
 #optionsframework .section-locations > .option > .explain,
+#optionsframework .section-price_cols > .option > .explain,
 #optionsframework .section-sectors > .option > .explain,
 #optionsframework .section-tabs > .option > .explain,
 #optionsframework .section-testimonials > .option > .explain,
@@ -1233,6 +1236,7 @@
 #optionsframework .section-buttons .tb-sortable-option textarea,
 #optionsframework .section-datasets .tb-sortable-option textarea,
 #optionsframework .section-locations .tb-sortable-option textarea,
+#optionsframework .section-price_cols .tb-sortable-option textarea,
 #optionsframework .section-sectors .tb-sortable-option textarea,
 #optionsframework .section-tabs .tb-sortable-option textarea,
 #optionsframework .section-testimonials .tb-sortable-option textarea,

@@ -211,6 +211,11 @@ function themeblvd_element( $args ) {
 			themeblvd_logos( $args['options'] );
 			break;
 
+		// Pricing Table
+		case 'pricing_table' :
+			themeblvd_pricing_table( $args['options']['columns'], $args['options'] );
+			break;
+
 		// Promo Box
 		case 'slogan' :
 			themeblvd_slogan( $args['options'] );

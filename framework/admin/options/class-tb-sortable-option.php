@@ -694,16 +694,16 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __( 'Button Color', 'themeblvd_builder' ),
-				'desc'		=> __( 'Select what color you\'d like to use for this button.', 'themeblvd_builder' ),
+				'name'		=> __( 'Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Select what color you\'d like to use for this button.', 'themeblvd' ),
 				'type'		=> 'select',
 				'class'		=> 'trigger',
 				'options'	=> themeblvd_colors()
 			),
 			array(
 				'id' 		=> 'custom',
-				'name'		=> __( 'Custom Button Color', 'themeblvd_builder' ),
-				'desc'		=> __( 'Configure a custom style for the button.', 'themeblvd_builder' ),
+				'name'		=> __( 'Custom Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Configure a custom style for the button.', 'themeblvd' ),
 				'std'		=> array(
 					'bg' 				=> '#ffffff',
 					'bg_hover'			=> '#ebebeb',
@@ -721,55 +721,55 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'text',
-				'name'		=> __( 'Button Text', 'themeblvd_builder' ),
-				'desc'		=> __( 'Enter the text for the button.', 'themeblvd_builder' ),
+				'name'		=> __( 'Button Text', 'themeblvd' ),
+				'desc'		=> __( 'Enter the text for the button.', 'themeblvd' ),
 				'std'		=> 'Get Started Today!',
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'size',
-				'name'		=> __( 'Button Size', 'themeblvd_builder' ),
-				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd_builder' ),
+				'name'		=> __( 'Button Size', 'themeblvd' ),
+				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd' ),
 				'type'		=> 'select',
 				'std'		=> 'large',
 				'options'	=> array(
-					'mini' 		=> __( 'Mini', 'themeblvd_builder' ),
-					'small' 	=> __( 'Small', 'themeblvd_builder' ),
-					'default' 	=> __( 'Normal', 'themeblvd_builder' ),
-					'large' 	=> __( 'Large', 'themeblvd_builder' ),
-					'x-large' 	=> __( 'Extra Large', 'themeblvd_builder' )
+					'mini' 		=> __( 'Mini', 'themeblvd' ),
+					'small' 	=> __( 'Small', 'themeblvd' ),
+					'default' 	=> __( 'Normal', 'themeblvd' ),
+					'large' 	=> __( 'Large', 'themeblvd' ),
+					'x-large' 	=> __( 'Extra Large', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> 'url',
-				'name'		=> __( 'Link URL', 'themeblvd_builder' ),
-				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd_builder' ),
+				'name'		=> __( 'Link URL', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd' ),
 				'std'		=> 'http://www.your-site.com/your-landing-page',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'target',
-				'name'		=> __( 'Link Target', 'themeblvd_builder' ),
-				'desc'		=> __( 'Select how you want the button to open the webpage.', 'themeblvd_builder' ),
+				'name'		=> __( 'Link Target', 'themeblvd' ),
+				'desc'		=> __( 'Select how you want the button to open the webpage.', 'themeblvd' ),
 				'type'		=> 'select',
 				'options'	=> array(
-			        '_self' 	=> __( 'Same Window', 'themeblvd_builder' ),
-			        '_blank' 	=> __( 'New Window', 'themeblvd_builder' ),
-			        'lightbox' 	=> __( 'Lightbox Popup', 'themeblvd_builder' )
+			        '_self' 	=> __( 'Same Window', 'themeblvd' ),
+			        '_blank' 	=> __( 'New Window', 'themeblvd' ),
+			        'lightbox' 	=> __( 'Lightbox Popup', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> 'icon_before',
-				'name'		=> __( 'Icon Before Button Text (optional)', 'themeblvd_builder' ),
-				'desc'		=> __( 'Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd_builder' ),
+				'name'		=> __( 'Icon Before Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
 				'type'		=> 'text',
 				'icon'		=> 'vector'
 			),
 			array(
 				'id' 		=> 'icon_after',
-				'name'		=> __( 'Icon After Button Text (optional)', 'themeblvd_builder' ),
-				'desc'		=> __( 'Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd_builder' ),
+				'name'		=> __( 'Icon After Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
 				'type'		=> 'text',
 				'icon'		=> 'vector'
 			)
@@ -1133,26 +1133,26 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'link',
-				'name'		=> __( 'Link', 'themeblvd_builder' ),
-				'desc'		=> __( 'Select if and how this image should be linked.', 'themeblvd_builder' ),
+				'name'		=> __( 'Link', 'themeblvd' ),
+				'desc'		=> __( 'Select if and how this image should be linked.', 'themeblvd' ),
 				'type'		=> 'select',
 				'options'	=> array(
 			        'none'		=> __( 'No Link', 'themeblvd' ),
-			        '_self' 	=> __( 'Link to webpage in same window.', 'themeblvd_builder' ),
-			        '_blank' 	=> __( 'Link to webpage in new window.', 'themeblvd_builder' ),
-			        'image' 	=> __( 'Link to image in lightbox popup.', 'themeblvd_builder' ),
-			        'video' 	=> __( 'Link to video in lightbox popup.', 'themeblvd_builder' )
+			        '_self' 	=> __( 'Link to webpage in same window.', 'themeblvd' ),
+			        '_blank' 	=> __( 'Link to webpage in new window.', 'themeblvd' ),
+			        'image' 	=> __( 'Link to image in lightbox popup.', 'themeblvd' ),
+			        'video' 	=> __( 'Link to video in lightbox popup.', 'themeblvd' )
 				),
 				'class'		=> 'trigger'
 			),
 			array(
 				'id' 		=> 'link_url',
-				'name'		=> __( 'Link URL', 'themeblvd_builder' ),
+				'name'		=> __( 'Link URL', 'themeblvd' ),
 				'desc'		=> array(
-			        '_self' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd_builder' ),
-			        '_blank' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd_builder' ),
-			        'image' 	=> __( 'Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd_builder' ),
-			        'video' 	=> __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250‎</br />Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd_builder' )
+			        '_self' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd' ),
+			        '_blank' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd' ),
+			        'image' 	=> __( 'Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd' ),
+			        'video' 	=> __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250‎</br />Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd' )
 				),
 				'type'		=> 'text',
 				'std'		=> '',
@@ -1268,8 +1268,8 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 			*/
 			array(
 				'id' 		=> 'link',
-				'name'		=> __( 'Partner Link (optional)', 'themeblvd_builder' ),
-				'desc'		=> __( 'Enter a URL you\'d like this logo to link to.<br>Ex: http://partersite.com', 'themeblvd_builder' ),
+				'name'		=> __( 'Partner Link (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Enter a URL you\'d like this logo to link to.<br>Ex: http://partersite.com', 'themeblvd' ),
 				'type'		=> 'text',
 				'pholder'	=> 'http://'
 			)
@@ -1290,6 +1290,214 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 			'delete_all_confirm' 	=> __('Are you sure you want to remove all logos?','themeblvd'),
 			'modal_title'			=> __('Select Logos','themeblvd'),
 			'modal_button'			=> __('Add Logos','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Pricing table column option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'price_cols';
+
+		// Max number of items that can be added
+		$this->max = 6;
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+		    array(
+				'id' 		=> 'highlight',
+				'name'		=> __('Highlight Color', 'themeblvd'),
+				'desc'		=> __('If you wish, you can give the column a highlight color.', 'themeblvd'),
+				'type'		=> 'select',
+				'std'		=> 'none',
+				'options'	=> themeblvd_colors(true, false) // Include bootstrap, don't include "Custom Color" option
+			),
+			array(
+				'id' 		=> 'title',
+				'name'		=> __('Title', 'themeblvd'),
+				'desc'		=> __('Enter a title for this column.<br>Ex: Gold Package', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> '',
+				'trigger'	=> true
+			),
+			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'show-hide'
+		    ),
+			array(
+				'id' 		=> 'popout',
+				'name'		=> null,
+				'desc'		=> __('Pop out column so it stands out from the rest.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			array(
+				'id' 		=> 'title_subline',
+				'name'		=> __('Popout Title Subline', 'themeblvd'),
+				'desc'		=> __('Because the column is popped out, enter a very brief subline for the title.<br>Ex: Best Value', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> 'Best Value',
+				'class'		=> 'hide receiver'
+			),
+			array(
+		    	'type'		=> 'subgroup_end'
+		    ),
+			array(
+				'id' 		=> 'price',
+				'name'		=> __('Price', 'themeblvd'),
+				'desc'		=> __('Enter a value for the price, without the currency symbol.<br>Ex: 50', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'price_subline',
+				'name'		=> __('Price Subline (optional)', 'themeblvd'),
+				'desc'		=> __('Enter a very brief subline for the price to show what it represents.<br>Ex: per month', 'themeblvd'),
+				'type'		=> 'text',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'features',
+				'name'		=> __('Feature List', 'themeblvd'),
+				'desc'		=> __('Enter each feature, seprated by a line break. If you like, spice it up with some icons.<br><br><em>[vector_icon icon="check" color="#00aa00"]</em><br><em>[vector_icon icon="times" color="#aa0000"]</em>', 'themeblvd'),
+				'type'		=> 'textarea',
+				'std'		=> "Feature 1\nFeature 2\nFeature 3",
+				'html'		=> true,
+				'editor'	=> true
+			),
+			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'show-hide'
+		    ),
+			array(
+		    	'id' 		=> 'button',
+				'name'		=> __( 'Button', 'themeblvd' ),
+				'desc'		=> __( 'Show button below feature list?', 'themeblvd' ),
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			array(
+		    	'type'		=> 'subgroup_start',
+		    	'class'		=> 'hide receiver show-hide-toggle'
+		    ),
+			array(
+				'id' 		=> 'button_color',
+				'name'		=> __( 'Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Select what color you\'d like to use for this button.', 'themeblvd' ),
+				'type'		=> 'select',
+				'class'		=> 'trigger',
+				'options'	=> themeblvd_colors()
+			),
+			array(
+				'id' 		=> 'button_custom',
+				'name'		=> __( 'Custom Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Configure a custom style for the button.', 'themeblvd' ),
+				'std'		=> array(
+					'bg' 				=> '#ffffff',
+					'bg_hover'			=> '#ebebeb',
+					'border' 			=> '#cccccc',
+					'text'				=> '#333333',
+					'text_hover'		=> '#333333',
+					'include_bg'		=> 1,
+					'include_border'	=> 1
+				),
+				'type'		=> 'button',
+				'class'		=> 'hide receiver receiver-custom'
+			),
+			array(
+				'type'		=> 'subgroup_end'
+			),
+			array(
+				'id' 		=> 'button_text',
+				'name'		=> __( 'Button Text', 'themeblvd' ),
+				'desc'		=> __( 'Enter the text for the button.', 'themeblvd' ),
+				'std'		=> 'Purchase Now',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver'
+			),
+			array(
+				'id' 		=> 'button_url',
+				'name'		=> __( 'Link URL', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd' ),
+				'std'		=> 'http://www.your-site.com/your-landing-page',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver'
+			),
+			array(
+				'id' 		=> 'button_size',
+				'name'		=> __( 'Button Size', 'themeblvd' ),
+				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd' ),
+				'type'		=> 'select',
+				'std'		=> 'default',
+				'class'		=> 'hide receiver',
+				'options'	=> array(
+					'mini' 		=> __( 'Mini', 'themeblvd' ),
+					'small' 	=> __( 'Small', 'themeblvd' ),
+					'default' 	=> __( 'Normal', 'themeblvd' ),
+					'large' 	=> __( 'Large', 'themeblvd' ),
+					'x-large' 	=> __( 'Extra Large', 'themeblvd' )
+				)
+			),
+			array(
+				'id' 		=> 'button_icon_before',
+				'name'		=> __( 'Icon Before Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
+				'type'		=> 'text',
+				'icon'		=> 'vector',
+				'class'		=> 'hide receiver'
+			),
+			array(
+				'id' 		=> 'button_icon_after',
+				'name'		=> __( 'Icon After Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
+				'type'		=> 'text',
+				'icon'		=> 'vector',
+				'class'		=> 'hide receiver'
+			),
+			array(
+				'type'		=> 'subgroup_end'
+			)
+
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Pricing Table Column','themeblvd'),
+			'delete' 				=> __('Remove Column','themeblvd'),
+			'delete_confirm' 		=> __('Are you sure you want to delete this column?','themeblvd'),
+			'delete_all' 			=> __('Remove All Columns','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to remove all columns?','themeblvd')
 		);
 		return $labels;
 	}
@@ -1540,42 +1748,42 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			'text' => array(
 				'id' 		=> 'text',
-				'name' 		=> __( 'Testimonial Text', 'themeblvd_builder'),
-				'desc'		=> __( 'Enter any text of the testimonial.', 'themeblvd_builder'),
+				'name' 		=> __( 'Testimonial Text', 'themeblvd'),
+				'desc'		=> __( 'Enter any text of the testimonial.', 'themeblvd'),
 				'type'		=> 'textarea',
 				'editor'	=> true,
 				'code'		=> 'html'
 		    ),
 			'name' => array(
 				'id' 		=> 'name',
-				'name' 		=> __( 'Name', 'themeblvd_builder'),
-				'desc'		=> __( 'Enter the name of the person giving the testimonial.', 'themeblvd_builder'),
+				'name' 		=> __( 'Name', 'themeblvd'),
+				'desc'		=> __( 'Enter the name of the person giving the testimonial.', 'themeblvd'),
 				'type'		=> 'text',
 				'trigger'	=> true // Triggers this option's value to be used in toggle
 		    ),
 		    'tagline' => array(
 				'id' 		=> 'tagline',
-				'name' 		=> __( 'Tagline (optional)', 'themeblvd_builder'),
-				'desc'		=> __( 'Enter a tagline for the person giving the testimonial.<br>Ex: Founder and CEO', 'themeblvd_builder'),
+				'name' 		=> __( 'Tagline (optional)', 'themeblvd'),
+				'desc'		=> __( 'Enter a tagline for the person giving the testimonial.<br>Ex: Founder and CEO', 'themeblvd'),
 				'type'		=> 'text'
 		    ),
 		    'company' => array(
 				'id' 		=> 'company',
-				'name' 		=> __( 'Company (optional)', 'themeblvd_builder'),
-				'desc'		=> __( 'Enter the company the person giving the testimonial belongs to.', 'themeblvd_builder'),
+				'name' 		=> __( 'Company (optional)', 'themeblvd'),
+				'desc'		=> __( 'Enter the company the person giving the testimonial belongs to.', 'themeblvd'),
 				'type'		=> 'text'
 		    ),
 		    'company_url' => array(
 				'id' 		=> 'company_url',
-				'name' 		=> __( 'Company URL (optional)', 'themeblvd_builder'),
-				'desc'		=> __( 'Enter the website URL for the company or the person giving the testimonial.', 'themeblvd_builder'),
+				'name' 		=> __( 'Company URL (optional)', 'themeblvd'),
+				'desc'		=> __( 'Enter the website URL for the company or the person giving the testimonial.', 'themeblvd'),
 				'type'		=> 'text',
 				'pholder'	=> 'http://'
 		    ),
 		    'image' => array(
 				'id' 		=> 'image',
-				'name' 		=> __( 'Image (optional)', 'themeblvd_builder'),
-				'desc'		=> __( 'Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'themeblvd_builder'),
+				'name' 		=> __( 'Image (optional)', 'themeblvd'),
+				'desc'		=> __( 'Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'themeblvd'),
 				'type'		=> 'upload',
 				'advanced'	=> true
 		    )

@@ -1446,7 +1446,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
  * @param boolean $bootstrap Whether to include Bootstrap colors or not
  * @return array $colors All colors in framework filtered
  */
-function themeblvd_colors( $bootstrap = true ) {
+function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) {
 
 	// Setup colors separated out to begin with.
 	$colors = array(
@@ -1491,7 +1491,15 @@ function themeblvd_colors( $bootstrap = true ) {
 		$colors = array_merge( $colors, $themeblvd_colors );
 	}
 
-	return apply_filters( 'themeblvd_colors', $colors, $bootstrap );
+	if ( ! $custom ) {
+		unset($colors['custom']);
+	}
+
+	if ( ! $default ) {
+		unset($colors['default']);
+	}
+
+	return apply_filters( 'themeblvd_colors', $colors, $bootstrap, $custom, $default );
 }
 
 /**
