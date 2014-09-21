@@ -456,6 +456,7 @@ function themeblvd_loop( $args = array() ){
 		// If it's a post grid slider, pass it on with the query.
 		if ( $context == 'grid' && $args['display'] == 'slider' ) {
 			$args['query'] = $query_args;
+			themeblvd_set_att('class', $post_class);
 			themeblvd_grid_slider($args);
 			return;
 		}
