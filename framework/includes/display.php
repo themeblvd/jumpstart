@@ -139,7 +139,7 @@ function themeblvd_header_menu_default() {
 	?>
 	<nav id="access" class="header-nav" role="navigation">
 		<div class="wrap clearfix">
-			<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'walker' => new ThemeBlvd_Main_Menu_Walker(), 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu sf-menu-with-fontawesome clearfix', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
+			<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') ); ?>
 			<?php themeblvd_header_menu_addon(); ?>
 		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->
@@ -469,11 +469,13 @@ function themeblvd_footer_sub_content_default() {
 					<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
 				</div>
 			</div><!-- .copyright (end) -->
-			<div class="footer-nav">
-				<div class="footer-nav-inner">
-					<?php wp_nav_menu( apply_filters( 'themeblvd_footer_menu_args', array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ) ); ?>
-				</div>
-			</div><!-- .copyright (end) -->
+			<?php if ( has_nav_menu('footer') ) : ?>
+				<div class="footer-nav">
+					<div class="footer-nav-inner">
+						<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('footer') ); ?>
+					</div>
+				</div><!-- .footer-nav (end) -->
+			<?php endif; ?>
 		</div><!-- .wrap (end) -->
 	</div><!-- .footer-sub-content (end) -->
 	<?php

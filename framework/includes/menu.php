@@ -350,7 +350,41 @@ function themeblvd_nav_menu_select( $location ) {
 	return apply_filters('themeblvd_nav_menu_select', $select_menu, $location );
 }
 
-if ( !function_exists( 'themeblvd_primary_menu_fallback' ) ) :
+/**
+ * Get args for wp_nav_menu
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
+
+	$args = array();
+
+	switch ( $location ) {
+		case 'primary' :
+			$args = array(
+				'walker'			=> new ThemeBlvd_Main_Menu_Walker(),
+				'menu_id'			=> 'primary-menu',
+				'menu_class'		=> 'tb-primary-menu tb-to-side-menu sf-menu sf-menu-with-fontawesome clearfix',
+				'container'			=> '',
+				'theme_location'	=> 'primary',
+				'fallback_cb'		=> 'themeblvd_primary_menu_fallback'
+			);
+			break;
+
+		case 'footer' :
+			$args = array(
+				'menu_id' 			=> 'footer-menu',
+				'container' 		=> '',
+				'fallback_cb' 		=> false,
+				'theme_location'	=> 'footer',
+				'depth' 			=> 1
+			);
+
+	}
+
+	return apply_filters( "themeblvd_{$location}_menu_args", $args );
+}
+
 /**
  * List pages as a main navigation menu when user
  * has not set one under Apperance > Menus in the
@@ -358,12 +392,23 @@ if ( !function_exists( 'themeblvd_primary_menu_fallback' ) ) :
  *
  * @since 2.0.0
  */
-function themeblvd_primary_menu_fallback() {
-	$home_text = themeblvd_get_local('home');
-	$args = apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'tb-primary-menu tb-to-side-menu sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) );
-	echo '<ul id="'.$args['menu_id'].'" class="'.$args['menu_class'].'">';
-	echo '<li class="home"><a href="'.home_url().'" title="'.$home_text.'">'.$home_text.'</a></li>';
-	wp_list_pages('title_li=');
-	echo '</ul>';
+function themeblvd_primary_menu_fallback( $args ) {
+
+	$output = '';
+
+	if ( $args['theme_location'] = 'primary' && current_user_can('edit_theme_options') ) {
+		$output .= sprintf('<div class="alert alert-warning tb-menu-warning"><p><strong>%s</strong>: %s</p></div>', __('No Custom Menu', 'themeblvd'), __('Setup a custom menu at <em>Appearance > Menus</em> in your admin panel, and apply it to the "Primary Navigation" location.', 'themeblvd'));
+	}
+
+	/**
+	 * If the user doesn't set a nav menu, and you want to make
+	 * sure nothing gets outputted, simply filter this to false.
+	 * Note that by default, we only see a message if the admin
+	 * is logged in.
+	 *
+	 * add_filter('themeblvd_menu_fallback', '__return_false');
+	 */
+	if ( $output = apply_filters('themeblvd_menu_fallback', $output, $args) ) {
+		echo $output;
+	}
 }
-endif;
