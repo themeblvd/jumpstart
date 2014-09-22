@@ -1477,7 +1477,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 			$class .= ' '.$logo['class'];
 		}
 
-		$output .= sprintf( '<div class="%s">', $class, $style );
+		$output .= sprintf( '<div class="%s">', $class );
 
 		if ( ! empty( $logo['type'] ) ) {
 			switch ( $logo['type'] ) {
