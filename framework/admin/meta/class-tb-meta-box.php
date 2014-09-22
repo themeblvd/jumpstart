@@ -167,14 +167,18 @@ class Theme_Blvd_Meta_Box {
 		if ( ! empty( $input ) ) {
 			foreach ( $this->options as $option ) {
 
+				if ( empty( $option['id'] ) ) {
+					continue;
+				}
+
 				$id = $option['id'];
 
 				// Set checkbox to false if it wasn't sent in the $_POST
-				if ( $option['type'] == 'checkbox' && ! isset($input[$id]) ) {
-					if ( ! empty($option['inactive']) && $option['inactive'] === 'true' ) {
-						$current = '1';
+				if ( $option['type'] == 'checkbox' && ! isset( $input[$id] ) ) {
+					if ( ! empty( $option['inactive'] ) && $option['inactive'] === 'true' ) {
+						$input[$id] = '1';
 					} else {
-						$current = '0';
+						$input[$id] = '0';
 					}
 				}
 
@@ -196,7 +200,7 @@ class Theme_Blvd_Meta_Box {
 					}
 				}
 
-				if ( ! $this->args['save_empty'] && ! $input[$id] ) {
+				if ( ! $this->args['save_empty'] && empty($input[$id]) ) {
 
 					delete_post_meta( $post_id, $id );
 

@@ -152,7 +152,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 		 * they're not intending it to be an actual query string, and thus
 		 * just sent it through.
 		 */
-		if ( strpos($query, '=') !== false ) {
+		if ( is_array($query) || strpos($query, '=') !== false ) {
 
 			if ( is_string( $query ) && strpos($query, 'custom_field=') === 0 ) {
 				$query = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $query), true );
@@ -164,7 +164,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 			}
 
 			// Force posts per page on grids
-			if( ( $display == 'grid' || $display == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+			if ( ( $display == 'grid' || $display == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
 				if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
 					$query['posts_per_page'] = $options['rows']*$options['columns'];
 				}

@@ -403,9 +403,9 @@ class Theme_Blvd_Query {
 
 			if ( $meta_display = get_post_meta( $post->ID, 'tb_display', true ) ) {
 				$display = $meta_display;
-			} else if( $template == 'grid' ) {
+			} else if( $type == 'grid' ) {
 				$display = themeblvd_get_option( 'grid_display', null, 'paginated' );
-			} else if( $template == 'showcase' ) {
+			} else if( $type == 'showcase' ) {
 				$display = themeblvd_get_option( 'showcase_display', null, 'masonry_paginated' );
 			}
 
