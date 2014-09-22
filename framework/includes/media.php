@@ -415,7 +415,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 
 	}
 
-	$params['class'] = apply_filters('themeblvd_post_thumbnail_a_class', $params['class'], $post_id, $args['attachment_id']); // backwards compat
+	$params['class'] = apply_filters('themeblvd_post_thumbnail_a_class', $params['class'], $post_id, $thumb_id); // backwards compat
 
 	return apply_filters( 'themeblvd_post_thumbnail_link', $params, $post_id, $link );
 }
