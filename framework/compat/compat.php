@@ -8,15 +8,15 @@ function themeblvd_plugin_compat() {
 
 	// bbPress by Automattic
 	if ( themeblvd_installed('bbpress') && themeblvd_supports('plugins', 'bbpress') ) {
-
 		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/bbpress/class-tb-compat-bbpress.php' );
-
 		$bbpress = Theme_Blvd_Compat_bbPress::get_instance();
-
 	}
 
 	// WPML by OnTheGoSystems
-	// ... @TODO
+	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') ) {
+		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/wpml/class-tb-compat-wpml.php' );
+		$wpml = Theme_Blvd_Compat_WPML::get_instance();
+	}
 
 	// WooCommerce by WooThemes
 	// ... @TODO

@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 		window_width = $window.width(),
 		$body = $('body'),
 		$header = $('#branding'),
-		$primary_menu = $('#primary-menu');
+		$primary_menu = $('.tb-primary-menu');
 
 	// ---------------------------------------------------------
 	// Dynamic Body Classes
