@@ -208,7 +208,7 @@ function themeblvd_sanitize_upload( $input ) {
 			$output['height'] = intval( $input['height'] );
 		}
 
-		// Restore admin attachment restrains
+		// Restore admin attachment restraints
 		remove_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
 
 	} else {
@@ -718,16 +718,44 @@ function themeblvd_sanitize_slider( $input ) {
 			// Attachment title
 			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
 
-			// Attachment Image
-			$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $crop );
-			$downsize = themeblvd_image_downsize( $attachment, $output[$item_id]['id'], $crop );
-			$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $downsize[0] );
-			$output[$item_id]['width'] = $downsize[1];
-			$output[$item_id]['height'] = $downsize[2];
+			if ( $output[$item_id]['id'] ) {
 
-			// Thumbnail
-			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
-			$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
+				$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $crop );
+				$downsize = themeblvd_image_downsize( $attachment, $output[$item_id]['id'], $crop );
+				$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $downsize[0] );
+				$output[$item_id]['width'] = $downsize[1];
+				$output[$item_id]['height'] = $downsize[2];
+
+				$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
+				$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
+
+			} else {
+
+				if ( isset( $item['src'] ) ) {
+					$output[$item_id]['src'] = wp_kses( $item['src'], array() );
+				} else {
+					$output[$item_id]['src'] = '';
+				}
+
+				if ( isset( $item['width'] ) ) {
+					$output[$item_id]['width'] = wp_kses( $item['width'], array() );
+				} else {
+					$output[$item_id]['width'] = '';
+				}
+
+				if ( isset( $item['height'] ) ) {
+					$output[$item_id]['width'] = wp_kses( $item['height'], array() );
+				} else {
+					$output[$item_id]['height'] = '';
+				}
+
+				if ( isset( $item['thumb'] ) ) {
+					$output[$item_id]['thumb'] = wp_kses( $item['thumb'], array() );
+				} else {
+					$output[$item_id]['thumb'] = '';
+				}
+
+			}
 
 			// Slide info
 			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
@@ -770,15 +798,43 @@ function themeblvd_sanitize_logos( $input ) {
 			// Attachment title
 			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
 
-			// Attachment Image
-			$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], 'full' );
-			$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $attachment[0] );
-			$output[$item_id]['width'] = $attachment[1];
-			$output[$item_id]['height'] = $attachment[2];
+			if ( $output[$item_id]['id'] ) {
 
-			// Thumbnail
-			$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
-			$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
+				$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], 'full' );
+				$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $attachment[0] );
+				$output[$item_id]['width'] = $attachment[1];
+				$output[$item_id]['height'] = $attachment[2];
+
+				$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
+				$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
+
+			} else {
+
+				if ( isset( $item['src'] ) ) {
+					$output[$item_id]['src'] = wp_kses( $item['src'], array() );
+				} else {
+					$output[$item_id]['src'] = '';
+				}
+
+				if ( isset( $item['width'] ) ) {
+					$output[$item_id]['width'] = wp_kses( $item['width'], array() );
+				} else {
+					$output[$item_id]['width'] = '';
+				}
+
+				if ( isset( $item['height'] ) ) {
+					$output[$item_id]['width'] = wp_kses( $item['height'], array() );
+				} else {
+					$output[$item_id]['height'] = '';
+				}
+
+				if ( isset( $item['thumb'] ) ) {
+					$output[$item_id]['thumb'] = wp_kses( $item['thumb'], array() );
+				} else {
+					$output[$item_id]['thumb'] = '';
+				}
+
+			}
 
 			// Partner Name, description, and Link
 			$output[$item_id]['name'] = wp_kses( $item['name'], array() );

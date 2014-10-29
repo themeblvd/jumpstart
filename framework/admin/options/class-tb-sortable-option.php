@@ -915,7 +915,7 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'info',
-				'name'		=> __('Location Information (optional)', 'themeblvd'),
+				'name'		=> __('Location Information', 'themeblvd'),
 				'desc'		=> __('When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don\'t get too carried away.', 'themeblvd'),
 				'type'		=> 'textarea',
 				'editor'	=> true,
@@ -1095,6 +1095,21 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 				'std'		=> ''
 			),
 			array(
+				'id' 		=> 'src',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'width',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'height',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
 				'id' 		=> 'alt',
 				'type'		=> 'hidden',
 				'std'		=> '',
@@ -1236,6 +1251,21 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 		$options = array(
 			array(
 				'id' 		=> 'id',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'src',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'width',
+				'type'		=> 'hidden',
+				'std'		=> ''
+			),
+			array(
+				'id' 		=> 'height',
 				'type'		=> 'hidden',
 				'std'		=> ''
 			),
