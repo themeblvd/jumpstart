@@ -74,6 +74,7 @@ if ( is_admin() ) {
 
 	// Filters
 	add_filter( 'admin_body_class', 'themeblvd_admin_body_class' );
+	add_filter( 'safe_style_css', 'themeblvd_safe_style_css' );
 
 	// Apply initial hooks
 	add_action( 'admin_enqueue_scripts', 'themeblvd_non_modular_assets' );
