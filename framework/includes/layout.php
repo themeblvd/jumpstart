@@ -482,6 +482,11 @@ function themeblvd_get_element_class( $args ) {
 
 	}
 
+	// For columns, add a class for when they collapse/stack
+	if ( $args['type'] == 'columns' ) {
+		$class[] = 'stack-'.$args['options']['stack'];
+	}
+
 	// For custom sliders, we can specify the type of slider
 	if ( $args['type'] == 'slider' ) {
 		if ( isset( $args['options']['slider_id'] ) ) {
@@ -566,7 +571,16 @@ function themeblvd_get_element_class( $args ) {
  */
 function themeblvd_get_section_class( $id, $data, $count ) {
 
-	$class = array( $id, 'element-section', 'element-count-'.$count );
+	$class = array();
+
+	if ( strpos($id, 'section_') === false ) {
+		$class[] = 'section_'.$id;
+	} else {
+		$class[] = $id;
+	}
+
+	$class[] = 'element-section';
+	$class[] = 'element-count-'.$count;
 
 	// Label
 	if ( $data['label'] && $data['label'] != '...' ) {
@@ -773,6 +787,34 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 				$params['background-size'] = $display['bg_image']['size'];
 			}
 
+		}
+
+	}
+
+	if ( ! empty( $display['apply_border_top'] ) ) {
+
+		$params['border-top-style'] = 'solid';
+
+		if ( ! empty( $display['border_top_width'] ) ) {
+			$params['border-top-width'] = $display['border_top_width'];
+		}
+
+		if ( ! empty( $display['border_top_color'] ) ) {
+			$params['border-top-color'] = $display['border_top_color'];
+		}
+
+	}
+
+	if ( ! empty( $display['apply_border_bottom'] ) ) {
+
+		$params['border-bottom-style'] = 'solid';
+
+		if ( ! empty( $display['border_bottom_width'] ) ) {
+			$params['border-bottom-width'] = $display['border_bottom_width'];
+		}
+
+		if ( ! empty( $display['border_bottom_color'] ) ) {
+			$params['border-bottom-color'] = $display['border_bottom_color'];
 		}
 
 	}
