@@ -245,8 +245,6 @@ function themeblvd_get_icon_box( $args ) {
         'size'          => '20px',      // Font size of font icon
         'location'      => 'above',     // Location of icon
         'color'         => '#666666',   // Color of the icon
-        'circle'        => '0',         // Whether to circle the icon
-        'circle_color'  => '#cccccc',   // BG color of the circle
         'title'         => '',          // Title of the block
         'text'          => ''           // Content of the block
     );
@@ -255,16 +253,8 @@ function themeblvd_get_icon_box( $args ) {
     // Class for icon box
     $class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
 
-    if ( $args['circle'] ) {
-        $class .= ' icon-circled';
-    }
-
     // Icon
     $icon_style = sprintf( 'color: %s; font-size: %s;', $args['color'], $args['size'] );
-
-    if ( $args['circle'] ) {
-        $icon_style .= sprintf( ' background-color: %s;', $args['circle_color'] );
-    }
 
     $icon = sprintf( '<div class="icon" style="%s"><i class="fa fa-%s" style="width:%s;"></i></div>', $icon_style, $args['icon'], $args['size'] );
 
@@ -273,13 +263,7 @@ function themeblvd_get_icon_box( $args ) {
 
     if ( $args['location'] == 'side' ) {
 
-        $padding = intval( str_replace( 'px', '', $args['size'] ) );
-
-        if ( $args['circle'] ) {
-            $padding = $padding + 30; // Account for 15px of padding both sides of circled icon
-        }
-
-        $padding = $padding + 10;
+        $padding = intval( str_replace('px', '', $args['size']) ) + 15;
 
         if ( is_rtl() ) {
             $content_style = sprintf( 'padding-right: %spx;', $padding );
@@ -333,10 +317,13 @@ function themeblvd_get_jumbotron( $args, $content ) {
         'title'         => '',      // Title of unit
         'bg_color'      => '',      // Background color - Ex: #000000 (no option in Builder)
         'bg_opacity'    => '1',     // BG color opacity for rgba()
+        'title_size'    => '30px',  // Size of title text
+        'title_color'   => '#444',  // Color of title text
+        'text_size'     => '18px',  // Size of content text
         'text_color'    => '',      // Text color - Ex: #000000
         'text_align'    => 'left',  // How to align text - left, right, center
-        'align'         => '',      // How to align jumbotron - left, right, center, blank for no alignment
-        'max_width'     => '',      // Meant to be used with align left/right/center - 300px, 50%, etc
+        'align'         => 'center',// How to align jumbotron - left, right, center, blank for no alignment
+        'max'           => '',      // Meant to be used with align left/right/center - 300px, 50%, etc
         'class'         => '',      // Any additional CSS classes
         'wpautop'       => true     // Whether to apply wpautop on content
     );
@@ -363,6 +350,10 @@ function themeblvd_get_jumbotron( $args, $content ) {
         $style .= sprintf( 'color:%s;', $args['text_color'] );
     }
 
+    if ( $args['text_size'] ) {
+        $style .= sprintf( 'font-size:%s;', $args['text_size'] );
+    }
+
     // Custom CSS classes
     if ( $args['class'] ) {
         $class .= ' '.$args['class'];
@@ -370,7 +361,7 @@ function themeblvd_get_jumbotron( $args, $content ) {
 
     // Construct initial jumbotron
     if ( $args['title'] ) {
-        $title = sprintf( '<h2>%s</h2>', $args['title'] );
+        $title = sprintf( '<span class="title" style="color:%s;font-size:%s;">%s</span>', $args['title_color'], $args['title_size'], $args['title'] );
         $content = $title.$content;
     }
 
@@ -395,8 +386,8 @@ function themeblvd_get_jumbotron( $args, $content ) {
     }
 
     // Max width?
-    if ( $args['max_width'] ) {
-        $style .= sprintf( 'max-width: %s;', $args['max_width'] );
+    if ( $args['max'] ) {
+        $style .= sprintf( 'max-width: %s;', $args['max'] );
     }
 
     // Final output
@@ -496,7 +487,9 @@ function themeblvd_get_logos( $args ) {
 
     $output .= '<div class="tb-logos-inner tb-block-slider-inner">';
 
-    $output .= themeblvd_get_loader();
+    if ( $args['display'] == 'slider' ) {
+        $output .= themeblvd_get_loader();
+    }
 
     if ( $args['display'] == 'slider' && $args['nav'] ) {
         $output .= themeblvd_get_slider_controls();
@@ -942,7 +935,7 @@ function themeblvd_get_tabs( $id, $args ) {
                     break;
 
                 case 'raw' :
-                    if ( ! empty( $tab['raw_format'] ) ) {
+                    if ( ! empty( $tab['content']['raw_format'] ) ) {
                         $content .= themeblvd_get_content( $tab['content']['raw'] );
                     } else {
                         $content .= do_shortcode( $tab['content']['raw'] );

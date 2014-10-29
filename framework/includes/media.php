@@ -1182,6 +1182,9 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		'link' 		=> 'none',
     	'link_url'	=> '',
     	'frame' 	=> '0',
+    	'align'		=> 'none',
+    	'title'		=> '',
+    	'width'		=> '',
     	'class'		=> ''
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -1194,10 +1197,14 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	}
 
 	// Image class
-	$img_class = sprintf( 'size-%s wp-image-%s', $img_atts['crop'], $img_atts['id'] );
+	$img_class = 'wp-image-'.$img_atts['id'];
 
 	if ( ! $has_link ) {
-		$img_class .= ' alignnone';
+		if ( in_array( $args['align'], array('left', 'center', 'right') ) ) {
+			$img_class .= ' align'.$args['align'];
+		} else {
+			$img_class .= ' alignnone';
+		}
 	}
 
 	if ( $args['frame'] && ! $has_link ) {
@@ -1214,8 +1221,20 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		$img_src = str_replace('http://', 'https://', $img_src);
 	}
 
+	if ( $args['width'] ) {
+		$width = $args['width'];
+	} else {
+		$width = $img_atts['width'];
+	}
+
+	if ( $args['title'] ) {
+		$title = $args['title'];
+	} else {
+		$title = $img_atts['title'];
+	}
+
 	// Setup intial image
-	$img = sprintf( '<img src="%s" alt="%s" width="%s" height="%s" class="%s" />', $img_src, $img_atts['title'], $img_atts['width'], $img_atts['height'], $img_class );
+	$img = sprintf( '<img src="%s" alt="%s" width="%s" class="%s" />', $img_src, $title, $width, $img_class );
 
 	// Start output
 	$output = $img;
@@ -1227,6 +1246,10 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 
 		if ( $args['frame'] ) {
 			$anchor_classes .= ' thumbnail';
+		}
+
+		if ( in_array( $args['align'], array('left', 'center', 'right') ) ) {
+			$anchor_classes .= ' align'.$args['align'];
 		}
 
 		if ( ! empty( $args['class'] ) ) {
@@ -1251,22 +1274,20 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 				'item' 		=> $output,
 				'link' 		=> $link,
 				'title' 	=> $img_atts['title'],
+				'props'		=> array('style', sprintf('max-width: %spx;', $width)),
 				'class' 	=> $anchor_classes
 			);
 			$output = themeblvd_get_link_to_lightbox( $args );
 
 		} else {
 
-			if ( $args['frame'] ) {
-
-				if ( $args['link'] == '_self' ) {
-					$anchor_classes .= ' post';
-				} else if ( $args['link'] == '_blank' ) {
-					$anchor_classes .= ' external';
-				}
+			if ( $args['link'] == '_self' ) {
+				$anchor_classes .= ' post';
+			} else if ( $args['link'] == '_blank' ) {
+				$anchor_classes .= ' external';
 			}
 
-			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s">%s</a>', $args['link_url'], $anchor_classes, $img_atts['title'], $args['link'], $output );
+			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s" style="max-width: %spx;">%s</a>', $args['link_url'], $anchor_classes, $img_atts['title'], $args['link'], $width, $output );
 
 		}
 	}

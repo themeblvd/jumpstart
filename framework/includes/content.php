@@ -127,7 +127,7 @@ function themeblvd_get_content_block( $args ){
 
 	$defaults = array(
         'content'		=> '',			// Content to display
-        'raw_format'	=> '1',			// Whether to apply wpautop
+        'format'		=> '1',			// Whether to apply wpautop
         'style'			=> '',			// Custom styling class
 		'text_color'	=> 'dark',		// Color of text, dark or light
         'bg_color'		=> '#cccccc',	// Background color, if wrap is true
@@ -155,7 +155,7 @@ function themeblvd_get_content_block( $args ){
 	}
 
 	// Setup content
-	if ( $args['raw_format'] ) {
+	if ( $args['format'] ) {
 		$content = themeblvd_get_content( $args['content'] );
 	} else {
 		$content = do_shortcode( $args['content'] );
@@ -202,13 +202,14 @@ function themeblvd_get_headline( $args ) {
 	$text = str_replace( '%page_title%', get_the_title( themeblvd_config( 'id' ) ), $args['text'] );
 
 	// Output
-	$output = '<'.$args['tag'].' class="text-'.$args['align'].'">';
-	$output .= stripslashes( $text );
-	$output .= '</'.$args['tag'].'>';
+	$output .= '<div class="tb-headline text-'.$args['align'].'">';
+	$output .= sprintf( '<%1$s>%2$s</%1$s>', $args['tag'], stripslashes($text) );
 
 	if ( $args['tagline'] ) {
-		$output .= sprintf( '<p class="text-%s">%s</p>', $args['align'], stripslashes($args['tagline']) );
+		$output .= sprintf( '<p>%s</p>', stripslashes($args['tagline']) );
 	}
+
+	$output .= '</div><!-- .tb-headline (end) -->';
 
 	return apply_filters( 'themeblvd_headline', $output, $args );
 }
