@@ -18,14 +18,14 @@
         </ul>
         <h2><?php echo themeblvd_get_local( 'posts_per_category' ); ?></h2>
         <?php $cats = get_categories(); ?>
-        <?php foreach ($cats as $cat) : ?>
+        <?php foreach ( $cats as $cat ) : ?>
             <?php query_posts('cat='.$cat->cat_ID); ?>
-                <h3><?php echo $cat->cat_name; ?></h3>
+            <h3><?php echo $cat->cat_name; ?></h3>
                 <ul>
-                    <?php while (have_posts()) : the_post(); ?>
+                <?php while (have_posts()) : the_post(); ?>
                     <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> - <?php echo themeblvd_get_local( 'comments' ); ?> (<?php echo $post->comment_count ?>)</li>
-                    <?php endwhile; wp_reset_query(); ?>
-                </ul>
+                <?php endwhile; wp_reset_query(); ?>
+            </ul>
         <?php endforeach; ?>
 	</div><!-- .entry-content (end) -->
 </article>
