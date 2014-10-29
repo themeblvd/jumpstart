@@ -374,6 +374,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 		case 'footer' :
 			$args = array(
 				'menu_id' 			=> 'footer-menu',
+				'menu_class'		=> 'list-inline',
 				'container' 		=> '',
 				'fallback_cb' 		=> false,
 				'theme_location'	=> 'footer',
