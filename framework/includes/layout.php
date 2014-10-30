@@ -629,7 +629,7 @@ function themeblvd_get_display_class( $display ) {
 				}
 			}
 
-			if ( $bg_type == 'image' && ! empty( $display['apply_bg_shade'] ) ) {
+			if ( ( $bg_type == 'image' || $bg_type == 'slideshow' ) && ! empty( $display['apply_bg_shade'] ) ) {
 				$class[] = 'has-bg-shade';
 			}
 

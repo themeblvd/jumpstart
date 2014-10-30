@@ -1556,7 +1556,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
  *
  * @since 2.5.0
  */
-function themeblvd_get_bg_slideshow( $id, $images ) {
+function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
 
 	$output = '';
 
@@ -1583,6 +1583,10 @@ function themeblvd_get_bg_slideshow( $id, $images ) {
 
 		$class = 'item';
 
+		if ( $parallax ) {
+			$class .= ' tb-parallax';
+		}
+
 		if ( $counter == 0 ) {
 			$class .= ' active';
 		}
@@ -1593,7 +1597,7 @@ function themeblvd_get_bg_slideshow( $id, $images ) {
 			$img_src = str_replace('http://', 'https://', $img_src);
 		}
 
-		$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, $img_src );
+		$output .= sprintf( '<div class="%s" style="background-image: url(%s);" data-parallax="%s"></div><!-- .item (end) -->', $class, $img_src, $parallax );
 
 		$counter++;
 
@@ -1611,6 +1615,6 @@ function themeblvd_get_bg_slideshow( $id, $images ) {
  *
  * @since 2.5.0
  */
-function themeblvd_bg_slideshow( $id, $images ) {
-	echo themeblvd_get_bg_slideshow( $id, $images );
+function themeblvd_bg_slideshow( $id, $images, $parallax = 0 ) {
+	echo themeblvd_get_bg_slideshow( $id, $images, $parallax );
 }
