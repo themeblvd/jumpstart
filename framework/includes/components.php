@@ -245,6 +245,7 @@ function themeblvd_get_icon_box( $args ) {
         'size'          => '20px',      // Font size of font icon
         'location'      => 'above',     // Location of icon
         'color'         => '#666666',   // Color of the icon
+        'badge'         => '0',         // Whether to wrap icon in a circle
         'title'         => '',          // Title of the block
         'text'          => ''           // Content of the block
     );
@@ -254,16 +255,24 @@ function themeblvd_get_icon_box( $args ) {
     $class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
 
     // Icon
-    $icon_style = sprintf( 'color: %s; font-size: %s;', $args['color'], $args['size'] );
-
-    $icon = sprintf( '<div class="icon" style="%s"><i class="fa fa-%s" style="width:%s;"></i></div>', $icon_style, $args['icon'], $args['size'] );
+    if ( $args['badge'] ) {
+        $icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="fa fa-circle fa-stack-2x" style="color: %s;"></i><i class="fa fa-%s fa-stack-1x fa-inverse"></i></span></div>', $args['size'], $args['color'], $args['icon'] );
+    } else {
+        $icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fa fa-%s" style="width:%s;"></i></div>', $args['color'], $args['size'], $args['icon'], $args['size'] );
+    }
 
     // Content style
     $content_style = '';
 
     if ( $args['location'] == 'side' ) {
 
-        $padding = intval( str_replace('px', '', $args['size']) ) + 15;
+        $width = intval( str_replace('px', '', $args['size']) );
+
+        if ( $args['badge'] ) {
+            $width = $width * 2;
+        }
+
+        $padding = $width + 15;
 
         if ( is_rtl() ) {
             $content_style = sprintf( 'padding-right: %spx;', $padding );
