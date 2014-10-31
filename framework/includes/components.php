@@ -1318,7 +1318,7 @@ function themeblvd_get_toggle( $args ) {
         <div class="'.$class.'">
             <div class="panel-heading">
                 <a class="panel-title" data-toggle="collapse" data-parent="" href="#'.$toggle_id.'">
-                    <i class="fa fa-'.$icon.' switch-me"></i> '.$args['title'].'
+                    <i class="fa fa-'.$icon.' switch-me"></i>'.$args['title'].'
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="'.$toggle_id.'" class="'.$state.'">
