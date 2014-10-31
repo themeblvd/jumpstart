@@ -157,6 +157,13 @@ function themeblvd_image_downsize( $attachment, $attachmen_id, $crop = 'tb_x_lar
 		return $attachment;
 	}
 
+	$crop_atts = themeblvd_get_image_sizes($crop);
+
+	// Catches if original image uploaded matches crop size exactly
+	if ( $attachment[1] == $crop_atts['width'] && ( $attachment[2] == $crop_atts['height'] || $crop_atts['height'] == 9999 ) ) {
+		return $attachment;
+	}
+
 	$stacks = array(
 		array( 'tb_x_large', 'tb_large', 'tb_medium' ),
 		array( 'tb_square_x_large', 'tb_square_large', 'tb_square_medium' ),
@@ -184,6 +191,13 @@ function themeblvd_image_downsize( $attachment, $attachmen_id, $crop = 'tb_x_lar
 					if ( $scaled[3] ) {
 						break;
 					}
+
+					$crop_atts = themeblvd_get_image_sizes($size);
+
+					if ( $scaled[1] == $crop_atts['width'] && ( $scaled[2] == $crop_atts['height'] || $crop_atts['height'] == 9999 ) ) {
+						break;
+					}
+
 				}
 			}
 
