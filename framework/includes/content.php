@@ -140,9 +140,7 @@ function themeblvd_get_content_block( $args ){
 
 	if ( $args['style'] == 'custom' ) {
 		$class .= ' has-bg text-'.$args['text_color'];
-	}
-
-	if ( $args['style'] && $args['style'] != 'custom' && $args['style'] != 'none'  ) {
+	} else if ( $args['style'] && $args['style'] != 'none' ) {
 		$class .= ' '.$args['style'];
 	}
 

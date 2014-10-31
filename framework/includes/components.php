@@ -247,12 +247,26 @@ function themeblvd_get_icon_box( $args ) {
         'color'         => '#666666',   // Color of the icon
         'badge'         => '0',         // Whether to wrap icon in a circle
         'title'         => '',          // Title of the block
-        'text'          => ''           // Content of the block
+        'text'          => '',          // Content of the block
+        'style'         => '',          // Custom styling class
+        'text_color'    => 'dark',      // Color of text, dark or light
+        'bg_color'      => '#cccccc',   // Background color, if wrap is true
+        'bg_opacity'    => '1'          // Background color opacity, if wrap is true
     );
     $args = wp_parse_args( $args, $defaults );
 
     // Class for icon box
     $class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
+
+    if ( $args['style'] == 'custom' ) {
+        $class .= ' has-bg text-'.$args['text_color'];
+    } else if ( $args['style'] && $args['style'] != 'none' ) {
+        $class .= ' '.$args['style'];
+    }
+
+    if ( $args['color'] == '#ffffff' ) {
+        $class .= ' has-white-icon';
+    }
 
     // Icon
     if ( $args['badge'] ) {
@@ -281,8 +295,16 @@ function themeblvd_get_icon_box( $args ) {
         }
     }
 
+    // Inline style
+    $style = '';
+
+    if ( $args['style'] == 'custom' ) {
+        $style = sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
+        $style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+    }
+
     // Final output
-    $output  = '<div class="'.$class.'">';
+    $output  = sprintf( '<div class="%s" style="%s">', $class, $style );
 
     $output .= $icon;
 
