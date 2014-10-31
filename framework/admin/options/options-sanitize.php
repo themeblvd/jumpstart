@@ -855,7 +855,7 @@ function themeblvd_sanitize_price_cols( $input ) {
 				$output[$item_id]['button_custom'] = apply_filters( 'themeblvd_sanitize_button', $item['button_custom'] );
 			}
 
-			if ( isset( $item['button_custom'] ) ) {
+			if ( isset( $item['button_text'] ) ) {
 				$output[$item_id]['button_text'] = wp_kses( $item['button_text'], array() );
 			}
 
