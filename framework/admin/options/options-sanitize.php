@@ -200,14 +200,6 @@ function themeblvd_sanitize_upload( $input ) {
 			$output['crop'] = wp_kses( $input['crop'], array() );
 		}
 
-		if ( isset( $input['width'] ) ) {
-			$output['width'] = intval( $input['width'] );
-		}
-
-		if ( isset( $input['height'] ) ) {
-			$output['height'] = intval( $input['height'] );
-		}
-
 		// Restore admin attachment restraints
 		remove_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
 
@@ -701,6 +693,15 @@ function themeblvd_sanitize_slider( $input ) {
 	// Remove admin attachment restrains
 	add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
 
+	// Setup crop size
+	$crop = 'full';
+
+	if ( ! empty($input['crop']) ) {
+		$crop = wp_kses( $input['crop'], array() );
+	}
+
+	unset($input['crop']);
+
 	$output = array();
 
 	if ( $input && is_array($input) ) {
@@ -710,7 +711,7 @@ function themeblvd_sanitize_slider( $input ) {
 			$output[$item_id] = array();
 
 			// Crop size
-			$output[$item_id]['crop'] = $crop = wp_kses( $input[$item_id]['crop'], array() );
+			$output[$item_id]['crop'] = $crop;
 
 			// Attachment ID
 			$output[$item_id]['id'] = intval( $item['id'] );
@@ -723,8 +724,6 @@ function themeblvd_sanitize_slider( $input ) {
 				$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $crop );
 				$downsize = themeblvd_image_downsize( $attachment, $output[$item_id]['id'], $crop );
 				$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $downsize[0] );
-				$output[$item_id]['width'] = $downsize[1];
-				$output[$item_id]['height'] = $downsize[2];
 
 				$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
 				$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
@@ -735,18 +734,6 @@ function themeblvd_sanitize_slider( $input ) {
 					$output[$item_id]['src'] = wp_kses( $item['src'], array() );
 				} else {
 					$output[$item_id]['src'] = '';
-				}
-
-				if ( isset( $item['width'] ) ) {
-					$output[$item_id]['width'] = wp_kses( $item['width'], array() );
-				} else {
-					$output[$item_id]['width'] = '';
-				}
-
-				if ( isset( $item['height'] ) ) {
-					$output[$item_id]['width'] = wp_kses( $item['height'], array() );
-				} else {
-					$output[$item_id]['height'] = '';
 				}
 
 				if ( isset( $item['thumb'] ) ) {
@@ -768,7 +755,10 @@ function themeblvd_sanitize_slider( $input ) {
 				$output[$item_id]['link'] = '';
 			}
 
-			$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
+			if ( isset($item['link_url']) ) {
+				$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
+			}
+
 		}
 	}
 
@@ -802,8 +792,6 @@ function themeblvd_sanitize_logos( $input ) {
 
 				$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], 'full' );
 				$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $attachment[0] );
-				$output[$item_id]['width'] = $attachment[1];
-				$output[$item_id]['height'] = $attachment[2];
 
 				$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
 				$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
@@ -814,18 +802,6 @@ function themeblvd_sanitize_logos( $input ) {
 					$output[$item_id]['src'] = wp_kses( $item['src'], array() );
 				} else {
 					$output[$item_id]['src'] = '';
-				}
-
-				if ( isset( $item['width'] ) ) {
-					$output[$item_id]['width'] = wp_kses( $item['width'], array() );
-				} else {
-					$output[$item_id]['width'] = '';
-				}
-
-				if ( isset( $item['height'] ) ) {
-					$output[$item_id]['width'] = wp_kses( $item['height'], array() );
-				} else {
-					$output[$item_id]['height'] = '';
 				}
 
 				if ( isset( $item['thumb'] ) ) {

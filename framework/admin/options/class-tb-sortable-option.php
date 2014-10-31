@@ -1100,27 +1100,19 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 				'std'		=> ''
 			),
 			array(
-				'id' 		=> 'width',
-				'type'		=> 'hidden',
-				'std'		=> ''
-			),
-			array(
-				'id' 		=> 'height',
-				'type'		=> 'hidden',
-				'std'		=> ''
-			),
-			array(
 				'id' 		=> 'alt',
 				'type'		=> 'hidden',
 				'std'		=> '',
 				'trigger'	=> true
 			),
+			/*
 			array(
 				'id' 		=> 'crop',
 				'type'		=> 'hidden',
 				'std'		=> 'slider-large',
 				'class'		=> 'match' // Will match with image crop selection
 			),
+			*/
 			array(
 				'id' 		=> 'thumb',
 				'type'		=> 'hidden',
@@ -1256,16 +1248,6 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 			),
 			array(
 				'id' 		=> 'src',
-				'type'		=> 'hidden',
-				'std'		=> ''
-			),
-			array(
-				'id' 		=> 'width',
-				'type'		=> 'hidden',
-				'std'		=> ''
-			),
-			array(
-				'id' 		=> 'height',
 				'type'		=> 'hidden',
 				'std'		=> ''
 			),

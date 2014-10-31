@@ -571,14 +571,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 						$args['value_crop'] = $val['crop'];
 					}
 
-					if ( isset( $val['width'] ) ) {
-						$args['value_width'] = $val['width'];
-					}
-
-					if ( isset( $val['height'] ) ) {
-						$args['value_height'] = $val['height'];
-					}
-
 				} else {
 
 					$args['value'] = $val;

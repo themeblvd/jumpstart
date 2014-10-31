@@ -664,8 +664,6 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 			'crop'		=> $crop,
 			'alt'		=> $attachment->post_title,
 			'src'		=> $img[0],
-			'width'		=> $img[1],
-			'height'	=> $img[2],
 			'thumb'		=> $thumb[0],
 			'title'		=> $title,
 			'desc'		=> $caption,
@@ -737,24 +735,27 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	$output = '';
 
 	$defaults = array(
-		'id'				=> uniqid('slider_'),	// Unique ID for the slider
-		'crop'				=> 'slider-large',		// Crop size for images
-		'interval'			=> '5',					// How fast to auto rotate betweens slides
-		'pause'				=> '1',					// Whether to pause slider on hover
-		'wrap'				=> '1',					// When slider auto-rotates, whether it continuously cycles
-		'nav_standard'		=> '1',					// Whether to show standard navigation dots
-		'nav_arrows'		=> '1',					// Whether to show navigation arrows
-		'arrows'			=> 'standard',			// Nav arrow style - standard, mini
-		'nav_thumbs'		=> '0',					// Whether to show navigation image thumbnails
-		'link'				=> '1',					// Whether linked slides have animated hover overlay effect
-		'thumb_size'		=> 'smaller',			// Size of thumbnails - small, smaller, smallest or custom int
-		'dark_text'			=> '0',					// Whether to use dark text for title/descriptions/standard nav, use when images are light
-		'cover'				=> '0',					// popout: Whether images horizontal space 100%
-		'position'			=> 'middle center',		// popout: If cover is true, how slider images are positioned (i.e. with background-position)
-		'height_desktop'	=> '400',				// popout: If cover is true, slider height for desktop viewport
-		'height_tablet'		=> '300',				// popout: If cover is true, slider height for tablet viewport
-		'height_mobile'		=> '200',				// popout: If cover is true, slider height for mobile viewport
-		'class'				=> ''					// Any CSS classes to add
+		'id'					=> uniqid('slider_'),	// Unique ID for the slider
+		'crop'					=> 'slider-large',		// Crop size for images
+		'interval'				=> '5',					// How fast to auto rotate betweens slides
+		'pause'					=> '1',					// Whether to pause slider on hover
+		'wrap'					=> '1',					// When slider auto-rotates, whether it continuously cycles
+		'nav_standard'			=> '1',					// Whether to show standard navigation dots
+		'nav_arrows'			=> '1',					// Whether to show navigation arrows
+		'arrows'				=> 'standard',			// Nav arrow style - standard, mini
+		'nav_thumbs'			=> '0',					// Whether to show navigation image thumbnails
+		'link'					=> '1',					// Whether linked slides have animated hover overlay effect
+		'thumb_size'			=> 'smaller',			// Size of thumbnails - small, smaller, smallest or custom int
+		'dark_text'				=> '0',					// Whether to use dark text for title/descriptions/standard nav, use when images are light
+		'caption_bg'			=> '0',					// Whether to add BG color to caption
+		'caption_bg_color'		=> '#000000',			// Caption BG color
+		'caption_bg_opacity'	=> '0.5',				// Caption BG color opacity
+		'cover'					=> '0',					// popout: Whether images horizontal space 100%
+		'position'				=> 'middle center',		// popout: If cover is true, how slider images are positioned (i.e. with background-position)
+		'height_desktop'		=> '400',				// popout: If cover is true, slider height for desktop viewport
+		'height_tablet'			=> '300',				// popout: If cover is true, slider height for tablet viewport
+		'height_mobile'			=> '200',				// popout: If cover is true, slider height for mobile viewport
+		'class'					=> ''					// Any CSS classes to add
 	);
 	$args = apply_filters( 'themeblvd_simple_slider_args', wp_parse_args( $args, $defaults ) );
 
@@ -765,8 +766,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			'id'			=> 0,
 			'alt'			=> '',
 			'src'			=> '',
-			'width'			=> 0,
-			'height'		=> 0,
 			'thumb'			=> '',
 			'title'			=> '',
 			'desc'			=> '',
@@ -776,6 +775,8 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			'addon'			=> ''
 		));
 	}
+
+	echo '<pre>'; print_r($images); echo '</pre>';
 
 	// Slider auto rotate speed
 	$interval = $args['interval'];
@@ -799,6 +800,10 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 	if ( $args['dark_text'] ) {
 		$class .= ' dark-text';
+	}
+
+	if ( $args['caption_bg'] ) {
+		$class .= ' has-caption-bg';
 	}
 
 	if ( $args['cover'] ) {
@@ -930,7 +935,13 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			if ( $img['title'] || $img['desc'] ) {
 
-				$output .= '<div class="carousel-caption">';
+				$caption_style = '';
+
+				if ( $args['caption_bg'] ) {
+					$caption_style = sprintf( 'background-color: %s; background-color: %s;', $args['caption_bg_color'], themeblvd_get_rgb( $args['caption_bg_color'], $args['caption_bg_opacity'] ) );
+				}
+
+				$output .= '<div class="carousel-caption" style="'.$caption_style.'">';
 
 				if ( $img['title'] ) {
 					$output .= sprintf( '<h3>%s</h3>', $img['title'] );
@@ -1171,9 +1182,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		'src'		=> '',
 		'full'		=> '',
 		'title'		=> '',
-		'crop'		=> '',
-		'width'		=> 0,
-		'height'	=> 0
+		'crop'		=> ''
 	);
 	$img_atts = wp_parse_args( $img_atts, $defaults );
 
@@ -1221,12 +1230,6 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		$img_src = str_replace('http://', 'https://', $img_src);
 	}
 
-	if ( $args['width'] ) {
-		$width = $args['width'];
-	} else {
-		$width = $img_atts['width'];
-	}
-
 	if ( $args['title'] ) {
 		$title = $args['title'];
 	} else {
@@ -1234,7 +1237,13 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	}
 
 	// Setup intial image
-	$img = sprintf( '<img src="%s" alt="%s" width="%s" class="%s" />', $img_src, $title, $width, $img_class );
+	$img = sprintf( '<img src="%s" alt="%s" class="%s" ', $img_src, $title, $img_class );
+
+	if ( $args['width'] ) {
+		$img .= sprintf( 'width="%s" ', $args['width'] );
+	}
+
+	$img .= '/>';
 
 	// Start output
 	$output = $img;

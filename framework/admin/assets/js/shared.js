@@ -153,8 +153,12 @@
     				// Show/Hide groupings
     				$this.find('.show-hide').each(function(){
     					var $el = $(this), checkbox = $el.children('.trigger').find('input');
-    					if( checkbox.is(':checked') ) {
+    					if ( checkbox.is(':checked') ) {
     						$el.children('.receiver').show();
+    					} else {
+    						$el.find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', true);
+    						});
     					}
     				});
 
@@ -172,8 +176,13 @@
     						value = $trigger.find('.of-input').val();
     					}
 
-    					$el.children('.receiver').hide();
-    					$el.children('.receiver-'+value).show();
+    					$el.children('.receiver').each(function(){
+    						$(this).hide().find('input, textarea, select').prop('disabled', true);
+    					});
+
+    					$el.children('.receiver-'+value).each(function(){
+    						$(this).show().find('input, textarea, select').prop('disabled', false);
+    					});
 
     				});
 
@@ -571,26 +580,57 @@
 
 	    			// Show/Hide groupings
     				$this.on( 'click', '.show-hide > .trigger input', function() {
+
     					var checkbox = $(this);
-    					if( checkbox.is(':checked') ) {
+
+    					if ( checkbox.is(':checked') ) {
+
+    						checkbox.closest('.show-hide').find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', false);
+    						});
+
     						checkbox.closest('.show-hide').children('.receiver').fadeIn('fast');
+
     					} else {
+
+    						checkbox.closest('.show-hide').find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', true);
+    						});
+
     						checkbox.closest('.show-hide').children('.receiver').hide();
+
     					}
     				});
 
     				// Show/Hide toggle grouping (triggered with <select> to target specific options)
     				$this.on( 'change', '.show-hide-toggle > .trigger select.of-input', function() {
+
     					var $el = $(this), value = $el.val(), $group = $el.closest('.show-hide-toggle');
-    					$group.children('.receiver').hide();
-    					$group.children('.receiver-'+value).show();
+
+    					$group.children('.receiver').each(function(){
+    						$(this).hide().find('input, textarea, select').prop('disabled', true);
+    					});
+
+    					$group.children('.receiver-'+value).each(function(){
+    						$(this).show().find('input, textarea, select').prop('disabled', false);
+    					});
+
+
     				});
 
     				// Show/Hide toggle grouping (triggered with radio group to target specific options)
     				$this.on( 'click', '.show-hide-toggle > .trigger .of-radio', function() {
+
     					var $el = $(this), value = $el.val(), $group = $el.closest('.show-hide-toggle');
-    					$group.children('.receiver').hide();
-    					$group.children('.receiver-'+value).show();
+
+    					$group.children('.receiver').each(function(){
+    						$(this).hide().find('input, textarea, select').prop('disabled', true);
+    					});
+
+    					$group.children('.receiver-'+value).each(function(){
+    						$(this).show().find('input, textarea, select').prop('disabled', false);
+    					});
+
     				});
 
     				// Where one option's value determines which description displays on another option
@@ -1494,8 +1534,8 @@
 					$current_option.find('.image-id').val(attachment.attributes.id);
 					$current_option.find('.image-title').val(attachment.attributes.title);
 					$current_option.find('.image-crop').val(size);
-					$current_option.find('.image-width').val(attachment.attributes.sizes[size].width);
-					$current_option.find('.image-height').val(attachment.attributes.sizes[size].height);
+					// $current_option.find('.image-width').val(attachment.attributes.sizes[size].width);
+					// $current_option.find('.image-height').val(attachment.attributes.sizes[size].height);
 
 					// Send Link back
 					if ( link ){

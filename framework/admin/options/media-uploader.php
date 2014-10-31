@@ -195,8 +195,8 @@ function themeblvd_media_uploader( $args ) {
 		$output .= '<input id="id-'.$formfield.'" class="image-id" name="'.$name.'[id]" type="hidden" value="'.$args['value_id'].'" />';
 		$output .= '<input id="title-'.$formfield.'" class="image-title" name="'.$name.'[title]" type="hidden" value="'.$args['value_title'].'" />';
 		$output .= '<input id="crop-'.$formfield.'" class="image-crop" name="'.$name.'[crop]" type="hidden" value="'.$args['value_crop'].'" />';
-		$output .= '<input id="width-'.$formfield.'" class="image-width" name="'.$name.'[width]" type="hidden" value="'.$args['value_width'].'" />';
-		$output .= '<input id="height-'.$formfield.'" class="image-height" name="'.$name.'[height]" type="hidden" value="'.$args['value_height'].'" />';
+		// $output .= '<input id="width-'.$formfield.'" class="image-width" name="'.$name.'[width]" type="hidden" value="'.$args['value_width'].'" />';
+		// $output .= '<input id="height-'.$formfield.'" class="image-height" name="'.$name.'[height]" type="hidden" value="'.$args['value_height'].'" />';
 	}
 
 	return $output;

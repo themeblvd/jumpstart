@@ -508,6 +508,23 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
+			// Set each item in the multicheck to false if it wasn't sent in the $_POST
+			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
+				foreach ( $option['options'] as $key => $value ) {
+					$input[$id][$key] = '0';
+				}
+			}
+
+			// If option wasn't sent through, set it the default
+			if ( ! isset( $input[$id] ) ) {
+				if ( isset( $option['std'] ) ) {
+					$clean[$id] = $option['std'];
+				} else {
+					$clean[$id] = '';
+				}
+				continue;
+			}
+
 			// For button option type, set checkbox to false if it wasn't
 			// sent in the $_POST
 			if ( 'button' == $option['type'] ) {
@@ -516,13 +533,6 @@ class Theme_Blvd_Options_Page {
 				}
 				if ( ! isset( $input[$id]['include_border'] ) ) {
 					$input[$id]['include_border'] = '0';
-				}
-			}
-
-			// Set each item in the multicheck to false if it wasn't sent in the $_POST
-			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
-				foreach ( $option['options'] as $key => $value ) {
-					$input[$id][$key] = '0';
 				}
 			}
 
