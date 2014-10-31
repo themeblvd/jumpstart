@@ -677,13 +677,6 @@ button:active {
 		background-size: 32px 64px;
 	}
 }
-.carrousel-slider-wrapper .roundabout-nav a {
-	color: #cccccc;
-}
-.carrousel-slider-wrapper .roundabout-nav a:hover,
-.carrousel-slider-wrapper .roundabout-nav a:focus {
-	color: #ffffff;
-}
 .tb-tabs-framed .tab-content {
 	background: #333333;
 	border-color: #000000;

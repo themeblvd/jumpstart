@@ -19,11 +19,3 @@
 .attachment-square_smallest img.wp-post-image {
 	max-width: inherit;
 }
-
-/* Carrousel slider fix in IE8 */
-.carrousel-slider-wrapper .roundabout-moveable-item img {
-	max-width: inherit;
-}
-.carrousel-slider-wrapper .tb-block-click {
-	display: none;
-}
