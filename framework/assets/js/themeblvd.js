@@ -827,7 +827,7 @@ jQuery(document).ready(function($) {
 
 			var $el = $(this),
 				data = $el.data('bs.carousel'),
-				current = data.getActiveIndex()+1;
+				current = data.getItemIndex(data.$element.find('.item.active'))+1;
 
 			$el.find('.carousel-thumb-nav li').removeClass('active');
 			$el.find('.carousel-thumb-nav li:nth-child('+current+')').addClass('active');
