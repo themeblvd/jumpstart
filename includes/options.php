@@ -9,17 +9,6 @@
  */
 function jumpstart_customizer() {
 
-	// Setup logo options
-	$logo_options = array(
-		'logo' => array(
-			'name' 		=> __( 'Logo', 'themeblvd' ),
-			'id' 		=> 'logo',
-			'type' 		=> 'logo',
-			'transport'	=> 'postMessage'
-		)
-	);
-	themeblvd_add_customizer_section( 'logo', __( 'Logo', 'themeblvd' ), $logo_options, 1 );
-
 	// Setup custom styles option
 	$custom_styles_options = array(
 		'custom_styles' => array(
