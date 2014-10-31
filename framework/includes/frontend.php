@@ -332,7 +332,7 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
-		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.0' );
+		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.0' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
