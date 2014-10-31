@@ -776,8 +776,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		));
 	}
 
-	echo '<pre>'; print_r($images); echo '</pre>';
-
 	// Slider auto rotate speed
 	$interval = $args['interval'];
 

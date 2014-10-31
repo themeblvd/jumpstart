@@ -838,18 +838,42 @@ function themeblvd_sanitize_price_cols( $input ) {
 
 			$output[$item_id]['highlight'] = wp_kses( $item['highlight'], array() );
 			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
-			$output[$item_id]['title_subline'] = wp_kses( $item['title_subline'], array() );
+
+			if ( isset( $item['title_subline'] ) ) {
+				$output[$item_id]['title_subline'] = wp_kses( $item['title_subline'], array() );
+			}
+
 			$output[$item_id]['price'] = wp_kses( $item['price'], array() );
 			$output[$item_id]['price_subline'] = wp_kses( $item['price_subline'], array() );
 			$output[$item_id]['features'] = apply_filters( 'themeblvd_sanitize_textarea', $item['features'] );
 
-			$output[$item_id]['button_color'] = wp_kses( $item['button_color'], array() );
-			$output[$item_id]['button_custom'] = apply_filters( 'themeblvd_sanitize_button', $item['button_custom'] );
-			$output[$item_id]['button_text'] = wp_kses( $item['button_text'], array() );
-			$output[$item_id]['button_url'] = wp_kses( $item['button_url'], array() );
-			$output[$item_id]['button_size'] = wp_kses( $item['button_size'], array() );
-			$output[$item_id]['button_icon_before'] = wp_kses( $item['button_icon_before'], array() );
-			$output[$item_id]['button_icon_after'] = wp_kses( $item['button_icon_after'], array() );
+			if ( isset( $item['button_color'] ) ) {
+				$output[$item_id]['button_color'] = wp_kses( $item['button_color'], array() );
+			}
+
+			if ( isset( $item['button_custom'] ) ) {
+				$output[$item_id]['button_custom'] = apply_filters( 'themeblvd_sanitize_button', $item['button_custom'] );
+			}
+
+			if ( isset( $item['button_custom'] ) ) {
+				$output[$item_id]['button_text'] = wp_kses( $item['button_text'], array() );
+			}
+
+			if ( isset( $item['button_url'] ) ) {
+				$output[$item_id]['button_url'] = wp_kses( $item['button_url'], array() );
+			}
+
+			if ( isset( $item['button_size'] ) ) {
+				$output[$item_id]['button_size'] = wp_kses( $item['button_size'], array() );
+			}
+
+			if ( isset( $item['button_icon_before'] ) ) {
+				$output[$item_id]['button_icon_before'] = wp_kses( $item['button_icon_before'], array() );
+			}
+
+			if ( isset( $item['button_icon_after'] ) ) {
+				$output[$item_id]['button_icon_after'] = wp_kses( $item['button_icon_after'], array() );
+			}
 
 			if ( empty( $item['popout'] ) ) {
 				$output[$item_id]['popout'] = '0';
@@ -1258,7 +1282,11 @@ function themeblvd_sanitize_buttons( $input ) {
 		foreach ( $input as $item_id => $item ) {
 			$output[$item_id] = array();
 			$output[$item_id]['color'] = wp_kses( $item['color'], array() );
-			$output[$item_id]['custom'] = apply_filters( 'themeblvd_sanitize_button', $item['custom'] );
+
+			if ( isset( $item['custom'] ) ) {
+				$output[$item_id]['custom'] = apply_filters( 'themeblvd_sanitize_button', $item['custom'] );
+			}
+
 			$output[$item_id]['text'] = apply_filters( 'themeblvd_sanitize_text', $item['text'] );
 			$output[$item_id]['size'] = wp_kses( $item['size'], array() );
 			$output[$item_id]['url'] = wp_kses( $item['url'], array() );
