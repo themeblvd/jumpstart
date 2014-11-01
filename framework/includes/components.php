@@ -349,7 +349,7 @@ function themeblvd_get_jumbotron( $args, $content ) {
         'bg_color'      => '',      // Background color - Ex: #000000 (no option in Builder)
         'bg_opacity'    => '1',     // BG color opacity for rgba()
         'title_size'    => '30px',  // Size of title text
-        'title_color'   => '#444',  // Color of title text
+        'title_color'   => '',      // Color of title text
         'text_size'     => '18px',  // Size of content text
         'text_color'    => '',      // Text color - Ex: #000000
         'text_align'    => 'left',  // How to align text - left, right, center
@@ -392,8 +392,19 @@ function themeblvd_get_jumbotron( $args, $content ) {
 
     // Construct initial jumbotron
     if ( $args['title'] ) {
-        $title = sprintf( '<span class="title" style="color:%s;font-size:%s;">%s</span>', $args['title_color'], $args['title_size'], $args['title'] );
-        $content = $title.$content;
+
+        $title_style = '';
+
+        if ( $args['title_color'] ) {
+            $title_style .= 'color: '.$args['title_color'].';';
+        }
+
+        if ( $args['title_size'] ) {
+            $title_style .= 'font-size: '.$args['title_size'].';';
+        }
+
+        $content = sprintf( '<span class="title" style="%s">%s</span>%s', $title_style, $args['title'], $content );
+
     }
 
     $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, do_shortcode( $content ) );
