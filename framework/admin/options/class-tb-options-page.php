@@ -437,7 +437,6 @@ class Theme_Blvd_Options_Page {
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit" class="options-page-footer">
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
-							<input type="submit" class="reset-button button-secondary hide" value="<?php esc_attr_e( 'Restore Defaults', 'themeblvd' ); ?>" />
 							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
 							<?php if ( $this->args['export'] ) : ?>
 								<a href="<?php echo admin_url($this->args['parent'].'?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
