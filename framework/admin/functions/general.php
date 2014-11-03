@@ -249,6 +249,7 @@ function themeblvd_disable_nag() {
  */
 function themeblvd_clear_options() {
 	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
+		check_admin_referer( themeblvd_get_option_name().'-options' );
 		$option_id = $_POST['themeblvd_clear_options'];
 		delete_option( $option_id );
 		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'themeblvd-error error fade' );
