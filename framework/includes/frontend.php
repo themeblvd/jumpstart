@@ -250,7 +250,7 @@ function themeblvd_body_class( $classes ) {
 	}
 
 	// Dark/Light content
-	if ( themeblvd_supports( 'assets', 'dark' ) ) {
+	if ( themeblvd_supports( 'display', 'dark' ) ) {
 		$classes[] = 'content_dark';
 	} else {
 		$classes[] = 'content_light';

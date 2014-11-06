@@ -1581,7 +1581,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
                 }
 
                 $output .= '<div class="button-wrap">';
-                $output .= themeblvd_button( stripslashes($col['button_text']), $col['button_url'], $col['button_color'], $col['button_target'], $col['button_size'], null, null, $col['button_icon_before'], $col['button_icon_after'], $addon );
+                $output .= themeblvd_button( stripslashes($col['button_text']), $col['button_url'], $col['button_color'], apply_filters('themeblvd_pricing_table_btn_target', '_self'), $col['button_size'], null, null, $col['button_icon_before'], $col['button_icon_after'], $addon );
                 $output .= '</div>';
 
             }

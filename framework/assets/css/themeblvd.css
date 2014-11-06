@@ -131,7 +131,7 @@
  *   24.3 - Video
  *   24.4 - Simple Slider
  *   24.5 - BG Slideshow
- *   24.6 - BG Slideshow
+ *   24.6 - Featured Banner
  * 25.0 - Post Display (loop.php)
  *   25.1 - Post List
  *   25.2 - Post Grid
@@ -270,7 +270,8 @@ p {
 /* Panels */
 .panel,
 .panel-group .panel,
-.panel-heading {
+.panel-heading,
+.panel-footer {
 	border-radius: 0;
 }
 
@@ -367,6 +368,9 @@ a.bg-primary:hover,
 	background-color: #222222;
 	border-color: #000000;
 	color: #ffffff;
+}
+.panel-primary {
+	border-color: #000000;
 }
 
 /* =Common Classes
@@ -740,6 +744,7 @@ body.admin-bar .tb-sticky-menu {
 }
 .tb-sticky-menu .tb-search-popup {
 	float: right;
+	margin-left: 5px;
 }
 .tb-sticky-menu .tb-search-popup .search-trigger {
 	line-height: 48px;
@@ -4856,6 +4861,15 @@ button.mfp-arrow {
 .entry-content h6:last-child {
 	margin-bottom: 0;
 }
+.tb-content-block.text-light,
+.tb-content-block.text-light h1,
+.tb-content-block.text-light h2,
+.tb-content-block.text-light h3,
+.tb-content-block.text-light h4,
+.tb-content-block.text-light h5,
+.tb-content-block.text-light h6 {
+	color: #ffffff;
+}
 
 /* Headline */
 .tb-headline h1,
@@ -5115,7 +5129,7 @@ blockquote small {
 	opacity: 1;
 }
 
-/* BG Slideshow */
+/* Featured Banner */
 .tb-featured-banner > .wrap {
 	min-height: 200px;
 	position: relative;
@@ -5757,6 +5771,15 @@ blockquote small {
 .tb-icon-box h6 {
 	margin: 0 0 5px 0;
 }
+.tb-icon-box.text-light,
+.tb-icon-box.text-light h1,
+.tb-icon-box.text-light h2,
+.tb-icon-box.text-light h3,
+.tb-icon-box.text-light h4,
+.tb-icon-box.text-light h5,
+.tb-icon-box.text-light h6 {
+	color: #ffffff;
+}
 .tb-icon-box.icon-side .entry-content {
 	/* inline left padding based on width of icon */
 }
@@ -6069,6 +6092,12 @@ blockquote small {
 	background: #ffffff;
 	border-bottom-color: transparent !important;
 }
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+	background-color: transparent;
+	color: #666666;
+}
 .nav-tabs > li:first-child {
 	border-left-width: 1px;
 }
@@ -6086,7 +6115,7 @@ blockquote small {
 }
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus {
-	background-color: rgba(0, 0, 0, .1);
+	background-color: rgba(0,0,0,.1);
 }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
@@ -6157,9 +6186,9 @@ blockquote small {
 	margin-bottom: 0;
 }
 .tb-testimonial.standard .testimonial-text {
-	background-color: #f2f2f2; /* Matches Bootstrap jumobotron */
+	background-color: #f2f2f2;
 	border-radius: 4px;
-	color: #333333; /* Matches Bootstrap jumobotron */
+	color: #333333;
 	font-size: 15px;
 	padding: 15px;
 	position: relative;
@@ -6177,7 +6206,7 @@ blockquote small {
 .tb-testimonial.standard .arrow {
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-top: 5px solid #eeeeee;
+	border-top: 5px solid #f2f2f2;
 	display: block;
 	position: absolute;
 	bottom: -5px;
@@ -6535,7 +6564,7 @@ blockquote small {
 /* Scroll-to-Top Button */
 .tb-scroll-to-top {
 	background-color: #dadada;
-	background-color: rgba(0, 0, 0, .1);
+	background-color: rgba(0,0,0,.1);
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	color: #ffffff;
@@ -6551,7 +6580,7 @@ blockquote small {
 	z-index: 20;
 }
 .tb-scroll-to-top:hover {
-	background-color: rgba(0, 0, 0, .2);
+	background-color: rgba(0,0,0,.2);
 	color: #ffffff;
 }
 @media (max-width: 767px) {
@@ -6941,7 +6970,7 @@ body.blank-page {
 	}
 }
 
-/* =Dark Text Color
+/* =Dark Text Color (for themeblvd-dark.css, flip with Light Text section)
 -----------------------------------------------*/
 
 /* Typgography */
@@ -6991,6 +7020,7 @@ body.blank-page {
 	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
 }
 .text-dark input[type="text"],
+.text-dark input[type="search"],
 .text-dark input[type="password"],
 .text-dark input[type="email"],
 .text-dark input[type="url"],
@@ -7010,6 +7040,7 @@ body.blank-page {
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .text-dark input[type="text"]:focus,
+.text-dark input[type="search"]:focus,
 .text-dark input[type="password"]:focus,
 .text-dark input[type="email"]:focus,
 .text-dark input[type="url"]:focus,
@@ -7029,6 +7060,9 @@ body.blank-page {
 .text-dark input[type="text"]::-moz-placeholder,
 .text-dark input[type="text"]:-ms-input-placeholder,
 .text-dark input[type="text"]::-webkit-input-placeholder,
+.text-dark input[type="search"]::-moz-placeholder,
+.text-dark input[type="search"]:-ms-input-placeholder,
+.text-dark input[type="search"]::-webkit-input-placeholder,
 .text-dark input[type="password"]::-moz-placeholder,
 .text-dark input[type="password"]:-ms-input-placeholder,
 .text-dark input[type="password"]::-webkit-input-placeholder,
@@ -7088,7 +7122,7 @@ body.blank-page {
 	border-color: #adadad;
 }
 
-/* =Light Text Color
+/* =Light Text Color (for themeblvd-dark.css, flip with Dark Text section)
 -----------------------------------------------*/
 
 /* Typgography */
@@ -7164,6 +7198,7 @@ body.blank-page {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 .text-light input[type="text"],
+.text-light input[type="search"],
 .text-light input[type="password"],
 .text-light input[type="email"],
 .text-light input[type="url"],
@@ -7181,6 +7216,7 @@ body.blank-page {
 	border-color: rgba(0, 0, 0, 0.9);
 }
 .text-light input[type="text"]:focus,
+.text-light input[type="search"]:focus,
 .text-light input[type="password"]:focus,
 .text-light input[type="email"]:focus,
 .text-light input[type="url"]:focus,
@@ -7200,6 +7236,9 @@ body.blank-page {
 .text-light input[type="text"]::-moz-placeholder,
 .text-light input[type="text"]:-ms-input-placeholder,
 .text-light input[type="text"]::-webkit-input-placeholder,
+.text-light input[type="search"]::-moz-placeholder,
+.text-light input[type="search"]:-ms-input-placeholder,
+.text-light input[type="search"]::-webkit-input-placeholder,
 .text-light input[type="password"]::-moz-placeholder,
 .text-light input[type="password"]:-ms-input-placeholder,
 .text-light input[type="password"]::-webkit-input-placeholder,
