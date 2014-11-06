@@ -496,13 +496,7 @@ a img.alignright {
 	float: right;
 	margin: 5px 0 20px 20px;
 }
-<<<<<<< HEAD
-a img.alignnone {
-	margin: 5px 0 20px 0;
-}
-=======
 /* @noflip */
->>>>>>> framework-2-5
 a img.alignleft {
 	float: left;
 	margin: 5px 20px 20px 0;
@@ -532,14 +526,8 @@ a img.alignleft {
 	width: auto;
 }
 p.wp-caption-text {
-<<<<<<< HEAD
-	font-size: .9em; /* Fallback for older browsers */
-	font-size: .9rem;
-	line-height: 1.4em;
-=======
 	font-size: 11px;
 	line-height: 1.4;
->>>>>>> framework-2-5
 	text-align: center;
 }
 .wp-caption p.wp-caption-text {

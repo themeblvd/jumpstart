@@ -611,11 +611,6 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	$post_id = get_the_ID();
-<<<<<<< HEAD
-	$unique_id = uniqid('gallery_slider_');
-	$size = apply_filters( 'themeblvd_gallery_slider_size', $args['size'], $post_id );
-=======
->>>>>>> framework-2-5
 
 	// Did user pass in a gallery shortcode?
 	if ( $gallery ) {
@@ -656,16 +651,11 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	// Prepare images
 	$images = array();
 
-<<<<<<< HEAD
-	$output  = sprintf( '<div id="%s" class="tb-bootstrap-carousel tb-gallery-bootstrap-carousel carousel slide" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $unique_id, $args['interval'], $args['pause'], $args['wrap'] );
-	$output .= "\n<div class=\"carousel-control-wrap\">\n";
-=======
 	if ( $args['size'] ) {
 		$crop = $args['size'];
 	} else {
 		$crop = apply_filters('themeblvd_gallery_slider_default_crop', 'slider-x-large');
 	}
->>>>>>> framework-2-5
 
 	foreach ( $attachments as $attachment ) {
 
@@ -693,12 +683,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 			'desc'		=> $caption,
 		);
 
-<<<<<<< HEAD
-			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $unique_id, $counter, $class );
-			$output .= "\n";
-=======
 	}
->>>>>>> framework-2-5
 
 	if ( $args['frame'] ) {
 		$args['class'] = 'thumbnail';
@@ -847,15 +832,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		$style .= sprintf( "height: %spx;\n", $args['height_desktop'] );
 		$style .= "}\n";
 
-<<<<<<< HEAD
-		$output .= "<a class=\"left carousel-control\" href=\"#{$unique_id}\" data-slide=\"prev\">\n";
-		$output .= "<span class=\"glyphicon glyphicon-chevron-left\"></span>\n";
-		$output .= "</a>\n";
-
-		$output .= "<a class=\"right carousel-control\" href=\"#{$unique_id}\" data-slide=\"next\">\n";
-		$output .= "<span class=\"glyphicon glyphicon-chevron-right\"></span>\n";
-		$output .= "</a>\n";
-=======
 		$style .= "@media (max-width: 992px) {\n";
 		$style .= sprintf( "#%s .image {\n", $args['id'] );
 		$style .= sprintf( "height: %spx;\n", $args['height_tablet'] );
@@ -871,7 +847,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		$style .= "</style>\n";
 
 		$output .= apply_filters( 'themeblvd_simple_slider_cover_style', $style, $args );
->>>>>>> framework-2-5
 
 	}
 
@@ -893,15 +868,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 				$class = 'active';
 			}
 
-<<<<<<< HEAD
-			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s">', $unique_id, $counter, $class );
-			$image = wp_get_attachment_image_src( $attachment->ID, $args['thumb_size'] );
-			$output .= sprintf( "<img src=\"%s\" alt=\"%s\" />\n", $image[0], $attachment->post_title );
-			$output .= '</li>';
-			$output .= "\n";
-=======
 			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $args['id'], $counter, $class );
->>>>>>> framework-2-5
 
 			$counter++;
 		}
@@ -912,12 +879,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	// Slides
 	$output .= '<div class="carousel-inner">';
 
-<<<<<<< HEAD
-	return apply_filters( 'themeblvd_gallery_slider', $output, $post_id, $attachments, $args, $unique_id );
-}
-=======
 	$counter = 0;
->>>>>>> framework-2-5
 
 	if ( count( $images ) > 1 ) {
 		foreach ( $images as $img ) {
