@@ -4,88 +4,377 @@ Theme URI: http://www.wpjumpstart.com
 Description: The Theme Blvd WordPress theme framework packed into a Parent theme framework.
 Author: Theme Blvd
 Author URI: http://www.themeblvd.com
-Version: 1.3.0
+Version: 2.0.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/* =Primary Design and Structure
+/**
+ * Table of Contents:
+ *
+ * 1.0 - Primary Structure
+ * 2.0 - Top
+ *   2.1 - Header Top
+ *   2.2 - Header Content
+ *   2.3 - Primary Navigation (non-mobile view)
+ *   2.4 - Level 1
+ *   2.5 - Level 2+
+ *   2.6 - Sticky Menu
+ *   2.7 - Hidden Responsive Side Menu
+ *   2.8 - Transparent Header
+ * 3.0 - Main
+ * 4.0 - Bottom
+ * 5.0 - Content
+ *   5.1 - Typography
+ *   5.2 - Content Background
+ *   5.3 - Primary Color
+ *   5.4 - Posts
+ *   5.5 - Pages
+ *   5.6 - Titles
+ *   5.7 - Meta
+ *   5.8 - Sub Meta
+ *   5.9 - Post Formats
+ *   5.10 - Related Posts
+ *   5.11 - Edit Link
+ * 6.0 - Comments
+ *   6.1 - Comment List
+ *   6.2 - Admin Comment
+ *   6.3 - Children
+ *   6.4 - Comment Form
+ *   6.5 - Comment Form (in reply)
+ * 7.0 - Archives
+ *   7.1 - Archive Info and Author Box
+ *   7.2 - Search Results
+ *   7.3 - Posts Wrap
+ * 8.0 - Page Templates
+ *   8.1 - Post List
+ *   8.2 - Post Grid
+ *   8.3 - Post Showcase
+ *   8.4 - Blank Page
+ *   8.5 - Custom Layout
+ * 9.0 - Widgets
+ *   9.1 - Fixed Sidebars
+ *   9.2 - Collapsible Widget Areas
+ * 10.0 - Responsive
+ *   10.1 - Small Desktops
+ *   10.2 - Tablets
+ *   10.3 - Mobile
+ ----------------------------------------------- */
+
+/* =Primary Structure
 ----------------------------------------------- */
 
-/**
- * Most of these styles will most likely be overridden
- * These are meant to be as simple as possible in order
- * to setup a quick boxed layout.
- */
-
-body {
-	background: #f2f2f2;
+.header-top > .wrap,
+.header-above > .wrap,
+.header-content > .wrap,
+.header-nav > .wrap,
+.tb-sticky-menu > .wrap,
+.tb-featured-banner > .wrap,
+.site-inner > .wrap,
+.element-section > .element,
+.site-footer > .wrap {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1170px;
 }
-#container {
+
+/* =Top
+----------------------------------------------- */
+
+#top {
+	position: relative;
+}
+
+/* Header Top */
+.header-top {
 	background: #ffffff;
-	margin: 0 auto;
-	max-width: 1000px; /* 30 + 940 + 30 = 1,000px */
+	position: relative;
+}
+.header-top > .wrap {
+	padding: 12px 10px;
+}
+.header-top-text {
+	float: left;
+	line-height: 24px; /* Match height of social icons */
+}
+.header-top-nav {
+	margin: 0;
+}
+.header-top-nav > li {
+	float: right;
+	border-right: 1px solid #dddddd;
+	padding: 0 8px;
+}
+.header-top-nav > li:first-child {
+	border-right: none;
+	padding-right: 0;
+}
+.btn-navbar {
+	background: #333333;
+	color: #ffffff;
+	padding: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+.btn-navbar:hover {
+	background: #000000;
+	color: #ffffff;
 }
 
-/* =Global Elements and Typography
--------------------------------------------------------------- */
+/* Header Content */
+.header-content > .wrap {
+	padding: 20px;
+}
+.header-content .header-logo {
+	float: left;
+}
 
+/* Primary Navigation (non-mobile view) */
+.header-nav {
+	background: #333333;
+}
+.tb-primary-menu .menu-btn  {
+	display: block;
+	line-height: 1;
+}
+.tb-primary-menu .menu-btn ,
+.tb-primary-menu .menu-btn:hover {
+	text-decoration: none;
+}
+
+/* Level 1 */
+.tb-primary-menu > li > .menu-btn {
+	color: #ffffff;
+	font-size: 14px;
+	padding: 18px 20px;
+}
+.tb-primary-menu > li > a:hover {
+	background: #222222;
+}
+.tb-primary-menu > li > .menu-btn.sf-with-ul {
+	padding-right: 10px;
+}
+
+/* Level 2+ */
+.tb-primary-menu ul.non-mega-sub-menu,
+.tb-primary-menu .sf-mega {
+	background: #ffffff;
+	border: 1px solid #dddddd;
+}
+.tb-primary-menu > li > ul.non-mega-menu { /* Level 2 only */
+	border-top: none;
+}
+.tb-primary-menu ul .menu-btn,
+.tb-primary-menu .mega-section-header {
+	color: #666666;
+	font-size: 13px;
+	padding: 12px;
+}
+.tb-primary-menu ul a:hover {
+	background: #f5f5f5;
+}
+
+/* Sticky Menu */
+.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
+	background: #f8f8f8;
+}
+
+/* Hidden Responsive Side Menu */
+#tb-side-menu-wrapper,
+#tb-side-menu-wrapper .tb-side-menu,
+#tb-side-menu-wrapper .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {
+	background-color: #333333;
+}
+#tb-side-menu-wrapper {
+	border-right: 1px solid #000000;
+}
+#tb-side-menu-wrapper .tb-side-menu a,
+#tb-side-menu-wrapper .tb-side-menu span {
+	color: #ffffff;
+}
+#tb-side-menu-wrapper .tb-side-menu a:hover,
+#tb-side-menu-wrapper .tb-side-menu a:active {
+	text-decoration: underline;
+}
+#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle {
+	color: #cccccc;
+}
+#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,
+#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active {
+	color: #ffffff;
+}
+#tb-side-menu-wrapper .tb-side-menu > li {
+	border-bottom: 1px solid #000000;
+}
+#tb-side-menu-wrapper .tb-side-menu .sub-menu {
+	background-image: url('framework/assets/images/parts/side-nav-list-outer-000000.png');
+}
+#tb-side-menu-wrapper .tb-side-menu .sub-menu li {
+	background-image: url('framework/assets/images/parts/side-nav-list-000000.png');
+}
+#tb-side-menu-wrapper .tb-search {
+	border-bottom: 1px solid #000000;
+}
+#tb-side-menu-wrapper .tb-search .search-input {
+	color: #ffffff;
+}
+
+/* Transparent Header */
+.transparent .header-top {
+	background-color: rgba(0,0,0,.2);
+}
+.transparent .header-top-nav > li {
+	border-color: rgba(0,0,0,.4);
+}
+.transparent .header-nav {
+	background-color: rgba(0,0,0,.2);
+}
+.transparent .tb-primary-menu > li > a:hover {
+	background-color: rgba(0,0,0,.4);
+}
+.transparent .btn-navbar {
+	background-color: transparent;
+}
+.transparent .btn-navbar:hover {
+	background-color: rgba(0,0,0,.4);
+}
+
+/* =Main
+----------------------------------------------- */
+
+#main {
+	padding: 20px 0;
+}
+
+/* =Bottom
+----------------------------------------------- */
+
+.footer-sub-content {
+	font-size: 12px;
+	padding: 20px 0;
+	text-align: center;
+}
+.footer-sub-content p {
+	margin-bottom: 10px;
+}
+.footer-sub-content ul {
+	margin: 0;
+}
+
+/* =Layouts
+----------------------------------------------- */
+
+/* =Content
+----------------------------------------------- */
+
+/* Typography */
 html,
 body {
+	background: #f5f5f5;
 	color: #666666;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	line-height: 1.5;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.6;
 }
 h1, h2, h3, h4, h5, h6 {
+	color: #333333;
 	font-weight: bold;
 	line-height: 1.1;
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 h1 {
-	font-size: 27px;
+	font-size: 32px;
 }
 h2 {
-	font-size: 24px;
+	font-size: 27px;
 }
 h3 {
-	font-size: 18px;
+	font-size: 20px;
 }
 h4 {
-	font-size: 14px;
+	font-size: 15px;
 }
 h5 {
 	font-size: 13px;
 }
 h6 {
 	font-size: 11px;
-	color: #999999;
-	text-transform: uppercase;
 }
 a {
-	color: #2a9ed4;
+	color: #428bca;
 	text-decoration: none;
 }
 a:hover,
-.tb-text-logo:hover,
 .entry-title a:hover,
-a:focus,
-.tb-text-logo:focus,
-.entry-title a:focus {
-	color: #1a5a78;
+#comments .comment-body .comment-meta a:hover {
+	color: #2a6496;
+	text-decoration: underline;
+}
+.tb-text-logo a:hover,
+.entry-title a:hover {
 	text-decoration: none;
 }
-p,
-pre {
-	margin-bottom: 1.38em;
+p {
+	margin-bottom: 20px;
 }
 
-/* =Content
------------------------------------------------ */
+/* Content Background */
+.bg-content {
+	background: #ffffff;
+	padding: 30px;
+}
 
-article {
-	margin-bottom: 40px;
+/* Primary Color */
+.primary,
+.bg-primary,
+.btn-primary,
+.label-primary,
+.panel-primary > .panel-heading {
+	background-color: #333333;
+	border-color: #000000;
+	color: #ffffff;
+}
+.primary:hover,
+.primary:focus,
+a.bg-primary:hover,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+	background-color: #222222;
+	border-color: #000000;
+	color: #ffffff;
+}
+.panel-primary {
+	border-color: #000000;
+}
+
+/* Posts */
+.blog-wrap > article,
+article.single {
+	background: #ffffff;
+	margin-bottom: 30px;
+	padding: 30px;
+}
+.loop-shortcode > .blog-wrap > article {
+	background: transparent;
+	padding: 0;
+}
+.content_dark .blog-wrap > article,
+.content_dark article.single {
+	background: #2c2c2c;
+}
+
+/* Pages */
+article.page {
+	background: #ffffff;
+	padding: 30px;
 }
 
 /* Titles */
@@ -102,248 +391,80 @@ article {
 
 /* Meta */
 .entry-meta {
-	color: #999999;
-	font-size: 11px; /* Fallback for older browsers */
-	font-size: .85rem;
-	font-weight: bold;
+	font-size: 12px;
 	margin: 5px 2px 15px 2px;
 }
 .entry-meta .fa {
-	padding-right: 5px;
+	padding-right: 4px;
 }
 .entry-meta .sep {
-	color: #cccccc;
 	font-weight: normal;
 	padding: 0 7px;
 }
 
-/* Images */
-img {
-	max-width: 100%;
-	height: auto;
+/* Sub Meta */
+.sub-meta {
+	margin: 20px 0 0 0;
 }
-img[class*="wp-image-"] {
-	/* Style all inserted wp images. */
+.sub-meta .tb-share {
+	margin-bottom: 5px;
 }
-img.size-full {
-	max-width: 100%;
-	width: auto; /* Prevent stretching of full-size images in IE8 */
-}
-.entry-content img.wp-smiley {
-	border: none;
-	margin-bottom: 0;
-	margin-top: 0;
-	padding: 0;
+.sub-meta .title:after {
+	content: " ";
 }
 
-/* =Top
--------------------------------------------------------------- */
-
-#top {
-	position: relative;
-	padding: 0 30px;
-}
-#header_content {
-	padding: 20px 0;
+/* Post Formats */
+.entry-title a .fa {
+	font-size: .7em;
 }
 
-/* Text Logo */
-.header_logo_text {
-	padding: 0 15px;
-}
-.header_logo_text .tb-text-logo {
-	font-size: 30px; /* Fallback for older browsers */
-	font-size: 2.3rem;
-	margin: 0;
-}
-.header_logo_text .tb-text-logo a {
-	color: inherit;
-}
-.header_logo_text .tagline {
-	color: #888888;
-	font-style: italic;
-	font-size: 13px; /* Fallback for older browsers */
-	font-size: 1rem;
-}
-
-/* Primary Navigation */
-#access {
-	background-color: #fbfbfb;
-	background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
-	background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f5f5f5));
-	background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
-	background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
-	background-image: linear-gradient(top, #ffffff, #f5f5f5);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
-	border: 1px solid #dddddd;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-/* Level 1-3 */
-#primary-menu li a {
-	color: #666666;
-}
-#primary-menu li a .sf-sub-indicator {
-	color: #999999; /* Because we're using fontawesome for the icons, we can change the color here. */
-}
-
-/* Level 1 only */
-#primary-menu > li {
-	border-right: solid 1px #dddddd;
-}
-#primary-menu > li > a {
-	line-height: 40px; /* Shapes the HEIGHT of the 1st level anchors */
-	padding: 0 20px;
-}
-#primary-menu > li:first-child > a {
-	/* Round left corners of first anchor */
-	-webkit-border-top-left-radius: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-moz-border-radius-topleft: 3px;
-	-moz-border-radius-bottomleft: 3px;
-	border-top-left-radius: 3px;
-	border-bottom-left-radius: 3px;
-}
-#primary-menu > li.current_page_item > a {
-	/* Style current active menu item on 1st level */
+/* Related Posts */
+.tb-related-posts > .inner {
 	background: #ffffff;
+	padding: 30px;
 }
-#primary-menu > li.current-menu-ancestor > a {
-	/* Style current parent menu item present on 1st level */
-}
-#primary-menu > li > a.sf-with-ul {
-	/* If a top-level menu item has a dropdown, reduce its right padding. */
-	padding-right: 12px;
-}
-#primary-menu > [class^="menu-icon-"] > a {
-	/* If a top-level menu item has a an icon, reduce its left
-	padding. You can add icons to main menu by adding class "menu-icon-{whatever}" */
-	padding-left: 12px;
-}
-#primary-menu > li > a:hover {
-	background: #f2f2f2;
+.tb-related-posts .related-posts-title {
+	font-size: 20px;
+	margin: 0 0 10px 10px;
 }
 
-/* Level 2 and 3 */
-#primary-menu ul {
-	background: #ffffff;
-	border: 1px solid #dddddd;
-	width: 200px; /* Width of dropdown menus */
-}
-#primary-menu li li a {
-	padding: 7px 10px;
-}
-#primary-menu li li a:hover,
-#primary-menu li li a:focus {
-	background: #f2f2f2;
-}
-#primary-menu li li.nav-header {
-	color: #888888; /* Slightly lighter color than links */
-	font-size: .9em; /* Font size is 90% of everything else to componsate for being bold and uppercase */
-	font-weight: bold;
-	padding: 7px 10px;
-	text-transform: uppercase;
-}
-#primary-menu li li.divider {
-	background-color: #dddddd; /* Color of deviders */
-	border-bottom: none; /* Override Bootstrap's default 1px white bottom border */
-}
-
-/* Level 2 only */
-#primary-menu > li > ul {
-	border-top: none;
-	margin-left: -1px; /* Shifts dropdowns to the left 1px so they line up with left borders. */
-	margin-top: 1px;
-}
-
-/* Level 3 only */
-#primary-menu ul ul {
-	left: 200px; /* Matches width of dropdown menus */
-}
-
-/* Make sure graphic nav shows when expanding window back from tablet size */
-@media (min-width: 980px) {
-	#access {
-		height: auto !important;
-		overflow: visible !important;
-	}
-}
-
-/* =Featured (above)
--------------------------------------------------------------- */
-
-#featured {
-	padding: 10px 30px;
-}
-
-/* =Main
--------------------------------------------------------------- */
-
-#main {
-	padding: 20px 30px;
-}
-
-/* =Featured (below)
--------------------------------------------------------------- */
-
-#featured_below {
-	padding: 10px 30px;
-}
-
-/* =Posts (general)
------------------------------------------------ */
-
-/* No style mods */
-
-/* =Page
------------------------------------------------ */
-
-/* No style mods */
-
-/* =Post List
------------------------------------------------ */
-
-/* No style mods */
-
-/* =Post Grid
------------------------------------------------ */
-
-.post_grid .entry-title {
-	font-size: 15px; /* Fallback for older browsers */
-	font-size: 1.15rem;
-	line-height: 1.5em;
+/* Edit Link */
+.edit-link {
+	margin: 10px 0 0 0;
 }
 
 /* =Comments
 ----------------------------------------------- */
 
 /* Comment List */
+#comments ol,
+#comments ul {
+	list-style: none;
+	padding: 0;
+}
+#comments ol.commentlist {
+	margin: 0 0 30px 0;
+}
 #comments li {
 	margin: 5px 0;
 }
 #comments-title {
-	padding: 0 10px;
-}
-#comments .commentlist {
-	margin-bottom: 30px;
+	font-size: 20px;
+	margin: 0 0 10px 10px;
 }
 #comments .comment-body {
-	border: 1px solid #dddddd;
-	padding: 15px;
-	padding-left: 83px;
+	background: #ffffff;
+	padding: 30px;
+	padding-left: 98px;
 	position: relative;
 }
 #comments .comment-body .avatar {
 	position: absolute;
-	top: 15px;
-	left: 15px;
+	top: 30px;
+	left: 30px;
 }
 #comments .comment-author {
-	line-height: 100%;
+	line-height: 1;
 }
 #comments .comment-body .says {
 	display: none;
@@ -352,29 +473,14 @@ img.size-full {
 	margin-bottom: 10px;
 }
 #comments .comment-body .comment-meta a {
-	color: #9e9e9e;
-	font-family: Georgia, serif;
-	font-size: 11px; /* Fallback for older browsers */
-	font-size: .85rem;
-	font-style: italic;
+	color: inherit;
+	font-size: 12px;
 }
 #comments .comment-body .fn {
 	display: block;
 	font-style: normal;
 	font-weight: bold;
 	margin-top: 5px;
-}
-#comments .comment-body p {
-	margin-bottom: 30px;
-}
-#comments .comment-body .reply a {
-	position: absolute;
-	right: 5px;
-	bottom: 5px;
-}
-#comments .comment-body .reply a:hover,
-#comments .comment-body .reply a:focus {
-	background: #dddddd;
 }
 
 /* Admin Comment */
@@ -386,336 +492,250 @@ img.size-full {
 	/* None in this theme */
 }
 
-/* Top Level */
-#comments ol {
-	list-style: none;
-	padding: 0;
-}
-
 /* Children */
 #comments ul.children {
-	border-left: 1px solid #e9e9e9;
-	list-style: none;
+	border-left: 1px solid #dddddd;
 	margin: 10px 0 10px 15px;
 	padding: 10px 0 10px 20px;
 }
 
 /* Comment Form */
-.comment-form-wrapper {
-	margin-bottom: 30px;
+#respond #commentform {
+	background: #ffffff;
+	padding: 30px;
 }
-#reply-title {
-	margin: 10px 0;
+#respond .comment-reply-title {
+	font-size: 20px;
+	margin: 0 0 10px 10px;
 }
-#commentform input.form-control {
-	display: inline-block;
-	margin-right: 10px;
-	width: 40%;
+#respond label {
+	display: block;
 }
-#commentform textarea {
-	width: 98%;
+#respond input[type="email"],
+#respond input[type="text"],
+#respond input[type="url"] {
+	width: 50%;
 }
-#commentform label {
-	display: inline-block;
+#respond .form-allowed-tags {
+	margin-bottom: 5px;
 }
-#commentform .form-submit {
-	margin: 10px 0;
+
+/* Comment Form (in reply) */
+.comment #respond {
+	background: #ffffff;
+	padding: 30px;
+	margin-top: 5px;
 }
-#commentform .form-allowed-tags {
-	display: none;
+.comment #respond #commentform {
+	background: transparent;
+	padding: 0;
+}
+.comment #respond .comment-reply-title {
+	margin: 0 0 20px 0;
+}
+
+/* =Archives
+----------------------------------------------- */
+
+/* Archive Info and Author Box (single post and archives) */
+.tb-info-box {
+	background: #ffffff;
+	padding: 30px;
+}
+
+/* Search Results */
+.search-page {
+	background: #ffffff;
+	padding: 30px;
+}
+
+/* Posts Wrap */
+.post_list.archive-loop,
+.post_grid.archive-loop,
+.post_showcase.archive-loop {
+	background: #ffffff;
+	padding: 30px;
+}
+
+/* =Page Templates
+----------------------------------------------- */
+
+/* Post List */
+.list-template-wrap .list-wrap {
+	background: #ffffff;
+	padding: 30px;
+}
+
+/* Post Grid */
+.grid-template-wrap .grid-wrap {
+	background: #ffffff;
+	padding: 30px;
+}
+
+/* Post Showcase */
+.showcase-template-wrap .showcase-wrap {
+	background: #ffffff;
+	padding: 30px;
+}
+.showcase-template-wrap .tb-sort-nav {
+	padding: 0 10px 5px 10px;
+}
+
+/* Blank Page */
+#blank-page {
+	text-align: center;
+}
+
+/* Custom Layout */
+.element-section > .element.bg-content,
+.element-columns .element.bg-content {
+	background: #ffffff;
+	padding: 30px;
 }
 
 /* =Widgets
 ----------------------------------------------- */
 
-.widget ul {
-	list-style: none;
-	padding-left: 0;
-}
-.widget ul li {
-	padding: 3px 0;
-}
-
-/* Widgets in columns element and fixed sidebars */
+/* Fixed Sidebars */
 .fixed-sidebar .widget {
-	margin: 0 0 30px 0;
+	background: #ffffff;
+	margin-bottom: 30px;
+	padding: 30px;
+}
+.fixed-sidebar .widget-title {
+	margin-top: 0;
 }
 
 /* Collapsible Widget Areas */
-.widget-area-collapsible .widget {
-	padding: 10px 0;
-}
+/* ... */
 
-/* =Bottom
+/* =Responsive
 ----------------------------------------------- */
 
-#bottom {
-	padding: 10px 30px;
-}
+/* Small Desktops */
+@media (max-width: 1200px) {
 
-/* Footer Columns */
-#footer_content {
-	border-top: 1px solid #eeeeee;
-	border-bottom: 1px solid #eeeeee;
-	padding: 30px 5px;
-}
-
-/* Copyright */
-#footer_sub_content {
-	color: #888888;
-	font-size: 11px; /* Fallback for older browsers */
-	font-size: .85rem;
-	padding: 20px;
-	text-align: center;
-}
-#footer_sub_content .footer-nav ul {
-	margin: 0;
-}
-#footer_sub_content .footer-nav li {
-	display: inline-block;
-	list-style: none;
-	padding: 0 5px;
-}
-
-/* =Layout Builder
------------------------------------------------ */
-
-/* General Elements */
-.element {
-	/* Style all elements in custom layouts. */
-}
-.element-columns {
-	/* Style the "Columns" element. */
-}
-.element-content {
-	/* Style the "Content" element. */
-}
-.element-divider {
-	/* Style the "Divider" element. */
-}
-.element-headline {
-	/* Style the "Headline" element. */
-}
-.element-post_grid_paginated {
-	/* Style the "Post Grid (paginated)" element. */
-}
-.element-post_grid {
-	/* Style the "Post Grid" element. */
-}
-.element-post_grid_slider {
-	/* Style the "Post Grid Slider" element. */
-}
-.element-post_list_paginated {
-	/* Style the "Post List (paginated)" element. */
-}
-.element-post_list {
-	/* Style the "Post List" element. */
-}
-.element-post_list_slider {
-	/* Style the "Post List Slider" element. */
-}
-.element-slider {
-	/* Style the "Slider" element. */
-}
-.element-slogan {
-	/* Style the "Slogan" element. */
-}
-.element-tabs {
-	/* Style the "Tabs" element. */
-}
-.element-tweet {
-	/* Style the "Tweet" element. */
-}
-
-/* Elements by location */
-#featured .element {
-	/* Style elements of a custom layout
-	in the featured area ABOVE the content. */
-}
-#main .element {
-	/* Style elements of a custom layout
-	in the main content area. */
-}
-#featured_below .element {
-	/* Style elements of a custom layout
-	in the featured area BELOW the content. */
-}
-
-/* =Small Desktops
-------------------------------------------------- */
-
-@media (max-width: 1000px) {
-
-	/* Primary Structure */
-	#container {
+	.header-top > .wrap,
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-sticky-menu > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
 		max-width: 960px;
 	}
 
+	/* Top */
+	.tb-primary-menu > li > .menu-btn {
+		padding: 18px 15px;
+	}
+	.tb-primary-menu > li > a.sf-with-ul {
+		padding-right: 7px;
+	}
+
 }
 
-/* =Optimized for Tablets
-------------------------------------------------- */
-
+/* Tablets */
 @media (max-width: 992px) {
 
-	/* Primary Structure */
-	#container {
-		max-width: 748px;
-	}
-	#top,
-	#featured,
-	#main,
-	#featured_below,
-	#bottom {
-		padding-right: 20px;
-		padding-left: 20px;
+	.header-top > .wrap,
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
+		max-width: 738px;
 	}
 
-	/* Header */
-	#branding {
-		border-bottom: 1px solid #eeeeee;
+	/* Top */
+	.header-top {
+		margin: 0 auto;
+		padding-left: 50px;
 	}
-	#branding .header_logo {
-		float: none;
-		text-align: center;
+	.tb-primary-menu > li > .menu-btn {
+		padding: 18px 10px;
+	}
+	.tb-primary-menu > li > .menu-btn.sf-with-ul {
+		padding-right: 5px;
 	}
 
-	/* Primary Navigation */
-	#access {
-		background: #f7f7f7;
-		display: none;
-		margin-bottom: 10px;
+	/* Main */
+	#main {
+		padding-top: 0;
 	}
-	#access li {
-		border: none;
-		float: none;
-		padding: 0;
+	.breadcrumb {
+		font-size: 12px;
+		margin-bottom: 0;
 	}
-	#access #primary-menu > li:first-child > a {
-		-webkit-border-radius: 3px;
-		-webkit-border-bottom-right-radius: 0;
-		-webkit-border-bottom-left-radius: 0;
-		-moz-border-radius: 3px;
-		-moz-border-radius-bottomright: 0;
-		-moz-border-radius-bottomleft: 0;
-		border-radius: 3px;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
-	}
-	#access li li a {
-		padding-left: 20px;
-	}
-	#access li li li a {
-		padding-left: 30px;
-	}
-	#access .sf-menu ul {
-		border: none;
-		margin: 0;
-		position: static;
-		width: auto;
-	}
-	#access .sf-menu ul .sf-sub-indicator.icon-caret-right {
-		position: static;
-		right: inherit;
-	}
-	#access .sf-menu ul .sf-sub-indicator.icon-caret-right:before {
-		content: "\f0d7";
-	}
-	.btn-navbar {
-		border: 1px solid #eeeeee;
-		border-bottom: none;
-		-webkit-border-top-left-radius: 3px;
-		-webkit-border-top-right-radius: 3px;
-		-moz-border-radius-topleft: 3px;
-		-moz-border-radius-topright: 3px;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		color: #666666;
-		display: inline-block;
-		outline: none;
-		margin-left: 5px;
-		padding: 4px 10px;
+	#content {
+		margin-bottom: 30px;
 	}
 
 }
 
-/* =Optimized for Mobile Devices
-------------------------------------------------- */
-
+/* Mobile Devices */
 @media (max-width: 767px) {
 
-	/* Primary Structure */
-	#container {
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
 		max-width: 480px;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 
-	/* Typography */
-	h1 {
-		font-size: 24px; /* Fallback for older browsers */
-		font-size: 1.85rem;
-		line-height: 1.3em;
+	/* Top */
+	.header-top {
+		padding: 12px 50px;
 	}
-
-	/* Builder - Slogan */
-	.element-slogan .tb-slogan {
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-orient: vertical;
-		-webkit-flex-direction: column;
-		-ms-flex-direction: column;
-		box-orient: vertical;
+	.header-top > .wrap {
+		padding: 0;
 	}
-	.element-slogan .tb-slogan .slogan-text {
-		display: block;
-		font-size: 17px; /* Fallback for older browsers */
-		font-size: 1.3rem;
-		text-align: center;
-		-webkit-box-ordinal-group: 1;
-		-ms-flex-order: 1;
-		-webkit-order: 1;
-		order: 1;
-		margin-bottom: 20px;
-	}
-	.element-slogan .tb-slogan .btn-large {
-		display: block;
+	.header-top .header-top-text {
 		float: none;
-		-webkit-box-ordinal-group: 2;
-		-ms-flex-order: 2;
-		-webkit-order: 2;
-		order: 2;
+		text-align: center;
 	}
-	.firefox .element-slogan .tb-slogan {
+	.header-top .header-top-nav {
+		display: none;
+	}
+	.header-content {
+		padding-right: 40px;
+		padding-left: 40px;
+		text-align: center;
+	}
+	.header-content .header-logo {
+		float: none;
+	}
+	#access > .wrap {
+		display: none;
+	}
+	#primary-menu-toggle {
 		display: block;
 	}
 
-	/* Builder - Divider */
-	.divider-shadow {
-		background-size:100%;
+	/* Main */
+	.breadcrumb {
+		display: none;
 	}
 
-	/* Posts */
-	.attachment-small {
-		width: 40%;
+	/* Content */
+	#featured-banner {
+		margin-bottom: 20px;
 	}
 
 	/* Comments */
-	#comments {
-		font-size: 11px; /* Fallback for older browsers */
-		font-size: .85rem;
+	#respond input[type="email"],
+	#respond input[type="text"],
+	#respond input[type="url"] {
+		width: 100%;
 	}
-	#comments .comment-body {
-		padding: 2px 10px;
-	}
-	#comments .comment-author,
-	#comments .comment-meta {
-		padding-left: 35px;
-	}
-	#comments .comment-body .avatar {
-		top: 5px;
-		left: 5px;
-		width: 30px;
-		height: 30px;
-	}
+
 }
