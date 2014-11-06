@@ -200,7 +200,7 @@ function themeblvd_get_headline( $args ) {
 	$text = str_replace( '%page_title%', get_the_title( themeblvd_config( 'id' ) ), $args['text'] );
 
 	// Output
-	$output .= '<div class="tb-headline text-'.$args['align'].'">';
+	$output = '<div class="tb-headline text-'.$args['align'].'">';
 	$output .= sprintf( '<%1$s>%2$s</%1$s>', $args['tag'], stripslashes($text) );
 
 	if ( $args['tagline'] ) {

@@ -474,7 +474,7 @@ function themeblvd_post_thumbnail_link_badge( $post_id = 0, $to_post = false ) {
 					'link'	=> $link['href'],
 					'class'	=> $link['class'],
 					'title'	=> $link['tooltip']
-				), $post->ID, $args['attachment_id'] );
+				), $post_id );
 
 				$output = themeblvd_get_link_to_lightbox($lightbox);
 
@@ -1295,7 +1295,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 				'item' 		=> $output,
 				'link' 		=> $link,
 				'title' 	=> $img_atts['title'],
-				'props'		=> array('style', sprintf('max-width: %spx;', $width)),
+				'props'		=> array('style', sprintf('max-width: %spx;', $args['width'])),
 				'class' 	=> $anchor_classes
 			);
 			$output = themeblvd_get_link_to_lightbox( $args );
