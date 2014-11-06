@@ -135,14 +135,7 @@ class Theme_Blvd_Stylesheets_API {
 			);
 
 			if ( is_rtl() ) {
-				$this->framework_stylesheets['bootstrap'] = array(
-					'handle'	=> 'bootstrap_rtl',
-					'src'		=> TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css',
-					'deps'		=> array(),
-					'ver'		=> TB_FRAMEWORK_VERSION,
-					'media'		=> 'all'
-
-				);
+				$this->framework_stylesheets['bootstrap']['src'] = TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css'; // Generated with CSSJanus
 			}
 
 			// FontAwesome
@@ -170,23 +163,30 @@ class Theme_Blvd_Stylesheets_API {
 		// Primary framework styles
 		if ( themeblvd_supports( 'assets', 'primary_css' ) ) {
 
-			$this->framework_stylesheets['themeblvd'] = array(
-				'handle'	=> 'themeblvd',
-				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd.css', // @TODO Change back to .min
+			$this->framework_stylesheets['themeblvd_grid'] = array(
+				'handle'	=> 'themeblvd_grid',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/grid-extended.min.css',
 				'deps'		=> array(),
 				'ver'		=> TB_FRAMEWORK_VERSION,
 				'media'		=> 'all'
 			);
 
 			if ( is_rtl() ) {
-				$this->framework_stylesheets['themeblvd'] = array(
-					'handle'	=> 'themeblvd_rtl',
-					'src'		=> TB_FRAMEWORK_URI.'/assets/css/rtl.css',
-					'deps'		=> array(),
-					'ver'		=> TB_FRAMEWORK_VERSION,
-					'media'		=> 'all'
-				);
+				$this->framework_stylesheets['themeblvd_grid']['src'] = TB_FRAMEWORK_URI.'/assets/css/grid-extended-rtl.min.css';  // Generated with CSSJanus
 			}
+
+			$this->framework_stylesheets['themeblvd'] = array(
+				'handle'	=> 'themeblvd',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd.min.css',
+				'deps'		=> array(),
+				'ver'		=> TB_FRAMEWORK_VERSION,
+				'media'		=> 'all'
+			);
+
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['themeblvd']['src'] = TB_FRAMEWORK_URI.'/assets/css/themeblvd-rtl.min.css';  // Generated with CSSJanus
+			}
+
 		}
 
 		// Primary dark css, re-styles themeblvd.css for dark content bg color
