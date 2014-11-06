@@ -18,32 +18,14 @@
 get_header();
 ?>
 
-	<div id="sidebar_layout" class="clearfix">
-		<div class="sidebar_layout-inner">
-			<div class="row grid-protection">
-
-				<?php get_sidebar( 'left' ); ?>
-
-				<!-- CONTENT (start) -->
-
-				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
-					<div class="inner">
-						<?php themeblvd_content_top(); ?>
-						<?php if ( has_action( 'themeblvd_builder_content' ) ) : ?>
-							<?php do_action( 'themeblvd_builder_content' ); ?>
-						<?php else : ?>
-							<p class="warning"><?php echo apply_filters( 'no_builder_message', themeblvd_get_local( 'no_builder_plugin' ) ); ?></p>
-						<?php endif; ?>
-						<?php themeblvd_content_bottom(); ?>
-					</div><!-- .inner (end) -->
-				</div><!-- #content (end) -->
-
-				<!-- CONTENT (end) -->
-
-				<?php get_sidebar( 'right' ); ?>
-
-			</div><!-- .grid-protection (end) -->
-		</div><!-- .sidebar_layout-inner (end) -->
-	</div><!-- #sidebar_layout (end) -->
+	<div id="custom-main" class="clearfix" role="main">
+		<?php themeblvd_content_top(); ?>
+		<?php if ( has_action( 'themeblvd_builder_content' ) ) : ?>
+			<?php do_action( 'themeblvd_builder_content', 'main' ); ?>
+		<?php else : ?>
+			<p class="warning"><?php printf( themeblvd_get_local('no_builder_plugin'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' ); ?></p>
+		<?php endif; ?>
+		<?php themeblvd_content_bottom(); ?>
+	</div><!-- #elements (end) -->
 
 <?php get_footer(); ?>

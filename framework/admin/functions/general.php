@@ -8,7 +8,7 @@ function themeblvd_admin_init() {
 
 	// Allow theme options page to run if framework filters
 	// have don't have it hidden it and user is capable.
-	if ( themeblvd_supports( 'admin', 'options' ) && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
+	if ( themeblvd_supports('admin', 'options') && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
 
 		// Access Options API, instance should already be created.
 		$api = Theme_Blvd_Options_API::get_instance();
@@ -29,6 +29,39 @@ function themeblvd_admin_init() {
 		$options_page = new Theme_Blvd_Options_Page( $option_id, $options, $args );
 
 	}
+
+	// User profile options
+	if ( themeblvd_supports('admin', 'user') ) {
+		$user_options = Theme_Blvd_User_Options::get_instance();
+	}
+
+	// Category/Tag options
+	if ( themeblvd_supports('admin', 'tax') ) {
+		$tax_options = Theme_Blvd_Tax_Options::get_instance();
+	}
+
+	// Menu options
+	if ( themeblvd_supports('admin', 'menus') ) {
+		$menu_options = Theme_Blvd_Menu_Options::get_instance();
+	}
+
+}
+
+/**
+ * Run the theme demo importer.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_import(){
+
+	// Check if WordPress's importer plugin
+	// is setup and running.
+	if ( ! defined( 'WP_LOAD_IMPORTERS' ) ) {
+		return;
+	}
+
+	// Run importer
+	$importer = Theme_Blvd_Import::get_instance();
 
 }
 
@@ -53,9 +86,12 @@ function themeblvd_non_modular_assets() {
 
 	// Assets for editing posts
 	if ( $pagenow == 'post-new.php' || $pagenow == 'post.php' ) {
-		wp_enqueue_style( 'tb_meta_box-styles', TB_FRAMEWORK_URI . '/admin/assets/css/meta-box.min.css', false, false, 'screen' );
+		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_modal', TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_enqueue_script( 'tb_meta_box-scripts', TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
+		wp_localize_script( 'tb_meta_box-scripts', 'themeblvd', themeblvd_get_admin_locals('js') );
 	}
 
 	// Includes Theme Blvd admin icon font
@@ -213,6 +249,7 @@ function themeblvd_disable_nag() {
  */
 function themeblvd_clear_options() {
 	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
+		check_admin_referer( themeblvd_get_option_name().'-options' );
 		$option_id = $_POST['themeblvd_clear_options'];
 		delete_option( $option_id );
 		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'themeblvd-error error fade' );
@@ -264,4 +301,153 @@ function themeblvd_admin_body_class( $classes ) {
 	}
 
 	return $classes;
+}
+
+/**
+ * Get array of framework icons
+ *
+ * @since 2.3.0
+ *
+ * @param string $type Type of icons to retrieve - vector, image
+ * @return array $icons Array of icons
+ */
+function themeblvd_get_icons( $type ) {
+
+	$icons = get_transient( 'themeblvd_'.get_template().'_'.$type.'_icons' );
+
+	if ( ! $icons ) {
+
+		$icons = array();
+
+		switch ( $type ) {
+
+			case 'vector' :
+
+				$fetch_icons = array();
+				$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
+
+				if ( file_exists( $file_location ) ) {
+
+					$file = fopen( $file_location, "r" );
+
+					// Run through each line of font-awesome.css, and
+					// look for anything that could resemble a font ID.
+					while ( !feof( $file ) ) {
+
+						$line = fgets( $file );
+
+						if ( strpos( $line, '.fa-' ) !== false && strpos( $line, ':before' ) !== false ) {
+							$icon = str_replace( '.fa-', '', $line );
+							$icon = str_replace( ':before {', '', $icon );
+							$icon = str_replace( ':before,', '', $icon );
+							$fetch_icons[] = trim( $icon );
+						}
+
+					}
+
+					// Close file
+					fclose( $file );
+
+					// Sort icons alphebetically
+					sort( $fetch_icons );
+
+					// Format array for use in options framework
+					foreach ( $fetch_icons as $icon ) {
+						$icons[$icon] = $icon;
+					}
+
+				}
+				break;
+
+			case 'image' :
+
+				// Icons from the parent theme
+				$parent_icons = array();
+				$icons_url = TB_FRAMEWORK_URI.'/assets/images/shortcodes/icons';
+				$icons_dir = TB_FRAMEWORK_DIRECTORY.'/assets/images/shortcodes/icons';
+
+				if ( file_exists( $icons_dir ) ) {
+					$parent_icons = scandir( $icons_dir );
+				}
+
+				// Display icons
+				if ( count( $parent_icons ) > 0 ) {
+					foreach ( $parent_icons as $icon ) {
+						if ( strpos( $icon, '.png' ) !== false ) {
+							$id = str_replace( '.png', '', $icon );
+							$icons[$id] = sprintf( '%s/%s.png', $icons_url, $id );
+						}
+					}
+				}
+
+				// Check for icons in the child theme
+				$child_icons = array();
+				$child_icons_url = get_stylesheet_directory_uri().'/icons';
+				$child_icons_dir = get_stylesheet_directory().'/assets/images/shortcodes/icons';
+
+				if ( file_exists( $child_icons_dir ) ) {
+					$child_icons = scandir( $child_icons_dir );
+				}
+
+				// Display icons
+				if ( count( $child_icons ) > 0 ) {
+					foreach ( $child_icons as $icon ) {
+						if ( strpos( $icon, '.png' ) !== false ) {
+							$id = str_replace( '.png', '', $icon );
+							$icons[$id] = sprintf( '%s/%s.png', $child_icons_url, $id );
+						}
+					}
+				}
+
+				break;
+
+		} // end switch $type
+
+		// Cache result
+		set_transient( 'themeblvd_'.$type.'_icons', $icons, '86400' ); // 1 day
+
+	} // end if $icons
+
+	return apply_filters( 'themeblvd_'.$type.'_icons', $icons );
+}
+
+/**
+ * Get background selection types
+ *
+ * @since 2.5.0
+ *
+ * @param string $context Context in which BG is being applied
+ * @return array $types Background types to select from
+ */
+function themeblvd_get_bg_types( $context = 'section' ) {
+
+	$types = array(
+		'none'		=> __('No background', 'themeblvd'),
+		'color'		=> __('Custom color', 'themeblvd'),
+		'texture'	=> __('Custom color + texture', 'themeblvd'),
+		'image'		=> __('Custom color + image', 'themeblvd'),
+		'slideshow'	=> __('Custom image slideshow', 'themeblvd')
+	);
+
+	if ( $context != 'section' ) {
+		unset($types['slider']);
+	}
+
+	if ( $context == 'section' || $context == 'banner' ) {
+
+		if ( themeblvd_supports( 'featured', 'style' ) ) {
+			$types['featured'] = __('Theme\'s preset "Featured" area background', 'themeblvd_builder');
+		}
+
+		if ( themeblvd_supports( 'featured_below', 'style' ) ) {
+			$types['featured_below'] = __('Theme\'s preset "Featured Below" area background', 'themeblvd_builder');
+		}
+
+	}
+
+	if ( $context == 'banner' ) {
+		$types['none'] = __('No banner', 'themeblvd');
+	}
+
+	return apply_filters( "themeblvd_{$context}_bg_types", $types );
 }

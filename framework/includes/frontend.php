@@ -45,13 +45,7 @@ function themeblvd_get_part( $type ) {
 }
 
 /**
- * Get the current mode of the framework, list or grid.
- * This determines if archives and the posts page display
- * as a grid.
- *
- * Grid mode is triggered when the template parts for "index"
- * and "archive" are filtered to be either "grid", "archive_grid"
- * or "index_grid".
+ * Determine if the current post display mode of the framework is "grid"
  *
  * @since 2.3.0
  *
@@ -59,9 +53,7 @@ function themeblvd_get_part( $type ) {
  */
 function themeblvd_is_grid_mode() {
 
-	$config = Theme_Blvd_Frontend_Init::get_instance();
-
-	if ( $config->get_mode() == 'grid' ) {
+	if ( themeblvd_config('mode') == 'grid' ) {
 		return true;
 	}
 
@@ -184,7 +176,8 @@ function themeblvd_was( $type, $helper = '' ) {
 }
 
 /**
- * Determine current web browser and generate a CSS class for
+ * All default body classes puts on framework, including
+ * determining current web browser and generate a CSS class for
  * it. This function gets filtered onto WP's body_class.
  *
  * @since 2.2.0
@@ -192,7 +185,7 @@ function themeblvd_was( $type, $helper = '' ) {
  * @param array $classes Current body classes
  * @return array $classes Body classes with browser classes added
  */
-function themeblvd_browser_class( $classes ) {
+function themeblvd_body_class( $classes ) {
 
 	// Get current user agent
 	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
@@ -200,9 +193,9 @@ function themeblvd_browser_class( $classes ) {
 	// OS class
 	if ( preg_match( "/Mac/", $browser ) ) {
 		$classes[] = 'mac';
-	} elseif ( preg_match( "/Windows/", $browser ) ) {
+	} else if ( preg_match( "/Windows/", $browser ) ) {
 		$classes[] = 'windows';
-	} elseif ( preg_match( "/Linux/", $browser ) ) {
+	} else if ( preg_match( "/Linux/", $browser ) ) {
 		$classes[] = 'linux';
 	} else {
 		$classes[] = 'unknown-os';
@@ -211,33 +204,88 @@ function themeblvd_browser_class( $classes ) {
 	// Browser class
 	if ( preg_match( "/Chrome/", $browser ) ) {
 		$classes[] = 'chrome';
-	} elseif ( preg_match( "/Safari/", $browser ) ) {
+	} else if ( preg_match( "/Safari/", $browser ) ) {
 		$classes[] = 'safari';
-	} elseif ( preg_match( "/Opera/", $browser ) ) {
+	} else if ( preg_match( "/Opera/", $browser ) ) {
 		$classes[] = 'opera';
-	} elseif ( preg_match( "/MSIE/", $browser ) ) {
+	} else if ( preg_match( "/MSIE/", $browser ) ) {
 
 		// Internet Explorer... ugh, kill me now.
 		$classes[] = 'msie';
 		if ( preg_match( "/MSIE 6.0/", $browser ) ) {
 			$classes[] = 'ie6';
-		} elseif ( preg_match( "/MSIE 7.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 7.0/", $browser ) ) {
 			$classes[] = 'ie7';
-		} elseif ( preg_match( "/MSIE 8.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 8.0/", $browser ) ) {
 			$classes[] = 'ie8';
-		} elseif ( preg_match( "/MSIE 9.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 9.0/", $browser ) ) {
 			$classes[] = 'ie9';
-		} elseif ( preg_match( "/MSIE 10.0/", $browser ) ) {
+		} else if ( preg_match( "/MSIE 10.0/", $browser ) ) {
 			$classes[] = 'ie10';
 		}
 
-	} elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
+	} else if ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
 		$classes[] = 'firefox';
 	} else {
 		$classes[] = 'unknown-browser';
 	}
 
+	// Add "mobile" class if this actually a mobile device,
+	// and not the curious user screwing around with their
+	// browser window.
+	if ( wp_is_mobile() ) {
+		$classes[] = 'mobile';
+	} else {
+		$classes[] = 'desktop';
+	}
+
+	// Scroll effects
+	if ( themeblvd_supports( 'display', 'scroll_effects' ) ) {
+		$classes[] = 'tb-scroll-effects';
+	}
+
+	// Suck up custom layout into header
+	if ( themeblvd_config('suck_up') ) {
+		$classes[] = 'tb-suck-up';
+	}
+
+	// Dark/Light content
+	if ( themeblvd_supports( 'display', 'dark' ) ) {
+		$classes[] = 'content_dark';
+	} else {
+		$classes[] = 'content_light';
+	}
+
+	// Tag Cloud styling
+	if ( themeblvd_supports( 'assets', 'tag_cloud' ) ) {
+		$classes[] = 'tb-tag-cloud';
+	}
+
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
+}
+
+/**
+ * Display HTML class for site header.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_header_class() {
+
+	$class = array('site-header');
+
+	if ( themeblvd_config('suck_up') ) {
+		$class[] = 'transparent';
+	}
+
+	if ( themeblvd_config('sticky') ) {
+		$class[] = 'has-sticky';
+		$class[] = 'visible';
+	}
+
+	if ( $class = apply_filters('themeblvd_header_class', $class ) ) {
+		printf('class="%s"', implode(' ', $class) );
+	}
+
 }
 
 if ( !function_exists( 'themeblvd_include_scripts' ) ) :
@@ -248,17 +296,6 @@ if ( !function_exists( 'themeblvd_include_scripts' ) ) :
  * know you won't need to maybe save some frontend load
  * time, this function can easily be re-done from a
  * child theme.
- *
- * (1) jQuery - Already registered by WP, and enqueued for most our scripts.
- * (2) Twitter Bootstrap - All Bootstrap JS plugins combiled.
- * (3) Magnific Popup - Handles all default lightbox functionality.
- * (4) Super Fish/Hover Intent - Used for primary navigation.
- * (5) FlexSlider - Responsive slider, controls framework's "standard" slider type.
- * (6) Roundabout - Carousel-style slider, controls framwork's "3D Carousel" slider type.
- * (7) Theme Blvd scripts - Anything used by the framework to set other items into motion.
- * (8) iOS Orientation Fix - Allows zooming to be enabled on [older] iOS devices while still
- * allowing auto adjustment when switching between landscape and portrait.
- * (9) Already registered by WP, enable commentform to show when visitor clicks "Reply" on comment.
  *
  * @since 2.0.0
  */
@@ -271,17 +308,21 @@ function themeblvd_include_scripts() {
 	// the framework.
 	$scripts = array( 'jquery' );
 
+	// Register scripts that get enqueued as needed
+	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
+		wp_register_script( 'google_maps', 'https://maps.googleapis.com/maps/api/js', array(), null );
+	}
+
+	if ( themeblvd_supports( 'assets', 'charts' ) ) {
+		wp_register_script( 'charts', TB_FRAMEWORK_URI . '/assets/js/Chart.min.js', array(), null );
+	}
+
 	// Enque Scripts
 	wp_enqueue_script( 'jquery' );
 
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 		$scripts[] = 'flexslider';
 		wp_enqueue_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1' );
-	}
-
-	if ( themeblvd_supports( 'assets', 'roundabout' ) ) {
-		$scripts[] = 'roundabout';
-		wp_enqueue_script( 'roundabout', TB_FRAMEWORK_URI . '/assets/js/roundabout.min.js', array('jquery'), '2.4.2' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'nivo' ) ) {
@@ -291,7 +332,7 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
-		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.0' );
+		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.0' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
@@ -305,6 +346,16 @@ function themeblvd_include_scripts() {
 		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4' );
 	}
 
+	if ( themeblvd_supports( 'assets', 'easypiechart' ) ) {
+		$scripts[] = 'easypiechart';
+		wp_enqueue_script( 'easypiechart', TB_FRAMEWORK_URI . '/assets/js/easypiechart.min.js', array('jquery'), '2.1.5' );
+	}
+
+	if ( themeblvd_supports( 'assets', 'isotope' ) ) {
+		$scripts[] = 'isotope';
+		wp_enqueue_script( 'isotope', TB_FRAMEWORK_URI . '/assets/js/isotope.min.js', array('jquery'), '2.0.1' );
+	}
+
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
 		$scripts[] = 'themeblvd';
 		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
@@ -316,11 +367,6 @@ function themeblvd_include_scripts() {
 	// Final filter on framework script.
 	$themeblvd_framework_scripts = apply_filters( 'themeblvd_framework_scripts', $scripts );
 
-	// iOS Orientation (for older iOS devices, not supported by default)
-	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'assets', 'ios_orientation' ) ) {
-		wp_enqueue_script( 'ios-orientationchange-fix', TB_FRAMEWORK_URI . '/assets/js/ios-orientationchange-fix.js' );
-	}
-
 	// Comments reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -328,80 +374,3 @@ function themeblvd_include_scripts() {
 
 }
 endif;
-
-/**
- * Filter framework items into wp_nav_menu() output.
- *
- * @since 2.4.3
- *
- * @param string $item_output Initial menu item like <a href="URL">Title</a>
- * @param string $item Object for menu item post
- * @param int $depth Depth of the menu item, i.e 0 for top level, 1 for second level, etc
- * @param array $args Arguments for call to wp_nav_menu, NOT individiaul menu item
- * @return string $item_output Modified menu item
- */
-function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
-
-	// Arrow indicators on drop down menus
-	if ( in_array( 'menu-item-has-children', $item->classes ) && strpos( $args->menu_class, 'sf-menu' ) !== false ) {
-
-		$direction = 'down';
-		if ( $depth > 0 ) {
-			$direction = 'right';
-		}
-
-		$indicator = sprintf( '<i class="sf-sub-indicator fa fa-caret-%s"></i></a>', $direction );
-		$indicator = apply_filters( 'themeblvd_menu_sub_indicator', $indicator, $depth );
-		$item_output = str_replace( '</a>', $indicator.'</a>', $item_output );
-	}
-
-	// Allow bootstrap "nav-header" class in menu items.
-	// Note: For primary navigation will only work on levels 2-3
-	// (1) ".sf-menu li li.nav-header" 	=> Primary nav dropdowns
-	// (2) ".menu li.nav-header" 		=> Standard custom menu widget
-	// (3) ".subnav li.nav-header" 		=> Theme Blvd Horizontal Menu widget
-	if ( in_array( 'nav-header', $item->classes )  ) {
-
-		$header = sprintf( '<span>%s</span>', apply_filters( 'the_title', $item->title, $item->ID ) );
-
-		if ( strpos( $args->menu_class, 'sf-menu' ) !== false ) {
-			// Primary Navigation
-			if ( $depth > 0 ) {
-				$item_output = $header;
-			}
-		} else {
-			$item_output = $header;
-		}
-	}
-
-	// Allow bootstrap "divider" class in menu items.
-	// Note: For primary navigation will only work on levels 2-3
-	if ( in_array( 'divider', $item->classes )  ) {
-
-		if ( strpos( $args->menu_class, 'sf-menu' ) !== false ) {
-			// Primary Navigation
-			if ( $depth > 0 ) {
-				$item_output = '';
-			}
-		} else {
-			$item_output = '';
-		}
-	}
-
-	// Fontawesome icons in menu items
-	$icon = '';
-	foreach ( $item->classes as $class ) {
-		if ( strpos( $class, 'menu-icon-' ) !== false ) {
-			$icon = str_replace( 'menu-icon-', '', $class );
-		}
-	}
-
-	if ( $icon ) {
-		$text = apply_filters( 'the_title', $item->title, $item->ID );
-		$icon_output = sprintf( '<i class="fa fa-%s"></i>', $icon );
-		$icon_output = apply_filters( 'themeblvd_menu_icon', $icon_output, $icon );
-		$item_output = str_replace( $text, $icon_output.$text, $item_output );
-	}
-
-	return $item_output;
-}

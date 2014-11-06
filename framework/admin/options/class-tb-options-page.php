@@ -45,6 +45,70 @@ class Theme_Blvd_Options_Page {
 	private $sanitized = false;
 
 	/**
+	 * Whether options page has editor modal.
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $editor = false;
+
+	/**
+	 * Whether options page has code editor modal.
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $code_editor = false;
+
+	/**
+	 * Whether options page has vector icon browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $icons_vector = false;
+
+	/**
+	 * Whether options page has image icon browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $icons_image = false;
+
+	/**
+	 * Whether options page has post ID browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $find_post_id = false;
+
+	/**
+	 * Whether options page has texture browser
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $textures = false;
+
+	/**
+	 * Whether options page needs google maps
+	 *
+	 * @since 2.5.0
+	 * @var bool
+	 */
+	public $gmap = false;
+
+	/**
+	 * URL to importer, if enabled
+	 *
+	 * @since 2.5.0
+	 * @var string
+	 */
+	public $importer_url = '';
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 2.2.0
@@ -64,7 +128,9 @@ class Theme_Blvd_Options_Page {
 			'menu_slug'		=> '',
 			'icon'			=> '',
 			'form_action'	=> 'options.php',
-			'closer'		=> true // Needs to be false if option page has no tabs
+			'closer'		=> true, // Needs to be false if option page has no tabs
+			'export'		=> false,
+			'import'		=> false
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 
@@ -83,9 +149,115 @@ class Theme_Blvd_Options_Page {
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
 		add_action( 'admin_init', array( $this, 'register' ) );
 
-		// Legacy media uploader
-		if ( ! function_exists( 'wp_enqueue_media' ) ) {
-			add_action( 'admin_init', 'optionsframework_mlu_init' );
+		// Whether options page has hidden modals
+		foreach ( $this->options as $option ) {
+
+			// Text option, looking for icon browsers
+			if ( $option['type'] == 'text' ) {
+
+				if ( isset( $option['icon'] ) ) {
+
+					if ( $option['icon'] == 'vector' ) {
+						$this->icons_vector = true;
+					}
+
+					if ( $option['icon'] == 'image' ) {
+						$this->icons_image = true;
+					}
+
+					if ( $option['icon'] == 'post_id' ) {
+						$this->find_post_id = true;
+					}
+				}
+			}
+
+			// Textareas, looking for visual or code editor
+			if ( $option['type'] == 'textarea' ) {
+
+				if ( isset( $option['editor'] ) && $option['editor'] ) {
+					$this->editor = true;
+				}
+
+				if ( isset( $option['code'] ) && $option['code'] ) {
+					$this->code_editor = true;
+				}
+			}
+
+			// Selects, looking for texture browser
+			if ( $option['type'] == 'select' ) {
+
+				if ( isset( $option['select'] ) && $option['select'] == 'textures' ) {
+					$this->textures = true;
+				}
+
+			}
+
+			// Look for "geo" option type
+			if ( $option['type'] == 'geo' ) {
+				$this->gmap = true;
+			}
+
+			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->find_post_id && $this->textures && $this->gmap ) {
+				break;
+			}
+		}
+
+		// Add icon browsers
+		if ( $this->icons_vector || $this->icons_image ) {
+			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
+		}
+
+		// Add Post ID browser
+		if ( $this->find_post_id ) {
+			add_action( 'current_screen', array( $this, 'add_post_browser' ) );
+		}
+
+		// Add texture browsers
+		if ( $this->textures ) {
+			add_action( 'current_screen', array( $this, 'add_texture_browser' ) );
+		}
+
+		// Add Editor into footer, which any textarea type
+		// options with "editor" set to true can utilize.
+		if ( $this->editor ) {
+
+			add_action( 'current_screen', array( $this, 'add_editor' ) );
+
+			// Shortcode generator for Editor modal
+			if ( defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+				if ( isset( $GLOBALS['_themeblvd_shortcode_generator'] ) ) {
+					add_action( 'admin_footer-appearance_page_'.$this->id, array( $GLOBALS['_themeblvd_shortcode_generator'], 'add_modal' ) );
+				}
+
+			}
+		}
+
+		// Create any objects needed for certain types of
+		// options. Our create() method will ensure no
+		// duplicates are created, and only objects are created
+		// on neccessary option types.
+		$advanced = Theme_Blvd_Advanced_Options::get_instance();
+
+		foreach ( $this->options as $option ) {
+			$advanced->create( $option['type'] );
+		}
+
+		// Allow for exporting
+		if ( $this->args['export'] ) {
+			$args = array(
+				'base_url'	=> admin_url($this->args['parent'].'?page='.$this->id),
+				'cancel'	=> __('Nothing to export. Theme Options have never been saved.', 'themeblvd')
+			);
+			$export = new Theme_Blvd_Export_Options( $this->id, $args );
+		}
+
+		// Allow for importing
+		if ( $this->args['import'] ) {
+			$args = array(
+				'redirect' => admin_url($this->args['parent'].'?page='.$this->id) // Current options page URL
+			);
+			$import = new Theme_Blvd_Import_Options( $this->id, $args );
+			$this->importer_url = $import->get_url(); // URL of page where importer is
 		}
 
 	}
@@ -125,9 +297,30 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	public function load_styles() {
+
+		// WP Built-in styles
+		wp_enqueue_style( 'wp-color-picker' );
+
+		// Framework
 		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
 		wp_enqueue_style( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_style( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/css/colorpicker.min.css' );
+
+		// Shortcode Generator
+		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css', null, TB_FRAMEWORK_VERSION );
+			wp_enqueue_style( 'tb_shortcode_generator', TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css', false, TB_SHORTCODES_PLUGIN_VERSION );
+		}
+
+		// Icon Browser (vector)
+		if ( $this->icons_vector ) {
+			wp_enqueue_style( 'fontawesome', TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css', null, TB_FRAMEWORK_VERSION );
+		}
+
+		// Code Editor
+		if ( $this->code_editor ) {
+			wp_enqueue_style( 'codemirror', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css', null, '4.0' );
+			wp_enqueue_style( 'codemirror-theme', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/themeblvd.min.css', null, '4.0' );
+		}
 	}
 
 	/**
@@ -136,14 +329,46 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	public function load_scripts() {
+
+		// WP Built-in scripts
 		wp_enqueue_script( 'jquery-ui-core');
+		wp_enqueue_script( 'jquery-ui-sortable' );
+		wp_enqueue_script( 'jquery-ui-slider' );
+		wp_enqueue_script( 'wp-color-picker' );
+
+		// WP Built-in Media Modal
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
+
+		// Google maps
+		if ( $this->gmap ) {
+			wp_enqueue_script( 'themeblvd_gmap', 'https://maps.googleapis.com/maps/api/js', array(), null );
+		}
+
+		// Framework
+		wp_enqueue_script( 'populate', TB_FRAMEWORK_URI . '/admin/options/js/populate.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_modal', TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
 		wp_enqueue_script( 'themeblvd_options', TB_FRAMEWORK_URI . '/admin/options/js/options.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_enqueue_script( 'color-picker', TB_FRAMEWORK_URI . '/admin/options/js/colorpicker.min.js', array('jquery') );
+
+		// Shortcode Generator
+		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+			wp_enqueue_script( 'tb_shortcode_generator', TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/js/generator.min.js', false, TB_SHORTCODES_PLUGIN_VERSION );
+		}
+
+		// Code Editor
+		if ( $this->code_editor ) {
+			wp_enqueue_script( 'codemirror', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.js', null, '4.0' );
+			wp_enqueue_script( 'codemirror-modes', TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js', null, '4.0' );
+		}
+
+		echo "\n<script type=\"text/javascript\">\n";
+		echo "/* <![CDATA[ */\n";
+		echo "var themeblvd_presets = {};\n";
+		echo "/* ]]> */\n";
+		echo "</script>\n";
 	}
 
 	/**
@@ -162,22 +387,42 @@ class Theme_Blvd_Options_Page {
 	public function admin_page() {
 
 		// Get any current settings from the database.
-		$settings = get_option( $this->id );
+		$settings = apply_filters( 'themeblvd_frontend_options', get_option( $this->id ) ); // Name of filter isn't very logical, but has been around through many versions, so must remain
 
 	    // Setup options form
 		$return = themeblvd_option_fields( $this->id, $this->options, $settings, $this->args['closer'] );
 
-		// Icon ID
-		$icon_id = ! empty( $this->args['icon'] ) ? $this->args['icon'] : str_replace( '.php', '', $this->args['parent']);
-
 		// Display any errors or update messages.
 		settings_errors( $this->id );
+
+		// Wrap classes
+		$class = 'wrap';
+
+		if ( $this->id == themeblvd_get_option_name() ) {
+
+			$class .= ' tb-theme-options-wrap';
+
+			foreach ( themeblvd_get_compat() as $plugin ) {
+				if ( themeblvd_installed($plugin) ) {
+					$class .= sprintf(' %s-installed', $plugin);
+				}
+			}
+
+			if ( strpos($class, 'installed') !== false ) {
+				$class .= ' plugins-installed';
+			}
+
+			// If we want to add options for another plugin, you
+			// can ensure the "Plugins" tab is shown by making sure
+			// "plugins-installed" class is filtered on here.
+			$class = apply_filters('themeblvd_theme_options_wrap_class', $class, $this->id);
+
+		}
 		?>
-		<div class="wrap">
+		<div class="<?php echo $class; ?>">
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
-		    <?php screen_icon( $icon_id ); ?>
 		    <h2<?php if ( $return[1] ) echo ' class="nav-tab-wrapper"' ?>>
 		        <?php if ( $return[1] ) : ?>
 		        	<?php echo $return[1]; ?>
@@ -192,8 +437,13 @@ class Theme_Blvd_Options_Page {
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit" class="options-page-footer">
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
-							<input type="submit" class="reset-button button-secondary" value="<?php esc_attr_e( 'Restore Defaults', 'themeblvd' ); ?>" />
-							<input type="submit" class="clear-button button-secondary" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
+							<?php if ( $this->args['export'] ) : ?>
+								<a href="<?php echo admin_url($this->args['parent'].'?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
+				           	<?php endif; ?>
+				           	<?php if ( $this->args['import'] ) : ?>
+								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd' ); ?></a>
+				           	<?php endif; ?>
 				           	<div class="clear"></div>
 						</div>
 					</form>
@@ -250,13 +500,38 @@ class Theme_Blvd_Options_Page {
 
 			// Set checkbox to false if it wasn't sent in the $_POST
 			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) ) {
-				$input[$id] = '0';
+				if ( ! empty( $option['inactive'] ) && $option['inactive'] === 'true' ) {
+					$input[$id] = '1';
+				} else {
+					$input[$id] = '0';
+				}
 			}
 
 			// Set each item in the multicheck to false if it wasn't sent in the $_POST
 			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
 				foreach ( $option['options'] as $key => $value ) {
 					$input[$id][$key] = '0';
+				}
+			}
+
+			// If option wasn't sent through, set it the default
+			if ( ! isset( $input[$id] ) ) {
+				if ( isset( $option['std'] ) ) {
+					$clean[$id] = $option['std'];
+				} else {
+					$clean[$id] = '';
+				}
+				continue;
+			}
+
+			// For button option type, set checkbox to false if it wasn't
+			// sent in the $_POST
+			if ( 'button' == $option['type'] ) {
+				if ( ! isset( $input[$id]['include_bg'] ) ) {
+					$input[$id]['include_bg'] = '0';
+				}
+				if ( ! isset( $input[$id]['include_border'] ) ) {
+					$input[$id]['include_border'] = '0';
 				}
 			}
 
@@ -282,6 +557,72 @@ class Theme_Blvd_Options_Page {
 
 		// Return sanitized options
 		return $clean;
+	}
+
+	/**
+	 * Hook in hidden editor modal.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_editor() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', 'themeblvd_editor' );
+		}
+	}
+
+	/**
+	 * Hook in hidden icon browser modal(s).
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_icon_browser() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', array( $this, 'display_icon_browser' ) );
+		}
+	}
+	public function display_icon_browser() {
+
+		if ( $this->icons_vector ) {
+			themeblvd_icon_browser( array( 'type' => 'vector' ) );
+		}
+
+		if ( $this->icons_image ) {
+			themeblvd_icon_browser( array( 'type' => 'image' ) );
+		}
+	}
+
+	/**
+	 * Hook in hidden post browser modal.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_post_browser() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', 'themeblvd_post_browser' );
+		}
+	}
+
+	/**
+	 * Hook in hidden texture browser modal.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_texture_browser() {
+
+		$page = get_current_screen();
+
+		if ( $page->base == 'appearance_page_'.$this->id ) {
+			add_action( 'in_admin_header', 'themeblvd_texture_browser' );
+		}
 	}
 
 }

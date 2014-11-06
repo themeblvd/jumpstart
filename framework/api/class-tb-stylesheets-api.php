@@ -73,7 +73,7 @@ class Theme_Blvd_Stylesheets_API {
      *
      * @since 2.3.0
      *
-     * @return Theme_Blvd_Frontend_Init A single instance of this class.
+     * @return Theme_Blvd_Stylesheets_API A single instance of this class.
      */
 	public static function get_instance() {
 
@@ -129,17 +129,21 @@ class Theme_Blvd_Stylesheets_API {
 				'handle'	=> 'bootstrap',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/bootstrap/css/bootstrap.min.css',
 				'deps'		=> array(),
-				'ver'		=> '3.1.0',
+				'ver'		=> '3.3.0',
 				'media'		=> 'all'
 
 			);
+
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['bootstrap']['src'] = TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css'; // Generated with CSSJanus
+			}
 
 			// FontAwesome
 			$this->framework_stylesheets['fontawesome'] = array(
 				'handle'	=> 'fontawesome',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/fontawesome/css/font-awesome.min.css',
 				'deps'		=> array(),
-				'ver'		=> '4.0.3',
+				'ver'		=> '4.2.0',
 				'media'		=> 'all'
 			);
 
@@ -147,7 +151,6 @@ class Theme_Blvd_Stylesheets_API {
 
 		// Magnific Popup
 		if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
-
 			$this->framework_stylesheets['magnific_popup'] = array(
 				'handle'	=> 'magnific_popup',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/css/magnificpopup.min.css',
@@ -155,11 +158,22 @@ class Theme_Blvd_Stylesheets_API {
 				'ver'		=> '0.9.3',
 				'media'		=> 'all'
 			);
-
 		}
 
 		// Primary framework styles
 		if ( themeblvd_supports( 'assets', 'primary_css' ) ) {
+
+			$this->framework_stylesheets['themeblvd_grid'] = array(
+				'handle'	=> 'themeblvd_grid',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/grid-extended.min.css',
+				'deps'		=> array(),
+				'ver'		=> TB_FRAMEWORK_VERSION,
+				'media'		=> 'all'
+			);
+
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['themeblvd_grid']['src'] = TB_FRAMEWORK_URI.'/assets/css/grid-extended-rtl.min.css';  // Generated with CSSJanus
+			}
 
 			$this->framework_stylesheets['themeblvd'] = array(
 				'handle'	=> 'themeblvd',
@@ -169,6 +183,21 @@ class Theme_Blvd_Stylesheets_API {
 				'media'		=> 'all'
 			);
 
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['themeblvd']['src'] = TB_FRAMEWORK_URI.'/assets/css/themeblvd-rtl.min.css';  // Generated with CSSJanus
+			}
+
+		}
+
+		// Primary dark css, re-styles themeblvd.css for dark content bg color
+		if ( themeblvd_supports( 'display', 'dark' ) && themeblvd_supports( 'assets', 'primary_dark_css' ) ) {
+			$this->framework_stylesheets['themeblvd_dark'] = array(
+				'handle'	=> 'themeblvd_dark',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd-dark.min.css',
+				'deps'		=> array('themeblvd'),
+				'ver'		=> TB_FRAMEWORK_VERSION,
+				'media'		=> 'all'
+			);
 		}
 
 		// Remove stylesheets
@@ -231,7 +260,6 @@ class Theme_Blvd_Stylesheets_API {
 					$key = $file['level'];
 					$this->client_stylesheets[$key][$handle] = $file;
 				}
-
 			}
 
 		}

@@ -1,0 +1,165 @@
+/* =Top
+----------------------------------------------- */
+
+/* Header Top */
+.header-top {
+	background: #222222;
+	position: relative;
+}
+.header-top-nav > li {
+	border-right-color: #000000;
+}
+.btn-navbar {
+	background: #333333;
+	color: #ffffff;
+}
+.btn-navbar:hover {
+	background: #000000;
+	color: #ffffff;
+}
+
+/* Primary Navigation (non-mobile view) */
+.header-nav {
+	background: #000000;
+}
+
+/* Sticky Menu */
+.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
+	background: #222222;
+}
+
+/* =Content
+----------------------------------------------- */
+
+/* Typography */
+html,
+body {
+	background: #151515;
+	color: #ffffff;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #ffffff;
+}
+
+/* Content Background */
+.bg-content {
+	background: #222222;
+}
+
+/* Primary Color */
+.primary,
+.bg-primary,
+.btn-primary,
+.label-primary,
+.panel-primary > .panel-heading {
+	background-color: #eeeeee;
+	border-color: #000000;
+	color: #333333;
+}
+.primary:hover,
+.primary:focus,
+a.bg-primary:hover,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+	background-color: #ffffff;
+	border-color: #000000;
+	color: #333333;
+}
+.panel-primary {
+	border-color: #000000;
+}
+
+/* Posts */
+.blog-wrap > article,
+article.single {
+	background: #222222;
+}
+
+/* Pages */
+article.page {
+	background: #222222;
+}
+
+/* Related Posts */
+.tb-related-posts > .inner {
+	background: #222222;
+}
+
+/* =Comments
+----------------------------------------------- */
+
+/* Comment List */
+#comments .comment-body {
+	background: #222222;
+}
+
+/* Children */
+#comments ul.children {
+	border-left-color: #000000;
+}
+
+/* Comment Form */
+#respond #commentform {
+	background: #222222;
+}
+
+/* Comment Form (in reply) */
+.comment #respond {
+	background: #222222;
+}
+
+/* =Archives
+----------------------------------------------- */
+
+/* Archive Info and Author Box (single post and archives) */
+.tb-info-box {
+	background: #222222;
+}
+
+/* Search Results */
+.search-page {
+	background: #222222;
+}
+
+/* Posts Wrap */
+.post_list.archive-loop,
+.post_grid.archive-loop,
+.post_showcase.archive-loop {
+	background: #222222;
+}
+
+/* =Page Templates
+----------------------------------------------- */
+
+/* Post List */
+.list-template-wrap .list-wrap {
+	background: #222222;
+}
+
+/* Post Grid */
+.grid-template-wrap .grid-wrap {
+	background: #222222;
+}
+
+/* Post Showcase */
+.showcase-template-wrap .showcase-wrap {
+	background: #222222;
+}
+
+/* Custom Layout */
+.element-section > .element.bg-content,
+.element-columns .element.bg-content {
+	background: #222222;
+}
+
+/* =Widgets
+----------------------------------------------- */
+
+/* Fixed Sidebars */
+.fixed-sidebar .widget {
+	background: #222222;
+}

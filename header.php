@@ -35,21 +35,25 @@
 
 		<!-- HEADER (start) -->
 
-		<div id="top">
-			<header id="branding" role="banner">
-				<div class="content">
-					<?php
-					/**
-					 * Display header elements.
-					 */
-					themeblvd_header_top();
-					themeblvd_header_above();
-					themeblvd_header_content();
-					themeblvd_header_menu();
-					?>
-				</div><!-- .content (end) -->
-			</header><!-- #branding (end) -->
-		</div><!-- #top (end) -->
+		<?php if ( themeblvd_config( 'top' ) ) : ?>
+
+			<div id="top">
+				<header id="branding" <?php themeblvd_header_class(); ?> role="banner">
+					<div class="wrap clearfix">
+						<?php
+						/**
+						 * Display header elements.
+						 */
+						themeblvd_header_top();
+						themeblvd_header_above();
+						themeblvd_header_content();
+						themeblvd_header_menu();
+						?>
+					</div><!-- .wrap (end) -->
+				</header><!-- #branding (end) -->
+			</div><!-- #top (end) -->
+
+		<?php endif; ?>
 
 		<!-- HEADER (end) -->
 
@@ -64,12 +68,15 @@
 			themeblvd_featured_end();
 		}
 
-		// Start main area
-		themeblvd_main_start();
-		themeblvd_main_top();
+		// Start main area (if not a custom layout)
+		if ( ! themeblvd_config( 'builder_post_id' ) ) {
 
-		// Breadcrumbs
-		themeblvd_breadcrumbs();
+			themeblvd_main_start();
+			themeblvd_main_top();
+
+			// Breadcrumbs
+			themeblvd_breadcrumbs();
+		}
 
 		// Before sidebar+content layout
 		themeblvd_before_layout();

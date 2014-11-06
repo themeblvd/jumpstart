@@ -1,9 +1,19 @@
 Jump Start Changelog
 ====================
 
+2.0.0
+-----
+
+<<<<<<< HEAD
+=======
+@TODO
+
+--------------------------------------------------------------
+
 1.2.4
 -----
 
+>>>>>>> framework-2-5
 * Updated Theme Blvd framework to 2.4.4
 * Fixed Gallery Slider only allowing five images.
 * Fixed Gallery Slider only allowing one instance on a page.

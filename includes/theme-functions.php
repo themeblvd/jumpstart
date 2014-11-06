@@ -26,7 +26,11 @@ function jumpstart_css() {
 	$api = Theme_Blvd_Stylesheets_API::get_instance();
 
 	// Primary style.css after all framework stylesheets
-	wp_enqueue_style( 'themeblvd_theme', get_stylesheet_uri(), $api->get_framework_deps() );
+	if ( is_rtl() ) {
+		wp_enqueue_style( 'themeblvd_theme', get_stylesheet_directory_uri().'/style-rtl.css', $api->get_framework_deps() );
+	} else {
+		wp_enqueue_style( 'themeblvd_theme', get_stylesheet_uri(), $api->get_framework_deps() );
+	}
 
 	// IE Stylesheet
 	wp_enqueue_style( 'themeblvd_ie', get_template_directory_uri() . '/assets/css/ie.css', array( 'themeblvd_theme' ) );

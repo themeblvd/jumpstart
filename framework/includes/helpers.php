@@ -15,8 +15,8 @@ function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
 	}
 
 	$offset = strlen( $string ) - 1;
-
 	$trailing_char = strpos( $string, $char, $offset );
+
 	if ( $trailing_char ) {
 		$string = substr( $string, 0, -1 );
 	}
@@ -114,23 +114,6 @@ function themeblvd_get_font_weight( $option ) {
 	return apply_filters( 'themeblvd_font_weight', $weight, $option );
 }
 
-if ( !function_exists( 'themeblvd_primary_menu_fallback' ) ) :
-/**
- * List pages as a main navigation menu when user
- * has not set one under Apperance > Menus in the
- * WordPress admin panel.
- *
- * @since 2.0.0
- */
-function themeblvd_primary_menu_fallback() {
-	$home_text = themeblvd_get_local('home');
-	echo '<ul id="primary-menu" class="sf-menu">';
-	echo '<li class="home"><a href="'.home_url().'" title="'.$home_text.'">'.$home_text.'</a></li>';
-	wp_list_pages('title_li=');
-	echo '</ul>';
-}
-endif;
-
 /**
  * Setup arguments to pass into get_posts()
  *
@@ -138,30 +121,76 @@ endif;
  *
  * @param array $options All options for query string
  * @param string $type Type of posts setup, grid or list
- * @param boolean $slider Whether or no this is a post list/grid slider (NOT auto slider)
  * @return array $args Arguments to get passed into get_posts()
  */
-function themeblvd_get_posts_args( $options, $type, $slider = false ) {
+function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 	// Is there a query source? (i.e. category, tag, query)
 	$source = '';
+
 	if ( ! empty( $options['source'] ) ) {
 		$source = $options['source'];
 	}
 
+	// How are we displaying?
+	$display = $type;
+
+	if ( ! empty( $options['display'] ) ) {
+		$display = $options['display'];
+	}
+
 	// Custom query
-	if ( ( 'query' == $source && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
+	if ( ( $source == 'query' && isset( $options['query'] ) ) || ( ! $source && ! empty( $options['query'] ) ) ) {
 
-		// Convert string to query array
-		$query = wp_parse_args( htmlspecialchars_decode( $options['query'] ) );
+		$query = $options['query'];
 
-		// Force posts per page on grids
-		if( 'grid' == $type && ! $slider && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
-			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
-				$query['numberposts'] = $options['rows']*$options['columns'];
+		/**
+		 * If user is passing some sort of identfier key that they can
+		 * catch with a custom filter, let's just send it through, or
+		 * else we can continue to process the custom query.
+		 * If the custom query has no equal sign "=", then we can assume
+		 * they're not intending it to be an actual query string, and thus
+		 * just sent it through.
+		 */
+		if ( is_array($query) || strpos($query, '=') !== false ) {
+
+			if ( is_string( $query ) && strpos($query, 'custom_field=') === 0 ) {
+				$query = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $query), true );
 			}
+
+			// Convert string to query array
+			if ( ! is_array( $query ) ) {
+				$query = wp_parse_args( htmlspecialchars_decode($query) );
+			}
+
+			// Force posts per page on grids
+			if ( ( $display == 'grid' || $display == 'showcase' ) && apply_filters( 'themeblvd_force_grid_posts_per_page', true ) ) {
+				if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
+					$query['posts_per_page'] = $options['rows']*$options['columns'];
+				}
+			}
+
 		}
 
+	}
+
+	// List of pages
+	if ( ! isset( $query ) && $source == 'pages' && ! empty( $options['pages'] ) ) {
+
+		$options['pages'] = str_replace( ' ', '', $options['pages'] );
+		$options['pages'] = explode( ',', $options['pages'] );
+
+		$query = array(
+			'post_type' => 'page',
+			'post__in' 	=> array(),
+			'orderby'	=> 'post__in'
+		);
+
+		if ( $options['pages'] ) {
+			foreach ( $options['pages'] as $pagename ) {
+				$query['post__in'][] = themeblvd_post_id_by_name( $pagename, 'page' );
+			}
+		}
 	}
 
 	// If no custom query, let's build it.
@@ -170,74 +199,50 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 		// Start $query
 		$query = array( 'suppress_filters' => false );
 
-		// Number of posts
-		if ( $type == 'grid' && ! $slider ) {
-
-			if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
-				$query['numberposts'] = intval($options['rows'])*intval($options['columns']);
-			}
-
-		} else {
-
-			if ( ! empty( $options['numberposts'] ) ) {
-				$query['numberposts'] = intval( $options['numberposts'] );
-			}
-
-		}
-
-		if ( empty( $query['numberposts'] ) ) {
-			$query['numberposts'] = -1;
-		}
-
 		// Categories
-		if ( 'category' == $source || ! $source ) {
+		if ( $source == 'category' || ! $source ) {
 
-			if ( 'auto_slider' == $type ) {
+			if ( ! empty( $options['cat'] ) ) {
 
-				// The "Post Slider" element
-				if ( ! empty( $options['category'] ) ) {
-					$query['category_name'] = $options['category'];
-				}
+				// Category override option #1 -- cat
+				$query['cat'] = $options['cat'];
 
-			} else {
+			} else if ( ! empty( $options['category_name'] ) ) {
 
-				if ( ! empty( $options['cat'] ) ) {
+				// Category override option #2 -- category_name
+				$query['category_name'] = $options['category_name'];
 
-					// Category override option #1 -- cat
-					$query['cat'] = $options['cat'];
+			} else if ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
 
-				} elseif ( ! empty( $options['category_name'] ) ) {
+				unset( $options['categories']['all'] );
+				$categories = '';
 
-					// Category override option #2 -- category_name
-					$query['category_name'] = $options['category_name'];
-
-				} elseif ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
-
-					unset( $options['categories']['all'] );
-					$categories = '';
-
-					foreach ( $options['categories'] as $category => $include ) {
-						if ( $include ) {
-							$current_category = get_term_by( 'slug', $category, 'category' );
-							$categories .= $current_category->term_id.',';
-						}
-					}
-
-					if ( $categories ) {
-						$categories = themeblvd_remove_trailing_char( $categories, ',' );
-						$query['cat'] = $categories;
+				foreach ( $options['categories'] as $category => $include ) {
+					if ( $include ) {
+						$current_category = get_term_by( 'slug', $category, 'category' );
+						$categories .= $current_category->term_id.',';
 					}
 				}
 
+				if ( $categories ) {
+					$categories = themeblvd_remove_trailing_char( $categories, ',' );
+					$query['cat'] = $categories;
+				}
 			}
 
 		}
 
 		// Tags
-		if ( 'tag' == $source || ! $source ) {
+		if ( $source == 'tag' || ! $source ) {
 			if ( ! empty( $options['tag'] ) ) {
 				$query['tag'] = $options['tag'];
 			}
+		}
+
+		// If post slider (NOT grid slider), we only want
+		// images with featured images set.
+		if ( $type == 'slider' ) {
+			$query['meta_key'] = '_thumbnail_id';
 		}
 
 		// Additional args
@@ -253,9 +258,51 @@ function themeblvd_get_posts_args( $options, $type, $slider = false ) {
 			$query['offset'] = intval( $options['offset'] );
 		}
 
+		if ( ! empty( $options['meta_key'] ) ) {
+			$query['meta_key'] = $options['meta_key'];
+		}
+
+		if ( ! empty( $options['meta_value'] ) ) {
+			$query['meta_value'] = $options['meta_value'];
+		}
+
 	}
 
-	return apply_filters( 'themeblvd_get_posts_args', $query, $options, $type, $slider );
+	// Posts per page
+	if ( empty( $query['posts_per_page'] ) ) {
+
+		// Number of posts
+		if ( $type == 'grid' || $type == 'showcase' ) {
+
+			if ( ! empty( $options['columns'] ) ) {
+
+				if ( $display == 'slider' && ! empty( $options['slides'] ) ) {
+					$query['posts_per_page'] = intval($options['slides'])*intval($options['columns']);
+				} else if ( $display == 'masonry' && ! empty( $options['posts_per_page'] ) ) {
+					$query['posts_per_page'] = $options['posts_per_page'];
+				} else if ( ( $display == 'filter' || $display == 'masonry_filter' ) && ! empty( $options['filter_max'] ) ) {
+					$query['posts_per_page'] = $options['filter_max'];
+				} else if ( ! empty( $options['rows'] ) && ! empty( $options['columns'] ) ) {
+					$query['posts_per_page'] = intval($options['rows'])*intval($options['columns']);
+				}
+
+			}
+
+		} else {
+
+			if ( ! empty( $options['posts_per_page'] ) ) {
+				$query['posts_per_page'] = intval( $options['posts_per_page'] );
+			}
+
+		}
+
+		if ( empty( $query['posts_per_page'] ) ) {
+			$query['posts_per_page'] = -1;
+		}
+
+	}
+
+	return apply_filters( 'themeblvd_get_posts_args', $query, $options, $type );
 }
 
 /**
@@ -298,51 +345,6 @@ function themeblvd_posts_page_page( $type, $columns = null, $rows = null ) {
 	$posts_per_page = $columns * $rows;
 
 	return apply_filters('themeblvd_posts_page_page', $posts_per_page, $type, $columns, $rows );
-}
-
-/**
- * Get the class to be used for a grid column.
- *
- * @since 2.0.0
- *
- * @param int $columns Number of columns
- * @return string $class class for each column of grid
- */
-function themeblvd_grid_class( $columns ) {
-
-	$class = 'grid_3'; // default
-
-	if ( $columns == 1 ) {
-		$class = 'grid_12';
-	} else if ( $columns == 2 ) {
-		$class = 'grid_6';
-	} else if ( $columns == 3 ) {
-		$class = 'grid_4';
-	} else if ( $columns == 4 ) {
-		$class = 'grid_3';
-	} else if ( $columns == 5 ) {
-		$class = 'grid_fifth_1';
-	}
-
-	return apply_filters( 'themeblvd_grid_class', $class, $columns );
-}
-
-/**
- * Open a row in a post grid
- *
- * @since 2.0.0
- */
-function themeblvd_open_row() {
-	echo apply_filters( 'themeblvd_open_row', '<div class="grid-row">' );
-}
-
-/**
- * Close a row in a post grid
- *
- * @since 2.0.0
- */
-function themeblvd_close_row() {
-	echo apply_filters( 'themeblvd_close_row', '<div class="clear"></div></div><!-- .grid-row (end) -->' );
 }
 
 /**
@@ -419,65 +421,51 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 }
 
 /**
- * Get additional classes for elements.
+ * Get an rgb or rgba value based on color hex value.
  *
- * @since 2.0.3
+ * @since 2.5.0
  *
- * @param string $element Element to get classes for
- * @param boolean $start_space Whether there should be a space at start
- * @param boolean $end_space Whether there should be a space at end
- * @param string $type Type of element (only relevant if there is a filter added utilizing it)
- * @param array $options Options for element (only relevant if there is a filter added utilizing it)
- * @param string $location Location of element - featured, primary, or featured_below (only relevant if there is a filter added utilizing it)
+ * @param string $hex Color hex - ex: #000 or 000
+ * @param string $opacity Opacity value to determine rgb vs rgba - ex: 0.5
  * @return array $classes Classes for element.
  */
-function themeblvd_get_classes( $element, $start_space = false, $end_space = false, $type = null, $options = array(), $location = 'primary' ) {
+function themeblvd_get_rgb( $color, $opacity = '' ) {
 
-	$classes = '';
+	$default = 'rgb(0,0,0)';
 
-	$all_classes = array(
-		'element_columns' 				=> array(),
-		'element_content' 				=> array(),
-		'element_divider' 				=> array(),
-		'element_headline' 				=> array(),
-		'element_jumbotron' 			=> array('element-unstyled'),
-		'element_post_grid_paginated' 	=> array('themeblvd-gallery'),
-		'element_post_grid' 			=> array('themeblvd-gallery'),
-		'element_post_grid_slider' 		=> array('themeblvd-gallery'),
-		'element_post_list_paginated' 	=> array(),
-		'element_post_list' 			=> array(),
-		'element_post_list_slider' 		=> array(),
-		'element_post_slider' 			=> array(),
-		'element_slider' 				=> array(),
-		'element_slogan' 				=> array(),
-		'element_tabs' 					=> array(),
-		'element_tweet' 				=> array(),
-		'slider_bootstrap'				=> array(),
-		'slider_carrousel'				=> array(),
-		'slider_nivo'					=> array(),
-		'slider_standard'				=> array()
-	);
-	$all_classes = apply_filters( 'themeblvd_element_classes', $all_classes, $type, $options, $location );
-
-	if ( ! empty( $all_classes[$element] ) ) {
-
-		if ( $start_space ) {
-			$classes .= ' ';
-		}
-
-		if ( is_array( $all_classes[$element] ) ) {
-			$classes .= implode(' ', $all_classes[$element]);
-		} else {
-			// Backward compatbility, $all_classes used to use strings
-			$classes .= $all_classes[$element];
-		}
-
-		if ( $end_space ) {
-			$classes .= ' ';
-		}
-
+	if ( ! $color ) {
+		return $default;
 	}
-	return $classes;
+
+	// Sanitize $color if "#" is provided
+	$color = str_replace('#', '', $color);
+
+    // Check if color has 6 or 3 characters and get values
+    if ( strlen($color) == 6 ) {
+		$hex = array( $color[0].$color[1], $color[2].$color[3], $color[4].$color[5] );
+    } elseif ( strlen($color) == 3 ) {
+		$hex = array( $color[0].$color[0], $color[1].$color[1], $color[2].$color[2] );
+    } else {
+		return $default;
+    }
+
+    // Convert hexadec to rgb
+    $rgb =  array_map( 'hexdec', $hex );
+
+    // Check if opacity is set(rgba or rgb)
+    if ( $opacity ) {
+
+		if( abs($opacity) > 1 ) {
+    		$opacity = '1.0';
+    	}
+
+    	$output = 'rgba('.implode(',', $rgb).','.$opacity.')';
+
+    } else {
+    	$output = 'rgb('.implode(',', $rgb).')';
+    }
+
+    return $output;
 }
 
 /**
@@ -616,8 +604,8 @@ function themeblvd_standard_slider_js( $id, $options ) {
 				<?php if ( ! empty( $options['smoothheight'] ) && $options['smoothheight'] == 'true' ) : ?>
 				smoothHeight: true,
 				<?php endif; ?>
-				prevText: '<i class="icon-circle-arrow-left"></i>',
-				nextText: '<i class="icon-circle-arrow-right"></i>',
+				prevText: '<i class="fa fa-chevron-left"></i>',
+				nextText: '<i class="fa fa-chevron-right"></i>',
 				animation: "<?php echo $options['fx']; ?>",
 				// pauseOnHover: true - This was replaced with a custom solution to work with other controls, see below with "pause_on_hover" option.
 				<?php if ( $options['timeout'] ) : ?>
@@ -718,21 +706,32 @@ function themeblvd_get_comment_form_args() {
 	$req = get_option( 'require_name_email' );
 	$aria_req = ( $req ? " aria-required='true'" : '' );
 	$args = array(
-		'fields' => array(
-			'author' => '<p class="comment-form-author"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .
-						'<label for="author">' . themeblvd_get_local( 'name' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-			'email'  => '<p class="comment-form-email"><input id="email" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />' .
-						'<label for="email">' . themeblvd_get_local( 'email' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label></p>',
-			'url'    => '<p class="comment-form-url"><input id="url" class="form-control" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
-						'<label for="url">' .themeblvd_get_local( 'website' ) . '</label></p>'
-		),
-		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" class="form-control" name="comment" cols="45" rows="10" aria-required="true"></textarea></p>',
+		'comment_field'			=> '<p class="comment-form-comment"><label for="comment">'.themeblvd_get_local('comment').'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 		'title_reply'			=> themeblvd_get_local( 'title_reply' ),
 		'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
 		'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
-		'label_submit'			=> themeblvd_get_local( 'label_submit' )
+		'label_submit'			=> themeblvd_get_local( 'label_submit' ),
+		'comment_notes_after'	=> '<p class="form-allowed-tags">' . sprintf( themeblvd_get_local('comments_notes_after'), '</p><code class="block">' . allowed_tags() . '</code>' ) . '</p>'
 	);
 	return apply_filters( 'themeblvd_comment_form', $args, $commenter, $req, $aria_req );
+}
+
+/**
+ * If default language is English, this will swap in our
+ * filtered framework text strings. This helps us to keep
+ * control of all text strings being outputted on the frontend
+ * of the theme.
+ *
+ * Filtered onto WP's "comment_form_default_fields"
+ *
+ * @param array $fields Current fields from WP's comment form
+ * @return array $fields Modified fields
+ */
+function themeblvd_comment_form_fields( $fields ) {
+	$fields['author'] = str_replace( 'Name', themeblvd_get_local('name'), $fields['author'] );
+	$fields['email'] = str_replace( 'Email', themeblvd_get_local('email'), $fields['email'] );
+	$fields['url'] = str_replace( 'Website ', themeblvd_get_local('website'), $fields['url'] );
+	return $fields;
 }
 
 /**
@@ -1128,10 +1127,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 		$parts[$last]['text'] .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
 	}
 
-	// Final filter on entire breadcrumbs trail.
-	$breadcrumbs = apply_filters( 'themeblvd_breadcrumb_parts', array_merge( $breadcrumbs, $parts ), $atts );
-
-	return $breadcrumbs;
+	return apply_filters( 'themeblvd_breadcrumb_parts', array_merge($breadcrumbs, $parts), $atts );
 }
 
 /**
@@ -1139,7 +1135,7 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
  *
  * @since 2.2.1
  *
- * @return boolean $show Whether breadcrumbs should show or not
+ * @return bool $show Whether breadcrumbs should show or not
  */
 function themeblvd_show_breadcrumbs() {
 
@@ -1161,8 +1157,14 @@ function themeblvd_show_breadcrumbs() {
 		$display = 'hide';
 	}
 
+	// Disable on custom layouts (can be added in layout from Builder)
+	if ( is_page_template('template_builder.php') ) {
+		$display = 'hide';
+	}
+
 	// Convert to boolean
 	$show = false;
+
 	if ( $display == 'show' ) {
 		$show = true;
 	}
@@ -1297,19 +1299,6 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
 }
 
 /**
- * Get the overlay markup for a thumbnail that animates
- * in the video, enlarge, link, or arrow icon.
- *
- * @since 2.3.0
- *
- * @return string $overlay HTML markup to get inserted within anchor tag
- */
-function themeblvd_get_image_overlay() {
-	$overlay = '<span class="image-overlay"><span class="image-overlay-bg"></span><span class="image-overlay-icon"></span></span>';
-    return apply_filters( 'themeblvd_image_overlay', $overlay );
-}
-
-/**
  * Get class for buttons.
  *
  * @since 2.4.0
@@ -1330,6 +1319,8 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 
 	if ( in_array( $color, apply_filters( 'themeblvd_bootstrap_btn_colors', array( 'default', 'primary', 'info', 'success', 'warning', 'danger' ) ) ) ) {
 		$class .= sprintf( ' btn-%s', $color );
+	} else if ( $color == 'custom' ) {
+		$class .= ' tb-custom-button';
 	} else {
 		$class .= sprintf( ' %s', $color );
 	}
@@ -1345,9 +1336,12 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 		case 'large' :
 			$size = 'lg';
 			break;
+		case 'x-large' :
+			$size = 'xl';
+			break;
 	}
 
-	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg' ) ) ) ) {
+	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg', 'xl' ) ) ) ) {
 		$class .= sprintf( ' btn-%s', $size );
 	}
 
@@ -1357,4 +1351,199 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 	}
 
     return apply_filters( 'themeblvd_get_button_class', $class, $color, $size );
+}
+
+/**
+ * Filter applied on copyright text to allow
+ * dynamic variables and shortcodes.
+ *
+ * @since 2.5.0
+ *
+ * @return string Text to filter
+ */
+function themeblvd_footer_copyright_default( $text ) {
+	$text = str_replace( '%year%', date('Y'), $text );
+	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
+	return themeblvd_get_content( $text );
+}
+
+/**
+ * Add to the post_class() function of WordPress.
+ *
+ * @since 2.5.0
+ *
+ * @param array $class Current classes
+ * @return array $class Modified classes
+ */
+function themeblvd_post_class( $class ) {
+
+	if ( ! themeblvd_get_att('doing_second_loop') && is_single( themeblvd_config('id') ) ) {
+		$class[] = 'single';
+	}
+
+	return $class;
+}
+
+/**
+ * Get the the length of time since a post was published
+ * @props bbPress
+ *
+ * @since 2.5.0
+ *
+ * @param int $post_id ID of post
+ * @return string $output Final time ago string
+ */
+function themeblvd_get_time_ago( $post_id = 0 ) {
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$date = get_post_time('G', true, $post_id);
+
+	$locals = apply_filters('themeblvd_time_ago_locals', array(
+		'year' 		=> __('year', 'themeblvd_front'),
+		'years' 	=> __('years', 'themeblvd_front'),
+		'month' 	=> __('month', 'themeblvd_front'),
+		'months' 	=> __('months', 'themeblvd_front'),
+		'week' 		=> __('week', 'themeblvd_front'),
+		'weeks' 	=> __('weeks', 'themeblvd_front'),
+		'day' 		=> __('day', 'themeblvd_front'),
+		'days' 		=> __('days', 'themeblvd_front'),
+		'hour' 		=> __('hour', 'themeblvd_front'),
+		'hours' 	=> __('hours', 'themeblvd_front'),
+		'minute' 	=> __('minute', 'themeblvd_front'),
+		'minutes' 	=> __('minutes', 'themeblvd_front'),
+		'second' 	=> __('second', 'themeblvd_front'),
+		'seconds' 	=> __('seconds', 'themeblvd_front'),
+		'ago'		=> __('ago', 'themeblvd_front'),
+		'error' 	=> __('sometime', 'themeblvd_front')
+	));
+
+	// Array of time period chunks
+	$chunks = array(
+		array( 60 * 60 * 24 * 365 , $locals['year'], $locals['years'] ),
+		array( 60 * 60 * 24 * 30 , $locals['month'], $locals['months'] ),
+		array( 60 * 60 * 24 * 7, $locals['week'], $locals['weeks'] ),
+		array( 60 * 60 * 24 , $locals['day'], $locals['days'] ),
+		array( 60 * 60 , $locals['hour'], $locals['hours'] ),
+		array( 60 , $locals['minute'], $locals['minutes'] ),
+		array( 1, $locals['second'], $locals['seconds'] )
+	);
+
+	if ( !is_numeric( $date ) ) {
+		$time_chunks = explode( ':', str_replace( ' ', ':', $date ) );
+		$date_chunks = explode( '-', str_replace( ' ', '-', $date ) );
+		$date = gmmktime( (int)$time_chunks[1], (int)$time_chunks[2], (int)$time_chunks[3], (int)$date_chunks[1], (int)$date_chunks[2], (int)$date_chunks[0] );
+	}
+
+	$current_time = current_time( 'mysql', $gmt = 0 );
+	$newer_date = strtotime( $current_time );
+
+	// Difference in seconds
+	$since = $newer_date - $date;
+
+	// Something went wrong with date calculation and we ended up with a negative date.
+	if ( 0 > $since ) {
+		return $locals['error'];
+	}
+
+	// Step one: the first chunk
+	for ( $i = 0, $j = count($chunks); $i < $j; $i++ ) {
+
+		$seconds = $chunks[$i][0];
+
+		// Finding the biggest chunk (if the chunk fits, break)
+		if ( ( $count = floor($since / $seconds) ) != 0 ) {
+			break;
+		}
+	}
+
+	// Set output var
+	$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
+
+	if ( !(int)trim($output) ){
+		$output = '0 ' . $locals['seconds'];
+	}
+
+	$output .= ' '.$locals['ago'];
+
+	return $output;
+}
+
+/**
+ * Get site's home url
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_home_url() {
+
+	if ( function_exists('icl_get_home_url') ) {
+        $url = icl_get_home_url();
+    } else {
+    	$url = get_home_url();
+    }
+
+    return apply_filters( 'themeblvd_home_url', trailingslashit($url) );
+}
+
+/**
+ * Get search result post types
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_search_types() {
+
+	// Because we need all the results, and not just
+	// the current page, we have to get the search
+	// results again.
+	$results = new WP_Query('s='.get_search_query().'&posts_per_page=-1');
+
+	// Build list of custom post types from results
+	$types = array();
+
+	if ( $results->have_posts() ) {
+		while ( $results->have_posts() ) {
+
+			$results->the_post();
+			$type = get_post_type();
+
+			if ( ! isset( $types[$type] ) ) {
+				$post_type = get_post_type_object($type);
+				$types[$type] = $post_type->labels->name;
+			}
+		}
+	}
+
+	wp_reset_postdata();
+
+	return $types;
+}
+
+/**
+ * Get the value for data-filter of an item in
+ * filterable post display.
+ *
+ * @since 2.5.0
+ *
+ * @param string $tax Taxonomy we're sorting the showcase by
+ * @param int $post_id ID of current post
+ * @return string $value Value to get used in HTML, i.e. data-sort="$value"
+ */
+function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ){
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$value = '';
+	$terms = get_the_terms($post_id, $tax);
+
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			$value .= sprintf('filter-%s ', $term->slug);
+		}
+	}
+
+	return apply_filters( 'themeblvd_filter_val', trim($value), $tax, $post_id );
 }

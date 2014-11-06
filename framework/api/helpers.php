@@ -29,7 +29,6 @@ function themeblvd_api_init() {
 /* (1) Theme Options API Helpers
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_get_core_options' ) ) :
 /**
  * Get raw options. This helper function is more
  * for backwards compatibility. Realistically, it
@@ -42,9 +41,7 @@ function themeblvd_get_core_options() {
 	$api = Theme_Blvd_Options_API::get_instance();
 	return $api->get_raw_options();
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_formatted_options' ) ) :
 /**
  * Get formatted options. Note that options will not be
  * formatted until after WP's after_setup_theme hook.
@@ -55,9 +52,7 @@ function themeblvd_get_formatted_options() {
 	$api = Theme_Blvd_Options_API::get_instance();
 	return $api->get_formatted_options();
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_option' ) ) :
 /**
  * Get theme option
  *
@@ -79,9 +74,28 @@ function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
 
 	return apply_filters( 'themeblvd_get_option', $setting, $primary, $secondary, $default );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_add_option_tab' ) ) :
+/**
+ * Check if an option is registered. This can be helpful when
+ * theme options have been changed in a theme, but maybe the
+ * settings haven't been re-saved by the user.
+ *
+ * @since 2.5.0
+ *
+ * @param string $option_id ID of the option to check for
+ * @return bool Whether option exists
+ */
+function themeblvd_has_option( $option_id ) {
+
+	$options = themeblvd_get_formatted_options();
+
+	if ( isset( $options[$option_id] ) ) {
+		return true;
+	}
+
+	return false;
+}
+
 /**
  * Add theme option tab.
  *
@@ -95,9 +109,7 @@ function themeblvd_add_option_tab( $tab_id, $tab_name, $top = false ) {
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->add_tab( $tab_id, $tab_name, $top );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_option_tab' ) ) :
 /**
  * Remove theme option tab.
  *
@@ -109,9 +121,7 @@ function themeblvd_remove_option_tab( $tab_id ) {
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->remove_tab( $tab_id );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_add_option_section' ) ) :
 /**
  * Add theme option section.
  *
@@ -128,9 +138,7 @@ function themeblvd_add_option_section( $tab_id, $section_id, $section_name, $sec
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->add_section( $tab_id, $section_id, $section_name, $section_desc, $options, $top );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_option_section' ) ) :
 /**
  * Remove theme option section.
  *
@@ -143,9 +151,7 @@ function themeblvd_remove_option_section( $tab_id, $section_id ) {
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->remove_section( $tab_id, $section_id );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_add_option' ) ) :
 /**
  * Add theme option.
  *
@@ -160,9 +166,7 @@ function themeblvd_add_option( $tab_id, $section_id, $option_id, $option ) {
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->add_option( $tab_id, $section_id, $option_id, $option );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_option' ) ) :
 /**
  * Remove theme option.
  *
@@ -176,9 +180,7 @@ function themeblvd_remove_option( $tab_id, $section_id, $option_id ) {
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->remove_option( $tab_id, $section_id, $option_id );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_edit_option' ) ) :
 /**
  * Remove theme option.
  *
@@ -194,9 +196,7 @@ function themeblvd_edit_option( $tab_id, $section_id, $option_id, $att, $value )
 	$api = Theme_Blvd_Options_API::get_instance();
 	$api->edit_option( $tab_id, $section_id, $option_id, $att, $value );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_option_name' ) ) :
 /**
  * For each theme, we use a unique identifier to store
  * the theme's options in the database based on the current
@@ -209,9 +209,7 @@ function themeblvd_get_option_name() {
 	$api = Theme_Blvd_Options_API::get_instance();
 	return $api->get_option_id();
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_option_defaults' ) ) :
 /**
  * Get default values for set of options.
  *
@@ -249,14 +247,24 @@ function themeblvd_get_option_defaults( $options ) {
 
 	return $defaults;
 }
-endif;
+
+/**
+ * Add option presets
+ *
+ * @since 2.5.0
+ *
+ * @param array $args
+ */
+function themeblvd_add_option_presets( $args ) {
+	$api = Theme_Blvd_Options_API::get_instance();
+	$api->add_presets($args);
+}
 
 /*------------------------------------------------------------*/
 /* (2) Builder API Helpers
 /* Requires Theme Blvd Layout Builder plugin v1.1.1+
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_get_core_elements' ) ) :
 /**
  * Get all core elements of Layout Builder.
  *
@@ -273,9 +281,7 @@ function themeblvd_get_core_elements() {
 	$api = Theme_Blvd_Builder_API::get_instance();
 	return $api->get_core_elements();
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_registered_elements' ) ) :
 /**
  * Setup all core theme options of framework, which can
  * then be altered at the theme level.
@@ -294,9 +300,7 @@ function themeblvd_get_registered_elements() {
 	return $api->get_registered_elements();
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_elements' ) ) :
 /**
  * Get layout builder's elements after new elements
  * have been given a chance to be added at the theme-level.
@@ -315,9 +319,7 @@ function themeblvd_get_elements() {
 	return $api->get_elements();
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_is_element' ) ) :
 /**
  * Check if element is currently registered.
  *
@@ -338,35 +340,44 @@ function themeblvd_is_element( $element_id ) {
 	return $api->is_element( $element_id );
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_add_builder_element' ) ) :
 /**
  * Add element to layout builder.
  *
  * @since 2.1.0
  *
- * @param string $element_id ID of element to add
- * @param string $element_name Name of element to add
- * @param string $query_type Type of query if any - none, secondary, or primary
- * @param array $options Options formatted for Options Framework
- * @param string $callback Function to display element on frontend
+ * @param array $args All arguments to pass through
+ *
+ * @param @deprecated string $element_id ID of element to add
+ * @param @deprecated string $element_name Name of element to add
+ * @param @deprecated string $query_type Type of query if any - none, secondary, or primary
+ * @param @deprecated array $options Options formatted for Options Framework
+ * @param @deprecated string $callback Function to display element on frontend
  */
-function themeblvd_add_builder_element( $element_id, $element_name, $query_type, $options, $callback ) {
+function themeblvd_add_builder_element( $args, $element_name = null, $query_type = null, $options = null, $callback = null ) {
 
 	// Get out if Builder API doesn't exist.
 	if ( ! class_exists('Theme_Blvd_Builder_API') ) {
 		return;
 	}
 
+	// If using old API function formatting, let's
+	// convert the arguments.
+	if ( ! is_array( $args ) ) { // They'll be using $args as $element_id
+		$args = array(
+			'id'		=> $args,
+			'name'		=> $element_name,
+			'options'	=> $options,
+			'callback'	=> $callback
+		);
+	}
+
 	// Add element
 	$api = Theme_Blvd_Builder_API::get_instance();
-	$api->add_element( $element_id, $element_name, $query_type, $options, $callback );
+	$api->add_element($args);
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_builder_element' ) ) :
 /**
  * Remove element from layout builder.
  *
@@ -386,21 +397,19 @@ function themeblvd_remove_builder_element( $element_id ) {
 	$api->remove_element( $element_id );
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_add_sample_layout' ) ) :
 /**
  * Add sample layout to layout builder.
  *
  * @since 2.1.0
  *
- * @param string $element_id ID of element to add
- * @param string $element_name Name of element to add
- * @param string $query_type Type of query if any - none, secondary, or primary
- * @param array $options Options formatted for Options Framework
- * @param string $function_to_display Function to display element on frontend
+ * @param string $layout_id Unique ID of sample layout
+ * @param string $layout_name Name of the sample layout
+ * @param string $preview URL to preview image of layout
+ * @param string $sidebar_layout Default sidebar layout for layout
+ * @param string $import Absolute path on server to XML file containing layout elements
  */
-function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements ) {
+function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $import ) {
 
 	// Get out on front end or if Builder API doesn't exist.
 	if ( ! is_admin() || ! class_exists('Theme_Blvd_Builder_API') ) {
@@ -409,12 +418,10 @@ function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sideb
 
 	// Add sample layout
 	$api = Theme_Blvd_Builder_API::get_instance();
-	$api->add_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $elements );
+	$api->add_layout( $layout_id, $layout_name, $preview, $sidebar_layout, $import );
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_sample_layout' ) ) :
 /**
  * Remove sample layout from layout builder.
  *
@@ -434,14 +441,12 @@ function themeblvd_remove_sample_layout( $layout_id ) {
 	$api->remove_layout( $layout_id );
 
 }
-endif;
 
 /*------------------------------------------------------------*/
 /* (3) Sliders API Helpers
 /* Requires Theme Blvd Sliders plugin v1.1+
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_add_slider' ) ) :
 /**
  * Add slider type.
  *
@@ -466,9 +471,7 @@ function themeblvd_add_slider( $slider_id, $slider_name, $slide_types, $media_po
 	$api->add( $slider_id, $slider_name, $slide_types, $media_positions, $slide_elements, $options, $callback );
 
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_slider' ) ) :
 /**
  * Remove slider type.
  *
@@ -487,13 +490,11 @@ function themeblvd_remove_slider( $slider_id ) {
 	$api->remove( $slider_id );
 
 }
-endif;
 
 /*------------------------------------------------------------*/
 /* (4) Widget Areas API Helpers
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_add_sidebar_location' ) ) :
 /**
  * Add sidebar location.
  *
@@ -508,9 +509,7 @@ function themeblvd_add_sidebar_location( $id, $name, $type, $desc = '' ) {
 	$api = Theme_Blvd_Sidebars_API::get_instance();
 	$api->add_location( $id, $name, $type, $desc );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_sidebar_location' ) ) :
 /**
  * Remove sidebar location.
  *
@@ -522,9 +521,7 @@ function themeblvd_remove_sidebar_location( $id ) {
 	$api = Theme_Blvd_Sidebars_API::get_instance();
 	$api->remove_location( $id );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_sidebar_locations' ) ) :
 /**
  * Get finalized sidebar locations.
  *
@@ -534,9 +531,7 @@ function themeblvd_get_sidebar_locations() {
 	$api = Theme_Blvd_Sidebars_API::get_instance();
 	return $api->get_locations();
 }
-endif;
 
-if ( !function_exists( 'themeblvd_register_sidebars' ) ) :
 /**
  * Register default sidebars (i.e. the "locations").
  *
@@ -547,9 +542,7 @@ function themeblvd_register_sidebars() {
 	$api = Theme_Blvd_Sidebars_API::get_instance();
 	$api->register();
 }
-endif;
 
-if ( !function_exists( 'themeblvd_get_sidebar_location_name' ) ) :
 /**
  * Get the user friendly name for a sidebar location.
  *
@@ -569,9 +562,7 @@ function themeblvd_get_sidebar_location_name( $location ) {
 
 	return __( 'Floating Widget Area', 'themeblvd' );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_display_sidebar' ) ) :
 /**
  * Display sidebar of widgets.
  *
@@ -588,13 +579,11 @@ function themeblvd_display_sidebar( $location ) {
 	$api = Theme_Blvd_Sidebars_API::get_instance();
 	$api->display( $location );
 }
-endif;
 
 /*------------------------------------------------------------*/
 /* (5) Stylesheets API
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_add_stylesheet' ) ) :
 /**
  * Add custom stylesheet
  *
@@ -611,9 +600,7 @@ function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $medi
 	$api = Theme_Blvd_Stylesheets_API::get_instance();
 	$api->add( $handle, $src, $level, $ver, $media );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_remove_stylesheet' ) ) :
 /**
  * Remove custom stylesheet
  *
@@ -625,9 +612,7 @@ function themeblvd_remove_stylesheet( $handle ) {
 	$api = Theme_Blvd_Stylesheets_API::get_instance();
 	$api->remove( $handle );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_print_styles' ) ) :
 /**
  * Print out styles.
  *
@@ -639,9 +624,7 @@ function themeblvd_print_styles( $level ) {
 	$api = Theme_Blvd_Stylesheets_API::get_instance();
 	$api->print_styles( $level );
 }
-endif;
 
-if ( !function_exists( 'themeblvd_user_stylesheets' ) ) :
 /**
  * Print out styles.
  *
@@ -654,4 +637,3 @@ function themeblvd_user_stylesheets( $level ) {
 	themeblvd_deprecated_function( __FUNCTION__, '2.2.0', 'themeblvd_print_styles' );
 	themeblvd_print_styles( $level );
 }
-endif;

@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------*/
-/* (1) <head>
+/* <head>
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_viewport_default' ) ) :
@@ -18,14 +18,46 @@ function themeblvd_viewport_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (2) Before and after site
+/* Header
 /*------------------------------------------------------------*/
 
-// No default hooked functions.
+if ( !function_exists( 'themeblvd_header_top_default' ) ) :
+/**
+ * Default display for action: themeblvd_header_top
+ *
+ * @since 2.0.0
+ */
+function themeblvd_header_top_default() {
+	?>
+	<div class="header-top">
+		<div class="wrap clearfix">
 
-/*------------------------------------------------------------*/
-/* (3) Header
-/*------------------------------------------------------------*/
+			<div id="primary-menu-toggle">
+				<a href="#" id="primary-menu-open" class="btn-navbar open">
+					<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
+				</a>
+
+				<a href="#" id="primary-menu-close" class="btn-navbar close">
+					<?php echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' ); ?>
+				</a>
+			</div>
+
+			<?php if ( themeblvd_get_option('header_text') ) : ?>
+				<div class="header-top-text"><?php echo themeblvd_get_option('header_text'); ?></div>
+			<?php endif; ?>
+
+			<ul class="header-top-nav list-unstyled">
+				<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
+					<li><?php themeblvd_search_popup(); ?></li>
+				<?php endif; ?>
+				<li><?php themeblvd_contact_bar(); ?></li>
+			</ul>
+
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-above (end) -->
+	<?php
+}
+endif;
 
 if ( !function_exists( 'themeblvd_header_above_default' ) ) :
 /**
@@ -34,9 +66,13 @@ if ( !function_exists( 'themeblvd_header_above_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_header_above_default() {
-	echo '<div class="header-above">';
-	themeblvd_display_sidebar( 'ad_above_header' );
-	echo '</div><!-- .header-above (end) -->';
+	?>
+	<div class="header-above">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_above_header' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-above (end) -->
+	<?php
 }
 endif;
 
@@ -48,16 +84,14 @@ if ( !function_exists( 'themeblvd_header_content_default' ) ) :
  */
 function themeblvd_header_content_default() {
 	?>
-	<div id="header_content">
-		<div class="header_content-inner">
-			<div class="header_content-content clearfix">
-				<?php
-				themeblvd_header_logo();
-				themeblvd_header_addon();
-				?>
-			</div><!-- .header_content-content (end) -->
-		</div><!-- .header_content-inner (end) -->
-	</div><!-- #header_content (end) -->
+	<div class="header-content" role="banner">
+		<div class="wrap clearfix">
+			<?php
+			themeblvd_header_logo();
+			themeblvd_header_addon();
+			?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-content (end) -->
 	<?php
 }
 endif;
@@ -70,64 +104,27 @@ if ( !function_exists( 'themeblvd_header_logo_default' ) ) :
  */
 function themeblvd_header_logo_default() {
 
-	$option = themeblvd_get_option( 'logo' );
-	$classes = 'header_logo header_logo_'.$option['type'];
+	$logo = themeblvd_get_option('logo');
+	$trans = themeblvd_get_option('trans_logo');
 
-	if ( $option['type'] == 'custom' || $option['type'] == 'title' || $option['type'] == 'title_tagline' ) {
-		$classes .= ' header_logo_text';
-	}
+	if ( $logo ) {
+		if ( themeblvd_config('suck_up') && ! empty($trans['type']) && $trans['type'] != 'default' ) {
 
-	if ( $option['type'] == 'custom' && ! empty( $option['custom_tagline'] ) ) {
-		$classes .= ' header_logo_has_tagline';
-	}
+			$logo['class'] = 'logo-standard';
+			echo themeblvd_get_logo($logo);
 
-	if ( $option['type'] == 'title_tagline' ) {
-		$classes .= ' header_logo_has_tagline';
-	}
-	?>
-	<div class="<?php echo $classes; ?>">
-		<?php
-		if ( ! empty( $option['type'] ) ) {
-			switch ( $option['type'] ) {
-
-				case 'title' :
-					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
-					break;
-
-				case 'title_tagline' :
-					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.get_bloginfo('name').'">'.get_bloginfo('name').'</a></h1>';
-					echo '<span class="tagline">'.get_bloginfo('description').'</span>';
-					break;
-
-				case 'custom' :
-					echo '<h1 class="tb-text-logo"><a href="'.home_url().'" title="'.$option['custom'].'">'.$option['custom'].'</a></h1>';
-					if ( $option['custom_tagline'] ) {
-						echo '<span class="tagline">'.$option['custom_tagline'].'</span>';
-					}
-					break;
-
-				case 'image' :
-
-					echo '<a href="'.home_url().'" title="'.get_bloginfo('name').'" class="tb-image-logo">';
-
-					echo '<img src="'.$option['image'].'" alt="'.get_bloginfo('name').'" ';
-
-					if ( ! empty( $option['image_width'] ) ) {
-						echo 'width="'.$option['image_width'].'" ';
-					}
-
-					if ( ! empty( $option['image_2x'] ) ) {
-						echo 'data-image-2x="'.$option['image_2x'].'" ';
-					}
-
-					echo '/></a>';
-
-					break;
+			if ( $trans ) {
+				$trans['class'] = 'logo-trans';
+				echo themeblvd_get_logo($trans);
 			}
+
+		} else {
+
+			echo themeblvd_get_logo($logo);
+
 		}
-		?>
-	</div><!-- .tbc_header_logo (end) -->
-	<?php
+	}
+
 }
 endif;
 
@@ -140,24 +137,32 @@ if ( !function_exists( 'themeblvd_header_menu_default' ) ) :
 function themeblvd_header_menu_default() {
 	do_action( 'themeblvd_header_menu_before' );
 	?>
-	<a href="#access" class="btn-navbar">
-		<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
-	</a>
-	<nav id="access" role="navigation">
-		<div class="access-inner">
-			<div class="access-content clearfix">
-				<?php wp_nav_menu( apply_filters( 'themeblvd_primary_menu_args', array( 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu', 'container' => '', 'theme_location' => 'primary', 'fallback_cb' => 'themeblvd_primary_menu_fallback' ) ) ); ?>
-				<?php themeblvd_header_menu_addon(); ?>
-			</div><!-- .access-content (end) -->
-		</div><!-- .access-inner (end) -->
+	<nav id="access" class="header-nav" role="navigation">
+		<div class="wrap clearfix">
+			<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') ); ?>
+			<?php themeblvd_header_menu_addon(); ?>
+		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->
 	<?php
 	do_action( 'themeblvd_header_menu_after' );
 }
 endif;
 
+if ( !function_exists( 'themeblvd_header_after_default' ) ) :
+/**
+ * Default display for action: themeblvd_header_after
+ *
+ * @since 2.5.0
+ */
+function themeblvd_header_after_default() {
+	if ( themeblvd_config('banner') ) {
+		themeblvd_banner();
+	}
+}
+endif;
+
 /*------------------------------------------------------------*/
-/* (4) Featured Area (above)
+/* Featured Area (above)
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_featured_start_default' ) ) :
@@ -202,7 +207,7 @@ function themeblvd_featured_end_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (5) Featured Area (below)
+/* Featured Area (below)
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_featured_below_start_default' ) ) :
@@ -247,7 +252,7 @@ function themeblvd_featured_below_end_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (6) Main content area
+/* Main content area
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_main_start_default' ) ) :
@@ -260,10 +265,8 @@ function themeblvd_main_start_default() {
 	?>
 	<!-- MAIN (start) -->
 
-	<div id="main" class="<?php themeblvd_sidebar_layout_class(); ?>">
-		<div class="main-inner">
-			<div class="main-content">
-				<div class="grid-protection clearfix">
+	<div id="main" class="site-inner <?php themeblvd_sidebar_layout_class(); ?>">
+		<div class="wrap clearfix">
 	<?php
 }
 endif;
@@ -276,9 +279,7 @@ if ( !function_exists( 'themeblvd_main_end_default' ) ) :
  */
 function themeblvd_main_end_default() {
 	?>
-				</div><!-- .grid-protection (end) -->
-			</div><!-- .main-content (end) -->
-		</div><!-- .main-inner (end) -->
+		</div><!-- .wrap (end) -->
 	</div><!-- #main (end) -->
 
 	<!-- MAIN (end) -->
@@ -293,9 +294,13 @@ if ( !function_exists( 'themeblvd_main_top_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_main_top_default() {
-	echo '<div class="main-top">';
-	themeblvd_display_sidebar( 'ad_above_content' );
-	echo '</div><!-- .main-top (end) -->';
+	?>
+	<div class="main-top">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_above_content' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .main-top (end) -->
+	<?php
 }
 endif;
 
@@ -306,9 +311,13 @@ if ( !function_exists( 'themeblvd_main_bottom_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_main_bottom_default() {
-	echo '<div class="main-bottom">';
-	themeblvd_display_sidebar( 'ad_below_content' );
-	echo '</div><!-- .main-bottom (end) -->';
+	?>
+	<div class="main-bottom">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_below_content' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .main-bottom (end) -->
+	<?php
 }
 endif;
 
@@ -320,21 +329,13 @@ if ( !function_exists( 'themeblvd_breadcrumbs_default' ) ) :
  */
 function themeblvd_breadcrumbs_default() {
 	if ( themeblvd_show_breadcrumbs() ) {
-		?>
-		<div id="breadcrumbs">
-			<div class="breadcrumbs-inner">
-				<div class="breadcrumbs-content">
-					<?php echo themeblvd_get_breadcrumbs_trail(); ?>
-				</div><!-- .breadcrumbs-content (end) -->
-			</div><!-- .breadcrumbs-inner (end) -->
-		</div><!-- #breadcrumbs (end) -->
-		<?php
+		themeblvd_the_breadcrumbs();
 	}
 }
 endif;
 
 /*------------------------------------------------------------*/
-/* (7) Sidebars
+/* Sidebars
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_fixed_sidebars' ) ) :
@@ -352,7 +353,7 @@ function themeblvd_fixed_sidebars( $position ) {
 	// Sidebar Left, Sidebar Right, Double Sidebars
 	if ( $layout == 'sidebar_'.$position || $layout == 'double_sidebar' ) {
 
-		do_action( 'themeblvd_fixed_sidebar_before', $position  );
+		do_action( 'themeblvd_fixed_sidebar_before', $position );
 		themeblvd_display_sidebar( 'sidebar_'.$position );
 		do_action( 'themeblvd_fixed_sidebar_after', $position );
 
@@ -415,7 +416,7 @@ function themeblvd_fixed_sidebar_after_default() {
 endif;
 
 /*------------------------------------------------------------*/
-/* (8) Footer
+/* Footer
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_footer_content_default' ) ) :
@@ -429,32 +430,26 @@ function themeblvd_footer_content_default() {
 	// Grab the setup
 	$footer_setup = themeblvd_get_option( 'footer_setup' );
 
-	// Make sure there's actually a footer option in the theme setup
-	if ( is_array( $footer_setup ) ) {
+	if ( $footer_setup ) {
 
-		// Only move forward if user has selected for columns to show
-		if ( $footer_setup['num'] > 0 ) {
+		$args = array();
+		$args['num'] = count( explode( '-', $footer_setup ) );
+		$args['widths'] = $footer_setup;
 
-			// Build array of columns
-			$i = 1;
-			$columns = array();
-			$num = $footer_setup['num'];
-			while ( $i <= $num ) {
-				$columns[] = themeblvd_get_option( 'footer_col_'.$i );
-				$i++;
-			}
-			?>
-			<div id="footer_content">
-				<div class="footer_content-inner">
-					<div class="footer_content-content">
-						<div class="grid-protection clearfix">
-							<?php themeblvd_columns( $num, $footer_setup['width'][$num], $columns ); ?>
-						</div><!-- .grid-protection (end) -->
-					</div><!-- .footer_content-content (end) -->
-				</div><!-- .footer_content-inner (end) -->
-			</div><!-- .footer_content (end) -->
-			<?php
+		// Build array of columns
+		$i = 1;
+		$columns = array();
+		while ( $i <= $args['num'] ) {
+			$columns[$i] = themeblvd_get_option( 'footer_col_'.$i );
+			$i++;
 		}
+		?>
+		<div class="footer-content">
+			<div class="wrap clearfix">
+				<?php themeblvd_columns( $args, $columns ); ?>
+			</div><!-- .wrap (end) -->
+		</div><!-- .footer-content (end) -->
+		<?php
 	}
 }
 endif;
@@ -467,22 +462,22 @@ if ( !function_exists( 'themeblvd_footer_sub_content_default' ) ) :
  */
 function themeblvd_footer_sub_content_default() {
 	?>
-	<div id="footer_sub_content">
-		<div class="footer_sub_content-inner">
-			<div class="footer_sub_content-content clearfix">
-				<div class="copyright">
-					<span class="copyright-inner">
-						<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
-					</span>
-				</div><!-- .copyright (end) -->
+	<div class="footer-sub-content">
+		<div class="wrap clearfix">
+			<div class="copyright">
+				<div class="copyright-inner">
+					<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
+				</div>
+			</div><!-- .copyright (end) -->
+			<?php if ( has_nav_menu('footer') ) : ?>
 				<div class="footer-nav">
-					<span class="footer-inner">
-						<?php wp_nav_menu( apply_filters( 'themeblvd_footer_menu_args', array( 'menu_id' => 'footer-menu', 'container' => '', 'fallback_cb' => '', 'theme_location' => 'footer', 'depth' => 1 ) ) ); ?>
-					</span>
-				</div><!-- .copyright (end) -->
-			</div><!-- .footer_sub_content-content (end) -->
-		</div><!-- .footer_sub_content-inner (end) -->
-	</div><!-- .footer_sub_content (end) -->
+					<div class="footer-nav-inner">
+						<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('footer') ); ?>
+					</div>
+				</div><!-- .footer-nav (end) -->
+			<?php endif; ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .footer-sub-content (end) -->
 	<?php
 }
 endif;
@@ -494,9 +489,13 @@ endif;
  */
 if ( !function_exists( 'themeblvd_footer_below_default' ) ) {
 	function themeblvd_footer_below_default() {
-		echo '<div class="footer-below">';
-		themeblvd_display_sidebar( 'ad_below_footer' );
-		echo '</div><!-- .footer-below (end) -->';
+		?>
+		<div class="footer-below">
+			<div class="wrap clearfix">
+				<?php themeblvd_display_sidebar( 'ad_below_footer' ); ?>
+			</div><!-- .wrap (end) -->
+		</div><!-- .footer-below (end) -->
+		<?php
 	}
 }
 
@@ -504,37 +503,111 @@ if ( !function_exists( 'themeblvd_footer_below_default' ) ) {
 /* (9) Content
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_content_top_default' ) ) :
 /**
- * Default display for action: themeblvd_content_top
+ * Display info boxes at the top of archives.
+ * Hooked to themeblvd_content_top by default.
  *
- * @since 2.1.0
+ * @since 2.5.0
  */
-function themeblvd_content_top_default() {
+function themeblvd_archive_info() {
+
 	if ( is_archive() ) {
-		if ( themeblvd_get_option( 'archive_title', null, 'false' ) != 'false' ) {
-			echo '<div class="element element-headline primary-entry-title">';
-			echo '<h1 class="entry-title">';
-			themeblvd_archive_title();
-			echo '</h1>';
-			echo '</div><!-- .element (end) -->';
+
+		if ( is_category() || is_tag() ) {
+
+			$setting = '';
+
+			if ( is_category() ) {
+
+				$setting = themeblvd_get_tax_meta( 'category', get_query_var('category_name'), 'info', 'default' );
+
+				if ( ! $setting || $setting == 'default' ) {
+					$setting = themeblvd_get_option('category_info', null, 'hide');
+				}
+
+				if ( $setting == 'show' ) {
+					$tax = 'category';
+					$term = get_query_var('category_name');
+				}
+
+			} else if ( is_tag() ) {
+
+				$setting = themeblvd_get_tax_meta( 'post_tag', get_query_var('tag'), 'info', 'default' );
+
+				if ( ! $setting || $setting == 'default' ) {
+					$setting = themeblvd_get_option('tag_info', null, 'hide');
+				}
+
+				if ( $setting == 'show' ) {
+					$tax = 'post_tag';
+					$term = get_query_var('tag');
+				}
+
+			}
+
+			if ( $setting == 'show' ) {
+				themeblvd_tax_info();
+			}
+
+		} else if ( is_author() ) {
+
+			$user = get_user_by( 'slug', get_query_var('author_name') );
+			$setting = get_user_meta( $user->ID, '_tb_box_archive', true );
+
+			if ( $setting === '1' ) {
+				themeblvd_author_info($user, 'archive');
+			}
+
 		}
-	}
-	if ( is_page_template( 'template_list.php' ) || is_page_template( 'template_grid.php' ) ) {
-		global $post;
-		if ( 'hide' != get_post_meta( $post->ID, '_tb_title', true ) ) {
-			echo '<div class="element element-headline primary-entry-title">';
-			echo '<h1 class="entry-title">';
-			the_title();
-			echo '</h1>';
-			echo '</div><!-- .element (end) -->';
-		}
-		the_content();
-	}
+
+		/**
+		 * Hook anything here that you want to display at the
+		 * top of archives.
+		 *
+		 * If you wanted to use themeblvd_tax_info() for a taxonomy
+		 * other than category or post_tag, this would be a good
+		 * place to do it.
+		 */
+		do_action('themeblvd_archive_info');
+
+	} // end if is_archive()
 }
-endif;
 
 // The following must happen within the loop!
+
+if ( !function_exists( 'themeblvd_single_footer_default' ) ) :
+/**
+ * Default display for action: themeblvd_single_footer
+ *
+ * @since 2.5.0
+ */
+function themeblvd_single_footer_default() {
+
+	// Author Box
+	$user = get_user_by( 'id', get_the_author_meta('ID') );
+	$setting = get_post_meta( get_the_ID(), '_tb_author_box', true );
+
+	if ( ! $setting || $setting == 'default' ) {
+		$setting = get_user_meta( $user->ID, '_tb_box_single', true );
+	}
+
+	if ( $setting === '1' ) {
+		themeblvd_author_info($user, 'single');
+	}
+
+	// Related Posts
+	$setting = get_post_meta( get_the_ID(), '_tb_related_posts', true );
+
+	if ( ! $setting || $setting == 'default' ) {
+		$setting = themeblvd_get_option('single_related_posts', null, 'tag');
+	}
+
+	if ( $setting != 'hide' ) {
+		themeblvd_related_posts(array('related_by' => $setting));
+	}
+
+}
+endif;
 
 if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
 /**
@@ -543,18 +616,67 @@ if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_meta_default() {
-	echo themeblvd_get_meta();
+
+	$args = apply_filters('themeblvd_blog_meta_args', array(
+		'include' => array('format', 'time', 'author', 'comments')
+	));
+
+	echo themeblvd_get_meta($args);
 }
 endif;
 
-if ( !function_exists( 'themeblvd_blog_tags_default' ) ) :
+if ( !function_exists( 'themeblvd_grid_meta_default' ) ) :
 /**
- * Default display for action: themeblvd_tags
+ * Default display for action: themeblvd_grid_meta
  *
  * @since 2.0.0
  */
-function themeblvd_blog_tags_default() {
-	the_tags( '<span class="tags"><i class="fa fa-tags"></i> ', ', ', '</span>' );
+function themeblvd_grid_meta_default() {
+
+	$args = apply_filters('themeblvd_grid_meta_args', array(
+		'include'	=> array('time', 'author', 'comments'),
+		'comments'	=> 'mini',
+		//'time'	=> 'ago'
+	));
+
+	echo themeblvd_get_meta($args);
+}
+endif;
+
+if ( !function_exists( 'themeblvd_search_meta_default' ) ) :
+/**
+ * Default display for action: themeblvd_search_meta
+ *
+ * @since 2.0.0
+ */
+function themeblvd_search_meta_default() {
+
+	$args = array(
+		'include'	=> array('time'),
+		'time'		=> 'ago'
+	);
+
+	if ( get_post_type() == 'post' ) {
+		$args['include'][] = 'author';
+		$args['include'][] = 'comments';
+	}
+
+	$args = apply_filters( 'themeblvd_search_meta_args', $args );
+
+	echo themeblvd_get_meta($args);
+}
+endif;
+
+if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
+/**
+ * Default display for action: themeblvd_meta
+ *
+ * @since 2.0.0
+ */
+function themeblvd_blog_sub_meta_default() {
+	echo '<div class="sub-meta">';
+	do_action('themeblvd_sub_meta_items');
+	echo '</div><!-- .sub-meta (end) -->';
 }
 endif;
 
@@ -569,8 +691,8 @@ if ( !function_exists( 'themeblvd_the_post_thumbnail_default' ) ) :
  * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
  * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
  */
-function themeblvd_the_post_thumbnail_default( $location = 'primary', $size = '', $link = true, $allow_filters = true ) {
-	echo themeblvd_get_post_thumbnail( $location, $size, $link, $allow_filters );
+function themeblvd_the_post_thumbnail_default( $size = '', $args = array() ) {
+	echo themeblvd_get_post_thumbnail( $size, $args );
 }
 endif;
 
@@ -583,6 +705,7 @@ if ( !function_exists( 'themeblvd_blog_content_default' ) ) :
  * @param string $type Type of content -- content or excerpt
  */
 function themeblvd_blog_content_default( $type ) {
+
 	if ( $type == 'content' ) {
 
 		// Show full content
@@ -622,43 +745,7 @@ function themeblvd_blog_content_default( $type ) {
 endif;
 
 /*------------------------------------------------------------*/
-/* (10) Layout Builder Elements
-/*------------------------------------------------------------*/
-
-if ( !function_exists( 'themeblvd_element_open_default' ) ) :
-/**
- * Default display for action: themeblvd_element_close
- *
- * @since 2.1.0
- */
-function themeblvd_element_open_default( $type, $location, $classes ) {
-	echo '<div class="'.$classes.'">';
-	echo '<div class="element-inner">';
-	echo '<div class="element-inner-wrap">';
-}
-endif;
-
-if ( !function_exists( 'themeblvd_element_close_default' ) ) :
-/**
- * Default display for action: themeblvd_element_close
- *
- * @since 2.1.0
- */
-function themeblvd_element_close_default( $type, $location, $classes ) {
-	echo '</div><!-- .element-inner-wrap (end) -->';
-	echo '</div><!-- .element-inner (end) -->';
-	echo '</div><!-- .element (end) -->';
-}
-endif;
-
-/*------------------------------------------------------------*/
-/* (11) Comment Form
-/*------------------------------------------------------------*/
-
-// ...
-
-/*------------------------------------------------------------*/
-/* (12) WordPress Multisite
+/* WordPress Multisite
 /*------------------------------------------------------------*/
 
 if ( !function_exists( 'themeblvd_before_signup_form' ) ) :
@@ -668,9 +755,16 @@ if ( !function_exists( 'themeblvd_before_signup_form' ) ) :
  * @since 2.1.0
  */
 function themeblvd_before_signup_form() {
-	echo '<div id="sidebar_layout" class="clearfix">';
-	echo '<div class="sidebar_layout-inner">';
-	echo '<div class="grid-protection">';
+	?>
+	<div id="sidebar_layout" class="clearfix">
+		<div class="sidebar_layout-inner">
+			<div class="row grid-protection">
+
+				<!-- CONTENT (start) -->
+
+				<div id="content" class="col-md-12 clearfix" role="main">
+					<div class="inner">
+						<?php themeblvd_content_top();
 }
 endif;
 
@@ -681,8 +775,24 @@ if ( !function_exists( 'themeblvd_after_signup_form' ) ) :
  * @since 2.1.0
  */
 function themeblvd_after_signup_form() {
-	echo '</div><!-- .grid-protection (end) -->';
-	echo '</div><!-- .sidebar_layout-inner (end) -->';
-	echo '</div><!-- .sidebar-layout-wrapper (end) -->';
+
+						themeblvd_content_bottom(); ?>
+					</div><!-- .inner (end) -->
+				</div><!-- #content (end) -->
+
+				<!-- CONTENT (end) -->
+
+				<!-- SIDEBARS (start) -->
+
+				<?php get_sidebar( 'left' ); ?>
+
+				<?php get_sidebar( 'right' ); ?>
+
+				<!-- SIDEBARS (end) -->
+
+			</div><!-- .grid-protection (end) -->
+		</div><!-- .sidebar_layout-inner (end) -->
+	</div><!-- .#sidebar_layout (end) -->
+	<?php
 }
 endif;

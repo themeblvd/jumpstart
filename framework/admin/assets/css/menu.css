@@ -1,0 +1,12 @@
+.tb-field-link-mega,
+.tb-field-link-mega-hide-headers {
+	display: none;
+}
+.menu-item-depth-0 .tb-field-link-mega,
+.menu-item-depth-0 .tb-field-link-mega-hide-headers {
+	display: block;
+}
+.menu-item-depth-0 .tb-field-link-deactivate,
+.menu-item-depth-0 .tb-field-link-placeholder {
+	display: none;
+}

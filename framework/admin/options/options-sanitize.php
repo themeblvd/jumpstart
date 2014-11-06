@@ -13,6 +13,7 @@
  * @since 2.2.0
  */
 function themeblvd_add_sanitization() {
+	add_filter( 'themeblvd_sanitize_hidden', 'themeblvd_sanitize_hidden', 10, 2 );
 	add_filter( 'themeblvd_sanitize_text', 'themeblvd_sanitize_text' );
 	add_filter( 'themeblvd_sanitize_textarea', 'themeblvd_sanitize_textarea' );
 	add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_enum', 10, 2 );
@@ -21,22 +22,67 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_checkbox', 'themeblvd_sanitize_checkbox' );
 	add_filter( 'themeblvd_sanitize_multicheck', 'themeblvd_sanitize_multicheck', 10, 2 );
 	add_filter( 'themeblvd_sanitize_color', 'themeblvd_sanitize_hex' );
+	add_filter( 'themeblvd_sanitize_gradient', 'themeblvd_sanitize_gradient' );
+	add_filter( 'themeblvd_sanitize_button', 'themeblvd_sanitize_button' );
 	add_filter( 'themeblvd_sanitize_upload', 'themeblvd_sanitize_upload' );
 	add_filter( 'themeblvd_sanitize_background', 'themeblvd_sanitize_background' );
 	add_filter( 'themeblvd_background_repeat', 'themeblvd_sanitize_background_repeat' );
 	add_filter( 'themeblvd_background_position', 'themeblvd_sanitize_background_position' );
 	add_filter( 'themeblvd_background_attachment', 'themeblvd_sanitize_background_attachment' );
+	add_filter( 'themeblvd_background_size', 'themeblvd_sanitize_background_size' );
 	add_filter( 'themeblvd_sanitize_typography', 'themeblvd_sanitize_typography' );
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_font_style', 'themeblvd_sanitize_font_style' );
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
 	add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
+	add_filter( 'themeblvd_sanitize_testimonials', 'themeblvd_sanitize_testimonials' );
+	add_filter( 'themeblvd_sanitize_toggles', 'themeblvd_sanitize_toggles' );
 	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
 	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
 	add_filter( 'themeblvd_sanitize_social_media', 'themeblvd_sanitize_social_media' );
+	add_filter( 'themeblvd_sanitize_share', 'themeblvd_sanitize_share' );
+	add_filter( 'themeblvd_sanitize_slide', 'themeblvd_sanitize_slide' );
+	add_filter( 'themeblvd_sanitize_slider', 'themeblvd_sanitize_slider' );
+	add_filter( 'themeblvd_sanitize_logos', 'themeblvd_sanitize_logos' );
+	add_filter( 'themeblvd_sanitize_price_cols', 'themeblvd_sanitize_price_cols' );
 	add_filter( 'themeblvd_sanitize_conditionals', 'themeblvd_sanitize_conditionals', 10, 3 );
 	add_filter( 'themeblvd_sanitize_editor', 'themeblvd_sanitize_editor' );
+	add_filter( 'themeblvd_sanitize_editor_modal', 'themeblvd_sanitize_editor' );
+	add_filter( 'themeblvd_sanitize_code', 'themeblvd_sanitize_editor' );
+	add_filter( 'themeblvd_sanitize_locations', 'themeblvd_sanitize_locations' );
+	add_filter( 'themeblvd_sanitize_geo', 'themeblvd_sanitize_geo' );
+	add_filter( 'themeblvd_sanitize_sectors', 'themeblvd_sanitize_sectors' );
+	add_filter( 'themeblvd_sanitize_datasets', 'themeblvd_sanitize_datasets' );
+	add_filter( 'themeblvd_sanitize_bars', 'themeblvd_sanitize_bars' );
+	add_filter( 'themeblvd_sanitize_buttons', 'themeblvd_sanitize_buttons' );
+}
+
+/**
+ * Hidden
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_hidden( $input, $option ) {
+
+	if ( $option['id'] == 'framework_version' ) {
+
+		$output = TB_FRAMEWORK_VERSION;
+
+	} else if ( $option['id'] == 'theme_version' ) {
+
+		$theme = wp_get_theme( get_template() );
+		$output = $theme->get('Version');
+
+	} else {
+
+		$allowedtags = themeblvd_allowed_tags();
+		$output = wp_kses( $input, $allowedtags );
+		$output = htmlspecialchars_decode( $output );
+		$output = str_replace( "\r\n", "\n", $output );
+
+	}
+	return $output;
 }
 
 /**
@@ -70,7 +116,7 @@ function themeblvd_sanitize_textarea( $input ) {
  *
  * @since 2.2.0
  */
-function themeblvd_sanitize_allowedtags($input) {
+function themeblvd_sanitize_allowedtags( $input ) {
 	$allowedtags = themeblvd_allowed_tags();
 	$output = wpautop(wp_kses( $input, $allowedtags));
 	return $output;
@@ -82,7 +128,7 @@ function themeblvd_sanitize_allowedtags($input) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_checkbox( $input ) {
-	if ( $input ) {
+	if ( $input && $input !== '0' ) {
 		$output = "1";
 	} else {
 		$output = "0";
@@ -116,11 +162,51 @@ function themeblvd_sanitize_multicheck( $input, $option ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_upload( $input ) {
-	$output = '';
-	$filetype = wp_check_filetype($input);
-	if ( $filetype["ext"] ) {
-		$output = $input;
+
+	if ( is_array( $input ) ) {
+
+		// Remove admin attachment restrains
+		add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
+		$output = array(
+			'id'		=> 0,
+			'src'		=> '',
+			'full'		=> '',
+			'title'		=> '',
+			'crop'		=> '',
+			'width'		=> 0,
+			'height'	=> 0
+		);
+
+		if ( isset( $input['id'] ) ) {
+			$output['id'] = intval( $input['id'] );
+			$full = wp_get_attachment_image_src( $output['id'], 'tb_x_large' );
+			$output['full'] = $full[0];
+		}
+
+		if ( isset( $input['src'] ) ) {
+			$output['src'] = wp_kses( $input['src'], array() );
+		}
+
+		if ( isset( $input['id'] ) ) {
+			$output['id'] = intval( $input['id'] );
+		}
+
+		if ( isset( $input['title'] ) ) {
+			$output['title'] = wp_kses( $input['title'], array() );
+		}
+
+		if ( isset( $input['crop'] ) ) {
+			$output['crop'] = wp_kses( $input['crop'], array() );
+		}
+
+		// Restore admin attachment restraints
+		remove_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
+	} else {
+		$output = wp_kses( $input, array() );
 	}
+
 	return $output;
 }
 
@@ -131,8 +217,21 @@ function themeblvd_sanitize_upload( $input ) {
  */
 function themeblvd_sanitize_enum( $input, $option ) {
 	$output = '';
-	if ( array_key_exists( $input, $option['options'] ) ) {
-		$output = $input;
+	if ( isset( $option['options'] ) && is_array( $option['options'] ) ) {
+
+		// Manual select, with standard options set
+		if ( array_key_exists( $input, $option['options'] ) ) {
+			$output = $input;
+		}
+
+	} else if ( isset( $option['select'] ) ) {
+
+		// Dynamic Select
+		$options = themeblvd_get_select( $option['select'], true );
+
+		if ( array_key_exists( $input, $options ) ) {
+			$output = $input;
+		}
 	}
 	return $output;
 }
@@ -143,18 +242,26 @@ function themeblvd_sanitize_enum( $input, $option ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_background( $input ) {
+
 	$output = wp_parse_args( $input, array(
-		'color' => '',
-		'image'  => '',
-		'repeat'  => 'repeat',
-		'position' => 'top center',
-		'attachment' => 'scroll'
+		'color' 		=> '',
+		'image'  		=> '',
+		'repeat'  		=> 'repeat',
+		'position' 		=> 'top center',
+		'attachment' 	=> 'scroll',
+		'size'			=> 'auto'
 	) );
-	$output['color'] = apply_filters( 'themeblvd_sanitize_hex', $input['color'] );
+
+	if ( isset( $input['color'] ) ) { // color is optional, may not exist
+		$output['color'] = apply_filters( 'themeblvd_sanitize_hex', $input['color'] );
+	}
+
 	$output['image'] = apply_filters( 'themeblvd_sanitize_upload', $input['image'] );
 	$output['repeat'] = apply_filters( 'themeblvd_background_repeat', $input['repeat'] );
 	$output['position'] = apply_filters( 'themeblvd_background_position', $input['position'] );
 	$output['attachment'] = apply_filters( 'themeblvd_background_attachment', $input['attachment'] );
+	$output['size'] = apply_filters( 'themeblvd_background_size', $input['size'] );
+
 	return $output;
 }
 
@@ -198,21 +305,34 @@ function themeblvd_sanitize_background_attachment( $value ) {
 }
 
 /**
+ * Background - size
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_background_size( $value ) {
+	$recognized = themeblvd_recognized_background_size();
+	if ( array_key_exists( $value, $recognized ) ) {
+		return $value;
+	}
+	return apply_filters( 'themeblvd_default_background_size', current( $recognized ) );
+}
+
+/**
  * Get recognized background positions
  *
  * @since 2.2.0
  */
 function themeblvd_recognized_background_position() {
 	$default = array(
-		'top left'      => 'Top Left',
-		'top center'    => 'Top Center',
-		'top right'     => 'Top Right',
-		'center left'   => 'Middle Left',
-		'center center' => 'Middle Center',
-		'center right'  => 'Middle Right',
-		'bottom left'   => 'Bottom Left',
-		'bottom center' => 'Bottom Center',
-		'bottom right'  => 'Bottom Right'
+		'center top'    => __('Background Position: Top Center', 'themeblvd'),
+		'left top'      => __('Background Position: Top Left', 'themeblvd'),
+		'right top'     => __('Background Position: Top Right', 'themeblvd'),
+		'center center' => __('Background Position: Middle Center', 'themeblvd'),
+		'left center'   => __('Background Position: Middle Left', 'themeblvd'),
+		'right center'  => __('Background Position: Middle Right', 'themeblvd'),
+		'center bottom' => __('Background Position: Bottom Center', 'themeblvd'),
+		'left bottom'   => __('Background Position: Bottom Left', 'themeblvd'),
+		'right bottom'  => __('Background Position: Bottom Right', 'themeblvd')
 	);
 	return apply_filters( 'themeblvd_recognized_background_position', $default );
 }
@@ -224,8 +344,9 @@ function themeblvd_recognized_background_position() {
  */
 function themeblvd_recognized_background_attachment() {
 	$default = array(
-		'scroll' => 'Scroll Normally',
-		'fixed'  => 'Fixed in Place'
+		'scroll' 	=> __('Background Scrolling: Normal', 'themeblvd'),
+		'parallax'  => __('Background Scrolling: Parallax Effect', 'themeblvd'),
+		'fixed'  	=> __('Background Scrolling: Fixed in Place', 'themeblvd'),
 	);
 	return apply_filters( 'themeblvd_recognized_background_attachment', $default );
 }
@@ -237,12 +358,27 @@ function themeblvd_recognized_background_attachment() {
  */
 function themeblvd_recognized_background_repeat() {
 	$default = array(
-		'no-repeat' => 'No Repeat',
-		'repeat-x'  => 'Repeat Horizontally',
-		'repeat-y'  => 'Repeat Vertically',
-		'repeat'    => 'Repeat All',
-		);
+		'no-repeat' => __('Background Repeat: No Repeat', 'themeblvd'),
+		'repeat-x'  => __('Background Repeat: Repeat Horizontally', 'themeblvd'),
+		'repeat-y'  => __('Background Repeat: Repeat Vertically', 'themeblvd'),
+		'repeat'    => __('Background Repeat: Repeat All', 'themeblvd')
+	);
 	return apply_filters( 'themeblvd_recognized_background_repeat', $default );
+}
+
+/**
+ * Get recognized background positions
+ *
+ * @since 2.5.0
+ */
+function themeblvd_recognized_background_size() {
+	$default = array(
+		'auto'    	=> __('Background Size: Auto', 'themeblvd'),
+		'cover'     => __('Background Size: Cover', 'themeblvd'),
+		'contain'   => __('Background Size: Contain', 'themeblvd'),
+		'100% 100%' => __('Background Size: 100% x 100%', 'themeblvd')
+	);
+	return apply_filters( 'themeblvd_recognized_background_size', $default );
 }
 
 /**
@@ -312,36 +448,7 @@ function themeblvd_sanitize_font_face( $value ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_columns( $input ) {
-
-	$width_options = themeblvd_column_widths();
-	$output = array();
-
-	// Verify number of columns is an integer
-	if ( is_numeric( $input['num'] ) ) {
-		$output['num'] = $input['num'];
-	} else {
-		$output['num'] = null;
-	}
-
-	// Verify widths
-	foreach ( $input['width'] as $key => $width ) {
-
-		$valid = false;
-
-		foreach ( $width_options[$key.'-col'] as $width_option ) {
-			if ( $width == $width_option['value'] ) {
-				$valid = true;
-			}
-		}
-
-		if ( $valid ) {
-			$output['width'][$key] = $width;
-		} else {
-			$output['width'][$key] = null;
-		}
-	}
-
-	return $output;
+	return wp_kses( $input, array() );
 }
 
 /**
@@ -353,32 +460,71 @@ function themeblvd_sanitize_tabs( $input ) {
 
 	$output = array();
 
-	// Verify number of tabs is an integer
-	if ( is_numeric( $input['num'] ) ) {
-		$output['num'] = $input['num'];
-	} else {
-		$output['num'] = null;
-	}
-
-	// Verify style
-	if ( in_array( $input['style'], array( 'open', 'framed' ) ) ) {
-		$output['style'] = $input['style'];
-	}
-
-	// Verify nav
-	if ( in_array( $input['nav'], array( 'tabs_above', 'tabs_right', 'tabs_below', 'tabs_left', 'pills_above', 'pills_below' ) ) ) {
-		$output['nav'] = $input['nav'];
-	}
-
-	// Verify name fields and only save the right amount of names
-	if ( $output['num'] ) {
-		$total_num = intval( $output['num'] );
-		$i = 1;
-		while ( $i <= $total_num ) {
-			$output['names']['tab_'.$i] = sanitize_text_field( $input['names']['tab_'.$i] );
-			$i++;
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['title'] = themeblvd_sanitize_text( $item['title'] );
+			$output[$item_id]['content'] = themeblvd_sanitize_content( $item['content'] );
 		}
 	}
+
+	return $output;
+}
+
+/**
+ * Testimonials
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_testimonials( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id]['text'] = apply_filters( 'themeblvd_sanitize_textarea', $item['text'] );
+			$output[$item_id]['name'] = apply_filters( 'themeblvd_sanitize_text', $item['name'] );
+			$output[$item_id]['tagline'] = apply_filters( 'themeblvd_sanitize_text', $item['tagline'] );
+			$output[$item_id]['company'] = apply_filters( 'themeblvd_sanitize_text', $item['company'] );
+			$output[$item_id]['company_url'] = apply_filters( 'themeblvd_sanitize_text', $item['company_url'] );
+			$output[$item_id]['image'] = apply_filters( 'themeblvd_sanitize_upload', $item['image'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Toggles
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_toggles( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			$output[$item_id]['title'] = apply_filters( 'themeblvd_sanitize_text', $item['title'] );
+			$output[$item_id]['content'] = apply_filters( 'themeblvd_sanitize_textarea', $item['content'] );
+
+			$output[$item_id]['wpautop'] = '0';
+
+			if ( isset($item['wpautop']) ) {
+				$output[$item_id]['wpautop'] = '1';
+			}
+
+			$output[$item_id]['open'] = '0';
+
+			if ( isset($item['open']) ) {
+				$output[$item_id]['open'] = '1';
+			}
+		}
+	}
+
 	return $output;
 }
 
@@ -416,8 +562,7 @@ function themeblvd_sanitize_content( $input ) {
 			break;
 
 		case 'raw' :
-			$output['raw'] = wp_kses( $input['raw'], $allowedtags );
-			$output['raw'] = str_replace( "\r\n", "\n", $output['raw'] );
+			$output['raw'] = apply_filters( 'themeblvd_sanitize_textarea', $input['raw'] );
 			$output['raw_format'] = '0';
 			if ( isset( $input['raw_format'] ) ) {
 				$output['raw_format'] = '1';
@@ -452,15 +597,25 @@ function themeblvd_sanitize_logo( $input ) {
 
 	// Image (standard)
 	if ( isset( $input['image'] ) ) {
+
 		$filetype = wp_check_filetype( $input['image'] );
+
 		if ( $filetype["ext"] ) {
+
 			$output['image'] = $input['image'];
+
 			if ( isset( $input['image_width'] ) ) {
-				$output['image_width'] = $input['image_width'];
+				$output['image_width'] = wp_kses( $input['image_width'], array() );
 			}
+
+			if ( isset( $input['image_height'] ) ) {
+				$output['image_height'] = wp_kses( $input['image_height'], array() );
+			}
+
 		} else {
 			$output['image'] = null;
 			$output['image_width'] = null;
+			$output['image_height'] = null;
 		}
 	}
 
@@ -480,26 +635,261 @@ function themeblvd_sanitize_logo( $input ) {
 /**
  * Social Media Buttons
  *
- * @since 2.2.0
+ * @since 2.5.0
  */
 function themeblvd_sanitize_social_media( $input ) {
-	if ( ! empty( $input ) && ! empty( $input['sources'] ) ) {
-		// The option is being sent from the actual
-		// Theme Options page and so it hasn't been
-		// formatted yet.
-		$output = array();
-		if ( ! empty( $input['includes'] ) ) {
-			foreach ( $input['includes'] as $include ) {
-				if ( isset( $input['sources'][$include] ) ) {
-					$output[$include] = $input['sources'][$include];
-				}
-			}
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['icon'] = wp_kses( $item['icon'], array() );
+			$output[$item_id]['url'] = wp_kses( $item['url'], array() );
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+			$output[$item_id]['target'] = wp_kses( $item['target'], array() );
 		}
-	} else {
-		// The option has already been formatted,
-		// so let it on through.
-		$output = $input;
 	}
+
+	return $output;
+}
+
+/**
+ * Social Media Buttons
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_share( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['icon'] = wp_kses( $item['icon'], array() );
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * jQuery UI slider
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_slide( $input ) {
+	return wp_kses( $input, array() );
+}
+
+/**
+ * Simple Slider
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_slider( $input ) {
+
+	// Remove admin attachment restrains
+	add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
+	// Setup crop size
+	$crop = 'full';
+
+	if ( ! empty($input['crop']) ) {
+		$crop = wp_kses( $input['crop'], array() );
+	}
+
+	unset($input['crop']);
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			// Crop size
+			$output[$item_id]['crop'] = $crop;
+
+			// Attachment ID
+			$output[$item_id]['id'] = intval( $item['id'] );
+
+			// Attachment title
+			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
+
+			if ( $output[$item_id]['id'] ) {
+
+				$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], $crop );
+				$downsize = themeblvd_image_downsize( $attachment, $output[$item_id]['id'], $crop );
+				$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $downsize[0] );
+
+				$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
+				$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
+
+			} else {
+
+				if ( isset( $item['src'] ) ) {
+					$output[$item_id]['src'] = wp_kses( $item['src'], array() );
+				} else {
+					$output[$item_id]['src'] = '';
+				}
+
+				if ( isset( $item['thumb'] ) ) {
+					$output[$item_id]['thumb'] = wp_kses( $item['thumb'], array() );
+				} else {
+					$output[$item_id]['thumb'] = '';
+				}
+
+			}
+
+			// Slide info
+			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
+			$output[$item_id]['desc'] = apply_filters( 'themeblvd_sanitize_textarea', $item['desc'] );
+
+			// Link
+			$output[$item_id]['link'] = wp_kses( $item['link'], array() );
+
+			if ( $output[$item_id]['link'] == 'none' ) {
+				$output[$item_id]['link'] = '';
+			}
+
+			if ( isset($item['link_url']) ) {
+				$output[$item_id]['link_url'] = wp_kses( $item['link_url'], array() );
+			}
+
+		}
+	}
+
+	// Restore admin attachment restrains
+	remove_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
+
+	return $output;
+}
+
+/**
+ * Partner Logos
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_logos( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			// Attachment ID
+			$output[$item_id]['id'] = intval( $item['id'] );
+
+			// Attachment title
+			$output[$item_id]['alt'] = get_the_title( $output[$item_id]['id'] );
+
+			if ( $output[$item_id]['id'] ) {
+
+				$attachment = wp_get_attachment_image_src( $output[$item_id]['id'], 'full' );
+				$output[$item_id]['src'] = apply_filters( 'themeblvd_sanitize_upload', $attachment[0] );
+
+				$thumb = wp_get_attachment_image_src( $output[$item_id]['id'], 'tb_thumb' );
+				$output[$item_id]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $thumb[0] );
+
+			} else {
+
+				if ( isset( $item['src'] ) ) {
+					$output[$item_id]['src'] = wp_kses( $item['src'], array() );
+				} else {
+					$output[$item_id]['src'] = '';
+				}
+
+				if ( isset( $item['thumb'] ) ) {
+					$output[$item_id]['thumb'] = wp_kses( $item['thumb'], array() );
+				} else {
+					$output[$item_id]['thumb'] = '';
+				}
+
+			}
+
+			// Partner Name, description, and Link
+			$output[$item_id]['name'] = wp_kses( $item['name'], array() );
+			$output[$item_id]['link'] = wp_kses( $item['link'], array() );
+
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Pricing table columns
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_price_cols( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id] = array();
+
+			$output[$item_id]['highlight'] = wp_kses( $item['highlight'], array() );
+			$output[$item_id]['title'] = wp_kses( $item['title'], array() );
+
+			if ( isset( $item['title_subline'] ) ) {
+				$output[$item_id]['title_subline'] = wp_kses( $item['title_subline'], array() );
+			}
+
+			$output[$item_id]['price'] = wp_kses( $item['price'], array() );
+			$output[$item_id]['price_subline'] = wp_kses( $item['price_subline'], array() );
+			$output[$item_id]['features'] = apply_filters( 'themeblvd_sanitize_textarea', $item['features'] );
+
+			if ( isset( $item['button_color'] ) ) {
+				$output[$item_id]['button_color'] = wp_kses( $item['button_color'], array() );
+			}
+
+			if ( isset( $item['button_custom'] ) ) {
+				$output[$item_id]['button_custom'] = apply_filters( 'themeblvd_sanitize_button', $item['button_custom'] );
+			}
+
+			if ( isset( $item['button_text'] ) ) {
+				$output[$item_id]['button_text'] = wp_kses( $item['button_text'], array() );
+			}
+
+			if ( isset( $item['button_url'] ) ) {
+				$output[$item_id]['button_url'] = wp_kses( $item['button_url'], array() );
+			}
+
+			if ( isset( $item['button_size'] ) ) {
+				$output[$item_id]['button_size'] = wp_kses( $item['button_size'], array() );
+			}
+
+			if ( isset( $item['button_icon_before'] ) ) {
+				$output[$item_id]['button_icon_before'] = wp_kses( $item['button_icon_before'], array() );
+			}
+
+			if ( isset( $item['button_icon_after'] ) ) {
+				$output[$item_id]['button_icon_after'] = wp_kses( $item['button_icon_after'], array() );
+			}
+
+			if ( empty( $item['popout'] ) ) {
+				$output[$item_id]['popout'] = '0';
+			} else {
+				$output[$item_id]['popout'] = '1';
+			}
+
+			if ( empty( $item['button'] ) ) {
+				$output[$item_id]['button'] = '0';
+			} else {
+				$output[$item_id]['button'] = '1';
+			}
+
+		}
+	}
+
 	return $output;
 }
 
@@ -588,8 +978,8 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 	if ( ! empty( $input['custom'] ) ) {
 		$output['custom'] = array(
 			'type' 		=> 'custom',
-			'id' 		=> themeblvd_sanitize_text( $input['custom'] ),
-			'name' 		=> themeblvd_sanitize_text( $input['custom'] ),
+			'id' 		=> apply_filters( 'themeblvd_sanitize_text', $input['custom'] ),
+			'name' 		=> apply_filters( 'themeblvd_sanitize_text', $input['custom'] ),
 			'post_slug' => $sidebar_slug,
 			'post_id' 	=> $sidebar_id
 		);
@@ -613,6 +1003,67 @@ function themeblvd_sanitize_editor( $input ) {
 }
 
 /**
+ * Sanitize gradient option type
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_gradient( $input ){
+
+	$output = array(
+		'start'	=> '',
+		'end'	=> ''
+	);
+
+	if ( isset( $input['start'] ) ) {
+		$output['start'] = apply_filters( 'themeblvd_sanitize_hex', $input['start'] );
+	}
+
+	if ( isset( $input['end'] ) ) {
+		$output['end'] = apply_filters( 'themeblvd_sanitize_hex', $input['end'] );
+	}
+
+	return $output;
+}
+
+/**
+ * Sanitize button option type
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_button( $input ){
+
+	$output = array(
+		'bg' 				=> '',
+		'bg_hover'			=> '',
+		'border' 			=> '',
+		'text'				=> '',
+		'text_hover'		=> '',
+		'include_bg'		=> 1,
+		'include_border'	=> 1
+	);
+
+	$output['bg'] = apply_filters( 'themeblvd_sanitize_hex', $input['bg'] );
+	$output['bg_hover'] = apply_filters( 'themeblvd_sanitize_hex', $input['bg_hover'] );
+	$output['border'] = apply_filters( 'themeblvd_sanitize_hex', $input['border'] );
+	$output['text'] = apply_filters( 'themeblvd_sanitize_hex', $input['text'] );
+	$output['text_hover'] = apply_filters( 'themeblvd_sanitize_hex', $input['text_hover'] );
+
+	if ( empty( $input['include_bg'] ) ) {
+		$input['include_bg'] = '';
+	}
+
+	$output['include_bg'] = apply_filters( 'themeblvd_sanitize_checkbox', $input['include_bg'] );
+
+	if ( empty( $input['include_border'] ) ) {
+		$input['include_border'] = '';
+	}
+
+	$output['include_border'] = apply_filters( 'themeblvd_sanitize_checkbox', $input['include_border'] );
+
+	return $output;
+}
+
+/**
  * Sanitize a color represented in hexidecimal notation.
  *
  * @since 2.2.0
@@ -630,7 +1081,7 @@ function themeblvd_sanitize_hex( $hex, $default = '' ) {
  * @since 2.2.0
  */
 function themeblvd_recognized_font_sizes() {
-	$sizes = range( 9, 71 );
+	$sizes = range( 9, 70 );
 	$sizes = apply_filters( 'themeblvd_recognized_font_sizes', $sizes );
 	$sizes = array_map( 'absint', $sizes );
 	return $sizes;
@@ -696,4 +1147,154 @@ function themeblvd_validate_hex( $hex ) {
 		return true;
 	}
 
+}
+
+/**
+ * Locations
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_locations( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['name'] = wp_kses( $item['name'], array() );
+			$output[$item_id]['geo'] = apply_filters( 'themeblvd_sanitize_geo', $item['geo'] );
+			$output[$item_id]['info'] = apply_filters( 'themeblvd_sanitize_textarea', $item['info'] );
+			$output[$item_id]['image'] = apply_filters( 'themeblvd_sanitize_upload', $item['image'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Geo (latitude and longitude)
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_geo( $input ) {
+
+	$output = array(
+		'lat' 	=> 0,
+		'long'	=> 0
+	);
+
+	if ( ! empty( $input['lat'] ) ) {
+
+		$lat = floatval($input['lat']);
+
+		if ( $lat > -90 && $lat < 90  ) {
+			$output['lat'] = $lat;
+		}
+	}
+
+	if ( ! empty( $input['long'] ) ) {
+
+		$long = floatval($input['long']);
+
+		if ( $long > -180 && $long < 180  ) {
+			$output['long'] = $long;
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Sectors
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_sectors( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+			$output[$item_id]['value'] = wp_kses( $item['value'], array() );
+			$output[$item_id]['color'] = apply_filters( 'themeblvd_sanitize_hex', $item['color'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Data Sets
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_datasets( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+			$output[$item_id]['values'] = wp_kses( $item['values'], array() );
+			$output[$item_id]['color'] = apply_filters( 'themeblvd_sanitize_hex', $item['color'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Progress Bars
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_bars( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['label'] = wp_kses( $item['label'], array() );
+			$output[$item_id]['label_value'] = wp_kses( $item['label_value'], array() );
+			$output[$item_id]['value'] = wp_kses( $item['value'], array() );
+			$output[$item_id]['total'] = wp_kses( $item['total'], array() );
+			$output[$item_id]['color'] = apply_filters( 'themeblvd_sanitize_hex', $item['color'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Buttons
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_buttons( $input ) {
+
+	$output = array();
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+			$output[$item_id] = array();
+			$output[$item_id]['color'] = wp_kses( $item['color'], array() );
+
+			if ( isset( $item['custom'] ) ) {
+				$output[$item_id]['custom'] = apply_filters( 'themeblvd_sanitize_button', $item['custom'] );
+			}
+
+			$output[$item_id]['text'] = apply_filters( 'themeblvd_sanitize_text', $item['text'] );
+			$output[$item_id]['size'] = wp_kses( $item['size'], array() );
+			$output[$item_id]['url'] = wp_kses( $item['url'], array() );
+			$output[$item_id]['target'] = wp_kses( $item['target'], array() );
+			$output[$item_id]['icon_before'] = wp_kses( $item['icon_before'], array() );
+			$output[$item_id]['icon_after'] = wp_kses( $item['icon_after'], array() );
+		}
+	}
+
+	return $output;
 }
