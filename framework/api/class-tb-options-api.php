@@ -1097,16 +1097,18 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					)
 				)
-			), // End bbpress options
+			) // End bbpress options
 
 			// Section: WooCommerce
+			/*
 			'woocommerce' => array(
 				'name' => __( 'WooCommerce', 'themeblvd' ),
 				'desc' => null,
 				'options' => array(
 					// ... @TODO
 				)
-			) // End bbpress options
+			)*/
+			 // End bbpress options
 		);
 
 		/*--------------------------------*/
