@@ -290,8 +290,8 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	/* Primary Output
 	/*------------------------------------------------------*/
 
-	$output  = sprintf( '<div class="select-wrap alignleft">%s</div>', $select_number );
-	$output .= sprintf( '<div class="select-wrap alignleft">%s</div>', $select_grid );
+	$output  = sprintf( '<div class="select-wrap select-wrap-num alignleft">%s</div>', $select_number );
+	$output .= sprintf( '<div class="select-wrap select-wrap-grid alignleft">%s</div>', $select_grid );
 
 	$output .= '<div class="clear"></div>';
 	$output .= '</div><!-- .controls (end) -->';

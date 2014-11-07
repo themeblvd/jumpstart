@@ -138,9 +138,11 @@
 	    			$this.find('.columns').each(function(){
 	    				var $el = $(this), i, num = $el.find('.select-col-num').val();
 	    				if ( num > 1 ) {
+	    					$el.find('.select-wrap-grid').show();
 	    					$el.find('.section-column_widths').show();
 	    					$el.closest('.widget-content').find('.column-height').show();
 	    				} else {
+	    					$el.find('.select-wrap-grid').hide();
 	    					$el.find('.section-column_widths').hide();
 	    					$el.closest('.widget-content').find('.column-height').hide();
 	    				}
@@ -566,9 +568,11 @@
 	    			$this.on( 'change', '.select-col-num', function() {
 	    				var $el = $(this), i, num = $el.val(), $container = $el.closest('.columns');
 	    				if ( num > 1 ) {
+	    					$container.find('.select-wrap-grid').show();
 	    					$container.find('.section-column_widths').show();
 	    					$container.closest('.widget-content').find('.column-height').show();
 	    				} else {
+	    					$container.find('.select-wrap-grid').hide();
 	    					$container.find('.section-column_widths').hide();
 	    					$container.closest('.widget-content').find('.column-height').hide();
 	    				}
