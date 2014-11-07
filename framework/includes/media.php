@@ -1587,7 +1587,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
 
 	foreach ( $images as $img_id => $img ) {
 		$images[$img_id] = wp_parse_args( $img, array(
-			'crop'			=> $args['crop'],
+			'crop'			=> 'full',
 			'id'			=> 0,
 			'alt'			=> '',
 			'src'			=> ''
