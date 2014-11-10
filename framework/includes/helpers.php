@@ -107,8 +107,12 @@ function themeblvd_get_font_weight( $option ) {
 
 	$weight = 'normal';
 
-	if ( isset( $option['style'] ) && ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' ) ) {
-		$weight = 'bold';
+	if ( isset( $option['style'] ) ) {
+		if ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' ) {
+			$weight = 'bold';
+		} else if ( $option['style'] == 'thin' ) {
+			$weight = '300';
+		}
 	}
 
 	return apply_filters( 'themeblvd_font_weight', $weight, $option );

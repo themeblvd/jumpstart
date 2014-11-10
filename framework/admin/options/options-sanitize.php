@@ -1116,10 +1116,11 @@ function themeblvd_recognized_font_faces() {
  */
 function themeblvd_recognized_font_styles() {
 	$default = array(
-		'normal'      => 'Normal',
-		'italic'      => 'Italic',
-		'bold'        => 'Bold',
-		'bold-italic' => 'Bold Italic'
+		'thin' 			=> __('Thin', 'themeblvd'),
+		'normal'      	=> __('Normal', 'themeblvd'),
+		'italic'      	=> __('Italic', 'themeblvd'),
+		'bold'        	=> __('Bold', 'themeblvd'),
+		'bold-italic' 	=> __('Bold Italic', 'themeblvd')
 	);
 	return apply_filters( 'themeblvd_recognized_font_styles', $default );
 }
