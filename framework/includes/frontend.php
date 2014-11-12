@@ -283,8 +283,10 @@ function themeblvd_header_class() {
 	}
 
 	if ( $class = apply_filters('themeblvd_header_class', $class ) ) {
-		printf('class="%s"', implode(' ', $class) );
+		$output = sprintf('class="%s"', implode(' ', $class) );
 	}
+
+	echo apply_filters('themeblvd_header_class_output', $output, $class);
 
 }
 
