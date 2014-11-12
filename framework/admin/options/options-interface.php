@@ -23,6 +23,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	$menu = '';
 	$output = '';
 	$advanced = Theme_Blvd_Advanced_Options::get_instance();
+	$option_name_orig = $option_name;
 
 	foreach ( $options as $option_key => $value ) {
 
@@ -31,6 +32,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		$select_value = '';
 		$checked = '';
 		$class = '';
+		$option_name = $option_name_orig;
 
 		// Footer sync option is just a placeholder, skip it
 		if ( $option_key === 'footer_sync' ) { // Need strict because 0 == 'footer_sync'
@@ -59,9 +61,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   	// This allows certain options to be grouped together in the
 	   	// final saved options array by adding a common prefix to their
 	   	// name form attributes.
-	   	if ( isset( $value['group'] ) ) {
-	   		$option_name .= '['.$value['group'].']';
-	   	}
+		if ( isset( $value['group'] ) ) {
+			$option_name .= '['.$value['group'].']';
+		}
 
 	   	// Sections --
 		// This allows for a wrapping div around certain sections. This
