@@ -389,7 +389,7 @@ class Theme_Blvd_Compat_bbPress {
 		$user_id = bbp_get_current_user_id();
 		$user = get_userdata( $user_id );
 
-		$html .= '<ul>';
+		$html  = '<ul>';
 		$html .= sprintf( '<li class="username">%s</li>', esc_html($user->display_name) );
 		$html .= sprintf( '<li class="my-account"><a href="%s">%s</a></li>', esc_url(bbp_get_user_profile_url($user_id)), themeblvd_get_local('my_account') );
 		$html .= sprintf( '<li class="edit-profile"><a href="%s">%s</a></li>', esc_url(bbp_get_user_profile_edit_url($user_id)), themeblvd_get_local('edit_profile') );
