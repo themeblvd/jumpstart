@@ -167,7 +167,20 @@ jQuery(document).ready(function($) {
 		$sticky_spy.viewportChecker({
 			classToAdd: 'visible',
 			repeat: true,
-			offset: parseInt(themeblvd.sticky_offset)
+			offset: parseInt(themeblvd.sticky_offset),
+			callbackFunction: function($elem, action){
+				if ( $elem.hasClass('visible') ) {
+
+					var $link = $elem.find('#sticky-menu .search-trigger'),
+						$popup = $link.closest('.tb-floater').find('.floater-popup');
+
+					if ( $link.hasClass('open') ) {
+						$link.removeClass('open').html('<i class="fa fa-'+$link.data('open')+'"></i>');
+						$popup.fadeOut(100);
+					}
+
+				}
+			}
 		});
 
 	}
@@ -591,7 +604,7 @@ jQuery(document).ready(function($) {
 				break;
 		}
 
-		if ( img_url[1] ) {
+		if ( img_url && img_url[1] ) {
 
 		    img_url = img_url[1];
 		    img = new Image();
