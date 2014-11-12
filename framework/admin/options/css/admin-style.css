@@ -1243,3 +1243,8 @@
 #optionsframework .section-toggles .tb-sortable-option textarea {
 	height: auto;
 }
+#optionsframework .section-bg-slideshow .section-slider .item-content > .slide-title,
+#optionsframework .section-bg-slideshow .section-slider .item-content > .slide-desc,
+#optionsframework .section-bg-slideshow .section-slider .item-content > .slide-link {
+	display: none;
+}

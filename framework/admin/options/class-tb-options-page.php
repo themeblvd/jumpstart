@@ -499,7 +499,7 @@ class Theme_Blvd_Options_Page {
 			$id = preg_replace( '/\W/', '', strtolower( $option['id'] ) );
 
 			// Set checkbox to false if it wasn't sent in the $_POST
-			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) ) {
+			if (  $option['type'] == 'checkbox' && ! isset( $input[$id] ) ) {
 				if ( ! empty( $option['inactive'] ) && $option['inactive'] === 'true' ) {
 					$input[$id] = '1';
 				} else {
@@ -508,7 +508,7 @@ class Theme_Blvd_Options_Page {
 			}
 
 			// Set each item in the multicheck to false if it wasn't sent in the $_POST
-			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
+			if ( $option['type'] == 'multicheck' && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
 				foreach ( $option['options'] as $key => $value ) {
 					$input[$id][$key] = '0';
 				}
@@ -524,9 +524,23 @@ class Theme_Blvd_Options_Page {
 				continue;
 			}
 
+			// For slider option type, if the option set has crop setting attached,
+			// we can apply that for saving the slider option.
+			if ( $option['type'] == 'slider' ) {
+
+				$crop = 'full';
+
+				if ( ! empty( $input[$id.'_crop'] ) ) {
+					$crop = wp_kses( $input[$id.'_crop'], array() );
+				}
+
+				$input[$id]['crop'] = $crop;
+
+			}
+
 			// For button option type, set checkbox to false if it wasn't
 			// sent in the $_POST
-			if ( 'button' == $option['type'] ) {
+			if ( $option['type'] == 'button' ) {
 				if ( ! isset( $input[$id]['include_bg'] ) ) {
 					$input[$id]['include_bg'] = '0';
 				}
