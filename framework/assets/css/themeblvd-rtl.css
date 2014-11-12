@@ -1,3 +1,4 @@
+/* Generated with CSSJanus */
 /**
  * Table of Contents:
  *
@@ -270,7 +271,8 @@ p {
 /* Panels */
 .panel,
 .panel-group .panel,
-.panel-heading {
+.panel-heading,
+.panel-footer {
 	border-radius: 0;
 }
 
@@ -1067,6 +1069,9 @@ body.admin-bar .tb-sticky-menu {
 	margin: 0 0 10px 0;
 	padding-right: 0;
 }
+.rtl .tb-side-menu .sub-menu {
+	background-position: calc(100% - 10px) 0;
+}
 .tb-side-menu .mega-sub-menu.level-1 {
 	margin-bottom: 0;
 }
@@ -1074,16 +1079,25 @@ body.admin-bar .tb-sticky-menu {
 	margin-bottom: 10px;
 }
 .tb-side-menu .sub-menu li {
-	background: url('../images/parts/side-nav-list-cccccc.png') 10px 5px no-repeat;
+	background: url('../images/parts/side-nav-list-rtl-cccccc.png') 10px 5px no-repeat;
 	background-size: 21px 60px;
 	padding: 7px 35px 7px 12px;
+}
+.rtl .tb-side-menu .sub-menu li {
+	background-position: calc(100% - 10px) 5px;
 }
 .tb-side-menu .sub-menu li.menu-item-has-children {
 	background-position: 10px -35px;
 }
+.rtl .tb-side-menu .sub-menu li.menu-item-has-children {
+	background-position: calc(100% - 10px) -35px;
+}
 .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {
 	background-color: #ffffff;
 	background-position: 10px -35px;
+}
+.rtl .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {
+	background-position: calc(100% - 10px) -35px;
 }
 
 /* Level 3+ */
@@ -1091,15 +1105,27 @@ body.admin-bar .tb-sticky-menu {
 	background-position: -10px 0;
 	margin: 10px 0 0 0;
 }
+.rtl .tb-side-menu .sub-menu .sub-menu {
+	background-position: calc(100% - 10px) 0;
+}
 .tb-side-menu .sub-menu li li {
-	padding-right: 15px;
+	padding-left: 15px;
 	background-position: -10px 5px;
+}
+.rtl .tb-side-menu .sub-menu li li {
+	background-position: calc(100% - 10px) 5px;
 }
 .tb-side-menu .sub-menu li li.menu-item-has-children {
 	background-position: -10px -35px;
 }
+.rtl .tb-side-menu .sub-menu li li.menu-item-has-children {
+	background-position: calc(100% - 10px) -35px;
+}
 .tb-side-menu .sub-menu li li:last-child {
 	background-position: -10px -35px;
+}
+.rtl .tb-side-menu .sub-menu li li:last-child {
+	background-position: calc(100% - 10px) -35px;
 }
 
 /* Toggle button hidden by default */
@@ -5128,7 +5154,7 @@ blockquote small {
 	opacity: 1;
 }
 
-/* BG Slideshow */
+/* Featured Banner */
 .tb-featured-banner > .wrap {
 	min-height: 200px;
 	position: relative;
@@ -6444,22 +6470,27 @@ blockquote small {
 	width: 290px;
 	height: 55px;
 }
+/* @noflip */
 .tb-search-popup.bottom.left .search-popup {
-	left: -10px;
+	right: -10px;
 	bottom: -65px;
 }
+/* @noflip */
 .tb-search-popup.bottom.right .search-popup {
 	bottom: -65px;
-	right: -10px;
-}
-.tb-search-popup.top.left .search-popup {
 	left: -10px;
+}
+/* @noflip */
+.tb-search-popup.top.left .search-popup {
+	right: -10px;
 	top: -65px;
 }
+/* @noflip */
 .tb-search-popup.top.right .search-popup {
 	top: -65px;
-	right: -10px;
+	left: -10px;
 }
+/* @noflip */
 .tb-search-popup .search-popup > .arrow,
 .tb-search-popup .search-popup > .arrow:after {
 	border-color: transparent;
@@ -6469,16 +6500,19 @@ blockquote small {
 	width: 0;
 	height: 0;
 }
+/* @noflip */
 .tb-search-popup .search-popup > .arrow {
 	border-width: 8px;
 }
+/* @noflip */
 .tb-search-popup .search-popup > .arrow:after {
 	content: " ";
 	border-width: 9px;
 }
+/* @noflip */
 .tb-search-popup.bottom.left .search-popup > .arrow {
 	top: -8px;
-	left: 12px;
+	right: 12px;
 	border-top-width: 0;
 	border-bottom-color: #dddddd;
 }
@@ -6489,9 +6523,10 @@ blockquote small {
 	border-top-width: 0;
 	border-bottom-color: #ffffff;
 }
+/* @noflip */
 .tb-search-popup.bottom.right .search-popup > .arrow {
 	top: -8px;
-	right: 12px;
+	left: 12px;
 	border-top-width: 0;
 	border-bottom-color: #dddddd;
 }
@@ -6502,9 +6537,10 @@ blockquote small {
 	border-top-width: 0;
 	border-bottom-color: #ffffff;
 }
+/* @noflip */
 .tb-search-popup.top.left .search-popup > .arrow {
 	bottom: -8px;
-	left: 14px;
+	right: 14px;
 	border-top-color: #dddddd;
 	border-bottom-width: 0;
 }
@@ -6515,9 +6551,10 @@ blockquote small {
 	border-top-color: #ffffff;
 	border-bottom-width: 0;
 }
+/* @noflip */
 .tb-search-popup.top.right .search-popup > .arrow {
 	bottom: -8px;
-	right: 12px;
+	left: 12px;
 	border-top-color: #dddddd;
 	border-bottom-width: 0;
 }
@@ -6969,7 +7006,7 @@ body.blank-page {
 	}
 }
 
-/* =Dark Text Color
+/* =Dark Text Color (for themeblvd-dark.css, flip with Light Text section)
 -----------------------------------------------*/
 
 /* Typgography */
@@ -7121,7 +7158,7 @@ body.blank-page {
 	border-color: #adadad;
 }
 
-/* =Light Text Color
+/* =Light Text Color (for themeblvd-dark.css, flip with Dark Text section)
 -----------------------------------------------*/
 
 /* Typgography */
