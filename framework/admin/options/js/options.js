@@ -105,6 +105,8 @@ jQuery(document).ready(function($) {
 			}
 
 		}
+
+		return false;
 	});
 
 	$('.postbox').each(function(){
