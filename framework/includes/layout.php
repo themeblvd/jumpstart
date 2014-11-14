@@ -736,11 +736,13 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 			$bg_color = $display['bg_color'];
 
+			$params['background-color'] = $bg_color; // non-rgba, for old browsers
+
 			if ( ! empty( $display['bg_color_opacity'] ) ) {
 				$bg_color = themeblvd_get_rgb( $bg_color, $display['bg_color_opacity'] );
 			}
 
-			$params['background-color'] = $bg_color;
+			$params['background-color-2'] = $bg_color;
 
 		}
 
