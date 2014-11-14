@@ -499,7 +499,7 @@ class Theme_Blvd_Options_Page {
 			$id = preg_replace( '/\W/', '', strtolower( $option['id'] ) );
 
 			// Set checkbox to false if it wasn't sent in the $_POST
-			if (  $option['type'] == 'checkbox' && ! isset( $input[$id] ) ) {
+			if ( $option['type'] == 'checkbox' && ! isset( $input[$id] ) ) {
 				if ( ! empty( $option['inactive'] ) && $option['inactive'] === 'true' ) {
 					$input[$id] = '1';
 				} else {
