@@ -2023,3 +2023,21 @@ function themeblvd_get_img_urls( $str ) {
 
 	return $images;
 }
+
+/**
+ * Get path to theme base
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_base_path( $base ) {
+	return apply_filters('themeblvd_base_path', sprintf('%s/base/%s', get_template_directory(), $base), $base);
+}
+
+/**
+ * Get path to theme base
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_base_uri( $base ) {
+	return apply_filters('themeblvd_base_uri', sprintf('%s/base/%s', get_template_directory_uri(), $base), $base);
+}

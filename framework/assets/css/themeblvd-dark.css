@@ -7,7 +7,7 @@ body {
 }
 .img-thumbnail {
     background-color: transparent;
-    border-color: #1e1e1e;
+    border-color: #000000;
 }
 code,
 pre {
@@ -186,7 +186,7 @@ output {
 .pretty,
 .wp-caption {
     background-color: transparent;
-    border-color: #1e1e1e;
+    border-color: #000000;
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;

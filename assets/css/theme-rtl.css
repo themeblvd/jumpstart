@@ -656,9 +656,6 @@ article.page {
 	}
 
 	/* Main */
-	#main {
-		padding-top: 0;
-	}
 	.breadcrumb {
 		font-size: 12px;
 		margin-bottom: 0;

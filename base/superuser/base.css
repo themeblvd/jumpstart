@@ -1,0 +1,250 @@
+/*
+Base Name: Super User
+Description: For the super user, this base builds on the default theme to give you more visual, user options.
+Author: Theme Blvd
+Author URI: http://www.themeblvd.com
+*/
+
+/* =Header
+-----------------------------------------------*/
+
+/* Header Top */
+.tb-social-icons ul > li > a {
+	text-shadow: none;
+}
+
+/* BG shade */
+.site-header.has-bg-shade > .wrap > .bg-shade {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+.site-header.has-bg-shade > .wrap > .header-top,
+.site-header.has-bg-shade > .wrap > .header-above,
+.site-header.has-bg-shade > .wrap > .header-content,
+.site-header.has-bg-shade > .wrap > .header-nav {
+	position: relative;
+	z-index: 3;
+}
+
+/* BG slideshow */
+.site-header.has-bg-slideshow {
+	background: #000000;
+}
+.site-header.has-bg-slideshow > .wrap > .tb-bg-slideshow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+.site-header.has-bg-slideshow > .wrap > .header-top,
+.site-header.has-bg-slideshow > .wrap > .header-above,
+.site-header.has-bg-slideshow > .wrap > .header-content,
+.site-header.has-bg-slideshow > .wrap > .header-nav {
+	position: relative;
+	z-index: 2;
+}
+
+/* Search Popup */
+.tb-search-popup .search-popup {
+	border-color: rgba(0,0,0,.2);
+}
+.tb-search-popup.bottom.left .search-popup > .arrow {
+    border-bottom-color: rgba(0,0,0,.2);
+}
+.tb-search-popup.bottom.right .search-popup > .arrow {
+    border-bottom-color: rgba(0,0,0,.2);
+}
+.tb-search-popup.top.left .search-popup > .arrow {
+    border-top-color: rgba(0,0,0,.2);
+}
+.tb-search-popup.top.right .search-popup > .arrow {
+    border-top-color: rgba(0,0,0,.2);
+}
+
+/* Sticky Menu */
+.tb-sticky-menu .tb-primary-menu > li > .menu-btn,
+.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
+	color: #666666;
+}
+.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
+	background-color: rgba(0,0,0,.1);
+}
+
+/* Hidden Responsive Side Menu */
+#tb-side-menu-wrapper,
+#tb-side-menu-wrapper .tb-side-menu > li,
+#tb-side-menu-wrapper .tb-search {
+	border-color: rgba(0,0,0,.2);
+}
+
+/* =Main Menu
+-----------------------------------------------*/
+
+/* Level 1 */
+.header-nav {
+	background-position: 0 -5px;
+	background-repeat: repeat-x;
+	background-size: 20px 58px;
+}
+
+/* Level 2+ */
+.tb-primary-menu ul.non-mega-sub-menu,
+.tb-primary-menu .sf-mega {
+	border-color: rgba(0,0,0,.1);
+}
+.tb-primary-menu ul a:hover {
+	background-color: rgba(0,0,0,.1);
+}
+
+
+/* =Bottom
+-----------------------------------------------*/
+
+.site-footer {
+	padding: 20px 0;
+}
+.site-footer.has-bg {
+	padding: 30px 0;
+}
+
+/* =Boxed Layout
+-----------------------------------------------*/
+
+.js-boxed #wrapper {
+	padding: 20px 0;
+}
+.js-boxed #container {
+	background: #ffffff;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1170px;
+}
+.js-boxed .tb-sticky-menu {
+	max-width: 1170px;
+}
+.js-boxed .tb-sticky-menu > .wrap {
+	padding: 0 15px;
+}
+.js-boxed.content_dark #container {
+	background: #222222;
+}
+.js-boxed .header-top > .wrap,
+.js-boxed .header-above > .wrap,
+.js-boxed .header-content > .wrap,
+.js-boxed .header-nav > .wrap,
+.js-boxed .tb-featured-banner > .wrap,
+.js-boxed .site-inner > .wrap,
+.js-boxed .element-section > .element,
+.js-boxed .site-footer > .wrap {
+	margin-right: 0;
+	margin-left: 0;
+	max-width: none;
+}
+.js-boxed .header-top > .wrap {
+	padding: 12px 20px;
+}
+.js-boxed .header-top {
+	padding: 0;
+}
+.js-boxed #main {
+	padding: 30px;
+}
+.js-boxed .site-footer {
+	padding: 30px;
+}
+@media (max-width: 1200px) {
+	.js-boxed #container {
+		max-width: 960px;
+	}
+	.js-boxed .tb-sticky-menu {
+		max-width: 960px;
+	}
+}
+@media (max-width: 992px) {
+	.js-boxed #container {
+		max-width: 738px;
+	}
+}
+@media (max-width: 767px) {
+	.js-boxed #container {
+		max-width: 480px;
+	}
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+/* Content Padding */
+.js-boxed .blog-wrap > article,
+.js-boxed article.single,
+.js-boxed article.page,
+.js-boxed .search-page,
+.js-boxed .post_list.archive-loop,
+.js-boxed .post_grid.archive-loop,
+.js-boxed .post_showcase.archive-loop,
+.js-boxed .list-template-wrap .list-wrap,
+.js-boxed .grid-template-wrap .grid-wrap,
+.js-boxed .showcase-template-wrap .showcase-wrap,
+.js-boxed .fixed-sidebar .widget {
+	background-color: transparent;
+	padding: 0 0 30px 0;
+}
+
+/* Info/Author Box and Comments */
+.js-boxed #comments .comment-body,
+.js-boxed #respond #commentform,
+.js-boxed .comment #respond,
+.js-boxed .tb-related-posts > .inner,
+.js-boxed .tb-info-box {
+	background: #fcfcfc;
+	border: 1px solid #eeeeee;
+}
+.js-boxed.content_dark #comments .comment-body,
+.js-boxed.content_dark #respond #commentform,
+.js-boxed.content_dark .comment #respond,
+.js-boxed.content_dark .tb-related-posts > .inner,
+.js-boxed.content_dark .tb-info-box {
+	background-color: #323232;
+	border-color: #000000;
+}
+.comment #respond #commentform {
+	background: transparent;
+	border: none;
+}
+
+/* Blog */
+.js-boxed .blog-wrap > article,
+.js-boxed article.single {
+	padding-top: 0;
+	margin-bottom: 0;
+}
+.js-boxed .blog .pagination-wrap {
+	padding: 0 30px;
+}
+
+/* Breadcrumbs */
+.js-boxed .breadcrumb {
+	padding: 0 5px;
+}
+
+/* Custom Layouts */
+.element-section {
+	padding: 30px;
+}
+.element-section > .element.popout {
+	margin-right: -30px;
+	margin-left: -30px;
+}

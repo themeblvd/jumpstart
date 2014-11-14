@@ -1,10 +1,13 @@
 /* =Top
 ----------------------------------------------- */
 
+#top {
+	background: #151515;
+}
+
 /* Header Top */
 .header-top {
 	background: #222222;
-	position: relative;
 }
 .header-top-nav > li {
 	border-right-color: #000000;
@@ -44,33 +47,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Content Background */
 .bg-content {
 	background: #222222;
-}
-
-/* Primary Color */
-.primary,
-.bg-primary,
-.btn-primary,
-.label-primary,
-.panel-primary > .panel-heading {
-	background-color: #eeeeee;
-	border-color: #000000;
-	color: #333333;
-}
-.primary:hover,
-.primary:focus,
-a.bg-primary:hover,
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.label-primary[href]:hover,
-.label-primary[href]:focus {
-	background-color: #ffffff;
-	border-color: #000000;
-	color: #333333;
-}
-.panel-primary {
-	border-color: #000000;
 }
 
 /* Posts */
