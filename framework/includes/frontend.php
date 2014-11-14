@@ -290,6 +290,23 @@ function themeblvd_header_class() {
 
 }
 
+/**
+ * Display HTML class for site footer.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_footer_class() {
+
+	$class = array('site-footer');
+
+	if ( $class = apply_filters('themeblvd_footer_class', $class ) ) {
+		$output = sprintf('class="%s"', implode(' ', $class) );
+	}
+
+	echo apply_filters('themeblvd_footer_class_output', $output, $class);
+
+}
+
 if ( !function_exists( 'themeblvd_include_scripts' ) ) :
 /**
  * Load framework's JS scripts

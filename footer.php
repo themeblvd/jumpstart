@@ -44,7 +44,7 @@
 			<?php else : ?>
 
 				<div id="bottom">
-					<footer id="colophon" class="site-footer" role="contentinfo">
+					<footer id="colophon" <?php themeblvd_footer_class(); ?> role="contentinfo">
 						<div class="wrap clearfix">
 							<?php
 							/**
