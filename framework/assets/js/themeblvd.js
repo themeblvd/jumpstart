@@ -179,6 +179,18 @@ jQuery(document).ready(function($) {
 						$popup.fadeOut(100);
 					}
 
+					$elem.find('#sticky-menu .menu-item').each(function(){
+
+						var $item = $(this).closest('li');
+
+						if ( $item.hasClass('sfHover') ) {
+							$item.removeClass('sfHover');
+							$item.find('.non-mega-sub-menu').hide();
+							$item.find('.sf-mega').hide();
+						}
+
+					});
+
 				}
 			}
 		});
