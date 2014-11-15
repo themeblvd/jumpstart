@@ -73,7 +73,7 @@ function jumpstart_su_options() {
 			),
 			'layout_border_width' => array(
 				'id'		=> 'layout_border_width',
-				'name'		=> __('Bottom Border Width', 'themeblvd'),
+				'name'		=> __('Layout Border Width', 'themeblvd'),
 				'desc'		=> __('Select a width in pixels for the boxed layout. Set to <em>0px</em> for no border.', 'themeblvd'),
 				'std'		=> '1px',
 				'type'		=> 'slide',

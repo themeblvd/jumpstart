@@ -126,7 +126,9 @@ Author URI: http://www.themeblvd.com
 	max-width: 1170px;
 }
 .js-boxed .tb-sticky-menu {
+	margin-left: -585px;
 	max-width: 1170px;
+	left: 50%;
 }
 .js-boxed .tb-sticky-menu > .wrap {
 	padding: 0 15px;
@@ -163,8 +165,10 @@ Author URI: http://www.themeblvd.com
 		max-width: 960px;
 	}
 	.js-boxed .tb-sticky-menu {
+		margin-left: -480px;
 		max-width: 960px;
 	}
+
 }
 @media (max-width: 992px) {
 	.js-boxed #container {
