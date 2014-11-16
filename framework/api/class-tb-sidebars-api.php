@@ -97,7 +97,7 @@ class Theme_Blvd_Sidebars_API {
 		add_action( 'after_setup_theme', array( $this, 'set_locations' ), 1001 );
 
 		// Regiser sidebars from locations.
-		add_action( 'after_setup_theme', array( $this, 'register' ), 1001 );
+		add_action( 'widgets_init', array( $this, 'register' ) ); // Widget Areas plugin hooks in at priority 11, just after
 
 	}
 
