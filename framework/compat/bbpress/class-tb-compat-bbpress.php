@@ -63,9 +63,9 @@ class Theme_Blvd_Compat_bbPress {
 		add_filter( 'bbp_get_single_topic_description', array($this, 'remove_desc'), 10, 2 );
 
 		// Search results
-		add_filter( 'bbp_register_forum_post_type', array($this, 'register_post_types') );
-        add_filter( 'bbp_register_topic_post_type', array($this, 'register_post_types') );
-        add_filter( 'bbp_register_reply_post_type', array($this, 'register_post_types') );
+		add_filter( 'bbp_register_forum_post_type', array($this, 'register_pt') );
+        add_filter( 'bbp_register_topic_post_type', array($this, 'register_pt') );
+        add_filter( 'bbp_register_reply_post_type', array($this, 'register_pt') );
         add_filter( 'bbp_allow_search', array($this, 'remove_search') );
         add_filter( 'themeblvd_format_icon', array($this, 'format_icon'), 10, 4 );
 
@@ -207,7 +207,7 @@ class Theme_Blvd_Compat_bbPress {
 	 *
 	 * @since 2.5.0
 	 */
-	public function register_post_types( $type ) {
+	public function register_pt( $type ) {
 		$type['exclude_from_search'] = false;
 		return $type;
 	}
