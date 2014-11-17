@@ -207,7 +207,7 @@ class Theme_Blvd_Plugin_Management {
 		}
 
 		echo '</ol>';
-		echo '<p class="row-actions visible"><a href="plugins.php">'.__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.$disable_url.'">'.__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
+		echo '<p class="row-actions visible"><a href="'.admin_url('plugins.php').'">'.__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.$disable_url.'">'.__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
 		echo '</div>';
 	}
 
