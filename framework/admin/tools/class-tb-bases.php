@@ -34,7 +34,7 @@ class Theme_Blvd_Bases {
 	 * @since 2.5.0
 	 */
 	public function add_page() {
-		$admin_page = add_submenu_page( 'themes.php', __('Theme Base', 'themeblvd'), __('Theme Base', 'themeblvd'), 'edit_theme_options', get_template().'-base', array( $this, 'admin_page' ) );
+		$admin_page = add_theme_page( __('Theme Base', 'themeblvd'), __('Theme Base', 'themeblvd'), 'edit_theme_options', get_template().'-base', array($this, 'admin_page') );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'assets' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'assets' ) );
 	}
