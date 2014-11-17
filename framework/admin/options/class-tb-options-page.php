@@ -28,7 +28,7 @@ class Theme_Blvd_Options_Page {
 	public $options;
 
 	/**
-	 * Arguments to pass into add_submenu_page() function.
+	 * Arguments to pass into admin page function.
 	 *
 	 * @since 2.2.0
 	 * @var array
