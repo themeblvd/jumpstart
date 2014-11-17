@@ -354,7 +354,7 @@ function setup_themeblvd_banner_meta() {
 			),
 			'text_color' => array(
 				'id'		=> 'text_color',
-				'name'		=> __('Text Color'),
+				'name'		=> __('Text Color', 'themeblvd'),
 				'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'themeblvd_builder'),
 				'std'		=> 'light',
 				'type'		=> 'select',
@@ -366,7 +366,7 @@ function setup_themeblvd_banner_meta() {
 			),
 			'text_align' => array(
 				'id'		=> 'text_align',
-				'name'		=> __('Text Align'),
+				'name'		=> __('Text Align', 'themeblvd'),
 				'desc'		=> __('Select how to align the text of the headline and tagline.', 'themeblvd'),
 				'std'		=> 'left',
 				'type'		=> 'select',
