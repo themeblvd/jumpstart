@@ -1159,7 +1159,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			        '_self' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd' ),
 			        '_blank' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd' ),
 			        'image' 	=> __( 'Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd' ),
-			        'video' 	=> __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250‎</br />Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd' )
+			        'video' 	=> __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250<br>Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd' )
 				),
 				'type'		=> 'text',
 				'std'		=> '',
