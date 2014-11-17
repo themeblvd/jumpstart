@@ -313,6 +313,8 @@ function themeblvd_admin_body_class( $classes ) {
  */
 function themeblvd_get_icons( $type ) {
 
+	global $wp_filesystem;
+
 	$icons = get_transient( 'themeblvd_'.get_template().'_'.$type.'_icons' );
 
 	if ( ! $icons ) {
@@ -323,40 +325,41 @@ function themeblvd_get_icons( $type ) {
 
 			case 'vector' :
 
-				$fetch_icons = array();
-				$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
+				if ( function_exists('WP_Filesystem') ) {
 
-				if ( file_exists( $file_location ) ) {
+					WP_Filesystem();
 
-					$file = fopen( $file_location, "r" );
+					$fetch_icons = array();
+					$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
 
-					// Run through each line of font-awesome.css, and
-					// look for anything that could resemble a font ID.
-					while ( !feof( $file ) ) {
+					if ( file_exists( $file_location ) ) {
 
-						$line = fgets( $file );
+						$file = $wp_filesystem->get_contents($file_location);
 
-						if ( strpos( $line, '.fa-' ) !== false && strpos( $line, ':before' ) !== false ) {
-							$icon = str_replace( '.fa-', '', $line );
-							$icon = str_replace( ':before {', '', $icon );
-							$icon = str_replace( ':before,', '', $icon );
-							$fetch_icons[] = trim( $icon );
+						// Run through each line of font-awesome.css, and
+						// look for anything that could resemble a font ID.
+						$lines = explode("\n", $file);
+
+						foreach ( $lines as $line ) {
+							if ( strpos( $line, '.fa-' ) !== false && strpos( $line, ':before' ) !== false ) {
+								$icon = str_replace( '.fa-', '', $line );
+								$icon = str_replace( ':before {', '', $icon );
+								$icon = str_replace( ':before,', '', $icon );
+								$fetch_icons[] = trim( $icon );
+							}
+						}
+
+						// Sort icons alphebetically
+						sort( $fetch_icons );
+
+						// Format array for use in options framework
+						foreach ( $fetch_icons as $icon ) {
+							$icons[$icon] = $icon;
 						}
 
 					}
-
-					// Close file
-					fclose( $file );
-
-					// Sort icons alphebetically
-					sort( $fetch_icons );
-
-					// Format array for use in options framework
-					foreach ( $fetch_icons as $icon ) {
-						$icons[$icon] = $icon;
-					}
-
 				}
+
 				break;
 
 			case 'image' :
@@ -404,7 +407,7 @@ function themeblvd_get_icons( $type ) {
 		} // end switch $type
 
 		// Cache result
-		set_transient( 'themeblvd_'.$type.'_icons', $icons, '86400' ); // 1 day
+		set_transient( 'themeblvd_'.get_template().'_'.$type.'_icons', $icons, '86400' ); // 1 day
 
 	} // end if $icons
 
