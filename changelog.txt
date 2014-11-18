@@ -4,7 +4,48 @@ Jump Start Changelog
 2.0.0
 -----
 
-@TODO
+* **Updated Theme Blvd framework to 2.5.0**
+* Complete frontend theme re-design.
+* Added full support for post formats by default.
+* Added mega menus, configured from *Appearance > Menus*.
+* Added frontend sticky menu by default.
+* Added frontend "Scroll to Top" button by default.
+* Added frontend floating search box by default.
+* Added frontend social icons, by default.
+* Added automatic frontend WPML language switcher, if using WPML plugin.
+* Added share icons to single posts.
+* Added related posts display to single posts.
+* Added "Author Box" for author archives and single posts, configured from user profile admin page.
+* New mobile menu design, which animates from the side of the device.
+* Tons of new framework elements to go with [Layout Builder 2.0](https://wordpress.org/plugins/theme-blvd-layout-builder/changelog/) update.
+* Added parallax background support.
+* Added slideshow background suppport.
+* Sidebars always outputted below content for better SEO, no matter the sidebar layout used.
+* New "Theme Base" system at *Appearance > Theme Base*.
+* Complete overhaul of Theme Options page and available options.
+* Added bbPress compatibility.
+* Many new framework option types to integrate with Layout Builder and Theme Options.
+* New Import/Export system for Theme Options.
+* Added selection of post display type for archive pages, editable from theme options or editing specific categories and tags.
+* New Blog post display (new default for blogroll and archives).
+* New Post Showcase post display.
+* Enhancements to default Post Grid display.
+* Redesign of default Post List display.
+* Redesign of Post Slider; now part of framework and removed from Theme Blvd Sliders plugin.
+* Removed Post List Slider.
+* New framework search results page.
+* New banner feature for pages, configured from "Banner" meta box when editing a page.
+* New feature to hide header or footer, configured from "Theme Layout" meta box when editing a page.
+* New "suck up" feature for pages, where background of page will get sucked up behind header.
+* Pages now display featured images and have featured image options, similar to posts.
+* Added "Blog" page template.
+* Added "Blank Page" page template.
+* Added "Post Showcase" page template.
+* Framework now expands grid system for Bootstrap ([see article](http://dev.themeblvd.com/tutorial/grid-system/)).
+* Overhaul of image crop sizes; **make sure to run [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) plugin!**
+* New demo content import system merged into WordPress's system at *Tools > Import* to get a full working copy of the demo with settings, widgets, and all.
+* Updated to Bootstrap 3.3.
+* Updated to FontAwesome 4.2.
 
 --------------------------------------------------------------
 
