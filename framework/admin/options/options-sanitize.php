@@ -252,15 +252,29 @@ function themeblvd_sanitize_background( $input ) {
 		'size'			=> 'auto'
 	) );
 
-	if ( isset( $input['color'] ) ) { // color is optional, may not exist
+	if ( isset( $input['color'] ) ) {
 		$output['color'] = apply_filters( 'themeblvd_sanitize_hex', $input['color'] );
 	}
 
-	$output['image'] = apply_filters( 'themeblvd_sanitize_upload', $input['image'] );
-	$output['repeat'] = apply_filters( 'themeblvd_background_repeat', $input['repeat'] );
-	$output['position'] = apply_filters( 'themeblvd_background_position', $input['position'] );
-	$output['attachment'] = apply_filters( 'themeblvd_background_attachment', $input['attachment'] );
-	$output['size'] = apply_filters( 'themeblvd_background_size', $input['size'] );
+	if ( isset( $input['image'] ) ) {
+		$output['image'] = apply_filters( 'themeblvd_sanitize_upload', $input['image'] );
+	}
+
+	if ( isset( $input['repeat'] ) ) {
+		$output['repeat'] = apply_filters( 'themeblvd_background_repeat', $input['repeat'] );
+	}
+
+	if ( isset( $input['position'] ) ) {
+		$output['position'] = apply_filters( 'themeblvd_background_position', $input['position'] );
+	}
+
+	if ( isset( $input['attachment'] ) ) {
+		$output['attachment'] = apply_filters( 'themeblvd_background_attachment', $input['attachment'] );
+	}
+
+	if ( isset( $input['size'] ) ) {
+		$output['size'] = apply_filters( 'themeblvd_background_size', $input['size'] );
+	}
 
 	return $output;
 }
