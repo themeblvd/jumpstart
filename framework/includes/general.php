@@ -484,7 +484,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_builder',
-					'title'		=> __( 'Layout Builder', 'themeblvd' ),
+					'title'		=> __( 'Templates', 'themeblvd' ),
 					'parent'	=> 'site-name',
 					'href'		=> admin_url( $modules['builder'] )
 				)
