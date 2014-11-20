@@ -44,6 +44,7 @@ Jump Start Changelog
 * Framework now expands grid system for Bootstrap ([see article](http://dev.themeblvd.com/tutorial/grid-system/)).
 * Overhaul of image crop sizes; **make sure to run [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) plugin!**
 * New demo content import system merged into WordPress's system at *Tools > Import* to get a full working copy of the demo with settings, widgets, and all.
+* Added editor stylesheet for editing posts and pages.
 * Updated to Bootstrap 3.3.
 * Updated to FontAwesome 4.2.
 

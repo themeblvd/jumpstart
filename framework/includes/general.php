@@ -401,6 +401,9 @@ function themeblvd_add_theme_support() {
 	// Post Formats
 	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status') );
 
+	// Editor style
+	add_editor_style( 'style-editor.css' );
+
 }
 
 /**
