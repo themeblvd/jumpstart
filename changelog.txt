@@ -1,7 +1,12 @@
 Jump Start Changelog
 ====================
 
-2.0.0
+2.0.0-beta2
+-----
+
+* Fixed issues with new Footer Sync feature and using Columns element. Make sure to update Layout Builder plugin to v2.0.2, also.
+
+2.0.0-beta1
 -----
 
 * **Updated Theme Blvd framework to 2.5.0**

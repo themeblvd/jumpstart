@@ -107,9 +107,15 @@ function themeblvd_element( $args ) {
 				$num = count( explode( '-', $args['options']['setup'] ) );
 			}
 
+			if ( themeblvd_get_att('footer_sync') ) {
+				$layout_id = themeblvd_config('bottom_builder_post_id');
+			} else {
+				$layout_id = themeblvd_config('builder_post_id');
+			}
+
 			$col_args = array(
 				'section'		=> $args['section'],
-				'layout_id'		=> themeblvd_config('builder_post_id'),
+				'layout_id'		=> $layout_id,
 				'element_id' 	=> $args['id'],
 				'num'			=> $num,
 				'widths'		=> $args['options']['setup'],
@@ -928,6 +934,7 @@ function themeblvd_columns( $args, $columns = null ) {
 	if ( $num != count( $widths ) ) {
 		return;
 	}
+
 
 	// Column Margins
 	//
