@@ -218,27 +218,6 @@
     						$this.find('#section-homepage_custom_layout').hide();
     				});
 
-    				// Color Picker
-					$this.find('.colorSelector').each(function(){
-						var Othis = this; //cache a copy of the this variable for use inside nested function
-						var initialColor = $(Othis).next('input').attr('value');
-						$(this).ColorPicker({
-							color: initialColor,
-							onShow: function (colpkr) {
-								$(colpkr).fadeIn(500);
-								return false;
-							},
-							onHide: function (colpkr) {
-								$(colpkr).fadeOut(500);
-								return false;
-							},
-							onChange: function (hsb, hex, rgb) {
-								$(Othis).children('div').css('backgroundColor', '#' + hex);
-								$(Othis).next('input').attr('value','#' + hex);
-							}
-						});
-					});
-
     				// Image Options
 					$this.find('.of-radio-img-img').click(function(){
 						$(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
