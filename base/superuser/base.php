@@ -90,11 +90,6 @@ function jumpstart_su_options() {
 				'desc'		=> __('Select a color for the border around the boxed layout.', 'themeblvd'),
 				'std'		=> '#cccccc',
 				'type'		=> 'color',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '20'
-				),
 				'class'		=> 'receiver receiver-boxed'
 			),
 			'sub_group_end_1' => array(
