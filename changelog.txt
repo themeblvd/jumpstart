@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.0-beta2
 -----
 
+* Added editor stylesheet for editing posts and pages.
 * Fixed issues with new Footer Sync feature and using Columns element. Make sure to update Layout Builder plugin to v2.0.2, also.
 
 2.0.0-beta1
