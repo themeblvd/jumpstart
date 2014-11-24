@@ -273,7 +273,7 @@ class Theme_Blvd_Frontend_Init {
 						}
 
 					} else {
-						$layout = true; // Will pull from current page's meta data
+						$layout = $post->post_name; // Will pull from current page's meta data
 					}
 
 				}
@@ -285,7 +285,7 @@ class Theme_Blvd_Frontend_Init {
 
 				if ( $sync_id ) {
 					$this->config['builder_post_id'] = $sync_id;
-				} else if ( $layout === true ) {
+				} else {
 					$this->config['builder_post_id'] = $post->ID;
 				}
 
