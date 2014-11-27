@@ -53,6 +53,7 @@ function themeblvd_installed( $plugin = '' ) {
 				if ( class_exists('SitePress') ) {
 					return true;
 				}
+				break;
 
 			case 'woocommerce' :
 				if ( class_exists('WooCommerce') ) {
