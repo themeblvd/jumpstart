@@ -1171,6 +1171,9 @@ class Theme_Blvd_Options_API {
 			unset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] );
 		}
 
+		// Allow mods to core options one last time
+		$this->raw_options = apply_filters('themeblvd_pre_format_options', $this->raw_options);
+
 		// Tab Level
 		foreach ( $this->raw_options as $tab_id => $tab ) {
 
