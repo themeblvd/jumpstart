@@ -662,8 +662,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Font Color
 				if ( in_array( 'color', $value['atts'] ) ) {
-					$output .= '<div id="'.esc_attr( $value['id'] ).'_color_picker" class="colorSelector"><div style="'.esc_attr( 'background-color:'.$typography_stored['color'] ).'"></div></div>';
-					$output .= '<input class="of-color of-typography of-typography-color" name="'.esc_attr( $option_name.'['.$value['id'].'][color]' ).'" id="'.esc_attr( $value['id'].'_color' ).'" type="text" value="'.esc_attr( $typography_stored['color'] ).'" />';
+
+					$def = '#666666';
+
+					if ( ! empty($value['std']['color']) ) {
+						$def = $value['std']['color'];
+					}
+
+					$output .= sprintf( '<input id="%s-color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][color]'), esc_attr($typography_stored['color']), esc_attr($def) );
 				}
 
 				$output .= '<div class="clear"></div>';
