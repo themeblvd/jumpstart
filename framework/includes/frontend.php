@@ -275,6 +275,8 @@ function themeblvd_header_class() {
 
 	if ( themeblvd_config('suck_up') ) {
 		$class[] = 'transparent';
+	} else {
+		$class[] = 'standard';
 	}
 
 	if ( themeblvd_config('sticky') ) {
