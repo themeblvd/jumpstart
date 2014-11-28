@@ -66,7 +66,7 @@
 	margin: 0;
 }
 #themeblvd-base-admin .theme-base.active {
-	background-color: #2f2f2f;
+	/* background-color: #2f2f2f; */
 	border-color: #2f2f2f;
 	color: #ffffff;
 }

@@ -74,6 +74,10 @@ function themeblvd_sanitize_hidden( $input, $option ) {
 		$theme = wp_get_theme( get_template() );
 		$output = $theme->get('Version');
 
+	} else if ( $option['id'] == 'theme_base' ) {
+
+		$output = get_option( get_template().'_base' );
+
 	} else {
 
 		$allowedtags = themeblvd_allowed_tags();

@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Added editor stylesheet for editing posts and pages.
 * Added unique HTML ID's to sections of custom layouts like `page-slug-section-1`.
+* Added system to check if saved theme options match selected theme base.
 * Expanded options for divider component.
 * Fixed issues with new Footer Sync feature and using Columns element. Make sure to update Layout Builder plugin to v2.0.2, also.
 * Fixed "color" value of "typography" option type.

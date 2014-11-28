@@ -389,6 +389,12 @@ class Theme_Blvd_Options_Page {
 		// Get any current settings from the database.
 		$settings = apply_filters( 'themeblvd_frontend_options', get_option( $this->id ) ); // Name of filter isn't very logical, but has been around through many versions, so must remain
 
+		if ( themeblvd_supports('admin', 'base') && isset($this->options['theme_base']) ) {
+			if ( empty($settings['theme_base']) || $settings['theme_base'] != get_option(get_template().'_base') ) {
+				add_settings_error( $this->id, 'theme_base_error', __( 'Your saved options do not currently match the theme base you\'ve selected. Please re-save your theme options page.', 'themeblvd' ), 'themeblvd-error error' );
+			}
+		}
+
 	    // Setup options form
 		$return = themeblvd_option_fields( $this->id, $this->options, $settings, $this->args['closer'] );
 

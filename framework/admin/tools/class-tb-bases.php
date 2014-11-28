@@ -58,6 +58,7 @@ class Theme_Blvd_Bases {
 	 */
 	public function admin_page() {
 
+		// Update theme base
 		if ( ! empty($_GET['select-base']) ) {
 			if ( ! empty($_GET['security']) && wp_verify_nonce($_GET['security'], 'select-base') ) {
 				if ( array_key_exists($_GET['select-base'], $this->bases) ) {
@@ -67,6 +68,13 @@ class Theme_Blvd_Bases {
 			} else {
 				echo '<div class="error"><p><strong>'.__('Security check failed. Couldn\'t update theme base.', 'themeblvd').'</strong></p></div>';
 			}
+		}
+
+		// Check to make sure saved theme options match theme base
+		$settings = get_option( themeblvd_get_option_name() );
+
+		if ( empty($settings['theme_base']) || $settings['theme_base'] != get_option(get_template().'_base') ) {
+			echo '<div class="error"><p><strong>'.__( 'Your saved options do not currently match the theme base you\'ve selected. Please re-save your theme options page.', 'themeblvd' ).'</strong></p></div>';
 		}
 
 		$theme = wp_get_theme(get_template());
@@ -107,7 +115,7 @@ class Theme_Blvd_Bases {
 									<?php endif; ?>
 									<img src="<?php echo themeblvd_get_base_uri($id); ?>/preview.jpg" />
 								</div>
-								<div class="theme-base-info">
+								<div class="theme-base-info<?php if ( $current == $id ) echo ' wp-ui-highlight'; ?>">
 									<h3><?php echo $info['name']; ?></h3>
 									<p><?php echo $info['desc']; ?></p>
 								</div>

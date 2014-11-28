@@ -5699,6 +5699,13 @@ blockquote small {
 .tb-alert p:last-child {
 	margin-bottom: 0;
 }
+.tb-alert.full {
+	border-radius: 0;
+	border-right-width: none;
+	border-left-width: none;
+	margin: 0;
+	text-align: center;
+}
 
 /* Divider */
 .tb-divider {

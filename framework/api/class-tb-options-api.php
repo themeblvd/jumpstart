@@ -1162,6 +1162,13 @@ class Theme_Blvd_Options_API {
 			)
 		);
 
+		if ( themeblvd_supports('admin', 'base') ) {
+			$this->formatted_options['theme_base'] = array(
+				'id' 	=> 'theme_base',
+				'type'	=> 'hidden'
+			);
+		}
+
 		// Remove any options for unsupported features
 		if ( ! themeblvd_supports('display', 'suck_up') && isset( $this->raw_options['layout']['sections']['header_trans'] ) ) {
 			unset( $this->raw_options['layout']['sections']['header_trans'] );

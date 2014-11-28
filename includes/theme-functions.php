@@ -78,13 +78,24 @@ function jumpstart_scripts() {
 add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );
 
 /**
+ * Jump Start global config
+ *
+ * @since 2.0.0
+ */
+function jumpstart_global_config( $config ) {
+	$config['admin']['base'] = true;
+	return $config;
+}
+add_filter('themeblvd_global_config', 'jumpstart_global_config');
+
+/**
  * Jump Start theme bases
  *
  * @since 2.0.0
  */
 function jumpstart_bases() {
 
-	if ( is_admin() ) {
+	if ( is_admin() && themeblvd_supports('admin', 'base') ) {
 
 		$bases = apply_filters('themeblvd_bases', array(
 			'dev' => array(
@@ -94,14 +105,14 @@ function jumpstart_bases() {
 			'superuser' => array(
 				'name'		=> 'Super User',
 				'desc'		=> 'For the super user, this base builds on the default theme to give you more visual, user options.'
+			),
+			'entrepreneur' => array(
+				'name'		=> 'Entrepreneur',
+				'desc'		=> 'This base will give you the perfect starting point for a business-oriented website for you or your clients.'
 			)
 			/*
 			'artist' => array(
 				'name'		=> 'Artist',
-				'desc'		=> 'This base will give you the perfect starting point for a business-oriented website for you or your clients.'
-			),
-			'entrepreneur' => array(
-				'name'		=> 'Entrepreneur',
 				'desc'		=> 'This base will give you the perfect starting point for a business-oriented website for you or your clients.'
 			)
 			*/
@@ -113,3 +124,20 @@ function jumpstart_bases() {
 
 }
 add_action('after_setup_theme', 'jumpstart_bases');
+
+/**
+ * Jump Start base check. If WP user is logged in,
+ * output message on frontend to tell them their saved
+ * theme options don't match the theme base they've
+ * selected.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_base_check() {
+
+	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != get_option(get_template().'_base') ) {
+		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please re-save your theme options page.', 'themeblvd' ) );
+	}
+
+}
+add_action('themeblvd_before', 'jumpstart_base_check');
