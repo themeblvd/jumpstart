@@ -70,7 +70,7 @@
 /* =Top
 ----------------------------------------------- */
 
-#top {
+.site-header {
 	background: #f5f5f5;
 	position: relative;
 }
@@ -125,11 +125,11 @@
 .header-nav {
 	background: #333333;
 }
-.tb-primary-menu .menu-btn  {
+.tb-primary-menu .menu-btn {
 	display: block;
 	line-height: 1;
 }
-.tb-primary-menu .menu-btn ,
+.tb-primary-menu .menu-btn,
 .tb-primary-menu .menu-btn:hover {
 	text-decoration: none;
 }
@@ -213,22 +213,25 @@
 }
 
 /* Transparent Header */
-.transparent .header-top {
-	background-color: rgba(0,0,0,.2);
-}
-.transparent .header-top-nav > li {
-	border-color: rgba(0,0,0,.4);
-}
-.transparent .header-nav {
-	background-color: rgba(0,0,0,.2);
-}
-.transparent .tb-primary-menu > li > a:hover {
-	background-color: rgba(0,0,0,.4);
-}
-.transparent .btn-navbar {
+.site-header.transparent {
 	background-color: transparent;
 }
-.transparent .btn-navbar:hover {
+.site-header.transparent .header-top {
+	background-color: rgba(0,0,0,.2);
+}
+.site-header.transparent .header-top-nav > li {
+	border-color: rgba(0,0,0,.4);
+}
+.site-header.transparent .header-nav {
+	background-color: rgba(0,0,0,.2);
+}
+.site-header.transparent .tb-primary-menu > li > a:hover {
+	background-color: rgba(0,0,0,.4);
+}
+.site-header.transparent .btn-navbar {
+	background-color: transparent;
+}
+.site-header.transparent .btn-navbar:hover {
 	background-color: rgba(0,0,0,.4);
 }
 
