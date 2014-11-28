@@ -651,11 +651,11 @@ p.wp-caption-text {
 	font-size: 13px;
 	line-height: 1.2;
 }
-#branding .logo-trans,
-#branding .social-trans {
+.site-header .logo-trans,
+.site-header .social-trans {
 	display: none;
 }
-#branding.transparent {
+.site-header.transparent {
 	color: #ffffff;
 }
 
@@ -671,12 +671,12 @@ p.wp-caption-text {
 		right: 0;
 		z-index: 500;
 	}
-	#branding.transparent .logo-standard,
-	#branding.transparent .tb-social-icons {
+	.site-header.transparent .logo-standard,
+	.site-header.transparent .tb-social-icons {
 		display: none;
 	}
-	#branding.transparent .logo-trans,
-	#branding.transparent .social-trans {
+	.site-header.transparent .logo-trans,
+	.site-header.transparent .social-trans {
 		display: block;
 	}
 }
@@ -5719,6 +5719,9 @@ blockquote small {
 .tb-divider.solid {
 	border-top: 1px solid #cccccc;
 }
+.tb-divider.thick-solid {
+	border-top: 5px solid #cccccc;
+}
 .tb-divider.double-solid {
 	border-top: 1px solid #cccccc;
 	border-bottom: 1px solid #cccccc;
@@ -5726,6 +5729,9 @@ blockquote small {
 }
 .tb-divider.dashed {
 	border-top: 1px dashed #cccccc;
+}
+.tb-divider.thick-dashed {
+	border-top: 5px dashed #cccccc;
 }
 .tb-divider.double-dashed {
 	border-top: 1px dashed #cccccc;

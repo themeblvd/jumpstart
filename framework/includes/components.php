@@ -66,7 +66,9 @@ function themeblvd_get_divider( $args = array() ) {
 
     // Setup and extract $args
     $defaults = array(
-        'type'      => 'shadow',    // Style of divider - dashed, shadow, solid, double-solid, double-dashed
+        'type'      => 'shadow',    // Style of divider - dashed, shadow, solid, thick-solid, thick-dashed, double-solid, double-dashed
+        'color'     => '',          // Color hex (like #cccccc) for divider (all except shadow style)
+        'opacity'   => '1',         // Opacity for color (all except shadow style)
         'width'     => '',          // A width for the divider in pixels
         'placement' => 'equal'      // Where the divider sits between the content - equal, above (closer to content above), below (closer to content below)
     );
@@ -82,6 +84,11 @@ function themeblvd_get_divider( $args = array() ) {
 
     if ( $args['width'] ) {
         $style .= sprintf( 'max-width: %spx;', $args['width'] );
+    }
+
+    if ( $args['color'] && $args['type'] != 'shadow'  ) {
+        $style .= sprintf( 'border-color: %s;', $args['color'] );
+        $style .= sprintf( 'border-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
     }
 
     $output = sprintf( '<div class="%s" style="%s"></div>', $class, $style );
