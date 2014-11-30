@@ -891,6 +891,11 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 	if ( $print == 'inline' ) {
 
 		foreach ( $params as $key => $value ) {
+
+			if ( $key == 'background-color-2' ) {
+				$key = 'background-color';
+			}
+
 			$style .= sprintf( '%s: %s; ', $key, $value );
 		}
 
