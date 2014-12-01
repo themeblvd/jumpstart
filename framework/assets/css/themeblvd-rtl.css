@@ -6088,27 +6088,34 @@ blockquote small {
 	margin-bottom: 0;
 }
 @media (max-width: 767px) {
-	.tb-slogan.button-left,
-	.tb-slogan.button-right {
+	.tb-slogan.button-left .entry-content,
+	.tb-slogan.button-right .entry-content {
 		display: -webkit-box;
-	    display: -moz-box;
-	    display: box;
-	    -webkit-box-orient: vertical;
-	    -moz-box-orient: vertical;
-	    box-orient: vertical;
+		display: -moz-box;
+		display: box;
+		-webkit-box-orient: vertical;
+		-moz-box-orient: vertical;
+		box-orient: vertical;
 	}
-	.tb-slogan.button-left .slogan-text,
-	.tb-slogan.button-right .slogan-text {
+	.tb-slogan.button-left .headline,
+	.tb-slogan.button-right .headline {
 		-webkit-box-ordinal-group: 1;
-    	-moz-box-ordinal-group: 1;
-    	box-ordinal-group: 1;
-    	display: block;
+		-moz-box-ordinal-group: 1;
+		box-ordinal-group: 1;
+		display: block;
 	}
-	.tb-slogan.button-left .btn,
-	.tb-slogan.button-right .btn {
+	.tb-slogan.button-left .desc,
+	.tb-slogan.button-right .desc {
 		-webkit-box-ordinal-group: 2;
 		-moz-box-ordinal-group: 2;
 		box-ordinal-group: 2;
+		display: block;
+	}
+	.tb-slogan.button-left .btn,
+	.tb-slogan.button-right .btn {
+		-webkit-box-ordinal-group: 3;
+		-moz-box-ordinal-group: 3;
+		box-ordinal-group: 3;
 		float: none;
 		display: block;
 		margin: 20px 0 0 0;
