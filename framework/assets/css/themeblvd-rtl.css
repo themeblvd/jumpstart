@@ -1252,6 +1252,23 @@ body.side-menu-on {
 #tb-side-menu-wrapper .tb-search {
 	border-bottom: 1px solid #dddddd;
 }
+.admin-bar #tb-side-menu-wrapper {
+	padding-top: 32px;
+}
+@media (max-width: 782px) {
+	.admin-bar #tb-side-menu-wrapper {
+		padding-top: 46px;
+	}
+}
+@media (max-width: 600px) {
+	html body.side-menu-off #wpadminbar,
+	html body.side-menu-on #wpadminbar {
+		top: -46px;
+	}
+	.admin-bar #tb-side-menu-wrapper {
+		padding-top: 0;
+	}
+}
 
 /* Videos (oEmbed) */
 .themeblvd-video-wrapper {
