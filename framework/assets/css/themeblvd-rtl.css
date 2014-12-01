@@ -6629,7 +6629,8 @@ blockquote small {
 	height: 50px;
 	z-index: 20;
 }
-.tb-scroll-to-top:hover {
+.tb-scroll-to-top:hover,
+.tb-scroll-to-top:focus {
 	background-color: rgba(0,0,0,.2);
 	color: #ffffff;
 }
