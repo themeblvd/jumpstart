@@ -11,6 +11,7 @@ Jump Start Changelog
 * Fixed issues with new Footer Sync feature and using Columns element. Make sure to update Layout Builder plugin to v2.0.2, also.
 * Fixed "color" value of "typography" option type.
 * Fixed bug with not being able to apply background color opacity to display options for columns in the Columns element.
+* Fixes to header "suck up" feature with Super User theme base and applied header style options.
 * Fixed fatal error with WooCommerce.
 
 2.0.0-beta1

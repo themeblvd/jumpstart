@@ -1423,86 +1423,90 @@ function jumpstart_su_css() {
 	}
 
 	// Header background (entire header, behind top bar and main menu)
-	$options = array();
+	if ( ! themeblvd_config('suck_up') ) {
 
-	$options['bg_type'] = $header_bg_type;
-	$options['bg_color'] = $header_bg_color;
-	$options['bg_color_opacity'] = themeblvd_get_option('header_bg_color_opacity');
-	$options['bg_texture'] = themeblvd_get_option('header_bg_texture');
-	$options['apply_bg_texture_parallax'] = themeblvd_get_option('header_apply_bg_texture_parallax');
-	$options['bg_texture_parallax'] = themeblvd_get_option('header_bg_texture_parallax');
-	$options['bg_image'] = themeblvd_get_option('header_bg_image');
-	$options['bg_image_parallax_stretch'] = themeblvd_get_option('header_bg_image_parallax_stretch');
-	$options['bg_image_parallax'] = themeblvd_get_option('header_bg_image_parallax');
-	$options['apply_bg_shade'] = themeblvd_get_option('header_apply_bg_shade');
-	$options['bg_shade_color'] = themeblvd_get_option('header_bg_shade_color');
-	$options['bg_shade_opacity'] = themeblvd_get_option('header_bg_shade_opacity');
+		$options = array();
 
-	$options['apply_border_top'] = themeblvd_get_option('header_apply_border_top');
-	$options['border_top_color'] = themeblvd_get_option('header_border_top_color');
-	$options['border_top_width'] = themeblvd_get_option('header_border_top_width');
+		$options['bg_type'] = $header_bg_type;
+		$options['bg_color'] = $header_bg_color;
+		$options['bg_color_opacity'] = themeblvd_get_option('header_bg_color_opacity');
+		$options['bg_texture'] = themeblvd_get_option('header_bg_texture');
+		$options['apply_bg_texture_parallax'] = themeblvd_get_option('header_apply_bg_texture_parallax');
+		$options['bg_texture_parallax'] = themeblvd_get_option('header_bg_texture_parallax');
+		$options['bg_image'] = themeblvd_get_option('header_bg_image');
+		$options['bg_image_parallax_stretch'] = themeblvd_get_option('header_bg_image_parallax_stretch');
+		$options['bg_image_parallax'] = themeblvd_get_option('header_bg_image_parallax');
+		$options['apply_bg_shade'] = themeblvd_get_option('header_apply_bg_shade');
+		$options['bg_shade_color'] = themeblvd_get_option('header_bg_shade_color');
+		$options['bg_shade_opacity'] = themeblvd_get_option('header_bg_shade_opacity');
 
-	$options['apply_border_bottom'] = themeblvd_get_option('header_apply_border_bottom');
-	$options['border_bottom_color'] = themeblvd_get_option('header_border_bottom_color');
-	$options['border_bottom_width'] = themeblvd_get_option('header_border_bottom_width');
+		$options['apply_border_top'] = themeblvd_get_option('header_apply_border_top');
+		$options['border_top_color'] = themeblvd_get_option('header_border_top_color');
+		$options['border_top_width'] = themeblvd_get_option('header_border_top_width');
 
-	$styles = themeblvd_get_display_inline_style( $options, 'external' );
+		$options['apply_border_bottom'] = themeblvd_get_option('header_apply_border_bottom');
+		$options['border_bottom_color'] = themeblvd_get_option('header_border_bottom_color');
+		$options['border_bottom_width'] = themeblvd_get_option('header_border_bottom_width');
 
-	if ( ! empty( $styles['general'] ) ) {
+		$styles = themeblvd_get_display_inline_style( $options, 'external' );
 
-		$print .= ".site-header {\n";
+		if ( ! empty( $styles['general'] ) ) {
 
-		foreach ( $styles['general'] as $prop => $value ) {
-			$prop = str_replace('-2', '', $prop);
-			$print .= sprintf("\t%s: %s;\n", $prop, $value);
+			$print .= ".site-header {\n";
+
+			foreach ( $styles['general'] as $prop => $value ) {
+				$prop = str_replace('-2', '', $prop);
+				$print .= sprintf("\t%s: %s;\n", $prop, $value);
+			}
+
+			$print .= "}\n";
+
 		}
 
-		$print .= "}\n";
+		// Header top bar
+		$options = array();
+		$options['bg_type'] = 'color';
+		$options['bg_color'] = themeblvd_get_option('top_bg_color');
+		$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
+		$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
+		$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
+		$options['bg_color_opacity'] = themeblvd_get_option('top_bg_color_opacity');
 
-	}
+		$styles = themeblvd_get_display_inline_style( $options, 'external' );
 
-	// Header top bar
-	$options = array();
-	$options['bg_type'] = 'color';
-	$options['bg_color'] = themeblvd_get_option('top_bg_color');
-	$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
-	$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
-	$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
-	$options['bg_color_opacity'] = themeblvd_get_option('top_bg_color_opacity');
+		if ( ! empty( $styles['general'] ) ) {
 
-	$styles = themeblvd_get_display_inline_style( $options, 'external' );
+			$print .= ".header-top {\n";
 
-	if ( ! empty( $styles['general'] ) ) {
+			foreach ( $styles['general'] as $prop => $value ) {
+				$prop = str_replace('-2', '', $prop);
+				$print .= sprintf("\t%s: %s;\n", $prop, $value);
+			}
 
-		$print .= ".header-top {\n";
+			if ( themeblvd_get_option('top_bg_color_brightness') == 'dark' ) {
+				$print .= "\tcolor: #ffffff;\n";
+				$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+			} else {
+				$print .= "\tcolor: #666666;\n";
+			}
 
-		foreach ( $styles['general'] as $prop => $value ) {
-			$prop = str_replace('-2', '', $prop);
-			$print .= sprintf("\t%s: %s;\n", $prop, $value);
+			$print .= "}\n";
+
+			$print .= ".tb-search-popup .search-popup {\n";
+			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
+			$print .= "}\n";
+
+			$print .= ".tb-search-popup.bottom.left .search-popup > .arrow:after,\n";
+			$print .= ".tb-search-popup.bottom.right .search-popup > .arrow:after {\n";
+			$print .= sprintf("\tborder-bottom-color: %s;\n", $options['bg_color']);
+			$print .= "}\n";
+
+			$print .= ".tb-search-popup.top.left .search-popup > .arrow:after,\n";
+			$print .= ".tb-search-popup.top.right .search-popup > .arrow:after {\n";
+			$print .= sprintf("\tborder-top-color: %s;\n", $options['bg_color']);
+			$print .= "}\n";
+
 		}
-
-		if ( themeblvd_get_option('top_bg_color_brightness') == 'dark' ) {
-			$print .= "\tcolor: #ffffff;\n";
-			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
-		} else {
-			$print .= "\tcolor: #666666;\n";
-		}
-
-		$print .= "}\n";
-
-		$print .= ".tb-search-popup .search-popup {\n";
-		$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
-		$print .= "}\n";
-
-		$print .= ".tb-search-popup.bottom.left .search-popup > .arrow:after,\n";
-		$print .= ".tb-search-popup.bottom.right .search-popup > .arrow:after {\n";
-		$print .= sprintf("\tborder-bottom-color: %s;\n", $options['bg_color']);
-		$print .= "}\n";
-
-		$print .= ".tb-search-popup.top.left .search-popup > .arrow:after,\n";
-		$print .= ".tb-search-popup.top.right .search-popup > .arrow:after {\n";
-		$print .= sprintf("\tborder-top-color: %s;\n", $options['bg_color']);
-		$print .= "}\n";
 
 	}
 
@@ -1606,125 +1610,130 @@ function jumpstart_su_css() {
 	// Primary navigation
 	$options = array();
 
-	$options['bg_type'] = themeblvd_get_option('menu_bg_type');
-	$options['bg_color'] = themeblvd_get_option('menu_bg_color');
-	$options['bg_gradient'] = themeblvd_get_option('menu_bg_gradient');
-	$options['bg_color_brightness'] = themeblvd_get_option('menu_bg_color_brightness');
-
-	$options['hover_bg_color'] = themeblvd_get_option('menu_hover_bg_color');
-	$options['hover_bg_color_opacity'] = themeblvd_get_option('menu_hover_bg_color_opacity');
-	$options['hover_bg_color_brightness'] = themeblvd_get_option('menu_hover_bg_color_brightness');
-
 	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
 	$options['sub_bg_color_brightness'] = themeblvd_get_option('menu_sub_bg_color_brightness');
 
-	$options['text_bold'] = themeblvd_get_option('menu_text_bold');
-	$options['text_shadow'] = themeblvd_get_option('menu_text_shadow');
+	if ( ! themeblvd_config('suck_up') ) {
 
-	$options['apply_border_top'] = themeblvd_get_option('menu_apply_border_top');
-	$options['border_top_color'] = themeblvd_get_option('menu_border_top_color');
-	$options['border_top_width'] = themeblvd_get_option('menu_border_top_width');
+		$options['bg_type'] = themeblvd_get_option('menu_bg_type');
+		$options['bg_color'] = themeblvd_get_option('menu_bg_color');
+		$options['bg_gradient'] = themeblvd_get_option('menu_bg_gradient');
+		$options['bg_color_brightness'] = themeblvd_get_option('menu_bg_color_brightness');
 
-	$options['apply_border_bottom'] = themeblvd_get_option('menu_apply_border_bottom');
-	$options['border_bottom_color'] = themeblvd_get_option('menu_border_bottom_color');
-	$options['border_bottom_width'] = themeblvd_get_option('menu_border_bottom_width');
+		$options['hover_bg_color'] = themeblvd_get_option('menu_hover_bg_color');
+		$options['hover_bg_color_opacity'] = themeblvd_get_option('menu_hover_bg_color_opacity');
+		$options['hover_bg_color_brightness'] = themeblvd_get_option('menu_hover_bg_color_brightness');
 
-	$print .= ".header-nav {\n";
+		$options['text_bold'] = themeblvd_get_option('menu_text_bold');
+		$options['text_shadow'] = themeblvd_get_option('menu_text_shadow');
 
-	if ( $options['bg_type'] == 'gradient' ) {
-		$print .= sprintf("\tbackground-color: %s;\n", $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-	} else {
-		$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
-	}
+		$options['apply_border_top'] = themeblvd_get_option('menu_apply_border_top');
+		$options['border_top_color'] = themeblvd_get_option('menu_border_top_color');
+		$options['border_top_width'] = themeblvd_get_option('menu_border_top_width');
 
-	if ( $options['bg_type'] == 'glassy' ) {
-		$print .= sprintf("\tbackground-image: url(%s);\n", themeblvd_get_base_uri('superuser').'/images/menu-glassy.png');
-	} else if ( $options['bg_type'] == 'textured' ) {
-		$print .= sprintf("\tbackground-image: url(%s);\n", themeblvd_get_base_uri('superuser').'/images/menu-textured.png');
-		$print .= "\tbackground-position: 0 0;\n";
-		$print .= "\tbackground-repeat: repeat;\n";
-		$print .= "\tbackground-size: 72px 56px;\n";
-	}
+		$options['apply_border_bottom'] = themeblvd_get_option('menu_apply_border_bottom');
+		$options['border_bottom_color'] = themeblvd_get_option('menu_border_bottom_color');
+		$options['border_bottom_width'] = themeblvd_get_option('menu_border_bottom_width');
 
-	if ( $options['apply_border_top'] ) {
-		$print .= sprintf("\tborder-top: %s solid %s;\n", $options['border_top_width'], $options['border_top_color'] );
-	}
+		$print .= ".header-nav {\n";
 
-	if ( $options['apply_border_top'] ) {
-		$print .= sprintf("\tborder-bottom: %s solid %s;\n", $options['border_bottom_width'], $options['border_bottom_color'] );
-	}
+		if ( $options['bg_type'] == 'gradient' ) {
+			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+		} else {
+			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
+		}
 
-	$print .= "}\n";
+		if ( $options['bg_type'] == 'glassy' ) {
+			$print .= sprintf("\tbackground-image: url(%s);\n", themeblvd_get_base_uri('superuser').'/images/menu-glassy.png');
+		} else if ( $options['bg_type'] == 'textured' ) {
+			$print .= sprintf("\tbackground-image: url(%s);\n", themeblvd_get_base_uri('superuser').'/images/menu-textured.png');
+			$print .= "\tbackground-position: 0 0;\n";
+			$print .= "\tbackground-repeat: repeat;\n";
+			$print .= "\tbackground-size: 72px 56px;\n";
+		}
 
-	if ( $options['bg_color_brightness'] == 'light' || $options['text_bold'] || $options['text_shadow'] ) {
+		if ( $options['apply_border_top'] ) {
+			$print .= sprintf("\tborder-top: %s solid %s;\n", $options['border_top_width'], $options['border_top_color'] );
+		}
 
-		$print .= ".tb-primary-menu > li > .menu-btn {\n";
+		if ( $options['apply_border_top'] ) {
+			$print .= sprintf("\tborder-bottom: %s solid %s;\n", $options['border_bottom_width'], $options['border_bottom_color'] );
+		}
 
-		if ( $options['bg_color_brightness'] == 'light' ) {
+		$print .= "}\n";
+
+		if ( $options['bg_color_brightness'] == 'light' || $options['text_bold'] || $options['text_shadow'] ) {
+
+			$print .= ".tb-primary-menu > li > .menu-btn {\n";
+
+			if ( $options['bg_color_brightness'] == 'light' ) {
+				$print .= "\tcolor: #333333;\n";
+			}
+
+			if ( $options['text_bold'] ) {
+				$print .= "\tfont-weight: bold;\n";
+			}
+
+			if ( $options['text_shadow'] ) {
+				$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+			}
+
+			$print .= "}\n";
+
+		}
+
+		$print .= ".tb-primary-menu > li > a:hover {\n";
+
+		$print .= sprintf("\tbackground-color: %s;\n", $options['hover_bg_color'] );
+		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($options['hover_bg_color'], $options['hover_bg_color_opacity']) );
+
+		if ( $options['hover_bg_color_brightness'] == 'light' ) {
 			$print .= "\tcolor: #333333;\n";
 		}
 
-		if ( $options['text_bold'] ) {
-			$print .= "\tfont-weight: bold;\n";
+		$print .= "}\n";
+
+
+		// Primary menu mobile toggle
+		$print .= ".btn-navbar {\n";
+
+		if ( $options['bg_type'] == 'gradient' ) {
+			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+		} else {
+			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
 		}
 
-		if ( $options['text_shadow'] ) {
-			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+		if ( $options['bg_color_brightness'] == 'light' ) {
+			$print .= "\tcolor: #333333 !important;\n";
+		}
+
+		$print .= "}\n";
+
+		$print .= ".btn-navbar:hover {\n";
+
+		if ( $options['bg_type'] == 'gradient' ) {
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_gradient']['end'] ) );
+		} else {
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_color'] ) );
 		}
 
 		$print .= "}\n";
 
 	}
-
-	$print .= ".tb-primary-menu > li > a:hover {\n";
-
-	$print .= sprintf("\tbackground-color: %s;\n", $options['hover_bg_color'] );
-	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($options['hover_bg_color'], $options['hover_bg_color_opacity']) );
-
-	if ( $options['hover_bg_color_brightness'] == 'light' ) {
-		$print .= "\tcolor: #333333;\n";
-	}
-
-	$print .= "}\n";
-
-	// Primary menu mobile toggle
-	$print .= ".btn-navbar {\n";
-
-	if ( $options['bg_type'] == 'gradient' ) {
-		$print .= sprintf("\tbackground-color: %s;\n", $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-	} else {
-		$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
-	}
-
-	if ( $options['bg_color_brightness'] == 'light' ) {
-		$print .= "\tcolor: #333333 !important;\n";
-	}
-
-	$print .= "}\n";
-
-	$print .= ".btn-navbar:hover {\n";
-
-	if ( $options['bg_type'] == 'gradient' ) {
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_gradient']['end'] ) );
-	} else {
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_color'] ) );
-	}
-
-	$print .= "}\n";
 
 	// Primary nav sub menus
 	$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
