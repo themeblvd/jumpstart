@@ -1416,10 +1416,38 @@ function jumpstart_su_css() {
 
 	// Boxed Layout
 	if ( themeblvd_get_option('layout_style') == 'boxed' ) {
+
 		$print .= ".js-boxed #container {\n";
 		$print .= sprintf( "\tbox-shadow: 0 0 %s %s;\n", themeblvd_get_option('layout_shadow_size'), themeblvd_get_rgb( '#000000', themeblvd_get_option('layout_shadow_opacity') ) );
 		$print .= sprintf( "\tborder: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
 		$print .= "}\n";
+
+		$border = intval(themeblvd_get_option('layout_border_width'));
+
+		if ( $border > 0 ) {
+
+			$print .= ".js-boxed .tb-sticky-menu {\n";
+
+			$width = 1170 - ( 2 * $border );
+
+			$print .= sprintf( "\tmargin-left: -%spx;\n", $width/2);
+			$print .= sprintf( "\tmax-width: %spx;\n", $width);
+
+			$print .= "}\n";
+
+			$print .= "@media (max-width: 1200px) {\n";
+
+			$print .= "\t.js-boxed .tb-sticky-menu {\n";
+
+			$width = 960 - ( 2 * $border );
+
+			$print .= sprintf( "\t\tmargin-left: -%spx;\n", $width/2);
+			$print .= sprintf( "\t\tmax-width: %spx;\n", $width);
+
+			$print .= "\t}\n";
+			$print .= "}\n";
+
+		}
 	}
 
 	// Header background (entire header, behind top bar and main menu)
