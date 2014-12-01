@@ -1269,6 +1269,19 @@ function jumpstart_su_body_class($class) {
 add_filter('body_class', 'jumpstart_su_body_class');
 
 /**
+ * Include Google fonts, if needed
+ *
+ * @since 2.0.0
+ */
+function jumpstart_ent_include_fonts() {
+	themeblvd_include_google_fonts(
+		themeblvd_get_option('font_body'),
+		themeblvd_get_option('font_header')
+	);
+}
+add_action( 'wp_head', 'jumpstart_ent_include_fonts', 5 );
+
+/**
  * Enqueue any CSS
  *
  * @since 2.0.0
