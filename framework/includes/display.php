@@ -50,7 +50,7 @@ function themeblvd_header_top_default() {
 				<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
 					<li><?php themeblvd_search_popup(); ?></li>
 				<?php endif; ?>
-				<li><?php themeblvd_contact_bar(); ?></li>
+				<li><?php themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') ); ?></li>
 			</ul>
 
 		</div><!-- .wrap (end) -->

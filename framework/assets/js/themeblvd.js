@@ -97,7 +97,7 @@ jQuery(document).ready(function($) {
 
 		$header.find('.tb-search').clone().addClass('mini').appendTo( $side_holder );
 		$primary_menu.clone().appendTo( $side_holder );
-		$header.find('.tb-social-icons:first-child').clone().appendTo( $side_holder );
+		$body.find('.tb-social-icons.to-mobile').clone().appendTo( $side_holder );
 
 		// Adjust menu classes
 		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
