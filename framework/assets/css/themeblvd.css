@@ -6488,7 +6488,7 @@ blockquote small {
 	position: absolute;
 	width: 290px;
 	height: 55px;
-	z-index: 10;
+	z-index: 50;
 }
 /* @noflip */
 .tb-search-popup.bottom.left .search-popup {
