@@ -121,6 +121,8 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed #container {
 	background: #ffffff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	border: 1px solid #cccccc;
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1170px;
