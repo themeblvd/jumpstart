@@ -936,7 +936,6 @@ function themeblvd_columns( $args, $columns = null ) {
 		return;
 	}
 
-
 	// Column Margins
 	//
 	// Problem: By default with Bootstrap, a row of columns
