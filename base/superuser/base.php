@@ -1866,6 +1866,7 @@ function jumpstart_su_header_class( $output, $class ) {
 		'bg_type'						=> themeblvd_get_option('header_bg_type'),
 		'apply_bg_shade'				=> themeblvd_get_option('header_apply_bg_shade'),
 		'apply_bg_texture_parallax'		=> themeblvd_get_option('header_apply_bg_texture_parallax'),
+		'bg_texture_parallax'			=> themeblvd_get_option('header_bg_texture_parallax'),
 		'bg_image'						=> themeblvd_get_option('header_bg_image'),
 		'bg_image_parallax'				=> themeblvd_get_option('header_bg_image_parallax'),
 		'bg_image_parallax_stretch'		=> themeblvd_get_option('header_bg_image_parallax_stretch'),
