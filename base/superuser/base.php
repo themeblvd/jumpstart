@@ -1115,15 +1115,15 @@ function jumpstart_su_options() {
 			),
 			'footer_link_color' => array(
 				'id' 		=> 'footer_link_color',
-				'name' 		=> __( 'Link Color', 'themeblvd' ),
-				'desc' 		=> __( 'Choose the color you\'d like applied to links.', 'themeblvd' ),
+				'name' 		=> __( 'Footer Link Color', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer.', 'themeblvd' ),
 				'std' 		=> '#428bca',
 				'type' 		=> 'color'
 			),
 			'footer_link_hover_color' => array(
 				'id' 		=> 'footer_link_hover_color',
-				'name' 		=> __( 'Link Hover Color', 'themeblvd' ),
-				'desc' 		=> __( 'Choose the color you\'d like applied to links when they are hovered over.', 'themeblvd' ),
+				'name' 		=> __( 'Footer Link Hover Color', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer when they are hovered over.', 'themeblvd' ),
 				'std' 		=> '#2a6496',
 				'type' 		=> 'color'
 			)
