@@ -27,7 +27,7 @@ Author URI: http://www.themeblvd.com
 .site-header.has-bg-shade > .wrap > .header-content,
 .site-header.has-bg-shade > .wrap > .header-nav {
 	position: relative;
-	z-index: 3;
+	z-index: 900; /* Help z-index drop down menus above elements below header */
 }
 
 /* BG slideshow */
@@ -47,7 +47,7 @@ Author URI: http://www.themeblvd.com
 .site-header.has-bg-slideshow > .wrap > .header-content,
 .site-header.has-bg-slideshow > .wrap > .header-nav {
 	position: relative;
-	z-index: 2;
+	z-index: 900; /* Help z-index drop down menus above elements below header */
 }
 
 /* Search Popup */
