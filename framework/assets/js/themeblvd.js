@@ -551,7 +551,7 @@ jQuery(document).ready(function($) {
 			});
 
 			// Custom slider controls
-			$slider_wrap.find('.tb-slider-arrows a').on('click', function(){
+			$slider_wrap.find('.tb-block-slider-inner > .tb-slider-arrows a').on('click', function(){
 
 				if ( $(this).hasClass('next') ) {
 					$slider.data('flexslider').flexslider('next');

@@ -13,6 +13,7 @@ Jump Start Changelog
 * Fixed "color" value of "typography" option type.
 * Fixed bug with not being able to apply background color opacity to display options for columns in the Columns element.
 * Various little fixes and enhancements to Super User theme base and selecting various options.
+* Fixed bug where controls of Gallery post slider moves entire outer post grid slider.
 * Fixed admin bar for logged-in user, viewing site on mobile.
 * Fixed fatal error with WooCommerce.
 
