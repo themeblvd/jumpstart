@@ -214,6 +214,11 @@ html,
 body {
 	padding: 0;
 }
+/* @noflip */
+body.rtl {
+	direction: rtl;
+	unicode-bidi: embed;
+}
 h1,
 h2,
 h3,
@@ -1444,6 +1449,10 @@ html[xmlns] .slides {
  * include js that eliminates this class on page load */
 .no-js .slides > li:first-child {
 	display: block;
+}
+/* @noflip */
+.rtl .flex-viewport {
+	direction: ltr;
 }
 
 /* Nivo Slider (v3.2) */
@@ -5045,8 +5054,12 @@ blockquote small {
 .element-simple_slider_popout .tb-simple-slider {
 	margin-bottom: 0;
 }
+.tb-simple-slider .carousel-indicators {
+	padding: 0;
+}
+/* @noflip */
 .tb-simple-slider .carousel-indicators li {
-	float: right;
+	float: left;
 	display: block;
 	margin: 1px 2px;
 }
@@ -5059,19 +5072,21 @@ blockquote small {
 .tb-simple-slider .carousel-control-wrap {
 	position: relative;
 }
+/* @noflip */
 .tb-simple-slider .tb-slider-arrows {
 	position: absolute;
 	top: 5px;
-	right: 4px;
+	left: 4px;
 }
 .tb-simple-slider .carousel-thumb-nav {
 	margin: 0;
 }
+/* @noflip */
 .tb-simple-slider .carousel-thumb-nav li {
 	cursor: pointer;
-	float: right;
+	float: left;
 	opacity: .5;
-	padding: 5px 0 0 5px;
+	padding: 5px 5px 0 0;
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
@@ -5132,7 +5147,7 @@ blockquote small {
 .tb-simple-slider.cover .item .image {
 	background-position: top center;
 	background-repeat: no-repeat;
-	background-size: 0% auto;
+	background-size: 100% auto;
 }
 .tb-simple-slider .carousel-inner > .item > img,
 .tb-simple-slider .carousel-inner > .item > a > img {

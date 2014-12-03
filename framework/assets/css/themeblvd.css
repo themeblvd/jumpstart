@@ -213,6 +213,11 @@ html,
 body {
 	padding: 0;
 }
+/* @noflip */
+body.rtl {
+	direction: rtl;
+	unicode-bidi: embed;
+}
 h1,
 h2,
 h3,
@@ -1443,6 +1448,10 @@ html[xmlns] .slides {
  * include js that eliminates this class on page load */
 .no-js .slides > li:first-child {
 	display: block;
+}
+/* @noflip */
+.rtl .flex-viewport {
+	direction: ltr;
 }
 
 /* Nivo Slider (v3.2) */
@@ -5044,6 +5053,10 @@ blockquote small {
 .element-simple_slider_popout .tb-simple-slider {
 	margin-bottom: 0;
 }
+.tb-simple-slider .carousel-indicators {
+	padding: 0;
+}
+/* @noflip */
 .tb-simple-slider .carousel-indicators li {
 	float: left;
 	display: block;
@@ -5058,6 +5071,7 @@ blockquote small {
 .tb-simple-slider .carousel-control-wrap {
 	position: relative;
 }
+/* @noflip */
 .tb-simple-slider .tb-slider-arrows {
 	position: absolute;
 	top: 5px;
@@ -5066,6 +5080,7 @@ blockquote small {
 .tb-simple-slider .carousel-thumb-nav {
 	margin: 0;
 }
+/* @noflip */
 .tb-simple-slider .carousel-thumb-nav li {
 	cursor: pointer;
 	float: left;
