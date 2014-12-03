@@ -134,9 +134,10 @@ class Theme_Blvd_Stylesheets_API {
 
 			);
 
-			if ( is_rtl() ) {
-				$this->framework_stylesheets['bootstrap']['src'] = TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css'; // Generated with CSSJanus
-			}
+			// @TODO
+			// if ( is_rtl() ) {
+			// 	$this->framework_stylesheets['bootstrap']['src'] = TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css'; // Generated with CSSJanus
+			// }
 
 			// FontAwesome
 			$this->framework_stylesheets['fontawesome'] = array(
@@ -171,9 +172,10 @@ class Theme_Blvd_Stylesheets_API {
 				'media'		=> 'all'
 			);
 
-			if ( is_rtl() ) {
-				$this->framework_stylesheets['themeblvd_grid']['src'] = TB_FRAMEWORK_URI.'/assets/css/grid-extended-rtl.min.css';  // Generated with CSSJanus
-			}
+			// @TODO
+			// if ( is_rtl() ) {
+			// 	$this->framework_stylesheets['themeblvd_grid']['src'] = TB_FRAMEWORK_URI.'/assets/css/grid-extended-rtl.min.css';  // Generated with CSSJanus
+			// }
 
 			$this->framework_stylesheets['themeblvd'] = array(
 				'handle'	=> 'themeblvd',
