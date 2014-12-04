@@ -898,6 +898,13 @@ function jumpstart_su_options() {
 				'desc'		=> '<strong>'.__('Text Shadow', 'themeblvd').'</strong>: '.__('Apply shadow to the text of the main menu.', 'themeblvd'),
 				'std'		=> 0,
 				'type'		=> 'checkbox'
+			),
+			'menu_divider' => array(
+				'id'		=> 'menu_divider',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Dividers', 'themeblvd').'</strong>: '.__('Add dividers between buttons of main menu.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox'
 			)
 		),
 		'menu_mobile' => array(
@@ -1174,7 +1181,7 @@ function jumpstart_su_options() {
 			'btn_corners' => array(
 				'id'		=> 'btn_corners',
 				'name'		=> __('General Button Corners', 'themeblvd'),
-				'desc'		=> __('Select the border radius of button corners.', 'themeblvd'),
+				'desc'		=> __('Set the border radius of button corners. Setting to <em>0px</em> will mean buttons corners are square.', 'themeblvd'),
 				'std'		=> '0px',
 				'type'		=> 'slide',
 				'options'	=> array(
@@ -1660,6 +1667,7 @@ function jumpstart_su_css() {
 	// Primary navigation
 	$options = array();
 
+	$options['divider'] = themeblvd_get_option('menu_divider');
 	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
 	$options['sub_bg_color_brightness'] = themeblvd_get_option('menu_sub_bg_color_brightness');
 
@@ -1713,7 +1721,7 @@ function jumpstart_su_css() {
 			$print .= sprintf("\tborder-top: %s solid %s;\n", $options['border_top_width'], $options['border_top_color'] );
 		}
 
-		if ( $options['apply_border_top'] ) {
+		if ( $options['apply_border_bottom'] ) {
 			$print .= sprintf("\tborder-bottom: %s solid %s;\n", $options['border_bottom_width'], $options['border_bottom_color'] );
 		}
 
@@ -1751,7 +1759,6 @@ function jumpstart_su_css() {
 
 		$print .= "}\n";
 
-
 		// Primary menu mobile toggle
 		$print .= ".btn-navbar {\n";
 
@@ -1782,6 +1789,36 @@ function jumpstart_su_css() {
 			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_color'] ) );
 		}
 
+		$print .= "}\n";
+
+	}
+
+	// Primary nav button dividers
+	if ( $options['divider'] ) {
+
+		if ( isset( $options['bg_color_brightness'] ) && $options['bg_color_brightness'] == 'light' ) {
+			$dark = 'rgba(165,165,165,.2)';
+			$light = 'rgba(255,255,255,.7)';
+		} else {
+			$dark = 'rgba(0,0,0,.3)';
+			$light = 'rgba(255,255,255,.1)';
+		}
+
+		$print .= ".header-nav .tb-primary-menu > li {\n";
+		$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
+		$print .= "}\n";
+		$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
+		$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
+		$print .= "}\n";
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+		$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
+		$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
+		$print .= "}\n";
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
+		$print .= "\tborder-color: transparent;\n";
+		$print .= "}\n";
+		$print .= ".header-nav .tb-primary-menu > li > ul.non-mega-sub-menu {\n";
+		$print .= "\tmargin-left: -1px;\n";
 		$print .= "}\n";
 
 	}
