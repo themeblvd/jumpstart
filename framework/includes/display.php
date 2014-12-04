@@ -47,10 +47,17 @@ function themeblvd_header_top_default() {
 			<?php endif; ?>
 
 			<ul class="header-top-nav list-unstyled">
+
 				<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
 					<li><?php themeblvd_search_popup(); ?></li>
 				<?php endif; ?>
+
 				<li><?php themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') ); ?></li>
+
+				<?php if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) : ?>
+					<li><?php do_action('icl_language_selector'); ?></li>
+				<?php endif; ?>
+
 			</ul>
 
 		</div><!-- .wrap (end) -->

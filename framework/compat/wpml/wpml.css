@@ -1,6 +1,7 @@
 /* Language Switcher */
 #lang_sel {
 	height: auto;
+	z-index: 999;
 }
 #lang_sel ul ul {
 	border: none;
