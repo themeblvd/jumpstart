@@ -606,7 +606,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					$output .= '<div class="jquery-ui-slider-wrap">';
 
-					$sizes = themeblvd_recognized_font_sizes();
+					if ( ! empty($value['sizes']) ) {
+						$sizes = $value['sizes'];
+					} else {
+						$sizes = themeblvd_recognized_font_sizes();
+					}
+
 					$options = array();
 					$options['min'] = intval($sizes[0]);
 					$options['max']	= intval(end($sizes));
