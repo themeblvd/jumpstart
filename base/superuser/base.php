@@ -22,7 +22,7 @@ function jumpstart_su_options() {
 	$options = apply_filters('jumpstart_su_options', array(
 		'general' => array(
 			'sub_group_start_1' => array(
-				'id'		=> 'sub_group_start_xxx',
+				'id'		=> 'sub_group_start_1',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -885,6 +885,7 @@ function jumpstart_su_options() {
 				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end'
 			),
+			/*
 			'menu_text_bold' => array(
 				'id'		=> 'menu_text_bold',
 				'name'		=> null,
@@ -892,6 +893,7 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
+			*/
 			'menu_text_shadow' => array(
 				'id'		=> 'menu_text_shadow',
 				'name'		=> null,
@@ -905,6 +907,33 @@ function jumpstart_su_options() {
 				'desc'		=> '<strong>'.__('Dividers', 'themeblvd').'</strong>: '.__('Add dividers between buttons of main menu.', 'themeblvd'),
 				'std'		=> 0,
 				'type'		=> 'checkbox'
+			),
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide'
+			),
+			'menu_apply_font' => array(
+				'id'		=> 'menu_apply_font',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Font', 'themeblvd').'</strong>: '.__('Apply custom font to main menu.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'font_menu' => array(
+				'id' 		=> 'font_menu',
+				'name' 		=> __( 'Main Menu Font', 'themeblvd' ),
+				'desc' 		=> __( 'This font applies to the top level items of the main menu.', 'themeblvd' ),
+				'std' 		=> array('size' => '14px', 'face' => 'helvetica', 'color' => '#ffffff', 'google' => '', 'style' => 'thin'),
+				'atts'		=> array('size', 'face', 'style', 'color'),
+				'type' 		=> 'typography',
+				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'),
+				'class'		=> 'hide receiver'
+			),
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
+				'type' 		=> 'subgroup_end',
 			)
 		),
 		'menu_mobile' => array(
@@ -942,8 +971,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_17' => array(
-				'id'		=> 'sub_group_start_17',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1008,12 +1037,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_17' => array(
-				'id'		=> 'sub_group_end_17',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1046,12 +1075,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1084,8 +1113,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1283,7 +1312,8 @@ add_filter('body_class', 'jumpstart_su_body_class');
 function jumpstart_ent_include_fonts() {
 	themeblvd_include_google_fonts(
 		themeblvd_get_option('font_body'),
-		themeblvd_get_option('font_header')
+		themeblvd_get_option('font_header'),
+		themeblvd_get_option('font_menu')
 	);
 }
 add_action( 'wp_head', 'jumpstart_ent_include_fonts', 5 );
@@ -1682,8 +1712,9 @@ function jumpstart_su_css() {
 		$options['hover_bg_color_opacity'] = themeblvd_get_option('menu_hover_bg_color_opacity');
 		$options['hover_bg_color_brightness'] = themeblvd_get_option('menu_hover_bg_color_brightness');
 
-		$options['text_bold'] = themeblvd_get_option('menu_text_bold');
 		$options['text_shadow'] = themeblvd_get_option('menu_text_shadow');
+		$options['apply_font'] = themeblvd_get_option('menu_apply_font');
+		$options['font'] = themeblvd_get_option('font_menu');
 
 		$options['apply_border_top'] = themeblvd_get_option('menu_apply_border_top');
 		$options['border_top_color'] = themeblvd_get_option('menu_border_top_color');
@@ -1727,17 +1758,30 @@ function jumpstart_su_css() {
 
 		$print .= "}\n";
 
-		if ( $options['bg_color_brightness'] == 'light' || $options['text_bold'] || $options['text_shadow'] ) {
+		if ( $options['bg_color_brightness'] == 'light' || $options['apply_font'] || $options['text_shadow'] ) {
 
-			$print .= ".tb-primary-menu > li > .menu-btn,\n";
+			$print .= ".tb-primary-menu > li > .menu-btn {\n";
+
+			if ( $options['apply_font'] && $options['font'] ) {
+				$print .= sprintf("\tcolor: %s;\n", $options['font']['color'] );
+				$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
+				$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
+				$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
+				$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
+			} else if ( $options['bg_color_brightness'] == 'light' ) {
+				$print .= "\tcolor: #333333;\n";
+			}
+
+			if ( $options['text_shadow'] ) {
+				$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+			}
+
+			$print .= "}\n";
+
 			$print .= ".tb-sticky-menu .tb-search-popup .search-trigger {\n";
 
 			if ( $options['bg_color_brightness'] == 'light' ) {
 				$print .= "\tcolor: #333333;\n";
-			}
-
-			if ( $options['text_bold'] ) {
-				$print .= "\tfont-weight: bold;\n";
 			}
 
 			if ( $options['text_shadow'] ) {
