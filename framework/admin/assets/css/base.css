@@ -19,6 +19,9 @@
 		margin: 0 3% 3% 0;
 		width: 22.7%;
 	}
+	#themeblvd-base-admin .theme-base-col:nth-child(3n) {
+		margin-right: 3%;
+	}
 	#themeblvd-base-admin .theme-base-col:nth-child(4n) {
 		margin-right: 0;
 	}
@@ -28,7 +31,7 @@
 		margin: 0 4% 4% 0;
 		width: 47.5%;
 	}
-	#themeblvd-base-admin .theme-base-col:nth-child(4n) {
+	#themeblvd-base-admin .theme-base-col:nth-child(3n) {
 		margin-right: 4%;
 	}
 	#themeblvd-base-admin .theme-base-col:nth-child(even) {
@@ -38,7 +41,7 @@
 @media (max-width: 480px) {
 	#themeblvd-base-admin .theme-base-col {
 		float: none;
-		margin: 4% 0;
+		margin: 4% 0 !important;
 		width: auto;
 	}
 }
