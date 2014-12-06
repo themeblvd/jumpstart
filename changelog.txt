@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.0-beta2
 -----
 
+* Added two new theme bases; see *Appearance > Theme Base*.
 * Added editor stylesheet for editing posts and pages.
 * Added unique HTML ID's to sections of custom layouts like `page-slug-section-1`.
 * Added system to check if saved theme options match selected theme base.

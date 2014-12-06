@@ -108,14 +108,12 @@ function jumpstart_bases() {
 			),
 			'entrepreneur' => array(
 				'name'		=> 'Entrepreneur',
-				'desc'		=> 'This base will give you the perfect starting point for a business-oriented website for you or your clients.'
+				'desc'		=> 'For the modern entrepreneur, this base embodies the current design trends of the web industry.'
+			),
+			'executive' => array(
+				'name'		=> 'Executive',
+				'desc'		=> 'For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.'
 			)
-			/*
-			'artist' => array(
-				'name'		=> 'Artist',
-				'desc'		=> 'This base will give you the perfect starting point for a business-oriented website for you or your clients.'
-			)
-			*/
 		));
 
 		$admin = new Theme_Blvd_Bases( $bases, 'dev' ); // class included with is_admin()
