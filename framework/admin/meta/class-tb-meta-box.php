@@ -204,7 +204,7 @@ class Theme_Blvd_Meta_Box {
 
 					delete_post_meta( $post_id, $id );
 
-				} else {
+				} else if ( isset($input[$id]) ) {
 
 					$input[$id] = apply_filters( 'themeblvd_sanitize_'.$option['type'], $input[$id], $option );
 
