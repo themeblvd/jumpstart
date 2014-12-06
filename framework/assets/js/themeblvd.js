@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 			$el.removeClass('open fa-'+$el.data('close'));
 			$el.addClass('fa-'+$el.data('open'));
 		} else {
-			$el.next('.sub-menu,  .sf-mega').slideDown(100);
+			$el.next('.sub-menu, .sf-mega').slideDown(100);
 			$el.removeClass('fa-'+$el.data('open'));
 			$el.addClass('open fa-'+$el.data('close'));
 		}

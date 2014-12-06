@@ -219,7 +219,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 
 	// Indicators for top-level toggle menus
 	if ( in_array( 'menu-item-has-children', $item->classes ) && $depth < 1 ) {
-		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->menu_id == 'primary-menu' && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
+		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->theme_location == 'primary' && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
 			$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
 			$icon_close = apply_filters( 'themeblvd_side_menu_icon_close', 'minus' );
 			$icon = apply_filters( 'themeblvd_side_menu_icon', sprintf( '<i class="tb-side-menu-toggle fa fa-%1$s" data-open="%1$s" data-close="%2$s"></i>', $icon_open, $icon_close ) );
@@ -363,7 +363,6 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 		case 'primary' :
 			$args = array(
 				'walker'			=> new ThemeBlvd_Main_Menu_Walker(),
-				'menu_id'			=> 'primary-menu',
 				'menu_class'		=> 'tb-primary-menu tb-to-side-menu sf-menu sf-menu-with-fontawesome clearfix',
 				'container'			=> '',
 				'theme_location'	=> 'primary',
@@ -373,7 +372,6 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 
 		case 'footer' :
 			$args = array(
-				'menu_id' 			=> 'footer-menu',
 				'menu_class'		=> 'list-inline',
 				'container' 		=> '',
 				'fallback_cb' 		=> false,

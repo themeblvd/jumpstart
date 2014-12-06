@@ -152,9 +152,12 @@ class Theme_Blvd_Compat_WPML {
 			}
 
 			$items .= $language_name;
-			$items .= '<i class="sf-sub-indicator fa fa-caret-down"></i>';
 
-			if( isset($args->link_after) ) {
+			if ( ! empty($languages) && count($languages) > 1 ) {
+				$items .= '<i class="sf-sub-indicator fa fa-caret-down"></i>';
+			}
+
+			if ( isset($args->link_after) ) {
                 $items .= $args->link_after;
             }
 
@@ -162,6 +165,12 @@ class Theme_Blvd_Compat_WPML {
 
             if( isset($args->after) ) {
                 $items .= $args->after;
+            }
+
+            if ( ! empty($languages) && count($languages) > 1 ) {
+            	$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
+				$icon_close = apply_filters( 'themeblvd_side_menu_icon_close', 'minus' );
+				$items .= apply_filters( 'themeblvd_side_menu_icon', sprintf( '<i class="tb-side-menu-toggle fa fa-%1$s" data-open="%1$s" data-close="%2$s"></i>', $icon_open, $icon_close ) );
             }
 
             unset($languages[ $current_language ]);
@@ -204,7 +213,7 @@ class Theme_Blvd_Compat_WPML {
                     $sub_items .= '</li>';
 
                 }
-				if( $sub_items && $menu_is_vertical ) {
+				if ( $sub_items && $menu_is_vertical ) {
 					$sub_items = '<ul class="sub-menu submenu-languages non-mega-sub-menu">' . $sub_items . '</ul>';
 				}
             }

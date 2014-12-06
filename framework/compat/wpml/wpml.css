@@ -52,6 +52,17 @@
 	position: absolute;
 	right: 8px;
 }
+.site-header.transparent #lang_sel a {
+	background: rgba(0,0,0,.2) !important;
+	border-color: rgba(0,0,0,.5) !important;
+	color: #ffffff !important;
+}
+.site-header.transparent #lang_sel a:hover {
+	background: rgba(0,0,0,.5) !important;
+}
+.site-header.transparent #lang_sel img.iclflag {
+	box-shadow: 0 0 5px rgba(0,0,0,.7);
+}
 
 /* Main Menu Switchter */
 .menu-item-language img.iclflag {

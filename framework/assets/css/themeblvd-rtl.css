@@ -345,7 +345,7 @@ code.block {
 }
 
 /* Main Navigation */
-#primary-menu ul {
+.tb-primary-menu ul {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
@@ -831,8 +831,8 @@ body.admin-bar .tb-sticky-menu {
 .sf-menu .fa {
 	margin-left: 5px;
 }
-#primary-menu > li > a .sf-sub-indicator,
-#primary-menu > [class^="menu-icon-"] > a .fa {
+.tb-primary-menu > li > a .sf-sub-indicator,
+.tb-primary-menu > [class^="menu-icon-"] > a .fa {
 	line-height: 1;
 }
 
