@@ -16,6 +16,7 @@ Jump Start Changelog
 * Various little fixes and enhancements to Super User theme base and selecting various options.
 * Fixed bug where controls of Gallery post slider moves entire outer post grid slider.
 * Fixed admin bar for logged-in user, viewing site on mobile.
+* Fixed "Column Height" force of Columns element, in Firefox.
 * Fixed fatal error with WooCommerce.
 * Little fixes to WPML compatibility.
 

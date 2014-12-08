@@ -516,6 +516,7 @@
     display: table;
     padding-right: 0;
     padding-left: 0;
+    width: 100%;
 }
 .row-xs-height {
     display: table-row;
@@ -529,6 +530,7 @@
         display: table;
         padding-right: 0;
         padding-left: 0;
+        width: 100%;
     }
     .row-sm-height {
         display: table-row;
@@ -543,6 +545,7 @@
         display: table;
         padding-right: 0;
         padding-left: 0;
+        width: 100%;
     }
     .row-md-height {
         display: table-row;
@@ -557,6 +560,7 @@
         display: table;
         padding-right: 0;
         padding-left: 0;
+        width: 100%;
     }
     .row-lg-height {
         display: table-row;
