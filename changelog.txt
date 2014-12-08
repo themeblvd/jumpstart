@@ -69,6 +69,12 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
+1.2.5
+-----
+
+* Important security fix.
+* Updated user documentation included in theme package, including new videos for Layout Builder plugin v2 update.
+
 1.2.4
 -----
 
