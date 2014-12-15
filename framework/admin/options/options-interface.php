@@ -1287,7 +1287,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	}
 
 	// Optional closing div
-    if ( $close ) {
+    if ( $menu && $close ) {
     	$output .= '</div>';
     }
 

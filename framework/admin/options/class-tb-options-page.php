@@ -128,7 +128,6 @@ class Theme_Blvd_Options_Page {
 			'menu_slug'		=> '',
 			'icon'			=> '',
 			'form_action'	=> 'options.php',
-			'closer'		=> true, // Needs to be false if option page has no tabs
 			'export'		=> false,
 			'import'		=> false
 		);
@@ -396,7 +395,7 @@ class Theme_Blvd_Options_Page {
 		}
 
 	    // Setup options form
-		$return = themeblvd_option_fields( $this->id, $this->options, $settings, $this->args['closer'] );
+		$return = themeblvd_option_fields( $this->id, $this->options, $settings );
 
 		// Display any errors or update messages.
 		settings_errors( $this->id );
