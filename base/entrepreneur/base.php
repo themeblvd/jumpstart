@@ -47,7 +47,7 @@ function jumpstart_ent_options() {
 			),
 			'layout_style' => array(
 				'name' 		=> __( 'Site Layout Style', 'themeblvd' ),
-				'desc' 		=> __( 'Select whether you\'d like the layotu of the theme to be boxed or not.', 'themeblvd' ),
+				'desc' 		=> __( 'Select whether you\'d like the layout of the theme to be boxed or not.', 'themeblvd' ),
 				'id' 		=> 'layout_style',
 				'std' 		=> 'stretch',
 				'type' 		=> 'select',
@@ -448,15 +448,6 @@ function jumpstart_ent_options() {
 			)
 		),
 		'menu' => array(
-			/*
-			'menu_text_bold' => array(
-				'id'		=> 'menu_text_bold',
-				'name'		=> null,
-				'desc'		=> '<strong>'.__('Bold', 'themeblvd').'</strong>: '.__('Bold the text of the main menu.', 'themeblvd'),
-				'std'		=> 1,
-				'type'		=> 'checkbox'
-			),
-			*/
 			'menu_text_shadow' => array(
 				'id'		=> 'menu_text_shadow',
 				'name'		=> null,
