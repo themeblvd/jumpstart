@@ -276,7 +276,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 			$link = get_post_meta( $post->ID, '_tb_thumb_link', true );
 		}
 
-		if ( $link == 'inactive' || ! $link ) {
+		if ( $link == 'inactive' || $link == 'no' || ! $link ) {
 			$link = false;
 		}
 
