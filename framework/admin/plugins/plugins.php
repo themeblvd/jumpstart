@@ -61,6 +61,11 @@ function themeblvd_tgm_register() {
 			'name'		=> 'Theme Blvd Shortcodes',
 			'slug'		=> 'theme-blvd-shortcodes',
 			'required'	=> false
+		),
+		'portfolios' => array(
+			'name'		=> 'Portfolios',
+			'slug'		=> 'portfolios',
+			'required'	=> false
 		)
 	);
 	$plugins = apply_filters( 'themeblvd_plugins', $plugins );
