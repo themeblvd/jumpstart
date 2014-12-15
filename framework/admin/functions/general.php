@@ -212,37 +212,6 @@ function themeblvd_is_admin_module() {
 }
 
 /**
- * Dismiss an admin notice.
- *
- * Plugins can use this to dismiss any admin notices
- * by providing a link similar to the following, which
- * will store meta data for the current user.
- *
- * An admin notice could be setup something like this:
- *
- * function my_admin_notice() {
- *		global $current_user;
- * 		if ( ! get_user_meta( $current_user->ID, 'example_message' ) ) {
- * 			echo '<div class="updated">';
- *			echo '<p>Some message to the user.</p>';
- * 			echo '<p><a href="?tb_nag_ignore=example_message">Dismiss this notice</a></p>';
- *			echo '</div>';
- * 		}
- * }
- * add_action( 'admin_notices', 'my_admin_notice' );
- *
- * @since 2.2.1
- */
-function themeblvd_disable_nag() {
-
-	global $current_user;
-
-    if ( isset( $_GET['tb_nag_ignore'] ) ) {
-		add_user_meta( $current_user->ID, $_GET['tb_nag_ignore'], 'true', true );
-	}
-}
-
-/**
  * Clear set of options. Hooked to "admin_init".
  *
  * @since 2.3.0

@@ -170,8 +170,15 @@ class Theme_Blvd_Plugin_Management {
 
 		global $current_user;
 
-	    if ( isset( $_GET['tb_nag_ignore'] ) ) {
-			add_user_meta( $current_user->ID, $_GET['tb_nag_ignore'], 'true', true );
+		if ( isset($_GET['nag-ignore']) ) {
+
+			if ( strpos($_GET['nag-ignore'], 'tb-nag-') !== 0 ) { // meta key must start with "tb-nag-"
+				return;
+			}
+
+			if ( isset($_GET['security']) && wp_verify_nonce( $_GET['security'], 'themeblvd-plugin-nag' ) ) {
+				add_user_meta( $current_user->ID, $_GET['nag-ignore'], 'true', true );
+			}
 		}
 	}
 
@@ -186,17 +193,19 @@ class Theme_Blvd_Plugin_Management {
 		global $current_user;
 
 		// Handle dismiss
-		if ( get_user_meta( $current_user->ID, $this->key ) ) {
+		if ( get_user_meta( $current_user->ID, 'tb-nag-'.$this->key ) ) {
 			return;
 		}
 
-		$disable_url = admin_url( $pagenow );
+		$url = admin_url( $pagenow );
 
 		if ( ! empty( $_SERVER['QUERY_STRING'] ) ) {
-			$disable_url .= sprintf( '?%s&tb_nag_ignore=%s', $_SERVER['QUERY_STRING'], $this->key );
+			$url .= sprintf( '?%s&nag-ignore=%s', $_SERVER['QUERY_STRING'], 'tb-nag-'.$this->key );
 		} else {
-			$disable_url .= sprintf( '?tb_nag_ignore=%s', $this->key );
+			$url .= sprintf( '?nag-ignore=%s', 'tb-nag-'.$this->key );
 		}
+
+		$url .= sprintf( '&security=%s', wp_create_nonce('themeblvd-plugin-nag') );
 
 		echo '<div class="error">';
 		echo '<p>'.sprintf(__('For everything to work properly with your current version of the %s theme, you must update the following plugins.', 'themeblvd'), '<em>'.$this->theme->get('Name').'</em>').'</p>';
@@ -207,7 +216,7 @@ class Theme_Blvd_Plugin_Management {
 		}
 
 		echo '</ol>';
-		echo '<p class="row-actions visible"><a href="'.admin_url('plugins.php').'">'.__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.$disable_url.'">'.__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
+		echo '<p class="row-actions visible"><a href="'.admin_url('plugins.php').'">'.__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.$url.'">'.__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
 		echo '</div>';
 	}
 
