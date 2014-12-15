@@ -215,17 +215,29 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 						// Default
 						$default = '';
+
 						if ( isset( $theme_settings[$option['id']] ) ) {
 							$default = $theme_settings[$option['id']];
+						} else if ( isset( $option['std'] ) ) {
+							$default = $option['std'];
+						}
+
+						// CSS classes
+						$class = '';
+
+						if ( isset( $option['class'] ) ) {
+							$class = $option['class'];
 						}
 
 						// Transport
 						$transport = '';
+
 						if ( isset( $option['transport'] ) ) {
 							$transport = $option['transport'];
 						}
 
 						$priority = '';
+
 						if ( isset( $option['priority'] ) ) {
 							$priority = $option['priority'];
 						}
@@ -264,14 +276,44 @@ function themeblvd_customizer_init( $wp_customize ) {
 
 							// Select box
 							case 'select' :
-								$wp_customize->add_control( $option['id'], array(
+
+								if ( ! $default ) {
+									$default = $option['std']; // select option can't be empty
+								}
+
+								$choices = array();
+
+								if ( isset( $option['select'] ) ) {
+
+									switch ( $option['select'] ) {
+										case 'textures' :
+											$textures = themeblvd_get_select('textures');
+
+											foreach ( $textures as $group ) {
+												foreach ( $group['options'] as $key => $val ) {
+													$choices[$key] = $val;
+												}
+											}
+
+										// @TODO Maybe add more later
+									}
+
+								} else if (isset($option['options']) ) {
+
+									$choices = $option['options'];
+
+								}
+
+								$wp_customize->add_control( new WP_Customize_ThemeBlvd_Select( $wp_customize, $option['id'], array(
 									'priority'		=> $priority,
 									'settings'		=> $option_name.'['.$option['id'].']',
-									'label'			=> $option['name'],
-									'section'		=> $section['id'],
+									'label'   		=> $option['name'],
+									'section' 		=> $section['id'],
 									'type'			=> 'select',
-									'choices'		=> $option['options']
-								) );
+									'default'		=> $default,
+									'choices'		=> $choices,
+									'class'			=> $class
+								) ) );
 								break;
 
 							// Radio set
@@ -295,6 +337,39 @@ function themeblvd_customizer_init( $wp_customize ) {
 									'section'		=> $section['id']
 								) ) );
 								break;
+
+							// Start inner section
+							case 'subgroup_start' :
+								/* // ... @TODO
+								$wp_customize->add_setting( $option_name.'['.$option['id'].']', array(
+									'type'       		=> 'option',
+									'capability' 		=> themeblvd_admin_module_cap( 'options' ),
+									'sanitize_callback'	=> 'themeblvd_sanitize_text' // no data actually passed
+								) );
+								$wp_customize->add_control( new WP_Customize_ThemeBlvd_Subgroup_Start( $wp_customize, $option['id'], array(
+									'priority'		=> $priority,
+									'settings'		=> $option_name.'['.$option['id'].']',
+									'section'		=> $section['id'],
+									'class'			=> $class
+								) ) );
+								*/
+								break;
+
+							// Start inner section
+							case 'subgroup_end' :
+								/* // ... @TODO
+								$wp_customize->add_setting( $option_name.'['.$option['id'].']', array(
+									'type'       		=> 'option',
+									'capability' 		=> themeblvd_admin_module_cap( 'options' ),
+									'sanitize_callback'	=> 'themeblvd_sanitize_text' // no data actually passed
+								) );
+								$wp_customize->add_control( new WP_Customize_ThemeBlvd_Subgroup_End( $wp_customize, $option['id'], array(
+									'priority'		=> $priority,
+									'settings'		=> $option_name.'['.$option['id'].']',
+									'section'		=> $section['id']
+								) ) );
+								*/
+
 						}
 
 					}
@@ -357,11 +432,82 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			$this->json['statuses'] = $this->statuses;
 		}
 
-		public function render_content() {
+		protected function render_content() {
 			?>
 			<label>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<textarea <?php $this->link(); ?>><?php echo esc_attr( $this->value() ); ?></textarea>
+			</label>
+			<?php
+		}
+
+	}
+
+	/**
+	 * Add control for select.
+	 */
+	class WP_Customize_ThemeBlvd_Select extends WP_Customize_Control {
+
+		public $type = 'select';
+		public $default = '';
+		public $class = '';
+		public $statuses;
+
+		public function __construct( $manager, $id, $args = array() ) {
+
+			if ( isset( $args['default'] ) ) {
+				$this->default = $args['default'];
+			}
+
+			if ( isset( $args['class'] ) ) {
+				$this->class = $args['class'];
+			}
+
+			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
+
+			parent::__construct( $manager, $id, $args );
+		}
+
+		public function to_json() {
+			parent::to_json();
+			$this->json['statuses'] = $this->statuses;
+		}
+
+		protected function render() {
+			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
+			$class = 'customize-control customize-control-' . $this->type . ' ' . $this->class;
+
+			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
+				<?php $this->render_content(); ?>
+			</li><?php
+		}
+
+		protected function render_content() {
+
+			if ( empty( $this->choices ) ) {
+				return;
+			}
+
+			$current = $this->value();
+
+			if ( ! $current ) {
+				$current = $this->default;
+			}
+			?>
+			<label>
+				<?php if ( ! empty( $this->label ) ) : ?>
+					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+				<?php endif;
+				if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+
+				<select <?php $this->link(); ?>>
+					<?php
+					foreach ( $this->choices as $value => $label )
+						echo '<option value="' . esc_attr( $value ) . '"' . selected( $current, $value, false ) . '>' . $label . '</option>';
+					?>
+				</select>
 			</label>
 			<?php
 		}
@@ -395,7 +541,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			$this->json['statuses'] = $this->statuses;
 		}
 
-		public function render_content() {
+		protected function render_content() {
 			if ( empty( $this->choices ) ) {
 				return;
 			}
@@ -438,7 +584,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			$this->json['statuses'] = $this->statuses;
 		}
 
-		public function render_content() {
+		protected function render_content() {
 			?>
 			<label class="themeblvd-google-font">
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
@@ -464,7 +610,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			parent::__construct( $manager, $id, $args );
 		}
 
-		public function render_content() {
+		protected function render_content() {
 			?>
 			<div class="themeblvd-divider"></div>
 			<?php
@@ -472,161 +618,60 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 
 	}
 
-} // End if class_exists('WP_Customize_Control')
+	/**
+	 * Start section (for javascript show/hide options)
+	 * // ... @TODO
+	 */
+	class WP_Customize_ThemeBlvd_Subgroup_Start extends WP_Customize_Control {
 
-/**
- * Logo Customizer Preview
- *
- * Since the Javascript for the logo will get repeated in
- * many themes, its being placed here so it can be easily
- * placed in each theme that requires it.
- *
- * @since 2.1.0
- */
-if ( !function_exists( 'themeblvd_customizer_preview_logo' ) ) {
-	function themeblvd_customizer_preview_logo() {
+		public $type = 'subgroup_start';
+		public $class = '';
+		public $statuses;
 
-		// Global option name
-		$option_name = themeblvd_get_option_name();
+		public function __construct( $manager, $id, $args = array() ) {
 
-		// Setup for logo
-		$logo_options = themeblvd_get_option('logo');
-		$logo_atts = array(
-			'type' 				=> '',
-			'site_url'			=> home_url(),
-			'title'				=> get_bloginfo('name'),
-			'tagline'			=> get_bloginfo('description'),
-			'custom' 			=> '',
-			'custom_tagline' 	=> '',
-			'image' 			=> '',
-		);
-
-		foreach ( $logo_atts as $key => $value ) {
-			if ( isset($logo_options[$key]) ) {
-				$logo_atts[$key] = $logo_options[$key];
+			if ( isset( $args['class'] ) ) {
+				$this->class = $args['class'];
 			}
+
+			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
+
+			parent::__construct( $manager, $id, $args );
 		}
 
-		// Begin output
-		?>
-		// Logo atts object
-		Logo = <?php echo json_encode($logo_atts); ?>;
+		protected function render_content() {
+			?>
+			<div class="<?php echo $this->class; ?>">
+				<ul>
+			<?php
+		}
 
-		/* Logo - Type */
-		wp.customize('<?php echo $option_name; ?>[logo][type]',function( value ) {
-			value.bind(function(value) {
-				// Set global marker. This allows us to
-				// know the currently selected logo type
-				// from any other option.
-				Logo.type = value;
-
-				// Remove classes specific to type so we
-				// can add tehm again depending on new type.
-				$('#branding .header_logo').removeClass('header_logo_title header_logo_title_tagline header_logo_custom header_logo_image header_logo_has_tagline');
-
-				// Display markup depending on type of
-				// logo selected.
-				if ( value == 'title' )
-				{
-					$('#branding .header_logo').addClass('header_logo_title');
-					$('#branding .header_logo').html('<h1 class="tb-text-logo"><a href="'+Logo.site_url+'" title="'+Logo.title+'">'+Logo.title+'</a></h1>');
-				}
-				else if ( value == 'title_tagline' )
-				{
-					$('#branding .header_logo').addClass('header_logo_title_tagline');
-					$('#branding .header_logo').addClass('header_logo_has_tagline');
-					$('#branding .header_logo').html('<h1 class="tb-text-logo"><a href="'+Logo.site_url+'" title="'+Logo.title+'">'+Logo.title+'</a></h1><span class="tagline">'+Logo.tagline+'</span>');
-				}
-				else if ( value == 'custom' )
-				{
-					var html = '<h1 class="tb-text-logo"><a href="'+Logo.site_url+'" title="'+Logo.custom+'">'+Logo.custom+'</a></h1>';
-					if (Logo.custom_tagline)
-					{
-						$('#branding .header_logo').addClass('header_logo_has_tagline');
-						html = html+'<span class="tagline">'+Logo.custom_tagline+'</span>';
-					}
-					$('#branding .header_logo').addClass('header_logo_custom');
-					$('#branding .header_logo').html(html);
-				}
-				else if ( value == 'image' )
-				{
-					var html;
-					if (Logo.image)
-					{
-						html = '<a href="'+Logo.site_url+'" title="'+Logo.title+'" class="tb-image-logo"><img src="'+Logo.image+'" alt="'+Logo.title+'" /></a>';
-					}
-					else
-					{
-						html = '<strong>Oops! You still need to upload an image.</strong>';
-					}
-					$('#branding .header_logo').addClass('header_logo_image');
-					$('#branding .header_logo').html(html);
-				}
-			});
-		});
-
-		/* Logo - Custom Title */
-		wp.customize('<?php echo $option_name; ?>[logo][custom]',function( value ) {
-			value.bind(function(value) {
-				// Set global marker
-				Logo.custom = value;
-
-				// Only do if anything if the proper logo
-				// type is currently selected.
-				if ( Logo.type == 'custom' ) {
-					$('#branding .header_logo h1 a').text(value);
-				}
-			});
-		});
-
-		/* Logo - Custom Tagline */
-		wp.customize('<?php echo $option_name; ?>[logo][custom_tagline]',function( value ) {
-			value.bind(function(value) {
-				// Set global marker
-				Logo.custom_tagline = value;
-
-				// Remove previous tagline if needed.
-				$('#branding .header_logo').removeClass('header_logo_has_tagline');
-				$('#branding .header_logo .tagline').remove();
-
-				// Only do if anything if the proper logo
-				// type is currently selected.
-				if ( Logo.type == 'custom' ) {
-					if (value)
-					{
-						$('#branding .header_logo').addClass('header_logo_has_tagline');
-						$('#branding .header_logo').append('<span class="tagline">'+value+'</span>');
-					}
-				}
-			});
-		});
-
-		/* Logo - Image */
-		wp.customize('<?php echo $option_name; ?>[logo][image]',function( value ) {
-			value.bind(function(value) {
-				// Set global marker
-				Logo.image = value;
-
-				// Only do if anything if the proper logo
-				// type is currently selected.
-				if ( Logo.type == 'image' ) {
-					var html;
-					if (value)
-					{
-						html = '<a href="'+Logo.site_url+'" title="'+Logo.title+'" class="tb-image-logo"><img src="'+Logo.image+'" alt="'+Logo.title+'" /></a>';
-					}
-					else
-					{
-						html = '<strong>Oops! You still need to upload an image.</strong>';
-					}
-					$('#branding .header_logo').addClass('header_logo_image');
-					$('#branding .header_logo').html(html);
-				}
-			});
-		});
-		<?php
 	}
-}
+
+	/**
+	 * End section (for javascript show/hide options)
+	 * // ... @TODO
+	 */
+	class WP_Customize_ThemeBlvd_Subgroup_End extends WP_Customize_Control {
+
+		public $type = 'subgroup_end';
+		public $statuses;
+
+		public function __construct( $manager, $id, $args = array() ) {
+			$this->statuses = array( '' => __('Default', 'themeblvd' ) );
+			parent::__construct( $manager, $id, $args );
+		}
+
+		protected function render_content() {
+			?>
+				</ul>
+			</div>
+			<?php
+		}
+
+	}
+
+} // End if class_exists('WP_Customize_Control')
 
 /**
  * Font Prep for customizer preview
