@@ -1049,7 +1049,7 @@ body.admin-bar .tb-sticky-menu {
 	display: inline-block;
 	padding: 12px 15px;
 }
-.tb-side-menu .tb-side-menu-toggle {
+.tb-side-menu li.menu-item .tb-side-menu-toggle {
 	cursor: pointer;
 	display: block;
 	font-size: 14px;
@@ -1134,7 +1134,7 @@ body.admin-bar .tb-sticky-menu {
 }
 
 /* Toggle button hidden by default */
-.tb-side-menu-toggle {
+li.menu-item .tb-side-menu-toggle {
 	display: none;
 }
 

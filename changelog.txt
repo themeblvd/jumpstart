@@ -18,6 +18,7 @@ Jump Start Changelog
 * Fixed bug where controls of Gallery post slider moves entire outer post grid slider.
 * Fixed admin bar for logged-in user, viewing site on mobile.
 * Fixed "Column Height" force of Columns element, in Firefox.
+* Fixed issues with main menu "plus" icons showing when activating a plugin that adds FontAwesome.
 * Fixed issues with "No, don't apply featured image link to single post" in post options.
 * Fixed fatal error with WooCommerce.
 * Little fixes to WPML compatibility.
