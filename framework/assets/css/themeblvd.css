@@ -260,6 +260,15 @@ p {
 	line-height: 1.2;
 	padding: 13px 30px;
 }
+@media (max-width: 480px) {
+	.btn {
+		display: block;
+		width: 100%;
+	}
+	.btn+.btn {
+		margin-top: 5px;
+	}
+}
 
 /* Forms */
 .form-control {
@@ -547,7 +556,7 @@ p.wp-caption-text {
 .sticky {}
 
 /* Mobile Devices (portrait) */
-@media (max-width: 320px) {
+@media (max-width: 480px) {
 	/* @noflip */
 	.alignright,
 	.alignleft,
