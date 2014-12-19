@@ -164,6 +164,18 @@
     					}
     				});
 
+    				// Show/Hide groupings
+    				$this.find('.hide-show').each(function(){
+    					var $el = $(this), checkbox = $el.children('.trigger').find('input');
+    					if ( ! checkbox.is(':checked') ) {
+    						$el.children('.receiver').show();
+    					} else {
+    						$el.find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', true);
+    						});
+    					}
+    				});
+
     				// Show/Hide toggle grouping (triggered with <select> or
     				// radio group to target specific options)
     				$this.find('.show-hide-toggle').each(function(){
@@ -581,6 +593,30 @@
     						});
 
     						checkbox.closest('.show-hide').children('.receiver').hide();
+
+    					}
+    				});
+
+    				// Hide/Show groupings
+    				$this.on( 'click', '.hide-show > .trigger input', function() {
+
+    					var checkbox = $(this);
+
+    					if ( ! checkbox.is(':checked') ) {
+
+    						checkbox.closest('.hide-show').find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', false);
+    						});
+
+    						checkbox.closest('.hide-show').children('.receiver').fadeIn('fast');
+
+    					} else {
+
+    						checkbox.closest('.hide-show').find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', true);
+    						});
+
+    						checkbox.closest('.hide-show').children('.receiver').hide();
 
     					}
     				});
