@@ -349,7 +349,7 @@ function themeblvd_loop( $args = array() ){
 			if ( $args['crop'] ) {
 				$crop = $args['crop'];
 			} else {
-				$crop = themeblvd_get_option('grid_crop', null, 'tb_large');
+				$crop = themeblvd_get_option('showcase_crop', null, 'tb_large');
 			}
 
 			themeblvd_set_att( 'crop', $crop );

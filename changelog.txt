@@ -20,6 +20,7 @@ Jump Start Changelog
 * Fixed "Column Height" force of Columns element, in Firefox.
 * Fixed issues with main menu "plus" icons showing when activating a plugin that adds FontAwesome.
 * Fixed issues with "No, don't apply featured image link to single post" in post options.
+* Fixed Post Showcase page template pulling crop size for Post Grids.
 * Fixed fatal error with WooCommerce.
 * Little fixes to WPML compatibility.
 
