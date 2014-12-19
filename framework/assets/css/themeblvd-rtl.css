@@ -812,7 +812,6 @@ body.admin-bar .tb-sticky-menu {
 	opacity: 0;
 }
 .sf-menu .sf-with-ul {
-	padding-left: 2.25em;
 	min-width: 1px;
 }
 .sf-menu-with-fontawesome .sf-sub-indicator {
@@ -966,7 +965,7 @@ body.admin-bar .tb-sticky-menu {
 .subnav ul.nav > [class^="menu-icon-"] > a fa {
 	line-height: 1;
 }
-.subnav ul.nav > li > a.sf-with-ul {
+.subnav ul.nav > li.menu-item-has-children > a {
 	/* If a top-level menu item has a dropdown, reduce its right padding. */
 	padding-left: 8px;
 }

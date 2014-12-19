@@ -127,7 +127,7 @@ Author URI: http://www.themeblvd.com
 	background-color: transparent;
 	border-bottom-color: #1971af;
 }
-.header-nav .tb-primary-menu > li > .menu-btn.sf-with-ul {
+.header-nav .tb-primary-menu > li.menu-item-has-children > .menu-btn{
 	border-bottom: none; /* Border will be attached to top of dropdown */
 	padding-right: 5px;
 }
