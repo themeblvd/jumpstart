@@ -135,7 +135,7 @@
 
     				// Show correct number of columns (theme options), and
     				// whether to show column widths option
-	    			$this.find('.columns').each(function(){
+					$this.find('.columns').each(function(){
 	    				var $el = $(this), i, num = $el.find('.select-col-num').val();
 	    				if ( num > 1 ) {
 	    					$el.find('.select-wrap-grid').show();
@@ -167,8 +167,8 @@
     				// Show/Hide groupings
     				$this.find('.hide-show').each(function(){
     					var $el = $(this), checkbox = $el.children('.trigger').find('input');
-    					if ( ! checkbox.is(':checked') ) {
-    						$el.children('.receiver').show();
+    					if ( checkbox.is(':checked') ) {
+    						$el.children('.receiver').hide();
     					} else {
     						$el.find('.receiver').each(function(){
     							$(this).find('input, textarea, select').prop('disabled', true);
@@ -602,21 +602,21 @@
 
     					var checkbox = $(this);
 
-    					if ( ! checkbox.is(':checked') ) {
-
-    						checkbox.closest('.hide-show').find('.receiver').each(function(){
-    							$(this).find('input, textarea, select').prop('disabled', false);
-    						});
-
-    						checkbox.closest('.hide-show').children('.receiver').fadeIn('fast');
-
-    					} else {
+    					if ( checkbox.is(':checked') ) {
 
     						checkbox.closest('.hide-show').find('.receiver').each(function(){
     							$(this).find('input, textarea, select').prop('disabled', true);
     						});
 
     						checkbox.closest('.hide-show').children('.receiver').hide();
+
+    					} else {
+
+    						checkbox.closest('.hide-show').find('.receiver').each(function(){
+    							$(this).find('input, textarea, select').prop('disabled', false);
+    						});
+
+    						checkbox.closest('.hide-show').children('.receiver').fadeIn('fast');
 
     					}
     				});
