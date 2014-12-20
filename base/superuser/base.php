@@ -109,6 +109,11 @@ function jumpstart_su_options() {
 			)
 		),
 		'header_top' => array(
+			'sub_group_start_2' => array(
+				'id'		=> 'sub_group_start_2',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'hide-show'
+			),
 			'top_bg_color' => array(
 				'id'		=> 'top_bg_color',
 				'name'		=> __('Top Background Color', 'themeblvd'),
@@ -149,8 +154,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'receiver'
 			),
-			'sub_group_start_2' => array(
-				'id'		=> 'sub_group_start_2',
+			'sub_group_start_3' => array(
+				'id'		=> 'sub_group_start_3',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide receiver'
 			),
@@ -183,14 +188,25 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
+			'sub_group_end_3' => array(
+				'id'		=> 'sub_group_end_3',
+				'type' 		=> 'subgroup_end'
+			),
+			'top_hide' => array(
+				'id'		=> 'top_hide',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Hide', 'themeblvd').'</strong>: '.__('Hide header top bar.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
 			'sub_group_end_2' => array(
 				'id'		=> 'sub_group_end_2',
 				'type' 		=> 'subgroup_end'
 			)
 		),
 		'header' => array(
-			'sub_group_start_3' => array(
-				'id'		=> 'sub_group_start_3',
+			'sub_group_start_4' => array(
+				'id'		=> 'sub_group_start_4',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -251,8 +267,8 @@ function jumpstart_su_options() {
 				'select'	=> 'textures',
 				'class'		=> 'hide receiver receiver-texture'
 			),
-			'sub_group_start_4' => array(
-				'id'		=> 'sub_group_start_4',
+			'sub_group_start_5' => array(
+				'id'		=> 'sub_group_start_5',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-texture'
 			),
@@ -276,12 +292,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'subgroup_end_4' => array(
-				'id'		=> 'subgroup_end_4',
+			'subgroup_end_5' => array(
+				'id'		=> 'subgroup_end_5',
 				'type'		=> 'subgroup_end'
 			),
-			'sub_group_start_5' => array(
-				'id'		=> 'sub_group_start_5',
+			'sub_group_start_6' => array(
+				'id'		=> 'sub_group_start_6',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'select-parallax hide receiver receiver-image'
 			),
@@ -314,12 +330,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide parallax'
 			),
-			'sub_group_end_5' => array(
-				'id'		=> 'sub_group_end_5',
+			'sub_group_end_6' => array(
+				'id'		=> 'sub_group_end_6',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_6' => array(
-				'id'		=> 'sub_group_start_6',
+			'sub_group_start_7' => array(
+				'id'		=> 'sub_group_start_7',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow'
 			),
@@ -358,12 +374,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_6' => array(
-				'id'		=> 'sub_group_end_6',
+			'sub_group_end_7' => array(
+				'id'		=> 'sub_group_end_7',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_7' => array(
-				'id'		=> 'sub_group_start_7',
+			'sub_group_start_8' => array(
+				'id'		=> 'sub_group_start_8',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'section-bg-slideshow hide receiver receiver-slideshow'
 			),
@@ -381,8 +397,8 @@ function jumpstart_su_options() {
 				'type' 		=> 'select',
 				'select'	=> 'crop'
 			),
-			'sub_group_start_8' => array(
-				'id'		=> 'sub_group_start_8',
+			'sub_group_start_9' => array(
+				'id'		=> 'sub_group_start_9',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -406,20 +422,20 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
+			'sub_group_end_9' => array(
+				'id'		=> 'sub_group_end_9',
+				'type' 		=> 'subgroup_end'
+			),
 			'sub_group_end_8' => array(
 				'id'		=> 'sub_group_end_8',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_7' => array(
-				'id'		=> 'sub_group_end_7',
+			'sub_group_end_4' => array(
+				'id'		=> 'sub_group_end_4',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_3' => array(
-				'id'		=> 'sub_group_end_3',
-				'type' 		=> 'subgroup_end'
-			),
-			'sub_group_start_9' => array(
-				'id'		=> 'sub_group_start_9',
+			'sub_group_start_10' => array(
+				'id'		=> 'sub_group_start_10',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -452,12 +468,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_9' => array(
-				'id'		=> 'sub_group_end_9',
+			'sub_group_end_10' => array(
+				'id'		=> 'sub_group_end_10',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_10' => array(
-				'id'		=> 'sub_group_start_10',
+			'sub_group_start_11' => array(
+				'id'		=> 'sub_group_start_11',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -490,12 +506,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_10' => array(
-				'id'		=> 'sub_group_end_10',
+			'sub_group_end_11' => array(
+				'id'		=> 'sub_group_end_11',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_11' => array(
-				'id'		=> 'sub_group_start_11',
+			'sub_group_start_12' => array(
+				'id'		=> 'sub_group_start_12',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -559,12 +575,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_11' => array(
-				'id'		=> 'sub_group_end_11',
+			'sub_group_end_12' => array(
+				'id'		=> 'sub_group_end_12',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_12' => array(
-				'id'		=> 'sub_group_start_12',
+			'sub_group_start_13' => array(
+				'id'		=> 'sub_group_start_13',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -628,12 +644,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_12' => array(
-				'id'		=> 'sub_group_end_12',
+			'sub_group_end_13' => array(
+				'id'		=> 'sub_group_end_13',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_13' => array(
-				'id'		=> 'sub_group_start_13',
+			'sub_group_start_14' => array(
+				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -697,14 +713,14 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_13' => array(
-				'id'		=> 'sub_group_end_13',
+			'sub_group_end_14' => array(
+				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end'
 			)
 		),
 		'menu' => array(
-			'sub_group_start_14' => array(
-				'id'		=> 'sub_group_start_14',
+			'sub_group_start_15' => array(
+				'id'		=> 'sub_group_start_15',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -750,8 +766,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient receiver-gradient_glassy'
 			),
-			'sub_group_end_14' => array(
-				'id'		=> 'sub_group_end_14',
+			'sub_group_end_15' => array(
+				'id'		=> 'sub_group_end_15',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_hover_bg_color' => array(
@@ -809,8 +825,8 @@ function jumpstart_su_options() {
 					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
-			'sub_group_start_15' => array(
-				'id'		=> 'sub_group_start_15',
+			'sub_group_start_16' => array(
+				'id'		=> 'sub_group_start_16',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -843,12 +859,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_15' => array(
-				'id'		=> 'sub_group_end_15',
+			'sub_group_end_16' => array(
+				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_16' => array(
-				'id'		=> 'sub_group_start_16',
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -881,8 +897,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_16' => array(
-				'id'		=> 'sub_group_end_16',
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_text_shadow' => array(
@@ -899,8 +915,8 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_17' => array(
-				'id'		=> 'sub_group_start_17',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -922,8 +938,8 @@ function jumpstart_su_options() {
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_17' => array(
-				'id'		=> 'sub_group_end_17',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end',
 			)
 		),
@@ -962,8 +978,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1028,12 +1044,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1066,12 +1082,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_20' => array(
-				'id'		=> 'sub_group_start_20',
+			'sub_group_start_21' => array(
+				'id'		=> 'sub_group_start_21',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1104,8 +1120,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_20' => array(
-				'id'		=> 'sub_group_end_20',
+			'sub_group_end_21' => array(
+				'id'		=> 'sub_group_end_21',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1542,48 +1558,51 @@ function jumpstart_su_css() {
 		}
 
 		// Header top bar
-		$options = array();
-		$options['bg_type'] = 'color';
-		$options['bg_color'] = themeblvd_get_option('top_bg_color');
-		$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
-		$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
-		$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
-		$options['bg_color_opacity'] = themeblvd_get_option('top_bg_color_opacity');
+		if ( ! themeblvd_get_option('top_hide') ) {
 
-		$styles = themeblvd_get_display_inline_style( $options, 'external' );
+			$options = array();
+			$options['bg_type'] = 'color';
+			$options['bg_color'] = themeblvd_get_option('top_bg_color');
+			$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
+			$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
+			$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
+			$options['bg_color_opacity'] = themeblvd_get_option('top_bg_color_opacity');
 
-		if ( ! empty( $styles['general'] ) ) {
+			$styles = themeblvd_get_display_inline_style( $options, 'external' );
 
-			$print .= ".header-top {\n";
+			if ( ! empty( $styles['general'] ) ) {
 
-			foreach ( $styles['general'] as $prop => $value ) {
-				$prop = str_replace('-2', '', $prop);
-				$print .= sprintf("\t%s: %s;\n", $prop, $value);
+				$print .= ".header-top {\n";
+
+				foreach ( $styles['general'] as $prop => $value ) {
+					$prop = str_replace('-2', '', $prop);
+					$print .= sprintf("\t%s: %s;\n", $prop, $value);
+				}
+
+				if ( themeblvd_get_option('top_bg_color_brightness') == 'dark' ) {
+					$print .= "\tcolor: #ffffff;\n";
+					$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+				} else {
+					$print .= "\tcolor: #666666;\n";
+				}
+
+				$print .= "}\n";
+
+				$print .= ".tb-search-popup .search-popup {\n";
+				$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
+				$print .= "}\n";
+
+				$print .= ".tb-search-popup.bottom.left .search-popup > .arrow:after,\n";
+				$print .= ".tb-search-popup.bottom.right .search-popup > .arrow:after {\n";
+				$print .= sprintf("\tborder-bottom-color: %s;\n", $options['bg_color']);
+				$print .= "}\n";
+
+				$print .= ".tb-search-popup.top.left .search-popup > .arrow:after,\n";
+				$print .= ".tb-search-popup.top.right .search-popup > .arrow:after {\n";
+				$print .= sprintf("\tborder-top-color: %s;\n", $options['bg_color']);
+				$print .= "}\n";
+
 			}
-
-			if ( themeblvd_get_option('top_bg_color_brightness') == 'dark' ) {
-				$print .= "\tcolor: #ffffff;\n";
-				$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
-			} else {
-				$print .= "\tcolor: #666666;\n";
-			}
-
-			$print .= "}\n";
-
-			$print .= ".tb-search-popup .search-popup {\n";
-			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
-			$print .= "}\n";
-
-			$print .= ".tb-search-popup.bottom.left .search-popup > .arrow:after,\n";
-			$print .= ".tb-search-popup.bottom.right .search-popup > .arrow:after {\n";
-			$print .= sprintf("\tborder-bottom-color: %s;\n", $options['bg_color']);
-			$print .= "}\n";
-
-			$print .= ".tb-search-popup.top.left .search-popup > .arrow:after,\n";
-			$print .= ".tb-search-popup.top.right .search-popup > .arrow:after {\n";
-			$print .= sprintf("\tborder-top-color: %s;\n", $options['bg_color']);
-			$print .= "}\n";
-
 		}
 
 	}
@@ -2000,6 +2019,21 @@ function jumpstart_su_footer_class( $class ) {
 add_filter('themeblvd_footer_class', 'jumpstart_su_footer_class');
 
 /**
+ * Height of the header. Used with "suck up" feature.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_su_top_height_addend( $addend ) {
+
+	if ( themeblvd_get_option('top_hide') ) {
+		$addend = 92; /* 140-48, logo height gets added to this */
+	}
+
+	return $addend;
+}
+add_filter('themeblvd_top_height_addend', 'jumpstart_su_top_height_addend');
+
+/**
  * Add any outputted HTML needed for header styling
  * options to work.
  *
@@ -2032,5 +2066,58 @@ function jumpstart_su_header_top() {
 		themeblvd_bg_slideshow( 'header', $display['bg_slideshow'], $parallax );
 	}
 
+	if ( themeblvd_get_option('top_hide') ) {
+
+		echo '<div class="header-top hide">';
+
+		if ( themeblvd_get_option('searchform') == 'show' ) {
+			themeblvd_search_popup();
+		}
+
+		themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') );
+
+		echo '</div>';
+	}
+
 }
 add_action( 'themeblvd_header_top', 'jumpstart_su_header_top', 5 );
+
+/**
+ * If user has hidden the top bar, remove the default
+ * top bar and output the hidden one, with just social
+ * icons and search, to be transferred to mobile nav.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_su_remove_header_top() {
+	if ( themeblvd_get_option('top_hide') ) {
+		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
+	}
+}
+add_action('init', 'jumpstart_su_remove_header_top');
+
+/**
+ * Output main menu toggle in header for mobile devices, IF header top bar was hidden.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_su_responsive_toggle() {
+
+	if ( themeblvd_get_option('top_hide') ) {
+
+		echo '<div id="primary-menu-toggle">';
+
+		echo '<a href="#" id="primary-menu-open" class="btn-navbar open">';
+		echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' );
+		echo '</a>';
+
+		echo '<a href="#" id="primary-menu-close" class="btn-navbar close">';
+		echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' );
+		echo '</a>';
+
+		echo '</div>';
+
+	}
+
+}
+add_action('themeblvd_header_addon', 'jumpstart_su_responsive_toggle');
