@@ -1046,8 +1046,7 @@ add_filter('body_class', 'jumpstart_ex_body_class');
  * @since 2.0.0
  */
 function jumpstart_ex_top_height_addend() {
-	return 100;
-
+	return 100;  /* logo height gets added to this */
 }
 add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend');
 

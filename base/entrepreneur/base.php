@@ -938,7 +938,7 @@ add_filter('body_class', 'jumpstart_ent_body_class');
  * @since 2.0.0
  */
 function jumpstart_ent_top_height() {
-	return 90;
+	return intval(themeblvd_get_option('header_height'));
 }
 add_filter('themeblvd_top_height', 'jumpstart_ent_top_height');
 
