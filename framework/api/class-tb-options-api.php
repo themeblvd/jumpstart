@@ -270,9 +270,9 @@ class Theme_Blvd_Options_API {
 					),
 					'header_text' => array(
 						'name' 		=> __( 'Header Text', 'themeblvd' ),
-						'desc'		=> __( 'Enter a very brief piece of text you\'d like to show You can use basic HTML here..', 'themeblvd' ),
+						'desc'		=> sprintf(__( 'Enter a brief piece of text you\'d like to show. You can use basic HTML here, or any %s ID formatted like %s.', 'themeblvd' ), '<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>', '<code>%name%</code>'),
 						'id'		=> 'header_text',
-						'std'		=> 'Welcome to our website!',
+						'std'		=> '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'type' 		=> 'text'
 					),
 					'social_media' => array(

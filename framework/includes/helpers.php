@@ -1534,7 +1534,7 @@ function themeblvd_get_search_types() {
  * @param int $post_id ID of current post
  * @return string $value Value to get used in HTML, i.e. data-sort="$value"
  */
-function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ){
+function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
 
 	if ( ! $post_id ) {
 		$post_id = get_the_ID();
@@ -1550,4 +1550,27 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ){
 	}
 
 	return apply_filters( 'themeblvd_filter_val', trim($value), $tax, $post_id );
+}
+
+/**
+ * Process any FontAwesome icons passed in as %icon%.
+ *
+ * @since 2.5.0
+ *
+ * @param string $str String to search
+ * @return string $str Filtered original string
+ */
+function themeblvd_do_fa( $str ) {
+
+	$html = apply_filters('themeblvd_do_fa_html', '<i class="fa fa-%s"></i>', $str);
+
+	preg_match_all( '/\%(.*?)\%/', $str, $icons );
+
+	if ( ! empty( $icons[0] ) ) {
+		foreach ( $icons[0] as $key => $val ) {
+			$str = str_replace($val, sprintf($html, $icons[1][$key]), $str);
+		}
+	}
+
+	return $str;
 }
