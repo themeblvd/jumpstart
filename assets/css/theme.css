@@ -83,7 +83,7 @@
 .header-top > .wrap {
 	padding: 12px 10px;
 }
-.header-top-text {
+.header-text {
 	float: left;
 	line-height: 24px; /* Match height of social icons */
 }
@@ -690,7 +690,7 @@ article.page {
 	.header-top > .wrap {
 		padding: 0;
 	}
-	.header-top .header-top-text {
+	.header-top .header-text {
 		float: none;
 		text-align: center;
 	}

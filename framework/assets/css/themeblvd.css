@@ -650,18 +650,18 @@ p.wp-caption-text {
 -----------------------------------------------*/
 
 /* Text Logo */
-.header_logo_text {
+.header-text-logo {
 	padding: 10px 0;
 }
-.header_logo_text .tb-text-logo {
+.header-text-logo .tb-text-logo {
 	font-size: 30px;
 	margin: 0;
 }
-.header_logo_text .tb-text-logo a {
+.header-text-logo .tb-text-logo a {
 	color: inherit;
 	text-decoration: none;
 }
-.header_logo_text .tagline {
+.header-text-logo .tagline {
 	font-size: 13px;
 	line-height: 1.2;
 }
@@ -698,6 +698,14 @@ p.wp-caption-text {
 	.site-header.transparent .social-trans {
 		display: block;
 	}
+}
+
+/* Header Text */
+.header-text .fa {
+	margin-left: 10px;
+}
+.header-text .fa:first-child {
+	margin-left: 0;
 }
 
 /* Sticky Menu */
@@ -741,14 +749,14 @@ body.admin-bar .tb-sticky-menu {
 	width: auto;
 	height: 38px;
 }
-.tb-sticky-menu .header_logo_text {
+.tb-sticky-menu .header-text-logo {
 	padding: 0;
 }
-.tb-sticky-menu .header_logo_text .tb-text-logo {
+.tb-sticky-menu .header-text-logo .tb-text-logo {
 	font-size: 20px;
 	line-height: 38px;
 }
-.tb-sticky-menu .header_logo_text .tagline {
+.tb-sticky-menu .header-text-logo .tagline {
 	display: none;
 }
 .tb-sticky-menu .tb-primary-menu {

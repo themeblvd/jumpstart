@@ -1504,7 +1504,8 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 		$class = 'header-logo header_logo header_logo_'.$logo['type'];
 
 		if ( $logo['type'] == 'custom' || $logo['type'] == 'title' || $logo['type'] == 'title_tagline' ) {
-			$class .= ' header_logo_text';
+			$class .= ' header-text-logo';
+			$class .= ' header_logo_text'; // @deprecated legacy class
 		}
 
 		if ( $logo['type'] == 'custom' && ! empty( $logo['custom_tagline'] ) ) {

@@ -184,6 +184,31 @@ function themeblvd_search_popup( $args = array() ) {
 }
 
 /**
+ * Get header text.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_header_text() {
+
+	$output = '';
+
+	if ( $text = themeblvd_get_option('header_text') ) {
+		$output = sprintf( '<div class="header-text">%s</div>', $text );
+	}
+
+	return apply_filters( 'themeblvd_header_text', $output );
+}
+
+/**
+ * Display header text.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_header_text() {
+	echo themeblvd_get_header_text();
+}
+
+/**
  * Button
  *
  * As of framework v2.2, the button markup matches

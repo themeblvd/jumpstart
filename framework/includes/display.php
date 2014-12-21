@@ -42,9 +42,7 @@ function themeblvd_header_top_default() {
 				</a>
 			</div>
 
-			<?php if ( themeblvd_get_option('header_text') ) : ?>
-				<div class="header-top-text"><?php echo themeblvd_get_option('header_text'); ?></div>
-			<?php endif; ?>
+			<?php themeblvd_header_text(); ?>
 
 			<ul class="header-top-nav list-unstyled">
 
