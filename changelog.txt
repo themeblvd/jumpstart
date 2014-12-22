@@ -24,6 +24,7 @@ Jump Start Changelog
 * Fixed Post Showcase page template pulling crop size for Post Grids.
 * Fixed fatal error with WooCommerce.
 * Little fixes to WPML compatibility.
+* When header top bar is empty, it will not display (i.e. no header text, social icons, or searchform set to show)
 
 2.0.0-beta1
 -----

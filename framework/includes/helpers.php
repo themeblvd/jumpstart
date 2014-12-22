@@ -1567,10 +1567,51 @@ function themeblvd_do_fa( $str ) {
 	preg_match_all( '/\%(.*?)\%/', $str, $icons );
 
 	if ( ! empty( $icons[0] ) ) {
+
+		$total = count($icons[0]);
+		$str = sprintf("<ul class=\"list-inline\">\n<li>%s</li>\n</ul>", $str);
+
 		foreach ( $icons[0] as $key => $val ) {
+
+			if ( $key > 0 ) {
+				$html = "<li>\n".$html;
+			}
+
 			$str = str_replace($val, sprintf($html, $icons[1][$key]), $str);
 		}
 	}
 
 	return $str;
+}
+
+/**
+ * Determine if header displays any content.
+ *
+ * @since 2.5.0
+ *
+ * @param array $inc Elements to check for
+ * @return bool Whether we've got any info to show in header
+ */
+function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 'social_media', 'wpml', 'cart') ) {
+
+	if ( in_array('header_text', $inc) && themeblvd_get_option('header_text') ) {
+		return true;
+	}
+
+	if ( in_array('searchform', $inc) && themeblvd_get_option('searchform') == 'show' ) {
+		return true;
+	}
+
+	if ( in_array('social_media', $inc) && themeblvd_get_option('social_media') ) {
+		return true;
+	}
+
+	if ( in_array('wpml', $inc) && themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
+		return true;
+	}
+
+	// @TODO WooCommerce floating cart
+	// if ( in_array('cart', $inc) ) // ...
+
+	return false;
 }

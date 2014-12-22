@@ -28,19 +28,13 @@ if ( !function_exists( 'themeblvd_header_top_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_header_top_default() {
+
+	if ( ! themeblvd_has_header_info() ) {
+		return;
+	}
 	?>
 	<div class="header-top">
 		<div class="wrap clearfix">
-
-			<div id="primary-menu-toggle">
-				<a href="#" id="primary-menu-open" class="btn-navbar open">
-					<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
-				</a>
-
-				<a href="#" id="primary-menu-close" class="btn-navbar close">
-					<?php echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' ); ?>
-				</a>
-			</div>
 
 			<?php themeblvd_header_text(); ?>
 
@@ -60,6 +54,27 @@ function themeblvd_header_top_default() {
 
 		</div><!-- .wrap (end) -->
 	</div><!-- .header-above (end) -->
+	<?php
+}
+endif;
+
+if ( !function_exists( 'themeblvd_responsive_menu_toggle' ) ) :
+/**
+ * Default display for action: themeblvd_header_top
+ *
+ * @since 2.0.0
+ */
+function themeblvd_responsive_menu_toggle() {
+	?>
+	<div id="primary-menu-toggle">
+		<a href="#" id="primary-menu-open" class="btn-navbar open">
+			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
+		</a>
+
+		<a href="#" id="primary-menu-close" class="btn-navbar close">
+			<?php echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' ); ?>
+		</a>
+	</div>
 	<?php
 }
 endif;
