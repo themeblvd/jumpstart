@@ -117,6 +117,7 @@
 /* Header Content */
 .header-content > .wrap {
 	padding: 20px;
+	position: relative;
 }
 .header-content .header-logo {
 	float: right;
@@ -183,7 +184,8 @@
 	border-left: 1px solid #000000;
 }
 #tb-side-menu-wrapper .tb-side-menu a,
-#tb-side-menu-wrapper .tb-side-menu span {
+#tb-side-menu-wrapper .tb-side-menu span,
+#tb-side-menu-wrapper .header-text {
 	color: #ffffff;
 }
 #tb-side-menu-wrapper .tb-side-menu a:hover,

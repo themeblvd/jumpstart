@@ -853,28 +853,6 @@ function jumpstart_ent_search_popup() {
 add_action('themeblvd_header_menu_addon', 'jumpstart_ent_search_popup');
 
 /**
- * Output main menu toggle in header for mobile devices.
- *
- * @since 2.0.0
- */
-function jumpstart_ent_responsive_toggle() {
-
-	echo '<div id="primary-menu-toggle">';
-
-	echo '<a href="#" id="primary-menu-open" class="btn-navbar open">';
-	echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' );
-	echo '</a>';
-
-	echo '<a href="#" id="primary-menu-close" class="btn-navbar close">';
-	echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' );
-	echo '</a>';
-
-	echo '</div>';
-
-}
-add_action('themeblvd_header_addon', 'jumpstart_ent_responsive_toggle');
-
-/**
  * Filter global config
  *
  * @since 2.0.0
@@ -1327,6 +1305,7 @@ function jumpstart_ent_css() {
 		$print .= "#tb-side-menu-wrapper .tb-side-menu span,\n";
 		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,\n";
 		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active,\n";
+		$print .= "#tb-side-menu-wrapper .header-text,\n";
 		$print .= "#tb-side-menu-wrapper .tb-search .search-input {\n";
 		$print .= "\tcolor: #666666;\n";
 		$print .= "}\n";

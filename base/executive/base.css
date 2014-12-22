@@ -20,7 +20,7 @@ Author URI: http://www.themeblvd.com
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1170px;
-	padding: 25px 0 20px 0;
+	padding: 20px 0 20px 0;
 }
 @media (max-width: 1200px) {
 	.site-header > .wrap {
@@ -39,9 +39,8 @@ Author URI: http://www.themeblvd.com
 	}
 }
 .header-content > .wrap {
-	margin: 0 0 25px 0;
+	margin: 0 0 20px 0;
 	padding: 0;
-	position: relative;
 }
 @media (max-width: 767px) {
 	.header-content > .wrap {
@@ -49,32 +48,31 @@ Author URI: http://www.themeblvd.com
 	}
 }
 
+/* Header Top */
+.header-top {
+	margin: 0 0 20px 0;
+}
+
 /* Header Addon */
 .header-addon {
 	margin-top: -12px;
 	position: absolute;
 	top: 50%;
-	right: 10px;
+	right: 20px;
+}
+.rtl .header-addon {
+	right: initial;
+	left: 20px;
 }
 .header-addon.header-addon-with-text {
-	margin-top: -28px;
+	margin-top: -27px;
 }
-.header-text {
-	padding: 5px;
+.header-addon .header-text {
+	padding: 6px 0 0 0;
 	text-align: right;
 }
 @media (max-width: 767px) {
-	.header-addon,
-	.header-addon.header-addon-with-text {
-		margin-top: 0;
-		position: static;
-	}
-	.header-text {
-		margin-top: 5px;
-		padding: 0;
-		text-align: center;
-	}
-	.header-top-nav {
+	.header-addon {
 		display: none;
 	}
 }

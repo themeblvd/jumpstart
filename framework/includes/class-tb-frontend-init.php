@@ -496,7 +496,13 @@ class Theme_Blvd_Frontend_Init {
 
 			// The theme's base height for the header before the
 			// user's logo height is dynamically added
-			$addend = apply_filters('themeblvd_top_height_addend', 140);
+			$addend = 92;
+
+			if ( themeblvd_has_header_info() ) {
+				$addend += 48;
+			}
+
+			$addend = apply_filters('themeblvd_top_height_addend', $addend);
 
 			$logo = themeblvd_get_option('trans_logo');
 			$logo_height = 65;

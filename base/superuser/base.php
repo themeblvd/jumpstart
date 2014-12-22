@@ -108,22 +108,34 @@ function jumpstart_su_options() {
 				)
 			)
 		),
-		'header_top' => array(
+		'header_info' => array(
 			'sub_group_start_2' => array(
 				'id'		=> 'sub_group_start_2',
 				'type' 		=> 'subgroup_start',
-				'class'		=> 'hide-show'
+				'class'		=> 'show-hide-toggle'
+			),
+			'header_info' => array(
+				'name' 		=> __( 'Header Info Display', 'themeblvd' ),
+				'desc' 		=> __( 'Select where you\'d like the header info to display, configured at <em>Theme Options > Layout > Header</em>.', 'themeblvd' ),
+				'id' 		=> 'header_info',
+				'std' 		=> 'header_top',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'header_top'	=> __( 'Top bar above header', 'themeblvd' ),
+					'header_addon'	=> __( 'Within header', 'themeblvd' )
+				),
+				'class'		=> 'trigger'
 			),
 			'top_bg_color' => array(
 				'id'		=> 'top_bg_color',
-				'name'		=> __('Top Background Color', 'themeblvd'),
+				'name'		=> __('Top Bar Background Color', 'themeblvd'),
 				'desc'		=> __('Select a background color for the bar that runs across the top of the header.', 'themeblvd'),
 				'std'		=> '#ffffff',
 				'type'		=> 'color',
-				'class'		=> 'receiver'
+				'class'		=> 'receiver receiver-header_top'
 			),
 			'top_bg_color_brightness' => array(
-				'name' 		=> __( 'Top Background Color Brightness', 'themeblvd' ),
+				'name' 		=> __( 'Top Bar Background Color Brightness', 'themeblvd' ),
 				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'id' 		=> 'top_bg_color_brightness',
 				'std' 		=> 'light',
@@ -132,11 +144,11 @@ function jumpstart_su_options() {
 					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
 					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				),
-				'class'		=> 'receiver'
+				'class'		=> 'receiver receiver-header_top'
 			),
 			'top_bg_color_opacity' => array(
 				'id'		=> 'top_bg_color_opacity',
-				'name'		=> __('Top Background Color Opacity', 'themeblvd'),
+				'name'		=> __('Top Bar Background Color Opacity', 'themeblvd'),
 				'desc'		=> __('Select the opacity of the above background color. Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
 				'std'		=> '1',
 				'type'		=> 'select',
@@ -152,12 +164,12 @@ function jumpstart_su_options() {
 					'0.9'	=> '0.9',
 					'1'		=> '1.0'
 				),
-				'class'		=> 'receiver'
+				'class'		=> 'receiver receiver-header_top'
 			),
 			'sub_group_start_3' => array(
 				'id'		=> 'sub_group_start_3',
 				'type' 		=> 'subgroup_start',
-				'class'		=> 'show-hide receiver'
+				'class'		=> 'show-hide receiver receiver-header_top'
 			),
 			'top_apply_border_bottom' => array(
 				'id'		=> 'top_apply_border_bottom',
@@ -191,13 +203,6 @@ function jumpstart_su_options() {
 			'sub_group_end_3' => array(
 				'id'		=> 'sub_group_end_3',
 				'type' 		=> 'subgroup_end'
-			),
-			'top_hide' => array(
-				'id'		=> 'top_hide',
-				'name'		=> null,
-				'desc'		=> '<strong>'.__('Hide', 'themeblvd').'</strong>: '.__('Hide header top bar.', 'themeblvd'),
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
 			),
 			'sub_group_end_2' => array(
 				'id'		=> 'sub_group_end_2',
@@ -1241,7 +1246,7 @@ function jumpstart_su_options() {
 	themeblvd_add_option_tab( 'styles', __('Styles', 'themeblvd'), true );
 
 	themeblvd_add_option_section( 'styles', 'su_general',		__('General', 'themeblvd'), 	null, $options['general'] );
-	themeblvd_add_option_section( 'styles', 'su_header_top',	__('Header Top', 'themeblvd'), 	null, $options['header_top'] );
+	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
 	themeblvd_add_option_section( 'styles', 'su_header',		__('Header', 'themeblvd'),		null, $options['header'] );
 	themeblvd_add_option_section( 'styles', 'su_menu',			__('Main Menu', 'themeblvd'),	null, $options['menu'] );
 	themeblvd_add_option_section( 'styles', 'su_menu_mobile',	__('Mobile Menu', 'themeblvd'),	null, $options['menu_mobile'] );
@@ -1557,8 +1562,18 @@ function jumpstart_su_css() {
 
 		}
 
+		if ( themeblvd_get_option('header_info') == 'header_addon' && themeblvd_get_option('header_bg_color_brightness') == 'dark' ) {
+			$print .= ".header-addon {\n";
+			$print .= "\tcolor: #ffffff;\n";
+			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+			$print .= "}\n";
+			$print .= ".header-top-nav > li {\n";
+			$print .= "\tborder-color: rgba(0,0,0,.4);\n";
+			$print .= "}\n";
+		}
+
 		// Header top bar
-		if ( ! themeblvd_get_option('top_hide') ) {
+		if ( themeblvd_get_option('header_info') == 'header_top' ) {
 
 			$options = array();
 			$options['bg_type'] = 'color';
@@ -1914,6 +1929,7 @@ function jumpstart_su_css() {
 		$print .= "#tb-side-menu-wrapper .tb-side-menu span,\n";
 		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,\n";
 		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active,\n";
+		$print .= "#tb-side-menu-wrapper .header-text,\n";
 		$print .= "#tb-side-menu-wrapper .tb-search .search-input {\n";
 		$print .= "\tcolor: #666666;\n";
 		$print .= "}\n";
@@ -2025,7 +2041,7 @@ add_filter('themeblvd_footer_class', 'jumpstart_su_footer_class');
  */
 function jumpstart_su_top_height_addend( $addend ) {
 
-	if ( themeblvd_get_option('top_hide') ) {
+	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
 		$addend = 92; /* 140-48, logo height gets added to this */
 	}
 
@@ -2066,58 +2082,72 @@ function jumpstart_su_header_top() {
 		themeblvd_bg_slideshow( 'header', $display['bg_slideshow'], $parallax );
 	}
 
-	if ( themeblvd_get_option('top_hide') ) {
-
-		echo '<div class="header-top hide">';
-
-		if ( themeblvd_get_option('searchform') == 'show' ) {
-			themeblvd_search_popup();
-		}
-
-		themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') );
-
-		echo '</div>';
-	}
-
 }
-add_action( 'themeblvd_header_top', 'jumpstart_su_header_top', 5 );
+add_action('themeblvd_header_top', 'jumpstart_su_header_top', 5);
 
 /**
- * If user has hidden the top bar, remove the default
- * top bar and output the hidden one, with just social
- * icons and search, to be transferred to mobile nav.
+ * If user has selected to have the header info
+ * within the content of the header, let's remove
+ * it from the themeblvd_header_top action, and move
+ * to the themeblvd_header_addon action.
  *
  * @since 2.0.0
  */
-function jumpstart_su_remove_header_top() {
-	if ( themeblvd_get_option('top_hide') ) {
+function jumpstart_su_header_info() {
+	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
 		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
+		add_action('themeblvd_header_addon', 'jumpstart_su_header_addon');
 	}
 }
-add_action('init', 'jumpstart_su_remove_header_top');
+add_action('wp', 'jumpstart_su_header_info');
 
 /**
- * Output main menu toggle in header for mobile devices, IF header top bar was hidden.
+ * Add header text, search, and social icons to header content area.
  *
  * @since 2.0.0
  */
-function jumpstart_su_responsive_toggle() {
+function jumpstart_su_header_addon() {
 
-	if ( themeblvd_get_option('top_hide') ) {
-
-		echo '<div id="primary-menu-toggle">';
-
-		echo '<a href="#" id="primary-menu-open" class="btn-navbar open">';
-		echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' );
-		echo '</a>';
-
-		echo '<a href="#" id="primary-menu-close" class="btn-navbar close">';
-		echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' );
-		echo '</a>';
-
-		echo '</div>';
-
+	if ( ! themeblvd_has_header_info() ) {
+		return;
 	}
 
+	$header_text = themeblvd_get_option('header_text');
+
+	$class = 'header-addon';
+
+	if ( $header_text ) {
+		$class .= ' header-addon-with-text';
+	}
+
+	printf('<div class="%s">', $class);
+
+	echo '<ul class="header-top-nav list-unstyled">';
+
+	// Search form popup
+	if ( themeblvd_get_option('searchform') == 'show' ) {
+		printf('<li>%s</li>', themeblvd_get_search_popup());
+	}
+
+	// Contact icons. Note: We're not using themeblvd_get_contact_bar()
+	// to account for the "suck up" header and outputting extra
+	// contact icon set.
+	echo '<li>';
+	themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') );
+	echo '</li>';
+
+	// WPML switcher
+	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
+		echo '<li>';
+		do_action('icl_language_selector');
+		echo '</li>';
+	}
+
+	echo '</ul>';
+
+	// Header text
+	themeblvd_header_text();
+
+	echo '</div><!-- .header-addon (end) -->';
+
 }
-add_action('themeblvd_header_addon', 'jumpstart_su_responsive_toggle');

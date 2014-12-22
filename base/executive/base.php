@@ -108,9 +108,110 @@ function jumpstart_ex_options() {
 				)
 			)
 		),
-		'header' => array(
+		'header_info' => array(
 			'sub_group_start_2' => array(
 				'id'		=> 'sub_group_start_2',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle'
+			),
+			'header_info' => array(
+				'name' 		=> __( 'Header Info Display', 'themeblvd' ),
+				'desc' 		=> __( 'Select where you\'d like the header info to display, configured at <em>Theme Options > Layout > Header</em>.', 'themeblvd' ),
+				'id' 		=> 'header_info',
+				'std' 		=> 'header_addon',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'header_top'	=> __( 'Top bar above header', 'themeblvd' ),
+					'header_addon'	=> __( 'Within header', 'themeblvd' )
+				),
+				'class'		=> 'trigger'
+			),
+			'top_bg_color' => array(
+				'id'		=> 'top_bg_color',
+				'name'		=> __('Top Bar Background Color', 'themeblvd'),
+				'desc'		=> __('Select a background color for the bar that runs across the top of the header.', 'themeblvd'),
+				'std'		=> '#ffffff',
+				'type'		=> 'color',
+				'class'		=> 'receiver receiver-header_top'
+			),
+			'top_bg_color_brightness' => array(
+				'name' 		=> __( 'Top Bar Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
+				'id' 		=> 'top_bg_color_brightness',
+				'std' 		=> 'light',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
+				),
+				'class'		=> 'receiver receiver-header_top'
+			),
+			'top_bg_color_opacity' => array(
+				'id'		=> 'top_bg_color_opacity',
+				'name'		=> __('Top Bar Background Color Opacity', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the above background color. Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+					'0.1'	=> '0.1',
+					'0.2'	=> '0.2',
+					'0.3'	=> '0.3',
+					'0.4'	=> '0.4',
+					'0.5'	=> '0.5',
+					'0.6'	=> '0.6',
+					'0.7'	=> '0.7',
+					'0.8'	=> '0.8',
+					'0.9'	=> '0.9',
+					'1'		=> '1.0'
+				),
+				'class'		=> 'receiver receiver-header_top'
+			),
+			'sub_group_start_3' => array(
+				'id'		=> 'sub_group_start_3',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide receiver receiver-header_top'
+			),
+			'top_apply_border_bottom' => array(
+				'id'		=> 'top_apply_border_bottom',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Bottom Border', 'themeblvd').'</strong>: '.__('Apply bottom border to the top bar of the header.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'top_border_bottom_color' => array(
+				'id'		=> 'top_border_bottom_color',
+				'name'		=> __('Bottom Border Color', 'themeblvd'),
+				'desc'		=> __('Select a color for the bottom border.', 'themeblvd'),
+				'std'		=> '#dddddd',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver'
+			),
+			'top_border_bottom_width' => array(
+				'id'		=> 'top_border_bottom_width',
+				'name'		=> __('Bottom Border Width', 'themeblvd'),
+				'desc'		=> __('Select a width in pixels for the bottom border.', 'themeblvd'),
+				'std'		=> '1px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'		=> 'px',
+					'min'		=> '1',
+					'max'		=> '10'
+				),
+				'class'		=> 'hide receiver'
+			),
+			'sub_group_end_3' => array(
+				'id'		=> 'sub_group_end_3',
+				'type' 		=> 'subgroup_end'
+			),
+			'sub_group_end_2' => array(
+				'id'		=> 'sub_group_end_2',
+				'type' 		=> 'subgroup_end'
+			)
+		),
+		'header' => array(
+			'sub_group_start_4' => array(
+				'id'		=> 'sub_group_start_4',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -171,8 +272,8 @@ function jumpstart_ex_options() {
 				'select'	=> 'textures',
 				'class'		=> 'hide receiver receiver-texture'
 			),
-			'sub_group_start_3' => array(
-				'id'		=> 'sub_group_start_3',
+			'sub_group_start_5' => array(
+				'id'		=> 'sub_group_start_5',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-texture'
 			),
@@ -196,12 +297,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'subgroup_end_3' => array(
-				'id'		=> 'subgroup_end_3',
+			'subgroup_end_5' => array(
+				'id'		=> 'subgroup_end_5',
 				'type'		=> 'subgroup_end'
 			),
-			'sub_group_start_4' => array(
-				'id'		=> 'sub_group_start_4',
+			'sub_group_start_6' => array(
+				'id'		=> 'sub_group_start_6',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'select-parallax hide receiver receiver-image'
 			),
@@ -234,12 +335,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide parallax'
 			),
-			'sub_group_end_4' => array(
-				'id'		=> 'sub_group_end_4',
+			'sub_group_end_6' => array(
+				'id'		=> 'sub_group_end_6',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_5' => array(
-				'id'		=> 'sub_group_start_5',
+			'sub_group_start_7' => array(
+				'id'		=> 'sub_group_start_7',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow'
 			),
@@ -278,12 +379,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_5' => array(
-				'id'		=> 'sub_group_end_5',
+			'sub_group_end_7' => array(
+				'id'		=> 'sub_group_end_7',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_6' => array(
-				'id'		=> 'sub_group_start_6',
+			'sub_group_start_8' => array(
+				'id'		=> 'sub_group_start_8',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'section-bg-slideshow hide receiver receiver-slideshow'
 			),
@@ -301,8 +402,8 @@ function jumpstart_ex_options() {
 				'type' 		=> 'select',
 				'select'	=> 'crop'
 			),
-			'sub_group_start_7' => array(
-				'id'		=> 'sub_group_start_7',
+			'sub_group_start_9' => array(
+				'id'		=> 'sub_group_start_9',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -326,20 +427,20 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_7' => array(
-				'id'		=> 'sub_group_end_7',
+			'sub_group_end_9' => array(
+				'id'		=> 'sub_group_end_9',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_6' => array(
-				'id'		=> 'sub_group_end_6',
+			'sub_group_end_8' => array(
+				'id'		=> 'sub_group_end_8',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_2' => array(
-				'id'		=> 'sub_group_end_2',
+			'sub_group_end_4' => array(
+				'id'		=> 'sub_group_end_4',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_8' => array(
-				'id'		=> 'sub_group_start_8',
+			'sub_group_start_10' => array(
+				'id'		=> 'sub_group_start_10',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -372,12 +473,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_8' => array(
-				'id'		=> 'sub_group_end_8',
+			'sub_group_end_10' => array(
+				'id'		=> 'sub_group_end_10',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_9' => array(
-				'id'		=> 'sub_group_start_9',
+			'sub_group_start_11' => array(
+				'id'		=> 'sub_group_start_11',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -410,14 +511,14 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_9' => array(
-				'id'		=> 'sub_group_end_9',
+			'sub_group_end_11' => array(
+				'id'		=> 'sub_group_end_11',
 				'type' 		=> 'subgroup_end'
 			)
 		),
 		'menu' => array(
-			'sub_group_start_10' => array(
-				'id'		=> 'sub_group_start_10',
+			'sub_group_start_12' => array(
+				'id'		=> 'sub_group_start_12',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -463,8 +564,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient receiver-gradient_glassy'
 			),
-			'sub_group_end_10' => array(
-				'id'		=> 'sub_group_end_10',
+			'sub_group_end_12' => array(
+				'id'		=> 'sub_group_end_12',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_hover_bg_color' => array(
@@ -522,8 +623,8 @@ function jumpstart_ex_options() {
 					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
-			'sub_group_start_11' => array(
-				'id'		=> 'sub_group_start_11',
+			'sub_group_start_13' => array(
+				'id'		=> 'sub_group_start_13',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -556,8 +657,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_11' => array(
-				'id'		=> 'sub_group_end_11',
+			'sub_group_end_13' => array(
+				'id'		=> 'sub_group_end_13',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_text_shadow' => array(
@@ -574,8 +675,8 @@ function jumpstart_ex_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_12' => array(
-				'id'		=> 'sub_group_start_12',
+			'sub_group_start_14' => array(
+				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -597,8 +698,8 @@ function jumpstart_ex_options() {
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_12' => array(
-				'id'		=> 'sub_group_end_12',
+			'sub_group_end_14' => array(
+				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end',
 			)
 		),
@@ -637,8 +738,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_13' => array(
-				'id'		=> 'sub_group_start_13',
+			'sub_group_start_15' => array(
+				'id'		=> 'sub_group_start_15',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -703,12 +804,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_13' => array(
-				'id'		=> 'sub_group_end_13',
+			'sub_group_end_15' => array(
+				'id'		=> 'sub_group_end_15',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_14' => array(
-				'id'		=> 'sub_group_start_14',
+			'sub_group_start_16' => array(
+				'id'		=> 'sub_group_start_16',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -741,12 +842,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_14' => array(
-				'id'		=> 'sub_group_end_14',
+			'sub_group_end_16' => array(
+				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_15' => array(
-				'id'		=> 'sub_group_start_15',
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -779,8 +880,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_15' => array(
-				'id'		=> 'sub_group_end_15',
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -900,6 +1001,7 @@ function jumpstart_ex_options() {
 	themeblvd_add_option_tab( 'styles', __('Styles', 'themeblvd'), true );
 
 	themeblvd_add_option_section( 'styles', 'su_general',		__('General', 'themeblvd'), 	null, $options['general'] );
+	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
 	themeblvd_add_option_section( 'styles', 'su_header',		__('Header', 'themeblvd'),		null, $options['header'] );
 	themeblvd_add_option_section( 'styles', 'su_menu',			__('Main Menu', 'themeblvd'),	null, $options['menu'] );
 	themeblvd_add_option_section( 'styles', 'su_menu_mobile',	__('Mobile Menu', 'themeblvd'),	null, $options['menu_mobile'] );
@@ -910,77 +1012,6 @@ function jumpstart_ex_options() {
 
 }
 add_action('after_setup_theme', 'jumpstart_ex_options');
-
-/**
- * Add main menu toggle to the top of theme.
- */
-function jumpstart_ex_menu_toggle() {
-
-	echo '<div id="primary-menu-toggle">';
-
-	echo '<a href="#" id="primary-menu-open" class="btn-navbar open">';
-	echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' );
-	echo '</a>';
-
-	echo '<a href="#" id="primary-menu-close" class="btn-navbar close">';
-	echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' );
-	echo '</a>';
-
-	echo '</div>';
-}
-add_action('themeblvd_before', 'jumpstart_ex_menu_toggle');
-
-/**
- * Remove top of the header
- */
-remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
-
-/**
- * Add header text, search, and social icons to header
- */
-function jumpstart_ex_header_addon() {
-
-	$header_text = themeblvd_get_option('header_text');
-
-	$class = 'header-addon';
-
-	if ( $header_text ) {
-		$class .= ' header-addon-with-text';
-	}
-
-	printf('<div class="%s">', $class);
-
-	// Header text
-	if ( $header_text ) {
-		printf('<div class="header-text">%s</div>', $header_text);
-	}
-
-	echo '<ul class="header-top-nav list-unstyled">';
-
-	// Search form popup
-	if ( themeblvd_get_option('searchform') == 'show' ) {
-		printf('<li>%s</li>', themeblvd_get_search_popup());
-	}
-
-	// Contact icons. Note: We not using themeblvd_get_contact_bar()
-	// to account for the "suck up" header and outputting extra
-	// contact icon set.
-	echo '<li>';
-	themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile', 'tooltip' => 'top') );
-	echo '</li>';
-
-	// WPML switcher
-	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
-		echo '<li>';
-		do_action('icl_language_selector');
-		echo '</li>';
-	}
-
-	echo '</ul>';
-	echo '</div><!-- .header-addon (end) -->';
-
-}
-add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
 
 /**
  * Filter global config
@@ -1039,16 +1070,6 @@ function jumpstart_ex_body_class($class) {
 
 }
 add_filter('body_class', 'jumpstart_ex_body_class');
-
-/**
- * Height of the header. Used with "suck up" feature.
- *
- * @since 2.0.0
- */
-function jumpstart_ex_top_height_addend() {
-	return 100;  /* logo height gets added to this */
-}
-add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend');
 
 /**
  * Include Google fonts, if needed
@@ -1313,6 +1334,63 @@ function jumpstart_ex_css() {
 			$print .= "}\n";
 		}
 
+		if ( themeblvd_get_option('header_info') == 'header_addon' && themeblvd_get_option('header_bg_color_brightness') == 'dark' ) {
+			$print .= ".header-addon {\n";
+			$print .= "\tcolor: #ffffff;\n";
+			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+			$print .= "}\n";
+			$print .= ".header-top-nav > li {\n";
+			$print .= "\tborder-color: rgba(0,0,0,.4);\n";
+			$print .= "}\n";
+		}
+
+		// Header top bar
+		if ( themeblvd_get_option('header_info') == 'header_top' ) {
+
+			$options = array();
+			$options['bg_type'] = 'color';
+			$options['bg_color'] = themeblvd_get_option('top_bg_color');
+			$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
+			$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
+			$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
+			$options['bg_color_opacity'] = themeblvd_get_option('top_bg_color_opacity');
+
+			$styles = themeblvd_get_display_inline_style( $options, 'external' );
+
+			if ( ! empty( $styles['general'] ) ) {
+
+				$print .= ".header-top {\n";
+
+				foreach ( $styles['general'] as $prop => $value ) {
+					$prop = str_replace('-2', '', $prop);
+					$print .= sprintf("\t%s: %s;\n", $prop, $value);
+				}
+
+				if ( themeblvd_get_option('top_bg_color_brightness') == 'dark' ) {
+					$print .= "\tcolor: #ffffff;\n";
+					$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+				} else {
+					$print .= "\tcolor: #666666;\n";
+				}
+
+				$print .= "}\n";
+
+				$print .= ".tb-search-popup .search-popup {\n";
+				$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
+				$print .= "}\n";
+
+				$print .= ".tb-search-popup.bottom.left .search-popup > .arrow:after,\n";
+				$print .= ".tb-search-popup.bottom.right .search-popup > .arrow:after {\n";
+				$print .= sprintf("\tborder-bottom-color: %s;\n", $options['bg_color']);
+				$print .= "}\n";
+
+				$print .= ".tb-search-popup.top.left .search-popup > .arrow:after,\n";
+				$print .= ".tb-search-popup.top.right .search-popup > .arrow:after {\n";
+				$print .= sprintf("\tborder-top-color: %s;\n", $options['bg_color']);
+				$print .= "}\n";
+
+			}
+		}
 
 	}
 
@@ -1561,6 +1639,7 @@ function jumpstart_ex_css() {
 		$print .= "#tb-side-menu-wrapper .tb-side-menu span,\n";
 		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,\n";
 		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active,\n";
+		$print .= "#tb-side-menu-wrapper .header-text,\n";
 		$print .= "#tb-side-menu-wrapper .tb-search .search-input {\n";
 		$print .= "\tcolor: #666666;\n";
 		$print .= "}\n";
@@ -1665,6 +1744,23 @@ function jumpstart_ex_footer_class( $class ) {
 add_filter('themeblvd_footer_class', 'jumpstart_ex_footer_class');
 
 /**
+ * Height of the header. Used with "suck up" feature.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_ex_top_height_addend( $addend ) {
+
+	$addend = 158;
+
+	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
+		$addend = 90; /* logo height gets added to this */
+	}
+
+	return $addend;
+}
+add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend');
+
+/**
  * Add any outputted HTML needed for header styling
  * options to work.
  *
@@ -1699,3 +1795,70 @@ function jumpstart_ex_header_top() {
 
 }
 add_action( 'themeblvd_header_top', 'jumpstart_ex_header_top', 5 );
+
+/**
+ * If user has selected to have the header info
+ * within the content of the header, let's remove
+ * it from the themeblvd_header_top action, and move
+ * to the themeblvd_header_addon action.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_ex_header_info() {
+	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
+		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
+		add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
+	}
+}
+add_action('wp', 'jumpstart_ex_header_info');
+
+/**
+ * Add header text, search, and social icons to header content area.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_ex_header_addon() {
+
+	if ( ! themeblvd_has_header_info() ) {
+		return;
+	}
+
+	$header_text = themeblvd_get_option('header_text');
+
+	$class = 'header-addon';
+
+	if ( $header_text ) {
+		$class .= ' header-addon-with-text';
+	}
+
+	printf('<div class="%s">', $class);
+
+	echo '<ul class="header-top-nav list-unstyled">';
+
+	// Search form popup
+	if ( themeblvd_get_option('searchform') == 'show' ) {
+		printf('<li>%s</li>', themeblvd_get_search_popup());
+	}
+
+	// Contact icons. Note: We're not using themeblvd_get_contact_bar()
+	// to account for the "suck up" header and outputting extra
+	// contact icon set.
+	echo '<li>';
+	themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') );
+	echo '</li>';
+
+	// WPML switcher
+	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
+		echo '<li>';
+		do_action('icl_language_selector');
+		echo '</li>';
+	}
+
+	echo '</ul>';
+
+	// Header text
+	themeblvd_header_text();
+
+	echo '</div><!-- .header-addon (end) -->';
+
+}

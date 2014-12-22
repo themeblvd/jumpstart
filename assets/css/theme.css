@@ -116,6 +116,7 @@
 /* Header Content */
 .header-content > .wrap {
 	padding: 20px;
+	position: relative;
 }
 .header-content .header-logo {
 	float: left;
@@ -182,7 +183,8 @@
 	border-right: 1px solid #000000;
 }
 #tb-side-menu-wrapper .tb-side-menu a,
-#tb-side-menu-wrapper .tb-side-menu span {
+#tb-side-menu-wrapper .tb-side-menu span,
+#tb-side-menu-wrapper .header-text {
 	color: #ffffff;
 }
 #tb-side-menu-wrapper .tb-side-menu a:hover,
@@ -685,16 +687,6 @@ article.page {
 
 	/* Top */
 	.header-top {
-		padding: 12px 50px;
-	}
-	.header-top > .wrap {
-		padding: 0;
-	}
-	.header-top .header-text {
-		float: none;
-		text-align: center;
-	}
-	.header-top .header-top-nav {
 		display: none;
 	}
 	.header-content {

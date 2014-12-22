@@ -109,10 +109,10 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
 
 	if ( $trans && themeblvd_config('suck_up') ) {
 
-		$args = wp_parse_args( $args, array(
+		$args = wp_parse_args(array(
 			'style' => themeblvd_get_option( 'trans_social_media_style', null, 'flat' ),
 			'class'	=> 'social-trans'
-		));
+		), $args);
 
 		echo themeblvd_get_contact_bar( themeblvd_get_option('trans_social_media'), $args );
 	}
@@ -193,10 +193,11 @@ function themeblvd_get_header_text() {
 	$output = '';
 
 	if ( $text = themeblvd_get_option('header_text') ) {
-		$output = sprintf( '<div class="header-text">%s</div>', $text );
+		$text = apply_filters( 'themeblvd_header_text', $text);
+		$output = sprintf( '<div class="header-text to-mobile">%s</div>', $text );
 	}
 
-	return apply_filters( 'themeblvd_header_text', $output );
+	return apply_filters( 'themeblvd_header_text_output', $output );
 }
 
 /**

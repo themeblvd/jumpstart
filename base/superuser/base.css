@@ -13,6 +13,30 @@ Author URI: http://www.themeblvd.com
 	text-shadow: none;
 }
 
+/* Header Addon */
+.header-addon {
+	margin-top: -12px;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+}
+.rtl .header-addon {
+	right: initial;
+	left: 20px;
+}
+.header-addon.header-addon-with-text {
+	margin-top: -27px;
+}
+.header-addon .header-text {
+	padding: 6px 0 0 0;
+	text-align: right;
+}
+@media (max-width: 767px) {
+	.header-addon {
+		display: none;
+	}
+}
+
 /* BG shade */
 .site-header.has-bg-shade > .wrap > .bg-shade {
 	position: absolute;
