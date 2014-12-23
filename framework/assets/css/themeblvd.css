@@ -436,7 +436,7 @@ img[class*="wp-image-"] {
 }
 img.size-full {
 	max-width: 100%;
-	width: auto; /* Prevent stretching of full-size images in IE8 */
+	width: auto\9; /* Prevent stretching of full-size images in IE8- */
 }
 .entry-content img.wp-smiley {
 	border: none;
