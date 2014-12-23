@@ -587,6 +587,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					if ( ! empty( $value['video'] ) ) {
 						$args['type'] = 'video';
 					}
+
+					if ( ! empty( $value['media'] ) ) { // ... @TODO Framework javascript currently doesn't support this
+						$args['type'] = 'media';
+					}
 				}
 
 				$output .= themeblvd_media_uploader( $args );
