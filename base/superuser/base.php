@@ -1603,20 +1603,6 @@ function jumpstart_su_css() {
 
 				$print .= "}\n";
 
-				$print .= ".tb-search-popup .search-popup {\n";
-				$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
-				$print .= "}\n";
-
-				$print .= ".tb-search-popup.bottom.left .search-popup > .arrow:after,\n";
-				$print .= ".tb-search-popup.bottom.right .search-popup > .arrow:after {\n";
-				$print .= sprintf("\tborder-bottom-color: %s;\n", $options['bg_color']);
-				$print .= "}\n";
-
-				$print .= ".tb-search-popup.top.left .search-popup > .arrow:after,\n";
-				$print .= ".tb-search-popup.top.right .search-popup > .arrow:after {\n";
-				$print .= sprintf("\tborder-top-color: %s;\n", $options['bg_color']);
-				$print .= "}\n";
-
 			}
 		}
 
