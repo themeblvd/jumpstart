@@ -158,11 +158,11 @@ jQuery(document).ready(function($) {
 
 		// Build sticky menu
 		var $sticky_spy = $(themeblvd.sticky),
-			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"></div></div>').appendTo( $sticky_spy );
+			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy );
 
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
-		$header.find('.tb-search-popup').clone().appendTo( $sticky.find('.sticky-wrap') );
-		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap') );
+		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
+		$header.find('.tb-floater').clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
 
 		// Sticky menu, make selector dynamic
 		$sticky_spy.viewportChecker({

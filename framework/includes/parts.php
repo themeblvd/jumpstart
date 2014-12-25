@@ -127,12 +127,90 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
  * @param array $args Optional argments to override default behavior
  * @return string $output HTML to output for searchform
  */
+function themeblvd_get_contact_popup( $args = array() ) {
+
+	// Setup arguments
+	$defaults = apply_filters('themeblvd_contact_popup_defaults', array(
+		'open'			=> 'envelope',	// FontAwesome icon to open
+		'close'			=> 'close',		// FontAwesome icon to close
+		'placement-x'	=> '', 			// left, right
+		'placement-y'	=> 'bottom', 	// top, bottom
+		'class'			=> '', 			// Optional CSS class to add
+		'buttons'		=> array()
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	$output = '';
+
+	$buttons = $args['buttons'];
+
+	if ( ! $buttons ) {
+		$buttons = themeblvd_get_option('social_media');
+	}
+
+	if ( ! $buttons ) {
+		return $output;
+	}
+
+	$x = $args['placement-x'];
+
+	if ( ! $x ) {
+		if ( is_rtl() ) {
+			$x = 'right';
+		} else {
+			$x = 'left';
+		}
+	}
+
+	$class = sprintf( 'tb-floater tb-contact-popup %s %s', $x, $args['placement-y'] );
+
+	if ( $args['class'] ) {
+		$class .= $args['class'];
+	}
+
+	$output .= sprintf( '<div class="%s">', $class );
+
+	// Trigger Button
+	$output .= sprintf( '<a href="#" class="floater-trigger contact-trigger" data-open="%1$s" data-close="%2$s"><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+
+	// Search popup
+	$output .= '<div class="floater-popup contact-popup">';
+	$output .= '<span class="arrow"></span>';
+	$output .= themeblvd_get_contact_bar($args['buttons'], $args);
+	$output .= '</div><!-- .contact-holder (end) -->';
+
+	$output .= '</div><!-- .tb-contact-popup (end) -->';
+
+	return apply_filters( 'themeblvd_contact_popup', $output, $args );
+}
+
+/**
+ * Contact buttons popup, uses themeblvd_get_contact_bar for actual
+ * contact icon output.
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ */
+function themeblvd_contact_popup( $args = array() ) {
+	echo themeblvd_get_contact_popup( $args );
+}
+
+/**
+ * Searchform popup, uses searchform.php for actual
+ * search form portion
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ * @return string $output HTML to output for searchform
+ */
 function themeblvd_get_search_popup( $args = array() ) {
 
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_search_popup_defaults', array(
 		'open'			=> 'search',	// FontAwesome icon to open
-		'close'			=> 'times',		// FontAwesome icon to close
+		'close'			=> 'close',		// FontAwesome icon to close
 		'placement-x'	=> '', 			// left, right
 		'placement-y'	=> 'bottom', 	// top, bottom
 		'class'			=> '' 			// Optional CSS class to add
