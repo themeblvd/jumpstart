@@ -1594,24 +1594,26 @@ function themeblvd_do_fa( $str ) {
  */
 function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 'social_media', 'wpml', 'cart') ) {
 
+	$return = false;
+
 	if ( in_array('header_text', $inc) && themeblvd_get_option('header_text') ) {
-		return true;
+		$return = true;
 	}
 
 	if ( in_array('searchform', $inc) && themeblvd_get_option('searchform') == 'show' ) {
-		return true;
+		$return = true;
 	}
 
 	if ( in_array('social_media', $inc) && themeblvd_get_option('social_media') ) {
-		return true;
+		$return = true;
 	}
 
 	if ( in_array('wpml', $inc) && themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
-		return true;
+		$return = true;
 	}
 
 	// @TODO WooCommerce floating cart
 	// if ( in_array('cart', $inc) ) // ...
 
-	return false;
+	return apply_filters('themeblvd_has_header_info', $return, $inc);
 }
