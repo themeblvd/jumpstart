@@ -1,4 +1,5 @@
 <?php
+// ... @TODO To TF?
 /**
  * Enable auto updates and license management.
  *
@@ -9,7 +10,7 @@ function jumpstart_updates_init() {
 		add_action( 'init', 'jumpstart_updates' );
 	}
 }
-add_action( 'after_setup_theme', 'jumpstart_updates_init' );
+// add_action( 'after_setup_theme', 'jumpstart_updates_init' );
 
 /**
  * Setup auto updates.
