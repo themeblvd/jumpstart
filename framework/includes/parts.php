@@ -162,11 +162,7 @@ function themeblvd_get_contact_popup( $args = array() ) {
 		}
 	}
 
-	$class = sprintf( 'tb-floater tb-contact-popup %s %s', $x, $args['placement-y'] );
-
-	if ( $args['class'] ) {
-		$class .= $args['class'];
-	}
+	$class = sprintf( 'tb-floater tb-contact-popup %s %s %s', $x, $args['placement-y'], $args['class'] );
 
 	$output .= sprintf( '<div class="%s">', $class );
 
