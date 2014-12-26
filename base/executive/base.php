@@ -1249,10 +1249,8 @@ function jumpstart_ex_css() {
 
 	if ( $boxed  ) {
 
-		$print .= ".js-boxed #container {\n";
-		$print .= sprintf( "\tbox-shadow: 0 0 %s %s;\n", themeblvd_get_option('layout_shadow_size'), themeblvd_get_rgb( '#000000', themeblvd_get_option('layout_shadow_opacity') ) );
-		$print .= sprintf( "\tborder: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
-		$print .= "}\n";
+		$print .= sprintf( "\tborder-right: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
+		$print .= sprintf( "\tborder-left: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
 
 		$border = intval(themeblvd_get_option('layout_border_width'));
 
@@ -1397,19 +1395,28 @@ function jumpstart_ex_css() {
 
 		$print .= "}\n";
 
+		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
+		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
+
 		if ( $brightness == 'dark' ) {
-
-			$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
-			$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
 			$print .= "\tcolor: #ffffff;\n";
-			$print .= "}\n";
+		} else {
+			$print .= "\tcolor: #333333;\n";
+		}
 
-			$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
+		$print .= "}\n";
+
+		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
+
+		if ( $brightness == 'dark' ) {
 			$print .= "\tbackground-color: #000000;\n";
 			$print .= "\tbackground-color: rgba(255,255,255,.1);\n";
-			$print .= "}\n";
-
+		} else {
+			$print .= "\tbackground-color: #ffffff;\n";
+			$print .= "\tbackground-color: rgba(0,0,0,.1);\n";
 		}
+
+		$print .= "}\n";
 
 	}
 

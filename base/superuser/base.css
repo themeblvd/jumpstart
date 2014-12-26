@@ -91,15 +91,6 @@ Author URI: http://www.themeblvd.com
     border-top-color: rgba(0,0,0,.2);
 }
 
-/* Sticky Menu */
-.tb-sticky-menu .tb-primary-menu > li > .menu-btn,
-.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
-	color: #666666;
-}
-.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
-	background-color: rgba(0,0,0,.1);
-}
-
 /* Hidden Responsive Side Menu */
 #tb-side-menu-wrapper,
 #tb-side-menu-wrapper .tb-side-menu > li,
@@ -130,9 +121,6 @@ Author URI: http://www.themeblvd.com
 /* =Bottom
 -----------------------------------------------*/
 
-.site-footer {
-	padding: 20px 0;
-}
 .site-footer.has-bg {
 	padding: 30px 0;
 }
@@ -143,23 +131,48 @@ Author URI: http://www.themeblvd.com
 .js-boxed #wrapper {
 	padding: 20px 0;
 }
+@media (max-width: 480px) {
+	.js-boxed #wrapper {
+		padding: 0;
+	}
+}
 .js-boxed #container {
 	background: #ffffff;
-	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1170px;
+}
+.js-boxed.content_dark #container {
+	background: #222222;
+}
+@media (max-width: 1200px) {
+	.js-boxed #container {
+		max-width: 960px;
+	}
+}
+@media (max-width: 992px) {
+	.js-boxed #container {
+		max-width: 738px;
+	}
+}
+@media (max-width: 767px) {
+	.js-boxed #container {
+		max-width: 480px;
+	}
 }
 .js-boxed .tb-sticky-menu {
 	margin-left: -585px;
 	max-width: 1170px;
 	left: 50%;
 }
+@media (max-width: 1200px) {
+	.js-boxed .tb-sticky-menu {
+		margin-left: -480px;
+		max-width: 960px;
+	}
+}
 .js-boxed .tb-sticky-menu > .wrap {
 	padding: 0 15px;
-}
-.js-boxed.content_dark #container {
-	background: #222222;
 }
 .js-boxed .header-top > .wrap,
 .js-boxed .header-above > .wrap,
@@ -185,35 +198,8 @@ Author URI: http://www.themeblvd.com
 .js-boxed .site-footer {
 	padding: 30px;
 }
-@media (max-width: 1200px) {
-	.js-boxed #container {
-		max-width: 960px;
-	}
-	.js-boxed .tb-sticky-menu {
-		margin-left: -480px;
-		max-width: 960px;
-	}
-
-}
-@media (max-width: 992px) {
-	.js-boxed #container {
-		max-width: 738px;
-	}
-}
-@media (max-width: 767px) {
-	.js-boxed #container {
-		max-width: 480px;
-	}
-	.header-above > .wrap,
-	.header-content > .wrap,
-	.header-nav > .wrap,
-	.tb-featured-banner > .wrap,
-	.site-inner > .wrap,
-	.element-section > .element,
-	.site-footer > .wrap {
-		padding-left: 0;
-		padding-right: 0;
-	}
+.js-boxed .site-footer > .wrap {
+	padding: 0;
 }
 
 /* Content Padding */

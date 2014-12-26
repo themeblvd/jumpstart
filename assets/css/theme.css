@@ -5,13 +5,15 @@
  * 2.0 - Top
  *   2.1 - Header Top
  *   2.2 - Header Content
- *   2.3 - Primary Navigation (non-mobile view)
+ *   2.3 - Primary Navigation
  *   2.4 - Level 1
  *   2.5 - Level 2+
  *   2.6 - Sticky Menu
  *   2.7 - Hidden Responsive Side Menu
  *   2.8 - Transparent Header
  * 3.0 - Main
+ *   3.1 - Breadcrumbs
+ *   3.2 - Banner
  * 4.0 - Bottom
  * 5.0 - Content
  *   5.1 - Typography
@@ -44,10 +46,6 @@
  * 9.0 - Widgets
  *   9.1 - Fixed Sidebars
  *   9.2 - Collapsible Widget Areas
- * 10.0 - Responsive
- *   10.1 - Small Desktops
- *   10.2 - Tablets
- *   10.3 - Mobile
  ----------------------------------------------- */
 
 /* =Primary Structure
@@ -66,6 +64,48 @@
 	margin-left: auto;
 	max-width: 1170px;
 }
+@media (max-width: 1200px) {
+	.header-top > .wrap,
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-sticky-menu > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
+		max-width: 960px;
+	}
+}
+@media (max-width: 992px) {
+	.header-top > .wrap,
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
+		max-width: 738px;
+	}
+}
+@media (max-width: 767px) {
+	.header-above > .wrap,
+	.header-content > .wrap,
+	.header-nav > .wrap,
+	.tb-featured-banner > .wrap,
+	.site-inner > .wrap,
+	.element-section > .element,
+	.site-footer > .wrap {
+		max-width: 480px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.site-footer > .wrap {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
 
 /* =Top
 ----------------------------------------------- */
@@ -79,6 +119,11 @@
 .header-top {
 	background: #ffffff;
 	position: relative;
+}
+@media (max-width: 767px) {
+	.header-top {
+		display: none;
+	}
 }
 .header-top > .wrap {
 	padding: 12px 10px;
@@ -118,13 +163,33 @@
 	padding: 20px;
 	position: relative;
 }
-.header-content .header-logo {
+@media (max-width: 767px) {
+	.header-content > .wrap {
+		padding-right: 45px;
+		padding-left: 45px;
+		text-align: center;
+	}
+}
+.header-logo {
 	float: left;
 }
+@media (max-width: 767px) {
+	.header-logo {
+		float: none;
+	}
+}
 
-/* Primary Navigation (non-mobile view) */
+/* Primary Navigation */
 .header-nav {
 	background: #333333;
+}
+@media (max-width: 767px) {
+	.header-nav {
+		display: none;
+	}
+	#primary-menu-toggle {
+		display: block;
+	}
 }
 .tb-primary-menu .menu-btn {
 	display: block;
@@ -147,6 +212,24 @@
 /* @noflip */
 .tb-primary-menu > li.menu-item-has-children > .menu-btn {
 	padding-right: 10px;
+}
+@media (max-width: 1200px) {
+	.tb-primary-menu > li > .menu-btn {
+		padding: 18px 15px;
+	}
+	/* @noflip */
+	.tb-primary-menu > li.menu-item-has-children > .menu-btn {
+		padding-right: 7px;
+	}
+}
+@media (max-width: 992px) {
+	.tb-primary-menu > li > .menu-btn {
+		padding: 18px 10px;
+	}
+	.tb-primary-menu > li.menu-item-has-children > .menu-btn {
+		/* @noflip */
+		padding-right: 5px;
+	}
 }
 
 /* Level 2+ */
@@ -243,10 +326,38 @@
 #main {
 	padding: 20px 0;
 }
+@media (max-width: 992px) {
+	#content {
+		margin-bottom: 30px;
+	}
+}
+
+/* Breadcrumbs */
+@media (max-width: 992px) {
+	.breadcrumb {
+		font-size: 12px;
+		margin-bottom: 0;
+	}
+}
+@media (max-width: 767px) {
+	.breadcrumb {
+		display: none;
+	}
+}
+
+/* Banner */
+@media (max-width: 767px) {
+	#featured-banner {
+		margin-bottom: 20px;
+	}
+}
 
 /* =Bottom
 ----------------------------------------------- */
 
+.site-footer {
+	padding-top: 20px;
+}
 .footer-sub-content {
 	font-size: 12px;
 	padding: 20px 0;
@@ -512,6 +623,13 @@ article.page {
 #respond input[type="url"] {
 	width: 50%;
 }
+@media (max-width: 767px) {
+	#respond input[type="email"],
+	#respond input[type="text"],
+	#respond input[type="url"] {
+		width: 100%;
+	}
+}
 #respond .form-allowed-tags {
 	margin-bottom: 5px;
 }
@@ -598,127 +716,9 @@ article.page {
 	margin-bottom: 30px;
 	padding: 30px;
 }
+.fixed-sidebar .widget:last-child {
+	margin-bottom: 0;
+}
 .fixed-sidebar .widget-title {
 	margin-top: 0;
-}
-
-/* Collapsible Widget Areas */
-/* ... */
-
-/* =Responsive
------------------------------------------------ */
-
-/* Small Desktops */
-@media (max-width: 1200px) {
-
-	.header-top > .wrap,
-	.header-above > .wrap,
-	.header-content > .wrap,
-	.header-nav > .wrap,
-	.tb-sticky-menu > .wrap,
-	.tb-featured-banner > .wrap,
-	.site-inner > .wrap,
-	.element-section > .element,
-	.site-footer > .wrap {
-		max-width: 960px;
-	}
-
-	/* Top */
-	.tb-primary-menu > li > .menu-btn {
-		padding: 18px 15px;
-	}
-	.tb-primary-menu > li.menu-item-has-children > .menu-btn {
-		padding-right: 7px;
-	}
-
-}
-
-/* Tablets */
-@media (max-width: 992px) {
-
-	.header-top > .wrap,
-	.header-above > .wrap,
-	.header-content > .wrap,
-	.header-nav > .wrap,
-	.tb-featured-banner > .wrap,
-	.site-inner > .wrap,
-	.element-section > .element,
-	.site-footer > .wrap {
-		max-width: 738px;
-	}
-
-	/* Top */
-	.header-top {
-		margin: 0 auto;
-		padding-left: 50px;
-	}
-	.tb-primary-menu > li > .menu-btn {
-		padding: 18px 10px;
-	}
-	.tb-primary-menu > li.menu-item-has-children > .menu-btn {
-		padding-right: 5px;
-	}
-
-	/* Main */
-	.breadcrumb {
-		font-size: 12px;
-		margin-bottom: 0;
-	}
-	#content {
-		margin-bottom: 30px;
-	}
-
-}
-
-/* Mobile Devices */
-@media (max-width: 767px) {
-
-	.header-above > .wrap,
-	.header-content > .wrap,
-	.header-nav > .wrap,
-	.tb-featured-banner > .wrap,
-	.site-inner > .wrap,
-	.element-section > .element,
-	.site-footer > .wrap {
-		max-width: 480px;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-
-	/* Top */
-	.header-top {
-		display: none;
-	}
-	.header-content {
-		padding-right: 40px;
-		padding-left: 40px;
-		text-align: center;
-	}
-	.header-content .header-logo {
-		float: none;
-	}
-	#access > .wrap {
-		display: none;
-	}
-	#primary-menu-toggle {
-		display: block;
-	}
-
-	/* Main */
-	.breadcrumb {
-		display: none;
-	}
-
-	/* Content */
-	#featured-banner {
-		margin-bottom: 20px;
-	}
-
-	/* Comments */
-	#respond input[type="email"],
-	#respond input[type="text"],
-	#respond input[type="url"] {
-		width: 100%;
-	}
-
 }
