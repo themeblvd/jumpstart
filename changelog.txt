@@ -5,15 +5,16 @@ Jump Start Changelog
 -----
 
 * Added two new theme bases; see *Appearance > Theme Base*.
+* Added system to check if saved theme options match selected theme base.
 * Added editor stylesheet for editing posts and pages.
 * Added unique HTML ID's to sections of custom layouts like `page-slug-section-1`.
-* Added system to check if saved theme options match selected theme base.
 * Added Portfolios plugin to recommended plugins when installing theme.
-* Added easy integration for FontAwesome icons in header text option.
+* Added integration for FontAwesome icons in header text option by using `%name-of-icon%`.
 * Expanded options for divider component.
 * Fixed responsiveness of Promo Box element.
 * Fixed issues with new Footer Sync feature and using Columns element. Make sure to update Layout Builder plugin to v2.0.2, also.
 * Fixed "color" value of "typography" option type.
+* Fixed Google fonts not getting applied, when set from Theme Options page.
 * Fixed bug with not being able to apply background color opacity to display options for columns in the Columns element.
 * Various little fixes and enhancements to Super User theme base and selecting various options.
 * Fixed bug where controls of Gallery post slider moves entire outer post grid slider.
@@ -24,7 +25,7 @@ Jump Start Changelog
 * Fixed Post Showcase page template pulling crop size for Post Grids.
 * Fixed fatal error with WooCommerce.
 * Little fixes to WPML compatibility.
-* When header top bar is empty, it will not display (i.e. no header text, social icons, or searchform set to show)
+* When header top bar is empty, it will not display (i.e. no header text, social icons, or searchform set to show). Except with Entrepreneur base, will be hidden if there's no header text.
 
 2.0.0-beta1
 -----
