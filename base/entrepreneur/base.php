@@ -864,13 +864,23 @@ function jumpstart_ent_options() {
 				'std'		=> '0',
 				'type' 		=> 'checkbox'
 			)
+		),
+		'css' => array(
+			'custom_styles' =>  array(
+				'id'		=> 'custom_styles',
+				'name' 		=> null,
+				'desc'		=> null,
+				'std'		=> '',
+				'type' 		=> 'code',
+				'lang'		=> 'css'
+			)
 		)
 	));
 
 	themeblvd_add_option_tab( 'styles', __('Styles', 'themeblvd'), true );
 
 	themeblvd_add_option_section( 'styles', 'ent_general',		__('General', 'themeblvd'),		null, $options['general'] );
-	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
+	themeblvd_add_option_section( 'styles', 'ent_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
 	themeblvd_add_option_section( 'styles', 'ent_header',		__('Header', 'themeblvd'),		null, $options['header'] );
 	themeblvd_add_option_section( 'styles', 'ent_menu',			__('Main Menu', 'themeblvd'),	null, $options['menu'] );
 	themeblvd_add_option_section( 'styles', 'ent_menu_mobile',	__('Mobile Menu', 'themeblvd'),	null, $options['menu_mobile'] );
@@ -878,6 +888,7 @@ function jumpstart_ent_options() {
 	themeblvd_add_option_section( 'styles', 'ent_typo',			__('Typography', 'themeblvd'), 	null, $options['typo'] );
 	themeblvd_add_option_section( 'styles', 'ent_buttons',		__('Buttons', 'themeblvd'),		null, $options['buttons'] );
 	themeblvd_add_option_section( 'styles', 'ent_extras',		__('Extras', 'themeblvd'), 		null, $options['extras'] );
+	themeblvd_add_option_section( 'styles', 'ent_css',			__('Custom CSS', 'themeblvd'), 	null, $options['css'] );
 
 }
 add_action('after_setup_theme', 'jumpstart_ent_options');
@@ -1441,6 +1452,13 @@ function jumpstart_ent_css() {
 
 		$print .= "}\n";
 
+	}
+
+	// Custom CSS
+	if ( $custom = themeblvd_get_option('custom_styles') ) {
+		$print .= "\n/* =Custom CSS\n";
+		$print .= "-----------------------------------------------*/\n\n";
+		$print .= $custom;
 	}
 
 	// Final output

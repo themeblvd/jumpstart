@@ -995,20 +995,31 @@ function jumpstart_ex_options() {
 				'std'		=> '0',
 				'type' 		=> 'checkbox'
 			)
+		),
+		'css' => array(
+			'custom_styles' =>  array(
+				'id'		=> 'custom_styles',
+				'name' 		=> null,
+				'desc'		=> null,
+				'std'		=> '',
+				'type' 		=> 'code',
+				'lang'		=> 'css'
+			)
 		)
 	));
 
 	themeblvd_add_option_tab( 'styles', __('Styles', 'themeblvd'), true );
 
-	themeblvd_add_option_section( 'styles', 'su_general',		__('General', 'themeblvd'), 	null, $options['general'] );
-	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
-	themeblvd_add_option_section( 'styles', 'su_header',		__('Header', 'themeblvd'),		null, $options['header'] );
-	themeblvd_add_option_section( 'styles', 'su_menu',			__('Main Menu', 'themeblvd'),	null, $options['menu'] );
-	themeblvd_add_option_section( 'styles', 'su_menu_mobile',	__('Mobile Menu', 'themeblvd'),	null, $options['menu_mobile'] );
-	themeblvd_add_option_section( 'styles', 'su_footer',		__('Footer', 'themeblvd'),		null, $options['footer'] );
-	themeblvd_add_option_section( 'styles', 'su_typo',			__('Typography', 'themeblvd'), 	null, $options['typo'] );
-	themeblvd_add_option_section( 'styles', 'su_buttons',		__('Buttons', 'themeblvd'),		null, $options['buttons'] );
-	themeblvd_add_option_section( 'styles', 'su_extras',		__('Extras', 'themeblvd'), 		null, $options['extras'] );
+	themeblvd_add_option_section( 'styles', 'ex_general',		__('General', 'themeblvd'), 	null, $options['general'] );
+	themeblvd_add_option_section( 'styles', 'ex_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
+	themeblvd_add_option_section( 'styles', 'ex_header',		__('Header', 'themeblvd'),		null, $options['header'] );
+	themeblvd_add_option_section( 'styles', 'ex_menu',			__('Main Menu', 'themeblvd'),	null, $options['menu'] );
+	themeblvd_add_option_section( 'styles', 'ex_menu_mobile',	__('Mobile Menu', 'themeblvd'),	null, $options['menu_mobile'] );
+	themeblvd_add_option_section( 'styles', 'ex_footer',		__('Footer', 'themeblvd'),		null, $options['footer'] );
+	themeblvd_add_option_section( 'styles', 'ex_typo',			__('Typography', 'themeblvd'), 	null, $options['typo'] );
+	themeblvd_add_option_section( 'styles', 'ex_buttons',		__('Buttons', 'themeblvd'),		null, $options['buttons'] );
+	themeblvd_add_option_section( 'styles', 'ex_extras',		__('Extras', 'themeblvd'), 		null, $options['extras'] );
+	themeblvd_add_option_section( 'styles', 'ex_css',			__('Custom CSS', 'themeblvd'), 	null, $options['css'] );
 
 }
 add_action('after_setup_theme', 'jumpstart_ex_options');
@@ -1679,6 +1690,13 @@ function jumpstart_ex_css() {
 
 		$print .= "}\n";
 
+	}
+
+	// Custom CSS
+	if ( $custom = themeblvd_get_option('custom_styles') ) {
+		$print .= "\n/* =Custom CSS\n";
+		$print .= "-----------------------------------------------*/\n\n";
+		$print .= $custom;
 	}
 
 	// Final output

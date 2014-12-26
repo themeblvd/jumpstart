@@ -1240,6 +1240,16 @@ function jumpstart_su_options() {
 				'std'		=> '0',
 				'type' 		=> 'checkbox'
 			)
+		),
+		'css' => array(
+			'custom_styles' =>  array(
+				'id'		=> 'custom_styles',
+				'name' 		=> null,
+				'desc'		=> null,
+				'std'		=> '',
+				'type' 		=> 'code',
+				'lang'		=> 'css'
+			)
 		)
 	));
 
@@ -1254,6 +1264,7 @@ function jumpstart_su_options() {
 	themeblvd_add_option_section( 'styles', 'su_typo',			__('Typography', 'themeblvd'), 	null, $options['typo'] );
 	themeblvd_add_option_section( 'styles', 'su_buttons',		__('Buttons', 'themeblvd'),		null, $options['buttons'] );
 	themeblvd_add_option_section( 'styles', 'su_extras',		__('Extras', 'themeblvd'), 		null, $options['extras'] );
+	themeblvd_add_option_section( 'styles', 'su_css',			__('Custom CSS', 'themeblvd'), 	null, $options['css'] );
 
 }
 add_action('after_setup_theme', 'jumpstart_su_options');
@@ -1973,6 +1984,13 @@ function jumpstart_su_css() {
 
 		$print .= "}\n";
 
+	}
+
+	// Custom CSS
+	if ( $custom = themeblvd_get_option('custom_styles') ) {
+		$print .= "\n/* =Custom CSS\n";
+		$print .= "-----------------------------------------------*/\n\n";
+		$print .= $custom;
 	}
 
 	// Final output
