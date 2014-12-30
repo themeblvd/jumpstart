@@ -1,6 +1,11 @@
 Jump Start Changelog
 ====================
 
+2.0.0-beta3
+-----
+
+--------------------------------------------------------------
+
 2.0.0-beta2
 -----
 
@@ -27,6 +32,8 @@ Jump Start Changelog
 * Fixed fatal error with WooCommerce.
 * Little fixes to WPML compatibility.
 * When header top bar is empty, it will not display (i.e. no header text, social icons, or searchform set to show). Except with Entrepreneur base, will be hidden if there's no header text.
+
+--------------------------------------------------------------
 
 2.0.0-beta1
 -----
