@@ -134,7 +134,7 @@ add_action('after_setup_theme', 'jumpstart_bases');
 function jumpstart_base_check() {
 
 	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != get_option(get_template().'_base') ) {
-		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please re-save your theme options page.', 'themeblvd' ) );
+		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ) );
 	}
 
 }

@@ -72,9 +72,10 @@ class Theme_Blvd_Bases {
 
 		// Check to make sure saved theme options match theme base
 		$settings = get_option( themeblvd_get_option_name() );
+		$base = get_option( get_template().'_base' );
 
-		if ( empty($settings['theme_base']) || $settings['theme_base'] != get_option(get_template().'_base') ) {
-			echo '<div class="error"><p><strong>'.__( 'Your saved options do not currently match the theme base you\'ve selected. Please re-save your theme options page.', 'themeblvd' ).'</strong></p></div>';
+		if ( $base && ( empty($settings['theme_base']) || $settings['theme_base'] != $base ) ) {
+			echo '<div class="error"><p><strong>'.__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ).'</strong></p></div>';
 		}
 
 		$theme = wp_get_theme(get_template());

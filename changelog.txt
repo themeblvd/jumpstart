@@ -4,6 +4,8 @@ Jump Start Changelog
 2.0.0-beta3
 -----
 
+* Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
+
 --------------------------------------------------------------
 
 2.0.0-beta2
