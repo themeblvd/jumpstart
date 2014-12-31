@@ -264,33 +264,35 @@
 					});
 
 					// jQuery UI slider
-					$this.find('.jquery-ui-slider').each(function(){
+					if ( $.isFunction( $.fn.slider ) ) {
+						$this.find('.jquery-ui-slider').each(function(){
 
-						var $el = $(this),
-							$input = $el.closest('.jquery-ui-slider-wrap').find('.slider-input'),
-							units = $el.data('units');
+							var $el = $(this),
+								$input = $el.closest('.jquery-ui-slider-wrap').find('.slider-input'),
+								units = $el.data('units');
 
-						$el.slider({
-							min: $el.data('min'),
-							max: $el.data('max'),
-							step: $el.data('step'),
-							value: parseInt($input.val()),
-							create: function( event, ui ) {
+							$el.slider({
+								min: $el.data('min'),
+								max: $el.data('max'),
+								step: $el.data('step'),
+								value: parseInt($input.val()),
+								create: function( event, ui ) {
 
-								$el.find('.ui-slider-handle').append('<span class="display-value"><span class="display-value-text"></span><span class="display-value-arrow"></span></span>');
+									$el.find('.ui-slider-handle').append('<span class="display-value"><span class="display-value-text"></span><span class="display-value-arrow"></span></span>');
 
-								var $display = $el.find('.display-value');
-								$display.css('margin-left', '-'+($display.outerWidth()/2)+'px');
-								$display.find('.display-value-text').text( $input.val() );
+									var $display = $el.find('.display-value');
+									$display.css('margin-left', '-'+($display.outerWidth()/2)+'px');
+									$display.find('.display-value-text').text( $input.val() );
 
-							},
-							slide: function( event, ui ) {
-								$input.val( ui.value+units );
-								$el.find('.display-value-text').text( ui.value+units );
-							}
+								},
+								slide: function( event, ui ) {
+									$input.val( ui.value+units );
+									$el.find('.display-value-text').text( ui.value+units );
+								}
+							});
+
 						});
-
-					});
+					}
 
 					// WP Color Picker
 					if ( $.isFunction( $.fn.wpColorPicker ) ) {
