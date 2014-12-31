@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.0-beta3
 -----
 
+* Darkened body text in WordPress page editor.
 * Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
 
 --------------------------------------------------------------
