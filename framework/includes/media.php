@@ -64,6 +64,12 @@ function themeblvd_get_image_sizes( $size = '' ) {
 			'height' 	=> 800,
 			'crop' 		=> true
 		),
+		'tb_square_small' => array(
+			'name' 		=> __( 'Theme Blvd S Square', 'themeblvd' ),
+			'width' 	=> 500,
+			'height' 	=> 500,
+			'crop' 		=> true
+		),
 		'slider-x-large' => array(
 			'name' 		=> __( 'Slider Extra Large', 'themeblvd' ),
 			'width' 	=> 1200,
