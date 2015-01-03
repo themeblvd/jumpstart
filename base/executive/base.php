@@ -1805,19 +1805,19 @@ function jumpstart_ex_header_top() {
 	}
 
 }
-add_action( 'themeblvd_header_top', 'jumpstart_ex_header_top', 5 );
+add_action( 'themeblvd_header', 'jumpstart_ex_header_top', 5 );
 
 /**
  * If user has selected to have the header info
  * within the content of the header, let's remove
- * it from the themeblvd_header_top action, and move
+ * it from the themeblvd_header action, and move
  * to the themeblvd_header_addon action.
  *
  * @since 2.0.0
  */
 function jumpstart_ex_header_info() {
 	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
-		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
+		remove_action('themeblvd_header', 'themeblvd_header_top_default');
 		add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
 	}
 }

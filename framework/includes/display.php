@@ -107,8 +107,15 @@ function themeblvd_header_content_default() {
 	<div class="header-content" role="banner">
 		<div class="wrap clearfix">
 			<?php
-			themeblvd_header_logo();
-			themeblvd_header_addon();
+			/**
+			 * @hooked themeblvd_header_logo_default - 10
+			 */
+			do_action('themeblvd_header_logo');
+
+			/**
+			 * @hooked null
+			 */
+			do_action('themeblvd_header_addon');
 			?>
 		</div><!-- .wrap (end) -->
 	</div><!-- .header-content (end) -->
@@ -159,8 +166,10 @@ function themeblvd_header_menu_default() {
 	?>
 	<nav id="access" class="header-nav" role="navigation">
 		<div class="wrap clearfix">
-			<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') ); ?>
-			<?php themeblvd_header_menu_addon(); ?>
+			<?php
+			wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') );
+			do_action('themeblvd_header_menu_addon');
+			?>
 		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->
 	<?php

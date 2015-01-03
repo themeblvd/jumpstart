@@ -17,18 +17,31 @@
 
 		// End main area (if not a custom layout)
 		if ( ! themeblvd_config( 'builder_post_id' ) ) {
-			themeblvd_main_bottom();
-			themeblvd_main_end();
+
+			/**
+			 * @hooked themeblvd_main_end_default - 10
+			 */
+			do_action('themeblvd_main_end');
+
+			/**
+			 * @hooked themeblvd_main_bottom_default - 10
+			 */
+			do_action('themeblvd_main_bottom');
+
 		}
 
 		// Featured area (below)
 		if ( themeblvd_config( 'featured_below' ) ) {
-			themeblvd_featured_below_start();
-			themeblvd_featured_below();
-			themeblvd_featured_below_end();
+
+			/**
+			 * @hooked themeblvd_featured_below_start_default - 5
+			 * @hooked themeblvd_featured_below_end_default - 20
+			 */
+			do_action('themeblvd_featured_below');
+
 		}
 
-		themeblvd_footer_before();
+		do_action('themeblvd_footer_before');
 		?>
 
 		<!-- FOOTER (start) -->
@@ -48,12 +61,12 @@
 						<div class="wrap clearfix">
 							<?php
 							/**
-							 * Display footer elements.
+							 * @hooked themeblvd_footer_content_default - 10
+							 * @hooked themeblvd_footer_copyright_default - 20
+							 * @hooked themeblvd_footer_sub_content_default - 30
+							 * @hooked themeblvd_footer_below_default - 40
 							 */
-							themeblvd_footer_above();
-							themeblvd_footer_content();
-							themeblvd_footer_sub_content();
-							themeblvd_footer_below();
+							do_action('themeblvd_footer');
 							?>
 						</div><!-- .wrap (end) -->
 					</footer><!-- #colophon (end) -->
@@ -65,11 +78,11 @@
 
 		<!-- FOOTER (end) -->
 
-		<?php themeblvd_footer_after(); ?>
+		<?php do_action('themeblvd_footer_after'); ?>
 
 	</div><!-- #container (end) -->
 </div><!-- #wrapper (end) -->
-<?php themeblvd_after(); ?>
+<?php do_action('themeblvd_after'); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

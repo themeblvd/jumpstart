@@ -1487,13 +1487,13 @@ add_filter('themeblvd_has_header_info', 'themeblvd_ent_has_header_info');
 /**
  * Move header menu to the right of the logo
  */
-remove_action('themeblvd_header_menu', 'themeblvd_header_menu_default');
+remove_action('themeblvd_header', 'themeblvd_header_menu_default', 50);
 add_action('themeblvd_header_addon', 'themeblvd_header_menu_default');
 
 /**
  * Move responsive main menu toggle
  */
-remove_action( 'themeblvd_header_content', 'themeblvd_responsive_menu_toggle' );
+remove_action( 'themeblvd_header', 'themeblvd_responsive_menu_toggle', 30 );
 add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle' );
 
 /**
@@ -1603,4 +1603,4 @@ function jumpstart_ent_header_top() {
 	}
 
 }
-add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
+add_action( 'themeblvd_header', 'jumpstart_ent_header_top', 5 );

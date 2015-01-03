@@ -27,11 +27,11 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php themeblvd_before(); ?>
+<?php do_action('themeblvd_before'); ?>
 <div id="wrapper">
 	<div id="container">
 
-		<?php themeblvd_header_before(); ?>
+		<?php do_action('themeblvd_header_before'); ?>
 
 		<!-- HEADER (start) -->
 
@@ -42,12 +42,13 @@
 					<div class="wrap clearfix">
 						<?php
 						/**
-						 * Display header elements.
+						 * @hooked themeblvd_header_top_default - 10
+						 * @hooked themeblvd_header_above_default - 20
+						 * @hooked themeblvd_responsive_menu_toggle - 30
+						 * @hooked themeblvd_header_content_default - 40
+						 * @hooked themeblvd_header_menu_default - 50
 						 */
-						themeblvd_header_top();
-						themeblvd_header_above();
-						themeblvd_header_content();
-						themeblvd_header_menu();
+						do_action('themeblvd_header');
 						?>
 					</div><!-- .wrap (end) -->
 				</header><!-- #branding (end) -->
@@ -59,24 +60,37 @@
 
 		<?php
 		// After header
-		themeblvd_header_after();
+		do_action('themeblvd_header_after');
 
 		// Featured area (above)
 		if ( themeblvd_config( 'featured' ) ) {
-			themeblvd_featured_start();
-			themeblvd_featured();
-			themeblvd_featured_end();
+
+			/**
+			 * @hooked themeblvd_featured_start_default - 5
+			 * @hooked themeblvd_featured_end_default - 20
+			 */
+			do_action('themeblvd_featured');
+
 		}
 
 		// Start main area (if not a custom layout)
 		if ( ! themeblvd_config( 'builder_post_id' ) ) {
 
-			themeblvd_main_start();
-			themeblvd_main_top();
+			/**
+			 * @hooked themeblvd_main_start_default - 10
+			 */
+			do_action('themeblvd_main_start');
 
-			// Breadcrumbs
-			themeblvd_breadcrumbs();
+			/**
+			 * @hooked themeblvd_main_top_default - 10
+			 */
+			do_action('themeblvd_main_top');
+
+			/**
+			 * @hooked themeblvd_breadcrumbs_default - 10
+			 */
+			do_action('themeblvd_breadcrumbs');
 		}
 
 		// Before sidebar+content layout
-		themeblvd_before_layout();
+		do_action('themeblvd_before_layout');

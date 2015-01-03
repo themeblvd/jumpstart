@@ -7,6 +7,47 @@ Jump Start Changelog
 * Darkened body text in WordPress page editor.
 * Added "tb_square_medium" crop size, 500x500.
 * Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
+* The following actions have been removed, and their default callbacks have been hooked to a new action, "themeblvd_header". See header.php for better understanding and priorities of default hooked callbacks.
+	* themeblvd_header_top
+	* themeblvd_header_above
+	* themeblvd_header_content
+	* themeblvd_header_menu
+* The following actions have been removed, and their default callbacks have been hooked to a new action, "themeblvd_footer". See footer.php for better understanding and priorities of default hooked callbacks.
+	* themeblvd_footer_above
+	* themeblvd_footer_content
+	* themeblvd_footer_sub_content
+	* themeblvd_footer_below
+* The following functions have been deleted. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
+	* `themeblvd_head()`
+	* `themeblvd_before()`
+	* `themeblvd_header_top()`
+	* `themeblvd_header_above()`
+	* `themeblvd_header_content()`
+	* `themeblvd_header_menu()`
+	* `themeblvd_header_after()`
+	* `themeblvd_featured_start()`
+	* `themeblvd_featured()`
+	* `themeblvd_featured_end()`
+	* `themeblvd_main_start()`
+	* `themeblvd_main_top()`
+	* `themeblvd_breadcrumbs()`
+	* `themeblvd_before_layout()`
+	* `themeblvd_main_bottom()`
+	* `themeblvd_main_end()`
+	* `themeblvd_featured_below_start()`
+	* `themeblvd_featured_below()`
+	* `themeblvd_featured_below_end()`
+	* `themeblvd_footer_before()`
+	* `themeblvd_footer_above()`
+	* `themeblvd_footer_content()`
+	* `themeblvd_footer_sub_content()`
+	* `themeblvd_footer_below()`
+	* `themeblvd_footer_after()`
+	* `themeblvd_after()`
+	* `themeblvd_header_logo()`
+	* `themeblvd_header_addon()`
+	* `themeblvd_header_menu_addon()`
+	* `themeblvd_sidebars()`
 
 --------------------------------------------------------------
 

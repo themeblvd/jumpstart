@@ -107,7 +107,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	// Include files
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-query.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/class-tb-frontend-init.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/actions.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/components.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/display.php' );
@@ -119,6 +118,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/post-formats.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/stats.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/includes/tags.php' );
 
 	// Filters
 	add_filter( 'body_class','themeblvd_body_class' );
@@ -163,12 +163,12 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 
 	// Header hooks
-	add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
-	add_action( 'themeblvd_header_above', 'themeblvd_header_above_default' );
-	add_action( 'themeblvd_header_content', 'themeblvd_responsive_menu_toggle' );
-	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
+	add_action( 'themeblvd_header', 'themeblvd_header_top_default' );
+	add_action( 'themeblvd_header', 'themeblvd_header_above_default', 20 );
+	add_action( 'themeblvd_header', 'themeblvd_responsive_menu_toggle', 30 );
+	add_action( 'themeblvd_header', 'themeblvd_header_content_default', 40 );
+	add_action( 'themeblvd_header', 'themeblvd_header_menu_default', 50 );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
-	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 	add_action( 'themeblvd_header_after', 'themeblvd_header_after_default' );
 	add_filter( 'themeblvd_header_text', 'themeblvd_do_fa' );
 
@@ -178,10 +178,10 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
 
 	// Featured area hooks
-	add_action( 'themeblvd_featured_start', 'themeblvd_featured_start_default' );
-	add_action( 'themeblvd_featured_end', 'themeblvd_featured_end_default' );
-	add_action( 'themeblvd_featured_below_start', 'themeblvd_featured_below_start_default' );
-	add_action( 'themeblvd_featured_below_end', 'themeblvd_featured_below_end_default' );
+	add_action( 'themeblvd_featured', 'themeblvd_featured_start_default', 5 );
+	add_action( 'themeblvd_featured', 'themeblvd_featured_end_default', 20 );
+	add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_start_default', 5 );
+	add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_end_default', 20 );
 
 	// Main content area hooks
 	add_action( 'themeblvd_main_start', 'themeblvd_main_start_default' );
@@ -191,10 +191,10 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
 
 	// Footer
-	add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
-	add_filter( 'themeblvd_footer_copyright', 'themeblvd_footer_copyright_default' );
-	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
-	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
+	add_action( 'themeblvd_footer', 'themeblvd_footer_content_default' );
+	add_filter( 'themeblvd_footer', 'themeblvd_footer_copyright_default', 20 );
+	add_action( 'themeblvd_footer', 'themeblvd_footer_sub_content_default', 30 );
+	add_action( 'themeblvd_footer', 'themeblvd_footer_below_default', 40 );
 	add_action( 'themeblvd_after', 'themeblvd_to_top' );
 
 	// Content

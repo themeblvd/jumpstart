@@ -16,4 +16,7 @@
  * @package 	Theme Blvd WordPress Framework
  */
 
-themeblvd_sidebars( 'left' );
+/**
+ * @hooked themeblvd_fixed_sidebars - 10
+ */
+do_action( 'themeblvd_sidebars', 'left' );
