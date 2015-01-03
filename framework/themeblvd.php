@@ -135,7 +135,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'themeblvd_sidebar_layout', 'themeblvd_wpmultisite_signup_sidebar_layout' );
 	add_filter( 'the_content_more_link', 'themeblvd_read_more_link', 10, 2 );
 	add_filter( 'use_default_gallery_style', '__return_false' );
-	add_filter( 'wp_title', 'themeblvd_wp_title' );
 	add_filter( 'template_include', 'themeblvd_private_page' );
 	add_filter( 'wp_link_pages_args', 'themeblvd_link_pages_args' );
 	add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
@@ -161,6 +160,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 
 	// <head> hooks
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
+	add_filter( 'wp_head', 'themeblvd_wp_title_compat', 5 ); // Only used with WP 4.0-
 
 	// Header hooks
 	add_action( 'themeblvd_header', 'themeblvd_header_top_default' );

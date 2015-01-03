@@ -558,14 +558,40 @@ function themeblvd_responsive_visibility_class( $devices, $start_space = false, 
 }
 
 /**
+ * Output <title> if using WordPress 4.0-.
+ * WordPress 4.1+ uses native `title-tag`
+ * theme feature.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_wp_title_compat() {
+
+	// If WP 4.1+, do nothing
+	if ( function_exists( '_wp_render_title_tag' ) ) {
+		return;
+	}
+
+	add_filter( 'wp_title', 'themeblvd_wp_title' );
+
+	printf( "<title>%s</title>\n", wp_title( '|', false, 'right' ) );
+
+}
+
+/**
  * Display <title>
  * This is added to wp_title filter.
  *
  * @since 2.2.0
+ * @deprecated 2.5.0
  */
 function themeblvd_wp_title( $title ) {
 
 	global $page, $paged;
+
+	// Make sure this function is used with WP 4.1+
+	if ( function_exists( '_wp_render_title_tag' ) ) {
+		return $title;
+	}
 
 	// Don't screw with RSS feed titles
 	if ( is_feed() ) {
