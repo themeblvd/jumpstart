@@ -151,7 +151,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'the_content', 'themeblvd_content_format_video', 7 );
 
 	// Apply initial hooks
-	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 	add_action( 'wp_loaded', 'themeblvd_customizer_preview' );
 
 	// Apply other hooks after theme has had a chance to add filters
@@ -159,6 +158,8 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
 
 	// <head> hooks
+	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
+	add_action( 'wp_print_scripts', 'themeblvd_html5_compat' ); // For IE8
 	add_action( 'wp_head', 'themeblvd_viewport_default' );
 	add_filter( 'wp_head', 'themeblvd_wp_title_compat', 5 ); // Only used with WP 4.0-
 

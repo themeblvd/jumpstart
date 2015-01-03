@@ -615,6 +615,17 @@ function themeblvd_wp_title( $title ) {
 	return apply_filters( 'themeblvd_wp_title', $title );
 }
 
+/**
+ * Output modernizer JS so HTML5 will work in IE8
+ *
+ * @since 2.5.0
+ */
+function themeblvd_html5_compat() {
+	echo "<!--[if lt IE 9]>\n";
+	printf('<script src="%s/framework/assets/js/html5.js" type="text/javascript"></script>', get_template_directory_uri() );
+	echo "\n<![endif]-->\n";
+}
+
 if ( !function_exists( 'themeblvd_standard_slider_js' ) ) :
 /**
  * Print out the JS for setting up a standard slider.
