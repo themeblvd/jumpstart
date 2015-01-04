@@ -473,7 +473,7 @@ class Theme_Blvd_Compat_bbPress {
 	 *
 	 * @since 2.5.0
 	 */
-	public function lead_before( $value, $object_id, $meta_key, $single ) {
+	public function lead_before() {
 		?>
 		<div class="tb-lead-topic">
 			<div class="wrap">
@@ -488,7 +488,7 @@ class Theme_Blvd_Compat_bbPress {
 	 *
 	 * @since 2.5.0
 	 */
-	public function lead_after( $value, $object_id, $meta_key, $single ) {
+	public function lead_after() {
 		$tags = array(
 			'before' 	=> '<div class="tb-tags bbp-tags tags"><i class="fa fa-tags"></i>',
 			'after' 	=> '</div><!-- .tb-tags (end) -->'
