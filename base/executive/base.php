@@ -1701,7 +1701,7 @@ function jumpstart_ex_css() {
 
 	// Final output
 	if ( $print ) {
-		wp_add_inline_style( 'themeblvd-ie', apply_filters('jumpstart_ex_css_output', $print) );
+		wp_add_inline_style( 'jumpstart-base', apply_filters('jumpstart_ex_css_output', $print) );
 	}
 
 }
