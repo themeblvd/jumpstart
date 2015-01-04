@@ -27,11 +27,16 @@
 <div id="wrapper">
 	<div id="container">
 
-		<?php do_action('themeblvd_header_before'); ?>
+		<?php
+		/**
+		 * @hooked null
+		 */
+		do_action('themeblvd_header_before');
+		?>
 
 		<!-- HEADER (start) -->
 
-		<?php if ( themeblvd_config( 'top' ) ) : ?>
+		<?php if ( themeblvd_config('top') ) : ?>
 
 			<div id="top">
 				<header id="branding" <?php themeblvd_header_class(); ?> role="banner">
@@ -39,12 +44,24 @@
 						<?php
 						/**
 						 * @hooked themeblvd_header_top_default - 10
-						 * @hooked themeblvd_header_above_default - 20
-						 * @hooked themeblvd_responsive_menu_toggle - 30
-						 * @hooked themeblvd_header_content_default - 40
-						 * @hooked themeblvd_header_menu_default - 50
 						 */
-						do_action('themeblvd_header');
+						do_action('themeblvd_header_top');
+
+						/**
+						 * @hooked themeblvd_header_above_default - 10
+						 */
+						do_action('themeblvd_header_above');
+
+						/**
+						 * @hooked themeblvd_responsive_menu_toggle - 5
+						 * @hooked themeblvd_header_content_default - 10
+						 */
+						do_action('themeblvd_header_content');
+
+						/**
+						 * @hooked themeblvd_header_menu_default - 10
+						 */
+						do_action('themeblvd_header_menu');
 						?>
 					</div><!-- .wrap (end) -->
 				</header><!-- #branding (end) -->
@@ -55,7 +72,9 @@
 		<!-- HEADER (end) -->
 
 		<?php
-		// After header
+		/**
+		 * @hooked null
+		 */
 		do_action('themeblvd_header_after');
 
 		// Featured area (above)
@@ -88,5 +107,7 @@
 			do_action('themeblvd_breadcrumbs');
 		}
 
-		// Before sidebar+content layout
+		/**
+		 * @hooked null
+		 */
 		do_action('themeblvd_before_layout');

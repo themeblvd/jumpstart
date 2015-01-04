@@ -164,12 +164,12 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'wp_head', 'themeblvd_wp_title_compat', 5 ); // Only used with WP 4.0-
 
 	// Header hooks
-	add_action( 'themeblvd_header', 'themeblvd_header_top_default' );
-	add_action( 'themeblvd_header', 'themeblvd_header_above_default', 20 );
-	add_action( 'themeblvd_header', 'themeblvd_responsive_menu_toggle', 30 );
-	add_action( 'themeblvd_header', 'themeblvd_header_content_default', 40 );
-	add_action( 'themeblvd_header', 'themeblvd_header_menu_default', 50 );
+	add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
+	add_action( 'themeblvd_header_above', 'themeblvd_header_above_default' );
+	add_action( 'themeblvd_header_content', 'themeblvd_responsive_menu_toggle', 5 );
+	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
+	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 	add_action( 'themeblvd_header_after', 'themeblvd_header_after_default' );
 	add_filter( 'themeblvd_header_text', 'themeblvd_do_fa' );
 
@@ -192,11 +192,11 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
 
 	// Footer
-	add_action( 'themeblvd_footer', 'themeblvd_footer_content_default' );
-	add_filter( 'themeblvd_footer', 'themeblvd_footer_copyright_default', 20 );
-	add_action( 'themeblvd_footer', 'themeblvd_footer_sub_content_default', 30 );
-	add_action( 'themeblvd_footer', 'themeblvd_footer_below_default', 40 );
+	add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
+	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
+	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
 	add_action( 'themeblvd_after', 'themeblvd_to_top' );
+	add_filter( 'themeblvd_footer_copyright', 'themeblvd_footer_copyright_default' );
 
 	// Content
 	add_action( 'themeblvd_content_top', 'themeblvd_archive_info' );

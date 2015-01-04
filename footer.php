@@ -41,17 +41,27 @@
 
 		}
 
+		/**
+		 * @hooked null
+		 */
 		do_action('themeblvd_footer_before');
 		?>
 
 		<!-- FOOTER (start) -->
 
-		<?php if ( themeblvd_config( 'bottom' ) ) : ?>
+		<?php if ( themeblvd_config('bottom') ) : ?>
 
-			<?php if ( themeblvd_config( 'bottom_builder_post_id' ) ) : ?>
+			<?php if ( themeblvd_config('bottom_builder_post_id') ) : ?>
 
 				<div id="custom-bottom" class="clearfix" role="contentinfo">
-					<?php do_action( 'themeblvd_builder_content', 'footer' ); ?>
+
+					<?php
+					/**
+					 * @hooked themeblvd_builder_layout - 10
+					 */
+					do_action( 'themeblvd_builder_content', 'footer' );
+					?>
+
 				</div><!-- #custom-bottom (end) -->
 
 			<?php else : ?>
@@ -62,11 +72,18 @@
 							<?php
 							/**
 							 * @hooked themeblvd_footer_content_default - 10
-							 * @hooked themeblvd_footer_copyright_default - 20
-							 * @hooked themeblvd_footer_sub_content_default - 30
-							 * @hooked themeblvd_footer_below_default - 40
 							 */
-							do_action('themeblvd_footer');
+							do_action('themeblvd_footer_content');
+
+							/**
+							 * @hooked themeblvd_footer_sub_content_default - 10
+							 */
+							do_action('themeblvd_footer_sub_content');
+
+							/**
+							 * @hooked themeblvd_footer_below_default - 10
+							 */
+							do_action('themeblvd_footer_below');
 							?>
 						</div><!-- .wrap (end) -->
 					</footer><!-- #colophon (end) -->
