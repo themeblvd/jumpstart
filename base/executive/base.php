@@ -937,11 +937,11 @@ function jumpstart_ex_options() {
 				'name'		=> __( 'Default Buttons', 'themeblvd' ),
 				'desc'		=> __( 'Configure what a default button looks like.', 'themeblvd' ),
 				'std'		=> array(
-					'bg' 				=> '#ffffff',
-					'bg_hover'			=> '#e6e6e7',
-					'border' 			=> '#cccccc',
-					'text'				=> '#333333',
-					'text_hover'		=> '#333333',
+					'bg' 				=> '#f5f5f5',
+					'bg_hover'			=> '#eeeeee',
+					'border' 			=> '#dddddd',
+					'text'				=> '#666666',
+					'text_hover'		=> '#666666',
 					'include_bg'		=> 1,
 					'include_border'	=> 1
 				),
@@ -1160,7 +1160,12 @@ function jumpstart_ex_css() {
 
 	if ( $btn ) {
 
-		$print .= ".btn-default {\n";
+		$print .= ".btn-default,\n";
+		$print .= "input[type=\"submit\"],\n";
+		$print .= "input[type=\"reset\"],\n";
+		$print .= "input[type=\"button\"],\n";
+		$print .= ".button,\n";
+		$print .= "button {\n";
 
 		if ( $btn['include_bg'] ) {
 			$print .= sprintf("\tbackground-color: %s;\n", $btn['bg']);
@@ -1174,6 +1179,9 @@ function jumpstart_ex_css() {
 			$print .= "\tborder: none;\n";
 		}
 
+		$print .= "\t-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);\n";
+		$print .= "\tbox-shadow: inset 0 1px 0 rgba(255,255,255,.2);\n";
+
 		$print .= sprintf("\tcolor: %s;\n", $btn['text']);
 
 		$print .= "}\n";
@@ -1181,13 +1189,31 @@ function jumpstart_ex_css() {
 		$print .= ".btn-default:hover,\n";
 		$print .= ".btn-default:focus,\n";
 		$print .= ".btn-default:active,\n";
-		$print .= ".btn-default.active {\n";
+		$print .= ".btn-default.active,\n";
+		$print .= "input[type=\"submit\"]:hover,\n";
+		$print .= "input[type=\"submit\"]:focus,\n";
+		$print .= "input[type=\"submit\"]:active,\n";
+		$print .= "input[type=\"reset\"]:hover,\n";
+		$print .= "input[type=\"reset\"]:focus,\n";
+		$print .= "input[type=\"reset\"]:active,\n";
+		$print .= "input[type=\"button\"]:hover,\n";
+		$print .= "input[type=\"button\"]:focus,\n";
+		$print .= "input[type=\"button\"]:active,\n";
+		$print .= ".button:hover,\n";
+		$print .= ".button:focus,\n";
+		$print .= ".button:active,\n";
+		$print .= "button:hover,\n";
+		$print .= "button:focus,\n";
+		$print .= "button:active {\n";
 
 		$print .= sprintf("\tbackground-color: %s;\n", $btn['bg_hover']);
 
 		if ( $btn['include_border'] ) {
 			$print .= sprintf("\tborder-color: %s;\n", $btn['border']);
 		}
+
+		$print .= "\t-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);\n";
+		$print .= "\tbox-shadow: inset 0 1px 0 rgba(255,255,255,.1);\n";
 
 		$print .= sprintf("\tcolor: %s;\n", $btn['text_hover']);
 		$print .= "}\n";
@@ -1805,7 +1831,7 @@ function jumpstart_ex_header_top() {
 	}
 
 }
-add_action( 'themeblvd_header', 'jumpstart_ex_header_top', 5 );
+add_action( 'themeblvd_header_top', 'jumpstart_ex_header_top', 5 );
 
 /**
  * If user has selected to have the header info
@@ -1817,7 +1843,7 @@ add_action( 'themeblvd_header', 'jumpstart_ex_header_top', 5 );
  */
 function jumpstart_ex_header_info() {
 	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
-		remove_action('themeblvd_header', 'themeblvd_header_top_default');
+		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
 		add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
 	}
 }

@@ -6,9 +6,10 @@ Jump Start Changelog
 
 * Added theme support for `title-tag` in WP 4.1+
 * Darkened body text in WordPress page editor.
+* CSS tweaks to buttons.
 * Added "tb_square_medium" crop size, 500x500.
 * Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
-* The following functions have been deleted. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
+* The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`
 	* `themeblvd_header_top()`

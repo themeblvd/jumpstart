@@ -12,7 +12,6 @@
  *   1.7 - Code Elements
  *   1.8 - Pagination
  *   1.9 - Main Navigation
- *   1.10 - Primary Color
  * 2.0 - Common Classes
  *   2.1 - General
  *   2.2 - Images
@@ -199,6 +198,7 @@
  *   33.4 - Thumbnails
  *   33.5 - Forms
  *   33.6 - Form Buttons
+ * 34.0 - Primary Background
 ----------------------------------------------- */
 
 /* =Bootstrap Mods
@@ -360,34 +360,6 @@ code.block {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
-}
-
-/* Primary Color */
-.primary,
-.bg-primary,
-.btn-primary,
-.label-primary,
-.label-primary a,
-.label-primary a:hover {
-	background-color: #333333;
-	border-color: #000000;
-	color: #ffffff;
-}
-.primary:hover,
-.primary:focus,
-a.bg-primary:hover,
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.label-primary[href]:hover,
-.label-primary[href]:focus {
-	background-color: #222222;
-	border-color: #000000;
-	color: #ffffff;
-}
-.panel-primary {
-	border-color: #000000;
 }
 
 /* =Common Classes
@@ -2895,6 +2867,7 @@ input[type="month"]::-webkit-input-placeholder {
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
+.button,
 button {
 	display: inline-block;
 	margin-bottom: 0;
@@ -2919,6 +2892,7 @@ button {
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus,
+.button:focus,
 button:focus {
 	outline: thin dotted #333;
 	outline: 5px auto -webkit-focus-ring-color;
@@ -2930,6 +2904,8 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="button"]:hover,
 input[type="button"]:focus,
+.button:hover,
+.button:focus,
 button:hover,
 button:focus {
 	text-decoration: none;
@@ -2937,6 +2913,7 @@ button:focus {
 input[type="submit"]:active,
 input[type="reset"]:active,
 input[type="button"]:active,
+.button.active,
 button:active {
 	outline: 0;
 	background-image: none;
@@ -2946,10 +2923,13 @@ button:active {
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
+.button,
 button {
-	color: #333333;
-	background-color: #ffffff;
-	border-color: #cccccc;
+	background-color: #f5f5f5;
+	border-color: #dddddd;
+	-webkit-box-shadow: inset 0 1px 0 #ffffff;
+	box-shadow: inset 0 1px 0 #ffffff;
+	color: #666666;
 }
 input[type="submit"]:hover,
 input[type="submit"]:focus,
@@ -2960,18 +2940,33 @@ input[type="reset"]:active,
 input[type="button"]:hover,
 input[type="button"]:focus,
 input[type="button"]:active,
+.button:hover,
+.button:focus,
+.button:active,
 button:hover,
 button:focus,
 button:active {
-	color: #333333;
-	background-color: #ebebeb;
-	border-color: #adadad;
+	background-color: #eeeeee;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #666666;
 }
 
 /* See end of "Buttons" section for gradient submit buttons */
 
 /* =Buttons
 -----------------------------------------------*/
+
+/* General styling */
+.btn {
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2);;
+}
+.btn:hover,
+.btn:focus {
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+}
 
 /* Colors */
 .black,
@@ -3039,13 +3034,30 @@ button:active {
 	color: #ffffff;
 }
 
+/* Default */
+.btn-default {
+	background-color: #f5f5f5;
+	border-color: #dddddd;
+	-webkit-box-shadow: inset 0 1px 0 #ffffff;
+	box-shadow: inset 0 1px 0 #ffffff;
+	color: #666666;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active {
+	background-color: #eeeeee;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
 /* Black */
 .black {
 	background-color: #313131;
 	border-color: #000000;
 }
 .tb-btn-gradient .black {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#313131), to(#070707));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#070707));
 	background-image: -webkit-linear-gradient(top, #313131, #070707);
 	background-image: -moz-linear-gradient(top, #313131, #070707);
 	background-image: -o-linear-gradient(top, #313131, #070707);
@@ -3061,7 +3073,7 @@ button:active {
 .tb-btn-gradient .black:hover,
 .tb-btn-gradient .black:focus,
 .tb-btn-gradient .black:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#0b0b0b), to(#000000));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0b0b0b), to(#000000));
 	background-image: -webkit-linear-gradient(top, #0b0b0b, #000000);
 	background-image: -moz-linear-gradient(top, #0b0b0b, #000000);
 	background-image: -o-linear-gradient(top, #0b0b0b, #000000);
@@ -3076,7 +3088,7 @@ button:active {
 	border-color: #00142c;
 }
 .tb-btn-gradient .blue {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#00437f), to(#012e5a));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#00437f), to(#012e5a));
 	background-image: -webkit-linear-gradient(top, #00437f, #012e5a);
 	background-image: -moz-linear-gradient(top, #00437f, #012e5a);
 	background-image: -o-linear-gradient(top, #00437f, #012e5a);
@@ -3092,7 +3104,7 @@ button:active {
 .tb-btn-gradient .blue:hover,
 .tb-btn-gradient .blue:focus,
 .tb-btn-gradient .blue:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#02396c), to(#002448));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#02396c), to(#002448));
 	background-image: -webkit-linear-gradient(top, #02396c, #002448);
 	background-image: -moz-linear-gradient(top, #02396c, #002448);
 	background-image: -o-linear-gradient(top, #02396c, #002448);
@@ -3107,7 +3119,7 @@ button:active {
 	border-color: #2a1401;
 }
 .tb-btn-gradient .brown {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#6b3c02), to(#4f2b04));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#6b3c02), to(#4f2b04));
 	background-image: -webkit-linear-gradient(top, #6b3c02, #4f2b04);
 	background-image: -moz-linear-gradient(top, #6b3c02, #4f2b04);
 	background-image: -o-linear-gradient(top, #6b3c02, #4f2b04);
@@ -3123,7 +3135,7 @@ button:active {
 .tb-btn-gradient .brown:hover,
 .tb-btn-gradient .brown:focus,
 .tb-btn-gradient .brown:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#633707), to(#3f2102));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#633707), to(#3f2102));
 	background-image: -webkit-linear-gradient(top, #633707, #3f2102);
 	background-image: -moz-linear-gradient(top, #633707, #3f2102);
 	background-image: -o-linear-gradient(top, #633707, #3f2102);
@@ -3138,7 +3150,7 @@ button:active {
 	border-color: #051927;
 }
 .tb-btn-gradient .dark_blue {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#153f5a), to(#092334));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#153f5a), to(#092334));
 	background-image: -webkit-linear-gradient(top, #153f5a, #092334);
 	background-image: -moz-linear-gradient(top, #153f5a, #092334);
 	background-image: -o-linear-gradient(top, #153f5a, #092334);
@@ -3154,7 +3166,7 @@ button:active {
 .tb-btn-gradient .dark_blue:hover,
 .tb-btn-gradient .dark_blue:focus,
 .tb-btn-gradient .dark_blue:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#0f3147), to(#051927));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0f3147), to(#051927));
 	background-image: -webkit-linear-gradient(top, #0f3147, #051927);
 	background-image: -moz-linear-gradient(top, #0f3147, #051927);
 	background-image: -o-linear-gradient(top, #0f3147, #051927);
@@ -3169,7 +3181,7 @@ button:active {
 	border-color: #372e25;
 }
 .tb-btn-gradient .dark_brown {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#572f05), to(#371c02));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#572f05), to(#371c02));
 	background-image: -webkit-linear-gradient(top, #572f05, #371c02);
 	background-image: -moz-linear-gradient(top, #572f05, #371c02);
 	background-image: -o-linear-gradient(top, #572f05, #371c02);
@@ -3186,7 +3198,7 @@ button:active {
 .tb-btn-gradient .dark_brown:focus,
 .tb-btn-gradient .dark_brown:active {
 	background-color: #472603;
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#472603), to(#210f00));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#472603), to(#210f00));
 	background-image: -webkit-linear-gradient(top, #472603, #210f00);
 	background-image: -moz-linear-gradient(top, #472603, #210f00);
 	background-image: -o-linear-gradient(top, #472603, #210f00);
@@ -3202,7 +3214,7 @@ button:active {
 }
 .tb-btn-gradient .dark_green{
 	background-color: #485a21;
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#485a21), to(#2e3b13));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#485a21), to(#2e3b13));
 	background-image: -webkit-linear-gradient(top, #485a21, #2e3b13);
 	background-image: -moz-linear-gradient(top, #485a21, #2e3b13);
 	background-image: -o-linear-gradient(top, #485a21, #2e3b13);
@@ -3218,7 +3230,7 @@ button:active {
 .tb-btn-gradient .dark_green:hover,
 .tb-btn-gradient .dark_green:focus,
 .tb-btn-gradient .dark_green:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#384718), to(#232e0d));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#384718), to(#232e0d));
 	background-image: -webkit-linear-gradient(top, #384718, #232e0d);
 	background-image: -moz-linear-gradient(top, #384718, #232e0d);
 	background-image: -o-linear-gradient(top, #384718, #232e0d);
@@ -3230,10 +3242,10 @@ button:active {
 /* Green */
 .green {
 	background-color: #74941f;
-	border-color: #364709;
+	border-color: #647438;
 }
 .tb-btn-gradient .green {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#74941f), to(#516812));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#74941f), to(#516812));
 	background-image: -webkit-linear-gradient(top, #74941f, #516812);
 	background-image: -moz-linear-gradient(top, #74941f, #516812);
 	background-image: -o-linear-gradient(top, #74941f, #516812);
@@ -3249,7 +3261,7 @@ button:active {
 .tb-btn-gradient .green:hover,
 .tb-btn-gradient .green:focus,
 .tb-btn-gradient .green:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#67841a), to(#43570e));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#67841a), to(#43570e));
 	background-image: -webkit-linear-gradient(top, #67841a, #43570e);
 	background-image: -moz-linear-gradient(top, #67841a, #43570e);
 	background-image: -o-linear-gradient(top, #67841a, #43570e);
@@ -3261,10 +3273,10 @@ button:active {
 /* Mauve */
 .mauve {
 	background-color: #7b726c;
-	border-color: #2b2725;
+	border-color: #938177;
 }
 .tb-btn-gradient .mauve {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#7b726c), to(#3e3935));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#7b726c), to(#3e3935));
 	background-image: -webkit-linear-gradient(top, #7b726c, #3e3935);
 	background-image: -moz-linear-gradient(top, #7b726c, #3e3935);
 	background-image: -o-linear-gradient(top, #7b726c, #3e3935);
@@ -3280,7 +3292,7 @@ button:active {
 .tb-btn-gradient .mauve:hover,
 .tb-btn-gradient .mauve:focus,
 .tb-btn-gradient .mauve:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#524c48), to(#2b2725));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#524c48), to(#2b2725));
 	background-image: -webkit-linear-gradient(top, #524c48, #2b2725);
 	background-image: -moz-linear-gradient(top, #524c48, #2b2725);
 	background-image: -o-linear-gradient(top, #524c48, #2b2725);
@@ -3292,10 +3304,10 @@ button:active {
 /* Orange */
 .orange {
 	background-color: #ff9624;
-	border-color: #9b5911;
+	border-color: #d5862f;
 }
 .tb-btn-gradient .orange {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#ff9624), to(#a76013));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ff9624), to(#a76013));
 	background-image: -webkit-linear-gradient(top, #ff9624, #a76013);
 	background-image: -moz-linear-gradient(top, #ff9624, #a76013);
 	background-image: -o-linear-gradient(top, #ff9624, #a76013);
@@ -3311,7 +3323,7 @@ button:active {
 .tb-btn-gradient .orange:hover,
 .tb-btn-gradient .orange:focus,
 .tb-btn-gradient .orange:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#da7f1d), to(#9b5911));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#da7f1d), to(#9b5911));
 	background-image: -webkit-linear-gradient(top, #da7f1d, #9b5911);
 	background-image: -moz-linear-gradient(top, #da7f1d, #9b5911);
 	background-image: -o-linear-gradient(top, #da7f1d, #9b5911);
@@ -3323,10 +3335,10 @@ button:active {
 /* Pearl */
 .pearl {
 	background-color: #bca89d;
-	border-color: #625751;
+	border-color: #9b897f;
 }
 .tb-btn-gradient .pearl {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#bca89d), to(#897a72));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#bca89d), to(#897a72));
 	background-image: -webkit-linear-gradient(top, #bca89d, #897a72);
 	background-image: -moz-linear-gradient(top, #bca89d, #897a72);
 	background-image: -o-linear-gradient(top, #bca89d, #897a72);
@@ -3342,7 +3354,7 @@ button:active {
 .tb-btn-gradient .pearl:hover,
 .tb-btn-gradient .pearl:focus,
 .tb-btn-gradient .pearl:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#a08f86), to(#746861));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#a08f86), to(#746861));
 	background-image: -webkit-linear-gradient(top, #a08f86, #746861);
 	background-image: -moz-linear-gradient(top, #a08f86, #746861);
 	background-image: -o-linear-gradient(top, #a08f86, #746861);
@@ -3354,10 +3366,10 @@ button:active {
 /* Pink */
 .pink {
 	background-color: #de2e81;
-	border-color: #5c0d32;
+	border-color: #b02667;
 }
 .tb-btn-gradient .pink {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#de2e81), to(#941b54));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#de2e81), to(#941b54));
 	background-image: -webkit-linear-gradient(top, #de2e81, #941b54);
 	background-image: -moz-linear-gradient(top, #de2e81, #941b54);
 	background-image: -o-linear-gradient(top, #de2e81, #941b54);
@@ -3373,7 +3385,7 @@ button:active {
 .tb-btn-gradient .pink:hover,
 .tb-btn-gradient .pink:focus,
 .tb-btn-gradient .pink:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#b02265), to(#69103a));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b02265), to(#69103a));
 	background-image: -webkit-linear-gradient(top, #b02265, #69103a);
 	background-image: -moz-linear-gradient(top, #b02265, #69103a);
 	background-image: -o-linear-gradient(top, #b02265, #69103a);
@@ -3388,7 +3400,7 @@ button:active {
 	border-color: #0f0514;
 }
 .tb-btn-gradient .purple {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#78498e), to(#2d1837));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#78498e), to(#2d1837));
 	background-image: -webkit-linear-gradient(top, #78498e, #2d1837);
 	background-image: -moz-linear-gradient(top, #78498e, #2d1837);
 	background-image: -o-linear-gradient(top, #78498e, #2d1837);
@@ -3404,7 +3416,7 @@ button:active {
 .tb-btn-gradient .purple:hover,
 .tb-btn-gradient .purple:focus,
 .tb-btn-gradient .purple:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#59346a), to(#1e0e25));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#59346a), to(#1e0e25));
 	background-image: -webkit-linear-gradient(top, #59346a, #1e0e25);
 	background-image: -moz-linear-gradient(top, #59346a, #1e0e25);
 	background-image: -o-linear-gradient(top, #59346a, #1e0e25);
@@ -3416,10 +3428,10 @@ button:active {
 /* Red */
 .red {
 	background-color: #a7170c;
-	border-color: #220100;
+	border-color: #83150C;
 }
 .tb-btn-gradient .red {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#a7170c), to(#490502));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#a7170c), to(#490502));
 	background-image: -webkit-linear-gradient(top, #a7170c, #490502);
 	background-image: -moz-linear-gradient(top, #a7170c, #490502);
 	background-image: -o-linear-gradient(top, #a7170c, #490502);
@@ -3435,7 +3447,7 @@ button:active {
 .tb-btn-gradient .red:hover,
 .tb-btn-gradient .red:focus,
 .tb-btn-gradient .red:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#750d06), to(#300201));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#750d06), to(#300201));
 	background-image: -webkit-linear-gradient(top, #750d06, #300201);
 	background-image: -moz-linear-gradient(top, #750d06, #300201);
 	background-image: -o-linear-gradient(top, #750d06, #300201);
@@ -3450,7 +3462,7 @@ button:active {
 	border-color: #285e8e;
 }
 .tb-btn-gradient .royal {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#428bca), to(#2d6ca2));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#428bca), to(#2d6ca2));
 	background-image: -webkit-linear-gradient(top, #428bca, #2d6ca2);
 	background-image: -moz-linear-gradient(top, #428bca, #2d6ca2);
 	background-image: -o-linear-gradient(top, #428bca, #2d6ca2);
@@ -3466,7 +3478,7 @@ button:active {
 .tb-btn-gradient .royal:hover,
 .tb-btn-gradient .royal:focus,
 .tb-btn-gradient .royal:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#377bb5), to(#2d6ca2));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#377bb5), to(#2d6ca2));
 	background-image: -webkit-linear-gradient(top, #377bb5, #2d6ca2);
 	background-image: -moz-linear-gradient(top, #377bb5, #2d6ca2);
 	background-image: -o-linear-gradient(top, #377bb5, #2d6ca2);
@@ -3478,10 +3490,10 @@ button:active {
 /* Slate Grey */
 .slate_grey {
 	background-color: #7f8d9c;
-	border-color: #1e2227;
+	border-color: #5d6874;
 }
 .tb-btn-gradient .slate_grey {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#7f8d9c), to(#3b424a));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#7f8d9c), to(#3b424a));
 	background-image: -webkit-linear-gradient(top, #7f8d9c, #3b424a);
 	background-image: -moz-linear-gradient(top, #7f8d9c, #3b424a);
 	background-image: -o-linear-gradient(top, #7f8d9c, #3b424a);
@@ -3497,7 +3509,7 @@ button:active {
 .tb-btn-gradient .slate_grey:hover,
 .tb-btn-gradient .slate_grey:focus,
 .tb-btn-gradient .slate_grey:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#474f58), to(#2a2f35));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#474f58), to(#2a2f35));
 	background-image: -webkit-linear-gradient(top, #474f58, #2a2f35);
 	background-image: -moz-linear-gradient(top, #474f58, #2a2f35);
 	background-image: -o-linear-gradient(top, #474f58, #2a2f35);
@@ -3509,10 +3521,10 @@ button:active {
 /* Silver */
 .silver {
 	background-color: #b5b5b5;
-	border-color: #333333;
+	border-color: #8e8e8e;
 }
 .tb-btn-gradient .silver {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#b5b5b5), to(#565656));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b5b5b5), to(#565656));
 	background-image: -webkit-linear-gradient(top, #b5b5b5, #565656);
 	background-image: -moz-linear-gradient(top, #b5b5b5, #565656);
 	background-image: -o-linear-gradient(top, #b5b5b5, #565656);
@@ -3528,7 +3540,7 @@ button:active {
 .tb-btn-gradient .silver:hover,
 .tb-btn-gradient .silver:focus,
 .tb-btn-gradient .silver:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#e4e4e4), to(#979797));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e4e4e4), to(#979797));
 	background-image: -webkit-linear-gradient(top, #e4e4e4, #979797);
 	background-image: -moz-linear-gradient(top, #e4e4e4, #979797);
 	background-image: -o-linear-gradient(top, #e4e4e4, #979797);
@@ -3540,10 +3552,10 @@ button:active {
 /* Steel Blue */
 .steel_blue {
 	background-color: #aec3d5;
-	border-color: #373e45;
+	border-color: #8696a3;
 }
 .tb-btn-gradient .steel_blue {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#aec3d5), to(#545f69));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#aec3d5), to(#545f69));
 	background-image: -webkit-linear-gradient(top, #aec3d5, #545f69);
 	background-image: -moz-linear-gradient(top, #aec3d5, #545f69);
 	background-image: -o-linear-gradient(top, #aec3d5, #545f69);
@@ -3559,7 +3571,7 @@ button:active {
 .tb-btn-gradient .steel_blue:hover,
 .tb-btn-gradient .steel_blue:focus,
 .tb-btn-gradient .steel_blue:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#7c8c99), to(#373e45));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#7c8c99), to(#373e45));
 	background-image: -webkit-linear-gradient(top, #7c8c99, #373e45);
 	background-image: -moz-linear-gradient(top, #7c8c99, #373e45);
 	background-image: -o-linear-gradient(top, #7c8c99, #373e45);
@@ -3571,10 +3583,10 @@ button:active {
 /* Teal */
 .teal {
 	background-color: #03b5cc;
-	border-color: #002f36;
+	border-color: #0790a1;
 }
 .tb-btn-gradient .teal {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#03b5cc), to(#005661));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#03b5cc), to(#005661));
 	background-image: -webkit-linear-gradient(top, #03b5cc, #005661);
 	background-image: -moz-linear-gradient(top, #03b5cc, #005661);
 	background-image: -o-linear-gradient(top, #03b5cc, #005661);
@@ -3590,7 +3602,7 @@ button:active {
 .tb-btn-gradient .teal:hover,
 .tb-btn-gradient .teal:focus,
 .tb-btn-gradient .teal:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#0293a6), to(#003a43));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0293a6), to(#003a43));
 	background-image: -webkit-linear-gradient(top, #0293a6, #003a43);
 	background-image: -moz-linear-gradient(top, #0293a6, #003a43);
 	background-image: -o-linear-gradient(top, #0293a6, #003a43);
@@ -3602,10 +3614,10 @@ button:active {
 /* Yellow */
 .yellow {
 	background-color: #ffcf2d;
-	border-color: #aa891a;
+	border-color: #dfB527;
 }
 .tb-btn-gradient .yellow {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#ffcf2d), to(#caa321));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcf2d), to(#caa321));
 	background-image: -webkit-linear-gradient(top, #ffcf2d, #caa321);
 	background-image: -moz-linear-gradient(top, #ffcf2d, #caa321);
 	background-image: -o-linear-gradient(top, #ffcf2d, #caa321);
@@ -3621,7 +3633,7 @@ button:active {
 .tb-btn-gradient .yellow:hover,
 .tb-btn-gradient .yellow:focus,
 .tb-btn-gradient .yellow:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#e5b927), to(#be991e));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e5b927), to(#be991e));
 	background-image: -webkit-linear-gradient(top, #e5b927, #be991e);
 	background-image: -moz-linear-gradient(top, #e5b927, #be991e);
 	background-image: -o-linear-gradient(top, #e5b927, #be991e);
@@ -3633,10 +3645,10 @@ button:active {
 /* Wheat */
 .wheat {
 	background-color: #b4ad8b;
-	border-color: #403d2f;
+	border-color: #969074;
 }
 .tb-btn-gradient .wheat {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#b4ad8b), to(#615d4a));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b4ad8b), to(#615d4a));
 	background-image: -webkit-linear-gradient(top, #b4ad8b, #615d4a);
 	background-image: -moz-linear-gradient(top, #b4ad8b, #615d4a);
 	background-image: -o-linear-gradient(top, #b4ad8b, #615d4a);
@@ -3652,7 +3664,7 @@ button:active {
 .tb-btn-gradient .wheat:hover,
 .tb-btn-gradient .wheat:focus,
 .tb-btn-gradient .wheat:active {
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#9a9477), to(#4e4b3b));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#9a9477), to(#4e4b3b));
 	background-image: -webkit-linear-gradient(top, #9a9477, #4e4b3b);
 	background-image: -moz-linear-gradient(top, #9a9477, #4e4b3b);
 	background-image: -o-linear-gradient(top, #9a9477, #4e4b3b);
@@ -3671,6 +3683,9 @@ button:active {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-transition: none;
+	-webkit-transition: none;
+	transition: none;
 }
 .tb-btn-gradient .btn-default:active,
 .tb-btn-gradient .btn-primary:active,
@@ -3684,7 +3699,7 @@ button:active {
 .tb-btn-gradient .btn-default,
 .tb-btn-gradient input[type="submit"] {
 	text-shadow: 0 1px 0 #fff;
-	background-image: -webkit-gradient(linear, right 0%, right 100%, from(#ffffff), to(#e0e0e0));
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#e0e0e0));
 	background-image: -webkit-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
 	background-image: -moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
 	background-image: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
@@ -3707,7 +3722,7 @@ button:active {
 	border-color: #dbdbdb;
 }
 .tb-btn-gradient .btn-primary {
-	background-image: -webkit-gradient(linear, right 0%, right 100%, from(#484848), to(#222222));
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#484848), to(#222222));
 	background-image: -webkit-linear-gradient(top, #484848 0%, #222222 100%);
 	background-image: -moz-linear-gradient(top, #484848 0%, #222222 100%);
 	background-image: linear-gradient(to bottom, #484848 0%, #222222 100%);
@@ -3726,7 +3741,7 @@ button:active {
 	border-color: #000000;
 }
 .tb-btn-gradient .btn-success {
-	background-image: -webkit-gradient(linear, right 0%, right 100%, from(#5cb85c), to(#419641));
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#5cb85c), to(#419641));
 	background-image: -webkit-linear-gradient(top, #5cb85c 0%, #419641 100%);
 	background-image: -moz-linear-gradient(top, #5cb85c 0%, #419641 100%);
 	background-image: linear-gradient(to bottom, #5cb85c 0%, #419641 100%);
@@ -3745,7 +3760,7 @@ button:active {
 	border-color: #3e8f3e;
 }
 .tb-btn-gradient .btn-warning {
-	background-image: -webkit-gradient(linear, right 0%, right 100%, from(#f0ad4e), to(#eb9316));
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f0ad4e), to(#eb9316));
 	background-image: -webkit-linear-gradient(top, #f0ad4e 0%, #eb9316 100%);
 	background-image: -moz-linear-gradient(top, #f0ad4e 0%, #eb9316 100%);
 	background-image: linear-gradient(to bottom, #f0ad4e 0%, #eb9316 100%);
@@ -3764,7 +3779,7 @@ button:active {
 	border-color: #e38d13;
 }
 .tb-btn-gradient .btn-danger {
-	background-image: -webkit-gradient(linear, right 0%, right 100%, from(#d9534f), to(#c12e2a));
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#d9534f), to(#c12e2a));
 	background-image: -webkit-linear-gradient(top, #d9534f 0%, #c12e2a 100%);
 	background-image: -moz-linear-gradient(top, #d9534f 0%, #c12e2a 100%);
 	background-image: linear-gradient(to bottom, #d9534f 0%, #c12e2a 100%);
@@ -3783,7 +3798,7 @@ button:active {
 	border-color: #b92c28;
 }
 .tb-btn-gradient .btn-info {
-	background-image: -webkit-gradient(linear, right 0%, right 100%, from(#5bc0de), to(#2aabd2));
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#5bc0de), to(#2aabd2));
 	background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
 	background-image: -moz-linear-gradient(top, #5bc0de 0%, #2aabd2 100%);
 	background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);
@@ -7245,29 +7260,36 @@ body.blank-page {
 }
 
 /* Form Buttons - Match to Bootstrap .btn */
-.text-dark input[type="submit"],
-.text-dark input[type="reset"],
-.text-dark input[type="button"],
-.text-dark button {
-	color: #333333;
-	background-color: #ffffff;
-	border-color: #cccccc;
+.text-dark input[type="submit"].not(.btn-primary),
+.text-dark input[type="reset"].not(.btn-primary),
+.text-dark input[type="button"].not(.btn-primary),
+.text-dark .button.not(.btn-primary),
+.text-dark button.not(.btn-primary) {
+	background-color: #f5f5f5;
+	border-color: #dddddd;
+	-webkit-box-shadow: inset 0 1px 0 #ffffff;
+	box-shadow: inset 0 1px 0 #ffffff;
+	color: #666666;
 }
-.text-dark input[type="submit"]:hover,
-.text-dark input[type="submit"]:focus,
-.text-dark input[type="submit"]:active,
-.text-dark input[type="reset"]:hover,
-.text-dark input[type="reset"]:focus,
-.text-dark input[type="reset"]:active,
-.text-dark input[type="button"]:hover,
-.text-dark input[type="button"]:focus,
-.text-dark input[type="button"]:active,
-.text-dark button:hover,
-.text-dark button:focus,
-.text-dark button:active {
-	color: #333333;
-	background-color: #ebebeb;
-	border-color: #adadad;
+.text-dark input[type="submit"]:hover.not(.btn-primary),
+.text-dark input[type="submit"]:focus.not(.btn-primary),
+.text-dark input[type="submit"]:active.not(.btn-primary),
+.text-dark input[type="reset"]:hover.not(.btn-primary),
+.text-dark input[type="reset"]:focus.not(.btn-primary),
+.text-dark input[type="reset"]:active.not(.btn-primary),
+.text-dark input[type="button"]:hover.not(.btn-primary),
+.text-dark input[type="button"]:focus.not(.btn-primary),
+.text-dark input[type="button"]:active.not(.btn-primary),
+.text-dark .button:hover.not(.btn-primary),
+.text-dark .button:focus.not(.btn-primary),
+.text-dark .button:active.not(.btn-primary),
+.text-dark button:hover.not(.btn-primary),
+.text-dark button:focus.not(.btn-primary),
+.text-dark button:active.not(.btn-primary) {
+	background-color: #eeeeee;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #666666;
 }
 
 /* =Light Text Color (for themeblvd-dark.css, flip with Dark Text section)
@@ -7421,27 +7443,76 @@ body.blank-page {
 }
 
 /* Form Buttons - Match to Bootstrap .btn */
-.text-light input[type="submit"],
-.text-light input[type="reset"],
-.text-light input[type="button"],
-.text-light button {
+.text-light input[type="submit"].not(.btn-primary),
+.text-light input[type="reset"].not(.btn-primary),
+.text-light input[type="button"].not(.btn-primary),
+.text-light .button.not(.btn-primary),
+.text-light button.not(.btn-primary) {
 	color: #ffffff;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-color: rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow: none;
+    box-shadow: none;
 }
-.text-light input[type="submit"]:hover,
-.text-light input[type="submit"]:focus,
-.text-light input[type="submit"]:active,
-.text-light input[type="reset"]:hover,
-.text-light input[type="reset"]:focus,
-.text-light input[type="reset"]:active,
-.text-light input[type="button"]:hover,
-.text-light input[type="button"]:focus,
-.text-light input[type="button"]:active,
-.text-light button:hover,
-.text-light button:focus,
-.text-light button:active {
+.text-light input[type="submit"]:hover.not(.btn-primary),
+.text-light input[type="submit"]:focus.not(.btn-primary),
+.text-light input[type="submit"]:active.not(.btn-primary),
+.text-light input[type="reset"]:hover.not(.btn-primary),
+.text-light input[type="reset"]:focus.not(.btn-primary),
+.text-light input[type="reset"]:active.not(.btn-primary),
+.text-light input[type="button"]:hover.not(.btn-primary),
+.text-light input[type="button"]:focus.not(.btn-primary),
+.text-light input[type="button"]:active.not(.btn-primary),
+.text-light .button:hover.not(.btn-primary),
+.text-light .button:focus.not(.btn-primary),
+.text-light .button:active.not(.btn-primary),
+.text-light button:hover.not(.btn-primary),
+.text-light button:focus.not(.btn-primary),
+.text-light button:active.not(.btn-primary) {
 	color: #ffffff;
 	background-color: rgba(0, 0, 0, 0.8);
 	border-color: rgba(0, 0, 0, 0.9);
+}
+
+/* =Primary Background
+-----------------------------------------------*/
+
+.primary,
+.bg-primary,
+.btn-primary,
+a.alt,
+button.alt,
+input.alt,
+.label-primary,
+.label-primary a,
+.label-primary a:hover {
+	background-color: #333333;
+	border-color: #000000;
+	color: #ffffff;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+}
+.primary:hover,
+.primary:focus,
+a.bg-primary:hover,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+a.alt:hover,
+a.alt:focus,
+button.alt:hover,
+button.alt:focus,
+input.alt:hover,
+input.alt:focus,
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+	background-color: #222222;
+	border-color: #000000;
+	color: #ffffff;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+}
+.panel-primary {
+	border-color: #000000;
 }
