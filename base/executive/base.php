@@ -1014,7 +1014,7 @@ function jumpstart_ex_options() {
 				'name' 		=> __( 'Panel Style', 'themeblvd' ),
 				'desc' 		=> __( 'Select a style for the Bootstrap panel. You can use a preset style, or setup custom colors.', 'themeblvd' ),
 				'id' 		=> 'widget_panel_style',
-				'std' 		=> 'custom',
+				'std' 		=> 'default',
 				'type' 		=> 'select',
 				'options'	=> array(
 					'custom'	=> __( 'Custom Style', 'themeblvd' ),
@@ -1099,7 +1099,7 @@ function jumpstart_ex_options() {
 				'id'		=> 'widget_title_size',
 				'name'		=> __('Widget Title Text Size', 'themeblvd'),
 				'desc'		=> __('Select the text size for titles of widgets.', 'themeblvd'),
-				'std'		=> '20px',
+				'std'		=> '16px',
 				'type'		=> 'slide',
 				'options'	=> array(
 					'units'		=> 'px',

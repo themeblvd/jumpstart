@@ -249,8 +249,7 @@ Author URI: http://www.themeblvd.com
 .js-boxed .post_showcase.archive-loop,
 .js-boxed .list-template-wrap .list-wrap,
 .js-boxed .grid-template-wrap .grid-wrap,
-.js-boxed .showcase-template-wrap .showcase-wrap,
-.js-boxed .fixed-sidebar .widget {
+.js-boxed .showcase-template-wrap .showcase-wrap {
 	background-color: transparent;
 	padding: 0 0 30px 0;
 }
