@@ -719,6 +719,13 @@ article.page {
 .fixed-sidebar .widget:last-child {
 	margin-bottom: 0;
 }
+.fixed-sidebar .widget.panel {
+	padding: 0 20px 20px 20px;
+}
+.fixed-sidebar .widget.panel .panel-heading {
+	margin: 0 -20px 20px -20px;
+	padding: 15px 20px;
+}
 .fixed-sidebar .widget-title {
 	margin-top: 0;
 }

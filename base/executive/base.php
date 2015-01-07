@@ -987,6 +987,170 @@ function jumpstart_ex_options() {
 				)
 			)
 		),
+		'widgets' => array(
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle'
+			),
+			'widget_style' =>  array(
+				'id'		=> 'widget_style',
+				'name' 		=> __('Widget Style', 'themeblvd'),
+				'desc'		=> __('Select how you want to style your widgets.', 'themeblvd' ).' <a href="http://getbootstrap.com/components/#panels" target="_blank">'.__('What\'s a Bootstrap panel?', 'themeblvd').'</a>',
+				'std'		=> 'panel',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'standard'	=> __('Standard', 'themeblvd'),
+					'panel'		=> __('Bootstrap Panel', 'themeblvd')
+				),
+				'class'		=> 'trigger'
+			),
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
+			),
+			'widget_panel_style' => array(
+				'name' 		=> __( 'Panel Style', 'themeblvd' ),
+				'desc' 		=> __( 'Select a style for the Bootstrap panel. You can use a preset style, or setup custom colors.', 'themeblvd' ),
+				'id' 		=> 'widget_panel_style',
+				'std' 		=> 'custom',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'custom'	=> __( 'Custom Style', 'themeblvd' ),
+					'default'	=> __( 'Bootstrap: Default', 'themeblvd' ),
+					'primary'	=> __( 'Bootstrap: Primary', 'themeblvd' ),
+					'info'		=> __( 'Bootstrap: Info (blue)', 'themeblvd' ),
+					'warning'	=> __( 'Bootstrap: Warning (yellow)', 'themeblvd' ),
+					'danger'	=> __( 'Bootstrap: Danger (red)', 'themeblvd' )
+
+				),
+				'class'		=> 'trigger'
+			),
+			'widget_panel_title_bg_color' => array(
+				'id'		=> 'widget_panel_title_bg_color',
+				'name'		=> __('Panel Title Background', 'themeblvd'),
+				'desc'		=> __('Select two colors to create a background gradient for widget titles. For a solid color, simply select the same color twice.', 'themeblvd'),
+				'std'		=> array('start' => '#f5f5f5', 'end' => '#e8e8e8'),
+				'type'		=> 'gradient',
+				'class'		=> 'hide receiver receiver-custom'
+			),
+			'widget_panel_border_color' => array(
+				'id'		=> 'widget_panel_border_color',
+				'name'		=> __('Panel Border Color', 'themeblvd'),
+				'desc'		=> __('Select a color for the border.', 'themeblvd'),
+				'std'		=> '#dddddd',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver receiver-custom'
+			),
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
+				'type' 		=> 'subgroup_end'
+			),
+			'widget_bg_color' => array(
+				'id'		=> 'widget_bg_color',
+				'name'		=> __('Widget Background Color', 'themeblvd'),
+				'desc'		=> __('Select a background color for widgets.', 'themeblvd'),
+				'std'		=> '#ffffff',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver receiver-standard receiver-panel'
+			),
+			'widget_bg_brightness' => array(
+				'name' 		=> __( 'Widget Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
+				'id' 		=> 'widget_bg_brightness',
+				'std' 		=> 'light',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
+				),
+				'class'		=> 'hide receiver receiver-standard receiver-panel'
+			),
+			'widget_bg_color_opacity' => array(
+				'id'		=> 'widget_bg_color_opacity',
+				'name'		=> __('Widget Background Color Opacity', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the background color you chose.', 'themeblvd'),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+					'0.1'	=> '0.1',
+					'0.2'	=> '0.2',
+					'0.3'	=> '0.3',
+					'0.4'	=> '0.4',
+					'0.5'	=> '0.5',
+					'0.6'	=> '0.6',
+					'0.7'	=> '0.7',
+					'0.8'	=> '0.8',
+					'0.9'	=> '0.9',
+					'1'		=> '1.0'
+				),
+				'class'		=> 'hide receiver receiver-standard receiver-panel'
+			),
+			'widget_title_color' => array(
+				'id'		=> 'widget_title_color',
+				'name'		=> __('Widget Title Text Color', 'themeblvd'),
+				'desc'		=> __('Select the text color for titles of widgets.', 'themeblvd'),
+				'std'		=> '#333333',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver receiver-standard receiver-panel'
+			),
+			'widget_title_size' => array(
+				'id'		=> 'widget_title_size',
+				'name'		=> __('Widget Title Text Size', 'themeblvd'),
+				'desc'		=> __('Select the text size for titles of widgets.', 'themeblvd'),
+				'std'		=> '20px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'		=> 'px',
+					'min'		=> '10',
+					'max'		=> '30'
+				),
+				'class'		=> 'hide receiver receiver-standard receiver-panel'
+			),
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide hide receiver receiver-standard'
+			),
+			'widget_apply_border' => array(
+				'id'		=> 'widget_apply_border',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Widget Border', 'themeblvd').'</strong>: '.__('Apply border around widgets.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'widget_border_color' => array(
+				'id'		=> 'widget_border_color',
+				'name'		=> __('Border Color', 'themeblvd'),
+				'desc'		=> __('Select a color for the border.', 'themeblvd'),
+				'std'		=> '#dddddd',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver'
+			),
+			'widget_border_width' => array(
+				'id'		=> 'widget_border_width',
+				'name'		=> __('Border Width', 'themeblvd'),
+				'desc'		=> __('Select a width in pixels for the border.', 'themeblvd'),
+				'std'		=> '1px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'		=> 'px',
+					'min'		=> '1',
+					'max'		=> '10'
+				),
+				'class'		=> 'hide receiver'
+			),
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
+				'type' 		=> 'subgroup_end'
+			),
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
+				'type' 		=> 'subgroup_end'
+			)
+		),
 		'extras' => array(
 			'thumbnail' =>  array(
 				'id'		=> 'thumbnail',
@@ -1010,16 +1174,17 @@ function jumpstart_ex_options() {
 
 	themeblvd_add_option_tab( 'styles', __('Styles', 'themeblvd'), true );
 
-	themeblvd_add_option_section( 'styles', 'ex_general',		__('General', 'themeblvd'), 	null, $options['general'] );
-	themeblvd_add_option_section( 'styles', 'ex_header_info',	__('Header Info', 'themeblvd'), null, $options['header_info'] );
-	themeblvd_add_option_section( 'styles', 'ex_header',		__('Header', 'themeblvd'),		null, $options['header'] );
-	themeblvd_add_option_section( 'styles', 'ex_menu',			__('Main Menu', 'themeblvd'),	null, $options['menu'] );
-	themeblvd_add_option_section( 'styles', 'ex_menu_mobile',	__('Mobile Menu', 'themeblvd'),	null, $options['menu_mobile'] );
-	themeblvd_add_option_section( 'styles', 'ex_footer',		__('Footer', 'themeblvd'),		null, $options['footer'] );
-	themeblvd_add_option_section( 'styles', 'ex_typo',			__('Typography', 'themeblvd'), 	null, $options['typo'] );
-	themeblvd_add_option_section( 'styles', 'ex_buttons',		__('Buttons', 'themeblvd'),		null, $options['buttons'] );
-	themeblvd_add_option_section( 'styles', 'ex_extras',		__('Extras', 'themeblvd'), 		null, $options['extras'] );
-	themeblvd_add_option_section( 'styles', 'ex_css',			__('Custom CSS', 'themeblvd'), 	null, $options['css'] );
+	themeblvd_add_option_section( 'styles', 'ex_general',		__('General', 'themeblvd'), 		null, $options['general'] );
+	themeblvd_add_option_section( 'styles', 'ex_header_info',	__('Header Info', 'themeblvd'), 	null, $options['header_info'] );
+	themeblvd_add_option_section( 'styles', 'ex_header',		__('Header', 'themeblvd'),			null, $options['header'] );
+	themeblvd_add_option_section( 'styles', 'ex_menu',			__('Main Menu', 'themeblvd'),		null, $options['menu'] );
+	themeblvd_add_option_section( 'styles', 'ex_menu_mobile',	__('Mobile Menu', 'themeblvd'),		null, $options['menu_mobile'] );
+	themeblvd_add_option_section( 'styles', 'ex_footer',		__('Footer', 'themeblvd'),			null, $options['footer'] );
+	themeblvd_add_option_section( 'styles', 'ex_typo',			__('Typography', 'themeblvd'), 		null, $options['typo'] );
+	themeblvd_add_option_section( 'styles', 'ex_buttons',		__('Buttons', 'themeblvd'),			null, $options['buttons'] );
+	themeblvd_add_option_section( 'styles', 'ex_widgets',		__('Sidebar Widgets', 'themeblvd'),	null, $options['widgets'] );
+	themeblvd_add_option_section( 'styles', 'ex_extras',		__('Extras', 'themeblvd'), 			null, $options['extras'] );
+	themeblvd_add_option_section( 'styles', 'ex_css',			__('Custom CSS', 'themeblvd'), 		null, $options['css'] );
 
 }
 add_action('after_setup_theme', 'jumpstart_ex_options');
@@ -1276,6 +1441,51 @@ function jumpstart_ex_css() {
 
 		$print .= "}\n";
 	}
+
+	// Sidebar Widgets
+	$style = themeblvd_get_option('widget_style');
+
+	$print .= sprintf(".fixed-sidebar .widget.%s {\n", $style);
+
+	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('widget_bg_color'));
+	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option('widget_bg_color'), themeblvd_get_option('widget_bg_color_opacity') ) );
+
+	if ( $style == 'standard' && themeblvd_get_option('widget_apply_border') ) {
+		$print .= sprintf("\tborder: %s solid %s;\n", themeblvd_get_option('widget_border_width'), themeblvd_get_option('widget_border_color'));
+	} else if ( $style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
+		$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('widget_panel_border_color'));
+	}
+
+	$print .= "}\n";
+
+	if ( $style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
+
+		$color = themeblvd_get_option('widget_panel_title_bg_color');
+
+		$print .= sprintf(".fixed-sidebar .widget.%s .panel-heading {\n", $style);
+
+		if ( $color['start'] == $color['end'] ) {
+			$print .= sprintf("\tbackground-color: %s;\n", $color['end']);
+		} else {
+			$print .= sprintf("\tbackground-color: %s;\n", $color['end'] );
+			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $color['start'], $color['end'] );
+			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $color['start'], $color['end'] );
+		}
+
+		$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('widget_panel_border_color'));
+
+		$print .= "}\n";
+	}
+
+	$print .= ".fixed-sidebar .widget-title {\n";
+	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('widget_title_color'));
+	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_option('widget_title_size'));
+	$print .= "}\n";
 
 	// Boxed Layout
 	$boxed = false;
@@ -1899,3 +2109,41 @@ function jumpstart_ex_header_addon() {
 	echo '</div><!-- .header-addon (end) -->';
 
 }
+
+/**
+ * Filter args that get filtered in when
+ * all sidebars are registered.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_ex_sidebar_args( $args, $sidebar, $location ) {
+
+	if ( in_array( $location, array('sidebar_left', 'sidebar_right', 'floating') ) ) {
+
+		$text = 'text-dark';
+
+		if ( themeblvd_get_option('widget_bg_brightness') == 'dark' ) {
+			$text = 'text-light';
+		}
+
+		if ( themeblvd_get_option('widget_style') == 'panel' ) {
+
+			$class = sprintf('panel panel-%s %s', themeblvd_get_option('widget_panel_style'), $text);
+
+			$args['before_widget'] = '<aside id="%1$s" class="widget '.$class.' %2$s">';
+			$args['after_widget'] = '</aside>';
+			$args['before_title'] = '<div class="panel-heading"><h3 class="widget-title panel-title">';
+			$args['after_title'] = '</h3></div>';
+
+		} else {
+
+			$args['before_widget'] = str_replace('class="widget ', 'class="widget '.$text.' ', $args['before_widget']);
+
+		}
+
+	}
+
+	return $args;
+}
+add_filter('themeblvd_default_sidebar_args', 'themeblvd_ex_sidebar_args', 10, 3);
+add_filter('themeblvd_custom_sidebar_args', 'themeblvd_ex_sidebar_args', 10, 3);
