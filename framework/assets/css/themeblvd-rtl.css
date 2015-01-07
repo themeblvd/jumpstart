@@ -198,7 +198,7 @@
  *   33.4 - Thumbnails
  *   33.5 - Forms
  *   33.6 - Form Buttons
- * 34.0 - Primary Background
+ * 34.0 - Primary Color
 ----------------------------------------------- */
 
 /* =Bootstrap Mods
@@ -7474,7 +7474,7 @@ body.blank-page {
 	border-color: rgba(0, 0, 0, 0.9);
 }
 
-/* =Primary Background
+/* =Primary Color
 -----------------------------------------------*/
 
 .primary,
@@ -7484,11 +7484,15 @@ a.alt,
 button.alt,
 input.alt,
 .label-primary,
-.label-primary a,
-.label-primary a:hover {
+.panel-primary > .panel-heading {
 	background-color: #333333;
 	border-color: #000000;
 	color: #ffffff;
+}
+.btn-primary,
+a.alt,
+button.alt,
+input.alt {
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
 }
@@ -7504,9 +7508,7 @@ a.alt:focus,
 button.alt:hover,
 button.alt:focus,
 input.alt:hover,
-input.alt:focus,
-.label-primary[href]:hover,
-.label-primary[href]:focus {
+input.alt:focus {
 	background-color: #222222;
 	border-color: #000000;
 	color: #ffffff;

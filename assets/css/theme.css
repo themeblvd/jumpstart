@@ -18,15 +18,14 @@
  * 5.0 - Content
  *   5.1 - Typography
  *   5.2 - Content Background
- *   5.3 - Primary Color
- *   5.4 - Posts
- *   5.5 - Pages
- *   5.6 - Titles
- *   5.7 - Meta
- *   5.8 - Sub Meta
- *   5.9 - Post Formats
- *   5.10 - Related Posts
- *   5.11 - Edit Link
+ *   5.2 - Posts
+ *   5.4 - Pages
+ *   5.5 - Titles
+ *   5.6 - Meta
+ *   5.7 - Sub Meta
+ *   5.8 - Post Formats
+ *   5.9 - Related Posts
+ *   5.10 - Edit Link
  * 6.0 - Comments
  *   6.1 - Comment List
  *   6.2 - Admin Comment
@@ -433,33 +432,6 @@ p {
 .bg-content {
 	background: #ffffff;
 	padding: 30px;
-}
-
-/* Primary Color */
-.primary,
-.bg-primary,
-.btn-primary,
-.label-primary,
-.panel-primary > .panel-heading {
-	background-color: #333333;
-	border-color: #000000;
-	color: #ffffff;
-}
-.primary:hover,
-.primary:focus,
-a.bg-primary:hover,
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.label-primary[href]:hover,
-.label-primary[href]:focus {
-	background-color: #222222;
-	border-color: #000000;
-	color: #ffffff;
-}
-.panel-primary {
-	border-color: #000000;
 }
 
 /* Posts */

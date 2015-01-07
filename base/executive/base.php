@@ -1389,10 +1389,13 @@ function jumpstart_ex_css() {
 
 	if ( $btn ) {
 
-		$print .= ".primary,\n";
-		$print .= ".bg-primary,\n";
-		$print .= ".btn-primary,\n";
-		$print .= ".label-primary,\n";
+		$print .= ".primary\n";
+		$print .= ".bg-primary\n";
+		$print .= ".btn-primary\n";
+		$print .= "a.alt\n";
+		$print .= "button.alt\n";
+		$print .= "input.alt\n";
+		$print .= ".label-primary\n";
 		$print .= ".panel-primary > .panel-heading {\n";
 
 		if ( $btn['include_bg'] ) {
@@ -1418,8 +1421,12 @@ function jumpstart_ex_css() {
 		$print .= ".btn-primary:focus,\n";
 		$print .= ".btn-primary:active,\n";
 		$print .= ".btn-primary.active,\n";
-		$print .= ".label-primary[href]:hover,\n";
-		$print .= ".label-primary[href]:focus {\n";
+		$print .= "a.alt:hover,\n";
+		$print .= "a.alt:focus,\n";
+		$print .= "button.alt:hover,\n";
+		$print .= "button.alt:focus,\n";
+		$print .= "input.alt:hover,\n";
+		$print .= "input.alt:focus {\n";
 
 		$print .= sprintf("\tbackground-color: %s;\n", $btn['bg_hover']);
 
