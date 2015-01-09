@@ -1412,6 +1412,9 @@ body.side-menu-on {
 	content: "\f04b";
 	font-family: "FontAwesome";
 	padding-right: 15px;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .mejs-container.mejs-video .mejs-controls {
 	left: 2% !important;
@@ -4283,6 +4286,9 @@ ul.tb-icon-list {
 .widget_rss .widget-title a.rsswidget:first-child:before {
 	content: "\f143";
 	font-family: 'FontAwesome';
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* WP Tag Cloud */
@@ -4773,6 +4779,9 @@ button.mfp-arrow {
 	height: 80px;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .mfp-arrow.mfp-arrow-left:before {
 	content: "\f053";
@@ -5035,7 +5044,7 @@ blockquote small {
 	content: "\f067";
 	color: #333333; /* Change to light color for dark BG behind img */
 	display: block;
-	font-family: "fontawesome" !important;
+	font-family: "FontAwesome" !important;
 	font-size: 42px;
 	font-style: normal !important;
 	font-weight: normal !important;
@@ -5050,24 +5059,29 @@ blockquote small {
 	width: 70px;
 	height: 70px;
 	text-align: center;
+	text-rendering: auto;
 	vertical-align: middle;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	z-index: 2;
 }
 .tb-thumb-link:hover:before {
 	opacity: 0.8;
 }
 .tb-thumb-link.image:before {
-	content: "\f067";
+	content: "\f067"; /* plus sign */
 }
 .tb-thumb-link.video:before  {
-	content: "\f008";
+	content: "\f008"; /* film strip */
 }
 .tb-thumb-link.post:before {
-	content: "\f061";
+	content: "\f061"; /* arrow, pointing right */
+}
+.rtl .tb-thumb-link.post:before {
+	content: "\f060"; /* arrow, pointing left */
 }
 .tb-thumb-link.external:before {
-	content: "\f0c1";
+	content: "\f0c1"; /* link anchor */
 }
 
 /* Image Link Badge */
@@ -5088,20 +5102,26 @@ blockquote small {
 	padding-right: 2px;
 }
 .tb-thumb-link-badge:before {
-	font-family: "fontawesome" !important;
+	font-family: "FontAwesome" !important;
 	font-size: 14px;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .tb-thumb-link-badge.image:before {
-	content: "\f067";
+	content: "\f067"; /* plus sign */
 }
 .tb-thumb-link-badge.video:before  {
-	content: "\f04b";
+	content: "\f04b"; /* play button */
 }
 .tb-thumb-link-badge.post:before {
-	content: "\f061";
+	content: "\f061"; /* arrow, pointing right */
+}
+.rtl .tb-thumb-link-badge.post:before {
+	content: "\f060"; /* arrow, pointing left */
 }
 .tb-thumb-link-badge.external:before {
-	content: "\f0c1";
+	content: "\f0c1"; /* link anchor */
 }
 
 /* Video */
