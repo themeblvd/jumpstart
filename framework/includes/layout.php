@@ -833,16 +833,26 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 			$params['padding-top'] = $display['padding_top'];
 		}
 
-		if ( ! empty( $display['padding_right'] ) ) {
-			$params['padding-right'] = $display['padding_right'];
-		}
-
 		if ( ! empty( $display['padding_bottom'] ) ) {
 			$params['padding-bottom'] = $display['padding_bottom'];
 		}
 
+		if ( ! empty( $display['padding_right'] ) ) {
+
+			$params['padding-right'] = $display['padding_right'];
+
+			if ( ! empty($display['apply_popout']) ) {
+				$params['padding-right'] .= ' !important'; // override popout
+			}
+		}
+
 		if ( ! empty( $display['padding_left'] ) ) {
+
 			$params['padding-left'] = $display['padding_left'];
+
+			if ( ! empty($display['apply_popout']) ) {
+				$params['padding-left'] .= ' !important'; // override popout
+			}
 		}
 
 	}
@@ -868,12 +878,12 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 					$params[$key]['padding-top'] = $display['padding_top_'.$key];
 				}
 
-				if ( ! empty( $display['padding_right_'.$key] ) ) {
-					$params[$key]['padding-right'] = $display['padding_right_'.$key];
-				}
-
 				if ( ! empty( $display['padding_bottom_'.$key] ) ) {
 					$params[$key]['padding-bottom'] = $display['padding_bottom_'.$key];
+				}
+
+				if ( ! empty( $display['padding_right_'.$key] ) ) {
+					$params[$key]['padding-right'] = $display['padding_right_'.$key];
 				}
 
 				if ( ! empty( $display['padding_left_'.$key] ) ) {

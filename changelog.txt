@@ -9,6 +9,7 @@ Jump Start Changelog
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
 * Added "tb_square_medium" crop size, 500x500.
+* Fixed issue with custom padding not applying to "popout" elements in Builder.
 * Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
