@@ -537,7 +537,7 @@ endif;
  */
 function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 
-	$pass = paginate_links(); // Sub
+	// $pass = paginate_links(); // Sub
 
 	// Get pagination parts
 	$parts = themeblvd_get_pagination_parts( $pages, $range );
