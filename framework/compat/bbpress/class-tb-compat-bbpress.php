@@ -34,10 +34,10 @@ class Theme_Blvd_Compat_bbPress {
 	public static function get_instance() {
 
 		if ( self::$instance == null ) {
-            self::$instance = new self;
-        }
+			self::$instance = new self;
+		}
 
-        return self::$instance;
+		return self::$instance;
 	}
 
 	/**
@@ -64,13 +64,13 @@ class Theme_Blvd_Compat_bbPress {
 
 		// Search results
 		add_filter( 'bbp_register_forum_post_type', array($this, 'register_pt') );
-        add_filter( 'bbp_register_topic_post_type', array($this, 'register_pt') );
-        add_filter( 'bbp_register_reply_post_type', array($this, 'register_pt') );
-        add_filter( 'bbp_allow_search', array($this, 'remove_search') );
-        add_filter( 'themeblvd_format_icon', array($this, 'format_icon'), 10, 4 );
+		add_filter( 'bbp_register_topic_post_type', array($this, 'register_pt') );
+		add_filter( 'bbp_register_reply_post_type', array($this, 'register_pt') );
+		add_filter( 'bbp_allow_search', array($this, 'remove_search') );
+		add_filter( 'themeblvd_format_icon', array($this, 'format_icon'), 10, 4 );
 
-        // Breadcrumbs
-        add_filter( 'bbp_get_breadcrumb', array($this, 'remove_breadcrumb'), 10, 3 );
+		// Breadcrumbs
+		add_filter( 'bbp_get_breadcrumb', array($this, 'remove_breadcrumb'), 10, 3 );
 		add_filter( 'themeblvd_pre_breadcrumb_parts', array($this, 'add_breadcrumb'), 10, 2 );
 
 		// Pagination
@@ -91,12 +91,12 @@ class Theme_Blvd_Compat_bbPress {
 		add_filter( 'bbp_after_get_topic_author_link_parse_args', array($this, 'author') );
 		add_filter( 'bbp_after_get_reply_author_link_parse_args', array($this, 'author') );
 
-        // Output wrapped subscribe/fav links for more conistent styling
-        add_action( 'bbp_template_before_forums_index', array($this, 'forum_subscribe') );
+		// Output wrapped subscribe/fav links for more conistent styling
+		add_action( 'bbp_template_before_forums_index', array($this, 'forum_subscribe') );
 		add_action( 'bbp_template_before_single_forum', array($this, 'forum_subscribe') );
 
 		// Lead topic
-        add_action( 'wp', array($this, 'lead_topic') );
+		add_action( 'wp', array($this, 'lead_topic') );
 
 	}
 
@@ -287,10 +287,10 @@ class Theme_Blvd_Compat_bbPress {
 	 */
 	public function add_breadcrumb( $parts, $atts ) {
 
-		$bbp = bbp_get_breadcrumb();
-		$parts = array();
+		if ( is_bbpress() && $this->crumbs ) {
 
-		if ( $this->crumbs ) {
+			$parts = array();
+
 			foreach ( $this->crumbs as $crumb ) {
 
 				// We'll add the Home button in our breadcrumbs
@@ -442,14 +442,14 @@ class Theme_Blvd_Compat_bbPress {
 	 * @since 2.5.0
 	 */
 	public function lead_topic() {
-		 if ( apply_filters('themeblvd_bbp_show_lead_topic', themeblvd_get_option('bbp_lead_topic') ) ) {
-        	add_filter( 'bbp_show_lead_topic', '__return_true' );
-        	add_filter( 'get_post_metadata', array($this, 'hide_lead_title'), 10, 4 );
-        	add_action( 'bbp_template_before_lead_topic', array($this, 'lead_before') );
-        	add_action( 'bbp_template_after_lead_topic', array($this, 'lead_after') );
-        } else {
-        	add_action( 'bbp_template_before_replies_loop', array($this, 'topic_header') );
-        }
+		if ( apply_filters('themeblvd_bbp_show_lead_topic', themeblvd_get_option('bbp_lead_topic') ) ) {
+			add_filter( 'bbp_show_lead_topic', '__return_true' );
+			add_filter( 'get_post_metadata', array($this, 'hide_lead_title'), 10, 4 );
+			add_action( 'bbp_template_before_lead_topic', array($this, 'lead_before') );
+			add_action( 'bbp_template_after_lead_topic', array($this, 'lead_after') );
+		} else {
+			add_action( 'bbp_template_before_replies_loop', array($this, 'topic_header') );
+		}
 	}
 
 	/**
