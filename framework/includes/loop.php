@@ -150,7 +150,7 @@ function themeblvd_loop( $args = array() ){
 
 			// Content or Excerpt
 			if ( ! $args['content'] || $args['content'] == 'default' ) {
-				themeblvd_set_att( 'content', themeblvd_get_option('blog_thumbs', null, 'excerpt') );
+				themeblvd_set_att( 'content', themeblvd_get_option('blog_content', null, 'excerpt') );
 			} else {
 				themeblvd_set_att( 'content', $args['content'] );
 			}
