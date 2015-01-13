@@ -13,6 +13,7 @@ Jump Start Changelog
 * Fixed custom padding not applying to "popout" elements in Builder.
 * Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
 * Fixed Blog display option not displaying "full content" when selected, instead of excerpts.
+* Fixed slider option type bug, not allowing you to insert images less than 200px wide. This bug was most evident when trying to use the Partner Logos element in the Builder and using small logo images.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`

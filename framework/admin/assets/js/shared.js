@@ -1664,12 +1664,20 @@
 	 			}
 
 				selection.map( function( attachment ){
+
 					element = attachment.toJSON();
+
 					images[i] = {
 						id: element.id,
-						title: element.title,
-						preview: element.sizes['tb_thumb'].url
+						title: element.title
 					}
+
+					if ( element.sizes['tb_thumb'] ) {
+						images[i]['preview'] = element.sizes['tb_thumb'].url;
+					} else {
+						images[i]['preview'] = element.sizes['full'].url;
+					}
+
 					i++;
 				});
 
