@@ -6601,6 +6601,9 @@ blockquote small {
 	width: 24px;
 	height: 20px;
 }
+.tb-floater .floater-trigger.disable {
+	cursor: default;
+}
 .tb-floater .floater-popup {
 	background: #ffffff;
 	border: 1px solid #dddddd;
