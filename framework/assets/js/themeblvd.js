@@ -162,7 +162,12 @@ jQuery(document).ready(function($) {
 
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
 		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
-		$header.find('.tb-floater').clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
+
+		$('<ul class="list-unstyled floaters">').appendTo( $sticky.find('.sticky-wrap > .nav') );
+
+		$header.find('.tb-floater').each(function(){
+			$(this).clone().appendTo( $sticky.find('.sticky-wrap > .nav > ul.floaters') ).wrap('<li></li>');
+		});
 
 		// Sticky menu, make selector dynamic
 		$sticky_spy.viewportChecker({
