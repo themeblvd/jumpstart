@@ -257,10 +257,23 @@ jQuery(document).ready(function($) {
 		var $el = $(this),
 			$popup = $el.closest('.tb-floater').find('.floater-popup');
 
+		if ( $el.hasClass('disable') ) {
+			return false;
+		}
+
 		if ( $el.hasClass('open') ) {
+
 			$el.stop().removeClass('open').html('<i class="fa fa-'+$el.data('open')+'"></i>');
 			$popup.stop().fadeOut(200);
+
 		} else {
+
+			$el.closest('ul').find('.tb-floater .floater-trigger').each(function(){
+				var $current = $(this);
+				$current.stop().removeClass('open').html('<i class="fa fa-'+$current.data('open')+'"></i>');
+				$current.closest('.tb-floater').find('.floater-popup').stop().fadeOut(200);
+			});
+
 			$el.stop().addClass('open').html('<i class="fa fa-'+$el.data('close')+'"></i>');
 			$popup.stop().fadeIn(200);
 		}
