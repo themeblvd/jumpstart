@@ -177,13 +177,19 @@ jQuery(document).ready(function($) {
 			callbackFunction: function($elem, action){
 				if ( $elem.hasClass('visible') ) {
 
-					var $link = $elem.find('#sticky-menu .search-trigger'),
-						$popup = $link.closest('.tb-floater').find('.floater-popup');
+					$elem.find('#sticky-menu .floater-trigger').each(function(){
 
-					if ( $link.hasClass('open') ) {
-						$link.removeClass('open').html('<i class="fa fa-'+$link.data('open')+'"></i>');
-						$popup.fadeOut(100);
-					}
+						var $current = $(this),
+							markup = '<i class="fa fa-'+$current.data('open')+'"></i>';
+
+						if ( $current.data('label') ) {
+							markup += '<span class="trigger-label">'+$current.data('label')+'</span>';
+						}
+
+						$current.stop().removeClass('open').html( markup );
+						$current.closest('.tb-floater').find('.floater-popup').stop().fadeOut(100);
+
+					});
 
 					$elem.find('#sticky-menu .menu-item').each(function(){
 
@@ -260,7 +266,8 @@ jQuery(document).ready(function($) {
 	$('.tb-floater .floater-trigger').on('click', function(){
 
 		var $el = $(this),
-			$popup = $el.closest('.tb-floater').find('.floater-popup');
+			$popup = $el.closest('.tb-floater').find('.floater-popup'),
+			markup = '';
 
 		if ( $el.hasClass('disable') ) {
 			return false;
@@ -268,18 +275,38 @@ jQuery(document).ready(function($) {
 
 		if ( $el.hasClass('open') ) {
 
-			$el.stop().removeClass('open').html('<i class="fa fa-'+$el.data('open')+'"></i>');
+			markup = '<i class="fa fa-'+$el.data('open')+'"></i>';
+
+			if ( $el.data('label') ) {
+				markup += '<span class="trigger-label">'+$el.data('label')+'</span>';
+			}
+
+			$el.stop().removeClass('open').html( markup );
 			$popup.stop().fadeOut(200);
 
 		} else {
 
 			$el.closest('ul').find('.tb-floater .floater-trigger').each(function(){
+
 				var $current = $(this);
-				$current.stop().removeClass('open').html('<i class="fa fa-'+$current.data('open')+'"></i>');
+
+				markup = '<i class="fa fa-'+$current.data('open')+'"></i>';
+
+				if ( $current.data('label') ) {
+					markup += '<span class="trigger-label">'+$current.data('label')+'</span>';
+				}
+
+				$current.stop().removeClass('open').html( markup );
 				$current.closest('.tb-floater').find('.floater-popup').stop().fadeOut(200);
 			});
 
-			$el.stop().addClass('open').html('<i class="fa fa-'+$el.data('close')+'"></i>');
+			markup = '<i class="fa fa-'+$el.data('close')+'"></i>';
+
+			if ( $el.data('label') ) {
+				markup += '<span class="trigger-label">'+$el.data('label')+'</span>';
+			}
+
+			$el.stop().addClass('open').html( markup );
 			$popup.stop().fadeIn(200);
 		}
 
