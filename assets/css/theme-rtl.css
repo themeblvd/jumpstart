@@ -138,11 +138,15 @@
 .header-top-nav > li {
 	float: left;
 	border-left: 1px solid #dddddd;
+	height: 24px;
 	padding: 0 8px;
 }
 .header-top-nav > li:first-child {
 	border-left: none;
 	padding-left: 0;
+}
+.header-top-nav > li.top-cart {
+	padding-left: 14px;
 }
 .btn-navbar {
 	background: #333333;
