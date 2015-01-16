@@ -263,7 +263,7 @@ jQuery(document).ready(function($) {
 	// Floater popup
 	// ---------------------------------------------------------
 
-	$('.tb-floater .floater-trigger').on('click', function(){
+	$('.tb-floater').on('click', '.floater-trigger', function(){
 
 		var $el = $(this),
 			$popup = $el.closest('.tb-floater').find('.floater-popup'),
