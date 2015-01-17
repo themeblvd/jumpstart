@@ -1073,9 +1073,6 @@ body.admin-bar .tb-sticky-menu {
 .tb-side-menu > li {
 	border-bottom: 1px solid #dddddd;
 	line-height: 14px;
-}
-.tb-side-menu > li > a {
-	display: inline-block;
 	padding: 12px 15px;
 }
 .tb-side-menu li.menu-item .tb-side-menu-toggle {
@@ -1093,6 +1090,7 @@ body.admin-bar .tb-sticky-menu {
 .tb-side-menu > li > .sub-menu,
 .tb-side-menu > li > .sf-mega {
 	display: none;
+	margin-top: 10px;
 }
 
 /* Level 2+ */
@@ -6604,6 +6602,8 @@ blockquote small {
 .tb-search.mini .search-submit {
 	background-color: transparent;
 	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 /* Popups */
