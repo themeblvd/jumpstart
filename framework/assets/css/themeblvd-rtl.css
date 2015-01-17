@@ -282,6 +282,7 @@ p {
 .btn-group > .btn,
 .btn-group-vertical > .btn {
 	float: right;
+	width: auto;
 }
 .btn-group .btn + .btn,
 .btn-group .btn + .btn-group,
