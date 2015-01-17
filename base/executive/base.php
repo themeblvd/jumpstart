@@ -1389,13 +1389,13 @@ function jumpstart_ex_css() {
 
 	if ( $btn ) {
 
-		$print .= ".primary\n";
-		$print .= ".bg-primary\n";
-		$print .= ".btn-primary\n";
-		$print .= "a.alt\n";
-		$print .= "button.alt\n";
-		$print .= "input.alt\n";
-		$print .= ".label-primary\n";
+		$print .= ".primary,\n";
+		$print .= ".bg-primary,\n";
+		$print .= ".btn-primary,\n";
+		$print .= "a.alt,\n";
+		$print .= "button.alt,\n";
+		$print .= "input.alt,\n";
+		$print .= ".label-primary,\n";
 		$print .= ".panel-primary > .panel-heading {\n";
 
 		if ( $btn['include_bg'] ) {
