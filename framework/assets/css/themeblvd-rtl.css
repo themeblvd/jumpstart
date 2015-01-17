@@ -237,6 +237,9 @@ p {
 .text-muted {
 	color: #aaaaaa;
 }
+.list-inline {
+	padding-right: 0;
+}
 
 /* Buttons */
 .btn {
