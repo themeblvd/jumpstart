@@ -6630,9 +6630,11 @@ blockquote small {
 .tb-floater .floater-popup {
 	background: #ffffff;
 	border: 1px solid #dddddd;
+	color: #666666;
 	display: none;
 	padding: 9px;
 	position: absolute;
+	text-shadow: none;
 	z-index: 50;
 }
 /* @noflip */

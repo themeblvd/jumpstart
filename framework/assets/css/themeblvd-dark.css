@@ -738,37 +738,40 @@ button:active {
 /* =Parts (parts.php)
 -----------------------------------------------*/
 
+/* Popups */
+.tb-floater .floater-popup {
+    background: #222222;
+    border-color: #000000;
+    color: #ffffff;
+}
+.tb-floater.bottom.left .floater-popup > .arrow {
+    border-bottom-color: #000000;
+}
+.tb-floater.bottom.left .floater-popup > .arrow:after {
+    border-bottom-color: #222222;
+}
+.tb-floater.bottom.right .floater-popup > .arrow {
+    border-bottom-color: #000000;
+}
+.tb-floater.bottom.right .floater-popup > .arrow:after {
+    border-bottom-color: #222222;
+}
+.tb-floater.top.left .floater-popup > .arrow {
+    border-top-color: #000000;
+}
+.tb-floater.top.left .floater-popup > .arrow:after {
+    border-top-color: #222222;
+}
+.tb-floater.top.right .floater-popup > .arrow {
+    border-top-color: #000000;
+}
+.tb-floater.top.right .floater-popup > .arrow:after {
+    border-top-color: #222222;
+}
+
 /* Search Popup */
 .tb-search-popup .search-input {
     border-color: #151515;
-}
-.tb-search-popup .search-popup {
-    background: #222222;
-    border: 1px solid #000000;
-}
-.tb-search-popup.bottom.left .search-popup > .arrow {
-    border-bottom-color: #000000;
-}
-.tb-search-popup.bottom.left .search-popup > .arrow:after {
-    border-bottom-color: #222222;
-}
-.tb-search-popup.bottom.right .search-popup > .arrow {
-    border-bottom-color: #000000;
-}
-.tb-search-popup.bottom.right .search-popup > .arrow:after {
-    border-bottom-color: #222222;
-}
-.tb-search-popup.top.left .search-popup > .arrow {
-    border-top-color: #000000;
-}
-.tb-search-popup.top.left .search-popup > .arrow:after {
-    border-top-color: #222222;
-}
-.tb-search-popup.top.right .search-popup > .arrow {
-    border-top-color: #000000;
-}
-.tb-search-popup.top.right .search-popup > .arrow:after {
-    border-top-color: #222222;
 }
 
 /* Loader */

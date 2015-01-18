@@ -286,7 +286,7 @@ jQuery(document).ready(function($) {
 
 		} else {
 
-			$el.closest('ul').find('.tb-floater .floater-trigger').each(function(){
+			$el.closest('.wrap').find('.tb-floater .floater-trigger').each(function(){
 
 				var $current = $(this);
 
