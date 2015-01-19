@@ -4878,11 +4878,11 @@ button.mfp-arrow {
 /* =Parallax background
 -----------------------------------------------*/
 
-.tb-parallax:not(.texture) {
+.tb-parallax.no-repeat {
 	background-position: 50% 0;
 }
-.tablet-on .tb-parallax:not(.texture),
-.mobile-on .tb-parallax:not(.texture) {
+.tablet-on .tb-parallax.no-repeat,
+.mobile-on .tb-parallax.no-repeat {
 	background-position: top center !important;
 	background-size: cover !important;
 }

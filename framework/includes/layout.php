@@ -647,6 +647,11 @@ function themeblvd_get_display_class( $display ) {
 				$class[] = 'tb-parallax';
 			}
 
+			if ( ! empty( $display['bg_texture'] ) ) {
+				$texture = themeblvd_get_texture( $display['bg_texture'] );
+				$class[] = $texture['repeat'];
+			}
+
 		} else if ( $bg_type == 'image' ) {
 
 			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
@@ -657,6 +662,10 @@ function themeblvd_get_display_class( $display ) {
 					$class[] = 'tb-bg-cover';
 				}
 
+			}
+
+			if ( ! empty( $display['bg_image']['repeat'] ) ) {
+				$class[] = $display['bg_image']['repeat'];
 			}
 
 		} else if ( $bg_type == 'slideshow' ) {
