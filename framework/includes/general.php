@@ -711,7 +711,9 @@ function themeblvd_column_class_legacy( $class ) {
  * @return array $textures All current textures
  */
 function themeblvd_get_textures() {
+
 	$imagepath = apply_filters( 'themeblvd_textures_img_path', get_template_directory_uri().'/framework/assets/images/textures/' );
+
 	$textures = array(
 		'arches' => array(
 			'name' 		=> __( 'Arches', 'themeblvd' ),
@@ -1226,7 +1228,27 @@ function themeblvd_get_textures() {
 		)
 
 	);
+
 	return apply_filters( 'themeblvd_textures', $textures );
+}
+
+/**
+ * Get single transparent texture
+ *
+ * @since 2.5.0
+ *
+ * @param string $texture Texture ID to pull
+ * @return array texture Attributes
+ */
+function themeblvd_get_texture( $texture ) {
+
+	$textures = themeblvd_get_textures();
+
+	if ( ! empty( $textures[$texture] ) ) {
+		return $textures[$texture];
+	}
+
+	return null;
 }
 
 /**
