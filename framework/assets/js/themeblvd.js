@@ -113,6 +113,7 @@ jQuery(document).ready(function($) {
 			$body.removeClass('side-menu-off').addClass('side-menu-on');
 			$toggle_open.hide();
 			$toggle_close.show();
+			return false;
 		});
 
 		// Close menu
@@ -120,6 +121,7 @@ jQuery(document).ready(function($) {
 			$body.removeClass('side-menu-on').addClass('side-menu-off');
 			$toggle_close.hide();
 			$toggle_open.show();
+			return false;
 		});
 
 		$('#wrapper').on('click', function(){
