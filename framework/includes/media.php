@@ -20,19 +20,19 @@ function themeblvd_get_image_sizes( $size = '' ) {
 			'name' 		=> __( 'Theme Blvd XL', 'themeblvd' ),
 			'width' 	=> $max,
 			'height' 	=> 9999,
-			'crop' 		=> true
+			'crop' 		=> false
 		),
 		'tb_large' => array(
 			'name' 		=> __( 'Theme Blvd L', 'themeblvd' ),
 			'width' 	=> 800,
 			'height'	=> 9999,
-			'crop' 		=> true
+			'crop' 		=> false
 		),
 		'tb_medium' => array(
 			'name' 		=> __( 'Theme Blvd M', 'themeblvd' ),
 			'width' 	=> 500,
 			'height'	=> 9999,
-			'crop' 		=> true
+			'crop' 		=> false
 		),
 		'tb_thumb'	=> array(
 			'name' 		=> __( 'Theme Blvd Thumbnail', 'themeblvd' ),

@@ -10,6 +10,7 @@ Jump Start Changelog
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
 * Added "tb_square_medium" crop size, 500x500.
+* Fixed image crop bug with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed breadcrumbs when bbPress is installed.
 * Fixed custom padding not applying to "popout" elements in Builder.
 * Fixed issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
