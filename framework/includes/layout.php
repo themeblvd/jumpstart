@@ -320,6 +320,11 @@ function themeblvd_element( $args ) {
 		/* Media (media.php)
 		/*------------------------------------------------------*/
 
+		// Featured Image
+		case 'featured_image' :
+			themeblvd_the_post_thumbnail( $args['options']['crop'] );
+			break;
+
 		// Image
 		case 'image' :
 			themeblvd_image( $args['options']['image'], $args['options'] );
