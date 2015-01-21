@@ -213,6 +213,7 @@ function themeblvd_get_js_locals() {
 	if ( themeblvd_config('sticky') ) {
 		$locals['sticky'] = apply_filters('themeblvd_sticky_selector', '#branding');
 		$locals['sticky_offset'] = apply_filters('themeblvd_sticky_offset', '40');
+		$locals['sticky_logo'] = apply_filters('themeblvd_sticky_logo_uri', ''); // Optional override, so theme's header logo isn't used
 	}
 
 	// Tab deep linking -- i.e. link to a tab on a page and set it open

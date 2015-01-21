@@ -74,6 +74,29 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
+	// Logo w/retina display support
+	// ---------------------------------------------------------
+
+	if ( themeblvd.retina_logo == 'true' ) {
+
+		// If a retina-otimized image was detected
+		// and should be displayed
+		if ( window.devicePixelRatio >= 1.5 ) {
+			$('.tb-image-logo').each(function(){
+
+				var $logo = $(this).find('img'),
+					img_2x = $logo.data('image-2x');
+
+				if (img_2x) {
+					$logo.attr('src', img_2x);
+				}
+
+			});
+		}
+
+	}
+
+	// ---------------------------------------------------------
 	// Menus
 	// ---------------------------------------------------------
 
@@ -163,6 +186,11 @@ jQuery(document).ready(function($) {
 			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy );
 
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
+
+		if ( themeblvd.sticky_logo ) {
+			$sticky.find('.header_logo_image img').attr('src', themeblvd.sticky_logo).removeAttr('width height');
+		}
+
 		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
 
 		$('<ul class="list-unstyled floaters">').appendTo( $sticky.find('.sticky-wrap > .nav') );
@@ -514,29 +542,6 @@ jQuery(document).ready(function($) {
 	$(".tb-jump-menu").change(function() {
 		window.location.href = $(this).val();
 	});
-
-	// ---------------------------------------------------------
-	// Logo w/retina display support
-	// ---------------------------------------------------------
-
-	if ( themeblvd.retina_logo == 'true' ) {
-
-		// If a retina-otimized image was detected
-		// and should be displayed
-		if ( window.devicePixelRatio >= 1.5 ) {
-			$('.tb-image-logo').each(function(){
-
-				var $logo = $(this).find('img'),
-					img_2x = $logo.data('image-2x');
-
-				if (img_2x) {
-					$logo.attr('src', img_2x);
-				}
-
-			});
-		}
-
-	}
 
 	// ---------------------------------------------------------
 	// Block sliders

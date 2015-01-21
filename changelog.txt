@@ -7,9 +7,10 @@ Jump Start Changelog
 * Added "Sidebar Widgets" styling section to Theme Options for all theme bases.
 * Added theme support for `title-tag` in WP 4.1+
 * Added a little design flare to alert component, to look less Bootstrap-ish.
+* Added "tb_square_medium" crop size, 500x500.
+* Added filter for custom logo image in sticky menu, [See Tutorial](http://dev.themeblvd.com/tutorial/adding-a-custom-logo-to-the-sticky-menu/).
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
-* Added "tb_square_medium" crop size, 500x500.
 * Fixed image crop bug with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed breadcrumbs when bbPress is installed.
 * Fixed custom padding not applying to "popout" elements in Builder.
