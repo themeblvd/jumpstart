@@ -7,4 +7,4 @@
 			</button>
 		</div>
 	</form>
-</div><!-- .themeblvd-search (end) -->
+</div><!-- .tb-search (end) -->

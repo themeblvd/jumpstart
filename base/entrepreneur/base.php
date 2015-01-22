@@ -1736,7 +1736,7 @@ add_action('themeblvd_header_addon', 'themeblvd_header_menu_default');
 /**
  * Move responsive main menu toggle
  */
-remove_action('themeblvd_header_content', 'themeblvd_responsive_menu_toggle');
+remove_action('themeblvd_header_content', 'themeblvd_responsive_menu_toggle', 5);
 add_action('themeblvd_header_addon', 'themeblvd_responsive_menu_toggle');
 
 /**
@@ -1751,15 +1751,23 @@ function themeblvd_ent_header_menu_addon() {
 		return; // header top bar is showing
 	}
 
-	themeblvd_contact_popup( array('class' => 'to-mobile') );
+	echo '<div class="header-menu-addon">';
 
 	if ( themeblvd_get_option('searchform') == 'show' ) {
 		themeblvd_search_popup();
 	}
 
+	if ( themeblvd_do_cart() ) {
+		themeblvd_cart_popup();
+	}
+
+	themeblvd_contact_popup( array('class' => 'to-mobile') );
+
 	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
 		do_action('icl_language_selector');
 	}
+
+	echo '</div><!-- .header-menu-addon (end) -->';
 
 }
 add_action('themeblvd_header_menu_addon', 'themeblvd_ent_header_menu_addon');

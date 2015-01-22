@@ -390,7 +390,7 @@ function themeblvd_register_navs() {
  */
 function themeblvd_add_theme_support() {
 
-	// Post Thumbnails
+	// Auto Feed Links
 	add_theme_support( 'automatic-feed-links' );
 
 	// Post Thumbnails
@@ -402,8 +402,11 @@ function themeblvd_add_theme_support() {
 	// Post Formats
 	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status') );
 
-	// Title tags
+	// Title tags auto added to wp_head
 	add_theme_support( 'title-tag' );
+
+	// WooCommerce native support by theme
+	add_theme_support( 'woocommerce' );
 
 	// Editor style
 	add_editor_style( 'style-editor.css' );

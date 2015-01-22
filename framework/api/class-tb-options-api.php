@@ -223,6 +223,24 @@ class Theme_Blvd_Options_API {
 	 *		- lightbox_mobile
 	 *		- lightbox_mobile_iframe
 	 *		- lightbox_mobile_gallery
+	 * Plugins
+	 *	- bbPress
+	 *		- bbp_lead_topic
+	 *		- bbp_sidebar_layout
+	 *		- bbp_topic_sidebar_layout
+	 *		- bbp_user_sidebar_layout
+	 *	- WooCommerce
+	 * 		- woo_shop_view
+	 *		- woo_shop_columns
+	 *		- woo_shop_per_page
+	 * 		- woo_archive_view
+	 *		- woo_archive_columns
+	 *		- woo_archive_per_page
+	 *		- woo_shop_sidebar_layout
+	 *		- woo_archive_sidebar_layout
+	 *		- woo_product_sidebar_layout
+	 *		- woo_cross_sell
+	 * 		- woo_view_toggle
 	 */
 	private function set_raw_options() {
 
@@ -1097,18 +1115,126 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					)
 				)
-			) // End bbpress options
+			), // End bbpress options
 
 			// Section: WooCommerce
-			/*
 			'woocommerce' => array(
 				'name' => __( 'WooCommerce', 'themeblvd' ),
 				'desc' => null,
 				'options' => array(
-					// ... @TODO
+					'woo_shop_view' => array(
+						'name' 		=> __( 'Shop View', 'themeblvd' ),
+						'desc' 		=> __( 'Select the default product display style for your main shop page.', 'themeblvd' ),
+						'id' 		=> 'woo_shop_view',
+						'std' 		=> 'grid',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'grid'		=> __( 'Grid', 'themeblvd' ),
+							'list'		=> __( 'List', 'themeblvd' ),
+							'catalog'	=> __( 'Catalog', 'themeblvd' )
+						)
+					),
+					'woo_shop_columns' => array(
+						'name' 		=> __( 'Shop Columns', 'themeblvd' ),
+						'desc' 		=> __( 'Select the number of columns to display the products on your main shop page, when viewed as a grid.', 'themeblvd' ),
+						'id' 		=> 'woo_shop_columns',
+						'std' 		=> '4',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'3'		=> __( '3 columns', 'themeblvd' ),
+							'4' 	=> __( '4 columns', 'themeblvd' ),
+							'5' 	=> __( '5 columns', 'themeblvd' )
+						)
+					),
+					'woo_shop_per_page' => array(
+						'name' 		=> __( 'Shop Products Per Page', 'themeblvd' ),
+						'desc' 		=> __( 'Select the number products to display per page on your main shop page.', 'themeblvd' ),
+						'id' 		=> 'woo_shop_per_page',
+						'std' 		=> '12',
+						'type' 		=> 'text'
+					),
+					'woo_archive_view' => array(
+						'name' 		=> __( 'Archive View', 'themeblvd' ),
+						'desc' 		=> __( 'Select the default product display style for your product archives. This is when products are displayed by category or tag.', 'themeblvd' ),
+						'id' 		=> 'woo_archive_view',
+						'std' 		=> 'grid',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'grid'		=> __( 'Grid', 'themeblvd' ),
+							'list'		=> __( 'List', 'themeblvd' ),
+							'catalog'	=> __( 'Catalog', 'themeblvd' )
+						)
+					),
+					'woo_archive_columns' => array(
+						'name' 		=> __( 'Archive Columns', 'themeblvd' ),
+						'desc' 		=> __( 'Select the number of columns to display the products in your product archives, when viewed as a grid.', 'themeblvd' ),
+						'id' 		=> 'woo_archive_columns',
+						'std' 		=> '3',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'3'		=> __( '3 columns', 'themeblvd' ),
+							'4' 	=> __( '4 columns', 'themeblvd' ),
+							'5' 	=> __( '5 columns', 'themeblvd' )
+						)
+					),
+					'woo_archive_per_page' => array(
+						'name' 		=> __( 'Archives Products Per Page', 'themeblvd' ),
+						'desc' 		=> __( 'Select the number products to display per page in your product archives.', 'themeblvd' ),
+						'id' 		=> 'woo_archive_per_page',
+						'std' 		=> '12',
+						'type' 		=> 'text'
+					),
+					'woo_shop_sidebar_layout' => array(
+						'name' 		=> __( 'Shop Sidebar Layout', 'themeblvd' ),
+						'desc' 		=> __( 'Select the sidebar layout when viewing your main shop.', 'themeblvd' ),
+						'id' 		=> 'woo_shop_sidebar_layout',
+						'std' 		=> 'full_width',
+						'type' 		=> 'images',
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'img_width'	=> '45'
+					),
+					'woo_archive_sidebar_layout' => array(
+						'name' 		=> __( 'Archive Sidebar Layout', 'themeblvd' ),
+						'desc' 		=> __( 'Select the sidebar layout when viewing your product archives. This is when products are displayed by category or tag.', 'themeblvd' ),
+						'id' 		=> 'woo_archive_sidebar_layout',
+						'std' 		=> 'sidebar_left',
+						'type' 		=> 'images',
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'img_width'	=> '45'
+					),
+					'woo_product_sidebar_layout' => array(
+						'name' 		=> __( 'Product Sidebar Layout', 'themeblvd' ),
+						'desc' 		=> __( 'Select the sidebar layout when viewing a single product.', 'themeblvd' ),
+						'id' 		=> 'woo_product_sidebar_layout',
+						'std' 		=> 'sidebar_left',
+						'type' 		=> 'images',
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'img_width'	=> '45'
+					),
+					'woo_cross_sell' => array(
+						'name' 		=> __( 'Shopping Cart Cross Sells', 'themeblvd' ),
+						'desc' 		=> __( 'For the shopping cart page, select if you\'d like to display products customers may be interested in, based on what\'s currently in their cart.', 'themeblvd' ),
+						'id' 		=> 'woo_cross_sell',
+						'std' 		=> 'no',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'yes'	=> __( 'Yes, show cross sells', 'themeblvd' ),
+							'no' 	=> __( 'No, don\'t show cross sells', 'themeblvd' )
+						)
+					),
+					'woo_view_toggle' => array(
+						'name' 		=> __( 'Product View Toggle', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to display buttons on your product pages that allow the user to toggle between list, grid and catalog view.', 'themeblvd' ),
+						'id' 		=> 'woo_view_toggle',
+						'std' 		=> 'yes',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'yes'	=> __( 'Yes, show buttons', 'themeblvd' ),
+							'no' 	=> __( 'No, don\'t show buttons', 'themeblvd' )
+						)
+					)
 				)
-			)*/
-			 // End bbpress options
+			) // End WooCommerce options
 		);
 
 		/*--------------------------------*/

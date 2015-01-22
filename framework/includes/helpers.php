@@ -1649,8 +1649,35 @@ function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 's
 		$return = true;
 	}
 
-	// @TODO WooCommerce floating cart
-	// if ( in_array('cart', $inc) ) // ...
+	if ( in_array('cart', $inc) && themeblvd_do_cart() ) {
+		$return = true;
+	}
 
 	return apply_filters('themeblvd_has_header_info', $return, $inc);
+}
+
+/**
+ * Whether to display theme shopping cart.
+ *
+ * By default this function will return FALSE;
+ * however, if the theme supports WooCommerce and
+ * WooCommerce is installed, this will be filtered
+ * to TRUE.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_do_cart() {
+	return apply_filters('themeblvd_do_cart', false);
+}
+
+/**
+ * Get the full URL of the current page
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_current_uri() {
+
+	global $_SERVER;
+
+	return apply_filters( 'themeblvd_get_current_uri', esc_url( home_url($_SERVER['REQUEST_URI']) ) );
 }

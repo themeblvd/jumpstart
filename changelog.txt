@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.0-beta3
 -----
 
+* Added WooCommerce support.
 * Added "Sidebar Widgets" styling section to Theme Options for all theme bases.
 * Added theme support for `title-tag` in WP 4.1+
 * Added a little design flare to alert component, to look less Bootstrap-ish.

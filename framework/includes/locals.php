@@ -44,6 +44,7 @@ function themeblvd_get_all_locals() {
 		'crumb_author'				=> __( 'Articles posted by', 'themeblvd_frontend' ),
 		'crumb_search'				=> __( 'Search results for', 'themeblvd_frontend' ),
 		'crumb_tag'					=> __( 'Posts tagged', 'themeblvd_frontend' ),
+		'crumb_tag_products'		=> __( 'Products tagged', 'themeblvd_frontend' ),
 		'edit_page'					=> __( 'Edit Page', 'themeblvd_frontend' ),
 		'edit_post'					=> __( 'Edit Post', 'themeblvd_frontend' ),
 		'edit_profile'				=> __( 'Edit Profile', 'themeblvd_frontend' ),

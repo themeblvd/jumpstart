@@ -119,8 +119,8 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
 }
 
 /**
- * Searchform popup, uses searchform.php for actual
- * search form portion
+ * Get contact buttons popup, uses themeblvd_get_contact_bar for actual
+ * contact icon output.
  *
  * @since 2.5.0
  *
@@ -167,7 +167,7 @@ function themeblvd_get_contact_popup( $args = array() ) {
 	$output .= sprintf( '<div class="%s">', $class );
 
 	// Trigger Button
-	$output .= sprintf( '<a href="#" class="floater-trigger contact-trigger" data-open="%1$s" data-close="%2$s"><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+	$output .= sprintf( '<a href="#" class="floater-trigger contact-trigger" data-open="%1$s" data-close="%2$s" data-label=""><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
 
 	// Search popup
 	$output .= '<div class="floater-popup contact-popup">';
@@ -232,7 +232,7 @@ function themeblvd_get_search_popup( $args = array() ) {
 	$output = sprintf( '<div class="%s">', $class );
 
 	// Trigger Button
-	$output .= sprintf( '<a href="#" class="floater-trigger search-trigger" data-open="%1$s" data-close="%2$s"><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+	$output .= sprintf( '<a href="#" class="floater-trigger search-trigger" data-open="%1$s" data-close="%2$s" data-label=""><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
 
 	// Search popup
 	$output .= '<div class="floater-popup search-popup">';
@@ -255,6 +255,148 @@ function themeblvd_get_search_popup( $args = array() ) {
  */
 function themeblvd_search_popup( $args = array() ) {
 	echo themeblvd_get_search_popup( $args );
+}
+
+/**
+ * Get floating shopping cart popup
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ * @return string $output HTML to output for searchform
+ */
+function themeblvd_get_cart_popup( $args = array() ) {
+
+	// Setup arguments
+	$defaults = apply_filters('themeblvd_cart_popup_defaults', array(
+		'open'			=> 'shopping-cart',	// FontAwesome icon to open
+		'close'			=> 'close',			// FontAwesome icon to close
+		'placement-x'	=> '', 				// left, right
+		'placement-y'	=> 'bottom', 		// top, bottom
+		'class'			=> '' 				// Optional CSS class to add
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	$x = $args['placement-x'];
+
+	if ( ! $x ) {
+		if ( is_rtl() ) {
+			$x = 'right';
+		} else {
+			$x = 'left';
+		}
+	}
+
+	$class = sprintf( 'tb-floater tb-cart-popup %s %s', $x, $args['placement-y'] );
+
+	if ( $args['class'] ) {
+		$class .= $args['class'];
+	}
+
+	$output = sprintf( '<div class="%s">', $class );
+
+	// Trigger Button
+	$output .= themeblvd_get_cart_popup_trigger($args);
+
+	// Cart popup
+	$output .= '<div class="floater-popup cart-popup">';
+	$output .= '<span class="arrow"></span>';
+
+	ob_start();
+
+	/**
+	 * @hooked Theme_Blvd_Compat_WooCommerce::cart - 10 - (If WooCommerce is activated)
+	 */
+	do_action('themeblvd_floating_cart');
+
+	$output .= ob_get_clean();
+	$output .= '</div><!-- .cart-holder (end) -->';
+	$output .= '</div><!-- .tb-cart-popup (end) -->';
+
+	return apply_filters( 'themeblvd_cart_popup', $output, $args );
+}
+
+/**
+ * Floating shopping cart popup
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ */
+function themeblvd_cart_popup( $args = array() ) {
+	echo themeblvd_get_cart_popup( $args );
+}
+
+/**
+ * Shopping cart popup
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ */
+function themeblvd_get_cart_popup_trigger( $args = array() ) {
+
+	// Setup arguments
+	$defaults = apply_filters('themeblvd_cart_popup_defaults', array( // filtering matches themeblvd_get_cart_popup() args
+		'open'			=> 'shopping-cart',	// FontAwesome icon to open
+		'close'			=> 'close'			// FontAwesome icon to close
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	$output = sprintf( '<a href="#" class="floater-trigger cart-trigger enable" data-open="%1$s" data-close="%2$s" data-label=""><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+
+	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+
+		if ( is_cart() || is_checkout() ) {
+			$output = str_replace('enable', 'disable', $output);
+		}
+
+		$count = WC()->cart->get_cart_contents_count();
+
+		if ( $count ) {
+			$label = sprintf( '<span class="trigger-label">%s</span>', $count );
+			$output = str_replace('data-label=""', sprintf('data-label="%s"', $count), $output);
+			$output =  str_replace('</a>',$label.'</a>', $output);
+		}
+	}
+
+	return apply_filters('themeblvd_cart_popup_trigger', $output, $args);
+}
+
+/**
+ * Shopping cart button used in mobile display.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_mobile_cart_link() {
+	echo themeblvd_get_mobile_cart_link();
+}
+
+/**
+ * Get shopping cart button used in mobile display.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_mobile_cart_link(){
+
+	global $woocommerce;
+
+	$cart_url = '';
+	$cart_label = '';
+
+	if ( themeblvd_installed('woocommerce') ) {
+
+		$cart_url = WC()->cart->get_cart_url();
+		$count = WC()->cart->get_cart_contents_count();
+
+		if ( $count ) {
+			$cart_label = sprintf( '<span class="cart-count">%s</span>', $count );
+		}
+	}
+
+	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', apply_filters('themeblvd_cart_url', $cart_url), apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-cart"></i>'), $cart_label );
+
+	return apply_filters('themeblvd_mobile_cart_link', $output, $cart_url, $cart_label);
 }
 
 /**

@@ -41,13 +41,19 @@ function themeblvd_header_top_default() {
 			<ul class="header-top-nav list-unstyled">
 
 				<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
-					<li><?php themeblvd_search_popup(); ?></li>
+					<li class="top-search"><?php themeblvd_search_popup(); ?></li>
 				<?php endif; ?>
 
-				<li><?php themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') ); ?></li>
+				<?php if ( themeblvd_do_cart() ) : ?>
+					<li class="top-cart"><?php themeblvd_cart_popup(); ?></li>
+				<?php endif; ?>
+
+				<?php if ( $icons = themeblvd_get_option('social_media') ) : ?>
+					<li class="top-icons"><?php themeblvd_contact_bar( $icons, array('class' => 'to-mobile') ); ?></li>
+				<?php endif; ?>
 
 				<?php if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) : ?>
-					<li><?php do_action('icl_language_selector'); ?></li>
+					<li class="top-wpml"><?php do_action('icl_language_selector'); ?></li>
 				<?php endif; ?>
 
 			</ul>
@@ -67,6 +73,7 @@ if ( !function_exists( 'themeblvd_responsive_menu_toggle' ) ) :
 function themeblvd_responsive_menu_toggle() {
 	?>
 	<div id="primary-menu-toggle">
+
 		<a href="#" id="primary-menu-open" class="btn-navbar open">
 			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
 		</a>
@@ -74,6 +81,11 @@ function themeblvd_responsive_menu_toggle() {
 		<a href="#" id="primary-menu-close" class="btn-navbar close">
 			<?php echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' ); ?>
 		</a>
+
+		<?php if ( themeblvd_do_cart() ) : ?>
+			<?php themeblvd_mobile_cart_link(); ?>
+		<?php endif; ?>
+
 	</div>
 	<?php
 }

@@ -161,6 +161,28 @@
 	background: #000000;
 	color: #ffffff;
 }
+.btn-navbar.cart {
+	left: 0;
+	right: initial;
+}
+.btn-navbar.cart .cart-count {
+	background: rgba(255,255,255,.1);
+	-webkit-border-radius: 100px;
+	border-radius: 100px;
+	display: inline-block;
+	font-size: 8px;
+	font-weight: bold;
+	line-height: 14px;
+	position: absolute;
+	left: 4px;
+	bottom: 8px;
+	width: 14px;
+	height: 14px;
+	text-align: center;
+}
+.btn-navbar .fa {
+	width: 18px; /* maintain consistent width, no matter what icon used */
+}
 
 /* Header Content */
 .header-content > .wrap {
@@ -169,8 +191,8 @@
 }
 @media (max-width: 767px) {
 	.header-content > .wrap {
-		padding-right: 45px;
-		padding-left: 45px;
+		padding-right: 50px;
+		padding-left: 50px;
 		text-align: center;
 	}
 }

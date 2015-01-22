@@ -43,7 +43,7 @@ class Theme_Blvd_Compat_WPML {
 		global $sitepress;
 		global $icl_language_switcher;
 
-		add_action( 'wp_enqueue_scripts', array($this, 'assets') );
+		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 );
 		add_filter( 'themeblvd_framework_stylesheets', array($this, 'add_style') );
 
 		remove_filter( 'wp_nav_menu_items', array($icl_language_switcher, 'wp_nav_menu_items_filter') );

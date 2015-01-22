@@ -68,8 +68,8 @@ Author URI: http://www.themeblvd.com
 @media (max-width: 767px) {
 	.header-content > .wrap {
 		position: static;
-		padding-right: 45px;
-		padding-left: 45px;
+		padding-right: 55px;
+		padding-left: 55px;
 	}
 }
 .header-content .header-logo {
@@ -98,11 +98,11 @@ Author URI: http://www.themeblvd.com
 	float: left;
 }
 .header-nav .tb-primary-menu,
-.header-nav .tb-floater {
+.header-nav .header-menu-addon {
 	float: left;
 }
 .rtl .header-nav .tb-primary-menu,
-.rtl .header-nav .tb-floater {
+.rtl .header-nav .header-menu-addon {
 	float: right;
 }
 .header-nav .tb-primary-menu {
@@ -149,17 +149,20 @@ Author URI: http://www.themeblvd.com
 
 /* Popups */
 .header-nav .tb-floater {
-	margin-right: 5px;
-}
-.header-nav .tb-floater:last-child {
-	margin-right: 0;
+	margin-left: 5px;
+	float: right;
 }
 .rtl .header-nav .tb-floater {
-	margin-right: 0;
-	margin-left: 5px;
-}
-.rtl .header-nav .tb-floater:last-child {
+	float: left;
 	margin-left: 0;
+	margin-right: 5px;
+}
+.header-nav .tb-cart-popup {
+	margin-right: 2px; /* a little space for cart item count */
+}
+.rtl .header-nav .tb-cart-popup {
+	margin-right: 0;
+	margin-left: 2px; /* a little space for cart item count */
 }
 .header-nav .tb-floater .floater-trigger {
 	color: #808080;
@@ -230,12 +233,36 @@ Author URI: http://www.themeblvd.com
 
 /* Responsive Menu */
 .btn-navbar {
+	margin-top: -24px;
+	top: 50%;
+	right: 10px;
 	left: initial;
-	right: 0;
+}
+.btn-navbar.cart {
+	right: 63px; /* 48 + 10 + 5 */
 }
 .rtl .btn-navbar {
 	right: initial;
-	left: 0;
+	left: 10px;
+}
+.rtl .btn-navbar.cart {
+	left: 63px; /* 48 + 10 + 5 */
+}
+@media screen and (max-width: 767px) {
+	.btn-navbar {
+		right: 5px;
+	}
+	.btn-navbar.cart {
+		left: 5px;
+		right: initial;
+	}
+	.rtl .btn-navbar {
+		left: 5px;
+	}
+	.rtl .btn-navbar.cart {
+		right: 5px;
+		left: initial;
+	}
 }
 @media (max-width: 992px) {
 	#primary-menu-toggle {
@@ -405,7 +432,9 @@ body.rtl.side-menu-on {
 .js-boxed .post_showcase.archive-loop,
 .js-boxed .list-template-wrap .list-wrap,
 .js-boxed .grid-template-wrap .grid-wrap,
-.js-boxed .showcase-template-wrap .showcase-wrap {
+.js-boxed .showcase-template-wrap .showcase-wrap,
+.js-boxed .tb-product-loop-wrap,
+.js-boxed .tb-product-wrap {
 	background-color: transparent;
 	padding: 0 0 30px 0;
 }
@@ -452,3 +481,33 @@ body.rtl.side-menu-on {
 	margin-right: -30px;
 	margin-left: -30px;
 }
+
+/* WooCommerce */
+.js-boxed .tb-product-wrap {
+	padding-bottom: 0;
+}
+.js-boxed .woocommerce-tabs .tabs {
+	background-color: #f5f5f5;
+	border: 1px solid #dddddd;
+}
+.js-boxed .woocommerce-tabs .tabs > li {
+	border-right: 1px solid #dddddd;
+}
+.js-boxed.rtl .woocommerce-tabs .tabs > li {
+	border-right: none;
+	border-right: 1px solid #dddddd;
+}
+.js-boxed.content_dark .woocommerce-tabs .tabs,
+.js-boxed.content_dark .woocommerce-tabs .tabs > li {
+	background-color: #151515;
+	border-color: #000000;
+}
+.js-boxed .woocommerce-tabs .panel {
+	background: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	padding: 20px 5px;
+}
+.header-nav .cart-trigger .trigger-label {
+ 	bottom: -20px;
+ }

@@ -19,7 +19,10 @@ function themeblvd_plugin_compat() {
 	}
 
 	// WooCommerce by WooThemes
-	// ... @TODO
+	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/woocommerce/class-tb-compat-woocommerce.php' );
+		$woocommerce = Theme_Blvd_Compat_WooCommerce::get_instance();
+	}
 
 }
 
@@ -30,7 +33,7 @@ function themeblvd_plugin_compat() {
  * @since 2.5.0
  */
 function themeblvd_get_compat() {
-	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'sitepress')); // @TODO woocommerce
+	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'sitepress', 'woocommerce'));
 }
 
 /**
