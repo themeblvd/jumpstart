@@ -430,19 +430,7 @@ ul.woocommerce-info {
 	margin: 5px 2px 0 2px;
 }
 .tb-woo-ordering {
-	margin: 0 0 20px 0;
-}
-@media screen and (min-width: 768px) {
-	.tb-woo-ordering {
-		margin: -16px 0 0 0;
-		position: absolute;
-		top: 50%;
-		right: 2px;
-	}
-	.rtl .tb-woo-ordering {
-		right: initial;
-		left: 2px;
-	}
+	margin: 20px 0;
 }
 
 /* List View */

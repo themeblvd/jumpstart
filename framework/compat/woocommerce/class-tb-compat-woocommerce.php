@@ -277,7 +277,6 @@ class Theme_Blvd_Compat_WooCommerce {
 		// back into the standard system, you can use this filter,
 		// and unset() them.
 		$override = apply_filters('themeblvd_woocommerce_template_overrides', array(
-			// 'loop/orderby.php'		=> 'loop/orderby.php', // @TODO make fancy select
 			'loop/pagination.php'	=> 'loop/pagination.php',
 			'loop/loop-start.php'	=> 'loop/loop-start.php',
 			'loop/loop-end.php'		=> 'loop/loop-end.php',
