@@ -795,7 +795,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		if ( is_product() ) {
 			$layout = themeblvd_get_option('woo_product_sidebar_layout');
-		} else if ( is_shop() ) {
+		} else if ( is_shop() && ! is_search() ) {
 			$layout = themeblvd_get_option('woo_shop_sidebar_layout');
 		} else if ( is_woocommerce() ) {
 			$layout = themeblvd_get_option('woo_archive_sidebar_layout');
