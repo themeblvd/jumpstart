@@ -33,7 +33,7 @@ function themeblvd_plugin_compat() {
  * @since 2.5.0
  */
 function themeblvd_get_compat() {
-	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'sitepress', 'woocommerce'));
+	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'portfolios', 'sitepress', 'woocommerce'));
 }
 
 /**
@@ -62,6 +62,13 @@ function themeblvd_installed( $plugin = '' ) {
 				if ( class_exists('WooCommerce') ) {
 					return true;
 				}
+				break;
+
+			case 'portfolios' :
+				if ( class_exists('Theme_Blvd_Portfolios') ) {
+					return true;
+				}
+
 		}
 	}
 
