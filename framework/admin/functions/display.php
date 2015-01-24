@@ -125,9 +125,11 @@ function themeblvd_post_table( $post_type, $columns ) {
 					case 'assignments' :
 						$output .= '<td class="post-assignments">';
 						$location = get_post_meta( $post->ID, 'location', true );
+
 						if ( $location && $location != 'floating' ) {
 
 							$assignments = get_post_meta( $post->ID, 'assignments', true );
+							$conditionals = themeblvd_conditionals_config();
 
 							if ( is_array( $assignments ) && ! empty( $assignments ) ) {
 
@@ -136,16 +138,33 @@ function themeblvd_post_table( $post_type, $columns ) {
 								foreach ( $assignments as $key => $assignment ) {
 
 									$class = 'no-conflict';
+
 									if ( in_array( $key, $conflicts[$location] ) ) {
 										$class = 'conflict';
 									}
 
-									if ( $assignment['type'] == 'top' ) {
-										$output .= '<li class="'.$class.'">'.esc_html( $assignment['name'] ).'</li>';
-									} elseif ( $assignment['type'] == 'custom' ) {
-										$output .= '<li class="'.$class.'">'.ucfirst( esc_html( $assignment['type'] ) ).': <code>'.esc_html( $assignment['name'] ).'</code></li>';
-									} else {
-										$output .= '<li class="'.$class.'">'.ucfirst( esc_html( $assignment['type'] ) ).': '.esc_html( $assignment['name'] ).'</li>';
+									$label = '';
+
+									foreach ( $conditionals as $conditional ) { // Finding a label this way will ensure non-applicable ones are not included (like products when WooCommerce is disabled)
+										if ( $conditional['field'] == $assignment['type'] ) {
+											if ( in_array( $conditional['field'], array('posts_in_category', 'portfolio_items_in_portfolio', 'product_cat', 'product_tag', 'products_in_cat') ) ) {
+												$label = $conditional['name'];
+												$label = str_replace(' Archives', '', $label);
+											} else {
+												$label = ucfirst($conditional['field']);
+												$label = str_replace('_', ' ', $label);
+											}
+										}
+									}
+
+									if ( $label ) {
+										if ( $assignment['type'] == 'top' || strpos($assignment['type'], '_top') !== false  ) {
+											$output .= '<li class="'.$class.'">'.esc_html( $assignment['name'] ).'</li>';
+										} elseif ( $assignment['type'] == 'custom' ) {
+											$output .= '<li class="'.$class.'">'.$label.': <code>'.esc_html( $assignment['name'] ).'</code></li>';
+										} else {
+											$output .= '<li class="'.$class.'">'.$label.': '.esc_html( $assignment['name'] ).'</li>';
+										}
 									}
 								}
 
@@ -524,36 +543,101 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 	// by type to check against when displaying them
 	// back to the user.
 	$assignments = array(
-		'pages' 			=> array(),
-		'posts' 			=> array(),
-		'posts_in_category' => array(),
-		'categories' 		=> array(),
-		'tags' 				=> array(),
-		'top' 				=> array(),
-		'custom'			=> ''
+		'pages' 						=> array(),
+		'posts' 						=> array(),
+		'posts_in_category' 			=> array(),
+		'categories' 					=> array(),
+		'tags' 							=> array(),
+		'portfolio_items'				=> array(),
+		'portfolio_items_in_portfolio'	=> array(),
+		'portfolios'					=> array(),
+		'portfolio_tags'				=> array(),
+		'portfolio_top'					=> array(),
+		'product_cat'					=> array(),
+		'product_tags' 					=> array(),
+		'products_in_cat' 				=> array(),
+		'product_top' 					=> array(),
+		'forums' 						=> array(),
+		'forum_top' 					=> array(),
+		'top' 							=> array(),
+		'custom'						=> ''
 	);
+
 	if ( is_array( $val ) && ! empty( $val ) ) {
 		foreach ( $val as $key => $group ) {
+
 			$item_id = $group['id'];
+
 			switch ( $group['type'] ) {
+
 				case 'page' :
 					$assignments['pages'][] = $item_id;
 					break;
+
 				case 'post' :
 					$assignments['posts'][] = $item_id;
 					break;
+
 				case 'posts_in_category' :
 					$assignments['posts_in_category'][] = $item_id;
 					break;
+
 				case 'category' :
 					$assignments['categories'][] = $item_id;
 					break;
+
 				case 'tag' :
 					$assignments['tags'][] = $item_id;
 					break;
+
+				case 'portfolio_item' :
+					$assignments['portfolio_items'][] = $item_id;
+					break;
+
+				case 'portfolio_items_in_portfolio' :
+					$assignments['portfolio_items_in_portfolio'][] = $item_id;
+					break;
+
+				case 'portfolio' :
+					$assignments['portfolios'][] = $item_id;
+					break;
+
+				case 'portfolio_tag' :
+					$assignments['portfolio_tags'][] = $item_id;
+					break;
+
+				case 'portfolio_top' :
+					$assignments['portfolio_top'][] = $item_id;
+					break;
+
+				case 'product_cat' :
+					$assignments['product_cat'][] = $item_id;
+					break;
+
+				case 'product_tag' :
+					$assignments['product_tags'][] = $item_id;
+					break;
+
+				case 'products_in_cat' :
+					$assignments['products_in_cat'][] = $item_id;
+					break;
+
+				case 'product_top' :
+					$assignments['product_top'][] = $item_id;
+					break;
+
+				case 'forum' :
+					$assignments['forums'][] = $item_id;
+					break;
+
+				case 'forum_top' :
+					$assignments['forum_top'][] = $item_id;
+					break;
+
 				case 'top' :
 					$assignments['top'][] = $item_id;
 					break;
+
 				case 'custom' :
 					$assignments['custom'] = $item_id;
 					break;
@@ -565,7 +649,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 	$conditionals = themeblvd_conditionals_config();
 
 	// WPML compat
-	if ( isset( $GLOBALS['sitepress'] ) ) {
+	if ( themeblvd_installed('wpml') ) {
 		remove_filter( 'get_pages', array( $GLOBALS['sitepress'], 'exclude_other_language_pages2' ) );
 		remove_filter( 'get_terms_args', array( $GLOBALS['sitepress'], 'get_terms_args_filter' ) );
 		remove_filter( 'terms_clauses', array( $GLOBALS['sitepress'], 'terms_clauses' ) );
@@ -583,115 +667,140 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 		switch ( $conditional['id'] ) {
 
-			// Pages
+			// Pages posts, and tags
 			case 'pages' :
-				$pages = get_pages( array( 'hierarchical' => false ) );
-				if ( ! empty( $pages ) ) {
-					$output .= '<ul>';
-					foreach ( $pages as $page ) {
-
-						$checked = false;
-						if ( in_array( $page->post_name, $assignments['pages'] ) ) {
-							$checked = true;
-						}
-
-						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.'][page][]' ), $page->post_name, $page->post_title );
-						$checked = false;
-					}
-					$output .= '</ul>';
-				} else {
-					$output .= sprintf( '<p class="warning">%s</p>', $conditional['empty'] );
-				}
-				break;
-
-			// Posts
 			case 'posts' :
-				$assignment_list = '';
-
-				if ( ! empty( $assignments['posts'] ) ) {
-					$assignment_list = implode( ', ', $assignments['posts'] );
-				}
-
-				$output .= sprintf( '<textarea name="%s">%s</textarea>', esc_attr( $name.'['.$id.'][post]' ), $assignment_list );
-				$output .= sprintf( '<p class="note">%s</p>', __( 'Enter in a comma-separated list of the post slugs you\'d like to add to the assignments.', 'themeblvd' ) );
-				$output .= sprintf( '<p class="note"><em>%s</em></p>', __( 'Example: post-1, post-2, post-3', 'themeblvd' ) );
-				$output .= sprintf( '<p class="note"><em>%s</em></p>', __( 'Note: Any post slugs entered that don\'t exist won\'t be saved.', 'themeblvd' ) );
-				break;
-
-			// Posts in Category
-			case 'posts_in_category' :
-
-				$categories = get_categories( array( 'hide_empty' => false ) );
-
-		        if ( ! empty( $categories ) ) {
-		        	$output .= '<ul>';
-		        	foreach ( $categories as $category ) {
-
-		        		$checked = false;
-		        		if ( in_array( $category->slug, $assignments['posts_in_category'] ) ) {
-		        			$checked = true;
-		        		}
-
-						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.'][posts_in_category][]' ), $category->slug, $category->name );
-						$checked = false;
-					}
-					$output .= '</ul>';
-				} else {
-					$output .= sprintf( '<p class="warning">%s</p>', $conditional['empty'] );
-				}
-				break;
-
-			// Category Archives
-			case 'categories' :
-
-				$categories = get_categories( array( 'hide_empty' => false ) );
-
-		        if ( ! empty( $categories ) ) {
-		        	$output .= '<ul>';
-		        	foreach ( $categories as $category ) {
-
-		        		$checked = false;
-		        		if ( in_array( $category->slug, $assignments['categories'] ) ) {
-		        			$checked = true;
-		        		}
-
-						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.'][category][]' ), $category->slug, $category->name );
-						$checked = false;
-					}
-					$output .= '</ul>';
-				} else {
-					$output .= sprintf( '<p class="warning">%s</p>', $conditional['empty'] );
-				}
-				break;
-
-			// Tag Archives
 			case 'tags' :
-				$assignment_list = '';
+			case 'portfolio_items' :
+			case 'portfolio_tags' :
+			case 'product_tags' :
 
-				if ( ! empty( $assignments['tags'] ) ) {
-					$assignment_list = implode( ', ', $assignments['tags'] );
+				if ( $conditional['id'] == 'pages' ) {
+					$single = __('page', 'themeblvd');
+					$multiple = __('pages', 'themeblvd');
+					$field = 'page';
+				} else if ( $conditional['id'] == 'posts' ) {
+					$single = __('post', 'themeblvd');
+					$multiple = __('posts', 'themeblvd');
+					$field = 'post';
+				} else if ( $conditional['id'] == 'portfolio_items' ) {
+					$single = __('portfolio-item', 'themeblvd');
+					$multiple = __('portfolio items', 'themeblvd');
+					$field = 'portfolio_item';
+				} else if ( $conditional['id'] == 'portfolio_tags' ) {
+					$single = __('portfolio-tag', 'themeblvd');
+					$multiple = __('portfolio tags', 'themeblvd');
+					$field = 'portfolio_tag';
+				} else {
+					$single = __('tag', 'themeblvd');
+					$multiple = __('tags', 'themeblvd');
+					$field = $conditional['id'] == 'product_tags' ? 'product_tag' : 'tag';
 				}
 
-				$output .= sprintf( '<textarea name="%s">%s</textarea>', esc_attr( $name.'['.$id.'][tag]' ), $assignment_list );
-				$output .= sprintf( '<p class="note">%s</p>', __( 'Enter in a comma-separated list of the tags you\'d like to add to the assignments.', 'themeblvd' ) );
-				$output .= sprintf( '<p class="note"><em>%s</em></p>', __( 'Example: tag-1, tag-2, tag-3', 'themeblvd' ) );
-				$output .= sprintf( '<p class="note"><em>%s</em></p>', __( 'Note: Any tags entered that don\'t exist won\'t be saved.', 'themeblvd' ) );
+				$assignment_list = '';
+
+				if ( ! empty( $assignments[$conditional['id']] ) ) {
+					$assignment_list = implode( ', ', $assignments[$conditional['id']] );
+				}
+
+				$output .= sprintf( '<textarea name="%s">%s</textarea>', esc_attr( $name.'['.$id.']['.$field.']' ), $assignment_list );
+				$output .= sprintf( '<p class="note">%s</p>', sprintf(__( 'Enter in a comma-separated list of the %s you\'d like to add to the assignments.', 'themeblvd' ), $multiple) );
+				$output .= sprintf( '<p class="note"><em>%1$s: %2$s-1, %2$s-2, %2$s-3</em></p>', __('Example', 'themeblvd'), $single );
+				$output .= sprintf( '<p class="note"><em>%s</em></p>', sprintf(__( 'Note: Any %s entered that don\'t exist won\'t be saved.', 'themeblvd' ), $multiple) );
+				break;
+
+			// Categories
+			case 'categories' :
+			case 'posts_in_category' :
+			case 'portfolios' :
+			case 'portfolio_items_in_portfolio' :
+			case 'product_cat' :
+			case 'products_in_cat' :
+
+				$tax = 'category';
+
+				if ( $conditional['id'] == 'portfolios' || $conditional['id'] == 'portfolio_items_in_portfolio' ) {
+					$tax = 'portfolio';
+				} else if ( $conditional['id'] == 'product_cat' || $conditional['id'] == 'products_in_cat' ) {
+					$tax = 'product_cat';
+				}
+
+				$terms = get_terms( $tax, array('hide_empty' => false) );
+
+		        if ( ! empty( $terms ) ) {
+
+		        	$output .= '<ul>';
+
+		        	foreach ( $terms as $term ) {
+
+		        		$checked = false;
+
+		        		if ( in_array( $term->slug, $assignments[$conditional['id']] ) ) {
+		        			$checked = true;
+		        		}
+
+						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.']['.$conditional['field'].'][]' ), $term->slug, $term->name );
+
+					}
+
+					$output .= '</ul>';
+
+				} else {
+					$output .= sprintf( '<p class="warning">%s</p>', $conditional['empty'] );
+				}
+				break;
+
+			// Forums
+			case 'forums' :
+
+				$forums = get_posts( array('post_type' => 'forum', 'orderby' => 'title', 'order' => 'DESC') );
+
+				if ( $forums ) {
+
+					$output .= '<ul>';
+
+					foreach ( $forums as $forum ) {
+
+		        		$checked = false;
+
+		        		if ( in_array( $forum->post_name, $assignments[$conditional['id']] ) ) {
+		        			$checked = true;
+		        		}
+
+						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.']['.$conditional['field'].'][]' ), $forum->post_name, $forum->post_title );
+
+					}
+
+					$output .= '</ul>';
+
+				}
+
 				break;
 
 			// Hierarchy
+			case 'portfolio_top' :
+			case 'product_top' :
+			case 'forum_top' :
 			case 'top' :
 
 				if ( ! empty( $conditional['items'] ) ) {
+
+					$output .= '<ul>';
+
 					foreach ( $conditional['items'] as $item_id => $item_name ) {
 
 						$checked = false;
-						if ( in_array( $item_id, $assignments['top'] ) ) {
+
+						if ( in_array( $item_id, $assignments[$conditional['id']] ) ) {
 							$checked = true;
 						}
 
-						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.'][top][]' ), $item_id, $item_name );
+						$output .= sprintf( '<li><input type="checkbox" %s name="%s" value="%s" /> <span>%s</span></li>', checked( $checked, true, false ), esc_attr( $name.'['.$id.']['.$conditional['field'].'][]' ), $item_id, $item_name );
 						$checked = false;
 					}
+
+					$output .= '</ul>';
+
 				}
 				break;
 
@@ -705,7 +814,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$disable = apply_filters( 'themeblvd_disable_sidebar_custom_conditional', false );
 
 				if ( ! $disable ) {
-					$output .= sprintf( '<input type="text" name="%s" value="%s" />', esc_attr( $name.'['.$id.'][custom]' ), $assignments['custom'] );
+					$output .= sprintf( '<input type="text" name="%s" value="%s" />', esc_attr( $name.'['.$id.']['.$conditional['field'].']' ), $assignments['custom'] );
 					$output .= sprintf( '<p class="note">%s</p>', __( 'Enter in a custom <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">conditional statement</a>.', 'themeblvd' ) );
 					$output .= sprintf( '<p class="note"><em>%s</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>', __( 'Examples:', 'themeblvd' ) );
 					$output .= sprintf( '<p class="note"><em>%s</em></p>', __( 'Warning: Make sure you know what you\'re doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website.', 'themeblvd' ) );
@@ -713,14 +822,14 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				break;
 
 		}
-		$output .= '<ul>';
+
 		$output .= '</div><!-- .element-content (end) -->';
 		$output .= '</div><!-- .element (end) -->';
 	}
 	$output .= '</div><!-- .accordion (end) -->';
 
 	// Put WPML filters back
-	if ( isset( $GLOBALS['sitepress'] ) ) {
+	if ( themeblvd_installed('wpml') ) {
 		add_filter( 'get_pages', array( $GLOBALS['sitepress'], 'exclude_other_language_pages2' ) );
 		add_filter( 'get_terms_args', array( $GLOBALS['sitepress'], 'get_terms_args_filter' ) );
 		add_filter( 'terms_clauses', array( $GLOBALS['sitepress'], 'terms_clauses' ), 10, 4 );

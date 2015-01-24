@@ -1768,52 +1768,162 @@ function themeblvd_column_widths() {
  * @return array $conditionals Configuration of conditionals to choose from
  */
 function themeblvd_conditionals_config() {
+
 	$conditionals = array(
 		'pages' => array(
 			'id'	=> 'pages',
 			'name'	=> __( 'Pages', 'themeblvd' ),
-			'empty'	=> __( 'No pages to display.', 'themeblvd' )
+			'empty'	=> __( 'No pages to display.', 'themeblvd' ),
+			'field'	=> 'page'
 		),
 		'posts' => array(
 			'id'	=> 'posts',
 			'name'	=> __( 'Posts', 'themeblvd' ),
-			'empty'	=> __( 'No posts to display.', 'themeblvd' )
+			'empty'	=> __( 'No posts to display.', 'themeblvd' ),
+			'field'	=> 'post'
 		),
 		'posts_in_category' => array(
 			'id'	=> 'posts_in_category',
 			'name'	=> __( 'Posts in Category', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' )
+			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'field'	=> 'posts_in_category'
 		),
 		'categories' => array(
 			'id'	=> 'categories',
 			'name'	=> __( 'Category Archives', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' )
+			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'field'	=> 'category'
 		),
 		'tags' => array(
 			'id'	=> 'tags',
 			'name'	=> __( 'Tag Archives', 'themeblvd' ),
-			'empty'	=> __( 'No tags to display.', 'themeblvd' )
+			'empty'	=> __( 'No tags to display.', 'themeblvd' ),
+			'field'	=> 'tag'
+		),
+		'portfolio_items' => array(
+			'id'	=> 'portfolio_items',
+			'name'	=> __( 'Single Portfolio Items', 'themeblvd' ),
+			'empty'	=> __( 'No portfolio items to display.', 'themeblvd' ),
+			'field'	=> 'portfolio_item'
+		),
+		'portfolio_items_in_portfolio' => array(
+			'id'	=> 'portfolio_items_in_portfolio',
+			'name'	=> __( 'Items in Portfolio', 'themeblvd' ),
+			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'field'	=> 'portfolio_items_in_portfolio'
+		),
+		'portfolios' => array(
+			'id'	=> 'portfolios',
+			'name'	=> __( 'Portfolios', 'themeblvd' ),
+			'empty'	=> __( 'No portfolios to display.', 'themeblvd' ),
+			'field'	=> 'portfolio'
+		),
+		'portfolio_tags' => array(
+			'id'	=> 'portfolio_tags',
+			'name'	=> __( 'Portfolio Tag Archives', 'themeblvd' ),
+			'empty'	=> __( 'No portfolio tags to display.', 'themeblvd' ),
+			'field'	=> 'portfolio_tag'
+		),
+		'portfolio_top' => array(
+			'id'	=> 'portfolio_top',
+			'name'	=> __( 'Portfolio Hierarchy', 'themeblvd' ),
+			'empty'	=> null,
+			'field'	=> 'portfolio_top',
+			'items'	=> array(
+				'portfolio_items' 	=> __( 'All single portfolio items', 'themeblvd' ),
+				'portfolios' 		=> __( 'Items displayed by portfolio', 'themeblvd' ),
+				'portfolio_tags' 	=> __( 'Items displayed by portfolio tag', 'themeblvd' )
+			)
+		),
+		'product_cat' => array(
+			'id'	=> 'product_cat',
+			'name'	=> __( 'Product Category Archives', 'themeblvd' ),
+			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'field'	=> 'product_cat'
+		),
+		'product_tags' => array(
+			'id'	=> 'product_tags',
+			'name'	=> __( 'Product Tag Archives', 'themeblvd' ),
+			'empty'	=> __( 'No tags to display.', 'themeblvd' ),
+			'field'	=> 'product_tag'
+		),
+		'products_in_cat' => array(
+			'id'	=> 'products_in_cat',
+			'name'	=> __( 'Products in Category', 'themeblvd' ),
+			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'field'	=> 'products_in_cat'
+		),
+		'product_top' => array(
+			'id'	=> 'product_top',
+			'name'	=> __( 'Product Hierarchy', 'themeblvd' ),
+			'empty'	=> null,
+			'field'	=> 'product_top',
+			'items'	=> array(
+				'woocommerce' 		=> __( 'All WooCommerce pages', 'themeblvd' ),
+				'products' 			=> __( 'All single products', 'themeblvd' ),
+				'product_cat' 		=> __( 'Products displayed by category', 'themeblvd' ),
+				'product_tag'		=> __( 'Products displayed by tag', 'themeblvd' ),
+				'product_search'	=> __( 'WooCommerce search results', 'themeblvd' ),
+			)
+		),
+		'forums' => array(
+			'id'	=> 'forums',
+			'name'	=> __( 'Forums', 'themeblvd' ),
+			'empty'	=> null,
+			'field'	=> 'forum'
+		),
+		'forum_top' => array(
+			'id'	=> 'forum_top',
+			'name'	=> __( 'Forum Hierarchy', 'themeblvd' ),
+			'empty'	=> null,
+			'field'	=> 'forum_top',
+			'items'	=> array(
+				'bbpress' 			=> __( 'All bbPress pages', 'themeblvd' ),
+				'topic' 			=> __( 'All single topics', 'themeblvd' ),
+				'forum' 			=> __( 'All single forums', 'themeblvd' ),
+				'topic_tag' 		=> __( 'Viewing topics by tag', 'themeblvd' ),
+				'forum_user'		=> __( 'Public user profiles', 'themeblvd' ),
+				'forum_user_home'	=> __( 'Logged-in user home', 'themeblvd' )
+			)
 		),
 		'top' => array(
 			'id'	=> 'top',
 			'name'	=> __( 'Hierarchy', 'themeblvd' ),
+			'empty'	=> null,
+			'field'	=> 'top',
 			'items'	=> array(
-				'home' 			=> __( 'Homepage', 'themeblvd' ),
-				'posts' 		=> __( 'All Posts', 'themeblvd' ),
-				'pages' 		=> __( 'All Pages', 'themeblvd' ),
-				'archives' 		=> __( 'All Archives', 'themeblvd' ),
-				'categories'	=> __( 'All Category Archives', 'themeblvd' ),
-				'tags' 			=> __( 'All Tag Archives', 'themeblvd' ),
-				'authors' 		=> __( 'All Author Archives', 'themeblvd' ),
-				'search' 		=> __( 'Search Results', 'themeblvd' ),
-				'404' 			=> __( '404 Page', 'themeblvd' )
+				'home' 				=> __( 'Homepage', 'themeblvd' ),
+				'posts' 			=> __( 'All posts (any post type)', 'themeblvd' ),
+				'blog_posts' 		=> __( 'All blog posts', 'themeblvd' ),
+				'pages' 			=> __( 'All pages', 'themeblvd' ),
+				'archives' 			=> __( 'All archives', 'themeblvd' ),
+				'categories'		=> __( 'All category archives', 'themeblvd' ),
+				'tags' 				=> __( 'All tag archives', 'themeblvd' ),
+				'authors' 			=> __( 'All author archives', 'themeblvd' ),
+				'search' 			=> __( 'Search Results', 'themeblvd' ),
+				'404' 				=> __( '404 Page', 'themeblvd' )
 			)
 		),
 		'custom' => array(
 			'id'	=> 'custom',
-			'name'	=> __( 'Custom', 'themeblvd' )
+			'name'	=> __( 'Custom', 'themeblvd' ),
+			'empty'	=> null,
+			'field'	=> 'custom'
 		)
 	);
+
+	if ( ! themeblvd_installed('portfolios') ) {
+		unset( $conditionals['portfolio_items'], $conditionals['portfolio_items_in_portfolio'], $conditionals['portfolios'], $conditionals['portfolio_tags'], $conditionals['portfolio_top'] );
+	}
+
+	if ( ! themeblvd_installed('woocommerce') ) {
+		unset( $conditionals['product_cat'], $conditionals['product_tags'], $conditionals['products_in_cat'], $conditionals['product_top'] );
+	}
+
+	if ( ! themeblvd_installed('bbpress') ) {
+		unset( $conditionals['forums'], $conditionals['forum_top'] );
+	}
+
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );
 }
 

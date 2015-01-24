@@ -923,63 +923,77 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 
 	// Prepare items that weren't straight-up arrays
 	// gifted on a platter for us.
-	if ( ! empty( $input['post'] ) ) {
-		$input['post'] = str_replace(' ', '', $input['post'] );
-		$input['post'] = explode( ',', $input['post'] );
-	}
-	if ( ! empty( $input['tag'] ) ) {
-		$input['tag'] = str_replace(' ', '', $input['tag'] );
-		$input['tag'] = explode( ',', $input['tag'] );
+	foreach ( array('post', 'page', 'tag', 'portfolio_item', 'portfolio_tag', 'product_tag') as $type ) {
+		if ( ! empty( $input[$type] ) ) {
+			$input[$type] = str_replace(' ', '', $input[$type] );
+			$input[$type] = explode( ',', $input[$type] );
+		}
 	}
 
 	// Now loop through each group and then each item
 	foreach ( $input as $type => $group ) {
 		if ( is_array( $group ) && ! empty( $group ) ) {
 			foreach ( $group as $item_id ) {
+
 				$name = '';
+
 				switch ( $type ) {
 
 					case 'page' :
-						$page_id = themeblvd_post_id_by_name( $item_id, 'page' );
-						$page = get_page( $page_id );
-						if ( $page ) {
-							$name = $page->post_title;
-						}
-						break;
-
 					case 'post' :
-						$post_id = themeblvd_post_id_by_name( $item_id );
+					case 'portfolio_item' :
+					case 'forum' :
+
+						$post_id = themeblvd_post_id_by_name( $item_id, $type );
 						$post = get_post( $post_id );
+
 						if ( $post ) {
 							$name = $post->post_title;
 						}
 						break;
 
-					case 'posts_in_category' :
-						$category = get_category_by_slug( $item_id );
-						if ( $category ) {
-							$name = $category->slug;
-						}
-						break;
-
 					case 'category' :
-						$category = get_category_by_slug( $item_id );
-						if ( $category ) {
-							$name = $category->slug;
-						}
-						break;
-
+					case 'posts_in_category' :
 					case 'tag' :
-						$tag = get_term_by( 'slug', $item_id, 'post_tag' );
-						if ( $tag ) {
-							$name = $tag->name;
+					case 'portfolio' :
+					case 'portfolio_items_in_portfolio' :
+					case 'portfolio_tag' :
+					case 'products_in_cat' :
+					case 'product_cat' :
+					case 'product_tag' :
+
+						if ( $type == 'category' || $type == 'posts_in_category' ) {
+							$tax = 'category';
+						} else if ( $type == 'tag' ) {
+							$tax = 'post_tag';
+						} else if ( $type == 'portfolio' || $type == 'portfolio_items_in_portfolio' ) {
+							$tax = 'portfolio';
+						} else if ( $type == 'portfolio_tag' ) {
+							$tax = 'portfolio_tag';
+						} else if ( $type == 'product_cat' || $type == 'products_in_cat'  ) {
+							$tax = 'product_cat';
+						} else if ( $type == 'product_tag' ) {
+							$tax = 'product_tag';
+						}
+
+						if ( ! empty($tax) ) {
+
+							$term = get_term_by( 'slug', $item_id, $tax );
+
+							if ( $term ) {
+								$name = $term->name;
+							}
 						}
 						break;
 
+					case 'portfolio_top' :
+					case 'product_top' :
+					case 'forum_top' :
 					case 'top' :
-						$name = $conditionals['top']['items'][$item_id];
+						$name = $conditionals[$type]['items'][$item_id];
 						break;
 				}
+
 				if ( $name ) {
 					$output[$type.'_'.$item_id] = array(
 						'type' 		=> $type,
@@ -992,7 +1006,8 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
 			}
 		}
 	}
-	// Add in cusotm conditional
+
+	// Add in custom conditional
 	if ( ! empty( $input['custom'] ) ) {
 		$output['custom'] = array(
 			'type' 		=> 'custom',
