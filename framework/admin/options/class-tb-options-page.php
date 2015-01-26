@@ -182,6 +182,11 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
+			// Directly embedded code editor
+			if ( $option['type'] == 'code' ) {
+				$this->code_editor = true;
+			}
+
 			// Selects, looking for texture browser
 			if ( $option['type'] == 'select' ) {
 
