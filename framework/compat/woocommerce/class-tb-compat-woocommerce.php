@@ -214,7 +214,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		$deps = $api->get_framework_deps();
 
 		// Style all of WooCommerce
-		wp_enqueue_style( 'themeblvd-wc', TB_FRAMEWORK_URI.'/compat/woocommerce/woocommerce.css', $deps, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd-wc', TB_FRAMEWORK_URI.'/compat/woocommerce/woocommerce.min.css', $deps, TB_FRAMEWORK_VERSION );
 
 		// Add increment buttons back for WC 2.3+
 		if ( version_compare( $this->get_version(), '2.3.0', '>=' ) ) {

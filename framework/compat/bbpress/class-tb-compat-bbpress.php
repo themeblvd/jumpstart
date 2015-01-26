@@ -112,7 +112,7 @@ class Theme_Blvd_Compat_bbPress {
 		$deps = $api->get_framework_deps();
 		$deps[] = 'bbp-default';
 
-		wp_enqueue_style( 'themeblvd_bbp', TB_FRAMEWORK_URI.'/compat/bbpress/bbpress.css', $deps, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd-bbp', TB_FRAMEWORK_URI.'/compat/bbpress/bbpress.min.css', $deps, TB_FRAMEWORK_VERSION );
 	}
 
 	/**
