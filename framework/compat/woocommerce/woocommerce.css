@@ -1,12 +1,8 @@
 /* =General
 ----------------------------------------------- */
 
-.woocommerce input[type=number] {
+.wc-legacy input[type=number] {
 	-moz-appearance: textfield;
-}
-.woocommerce input[type=number]::-webkit-inner-spin-button,
-.woocommerce input[type=number]::-webkit-outer-spin-button {
-	-webkit-appearance: none;
 }
 .woocommerce ins {
 	text-decoration: none;
@@ -43,6 +39,14 @@
 }
 
 /* Quantity */
+.quantity input[type=number]::-webkit-inner-spin-button,
+.quantity input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+.quantity .qty {
+	-moz-appearance: textfield; /* Hide buttons for Firefox 29 and later */
+	width: 45px;
+}
 .quantity .qty,
 .quantity .minus,
 .quantity .plus {
@@ -62,10 +66,12 @@
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	width: 45px;
 }
 .content_dark .quantity .qty {
 	border-color: #000000;
+}
+.safari .quantity .qty {
+	line-height: 1;
 }
 
 /* Start Rating */
@@ -1207,36 +1213,42 @@ ul.woocommerce-info {
 .cart_totals {
 	margin-bottom: 20px;
 }
+@media screen and (min-width: 993px) {
+	.sidebar-layout-full_width .cart_totals {
+		width: 70%;
+	}
+}
 @media screen and (min-width: 768px) {
-	.cart-collaterals:after {
+	.wc-legacy .cart-collaterals:after {
 		display: table;
 		content: " ";
 		clear: both;
 	}
-	.cart_totals {
+	.wc-legacy .cart_totals {
 		float: left;
 		margin: 0;
 		width: 48%;
 	}
-	.shipping_calculator {
+	.wc-legacy .shipping_calculator {
 		float: right;
 		width: 48%;
 	}
-	.rtl .cart_totals {
+	.wc-legacy.rtl .cart_totals {
 		float: right;
 	}
-	.rtl .shipping_calculator {
+	.wc-legacy.rtl .shipping_calculator {
 		float: left;
 	}
 }
 .cart_totals h2,
-.shipping_calculator h2 {
+.wc-legacy .shipping_calculator h2 {
 	font-size: 18px;
 	margin: 0 5px 12px 5px;
 }
 .cart_totals h2:before,
-.shipping_calculator h2:before,
-.shipping_calculator h2 a:after {
+.woocommerce-shipping-calculator > p:first-child:before,
+.wc-legacy .shipping_calculator h2:before,
+.wc-legacy .shipping_calculator h2 a:after {
 	font-family: "FontAwesome";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -1265,6 +1277,11 @@ ul.woocommerce-info {
 .cart_totals th {
 	background: #f5f5f5;
 	border-right: 1px solid #dddddd;
+	vertical-align: top;
+	width: 40%;
+}
+.cart_totals td {
+	width: 60%;
 }
 .content_dark .cart_totals table,
 .content_dark .cart_totals tr,
@@ -1274,27 +1291,31 @@ ul.woocommerce-info {
 .content_dark .cart_totals th {
 	background-color: #151515;
 }
+.cart_totals .wc-proceed-to-checkout {
+	margin-top: 10px;
+}
 
 /* Shipping Calculator */
-.shipping_calculator h2:before {
+.woocommerce-shipping-calculator > p:first-child:before,
+.wc-legacy .shipping_calculator h2:before {
 	content: "\f0ac"; /* globe */
 }
-.shipping_calculator h2 a:after {
+.wc-legacy .shipping_calculator h2 a:after {
 	content: "\f063"; /* down arrow */
 	font-size: 14px;
 	margin-left: 5px;
 	text-decoration: none;
 }
-.shipping_calculator h2 a:hover,
-.shipping_calculator h2 a:focus {
+.wc-legacy .shipping_calculator h2 a:hover,
+.wc-legacy .shipping_calculator h2 a:focus {
 	text-decoration: none;
 }
-.shipping_calculator select,
-.shipping_calculator input {
+.woocommerce-shipping-calculator p,
+.wc-legacy .shipping_calculator p {
 	margin-bottom: 0;
 }
-.shipping_calculator p {
-	margin-bottom: 10px;
+.shipping-calculator-form {
+	margin-top: 10px;
 }
 
 /* My Account (login) */
@@ -1443,6 +1464,13 @@ ul.woocommerce-info {
 }
 
 /* Cart */
+.product_list_widget li {
+	padding-right: 14px;
+}
+.rtl .product_list_widget li {
+	padding-right: 0;
+	padding-left: 14px;
+}
 .product_list_widget .variation {
 	margin: 5px 0 0 0;
 }
@@ -1464,6 +1492,18 @@ ul.woocommerce-info {
 }
 .widget_shopping_cart .total {
 	margin: 15px 2px;
+}
+.widget_shopping_cart li > a.remove {
+	color: #faa;
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-decoration: none !important;
+}
+.widget_shopping_cart li > a.remove:hover {
+	color: #c88;
 }
 
 /* Floating Cart (trigger) */
@@ -1528,6 +1568,9 @@ ul.woocommerce-info {
 .tb-cart-popup .product_list_widget li > a {
 	font-weight: bold;
 	text-decoration: none;
+}
+.tb-cart-popup .product_list_widget li > .remove {
+	display: none;
 }
 .tb-cart-popup .product_list_widget li > a > img {
 	float: right;

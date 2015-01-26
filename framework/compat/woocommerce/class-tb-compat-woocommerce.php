@@ -45,11 +45,14 @@ class Theme_Blvd_Compat_WooCommerce {
 		 */
 
 		// Remove all WooCommerce stylsheets
-		add_filter( 'woocommerce_enqueue_styles', array($this, 'dequeue_styles') );
+		add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
-		// Add framework WooCommerce stylesheets
+		// Add framework WooCommerce stylesheets/scripts
 		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 );
 		add_filter( 'themeblvd_framework_stylesheets', array($this, 'add_style') );
+
+		// Add any body classes, needed for styling
+		add_filter( 'body_class', array($this, 'body_class') );
 
 		/**
 		 * Templates
@@ -84,7 +87,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		/**
 		 * Modify WooCommerce settings page
 		 */
-		add_filter('woocommerce_general_settings', array($this, 'remove_options') );
+		// add_filter('woocommerce_general_settings', array($this, 'remove_options') );
 		add_filter('woocommerce_product_settings', array($this, 'remove_options') );
 
 		/**
@@ -189,12 +192,15 @@ class Theme_Blvd_Compat_WooCommerce {
 	}
 
 	/**
-	 * Remove CSS
+	 * Get current WooCommerce version
 	 *
 	 * @since 2.5.0
 	 */
-	public function dequeue_styles() {
-		return false;
+	public function get_version() {
+		if ( defined('WC_VERSION') ) {
+			return WC_VERSION;
+		}
+		return 0;
 	}
 
 	/**
@@ -208,7 +214,12 @@ class Theme_Blvd_Compat_WooCommerce {
 		$deps = $api->get_framework_deps();
 
 		// Style all of WooCommerce
-		wp_enqueue_style( 'themeblvd_wpml', TB_FRAMEWORK_URI.'/compat/woocommerce/woocommerce.css', $deps, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd-wc', TB_FRAMEWORK_URI.'/compat/woocommerce/woocommerce.css', $deps, TB_FRAMEWORK_VERSION );
+
+		// Add increment buttons back for WC 2.3+
+		if ( version_compare( $this->get_version(), '2.3.0', '>=' ) ) {
+			wp_enqueue_script( 'wcqi-js', TB_FRAMEWORK_URI.'/compat/woocommerce/wc-quantity-increment.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		}
 
 		// Make sure WooCommerce doesn't load prettyPhoto
 		if ( apply_filters('themeblvd_remove_prettyphoto', true) ) {
@@ -229,6 +240,20 @@ class Theme_Blvd_Compat_WooCommerce {
 	public function add_style( $deps ) {
 		$deps[] = 'woocommerce';
 		return $deps;
+	}
+
+	/**
+	 * Add any <body> classes needed for styling.
+	 *
+	 * @since 2.5.0
+	 */
+	public function body_class( $class ) {
+
+		if ( version_compare( $this->get_version(), '2.3.0', '<' ) ) {
+			$class[] = 'wc-legacy';
+		}
+
+		return $class;
 	}
 
 	/**
@@ -365,7 +390,6 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		$remove = array(
 			'woocommerce_enable_lightbox'
-			// ...
 		);
 
 		if ( apply_filters('themeblvd_woocommerce_images', true) ) {
