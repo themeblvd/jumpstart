@@ -230,31 +230,28 @@ function themeblvd_headline( $args ){
  *
  * @since 2.5.0
  *
- * @param int|string $page Page ID or slug to pull content from
+ * @param int|string $post_id Post ID or slug to pull content from
+ * @param string $post_type Post Type of post to pull content from
  */
-function themeblvd_get_post_content( $post = 0, $post_type = '' ) {
+function themeblvd_get_post_content( $post_id = 0, $post_type = '' ) {
 
 	$content = '';
-	$current = false;
 
-	// If no ID, get current post's ID
-	if ( ! $post ) {
-		$current = true;
-		$post = themeblvd_config('id');
-	}
+	if ( ! $post_id ) {
 
-	// Post slug?
-	if ( is_string( $post ) ) {
-		$post = themeblvd_post_id_by_name( $post, $post_type );
-	}
+		wp_reset_query();
+		$content = apply_filters( 'the_content', get_the_content() );
 
-	$get_post = get_post( $post );
+	} else {
 
-	if ( $get_post ) {
-		if ( $current ) {
-			$content = apply_filters( 'the_content', $get_post->post_content );
-		} else {
-			$content = themeblvd_get_content( $get_post->post_content );
+		if ( is_string( $post_id ) ) {
+			$post_id = themeblvd_post_id_by_name( $post, $post_type );
+		}
+
+		$post = get_post( $post_id );
+
+		if ( $post ) {
+			$content = themeblvd_get_content( $post->post_content );
 		}
 	}
 
