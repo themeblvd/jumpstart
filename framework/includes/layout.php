@@ -322,6 +322,7 @@ function themeblvd_element( $args ) {
 
 		// Featured Image
 		case 'featured_image' :
+			wp_reset_query();
 			themeblvd_the_post_thumbnail( $args['options']['crop'] );
 			break;
 
