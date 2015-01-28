@@ -719,10 +719,10 @@ article.page {
 	margin-bottom: 0;
 }
 .fixed-sidebar .widget.panel {
-	padding: 0 20px 20px 20px;
+	padding: 20px;
 }
 .fixed-sidebar .widget.panel .panel-heading {
-	margin: 0 -20px 20px -20px;
+	margin: -20 -20px 20px -20px;
 	padding: 15px 20px;
 }
 .fixed-sidebar .widget-title {
