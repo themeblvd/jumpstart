@@ -13,6 +13,7 @@ Jump Start Changelog
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
+* Improved appearance of text logo option with "Entrepeneur" theme base.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.
 * Fixed: Custom padding not applying to "popout" elements in Builder.

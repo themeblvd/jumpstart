@@ -87,6 +87,22 @@ Author URI: http://www.themeblvd.com
 		max-width: 70%;
 	}
 }
+.header-content .header-text-logo {
+	padding: 31px 10px;
+}
+.header-content .header-text-logo.header_logo_has_tagline {
+	padding: 22px 10px;
+}
+.header-content .header-text-logo .tb-text-logo {
+	font-size: 28px;
+	line-height: 1;
+}
+.header-content .header-text-logo .tagline {
+	display: block;
+	font-size: 13px;
+	line-height: 1;
+	margin-top: 5px;
+}
 
 /* Primary Navigation (non-mobile view) */
 .header-nav {
