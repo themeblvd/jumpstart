@@ -1641,7 +1641,7 @@ function jumpstart_su_css() {
 		$print .= "button.alt,\n";
 		$print .= "input.alt,\n";
 		$print .= ".label-primary,\n";
-		$print .= ".panel-primary > .panel-heading > .panel-title {\n";
+		$print .= ".panel-primary > .panel-heading {\n";
 
 		if ( $btn['include_bg'] ) {
 			$print .= sprintf("\tbackground-color: %s;\n", $btn['bg']);
@@ -1657,6 +1657,10 @@ function jumpstart_su_css() {
 
 		$print .= sprintf("\tcolor: %s;\n", $btn['text']);
 
+		$print .= "}\n";
+
+		$print .= ".panel-primary > .panel-heading > .panel-title {\n";
+		$print .= sprintf("\tcolor: %s;\n", $btn['text']);
 		$print .= "}\n";
 
 		$print .= ".primary:hover,\n";

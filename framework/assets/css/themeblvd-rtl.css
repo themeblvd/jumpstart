@@ -7562,9 +7562,12 @@ a.alt,
 button.alt,
 input.alt,
 .label-primary,
-.panel-primary > .panel-heading > .panel-title {
+.panel-primary > .panel-heading {
 	background-color: #333333;
 	border-color: #000000;
+	color: #ffffff;
+}
+.panel-primary > .panel-heading > .panel-title {
 	color: #ffffff;
 }
 .btn-primary,
