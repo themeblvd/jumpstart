@@ -6027,6 +6027,24 @@ blockquote small {
 .tb-panel .panel-footer {
 	color: #666666;
 }
+.tb-panel.panel-default > .panel-heading {
+    color: #333333 !important;
+ }
+.tb-panel.panel-primary > .panel-heading > .panel-title {
+    color: #ffffff;
+}
+.tb-panel.panel-success > .panel-heading > .panel-title {
+    color: #3c763d;
+}
+.tb-panel.panel-info > .panel-heading > .panel-title {
+    color: #31708f;
+}
+.tb-panel.panel-warning > .panel-heading > .panel-title {
+    color: #8a6d3b;
+}
+.tb-panel.panel-danger > .panel-heading > .panel-title {
+    color: #a94442;
+}
 
 /* Partner Logos (inherits from tb-block-slider) */
 .entry-content .tb-logos {
@@ -7541,7 +7559,7 @@ a.alt,
 button.alt,
 input.alt,
 .label-primary,
-.panel-primary > .panel-heading {
+.panel-primary > .panel-heading > .panel-title {
 	background-color: #333333;
 	border-color: #000000;
 	color: #ffffff;
