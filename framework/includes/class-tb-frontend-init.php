@@ -273,7 +273,12 @@ class Theme_Blvd_Frontend_Init {
 						}
 
 					} else {
+
 						$layout = $post->post_name; // Will pull from current page's meta data
+
+						if ( ! $layout ) {
+							$layout = 'current';
+						}
 					}
 
 				}
