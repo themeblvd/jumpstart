@@ -402,7 +402,7 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 	);
 
 	if ( $context != 'section' ) {
-		unset($types['slider']);
+		unset($types['slideshow']);
 	}
 
 	if ( $context == 'section' || $context == 'banner' ) {
