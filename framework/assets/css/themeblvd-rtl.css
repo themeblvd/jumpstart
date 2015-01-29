@@ -2134,6 +2134,9 @@ html[xmlns] .slides {
 	margin: 0 1px;
 	padding: 0;
 }
+.element-contact .tb-social-icons ul > li {
+	margin: 1px;
+}
 .tb-social-icons ul > li > a {
 	font-size: 24px;
 	color: inherit;
