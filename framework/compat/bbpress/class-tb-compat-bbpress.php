@@ -337,6 +337,30 @@ class Theme_Blvd_Compat_bbPress {
 				);
 
 			}
+
+		} else if ( bbp_is_single_user() ) {
+
+			$page = bbp_get_page_by_path( bbp_get_root_slug() );
+
+			if ( ! empty( $page ) ) {
+				$url = get_permalink( $page->ID );
+			} else {
+				$url = get_post_type_archive_link( bbp_get_forum_post_type() );
+			}
+
+			$parts = array(
+				array(
+					'link'	=> $url,
+					'text'	=> bbp_get_forum_archive_title(),
+					'type'	=> 'page'
+				),
+				array(
+					'link'	=> '',
+					'text'	=> get_the_title(),
+					'type'	=> 'page'
+				)
+			);
+
 		}
 
 		return $parts;

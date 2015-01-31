@@ -16,6 +16,7 @@ Jump Start Changelog
 * Improved appearance of text logo option with "Entrepeneur" theme base.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.
+* Fixed: Added missing breadcrumbs for bbPress user profiles.
 * Fixed: Custom padding not applying to "popout" elements in Builder.
 * Fixed: Widgets set as "panel" from theme options not displaying right with no widget title.
 * Fixed: Issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
