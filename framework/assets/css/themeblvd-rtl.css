@@ -7067,7 +7067,7 @@ blockquote small {
 -----------------------------------------------*/
 
 /* Blank Page */
-body.blank-page {
+.tb-blank-page {
 	display: table;
 	float: none;
 	margin: 0;

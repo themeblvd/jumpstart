@@ -261,6 +261,11 @@ function themeblvd_body_class( $classes ) {
 		$classes[] = 'tb-tag-cloud';
 	}
 
+	// Blank page template
+	if ( is_page_template('template_blank.php') ) {
+		$classes[] = 'tb-blank-page';
+	}
+
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
 }
 

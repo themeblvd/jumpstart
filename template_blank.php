@@ -14,20 +14,17 @@
  * @link		http://themeblvd.com
  * @package 	Theme Blvd WordPress Framework
  */
-?><html <?php language_attributes(); ?>>
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/framework/assets/js/html5.js" type="text/javascript"></script>
-<![endif]-->
 <?php wp_head(); ?>
 </head>
-<body <?php body_class('blank-page'); ?>>
+<body <?php body_class(); ?>>
 
-	<?php themeblvd_before(); ?>
+	<?php do_action('themeblvd_before'); ?>
 
 	<div id="blank-page">
 		<div class="wrap">
@@ -47,7 +44,7 @@
 		</div><!-- .wrap (end) -->
 	</div><!-- #blank-page (end) -->
 
-	<?php themeblvd_after(); ?>
+	<?php do_action('themeblvd_after'); ?>
 	<?php wp_footer(); ?>
 
 </body>
