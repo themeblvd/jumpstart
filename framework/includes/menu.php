@@ -61,6 +61,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 
 				}
 
+				$output = trim($output);
 				$output = substr_replace($output, "<ul class=\"sub-menu mega-sub-menu level-2\">\n", -5); // Replace last </li> with opening <ul>
 			}
 		}
