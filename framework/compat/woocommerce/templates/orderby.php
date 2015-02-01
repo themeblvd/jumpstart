@@ -1,6 +1,7 @@
 <?php
+$compat = Theme_Blvd_Compat_WooCommerce::get_instance();
 $default = themeblvd_get_option('woo_shop_view');
-$current = themeblvd_get_att('woo_product_view');
+$current = $compat->loop_view();
 $views = apply_filters( 'themeblvd_woo_views', array(
 	'grid' 		=> '<i class="fa fa-th"></i>',
 	'list' 		=> '<i class="fa fa-list"></i>',

@@ -110,7 +110,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Shop
 		 */
 
-		// Set globa shop attribues
+		// Set global shop attribues
 		add_action( 'wp', array( $this, 'set_atts' ) );
 
 		// Wrap shop loop
@@ -268,7 +268,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		if ( $slug == 'content' && $name == 'product' ) {
 
-			$view = themeblvd_get_att('woo_product_view');
+			$view = $this->loop_view();
 
 			if ( in_array( $view, array('list', 'catalog') ) ) {
 				$template = apply_filters('themeblvd_woocommerce_'.$view.'_template', trailingslashit(TB_FRAMEWORK_DIRECTORY) . 'compat/woocommerce/templates/' . 'content-product-'.$view.'.php');
@@ -505,7 +505,7 @@ class Theme_Blvd_Compat_WooCommerce {
 			$view = themeblvd_get_option('woo_shop_view', null, 'grid');
 		}
 
-		themeblvd_set_att( 'woo_product_view', apply_filters('themeblvd_product_view', $view) );
+		themeblvd_set_att( 'woo_product_view', $view );
 
 	}
 
@@ -515,7 +515,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * @since 2.5.0
 	 */
 	public function loop_open() {
-		printf( '<div class="tb-product-loop-wrap shop-columns-%s %s-view bg-content">', $this->loop_columns(), themeblvd_get_att('woo_product_view') );
+		printf( '<div class="tb-product-loop-wrap shop-columns-%s %s-view bg-content">', $this->loop_columns(), $this->loop_view() );
 	}
 
 	/**
@@ -841,6 +841,22 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		return intval($cols);
+	}
+
+	/**
+	 * Get current shop view
+	 *
+	 * @since 2.5.0
+	 */
+	public function loop_view() {
+
+		$view = themeblvd_get_att('woo_product_view');
+
+		if ( ! $view ) {
+			$view = 'grid';
+		}
+
+		return apply_filters('themeblvd_product_view', $view);
 	}
 
 	/**

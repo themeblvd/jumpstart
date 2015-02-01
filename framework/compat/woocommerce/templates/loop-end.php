@@ -1,7 +1,7 @@
 <?php
 $compat = Theme_Blvd_Compat_WooCommerce::get_instance();
 
-if ( themeblvd_get_att('woo_product_view') == 'catalog' ) {
+if ( $compat->loop_view() == 'catalog' ) {
 	echo '</tbody>';
 	echo '</table>';
 } else {
