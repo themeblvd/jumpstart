@@ -98,6 +98,11 @@ class Theme_Blvd_Compat_bbPress {
 		// Lead topic
 		add_action( 'wp', array($this, 'lead_topic') );
 
+		// Add user's website URL to public profile
+		if ( apply_filters('themeblvd_bbp_do_website', true) ) {
+			add_filter( 'bbp_get_displayed_user_field', array($this, 'user_website'), 10, 2 );
+		}
+
 	}
 
 	/**
@@ -566,6 +571,22 @@ class Theme_Blvd_Compat_bbPress {
 			echo '</div>';
 
 		}
+	}
+
+	/**
+	 * Add user's website URL to output with profile.
+	 *
+	 * @since 2.5.0
+	 */
+	public function user_website( $value, $field ) {
+
+		if ( $field == 'description' && ! bbp_is_single_user_edit() && $website = bbp_get_displayed_user_field('user_url') ) {
+			$value .= '</p><p class="bbp-user-forum-role">';
+			$value .= themeblvd_get_local('website').': ';
+			$value .= sprintf('<a href="%s" target="_blank">%s</a>', $website, str_replace(array('http://', 'https://'), '', $website));
+		}
+
+		return $value;
 	}
 
 }

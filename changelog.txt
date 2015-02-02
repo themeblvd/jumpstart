@@ -10,6 +10,7 @@ Jump Start Changelog
 * Added a little design flare to alert component, to look less Bootstrap-ish.
 * Added "tb_square_medium" crop size, 500x500.
 * Added filter for custom logo image in sticky menu, [See Tutorial](http://dev.themeblvd.com/tutorial/adding-a-custom-logo-to-the-sticky-menu/).
+* Added user website URL display for bbPress user profiles.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
