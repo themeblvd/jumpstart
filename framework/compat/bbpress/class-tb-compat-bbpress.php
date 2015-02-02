@@ -144,6 +144,10 @@ class Theme_Blvd_Compat_bbPress {
 			$classes[] = 'bbp-show-lead-topic';
 		}
 
+		if ( bbp_is_user_home() ) {
+			$classes[] = 'bbp-user-home';
+		}
+
 		return $classes;
 	}
 

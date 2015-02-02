@@ -548,8 +548,8 @@ p.bbp-user-reply-count {
 .bbp-user-replies-created .bbp-admin-links {
 	display: none;
 }
-.logged-in #bbp-user-favorites li.bbp-body ul.topic,
-.logged-in #bbp-user-subscriptions li.bbp-body ul.forum {
+.bbp-user-home #bbp-user-favorites li.bbp-body ul.topic,
+.bbp-user-home #bbp-user-subscriptions li.bbp-body ul.forum {
 	padding-left: 40px;
 	position: relative;
 }
@@ -573,7 +573,7 @@ p.bbp-user-reply-count {
 	border: none !important;
 	display: block;
 	font-size: 16px;
-	margin: -12px 0 0 -5px;
+	margin: -16px 0 0 -5px;
 	padding: 0;
 	position: absolute;
 	top: 50%;
@@ -909,13 +909,13 @@ body.rtl #bbpress-forums #bbp-single-user-details #bbp-user-navigation {
 	margin-right: 10px;
 	margin-left: 0;
 }
-body.rtl.logged-in #bbp-user-favorites li.bbp-body ul.topic,
-body.rtl.logged-in #bbp-user-subscriptions li.bbp-body ul.forum {
+body.rtl.bbp-user-home #bbp-user-favorites li.bbp-body ul.topic,
+body.rtl.bbp-user-home #bbp-user-subscriptions li.bbp-body ul.forum {
 	padding-right: 40px;
 	padding-left: 0;
 }
-body.rtl.logged-in .bbp-row-actions #subscription-toggle,
-body.rtl.logged-in .bbp-row-actions #favorite-toggle {
+body.rtl .bbp-row-actions #subscription-toggle,
+body.rtl .bbp-row-actions #favorite-toggle {
 	border-right-width: 0;
 	border-left-width: 1px;
 	left: inherit;
