@@ -213,8 +213,9 @@ function themeblvd_setup() {
 		),
 		'plugins' => array(
 			'bbpress'			=> true,			// bbPress by Automattic
-			'wpml'				=> true,			// WPML by On The Go Systems
-			'woocommerce'		=> true				// WooCommerce by WooThemes
+			'gravityforms'		=> true,			// Gravity Forms by Rocket Genius
+			'woocommerce'		=> true,			// WooCommerce by WooThemes
+			'wpml'				=> true				// WPML by On The Go Systems
 		)
 	);
 	return apply_filters( 'themeblvd_global_config', $setup );

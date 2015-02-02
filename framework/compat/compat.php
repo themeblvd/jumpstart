@@ -24,6 +24,12 @@ function themeblvd_plugin_compat() {
 		$woocommerce = Theme_Blvd_Compat_WooCommerce::get_instance();
 	}
 
+	// Gravity Forms by Rocket Genius
+	if ( themeblvd_installed('gravityforms') && themeblvd_supports('plugins', 'gravityforms') ) {
+		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/gravityforms/class-tb-compat-gravity-forms.php' );
+		$gravityforms = Theme_Blvd_Compat_Gravity_Forms::get_instance();
+	}
+
 }
 
 /**
@@ -33,7 +39,7 @@ function themeblvd_plugin_compat() {
  * @since 2.5.0
  */
 function themeblvd_get_compat() {
-	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'portfolios', 'sitepress', 'woocommerce'));
+	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'grvityforms', 'portfolios', 'sitepress', 'woocommerce'));
 }
 
 /**
@@ -66,6 +72,12 @@ function themeblvd_installed( $plugin = '' ) {
 
 			case 'portfolios' :
 				if ( class_exists('Theme_Blvd_Portfolios') ) {
+					return true;
+				}
+				break;
+
+			case 'gravityforms' :
+				if ( class_exists('GFForms') ) {
 					return true;
 				}
 
