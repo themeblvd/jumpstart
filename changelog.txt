@@ -30,6 +30,7 @@ Jump Start Changelog
 * Fixed: "Preview Changes" not working correctly when inserting current page's content into custom layout.
 * Fixed: "Save as Draft" not working for custom layout pages.
 * Fixed: Issues with "Blank Page" page template.
+* Fixed: `themeblvd_get_option()` not returning `0` string value.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`
