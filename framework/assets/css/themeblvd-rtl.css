@@ -5470,6 +5470,9 @@ blockquote small {
 	margin-bottom: 0;
 }
 .post_showcase .showcase-wrap > .row {
+	margin: 0 -5px;
+}
+.post_showcase.tb-isotope .showcase-wrap > .row {
 	margin: -5px;
 }
 .post_showcase .showcase-wrap > .row > .showcase-item {
@@ -5532,9 +5535,6 @@ blockquote small {
 }
 .post_showcase .entry-content p:last-child {
 	margin-bottom: 0;
-}
-.post_showcase.tb-isotope .showcase-wrap > .row {
-	margin: -5px;
 }
 
 /* Post Slider (inherits from .tb-simple-slider) */

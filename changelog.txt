@@ -15,6 +15,7 @@ Jump Start Changelog
 * CSS tweaks to buttons.
 * Improved appearance of text logo option with "Entrepeneur" theme base.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
+* Fixed: Post Showcase (no masonry) not displaying right with excerpts.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.
 * Fixed: Added missing breadcrumbs for bbPress user profiles.
 * Fixed: Custom padding not applying to "popout" elements in Builder.
