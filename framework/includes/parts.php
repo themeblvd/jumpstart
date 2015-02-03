@@ -353,11 +353,9 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
 		$count = WC()->cart->get_cart_contents_count();
 
-		if ( $count ) {
-			$label = sprintf( '<span class="trigger-label">%s</span>', $count );
-			$output = str_replace('data-label=""', sprintf('data-label="%s"', $count), $output);
-			$output =  str_replace('</a>',$label.'</a>', $output);
-		}
+		$label = sprintf( '<span class="trigger-label">%s</span>', $count );
+		$output = str_replace('data-label=""', sprintf('data-label="%s"', $count), $output);
+		$output =  str_replace('</a>',$label.'</a>', $output);
 	}
 
 	return apply_filters('themeblvd_cart_popup_trigger', $output, $args);
@@ -385,13 +383,9 @@ function themeblvd_get_mobile_cart_link(){
 	$cart_label = '';
 
 	if ( themeblvd_installed('woocommerce') ) {
-
 		$cart_url = WC()->cart->get_cart_url();
 		$count = WC()->cart->get_cart_contents_count();
-
-		if ( $count ) {
-			$cart_label = sprintf( '<span class="cart-count">%s</span>', $count );
-		}
+		$cart_label = sprintf( '<span class="cart-count">%s</span>', $count );
 	}
 
 	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', apply_filters('themeblvd_cart_url', $cart_url), apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-cart"></i>'), $cart_label );
