@@ -250,6 +250,7 @@
 }
 @media (max-width: 992px) {
 	.tb-primary-menu > li > .menu-btn {
+		font-size: 12px;
 		padding: 18px 10px;
 	}
 	.tb-primary-menu > li.menu-item-has-children > .menu-btn {

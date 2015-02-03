@@ -241,6 +241,7 @@
 }
 @media (max-width: 1200px) {
 	.tb-primary-menu > li > .menu-btn {
+		font-size: 12px;
 		padding: 18px 15px;
 	}
 	/* @noflip */
