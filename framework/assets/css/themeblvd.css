@@ -1355,6 +1355,13 @@ body.side-menu-on {
 .wp-video .mejs-overlay-play {
 	height: 100% !important;
 }
+.wp-video .mejs-layers .mejs-overlay {
+	height: 100% !important;
+	width: 100% !important;
+}
+.wp-video video {
+	height: 100%;
+}
 
 /* =Video/Audio
 ----------------------------------------------- */
@@ -1422,13 +1429,14 @@ body.side-menu-on {
 	font-size: 70px;
 	/* line-height: 130px; */
 	line-height: 126px;
+	margin-top: -75px !important;
 	margin-left: -65px !important;
 	text-align: center;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 	width: 130px !important;
 	height: 130px !important;
-	top: 45%;
+	top: 50% !important;
 }
 .mejs-overlay-button:hover {
 	border-color: #ffffff;
@@ -1443,6 +1451,19 @@ body.side-menu-on {
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+@media (max-width: 767px) {
+	.mejs-overlay-button {
+		font-size: 40px;
+		width: 100px !important;
+		height: 100px !important;
+		line-height: 90px;
+		margin-top: -60px !important;
+		margin-left: -50px !important;
+	}
+	.mejs-overlay-button:before {
+		padding-left: 10px;
+	}
 }
 .mejs-container.mejs-video .mejs-controls {
 	right: 2% !important;

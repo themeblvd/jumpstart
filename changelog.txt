@@ -36,6 +36,7 @@ Jump Start Changelog
 * Fixed: "Save as Draft" not working for custom layout pages.
 * Fixed: Issues with "Blank Page" page template.
 * Fixed: `themeblvd_get_option()` not returning `0` string value.
+* Fixed: Minor CSS issues with WordPress native self-hosted videos, mainly in Firefox.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`
