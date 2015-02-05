@@ -147,13 +147,38 @@
 .header-top-nav > li.top-cart {
 	padding-right: 14px;
 }
+
+/* Header Content */
+.header-content > .wrap {
+	padding: 20px;
+	position: relative;
+}
+@media (max-width: 992px) {
+	.header-content > .wrap {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+.header-logo {
+	float: left;
+}
+@media (max-width: 992px) {
+	.header-logo {
+		float: none;
+		padding-right: 58px;
+	}
+	.has-cart-button .header-logo {
+		padding-right: 111px;
+	}
+}
 .btn-navbar {
 	background: #333333;
 	color: #ffffff;
+	margin-top: -24px;
 	padding: 15px;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 50%;
+	right: 20px;
 	text-align: center;
 	z-index: 10;
 }
@@ -162,8 +187,7 @@
 	color: #ffffff;
 }
 .btn-navbar.cart {
-	left: initial;
-	right: 0;
+	right: 73px; /* 20 + 48 + 5 */
 }
 .btn-navbar.cart .cart-count {
 	background: rgba(255,255,255,.1);
@@ -184,32 +208,11 @@
 	width: 18px; /* maintain consistent width, no matter what icon used */
 }
 
-/* Header Content */
-.header-content > .wrap {
-	padding: 20px;
-	position: relative;
-}
-@media (max-width: 767px) {
-	.header-content > .wrap {
-		padding-right: 50px;
-		padding-left: 50px;
-		text-align: center;
-	}
-}
-.header-logo {
-	float: left;
-}
-@media (max-width: 767px) {
-	.header-logo {
-		float: none;
-	}
-}
-
 /* Primary Navigation */
 .header-nav {
 	background: #333333;
 }
-@media (max-width: 767px) {
+@media (max-width: 992px) {
 	.header-nav {
 		display: none;
 	}
@@ -248,16 +251,6 @@
 		padding-right: 7px;
 	}
 }
-@media (max-width: 992px) {
-	.tb-primary-menu > li > .menu-btn {
-		font-size: 12px;
-		padding: 18px 10px;
-	}
-	.tb-primary-menu > li.menu-item-has-children > .menu-btn {
-		/* @noflip */
-		padding-right: 5px;
-	}
-}
 
 /* Level 2+ */
 .tb-primary-menu ul.non-mega-sub-menu,
@@ -290,7 +283,7 @@
 	background-color: #333333;
 }
 #tb-side-menu-wrapper {
-	border-right: 1px solid #000000;
+	border-left: 1px solid #000000;
 }
 #tb-side-menu-wrapper .tb-side-menu a,
 #tb-side-menu-wrapper .tb-side-menu span,

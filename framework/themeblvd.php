@@ -167,8 +167,8 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	// Header hooks
 	add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 	add_action( 'themeblvd_header_above', 'themeblvd_header_above_default' );
-	add_action( 'themeblvd_header_content', 'themeblvd_responsive_menu_toggle', 5 );
 	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
+	add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle');
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
 	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 	add_action( 'themeblvd_header_after', 'themeblvd_header_after_default' );

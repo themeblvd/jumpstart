@@ -53,7 +53,6 @@
 						do_action('themeblvd_header_above');
 
 						/**
-						 * @hooked themeblvd_responsive_menu_toggle - 5
 						 * @hooked themeblvd_header_content_default - 10
 						 */
 						do_action('themeblvd_header_content');

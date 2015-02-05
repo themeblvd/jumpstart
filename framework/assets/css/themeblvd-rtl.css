@@ -1254,33 +1254,32 @@ html {
 	transition: right .2s ease-out;
 	position: fixed !important;
 	top: 0;
-	right: -280px;
-	left: 0;
+	left: -280px;
 	bottom: 0;
 	width: 280px;
 	z-index: 200;
 }
 body.side-menu-on #tb-side-menu-wrapper {
-	right: 0;
-	-webkit-transition: right .2s ease-out;
-	-moz-transition: right .2s ease-out;
-	transition: right .2s ease-out;
+	left: 0;
+	-webkit-transition: left .2s ease-out;
+	-moz-transition: left .2s ease-out;
+	transition: left .2s ease-out;
 }
 body.side-menu-off {
 	position: relative;
-	right: 0;
-	-webkit-transition: right .2s ease-out;
-	-moz-transition: right .2s ease-out;
-	transition: right .2s ease-out;
+	left: 0;
+	-webkit-transition: left .2s ease-out;
+	-moz-transition: left .2s ease-out;
+	transition: left .2s ease-out;
 }
 body.side-menu-on {
 	overflow: hidden;
 	position: fixed;
-	right: 280px;
-	left: -280px;
-	-webkit-transition: right .2s ease-out;
-	-moz-transition: right .2s ease-out;
-	transition: right .2s ease-out;
+	right: -280px;
+	left: 280px;
+	-webkit-transition: left .2s ease-out;
+	-moz-transition: left .2s ease-out;
+	transition: left .2s ease-out;
 }
 #tb-side-menu-wrapper .wrap > div:last-child {
 	padding-bottom: 10px;

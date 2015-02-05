@@ -115,8 +115,14 @@ if ( !function_exists( 'themeblvd_header_content_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_header_content_default() {
+
+	$class = 'header-content';
+
+	if ( themeblvd_do_cart() ) {
+		$class .= ' has-cart-button';
+	}
 	?>
-	<div class="header-content" role="banner">
+	<div class="<?php echo $class; ?>" role="banner">
 		<div class="wrap clearfix">
 			<?php
 			/**
@@ -125,7 +131,7 @@ function themeblvd_header_content_default() {
 			do_action('themeblvd_header_logo');
 
 			/**
-			 * @hooked null
+			 * @hooked themeblvd_responsive_menu_toggle - 10
 			 */
 			do_action('themeblvd_header_addon');
 			?>

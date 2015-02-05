@@ -1506,8 +1506,10 @@ function jumpstart_ent_css() {
 	// Header Height and Main Menu
 	$height = intval(themeblvd_get_option('header_height'));
 
-	$print .= ".header-content {\n";
-	$print .= sprintf( "\theight: %spx;\n", $height );
+	$print .= "@media (min-width: 993px) {\n";
+	$print .= "\t.header-content {\n";
+	$print .= sprintf( "\t\theight: %spx;\n", $height );
+	$print .= "\t}\n";
 	$print .= "}\n";
 
 	$print .= ".header-content .header-logo img {\n";
@@ -1727,12 +1729,6 @@ add_filter('themeblvd_has_header_info', 'themeblvd_ent_has_header_info');
  */
 remove_action('themeblvd_header_menu', 'themeblvd_header_menu_default');
 add_action('themeblvd_header_addon', 'themeblvd_header_menu_default');
-
-/**
- * Move responsive main menu toggle
- */
-remove_action('themeblvd_header_content', 'themeblvd_responsive_menu_toggle', 5);
-add_action('themeblvd_header_addon', 'themeblvd_responsive_menu_toggle');
 
 /**
  * Add header elements to main menu, if header
