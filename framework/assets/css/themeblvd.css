@@ -4311,7 +4311,7 @@ ul.tb-icon-list {
 /* =Widgets
 -----------------------------------------------*/
 
-/* Widgets w/Lists */
+/* Widgets w/lists */
 .widget ul {
 	list-style: none;
 	margin: 0;
@@ -4327,6 +4327,18 @@ ul.tb-icon-list {
 }
 .widget ul ul {
 	padding: 0 0 5px 18px;
+}
+
+/* Widgets w/menu tree */
+.widget ul.children,
+.widget ul.sub-menu {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-bottom: 0;
+}
+.widget ul.children > li:last-child,
+.widget ul.sub-menu > li:last-child {
+	margin-bottom: 0;
 }
 
 /* WP RSS Widget */

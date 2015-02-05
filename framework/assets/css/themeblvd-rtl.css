@@ -4330,6 +4330,18 @@ ul.tb-icon-list {
 	padding: 0 18px 5px 0;
 }
 
+/* Widgets w/menu tree */
+.widget ul.children,
+.widget ul.sub-menu {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-bottom: 0;
+}
+.widget ul.children > li:last-child,
+.widget ul.sub-menu > li:last-child {
+	margin-bottom: 0;
+}
+
 /* WP RSS Widget */
 .widget_rss .widget-title a.rsswidget {
 	color: inherit;

@@ -18,6 +18,7 @@ Jump Start Changelog
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
 * Improved appearance of text logo option with "Entrepeneur" theme base.
+* Improvements to styling of default widgets with lists.
 * Mobile navigation toggle now displays at tablet viewport and in right of header, across all theme bases.
 * Main menu font size made smaller for tablets and sticky menu to fit more buttons.
 * Updated to FontAwesome 4.3.
