@@ -20,6 +20,7 @@ Jump Start Changelog
 * Improved appearance of text logo option with "Entrepeneur" theme base.
 * Mobile navigation toggle now displays at tablet viewport and in right of header, across all theme bases.
 * Main menu font size made smaller for tablets and sticky menu to fit more buttons.
+* Updated to FontAwesome 4.3.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Post Showcase (no masonry) not displaying right with excerpts.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.
