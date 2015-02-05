@@ -705,6 +705,8 @@ jQuery(document).ready(function($) {
 
 		    	// Apply background cover, only when container
 			    // is wider than background image.
+				// Note: There's no user option for this, add
+				// class "tb-bg-cover" to section to utilize.
 		    	if ( $el.hasClass('tb-bg-cover') && bg_repeat == 'no-repeat' ) {
 
 			        if ( $el.outerWidth() > img.width ) {

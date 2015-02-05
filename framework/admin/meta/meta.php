@@ -292,16 +292,16 @@ function setup_themeblvd_banner_meta() {
 				'name'		=> __('Background Image', 'themeblvd'),
 				'desc'		=> __('Select a background image.', 'themeblvd'),
 				'type'		=> 'background',
+				'std'		=> array(
+					'color'			=> '',
+					'image'			=> '',
+					'repeat'		=> 'repeat-x',
+					'position'		=> 'center middle',
+					'attachment'	=> 'scroll',
+					'size'			=> '100% auto'
+				),
 				'color'		=> false,
 				'parallax'	=> true
-			),
-			'bg_image_parallax_stretch' => array(
-				'id'		=> 'bg_image_parallax_stretch',
-				'name'		=> __('Parallax: Stretch Background', 'themeblvd'),
-				'desc'		=> __('When this is checked, your background image will be expanded to fit horizontally, but never condensed. &mdash; <em>Note: This will only work if Background Repeat is set to "No Repeat."</em>', 'themeblvd'),
-				'type'		=> 'checkbox',
-				'std'		=> '1',
-				'class'		=> 'hide parallax'
 			),
 			'bg_image_parallax' => array(
 				'id'		=> 'bg_image_parallax',

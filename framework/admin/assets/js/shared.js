@@ -258,9 +258,21 @@
 							$el.find('.parallax').show();
 						} else {
 							$el.find('.of-background-position').closest('.tb-fancy-select').show();
-							$el.find('.of-background-size').closest('.tb-fancy-select').show();
 							$el.find('.parallax').hide();
 						}
+					});
+
+					$this.find('.of-background-properties').each(function(){
+
+						var $el = $(this)
+							val = $el.find('.of-background-repeat').val();
+
+					    if ( val == 'no-repeat' ) {
+					        $el.find('.of-background-size').closest('.tb-fancy-select').show();
+					    } else {
+					        $el.find('.of-background-size').closest('.tb-fancy-select').hide();
+					    }
+
 					});
 
 					// jQuery UI slider
@@ -718,13 +730,23 @@
 
 						if ( $(this).val() == 'parallax' ) {
 							$el.find('.of-background-position').closest('.tb-fancy-select').hide();
-							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
 							$el.find('.parallax').show();
 						} else {
 							$el.find('.of-background-position').closest('.tb-fancy-select').show();
-							$el.find('.of-background-size').closest('.tb-fancy-select').show();
 							$el.find('.parallax').hide();
 						}
+					});
+
+					$this.on( 'change', '.of-background-properties .of-background-repeat', function(){
+
+						var $el = $(this).closest('.of-background-properties');
+
+						if ( $(this).val() == 'no-repeat' ) {
+							$el.find('.of-background-size').closest('.tb-fancy-select').show();
+						} else {
+							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
+						}
+
 					});
 
 	    			// Modals

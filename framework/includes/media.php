@@ -1387,7 +1387,6 @@ function themeblvd_get_banner( $args = array() ) {
 	    'apply_bg_texture_parallax'	=> '0',
 	    'bg_texture_parallax' 		=> '5',
 	    'bg_image' 					=> array(),
-		'bg_image_parallax_stretch' => '1',
 	    'bg_image_parallax' 		=> '2',
 	    'headline' 					=> 'none',
 	    'headline_custom' 			=> '',

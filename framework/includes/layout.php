@@ -661,13 +661,7 @@ function themeblvd_get_display_class( $display ) {
 		} else if ( $bg_type == 'image' ) {
 
 			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
-
 				$class[] = 'tb-parallax';
-
-				if ( ! empty( $display['bg_image_parallax_stretch'] ) ) {
-					$class[] = 'tb-bg-cover';
-				}
-
 			}
 
 			if ( ! empty( $display['bg_image']['repeat'] ) ) {
@@ -784,15 +778,25 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 		} else if ( $bg_type == 'image' ) {
 
+			$repeat = false;
+			$parallax = false;
+
 			if ( ! empty( $display['bg_image']['image'] ) ) {
 				$params['background-image'] = sprintf('url(%s)', $display['bg_image']['image']);
 			}
 
 			if ( ! empty( $display['bg_image']['repeat'] ) ) {
+
+				if ( $display['bg_image']['repeat'] != 'no-repeat' ) {
+					$repeat = true;
+				}
+
 				$params['background-repeat'] = $display['bg_image']['repeat'];
 			}
 
-			$parallax = false;
+			if ( ! $repeat && ! empty( $display['bg_image']['size'] ) ) {
+				$params['background-size'] = $display['bg_image']['size'];
+			}
 
 			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
 				$parallax = true;
@@ -804,10 +808,6 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 			if ( ! $parallax && ! empty( $display['bg_image']['position'] ) ) {
 				$params['background-position'] = $display['bg_image']['position'];
-			}
-
-			if ( ! $parallax && ! empty( $display['bg_image']['size'] ) ) {
-				$params['background-size'] = $display['bg_image']['size'];
 			}
 
 		}

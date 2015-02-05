@@ -314,14 +314,6 @@ function jumpstart_su_options() {
 				'color'		=> false,
 				'parallax'	=> true
 			),
-			'header_bg_image_parallax_stretch' => array(
-				'id'		=> 'header_bg_image_parallax_stretch',
-				'name'		=> __('Parallax: Stretch Background', 'themeblvd'),
-				'desc'		=> __('When this is checked, your background image will be expanded to fit horizontally, but never condensed. &mdash; <em>Note: This will only work if Background Repeat is set to "No Repeat."</em>', 'themeblvd'),
-				'type'		=> 'checkbox',
-				'std'		=> '1',
-				'class'		=> 'hide parallax'
-			),
 			'header_bg_image_parallax' => array(
 				'id'		=> 'header_bg_image_parallax',
 				'name'		=> __('Parallax: Intensity', 'themeblvd'),
@@ -1793,7 +1785,6 @@ function jumpstart_su_css() {
 		$options['apply_bg_texture_parallax'] = themeblvd_get_option('header_apply_bg_texture_parallax');
 		$options['bg_texture_parallax'] = themeblvd_get_option('header_bg_texture_parallax');
 		$options['bg_image'] = themeblvd_get_option('header_bg_image');
-		$options['bg_image_parallax_stretch'] = themeblvd_get_option('header_bg_image_parallax_stretch');
 		$options['bg_image_parallax'] = themeblvd_get_option('header_bg_image_parallax');
 		$options['apply_bg_shade'] = themeblvd_get_option('header_apply_bg_shade');
 		$options['bg_shade_color'] = themeblvd_get_option('header_bg_shade_color');
@@ -2262,7 +2253,6 @@ function jumpstart_su_header_class( $output, $class ) {
 		'bg_texture_parallax'			=> themeblvd_get_option('header_bg_texture_parallax'),
 		'bg_image'						=> themeblvd_get_option('header_bg_image'),
 		'bg_image_parallax'				=> themeblvd_get_option('header_bg_image_parallax'),
-		'bg_image_parallax_stretch'		=> themeblvd_get_option('header_bg_image_parallax_stretch'),
 		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
 		'apply_padding'					=> themeblvd_get_option('header_apply_padding')
 	);
