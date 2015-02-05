@@ -13,6 +13,7 @@ Jump Start Changelog
 * Added filter for custom logo image in sticky menu, [See Tutorial](http://dev.themeblvd.com/tutorial/adding-a-custom-logo-to-the-sticky-menu/).
 * Added user website URL display for bbPress user profiles.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
+* Expanded "background" option type image sizing options.
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
 * Improved appearance of text logo option with "Entrepeneur" theme base.

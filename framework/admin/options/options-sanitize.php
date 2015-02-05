@@ -394,7 +394,9 @@ function themeblvd_recognized_background_size() {
 		'auto'    	=> __('Background Size: Auto', 'themeblvd'),
 		'cover'     => __('Background Size: Cover', 'themeblvd'),
 		'contain'   => __('Background Size: Contain', 'themeblvd'),
-		'100% 100%' => __('Background Size: 100% x 100%', 'themeblvd')
+		'100% 100%' => __('Background Size: 100% x 100%', 'themeblvd'),
+		'100% auto' => __('Background Size: Fit Horizontally', 'themeblvd'),
+		'auto 100%' => __('Background Size: Fit Vertically', 'themeblvd')
 	);
 	return apply_filters( 'themeblvd_recognized_background_size', $default );
 }
