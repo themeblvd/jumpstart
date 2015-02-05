@@ -1364,8 +1364,7 @@ function themeblvd_video( $video_url, $args = array() ) {
  *
  * @since 2.5.0
  *
- * @param int $post_id ID of post to pull featured image from
- * @param int $thumb_id ID of attachment to pull from
+ * @param array $args
  * @return string $output Final HTML to output
  */
 function themeblvd_get_banner( $args = array() ) {
@@ -1440,11 +1439,70 @@ function themeblvd_get_banner( $args = array() ) {
  *
  * @since 2.5.0
  *
- * @param int $post_id ID of post to pull featured image from
- * @param int $thumb_id ID of attachment to pull from
+ * @param array $args
  */
 function themeblvd_banner( $args = array() ) {
 	echo themeblvd_get_banner( $args );
+}
+
+/**
+ * Display featured banner's inline custom height CSS
+ *
+ * @since 2.5.0
+ */
+function themeblvd_banner_styles() {
+
+	$print = '';
+
+	if ( $args = themeblvd_config('banner') ) {
+
+		if ( ! empty($args['height']) ) {
+
+			$print .= "/* Page Banner (custom height) */\n";
+
+			if ( ! empty($args['height_desktop']) ) {
+
+				$args['height_desktop'] = str_replace('px', '', $args['height_desktop']); // double check formatting
+
+				$print .= ".tb-featured-banner > .wrap {\n";
+				$print .= sprintf("\tmin-height: %spx;\n", $args['height_desktop']);
+				$print .= "}\n";
+
+			}
+
+			if ( ! empty($args['height_tablet']) ) {
+
+				$args['height_tablet'] = str_replace('px', '', $args['height_tablet']); // double check formatting
+
+				$print .= "@media (max-width: 992px) {\n";
+				$print .= "\t.tb-featured-banner > .wrap {\n";
+				$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_tablet']);
+				$print .= "\t}\n";
+				$print .= "}\n";
+
+			}
+
+			if ( ! empty($args['height_mobile']) ) {
+
+				$args['height_mobile'] = str_replace('px', '', $args['height_mobile']); // double check formatting
+
+				$print .= "@media (max-width: 767px) {\n";
+				$print .= "\t.tb-featured-banner > .wrap {\n";
+				$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_mobile']);
+				$print .= "\t}\n";
+				$print .= "}\n";
+
+			}
+
+		}
+
+	}
+
+	// Print after style.css
+	if ( $print ) {
+		wp_add_inline_style( 'themeblvd-theme', apply_filters('themeblvd_banner_css_output', $print, $args) );
+	}
+
 }
 
 /**

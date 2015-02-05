@@ -380,6 +380,45 @@ function setup_themeblvd_banner_meta() {
 			'subgroup_end_5' => array(
 				'type' 		=> 'subgroup_end'
 			),
+			'subgroup_start_6' => array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'show-hide hide receiver receiver-color receiver-texture receiver-image'
+			),
+			'height' => array(
+				'id'		=> 'height',
+				'name' 		=> null,
+				'desc' 		=> __( 'Apply custom banner height.', 'themeblvd' ),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+		    ),
+			'height_desktop' => array(
+				'id'		=> 'height_desktop',
+				'name' 		=> __( 'Desktop Height', 'themeblvd' ),
+				'desc' 		=> __( 'Banner height (in pixels) when displayed at the standard desktop viewport range.', 'themeblvd' ),
+				'std'		=> '200',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver'
+		    ),
+		    'height_tablet' => array(
+				'id'		=> 'height_tablet',
+				'name' 		=> __( 'Tablet Height', 'themeblvd' ),
+				'desc' 		=> __( 'Banner height (in pixels) when displayed at the tablet viewport range.', 'themeblvd' ),
+				'std'		=> '120',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver'
+		    ),
+		    'height_mobile' => array(
+				'id'		=> 'height_mobile',
+				'name' 		=> __( 'Mobile Height', 'themeblvd' ),
+				'desc' 		=> __( 'Banner height (in pixels) when displayed at the mobile viewport range.', 'themeblvd' ),
+				'std'		=> '100',
+				'type'		=> 'text',
+				'class'		=> 'hide receiver'
+		    ),
+			'subgroup_end_6' => array(
+				'type'		=> 'subgroup_end'
+			),
 			'subgroup_end_1' => array(
 				'type'		=> 'subgroup_end'
 			)
