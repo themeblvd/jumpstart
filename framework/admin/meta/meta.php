@@ -295,8 +295,8 @@ function setup_themeblvd_banner_meta() {
 				'std'		=> array(
 					'color'			=> '',
 					'image'			=> '',
-					'repeat'		=> 'repeat-x',
-					'position'		=> 'center middle',
+					'repeat'		=> 'no-repeat',
+					'position'		=> 'center center',
 					'attachment'	=> 'scroll',
 					'size'			=> '100% auto'
 				),
