@@ -22,10 +22,12 @@ Jump Start Changelog
 * Mobile navigation toggle now displays at tablet viewport and in right of header, across all theme bases.
 * Main menu font size made smaller for tablets and sticky menu to fit more buttons.
 * Updated to FontAwesome 4.3.
+* Minor styling improvements for bbPress.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Post Showcase (no masonry) not displaying right with excerpts.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.
 * Fixed: Added missing breadcrumbs for bbPress user profiles.
+* Fixed: bbPress tag_list PHP error at the top of topics when "Lead Topic" option is disabled. 
 * Fixed: Custom padding not applying to "popout" elements in Builder.
 * Fixed: Widgets set as "panel" from theme options not displaying right with no widget title.
 * Fixed: Issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.

@@ -563,7 +563,9 @@ class Theme_Blvd_Compat_bbPress {
 
 			echo '<div class="topic-header clearfix">';
 
-			echo $tag_list;
+			if ( ! empty( $tag_list ) ) {
+				echo $tag_list;
+			}
 
 			if ( is_user_logged_in() ) {
 				echo '<div class="tb-bbp-buttons topic-subscribe clearfix">';
