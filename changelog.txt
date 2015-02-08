@@ -32,6 +32,7 @@ Jump Start Changelog
 * Fixed: Blog display option not displaying "full content" when selected, instead of excerpts.
 * Fixed: Slider option type not allowing you to inert images less than 200px wide. This was most evident when trying to use the Partner Logos element in the Builder and using small logo images.
 * Fixed: When a layout section has repeating background set to parallax, it would get stretched on mobile.
+* Fixed: In Promo Box element, when button is displayed below text, text alignment should be centered.
 * Fixed: Technorati image icon in social icons.
 * Fixed: "Preview Changes" not working correctly when inserting current page's content into custom layout.
 * Fixed: "Save as Draft" not working for custom layout pages.

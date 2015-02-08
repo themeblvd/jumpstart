@@ -6265,7 +6265,8 @@ blockquote small {
 .tb-slogan.has-headline.has-desc .headline {
 	margin-bottom: 10px;
 }
-.tb-slogan.text-only {
+.tb-slogan.text-only,
+.tb-slogan.button-below {
 	text-align: center;
 }
 .tb-slogan.button-right .btn {
