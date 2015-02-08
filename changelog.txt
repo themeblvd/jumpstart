@@ -13,6 +13,7 @@ Jump Start Changelog
 * Added filter for custom logo image in sticky menu, [See Tutorial](http://dev.themeblvd.com/tutorial/adding-a-custom-logo-to-the-sticky-menu/).
 * Added user website URL display for bbPress user profiles.
 * Added custom height option for page banners.
+* Added max-width option for Promo Box element.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Expanded "background" option type image sizing options.
 * Darkened body text in WordPress page editor.
@@ -27,7 +28,7 @@ Jump Start Changelog
 * Fixed: Post Showcase (no masonry) not displaying right with excerpts.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.
 * Fixed: Added missing breadcrumbs for bbPress user profiles.
-* Fixed: bbPress tag_list PHP error at the top of topics when "Lead Topic" option is disabled. 
+* Fixed: bbPress tag_list PHP error at the top of topics when "Lead Topic" option is disabled.
 * Fixed: Custom padding not applying to "popout" elements in Builder.
 * Fixed: Widgets set as "panel" from theme options not displaying right with no widget title.
 * Fixed: Issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.

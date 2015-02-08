@@ -6258,6 +6258,10 @@ blockquote small {
 .tb-slogan.has-bg {
 	padding: 30px;
 }
+.tb-slogan.has-max-width {
+	margin-right: auto;
+	margin-left: auto;
+}
 .tb-slogan .slogan-text .headline {
 	font-size: 22px;
 	line-height: 1.25;

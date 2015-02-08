@@ -723,7 +723,8 @@ function themeblvd_get_slogan( $args ) {
         'headline'              => '',                      // Text for slogan
         'desc'                  => '',                      // Text for slogan
         'wpautop'               => 1,                       // Whether to apply wpautop on content
-        'style'                 => 'none',                  // Custom styling class
+        'max'					=> '',						// Maximum width of slogan element
+		'style'                 => 'none',                  // Custom styling class
         'bg_color'              => '',                      // Background color - Ex: #000000
         'bg_opacity'            => '1',                     // BG color opacity for rgba()
         'text_color'            => '',                      // Text color - Ex: #000000
@@ -775,6 +776,10 @@ function themeblvd_get_slogan( $args ) {
         $class .= ' has-desc';
     }
 
+	if ( $args['max'] ) {
+        $class .= ' has-max-width';
+    }
+
     // Inline styles
     $style = '';
 
@@ -790,6 +795,11 @@ function themeblvd_get_slogan( $args ) {
             $style .= sprintf( 'color:%s;', $args['text_color'] );
         }
 
+    }
+
+	// Max width?
+    if ( $args['max'] ) {
+        $style .= sprintf( 'max-width:%s;', $args['max'] );
     }
 
     // Button
