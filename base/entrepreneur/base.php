@@ -1566,7 +1566,7 @@ function jumpstart_ent_css() {
 
 	// Main Menu highlight
 	$print .= ".header-nav .tb-primary-menu > li > a:hover,\n";
-	$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
+	$print .= ".tb-primary-menu > li > ul.non-mega-sub-menu,\n";
 	$print .= ".tb-primary-menu .sf-mega {\n";
 	$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('menu_highlight'));
 	$print .= "}\n";

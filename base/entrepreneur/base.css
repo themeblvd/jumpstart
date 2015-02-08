@@ -132,6 +132,12 @@ Author URI: http://www.themeblvd.com
 	-webkit-transition: none;
 	transition: none;
 }
+@media (max-width: 1200px) {
+	.header-nav .tb-primary-menu > li > .menu-btn {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+}
 .header-nav .tb-primary-menu > li > .menu-btn:hover,
 .header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,
 .header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn {
@@ -147,12 +153,15 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Level 2+ */
-.tb-primary-menu ul.non-mega-sub-menu,
+.tb-primary-menu .non-mega-sub-menu,
 .tb-primary-menu .sf-mega {
 	border: none;
-	border-top: 4px solid #1971af;
 	-webkit-box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 	box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+.tb-primary-menu > li > ul.non-mega-sub-menu, /* 2nd level only */
+.tb-primary-menu .sf-mega {
+	border-top: 4px solid #1971af;
 }
 .tb-primary-menu.sf-menu .sf-mega {
 	margin-top: -4px;
