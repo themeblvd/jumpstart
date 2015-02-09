@@ -1499,8 +1499,13 @@ function jumpstart_ex_css() {
 
 	if ( $boxed  ) {
 
+		$print .= "@media (min-width: 481px) {\n";
+		$print .= "\t.js-boxed #container {\n";
+		$print .= sprintf( "\t\tbox-shadow: 0 0 %s %s;\n", themeblvd_get_option('layout_shadow_size'), themeblvd_get_rgb( '#000000', themeblvd_get_option('layout_shadow_opacity') ) );
 		$print .= sprintf( "\tborder-right: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
 		$print .= sprintf( "\tborder-left: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
+		$print .= "\t}\n";
+		$print .= "}\n";
 
 		$border = intval(themeblvd_get_option('layout_border_width'));
 
