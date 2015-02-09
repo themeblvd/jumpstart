@@ -645,6 +645,7 @@ p.wp-caption-text {
 	top: 50%;
 	left: 50%;
 	text-align: center;
+	text-shadow: none;
 	width: 40px;
 	height: 40px;
 }
@@ -5544,6 +5545,7 @@ blockquote small {
 	color: #333333;
 	font-size: 14px;
 	line-height: 1.2;
+	text-shadow: none;
 }
 .post_showcase .featured-item.showcase .entry-title {
 	margin-bottom: 10px;
