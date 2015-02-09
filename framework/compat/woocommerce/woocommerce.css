@@ -1496,6 +1496,89 @@ ul.woocommerce-info {
 	margin-left: 6px;
 	padding: 1px 0
 }
+.widget_layered_nav .chosen a:before,
+.widget_layered_nav_filters .chosen a:before {
+	content: "\f00d";
+	color: #a94442;
+	display: inline-block;
+	font-family: "FontAwesome";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 14px;
+	width: 14px;
+	text-rendering: auto;
+}
+
+/* Price Filter */
+.widget_price_filter .price_slider {
+	margin-bottom: 20px;
+}
+.widget_price_filter .price_slider_amount {
+	text-align: right;
+	line-height: 30px;
+	font-size: 13px;
+}
+.widget_price_filter .price_slider_amount .button {
+	float: left;
+	font-size: 13px;
+	padding: 5px 10px;
+}
+.widget_price_filter .ui-slider {
+	position: relative;
+	text-align: left;
+}
+.widget_price_filter .ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 1em;
+	height: 1em;
+	background-color: #777777;
+	border: 3px solid #666666;
+	border-radius: 1em;
+	cursor: ew-resize;
+	outline: none;
+	top: -.3em;
+}
+.content_dark .widget_price_filter .ui-slider .ui-slider-handle {
+	background-color: #ffffff;
+	border-color: #ffffff;
+}
+.widget_price_filter .ui-slider .ui-slider-handle:last-child {
+	margin-left: -.8em;
+}
+.widget_price_filter .ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: 10px;
+	display: block;
+	border: 0;
+	border-radius: 50px;
+	background-color: #cccccc;
+}
+.content_dark .widget_price_filter .ui-slider .ui-slider-range {
+	background-color: #000000;
+}
+.widget_price_filter .price_slider_wrapper .ui-widget-content {
+	border-radius: 1em;
+	background-color: #f2f2f2;
+	border: 0;
+}
+.content_dark .widget_price_filter .price_slider_wrapper .ui-widget-content {
+	background-color: #515151;
+}
+.widget_price_filter .ui-slider-horizontal {
+	height: 5px;
+}
+.widget_price_filter .ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+.widget_price_filter .ui-slider-horizontal .ui-slider-range-min {
+	left: -1px;
+}
+.widget_price_filter .ui-slider-horizontal .ui-slider-range-max {
+	right: -1px;
+}
 
 /* Cart */
 .product_list_widget li {
