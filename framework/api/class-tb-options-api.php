@@ -930,7 +930,7 @@ class Theme_Blvd_Options_API {
 				) // End post grid options
 			),
 
-			// Section: Post Grids
+			// Section: Showcase
 			'showcase' => array(
 				'name' => __( 'Post Display: Showcase', 'themeblvd' ),
 				'desc' => __( 'These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the "Post Showcase" page template and any archives you\'ve set to display the post showcase. For more control over a specifc post showcase, you can apply the "Post Showcase" element of the Builder or use the [post_showcase] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'themeblvd' ),
@@ -941,7 +941,7 @@ class Theme_Blvd_Options_API {
 						'desc'		=> __( 'Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.<br><br><em>Note: Images are scaled proportionally to fit within their current containers.</em>', 'themeblvd_builder' ),
 						'type'		=> 'select',
 						'select'	=> 'crop',
-						'std'		=> 'tb_large'
+						'std'		=> 'tb_grid'
 					),
 					'showcase_titles' => array(
 						'name' 		=> __( 'Titles', 'themeblvd' ),
@@ -973,7 +973,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __( 'Display', 'themeblvd' ),
 						'desc' 		=> __( 'When viewing a default post showcase, how should they be displayed?', 'themeblvd' ),
 						'id' 		=> 'showcase_display',
-						'std' 		=> 'masonry_paginated',
+						'std' 		=> 'paginated',
 						'type' 		=> 'select',
 						'options' => array(
 							'paginated' 		=> __( 'Standard Showcase Grid', 'themeblvd' ),
