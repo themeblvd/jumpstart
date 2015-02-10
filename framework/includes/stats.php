@@ -216,7 +216,7 @@ function themeblvd_get_milestone_ring( $args ) {
 			$output .= '<h3>'.$args['title'].'</h3>';
 		}
 
-		if ( $args['title'] ) {
+		if ( $args['text'] ) {
 			$output .= themeblvd_get_content( $args['text'] );
 		}
 
