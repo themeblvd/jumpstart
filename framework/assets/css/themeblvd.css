@@ -4933,7 +4933,7 @@ button.mfp-arrow {
 
 /* Sections */
 .element-section {
-	padding: 30px 0;
+	padding: 60px 0;
 	position: relative;
 }
 
@@ -4946,16 +4946,16 @@ button.mfp-arrow {
 }
 .element-section > .element.suck-down,
 .element-columns .element.suck-down {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 .element-section > .element.suck-up,
 .element-columns .element.suck-up {
-	margin-top: -25px;
+	margin-top: -20px;
 }
-.element-section > .element:first-child {
+.element-section > .element:first-of-type {
 	margin-top: 0;
 }
-.element-section > .element:last-child {
+.element-section > .element:last-of-type {
 	margin-bottom: 0;
 }
 .element-section > .element.popout {
@@ -4964,11 +4964,11 @@ button.mfp-arrow {
 	padding-left: 0 !important;
 	width: auto;
 }
-.element-section > .element.popout:first-child {
-	margin-top: -30px;
+.element-section > .element.popout:first-of-type {
+	margin-top: -60px;
 }
-.element-section > .element.popout:last-child {
-	margin-bottom: -30px;
+.element-section > .element.popout:last-of-type {
+	margin-bottom: -60px;
 }
 .element-section > .element.bg-content,
 .element-columns .element.bg-content {
@@ -6094,6 +6094,11 @@ blockquote small {
 .element-jumbotron.text-light .tb-jumbotron {
 	color: #ffffff;
 }
+@media (max-width: 767px) {
+	.jumbotron-wrap {
+		max-width: none !important;
+	}
+}
 
 /* Panel */
 .tb-panel {
@@ -6339,6 +6344,9 @@ blockquote small {
 	margin-bottom: 0;
 }
 @media (max-width: 767px) {
+	.tb-slogan {
+		max-width: none !important;
+	}
 	.tb-slogan.button-left .entry-content,
 	.tb-slogan.button-right .entry-content {
 		display: -webkit-box;
