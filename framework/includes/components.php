@@ -410,7 +410,7 @@ function themeblvd_get_jumbotron( $args, $content ) {
             $title_style .= 'font-size: '.$args['title_size'].';';
         }
 
-        $content = sprintf( '<span class="title" style="%s">%s</span>%s', $title_style, $args['title'], $content );
+        $content = sprintf( '<h2 class="title" style="%s">%s</h2>%s', $title_style, $args['title'], $content );
 
     }
 

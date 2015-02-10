@@ -6078,8 +6078,6 @@ blockquote small {
 .tb-jumbotron > .title {
 	display: block;
 	font-size: 30px;
-	font-weight: bold;
-	line-height: 1.1;
 	margin: 0 0 10px 0;
 }
 .tb-jumbotron p {
