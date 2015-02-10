@@ -400,9 +400,11 @@ function themeblvd_element( $args ) {
 		// Progress Bars
 		case 'progress_bars' :
 			themeblvd_progress_bars( $args['options'] );
-			break;
 
 	}
+
+	// Custom Element
+	do_action( 'themeblvd_'.$args['type'], $args['id'], $args['options'] );
 
 	// Close element
 	do_action( 'themeblvd_element_'.$args['type'].'_bottom', $args['id'], $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_bottom
