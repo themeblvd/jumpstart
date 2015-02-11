@@ -4952,10 +4952,10 @@ button.mfp-arrow {
 .element-columns .element.suck-up {
 	margin-top: -20px;
 }
-.element-section > .element:first-of-type {
+.element-section > .element.first {
 	margin-top: 0;
 }
-.element-section > .element:last-of-type {
+.element-section > .element.last {
 	margin-bottom: 0;
 }
 .element-section > .element.popout {
@@ -4964,10 +4964,10 @@ button.mfp-arrow {
 	padding-left: 0 !important;
 	width: auto;
 }
-.element-section > .element.popout:first-of-type {
+.element-section > .element.popout.first {
 	margin-top: -60px;
 }
-.element-section > .element.popout:last-of-type {
+.element-section > .element.popout.last {
 	margin-bottom: -60px;
 }
 .element-section > .element.bg-content,
