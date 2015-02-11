@@ -26,6 +26,7 @@ Jump Start Changelog
 * Updated to FontAwesome 4.3.
 * Minor styling improvements for bbPress.
 * Changed Jumbotron element titles to use `<h2>` tags to fit in with header Typography on Theme Options page.
+* Improvements to Icon Box element.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Post Showcase (no masonry) not displaying right with excerpts.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.

@@ -6015,19 +6015,44 @@ blockquote small {
 .tb-icon-box .icon {
 	text-align: center;
 }
+/* @noflip */
 .tb-icon-box.icon-side {
+	text-align: left;
+}
+/* @noflip */
+.tb-icon-box.icon-side-alt {
+	text-align: right;
+}
+.tb-icon-box.icon-side,
+.tb-icon-box.icon-side-alt {
 	position: relative;
 }
 .tb-icon-box .icon {
 	line-height: 1;
 }
-.tb-icon-box.icon-side .icon {
+.tb-icon-box.icon-side .icon,
+.tb-icon-box.icon-side-alt .icon {
 	position: absolute;
 	top: 0;
+}
+/* @noflip */
+.tb-icon-box.icon-side .icon {
+	left: 0;
+}
+/* @noflip */
+.tb-icon-box.icon-side-alt .icon {
 	right: 0;
 }
-.tb-icon-box.has-bg.icon-side .icon {
+.tb-icon-box.has-bg.icon-side .icon,
+.tb-icon-box.has-bg.icon-side-alt .icon {
 	top: 30px;
+}
+/* @noflip */
+.tb-icon-box.has-bg.icon-side .icon {
+	left: 30px;
+}
+/* @noflip */
+.tb-icon-box.has-bg.icon-side-alt .icon {
 	right: 30px;
 }
 .tb-icon-box h1,
@@ -6059,6 +6084,28 @@ blockquote small {
 .tb-icon-box.has-white-icon .fa-inverse {
 	color: #000000;
 	text-shadow: none;
+}
+.tb-icon-box .fa-stack-1x {
+	line-height: 3em;
+}
+.tb-icon-box .fa-stack-2x {
+	font-size: 3em;
+}
+.tb-icon-box .icon.trans-badge {
+	border-radius: 100%;
+	border-width: 2px;
+	border-style: solid;
+	width: 3em;
+	height: 3em;
+}
+/* @noflip */
+.tb-icon-box .icon.trans-badge .fa {
+	line-height: 3em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
 }
 
 /* Jumbotron */

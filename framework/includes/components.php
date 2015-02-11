@@ -253,6 +253,7 @@ function themeblvd_get_icon_box( $args ) {
         'location'      => 'above',     // Location of icon
         'color'         => '#666666',   // Color of the icon
         'badge'         => '0',         // Whether to wrap icon in a circle
+		'badge_trans'	=> '0',         // Whether that badge is transparent
         'title'         => '',          // Title of the block
         'text'          => '',          // Content of the block
         'style'         => '',          // Custom styling class
@@ -276,26 +277,37 @@ function themeblvd_get_icon_box( $args ) {
     }
 
     // Icon
-    if ( $args['badge'] ) {
+	if ( $args['badge'] && $args['badge_trans'] ) {
+
+		$size = intval( str_replace('px', '', $args['size']) );
+		$lh = (3*$size) - 2;
+		$lh = "{$lh}px";
+		$icon = sprintf( '<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="fa fa-%s" style="line-height: %s"></i></div>', $args['color'], $args['color'], $args['size'], $args['icon'], $lh );
+
+    } else if ( $args['badge'] ) {
+
         $icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="fa fa-circle fa-stack-2x" style="color: %s;"></i><i class="fa fa-%s fa-stack-1x fa-inverse"></i></span></div>', $args['size'], $args['color'], $args['icon'] );
+
     } else {
+
         $icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fa fa-%s" style="width:%s;"></i></div>', $args['color'], $args['size'], $args['icon'], $args['size'] );
+
     }
 
     // Content style
     $content_style = '';
 
-    if ( $args['location'] == 'side' ) {
+    if ( $args['location'] == 'side' || $args['location'] == 'side-alt' ) {
 
         $width = intval( str_replace('px', '', $args['size']) );
 
         if ( $args['badge'] ) {
-            $width = $width * 2;
+            $width = $width * 3;
         }
 
         $padding = $width + 15;
 
-        if ( is_rtl() ) {
+        if ( $args['location'] == 'side-alt' ) {
             $content_style = sprintf( 'padding-right: %spx;', $padding );
         } else {
             $content_style = sprintf( 'padding-left: %spx;', $padding );
