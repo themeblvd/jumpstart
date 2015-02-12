@@ -128,7 +128,9 @@ function themeblvd_get_content_block( $args ){
 	$defaults = array(
         'content'		=> '',			// Content to display
         'format'		=> '1',			// Whether to apply wpautop
-        'style'			=> '',			// Custom styling class
+        'center'		=> '0',			// Whether to center text or not
+		'max'			=> '',			// A max width for the text element
+		'style'			=> '',			// Custom styling class
 		'text_color'	=> 'dark',		// Color of text, dark or light
         'bg_color'		=> '#cccccc',	// Background color, if wrap is true
         'bg_opacity'	=> '1'			// Background color opacity, if wrap is true
@@ -144,12 +146,20 @@ function themeblvd_get_content_block( $args ){
 		$class .= ' '.$args['style'];
 	}
 
+	if ( $args['center'] ) {
+		$class .= ' text-center';
+	}
+
 	// Inline styles
 	$style = '';
 
 	if ( $args['style'] == 'custom' ) {
-		$style = sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
-		$style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+		$style .= sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
+		$style .= sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+	}
+
+	if ( $args['max'] ) {
+		$style .= sprintf('max-width: %s;', $args['max']);
 	}
 
 	// Setup content

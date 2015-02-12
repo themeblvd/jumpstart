@@ -5074,6 +5074,9 @@ button.mfp-arrow {
 -----------------------------------------------*/
 
 /* Content (direct input) */
+.tb-content-block {
+	margin: 0 auto;
+}
 .tb-content-block.has-bg {
 	padding: 30px;
 }
@@ -5104,6 +5107,11 @@ button.mfp-arrow {
 .tb-content-block.text-light h5,
 .tb-content-block.text-light h6 {
 	color: #ffffff;
+}
+@media (max-width: 767px) {
+	.tb-content-block {
+		max-width: none !important;
+	}
 }
 
 /* Headline */

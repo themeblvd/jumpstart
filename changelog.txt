@@ -14,6 +14,7 @@ Jump Start Changelog
 * Added user website URL display for bbPress user profiles.
 * Added custom height option for page banners.
 * Added max-width option for Promo Box element.
+* Added max-width and text-center options for Content element.
 * Added support for new "Blend Up/Down" section display option in builder, and increased default top/bottom padding for sections.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Expanded "background" option type image sizing options.
