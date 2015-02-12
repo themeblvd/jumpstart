@@ -6006,6 +6006,81 @@ blockquote small {
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
+.tb-divider.has-insert {
+	border-width: 0;
+	overflow: hidden;
+    text-align: center;
+}
+.tb-divider.has-insert:before,
+.tb-divider.has-insert:after {
+	content: "";
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+	height: 1px;
+}
+/* @noflip */
+.tb-divider.has-insert:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+/* @noflip */
+.tb-divider.has-insert:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+.tb-divider.solid.has-insert:before,
+.tb-divider.solid.has-insert:after,
+.tb-divider.dashed.has-insert:before,
+.tb-divider.dashed.has-insert:after {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: inherit;
+}
+.tb-divider.dashed.has-insert:before,
+.tb-divider.dashed.has-insert:after {
+	border-top-style: dashed;
+}
+.tb-divider.thick-solid.has-insert:before,
+.tb-divider.thick-solid.has-insert:after,
+.tb-divider.thick-dashed.has-insert:before,
+.tb-divider.thick-dashed.has-insert:after {
+	border-top-width: 5px;
+	border-top-style: solid;
+	border-top-color: inherit;
+}
+.tb-divider.thick-dashed.has-insert:before,
+.tb-divider.thick-dashed.has-insert:after {
+	border-top-style: dashed;
+}
+.tb-divider.double-solid.has-insert,
+.tb-divider.double-dashed.has-insert {
+	height: auto;
+}
+.tb-divider.double-solid.has-insert:before,
+.tb-divider.double-solid.has-insert:after,
+.tb-divider.double-dashed.has-insert:before,
+.tb-divider.double-dashed.has-insert:after {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: inherit;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	height: 7px;
+}
+.tb-divider.double-dashed.has-insert:before,
+.tb-divider.double-dashed.has-insert:after {
+	border-top-style: dashed;
+	border-bottom-style: dashed;
+}
+.tb-divider.has-icon .fa {
+	width: 1em;
+}
+.tb-divider.has-text .text {
+	margin: 0 .5em;
+}
 
 /* Google Maps */
 .tb-map img {
@@ -6063,21 +6138,12 @@ blockquote small {
 .tb-icon-box.has-bg.icon-side-alt .icon {
 	right: 30px;
 }
-.tb-icon-box h1,
-.tb-icon-box h2,
-.tb-icon-box h3,
-.tb-icon-box h4,
-.tb-icon-box h5,
-.tb-icon-box h6 {
+.tb-icon-box .icon-box-title {
+	font-size: 16px;
 	margin: 0 0 10px 0;
 }
 .tb-icon-box.text-light,
-.tb-icon-box.text-light h1,
-.tb-icon-box.text-light h2,
-.tb-icon-box.text-light h3,
-.tb-icon-box.text-light h4,
-.tb-icon-box.text-light h5,
-.tb-icon-box.text-light h6 {
+.tb-icon-box.text-light .icon-box-title {
 	color: #ffffff;
 }
 .tb-icon-box.icon-side .entry-content {

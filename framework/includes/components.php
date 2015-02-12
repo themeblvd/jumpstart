@@ -66,11 +66,17 @@ function themeblvd_get_divider( $args = array() ) {
 
     // Setup and extract $args
     $defaults = array(
-        'type'      => 'shadow',    // Style of divider - dashed, shadow, solid, thick-solid, thick-dashed, double-solid, double-dashed
-        'color'     => '',          // Color hex (like #cccccc) for divider (all except shadow style)
-        'opacity'   => '1',         // Opacity for color (all except shadow style)
-        'width'     => '',          // A width for the divider in pixels
-        'placement' => 'equal'      // Where the divider sits between the content - equal, above (closer to content above), below (closer to content below)
+        'type'      	=> 'shadow',    // Style of divider - dashed, shadow, solid, thick-solid, thick-dashed, double-solid, double-dashed
+        'color'     	=> '',          // Color hex (like #cccccc) for divider (all except shadow style)
+        'opacity'   	=> '1',         // Opacity for color (all except shadow style)
+        'insert'		=> 'none',		// Whether to insert an icon or text into middle of divider (all except shadow style)
+		'icon'			=> 'bolt',		// FontAwesome Icon for divider insert
+		'text'			=> '',			// Text for divider insert
+		'bold'			=> '1',			// Whether text should be bolded
+		'text_color'	=> '#666666',	// Color of icon or text
+		'text_size'		=> '15',		// Size of icon or text
+		'width'     	=> '',          // A width for the divider in pixels
+        'placement' 	=> 'equal'      // Where the divider sits between the content - equal, above (closer to content above), below (closer to content below)
     );
     $args = wp_parse_args( $args, $defaults );
 
@@ -79,6 +85,19 @@ function themeblvd_get_divider( $args = array() ) {
     if ( $args['placement'] == 'up' || $args['placement'] == 'down' ) {
         $class .= ' suck-'.$args['placement'];
     }
+
+	if ( ($args['insert'] == 'icon' || $args['insert'] == 'text')  && $args['type'] != 'shadow' ) {
+
+		$class .= ' has-insert';
+
+		if ( $args['insert'] == 'icon' ) {
+			$class .= ' has-icon';
+		}
+
+		if ( $args['insert'] == 'text' ) {
+			$class .= ' has-text';
+		}
+	}
 
     $style = '';
 
@@ -91,7 +110,23 @@ function themeblvd_get_divider( $args = array() ) {
         $style .= sprintf( 'border-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
     }
 
-    $output = sprintf( '<div class="%s" style="%s"></div>', $class, $style );
+	if ( ($args['insert'] == 'icon' || $args['insert'] == 'text')  && $args['type'] != 'shadow' ) {
+
+		$style .= sprintf('color: %s;', $args['text_color']);
+		$style .= sprintf('font-size: %spx;', $args['text_size']);
+
+		if ( $args['bold'] ) {
+			$style .= 'font-weight: bold;';
+		}
+	}
+
+	if ( $args['insert'] == 'text' && $args['type'] != 'shadow' ) {
+		$output = sprintf( '<div class="%s" style="%s"><span class="text">%s</span></div>', $class, $style, $args['text'] );
+	} else if ( $args['insert'] == 'icon' && $args['type'] != 'shadow' ) {
+		$output = sprintf( '<div class="%s" style="%s"><i class="fa fa-%s"></i></div>', $class, $style, $args['icon'] );
+	} else {
+    	$output = sprintf( '<div class="%s" style="%s"></div>', $class, $style );
+	}
 
     return apply_filters( 'themeblvd_divider', $output, $args['type'] );
 }
@@ -329,7 +364,7 @@ function themeblvd_get_icon_box( $args ) {
 
     if ( $args['title'] || $args['text'] ) {
         $output .= '<div class="entry-content" style="'.$content_style.'">';
-        $output .= '<h3>'.$args['title'].'</h3>';
+        $output .= '<h3 class="icon-box-title">'.$args['title'].'</h3>';
         $output .= themeblvd_get_content( $args['text'] );
         $output .= '</div><!-- .content (end) -->';
     }
