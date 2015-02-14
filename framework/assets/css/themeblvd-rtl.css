@@ -519,6 +519,11 @@ a img.alignleft {
 	float: left;
 	margin: 5px 20px 20px 0;
 }
+.element-image > .alignnone,
+.element-image > .aligncenter {
+	margin-top: 0;
+	margin-bottom: 0;
+}
 .wp-caption {
 	max-width: 96%; /* Image does not overflow the content area */
 	padding: 4px;
@@ -6150,7 +6155,7 @@ blockquote small {
 	/* inline left padding based on width of icon */
 }
 .tb-icon-box.icon-above .entry-content {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 .tb-icon-box .entry-content > p:last-child {
 	margin-bottom: 0;
@@ -6171,6 +6176,11 @@ blockquote small {
 	border-style: solid;
 	width: 3em;
 	height: 3em;
+}
+.tb-icon-box.icon-above .icon.trans-badge {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
 }
 /* @noflip */
 .tb-icon-box .icon.trans-badge .fa {
