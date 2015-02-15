@@ -466,6 +466,8 @@ function themeblvd_get_element_class( $args ) {
 		// Is the element popped out?
 		if ( ! empty( $args['display']['apply_popout'] ) ) {
 			$class[] = 'popout';
+		} else {
+			$class[] = 'no-popout';
 		}
 
 		// Does the element have the default content BG applied?

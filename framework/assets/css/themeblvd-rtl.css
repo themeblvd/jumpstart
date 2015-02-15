@@ -4939,7 +4939,7 @@ button.mfp-arrow {
 
 /* Sections */
 .element-section {
-	padding: 60px 0;
+	padding: 60px 30px;
 	position: relative;
 }
 
@@ -4966,6 +4966,8 @@ button.mfp-arrow {
 }
 .element-section > .element.popout {
 	max-width: none !important;
+	margin-right: -30px;
+	margin-left: -30px;
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 	width: auto;

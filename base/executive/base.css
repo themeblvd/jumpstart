@@ -192,7 +192,7 @@ Author URI: http://www.themeblvd.com
 }
 @media (max-width: 1200px) {
 	.js-boxed #container {
-		max-width: 960px;
+		max-width: 990px;
 	}
 }
 @media (max-width: 992px) {
@@ -222,7 +222,7 @@ Author URI: http://www.themeblvd.com
 .js-boxed .site-header > .wrap,
 .js-boxed .tb-featured-banner > .wrap,
 .js-boxed .site-inner > .wrap,
-.js-boxed .element-section > .element,
+.js-boxed .element-section > .element.no-popout,
 .js-boxed .site-footer > .wrap {
 	margin-right: 0;
 	margin-left: 0;
@@ -290,15 +290,6 @@ Author URI: http://www.themeblvd.com
 /* Breadcrumbs */
 .js-boxed .breadcrumb {
 	padding: 0 5px;
-}
-
-/* Custom Layouts */
-.element-section {
-	padding: 30px;
-}
-.element-section > .element.popout {
-	margin-right: -30px;
-	margin-left: -30px;
 }
 
 /* WooCommerce */
