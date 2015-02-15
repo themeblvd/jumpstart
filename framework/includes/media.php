@@ -260,7 +260,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 			$output = '';
 		}
 
-		return apply_filters( 'themeblvd_post_thumbnail', $output, $args );
+		return apply_filters( 'themeblvd_post_thumbnail', $output, $args, $size );
 	}
 
 	// Determine link
@@ -342,7 +342,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 
 	}
 
-	return apply_filters( 'themeblvd_post_thumbnail', $output, $args );
+	return apply_filters( 'themeblvd_post_thumbnail', $output, $args, $size );
 }
 
 /**

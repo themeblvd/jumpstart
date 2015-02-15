@@ -17,6 +17,7 @@ Jump Start Changelog
 * Added max-width and text-center options for Content element.
 * Added support for new "Blend Up/Down" section display option in builder, and increased default top/bottom padding for sections.
 * Added icon/text insert to Divider element.
+* Added `$size` param to `themeblvd_post_thumbnail` filter, helps [FILO plugin](https://wordpress.org/plugins/theme-blvd-featured-image-link-override/).
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Expanded "background" option type image sizing options.
 * Darkened body text in WordPress page editor.
