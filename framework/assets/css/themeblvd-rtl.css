@@ -5572,6 +5572,15 @@ blockquote small {
 .post_showcase .showcase-wrap > .row > .showcase-item {
 	padding: 5px;
 }
+.post_showcase.no-gutters .showcase-wrap > .row {
+	margin: 0;
+}
+.post_showcase.tb-isotope.no-gutters .showcase-wrap > .row {
+	margin: 0;
+}
+.post_showcase.no-gutters .showcase-wrap > .row > .showcase-item {
+	padding: 0;
+}
 .post_showcase .featured-item.showcase {
 	margin: 0;
 	position: relative;

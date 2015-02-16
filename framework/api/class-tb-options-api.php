@@ -212,6 +212,7 @@ class Theme_Blvd_Options_API {
 	 *		- showcase_crop
 	 *		- showcase_titles
 	 *		- showcase_excerpt
+	 *		- showcase_gutters
 	 *		- showcase_sub_group_start_1
 	 *		- showcase_display
 	 *		- showcase_columns
@@ -963,6 +964,17 @@ class Theme_Blvd_Options_API {
 						'options' 	=> array(
 							'show'		=> __( 'Show excerpts', 'themeblvd' ),
 							'hide' 		=> __( 'Hide excerpts', 'themeblvd' )
+						)
+					),
+					'showcase_gutters' => array(
+						'name' 		=> __( 'Gutters', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like to show spacing in between the showcase items.<br><br><em>Note: Hiding the gutters works best if you\'re using a consistent image crop size, or the masonry display.</em>', 'themeblvd' ),
+						'id' 		=> 'showcase_gutters',
+						'std' 		=> 'show',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'		=> __( 'Show gutters', 'themeblvd' ),
+							'hide' 		=> __( 'Hide gutters', 'themeblvd' )
 						)
 					),
 					'showcase_sub_group_start_1' => array(

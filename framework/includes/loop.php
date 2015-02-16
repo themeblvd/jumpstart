@@ -47,7 +47,8 @@ function themeblvd_loop( $args = array() ){
 		'shortcode'			=> false,					// Whether this is called by a shortcode
 		'element'			=> false,					// Whether this is called by an element in the Builder
 		'crop'				=> '',						// If grid or showcase, custom crop size
-		'class'				=> '',						// Any additional CSS class to add
+		'gutters'			=> '',						// If showcase, whether to have space in between thumbs
+		'class'				=> '',						// Any additional CSS class to add'
 		'max_width'			=> 0,						// Container max width - if coming from element, this should be set
 		'wp_query'			=> false,					// Whether to pull from primary WP query
 		'msg_no_posts'		=> themeblvd_get_local('archive_no_posts')
@@ -345,6 +346,13 @@ function themeblvd_loop( $args = array() ){
 				themeblvd_set_att( 'excerpt', false );
 			}
 
+			// Gutters
+			if ( ! $args['gutters'] || $args['gutters'] == 'default' ) {
+				$gutters = themeblvd_get_option('showcase_gutters', null, 'show');
+			} else {
+				$gutters = $args['gutters'];
+			}
+
 			// Crop
 			if ( $args['crop'] ) {
 				$crop = $args['crop'];
@@ -487,6 +495,14 @@ function themeblvd_loop( $args = array() ){
 
 		if ( $paginated && $context != 'showcase' ) {
 			$class .= ' post_'.$context.'_paginated';
+		}
+
+		if ( $context == 'showcase' && ! empty($gutters) ) {
+			if ( $gutters == 'show' ) {
+				$class .= ' has-gutters';
+			} else {
+				$class .= ' no-gutters';
+			}
 		}
 
 	}
