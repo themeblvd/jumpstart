@@ -181,7 +181,7 @@ function jumpstart_su_options() {
 			),
 			'top_border_bottom_color' => array(
 				'id'		=> 'top_border_bottom_color',
-				'name'		=> __('Bottom Border Color', 'themeblvd'),
+				'name'		=> __('Top Bar Bottom Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the bottom border.', 'themeblvd'),
 				'std'		=> '#dddddd',
 				'type'		=> 'color',
@@ -203,6 +203,14 @@ function jumpstart_su_options() {
 			'sub_group_end_3' => array(
 				'id'		=> 'sub_group_end_3',
 				'type' 		=> 'subgroup_end'
+			),
+			'logo_center' => array(
+				'id'		=> 'logo_center',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Center Header Logo', 'themeblvd').'</strong>: '.__('If the header info is displayed in the top bar, and not within the header, then you can select this to center the logo.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'receiver receiver-header_top'
 			),
 			'sub_group_end_2' => array(
 				'id'		=> 'sub_group_end_2',
@@ -1418,17 +1426,17 @@ function jumpstart_su_options() {
 
 	themeblvd_add_option_tab( 'styles', __('Styles', 'themeblvd'), true );
 
-	themeblvd_add_option_section( 'styles', 'su_general',		__('General', 'themeblvd'), 		null, $options['general'] );
-	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info', 'themeblvd'), 	null, $options['header_info'] );
-	themeblvd_add_option_section( 'styles', 'su_header',		__('Header', 'themeblvd'),			null, $options['header'] );
-	themeblvd_add_option_section( 'styles', 'su_menu',			__('Main Menu', 'themeblvd'),		null, $options['menu'] );
-	themeblvd_add_option_section( 'styles', 'su_menu_mobile',	__('Mobile Menu', 'themeblvd'),		null, $options['menu_mobile'] );
-	themeblvd_add_option_section( 'styles', 'su_footer',		__('Footer', 'themeblvd'),			null, $options['footer'] );
-	themeblvd_add_option_section( 'styles', 'su_typo',			__('Typography', 'themeblvd'), 		null, $options['typo'] );
-	themeblvd_add_option_section( 'styles', 'su_buttons',		__('Buttons', 'themeblvd'),			null, $options['buttons'] );
-	themeblvd_add_option_section( 'styles', 'su_widgets',		__('Sidebar Widgets', 'themeblvd'),	null, $options['widgets'] );
-	themeblvd_add_option_section( 'styles', 'su_extras',		__('Extras', 'themeblvd'), 			null, $options['extras'] );
-	themeblvd_add_option_section( 'styles', 'su_css',			__('Custom CSS', 'themeblvd'), 		null, $options['css'] );
+	themeblvd_add_option_section( 'styles', 'su_general',		__('General', 'themeblvd'), 				null, $options['general'] );
+	themeblvd_add_option_section( 'styles', 'su_header',		__('Header', 'themeblvd'),					null, $options['header'] );
+	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info & Content', 'themeblvd'),	null, $options['header_info'] );
+	themeblvd_add_option_section( 'styles', 'su_menu',			__('Main Menu', 'themeblvd'),				null, $options['menu'] );
+	themeblvd_add_option_section( 'styles', 'su_menu_mobile',	__('Mobile Menu', 'themeblvd'),				null, $options['menu_mobile'] );
+	themeblvd_add_option_section( 'styles', 'su_footer',		__('Footer', 'themeblvd'),					null, $options['footer'] );
+	themeblvd_add_option_section( 'styles', 'su_typo',			__('Typography', 'themeblvd'), 				null, $options['typo'] );
+	themeblvd_add_option_section( 'styles', 'su_buttons',		__('Buttons', 'themeblvd'),					null, $options['buttons'] );
+	themeblvd_add_option_section( 'styles', 'su_widgets',		__('Sidebar Widgets', 'themeblvd'),			null, $options['widgets'] );
+	themeblvd_add_option_section( 'styles', 'su_extras',		__('Extras', 'themeblvd'), 					null, $options['extras'] );
+	themeblvd_add_option_section( 'styles', 'su_css',			__('Custom CSS', 'themeblvd'), 				null, $options['css'] );
 
 }
 add_action('after_setup_theme', 'jumpstart_su_options');
@@ -1484,6 +1492,11 @@ function jumpstart_su_body_class($class) {
 	// Boxed layout
 	if ( themeblvd_get_option('layout_style') == 'boxed' ) {
 		$class[] = 'js-boxed';
+	}
+
+	// Centered header logo
+	if ( themeblvd_get_option('logo_center') == '1' && themeblvd_get_option('header_info') != 'header_addon' ) {
+		$class[] = 'js-center-logo';
 	}
 
 	// Centered main menu

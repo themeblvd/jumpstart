@@ -79,6 +79,14 @@ Author URI: http://www.themeblvd.com
 	}
 }
 
+/* Header Logo */
+@media (min-width: 993px) {
+	.js-center-logo .header-logo {
+		float: none;
+		text-align: center;
+	}
+}
+
 /* BG shade */
 .site-header.has-bg-shade > .wrap > .bg-shade {
 	position: absolute;
