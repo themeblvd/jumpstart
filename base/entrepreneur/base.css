@@ -134,8 +134,8 @@ Author URI: http://www.themeblvd.com
 }
 @media (max-width: 1200px) {
 	.header-nav .tb-primary-menu > li > .menu-btn {
-		padding-left: 8px;
-		padding-right: 8px;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }
 .header-nav .tb-primary-menu > li > .menu-btn:hover,
@@ -153,7 +153,7 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Level 2+ */
-.tb-primary-menu .non-mega-sub-menu,
+.tb-primary-menu ul.non-mega-sub-menu,
 .tb-primary-menu .sf-mega {
 	border: none;
 	-webkit-box-shadow: 0 8px 15px rgba(0,0,0,0.1);

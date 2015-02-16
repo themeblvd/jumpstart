@@ -21,6 +21,7 @@ Jump Start Changelog
 * Added option to hide gutters in post showcase.
 * Added option to center header logo in Super User and Executive theme bases.
 * Added option to center main menu buttons in Super User and Executive theme bases.
+* Mobile menu toggle button will now match menu highlight color on Entrepreneur base.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Expanded "background" option type image sizing options.
 * Darkened body text in WordPress page editor.

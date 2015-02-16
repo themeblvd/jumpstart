@@ -1565,10 +1565,29 @@ function jumpstart_ent_css() {
 	}
 
 	// Main Menu highlight
+	$highlight = themeblvd_get_option('menu_highlight');
+
 	$print .= ".header-nav .tb-primary-menu > li > a:hover,\n";
 	$print .= ".tb-primary-menu > li > ul.non-mega-sub-menu,\n";
 	$print .= ".tb-primary-menu .sf-mega {\n";
-	$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('menu_highlight'));
+	$print .= sprintf("\tborder-color: %s;\n", $highlight);
+	$print .= "}\n";
+
+	$text = themeblvd_text_color($highlight);
+
+	$print .= ".btn-navbar {\n";
+	$print .= sprintf("\tbackground-color: %s;\n", $highlight);
+	$print .= sprintf("\tcolor: %s;\n", $text);
+	$print .= "}\n";
+
+	$print .= ".btn-navbar:hover {\n";
+
+	if ( $text == '#333333' ) {
+		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color($highlight, 20, 'darken'));
+	} else {
+		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color($highlight, 20, 'lighten'));
+	}
+
 	$print .= "}\n";
 
 	// Main Menu sub menus
