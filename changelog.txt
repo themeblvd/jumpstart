@@ -19,6 +19,7 @@ Jump Start Changelog
 * Added icon/text insert to Divider element.
 * Added `$size` param to `themeblvd_post_thumbnail` filter, helps [FILO plugin](https://wordpress.org/plugins/theme-blvd-featured-image-link-override/).
 * Added option to hide gutters in post showcase.
+* Added option to center main menu buttons in Super User and Executive theme bases.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Expanded "background" option type image sizing options.
 * Darkened body text in WordPress page editor.

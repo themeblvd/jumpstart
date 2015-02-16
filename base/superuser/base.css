@@ -117,6 +117,21 @@ Author URI: http://www.themeblvd.com
 	background-color: rgba(0,0,0,.1);
 }
 
+/* Centered Menu */
+.js-center-menu .tb-primary-menu {
+	font-size: 0; /* Eliminate white space between inline buttons */
+	text-align: center;
+}
+.js-center-menu .tb-primary-menu > li {
+	display: inline-block;
+	float: none;
+}
+.js-center-menu .tb-primary-menu li {
+	text-align: left;
+}
+.rtl.js-center-menu .tb-primary-menu li {
+	text-align: right;
+}
 
 /* =Bottom
 -----------------------------------------------*/

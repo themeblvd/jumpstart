@@ -667,6 +667,13 @@ function jumpstart_ex_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
+			'menu_center' => array(
+				'id'		=> 'menu_center',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Center', 'themeblvd').'</strong>: '.__('Center the main menu.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox'
+			),
 			'sub_group_start_14' => array(
 				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
@@ -1234,6 +1241,11 @@ function jumpstart_ex_body_class($class) {
 		$class[] = 'js-boxed';
 	}
 
+	// Centered main menu
+	if ( themeblvd_get_option('menu_center') == '1' ) {
+		$class[] = 'js-center-menu';
+	}
+
 	return $class;
 
 }
@@ -1576,13 +1588,8 @@ function jumpstart_ex_css() {
 		}
 
 		if ( $options['bg_type'] == 'none' || ( $boxed && $options['bg_type'] == 'color' && $options['bg_color'] == '#ffffff' ) ) {
-
 			$print .= ".site-header > .wrap {\n";
 			$print .= "\tpadding-bottom: 0;\n";
-			$print .= "}\n";
-
-			$print .= "#custom-main > .element-section.has-bg:first-child {\n";
-			$print .= "\tmargin-top: 20px;\n";
 			$print .= "}\n";
 		}
 
@@ -1821,13 +1828,28 @@ function jumpstart_ex_css() {
 		}
 
 		if ( is_rtl() ) {
+
 			$print .= ".header-nav .tb-primary-menu > li {\n";
 			$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
 			$print .= "}\n";
+
+			if ( themeblvd_get_option('menu_center') ) {
+				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
+				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
+				$print .= "}\n";
+			}
+
 		} else {
+
 			$print .= ".header-nav .tb-primary-menu > li {\n";
 			$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
 			$print .= "}\n";
+
+			if ( themeblvd_get_option('menu_center') ) {
+				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
+				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
+				$print .= "}\n";
+			}
 		}
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";

@@ -912,6 +912,13 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
+			'menu_center' => array(
+				'id'		=> 'menu_center',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Center', 'themeblvd').'</strong>: '.__('Center align the buttons of the main menu.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox'
+			),
 			'sub_group_start_18' => array(
 				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
@@ -1477,6 +1484,11 @@ function jumpstart_su_body_class($class) {
 	// Boxed layout
 	if ( themeblvd_get_option('layout_style') == 'boxed' ) {
 		$class[] = 'js-boxed';
+	}
+
+	// Centered main menu
+	if ( themeblvd_get_option('menu_center') == '1' ) {
+		$class[] = 'js-center-menu';
 	}
 
 	return $class;
