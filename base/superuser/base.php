@@ -2054,6 +2054,12 @@ function jumpstart_su_css() {
 
 		$print .= "}\n";
 
+		if ( $options['apply_border_top'] ) {
+			$print .= ".btn-navbar {\n";
+			$print .= sprintf("\tborder: %s solid %s;\n", $options['border_top_width'], $options['border_top_color'] );
+			$print .= "}\n";
+		}
+
 		if ( $options['bg_color_brightness'] == 'light' || $options['apply_font'] || $options['text_shadow'] ) {
 
 			$print .= ".tb-primary-menu > li > .menu-btn {\n";
