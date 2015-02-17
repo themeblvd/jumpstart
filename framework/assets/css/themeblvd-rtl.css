@@ -4982,6 +4982,10 @@ button.mfp-arrow {
 .element-columns .element.bg-content {
 	background: #ffffff;
 }
+.element-section > .element.popout.element-columns > .row {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
 
 /* Section BG shade */
 .element-section.has-bg-shade > .bg-shade {
