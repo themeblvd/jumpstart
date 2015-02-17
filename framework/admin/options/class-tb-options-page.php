@@ -415,7 +415,7 @@ class Theme_Blvd_Options_Page {
 
 			$class .= ' tb-theme-options-wrap';
 
-			foreach ( themeblvd_get_compat() as $plugin ) {
+			foreach ( themeblvd_get_compat(true) as $plugin ) {
 				if ( $plugin != 'portfolios' && themeblvd_installed($plugin) ) {
 					$class .= sprintf(' %s-installed', $plugin);
 				}

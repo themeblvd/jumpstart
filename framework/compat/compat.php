@@ -37,9 +37,21 @@ function themeblvd_plugin_compat() {
  * compatibility for.
  *
  * @since 2.5.0
+ *
+ * @param bool $options Whether to pull only plugins utilizing theme options
  */
-function themeblvd_get_compat() {
-	return apply_filters('themeblvd_plugin_compat', array('bbpress', 'grvityforms', 'portfolios', 'sitepress', 'woocommerce'));
+function themeblvd_get_compat( $options = false ) {
+
+	$plugins[] = 'bbpress';
+	$plugins[] = 'woocommerce';
+
+	if ( ! $options ) {
+		$plugins[] = 'gravityforms';
+		$plugins[] = 'portfolios';
+		$plugins[] = 'sitepress';
+	}
+
+	return apply_filters('themeblvd_plugin_compat', $plugins, $options);
 }
 
 /**
