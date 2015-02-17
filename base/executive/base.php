@@ -708,6 +708,13 @@ function jumpstart_ex_options() {
 			'sub_group_end_14' => array(
 				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end',
+			),
+			'menu_search' => array(
+				'id'		=> 'menu_search',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Search Bar', 'themeblvd').'</strong>: '.__('Add popup with search bar to main menu.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox'
 			)
 		),
 		'menu_mobile' => array(
@@ -1758,6 +1765,10 @@ function jumpstart_ex_css() {
 
 		if ( $options['bg_color_brightness'] == 'light' || $options['apply_font'] || $options['text_shadow'] ) {
 
+			if ( themeblvd_get_option('menu_search') ) {
+				$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger,\n";
+			}
+
 			$print .= ".tb-primary-menu > li > .menu-btn {\n";
 
 			if ( $options['apply_font'] && $options['font'] ) {
@@ -1788,6 +1799,10 @@ function jumpstart_ex_css() {
 
 			$print .= "}\n";
 
+		}
+
+		if ( themeblvd_get_option('menu_search') ) {
+			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger:hover,\n";
 		}
 
 		$print .= ".tb-primary-menu > li > a:hover {\n";
@@ -1852,6 +1867,13 @@ function jumpstart_ex_css() {
 			$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
 			$print .= "}\n";
 
+			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+				$print .= ".header-nav .tb-primary-menu > li.menu-search {\n";
+				$print .= "\tborder-left: none;\n";
+				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
+				$print .= "}\n";
+			}
+
 			if ( themeblvd_get_option('menu_center') ) {
 				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
 				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
@@ -1863,6 +1885,13 @@ function jumpstart_ex_css() {
 			$print .= ".header-nav .tb-primary-menu > li {\n";
 			$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
 			$print .= "}\n";
+
+			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+				$print .= ".header-nav .tb-primary-menu > li.menu-search {\n";
+				$print .= "\tborder-right: none;\n";
+				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
+				$print .= "}\n";
+			}
 
 			if ( themeblvd_get_option('menu_center') ) {
 				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
@@ -1876,9 +1905,26 @@ function jumpstart_ex_css() {
 		$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
 		$print .= "}\n";
 
+		if ( themeblvd_get_option('menu_search') ) {
+
+			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger {\n";
+
+			if ( is_rtl() ) {
+				$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
+			} else {
+				$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
+			}
+
+			$print .= "}\n";
+		}
+
 		$print .= ".header-nav .tb-primary-menu > li:first-child > .menu-btn {\n";
 		$print .= "\tborder: none;\n";
 		$print .= "}\n";
+
+		if ( themeblvd_get_option('menu_search') ) {
+			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger:hover,\n";
+		}
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
 		$print .= "\tborder-color: transparent;\n";
@@ -2161,6 +2207,21 @@ function jumpstart_ex_header_addon() {
 	echo '</div><!-- .header-addon (end) -->';
 
 }
+
+/**
+ * Add search popup to main menu
+ *
+ * @since 2.0.0
+ */
+function jumpstart_ex_nav_search( $items, $args ) {
+
+	if ( $args->theme_location == 'primary' && themeblvd_get_option('menu_search') ) {
+		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_search_popup());
+	}
+
+	return $items;
+}
+add_filter('wp_nav_menu_items', 'jumpstart_ex_nav_search', 10, 2);
 
 /**
  * Filter args that get filtered in when

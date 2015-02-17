@@ -167,12 +167,46 @@ Author URI: http://www.themeblvd.com
 	background-color: rgba(0,0,0,.1);
 }
 
+/* Menu Search */
+.tb-primary-menu .menu-search {
+	float: right;
+}
+.rtl .tb-primary-menu .menu-search {
+	float: left;
+}
+.tb-primary-menu .menu-search .search-trigger {
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 1;
+	padding: 18px 20px;
+	width: auto;
+	height: auto;
+}
+.tb-primary-menu .menu-search .search-trigger:hover {
+	background: #222222;
+}
+.tb-primary-menu .menu-search .search-trigger .fa {
+	width: 1em;
+	text-align: center;
+}
+.tb-primary-menu .menu-search .fa {
+	margin: 0;
+}
+.tb-primary-menu .menu-search .tb-search-popup .search-popup {
+	right: 6px;
+}
+.rtl .tb-primary-menu .menu-search .tb-search-popup .search-popup {
+	right: initial;
+	left: 6px;
+}
+
 /* Centered Menu */
 .js-center-menu .tb-primary-menu {
 	font-size: 0; /* Eliminate white space between inline buttons */
 	text-align: center;
 }
-.js-center-menu .tb-primary-menu > li {
+.js-center-menu .tb-primary-menu > li,
+.js-center-menu .tb-primary-menu .menu-search {
 	display: inline-block;
 	float: none;
 }
