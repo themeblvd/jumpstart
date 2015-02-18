@@ -507,6 +507,66 @@ function jumpstart_ex_options() {
 				'id'		=> 'sub_group_end_11',
 				'type' 		=> 'subgroup_end'
 			),
+			'sub_group_start_12' => array(
+			    'id'		=> 'sub_group_start_12',
+			    'type' 		=> 'subgroup_start',
+			    'class'		=> 'show-hide'
+			),
+			'header_apply_padding_top' => array(
+			    'id'		=> 'header_apply_padding_top',
+			    'name'		=> null,
+			    'desc'		=> '<strong>'.__('Top Padding', 'themeblvd').':</strong> '.__('Apply custom padding top the top of the header.', 'themeblvd'),
+			    'std'		=> 0,
+			    'type'		=> 'checkbox',
+			    'class'		=> 'trigger'
+			),
+			'header_padding_top' => array(
+			    'id'		=> 'header_padding_top',
+			    'name'		=> __('Top Padding', 'themeblvd'),
+			    'desc'		=> __('Set the padding on the top of the header.', 'themeblvd'),
+			    'std'		=> '20px',
+			    'type'		=> 'slide',
+			    'options'	=> array(
+			        'units'		=> 'px',
+			        'min'		=> '0',
+			        'max'		=> '600'
+			    ),
+			    'class'		=> 'hide receiver'
+			),
+			'sub_group_end_12' => array(
+			    'id'		=> 'sub_group_end_12',
+			    'type' 		=> 'subgroup_end'
+			),
+			'sub_group_start_13' => array(
+			    'id'		=> 'sub_group_start_13',
+			    'type' 		=> 'subgroup_start',
+			    'class'		=> 'show-hide'
+			),
+			'header_apply_padding_bottom' => array(
+			    'id'		=> 'header_apply_padding_bottom',
+			    'name'		=> null,
+			    'desc'		=> '<strong>'.__('Bottom Padding', 'themeblvd').':</strong> '.__('Apply custom padding bottom the bottom of the header.', 'themeblvd'),
+			    'std'		=> 0,
+			    'type'		=> 'checkbox',
+			    'class'		=> 'trigger'
+			),
+			'header_padding_bottom' => array(
+			    'id'		=> 'header_padding_bottom',
+			    'name'		=> __('Top Padding', 'themeblvd'),
+			    'desc'		=> __('Set the padding on the bottom of the header.', 'themeblvd'),
+			    'std'		=> '20px',
+			    'type'		=> 'slide',
+			    'options'	=> array(
+			        'units'		=> 'px',
+			        'min'		=> '0',
+			        'max'		=> '600'
+			    ),
+			    'class'		=> 'hide receiver'
+			),
+			'sub_group_end_13' => array(
+			    'id'		=> 'sub_group_end_13',
+			    'type' 		=> 'subgroup_end'
+			),
 			'logo_center' => array(
 				'id'		=> 'logo_center',
 				'name'		=> null,
@@ -516,8 +576,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'menu' => array(
-			'sub_group_start_12' => array(
-				'id'		=> 'sub_group_start_12',
+			'sub_group_start_14' => array(
+				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -563,8 +623,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient receiver-gradient_glassy'
 			),
-			'sub_group_end_12' => array(
-				'id'		=> 'sub_group_end_12',
+			'sub_group_end_14' => array(
+				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_hover_bg_color' => array(
@@ -622,8 +682,8 @@ function jumpstart_ex_options() {
 					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
-			'sub_group_start_13' => array(
-				'id'		=> 'sub_group_start_13',
+			'sub_group_start_15' => array(
+				'id'		=> 'sub_group_start_15',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -656,8 +716,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_13' => array(
-				'id'		=> 'sub_group_end_13',
+			'sub_group_end_15' => array(
+				'id'		=> 'sub_group_end_15',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_text_shadow' => array(
@@ -681,8 +741,8 @@ function jumpstart_ex_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_14' => array(
-				'id'		=> 'sub_group_start_14',
+			'sub_group_start_16' => array(
+				'id'		=> 'sub_group_start_16',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -704,8 +764,8 @@ function jumpstart_ex_options() {
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_14' => array(
-				'id'		=> 'sub_group_end_14',
+			'sub_group_end_16' => array(
+				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end',
 			),
 			'menu_search' => array(
@@ -751,8 +811,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_15' => array(
-				'id'		=> 'sub_group_start_15',
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -817,12 +877,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_15' => array(
-				'id'		=> 'sub_group_end_15',
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_16' => array(
-				'id'		=> 'sub_group_start_16',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -855,12 +915,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_16' => array(
-				'id'		=> 'sub_group_end_16',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_17' => array(
-				'id'		=> 'sub_group_start_17',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -893,8 +953,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_17' => array(
-				'id'		=> 'sub_group_end_17',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1001,8 +1061,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'widgets' => array(
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1018,8 +1078,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'trigger'
 			),
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_21' => array(
+				'id'		=> 'sub_group_start_21',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
 			),
@@ -1056,8 +1116,8 @@ function jumpstart_ex_options() {
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-custom'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_21' => array(
+				'id'		=> 'sub_group_end_21',
 				'type' 		=> 'subgroup_end'
 			),
 			'widget_bg_color' => array(
@@ -1121,8 +1181,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
-			'sub_group_start_20' => array(
-				'id'		=> 'sub_group_start_20',
+			'sub_group_start_22' => array(
+				'id'		=> 'sub_group_start_22',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-standard'
 			),
@@ -1155,12 +1215,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_20' => array(
-				'id'		=> 'sub_group_end_20',
+			'sub_group_end_22' => array(
+				'id'		=> 'sub_group_end_22',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1606,12 +1666,6 @@ function jumpstart_ex_css() {
 
 		}
 
-		if ( $options['bg_type'] == 'none' || ( $boxed && $options['bg_type'] == 'color' && $options['bg_color'] == '#ffffff' ) ) {
-			$print .= ".site-header > .wrap {\n";
-			$print .= "\tpadding-bottom: 0;\n";
-			$print .= "}\n";
-		}
-
 		if ( themeblvd_get_option('header_info') == 'header_addon' && themeblvd_get_option('header_bg_color_brightness') == 'dark' ) {
 			$print .= ".header-addon {\n";
 			$print .= "\tcolor: #ffffff;\n";
@@ -1655,6 +1709,25 @@ function jumpstart_ex_css() {
 
 			}
 		}
+
+	}
+
+	// Header padding
+	if ( themeblvd_get_option('header_apply_padding_top') || themeblvd_get_option('header_apply_padding_bottom') ) {
+
+		$print .= "@media (min-width: 993px) {\n";
+		$print .= "\t.site-header > .wrap {\n";
+
+		if ( themeblvd_get_option('header_apply_padding_top') ) {
+			$print .= sprintf("\t\tpadding-top: %s;\n", themeblvd_get_option('header_padding_top'));
+		}
+
+		if ( themeblvd_get_option('header_apply_padding_bottom') ) {
+			$print .= sprintf("\t\tpadding-bottom: %s;\n", themeblvd_get_option('header_padding_bottom'));
+		}
+
+		$print .= "\t}\n";
+		$print .= "}\n";
 
 	}
 
