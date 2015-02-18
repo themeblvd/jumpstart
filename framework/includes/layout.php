@@ -749,9 +749,13 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 		$bg_type = $display['bg_type'];
 	}
 
-	if ( in_array( $bg_type, array('color', 'texture', 'image') ) ) {
+	if ( in_array( $bg_type, array('color', 'texture', 'image', 'none') ) ) {
 
-		if ( ! empty( $display['bg_color'] ) ) {
+		if ( $bg_type == 'none' ) {
+
+			$params['background-color'] = 'transparent';
+
+		} else if ( ! empty( $display['bg_color'] ) ) {
 
 			$bg_color = $display['bg_color'];
 
