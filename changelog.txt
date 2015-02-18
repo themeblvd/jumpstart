@@ -22,7 +22,8 @@ Jump Start Changelog
 * Added option to center header logo in Super User and Executive theme bases.
 * Added option to center main menu buttons in Super User and Executive theme bases.
 * Added option to insert search popup into main menu for Super User and Executive theme bases.
-* Added option for header top/bottom padding for Executive theme base.
+* Improvements, structural changes, and option changes to header of Executive theme base.
+* Allow header in Entrepreneur theme base to be configured with no background color.
 * Mobile menu toggle button will now match menu highlight color on Entrepreneur base.
 * Expanded widget area assignments, requires 1.2.4 update to [Theme Blvd Widget Areas plugin](https://wordpress.org/plugins/theme-blvd-widget-areas/).
 * Expanded "background" option type image sizing options.

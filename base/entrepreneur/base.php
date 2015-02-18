@@ -16,7 +16,6 @@ function jumpstart_ent_options() {
 
 	if ( function_exists('themeblvd_get_bg_types') ) {
 		$bg_types = themeblvd_get_bg_types('section');
-		unset($bg_types['none']);
 	}
 
 	$options = apply_filters('jumpstart_ent_options', array(
@@ -122,17 +121,6 @@ function jumpstart_ent_options() {
 				'std'		=> '#ffffff',
 				'type'		=> 'color'
 			),
-			'top_bg_color_brightness' => array(
-				'name' 		=> __( 'Top Bar Background Color Brightness', 'themeblvd' ),
-				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
-				'id' 		=> 'top_bg_color_brightness',
-				'std' 		=> 'light',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
-					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
-				)
-			),
 			'top_bg_color_opacity' => array(
 				'id'		=> 'top_bg_color_opacity',
 				'name'		=> __('Top Bar Background Color Opacity', 'themeblvd'),
@@ -151,6 +139,17 @@ function jumpstart_ent_options() {
 					'0.9'	=> '0.9',
 					'1'		=> '1.0'
 				)
+			),
+			'top_text_color' => array(
+			    'id'		=> 'top_text_color',
+			    'name'		=> __('Top Bar Text Color'),
+			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'theme-blvd-layout-builder'),
+			    'std'		=> 'dark',
+			    'type'		=> 'select',
+			    'options'	=> array(
+			        'dark'	=> __('Dark Text', 'theme-blvd-layout-builder'),
+			        'light'	=> __('Light Text', 'theme-blvd-layout-builder')
+			    )
 			),
 			'sub_group_start_2' => array(
 				'id'		=> 'sub_group_start_2',
@@ -225,18 +224,6 @@ function jumpstart_ent_options() {
 				'desc'		=> __('Select a background color.', 'themeblvd'),
 				'std'		=> '#ffffff',
 				'type'		=> 'color',
-				'class'		=> 'hide receiver receiver-color receiver-texture receiver-image receiver-slideshow'
-			),
-			'header_bg_color_brightness' => array(
-				'id' 		=> 'header_bg_color_brightness',
-				'name' 		=> __( 'Background Color Brightness', 'themeblvd' ),
-				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
-				'std' 		=> 'light',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
-					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
-				),
 				'class'		=> 'hide receiver receiver-color receiver-texture receiver-image receiver-slideshow'
 			),
 			'header_bg_color_opacity' => array(
@@ -430,6 +417,17 @@ function jumpstart_ent_options() {
 				'id'		=> 'sub_group_start_9',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
+			),
+			'header_text_color' => array(
+			    'id'		=> 'header_text_color',
+			    'name'		=> __('Text Color'),
+			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'theme-blvd-layout-builder'),
+			    'std'		=> 'dark',
+			    'type'		=> 'select',
+			    'options'	=> array(
+			        'dark'	=> __('Dark Text', 'theme-blvd-layout-builder'),
+			        'light'	=> __('Light Text', 'theme-blvd-layout-builder')
+			    )
 			),
 			'header_apply_border_top' => array(
 				'id'		=> 'header_apply_border_top',
@@ -1422,7 +1420,6 @@ function jumpstart_ent_css() {
 
 		$options['bg_type'] = $header_bg_type;
 		$options['bg_color'] = $header_bg_color;
-		$options['bg_color_brightness'] = themeblvd_get_option('header_bg_color_brightness');
 		$options['bg_color_opacity'] = themeblvd_get_option('header_bg_color_opacity');
 		$options['bg_texture'] = themeblvd_get_option('header_bg_texture');
 		$options['apply_bg_texture_parallax'] = themeblvd_get_option('header_apply_bg_texture_parallax');
@@ -1456,13 +1453,13 @@ function jumpstart_ent_css() {
 
 		}
 
-		if ( $options['bg_color_brightness'] == 'dark' ) {
+		if ( themeblvd_get_option('header_text_color') == 'light' ) {
 			$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
 			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover,\n";
 			$print .= ".header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
 			$print .= ".header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
-			$print .= ".header-nav .tb-search-popup .search-trigger,\n";
-			$print .= ".header-nav .tb-search-popup .search-trigger:hover {\n";
+			$print .= ".header-nav .tb-floater .floater-trigger,\n";
+			$print .= ".header-nav .tb-floater .floater-trigger:hover {\n";
 			$print .= "\tcolor: #ffffff;\n";
 			$print .= "}\n";
 		}
@@ -1471,8 +1468,8 @@ function jumpstart_ent_css() {
 		if ( themeblvd_get_option('header_text') ) { // top bar only shows if there's header text
 
 			$options = array();
-			$options['bg_type'] = 'color';
 			$options['bg_color'] = themeblvd_get_option('top_bg_color');
+			$options['bg_type'] = $options['bg_color'] ? 'color' : 'none';
 			$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
 			$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
 			$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
@@ -1489,14 +1486,19 @@ function jumpstart_ent_css() {
 					$print .= sprintf("\t%s: %s;\n", $prop, $value);
 				}
 
-				if ( themeblvd_get_option('top_bg_color_brightness') == 'dark' ) {
+				if ( themeblvd_get_option('top_text_color') == 'light' ) {
 					$print .= "\tcolor: #ffffff;\n";
-					$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
 				} else {
 					$print .= "\tcolor: #666666;\n";
 				}
 
 				$print .= "}\n";
+
+				if ( themeblvd_get_option('top_text_color') == 'light' ) {
+					$print .= ".header-top-nav > li {\n";
+					$print .= "\tborder-color: rgba(0,0,0,0.4);\n";
+					$print .= "}\n";
+				}
 
 			}
 		}
@@ -1612,13 +1614,13 @@ function jumpstart_ent_css() {
 	// Header sticky menu
 	if ( $header_bg_type && $header_bg_type != 'none' && $header_bg_color ) {
 
-		$brightness = themeblvd_get_option('header_bg_color_brightness');
+		$text_color = themeblvd_get_option('header_text_color');
 
 		$print .= ".tb-sticky-menu {\n";
 		$print .= sprintf("\tbackground-color: %s;\n", $header_bg_color);
 		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.9'));
 
-		if ( $brightness == 'dark' ) {
+		if ( $text_color == 'light' ) {
 			$print .= "\tcolor: #ffffff;\n";
 		} else {
 			$print .= "\tcolor: #333333;\n";
@@ -1629,7 +1631,7 @@ function jumpstart_ent_css() {
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
 
-		if ( $brightness == 'dark' ) {
+		if ( $text_color == 'light' ) {
 			$print .= "\tcolor: #ffffff;\n";
 		} else {
 			$print .= "\tcolor: #333333;\n";
@@ -1639,7 +1641,7 @@ function jumpstart_ent_css() {
 
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
 
-		if ( $brightness == 'dark' ) {
+		if ( $text_color == 'light' ) {
 			$print .= "\tbackground-color: #000000;\n";
 			$print .= "\tbackground-color: rgba(255,255,255,.1);\n";
 		} else {
