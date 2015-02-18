@@ -9,7 +9,6 @@ Author URI: http://www.themeblvd.com
 -----------------------------------------------*/
 
 .header-above > .wrap,
-.header-top > .wrap,
 .header-content > .wrap,
 .header-nav > .wrap {
 	margin-right: 0;
@@ -48,11 +47,6 @@ Author URI: http://www.themeblvd.com
 		margin: 0;
 		position: static;
 	}
-}
-
-/* Header Top */
-.header-top {
-	margin: 0 0 20px 0;
 }
 
 /* Header Addon */

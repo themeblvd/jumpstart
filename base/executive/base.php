@@ -2217,9 +2217,13 @@ add_action( 'themeblvd_header_top', 'jumpstart_ex_header_top', 5 );
  * @since 2.0.0
  */
 function jumpstart_ex_header_info() {
+
+	remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
+
 	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
-		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
 		add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
+	} else {
+		add_action('themeblvd_header_before', 'themeblvd_header_top_default');
 	}
 }
 add_action('wp', 'jumpstart_ex_header_info');
