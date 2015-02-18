@@ -512,16 +512,16 @@ function jumpstart_su_options() {
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
-			'header_apply_padding_desktop' => array(
-				'id'		=> 'header_apply_padding_desktop',
+			'header_apply_padding' => array(
+				'id'		=> 'header_apply_padding',
 				'name'		=> null,
-				'desc'		=> '<strong>'.__('Desktop Padding', 'themeblvd').':</strong> '.__('Apply custom padding around header content.', 'themeblvd'),
+				'desc'		=> '<strong>'.__('Padding', 'themeblvd').':</strong> '.__('Apply custom padding around header content.', 'themeblvd'),
 				'std'		=> 0,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
-			'header_padding_top_desktop' => array(
-				'id'		=> 'header_padding_top_desktop',
+			'header_padding_top' => array(
+				'id'		=> 'header_padding_top',
 				'name'		=> __('Top Padding', 'themeblvd'),
 				'desc'		=> __('Set the padding on the top of the header.', 'themeblvd'),
 				'std'		=> '20px',
@@ -533,8 +533,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'header_padding_right_desktop' => array(
-				'id'		=> 'header_padding_right_desktop',
+			'header_padding_right' => array(
+				'id'		=> 'header_padding_right',
 				'name'		=> __('Right Padding', 'themeblvd'),
 				'desc'		=> __('Set the padding on the right of the header.', 'themeblvd'),
 				'std'		=> '20px',
@@ -546,8 +546,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'header_padding_bottom_desktop' => array(
-				'id'		=> 'header_padding_bottom_desktop',
+			'header_padding_bottom' => array(
+				'id'		=> 'header_padding_bottom',
 				'name'		=> __('Bottom Padding', 'themeblvd'),
 				'desc'		=> __('Set the padding on the bottom of the header.', 'themeblvd'),
 				'std'		=> '20px',
@@ -559,8 +559,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'header_padding_left_desktop' => array(
-				'id'		=> 'header_padding_left_desktop',
+			'header_padding_left' => array(
+				'id'		=> 'header_padding_left',
 				'name'		=> __('Left Padding', 'themeblvd'),
 				'desc'		=> __('Set the padding on the left of the header.', 'themeblvd'),
 				'std'		=> '20px',
@@ -576,144 +576,6 @@ function jumpstart_su_options() {
 				'id'		=> 'sub_group_end_12',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_13' => array(
-				'id'		=> 'sub_group_start_13',
-				'type' 		=> 'subgroup_start',
-				'class'		=> 'show-hide'
-			),
-			'header_apply_padding_tablet' => array(
-				'id'		=> 'header_apply_padding_tablet',
-				'name'		=> null,
-				'desc'		=> '<strong>'.__('Tablet Padding', 'themeblvd').':</strong> '.__('Apply custom padding around header content.', 'themeblvd'),
-				'std'		=> 0,
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
-			),
-			'header_padding_top_tablet' => array(
-				'id'		=> 'header_padding_top_tablet',
-				'name'		=> __('Top Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the top of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'header_padding_right_tablet' => array(
-				'id'		=> 'header_padding_right_tablet',
-				'name'		=> __('Right Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the right of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'header_padding_bottom_tablet' => array(
-				'id'		=> 'header_padding_bottom_tablet',
-				'name'		=> __('Bottom Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the bottom of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'header_padding_left_tablet' => array(
-				'id'		=> 'header_padding_left_tablet',
-				'name'		=> __('Left Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the left of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'sub_group_end_13' => array(
-				'id'		=> 'sub_group_end_13',
-				'type' 		=> 'subgroup_end'
-			),
-			'sub_group_start_14' => array(
-				'id'		=> 'sub_group_start_14',
-				'type' 		=> 'subgroup_start',
-				'class'		=> 'show-hide'
-			),
-			'header_apply_padding_mobile' => array(
-				'id'		=> 'header_apply_padding_mobile',
-				'name'		=> null,
-				'desc'		=> '<strong>'.__('Mobile Padding', 'themeblvd').':</strong> '.__('Apply custom padding around header content.', 'themeblvd'),
-				'std'		=> 0,
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
-			),
-			'header_padding_top_mobile' => array(
-				'id'		=> 'header_padding_top_mobile',
-				'name'		=> __('Top Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the top of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'header_padding_right_mobile' => array(
-				'id'		=> 'header_padding_right_mobile',
-				'name'		=> __('Right Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the right of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'header_padding_bottom_mobile' => array(
-				'id'		=> 'header_padding_bottom_mobile',
-				'name'		=> __('Bottom Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the bottom of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'header_padding_left_mobile' => array(
-				'id'		=> 'header_padding_left_mobile',
-				'name'		=> __('Left Padding', 'themeblvd'),
-				'desc'		=> __('Set the padding on the left of the header.', 'themeblvd'),
-				'std'		=> '10px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'		=> 'px',
-					'min'		=> '0',
-					'max'		=> '600'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'sub_group_end_14' => array(
-				'id'		=> 'sub_group_end_14',
-				'type' 		=> 'subgroup_end'
-			),
 			'logo_center' => array(
 				'id'		=> 'logo_center',
 				'name'		=> null,
@@ -723,8 +585,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'menu' => array(
-			'sub_group_start_15' => array(
-				'id'		=> 'sub_group_start_15',
+			'sub_group_start_13' => array(
+				'id'		=> 'sub_group_start_13',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -770,8 +632,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient receiver-gradient_glassy'
 			),
-			'sub_group_end_15' => array(
-				'id'		=> 'sub_group_end_15',
+			'sub_group_end_13' => array(
+				'id'		=> 'sub_group_end_13',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_hover_bg_color' => array(
@@ -829,8 +691,8 @@ function jumpstart_su_options() {
 					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
-			'sub_group_start_16' => array(
-				'id'		=> 'sub_group_start_16',
+			'sub_group_start_14' => array(
+				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -863,12 +725,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_16' => array(
-				'id'		=> 'sub_group_end_16',
+			'sub_group_end_14' => array(
+				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_17' => array(
-				'id'		=> 'sub_group_start_17',
+			'sub_group_start_15' => array(
+				'id'		=> 'sub_group_start_15',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -901,8 +763,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_17' => array(
-				'id'		=> 'sub_group_end_17',
+			'sub_group_end_15' => array(
+				'id'		=> 'sub_group_end_15',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_text_shadow' => array(
@@ -926,8 +788,8 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_16' => array(
+				'id'		=> 'sub_group_start_16',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -949,8 +811,8 @@ function jumpstart_su_options() {
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_16' => array(
+				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end',
 			),
 			'menu_search' => array(
@@ -996,8 +858,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1062,12 +924,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_20' => array(
-				'id'		=> 'sub_group_start_20',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1100,12 +962,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_20' => array(
-				'id'		=> 'sub_group_end_20',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_21' => array(
-				'id'		=> 'sub_group_start_21',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1138,8 +1000,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_21' => array(
-				'id'		=> 'sub_group_end_21',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1246,8 +1108,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'widgets' => array(
-			'sub_group_start_22' => array(
-				'id'		=> 'sub_group_start_22',
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1263,8 +1125,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'trigger'
 			),
-			'sub_group_start_23' => array(
-				'id'		=> 'sub_group_start_23',
+			'sub_group_start_21' => array(
+				'id'		=> 'sub_group_start_21',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
 			),
@@ -1301,8 +1163,8 @@ function jumpstart_su_options() {
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-custom'
 			),
-			'sub_group_end_23' => array(
-				'id'		=> 'sub_group_end_23',
+			'sub_group_end_21' => array(
+				'id'		=> 'sub_group_end_21',
 				'type' 		=> 'subgroup_end'
 			),
 			'widget_bg_color' => array(
@@ -1366,8 +1228,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
-			'sub_group_start_24' => array(
-				'id'		=> 'sub_group_start_24',
+			'sub_group_start_22' => array(
+				'id'		=> 'sub_group_start_22',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-standard'
 			),
@@ -1400,12 +1262,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_24' => array(
-				'id'		=> 'sub_group_end_24',
-				'type' 		=> 'subgroup_end'
-			),
 			'sub_group_end_22' => array(
 				'id'		=> 'sub_group_end_22',
+				'type' 		=> 'subgroup_end'
+			),
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1890,6 +1752,18 @@ function jumpstart_su_css() {
 
 	}
 
+	// Header content padding
+	if ( themeblvd_get_option('header_apply_padding') ) {
+		$print .= "@media (min-width: 993px) {\n";
+		$print .= "\t.header-content > .wrap {\n";
+		$print .= sprintf("\t\tpadding-top: %s;\n", themeblvd_get_option('header_padding_top'));
+		$print .= sprintf("\t\tpadding-right: %s;\n", themeblvd_get_option('header_padding_right'));
+		$print .= sprintf("\t\tpadding-bottom: %s;\n", themeblvd_get_option('header_padding_bottom'));
+		$print .= sprintf("\t\tpadding-left: %s;\n", themeblvd_get_option('header_padding_left'));
+		$print .= "\t}\n";
+		$print .= "}\n";
+	}
+
 	// Header sticky menu
 	if ( $header_bg_type && $header_bg_type != 'none' && $header_bg_color ) {
 
@@ -1929,70 +1803,6 @@ function jumpstart_su_css() {
 		}
 
 		$print .= "}\n";
-
-	}
-
-	// Header content padding
-	$options = array();
-
-	$options['apply_padding_desktop'] = themeblvd_get_option('header_apply_padding_desktop');
-	$options['padding_top_desktop'] = themeblvd_get_option('header_padding_top_desktop');
-	$options['padding_right_desktop'] = themeblvd_get_option('header_padding_right_desktop');
-	$options['padding_bottom_desktop'] = themeblvd_get_option('header_padding_bottom_desktop');
-	$options['padding_left_desktop'] = themeblvd_get_option('header_padding_left_desktop');
-
-	$options['apply_padding_tablet'] = themeblvd_get_option('header_apply_padding_tablet');
-	$options['padding_top_tablet'] = themeblvd_get_option('header_padding_top_tablet');
-	$options['padding_right_tablet'] = themeblvd_get_option('header_padding_right_tablet');
-	$options['padding_bottom_tablet'] = themeblvd_get_option('header_padding_bottom_tablet');
-	$options['padding_left_tablet'] = themeblvd_get_option('header_padding_left_tablet');
-
-	$options['apply_padding_mobile'] = themeblvd_get_option('header_apply_padding_mobile');
-	$options['padding_top_mobile'] = themeblvd_get_option('header_padding_top_mobile');
-	$options['padding_right_mobile'] = themeblvd_get_option('header_padding_right_mobile');
-	$options['padding_bottom_mobile'] = themeblvd_get_option('header_padding_bottom_mobile');
-	$options['padding_left_mobile'] = themeblvd_get_option('header_padding_left_mobile');
-
-	$styles = themeblvd_get_display_inline_style( $options, 'external' );
-
-	if ( $styles ) {
-
-		foreach ( $styles as $type => $params ) {
-
-			if ( ! $params ) {
-				continue;
-			}
-
-			$indent = '';
-
-			if ( $type != 'general' ) {
-				$indent = "\t";
-			}
-
-			switch ( $type ) {
-				case 'desktop' :
-					$print .= "@media (min-width: 993px) {\n";
-					break;
-				case 'tablet' :
-					$print .= "@media (max-width: 992px) and (min-width: 768px) {\n";
-					break;
-				case 'mobile' :
-					$print .= "@media (max-width: 767px) {\n";
-			}
-
-			$print .= $indent.".header-content > .wrap {\n";
-
-			foreach ( $params as $prop => $value ) {
-				$print .= $indent.sprintf("\t%s: %s;\n", $prop, $value);
-			}
-
-			$print .= $indent."}\n";
-
-			if ( $type != 'general' ) {
-				$print .= "}\n";
-			}
-
-		}
 
 	}
 
