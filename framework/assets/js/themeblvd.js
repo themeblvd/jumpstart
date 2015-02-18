@@ -116,12 +116,28 @@ jQuery(document).ready(function($) {
 			$toggle_open = $('#primary-menu-open'),
 			$toggle_close = $('#primary-menu-close'),
 			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
-			max = parseInt(themeblvd.mobile_menu_viewport_max);
+			max = parseInt(themeblvd.mobile_menu_viewport_max),
+			search_count = 0;
 
-		$header.find('.tb-search').clone().addClass('mini').appendTo( $side_holder );
+		// Add search box, if exists in header
+		$header.find('.tb-search').each(function() {
+
+			if ( search_count > 0 ) { // We only want one search box
+				return;
+			}
+
+			$(this).clone().addClass('mini').appendTo( $side_holder );
+
+			search_count++;
+		});
+
+		// Add menu, header text, and social icons, if they exist
 		$primary_menu.clone().appendTo( $side_holder );
 		$body.find('.header-text.to-mobile').clone().appendTo( $side_holder );
 		$body.find('.tb-social-icons.to-mobile').clone().appendTo( $side_holder );
+
+		// And don't keep the menu-search, if user has added it
+		$side_holder.find('li.menu-search').remove();
 
 		// Adjust menu classes
 		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
@@ -185,18 +201,45 @@ jQuery(document).ready(function($) {
 		var $sticky_spy = $(themeblvd.sticky),
 			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy );
 
+		// Add the logo
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
 
 		if ( themeblvd.sticky_logo ) {
 			$sticky.find('.header_logo_image img').attr('src', themeblvd.sticky_logo).removeAttr('width height');
 		}
 
+		// Add nav menu
 		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
+
+		// Don't keep the menu-search, if user has added it (we're adding search otherwise)
+		$sticky.find('.tb-primary-menu > li.menu-search').remove();
+
+		// Add popups in header to sticky menu, avoiding dpotential uplicates
+		var popups = ['search', 'cart', 'contact'],
+			used = [];
 
 		$('<ul class="list-unstyled floaters">').appendTo( $sticky.find('.sticky-wrap > .nav') );
 
 		$header.find('.tb-floater').each(function(){
-			$(this).clone().appendTo( $sticky.find('.sticky-wrap > .nav > ul.floaters') ).wrap('<li></li>');
+
+			var $el = $(this);
+
+			// Check if popup has been used
+			for ( var i = 0; i < used.length; i++ ) {
+				if ( $el.hasClass('tb-'+used[i]+'-popup') ) {
+					return;
+				}
+			}
+
+			$el.clone().appendTo( $sticky.find('.sticky-wrap > .nav > ul.floaters') ).wrap('<li></li>');
+
+			// Add popup to our used array
+			for ( var i = 0; i < popups.length; i++ ) {
+				if ( $el.hasClass('tb-'+popups[i]+'-popup') ) {
+					used.push(popups[i]);
+				}
+			}
+
 		});
 
 		// Sticky menu, make selector dynamic
