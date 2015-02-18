@@ -682,6 +682,18 @@ function jumpstart_ex_options() {
 					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
+			'menu_corners' => array(
+				'id'		=> 'menu_corners',
+				'name'		=> __('Menu Corners', 'themeblvd'),
+				'desc'		=> __('Set the border radius of menu corners. Setting to <em>0px</em> will mean the menu corners are square.', 'themeblvd'),
+				'std'		=> '0px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'		=> 'px',
+					'min'		=> '0',
+					'max'		=> '50'
+				)
+			),
 			'sub_group_start_15' => array(
 				'id'		=> 'sub_group_start_15',
 				'type' 		=> 'subgroup_start',
@@ -1776,6 +1788,7 @@ function jumpstart_ex_css() {
 	// Primary navigation
 	$options = array();
 
+	$options['corners'] = themeblvd_get_option('menu_corners');
 	$options['divider'] = themeblvd_get_option('menu_divider');
 	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
 	$options['sub_bg_color_brightness'] = themeblvd_get_option('menu_sub_bg_color_brightness');
@@ -1824,7 +1837,12 @@ function jumpstart_ex_css() {
 		}
 
 		if ( $options['apply_border'] ) {
+
 			$print .= sprintf("\tborder: %s solid %s;\n", $options['border_width'], $options['border_color'] );
+
+			if ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') == '0px' ) {
+				$print .= "\tborder-bottom: none;\n";
+			}
 		}
 
 		$print .= "}\n";
@@ -1919,6 +1937,71 @@ function jumpstart_ex_css() {
 		}
 
 		$print .= "}\n";
+
+	} // end IF suck_up
+
+	// Primary nav border radius
+	if ( $options['corners'] && $options['corners'] != '0px' ) {
+
+		$print .= ".header-nav,\n";
+		$print .= ".btn-navbar {\n";
+		$print .= sprintf("\t-webkit-border-radius: %s;\n", $options['corners']);
+		$print .= sprintf("\tborder-radius: %s;\n", $options['corners']);
+		$print .= "}\n";
+
+		if ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') == '0px' ) {
+			$print .= ".header-nav {\n";
+			$print .= "\t-webkit-border-bottom-right-radius: 0;\n";
+			$print .= "\t-webkit-border-bottom-left-radius: 0;\n";
+			$print .= "\tborder-bottom-right-radius: 0;\n";
+			$print .= "\tborder-bottom-left-radius: 0;\n";
+			$print .= "}\n";
+		}
+
+		// Fix for buttons hugging corners
+		$fix = intval($options['corners']);
+
+		if ( ! themeblvd_config('suck_up') && $options['apply_border'] ) { // menu border not applied on suck_up
+
+			$border = intval($options['border_width']);
+
+			if ( ($fix - $border) >= 0 ) {
+				$fix = $fix - $border;
+			}
+		}
+
+		$start = 'left';
+		$end = 'right';
+
+		if ( is_rtl() ) {
+			$start = 'right';
+			$end = 'left';
+		}
+
+		$print .= ".tb-primary-menu > li:first-child > .menu-btn {\n";
+		$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $start, $fix);
+		$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $start, $fix);
+
+		if ( ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
+			$print .= sprintf("\t-webkit-border-bottom-%s-radius: %spx;\n", $start, $fix);
+			$print .= sprintf("\tborder-bottom-%s-radius: %spx;\n", $start, $fix);
+		}
+
+		$print .= "}\n";
+
+		if ( themeblvd_get_option('menu_search') ) {
+
+			$print .= ".tb-primary-menu .menu-search .search-trigger {\n";
+			$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $end, $fix);
+			$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $end, $fix);
+
+			if ( ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
+				$print .= sprintf("\t-webkit-border-bottom-%s-radius: %spx;\n", $end, $fix);
+				$print .= sprintf("\tborder-bottom-%s-radius: %spx;\n", $end, $fix);
+			}
+
+			$print .= "}\n";
+		}
 
 	}
 
