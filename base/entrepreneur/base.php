@@ -1796,8 +1796,7 @@ function jumpstart_ent_header_class( $output, $class ) {
 		'bg_texture_parallax'			=> themeblvd_get_option('header_bg_texture_parallax'),
 		'bg_image'						=> themeblvd_get_option('header_bg_image'),
 		'bg_image_parallax'				=> themeblvd_get_option('header_bg_image_parallax'),
-		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
-		'apply_padding'					=> themeblvd_get_option('header_apply_padding')
+		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow')
 	);
 
 	$class = array_merge( $class, themeblvd_get_display_class($options) );
