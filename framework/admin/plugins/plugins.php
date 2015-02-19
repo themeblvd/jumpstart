@@ -66,6 +66,16 @@ function themeblvd_tgm_register() {
 			'name'		=> 'Portfolios',
 			'slug'		=> 'portfolios',
 			'required'	=> false
+		),
+		'tweeple' => array(
+			'name'		=> 'Tweeple',
+			'slug'		=> 'tweeple',
+			'required'	=> false
+		),
+		'woocommerce' => array(
+			'name'		=> 'WooCommerce',
+			'slug'		=> 'woocommerce',
+			'required'	=> false
 		)
 	);
 	$plugins = apply_filters( 'themeblvd_plugins', $plugins );
