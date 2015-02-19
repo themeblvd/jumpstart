@@ -83,7 +83,7 @@ class Theme_Blvd_Plugin_Management {
 			'portfolios' => array(
 				'name'		=> 'Portfolios',
 				'slug'		=> 'portfolios',
-				'suggested'	=> '1.0.0',
+				'suggested'	=> '1.1.0',
 				'current'	=> '',
 				'constant'	=> 'TB_PORTFOLIOS_PLUGIN_VERSION'
 			),
@@ -97,7 +97,7 @@ class Theme_Blvd_Plugin_Management {
 			'shortcodes' => array(
 				'name'		=> 'Theme Blvd Shortcodes',
 				'slug'		=> 'theme-blvd-shortcodes',
-				'suggested'	=> '1.4.2',
+				'suggested'	=> '1.5.0',
 				'current'	=> '',
 				'constant'	=> 'TB_SHORTCODES_PLUGIN_VERSION'
 			),
