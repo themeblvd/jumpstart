@@ -1103,6 +1103,19 @@ body.admin-bar .tb-sticky-menu {
 	display: none;
 	margin-top: 10px;
 }
+.tb-side-menu .sf-mega > .sf-mega-section > ul.mega-sub-menu > li.placeholder {
+	background-image: none !important;
+}
+.tb-side-menu .sf-mega > .sf-mega-section > ul.mega-sub-menu > li.placeholder > .menu-btn,
+.tb-side-menu .sf-mega > .sf-mega-section > ul.mega-sub-menu > li.placeholder > .mega-section-header {
+	display: none;
+}
+.tb-side-menu .sf-mega > .sf-mega-section > ul.mega-sub-menu > li.placeholder > ul {
+	margin-top: -14px;
+}
+.tb-side-menu .sf-mega > .sf-mega-section:first-child > ul.mega-sub-menu > li.placeholder > ul {
+	margin-top: inherit;
+}
 
 /* Level 2+ */
 .tb-side-menu .sub-menu {
