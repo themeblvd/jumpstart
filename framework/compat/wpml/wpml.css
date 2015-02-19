@@ -1,9 +1,12 @@
 /* Language Switcher */
-#lang_sel {
+#lang_sel,
+#lang_sel_click {
 	height: auto;
+	text-shadow: none;
 	z-index: 999;
 }
-#lang_sel ul ul {
+#lang_sel ul ul,
+#lang_sel_click ul ul {
 	border: none;
 	float: none;
 	position: absolute;
@@ -11,16 +14,22 @@
 	left: 0;
 	right: 0;
 }
-#lang_sel li {
+#lang_sel li,
+#lang_sel_click li {
 	float: none;
 }
-#lang_sel img.iclflag {
+#lang_sel img.iclflag,
+#lang_sel_click img.iclflag {
 	top: 1px;
 	width: 15px;
 	height: 10px;
 	vertical-align: initial;
 }
-#lang_sel a {
+#lang_sel_click img.iclflag {
+	margin-right: 5px;
+}
+#lang_sel a,
+#lang_sel_click a {
 	background: #ffffff !important;
 	border-color: #dddddd !important;
 	border-width: 0 1px 1px 1px;
@@ -31,37 +40,56 @@
 	line-height: 1 !important;
 	padding: 5px 10px;
 }
-#lang_sel a:hover {
+#lang_sel a:hover,
+#lang_sel_click a:hover {
 	color: #666666 !important;
 	background: #f2f2f2 !important;
 }
-#lang_sel a.lang_sel_sel {
+#lang_sel a.lang_sel_sel,
+#lang_sel_click a.lang_sel_sel {
     background: #ffffff;
     border-width: 1px;
     color: #666666;
     padding: 5px 10px 6px 10px;
 }
-#lang_sel a.lang_sel_sel:hover{
+#lang_sel a.lang_sel_sel:hover,
+#lang_sel_click a.lang_sel_sel:hover {
     text-decoration: none;
     color: #666666;
 }
-#lang_sel a.lang_sel_sel:after {
+#lang_sel a.lang_sel_sel:after,
+#lang_sel_click a.lang_sel_sel:after {
 	content: "\f0d7";
 	font-family: "FontAwesome";
 	margin-top: 2px;
 	position: absolute;
 	right: 8px;
 }
-.site-header.transparent #lang_sel a {
+.site-header.transparent #lang_sel a,
+.site-header.transparent #lang_sel_click a {
 	background: rgba(0,0,0,.2) !important;
 	border-color: rgba(0,0,0,.5) !important;
 	color: #ffffff !important;
 }
-.site-header.transparent #lang_sel a:hover {
+.site-header.transparent #lang_sel a:hover,
+.site-header.transparent #lang_sel_click a:hover {
 	background: rgba(0,0,0,.5) !important;
 }
-.site-header.transparent #lang_sel img.iclflag {
+.site-header.transparent #lang_sel img.iclflag,
+.site-header.transparent #lang_sel_click img.iclflag {
 	box-shadow: 0 0 5px rgba(0,0,0,.7);
+}
+
+/* Horizontal List */
+#lang_sel_list ul > li > a {
+	line-height: 25px;
+	padding: 0 5px;
+}
+#lang_sel_list img.iclflag {
+	top: 1px;
+	width: 15px;
+	height: 10px;
+	vertical-align: initial;
 }
 
 /* Main Menu Switchter */

@@ -176,6 +176,7 @@ class Theme_Blvd_Compat_WPML {
 
 			$sub_items = false;
 			$menu_is_vertical = !isset($sitepress_settings['icl_lang_sel_orientation']) || $sitepress_settings['icl_lang_sel_orientation'] == 'vertical';
+			$menu_is_vertical = true; // ThemeBlvd override above line, always vertical
 
             if( ! empty($languages) ) {
                 foreach( $languages as $lang ){

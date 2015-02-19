@@ -37,6 +37,7 @@ Jump Start Changelog
 * Minor styling improvements for bbPress.
 * Changed Jumbotron element titles to use `<h2>` tags to fit in with header Typography on Theme Options page.
 * Improvements to Icon Box element.
+* Improvements to WPML language switcher, using WPML's various options and using on mobile.
 * Simplified header padding options for Super User theme base to desktop only.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Post Showcase (no masonry) not displaying right with excerpts.
@@ -59,6 +60,7 @@ Jump Start Changelog
 * Fixed: Description not showing with milestone ring element.
 * Fixed: Builder API function `themeblvd_add_builder_element` was outputting custom element on frontend.
 * Fixed: Browser horizontal scroll bars with "Popout" selected on Column Element in Builder.
+* Fixed: Heading placeholders displaying in mobile version of mega menus.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`

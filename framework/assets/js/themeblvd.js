@@ -142,6 +142,27 @@ jQuery(document).ready(function($) {
 		// Adjust menu classes
 		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
 
+		// Add WPML switcher, if exists in header
+		if ( ! $header.find('.menu-item-language').length ) { // Make sure main nav doesn't already hace switcher
+			$header.find('.top-wpml').each(function() {
+
+				var $el = $(this),
+					$switcher = $('<li class="menu-item mobile-wpml"></li>'),
+					$top = $('<span class="menu-item">'+$el.find('a.lang_sel_sel').html()+'</span>'),
+					$sub = $el.find('a.lang_sel_sel').next('ul');
+
+				$switcher.append( $top );
+
+				if ( $sub.length ) {
+					$switcher.append('<i class="tb-side-menu-toggle fa fa-plus" data-open="plus" data-close="minus"></i>');
+					$switcher.append( $sub.clone().addClass('sub-menu non-mega-sub-menu') );
+				}
+
+				$switcher.appendTo( $side_holder.find('.tb-side-menu') );
+
+			});
+		}
+
 		// Adjust social media icon color
 		if ( themeblvd.mobile_side_menu_icon_color ) {
 			$side_holder.find('.tb-social-icons').removeClass('grey dark light flat color').addClass(themeblvd.mobile_side_menu_icon_color);
