@@ -8,44 +8,18 @@ Author URI: http://www.themeblvd.com
 /* =Header
 -----------------------------------------------*/
 
-.header-above > .wrap,
-.header-content > .wrap,
-.header-nav > .wrap {
-	margin-right: 0;
-	margin-left: 0;
-	max-width: none;
-}
-.site-header > .wrap {
-	margin-right: auto;
-	margin-left: auto;
+.header-nav {
+	margin: 0 auto;
 	max-width: 1170px;
-	padding: 20px 0 20px 0;
 }
 @media (max-width: 1200px) {
-	.site-header > .wrap {
+	.header-nav {
 		max-width: 960px;
 	}
 }
-@media (max-width: 992px) {
+@media (min-width: 993px) {
 	.site-header > .wrap {
-		max-width: 738px;
-		padding: 15px 20px 15px 20px;
-		position: relative;
-	}
-}
-@media (max-width: 767px) {
-	.site-header > .wrap {
-		max-width: 480px;
-	}
-}
-.header-content > .wrap {
-	margin: 0 0 20px 0;
-	padding: 0;
-}
-@media (max-width: 992px) {
-	.header-content > .wrap {
-		margin: 0;
-		position: static;
+		padding-bottom: 20px;
 	}
 }
 
@@ -153,6 +127,11 @@ Author URI: http://www.themeblvd.com
 #tb-side-menu-wrapper .tb-side-menu > li,
 #tb-side-menu-wrapper .tb-search {
 	border-color: rgba(0,0,0,.2);
+}
+
+/* Transparent Header */
+.tb-suck-up .header-top {
+	background-color: rgba(0,0,0,.2);
 }
 
 /* =Main Menu
@@ -292,8 +271,10 @@ Author URI: http://www.themeblvd.com
 	margin-left: 0;
 	max-width: none;
 }
-.js-boxed .site-header {
-	padding: 0 30px;
+.js-boxed .header-top > .wrap,
+.js-boxed .header-content > .wrap,
+.js-boxed .header-nav {
+	margin: 0 20px;
 }
 .js-boxed #main {
 	padding: 30px;

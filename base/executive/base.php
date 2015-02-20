@@ -551,7 +551,7 @@ function jumpstart_ex_options() {
 			),
 			'header_padding_bottom' => array(
 			    'id'		=> 'header_padding_bottom',
-			    'name'		=> __('Top Padding', 'themeblvd'),
+			    'name'		=> __('Bottom Padding', 'themeblvd'),
 			    'desc'		=> __('Set the padding on the bottom of the header.', 'themeblvd'),
 			    'std'		=> '20px',
 			    'type'		=> 'slide',
@@ -1732,17 +1732,19 @@ function jumpstart_ex_css() {
 	if ( themeblvd_get_option('header_apply_padding_top') || themeblvd_get_option('header_apply_padding_bottom') ) {
 
 		$print .= "@media (min-width: 993px) {\n";
-		$print .= "\t.site-header > .wrap {\n";
 
 		if ( themeblvd_get_option('header_apply_padding_top') ) {
+			$print .= "\t.header-content > .wrap {\n";
 			$print .= sprintf("\t\tpadding-top: %s;\n", themeblvd_get_option('header_padding_top'));
+			$print .= "\t}\n";
 		}
 
 		if ( themeblvd_get_option('header_apply_padding_bottom') ) {
+			$print .= "\t.site-header > .wrap {\n";
 			$print .= sprintf("\t\tpadding-bottom: %s;\n", themeblvd_get_option('header_padding_bottom'));
+			$print .= "\t}\n";
 		}
 
-		$print .= "\t}\n";
 		$print .= "}\n";
 
 	}
@@ -2293,12 +2295,9 @@ add_action( 'themeblvd_header_top', 'jumpstart_ex_header_top', 5 );
  */
 function jumpstart_ex_header_info() {
 
-	remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
-
 	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
+		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
 		add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
-	} else {
-		add_action('themeblvd_header_before', 'themeblvd_header_top_default');
 	}
 }
 add_action('wp', 'jumpstart_ex_header_info');
