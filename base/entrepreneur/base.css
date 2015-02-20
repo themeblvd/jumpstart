@@ -123,7 +123,7 @@ Author URI: http://www.themeblvd.com
 /* Level 1 */
 .header-nav .tb-primary-menu > li > .menu-btn {
 	border-bottom: 4px solid transparent;
-	color: #808080;
+	color: #555555;
 	font-size: 13px;
 	font-weight: bold;
 	line-height: 20px;
@@ -137,11 +137,6 @@ Author URI: http://www.themeblvd.com
 		padding-left: 10px;
 		padding-right: 10px;
 	}
-}
-.header-nav .tb-primary-menu > li > .menu-btn:hover,
-.header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,
-.header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn {
-	color: #333333;
 }
 .header-nav .tb-primary-menu > li > a:hover {
 	background-color: transparent;
