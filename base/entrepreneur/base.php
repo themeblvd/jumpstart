@@ -213,7 +213,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'header_bg_type',
 				'name'		=> __('Apply Header Background', 'themeblvd'),
 				'desc'		=> __('Select if you\'d like to apply a custom background and how you want to control it.', 'themeblvd'),
-				'std'		=> 'none',
+				'std'		=> 'color',
 				'type'		=> 'select',
 				'options'	=> $bg_types,
 				'class'		=> 'trigger'
