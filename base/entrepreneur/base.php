@@ -160,7 +160,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'top_apply_border_bottom',
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Bottom Border', 'themeblvd').'</strong>: '.__('Apply bottom border to the top bar of the header.', 'themeblvd'),
-				'std'		=> 0,
+				'std'		=> 1,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -526,8 +526,8 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_menu',
 				'name' 		=> __( 'Main Menu Font', 'themeblvd' ),
 				'desc' 		=> __( 'This font applies to the top level items of the main menu.', 'themeblvd' ),
-				'std' 		=> array('size' => '13px', 'face' => 'helvetica', 'color' => '', 'google' => '', 'style' => 'bold'),
-				'atts'		=> array('size', 'face', 'style'),
+				'std' 		=> array('size' => '13px', 'face' => 'helvetica', 'color' => '#555555', 'google' => '', 'style' => 'bold'),
+				'atts'		=> array('size', 'face', 'style', 'color'),
 				'type' 		=> 'typography',
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
 				'class'		=> 'hide receiver'
@@ -1533,6 +1533,11 @@ function jumpstart_ent_css() {
 	$print .= sprintf( "\tpadding-bottom: %spx;\n", $bottom );
 
 	if ( $font ) {
+
+		if ( ! themeblvd_config('suck_up') ) {
+			$print .= sprintf("\tcolor: %s;\n", $font['color'] );
+		}
+
 		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
 		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );

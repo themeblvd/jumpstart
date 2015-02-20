@@ -22,6 +22,7 @@ Jump Start Changelog
 * Added option to center header logo in Super User and Executive theme bases.
 * Added option to center main menu buttons in Super User and Executive theme bases.
 * Added option to insert search popup into main menu for Super User and Executive theme bases.
+* Added color selection to custom font option of Entrepreneur theme base.
 * Improvements, structural changes, and option changes to header of Executive theme base.
 * Allow header in Entrepreneur theme base to be configured with no background color.
 * Mobile menu toggle button will now match menu highlight color on Entrepreneur base.
@@ -29,7 +30,7 @@ Jump Start Changelog
 * Expanded "background" option type image sizing options.
 * Darkened body text in WordPress page editor.
 * CSS tweaks to buttons.
-* Improved appearance of text logo option with "Entrepeneur" theme base.
+* Improved appearance of text logo option with Entrepreneur theme base.
 * Improvements to styling of default widgets with lists.
 * Mobile navigation toggle now displays at tablet viewport and in right of header, across all theme bases.
 * Main menu font size made smaller for tablets and sticky menu to fit more buttons.
