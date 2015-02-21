@@ -1353,7 +1353,7 @@ function jumpstart_ex_include_fonts() {
 		themeblvd_get_option('font_menu')
 	);
 }
-add_action( 'wp_head', 'jumpstart_ex_include_fonts', 5 );
+add_action( 'wp_head', 'jumpstart_ex_include_fonts', 5);
 
 /**
  * Enqueue any CSS
@@ -1680,7 +1680,6 @@ function jumpstart_ex_css() {
 		if ( themeblvd_get_option('header_info') == 'header_addon' && themeblvd_get_option('header_text_color') == 'light' ) {
 			$print .= ".header-addon {\n";
 			$print .= "\tcolor: #ffffff;\n";
-			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
 			$print .= "}\n";
 			$print .= ".header-top-nav > li {\n";
 			$print .= "\tborder-color: rgba(0,0,0,.4);\n";
@@ -1739,7 +1738,7 @@ function jumpstart_ex_css() {
 			$print .= "\t}\n";
 		}
 
-		if ( themeblvd_get_option('header_apply_padding_bottom') ) {
+		if ( ! themeblvd_config('suck_up') && themeblvd_get_option('header_apply_padding_bottom') ) { // Bottom padding doesn't get applied on suck_up
 			$print .= "\t.site-header > .wrap {\n";
 			$print .= sprintf("\t\tpadding-bottom: %s;\n", themeblvd_get_option('header_padding_bottom'));
 			$print .= "\t}\n";
@@ -1795,7 +1794,8 @@ function jumpstart_ex_css() {
 	$options = array();
 
 	$options['corners'] = themeblvd_get_option('menu_corners');
-	$options['divider'] = themeblvd_get_option('menu_divider');
+	$options['apply_font'] = themeblvd_get_option('menu_apply_font');
+	$options['font'] = themeblvd_get_option('font_menu');
 	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
 	$options['sub_bg_color_brightness'] = themeblvd_get_option('menu_sub_bg_color_brightness');
 
@@ -1811,12 +1811,12 @@ function jumpstart_ex_css() {
 		$options['hover_bg_color_brightness'] = themeblvd_get_option('menu_hover_bg_color_brightness');
 
 		$options['text_shadow'] = themeblvd_get_option('menu_text_shadow');
-		$options['apply_font'] = themeblvd_get_option('menu_apply_font');
-		$options['font'] = themeblvd_get_option('font_menu');
 
 		$options['apply_border'] = themeblvd_get_option('menu_apply_border');
 		$options['border_color'] = themeblvd_get_option('menu_border_color');
 		$options['border_width'] = themeblvd_get_option('menu_border_width');
+
+		$options['divider'] = themeblvd_get_option('menu_divider');
 
 		$print .= ".header-nav {\n";
 
@@ -1932,7 +1932,110 @@ function jumpstart_ex_css() {
 
 		$print .= "}\n";
 
+		// Button dividers
+		if ( $options['divider'] ) {
+
+			if ( isset( $options['bg_color_brightness'] ) && $options['bg_color_brightness'] == 'light' ) {
+				$dark = 'rgba(165,165,165,.2)';
+				$light = 'rgba(255,255,255,.7)';
+			} else {
+				$dark = 'rgba(0,0,0,.3)';
+				$light = 'rgba(255,255,255,.1)';
+			}
+
+			if ( is_rtl() ) {
+
+				$print .= ".header-nav .tb-primary-menu > li {\n";
+				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
+				$print .= "}\n";
+
+				if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+					$print .= ".header-nav .tb-primary-menu > li.menu-search {\n";
+					$print .= "\tborder-left: none;\n";
+					$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
+					$print .= "}\n";
+				}
+
+				if ( themeblvd_get_option('menu_center') ) {
+					$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
+					$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
+					$print .= "}\n";
+				}
+
+			} else {
+
+				$print .= ".header-nav .tb-primary-menu > li {\n";
+				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
+				$print .= "}\n";
+
+				if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+					$print .= ".header-nav .tb-primary-menu > li.menu-search {\n";
+					$print .= "\tborder-right: none;\n";
+					$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
+					$print .= "}\n";
+				}
+
+				if ( themeblvd_get_option('menu_center') ) {
+					$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
+					$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
+					$print .= "}\n";
+				}
+			}
+
+			$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+			$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
+			$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
+			$print .= "}\n";
+
+			if ( themeblvd_get_option('menu_search') ) {
+
+				$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger {\n";
+
+				if ( is_rtl() ) {
+					$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
+				} else {
+					$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
+				}
+
+				$print .= "}\n";
+			}
+
+			$print .= ".header-nav .tb-primary-menu > li:first-child > .menu-btn {\n";
+			$print .= "\tborder: none;\n";
+			$print .= "}\n";
+
+			if ( themeblvd_get_option('menu_search') ) {
+				$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger:hover,\n";
+			}
+
+			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
+			$print .= "\tborder-color: transparent;\n";
+			$print .= "}\n";
+
+			$print .= ".header-nav .tb-primary-menu > li > ul.non-mega-sub-menu {\n";
+			$print .= "\tmargin-left: -1px;\n";
+			$print .= "}\n";
+
+		}
+
 	} // end IF suck_up
+
+	// Primary nav custom font size/family for suck_up
+	if ( themeblvd_config('suck_up') && $options['apply_font'] ) {
+
+		if ( themeblvd_get_option('menu_search') ) {
+			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger,\n";
+		}
+
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
+		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
+
+		$print .= "}\n";
+	}
 
 	// Primary nav border radius
 	if ( $options['corners'] && $options['corners'] != '0px' ) {
@@ -1943,7 +2046,7 @@ function jumpstart_ex_css() {
 		$print .= sprintf("\tborder-radius: %s;\n", $options['corners']);
 		$print .= "}\n";
 
-		if ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') == '0px' ) {
+		if ( ! themeblvd_config('suck_up') && (themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') == '0px') ) {
 			$print .= ".header-nav {\n";
 			$print .= "\t-webkit-border-bottom-right-radius: 0;\n";
 			$print .= "\t-webkit-border-bottom-left-radius: 0;\n";
@@ -1976,7 +2079,7 @@ function jumpstart_ex_css() {
 		$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $start, $fix);
 		$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $start, $fix);
 
-		if ( ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
+		if ( themeblvd_config('suck_up') || ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
 			$print .= sprintf("\t-webkit-border-bottom-%s-radius: %spx;\n", $start, $fix);
 			$print .= sprintf("\tborder-bottom-%s-radius: %spx;\n", $start, $fix);
 		}
@@ -1989,99 +2092,13 @@ function jumpstart_ex_css() {
 			$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $end, $fix);
 			$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $end, $fix);
 
-			if ( ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
+			if ( themeblvd_config('suck_up') || ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
 				$print .= sprintf("\t-webkit-border-bottom-%s-radius: %spx;\n", $end, $fix);
 				$print .= sprintf("\tborder-bottom-%s-radius: %spx;\n", $end, $fix);
 			}
 
 			$print .= "}\n";
 		}
-
-	}
-
-	// Primary nav button dividers
-	if ( $options['divider'] ) {
-
-		if ( isset( $options['bg_color_brightness'] ) && $options['bg_color_brightness'] == 'light' ) {
-			$dark = 'rgba(165,165,165,.2)';
-			$light = 'rgba(255,255,255,.7)';
-		} else {
-			$dark = 'rgba(0,0,0,.3)';
-			$light = 'rgba(255,255,255,.1)';
-		}
-
-		if ( is_rtl() ) {
-
-			$print .= ".header-nav .tb-primary-menu > li {\n";
-			$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
-			$print .= "}\n";
-
-			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
-				$print .= ".header-nav .tb-primary-menu > li.menu-search {\n";
-				$print .= "\tborder-left: none;\n";
-				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-			}
-
-			if ( themeblvd_get_option('menu_center') ) {
-				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
-				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-			}
-
-		} else {
-
-			$print .= ".header-nav .tb-primary-menu > li {\n";
-			$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
-			$print .= "}\n";
-
-			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
-				$print .= ".header-nav .tb-primary-menu > li.menu-search {\n";
-				$print .= "\tborder-right: none;\n";
-				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-			}
-
-			if ( themeblvd_get_option('menu_center') ) {
-				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
-				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-			}
-		}
-
-		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
-		$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
-		$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
-		$print .= "}\n";
-
-		if ( themeblvd_get_option('menu_search') ) {
-
-			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger {\n";
-
-			if ( is_rtl() ) {
-				$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
-			} else {
-				$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
-			}
-
-			$print .= "}\n";
-		}
-
-		$print .= ".header-nav .tb-primary-menu > li:first-child > .menu-btn {\n";
-		$print .= "\tborder: none;\n";
-		$print .= "}\n";
-
-		if ( themeblvd_get_option('menu_search') ) {
-			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger:hover,\n";
-		}
-
-		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
-		$print .= "\tborder-color: transparent;\n";
-		$print .= "}\n";
-
-		$print .= ".header-nav .tb-primary-menu > li > ul.non-mega-sub-menu {\n";
-		$print .= "\tmargin-left: -1px;\n";
-		$print .= "}\n";
 
 	}
 
@@ -2184,7 +2201,7 @@ function jumpstart_ex_css() {
 	}
 
 }
-add_action( 'wp_enqueue_scripts', 'jumpstart_ex_css', 25 );
+add_action( 'wp_enqueue_scripts', 'jumpstart_ex_css', 25);
 
 /**
  * Add CSS classes and parralax data() to header
@@ -2233,21 +2250,57 @@ function jumpstart_ex_footer_class( $class ) {
 add_filter('themeblvd_footer_class', 'jumpstart_ex_footer_class');
 
 /**
- * Height of the header. Used with "suck up" feature.
+ * Height of the header, not including the logo.
+ * Used with "suck up" feature.
  *
  * @since 2.0.0
  */
-function jumpstart_ex_top_height_addend( $addend ) {
+function jumpstart_ex_top_height_addend( $addend, $context ) {
 
-	$addend = 158;
+	$addend = 0;
 
-	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
-		$addend = 90; /* logo height gets added to this */
+	// Header top bar
+	if ( themeblvd_get_option('header_info') == 'header_top' && themeblvd_has_header_info() ) {
+		$addend += 48;
 	}
 
+	// Header top padding
+	if ( themeblvd_get_option('header_apply_padding_top') ) {
+		$addend += intval(themeblvd_get_option('header_padding_top'));
+	} else {
+		$addend += 20;
+	}
+
+	// Space between logo and menu
+	$addend += 20;
+
+	if ( $context == 'desktop' ) {
+
+		// Main menu default top padding
+		$addend += 18;
+
+		// Main menu font size
+		if ( themeblvd_get_option('menu_apply_font') ) {
+
+			$font = themeblvd_get_option('font_menu');
+			$addend += intval($font['size']);
+
+		} else {
+			$addend += 14; // Default menu font size
+		}
+
+		// Main menu default bottom padding
+		$addend += 18;
+
+	}
+
+	// Header's bottom padding fixed at 0 for suck_up
+	// $addend += 0;
+
 	return $addend;
+
 }
-add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend');
+add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend', 10, 2);
 
 /**
  * Add any outputted HTML needed for header styling

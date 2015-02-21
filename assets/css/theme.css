@@ -334,7 +334,7 @@
 	background-color: rgba(0,0,0,.4);
 }
 .site-header.transparent .btn-navbar {
-	background-color: transparent;
+	background-color: rgba(0,0,0,.2);
 }
 .site-header.transparent .btn-navbar:hover {
 	background-color: rgba(0,0,0,.4);

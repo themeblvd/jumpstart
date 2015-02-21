@@ -1116,7 +1116,7 @@ function jumpstart_ent_top_height() {
 	$height = intval(themeblvd_get_option('header_height'));
 
 	if ( themeblvd_get_option('header_text') ) {
-		$height = $height+49;
+		$height += 49; // standard 48px + 1px bottom border
 	}
 
 	return $height;

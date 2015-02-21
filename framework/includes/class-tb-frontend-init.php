@@ -223,6 +223,7 @@ class Theme_Blvd_Frontend_Init {
 			'sidebars'					=> array(), 	// Array of sidbar ID's for all corresponding locations
 			'sticky'					=> false,		// Whether to include sticky header
 			'suck_up'					=> false,		// Whether to suck content up into transparent header
+			'logo_height'				=> 0,			// Height of logo
 			'top_height'				=> 0,			// If using suck up, figure out the height of the header
 			'top_height_tablet'			=> 0,			// If using suck up, figure out the height of the header
 			'top'						=> true,		// Whether to show entire #top section (header)
@@ -495,28 +496,47 @@ class Theme_Blvd_Frontend_Init {
 
 		$header = get_post_meta( $this->config['id'], '_tb_layout_header', true );
 
+		// Logo height
+		$logo = themeblvd_get_option('trans_logo');
+		$logo_height = 65;
+
+		if ( $logo && $logo['type'] == 'image' && ! empty( $logo['image_height'] ) ) {
+			$logo_height = intval($logo['image_height']);
+		}
+
+		$this->config['logo_height'] = $logo_height;
+
 		if ( $header == 'suck_up' && themeblvd_supports('display', 'suck_up') ) {
 
 			$this->config['suck_up'] = true;
 
+			// Desktop
+
 			// The theme's base height for the header before the
 			// user's logo height is dynamically added
-			$addend = 92;
+			$addend = 90; // 20px (above logo) + 20px (below logo) + 50px (menu)
 
 			if ( themeblvd_has_header_info() ) {
 				$addend += 48;
 			}
 
-			$addend = apply_filters('themeblvd_top_height_addend', $addend);
+			$addend = apply_filters('themeblvd_top_height_addend', $addend, 'desktop');
 
-			$logo = themeblvd_get_option('trans_logo');
-			$logo_height = 65;
+			$this->config['top_height'] = apply_filters('themeblvd_top_height', $addend+$logo_height, 'desktop');
 
-			if ( $logo && $logo['type'] == 'image' && ! empty( $logo['image_height'] ) ) {
-				$logo_height = intval($logo['image_height']);
+			// Tablet
+
+			// The theme's base height for the header before the
+			// user's logo height is dynamically added
+			$addend = 40; // 20px (above logo) + 20px (below logo)
+
+			if ( themeblvd_has_header_info() ) {
+				$addend += 48;
 			}
 
-			$this->config['top_height'] = apply_filters('themeblvd_top_height', $addend+$logo_height);
+			$addend = apply_filters('themeblvd_top_height_addend', $addend, 'tablet');
+
+			$this->config['top_height_tablet'] = apply_filters('themeblvd_top_height', $addend+$logo_height, 'tablet');
 
 		} else if ( $header == 'hide' && themeblvd_supports('display', 'hide_top') ) {
 			$this->config['top'] = false;

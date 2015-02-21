@@ -119,6 +119,11 @@ Author URI: http://www.themeblvd.com
 	border-color: rgba(0,0,0,.2);
 }
 
+/* Transparent Header */
+.site-header.transparent .tb-primary-menu .menu-search .search-trigger:hover {
+	background-color: rgba(0,0,0,.4);
+}
+
 /* =Main Menu
 -----------------------------------------------*/
 
