@@ -46,8 +46,10 @@ class Theme_Blvd_Compat_WPML {
 		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 );
 		add_filter( 'themeblvd_framework_stylesheets', array($this, 'add_style') );
 
-		remove_filter( 'wp_nav_menu_items', array($icl_language_switcher, 'wp_nav_menu_items_filter') );
-		add_filter( 'wp_nav_menu_items', array($this, 'menu_switcher'), 10, 2);
+		if ( has_filter('wp_nav_menu_items', array($icl_language_switcher, 'wp_nav_menu_items_filter') ) ) {
+			remove_filter( 'wp_nav_menu_items', array($icl_language_switcher, 'wp_nav_menu_items_filter') );
+			add_filter( 'wp_nav_menu_items', array($this, 'menu_switcher'), 10, 2);
+		}
 
 		if ( apply_filters('themeblvd_wpml_has_switcher', true) ) {
 			add_action( 'icl_language_switcher_options', array($this, 'switcher_options') );
