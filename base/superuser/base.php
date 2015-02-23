@@ -866,7 +866,7 @@ function jumpstart_su_options() {
 				'id'		=> 'footer_bg_type',
 				'name'		=> __('Apply Footer Background', 'themeblvd'),
 				'desc'		=> __('Select if you\'d like to apply a custom background color to the footer.<br><br>Note: To setup a more complex designed footer, go to <em>Layout > Footer</em> and use the "Template Sync" feature.', 'themeblvd'),
-				'std'		=> 'none',
+				'std'		=> 'color',
 				'type'		=> 'select',
 				'options'	=> array(
 					'none'		=> __('None', 'themeblvd'),
@@ -1039,14 +1039,14 @@ function jumpstart_su_options() {
 				'id' 		=> 'footer_link_color',
 				'name' 		=> __( 'Footer Link Color', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer.', 'themeblvd' ),
-				'std' 		=> '#428bca',
+				'std' 		=> '#ffffff',
 				'type' 		=> 'color'
 			),
 			'footer_link_hover_color' => array(
 				'id' 		=> 'footer_link_hover_color',
 				'name' 		=> __( 'Footer Link Hover Color', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer when they are hovered over.', 'themeblvd' ),
-				'std' 		=> '#2a6496',
+				'std' 		=> '#ffffff',
 				'type' 		=> 'color'
 			)
 		),
