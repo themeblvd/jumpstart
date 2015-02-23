@@ -40,6 +40,7 @@ Jump Start Changelog
 * Improvements to Icon Box element.
 * Improvements to WPML language switcher, using WPML's various options and using on mobile.
 * Simplified header padding options for Super User theme base to desktop only.
+* Increased bottom margin on page titles.
 * Fixed: Image cropping with tb_x_large, tb_large, and tb_medium sizes.
 * Fixed: Post Showcase (no masonry) not displaying right with excerpts.
 * Fixed: Breadcrumbs, when bbPress is installed, was taking over breadcrumbs all over the website.

@@ -479,7 +479,7 @@ article.page {
 
 /* Titles */
 .entry-title {
-	margin: 0 0 10px 0;
+	margin-top: 0;
 }
 .entry-title-with-meta {
 	margin: 0;
