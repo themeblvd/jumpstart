@@ -456,30 +456,43 @@ jQuery(document).ready(function($) {
 	// Since our gallery integration is specifically designed
 	// to work with Magnific Popup, if it isn't included,
 	// we'll halt it all together.
-	if ( themeblvd.magnific_popup == 'true' ) {
-
-		$('.gallery').append('<div class="clear"></div>');
+	if ( themeblvd.gallery == 'true' ) {
 
 		$('.gallery').each(function(){
 
 			var gallery = $(this);
 
-			gallery.addClass('themeblvd-gallery');
+			gallery.addClass('themeblvd-gallery clearfix');
 
 			gallery.find('.gallery-item a').each(function(){
 
-				// Add bootstrap thumbnail class
-				$(this).find('img').addClass('thumbnail');
-
 				// Account for any parameters being added to
 				// URL, like with W3 Total Cache, for example.
-				var url = this.href.split('?');
-					url = url[0];
+				var url = this.href.split('?'),
+					url = url[0],
+					css_class = 'tb-thumb-link';
+
+				// Add bootstrap thumbnail class
+				if ( themeblvd.gallery_thumb_frame == 'true' ) {
+					css_class += ' thumbnail';
+				}
 
 				// Append lightbox and hover effect if thumb links to an image
 				if ( url.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i ) ) {
-				   	$(this).addClass('lightbox-gallery-item mfp-image image-button');
+
+					css_class += ' image';
+
+					if ( themeblvd.magnific_popup == 'true' ) {
+						css_class += ' lightbox-gallery-item mfp-image image-button';
+					}
+
+				} else {
+
+					css_class += ' post';
+
 				}
+
+				$(this).addClass(css_class);
 
 			});
 
@@ -568,34 +581,6 @@ jQuery(document).ready(function($) {
 				tError: themeblvd.lightbox_error
 			}
 		});
-
-	}
-
-	// Animations on lightbox thumbnails.
-	if ( themeblvd.thumb_animations == 'true' && window_width >= 768 ) {
-
-		$('.image-button').prepend('<span class="enlarge"></span>');
-
-		$('.image-button').hover(
-			function () {
-				var el = $(this);
-				el.find('.enlarge').stop(true, true).animate({
-					opacity: 1
-				}, 100 );
-				el.find('img').stop(true, true).animate({
-					opacity: 0.6
-				}, 100 );
-			},
-			function () {
-				var el = $(this);
-				el.find('.enlarge').stop(true, true).animate({
-					opacity: 0
-				}, 100 );
-				el.find('img').stop(true, true).animate({
-					opacity: 1
-				}, 100 );
-			}
-		);
 
 	}
 

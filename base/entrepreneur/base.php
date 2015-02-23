@@ -1126,6 +1126,7 @@ function jumpstart_ent_featured_thumb_frame() {
 	return false;
 }
 add_filter('themeblvd_featured_thumb_frame', 'jumpstart_ent_featured_thumb_frame');
+add_filter('themeblvd_gallery_thumb_frame', 'jumpstart_ent_featured_thumb_frame');
 
 /**
  * Body class

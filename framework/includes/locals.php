@@ -144,7 +144,6 @@ function themeblvd_get_js_locals() {
 	// Start $locals array with any miscellaneous stuff
 	$locals = array (
 		'scroll_to_top'				=> 'true',
-		'thumb_animations'			=> 'true',
 		'retina_logo'				=> 'true',
 		'custom_buttons'			=> 'true',
 		'mobile_menu_viewport_max'	=> '767'
@@ -195,6 +194,18 @@ function themeblvd_get_js_locals() {
 		$locals['lightbox_next'] = themeblvd_get_local('next');
 		$locals['lightbox_previous'] = themeblvd_get_local('previous');
 
+	}
+
+	// Gallery integration
+	if ( themeblvd_supports( 'display', 'gallery' ) ) {
+
+		$locals['gallery'] = 'true';
+
+		if ( apply_filters('themeblvd_gallery_thumb_frame', false) ) {
+			$locals['gallery_thumb_frame'] = 'true';
+		} else {
+			$locals['gallery_thumb_frame'] = 'false';
+		}
 	}
 
 	// Superfish for drop down menus

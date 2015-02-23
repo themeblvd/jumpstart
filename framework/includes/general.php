@@ -194,7 +194,8 @@ function themeblvd_setup() {
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
 			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
 			'footer_sync'		=> true,			// Whether theme suppors syncing footer with template
-			'suck_up'			=> true				// Whether theme supports sucking custom layout content up into header
+			'suck_up'			=> true,			// Whether theme supports sucking custom layout content up into header
+			'gallery'			=> true				// Integration of thumbnail classes and lightbox to WP [gallery]
 		),
 		'assets' => array(
 			'primary_js'		=> true,			// Primary "themeblvd" script
