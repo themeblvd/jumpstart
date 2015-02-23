@@ -23,6 +23,7 @@ Jump Start Changelog
 * Added option to center main menu buttons in Super User and Executive theme bases.
 * Added option to insert search popup into main menu for Super User and Executive theme bases.
 * Added color selection to custom font option of Entrepreneur theme base.
+* Added border option for content areas of all theme bases, when using the stretch layout.
 * Improvements, structural changes, and option changes to header of Executive theme base.
 * Allow header in Entrepreneur theme base to be configured with no background color.
 * Mobile menu toggle button will now match menu highlight color on Entrepreneur base.
