@@ -7366,7 +7366,21 @@ blockquote small {
     margin-left: 0;
 }
 .tweeple-feed li.tweet {
-    margin-bottom: 10px;
+	margin-bottom: 15px;
+	padding-left: 35px;
+	position: relative;
+}
+.tweeple-feed li.tweet:before {
+	content: "\f099";
+	font-family: "FontAwesome";
+	font-size: 20px;
+	line-height: 1em;
+	position: absolute;
+	top: 5px;
+	left: 0;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .tweeple-feed .tweet-time a {
     color: #888888;
