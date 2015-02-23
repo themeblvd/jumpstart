@@ -40,8 +40,8 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 */
 	public function __construct() {
 
-		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 );
-		add_filter( 'themeblvd_framework_stylesheets', array($this, 'add_style') );
+		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 ); // Gravity Forms is at priority 11
+		add_filter( 'body_class', array($this, 'body_class') );
 
 		add_filter( 'gform_validation_message', array($this, 'error') );
 		add_filter( 'gform_confirmation', array($this, 'confirm') );
@@ -62,16 +62,19 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	}
 
 	/**
-	 * Add our stylesheet to framework $deps. This will make
-	 * sure our wpml.css file comes between framework
-	 * styles and child theme's style.css
+	 * Add "tb-gforms-compat" class to <body>
+	 *
+	 * It's unpredicatable where Gravity Forms is going to output
+	 * the CSS files, as they do it dynamically depending on if a form
+	 * exists on the page, and then inserts to the wp_footer().
+	 * This body class allows us to style everything one more class
+	 * specifically to make sure we always override.
 	 *
 	 * @since 2.5.0
 	 */
-	public function add_style( $deps ) {
-		$deps[] = 'gforms_formsmain_css';
-		$deps[] = 'gforms_ready_class_css';
-		return $deps;
+	public function body_class( $class ) {
+		$class[] = 'tb-gforms-compat';
+		return $class;
 	}
 
 	/**
