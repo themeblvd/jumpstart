@@ -834,25 +834,49 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		$style = "\n<style>\n";
 
 		$style .= sprintf( "#%s .image {\n", $args['id'] );
-		$style .= sprintf( "background-position: %s;\n", $args['position'] );
-		$style .= sprintf( "height: %spx;\n", $args['height_desktop'] );
+		$style .= sprintf( "\tbackground-position: %s;\n", $args['position'] );
+		$style .= sprintf( "\theight: %spx;\n", $args['height_desktop'] );
 		$style .= "}\n";
 
 		$style .= "@media (max-width: 992px) {\n";
-		$style .= sprintf( "#%s .image {\n", $args['id'] );
-		$style .= sprintf( "height: %spx;\n", $args['height_tablet'] );
-		$style .= "}\n";
+		$style .= sprintf( "\t#%s .image {\n", $args['id'] );
+		$style .= sprintf( "\t\theight: %spx;\n", $args['height_tablet'] );
+		$style .= "\t}\n";
 		$style .= "}\n";
 
 		$style .= "@media (max-width: 767px) {\n";
-		$style .= sprintf( "#%s .image {\n", $args['id'] );
-		$style .= sprintf( "height: %spx;\n", $args['height_mobile'] );
+		$style .= sprintf( "\t#%s .image {\n", $args['id'] );
+		$style .= sprintf( "\t\theight: %spx;\n", $args['height_mobile'] );
+		$style .= "\t}\n";
 		$style .= "}\n";
-		$style .= "}\n";
+
+		// Pre-load BG images
+		if ( count( $images ) > 1 ) {
+
+			$style .= "body:after {\n";
+			$style .= "\tdisplay: none;\n";
+
+			$load = '';
+
+			foreach ( $images as $img ) {
+
+				$img_src = $img['src'];
+
+				if ( is_ssl() ) {
+					$img_src = str_replace('http://', 'https://', $img_src);
+				}
+
+				$load .= sprintf("url(%s) ", $img_src);
+
+			}
+
+			$style .= sprintf("\tcontent: %s;\n", trim($load));
+			$style .= "}\n";
+		}
 
 		$style .= "</style>\n";
 
-		$output .= apply_filters( 'themeblvd_simple_slider_cover_style', $style, $args );
+		$output .= apply_filters( 'themeblvd_simple_slider_cover_style', $style, $args, $images );
 
 	}
 
@@ -1397,10 +1421,6 @@ function themeblvd_get_banner( $args = array() ) {
 
 	$style = themeblvd_get_display_inline_style($args);
 
-	if ( themeblvd_config('suck_up') && themeblvd_config('top_height') ) {
-		$style .= sprintf( 'padding-top: %spx;', themeblvd_config('top_height') );
-	}
-
 	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s" data-parallax="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style, themeblvd_get_parallax_intensity($args) );
 	$output .= '<div class="wrap">';
 
@@ -1452,55 +1472,63 @@ function themeblvd_banner( $args = array() ) {
  */
 function themeblvd_banner_styles() {
 
-	$print = '';
+	$args = themeblvd_config();
 
 	if ( $args = themeblvd_config('banner') ) {
 
-		if ( ! empty($args['height']) ) {
+		$print = "/* Page Banner */\n";
 
-			$print .= "/* Page Banner (custom height) */\n";
+		// Mobile
+		if ( ! empty($args['height']) && ! empty($args['height_mobile']) ) {
 
-			if ( ! empty($args['height_desktop']) ) {
+			$args['height_mobile'] = str_replace('px', '', $args['height_mobile']); // double check formatting
 
-				$args['height_desktop'] = str_replace('px', '', $args['height_desktop']); // double check formatting
-
-				$print .= ".tb-featured-banner > .wrap {\n";
-				$print .= sprintf("\tmin-height: %spx;\n", $args['height_desktop']);
-				$print .= "}\n";
-
-			}
-
-			if ( ! empty($args['height_tablet']) ) {
-
-				$args['height_tablet'] = str_replace('px', '', $args['height_tablet']); // double check formatting
-
-				$print .= "@media (max-width: 992px) {\n";
-				$print .= "\t.tb-featured-banner > .wrap {\n";
-				$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_tablet']);
-				$print .= "\t}\n";
-				$print .= "}\n";
-
-			}
-
-			if ( ! empty($args['height_mobile']) ) {
-
-				$args['height_mobile'] = str_replace('px', '', $args['height_mobile']); // double check formatting
-
-				$print .= "@media (max-width: 767px) {\n";
-				$print .= "\t.tb-featured-banner > .wrap {\n";
-				$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_mobile']);
-				$print .= "\t}\n";
-				$print .= "}\n";
-
-			}
+			$print .= ".tb-featured-banner > .wrap {\n";
+			$print .= sprintf("\tmin-height: %spx;\n", $args['height_mobile']);
+			$print .= "}\n";
 
 		}
 
-	}
+		// Tablet
+		$print .= "@media (min-width: 768px) {\n";
 
-	// Print after style.css
-	if ( $print ) {
+		$print .= "\t.tb-featured-banner {\n";
+		$print .= sprintf("\t\tpadding-top: %spx;\n", themeblvd_config('top_height_tablet'));
+		$print .= "\t}\n";
+
+		if ( ! empty($args['height']) && ! empty($args['height_tablet']) ) {
+
+			$args['height_tablet'] = str_replace('px', '', $args['height_tablet']); // double check formatting
+
+			$print .= "\t.tb-featured-banner > .wrap {\n";
+			$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_tablet']);
+			$print .= "\t}\n";
+
+		}
+
+		$print .= "}\n";
+
+		// Desktop
+		$print .= "@media (min-width: 993px) {\n";
+
+		$print .= "\t.tb-featured-banner {\n";
+		$print .= sprintf("\t\tpadding-top: %spx;\n", themeblvd_config('top_height'));
+		$print .= "\t}\n";
+
+		if ( ! empty($args['height']) && ! empty($args['height_desktop']) ) {
+
+			$args['height_desktop'] = str_replace('px', '', $args['height_desktop']); // double check formatting
+
+			$print .= "\t.tb-featured-banner > .wrap {\n";
+			$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_desktop']);
+			$print .= "\t}\n";
+		}
+
+		$print .= "}\n";
+
+		// Print after style.css
 		wp_add_inline_style( 'themeblvd-theme', apply_filters('themeblvd_banner_css_output', $print, $args) );
+
 	}
 
 }
