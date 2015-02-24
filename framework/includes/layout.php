@@ -331,6 +331,11 @@ function themeblvd_element( $args ) {
 			themeblvd_image( $args['options']['image'], $args['options'] );
 			break;
 
+		// Revolution Slider (requires Revolution Sliders plugin)
+		case 'revslider' :
+			themeblvd_content( sprintf('[rev_slider %s]', $args['options']['id']) );
+			break;
+
 		// Slider (Custom, requires Theme Blvd Sliders plugin)
 		case 'slider' :
 			themeblvd_slider( $args['options']['slider_id'] );
