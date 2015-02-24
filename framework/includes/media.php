@@ -1325,7 +1325,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 				'item' 		=> $output,
 				'link' 		=> $link,
 				'title' 	=> $img_atts['title'],
-				'props'		=> array('style', sprintf('max-width: %spx;', $args['width'])),
+				'props'		=> array('style' => sprintf('max-width: %spx;', $args['width'])),
 				'class' 	=> $anchor_classes
 			);
 			$output = themeblvd_get_link_to_lightbox( $args );
