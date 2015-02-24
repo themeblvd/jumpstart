@@ -2439,6 +2439,7 @@ function jumpstart_ex_header_addon() {
 	}
 
 	$header_text = themeblvd_get_option('header_text');
+	$icons = themeblvd_get_option('social_media');
 
 	$class = 'header-addon';
 
@@ -2448,33 +2449,39 @@ function jumpstart_ex_header_addon() {
 
 	printf('<div class="%s">', $class);
 
-	echo '<ul class="header-top-nav list-unstyled">';
+	if ( themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) ) {
 
-	// Search form popup
-	if ( themeblvd_get_option('searchform') == 'show' ) {
-		printf('<li class="top-search">%s</li>', themeblvd_get_search_popup());
+		echo '<ul class="header-top-nav list-unstyled">';
+
+		// Search form popup
+		if ( themeblvd_get_option('searchform') == 'show' ) {
+			printf('<li class="top-search">%s</li>', themeblvd_get_search_popup());
+		}
+
+		// Floating shopping cart
+		if ( themeblvd_do_cart() ) {
+			printf('<li class="top-cart">%s</li>', themeblvd_get_cart_popup());
+		}
+
+		// Contact icons. Note: We're not using themeblvd_get_contact_bar()
+		// to account for the "suck up" header and outputting extra
+		// contact icon set.
+		if ( $icons ) {
+			echo '<li class="top-icons">';
+			themeblvd_contact_bar( $icons, array('class' => 'to-mobile') );
+			echo '</li>';
+		}
+
+		// WPML switcher
+		if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
+			echo '<li class="top-wpml">';
+			do_action('icl_language_selector');
+			echo '</li>';
+		}
+
+		echo '</ul>';
+
 	}
-
-	// Floating shopping cart
-	if ( themeblvd_do_cart() ) {
-		printf('<li class="top-cart">%s</li>', themeblvd_get_cart_popup());
-	}
-
-	// Contact icons. Note: We're not using themeblvd_get_contact_bar()
-	// to account for the "suck up" header and outputting extra
-	// contact icon set.
-	echo '<li class="top-icons">';
-	themeblvd_contact_bar( themeblvd_get_option('social_media'), array('class' => 'to-mobile') );
-	echo '</li>';
-
-	// WPML switcher
-	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
-		echo '<li class="top-wpml">';
-		do_action('icl_language_selector');
-		echo '</li>';
-	}
-
-	echo '</ul>';
 
 	// Header text
 	themeblvd_header_text();
