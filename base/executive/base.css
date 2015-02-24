@@ -49,7 +49,7 @@ Author URI: http://www.themeblvd.com
 
 /* Header Logo */
 @media (min-width: 993px) {
-	.js-center-logo .header-logo {
+	.js-center-logo .header-content .header-logo {
 		float: none;
 		text-align: center;
 	}
