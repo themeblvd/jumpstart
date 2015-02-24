@@ -811,12 +811,30 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide'
+			),
 			'menu_divider' => array(
 				'id'		=> 'menu_divider',
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Dividers', 'themeblvd').'</strong>: '.__('Add dividers between buttons of main menu.', 'themeblvd'),
 				'std'		=> 0,
-				'type'		=> 'checkbox'
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'menu_divider_color' => array(
+				'id'		=> 'menu_divider_color',
+				'name'		=> __('Divider Color', 'themeblvd'),
+				'desc'		=> __('Select a color for the menu dividers.', 'themeblvd'),
+				'std'		=> '#000000',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver'
+			),
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
+				'type' 		=> 'subgroup_end'
 			),
 			'menu_center' => array(
 				'id'		=> 'menu_center',
@@ -825,8 +843,8 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_17' => array(
-				'id'		=> 'sub_group_start_17',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -848,8 +866,8 @@ function jumpstart_su_options() {
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_17' => array(
-				'id'		=> 'sub_group_end_17',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end',
 			),
 			'menu_search' => array(
@@ -895,8 +913,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -961,12 +979,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -999,12 +1017,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_20' => array(
-				'id'		=> 'sub_group_start_20',
+			'sub_group_start_21' => array(
+				'id'		=> 'sub_group_start_21',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1037,8 +1055,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_20' => array(
-				'id'		=> 'sub_group_end_20',
+			'sub_group_end_21' => array(
+				'id'		=> 'sub_group_end_21',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1145,8 +1163,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'widgets' => array(
-			'sub_group_start_21' => array(
-				'id'		=> 'sub_group_start_21',
+			'sub_group_start_22' => array(
+				'id'		=> 'sub_group_start_22',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1162,8 +1180,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'trigger'
 			),
-			'sub_group_start_22' => array(
-				'id'		=> 'sub_group_start_22',
+			'sub_group_start_23' => array(
+				'id'		=> 'sub_group_start_23',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
 			),
@@ -1200,8 +1218,8 @@ function jumpstart_su_options() {
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-custom'
 			),
-			'sub_group_end_22' => array(
-				'id'		=> 'sub_group_end_22',
+			'sub_group_end_23' => array(
+				'id'		=> 'sub_group_end_23',
 				'type' 		=> 'subgroup_end'
 			),
 			'widget_bg_color' => array(
@@ -1265,8 +1283,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
-			'sub_group_start_23' => array(
-				'id'		=> 'sub_group_start_23',
+			'sub_group_start_24' => array(
+				'id'		=> 'sub_group_start_24',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-standard'
 			),
@@ -1299,12 +1317,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_23' => array(
-				'id'		=> 'sub_group_end_23',
+			'sub_group_end_24' => array(
+				'id'		=> 'sub_group_end_24',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_21' => array(
-				'id'		=> 'sub_group_end_21',
+			'sub_group_end_22' => array(
+				'id'		=> 'sub_group_end_22',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1917,6 +1935,7 @@ function jumpstart_su_css() {
 		$options['border_bottom_width'] = themeblvd_get_option('menu_border_bottom_width');
 
 		$options['divider'] = themeblvd_get_option('menu_divider');
+		$options['divider_color'] = themeblvd_get_option('menu_divider_color');
 
 		$print .= ".header-nav {\n";
 
@@ -2034,63 +2053,32 @@ function jumpstart_su_css() {
 		// Primary nav button dividers
 		if ( $options['divider'] ) {
 
-			if ( isset( $options['bg_color_brightness'] ) && $options['bg_color_brightness'] == 'light' ) {
-				$dark = 'rgba(165,165,165,.2)';
-				$light = 'rgba(255,255,255,.7)';
-			} else {
-				$dark = 'rgba(0,0,0,.3)';
-				$light = 'rgba(255,255,255,.1)';
-			}
+			$start = 'left';
+			$end = 'right';
 
 			if ( is_rtl() ) {
-
-				$print .= ".header-nav .tb-primary-menu > li {\n";
-				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-
-				if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
-					$print .= ".header-nav .tb-primary-menu .menu-search,\n";
-				}
-
-				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
-				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-
-			} else {
-
-				$print .= ".header-nav .tb-primary-menu > li {\n";
-				$print .= sprintf("\tborder-right: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-
-				if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
-					$print .= ".header-nav .tb-primary-menu .menu-search,\n";
-				}
-
-				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
-				$print .= sprintf("\tborder-left: 1px solid %s;\n", $dark);
-				$print .= "}\n";
-
+				$start = 'right';
+				$end = 'left';
 			}
 
-			if ( themeblvd_get_option('menu_search') ) {
-				$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger,\n";
+			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+				$print .= ".header-nav .tb-primary-menu .menu-search,\n";
 			}
 
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
-			$print .= sprintf("\tborder-right: 1px solid %s;\n", $light);
-			$print .= sprintf("\tborder-left: 1px solid %s;\n", $light);
+			$print .= ".header-nav .tb-primary-menu > li {\n";
+			$print .= sprintf("\tborder-%s: 1px solid %s;\n", $end, $options['divider_color']);
 			$print .= "}\n";
 
-			if ( themeblvd_get_option('menu_search') ) {
-				$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger:hover,\n";
+			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+				$print .= ".header-nav .tb-primary-menu .menu-search,\n";
 			}
 
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
-			$print .= "\tborder-color: transparent;\n";
+			$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
+			$print .= sprintf("\tborder-%s: 1px solid %s;\n", $start, $options['divider_color']);
 			$print .= "}\n";
 
 			$print .= ".header-nav .tb-primary-menu > li > ul.non-mega-sub-menu {\n";
-			$print .= "\tmargin-left: -1px;\n";
+			$print .= sprintf("\tmargin-%s: -1px;\n", $start);
 			$print .= "}\n";
 
 		}
