@@ -16,6 +16,7 @@
  * 2.0 - Common Classes
  *   2.1 - General
  *   2.2 - Images
+ *   2.3 - Icon Lists
  * 3.0 - WP Classes
  * 4.0 - Animation
  * 5.0 - Post Formats
@@ -446,6 +447,12 @@ img.size-full {
 	margin-bottom: 0;
 	margin-top: 0;
 	padding: 0;
+}
+
+/* Icon Lists */
+.fa-li {
+	top: 0;
+	line-height: inherit;
 }
 
 /* =WordPress Standard Classes
