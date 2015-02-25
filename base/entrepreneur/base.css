@@ -180,11 +180,8 @@ Author URI: http://www.themeblvd.com
 	margin-left: 2px; /* a little space for cart item count */
 }
 .header-nav .tb-floater .floater-trigger {
-	color: #808080;
+	color: #555555;
 	padding-top: 37px;
-}
-.header-nav .tb-floater .floater-trigger:hover {
-	color: #333333;
 }
 
 /* Transparent Header */
