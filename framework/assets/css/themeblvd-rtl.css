@@ -107,8 +107,9 @@
  *   19.2 - WP RSS Widget
  *   19.3 - WP Tag Cloud
  *   19.4 - WP Calendar Widget
- *   19.5 - Twitter Widget
- *   19.6 - Simple Contact
+ *   19.5 - WP Recent Posts Widget
+ *   19.6 - Twitter Widget
+ *   19.7 - Simple Contact
  * 20.0 - Lightbox
  *   20.1 - Basic inline popup styling
  *   20.2 - MPF close button
@@ -4411,6 +4412,13 @@ ul.tb-icon-list {
 }
 #wp-calendar #next {
 	text-align: left;
+}
+
+/* WP Recent Posts Widgets */
+.widget_recent_entries .post-date {
+	display: block;
+	font-size: .9em;
+	padding: 5px 0;
 }
 
 /* Twitter Widget */
