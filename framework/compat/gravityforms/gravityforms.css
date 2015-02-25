@@ -101,6 +101,9 @@
 }
 
 /* Errors */
+.tb-gforms-compat .gform_wrapper .top_label .gfield_error {
+    width: 100%;
+}
 .tb-gforms-compat .gform_wrapper li.gfield.gfield_error,
 .tb-gforms-compat .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
     background-color: #f2dede;
