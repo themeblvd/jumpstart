@@ -376,7 +376,10 @@
 ----------------------------------------------- */
 
 .site-footer {
-	padding-top: 20px;
+	padding-top: 50px;
+}
+.footer-content {
+	margin-bottom: 30px;
 }
 .footer-sub-content {
 	font-size: 12px;
