@@ -26,6 +26,7 @@ Jump Start Changelog
 * Added border option for content areas of all theme bases, when using the stretch layout.
 * Added custom color option for main menu dividers in Super User and Executive theme bases.
 * Added support for Revolution Slider in Layout Builder.
+* Added new textures: Circles, Crystal, Hexagons, Polygons, Pyramids, Skulls, Tiles, and Waves
 * Improvements, structural changes, and option changes to header of Executive theme base.
 * Allow header in Entrepreneur theme base to be configured with no background color.
 * Mobile menu toggle button will now match menu highlight color on Entrepreneur base.
