@@ -648,6 +648,26 @@ function jumpstart_ex_options() {
 				'type'		=> 'gradient',
 				'class'		=> 'hide receiver receiver-gradient receiver-gradient_glassy'
 			),
+			'menu_bg_color_opacity' => array(
+				'id'		=> 'menu_bg_color_opacity',
+				'name'		=> __('Background Color Opacity', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the background color(s). Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+					'0.1'	=> '0.1',
+					'0.2'	=> '0.2',
+					'0.3'	=> '0.3',
+					'0.4'	=> '0.4',
+					'0.5'	=> '0.5',
+					'0.6'	=> '0.6',
+					'0.7'	=> '0.7',
+					'0.8'	=> '0.8',
+					'0.9'	=> '0.9',
+					'1'		=> '1.0'
+				),
+				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient'
+			),
 			'menu_bg_color_brightness' => array(
 				'id' 		=> 'menu_bg_color_brightness',
 				'name' 		=> __( 'Background Color Brightness', 'themeblvd' ),
@@ -1900,6 +1920,7 @@ function jumpstart_ex_css() {
 		$options['bg_color'] = themeblvd_get_option('menu_bg_color');
 		$options['bg_gradient'] = themeblvd_get_option('menu_bg_gradient');
 		$options['bg_color_brightness'] = themeblvd_get_option('menu_bg_color_brightness');
+		$options['bg_color_opacity'] = themeblvd_get_option('menu_bg_color_opacity');
 
 		$options['hover_bg_color'] = themeblvd_get_option('menu_hover_bg_color');
 		$options['hover_bg_color_opacity'] = themeblvd_get_option('menu_hover_bg_color_opacity');
@@ -1917,16 +1938,23 @@ function jumpstart_ex_css() {
 		$print .= ".header-nav {\n";
 
 		if ( $options['bg_type'] == 'gradient' ) {
-			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_gradient']['end'] );
-			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
+
+			$start = themeblvd_get_rgb( $options['bg_gradient']['start'], $options['bg_color_opacity'] );
+			$end = themeblvd_get_rgb( $options['bg_gradient']['end'], $options['bg_color_opacity'] );
+
+			$print .= sprintf("\tbackground-color: %s;\n", $end );
+			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $start, $end );
+			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $start, $end );
+
 		} else {
-			$print .= sprintf("\tbackground-color: %s;\n", $options['bg_color']);
+
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb( $options['bg_color'], $options['bg_color_opacity'] ));
+
 		}
 
 		if ( $options['bg_type'] == 'glassy' ) {
