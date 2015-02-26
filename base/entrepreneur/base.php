@@ -1230,7 +1230,12 @@ function jumpstart_ent_css() {
 	$print .= "}\n";
 
 	// Buttons
-	$print .= ".btn {\n";
+	$print .= ".btn,\n";
+	$print .= "input[type=\"submit\"],\n";
+	$print .= "input[type=\"reset\"],\n";
+	$print .= "input[type=\"button\"],\n";
+	$print .= ".button,\n";
+	$print .= "button {\n";
 	$print .= sprintf("\tborder-width: %s;\n", themeblvd_get_option('btn_border'));
 	$print .= sprintf("\t-webkit-border-radius: %s;\n", themeblvd_get_option('btn_corners'));
 	$print .= sprintf("\tborder-radius: %s;\n", themeblvd_get_option('btn_corners'));
