@@ -132,6 +132,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'themeblvd_the_content', 'wpautop' );
 	add_filter( 'themeblvd_the_content', 'shortcode_unautop' );
 	add_filter( 'themeblvd_the_content', 'do_shortcode' );
+	add_filter( 'themeblvd_the_content', 'themeblvd_footer_copyright_helpers' );
 	add_filter( 'themeblvd_sidebar_layout', 'themeblvd_wpmultisite_signup_sidebar_layout' );
 	add_filter( 'the_content_more_link', 'themeblvd_read_more_link', 10, 2 );
 	add_filter( 'use_default_gallery_style', '__return_false' );
@@ -197,7 +198,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
 	add_action( 'themeblvd_after', 'themeblvd_to_top' );
-	add_filter( 'themeblvd_footer_copyright', 'themeblvd_footer_copyright_default' );
 
 	// Content
 	add_action( 'themeblvd_content_top', 'themeblvd_archive_info' );

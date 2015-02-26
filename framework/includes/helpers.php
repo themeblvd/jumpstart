@@ -1402,10 +1402,10 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
  *
  * @return string Text to filter
  */
-function themeblvd_footer_copyright_default( $text ) {
+function themeblvd_footer_copyright_helpers( $text ) {
 	$text = str_replace( '%year%', date('Y'), $text );
 	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
-	return themeblvd_get_content( $text );
+	return $text;
 }
 
 /**

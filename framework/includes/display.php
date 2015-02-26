@@ -519,7 +519,7 @@ function themeblvd_footer_sub_content_default() {
 		<div class="wrap clearfix">
 			<div class="copyright">
 				<div class="copyright-inner">
-					<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_option( 'footer_copyright' ) ); ?>
+					<?php echo apply_filters( 'themeblvd_footer_copyright', themeblvd_get_content( themeblvd_get_option('footer_copyright') ) ); ?>
 				</div>
 			</div><!-- .copyright (end) -->
 			<?php if ( has_nav_menu('footer') ) : ?>
