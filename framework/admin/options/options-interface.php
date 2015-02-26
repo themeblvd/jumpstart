@@ -616,15 +616,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 						$sizes = themeblvd_recognized_font_sizes();
 					}
 
-					$options = array();
-					$options['min'] = intval($sizes[0]);
-					$options['max']	= intval(end($sizes));
-					$options['step'] = intval($sizes[1])-intval($sizes[0]);
-					$options['units'] = 'px';
+					$slide_options = array();
+					$slide_options['min'] = intval($sizes[0]);
+					$slide_options['max']	= intval(end($sizes));
+					$slide_options['step'] = intval($sizes[1])-intval($sizes[0]);
+					$slide_options['units'] = 'px';
 
 					$output .= '<div class="jquery-ui-slider"';
 
-					foreach ( $options as $param_id => $param ) {
+					foreach ( $slide_options as $param_id => $param ) {
 						$output .= sprintf( ' data-%s="%s"', $param_id, $param );
 					}
 
@@ -999,7 +999,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '<div class="jquery-ui-slider-wrap">';
 
-				$options = array(
+				$slide_options = array(
 					'min'	=> '1',
 					'max'	=> '100',
 					'step'	=> '1',
@@ -1007,19 +1007,19 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				);
 
 				if ( isset( $value['options'] ) ) {
-					$options = wp_parse_args( $value['options'], $options );
+					$slide_options = wp_parse_args( $value['options'], $slide_options );
 				}
 
 				$output .= '<div class="jquery-ui-slider"';
 
-				foreach ( $options as $param_id => $param ) {
+				foreach ( $slide_options as $param_id => $param ) {
 					$output .= sprintf( ' data-%s="%s"', $param_id, $param );
 				}
 
 				$output .= '></div>';
 
 				if ( ! $val && $val !== '0' ) { // $val can't be empty or else the UI slider won't work
-					$val = $options['min'].$options['units'];
+					$val = $slide_options['min'].$slide_options['units'];
 				}
 
 				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
