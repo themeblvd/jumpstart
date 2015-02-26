@@ -28,6 +28,7 @@ Jump Start Changelog
 * Added background color opacity option for main menu in Super User and Executive theme bases.
 * Added support for Revolution Slider in Layout Builder.
 * Added new textures: Circles, Crystal, Hexagons, Polygons, Pyramids, Skulls, Tiles, and Waves
+* Added option to shade page banner images with transparent color.
 * Improvements, structural changes, and option changes to header of Executive theme base.
 * Allow header in Entrepreneur theme base to be configured with no background color.
 * Allow copyright helpers `%site_title%` and `%year%` to work with content element of builder (for Footer Template Sync feature).

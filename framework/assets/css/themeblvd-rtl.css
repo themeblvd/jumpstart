@@ -5435,9 +5435,21 @@ blockquote small {
 }
 
 /* Featured Banner */
-.tb-featured-banner > .wrap {
+.tb-featured-banner {
+	position: relative;
+}
+.tb-featured-banner .bg-shade {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+.tb-featured-banner .wrap {
 	min-height: 200px;
 	position: relative;
+	z-index: 2;
 }
 .tb-featured-banner .banner-content {
 	margin-top: -20px;

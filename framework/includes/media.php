@@ -1411,6 +1411,9 @@ function themeblvd_get_banner( $args = array() ) {
 	    'bg_texture_parallax' 		=> '5',
 	    'bg_image' 					=> array(),
 	    'bg_image_parallax' 		=> '2',
+		'apply_bg_shade'			=> '0',
+		'bg_shade_color'			=> '#000000',
+		'bg_shade_opacity'			=> '0.5',
 	    'headline' 					=> 'none',
 	    'headline_custom' 			=> '',
 	    'tagline'					=> '',
@@ -1422,6 +1425,12 @@ function themeblvd_get_banner( $args = array() ) {
 	$style = themeblvd_get_display_inline_style($args);
 
 	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s" data-parallax="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style, themeblvd_get_parallax_intensity($args) );
+
+	// Banner color shade
+	if ( $args['bg_type'] == 'image' && $args['apply_bg_shade'] ) {
+		$output .= sprintf( '<div class="bg-shade" style="background-color: %s; background-color: %s;"></div>', $args['bg_shade_color'], themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
+	}
+
 	$output .= '<div class="wrap">';
 
 	// Banner content

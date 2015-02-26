@@ -319,6 +319,48 @@ function setup_themeblvd_banner_meta() {
 			'subgroup_end_3' => array(
 				'type'		=> 'subgroup_end'
 			),
+			'subgroup_start_4' => array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow'
+			),
+			'apply_bg_shade' => array(
+				'id'		=> 'apply_bg_shade',
+				'name'		=> null,
+				'desc'		=> __('Shade background with transparent color.', 'theme-blvd-layout-builder'),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'bg_shade_color' => array(
+				'id'		=> 'bg_shade_color',
+				'name'		=> __('Shade Color', 'theme-blvd-layout-builder'),
+				'desc'		=> __('Select the color you want overlaid on your background.', 'theme-blvd-layout-builder'),
+				'std'		=> '#000000',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver'
+			),
+			'bg_shade_opacity' => array(
+				'id'		=> 'bg_shade_opacity',
+				'name'		=> __('Shade Opacity', 'theme-blvd-layout-builder'),
+				'desc'		=> __('Select the opacity of the shade color overlaid on your background.', 'theme-blvd-layout-builder'),
+				'std'		=> '0.5',
+				'type'		=> 'select',
+				'options'	=> array(
+					'0.1'	=> '0.1',
+					'0.2'	=> '0.2',
+					'0.3'	=> '0.3',
+					'0.4'	=> '0.4',
+					'0.5'	=> '0.5',
+					'0.6'	=> '0.6',
+					'0.7'	=> '0.7',
+					'0.8'	=> '0.8',
+					'0.9'	=> '0.9'
+				),
+				'class'		=> 'hide receiver'
+			),
+			'subgroup_end_4' => array(
+				'type'		=> 'subgroup_end'
+			),
 			'subgroup_start_5' => array(
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-color receiver-texture receiver-image'
