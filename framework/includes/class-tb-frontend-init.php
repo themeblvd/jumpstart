@@ -152,8 +152,16 @@ class Theme_Blvd_Frontend_Init {
 
 			if ( $q->is_author() ) {
 
-				$user = get_user_by('slug', get_query_var('author_name'));
-				$this->mode = get_user_meta( $user->ID, '_tb_archive_mode', true );
+				if ( get_query_var('author_name') ) {
+					$user = get_user_by('slug', get_query_var('author_name'));
+					$user_id = $user->ID;
+				} else if ( get_query_var('author') ) {
+					$user_id = get_query_var('author');
+				}
+
+				if ( ! empty( $user_id ) ) {
+					$this->mode = get_user_meta( $user_id, '_tb_archive_mode', true );
+				}
 
 			} else if ( $q->is_category() ) {
 
@@ -405,8 +413,17 @@ class Theme_Blvd_Frontend_Init {
 			} else if ( is_tag() ) {
 				$this->config['sidebar_layout'] = themeblvd_get_tax_meta( 'post_tag', get_query_var('tag'), 'sidebar_layout', 'default' );
 			} else if ( is_author() ) {
-				$user = get_user_by('slug', get_query_var('author_name'));
-				$this->config['sidebar_layout']= get_user_meta( $user->ID, '_tb_sidebar_layout', true );
+
+				if ( get_query_var('author_name') ) {
+					$user = get_user_by('slug', get_query_var('author_name'));
+					$user_id = $user->ID;
+				} else if ( get_query_var('author') ) {
+					$user_id = get_query_var('author');
+				}
+
+				if ( ! empty( $user_id ) ) {
+					$this->config['sidebar_layout']= get_user_meta( $user_id, '_tb_sidebar_layout', true );
+				}
 			}
 
 			if ( ! $this->config['sidebar_layout'] || $this->config['sidebar_layout'] == 'default' ) {

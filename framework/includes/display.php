@@ -604,11 +604,19 @@ function themeblvd_archive_info() {
 
 		} else if ( is_author() ) {
 
-			$user = get_user_by( 'slug', get_query_var('author_name') );
-			$setting = get_user_meta( $user->ID, '_tb_box_archive', true );
+			if ( get_query_var('author_name') ) {
+				$user = get_user_by('slug', get_query_var('author_name'));
+			} else if ( get_query_var('author') ) {
+				$user = get_user_by('id', get_query_var('author'));
+			}
 
-			if ( $setting === '1' ) {
-				themeblvd_author_info($user, 'archive');
+			if ( ! empty( $user ) ) {
+
+				$setting = get_user_meta( $user->ID, '_tb_box_archive', true );
+
+				if ( $setting === '1' ) {
+					themeblvd_author_info($user, 'archive');
+				}
 			}
 
 		}
