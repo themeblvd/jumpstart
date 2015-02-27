@@ -1767,9 +1767,9 @@ function jumpstart_su_css() {
 
 			$print .= "\t.tb-info-box,\n";
 			$print .= "\t.search-page,\n";
-			$print .= "\t.post_list.archive-loop,\n";
-			$print .= "\t.post_grid.archive-loop,\n";
-			$print .= "\t.post_showcase.archive-loop,\n";
+			$print .= "\t.post_list.archive-loop .post-wrap,\n";
+			$print .= "\t.post_grid.archive-loop .post-wrap,\n";
+			$print .= "\t.post_showcase.archive-loop .post-wrap,\n";
 
 			$print .= "\t.list-template-wrap .list-wrap,\n";
 			$print .= "\t.grid-template-wrap .grid-wrap,\n";
