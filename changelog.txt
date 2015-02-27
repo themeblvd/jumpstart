@@ -71,6 +71,7 @@ Jump Start Changelog
 * Fixed: Builder API function `themeblvd_add_builder_element` was outputting custom element on frontend.
 * Fixed: Browser horizontal scroll bars with "Popout" selected on Column Element in Builder.
 * Fixed: Heading placeholders displaying in mobile version of mega menus.
+* Fixed: PHP warnings when using custom queries with Builder elements.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`

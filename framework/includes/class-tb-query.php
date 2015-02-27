@@ -123,6 +123,8 @@ class Theme_Blvd_Query {
 
 			} else {
 
+				// Pull custom field to determine query, use custom_field=my_query
+				// for element's query string
 				if ( strpos($args['query'], 'custom_field=') === 0 ) {
 					$args['query'] = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $args['query']), true );
 				}
@@ -219,7 +221,7 @@ class Theme_Blvd_Query {
 		}
 
 		// Pagination
-		if ( empty( $query['paged'] ) ) {
+		if ( is_array( $query ) && empty( $query['paged'] ) ) {
 			if ( get_query_var('paged') ) {
 				$query['paged'] = get_query_var('paged');
 			} else if ( get_query_var('page') ) {

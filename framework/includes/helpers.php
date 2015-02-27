@@ -158,6 +158,8 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 		 */
 		if ( is_array($query) || strpos($query, '=') !== false ) {
 
+			// Pull custom field to determine query, use custom_field=my_query
+			// for element's query string
 			if ( is_string( $query ) && strpos($query, 'custom_field=') === 0 ) {
 				$query = get_post_meta( themeblvd_config('id'), str_replace('custom_field=', '', $query), true );
 			}
@@ -273,7 +275,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 	}
 
 	// Posts per page
-	if ( empty( $query['posts_per_page'] ) ) {
+	if ( is_array( $query ) && empty( $query['posts_per_page'] ) ) {
 
 		// Number of posts
 		if ( $type == 'grid' || $type == 'showcase' ) {
