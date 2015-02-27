@@ -477,8 +477,14 @@ function themeblvd_get_element_class( $args ) {
 
 		// Does the element have the default content BG applied?
 		if ( ! empty( $args['display']['bg_content'] ) ) {
+
 			$class[] = 'bg-content';
-			$class[] = 'text-'.apply_filters('themeblvd_text_color', 'dark');
+
+			if ( themeblvd_supports('display', 'dark') ) {
+				$class[] = 'text-light';
+			} else {
+				$class[] = 'text-dark';
+			}
 		}
 
 		// Is the element sucked up?
@@ -645,7 +651,7 @@ function themeblvd_get_display_class( $display ) {
 			$class[] = $bg_type;
 
 			if ( $bg_type == 'color' || $bg_type == 'image' || $bg_type == 'texture' || $bg_type == 'slideshow' ) {
-				if ( ! empty( $display['text_color'] ) ) {
+				if ( ! empty( $display['text_color'] ) && $display['text_color'] != 'none' ) {
 					$class[] = 'text-'.$display['text_color'];
 				}
 			}

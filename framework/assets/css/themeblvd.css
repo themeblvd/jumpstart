@@ -190,12 +190,12 @@
  *   31.2 - Header menu addon
  *   31.3 - Breadcrumbs
  * 32.0 - Dark Text Color
- *   32.1 - Typgography
+ *   32.1 - Typography
  *   32.2 - Thumbnails
  *   32.3 - Forms
  *   32.4 - Form Buttons
  * 33.0 - Light Text Color
- *   33.1 - Typgography
+ *   33.1 - Typography
  *   33.2 - Breadcrumbs
  *   33.3 - Block Slider Nav
  *   33.4 - Thumbnails
@@ -4445,6 +4445,9 @@ ul.tb-icon-list {
 	margin: 2px 0 !important;
 	padding: 0 0 0 30px;
 }
+.text-light .tb-contact_widget ul.simple-contact li {
+	background-image: url('../images/parts/simple-contact-ffffff.png');
+}
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
 		only screen and (-o-min-device-pixel-ratio: 1.5),
@@ -4454,6 +4457,9 @@ ul.tb-icon-list {
 	.tb-contact_widget ul.simple-contact li {
 		background-image:url('../images/parts/simple-contact_2x.png');
 		background-size: 20px 120px;
+	}
+	.text-light .tb-contact_widget ul.simple-contact li {
+		background-image: url('../images/parts/simple-contact-ffffff_2x.png');
 	}
 }
 .tb-contact_widget ul.simple-contact li a {
@@ -5224,6 +5230,7 @@ blockquote small {
 	height: 70px;
 	text-align: center;
 	text-rendering: auto;
+	text-shadow: none;
 	vertical-align: middle;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -7515,7 +7522,7 @@ blockquote small {
 /* =Dark Text Color (for themeblvd-dark.css, flip with Light Text section)
 -----------------------------------------------*/
 
-/* Typgography */
+/* Typography */
 .text-dark {
 	color: #666666;
 }
@@ -7545,6 +7552,9 @@ blockquote small {
 	-webkit-box-shadow: 0 1px 4px #cccccc;
 	-moz-box-shadow: 0 1px 4px #cccccc;
 	box-shadow: 0 1px 4px #cccccc;
+}
+.text-dark .tb-thumb-link:before {
+	color: #333333;
 }
 
 /* Forms */
@@ -7674,7 +7684,7 @@ blockquote small {
 /* =Light Text Color (for themeblvd-dark.css, flip with Dark Text section)
 -----------------------------------------------*/
 
-/* Typgography */
+/* Typography */
 .text-light {
 	color: #ffffff;
 	text-shadow: 1px 1px 1px rgba(0,0,0,.8);
@@ -7731,6 +7741,9 @@ blockquote small {
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+.text-light .tb-thumb-link:before {
+	color: #ffffff;
 }
 
 /* Forms */

@@ -834,7 +834,7 @@ button:active {
 /* =Light Text Color
 -----------------------------------------------*/
 
-/* Typgography */
+/* Typography */
 .text-light {
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,.8);
@@ -891,6 +891,9 @@ button:active {
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+.text-light .tb-thumb-link:before {
+	color: #ffffff;
 }
 
 /* Forms */
@@ -1012,7 +1015,7 @@ button:active {
 /* =Dark Text Color
 -----------------------------------------------*/
 
-/* Typgography */
+/* Typography */
 .text-dark {
     color: #666666;
 }
@@ -1042,6 +1045,9 @@ button:active {
     -webkit-box-shadow: 0 1px 4px #cccccc;
     -moz-box-shadow: 0 1px 4px #cccccc;
     box-shadow: 0 1px 4px #cccccc;
+}
+.text-dark .tb-thumb-link:before {
+	color: #333333;
 }
 
 /* Forms */
