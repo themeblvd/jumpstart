@@ -43,8 +43,9 @@
  *   8.4 - Blank Page
  *   8.5 - Custom Layout
  * 9.0 - Widgets
- *   9.1 - Fixed Sidebars
- *   9.2 - Collapsible Widget Areas
+ *   9.1 - General
+ *   9.2 - Fixed Sidebars
+ *   9.3 - Footer
  ----------------------------------------------- */
 
 /* =Primary Structure
@@ -705,10 +706,17 @@ article.page {
 /* =Widgets
 ----------------------------------------------- */
 
+/* General */
+.widget {
+	margin-bottom: 30px;
+}
+.widget:last-child {
+	margin-bottom: 0;
+}
+
 /* Fixed Sidebars */
 .fixed-sidebar .widget {
 	background: #ffffff;
-	margin-bottom: 30px;
 	padding: 30px;
 }
 .fixed-sidebar .widget:last-child {
@@ -723,4 +731,32 @@ article.page {
 }
 .fixed-sidebar .widget-title {
 	margin-top: 0;
+}
+
+/* Footer */
+#bottom .panel,
+#custom-bottom .panel {
+	background: transparent;
+	border: none;
+}
+#bottom .panel,
+#custom-bottom .panel {
+	background: transparent;
+	border: none;
+	color: inherit;
+}
+#bottom .panel-heading,
+#bottom-padding .panel-heading {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+#bottom h3,
+#custom-bottom h3,
+#bottom .widget-title,
+#custom-bottom .widget-title {
+	background: transparent;
+	font-size: 16px;
+	line-height: 1.1;
+	margin: 0 0 20px 0;
 }

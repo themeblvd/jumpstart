@@ -56,7 +56,6 @@ Jump Start Changelog
 * Fixed: Added missing breadcrumbs for bbPress user profiles.
 * Fixed: bbPress tag_list PHP error at the top of topics when "Lead Topic" option is disabled.
 * Fixed: Custom padding not applying to "popout" elements in Builder.
-* Fixed: Widgets set as "panel" from theme options not displaying right with no widget title.
 * Fixed: Issues with nag regarding Theme Options not matching Theme Base on initial theme install, with default Developer base selected.
 * Fixed: Blog display option not displaying "full content" when selected, instead of excerpts.
 * Fixed: Slider option type not allowing you to inert images less than 200px wide. This was most evident when trying to use the Partner Logos element in the Builder and using small logo images.
