@@ -53,9 +53,37 @@
 
 /* Element Widths */
 .tb-gforms-compat .gform_wrapper {
+    max-width: none;
     width: 100%;
 }
 .tb-gforms-compat .gform_wrapper .gform_heading {
+    width: 100%;
+}
+.tb-gforms-compat .gform_wrapper .top_label input.large,
+.tb-gforms-compat .gform_wrapper .top_label select.large,
+.tb-gforms-compat .gform_wrapper .top_label textarea.textarea.large,
+.tb-gforms-compat .gform_wrapper .hidden_label input.large,
+.tb-gforms-compat .gform_wrapper .hidden_label select.large,
+.tb-gforms-compat .gform_wrapper .hidden_label textarea.textarea.large {
+    width: 100%;
+}
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right input[type=text],
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right input[type=url],
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right input[type=email],
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right input[type=tel],
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right input[type=number],
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right input[type=password],
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_last_name span.name_last input[type=text] {
+    width: 100% !important;
+}
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_left_half input.medium,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_left_half input.large,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_left_half select.medium,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_left_half select.large,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_right_half input.medium,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_right_half input.large,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_right_half select.medium,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_right_half select.large {
     width: 100%;
 }
 
