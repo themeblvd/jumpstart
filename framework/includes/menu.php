@@ -201,6 +201,8 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
  */
 function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 
+	$primary = apply_filters('themeblvd_primary_menu_location', 'primary');
+
 	// Add "menu-btn" to all menu items in main navigation.
 	// Note: If menu item's link was disabled in the walker, the
 	// item will already be setup as <span class="menu-btn">Title</span>,
@@ -220,7 +222,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 
 	// Indicators for top-level toggle menus
 	if ( in_array( 'menu-item-has-children', $item->classes ) && $depth < 1 ) {
-		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->theme_location == 'primary' && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
+		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->theme_location == $primary && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
 			$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
 			$icon_close = apply_filters( 'themeblvd_side_menu_icon_close', 'minus' );
 			$icon = apply_filters( 'themeblvd_side_menu_icon', sprintf( '<i class="tb-side-menu-toggle fa fa-%1$s" data-open="%1$s" data-close="%2$s"></i>', $icon_open, $icon_close ) );
@@ -366,7 +368,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 				'walker'			=> new ThemeBlvd_Main_Menu_Walker(),
 				'menu_class'		=> 'tb-primary-menu tb-to-side-menu sf-menu sf-menu-with-fontawesome clearfix',
 				'container'			=> '',
-				'theme_location'	=> 'primary',
+				'theme_location'	=> apply_filters('themeblvd_primary_menu_location', 'primary'),
 				'fallback_cb'		=> 'themeblvd_primary_menu_fallback'
 			);
 			break;
@@ -376,7 +378,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 				'menu_class'		=> 'list-inline',
 				'container' 		=> '',
 				'fallback_cb' 		=> false,
-				'theme_location'	=> 'footer',
+				'theme_location'	=> apply_filters('themeblvd_footer_menu_location', 'footer'),
 				'depth' 			=> 1
 			);
 
@@ -396,7 +398,7 @@ function themeblvd_primary_menu_fallback( $args ) {
 
 	$output = '';
 
-	if ( $args['theme_location'] = 'primary' && current_user_can('edit_theme_options') ) {
+	if ( $args['theme_location'] = apply_filters('themeblvd_primary_menu_location', 'primary') && current_user_can('edit_theme_options') ) {
 		$output .= sprintf('<div class="alert alert-warning tb-menu-warning"><p><strong>%s</strong>: %s</p></div>', __('No Custom Menu', 'themeblvd'), __('Setup a custom menu at <em>Appearance > Menus</em> in your admin panel, and apply it to the "Primary Navigation" location.', 'themeblvd'));
 	}
 
