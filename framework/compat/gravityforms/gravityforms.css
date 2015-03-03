@@ -86,6 +86,22 @@
 .tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_right_half select.large {
     width: 100%;
 }
+.tb-gforms-compat .gform_wrapper .ginput_complex input[type=text],
+.tb-gforms-compat .gform_wrapper .ginput_complex input[type=url],
+.tb-gforms-compat .gform_wrapper .ginput_complex input[type=email],
+.tb-gforms-compat .gform_wrapper .ginput_complex input[type=tel],
+.tb-gforms-compat .gform_wrapper .ginput_complex input[type=number],
+.tb-gforms-compat .gform_wrapper .ginput_complex input[type=password] {
+    width: 100% !important;
+}
+.tb-gforms-compat .gform_wrapper .top_label input.large,
+.tb-gforms-compat .gform_wrapper .top_label select.large,
+.tb-gforms-compat .gform_wrapper .top_label textarea.textarea,
+.tb-gforms-compat .gform_wrapper .hidden_label input.large,
+.tb-gforms-compat .gform_wrapper .hidden_label select.large,
+.tb-gforms-compat .gform_wrapper .hidden_label textarea.textarea {
+    width: 100%;
+}
 
 /* Headers */
 .tb-gforms-compat .gform_wrapper h3.gform_title {
@@ -160,4 +176,18 @@
 .tb-gforms-compat .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container,
 .tb-gforms-compat .gform_wrapper .ginput_container + .gfield_description.validation_message {
     margin-top: 0;
+}
+
+/* Advanced Options */
+.tb-gforms-compat .gform_wrapper ul.gform_fields li.gfield span.name_first {
+    float: left;
+}
+.tb-gforms-compat .gform_wrapper ul.gform_fields li.gfield span.name_last {
+    float: right;
+}
+.rtl.tb-gforms-compat .gform_wrapper ul.gform_fields li.gfield span.name_first {
+    float: right;
+}
+.rtl.tb-gforms-compat .gform_wrapper ul.gform_fields li.gfield span.name_last {
+    float: left;
 }
