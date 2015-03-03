@@ -123,7 +123,7 @@ Author URI: http://www.themeblvd.com
 /* Level 1 */
 .header-nav .tb-primary-menu > li > .menu-btn {
 	border-bottom: 4px solid transparent;
-	color: #555555;
+	color: #666666;
 	font-size: 13px;
 	font-weight: bold;
 	line-height: 20px;
@@ -141,8 +141,9 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li > a:hover {
 	background-color: transparent;
 	border-bottom-color: #1971af;
+	color: #222222;
 }
-.header-nav .tb-primary-menu > li.menu-item-has-children > .menu-btn{
+.header-nav .tb-primary-menu > li.menu-item-has-children > .menu-btn {
 	border-bottom: none; /* Border will be attached to top of dropdown */
 	padding-right: 5px;
 }
@@ -180,8 +181,11 @@ Author URI: http://www.themeblvd.com
 	margin-left: 2px; /* a little space for cart item count */
 }
 .header-nav .tb-floater .floater-trigger {
-	color: #555555;
+	color: #666666;
 	padding-top: 37px;
+}
+.header-nav .tb-floater .floater-trigger:hover {
+	color: #222222;
 }
 
 /* Transparent Header */
@@ -201,6 +205,11 @@ Author URI: http://www.themeblvd.com
 }
 .site-header.transparent .header-nav .tb-primary-menu > li > .menu-btn,
 .site-header.transparent .header-nav .tb-floater .floater-trigger {
+	color: #ffffff; /* backup for older browsers */
+	color: rgba(255,255,255,.9);
+}
+.site-header.transparent .header-nav .tb-primary-menu > li > .menu-btn:hover,
+.site-header.transparent .header-nav .tb-floater .floater-trigger:hover {
 	color: #ffffff;
 }
 .site-header.transparent .header-nav .tb-primary-menu > li > a:hover {

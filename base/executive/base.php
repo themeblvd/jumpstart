@@ -1889,6 +1889,10 @@ function jumpstart_ex_css() {
 			$print .= "\tcolor: #333333;\n";
 		}
 
+		if ( themeblvd_get_option('menu_apply_font') && $font = themeblvd_get_option('font_menu') ) {
+			$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+		}
+
 		$print .= "}\n";
 
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
@@ -2048,9 +2052,9 @@ function jumpstart_ex_css() {
 
 		$print .= ".btn-navbar:hover {\n";
 
-		if ( $options['bg_type'] == 'gradient' ) {
+		if ( $options['bg_type'] == 'gradient' && $options['bg_gradient'] ) {
 			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_gradient']['end'] ) );
-		} else {
+		} else if ( $options['bg_color'] ) {
 			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_color'] ) );
 		}
 

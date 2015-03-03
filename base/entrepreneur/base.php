@@ -1536,17 +1536,6 @@ function jumpstart_ent_css() {
 
 		}
 
-		if ( themeblvd_get_option('header_text_color') == 'light' ) {
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover,\n";
-			$print .= ".header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
-			$print .= ".header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
-			$print .= ".header-nav .tb-floater .floater-trigger,\n";
-			$print .= ".header-nav .tb-floater .floater-trigger:hover {\n";
-			$print .= "\tcolor: #ffffff;\n";
-			$print .= "}\n";
-		}
-
 		// Header top bar
 		if ( themeblvd_get_option('header_text') ) { // top bar only shows if there's header text
 
@@ -1604,35 +1593,78 @@ function jumpstart_ent_css() {
 	$top = round( ($height-20) / 2 ); // 20px line-height for font
 	$bottom = ($height-24) - $top; // 20px line-height for font and 4px bottom border
 
-	$font = null;
-
-	if ( themeblvd_get_option('menu_apply_font') && themeblvd_get_option('font_menu') ) {
-		$font = themeblvd_get_option('font_menu');
-	}
-
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 
 	$print .= sprintf( "\tpadding-top: %spx;\n", $top );
 	$print .= sprintf( "\tpadding-bottom: %spx;\n", $bottom );
 
-	if ( $font ) {
-
-		if ( ! themeblvd_config('suck_up') ) {
-			$print .= sprintf("\tcolor: %s;\n", $font['color'] );
-		}
-
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-	}
-
 	$print .= "}\n";
 
-	if ( $font ) {
-		$print .= ".header-nav .tb-floater .floater-trigger {\n";
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
+	$header_text = themeblvd_get_option('header_text_color');
+	$menu_font = themeblvd_get_option('font_menu');
+
+	if ( themeblvd_get_option('menu_apply_font') && $menu_font ) {
+
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+
+		if ( ! themeblvd_config('suck_up') ) {
+
+			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
+
+			if ( $header_text == 'light' ) {
+				$print .= sprintf("\tcolor: %s;\n", themeblvd_get_rgb($menu_font['color'], '0.9') );
+			}
+		}
+
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($menu_font) );
+		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($menu_font) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($menu_font) );
+
 		$print .= "}\n";
+
+		$print .= ".header-nav .tb-floater .floater-trigger {\n";
+
+		if ( ! themeblvd_config('suck_up') ) {
+
+			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
+
+			if ( $header_text == 'light' ) {
+				$print .= sprintf("\tcolor: %s;\n", themeblvd_get_rgb($menu_font['color'], '0.9') );
+			}
+		}
+
+		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
+
+		$print .= "}\n";
+
+		if ( ! themeblvd_config('suck_up') ) {
+
+			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover,\n";
+			$print .= ".header-nav .tb-floater .floater-trigger:hover {\n";
+
+			if ( $header_text == 'light' ) {
+				$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
+			} else {
+				$print .= sprintf("\tcolor: %s;\n", themeblvd_adjust_color($menu_font['color'], 40, 'darken') );
+			}
+
+			$print .= "}\n";
+		}
+
+	} else if ( $header_text == 'light' ) {
+
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
+	    $print .= ".header-nav .tb-floater .floater-trigger {\n";
+	    $print .= "\tcolor: #ffffff;\n";
+		$print .= "\tcolor: rgba(255,255,255,.9);\n";
+	    $print .= "}\n";
+
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover,\n";
+		$print .= ".header-nav .tb-floater .floater-trigger:hover {\n";
+		$print .= "\tcolor: #ffffff;\n";
+		$print .= "}\n";
+
 	}
 
 	if ( themeblvd_get_option('menu_text_shadow') ) {
@@ -1709,34 +1741,36 @@ function jumpstart_ent_css() {
 	// Header sticky menu
 	if ( $header_bg_type && $header_bg_type != 'none' && $header_bg_color ) {
 
-		$text_color = themeblvd_get_option('header_text_color');
-
 		$print .= ".tb-sticky-menu {\n";
 		$print .= sprintf("\tbackground-color: %s;\n", $header_bg_color);
 		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.9'));
-
-		if ( $text_color == 'light' ) {
-			$print .= "\tcolor: #ffffff;\n";
-		} else {
-			$print .= "\tcolor: #333333;\n";
-		}
-
 		$print .= "}\n";
 
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
+		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover,\n";
+		$print .= ".tb-sticky-menu .tb-floater .floater-trigger,\n";
+		$print .= ".tb-sticky-menu .tb-floater .floater-trigger:hover {\n";
 
-		if ( $text_color == 'light' ) {
-			$print .= "\tcolor: #ffffff;\n";
+		if ( themeblvd_get_option('menu_apply_font') && $menu_font ) {
+
+			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
+			$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($menu_font) );
+
 		} else {
-			$print .= "\tcolor: #333333;\n";
+
+			if ( $header_text == 'light' ) {
+				$print .= "\tcolor: #ffffff;\n";
+			} else {
+				$print .= "\tcolor: #333333;\n";
+			}
+
 		}
 
 		$print .= "}\n";
 
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
 
-		if ( $text_color == 'light' ) {
+		if ( $header_text == 'light' ) {
 			$print .= "\tbackground-color: #000000;\n";
 			$print .= "\tbackground-color: rgba(255,255,255,.1);\n";
 		} else {
