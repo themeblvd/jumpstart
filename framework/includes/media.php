@@ -833,19 +833,19 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 		$style = "\n<style>\n";
 
-		$style .= sprintf( "#%s .image {\n", $args['id'] );
+		$style .= sprintf( "#%s .img {\n", $args['id'] );
 		$style .= sprintf( "\tbackground-position: %s;\n", $args['position'] );
 		$style .= sprintf( "\theight: %spx;\n", $args['height_desktop'] );
 		$style .= "}\n";
 
 		$style .= "@media (max-width: 992px) {\n";
-		$style .= sprintf( "\t#%s .image {\n", $args['id'] );
+		$style .= sprintf( "\t#%s .img {\n", $args['id'] );
 		$style .= sprintf( "\t\theight: %spx;\n", $args['height_tablet'] );
 		$style .= "\t}\n";
 		$style .= "}\n";
 
 		$style .= "@media (max-width: 767px) {\n";
-		$style .= sprintf( "\t#%s .image {\n", $args['id'] );
+		$style .= sprintf( "\t#%s .img {\n", $args['id'] );
 		$style .= sprintf( "\t\theight: %spx;\n", $args['height_mobile'] );
 		$style .= "\t}\n";
 		$style .= "}\n";
@@ -931,7 +931,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			}
 
 			if ( $args['cover'] ) {
-				$image = sprintf( '<div class="image" style="background-image: url(%s);"></div>', $img_src );
+				$image = sprintf( '<div class="img" style="background-image: url(%s);"></div>', $img_src );
 			} else {
 				$image = sprintf( '<img src="%s" alt="%s" />', $img_src, $img['alt'] );
 			}

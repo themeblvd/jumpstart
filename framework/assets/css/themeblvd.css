@@ -5398,7 +5398,7 @@ blockquote small {
 .tb-simple-slider.has-caption-bg .carousel-caption > p:last-child {
 	margin-bottom: 0;
 }
-.tb-simple-slider.cover .item .image {
+.tb-simple-slider.cover .item .img {
 	background-position: top center;
 	background-repeat: no-repeat;
 	background-size: 100% auto;
