@@ -102,32 +102,36 @@ class Theme_Blvd_Frontend_Init {
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
 
 			// Blog (default content.php)
-			'blog'				=> '',
-			'blog_paginated'	=> '',
-			'single'			=> '',
+			'blog'				=> 'blog', 			// content-blog.php (doesn't exist by default)
+			'blog_paginated'	=> 'blog', 			// content-blog.php (doesn't exist by default)
+			'single'			=> 'single',		// content-single.php (doesn't exist by default)
 
 			// Post List
-			'list'				=> 'list',
-			'list_paginated'	=> 'list',
-			'list_mini'			=> 'mini-list',
+			'list'				=> 'list',			// content-list.php
+			'list_paginated'	=> 'list',			// content-list.php
+			'list_mini'			=> 'mini-list',		// content-mini-list.php
 
 			// Post Grid
-			'grid' 				=> 'grid',
-			'grid_paginated' 	=> 'grid',
-			'grid_slider' 		=> 'grid',
-			'grid_mini'			=> 'mini-grid',
+			'grid' 				=> 'grid',			// content-grid.php
+			'grid_paginated' 	=> 'grid',			// content-grid.php
+			'grid_slider' 		=> 'grid',			// content-grid.php
+			'grid_mini'			=> 'mini-grid',		// content-mini-grid.php
 
 			// Showcase
-			'showcase' 			=> 'showcase',
-			'showcase_paginated'=> 'showcase',
+			'showcase' 			=> 'showcase',		// content-showcase.php
+			'showcase_paginated'=> 'showcase',		// content-showcase.php
 
 			// Pages
-			'page' 				=> 'page',
-			'404'				=> '404',
+			'page' 				=> 'page',			// content-page.php
+			'404'				=> '404',			// content-404.php
 
 			// Search
-			'search'			=> 'page-search',
-			'search_results'	=> 'search-result'
+			'search'			=> 'page-search',	// content-page-search.php
+			'search_results'	=> 'search-result',	// content-search-result.php
+
+			// Single attachment
+			'attachment' 		=> 'attachment'		// content-attachment.php
+
 		));
 	}
 
