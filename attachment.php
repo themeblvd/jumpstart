@@ -30,7 +30,7 @@ get_header();
 
 						<?php while ( have_posts() ) : the_post(); ?>
 
-							<?php get_template_part( 'content', 'attachment' ); ?>
+							<?php get_template_part( 'content', themeblvd_get_part( 'attachment' ) ); ?>
 
 							<?php if ( themeblvd_supports( 'comments', 'attachments' ) ) : ?>
 								<?php comments_template( '', true ); ?>
