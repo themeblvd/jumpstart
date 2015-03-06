@@ -21,6 +21,6 @@
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
 
-	<?php edit_post_link( themeblvd_get_local( 'edit_post' ), '<div class="edit-link"><i class="fa fa-edit"></i> ', '</div>' ); ?>
+	<?php edit_post_link( themeblvd_get_local( 'edit_attachment' ), '<div class="edit-link"><i class="fa fa-edit"></i> ', '</div>' ); ?>
 
 </article>
