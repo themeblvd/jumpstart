@@ -334,8 +334,7 @@ p {
 
 /* Thumbnails */
 .thumbnail,
-.pretty,
-.wp-caption {/* Match framework's thumb classes to bootstrap's .thumbnail */
+.pretty {/* Match framework's thumb classes to bootstrap's .thumbnail */
 	padding: 4px;
 	line-height: 1.428571429;
 	background-color: #ffffff;
@@ -360,6 +359,10 @@ a.thumbnail:active {
 	-webkit-box-shadow: 0 1px 4px #cccccc;
 	-moz-box-shadow: 0 1px 4px #cccccc;
 	box-shadow: 0 1px 4px #cccccc;
+}
+p > .thumbnail,
+p > .pretty {
+	margin-bottom: 0;
 }
 
 /* Code elements */
@@ -487,21 +490,10 @@ img.size-full {
 .gallery-item img {
 	display: inline-block;
 }
-.gallery-item .wp-caption-text {
-	font-size: 11px;
-	line-height: 1.4;
-	margin: 0;
-}
-.alignnone {
-	margin: 5px 0;
-}
-.aligncenter, div.aligncenter {
-	display: block;
-	margin: 5px auto 5px auto;
-}
 .aligncenter {
-	display: block;
-	margin: 5px auto 5px auto;
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
 }
 /* @noflip */
 .alignright {
@@ -513,32 +505,11 @@ img.size-full {
 	float: left;
 	margin: 5px 20px 20px 0;
 }
-a img.aligncenter {
+.tb-thumb-link.alignnone,
+.tb-thumb-link.aligncenter {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-a img.alignnone {
-	margin: 5px 0 20px 0;
-}
-/* @noflip */
-a img.alignright {
-	float: right;
-	margin: 5px 0 20px 20px;
-}
-/* @noflip */
-a img.alignleft {
-	float: left;
-	margin: 5px 20px 20px 0;
-}
-.element-image > .alignnone,
-.element-image > .aligncenter {
-	margin-top: 0;
-	margin-bottom: 0;
 }
 .wp-caption {
-	max-width: 96%; /* Image does not overflow the content area */
-	padding: 4px;
 	text-align: center;
 }
 .wp-caption.alignnone {
@@ -555,19 +526,22 @@ a img.alignleft {
 .wp-caption img {
 	border: 0 none;
 	height: auto;
-	margin:0;
-	max-width: 98.5%;
-	padding:0;
+	margin: 0;
+	padding: 0;
 	width: auto;
 }
-p.wp-caption-text {
-	font-size: 11px;
+.wp-caption-text,
+.wp-caption-dd {
+	font-size: .9em;
 	line-height: 1.4;
 	text-align: center;
 }
-.wp-caption p.wp-caption-text {
-	padding: 10px 5px;
+.wp-caption .wp-caption-text {
+	padding: 10px 5px 0 5px;
 	margin: 0;
+}
+.wp-caption.thumbnail .wp-caption-text {
+	padding: 10px;
 }
 .has-caption {
 	display: inline-block;

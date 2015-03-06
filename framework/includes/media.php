@@ -538,6 +538,74 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 }
 
 /**
+ * Filter WP's image caption. Allow for thumbnail class
+ * to be added, if enabled. Add lightbox functionality.
+ *
+ * @since 2.0.0
+ */
+function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
+
+	$atts = shortcode_atts( array(
+		'id'	  => '',
+		'align'	  => 'alignnone',
+		'width'	  => '',
+		'caption' => '',
+		'class'   => '',
+	), $attr, 'caption' );
+
+	$atts['width'] = (int) $atts['width'];
+
+	if ( $atts['width'] < 1 || empty( $atts['caption'] ) ) {
+		return $content;
+	}
+
+	if ( ! empty( $atts['id'] ) ) {
+		$atts['id'] = 'id="' . esc_attr( $atts['id'] ) . '" ';
+	}
+
+	$class = trim( 'wp-caption ' . $atts['align'] . ' ' . $atts['class'] );
+
+	if ( apply_filters('themeblvd_img_frame', false) ) {
+		$class .= ' thumbnail';
+	}
+
+	$url = themeblvd_get_content_url($content);
+
+	if ( ! empty($url[1]) ) { // Image is linked
+
+		if ( $lightbox = themeblvd_is_lightbox_url( $url[1] ) ) {
+
+			// Strip link
+			$content = str_replace( array('<a href="'.$url[1].'">', '</a>'), '', $content );
+
+			// Re-wrap image with link
+			$content = themeblvd_get_link_to_lightbox(array(
+				'item'	=> $content,
+				'link'	=> $url[1],
+				'class'	=> 'tb-thumb-link '.$lightbox
+			));
+
+		} else {
+
+			if ( strpos( $url[1], get_site_url() ) !== false ) {
+				$content = str_replace('<a', '<a class="tb-thumb-link post"', $content);
+			} else {
+				$content = str_replace('<a', '<a class="tb-thumb-link external" target="_blank"', $content);
+			}
+
+		}
+
+	}
+
+	$output  = sprintf('<figure %s style="width: %spx;" class="%s">', $atts['id'], (int) $atts['width'], esc_attr($class));
+	$output .= do_shortcode( $content );
+	$output .= sprintf('<figcaption class="wp-caption-text">%s</figcaption>', $atts['caption']);
+	$output .= '</figure>';
+
+	return $output;
+}
+
+/**
  * Add wrapper around embedded videos to allow for respnsive videos.
  *
  * @since 2.0.0

@@ -399,7 +399,7 @@ function themeblvd_add_theme_support() {
 	add_theme_support( 'post-thumbnails' );
 
 	// HTML5
-	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list') );
+	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list', 'caption') );
 
 	// Post Formats
 	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status') );
@@ -2073,11 +2073,16 @@ function themeblvd_is_lightbox_url( $url ) {
 		if ( ! $icon ) {
 
 			$parsed_url = parse_url( $url );
-			$type = wp_check_filetype( $parsed_url['path'] );
 
-			// Link to image file?
-			if ( substr( $type['type'], 0, 5 ) == 'image' ) {
-				$icon = 'image';
+			if ( ! empty($parsed_url['path']) ) {
+
+				$type = wp_check_filetype( $parsed_url['path'] );
+
+				// Link to image file?
+				if ( substr( $type['type'], 0, 5 ) == 'image' ) {
+					$icon = 'image';
+				}
+
 			}
 
 		}

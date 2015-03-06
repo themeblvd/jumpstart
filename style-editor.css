@@ -43,8 +43,7 @@ a {
 
 /* Thumbnails */
 .thumbnail,
-.pretty,
-.wp-caption {/* Match framework's thumb classes to bootstrap's .thumbnail */
+.pretty {/* Match framework's thumb classes to bootstrap's .thumbnail */
 	padding: 4px;
 	line-height: 1.428571429;
 	background-color: #ffffff;
@@ -72,44 +71,10 @@ a.thumbnail:active {
 }
 
 /* WP Classes */
-.gallery-item {
-	float: left;
-	margin: 0;
-	text-align: center;
-}
-.gallery-columns-1 .gallery-item {width: 100%;}
-.gallery-columns-2 .gallery-item {width: 50%;}
-.gallery-columns-3 .gallery-item {width: 33%;}
-.gallery-columns-4 .gallery-item {width: 25%;}
-.gallery-columns-5 .gallery-item {width: 20%;}
-.gallery-columns-6 .gallery-item {width: 16%;}
-.gallery-columns-7 .gallery-item {width: 14%;}
-.gallery-columns-8 .gallery-item {width: 12%;}
-.gallery-columns-9 .gallery-item {width: 11%;}
-.gallery-columns-10 .gallery-item {width: 10%;}
-.gallery-columns-11 .gallery-item {width: 9%;}
-.gallery-columns-12 .gallery-item {width: 8%;}
-.gallery-item .gallery-icon {
-	padding: 10px;
-}
-.gallery-item img {
-	display: inline-block;
-}
-.gallery-item .wp-caption-text {
-	font-size: 11px;
-	line-height: 1.4;
-	margin: 0;
-}
-.alignnone {
-	margin: 5px 0;
-}
-.aligncenter, div.aligncenter {
-	display: block;
-	margin: 5px auto 5px auto;
-}
 .aligncenter {
-	display: block;
-	margin: 5px auto 5px auto;
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
 }
 .alignright {
 	float: right;
@@ -119,25 +84,11 @@ a.thumbnail:active {
 	float: left;
 	margin: 5px 20px 20px 0;
 }
-a img.aligncenter {
+.tb-thumb-link.alignnone,
+.tb-thumb-link.aligncenter {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-a img.alignnone {
-	margin: 5px 0 20px 0;
-}
-a img.alignright {
-	float: right;
-	margin: 5px 0 20px 20px;
-}
-a img.alignleft {
-	float: left;
-	margin: 5px 20px 20px 0;
 }
 .wp-caption {
-	max-width: 96%; /* Image does not overflow the content area */
-	padding: 4px;
 	text-align: center;
 }
 .wp-caption.alignnone {
@@ -152,21 +103,20 @@ a img.alignleft {
 .wp-caption img {
 	border: 0 none;
 	height: auto;
-	margin:0;
-	max-width: 98.5%;
-	padding:0;
+	margin: 0;
+	padding: 0;
 	width: auto;
 }
-p.wp-caption-text {
-	font-size: 11px;
+.wp-caption-text,
+.wp-caption-dd {
+	font-size: .9em;
 	line-height: 1.4;
 	text-align: center;
 }
-.wp-caption p.wp-caption-text {
-	padding: 10px 5px;
+.wp-caption .wp-caption-text {
+	padding: 10px 5px 0 5px;
 	margin: 0;
 }
-.has-caption {
-	display: inline-block;
-	margin-bottom: 8px;
+.wp-caption.thumbnail .wp-caption-text {
+	padding: 10px;
 }
