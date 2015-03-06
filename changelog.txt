@@ -32,6 +32,7 @@ Jump Start Changelog
 * Added filters for displaying theme menu locations, [see here](http://support.themeblvd.com/forums/topic/creating-separate-main-menu-for-logged-in-user-jump-start-2-0-beta2/#post-20720).
 * Improvements to WP `[caption]` shortcode, and auto lightbox integration.
 * Improvements, structural changes, and option changes to header of Executive theme base.
+* Improvements to displaying icons in menus, including using FontAwesome's `fa-fw` class.
 * Allow header in Entrepreneur theme base to be configured with no background color.
 * Allow copyright helpers `%site_title%` and `%year%` to work with content element of builder (for Footer Template Sync feature).
 * Mobile menu toggle button will now match menu highlight color on Entrepreneur base.

@@ -1453,44 +1453,44 @@ ul.woocommerce-info {
 ----------------------------------------------- */
 
 /* General product lists */
-.product_list_widget li {
+.widget .product_list_widget li {
 	font-size: 13px;
 	margin-bottom: 20px;
 	min-height: 60px;
 	padding: 0 0 0 80px;
 	position: relative;
 }
-.rtl .product_list_widget li {
+.rtl .widget .product_list_widget li {
 	padding: 0 80px 0 0;
 }
-.product_list_widget li > a {
+.widget .product_list_widget li > a {
 	color: #333333;
 	display: block;
 	line-height: 1.1;
 }
-.text-light .product_list_widget li > a {
+.text-light .widget .product_list_widget li > a {
 	color: #ffffff;
 }
-.content_dark .product_list_widget li > a {
+.content_dark .widget .product_list_widget li > a {
 	color: #ffffff;
 }
-.content_dark .text-dark .product_list_widget li > a {
+.content_dark .text-dark .widget .product_list_widget li > a {
 	color: #333333;
 }
-.product_list_widget li > a > img {
+.widget .product_list_widget li > a > img {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 60px;
 }
-.rtl .product_list_widget li > a > img {
+.rtl .widget .product_list_widget li > a > img {
 	right: 0;
 	left: initial;
 }
-.product_list_widget li:last-child {
+.widget .product_list_widget li:last-child {
 	margin-bottom: 0;
 }
-.product_list_widget .star-rating {
+.widget .product_list_widget .star-rating {
 	float: none;
 	margin-top: 5px;
 }

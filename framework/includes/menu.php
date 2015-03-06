@@ -266,6 +266,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 
 	// Fontawesome icons in menu items
 	$icon = '';
+
 	foreach ( $item->classes as $class ) {
 		if ( strpos( $class, 'menu-icon-' ) !== false ) {
 			$icon = str_replace( 'menu-icon-', '', $class );
@@ -273,10 +274,22 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 	}
 
 	if ( $icon ) {
+
 		$text = apply_filters( 'the_title', $item->title, $item->ID );
-		$icon_output = sprintf( '<i class="fa fa-%s"></i>', $icon );
+		$icon_output = sprintf( '<i class="fa fa-%s fa-fw"></i>', $icon );
 		$icon_output = apply_filters( 'themeblvd_menu_icon', $icon_output, $icon );
-		$item_output = str_replace( $text, $icon_output.$text, $item_output );
+
+		if ( ! $args->theme_location ) {
+
+			// Random custom menu, probably sidebar widget, insert icon outside <a>
+			$item_output = $icon_output.$item_output;
+
+		} else {
+
+			// Theme location, insert icon within <a>
+			$item_output = str_replace( $text, $icon_output.$text, $item_output );
+
+		}
 	}
 
 	return $item_output;
