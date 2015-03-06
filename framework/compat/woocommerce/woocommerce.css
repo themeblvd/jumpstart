@@ -1364,6 +1364,11 @@ ul.woocommerce-info {
 	width: 100%;
 }
 @media screen and (min-width: 768px) {
+	.col2-set:after {
+		display: table;
+		content: " ";
+		clear: both;
+	}
 	.woocommerce .form-row-first,
 	.col2-set .col-1 {
 		display: block;
