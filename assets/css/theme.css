@@ -382,6 +382,17 @@
 .footer-content {
 	padding: 20px 0 40px 0;
 }
+.footer-content .entry-content > p:last-child {
+	margin-bottom: 0;
+}
+@media (max-width: 767px) {
+	.footer-content .col {
+		margin-bottom: 30px;
+	}
+	.footer-content .col:last-child {
+		margin-bottom: 0;
+	}
+}
 .footer-sub-content {
 	font-size: 12px;
 	text-align: center;
@@ -743,6 +754,8 @@ article.page {
 #custom-bottom .panel {
 	background: transparent;
 	border: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
 	color: inherit;
 }
 #bottom .panel-heading,
