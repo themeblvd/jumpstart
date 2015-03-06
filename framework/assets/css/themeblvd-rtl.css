@@ -774,6 +774,7 @@ body.admin-bar .tb-sticky-menu {
 }
 .tb-sticky-menu .floaters {
 	float: right;
+	margin: 0;
 }
 .tb-sticky-menu .floaters > li {
 	float: left;
@@ -784,6 +785,10 @@ body.admin-bar .tb-sticky-menu {
 }
 .tb-sticky-menu .tb-floater .floater-trigger {
 	line-height: 48px;
+	height: 48px;
+}
+.tb-sticky-menu .tb-floater.bottom.left .floater-popup {
+	margin-top: -5px;
 }
 @media (max-width: 992px) {
 	.tb-sticky-menu {

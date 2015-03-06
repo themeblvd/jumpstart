@@ -1672,7 +1672,7 @@ ul.woocommerce-info {
 	text-align: center;
 }
 .tb-sticky-menu .cart-trigger .trigger-label {
-	bottom: -20px;
+	bottom: 8px;
 }
 .cart-trigger.open .trigger-label {
 	display: none;
