@@ -277,6 +277,11 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 
 		$text = apply_filters( 'the_title', $item->title, $item->ID );
 		$icon_output = sprintf( '<i class="fa fa-%s fa-fw"></i>', $icon );
+
+		if ( $args->theme_location == $primary && $depth == 0 ) {
+			$icon_output = str_replace(' fa-fw', '', $icon_output);
+		}
+
 		$icon_output = apply_filters( 'themeblvd_menu_icon', $icon_output, $icon );
 
 		if ( ! $args->theme_location ) {
