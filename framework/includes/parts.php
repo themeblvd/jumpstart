@@ -975,7 +975,7 @@ function themeblvd_blog_share( $echo = true ) {
 			}
 
 			if ( $style != 'color' ) { // Note: "color" means to use colored image icons; otherwise, we use icon font.
-				$class .= ' tb-icon tb-icon-'.$network;
+				$class .= ' tb-icon';
 			}
 
 			// Link URL

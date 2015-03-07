@@ -1318,6 +1318,9 @@ body.side-menu-on {
 #tb-side-menu-wrapper .tb-social-icons {
 	padding: 10px 10px 0 10px;
 }
+#tb-side-menu-wrapper .tb-social-icons .tooltip {
+	display: none !important;
+}
 .admin-bar #tb-side-menu-wrapper {
 	padding-top: 32px;
 }
@@ -2000,158 +2003,158 @@ html[xmlns] .slides {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-.tb-icon-chat:before {
+.tb-icon.chat:before {
 	content: "\e600";
 }
-.tb-icon-cloud:before {
+.tb-icon.cloud:before {
 	content: "\e601";
 }
-.tb-icon-anchor:before {
+.tb-icon.anchor:before {
 	content: "\e632";
 }
-.tb-icon-email:before,
-.tb-icon-mail:before {
+.tb-icon.email:before,
+.tb-icon.mail:before {
 	content: "\e602";
 }
-.tb-icon-movie:before {
+.tb-icon.movie:before {
 	content: "\e603";
 }
-.tb-icon-music:before {
+.tb-icon.music:before {
 	content: "\e604";
 }
-.tb-icon-rss:before {
+.tb-icon.rss:before {
 	content: "\e605";
 }
-.tb-icon-store:before {
+.tb-icon.store:before {
 	content: "\e606";
 }
-.tb-icon-write:before {
+.tb-icon.write:before {
 	content: "\e607";
 }
-.tb-icon-fivehundredpx:before {
+.tb-icon.fivehundredpx:before {
 	content: "\e608";
 }
-.tb-icon-amazon:before {
+.tb-icon.amazon:before {
 	content: "\e609";
 }
-.tb-icon-android:before {
+.tb-icon.android:before {
 	content: "\e60a";
 }
-.tb-icon-behance:before {
+.tb-icon.behance:before {
 	content: "\e60b";
 }
-.tb-icon-delicious:before {
+.tb-icon.delicious:before {
 	content: "\e60c";
 }
-.tb-icon-flickr:before {
+.tb-icon.flickr:before {
 	content: "\e60d";
 }
-.tb-icon-deviantart:before {
+.tb-icon.deviantart:before {
 	content: "\e60e";
 }
-.tb-icon-dribbble:before {
+.tb-icon.dribbble:before {
 	content: "\e60f";
 }
-.tb-icon-dropbox:before {
+.tb-icon.dropbox:before {
 	content: "\e610";
 }
-.tb-icon-digg:before {
+.tb-icon.digg:before {
 	content: "\e611";
 }
-.tb-icon-ebay:before {
+.tb-icon.ebay:before {
 	content: "\e612";
 }
-.tb-icon-envato:before {
+.tb-icon.envato:before {
 	content: "\e613";
 }
-.tb-icon-facebook:before {
+.tb-icon.facebook:before {
 	content: "\e614";
 }
-.tb-icon-feedburner:before {
+.tb-icon.feedburner:before {
 	content: "\e615";
 }
-.tb-icon-forrst:before {
+.tb-icon.forrst:before {
 	content: "\e616";
 }
-.tb-icon-foursquare:before {
+.tb-icon.foursquare:before {
 	content: "\e617";
 }
-.tb-icon-github:before {
+.tb-icon.github:before {
 	content: "\e618";
 }
-.tb-icon-google:before {
+.tb-icon.google:before {
 	content: "\e619";
 }
-.tb-icon-instagram:before {
+.tb-icon.instagram:before {
 	content: "\e61a";
 }
-.tb-icon-linkedin:before {
+.tb-icon.linkedin:before {
 	content: "\e61b";
 }
-.tb-icon-mac:before {
+.tb-icon.mac:before {
 	content: "\e61c";
 }
-.tb-icon-macapp:before {
+.tb-icon.macapp:before {
 	content: "\e61d";
 }
-.tb-icon-myspace:before {
+.tb-icon.myspace:before {
 	content: "\e61e";
 }
-.tb-icon-picasa:before {
+.tb-icon.picasa:before {
 	content: "\e61f";
 }
-.tb-icon-paypal:before {
+.tb-icon.paypal:before {
 	content: "\e620";
 }
-.tb-icon-pinterest:before {
+.tb-icon.pinterest:before {
 	content: "\e621";
 }
-.tb-icon-playstation:before {
+.tb-icon.playstation:before {
 	content: "\e622";
 }
-.tb-icon-reddit:before {
+.tb-icon.reddit:before {
 	content: "\e623";
 }
-.tb-icon-scribd:before {
+.tb-icon.scribd:before {
 	content: "\e624";
 }
-.tb-icon-soundcloud:before {
+.tb-icon.soundcloud:before {
 	content: "\e625";
 }
-.tb-icon-squidoo:before {
+.tb-icon.squidoo:before {
 	content: "\e626";
 }
-.tb-icon-technorati:before {
+.tb-icon.technorati:before {
 	content: "\e627";
 }
-.tb-icon-themeblvd:before {
+.tb-icon.themeblvd:before {
 	content: "\e628";
 }
-.tb-icon-tumblr:before {
+.tb-icon.tumblr:before {
 	content: "\e629";
 }
-.tb-icon-twitter:before {
+.tb-icon.twitter:before {
 	content: "\e62a";
 }
-.tb-icon-vimeo:before {
+.tb-icon.vimeo:before {
 	content: "\e62b";
 }
-.tb-icon-windows:before {
+.tb-icon.windows:before {
 	content: "\e62c";
 }
-.tb-icon-wordpress:before {
+.tb-icon.wordpress:before {
 	content: "\e62d";
 }
-.tb-icon-xbox:before {
+.tb-icon.xbox:before {
 	content: "\e62e";
 }
-.tb-icon-xing:before {
+.tb-icon.xing:before {
 	content: "\e62f";
 }
-.tb-icon-yahoo:before {
+.tb-icon.yahoo:before {
 	content: "\e630";
 }
-.tb-icon-youtube:before {
+.tb-icon.youtube:before {
 	content: "\e631";
 }
 

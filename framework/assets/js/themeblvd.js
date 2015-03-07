@@ -165,7 +165,18 @@ jQuery(document).ready(function($) {
 
 		// Adjust social media icon color
 		if ( themeblvd.mobile_side_menu_icon_color ) {
-			$side_holder.find('.tb-social-icons').removeClass('grey dark light flat color').addClass(themeblvd.mobile_side_menu_icon_color);
+			$side_holder.find('.tb-social-icons')
+				.removeClass('grey dark light flat color')
+				.addClass(themeblvd.mobile_side_menu_icon_color)
+				.find('.social-media > li > a')
+				.each(function(){
+					if ( themeblvd.mobile_side_menu_icon_color == 'color' ) {
+						$(this).removeClass('tb-icon');
+					} else {
+						$(this).addClass('tb-icon');
+					}
+				}
+			);
 		}
 
 		// Show menu
