@@ -243,6 +243,9 @@ ul.woocommerce-info {
 	.rtl.woocommerce-page .grid-view ul.products li.product {
 		float: right;
 	}
+	.tb-product-loop-wrap.grid-view.shop-columns-2 ul.products li.product {
+		width: 50%;
+	}
 	.tb-product-loop-wrap.grid-view.shop-columns-3 ul.products li.product {
 		width: 33.33%;
 	}

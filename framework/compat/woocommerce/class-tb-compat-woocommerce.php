@@ -763,6 +763,10 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function shortcode_set_view( $args = array(), $atts = array() ) {
 
+		if ( ! empty( $atts['columns'] ) ) {
+			themeblvd_set_att( 'woo_product_columns', $atts['columns'] );
+		}
+
 		if ( isset($atts['view']) && in_array($atts['view'], array('list', 'grid', 'catalog')) ) {
 			themeblvd_set_att( 'woo_product_view_reset', themeblvd_get_att('woo_product_view') );
 			themeblvd_set_att( 'woo_product_view', $atts['view'] );
@@ -779,6 +783,11 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * @since 2.5.0
 	 */
 	public function shortcode_reset_view() {
+
+		if ( themeblvd_get_att('woo_product_columns') ) {
+			themeblvd_set_att( 'woo_product_columns', null );
+		}
+
 		if ( $reset = themeblvd_get_att('woo_product_view_reset') ) {
 			themeblvd_set_att( 'woo_product_view', $reset );
 			themeblvd_set_att( 'woo_product_view_reset', null );
@@ -834,7 +843,9 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function loop_columns( $cols = 4 ) {
 
-		if ( is_product_category() || is_product_tag() || is_search() ) {
+		if ( themeblvd_get_att('woo_product_columns') ) {
+			$cols = themeblvd_get_att('woo_product_columns');
+		} else if ( is_product_category() || is_product_tag() || is_search() ) {
 			$cols = themeblvd_get_option('woo_archive_columns');
 		} else if ( is_shop() ) {
 			$cols = themeblvd_get_option('woo_shop_columns');

@@ -1153,6 +1153,7 @@ class Theme_Blvd_Options_API {
 						'std' 		=> '4',
 						'type' 		=> 'select',
 						'options' 	=> array(
+							'2'		=> __( '3 columns', 'themeblvd' ),
 							'3'		=> __( '3 columns', 'themeblvd' ),
 							'4' 	=> __( '4 columns', 'themeblvd' ),
 							'5' 	=> __( '5 columns', 'themeblvd' )
