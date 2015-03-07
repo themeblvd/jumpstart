@@ -6159,7 +6159,7 @@ blockquote small {
 	padding: 30px;
 }
 .tb-icon-box.icon-above,
-.tb-icon-box .icon {
+.tb-icon-box > .icon {
 	text-align: center;
 }
 /* @noflip */
@@ -6174,32 +6174,32 @@ blockquote small {
 .tb-icon-box.icon-side-alt {
 	position: relative;
 }
-.tb-icon-box .icon {
+.tb-icon-box > .icon {
 	line-height: 1;
 }
-.tb-icon-box.icon-side .icon,
-.tb-icon-box.icon-side-alt .icon {
+.tb-icon-box.icon-side > .icon,
+.tb-icon-box.icon-side-alt > .icon {
 	position: absolute;
 	top: 0;
 }
 /* @noflip */
-.tb-icon-box.icon-side .icon {
+.tb-icon-box.icon-side > .icon {
 	left: 0;
 }
 /* @noflip */
-.tb-icon-box.icon-side-alt .icon {
+.tb-icon-box.icon-side-alt > .icon {
 	right: 0;
 }
-.tb-icon-box.has-bg.icon-side .icon,
-.tb-icon-box.has-bg.icon-side-alt .icon {
+.tb-icon-box.has-bg.icon-side > .icon,
+.tb-icon-box.has-bg.icon-side-alt > .icon {
 	top: 30px;
 }
 /* @noflip */
-.tb-icon-box.has-bg.icon-side .icon {
+.tb-icon-box.has-bg.icon-side > .icon {
 	left: 30px;
 }
 /* @noflip */
-.tb-icon-box.has-bg.icon-side-alt .icon {
+.tb-icon-box.has-bg.icon-side-alt > .icon {
 	right: 30px;
 }
 .tb-icon-box .icon-box-title {
