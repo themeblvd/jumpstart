@@ -1303,6 +1303,14 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
+			'widget_title_shadow' => array(
+				'id'		=> 'widget_title_shadow',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Widget Title Text Shadow', 'themeblvd').'</strong>: '.__('Apply shadow to widget title text.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox',
+				'class'		=> 'hide receiver receiver-standard receiver-panel'
+			),
 			'sub_group_start_24' => array(
 				'id'		=> 'sub_group_start_24',
 				'type' 		=> 'subgroup_start',
@@ -1708,6 +1716,11 @@ function jumpstart_su_css() {
 	$print .= ".fixed-sidebar .widget-title {\n";
 	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('widget_title_color'));
 	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_option('widget_title_size'));
+
+	if ( themeblvd_get_option('widget_title_shadow') ) {
+		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+	}
+
 	$print .= "}\n";
 
 	if ( themeblvd_get_option('layout_style') == 'boxed' ) {
@@ -2502,7 +2515,7 @@ function themeblvd_su_sidebar_args( $args, $sidebar, $location ) {
 
 		} else {
 
-			$args['before_widget'] = str_replace('class="widget ', 'class="widget '.$text.' ', $args['before_widget']);
+			$args['before_widget'] = str_replace('class="widget ', 'class="widget standard '.$text.' ', $args['before_widget']);
 
 		}
 
