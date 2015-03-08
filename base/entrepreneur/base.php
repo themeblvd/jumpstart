@@ -1428,6 +1428,8 @@ function jumpstart_ent_css() {
 
 	if ( themeblvd_get_option('widget_title_shadow') ) {
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+	} else {
+		$print .= "\ttext-shadow: none;\n";
 	}
 
 	$print .= "}\n";
@@ -2017,7 +2019,7 @@ add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
  */
 function themeblvd_ent_sidebar_args( $args, $sidebar, $location ) {
 
-	if ( in_array( $location, array('sidebar_left', 'sidebar_right', 'floating') ) ) {
+	if ( in_array( $location, array('sidebar_left', 'sidebar_right') ) ) {
 
 		$text = 'text-dark';
 

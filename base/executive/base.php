@@ -1684,6 +1684,8 @@ function jumpstart_ex_css() {
 
 	if ( themeblvd_get_option('widget_title_shadow') ) {
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+	} else {
+		$print .= "\ttext-shadow: none;\n";
 	}
 
 	$print .= "}\n";
@@ -2165,7 +2167,7 @@ function jumpstart_ex_css() {
 			$end = 'left';
 		}
 
-		$print .= ".tb-primary-menu > li:first-child > .menu-btn {\n";
+		$print .= ".header-nav .tb-primary-menu > li:first-child > .menu-btn {\n";
 		$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $start, $fix);
 		$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $start, $fix);
 
@@ -2178,7 +2180,7 @@ function jumpstart_ex_css() {
 
 		if ( themeblvd_get_option('menu_search') ) {
 
-			$print .= ".tb-primary-menu .menu-search .search-trigger {\n";
+			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger {\n";
 			$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $end, $fix);
 			$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $end, $fix);
 
@@ -2531,7 +2533,7 @@ add_filter('wp_nav_menu_items', 'jumpstart_ex_nav_search', 10, 2);
  */
 function themeblvd_ex_sidebar_args( $args, $sidebar, $location ) {
 
-	if ( in_array( $location, array('sidebar_left', 'sidebar_right', 'floating') ) ) {
+	if ( in_array( $location, array('sidebar_left', 'sidebar_right') ) ) {
 
 		$text = 'text-dark';
 

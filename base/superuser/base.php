@@ -1719,6 +1719,8 @@ function jumpstart_su_css() {
 
 	if ( themeblvd_get_option('widget_title_shadow') ) {
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+	} else {
+		$print .= "\ttext-shadow: none;\n";
 	}
 
 	$print .= "}\n";
@@ -2496,7 +2498,7 @@ add_filter('wp_nav_menu_items', 'jumpstart_su_nav_search', 10, 2);
  */
 function themeblvd_su_sidebar_args( $args, $sidebar, $location ) {
 
-	if ( in_array( $location, array('sidebar_left', 'sidebar_right', 'floating') ) ) {
+	if ( in_array( $location, array('sidebar_left', 'sidebar_right') ) ) {
 
 		$text = 'text-dark';
 
