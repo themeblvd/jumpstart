@@ -102,9 +102,9 @@ article.page {
 }
 
 /* Posts Wrap */
-.post_list.archive-loop,
-.post_grid.archive-loop,
-.post_showcase.archive-loop {
+.post_list.archive-loop .post-wrap,
+.post_grid.archive-loop .post-wrap,
+.post_showcase.archive-loop .post-wrap {
 	background: #222222;
 }
 

@@ -300,9 +300,14 @@ p {
 /* Alerts */
 .alert {
 	border-width: 0;
-	border-left-width: 10px;
+	border-right-width: 10px;
 	-webkit-border-radius: 0;
 	border-radius: 0;
+	text-shadow: none;
+}
+.alert > a:not(.btn) {
+	color: inherit !important;
+	text-decoration: underline;
 }
 
 /* Forms */
@@ -6153,6 +6158,9 @@ blockquote small {
 .tb-map img {
 	max-width: none; /* fixes display of zoom controls */
 }
+.tb-map .map-marker-info {
+	color: #666666;
+}
 .tb-map .map-marker-info p:last-child {
 	margin-bottom: 0;
 }
@@ -6899,6 +6907,8 @@ blockquote small {
 }
 .tb-search .search-submit {
 	border: none;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 	font-size: 14px;
 	margin: 0;
 	padding: 0;
