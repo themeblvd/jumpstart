@@ -224,7 +224,8 @@ function setup_themeblvd_banner_meta() {
 			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'core',									// high, core, default, or low
-			'group'		=> '_tb_banner'								// save all option to single meta entry "_tb_banner"
+			'group'		=> '_tb_banner',							// save all option to single meta entry "_tb_banner"
+			'textures'	=> true										// uses texture browser in options
 		),
 		'options' => array(
 			'subgroup_start_1' => array(

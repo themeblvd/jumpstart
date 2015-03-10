@@ -45,15 +45,32 @@ class Theme_Blvd_Meta_Box {
 		}
 
 		$defaults = array(
-			'page'			=> array( 'post' ),						// can contain post, page, link, or custom post type's slug
-			'context'		=> 'normal',							// normal, advanced, or side
+			'page'			=> array( 'post' ),		// can contain post, page, link, or custom post type's slug
+			'context'		=> 'normal',			// normal, advanced, or side
 			'priority'		=> 'high',
-			'save_empty'	=> true 								// Save empty custom fields?
+			'save_empty'	=> true, 				// Save empty custom fields?
+			'textures'		=> false				// Include texture browser?
 		);
 		$this->args = wp_parse_args( $args, $defaults );
 
+		add_action( 'current_screen', array( $this, 'helpers' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
+	}
+
+	/**
+	 * Add any helper items needed to be outputted for
+	 * options being used in meta box.
+	 *
+	 * @since 2.5.0
+	 */
+	public function helpers() {
+
+		$page = get_current_screen();
+
+		if ( $this->args['textures'] && $page->base == 'post' && in_array($page->post_type, $this->args['page']) ) {
+			add_action( 'in_admin_header', 'themeblvd_texture_browser' );
+		}
 	}
 
 	/**
