@@ -820,17 +820,17 @@ function themeblvd_get_textures() {
 		),
 		'diagnol_thin' => array(
 			'name' 		=> __( 'Diagonal (thin)', 'themeblvd' ),
-			'url' 		=> $imagepath.'diagnol_thin.png',
+			'url' 		=> $imagepath.'diagnol.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
-			'size'		=> 'auto'
+			'size'		=> '6px 6px'
 		),
 		'diagnol_thick' => array(
 			'name' 		=> __( 'Diagonal (thick)', 'themeblvd' ),
-			'url' 		=> $imagepath.'diagnol_thick.png',
+			'url' 		=> $imagepath.'diagnol.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
-			'size'		=> 'auto'
+			'size'		=> '20px 20px'
 		),
 		'diamonds' => array(
 			'name' 		=> __( 'Diamonds', 'themeblvd' ),
@@ -1128,17 +1128,17 @@ function themeblvd_get_textures() {
 		),
 		'diagnol_thin_light' => array(
 			'name' 		=> __( 'Light Diagonal (thin)', 'themeblvd' ),
-			'url' 		=> $imagepath.'diagnol_thin_light.png',
+			'url' 		=> $imagepath.'diagnol_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
-			'size'		=> 'auto'
+			'size'		=> '6px 6px'
 		),
 		'diagnol_thick_light' => array(
 			'name' 		=> __( 'Light Diagonal (thick)', 'themeblvd' ),
-			'url' 		=> $imagepath.'diagnol_thick_light.png',
+			'url' 		=> $imagepath.'diagnol_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
-			'size'		=> 'auto'
+			'size'		=> '20px 20px'
 		),
 		'diamonds_light' => array(
 			'name' 		=> __( 'Light Diamonds', 'themeblvd' ),
