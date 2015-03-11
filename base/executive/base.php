@@ -1736,29 +1736,29 @@ function jumpstart_ex_css() {
 		// Content border
 		if ( themeblvd_get_option('apply_content_border') ) {
 
-			$print .= "\t.bg-content,\n";
+			$print .= ".bg-content,\n";
 
-			$print .= "\t.blog-wrap > article,\n";
-			$print .= "\tarticle.single,\n";
-			$print .= "\tarticle.page,\n";
+			$print .= ".blog-wrap > article,\n";
+			$print .= "article.single,\n";
+			$print .= "article.page,\n";
 
-			$print .= "\t.tb-related-posts > .inner,\n";
+			$print .= ".tb-related-posts > .inner,\n";
 
-			$print .= "\t#comments .comment-body,\n";
-			$print .= "\t#respond #commentform,\n";
+			$print .= "#comments .comment-body,\n";
+			$print .= "#respond #commentform,\n";
 
-			$print .= "\t.tb-info-box,\n";
-			$print .= "\t.search-page,\n";
-			$print .= "\t.post_list.archive-loop .post-wrap,\n";
-			$print .= "\t.post_grid.archive-loop .post-wrap,\n";
-			$print .= "\t.post_showcase.archive-loop .post-wrap,\n";
+			$print .= ".tb-info-box,\n";
+			$print .= ".search-page,\n";
+			$print .= ".post_list.archive-loop .post-wrap,\n";
+			$print .= ".post_grid.archive-loop .post-wrap,\n";
+			$print .= ".post_showcase.archive-loop .post-wrap,\n";
 
-			$print .= "\t.list-template-wrap .list-wrap,\n";
-			$print .= "\t.grid-template-wrap .grid-wrap,\n";
-			$print .= "\t.showcase-template-wrap .showcase-wrap,\n";
+			$print .= ".list-template-wrap .list-wrap,\n";
+			$print .= ".grid-template-wrap .grid-wrap,\n";
+			$print .= ".showcase-template-wrap .showcase-wrap,\n";
 
-			$print .= "\t.element-section > .element.bg-content,\n";
-			$print .= "\t.element-columns .element.bg-content {\n";
+			$print .= ".element-section > .element.bg-content,\n";
+			$print .= ".element-columns .element.bg-content {\n";
 
 			$print .= sprintf("\tborder: %s solid %s;\n", themeblvd_get_option('content_border_width'), themeblvd_get_option('content_border_color'));
 
