@@ -317,6 +317,15 @@
 #tb-side-menu-wrapper .tb-search .search-input {
 	color: #ffffff;
 }
+#tb-side-menu-wrapper .tb-search .search-input::-moz-placeholder {
+	color: rgba(255,255,255,.5);
+}
+#tb-side-menu-wrapper .tb-search .search-input:-ms-input-placeholder {
+	color: rgba(255,255,255,.5);
+}
+#tb-side-menu-wrapper .tb-search .search-input::-webkit-input-placeholder {
+	color: rgba(255,255,255,.5);
+}
 
 /* Transparent Header */
 .site-header.transparent {
