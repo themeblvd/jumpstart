@@ -1890,6 +1890,16 @@ function jumpstart_su_css() {
 			}
 		}
 
+	} else {
+
+		// For transparent header, give header the
+		// selected background color for mobile.
+		$print .= "@media (max-width: 767px) {\n";
+		$print .= "\t.site-header {\n";
+		$print .= sprintf("\t\tbackground-color: %s;\n", $header_bg_color);
+		$print .= "\t}\n";
+		$print .= "}\n";
+
 	}
 
 	// Header content padding
