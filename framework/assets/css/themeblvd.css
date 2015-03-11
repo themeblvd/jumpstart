@@ -6565,6 +6565,7 @@ blockquote small {
 @media (max-width: 767px) {
 	.tb-slogan {
 		max-width: none !important;
+		text-align: center;
 	}
 	.tb-slogan.button-left .entry-content,
 	.tb-slogan.button-right .entry-content {
