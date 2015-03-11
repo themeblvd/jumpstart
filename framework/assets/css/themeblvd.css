@@ -6401,27 +6401,42 @@ blockquote small {
 .element-pricing_table .tb-pricing-table {
 	margin-bottom: 0;
 }
-.tb-pricing-table.has-popout {
-	padding-top: 20px;
+@media (min-width: 768px) {
+	.tb-pricing-table.has-popout {
+		padding-top: 20px;
+	}
 }
 .tb-pricing-table .price-column {
 	border-style: solid;
 	border-width: 1px;
-	border-left-width: 0px;
 	line-height: 1;
+	margin-bottom: 20px;
 	padding: 0;
 	text-align: center;
 }
-.tb-pricing-table .price-column.popout,
-.tb-pricing-table .price-column:first-child {
-	border-left-width: 1px;
+.tb-pricing-table .price-column:last-child {
+	margin-bottom: 0;
+}
+@media (min-width: 768px) {
+	.tb-pricing-table .price-column {
+		border-left-width: 0px;
+		margin-bottom: 0;
+	}
+	.tb-pricing-table .price-column.popout,
+	.tb-pricing-table .price-column:first-child {
+		border-left-width: 1px;
+	}
 }
 .tb-pricing-table .price-column.popout {
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
 	box-shadow: 0 0 10px rgba(0,0,0,.2);
-	margin: -20px 0 0 -1px;
 	z-index: 2;
+}
+@media (min-width: 768px) {
+	.tb-pricing-table .price-column.popout {
+		margin: -20px 0 0 -1px;
+	}
 }
 .tb-pricing-table .title-wrap {
 	background-color: rgba(0,0,0,.1);
