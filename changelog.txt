@@ -30,6 +30,8 @@ Jump Start Changelog
 * Added new textures: Circles, Crystal, Hexagons, Polygons, Pyramids, Skulls, Tiles, and Waves
 * Added option to shade page banner images with transparent color.
 * Added filters for displaying theme menu locations, [see here](http://support.themeblvd.com/forums/topic/creating-separate-main-menu-for-logged-in-user-jump-start-2-0-beta2/#post-20720).
+* Added `video_background` option type.
+* Added video background support in Layout Builder sections, page banners, and theme base header background options.
 * Improvements to WP `[caption]` shortcode, and auto lightbox integration.
 * Improvements, structural changes, and option changes to header of Executive theme base.
 * Improvements to displaying icons in menus, including using FontAwesome's `fa-fw` class.

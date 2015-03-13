@@ -105,6 +105,18 @@ Author URI: http://www.themeblvd.com
 	z-index: 900; /* Help z-index drop down menus above elements below header */
 }
 
+/* BG Video */
+.site-header.has-bg-video > .tb-bg-video {
+	z-index: 1;
+}
+.site-header.has-bg-video > .wrap > .header-top,
+.site-header.has-bg-video > .wrap > .header-above,
+.site-header.has-bg-video > .wrap > .header-content,
+.site-header.has-bg-video > .wrap > .header-nav {
+	position: relative;
+	z-index: 900; /* Help z-index drop down menus above elements below header */
+}
+
 /* Search Popup */
 .tb-search-popup .search-popup {
 	border-color: rgba(0,0,0,.2);

@@ -1479,6 +1479,7 @@ function themeblvd_get_banner( $args = array() ) {
 	    'bg_texture_parallax' 		=> '5',
 	    'bg_image' 					=> array(),
 	    'bg_image_parallax' 		=> '2',
+		'bg_video' 					=> array(),
 		'apply_bg_shade'			=> '0',
 		'bg_shade_color'			=> '#000000',
 		'bg_shade_opacity'			=> '0.5',
@@ -1494,8 +1495,13 @@ function themeblvd_get_banner( $args = array() ) {
 
 	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s" data-parallax="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style, themeblvd_get_parallax_intensity($args) );
 
+	// Background video
+	if ( $args['bg_type'] == 'video' ) {
+		$output .= themeblvd_get_bg_video($args['bg_video']);
+	}
+
 	// Banner color shade
-	if ( $args['bg_type'] == 'image' && $args['apply_bg_shade'] ) {
+	if ( ( $args['bg_type'] == 'image' || $args['bg_type'] == 'video' ) && $args['apply_bg_shade'] ) {
 		$output .= sprintf( '<div class="bg-shade" style="background-color: %s; background-color: %s;"></div>', $args['bg_shade_color'], themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
 	}
 
@@ -1797,7 +1803,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
 	$output .= '</div><!-- .carousel-control-wrap (end) -->';
 	$output .= '</div><!-- .tb-bg-slideshow (end) -->';
 
-	return apply_filters( 'themeblvd_bg_slideshow', $output, $images );
+	return apply_filters( 'themeblvd_bg_slideshow', $output, $images, $id );
 }
 
 /**
@@ -1807,4 +1813,43 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
  */
 function themeblvd_bg_slideshow( $id, $images, $parallax = 0 ) {
 	echo themeblvd_get_bg_slideshow( $id, $images, $parallax );
+}
+
+/**
+ * Get background video.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_bg_video( $video ) {
+
+	$video = wp_parse_args( $video, array(
+		'mp4'		=> '',
+		'webm'		=> '',
+		'fallback'	=> ''
+	));
+
+	$output = "\n<div class=\"tb-bg-video\">\n";
+	$output .= "\t<video autoplay loop class=\"tb-bg-video\">\n";
+
+	if ( $video['webm'] ) {
+		$output .= sprintf("\t\t<source src=\"%s\" type=\"video/webm\">\n", $video['webm']);
+	}
+
+	if ( $video['mp4'] ) {
+		$output .= sprintf("\t\t<source src=\"%s\" type=\"video/mp4\">\n", $video['mp4']);
+	}
+
+	$output .= "\t</video>\n";
+	$output .= "</div><!-- .tb-bg-video (end) -->\n";
+
+	return apply_filters( 'themeblvd_bg_video', $output, $video );
+}
+
+/**
+ * Display background video.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_bg_video( $video ) {
+	echo themeblvd_get_bg_video( $video );
 }

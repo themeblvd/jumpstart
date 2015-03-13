@@ -656,7 +656,7 @@ function themeblvd_get_display_class( $display ) {
 				}
 			}
 
-			if ( ( $bg_type == 'image' || $bg_type == 'slideshow' ) && ! empty( $display['apply_bg_shade'] ) ) {
+			if ( ( $bg_type == 'image' || $bg_type == 'slideshow' || $bg_type == 'video' ) && ! empty( $display['apply_bg_shade'] ) ) {
 				$class[] = 'has-bg-shade';
 			}
 
@@ -686,6 +686,10 @@ function themeblvd_get_display_class( $display ) {
 		} else if ( $bg_type == 'slideshow' ) {
 
 			$class[] = 'has-bg-slideshow';
+
+		}  else if ( $bg_type == 'video' ) {
+
+			$class[] = 'has-bg-video';
 
 		}
 
@@ -760,7 +764,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 		$bg_type = $display['bg_type'];
 	}
 
-	if ( in_array( $bg_type, array('color', 'texture', 'image', 'none') ) ) {
+	if ( in_array( $bg_type, array('color', 'texture', 'image', 'video', 'none') ) ) {
 
 		if ( $bg_type == 'none' && empty($display['bg_content']) ) {
 
@@ -827,6 +831,12 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 			if ( ! $parallax && ! empty( $display['bg_image']['position'] ) ) {
 				$params['background-position'] = $display['bg_image']['position'];
+			}
+
+		} else if ( $bg_type == 'video' ) {
+
+			if ( ! empty( $display['bg_video']['fallback'] ) ) {
+				$params['background-image'] = sprintf('url(%s)', $display['bg_video']['fallback']);
 			}
 
 		}

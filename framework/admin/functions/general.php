@@ -398,7 +398,8 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 		'color'		=> __('Custom color', 'themeblvd'),
 		'texture'	=> __('Custom color + texture', 'themeblvd'),
 		'image'		=> __('Custom color + image', 'themeblvd'),
-		'slideshow'	=> __('Custom image slideshow', 'themeblvd')
+		'slideshow'	=> __('Custom image slideshow', 'themeblvd'),
+		'video'		=> __('Custom video', 'themeblvd')
 	);
 
 	if ( $context != 'section' ) {

@@ -95,7 +95,7 @@ function themeblvd_media_uploader( $args ) {
 			$data['title'] = __('Select Video', 'themeblvd');
 			$data['select'] = __('Use Video', 'themeblvd');
 			$data['upload'] = __('Get Video', 'themeblvd');
-			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Video Link', 'themeblvd') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Video URL', 'themeblvd') .'" />'."\n";
 			break;
 
 		case 'logo' :

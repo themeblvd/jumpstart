@@ -62,6 +62,18 @@ Author URI: http://www.themeblvd.com
 	z-index: 2;
 }
 
+/* BG Video */
+.site-header.has-bg-video > .tb-bg-video {
+	z-index: 1;
+}
+.site-header.has-bg-video > .wrap > .header-top,
+.site-header.has-bg-video > .wrap > .header-above,
+.site-header.has-bg-video > .wrap > .header-content,
+.site-header.has-bg-video > .wrap > .header-nav {
+	position: relative;
+	z-index: 2;
+}
+
 /* Header Content */
 @media (min-width: 993px) {
 	.header-content > .wrap {

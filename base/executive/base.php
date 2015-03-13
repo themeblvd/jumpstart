@@ -368,6 +368,13 @@ function jumpstart_ex_options() {
 				'id'		=> 'sub_group_end_7',
 				'type' 		=> 'subgroup_end'
 			),
+			'header_bg_video' => array(
+				'id'		=> 'header_bg_video',
+				'name'		=> __('Background Video', 'theme-blvd-layout-builder'),
+				'desc'		=> __('Setup a background video. For best results, make sure to use all three fields. The <em>.webm</em> file will display in Google Chrome, while the <em>.mp4</em> will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'theme-blvd-layout-builder'),
+				'type'		=> 'background_video',
+				'class'		=> 'hide receiver receiver-video'
+			),
 			'sub_group_start_8' => array(
 				'id'		=> 'sub_group_start_8',
 				'type' 		=> 'subgroup_start',
@@ -1781,6 +1788,7 @@ function jumpstart_ex_css() {
 		$options['bg_texture_parallax'] = themeblvd_get_option('header_bg_texture_parallax');
 		$options['bg_image'] = themeblvd_get_option('header_bg_image');
 		$options['bg_image_parallax'] = themeblvd_get_option('header_bg_image_parallax');
+		$options['bg_video'] = themeblvd_get_option('header_bg_video');
 		$options['apply_bg_shade'] = themeblvd_get_option('header_apply_bg_shade');
 		$options['bg_shade_color'] = themeblvd_get_option('header_bg_shade_color');
 		$options['bg_shade_opacity'] = themeblvd_get_option('header_bg_shade_opacity');
@@ -2319,7 +2327,8 @@ function jumpstart_ex_header_class( $output, $class ) {
 		'bg_texture_parallax'			=> themeblvd_get_option('header_bg_texture_parallax'),
 		'bg_image'						=> themeblvd_get_option('header_bg_image'),
 		'bg_image_parallax'				=> themeblvd_get_option('header_bg_image_parallax'),
-		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow')
+		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
+		'bg_video'						=> themeblvd_get_option('header_bg_video')
 	);
 
 	$class = array_merge( $class, themeblvd_get_display_class($options) );
@@ -2419,11 +2428,16 @@ function jumpstart_ex_header_top() {
 		'bg_shade_opacity'				=> themeblvd_get_option('header_bg_shade_opacity'),
 		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
 		'apply_bg_slideshow_parallax'	=> themeblvd_get_option('header_apply_bg_slideshow_parallax'),
-		'bg_slideshow_parallax'			=> themeblvd_get_option('header_bg_slideshow_parallax')
+		'bg_slideshow_parallax'			=> themeblvd_get_option('header_bg_slideshow_parallax'),
+		'bg_video'						=> themeblvd_get_option('header_bg_video')
 	);
 
 	if ( ( $display['bg_type'] == 'image' || $display['bg_type'] == 'slideshow' ) && ! empty($display['apply_bg_shade']) ) {
 		printf( '<div class="bg-shade" style="background-color: %s; background-color: %s;"></div>', $display['bg_shade_color'], themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) );
+	}
+
+	if ( $display['bg_type'] == 'video' && ! empty($display['bg_video']) ) {
+		themeblvd_bg_video( $display['bg_video'] );
 	}
 
 	if ( $display['bg_type'] == 'slideshow' && ! empty($display['bg_slideshow']) ) {

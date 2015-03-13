@@ -30,6 +30,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_background_position', 'themeblvd_sanitize_background_position' );
 	add_filter( 'themeblvd_background_attachment', 'themeblvd_sanitize_background_attachment' );
 	add_filter( 'themeblvd_background_size', 'themeblvd_sanitize_background_size' );
+	add_filter( 'themeblvd_sanitize_background_video', 'themeblvd_sanitize_background_video' );
 	add_filter( 'themeblvd_sanitize_typography', 'themeblvd_sanitize_typography' );
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_font_style', 'themeblvd_sanitize_font_style' );
@@ -278,6 +279,34 @@ function themeblvd_sanitize_background( $input ) {
 
 	if ( isset( $input['size'] ) ) {
 		$output['size'] = apply_filters( 'themeblvd_background_size', $input['size'] );
+	}
+
+	return $output;
+}
+
+/**
+ * Background Video
+ *
+ * @since 2.2.0
+ */
+function themeblvd_sanitize_background_video( $input ) {
+
+	$output = array(
+		'mp4'		=> '',
+		'webm'		=> '',
+		'fallback'	=> ''
+	);
+
+	if ( isset( $input['mp4'] ) ) {
+		$output['mp4'] = apply_filters( 'themeblvd_sanitize_upload', $input['mp4'] );
+	}
+
+	if ( isset( $input['webm'] ) ) {
+		$output['webm'] = apply_filters( 'themeblvd_sanitize_upload', $input['webm'] );
+	}
+
+	if ( isset( $input['fallback'] ) ) {
+		$output['fallback'] = apply_filters( 'themeblvd_sanitize_upload', $input['fallback'] );
 	}
 
 	return $output;

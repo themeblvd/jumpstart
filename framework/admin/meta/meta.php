@@ -320,9 +320,16 @@ function setup_themeblvd_banner_meta() {
 			'subgroup_end_3' => array(
 				'type'		=> 'subgroup_end'
 			),
+			'bg_video' => array(
+				'id'		=> 'bg_video',
+				'name'		=> __('Background Video', 'themeblvd'),
+				'desc'		=> __('Setup a background video. For best results, make sure to use all three fields. The <em>.webm</em> file will display in Google Chrome, while the <em>.mp4</em> will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'),
+				'type'		=> 'background_video',
+				'class'		=> 'hide receiver receiver-video'
+			),
 			'subgroup_start_4' => array(
 				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow'
+				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow receiver-video'
 			),
 			'apply_bg_shade' => array(
 				'id'		=> 'apply_bg_shade',
@@ -364,7 +371,7 @@ function setup_themeblvd_banner_meta() {
 			),
 			'subgroup_start_5' => array(
 				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide-toggle hide receiver receiver-color receiver-texture receiver-image'
+				'class'		=> 'show-hide-toggle hide receiver receiver-color receiver-texture receiver-image receiver-video'
 			),
 			'headline' => array(
 				'id'		=> 'headline',
@@ -425,7 +432,7 @@ function setup_themeblvd_banner_meta() {
 			),
 			'subgroup_start_6' => array(
 				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide hide receiver receiver-color receiver-texture receiver-image'
+				'class'		=> 'show-hide hide receiver receiver-color receiver-texture receiver-image receiver-video'
 			),
 			'height' => array(
 				'id'		=> 'height',

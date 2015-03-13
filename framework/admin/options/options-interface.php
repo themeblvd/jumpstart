@@ -824,6 +824,74 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				break;
 
+            /*---------------------------------------*/
+			/* Background Video
+			/*---------------------------------------*/
+
+			case 'background_video':
+
+                // mp4 video
+                $output .= '<div class="section-upload">';
+                $output .= '<p><strong>'.__('Video (mp4)', 'themeblvd').'</strong></p>';
+
+                $video_url = '';
+
+                if ( ! empty( $val['mp4'] ) ) {
+                    $video_url = $val['mp4'];
+                }
+
+                $output .= themeblvd_media_uploader(array(
+                    'option_name'   => $option_name,
+                    'type'          => 'video',
+                    'id'            => $value['id'],
+                    'value'         => $video_url,
+                    'name'          => 'mp4'
+                ));
+
+                $output .= '</div><!-- .section-upload (end) -->';
+
+                // webM video
+                $output .= '<div class="section-upload">';
+                $output .= '<p><strong>'.__('Video (webM)', 'themeblvd').'</strong></p>';
+
+                $video_url = '';
+
+                if ( ! empty( $val['webm'] ) ) {
+                    $video_url = $val['webm'];
+                }
+
+                $output .= themeblvd_media_uploader(array(
+                    'option_name'   => $option_name,
+                    'type'          => 'video',
+                    'id'            => $value['id'],
+                    'value'         => $video_url,
+                    'name'          => 'webm'
+                ));
+
+                $output .= '</div><!-- .section-upload (end) -->';
+
+                // Background image
+                $output .= '<div class="section-upload clearfix">';
+                $output .= '<p><strong>'.__('Video Fallback Image', 'themeblvd').'</strong></p>';
+
+                $img_url = '';
+
+                if ( ! empty( $val['fallback'] ) ) {
+                    $img_url = $val['fallback'];
+                }
+
+                $output .= themeblvd_media_uploader(array(
+                    'option_name'   => $option_name,
+                    'type'          => 'background',
+                    'id'            => $value['id'],
+                    'value'         => $img_url,
+                    'name'          => 'fallback'
+                ));
+
+                $output .= '</div><!-- .section-upload (end) -->';
+
+                break;
+
 			/*---------------------------------------*/
 			/* Gradient
 			/*---------------------------------------*/

@@ -126,7 +126,8 @@
  *   22.3 - Elements
  *   22.4 - Section BG shade
  *   22.5 - Section BG slideshow
- *   22.6 - Columns
+ *   22.6 - Section BG video
+ *   22.7 - Columns
  * 23.0 - Content (content.php)
  *   23.1 - Content (direct input)
  *   23.2 - Headline
@@ -137,7 +138,8 @@
  *   24.3 - Video
  *   24.4 - Simple Slider
  *   24.5 - BG Slideshow
- *   24.6 - Featured Banner
+ *   24.6 - BG Video
+ *   24.7 - Featured Banner
  * 25.0 - Post Display (loop.php)
  *   25.1 - Post List
  *   25.2 - Post Grid
@@ -5055,7 +5057,16 @@ button.mfp-arrow:active {
 }
 .element-section.has-bg-slideshow > .element {
 	position: relative;
-	z-index: 2;
+	z-index: 3;
+}
+
+/* Section BG video */
+.element-section.has-bg-video > .tb-bg-video {
+	z-index: 1;
+}
+.element-section.has-bg-video > .element {
+	position: relative;
+	z-index: 3;
 }
 
 /* Section Blend */
@@ -5440,6 +5451,36 @@ blockquote small {
 }
 .tb-bg-slideshow .carousel-inner > .item.active {
 	opacity: 1;
+}
+
+/* BG Video */
+.has-bg-video {
+	background: #000000;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	position: relative;
+}
+.tb-bg-video {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+.tb-bg-video video {
+	width: 100%;
+}
+.tb-bg-video.fixed video {
+	position: fixed;
+}
+@media (max-width: 992px) {
+	.tb-bg-video video {
+		display: none;
+	}
 }
 
 /* Featured Banner */
