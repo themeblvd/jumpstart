@@ -5530,7 +5530,6 @@ blockquote small {
 	display: block;
 	font-size: 18px;
 	line-height: 18px;
-	font-weight: bold;
 }
 @media (max-width: 992px) {
 	.tb-featured-banner > .wrap {
@@ -7759,9 +7758,10 @@ blockquote small {
 .text-light a:not(.btn),
 .text-light a:not(.btn):hover {
 	color: #ffffff;
+	text-decoration: underline;
 }
 .text-light a:not(.btn):hover {
-	text-decoration: underline;
+	color: rgba(255,255,255,.8);
 }
 
 /* Breadcrumbs */
