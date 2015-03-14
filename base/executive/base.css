@@ -218,14 +218,6 @@ Author URI: http://www.themeblvd.com
 /* =Boxed Layout
 -----------------------------------------------*/
 
-.js-boxed #wrapper {
-	padding: 20px 0;
-}
-@media (max-width: 480px) {
-	.js-boxed #wrapper {
-		padding: 0;
-	}
-}
 .js-boxed #container {
 	background: #ffffff;
 	margin-right: auto;
