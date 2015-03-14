@@ -81,6 +81,8 @@ Jump Start Changelog
 * Fixed: When selecting "color" social icons in the header, icons didn't display correctly in mobile menu.
 * Fixed: Tooltips for social icons in mobile menu now hidden to avoid odd behavior.
 * Fixed: 404 pages not displaying with same styling as all other pages, with wrapped content.
+* Fixed: With image element in Builder, descriptive text will also now get used for title tag if image is a link, and thus show in lightbox popup.
+* Fixed: With image element in Builder, PHP error when linking image to webpage.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`
