@@ -698,6 +698,11 @@ function themeblvd_get_display_class( $display ) {
 			$class[] = 'has-custom-padding';
 		}
 
+		// Responsive visibility
+		if ( ! empty( $display['visibility'] ) ) {
+			$class[] = themeblvd_responsive_visibility_class( $display['visibility'] );
+		}
+
 		// User-added CSS classes
 		if ( ! empty( $display['classes'] ) ) {
 			$class[] = $display['classes'];
