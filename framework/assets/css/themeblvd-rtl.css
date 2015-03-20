@@ -5146,12 +5146,14 @@ button.mfp-arrow:active {
 	margin-bottom: 0;
 }
 @media (max-width: 992px) {
-	.element-columns.stack-md > .row > .col {
+	.element-columns.stack-md > .row > .col,
+	.element-columns.stack-md > .container-md-height > .row > .col {
 		margin-bottom: 30px;
 	}
 }
 @media (max-width: 767px) {
-	.element-columns.stack-sm > .row > .col {
+	.element-columns.stack-sm > .row > .col,
+	.element-columns.stack-sm > .container-sm-height > .row > .col {
 		margin-bottom: 30px;
 	}
 }
