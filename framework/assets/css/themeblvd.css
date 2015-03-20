@@ -17,6 +17,7 @@
  *   2.1 - General
  *   2.2 - Images
  *   2.3 - Icon Lists
+ *   2.4 - Rounded Corners
  * 3.0 - WP Classes
  * 4.0 - Animation
  * 5.0 - Post Formats
@@ -467,6 +468,24 @@ img.size-full {
 .fa-li {
 	top: 0;
 	line-height: inherit;
+}
+
+/* Rounded Corners */
+.border-radius-5 {
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+.border-radius-10 {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+.border-radius-15 {
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+}
+.border-radius-20 {
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
 }
 
 /* =WordPress Standard Classes
