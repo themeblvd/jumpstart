@@ -1194,23 +1194,15 @@ li.menu-item .tb-side-menu-toggle {
 -----------------------------------------------*/
 
 /* Responsive visiblity classes */
-.hide_on_standard,
-.hide_on_standard_and_tablet,
-.hide_on_standard_and_tablet_and_mobile,
-.hide_on_standard_and_mobile {
-	display: none;
-}
-.hide_on_tablet,
-.hide_on_tablet_and_mobile,
-.hide_on_mobile {
-	display: block;
-}
-@media (max-width: 992px) {
+@media (min-width: 993px) {
 	.hide_on_standard,
-	.hide_on_standard_and_mobile,
-	.hide_on_mobile {
-		display: block;
+	.hide_on_standard_and_tablet,
+	.hide_on_standard_and_tablet_and_mobile,
+	.hide_on_standard_and_mobile {
+		display: none;
 	}
+}
+@media (max-width: 992px) and (min-width: 768px) {
 	.hide_on_standard_and_tablet,
 	.hide_on_standard_and_tablet_and_mobile,
 	.hide_on_tablet,
@@ -1219,11 +1211,6 @@ li.menu-item .tb-side-menu-toggle {
 	}
 }
 @media (max-width: 767px) {
-	.hide_on_standard,
-	.hide_on_standard_and_tablet,
-	.hide_on_tablet {
-		display: block;
-	}
 	.hide_on_standard_and_tablet_and_mobile,
 	.hide_on_standard_and_mobile,
 	.hide_on_tablet_and_mobile,
@@ -4984,6 +4971,11 @@ button.mfp-arrow:active {
 	padding: 60px 30px;
 	position: relative;
 }
+@media (max-width: 767px) {
+	.element-section {
+		padding: 35px 20px;
+	}
+}
 
 /* Elements */
 .element-section > .element,
@@ -5019,6 +5011,18 @@ button.mfp-arrow:active {
 }
 .element-section > .element.popout.last {
 	margin-bottom: -60px;
+}
+@media (max-width: 767px) {
+	.element-section > .element.popout {
+		margin-right: -20px;
+		margin-left: -20px;
+	}
+	.element-section > .element.popout.first {
+		margin-top: -35px;
+	}
+	.element-section > .element.popout.last {
+		margin-bottom: -35px;
+	}
 }
 .element-section > .element.bg-content,
 .element-columns .element.bg-content {
@@ -5267,6 +5271,9 @@ blockquote small {
 .tb-thumb-link.external:before {
 	content: "\f0c1"; /* link anchor */
 }
+.element-image .thumbnail {
+	margin-bottom: 0;
+}
 
 /* Image Link Badge */
 .tb-thumb-link-badge {
@@ -5414,7 +5421,7 @@ blockquote small {
 .tb-simple-slider.cover .item .img {
 	background-position: top center;
 	background-repeat: no-repeat;
-	background-size: 100% auto;
+	background-size: cover;
 }
 .tb-simple-slider .carousel-inner > .item > img,
 .tb-simple-slider .carousel-inner > .item > a > img {
@@ -5472,9 +5479,10 @@ blockquote small {
 	z-index: 1;
 }
 .tb-bg-video video {
-	width: 100%;
+	min-width: 100%;
+	min-height: 100%;
 }
-.tb-bg-video.fixed video {
+.tb-bg-video.fixed video { /* @TODO -- currently no user option for this */
 	position: fixed;
 }
 @media (max-width: 992px) {
