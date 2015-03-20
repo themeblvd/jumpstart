@@ -1501,7 +1501,7 @@ function themeblvd_get_banner( $args = array() ) {
 
 	// Banner color shade
 	if ( ( $args['bg_type'] == 'image' || $args['bg_type'] == 'video' ) && $args['apply_bg_shade'] ) {
-		$output .= sprintf( '<div class="bg-shade" style="background-color: %s; background-color: %s;"></div>', $args['bg_shade_color'], themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
+		$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
 	}
 
 	$output .= '<div class="wrap">';
