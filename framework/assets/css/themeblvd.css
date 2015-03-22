@@ -6433,6 +6433,7 @@ blockquote small {
 }
 .tb-logo img {
 	margin: auto;
+	max-height: 100%;
 	position: absolute;
 	top: 0;
 	right: 0;
