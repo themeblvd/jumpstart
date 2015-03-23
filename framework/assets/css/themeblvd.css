@@ -303,7 +303,7 @@ p {
 /* Alerts */
 .alert {
 	border-width: 0;
-	border-right-width: 10px;
+	border-left-width: 10px;
 	-webkit-border-radius: 0;
 	border-radius: 0;
 	text-shadow: none;
