@@ -139,3 +139,23 @@ function jumpstart_base_check() {
 
 }
 add_action('themeblvd_before', 'jumpstart_base_check');
+
+/**
+ * Add Jump Start Homepage to sample layouts of
+ * Layout Builder plugin.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_sample_layouts( $layouts ) {
+
+	$layouts['jump-start-homepage'] = array(
+		'name'		=> __('Jump Start Homepage', 'themeblvd'),
+		'id'		=> 'jump-start-homepage',
+		'dir'		=> get_template_directory() . '/includes/layout/',
+		'uri'		=> get_template_directory_uri() . '/includes/layout/',
+		'assets'	=> get_template_directory_uri() . '/includes/layout/img/'
+	);
+
+	return $layouts;
+}
+add_filter('themeblvd_sample_layouts', 'jumpstart_sample_layouts');
