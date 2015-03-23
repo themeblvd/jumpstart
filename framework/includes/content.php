@@ -131,7 +131,7 @@ function themeblvd_get_content_block( $args ){
         'center'		=> '0',			// Whether to center text or not
 		'max'			=> '',			// A max width for the text element
 		'style'			=> '',			// Custom styling class
-		'text_color'	=> 'dark',		// Color of text, dark or light
+		'text_color'	=> 'none',		// Color of text, non, dark or light
         'bg_color'		=> '#cccccc',	// Background color, if wrap is true
         'bg_opacity'	=> '1'			// Background color opacity, if wrap is true
     );
@@ -141,9 +141,17 @@ function themeblvd_get_content_block( $args ){
 	$class = 'tb-content-block entry-content';
 
 	if ( $args['style'] == 'custom' ) {
-		$class .= ' has-bg text-'.$args['text_color'];
-	} else if ( $args['style'] && $args['style'] != 'none' ) {
-		$class .= ' '.$args['style'];
+
+		$class .= ' has-bg';
+
+		if ( $args['text_color'] != 'none' ) {
+			$class .= ' text-'.$args['text_color'];
+		}
+
+    } else if ( $args['style'] && $args['style'] != 'none' ) {
+
+        $class .= ' '.$args['style'];
+
 	}
 
 	if ( $args['center'] ) {

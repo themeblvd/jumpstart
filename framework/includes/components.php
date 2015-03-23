@@ -292,7 +292,7 @@ function themeblvd_get_icon_box( $args ) {
         'title'         => '',          // Title of the block
         'text'          => '',          // Content of the block
         'style'         => '',          // Custom styling class
-        'text_color'    => 'dark',      // Color of text, dark or light
+        'text_color'    => 'none',      // Color of text, none, dark or light
         'bg_color'      => '#cccccc',   // Background color, if wrap is true
         'bg_opacity'    => '1'          // Background color opacity, if wrap is true
     );
@@ -302,10 +302,18 @@ function themeblvd_get_icon_box( $args ) {
     $class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
 
     if ( $args['style'] == 'custom' ) {
-        $class .= ' has-bg text-'.$args['text_color'];
+
+		$class .= ' has-bg';
+
+		if ( $args['text_color'] != 'none' ) {
+			$class .= ' text-'.$args['text_color'];
+		}
+
     } else if ( $args['style'] && $args['style'] != 'none' ) {
+
         $class .= ' '.$args['style'];
-    }
+
+	}
 
     if ( $args['color'] == '#ffffff' ) {
         $class .= ' has-white-icon';
