@@ -15,7 +15,7 @@ Jump Start Changelog
 * Added custom height option for page banners.
 * Added max-width option for Promo Box element.
 * Added max-width and text-center options for Content element.
-* Added support for new "Blend Up/Down" section display option in builder, and increased default top/bottom padding for sections.
+* Added support for new "Blend Up/Down" section display option in Builder, and increased default top/bottom padding for sections.
 * Added icon/text insert to Divider element.
 * Added `$size` param to `themeblvd_post_thumbnail` filter, helps [FILO plugin](https://wordpress.org/plugins/theme-blvd-featured-image-link-override/).
 * Added option to hide gutters in post showcase.
@@ -33,7 +33,6 @@ Jump Start Changelog
 * Added `video_background` option type.
 * Added support for responsive visibility options for columns and sections in Builder.
 * Added video background support in Layout Builder sections, page banners, and theme base header background options.
-* Added CSS classes for use in the Builder: `border-radius-5`, `border-radius-10`, `border-radius-15`, and `border-radius-20`
 * Improvements to WP `[caption]` shortcode, and auto lightbox integration.
 * Improvements, structural changes, and option changes to header of Executive theme base.
 * Improvements to displaying icons in menus, including using FontAwesome's `fa-fw` class.

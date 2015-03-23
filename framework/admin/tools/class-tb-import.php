@@ -289,6 +289,20 @@ class Theme_Blvd_Import {
 					}
 				}
 
+				// Theme mods
+				$theme_mods = $import->thememods->thememod;
+
+				if ( $theme_mods ) {
+					foreach ( $theme_mods as $theme_mod ) {
+
+						$id = (string)$theme_mod->id;
+						$value = (string)$theme_mod->value;
+
+						set_theme_mod( $id, $value );
+
+					}
+				}
+
 				// Assign imported menus
 				$menus = $import->menus->menu;
 				$assign = array();
