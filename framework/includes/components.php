@@ -407,18 +407,18 @@ function themeblvd_get_jumbotron( $args, $content ) {
     $output = '';
 
     $defaults = array(
-        'title'         => '',      // Title of unit
-        'bg_color'      => '',      // Background color - Ex: #000000 (no option in Builder)
-        'bg_opacity'    => '1',     // BG color opacity for rgba()
-        'title_size'    => '30px',  // Size of title text
-        'title_color'   => '',      // Color of title text
-        'text_size'     => '18px',  // Size of content text
-        'text_color'    => '',      // Text color - Ex: #000000
-        'text_align'    => 'left',  // How to align text - left, right, center
-        'align'         => 'center',// How to align jumbotron - left, right, center, blank for no alignment
-        'max'           => '',      // Meant to be used with align left/right/center - 300px, 50%, etc
-        'class'         => '',      // Any additional CSS classes
-        'wpautop'       => true     // Whether to apply wpautop on content
+        'title'         => '',      	// Title of unit
+        'bg_color'      => '',      	// Background color - Ex: #000000
+        'bg_opacity'    => '1',     	// BG color opacity for rgba()
+        'title_size'    => '30px',  	// Size of title text
+        'title_color'   => '',      	// Color of title text
+        'text_size'     => '18px',  	// Size of content text
+        'text_color'    => '',      	// Text color - Ex: #000000
+        'text_align'    => 'left',  	// How to align text - left, right, center
+        'align'         => 'center',	// How to align jumbotron - left, right, center, blank for no alignment
+        'max'           => '',      	// Meant to be used with align left/right/center - 300px, 50%, etc
+		'class'         => '',      	// Any additional CSS classes
+        'wpautop'       => true     	// Whether to apply wpautop on content
     );
     $args = wp_parse_args( $args, $defaults );
 
