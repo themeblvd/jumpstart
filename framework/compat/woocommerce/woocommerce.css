@@ -778,7 +778,7 @@ ul.woocommerce-info {
 /* Tabs */
 .woocommerce-tabs .tabs {
 	list-style: none;
-	margin: 0;
+	margin: 0 0 -1px 0;
 	padding: 0;
 }
 .woocommerce-tabs .tabs::after {
@@ -814,6 +814,8 @@ ul.woocommerce-info {
 }
 .woocommerce-tabs .tabs > li.active {
 	background: #ffffff;
+	border: 1px solid transparent;
+	border-bottom: none;
 }
 .woocommerce-tabs .tabs > li.active > a,
 .woocommerce-tabs .tabs > li.active > a:hover,

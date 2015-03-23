@@ -1515,6 +1515,13 @@ function jumpstart_ent_css() {
 
 			$print .= "}\n";
 
+			if ( themeblvd_installed('woocommerce') ) {
+				$print .= ".woocommerce-tabs .panel,\n";
+				$print .= ".woocommerce-tabs .tabs > li.active {\n";
+				$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('content_border_color'));
+				$print .= "}\n";
+			}
+
 		}
 
 	}
