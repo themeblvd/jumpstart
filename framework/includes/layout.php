@@ -988,9 +988,14 @@ function themeblvd_columns( $args, $columns = null ) {
 	// Bootstrap stack point
 	$stack = $args['stack'];
 
+	if ( themeblvd_is_ie( array('8') ) ) {
+		$stack = 'xs';
+	}
+
 	// Kill it if number of columns doesn't match the
 	// number of widths exploded from the string.
 	$widths = explode( '-', $args['widths'] );
+
 	if ( $num != count( $widths ) ) {
 		return;
 	}

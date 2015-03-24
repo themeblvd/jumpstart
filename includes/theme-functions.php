@@ -51,7 +51,7 @@ function jumpstart_css() {
 
 	// IE Stylesheet
 	wp_enqueue_style( 'themeblvd-ie', get_template_directory_uri() . '/assets/css/ie.css' );
-	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'lt IE 9' ); // Add IE conditional
+	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'IE' ); // Add IE conditional
 
 	// Primary style.css (mainly for child theme devs)
 	wp_enqueue_style( 'themeblvd-theme', get_stylesheet_uri(), $api->get_framework_deps() );

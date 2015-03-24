@@ -1,21 +1,21 @@
-/* Fix responsive featured images at 100% width in IE8 */
-.attachment-tb_medium img.wp-post-image,
-.attachment-tb_large img.wp-post-image,
-.attachment-grid_12 img.wp-post-image,
-.attachment-grid_6 img.wp-post-image,
-.attachment-grid_4 img.wp-post-image,
-.attachment-grid_3 img.wp-post-image,
-.attachment-grid_2 img.wp-post-image,
-.attachment-grid_fifth_1 img.wp-post-image,
-.type-attachment .attachment img {
+.ie8 .header-logo img,
+.ie8 .featured-item > .tb-thumb-link > img,
+.ie8 .featured-item > img,
+.ie8 .featured-image img,
+.ie8 .thumb-wrapper img {
 	width: auto;
 }
+.ie8 .tb-sticky-menu {
+	display: none;
+}
+.tb-blend {
+	display: none;
+}
 
-/* Fix small floated thumbnails in IE8 */
-.attachment-small img.wp-post-image,
-.attachment-tb_small img.wp-post-image,
-.attachment-square_small img.wp-post-image,
-.attachment-square_smaller img.wp-post-image,
-.attachment-square_smallest img.wp-post-image {
-	max-width: inherit;
+/* Responsive visiblity classes */
+.hide_on_standard,
+.hide_on_standard_and_tablet,
+.hide_on_standard_and_tablet_and_mobile,
+.hide_on_standard_and_mobile {
+	display: none;
 }

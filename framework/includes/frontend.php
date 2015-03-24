@@ -212,6 +212,7 @@ function themeblvd_body_class( $classes ) {
 
 		// Internet Explorer... ugh, kill me now.
 		$classes[] = 'msie';
+
 		if ( preg_match( "/MSIE 6.0/", $browser ) ) {
 			$classes[] = 'ie6';
 		} else if ( preg_match( "/MSIE 7.0/", $browser ) ) {
@@ -222,6 +223,8 @@ function themeblvd_body_class( $classes ) {
 			$classes[] = 'ie9';
 		} else if ( preg_match( "/MSIE 10.0/", $browser ) ) {
 			$classes[] = 'ie10';
+		} else if ( preg_match( "/MSIE 11.0/", $browser ) ) {
+			$classes[] = 'ie11';
 		}
 
 	} else if ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
@@ -267,6 +270,27 @@ function themeblvd_body_class( $classes ) {
 	}
 
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
+}
+
+/**
+ * Check if we're using a certain version of IE
+ *
+ * @since 2.0.0
+ *
+ * @param array $ver Version ofs IE to check for
+ * @return bool Whether or not this is IE
+ */
+function themeblvd_is_ie( $versions = array('8') ) {
+
+	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
+
+	foreach ( $versions as $ver ) {
+		if ( preg_match( "/MSIE ".$ver.".0/", $browser ) ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**

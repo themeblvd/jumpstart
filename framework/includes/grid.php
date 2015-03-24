@@ -110,6 +110,10 @@ function themeblvd_grid_class( $key, $stack = 'sm' ) {
 		$stack = 'sm'; // Default
 	}
 
+	if ( themeblvd_is_ie( array('8') ) ) {
+		$stack = 'xs';
+	}
+
 	return apply_filters( 'themeblvd_grid_class', "col-{$stack}-{$key}", $key, $stack );
 }
 

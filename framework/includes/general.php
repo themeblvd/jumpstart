@@ -539,7 +539,7 @@ function themeblvd_sidebar_layouts() {
 	// they do not accurately know the viewport size.
 
 	// So, is this IE8?
-	if ( preg_match( "/MSIE 8.0/", $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
+	if ( themeblvd_is_ie( array('8') ) ) {
 
 		// If this is IE8, change the size
 		// to "xs" as a fail-safe. This is okay because
