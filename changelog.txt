@@ -84,6 +84,7 @@ Jump Start Changelog
 * Fixed: 404 pages not displaying with same styling as all other pages, with wrapped content.
 * Fixed: With image element in Builder, descriptive text will also now get used for title tag if image is a link, and thus show in lightbox popup.
 * Fixed: With image element in Builder, PHP error when linking image to webpage.
+* Fixed: With WPML, when creating language variation of a page, custom layout will get copied to new page.
 * The following functions have been deleted. These functions were simply action wrappers. For the most part, as long as you haven't (as suggested not to do) moved main template files header.php, footer.php, sidebar-right.php, or sidebar-left.php to your child theme, this shouldn't effect you.
 	* `themeblvd_head()`
 	* `themeblvd_before()`

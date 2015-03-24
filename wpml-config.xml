@@ -30,5 +30,7 @@
         <custom-field action="copy">_tb_layout_footer</custom-field>
         <custom-field action="copy">_tb_banner</custom-field>
         <custom-field action="copy">_tb_sidebars</custom-field>
+        <custom-field action="copy">_tb_custom_layout</custom-field>
+        <custom-field action="copy">_tb_builder_elements</custom-field>
     </custom-fields>
 </wpml-config>
