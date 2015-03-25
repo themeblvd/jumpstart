@@ -273,27 +273,6 @@ function themeblvd_body_class( $classes ) {
 }
 
 /**
- * Check if we're using a certain version of IE
- *
- * @since 2.0.0
- *
- * @param array $ver Version ofs IE to check for
- * @return bool Whether or not this is IE
- */
-function themeblvd_is_ie( $versions = array('8') ) {
-
-	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
-
-	foreach ( $versions as $ver ) {
-		if ( preg_match( "/MSIE ".$ver.".0/", $browser ) ) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-/**
  * Display HTML class for site header.
  *
  * @since 2.5.0

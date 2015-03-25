@@ -2295,3 +2295,24 @@ function themeblvd_get_base_path( $base ) {
 function themeblvd_get_base_uri( $base ) {
 	return apply_filters('themeblvd_base_uri', sprintf('%s/base/%s', get_template_directory_uri(), $base), $base);
 }
+
+/**
+ * Check if we're using a certain version of IE
+ *
+ * @since 2.0.0
+ *
+ * @param array $ver Version ofs IE to check for
+ * @return bool Whether or not this is IE
+ */
+function themeblvd_is_ie( $versions = array('8') ) {
+
+	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
+
+	foreach ( $versions as $ver ) {
+		if ( preg_match( "/MSIE ".$ver.".0/", $browser ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
