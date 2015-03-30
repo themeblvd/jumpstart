@@ -23,7 +23,7 @@ get_header();
 		<?php if ( has_action( 'themeblvd_builder_content' ) ) : ?>
 			<?php do_action( 'themeblvd_builder_content', 'main' ); ?>
 		<?php else : ?>
-			<p class="warning"><?php printf( themeblvd_get_local('no_builder_plugin'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' ); ?></p>
+			<div class="alert alert-warning"><p><?php printf( themeblvd_get_local('no_builder_plugin'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' ); ?></p></div>
 		<?php endif; ?>
 		<?php themeblvd_content_bottom(); ?>
 	</div><!-- #elements (end) -->
