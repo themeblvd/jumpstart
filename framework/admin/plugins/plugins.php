@@ -62,6 +62,11 @@ function themeblvd_tgm_register() {
 			'slug'		=> 'theme-blvd-shortcodes',
 			'required'	=> false
 		),
+		'bbpress' => array(
+			'name'		=> 'bbPress',
+			'slug'		=> 'bbpress',
+			'required'	=> false
+		),
 		'portfolios' => array(
 			'name'		=> 'Portfolios',
 			'slug'		=> 'portfolios',

@@ -495,6 +495,14 @@ class Theme_Blvd_Options_Page {
 			return themeblvd_get_option_defaults( $this->options );
 		}
 
+		// Options Import --
+		// Importing options from Tools > Import through custom demo
+		// importer system.
+
+		if ( isset( $_POST['themeblvd_import_theme_settings'] ) ) {
+			return $input;
+		}
+
 		// Update Settings --
 		// Basically, we're just looping through the current options
 		// registered in this set and sanitizing each value from the

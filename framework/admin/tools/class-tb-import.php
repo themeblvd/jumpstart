@@ -25,11 +25,26 @@ class Theme_Blvd_Import {
 	private static $instance = null;
 
 	/**
+	 * Theme Demo number to import.
+	 *
+	 * @since 2.5.0
+	 */
+	private $num = '0';
+
+	/**
 	 * Directory paths to XML files used for import.
 	 *
 	 * @since 2.5.0
 	 */
 	private $files = array();
+
+	/**
+	 * Stored meta data for all nav menu items, so we
+	 * can process for it our main menu afterwards.
+	 *
+	 * @since 2.5.0
+	 */
+	private $nav_meta = array();
 
 	/**
 	 * If at any point there's an error, we'll store it here.
@@ -72,6 +87,10 @@ class Theme_Blvd_Import {
 		// Add any required scripts at Tools > Import
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
 
+		// Store nav meta for all processed nav menu items,
+		// so we can process it at the end.
+		add_filter( 'wp_import_post_data_raw', array( $this, 'store_nav_meta' ) );
+
 		// Run our importer after WordPress has imported
 		// the standard sample data file
 		add_action( 'import_end', array( $this, 'import' ) );
@@ -89,28 +108,47 @@ class Theme_Blvd_Import {
 	 */
 	public function set_files() {
 
+		global $_FILES;
+		global $_POST;
+
+		$file = '';
+
+		if ( ! empty($_FILES['import']['name']) ) {
+			$file = $_FILES['import']['name']; // Pull filename on step 1
+		} else if ( ! empty($_POST['themeblvd_file_name']) ) {
+			$file = $_POST['themeblvd_file_name']; // Pull filename on step 2
+		}
+
 		$this->files = array(
 			'theme-settings'	=> null,
 			'site-settings'		=> null,
 			'site-widgets'		=> null
 		);
 
-		$parent = get_template_directory();
-		$active = get_stylesheet_directory();
-		$dir = apply_filters('themeblvd_import_dir', '/includes/demo/');
+		$num = substr($file, strlen(get_template().'-demo-'), 1);
 
-		foreach ( $this->files as $key => $value ) {
+		if ( intval($num) ) {
 
-			$file = '';
+			$this->num = $num;
 
-			if ( file_exists( $active.$dir.$key.'.xml' ) ) {
-				$file = $active.$dir.$key.'.xml';
-			} else if ( file_exists( $parent.$dir.$key.'.xml' ) ) {
-				$file = $parent.$dir.$key.'.xml';
-			}
+			$parent = get_template_directory();
+			$active = get_stylesheet_directory();
+			$dir = apply_filters('themeblvd_import_dir', '/includes/demos/demo-'.$this->num.'/', $this->num);
 
-			if ( $file ) {
-				$this->files[$key] = $file;
+			foreach ( $this->files as $key => $value ) {
+
+				$file = '';
+
+				if ( file_exists( $active.$dir.$key.'.xml' ) ) {
+					$file = $active.$dir.$key.'.xml';
+				} else if ( file_exists( $parent.$dir.$key.'.xml' ) ) {
+					$file = $parent.$dir.$key.'.xml';
+				}
+
+				if ( $file ) {
+					$this->files[$key] = $file;
+				}
+
 			}
 
 		}
@@ -130,7 +168,9 @@ class Theme_Blvd_Import {
 	 */
 	public function add_scripts( $hook ) {
 
-		if ( $this->doing_import() ) {
+		global $_FILES;
+
+		if ( $this->doing_import() ) { // step 1 only
 
 			$theme = wp_get_theme();
 			$name = $theme->get('Name');
@@ -139,10 +179,11 @@ class Theme_Blvd_Import {
 			wp_enqueue_script( 'themeblvd-import', TB_FRAMEWORK_URI . '/admin/assets/js/import.js', array('jquery'), TB_FRAMEWORK_VERSION );
 
 			$locals = apply_filters('themeblvd_import_locals', array(
-				'header' 			=> sprintf(__("Import %s Demo", 'themeblvd'), $name),
-				'theme_settings'	=> sprintf(__("Import %s demo's theme settings", 'themeblvd'), $name),
-				'site_settings'		=> sprintf(__("Import %s demo's important site settings", 'themeblvd'), $name),
-				'site_widgets'		=> sprintf(__("Import %s demo's widgets", 'themeblvd'), $name)
+				'header' 			=> sprintf(__("Import %s Demo #%s", 'themeblvd'), $name, $this->num),
+				'theme_settings'	=> sprintf(__("Import demo's theme settings", 'themeblvd'), $name),
+				'site_settings'		=> sprintf(__("Import demo's important site settings", 'themeblvd'), $name),
+				'site_widgets'		=> sprintf(__("Import demo's widgets", 'themeblvd'), $name),
+				'file_name'			=> $_FILES['import']['name']
 			));
 
 			if ( ! $this->has_file('theme-settings') ) {
@@ -162,6 +203,21 @@ class Theme_Blvd_Import {
 	}
 
 	/**
+	 * Store meta data in object for nav menu item
+	 * so we can save it at the end.
+	 *
+	 * @since 2.5.0
+	 */
+	function store_nav_meta( $post ) {
+
+		if ( ! empty($post['postmeta']) && ! empty($post['post_type']) && $post['post_type'] == 'nav_menu_item' ) {
+			$this->nav_meta[$post['menu_order']] = $post['postmeta'];
+		}
+
+		return $post; // pass back through, untouched
+	}
+
+	/**
 	 * Run importer.
 	 *
 	 * @since 2.5.0
@@ -178,16 +234,6 @@ class Theme_Blvd_Import {
 
 		$did_something = false;
 
-		// Import theme settings
-		if ( ! $this->error && ! empty( $_POST['themeblvd_import_theme_settings'] ) ) {
-			if ( $this->has_file('theme-settings') ) {
-				$this->do_import('theme-settings');
-				$did_something = true;
-			} else {
-				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
-			}
-		}
-
 		// Import site settings
 		if ( ! $this->error && ! empty( $_POST['themeblvd_import_site_settings'] ) ) {
 			if ( $this->has_file('site-settings') ) {
@@ -202,6 +248,16 @@ class Theme_Blvd_Import {
 		if ( ! $this->error && ! empty( $_POST['themeblvd_import_site_widgets'] ) ) {
 			if ( $this->has_file('site-widgets') ) {
 				$this->do_import('site-widgets');
+				$did_something = true;
+			} else {
+				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
+			}
+		}
+
+		// Import theme settings
+		if ( ! $this->error && ! empty( $_POST['themeblvd_import_theme_settings'] ) ) {
+			if ( $this->has_file('theme-settings') ) {
+				$this->do_import('theme-settings');
 				$did_something = true;
 			} else {
 				$this->error = __('One or more of the required XML files could not be found.', 'themeblvd');
@@ -271,6 +327,7 @@ class Theme_Blvd_Import {
 
 				// WordPress Settings
 				$settings = $import->settings->setting;
+				$pages_to_ids = apply_filters('themeblvd_import_pages_to_ids', array('page_on_front', 'page_for_posts', 'woocommerce_shop_page_id', 'woocommerce_cart_page_id', 'woocommerce_checkout_page_id'));
 
 				if ( $settings ) {
 					foreach ( $settings as $setting ) {
@@ -280,11 +337,11 @@ class Theme_Blvd_Import {
 
 						// These options require that we convert the slug of the
 						// selected page to the current ID it got when it was imported.
-						if ( $id == 'page_on_front' || $id == 'page_for_posts' ) {
+						if ( in_array( $id, $pages_to_ids ) ) {
 							$value = themeblvd_post_id_by_name($value, 'page');
 						}
 
-						update_option( $id, $value );
+						update_option( $id, maybe_unserialize($value) );
 
 					}
 				}
@@ -320,6 +377,20 @@ class Theme_Blvd_Import {
 				}
 
 				set_theme_mod( 'nav_menu_locations', $assign );
+
+				// Save meta for menu items in the main menu menu,
+				// which we've saved in our current object.
+				$items = wp_get_nav_menu_items( $assign['primary'] );
+
+				foreach ( $items as $item ) {
+					if ( ! empty($this->nav_meta[$item->menu_order]) ) {
+						foreach ( $this->nav_meta[$item->menu_order] as $meta ) {
+							if ( in_array( $meta['key'], array('_tb_mega_menu', '_tb_mega_menu_hide_headers', '_tb_bold', '_tb_deactivate_link', '_tb_placeholder') ) ) {
+								update_post_meta( $item->ID, $meta['key'], $meta['value'] );
+							}
+						}
+					}
+				}
 
 				// Find Home button and change URL to current
 				// site's address. -- Note this will only work
@@ -408,7 +479,7 @@ class Theme_Blvd_Import {
 			return false;
 		}
 
-		if ( $_FILES['import']['name'] != apply_filters('themeblvd_theme_demo_xml', get_template().'-demo.xml') ) {
+		if ( strpos($_FILES['import']['name'], apply_filters('themeblvd_theme_demo_xml', get_template().'-demo-')) === false ) { // XML must be named {theme-name}-demo-{#}.xml
 			return false;
 		}
 
