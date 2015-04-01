@@ -62,11 +62,13 @@ function themeblvd_tgm_register() {
 			'slug'		=> 'theme-blvd-shortcodes',
 			'required'	=> false
 		),
+		/*
 		'bbpress' => array(
 			'name'		=> 'bbPress',
 			'slug'		=> 'bbpress',
 			'required'	=> false
 		),
+		*/
 		'portfolios' => array(
 			'name'		=> 'Portfolios',
 			'slug'		=> 'portfolios',
@@ -76,12 +78,14 @@ function themeblvd_tgm_register() {
 			'name'		=> 'Tweeple',
 			'slug'		=> 'tweeple',
 			'required'	=> false
-		),
+		)
+		/*
 		'woocommerce' => array(
 			'name'		=> 'WooCommerce',
 			'slug'		=> 'woocommerce',
 			'required'	=> false
 		)
+		*/
 	);
 	$plugins = apply_filters( 'themeblvd_plugins', $plugins );
 
