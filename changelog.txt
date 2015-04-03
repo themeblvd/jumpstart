@@ -4,6 +4,8 @@ Jump Start Changelog
 2.0.0
 -----
 
+* Fixed: Product columns selections in WooCommerce theme options.
+
 --------------------------------------------------------------
 
 2.0.0-beta3
