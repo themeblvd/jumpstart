@@ -402,7 +402,7 @@ function themeblvd_add_theme_support() {
 	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list', 'caption') );
 
 	// Post Formats
-	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status') );
+	add_theme_support( 'post-formats', array('aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery', 'status', 'chat') );
 
 	// Title tags auto added to wp_head
 	add_theme_support( 'title-tag' );
