@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.0
 -----
 
+* Added ThemeForest update system.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.
 
