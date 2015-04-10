@@ -36,7 +36,7 @@ class Theme_Blvd_Envato_Updates {
 			add_filter( 'pre_set_site_transient_update_themes', array( $this, 'check_for_updates' ) );
 
 			// Add backups if enabled
-			if ( $this->args['backup'] ) {
+			if ( $this->args['backup'] && $this->args['backup'] != 'no' ) {
 				add_filter( 'upgrader_pre_install', array( $this, 'backup_theme' ) );
 			}
 
