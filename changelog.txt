@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Added ThemeForest update system.
+* Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.
 * Fixed: With ThemeForest update system, disabling backups didn't work.

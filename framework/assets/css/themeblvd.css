@@ -6743,6 +6743,15 @@ blockquote small {
 .tb-tabs-open .tab-content {
 	padding: 10px 5px;
 }
+@media (max-width: 767px) {
+	.nav-tabs > li,
+	.nav-pills > li {
+		float: none;
+	}
+	.nav-tabs > li {
+		border-left-width: 1px;
+	}
+}
 
 /* Team Member */
 .tb-team-member .member-image,
