@@ -5240,7 +5240,6 @@ blockquote small {
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 	-webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0) scale(1.0, 1.0);
 }
 .tb-thumb-link:hover img,
 .tb-thumb-link:hover .img {
@@ -5248,32 +5247,44 @@ blockquote small {
 }
 .tb-thumb-link:before {
 	content: "\f067";
-	color: #333333; /* Change to light color for dark BG behind img */
+	background: rgba(0,0,0,.7);
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	color: #ffffff;
 	display: block;
 	font-family: "FontAwesome" !important;
-	font-size: 42px;
+	font-size: 20px;
 	font-style: normal !important;
 	font-weight: normal !important;
-	line-height: 72px;
+	line-height: 80px;
 	opacity: 0;
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 	position: absolute;
-	margin: -36px -35px 0 0;
+	margin: -40px 0 0 -40px;
 	top: 50%;
-	right: 50%;
-	width: 70px;
-	height: 70px;
+	left: 50%;
+	width: 80px;
+	height: 80px;
 	text-align: center;
 	text-rendering: auto;
 	text-shadow: none;
 	vertical-align: middle;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-transition: transform 0.2s ease-in-out;
+	-moz-transition: transform 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out;
+	-ms-transform: scale(0.8,0.8);
+	-webkit-transform: scale(0.8,0.8);
+	transform: scale(0.8,0.8);
 	z-index: 2;
 }
 .tb-thumb-link:hover:before {
 	opacity: 0.8;
+	-ms-transform: scale(0.5,0.5);
+	-webkit-transform: scale(0.5,0.5);
+	transform: scale(1,1);
 }
 .tb-thumb-link.image:before {
 	content: "\f067"; /* plus sign */
@@ -5288,7 +5299,8 @@ blockquote small {
 	content: "\f060"; /* arrow, pointing left */
 }
 .tb-thumb-link.external:before {
-	content: "\f0c1"; /* link anchor */
+	/* content: "\f0c1"; link anchor */
+	content: "\f08e"; /* external-link */
 }
 .element-image .thumbnail {
 	margin-bottom: 0;
@@ -5933,9 +5945,15 @@ blockquote small {
 .tb-mini-post-list .entry-meta .sep {
 	padding: 0 4px;
 }
-.tb-mini-post-list .featured-image .placeholder .fa,
-.tb-mini-post-list .tb-thumb-link:before {
+.tb-mini-post-list .featured-image .placeholder .fa {
 	font-size: 20px;
+}
+.tb-mini-post-list .tb-thumb-link:before {
+	font-size: 12px;
+	line-height: 40px;
+	margin: -20px 0 0 -20px;
+	width: 40px;
+	height: 40px;
 }
 .tb-mini-post-list .tb-date-block .day {
 	font-size: 20px;
@@ -5992,9 +6010,15 @@ blockquote small {
 .tb-mini-post-grid .thumbnail {
 	margin-bottom: 0;
 }
-.tb-mini-post-grid .featured-image .placeholder .fa,
-.tb-mini-post-grid .tb-thumb-link:before {
+.tb-mini-post-grid .featured-image .placeholder .fa {
 	font-size: 20px;
+}
+.tb-mini-post-grid .tb-thumb-link:before {
+	font-size: 12px;
+	line-height: 40px;
+	margin: -20px 0 0 -20px;
+	width: 40px;
+	height: 40px;
 }
 .element-mini_post_grid .alert {
 	margin-bottom: 0;

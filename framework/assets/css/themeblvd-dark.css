@@ -583,11 +583,6 @@ button:active {
 /* =Media (media.php)
 -----------------------------------------------*/
 
-/* Image */
-.tb-thumb-link:before {
-    color: #ffffff; /* Change to light color for dark BG behind img */
-}
-
 /* =Post Display (loop.php)
 -----------------------------------------------*/
 
