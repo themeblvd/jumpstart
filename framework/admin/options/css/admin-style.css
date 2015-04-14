@@ -130,6 +130,9 @@
 	border-bottom: 1px solid #eeeeee;
 	padding: 15px;
 }
+#optionsframework .section.save {
+	padding: 7px 10px;
+}
 #optionsframework .section-description {
 	border-bottom: 1px solid #eeeeee;
 	color: #888888;

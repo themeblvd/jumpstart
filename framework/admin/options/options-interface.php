@@ -120,8 +120,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 	   		continue;
 	   	}
+
 	   	if ( $value['type'] == 'section_end' ) {
-	   		$output .= '</div><!-- .inner-section-content (end) -->';
+
+            $output .= '<div class="section save clearfix">';
+            $output .= sprintf('<input type="submit" class="button-primary" name="update" value="%s" />', esc_attr__('Save Options', 'themeblvd') );
+            $output .= '</div>';
+
+            $output .= '</div><!-- .inner-section-content (end) -->';
 	   		$output .= '</div><!-- .inner-section (end) -->';
 	   		continue;
 	   	}

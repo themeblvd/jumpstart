@@ -5,6 +5,7 @@ Jump Start Changelog
 -----
 
 * Added ThemeForest update system.
+* Added "Save Options" button to individual sections of Theme Options page.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
 * Fixed: Product columns selections in WooCommerce theme options.
