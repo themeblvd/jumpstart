@@ -4820,6 +4820,12 @@ ul.tb-icon-list {
 /* =Lightbox
 -----------------------------------------------*/
 
+/* Lightbox container */
+.mfp-bg,
+.mfp-wrap {
+	z-index: 100000; /* Above admin bar for logged-in user at 99999 */
+}
+
 /* Basic inline popup styling */
 .white-popup {
 	background: #ffffff;
