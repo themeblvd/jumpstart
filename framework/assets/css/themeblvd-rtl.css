@@ -5262,16 +5262,16 @@ blockquote small {
 	font-size: 20px;
 	font-style: normal !important;
 	font-weight: normal !important;
-	line-height: 80px;
+	line-height: 4em;
 	opacity: 0;
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 	position: absolute;
-	margin: -40px 0 0 -40px;
+	margin: -2em 0 0 -2em;
 	top: 50%;
 	left: 50%;
-	width: 80px;
-	height: 80px;
+	width: 4em;
+	height: 4em;
 	text-align: center;
 	text-rendering: auto;
 	text-shadow: none;
@@ -5956,10 +5956,10 @@ blockquote small {
 }
 .tb-mini-post-list .tb-thumb-link:before {
 	font-size: 12px;
-	line-height: 40px;
-	margin: -20px 0 0 -20px;
-	width: 40px;
-	height: 40px;
+	line-height: 3em;
+	margin: -1.5em 0 0 -1.5em;
+	width: 3em;
+	height: 3em;
 }
 .tb-mini-post-list .tb-date-block .day {
 	font-size: 20px;
@@ -6021,10 +6021,10 @@ blockquote small {
 }
 .tb-mini-post-grid .tb-thumb-link:before {
 	font-size: 12px;
-	line-height: 40px;
-	margin: -20px 0 0 -20px;
-	width: 40px;
-	height: 40px;
+	line-height: 3em;
+	margin: -1.5em 0 0 -1.5em;
+	width: 3em;
+	height: 3em;
 }
 .element-mini_post_grid .alert {
 	margin-bottom: 0;
@@ -7684,9 +7684,6 @@ blockquote small {
 	-moz-box-shadow: 0 1px 4px #cccccc;
 	box-shadow: 0 1px 4px #cccccc;
 }
-.text-dark .tb-thumb-link:before {
-	color: #333333;
-}
 
 /* Forms */
 .text-dark .form-control {
@@ -7873,9 +7870,6 @@ blockquote small {
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-}
-.text-light .tb-thumb-link:before {
-	color: #ffffff;
 }
 
 /* Forms */
