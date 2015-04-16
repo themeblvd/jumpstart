@@ -1004,6 +1004,36 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 				$image = sprintf( '<img src="%s" alt="%s" />', $img_src, $img['alt'] );
 			}
 
+			if ( $img['title'] || $img['desc'] ) {
+
+				$caption_style = '';
+
+				if ( $args['caption_bg'] ) {
+					$caption_style = sprintf( 'background-color: %s; background-color: %s;', $args['caption_bg_color'], themeblvd_get_rgb( $args['caption_bg_color'], $args['caption_bg_opacity'] ) );
+				}
+
+				$image .= '<div class="carousel-caption" style="'.$caption_style.'">';
+
+				if ( $img['title'] ) {
+					$image .= sprintf( '<h3>%s</h3>', $img['title'] );
+				}
+
+				if ( $img['desc'] ) {
+					if ( $img['desc_wpautop'] ) {
+						$image .= wpautop( $img['desc'] );
+					} else {
+						$image .= $img['desc'];
+					}
+				}
+
+				$image .= '</div><!-- .carousel-caption-wrap (end) -->';
+
+			}
+
+			if ( $img['addon'] ) {
+				$output .= $img['addon'];
+			}
+
 			if ( $img['link'] ) {
 
 				$a_class = 'slide-link';
@@ -1041,36 +1071,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			} else {
 				$output .= $image;
-			}
-
-			if ( $img['title'] || $img['desc'] ) {
-
-				$caption_style = '';
-
-				if ( $args['caption_bg'] ) {
-					$caption_style = sprintf( 'background-color: %s; background-color: %s;', $args['caption_bg_color'], themeblvd_get_rgb( $args['caption_bg_color'], $args['caption_bg_opacity'] ) );
-				}
-
-				$output .= '<div class="carousel-caption" style="'.$caption_style.'">';
-
-				if ( $img['title'] ) {
-					$output .= sprintf( '<h3>%s</h3>', $img['title'] );
-				}
-
-				if ( $img['desc'] ) {
-					if ( $img['desc_wpautop'] ) {
-						$output .= wpautop( $img['desc'] );
-					} else {
-						$output .= $img['desc'];
-					}
-				}
-
-				$output .= '</div><!-- .carousel-caption-wrap (end) -->';
-
-			}
-
-			if ( $img['addon'] ) {
-				$output .= $img['addon'];
 			}
 
 			$output .= '</div><!-- .item (end) -->';
