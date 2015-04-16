@@ -447,6 +447,7 @@ function themeblvd_sanitize_typography( $input ) {
 	$output['face']  = apply_filters( 'themeblvd_font_face', $output['face'] );
 	$output['style'] = apply_filters( 'themeblvd_font_style', $output['style'] );
 	$output['color'] = apply_filters( 'themeblvd_color', $output['color'] );
+	$output['google'] = str_replace('"', '', $output['google'] );
 	$output['google'] = apply_filters( 'themeblvd_sanitize_text', $output['google'] );
 	return $output;
 }
