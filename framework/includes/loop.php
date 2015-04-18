@@ -214,7 +214,11 @@ function themeblvd_loop( $args = array() ){
 			}
 
 			// Read More text
-			themeblvd_set_att( 'more_text', themeblvd_get_option('list_more_text', null, themeblvd_get_local('read_more')) );
+			if ( $args['more_text'] ) {
+				themeblvd_set_att( 'more_text', $args['more_text'] );
+			} else {
+				themeblvd_set_att( 'more_text', themeblvd_get_option('list_more_text', null, themeblvd_get_local('read_more')) );
+			}
 
 			break;
 
@@ -270,7 +274,11 @@ function themeblvd_loop( $args = array() ){
 			}
 
 			// Read More text
-			themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, themeblvd_get_local('read_more')) );
+			if ( $args['more_text'] ) {
+				themeblvd_set_att( 'more_text', $args['more_text'] );
+			} else {
+				themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, themeblvd_get_local('read_more')) );
+			}
 
 			// Number of columns (i.e. posts per row)
 			if ( $args['columns'] ) {

@@ -14,6 +14,7 @@ Jump Start Changelog
 * Fixed: When logged in, frontend lightbox will now display over admin bar.
 * Fixed: Sanitize out quotation marks when saving Google font name in typography Theme Options.
 * Fixed: Simple slider captions sitting on top of linked image slides.
+* Fixed: "Read More Text" option for post list and post grid builder element and shortcodes.
 
 --------------------------------------------------------------
 
