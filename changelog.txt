@@ -17,6 +17,7 @@ Jump Start Changelog
 * Fixed: "Read More Text" option for post list and post grid builder element and shortcodes.
 * Fixed: Allow `themeblvd_grid_class()` to pull proper class for a 1/12 or 1/10 column, when given an integer representing number of equal height columns; previously only allowed integers 1-6.
 * Fixed: Security vulnerabilities from `add_query_arg()` (see [here](https://make.wordpress.org/plugins/2015/04/20/fixing-add_query_arg-and-remove_query_arg-usage/)).
+* Updated to Bootstrap 3.3.4.
 
 --------------------------------------------------------------
 
