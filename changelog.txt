@@ -15,6 +15,7 @@ Jump Start Changelog
 * Fixed: Sanitize out quotation marks when saving Google font name in typography Theme Options.
 * Fixed: Simple slider captions sitting on top of linked image slides.
 * Fixed: "Read More Text" option for post list and post grid builder element and shortcodes.
+* Fixed: Allow `themeblvd_grid_class()` to pull proper class for a 1/12 or 1/10 column, when given an integer representing number of equal height columns; previously only allowed integers 1-6.
 
 --------------------------------------------------------------
 

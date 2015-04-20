@@ -27,7 +27,7 @@ function themeblvd_grid_class( $key, $stack = 'sm' ) {
 
 	if ( ! in_array( $key, $keys, true ) ) {
 
-		if ( is_int($key) && $key >= 2 && $key <= 6 ) {
+		if ( is_int($key) && ( ( $key >= 2 && $key <= 6 ) || $key == 10 || $key == 12 ) ) {
 			switch ( $key ) {
 				case 1:
 					$key = '12';
@@ -46,6 +46,12 @@ function themeblvd_grid_class( $key, $stack = 'sm' ) {
 					break;
 				case 6:
 					$key = '2';
+					break;
+				case 10:
+					$key = '010';
+					break;
+				case 12:
+					$key = '1';
 			}
 
 		} else if ( strpos( $key, '/' ) !== false ) {
