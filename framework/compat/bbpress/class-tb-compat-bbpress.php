@@ -165,7 +165,7 @@ class Theme_Blvd_Compat_bbPress {
 				$classes[] = 'clearfix';
 			}
 
-			if ( in_array('top', $class) ) {
+			if ( is_array($class) && in_array('top', $class) ) {
 				$classes[] = 'bbp-page';
 				$classes[] = 'page';
 			}
