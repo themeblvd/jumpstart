@@ -22,7 +22,7 @@ $views = apply_filters( 'themeblvd_woo_views', array(
 
 		<ul class="dropdown-menu" role="menu">
 			<?php foreach ( $catalog_orderby_options as $key => $name ) : ?>
-				<li><a href="<?php echo add_query_arg( array('orderby' => $key) ); ?>"><?php echo $name; ?></a></li>
+				<li><a href="<?php echo esc_url( add_query_arg( array('orderby' => $key) ) ); ?>"><?php echo $name; ?></a></li>
 			<?php endforeach; ?>
 		</ul>
 
@@ -34,13 +34,13 @@ $views = apply_filters( 'themeblvd_woo_views', array(
 
 			<?php foreach( $views as $key => $view ) : ?>
 				<?php if ( $key == $default ) : ?>
-					<a href="<?php echo add_query_arg( array('view' => $key) ); ?>" class="btn btn-sm btn-default<?php if ( $current == $key ) echo ' active'; ?>"><?php echo $view; ?></a>
+					<a href="<?php echo esc_url( add_query_arg( array('view' => $key) ) ); ?>" class="btn btn-sm btn-default<?php if ( $current == $key ) echo ' active'; ?>"><?php echo $view; ?></a>
 					<?php unset($views[$key]); ?>
 				<?php endif; ?>
 			<?php endforeach; ?>
 
 			<?php foreach( $views as $key => $view ) : ?>
-				<a href="<?php echo add_query_arg( array('view' => $key) ); ?>" class="btn btn-sm btn-default<?php if ( $current == $key ) echo ' active'; ?>"><?php echo $view; ?></a>
+				<a href="<?php echo esc_url( add_query_arg( array('view' => $key) ) ); ?>" class="btn btn-sm btn-default<?php if ( $current == $key ) echo ' active'; ?>"><?php echo $view; ?></a>
 			<?php endforeach; ?>
 
 		<?php endif; ?>
