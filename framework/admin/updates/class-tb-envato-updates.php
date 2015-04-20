@@ -139,7 +139,7 @@ class Theme_Blvd_Envato_Updates {
 		global $wp_filesystem;
 
 		// Are we currently updating a theme?
-		if ( $_REQUEST['action'] != 'upgrade-theme' ) {
+		if ( ! isset($_REQUEST['action']) || $_REQUEST['action'] != 'upgrade-theme' ) {
 			return;
 		}
 
