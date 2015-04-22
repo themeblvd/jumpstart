@@ -8,6 +8,7 @@ Jump Start Changelog
 * Added "Save Options" button to individual sections of Theme Options page.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
+* Fixed: Header text option not ouptputting correctly with more than two icons.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.
 * Fixed: With ThemeForest update system, disabling backups didn't work.

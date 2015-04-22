@@ -1601,8 +1601,6 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
  */
 function themeblvd_do_fa( $str ) {
 
-	$html = apply_filters('themeblvd_do_fa_html', '<i class="fa fa-%s"></i>', $str);
-
 	preg_match_all( '/\%(.*?)\%/', $str, $icons );
 
 	if ( ! empty( $icons[0] ) ) {
@@ -1611,6 +1609,8 @@ function themeblvd_do_fa( $str ) {
 		$str = sprintf("<ul class=\"list-inline\">\n<li>%s</li>\n</ul>", $str);
 
 		foreach ( $icons[0] as $key => $val ) {
+
+			$html = apply_filters('themeblvd_do_fa_html', '<i class="fa fa-%s"></i>', $str);
 
 			if ( $key > 0 ) {
 				$html = "<li>\n".$html;
