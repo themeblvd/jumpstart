@@ -623,7 +623,11 @@ ul.woocommerce-info {
 	}
 }
 .tb-product-wrap .thumbnails .tb-thumb-link:before {
-	font-size: 20px;
+	font-size: 12px;
+	line-height: 3em;
+	margin: -1.5em 0 0 -1.5em;
+	width: 3em;
+	height: 3em;
 }
 
 /* Star Rating */
