@@ -1,14 +1,14 @@
 Jump Start Changelog
 ====================
 
-2.0.0-RC1
------
+2.0.0-RC1 - 04/26/2015
+----------------------
 
 * Added ThemeForest update system.
 * Added "Save Options" button to individual sections of Theme Options page.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
-* Fixed: Header text option not ouptputting correctly with more than two icons.
+* Fixed: Header text option not outputting correctly with more than two icons.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.
 * Fixed: With ThemeForest update system, disabling backups didn't work.
@@ -22,8 +22,8 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.0-beta3
------
+2.0.0-beta3 - 04/01/2015
+------------------------
 
 * Added WooCommerce support.
 * Added Gravity Forms support.
@@ -141,12 +141,12 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.0-beta2
------
+2.0.0-beta2 - 12/26/2015
+------------------------
 
 * Added two new theme bases; see *Appearance > Theme Base*.
 * Added system to check if saved theme options match selected theme base.
-* Added "Custom CSS" option utlizing code editor to all theme bases (except Developer).
+* Added "Custom CSS" option utilizing code editor to all theme bases (except Developer).
 * Added editor stylesheet for editing posts and pages.
 * Added unique HTML ID's to sections of custom layouts like `page-slug-section-1`.
 * Added Portfolios plugin to recommended plugins when installing theme.
@@ -170,8 +170,8 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.0-beta1
------
+2.0.0-beta1 - 11/18/2015
+------------------------
 
 * **Updated Theme Blvd framework to 2.5.0**
 * Complete frontend theme re-design.
@@ -219,61 +219,55 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-1.2.5
------
-
-* Important security fix.
-* Updated user documentation included in theme package, including new videos for Layout Builder plugin v2 update.
-
-1.2.4
------
+1.2.4 - 05/02/2014
+------------------
 
 * Updated Theme Blvd framework to 2.4.4
-* Fixed Gallery Slider only allowing five images.
-* Fixed Gallery Slider only allowing one instance on a page.
 * Added deep linking in Tabs element by filtering `themeblvd_tabs_deep_linking` to true.
+* Fixed: Gallery Slider only allowing five images.
+* Fixed: Gallery Slider only allowing one instance on a page.
 
 --------------------------------------------------------------
 
-1.2.3
------
+1.2.3 - 04/06/2014
+------------------
 
 * Updated Theme Blvd framework to 2.4.3
 * Minor styling fixes for upcoming WP 3.9.
 * Minor improvements to Mini Post Grids.
-* Fixed some non working options with recently added `[gallery_slider]`.
-* Fixed error when installing theme recommended plugins in bulk under *Appearance > Theme Plugins*.
 * Improved how menu item icons are handled on frontend.
+* Fixed: Some non working options with recently added `[gallery_slider]`.
+* Fixed: Error when installing theme recommended plugins in bulk under *Appearance > Theme Plugins*.
 
 --------------------------------------------------------------
 
-1.2.2
------
+1.2.2 - 03/23/2014
+------------------
 
 * Updated Theme Blvd framework to 2.4.2
 * Added additional HTML5 inputs to general form styling.
 * Improved sidebar layouts in IE8.
-* Fixed inconsistencies with internal grid system.
 * Added support for thumbnail navigation with Boostrap Carousel slider (requires Theme Blvd Sliders v1.2.1+).
 * Added support for Jumbotron, can be used with Theme Blvd Shortcodes 1.3+, Theme Blvd Layout Builder 1.2.3+.
 * Added support for Gallery slider, can be used with Theme Blvd Shortcodes 1.3+.
 * Updated TGM Plugin Activation to 2.4.0.
-* Fixed some recent, compatibility issues with WPML.
+* Fixed: Inconsistencies with internal grid system.
+* Fixed: Some recent, compatibility issues with WPML.
 
 --------------------------------------------------------------
 
-1.2.1
------
+1.2.1 - 03/16/2014
+------------------
 
 * Updated Theme Blvd framework to 2.4.1
-* Minor fixes to themeblvd-dark.css
-* Minor fixes to admin option styles
-* Improved default styling for forms from third-party plugins
+* Improved default styling for forms from third-party plugins.
+* Fixed: Minor issues with themeblvd-dark.css.
+* Fixed: Minor issues with admin option styles.
 
 --------------------------------------------------------------
 
-1.2.0
------
+1.2.0 - 02/13/2014
+------------------
 
 *Warning: Make sure to read this article before updating: [Updating to Jump Start 1.2](http://support.themeblvd.com/updating-to-jump-start-1-2/)*
 
@@ -281,52 +275,52 @@ Jump Start Changelog
 * Updated to Bootstrap 3.
 * Updated to FontAwesome 4.
 * Admin styling adjustments for WordPress 3.8.
-* Fixed bug with "order" custom field not working for Post List/Grid page templates.
 * Minor improvements to Jump Start update handling.
+* Fixed: Bug with "order" custom field not working for Post List/Grid page templates.
 
 --------------------------------------------------------------
 
-1.1.3
------
+1.1.3 - 10/17/2013
+------------------
 
-* Fixed image logo display in IE when no image width is set.
-* Fixed Gallery Override feature of mini post grid being limited to 5 images.
 * Added filter to `themeblvd_show_comments`.
 * Added filter `themeblvd_get_option` for every time an option is pulled.
-* Admin jQuery improvements for 1.9 - Converted all .live() to .on()
-* Fixed `ThemeBlvd_Select_Menu_Walker::start_el()` PHP 5.4 strict error.
-* Fixed CSS overflow quirk with Nivo slider type.
-* Fixed IE8 Carrousel slider display bug.
-* Fixed double website title bug in Feeds.
+* Admin jQuery improvements for 1.9 - Converted all `.live()` to `.on()`
+* Fixed: Image logo display in IE when no image width is set.
+* Fixed: Gallery Override feature of mini post grid being limited to 5 images.
+* Fixed: `ThemeBlvd_Select_Menu_Walker::start_el()` PHP 5.4 strict error.
+* Fixed: CSS overflow quirk with Nivo slider type.
+* Fixed: IE8 Carrousel slider display bug.
+* Fixed: Double website title bug in Feeds.
 
 --------------------------------------------------------------
 
-1.1.2
------
+1.1.2 - 08/16/2013
+------------------
 
-* Fixed bug with saving "Custom Text" logo option.
-* Fixed issues with main menu dropdowns not displaying over some items.
-* Fixed handling of private and password-protected pages with custom layouts.
-* Fixed compatibility with [Theme Blvd Layouts to Posts](http://wordpress.org/plugins/theme-blvd-layouts-to-posts/) plugin.
 * Updated breadcrumbs HTML markup to match Twitter Bootstrap 2.3 changes.
+* Fixed: Bug with saving "Custom Text" logo option.
+* Fixed: Issues with main menu dropdowns not displaying over some items.
+* Fixed: Handling of private and password-protected pages with custom layouts.
+* Fixed: Compatibility with [Theme Blvd Layouts to Posts](http://wordpress.org/plugins/theme-blvd-layouts-to-posts/) plugin.
 
 --------------------------------------------------------------
 
-1.1.1
------
+1.1.1 - 08/08/2013
+------------------
 
-* Fixed admin bugs in Firefox and IE, media uploader, radio buttons, and color pickers.
-* Fixed bug with archive content/excerpt option not being respected on search results.
-* Fixed bug with `themeblvd_edit_option()` in Options API.
-* Fixed Magnific popup localization with Next/Previous buttons.
 * Adjusted for `themeblvd_get_option_name()` to be available earlier, like prior to framework v2.3.
-* Applied proper clearfix to #featured, #main, #featured_below containers.
-* Fixed line-height CSS issues with slider headlines.
+* Applied proper clearfix to `#featured`, `#main`, `#featured_below` containers.
+* Fixed: Admin bugs in Firefox and IE, media uploader, radio buttons, and color pickers.
+* Fixed: Bug with archive content/excerpt option not being respected on search results.
+* Fixed: Bug with `themeblvd_edit_option()` in Options API.
+* Fixed: Magnific popup localization with Next/Previous buttons.
+* Fixed: Line-height CSS issues with slider headlines.
 
 --------------------------------------------------------------
 
-1.1.0
------
+1.1.0 - 08/01/2013
+------------------
 
 *Warning: Make sure to checkout this article before updating: [Updating to Jump Start 1.1](http://support.themeblvd.com/updating-to-jump-start-1-1/)*
 
@@ -338,9 +332,6 @@ Jump Start Changelog
 * Updated Twitter Bootstrap to v2.3.
 * Updated Superfish to v1.7.4.
 * Updated Roundabout script to v2.4.2.
-* Fixed CSS bug with video icon not showing on featured images linking to videos.
-* Fixed bug with "Category" source selection for Post Slider not working correctly.
-* Fixed issues with `FORCE_SSL_ADMIN` set to true on admin modules.
 * Made Google+ icons standards-compliant.
 * Added `themeblvd_content_bottom` action hook directly opposite of `themeblvd_content_top`.
 * Added ability to hide Theme License admin page via `themeblvd_global_config` filter.
@@ -372,38 +363,31 @@ Jump Start Changelog
 * In default `content.php`, `content-attachment.php`, `content-list.php`, `content-grid.php`, and `content-archive.php`, now using new `themeblvd_the_title()` to determine of title should be wrapped in a link.
 * In default `content.php` and `content-page.php`, moved clearfix to directly below `the_content()`.
 * New internal functions for working with post formats. -- See */framework/includes/post-formats.php* and */framework/includes/media.php*
+* Fixed: CSS bug with video icon not showing on featured images linking to videos.
+* Fixed: Bug with "Category" source selection for Post Slider not working correctly.
+* Fixed: Issues with `FORCE_SSL_ADMIN` set to true on admin modules.
 * WP 3.6: Filtered `wp_link_pages()` to match `themeblvd_pagination()`.
 * WP 3.6: Added responsive support for self-hosted videos.
 * WP 3.6: Added responsive support for self-hosted audio files.
 
 --------------------------------------------------------------
 
-1.0.2
------
+1.0.2 - 03/26/2013
+------------------
 
-* Fixed errors with how featured images display responsively as result of v1.0.1 update.
-* Fixed a couple styling quirks on default skin's main menu.
-* Fixed jQuery issues in selecting pages with slugs containing non-English characters in option interface. -- This was a result from the new "fancy" select menu addition from the last update.
+* Fixed: Errors with how featured images display responsively as result of v1.0.1 update.
+* Fixed: A couple styling quirks on default skin's main menu.
+* Fixed: jQuery issues in selecting pages with slugs containing non-English characters in option interface. -- This was a result from the new "fancy" select menu addition from the last update.
 * Re-generated jumpstart.po for localization.
 
 --------------------------------------------------------------
 
-1.0.1
------
+1.0.1 - 03/22/2013
+------------------
 
 * Updated framework version to 2.2.1.
 * Adjusted default Jump Start's responsive structure to use the "snap effect."
 * Optimized database queries on frontend.
-* Fixed pagination bug with post list/grid page templates.
-* Fixed bug with showing/hiding meta data on single blog posts.
-* Fixed slider image links in IE.
-* Fixed any PHP notices from 404 pages where `$post` is not an object.
-* Fixed sidebar layout to find default when none exists.
-* Fixed issues with Plugin Installer on WP Multisite.
-* Fixed WP's built-in Twitter embed to work with responsive design.
-* Fixed bug with manual offset on post grids.
-* Fixed issue with mailto and link target in `themeblvd_contact_bar`.
-* Fixed HTML entity bug with Twitter RSS feed that was a result of WP 3.5's updated version of SimplePie.
 * Added left/right `$position` variable to `themeblvd_fixed_sidebar_after` action.
 * Added official Dark CSS file that can be included -- /framework/assets/css/themeblvd-dark.min.css
 * Added rtl.css for framework that gets imported into theme's main rtl.css.
@@ -450,12 +434,22 @@ Jump Start Changelog
 * jQuery Plugins: Fixed responsive mods with prettyPhoto to work with iPhone 5 landscape.
 * jQuery Plugins: Modified Superfish to work with jQuery 1.9.
 * jQuery Plugins: Improved how javascript assets are included with use of localized variables to allow you to more easily remove specific plugins like prettyPhoto, Superfish, etc without overriding entire framework javascript file. [Learn More](http://dev.themeblvd.com/tutorial/removing-framework-scripts/)
+* Fixed: Pagination bug with post list/grid page templates.
+* Fixed: Bug with showing/hiding meta data on single blog posts.
+* Fixed: Slider image links in IE.
+* Fixed: Any PHP notices from 404 pages where `$post` is not an object.
+* Fixed: Sidebar layout to find default when none exists.
+* Fixed: Issues with Plugin Installer on WP Multisite.
+* Fixed: WP's built-in Twitter embed to work with responsive design.
+* Fixed: Bug with manual offset on post grids.
+* Fixed: Issue with mailto and link target in `themeblvd_contact_bar`.
+* Fixed: HTML entity bug with Twitter RSS feed that was a result of WP 3.5's updated version of SimplePie.
 * Moved Jump Start update classes to framework directory.
 * Added Envato update classes (not used in Jump Start).
 
 --------------------------------------------------------------
 
-1.0.0
------
+1.0.0 - 11/14/2012
+------------------
 
 * This is the first release constructed from Theme Blvd Framework version 2.2.0.
