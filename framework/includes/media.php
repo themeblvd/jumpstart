@@ -1389,11 +1389,17 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 				$link = $args['link_url'];
 			}
 
+			$props = array();
+
+			if ( $args['width'] ) {
+				$props['style'] = sprintf('max-width: %spx;', $args['width']);
+			}
+
 			$output = themeblvd_get_link_to_lightbox(array(
 				'item' 		=> $output,
 				'link' 		=> $link,
 				'title' 	=> $title,
-				'props'		=> array('style' => sprintf('max-width: %spx;', $args['width'])),
+				'props'		=> $props,
 				'class' 	=> $anchor_classes
 			));
 
@@ -1405,7 +1411,13 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 				$anchor_classes .= ' external';
 			}
 
-			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s" style="max-width: %spx;">%s</a>', $args['link_url'], $anchor_classes, $title, $args['link'], $args['width'], $output );
+			$style = '';
+
+			if ( $args['width'] ) {
+				$style = sprintf('max-width: %spx;', $args['width']);
+			}
+
+			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s" style="%s">%s</a>', $args['link_url'], $anchor_classes, $title, $args['link'], $style, $output );
 
 		}
 	}
