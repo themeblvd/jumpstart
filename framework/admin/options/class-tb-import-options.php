@@ -174,7 +174,7 @@ class Theme_Blvd_Import_Options {
 	 */
 	public function success() {
 		if ( ! empty( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'themeblvd_import_success' ) {
-			add_settings_error( $this->id, 'export-success', __('Options imported successfully.', 'themeblvd'), 'themeblvd-updated updated fade' );
+			add_settings_error( $this->id, 'export-success', __('Options imported successfully.', 'themeblvd'), 'themeblvd-updated updated' );
 		}
 	}
 

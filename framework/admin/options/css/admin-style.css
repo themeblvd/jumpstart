@@ -110,8 +110,11 @@
 
 .themeblvd-updated,
 .themeblvd-error {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	margin-bottom: 0 !important;
-	width: 752px;
+	width: 780px;
 }
 #optionsframework {
 	position: relative;

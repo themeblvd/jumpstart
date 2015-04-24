@@ -491,7 +491,7 @@ class Theme_Blvd_Options_Page {
 		// file will be added to the option for the active theme.
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'themeblvd-error error fade' );
+			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'themeblvd-error error' );
 			return themeblvd_get_option_defaults( $this->options );
 		}
 
@@ -583,7 +583,7 @@ class Theme_Blvd_Options_Page {
 		// Add update message for page re-fresh
 		if ( ! $this->sanitized ) {
 			// Avoid duplicates
-			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'themeblvd-updated updated fade' );
+			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'themeblvd-updated updated' );
 		}
 
 		// We know sanitization has happenned at least
