@@ -5243,9 +5243,15 @@ blockquote small {
 }
 .tb-thumb-link img,
 .tb-thumb-link .img {
+	-webkit-backface-visibility: hidden;
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
-	-webkit-backface-visibility: hidden;
+}
+.safari .tb-thumb-link.alignright img,
+.safari .tb-thumb-link.alignleft img,
+.safari .tb-thumb-link.alignright .img,
+.safari .tb-thumb-link.alignleft .img {
+	-webkit-transition: none;
 }
 .tb-thumb-link:hover img,
 .tb-thumb-link:hover .img {
@@ -5264,8 +5270,6 @@ blockquote small {
 	font-weight: normal !important;
 	line-height: 4em;
 	opacity: 0;
-	-webkit-transition: opacity 0.25s ease;
-	transition: opacity 0.25s ease;
 	position: absolute;
 	margin: -2em 0 0 -2em;
 	top: 50%;
@@ -5278,18 +5282,19 @@ blockquote small {
 	vertical-align: middle;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	-webkit-transition: transform 0.2s ease-in-out;
-	-moz-transition: transform 0.2s ease-in-out;
-	transition: transform 0.2s ease-in-out;
-	-ms-transform: scale(0.8,0.8);
-	-webkit-transform: scale(0.8,0.8);
-	transform: scale(0.8,0.8);
+	-webkit-transition: opacity 0.25s ease-in;
+	transition: opacity 0.25s ease-in;
+	-webkit-transition: transform 0.15s ease-in;
+	transition: transform 0.15s ease-in;
+	-ms-transform: scale(0.9,0.9);
+	-webkit-transform: scale(0.9,0.9);
+	transform: scale(0.9,0.9);
 	z-index: 2;
 }
 .tb-thumb-link:hover:before {
 	opacity: 0.8;
-	-ms-transform: scale(0.5,0.5);
-	-webkit-transform: scale(0.5,0.5);
+	-ms-transform: scale(1,1);
+	-webkit-transform: scale(1,1);
 	transform: scale(1,1);
 }
 .tb-thumb-link.image:before {
@@ -5308,7 +5313,8 @@ blockquote small {
 	/* content: "\f0c1"; link anchor */
 	content: "\f08e"; /* external-link */
 }
-.element-image .thumbnail {
+.element-image .thumbnail,
+.tb-lightbox-shortcode .thumbnail {
 	margin-bottom: 0;
 }
 .element-image .tb-thumb-link {
