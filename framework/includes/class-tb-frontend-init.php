@@ -123,6 +123,7 @@ class Theme_Blvd_Frontend_Init {
 
 			// Pages
 			'page' 				=> 'page',			// content-page.php
+			'naked_page' 		=> 'page',			// content-page.php
 			'404'				=> '404',			// content-404.php
 
 			// Search

@@ -499,6 +499,11 @@ article.page {
 	background: #ffffff;
 	padding: 30px;
 }
+article.tb-naked-page {
+	background: transparent !important;
+	border: none !important;
+	padding: 0;
+}
 
 /* Titles */
 .entry-title {

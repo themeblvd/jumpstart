@@ -1,6 +1,6 @@
 <?php
 /**
- * The template file for pages.
+ * Template Name: Naked Page
  *
  * WARNING: This template file is a core part of the
  * Theme Blvd WordPress Framework. It is advised
@@ -25,20 +25,14 @@ get_header();
 				<!-- CONTENT (start) -->
 
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
-					<div class="inner">
+					<div class="inner sitemap-template-wrap">
 						<?php themeblvd_content_top(); ?>
 
-						<?php while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'content', themeblvd_get_part( 'naked_page' ) ); ?>
 
-							<?php get_template_part( 'content', themeblvd_get_part( 'page' ) ); ?>
-
-							<?php themeblvd_page_footer(); ?>
-
-							<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
-								<?php comments_template( '', true ); ?>
-							<?php endif; ?>
-
-						<?php endwhile; ?>
+						<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
+							<?php comments_template( '', true ); ?>
+						<?php endif; ?>
 
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
@@ -56,6 +50,6 @@ get_header();
 
 			</div><!-- .grid-protection (end) -->
 		</div><!-- .sidebar_layout-inner (end) -->
-	</div><!-- .#sidebar_layout (end) -->
+	</div><!-- #sidebar_layout (end) -->
 
 <?php get_footer(); ?>

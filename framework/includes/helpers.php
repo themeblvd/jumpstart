@@ -1424,6 +1424,10 @@ function themeblvd_post_class( $class ) {
 		$class[] = 'single';
 	}
 
+	if ( is_page_template('template_naked.php') ) {
+		$class[] = 'tb-naked-page';
+	}
+
 	return $class;
 }
 

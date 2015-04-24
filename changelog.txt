@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Added ThemeForest update system.
 * Added "Save Options" button to individual sections of Theme Options page.
+* Added "Naked Page" page template, which outputs a standard page with content background.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
 * Fixed: Header text option not outputting correctly with more than two icons.
