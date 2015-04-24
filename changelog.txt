@@ -11,6 +11,7 @@ Jump Start Changelog
 * Fixed: Header text option not outputting correctly with more than two icons.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.
+* Fixed: Image center alignment issues.
 * Fixed: With ThemeForest update system, disabling backups didn't work.
 * Fixed: When logged in, frontend lightbox will now display over admin bar.
 * Fixed: Sanitize out quotation marks when saving Google font name in typography Theme Options.

@@ -72,7 +72,7 @@ a.thumbnail:active {
 
 /* WP Classes */
 .aligncenter {
-	display: inline-block;
+	display: block;
 	margin-right: auto;
 	margin-left: auto;
 }

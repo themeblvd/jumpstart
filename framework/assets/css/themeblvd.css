@@ -517,7 +517,7 @@ img.size-full {
 	display: inline-block;
 }
 .aligncenter {
-	display: inline-block;
+	display: block;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -5309,6 +5309,9 @@ blockquote small {
 }
 .element-image .thumbnail {
 	margin-bottom: 0;
+}
+.element-image .tb-thumb-link {
+	display: inline-block;
 }
 .container-xs-height .element-image img,
 .container-sm-height .element-image img,

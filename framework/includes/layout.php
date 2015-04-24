@@ -498,8 +498,8 @@ function themeblvd_get_element_class( $args ) {
 		}
 
 		// Responsive visibility
-		if ( ! empty( $args['display']['visibility'] ) ) {
-			$class[] = themeblvd_responsive_visibility_class( $args['display']['visibility'] );
+		if ( ! empty( $args['display']['visibility'] ) && $visibility = themeblvd_responsive_visibility_class( $args['display']['visibility'] ) ) {
+			$class[] = $visibility;
 		}
 
 		// User-added CSS classes
@@ -535,6 +535,11 @@ function themeblvd_get_element_class( $args ) {
 	// Post grid galleries
 	if ( in_array( $args['type'], apply_filters( 'themeblvd_gallery_elements', array( 'post_grid', 'portfolio' ) ) ) ) {
 		$class[] = 'themeblvd-gallery';
+	}
+
+	// Allow thumb link images within Image Element to be centered
+	if ( $args['type'] == 'image' && ! empty( $args['options']['align'] ) && $args['options']['align'] == 'center' ) {
+		$class[] = 'text-center';
 	}
 
 	// Clear fix
