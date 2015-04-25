@@ -187,8 +187,12 @@ function themeblvd_was( $type, $helper = '' ) {
  */
 function themeblvd_body_class( $classes ) {
 
+	if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
+		return $classes;
+	}
+
 	// Get current user agent
-	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
+	$browser = $_SERVER['HTTP_USER_AGENT'];
 
 	// OS class
 	if ( preg_match( "/Mac/", $browser ) ) {

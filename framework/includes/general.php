@@ -2306,11 +2306,12 @@ function themeblvd_get_base_uri( $base ) {
  */
 function themeblvd_is_ie( $versions = array('8') ) {
 
-	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
+	if ( ! empty( $_SERVER['HTTP_USER_AGENT'] ) ) {
 
-	foreach ( $versions as $ver ) {
-		if ( preg_match( "/MSIE ".$ver.".0/", $browser ) ) {
-			return true;
+		foreach ( $versions as $ver ) {
+			if ( preg_match( "/MSIE ".$ver.".0/", $_SERVER['HTTP_USER_AGENT'] ) ) {
+				return true;
+			}
 		}
 	}
 
