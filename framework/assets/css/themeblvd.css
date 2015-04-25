@@ -243,7 +243,8 @@ p {
 .text-muted {
 	color: #aaaaaa;
 }
-.list-inline {
+.list-inline,
+.list-unstyled {
 	padding-left: 0;
 }
 

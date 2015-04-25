@@ -244,7 +244,8 @@ p {
 .text-muted {
 	color: #aaaaaa;
 }
-.list-inline {
+.list-inline,
+.list-unstyled {
 	padding-right: 0;
 }
 
