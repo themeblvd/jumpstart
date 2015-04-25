@@ -333,6 +333,8 @@ Author URI: http://www.themeblvd.com
 /* Info/Author Box and Comments */
 .js-boxed #comments .comment-body,
 .js-boxed #respond #commentform,
+.js-boxed .bbp-topic-form,
+.js-boxed .bbp-reply-form,
 .js-boxed .comment #respond,
 .js-boxed .tb-related-posts > .inner,
 .js-boxed .tb-info-box {
@@ -341,6 +343,8 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed.content_dark #comments .comment-body,
 .js-boxed.content_dark #respond #commentform,
+.js-boxed.content_dark .bbp-topic-form,
+.js-boxed.content_dark .bbp-reply-form,
 .js-boxed.content_dark .comment #respond,
 .js-boxed.content_dark .tb-related-posts > .inner,
 .js-boxed.content_dark .tb-info-box {

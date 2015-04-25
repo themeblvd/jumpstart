@@ -1754,6 +1754,11 @@ function jumpstart_ex_css() {
 			$print .= "#comments .comment-body,\n";
 			$print .= "#respond #commentform,\n";
 
+			if ( themeblvd_installed('bbpress') ) {
+				$print .= ".bbp-topic-form,\n";
+				$print .= ".bbp-reply-form,\n";
+			}
+
 			$print .= ".tb-info-box,\n";
 			$print .= ".search-page,\n";
 			$print .= ".post_list.archive-loop .post-wrap,\n";

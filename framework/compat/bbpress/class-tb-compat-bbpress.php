@@ -169,6 +169,10 @@ class Theme_Blvd_Compat_bbPress {
 				$classes[] = 'bbp-page';
 				$classes[] = 'page';
 			}
+
+			if ( is_array($class) && in_array('top', $class) && ( bbp_is_forum_archive() || bbp_is_topic_archive() || bbp_is_single_forum() || bbp_is_single_topic() ) ) {
+				$classes[] = 'tb-naked-page';
+			}
 		}
 
 		return $classes;

@@ -9,6 +9,7 @@ Jump Start Changelog
 * Added "Naked Page" page template, which outputs a standard page with content background.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
+* Improvements to bbPress styling and compatibility.
 * Fixed: Header text option not outputting correctly with more than two icons.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.
