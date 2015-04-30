@@ -542,6 +542,12 @@ function themeblvd_get_element_class( $args ) {
 		$class[] = 'text-center';
 	}
 
+	// For CSS fixes, apply no-width class on image elements with
+	// the display width option left blank
+	if ( $args['type'] == 'image' && empty( $args['options']['width'] ) ) {
+		$class[] = 'no-width';
+	}
+
 	// Clear fix
 	$class[] = 'clearfix';
 

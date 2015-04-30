@@ -12,6 +12,7 @@ Jump Start Changelog
 * Improved thumbnail link hover icons.
 * Improved extendability of HTML5 output of background videos.
 * Improvements to bbPress styling and compatibility.
+* Allow "Display Width" of image element to override 100% responsive CSS fix for when within equal height columns.
 * Fixed: Header text option not outputting correctly with more than two icons.
 * Fixed: Product columns selections in WooCommerce theme options.
 * Fixed: Chat post format is supported, but wasn't registered.

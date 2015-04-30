@@ -5321,10 +5321,10 @@ blockquote small {
 .element-image .tb-thumb-link {
 	display: inline-block;
 }
-.container-xs-height .element-image img,
-.container-sm-height .element-image img,
-.container-md-height .element-image img,
-.container-lg-height .element-image img {
+.container-xs-height .element-image.no-width img,
+.container-sm-height .element-image.no-width img,
+.container-md-height .element-image.no-width img,
+.container-lg-height .element-image.no-width img {
     width: 100%;
 }
 
