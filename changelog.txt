@@ -1,12 +1,13 @@
 Jump Start Changelog
 ====================
 
-2.0.0-RC1 - 04/26/2015
+2.0.0-RC1 - XX/XX/2015
 ----------------------
 
 * Added ThemeForest update system.
 * Added "Save Options" button to individual sections of Theme Options page.
 * Added "Naked Page" page template, which outputs a standard page without content background.
+* Added theme debug info to output in `<head>` of site, [see here](http://dev.themeblvd.com/tutorial/remove-debug-info).
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
 * Improved extendability of HTML5 output of background videos.

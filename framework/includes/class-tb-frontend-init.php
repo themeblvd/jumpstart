@@ -82,6 +82,7 @@ class Theme_Blvd_Frontend_Init {
 		add_action( 'pre_get_posts', array( $this, 'set_mode' ), 5 );
 		add_action( 'wp', array( $this, 'set_config' ), 5 );
 		add_action( 'wp', array( $this, 'atts_init' ) );
+		add_action( 'wp_head', array( $this, 'debug' ) );
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 
 	}
@@ -664,8 +665,70 @@ class Theme_Blvd_Frontend_Init {
 	}
 
 	/*--------------------------------------------*/
-	/* Methods, filters
+	/* Methods, additional actions & filters
 	/*--------------------------------------------*/
+
+	/**
+	 * Output theme debug info to wp_head.
+	 *
+	 * @since 2.5.0
+	 */
+	public function debug() {
+
+		$child = false;
+		$template = get_template();
+		$stylesheet = get_stylesheet();
+		$parent = wp_get_theme( $template );
+
+		echo "\n<!--\n";
+		echo "Debug Info\n\n";
+
+		if ( $template == $stylesheet ) {
+			printf("Theme: %s\n", $parent->get('Name'));
+			printf("Directory: %s\n", $stylesheet);
+		} else {
+			$child = wp_get_theme( $stylesheet );
+			printf("Child Theme: %s\n", $child->get('Name'));
+			printf("Child Directory: %s\n", $stylesheet);
+			printf("Parent Theme: %s\n", $parent->get('Name'));
+			printf("Parent Directory: %s\n", $template);
+		}
+
+		printf("Version: %s\n", $parent->get('Version'));
+
+		printf("TB Framework: %s\n", TB_FRAMEWORK_VERSION);
+
+		if ( defined('TB_BUILDER_PLUGIN_VERSION') ) {
+			printf("TB Builder: %s\n", TB_BUILDER_PLUGIN_VERSION);
+		}
+
+		if ( defined('TB_SHORTCODES_PLUGIN_VERSION') ) {
+			printf("TB Shortcodes: %s\n", TB_SHORTCODES_PLUGIN_VERSION);
+		}
+
+		if ( defined('TB_SIDEBARS_PLUGIN_VERSION') ) {
+			printf("TB Widget Areas: %s\n", TB_SIDEBARS_PLUGIN_VERSION);
+		}
+
+		if ( defined('TB_WIDGET_PACK_PLUGIN_VERSION') ) {
+			printf("TB Widget Pack: %s\n", TB_WIDGET_PACK_PLUGIN_VERSION);
+		}
+
+		if ( defined('TB_SLIDERS_PLUGIN_VERSION') ) {
+			printf("TB Sliders: %s\n", TB_SLIDERS_PLUGIN_VERSION);
+		}
+
+		if ( defined('TB_PORTFOLIOS_PLUGIN_VERSION') ) {
+			printf("TB Portfolios: %s\n", TB_PORTFOLIOS_PLUGIN_VERSION);
+		}
+
+		if ( isset($GLOBALS['wp_version']) ) {
+			printf("WordPress: %s\n", $GLOBALS['wp_version']);
+		}
+
+		echo "-->\n";
+
+	}
 
 	/**
 	 * Add framework css classes to body_class() based
