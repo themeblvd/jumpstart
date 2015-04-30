@@ -6,9 +6,10 @@ Jump Start Changelog
 
 * Added ThemeForest update system.
 * Added "Save Options" button to individual sections of Theme Options page.
-* Added "Naked Page" page template, which outputs a standard page with content background.
+* Added "Naked Page" page template, which outputs a standard page without content background.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
+* Improved extendability of HTML5 output of background videos.
 * Improvements to bbPress styling and compatibility.
 * Fixed: Header text option not outputting correctly with more than two icons.
 * Fixed: Product columns selections in WooCommerce theme options.

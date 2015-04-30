@@ -1833,14 +1833,42 @@ function themeblvd_bg_slideshow( $id, $images, $parallax = 0 ) {
  */
 function themeblvd_get_bg_video( $video ) {
 
-	$video = wp_parse_args( $video, array(
+	$video = apply_filters('themeblvd_video_args', wp_parse_args( $video, array(
 		'mp4'		=> '',
 		'webm'		=> '',
-		'fallback'	=> ''
-	));
+		'fallback'	=> '',
+		'autoplay' 	=> true,
+		'loop'		=> true,
+		'controls'	=> false,
+		'width'		=> false,
+		'height'	=> false
+	)));
 
 	$output = "\n<div class=\"tb-bg-video\">\n";
-	$output .= "\t<video autoplay loop class=\"tb-bg-video\">\n";
+
+	$output .= "\t<video class=\"tb-bg-video\"";
+
+	if ( $video['autoplay'] ) {
+		$output .= " autoplay";
+	}
+
+	if ( $video['loop'] ) {
+		$output .= " loop";
+	}
+
+	if ( $video['controls'] ) {
+		$output .= " controls";
+	}
+
+	if ( $video['width'] ) {
+		$output .= sprintf(" width=\"%s\"", $video['width']);
+	}
+
+	if ( $video['height'] ) {
+		$output .= sprintf(" width=\"%s\"", $video['width']);
+	}
+
+	$output .= ">\n";
 
 	if ( $video['webm'] ) {
 		$output .= sprintf("\t\t<source src=\"%s\" type=\"video/webm\">\n", $video['webm']);
