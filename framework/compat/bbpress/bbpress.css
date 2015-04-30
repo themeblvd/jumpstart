@@ -372,8 +372,8 @@ span.bbp-admin-links a {
 }
 
 /* New Topic/Reply Form */
-.bbp-topic-form,
-.bbp-reply-form { /* matches default theme comments form */
+.tb-naked-page .bbp-topic-form,
+.tb-naked-page .bbp-reply-form { /* matches default theme comments form */
 	background: #ffffff;
 	margin-top: 50px;
 	padding: 30px;
