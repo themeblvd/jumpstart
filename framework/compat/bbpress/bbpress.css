@@ -370,6 +370,17 @@ span.bbp-admin-links a {
 #bbpress-forums div.reply:last-child {
 	margin-bottom: 0;
 }
+#bbpress-forums div.bbp-topic-author a.bbp-author-name,
+#bbpress-forums div.bbp-reply-author a.bbp-author-name {
+	font-size: 12px;
+	margin-top: 5px;
+}
+#bbpress-forums div.bbp-topic-content ul,
+#bbpress-forums div.bbp-reply-content ul,
+#bbpress-forums div.bbp-topic-content ol,
+#bbpress-forums div.bbp-reply-content ol {
+	margin: 0 30px 15px;
+}
 
 /* New Topic/Reply Form */
 .tb-naked-page .bbp-topic-form,
