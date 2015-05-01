@@ -80,7 +80,10 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 
 				if ( $this->show_headers ) {
 					$output .= "</ul><!-- .mega-sub-menu.level-2 (end) -->\n";
+					$output .= "</li><!-- .menu-item-has-children (end) -->\n";
 				}
+
+				$output .= "</ul><!-- .mega-sub-menu.level-1 (end) -->\n";
 
 				$output .= "</div><!-- .sf-mega-section (end) -->\n";
 				$this->count++;
