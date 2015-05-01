@@ -918,7 +918,7 @@ function themeblvd_get_slogan( $args ) {
         }
     }
 
-    $output .= sprintf( '<span class="slogan-text entry-content">%s</span>', do_shortcode($content) );
+    $output .= sprintf( '<div class="slogan-text entry-content">%s</div>', do_shortcode($content) );
     $output .= '</div><!-- .slogan (end) -->';
 
     return apply_filters( 'themeblvd_slogan', $output, $args );
