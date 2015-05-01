@@ -253,7 +253,7 @@ span.bbp-admin-links a {
 .bbp-forums li.bbp-forum-info .bbp-forum-title,
 .bbp-topics li.bbp-topic-title .bbp-topic-permalink {
 	display: inline-block;
-	line-height: 1.2;
+	line-height: 1.4;
 }
 #bbpress-forums .status-closed,
 #bbpress-forums .status-closed a {
