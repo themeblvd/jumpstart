@@ -163,7 +163,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 	add_action( 'wp_enqueue_scripts', 'themeblvd_banner_styles', 25 );
 	add_action( 'wp_print_scripts', 'themeblvd_html5_compat' ); // For IE8
-	add_action( 'wp_head', 'themeblvd_viewport_default' );
+	add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
 	add_filter( 'wp_head', 'themeblvd_wp_title_compat', 5 ); // Only used with WP 4.0-
 
 	// Header hooks

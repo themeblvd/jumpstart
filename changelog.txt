@@ -9,6 +9,7 @@ Jump Start Changelog
 * Added "Naked Page" page template, which outputs a standard page without content background.
 * Added option to style bbPress pages like new naked page template, see *Appearance > Theme Options > Plugins > bbPress*.
 * Added theme debug info to output in `<head>` of site, [see here](http://dev.themeblvd.com/tutorial/remove-debug-info).
+* Moved viewport meta tag closer to top of `<head>`.
 * Improved responsive display of Tabs element and `[tabs]` shortcode.
 * Improved thumbnail link hover icons.
 * Improved extendability of HTML5 output of background videos.
