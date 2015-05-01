@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jump Start\n"
+"Project-Id-Version: Jump Start 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-01 14:13-1000\n"
-"PO-Revision-Date: 2015-04-01 14:13-1000\n"
+"POT-Creation-Date: 2015-04-30 18:34-1000\n"
+"PO-Revision-Date: 2015-04-30 18:34-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -672,35 +672,30 @@ msgstr ""
 #: ../base/entrepreneur/base.php:636
 #: ../base/executive/base.php:899
 #: ../base/superuser/base.php:934
-#: ../framework/admin/meta/class-tb-user-options.php:205
 msgid "Flat Color"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:637
 #: ../base/executive/base.php:900
 #: ../base/superuser/base.php:935
-#: ../framework/admin/meta/class-tb-user-options.php:206
 msgid "Flat Dark"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:638
 #: ../base/executive/base.php:901
 #: ../base/superuser/base.php:936
-#: ../framework/admin/meta/class-tb-user-options.php:207
 msgid "Flat Grey"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:639
 #: ../base/executive/base.php:902
 #: ../base/superuser/base.php:937
-#: ../framework/admin/meta/class-tb-user-options.php:208
 msgid "Flat Light"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:640
 #: ../base/executive/base.php:903
 #: ../base/superuser/base.php:938
-#: ../framework/admin/meta/class-tb-user-options.php:209
 msgid "Color"
 msgstr ""
 
@@ -1658,7 +1653,6 @@ msgid "Button has border"
 msgstr ""
 
 #: ../framework/admin/functions/display.php:1116
-#: ../framework/admin/meta/class-tb-user-options.php:221
 msgid "Sidebar Layout"
 msgstr ""
 
@@ -2525,7 +2519,6 @@ msgid "Nothing to export. Theme Options have never been saved."
 msgstr ""
 
 #: ../framework/admin/options/class-tb-options-page.php:401
-#: ../framework/admin/tools/class-tb-bases.php:78
 msgid "Your saved options do not currently match the theme base you've selected. Please configure and save your theme options page."
 msgstr ""
 
@@ -2574,42 +2567,42 @@ msgid "Maximum"
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:270
-#: ../framework/admin/options/options-interface.php:232
+#: ../framework/admin/options/options-interface.php:238
 msgid "Browse Icons"
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:473
-#: ../framework/admin/options/options-interface.php:969
+#: ../framework/admin/options/options-interface.php:975
 msgid "Latitude"
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:479
-#: ../framework/admin/options/options-interface.php:975
+#: ../framework/admin/options/options-interface.php:981
 msgid "Longitude"
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:486
-#: ../framework/admin/options/options-interface.php:982
+#: ../framework/admin/options/options-interface.php:988
 msgid "Generate Coordinates"
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:490
-#: ../framework/admin/options/options-interface.php:986
+#: ../framework/admin/options/options-interface.php:992
 msgid "Oops! Sorry, we weren't able to get coordinates from that address. Try again."
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:490
-#: ../framework/admin/options/options-interface.php:986
+#: ../framework/admin/options/options-interface.php:992
 msgid "Generate"
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:493
-#: ../framework/admin/options/options-interface.php:989
+#: ../framework/admin/options/options-interface.php:995
 msgid "Enter an address, as you would do at maps.google.com."
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:494
-#: ../framework/admin/options/options-interface.php:990
+#: ../framework/admin/options/options-interface.php:996
 msgid "Example Address"
 msgstr ""
 
@@ -2722,7 +2715,7 @@ msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:739
 #: ../framework/admin/options/class-tb-sortable-option.php:1472
-#: ../framework/admin/options/options-sanitize.php:1184
+#: ../framework/admin/options/options-sanitize.php:1185
 msgid "Normal"
 msgstr ""
 
@@ -3429,71 +3422,71 @@ msgstr ""
 msgid "Template Sync"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:303
+#: ../framework/admin/options/options-interface.php:309
 msgid "No pages were found."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:312
+#: ../framework/admin/options/options-interface.php:318
 msgid "No categories sidebars were found."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:319
+#: ../framework/admin/options/options-interface.php:325
 msgid "You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:325
+#: ../framework/admin/options/options-interface.php:331
 msgid "No floating widget areas were found."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:334
+#: ../framework/admin/options/options-interface.php:340
 msgid "No registered sidebars were found."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:343
+#: ../framework/admin/options/options-interface.php:349
 msgid "No registered crop sizes were found."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:354
+#: ../framework/admin/options/options-interface.php:360
 msgid "No textures were found."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:363
+#: ../framework/admin/options/options-interface.php:369
 msgid "You haven't created any custom templates yet."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:372
+#: ../framework/admin/options/options-interface.php:378
 msgid "Couldn't find any authors."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:381
+#: ../framework/admin/options/options-interface.php:387
 msgid "Couldn't find any sliders."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:431
+#: ../framework/admin/options/options-interface.php:437
 msgid "Browse Textures"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:689
+#: ../framework/admin/options/options-interface.php:695
 msgid "Enter the name of a font from the <a href=\"http://www.google.com/webfonts\" target=\"_blank\">Google Font Directory</a>."
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:835
+#: ../framework/admin/options/options-interface.php:841
 msgid "Video (mp4)"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:855
+#: ../framework/admin/options/options-interface.php:861
 msgid "Video (webM)"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:875
+#: ../framework/admin/options/options-interface.php:881
 msgid "Video Fallback Image"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:927
+#: ../framework/admin/options/options-interface.php:933
 msgid "Top Color"
 msgstr ""
 
-#: ../framework/admin/options/options-interface.php:933
+#: ../framework/admin/options/options-interface.php:939
 msgid "Bottom Color"
 msgstr ""
 
@@ -3585,19 +3578,19 @@ msgstr ""
 msgid "Background Size: Fit Vertically"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1183
+#: ../framework/admin/options/options-sanitize.php:1184
 msgid "Thin"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1185
+#: ../framework/admin/options/options-sanitize.php:1186
 msgid "Italic"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1186
+#: ../framework/admin/options/options-sanitize.php:1187
 msgid "Bold"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1187
+#: ../framework/admin/options/options-sanitize.php:1188
 msgid "Bold Italic"
 msgstr ""
 
@@ -3611,7 +3604,7 @@ msgid "Go to Plugins Page"
 msgstr ""
 
 #: ../framework/admin/plugins/class-tb-plugin-management.php:219
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:184
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:183
 msgid "Dismiss this notice"
 msgstr ""
 
@@ -3619,189 +3612,189 @@ msgstr ""
 msgid "Visit ThemeBlvd.com"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:165
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:164
 msgid "Install Required Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:166
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:165
 msgid "Install Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:167
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:166
 #: ../framework/admin/plugins/plugins.php:104
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:168
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:167
 msgid "Something went wrong."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:179
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:178
 #: ../framework/admin/plugins/plugins.php:116
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:180
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:179
 msgid "Return to the dashboard"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:181
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1955
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:180
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1958
 #: ../framework/admin/plugins/plugins.php:117
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:182
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:181
 msgid "The following plugin was activated successfully:"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:183
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:182
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:538
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2172
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:536
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2175
 msgid "Return to the Dashboard"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1179
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1177
 msgid "Private Repository"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1182
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1180
 msgid "Pre-Packaged"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1187
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1185
 msgid "WordPress Repository"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1190
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1188
 msgid "Required"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1190
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1188
 msgid "Recommended"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1193
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1191
 msgid "Not Installed"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1195
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1193
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1300
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1408
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1298
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1414
 msgid "Install"
 msgstr ""
 
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:1322
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1409
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1415
 msgid "Activate"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1371
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1377
 #, php-format
 msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1387
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1393
 msgid "Plugin"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1388
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1394
 msgid "Source"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1390
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1396
 msgid "Status"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1938
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1941
 msgid "Install package not available."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1939
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1942
 #, php-format
 msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1940
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1943
 msgid "Unpacking the package&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1941
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1944
 msgid "Installing the plugin&#8230;"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1942
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1945
 msgid "Plugin install failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1943
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1946
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1954
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:1957
 msgid "Plugin activation failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2068
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2071
 msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2069
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2072
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2069
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2078
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2072
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2081
 msgid "Show Details"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2069
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2078
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2072
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2081
 msgid "Hide Details"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2070
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2073
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2071
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2074
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2075
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2078
 msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2076
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2079
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2077
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2080
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2078
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2081
 #, php-format
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2079
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2082
 msgid "All installations have been completed."
 msgstr ""
 
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2080
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2083
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
@@ -3962,774 +3955,786 @@ msgstr ""
 msgid "active"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:284
-#: ../framework/api/class-tb-options-api.php:359
+#: ../framework/api/class-tb-options-api.php:285
+#: ../framework/api/class-tb-options-api.php:360
 msgid "Logo"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:285
-#: ../framework/api/class-tb-options-api.php:360
+#: ../framework/api/class-tb-options-api.php:286
+#: ../framework/api/class-tb-options-api.php:361
 msgid "Configure the primary branding logo for the header of your site.<br /><br /><em>Note: If you're inputting a \"HiDPI-optimized\" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you'd like it to simply not have any effect.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:291
+#: ../framework/api/class-tb-options-api.php:292
 msgid "Header Text"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:292
+#: ../framework/api/class-tb-options-api.php:293
 #, php-format
 msgid "Enter a brief piece of text you'd like to show. You can use basic HTML here, or any %s ID formatted like %s."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:298
+#: ../framework/api/class-tb-options-api.php:299
 msgid "Social Media Buttons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:299
+#: ../framework/api/class-tb-options-api.php:300
 msgid "Configure the social media buttons you'd like to show."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:327
-#: ../framework/api/class-tb-options-api.php:367
+#: ../framework/api/class-tb-options-api.php:328
+#: ../framework/api/class-tb-options-api.php:368
 msgid "Select the color you'd like applied to the social icons."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:340
+#: ../framework/api/class-tb-options-api.php:341
 msgid "Search Form"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:341
+#: ../framework/api/class-tb-options-api.php:342
 msgid "Select whether you'd like to show a search form."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:346
+#: ../framework/api/class-tb-options-api.php:347
 msgid "Show search form"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:347
+#: ../framework/api/class-tb-options-api.php:348
 msgid "Hide search form"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:355
+#: ../framework/api/class-tb-options-api.php:356
 msgid "Transparent Header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:356
+#: ../framework/api/class-tb-options-api.php:357
 msgid "When you're configuring a page, if you select to \"display transparent header over content\" in the <strong>Theme Layout</strong> box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature works best when you've applied a banner or a custom layout to the page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:391
+#: ../framework/api/class-tb-options-api.php:392
 msgid "Setup Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:400
+#: ../framework/api/class-tb-options-api.php:401
 msgid "Footer Column #1"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:401
+#: ../framework/api/class-tb-options-api.php:402
 msgid "Configure the content for the first column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:408
+#: ../framework/api/class-tb-options-api.php:409
 msgid "Footer Column #2"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:409
+#: ../framework/api/class-tb-options-api.php:410
 msgid "Configure the content for the second column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:416
+#: ../framework/api/class-tb-options-api.php:417
 msgid "Footer Column #3"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:417
+#: ../framework/api/class-tb-options-api.php:418
 msgid "Configure the content for the third column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:424
+#: ../framework/api/class-tb-options-api.php:425
 msgid "Footer Column #4"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:425
+#: ../framework/api/class-tb-options-api.php:426
 msgid "Configure the content for the fourth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:432
+#: ../framework/api/class-tb-options-api.php:433
 msgid "Footer Column #5"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:433
+#: ../framework/api/class-tb-options-api.php:434
 msgid "Configure the content for the fifth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:443
+#: ../framework/api/class-tb-options-api.php:444
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:444
+#: ../framework/api/class-tb-options-api.php:445
 msgid "<p>Enter the copyright text you'd like to show in the footer of your site.</p><p><em>%year%</em> &mdash; Show current year.<br /><em>%site_title%</em> &mdash; Show your site title.</p>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:462
+#: ../framework/api/class-tb-options-api.php:463
 msgid "Choose the default sidebar layout for the main content area of your site."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:470
-#: ../framework/api/class-tb-options-api.php:548
+#: ../framework/api/class-tb-options-api.php:471
+#: ../framework/api/class-tb-options-api.php:549
 msgid "Single Posts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:471
+#: ../framework/api/class-tb-options-api.php:472
 msgid "When viewing a single post, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:479
+#: ../framework/api/class-tb-options-api.php:480
 msgid "Pages"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:480
+#: ../framework/api/class-tb-options-api.php:481
 msgid "When viewing a standard page, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:488
-#: ../framework/api/class-tb-options-api.php:650
+#: ../framework/api/class-tb-options-api.php:489
+#: ../framework/api/class-tb-options-api.php:651
 msgid "Archives"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:489
+#: ../framework/api/class-tb-options-api.php:490
 msgid "When viewing a general archive of posts, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:504
+#: ../framework/api/class-tb-options-api.php:505
 msgid "Sticky Header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:505
+#: ../framework/api/class-tb-options-api.php:506
 msgid "If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:510
+#: ../framework/api/class-tb-options-api.php:511
 msgid "Yes, show sticky header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:511
-#: ../framework/api/class-tb-options-api.php:533
+#: ../framework/api/class-tb-options-api.php:512
+#: ../framework/api/class-tb-options-api.php:534
 msgid "No, don't show it"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:516
+#: ../framework/api/class-tb-options-api.php:517
 msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:526
+#: ../framework/api/class-tb-options-api.php:527
 msgid "Scroll-to-Top Button"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:527
+#: ../framework/api/class-tb-options-api.php:528
 msgid "If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:532
+#: ../framework/api/class-tb-options-api.php:533
 msgid "Yes, show button"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:549
+#: ../framework/api/class-tb-options-api.php:550
 msgid "These settings will only apply to vewing single posts. This means that any settings you set here will <strong>not</strong> effect any posts that appear in a post list or post grid. Additionally, most of these settings can be overridden in the Post Options section when editing individual posts."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:552
-#: ../framework/api/class-tb-options-api.php:703
-#: ../framework/api/class-tb-options-api.php:752
-#: ../framework/api/class-tb-options-api.php:834
+#: ../framework/api/class-tb-options-api.php:553
+#: ../framework/api/class-tb-options-api.php:704
+#: ../framework/api/class-tb-options-api.php:753
+#: ../framework/api/class-tb-options-api.php:835
 msgid "Meta Information"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:553
+#: ../framework/api/class-tb-options-api.php:554
 msgid "Select if you'd like the meta information (like date posted, author, etc) to show on the single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:563
+#: ../framework/api/class-tb-options-api.php:564
 msgid "Sub Meta Information"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:564
+#: ../framework/api/class-tb-options-api.php:565
 msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on the single post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:574
+#: ../framework/api/class-tb-options-api.php:575
 msgid "Share Icons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:575
+#: ../framework/api/class-tb-options-api.php:576
 msgid "Configure any share icons you'd like displayed within the Sub Meta of the single post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:598
+#: ../framework/api/class-tb-options-api.php:599
 msgid "Share Icon Style"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:599
+#: ../framework/api/class-tb-options-api.php:600
 msgid "Select the color you'd like applied to the share icons on the single post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:612
-#: ../framework/api/class-tb-options-api.php:692
-#: ../framework/api/class-tb-options-api.php:740
-#: ../framework/api/class-tb-options-api.php:810
+#: ../framework/api/class-tb-options-api.php:613
+#: ../framework/api/class-tb-options-api.php:693
+#: ../framework/api/class-tb-options-api.php:741
+#: ../framework/api/class-tb-options-api.php:811
 msgid "Featured Images"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:613
+#: ../framework/api/class-tb-options-api.php:614
 msgid "Choose how you want your featured images to show on the single post. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those fetured images to show on the single posts."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:618
-#: ../framework/api/class-tb-options-api.php:698
-#: ../framework/api/class-tb-options-api.php:746
-#: ../framework/api/class-tb-options-api.php:816
-msgid "Show featured images"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:619
 #: ../framework/api/class-tb-options-api.php:699
-#: ../framework/api/class-tb-options-api.php:748
+#: ../framework/api/class-tb-options-api.php:747
 #: ../framework/api/class-tb-options-api.php:817
+msgid "Show featured images"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:620
+#: ../framework/api/class-tb-options-api.php:700
+#: ../framework/api/class-tb-options-api.php:749
+#: ../framework/api/class-tb-options-api.php:818
 msgid "Hide featured images"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:623
+#: ../framework/api/class-tb-options-api.php:624
 msgid "Related Posts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:635
+#: ../framework/api/class-tb-options-api.php:636
 msgid "Comments"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:636
+#: ../framework/api/class-tb-options-api.php:637
 msgid "This will hide the presence of comments on the single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post's discussion settings.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:655
+#: ../framework/api/class-tb-options-api.php:656
 msgid "When viewing an archive of posts, how do you want them displayed by default?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:662
+#: ../framework/api/class-tb-options-api.php:663
 msgid "Category Info Boxes"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:663
+#: ../framework/api/class-tb-options-api.php:664
 msgid "When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:668
-#: ../framework/api/class-tb-options-api.php:679
-msgid "Yes, show info boxes"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:669
 #: ../framework/api/class-tb-options-api.php:680
+msgid "Yes, show info boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:670
+#: ../framework/api/class-tb-options-api.php:681
 msgid "No, hide info boxes"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:673
+#: ../framework/api/class-tb-options-api.php:674
 msgid "Tag Info Boxes"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:674
+#: ../framework/api/class-tb-options-api.php:675
 msgid "When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:688
+#: ../framework/api/class-tb-options-api.php:689
 msgid "Post Display: Blog"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:689
+#: ../framework/api/class-tb-options-api.php:690
 msgid "These settings apply to your main theme index page, \"posts page\" that you've selected under Settings > Reading, and <strong>all</strong> instances of the \"Blog\" page template. Additionally, any archives you select to display in the \"Blog\" post layout will use these settings."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:693
+#: ../framework/api/class-tb-options-api.php:694
 msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:704
-#: ../framework/api/class-tb-options-api.php:753
-#: ../framework/api/class-tb-options-api.php:835
+#: ../framework/api/class-tb-options-api.php:705
+#: ../framework/api/class-tb-options-api.php:754
+#: ../framework/api/class-tb-options-api.php:836
 msgid "Select if you'd like the meta information (like date posted, author, etc) to show for each post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:714
+#: ../framework/api/class-tb-options-api.php:715
 msgid "Excerpts of Full Content"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:715
+#: ../framework/api/class-tb-options-api.php:716
 msgid "Choose whether you want to show full content or post excerpts only."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:720
+#: ../framework/api/class-tb-options-api.php:721
 msgid "Show full content"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:721
+#: ../framework/api/class-tb-options-api.php:722
 msgid "Show excerpt only"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:725
+#: ../framework/api/class-tb-options-api.php:726
 msgid "Exclude Categories"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:726
+#: ../framework/api/class-tb-options-api.php:727
 msgid "Select any categories you'd like to be excluded from your blog.<br><br><em>Note: This only applies to the main index blog (or your \"posts page\").</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:736
+#: ../framework/api/class-tb-options-api.php:737
 msgid "Post Display: List"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:737
+#: ../framework/api/class-tb-options-api.php:738
 msgid "These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the \"Post List\" page template and any archives you've set to display post lists. For more control over a specifc post list, you can apply the \"Post List\" element of the Builder or use the [post_list] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:741
-#: ../framework/api/class-tb-options-api.php:811
+#: ../framework/api/class-tb-options-api.php:742
+#: ../framework/api/class-tb-options-api.php:812
 msgid "Choose whether or not you want featured images to show for each post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:747
+#: ../framework/api/class-tb-options-api.php:748
 msgid "Show date block"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:767
-#: ../framework/api/class-tb-options-api.php:860
-msgid "Read More"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:768
 #: ../framework/api/class-tb-options-api.php:861
-msgid "What would you like to show for each post to lead the reader to the full post?"
+msgid "Read More"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:773
-#: ../framework/api/class-tb-options-api.php:866
-msgid "Show text link"
+#: ../framework/api/class-tb-options-api.php:769
+#: ../framework/api/class-tb-options-api.php:862
+msgid "What would you like to show for each post to lead the reader to the full post?"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:774
 #: ../framework/api/class-tb-options-api.php:867
-msgid "Show button"
+msgid "Show text link"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:775
 #: ../framework/api/class-tb-options-api.php:868
-msgid "Show no button or text link"
+msgid "Show button"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:780
-#: ../framework/api/class-tb-options-api.php:873
-msgid "Read More Text"
+#: ../framework/api/class-tb-options-api.php:776
+#: ../framework/api/class-tb-options-api.php:869
+msgid "Show no button or text link"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:781
 #: ../framework/api/class-tb-options-api.php:874
+msgid "Read More Text"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:782
+#: ../framework/api/class-tb-options-api.php:875
 msgid "Enter the text you'd like to use to lead the reader to the full post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:791
-#: ../framework/api/class-tb-options-api.php:921
-#: ../framework/api/class-tb-options-api.php:1018
+#: ../framework/api/class-tb-options-api.php:792
+#: ../framework/api/class-tb-options-api.php:922
+#: ../framework/api/class-tb-options-api.php:1019
 msgid "Posts Per Page"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:792
+#: ../framework/api/class-tb-options-api.php:793
 msgid "When viewing a default post list, what is the maximum number of posts to display on each page?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:802
+#: ../framework/api/class-tb-options-api.php:803
 msgid "Post Display: Grid"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:803
+#: ../framework/api/class-tb-options-api.php:804
 msgid "These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the \"Post Grid\" page template and any archives you've set to display post grids. For more control over a specifc post grid, you can apply the \"Post Grid\" element of the Builder or use the [post_grid] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:823
-#: ../framework/api/class-tb-options-api.php:941
-msgid "Featured Image Crop Size"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:824
 #: ../framework/api/class-tb-options-api.php:942
-msgid "Select a custom crop size to be used for the images. If you select a crop size that doesn't have a consistent height, then you may want to enable \"Masonry\" display.<br><br><em>Note: Images are scaled proportionally to fit within their current containers.</em>"
+msgid "Featured Image Crop Size"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:845
-#: ../framework/api/class-tb-options-api.php:959
-msgid "Excerpts"
+#: ../framework/api/class-tb-options-api.php:825
+#: ../framework/api/class-tb-options-api.php:943
+msgid "Select a custom crop size to be used for the images. If you select a crop size that doesn't have a consistent height, then you may want to enable \"Masonry\" display.<br><br><em>Note: Images are scaled proportionally to fit within their current containers.</em>"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:846
 #: ../framework/api/class-tb-options-api.php:960
-msgid "Select if you'd like to show the excerpt or not for each post."
+msgid "Excerpts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:851
-#: ../framework/api/class-tb-options-api.php:965
-msgid "Show excerpts"
+#: ../framework/api/class-tb-options-api.php:847
+#: ../framework/api/class-tb-options-api.php:961
+msgid "Select if you'd like to show the excerpt or not for each post."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:852
 #: ../framework/api/class-tb-options-api.php:966
+msgid "Show excerpts"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:853
+#: ../framework/api/class-tb-options-api.php:967
 msgid "Hide excerpts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:889
+#: ../framework/api/class-tb-options-api.php:890
 msgid "When viewing a default post grid, how should they be displayed?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:894
+#: ../framework/api/class-tb-options-api.php:895
 msgid "Standard Grid"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:895
+#: ../framework/api/class-tb-options-api.php:896
 msgid "Masonry Grid"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:901
+#: ../framework/api/class-tb-options-api.php:902
 msgid "When viewing a default post grid, how many columns should the posts be separated into?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:906
-#: ../framework/api/class-tb-options-api.php:1003
-msgid "2 Columns"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:907
 #: ../framework/api/class-tb-options-api.php:1004
-msgid "3 Columns"
+msgid "2 Columns"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:908
 #: ../framework/api/class-tb-options-api.php:1005
-msgid "4 Columns"
+msgid "3 Columns"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:909
 #: ../framework/api/class-tb-options-api.php:1006
+msgid "4 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:910
+#: ../framework/api/class-tb-options-api.php:1007
 msgid "5 Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:913
-#: ../framework/api/class-tb-options-api.php:1010
+#: ../framework/api/class-tb-options-api.php:914
+#: ../framework/api/class-tb-options-api.php:1011
 msgid "Rows"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:914
+#: ../framework/api/class-tb-options-api.php:915
 msgid "When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?<br><br><em>Note: The total posts on the page will be the number of rows times the number of columns.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:922
+#: ../framework/api/class-tb-options-api.php:923
 msgid "When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:936
+#: ../framework/api/class-tb-options-api.php:937
 msgid "Post Display: Showcase"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:937
+#: ../framework/api/class-tb-options-api.php:938
 msgid "These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the \"Post Showcase\" page template and any archives you've set to display the post showcase. For more control over a specifc post showcase, you can apply the \"Post Showcase\" element of the Builder or use the [post_showcase] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:948
+#: ../framework/api/class-tb-options-api.php:949
 msgid "Titles"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:949
+#: ../framework/api/class-tb-options-api.php:950
 msgid "Select if you'd like to show the title or not for each post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:954
+#: ../framework/api/class-tb-options-api.php:955
 msgid "Show titles"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:955
+#: ../framework/api/class-tb-options-api.php:956
 msgid "Hide titles"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:970
+#: ../framework/api/class-tb-options-api.php:971
 msgid "Gutters"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:971
+#: ../framework/api/class-tb-options-api.php:972
 msgid "Select if you'd like to show spacing in between the showcase items.<br><br><em>Note: Hiding the gutters works best if you're using a consistent image crop size, or the masonry display.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:976
+#: ../framework/api/class-tb-options-api.php:977
 msgid "Show gutters"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:977
+#: ../framework/api/class-tb-options-api.php:978
 msgid "Hide gutters"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:986
+#: ../framework/api/class-tb-options-api.php:987
 msgid "When viewing a default post showcase, how should they be displayed?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:991
+#: ../framework/api/class-tb-options-api.php:992
 msgid "Standard Showcase Grid"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:992
+#: ../framework/api/class-tb-options-api.php:993
 msgid "Masonry Showcase"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:998
+#: ../framework/api/class-tb-options-api.php:999
 msgid "When viewing a default post showcase, how many columns should the posts be separated into?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1011
+#: ../framework/api/class-tb-options-api.php:1012
 msgid "When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?<br><br><em>Note: The total posts on the page will be the number of rows times the number of columns.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1019
+#: ../framework/api/class-tb-options-api.php:1020
 msgid "When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1033
+#: ../framework/api/class-tb-options-api.php:1034
 msgid "Lightbox"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1034
+#: ../framework/api/class-tb-options-api.php:1035
 msgid "These settings apply to the built-in lightbox functionality, which utilizes the <a href=\"http://dimsemenov.com/plugins/magnific-popup/\" target=\"_blank\">Magnific Popup</a> script."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1037
+#: ../framework/api/class-tb-options-api.php:1038
 msgid "Animate lightboxes?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1038
+#: ../framework/api/class-tb-options-api.php:1039
 msgid "Select if you'd like lightboxes to animate as they open and close."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1043
+#: ../framework/api/class-tb-options-api.php:1044
 msgid "No animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1044
+#: ../framework/api/class-tb-options-api.php:1045
 msgid "Fade animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1048
+#: ../framework/api/class-tb-options-api.php:1049
 msgid "Disable standard lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1049
+#: ../framework/api/class-tb-options-api.php:1050
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing a standard lightbox instance."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:1054
-#: ../framework/api/class-tb-options-api.php:1065
-#: ../framework/api/class-tb-options-api.php:1076
-msgid "Yes, disable for mobile."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1055
 #: ../framework/api/class-tb-options-api.php:1066
 #: ../framework/api/class-tb-options-api.php:1077
+msgid "Yes, disable for mobile."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1056
+#: ../framework/api/class-tb-options-api.php:1067
+#: ../framework/api/class-tb-options-api.php:1078
 msgid "No, do not disable for mobile."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1059
+#: ../framework/api/class-tb-options-api.php:1060
 msgid "Disable iframe lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1060
+#: ../framework/api/class-tb-options-api.php:1061
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1070
+#: ../framework/api/class-tb-options-api.php:1071
 msgid "Disable gallery lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1071
+#: ../framework/api/class-tb-options-api.php:1072
 msgid "Select if you'd like the lightbox to be disabled for mobile users when viewing a gallery."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1092
+#: ../framework/api/class-tb-options-api.php:1093
 msgid "bbPress"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1096
+#: ../framework/api/class-tb-options-api.php:1097
 msgid "Lead Topic"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1097
+#: ../framework/api/class-tb-options-api.php:1098
 msgid "When viewing individual topics, display the topic prominently separated from the responses."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1103
+#: ../framework/api/class-tb-options-api.php:1104
+msgid "Content Background"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1105
+msgid "When viewing bbPress pages, remove standard page background design from wrapping forums and topics."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1111
 msgid "Forum Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1104
+#: ../framework/api/class-tb-options-api.php:1112
 msgid "Select the sidebar layout used for viewing forum pages generated by bbPress."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1112
+#: ../framework/api/class-tb-options-api.php:1120
 msgid "Topic Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1113
+#: ../framework/api/class-tb-options-api.php:1121
 msgid "Select the sidebar layout used for viewing individual topics."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1121
+#: ../framework/api/class-tb-options-api.php:1129
 msgid "Profile Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1122
+#: ../framework/api/class-tb-options-api.php:1130
 msgid "Select the sidebar layout used for viewing user profiles."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1134
+#: ../framework/api/class-tb-options-api.php:1142
 msgid "WooCommerce"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1138
+#: ../framework/api/class-tb-options-api.php:1146
 msgid "Shop View"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1139
+#: ../framework/api/class-tb-options-api.php:1147
 msgid "Select the default product display style for your main shop page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1144
-#: ../framework/api/class-tb-options-api.php:1176
+#: ../framework/api/class-tb-options-api.php:1152
+#: ../framework/api/class-tb-options-api.php:1184
 msgid "Grid"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1145
-#: ../framework/api/class-tb-options-api.php:1177
+#: ../framework/api/class-tb-options-api.php:1153
+#: ../framework/api/class-tb-options-api.php:1185
 msgid "List"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1146
-#: ../framework/api/class-tb-options-api.php:1178
+#: ../framework/api/class-tb-options-api.php:1154
+#: ../framework/api/class-tb-options-api.php:1186
 msgid "Catalog"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1150
+#: ../framework/api/class-tb-options-api.php:1158
 msgid "Shop Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1151
+#: ../framework/api/class-tb-options-api.php:1159
 msgid "Select the number of columns to display the products on your main shop page, when viewed as a grid."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1156
-#: ../framework/api/class-tb-options-api.php:1157
-#: ../framework/api/class-tb-options-api.php:1188
+#: ../framework/api/class-tb-options-api.php:1164
+#: ../framework/api/class-tb-options-api.php:1196
+msgid "2 columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1165
+#: ../framework/api/class-tb-options-api.php:1197
 msgid "3 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1158
-#: ../framework/api/class-tb-options-api.php:1189
+#: ../framework/api/class-tb-options-api.php:1166
+#: ../framework/api/class-tb-options-api.php:1198
 msgid "4 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1159
-#: ../framework/api/class-tb-options-api.php:1190
+#: ../framework/api/class-tb-options-api.php:1167
+#: ../framework/api/class-tb-options-api.php:1199
 msgid "5 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1163
+#: ../framework/api/class-tb-options-api.php:1171
 msgid "Shop Products Per Page"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1164
+#: ../framework/api/class-tb-options-api.php:1172
 msgid "Select the number products to display per page on your main shop page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1170
+#: ../framework/api/class-tb-options-api.php:1178
 msgid "Archive View"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1171
+#: ../framework/api/class-tb-options-api.php:1179
 msgid "Select the default product display style for your product archives. This is when products are displayed by category or tag."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1182
+#: ../framework/api/class-tb-options-api.php:1190
 msgid "Archive Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1183
+#: ../framework/api/class-tb-options-api.php:1191
 msgid "Select the number of columns to display the products in your product archives, when viewed as a grid."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1194
+#: ../framework/api/class-tb-options-api.php:1203
 msgid "Archives Products Per Page"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1195
+#: ../framework/api/class-tb-options-api.php:1204
 msgid "Select the number products to display per page in your product archives."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1201
+#: ../framework/api/class-tb-options-api.php:1210
 msgid "Shop Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1202
+#: ../framework/api/class-tb-options-api.php:1211
 msgid "Select the sidebar layout when viewing your main shop."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1211
+#: ../framework/api/class-tb-options-api.php:1220
 msgid "Select the sidebar layout when viewing your product archives. This is when products are displayed by category or tag."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1219
+#: ../framework/api/class-tb-options-api.php:1228
 msgid "Product Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1220
+#: ../framework/api/class-tb-options-api.php:1229
 msgid "Select the sidebar layout when viewing a single product."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1228
+#: ../framework/api/class-tb-options-api.php:1237
 msgid "Shopping Cart Cross Sells"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1229
+#: ../framework/api/class-tb-options-api.php:1238
 msgid "For the shopping cart page, select if you'd like to display products customers may be interested in, based on what's currently in their cart."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1234
+#: ../framework/api/class-tb-options-api.php:1243
 msgid "Yes, show cross sells"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1235
+#: ../framework/api/class-tb-options-api.php:1244
 msgid "No, don't show cross sells"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1239
+#: ../framework/api/class-tb-options-api.php:1248
 msgid "Product View Toggle"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1240
+#: ../framework/api/class-tb-options-api.php:1249
 msgid "Select if you'd like to display buttons on your product pages that allow the user to toggle between list, grid and catalog view."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1245
+#: ../framework/api/class-tb-options-api.php:1254
 msgid "Yes, show buttons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1246
+#: ../framework/api/class-tb-options-api.php:1255
 msgid "No, don't show buttons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1259
+#: ../framework/api/class-tb-options-api.php:1268
 msgid "Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1267
+#: ../framework/api/class-tb-options-api.php:1276
 msgid "Plugins"
 msgstr ""
 
@@ -5803,67 +5808,67 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1448
+#: ../framework/includes/helpers.php:1456
 msgid "year"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1449
+#: ../framework/includes/helpers.php:1457
 msgid "years"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1450
+#: ../framework/includes/helpers.php:1458
 msgid "month"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1451
+#: ../framework/includes/helpers.php:1459
 msgid "months"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1452
+#: ../framework/includes/helpers.php:1460
 msgid "week"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1453
+#: ../framework/includes/helpers.php:1461
 msgid "weeks"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1454
+#: ../framework/includes/helpers.php:1462
 msgid "day"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1455
+#: ../framework/includes/helpers.php:1463
 msgid "days"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1456
+#: ../framework/includes/helpers.php:1464
 msgid "hour"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1457
+#: ../framework/includes/helpers.php:1465
 msgid "hours"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1458
+#: ../framework/includes/helpers.php:1466
 msgid "minute"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1459
+#: ../framework/includes/helpers.php:1467
 msgid "minutes"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1460
+#: ../framework/includes/helpers.php:1468
 msgid "second"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1461
+#: ../framework/includes/helpers.php:1469
 msgid "seconds"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1462
+#: ../framework/includes/helpers.php:1470
 msgid "ago"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1463
+#: ../framework/includes/helpers.php:1471
 msgid "sometime"
 msgstr ""
 
@@ -6188,15 +6193,15 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: ../framework/includes/loop.php:806
+#: ../framework/includes/loop.php:814
 msgid "Error: No query supplied."
 msgstr ""
 
-#: ../framework/includes/loop.php:1253
+#: ../framework/includes/loop.php:1261
 msgid "Oops! There aren't any ID's in your gallery shortcode. It should be formatted like:"
 msgstr ""
 
-#: ../framework/includes/loop.php:1257
+#: ../framework/includes/loop.php:1265
 msgid "Oops! You used the gallery override for this mini post grid, but didn't use the [gallery] shortcode."
 msgstr ""
 
@@ -6256,11 +6261,11 @@ msgstr ""
 msgid "Oops! Couldn't find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids=\"1,2,3\"]"
 msgstr ""
 
-#: ../framework/includes/menu.php:420
+#: ../framework/includes/menu.php:423
 msgid "No Custom Menu"
 msgstr ""
 
-#: ../framework/includes/menu.php:420
+#: ../framework/includes/menu.php:423
 msgid "Setup a custom menu at <em>Appearance > Menus</em> in your admin panel, and apply it to the \"Primary Navigation\" location."
 msgstr ""
 
@@ -6278,5 +6283,54 @@ msgstr ""
 
 #: ../includes/theme-functions.php:152
 msgid "Jump Start Homepage"
+msgstr ""
+
+#: ../includes/updates.php:38
+msgid "Configuration"
+msgstr ""
+
+#: ../includes/updates.php:40
+msgid "<strong>Warning:</strong> Although there is a backup option below, we recommend that you still always backup your theme files before running any automatic updates. Additionally, it's a good idea to never update any plugin or theme on a live website without first testing its compatibility with your specific WordPress site."
+msgstr ""
+
+#: ../includes/updates.php:43
+msgid "Envato Username"
+msgstr ""
+
+#: ../includes/updates.php:45
+msgid "Enter the username that you have purchased the theme with through ThemeForest."
+msgstr ""
+
+#: ../includes/updates.php:49
+msgid "Envato API Key"
+msgstr ""
+
+#: ../includes/updates.php:51
+#, php-format
+msgid "Enter an %s key associated with your Envato username."
+msgstr ""
+
+#: ../includes/updates.php:55
+msgid "Backups"
+msgstr ""
+
+#: ../includes/updates.php:57
+msgid "Select if you'd like a backup made of the previous theme version on your server before updating to the new version."
+msgstr ""
+
+#: ../includes/updates.php:61
+msgid "Yes, make theme backups when updating."
+msgstr ""
+
+#: ../includes/updates.php:62
+msgid "No, do not make theme backups."
+msgstr ""
+
+#: ../includes/updates.php:73
+msgid "Theme Blvd Envato Updates"
+msgstr ""
+
+#: ../includes/updates.php:74
+msgid "Theme Updates"
 msgstr ""
 
