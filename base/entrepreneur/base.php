@@ -180,7 +180,7 @@ function jumpstart_ent_options() {
 			),
 			'top_text_color' => array(
 			    'id'		=> 'top_text_color',
-			    'name'		=> __('Top Bar Text Color'),
+			    'name'		=> __('Top Bar Text Color', 'themeblvd'),
 			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'theme-blvd-layout-builder'),
 			    'std'		=> 'dark',
 			    'type'		=> 'select',
@@ -465,7 +465,7 @@ function jumpstart_ent_options() {
 			),
 			'header_text_color' => array(
 			    'id'		=> 'header_text_color',
-			    'name'		=> __('Text Color'),
+			    'name'		=> __('Text Color', 'themeblvd'),
 			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'theme-blvd-layout-builder'),
 			    'std'		=> 'dark',
 			    'type'		=> 'select',
