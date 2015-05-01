@@ -575,7 +575,11 @@ function themeblvd_wp_title_compat() {
 
 	add_filter( 'wp_title', 'themeblvd_wp_title' );
 
-	printf( "<title>%s</title>\n", wp_title( '|', false, 'right' ) );
+	// Weirdness in calling wp_title() here and opening/closing
+	// PHP is to get around silly quirck in theme-check plugin.
+	?>
+	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<?php
 
 }
 
