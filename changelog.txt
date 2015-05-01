@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.0.0-RC1 - XX/XX/2015
+2.0.0-RC1 - 05/01/2015
 ----------------------
 
 * Added ThemeForest update system.
