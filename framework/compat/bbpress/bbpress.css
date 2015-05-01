@@ -222,11 +222,6 @@ span.bbp-admin-links a {
 .bbp-forums .bbp-forum-freshness {
 	display: none;
 }
-.bbp-body .forum .bbp-forum-info,
-.bbp-body .topic .bbp-topic-title {
-	padding-left: 20px;
-	position: relative;
-}
 .bbp-body .forum .bbp-forum-info:before,
 .bbp-body .topic .bbp-topic-title:before {
 	content: "\f075";
@@ -476,9 +471,10 @@ p.bbp-user-reply-count {
 	border-width: 0;
 	border-right-width: 1px;
 	position: absolute;
-	top: -12px;
-	left: -40px;
-	bottom: -12px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	padding: 4px;
 	width: 26px;
 }
@@ -761,11 +757,6 @@ body.rtl #bbpress-forums .topic-header .tb-tags .fa {
 }
 
 /* List Topics and Forums */
-body.rtl .bbp-body .forum .bbp-forum-info,
-body.rtl .bbp-body .topic .bbp-topic-title {
-	padding-left: 0;
-	padding-right: 20px;
-}
 body.rtl .bbp-body .forum .bbp-forum-info:before,
 body.rtl .bbp-body .topic .bbp-topic-title:before {
 	right: 0;
@@ -804,7 +795,7 @@ body.rtl .bbp-row-actions #favorite-toggle {
 	border-right-width: 0;
 	border-left-width: 1px;
 	left: inherit;
-	right: -40px;
+	right: 0;
 }
 
 /* Login Widget */
