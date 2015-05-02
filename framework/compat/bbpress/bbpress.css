@@ -222,6 +222,11 @@ span.bbp-admin-links a {
 .bbp-forums .bbp-forum-freshness {
 	display: none;
 }
+.bbp-body .forum .bbp-forum-info,
+.bbp-body .topic .bbp-topic-title {
+	padding-left: 20px;
+	position: relative;
+}
 .bbp-body .forum .bbp-forum-info:before,
 .bbp-body .topic .bbp-topic-title:before {
 	content: "\f075";
@@ -249,6 +254,19 @@ span.bbp-admin-links a {
 .bbp-body .topic.super-sticky .bbp-topic-title:before {
 	content: "\f0a1";
 	top: 4px;
+}
+#bbp-user-subscriptions .bbp-body .forum .bbp-forum-info,
+#bbp-user-subscriptions .bbp-body .topic .bbp-topic-title,
+#bbp-user-favorites .bbp-body .forum .bbp-forum-info,
+#bbp-user-favorites .bbp-body .topic .bbp-topic-title {
+	padding-left: 0;
+	position: static;
+}
+#bbp-user-subscriptions .bbp-body .forum .bbp-forum-info:before,
+#bbp-user-subscriptions .bbp-body .topic .bbp-topic-title:before,
+#bbp-user-favorites .bbp-body .forum .bbp-forum-info:before,
+#bbp-user-favorites .bbp-body .topic .bbp-topic-title:before {
+	content: "" !important;
 }
 .bbp-forums li.bbp-forum-info .bbp-forum-title,
 .bbp-topics li.bbp-topic-title .bbp-topic-permalink {
