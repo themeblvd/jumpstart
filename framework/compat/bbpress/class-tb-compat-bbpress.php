@@ -590,10 +590,15 @@ class Theme_Blvd_Compat_bbPress {
 	 */
 	public function user_website( $value, $field ) {
 
-		if ( $field == 'description' && ! bbp_is_single_user_edit() && $website = bbp_get_displayed_user_field('user_url') ) {
+		if ( $field == 'description' && ! bbp_is_single_user_edit() && $url = bbp_get_displayed_user_field('user_url') ) {
+
 			$value .= '</p><p class="bbp-user-forum-role">';
 			$value .= themeblvd_get_local('website').': ';
-			$value .= sprintf('<a href="%s" target="_blank">%s</a>', $website, str_replace(array('http://', 'https://'), '', $website));
+
+			$url = esc_url($url);
+			$link = sprintf('<a href="%s" title="%s" target="_blank" rel="nofollow">%s</a>', $url, esc_attr(bbp_get_displayed_user_field('display_name')), str_replace(array('http://', 'https://'), '', $url));
+
+			$value .= apply_filters('themeblvd_bbp_website_link_html', $link, $url );
 		}
 
 		return $value;
