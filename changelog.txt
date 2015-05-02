@@ -4,6 +4,8 @@ Jump Start Changelog
 2.0.0-RC2 - XX/XX/2015
 ----------------------
 
+* Only load Nivo script if Theme Blvd Sliders plugin is installed.
+
 --------------------------------------------------------------
 
 2.0.0-RC1 - 05/01/2015

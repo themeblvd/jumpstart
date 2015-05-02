@@ -341,7 +341,7 @@ function themeblvd_include_scripts() {
 	// the framework.
 	$scripts = array( 'jquery' );
 
-	// Register scripts that get enqueued as needed
+	// Register scripts that get enqueued, as needed
 	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
 		wp_register_script( 'google_maps', 'https://maps.googleapis.com/maps/api/js', array(), null );
 	}
@@ -358,7 +358,7 @@ function themeblvd_include_scripts() {
 		wp_enqueue_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1' );
 	}
 
-	if ( themeblvd_supports( 'assets', 'nivo' ) ) {
+	if ( themeblvd_supports( 'assets', 'nivo' ) ) { // Only enabled by default if TB Sliders plugin installed
 		$scripts[] = 'nivo';
 		wp_enqueue_script( 'nivo', TB_FRAMEWORK_URI . '/assets/js/nivo.min.js', array('jquery'), '3.2' );
 	}

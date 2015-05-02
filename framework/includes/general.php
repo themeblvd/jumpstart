@@ -202,7 +202,7 @@ function themeblvd_setup() {
 			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
 			'primary_dark_css'	=> true,			// Primary "themeblvd_dark" stylesheet (if supports display=>dark)
 			'flexslider'		=> true,			// Flexslider script by WooThemes
-			'nivo'				=> true,			// Nivo script by Dev7studios
+			'nivo'				=> false,			// Nivo script by Dev7studios
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
 			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
@@ -219,6 +219,12 @@ function themeblvd_setup() {
 			'wpml'				=> true				// WPML by On The Go Systems
 		)
 	);
+
+	// Only needed for Theme Blvd sliders plugin
+	if ( defined('TB_SLIDERS_PLUGIN_VERSION') ) {
+		$setup['assets']['nivo'] = true;
+	}
+
 	return apply_filters( 'themeblvd_global_config', $setup );
 }
 
