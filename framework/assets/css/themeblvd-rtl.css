@@ -1274,9 +1274,9 @@ html {
 	margin: 0 !important;
 	padding: 0;
 	overflow: auto !important;
-	-webkit-transition: right .2s ease-out;
-	-moz-transition: right .2s ease-out;
-	transition: right .2s ease-out;
+	-webkit-transition: left .2s ease-out;
+	-moz-transition: left .2s ease-out;
+	transition: left .2s ease-out;
 	position: fixed !important;
 	top: 0;
 	left: -280px;
