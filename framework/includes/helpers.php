@@ -218,7 +218,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 				// Category override option #2 -- category_name
 				$query['category_name'] = $options['category_name'];
 
-			} else if ( ! empty( $options['categories'] ) && ! $options['categories']['all'] ) {
+			} else if ( ! empty( $options['categories'] ) && empty( $options['categories']['all'] ) ) {
 
 				unset( $options['categories']['all'] );
 				$categories = '';
