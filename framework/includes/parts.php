@@ -730,7 +730,7 @@ function themeblvd_get_breadcrumbs_trail() {
 	$atts = array(
 		'delimiter'		=> '', // Previously <span class="divider">/</span> w/Bootstrap 2.x, now inserted w/CSS.
 		'home' 			=> themeblvd_get_local('home'),
-		'home_link' 	=> home_url(),
+		'home_link' 	=> themeblvd_get_home_url(),
 		'before' 		=> '<span class="current">',
 		'after' 		=> '</span>'
 	);
@@ -753,7 +753,7 @@ function themeblvd_get_breadcrumbs_trail() {
 			$crumb = $part['text'];
 
 			if ( ! empty( $part['link'] ) ) {
-				$crumb = '<a href="'.$part['link'].'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
+				$crumb = '<a href="'.esc_url($part['link']).'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
 			}
 
 			if ( $total == $count ) {
@@ -1488,6 +1488,7 @@ function themeblvd_get_refine_search_menu() {
 		}
 
 		$url = untrailingslashit(home_url('/')).'/?s='.str_replace(' ', '+', get_search_query());
+		$url = esc_url($url);
 
 		$output .= '<div class="tb-inline-menu">';
 		$output .= '<ul class="list-inline search-refine-menu">';

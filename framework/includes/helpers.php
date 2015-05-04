@@ -1535,7 +1535,7 @@ function themeblvd_get_home_url() {
     	$url = get_home_url();
     }
 
-    return apply_filters( 'themeblvd_home_url', trailingslashit($url) );
+    return apply_filters( 'themeblvd_home_url', esc_url( trailingslashit($url) ) );
 }
 
 /**
