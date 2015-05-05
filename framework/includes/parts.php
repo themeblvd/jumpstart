@@ -431,7 +431,7 @@ function themeblvd_header_text() {
  * @param string $color Color class of button
  * @param string $url URL where the button points to
  * @param string $target Anchor tag's target, _self, _blank, or lightbox
- * @param string $size Size of button - small, medium, default, or large
+ * @param string $size Size of button - small, medium, default, large, x-large, xx-large, xxx-large
  * @param string $classes CSS classes to attach onto button
  * @param string $title Title for anchor tag
  * @param string $icon_before Optional fontawesome icon before text
@@ -589,7 +589,7 @@ function themeblvd_get_buttons( $buttons, $args ) {
 		}
 	}
 
-	return apply_filters( 'themeblvd_buttons', $output, $buttons );
+	return apply_filters( 'themeblvd_buttons', $output, $buttons, $args );
 
 }
 
@@ -600,6 +600,93 @@ function themeblvd_get_buttons( $buttons, $args ) {
  */
 function themeblvd_buttons( $buttons ) {
 	echo themeblvd_get_buttons( $buttons );
+}
+
+/**
+ * Get group of text blocks
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_text_blocks( $blocks, $args = array() ) {
+
+	$defaults = array(
+		// Currently no $args, maybe have some in the future
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	$block_std = array(
+		'text'				=> '',
+	    'size'				=> '200%',
+	    'color'				=> '#333333',
+	    'apply_bg_color'	=> '0',
+	    'bg_color'			=> '#ffffff',
+	    'bg_opacity'		=> '1',
+	    'bold'				=> '0',
+	    'italic'			=> '0',
+	    'caps'				=> '0',
+	    'wpautop'			=> '1',
+	);
+
+	$output = '<div class="tb-text-blocks">';
+
+	if ( $blocks && is_array($blocks) ) {
+
+		$i = 1;
+
+		foreach ( $blocks as $block ) {
+
+			$block = wp_parse_args( $block, $block_std );
+
+			// CSS class
+			$class = sprintf('tb-text-block text-block-%s', $i);
+
+			if ( $block['bold'] ) {
+				$class .= ' bold';
+			}
+
+			if ( $block['italic'] ) {
+				$class .= ' italic';
+			}
+
+			if ( $block['caps'] ) {
+				$class .= ' caps';
+			}
+
+			// CSS style
+			$style = sprintf( 'color:%s;font-size:%srem;', $block['color'], intval($block['size']) / 100 );
+
+			if ( $block['apply_bg_color'] ) {
+				$style .= sprintf( 'background-color:%s;', $block['bg_color'] ); // Fallback for older browsers
+	            $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $block['bg_color'], $block['bg_opacity'] ) );
+				$class .= ' has-bg';
+			}
+
+			// Content
+			if ( $block['wpautop'] ) {
+				$content = themeblvd_get_content($block['text']);
+			} else {
+				$content = do_shortcode($block['text']);
+			}
+
+			// Output
+			$output .= sprintf("\n\t<div class=\"tb-text-block-wrap\">\n\t\t<div class=\"%s\" style=\"%s\">\n\t\t\t%s\t\t</div><!-- .tb-text-block (end) -->\n\t</div><!-- .tb-text-block-wrap (end) -->", $class, $style, $content);
+
+			$i++;
+		}
+	}
+
+	$output .= '</div><!-- .tb-text-blocks -->';
+
+	return apply_filters( 'themeblvd_text_blocks', $output, $blocks, $args );
+}
+
+/**
+ * Display group of text blocks
+ *
+ * @since 2.5.0
+ */
+function themeblvd_text_blocks( $blocks ) {
+	echo themeblvd_get_text_blocks( $blocks );
 }
 
 if ( !function_exists( 'themeblvd_archive_title' ) ) :
@@ -1318,7 +1405,7 @@ function themeblvd_get_author_info( $user = null, $context = 'single' ) {
 	}
 
 	if ( $desc ) {
-		$output .= themeblvd_get_content($desc);;
+		$output .= themeblvd_get_content($desc);
 	}
 
 	// Contact icons

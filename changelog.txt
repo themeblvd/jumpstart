@@ -4,7 +4,9 @@ Jump Start Changelog
 2.0.0-RC2 - XX/XX/2015
 ----------------------
 
+* Improvements to Jumbotron, named changed Hero Unit in Layout Builder.
 * Added "Text Blocks" sortable option type.
+* Added buttons sizes `xxl` and `xxxl`.
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.
 * Fixed: Animation of hiding mobile menu with RTL languages.
 

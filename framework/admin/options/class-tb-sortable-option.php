@@ -774,7 +774,9 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 					'small' 	=> __( 'Small', 'themeblvd' ),
 					'default' 	=> __( 'Normal', 'themeblvd' ),
 					'large' 	=> __( 'Large', 'themeblvd' ),
-					'x-large' 	=> __( 'Extra Large', 'themeblvd' )
+					'x-large' 	=> __( 'X-Large', 'themeblvd' ),
+					'xx-large' 	=> __( 'XX-Large', 'themeblvd' ),
+					'xxx-large' => __( 'XXX-Large', 'themeblvd' )
 				)
 			),
 			array(

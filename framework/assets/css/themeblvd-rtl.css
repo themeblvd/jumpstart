@@ -276,6 +276,16 @@ p {
 	line-height: 1.2;
 	padding: 13px 30px;
 }
+.btn-xxl {
+	font-size: 25px;
+	line-height: 1.2;
+	padding: 15px 35px;
+}
+.btn-xxxl {
+	font-size: 30px;
+	line-height: 1.2;
+	padding: 18px 40px;
+}
 @media (max-width: 480px) {
 	.btn {
 		display: block;
@@ -6389,15 +6399,11 @@ blockquote small {
 }
 .tb-jumbotron.has-bg {
 	margin-bottom: 10px;
-	padding: 48px 30px 48px 30px; /* Bootstrap default */
-}
-.tb-jumbotron > .title {
-	display: block;
-	font-size: 30px;
-	margin: 0 0 10px 0;
+	padding: 48px 30px; /* Bootstrap default */
 }
 .tb-jumbotron p {
 	font-size: inherit;
+	font-weight: inherit;
 }
 .tb-jumbotron p:last-of-type {
 	margin-bottom: 0;
@@ -6405,13 +6411,13 @@ blockquote small {
 .element-jumbotron .tb-jumbotron {
 	margin-bottom: 0;
 }
-.element-jumbotron.text-light .tb-jumbotron {
-	color: #ffffff;
-}
 @media (max-width: 767px) {
 	.jumbotron-wrap {
 		max-width: none !important;
 	}
+}
+.tb-jumbotron .jumbotron-buttons {
+	padding-top: 10px;
 }
 
 /* Panel */
@@ -7367,6 +7373,24 @@ blockquote small {
 	box-shadow: inset 0 1px 0 #ffffff;
 	font-size: 14px;
 	padding: 5px 0;
+	text-transform: uppercase;
+}
+
+/* Text Blocks (used in jumbotron) */
+.tb-text-block-wrap {
+	margin-bottom: 15px;
+}
+.tb-text-block.has-bg {
+	display: inline-block;
+	padding: .2em .5em;
+}
+.tb-text-block.bold {
+	font-weight: bold;
+}
+.tb-text-block.italic {
+	font-style: italic;
+}
+.tb-text-block.caps {
 	text-transform: uppercase;
 }
 

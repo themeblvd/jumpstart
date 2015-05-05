@@ -1386,9 +1386,14 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 		case 'x-large' :
 			$size = 'xl';
 			break;
+		case 'xx-large' :
+			$size = 'xxl';
+			break;
+		case 'xxx-large' :
+			$size = 'xxxl';
 	}
 
-	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg', 'xl' ) ) ) ) {
+	if ( in_array( $size, apply_filters( 'themeblvd_bootstrap_btn_sizes', array( 'xs', 'sm', 'lg', 'xl', 'xxl', 'xxxl' ) ) ) ) {
 		$class .= sprintf( ' btn-%s', $size );
 	}
 

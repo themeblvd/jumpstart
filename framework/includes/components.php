@@ -399,33 +399,27 @@ function themeblvd_icon_box( $args ) {
  * @since 2.4.2
  *
  * @param array $args Arguments for jumbotron
- * @param string $args Content within jumbotron
+ * @param string $content Override content pulled from $args
  * @return string $output Final content to output
  */
-function themeblvd_get_jumbotron( $args, $content ) {
+function themeblvd_get_jumbotron( $args, $content = '' ) {
 
     $output = '';
 
     $defaults = array(
-        'title'         => '',      	// Title of unit
-        'bg_color'      => '',      	// Background color - Ex: #000000
-        'bg_opacity'    => '1',     	// BG color opacity for rgba()
-        'title_size'    => '30px',  	// Size of title text
-        'title_color'   => '',      	// Color of title text
-        'text_size'     => '18px',  	// Size of content text
-        'text_color'    => '',      	// Text color - Ex: #000000
-        'text_align'    => 'left',  	// How to align text - left, right, center
-        'align'         => 'center',	// How to align jumbotron - left, right, center, blank for no alignment
-        'max'           => '',      	// Meant to be used with align left/right/center - 300px, 50%, etc
-		'class'         => '',      	// Any additional CSS classes
-        'wpautop'       => true     	// Whether to apply wpautop on content
+		'blocks'         	=> array(),     // Text blocks
+		'text_align'    	=> 'left',  	// How to align all text - left, right, center
+		'max'           	=> '',      	// Meant to be used with align left/right/center - 300px, 50%, etc
+		'align'         	=> 'center',	// How to align unit - left, right, center, blank for no alignment
+        'apply_bg_color'	=> '',      	// Background color - Ex: #000000
+		'bg_color'      	=> '',      	// Background color - Ex: #000000
+        'bg_opacity'    	=> '1',     	// BG color opacity for rgba()
+		'buttons'       	=> array(), 	// Any buttons to include
+        'buttons_stack' 	=> '0',     	// Whether buttons appear stacked
+        'buttons_block' 	=> '0',      	// Whether buttons are displayed as block-level
+		'class'         	=> ''      		// Any additional CSS classes
     );
     $args = wp_parse_args( $args, $defaults );
-
-    // WP auto?
-    if ( $args['wpautop'] ) {
-        $content = wpautop( $content );
-    }
 
     // CSS classes
     $class = sprintf( 'tb-jumbotron jumbotron entry-content text-%s', $args['text_align'] );
@@ -433,18 +427,10 @@ function themeblvd_get_jumbotron( $args, $content ) {
     // Setup inline styles
     $style = '';
 
-    if ( $args['bg_color'] ) {
+    if ( $args['apply_bg_color'] ) {
         $style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
         $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
         $class .= ' has-bg';
-    }
-
-    if ( $args['text_color'] ) {
-        $style .= sprintf( 'color:%s;', $args['text_color'] );
-    }
-
-    if ( $args['text_size'] ) {
-        $style .= sprintf( 'font-size:%s;', $args['text_size'] );
     }
 
     // Custom CSS classes
@@ -452,24 +438,25 @@ function themeblvd_get_jumbotron( $args, $content ) {
         $class .= ' '.$args['class'];
     }
 
-    // Construct initial jumbotron
-    if ( $args['title'] ) {
+	// Content
+	if ( ! $content && $args['blocks'] ) {
+		$content = themeblvd_get_text_blocks($args['blocks']);
+	}
 
-        $title_style = '';
+	if ( $args['buttons'] ) {
 
-        if ( $args['title_color'] ) {
-            $title_style .= 'color: '.$args['title_color'].';';
+        if ( $args['buttons_block'] ) {
+            foreach ( $args['buttons'] as $key => $value ) {
+                $args['buttons'][$key]['block'] = true;
+            }
         }
 
-        if ( $args['title_size'] ) {
-            $title_style .= 'font-size: '.$args['title_size'].';';
-        }
-
-        $content = sprintf( '<h2 class="title" style="%s">%s</h2>%s', $title_style, $args['title'], $content );
-
+		$content .= "\n\t<div class=\"jumbotron-buttons\">";
+        $content .= "\n\t\t".themeblvd_get_buttons( $args['buttons'], array( 'stack' => $args['buttons_stack'] ) );
+		$content .= "\n\t</div><!-- .jumbotron-buttons -->\n";
     }
 
-    $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, do_shortcode( $content ) );
+    $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, $content );
 
     // Wrap the unit
     $wrap_class = 'jumbotron-wrap';
@@ -507,37 +494,8 @@ function themeblvd_get_jumbotron( $args, $content ) {
  *
  * @param array $args Arguments for Jumbotron.
  */
-function themeblvd_jumbotron( $args ) {
-
-    $defaults = array(
-        // Rest of $args are verified in themeblvd_get_jumbotron() ...
-        'buttons'       => array(), // Any buttons to include
-        'buttons_stack' => '0',     // Whether buttons appear stacked
-        'buttons_block' => '0'      // Whether buttons are displayed as block-level
-    );
-    $args = wp_parse_args( $args, $defaults );
-
-    // Setup content
-    $content = '';
-
-    if ( ! empty( $args['content'] ) ) {
-        $content = $args['content'];
-    }
-
-    if ( $args['buttons'] ) {
-
-        if ( $args['buttons_block'] ) {
-            foreach ( $args['buttons'] as $key => $value ) {
-                $args['buttons'][$key]['block'] = true;
-            }
-        }
-
-        $content .= "\n\n".themeblvd_get_buttons( $args['buttons'], array( 'stack' => $args['buttons_stack'] ) );
-
-    }
-
+function themeblvd_jumbotron( $args, $content = '' ) {
     echo themeblvd_get_jumbotron( $args, $content );
-
 }
 
 /**
