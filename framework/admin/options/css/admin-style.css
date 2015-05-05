@@ -1197,7 +1197,7 @@
 	line-height: 60px;
 }
 
-/* Sortables and Full Width options - bars, buttons, datasets, locations, pricing tables, sectors, tabs, testimonials, toggles */
+/* Sortables and Full Width options */
 #optionsframework .full-width .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-bars .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
@@ -1207,6 +1207,7 @@
 #optionsframework .section-sectors .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-tabs .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-testimonials .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework .section-text_blocks .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
 	right: -2px;
 }
@@ -1219,6 +1220,7 @@
 #optionsframework .section-sectors > .option > .controls,
 #optionsframework .section-tabs > .option > .controls,
 #optionsframework .section-testimonials > .option > .controls,
+#optionsframework .section-text_blocks > .option > .controls,
 #optionsframework .section-toggles > .option > .controls {
 	float: none;
 	min-width: 0;
@@ -1235,6 +1237,7 @@
 #optionsframework .section-sectors > .option > .explain,
 #optionsframework .section-tabs > .option > .explain,
 #optionsframework .section-testimonials > .option > .explain,
+#optionsframework .section-text_blocks > .option > .explain,
 #optionsframework .section-toggles > .option > .explain {
 	float: none;
 	max-width: none;
@@ -1249,6 +1252,7 @@
 #optionsframework .section-sectors .tb-sortable-option textarea,
 #optionsframework .section-tabs .tb-sortable-option textarea,
 #optionsframework .section-testimonials .tb-sortable-option textarea,
+#optionsframework .section-text_blocks .tb-sortable-option textarea,
 #optionsframework .section-toggles .tb-sortable-option textarea {
 	height: auto;
 }

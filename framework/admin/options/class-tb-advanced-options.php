@@ -92,6 +92,7 @@ class Theme_Blvd_Advanced_Options {
 			'slider',
 			'social_media',
 			'tabs',
+			'text_blocks',
 			'testimonials',
 			'toggles'
 		);
@@ -164,9 +165,14 @@ class Theme_Blvd_Advanced_Options {
 				$this->types[$type] = new Theme_Blvd_Testimonials_Option();
 				break;
 
+			case 'text_blocks':
+				$this->types[$type] = new Theme_Blvd_Text_Blocks_Option();
+				break;
+
 			case 'toggles':
 				$this->types[$type] = new Theme_Blvd_Toggles_Option();
 				break;
+
 		}
 
 	}
@@ -204,7 +210,7 @@ class Theme_Blvd_Advanced_Options {
 	 * @since 2.5.0
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'price_cols', 'sectors', 'share', 'slider', 'social_media', 'tabs', 'testimonials', 'toggles' ) );
+		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'price_cols', 'sectors', 'share', 'slider', 'social_media', 'tabs', 'testimonials', 'text_blocks', 'toggles' ) );
 	}
 
 }

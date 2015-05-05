@@ -380,6 +380,42 @@ abstract class Theme_Blvd_Sortable_Option {
 					break;
 
 				/*---------------------------------------*/
+				/* Slide (jQuery UI slider)
+				/*---------------------------------------*/
+
+				case 'slide' :
+
+					$item_output .= '<div class="jquery-ui-slider-wrap">';
+
+					$slide_options = array(
+						'min'	=> '1',
+						'max'	=> '100',
+						'step'	=> '1',
+						'units'	=> '' // for display only
+					);
+
+					if ( isset( $option['options'] ) ) {
+						$slide_options = wp_parse_args( $option['options'], $slide_options );
+					}
+
+					$item_output .= '<div class="jquery-ui-slider"';
+
+					foreach ( $slide_options as $param_id => $param ) {
+						$item_output .= sprintf( ' data-%s="%s"', $param_id, $param );
+					}
+
+					$item_output .= '></div>';
+
+					if ( ! $current && $current !== '0' ) { // $current can't be empty or else the UI slider won't work
+						$current = $slide_options['min'].$slide_options['units'];
+					}
+
+					$item_output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
+					$item_output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
+					break;
+
+
+				/*---------------------------------------*/
 				/* Uploader
 				/*---------------------------------------*/
 
@@ -1896,6 +1932,156 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
 			'delete_all' 			=> __('Delete All Toggles','themeblvd'),
 			'delete_all_confirm' 	=> __('Are you sure you want to delete all toggles?','themeblvd')
+		);
+		return $labels;
+	}
+
+}
+
+/**
+ * Text Blocks option type
+ *
+ * @since 2.5.0
+ */
+class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
+
+	/**
+	 * Constructor
+	 *
+	 * @since 2.5.0
+	 */
+	public function __construct() {
+
+		// Set type
+		$this->type = 'text_blocks';
+
+		// Run parent
+		parent::__construct();
+
+	}
+
+	/**
+	 * Get options
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_options() {
+		$options = array(
+			array(
+				'id' 		=> 'text',
+				'name'		=> __('Text', 'themeblvd'),
+				'desc'		=> __('Enter the text to display in this text block.', 'themeblvd'),
+				'type'		=> 'textarea',
+				'std'		=> '',
+				'trigger'	=> true // Triggers this option's value to be used in toggle
+			),
+			array(
+				'id' 		=> 'size',
+				'name'		=> __('Text Size', 'themeblvd'),
+				'desc'		=> __('Set the size of the text, relative to the site\'s main font size.', 'themeblvd'),
+				'std'		=> '200%',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> '%',
+					'min'	=> '80',
+					'max'	=> '1500',
+					'step'	=> '10'
+				)
+			),
+			array(
+				'id' 		=> 'color',
+				'name'		=> __('Text Color', 'themeblvd'),
+				'desc'		=> __('Select the color of the text.', 'themeblvd'),
+				'std'		=> '#333333',
+				'type'		=> 'color'
+			),
+			array(
+				'type'		=> 'subgroup_start',
+				'class'		=> 'show-hide'
+			),
+			array(
+				'id' 		=> 'apply_bg_color',
+				'name'		=> null,
+				'desc'		=> __('Apply background color around text block.', 'themeblvd'),
+				'std'		=> '0',
+				'type'		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			array(
+				'id' 		=> 'bg_color',
+				'name'		=> __('Background Color', 'themeblvd'),
+				'desc'		=> __('Select the color of the background around the text.', 'themeblvd'),
+				'std'		=> '#ffffff',
+				'type'		=> 'color',
+				'class'		=> 'hide receiver'
+			),
+			array(
+				'id'		=> 'bg_opacity',
+				'name'		=> __('Background Color Opacity', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the background color. Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'std'		=> '1',
+				'type'		=> 'select',
+				'options'	=> array(
+					'0.1'	=> '0.1',
+					'0.2'	=> '0.2',
+					'0.3'	=> '0.3',
+					'0.4'	=> '0.4',
+					'0.5'	=> '0.5',
+					'0.6'	=> '0.6',
+					'0.7'	=> '0.7',
+					'0.8'	=> '0.8',
+					'0.9'	=> '0.9',
+					'1'		=> '1.0'
+				),
+				'class'		=> 'hide receiver'
+			),
+			array(
+				'type'		=> 'subgroup_end'
+			),
+			array(
+				'id' 		=> 'bold',
+				'name'		=> null,
+				'desc'		=> __('Bold the text.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '0'
+			),
+			array(
+				'id' 		=> 'italic',
+				'name'		=> null,
+				'desc'		=> __('Italicize the text.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '0'
+			),
+			array(
+				'id' 		=> 'caps',
+				'name'		=> null,
+				'desc'		=> __('Display text in all caps.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '0'
+			),
+			array(
+				'id' 		=> 'wpautop',
+				'name'		=> null,
+				'desc'		=> __('Apply WordPress automatic formatting.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '1'
+			)
+		);
+		return $options;
+	}
+
+	/**
+	 * Get labels
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_labels() {
+		$labels = array(
+			'add' 					=> __('Add Text Block','themeblvd'),
+			'delete' 				=> __('Delete Text Block','themeblvd'),
+			'delete_confirm'		=> __('Are you sure you want to delete this text block?', 'themeblvd'),
+			'delete_all' 			=> __('Delete All Text Blocks','themeblvd'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all text blocks?','themeblvd')
 		);
 		return $labels;
 	}

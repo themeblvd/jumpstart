@@ -1217,6 +1217,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= $toggles->get_display( $value['id'], $option_name, $val );
 				break;
 
+            /*---------------------------------------*/
+			/* Text Blocks
+			/*---------------------------------------*/
+
+			case 'text_blocks' :
+				$text_blocks = $advanced->get('text_blocks');
+				$output .= $text_blocks->get_display( $value['id'], $option_name, $val );
+				break;
+
 			/*---------------------------------------*/
 			/* Editor
 			/*---------------------------------------*/

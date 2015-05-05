@@ -38,6 +38,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
 	add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
 	add_filter( 'themeblvd_sanitize_testimonials', 'themeblvd_sanitize_testimonials' );
+	add_filter( 'themeblvd_sanitize_text_blocks', 'themeblvd_sanitize_text_blocks' );
 	add_filter( 'themeblvd_sanitize_toggles', 'themeblvd_sanitize_toggles' );
 	add_filter( 'themeblvd_sanitize_content', 'themeblvd_sanitize_content' );
 	add_filter( 'themeblvd_sanitize_logo', 'themeblvd_sanitize_logo' );
@@ -538,6 +539,68 @@ function themeblvd_sanitize_testimonials( $input ) {
 			$output[$item_id]['company'] = apply_filters( 'themeblvd_sanitize_text', $item['company'] );
 			$output[$item_id]['company_url'] = apply_filters( 'themeblvd_sanitize_text', $item['company_url'] );
 			$output[$item_id]['image'] = apply_filters( 'themeblvd_sanitize_upload', $item['image'] );
+		}
+	}
+
+	return $output;
+}
+
+/**
+ * Text Blocks
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_text_blocks( $input ) {
+
+	$output = array();
+
+	update_option('testing', $input);
+
+	if ( $input && is_array($input) ) {
+		foreach ( $input as $item_id => $item ) {
+
+			$output[$item_id]['text'] = apply_filters( 'themeblvd_sanitize_textarea', $item['text'] );
+			$output[$item_id]['size'] = apply_filters( 'themeblvd_sanitize_text', $item['size'] );
+			$output[$item_id]['color'] = apply_filters( 'themeblvd_sanitize_color', $item['color'] );
+
+			$output[$item_id]['apply_bg'] = '0';
+
+			if ( isset($item['apply_bg']) ) {
+				$output[$item_id]['apply_bg'] = '1';
+			}
+
+			if ( isset($item['bg_color']) ) {
+				$output[$item_id]['bg_color'] = apply_filters( 'themeblvd_sanitize_color', $item['bg_color'] );
+			}
+
+			if ( isset($item['bg_opacity']) ) {
+				$output[$item_id]['bg_opacity'] = apply_filters( 'themeblvd_sanitize_text', $item['bg_opacity'] );
+			}
+
+			$output[$item_id]['bold'] = '0';
+
+			if ( isset($item['bold']) ) {
+				$output[$item_id]['bold'] = '1';
+			}
+
+			$output[$item_id]['italic'] = '0';
+
+			if ( isset($item['italic']) ) {
+				$output[$item_id]['italic'] = '1';
+			}
+
+			$output[$item_id]['caps'] = '0';
+
+			if ( isset($item['caps']) ) {
+				$output[$item_id]['caps'] = '1';
+			}
+
+			$output[$item_id]['wpautop'] = '0';
+
+			if ( isset($item['wpautop']) ) {
+				$output[$item_id]['wpautop'] = '1';
+			}
+
 		}
 	}
 
