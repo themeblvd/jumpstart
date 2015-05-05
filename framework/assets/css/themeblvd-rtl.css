@@ -6405,7 +6405,7 @@ blockquote small {
 	font-size: inherit;
 	font-weight: inherit;
 }
-.tb-jumbotron p:last-of-type {
+.tb-jumbotron p:last-child {
 	margin-bottom: 0;
 }
 .element-jumbotron .tb-jumbotron {

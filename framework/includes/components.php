@@ -417,6 +417,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 		'buttons'       	=> array(), 	// Any buttons to include
         'buttons_stack' 	=> '0',     	// Whether buttons appear stacked
         'buttons_block' 	=> '0',      	// Whether buttons are displayed as block-level
+		'wpautop'			=> '1',			// Only used if using $content var
 		'class'         	=> ''      		// Any additional CSS classes
     );
     $args = wp_parse_args( $args, $defaults );
@@ -441,6 +442,8 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 	// Content
 	if ( ! $content && $args['blocks'] ) {
 		$content = themeblvd_get_text_blocks($args['blocks']);
+	} else if ( $args['wpautop'] ) {
+		$content = themeblvd_get_content($content);
 	}
 
 	if ( $args['buttons'] ) {

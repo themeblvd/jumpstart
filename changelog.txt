@@ -10,6 +10,8 @@ Jump Start Changelog
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.
 * Fixed: Animation of hiding mobile menu with RTL languages.
 
+**Important:** If updating from a prior 2.0-beta/RC version, you must reconfigure options of any "Hero Unit" (previously named Jumbotron) user in Builder.
+
 --------------------------------------------------------------
 
 2.0.0-RC1 - 05/01/2015

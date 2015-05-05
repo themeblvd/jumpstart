@@ -2013,7 +2013,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 				'id' 		=> 'bg_color',
 				'name'		=> __('Background Color', 'themeblvd'),
 				'desc'		=> __('Select the color of the background around the text.', 'themeblvd'),
-				'std'		=> '#ffffff',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),

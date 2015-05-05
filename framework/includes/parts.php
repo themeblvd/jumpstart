@@ -609,15 +609,17 @@ function themeblvd_buttons( $buttons ) {
  */
 function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 
+	/*
 	$defaults = array(
 		// Currently no $args, maybe have some in the future
 	);
 	$args = wp_parse_args( $args, $defaults );
+	*/
 
 	$block_std = array(
 		'text'				=> '',
 	    'size'				=> '200%',
-	    'color'				=> '#333333',
+	    'color'				=> '',
 	    'apply_bg_color'	=> '0',
 	    'bg_color'			=> '#ffffff',
 	    'bg_opacity'		=> '1',
@@ -653,12 +655,28 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 			}
 
 			// CSS style
-			$style = sprintf( 'color:%s;font-size:%srem;', $block['color'], intval($block['size']) / 100 );
+			$style = '';
 
 			if ( $block['apply_bg_color'] ) {
 				$style .= sprintf( 'background-color:%s;', $block['bg_color'] ); // Fallback for older browsers
 	            $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $block['bg_color'], $block['bg_opacity'] ) );
 				$class .= ' has-bg';
+			}
+
+			if ( $block['color'] ) {
+				$style .= sprintf( 'color:%s;', $block['color'] );
+			}
+
+			if ( $block['size'] ) {
+
+				$size = $block['size'];
+
+				if ( strpos($size, '%') !== false ) {
+					$size  = intval($size) / 100;
+					$size .= 'rem';
+				}
+
+				$style .= sprintf( 'font-size:%s;', $size );
 			}
 
 			// Content
