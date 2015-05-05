@@ -1211,6 +1211,19 @@
 #optionsframework .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
 	right: -2px;
 }
+#optionsframework #builder .full-width .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-bars .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-datasets .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-locations .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-price_cols .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-sectors .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-tabs .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-testimonials .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-text_blocks .tb-sortable-option .item-handle.closed a.toggle,
+#optionsframework #builder .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
+	right: 0;
+}
 #optionsframework .full-width > .option > .controls,
 #optionsframework .section-bars > .option > .controls,
 #optionsframework .section-buttons > .option > .controls,
