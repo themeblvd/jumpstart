@@ -563,10 +563,10 @@ function themeblvd_sanitize_text_blocks( $input ) {
 			$output[$item_id]['size'] = apply_filters( 'themeblvd_sanitize_text', $item['size'] );
 			$output[$item_id]['color'] = apply_filters( 'themeblvd_sanitize_color', $item['color'] );
 
-			$output[$item_id]['apply_bg'] = '0';
+			$output[$item_id]['apply_bg_color'] = '0';
 
-			if ( isset($item['apply_bg']) ) {
-				$output[$item_id]['apply_bg'] = '1';
+			if ( isset($item['apply_bg_color']) ) {
+				$output[$item_id]['apply_bg_color'] = '1';
 			}
 
 			if ( isset($item['bg_color']) ) {
