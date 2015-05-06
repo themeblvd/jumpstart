@@ -6471,6 +6471,33 @@ blockquote small {
 		max-width: none !important;
 	}
 }
+.tb-jumbotron .tb-text-blocks {
+	font-size: 1rem;
+}
+@media (max-width: 992px) {
+		.tb-jumbotron .tb-text-block-wrap.text-small .tb-text-block {
+			font-size: 1.4rem;
+		}
+		.tb-jumbotron .tb-text-block-wrap.text-medium .tb-text-block {
+			font-size: 1.8rem;
+			line-height: 1.2;
+		}
+		.tb-jumbotron .tb-text-block-wrap.text-large .tb-text-block {
+			font-size: 2.8rem;
+			line-height: 1.2;
+		}
+}
+@media (max-width: 767px) {
+	.tb-jumbotron .tb-text-block-wrap.text-small .tb-text-block {
+		font-size: 1.2rem;
+	}
+	.tb-jumbotron .tb-text-block-wrap.text-medium .tb-text-block {
+		font-size: 1.6rem;
+	}
+	.tb-jumbotron .tb-text-block-wrap.text-large .tb-text-block {
+		font-size: 2.4rem;
+	}
+}
 .tb-jumbotron .jumbotron-buttons {
 	padding-top: 10px;
 }

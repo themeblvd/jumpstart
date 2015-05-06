@@ -654,7 +654,33 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 				$class .= ' caps';
 			}
 
-			// CSS style
+			// Font Size (outer style)
+			$size_style = '';
+			$size_class = '';
+
+			if ( $block['size'] ) {
+
+				$size = $block['size'];
+
+				if ( strpos($size, '%') !== false ) {
+
+					$size  = intval($size) / 100;
+
+					if ( $size >= 3 ) {
+						$size_class = 'text-large';
+					} else if ( $size >= 2 ) {
+						$size_class = 'text-medium';
+					} else {
+						$size_class = 'text-small';
+					}
+
+					$size .= 'em';
+				}
+
+				$size_style = sprintf( 'font-size:%s;', $size );
+			}
+
+			// CSS style (inner style)
 			$style = '';
 
 			if ( $block['apply_bg_color'] ) {
@@ -667,18 +693,6 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 				$style .= sprintf( 'color:%s;', $block['color'] );
 			}
 
-			if ( $block['size'] ) {
-
-				$size = $block['size'];
-
-				if ( strpos($size, '%') !== false ) {
-					$size  = intval($size) / 100;
-					$size .= 'rem';
-				}
-
-				$style .= sprintf( 'font-size:%s;', $size );
-			}
-
 			// Content
 			if ( $block['wpautop'] ) {
 				$content = themeblvd_get_content($block['text']);
@@ -687,7 +701,9 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 			}
 
 			// Output
-			$output .= sprintf("\n\t<div class=\"tb-text-block-wrap\">\n\t\t<div class=\"%s\" style=\"%s\">\n\t\t\t%s\t\t</div><!-- .tb-text-block (end) -->\n\t</div><!-- .tb-text-block-wrap (end) -->", $class, $style, $content);
+			$output .= sprintf("\n\t<div class=\"tb-text-block-wrap %s\" style=\"%s\">", $size_class, $size_style);
+			$output .= sprintf("\n\t\t<div class=\"%s\" style=\"%s\">\n\t\t\t%s\t\t</div><!-- .tb-text-block (end) -->", $class, $style, $content);
+			$output .= "\n\t</div><!-- .tb-text-block-wrap (end) -->";
 
 			$i++;
 		}
