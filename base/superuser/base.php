@@ -2210,31 +2210,31 @@ function jumpstart_su_css() {
 	}
 
 	// Primary mobile menu
-	$print .= "#tb-side-menu-wrapper,\n";
-	$print .= "#tb-side-menu-wrapper .tb-side-menu,\n";
-	$print .= "#tb-side-menu-wrapper .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {\n";
+	$print .= ".tb-side-menu-wrapper,\n";
+	$print .= ".tb-side-menu-wrapper .tb-side-menu,\n";
+	$print .= ".tb-side-menu-wrapper .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {\n";
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('menu_mobile_bg_color'));
 	$print .= "}\n";
 
 	if ( themeblvd_get_option('menu_mobile_bg_color_brightness') == 'light' ) {
 
-		$print .= "#tb-side-menu-wrapper .tb-side-menu a,\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu span,\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active,\n";
-		$print .= "#tb-side-menu-wrapper .header-text,\n";
-		$print .= "#tb-side-menu-wrapper .tb-search .search-input {\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu a,\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu span,\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active,\n";
+		$print .= ".tb-side-menu-wrapper .header-text,\n";
+		$print .= ".tb-side-menu-wrapper .tb-search .search-input {\n";
 		$print .= "\tcolor: #666666;\n";
 		$print .= "}\n";
 
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle {\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle {\n";
 		$print .= "\tcolor: #333333;\n";
 		$print .= "}\n";
 
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .sub-menu {\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu .sub-menu {\n";
 		$print .= sprintf("\tbackground-image: url(%s/assets/images/parts/side-nav-list-outer-cccccc.png);", TB_FRAMEWORK_URI);
 		$print .= "}\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .sub-menu li {\n";
+		$print .= ".tb-side-menu-wrapper .tb-side-menu .sub-menu li {\n";
 		$print .= sprintf("\tbackground-image: url(%s/assets/images/parts/side-nav-list-ltr-cccccc.png);", TB_FRAMEWORK_URI);
 		$print .= "}\n";
 

@@ -146,9 +146,10 @@ function themeblvd_get_js_locals() {
 	$locals = array (
 		'scroll_to_top'				=> 'true',
 		'retina_logo'				=> 'true',
-		'custom_buttons'			=> 'true',
-		'mobile_menu_viewport_max'	=> '767'
+		'custom_buttons'			=> 'true'
 	);
+
+	// Mobile menu location
 
 	// Extend $locals to accomodate scripts being included
 	// through our "themeblvd_global_config" filter.
@@ -216,8 +217,16 @@ function themeblvd_get_js_locals() {
 
 	// Responsive nav menu fixed to the side on mobile
 	if ( themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) {
+
 		$locals['mobile_side_menu'] = 'true';
 		$locals['mobile_side_menu_icon_color'] = apply_filters('themeblvd_mobile_side_menu_social_media_color', 'light');
+		$locals['mobile_menu_viewport_max'] = '992';
+
+		$locals['mobile_menu_location'] = 'right';
+
+		if ( is_rtl() ) {
+			$locals['mobile_menu_location'] = 'left';
+		}
 	}
 
 	// Sticky header

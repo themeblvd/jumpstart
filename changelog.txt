@@ -7,6 +7,7 @@ Jump Start Changelog
 * Improvements to Jumbotron, named changed Hero Unit in Layout Builder.
 * Added "Text Blocks" sortable option type.
 * Added buttons sizes `xxl` and `xxxl`.
+* Allow mobile menu to be filtered appear from left.
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.
 * Fixed: Animation of hiding mobile menu with RTL languages.
 
