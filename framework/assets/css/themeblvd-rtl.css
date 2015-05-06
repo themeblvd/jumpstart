@@ -858,9 +858,17 @@ body.admin-bar .tb-sticky-menu {
 	width: 200px;
 	z-index: 999;
 }
+.sf-menu ul.non-mega-sub-menu.reverse {
+	right: inherit;
+	left: 0;
+}
 .sf-menu ul.non-mega-sub-menu ul {
 	top: 0;
 	right: 100%;
+}
+.sf-menu ul.non-mega-sub-menu.reverse ul {
+	left: 100%;
+	right: inherit;
 }
 .sf-menu > li {
 	float: right;
@@ -899,6 +907,9 @@ body.admin-bar .tb-sticky-menu {
 }
 .sf-menu .fa {
 	margin-left: 5px;
+}
+.sf-menu .fa-caret-left.inverse:before {
+	content: "\f0da";
 }
 .tb-primary-menu > li > a .sf-sub-indicator,
 .tb-primary-menu > [class^="menu-icon-"] > a .fa {

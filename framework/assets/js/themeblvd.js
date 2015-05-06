@@ -106,13 +106,13 @@ jQuery(document).ready(function($) {
 		// Add initial class that denotes the menu is hidden on
 		// page load. The menu will be hidden on its own, but
 		// this allows for CSS3 transitions.
-		$body.addClass('side-menu-off');
+		$body.addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
 
 		// Create empty wrapper for the side menu
-		$('#wrapper').after('<div id="tb-side-menu-wrapper"><div class="wrap"></div></div>');
+		$('#wrapper').after('<div class="tb-side-menu-wrapper '+themeblvd.mobile_menu_location+'"><div class="wrap"></div></div>');
 
 		// Generate content for side menu
-		var $side_holder = $('#tb-side-menu-wrapper > .wrap'),
+		var $side_holder = $('.tb-side-menu-wrapper > .wrap'),
 			$toggle_open = $('#primary-menu-open'),
 			$toggle_close = $('#primary-menu-close'),
 			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
@@ -181,7 +181,7 @@ jQuery(document).ready(function($) {
 
 		// Show menu
 		$toggle_open.on('click', function(){
-			$body.removeClass('side-menu-off').addClass('side-menu-on');
+			$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-off').addClass('side-menu-'+themeblvd.mobile_menu_location+'-on');
 			$toggle_open.hide();
 			$toggle_close.show();
 			return false;
@@ -189,21 +189,21 @@ jQuery(document).ready(function($) {
 
 		// Close menu
 		$toggle_close.on('click', function(){
-			$body.removeClass('side-menu-on').addClass('side-menu-off');
+			$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-on').addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
 			$toggle_close.hide();
 			$toggle_open.show();
 			return false;
 		});
 
 		$('#wrapper').on('click', function(){
-			$body.removeClass('side-menu-on').addClass('side-menu-off');
+			$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-on').addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
 			$toggle_close.hide();
 			$toggle_open.show();
 		});
 
 		$window.resize(function(){
 			if ( $window.width() > max ) {
-				$body.removeClass('side-menu-on').addClass('side-menu-off');
+				$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-on').addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
 				$toggle_close.hide();
 				$toggle_open.show();
 			}
@@ -318,7 +318,46 @@ jQuery(document).ready(function($) {
 	if ( themeblvd.superfish == 'true' ) {
 		$('ul.sf-menu').superfish({
 			speed: 200,
-			popUpSelector: '.non-mega-sub-menu,.sf-mega'
+			popUpSelector: '.non-mega-sub-menu,.sf-mega',
+			onBeforeShow: function() {
+
+				// Fix for dropdown to flyout the opposite direction,
+				// when too close to the opposite of the viewport.
+
+				var $ul = $(this),
+					$li = $ul.closest('li'),
+					location = $li.offset(),
+					space = 200;
+
+				if ( ! $ul.hasClass('non-mega-sub-menu') || ! $li.hasClass('level-1') ) {
+					return;
+				}
+
+				if ( $ul.find('.level-4').length > 0 ) {
+					space = 600;
+				} else if ( $ul.find('.level-3').length > 0 ) {
+					space = 400;
+				}
+
+				if ( ($(window).width() - location['left']) <= space ) {
+
+					$ul.addClass('reverse');
+
+					$ul.find('.fa-caret-right, .fa-caret-left').each(function(){
+						$(this).addClass('inverse');
+					});
+
+				} else {
+
+					$ul.removeClass('reverse');
+
+					$ul.find('.fa-caret-right, .fa-caret-left').each(function(){
+						$(this).removeClass('inverse');
+					});
+
+				}
+
+			}
 		});
 	}
 

@@ -304,6 +304,16 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 }
 
 /**
+ * Add CSS classes to main menu list items
+ *
+ * @since 2.5.0
+ */
+function themeblvd_nav_menu_css_class( $classes, $item, $args, $depth ) {
+	$classes[] = sprintf('level-%s', $depth+1);
+	return $classes;
+}
+
+/**
  * Create new walker for WP's wp_nav_menu function.
  * Each menu item is an <option> with the $depth being
  * taken into account in its display.
