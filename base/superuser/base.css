@@ -124,13 +124,6 @@ Author URI: http://www.themeblvd.com
     border-top-color: rgba(0,0,0,.2);
 }
 
-/* Hidden Responsive Side Menu */
-.tb-side-menu-wrapper,
-.tb-side-menu-wrapper .tb-side-menu > li,
-.tb-side-menu-wrapper .tb-search {
-	border-color: rgba(0,0,0,.2);
-}
-
 /* Transparent Header */
 .site-header.transparent .tb-primary-menu .menu-search .search-trigger:hover {
 	background-color: rgba(0,0,0,.4);

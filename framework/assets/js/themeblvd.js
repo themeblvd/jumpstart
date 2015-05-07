@@ -101,21 +101,21 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Responsive side menu
-	if ( themeblvd.mobile_side_menu == 'true' && $primary_menu.hasClass('tb-to-side-menu') ) {
+	if ( themeblvd.mobile_side_menu == 'true' && $primary_menu.hasClass('tb-to-mobile-menu') ) {
 
 		// Add initial class that denotes the menu is hidden on
 		// page load. The menu will be hidden on its own, but
 		// this allows for CSS3 transitions.
-		$body.addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
+		$body.addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
 
 		// Create empty wrapper for the side menu
-		$('#wrapper').after('<div class="tb-side-menu-wrapper '+themeblvd.mobile_menu_location+'"><div class="wrap"></div></div>');
+		$('#wrapper').after('<div class="tb-mobile-menu-wrapper '+themeblvd.mobile_menu_location+'"><div class="wrap"></div></div>');
 
 		// Generate content for side menu
-		var $side_holder = $('.tb-side-menu-wrapper > .wrap'),
+		var $side_holder = $('.tb-mobile-menu-wrapper > .wrap'),
 			$toggle_open = $('#primary-menu-open'),
 			$toggle_close = $('#primary-menu-close'),
-			$extras = $('.tb-to-side-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-side-menu"
+			$extras = $('.tb-to-mobile-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-mobile-menu"
 			max = parseInt(themeblvd.mobile_menu_viewport_max),
 			search_count = 0;
 
@@ -140,7 +140,7 @@ jQuery(document).ready(function($) {
 		$side_holder.find('li.menu-search').remove();
 
 		// Adjust menu classes
-		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-side-menu');
+		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-mobile-menu tb-side-menu'); // "tb-side-menu" class allows for level 2+ tree styling
 
 		// Add WPML switcher, if exists in header
 		if ( ! $header.find('.menu-item-language').length ) { // Make sure main nav doesn't already hace switcher
@@ -154,11 +154,11 @@ jQuery(document).ready(function($) {
 				$switcher.append( $top );
 
 				if ( $sub.length ) {
-					$switcher.append('<i class="tb-side-menu-toggle fa fa-plus" data-open="plus" data-close="minus"></i>');
+					$switcher.append('<i class="tb-mobile-menu-toggle fa fa-plus" data-open="plus" data-close="minus"></i>');
 					$switcher.append( $sub.clone().addClass('sub-menu non-mega-sub-menu') );
 				}
 
-				$switcher.appendTo( $side_holder.find('.tb-side-menu') );
+				$switcher.appendTo( $side_holder.find('.tb-mobile-menu') );
 
 			});
 		}
@@ -181,7 +181,7 @@ jQuery(document).ready(function($) {
 
 		// Show menu
 		$toggle_open.on('click', function(){
-			$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-off').addClass('side-menu-'+themeblvd.mobile_menu_location+'-on');
+			$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on');
 			$toggle_open.hide();
 			$toggle_close.show();
 			return false;
@@ -189,21 +189,21 @@ jQuery(document).ready(function($) {
 
 		// Close menu
 		$toggle_close.on('click', function(){
-			$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-on').addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
+			$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
 			$toggle_close.hide();
 			$toggle_open.show();
 			return false;
 		});
 
 		$('#wrapper').on('click', function(){
-			$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-on').addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
+			$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
 			$toggle_close.hide();
 			$toggle_open.show();
 		});
 
 		$window.resize(function(){
 			if ( $window.width() > max ) {
-				$body.removeClass('side-menu-'+themeblvd.mobile_menu_location+'-on').addClass('side-menu-'+themeblvd.mobile_menu_location+'-off');
+				$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
 				$toggle_close.hide();
 				$toggle_open.show();
 			}
@@ -316,13 +316,15 @@ jQuery(document).ready(function($) {
 
 	// Activate Superfish
 	if ( themeblvd.superfish == 'true' ) {
+
+		// Main navigation
 		$('ul.sf-menu').superfish({
 			speed: 200,
 			popUpSelector: '.non-mega-sub-menu,.sf-mega',
 			onBeforeShow: function() {
 
 				// Fix for dropdown to flyout the opposite direction,
-				// when too close to the opposite of the viewport.
+				// when too close to the edge of the viewport.
 
 				var $ul = $(this),
 					$li = $ul.closest('li'),
@@ -359,6 +361,13 @@ jQuery(document).ready(function($) {
 
 			}
 		});
+
+		// Mobile navigation
+		$('.tb-mobile-menu').superfish({
+			speed: 200,
+			popUpSelector: '.non-mega-sub-menu,.sf-mega'
+		});
+
 	}
 
 	// ---------------------------------------------------------
@@ -461,7 +470,7 @@ jQuery(document).ready(function($) {
 	// No-click dropdowns
 	// ---------------------------------------------------------
 
-	$('ul.sf-menu .no-click').find('a:first').click(function(){
+	$('ul.sf-menu .no-click, ul.tb-mobile-menu .no-click').find('a:first').click(function(){
 		return false;
 	});
 

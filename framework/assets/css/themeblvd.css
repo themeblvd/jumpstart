@@ -50,9 +50,10 @@
  *   10.1 - Responsive visiblity classes
  *   10.2 - iOS Zoom Bug fix
  *   10.3 - Menu Toggle
- *   10.4 - Mobile Side Menu
- *   10.4 - Videos (oEmbed)
- *   10.4 - Self-hosted video embed
+ *   10.4 - Mobile Menu Container
+ *   10.5 - Mobile Menu (override .tb-side-menu)
+ *   10.6 - Videos (oEmbed)
+ *   10.7 - Self-hosted video embed
  * 11.0 - Video/Audio
  *   11.1 - WP Built-in audio/video player
  * 12.0 - Plugins
@@ -179,6 +180,7 @@
  *   27.12 - Related Posts
  *   27.13 - Inline Menu
  *   27.14 - Date Block
+ *   28.15 - Text Blocks (used in jumbotron)
  * 28.0 - Charts and Graphs (stats.php)
  *   28.1 - Charts
  *   28.2 - Milestone
@@ -1284,8 +1286,8 @@ html {
 	opacity: 1; /* Override Bootstrap's .close */
 }
 
-/* Mobile Side Menu */
-.tb-side-menu-wrapper {
+/* Mobile Menu Container */
+.tb-mobile-menu-wrapper {
 	border: 0;
 	border-radius: 0;
 	-webkit-box-sizing: border-box;
@@ -1301,58 +1303,58 @@ html {
 	z-index: 200;
 }
 /* @noflip */
-.tb-side-menu-wrapper.right {
+.tb-mobile-menu-wrapper.right {
 	right: -280px;
 	-webkit-transition: right .2s ease-out;
 	-moz-transition: right .2s ease-out;
 	transition: right .2s ease-out;
 }
 /* @noflip */
-.tb-side-menu-wrapper.left {
+.tb-mobile-menu-wrapper.left {
 	left: -280px;
 	-webkit-transition: left .2s ease-out;
 	-moz-transition: left .2s ease-out;
 	transition: left .2s ease-out;
 }
 /* @noflip */
-body.side-menu-right-on .tb-side-menu-wrapper {
+body.mobile-menu-right-on .tb-mobile-menu-wrapper {
 	right: 0;
 	-webkit-transition: right .2s ease-out;
 	-moz-transition: right .2s ease-out;
 	transition: right .2s ease-out;
 }
 /* @noflip */
-body.side-menu-left-on .tb-side-menu-wrapper {
+body.mobile-menu-left-on .tb-mobile-menu-wrapper {
 	left: 0;
 	-webkit-transition: left .2s ease-out;
 	-moz-transition: left .2s ease-out;
 	transition: left .2s ease-out;
 }
-body.side-menu-right-off,
-body.side-menu-left-off {
+body.mobile-menu-right-off #wrapper,
+body.mobile-menu-left-off #wrapper {
 	position: relative;
 }
 /* @noflip */
-body.side-menu-right-off {
+body.mobile-menu-right-off #wrapper {
 	right: 0;
 	-webkit-transition: right .2s ease-out;
 	-moz-transition: right .2s ease-out;
 	transition: right .2s ease-out;
 }
 /* @noflip */
-body.side-menu-left-off {
+body.mobile-menu-left-off #wrapper {
 	left: 0;
 	-webkit-transition: left .2s ease-out;
 	-moz-transition: left .2s ease-out;
 	transition: left .2s ease-out;
 }
-body.side-menu-right-on,
-body.side-menu-left-on {
+body.mobile-menu-right-on #wrapper,
+body.mobile-menu-left-on #wrapper {
 	overflow: hidden;
 	position: fixed;
 }
 /* @noflip */
-body.side-menu-right-on {
+body.mobile-menu-right-on #wrapper {
 	right: 280px;
 	left: -280px;
 	-webkit-transition: right .2s ease-out;
@@ -1360,57 +1362,94 @@ body.side-menu-right-on {
 	transition: right .2s ease-out;
 }
 /* @noflip */
-body.side-menu-left-on {
+body.mobile-menu-left-on #wrapper {
 	left: 280px;
 	right: -280px;
 	-webkit-transition: left .2s ease-out;
 	-moz-transition: left .2s ease-out;
 	transition: left .2s ease-out;
 }
-.tb-side-menu-wrapper .wrap > div:last-child {
+.tb-mobile-menu-wrapper .wrap > div:last-child {
 	padding-bottom: 10px;
 }
-.tb-side-menu-wrapper .tb-search {
+.tb-mobile-menu-wrapper .tb-search {
 	border-bottom: 1px solid #dddddd;
 	padding: 10px;
 }
-.tb-side-menu-wrapper .header-text {
+.tb-mobile-menu-wrapper .header-text {
 	float: none;
 	padding: 10px 15px 0 15px;
 }
-.tb-side-menu-wrapper .header-text .list-inline {
+.tb-mobile-menu-wrapper .header-text .list-inline {
 	margin: 0;
 }
-.tb-side-menu-wrapper .header-text .list-inline > li {
+.tb-mobile-menu-wrapper .header-text .list-inline > li {
 	display: block;
 	margin: 0;
 	padding: 5px 0 0 0;
 }
-.tb-side-menu-wrapper .header-text .list-inline > li:first-child {
+.tb-mobile-menu-wrapper .header-text .list-inline > li:first-child {
 	padding-top: 0;
 }
-.tb-side-menu-wrapper .tb-social-icons {
+.tb-mobile-menu-wrapper .tb-social-icons {
 	padding: 10px 10px 0 10px;
 }
-.tb-side-menu-wrapper .tb-social-icons .tooltip {
+.tb-mobile-menu-wrapper .tb-social-icons .tooltip {
 	display: none !important;
 }
-.admin-bar .tb-side-menu-wrapper {
+.admin-bar .tb-mobile-menu-wrapper {
 	padding-top: 32px;
 }
 @media (max-width: 782px) {
-	.admin-bar .tb-side-menu-wrapper {
+	.admin-bar .tb-mobile-menu-wrapper {
 		padding-top: 46px;
 	}
 }
 @media (max-width: 600px) {
-	html body.side-menu-off #wpadminbar,
-	html body.side-menu-on #wpadminbar {
+	html body.mobile-menu-off #wpadminbar,
+	html body.mobile-menu-on #wpadminbar {
 		top: -46px;
 	}
-	.admin-bar .tb-side-menu-wrapper {
+	.admin-bar .tb-mobile-menu-wrapper {
 		padding-top: 0;
 	}
+}
+
+/* Mobile Menu (override some things in .tb-side-menu) */
+.tb-mobile-menu > li {
+	padding: 0;
+}
+.tb-mobile-menu > li > a {
+	display: block;
+	font-size: 14px;
+	line-height: 18px;
+	padding: 10px 15px;
+	position: relative;
+	text-decoration: none;
+}
+.tb-mobile-menu > li.menu-item-has-children > a {
+	padding-right: 36px;
+}
+.tb-mobile-menu > li > a > .sf-sub-indicator {
+	display: block;
+	font-size: 18px;
+	line-height: 1.2em;
+	margin: -.5em 0 0 0;
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	text-align: center;
+	width: 1em;
+	height: 1em;
+}
+.tb-mobile-menu ul {
+	position: static;
+}
+.tb-mobile-menu > li:hover > ul {
+	display: block;
+}
+.tb-mobile-menu ul ul {
+	display: block !important;
 }
 
 /* Videos (oEmbed) */

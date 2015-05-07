@@ -224,6 +224,9 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 	}
 
 	// Indicators for top-level toggle menus
+	// @TODO maybe later incorporate this into a widget,
+	// now that mobile menu no longer uses the toggle icon
+	/*
 	if ( in_array( 'menu-item-has-children', $item->classes ) && $depth < 1 ) {
 		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->theme_location == $primary && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
 			$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
@@ -233,6 +236,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 		}
 
 	}
+	*/
 
 	// Allow bootstrap "nav-header" class in menu items.
 	// Note: For primary navigation will only work on levels 2-3
@@ -397,7 +401,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 		case 'primary' :
 			$args = array(
 				'walker'			=> new ThemeBlvd_Main_Menu_Walker(),
-				'menu_class'		=> 'tb-primary-menu tb-to-side-menu sf-menu sf-menu-with-fontawesome clearfix',
+				'menu_class'		=> 'tb-primary-menu tb-to-mobile-menu sf-menu sf-menu-with-fontawesome clearfix',
 				'container'			=> '',
 				'theme_location'	=> apply_filters('themeblvd_primary_menu_location', 'primary'),
 				'fallback_cb'		=> 'themeblvd_primary_menu_fallback'

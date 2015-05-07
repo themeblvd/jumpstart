@@ -2249,31 +2249,48 @@ function jumpstart_ex_css() {
 	}
 
 	// Primary mobile menu
-	$print .= "#tb-side-menu-wrapper,\n";
-	$print .= "#tb-side-menu-wrapper .tb-side-menu,\n";
-	$print .= "#tb-side-menu-wrapper .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {\n";
+	$print .= ".tb-mobile-menu-wrapper,\n";
+	$print .= ".tb-mobile-menu-wrapper .tb-side-menu,\n";
+	$print .= ".tb-mobile-menu-wrapper .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {\n";
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('menu_mobile_bg_color'));
 	$print .= "}\n";
 
 	if ( themeblvd_get_option('menu_mobile_bg_color_brightness') == 'light' ) {
 
-		$print .= "#tb-side-menu-wrapper .tb-side-menu a,\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu span,\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:hover,\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle:active,\n";
-		$print .= "#tb-side-menu-wrapper .header-text,\n";
-		$print .= "#tb-side-menu-wrapper .tb-search .search-input {\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu a,\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu span,\n";
+		$print .= ".tb-mobile-menu-wrapper .header-text,\n";
+		$print .= ".tb-mobile-menu-wrapper .header-text a,\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input,";
+		$print .= ".tb-search.mini .search-submit {\n";
 		$print .= "\tcolor: #666666;\n";
 		$print .= "}\n";
 
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .tb-side-menu-toggle {\n";
-		$print .= "\tcolor: #333333;\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-search.mini > form,\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > a:hover,\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > a:active {\n";
+		$print .= "\tbackground-color: rgba(0,0,0,.05);\n";
 		$print .= "}\n";
 
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .sub-menu {\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li,\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-search {\n";
+		$print .= "\tborder-color: rgba(0,0,0,.05);\n";
+		$print .= "}\n";
+
+		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input::-moz-placeholder {\n";
+		$print .= "\tcolor: rgba(0,0,0,.3);\n";
+		$print .= "}\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input:-ms-input-placeholder {\n";
+		$print .= "\tcolor: rgba(0,0,0,.3);\n";
+		$print .= "}\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input::-webkit-input-placeholder {\n";
+		$print .= "\tcolor: rgba(0,0,0,.3);\n";
+		$print .= "}\n";
+
+		$print .= ".tb-mobile-menu-wrapper .tb-side-menu .sub-menu {\n";
 		$print .= sprintf("\tbackground-image: url(%s/assets/images/parts/side-nav-list-outer-cccccc.png);", TB_FRAMEWORK_URI);
 		$print .= "}\n";
-		$print .= "#tb-side-menu-wrapper .tb-side-menu .sub-menu li {\n";
+		$print .= ".tb-mobile-menu-wrapper .tb-side-menu .sub-menu li {\n";
 		$print .= sprintf("\tbackground-image: url(%s/assets/images/parts/side-nav-list-ltr-cccccc.png);", TB_FRAMEWORK_URI);
 		$print .= "}\n";
 
