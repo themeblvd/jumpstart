@@ -3202,7 +3202,7 @@ button:active {
 .red:hover,
 .red:focus,
 .royal:hover,
-.royal:hover,
+.royal:focus,
 .slate_grey:hover,
 .slate_grey:focus,
 .silver:hover,
@@ -6536,6 +6536,16 @@ blockquote small {
 	.tb-jumbotron .tb-text-block-wrap.text-large .tb-text-block {
 		font-size: 2.4rem;
 	}
+}
+.tb-jumbotron .tb-text-block .tb-divider {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.tb-jumbotron .tb-text-block .tb-divider.suck-up {
+	margin-top: 10px;
+}
+.tb-jumbotron .tb-text-block .tb-divider.suck-down {
+	margin-bottom: 10px;
 }
 .tb-jumbotron .jumbotron-buttons {
 	padding-top: 10px;
