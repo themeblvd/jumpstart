@@ -5433,11 +5433,13 @@ blockquote small {
 	-webkit-border-radius: 100%;
 	border-radius: 100%;
 	display: block;
-	padding-top: 4px;
+	font-size: 14px;
+	line-height: 2.2em;
+	padding: 0;
 	text-align: center;
 	text-decoration: none !important;
-	width: 30px;
-	height: 30px;
+	width: 2.2em;
+	height: 2.2em;
 }
 .tb-thumb-link-badge.image {
 	padding-top: 5px;
@@ -5447,7 +5449,6 @@ blockquote small {
 }
 .tb-thumb-link-badge:before {
 	font-family: "FontAwesome" !important;
-	font-size: 14px;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
