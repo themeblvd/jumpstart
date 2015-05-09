@@ -475,88 +475,29 @@ function themeblvd_get_rgb( $color, $opacity = '' ) {
 }
 
 /**
- * Get the class to be used for resposive visibility.
- *
- * hide_on_standard
- * hide_on_standard_and_tablet
- * hide_on_standard_and_tablet_and_mobile
- * hide_on_standard_and_mobile
- * hide_on_tablet
- * hide_on_tablet_and_mobile
- * hide_on_mobile
+ * Get the Bootstrap classes to be used for resposive
+ * visibility. - xs, sm, md, lg
  *
  * @since 2.1.0
  *
- * @param array $devices Devices to be hidden on
- * @param boolean $start_space Whether there should be a space at start
- * @param boolean $end_space Whether there should be a space at end
+ * @param array $hide Devices to be hidden on
  * @return var $class CSS class to use
  */
-function themeblvd_responsive_visibility_class( $devices, $start_space = false, $end_space = false ) {
+function themeblvd_responsive_visibility_class( $hide ) {
 
-	// Build class
+	if ( ! $hide || ! is_array($hide) ) {
+		return false; // option wasn't passed in correctly
+	}
+
 	$class = '';
-	$exists = false;
 
-	if ( is_array( $devices ) && ! empty( $devices ) ) {
-		foreach ( $devices as $device ) {
-			if ( $device ) {
-				$exists = true;
-			}
+	foreach ( $hide as $key => $val ) {
+		if ( $val && in_array($key, array('xs', 'sm', 'md', 'lg') ) ) {
+			$class .= " hidden-{$key}";
 		}
 	}
 
-	// Only start buld if there's a class to build
-	if ( $exists ) {
-
-		$class = 'hide_on_';
-
-		if ( $devices['hide_on_standard'] ) {
-
-			// Standard Devices
-			$class .= 'standard';
-			if ( $devices['hide_on_tablet'] ) {
-				$class .= '_and_tablet';
-			}
-
-			if ( $devices['hide_on_mobile'] ) {
-				$class .= '_and_mobile';
-			}
-
-		} else if ( $devices['hide_on_tablet'] ) {
-
-			// Tablets
-			$class .= 'tablet';
-			if ( $devices['hide_on_mobile'] ) {
-				$class .= '_and_mobile';
-			}
-
-		} else if ( $devices['hide_on_mobile'] ) {
-
-			// Mobile
-			$class .= 'mobile';
-
-		}
-	}
-
-	// Apply filter
-	$class = apply_filters( 'themeblvd_responsive_visibility_class', $class, $devices );
-
-	// Start/End spaces
-	if ( $class ) {
-
-		if ( $start_space ) {
-			$class = ' '.$class;
-		}
-
-		if ( $end_space ) {
-			$class .= ' ';
-		}
-
-	}
-
-	// Return class
-	return $class;
+	return apply_filters( 'themeblvd_responsive_visibility_class', trim($class), $hide );
 }
 
 /**

@@ -498,7 +498,7 @@ function themeblvd_get_element_class( $args ) {
 		}
 
 		// Responsive visibility
-		if ( ! empty( $args['display']['visibility'] ) && $visibility = themeblvd_responsive_visibility_class( $args['display']['visibility'] ) ) {
+		if ( ! empty( $args['display']['hide'] ) && $visibility = themeblvd_responsive_visibility_class( $args['display']['hide'] ) ) {
 			$class[] = $visibility;
 		}
 
@@ -710,8 +710,8 @@ function themeblvd_get_display_class( $display ) {
 		}
 
 		// Responsive visibility
-		if ( ! empty( $display['visibility'] ) ) {
-			$class[] = themeblvd_responsive_visibility_class( $display['visibility'] );
+		if ( ! empty( $display['hide'] ) ) {
+			$class[] = themeblvd_responsive_visibility_class( $display['hide'] );
 		}
 
 		// User-added CSS classes
