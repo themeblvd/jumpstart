@@ -1228,7 +1228,7 @@ ul.woocommerce-info {
 .cart_totals {
 	margin-bottom: 20px;
 }
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 992px) {
 	.sidebar-layout-full_width .cart_totals {
 		width: 70%;
 	}

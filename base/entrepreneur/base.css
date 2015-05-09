@@ -14,7 +14,7 @@ Author URI: http://www.themeblvd.com
 	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 	z-index: 900;
 }
-@media (min-width: 993px) {
+@media (min-width: 992px) {
 	.header-content {
 		height: 90px;
 	}
@@ -75,7 +75,7 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Header Content */
-@media (min-width: 993px) {
+@media (min-width: 992px) {
 	.header-content > .wrap {
 		padding: 0;
 	}
@@ -144,7 +144,7 @@ Author URI: http://www.themeblvd.com
 	-webkit-transition: none;
 	transition: none;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.header-nav .tb-primary-menu > li > .menu-btn {
 		padding-left: 10px;
 		padding-right: 10px;
@@ -245,12 +245,12 @@ Author URI: http://www.themeblvd.com
 .js-boxed.content_dark #container {
 	background: #222222;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.js-boxed #container {
 		max-width: 990px;
 	}
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.js-boxed #container {
 		max-width: 738px;
 	}
@@ -265,7 +265,7 @@ Author URI: http://www.themeblvd.com
 	max-width: 1170px;
 	left: 50%;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.js-boxed .tb-sticky-menu {
 		margin-left: -480px;
 		max-width: 960px;

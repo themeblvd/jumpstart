@@ -827,7 +827,7 @@ body.admin-bar .tb-sticky-menu {
 .tb-sticky-menu .tb-floater.bottom.left .floater-popup {
 	margin-top: -5px;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.tb-sticky-menu {
 		display: none;
 	}
@@ -1085,7 +1085,7 @@ body.admin-bar .tb-sticky-menu {
 }
 .subnav .sf-menu li:hover ul,
 .subnav .sf-menu li.sfHover ul {
-	z-index:998; /* Show below any primary nav dropdowns that may be open. */
+	z-index: 998; /* Show below any primary nav dropdowns that may be open. */
 }
 
 /* Responsive */
@@ -1235,7 +1235,13 @@ li.menu-item .tb-side-menu-toggle {
 -----------------------------------------------*/
 
 /* Responsive visiblity classes */
-@media (min-width: 993px) {
+/* @deprecated, use bootstrap classes instead
+.hidden-xs
+.hidden-sm
+.hidden-md
+.hidden-lg
+*/
+@media (min-width: 992px) {
 	.hide_on_standard,
 	.hide_on_standard_and_tablet,
 	.hide_on_standard_and_tablet_and_mobile,
@@ -1243,7 +1249,7 @@ li.menu-item .tb-side-menu-toggle {
 		display: none;
 	}
 }
-@media (max-width: 992px) and (min-width: 768px) {
+@media (max-width: 991px) and (min-width: 768px) {
 	.hide_on_standard_and_tablet,
 	.hide_on_standard_and_tablet_and_mobile,
 	.hide_on_tablet,
@@ -5251,7 +5257,7 @@ button.mfp-arrow:active {
 .element-columns .element:last-child {
 	margin-bottom: 0;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.element-columns.stack-md > .row > .col,
 	.element-columns.stack-md > .container-md-height > .row > .col {
 		margin-bottom: 30px;
@@ -5640,7 +5646,7 @@ blockquote small {
 .tb-bg-video.fixed video { /* @TODO -- currently no user option for this */
 	position: fixed;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.tb-bg-video video {
 		display: none;
 	}
@@ -5694,7 +5700,7 @@ blockquote small {
 	font-size: 18px;
 	line-height: 18px;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.tb-featured-banner > .wrap {
 		min-height: 120px;
 	}
@@ -5981,12 +5987,12 @@ blockquote small {
 	color: #ffffff;
 	text-decoration: none;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.tb-post-slider .carousel-caption .carousel-excerpt {
 		display: none;
 	}
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	.tb-post-slider .carousel-caption .entry-meta,
 	.tb-post-slider .carousel-caption .carousel-button {
 		display: none;
@@ -6511,7 +6517,7 @@ blockquote small {
 .tb-jumbotron .tb-text-blocks {
 	font-size: 1rem;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 		.tb-jumbotron .tb-text-block-wrap.text-small .tb-text-block {
 			font-size: 1.4rem;
 		}
@@ -6933,7 +6939,7 @@ blockquote small {
 .tb-team-member .member-text p:last-child {
 	margin-bottom: 0;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.tb-team-member .member-identity,
 	.tb-team-member .member-contact {
 		float: none;
@@ -7048,7 +7054,7 @@ blockquote small {
 .tb-testimonial.showcase .author-image img {
 	width: 70px;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.tb-testimonial.showcase .testimonial-text {
 		font-size: 20px;
 	}
@@ -7571,7 +7577,7 @@ blockquote small {
 	margin-top: 2px;
 	margin-bottom: 7px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.tb-milestone .milestone {
 		font-size: 40px;
 	}
@@ -7757,7 +7763,7 @@ blockquote small {
 	line-height: 100%;
 	padding: 0;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	/* Tablets */
 	#access .tb-wpml-flaglist {
 		padding: 13px 0 0 7px;

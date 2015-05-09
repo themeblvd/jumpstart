@@ -6,12 +6,13 @@ Jump Start Changelog
 
 * Improvements to Jumbotron, named changed Hero Unit in Layout Builder.
 * Improvement to main menu dropdowns on desktop; submenus will now flyout opposite direction if too close to browser edge.
-* Improvements to mobile menu usability. 
+* Improvements to mobile menu usability.
 * Added "Text Blocks" sortable option type.
 * Added buttons sizes `xxl` and `xxxl`.
 * Allow mobile menu to be filtered appear from left.
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.
 * Fixed: Animation of hiding mobile menu with RTL languages.
+* Fixed: Inconsistencies with Bootstrap responsive breakpoints, down to the pixel.
 
 **Important:** If updating from a prior 2.0-beta/RC version, you must reconfigure options of any "Hero Unit" (previously named Jumbotron) user in Builder.
 

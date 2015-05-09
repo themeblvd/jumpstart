@@ -1466,7 +1466,7 @@ function jumpstart_ent_css() {
 
 			$print .= "}\n";
 
-			$print .= "@media (max-width: 1200px) {\n";
+			$print .= "@media (max-width: 1199px) {\n";
 
 			$print .= "\t.js-boxed .tb-sticky-menu {\n";
 
@@ -1626,7 +1626,7 @@ function jumpstart_ent_css() {
 	// Header Height and Main Menu
 	$height = intval(themeblvd_get_option('header_height'));
 
-	$print .= "@media (min-width: 993px) {\n";
+	$print .= "@media (min-width: 992px) {\n";
 	$print .= "\t.header-content {\n";
 	$print .= sprintf( "\t\theight: %spx;\n", $height );
 	$print .= "\t}\n";

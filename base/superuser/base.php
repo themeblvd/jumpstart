@@ -1756,7 +1756,7 @@ function jumpstart_su_css() {
 
 			$print .= "}\n";
 
-			$print .= "@media (max-width: 1200px) {\n";
+			$print .= "@media (max-width: 1199px) {\n";
 
 			$print .= "\t.js-boxed .tb-sticky-menu {\n";
 
@@ -1924,7 +1924,7 @@ function jumpstart_su_css() {
 
 	// Header content padding
 	if ( themeblvd_get_option('header_apply_padding') ) {
-		$print .= "@media (min-width: 993px) {\n";
+		$print .= "@media (min-width: 992px) {\n";
 		$print .= "\t.header-content > .wrap {\n";
 		$print .= sprintf("\t\tpadding-top: %s;\n", themeblvd_get_option('header_padding_top'));
 		$print .= sprintf("\t\tpadding-right: %s;\n", themeblvd_get_option('header_padding_right'));

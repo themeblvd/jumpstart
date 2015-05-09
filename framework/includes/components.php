@@ -76,7 +76,7 @@ function themeblvd_get_divider( $args = array() ) {
 		'text_color'	=> '#666666',	// Color of icon or text
 		'text_size'		=> '15',		// Size of icon or text
 		'width'     	=> '',          // A width for the divider in pixels
-        'placement' 	=> 'equal'      // Where the divider sits between the content - equal, above (closer to content above), below (closer to content below)
+        'placement' 	=> 'equal'      // Where the divider sits between the content - equal, up (closer to content above), down (closer to content below)
     );
     $args = wp_parse_args( $args, $defaults );
 

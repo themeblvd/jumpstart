@@ -12,12 +12,12 @@ Author URI: http://www.themeblvd.com
 	margin: 0 auto;
 	max-width: 1170px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.header-nav {
 		max-width: 960px;
 	}
 }
-@media (min-width: 993px) {
+@media (min-width: 992px) {
 	.site-header > .wrap {
 		padding-bottom: 20px;
 	}
@@ -41,14 +41,14 @@ Author URI: http://www.themeblvd.com
 	padding: 6px 0 0 0;
 	text-align: right;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.header-addon {
 		display: none;
 	}
 }
 
 /* Header Logo */
-@media (min-width: 993px) {
+@media (min-width: 992px) {
 	.js-center-logo .header-content .header-logo {
 		float: none;
 		text-align: center;
@@ -220,12 +220,12 @@ Author URI: http://www.themeblvd.com
 .js-boxed.content_dark #container {
 	background: #222222;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.js-boxed #container {
 		max-width: 990px;
 	}
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.js-boxed #container {
 		max-width: 738px;
 	}
@@ -240,7 +240,7 @@ Author URI: http://www.themeblvd.com
 	max-width: 1170px;
 	left: 50%;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 	.js-boxed .tb-sticky-menu {
 		margin-left: -480px;
 		max-width: 960px;

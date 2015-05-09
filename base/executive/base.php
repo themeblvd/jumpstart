@@ -1722,7 +1722,7 @@ function jumpstart_ex_css() {
 
 			$print .= "}\n";
 
-			$print .= "@media (max-width: 1200px) {\n";
+			$print .= "@media (max-width: 1199px) {\n";
 
 			$print .= "\t.js-boxed .tb-sticky-menu {\n";
 
@@ -1891,7 +1891,7 @@ function jumpstart_ex_css() {
 	// Header padding
 	if ( themeblvd_get_option('header_apply_padding_top') || themeblvd_get_option('header_apply_padding_bottom') ) {
 
-		$print .= "@media (min-width: 993px) {\n";
+		$print .= "@media (min-width: 992px) {\n";
 
 		if ( themeblvd_get_option('header_apply_padding_top') ) {
 			$print .= "\t.header-content > .wrap {\n";

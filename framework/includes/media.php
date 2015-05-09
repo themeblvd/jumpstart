@@ -906,7 +906,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		$style .= sprintf( "\theight: %spx;\n", $args['height_desktop'] );
 		$style .= "}\n";
 
-		$style .= "@media (max-width: 992px) {\n";
+		$style .= "@media (max-width: 991px) {\n";
 		$style .= sprintf( "\t#%s .img {\n", $args['id'] );
 		$style .= sprintf( "\t\theight: %spx;\n", $args['height_tablet'] );
 		$style .= "\t}\n";
@@ -1603,7 +1603,7 @@ function themeblvd_banner_styles() {
 		$print .= "}\n";
 
 		// Desktop
-		$print .= "@media (min-width: 993px) {\n";
+		$print .= "@media (min-width: 992px) {\n";
 
 		$print .= "\t.tb-featured-banner {\n";
 		$print .= sprintf("\t\tpadding-top: %spx;\n", themeblvd_config('top_height'));
