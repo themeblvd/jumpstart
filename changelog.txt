@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.0.0-RC2 - XX/XX/2015
+2.0.0 - XX/XX/2015
 ----------------------
 
 * Improvements to Jumbotron, named changed Hero Unit in Layout Builder.
@@ -14,7 +14,10 @@ Jump Start Changelog
 * Fixed: Animation of hiding mobile menu with RTL languages.
 * Fixed: Inconsistencies with Bootstrap responsive breakpoints, down to the pixel.
 
-**Important:** If updating from a prior 2.0-beta/RC version, you must reconfigure options of any "Hero Unit" (previously named Jumbotron) user in Builder.
+**Important:** If updating from a development, beta, or RC version of Jump Start 2:
+* You must update to the latest version of the Layout Builder plugin, currently 2.0.6.
+* You must reconfigure options of any "Hero Unit" (previously named Jumbotron) used in Builder.
+* You must reconfigure any selections for "Responsive Visibility" display options in Builder.
 
 --------------------------------------------------------------
 
