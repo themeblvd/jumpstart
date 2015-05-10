@@ -2062,6 +2062,13 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 				'std'		=> '0'
 			),
 			array(
+				'id' 		=> 'suck_down',
+				'name'		=> null,
+				'desc'		=> __('Reduce space below text block.', 'themeblvd'),
+				'type'		=> 'checkbox',
+				'std'		=> '0'
+			),
+			array(
 				'id' 		=> 'wpautop',
 				'name'		=> null,
 				'desc'		=> __('Apply WordPress automatic formatting.', 'themeblvd'),

@@ -595,6 +595,12 @@ function themeblvd_sanitize_text_blocks( $input ) {
 				$output[$item_id]['caps'] = '1';
 			}
 
+			$output[$item_id]['suck_down'] = '0';
+
+			if ( isset($item['suck_down']) ) {
+				$output[$item_id]['suck_down'] = '1';
+			}
+
 			$output[$item_id]['wpautop'] = '0';
 
 			if ( isset($item['wpautop']) ) {

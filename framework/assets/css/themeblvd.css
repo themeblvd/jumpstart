@@ -7522,9 +7522,13 @@ blockquote small {
 .tb-text-block-wrap {
 	margin-bottom: 15px;
 }
+.tb-text-block-wrap.suck-down {
+	margin-bottom: 5px;
+}
 .tb-text-block.has-bg {
 	display: inline-block;
 	padding: .2em .5em;
+	text-shadow: none;
 }
 .tb-text-block.bold {
 	font-weight: bold;

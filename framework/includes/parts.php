@@ -626,6 +626,7 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 	    'bold'				=> '0',
 	    'italic'			=> '0',
 	    'caps'				=> '0',
+		'suck_down'			=> '0',
 	    'wpautop'			=> '1',
 	);
 
@@ -678,6 +679,10 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 				}
 
 				$size_style = sprintf( 'font-size:%s;', $size );
+			}
+
+			if ( $block['suck_down'] ) {
+				$size_class .= ' suck-down';
 			}
 
 			// CSS style (inner style)
