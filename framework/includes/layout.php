@@ -661,7 +661,7 @@ function themeblvd_get_display_class( $display ) {
 			$class[] = 'has-bg';
 			$class[] = $bg_type;
 
-			if ( $bg_type == 'color' || $bg_type == 'image' || $bg_type == 'texture' || $bg_type == 'slideshow' ) {
+			if ( in_array( $bg_type, array('color', 'image', 'texture', 'slideshow', 'video') ) ) {
 				if ( ! empty( $display['text_color'] ) && $display['text_color'] != 'none' ) {
 					$class[] = 'text-'.$display['text_color'];
 				}
