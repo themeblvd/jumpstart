@@ -554,8 +554,6 @@ function themeblvd_sanitize_text_blocks( $input ) {
 
 	$output = array();
 
-	update_option('testing', $input);
-
 	if ( $input && is_array($input) ) {
 		foreach ( $input as $item_id => $item ) {
 
@@ -565,45 +563,45 @@ function themeblvd_sanitize_text_blocks( $input ) {
 
 			$output[$item_id]['apply_bg_color'] = '0';
 
-			if ( isset($item['apply_bg_color']) ) {
+			if ( ! empty($item['apply_bg_color']) ) {
 				$output[$item_id]['apply_bg_color'] = '1';
 			}
 
-			if ( isset($item['bg_color']) ) {
+			if ( ! empty($item['bg_color']) ) {
 				$output[$item_id]['bg_color'] = apply_filters( 'themeblvd_sanitize_color', $item['bg_color'] );
 			}
 
-			if ( isset($item['bg_opacity']) ) {
+			if ( ! empty($item['bg_opacity']) ) {
 				$output[$item_id]['bg_opacity'] = apply_filters( 'themeblvd_sanitize_text', $item['bg_opacity'] );
 			}
 
 			$output[$item_id]['bold'] = '0';
 
-			if ( isset($item['bold']) ) {
+			if ( ! empty($item['bold']) ) {
 				$output[$item_id]['bold'] = '1';
 			}
 
 			$output[$item_id]['italic'] = '0';
 
-			if ( isset($item['italic']) ) {
+			if ( ! empty($item['italic']) ) {
 				$output[$item_id]['italic'] = '1';
 			}
 
 			$output[$item_id]['caps'] = '0';
 
-			if ( isset($item['caps']) ) {
+			if ( ! empty($item['caps']) ) {
 				$output[$item_id]['caps'] = '1';
 			}
 
 			$output[$item_id]['suck_down'] = '0';
 
-			if ( isset($item['suck_down']) ) {
+			if ( ! empty($item['suck_down']) ) {
 				$output[$item_id]['suck_down'] = '1';
 			}
 
 			$output[$item_id]['wpautop'] = '0';
 
-			if ( isset($item['wpautop']) ) {
+			if ( ! empty($item['wpautop']) ) {
 				$output[$item_id]['wpautop'] = '1';
 			}
 
@@ -632,13 +630,13 @@ function themeblvd_sanitize_toggles( $input ) {
 
 			$output[$item_id]['wpautop'] = '0';
 
-			if ( isset($item['wpautop']) ) {
+			if ( ! empty($item['wpautop']) ) {
 				$output[$item_id]['wpautop'] = '1';
 			}
 
 			$output[$item_id]['open'] = '0';
 
-			if ( isset($item['open']) ) {
+			if ( ! empty($item['open']) ) {
 				$output[$item_id]['open'] = '1';
 			}
 		}
@@ -683,7 +681,7 @@ function themeblvd_sanitize_content( $input ) {
 		case 'raw' :
 			$output['raw'] = apply_filters( 'themeblvd_sanitize_textarea', $input['raw'] );
 			$output['raw_format'] = '0';
-			if ( isset( $input['raw_format'] ) ) {
+			if ( ! empty( $input['raw_format'] ) ) {
 				$output['raw_format'] = '1';
 			}
 			break;
