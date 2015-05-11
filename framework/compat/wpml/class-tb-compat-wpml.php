@@ -168,12 +168,6 @@ class Theme_Blvd_Compat_WPML {
                 $items .= $args->after;
             }
 
-            if ( ! empty($languages) && count($languages) > 1 ) {
-            	$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
-				$icon_close = apply_filters( 'themeblvd_side_menu_icon_close', 'minus' );
-				$items .= apply_filters( 'themeblvd_side_menu_icon', sprintf( '<i class="tb-side-menu-toggle fa fa-%1$s" data-open="%1$s" data-close="%2$s"></i>', $icon_open, $icon_close ) );
-            }
-
             unset($languages[ $current_language ]);
 
 			$sub_items = false;
