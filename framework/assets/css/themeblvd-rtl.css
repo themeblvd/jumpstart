@@ -5620,6 +5620,12 @@ blockquote small {
 .tb-bg-slideshow .carousel-inner > .item.active {
 	opacity: 1;
 }
+.slideshow-bg-align-top .tb-bg-slideshow .item {
+	background-position: top center;
+}
+.slideshow-bg-align-bottom .tb-bg-slideshow .item {
+	background-position: bottom center;
+}
 
 /* BG Video */
 .has-bg-video {
