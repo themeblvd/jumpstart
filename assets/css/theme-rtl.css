@@ -298,8 +298,8 @@
 .tb-mobile-menu-wrapper .header-text a {
 	color: #ffffff;
 }
-.tb-mobile-menu-wrapper .tb-mobile-menu > li > a:hover,
-.tb-mobile-menu-wrapper .tb-mobile-menu > li > a:active {
+.tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn:hover,
+.tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn:active {
 	background-color: rgba(0,0,0,.2);
 }
 .tb-mobile-menu-wrapper .tb-side-menu .tb-side-menu-toggle {
