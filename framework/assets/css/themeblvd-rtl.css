@@ -136,12 +136,11 @@
  *   23.3 - Quote
  * 24.0 - Media (media.php)
  *   24.1 - Image
- *   24.2 - Image Link Badge
- *   24.3 - Video
- *   24.4 - Simple Slider
- *   24.5 - BG Slideshow
- *   24.6 - BG Video
- *   24.7 - Featured Banner
+ *   24.2 - Video
+ *   24.3 - Simple Slider
+ *   24.4 - BG Slideshow
+ *   24.5 - BG Video
+ *   24.6 - Featured Banner
  * 25.0 - Post Display (loop.php)
  *   25.1 - Post List
  *   25.2 - Post Grid
@@ -5435,47 +5434,6 @@ blockquote small {
 .container-md-height .element-image.no-width img,
 .container-lg-height .element-image.no-width img {
     width: 100%;
-}
-
-/* Image Link Badge */
-.tb-thumb-link-badge {
-	-webkit-border-radius: 100%;
-	border-radius: 100%;
-	display: block;
-	font-size: 14px;
-	line-height: 2.2em;
-	padding: 0;
-	text-align: center;
-	text-decoration: none !important;
-	width: 2.2em;
-	height: 2.2em;
-}
-.tb-thumb-link-badge.image {
-	padding-top: 5px;
-}
-.tb-thumb-link-badge.video {
-	padding-right: 2px;
-}
-.tb-thumb-link-badge:before {
-	font-family: "FontAwesome" !important;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-.tb-thumb-link-badge.image:before {
-	content: "\f067"; /* plus sign */
-}
-.tb-thumb-link-badge.video:before  {
-	content: "\f04b"; /* play button */
-}
-.tb-thumb-link-badge.post:before {
-	content: "\f061"; /* arrow, pointing right */
-}
-.rtl .tb-thumb-link-badge.post:before {
-	content: "\f060"; /* arrow, pointing left */
-}
-.tb-thumb-link-badge.external:before {
-	content: "\f0c1"; /* link anchor */
 }
 
 /* Video */

@@ -460,60 +460,6 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 }
 
 /**
- * Generally we use the featured image link to
- * wrap the featured image, but this function
- * can be used to display a button respresentation
- * of the link.
- *
- * @since 2.5.0
- *
- * @param int $post_id ID of post to pull featured image link for
- * @param bool|string $to_post Whether to allow this button to link to the post, "force" if force this link to go to post
- */
-function themeblvd_post_thumbnail_link_badge( $post_id = 0, $to_post = false ) {
-
-	$output = '';
-
-	if ( ! $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	if ( $to_post == 'force' ) {
-		$type = 'post';
-	} else {
-		$type = get_post_meta( $post_id, '_tb_thumb_link', true );
-	}
-
-	if ( $to_post || ( ! $to_post && $type != 'post' ) ) {
-
-		$link = themeblvd_get_post_thumbnail_link( $post_id, 0, $type );
-
-		if ( $link ) {
-
-			$link['class'] = str_replace('tb-thumb-link', 'tb-thumb-link-badge tb-tooltip bg-primary', $link['class']);
-
-			if ( $link['target'] == 'lightbox' ) {
-
-				$lightbox = apply_filters( 'themeblvd_featured_image_lightbox_args', array(
-					'item'	=> '',
-					'link'	=> $link['href'],
-					'class'	=> $link['class'],
-					'title'	=> $link['tooltip']
-				), $post_id );
-
-				$output = themeblvd_get_link_to_lightbox($lightbox);
-
-			} else {
-				$output = sprintf( '<a href="%s" title="%s" class="%s" target="%s"></a>', $link['href'], $link['tooltip'], $link['class'], $link['target'] );
-			}
-		}
-
-	}
-
-	echo apply_filters('themeblvd_post_thumbnail_link_badge', $output);
-}
-
-/**
  * Get a placeholder for media when not present
  *
  * @since 2.5.0
