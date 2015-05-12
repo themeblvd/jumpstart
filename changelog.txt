@@ -8,6 +8,7 @@ Jump Start Changelog
 * Imporvements to post showcase design.
 * Improvement to main menu dropdowns on desktop; submenus will now flyout opposite direction if too close to browser edge.
 * Improvements to mobile menu usability.
+* Improvements to responsiveness of default WordPress galleries.
 * Added "Text Blocks" sortable option type.
 * Added buttons sizes `xxl` and `xxxl`.
 * Allow mobile menu to be filtered appear from left.
@@ -15,6 +16,7 @@ Jump Start Changelog
 * Fixed: Animation of hiding mobile menu with RTL languages.
 * Fixed: Inconsistencies with Bootstrap responsive breakpoints, down to the pixel.
 * Fixed: Filter & Masonry column dropping in Firefox.
+* Fixed: Broken default WordPress galleries in Firefox, when thumbnails are big enough to overflow.
 
 **Important:** If updating from a development, beta, or RC version of Jump Start 2:
 * You must update to the latest version of the Layout Builder plugin, currently 2.0.6.
