@@ -12,6 +12,16 @@
 	display: none;
 }
 
+/* Isotope */
+.tb-isotope .grid-wrap > .row,
+.tb-isotope .list-wrap > .row,
+.tb-isotope .showcase-wrap > .row {
+	display: block;
+}
+.tb-isotope .tb-loader {
+	display: none;
+}
+
 /* Responsive visiblity classes */
 .hide_on_standard,
 .hide_on_standard_and_tablet,
