@@ -14,6 +14,7 @@ Jump Start Changelog
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.
 * Fixed: Animation of hiding mobile menu with RTL languages.
 * Fixed: Inconsistencies with Bootstrap responsive breakpoints, down to the pixel.
+* Fixed: Filter & Masonry column dropping in Firefox.
 
 **Important:** If updating from a development, beta, or RC version of Jump Start 2:
 * You must update to the latest version of the Layout Builder plugin, currently 2.0.6.
