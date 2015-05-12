@@ -5367,8 +5367,8 @@ blockquote small {
 	opacity: 0.4;
 }
 .tb-thumb-link:before {
-	content: "\f067";
-	background: rgba(0,0,0,.7);
+	content: "\f067"; /* plus sign */
+	background: rgba(0,0,0,.6);
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
 	color: #ffffff;
@@ -5401,13 +5401,14 @@ blockquote small {
 	z-index: 2;
 }
 .tb-thumb-link:hover:before {
-	opacity: 0.8;
+	opacity: 1;
 	-ms-transform: scale(1,1);
 	-webkit-transform: scale(1,1);
 	transform: scale(1,1);
 }
 .tb-thumb-link.image:before {
-	content: "\f067"; /* plus sign */
+	/* content: "\f067"; /* plus sign */
+	content: "\f065"; /* expand */
 }
 .tb-thumb-link.video:before  {
 	content: "\f008"; /* film strip */
@@ -5858,52 +5859,33 @@ blockquote small {
 	margin: 0;
 	position: relative;
 }
-.post_showcase .featured-item.showcase .overlay {
-	background-color: rgba(250,250,250,.8);
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
+.post_showcase .showcase-item.has-title .featured-item.showcase .item-title {
+	background: rgba(0,0,0,.6);
 	bottom: 0;
-	right: 0;
+	color: #ffffff;
+	font-weight: bold;
+	opacity: 0;
+	padding: 5px 8px;
+	position: absolute;
 	text-align: center;
-	-webkit-transition: opacity .2s ease-out;
-	-moz-transition: opacity .2s ease-out;
-	transition: opacity .2s ease-out;
-	z-index: 2;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transition: opacity 0.25s ease-in;
+	transition: opacity 0.25s ease-in;
+	width: 100%;
+	z-index: 3;
 }
-.post_showcase .featured-item.showcase:hover .overlay {
+.post_showcase .showcase-item.has-title .featured-item.showcase:hover .item-title {
 	opacity: 1;
 }
-.post_showcase .featured-item.showcase .overlay > .wrap {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	width: 90%;
-	height: 30%;
-	margin: auto;
-}
-.post_showcase .featured-item.showcase .entry-title {
-	color: #333333;
-	font-size: 14px;
-	line-height: 1.2;
-	text-shadow: none;˜
-}
-.post_showcase .featured-item.showcase .entry-title {
-	margin-bottom: 10px;
-}
-.post_showcase.columns-4 .featured-item.showcase .entry-title {
-	font-size: 15px;
-	line-height: 1.1;
-}
-.post_showcase.columns-5 .featured-item.showcase .entry-title {
-	font-size: 12px;
-	line-height: 1.1;
-}
-.post_showcase .featured-item.showcase .badges a {
-	display: inline-block;
+.post_showcase .showcase-item.has-title .featured-item.showcase .tb-thumb-link:before {
+	left: inherit;
+	line-height: 2.5em;
+	margin: 0;
+	right: 10px;
+	top: 10px;
+	width: 2.5em;
+	height: 2.5em;
 }
 .post_showcase .entry-content {
 	background: #f8f8f8;

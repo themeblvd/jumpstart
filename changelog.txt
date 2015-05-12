@@ -5,6 +5,7 @@ Jump Start Changelog
 ----------------------
 
 * Improvements to Jumbotron, named changed Hero Unit in Layout Builder.
+* Imporvements to post showcase design.
 * Improvement to main menu dropdowns on desktop; submenus will now flyout opposite direction if too close to browser edge.
 * Improvements to mobile menu usability.
 * Added "Text Blocks" sortable option type.
