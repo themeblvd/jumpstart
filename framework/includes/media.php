@@ -1517,11 +1517,11 @@ function themeblvd_get_banner( $args = array() ) {
  * Display featured banner
  *
  * @since 2.5.0
- *
- * @param array $args
  */
-function themeblvd_banner( $args = array() ) {
-	echo themeblvd_get_banner( $args );
+function themeblvd_banner() {
+	if ( themeblvd_config('banner') ) {
+		echo themeblvd_get_banner();
+	}
 }
 
 /**

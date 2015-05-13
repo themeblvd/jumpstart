@@ -201,19 +201,6 @@ function themeblvd_header_menu_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_header_after_default' ) ) :
-/**
- * Default display for action: themeblvd_header_after
- *
- * @since 2.5.0
- */
-function themeblvd_header_after_default() {
-	if ( themeblvd_config('banner') ) {
-		themeblvd_banner();
-	}
-}
-endif;
-
 /*------------------------------------------------------------*/
 /* Featured Area (above)
 /*------------------------------------------------------------*/
