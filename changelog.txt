@@ -11,6 +11,7 @@ Jump Start Changelog
 * Improvements to responsiveness of default WordPress galleries.
 * Added "Text Blocks" sortable option type.
 * Added buttons sizes `xxl` and `xxxl`.
+* Added option to change thumbnail highlight icon color, for all theme bases.
 * Allow mobile menu to be filtered appear from left.
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.
 * Fixed: Animation of hiding mobile menu with RTL languages.

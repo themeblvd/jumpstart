@@ -1327,10 +1327,17 @@ function jumpstart_ex_options() {
 			)
 		),
 		'extras' => array(
+			'highlight' =>  array(
+				'id'		=> 'highlight',
+				'name' 		=> __('Thumbnail Highlight Color'),
+				'desc'		=> __('When hovering on a thumbnail or featured image, this color will be used in the icon displayed on hover.', 'themeblvd'),
+				'std'		=> '#000000',
+				'type' 		=> 'color'
+			),
 			'thumbnail' =>  array(
 				'id'		=> 'thumbnail',
 				'name' 		=> null,
-				'desc'		=> __( 'Apply border to thumbnails and featured images', 'themeblvd' ),
+				'desc'		=> __('Apply border to thumbnails and featured images', 'themeblvd'),
 				'std'		=> '0',
 				'type' 		=> 'checkbox'
 			)
@@ -1643,6 +1650,16 @@ function jumpstart_ex_css() {
 		}
 
 		$print .= "}\n";
+	}
+
+	// Thumbnail highlight color
+	if ( $color = themeblvd_get_option('highlight') ) {
+		if ( $color != '#000000' ) {
+			$print .= ".tb-thumb-link:before,\n";
+			$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .item-title {\n";
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($color, '0.8'));
+			$print .= "}\n";
+		}
 	}
 
 	// Sidebar Widgets
