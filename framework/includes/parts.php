@@ -1328,6 +1328,38 @@ function themeblvd_to_top( $args = array() ) {
 }
 
 /**
+ * Get scroll to section button
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for button
+ */
+function themeblvd_get_to_section( $args = array() ) {
+
+	$defaults = array(
+		'to'	=> '', // ID of HTML element to jump to; if blank, go to next section
+		'icon'	=> 'chevron-down',
+		'class'	=> ''
+	);
+	$args = wp_parse_args( $args, $defaults );
+
+	$output = sprintf('<a href="#%s" class="tb-scroll-to-section %s"><i class="fa fa-%s"></i></a>', $args['to'], $args['class'], $args['icon']);
+
+	return apply_filters( 'themeblvd_to_section', $output, $args );
+}
+
+/**
+ * Display scroll to section button
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for button
+ */
+function themeblvd_to_section( $args = array() ) {
+	echo themeblvd_get_to_section( $args );
+}
+
+/**
  * Get loader
  *
  * @since 2.5.0

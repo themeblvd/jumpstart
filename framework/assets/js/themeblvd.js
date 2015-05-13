@@ -482,14 +482,14 @@ jQuery(document).ready(function($) {
 
 	if ( window_width >= 992 ) {
 		$('.height-100vh').each(function(){
-			$(this).css('height', $(this).find('div:first').height() + 120 );
+			$(this).css('height', $(this).find('div:first').height() + 160 );
 		});
 	}
 
 	$window.resize(function(){
 		$('.height-100vh').each(function(){
 			if ( $window.width() >= 992 ) {
-				$(this).css('height', $(this).find('div:first').height() + 120 );
+				$(this).css('height', $(this).find('div:first').height() + 160 );
 			} else {
 				$(this).css('height', 'auto');
 			}
@@ -497,7 +497,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
-	// Scroll-to-Top Button
+	// Scroll-to Buttons
 	// ---------------------------------------------------------
 
 	if ( themeblvd.scroll_to_top == 'true' ) {
@@ -518,6 +518,31 @@ jQuery(document).ready(function($) {
 		});
 
 	}
+
+	$('.tb-scroll-to-section').on('click', function(){
+
+		var $el = $(this),
+			to = null,
+			top = 0;
+
+		if ( this.hash && this.hash != '#' ) {
+			to = this.hash;
+		} else {
+			to = '#'+$el.closest('.element-section').next().attr('id');
+		}
+
+		top = $(to).offset().top;
+
+		if ( themeblvd.sticky !== 'false' ) {
+			top = top - 48;
+		}
+
+		$('html, body').animate({
+			scrollTop: top
+		}, 800);
+
+		return false;
+	});
 
 	// ---------------------------------------------------------
 	// Social Share Buttons

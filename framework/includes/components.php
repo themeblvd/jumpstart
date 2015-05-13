@@ -415,6 +415,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 		'bg_color'      	=> '',      	// Background color - Ex: #000000
         'bg_opacity'    	=> '1',     	// BG color opacity for rgba()
 		'height_100vh'		=> '0',			// Whether to match height to viewport (currently used in element's display class)
+		'section_jump'		=> '0',			// Whether to show button to jump to next section (needs height_100vh to be true)
 		'buttons'       	=> array(), 	// Any buttons to include
         'buttons_stack' 	=> '0',     	// Whether buttons appear stacked
         'buttons_block' 	=> '0',      	// Whether buttons are displayed as block-level
@@ -487,6 +488,11 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 
     // Final output
     $output = sprintf( '<div class="%s" style="%s">%s</div>', $wrap_class, $style, $jumbotron );
+
+	// Add button to jump to next section, outside of main component
+	if ( $args['height_100vh'] && $args['section_jump'] ) {
+		$output .= themeblvd_get_to_section();
+	}
 
     return apply_filters( 'themeblvd_jumbotron', $output, $args, $content, $jumbotron );
 }

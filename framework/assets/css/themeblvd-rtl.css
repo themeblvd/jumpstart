@@ -175,12 +175,13 @@
  *   27.7 - Search Popup
  *   27.8 - Loader
  *   27.9 - Scroll-to-Top Button
- *   27.10 - Info Boxes
- *   27.11 - Author Box (inherits from info box)
- *   27.12 - Related Posts
- *   27.13 - Inline Menu
- *   27.14 - Date Block
- *   28.15 - Text Blocks (used in jumbotron)
+ *   27.10 - Scroll-to-Section Button
+ *   27.11 - Info Boxes
+ *   27.12 - Author Box (inherits from info box)
+ *   27.13 - Related Posts
+ *   27.14 - Inline Menu
+ *   27.15 - Date Block
+ *   28.16 - Text Blocks (used in jumbotron)
  * 28.0 - Charts and Graphs (stats.php)
  *   28.1 - Charts
  *   28.2 - Milestone
@@ -7394,6 +7395,41 @@ blockquote small {
 	.tb-scroll-to-top {
 		left: 20px;
 		bottom: 20px;
+	}
+}
+
+/* Scroll-to-Section Button */
+.tb-scroll-to-section {
+	border: 2px solid #ffffff;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0,.7);
+	box-shadow: 0 0 2px rgba(0,0,0,.7);
+	color: #ffffff;
+	font-size: 20px;
+	line-height: 60px;
+	margin-left: -32px;
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	text-align: center;
+	text-shadow: 0 0 2px rgba(0,0,0,.7);
+	width: 64px;
+	height: 64px;
+}
+.tb-scroll-to-section:hover {
+	background-color: #ffffff;
+	text-shadow: none;
+}
+.tb-scroll-to-section .fa {
+	color: #ffffff;
+}
+.tb-scroll-to-section:hover .fa {
+	color: #333333;
+}
+@media (max-width: 991px) {
+	.tb-scroll-to-section {
+		display: none;
 	}
 }
 
