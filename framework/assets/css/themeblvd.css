@@ -6485,6 +6485,8 @@ blockquote small {
 	.element-jumbotron.height-100vh .jumbotron-wrap {
 		position: absolute;
 		top: 50%;
+		-ms-transform: translate(0, -50%); /* IE9 */
+		-webkit-transform: translate(0, -50%);
 		transform: translate(0, -50%);
 		width: 100%;
 	}
@@ -7426,6 +7428,7 @@ blockquote small {
 	font-size: 20px;
 	line-height: 60px;
 	margin-left: -32px;
+	outline: none !important;
 	position: absolute;
 	bottom: 10%;
 	left: 50%;
