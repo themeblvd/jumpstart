@@ -414,6 +414,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
         'apply_bg_color'	=> '',      	// Background color - Ex: #000000
 		'bg_color'      	=> '',      	// Background color - Ex: #000000
         'bg_opacity'    	=> '1',     	// BG color opacity for rgba()
+		'height_100vh'		=> '0',			// Whether to match height to viewport (currently used in element's display class)
 		'buttons'       	=> array(), 	// Any buttons to include
         'buttons_stack' 	=> '0',     	// Whether buttons appear stacked
         'buttons_block' 	=> '0',      	// Whether buttons are displayed as block-level

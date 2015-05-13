@@ -548,6 +548,11 @@ function themeblvd_get_element_class( $args ) {
 		$class[] = 'no-width';
 	}
 
+	// Any elements that have heights to match viewport
+	if ( ! empty( $args['options']['height_100vh'] ) ) {
+		$class[] = 'height-100vh';
+	}
+
 	// Clear fix
 	$class[] = 'clearfix';
 

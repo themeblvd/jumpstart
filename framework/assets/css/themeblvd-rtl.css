@@ -5188,6 +5188,12 @@ button.mfp-arrow:active {
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 }
+@media (min-width: 992px) {
+	.element.height-100vh {
+		min-height: 100vh;
+		position: relative;
+	}
+}
 
 /* Section BG shade */
 .element-section.has-bg-shade > .bg-shade {
@@ -6471,6 +6477,14 @@ blockquote small {
 }
 
 /* Jumbotron */
+@media (min-width: 992px) {
+	.element-jumbotron.height-100vh .jumbotron-wrap {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		width: 100%;
+	}
+}
 .tb-jumbotron {
 	background-color: transparent;
 	color: #333333;

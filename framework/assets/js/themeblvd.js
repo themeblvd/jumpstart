@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 	// NOTE: These are different than the default "mobile"
 	// and "desktop" classes filtered onto WP's body_class(),
 	// which denote if user is on a true mobile device
-	if ( window_width <= 767 ) {
+	if ( window_width < 768 ) {
 
 		$body.addClass('mobile-on');
 		$body.removeClass('tablet-on');
@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 			$header.addClass('transparent-off');
 		}
 
-	} else if ( window_width <= 992 ) {
+	} else if ( window_width < 992 ) {
 		$body.addClass('tablet-on');
 		$body.removeClass('mobile-on');
 	}
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
 
 		var window_width = $window.width();
 
-		if ( window_width <= 767 ) {
+		if ( window_width < 768 ) {
 
 			$body.addClass('mobile-on');
 			$body.removeClass('tablet-on');
@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
 				$header.addClass('transparent-off');
 			}
 
-		} else if ( window_width <= 992 ) {
+		} else if ( window_width < 992 ) {
 
 			$body.addClass('tablet-on');
 			$body.removeClass('mobile-on');
@@ -370,6 +370,11 @@ jQuery(document).ready(function($) {
 
 	}
 
+	// No-click menu items
+	$('ul.sf-menu li.no-click, ul.tb-mobile-menu li.no-click').find('a:first').on('click', function(){
+		return false;
+	});
+
 	// ---------------------------------------------------------
 	// Sorting/Masonry
 	// ---------------------------------------------------------
@@ -467,11 +472,28 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
-	// No-click dropdowns
+	// Match viewport height
 	// ---------------------------------------------------------
 
-	$('ul.sf-menu .no-click, ul.tb-mobile-menu .no-click').find('a:first').click(function(){
-		return false;
+	// To match viewport height for an element, we've styled
+	// the class "height-100vh" but the problem is if the browser's
+	// height gets smaller than the positioned absolute element
+	// inside, then you get overflow.
+
+	if ( window_width >= 992 ) {
+		$('.height-100vh').each(function(){
+			$(this).css('height', $(this).find('div:first').height() + 120 );
+		});
+	}
+
+	$window.resize(function(){
+		$('.height-100vh').each(function(){
+			if ( $window.width() >= 992 ) {
+				$(this).css('height', $(this).find('div:first').height() + 120 );
+			} else {
+				$(this).css('height', 'auto');
+			}
+		});
 	});
 
 	// ---------------------------------------------------------
@@ -797,7 +819,7 @@ jQuery(document).ready(function($) {
 		    	$window.scroll(function() {
 
 		        	// Disable for tablet/mobile viewport size
-		        	if ( $window.width() <= 992 ) {
+		        	if ( $window.width() < 992 ) {
 		        		return;
 		        	}
 
@@ -1227,7 +1249,6 @@ jQuery(document).ready(function($) {
 
 		});
 	}
-
 
 	// ---------------------------------------------------------
 	// Scroll effects (separate)
