@@ -172,12 +172,12 @@ function setup_themeblvd_layout_meta() {
 			'layout_header' => array(
 				'id'		=> '_tb_layout_header',
 				'name' 		=> __( 'Header', 'themeblvd' ),
-				'desc'		=> __( '<em>Note: The transparent header option will work better when a banner or custom layout is applied to the page.</em>', 'themeblvd' ),
+				'desc'		=> __( 'Note: The transparent header option will work better when a banner or custom layout is applied to the page.', 'themeblvd' ).' <a href="https://vimeo.com/118959469" target="_blank">'.__('Learn More', 'themeblvd').'</a>',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default'		=> __( 'Display header', 'themeblvd' ),
-					'suck_up'		=> __( 'Display transparent header over content', 'themeblvd' ),
-					'hide'			=> __( 'Hide header', 'themeblvd' )
+					'default'		=> __( 'Standard Header', 'themeblvd' ),
+					'suck_up'		=> __( 'Transparent Header', 'themeblvd' ),
+					'hide'			=> __( 'Hide Header', 'themeblvd' )
 				)
 			),
 			'layout_footer' => array(
@@ -185,8 +185,8 @@ function setup_themeblvd_layout_meta() {
 				'name' 		=> __( 'Footer', 'themeblvd' ),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default'		=> __( 'Display footer', 'themeblvd' ),
-					'hide'			=> __( 'Hide footer', 'themeblvd' )
+					'default'		=> __( 'Standard Footer', 'themeblvd' ),
+					'hide'			=> __( 'Hide Footer', 'themeblvd' )
 				)
 			)
 		)
