@@ -6481,14 +6481,8 @@ blockquote small {
 }
 
 /* Jumbotron */
-@media (min-width: 992px) {
-	.element-jumbotron.height-100vh .jumbotron-wrap {
-		padding: 60px 0;
-	}
-}
 @media (min-width: 992px) and (min-height: 500px) {
 	.element-jumbotron.height-100vh .jumbotron-wrap {
-		padding: 0;
 		position: absolute;
 		top: 50%;
 		-ms-transform: translate(0, -50%); /* IE9 */
