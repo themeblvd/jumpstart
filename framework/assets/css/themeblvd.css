@@ -5188,7 +5188,7 @@ button.mfp-arrow:active {
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 }
-@media (min-width: 992px) {
+@media (min-width: 992px) and (min-height: 600px) {
 	.element.height-100vh {
 		min-height: 100vh;
 		position: relative;
@@ -6483,6 +6483,12 @@ blockquote small {
 /* Jumbotron */
 @media (min-width: 992px) {
 	.element-jumbotron.height-100vh .jumbotron-wrap {
+		padding: 60px 0;
+	}
+}
+@media (min-width: 992px) and (min-height: 600px) {
+	.element-jumbotron.height-100vh .jumbotron-wrap {
+		padding: 0;
 		position: absolute;
 		top: 50%;
 		-ms-transform: translate(0, -50%); /* IE9 */
@@ -7447,7 +7453,7 @@ blockquote small {
 .tb-scroll-to-section:hover .fa {
 	color: #333333;
 }
-@media (max-width: 991px) {
+@media (max-width: 991px), (max-height: 599px) {
 	.tb-scroll-to-section {
 		display: none;
 	}

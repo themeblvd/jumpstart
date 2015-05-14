@@ -472,31 +472,6 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
-	// Match viewport height
-	// ---------------------------------------------------------
-
-	// To match viewport height for an element, we've styled
-	// the class "height-100vh" but the problem is if the browser's
-	// height gets smaller than the positioned absolute element
-	// inside, then you get overflow.
-
-	if ( window_width >= 992 ) {
-		$('.height-100vh').each(function(){
-			$(this).css('height', $(this).find('div:first').height() + 160 );
-		});
-	}
-
-	$window.resize(function(){
-		$('.height-100vh').each(function(){
-			if ( $window.width() >= 992 ) {
-				$(this).css('height', $(this).find('div:first').height() + 160 );
-			} else {
-				$(this).css('height', 'auto');
-			}
-		});
-	});
-
-	// ---------------------------------------------------------
 	// Scroll-to Buttons
 	// ---------------------------------------------------------
 
