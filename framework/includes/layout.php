@@ -564,7 +564,7 @@ function themeblvd_get_element_class( $args ) {
 }
 
 /**
- * Get CSS classes needed for individual element
+ * Get CSS classes needed for individual section
  *
  * @since 2.5.0
  *
