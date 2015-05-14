@@ -23,33 +23,33 @@
 
 	<?php if ( has_post_format('gallery') ) : ?>
 
-		<div class="featured-item gallery">
+		<div class="featured-item featured-gallery">
 			<?php themeblvd_gallery_slider(); ?>
-		</div><!-- .gallery (end) -->
+		</div><!-- .featured-gallery (end) -->
 
 	<?php elseif ( has_post_format('video') ) : ?>
 
-		<div class="featured-item video">
+		<div class="featured-item featured-video">
 			<?php themeblvd_content_video(); ?>
-		</div><!-- .video (end) -->
+		</div><!-- .featured-video (end) -->
 
 	<?php elseif ( has_post_format('audio') ) : ?>
 
-		<div class="featured-item audio">
+		<div class="featured-item featured-audio">
 			<?php themeblvd_content_audio(); ?>
-		</div><!-- .audio (end) -->
+		</div><!-- .featured-audio (end) -->
 
 	<?php elseif ( has_post_format('quote') ) : ?>
 
-		<div class="featured-item quote">
+		<div class="featured-item featured-quote">
 			<?php themeblvd_content_quote(); ?>
-		</div><!-- .quote (end) -->
+		</div><!-- .featured-quote (end) -->
 
 	<?php elseif ( has_post_thumbnail() && themeblvd_get_att('thumbs') ) : ?>
 
 		<div class="featured-item">
 			<?php themeblvd_the_post_thumbnail(); ?>
-		</div><!-- .featured-item(end) -->
+		</div><!-- .featured-item (end) -->
 
 	<?php endif; ?>
 

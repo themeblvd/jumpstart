@@ -8,21 +8,21 @@
 
 		<?php if ( has_post_format('gallery') ) : ?>
 
-			<div class="featured-item gallery">
+			<div class="featured-item featured-gallery">
 				<?php themeblvd_mini_gallery_slider( get_the_content(), array('size' => themeblvd_get_att('crop'))  ); ?>
-			</div><!-- .gallery (end) -->
+			</div><!-- .featured-gallery (end) -->
 
 		<?php elseif ( has_post_format('video') ) : ?>
 
-			<div class="featured-item video">
+			<div class="featured-item featured-video">
 				<?php themeblvd_content_video(true); ?>
-			</div><!-- .video (end) -->
+			</div><!-- .featured-video (end) -->
 
 		<?php elseif ( has_post_format('audio') ) : ?>
 
-			<div class="featured-item audio">
+			<div class="featured-item featured-audio">
 				<?php themeblvd_content_audio(true); ?>
-			</div><!-- .audio (end) -->
+			</div><!-- .featured-audio (end) -->
 
 		<?php elseif ( themeblvd_get_att('thumbs') ) : ?>
 
