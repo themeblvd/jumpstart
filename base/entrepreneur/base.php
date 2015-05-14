@@ -21,7 +21,7 @@ function jumpstart_ent_options() {
 	$options = apply_filters('jumpstart_ent_options', array(
 		'general' => array(
 			'sub_group_start_1' => array(
-				'id'		=> 'sub_group_start_xxx',
+				'id'		=> 'sub_group_start_1',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
