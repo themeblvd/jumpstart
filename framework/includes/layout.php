@@ -557,48 +557,8 @@ function themeblvd_get_element_class( $args ) {
 	$class[] = 'clearfix';
 
 	/**
-	 * Support @deprecated class addon filter. This comes from the
-	 * old themeblvd_get_classes() function, which was removed in
-	 * framework v2.5. Note that the only elements present here
-	 * in this list are ones that existed prior to 2.5.
-	 */
-	$deprecated = apply_filters( 'themeblvd_element_classes', array(
-		'element_columns' 				=> array(),
-		'element_content' 				=> array(),
-		'element_divider' 				=> array(),
-		'element_headline' 				=> array(),
-		'element_jumbotron' 			=> array(),
-		'element_post_grid_paginated' 	=> array(),
-		'element_post_grid' 			=> array(),
-		'element_post_grid_slider' 		=> array(),
-		'element_post_list_paginated' 	=> array(),
-		'element_post_list' 			=> array(),
-		'element_post_list_slider' 		=> array(),
-		'element_post_slider' 			=> array(),
-		'element_slider' 				=> array(),
-		'element_slogan' 				=> array(),
-		'element_tabs' 					=> array(),
-		'element_tweet' 				=> array()
-	), $args['type'], $args['options'], $args['section'] );
-
-	foreach ( $deprecated as $key => $value ) {
-		if ( $value && $key == 'element_'.$args['type'] ) {
-
-			// General elements
-			$class = array_merge( $class, $value );
-
-			// Specific slider type
-			if ( isset( $slider_type ) && $key == 'slider_'.$slider_type ) {
-				$class = array_merge( $class, $value );
-			}
-
-		}
-	}
-
-	/**
 	 * If you want to filter element classes, use the following
-	 * "themeblvd_element_class" and check for $type. Avoid using
-	 * above, deprecated filter.
+	 * "themeblvd_element_class" and check for $type.
 	 */
 	return apply_filters( 'themeblvd_element_class', $class, $args['type'], $args );
 }
