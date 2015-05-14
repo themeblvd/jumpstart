@@ -536,7 +536,7 @@ class Theme_Blvd_Options_Page {
 			}
 
 			// If option wasn't sent through, set it the default
-			if ( ! isset( $input[$id] ) ) {
+			if ( ! isset( $input[$id] ) && ! in_array( $option['type'], array('subgroup_start', 'subgroup_end', 'section_start', 'section_end', 'heading', 'info') ) ) {
 				if ( isset( $option['std'] ) ) {
 					$clean[$id] = $option['std'];
 				} else {
