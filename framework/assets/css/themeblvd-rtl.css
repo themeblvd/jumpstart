@@ -5379,6 +5379,7 @@ blockquote small {
 /* Image */
 .tb-thumb-link {
 	display: block;
+	max-width: 100%;
 	outline: none;
 	position: relative;
 }
