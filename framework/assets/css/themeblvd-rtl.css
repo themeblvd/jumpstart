@@ -297,6 +297,12 @@ p {
 		margin-top: 5px;
 	}
 }
+.btn > .fa.before {
+	margin-left: 0.5em;
+}
+.btn > .fa.after {
+	margin-right: 0.5em;
+}
 
 /* Button Groups */
 .btn-group > .btn,

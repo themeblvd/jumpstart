@@ -462,12 +462,12 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 
 	// Add icon before text?
 	if ( $icon_before ) {
-		$text = '<i class="fa fa-'.$icon_before.'"></i> '.$text;
+		$text = sprintf('<i class="fa fa-%s before"></i>%s', $icon_before, $text);
 	}
 
 	// Add icon after text?
 	if ( $icon_after ) {
-		$text .= ' <i class="fa fa-'.$icon_after.'"></i>';
+		$text .= sprintf('<i class="fa fa-%s after"></i>', $icon_after);
 	}
 
 	// Optional addon to anchor
