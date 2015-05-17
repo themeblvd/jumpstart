@@ -639,7 +639,7 @@ jQuery(document).ready(function($) {
 		// so we can designate a separate option to disable
 		// on mobile. -- Videos seem to be harder to view in
 		// the lightbox than images on mobile.
-		$('.themeblvd-lightbox.lightbox-iframe').magnificPopup({
+		$('.themeblvd-lightbox.lightbox-iframe, li.menu-item.video > a').magnificPopup({
 			disableOn: themeblvd.lightbox_mobile_iframe,
 			type: 'iframe',
 			removalDelay: remove_delay,
