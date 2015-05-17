@@ -114,7 +114,7 @@ class Theme_Blvd_Bases {
 											<span><?php _e('Select Theme Base', 'themeblvd'); ?></span>
 										</a>
 									<?php endif; ?>
-									<img src="<?php echo themeblvd_get_base_uri($id); ?>/preview.jpg" />
+									<img src="<?php echo themeblvd_get_base_uri($id); ?>/preview.png" />
 								</div>
 								<div class="theme-base-info<?php if ( $current == $id ) echo ' wp-ui-highlight'; ?>">
 									<h3><?php echo $info['name']; ?></h3>
