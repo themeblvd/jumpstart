@@ -52,8 +52,17 @@ class Theme_Blvd_Compat_WPML {
 		}
 
 		if ( apply_filters('themeblvd_wpml_has_switcher', true) ) {
+
+			// Option to for user to select if they want to display
+			// theme's default switcher (usually in header)
 			add_action( 'icl_language_switcher_options', array($this, 'switcher_options') );
 			add_action( 'icl_save_settings', array($this, 'save_switcher_options') );
+
+			// Remove WPML default lang switcher and create our own.
+			// remove_all_actions('icl_language_selector');
+			remove_action( 'icl_language_selector', array( $sitepress, 'language_selector' ) );
+			add_action('icl_language_selector', array( $this, 'language_selector' ) );
+
 		}
 
 	}
@@ -116,7 +125,7 @@ class Theme_Blvd_Compat_WPML {
 
             $languages = $sitepress->get_ls_languages();
 
-            $items .= '<li class="menu-item menu-item-language menu-item-language-current menu-item-has-children">';
+            $items .= '<li class="menu-item menu-item-language menu-item-language-current menu-item-has-children level-1">'; // ThemeBlvd add "level-1" class
 
             if(isset($args->before)){
                 $items .= $args->before;
@@ -177,7 +186,7 @@ class Theme_Blvd_Compat_WPML {
             if( ! empty($languages) ) {
                 foreach( $languages as $lang ){
 
-					$sub_items .= '<li class="menu-item menu-item-language menu-item-language-current">';
+					$sub_items .= '<li class="menu-item menu-item-language menu-item-language-current level-2">'; // ThemeBlvd add "level-2" class
                     $sub_items .= '<a href="'.$lang['url'].'" class="menu-btn">';
 
 					$language_name = '';
@@ -270,6 +279,73 @@ class Theme_Blvd_Compat_WPML {
 
 		}
 
+	}
+
+	/**
+	 * Display custom language switcher
+	 *
+	 * @since 2.5.0
+	 */
+	public function get_language_selector() {
+
+		global $sitepress;
+
+		$output = '';
+		$langs = $sitepress->get_ls_languages();
+
+		if ( $langs ) {
+
+			$active = array();
+
+			foreach ( $langs as $key => $lang ) {
+				if ( isset($lang['active']) && $lang['active'] == 1 ) {
+					$active = $lang;
+					unset($langs[$key]);
+					break;
+				}
+			}
+
+			if ( $active ) {
+
+				$output .= "\n<div class=\"tb-wpml-switcher\">\n";
+				$output .= "\t<ul>\n";
+				$output .= "\t\t<li>\n";
+
+				if ( count($langs) ) {
+
+					$output .= sprintf("\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s<i class=\"fa fa-caret-down\"></i></a></a>", $active['url'], $active['language_code'], $active['translated_name']);
+					$output .= "\t\t\t<ul class=\"lang-sub-menu\">\n";
+
+					foreach ( $langs as $lang ) {
+						$output .= sprintf("\t\t\t\t<li class=\"lang-%1\$s\"><a href=\"%2\$s\" title=\"%3\$s\">%3\$s</a></li>\n", $lang['language_code'], $lang['url'], $lang['translated_name']);
+					}
+
+					$output .= "\t\t\t</ul>\n";
+
+				} else {
+
+					$output .= sprintf("\t\t\t<span class=\"active\">%s</span>\n", $active['translated_name']);
+
+				}
+
+				$output .= "\t\t</li><!-- .active (end) -->\n";
+				$output .= "\t</ul>\n";
+				$output .= "</div> <!-- .tb-wpml-switcher -->";
+			}
+
+		}
+
+		return apply_filters( 'themeblvd_wpml_switcher', $output );
+
+	}
+
+	/**
+	 * Display custom language switcher
+	 *
+	 * @since 2.5.0
+	 */
+	public function language_selector() {
+		echo $this-> get_language_selector();
 	}
 
 }

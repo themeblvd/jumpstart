@@ -9,6 +9,7 @@ Jump Start Changelog
 * Improvement to main menu dropdowns on desktop; submenus will now flyout opposite direction if too close to browser edge.
 * Improvements to mobile menu usability.
 * Improvements to responsiveness of default WordPress galleries.
+* Improvements to default WPML language switcher in header.
 * Added "Text Blocks" sortable option type.
 * Added buttons sizes `xxl` and `xxxl`.
 * Added option to change thumbnail highlight icon color, for all theme bases.

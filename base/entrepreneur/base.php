@@ -1742,13 +1742,6 @@ function jumpstart_ent_css() {
 	$print .= sprintf( "\tpadding-top: %spx;\n", $top+2 );
 	$print .= "}\n";
 
-	if ( themeblvd_installed('wpml') ) {
-		$print .= ".header-menu-addon #lang_sel,\n";
-		$print .= ".header-menu-addon #lang_sel_click {\n";
-		$print .= sprintf( "\tmargin-top: %spx;\n", $top-2 );
-		$print .= "}\n";
-	}
-
 	if ( $contact = themeblvd_get_option('social_media') ) {
 		$print .= ".header-nav .contact-popup,\n";
 		$print .= ".tb-sticky-menu .contact-popup {\n";
@@ -1983,10 +1976,6 @@ function themeblvd_ent_header_menu_addon() {
 	}
 
 	themeblvd_contact_popup( array('class' => 'to-mobile') );
-
-	if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
-		do_action('icl_language_selector');
-	}
 
 	echo '</div><!-- .header-menu-addon (end) -->';
 
