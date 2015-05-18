@@ -735,12 +735,12 @@ img.size-full {
 .site-header .social-trans {
 	display: none;
 }
-.site-header.transparent,
-.site-header.transparent .tb-text-logo {
+.site-header.transparent > .wrap,
+.site-header.transparent > .wrap .tb-text-logo {
 	color: #ffffff;
 }
-.site-header.transparent .header-logo .tb-text-logo,
-.site-header.transparent .header-logo .tagline {
+.site-header.transparent > .wrap .header-logo .tb-text-logo,
+.site-header.transparent > .wrap.header-logo .tagline {
 	text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
