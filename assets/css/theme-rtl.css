@@ -157,8 +157,7 @@
 }
 @media (max-width: 991px) {
 	.header-content > .wrap {
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding: 20px 30px;
 	}
 }
 .header-logo {
@@ -167,10 +166,10 @@
 @media (max-width: 991px) {
 	.header-logo {
 		float: none;
-		padding-left: 58px;
+		padding-left: 75px;
 	}
 	.has-cart-button .header-logo {
-		padding-left: 111px;
+		padding-left: 130px;
 	}
 }
 .btn-navbar {
@@ -180,7 +179,7 @@
 	padding: 15px;
 	position: absolute;
 	top: 50%;
-	left: 20px;
+	left: 30px;
 	text-align: center;
 	z-index: 10;
 }
