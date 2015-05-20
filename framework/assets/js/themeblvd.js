@@ -148,13 +148,13 @@ jQuery(document).ready(function($) {
 
 				var $el = $(this),
 					$switcher = $('<li class="menu-item mobile-wpml"></li>'),
-					$top = $('<span class="menu-btn">'+$el.find('a.lang_sel_sel').html()+'</span>'),
-					$sub = $el.find('a.lang_sel_sel').next('ul');
+					$top = $('<span class="menu-btn">'+$el.find('.tb-wpml-switcher > ul > li > a').html()+'</span>'),
+					$sub = $el.find('.lang-sub-menu');
 
 				$switcher.append( $top );
 
 				if ( $sub.length ) {
-					$switcher.find('.menu-btn').append('<i class="sf-sub-indicator fa fa-caret-down"></i>');
+					$top.find('.fa').addClass('sf-sub-indicator');
 					$switcher.append( $sub.clone().addClass('sub-menu non-mega-sub-menu') );
 				}
 
