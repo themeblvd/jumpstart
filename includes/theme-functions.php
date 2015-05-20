@@ -32,14 +32,14 @@ function jumpstart_css() {
 
 	// Main theme styles
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme-rtl.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme-rtl.min.css', $api->get_framework_deps() );
 	} else {
-		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme.min.css', $api->get_framework_deps() );
 	}
 
 	// Dark styles
 	if ( themeblvd_supports('display', 'dark') ) {
-		wp_enqueue_style( 'jumpstart-dark', get_template_directory_uri().'/assets/css/dark.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart-dark', get_template_directory_uri().'/assets/css/dark.min.css', $api->get_framework_deps() );
 	}
 
 	// Theme base styles
