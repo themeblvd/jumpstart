@@ -62,7 +62,7 @@
 .site-footer > .wrap {
 	margin-right: auto;
 	margin-left: auto;
-	max-width: 1170px;
+	max-width: 1150px;
 }
 @media (max-width: 1199px) {
 	.header-top > .wrap,
@@ -74,7 +74,7 @@
 	.site-inner > .wrap,
 	.element-section > .element,
 	.site-footer > .wrap {
-		max-width: 960px;
+		max-width: 940px;
 	}
 }
 @media (max-width: 991px) {
@@ -86,7 +86,7 @@
 	.site-inner > .wrap,
 	.element-section > .element,
 	.site-footer > .wrap {
-		max-width: 738px;
+		max-width: 720px;
 	}
 }
 @media (max-width: 767px) {

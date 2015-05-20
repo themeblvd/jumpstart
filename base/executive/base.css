@@ -10,11 +10,11 @@ Author URI: http://www.themeblvd.com
 
 .header-nav {
 	margin: 0 auto;
-	max-width: 1170px;
+	max-width: 1150px;
 }
 @media (max-width: 1199px) {
 	.header-nav {
-		max-width: 960px;
+		max-width: 940px;
 	}
 }
 @media (min-width: 992px) {
@@ -222,12 +222,12 @@ Author URI: http://www.themeblvd.com
 }
 @media (max-width: 1199px) {
 	.js-boxed #container {
-		max-width: 990px;
+		max-width: 960px;
 	}
 }
 @media (max-width: 991px) {
 	.js-boxed #container {
-		max-width: 738px;
+		max-width: 720px;
 	}
 }
 @media (max-width: 767px) {
