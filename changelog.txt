@@ -14,6 +14,7 @@ Jump Start Changelog
 * Added buttons sizes `xxl` and `xxxl`.
 * Added option to change thumbnail highlight icon color, for all theme bases.
 * Added "video" class that can be used in WordPress menu builder to link to a YouTube or Vimeo video in lightbox.
+* Added "Simple Analytics" plugin to recommended plugins.
 * Allow mobile menu to be filtered to appear from left.
 * Minified theme.js, theme-rtl.js, and dark.css assets.
 * Fixed: Only load Nivo script if Theme Blvd Sliders plugin is installed.

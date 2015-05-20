@@ -78,6 +78,11 @@ function themeblvd_tgm_register() {
 			'name'		=> 'Tweeple',
 			'slug'		=> 'tweeple',
 			'required'	=> false
+		),
+		'analytics' => array(
+			'name'		=> 'Simple Analytics',
+			'slug'		=> 'simple-analytics',
+			'required'	=> false
 		)
 		/*
 		'woocommerce' => array(
