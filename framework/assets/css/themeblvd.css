@@ -6549,27 +6549,27 @@ blockquote small {
 	font-size: 1rem;
 }
 @media (max-width: 991px) {
-		.tb-jumbotron .tb-text-block-wrap.text-small .tb-text-block {
-			font-size: 1.4rem;
-		}
-		.tb-jumbotron .tb-text-block-wrap.text-medium .tb-text-block {
-			font-size: 1.8rem;
-			line-height: 1.2;
-		}
-		.tb-jumbotron .tb-text-block-wrap.text-large .tb-text-block {
-			font-size: 2.8rem;
-			line-height: 1.2;
-		}
+	.tb-jumbotron .tb-text-block-wrap.text-small .tb-text-block {
+		font-size: 1.5rem;
+	}
+	.tb-jumbotron .tb-text-block-wrap.text-medium .tb-text-block {
+		font-size: 2.25rem;
+		line-height: 1.2;
+	}
+	.tb-jumbotron .tb-text-block-wrap.text-large .tb-text-block {
+		font-size: 3.375rem;
+		line-height: 1.2;
+	}
 }
 @media (max-width: 767px) {
 	.tb-jumbotron .tb-text-block-wrap.text-small .tb-text-block {
-		font-size: 1.2rem;
+		font-size: 1rem;
 	}
 	.tb-jumbotron .tb-text-block-wrap.text-medium .tb-text-block {
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 	}
 	.tb-jumbotron .tb-text-block-wrap.text-large .tb-text-block {
-		font-size: 2.4rem;
+		font-size: 2.25rem;
 	}
 }
 .tb-jumbotron .tb-text-block .tb-divider {
