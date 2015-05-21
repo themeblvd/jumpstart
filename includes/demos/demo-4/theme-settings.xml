@@ -6,19 +6,11 @@
 	</setting>
 	<setting>
 		<id>theme_version</id>
-		<value><![CDATA[Mi4wLjAtYmV0YTM=]]></value>
+		<value><![CDATA[Mi4wLjA=]]></value>
 	</setting>
 	<setting>
 		<id>theme_base</id>
 		<value><![CDATA[ZW50cmVwcmVuZXVy]]></value>
-	</setting>
-	<setting>
-		<id>styles</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_xxx</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>layout_style</id>
@@ -41,10 +33,6 @@
 		<value><![CDATA[I2NjY2NjYw==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_2</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>apply_content_border</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
@@ -57,20 +45,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_2</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_1</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>style</id>
 		<value><![CDATA[bGlnaHQ=]]></value>
-	</setting>
-	<setting>
-		<id>header_info</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>top_bg_color</id>
@@ -85,10 +61,6 @@
 		<value><![CDATA[ZGFyaw==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_3</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>top_apply_border_bottom</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
@@ -101,16 +73,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_3</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_height</id>
 		<value><![CDATA[OTBweA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_4</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_type</id>
@@ -129,24 +93,12 @@
 		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_5</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_apply_bg_texture_parallax</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_texture_parallax</id>
 		<value><![CDATA[NQ==]]></value>
-	</setting>
-	<setting>
-		<id>subgroup_end_5</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_6</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_image</id>
@@ -157,15 +109,7 @@
 		<value><![CDATA[Mg==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_6</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_bg_video</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_7</id>
 		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
@@ -181,14 +125,6 @@
 		<value><![CDATA[MC41]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_7</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_8</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_bg_slideshow</id>
 		<value><![CDATA[]]></value>
 	</setting>
@@ -197,32 +133,12 @@
 		<value><![CDATA[ZnVsbA==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_9</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_apply_bg_slideshow_parallax</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_slideshow_parallax</id>
 		<value><![CDATA[NQ==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_9</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_8</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_4</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_10</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_text_color</id>
@@ -241,14 +157,6 @@
 		<value><![CDATA[NXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_10</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_11</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_apply_border_bottom</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -261,16 +169,8 @@
 		<value><![CDATA[NXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_11</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>menu_text_shadow</id>
 		<value><![CDATA[MA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_12</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_apply_font</id>
@@ -281,12 +181,8 @@
 		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTNweCI7czo0OiJmYWNlIjtzOjk6ImhlbHZldGljYSI7czo1OiJjb2xvciI7czo3OiIjNTU1NTU1IjtzOjY6Imdvb2dsZSI7czowOiIiO3M6NToic3R5bGUiO3M6NDoiYm9sZCI7fQ==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_12</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>menu_highlight</id>
-		<value><![CDATA[IzE5NzFhZg==]]></value>
+		<value><![CDATA[IzQyNDI0Mg==]]></value>
 	</setting>
 	<setting>
 		<id>menu_sub_bg_color</id>
@@ -298,7 +194,7 @@
 	</setting>
 	<setting>
 		<id>menu_mobile_bg_color</id>
-		<value><![CDATA[IzE5NzFhZg==]]></value>
+		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_mobile_bg_color_brightness</id>
@@ -307,10 +203,6 @@
 	<setting>
 		<id>menu_mobile_social_media_style</id>
 		<value><![CDATA[bGlnaHQ=]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_13</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>footer_bg_type</id>
@@ -333,14 +225,6 @@
 		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_13</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_14</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>footer_apply_border_top</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
@@ -353,14 +237,6 @@
 		<value><![CDATA[NXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_14</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_15</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>footer_apply_border_bottom</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -371,10 +247,6 @@
 	<setting>
 		<id>footer_border_bottom_width</id>
 		<value><![CDATA[MXB4]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_15</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>font_body</id>
@@ -406,7 +278,7 @@
 	</setting>
 	<setting>
 		<id>btn_primary</id>
-		<value><![CDATA[YTo3OntzOjI6ImJnIjtzOjc6IiMzMzMzMzMiO3M6ODoiYmdfaG92ZXIiO3M6NzoiIzIyMjIyMiI7czo2OiJib3JkZXIiO3M6NzoiIzAwMDAwMCI7czo0OiJ0ZXh0IjtzOjc6IiNmZmZmZmYiO3M6MTA6InRleHRfaG92ZXIiO3M6NzoiI2ZmZmZmZiI7czoxMDoiaW5jbHVkZV9iZyI7czoxOiIxIjtzOjE0OiJpbmNsdWRlX2JvcmRlciI7czoxOiIxIjt9]]></value>
+		<value><![CDATA[YTo3OntzOjI6ImJnIjtzOjc6IiMxOTcxYWYiO3M6ODoiYmdfaG92ZXIiO3M6NzoiIzAwNjZhZiI7czo2OiJib3JkZXIiO3M6NzoiIzAwNjZhZiI7czo0OiJ0ZXh0IjtzOjc6IiNmZmZmZmYiO3M6MTA6InRleHRfaG92ZXIiO3M6NzoiI2ZmZmZmZiI7czoxMDoiaW5jbHVkZV9iZyI7czoxOiIxIjtzOjE0OiJpbmNsdWRlX2JvcmRlciI7czoxOiIxIjt9]]></value>
 	</setting>
 	<setting>
 		<id>btn_border</id>
@@ -417,16 +289,8 @@
 		<value><![CDATA[MHB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_16</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>widget_style</id>
 		<value><![CDATA[cGFuZWw=]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_17</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>widget_panel_style</id>
@@ -439,10 +303,6 @@
 	<setting>
 		<id>widget_panel_border_color</id>
 		<value><![CDATA[I2RkZGRkZA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_17</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>widget_bg_color</id>
@@ -469,10 +329,6 @@
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_18</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>widget_apply_border</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -485,12 +341,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_18</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_16</id>
-		<value><![CDATA[]]></value>
+		<id>highlight</id>
+		<value><![CDATA[IzFlNzNiZQ==]]></value>
 	</setting>
 	<setting>
 		<id>thumbnail</id>
@@ -498,11 +350,7 @@
 	</setting>
 	<setting>
 		<id>custom_styles</id>
-		<value><![CDATA[LyogUGFnZSBCYW5uZXJzICovDQoudGItZmVhdHVyZWQtYmFubmVyIHsNCglib3JkZXItdG9wOiAxcHggc29saWQgI2RkZDsNCglib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RkZDsNCn0NCi50Yi1mZWF0dXJlZC1iYW5uZXIgLndyYXAgew0KCW1pbi1oZWlnaHQ6IDA7DQoJcGFkZGluZzogMzBweCAwOw0KfQ0KLnRiLWZlYXR1cmVkLWJhbm5lciAuYmFubmVyLWNvbnRlbnQgew0KCW1hcmdpbjogMDsNCglwb3NpdGlvbjogc3RhdGljOw0KfQ0KLnRiLWZlYXR1cmVkLWJhbm5lciAuYmFubmVyLXRpdGxlIHsNCglmb250LXNpemU6IDI0cHg7DQp9]]></value>
-	</setting>
-	<setting>
-		<id>layout</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[LyogUGFnZSBCYW5uZXJzICovDQoudGItZmVhdHVyZWQtYmFubmVyIHsNCglib3JkZXItdG9wOiAxcHggc29saWQgI2RkZDsNCglib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RkZDsNCn0NCi50Yi1mZWF0dXJlZC1iYW5uZXIgLndyYXAgew0KCW1pbi1oZWlnaHQ6IDA7DQoJcGFkZGluZzogMzBweCAwOw0KfQ0KLnRiLWZlYXR1cmVkLWJhbm5lciAuYmFubmVyLWNvbnRlbnQgew0KCW1hcmdpbjogMDsNCglwb3NpdGlvbjogc3RhdGljOw0KfQ0KLnRiLWZlYXR1cmVkLWJhbm5lciAuYmFubmVyLXRpdGxlIHsNCglmb250LXNpemU6IDI0cHg7DQp9DQoNCi8qIEhvbWUgSGVybyBVbml0ICovDQouaG9tZSAuZWxlbWVudC1qdW1ib3Ryb24gLnRleHQtYmxvY2stMiB7DQoJZm9udC1mYW1pbHk6ICJSb2JvdG8gU2xhYiI7LyogVVNlIGhlYWRlciBmb250IGZyb20gdHlwb2dyYXBoeSBvcHRpb25zICovDQp9]]></value>
 	</setting>
 	<setting>
 		<id>logo</id>
@@ -599,10 +447,6 @@
 	<setting>
 		<id>scroll_to_top</id>
 		<value><![CDATA[c2hvdw==]]></value>
-	</setting>
-	<setting>
-		<id>content</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>single_meta</id>
@@ -781,11 +625,11 @@
 		<value><![CDATA[bm8=]]></value>
 	</setting>
 	<setting>
-		<id>plugins</id>
-		<value><![CDATA[]]></value>
+		<id>bbp_lead_topic</id>
+		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
-		<id>bbp_lead_topic</id>
+		<id>bbp_naked_page</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>

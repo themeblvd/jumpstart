@@ -6,19 +6,11 @@
 	</setting>
 	<setting>
 		<id>theme_version</id>
-		<value><![CDATA[Mi4wLjAtYmV0YTM=]]></value>
+		<value><![CDATA[Mi4wLjA=]]></value>
 	</setting>
 	<setting>
 		<id>theme_base</id>
 		<value><![CDATA[c3VwZXJ1c2Vy]]></value>
-	</setting>
-	<setting>
-		<id>styles</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_1</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>layout_style</id>
@@ -41,10 +33,6 @@
 		<value><![CDATA[I2NjY2NjYw==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_2</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>apply_content_border</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
@@ -57,20 +45,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_2</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_1</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>style</id>
 		<value><![CDATA[bGlnaHQ=]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_3</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_info</id>
@@ -89,10 +65,6 @@
 		<value><![CDATA[ZGFyaw==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_4</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>top_apply_border_bottom</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -105,20 +77,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_4</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_3</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_5</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_bg_type</id>
-		<value><![CDATA[bm9uZQ==]]></value>
+		<value><![CDATA[Y29sb3I=]]></value>
 	</setting>
 	<setting>
 		<id>header_text_color</id>
@@ -137,24 +97,12 @@
 		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_6</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_apply_bg_texture_parallax</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_texture_parallax</id>
 		<value><![CDATA[NQ==]]></value>
-	</setting>
-	<setting>
-		<id>subgroup_end_6</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_7</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_image</id>
@@ -165,15 +113,7 @@
 		<value><![CDATA[Mg==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_7</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_bg_video</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_8</id>
 		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
@@ -189,14 +129,6 @@
 		<value><![CDATA[MC41]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_8</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_9</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_bg_slideshow</id>
 		<value><![CDATA[]]></value>
 	</setting>
@@ -205,32 +137,12 @@
 		<value><![CDATA[ZnVsbA==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_10</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_apply_bg_slideshow_parallax</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_slideshow_parallax</id>
 		<value><![CDATA[NQ==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_10</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_9</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_5</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_11</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_apply_border_top</id>
@@ -245,14 +157,6 @@
 		<value><![CDATA[NXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_11</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_12</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>header_apply_border_bottom</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -263,14 +167,6 @@
 	<setting>
 		<id>header_border_bottom_width</id>
 		<value><![CDATA[NXB4]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_12</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_13</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_apply_padding</id>
@@ -293,16 +189,8 @@
 		<value><![CDATA[MjBweA==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_13</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>logo_center</id>
 		<value><![CDATA[MA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_14</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_bg_type</id>
@@ -325,10 +213,6 @@
 		<value><![CDATA[ZGFyaw==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_14</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>menu_hover_bg_color</id>
 		<value><![CDATA[IzAwMDAwMA==]]></value>
 	</setting>
@@ -349,10 +233,6 @@
 		<value><![CDATA[bGlnaHQ=]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_15</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>menu_apply_border_top</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -363,14 +243,6 @@
 	<setting>
 		<id>menu_border_top_width</id>
 		<value><![CDATA[MXB4]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_15</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_16</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_apply_border_bottom</id>
@@ -385,16 +257,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_16</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>menu_text_shadow</id>
 		<value><![CDATA[MA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_17</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_divider</id>
@@ -405,16 +269,8 @@
 		<value><![CDATA[IzAwMDAwMA==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_17</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>menu_center</id>
 		<value><![CDATA[MA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_18</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_apply_font</id>
@@ -423,10 +279,6 @@
 	<setting>
 		<id>font_menu</id>
 		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjk6ImhlbHZldGljYSI7czo1OiJjb2xvciI7czo3OiIjZmZmZmZmIjtzOjY6Imdvb2dsZSI7czowOiIiO3M6NToic3R5bGUiO3M6NDoidGhpbiI7fQ==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_18</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>menu_search</id>
@@ -443,10 +295,6 @@
 	<setting>
 		<id>menu_mobile_social_media_style</id>
 		<value><![CDATA[bGlnaHQ=]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_19</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>footer_bg_type</id>
@@ -469,14 +317,6 @@
 		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_19</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_20</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>footer_apply_border_top</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
@@ -487,14 +327,6 @@
 	<setting>
 		<id>footer_border_top_width</id>
 		<value><![CDATA[MXB4]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_20</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_21</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>footer_apply_border_bottom</id>
@@ -509,16 +341,12 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_21</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>font_body</id>
 		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjk6ImhlbHZldGljYSI7czo1OiJzdHlsZSI7czo0OiJ0aGluIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MDoiIjt9]]></value>
 	</setting>
 	<setting>
 		<id>font_header</id>
-		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6OToiaGVsdmV0aWNhIjtzOjU6InN0eWxlIjtzOjQ6ImJvbGQiO3M6NToiY29sb3IiO3M6MDoiIjtzOjY6Imdvb2dsZSI7czowOiIiO30=]]></value>
+		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjIxOiJPcGVuIFNhbnM6NDAwLDYwMCw4MDAiO30=]]></value>
 	</setting>
 	<setting>
 		<id>link_color</id>
@@ -553,16 +381,8 @@
 		<value><![CDATA[MHB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_22</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>widget_style</id>
 		<value><![CDATA[cGFuZWw=]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_start_23</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>widget_panel_style</id>
@@ -575,10 +395,6 @@
 	<setting>
 		<id>widget_panel_border_color</id>
 		<value><![CDATA[I2RkZGRkZA==]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_23</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>widget_bg_color</id>
@@ -605,10 +421,6 @@
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_start_24</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>widget_apply_border</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
@@ -621,12 +433,8 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
-		<id>sub_group_end_24</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>sub_group_end_22</id>
-		<value><![CDATA[]]></value>
+		<id>highlight</id>
+		<value><![CDATA[IzFlNzNiZQ==]]></value>
 	</setting>
 	<setting>
 		<id>thumbnail</id>
@@ -634,11 +442,7 @@
 	</setting>
 	<setting>
 		<id>custom_styles</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>layout</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[LyoqDQogKiBDU1MgRXhhbXBsZTogQXBwbHkgaGVhZGVyIGZvbnQgd2UgY2hvc2UgaW4gDQogKiBUeXBvZ3JhcGh5IG9wdGlvbnMgdG8gdGhlIGp1bWJvdHJvbiB0ZXh0IGJsb2NrcywNCiAqIGFuZCBtYWtlIGl0IGFsbCBqdXN0IGEgbGl0dGxlIGJvbGRlci4NCiAqLw0KLnRiLWp1bWJvdHJvbiAudGItdGV4dC1ibG9jayB7DQoJZm9udC1mYW1pbHk6ICJPcGVuIFNhbnMiOw0KCWZvbnQtd2VpZ2h0OiA2MDA7DQp9DQoudGItanVtYm90cm9uIC50Yi10ZXh0LWJsb2NrLmJvbGQgew0KCWZvbnQtd2VpZ2h0OiA4MDA7CQ0KfQ==]]></value>
 	</setting>
 	<setting>
 		<id>logo</id>
@@ -735,10 +539,6 @@
 	<setting>
 		<id>scroll_to_top</id>
 		<value><![CDATA[c2hvdw==]]></value>
-	</setting>
-	<setting>
-		<id>content</id>
-		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>single_meta</id>
@@ -917,11 +717,11 @@
 		<value><![CDATA[bm8=]]></value>
 	</setting>
 	<setting>
-		<id>plugins</id>
-		<value><![CDATA[]]></value>
+		<id>bbp_lead_topic</id>
+		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
-		<id>bbp_lead_topic</id>
+		<id>bbp_naked_page</id>
 		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
