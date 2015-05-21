@@ -5637,24 +5637,20 @@ blockquote small {
 	overflow: hidden;
 	position: relative;
 }
+/* @noflip */
 .tb-bg-video {
 	overflow: hidden;
 	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-}
-.tb-bg-video video {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 	min-width: 100%;
 	min-height: 100%;
-}
-.tb-bg-video.fixed video { /* @TODO -- currently no user option for this */
-	position: fixed;
+	z-index: 1;
 }
 @media (max-width: 991px) {
-	.tb-bg-video video {
+	.tb-bg-video {
 		display: none;
 	}
 }

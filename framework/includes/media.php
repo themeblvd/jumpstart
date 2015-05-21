@@ -1809,9 +1809,7 @@ function themeblvd_get_bg_video( $video ) {
 		'height'	=> false
 	)));
 
-	$output = "\n<div class=\"tb-bg-video\">\n";
-
-	$output .= "\t<video class=\"tb-bg-video\"";
+	$output = "\t<video class=\"tb-bg-video\"";
 
 	if ( $video['autoplay'] ) {
 		$output .= " autoplay";
@@ -1843,8 +1841,7 @@ function themeblvd_get_bg_video( $video ) {
 		$output .= sprintf("\t\t<source src=\"%s\" type=\"video/mp4\">\n", $video['mp4']);
 	}
 
-	$output .= "\t</video>\n";
-	$output .= "</div><!-- .tb-bg-video (end) -->\n";
+	$output .= "\t</video><!-- .tb-bg-video (end) -->\n";
 
 	return apply_filters( 'themeblvd_bg_video', $output, $video );
 }
