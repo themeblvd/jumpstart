@@ -188,7 +188,7 @@
 	color: #ffffff;
 }
 .btn-navbar.cart {
-	left: 73px; /* 20 + 48 + 5 */
+	left: 88px; /* 30 + 48 + 10 */
 }
 .btn-navbar.cart .cart-count {
 	background: rgba(255,255,255,.1);
