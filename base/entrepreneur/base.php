@@ -1227,6 +1227,13 @@ function jumpstart_ent_css() {
 	$font = themeblvd_get_option('font_header');
 
 	if ( $font ) {
+
+		if ( themeblvd_installed('gravityforms') && themeblvd_supports('plugins', 'gravityforms') ) {
+			$print .= ".tb-gforms-compat .gform_wrapper .gsection .gfield_label,\n";
+			$print .= ".tb-gforms-compat .gform_wrapper h2.gsection_title,\n";
+			$print .= ".tb-gforms-compat .gform_wrapper h3.gform_title,\n";
+		}
+
 		$print .= "h1, h2, h3, h4, h5, h6 {\n";
 		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );

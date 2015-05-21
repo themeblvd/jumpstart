@@ -178,7 +178,7 @@
     margin-top: 0;
 }
 
-/* Advanced Options */
+/* Advanced Options: Name */
 .tb-gforms-compat .gform_wrapper ul.gform_fields li.gfield span.name_first {
     float: left;
 }
@@ -190,4 +190,43 @@
 }
 .rtl.tb-gforms-compat .gform_wrapper ul.gform_fields li.gfield span.name_last {
     float: left;
+}
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.no_last_name span,
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span,
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.no_first_name.has_middle_name.has_last_name span {
+    width: 49%;
+}
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span.name_first,
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span.name_middle,
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span.name_first {
+    width: 49%;
+}
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span.name_first,
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span.name_middle,
+.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span.name_first {
+    margin-right: 2%;
+}
+.rtl.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span.name_first,
+.rtl.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span.name_middle,
+.rtl.tb-gforms-compat .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span.name_first {
+    margin-right: 0;
+    margin-left: 2%;
+}
+
+/* Complex Forms */
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_left,
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right {
+    width: 49%;
+}
+.tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right {
+    margin-left: 2%;
+}
+
+/* CSS-Ready Classes */
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_right_half,
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_left_half {
+    width: 49%;
+}
+.tb-gforms-compat .gform_wrapper .top_label li.gfield.gf_left_half {
+    margin-right: 2%;
 }

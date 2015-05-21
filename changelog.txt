@@ -24,6 +24,7 @@ Jump Start Changelog
 * Fixed: Filter & Masonry column dropping in Firefox.
 * Fixed: Broken default WordPress galleries in Firefox, when thumbnails are big enough to overflow.
 * Fixed: Overflow of image elements with max width in Firefox.
+* Fixed: Very minor styling issues with recent Gravity Forms updates.
 
 **Important:** If updating from a development, beta, or RC version of Jump Start 2:
 * You must update to the latest version of the Layout Builder plugin, currently 2.0.6.
