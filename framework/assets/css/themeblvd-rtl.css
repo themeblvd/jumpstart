@@ -5476,6 +5476,17 @@ blockquote small {
 .container-lg-height .element-image.no-width img {
     width: 100%;
 }
+.element-image .display-width.center {
+	margin: 0 auto;
+}
+/* @noflip */
+.element-image .display-width.left {
+	float: left;
+}
+/* @noflip */
+.element-image .display-width.right {
+	float: right;
+}
 
 /* Video */
 .element-video .themeblvd-video-wrapper {

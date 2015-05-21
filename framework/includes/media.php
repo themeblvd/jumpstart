@@ -1356,10 +1356,6 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 
 			$props = array();
 
-			if ( $args['width'] ) {
-				$props['style'] = sprintf('max-width: %spx;', $args['width']);
-			}
-
 			$output = themeblvd_get_link_to_lightbox(array(
 				'item' 		=> $output,
 				'link' 		=> $link,
@@ -1378,13 +1374,14 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 
 			$style = '';
 
-			if ( $args['width'] ) {
-				$style = sprintf('max-width: %spx;', $args['width']);
-			}
-
 			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s" style="%s">%s</a>', $args['link_url'], $anchor_classes, $title, $args['link'], $style, $output );
 
 		}
+	}
+
+	// Wrap image in max-width div?
+	if ( $args['width'] ) {
+		$output = sprintf('<div class="display-width %s" style="max-width:%spx;">%s</div>', $args['align'], $args['width'], $output);
 	}
 
 	return apply_filters( 'themeblvd_image', $output, $img, $img_atts, $args );
