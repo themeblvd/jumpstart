@@ -5609,16 +5609,6 @@ blockquote small {
 .tb-bg-slideshow  .carousel-inner {
 	position: static;
 }
-.tb-bg-slideshow .item {
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-}
 .tb-bg-slideshow .carousel-inner > .item {
     display: block;
     left: 0 !important;
@@ -5631,11 +5621,32 @@ blockquote small {
 .tb-bg-slideshow .carousel-inner > .item.active {
 	opacity: 1;
 }
+.tb-bg-slideshow .item {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
 .slideshow-bg-align-top .tb-bg-slideshow .item {
-	background-position: top center;
+	background-position: center top;
 }
 .slideshow-bg-align-bottom .tb-bg-slideshow .item {
-	background-position: bottom center;
+	background-position: center bottom;
+}
+@media (max-width: 991px) { /* Override parallax when shrinking browser */
+	.tb-bg-slideshow .item {
+		background-position: center center !important;
+	}
+	.slideshow-bg-align-top .tb-bg-slideshow .item {
+		background-position: center top !important;
+	}
+	.slideshow-bg-align-bottom .tb-bg-slideshow .item {
+		background-position: center bottom !important;
+	}
 }
 
 /* BG Video */
