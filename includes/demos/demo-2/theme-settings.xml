@@ -78,7 +78,7 @@
 	</setting>
 	<setting>
 		<id>header_bg_type</id>
-		<value><![CDATA[dGV4dHVyZQ==]]></value>
+		<value><![CDATA[Y29sb3I=]]></value>
 	</setting>
 	<setting>
 		<id>header_text_color</id>
@@ -86,7 +86,7 @@
 	</setting>
 	<setting>
 		<id>header_bg_color</id>
-		<value><![CDATA[IzIyMjIyMg==]]></value>
+		<value><![CDATA[IzIzMjgyZA==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_color_opacity</id>
@@ -94,7 +94,7 @@
 	</setting>
 	<setting>
 		<id>header_bg_texture</id>
-		<value><![CDATA[c3F1YXJlcw==]]></value>
+		<value><![CDATA[]]></value>
 	</setting>
 	<setting>
 		<id>header_apply_bg_texture_parallax</id>
@@ -162,7 +162,7 @@
 	</setting>
 	<setting>
 		<id>header_border_bottom_color</id>
-		<value><![CDATA[IzI0OTZlMg==]]></value>
+		<value><![CDATA[IzBmNzRhOA==]]></value>
 	</setting>
 	<setting>
 		<id>header_border_bottom_width</id>
@@ -198,7 +198,7 @@
 	</setting>
 	<setting>
 		<id>menu_bg_color</id>
-		<value><![CDATA[IzBhMGEwYQ==]]></value>
+		<value><![CDATA[IzFjMjEyNQ==]]></value>
 	</setting>
 	<setting>
 		<id>menu_bg_gradient</id>
@@ -206,7 +206,7 @@
 	</setting>
 	<setting>
 		<id>menu_bg_color_opacity</id>
-		<value><![CDATA[MC4y]]></value>
+		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
 		<id>menu_bg_color_brightness</id>
@@ -214,7 +214,7 @@
 	</setting>
 	<setting>
 		<id>menu_hover_bg_color</id>
-		<value><![CDATA[IzI0OTZlMg==]]></value>
+		<value><![CDATA[IzE5MWIxZg==]]></value>
 	</setting>
 	<setting>
 		<id>menu_hover_bg_color_opacity</id>
@@ -226,7 +226,7 @@
 	</setting>
 	<setting>
 		<id>menu_sub_bg_color</id>
-		<value><![CDATA[IzIyMjIyMg==]]></value>
+		<value><![CDATA[IzE5MWIxZg==]]></value>
 	</setting>
 	<setting>
 		<id>menu_sub_bg_color_brightness</id>
@@ -234,7 +234,7 @@
 	</setting>
 	<setting>
 		<id>menu_apply_border_top</id>
-		<value><![CDATA[MQ==]]></value>
+		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>menu_border_top_color</id>
@@ -286,7 +286,7 @@
 	</setting>
 	<setting>
 		<id>menu_mobile_bg_color</id>
-		<value><![CDATA[IzI0OTZlMg==]]></value>
+		<value><![CDATA[IzIzMjgyZA==]]></value>
 	</setting>
 	<setting>
 		<id>menu_mobile_bg_color_brightness</id>
@@ -342,11 +342,11 @@
 	</setting>
 	<setting>
 		<id>font_body</id>
-		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjU6ImFyaWFsIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjA6IiI7fQ==]]></value>
+		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6NToiY29sb3IiO3M6MDoiIjtzOjY6Imdvb2dsZSI7czoxNzoiT3BlbiBTYW5zOjQwMCw3MDAiO30=]]></value>
 	</setting>
 	<setting>
 		<id>font_header</id>
-		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjQ6ImJvbGQiO3M6NToiY29sb3IiO3M6MDoiIjtzOjY6Imdvb2dsZSI7czoxMzoiT3BlbiBTYW5zOjcwMCI7fQ==]]></value>
+		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjQ6ImJvbGQiO3M6NToiY29sb3IiO3M6MDoiIjtzOjY6Imdvb2dsZSI7czo5OiJPcGVuIFNhbnMiO30=]]></value>
 	</setting>
 	<setting>
 		<id>link_color</id>
@@ -370,7 +370,7 @@
 	</setting>
 	<setting>
 		<id>btn_primary</id>
-		<value><![CDATA[YTo3OntzOjI6ImJnIjtzOjc6IiMzMzMzMzMiO3M6ODoiYmdfaG92ZXIiO3M6NzoiIzI0OTZlMiI7czo2OiJib3JkZXIiO3M6NzoiIzE4MTgxOCI7czo0OiJ0ZXh0IjtzOjc6IiNmZmZmZmYiO3M6MTA6InRleHRfaG92ZXIiO3M6NzoiI2ZmZmZmZiI7czoxMDoiaW5jbHVkZV9iZyI7czoxOiIxIjtzOjE0OiJpbmNsdWRlX2JvcmRlciI7czoxOiIxIjt9]]></value>
+		<value><![CDATA[YTo3OntzOjI6ImJnIjtzOjc6IiMwZjc0YTgiO3M6ODoiYmdfaG92ZXIiO3M6NzoiIzI0OTZlMiI7czo2OiJib3JkZXIiO3M6NzoiIzE4MTgxOCI7czo0OiJ0ZXh0IjtzOjc6IiNmZmZmZmYiO3M6MTA6InRleHRfaG92ZXIiO3M6NzoiI2ZmZmZmZiI7czoxMDoiaW5jbHVkZV9iZyI7czoxOiIxIjtzOjE0OiJpbmNsdWRlX2JvcmRlciI7czoxOiIwIjt9]]></value>
 	</setting>
 	<setting>
 		<id>btn_border</id>
@@ -386,7 +386,7 @@
 	</setting>
 	<setting>
 		<id>widget_panel_style</id>
-		<value><![CDATA[cHJpbWFyeQ==]]></value>
+		<value><![CDATA[ZGVmYXVsdA==]]></value>
 	</setting>
 	<setting>
 		<id>widget_panel_title_bg_color</id>
@@ -434,7 +434,7 @@
 	</setting>
 	<setting>
 		<id>highlight</id>
-		<value><![CDATA[IzFlNzNiZQ==]]></value>
+		<value><![CDATA[IzBmNzRhOA==]]></value>
 	</setting>
 	<setting>
 		<id>thumbnail</id>
@@ -442,7 +442,7 @@
 	</setting>
 	<setting>
 		<id>custom_styles</id>
-		<value><![CDATA[LyogQ3VzdG9tIENTUyBFeGFtcGxlICovDQoudGItcHJpbWFyeS1tZW51ID4gbGkuY3VycmVudC1tZW51LWl0ZW0gPiAubWVudS1idG4gew0KCWJhY2tncm91bmQtY29sb3I6ICMyNDk2ZTI7DQp9]]></value>
+		<value><![CDATA[LyoqIA0KICogQ3VzdG9tIENTUyBFeGFtcGxlOiBBZGQgaGlnaGxpZ2h0IGNvbG9yIA0KICogdG8gYWN0aXZlIHRvcC1sZXZlbCBtYWluIG1lbnUgaXRlbS4NCiAqLw0KLnRiLXByaW1hcnktbWVudSA+IGxpLmN1cnJlbnQtbWVudS1pdGVtID4gLm1lbnUtYnRuIHsNCgliYWNrZ3JvdW5kLWNvbG9yOiAjMGY3NGE4Ow0KfQ==]]></value>
 	</setting>
 	<setting>
 		<id>logo</id>
