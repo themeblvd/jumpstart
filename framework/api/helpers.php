@@ -1,6 +1,6 @@
 <?php
 /**
- * Setup framework API's.
+ * Setup framework handler and API's.
  *
  * @global array $_themeblvd_customizer_sections
  * @since 2.1.0
@@ -11,11 +11,11 @@ function themeblvd_api_init() {
 	// From this point client can use themeblvd_get_option()
 	Theme_Blvd_Options_API::get_instance();
 
-	// Setup framework stylesheets and API for frontend to
+	// Setup framework stylesheets and handler for frontend to
 	// modify these stylesheets.
 	Theme_Blvd_Stylesheet_Handler::get_instance();
 
-	// Setup Widget Areas API. This registers all default
+	// Setup widget areas handler. This registers all default
 	// sidebars and provides methods to modify them and
 	// display them.
 	Theme_Blvd_Sidebar_Handler::get_instance();
