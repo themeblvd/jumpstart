@@ -159,3 +159,17 @@ function jumpstart_sample_layouts( $layouts ) {
 	return $layouts;
 }
 add_filter('themeblvd_sample_layouts', 'jumpstart_sample_layouts');
+
+/**
+ * Separate changelog from v1 changelog.
+ *
+ * @TODO Down the road, when Jump Start v1 is no longer
+ * supported, we can remove this, and handle pointing
+ * "jumpstart-2" back to "jumpstart" from themeblvd.com
+ *
+ * @since 2.0.0
+ */
+function jumpstart_changelog_url( $url ) {
+	return str_replace('?theme=jumpstart', '?theme=jumpstart-2', $url);
+}
+add_filter('themeblvd_changelog_link', 'jumpstart_changelog_url');
