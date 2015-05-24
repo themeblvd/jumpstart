@@ -74,9 +74,8 @@ class Theme_Blvd_Compat_WPML {
 	 */
 	public function assets( $type ) {
 
-		$api = Theme_Blvd_Stylesheets_API::get_instance();
-
-		$deps = $api->get_framework_deps();
+		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+		$deps = $handler->get_framework_deps();
 
 		wp_enqueue_style( 'themeblvd-wpml', TB_FRAMEWORK_URI.'/compat/wpml/wpml.css', $deps, TB_FRAMEWORK_VERSION );
 	}

@@ -24,7 +24,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' )
 include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );	// Needed on frontend to retrieve fake tax meta
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-api.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-handler.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );

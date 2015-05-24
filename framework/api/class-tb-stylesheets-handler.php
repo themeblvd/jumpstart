@@ -1,12 +1,12 @@
 <?php
 /**
- * Stylesheets API.
+ * Stylesheets Handler.
  *
  * (1) This class sets up the framework stylesheets that get
  * enqueued on the frontend of the website.
  *
  * (2) Additionally, this class provides methods to add and
- * remove stylesheets. Client API-added stylesheets are organized
+ * remove stylesheets. Client added stylesheets are organized
  * within four levels.
  *	- Level 1: Before Framework styles
  *	- Level 2: After Framework styles
@@ -19,7 +19,7 @@
  * @link		http://themeblvd.com
  * @package 	Theme Blvd WordPress Framework
  */
-class Theme_Blvd_Stylesheets_API {
+class Theme_Blvd_Stylesheet_Handler {
 
 	/*--------------------------------------------*/
 	/* Properties, private
@@ -34,7 +34,7 @@ class Theme_Blvd_Stylesheets_API {
 
 	/**
 	 * Stylesheets to be removed from framework,
-	 * or those added by client API.
+	 * or those added by client.
 	 *
 	 * @since 2.3.0
 	 */
@@ -51,14 +51,14 @@ class Theme_Blvd_Stylesheets_API {
 	 * And array of the framework stylesheets handles.
 	 * Can use to enqueue a stylesheet manually
 	 * after all framework stylesheets.
-	 * Same as using API to add at level 2.
+	 * Same as using handler to add at level 2.
 	 *
 	 * @since 2.3.0
 	 */
 	private $framework_deps = array();
 
 	/**
-	 * Stylesheets added through client API.
+	 * Stylesheets added through client.
 	 *
 	 * @since 2.3.0
 	 */
@@ -73,7 +73,7 @@ class Theme_Blvd_Stylesheets_API {
      *
      * @since 2.3.0
      *
-     * @return Theme_Blvd_Stylesheets_API A single instance of this class.
+     * @return Theme_Blvd_Stylesheet_Handler A single instance of this class.
      */
 	public static function get_instance() {
 
@@ -97,7 +97,7 @@ class Theme_Blvd_Stylesheets_API {
 			return;
 		}
 
-		// Setup stylesheets from Framework and Client API.
+		// Setup stylesheets from Framework and Client Handler.
 		// No enqueuing yet.
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_framework_stylesheets' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_client_stylesheets' ), 1 );
@@ -269,7 +269,7 @@ class Theme_Blvd_Stylesheets_API {
 	}
 
 	/*--------------------------------------------*/
-	/* Methods, client API mutators
+	/* Methods, client handler mutators
 	/*--------------------------------------------*/
 
 	/**
@@ -351,7 +351,7 @@ class Theme_Blvd_Stylesheets_API {
 
 
 	/**
-	 * Get stylesheets added through client API.
+	 * Get stylesheets added through client handler.
 	 *
 	 * @since 2.3.0
 	 *
@@ -440,4 +440,4 @@ class Theme_Blvd_Stylesheets_API {
 
 	}
 
-} // End class Theme_Blvd_Stylesheets_API
+} // End class Theme_Blvd_Stylesheet_Handler

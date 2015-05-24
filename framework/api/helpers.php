@@ -13,7 +13,7 @@ function themeblvd_api_init() {
 
 	// Setup framework stylesheets and API for frontend to
 	// modify these stylesheets.
-	Theme_Blvd_Stylesheets_API::get_instance();
+	Theme_Blvd_Stylesheet_Handler::get_instance();
 
 	// Setup Widget Areas API. This registers all default
 	// sidebars and provides methods to modify them and
@@ -580,7 +580,7 @@ function themeblvd_display_sidebar( $location ) {
 }
 
 /*------------------------------------------------------------*/
-/* (5) Stylesheets API
+/* (5) Stylesheet Handler
 /*------------------------------------------------------------*/
 
 /**
@@ -596,8 +596,8 @@ function themeblvd_display_sidebar( $location ) {
  * @param string $media Type of media target for stylesheet
  */
 function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $media = 'all' ) {
-	$api = Theme_Blvd_Stylesheets_API::get_instance();
-	$api->add( $handle, $src, $level, $ver, $media );
+	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+	$handler->add( $handle, $src, $level, $ver, $media );
 }
 
 /**
@@ -608,8 +608,8 @@ function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $medi
  * @param string $handle ID for this stylesheet
  */
 function themeblvd_remove_stylesheet( $handle ) {
-	$api = Theme_Blvd_Stylesheets_API::get_instance();
-	$api->remove( $handle );
+	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+	$handler->remove( $handle );
 }
 
 /**
@@ -620,8 +620,8 @@ function themeblvd_remove_stylesheet( $handle ) {
  * @param int $level Level to apply stylesheets - 1, 2, 3, 4
  */
 function themeblvd_print_styles( $level ) {
-	$api = Theme_Blvd_Stylesheets_API::get_instance();
-	$api->print_styles( $level );
+	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+	$handler->print_styles( $level );
 }
 
 /**

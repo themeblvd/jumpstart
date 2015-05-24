@@ -210,8 +210,8 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function assets( $type ) {
 
-		$api = Theme_Blvd_Stylesheets_API::get_instance();
-		$deps = $api->get_framework_deps();
+		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+		$deps = $handler->get_framework_deps();
 
 		// Style all of WooCommerce
 		wp_enqueue_style( 'themeblvd-wc', TB_FRAMEWORK_URI.'/compat/woocommerce/woocommerce.min.css', $deps, TB_FRAMEWORK_VERSION );

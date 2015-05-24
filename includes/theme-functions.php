@@ -28,25 +28,25 @@ function jumpstart_css() {
 	}
 
 	// Get stylesheet API
-	$api = Theme_Blvd_Stylesheets_API::get_instance();
+	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 
 	// Main theme styles
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme-rtl.min.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme-rtl.min.css', $handler->get_framework_deps() );
 	} else {
-		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme.min.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme.min.css', $handler->get_framework_deps() );
 	}
 
 	// Dark styles
 	if ( themeblvd_supports('display', 'dark') ) {
-		wp_enqueue_style( 'jumpstart-dark', get_template_directory_uri().'/assets/css/dark.min.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart-dark', get_template_directory_uri().'/assets/css/dark.min.css', $handler->get_framework_deps() );
 	}
 
 	// Theme base styles
 	$base = get_option(get_template().'_base');
 
 	if ( $base && $base != 'dev' ) {
-		wp_enqueue_style( 'jumpstart-base', themeblvd_get_base_uri($base).'/base.css', $api->get_framework_deps() );
+		wp_enqueue_style( 'jumpstart-base', themeblvd_get_base_uri($base).'/base.css', $handler->get_framework_deps() );
 	}
 
 	// IE Stylesheet
@@ -54,10 +54,10 @@ function jumpstart_css() {
 	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'IE' ); // Add IE conditional
 
 	// Primary style.css (mainly for child theme devs)
-	wp_enqueue_style( 'themeblvd-theme', get_stylesheet_uri(), $api->get_framework_deps() );
+	wp_enqueue_style( 'themeblvd-theme', get_stylesheet_uri(), $handler->get_framework_deps() );
 
 	// Level 3 client API-added styles
-	$api->print_styles(3);
+	$handler->print_styles(3);
 
 }
 add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );

@@ -55,8 +55,8 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 */
 	public function assets( $type ) {
 
-		$api = Theme_Blvd_Stylesheets_API::get_instance();
-		$deps = $api->get_framework_deps();
+		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+		$deps = $handler->get_framework_deps();
 
 		wp_enqueue_style( 'themeblvd-gravityforms', TB_FRAMEWORK_URI.'/compat/gravityforms/gravityforms.min.css', $deps, TB_FRAMEWORK_VERSION );
 	}
