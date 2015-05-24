@@ -18,7 +18,7 @@ function themeblvd_api_init() {
 	// Setup Widget Areas API. This registers all default
 	// sidebars and provides methods to modify them and
 	// display them.
-	Theme_Blvd_Sidebars_API::get_instance();
+	Theme_Blvd_Sidebar_Handler::get_instance();
 
 	// Customizer API
 	$GLOBALS['_themeblvd_customizer_sections'] = array();
@@ -505,8 +505,8 @@ function themeblvd_remove_slider( $slider_id ) {
  * @param string $desc Description or widget area
  */
 function themeblvd_add_sidebar_location( $id, $name, $type, $desc = '' ) {
-	$api = Theme_Blvd_Sidebars_API::get_instance();
-	$api->add_location( $id, $name, $type, $desc );
+	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
+	$handler->add_location( $id, $name, $type, $desc );
 }
 
 /**
@@ -517,8 +517,8 @@ function themeblvd_add_sidebar_location( $id, $name, $type, $desc = '' ) {
  * @param string $id ID of location
  */
 function themeblvd_remove_sidebar_location( $id ) {
-	$api = Theme_Blvd_Sidebars_API::get_instance();
-	$api->remove_location( $id );
+	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
+	$handler->remove_location( $id );
 }
 
 /**
@@ -527,8 +527,8 @@ function themeblvd_remove_sidebar_location( $id ) {
  * @since 2.0.0
  */
 function themeblvd_get_sidebar_locations() {
-	$api = Theme_Blvd_Sidebars_API::get_instance();
-	return $api->get_locations();
+	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
+	return $handler->get_locations();
 }
 
 /**
@@ -537,9 +537,9 @@ function themeblvd_get_sidebar_locations() {
  * @since 2.0.0
  */
 function themeblvd_register_sidebars() {
-	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebars_API class.', 'themeblvd' ) );
-	$api = Theme_Blvd_Sidebars_API::get_instance();
-	$api->register();
+	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __( 'Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebar_Handler class.', 'themeblvd' ) );
+	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
+	$handler->register();
 }
 
 /**
@@ -552,8 +552,8 @@ function themeblvd_register_sidebars() {
  */
 function themeblvd_get_sidebar_location_name( $location ) {
 
-	$api = Theme_Blvd_Sidebars_API::get_instance();
-	$sidebar = $api->get_locations( $location );
+	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
+	$sidebar = $handler->get_locations( $location );
 
 	if ( isset( $sidebar['location']['name'] ) ) {
 		return $sidebar['location']['name'];
@@ -575,8 +575,8 @@ function themeblvd_get_sidebar_location_name( $location ) {
  * @param string $location the location for the sidebar
  */
 function themeblvd_display_sidebar( $location ) {
-	$api = Theme_Blvd_Sidebars_API::get_instance();
-	$api->display( $location );
+	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
+	$handler->display( $location );
 }
 
 /*------------------------------------------------------------*/

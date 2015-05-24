@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme Blvd Widget Areas API.
+ * Theme Blvd Widget Area Handler
  *
  * The framework is made up widget area "locations"
  * and there is a default sidebar registered with
@@ -9,9 +9,9 @@
  * locations with custom sidebars created by the end-user
  * for specific pages of the website.
  *
- * This API controls setting up these locations and
+ * This handler controls setting up these locations and
  * registering the default location sidebars. Also, there
- * are some API methods to all locations to be added and
+ * are some handler methods to all locations to be added and
  * removed.
  *
  * @author		Jason Bobich
@@ -20,7 +20,7 @@
  * @link		http://themeblvd.com
  * @package 	Theme Blvd WordPress Framework
  */
-class Theme_Blvd_Sidebars_API {
+class Theme_Blvd_Sidebar_Handler {
 
 	/*--------------------------------------------*/
 	/* Properties, private
@@ -41,7 +41,7 @@ class Theme_Blvd_Sidebars_API {
 	private $core_locations = array();
 
 	/**
-	 * Sidebar locations added through client API
+	 * Sidebar locations added through client
 	 * mutators.
 	 *
 	 * @since 2.3.0
@@ -72,7 +72,7 @@ class Theme_Blvd_Sidebars_API {
      *
      * @since 2.3.0
      *
-     * @return Theme_Blvd_Sidebars_API A single instance of this class.
+     * @return Theme_Blvd_Sidebar_Handler A single instance of this class.
      */
 	public static function get_instance() {
 
@@ -93,7 +93,7 @@ class Theme_Blvd_Sidebars_API {
 		// Set core framework locations
 		$this->set_core_locations();
 
-		// Finalize locations after client API has had a chance to modify them.
+		// Finalize locations after client handler has had a chance to modify them.
 		add_action( 'after_setup_theme', array( $this, 'set_locations' ), 1001 );
 
 		// Regiser sidebars from locations.
@@ -261,13 +261,13 @@ class Theme_Blvd_Sidebars_API {
 
 	/**
 	 * Set final sidebar locations. This sets the merged result
-	 * of core locations and client API-added locations.
+	 * of core locations and client added locations.
 	 *
 	 * @since 2.3.0
 	 */
 	public function set_locations() {
 
-		// Merge core locations with client API-added locations.
+		// Merge core locations with client added locations.
 		$this->locations = array_merge( $this->core_locations, $this->client_locations );
 
 		// Remove locations
@@ -283,7 +283,7 @@ class Theme_Blvd_Sidebars_API {
 	}
 
 	/*--------------------------------------------*/
-	/* Methods, client API mutators
+	/* Methods, client handler mutators
 	/*--------------------------------------------*/
 
 	/**
@@ -358,7 +358,7 @@ class Theme_Blvd_Sidebars_API {
 	}
 
 	/**
-	 * Get added locations from client API mutators.
+	 * Get added locations from client handler mutators.
 	 *
 	 * @since 2.3.0
 	 *
@@ -369,7 +369,7 @@ class Theme_Blvd_Sidebars_API {
 	}
 
 	/**
-	 * Get locations to be removed by client API mutators.
+	 * Get locations to be removed by client handler mutators.
 	 *
 	 * @since 2.3.0
 	 *
@@ -381,7 +381,7 @@ class Theme_Blvd_Sidebars_API {
 
 	/**
 	 * Get final sidebar locations. This is the merged result
-	 * of core locations and client API-added locations. This
+	 * of core locations and client added locations. This
 	 * is available after WP's "after_setup_theme" hook.
 	 *
 	 * @since 2.3.0
@@ -504,4 +504,4 @@ class Theme_Blvd_Sidebars_API {
 
 	}
 
-} // End class Theme_Blvd_Sidebars_API
+} // End class Theme_Blvd_Sidebar_Handler

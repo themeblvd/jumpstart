@@ -23,7 +23,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' ); 
 include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' );	// Needed on frontend to grab user contact icons
 include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );	// Needed on frontend to retrieve fake tax meta
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebars-api.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebar-handler.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-handler.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
