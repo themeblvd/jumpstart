@@ -5723,7 +5723,7 @@ blockquote small {
 .tb-featured-banner .banner-tagline {
 	display: block;
 	font-size: 18px;
-	line-height: 18px;
+	line-height: 1.3em;
 }
 @media (max-width: 991px) {
 	.tb-featured-banner > .wrap {
