@@ -273,6 +273,11 @@ function themeblvd_body_class( $classes ) {
 		$classes[] = 'tb-blank-page';
 	}
 
+	// Print styles
+	if ( themeblvd_supports( 'display', 'print' ) ) {
+		$classes[] = 'tb-print-styles';
+	}
+
 	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
 }
 

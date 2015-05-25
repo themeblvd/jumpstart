@@ -47,6 +47,7 @@
  *   9.1 - General
  *   9.2 - Fixed Sidebars
  *   9.3 - Footer
+ * 10.0 - Printing
  ----------------------------------------------- */
 
 /* =Primary Structure
@@ -803,4 +804,40 @@ article.tb-naked-page {
 	font-size: 16px;
 	line-height: 1.1;
 	margin: 0 0 20px 0;
+}
+
+/* =Printing
+----------------------------------------------- */
+
+@media print {
+	.tb-print-styles #top,
+	.tb-print-styles #bottom,
+	.tb-print-styles .tb-mobile-menu-wrapper {
+		display: none;
+	}
+	.tb-print-styles #container,
+	.tb-print-styles .tb-featured-banner > .wrap,
+	.tb-print-styles .site-inner > .wrap,
+	.tb-print-styles .element-section > .element {
+		max-width: none !important;
+		width: 100% !important;
+	}
+	.tb-print-styles #container {
+		padding: 20px !important;
+	}
+	.tb-print-styles article {
+		background-color: #ffffff !important;
+		border: none !important;
+		color: #000000 !important;
+		padding: 0 !important;
+		/*page-break-before: always;*/
+	}
+	.tb-print-styles .entry-title a:after,
+	.tb-print-styles .entry-meta a:after,
+	.tb-print-styles a.btn:after {
+		display: none;
+	}
+	@page {
+		margin: 2cm;
+	}
 }
