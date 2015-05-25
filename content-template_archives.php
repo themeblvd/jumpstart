@@ -5,7 +5,6 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="entry-content">
-		<?php rewind_posts(); ?>
         <?php the_content(); ?>
 		<?php edit_post_link( themeblvd_get_local( 'edit_page' ), '<div class="edit-link">', '</div>' ); ?>
         <h2><?php echo themeblvd_get_local( 'last_30' ); ?></h2>

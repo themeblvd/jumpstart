@@ -28,11 +28,17 @@ get_header();
 					<div class="inner sitemap-template-wrap">
 						<?php themeblvd_content_top(); ?>
 
-						<?php get_template_part( 'content', 'template_sitemap' ); ?>
+						<?php while ( have_posts() ) : the_post(); ?>
 
-						<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
-							<?php comments_template( '', true ); ?>
-						<?php endif; ?>
+							<?php get_template_part( 'content', 'template_sitemap' ); ?>
+
+							<?php themeblvd_page_footer(); ?>
+
+							<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
+								<?php comments_template( '', true ); ?>
+							<?php endif; ?>
+
+						<?php endwhile; ?>
 
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->

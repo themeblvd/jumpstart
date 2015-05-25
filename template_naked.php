@@ -25,14 +25,20 @@ get_header();
 				<!-- CONTENT (start) -->
 
 				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
-					<div class="inner sitemap-template-wrap">
+					<div class="inner naked-template-wrap">
 						<?php themeblvd_content_top(); ?>
 
-						<?php get_template_part( 'content', themeblvd_get_part( 'naked_page' ) ); ?>
+						<?php while ( have_posts() ) : the_post(); ?>
 
-						<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
-							<?php comments_template( '', true ); ?>
-						<?php endif; ?>
+							<?php get_template_part( 'content', themeblvd_get_part( 'naked_page' ) ); ?>
+
+							<?php themeblvd_page_footer(); ?>
+
+							<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
+								<?php comments_template( '', true ); ?>
+							<?php endif; ?>
+
+						<?php endwhile; ?>
 
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
