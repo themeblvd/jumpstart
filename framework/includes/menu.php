@@ -312,7 +312,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
  *
  * @since 2.5.0
  */
-function themeblvd_nav_menu_css_class( $classes, $item, $args, $depth ) {
+function themeblvd_nav_menu_css_class( $classes, $item, $args = array(), $depth = 0 ) {
 	$classes[] = sprintf('level-%s', $depth+1);
 	return $classes;
 }
