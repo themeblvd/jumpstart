@@ -460,10 +460,23 @@ class Theme_Blvd_Sidebar_Handler {
 			return;
 		}
 
-		// Start display.
-		do_action( 'themeblvd_sidebar_'.$type.'_before' ); // Framework does not hook anything here by default
-		do_action( 'themeblvd_sidebar_'.$location.'_before' ); // Framework does not hook anything here by default
+		/**
+		 * @hooked null
+		 */
+		do_action( 'themeblvd_sidebar_'.$type.'_before' );
+
+		/**
+		 * @hooked null
+		 */
+		do_action( 'themeblvd_sidebar_'.$location.'_before' );
+
+		// Start display
 		echo '<div class="widget-area widget-area-'.$type.'">';
+
+		/**
+		 * @hooked null
+		 */
+		do_action( 'themeblvd_widgets_'.$location.'_before');
 
 		// Proceed, but check for error
 		if ( $sidebar['error'] ) {
@@ -497,10 +510,24 @@ class Theme_Blvd_Sidebar_Handler {
 
 		}
 
+		/**
+		 * @hooked null
+		 */
+		do_action( 'themeblvd_widgets_'.$location.'_after');
+
+
 		// End display
 		echo '</div><!-- .widget_area (end) -->';
-		do_action( 'themeblvd_sidebar_'.$location.'_after' ); // Framework does not hook anything here by default
-		do_action( 'themeblvd_sidebar_'.$type.'_after' ); // Framework does not hook anything here by default
+
+		/**
+		 * @hooked null
+		 */
+		do_action( 'themeblvd_sidebar_'.$location.'_after' );
+
+		/**
+		 * @hooked null
+		 */
+		do_action( 'themeblvd_sidebar_'.$type.'_after' );
 
 	}
 
