@@ -455,22 +455,22 @@ h6 {
   margin-bottom: 1em;
 }
 h1 {
-	font-size: 32px;
+	font-size: 2.29rem; /* 32px / 14px */
 }
 h2 {
-	font-size: 27px;
+	font-size: 1.93rem; /* 27px / 14px */
 }
 h3 {
-	font-size: 20px;
+	font-size: 1.42rem; /* 20px / 14px */
 }
 h4 {
-	font-size: 15px;
+	font-size: 1.14rem; /* 16px / 14px */
 }
 h5 {
-	font-size: 13px;
+	font-size: 1rem; /* 14px / 14px */
 }
 h6 {
-	font-size: 11px;
+	font-size: 0.85rem; /* 12px / 14px */
 }
 a {
 	color: #428bca;
