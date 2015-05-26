@@ -570,7 +570,7 @@ function themeblvd_loop( $args = array() ){
 
 		// If you need to modify any global attributes for passing
 		// to template parts, hook in here!
-		do_action( 'themeblvd_post_list_before_loop', $args );
+		do_action( "themeblvd_post_{$context}_before_loop", $args );
 
 		printf('<div class="post-wrap %s-wrap">', $context);
 
@@ -601,6 +601,8 @@ function themeblvd_loop( $args = array() ){
 			printf('<div class="%s">', $ppc_class);
 		}
 
+		do_action( "themeblvd_post_{$context}_start_loop", $args );
+
 		while ( $posts->have_posts() ) {
 
 			$posts->the_post();
@@ -618,7 +620,6 @@ function themeblvd_loop( $args = array() ){
 				}
 			}
 			themeblvd_set_att('class', trim($current_post_class));
-
 
 			// Get template part
 			get_template_part( 'content', themeblvd_get_part($part) );
@@ -661,9 +662,11 @@ function themeblvd_loop( $args = array() ){
 			themeblvd_close_row();
 		}
 
+		do_action( "themeblvd_post_{$context}_end_loop", $args );
+
 		echo "</div><!-- .{$context}-wrap (end) -->";
 
-		do_action( 'themeblvd_post_list_after_loop', $args );
+		do_action( "themeblvd_post_{$context}_after_loop", $args );
 
 		// Let the world know we've finished our secondary loop
 		if ( ! $args['wp_query'] ) {
