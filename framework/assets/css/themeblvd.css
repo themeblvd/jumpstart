@@ -7749,6 +7749,7 @@ blockquote small {
 #blank-page {
 	display: table-cell;
 	float: none;
+	padding: 40px 0;
 	vertical-align: middle;
 }
 #blank-page #content {
