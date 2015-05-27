@@ -934,8 +934,10 @@ body.admin-bar .tb-sticky-menu {
 }
 .sf-menu-with-fontawesome ul .sf-sub-indicator {
 	position: absolute;
-	top: .8em;
+	top: 50%;
 	right: 10px;
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
 }
 .sf-menu .fa {
 	margin-right: 5px;
