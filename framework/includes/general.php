@@ -24,31 +24,67 @@ function themeblvd_get_modes() {
  */
 function themeblvd_include_google_fonts() {
 
-	$fonts = func_get_args();
+	$input = func_get_args();
 	$used = array();
 
-	if ( ! empty( $fonts ) ) {
+	if ( ! empty( $input ) ) {
 
 		// Before including files, determine if SSL is being
 		// used because if we include an external file without https
 		// on a secure server, they'll get an error.
 		$protocol = is_ssl() ? 'https://' : 'http://';
 
-		// Include each font file from google.
-		foreach ( $fonts as $font ) {
-			if ( $font['face'] == 'google' && $font['google'] ) {
+		// Build fonts to include
+		$fonts = array();
 
-				if ( in_array( $font['google'], $used ) ) {
-					// Skip duplicate
-					continue;
+		foreach ( $input as $font ) {
+			if ( $font['face'] == 'google' && ! empty($font['google']) ) {
+
+				$font = explode(':', $font['google']);
+				$name = trim(str_replace(' ', '+', $font[0]));
+
+				if ( ! isset($fonts[$name]) ) {
+					$fonts[$name] = array(
+						'style'		=> array(),
+						'subset'	=> array()
+					);
 				}
 
-				$used[] = $font['google'];
-				$name = themeblvd_remove_trailing_char( $font['google'] );
-				$name = str_replace( ' ', '+', $name );
-				printf( '<link href="%sfonts.googleapis.com/css?family=%s" rel="stylesheet" type="text/css">'."\n", $protocol, $name );
+				if ( isset( $font[1] ) ) {
+
+					$parts = explode('&', $font[1]);
+
+					foreach ( $parts as $part ) {
+						if ( strpos($part, 'subset') === 0 ) {
+							$part = str_replace('subset=', '', $part);
+							$part = explode(',', $part);
+							$part = array_merge($fonts[$name]['subset'], $part);
+							$fonts[$name]['subset'] = array_unique($part);
+						} else {
+							$part = explode(',', $part);
+							$part = array_merge($fonts[$name]['style'], $part);
+							$fonts[$name]['style'] = array_unique($part);
+						}
+					}
+
+				}
 
 			}
+		}
+
+		// Include each font file from google
+		foreach ( $fonts as $font => $atts ) {
+
+			if ( ! empty($atts['style']) ) {
+				$font .= sprintf( ':%s', implode(',', $atts['style']) );
+			}
+
+			if ( ! empty($atts['subset']) ) {
+				$font .= sprintf( '&subset=%s', implode(',', $atts['subset']) );
+			}
+
+			printf( '<link href="%sfonts.googleapis.com/css?family=%s" rel="stylesheet" type="text/css">'."\n", $protocol, $font );
+
 		}
 
 	}

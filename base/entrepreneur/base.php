@@ -563,7 +563,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'menu_apply_font',
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Font', 'themeblvd').'</strong>: '.__('Apply custom font to main menu.', 'themeblvd'),
-				'std'		=> 0,
+				'std'		=> 1,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -571,8 +571,8 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_menu',
 				'name' 		=> __( 'Main Menu Font', 'themeblvd' ),
 				'desc' 		=> __( 'This font applies to the top level items of the main menu.', 'themeblvd' ),
-				'std' 		=> array('size' => '13px', 'face' => 'helvetica', 'color' => '#555555', 'google' => '', 'style' => 'bold'),
-				'atts'		=> array('size', 'face', 'style', 'color'),
+				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#555555', 'google' => 'Open Sans:300', 'style' => 'normal'),
+				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
 				'type' 		=> 'typography',
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
 				'class'		=> 'hide receiver'
@@ -794,16 +794,16 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_body',
 				'name' 		=> __( 'Primary Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to most of the text on your site.', 'themeblvd' ),
-				'std' 		=> array('size' => '14px', 'face' => 'helvetica', 'color' => '', 'google' => '', 'style' => 'thin'),
-				'atts'		=> array('size', 'face', 'style'),
+				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Open Sans:300', 'style' => 'normal'),
+				'atts'		=> array('size', 'face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
 			'font_header' => array(
 				'id' 		=> 'font_header',
 				'name' 		=> __( 'Header Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd' ),
-				'std' 		=> array('size' => '','face' => 'helvetica', 'color' => '', 'google' => '', 'style' => 'bold'),
-				'atts'		=> array('face', 'style'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Open Sans:700', 'style' => 'normal'),
+				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
 			'link_color' => array(
@@ -1221,6 +1221,7 @@ function jumpstart_ent_css() {
 		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 		$print .= "}\n";
 	}
 
@@ -1238,6 +1239,7 @@ function jumpstart_ent_css() {
 		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 		$print .= "}\n";
 	}
 
@@ -1690,6 +1692,7 @@ function jumpstart_ent_css() {
 		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($menu_font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($menu_font) );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($menu_font) );
 
 		$print .= "}\n";
 
@@ -1818,6 +1821,7 @@ function jumpstart_ent_css() {
 
 			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
 			$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($menu_font) );
+			$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($menu_font) );
 
 		} else {
 

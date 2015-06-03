@@ -88,7 +88,7 @@ function themeblvd_get_font_style( $option ) {
 
 	$style = 'normal';
 
-	if ( isset( $option['style'] ) && ( $option['style'] == 'italic' || $option['style'] == 'bold-italic' ) ) {
+	if ( ! empty( $option['style'] ) && in_array( $option['style'], array('italic', 'uppercase-italic', 'bold-italic' ) ) ) { // "bold-italic" only used if options are saved prior to framework 2.5
 		$style = 'italic';
 	}
 
@@ -105,9 +105,11 @@ function themeblvd_get_font_style( $option ) {
  */
 function themeblvd_get_font_weight( $option ) {
 
-	$weight = 'normal';
+	$weight = '';
 
-	if ( isset( $option['style'] ) ) {
+	// @deprecated -- If option was saved after updating to
+	// framework 2.5+, 'style' won't have one of these values.
+	if ( ! empty( $option['style'] ) ) {
 		if ( $option['style'] == 'bold' || $option['style'] == 'bold-italic' ) {
 			$weight = 'bold';
 		} else if ( $option['style'] == 'thin' ) {
@@ -115,7 +117,34 @@ function themeblvd_get_font_weight( $option ) {
 		}
 	}
 
+	if ( ! empty( $option['weight'] ) ){
+		$weight = $option['weight'];
+	}
+
+	if ( ! $weight ) {
+		$weight = '400';
+	}
+
 	return apply_filters( 'themeblvd_font_weight', $weight, $option );
+}
+
+/**
+ * Get font text-transform
+ *
+ * @since 2.5.0
+ *
+ * @param array $option Current option set by user for the font
+ * @return string $transform CSS value for text-transform property
+ */
+function themeblvd_get_text_transform( $option ) {
+
+	$tranform = 'none';
+
+	if ( ! empty( $option['style'] ) && in_array( $option['style'], array('uppercase', 'uppercase-italic') ) ) {
+		$tranform = 'uppercase';
+	}
+
+	return apply_filters( 'themeblvd_text_transform', $tranform, $option );
 }
 
 /**

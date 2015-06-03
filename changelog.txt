@@ -1,8 +1,8 @@
 Jump Start Changelog
 ====================
 
-2.0.0 - May 29, 2015
---------------------
+2.0.0
+-----
 
 * **Updated Theme Blvd framework to 2.5.0**
 * Product moved to ThemeForest marketplace.
@@ -51,6 +51,7 @@ Jump Start Changelog
 * Improvement: Pages now display featured images and have featured image options, similar to posts.
 * Improvement: Framework now expands grid system for Bootstrap ([see article](http://dev.themeblvd.com/tutorial/grid-system/)).
 * Improvement: Overhaul of image crop sizes; **make sure to run [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) plugin!**
+Improvement: Typography options can now be set more precisely to use specific weights and subsets from Google Font directory.
 * Removed: Post List Slider.
 * Updated: Bootstrap to 3.3.
 * Updated: FontAwesome to 4.2.
@@ -60,6 +61,7 @@ Jump Start Changelog
 * You must update to the latest version of the Layout Builder plugin, currently 2.0.6.
 * You must reconfigure options of any "Hero Unit" (previously named Jumbotron) used in Builder.
 * You must reconfigure any selections for "Responsive Visibility" display options in Builder.
+* You must reconfigure any Typography options on your theme options page.
 
 --------------------------------------------------------------
 

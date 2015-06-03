@@ -609,7 +609,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'typography' :
 
-				$typography_stored = $val;
+                $typography_stored = wp_parse_args( $val, array(
+                    'size'      => '',
+                    'style'     => '',
+                    'weight'    => '400',   // @since 2.5.0
+                    'face'      => '',
+                    'color'     => ''       // @since 2.5.0
+                ));
 
 				// Font Size
 				if ( in_array( 'size', $value['atts'] ) ) {
@@ -648,8 +654,27 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<select class="of-typography of-typography-style" name="'.esc_attr( $option_name.'['.$value['id'].'][style]' ).'" id="'.esc_attr( $value['id'].'_style' ).'">';
 
 					$styles = themeblvd_recognized_font_styles();
-					foreach ( $styles as $key => $style ) {
+
+                    foreach ( $styles as $key => $style ) {
 						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['style'], $key, false ).'>'.esc_html( $style ).'</option>';
+					}
+
+					$output .= '</select>';
+					$output .= '<span class="trigger"></span>';
+					$output .= '<span class="textbox"></span>';
+					$output .= '</div><!-- .tb-fancy-select (end) -->';
+				}
+
+                // Font Weight
+                if ( in_array( 'weight', $value['atts'] ) ) {
+
+					$output .= '<div class="tb-fancy-select">';
+					$output .= '<select class="of-typography of-typography-weight" name="'.esc_attr( $option_name.'['.$value['id'].'][weight]' ).'" id="'.esc_attr( $value['id'].'_weight' ).'">';
+
+					$weights = themeblvd_recognized_font_weights();
+
+                    foreach ( $weights as $key => $weight ) {
+						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['weight'], $key, false ).'>'.esc_html( $weight ).'</option>';
 					}
 
 					$output .= '</select>';
@@ -665,7 +690,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<select class="of-typography of-typography-face" name="'.esc_attr( $option_name.'['.$value['id'].'][face]' ).'" id="'.esc_attr( $value['id'].'_face' ).'">';
 
 					$faces = themeblvd_recognized_font_faces();
-					foreach ( $faces as $key => $face ) {
+
+                    foreach ( $faces as $key => $face ) {
 						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['face'], $key, false ).'>'.esc_html( $face ).'</option>';
 					}
 
@@ -694,7 +720,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<div class="google-font hide">';
 					$output .= '<h5>'.__( 'Enter the name of a font from the <a href="http://www.google.com/webfonts" target="_blank">Google Font Directory</a>.', 'themeblvd' ).'</h5>';
 					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr( $typography_stored['google'] ).'" />';
-					$output .= '<p class="note">Example Font Name: "Hammersmith One"</p>';
+					$output .= '<p class="note"><strong>'.__('Example', 'themeblvd').'</strong>: Open Sans<br />';
+                    $output .= '<strong>'.__('Example with custom weight', 'themeblvd').'</strong>: Open Sans:300</p>';
 					$output .= '</div>';
 				}
 

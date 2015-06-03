@@ -1248,11 +1248,28 @@ function themeblvd_recognized_font_faces() {
  */
 function themeblvd_recognized_font_styles() {
 	$default = array(
-		'thin' 			=> __('Thin', 'themeblvd'),
-		'normal'      	=> __('Normal', 'themeblvd'),
-		'italic'      	=> __('Italic', 'themeblvd'),
-		'bold'        	=> __('Bold', 'themeblvd'),
-		'bold-italic' 	=> __('Bold Italic', 'themeblvd')
+		'normal' 			=> __('Normal', 'themeblvd'),
+		'uppercase' 		=> __('Uppercase', 'themeblvd'),
+		'italic' 			=> __('Italic', 'themeblvd'),
+		'uppercase-italic'	=> __('Uppercase Italic', 'themeblvd')
+	);
+	return apply_filters( 'themeblvd_recognized_font_styles', $default );
+}
+
+/**
+ * Get recognized font weights.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_recognized_font_weights() {
+	$default = array(
+		'300' 			=> __('300', 'themeblvd'),
+		'400' 			=> __('400 (normal)', 'themeblvd'),
+		'500' 			=> __('500', 'themeblvd'),
+		'600' 			=> __('600', 'themeblvd'),
+		'700' 			=> __('700 (bold)', 'themeblvd'),
+		'800' 			=> __('800', 'themeblvd'),
+		'900' 			=> __('900', 'themeblvd')
 	);
 	return apply_filters( 'themeblvd_recognized_font_styles', $default );
 }
