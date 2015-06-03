@@ -120,6 +120,10 @@
 .header-top {
 	background: #ffffff;
 	position: relative;
+	font-size: 14px;
+}
+.header-top-mini .header-top {
+	font-size: 12px;
 }
 @media (max-width: 767px) {
 	.header-top {
@@ -129,18 +133,32 @@
 .header-top > .wrap {
 	padding: 12px 10px;
 }
+.header-top-mini .header-top > .wrap {
+	padding: 8px 10px;
+}
 .header-text {
 	float: left;
 	line-height: 24px; /* Match height of social icons */
 }
+.header-top-mini .header-text {
+	line-height: 20px;
+}
+.header-top-mini .header-top .tb-social-icons ul > li > a {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+}
 .header-top-nav {
 	margin: 0;
 }
-.header-top-nav > li {
+.header-top-mini .header-top-nav > li {
 	float: right;
 	border-right: 1px solid #dddddd;
 	height: 24px;
 	padding: 0 8px;
+}
+.header-top-mini .header-top-nav > li {
+	height: 20px;
 }
 .header-top-nav > li:first-child {
 	border-right: none;
@@ -148,6 +166,9 @@
 }
 .header-top-nav > li.top-cart {
 	padding-right: 14px;
+}
+.header-top-mini .tb-floater .floater-trigger {
+	font-size: 13px;
 }
 
 /* Header Content */

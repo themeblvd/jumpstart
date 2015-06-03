@@ -121,6 +121,10 @@
 .header-top {
 	background: #ffffff;
 	position: relative;
+	font-size: 14px;
+}
+.header-top-mini .header-top {
+	font-size: 12px;
 }
 @media (max-width: 767px) {
 	.header-top {
@@ -130,9 +134,20 @@
 .header-top > .wrap {
 	padding: 12px 10px;
 }
+.header-top-mini .header-top > .wrap {
+	padding: 8px 10px;
+}
 .header-text {
 	float: right;
 	line-height: 24px; /* Match height of social icons */
+}
+.header-top-mini .header-text {
+	line-height: 20px;
+}
+.header-top-mini .tb-social-icons ul > li > a {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
 }
 .header-top-nav {
 	margin: 0;
@@ -142,6 +157,9 @@
 	border-left: 1px solid #dddddd;
 	height: 24px;
 	padding: 0 8px;
+}
+.header-top-mini .header-top-nav > li {
+	height: 20px;
 }
 .header-top-nav > li:first-child {
 	border-left: none;

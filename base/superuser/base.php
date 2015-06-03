@@ -242,6 +242,13 @@ function jumpstart_su_options() {
 				'id'		=> 'sub_group_end_4',
 				'type' 		=> 'subgroup_end'
 			),
+			'top_mini' => array(
+				'id'		=> 'top_mini',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Mini Display', 'themeblvd').'</strong>: '.__('Display top bar a bit smaller and more condensed.', 'themeblvd'),
+				'std'		=> 0,
+				'type'		=> 'checkbox'
+			),
 			'sub_group_end_3' => array(
 				'id'		=> 'sub_group_end_3',
 				'type' 		=> 'subgroup_end'
@@ -2352,6 +2359,10 @@ function jumpstart_su_header_class( $output, $class ) {
 	);
 
 	$class = array_merge( $class, themeblvd_get_display_class($options) );
+
+	if ( themeblvd_get_option('top_mini', null, '0') ) {
+		$class[] = 'header-top-mini';
+	}
 
 	return sprintf('class="%s" data-parallax="%s"', implode(' ', $class), themeblvd_get_parallax_intensity($options) );
 }

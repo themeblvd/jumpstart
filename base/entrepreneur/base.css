@@ -150,13 +150,13 @@ Author URI: http://www.themeblvd.com
 		padding-right: 10px;
 	}
 }
+.header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,
+.header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,
 .header-nav .tb-primary-menu > li > a:hover {
 	background-color: transparent;
 	border-bottom-color: #1971af;
-	color: #222222;
 }
 .header-nav .tb-primary-menu > li.menu-item-has-children > .menu-btn {
-	border-bottom: none; /* Border will be attached to top of dropdown */
 	padding-right: 5px;
 }
 
@@ -170,8 +170,6 @@ Author URI: http://www.themeblvd.com
 .tb-primary-menu > li > ul.non-mega-sub-menu, /* 2nd level only */
 .tb-primary-menu .sf-mega {
 	border-top: 4px solid #1971af;
-}
-.tb-primary-menu.sf-menu .sf-mega {
 	margin-top: -4px;
 }
 

@@ -226,6 +226,13 @@ function jumpstart_ent_options() {
 			'sub_group_end_3' => array(
 				'id'		=> 'sub_group_end_3',
 				'type' 		=> 'subgroup_end'
+			),
+			'top_mini' => array(
+				'id'		=> 'top_mini',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Mini Display', 'themeblvd').'</strong>: '.__('Display top bar a bit smaller and more condensed.', 'themeblvd'),
+				'std'		=> 1,
+				'type'		=> 'checkbox'
 			)
 		),
 		'header' => array(
@@ -1762,6 +1769,8 @@ function jumpstart_ent_css() {
 	// Main Menu highlight
 	$highlight = themeblvd_get_option('menu_highlight');
 
+	$print .= ".header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
+	$print .= ".header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
 	$print .= ".header-nav .tb-primary-menu > li > a:hover,\n";
 	$print .= ".tb-primary-menu > li > ul.non-mega-sub-menu,\n";
 	$print .= ".tb-primary-menu .sf-mega {\n";
@@ -2012,6 +2021,10 @@ function jumpstart_ent_header_class( $output, $class ) {
 	);
 
 	$class = array_merge( $class, themeblvd_get_display_class($options) );
+
+	if ( themeblvd_get_option('top_mini', null, '1') ) {
+		$class[] = 'header-top-mini';
+	}
 
 	return sprintf('class="%s" data-parallax="%s"', implode(' ', $class), themeblvd_get_parallax_intensity($options) );
 }
