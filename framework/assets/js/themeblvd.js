@@ -450,7 +450,7 @@ jQuery(document).ready(function($) {
 
 				markup = '<i class="fa fa-'+$current.data('open')+'"></i>';
 
-				if ( $current.data('label') ) {
+				if ( $current.data('label') || $current.data('label') === 0 ) {
 					markup += '<span class="trigger-label">'+$current.data('label')+'</span>';
 				}
 
