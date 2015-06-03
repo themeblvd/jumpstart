@@ -10,7 +10,7 @@ include_once( get_template_directory() . '/includes/options.php' );
 include_once( get_template_directory() . '/includes/updates.php' );
 
 // Theme Base
-if ( $base = get_option( get_template().'_base' ) ) {
+if ( $base = get_option( get_template().'_base', apply_filters('jumpstart_default_base', 'entrepreneur') ) ) {
 	include_once( themeblvd_get_base_path($base) . '/base.php' );
 }
 
@@ -47,7 +47,7 @@ function jumpstart_css() {
 	}
 
 	// Theme base styles
-	$base = get_option(get_template().'_base');
+	$base = get_option(get_template().'_base', apply_filters('jumpstart_default_base', 'entrepreneur'));
 
 	if ( $base && $base != 'dev' ) {
 		wp_enqueue_style( 'jumpstart-base', themeblvd_get_base_uri($base).'/base.css', $handler->get_framework_deps(), $ver );
@@ -120,7 +120,7 @@ function jumpstart_bases() {
 			)
 		));
 
-		$admin = new Theme_Blvd_Bases( $bases, 'dev' ); // class included with is_admin()
+		$admin = new Theme_Blvd_Bases( $bases, apply_filters('jumpstart_default_base', 'entrepreneur') ); // class included with is_admin()
 
 	}
 
@@ -137,7 +137,7 @@ add_action('after_setup_theme', 'jumpstart_bases');
  */
 function jumpstart_base_check() {
 
-	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != get_option(get_template().'_base') ) {
+	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != get_option(get_template().'_base', apply_filters('jumpstart_default_base', 'entrepreneur')) ) {
 		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ) );
 	}
 
