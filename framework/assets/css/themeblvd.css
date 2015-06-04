@@ -6407,6 +6407,9 @@ blockquote small {
 }
 
 /* Icon Box */
+.tb-icon-box {
+	font-size: 13px;
+}
 .tb-icon-box.has-bg {
 	padding: 30px;
 }
