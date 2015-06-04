@@ -155,7 +155,7 @@
 .header-top-nav {
 	margin: 0;
 }
-.header-top-mini .header-top-nav > li {
+.header-top-nav > li {
 	float: right;
 	border-right: 1px solid #dddddd;
 	height: 24px;
