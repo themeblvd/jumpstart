@@ -1,16 +1,80 @@
 <?php
-// Define theme constants
+/**
+ * Define theme constants
+ */
 define( 'TB_THEME_ID', 'jumpstart' );
 define( 'TB_THEME_NAME', 'JumpStart' );
 
-// Modify framework's theme options
+/**
+ * Modify framework's theme options
+ */
 include_once( get_template_directory() . '/includes/options.php' );
 
-// Automatic updates
+/**
+ * Automatic updates
+ */
 include_once( get_template_directory() . '/includes/updates.php' );
 
-// Theme Base
-if ( $base = get_option( get_template().'_base', apply_filters('themeblvd_default_base', 'entrepreneur') ) ) {
+/**
+ * Global configuration, enable theme bases
+ *
+ * @since 2.0.0
+ */
+function jumpstart_global_config( $config ) {
+	$config['admin']['base'] = true;
+	return $config;
+}
+add_filter('themeblvd_global_config', 'jumpstart_global_config');
+
+/**
+ * Set default theme base
+ *
+ * @since 2.0.0
+ */
+function jumpstart_default_base() {
+	return 'entrepreneur';
+}
+add_filter('themeblvd_default_base', 'jumpstart_default_base', 5);
+
+/**
+ * Setup theme bases admin
+ *
+ * @since 2.0.0
+ */
+function jumpstart_bases() {
+
+	if ( is_admin() && themeblvd_supports('admin', 'base') ) {
+
+		$bases = apply_filters('themeblvd_bases', array(
+			'dev' => array(
+				'name'		=> 'Developer',
+				'desc'		=> 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.'
+			),
+			'superuser' => array(
+				'name'		=> 'Super User',
+				'desc'		=> 'For the super user, this base builds on the default theme to give you more visual, user options.'
+			),
+			'entrepreneur' => array(
+				'name'		=> 'Entrepreneur',
+				'desc'		=> 'For the modern entrepreneur, this base embodies the current design trends of the web industry.'
+			),
+			'executive' => array(
+				'name'		=> 'Executive',
+				'desc'		=> 'For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.'
+			)
+		));
+
+		$admin = new Theme_Blvd_Bases( $bases, themeblvd_get_default_base() ); // class included with is_admin()
+
+	}
+
+}
+add_action('after_setup_theme', 'jumpstart_bases');
+
+/**
+ * Include theme base
+ */
+if ( $base = themeblvd_get_base() ) {
 	include_once( themeblvd_get_base_path($base) . '/base.php' );
 }
 
@@ -47,7 +111,7 @@ function jumpstart_css() {
 	}
 
 	// Theme base styles
-	$base = get_option(get_template().'_base', apply_filters('themeblvd_default_base', 'entrepreneur'));
+	$base = themeblvd_get_base();
 
 	if ( $base && $base != 'dev' ) {
 		wp_enqueue_style( 'jumpstart-base', themeblvd_get_base_uri($base).'/base.css', $handler->get_framework_deps(), $ver );
@@ -82,52 +146,6 @@ function jumpstart_scripts() {
 add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );
 
 /**
- * Jump Start global config
- *
- * @since 2.0.0
- */
-function jumpstart_global_config( $config ) {
-	$config['admin']['base'] = true;
-	return $config;
-}
-add_filter('themeblvd_global_config', 'jumpstart_global_config');
-
-/**
- * Jump Start theme bases
- *
- * @since 2.0.0
- */
-function jumpstart_bases() {
-
-	if ( is_admin() && themeblvd_supports('admin', 'base') ) {
-
-		$bases = apply_filters('themeblvd_bases', array(
-			'dev' => array(
-				'name'		=> 'Developer',
-				'desc'		=> 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.'
-			),
-			'superuser' => array(
-				'name'		=> 'Super User',
-				'desc'		=> 'For the super user, this base builds on the default theme to give you more visual, user options.'
-			),
-			'entrepreneur' => array(
-				'name'		=> 'Entrepreneur',
-				'desc'		=> 'For the modern entrepreneur, this base embodies the current design trends of the web industry.'
-			),
-			'executive' => array(
-				'name'		=> 'Executive',
-				'desc'		=> 'For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.'
-			)
-		));
-
-		$admin = new Theme_Blvd_Bases( $bases, apply_filters('themeblvd_default_base', 'entrepreneur') ); // class included with is_admin()
-
-	}
-
-}
-add_action('after_setup_theme', 'jumpstart_bases');
-
-/**
  * Jump Start base check. If WP user is logged in,
  * output message on frontend to tell them their saved
  * theme options don't match the theme base they've
@@ -137,7 +155,7 @@ add_action('after_setup_theme', 'jumpstart_bases');
  */
 function jumpstart_base_check() {
 
-	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != get_option(get_template().'_base', apply_filters('themeblvd_default_base', 'entrepreneur')) ) {
+	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != themeblvd_get_base() ) {
 		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ) );
 	}
 

@@ -2322,27 +2322,9 @@ function themeblvd_get_img_urls( $str ) {
 }
 
 /**
- * Get path to theme base
- *
- * @since 2.5.0
- */
-function themeblvd_get_base_path( $base ) {
-	return apply_filters('themeblvd_base_path', sprintf('%s/base/%s', get_template_directory(), $base), $base);
-}
-
-/**
- * Get path to theme base
- *
- * @since 2.5.0
- */
-function themeblvd_get_base_uri( $base ) {
-	return apply_filters('themeblvd_base_uri', sprintf('%s/base/%s', get_template_directory_uri(), $base), $base);
-}
-
-/**
  * Check if we're using a certain version of IE
  *
- * @since 2.0.0
+ * @since 2.5.0
  *
  * @param array $ver Version ofs IE to check for
  * @return bool Whether or not this is IE
@@ -2359,4 +2341,40 @@ function themeblvd_is_ie( $versions = array('8') ) {
 	}
 
 	return false;
+}
+
+/**
+ * Get path to theme base
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_base_path( $base ) {
+	return apply_filters( 'themeblvd_base_path', sprintf( '%s/base/%s', get_template_directory(), $base ), $base );
+}
+
+/**
+ * Get url to theme base
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_base_uri( $base ) {
+	return apply_filters( 'themeblvd_base_uri', sprintf( '%s/base/%s', get_template_directory_uri(), $base ), $base ) ;
+}
+
+/**
+ * Get default theme base
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_default_base() {
+	return apply_filters( 'themeblvd_default_base', 'dev' );
+}
+
+/**
+ * Get current theme base
+ *
+ * @since 2.5.0
+ */
+function themeblvd_get_base() {
+	return apply_filters( 'themeblvd_base', get_option( get_template().'_base', themeblvd_get_default_base() ) );
 }

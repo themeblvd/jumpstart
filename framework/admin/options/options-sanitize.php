@@ -79,7 +79,7 @@ function themeblvd_sanitize_hidden( $input, $option ) {
 
 	} else if ( $option['id'] == 'theme_base' ) {
 
-		$output = get_option( get_template().'_base', apply_filters('themeblvd_default_base', 'entrepreneur') );
+		$output = themeblvd_get_base();
 
 	} else {
 

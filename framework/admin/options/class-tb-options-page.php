@@ -395,7 +395,7 @@ class Theme_Blvd_Options_Page {
 
 		if ( themeblvd_supports('admin', 'base') && isset($this->options['theme_base']) ) {
 
-			$base = get_option( get_template().'_base' );
+			$base = themeblvd_get_base();
 
 			if ( $base && ( empty($settings['theme_base']) || $settings['theme_base'] != $base ) ) {
 				add_settings_error( $this->id, 'theme_base_error', __( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ), 'themeblvd-error error' );
