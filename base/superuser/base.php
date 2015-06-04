@@ -247,7 +247,8 @@ function jumpstart_su_options() {
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Mini Display', 'themeblvd').'</strong>: '.__('Display top bar a bit smaller and more condensed.', 'themeblvd'),
 				'std'		=> 0,
-				'type'		=> 'checkbox'
+				'type'		=> 'checkbox',
+				'class'		=> 'receiver receiver-header_top'
 			),
 			'sub_group_end_3' => array(
 				'id'		=> 'sub_group_end_3',
@@ -1944,6 +1945,36 @@ function jumpstart_su_css() {
 			}
 		}
 
+		// Floating search background color, to match header color
+		if ( $header_bg_color ) {
+
+			// Floating search background color, to match header color
+			$print .= ".tb-floating-search {\n";
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
+			$print .= "}\n";
+
+			$print .= ".tb-floating-search.below {\n";
+			$print .= sprintf("\tbackground-color: %s;\n", $header_bg_color);
+			$print .= "}\n";
+
+			if ( themeblvd_get_option('header_text_color') == 'light' ) {
+				$print .= ".tb-floating-search .tb-search .search-input,\n";
+				$print .= ".tb-floating-search .search-wrap:before {\n";
+				$print .= "\tcolor: #ffffff;\n";
+				$print .= "}\n";
+				$print .= ".tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
+				$print .= "\tcolor: rgba(255,255,255,.8);\n";
+				$print .= "}\n";
+				$print .= ".tb-floating-search .tb-search .search-input:-ms-input-placeholder {\n";
+				$print .= "\tcolor: rgba(255,255,255,.8);\n";
+				$print .= "}\n";
+				$print .= ".tb-floating-search .tb-search .search-input::-webkit-input-placeholder {\n";
+				$print .= "\tcolor: rgba(255,255,255,.8);\n";
+				$print .= "}\n";
+			}
+
+		}
+
 	} else {
 
 		// For transparent header, give header the
@@ -2012,6 +2043,26 @@ function jumpstart_su_css() {
 		}
 
 		$print .= "}\n";
+
+		$print .= ".tb-sticky-menu .tb-floating-search {\n";
+		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
+		$print .= "}\n";
+
+		if ( themeblvd_get_option('header_text_color') == 'light' ) {
+			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input,\n";
+			$print .= ".tb-sticky-menu .tb-floating-search .search-wrap:before {\n";
+			$print .= "\tcolor: #ffffff;\n";
+			$print .= "}\n";
+			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
+			$print .= "\tcolor: rgba(255,255,255,.8);\n";
+			$print .= "}\n";
+			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input:-ms-input-placeholder {\n";
+			$print .= "\tcolor: rgba(255,255,255,.8);\n";
+			$print .= "}\n";
+			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input::-webkit-input-placeholder {\n";
+			$print .= "\tcolor: rgba(255,255,255,.8);\n";
+			$print .= "}\n";
+		}
 
 	}
 
@@ -2098,7 +2149,7 @@ function jumpstart_su_css() {
 		if ( $options['bg_color_brightness'] == 'light' || $options['apply_font'] || $options['text_shadow'] ) {
 
 			if ( themeblvd_get_option('menu_search') ) {
-				$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger,\n";
+				$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
 			}
 
 			$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
@@ -2123,7 +2174,7 @@ function jumpstart_su_css() {
 		}
 
 		if ( themeblvd_get_option('menu_search') ) {
-			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger:hover,\n";
+			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\n";
 		}
 
 		$print .= ".tb-primary-menu > li > a:hover {\n";
@@ -2208,7 +2259,7 @@ function jumpstart_su_css() {
 	if ( themeblvd_config('suck_up') && $options['apply_font'] ) {
 
 		if ( themeblvd_get_option('menu_search') ) {
-			$print .= ".header-nav .tb-primary-menu .menu-search .search-trigger,\n";
+			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
 		}
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
@@ -2532,9 +2583,9 @@ function jumpstart_su_header_addon() {
 
 		echo '<ul class="header-top-nav list-unstyled">';
 
-		// Search form popup
+		// Floating search trigger
 		if ( themeblvd_get_option('searchform') == 'show' ) {
-			printf('<li class="top-search">%s</li>', themeblvd_get_search_popup());
+			printf('<li class="top-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'below')));
 		}
 
 		// Floating shopping cart
@@ -2570,19 +2621,35 @@ function jumpstart_su_header_addon() {
 }
 
 /**
- * Add search popup to main menu
+ * Add floating search to main menu.
  *
  * @since 2.0.0
  */
 function jumpstart_su_nav_search( $items, $args ) {
 
 	if ( $args->theme_location == 'primary' && themeblvd_get_option('menu_search') ) {
-		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_search_popup());
+		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'bottom')));
 	}
 
 	return $items;
 }
 add_filter('wp_nav_menu_items', 'jumpstart_su_nav_search', 10, 2);
+
+/**
+ * Make sure floating search outputs in header if user
+ * selected it for main menu.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_su_do_floating_search( $do ) {
+
+	if ( themeblvd_get_option('menu_search') ) {
+		$do = true;
+	}
+
+	return $do;
+}
+add_filter('themeblvd_do_floating_search', 'jumpstart_su_do_floating_search');
 
 /**
  * Filter args that get filtered in when

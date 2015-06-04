@@ -193,68 +193,83 @@ function themeblvd_contact_popup( $args = array() ) {
 }
 
 /**
- * Searchform popup, uses searchform.php for actual
+ * Get floating searchform, uses searchform.php for actual
  * search form portion
+ *
+ * Note: While you can have multiple triggers, it'll work
+ * best if there is only one floating search bar on the site.
  *
  * @since 2.5.0
  *
  * @param array $args Optional argments to override default behavior
  * @return string $output HTML to output for searchform
  */
-function themeblvd_get_search_popup( $args = array() ) {
+function themeblvd_get_floating_search( $args = array() ) {
 
 	// Setup arguments
-	$defaults = apply_filters('themeblvd_search_popup_defaults', array(
-		'open'			=> 'search',	// FontAwesome icon to open
-		'close'			=> 'close',		// FontAwesome icon to close
-		'placement-x'	=> '', 			// left, right
-		'placement-y'	=> 'bottom', 	// top, bottom
-		'class'			=> '' 			// Optional CSS class to add
-	));
-	$args = wp_parse_args( $args, $defaults );
+	// $defaults = apply_filters('themeblvd_floating_search_defaults', array());
+	// $args = wp_parse_args( $args, $defaults );
 
-	$x = $args['placement-x'];
-
-	if ( ! $x ) {
-		if ( is_rtl() ) {
-			$x = 'right';
-		} else {
-			$x = 'left';
-		}
-	}
-
-	$class = sprintf( 'tb-floater tb-search-popup %s %s', $x, $args['placement-y'] );
-
-	if ( $args['class'] ) {
-		$class .= $args['class'];
-	}
-
-	$output = sprintf( '<div class="%s">', $class );
-
-	// Trigger Button
-	$output .= sprintf( '<a href="#" class="floater-trigger search-trigger" data-open="%1$s" data-close="%2$s" data-label=""><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
-
-	// Search popup
-	$output .= '<div class="floater-popup search-popup">';
-	$output .= '<span class="arrow"></span>';
+	$output  = '<div class="tb-floating-search">';
+	$output .= '<div class="wrap">';
 	$output .= get_search_form(false);
-	$output .= '</div><!-- .search-holder (end) -->';
+	$output .= '</div><!-- .wrap (end) -->';
+	$output .= '</div><!-- .tb-floating-search (end) -->';
 
-	$output .= '</div><!-- .tb-search-popup (end) -->';
-
-	return apply_filters( 'themeblvd_search_popup', $output, $args );
+	return apply_filters( 'themeblvd_floating_search', $output, $args );
 }
 
 /**
- * Searchform popup, uses searchform.php for actual
+ * Floating searchform, uses searchform.php for actual
  * search form portion
  *
  * @since 2.5.0
  *
  * @param array $args Optional argments to override default behavior
  */
-function themeblvd_search_popup( $args = array() ) {
-	echo themeblvd_get_search_popup( $args );
+function themeblvd_floating_search( $args = array() ) {
+	echo themeblvd_get_floating_search( $args );
+}
+
+/**
+ * Get floating searchform trigger link
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ * @return string $output HTML to output for searchform
+ */
+function themeblvd_get_floating_search_trigger( $args = array() ) {
+
+	// Setup arguments
+	$defaults = apply_filters('themeblvd_floating_search_trigger_defaults', array(
+		'open'		=> 'search',	// FontAwesome icon to open
+		'close'		=> 'close',	 	// FontAwesome icon to close
+		'placement'	=> 'top',		// Placement relative to its container (header content by default) - top, bottom, below, full
+		'class'		=> ''			// Optional css classes to add to <a>
+	));
+	$args = wp_parse_args( $args, $defaults );
+
+	$class = 'tb-search-trigger';
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
+	}
+
+	$output = sprintf( '<a href="#" class="%1$s" data-open="%2$s" data-close="%3$s" data-placement="%4$s"><i class="fa fa-%2$s"></i></a>', $class, $args['open'], $args['close'], $args['placement'] );
+
+	return apply_filters( 'themeblvd_floating_search', $output, $args );
+}
+
+/**
+ * Floating searchform trigger link
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Optional argments to override default behavior
+ */
+function themeblvd_floating_search_trigger( $args = array() ) {
+	echo themeblvd_get_floating_search_trigger( $args );
 }
 
 /**

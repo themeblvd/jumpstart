@@ -1656,6 +1656,22 @@ function themeblvd_do_cart() {
 }
 
 /**
+ * Whether to display floating search bar.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_do_floating_search() {
+
+	$do = false;
+
+	if ( themeblvd_get_option('searchform') == 'show' ) {
+		$do = true;
+	}
+
+	return apply_filters('themeblvd_do_floating_search', $do);
+}
+
+/**
  * Get the full URL of the current page
  *
  * @since 2.5.0

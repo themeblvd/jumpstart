@@ -45,7 +45,7 @@ function themeblvd_header_top_default() {
 				<ul class="header-top-nav list-unstyled">
 
 					<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
-						<li class="top-search"><?php themeblvd_search_popup(); ?></li>
+						<li class="top-search"><?php themeblvd_floating_search_trigger(); ?></li>
 					<?php endif; ?>
 
 					<?php if ( themeblvd_do_cart() ) : ?>
@@ -124,11 +124,25 @@ function themeblvd_header_content_default() {
 
 	$class = 'header-content';
 
+	if ( themeblvd_do_floating_search() ) {
+		$class .= ' has-floating-search';
+	}
+
 	if ( themeblvd_do_cart() ) {
 		$class .= ' has-cart-button';
 	}
 	?>
 	<div class="<?php echo $class; ?>" role="banner">
+
+		<?php
+		/**
+		 * Setup floating search bar
+		 */
+		if ( themeblvd_do_floating_search() ) {
+			themeblvd_floating_search();
+		}
+		?>
+
 		<div class="wrap clearfix">
 			<?php
 			/**

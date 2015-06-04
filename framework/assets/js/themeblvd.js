@@ -227,11 +227,13 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	// Sticky Menu
 	if ( themeblvd.sticky !== 'false' ) {
 
 		// Build sticky menu
 		var $sticky_spy = $(themeblvd.sticky),
-			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy );
+			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy ),
+			counter = 1;
 
 		// Add the logo
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
@@ -246,33 +248,35 @@ jQuery(document).ready(function($) {
 		// Don't keep the menu-search, if user has added it (we're adding search otherwise)
 		$sticky.find('.tb-primary-menu > li.menu-search').remove();
 
-		// Add popups in header to sticky menu, avoiding dpotential uplicates
-		var popups = ['search', 'cart', 'contact'],
-			used = [];
+		if ( $('.site-header').find('.tb-search-trigger').length ) {// add OR for each element
 
-		$('<ul class="list-unstyled floaters">').appendTo( $sticky.find('.sticky-wrap > .nav') );
+			$('<ul class="list-unstyled floaters">').appendTo( $sticky.find('.sticky-wrap > .nav') );
 
-		$header.find('.tb-floater').each(function(){
+			// Floating search
+			$('.site-header').find('.tb-floating-search').clone().appendTo($sticky);
 
-			var $el = $(this);
+			$('.site-header').find('.tb-search-trigger').each(function(){
 
-			// Check if popup has been used
-			for ( var i = 0; i < used.length; i++ ) {
-				if ( $el.hasClass('tb-'+used[i]+'-popup') ) {
-					return;
+				if ( counter != 1 ) {
+					return false;
 				}
-			}
 
-			$el.clone().appendTo( $sticky.find('.sticky-wrap > .nav > ul.floaters') ).wrap('<li></li>');
+				$(this).clone().appendTo( $sticky.find('.sticky-wrap > .nav > ul.floaters') ).wrap('<li></li>');
 
-			// Add popup to our used array
-			for ( var i = 0; i < popups.length; i++ ) {
-				if ( $el.hasClass('tb-'+popups[i]+'-popup') ) {
-					used.push(popups[i]);
-				}
-			}
+				counter++;
+			});
 
-		});
+			$sticky.find('.tb-search-trigger').data('placement', 'below');
+
+			// Floating cart
+			counter = 1;
+			// ... @TODO
+
+			// Floating contact buttons
+			counter = 1;
+			// ... @TODO
+
+		}
 
 		// Sticky menu, make selector dynamic
 		$sticky_spy.viewportChecker({
@@ -282,6 +286,14 @@ jQuery(document).ready(function($) {
 			callbackFunction: function($elem, action){
 				if ( $elem.hasClass('visible') ) {
 
+					var $search_trigger = $elem.find('#sticky-menu .tb-search-trigger');
+
+					if ( $search_trigger.hasClass('open') ) {
+						$search_trigger.stop().removeClass('open').html( '<i class="fa fa-'+$search_trigger.data('open')+'"></i>' );
+				        $elem.find('#sticky-menu .tb-floating-search').fadeOut(250).attr('style', '').removeClass('below');
+					}
+
+					/*
 					$elem.find('#sticky-menu .floater-trigger').each(function(){
 
 						var $current = $(this),
@@ -295,6 +307,7 @@ jQuery(document).ready(function($) {
 						$current.closest('.tb-floater').find('.floater-popup').stop().fadeOut(100);
 
 					});
+					*/
 
 					$elem.find('#sticky-menu .menu-item').each(function(){
 
@@ -373,6 +386,82 @@ jQuery(document).ready(function($) {
 	// No-click menu items
 	$('ul.sf-menu li.no-click, ul.tb-mobile-menu li.no-click').find('a:first').on('click', function(){
 		return false;
+	});
+
+	// ---------------------------------------------------------
+	// Floating Search
+	// ---------------------------------------------------------
+
+	$('.tb-search-trigger').on('click', function(){
+
+	    var $el = $(this),
+	        placement = $el.data('placement'),
+	        $searchform = $el.closest('.site-header > .wrap, .tb-sticky-menu').find('.tb-floating-search'),
+			$header = $searchform.closest('.site-header');
+
+	    $searchform.removeClass('full bottom below top').addClass(placement);
+
+	    if ( $el.hasClass('open') ) {
+
+	        $el.stop().removeClass('open').html( '<i class="fa fa-'+$el.data('open')+'"></i>' );
+
+			$searchform.stop().fadeOut(250, function(){
+				$(this).attr('style', '');
+			});
+
+			if ( $header.find('.header-content > .wrap').hasClass('floating-search-full-on') ) {
+				$header.find('.header-content > .wrap').stop().animate({'opacity': 1}, 250);
+			}
+
+	    } else {
+
+	        $el.stop().addClass('open').html( '<i class="fa fa-'+$el.data('close')+'"></i>' );
+
+	        if ( placement == 'full' ) {
+
+				$searchform.fadeIn(250).find('.search-input').focus();
+				$header.find('.header-content > .wrap').stop().animate({'opacity': 0.1}, 250).addClass('floating-search-full-on');
+
+	        } else if ( placement == 'bottom' ) {
+
+				$searchform.stop().css({
+	                'bottom': -5,
+					'marginTop' : 0, // safeguard
+	                'display': 'block',
+	                'opacity': 0
+	            }).animate({
+	                'bottom' : 0,
+	                'opacity': 1
+	            }, 250).find('.search-input').focus();
+
+	        } else if ( placement == 'below' ) {
+
+				$searchform.stop().css({
+	                'top': '100%',
+					'marginTop' : -5,
+	                'display': 'block',
+	                'opacity': 0
+	            }).animate({
+	                'marginTop' : 0,
+	                'opacity': 1
+	            }, 250).find('.search-input').focus();
+
+	        } else { // top
+
+	            $searchform.stop().css({
+	                'top': -5,
+					'marginTop' : 0, // safeguard
+	                'display': 'block',
+	                'opacity': 0
+	            }).animate({
+	                'top' : 0,
+	                'opacity': 1
+	            }, 250).find('.search-input').focus();
+
+	        }
+	    }
+
+	    return false;
 	});
 
 	// ---------------------------------------------------------

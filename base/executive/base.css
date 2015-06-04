@@ -23,6 +23,21 @@ Author URI: http://www.themeblvd.com
 	}
 }
 
+/* Floating Search (from main menu), match width of main menu */
+.tb-floating-search.bottom,
+.tb-floating-search.below {
+	margin: 0 auto;
+	padding-right: 20px;
+	padding-left: 20px;
+	max-width: 1150px;
+}
+@media (max-width: 1199px) {
+	.tb-floating-search.bottom,
+	.tb-floating-search.below {
+		max-width: 940px;
+	}
+}
+
 /* Header Addon */
 .header-addon {
 	margin-top: -12px;
@@ -117,28 +132,6 @@ Author URI: http://www.themeblvd.com
 	z-index: 900; /* Help z-index drop down menus above elements below header */
 }
 
-/* Search Popup */
-.tb-search-popup .search-popup {
-	border-color: rgba(0,0,0,.2);
-}
-.tb-search-popup.bottom.left .search-popup > .arrow {
-    border-bottom-color: rgba(0,0,0,.2);
-}
-.tb-search-popup.bottom.right .search-popup > .arrow {
-    border-bottom-color: rgba(0,0,0,.2);
-}
-.tb-search-popup.top.left .search-popup > .arrow {
-    border-top-color: rgba(0,0,0,.2);
-}
-.tb-search-popup.top.right .search-popup > .arrow {
-    border-top-color: rgba(0,0,0,.2);
-}
-
-/* Transparent Header */
-.site-header.transparent .tb-primary-menu .menu-search .search-trigger:hover {
-	background-color: rgba(0,0,0,.4);
-}
-
 /* =Main Menu
 -----------------------------------------------*/
 
@@ -165,30 +158,24 @@ Author URI: http://www.themeblvd.com
 .rtl .tb-primary-menu .menu-search {
 	float: left;
 }
-.tb-primary-menu .menu-search .search-trigger {
+.tb-primary-menu .menu-search .tb-search-trigger {
 	color: #ffffff;
+	display: block;
 	font-size: 14px;
 	line-height: 1;
 	padding: 18px 20px;
 	width: auto;
 	height: auto;
 }
-.tb-primary-menu .menu-search .search-trigger:hover {
+.tb-primary-menu .menu-search .tb-search-trigger:hover {
 	background: #222222;
 }
-.tb-primary-menu .menu-search .search-trigger .fa {
+.tb-primary-menu .menu-search .tb-search-trigger .fa {
 	width: 1em;
 	text-align: center;
 }
 .tb-primary-menu .menu-search .fa {
 	margin: 0;
-}
-.tb-primary-menu .menu-search .tb-search-popup .search-popup {
-	right: 6px;
-}
-.rtl .tb-primary-menu .menu-search .tb-search-popup .search-popup {
-	right: initial;
-	left: 6px;
 }
 
 /* Centered Menu */
@@ -250,6 +237,7 @@ Author URI: http://www.themeblvd.com
 	padding: 0 15px;
 }
 .js-boxed .site-header > .wrap,
+.js-boxed .tb-floating-search > .wrap,
 .js-boxed .tb-featured-banner > .wrap,
 .js-boxed .site-breadcrumbs > .wrap,
 .js-boxed .site-inner > .wrap,
@@ -272,6 +260,11 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed .site-footer > .wrap {
 	padding: 0;
+}
+
+/* Floating Search */
+.js-boxed .tb-floating-search > .wrap {
+  padding: 0 20px;
 }
 
 /* Content Padding */

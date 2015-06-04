@@ -170,16 +170,22 @@ Author URI: http://www.themeblvd.com
 	border-top: 4px solid #1971af;
 	margin-top: -4px;
 }
-
-/* Popups */
-.header-nav .tb-floater {
-	margin-left: 5px;
-	float: right;
+.tb-sticky-menu .tb-primary-menu > li > ul.non-mega-sub-menu,
+.tb-sticky-menu .tb-primary-menu .sf-mega {
+	border-top: none;
+	margin-top: 0;
 }
-.rtl .header-nav .tb-floater {
-	float: left;
-	margin-left: 0;
-	margin-right: 5px;
+
+/* Menu Addons */
+.header-nav .tb-primary-menu > li > .tb-search-trigger {
+	outline: none;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.header-nav .tb-primary-menu > li > .tb-search-trigger .fa {
+	margin: 0;
+	width: 1em;
+	text-align: center;
 }
 .header-nav .tb-cart-popup {
 	margin-right: 2px; /* a little space for cart item count */
@@ -187,13 +193,6 @@ Author URI: http://www.themeblvd.com
 .rtl .header-nav .tb-cart-popup {
 	margin-right: 0;
 	margin-left: 2px; /* a little space for cart item count */
-}
-.header-nav .tb-floater .floater-trigger {
-	color: #666666;
-	padding-top: 37px;
-}
-.header-nav .tb-floater .floater-trigger:hover {
-	color: #222222;
 }
 
 /* Transparent Header */
@@ -208,7 +207,7 @@ Author URI: http://www.themeblvd.com
 	border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 .site-header.transparent .header-nav,
-.site-header.transparent .tb-primary-menu > li > a:hover {
+.site-header.transparent .header-nav .tb-primary-menu > li > a:hover {
 	background-color: transparent;
 }
 .site-header.transparent .header-nav .tb-primary-menu > li > .menu-btn,
@@ -224,6 +223,9 @@ Author URI: http://www.themeblvd.com
 	.site-header.transparent .btn-navbar {
 		border: 1px solid rgba(0,0,0,.6);
 	}
+}
+.site-header.transparent .header-content .tb-floating-search.full {
+	background-color: rgba(0,0,0,.2);
 }
 
 /* =Boxed Layout
@@ -271,6 +273,7 @@ Author URI: http://www.themeblvd.com
 .js-boxed .header-above > .wrap,
 .js-boxed .header-content > .wrap,
 .js-boxed .header-nav > .wrap,
+.js-boxed .tb-floating-search > .wrap,
 .js-boxed .tb-featured-banner > .wrap,
 .js-boxed .site-breadcrumbs > .wrap,
 .js-boxed .site-inner > .wrap,
@@ -298,6 +301,11 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed .site-footer > .wrap {
 	padding: 0;
+}
+
+/* Floating Search */
+.js-boxed .tb-floating-search > .wrap {
+  padding: 0 20px;
 }
 
 /* Content Padding */

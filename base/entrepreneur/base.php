@@ -1645,6 +1645,32 @@ function jumpstart_ent_css() {
 			}
 		}
 
+		// Floating search background color, to match header color
+		if ( $header_bg_color ) {
+
+			// Floating search background color, to match header color
+			$print .= ".tb-floating-search.below {\n";
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
+			$print .= "}\n";
+
+			if ( themeblvd_get_option('header_text_color') == 'light' ) {
+				$print .= ".tb-floating-search .tb-search .search-input,\n";
+				$print .= ".tb-floating-search .search-wrap:before {\n";
+				$print .= "\tcolor: #ffffff;\n";
+				$print .= "}\n";
+				$print .= ".tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
+				$print .= "\tcolor: rgba(255,255,255,.8);\n";
+				$print .= "}\n";
+				$print .= ".tb-floating-search .tb-search .search-input:-ms-input-placeholder {\n";
+				$print .= "\tcolor: rgba(255,255,255,.8);\n";
+				$print .= "}\n";
+				$print .= ".tb-floating-search .tb-search .search-input::-webkit-input-placeholder {\n";
+				$print .= "\tcolor: rgba(255,255,255,.8);\n";
+				$print .= "}\n";
+			}
+
+		}
+
 	} else {
 
 		// For transparent header, give header the
@@ -1975,33 +2001,37 @@ remove_action('themeblvd_header_menu', 'themeblvd_header_menu_default');
 add_action('themeblvd_header_addon', 'themeblvd_header_menu_default');
 
 /**
- * Add header elements to main menu, if header
- * top bar ism't used.
+ * Header menu addons
  *
  * @since 2.0.0
  */
-function themeblvd_ent_header_menu_addon() {
+function jumpstart_ent_menu_addon( $items, $args ) {
 
 	if ( themeblvd_get_option('header_text') ) {
-		return; // header top bar is showing
+		return $items; // header top bar is showing
 	}
 
-	echo '<div class="header-menu-addon">';
+	if ( $args->theme_location != 'primary' ) {
+		return $items; // not the main menu
+	}
 
 	if ( themeblvd_get_option('searchform') == 'show' ) {
-		themeblvd_search_popup();
+		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'below', 'class' => 'menu-btn')));
 	}
 
 	if ( themeblvd_do_cart() ) {
-		themeblvd_cart_popup();
+		// ...
+		// themeblvd_cart_popup();
 	}
 
-	themeblvd_contact_popup( array('class' => 'to-mobile') );
+	// if ( ) {
+		// ... contact popup
+		// themeblvd_contact_popup( array('class' => 'to-mobile') );
+	//}
 
-	echo '</div><!-- .header-menu-addon (end) -->';
-
+	return $items;
 }
-add_action('themeblvd_header_menu_addon', 'themeblvd_ent_header_menu_addon');
+add_filter('wp_nav_menu_items', 'jumpstart_ent_menu_addon', 10, 2);
 
 /**
  * Add CSS classes and parralax data() to header
@@ -2093,7 +2123,27 @@ function jumpstart_ent_header_top() {
 	}
 
 }
-add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
+add_action('themeblvd_header_top', 'jumpstart_ent_header_top', 5);
+
+/**
+ * If we're showing a header top bar (i.e. there's header text), then
+ * we want the floating search to be full-sized over header content
+ * below. But if the're no top bar and search icon is in the menu,
+ * we need the menu to open below the header.
+ *
+ * @since 2.0.0
+ */
+function jumpstart_ent_floating_search_placement( $args ) {
+
+	if ( themeblvd_get_option('header_text') ) {
+		$args['placement'] = 'full';
+	} else {
+		$args['placement'] = 'below';
+	}
+
+	return $args;
+}
+add_filter('themeblvd_floating_search_trigger_defaults', 'jumpstart_ent_floating_search_placement');
 
 /**
  * Filter args that get filtered in when
