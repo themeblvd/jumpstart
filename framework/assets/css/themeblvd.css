@@ -3837,8 +3837,8 @@ button:active {
 
 /* Yellow */
 .yellow {
-	background-color: #ffcf2d;
-	border-color: #dfB527;
+	background-color: #ecc11B;
+	border-color: #dcb10d;
 }
 .tb-btn-gradient .yellow {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcf2d), to(#caa321));
@@ -3852,7 +3852,7 @@ button:active {
 .yellow:hover,
 .yellow:focus,
 .yellow:active {
-	background-color: #e5b927;
+	background-color: #deb30e;
 }
 .tb-btn-gradient .yellow:hover,
 .tb-btn-gradient .yellow:focus,
