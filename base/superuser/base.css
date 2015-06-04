@@ -252,6 +252,9 @@ Author URI: http://www.themeblvd.com
 	right: initial;
 	left: 30px;
 }
+.js-boxed #breadcrumbs {
+	padding: 30px 30px 0 30px;
+}
 .js-boxed #main {
 	padding: 30px;
 }

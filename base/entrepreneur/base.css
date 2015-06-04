@@ -287,6 +287,9 @@ Author URI: http://www.themeblvd.com
 	padding-right: 15px;
 	padding-left: 15px;
 }
+.js-boxed #breadcrumbs {
+	padding: 30px 30px 0 30px;
+}
 .js-boxed #main {
 	padding: 30px;
 }
