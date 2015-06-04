@@ -16,9 +16,9 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_hidden', 'themeblvd_sanitize_hidden', 10, 2 );
 	add_filter( 'themeblvd_sanitize_text', 'themeblvd_sanitize_text' );
 	add_filter( 'themeblvd_sanitize_textarea', 'themeblvd_sanitize_textarea' );
-	add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_enum', 10, 2 );
-	add_filter( 'themeblvd_sanitize_radio', 'themeblvd_sanitize_enum', 10, 2 );
-	add_filter( 'themeblvd_sanitize_images', 'themeblvd_sanitize_enum', 10, 2 );
+	add_filter( 'themeblvd_sanitize_select', 'themeblvd_sanitize_text', 10, 2 );
+	add_filter( 'themeblvd_sanitize_radio', 'themeblvd_sanitize_text', 10, 2 );
+	add_filter( 'themeblvd_sanitize_images', 'themeblvd_sanitize_text', 10, 2 );
 	add_filter( 'themeblvd_sanitize_checkbox', 'themeblvd_sanitize_checkbox' );
 	add_filter( 'themeblvd_sanitize_multicheck', 'themeblvd_sanitize_multicheck', 10, 2 );
 	add_filter( 'themeblvd_sanitize_color', 'themeblvd_sanitize_hex' );
@@ -34,6 +34,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_typography', 'themeblvd_sanitize_typography' );
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_font_style', 'themeblvd_sanitize_font_style' );
+	add_filter( 'themeblvd_font_weight', 'themeblvd_sanitize_font_weight' );
 	add_filter( 'themeblvd_font_face', 'themeblvd_sanitize_font_face' );
 	add_filter( 'themeblvd_sanitize_columns', 'themeblvd_sanitize_columns' );
 	add_filter( 'themeblvd_sanitize_tabs', 'themeblvd_sanitize_tabs' );
@@ -441,12 +442,14 @@ function themeblvd_sanitize_typography( $input ) {
 		'size' 		=> '',
 		'face'  	=> '',
 		'style' 	=> '',
+		'weight'	=> '',
 		'color' 	=> '',
 		'google' 	=> ''
 	) );
 	$output['size']  = apply_filters( 'themeblvd_font_size', $output['size'] );
 	$output['face']  = apply_filters( 'themeblvd_font_face', $output['face'] );
 	$output['style'] = apply_filters( 'themeblvd_font_style', $output['style'] );
+	$output['weight'] = apply_filters( 'themeblvd_font_weight', $output['weight'] );
 	$output['color'] = apply_filters( 'themeblvd_color', $output['color'] );
 	$output['google'] = str_replace('"', '', $output['google'] );
 	$output['google'] = apply_filters( 'themeblvd_sanitize_text', $output['google'] );
@@ -478,6 +481,19 @@ function themeblvd_sanitize_font_style( $value ) {
 		return $value;
 	}
 	return apply_filters( 'themeblvd_default_font_style', 'normal' );
+}
+
+/**
+ * Typography - font weight
+ *
+ * @since 2.5.0
+ */
+function themeblvd_sanitize_font_weight( $value ) {
+	$recognized = themeblvd_recognized_font_weights();
+	if ( array_key_exists( $value, $recognized ) ) {
+		return $value;
+	}
+	return apply_filters( 'themeblvd_default_font_weight', '400' );
 }
 
 /**
