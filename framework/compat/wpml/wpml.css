@@ -57,11 +57,11 @@
 	border-bottom: 1px solid #dddddd;
 }
 .site-header.transparent .tb-wpml-switcher .lang-sub-menu li a {
-	border-color: rgba(0,0,0,.5);
-	background-color: rgba(0,0,0,.2)
+	border-color: rgba(0,0,0,.8);
+	background-color: rgba(0,0,0,.6);
 }
 .site-header.transparent .tb-wpml-switcher .lang-sub-menu li a:hover {
-	background-color: rgba(0,0,0,.5);
+	background-color: rgba(0,0,0,.8);
 }
 
 /* Horizontal List */

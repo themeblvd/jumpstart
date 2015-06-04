@@ -360,6 +360,12 @@
 .site-header.transparent .header-top {
 	background-color: rgba(0,0,0,.2);
 }
+.site-header.transparent .header-top a {
+	opacity: 0.8;
+}
+.site-header.transparent .header-top a:hover {
+	opacity: 1;
+}
 .site-header.transparent .header-top-nav > li {
 	border-color: rgba(0,0,0,.4);
 }

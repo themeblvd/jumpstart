@@ -206,7 +206,7 @@ Author URI: http://www.themeblvd.com
 	border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 .site-header.transparent .header-top {
-	background-color: rgba(0,0,0,.1);
+	background-color: transparent;
 	border-bottom: 1px solid rgba(0,0,0,0.25);
 }
 .site-header.transparent .header-nav,
@@ -221,9 +221,6 @@ Author URI: http://www.themeblvd.com
 .site-header.transparent .header-nav .tb-primary-menu > li > .menu-btn:hover,
 .site-header.transparent .header-nav .tb-floater .floater-trigger:hover {
 	color: #ffffff;
-}
-.site-header.transparent .header-nav .tb-primary-menu > li > a:hover {
-	border-bottom-color: #ffffff;
 }
 @media (min-width: 768px) {
 	.site-header.transparent .btn-navbar {
