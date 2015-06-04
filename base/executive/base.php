@@ -859,7 +859,7 @@ function jumpstart_ex_options() {
 				'id' 		=> 'font_menu',
 				'name' 		=> __( 'Main Menu Font', 'themeblvd' ),
 				'desc' 		=> __( 'This font applies to the top level items of the main menu.', 'themeblvd' ),
-				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#ffffff', 'google' => 'Open Sans:300', 'style' => 'normal'),
+				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#ffffff', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
 				'type' 		=> 'typography',
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
@@ -1064,7 +1064,7 @@ function jumpstart_ex_options() {
 				'id' 		=> 'font_body',
 				'name' 		=> __( 'Primary Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to most of the text on your site.', 'themeblvd' ),
-				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Open Sans:300', 'style' => 'normal'),
+				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
@@ -1072,7 +1072,7 @@ function jumpstart_ex_options() {
 				'id' 		=> 'font_header',
 				'name' 		=> __( 'Header Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd' ),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Open Sans:700', 'style' => 'normal'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Raleway:700', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),

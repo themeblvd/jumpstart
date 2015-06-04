@@ -241,7 +241,7 @@ function jumpstart_ent_options() {
 				'name'		=> __('Header Height', 'themeblvd'),
 				'desc'		=> __('Apply a fixed height to the header. Keep in mind that your header logo image will always be displayed to match the height of your header, minus 20px.', 'themeblvd'),
 				'type'		=> 'slide',
-				'std'		=> '90px',
+				'std'		=> '70px',
 				'options'	=> array(
 					'units'	=> 'px',
 					'min'	=> '50',
@@ -523,7 +523,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'header_apply_border_bottom',
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Bottom Border', 'themeblvd').'</strong>: '.__('Apply bottom border to header.', 'themeblvd'),
-				'std'		=> 0,
+				'std'		=> 1,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -539,7 +539,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'header_border_bottom_width',
 				'name'		=> __('Bottom Border Width', 'themeblvd'),
 				'desc'		=> __('Select a width in pixels for the bottom border.', 'themeblvd'),
-				'std'		=> '5px',
+				'std'		=> '1px',
 				'type'		=> 'slide',
 				'options'	=> array(
 					'units'		=> 'px',
@@ -578,7 +578,7 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_menu',
 				'name' 		=> __( 'Main Menu Font', 'themeblvd' ),
 				'desc' 		=> __( 'This font applies to the top level items of the main menu.', 'themeblvd' ),
-				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#555555', 'google' => 'Open Sans:300', 'style' => 'normal'),
+				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#555555', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
 				'type' 		=> 'typography',
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
@@ -592,7 +592,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'menu_highlight',
 				'name'		=> __('Highlight Color', 'themeblvd'),
 				'desc'		=> __('Select a color to be used as a sublte highlight to the main menu.', 'themeblvd'),
-				'std'		=> '#1971af',
+				'std'		=> '#fec427',
 				'type'		=> 'color'
 			),
 			'menu_sub_bg_color' => array(
@@ -679,7 +679,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'footer_bg_color',
 				'name'		=> __('Background Color', 'themeblvd'),
 				'desc'		=> __('Select a background color for the footer.', 'themeblvd'),
-				'std'		=> '#333333',
+				'std'		=> '#ffffff',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
@@ -687,7 +687,7 @@ function jumpstart_ent_options() {
 				'id' 		=> 'footer_bg_color_brightness',
 				'name' 		=> __( 'Background Color Brightness', 'themeblvd' ),
 				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
-				'std' 		=> 'dark',
+				'std' 		=> 'light',
 				'type' 		=> 'select',
 				'options'	=> array(
 					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
@@ -728,7 +728,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'footer_apply_border_top',
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Top Border', 'themeblvd').'</strong>: '.__('Apply top border to footer.', 'themeblvd'),
-				'std'		=> 0,
+				'std'		=> 1,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -736,7 +736,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'footer_border_top_color',
 				'name'		=> __('Top Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the top border.', 'themeblvd'),
-				'std'		=> '#181818',
+				'std'		=> '#dddddd',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
@@ -801,7 +801,7 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_body',
 				'name' 		=> __( 'Primary Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to most of the text on your site.', 'themeblvd' ),
-				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Open Sans:300', 'style' => 'normal'),
+				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
@@ -809,7 +809,7 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_header',
 				'name' 		=> __( 'Header Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd' ),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Open Sans:700', 'style' => 'normal'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Raleway:700', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
@@ -817,28 +817,28 @@ function jumpstart_ent_options() {
 				'id' 		=> 'link_color',
 				'name' 		=> __( 'Link Color', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the color you\'d like applied to links.', 'themeblvd' ),
-				'std' 		=> '#428bca',
+				'std' 		=> '#f9bc18',
 				'type' 		=> 'color'
 			),
 			'link_hover_color' => array(
 				'id' 		=> 'link_hover_color',
 				'name' 		=> __( 'Link Hover Color', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the color you\'d like applied to links when they are hovered over.', 'themeblvd' ),
-				'std' 		=> '#2a6496',
+				'std' 		=> '#f9d718',
 				'type' 		=> 'color'
 			),
 			'footer_link_color' => array(
 				'id' 		=> 'footer_link_color',
 				'name' 		=> __( 'Footer Link Color', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer.', 'themeblvd' ),
-				'std' 		=> '#ffffff',
+				'std' 		=> '#f9bc18',
 				'type' 		=> 'color'
 			),
 			'footer_link_hover_color' => array(
 				'id' 		=> 'footer_link_hover_color',
 				'name' 		=> __( 'Footer Link Hover Color', 'themeblvd' ),
 				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer when they are hovered over.', 'themeblvd' ),
-				'std' 		=> '#ffffff',
+				'std' 		=> '#f9d718',
 				'type' 		=> 'color'
 			)
 		),
