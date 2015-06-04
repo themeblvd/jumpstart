@@ -1664,5 +1664,11 @@ function themeblvd_get_current_uri() {
 
 	global $_SERVER;
 
-	return apply_filters( 'themeblvd_get_current_uri', esc_url( home_url($_SERVER['REQUEST_URI']) ) );
+	$url = '';
+
+	if ( isset($_SERVER['REQUEST_URI']) ) {
+		$url = esc_url( home_url($_SERVER['REQUEST_URI']) );
+	}
+
+	return apply_filters( 'themeblvd_get_current_uri', $url );
 }
