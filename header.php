@@ -87,6 +87,11 @@
 
 		}
 
+		/**
+		 * @hooked themeblvd_breadcrumbs_default - 10
+		 */
+		do_action('themeblvd_breadcrumbs');
+
 		// Start main area (if not a custom layout)
 		if ( ! themeblvd_config( 'builder_post_id' ) ) {
 
@@ -100,10 +105,6 @@
 			 */
 			do_action('themeblvd_main_top');
 
-			/**
-			 * @hooked themeblvd_breadcrumbs_default - 10
-			 */
-			do_action('themeblvd_breadcrumbs');
 		}
 
 		/**

@@ -907,7 +907,7 @@ function themeblvd_get_breadcrumbs_trail() {
  * @since 2.5.0
  */
 function themeblvd_the_breadcrumbs(){
-	echo '<div id="breadcrumbs">';
+	echo '<div id="breadcrumbs" class="site-breadcrumbs">';
 	echo '<div class="wrap">';
 	echo themeblvd_get_breadcrumbs_trail();
 	echo '</div><!-- .wrap (end) -->';

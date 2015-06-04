@@ -10,8 +10,6 @@ Author URI: http://www.themeblvd.com
 
 .site-header {
 	background: #ffffff;
-	-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 	z-index: 900;
 }
 @media (min-width: 992px) {
@@ -274,6 +272,7 @@ Author URI: http://www.themeblvd.com
 .js-boxed .header-content > .wrap,
 .js-boxed .header-nav > .wrap,
 .js-boxed .tb-featured-banner > .wrap,
+.js-boxed .site-breadcrumbs > .wrap,
 .js-boxed .site-inner > .wrap,
 .js-boxed .element-section > .element.no-popout,
 .js-boxed .site-footer > .wrap {

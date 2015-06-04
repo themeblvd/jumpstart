@@ -7172,10 +7172,10 @@ blockquote small {
 /* Breadcrumbs */
 .breadcrumb {
 	background: transparent;
+	margin: 0;
 }
 .element-breadcrumbs .breadcrumb {
-	margin: 0;
-	padding: 0;
+	padding: 0 15px;
 }
 
 /* Contact */
