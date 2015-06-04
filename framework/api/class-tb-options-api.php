@@ -303,22 +303,26 @@ class Theme_Blvd_Options_API {
 							'item_1' => array(
 								'icon'	=> 'facebook',
 								'url'	=> 'http://facebook.com/jasonbobich',
-								'label'	=> 'Facebook'
+								'label'	=> 'Facebook',
+								'target'=> '_blank'
 							),
 							'item_2' => array(
 								'icon'	=> 'google',
 								'url'	=> 'https://plus.google.com/116531311472104544767/posts',
-								'label'	=> 'Google+'
+								'label'	=> 'Google+',
+								'target'=> '_blank'
 							),
 							'item_3' => array(
 								'icon'	=> 'twitter',
 								'url'	=> 'http://twitter.com/jasonbobich',
-								'label'	=> 'Twitter'
+								'label'	=> 'Twitter',
+								'target'=> '_blank'
 							),
 							'item_4' => array(
 								'icon'	=> 'rss',
 								'url'	=> get_feed_link(),
-								'label'	=> 'RSS Feed'
+								'label'	=> 'RSS Feed',
+								'target'=> '_blank'
 							)
 						),
 						'type' 		=> 'social_media'
