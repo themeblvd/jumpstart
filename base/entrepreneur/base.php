@@ -18,6 +18,7 @@ function jumpstart_ent_options() {
 		$bg_types = themeblvd_get_bg_types('section');
 	}
 
+	// Theme Options
 	$options = apply_filters('jumpstart_ent_options', array(
 		'general' => array(
 			'sub_group_start_1' => array(
@@ -1657,6 +1658,7 @@ function jumpstart_ent_css() {
 				$print .= ".tb-floating-search .tb-search .search-input,\n";
 				$print .= ".tb-floating-search .search-wrap:before {\n";
 				$print .= "\tcolor: #ffffff;\n";
+				$print .= "\topacity: 1;\n";
 				$print .= "}\n";
 				$print .= ".tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
 				$print .= "\tcolor: rgba(255,255,255,.8);\n";

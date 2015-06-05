@@ -1926,6 +1926,7 @@ function jumpstart_ex_css() {
 				$print .= ".tb-floating-search .tb-search .search-input,\n";
 				$print .= ".tb-floating-search .search-wrap:before {\n";
 				$print .= "\tcolor: #ffffff;\n";
+				$print .= "\topacity: 1;\n";
 				$print .= "}\n";
 				$print .= ".tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
 				$print .= "\tcolor: rgba(255,255,255,.8);\n";

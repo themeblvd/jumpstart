@@ -7430,7 +7430,7 @@ blockquote small {
 	font-size: 22px;
 }
 .transparent .header-content .tb-floating-search .search-wrap:before {
-	color: rgba(255,255,255,.8);
+	color: #ffffff;
 	opacity: 1;
 }
 .tb-floating-search .tb-search .search-input {
