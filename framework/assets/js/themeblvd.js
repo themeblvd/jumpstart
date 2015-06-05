@@ -245,38 +245,33 @@ jQuery(document).ready(function($) {
 		// Add nav menu
 		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
 
-		// Don't keep the menu-search, if user has added it (we're adding search otherwise)
-		$sticky.find('.tb-primary-menu > li.menu-search').remove();
+		// Remove contact popover - Bootstrap popover won't work with our fixed position sticky menu
+		$sticky.find('.tb-primary-menu > li.menu-contact').remove();
 
-		if ( $('.site-header').find('.tb-search-trigger').length ) {// add OR for each element
+		// Floating search
+		if ( $header.find('.tb-search-trigger').length ) {
 
-			$('<ul class="list-unstyled floaters">').appendTo( $sticky.find('.sticky-wrap > .nav') );
+			$header.find('.tb-floating-search').clone().appendTo($sticky);
 
-			// Floating search
-			$('.site-header').find('.tb-floating-search').clone().appendTo($sticky);
+			$sticky.find('.tb-primary-menu > li.menu-search').remove();
 
-			$('.site-header').find('.tb-search-trigger').each(function(){
+			$header.find('.tb-search-trigger').each(function(){
 
 				if ( counter != 1 ) {
 					return false;
 				}
 
-				$(this).clone().appendTo( $sticky.find('.sticky-wrap > .nav > ul.floaters') ).wrap('<li></li>');
+				$(this).clone().appendTo( $sticky.find('.tb-primary-menu') ).wrap('<li class="menu-item level-1 menu-search"></li>');
 
 				counter++;
 			});
 
-			$sticky.find('.tb-search-trigger').data('placement', 'below');
-
-			// Floating cart
-			counter = 1;
-			// ... @TODO
-
-			// Floating contact buttons
-			counter = 1;
-			// ... @TODO
-
+			$sticky.find('.tb-search-trigger').data('placement', 'below').addClass('menu-btn');
 		}
+
+		// Floating cart
+		// counter = 1;
+		// ... @TODO
 
 		// Sticky menu, make selector dynamic
 		$sticky_spy.viewportChecker({
@@ -507,57 +502,22 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
-	// Floater popup
+	// Contact popover
 	// ---------------------------------------------------------
 
-	$('.tb-floater').on('click', '.floater-trigger', function(){
+	$('.tb-contact-trigger').popover({
+		html : true,
+		template : '<div class="tb-contact-popover popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'
+	});
 
-		var $el = $(this),
-			$popup = $el.closest('.tb-floater').find('.floater-popup'),
-			markup = '';
+	$('.tb-contact-trigger').on('show.bs.popover', function() {
+		var $el = $(this);
+		$el.html('<i class="fa fa-'+$el.data('close')+'"></i>');
+	});
 
-		if ( $el.hasClass('disable') ) {
-			return false;
-		}
-
-		if ( $el.hasClass('open') ) {
-
-			markup = '<i class="fa fa-'+$el.data('open')+'"></i>';
-
-			if ( $el.data('label') || $el.data('label') === 0 ) {
-				markup += '<span class="trigger-label">'+$el.data('label')+'</span>';
-			}
-
-			$el.stop().removeClass('open').html( markup );
-			$popup.stop().fadeOut(200);
-
-		} else {
-
-			$el.closest('.wrap').find('.tb-floater .floater-trigger').each(function(){
-
-				var $current = $(this);
-
-				markup = '<i class="fa fa-'+$current.data('open')+'"></i>';
-
-				if ( $current.data('label') || $current.data('label') === 0 ) {
-					markup += '<span class="trigger-label">'+$current.data('label')+'</span>';
-				}
-
-				$current.stop().removeClass('open').html( markup );
-				$current.closest('.tb-floater').find('.floater-popup').stop().fadeOut(200);
-			});
-
-			markup = '<i class="fa fa-'+$el.data('close')+'"></i>';
-
-			if ( $el.data('label') ) {
-				markup += '<span class="trigger-label">'+$el.data('label')+'</span>';
-			}
-
-			$el.stop().addClass('open').html( markup );
-			$popup.stop().fadeIn(200);
-		}
-
-		return false;
+	$('.tb-contact-trigger').on('hide.bs.popover', function() {
+		var $el = $(this);
+		$el.html('<i class="fa fa-'+$el.data('open')+'"></i>');
 	});
 
 	// ---------------------------------------------------------

@@ -1732,25 +1732,9 @@ function jumpstart_ent_css() {
 
 		$print .= "}\n";
 
-		$print .= ".header-nav .tb-floater .floater-trigger {\n";
-
 		if ( ! themeblvd_config('suck_up') ) {
 
-			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
-
-			if ( $header_text == 'light' ) {
-				$print .= sprintf("\tcolor: %s;\n", themeblvd_get_rgb($menu_font['color'], '0.9') );
-			}
-		}
-
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
-
-		$print .= "}\n";
-
-		if ( ! themeblvd_config('suck_up') ) {
-
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover,\n";
-			$print .= ".header-nav .tb-floater .floater-trigger:hover {\n";
+			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
 
 			if ( $header_text == 'light' ) {
 				$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
@@ -1763,35 +1747,20 @@ function jumpstart_ent_css() {
 
 	} else if ( $header_text == 'light' ) {
 
-		$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
-	    $print .= ".header-nav .tb-floater .floater-trigger {\n";
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 	    $print .= "\tcolor: #ffffff;\n";
 		$print .= "\tcolor: rgba(255,255,255,.9);\n";
 	    $print .= "}\n";
 
-		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover,\n";
-		$print .= ".header-nav .tb-floater .floater-trigger:hover {\n";
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
 		$print .= "\tcolor: #ffffff;\n";
 		$print .= "}\n";
 
 	}
 
 	if ( themeblvd_get_option('menu_text_shadow') ) {
-		$print .= ".tb-primary-menu > li > .menu-btn,\n";
-		$print .= ".header-nav .tb-floater .floater-trigger,\n";
-		$print .= ".tb-sticky-menu .tb-floater .floater-trigger {\n";
+		$print .= ".tb-primary-menu > li > .menu-btn {\n";
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
-		$print .= "}\n";
-	}
-
-	$print .= ".header-nav .tb-floater .floater-trigger {\n";
-	$print .= sprintf( "\tpadding-top: %spx;\n", $top+2 );
-	$print .= "}\n";
-
-	if ( $contact = themeblvd_get_option('social_media') ) {
-		$print .= ".header-nav .contact-popup,\n";
-		$print .= ".tb-sticky-menu .contact-popup {\n";
-		$print .= sprintf("\twidth: %spx;\n", count($contact)*26+20 );
 		$print .= "}\n";
 	}
 
@@ -1851,9 +1820,7 @@ function jumpstart_ent_css() {
 		$print .= "}\n";
 
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover,\n";
-		$print .= ".tb-sticky-menu .tb-floater .floater-trigger,\n";
-		$print .= ".tb-sticky-menu .tb-floater .floater-trigger:hover {\n";
+		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
 
 		if ( themeblvd_get_option('menu_apply_font') && $menu_font ) {
 
@@ -2017,8 +1984,11 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 		return $items; // not the main menu
 	}
 
-	if ( themeblvd_get_option('searchform') == 'show' ) {
-		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'below', 'class' => 'menu-btn')));
+	if ( $icons = themeblvd_get_option('social_media') ) {
+		$items .= '<li class="menu-item level-1 menu-contact">';
+		$buttons = str_replace( '"', '\'', themeblvd_get_contact_bar($icons, array('tooltip' => false)) );
+		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="close" data-content="'.$buttons.'"><i class="fa fa-envelope"></i></a>';
+		$items .= '</li>';
 	}
 
 	if ( themeblvd_do_cart() ) {
@@ -2026,10 +1996,9 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 		// themeblvd_cart_popup();
 	}
 
-	// if ( ) {
-		// ... contact popup
-		// themeblvd_contact_popup( array('class' => 'to-mobile') );
-	//}
+	if ( themeblvd_get_option('searchform') == 'show' ) {
+		$items .= sprintf('<li class="menu-item level-1 menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'below', 'class' => 'menu-btn')));
+	}
 
 	return $items;
 }

@@ -177,12 +177,14 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Menu Addons */
-.header-nav .tb-primary-menu > li > .tb-search-trigger {
+.header-nav .tb-primary-menu > li > .tb-search-trigger,
+.header-nav .tb-primary-menu > li > .tb-contact-trigger {
 	outline: none;
 	padding-right: 10px;
 	padding-left: 10px;
 }
-.header-nav .tb-primary-menu > li > .tb-search-trigger .fa {
+.header-nav .tb-primary-menu > li > .tb-search-trigger .fa,
+.header-nav .tb-primary-menu > li > .tb-contact-trigger .fa {
 	margin: 0;
 	width: 1em;
 	text-align: center;
