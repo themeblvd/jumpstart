@@ -116,28 +116,19 @@ jQuery(document).ready(function($) {
 			$toggle_open = $('#primary-menu-open'),
 			$toggle_close = $('#primary-menu-close'),
 			$extras = $('.tb-to-mobile-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-mobile-menu"
-			max = parseInt(themeblvd.mobile_menu_viewport_max),
-			search_count = 0;
+			max = parseInt(themeblvd.mobile_menu_viewport_max);
 
 		// Add search box, if exists in header
-		$header.find('.tb-search').each(function() {
-
-			if ( search_count > 0 ) { // We only want one search box
-				return;
-			}
-
-			$(this).clone().addClass('mini').appendTo( $side_holder );
-
-			search_count++;
-		});
+		$header.find('.tb-search').first().clone().addClass('mini').appendTo( $side_holder );
 
 		// Add menu, header text, and social icons, if they exist
 		$primary_menu.clone().appendTo( $side_holder );
-		$body.find('.header-text.to-mobile').clone().appendTo( $side_holder );
-		$body.find('.tb-social-icons.to-mobile').clone().appendTo( $side_holder );
+		$body.find('.header-text.to-mobile').first().clone().appendTo( $side_holder );
+		$body.find('.tb-social-icons.to-mobile').first().clone().appendTo( $side_holder );
 
-		// And don't keep the menu-search, if user has added it
-		$side_holder.find('li.menu-search').remove();
+		// If original <ul> had search or contact, remove because
+		// it's now elsewhere.
+		$side_holder.find('li.menu-search, li.menu-contact').remove(); // @TODO cart 
 
 		// Adjust menu classes
 		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-mobile-menu tb-side-menu'); // "tb-side-menu" class allows for level 2+ tree styling
@@ -232,8 +223,7 @@ jQuery(document).ready(function($) {
 
 		// Build sticky menu
 		var $sticky_spy = $(themeblvd.sticky),
-			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy ),
-			counter = 1;
+			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy );
 
 		// Add the logo
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
@@ -245,28 +235,37 @@ jQuery(document).ready(function($) {
 		// Add nav menu
 		$primary_menu.clone().appendTo( $sticky.find('.sticky-wrap > .nav') );
 
-		// Remove contact popover - Bootstrap popover won't work with our fixed position sticky menu
-		$sticky.find('.tb-primary-menu > li.menu-contact').remove();
+		// Contact icons
+		if ( $sticky.find('.tb-primary-menu li.menu-contact').length ) {
+
+			// Popover already exists in menu, so just adjust the container
+			$sticky.find('.tb-contact-trigger').data('container', '.tb-sticky-menu');
+
+		} else if ( $header.find('.tb-social-icons').length ) {
+
+			// No popover yet in menu, but it's present in header.
+			// Transfer this to a menu item.
+			$sticky.find('.tb-primary-menu').append('<li class="menu-item level-1 menu-contact"><a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container=".tb-sticky-menu" data-placement="bottom" data-open="envelope" data-close="close"><i class="fa fa-envelope"></i></a></li>');
+			$header.find('.tb-social-icons').first().clone().appendTo( $sticky.find('.menu-contact') ).wrap('<div class="contact-popover-content hide"></div>');
+
+		}
 
 		// Floating search
-		if ( $header.find('.tb-search-trigger').length ) {
+		if ( $sticky.find('.tb-primary-menu li.menu-search').length ) {
 
+			// Search trigger already exists in menu, so just adjust
+			// the placement and add search box.
+			$sticky.find('.tb-search-trigger').data('placement', 'below').addClass('menu-btn');
 			$header.find('.tb-floating-search').clone().appendTo($sticky);
 
-			$sticky.find('.tb-primary-menu > li.menu-search').remove();
+		} else if ( $header.find('.tb-search-trigger').length ) {
 
-			$header.find('.tb-search-trigger').each(function(){
-
-				if ( counter != 1 ) {
-					return false;
-				}
-
-				$(this).clone().appendTo( $sticky.find('.tb-primary-menu') ).wrap('<li class="menu-item level-1 menu-search"></li>');
-
-				counter++;
-			});
-
+			// No search yet in menu, but it's present in header.
+			// Transfer this to a menu item.
+			$header.find('.tb-floating-search').clone().appendTo($sticky);
+			$header.find('.tb-search-trigger').first().clone().appendTo( $sticky.find('.tb-primary-menu') ).wrap('<li class="menu-item level-1 menu-search"></li>');
 			$sticky.find('.tb-search-trigger').data('placement', 'below').addClass('menu-btn');
+
 		}
 
 		// Floating cart
@@ -281,12 +280,16 @@ jQuery(document).ready(function($) {
 			callbackFunction: function($elem, action){
 				if ( $elem.hasClass('visible') ) {
 
+					// Close open floating search
 					var $search_trigger = $elem.find('#sticky-menu .tb-search-trigger');
 
 					if ( $search_trigger.hasClass('open') ) {
 						$search_trigger.stop().removeClass('open').html( '<i class="fa fa-'+$search_trigger.data('open')+'"></i>' );
 				        $elem.find('#sticky-menu .tb-floating-search').fadeOut(250).attr('style', '').removeClass('below');
 					}
+
+					// Close open contact popovers
+					$elem.find('#sticky-menu .tb-contact-trigger').popover('hide');
 
 					/*
 					$elem.find('#sticky-menu .floater-trigger').each(function(){
@@ -507,7 +510,12 @@ jQuery(document).ready(function($) {
 
 	$('.tb-contact-trigger').popover({
 		html : true,
-		template : '<div class="tb-contact-popover popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'
+		template : '<div class="tb-contact-popover popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>',
+		content : function() {
+			return $(this).next('.contact-popover-content').html();
+		}
+	}).on('click', function(e){
+		e.preventDefault();
 	});
 
 	$('.tb-contact-trigger').on('show.bs.popover', function() {

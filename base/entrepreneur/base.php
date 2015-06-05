@@ -1986,8 +1986,8 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 	if ( $icons = themeblvd_get_option('social_media') ) {
 		$items .= '<li class="menu-item level-1 menu-contact">';
-		$buttons = str_replace( '"', '\'', themeblvd_get_contact_bar($icons, array('tooltip' => false)) );
-		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="close" data-content="'.$buttons.'"><i class="fa fa-envelope"></i></a>';
+		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="close"><i class="fa fa-envelope"></i></a>';
+		$items .= sprintf('<div class="contact-popover-content hide">%s</div>', themeblvd_get_contact_bar($icons, array('tooltip' => false, 'class' => 'to-mobile')));
 		$items .= '</li>';
 	}
 
