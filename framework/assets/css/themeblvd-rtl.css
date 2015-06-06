@@ -7292,6 +7292,7 @@ blockquote small {
 }
 .tb-floating-search .search-wrap:before {
 	content: "\f002";
+	display: block;
 	font-family: "FontAwesome";
 	font-size: 18px;
 	line-height: 1.3em;
@@ -7302,6 +7303,8 @@ blockquote small {
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	width: 1em;
 }
 .tb-floating-search.full .search-wrap:before {
 	font-size: 22px;
