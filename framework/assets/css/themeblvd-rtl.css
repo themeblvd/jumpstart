@@ -6256,16 +6256,16 @@ blockquote small {
 	margin-bottom: 20px;
 }
 @media (min-width: 768px) {
-	.firefox .col-sm-020 {
+	.firefox .tb-isotope .col-sm-020 {
 		width: 19.75%;
 	}
-	.firefox .col-sm-3 {
+	.firefox .tb-isotope .col-sm-3 {
 		width: 24.75%;
 	}
-	.firefox .col-sm-4 {
+	.firefox .tb-isotope .col-sm-4 {
 		width: 33.1%;
 	}
-	.firefox .col-sm-6 {
+	.firefox .tb-isotope .col-sm-6 {
 		width: 49.75%;
 	}
 }
