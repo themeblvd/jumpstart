@@ -366,6 +366,11 @@ Author URI: http://www.themeblvd.com
   padding: 0 20px;
 }
 
+/* Banner */
+.js-boxed .tb-featured-banner .banner-content {
+	padding: 0 40px;
+}
+
 /* Content Padding */
 .js-boxed .blog-wrap > article,
 .js-boxed article.single,
