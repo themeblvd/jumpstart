@@ -209,38 +209,34 @@ function themeblvd_get_cart_popup( $args = array() ) {
 
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_cart_popup_defaults', array(
-		'open'			=> 'shopping-cart',	// FontAwesome icon to open
-		'close'			=> 'close',			// FontAwesome icon to close
-		'placement-x'	=> '', 				// left, right
-		'placement-y'	=> 'bottom', 		// top, bottom
-		'class'			=> '' 				// Optional CSS class to add
+		'trigger'	=> false,						// Include trigger in return
+		'size'		=> 'sm', 						// sm, md, lg
+		'id'		=> 'floating-shopping-cart',	// HTML ID of modal
+		'class'		=> '' 							// Optional CSS class to add
 	));
 	$args = wp_parse_args( $args, $defaults );
 
-	$x = $args['placement-x'];
+	$output = '';
 
-	if ( ! $x ) {
-		if ( is_rtl() ) {
-			$x = 'right';
-		} else {
-			$x = 'left';
-		}
+	if ( $args['trigger'] ) {
+		$output .= themeblvd_get_cart_popup_trigger( array('target' => $args['id']) );
 	}
 
-	$class = sprintf( 'tb-floater tb-cart-popup %s %s', $x, $args['placement-y'] );
+	$class = 'tb-cart-popup modal fade';
 
 	if ( $args['class'] ) {
-		$class .= $args['class'];
+		$class .= ' '.$args['class'];
 	}
 
-	$output = sprintf( '<div class="%s">', $class );
-
-	// Trigger Button
-	$output .= themeblvd_get_cart_popup_trigger($args);
-
 	// Cart popup
-	$output .= '<div class="floater-popup cart-popup">';
-	$output .= '<span class="arrow"></span>';
+	$output .= '<div id="'.$args['id'].'" class="'.$class.'">';
+	$output .= '<div class="modal-dialog modal-'.$args['size'].'">';
+	$output .= '<div class="modal-content">';
+	$output .= '<div class="modal-header">';
+	$output .= '<button type="button" class="close" data-dismiss="modal" aria-label="'.themeblvd_get_local('close').'"><span aria-hidden="true">&times;</span></button>';
+	$output .= '<h4 class="modal-title">'.themeblvd_get_local('cart').'</h4>';
+	$output .= '</div>';
+	$output .= '<div class="modal-body clearfix">';
 
 	ob_start();
 
@@ -250,7 +246,9 @@ function themeblvd_get_cart_popup( $args = array() ) {
 	do_action('themeblvd_floating_cart');
 
 	$output .= ob_get_clean();
-	$output .= '</div><!-- .cart-holder (end) -->';
+	$output .= '</div><!-- .modal-body (end) -->';
+	$output .= '</div><!-- .modal-content (end) -->';
+	$output .= '</div><!-- .modal-dialog (end) -->';
 	$output .= '</div><!-- .tb-cart-popup (end) -->';
 
 	return apply_filters( 'themeblvd_cart_popup', $output, $args );
@@ -268,7 +266,7 @@ function themeblvd_cart_popup( $args = array() ) {
 }
 
 /**
- * Shopping cart popup
+ * Get shopping cart popup trigger link
  *
  * @since 2.5.0
  *
@@ -278,36 +276,39 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_cart_popup_defaults', array( // filtering matches themeblvd_get_cart_popup() args
-		'open'			=> 'shopping-cart',	// FontAwesome icon to open
-		'close'			=> 'close'			// FontAwesome icon to close
+		'open'			=> 'shopping-cart',			// FontAwesome icon to open
+		'close'			=> 'close',					// FontAwesome icon to close
+		'class'			=> '',						// Optional CSS classes to add
+		'target'		=> 'floating-shopping-cart'	// HTML ID of floating shopping cart linking to
 	));
 	$args = wp_parse_args( $args, $defaults );
 
-	$output = sprintf( '<a href="#" class="floater-trigger cart-trigger enable" data-open="%1$s" data-close="%2$s" data-label=""><i class="fa fa-%1$s"></i></a>', $args['open'], $args['close'] );
+	$class = 'tb-cart-trigger menu-btn';
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
+	}
+
+	$output = sprintf( '<a href="#" class="%1$s" data-toggle="modal" data-target="#%2$s" data-open="%3$s" data-close="%4$s" data-label=""><i class="fa fa-%3$s"></i></a>', $class, $args['target'], $args['open'], $args['close'] );
 
 	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
-
-		if ( is_cart() || is_checkout() ) {
-			$output = str_replace('enable', 'disable', $output);
+		if ( $count = WC()->cart->get_cart_contents_count() ) {
+			$output =  str_replace('tb-cart-trigger', 'tb-cart-trigger has-label char-'.strlen(strval($count)), $output);
+			$label = sprintf( '<span class="trigger-label">%s</span>', $count );
+			$output =  str_replace('</a>', $label.'</a>', $output);
 		}
-
-		$count = WC()->cart->get_cart_contents_count();
-
-		$label = sprintf( '<span class="trigger-label">%s</span>', $count );
-		$output = str_replace('data-label=""', sprintf('data-label="%s"', $count), $output);
-		$output =  str_replace('</a>',$label.'</a>', $output);
 	}
 
 	return apply_filters('themeblvd_cart_popup_trigger', $output, $args);
 }
 
 /**
- * Shopping cart button used in mobile display.
+ * Shopping cart popup trigger link
  *
  * @since 2.5.0
  */
-function themeblvd_mobile_cart_link() {
-	echo themeblvd_get_mobile_cart_link();
+function themeblvd_cart_popup_trigger( $args = array() ) {
+	echo themeblvd_get_cart_popup_trigger( $args );
 }
 
 /**
@@ -323,14 +324,28 @@ function themeblvd_get_mobile_cart_link(){
 	$cart_label = '';
 
 	if ( themeblvd_installed('woocommerce') ) {
+
 		$cart_url = WC()->cart->get_cart_url();
+
 		$count = WC()->cart->get_cart_contents_count();
-		$cart_label = sprintf( '<span class="cart-count">%s</span>', $count );
+
+		if ( $count ) {
+			$cart_label = sprintf( '<span class="cart-count">%s</span>', $count );
+		}
 	}
 
 	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', apply_filters('themeblvd_cart_url', $cart_url), apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-cart"></i>'), $cart_label );
 
 	return apply_filters('themeblvd_mobile_cart_link', $output, $cart_url, $cart_label);
+}
+
+/**
+ * Shopping cart button used in mobile display.
+ *
+ * @since 2.5.0
+ */
+function themeblvd_mobile_cart_link() {
+	echo themeblvd_get_mobile_cart_link();
 }
 
 /**
@@ -1247,7 +1262,13 @@ function themeblvd_get_to_top( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$output = sprintf('<a href="#" class="tb-scroll-to-top %s"><i class="fa fa-chevron-up"></i></a>', $args['class']);
+	$class = 'tb-scroll-to-top';
+
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
+	}
+
+	$output = sprintf('<a href="#" class="%s"><i class="fa fa-chevron-up"></i></a>', $class);
 
     return apply_filters( 'themeblvd_to_top', $output, $args );
 }

@@ -178,23 +178,59 @@ Author URI: http://www.themeblvd.com
 
 /* Menu Addons */
 .header-nav .tb-primary-menu > li > .tb-search-trigger,
-.header-nav .tb-primary-menu > li > .tb-contact-trigger {
+.header-nav .tb-primary-menu > li > .tb-contact-trigger,
+.header-nav .tb-primary-menu > li > .tb-cart-trigger {
 	outline: none;
 	padding-right: 10px;
 	padding-left: 10px;
 }
 .header-nav .tb-primary-menu > li > .tb-search-trigger .fa,
-.header-nav .tb-primary-menu > li > .tb-contact-trigger .fa {
+.header-nav .tb-primary-menu > li > .tb-contact-trigger .fa,
+.header-nav .tb-primary-menu > li > .tb-cart-trigger .fa {
 	margin: 0;
 	width: 1em;
 	text-align: center;
 }
-.header-nav .tb-cart-popup {
-	margin-right: 2px; /* a little space for cart item count */
+.header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label {
+	padding-right: 15px;
+	padding-left: 10px;
 }
-.rtl .header-nav .tb-cart-popup {
-	margin-right: 0;
-	margin-left: 2px; /* a little space for cart item count */
+.header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-2 {
+	padding-right: 22px;
+}
+.header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-3 {
+	padding-right: 30px;
+}
+.header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-4 {
+	padding-right: 35px;
+}
+.header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-5 {
+	padding-right: 43px;
+}
+.rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label {
+	padding-right: 10px;
+	padding-left: 15px;
+}
+.rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-2 {
+	padding-left: 22px;
+}
+.rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-3 {
+	padding-left: 30px;
+}
+.rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-4 {
+	padding-left: 35px;
+}
+.rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger.has-label.char-5 {
+	padding-left: 43px;
+}
+.header-nav .tb-primary-menu > li > .tb-cart-trigger .trigger-label {
+	top: 50%;
+	left: 20px;
+	margin-top: -2px;
+}
+.rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger .trigger-label {
+	right: 20px;
+	left: initial;
 }
 
 /* Transparent Header */
@@ -393,7 +429,4 @@ Author URI: http://www.themeblvd.com
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	padding: 20px 5px;
-}
-.header-nav .cart-trigger .trigger-label {
- 	bottom: -20px;
 }

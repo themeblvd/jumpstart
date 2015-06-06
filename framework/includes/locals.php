@@ -20,6 +20,7 @@ function themeblvd_get_all_locals() {
 		'audio'						=> __( 'Audio', 'themeblvd_frontend' ),
 		'by'						=> __( 'by', 'themeblvd_frontend' ),
 		'cancel_reply_link'			=> __( 'Cancel reply', 'themeblvd_frontend' ),
+		'cart'						=> __( 'Shopping Cart', 'themeblvd_frontend' ),
 		'categories'				=> __( 'Categories', 'themeblvd_frontend' ),
 		'category'					=> __( 'Category', 'themeblvd_frontend' ),
 		'chat'						=> __( 'Chat', 'themeblvd_frontend' ),

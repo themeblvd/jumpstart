@@ -87,6 +87,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		/**
 		 * Modify WooCommerce settings page
 		 */
+
 		// add_filter('woocommerce_general_settings', array($this, 'remove_options') );
 		add_filter('woocommerce_product_settings', array($this, 'remove_options') );
 
@@ -181,6 +182,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		// Floating shopping cart
 		add_filter( 'themeblvd_do_cart', '__return_true' );
 		add_action( 'themeblvd_floating_cart', array($this, 'cart') );
+		add_action( 'themeblvd_after', array($this, 'add_cart') );
 
 		// Update for number of items in floating cart
 		if ( defined('WC_VERSION') && version_compare(WC_VERSION, '2.3', '>=') ) {
@@ -880,15 +882,26 @@ class Theme_Blvd_Compat_WooCommerce {
 	}
 
 	/**
+	 * Output the full floating cart modal, so it can
+	 * be accessed with our trigger the theme may output
+	 * any where it needs.
+	 *
+	 * @since 2.5.0
+	 */
+	public function add_cart() {
+		if ( ! is_cart() && ! is_checkout() ) {
+			themeblvd_cart_popup();
+		}
+	}
+
+	/**
 	 * Ajaxify number of items for floating shopping cart trigger.
 	 *
 	 * @since 2.5.0
 	 */
 	public function cart_link_fragment( $fragments ) {
 
-		global $woocommerce;
-
-		$fragments['a.cart-trigger.enable'] = themeblvd_get_cart_popup_trigger();
+		$fragments['.tb-cart-trigger'] = themeblvd_get_cart_popup_trigger();
 		$fragments['#mobile-to-cart'] = themeblvd_get_mobile_cart_link();
 
 		return $fragments;

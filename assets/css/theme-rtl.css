@@ -151,7 +151,7 @@
 .header-top-mini .header-text {
 	line-height: 20px;
 }
-.header-top-mini .tb-social-icons ul > li > a {
+.header-top-mini .tb-social-icons > li > a {
 	font-size: 20px;
 	width: 20px;
 	height: 20px;
@@ -173,7 +173,8 @@
 	border-left: none;
 	padding-left: 0;
 }
-.header-top-nav .tb-search-trigger {
+.header-top-nav .tb-search-trigger,
+.header-top-nav .tb-cart-trigger {
 	color: inherit;
 	display: inline-block;
 	line-height: 24px; /* Match height of social icons */
@@ -182,14 +183,36 @@
 	text-align: center;
 	width: 1em;
 }
-.header-top-mini .header-top-nav .tb-search-trigger {
+.header-top-mini .header-top-nav .tb-search-trigger,
+.header-top-mini .header-top-nav .tb-cart-trigger {
 	line-height: 20px;
 }
-.header-top-nav .tb-search-trigger:hover {
+.header-top-nav .tb-search-trigger:hover,
+.header-top-nav .tb-cart-trigger:hover {
 	opacity: 1;
 }
-.header-top-nav > li.top-cart {
-	padding-right: 14px;
+body.woocommerce-checkout .header-top-nav .tb-cart-trigger,
+body.woocommerce-cart .header-top-nav .tb-cart-trigger {
+	cursor: default;
+	opacity: 1;
+}
+.header-top-nav .tb-cart-trigger.has-label {
+	margin-left: 10px;
+}
+.header-top-mini .header-top-nav .tb-cart-trigger.has-label {
+	margin-left: 8px;
+}
+.header-top-nav .tb-cart-trigger.has-label.char-2 {
+	margin-left: 14px;
+}
+.header-top-nav .tb-cart-trigger.has-label.char-3 {
+	margin-left: 20px;
+}
+.header-top-nav .tb-cart-trigger.has-label.char-4 {
+	margin-left: 26px;
+}
+.header-top-nav .tb-cart-trigger.has-label.char-5 {
+	margin-left: 32px;
 }
 
 /* Header Content */

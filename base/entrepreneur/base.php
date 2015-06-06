@@ -1992,8 +1992,7 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 	}
 
 	if ( themeblvd_do_cart() ) {
-		// ...
-		// themeblvd_cart_popup();
+		$items .= sprintf('<li class="menu-item level-1 menu-cart">%s</li>', themeblvd_get_cart_popup_trigger());
 	}
 
 	if ( themeblvd_get_option('searchform') == 'show' ) {

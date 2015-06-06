@@ -128,7 +128,7 @@ jQuery(document).ready(function($) {
 
 		// If original <ul> had search or contact, remove because
 		// it's now elsewhere.
-		$side_holder.find('li.menu-search, li.menu-contact').remove(); // @TODO cart 
+		$side_holder.find('li.menu-search, li.menu-contact, li.menu-cart').remove();
 
 		// Adjust menu classes
 		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-mobile-menu tb-side-menu'); // "tb-side-menu" class allows for level 2+ tree styling
@@ -250,6 +250,11 @@ jQuery(document).ready(function($) {
 
 		}
 
+		// Floating cart trigger
+		if ( $header.find('.tb-cart-trigger').length && ! $sticky.find('.tb-primary-menu li.menu-cart').length ) {
+			$header.find('.tb-cart-trigger').first().clone().appendTo( $sticky.find('.tb-primary-menu') ).wrap('<li class="menu-item level-1 menu-cart"></li>');
+		}
+
 		// Floating search
 		if ( $sticky.find('.tb-primary-menu li.menu-search').length ) {
 
@@ -267,10 +272,6 @@ jQuery(document).ready(function($) {
 			$sticky.find('.tb-search-trigger').data('placement', 'below').addClass('menu-btn');
 
 		}
-
-		// Floating cart
-		// counter = 1;
-		// ... @TODO
 
 		// Sticky menu, make selector dynamic
 		$sticky_spy.viewportChecker({
@@ -291,22 +292,7 @@ jQuery(document).ready(function($) {
 					// Close open contact popovers
 					$elem.find('#sticky-menu .tb-contact-trigger').popover('hide');
 
-					/*
-					$elem.find('#sticky-menu .floater-trigger').each(function(){
-
-						var $current = $(this),
-							markup = '<i class="fa fa-'+$current.data('open')+'"></i>';
-
-						if ( $current.data('label') ) {
-							markup += '<span class="trigger-label">'+$current.data('label')+'</span>';
-						}
-
-						$current.stop().removeClass('open').html( markup );
-						$current.closest('.tb-floater').find('.floater-popup').stop().fadeOut(100);
-
-					});
-					*/
-
+					// Close open drodpdown menus
 					$elem.find('#sticky-menu .menu-item').each(function(){
 
 						var $item = $(this).closest('li');
@@ -383,6 +369,10 @@ jQuery(document).ready(function($) {
 
 	// No-click menu items
 	$('ul.sf-menu li.no-click, ul.tb-mobile-menu li.no-click').find('a:first').on('click', function(){
+		return false;
+	});
+
+	$('a.no-click').on('click', function(){
 		return false;
 	});
 

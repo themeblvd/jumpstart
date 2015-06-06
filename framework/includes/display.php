@@ -49,7 +49,7 @@ function themeblvd_header_top_default() {
 					<?php endif; ?>
 
 					<?php if ( themeblvd_do_cart() ) : ?>
-						<li class="top-cart"><?php themeblvd_cart_popup(); ?></li>
+						<li class="top-cart"><?php themeblvd_cart_popup_trigger(); ?></li>
 					<?php endif; ?>
 
 					<?php if ( $icons ) : ?>

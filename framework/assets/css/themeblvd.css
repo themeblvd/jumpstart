@@ -839,16 +839,38 @@ body.admin-bar .tb-sticky-menu {
 	padding: 0 12px;
 }
 .tb-sticky-menu .tb-primary-menu > li.menu-search > .menu-btn,
-.tb-sticky-menu .tb-primary-menu > li.menu-contact > .menu-btn {
+.tb-sticky-menu .tb-primary-menu > li.menu-contact > .menu-btn,
+.tb-sticky-menu .tb-primary-menu > li.menu-cart > .menu-btn {
 	outline: none;
 	padding-right: 10px;
 	padding-left: 10px;
 }
 .tb-sticky-menu .tb-primary-menu > li.menu-search > .menu-btn .fa,
-.tb-sticky-menu .tb-primary-menu > li.menu-contact > .menu-btn .fa {
+.tb-sticky-menu .tb-primary-menu > li.menu-contact > .menu-btn .fa,
+.tb-sticky-menu .tb-primary-menu > li.menu-cart > .menu-btn .fa {
 	margin: 0;
 	width: 1em;
 	text-align: center;
+}
+.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label {
+	padding-right: 17px;
+}
+.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-2 {
+	padding-right: 24px;
+}
+.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-3 {
+	padding-right: 32px;
+}
+.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-4 {
+	padding-right: 37px;
+}
+.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-5 {
+	padding-right: 45px;
+}
+.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger .trigger-label {
+	top: 50%;
+	left: 20px;
+	margin-top: -2px;
 }
 .tb-sticky-menu .tb-contact-popover.bottom {
 	margin-top: -1px;
