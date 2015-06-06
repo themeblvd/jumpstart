@@ -4,6 +4,7 @@ $compat = Theme_Blvd_Compat_WooCommerce::get_instance();
 if ( $compat->loop_view() == 'catalog' ) {
 	echo '</tbody>';
 	echo '</table>';
+	echo '</div><!-- .table-responsive -->';
 } else {
 	echo '</ul><!-- .products (end) -->';
 }

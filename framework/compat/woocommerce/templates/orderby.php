@@ -10,7 +10,7 @@ $views = apply_filters( 'themeblvd_woo_views', array(
 ?>
 <div class="tb-woo-ordering">
 
-	<div class="btn-group ordering">
+	<div class="btn-group ordering clearfix">
 
 		<?php if ( ! empty($catalog_orderby_options[$orderby]) ) : ?>
 			<button type="button" class="btn btn-sm btn-default"><?php echo $catalog_orderby_options[$orderby]; ?></button>
@@ -28,7 +28,7 @@ $views = apply_filters( 'themeblvd_woo_views', array(
 
 	</div>
 
-	<div class="btn-group view">
+	<div class="btn-group view clearfix">
 
 		<?php if ( themeblvd_get_option('woo_view_toggle') == 'yes' ) : ?>
 

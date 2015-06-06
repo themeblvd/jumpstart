@@ -5,7 +5,8 @@ if ( ! is_shop() && ! is_product_category() && ! is_product_tag() ) {
 }
 
 if ( themeblvd_get_att('woo_product_view') == 'catalog' ) {
-	echo '<table class="shop_table">';
+	echo '<div class="table-responsive">';
+	echo '<table class="shop_table table">';
 	echo '<tbody>';
 } else {
 	echo '<ul class="products">';
