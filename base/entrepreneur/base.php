@@ -1830,12 +1830,12 @@ function jumpstart_ent_css() {
 
 	if ( themeblvd_get_option('menu_sub_bg_color_brightness') == 'dark' ) {
 
-		$print .= ".tb-primary-menu ul .menu-btn,\n";
+		$print .= ".tb-primary-menu ul.sub-menu .menu-btn,\n";
 		$print .= ".tb-primary-menu .mega-section-header {\n";
 		$print .= "\tcolor: #ffffff;\n";
 		$print .= "}\n";
 
-		$print .= "\t.tb-primary-menu ul a:hover {";
+		$print .= "\t.tb-primary-menu ul.sub-menu a:hover {";
 		$print .= "background-color: rgba(255,255,255,.1)\n";
 		$print .= "}\n";
 

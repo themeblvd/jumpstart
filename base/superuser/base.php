@@ -2279,7 +2279,7 @@ function jumpstart_su_css() {
 
 	if ( $options['sub_bg_color_brightness'] == 'dark' ) {
 
-		$print .= ".tb-primary-menu ul .menu-btn,\n";
+		$print .= ".tb-primary-menu ul.sub-menu .menu-btn,\n";
 		$print .= ".tb-primary-menu .mega-section-header {\n";
 		$print .= "\tcolor: #ffffff;\n";
 		$print .= "}\n";
@@ -2289,7 +2289,7 @@ function jumpstart_su_css() {
 		$print .= "\tborder-color: rgba(0,0,0,.2);\n";
 		$print .= "}";
 
-		$print .= "\t.tb-primary-menu ul a:hover {";
+		$print .= "\t.tb-primary-menu ul.sub-menu a:hover {";
 		$print .= "background-color: rgba(255,255,255,.1)\n";
 		$print .= "}\n";
 
