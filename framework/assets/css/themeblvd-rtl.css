@@ -239,7 +239,9 @@ h5,
 h6 {
 	margin-top: 0;
 }
-p {
+p,
+ol,
+ul {
 	margin-bottom: 20px;
 }
 .text-muted {
