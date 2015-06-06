@@ -14,7 +14,6 @@
  *   2.8 - Transparent Header
  * 3.0 - Main
  *   3.1 - Breadcrumbs
- *   3.2 - Banner
  * 4.0 - Bottom
  * 5.0 - Content
  *   5.1 - Typography
@@ -458,13 +457,6 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 @media (max-width: 991px) {
 	#content {
 		margin-bottom: 30px;
-	}
-}
-
-/* Banner */
-@media (max-width: 767px) {
-	#featured-banner {
-		margin-bottom: 20px;
 	}
 }
 
