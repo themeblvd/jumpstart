@@ -33,7 +33,13 @@
 .tb-gforms-compat .gform_wrapper .top_label .gfield_label {
     margin: 20px 0 7px 0;
 }
-.tb-gforms-compat .gform_wrapper .top_label > li:first-child .gfield_label {
+.tb-gforms-compat .gform_wrapper .top_label li.gfield {
+    margin-bottom: 20px;
+}
+.tb-gforms-compat .gform_wrapper .top_label li.gfield:last-child {
+    margin-bottom: 0;
+}
+.tb-gforms-compat .gform_wrapper .top_label > li .gfield_label {
     margin-top: 0;
 }
 .tb-gforms-compat .gform_wrapper select[multiple=multiple] {
@@ -219,7 +225,7 @@
     width: 49%;
 }
 .tb-gforms-compat .gform_wrapper .ginput_complex .ginput_right {
-    margin-left: 2%;
+    margin-left: 1.5%; /* 2% in a perfect world... */
 }
 
 /* CSS-Ready Classes */
