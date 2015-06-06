@@ -1949,12 +1949,9 @@ function jumpstart_su_css() {
 		if ( $header_bg_color ) {
 
 			// Floating search background color, to match header color
-			$print .= ".tb-floating-search {\n";
-			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
-			$print .= "}\n";
-
+			$print .= ".tb-floating-search,\n";
 			$print .= ".tb-floating-search.below {\n";
-			$print .= sprintf("\tbackground-color: %s;\n", $header_bg_color);
+			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
 			$print .= "}\n";
 
 			if ( themeblvd_get_option('header_text_color') == 'light' ) {

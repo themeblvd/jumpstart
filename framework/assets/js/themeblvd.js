@@ -398,7 +398,9 @@ jQuery(document).ready(function($) {
 			});
 
 			if ( $header.find('.header-content > .wrap').hasClass('floating-search-full-on') ) {
-				$header.find('.header-content > .wrap').stop().animate({'opacity': 1}, 250);
+				$header.find('.header-content > .wrap').stop().animate({'opacity': 1}, 250).removeClass('floating-search-full-on');
+			} else if ( $header.find('.header-nav').hasClass('floating-search-below-on') ) {
+				$header.find('.header-nav').stop().animate({'opacity': 1}, 250).removeClass('floating-search-below-on');
 			}
 
 	    } else {
@@ -433,6 +435,8 @@ jQuery(document).ready(function($) {
 	                'marginTop' : 0,
 	                'opacity': 1
 	            }, 250).find('.search-input').focus();
+
+				$('.site-header > .wrap > .header-nav').stop().animate({'opacity': 0.1}, 250).addClass('floating-search-below-on'); // Only when menu is below header content
 
 	        } else { // top
 
