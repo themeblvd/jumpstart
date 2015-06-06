@@ -817,7 +817,7 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_header',
 				'name' 		=> __( 'Header Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd' ),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Raleway:700', 'style' => 'normal'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '500', 'color' => '', 'google' => 'Raleway:500', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
