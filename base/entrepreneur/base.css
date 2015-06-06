@@ -73,15 +73,16 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Header Content */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 	.header-content > .wrap {
 		padding: 0;
 	}
 	.header-content .header-logo {
-		padding: 10px;
+		padding: 10px 70px 10px 10px;
 	}
-}
-@media (min-width: 768px) {
+	.rtl .header-content .header-logo {
+		padding: 10px 10px 10px 70px;
+	}
 	.header-content .header-logo img {
 		width: auto;
 		height: 70px;
@@ -107,6 +108,22 @@ Author URI: http://www.themeblvd.com
 	font-size: 13px;
 	line-height: 1;
 	margin-top: 5px;
+}
+@media (min-width: 768px) {
+	.header-content .btn-navbar {
+		right: 10px;
+	}
+	.rtl .header-content .btn-navbar {
+		right: initial;
+		left: 10px;
+	}
+	.header-content .btn-navbar.cart {
+		right: 70px;
+	}
+	.rtl .header-content .btn-navbar.cart {
+		right: initial;
+		left: 70px;
+	}
 }
 
 /* Primary Navigation (non-mobile view) */

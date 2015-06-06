@@ -1113,6 +1113,9 @@ function jumpstart_ent_options() {
 	themeblvd_add_option_section( 'styles', 'ent_extras',		__('Extras', 'themeblvd'), 			null, $options['extras'] );
 	themeblvd_add_option_section( 'styles', 'ent_css',			__('Custom CSS', 'themeblvd'), 		null, $options['css'] );
 
+	themeblvd_edit_option( 'layout', 'header', 'logo', 'std', array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-small.png', 'image_width' => '165', 'image_height' => '50', 'image_2x' => get_template_directory_uri().'/assets/images/logo-small_2x.png' ) );
+	themeblvd_edit_option( 'layout', 'header_trans', 'trans_logo', 'std', array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-small-trans.png', 'image_width' => '165', 'image_height' => '50', 'image_2x' => get_template_directory_uri().'/assets/images/logo-small-trans_2x.png' ) );
+
 }
 add_action('after_setup_theme', 'jumpstart_ent_options');
 
@@ -1183,10 +1186,23 @@ add_filter('body_class', 'jumpstart_ent_body_class');
  */
 function jumpstart_ent_top_height() {
 
+	// User-configured header height
 	$height = intval(themeblvd_get_option('header_height'));
 
+	// Add 1px for trans header design's bottom border
+	$height += 1;
+
+	// Top bar height
 	if ( themeblvd_get_option('header_text') ) {
-		$height += 49; // standard 48px + 1px bottom border
+
+		if ( themeblvd_get_option('top_mini') ) {
+			$height += 36; // mini
+		} else {
+			$height += 48; // standard
+		}
+
+		// Add 1px for trans header top bar design's border
+		$height += 1; // standard 48px + 1px bottom border
 	}
 
 	return $height;
@@ -1688,7 +1704,7 @@ function jumpstart_ent_css() {
 	// Header Height and Main Menu
 	$height = intval(themeblvd_get_option('header_height'));
 
-	$print .= "@media (min-width: 992px) {\n";
+	$print .= "@media (min-width: 768px) {\n";
 	$print .= "\t.header-content {\n";
 	$print .= sprintf( "\t\theight: %spx;\n", $height );
 	$print .= "\t}\n";
