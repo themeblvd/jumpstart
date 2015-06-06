@@ -274,6 +274,11 @@ Author URI: http://www.themeblvd.com
 .site-header.transparent .header-nav .tb-floater .floater-trigger:hover {
 	color: #ffffff;
 }
+.site-header.transparent .header-nav .tb-primary-menu > li > a:hover,
+.site-header.transparent .header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,
+.site-header.transparent .header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn {
+	border-bottom-color: #ffffff;
+}
 @media (min-width: 768px) {
 	.site-header.transparent .btn-navbar {
 		border: 1px solid rgba(0,0,0,.6);

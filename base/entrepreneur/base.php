@@ -596,6 +596,13 @@ function jumpstart_ent_options() {
 				'std'		=> '#fec427',
 				'type'		=> 'color'
 			),
+			'menu_highlight_trans' => array(
+				'id'		=> 'menu_highlight_trans',
+				'name'		=> null,
+				'desc'		=> '<strong>'.__('Transparent Header', 'themeblvd').':</strong> '.__('Also apply menu highlight color top-level menu items, when using transparent header.', 'themeblvd'),
+				'std'		=> '0',
+				'type'		=> 'checkbox'
+			),
 			'menu_sub_bg_color' => array(
 				'id'		=> 'menu_sub_bg_color',
 				'name'		=> __('Dropdown Background Color', 'themeblvd'),
@@ -1783,9 +1790,16 @@ function jumpstart_ent_css() {
 	// Main Menu highlight
 	$highlight = themeblvd_get_option('menu_highlight');
 
-	$print .= ".header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
-	$print .= ".header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
-	$print .= ".header-nav .tb-primary-menu > li > a:hover,\n";
+	if ( themeblvd_config('suck_up') && themeblvd_get_option('menu_highlight_trans') ) {
+		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li > a:hover,\n";
+		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
+		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
+	} else {
+		$print .= ".header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
+		$print .= ".header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
+		$print .= ".header-nav .tb-primary-menu > li > a:hover,\n";
+	}
+
 	$print .= ".tb-primary-menu > li > ul.non-mega-sub-menu,\n";
 	$print .= ".tb-primary-menu .sf-mega {\n";
 	$print .= sprintf("\tborder-color: %s;\n", $highlight);
