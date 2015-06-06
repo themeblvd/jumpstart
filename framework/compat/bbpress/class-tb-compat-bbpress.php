@@ -386,35 +386,35 @@ class Theme_Blvd_Compat_bbPress {
 	 */
 	public function pagination( $input ) {
 
-	    if ( ! $input ) {
-	        return '';
-	    }
+		if ( ! $input ) {
+		return '';
+		}
 
-	    $output  = '<div class="pagination-wrap">';
-	    $output .= '<div class="pagination">';
-	    $output .= '<div class="btn-group clearfix">';
+		$output  = '<div class="pagination-wrap">';
+		$output .= '<div class="pagination">';
+		$output .= '<div class="btn-group clearfix">';
 
-	    $input = str_replace("<span class='page-numbers", "<span class='btn btn-default", $input);
+		$input = str_replace("<span class='page-numbers", "<span class='btn btn-default", $input);
 
-	    $input = str_replace("<a class='page-numbers", "<a class='btn btn-default", $input);
-	    $input = str_replace('<a class="page-numbers', '<a class="btn btn-default', $input);
+		$input = str_replace("<a class='page-numbers", "<a class='btn btn-default", $input);
+		$input = str_replace('<a class="page-numbers', '<a class="btn btn-default', $input);
 
-	    $input = str_replace("<a class='next page-numbers", "<a class='next btn btn-default", $input);
-	    $input = str_replace('<a class="next page-numbers', '<a class="next btn btn-default', $input);
+		$input = str_replace("<a class='next page-numbers", "<a class='next btn btn-default", $input);
+		$input = str_replace('<a class="next page-numbers', '<a class="next btn btn-default', $input);
 
-	    $input = str_replace("<a class='prev page-numbers", "<a class='prev btn btn-default", $input);
-	    $input = str_replace('<a class="prev page-numbers', '<a class="prev btn btn-default', $input);
+		$input = str_replace("<a class='prev page-numbers", "<a class='prev btn btn-default", $input);
+		$input = str_replace('<a class="prev page-numbers', '<a class="prev btn btn-default', $input);
 
-	    $input = str_replace('&larr;', '&lsaquo;', $input);
-	    $input = str_replace('&rarr;', '&rsaquo;', $input);
+		$input = str_replace('&larr;', '&lsaquo;', $input);
+		$input = str_replace('&rarr;', '&rsaquo;', $input);
 
-	    $output .= $input;
+		$output .= $input;
 
-	    $output .= '</div><!-- .btn-group (end) -->';
-	    $output .= '</div><!-- .pagination (end) -->';
-	    $output .= '</div><!-- .pagination-wrap (end) -->';
+		$output .= '</div><!-- .btn-group (end) -->';
+		$output .= '</div><!-- .pagination (end) -->';
+		$output .= '</div><!-- .pagination-wrap (end) -->';
 
-	    return $output;
+		return $output;
 	}
 
 	/**
