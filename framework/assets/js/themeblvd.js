@@ -250,6 +250,12 @@ jQuery(document).ready(function($) {
 
 		}
 
+		// We can't have "light" icons in the contact popover because
+		// that background is white.
+		if ( $sticky.find('.tb-social-icons').hasClass('light') ) {
+			$sticky.find('.tb-social-icons').removeClass('light').addClass('grey');
+		}
+
 		// Floating cart trigger
 		if ( $header.find('.tb-cart-trigger').length && ! $sticky.find('.tb-primary-menu li.menu-cart').length ) {
 			$header.find('.tb-cart-trigger').first().clone().appendTo( $sticky.find('.tb-primary-menu') ).wrap('<li class="menu-item level-1 menu-cart"></li>');
