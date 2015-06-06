@@ -126,13 +126,22 @@
 }
 .bbp-pagination-links a {
 	border-color: #cccccc;
+}
+.bbp-pagination-links a,
+.bbp-pagination-links span.current {
 	font-size: 12px;
-	padding: 5px 10px;
+	padding: 6px 12px;
 }
 .bbp-pagination-links a:hover,
 .bbp-pagination-links span.current {
 	background: #ebebeb;
 	border-color: #adadad;
+}
+.bbp-pagination-links span.dots {
+	float: left;
+}
+.rtl .bbp-pagination-links span.dots {
+	float: right;
 }
 
 /* Subscribe */
