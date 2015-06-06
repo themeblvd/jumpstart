@@ -6234,17 +6234,19 @@ blockquote small {
 .element > .tb-filter > .tb-filter-nav {
 	margin-bottom: 20px;
 }
-.firefox .col-sm-020 {
-	width: 19.75%;
-}
-.firefox .col-sm-3 {
-	width: 24.75%;
-}
-.firefox .col-sm-4 {
-	width: 33.1%;
-}
-.firefox .col-sm-6 {
-	width: 49.75%;
+@media (min-width: 768px) {
+	.firefox .col-sm-020 {
+		width: 19.75%;
+	}
+	.firefox .col-sm-3 {
+		width: 24.75%;
+	}
+	.firefox .col-sm-4 {
+		width: 33.1%;
+	}
+	.firefox .col-sm-6 {
+		width: 49.75%;
+	}
 }
 
 /* =Components (components.php)
