@@ -698,6 +698,28 @@ article.tb-naked-page {
 	font-weight: bold;
 	margin-top: 5px;
 }
+@media (max-width: 767px) {
+	#comments .comment-meta {
+		position: relative;
+	}
+	#comments .comment-body {
+		padding: 20px;
+	}
+	#comments .comment-body .avatar {
+		top: 0;
+		left: 0;
+	}
+	#comments .comment-body .fn {
+		margin-top: 0;
+	}
+	#comments .comment-body .comment-meta {
+		min-height: 50px;
+		padding: 5px 0 5px 60px;
+	}
+	#comments .comment-body .comment-metadata {
+		line-height: 1.1;
+	}
+}
 
 /* Admin Comment */
 #comments .bypostauthor > .comment-body,
