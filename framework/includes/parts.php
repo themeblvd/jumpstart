@@ -1041,8 +1041,7 @@ function themeblvd_blog_share( $echo = true ) {
 		$title = get_the_title();
 		$excerpt = get_the_excerpt();
 
-		$output .= sprintf( '<div class="tb-social-icons tb-share %s clearfix">', $style );
-		$output .= '<ul class="social-media">';
+		$output .= sprintf('<ul class="tb-social-icons tb-share %s clearfix">', $style);
 
 		foreach ( $buttons as $button ) {
 
@@ -1088,8 +1087,7 @@ function themeblvd_blog_share( $echo = true ) {
 			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"></a></li>', $link, $button['label'], $class );
 		}
 
-		$output .= '</ul>';
-		$output .= '</div><!-- .tb-share (end) -->';
+		$output .= '</ul><!-- .tb-share (end) -->';
 
 	}
 
