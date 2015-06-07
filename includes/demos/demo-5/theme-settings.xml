@@ -73,6 +73,10 @@
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
+		<id>top_mini</id>
+		<value><![CDATA[MA==]]></value>
+	</setting>
+	<setting>
 		<id>header_height</id>
 		<value><![CDATA[OTBweA==]]></value>
 	</setting>
@@ -166,7 +170,7 @@
 	</setting>
 	<setting>
 		<id>header_border_bottom_width</id>
-		<value><![CDATA[NXB4]]></value>
+		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
 		<id>menu_text_shadow</id>
@@ -178,11 +182,15 @@
 	</setting>
 	<setting>
 		<id>font_menu</id>
-		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTNweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo0OiJib2xkIjtzOjU6ImNvbG9yIjtzOjc6IiNhZmNmZDYiO3M6NjoiZ29vZ2xlIjtzOjExOiJSYWxld2F5OjYwMCI7fQ==]]></value>
+		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6NDoiMTNweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6Njoid2VpZ2h0IjtzOjM6IjYwMCI7czo1OiJjb2xvciI7czo3OiIjYWZjZmQ2IjtzOjY6Imdvb2dsZSI7czoxMToiUmFsZXdheTo2MDAiO30=]]></value>
 	</setting>
 	<setting>
 		<id>menu_highlight</id>
 		<value><![CDATA[Izk5ZDBhOQ==]]></value>
+	</setting>
+	<setting>
+		<id>menu_highlight_trans</id>
+		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>menu_sub_bg_color</id>
@@ -250,11 +258,11 @@
 	</setting>
 	<setting>
 		<id>font_body</id>
-		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6NToiY29sb3IiO3M6MDoiIjtzOjY6Imdvb2dsZSI7czo3OiJSYWxld2F5Ijt9]]></value>
+		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6Njoid2VpZ2h0IjtzOjM6IjQwMCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjExOiJSYWxld2F5OjQwMCI7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>font_header</id>
-		<value><![CDATA[YTo1OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjQ6ImJvbGQiO3M6NToiY29sb3IiO3M6MDoiIjtzOjY6Imdvb2dsZSI7czo3OiJSYWxld2F5Ijt9]]></value>
+		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo2OiJ3ZWlnaHQiO3M6MzoiNTAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MTE6IlJhbGV3YXk6NTAwIjt9]]></value>
 	</setting>
 	<setting>
 		<id>link_color</id>
