@@ -885,7 +885,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'btn_border',
 				'name'		=> __('General Button Border Width', 'themeblvd'),
 				'desc'		=> __('Select a width in pixels for border of buttons.', 'themeblvd'),
-				'std'		=> '1px',
+				'std'		=> '2px',
 				'type'		=> 'slide',
 				'options'	=> array(
 					'units'		=> 'px',

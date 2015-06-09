@@ -254,39 +254,38 @@ ul {
 /* Buttons */
 .btn {
 	border-radius: 0;
-	padding: 8px 20px;
+	border-width: 2px;
+	font-size: 11px;
+	letter-spacing: 1px;
+	line-height: 1.42857143;
+	padding: 12px 20px;
 	text-decoration: none !important;
 	text-shadow: none !important;
+	text-transform: uppercase;
 }
 .btn-xs {
-	font-size: 12px;
-	line-height: 1.5;
-	padding: 4px 10px;
+	font-size: 10px;
+	padding: 6px 10px;
 }
 .btn-sm {
-	font-size: 12px;
-	line-height: 1.5;
-	padding: 6px 15px;
+	font-size: 10px;
+	padding: 9px 15px;
 }
 .btn-lg {
-	font-size: 18px;
-	line-height: 1.33;
-	padding: 10px 25px;
+	font-size: 11px;
+	padding: 18px 30px;
 }
 .btn-xl {
-	font-size: 22px;
-	line-height: 1.2;
-	padding: 13px 30px;
+	font-size: 13px;
+	padding: 20px 40px;
 }
 .btn-xxl {
-	font-size: 25px;
-	line-height: 1.2;
-	padding: 15px 35px;
+	font-size: 13px;
+	padding: 22px 50px;
 }
 .btn-xxxl {
-	font-size: 30px;
-	line-height: 1.2;
-	padding: 18px 40px;
+	font-size: 14px;
+	padding: 28px 64px;
 }
 @media (max-width: 480px) {
 	.btn {
