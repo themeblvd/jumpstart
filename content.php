@@ -47,7 +47,7 @@
 
 	<?php elseif ( has_post_thumbnail() && themeblvd_get_att('thumbs') ) : ?>
 
-		<div class="featured-item">
+		<div class="featured-item featured-image">
 			<?php themeblvd_the_post_thumbnail(); ?>
 		</div><!-- .featured-item (end) -->
 

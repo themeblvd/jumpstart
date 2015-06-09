@@ -26,7 +26,7 @@
 
 		<?php elseif ( themeblvd_get_att('thumbs') ) : ?>
 
-			<div class="featured-item">
+			<div class="featured-item featured-image">
 				<?php themeblvd_the_post_thumbnail( themeblvd_get_att('crop'), array('placeholder' => true) ); ?>
 			</div><!-- .featured-item (end) -->
 
