@@ -680,8 +680,18 @@ if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
 function themeblvd_blog_meta_default() {
 
 	$args = apply_filters('themeblvd_blog_meta_args', array(
+		'include' 	=> array('time', 'author'),
+		'icons'		=> array('time'),
+		'time' 		=> 'ago',
+		'sep'		=> ' '.themeblvd_get_local('by').' '
+	));
+
+	/*
+	// Classic Style
+	$args = apply_filters('themeblvd_blog_meta_args', array(
 		'include' => array('format', 'time', 'author', 'comments')
 	));
+	*/
 
 	echo themeblvd_get_meta($args);
 }
@@ -736,9 +746,23 @@ if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_blog_sub_meta_default() {
-	echo '<div class="sub-meta">';
-	do_action('themeblvd_sub_meta_items');
-	echo '</div><!-- .sub-meta (end) -->';
+
+	// Arguments for themeblvd_get_meta()
+	$args = apply_filters('themeblvd_grid_meta_args', array(
+		'class'		=> 'sub-meta',
+		'include'	=> array('category', 'comments')
+	));
+	?>
+	<div class="sub-meta-wrapper clearfix">
+		<div class="share">
+			<?php themeblvd_blog_share(); ?>
+		</div>
+		<div class="info">
+			<?php echo themeblvd_get_meta($args); ?>
+			<?php themeblvd_blog_tags(); ?>
+		</div>
+	</div><!-- .sub-meta-wrapper (end) -->
+	<?php
 }
 endif;
 

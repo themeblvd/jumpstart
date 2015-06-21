@@ -8,7 +8,7 @@ function jumpstart_su_options() {
 
 	// Background support
 	add_theme_support( 'custom-background', array(
-		'default-color'	=> 'f5f5f5',
+		'default-color'	=> 'f9f9f9',
 		'default-image'	=> ''
 	));
 
@@ -101,7 +101,7 @@ function jumpstart_su_options() {
 				'id'		=> 'apply_content_border',
 				'name'		=> null,
 				'desc'		=> '<strong>'.__('Content Border', 'themeblvd').'</strong>: '.__('Apply border around content areas.', 'themeblvd'),
-				'std'		=> 1,
+				'std'		=> 0,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -134,7 +134,7 @@ function jumpstart_su_options() {
 				'id'		=> 'sub_group_end_1',
 				'type' 		=> 'subgroup_end'
 			),
-			'style' =>  array(
+			'style' => array(
 				'id'		=> 'style',
 				'name' 		=> __( 'Content Style', 'themeblvd' ),
 				'desc'		=> __( 'Select the content style of the site.', 'themeblvd' ),
@@ -1108,7 +1108,7 @@ function jumpstart_su_options() {
 				'id' 		=> 'font_header',
 				'name' 		=> __( 'Header Font', 'themeblvd' ),
 				'desc' 		=> __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd' ),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '500', 'color' => '', 'google' => 'Raleway:500', 'style' => 'normal'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Raleway:400', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
@@ -1203,11 +1203,11 @@ function jumpstart_su_options() {
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
-			'widget_style' =>  array(
+			'widget_style' => array(
 				'id'		=> 'widget_style',
 				'name' 		=> __('Widget Style', 'themeblvd'),
 				'desc'		=> __('Select how you want to style your widgets.', 'themeblvd' ).' <a href="http://getbootstrap.com/components/#panels" target="_blank">'.__('What\'s a Bootstrap panel?', 'themeblvd').'</a>',
-				'std'		=> 'panel',
+				'std'		=> 'standard',
 				'type' 		=> 'select',
 				'options'	=> array(
 					'standard'	=> __('Standard', 'themeblvd'),
@@ -1309,7 +1309,7 @@ function jumpstart_su_options() {
 				'id'		=> 'widget_title_size',
 				'name'		=> __('Widget Title Text Size', 'themeblvd'),
 				'desc'		=> __('Select the text size for titles of widgets.', 'themeblvd'),
-				'std'		=> '16px',
+				'std'		=> '18px',
 				'type'		=> 'slide',
 				'options'	=> array(
 					'units'		=> 'px',
@@ -1370,23 +1370,30 @@ function jumpstart_su_options() {
 			)
 		),
 		'extras' => array(
-			'highlight' =>  array(
+			'highlight' => array(
 				'id'		=> 'highlight',
-				'name' 		=> __('Thumbnail Highlight Color'),
-				'desc'		=> __('When hovering on a thumbnail or featured image, this color will be used in the icon displayed on hover.', 'themeblvd'),
-				'std'		=> '#000000',
+				'name' 		=> __('Highlight Color', 'themeblvd'),
+				'desc'		=> __('Select a Highlight color to be used in a few little areas throughout your site.', 'themeblvd'),
+				'std'		=> '#fec527',
 				'type' 		=> 'color'
 			),
-			'thumbnail' =>  array(
-				'id'		=> 'thumbnail',
+			'box_titles' => array(
+				'id'		=> 'box_titles',
 				'name' 		=> null,
-				'desc'		=> __('Apply border to thumbnails and featured images', 'themeblvd'),
-				'std'		=> '0',
+				'desc'		=> __('Display special styling to titles of info boxes and standard widgets.', 'themeblvd'),
+				'std'		=> '1',
+				'type' 		=> 'checkbox'
+			),
+			'thumbnail_circles' => array(
+				'id'		=> 'thumbnail_circles',
+				'name' 		=> null,
+				'desc'		=> __('Display avatars and small featured images as circles', 'themeblvd'),
+				'std'		=> '1',
 				'type' 		=> 'checkbox'
 			)
 		),
 		'css' => array(
-			'custom_styles' =>  array(
+			'custom_styles' => array(
 				'id'		=> 'custom_styles',
 				'name' 		=> null,
 				'desc'		=> null,
@@ -1439,23 +1446,6 @@ function jumpstart_su_mobile_side_menu_social_media_color( $color ) {
 	return themeblvd_get_option('menu_mobile_social_media_style');
 }
 add_filter('themeblvd_mobile_side_menu_social_media_color', 'jumpstart_su_mobile_side_menu_social_media_color');
-
-/**
- * Filter on thumbnail borders
- *
- * @since 2.0.0
- */
-function jumpstart_su_featured_thumb_frame() {
-
-	if ( themeblvd_get_option('thumbnail') ) {
-		return true;
-	}
-
-	return false;
-}
-add_filter('themeblvd_featured_thumb_frame', 'jumpstart_su_featured_thumb_frame');
-add_filter('themeblvd_gallery_thumb_frame', 'jumpstart_su_featured_thumb_frame');
-add_filter('themeblvd_img_frame', 'jumpstart_su_featured_thumb_frame');
 
 /**
  * Body class
@@ -1705,37 +1695,100 @@ function jumpstart_su_css() {
 		$print .= "}\n";
 	}
 
-	// Thumbnail highlight color
-	if ( $color = themeblvd_get_option('highlight') ) {
-		if ( $color != '#000000' ) {
-			$print .= ".tb-thumb-link:before,\n";
-			$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .item-title {\n";
-			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($color, '0.8'));
+	// Disable circlular avatars & small thumbs
+	if ( ! themeblvd_get_option('thumbnail_circles') ) { // by default, theme styles these as circles with 100% border-radius
+		$print .= "#comments .comment-body .avatar,\n";
+		$print .= ".tb-author-box .avatar-wrap img,\n";
+		$print .= ".tb-mini-post-grid img,\n";
+		$print .= ".tb-mini-post-grid .placeholder,\n";
+		$print .= ".tb-mini-post-list img,\n";
+		$print .= ".tb-mini-post-list .placeholder {\n";
+		$print .= "\tborder-radius: 0;\n";
+		$print .= "}\n";
+	}
+
+	// Highlight Color
+	$highlight = themeblvd_get_option('highlight');
+
+	$print .= ".tb-tag-cloud .tagcloud a:hover,\n";
+	$print .= ".tb-tags a:hover,\n";
+	$print .= ".tb-tags a:focus,\n";
+	$print .= ".btn-share:hover,\n";
+	$print .= ".btn-share:focus\n";
+	$print .= sprintf("\tbackground-color: %s\n", $highlight);
+	$print .= "}\n";
+
+	$print .= ".tb-thumb-link:before,\n";
+	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .item-title {\n";
+	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($highlight, '0.8'));
+	$print .= "}\n";
+
+	/* Box Titles & Widgets */
+	$widget_style = themeblvd_get_option('widget_style');
+
+	if ( themeblvd_get_option('box_titles') ) {
+
+		if ( $widget_style == 'standard' ) {
+			$print .= ".fixed-sidebar .widget-title,\n";
+		}
+
+		$print .= "#comments-title,\n";
+		$print .= ".tb-info-box .info-box-title,\n";
+		$print .= ".tb-related-posts .related-posts-title {\n";
+		$print .= "\tborder-bottom: 2px solid #f2f2f2;\n";
+		$print .= "\tborder-color: rgba(220,220,220,.4);\n";
+		$print .= "\tfont-size: 24px;\n";
+		$print .= "\tpadding-bottom: .83em;\n";
+		$print .= "\tposition: relative;\n";
+		$print .= "}\n";
+
+		if ( $widget_style == 'standard' ) {
+			$print .= ".fixed-sidebar .widget-title:before,\n";
+		}
+
+		$print .= "#comments-title:before,\n";
+		$print .= ".info-box-title:before,\n";
+		$print .= ".tb-related-posts .related-posts-title:before {\n";
+		$print .= "\tcontent: \"\";\n";
+		$print .= sprintf("\tbackground: %s; /* highlight */\n", $highlight);
+		$print .= "\tposition: absolute;\n";
+		$print .= "\tbottom: -2px;\n";
+
+		if ( is_rtl() ) {
+			$print .= "\tright: 0;\n";
+		} else {
+			$print .= "\tleft: 0;\n";
+		}
+
+		$print .= "\twidth: 75px;\n";
+		$print .= "\theight: 2px;\n";
+		$print .= "}\n";
+
+		if ( $widget_style == 'standard' && themeblvd_get_option('widget_bg_brightness') == 'dark' ) {
+			$print .= ".fixed-sidebar .widget-title {\n";
+			$print .= "\tborder-color: rgba(0,0,0,.9)";
 			$print .= "}\n";
 		}
 	}
 
-	// Sidebar Widgets
-	$style = themeblvd_get_option('widget_style');
-
-	$print .= sprintf(".fixed-sidebar .widget.%s {\n", $style);
+	$print .= sprintf(".fixed-sidebar .widget.%s {\n", $widget_style);
 
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('widget_bg_color'));
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option('widget_bg_color'), themeblvd_get_option('widget_bg_color_opacity') ) );
 
-	if ( $style == 'standard' && themeblvd_get_option('widget_apply_border') ) {
+	if ( $widget_style == 'standard' && themeblvd_get_option('widget_apply_border') ) {
 		$print .= sprintf("\tborder: %s solid %s;\n", themeblvd_get_option('widget_border_width'), themeblvd_get_option('widget_border_color'));
-	} else if ( $style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
+	} else if ( $widget_style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
 		$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('widget_panel_border_color'));
 	}
 
 	$print .= "}\n";
 
-	if ( $style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
+	if ( $widget_style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
 
 		$color = themeblvd_get_option('widget_panel_title_bg_color');
 
-		$print .= sprintf(".fixed-sidebar .widget.%s .panel-heading {\n", $style);
+		$print .= sprintf(".fixed-sidebar .widget.%s .panel-heading {\n", $widget_style);
 
 		if ( $color['start'] == $color['end'] ) {
 			$print .= sprintf("\tbackground-color: %s;\n", $color['end']);
@@ -1758,6 +1811,10 @@ function jumpstart_su_css() {
 	$print .= ".fixed-sidebar .widget-title {\n";
 	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('widget_title_color'));
 	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_option('widget_title_size'));
+
+	if ( $widget_style == 'panel' ) {
+		$print .= "\tmargin-bottom: 0;\n";
+	}
 
 	if ( themeblvd_get_option('widget_title_shadow') ) {
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";

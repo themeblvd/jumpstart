@@ -141,7 +141,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'wp_link_pages_args', 'themeblvd_link_pages_args' );
 	add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
 	add_filter( 'comment_form_default_fields', 'themeblvd_comment_form_fields' );
-	add_filter( 'comment_reply_link', 'themeblvd_comment_reply_link' );
 	add_filter( 'themeblvd_column_class', 'themeblvd_column_class_legacy' );
 	add_filter( 'walker_nav_menu_start_el', 'themeblvd_nav_menu_start_el', 10, 4 );
 	add_filter( 'nav_menu_css_class', 'themeblvd_nav_menu_css_class', 10, 4 );
@@ -206,9 +205,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_single_footer', 'themeblvd_single_footer_default' );
 	add_action( 'themeblvd_blog_meta', 'themeblvd_blog_meta_default' );
 	add_action( 'themeblvd_blog_sub_meta', 'themeblvd_blog_sub_meta_default' );
-	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_share', 10, 0 );
-	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_cats', 10, 0 );
-	add_action( 'themeblvd_sub_meta_items', 'themeblvd_blog_tags', 10, 0 );
 	add_action( 'themeblvd_grid_meta', 'themeblvd_grid_meta_default' );
 	add_action( 'themeblvd_search_meta', 'themeblvd_search_meta_default' );
 	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 2 );

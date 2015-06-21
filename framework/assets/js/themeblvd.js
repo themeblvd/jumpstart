@@ -245,7 +245,7 @@ jQuery(document).ready(function($) {
 
 			// No popover yet in menu, but it's present in header.
 			// Transfer this to a menu item.
-			$sticky.find('.tb-primary-menu').append('<li class="menu-item level-1 menu-contact"><a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container=".tb-sticky-menu" data-placement="bottom" data-open="envelope" data-close="close"><i class="fa fa-envelope"></i></a></li>');
+			$sticky.find('.tb-primary-menu').append('<li class="menu-item level-1 menu-contact"><a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container=".tb-sticky-menu" data-placement="bottom" data-open="envelope-o" data-close="close"><i class="fa fa-envelope-o"></i></a></li>');
 			$header.find('.tb-social-icons').first().clone().appendTo( $sticky.find('.menu-contact') ).wrap('<div class="contact-popover-content hide"></div>');
 
 		}
@@ -580,7 +580,7 @@ jQuery(document).ready(function($) {
 	// Social Share Buttons
 	// ---------------------------------------------------------
 
-	$('.tb-share-button.popup').on('click', function(){
+	$('.tb-share .btn-share.popup').on('click', function(){
 		if ( ! window.open( $(this).attr('href'), '', 'height=320, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no' ) ) {
 			document.location.href = $(this).attr('href');
 		}

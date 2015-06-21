@@ -12,7 +12,7 @@
 	</header><!-- .entry-header -->
 
 	<?php if ( wp_attachment_is_image( get_the_ID() ) ) : ?>
-		<div class="featured-item">
+		<div class="featured-item featured-image">
 			<?php themeblvd_the_post_thumbnail( themeblvd_get_att('crop'), array('attachment_id' => get_the_id(), 'link' => 'thumbnail') ); ?>
 		</div><!-- .featured-item(end) -->
 	<?php endif; ?>

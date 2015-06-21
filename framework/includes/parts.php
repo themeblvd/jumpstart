@@ -879,39 +879,51 @@ function themeblvd_get_meta( $args = array() ) {
 	$defaults = array(
 		'sep' 		=> apply_filters( 'themeblvd_meta_separator', '<span class="sep"> / </span>' ),
 		'include'	=> array('format', 'time', 'author', 'comments'), // possible: author, category, comments, format, portfolio, time
+		'icons'		=> array('format', 'time', 'author', 'comments', 'category', 'portfolio'), // all includes to display icons
 		'comments'	=> 'standard',	// can be string "mini"
-		'time'		=> 'standard'	// can be string "ago"
+		'time'		=> 'standard',	// can be string "ago"
+		'class'		=> ''	// Additional CSS classes for wrapper
 	);
 	$args = wp_parse_args( $args, $defaults );
 
 	// Separator
 	$sep = $args['sep'];
 
-	// Start output
-	$output  = '<div class="entry-meta">';
+	$class = 'entry-meta';
 
-	foreach ( $args['include'] as $item ) {
+	if ( $args['class'] ) {
+		$class .= ' '.$args['class'];
+	}
+
+	$class .= ' clearfix';
+
+	// Start output
+	$output  = sprintf('<div class="%s">', $class);
+
+	$count = count($args['include']);
+
+	foreach ( $args['include'] as $key => $item ) {
+
+		$item_output = '';
+
 		switch ( $item ) {
 
 			case 'author' :
 				$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
 				$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
-				$author = sprintf( '<span class="byline author vcard"><i class="fa fa-user"></i> <a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_url, $author_title, get_the_author() );
-				$output .= $sep;
-				$output .= $author;
+				$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
+				$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, get_the_author() );
 				break;
 
 			case 'category' :
-				$category = sprintf( '<span class="category"><i class="fa fa-bars"></i> %s</span>', get_the_category_list(', ') );
-				$output .= $sep;
-				$output .= $category;
+				$category_icon = in_array($item, $args['icons']) ? '<i class="fa fa-folder-o"></i>' : '';
+				$item_output = sprintf( '<span class="category">%s%s</span>', $category_icon, get_the_category_list(', ') );
 				break;
 
 			case 'comments' :
 				if ( comments_open() ) {
 
-					$output .= $sep;
-					$comments = '<span class="comments-link">';
+					$item_output = '<span class="comments-link">';
 
 					ob_start();
 					if ( $args['comments'] === 'mini' ) {
@@ -921,38 +933,56 @@ function themeblvd_get_meta( $args = array() ) {
 					}
 					$comment_link = ob_get_clean();
 
-					$comments .= sprintf( '<i class="fa fa-comment"></i> %s', $comment_link, $sep );
-					$comments .= '</span>';
+					if ( in_array( $item, $args['icons'] ) ) {
+						$item_output .= '<i class="fa fa-comment-o"></i>';
+					}
 
-					$output .= $comments;
+					$item_output .= $comment_link;
+					$item_output .= '</span>';
 				}
 				break;
 
 			case 'format' :
-				$format = get_post_format();
-				$icon = themeblvd_get_format_icon($format);
+				if ( $format = get_post_format() ) {
 
-				if ( $icon ) {
-					// Note: URL to post format archive => esc_url( get_post_format_link($format) )
-					$output .= sprintf( '<span class="post-format"><i class="fa fa-%s"></i> %s</span>', $icon, themeblvd_get_local($format) );
-					$output .= $sep;
+					$format_icon = '';
+
+					if ( in_array( $item, $args['icons'] ) ) {
+
+						$format_icon = themeblvd_get_format_icon($format);
+
+						if ( $format_icon ) {
+							$format_icon = sprintf('<i class="fa fa-%s"></i>', $format_icon);
+						}
+					}
+
+					$item_output .= sprintf( '<span class="post-format">%s%s</span>', $format_icon, themeblvd_get_local($format) );
 				}
 				break;
 
 			case 'portfolio' :
-				$portfolio = sprintf( '<span class="portfolio"><i class="fa fa-briefcase"></i> %s</span>', get_the_term_list(get_the_ID(), 'portfolio', '', ', ') );
-				$output .= $sep;
-				$output .= $portfolio;
+				$portfolio_icon = in_array($item, $args['icons']) ? '<i class="fa fa-briefcase"></i>' : '';
+				$item_output = sprintf( '<span class="portfolio">%s%s</span>', $portfolio_icon, get_the_term_list(get_the_ID(), 'portfolio', '', ', ') );
 				break;
 
 			case 'time' :
+				$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-clock-o"></i>' : '';
+
 				if ( $args['time'] === 'ago' ) {
-					$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-clock-o"></i> %s</time>', get_the_time('c'), themeblvd_get_time_ago( get_the_ID() ) );
+					$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, themeblvd_get_time_ago( get_the_ID() ) );
 				} else {
-					$time = sprintf('<time class="entry-date updated" datetime="%s"><i class="fa fa-calendar"></i> %s</time>', get_the_time('c'), get_the_time( get_option('date_format') ) );
+					$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, get_the_time( get_option('date_format') ) );
 				}
-				$output .= $time;
 				break;
+		}
+
+		if ( $item_output ) {
+
+			$output .= $item_output;
+
+			if ( $key+1 < $count ) {
+				$output .= $sep;
+			}
 		}
 	}
 
@@ -1003,12 +1033,13 @@ function themeblvd_blog_tags( $echo = true ) {
 
 	if ( has_tag() ) {
 		$output .= '<div class="tb-tags tags">';
-		$before = sprintf( '<span class="title">%s:</span>', themeblvd_get_local('tags') );
 		ob_start();
-		the_tags( $before, ', ' );
+		the_tags('', '');
 		$output .= ob_get_clean();
 		$output .= '</div><!-- .tb-tags (end) -->';
 	}
+
+	$output = str_replace('rel="tag"', 'rel="tag" class="tb-animate"', $output);
 
 	$output = apply_filters( 'themeblvd_blog_tags', $output, get_the_ID() );
 
@@ -1035,27 +1066,22 @@ function themeblvd_blog_share( $echo = true ) {
 
 		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'tb_thumb' );
 		$patterns = themeblvd_get_share_patterns();
-		$style = themeblvd_get_option('share_style');
 		$permalink = get_permalink();
 		$shortlink = wp_get_shortlink();
 		$title = get_the_title();
 		$excerpt = get_the_excerpt();
 
-		$output .= sprintf('<ul class="tb-social-icons tb-share %s clearfix">', $style);
+		$output .= '<ul class="tb-share clearfix">';
 
 		foreach ( $buttons as $button ) {
 
 			$network = $button['icon'];
 
 			// Link class
-			$class = 'tb-share-button tb-tooltip '.$network;
+			$class = 'btn-share tb-tooltip shutter-out-vertical '.$network;
 
 			if ( $network != 'email' ) {
 				$class .= ' popup';
-			}
-
-			if ( $style != 'color' ) { // Note: "color" means to use colored image icons; otherwise, we use icon font.
-				$class .= ' tb-icon';
 			}
 
 			// Link URL
@@ -1084,14 +1110,14 @@ function themeblvd_blog_share( $echo = true ) {
 				}
 			}
 
-			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"></a></li>', $link, $button['label'], $class );
+			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"><i class="fa fa-fw fa-%s"></i></a></li>', $link, $button['label'], $class, $patterns[$network]['icon'] );
 		}
 
 		$output .= '</ul><!-- .tb-share (end) -->';
 
 	}
 
-	$output = apply_filters( 'themeblvd_blog_share', $output, get_the_ID(), $buttons, $style );
+	$output = apply_filters( 'themeblvd_blog_share', $output, get_the_ID(), $buttons );
 
 	if ( $echo ) {
 		echo $output;
@@ -1413,18 +1439,20 @@ function themeblvd_get_author_info( $user = null, $context = 'single' ) {
 	$class = apply_filters('themeblvd_tax_info_class', 'tb-info-box tb-author-box '.$context); // Filtering to allow "content-bg" to be added
 
 	$output = sprintf('<section class="%s">', $class);
+
+	// Title
+	if ( $context == 'archive' ) {
+		$output .= sprintf('<h1 class="info-box-title archive-title">%s</h1>', $user->display_name);
+	} else {
+		$output .= sprintf('<h3 class="info-box-title">%s</h3>', $user->display_name);
+	}
+
 	$output .= '<div class="inner">';
 
 	// User info
 	if ( $gravatar ) {
 		$class = apply_filters('themeblvd_author_box_avatar_class', 'avatar-wrap');
 		$output .= sprintf('<div class="%s">%s</div>', $class, $gravatar);
-	}
-
-	if ( $context == 'archive' ) {
-		$output .= sprintf('<h1 class="info-box-title archive-title">%s</h1>', $user->display_name);
-	} else {
-		$output .= sprintf('<h3 class="info-box-title">%s</h3>', $user->display_name);
 	}
 
 	// Link to archive of user posts

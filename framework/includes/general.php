@@ -2241,53 +2241,63 @@ function themeblvd_get_share_patterns() {
 		'digg' => array(
 			'pattern'		=> 'http://digg.com/submit?url=[permalink]&title=[title]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'digg'
 		),
 		'email' => array(
 			'pattern'		=> 'mailto:?subject=[title]&amp;body=[permalink]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'envelope-o'
 		),
 		'facebook' => array(
 			'pattern'		=> 'http://www.facebook.com/sharer.php?u=[permalink]&amp;t=[title]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'facebook'
 		),
 		'google' => array(
 			'pattern'		=> 'https://plus.google.com/share?url=[permalink]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'google-plus'
 		),
 		'linkedin' => array(
 			'pattern'		=> 'http://linkedin.com/shareArticle?mini=true&amp;url=[permalink]&amp;title=[title]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'linkedin'
 		),
 		'pinterest' => array(
 			'pattern'		=> 'http://pinterest.com/pin/create/button/?url=[permalink]&amp;description=[title]&amp;media=[thumbnail]',
 			'encode'		=> true,
-			'encode_urls' 	=> true
+			'encode_urls' 	=> true,
+			'icon'			=> 'pinterest-p'
 		),
 		'reddit' => array(
 			'pattern'		=> 'http://reddit.com/submit?url=[permalink]&amp;title=[title]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'reddit'
 		),
 		'tumblr' => array(
 			'pattern'		=> 'http://www.tumblr.com/share/link?url=[permalink]&amp;name=[title]&amp;description=[excerpt]',
 			'encode'		=> true,
-			'encode_urls' 	=> true
+			'encode_urls' 	=> true,
+			'icon'			=> 'tumblr'
 		),
 		'twitter' => array(
 			'pattern'		=> 'http://twitter.com/home?status=[title] [shortlink]',
 			'encode'		=> true,
-			'encode_urls' 	=> false
+			'encode_urls' 	=> false,
+			'icon'			=> 'twitter'
 		)
 		/*
 		'wordpress' => array(
 			'pattern'		=> '[site_url]/wp-admin/press-this.php?u=[permalink]&amp;t=[title]&amp;v=4',
 			'encode'		=> true,
-			'encode_urls' 	=> true
+			'encode_urls' 	=> true,
+			'icon'			=> 'wordpress'
 		)
 		*/
 	);

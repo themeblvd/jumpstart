@@ -36,6 +36,7 @@ function themeblvd_loop( $args = array() ){
 		'titles'			=> '',						// For showcase, whether to shwo post titles
 		'excerpt'			=> '',						// For grid, whether to show excerpts
 		'meta'				=> '',						// Whether to show meta (used with blog, list, grid)
+		'sub_meta'			=> '',						// Whether to show sub meta (used with blog)
 		'more'				=> '',						// Read More - text, button, none (supported with "list" $context only)
 		'more_text'			=> '',						// If Read More is text or button, text to use (supported with "list" $context only)
 		'timeout'			=> '3',						// If grid slider, seconds between trasitinos
@@ -147,6 +148,20 @@ function themeblvd_loop( $args = array() ){
 				$post_class .= ' has-meta';
 			} else {
 				themeblvd_set_att( 'show_meta', false );
+			}
+
+			// Sub Meta
+			if ( ! $args['sub_meta'] || $args['sub_meta'] == 'default' ) {
+				$sub_meta = themeblvd_get_option('blog_sub_meta', null, 'show');
+			} else {
+				$sub_meta = $args['sub_meta'];
+			}
+
+			if ( $sub_meta == 'show' ) {
+				themeblvd_set_att( 'show_sub_meta', true );
+				$post_class .= ' has-sub-meta';
+			} else {
+				themeblvd_set_att( 'show_sub_meta', false );
 			}
 
 			// Content or Excerpt

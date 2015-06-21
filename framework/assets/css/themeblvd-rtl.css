@@ -173,14 +173,16 @@
  *   27.5 - Floating Search
  *   27.6 - Contact Popover
  *   27.7 - Loader
- *   27.8 - Scroll-to-Top Button
- *   27.9 - Scroll-to-Section Button
- *   27.10 - Info Boxes
- *   27.11 - Author Box (inherits from info box)
- *   27.12 - Related Posts
- *   27.13 - Inline Menu
- *   27.14 - Date Block
- *   27.15 - Text Blocks (used in jumbotron)
+ *   27.8 - Tags
+ *   27.9 - Share Icons
+ *   27.10 - Scroll-to-Top Button
+ *   27.11 - Scroll-to-Section Button
+ *   27.12 - Info Boxes
+ *   27.13 - Author Box (inherits from info box)
+ *   27.14 - Related Posts
+ *   27.15 - Inline Menu
+ *   27.16 - Date Block
+ *   27.17 - Text Blocks (used in jumbotron)
  * 28.0 - Charts and Graphs (stats.php)
  *   28.1 - Charts
  *   28.2 - Milestone
@@ -415,8 +417,12 @@ code.block {
 .pagination {
 	margin-bottom: 0;
 }
-.pagination .btn {
+.pagination .btn-group .btn {
+	margin: 0 1px 0 0;
 	padding: 6px 12px;
+}
+.pagination .btn-group .btn:first-child {
+	margin: 0;
 }
 
 /* Main Navigation */
@@ -644,8 +650,11 @@ img.size-full {
 /* =Animation
 -----------------------------------------------*/
 
+.tb-animate,
 .btn,
-.sf-menu .menu-btn {
+.btn-share,
+.sf-menu .menu-btn,
+.tb-tag-cloud .tagcloud a {
 	-moz-transition: all 0.25s ease-out;
 	-webkit-transition: all 0.25s ease-out;
 	transition: all 0.25s ease-out;
@@ -685,7 +694,7 @@ img.size-full {
 	height: 100%;
 }
 .featured-image .placeholder {
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
 	background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,.5) 15px, rgba(255,255,255,.5) 30px);
 	width: 100%;
 	height: 100%;
@@ -701,6 +710,7 @@ img.size-full {
 /* @noflip */
 .featured-image .placeholder .fa {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	font-size: 35px;
 	line-height: 40px;
 	margin: -20px 0 0 -20px;
@@ -836,6 +846,7 @@ body.admin-bar .tb-sticky-menu {
 }
 .tb-sticky-menu .tb-primary-menu > li > .menu-btn {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	font-size: 12px;
 	line-height: 48px;
 	padding: 0 12px;
@@ -1594,11 +1605,10 @@ body.mobile-menu-left-on #wrapper {
 	background-repeat: no-repeat !important;
 	background-position: left top !important;
 	background-repeat: repeat-x !important;
-	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 .mejs-controls button {
+	-webkit-box-shadow: none;
+	box-shadow: none;
 	outline: none !important;
 	opacity: 0.8;
 }
@@ -1850,7 +1860,7 @@ html[xmlns] .slides {
 }
 .standard-slider-wrapper .slides-wrapper,
 .tb-nivo-slider-wrapper .slides-wrapper {
-	background: #f5f5f5;
+	background: #f8f8f8;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
@@ -3170,11 +3180,12 @@ input[type="reset"],
 input[type="button"],
 .button,
 button {
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
 	border-color: #dddddd;
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 input[type="submit"]:hover,
 input[type="submit"]:focus,
@@ -3195,6 +3206,7 @@ button:active {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 
 /* See end of "Buttons" section for gradient submit buttons */
@@ -3281,11 +3293,12 @@ button:active {
 
 /* Default */
 .btn-default {
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
 	border-color: #dddddd;
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -4563,13 +4576,18 @@ ul.tb-icon-list {
 	overflow: hidden;
 }
 .tb-tag-cloud .tagcloud a {
-	border: 1px solid #dddddd;
+	background: rgba(220,220,220,.2);
+	color: inherit;
 	font-size: 11px !important;
 	display: block;
 	float: right;
-	margin: 0 0 1px 1px;
+	margin: 0 0 2px 2px;
 	padding: 2px 8px;
 	text-decoration: none;
+}
+.tb-tag-cloud .tagcloud a:hover {
+	background: #fec527; /* highlight */
+	color: #ffffff;
 }
 
 /* WP Calendar Widget */
@@ -6029,29 +6047,11 @@ blockquote small {
 .tb-mini-post-list > .title {
 	margin-top: 0;
 }
-.tb-mini-post-list.thumb-small article {
-	min-height: 100px;
-	padding: 5px 115px 0 0;
-}
-.tb-mini-post-list.thumb-smaller article {
-	min-height: 70px;
-	padding: 5px 85px 0 0;
-}
-.tb-mini-post-list.thumb-smallest article {
-	min-height: 45px;
-	padding: 2px 60px 0 0;
-}
-.tb-mini-post-list.thumb-date article {
-	min-height: 52px;
-	padding: 5px 65px 0 0;
+.tb-mini-post-list article {
+	position: relative;
 }
 .tb-mini-post-list .thumbnail {
 	margin-bottom: 0;
-}
-.tb-mini-post-list .thumb-wrapper {
-	position: absolute;
-	top: 0;
-	right: 0;
 }
 .tb-mini-post-list.thumb-small .thumb-wrapper {
 	width: 100px;
@@ -6164,7 +6164,7 @@ blockquote small {
 
 /* Search Results */
 .tb-search-results .search-result {
-	border-right: 1px solid #dddddd;
+	border-right: 1px solid #eeeeee;
 	margin: 0 25px 0 0;
 	min-height: 50px;
 	padding: 8px 40px 30px 0;
@@ -6174,14 +6174,15 @@ blockquote small {
 	padding-bottom: 0;
 }
 .tb-search-results .search-result-icon {
+	border: 5px solid #ffffff;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	display: block;
 	position: absolute;
 	top: 0;
-	right: -20px;
-	width: 40px;
-	height: 40px;
+	right: -25px;
+	width: 50px;
+	height: 50px;
 }
 .tb-search-results .search-result-icon .fa {
 	display: block;
@@ -6410,6 +6411,7 @@ blockquote small {
 }
 .tb-map .map-marker-info {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .tb-map .map-marker-info p:last-child {
 	margin-bottom: 0;
@@ -6592,6 +6594,7 @@ blockquote small {
 .tb-panel {
 	background: #ffffff;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	margin-bottom: 0;
 }
 .entry-content .tb-panel {
@@ -6602,6 +6605,7 @@ blockquote small {
 }
 .tb-panel .panel-footer {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .tb-panel.panel-default > .panel-heading {
     color: #333333 !important;
@@ -6777,6 +6781,7 @@ blockquote small {
 .tb-pricing-table .button-wrap {
 	background: #ffffff;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .tb-pricing-table .feature-list {
 	margin: 0;
@@ -6890,7 +6895,7 @@ blockquote small {
 	margin-bottom: 20px;
 }
 .nav-tabs > li {
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
 	border-color: #dddddd;
 	border-style: solid;
 	border-width: 1px;
@@ -6905,6 +6910,7 @@ blockquote small {
 .nav-tabs > li.active > a:focus {
 	background-color: transparent;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .nav-tabs > li:first-child {
 	border-right-width: 1px;
@@ -6913,6 +6919,7 @@ blockquote small {
 .nav-tabs > li > a:hover,
 .nav-tabs > li > a:focus {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	outline: none;
 }
 .nav-pills > li > a,
@@ -6942,6 +6949,7 @@ blockquote small {
 	border: 1px solid #dddddd;
 	border-top-width: 0;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	padding: 20px;
 }
 .tb-tabs-framed.tb-tabs-pills .tab-content {
@@ -7074,10 +7082,11 @@ blockquote small {
 	width: 50px;
 }
 .tb-testimonial .author-image .fa { /* placeholder for no image */
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
 	background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,.5) 15px, rgba(255,255,255,.5) 30px);
 	border-radius: 50%;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	display: inline-block;
 	width: 50px;
 	height: 50px;
@@ -7162,16 +7171,18 @@ blockquote small {
 }
 .tb-toggle.panel-default .panel-title {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .tb-toggle.panel-default > .panel-heading {
 	background: #ffffff;
 }
 .tb-toggle.panel-default > .panel-heading .panel-title:hover {
-	background: #f5f5f5;
+	background: #f8f8f8;
 }
 .tb-toggle .panel-body {
 	background: #ffffff;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .tb-toggle .panel-body p:last-child {
 	margin-bottom: 0;
@@ -7387,6 +7398,51 @@ blockquote small {
 	text-align: center;
 	width: 20px;
 	height: 20px;
+}
+
+/* Tags */
+.tb-tags a {
+	background: rgba(220,220,220,.2);
+	color: inherit;
+	display: inline-block;
+	font-size: 11px;
+	padding: 5px;
+	margin: 0 4px 4px 0;
+	padding: 2px 8px;
+	text-decoration: none !important;
+}
+.tb-tags a:hover,
+.tb-tags a:focus {
+	background: #fec527; /* highlight */
+	color: #ffffff;
+}
+
+/* Share Icons */
+.tb-share {
+	margin: 0;
+	padding: 0;
+}
+.tb-share li {
+	float: right;
+	list-style: none;
+	margin: 0 1px;
+}
+.btn-share {
+	border: 2px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
+	border-radius: 2px;
+	color: #999999;
+	color: rgba(26,26,26,.4);
+	line-height: 2.85em;
+	padding: 10px;
+	width: 2.5em;
+	height: 2.85em;
+}
+.btn-share:hover,
+.btn-share:focus {
+	background: #fec527; /* highlight */
+	border-color: rgba(0,0,0,.1);
+	color: #ffffff;
 }
 
 /* Scroll-to-Top Button */
@@ -7879,6 +7935,7 @@ blockquote small {
 /* Typography */
 .text-dark {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .text-dark h1,
 .text-dark h2,
@@ -8005,11 +8062,12 @@ blockquote small {
 .text-dark input[type="button"]:not(.btn-primary),
 .text-dark .button:not(.btn-primary),
 .text-dark button:not(.btn-primary) {
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
 	border-color: #dddddd;
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .text-dark input[type="submit"]:hover:not(.btn-primary),
 .text-dark input[type="submit"]:focus:not(.btn-primary),
@@ -8030,6 +8088,7 @@ blockquote small {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 
 /* =Light Text Color (for themeblvd-dark.css, flip with Dark Text section)

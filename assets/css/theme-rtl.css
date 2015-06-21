@@ -30,8 +30,9 @@
  *   6.1 - Comment List
  *   6.2 - Admin Comment
  *   6.3 - Children
- *   6.4 - Comment Form
- *   6.5 - Comment Form (in reply)
+ *   6.4 - Mobile Comments
+ *   6.5 - Comment Form
+ *   6.6 - Comment Form (in reply)
  * 7.0 - Archives
  *   7.1 - Archive Info and Author Box
  *   7.2 - Search Results
@@ -42,11 +43,14 @@
  *   8.3 - Post Showcase
  *   8.4 - Blank Page
  *   8.5 - Custom Layout
- * 9.0 - Widgets
- *   9.1 - General
- *   9.2 - Fixed Sidebars
- *   9.3 - Footer
- * 10.0 - Printing
+ * 9.0 - Parts
+ *   9.1 - Mini Post List/Grid
+ *   9.2 - Box Titles
+ * 10.0 - Widgets
+ *   10.1 - General
+ *   10.2 - Fixed Sidebars
+ *   10.3 - Footer
+ * 11.0 - Printing
  ----------------------------------------------- */
 
 /* =Primary Structure
@@ -329,6 +333,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .tb-primary-menu ul.sub-menu .menu-btn,
 .tb-primary-menu .mega-section-header {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	font-size: 13px;
 	line-height: 1.3;
 	padding: .77em .92em;
@@ -500,10 +505,11 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 /* Typography */
 html,
 body {
-	background: #f5f5f5;
+	background: #f9f9f9;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 300;
 	line-height: 1.6;
 }
@@ -571,16 +577,22 @@ p {
 .blog-wrap > article,
 article.single {
 	background: #ffffff;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	padding: 30px;
+}
+article.single {
+	margin-bottom: 30px;
 }
 .loop-shortcode > .blog-wrap > article {
 	background: transparent;
 	padding: 0;
 }
-.content_dark .blog-wrap > article,
-.content_dark article.single {
-	background: #2c2c2c;
+.blog-wrap > article > .featured-item,
+article.single > .featured-item {
+	margin: -30px -30px 30px -30px;
+}
+.blog-wrap > article > .entry-content > p:last-child {
+	margin-bottom: 0;
 }
 
 /* Pages */
@@ -588,10 +600,16 @@ article.page {
 	background: #ffffff;
 	padding: 30px;
 }
+article.page > .featured-item {
+	margin: -30px -30px 30px -30px;
+}
 article.tb-naked-page {
 	background: transparent !important;
 	border: none !important;
 	padding: 0;
+}
+article.tb-naked-page > .featured-item {
+	margin: 0 0 30px 0;
 }
 
 /* Titles */
@@ -608,11 +626,17 @@ article.tb-naked-page {
 
 /* Meta */
 .entry-meta {
-	font-size: 12px;
-	margin: 5px 2px 15px 2px;
+	color: #999999;
+	color: rgba(26,26,26,.4);
+	font-size: 16px;
+	margin: 0 2px 10px 0;
+}
+.entry-meta a {
+	color: inherit;
 }
 .entry-meta .fa {
-	padding-left: 4px;
+	color: rgba(100,100,100,.4);
+	margin-left: .6em;
 }
 .entry-meta .sep {
 	font-weight: normal;
@@ -620,29 +644,59 @@ article.tb-naked-page {
 }
 
 /* Sub Meta */
-.sub-meta {
+.sub-meta-wrapper {
+	border-top: 2px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	margin: 20px 0 0 0;
+	padding: 20px 0 0 0;
 }
-.sub-meta .tb-share {
+.sub-meta-wrapper .share {
+	float: left;
+	margin-right: 20px;
+}
+.sub-meta-wrapper .info {
+	float: right;
+}
+.sub-meta-wrapper .sub-meta {
+	color: #999999;
+	color: rgba(26,26,26,.4);
+	font-size: 12px;
 	margin-bottom: 5px;
 }
-.sub-meta .title:after {
-	content: " ";
+.sub-meta-wrapper .sub-meta > span {
+	display: block;
+	float: right;
+}
+@media (max-width: 767px) {
+	.sub-meta-wrapper .share,
+	.sub-meta-wrapper .info {
+		float: none;
+	}
+	.sub-meta-wrapper .share {
+		margin: 0 0 10px 0;
+	}
 }
 
 /* Post Formats */
 .entry-title a .fa {
 	font-size: .7em;
 }
+.featured-quote .tb-blockquote {
+	border: none;
+	padding: 30px;
+}
+.featured-quote small {
+	color: inherit;
+}
 
 /* Related Posts */
-.tb-related-posts > .inner {
+.tb-related-posts {
 	background: #ffffff;
 	padding: 30px;
 }
 .tb-related-posts .related-posts-title {
-	font-size: 20px;
-	margin: 0 10px 10px 0;
+	font-size: 24px;
+	margin: 0 0 1em 0;
 }
 
 /* Edit Link */
@@ -654,6 +708,10 @@ article.tb-naked-page {
 ----------------------------------------------- */
 
 /* Comment List */
+#comments {
+	background: #ffffff;
+	padding: 30px;
+}
 #comments ol,
 #comments ul {
 	list-style: none;
@@ -663,25 +721,28 @@ article.tb-naked-page {
 	margin: 0 0 30px 0;
 }
 #comments li {
-	margin: 5px 0;
+	padding-bottom: 30px;
+}
+#comments li:last-child {
+	padding-bottom: 0;
 }
 #comments-title {
-	font-size: 20px;
-	margin: 0 10px 10px 0;
+	margin: 0 0 30px 0;
 }
 #comments .comment-body {
-	background: #ffffff;
-	padding: 30px;
-	padding-right: 98px;
+	font-size: 13px;
+	padding: 0 80px 0 0;
 	position: relative;
 }
 #comments .comment-body .avatar {
+	border-radius: 100%;
 	position: absolute;
-	top: 30px;
-	right: 30px;
+	top: 0;
+	right: 0;
 }
 #comments .comment-author {
 	line-height: 1;
+	padding-top: 15px;
 }
 #comments .comment-body .says {
 	display: none;
@@ -691,35 +752,15 @@ article.tb-naked-page {
 }
 #comments .comment-body .comment-meta a {
 	color: inherit;
+}
+#comments .comment-body .comment-metadata {
+	color: #999999;
+	color: rgba(26,26,26,.4);
 	font-size: 12px;
 }
 #comments .comment-body .fn {
 	display: block;
-	font-style: normal;
-	font-weight: bold;
-	margin-top: 5px;
-}
-@media (max-width: 767px) {
-	#comments .comment-meta {
-		position: relative;
-	}
-	#comments .comment-body {
-		padding: 20px;
-	}
-	#comments .comment-body .avatar {
-		top: 0;
-		right: 0;
-	}
-	#comments .comment-body .fn {
-		margin-top: 0;
-	}
-	#comments .comment-body .comment-meta {
-		min-height: 50px;
-		padding: 5px 60px 5px 0;
-	}
-	#comments .comment-body .comment-metadata {
-		line-height: 1.1;
-	}
+	font-size: 15px;
 }
 
 /* Admin Comment */
@@ -733,19 +774,63 @@ article.tb-naked-page {
 
 /* Children */
 #comments ul.children {
-	border-right: 1px solid #dddddd;
-	margin: 10px 15px 10px 0;
-	padding: 10px 20px 10px 0;
+	border-right: 1px solid #eeeeee;
+	border-color: rgba(220,220,220,.4);
+	margin: 40px 70px 20px 0;
+	padding: 0 20px 0 0;
+}
+#comments ul.children .comment-body {
+	padding-right: 20px;
+}
+#comments ul.children li:last-child > .comment-body {
+	padding-bottom: 0;
+}
+#comments ul.children .comment-body .avatar {
+	border: 5px solid #ffffff;
+	top: -5px;
+	right: -45px;
+	width: 50px;
+	height: 50px;
+}
+#comments ul.children .comment-author {
+	padding-top: 5px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+	#comments .comment-body {
+		padding: 0;
+	}
+	#comments .comment-meta {
+		min-height: 60px;
+		padding-right: 75px;
+		position: relative;
+	}
+	#comments ul.children {
+		margin-right: 10px;
+	}
+	#comments ul.children .comment-body {
+		padding-right: 0;
+	}
+	#comments ul.children .comment-body .comment-meta {
+		padding-right: 60px;
+	}
+	#comments ul.children .comment-body .avatar {
+		border: none;
+		top: -5px;
+		right: 0;
+	}
 }
 
 /* Comment Form */
-#respond #commentform {
-	background: #ffffff;
-	padding: 30px;
+.comment-form-wrapper {
+	border-top: 2px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
+	padding-top: 30px;
 }
 #respond .comment-reply-title {
 	font-size: 20px;
-	margin: 0 10px 10px 0;
+	margin: 0 0 20px 0;
 }
 #respond label {
 	display: block;
@@ -768,16 +853,21 @@ article.tb-naked-page {
 
 /* Comment Form (in reply) */
 .comment #respond {
-	background: #ffffff;
-	padding: 30px;
-	margin-top: 5px;
+	font-size: 13px;
+	margin-top: 20px;
+	margin-right: 80px;
 }
-.comment #respond #commentform {
-	background: transparent;
-	padding: 0;
+.comment .children #respond {
+	margin-right: 20px;
 }
 .comment #respond .comment-reply-title {
-	margin: 0 0 20px 0;
+	font-size: 15px;
+}
+@media (max-width: 767px) {
+	.comment #respond,
+	.comment .children #respond {
+		margin-right: 0;
+	}
 }
 
 /* =Archives
@@ -787,6 +877,9 @@ article.tb-naked-page {
 .tb-info-box {
 	background: #ffffff;
 	padding: 30px;
+}
+.tb-author-box .avatar-wrap img {
+	border-radius: 100%;
 }
 
 /* Search Results */
@@ -839,6 +932,24 @@ article.tb-naked-page {
 	padding: 30px;
 }
 
+/* =Parts
+----------------------------------------------- */
+
+/* Mini Post List / Grid */
+.tb-mini-post-grid img,
+.tb-mini-post-grid .placeholder,
+.tb-mini-post-list img,
+.tb-mini-post-list .placeholder {
+	border-radius: 100%;
+}
+
+/* Box Titles */
+.fixed-sidebar .widget-title,
+.tb-info-box .info-box-title,
+.tb-related-posts .related-posts-title {
+	margin-bottom: 1em;
+}
+
 /* =Widgets
 ----------------------------------------------- */
 
@@ -866,6 +977,7 @@ article.tb-naked-page {
 	padding: 15px 20px;
 }
 .fixed-sidebar .widget-title {
+	font-size: 18px;
 	margin-top: 0;
 }
 

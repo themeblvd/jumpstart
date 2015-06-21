@@ -15,7 +15,7 @@ $page_class .= get_the_content() ? ' has-content' : ' no-content';
 	<?php endif; ?>
 
 	<?php if ( has_post_thumbnail() ) : ?>
-		<div class="featured-item">
+		<div class="featured-item featured-image">
 			<?php themeblvd_the_post_thumbnail(); ?>
 		</div><!-- .featured-item(end) -->
 	<?php endif; ?>

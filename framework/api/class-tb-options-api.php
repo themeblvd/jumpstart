@@ -170,7 +170,6 @@ class Theme_Blvd_Options_API {
 	 *		- single_meta
 	 *		- single_sub_meta
 	 *		- share
-	 *		- share_style
 	 *		- single_thumbs
 	 *		- single_related_posts
 	 *		- single_comments
@@ -181,6 +180,7 @@ class Theme_Blvd_Options_API {
 	 *	- Blog
 	 *		- blog_thumbs
 	 *		- blog_meta
+	 *		- blog_sub_meta
 	 *		- blog_content
 	 *		- blog_categories
 	 *	- Post Lists
@@ -599,20 +599,6 @@ class Theme_Blvd_Options_API {
 						),
 						'type' 		=> 'share'
 					),
-					'share_style' => array(
-						'name' 		=> __( 'Share Icon Style', 'themeblvd' ),
-						'desc'		=> __( 'Select the color you\'d like applied to the share icons on the single post.', 'themeblvd' ),
-						'id'		=> 'share_style',
-						'std'		=> 'flat',
-						'type' 		=> 'select',
-						'options'	=> array(
-							'flat'			=> __( 'Flat Color', 'themeblvd' ),
-							'dark' 			=> __( 'Flat Dark', 'themeblvd' ),
-							'grey' 			=> __( 'Flat Grey', 'themeblvd' ),
-							'light' 		=> __( 'Flat Light', 'themeblvd' ),
-							'color'			=> __( 'Color', 'themeblvd' )
-						)
-					),
 					'single_thumbs' => array(
 						'name' 		=> __( 'Featured Images', 'themeblvd' ),
 						'desc' 		=> __( 'Choose how you want your featured images to show on the single post. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'themeblvd' ),
@@ -713,6 +699,17 @@ class Theme_Blvd_Options_API {
 						'options' 	=> array(
 							'show'		=> __( 'Show meta info', 'themeblvd' ),
 							'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+						)
+					),
+					'blog_sub_meta' => array(
+						'name' 		=> __( 'Sub Meta Information', 'themeblvd' ),
+						'desc' 		=> __( 'Select if you\'d like the sub meta information (like tags, categories, etc) to below each post.', 'themeblvd' ),
+						'id' 		=> 'blog_sub_meta',
+						'std' 		=> 'show',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'show'		=> __( 'Show sub meta info', 'themeblvd' ),
+							'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
 						)
 					),
 					'blog_content' => array(

@@ -641,7 +641,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		'nav_standard'	=> false,				// Whether to show standard nav indicator dots
 		'nav_arrows'	=> true,				// Whether to show standard nav arrows
 		'arrows'		=> 'standard',			// Nav arrow style - standard, mini
-		'nav_thumbs'	=> true,				// Whether to show nav thumbnails (added by Theme Blvd framework)
+		'nav_thumbs'	=> false,				// Whether to show nav thumbnails (added by Theme Blvd framework)
 		'title'			=> false,				// Display title of attachments on slides
 		'caption'		=> false, 				// Display captions of attachments on slides
 		'dark_text'		=> false,				// Whether to use dark text for title/descriptions/standard nav, use when images are light

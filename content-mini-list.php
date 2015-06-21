@@ -18,12 +18,13 @@ $meta = apply_filters('themeblvd_mini_list_meta_args', array('include' => array(
 		</div><!-- .thumb-wrapper (end) -->
 	<?php endif; ?>
 
-	<h3 class="entry-title"><?php themeblvd_the_title(); ?></h3>
-
-	<?php if ( themeblvd_get_att('show_meta') ) : ?>
-		<div class="meta-wrapper">
-			<?php echo themeblvd_get_meta($meta); ?>
-		</div><!-- .meta-wrapper (end) -->
-	<?php endif; ?>
+	<div class="content-wrapper">
+		<h3 class="entry-title"><?php themeblvd_the_title(); ?></h3>
+		<?php if ( themeblvd_get_att('show_meta') ) : ?>
+			<div class="meta-wrapper">
+				<?php echo themeblvd_get_meta($meta); ?>
+			</div><!-- .meta-wrapper (end) -->
+		<?php endif; ?>
+	</div><!-- .content-wrapper (end) -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

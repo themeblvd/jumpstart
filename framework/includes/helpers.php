@@ -699,7 +699,7 @@ endif;
  */
 function themeblvd_get_comment_list_args() {
 	$args = array(
-		'avatar_size' 		=> 48,
+		'avatar_size' 		=> 60,
 		'style' 			=> 'ul',
 		'type' 				=> 'all',
 		'reply_text' 		=> themeblvd_get_local( 'reply' ),
@@ -888,22 +888,6 @@ function themeblvd_link_pages_link( $link, $i ) {
 	}
 
 	return $link;
-}
-
-/**
- * Add CSS classes to reply link to they are styled as
- * a Bootstrap button.
- *
- * @since 2.4.0
- *
- * @param string $formatted_link Current HTML to modify for button
- * @return string|bool|null Link to show comment form, if successful. False, if comments are closed.
- */
-function themeblvd_comment_reply_link( $formatted_link ) {
-	$color = apply_filters( 'themeblvd_comment_reply_button_color', 'default' );
-	$size = apply_filters( 'themeblvd_comment_reply_button_size', 'small' );
-	$class = themeblvd_get_button_class( $color, $size );
-	return str_replace( 'comment-reply-link', sprintf( 'comment-reply-link %s', $class ), $formatted_link );
 }
 
 /**
