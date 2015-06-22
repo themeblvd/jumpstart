@@ -11,6 +11,7 @@
 }
 .header-top-nav > li {
 	border-right-color: #000000;
+	border-right-color: rgba(0,0,0,.9);
 }
 .btn-navbar {
 	background: #333333;
@@ -18,12 +19,14 @@
 }
 .btn-navbar:hover {
 	background: #000000;
+	background: rgba(0,0,0,.9);
 	color: #ffffff;
 }
 
 /* Primary Navigation (non-mobile view) */
 .header-nav {
 	background: #000000;
+	background: rgba(0,0,0,.9);
 }
 
 /* Sticky Menu */
@@ -71,6 +74,7 @@ article.page {
 /* Sub Meta */
 .sub-meta-wrapper {
 	border-top-color :#000000;
+	border-top-color: rgba(0,0,0,.9);
 }
 .sub-meta-wrapper .sub-meta {
 	color: #ffffff;
@@ -95,6 +99,7 @@ article.page {
 /* Children */
 #comments ul.children {
 	border-color: #000000;
+	border-color: rgba(0,0,0,.9);
 }
 #comments ul.children .comment-body .avatar {
 	border-color: #222222;
@@ -103,6 +108,7 @@ article.page {
 /* Comment Form */
 .comment-form-wrapper {
 	border-color: #000000;
+	border-color: rgba(0,0,0,.9);
 }
 
 /* =Archives

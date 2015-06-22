@@ -44,7 +44,8 @@
 }
 .tb-wpml-switcher .lang-sub-menu li a {
 	background: #ffffff;
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	border-bottom: none;
 	display: block;
 	line-height: 1;
@@ -54,7 +55,8 @@
 	background: #f2f2f2;
 }
 .tb-wpml-switcher .lang-sub-menu li:last-child a {
-	border-bottom: 1px solid #dddddd;
+	border-bottom: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 }
 .site-header.transparent .tb-wpml-switcher .lang-sub-menu li a {
 	border-color: rgba(0,0,0,.8);

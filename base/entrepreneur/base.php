@@ -109,7 +109,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'content_border_color',
 				'name'		=> __('Content Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the border around content areas.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
@@ -207,7 +207,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'top_border_bottom_color',
 				'name'		=> __('Bottom Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the bottom border.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
@@ -494,7 +494,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'header_border_top_color',
 				'name'		=> __('Top Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the top border.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
@@ -532,7 +532,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'header_border_bottom_color',
 				'name'		=> __('Bottom Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the bottom border.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
@@ -744,7 +744,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'footer_border_top_color',
 				'name'		=> __('Top Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the top border.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
@@ -856,9 +856,9 @@ function jumpstart_ent_options() {
 				'name'		=> __( 'Default Buttons', 'themeblvd' ),
 				'desc'		=> __( 'Configure what a default button looks like.', 'themeblvd' ),
 				'std'		=> array(
-					'bg' 				=> '#f5f5f5',
-					'bg_hover'			=> '#eeeeee',
-					'border' 			=> '#dddddd',
+					'bg' 				=> '#f8f8f8',
+					'bg_hover'			=> '#f5f5f5',
+					'border' 			=> '#f2f2f2',
 					'text'				=> '#666666',
 					'text_hover'		=> '#666666',
 					'include_bg'		=> 1,
@@ -958,7 +958,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'widget_panel_border_color',
 				'name'		=> __('Panel Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the border.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-custom'
 			),
@@ -1052,7 +1052,7 @@ function jumpstart_ent_options() {
 				'id'		=> 'widget_border_color',
 				'name'		=> __('Border Color', 'themeblvd'),
 				'desc'		=> __('Select a color for the border.', 'themeblvd'),
-				'std'		=> '#dddddd',
+				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),

@@ -6,14 +6,13 @@
  *   1.1 - Typography
  *   1.2 - Buttons
  *   1.3 - Button Groups
- *   1.4 - Forms
- *   1.5 - Alerts
- *   1.6 - Panels
- *   1.7 - Tabs
- *   1.8 - Thumbnails
- *   1.9 - Code Elements
- *   1.10 - Pagination
- *   1.11 - Main Navigation
+ *   1.4 - Alerts
+ *   1.5 - Panels
+ *   1.6 - Tabs
+ *   1.7 - Thumbnails
+ *   1.8 - Code Elements
+ *   1.9 - Pagination
+ *   1.10 - Main Navigation
  * 2.0 - Common Classes
  *   2.1 - General
  *   2.2 - Images
@@ -335,17 +334,6 @@ ul {
 	text-decoration: underline;
 }
 
-/* Forms */
-.form-control {
-	border-radius: 0;
-}
-.form-control:focus {
-	border-color: #bbbbbb;
-	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-}
-
 /* Panels */
 .panel,
 .panel-group .panel,
@@ -370,7 +358,8 @@ ul {
 	padding: 4px;
 	line-height: 1.428571429;
 	background-color: #ffffff;
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	border-radius: 0;
 	/* border-radius: 4px; */
 	-webkit-transition: all 0.2s ease-in-out;
@@ -387,10 +376,10 @@ a.pretty:active,
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail:active {
-	border-color: #bbbbbb;
-	-webkit-box-shadow: 0 1px 4px #cccccc;
-	-moz-box-shadow: 0 1px 4px #cccccc;
-	box-shadow: 0 1px 4px #cccccc;
+	border-color: rgba(220,220,220,.6);
+	-webkit-box-shadow: 0 1px 4px rgba(200,200,200,.4);
+	-moz-box-shadow: 0 1px 4px rgba(200,200,200,.4);
+	box-shadow: 0 1px 4px rgba(200,200,200,.4);
 }
 p > .thumbnail,
 p > .pretty {
@@ -1187,7 +1176,8 @@ body.admin-bar .tb-sticky-menu {
 
 /* Level 1 */
 .tb-side-menu > li {
-	border-bottom: 1px solid #dddddd;
+	border-bottom: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	line-height: 14px;
 	padding: 12px 15px;
 }
@@ -1443,7 +1433,8 @@ body.mobile-menu-left-on #wrapper {
 	padding-bottom: 10px;
 }
 .tb-mobile-menu-wrapper .tb-search {
-	border-bottom: 1px solid #dddddd;
+	border-bottom: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	padding: 10px;
 }
 .tb-mobile-menu-wrapper .header-text {
@@ -1833,7 +1824,8 @@ html[xmlns] .slides {
 	padding:0;
 }
 .slider-fallback li.slider-fallback-slide {
-	border-bottom: 1px solid #dddddd;
+	border-bottom: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	list-style: none;
 	margin: 0 0 10px 0;
 	padding: 10px 0;
@@ -3024,6 +3016,7 @@ html[xmlns] .slides {
  */
 
 /* General */
+.form-control,
 input[type="text"],
 input[type="search"],
 input[type="password"],
@@ -3048,14 +3041,16 @@ select {
 	color: #555555;
 	background-color: #ffffff;
 	background-image: none;
-	border: 1px solid #cccccc;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	/* border-radius: 4px; */
 	border-radius: 0;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-box-shadow: none;
+	box-shadow: none;
 	-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.form-control:focus,
 input[type="text"]:focus,
 input[type="search"]:focus,
 input[type="password"]:focus,
@@ -3069,53 +3064,14 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="month"]:focus,
 textarea:focus {
-	border-color: #bbbbbb;
-	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
+	border-color: rgba(200,200,200,.6);
+	-webkit-box-shadow: 0 0 8px rgba(200,200,200,.4);
+	-moz-box-shadow: 0 0 8px rgba(200,200,200,.4);
+	box-shadow: 0 0 8px rgba(200,200,200,.4);
 	outline: 0;
 }
 textarea {
 	height: auto;
-}
-input[type="text"]::-moz-placeholder,
-input[type="text"]:-ms-input-placeholder,
-input[type="text"]::-webkit-input-placeholder,
-input[type="search"]::-moz-placeholder,
-input[type="search"]:-ms-input-placeholder,
-input[type="search"]::-webkit-input-placeholder,
-input[type="password"]::-moz-placeholder,
-input[type="password"]:-ms-input-placeholder,
-input[type="password"]::-webkit-input-placeholder,
-input[type="email"]::-moz-placeholder,
-input[type="email"]:-ms-input-placeholder,
-input[type="email"]::-webkit-input-placeholder,
-input[type="url"]::-moz-placeholder,
-input[type="url"]:-ms-input-placeholder,
-input[type="url"]::-webkit-input-placeholder,
-input[type="tel"]::-moz-placeholder,
-input[type="tel"]:-ms-input-placeholder,
-input[type="tel"]::-webkit-input-placeholder,
-input[type="number"]::-moz-placeholder,
-input[type="number"]:-ms-input-placeholder,
-input[type="number"]::-webkit-input-placeholder,
-input[type="date"]::-moz-placeholder,
-input[type="date"]:-ms-input-placeholder,
-input[type="date"]::-webkit-input-placeholder,
-input[type="time"]::-moz-placeholder,
-input[type="time"]:-ms-input-placeholder,
-input[type="time"]::-webkit-input-placeholder,
-input[type="datetime"]::-moz-placeholder,
-input[type="datetime"]:-ms-input-placeholder,
-input[type="datetime"]::-webkit-input-placeholder,
-input[type="datetime-local"]::-moz-placeholder,
-input[type="datetime-local"]:-ms-input-placeholder,
-input[type="datetime-local"]::-webkit-input-placeholder,
-input[type="month"]::-moz-placeholder,
-input[type="month"]:-ms-input-placeholder,
-input[type="month"]::-webkit-input-placeholder {
-	color: #999999;
-	opacity: 1;
 }
 
 /* Form Buttons - Match to Bootstrap .btn */
@@ -3181,7 +3137,8 @@ input[type="button"],
 .button,
 button {
 	background-color: #f8f8f8;
-	border-color: #dddddd;
+	border-color: #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
 	color: #666666;
@@ -3294,7 +3251,8 @@ button:active {
 /* Default */
 .btn-default {
 	background-color: #f8f8f8;
-	border-color: #dddddd;
+	border-color: #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
 	color: #666666;
@@ -3304,7 +3262,7 @@ button:active {
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active {
-	background-color: #eeeeee;
+	background-color: #f5f5f5;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
@@ -6661,7 +6619,8 @@ blockquote small {
 }
 .tb-logo.boxed {
 	background-color: #ffffff;
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	padding: 9px;
 }
 .tb-logo.boxed img {
@@ -6788,7 +6747,8 @@ blockquote small {
 	padding: 0;
 }
 .tb-pricing-table .feature-list > li {
-	border-bottom: 1px solid #dddddd;
+	border-bottom: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	line-height: 1.2;
 	padding: 8px;
 }
@@ -6796,22 +6756,25 @@ blockquote small {
 	border-bottom: none;
 }
 .tb-pricing-table .button-wrap {
-	border-top: 1px solid #dddddd;
+	border-top: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	padding: 10px;
 }
 .tb-pricing-table .popout .button-wrap {
 	padding: 20px 10px;
 }
 .tb-pricing-table .price-column.default {
-	border-color: #dddddd;
+	border-color: #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 }
 .tb-pricing-table .price-column.default .title-wrap {
 	background: #f2f2f2;
 }
 .tb-pricing-table .price-column.default .price-wrap {
 	background: #f8f8f8;
-	border-top: 1px solid #dddddd;
-	border-bottom: 1px solid #dddddd;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 }
 
 /* Promo Box (slogan) */
@@ -6896,7 +6859,8 @@ blockquote small {
 }
 .nav-tabs > li {
 	background-color: #f8f8f8;
-	border-color: #dddddd;
+	border-color: #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	border-style: solid;
 	border-width: 1px;
 	border-right-width: 0;
@@ -6946,7 +6910,8 @@ blockquote small {
 }
 .tb-tabs-framed .tab-content {
 	background: #ffffff;
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	border-top-width: 0;
 	color: #666666;
 	color: rgba(26,26,26,.7);
@@ -7607,7 +7572,8 @@ blockquote small {
 	padding: 8px 0;
 }
 .tb-date-block .month {
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	border-top: none;
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
@@ -7654,7 +7620,8 @@ blockquote small {
 	text-align: center;
 }
 .tb-chart .legend ul {
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	display: inline-block;
 	margin: 0;
 	padding: 5px;
@@ -7677,7 +7644,8 @@ blockquote small {
 
 /* Milestone */
 .tb-milestone.boxed {
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	padding: 20px 40px;
 }
 .entry-content .tb-milestone {
@@ -7707,7 +7675,8 @@ blockquote small {
 
 /* Milestone Ring */
 .tb-milestone-percent.boxed {
-	border: 1px solid #dddddd;
+	border: 1px solid #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	padding: 20px 40px;
 }
 .entry-content .tb-milestone-percent {
@@ -7951,7 +7920,8 @@ blockquote small {
 .text-dark .pretty,
 .text-dark .wp-caption {
 	background-color: #ffffff;
-	border-color: #dddddd;
+	border-color: #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 }
 .text-dark a.pretty:hover,
 .text-dark a.pretty:focus,
@@ -7959,26 +7929,14 @@ blockquote small {
 .text-dark a.thumbnail:hover,
 .text-dark a.thumbnail:focus,
 .text-dark a.thumbnail:active {
-	border-color: #bbbbbb;
-	-webkit-box-shadow: 0 1px 4px #cccccc;
-	-moz-box-shadow: 0 1px 4px #cccccc;
-	box-shadow: 0 1px 4px #cccccc;
+	border-color: rgba(220,220,220,.6);
+	-webkit-box-shadow: 0 1px 4px rgba(200,200,200,.4);
+	-moz-box-shadow: 0 1px 4px rgba(200,200,200,.4);
+	box-shadow: 0 1px 4px rgba(200,200,200,.4);
 }
 
 /* Forms */
-.text-dark .form-control {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #cccccc;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
-.text-dark .form-control:focus {
-	border-color: #bbbbbb;
-	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-}
+.text-dark .form-control,
 .text-dark input[type="text"],
 .text-dark input[type="search"],
 .text-dark input[type="password"],
@@ -7995,10 +7953,9 @@ blockquote small {
 .text-dark select {
 	color: #555555;
 	background-color: #ffffff;
-	border: 1px solid #cccccc;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	border-color: rgba(220,220,220,.4);
 }
+.text-dark .form-control:focus,
 .text-dark input[type="text"]:focus,
 .text-dark input[type="search"]:focus,
 .text-dark input[type="password"]:focus,
@@ -8012,48 +7969,10 @@ blockquote small {
 .text-dark input[type="datetime-local"]:focus,
 .text-dark input[type="month"]:focus,
 .text-dark textarea:focus {
-	border-color: #bbbbbb;
-	-webkit-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	-moz-box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-	box-shadow: inset 0 1px 1px #f2f2f2, 0 0 8px #cccccc;
-}
-.text-dark input[type="text"]::-moz-placeholder,
-.text-dark input[type="text"]:-ms-input-placeholder,
-.text-dark input[type="text"]::-webkit-input-placeholder,
-.text-dark input[type="search"]::-moz-placeholder,
-.text-dark input[type="search"]:-ms-input-placeholder,
-.text-dark input[type="search"]::-webkit-input-placeholder,
-.text-dark input[type="password"]::-moz-placeholder,
-.text-dark input[type="password"]:-ms-input-placeholder,
-.text-dark input[type="password"]::-webkit-input-placeholder,
-.text-dark input[type="email"]::-moz-placeholder,
-.text-dark input[type="email"]:-ms-input-placeholder,
-.text-dark input[type="email"]::-webkit-input-placeholder,
-.text-dark input[type="url"]::-moz-placeholder,
-.text-dark input[type="url"]:-ms-input-placeholder,
-.text-dark input[type="url"]::-webkit-input-placeholder,
-.text-dark input[type="tel"]::-moz-placeholder,
-.text-dark input[type="tel"]:-ms-input-placeholder,
-.text-dark input[type="tel"]::-webkit-input-placeholder,
-.text-dark input[type="number"]::-moz-placeholder,
-.text-dark input[type="number"]:-ms-input-placeholder,
-.text-dark input[type="number"]::-webkit-input-placeholder,
-.text-dark input[type="date"]::-moz-placeholder,
-.text-dark input[type="date"]:-ms-input-placeholder,
-.text-dark input[type="date"]::-webkit-input-placeholder,
-.text-dark input[type="time"]::-moz-placeholder,
-.text-dark input[type="time"]:-ms-input-placeholder,
-.text-dark input[type="time"]::-webkit-input-placeholder,
-.text-dark input[type="datetime"]::-moz-placeholder,
-.text-dark input[type="datetime"]:-ms-input-placeholder,
-.text-dark input[type="datetime"]::-webkit-input-placeholder,
-.text-dark input[type="datetime-local"]::-moz-placeholder,
-.text-dark input[type="datetime-local"]:-ms-input-placeholder,
-.text-dark input[type="datetime-local"]::-webkit-input-placeholder,
-.text-dark input[type="month"]::-moz-placeholder,
-.text-dark input[type="month"]:-ms-input-placeholder,
-.text-dark input[type="month"]::-webkit-input-placeholder {
-	color: #999999;
+	border-color: rgba(200,200,200,.6);
+	-webkit-box-shadow: 0 0 8px rgba(200,200,200,.4);
+	-moz-box-shadow: 0 0 8px rgba(200,200,200,.4);
+	box-shadow: 0 0 8px rgba(200,200,200,.4);
 }
 
 /* Form Buttons - Match to Bootstrap .btn */
@@ -8063,7 +7982,8 @@ blockquote small {
 .text-dark .button:not(.btn-primary),
 .text-dark button:not(.btn-primary) {
 	background-color: #f8f8f8;
-	border-color: #dddddd;
+	border-color: #f2f2f2;
+	border-color: rgba(220,220,220,.4);
 	-webkit-box-shadow: inset 0 1px 0 #ffffff;
 	box-shadow: inset 0 1px 0 #ffffff;
 	color: #666666;
@@ -8084,7 +8004,7 @@ blockquote small {
 .text-dark button:hover:not(.btn-primary),
 .text-dark button:focus:not(.btn-primary),
 .text-dark button:active:not(.btn-primary) {
-	background-color: #eeeeee;
+	background-color: #f5f5f5;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	color: #666666;
@@ -8155,18 +8075,7 @@ blockquote small {
 }
 
 /* Forms */
-.text-light .form-control {
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-color: rgba(0, 0, 0, 0.9);
-    -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2);
-}
-.text-light .form-control:focus {
-    border-color: rgba(0, 0, 0, 0.9);
-    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-}
+.text-light .form-control,
 .text-light input[type="text"],
 .text-light input[type="search"],
 .text-light input[type="password"],
@@ -8185,6 +8094,7 @@ blockquote small {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-color: rgba(0, 0, 0, 0.9);
 }
+.text-light .form-control:focus,
 .text-light input[type="text"]:focus,
 .text-light input[type="search"]:focus,
 .text-light input[type="password"]:focus,
@@ -8202,44 +8112,6 @@ blockquote small {
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-}
-.text-light input[type="text"]::-moz-placeholder,
-.text-light input[type="text"]:-ms-input-placeholder,
-.text-light input[type="text"]::-webkit-input-placeholder,
-.text-light input[type="search"]::-moz-placeholder,
-.text-light input[type="search"]:-ms-input-placeholder,
-.text-light input[type="search"]::-webkit-input-placeholder,
-.text-light input[type="password"]::-moz-placeholder,
-.text-light input[type="password"]:-ms-input-placeholder,
-.text-light input[type="password"]::-webkit-input-placeholder,
-.text-light input[type="email"]::-moz-placeholder,
-.text-light input[type="email"]:-ms-input-placeholder,
-.text-light input[type="email"]::-webkit-input-placeholder,
-.text-light input[type="url"]::-moz-placeholder,
-.text-light input[type="url"]:-ms-input-placeholder,
-.text-light input[type="url"]::-webkit-input-placeholder,
-.text-light input[type="tel"]::-moz-placeholder,
-.text-light input[type="tel"]:-ms-input-placeholder,
-.text-light input[type="tel"]::-webkit-input-placeholder,
-.text-light input[type="number"]::-moz-placeholder,
-.text-light input[type="number"]:-ms-input-placeholder,
-.text-light input[type="number"]::-webkit-input-placeholder,
-.text-light input[type="date"]::-moz-placeholder,
-.text-light input[type="date"]:-ms-input-placeholder,
-.text-light input[type="date"]::-webkit-input-placeholder,
-.text-light input[type="time"]::-moz-placeholder,
-.text-light input[type="time"]:-ms-input-placeholder,
-.text-light input[type="time"]::-webkit-input-placeholder,
-.text-light input[type="datetime"]::-moz-placeholder,
-.text-light input[type="datetime"]:-ms-input-placeholder,
-.text-light input[type="datetime"]::-webkit-input-placeholder,
-.text-light input[type="datetime-local"]::-moz-placeholder,
-.text-light input[type="datetime-local"]:-ms-input-placeholder,
-.text-light input[type="datetime-local"]::-webkit-input-placeholder,
-.text-light input[type="month"]::-moz-placeholder,
-.text-light input[type="month"]:-ms-input-placeholder,
-.text-light input[type="month"]::-webkit-input-placeholder {
-	color: #cccccc;
 }
 
 /* Form Buttons - Match to Bootstrap .btn */
