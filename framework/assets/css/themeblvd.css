@@ -3039,7 +3039,8 @@ select {
 	font-size: 14px;
 	line-height: 1.428571429;
 	margin-bottom: 10px;
-	color: #555555;
+	color: #666666;
+	color: rgba(26,26,26,.7);
 	background-color: #ffffff;
 	background-image: none;
 	border: 1px solid #f2f2f2;
@@ -7989,7 +7990,8 @@ blockquote small {
 .text-dark input[type="month"],
 .text-dark textarea,
 .text-dark select {
-	color: #555555;
+	color: #666666;
+	color: rgba(26,26,26,.7);
 	background-color: #ffffff;
 	border-color: rgba(220,220,220,.4);
 }

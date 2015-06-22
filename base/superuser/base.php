@@ -1989,6 +1989,7 @@ function jumpstart_su_css() {
 					$print .= "\tcolor: #ffffff;\n";
 				} else {
 					$print .= "\tcolor: #666666;\n";
+					$print .= "\tcolor: rgba(26,26,26,.7);\n";
 				}
 
 				$print .= "}\n";
@@ -2368,6 +2369,7 @@ function jumpstart_su_css() {
 		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input,";
 		$print .= ".tb-search.mini .search-submit {\n";
 		$print .= "\tcolor: #666666;\n";
+		$print .= "\tcolor: rgba(26,26,26,.7);\n";
 		$print .= "}\n";
 
 		$print .= ".tb-mobile-menu-wrapper .tb-search.mini > form,\n";

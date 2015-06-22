@@ -183,6 +183,7 @@
 }
 #bbpress-forums .tb-bbp-buttons.topic-subscribe a {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 #bbpress-forums .topic-header {
 	float: left;
@@ -697,6 +698,7 @@ div.bbp-submit-wrapper {
 .content_dark #bbpress-forums .status-closed,
 .content_dark #bbpress-forums .status-closed a {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .content_dark .bbp-topics-front ul.super-sticky,
 .content_dark .bbp-topics ul.super-sticky,

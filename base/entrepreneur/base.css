@@ -151,6 +151,7 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li > .menu-btn {
 	border-bottom: 4px solid transparent;
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	font-size: 13px;
 	font-weight: bold;
 	line-height: 20px;

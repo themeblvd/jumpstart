@@ -1000,7 +1000,8 @@ button:active {
 .text-dark input[type="month"],
 .text-dark textarea,
 .text-dark select {
-	color: #555555;
+	color: #666666;
+    color: rgba(26,26,26,.7);
 	background-color: #ffffff;
 	border-color: rgba(220,220,220,.4);
 }

@@ -762,6 +762,7 @@ ul.woocommerce-info {
 }
 .tb-product-wrap .variations label {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	font-size: 1rem;
 	font-weight: normal;
 	margin: 8px 0;
@@ -835,6 +836,7 @@ ul.woocommerce-info {
 .woocommerce-tabs .tabs > li > a:hover,
 .woocommerce-tabs .tabs > li > a:focus {
 	color: #666666;
+	color: rgba(26,26,26,.7);
 	outline: none;
 	text-decoration: none;
 }
