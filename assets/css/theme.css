@@ -45,6 +45,7 @@
  * 9.0 - Parts
  *   9.1 - Mini Post List/Grid
  *   9.2 - Box Titles
+ *   9.3 - Tooltips
  * 10.0 - Widgets
  *   10.1 - General
  *   10.2 - Fixed Sidebars
@@ -948,6 +949,34 @@ article.tb-naked-page > .featured-item {
 .tb-info-box .info-box-title,
 .tb-related-posts .related-posts-title {
 	margin-bottom: 1em;
+}
+
+/* Tooltips */
+.tooltip {
+	font-family: inherit;
+}
+.tooltip-inner {
+	background-color: #444444;
+	background-color: #ffffff;
+	border-color: #fec527; /* highlight */
+	border-style: solid;
+	border-width: 0;
+	border-radius: 0 0 2px 2px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.1);
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+	color: #333333;
+}
+.tooltip.top .tooltip-inner {
+	border-bottom-width: 3px;
+}
+.tooltip.bottom .tooltip-inner {
+	border-top-width: 3px;
+}
+.tooltip.top .tooltip-arrow {
+	border-top-color: #fec527; /* highlight */
+}
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: #fec527; /* highlight */
 }
 
 /* =Widgets

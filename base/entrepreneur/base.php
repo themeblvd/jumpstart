@@ -1439,6 +1439,32 @@ function jumpstart_ent_css() {
 		$print .= "}\n";
 	}
 
+	// Highlight Color
+	$highlight = themeblvd_get_option('highlight');
+
+	$print .= ".tb-tag-cloud .tagcloud a:hover,\n";
+	$print .= ".tb-tags a:hover,\n";
+	$print .= ".tb-tags a:focus,\n";
+	$print .= ".btn-share:hover,\n";
+	$print .= ".btn-share:focus {\n";
+	$print .= sprintf("\tbackground-color: %s\n", $highlight);
+	$print .= "}\n";
+
+	$print .= ".tb-thumb-link:before,\n";
+	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .item-title {\n";
+	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($highlight, '0.8'));
+	$print .= "}\n";
+
+	$print .= ".tooltip-inner {\n";
+	$print .= sprintf("\tborder-color: %s;\n", $highlight);
+	$print .= "}\n";
+	$print .= ".tooltip.top .tooltip-arrow {\n";
+	$print .= sprintf("\tborder-top-color: %s;\n", $highlight);
+	$print .= "}\n";
+	$print .= ".tooltip.bottom .tooltip-arrow {\n";
+	$print .= sprintf("\tborder-bottom-color: %s;\n", $highlight);
+	$print .= "}\n";
+
 	/* Box Titles & Widgets */
 	$widget_style = themeblvd_get_option('widget_style');
 
