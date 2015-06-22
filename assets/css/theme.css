@@ -50,6 +50,7 @@
  *   10.1 - General
  *   10.2 - Fixed Sidebars
  *   10.3 - Footer
+ *   10.4 - Search Widget
  * 11.0 - Printing
  ----------------------------------------------- */
 
@@ -1038,6 +1039,35 @@ article.tb-naked-page > .featured-item {
 	font-size: 16px;
 	line-height: 1.1;
 	margin: 0 0 20px 0;
+}
+
+/* Search Widget */
+.widget_search .tb-search .search-wrap {
+	position: relative;
+}
+.widget_search .tb-search .search-wrap:before {
+	content: "\f002";
+	color: rgba(200,200,200,.7);
+	display: block;
+	font-family: "FontAwesome";
+	line-height: 1em;
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	text-align: center;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	width: 1em;
+	height: 1em;
+}
+.widget_search .tb-search .search-input {
+	padding: 6px 10px 6px 30px;
+}
+.widget_search .tb-search .search-submit {
+	display: none;
 }
 
 /* =Printing
