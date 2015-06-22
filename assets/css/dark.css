@@ -92,6 +92,10 @@ article.page {
 #comments {
 	background: #222222;
 }
+#comments ol.commentlist {
+	border-color: #000000;
+	border-color: rgba(0,0,0,.9);
+}
 #comments .comment-body .comment-metadata {
 	color: #ffffff;
 }
@@ -103,12 +107,6 @@ article.page {
 }
 #comments ul.children .comment-body .avatar {
 	border-color: #222222;
-}
-
-/* Comment Form */
-.comment-form-wrapper {
-	border-color: #000000;
-	border-color: rgba(0,0,0,.9);
 }
 
 /* =Archives
