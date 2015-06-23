@@ -1274,7 +1274,14 @@ function themeblvd_get_testimonial_slider( $args ) {
     $output .= themeblvd_get_loader();
 
     if ( $args['nav'] ) {
-        $output .= themeblvd_get_slider_controls();
+
+		$controls = array();
+
+		if ( $args['display'] == 'showcase' ) {
+			$controls['color'] = 'trans';
+		}
+
+        $output .= themeblvd_get_slider_controls($controls);
     }
 
     if ( $args['testimonials'] ) {

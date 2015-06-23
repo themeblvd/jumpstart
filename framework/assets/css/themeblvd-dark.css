@@ -849,14 +849,6 @@ button:active {
     color: #ffffff;
 }
 
-/* Block Slider Nav */
-.text-light .tb-slider-arrows li a {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.text-light .tb-slider-arrows li a:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
 /* Thumbnails */
 .text-light .thumbnail,
 .text-light .pretty,

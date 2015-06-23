@@ -1225,30 +1225,32 @@ function themeblvd_simple_contact( $args ) {
 function themeblvd_get_slider_controls( $args = array() ) {
 
 	$defaults = array(
-		'carousel'		=> false,						// If using Bootstrap carousel, the ID
-		'color'			=> 'primary',					// Color of buttons (use "trans" for transparent style)
-		'direction' 	=> 'horz', 						// horz or vert
-		'prev' 			=> themeblvd_get_local('prev'),	// Text for previous button
-		'next' 			=> themeblvd_get_local('next'),	// Text for next button
+		'carousel'		=> false,							// If using Bootstrap carousel, the ID
+		'color'			=> 'primary',						// Color of buttons (use "trans" for transparent style)
+		'direction' 	=> 'horz', 							// horz or vert
+		'prev' 			=> themeblvd_get_local('previous'),	// Text for previous button
+		'next' 			=> themeblvd_get_local('next'),		// Text for next button
     );
     $args = wp_parse_args( $args, $defaults );
 
     if ( $args['direction'] == 'horz' ) {
-		$icon_prev = 'chevron-left';
-	    $icon_next = 'chevron-right';
+
+		if ( is_rtl() ) {
+			$prev = 'right';
+	    	$next = 'left';
+		} else {
+			$prev = 'left';
+	    	$next = 'right';
+		}
+
 	} else {
-		$icon_prev = 'chevron-up';
-		$icon_next = 'chevron-down';
+		$prev = 'up';
+		$next = 'down';
 	}
 
-    if ( is_rtl() && $args['direction'] == 'horz' ) {
-    	$icon_prev = 'chevron-right';
-	    $icon_next = 'chevron-left';
-    }
-
-    $output  = '<ul class="tb-slider-arrows">';
-	$output .= sprintf( '<li><a href="#" title="%s" class="%s prev"><i class="fa fa-%s"></i></a></li>', $args['prev'], $args['color'], $icon_prev );
-	$output .= sprintf( '<li><a href="#" title="%s" class="%s next"><i class="fa fa-%s"></i></a></li>', $args['prev'], $args['color'], $icon_next );
+    $output  = '<ul class="tb-slider-arrows %s">';
+	$output .= sprintf( '<li><a href="#" title="%1$s" class="%2$s %3$s prev">%1$s</a></li>', $args['prev'], $prev, $args['color'] );
+	$output .= sprintf( '<li><a href="#" title="%1$s" class="%2$s %3$s next">%1$s</a></li>', $args['next'], $next, $args['color'] );
 	$output .= '</ul>';
 
 	if ( $args['carousel'] ) {

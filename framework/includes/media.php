@@ -861,6 +861,10 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		$class .= ' cover';
 	}
 
+	if ( $args['nav_arrows'] ) {
+		$class .= ' nav-arrows-'.$args['arrows'];
+	}
+
 	// Inline styles for popout slider with background images that cover full width
 	if ( $args['cover'] ) {
 
@@ -1048,22 +1052,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 	// Nav arrows
 	if ( $args['nav_arrows'] ) {
-
-		if ( $args['arrows'] == 'mini' ) {
-
-			$output .= themeblvd_get_slider_controls( array( 'carousel' => $args['id'] ) );
-
-		} else {
-
-			$output .= '<a class="left carousel-control" href="#'.$args['id'].'" data-slide="prev">';
-			$output .= '<span class="glyphicon glyphicon-chevron-left"></span>';
-			$output .= '</a>';
-
-			$output .= '<a class="right carousel-control" href="#'.$args['id'].'" data-slide="next">';
-			$output .= '<span class="glyphicon glyphicon-chevron-right"></span>';
-			$output .= '</a>';
-
-		}
+		$output .= themeblvd_get_slider_controls( array( 'carousel' => $args['id'], 'color' => 'trans' ) );
 	}
 
 	$output .= '</div><!-- .carousel-control-wrap (end) -->';
