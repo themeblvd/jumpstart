@@ -1790,7 +1790,7 @@ function jumpstart_ent_css() {
 	$print .= "}\n";
 
 	$top = round( ($height-20) / 2 ); // 20px line-height for font
-	$bottom = ($height-24) - $top; // 20px line-height for font and 4px bottom border
+	$bottom = ($height-20) - $top; // 20px line-height for font
 
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 
@@ -1859,14 +1859,13 @@ function jumpstart_ent_css() {
 	$highlight = themeblvd_get_option('menu_highlight');
 
 	if ( themeblvd_config('suck_up') && themeblvd_get_option('menu_highlight_trans') ) {
-		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li > a:hover,\n";
-		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
-		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
+		$print .= ".site-header.transparent .header-nav .tb-primary-menu > li > .menu-btn:before {\n";
 	} else {
-		$print .= ".header-nav .tb-primary-menu > li.current-menu-item > .menu-btn,\n";
-		$print .= ".header-nav .tb-primary-menu > li.current-menu-ancestor > .menu-btn,\n";
-		$print .= ".header-nav .tb-primary-menu > li > a:hover,\n";
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn:before {\n";
 	}
+
+	$print .= sprintf("\tbackground-color: %s;\n", $highlight);
+	$print .= "}\n";
 
 	$print .= ".tb-primary-menu > li > ul.non-mega-sub-menu,\n";
 	$print .= ".tb-primary-menu .sf-mega {\n";
