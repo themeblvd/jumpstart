@@ -407,20 +407,32 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
     $output = '';
 
     $defaults = array(
-		'blocks'         	=> array(),     // Text blocks
-		'text_align'    	=> 'left',  	// How to align all text - left, right, center
-		'max'           	=> '',      	// Meant to be used with align left/right/center - 300px, 50%, etc
-		'align'         	=> 'center',	// How to align unit - left, right, center, blank for no alignment
-        'apply_bg_color'	=> '',      	// Background color - Ex: #000000
-		'bg_color'      	=> '',      	// Background color - Ex: #000000
-        'bg_opacity'    	=> '1',     	// BG color opacity for rgba()
-		'height_100vh'		=> '0',			// Whether to match height to viewport (currently used in element's display class)
-		'section_jump'		=> '0',			// Whether to show button to jump to next section (needs height_100vh to be true)
-		'buttons'       	=> array(), 	// Any buttons to include
-        'buttons_stack' 	=> '0',     	// Whether buttons appear stacked
-        'buttons_block' 	=> '0',      	// Whether buttons are displayed as block-level
-		'wpautop'			=> '1',			// Only used if using $content var
-		'class'         	=> ''      		// Any additional CSS classes
+		'blocks'         			=> array(),     // Text blocks
+		'bg_type'					=> '',
+		'bg_color'					=> '#333333',
+		'bg_color_opacity'			=> '1',
+		'bg_texture'				=> '',
+		'apply_bg_texture_parallax'	=> '0',
+		'bg_texture_parallax'		=> '5',
+		'bg_image'					=> array(),
+		'bg_image_parallax'			=> '2',
+		'bg_video'					=> '',
+		'apply_bg_shade'			=> '0',
+		'bg_shade_color'			=> '#000000',
+		'bg_shade_opacity'			=> '0.5',
+		'text_align'    			=> 'left',  	// How to align all text - left, right, center
+		'max'           			=> '',      	// Meant to be used with align left/right/center - 300px, 50%, etc
+		'align'         			=> 'center',	// How to align unit - left, right, center, blank for no alignment
+        'apply_content_bg'			=> '',      	// Background color - Ex: #000000
+		'content_bg_color'      	=> '',      	// Background color - Ex: #000000
+        'content_bg_opacity'    	=> '1',     	// BG color opacity for rgba()
+		'height_100vh'				=> '0',			// Whether to match height to viewport (currently used in element's display class)
+		'section_jump'				=> '0',			// Whether to show button to jump to next section (needs height_100vh to be true)
+		'buttons'       			=> array(), 	// Any buttons to include
+        'buttons_stack' 			=> '0',     	// Whether buttons appear stacked
+        'buttons_block' 			=> '0',      	// Whether buttons are displayed as block-level
+		'wpautop'					=> '1',			// Only used if using $content var
+		'class'         			=> ''      		// Any additional CSS classes
     );
     $args = wp_parse_args( $args, $defaults );
 
@@ -430,9 +442,9 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
     // Setup inline styles
     $style = '';
 
-    if ( $args['apply_bg_color'] ) {
-        $style .= sprintf( 'background-color:%s;', $args['bg_color'] ); // Fallback for older browsers
-        $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+    if ( $args['apply_content_bg'] ) {
+        $style .= sprintf( 'background-color:%s;', $args['content_bg_color'] ); // Fallback for older browsers
+        $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $args['content_bg_color'], $args['content_bg_opacity'] ) );
         $class .= ' has-bg';
     }
 
@@ -492,6 +504,20 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 	// Add button to jump to next section, outside of main component
 	if ( $args['height_100vh'] && $args['section_jump'] ) {
 		$output .= themeblvd_get_to_section();
+	}
+
+	if ( $args['bg_type'] && $args['bg_type'] != 'none' ) {
+
+		$class = 'jumbotron-outer';
+
+		if ( $args['height_100vh'] ) {
+			$class .= ' height-100vh';
+		}
+
+		$class .= ' '.implode(" ", themeblvd_get_display_class($args));
+
+		$output = sprintf('<div class="%s" data-parallax="%s" style="%s">%s</div>', $class, themeblvd_get_parallax_intensity($args), themeblvd_get_display_inline_style($args), $output);
+
 	}
 
     return apply_filters( 'themeblvd_jumbotron', $output, $args, $content, $jumbotron );

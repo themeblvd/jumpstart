@@ -18,6 +18,7 @@
  *   2.2 - Images
  *   2.3 - Icon Lists
  *   2.4 - Rounded Corners
+ *   2.5 - Viewport
  * 3.0 - WP Classes
  * 4.0 - Animation
  * 5.0 - Post Formats
@@ -501,6 +502,14 @@ img.size-full {
 	border-radius: 20px;
 }
 
+/* Viewport */
+@media (min-width: 992px) and (min-height: 500px) {
+	.height-100vh {
+		min-height: 100vh;
+		position: relative;
+	}
+}
+
 /* =WordPress Standard Classes
 -----------------------------------------------*/
 
@@ -756,6 +765,10 @@ img.size-full {
 		right: 0;
 		z-index: 500;
 	}
+	body.tb-suck-up #container > #top > .site-header > .wrap {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0); /* Fix text flicker in Safari, when other CSS3 animations are happenning. z-indexed below */
+	}
 	.site-header.transparent .logo-standard,
 	.site-header.transparent .header-top .tb-social-icons {
 		display: none;
@@ -956,6 +969,7 @@ body.admin-bar .tb-sticky-menu {
 	position: absolute;
 	top: 50%;
 	left: 10px;
+	-ms-transform: translate(0, -50%); /* IE9 */
 	-webkit-transform: translate(0, -50%);
 	transform: translate(0, -50%);
 }
@@ -5212,12 +5226,6 @@ button.mfp-arrow:active {
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 }
-@media (min-width: 992px) and (min-height: 500px) {
-	.element.height-100vh {
-		min-height: 100vh;
-		position: relative;
-	}
-}
 
 /* Section BG shade */
 .element-section.has-bg-shade > .bg-shade {
@@ -5511,6 +5519,9 @@ blockquote small {
 }
 
 /* Simple Slider */
+.tb-simple-slider {
+	z-index: 1; /* Safari text flicker fix */
+}
 .entry-content .tb-simple-slider {
 	margin-bottom: 20px;
 }
@@ -5547,6 +5558,8 @@ blockquote small {
 	top: 50%;
 	width: 50px;
 	height: 80px;
+	-ms-transform: translate(0, -50%); /* IE9 */
+	-webkit-transform: translate(0, -50%);
 	transform: translate(0,-50%);
 }
 .tb-simple-slider.nav-arrows-standard .tb-slider-arrows a.prev {
@@ -5697,6 +5710,7 @@ blockquote small {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	-ms-transform: translate(-50%, -50%); /* IE9 */
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	min-width: 100%;
@@ -6510,9 +6524,9 @@ blockquote small {
 }
 
 /* Jumbotron */
-/* @noflip */
 @media (min-width: 992px) and (min-height: 500px) {
-	.element-jumbotron.height-100vh .jumbotron-wrap {
+	/* @noflip */
+	.element-jumbotron .height-100vh .jumbotron-wrap {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -6520,6 +6534,10 @@ blockquote small {
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 		width: 100%;
+	}
+	.element-jumbotron.popout.height-100vh {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
 	}
 }
 .tb-jumbotron {
@@ -7293,6 +7311,7 @@ blockquote small {
 	top: 50%;
 	right: 10px;
 	left: 10px;
+	-ms-transform: translate(0, -50%); /* IE9 */
 	-webkit-transform: translate(0, -50%);
 	transform: translate(0, -50%);
 	width: 100%;

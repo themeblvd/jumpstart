@@ -406,7 +406,7 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 		unset($types['slideshow']);
 	}
 
-	if ( $context == 'section' || $context == 'banner' ) {
+	if ( $context == 'section' || $context == 'banner' || $context == 'jumbotron' ) {
 
 		if ( themeblvd_supports( 'featured', 'style' ) ) {
 			$types['featured'] = __('Theme\'s preset "Featured" area background', 'themeblvd_builder');
