@@ -100,12 +100,7 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		case 'columns' :
-
-			$num = 1;
-
-			if ( is_string( $args['options']['setup'] ) ) {
-				$num = count( explode( '-', $args['options']['setup'] ) );
-			}
+		case 'jumbotron_slider' :
 
 			if ( themeblvd_get_att('footer_sync') ) {
 				$layout_id = themeblvd_config('bottom_builder_post_id');
@@ -113,18 +108,38 @@ function themeblvd_element( $args ) {
 				$layout_id = themeblvd_config('builder_post_id');
 			}
 
-			$col_args = array(
-				'section'		=> $args['section'],
-				'layout_id'		=> $layout_id,
-				'element_id' 	=> $args['id'],
-				'num'			=> $num,
-				'widths'		=> $args['options']['setup'],
-				'stack' 		=> $args['options']['stack'],
-				'height'		=> $args['options']['height'],
-				'align'			=> $args['options']['align']
-			);
+			if ( $args['type'] == 'jumbotron_slider' ) {
 
-			themeblvd_columns( $col_args );
+				$hero_args = array(
+					'section'		=> $args['section'],
+					'layout_id'		=> $layout_id,
+					'element_id' 	=> $args['id'],
+				);
+
+				themeblvd_jumbotron_slider( array_merge( $hero_args, $args['options'] ) );
+
+			} else {
+
+				$num = 1;
+
+				if ( isset($args['options']['setup']) && is_string( $args['options']['setup'] ) ) {
+					$num = count( explode( '-', $args['options']['setup'] ) );
+				}
+
+				$col_args = array(
+					'section'		=> $args['section'],
+					'layout_id'		=> $layout_id,
+					'element_id' 	=> $args['id'],
+					'num'			=> $num,
+					'widths'		=> $args['options']['setup'],
+					'stack' 		=> $args['options']['stack'],
+					'height'		=> $args['options']['height'],
+					'align'			=> $args['options']['align']
+				);
+
+				themeblvd_columns( $col_args );
+
+			}
 			break;
 
 		/*------------------------------------------------------*/
@@ -202,7 +217,7 @@ function themeblvd_element( $args ) {
 			themeblvd_icon_box( $args['options'] );
 			break;
 
-		// Jumbotron
+		// Hero Unit
 		case 'jumbotron' :
 			themeblvd_jumbotron( $args['options'] );
 			break;
@@ -1115,4 +1130,75 @@ function themeblvd_columns( $args, $columns = null ) {
 	} else {
 		themeblvd_close_row();
 	}
+}
+
+/**
+ * Get hero unit slider
+ *
+ * @since 2.5.0
+ *
+ * @param array $args Arguments for hero unit.
+ * @return string $output Output for hero unit slider
+ */
+function themeblvd_get_jumbotron_slider( $args ) {
+
+    $defaults = array(
+		'section'		=> '',					// Section ID (not really used for anything)
+        'layout_id'		=> 0,					// Current ID of custom layout or page (to pull hero units from meta)
+		'element_id'	=> 'element_',			// Current ID of element (also to pull hero units from meta)
+		'fx'            => 'fade',          	// Slide transition effect (slide or fade)
+        'timeout'       => '3',         		// Secods in between transitions, can be 0 for no auto rotation
+        'nav'           => '1'         			// Whether to show slider navigation
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+	// Create ID for slider
+	$slider_id = str_replace('element_', 'jumbotron_slider_', $args['element_id']);
+
+	// Get data with hero units, saved outside of initial layout elements
+	$data = get_post_meta( $args['layout_id'], '_tb_builder_'.$args['element_id'].'_col_1', true ); // Ex: _tb_builder_element_123_col_1
+
+	// Wrapping CSS class
+	$class = 'tb-jumbotron-slider';
+
+    if ( $args['nav'] ) {
+        $class .= ' has-nav';
+    }
+
+	// Start output
+	$output  = sprintf('<div class="%s" data-timeout="%s" data-nav="%s" data-fx="%s">', $class, $args['timeout'], $args['nav'], $args['fx'] );
+	$output .= '<div class="flexslider slider-inner">';
+    $output .= themeblvd_get_loader();
+
+	if ( $args['nav'] ) {
+        $output .= themeblvd_get_slider_controls( array('color' => 'trans') );
+    }
+
+	if ( $data && ! empty($data['elements']) ) {
+
+		$output .= '<ul class="slides">';
+
+		foreach ( $data['elements'] as $elem ) {
+			$output .= sprintf('<li class="slide">%s</li>', themeblvd_get_jumbotron( $elem['options'] ));
+		}
+
+		$output .= '</ul>';
+
+	}
+
+	$output .= '</div><!-- .jumbotron-slider-inner (end) -->';
+	$output .= '</div><!-- .tb-jumbotron-slider (end) -->';
+
+    return apply_filters( 'themeblvd_jumbotron_slider', $output, $args );
+}
+
+/**
+ * Display hero unit
+ *
+ * @since 2.4.2
+ *
+ * @param array $args Arguments for hero unit.
+ */
+function themeblvd_jumbotron_slider( $args ) {
+    echo themeblvd_get_jumbotron_slider( $args );
 }

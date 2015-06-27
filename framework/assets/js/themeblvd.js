@@ -731,21 +731,22 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
-	// Block sliders
+	// Block & Jumbotron sliders
 	// ---------------------------------------------------------
 
-	$('.tb-block-slider').each(function(){
+	$('.tb-block-slider, .tb-jumbotron-slider').each(function(){
 
 		var $slider_wrap = $(this),
-			$slider = $slider_wrap.find('.tb-block-slider-inner'),
-			fx = 'slide',
+			$slider = $slider_wrap.find('.slider-inner'),
+			fx = $slider_wrap.data('fx'),
 			speed = $slider_wrap.data('timeout'),
 			slideshow = true,
 			nav = $slider_wrap.data('nav'),
-			pause = false;
+			pause = false,
+			smooth = false;
 
-		if ( $slider.data('fx') ) {
-			fx = $slider.data('fx');
+		if ( $body.hasClass('mobile') ) {
+			fx = 'slide'; // Always want "slide" on touch devices
 		}
 
 		if ( speed && speed !== '0' ) {
@@ -764,9 +765,13 @@ jQuery(document).ready(function($) {
 			pause = true;
 		}
 
+		if ( $slider_wrap.hasClass('tb-jumbotron-slider') ) {
+			smooth = true;
+		}
+
 		$window.load(function() {
 			$slider.flexslider({
-				// smoothHeight: true,
+				smoothHeight: smooth,
 				animation: fx,
 				easing: 'swing',
 				slideshowSpeed: speed,
@@ -791,7 +796,7 @@ jQuery(document).ready(function($) {
 			});
 
 			// Custom slider controls
-			$slider_wrap.find('.tb-block-slider-inner > .tb-slider-arrows a').on('click', function(){
+			$slider_wrap.find('.slider-inner > .tb-slider-arrows a').on('click', function(){
 
 				if ( $(this).hasClass('next') ) {
 					$slider.data('flexslider').flexslider('next');
@@ -1121,7 +1126,7 @@ jQuery(document).ready(function($) {
 
 			var $el = $(this);
 
-			$el.find('.tb-thumb-link, .carousel-indicators li, .carousel-control').on('click', function(){
+			$el.find('.tb-thumb-link, .carousel-indicators li, .carousel-control, .tb-slider-arrows > li > a').on('click', function(){
 				$el.carousel('pause');
 			});
 		});

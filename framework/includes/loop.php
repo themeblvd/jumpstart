@@ -848,7 +848,7 @@ function themeblvd_get_grid_slider( $args ) {
 		$output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
 	}
 
-	$output .= '<div class="tb-grid-slider-inner tb-block-slider-inner flexslider">';
+	$output .= '<div class="tb-grid-slider-inner tb-block-slider-inner slider-inner flexslider">';
 
 	$output .= themeblvd_get_loader();
 

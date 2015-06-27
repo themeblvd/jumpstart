@@ -1248,7 +1248,7 @@ function themeblvd_get_slider_controls( $args = array() ) {
 		$next = 'down';
 	}
 
-    $output  = '<ul class="tb-slider-arrows %s">';
+    $output  = '<ul class="tb-slider-arrows">';
 	$output .= sprintf( '<li><a href="#" title="%1$s" class="%2$s %3$s prev">%1$s</a></li>', $args['prev'], $prev, $args['color'] );
 	$output .= sprintf( '<li><a href="#" title="%1$s" class="%2$s %3$s next">%1$s</a></li>', $args['next'], $next, $args['color'] );
 	$output .= '</ul>';

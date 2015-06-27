@@ -506,7 +506,10 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 		$output .= themeblvd_get_to_section();
 	}
 
+	// Wrap output, if has background
 	if ( $args['bg_type'] && $args['bg_type'] != 'none' ) {
+
+		$jumbotron = $output;
 
 		$class = 'jumbotron-outer';
 
@@ -516,7 +519,18 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 
 		$class .= ' '.implode(" ", themeblvd_get_display_class($args));
 
-		$output = sprintf('<div class="%s" data-parallax="%s" style="%s">%s</div>', $class, themeblvd_get_parallax_intensity($args), themeblvd_get_display_inline_style($args), $output);
+		$output = sprintf('<div class="%s" data-parallax="%s" style="%s">', $class, themeblvd_get_parallax_intensity($args), themeblvd_get_display_inline_style($args));
+
+		if ( in_array($args['bg_type'], array('image', 'slideshow', 'video')) && ! empty($args['apply_bg_shade']) ) {
+			$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
+		}
+
+		if ( $args['bg_type'] == 'video' && ! empty($args['bg_video']) ) {
+			$output .=  themeblvd_get_bg_video( $args['bg_video'] );
+		}
+
+		$output .= $jumbotron;
+		$output .= '</div><!-- .jumbotron-outer (end) -->';
 
 	}
 
@@ -577,13 +591,13 @@ function themeblvd_get_logos( $args ) {
         }
     }
 
-    $output = sprintf( '<div class="%s" data-timeout="%s" data-nav="%s">', $class, $args['timeout'], $args['nav'] );
+    $output = sprintf( '<div class="%s" data-timeout="%s" data-nav="%s" data-fx="slide">', $class, $args['timeout'], $args['nav'] );
 
     if ( $args['title'] ) {
         $output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
     }
 
-    $output .= '<div class="tb-logos-inner tb-block-slider-inner">';
+    $output .= '<div class="tb-logos-inner tb-block-slider-inner slider-inner">';
 
     if ( $args['display'] == 'slider' ) {
         $output .= themeblvd_get_loader();
@@ -1264,7 +1278,7 @@ function themeblvd_get_testimonial_slider( $args ) {
     $defaults = array(
         'testimonials'  => array(),     // The testimonials, each formatted for themeblvd_get_testimonial
         'title'         => '',          // Title for unit
-        'fx'            => '',          // Slide transition effect (slide or fade)
+        'fx'            => '',      	// Slide transition effect (slide or fade)
         'timeout'       => '3',         // Secods in between transitions, can be 0 for no auto rotation
         'nav'           => '1',         // Whether to show slider navigation
         'display'       => 'standard'   // How to display the slider, showcase or standard
@@ -1295,7 +1309,7 @@ function themeblvd_get_testimonial_slider( $args ) {
         $output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
     }
 
-    $output .= '<div class="tb-testimonial-slider tb-block-slider-inner">';
+    $output .= '<div class="tb-testimonial-slider-inner tb-block-slider-inner slider-inner">';
 
     $output .= themeblvd_get_loader();
 

@@ -64,8 +64,9 @@
  *   13.2 - Slider Fallback for mobile
  *   13.3 - Standard Slider + Nivo Slider
  *   13.4 - Block Slider
- *   13.5 - Common slider arrows
- *   13.6 - Showcase Slider
+ *   13.5 - Jumbotron Slider
+ *   13.6 - Common slider arrows
+ *   13.7 - Showcase Slider
  * 14.0 - Social Icons
  *   14.1 - Custom Icon Font by Theme Blvd
  *   14.2 - Contact Bar
@@ -2114,6 +2115,37 @@ html[xmlns] .slides {
 }
 .tb-block-slider > .title {
 	margin-top: 0;
+}
+
+/* Jumbotron Slider */
+.tb-jumbotron-slider,
+.tb-jumbotron-slider.has-nav {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+.tb-jumbotron-slider .tb-slider-arrows {
+	display: none;
+	position: static;
+}
+.tb-jumbotron-slider .tb-slider-arrows a {
+	background-size: 20px 20px;
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	height: 80px;
+	-ms-transform: translate(0, -50%); /* IE9 */
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	z-index: 4;
+}
+.tb-jumbotron-slider .tb-slider-arrows a.prev {
+	border-radius: 0 4px 4px 0;
+	left: 0;
+}
+.tb-jumbotron-slider .tb-slider-arrows a.next {
+	border-radius: 4px 0 0 4px;
+	right: 0;
 }
 
 /* Common slider arrows */
@@ -6564,8 +6596,21 @@ blockquote small {
 		margin-bottom: 0 !important;
 	}
 }
-.element-jumbotron .jumbotron-outer.has-bg { /* should always have bg */
-	padding: 60px 0;
+.element-jumbotron .jumbotron-outer.has-bg,
+.element-jumbotron_slider .jumbotron-outer.has-bg { /* should always have bg */
+	padding: 60px;
+}
+.jumbotron-outer.has-bg-shade .bg-shade {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+.jumbotron-outer.has-bg-shade .jumbotron-wrap {
+	position: relative;
+	z-index: 3;
 }
 .tb-jumbotron {
 	background-color: transparent;
@@ -7442,6 +7487,7 @@ blockquote small {
 	right: 50%;
 	bottom: initial;
 	left: initial;
+	text-shadow: none !important;
 	width: 50px;
 	height: 50px;
 	z-index: 999;
