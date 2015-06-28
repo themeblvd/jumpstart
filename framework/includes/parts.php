@@ -1399,8 +1399,10 @@ function themeblvd_get_tax_info() {
 
 	$output = $name = $desc = '';
 
-	if ( $term->name ) {
-		$name = sprintf( '<h1 class="info-box-title archive-title">%s</h1>', strip_tags($term->name) );
+	$name = apply_filters('themeblvd_tax_info_name', strip_tags($term->name), $term);
+
+	if ( $name ) {
+		$name = sprintf( '<h1 class="info-box-title archive-title">%s</h1>', $name );
 	}
 
 	if ( $term->description ) {
@@ -1443,10 +1445,12 @@ function themeblvd_get_author_info( $user = null, $context = 'single' ) {
 	$output = sprintf('<section class="%s">', $class);
 
 	// Title
+	$title = apply_filters('themeblvd_author_info_title', $user->display_name, $user);
+
 	if ( $context == 'archive' ) {
-		$output .= sprintf('<h1 class="info-box-title archive-title">%s</h1>', $user->display_name);
+		$output .= sprintf('<h1 class="info-box-title archive-title">%s</h1>', $title);
 	} else {
-		$output .= sprintf('<h3 class="info-box-title">%s</h3>', $user->display_name);
+		$output .= sprintf('<h3 class="info-box-title">%s</h3>', $title);
 	}
 
 	$output .= '<div class="inner">';
