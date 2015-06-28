@@ -293,36 +293,24 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Info/Author Box and Comments */
-.js-boxed #comments .comment-body,
-.js-boxed #respond #commentform,
+.js-boxed .tb-info-box,
+.js-boxed .tb-related-posts,
+.js-boxed #comments,
 .js-boxed .bbp-topic-form,
-.js-boxed .bbp-reply-form,
-.js-boxed .comment #respond,
-.js-boxed .tb-related-posts > .inner,
-.js-boxed .tb-info-box {
-	background: #fcfcfc;
-	border: 1px solid #eeeeee;
-}
-.js-boxed.content_dark #comments .comment-body,
-.js-boxed.content_dark #respond #commentform,
-.js-boxed.content_dark .bbp-topic-form,
-.js-boxed.content_dark .bbp-reply-form,
-.js-boxed.content_dark .comment #respond,
-.js-boxed.content_dark .tb-related-posts > .inner,
-.js-boxed.content_dark .tb-info-box {
-	background-color: #323232;
-	border-color: #000000;
-}
-.comment #respond #commentform {
+.js-boxed .bbp-reply-form {
 	background: transparent;
-	border: none;
+	margin-bottom: 50px;
+	padding: 0;
 }
 
 /* Blog */
 .js-boxed .blog-wrap > article,
 .js-boxed article.single {
-	padding-top: 0;
-	margin-bottom: 0;
+	padding: 0;
+}
+.js-boxed .blog-wrap > article > .featured-item,
+.js-boxed article.single > .featured-item {
+	margin: 0 0 20px 0;
 }
 
 /* Breadcrumbs */
