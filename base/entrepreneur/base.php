@@ -1269,9 +1269,7 @@ function jumpstart_ent_css() {
 	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('link_color'));
 	$print .= "}\n";
 
-	$print .= "a:hover,\n";
-	$print .= ".entry-title a:hover,\n";
-	$print .= "#comments .comment-body .comment-meta a:hover {\n";
+	$print .= "a:hover {\n";
 	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('link_hover_color'));
 	$print .= "}\n";
 

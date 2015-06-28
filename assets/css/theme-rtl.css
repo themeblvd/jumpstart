@@ -534,8 +534,8 @@ h6 {
 h4,
 h5,
 h6 {
-  line-height: 1.3;
-  margin-bottom: 1em;
+	line-height: 1.3;
+	margin-bottom: 1em;
 }
 h1 {
 	font-size: 2.29rem; /* 32px / 14px */
@@ -560,13 +560,9 @@ a {
 	text-decoration: none;
 }
 a:hover,
-.entry-title a:hover,
-#comments .comment-body .comment-meta a:hover {
+a:active,
+a:focus {
 	color: #2a6496;
-	text-decoration: underline;
-}
-.tb-text-logo a:hover,
-.entry-title a:hover {
 	text-decoration: none;
 }
 p {
@@ -625,9 +621,8 @@ article.tb-naked-page > .featured-item {
 .entry-title-with-meta {
 	margin: 0;
 }
-.entry-title a {
+.entry-title a:not(:hover) {
 	color: inherit;
-	text-decoration: none;
 }
 
 /* Meta */
@@ -759,7 +754,7 @@ article.tb-naked-page > .featured-item {
 #comments .comment-body .comment-meta {
 	margin-bottom: 10px;
 }
-#comments .comment-body .comment-meta a {
+#comments .comment-body .comment-meta a:not(:hover) {
 	color: inherit;
 }
 #comments .comment-body .comment-metadata {
