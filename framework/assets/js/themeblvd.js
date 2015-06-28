@@ -416,7 +416,7 @@ jQuery(document).ready(function($) {
 	        if ( placement == 'full' ) {
 
 				$searchform.fadeIn(250).find('.search-input').focus();
-				$header.find('.header-content > .wrap').stop().animate({'opacity': 0.1}, 250).addClass('floating-search-full-on');
+				$header.find('.header-content > .wrap').stop().animate({'opacity': 0}, 250).addClass('floating-search-full-on');
 
 	        } else if ( placement == 'bottom' ) {
 
