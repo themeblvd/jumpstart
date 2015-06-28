@@ -47,6 +47,7 @@
  *   9.1 - Mini Post List/Grid
  *   9.2 - Box Titles
  *   9.3 - Tooltips
+ *   9.4 - Popover
  * 10.0 - Widgets
  *   10.1 - General
  *   10.2 - Fixed Sidebars
@@ -979,6 +980,26 @@ article.tb-naked-page > .featured-item {
 }
 .tooltip.bottom .tooltip-arrow {
 	border-bottom-color: #fec527; /* highlight */
+}
+
+/* Popover */
+.tb-contact-popover.bottom {
+	background-color: #444444;
+	background-color: #ffffff;
+	border: none;
+	border-top: #fec527 3px solid; /* highlight */
+	border-radius: 0 0 2px 2px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.1);
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+	color: #333333;
+}
+.tb-contact-popover.bottom > .arrow {
+	border: none;
+}
+/* @noflip */
+.tb-contact-popover.bottom > .arrow:after {
+	border-bottom-color: #fec527; /* highlight */
+	margin-left: 0;
 }
 
 /* =Widgets
