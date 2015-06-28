@@ -52,7 +52,8 @@
  *   10.1 - General
  *   10.2 - Fixed Sidebars
  *   10.3 - Footer
- *   10.4 - Search Widget
+ *   10.4 - List Widgets
+ *   10.5 - Search Widget
  * 11.0 - Printing
  ----------------------------------------------- */
 
@@ -1056,6 +1057,17 @@ article.tb-naked-page > .featured-item {
 	font-size: 16px;
 	line-height: 1.1;
 	margin: 0 0 20px 0;
+}
+
+/* List Widgets */
+.widget_categories a:not(:hover),
+.widget_archive a:not(:hover),
+.widget_pages a:not(:hover),
+.widget_nav_menu a:not(:hover),
+.widget_recent_entries a:not(:hover),
+.widget_meta a:not(:hover),
+.widget_rss a:not(:hover) {
+	color: inherit;
 }
 
 /* Search Widget */
