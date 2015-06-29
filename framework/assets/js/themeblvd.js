@@ -784,6 +784,16 @@ jQuery(document).ready(function($) {
 				start: function(){
 					$slider_wrap.find('.tb-slider-arrows').fadeIn(100);
 					$slider_wrap.find('.tb-loader').fadeOut(100);
+				},
+				before: function($s){
+					if ( $s.closest('.element').hasClass('element-jumbotron_slider') ) {
+						$s.closest('.tb-jumbotron-slider').addClass('animate');
+					}
+				},
+				after: function($s){
+					if ( $s.closest('.element').hasClass('element-jumbotron_slider') ) {
+						$s.closest('.tb-jumbotron-slider').removeClass('animate');
+					}
 				}
 			});
 		});

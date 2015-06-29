@@ -2120,6 +2120,7 @@ html[xmlns] .slides {
 .tb-jumbotron-slider,
 .tb-jumbotron-slider.has-nav {
 	margin: 0;
+	min-height: 400px;
 	padding: 0;
 	position: relative;
 }
@@ -2145,6 +2146,18 @@ html[xmlns] .slides {
 .tb-jumbotron-slider .tb-slider-arrows a.next {
 	border-radius: 4px 0 0 4px;
 	right: 0;
+}
+.tb-jumbotron-slider .tb-text-block-wrap,
+.tb-jumbotron-slider .jumbotron-buttons {
+	transition: all .3s ease-in-out;
+}
+.tb-jumbotron-slider.animate .tb-text-block-wrap {
+	opacity: 0;
+	transform: translateY(-10px);
+}
+.tb-jumbotron-slider.animate .jumbotron-buttons {
+	opacity: 0;
+	transform: translateY(10px);
 }
 
 /* Common slider arrows */

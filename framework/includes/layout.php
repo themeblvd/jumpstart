@@ -1146,7 +1146,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 		'section'		=> '',					// Section ID (not really used for anything)
         'layout_id'		=> 0,					// Current ID of custom layout or page (to pull hero units from meta)
 		'element_id'	=> 'element_',			// Current ID of element (also to pull hero units from meta)
-		'fx'            => 'fade',          	// Slide transition effect (slide or fade)
+		'fx'            => 'fade',          	// Slide transition effect (slide or fade) -- option from builder currently disabled, will always be fade
         'timeout'       => '3',         		// Secods in between transitions, can be 0 for no auto rotation
         'nav'           => '1'         			// Whether to show slider navigation
     );
