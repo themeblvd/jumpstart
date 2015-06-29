@@ -1456,10 +1456,12 @@ function jumpstart_ent_css() {
 	$print .= ".tooltip-inner {\n";
 	$print .= sprintf("\tborder-color: %s;\n", $highlight);
 	$print .= "}\n";
-	$print .= ".tooltip.top .tooltip-arrow {\n";
+	$print .= ".tooltip.top .tooltip-arrow,\n";
+	$print .= ".tb-contact-popover.bottom {\n";
 	$print .= sprintf("\tborder-top-color: %s;\n", $highlight);
 	$print .= "}\n";
-	$print .= ".tooltip.bottom .tooltip-arrow {\n";
+	$print .= ".tooltip.bottom .tooltip-arrow,\n";
+	$print .= ".tb-contact-popover.bottom > .arrow:after {\n";
 	$print .= sprintf("\tborder-bottom-color: %s;\n", $highlight);
 	$print .= "}\n";
 
