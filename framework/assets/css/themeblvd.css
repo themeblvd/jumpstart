@@ -7614,6 +7614,7 @@ blockquote small {
 	text-shadow: 0 0 2px rgba(0,0,0,.7);
 	width: 64px;
 	height: 64px;
+	z-index: 10;
 }
 .tb-scroll-to-section:hover {
 	background-color: #ffffff;
