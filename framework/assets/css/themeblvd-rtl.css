@@ -2120,9 +2120,14 @@ html[xmlns] .slides {
 .tb-jumbotron-slider,
 .tb-jumbotron-slider.has-nav {
 	margin: 0;
-	min-height: 400px;
 	padding: 0;
 	position: relative;
+}
+@media (min-width: 768px) {
+	.tb-jumbotron-slider,
+	.tb-jumbotron-slider.has-nav {
+		min-height: 200px;
+	}
 }
 .tb-jumbotron-slider .tb-slider-arrows {
 	display: none;
@@ -2158,6 +2163,37 @@ html[xmlns] .slides {
 .tb-jumbotron-slider.animate .jumbotron-buttons {
 	opacity: 0;
 	transform: translateY(10px);
+}
+/* @noflip */
+.tb-jumbotron-slider .flex-control-nav {
+	list-style: none;
+	margin-left: -30%;
+	padding-left: 0;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	text-align: center;
+	width: 60%;
+	z-index: 15;
+}
+.tb-jumbotron-slider .flex-control-nav li {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 2px;
+}
+.tb-jumbotron-slider .flex-control-nav a {
+	display: inline-block;
+	background-color: #000 \9;
+	background-color: rgba(0,0,0,0);
+	border: 1px solid #ffffff;
+	border-radius: 10px;
+	text-indent: -9999px;
+	width: 12px;
+	height: 12px;
+}
+.tb-jumbotron-slider .flex-control-nav .flex-active {
+	background-color: #ffffff;
+	border: none;
 }
 
 /* Common slider arrows */
@@ -6569,38 +6605,6 @@ blockquote small {
 }
 
 /* Jumbotron */
-@media (min-width: 992px) and (min-height: 500px) {
-	/* @noflip */
-	.element-jumbotron .height-100vh .jumbotron-wrap {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		-ms-transform: translate(-50%, -50%); /* IE9 */
-		-webkit-transform: translate(-50%, -50%);
-		transform: translate(-50%, -50%);
-		width: 100%;
-	}
-	.element-jumbotron.popout.height-100vh {
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
-	}
-}
-.element-jumbotron .jumbotron-outer.has-bg,
-.element-jumbotron_slider .jumbotron-outer.has-bg { /* should always have bg */
-	padding: 60px;
-}
-.jumbotron-outer.has-bg-shade .bg-shade {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 2;
-}
-.jumbotron-outer.has-bg-shade .jumbotron-wrap {
-	position: relative;
-	z-index: 3;
-}
 .tb-jumbotron {
 	background-color: transparent;
 	color: #333333;
@@ -6614,6 +6618,40 @@ blockquote small {
 .tb-jumbotron.has-bg {
 	margin-bottom: 10px;
 	padding: 48px 30px; /* Bootstrap default */
+}
+.jumbotron-outer.has-bg-shade .bg-shade {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+.jumbotron-outer.has-bg-shade .jumbotron-wrap {
+	position: relative;
+	z-index: 3;
+}
+@media (min-width: 992px) and (min-height: 500px) {
+	/* @noflip */
+	.height-100vh .jumbotron-wrap,
+	.jumbotron-outer.has-bg-shade.height-100vh .jumbotron-wrap {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-ms-transform: translate(-50%, -50%); /* IE9 */
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		width: 100%;
+	}
+	.tb-suck-up .element-section:first-child > .element-jumbotron.popout.height-100vh:first-child {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+	}
+}
+.element-jumbotron .jumbotron-outer.has-bg,
+.element-jumbotron_slider .jumbotron-outer.has-bg { /* should always have bg */
+	padding: 60px;
+	position: relative;
 }
 .tb-jumbotron p {
 	font-size: inherit;

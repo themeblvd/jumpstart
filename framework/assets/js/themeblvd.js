@@ -743,16 +743,17 @@ jQuery(document).ready(function($) {
 			slideshow = true,
 			nav = $slider_wrap.data('nav'),
 			pause = false,
-			smooth = false;
+			smooth = false,
+			controlnav = false;
 
-		if ( $body.hasClass('mobile') ) {
+		if ( $.mobile ) {
 			fx = 'slide'; // Always want "slide" on touch devices
 		}
 
-		if ( speed && speed !== '0' ) {
+		if ( speed && speed !== '0' && ! $.mobile ) {
 			speed = speed+'000';
 		} else {
-			slideshow = false;
+			slideshow = false; // Auto-rotate always disabled on mobile
 		}
 
 		if ( nav && nav !== '0' ) {
@@ -766,7 +767,12 @@ jQuery(document).ready(function($) {
 		}
 
 		if ( $slider_wrap.hasClass('tb-jumbotron-slider') ) {
+
 			smooth = true;
+
+			if ( nav ) {
+				controlnav = true;
+			}
 		}
 
 		$window.load(function() {
@@ -778,20 +784,22 @@ jQuery(document).ready(function($) {
 				animationSpeed: '1000',
 				slideshow: slideshow,
 				directionNav: false,	// Using custom slider controls outputted with slider markup
-				controlNav: false,
+				controlNav: controlnav,
 				pauseOnHover: pause,	// If nav exists, replace with manual action below
 				pauseOnAction: false, 	// Replaced with manual action below
 				start: function(){
-					$slider_wrap.find('.tb-slider-arrows').fadeIn(100);
+					if ( ! $.mobile ) {
+						$slider_wrap.find('.tb-slider-arrows').fadeIn(100);
+					}
 					$slider_wrap.find('.tb-loader').fadeOut(100);
 				},
 				before: function($s){
-					if ( $s.closest('.element').hasClass('element-jumbotron_slider') ) {
+					if ( ! $.mobile && $s.closest('.element').hasClass('element-jumbotron_slider') ) {
 						$s.closest('.tb-jumbotron-slider').addClass('animate');
 					}
 				},
 				after: function($s){
-					if ( $s.closest('.element').hasClass('element-jumbotron_slider') ) {
+					if ( ! $.mobile && $s.closest('.element').hasClass('element-jumbotron_slider') ) {
 						$s.closest('.tb-jumbotron-slider').removeClass('animate');
 					}
 				}
@@ -1140,6 +1148,24 @@ jQuery(document).ready(function($) {
 				$el.carousel('pause');
 			});
 		});
+
+		// Carousel mobile touch gesture
+		if ( $.mobile ) {
+			$('[data-ride="carousel"]').swiperight(function() {
+				if ( $body.hasClass('rtl') ) {
+					$(this).carousel('next');
+				} else {
+					$(this).carousel('prev');
+				}
+			});
+			$('[data-ride="carousel"]').swipeleft(function() {
+				if ( $body.hasClass('rtl') ) {
+					$(this).carousel('prev');
+				} else {
+					$(this).carousel('next');
+				}
+			});
+		}
 
 		// Deep linking Bootstrap tabs
 		if ( themeblvd.tabs_deep_linking == 'true' ) {

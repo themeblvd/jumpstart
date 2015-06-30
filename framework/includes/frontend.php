@@ -358,6 +358,10 @@ function themeblvd_include_scripts() {
 	// Enque Scripts
 	wp_enqueue_script( 'jquery' );
 
+	if ( wp_is_mobile() ) {
+		wp_enqueue_script( 'jquery_mobile_touch', TB_FRAMEWORK_URI . '/assets/js/jquery.mobile.touch.min.js', array('jquery'), '1.4.5' );
+	}
+
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 		$scripts[] = 'flexslider';
 		wp_enqueue_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1' );
