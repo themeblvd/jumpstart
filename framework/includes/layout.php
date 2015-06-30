@@ -821,7 +821,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 				$parallax = true;
 			}
 
-			if ( ! $parallax && ! empty( $display['bg_image']['attachment'] ) ) {
+			if ( ! $parallax && ! wp_is_mobile() && ! empty( $display['bg_image']['attachment'] ) ) {
 				$params['background-attachment'] = $display['bg_image']['attachment'];
 			}
 
