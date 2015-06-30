@@ -1756,7 +1756,7 @@ ul.woocommerce-info {
 /* Floating Cart */
 .tb-cart-popup .modal-dialog {
 	max-height: 320px;
-	overflow: scroll;
+	overflow-y: auto;
 }
 .tb-cart-popup .widgettitle {
 	display: none;
