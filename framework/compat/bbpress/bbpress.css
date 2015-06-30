@@ -22,8 +22,8 @@
 /* Wrap forums */
 #bbpress-forums ul.bbp-topics,
 #bbpress-forums ul.bbp-forums {
-	border: 1px solid #f2f2f2;
-	border-color: rgba(220,220,220,.4);
+	border: 1px solid #dddddd;
+	border-color: rgba(220,220,220,.6);
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 }

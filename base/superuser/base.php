@@ -1901,14 +1901,17 @@ function jumpstart_su_css() {
 			$print .= "article.single,\n";
 			$print .= "article.page,\n";
 
-			$print .= ".tb-related-posts > .inner,\n";
+			$print .= "#comments,\n";
+			$print .= ".tb-related-posts,\n";
 
-			$print .= "#comments .comment-body,\n";
-			$print .= "#respond #commentform,\n";
+			if ( themeblvd_installed('woocommerce') ) {
+				$print .= ".products.upsells,\n";
+				$print .= ".products.related,\n";
+			}
 
 			if ( themeblvd_installed('bbpress') ) {
-				$print .= ".bbp-topic-form,\n";
-				$print .= ".bbp-reply-form,\n";
+				$print .= ".tb-naked-page .bbp-topic-form,\n";
+				$print .= ".tb-naked-page .bbp-reply-form,\n";
 			}
 
 			$print .= ".tb-info-box,\n";

@@ -931,6 +931,8 @@ ul.woocommerce-info {
 
 /* Reviews */
 #reviews #comments {
+	background: transparent;
+	border: none;
 	padding: 0;
 }
 #reviews .commentlist > li {

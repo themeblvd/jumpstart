@@ -295,9 +295,11 @@ Author URI: http://www.themeblvd.com
 /* Info/Author Box and Comments */
 .js-boxed .tb-info-box,
 .js-boxed .tb-related-posts,
+.js-boxed .products.upsells,
+.js-boxed .products.related,
 .js-boxed #comments,
-.js-boxed .bbp-topic-form,
-.js-boxed .bbp-reply-form {
+.js-boxed .tb-naked-page .bbp-topic-form,
+.js-boxed .tb-naked-page .bbp-reply-form {
 	background: transparent;
 	margin-bottom: 50px;
 	padding: 0;
