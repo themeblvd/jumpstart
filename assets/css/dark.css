@@ -72,16 +72,20 @@ article.page {
 }
 
 /* Sub Meta */
-.sub-meta-wrapper {
+.sub-meta-wrapper,
+.tb-product-wrap .product_meta {
 	border-top-color :#000000;
 	border-top-color: rgba(0,0,0,.9);
 }
-.sub-meta-wrapper .sub-meta {
+.sub-meta-wrapper .sub-meta,
+.tb-product-wrap .product_meta {
 	color: #ffffff;
 }
 
-/* Related Posts */
-.tb-related-posts > .inner {
+/* Related Posts/Products */
+.tb-related-posts,
+.products.upsells,
+.products.related {
 	background: #222222;
 }
 

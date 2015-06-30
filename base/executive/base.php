@@ -1660,6 +1660,11 @@ function jumpstart_ex_css() {
 
 	// Disable circlular avatars & small thumbs
 	if ( ! themeblvd_get_option('thumbnail_circles') ) { // by default, theme styles these as circles with 100% border-radius
+
+		if ( themeblvd_installed('woocommerce') ) {
+			$print .= ".product_list_widget li > a > img,\n";
+		}
+
 		$print .= "#comments .comment-body .avatar,\n";
 		$print .= ".tb-author-box .avatar-wrap img,\n";
 		$print .= ".tb-mini-post-grid img,\n";
@@ -1703,8 +1708,14 @@ function jumpstart_ex_css() {
 
 	if ( themeblvd_get_option('box_titles') ) {
 
+		$print .= ".box-title,\n";
+
 		if ( $widget_style == 'standard' ) {
 			$print .= ".fixed-sidebar .widget-title,\n";
+		}
+
+		if ( themeblvd_installed('woocommerce') ) {
+			$print .= ".products > h2,\n";
 		}
 
 		$print .= "#comments-title,\n";
@@ -1712,13 +1723,18 @@ function jumpstart_ex_css() {
 		$print .= ".tb-related-posts .related-posts-title {\n";
 		$print .= "\tborder-bottom: 2px solid #f2f2f2;\n";
 		$print .= "\tborder-color: rgba(220,220,220,.4);\n";
-		$print .= "\tfont-size: 24px;\n";
 		$print .= "\tpadding-bottom: .83em;\n";
 		$print .= "\tposition: relative;\n";
 		$print .= "}\n";
 
+		$print .= ".box-title:before,\n";
+
 		if ( $widget_style == 'standard' ) {
 			$print .= ".fixed-sidebar .widget-title:before,\n";
+		}
+
+		if ( themeblvd_installed('woocommerce') ) {
+			$print .= ".products > h2:before,\n";
 		}
 
 		$print .= "#comments-title:before,\n";
