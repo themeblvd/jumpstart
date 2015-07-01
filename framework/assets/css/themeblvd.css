@@ -275,19 +275,19 @@ ul {
 	padding: 9px 15px;
 }
 .btn-lg {
-	font-size: 11px;
+	font-size: 12px;
 	padding: 18px 30px;
 }
 .btn-xl {
-	font-size: 13px;
+	font-size: 14px;
 	padding: 20px 40px;
 }
 .btn-xxl {
-	font-size: 13px;
+	font-size: 15px;
 	padding: 22px 50px;
 }
 .btn-xxxl {
-	font-size: 14px;
+	font-size: 16px;
 	padding: 28px 64px;
 }
 @media (max-width: 480px) {
