@@ -483,7 +483,9 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
         $wrap_class .= ' pull-left';
     } else if ( $args['align'] == 'right' ) {
         $wrap_class .= ' pull-right';
-    }
+    } else {
+		$wrap_class .= ' pull-none';
+	}
 
     // Inline styles
     $style = '';
@@ -511,7 +513,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 
 		$jumbotron = $output;
 
-		$class = 'jumbotron-outer';
+		$class = 'jumbotron-outer clearfix';
 
 		if ( $args['height_100vh'] ) {
 			$class .= ' height-100vh';
