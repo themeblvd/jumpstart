@@ -2796,6 +2796,7 @@ html[xmlns] .slides {
 /* Color (image) Social Icons */
 .tb-social-icons.color > li > a {
 	background-size: 24px 24px;
+	background-repeat: no-repeat;
 }
 .tb-social-icons.color > li > .chat {
 	background-image: url('../images/social/24/chat.png');
