@@ -78,10 +78,10 @@ Author URI: http://www.themeblvd.com
 		padding: 0;
 	}
 	.header-content .header-logo {
-		padding: 10px 70px 10px 10px;
+		padding: 10px 20px 10px 10px;
 	}
 	.rtl .header-content .header-logo {
-		padding: 10px 10px 10px 70px;
+		padding: 10px 10px 10px 20px;
 	}
 	.header-content .header-logo img {
 		width: auto;
