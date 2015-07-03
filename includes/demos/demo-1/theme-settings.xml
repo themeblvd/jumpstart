@@ -362,7 +362,7 @@
 	</setting>
 	<setting>
 		<id>custom_styles</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[LyogQ3VzdG9tIENTUyBFeGFtcGxlOiBIb21lcGFnZSBUZXh0ICovDQouaG9tZS10ZXh0IHsNCglmb250LXNpemU6IDNlbTsJDQp9DQpAbWVkaWEgKG1heC13aWR0aDogNzY3cHgpIHsgLyogbW9iaWxlICovDQoJLmhvbWUtdGV4dCB7DQoJCWZvbnQtc2l6ZTogMS44ZW07DQoJfQ0KfQ==]]></value>
 	</setting>
 	<setting>
 		<id>logo</id>
