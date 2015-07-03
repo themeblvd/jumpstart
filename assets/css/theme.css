@@ -466,8 +466,13 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	padding: 20px 0;
 }
 @media (max-width: 991px) {
-	#content {
+	#content,
+	.fixed-sidebar {
 		margin-bottom: 30px;
+	}
+	#content:last-child,
+	.fixed-sidebar:last-child {
+		margin-bottom: 0;
 	}
 }
 
