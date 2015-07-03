@@ -34,11 +34,11 @@
 	</setting>
 	<setting>
 		<id>apply_content_border</id>
-		<value><![CDATA[MQ==]]></value>
+		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>content_border_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>content_border_width</id>
@@ -66,7 +66,7 @@
 	</setting>
 	<setting>
 		<id>top_border_bottom_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>top_border_bottom_width</id>
@@ -154,7 +154,7 @@
 	</setting>
 	<setting>
 		<id>header_border_top_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>header_border_top_width</id>
@@ -166,7 +166,7 @@
 	</setting>
 	<setting>
 		<id>header_border_bottom_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>header_border_bottom_width</id>
@@ -262,7 +262,7 @@
 	</setting>
 	<setting>
 		<id>font_header</id>
-		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo2OiJ3ZWlnaHQiO3M6MzoiNTAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MTE6IlJhbGV3YXk6NTAwIjt9]]></value>
+		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo2OiJ3ZWlnaHQiO3M6MzoiNDAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MTE6IlJhbGV3YXk6NDAwIjt9]]></value>
 	</setting>
 	<setting>
 		<id>link_color</id>
@@ -298,7 +298,7 @@
 	</setting>
 	<setting>
 		<id>widget_style</id>
-		<value><![CDATA[cGFuZWw=]]></value>
+		<value><![CDATA[c3RhbmRhcmQ=]]></value>
 	</setting>
 	<setting>
 		<id>widget_panel_style</id>
@@ -310,7 +310,7 @@
 	</setting>
 	<setting>
 		<id>widget_panel_border_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>widget_bg_color</id>
@@ -330,7 +330,7 @@
 	</setting>
 	<setting>
 		<id>widget_title_size</id>
-		<value><![CDATA[MTZweA==]]></value>
+		<value><![CDATA[MThweA==]]></value>
 	</setting>
 	<setting>
 		<id>widget_title_shadow</id>
@@ -342,7 +342,7 @@
 	</setting>
 	<setting>
 		<id>widget_border_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>widget_border_width</id>
@@ -350,11 +350,15 @@
 	</setting>
 	<setting>
 		<id>highlight</id>
-		<value><![CDATA[IzAwMDAwMA==]]></value>
+		<value><![CDATA[I2ZlYzQyNw==]]></value>
 	</setting>
 	<setting>
-		<id>thumbnail</id>
-		<value><![CDATA[MA==]]></value>
+		<id>box_titles</id>
+		<value><![CDATA[MQ==]]></value>
+	</setting>
+	<setting>
+		<id>thumbnail_circles</id>
+		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
 		<id>custom_styles</id>
@@ -390,23 +394,23 @@
 	</setting>
 	<setting>
 		<id>footer_setup</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[MS80LTEvNC0xLzQtMS80]]></value>
 	</setting>
 	<setting>
 		<id>footer_col_1</id>
-		<value><![CDATA[YToxOntzOjQ6InR5cGUiO047fQ==]]></value>
+		<value><![CDATA[YTozOntzOjQ6InR5cGUiO3M6MzoicmF3IjtzOjM6InJhdyI7czoyMDQ6IjxoMz5XZeKAmXJlIHRoZSBCZXN0PC9oMz4KCkxvcmVtIGlwc3VtIGRvbG9yIHNpdCBhbWV0LCBjb25zZWN0ZXR1ciBhZGlwaXNpY2luZyBlbGl0LCBzZWQgZG8gZWl1c21vZCB0ZW1wb3IgaW5jaWRpZHVudCB1dCBsYWJvcmUuCgpTZWQgdXQgcGVyc3BpY2lhdGlzIHVuZGUgb21uaXMgaXN0ZSBuYXR1cyBlcnJvciBzaXQgdm9sdXB0YXRlbSBhY2N1c2FudGl1bSI7czoxMDoicmF3X2Zvcm1hdCI7czoxOiIxIjt9]]></value>
 	</setting>
 	<setting>
 		<id>footer_col_2</id>
-		<value><![CDATA[YToxOntzOjQ6InR5cGUiO047fQ==]]></value>
+		<value><![CDATA[YToyOntzOjQ6InR5cGUiO3M6Njoid2lkZ2V0IjtzOjc6InNpZGViYXIiO3M6ODoiZm9vdGVyLTEiO30=]]></value>
 	</setting>
 	<setting>
 		<id>footer_col_3</id>
-		<value><![CDATA[YToxOntzOjQ6InR5cGUiO047fQ==]]></value>
+		<value><![CDATA[YToyOntzOjQ6InR5cGUiO3M6Njoid2lkZ2V0IjtzOjc6InNpZGViYXIiO3M6ODoiZm9vdGVyLTIiO30=]]></value>
 	</setting>
 	<setting>
 		<id>footer_col_4</id>
-		<value><![CDATA[YToxOntzOjQ6InR5cGUiO047fQ==]]></value>
+		<value><![CDATA[YToyOntzOjQ6InR5cGUiO3M6Njoid2lkZ2V0IjtzOjc6InNpZGViYXIiO3M6ODoiZm9vdGVyLTMiO30=]]></value>
 	</setting>
 	<setting>
 		<id>footer_col_5</id>
@@ -469,10 +473,6 @@
 		<value><![CDATA[YTo0OntzOjY6Iml0ZW1fMSI7YToyOntzOjQ6Imljb24iO3M6ODoiZmFjZWJvb2siO3M6NToibGFiZWwiO3M6MjI6IlNoYXJlIHRoaXMgb24gRmFjZWJvb2siO31zOjY6Iml0ZW1fMiI7YToyOntzOjQ6Imljb24iO3M6NjoiZ29vZ2xlIjtzOjU6ImxhYmVsIjtzOjIxOiJTaGFyZSB0aGlzIG9uIEdvb2dsZSsiO31zOjY6Iml0ZW1fMyI7YToyOntzOjQ6Imljb24iO3M6NzoidHdpdHRlciI7czo1OiJsYWJlbCI7czoyMToiU2hhcmUgdGhpcyBvbiBUd2l0dGVyIjt9czo2OiJpdGVtXzQiO2E6Mjp7czo0OiJpY29uIjtzOjU6ImVtYWlsIjtzOjU6ImxhYmVsIjtzOjIwOiJTaGFyZSB0aGlzIHZpYSBFbWFpbCI7fX0=]]></value>
 	</setting>
 	<setting>
-		<id>share_style</id>
-		<value><![CDATA[ZmxhdA==]]></value>
-	</setting>
-	<setting>
 		<id>single_thumbs</id>
 		<value><![CDATA[ZnVsbA==]]></value>
 	</setting>
@@ -490,7 +490,7 @@
 	</setting>
 	<setting>
 		<id>category_info</id>
-		<value><![CDATA[aGlkZQ==]]></value>
+		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>
 		<id>tag_info</id>
@@ -514,6 +514,10 @@
 	</setting>
 	<setting>
 		<id>blog_meta</id>
+		<value><![CDATA[c2hvdw==]]></value>
+	</setting>
+	<setting>
+		<id>blog_sub_meta</id>
 		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>

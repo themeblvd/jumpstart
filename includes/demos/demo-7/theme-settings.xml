@@ -34,7 +34,7 @@
 	</setting>
 	<setting>
 		<id>apply_content_border</id>
-		<value><![CDATA[MA==]]></value>
+		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
 		<id>content_border_color</id>
@@ -374,7 +374,7 @@
 	</setting>
 	<setting>
 		<id>widget_style</id>
-		<value><![CDATA[c3RhbmRhcmQ=]]></value>
+		<value><![CDATA[cGFuZWw=]]></value>
 	</setting>
 	<setting>
 		<id>widget_panel_style</id>
@@ -386,7 +386,7 @@
 	</setting>
 	<setting>
 		<id>widget_panel_border_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>widget_bg_color</id>
@@ -418,7 +418,7 @@
 	</setting>
 	<setting>
 		<id>widget_border_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>widget_border_width</id>
@@ -429,7 +429,11 @@
 		<value><![CDATA[IzAwMTM1Yg==]]></value>
 	</setting>
 	<setting>
-		<id>thumbnail</id>
+		<id>box_titles</id>
+		<value><![CDATA[MA==]]></value>
+	</setting>
+	<setting>
+		<id>thumbnail_circles</id>
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
@@ -541,10 +545,6 @@
 		<value><![CDATA[YTo0OntzOjY6Iml0ZW1fMSI7YToyOntzOjQ6Imljb24iO3M6ODoiZmFjZWJvb2siO3M6NToibGFiZWwiO3M6MjI6IlNoYXJlIHRoaXMgb24gRmFjZWJvb2siO31zOjY6Iml0ZW1fMiI7YToyOntzOjQ6Imljb24iO3M6NjoiZ29vZ2xlIjtzOjU6ImxhYmVsIjtzOjIxOiJTaGFyZSB0aGlzIG9uIEdvb2dsZSsiO31zOjY6Iml0ZW1fMyI7YToyOntzOjQ6Imljb24iO3M6NzoidHdpdHRlciI7czo1OiJsYWJlbCI7czoyMToiU2hhcmUgdGhpcyBvbiBUd2l0dGVyIjt9czo2OiJpdGVtXzQiO2E6Mjp7czo0OiJpY29uIjtzOjU6ImVtYWlsIjtzOjU6ImxhYmVsIjtzOjIwOiJTaGFyZSB0aGlzIHZpYSBFbWFpbCI7fX0=]]></value>
 	</setting>
 	<setting>
-		<id>share_style</id>
-		<value><![CDATA[ZmxhdA==]]></value>
-	</setting>
-	<setting>
 		<id>single_thumbs</id>
 		<value><![CDATA[ZnVsbA==]]></value>
 	</setting>
@@ -574,6 +574,10 @@
 	</setting>
 	<setting>
 		<id>blog_meta</id>
+		<value><![CDATA[c2hvdw==]]></value>
+	</setting>
+	<setting>
+		<id>blog_sub_meta</id>
 		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>

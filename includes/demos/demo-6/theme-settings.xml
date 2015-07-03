@@ -70,7 +70,7 @@
 	</setting>
 	<setting>
 		<id>top_border_bottom_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>top_border_bottom_width</id>
@@ -362,7 +362,7 @@
 	</setting>
 	<setting>
 		<id>btn_primary</id>
-		<value><![CDATA[YTo3OntzOjI6ImJnIjtzOjc6IiNmZWM0MjciO3M6ODoiYmdfaG92ZXIiO3M6NzoiI2Y5OTYyNSI7czo2OiJib3JkZXIiO3M6NzoiI2ZmYmIwMCI7czo0OiJ0ZXh0IjtzOjc6IiNmZmZmZmYiO3M6MTA6InRleHRfaG92ZXIiO3M6NzoiI2ZmZmZmZiI7czoxMDoiaW5jbHVkZV9iZyI7czoxOiIxIjtzOjE0OiJpbmNsdWRlX2JvcmRlciI7czoxOiIxIjt9]]></value>
+		<value><![CDATA[YTo3OntzOjI6ImJnIjtzOjc6IiNmZWM0MjciO3M6ODoiYmdfaG92ZXIiO3M6NzoiI2ZmZmZmZiI7czo2OiJib3JkZXIiO3M6NzoiI2ZmYmIwMCI7czo0OiJ0ZXh0IjtzOjc6IiNmZmZmZmYiO3M6MTA6InRleHRfaG92ZXIiO3M6NzoiIzMzMzMzMyI7czoxMDoiaW5jbHVkZV9iZyI7czoxOiIxIjtzOjE0OiJpbmNsdWRlX2JvcmRlciI7czoxOiIxIjt9]]></value>
 	</setting>
 	<setting>
 		<id>btn_border</id>
@@ -386,7 +386,7 @@
 	</setting>
 	<setting>
 		<id>widget_panel_border_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>widget_bg_color</id>
@@ -429,8 +429,12 @@
 		<value><![CDATA[I2ZlYzQyNw==]]></value>
 	</setting>
 	<setting>
-		<id>thumbnail</id>
-		<value><![CDATA[MA==]]></value>
+		<id>box_titles</id>
+		<value><![CDATA[MQ==]]></value>
+	</setting>
+	<setting>
+		<id>thumbnail_circles</id>
+		<value><![CDATA[MQ==]]></value>
 	</setting>
 	<setting>
 		<id>custom_styles</id>
@@ -545,10 +549,6 @@
 		<value><![CDATA[YTo0OntzOjY6Iml0ZW1fMSI7YToyOntzOjQ6Imljb24iO3M6ODoiZmFjZWJvb2siO3M6NToibGFiZWwiO3M6MjI6IlNoYXJlIHRoaXMgb24gRmFjZWJvb2siO31zOjY6Iml0ZW1fMiI7YToyOntzOjQ6Imljb24iO3M6NjoiZ29vZ2xlIjtzOjU6ImxhYmVsIjtzOjIxOiJTaGFyZSB0aGlzIG9uIEdvb2dsZSsiO31zOjY6Iml0ZW1fMyI7YToyOntzOjQ6Imljb24iO3M6NzoidHdpdHRlciI7czo1OiJsYWJlbCI7czoyMToiU2hhcmUgdGhpcyBvbiBUd2l0dGVyIjt9czo2OiJpdGVtXzQiO2E6Mjp7czo0OiJpY29uIjtzOjU6ImVtYWlsIjtzOjU6ImxhYmVsIjtzOjIwOiJTaGFyZSB0aGlzIHZpYSBFbWFpbCI7fX0=]]></value>
 	</setting>
 	<setting>
-		<id>share_style</id>
-		<value><![CDATA[ZmxhdA==]]></value>
-	</setting>
-	<setting>
 		<id>single_thumbs</id>
 		<value><![CDATA[ZnVsbA==]]></value>
 	</setting>
@@ -566,7 +566,7 @@
 	</setting>
 	<setting>
 		<id>category_info</id>
-		<value><![CDATA[aGlkZQ==]]></value>
+		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>
 		<id>tag_info</id>
@@ -590,6 +590,10 @@
 	</setting>
 	<setting>
 		<id>blog_meta</id>
+		<value><![CDATA[c2hvdw==]]></value>
+	</setting>
+	<setting>
+		<id>blog_sub_meta</id>
 		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>
