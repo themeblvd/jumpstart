@@ -1763,6 +1763,7 @@ function jumpstart_su_css() {
 		$print .= "}\n";
 
 		$print .= ".box-title:before,\n";
+		$print .= ".box-title:after,\n";
 
 		if ( $widget_style == 'standard' ) {
 			$print .= ".fixed-sidebar .widget-title:before,\n";
@@ -1788,6 +1789,20 @@ function jumpstart_su_css() {
 
 		$print .= "\twidth: 75px;\n";
 		$print .= "\theight: 2px;\n";
+		$print .= "\tz-index: 2;\n";
+		$print .= "}\n";
+
+		$print .= ".box-title {\n";
+		$print .= "\tborder-bottom-color: transparent;\n";
+		$print .= "}\n";
+		$print .= ".box-title:before {\n";
+		$print .= "\twidth: 50px;\n";
+		$print .= "}\n";
+		$print .= ".box-title:after {\n";
+		$print .= "\tbackground: #f2f2f2;\n";
+		$print .= "\tbackground: rgba(220,220,220,.4);\n";
+		$print .= "\twidth: 150px;\n";
+		$print .= "\tz-index: 1;\n";
 		$print .= "}\n";
 
 		if ( $widget_style == 'standard' && themeblvd_get_option('widget_bg_brightness') == 'dark' ) {
