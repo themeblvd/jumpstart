@@ -312,7 +312,7 @@ class Theme_Blvd_Compat_WPML {
 
 				if ( count($langs) ) {
 
-					$output .= sprintf("\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s<i class=\"fa fa-caret-down\"></i></a></a>", $active['url'], $active['language_code'], $active['translated_name']);
+					$output .= sprintf("\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s<i class=\"fa fa-caret-down\"></i></a>", $active['url'], $active['language_code'], $active['translated_name']);
 					$output .= "\t\t\t<ul class=\"lang-sub-menu\">\n";
 
 					foreach ( $langs as $lang ) {

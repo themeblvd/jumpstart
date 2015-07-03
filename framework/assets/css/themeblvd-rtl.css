@@ -509,6 +509,10 @@ img.size-full {
 		min-height: 100vh;
 		position: relative;
 	}
+	.ie9 .height-100vh,
+	.ie10 .height-100vh {
+		min-height: 0;
+	}
 }
 
 /* =WordPress Standard Classes
@@ -6642,27 +6646,35 @@ blockquote small {
 	/* @noflip */
 	.height-100vh .jumbotron-wrap.pull-none {
 		left: 50%;
-		-ms-transform: translate(-50%, -50%); /* IE9 */
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
 	/* @noflip */
 	.height-100vh .jumbotron-wrap.pull-left {
 		left: 10%;
-		-ms-transform: translate(0, -50%); /* IE9 */
 		-webkit-transform: translate(0, -50%);
 		transform: translate(0, -50%);
 	}
 	/* @noflip */
 	.height-100vh .jumbotron-wrap.pull-right {
 		right: 10%;
-		-ms-transform: translate(0, -50%); /* IE9 */
 		-webkit-transform: translate(0, -50%);
 		transform: translate(0, -50%);
 	}
 	.tb-suck-up .element-section:first-child > .element-jumbotron.popout.height-100vh:first-child {
 		margin-top: 0 !important;
 		margin-bottom: 0 !important;
+	}
+	.ie9 .height-100vh .jumbotron-wrap,
+	.ie9 .jumbotron-outer.has-bg-shade.height-100vh .jumbotron-wrap,
+	.ie10 .height-100vh .jumbotron-wrap,
+	.ie10 .jumbotron-outer.has-bg-shade.height-100vh .jumbotron-wrap {
+		padding: 120px 0 170px 0;
+		position: relative;
+		top: inherit;
+		right: inherit;
+		left: inherit;
+		transform: none;
 	}
 }
 .element-jumbotron .jumbotron-outer.has-bg,
