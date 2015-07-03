@@ -2667,7 +2667,7 @@ function jumpstart_su_header_addon() {
 
 	if ( themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) ) {
 
-		echo '<ul class="header-top-nav list-unstyled">';
+		echo '<ul class="header-top-nav list-unstyled clearfix">';
 
 		// Floating search trigger
 		if ( themeblvd_get_option('searchform') == 'show' ) {
