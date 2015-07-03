@@ -8239,14 +8239,6 @@ blockquote small {
 .text-light h6 {
 	color: #ffffff;
 }
-.text-light a:not(.btn),
-.text-light a:not(.btn):hover {
-	color: #ffffff;
-	text-decoration: underline;
-}
-.text-light a:not(.btn):hover {
-	color: rgba(255,255,255,.8);
-}
 
 /* Breadcrumbs */
 .text-light .breadcrumb > li > a {

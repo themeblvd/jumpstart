@@ -830,13 +830,6 @@ button:active {
 .text-light h6 {
     color: #ffffff;
 }
-.text-light a,
-.text-light a:hover {
-    color: #ffffff;
-}
-.text-light a:hover {
-    text-decoration: underline;
-}
 
 /* Breadcrumbs */
 .text-light .breadcrumb > li > a {
