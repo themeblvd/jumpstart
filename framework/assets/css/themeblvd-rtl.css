@@ -7617,34 +7617,27 @@ blockquote small {
 
 /* Scroll-to-Section Button */
 .tb-scroll-to-section {
-	border: 2px solid #ffffff;
+	background-color: #dadada;
+	background-color: rgba(0,0,0,.2);
+	background-image: url(../svg/chev-down.svg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 15px 15px;
 	-webkit-border-radius: 100%;
 	border-radius: 100%;
-	-webkit-box-shadow: 0 0 2px rgba(0,0,0,.7);
-	box-shadow: 0 0 2px rgba(0,0,0,.7);
 	color: #ffffff;
-	font-size: 20px;
-	line-height: 60px;
 	margin-left: -32px;
 	outline: none !important;
 	position: absolute;
 	bottom: 10%;
 	left: 50%;
-	text-align: center;
-	text-shadow: 0 0 2px rgba(0,0,0,.7);
+	text-indent: -9999px;
 	width: 64px;
 	height: 64px;
 	z-index: 10;
 }
 .tb-scroll-to-section:hover {
-	background-color: #ffffff;
-	text-shadow: none;
-}
-.tb-scroll-to-section .fa {
-	color: #ffffff;
-}
-.tb-scroll-to-section:hover .fa {
-	color: #333333;
+	background-color: rgba(0,0,0,.4);
 }
 @media (max-width: 991px), (max-height: 499px) {
 	.tb-scroll-to-section {

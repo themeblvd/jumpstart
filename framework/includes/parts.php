@@ -1325,12 +1325,11 @@ function themeblvd_get_to_section( $args = array() ) {
 
 	$defaults = array(
 		'to'	=> '', // ID of HTML element to jump to; if blank, go to next section
-		'icon'	=> 'chevron-down',
 		'class'	=> ''
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$output = sprintf('<a href="#%s" class="tb-scroll-to-section %s"><i class="fa fa-%s"></i></a>', $args['to'], $args['class'], $args['icon']);
+	$output = sprintf('<a href="#%s" class="tb-scroll-to-section %s">%s</a>', $args['to'], $args['class'], themeblvd_get_local('next'));
 
 	return apply_filters( 'themeblvd_to_section', $output, $args );
 }
