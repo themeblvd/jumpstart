@@ -97,6 +97,7 @@ function themeblvd_get_all_locals() {
 		'tags'						=> __( 'Tags', 'themeblvd_frontend' ),
 		'title_reply'				=> __( 'Leave a Reply', 'themeblvd_frontend' ),
 		'title_reply_to'			=> __( 'Leave a Reply to %s', 'themeblvd_frontend' ),
+		'top'						=> __( 'Top', 'themeblvd_frontend' ),
 		'via'						=> __( 'via', 'themeblvd_frontend' ),
 		'video'						=> __( 'Video', 'themeblvd_frontend' ),
 		'view_post'					=> __( 'View Post', 'themeblvd_frontend' ),

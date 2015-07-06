@@ -1294,7 +1294,7 @@ function themeblvd_get_to_top( $args = array() ) {
 		$class .= ' '.$args['class'];
 	}
 
-	$output = sprintf('<a href="#" class="%s"><i class="fa fa-chevron-up"></i></a>', $class);
+	$output = sprintf('<a href="#" class="%s">%s</a>', $class, themeblvd_get_local('top'));
 
     return apply_filters( 'themeblvd_to_top', $output, $args );
 }
