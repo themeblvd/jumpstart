@@ -163,7 +163,7 @@ class Theme_Blvd_Compat_WPML {
 			$items .= $language_name;
 
 			if ( ! empty($languages) && count($languages) > 1 ) {
-				$items .= '<i class="sf-sub-indicator fa fa-caret-down"></i>';
+				$items .= apply_filters('themeblvd_menu_sub_indicator', '<i class="sf-sub-indicator fa fa-caret-down"></i>', 'down');
 			}
 
 			if ( isset($args->link_after) ) {
