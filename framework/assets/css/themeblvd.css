@@ -68,10 +68,9 @@
  *   13.6 - Common slider arrows
  *   13.7 - Showcase Slider
  * 14.0 - Social Icons
- *   14.1 - Custom Icon Font by Theme Blvd
- *   14.2 - Contact Bar
- *   14.3 - Color (flat) Social Icons
- *   14.4 - Color (image) Social Icons
+ *   14.1 - Contact Bar
+ *   14.2 - Color (flat) Social Icons
+ *   14.3 - Color (image) Social Icons
  * 15.0 - Forms
  *   15.1 - General
  *   15.2 - Form Buttons
@@ -2267,185 +2266,6 @@ html[xmlns] .slides {
 /* =Social Icons
 -----------------------------------------------*/
 
-/* Custom Icon Font by Theme Blvd */
-@font-face {
-	font-family: 'themeblvd-social';
-	src:url('../font/themeblvd-social.eot?r790bm');
-	src:url('../font/themeblvd-social.eot?#iefixr790bm') format('embedded-opentype'),
-		url('../font/themeblvd-social.woff?r790bm') format('woff'),
-		url('../font/themeblvd-social.ttf?r790bm') format('truetype'),
-		url('../font/themeblvd-social.svg?r790bm#themeblvd-social') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-.tb-icon {
-	font-family: 'themeblvd-social';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-.tb-icon.chat:before {
-	content: "\e600";
-}
-.tb-icon.cloud:before {
-	content: "\e601";
-}
-.tb-icon.anchor:before {
-	content: "\e632";
-}
-.tb-icon.email:before,
-.tb-icon.mail:before {
-	content: "\e602";
-}
-.tb-icon.movie:before {
-	content: "\e603";
-}
-.tb-icon.music:before {
-	content: "\e604";
-}
-.tb-icon.rss:before {
-	content: "\e605";
-}
-.tb-icon.store:before {
-	content: "\e606";
-}
-.tb-icon.write:before {
-	content: "\e607";
-}
-.tb-icon.fivehundredpx:before {
-	content: "\e608";
-}
-.tb-icon.amazon:before {
-	content: "\e609";
-}
-.tb-icon.android:before {
-	content: "\e60a";
-}
-.tb-icon.behance:before {
-	content: "\e60b";
-}
-.tb-icon.delicious:before {
-	content: "\e60c";
-}
-.tb-icon.flickr:before {
-	content: "\e60d";
-}
-.tb-icon.deviantart:before {
-	content: "\e60e";
-}
-.tb-icon.dribbble:before {
-	content: "\e60f";
-}
-.tb-icon.dropbox:before {
-	content: "\e610";
-}
-.tb-icon.digg:before {
-	content: "\e611";
-}
-.tb-icon.ebay:before {
-	content: "\e612";
-}
-.tb-icon.envato:before {
-	content: "\e613";
-}
-.tb-icon.facebook:before {
-	content: "\e614";
-}
-.tb-icon.feedburner:before {
-	content: "\e615";
-}
-.tb-icon.forrst:before {
-	content: "\e616";
-}
-.tb-icon.foursquare:before {
-	content: "\e617";
-}
-.tb-icon.github:before {
-	content: "\e618";
-}
-.tb-icon.google:before {
-	content: "\e619";
-}
-.tb-icon.instagram:before {
-	content: "\e61a";
-}
-.tb-icon.linkedin:before {
-	content: "\e61b";
-}
-.tb-icon.mac:before {
-	content: "\e61c";
-}
-.tb-icon.macapp:before {
-	content: "\e61d";
-}
-.tb-icon.myspace:before {
-	content: "\e61e";
-}
-.tb-icon.picasa:before {
-	content: "\e61f";
-}
-.tb-icon.paypal:before {
-	content: "\e620";
-}
-.tb-icon.pinterest:before {
-	content: "\e621";
-}
-.tb-icon.playstation:before {
-	content: "\e622";
-}
-.tb-icon.reddit:before {
-	content: "\e623";
-}
-.tb-icon.scribd:before {
-	content: "\e624";
-}
-.tb-icon.soundcloud:before {
-	content: "\e625";
-}
-.tb-icon.squidoo:before {
-	content: "\e626";
-}
-.tb-icon.technorati:before {
-	content: "\e627";
-}
-.tb-icon.themeblvd:before {
-	content: "\e628";
-}
-.tb-icon.tumblr:before {
-	content: "\e629";
-}
-.tb-icon.twitter:before {
-	content: "\e62a";
-}
-.tb-icon.vimeo:before {
-	content: "\e62b";
-}
-.tb-icon.windows:before {
-	content: "\e62c";
-}
-.tb-icon.wordpress:before {
-	content: "\e62d";
-}
-.tb-icon.xbox:before {
-	content: "\e62e";
-}
-.tb-icon.xing:before {
-	content: "\e62f";
-}
-.tb-icon.yahoo:before {
-	content: "\e630";
-}
-.tb-icon.youtube:before {
-	content: "\e631";
-}
-
 /* Contact Bar */
 .tb-social-icons {
 	margin: 0;
@@ -2455,38 +2275,37 @@ html[xmlns] .slides {
 	float: left;
 	list-style: none !important;
 	margin: 0;
-	padding: 0;
+	padding: 0 1px;
 }
 .element-contact .tb-social-icons > li {
-	margin: 1px 0;
+	padding-top: 1px;
+	padding-bottom: 1px;
 }
 .tb-social-icons > li > a {
-	font-size: 24px;
-	color: inherit;
 	display: block;
 	outline: none;
-	text-align: center;
 	text-decoration: none !important;
-	width: 26px;
-	height: 26px;
 }
 .tb-social-icons.dark > li > a {
-	color: #101010;
+	color: #000000;
+	color: rgba(0,0,0,.8);
 }
 .tb-social-icons.dark > li > a:hover {
-	color: #000000;
+	color: rgba(0,0,0,.9);
 }
 .tb-social-icons.grey > li > a {
-	color: #8b8b8b;
+	color: #666666;
+	color: rgba(26,26,26,.7);
 }
 .tb-social-icons.grey > li > a:hover {
-	color: #696969;
+	color: rgba(26,26,26,.8);
 }
 .tb-social-icons.light > li > a {
 	color: #eeeeee;
+	color: rgba(255,255,255,.8);
 }
 .tb-social-icons.light > li > a:hover {
-	color: #ffffff;
+	color: rgba(255,255,255,.9);
 }
 
 /* Color (flat) Social Icons */
@@ -2526,6 +2345,12 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .music:hover {
 	color: #9d12c5;
 }
+.tb-social-icons.flat > li > .portfolio {
+	color: #9c7b15;
+}
+.tb-social-icons.flat > li > .portfolio:hover {
+	color: #765c0e;
+}
 .tb-social-icons.flat > li > .rss {
 	color: #fa9316;
 }
@@ -2544,17 +2369,11 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .write:hover {
 	color: #eba730;
 }
-.tb-social-icons.flat > li > .fivehundredpx {
-	color: #bababb;
+.tb-social-icons.flat > li > .apple {
+	color: #979797;
 }
-.tb-social-icons.flat > li > .fivehundredpx:hover {
-	color: #929395;
-}
-.tb-social-icons.flat > li > .amazon {
-	color: #feb428;
-}
-.tb-social-icons.flat > li > .amazon:hover {
-	color: #f69606;
+.tb-social-icons.flat > li > .apple:hover {
+	color: #646464;
 }
 .tb-social-icons.flat > li > .android {
 	color: #94d806;
@@ -2598,41 +2417,17 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .dropbox:hover {
 	color: #4d96d1;
 }
-.tb-social-icons.flat > li > .ebay {
-	color: #f7ce34;
-}
-.tb-social-icons.flat > li > .ebay:hover {
-	color: #f5aa2f;
-}
-.tb-social-icons.flat > li > .envato {
-	color: #82b541;
-}
-.tb-social-icons.flat > li > .envato:hover {
-	color: #597e2a;
-}
 .tb-social-icons.flat > li > .facebook {
 	color: #3b5898;
 }
 .tb-social-icons.flat > li > .facebook:hover {
 	color: #2f477a;
 }
-.tb-social-icons.flat > li > .feedburner {
-	color: #e9393f;
-}
-.tb-social-icons.flat > li > .feedburner:hover {
-	color: #d1242a;
-}
 .tb-social-icons.flat > li > .flickr {
 	color: #0063dc;
 }
 .tb-social-icons.flat > li > .flickr:hover {
 	color: #ff0084;
-}
-.tb-social-icons.flat > li > .forrst {
-	color: #26b037;
-}
-.tb-social-icons.flat > li > .forrst:hover {
-	color: #1b7f27;
 }
 .tb-social-icons.flat > li > .foursquare {
 	color: #5cbbde;
@@ -2664,35 +2459,11 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .linkedin:hover {
 	color: #076193;
 }
-.tb-social-icons.flat > li > .mac {
-	color: #979797;
-}
-.tb-social-icons.flat > li > .mac:hover {
-	color: #646464;
-}
-.tb-social-icons.flat > li > .macapp {
-	color: #4991ee;
-}
-.tb-social-icons.flat > li > .macapp:hover {
-	color: #1b59f3;
-}
-.tb-social-icons.flat > li > .myspace {
-	color: #1b1b1b;
-}
-.tb-social-icons.flat > li > .myspace:hover {
-	color: #333333;
-}
 .tb-social-icons.flat > li > .paypal {
 	color: #243a80;
 }
 .tb-social-icons.flat > li > .paypal:hover {
 	color: #169bd6;
-}
-.tb-social-icons.flat > li > .picasa {
-	color: #71848a;
-}
-.tb-social-icons.flat > li > .picasa:hover {
-	color: #565f62;
 }
 .tb-social-icons.flat > li > .pinterest {
 	color: #f73139;
@@ -2700,23 +2471,17 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .pinterest:hover {
 	color: #ce2128;
 }
-.tb-social-icons.flat > li > .playstation {
-	color: #3e3e3e;
-}
-.tb-social-icons.flat > li > .playstation:hover {
-	color: #191919;
-}
 .tb-social-icons.flat > li > .reddit {
 	color: #bed8f1;
 }
 .tb-social-icons.flat > li > .reddit:hover {
 	color: #fd4401;
 }
-.tb-social-icons.flat > li > .scribd {
-	color: #211f1f;
+.tb-social-icons.flat > li > .slideshare {
+	color: #0077b5;
 }
-.tb-social-icons.flat > li > .scribd:hover {
-	color: #0082e4;
+.tb-social-icons.flat > li > .slideshare:hover {
+	color: #00517b;
 }
 .tb-social-icons.flat > li > .soundcloud {
 	color: #fb7810;
@@ -2724,23 +2489,11 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .soundcloud:hover {
 	color: #ff3d02;
 }
-.tb-social-icons.flat > li > .squidoo {
-	color: #e57c1e;
+.tb-social-icons.flat > li > .stumbleupon {
+	color: #eb4924;
 }
-.tb-social-icons.flat > li > .squidoo:hover {
-	color: #16579a;
-}
-.tb-social-icons.flat > li > .technorati {
-	color: #60b82f;
-}
-.tb-social-icons.flat > li > .technorati:hover {
-	color: #318c18;
-}
-.tb-social-icons.flat > li > .themeblvd {
-	color: #135cc0;
-}
-.tb-social-icons.flat > li > .themeblvd:hover {
-	color: #e6e814;
+.tb-social-icons.flat > li > .stumbleupon:hover {
+	color: #b13518;
 }
 .tb-social-icons.flat > li > .tumblr {
 	color: #516e89;
@@ -2760,6 +2513,12 @@ html[xmlns] .slides {
 .tb-social-icons.flat > li > .vimeo:hover {
 	color: #000000;
 }
+.tb-social-icons.flat > li > .vine {
+	color: #00d9a3;
+}
+.tb-social-icons.flat > li > .vine:hover {
+	color: #0ca881;
+}
 .tb-social-icons.flat > li > .windows {
 	color: #3dcdf4;
 }
@@ -2771,12 +2530,6 @@ html[xmlns] .slides {
 }
 .tb-social-icons.flat > li > .wordpress:hover {
 	color: #0073a4;
-}
-.tb-social-icons.flat > li > .xbox {
-	color: #99c514;
-}
-.tb-social-icons.flat > li > .xbox:hover {
-	color: #000000;
 }
 .tb-social-icons.flat > li > .xing {
 	color: #009598;
@@ -2801,319 +2554,129 @@ html[xmlns] .slides {
 .tb-social-icons.color > li > a {
 	background-size: 24px 24px;
 	background-repeat: no-repeat;
+	text-indent: -9999px;
+	width: 24px;
+	height: 24px;
 }
 .tb-social-icons.color > li > .chat {
-	background-image: url('../images/social/24/chat.png');
+	background-image: url('../images/social/chat.png');
 }
 .tb-social-icons.color > li > .cloud {
-	background-image: url('../images/social/24/cloud.png');
+	background-image: url('../images/social/cloud.png');
 }
 .tb-social-icons.color > li > .anchor {
-	background-image: url('../images/social/24/anchor.png');
+	background-image: url('../images/social/anchor.png');
 }
 .tb-social-icons.color > li > .email {
-	background-image: url('../images/social/24/email.png');
+	background-image: url('../images/social/email.png');
 }
 .tb-social-icons.color > li > .movie {
-	background-image: url('../images/social/24/movie.png');
+	background-image: url('../images/social/movie.png');
 }
 .tb-social-icons.color > li > .music {
-	background-image: url('../images/social/24/music.png');
+	background-image: url('../images/social/music.png');
+}
+.tb-social-icons.color > li > .portfolio {
+	background-image: url('../images/social/portfolio.png');
 }
 .tb-social-icons.color > li > .rss  {
-	background-image: url('../images/social/24/rss.png');
+	background-image: url('../images/social/rss.png');
 }
 .tb-social-icons.color > li > .store {
-	background-image: url('../images/social/24/store.png');
+	background-image: url('../images/social/store.png');
 }
 .tb-social-icons.color > li > .write {
-	background-image: url('../images/social/24/write.png');
+	background-image: url('../images/social/write.png');
 }
-.tb-social-icons.color > li > .fivehundredpx {
-	background-image: url('../images/social/24/500px.png');
-}
-.tb-social-icons.color > li > .amazon  {
-	background-image: url('../images/social/24/amazon.png');
+.tb-social-icons.color > li > .apple {
+	background-image: url('../images/social/apple.png');
 }
 .tb-social-icons.color > li > .android {
-	background-image: url('../images/social/24/android.png');
+	background-image: url('../images/social/android.png');
 }
 .tb-social-icons.color > li > .behance {
-	background-image: url('../images/social/24/behance.png');
+	background-image: url('../images/social/behance.png');
 }
 .tb-social-icons.color > li > .delicious  {
-	background-image: url('../images/social/24/delicious.png');
+	background-image: url('../images/social/delicious.png');
 }
 .tb-social-icons.color > li > .deviantart  {
-	background-image: url('../images/social/24/deviantart.png');
+	background-image: url('../images/social/deviantart.png');
 }
 .tb-social-icons.color > li > .digg  {
-	background-image: url('../images/social/24/digg.png');
+	background-image: url('../images/social/digg.png');
 }
 .tb-social-icons.color > li > .dribbble  {
-	background-image: url('../images/social/24/dribbble.png');
+	background-image: url('../images/social/dribbble.png');
 }
 .tb-social-icons.color > li > .dropbox {
-	background-image: url('../images/social/24/dropbox.png');
-}
-.tb-social-icons.color > li > .ebay  {
-	background-image: url('../images/social/24/ebay.png');
-}
-.tb-social-icons.color > li > .envato {
-	background-image: url('../images/social/24/envato.png');
+	background-image: url('../images/social/dropbox.png');
 }
 .tb-social-icons.color > li > .facebook  {
-	background-image: url('../images/social/24/facebook.png');
-}
-.tb-social-icons.color > li > .feedburner  {
-	background-image: url('../images/social/24/feedburner.png');
+	background-image: url('../images/social/facebook.png');
 }
 .tb-social-icons.color > li > .flickr  {
-	background-image: url('../images/social/24/flickr.png');
-}
-.tb-social-icons.color > li > .forrst  {
-	background-image: url('../images/social/24/forrst.png');
+	background-image: url('../images/social/flickr.png');
 }
 .tb-social-icons.color > li > .foursquare  {
-	background-image: url('../images/social/24/foursquare.png');
+	background-image: url('../images/social/foursquare.png');
 }
 .tb-social-icons.color > li > .github  {
-	background-image: url('../images/social/24/github.png');
+	background-image: url('../images/social/github.png');
 }
 .tb-social-icons.color > li > .google  {
-	background-image: url('../images/social/24/google.png');
+	background-image: url('../images/social/google.png');
 }
 .tb-social-icons.color > li > .instagram  {
-	background-image: url('../images/social/24/instagram.png');
+	background-image: url('../images/social/instagram.png');
 }
 .tb-social-icons.color > li > .linkedin  {
-	background-image: url('../images/social/24/linkedin.png');
-}
-.tb-social-icons.color > li > .mac {
-	background-image: url('../images/social/24/mac.png');
-}
-.tb-social-icons.color > li > .macapp {
-	background-image: url('../images/social/24/macapp.png');
-}
-.tb-social-icons.color > li > .myspace  {
-	background-image: url('../images/social/24/myspace.png');
+	background-image: url('../images/social/linkedin.png');
 }
 .tb-social-icons.color > li > .paypal  {
-	background-image: url('../images/social/24/paypal.png');
-}
-.tb-social-icons.color > li > .picasa  {
-	background-image: url('../images/social/24/picasa.png');
+	background-image: url('../images/social/paypal.png');
 }
 .tb-social-icons.color > li > .pinterest  {
-	background-image: url('../images/social/24/pinterest.png');
-}
-.tb-social-icons.color > li > .playstation {
-	background-image: url('../images/social/24/playstation.png');
+	background-image: url('../images/social/pinterest.png');
 }
 .tb-social-icons.color > li > .reddit  {
-	background-image: url('../images/social/24/reddit.png');
+	background-image: url('../images/social/reddit.png');
 }
-.tb-social-icons.color > li > .scribd  {
-	background-image: url('../images/social/24/scribd.png');
+.tb-social-icons.color > li > .slideshare {
+	background-image: url('../images/social/slideshare.png');
 }
 .tb-social-icons.color > li > .soundcloud {
-	background-image: url('../images/social/24/soundcloud.png');
+	background-image: url('../images/social/soundcloud.png');
 }
-.tb-social-icons.color > li > .squidoo  {
-	background-image: url('../images/social/24/squidoo.png');
-}
-.tb-social-icons.color > li > .technorati  {
-	background-image: url('../images/social/24/technorati.png');
-}
-.tb-social-icons.color > li > .themeblvd {
-	background-image: url('../images/social/24/themeblvd.png');
+.tb-social-icons.color > li > .stumbleupon {
+	background-image: url('../images/social/stumbleupon.png');
 }
 .tb-social-icons.color > li > .tumblr  {
-	background-image: url('../images/social/24/tumblr.png');
+	background-image: url('../images/social/tumblr.png');
 }
 .tb-social-icons.color > li > .twitter  {
-	background-image: url('../images/social/24/twitter.png');
+	background-image: url('../images/social/twitter.png');
 }
 .tb-social-icons.color > li > .vimeo  {
-	background-image: url('../images/social/24/vimeo.png');
+	background-image: url('../images/social/vimeo.png');
+}
+.tb-social-icons.color > li > .stumbleupon {
+	background-image: url('../images/social/stumbleupon.png');
 }
 .tb-social-icons.color > li > .windows {
-	background-image: url('../images/social/24/windows.png');
+	background-image: url('../images/social/windows.png');
 }
 .tb-social-icons.color > li > .wordpress {
-	background-image: url('../images/social/24/wordpress.png');
-}
-.tb-social-icons.color > li > .xbox  {
-	background-image: url('../images/social/24/xbox.png');
+	background-image: url('../images/social/wordpress.png');
 }
 .tb-social-icons.color > li > .xing {
-	background-image: url('../images/social/24/xing.png');
+	background-image: url('../images/social/xing.png');
 }
 .tb-social-icons.color > li > .yahoo  {
-	background-image: url('../images/social/24/yahoo.png');
+	background-image: url('../images/social/yahoo.png');
 }
 .tb-social-icons.color > li > .youtube  {
-	background-image: url('../images/social/24/youtube.png');
-}
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5),
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	/* Use 2x images for retina */
-	.tb-social-icons.color > li > .chat {
-		background-image: url('../images/social/48/chat.png');
-	}
-	.tb-social-icons.color > li > .cloud {
-		background-image: url('../images/social/48/cloud.png');
-	}
-	.tb-social-icons.color > li > .anchor {
-		background-image: url('../images/social/48/anchor.png');
-	}
-	.tb-social-icons.color > li > .email {
-		background-image: url('../images/social/48/email.png');
-	}
-	.tb-social-icons.color > li > .movie {
-		background-image: url('../images/social/48/movie.png');
-	}
-	.tb-social-icons.color > li > .music {
-		background-image: url('../images/social/48/music.png');
-	}
-	.tb-social-icons.color > li > .rss  {
-		background-image: url('../images/social/48/rss.png');
-	}
-	.tb-social-icons.color > li > .store {
-		background-image: url('../images/social/48/store.png');
-	}
-	.tb-social-icons.color > li > .write {
-		background-image: url('../images/social/48/write.png');
-	}
-	.tb-social-icons.color > li > .fivehundredpx {
-		background-image: url('../images/social/48/500px.png');
-	}
-	.tb-social-icons.color > li > .amazon  {
-		background-image: url('../images/social/48/amazon.png');
-	}
-	.tb-social-icons.color > li > .android {
-		background-image: url('../images/social/48/android.png');
-	}
-	.tb-social-icons.color > li > .behance {
-		background-image: url('../images/social/48/behance.png');
-	}
-	.tb-social-icons.color > li > .delicious  {
-		background-image: url('../images/social/48/delicious.png');
-	}
-	.tb-social-icons.color > li > .deviantart  {
-		background-image: url('../images/social/48/deviantart.png');
-	}
-	.tb-social-icons.color > li > .digg  {
-		background-image: url('../images/social/48/digg.png');
-	}
-	.tb-social-icons.color > li > .dribbble  {
-		background-image: url('../images/social/48/dribbble.png');
-	}
-	.tb-social-icons.color > li > .dropbox {
-		background-image: url('../images/social/48/dropbox.png');
-	}
-	.tb-social-icons.color > li > .ebay  {
-		background-image: url('../images/social/48/ebay.png');
-	}
-	.tb-social-icons.color > li > .envato {
-		background-image: url('../images/social/48/envato.png');
-	}
-	.tb-social-icons.color > li > .facebook  {
-		background-image: url('../images/social/48/facebook.png');
-	}
-	.tb-social-icons.color > li > .feedburner  {
-		background-image: url('../images/social/48/feedburner.png');
-	}
-	.tb-social-icons.color > li > .flickr  {
-		background-image: url('../images/social/48/flickr.png');
-	}
-	.tb-social-icons.color > li > .forrst  {
-		background-image: url('../images/social/48/forrst.png');
-	}
-	.tb-social-icons.color > li > .foursquare  {
-		background-image: url('../images/social/48/foursquare.png');
-	}
-	.tb-social-icons.color > li > .github  {
-		background-image: url('../images/social/48/github.png');
-	}
-	.tb-social-icons.color > li > .google  {
-		background-image: url('../images/social/48/google.png');
-	}
-	.tb-social-icons.color > li > .instagram  {
-		background-image: url('../images/social/48/instagram.png');
-	}
-	.tb-social-icons.color > li > .linkedin  {
-		background-image: url('../images/social/48/linkedin.png');
-	}
-	.tb-social-icons.color > li > .mac {
-		background-image: url('../images/social/48/mac.png');
-	}
-	.tb-social-icons.color > li > .macapp {
-		background-image: url('../images/social/48/macapp.png');
-	}
-	.tb-social-icons.color > li > .myspace  {
-		background-image: url('../images/social/48/myspace.png');
-	}
-	.tb-social-icons.color > li > .paypal  {
-		background-image: url('../images/social/48/paypal.png');
-	}
-	.tb-social-icons.color > li > .picasa  {
-		background-image: url('../images/social/48/picasa.png');
-	}
-	.tb-social-icons.color > li > .pinterest  {
-		background-image: url('../images/social/48/pinterest.png');
-	}
-	.tb-social-icons.color > li > .playstation {
-		background-image: url('../images/social/48/playstation.png');
-	}
-	.tb-social-icons.color > li > .reddit  {
-		background-image: url('../images/social/48/reddit.png');
-	}
-	.tb-social-icons.color > li > .scribd  {
-		background-image: url('../images/social/48/scribd.png');
-	}
-	.tb-social-icons.color > li > .soundcloud {
-		background-image: url('../images/social/48/soundcloud.png');
-	}
-	.tb-social-icons.color > li > .squidoo  {
-		background-image: url('../images/social/48/squidoo.png');
-	}
-	.tb-social-icons.color > li > .technorati  {
-		background-image: url('../images/social/48/technorati.png');
-	}
-	.tb-social-icons.color > li > .themeblvd {
-		background-image: url('../images/social/48/themeblvd.png');
-	}
-	.tb-social-icons.color > li > .tumblr  {
-		background-image: url('../images/social/48/tumblr.png');
-	}
-	.tb-social-icons.color > li > .twitter  {
-		background-image: url('../images/social/48/twitter.png');
-	}
-	.tb-social-icons.color > li > .vimeo  {
-		background-image: url('../images/social/48/vimeo.png');
-	}
-	.tb-social-icons.color > li > .windows {
-		background-image: url('../images/social/48/windows.png');
-	}
-	.tb-social-icons.color > li > .wordpress {
-		background-image: url('../images/social/48/wordpress.png');
-	}
-	.tb-social-icons.color > li > .xbox  {
-		background-image: url('../images/social/48/xbox.png');
-	}
-	.tb-social-icons.color > li > .xing {
-		background-image: url('../images/social/48/xing.png');
-	}
-	.tb-social-icons.color > li > .yahoo  {
-		background-image: url('../images/social/48/yahoo.png');
-	}
-	.tb-social-icons.color > li > .youtube  {
-		background-image: url('../images/social/48/youtube.png');
-	}
+	background-image: url('../images/social/youtube.png');
 }
 
 /*=Forms
@@ -4756,7 +4319,8 @@ ul.tb-icon-list {
 	padding: 0;
 }
 .tb-contact_widget ul.simple-contact ul.icons li a {
-	background: url('../images/parts/social-media-color_16x16.png') 0 0 no-repeat;
+	background-position: 0 0;
+	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	display: block;
 	line-height: 1;
@@ -4767,311 +4331,124 @@ ul.tb-icon-list {
 	height: 16px;
 }
 .tb-contact_widget ul.simple-contact ul.icons li.chat a {
-	background-image: url('../images/social/16/chat.png');
+	background-image: url('../images/social/chat.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.cloud a {
-	background-image: url('../images/social/16/cloud.png');
+	background-image: url('../images/social/cloud.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.email a {
-	background-image: url('../images/social/16/email.png');
+	background-image: url('../images/social/email.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.movie a {
-	background-image: url('../images/social/16/movie.png');
+	background-image: url('../images/social/movie.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.music a {
-	background-image: url('../images/social/16/music.png');
+	background-image: url('../images/social/music.png');
+}
+.tb-contact_widget ul.simple-contact ul.icons li.portfolio a {
+	background-image: url('../images/social/portfolio.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.rss  a {
-	background-image: url('../images/social/16/rss.png');
+	background-image: url('../images/social/rss.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.store a {
-	background-image: url('../images/social/16/store.png');
+	background-image: url('../images/social/store.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.write a {
-	background-image: url('../images/social/16/write.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.500px a {
-	background-image: url('../images/social/16/500px.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.amazon  a {
-	background-image: url('../images/social/16/amazon.png');
+	background-image: url('../images/social/write.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.android a {
-	background-image: url('../images/social/16/android.png');
+	background-image: url('../images/social/android.png');
+}
+.tb-contact_widget ul.simple-contact ul.icons li.apple a {
+	background-image: url('../images/social/apple.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.behance a {
-	background-image: url('../images/social/16/behance.png');
+	background-image: url('../images/social/behance.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.delicious  a {
-	background-image: url('../images/social/16/delicious.png');
+	background-image: url('../images/social/delicious.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.deviantart  a {
-	background-image: url('../images/social/16/deviantart.png');
+	background-image: url('../images/social/deviantart.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.digg  a {
-	background-image: url('../images/social/16/digg.png');
+	background-image: url('../images/social/digg.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.dribbble  a {
-	background-image: url('../images/social/16/dribbble.png');
+	background-image: url('../images/social/dribbble.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.dropbox a {
-	background-image: url('../images/social/16/dropbox.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.ebay  a {
-	background-image: url('../images/social/16/ebay.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.envato a {
-	background-image: url('../images/social/16/envato.png');
+	background-image: url('../images/social/dropbox.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.facebook  a {
-	background-image: url('../images/social/16/facebook.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.feedburner  a {
-	background-image: url('../images/social/16/feedburner.png');
+	background-image: url('../images/social/facebook.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.flickr  a {
-	background-image: url('../images/social/16/flickr.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.forrst  a {
-	background-image: url('../images/social/16/forrst.png');
+	background-image: url('../images/social/flickr.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.foursquare  a {
-	background-image: url('../images/social/16/foursquare.png');
+	background-image: url('../images/social/foursquare.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.github  a {
-	background-image: url('../images/social/16/github.png');
+	background-image: url('../images/social/github.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.google  a {
-	background-image: url('../images/social/16/google.png');
+	background-image: url('../images/social/google.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.instagram  a {
-	background-image: url('../images/social/16/instagram.png');
+	background-image: url('../images/social/instagram.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.linkedin  a {
-	background-image: url('../images/social/16/linkedin.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.mac a {
-	background-image: url('../images/social/16/mac.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.macapp a {
-	background-image: url('../images/social/16/macapp.png');
+	background-image: url('../images/social/linkedin.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.myspace  a {
-	background-image: url('../images/social/16/myspace.png');
+	background-image: url('../images/social/myspace.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.paypal  a {
-	background-image: url('../images/social/16/paypal.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.picasa  a {
-	background-image: url('../images/social/16/picasa.png');
+	background-image: url('../images/social/paypal.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.pinterest  a {
-	background-image: url('../images/social/16/pinterest.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.playstation a {
-	background-image: url('../images/social/16/playstation.png');
+	background-image: url('../images/social/pinterest.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.reddit  a {
-	background-image: url('../images/social/16/reddit.png');
+	background-image: url('../images/social/reddit.png');
 }
-.tb-contact_widget ul.simple-contact ul.icons li.scribd  a {
-	background-image: url('../images/social/16/scribd.png');
+.tb-contact_widget ul.simple-contact ul.icons li.slideshare a {
+	background-image: url('../images/social/slideshare.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.soundcloud a {
-	background-image: url('../images/social/16/soundcloud.png');
+	background-image: url('../images/social/soundcloud.png');
 }
-.tb-contact_widget ul.simple-contact ul.icons li.squidoo  a {
-	background-image: url('../images/social/16/squidoo.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.technorati  a {
-	background-image: url('../images/social/16/technorati.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.themeblvd a {
-	background-image: url('../images/social/16/themeblvd.png');
+.tb-contact_widget ul.simple-contact ul.icons li.stumbleupon a {
+	background-image: url('../images/social/stumbleupon.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.tumblr  a {
-	background-image: url('../images/social/16/tumblr.png');
+	background-image: url('../images/social/tumblr.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.twitter  a {
-	background-image: url('../images/social/16/twitter.png');
+	background-image: url('../images/social/twitter.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.vimeo  a {
-	background-image: url('../images/social/16/vimeo.png');
+	background-image: url('../images/social/vimeo.png');
+}
+.tb-contact_widget ul.simple-contact ul.icons li.vine a {
+	background-image: url('../images/social/vine.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.windows a {
-	background-image: url('../images/social/16/windows.png');
+	background-image: url('../images/social/windows.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.wordpress a {
-	background-image: url('../images/social/16/wordpress.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.xbox  a {
-	background-image: url('../images/social/16/xbox.png');
+	background-image: url('../images/social/wordpress.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.xing a {
-	background-image: url('../images/social/16/xing.png');
+	background-image: url('../images/social/xing.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.yahoo  a {
-	background-image: url('../images/social/16/yahoo.png');
+	background-image: url('../images/social/yahoo.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.youtube  a {
-	background-image: url('../images/social/16/youtube.png');
-}
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5),
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	/* Use 2x images for retina */
-	.tb-contact_widget ul.simple-contact ul.icons li.chat a {
-		background-image: url('../images/social/32/chat.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.cloud a {
-		background-image: url('../images/social/32/cloud.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.email a {
-		background-image: url('../images/social/32/email.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.movie a {
-		background-image: url('../images/social/32/movie.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.music a {
-		background-image: url('../images/social/32/music.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.rss a {
-		background-image: url('../images/social/32/rss.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.store a {
-		background-image: url('../images/social/32/store.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.write a {
-		background-image: url('../images/social/32/write.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.500px a {
-		background-image: url('../images/social/32/500px.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.amazon a {
-		background-image: url('../images/social/32/amazon.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.android a {
-		background-image: url('../images/social/32/android.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.behance a {
-		background-image: url('../images/social/32/behance.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.delicious a {
-		background-image: url('../images/social/32/delicious.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.deviantart a {
-		background-image: url('../images/social/32/deviantart.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.digg a {
-		background-image: url('../images/social/32/digg.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.dribbble a {
-		background-image: url('../images/social/32/dribbble.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.dropbox a {
-		background-image: url('../images/social/32/dropbox.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.ebay a {
-		background-image: url('../images/social/32/ebay.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.envato a {
-		background-image: url('../images/social/32/envato.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.facebook a {
-		background-image: url('../images/social/32/facebook.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.feedburner a {
-		background-image: url('../images/social/32/feedburner.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.flickr a {
-		background-image: url('../images/social/32/flickr.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.forrst a {
-		background-image: url('../images/social/32/forrst.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.foursquare a {
-		background-image: url('../images/social/32/foursquare.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.github a {
-		background-image: url('../images/social/32/github.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.google a {
-		background-image: url('../images/social/32/google.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.instagram a {
-		background-image: url('../images/social/32/instagram.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.linkedin a {
-		background-image: url('../images/social/32/linkedin.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.mac a {
-		background-image: url('../images/social/32/mac.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.macapp a {
-		background-image: url('../images/social/32/macapp.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.myspace a {
-		background-image: url('../images/social/32/myspace.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.paypal a {
-		background-image: url('../images/social/32/paypal.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.picasa a {
-		background-image: url('../images/social/32/picasa.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.pinterest a {
-		background-image: url('../images/social/32/pinterest.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.playstation a {
-		background-image: url('../images/social/32/playstation.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.reddit a {
-		background-image: url('../images/social/32/reddit.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.scribd a {
-		background-image: url('../images/social/32/scribd.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.soundcloud a {
-		background-image: url('../images/social/32/soundcloud.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.squidoo a {
-		background-image: url('../images/social/32/squidoo.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.technorati a {
-		background-image: url('../images/social/32/technorati.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.themeblvd a {
-		background-image: url('../images/social/32/themeblvd.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.tumblr a {
-		background-image: url('../images/social/32/tumblr.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.twitter a {
-		background-image: url('../images/social/32/twitter.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.vimeo a {
-		background-image: url('../images/social/32/vimeo.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.windows a {
-		background-image: url('../images/social/32/windows.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.wordpress a {
-		background-image: url('../images/social/32/wordpress.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.xbox a {
-		background-image: url('../images/social/32/xbox.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.xing a {
-		background-image: url('../images/social/32/xing.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.yahoo a {
-		background-image: url('../images/social/32/yahoo.png');
-	}
-	.tb-contact_widget ul.simple-contact ul.icons li.youtube a {
-		background-image: url('../images/social/32/youtube.png');
-	}
+	background-image: url('../images/social/youtube.png');
 }
 
 /* =Lightbox

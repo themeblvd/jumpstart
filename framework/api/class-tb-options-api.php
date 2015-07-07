@@ -331,7 +331,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __( 'Social Media Style', 'themeblvd' ),
 						'desc'		=> __( 'Select the color you\'d like applied to the social icons.', 'themeblvd' ),
 						'id'		=> 'social_media_style',
-						'std'		=> 'flat',
+						'std'		=> 'grey',
 						'type' 		=> 'select',
 						'options'	=> array(
 							'flat'			=> __( 'Flat Color', 'themeblvd' ),

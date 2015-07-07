@@ -58,11 +58,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 		foreach ( $buttons as $button ) {
 
 			// Link class
-			$class = $button['icon'];
-
-			if ( $args['style'] != 'color' ) { // Note: "color" means to use colored image icons; otherwise, we use icon font.
-				$class .= ' tb-icon tb-icon-'.$class;
-			}
+			$class = 'tb-icon '.$button['icon'];
 
 			if ( $args['tooltip'] && $args['tooltip'] != 'disable' ) {
 				$class .= ' tb-tooltip';
@@ -85,7 +81,67 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 				}
 			}
 
-			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s"></a></li>', $button['url'], $title, $class, $button['target'], $args['tooltip'] );
+			// Content
+			if ( $args['style'] == 'color' ) {
+
+				$content = $title;
+
+			} else {
+
+				// FontAwesome icon ID conversions
+				$icon = $button['icon']; // most icon ID's already match FA icon ID
+
+				switch ( $button['icon'] ) {
+
+					case 'chat' :
+						$icon = 'comments';
+						break;
+
+					case 'email' :
+						$icon = 'envelope';
+						break;
+
+					case 'anchor' :
+						$icon = 'link';
+						break;
+
+					case 'movie' :
+						$icon = 'film';
+						break;
+
+					case 'portfolio' :
+						$icon = 'briefcase';
+						break;
+
+					case 'store' :
+						$icon = 'shopping-cart';
+						break;
+
+					case 'write' :
+						$icon = 'pencil';
+						break;
+
+					case 'github' :
+						$icon = 'github-alt';
+						break;
+
+					case 'google' :
+						$icon = 'google-plus';
+						break;
+
+					case 'pinterest' :
+						$icon = 'pinterest-p';
+						break;
+
+					case 'vimeo' :
+						$icon = 'vimeo-square';
+
+				}
+
+				$content = sprintf('<i class="fa fa-fw fa-%s"></i>', $icon);
+			}
+
+			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>', $button['url'], $title, $class, $button['target'], $args['tooltip'], $content );
 		}
 
 		$output .= '</ul><!-- .themeblvd-contact-bar (end) -->';
