@@ -27,16 +27,6 @@ function jumpstart_global_config( $config ) {
 add_filter('themeblvd_global_config', 'jumpstart_global_config');
 
 /**
- * Set default theme base
- *
- * @since 2.0.0
- */
-function jumpstart_default_base() {
-	return 'entrepreneur';
-}
-add_filter('themeblvd_default_base', 'jumpstart_default_base', 5);
-
-/**
  * Setup theme bases admin
  *
  * @since 2.0.0
