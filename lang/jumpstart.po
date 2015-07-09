@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jump Start\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-03 15:39-1000\n"
-"PO-Revision-Date: 2015-07-03 15:39-1000\n"
+"POT-Creation-Date: 2015-07-08 16:14-1000\n"
+"PO-Revision-Date: 2015-07-08 16:14-1000\n"
 "Last-Translator: \n"
-"Language-Team: Theme Blvd\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5748,27 +5748,27 @@ msgid "General: Music"
 msgstr ""
 
 #: ../framework/includes/general.php:2153
-msgid "General: RSS"
+msgid "General: Portfolio"
 msgstr ""
 
 #: ../framework/includes/general.php:2154
-msgid "General: Store"
+msgid "General: RSS"
 msgstr ""
 
 #: ../framework/includes/general.php:2155
-msgid "General: Write"
+msgid "General: Store"
 msgstr ""
 
 #: ../framework/includes/general.php:2156
-msgid "500px"
+msgid "General: Write"
 msgstr ""
 
 #: ../framework/includes/general.php:2157
-msgid "Amazon"
+msgid "Android"
 msgstr ""
 
 #: ../framework/includes/general.php:2158
-msgid "Android"
+msgid "Apple"
 msgstr ""
 
 #: ../framework/includes/general.php:2159
@@ -5776,167 +5776,130 @@ msgid "Behance"
 msgstr ""
 
 #: ../framework/includes/general.php:2160
-msgid "Delicious"
+msgid "CodePen"
 msgstr ""
 
 #: ../framework/includes/general.php:2161
-msgid "Deviant Art"
+msgid "Delicious"
 msgstr ""
 
 #: ../framework/includes/general.php:2162
-#: ../framework/includes/general.php:2216
-msgid "Digg"
+msgid "DeviantArt"
 msgstr ""
 
 #: ../framework/includes/general.php:2163
-msgid "Dribbble"
+#: ../framework/includes/general.php:2206
+msgid "Digg"
 msgstr ""
 
 #: ../framework/includes/general.php:2164
-msgid "Dropbox"
+msgid "Dribbble"
 msgstr ""
 
 #: ../framework/includes/general.php:2165
-msgid "Ebay"
+msgid "Dropbox"
 msgstr ""
 
 #: ../framework/includes/general.php:2166
-msgid "Envato"
-msgstr ""
-
-#: ../framework/includes/general.php:2167
-#: ../framework/includes/general.php:2218
+#: ../framework/includes/general.php:2208
 msgid "Facebook"
 msgstr ""
 
-#: ../framework/includes/general.php:2168
-msgid "Feedburner"
-msgstr ""
-
-#: ../framework/includes/general.php:2169
+#: ../framework/includes/general.php:2167
 msgid "Flickr"
 msgstr ""
 
-#: ../framework/includes/general.php:2170
-msgid "Forrst"
-msgstr ""
-
-#: ../framework/includes/general.php:2171
+#: ../framework/includes/general.php:2168
 msgid "Foursquare"
 msgstr ""
 
-#: ../framework/includes/general.php:2172
-msgid "Github"
+#: ../framework/includes/general.php:2169
+msgid "GitHub"
 msgstr ""
 
-#: ../framework/includes/general.php:2173
-#: ../framework/includes/general.php:2219
+#: ../framework/includes/general.php:2170
+#: ../framework/includes/general.php:2209
 msgid "Google+"
 msgstr ""
 
-#: ../framework/includes/general.php:2174
+#: ../framework/includes/general.php:2171
 msgid "Instagram"
 msgstr ""
 
-#: ../framework/includes/general.php:2175
-#: ../framework/includes/general.php:2220
-msgid "Linkedin"
+#: ../framework/includes/general.php:2172
+msgid "LinkedIn"
 msgstr ""
 
-#: ../framework/includes/general.php:2176
-msgid "Mac"
-msgstr ""
-
-#: ../framework/includes/general.php:2177
-msgid "Mac App Store"
-msgstr ""
-
-#: ../framework/includes/general.php:2178
-msgid "MySpace"
-msgstr ""
-
-#: ../framework/includes/general.php:2179
+#: ../framework/includes/general.php:2173
 msgid "PayPal"
 msgstr ""
 
-#: ../framework/includes/general.php:2180
-msgid "Picasa"
-msgstr ""
-
-#: ../framework/includes/general.php:2181
-#: ../framework/includes/general.php:2222
+#: ../framework/includes/general.php:2174
+#: ../framework/includes/general.php:2212
 msgid "Pinterest"
 msgstr ""
 
-#: ../framework/includes/general.php:2182
-msgid "PlayStation"
-msgstr ""
-
-#: ../framework/includes/general.php:2183
-#: ../framework/includes/general.php:2223
+#: ../framework/includes/general.php:2175
+#: ../framework/includes/general.php:2213
 msgid "Reddit"
 msgstr ""
 
-#: ../framework/includes/general.php:2184
-msgid "Sribd"
+#: ../framework/includes/general.php:2176
+msgid "SlideShare"
 msgstr ""
 
-#: ../framework/includes/general.php:2185
+#: ../framework/includes/general.php:2177
 msgid "SoundCloud"
 msgstr ""
 
-#: ../framework/includes/general.php:2186
-msgid "Squidoo"
+#: ../framework/includes/general.php:2178
+msgid "StumbleUpon"
 msgstr ""
 
-#: ../framework/includes/general.php:2187
-msgid "Technorati"
-msgstr ""
-
-#: ../framework/includes/general.php:2188
-msgid "Theme Blvd"
-msgstr ""
-
-#: ../framework/includes/general.php:2189
-#: ../framework/includes/general.php:2224
+#: ../framework/includes/general.php:2179
+#: ../framework/includes/general.php:2214
 msgid "Tumblr"
 msgstr ""
 
-#: ../framework/includes/general.php:2190
-#: ../framework/includes/general.php:2225
+#: ../framework/includes/general.php:2180
+#: ../framework/includes/general.php:2215
 msgid "Twitter"
 msgstr ""
 
-#: ../framework/includes/general.php:2191
+#: ../framework/includes/general.php:2181
 msgid "Vimeo"
 msgstr ""
 
-#: ../framework/includes/general.php:2192
+#: ../framework/includes/general.php:2182
+msgid "Vine"
+msgstr ""
+
+#: ../framework/includes/general.php:2183
 msgid "Windows"
 msgstr ""
 
-#: ../framework/includes/general.php:2193
+#: ../framework/includes/general.php:2184
 msgid "WordPress"
 msgstr ""
 
-#: ../framework/includes/general.php:2194
-msgid "Xbox"
+#: ../framework/includes/general.php:2185
+msgid "XING"
 msgstr ""
 
-#: ../framework/includes/general.php:2195
-msgid "Xing"
-msgstr ""
-
-#: ../framework/includes/general.php:2196
+#: ../framework/includes/general.php:2186
 msgid "Yahoo"
 msgstr ""
 
-#: ../framework/includes/general.php:2197
+#: ../framework/includes/general.php:2187
 msgid "YouTube"
 msgstr ""
 
-#: ../framework/includes/general.php:2217
+#: ../framework/includes/general.php:2207
 msgid "Email"
+msgstr ""
+
+#: ../framework/includes/general.php:2210
+msgid "Linkedin"
 msgstr ""
 
 #: ../framework/includes/helpers.php:1415
@@ -6096,10 +6059,6 @@ msgstr ""
 #: ../framework/includes/locals.php:37
 #, php-format
 msgid "%1$s comments on &ldquo;%2$s&rdquo;"
-msgstr ""
-
-#: ../framework/includes/locals.php:40
-msgid "LinkedIn"
 msgstr ""
 
 #: ../framework/includes/locals.php:43
@@ -6303,28 +6262,32 @@ msgid "Leave a Reply to %s"
 msgstr ""
 
 #: ../framework/includes/locals.php:100
-msgid "via"
+msgid "Top"
 msgstr ""
 
 #: ../framework/includes/locals.php:101
-msgid "Video"
+msgid "via"
 msgstr ""
 
 #: ../framework/includes/locals.php:102
-msgid "View Post"
+msgid "Video"
 msgstr ""
 
 #: ../framework/includes/locals.php:103
-msgid "View Item Details"
+msgid "View Post"
 msgstr ""
 
 #: ../framework/includes/locals.php:104
-#: ../framework/includes/parts.php:913
+msgid "View Item Details"
+msgstr ""
+
+#: ../framework/includes/locals.php:105
+#: ../framework/includes/parts.php:969
 #, php-format
 msgid "View all posts by %s"
 msgstr ""
 
-#: ../framework/includes/locals.php:105
+#: ../framework/includes/locals.php:106
 msgid "Website"
 msgstr ""
 
@@ -6412,60 +6375,11 @@ msgstr ""
 msgid "Custom CSS Preview"
 msgstr ""
 
-#: ../includes/theme-functions.php:159
+#: ../includes/theme-functions.php:149
 msgid "Warning: Your saved theme options do not currently match the theme base you've selected. Please configure and save your theme options page."
 msgstr ""
 
-#: ../includes/theme-functions.php:174
+#: ../includes/theme-functions.php:164
 msgid "Jump Start Homepage"
-msgstr ""
-
-#: ../includes/updates.php:38
-msgid "Configuration"
-msgstr ""
-
-#: ../includes/updates.php:40
-msgid "<strong>Warning:</strong> Although there is a backup option below, we recommend that you still always backup your theme files before running any automatic updates. Additionally, it's a good idea to never update any plugin or theme on a live website without first testing its compatibility with your specific WordPress site."
-msgstr ""
-
-#: ../includes/updates.php:43
-msgid "Envato Username"
-msgstr ""
-
-#: ../includes/updates.php:45
-msgid "Enter the username that you have purchased the theme with through ThemeForest."
-msgstr ""
-
-#: ../includes/updates.php:49
-msgid "Envato API Key"
-msgstr ""
-
-#: ../includes/updates.php:51
-#, php-format
-msgid "Enter an %s key associated with your Envato username."
-msgstr ""
-
-#: ../includes/updates.php:55
-msgid "Backups"
-msgstr ""
-
-#: ../includes/updates.php:57
-msgid "Select if you'd like a backup made of the previous theme version on your server before updating to the new version."
-msgstr ""
-
-#: ../includes/updates.php:61
-msgid "Yes, make theme backups when updating."
-msgstr ""
-
-#: ../includes/updates.php:62
-msgid "No, do not make theme backups."
-msgstr ""
-
-#: ../includes/updates.php:73
-msgid "Theme Blvd Envato Updates"
-msgstr ""
-
-#: ../includes/updates.php:74
-msgid "Theme Updates"
 msgstr ""
 
