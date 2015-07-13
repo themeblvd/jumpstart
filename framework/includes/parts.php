@@ -239,7 +239,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 
 	$output = sprintf( '<a href="#" class="%1$s" data-open="%2$s" data-close="%3$s" data-placement="%4$s"><i class="fa fa-%2$s"></i></a>', $class, $args['open'], $args['close'], $args['placement'] );
 
-	return apply_filters( 'themeblvd_floating_search', $output, $args );
+	return apply_filters( 'themeblvd_floating_search_trigger', $output, $args );
 }
 
 /**
