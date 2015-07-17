@@ -588,6 +588,7 @@ img.size-full {
 	display: block;
 }
 .wp-caption {
+	max-width: 100%;
 	text-align: center;
 }
 .wp-caption.alignnone {
