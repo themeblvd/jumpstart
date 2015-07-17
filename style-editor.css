@@ -40,6 +40,10 @@ a {
 	color: #428bca;
 	text-decoration: none;
 }
+img {
+	max-width: 100%;
+	height: auto;
+}
 
 /* Thumbnails */
 .thumbnail,
@@ -89,6 +93,7 @@ a.thumbnail:active {
 	display: block;
 }
 .wp-caption {
+	max-width: 100%;
 	text-align: center;
 }
 .wp-caption.alignnone {
