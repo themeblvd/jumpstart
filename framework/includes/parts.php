@@ -1652,7 +1652,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 
 		}
 
-		$args['query'] = apply_filters( 'themeblvd_related_posts_args', $args['query'], $args );
+		$args['query'] = apply_filters( 'themeblvd_related_posts_query', $args['query'], $args );
 
 	}
 
@@ -1663,7 +1663,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 	$output .= '</div><!-- .inner (end) -->';
 	$output .= '</section><!-- .tb-related-posts (end) -->';
 
-	return apply_filters( 'themeblvd_author_info', $output, $args );
+	return apply_filters( 'themeblvd_related_posts', $output, $args );
 }
 
 /**
