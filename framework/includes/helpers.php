@@ -1572,14 +1572,23 @@ function themeblvd_do_fa( $str ) {
 
 	if ( ! empty( $icons[0] ) ) {
 
+		$list = true;
+
+		if ( substr_count(trim($str), "\n") ) {
+			$list = false; // If text has more than one line, we won't make into an inline list
+		}
+
 		$total = count($icons[0]);
-		$str = sprintf("<ul class=\"list-inline\">\n<li>%s</li>\n</ul>", $str);
+
+		if ( $list ) {
+			$str = sprintf("<ul class=\"list-inline\">\n<li>%s</li>\n</ul>", $str);
+		}
 
 		foreach ( $icons[0] as $key => $val ) {
 
 			$html = apply_filters('themeblvd_do_fa_html', '<i class="fa fa-%s"></i>', $str);
 
-			if ( $key > 0 ) {
+			if ( $list && $key > 0 ) {
 				$html = "<li>\n".$html;
 			}
 
