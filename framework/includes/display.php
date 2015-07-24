@@ -516,7 +516,7 @@ if ( !function_exists( 'themeblvd_footer_sub_content_default' ) ) :
  */
 function themeblvd_footer_sub_content_default() {
 	?>
-	<div class="footer-sub-content">
+	<div class="footer-sub-content <?php if ( has_nav_menu('footer') ) echo 'has-nav'; ?>">
 		<div class="wrap clearfix">
 			<div class="copyright">
 				<div class="copyright-inner">
