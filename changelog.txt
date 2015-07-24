@@ -4,7 +4,8 @@ Jump Start Changelog
 2.0.1 - XX/XX/XXXX
 ------------------
 
-* Fixed: Responsiveness of images with captions
+* Fixed: Responsiveness of images with captions.
+* Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 
 --------------------------------------------------------------
 

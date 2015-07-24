@@ -5070,6 +5070,13 @@ blockquote small {
 	float: none;
 	padding: 5px 3px 0 3px;
 }
+.tb-simple-slider .carousel-caption {
+	top: 50%;
+	bottom: inherit;
+	-ms-transform: translate(0, -50%); /* IE9 */
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
 .tb-simple-slider .carousel-caption,
 .tb-simple-slider .carousel-caption h3 {
 	color: #ffffff;
@@ -5089,7 +5096,6 @@ blockquote small {
 }
 .tb-simple-slider.has-caption-bg .carousel-caption {
 	padding: 30px;
-	bottom: 50px;
 }
 .tb-simple-slider.has-caption-bg .carousel-caption > h3:first-child {
 	margin-top: 0;
