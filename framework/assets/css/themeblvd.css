@@ -1610,12 +1610,6 @@ body.mobile-menu-left-on #wrapper {
 	background-image: -ms-linear-gradient(top, #232323, #2c2b2c) !important;
 	background-image: linear-gradient(top, #232323, #2c2b2c) !important;
 }
-.mejs-container .mejs-controls {
-	background-image: url(../images/parts/player.png) !important;
-	background-repeat: no-repeat !important;
-	background-position: right top !important;
-	background-repeat: repeat-x !important;
-}
 .mejs-controls button {
 	-webkit-box-shadow: none;
 	box-shadow: none;
