@@ -129,7 +129,7 @@ class Theme_Blvd_Stylesheet_Handler {
 				'handle'	=> 'bootstrap',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/bootstrap/css/bootstrap.min.css',
 				'deps'		=> array(),
-				'ver'		=> '3.3.4',
+				'ver'		=> '3.3.5',
 				'media'		=> 'all'
 
 			);
