@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.5.1**
+* Cleaned up and optimized assets in `/framework` directory, reducing file size by 2MB.
 * Added: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
 * Added: More accuracy for opacity selections.
 * Fixed: Responsiveness of images with captions.
