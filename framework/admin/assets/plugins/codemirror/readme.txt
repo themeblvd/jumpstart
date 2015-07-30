@@ -1,0 +1,2 @@
+- Delete non-minified files from plugin
+- Keep themeblvd.css/themeblvd.min.css 

@@ -134,7 +134,7 @@ class Theme_Blvd_Stylesheet_Handler {
 
 			);
 
-			// @TODO
+			// @TODO How to handle RTL for elements in Bootrap
 			// if ( is_rtl() ) {
 			// 	$this->framework_stylesheets['bootstrap']['src'] = TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css'; // Generated with CSSJanus
 			// }

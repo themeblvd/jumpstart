@@ -352,7 +352,7 @@ function themeblvd_include_scripts() {
 	}
 
 	if ( themeblvd_supports( 'assets', 'charts' ) ) {
-		wp_register_script( 'charts', TB_FRAMEWORK_URI . '/assets/js/Chart.min.js', array(), null );
+		wp_register_script( 'charts', TB_FRAMEWORK_URI . '/assets/js/chart.min.js', array(), null );
 	}
 
 	// Enque Scripts
