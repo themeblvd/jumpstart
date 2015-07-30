@@ -9,6 +9,7 @@ Jump Start Changelog
 * Fixed: Responsiveness of images with captions.
 * Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 * Fixed: Incorrect file permissions of files at `/framework/assets/svg/` for those uploading the theme manually outside of WordPress.
+* Fixed: System for generating FontAwesome icon selections in admin.
 
 --------------------------------------------------------------
 

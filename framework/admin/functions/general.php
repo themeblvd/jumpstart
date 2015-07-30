@@ -277,108 +277,50 @@ function themeblvd_admin_body_class( $classes ) {
  *
  * @since 2.3.0
  *
- * @param string $type Type of icons to retrieve - vector, image
+ * @param string $type Type of icons to retrieve - currently only "vector"
  * @return array $icons Array of icons
  */
-function themeblvd_get_icons( $type ) {
-
-	global $wp_filesystem;
+function themeblvd_get_icons( $type = 'vector' ) {
 
 	$icons = get_transient( 'themeblvd_'.get_template().'_'.$type.'_icons' );
 
 	if ( ! $icons ) {
 
 		$icons = array();
+		$fetch_icons = array();
+		$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
 
-		switch ( $type ) {
+		if ( file_exists( $file_location ) ) {
 
-			case 'vector' :
+			$file = file_get_contents($file_location);
 
-				if ( function_exists('WP_Filesystem') ) {
+			// Run through each line of font-awesome.css, and
+			// look for anything that could resemble a font ID.
+			$lines = explode("\n", $file);
 
-					WP_Filesystem();
-
-					$fetch_icons = array();
-					$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
-
-					if ( file_exists( $file_location ) ) {
-
-						$file = $wp_filesystem->get_contents($file_location);
-
-						// Run through each line of font-awesome.css, and
-						// look for anything that could resemble a font ID.
-						$lines = explode("\n", $file);
-
-						foreach ( $lines as $line ) {
-							if ( strpos( $line, '.fa-' ) !== false && strpos( $line, ':before' ) !== false ) {
-								$icon = str_replace( '.fa-', '', $line );
-								$icon = str_replace( ':before {', '', $icon );
-								$icon = str_replace( ':before,', '', $icon );
-								$fetch_icons[] = trim( $icon );
-							}
-						}
-
-						// Sort icons alphebetically
-						sort( $fetch_icons );
-
-						// Format array for use in options framework
-						foreach ( $fetch_icons as $icon ) {
-							$icons[$icon] = $icon;
-						}
-
-					}
+			foreach ( $lines as $line ) {
+				if ( strpos( $line, '.fa-' ) !== false && strpos( $line, ':before' ) !== false ) {
+					$icon = str_replace( '.fa-', '', $line );
+					$icon = str_replace( ':before {', '', $icon );
+					$icon = str_replace( ':before,', '', $icon );
+					$fetch_icons[] = trim( $icon );
 				}
+			}
 
-				break;
+			// Sort icons alphebetically
+			sort( $fetch_icons );
 
-			case 'image' :
+			// Format array for use in options framework
+			foreach ( $fetch_icons as $icon ) {
+				$icons[$icon] = $icon;
+			}
 
-				// Icons from the parent theme
-				$parent_icons = array();
-				$icons_url = TB_FRAMEWORK_URI.'/assets/images/shortcodes/icons';
-				$icons_dir = TB_FRAMEWORK_DIRECTORY.'/assets/images/shortcodes/icons';
-
-				if ( file_exists( $icons_dir ) ) {
-					$parent_icons = scandir( $icons_dir );
-				}
-
-				// Display icons
-				if ( count( $parent_icons ) > 0 ) {
-					foreach ( $parent_icons as $icon ) {
-						if ( strpos( $icon, '.png' ) !== false ) {
-							$id = str_replace( '.png', '', $icon );
-							$icons[$id] = sprintf( '%s/%s.png', $icons_url, $id );
-						}
-					}
-				}
-
-				// Check for icons in the child theme
-				$child_icons = array();
-				$child_icons_url = get_stylesheet_directory_uri().'/icons';
-				$child_icons_dir = get_stylesheet_directory().'/assets/images/shortcodes/icons';
-
-				if ( file_exists( $child_icons_dir ) ) {
-					$child_icons = scandir( $child_icons_dir );
-				}
-
-				// Display icons
-				if ( count( $child_icons ) > 0 ) {
-					foreach ( $child_icons as $icon ) {
-						if ( strpos( $icon, '.png' ) !== false ) {
-							$id = str_replace( '.png', '', $icon );
-							$icons[$id] = sprintf( '%s/%s.png', $child_icons_url, $id );
-						}
-					}
-				}
-
-				break;
-
-		} // end switch $type
+		}
 
 		// Cache result
 		set_transient( 'themeblvd_'.get_template().'_'.$type.'_icons', $icons, '86400' ); // 1 day
 
-	} // end if $icons
+	}
 
 	return apply_filters( 'themeblvd_'.$type.'_icons', $icons );
 }
