@@ -595,10 +595,10 @@ function setup_themeblvd_post_meta() {
 	$imagepath =  get_template_directory_uri() . '/framework/admin/assets/images/';
 
 	// Generate sidebar layout options
-	$sidebar_layouts = array( 'default' =>  $imagepath.'layout-default_2x.png' );
+	$sidebar_layouts = array( 'default' =>  $imagepath.'layout-default.png' );
 	$layouts = themeblvd_sidebar_layouts();
 	foreach ( $layouts as $layout ) {
-		$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
+		$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
 	}
 
 	$setup = array(

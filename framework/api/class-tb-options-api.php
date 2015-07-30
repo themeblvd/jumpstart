@@ -258,7 +258,7 @@ class Theme_Blvd_Options_API {
 		if ( is_admin() ) {
 			$layouts = themeblvd_sidebar_layouts();
 			foreach ( $layouts as $layout ) {
-				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'_2x.png';
+				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
 			}
 		}
 
@@ -477,7 +477,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'single_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'page_sidebar_layout' => array(
@@ -486,7 +486,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'page_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'archive_sidebar_layout' => array(
@@ -495,7 +495,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'archive_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					)
 				)
@@ -1114,7 +1114,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'bbp_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'bbp_topic_sidebar_layout' => array(
@@ -1123,7 +1123,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'bbp_topic_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'bbp_user_sidebar_layout' => array(
@@ -1132,7 +1132,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'bbp_user_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					)
 				)
@@ -1213,7 +1213,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'woo_shop_sidebar_layout',
 						'std' 		=> 'full_width',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'woo_archive_sidebar_layout' => array(
@@ -1222,7 +1222,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'woo_archive_sidebar_layout',
 						'std' 		=> 'sidebar_left',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'woo_product_sidebar_layout' => array(
@@ -1231,7 +1231,7 @@ class Theme_Blvd_Options_API {
 						'id' 		=> 'woo_product_sidebar_layout',
 						'std' 		=> 'sidebar_left',
 						'type' 		=> 'images',
-						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default_2x.png' ), $sidebar_layouts ),
+						'options' 	=> array_merge( array( 'default' =>  $imagepath.'layout-default.png' ), $sidebar_layouts ),
 						'img_width'	=> '45'
 					),
 					'woo_cross_sell' => array(
