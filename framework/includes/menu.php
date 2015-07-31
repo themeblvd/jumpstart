@@ -110,7 +110,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			$this->current_header = null;
 			$this->count = 0;
 
-			if ( get_post_meta($item->ID, '_tb_mega_menu', true) ) {
+			if ( $args->theme_location == apply_filters('themeblvd_primary_menu_location', 'primary') && get_post_meta($item->ID, '_tb_mega_menu', true) ) {
 
 				$this->doing_mega = true;
 
