@@ -4260,55 +4260,40 @@ ul.tb-icon-list {
 	padding: 0;
 }
 .tb-contact_widget ul.simple-contact li {
-	background: url('../images/parts/simple-contact.png') 0 0 no-repeat;
-	border: none;
 	line-height: 20px;
-	margin: 2px 0 !important;
-	padding: 0 30px 0 0;
+	margin: 2px 0;
+	position: relative;
+	padding: 0 25px 0 0;
 }
-.text-light .tb-contact_widget ul.simple-contact li {
-	background-image: url('../images/parts/simple-contact-ffffff.png');
+.tb-contact_widget ul.simple-contact li:before {
+	content: "";
+	font-family: "FontAwesome";
+	position: absolute;
+	top: 0;
+	right: 0;
 }
-@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		only screen and (-moz-min-device-pixel-ratio: 1.5),
-		only screen and (-o-min-device-pixel-ratio: 1.5),
-		only screen and (min-device-pixel-ratio: 1.5),
-		only screen and (min-resolution: 1.5dppx) {
-	/* Use 2x images for retina */
-	.tb-contact_widget ul.simple-contact li {
-		background-image:url('../images/parts/simple-contact_2x.png');
-		background-size: 20px 120px;
-	}
-	.text-light .tb-contact_widget ul.simple-contact li {
-		background-image: url('../images/parts/simple-contact-ffffff_2x.png');
-	}
+.tb-contact_widget ul.simple-contact > li.link:before {
+	content: "\f0c1";
 }
-.tb-contact_widget ul.simple-contact li a {
-	border: none;
+.tb-contact_widget ul.simple-contact > li.phone:before {
+	content: "\f095";
 }
-.tb-contact_widget ul.simple-contact li.link {
-	background-position: 0 0;
-	height: 20px;
+.tb-contact_widget ul.simple-contact > li.email:before {
+	content: "\f0e0";;
 }
-.tb-contact_widget ul.simple-contact li.phone {
-	background-position: 0 -20px;
+.tb-contact_widget ul.simple-contact > li.contact:before {
+	content: "\f040";
 }
-.tb-contact_widget ul.simple-contact li.email {
-	background-position: 0 -40px;
-}
-.tb-contact_widget ul.simple-contact li.contact {
-	background-position: 0 -60px;
-}
-.tb-contact_widget ul.simple-contact li.skype {
-	background-position: 0 -80px;
+.tb-contact_widget ul.simple-contact > li.skype:before {
+	content: "\f17e";
 }
 .tb-contact_widget ul.simple-contact ul.icons {
 	margin: 0;
 	padding: 0;
 }
 .tb-contact_widget ul.simple-contact ul.icons li {
-	background-image: none;
-	float: right;height: 20px;
+	float: right;
+	height: 20px;
 	margin: 0;
 	padding: 0;
 }
@@ -4318,7 +4303,7 @@ ul.tb-icon-list {
 	background-size: 16px 16px;
 	display: block;
 	line-height: 1;
-	margin: 2px 0 0 2px;
+	margin: 2px 2px 0 0;
 	padding: 0;
 	text-indent: -9999px;
 	width: 16px;

@@ -534,21 +534,6 @@ button:active {
 	background: rgba(0,0,0,.2);
 }
 
-/* Simple Contact */
-.tb-contact_widget ul.simple-contact li {
-    background-image: url('../images/parts/simple-contact-ffffff.png');
-}
-@media  only screen and (-webkit-min-device-pixel-ratio: 1.5),
-        only screen and (-moz-min-device-pixel-ratio: 1.5),
-        only screen and (-o-min-device-pixel-ratio: 1.5),
-        only screen and (min-device-pixel-ratio: 1.5),
-        only screen and (min-resolution: 1.5dppx) {
-    /* Use 2x images for retina */
-    .tb-contact_widget ul.simple-contact li {
-        background-image:url('../images/parts/simple-contact-ffffff_2x.png');
-    }
-}
-
 /* =Lightbox
 -----------------------------------------------*/
 
