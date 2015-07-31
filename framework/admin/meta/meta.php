@@ -649,7 +649,7 @@ function setup_themeblvd_post_meta() {
 			'tb_related_posts' => array(
 				'id' 		=> '_tb_related_posts',
 				'name' 		=> __( 'Related Posts (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ),
+				'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ).'<br><br><em>'.__('Note: This only applies to the standard posts.', 'themeblvd').'</em>',
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
