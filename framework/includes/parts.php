@@ -968,105 +968,111 @@ function themeblvd_get_meta( $args = array() ) {
 
 	}
 
-	// Separator
-	$sep = $args['sep'];
+	// We can now check if there's even anything to include before
+	// generating any output.
+	$output = '';
 
-	// CSS class
-	$class = 'entry-meta';
+	if ( $count = count( $args['include'] ) ) {
 
-	if ( $args['class'] ) {
-		$class .= ' '.$args['class'];
-	}
+		// Separator
+		$sep = $args['sep'];
 
-	$class .= ' clearfix';
+		// CSS class
+		$class = 'entry-meta';
 
-	// Start output
-	$output  = sprintf('<div class="%s">', $class);
+		if ( $args['class'] ) {
+			$class .= ' '.$args['class'];
+		}
 
-	$count = count($args['include']);
+		$class .= ' clearfix';
 
-	foreach ( $args['include'] as $key => $item ) {
+		// Start output
+		$output .= sprintf('<div class="%s">', $class);
 
-		$item_output = '';
+		foreach ( $args['include'] as $key => $item ) {
 
-		switch ( $item ) {
+			$item_output = '';
 
-			case 'author' :
+			switch ( $item ) {
 
-				$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
-				$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
-				$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
-				$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, get_the_author() );
-				break;
+				case 'author' :
 
-			case 'category' :
+					$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
+					$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
+					$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
+					$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, get_the_author() );
+					break;
 
-				$category_icon = in_array($item, $args['icons']) ? '<i class="fa fa-'.$tax_icon.'"></i>' : '';
-				$item_output = sprintf( '<span class="category">%s%s</span>', $category_icon, $category );
-				break;
+				case 'category' :
 
-			case 'comments' :
+					$category_icon = in_array($item, $args['icons']) ? '<i class="fa fa-'.$tax_icon.'"></i>' : '';
+					$item_output = sprintf( '<span class="category">%s%s</span>', $category_icon, $category );
+					break;
 
-				$item_output = '<span class="comments-link">';
+				case 'comments' :
 
-				ob_start();
-				if ( $args['comments'] === 'mini' ) {
-					comments_popup_link( '0', '1', '%' );
-				} else {
-					comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('no_comments').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
-				}
-				$comment_link = ob_get_clean();
+					$item_output = '<span class="comments-link">';
 
-				if ( in_array( $item, $args['icons'] ) ) {
-					$item_output .= '<i class="fa fa-comment-o"></i>';
-				}
-
-				$item_output .= $comment_link;
-				$item_output .= '</span>';
-				break;
-
-			case 'format' :
-
-				if ( $format = get_post_format() ) {
-
-					$format_icon = '';
+					ob_start();
+					if ( $args['comments'] === 'mini' ) {
+						comments_popup_link( '0', '1', '%' );
+					} else {
+						comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('no_comments').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
+					}
+					$comment_link = ob_get_clean();
 
 					if ( in_array( $item, $args['icons'] ) ) {
-
-						$format_icon = themeblvd_get_format_icon($format);
-
-						if ( $format_icon ) {
-							$format_icon = sprintf('<i class="fa fa-%s"></i>', $format_icon);
-						}
+						$item_output .= '<i class="fa fa-comment-o"></i>';
 					}
 
-					$item_output .= sprintf( '<span class="post-format">%s%s</span>', $format_icon, themeblvd_get_local($format) );
+					$item_output .= $comment_link;
+					$item_output .= '</span>';
+					break;
+
+				case 'format' :
+
+					if ( $format = get_post_format() ) {
+
+						$format_icon = '';
+
+						if ( in_array( $item, $args['icons'] ) ) {
+
+							$format_icon = themeblvd_get_format_icon($format);
+
+							if ( $format_icon ) {
+								$format_icon = sprintf('<i class="fa fa-%s"></i>', $format_icon);
+							}
+						}
+
+						$item_output .= sprintf( '<span class="post-format">%s%s</span>', $format_icon, themeblvd_get_local($format) );
+					}
+					break;
+
+				case 'time' :
+
+					$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-clock-o"></i>' : '';
+
+					if ( $args['time'] === 'ago' ) {
+						$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, themeblvd_get_time_ago( get_the_ID() ) );
+					} else {
+						$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, get_the_time( get_option('date_format') ) );
+					}
+					break;
+			}
+
+			if ( $item_output ) {
+
+				$output .= $item_output;
+
+				if ( $key+1 < $count ) {
+					$output .= $sep;
 				}
-				break;
-
-			case 'time' :
-
-				$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-clock-o"></i>' : '';
-
-				if ( $args['time'] === 'ago' ) {
-					$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, themeblvd_get_time_ago( get_the_ID() ) );
-				} else {
-					$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, get_the_time( get_option('date_format') ) );
-				}
-				break;
-		}
-
-		if ( $item_output ) {
-
-			$output .= $item_output;
-
-			if ( $key+1 < $count ) {
-				$output .= $sep;
 			}
 		}
-	}
 
-	$output .= '</div><!-- .entry-meta -->';
+		$output .= '</div><!-- .entry-meta -->';
+
+	}
 
 	return apply_filters( 'themeblvd_meta', $output, $args );
 }
