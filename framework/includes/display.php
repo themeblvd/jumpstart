@@ -748,7 +748,7 @@ if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
 function themeblvd_blog_sub_meta_default() {
 
 	// Arguments for themeblvd_get_meta()
-	$args = apply_filters('themeblvd_grid_meta_args', array(
+	$args = apply_filters('themeblvd_sub_meta_args', array(
 		'class'		=> 'sub-meta',
 		'include'	=> array('category', 'comments')
 	));
