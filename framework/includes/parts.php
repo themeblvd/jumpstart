@@ -948,6 +948,26 @@ function themeblvd_get_meta( $args = array() ) {
 		unset( $args['include'][$key] );
 	}
 
+	// Prep for category
+	if ( in_array('category', $args['include']) ) {
+
+		$tax = 'category';
+		$tax_icon = 'folder-o';
+
+		if ( get_post_type() == 'portfolio_item' ) { // requires Portfolios plugin
+			$tax = 'portfolio';
+			$tax_icon = 'briefcase';
+		}
+
+		$category = get_the_term_list(get_the_ID(), $tax, '', ', ');
+
+		if ( ! $category ) {
+			$key = array_search('category', $args['include']);
+			unset( $args['include'][$key] );
+		}
+
+	}
+
 	// Separator
 	$sep = $args['sep'];
 
@@ -981,8 +1001,8 @@ function themeblvd_get_meta( $args = array() ) {
 
 			case 'category' :
 
-				$category_icon = in_array($item, $args['icons']) ? '<i class="fa fa-folder-o"></i>' : '';
-				$item_output = sprintf( '<span class="category">%s%s</span>', $category_icon, get_the_category_list(', ') );
+				$category_icon = in_array($item, $args['icons']) ? '<i class="fa fa-'.$tax_icon.'"></i>' : '';
+				$item_output = sprintf( '<span class="category">%s%s</span>', $category_icon, $category );
 				break;
 
 			case 'comments' :
@@ -1022,12 +1042,6 @@ function themeblvd_get_meta( $args = array() ) {
 
 					$item_output .= sprintf( '<span class="post-format">%s%s</span>', $format_icon, themeblvd_get_local($format) );
 				}
-				break;
-
-			case 'portfolio' :
-
-				$portfolio_icon = in_array($item, $args['icons']) ? '<i class="fa fa-briefcase"></i>' : '';
-				$item_output = sprintf( '<span class="portfolio">%s%s</span>', $portfolio_icon, get_the_term_list(get_the_ID(), 'portfolio', '', ', ') );
 				break;
 
 			case 'time' :
