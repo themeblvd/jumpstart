@@ -752,8 +752,8 @@ function themeblvd_comment_form_fields( $fields ) {
 }
 
 /**
- * Determine whether comments section should show on
- * a single post.
+ * Determine whether comments should have any presence
+ * for current post. Must be within the loop.
  *
  * At first glance, you're probably wondering why this
  * would exist when you the WP user could just close
@@ -762,9 +762,9 @@ function themeblvd_comment_form_fields( $fields ) {
  * comment form, it will say that the comments are closed.
  *
  * However, in addition to that, this framework allows
- * the user to completely hide the comments section all
- * together in various ways. So, this extends further
- * up than simply haivng the comments for a post closed.
+ * the user to completely hide the comments presence.
+ * So, this extends further up than simply having the
+ * comments for a post closed.
  *
  * @since 2.2.0
  *
@@ -773,29 +773,36 @@ function themeblvd_comment_form_fields( $fields ) {
 function themeblvd_show_comments() {
 
 	global $post;
-	$show = true; // default
 
-	if ( is_single() ) {
+	$show = true;
 
-		if ( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' ) {
-			$show = false;
-		}
-
-		if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' ) {
-			$show = false;
-		} else if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'show' ) {
-			$show = true;
-		}
-
-		if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
-			$show = false;
-		}
-
-		if ( ! comments_open() && ! have_comments() ) {
-			$show = false;
-		}
-
+	// If comments presence has been hidden for all single posts,
+	// this inevitably extends to the comments presence for all posts.
+	// This will extend to pages, as well, if comments are enabled.
+	if ( themeblvd_get_option( 'single_comments', null, 'show' ) == 'hide' ) {
+		$show = false;
 	}
+
+	// If comments presence has been hidden for this single post,
+	// this extends to the comments presence everywhere for this post.
+	if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'hide' ) {
+		$show = false;
+	} else if ( get_post_meta( $post->ID, '_tb_comments', true ) == 'show' ) {
+		$show = true;
+	}
+
+	// If the current post's type doesn't support comments, comments
+	// presence should be hidden.
+	if ( $show && ! post_type_supports( get_post_type(), 'comments' ) ) {
+		$show = false;
+	}
+
+	// If comments are closed AND no comments exist, then it doesn't
+	// make sense to have any comments presence.
+	if ( $show && ! comments_open() && ! have_comments() ) {
+		$show = false;
+	}
+
 	return apply_filters( 'themeblvd_show_comments', $show );
 }
 
