@@ -662,7 +662,7 @@ function setup_themeblvd_post_meta() {
 			'tb_comments' => array(
 				'id' 		=> '_tb_comments',
 				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'This will hide the presence of comments on this single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
+				'desc' 		=> __( 'This will hide the presence of comments on this single post.', 'themeblvd' ),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(

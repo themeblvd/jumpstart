@@ -624,7 +624,7 @@ class Theme_Blvd_Options_API {
 					),
 					'single_comments' => array(
 						'name' 		=> __( 'Comments', 'themeblvd' ),
-						'desc' 		=> __( 'This will hide the presence of comments on the single post.<br><br><em>Note: To hide comments link in meta information, close the comments on the post\'s discussion settings.</em>', 'themeblvd' ),
+						'desc' 		=> __( 'This will hide the presence of comments on the single post.', 'themeblvd' ),
 						'id' 		=> 'single_comments',
 						'std' 		=> 'show',
 						'type' 		=> 'select',

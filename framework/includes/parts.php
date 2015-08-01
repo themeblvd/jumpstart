@@ -942,9 +942,16 @@ function themeblvd_get_meta( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
+	// Go forth with comments?
+	if ( in_array('comments', $args['include']) && ! themeblvd_show_comments() ) {
+		$key = array_search('comments', $args['include']);
+		unset( $args['include'][$key] );
+	}
+
 	// Separator
 	$sep = $args['sep'];
 
+	// CSS class
 	$class = 'entry-meta';
 
 	if ( $args['class'] ) {
@@ -965,6 +972,7 @@ function themeblvd_get_meta( $args = array() ) {
 		switch ( $item ) {
 
 			case 'author' :
+
 				$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
 				$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
 				$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
@@ -972,33 +980,33 @@ function themeblvd_get_meta( $args = array() ) {
 				break;
 
 			case 'category' :
+
 				$category_icon = in_array($item, $args['icons']) ? '<i class="fa fa-folder-o"></i>' : '';
 				$item_output = sprintf( '<span class="category">%s%s</span>', $category_icon, get_the_category_list(', ') );
 				break;
 
 			case 'comments' :
-				if ( comments_open() ) {
 
-					$item_output = '<span class="comments-link">';
+				$item_output = '<span class="comments-link">';
 
-					ob_start();
-					if ( $args['comments'] === 'mini' ) {
-						comments_popup_link( '0', '1', '%' );
-					} else {
-						comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('leave_comment').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
-					}
-					$comment_link = ob_get_clean();
-
-					if ( in_array( $item, $args['icons'] ) ) {
-						$item_output .= '<i class="fa fa-comment-o"></i>';
-					}
-
-					$item_output .= $comment_link;
-					$item_output .= '</span>';
+				ob_start();
+				if ( $args['comments'] === 'mini' ) {
+					comments_popup_link( '0', '1', '%' );
+				} else {
+					comments_popup_link( '<span class="leave-reply">'.themeblvd_get_local('no_comments').'</span>', '1 '.themeblvd_get_local('comment'), '% '.themeblvd_get_local('comments') );
 				}
+				$comment_link = ob_get_clean();
+
+				if ( in_array( $item, $args['icons'] ) ) {
+					$item_output .= '<i class="fa fa-comment-o"></i>';
+				}
+
+				$item_output .= $comment_link;
+				$item_output .= '</span>';
 				break;
 
 			case 'format' :
+
 				if ( $format = get_post_format() ) {
 
 					$format_icon = '';
@@ -1017,11 +1025,13 @@ function themeblvd_get_meta( $args = array() ) {
 				break;
 
 			case 'portfolio' :
+
 				$portfolio_icon = in_array($item, $args['icons']) ? '<i class="fa fa-briefcase"></i>' : '';
 				$item_output = sprintf( '<span class="portfolio">%s%s</span>', $portfolio_icon, get_the_term_list(get_the_ID(), 'portfolio', '', ', ') );
 				break;
 
 			case 'time' :
+
 				$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-clock-o"></i>' : '';
 
 				if ( $args['time'] === 'ago' ) {
