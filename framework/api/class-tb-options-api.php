@@ -612,7 +612,7 @@ class Theme_Blvd_Options_API {
 					),
 					'single_related_posts' => array(
 						'name' 		=> __( 'Related Posts', 'themeblvd' ),
-						'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ).'<br><br><em>'.__('Note: This only applies to the standard posts.', 'themeblvd').'</em>',
+						'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ).'<br><br><em>'.__('Note: This only applies to standard posts.', 'themeblvd').'</em>',
 						'id' 		=> 'single_related_posts',
 						'std' 		=> 'tag',
 						'type' 		=> 'select',
