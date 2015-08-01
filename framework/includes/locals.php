@@ -90,6 +90,7 @@ function themeblvd_get_all_locals() {
 		'related_posts'				=> __( 'Related Posts', 'themeblvd_frontend' ),
 		'reply'						=> __( 'Reply', 'themeblvd_frontend' ),
 		'search'					=> __( 'Search the site...', 'themeblvd_frontend' ),
+		'search_2'					=> __( 'Search', 'themeblvd_frontend' ),
 		'search_no_results'			=> __( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'themeblvd_frontend' ),
 		'search_results'			=> __( '%s total search results found for: %s', 'themeblvd_frontend' ),
 		'status'					=> __( 'Status', 'themeblvd_frontend' ),
