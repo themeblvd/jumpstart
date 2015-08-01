@@ -787,6 +787,10 @@ function themeblvd_show_comments() {
 			$show = true;
 		}
 
+		if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
+			$show = false;
+		}
+
 	}
 	return apply_filters( 'themeblvd_show_comments', $show );
 }
