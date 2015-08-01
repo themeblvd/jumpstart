@@ -838,6 +838,11 @@ article.tb-naked-page > .featured-item {
 	}
 }
 
+/* No Comments */
+.nocomments {
+	font-style: italic;
+}
+
 /* Comment Form */
 #respond .comment-reply-title {
 	font-size: 20px;

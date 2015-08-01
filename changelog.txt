@@ -8,6 +8,7 @@ Jump Start Changelog
 * Cleaned up and optimized assets in `/framework` directory, reducing file size by 2MB.
 * Added: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
 * Added: More accuracy for opacity selections.
+* Improved: General post comments template logic.
 * Fixed: Responsiveness of images with captions.
 * Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 * Fixed: Incorrect file permissions of files at `/framework/assets/svg/` for those uploading the theme manually outside of WordPress.
