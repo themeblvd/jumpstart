@@ -59,6 +59,7 @@ function themeblvd_get_all_locals() {
 		'in'						=> __( 'in', 'themeblvd_frontend' ),
 		'invalid_layout'			=> __( 'Invalid Layout ID: The layout ID currently assigned to this page no longer exists.', 'themeblvd_frontend' ),
 		'label_submit'				=> __( 'Post Comment', 'themeblvd_frontend' ),
+		'language'					=> __( 'Set Language', 'themeblvd_frontend' ),
 		'last_30'					=> __( 'The Last 30 Posts', 'themeblvd_frontend' ),
 		'leave_comment'				=> __( 'Leave a Comment', 'themeblvd_frontend' ),
 		'lightbox_counter'			=> __( '%curr% of %total%', 'themeblvd_frontend' ),
