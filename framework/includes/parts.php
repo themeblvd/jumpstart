@@ -1117,15 +1117,13 @@ function themeblvd_blog_tags( $echo = true ) {
 
 	$output = '';
 
-	if ( has_tag() ) {
-		$output .= '<div class="tb-tags tags">';
-		ob_start();
-		the_tags('', '');
-		$output .= ob_get_clean();
-		$output .= '</div><!-- .tb-tags (end) -->';
-	}
+	ob_start();
+	the_tags('', '');
+	$tags = ob_get_clean();
 
-	$output = str_replace('rel="tag"', 'rel="tag" class="tb-animate"', $output);
+	if ( $tags ) {
+		$output .= sprintf('<div class="tb-tags tags">%s</div><!-- .tb-tags (end) -->', $tags);
+	}
 
 	$output = apply_filters( 'themeblvd_blog_tags', $output, get_the_ID() );
 
