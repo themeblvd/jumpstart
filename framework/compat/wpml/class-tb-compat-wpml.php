@@ -287,10 +287,8 @@ class Theme_Blvd_Compat_WPML {
 	 */
 	public function get_language_selector() {
 
-		global $sitepress;
-
 		$output = '';
-		$langs = $sitepress->get_ls_languages();
+		$langs = icl_get_languages('skip_missing=1');
 
 		if ( $langs ) {
 
@@ -344,7 +342,7 @@ class Theme_Blvd_Compat_WPML {
 	 * @since 2.5.0
 	 */
 	public function language_selector() {
-		echo $this-> get_language_selector();
+		echo $this->get_language_selector();
 	}
 
 }

@@ -13,6 +13,7 @@ Jump Start Changelog
 * Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 * Fixed: Portfolios and portfolio tags not showing in portfolio item sub meta.
 * Fixed: Incorrect file permissions of files at `/framework/assets/svg/` for those uploading the theme manually outside of WordPress.
+* Fixed: Theme's default WPML language selector listing languages without translations.
 * Fixed: System for generating FontAwesome icon selections in admin.
 * Updated Bootstrap to 3.3.5.
 * Updated FontAwesome to 4.4.
@@ -23,7 +24,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.5.0**
-* New: Support for tons of new elments and enhancements in [Layout Builder 2.0](https://wordpress.org/plugins/theme-blvd-layout-builder/changelog/) update.
+* New: Support for tons of new elements and enhancements in [Layout Builder 2.0](https://wordpress.org/plugins/theme-blvd-layout-builder/changelog/) update.
 * New: Complete frontend theme re-design.
 * New: "Theme Base" system at *Appearance > Theme Base*, allows you to configure different designs and options within the theme.
 * New: Post format support.
