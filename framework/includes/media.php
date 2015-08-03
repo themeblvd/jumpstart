@@ -239,7 +239,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		$size = 'tb_x_large'; // Try to avoid ever pulling "full" in case user uploaded rediculously large image
 	}
 
-	$defaults = array(
+	$defaults = apply_filters('themeblvd_post_thumbnail_args', array(
 		'attachment_id'	=> get_post_thumbnail_id($post->ID),
 		'location'		=> themeblvd_get_att('location'),
 		'placeholder'	=> false,
@@ -247,7 +247,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		'link'			=> null, // FALSE to force no link, post, or thumbnail
 		'img_before'	=> null,
 		'img_after'		=> null
-	);
+	));
 	$args = wp_parse_args( $args, $defaults );
 
 	if ( ! $args['attachment_id'] ) {
