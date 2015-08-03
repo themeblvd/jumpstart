@@ -4896,10 +4896,8 @@ blockquote small {
 	vertical-align: middle;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	-webkit-transition: opacity 0.25s ease-in;
-	transition: opacity 0.25s ease-in;
-	-webkit-transition: transform 0.15s ease-in;
-	transition: transform 0.15s ease-in;
+	-webkit-transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
+	transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
 	-ms-transform: scale(0.9,0.9);
 	-webkit-transform: scale(0.9,0.9);
 	transform: scale(0.9,0.9);
