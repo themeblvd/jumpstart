@@ -4903,8 +4903,7 @@ blockquote small {
 	transform: scale(0.9,0.9);
 	z-index: 2;
 }
-.tb-thumb-link:hover:before,
-.tb-thumb-link:hover:focus {
+.tb-thumb-link:hover:before {
 	opacity: 1;
 	-ms-transform: scale(1,1);
 	-webkit-transform: scale(1,1);
