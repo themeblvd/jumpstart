@@ -421,7 +421,7 @@ function themeblvd_get_page_info() {
 		$output = sprintf( '<section class="%s"><div class="inner">%s</div></section>', $class, $title.$content );
 	}
 
-	echo apply_filters( 'themeblvd_page_info', $output );
+	return apply_filters( 'themeblvd_page_info', $output );
 }
 
 /**
