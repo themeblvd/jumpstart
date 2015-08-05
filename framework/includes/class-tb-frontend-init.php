@@ -258,6 +258,8 @@ class Theme_Blvd_Frontend_Init {
 			$this->config['id'] = $post->ID;
 		}
 
+		$this->config['id'] = apply_filters( 'themeblvd_frontend_config_post_id', $this->config['id'] );
+
 		/*------------------------------------------------------*/
 		/* Custom Layout, Builder Name/ID
 		/*------------------------------------------------------*/

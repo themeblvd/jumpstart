@@ -8,7 +8,8 @@ Jump Start Changelog
 * Cleaned up and optimized assets in `/framework` directory, reducing file size by 2MB.
 * Added: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
 * Added: More accuracy for opacity selections.
-* Improved: General comments template and comments link logic.
+* Improvement: General comments template and comments link logic.
+* Improvement: Allow WooCommerce shop to accept theme-related options from original static page.
 * Fixed: Responsiveness of images with captions.
 * Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 * Fixed: Portfolios and portfolio tags not showing in portfolio item sub meta.

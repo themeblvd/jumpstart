@@ -111,6 +111,10 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Shop
 		 */
 
+		// Set framework config of post ID to original shop page
+		// ID, so theme settings for the page can get applied.
+		add_filter( 'themeblvd_frontend_config_post_id', array($this, 'set_shop_id') );
+
 		// Set global shop attribues
 		add_action( 'wp', array( $this, 'set_atts' ) );
 
@@ -480,6 +484,21 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		return $classes;
+	}
+
+	/**
+	 * Set framework config of post ID to original shop page
+	 * ID, so theme settings for the page can get applied.
+	 *
+	 * @since 2.5.1
+	 */
+	public function set_shop_id( $id ) {
+
+		if ( is_shop() ) {
+			return get_option('woocommerce_shop_page_id');
+		}
+
+		return $id;
 	}
 
 	/**
