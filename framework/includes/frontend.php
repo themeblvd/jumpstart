@@ -310,6 +310,25 @@ function themeblvd_header_class() {
 }
 
 /**
+ * Display HTML class for site main wrapper.
+ *
+ * @since 2.5.1
+ */
+function themeblvd_main_class() {
+
+	$config = Theme_Blvd_Frontend_Init::get_instance();
+
+	$class = array('site-inner', $config->get_config('sidebar_layout'));
+
+	if ( $class = apply_filters('themeblvd_main_class', $class ) ) {
+		$output = sprintf('class="%s"', implode(' ', $class) );
+	}
+
+	echo apply_filters('themeblvd_main_class_output', $output, $class);
+
+}
+
+/**
  * Display HTML class for site footer.
  *
  * @since 2.5.0

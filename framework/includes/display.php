@@ -319,7 +319,7 @@ function themeblvd_main_start_default() {
 	?>
 	<!-- MAIN (start) -->
 
-	<div id="main" class="site-inner <?php themeblvd_sidebar_layout_class(); ?>">
+	<div id="main" <?php themeblvd_main_class(); ?>>
 		<div class="wrap clearfix">
 	<?php
 }
