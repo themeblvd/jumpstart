@@ -8,6 +8,7 @@ Jump Start Changelog
 * Cleaned up and optimized assets in `/framework` directory, reducing file size by 2MB.
 * Added: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
 * Added: More accuracy for opacity selections.
+* Added: In custom layouts, "visible" CSS class gets added to top-level elements and sections as you scroll down the page.
 * Improvement: General comments template and comments link logic.
 * Improvement: Allow WooCommerce shop to accept theme-related options from original static page.
 * Fixed: Responsiveness of images with captions.

@@ -1352,6 +1352,14 @@ jQuery(document).ready(function($) {
 	// Scroll effects (separate)
 	// ---------------------------------------------------------
 
+	// General custom layout sections and elements
+	if ( $body.hasClass('tb-scroll-effects') ) {
+		$('#custom-main').find('.element-section, .element-section > .element').viewportChecker({
+			classToAdd: 'visible',
+			offset: 0
+		});
+	}
+
 	// Milestone standard
 	$('.desktop.tb-scroll-effects .tb-milestone .milestone').each(function() {
 
