@@ -16,6 +16,7 @@ Jump Start Changelog
 * Fixed: Incorrect file permissions of files at `/framework/assets/svg/` for those uploading the theme manually outside of WordPress.
 * Fixed: Theme's default WPML language selector listing languages without translations.
 * Fixed: System for generating FontAwesome icon selections in admin.
+* Fixed: Minor admin compatibility issue with WPML 3.2 update.
 * Updated Bootstrap to 3.3.5.
 * Updated FontAwesome to 4.4.
 

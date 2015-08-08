@@ -520,6 +520,7 @@ class Theme_Blvd_Frontend_Init {
 		/*------------------------------------------------------*/
 
 		$header = get_post_meta( $this->config['id'], '_tb_layout_header', true );
+		$header = apply_filters( 'themeblvd_frontend_config_header', $header, $this->config['id'] ); // allow "suck up" process to unfold in custom circumstances
 
 		// Logo height
 		$logo = themeblvd_get_option('trans_logo');

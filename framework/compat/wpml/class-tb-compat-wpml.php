@@ -63,6 +63,9 @@ class Theme_Blvd_Compat_WPML {
 			remove_action( 'icl_language_selector', array( $sitepress, 'language_selector' ) );
 			add_action('icl_language_selector', array( $this, 'language_selector' ) );
 
+			// Set theme tag themeblvd_do_lang_selector() to true, if necessary
+			add_filter( 'themeblvd_do_lang_selector', array($this, 'do_lang_selector') );
+
 		}
 
 	}
@@ -343,6 +346,20 @@ class Theme_Blvd_Compat_WPML {
 	 */
 	public function language_selector() {
 		echo $this->get_language_selector();
+	}
+
+	/**
+	 * Whether to display custom language switcher
+	 *
+	 * @since 2.5.1
+	 */
+	public function do_lang_selector() {
+
+		if ( get_option('tb_wpml_show_lang_switcher', '1') ) {
+			return true;
+		}
+
+		return false;
 	}
 
 }

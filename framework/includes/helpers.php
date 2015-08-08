@@ -1664,6 +1664,20 @@ function themeblvd_do_cart() {
 }
 
 /**
+ * Whether to display theme language selector.
+ *
+ * By default this function will return FALSE;
+ * however, if the theme supports WPML and WPML
+ * is installed, this will be filtered to TRUE,
+ * if necessary.
+ *
+ * @since 2.5.1
+ */
+function themeblvd_do_lang_selector() {
+	return apply_filters('themeblvd_do_lang_selector', false);
+}
+
+/**
  * Whether to display floating search bar.
  *
  * @since 2.5.0

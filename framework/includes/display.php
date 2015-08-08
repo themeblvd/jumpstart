@@ -40,7 +40,7 @@ function themeblvd_header_top_default() {
 
 			<?php themeblvd_header_text(); ?>
 
-			<?php if ( themeblvd_get_option('searchform') == 'show' || themeblvd_do_cart() || $icons || ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) ) : ?>
+			<?php if ( themeblvd_get_option('searchform') == 'show' || themeblvd_do_cart() || $icons || themeblvd_do_lang_selector() ) : ?>
 
 				<ul class="header-top-nav list-unstyled">
 
@@ -56,7 +56,7 @@ function themeblvd_header_top_default() {
 						<li class="top-icons"><?php themeblvd_contact_bar( $icons, array('class' => 'to-mobile') ); ?></li>
 					<?php endif; ?>
 
-					<?php if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) : ?>
+					<?php if ( themeblvd_do_lang_selector() ) : ?>
 						<li class="top-wpml"><?php do_action('icl_language_selector'); ?></li>
 					<?php endif; ?>
 
