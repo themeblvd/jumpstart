@@ -4763,14 +4763,14 @@ button.mfp-arrow:active {
 	margin-bottom: 0;
 }
 @media (max-width: 991px) {
-	.element-columns.stack-md > .row > .col,
-	.element-columns.stack-md > .container-md-height > .row > .col {
+	.element-columns.stack-md > .row > .col:not(.has-bg),
+	.element-columns.stack-md > .container-md-height > .row > .col:not(.has-bg) {
 		margin-bottom: 30px;
 	}
 }
 @media (max-width: 767px) {
-	.element-columns.stack-sm > .row > .col,
-	.element-columns.stack-sm > .container-sm-height > .row > .col {
+	.element-columns.stack-sm > .row > .col:not(.has-bg),
+	.element-columns.stack-sm > .container-sm-height > .row > .col:not(.has-bg) {
 		margin-bottom: 30px;
 	}
 }
