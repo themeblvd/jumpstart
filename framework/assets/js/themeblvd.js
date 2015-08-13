@@ -833,6 +833,7 @@ jQuery(document).ready(function($) {
 	// Parallax background effect
 	// ---------------------------------------------------------
 
+	/*
 	$('.desktop .tb-parallax').each(function(){
 
 		var $el = $(this),
@@ -940,6 +941,7 @@ jQuery(document).ready(function($) {
 
 		}
 	});
+	*/
 
 	// ---------------------------------------------------------
 	// Custom Buttons

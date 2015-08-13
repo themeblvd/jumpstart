@@ -253,11 +253,14 @@
 							val = $el.find('.of-background-attachment').val();
 
 						if ( val == 'parallax' ) {
+							$el.find('.of-background-repeat').closest('.tb-fancy-select').hide();
 							$el.find('.of-background-position').closest('.tb-fancy-select').hide();
 							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
 							$el.find('.parallax').show();
 						} else {
+							$el.find('.of-background-repeat').closest('.tb-fancy-select').show();
 							$el.find('.of-background-position').closest('.tb-fancy-select').show();
+							$el.find('.of-background-size').closest('.tb-fancy-select').show();
 							$el.find('.parallax').hide();
 						}
 					});
@@ -265,9 +268,10 @@
 					$this.find('.of-background-properties').each(function(){
 
 						var $el = $(this)
-							val = $el.find('.of-background-repeat').val();
+							val = $el.find('.of-background-repeat').val(),
+							scroll = $el.find('.of-background-attachment').val();
 
-					    if ( val == 'no-repeat' ) {
+					    if ( val == 'no-repeat' && scroll != 'parallax' ) {
 					        $el.find('.of-background-size').closest('.tb-fancy-select').show();
 					    } else {
 					        $el.find('.of-background-size').closest('.tb-fancy-select').hide();
@@ -729,19 +733,24 @@
 						var $el = $(this).closest('.select-parallax');
 
 						if ( $(this).val() == 'parallax' ) {
+							$el.find('.of-background-repeat').closest('.tb-fancy-select').hide();
 							$el.find('.of-background-position').closest('.tb-fancy-select').hide();
+							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
 							$el.find('.parallax').show();
 						} else {
+							$el.find('.of-background-repeat').closest('.tb-fancy-select').show();
 							$el.find('.of-background-position').closest('.tb-fancy-select').show();
+							$el.find('.of-background-size').closest('.tb-fancy-select').show();
 							$el.find('.parallax').hide();
 						}
 					});
 
 					$this.on( 'change', '.of-background-properties .of-background-repeat', function(){
 
-						var $el = $(this).closest('.of-background-properties');
+						var $el = $(this).closest('.of-background-properties'),
+							scroll = $el.find('.of-background-attachment').val();
 
-						if ( $(this).val() == 'no-repeat' ) {
+						if ( $(this).val() == 'no-repeat' && scroll != 'parallax' ) {
 							$el.find('.of-background-size').closest('.tb-fancy-select').show();
 						} else {
 							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
