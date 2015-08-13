@@ -564,7 +564,10 @@ function themeblvd_get_element_class( $args ) {
 	}
 
 	// Any elements that have heights to match viewport
-	if ( ! empty( $args['options']['height_100vh'] ) ) {
+	// Note: For hero unit, if user is "popping out", they
+	// should be applying the background to the hero unit
+	// element, not section.
+	if ( ! empty( $args['options']['height_100vh'] ) && ! in_array('popout', $class) ) {
 		$class[] = 'height-100vh';
 	}
 

@@ -436,11 +436,13 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
     );
     $args = wp_parse_args( $args, $defaults );
 
-    // CSS classes
+    // CSS classes & inline styles
     $class = sprintf( 'tb-jumbotron jumbotron entry-content text-%s', $args['text_align'] );
+	$style = '';
 
-    // Setup inline styles
-    $style = '';
+    if ( $args['class'] ) {
+        $class .= ' '.$args['class'];
+    }
 
     if ( $args['apply_content_bg'] ) {
         $style .= sprintf( 'background-color:%s;', $args['content_bg_color'] ); // Fallback for older browsers
@@ -448,9 +450,23 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
         $class .= ' has-bg';
     }
 
-    // Custom CSS classes
-    if ( $args['class'] ) {
-        $class .= ' '.$args['class'];
+	// Align jumbotron right or left?
+    if ( $args['align'] == 'left' ) {
+        $class .= ' pull-left';
+    } else if ( $args['align'] == 'right' ) {
+        $class .= ' pull-right';
+    } else {
+		$class .= ' pull-none';
+	}
+
+	// Align jumbotron center?
+    if ( $args['align'] == 'center' ) {
+        $style .= 'margin-left: auto; margin-right: auto; ';
+    }
+
+    // Max width?
+    if ( $args['max'] ) {
+        $style .= sprintf( 'max-width: %s;', $args['max'] );
     }
 
 	// Content
@@ -475,33 +491,8 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 
     $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, $content );
 
-    // Wrap the unit
-    $wrap_class = 'jumbotron-wrap';
-
-    // Align jumbotron right or left?
-    if ( $args['align'] == 'left' ) {
-        $wrap_class .= ' pull-left';
-    } else if ( $args['align'] == 'right' ) {
-        $wrap_class .= ' pull-right';
-    } else {
-		$wrap_class .= ' pull-none';
-	}
-
-    // Inline styles
-    $style = '';
-
-    // Align jumbotron center?
-    if ( $args['align'] == 'center' ) {
-        $style .= 'margin-left: auto; margin-right: auto; ';
-    }
-
-    // Max width?
-    if ( $args['max'] ) {
-        $style .= sprintf( 'max-width: %s;', $args['max'] );
-    }
-
     // Final output
-    $output = sprintf( '<div class="%s" style="%s">%s</div>', $wrap_class, $style, $jumbotron );
+    $output = sprintf( '<div class="jumbotron-wrap">%s</div>', $jumbotron );
 
 	// Add button to jump to next section, outside of main component
 	if ( $args['height_100vh'] && $args['section_jump'] ) {

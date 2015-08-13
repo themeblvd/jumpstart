@@ -11,6 +11,7 @@ Jump Start Changelog
 * Added: In custom layouts, "visible" CSS class gets added to top-level elements and sections as you scroll down the page.
 * Improvement: General comments template and comments link logic.
 * Improvement: Allow WooCommerce shop to accept theme-related options from original static page.
+* Improvement: Hero unit full-screen horizontal alignment, when text is aligned left or right.
 * Fixed: Responsiveness of images with captions.
 * Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 * Fixed: Portfolios and portfolio tags not showing in portfolio item sub meta.
