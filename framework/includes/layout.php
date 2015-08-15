@@ -708,41 +708,6 @@ function themeblvd_get_display_class( $display ) {
 }
 
 /**
- * If parallax is applicable for section, get the intensity.
- *
- * @since 2.5.0
- *
- * @param array $display Display options
- * @return string $intensity Intensity of the effect, 1-10
- */
-function themeblvd_get_parallax_intensity( $display ) {
-
-	$intensity = 0;
-
-	$bg_type = '';
-
-	if ( ! empty( $display['bg_type'] ) ) {
-		$bg_type = $display['bg_type'];
-	}
-
-	if ( $bg_type == 'texture' ) {
-
-		if ( ! empty( $display['apply_bg_texture_parallax'] ) && ! empty( $display['bg_texture_parallax'] ) ) {
-			$intensity = $display['bg_texture_parallax'];
-		}
-
-	} else if ( $bg_type == 'image' ) {
-
-		if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' && ! empty( $display['bg_image_parallax'] ) ) {
-			$intensity = $display['bg_image_parallax'];
-		}
-
-	}
-
-	return apply_filters( 'themeblvd_parallax_intensity', $intensity, $display );
-}
-
-/**
  * Get inline styles for a set of display options.
  *
  * @since 2.5.0
@@ -763,9 +728,19 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 		$bg_type = $display['bg_type'];
 	}
 
+	$parallax = false;
+
+	if ( $bg_type == 'image' && ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
+		$parallax = true;
+	}
+
+	if ( $bg_type == 'texture' && ! empty($display['apply_bg_texture_parallax']) ) {
+		$parallax = true;
+	}
+
 	if ( in_array( $bg_type, array('color', 'texture', 'image', 'video', 'none') ) ) {
 
-		if ( $bg_type == 'none' && empty($display['bg_content']) ) {
+		if ( ( $bg_type == 'none' && empty($display['bg_content']) ) || $parallax ) {
 
 			$params['background-color'] = 'transparent';
 
@@ -783,7 +758,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 		}
 
-		if ( $bg_type == 'texture' ) {
+		if ( $bg_type == 'texture' && ! $parallax ) {
 
 			$textures = themeblvd_get_textures();
 
@@ -798,10 +773,9 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 			}
 
-		} else if ( $bg_type == 'image' ) {
+		} else if ( $bg_type == 'image' && ! $parallax ) {
 
 			$repeat = false;
-			$parallax = false;
 
 			if ( ! empty( $display['bg_image']['image'] ) ) {
 				$params['background-image'] = sprintf('url(%s)', $display['bg_image']['image']);
@@ -820,15 +794,11 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 				$params['background-size'] = $display['bg_image']['size'];
 			}
 
-			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
-				$parallax = true;
-			}
-
-			if ( ! $parallax && ! wp_is_mobile() && ! empty( $display['bg_image']['attachment'] ) ) {
+			if ( ! wp_is_mobile() && ! empty( $display['bg_image']['attachment'] ) ) {
 				$params['background-attachment'] = $display['bg_image']['attachment'];
 			}
 
-			if ( ! $parallax && ! empty( $display['bg_image']['position'] ) ) {
+			if ( ! empty( $display['bg_image']['position'] ) ) {
 				$params['background-position'] = $display['bg_image']['position'];
 			}
 
@@ -1106,7 +1076,12 @@ function themeblvd_columns( $args, $columns = null ) {
 
 			// Start column
 			$display_class = implode( ' ', themeblvd_get_display_class( $display ) );
-			printf('<div class="col %s %s" style="%s" data-parallax="%s">', $grid_class, $display_class, themeblvd_get_display_inline_style($display), themeblvd_get_parallax_intensity($display) );
+			printf('<div class="col %s %s" style="%s">', $grid_class, $display_class, themeblvd_get_display_inline_style($display) );
+
+			// Add parallax effect
+			if ( themeblvd_do_parallax( $display ) ) {
+				themeblvd_bg_parallax( $display );
+			}
 
 			// Content blocks
 			if ( ! empty( $column['elements'] ) ) {
@@ -1162,34 +1137,73 @@ function themeblvd_get_jumbotron_slider( $args ) {
 	$data = get_post_meta( $args['layout_id'], '_tb_builder_'.$args['element_id'].'_col_1', true ); // Ex: _tb_builder_element_123_col_1
 
 	// Wrapping CSS class
-	$class = 'tb-jumbotron-slider';
+	$class = 'tb-jumbotron-slider carousel';
 
     if ( $args['nav'] ) {
         $class .= ' has-nav';
     }
 
-	// Start output
-	$output  = sprintf('<div class="%s" data-timeout="%s" data-nav="%s" data-fx="%s">', $class, $args['timeout'], $args['nav'], $args['fx'] );
-	$output .= '<div class="flexslider slider-inner">';
-    $output .= themeblvd_get_loader();
+	// Slider auto rotate speed
+	$interval = $args['timeout'];
 
-	if ( $args['nav'] ) {
-        $output .= themeblvd_get_slider_controls( array('color' => 'trans') );
-    }
+	if ( $interval && intval($interval) < 100 ) {
+		$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
+	}
+
+	// Start output
+	$output  = sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="hover">', $slider_id, $class, $interval );
+	$output .= themeblvd_get_loader();
+	$output .= '<div class="carousel-control-wrap">';
+	$output .= '<div class="carousel-inner">';
 
 	if ( $data && ! empty($data['elements']) ) {
 
-		$output .= '<ul class="slides">';
+		$count = 1;
 
 		foreach ( $data['elements'] as $elem ) {
-			$output .= sprintf('<li class="slide">%s</li>', themeblvd_get_jumbotron( $elem['options'] ));
+
+			$class = 'item';
+
+			if ( $count == 1 ) {
+				$class .= ' active';
+			}
+
+			$output .= sprintf('<div class="%s">%s</div>', $class, themeblvd_get_jumbotron( $elem['options'] ));
+
+			$count++;
 		}
-
-		$output .= '</ul>';
-
 	}
 
-	$output .= '</div><!-- .jumbotron-slider-inner (end) -->';
+	$output .= '</div><!-- .carousel-inner (end) -->';
+
+	// Navigation dots
+	if ( $args['nav'] ) {
+		if ( $data && ! empty($data['elements']) ) {
+
+			$output .= '<ol class="carousel-indicators">';
+			$count = 0;
+
+			foreach ( $data['elements'] as $elem ) {
+
+				$class = '';
+
+				if ( $count == 0 ) {
+					$class = 'active';
+				}
+
+				$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $slider_id, $count, $class );
+
+				$count++;
+			}
+
+			$output .= '</ol>';
+		}
+    }
+
+	// Directional nav
+	$output .= themeblvd_get_slider_controls( array('carousel' => $slider_id, 'color' => 'trans') );
+
+	$output .= '</div><!-- .carousel-control-wrap (end) -->';
 	$output .= '</div><!-- .tb-jumbotron-slider (end) -->';
 
     return apply_filters( 'themeblvd_jumbotron_slider', $output, $args );

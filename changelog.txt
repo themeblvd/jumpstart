@@ -5,13 +5,14 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.5.1**
-* Cleaned up and optimized assets in `/framework` directory, reducing file size by 2MB.
-* Added: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
-* Added: More accuracy for opacity selections.
-* Added: In custom layouts, "visible" CSS class gets added to top-level elements and sections as you scroll down the page.
+* Cleaned up and optimized assets in `/framework` directory, reducing file size by about 2MB.
+* New: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
+* New: More accuracy for opacity selections.
+* New: In custom layouts, "visible" CSS class gets added to top-level elements and sections as you scroll down the page.
 * Improvement: General comments template and comments link logic.
 * Improvement: Allow WooCommerce shop to accept theme-related options from original static page.
 * Improvement: Hero unit full-screen horizontal alignment, when text is aligned left or right.
+* Improvement: Parallax background image performance.
 * Fixed: Responsiveness of images with captions.
 * Fixed: Awkward spacing of captions on slider captions; now vertically centered.
 * Fixed: Portfolios and portfolio tags not showing in portfolio item sub meta.
@@ -20,8 +21,14 @@ Jump Start Changelog
 * Fixed: Theme's default WPML language selector listing languages without translations.
 * Fixed: System for generating FontAwesome icon selections in admin.
 * Fixed: Minor admin compatibility issue with WPML 3.2 update.
+* Removed: Parallax intensity options; now it's based on height of image, proportional to container.
 * Updated Bootstrap to 3.3.5.
 * Updated FontAwesome to 4.4.
+
+**Important!** For best results with this update:
+
+* You should update to the latest version of the Theme Blvd Layout Builder plugin.
+* You should update to the latest version of the Theme Blvd Shortcodes plugin.
 
 --------------------------------------------------------------
 

@@ -1438,9 +1438,7 @@ function themeblvd_get_banner( $args = array() ) {
 	    'bg_color' 					=> '#202020',
 	    'bg_texture' 				=> 'arches',
 	    'apply_bg_texture_parallax'	=> '0',
-	    'bg_texture_parallax' 		=> '5',
 	    'bg_image' 					=> array(),
-	    'bg_image_parallax' 		=> '2',
 		'bg_video' 					=> array(),
 		'apply_bg_shade'			=> '0',
 		'bg_shade_color'			=> '#000000',
@@ -1455,7 +1453,12 @@ function themeblvd_get_banner( $args = array() ) {
 
 	$style = themeblvd_get_display_inline_style($args);
 
-	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s" data-parallax="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style, themeblvd_get_parallax_intensity($args) );
+	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style );
+
+	// Parallax
+	if ( themeblvd_do_parallax($args) ) {
+		$output .= themeblvd_get_bg_parallax($args);
+	}
 
 	// Background video
 	if ( $args['bg_type'] == 'video' ) {
@@ -1714,7 +1717,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
  *
  * @since 2.5.0
  */
-function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
+function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 
 	$output = '';
 
@@ -1755,7 +1758,11 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
 			$img_src = str_replace('http://', 'https://', $img_src);
 		}
 
-		$output .= sprintf( '<div class="%s" style="background-image: url(%s);" data-parallax="%s"></div><!-- .item (end) -->', $class, $img_src, $parallax );
+		if ( $parallax ) {
+			$output .= sprintf( '<div class="%s">%s</div><!-- .item (end) -->', $class, themeblvd_get_bg_parallax(array('src' => $img_src)) );
+		} else {
+			$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, $img_src );
+		}
 
 		$counter++;
 
@@ -1773,8 +1780,106 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = 0 ) {
  *
  * @since 2.5.0
  */
-function themeblvd_bg_slideshow( $id, $images, $parallax = 0 ) {
+function themeblvd_bg_slideshow( $id, $images, $parallax = false ) {
 	echo themeblvd_get_bg_slideshow( $id, $images, $parallax );
+}
+
+/**
+ * When using a standard set of display options,
+ * determine of parallax should be used for standard
+ * image and texture backgrounds.
+ *
+ * @since 2.5.1
+ */
+function themeblvd_do_parallax( $display ) {
+
+	if ( empty( $display['bg_type'] ) ) {
+		return false;
+	}
+
+	if ( $display['bg_type'] == 'image' && isset($display['bg_image']['attachment']) && $display['bg_image']['attachment'] == 'parallax' )  {
+		if ( ! empty($display['bg_image']['image']) ) {
+			return true;
+		}
+	}
+
+	if ( $display['bg_type'] == 'texture' && ! empty($display['apply_bg_texture_parallax']) ) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * Get background parallax image.
+ *
+ * @since 2.5.1
+ */
+function themeblvd_get_bg_parallax( $display ) {
+
+	// Type of background, image or texture
+	$type = 'image';
+
+	if ( ! empty($display['bg_type']) ) {
+		$type = $display['bg_type'];
+	}
+
+	// Base bg color behind image
+	$color = '#000000';
+
+	if ( ! empty( $display['bg_color'] ) ) {
+		$color = $display['bg_color'];
+	}
+
+	// Image to display
+	$src = '';
+	$texture = '';
+
+	if ( $type == 'image' ) {
+
+		if ( ! empty($display['src']) ) { // manually feed in
+			$src = $display['src'];
+		} else if ( ! empty($display['bg_image']['image']) ) {
+			$src = $display['bg_image']['image'];
+		}
+
+	} else if ( $type == 'texture' ) {
+
+		if ( ! empty($display['bg_texture']) ) {
+			$texture = $display['bg_texture'];
+		}
+
+	}
+
+	// CSS class
+	$class = 'parallax-figure';
+
+	if ( $texture ) {
+		$class .= ' has-texture';
+	}
+
+	// Start ouptut
+	$output = sprintf('<div class="%s" style="background-color:%s">', $class, $color);
+
+	if ( $type == 'texture' ) {
+		$texture = themeblvd_get_texture( $texture );
+		$output .= sprintf('<div class="img" style="background-image:url(%s);background-position:%s;background-repeat:%s;background-size:%s;"></div>', $texture['url'], $texture['position'], $texture['repeat'], $texture['size']);
+	} else {
+		$output .= sprintf('<img src="%s" alt="" />', $src);
+	}
+
+	$output .= '</div><!-- .parallax-figure (end) -->';
+
+	return apply_filters( 'themeblvd_bg_parallax', $output, $display );
+}
+
+/**
+ * Display background parallax image.
+ *
+ * @since 2.5.1
+ */
+function themeblvd_bg_parallax( $display ) {
+	echo themeblvd_get_bg_parallax( $display );
 }
 
 /**

@@ -347,37 +347,15 @@ function jumpstart_ex_options() {
 				'select'	=> 'textures',
 				'class'		=> 'hide receiver receiver-texture'
 			),
-			'sub_group_start_6' => array(
-				'id'		=> 'sub_group_start_6',
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide hide receiver receiver-texture'
-			),
 			'header_apply_bg_texture_parallax' => array(
 				'id'		=> 'header_apply_bg_texture_parallax',
 				'name'		=> null,
 				'desc'		=> __('Apply parallax scroll effect to background texture.', 'themeblvd'),
 				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
+				'class'		=> 'hide receiver receiver-texture'
 			),
-			'header_bg_texture_parallax' => array(
-				'id'		=> 'header_bg_texture_parallax',
-				'name'		=> __('Parallax Intensity', 'themeblvd'),
-				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
-				'type'		=> 'slide',
-				'std'		=> '5',
-				'options'	=> array(
-					'min'	=> '1',
-					'max'	=> '10',
-					'step'	=> '1'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'subgroup_end_6' => array(
-				'id'		=> 'subgroup_end_6',
-				'type'		=> 'subgroup_end'
-			),
-			'sub_group_start_7' => array(
-				'id'		=> 'sub_group_start_7',
+			'sub_group_start_6' => array(
+				'id'		=> 'sub_group_start_6',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'select-parallax hide receiver receiver-image'
 			),
@@ -389,21 +367,8 @@ function jumpstart_ex_options() {
 				'color'		=> false,
 				'parallax'	=> true
 			),
-			'header_bg_image_parallax' => array(
-				'id'		=> 'header_bg_image_parallax',
-				'name'		=> __('Parallax: Intensity', 'themeblvd'),
-				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
-				'type'		=> 'slide',
-				'std'		=> '2',
-				'options'	=> array(
-					'min'	=> '1',
-					'max'	=> '10',
-					'step'	=> '1'
-				),
-				'class'		=> 'hide parallax'
-			),
-			'sub_group_end_7' => array(
-				'id'		=> 'sub_group_end_7',
+			'sub_group_end_6' => array(
+				'id'		=> 'sub_group_end_6',
 				'type' 		=> 'subgroup_end'
 			),
 			'header_bg_video' => array(
@@ -413,8 +378,8 @@ function jumpstart_ex_options() {
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),
-			'sub_group_start_8' => array(
-				'id'		=> 'sub_group_start_8',
+			'sub_group_start_7' => array(
+				'id'		=> 'sub_group_start_7',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow'
 			),
@@ -463,12 +428,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_8' => array(
-				'id'		=> 'sub_group_end_8',
+			'sub_group_end_7' => array(
+				'id'		=> 'sub_group_end_7',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_9' => array(
-				'id'		=> 'sub_group_start_9',
+			'sub_group_start_8' => array(
+				'id'		=> 'sub_group_start_8',
 				'type'		=> 'subgroup_start',
 				'class'		=> 'section-bg-slideshow hide receiver receiver-slideshow'
 			),
@@ -486,45 +451,22 @@ function jumpstart_ex_options() {
 				'type' 		=> 'select',
 				'select'	=> 'crop'
 			),
-			'sub_group_start_10' => array(
-				'id'		=> 'sub_group_start_10',
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide'
-			),
 			'header_apply_bg_slideshow_parallax' => array(
 				'id'		=> 'header_apply_bg_slideshow_parallax',
 				'name'		=> null,
 				'desc'		=> __('Apply parallax scroll effect to background slideshow.', 'themeblvd'),
 				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
 			),
-			'header_bg_slideshow_parallax' => array(
-				'id'		=> 'header_bg_slideshow_parallax',
-				'name'		=> __('Parallax Intensity', 'themeblvd'),
-				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
-				'type'		=> 'slide',
-				'std'		=> '5',
-				'options'	=> array(
-					'min'	=> '1',
-					'max'	=> '10',
-					'step'	=> '1'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'sub_group_end_10' => array(
-				'id'		=> 'sub_group_end_10',
-				'type' 		=> 'subgroup_end'
-			),
-			'sub_group_end_9' => array(
-				'id'		=> 'sub_group_end_9',
+			'sub_group_end_8' => array(
+				'id'		=> 'sub_group_end_8',
 				'type' 		=> 'subgroup_end'
 			),
 			'sub_group_end_5' => array(
 				'id'		=> 'sub_group_end_5',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_11' => array(
-				'id'		=> 'sub_group_start_11',
+			'sub_group_start_9' => array(
+				'id'		=> 'sub_group_start_9',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -557,12 +499,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_11' => array(
-				'id'		=> 'sub_group_end_11',
+			'sub_group_end_9' => array(
+				'id'		=> 'sub_group_end_9',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_12' => array(
-				'id'		=> 'sub_group_start_12',
+			'sub_group_start_10' => array(
+				'id'		=> 'sub_group_start_10',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -595,12 +537,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_12' => array(
-				'id'		=> 'sub_group_end_12',
+			'sub_group_end_10' => array(
+				'id'		=> 'sub_group_end_10',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_13' => array(
-			    'id'		=> 'sub_group_start_13',
+			'sub_group_start_11' => array(
+			    'id'		=> 'sub_group_start_11',
 			    'type' 		=> 'subgroup_start',
 			    'class'		=> 'show-hide'
 			),
@@ -625,12 +567,12 @@ function jumpstart_ex_options() {
 			    ),
 			    'class'		=> 'hide receiver'
 			),
-			'sub_group_end_13' => array(
-			    'id'		=> 'sub_group_end_13',
+			'sub_group_end_11' => array(
+			    'id'		=> 'sub_group_end_11',
 			    'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_14' => array(
-			    'id'		=> 'sub_group_start_14',
+			'sub_group_start_12' => array(
+			    'id'		=> 'sub_group_start_12',
 			    'type' 		=> 'subgroup_start',
 			    'class'		=> 'show-hide'
 			),
@@ -655,8 +597,8 @@ function jumpstart_ex_options() {
 			    ),
 			    'class'		=> 'hide receiver'
 			),
-			'sub_group_end_14' => array(
-			    'id'		=> 'sub_group_end_14',
+			'sub_group_end_12' => array(
+			    'id'		=> 'sub_group_end_12',
 			    'type' 		=> 'subgroup_end'
 			),
 			'logo_center' => array(
@@ -668,8 +610,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'menu' => array(
-			'sub_group_start_15' => array(
-				'id'		=> 'sub_group_start_15',
+			'sub_group_start_13' => array(
+				'id'		=> 'sub_group_start_13',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -745,8 +687,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient receiver-gradient_glassy'
 			),
-			'sub_group_end_15' => array(
-				'id'		=> 'sub_group_end_15',
+			'sub_group_end_13' => array(
+				'id'		=> 'sub_group_end_13',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_hover_bg_color' => array(
@@ -826,8 +768,8 @@ function jumpstart_ex_options() {
 					'max'		=> '50'
 				)
 			),
-			'sub_group_start_16' => array(
-				'id'		=> 'sub_group_start_16',
+			'sub_group_start_14' => array(
+				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -860,8 +802,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_16' => array(
-				'id'		=> 'sub_group_end_16',
+			'sub_group_end_14' => array(
+				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end'
 			),
 			'menu_text_shadow' => array(
@@ -871,8 +813,8 @@ function jumpstart_ex_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_17' => array(
-			    'id'		=> 'sub_group_start_17',
+			'sub_group_start_15' => array(
+			    'id'		=> 'sub_group_start_15',
 			    'type' 		=> 'subgroup_start',
 			    'class'		=> 'show-hide'
 			),
@@ -892,8 +834,8 @@ function jumpstart_ex_options() {
 			    'type'		=> 'color',
 			    'class'		=> 'hide receiver'
 			),
-			'sub_group_end_17' => array(
-			    'id'		=> 'sub_group_end_17',
+			'sub_group_end_15' => array(
+			    'id'		=> 'sub_group_end_15',
 			    'type' 		=> 'subgroup_end'
 			),
 			'menu_center' => array(
@@ -903,8 +845,8 @@ function jumpstart_ex_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_16' => array(
+				'id'		=> 'sub_group_start_16',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -926,8 +868,8 @@ function jumpstart_ex_options() {
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_16' => array(
+				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end',
 			),
 			'menu_search' => array(
@@ -973,8 +915,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1049,12 +991,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_20' => array(
-				'id'		=> 'sub_group_start_20',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1087,8 +1029,8 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_20' => array(
-				'id'		=> 'sub_group_end_20',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end'
 			),
 			'sub_group_start_20' => array(
@@ -1233,8 +1175,8 @@ function jumpstart_ex_options() {
 			)
 		),
 		'widgets' => array(
-			'sub_group_start_22' => array(
-				'id'		=> 'sub_group_start_22',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1371,8 +1313,8 @@ function jumpstart_ex_options() {
 				'type'		=> 'checkbox',
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
-			'sub_group_start_24' => array(
-				'id'		=> 'sub_group_start_24',
+			'sub_group_start_21' => array(
+				'id'		=> 'sub_group_start_21',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-standard'
 			),
@@ -1405,12 +1347,12 @@ function jumpstart_ex_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_24' => array(
-				'id'		=> 'sub_group_end_24',
+			'sub_group_end_21' => array(
+				'id'		=> 'sub_group_end_21',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_22' => array(
-				'id'		=> 'sub_group_end_22',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -2013,9 +1955,7 @@ function jumpstart_ex_css() {
 		$options['bg_color_opacity'] = themeblvd_get_option('header_bg_color_opacity');
 		$options['bg_texture'] = themeblvd_get_option('header_bg_texture');
 		$options['apply_bg_texture_parallax'] = themeblvd_get_option('header_apply_bg_texture_parallax');
-		$options['bg_texture_parallax'] = themeblvd_get_option('header_bg_texture_parallax');
 		$options['bg_image'] = themeblvd_get_option('header_bg_image');
-		$options['bg_image_parallax'] = themeblvd_get_option('header_bg_image_parallax');
 		$options['bg_video'] = themeblvd_get_option('header_bg_video');
 		$options['apply_bg_shade'] = themeblvd_get_option('header_apply_bg_shade');
 		$options['bg_shade_color'] = themeblvd_get_option('header_bg_shade_color');
@@ -2617,18 +2557,20 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ex_css', 25);
  *
  * @since 2.0.0
  */
-function jumpstart_ex_header_class( $output, $class ) {
+function jumpstart_ex_header_class( $class ) {
 
 	$options = array(
 		'bg_type'						=> themeblvd_get_option('header_bg_type'),
 		'apply_bg_shade'				=> themeblvd_get_option('header_apply_bg_shade'),
 		'apply_bg_texture_parallax'		=> themeblvd_get_option('header_apply_bg_texture_parallax'),
-		'bg_texture_parallax'			=> themeblvd_get_option('header_bg_texture_parallax'),
 		'bg_image'						=> themeblvd_get_option('header_bg_image'),
-		'bg_image_parallax'				=> themeblvd_get_option('header_bg_image_parallax'),
 		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
 		'bg_video'						=> themeblvd_get_option('header_bg_video')
 	);
+
+	if ( themeblvd_config('suck_up') ) {
+		unset($options['bg_type']);
+	}
 
 	$class = array_merge( $class, themeblvd_get_display_class($options) );
 
@@ -2636,9 +2578,9 @@ function jumpstart_ex_header_class( $output, $class ) {
 		$class[] = 'header-top-mini';
 	}
 
-	return sprintf('class="%s" data-parallax="%s"', implode(' ', $class), themeblvd_get_parallax_intensity($options) );
+	return $class;
 }
-add_filter('themeblvd_header_class_output', 'jumpstart_ex_header_class', 10, 2);
+add_filter('themeblvd_header_class', 'jumpstart_ex_header_class', 10, 2);
 
 /**
  * Add CSS classes to footer
@@ -2726,17 +2668,24 @@ function jumpstart_ex_header_top() {
 
 	$display = array(
 		'bg_type' 						=> themeblvd_get_option('header_bg_type'),
+		'bg_color' 						=> themeblvd_get_option('header_bg_color'),
+		'bg_texture'					=> themeblvd_get_option('header_bg_texture'),
+		'apply_bg_texture_parallax'		=> themeblvd_get_option('header_apply_bg_texture_parallax'),
+		'bg_image' 						=> themeblvd_get_option('header_bg_image'),
 		'apply_bg_shade'				=> themeblvd_get_option('header_apply_bg_shade'),
 		'bg_shade_color'				=> themeblvd_get_option('header_bg_shade_color'),
 		'bg_shade_opacity'				=> themeblvd_get_option('header_bg_shade_opacity'),
 		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
 		'apply_bg_slideshow_parallax'	=> themeblvd_get_option('header_apply_bg_slideshow_parallax'),
-		'bg_slideshow_parallax'			=> themeblvd_get_option('header_bg_slideshow_parallax'),
 		'bg_video'						=> themeblvd_get_option('header_bg_video')
 	);
 
 	if ( ( $display['bg_type'] == 'image' || $display['bg_type'] == 'slideshow' ) && ! empty($display['apply_bg_shade']) ) {
 		printf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) );
+	}
+
+	if ( themeblvd_do_parallax($display) ) {
+		themeblvd_bg_parallax($display);
 	}
 
 	if ( $display['bg_type'] == 'video' && ! empty($display['bg_video']) ) {
@@ -2745,10 +2694,10 @@ function jumpstart_ex_header_top() {
 
 	if ( $display['bg_type'] == 'slideshow' && ! empty($display['bg_slideshow']) ) {
 
-		$parallax = 0;
+		$parallax = false;
 
 		if ( ! empty($display['apply_bg_slideshow_parallax']) ) {
-			$parallax = $display['bg_slideshow_parallax'];
+			$parallax = true;
 		}
 
 		themeblvd_bg_slideshow( 'header', $display['bg_slideshow'], $parallax );

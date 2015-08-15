@@ -257,34 +257,14 @@ function setup_themeblvd_banner_meta() {
 				'select'	=> 'textures',
 				'class'		=> 'hide receiver receiver-texture'
 			),
-			'subgroup_start_2' => array(
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide hide receiver receiver-texture'
-			),
 			'apply_bg_texture_parallax' => array(
 				'id'		=> 'apply_bg_texture_parallax',
 				'name'		=> null,
 				'desc'		=> __('Apply parallax scroll effect to background texture.', 'themeblvd'),
 				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
+				'class'		=> 'hide receiver receiver-texture'
 			),
-			'bg_texture_parallax' => array(
-				'id'		=> 'bg_texture_parallax',
-				'name'		=> __('Parallax Intensity', 'themeblvd'),
-				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
-				'type'		=> 'slide',
-				'std'		=> '5',
-				'options'	=> array(
-					'min'	=> '1',
-					'max'	=> '10',
-					'step'	=> '1'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'subgroup_end_2' => array(
-				'type'		=> 'subgroup_end'
-			),
-			'subgroup_start_3' => array(
+			'subgroup_start_2' => array(
 				'type'		=> 'subgroup_start',
 				'class'		=> 'select-parallax hide receiver receiver-image'
 			),
@@ -304,20 +284,7 @@ function setup_themeblvd_banner_meta() {
 				'color'		=> false,
 				'parallax'	=> true
 			),
-			'bg_image_parallax' => array(
-				'id'		=> 'bg_image_parallax',
-				'name'		=> __('Parallax: Intensity', 'themeblvd'),
-				'desc'		=> __('Select the instensity of the scroll effect. 1 is the least intense, and 10 is the most intense.', 'themeblvd'),
-				'type'		=> 'slide',
-				'std'		=> '2',
-				'options'	=> array(
-					'min'	=> '1',
-					'max'	=> '10',
-					'step'	=> '1'
-				),
-				'class'		=> 'hide parallax'
-			),
-			'subgroup_end_3' => array(
+			'subgroup_end_2' => array(
 				'type'		=> 'subgroup_end'
 			),
 			'bg_video' => array(
@@ -327,7 +294,7 @@ function setup_themeblvd_banner_meta() {
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),
-			'subgroup_start_4' => array(
+			'subgroup_start_3' => array(
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow receiver-video'
 			),
@@ -376,10 +343,10 @@ function setup_themeblvd_banner_meta() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'subgroup_end_4' => array(
+			'subgroup_end_3' => array(
 				'type'		=> 'subgroup_end'
 			),
-			'subgroup_start_5' => array(
+			'subgroup_start_4' => array(
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-color receiver-texture receiver-image receiver-video'
 			),
@@ -437,10 +404,10 @@ function setup_themeblvd_banner_meta() {
 				),
 				'class'		=> 'hide receiver receiver-title receiver-custom'
 			),
-			'subgroup_end_5' => array(
+			'subgroup_end_4' => array(
 				'type' 		=> 'subgroup_end'
 			),
-			'subgroup_start_6' => array(
+			'subgroup_start_5' => array(
 				'type'		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-color receiver-texture receiver-image receiver-video'
 			),
@@ -476,7 +443,7 @@ function setup_themeblvd_banner_meta() {
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 		    ),
-			'subgroup_end_6' => array(
+			'subgroup_end_5' => array(
 				'type'		=> 'subgroup_end'
 			),
 			'subgroup_end_1' => array(

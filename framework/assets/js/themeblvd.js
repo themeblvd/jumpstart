@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
 		$body.removeClass('mobile-on');
 	}
 
-	$window.resize(function(){
+	$window.on('resize', function(){
 
 		var window_width = $window.width();
 
@@ -192,7 +192,7 @@ jQuery(document).ready(function($) {
 			$toggle_open.show();
 		});
 
-		$window.resize(function(){
+		$window.on('resize', function(){
 			if ( $window.width() > max ) {
 				$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
 				$toggle_close.hide();
@@ -466,7 +466,7 @@ jQuery(document).ready(function($) {
 	// Sorting/Masonry
 	// ---------------------------------------------------------
 
-	$window.load(function() {
+	$window.on('load', function() {
 		$('.tb-isotope').each(function(){
 
 			var $container = $(this),
@@ -536,7 +536,7 @@ jQuery(document).ready(function($) {
 
 		var $scroll_to_top = $('.tb-scroll-to-top');
 
-		$window.scroll(function(){
+		$window.on( 'scroll', function(){
 			if ( $(this).scrollTop() > 400 ) {
 				$scroll_to_top.fadeIn();
 			} else {
@@ -734,7 +734,7 @@ jQuery(document).ready(function($) {
 	// Block & Jumbotron sliders
 	// ---------------------------------------------------------
 
-	$('.tb-block-slider, .tb-jumbotron-slider').each(function(){
+	$('.tb-block-slider').each(function(){
 
 		var $slider_wrap = $(this),
 			$slider = $slider_wrap.find('.slider-inner'),
@@ -766,16 +766,7 @@ jQuery(document).ready(function($) {
 			pause = true;
 		}
 
-		if ( $slider_wrap.hasClass('tb-jumbotron-slider') ) {
-
-			smooth = true;
-
-			if ( nav ) {
-				controlnav = true;
-			}
-		}
-
-		$window.load(function() {
+		$window.on('load', function() {
 			$slider.flexslider({
 				smoothHeight: smooth,
 				animation: fx,
@@ -787,21 +778,8 @@ jQuery(document).ready(function($) {
 				controlNav: controlnav,
 				pauseOnHover: pause,	// If nav exists, replace with manual action below
 				pauseOnAction: false, 	// Replaced with manual action below
-				start: function(){
-					if ( ! $body.hasClass('mobile') ) {
-						$slider_wrap.find('.tb-slider-arrows').fadeIn(100);
-					}
+				start: function($s){
 					$slider_wrap.find('.tb-loader').fadeOut(100);
-				},
-				before: function($s){
-					if ( ! $body.hasClass('mobile') && $s.closest('.element').hasClass('element-jumbotron_slider') ) {
-						$s.closest('.tb-jumbotron-slider').addClass('animate');
-					}
-				},
-				after: function($s){
-					if ( ! $body.hasClass('mobile') && $s.closest('.element').hasClass('element-jumbotron_slider') ) {
-						$s.closest('.tb-jumbotron-slider').removeClass('animate');
-					}
 				}
 			});
 		});
@@ -827,121 +805,122 @@ jQuery(document).ready(function($) {
 				return false;
 			});
 		}
+
+	}); // end $('.tb-block-slider').each()
+
+	// Hero unit slider
+	$('.tb-jumbotron-slider').each(function(){
+
+		var $slider = $(this);
+
+		$slider.on('slide.bs.carousel', function(e){
+
+			var height = $(e.relatedTarget).find('.jumbotron-outer').outerHeight();
+
+			$slider.animate({ height: height }, 1000);
+
+			if ( ! $body.hasClass('mobile') ) {
+				$slider.addClass('animate');
+				setTimeout(function () {
+					$slider.removeClass('animate');
+				}, 1000);
+			}
+
+		});
+
+		$slider.find('.tb-slider-arrows a, .carousel-indicators li').on('click', function(){
+			$slider.carousel('pause');
+		});
+
+		$window.on('load', function(){
+			$slider.find('.carousel-control-wrap').fadeIn(200, function(){
+				var height = $slider.find('.item.active .jumbotron-outer').outerHeight();
+				$slider.animate({'height': height});
+				console.log(height);
+				$slider.find('.tb-loader').fadeOut(100);
+			});
+		});
+
+	});
+
+	$window.on('resize', function(){
+		$('.tb-jumbotron-slider').each(function(){
+
+			var $slider = $(this),
+				height = $slider.find('.item.active .jumbotron-outer').outerHeight();
+
+			$slider.css('height', height);
+		});
 	});
 
 	// ---------------------------------------------------------
 	// Parallax background effect
 	// ---------------------------------------------------------
 
-	/*
-	$('.desktop .tb-parallax').each(function(){
+	var $parallax = $('.tb-parallax .parallax-figure');
 
-		var $el = $(this),
-			intensity = $el.data('parallax'),
-			y = 0,
-			y_pos = 0,
-			diff = 0,
-			bg_repeat = $el.css('background-repeat'),
-			img_url = $el.css('background-image'),
-			img_url = img_url.match(/^url\("?(.+?)"?\)$/),
-			img;
+	$window.on('load', function() {
 
-		// Setup parallax intensity
-		switch ( intensity ) {
-			case 1: // Least intensity
-				y_pos = 10;
-				break;
-			case 2:
-				y_pos = 9;
-				break;
-			case 3:
-				y_pos = 8;
-				break;
-			case 4:
-				y_pos = 7;
-				break;
-			case 5:
-				y_pos = 6;
-				break;
-			case 6:
-				y_pos = 5;
-				break;
-			case 7:
-				y_pos = 4;
-				break;
-			case 8:
-				y_pos = 3;
-				break;
-			case 9:
-				y_pos = 2;
-				break;
-			case 10: // Highest intensity
-				y_pos = 1;
-				break;
-		}
+		$parallax.each(function() {
 
-		if ( img_url && img_url[1] ) {
+			var $el = $(this),
+				$img = $el.find('img, .img');
 
-		    img_url = img_url[1];
-		    img = new Image();
+			// Disable for small screens
+			if ( $window.width() > 991 && $window.height() > 499 ) {
 
-		    // just in case it is not already loaded
-		    $(img).load(function () {
+				var img_height = $img.height(),
+					container_height = ($el.height() > 0) ? $el.height() : 500,
+					parallax_dist = img_height - container_height,
+					bottom = $el.offset().top + container_height,
+					top = $el.offset().top,
+					scroll_top = $window.scrollTop(),
+					window_height = window.innerHeight,
+					window_bottom = scroll_top + window_height,
+					percent_scrolled = (window_bottom - top) / (container_height + window_height),
+					parallax = Math.round((parallax_dist * percent_scrolled));
 
-		    	var scrollTop     = $window.scrollTop(),
-				    elementOffset = $el.offset().top,
-				    distance      = (elementOffset - scrollTop);
-
-				y = - ( distance / y_pos );
-
-				$el.css({ 'background-position': 'center '+ y + 'px' });
-
-		    	// Parallax effect
-		    	$window.scroll(function() {
-
-		        	// Disable for tablet/mobile viewport size
-		        	if ( $window.width() < 992 ) {
-		        		return;
-		        	}
-
-					scrollTop = $window.scrollTop(),
-				    elementOffset = $el.offset().top,
-				    distance = (elementOffset - scrollTop);
-
-					y = - ( distance / y_pos );
-
-		            $el.css({ 'background-position': 'center '+ y + 'px' });
-
-		        });
-
-		    	// Apply background cover, only when container
-			    // is wider than background image.
-				// Note: There's no user option for this, add
-				// class "tb-bg-cover" to section to utilize.
-		    	if ( $el.hasClass('tb-bg-cover') && bg_repeat == 'no-repeat' ) {
-
-			        if ( $el.outerWidth() > img.width ) {
-						$el.css('background-size', 'cover');
-					} else {
-						$el.css('background-size', 'auto');
-					}
-
-					$window.resize(function(){
-						if ( $el.outerWidth() > img.width ) {
-							$el.css('background-size', 'cover');
-						} else {
-							$el.css('background-size', 'auto');
-						}
-					});
+				if ( (bottom > scroll_top) && (top < (scroll_top + window_height)) ) {
+					$img.css('transform', "translate3D(-50%," + parallax + "px, 0)");
 				}
 
-		    }); // end image on load
+			}
 
-		    img.src = img_url;
+			$img.addClass('on'); // fade in the image, after it's been placed
 
+		}); // end $parallax.each()
+
+	}); // end $window.load()
+
+	$window.on('scroll resize', function() {
+
+		// Disable for small screens
+		if ( $window.width() < 992 || $window.height() < 500 ) {
+			return;
 		}
+
+		$parallax.each(function() {
+
+			var $el = $(this),
+				$img = $el.find('img, .img'),
+				img_height = $img.height(),
+				container_height = ($el.height() > 0) ? $el.height() : 500,
+				parallax_dist = img_height - container_height,
+				bottom = $el.offset().top + container_height,
+				top = $el.offset().top,
+				scroll_top = $window.scrollTop(),
+				window_height = window.innerHeight,
+				window_bottom = scroll_top + window_height,
+				percent_scrolled = (window_bottom - top) / (container_height + window_height),
+				parallax = Math.round((parallax_dist * percent_scrolled));
+
+			if ( (bottom > scroll_top) && (top < (scroll_top + window_height)) ) {
+				$img.css('transform', "translate3D(-50%," + parallax + "px, 0)");
+			}
+
+		});
+
 	});
-	*/
 
 	// ---------------------------------------------------------
 	// Custom Buttons
@@ -1505,7 +1484,7 @@ jQuery(document).ready(function($) {
         $(window).bind("load scroll touchmove", this.checkElements);
 
         // On resize change the height var
-        $(window).resize(function(e){
+        $(window).on('resize', function(e){
             windowHeight = e.currentTarget.innerHeight;
         });
 
@@ -1640,7 +1619,7 @@ jQuery(document).ready(function($) {
 
 			// Window re-sizing  - For those people screwing with the
 			// browser window and are not actually on a mobile device.
-		    $(window).resize( function() {
+		    $(window).on('resize', function() {
 
 				if ( false !== timeout ) {
 					clearTimeout( timeout );

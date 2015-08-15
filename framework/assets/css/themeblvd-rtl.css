@@ -138,7 +138,7 @@
  *   24.1 - Image
  *   24.2 - Video
  *   24.3 - Simple Slider
- *   24.4 - BG Slideshow
+ *   24.4 - BG Slideshow/Jumbotron Slider Fade
  *   24.5 - BG Video
  *   24.6 - Featured Banner
  * 25.0 - Post Display (loop.php)
@@ -224,7 +224,6 @@
  */
 
 /* Typography */
-html,
 body {
 	padding: 0;
 }
@@ -2126,8 +2125,21 @@ html[xmlns] .slides {
 		min-height: 200px;
 	}
 }
-.tb-jumbotron-slider .tb-slider-arrows {
+.tb-jumbotron-slider .carousel-control-wrap {
 	display: none;
+}
+.tb-jumbotron-slider .carousel-indicators {
+	bottom: 0;
+	padding: 0;
+}
+/* @noflip */
+.tb-jumbotron-slider .carousel-indicators li {
+	margin: 1px 2px;
+}
+.tb-jumbotron-slider .carousel-indicators li.active {
+	margin: 0 1px;
+}
+.tb-jumbotron-slider .tb-slider-arrows {
 	position: static;
 }
 .tb-jumbotron-slider .tb-slider-arrows a {
@@ -2143,11 +2155,11 @@ html[xmlns] .slides {
 }
 .tb-jumbotron-slider .tb-slider-arrows a.prev {
 	border-radius: 0 4px 4px 0;
-	left: 0;
+	right: 0;
 }
 .tb-jumbotron-slider .tb-slider-arrows a.next {
 	border-radius: 4px 0 0 4px;
-	right: 0;
+	left: 0;
 }
 .tb-jumbotron-slider .tb-text-block-wrap,
 .tb-jumbotron-slider .jumbotron-buttons {
@@ -2156,40 +2168,12 @@ html[xmlns] .slides {
 .tb-jumbotron-slider.animate .tb-text-block-wrap {
 	opacity: 0;
 	transform: translateY(-10px);
+	transition: none;
 }
 .tb-jumbotron-slider.animate .jumbotron-buttons {
 	opacity: 0;
 	transform: translateY(10px);
-}
-/* @noflip */
-.tb-jumbotron-slider .flex-control-nav {
-	list-style: none;
-	margin-left: -30%;
-	padding-left: 0;
-	position: absolute;
-	bottom: 10px;
-	left: 50%;
-	text-align: center;
-	width: 60%;
-	z-index: 15;
-}
-.tb-jumbotron-slider .flex-control-nav li {
-	cursor: pointer;
-	display: inline-block;
-	padding: 0 2px;
-}
-.tb-jumbotron-slider .flex-control-nav a {
-	display: inline-block;
-	background-color: #000 \9;
-	background-color: rgba(0,0,0,0);
-	border: 1px solid #ffffff;
-	border-radius: 10px;
-	text-indent: -9999px;
-	width: 12px;
-	height: 12px;
-}
-.tb-jumbotron-slider .flex-control-nav .flex-active {
-	background-color: #ffffff;
+	transition: none;
 }
 
 /* Common slider arrows */
@@ -4584,13 +4568,43 @@ button.mfp-arrow:active {
 /* =Parallax background
 -----------------------------------------------*/
 
-.tb-parallax.no-repeat {
-	background-position: 50% 0;
+.tb-parallax {
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
 }
-.tablet-on .tb-parallax.no-repeat,
-.mobile-on .tb-parallax.no-repeat {
-	background-position: top center !important;
-	background-size: cover !important;
+.tb-parallax .parallax-figure {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+/* @noflip */
+.tb-parallax .parallax-figure img,
+.tb-parallax .parallax-figure .img {
+	display: block;
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	max-width: none;
+	max-height: none;
+	min-width: 100%;
+	min-height: 120%;
+	-webkit-transform: translate3d(-50%, 0, 0);
+	transform: translate3d(-50%, 0, 0);
+	transform: translateX(-50%);
+	-webkit-transition: opacity .3s ease-in-out;
+	transition: opacity .3s ease-in-out;
+}
+.tb-parallax .parallax-figure .img {
+	height: 150%;
+}
+.tb-parallax .parallax-figure img.on,
+.tb-parallax .parallax-figure .img.on {
+	opacity: 1;
 }
 
 /* =Custom Layouts
@@ -5095,23 +5109,27 @@ blockquote small {
 	margin-bottom: 10px;
 }
 
-/* BG Slideshow */
-.tb-bg-slideshow  .carousel-inner {
+/* Bootstrap fade slider (used for bg slideshow and jumbotron slider) */
+.tb-bg-slideshow .carousel-inner,
+.tb-jumbotron-slider .carousel-inner {
 	position: static;
 }
-.tb-bg-slideshow .carousel-inner > .item {
+.tb-bg-slideshow .carousel-inner > .item,
+.tb-jumbotron-slider .carousel-inner > .item {
     display: block;
     left: 0 !important;
     opacity: 0;
-	-webkit-transition: opacity 1.5s;
-	-moz-transition: opacity 1.5s;
-	-o-transition: opacity 1.5s;
-	transition: opacity 1.5s;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
 }
-.tb-bg-slideshow .carousel-inner > .item.active {
+.tb-bg-slideshow .carousel-inner > .item.active,
+.tb-jumbotron-slider .carousel-inner > .item.active {
 	opacity: 1;
 }
-.tb-bg-slideshow .item {
+.tb-bg-slideshow .item,
+.tb-jumbotron-slider .item {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -5120,6 +5138,7 @@ blockquote small {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	height: 100%;
 }
 .slideshow-bg-align-top .tb-bg-slideshow .item {
 	background-position: center top;
@@ -5978,16 +5997,19 @@ blockquote small {
 .entry-content .tb-jumbotron {
 	margin-bottom: 20px;
 }
+.jumbotron-outer {
+	overflow: hidden;
+}
 .tb-jumbotron.has-bg {
 	margin-bottom: 10px;
 	padding: 48px 30px; /* Bootstrap default */
 }
 .jumbotron-outer.has-bg-shade .bg-shade {
 	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	top: -10px;
+	right: -10px;
+	bottom: -10px;
+	left: -10px;
 	z-index: 2;
 }
 .jumbotron-outer.has-bg-shade .jumbotron-wrap {

@@ -512,10 +512,14 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 
 		$class .= ' '.implode(" ", themeblvd_get_display_class($args));
 
-		$output = sprintf('<div class="%s" data-parallax="%s" style="%s">', $class, themeblvd_get_parallax_intensity($args), themeblvd_get_display_inline_style($args));
+		$output = sprintf('<div class="%s" style="%s">', $class, themeblvd_get_display_inline_style($args));
 
 		if ( in_array($args['bg_type'], array('image', 'slideshow', 'video')) && ! empty($args['apply_bg_shade']) ) {
 			$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
+		}
+
+		if ( themeblvd_do_parallax( $args ) ) {
+			$output .= themeblvd_get_bg_parallax( $args );
 		}
 
 		if ( $args['bg_type'] == 'video' && ! empty($args['bg_video']) ) {
