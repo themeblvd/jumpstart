@@ -5546,6 +5546,25 @@ blockquote small {
 .tb-mini-post-list.thumb-date .thumb-wrapper {
 	width: 50px;
 }
+.tb-mini-post-list .content-wrapper {
+	position: absolute;
+	top: 50%;
+	-ms-transform: translate(0, -50%); /* IE9 */
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+.tb-mini-post-list.thumb-small .content-wrapper {
+	right: 115px;
+}
+.tb-mini-post-list.thumb-smaller .content-wrapper {
+	right: 85px;
+}
+.tb-mini-post-list.thumb-smallest .content-wrapper {
+	right: 60px;
+}
+.tb-mini-post-list.thumb-date .content-wrapper {
+	right: 65px;
+}
 .tb-mini-post-list .entry-title {
 	font-size: 14px;
 	line-height: 1.2;
