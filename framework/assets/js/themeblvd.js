@@ -779,6 +779,9 @@ jQuery(document).ready(function($) {
 				pauseOnHover: pause,	// If nav exists, replace with manual action below
 				pauseOnAction: false, 	// Replaced with manual action below
 				start: function($s){
+					if ( ! $body.hasClass('mobile') ) {
+						$slider_wrap.find('.tb-slider-arrows').fadeIn(100);
+					}
 					$slider_wrap.find('.tb-loader').fadeOut(100);
 				}
 			});
