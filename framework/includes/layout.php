@@ -1130,33 +1130,48 @@ function themeblvd_get_jumbotron_slider( $args ) {
     );
     $args = wp_parse_args( $args, $defaults );
 
-	// Create ID for slider
-	$slider_id = str_replace('element_', 'jumbotron_slider_', $args['element_id']);
+	$output = '';
 
 	// Get data with hero units, saved outside of initial layout elements
 	$data = get_post_meta( $args['layout_id'], '_tb_builder_'.$args['element_id'].'_col_1', true ); // Ex: _tb_builder_element_123_col_1
 
-	// Wrapping CSS class
-	$class = 'tb-jumbotron-slider carousel';
-
-    if ( $args['nav'] ) {
-        $class .= ' has-nav';
-    }
-
-	// Slider auto rotate speed
-	$interval = $args['timeout'];
-
-	if ( $interval && intval($interval) < 100 ) {
-		$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
-	}
-
-	// Start output
-	$output  = sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="hover">', $slider_id, $class, $interval );
-	$output .= themeblvd_get_loader();
-	$output .= '<div class="carousel-control-wrap">';
-	$output .= '<div class="carousel-inner">';
-
 	if ( $data && ! empty($data['elements']) ) {
+
+		// Create ID for slider
+		$slider_id = str_replace('element_', 'jumbotron_slider_', $args['element_id']);
+
+		// Wrapping CSS classes
+		$class = 'tb-jumbotron-slider carousel';
+
+	    if ( $args['nav'] ) {
+	        $class .= ' has-nav';
+	    }
+
+		$fs = true;
+
+		foreach ( $data['elements'] as $elem ) {
+			if ( empty( $elem['options']['height_100vh'] ) ) {
+				$fs = false;
+				break;
+			}
+		}
+
+		if ( $fs ) {
+			$class .= ' fs'; // Added if all slides are full viewport height
+		}
+
+		// Slider auto rotate speed
+		$interval = $args['timeout'];
+
+		if ( $interval && intval($interval) < 100 ) {
+			$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
+		}
+
+		// Start output
+		$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="hover">', $slider_id, $class, $interval );
+		$output .= themeblvd_get_loader();
+		$output .= '<div class="carousel-control-wrap">';
+		$output .= '<div class="carousel-inner">';
 
 		$count = 1;
 
@@ -1172,40 +1187,40 @@ function themeblvd_get_jumbotron_slider( $args ) {
 
 			$count++;
 		}
-	}
 
-	$output .= '</div><!-- .carousel-inner (end) -->';
+		$output .= '</div><!-- .carousel-inner (end) -->';
 
-	// Navigation dots
-	if ( $args['nav'] ) {
-		if ( $data && ! empty($data['elements']) ) {
+		// Navigation dots
+		if ( $args['nav'] ) {
+			if ( $data && ! empty($data['elements']) ) {
 
-			$output .= '<ol class="carousel-indicators">';
-			$count = 0;
+				$output .= '<ol class="carousel-indicators">';
+				$count = 0;
 
-			foreach ( $data['elements'] as $elem ) {
+				foreach ( $data['elements'] as $elem ) {
 
-				$class = '';
+					$class = '';
 
-				if ( $count == 0 ) {
-					$class = 'active';
+					if ( $count == 0 ) {
+						$class = 'active';
+					}
+
+					$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $slider_id, $count, $class );
+
+					$count++;
 				}
 
-				$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $slider_id, $count, $class );
-
-				$count++;
+				$output .= '</ol>';
 			}
+	    }
 
-			$output .= '</ol>';
-		}
-    }
+		// Directional nav
+		$output .= themeblvd_get_slider_controls( array('carousel' => $slider_id, 'color' => 'trans') );
 
-	// Directional nav
-	$output .= themeblvd_get_slider_controls( array('carousel' => $slider_id, 'color' => 'trans') );
+		$output .= '</div><!-- .carousel-control-wrap (end) -->';
+		$output .= '</div><!-- .tb-jumbotron-slider (end) -->';
 
-	$output .= '</div><!-- .carousel-control-wrap (end) -->';
-	$output .= '</div><!-- .tb-jumbotron-slider (end) -->';
-
+	}
     return apply_filters( 'themeblvd_jumbotron_slider', $output, $args );
 }
 

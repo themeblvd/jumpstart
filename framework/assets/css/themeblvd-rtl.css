@@ -2125,6 +2125,15 @@ html[xmlns] .slides {
 		min-height: 200px;
 	}
 }
+@media (min-width: 992px) and (min-height: 500px) {
+	.tb-jumbotron-slider.fs,
+	.tb-jumbotron-slider.fs.has-nav {
+		min-height: 100vh;
+	}
+}
+.tb-jumbotron-slider .item.active {
+	z-index: 1;
+}
 .tb-jumbotron-slider .carousel-control-wrap {
 	display: none;
 }
