@@ -256,6 +256,14 @@
 #optionsframework .widefat td ul {
 	margin-top: 0;
 }
+#optionsframework .widefat .check-column {
+	padding: 10px 0 0 0;
+}
+#optionsframework .widefat tbody th.check-column,
+#optionsframework .widefat tfoot td.check-column,
+#optionsframework .widefat thead td.check-column {
+	padding-left: 0;
+}
 
 /* =Form Elements
 -----------------------------------------------*/
