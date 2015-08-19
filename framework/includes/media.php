@@ -262,12 +262,15 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 			$output = '';
 		}
 
-		if ( $args['img_before'] ) {
-			$output = $args['img_before'].$output;
-		}
+		if ( $output ) {
 
-		if ( $args['img_after'] ) {
-			$output .= $args['img_after'];
+			if ( $args['img_before'] ) {
+				$output = $args['img_before'].$output;
+			}
+
+			if ( $args['img_after'] ) {
+				$output .= $args['img_after'];
+			}
 		}
 
 		return apply_filters( 'themeblvd_post_thumbnail', $output, $args, $size );
@@ -327,12 +330,16 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	}
 
 	// Apply content before/after image, if necessary
-	if ( $args['img_before'] ) {
-		$output = $args['img_before'].$output;
-	}
+	if ( $output ) {
 
-	if ( $args['img_after'] ) {
-		$output .= $args['img_after'];
+		if ( $args['img_before'] ) {
+			$output = $args['img_before'].$output;
+		}
+
+		if ( $args['img_after'] ) {
+			$output .= $args['img_after'];
+		}
+
 	}
 
 	// Wrap image in link, if necessary
