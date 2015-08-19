@@ -130,9 +130,11 @@ if ( typeof Object.create !== 'function' ) {
                 content,
                 markup = '<div id="%id%" class="themeblvd-modal-wrap build" style="display:none;"> \
                                 <div class="themeblvd-modal %size%-modal %height%-height-modal media-modal wp-core-ui hide"> \
-                                    <a class="media-modal-close" href="#" title="Close"> \
-                                        <span class="media-modal-icon"></span> \
-                                    </a> \
+                                    <button type="button" class="button-link media-modal-close"> \
+                        				<span class="media-modal-icon"> \
+                        					<span class="screen-reader-text">x</span> \
+                        				</span> \
+                        			</button> \
                                     <div class="media-modal-content"> \
                                         <div class="media-frame wp-core-ui hide-menu hide-router"> \
                                             <div class="media-frame-title"> \

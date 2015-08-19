@@ -1183,9 +1183,11 @@ function themeblvd_editor( $args = array() ) {
 	<div id="themeblvd-editor-modal" class="themeblvd-modal-wrap hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-editor">
 
-			<a class="media-modal-close" href="#" title="Close">
-				<span class="media-modal-icon"></span>
-			</a>
+			<button type="button" class="button-link media-modal-close">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">x</span>
+				</span>
+			</button>
 
 			<div class="media-modal-content">
 				<div class="media-frame wp-core-ui hide-menu hide-router">
@@ -1247,9 +1249,11 @@ function themeblvd_icon_browser( $args = array() ) {
 	<div id="themeblvd-icon-browser-<?php echo $args['type']; ?>" class="themeblvd-modal-wrap themeblvd-icon-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
 
-			<a class="media-modal-close" href="#" title="Close">
-				<span class="media-modal-icon"></span>
-			</a>
+			<button type="button" class="button-link media-modal-close">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">x</span>
+				</span>
+			</button>
 
 			<div class="media-modal-content">
 				<div class="media-frame wp-core-ui hide-menu hide-router">
@@ -1313,9 +1317,11 @@ function themeblvd_post_browser( $args = array() ) {
 	<div id="themeblvd-post-browser" class="themeblvd-modal-wrap themeblvd-post-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
 
-			<a class="media-modal-close" href="#" title="Close">
-				<span class="media-modal-icon"></span>
-			</a>
+			<button type="button" class="button-link media-modal-close">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">x</span>
+				</span>
+			</button>
 
 			<div class="media-modal-content">
 				<div class="media-frame wp-core-ui hide-menu hide-router">
@@ -1414,9 +1420,11 @@ function themeblvd_texture_browser( $args = array() ) {
 	<div id="themeblvd-texture-browser" class="themeblvd-modal-wrap themeblvd-texture-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
 
-			<a class="media-modal-close" href="#" title="Close">
-				<span class="media-modal-icon"></span>
-			</a>
+			<button type="button" class="button-link media-modal-close">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">x</span>
+				</span>
+			</button>
 
 			<div class="media-modal-content">
 				<div class="media-frame wp-core-ui hide-menu hide-router">
