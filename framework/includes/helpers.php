@@ -44,11 +44,11 @@ function themeblvd_get_font_face( $option ) {
 		$name = explode( ':', $option['google'] );
 
 		// And also check for accidental space at end
-		$name = themeblvd_remove_trailing_char( $name[0] );
+		$name = trim( $name[0] );
 
 		// Add the deafult font stack to the end of the
 		// google font.
-		$stack = $name.', '.$stacks['default'];
+		$stack = '"'.$name.'", '.$stacks['default'];
 
 	} else {
 		$stack = $stacks[$option['face']];
