@@ -202,12 +202,12 @@ function jumpstart_ent_options() {
 			'top_text_color' => array(
 			    'id'		=> 'top_text_color',
 			    'name'		=> __('Top Bar Text Color', 'themeblvd'),
-			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'theme-blvd-layout-builder'),
+			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'themeblvd'),
 			    'std'		=> 'dark',
 			    'type'		=> 'select',
 			    'options'	=> array(
-			        'dark'	=> __('Dark Text', 'theme-blvd-layout-builder'),
-			        'light'	=> __('Light Text', 'theme-blvd-layout-builder')
+			        'dark'	=> __('Dark Text', 'themeblvd'),
+			        'light'	=> __('Light Text', 'themeblvd')
 			    )
 			),
 			'sub_group_start_3' => array(
@@ -356,8 +356,8 @@ function jumpstart_ent_options() {
 			),
 			'header_bg_video' => array(
 				'id'		=> 'header_bg_video',
-				'name'		=> __('Background Video', 'theme-blvd-layout-builder'),
-				'desc'		=> __('Setup a background video. For best results, make sure to use all three fields. The <em>.webm</em> file will display in Google Chrome, while the <em>.mp4</em> will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'theme-blvd-layout-builder'),
+				'name'		=> __('Background Video', 'themeblvd'),
+				'desc'		=> __('Setup a background video. For best results, make sure to use all three fields. The <em>.webm</em> file will display in Google Chrome, while the <em>.mp4</em> will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'),
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),
@@ -456,12 +456,12 @@ function jumpstart_ent_options() {
 			'header_text_color' => array(
 			    'id'		=> 'header_text_color',
 			    'name'		=> __('Text Color', 'themeblvd'),
-			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'theme-blvd-layout-builder'),
+			    'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'themeblvd'),
 			    'std'		=> 'dark',
 			    'type'		=> 'select',
 			    'options'	=> array(
-			        'dark'	=> __('Dark Text', 'theme-blvd-layout-builder'),
-			        'light'	=> __('Light Text', 'theme-blvd-layout-builder')
+			        'dark'	=> __('Dark Text', 'themeblvd'),
+			        'light'	=> __('Light Text', 'themeblvd')
 			    )
 			),
 			'header_apply_border_top' => array(
@@ -659,8 +659,8 @@ function jumpstart_ent_options() {
 			),
 			'footer_bg_texture' => array(
 				'id'		=> 'footer_bg_texture',
-				'name'		=> __('Background Texture', 'theme-blvd-layout-builder'),
-				'desc'		=> __('Select a background texture.', 'theme-blvd-layout-builder'),
+				'name'		=> __('Background Texture', 'themeblvd'),
+				'desc'		=> __('Select a background texture.', 'themeblvd'),
 				'type'		=> 'select',
 				'select'	=> 'textures',
 				'class'		=> 'hide receiver receiver-texture'

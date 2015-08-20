@@ -301,23 +301,23 @@ function setup_themeblvd_banner_meta() {
 			'apply_bg_shade' => array(
 				'id'		=> 'apply_bg_shade',
 				'name'		=> null,
-				'desc'		=> __('Shade background with transparent color.', 'theme-blvd-layout-builder'),
+				'desc'		=> __('Shade background with transparent color.', 'themeblvd'),
 				'std'		=> 0,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
 			'bg_shade_color' => array(
 				'id'		=> 'bg_shade_color',
-				'name'		=> __('Shade Color', 'theme-blvd-layout-builder'),
-				'desc'		=> __('Select the color you want overlaid on your background.', 'theme-blvd-layout-builder'),
+				'name'		=> __('Shade Color', 'themeblvd'),
+				'desc'		=> __('Select the color you want overlaid on your background.', 'themeblvd'),
 				'std'		=> '#000000',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
 			'bg_shade_opacity' => array(
 				'id'		=> 'bg_shade_opacity',
-				'name'		=> __('Shade Opacity', 'theme-blvd-layout-builder'),
-				'desc'		=> __('Select the opacity of the shade color overlaid on your background.', 'theme-blvd-layout-builder'),
+				'name'		=> __('Shade Opacity', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the shade color overlaid on your background.', 'themeblvd'),
 				'std'		=> '0.5',
 				'type'		=> 'select',
 				'options'	=> array(
