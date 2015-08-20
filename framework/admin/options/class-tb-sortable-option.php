@@ -2020,7 +2020,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id'		=> 'bg_opacity',
 				'name'		=> __('Background Color Opacity', 'themeblvd'),
-				'desc'		=> __('Select the opacity of the background color. Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the background color. Selecting "100%" means that the background color is not transparent, at all.', 'themeblvd'),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'	=> array(

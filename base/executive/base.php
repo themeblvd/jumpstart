@@ -185,7 +185,7 @@ function jumpstart_ex_options() {
 			'top_bg_color_opacity' => array(
 				'id'		=> 'top_bg_color_opacity',
 				'name'		=> __('Top Bar Background Color Opacity', 'themeblvd'),
-				'desc'		=> __('Select the opacity of the above background color. Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the above background color. Selecting "100%" means that the background color is not transparent, at all.', 'themeblvd'),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'	=> array(
@@ -312,7 +312,7 @@ function jumpstart_ex_options() {
 			'header_bg_color_opacity' => array(
 				'id'		=> 'header_bg_color_opacity',
 				'name'		=> __('Background Color Opacity', 'themeblvd'),
-				'desc'		=> __('Select the opacity of the background color. Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the background color. Selecting "100%" means that the background color is not transparent, at all.', 'themeblvd'),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'	=> array(
@@ -648,7 +648,7 @@ function jumpstart_ex_options() {
 			'menu_bg_color_opacity' => array(
 				'id'		=> 'menu_bg_color_opacity',
 				'name'		=> __('Background Color Opacity', 'themeblvd'),
-				'desc'		=> __('Select the opacity of the background color(s). Selecting "1.0" means that the background color is not transparent, at all.', 'themeblvd'),
+				'desc'		=> __('Select the opacity of the background color(s). Selecting "100%" means that the background color is not transparent, at all.', 'themeblvd'),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'	=> array(
