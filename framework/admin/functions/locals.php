@@ -35,10 +35,9 @@ function themeblvd_get_admin_locals( $type ) {
 		// Customizer JS strings
 		case 'customizer_js' :
 			$locals = array (
-				'disclaimer'			=> __( 'Note: The customizer provides a simulated preview, and results may vary slightly when published and viewed on your live website.', 'themeblvd' )
+				// ...
 			);
 
-		// @todo Could add more types other than JS here later.
 	}
 	return apply_filters( 'themeblvd_locals_'.$type, $locals );
 }

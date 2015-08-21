@@ -6,11 +6,6 @@ define( 'TB_THEME_ID', 'jumpstart' );
 define( 'TB_THEME_NAME', 'JumpStart' );
 
 /**
- * Modify framework's theme options
- */
-include_once( get_template_directory() . '/includes/options.php' );
-
-/**
  * Automatic updates
  */
 include_once( get_template_directory() . '/includes/updates.php' );

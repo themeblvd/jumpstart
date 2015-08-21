@@ -1,27 +1,6 @@
 jQuery(document).ready(function($){
 
 	// ---------------------------------------------------------
-	// Disclaimer
-	// ---------------------------------------------------------
-
-	// Because WordPress does not have any action hooks at the
-	// bottom of customizer form, we're just appending our
-	// disclaimer message there with JS.
-	//
-	// As a last resort for someone who wants this removed, I'm
-	// checking first that the disclaimer has text before displaying.
-	// So, this means you could use the filter to
-	// "themeblvd_locals_customizer_js" to remove the text.
-	//
-	// Reference: /framework/admin/functions/locals.php
-
-	// Check if text is present before displaying.
-	if( themeblvd.disclaimer )
-	{
-		$('.wp-full-overlay-sidebar-content').append('<span class="themeblvd-disclaimer">'+themeblvd.disclaimer+'</span>');
-	}
-
-	// ---------------------------------------------------------
 	// Logo
 	// ---------------------------------------------------------
 

@@ -24,6 +24,7 @@ Jump Start Changelog
 * Fixed: Minor admin styling issues with WordPress 4.3.
 * Fixed: Outputted Google Font name CSS declarations not being in quotes.
 * Removed: Parallax intensity options; now it's based on height of image, proportional to container.
+* Removed: Customizer's old, default framework elements, which weren't doing anything; we'll build on with theme bases in the future.
 * Updated Bootstrap to 3.3.5.
 * Updated FontAwesome to 4.4.
 
