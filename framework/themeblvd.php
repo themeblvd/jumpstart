@@ -25,7 +25,6 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebar-handler.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-handler.php' );
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/customizer.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/includes/general.php' );
@@ -43,7 +42,6 @@ add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
-add_action( 'customize_register', 'themeblvd_customizer_init' );
 add_action( 'after_setup_theme', 'themeblvd_plugin_compat' );
 add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 add_action( 'after_setup_theme', 'themeblvd_register_navs' );
@@ -85,8 +83,6 @@ if ( is_admin() ) {
 	add_action( 'admin_init', 'themeblvd_update_version' );
 	add_action( 'admin_menu', 'themeblvd_hijack_page_atts' );
 	add_action( 'save_post', 'themeblvd_save_page_atts' );
-	add_action( 'customize_controls_print_styles', 'themeblvd_customizer_styles' );
-	add_action( 'customize_controls_print_scripts', 'themeblvd_customizer_scripts' );
 	add_action( 'after_setup_theme', 'themeblvd_import' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
@@ -151,9 +147,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_quote', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_video', 7 );
-
-	// Apply initial hooks
-	add_action( 'wp_loaded', 'themeblvd_customizer_preview' );
 
 	// Apply other hooks after theme has had a chance to add filters
 	// Note: Options API/Settings finalized at after_setup_theme, 1000
