@@ -25,6 +25,7 @@ Jump Start Changelog
 * Fixed: Outputted Google Font name CSS declarations not being in quotes.
 * Removed: Parallax intensity options; now it's based on height of image, proportional to container.
 * Removed: Default customizer customizations and framework customizer API functions.
+* Regenerated default localization files.
 * Updated Bootstrap to 3.3.5.
 * Updated FontAwesome to 4.4.
 
