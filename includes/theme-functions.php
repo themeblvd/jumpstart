@@ -32,20 +32,20 @@ function jumpstart_bases() {
 
 		$bases = apply_filters('themeblvd_bases', array(
 			'dev' => array(
-				'name'		=> 'Developer',
-				'desc'		=> 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.'
+				'name'		=> __('Developer', 'themeblvd'),
+				'desc'		=> __('If you\'re a developer looking to create a custom-designed child theme, this is the base for you.', 'themeblvd')
 			),
 			'superuser' => array(
-				'name'		=> 'Super User',
-				'desc'		=> 'For the super user, this base builds on the default theme to give you more visual, user options.'
+				'name'		=> __('Super User', 'themeblvd'),
+				'desc'		=> __('For the super user, this base builds on the default theme to give you more visual, user options.', 'themeblvd')
 			),
 			'entrepreneur' => array(
-				'name'		=> 'Entrepreneur',
-				'desc'		=> 'For the modern entrepreneur, this base embodies the current design trends of the web industry.'
+				'name'		=> __('Entrepreneur', 'themeblvd'),
+				'desc'		=> __('For the modern entrepreneur, this base embodies the current design trends of the web industry.', 'themeblvd')
 			),
 			'executive' => array(
-				'name'		=> 'Executive',
-				'desc'		=> 'For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.'
+				'name'		=> __('Executive', 'themeblvd'),
+				'desc'		=> __('For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.', 'themeblvd')
 			)
 		));
 
