@@ -4,6 +4,8 @@ Jump Start Changelog
 2.0.2 - XX/XX/XXXX
 ------------------
 
+* Fixed: In executive base, standard header background elements were being outputted with Transparent header.
+
 --------------------------------------------------------------
 
 2.0.1 - 08/24/2015

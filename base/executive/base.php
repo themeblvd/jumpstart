@@ -2666,6 +2666,10 @@ add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend', 10, 
  */
 function jumpstart_ex_header_top() {
 
+	if ( themeblvd_config('suck_up') ) {
+		return;
+	}
+
 	$display = array(
 		'bg_type' 						=> themeblvd_get_option('header_bg_type'),
 		'bg_color' 						=> themeblvd_get_option('header_bg_color'),
