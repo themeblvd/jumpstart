@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Fixed: In executive base, standard header background elements were being outputted with Transparent header.
 * Fixed: Added missing localization for theme bases admin page text.
+* Fixed: Live changelog link in theme options footer.
 
 --------------------------------------------------------------
 
