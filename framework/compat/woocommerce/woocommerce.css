@@ -1170,6 +1170,7 @@ ul.woocommerce-info {
 	width: 80px;
 }
 .cart_item .product-thumbnail img {
+	max-width: 64px;
 	margin: 0; /* override .thumbnail, if added */
 }
 .cart_item .product-remove {
