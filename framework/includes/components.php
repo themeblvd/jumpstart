@@ -492,7 +492,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
     $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, $content );
 
     // Final output
-    $output = sprintf( '<div class="jumbotron-wrap">%s</div>', $jumbotron );
+    $output = sprintf( '<div class="jumbotron-wrap clearfix">%s</div>', $jumbotron );
 
 	// Add button to jump to next section, outside of main component
 	if ( $args['height_100vh'] && $args['section_jump'] ) {

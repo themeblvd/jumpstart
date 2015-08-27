@@ -2199,7 +2199,6 @@ html[xmlns] .slides {
 .tb-slider-arrows li a {
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 12px 12px;
 	display: block;
 	outline: none;
 	width: 24px;
@@ -2208,15 +2207,19 @@ html[xmlns] .slides {
 }
 .tb-slider-arrows li a.top {
 	background-image: url(../svg/chev-up.svg);
+	background-size: 13px 7px;
 }
 .tb-slider-arrows li a.right {
 	background-image: url(../svg/chev-right.svg);
+	background-size: 12px 21px;
 }
 .tb-slider-arrows li a.down {
 	background-image: url(../svg/chev-down.svg);
+	background-size: 13px 7px;
 }
 .tb-slider-arrows li a.left {
 	background-image: url(../svg/chev-left.svg);
+	background-size: 12px 21px;
 }
 .tb-slider-arrows li a.trans {
 	background-color: #dadada;
@@ -4603,6 +4606,7 @@ button.mfp-arrow:active {
 	max-height: none;
 	min-width: 100%;
 	min-height: 120%;
+	-ms-transform: translate(-50%, 0); /* IE9 */
 	-webkit-transform: translate3d(-50%, 0, 0);
 	transform: translate3d(-50%, 0, 0);
 	transform: translateX(-50%);
@@ -7011,7 +7015,7 @@ blockquote small {
 	background-image: url(../svg/chev-up.svg);
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 15px 15px;
+	background-size: 15px 8px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	display: none;
@@ -7042,7 +7046,7 @@ blockquote small {
 	background-image: url(../svg/chev-down.svg);
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 15px 15px;
+	background-size: 15px 8px;
 	-webkit-border-radius: 100%;
 	border-radius: 100%;
 	color: #ffffff;
