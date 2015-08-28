@@ -48,7 +48,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.__( 'Apply', 'themeblvd' ).'">';
 	$output .= '</div>';
 	$output .= '<div class="alignright tablenav-pages">';
-	$output .= '<span class="displaying-num">'.sprintf( _n( '1 '.$singular_name, '%s '.$name, count($posts) ), number_format_i18n( count($posts) ) ).'</span>';
+	$output .= '<span class="displaying-num">'.sprintf( _n( '1 '.$singular_name, '%s '.$name, count($posts), 'themeblvd' ), number_format_i18n( count($posts) ) ).'</span>';
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
 	$output .= '</div>';
