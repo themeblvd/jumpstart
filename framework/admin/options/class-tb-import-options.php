@@ -46,7 +46,33 @@ class Theme_Blvd_Import_Options {
 	 * @since 2.5.0
 	 */
 	public function add_page() {
-		add_submenu_page( null, null, null, themeblvd_admin_module_cap('options'), $this->id.'-import-options', array( $this, 'admin_page' ) );
+
+		global $submenu;
+
+		// Add admin page
+		add_theme_page( null, __('Theme Options Import', 'themeblvd'), themeblvd_admin_module_cap('options'), $this->id.'-import-options', array( $this, 'admin_page' ) );
+
+		// Hide the admin page link -- why?
+		//
+		// This admin page is linked to from an "Import" button
+		// on the theme options page, and so there's no need to
+		// clutter up main WP admin nav.
+		//
+		// And in trying to keep everything compliant with theme
+		// check, we must use the add_theme_page() function, and
+		// thus there's no way around our admin page link getting
+		// added at Appearance of WP admin menu. So, we can hide
+		// it by adding CSS class "hidden".
+
+		if ( ! empty($submenu['themes.php']) ) {
+			foreach ( $submenu['themes.php'] as $key => $val ) {
+				if ( isset($val[2]) && $val[2] == $this->id.'-import-options' ) {
+					$submenu['themes.php'][$key][4] = 'hidden';
+					break;
+				}
+			}
+		}
+
 	}
 
 	/**
