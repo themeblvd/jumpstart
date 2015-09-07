@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.2 - XX/XX/XXXX
 ------------------
 
+* **Updated Theme Blvd framework to 2.5.2**
 * Improvement: Better handling of svg icons in IE9/10.
 * Fixed: WooCommerce cart thumbnail sizing issue in Firefox.
 * Fixed: In executive base, standard header background elements were being outputted with Transparent header.
