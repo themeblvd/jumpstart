@@ -121,7 +121,6 @@ class Theme_Blvd_Options_Page {
 
 		// Arguments
 		$defaults = array(
-			'parent'		=> 'themes.php',
 			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
@@ -249,7 +248,7 @@ class Theme_Blvd_Options_Page {
 		// Allow for exporting
 		if ( $this->args['export'] ) {
 			$args = array(
-				'base_url'	=> admin_url($this->args['parent'].'?page='.$this->id),
+				'base_url'	=> admin_url('themes.php?page='.$this->id),
 				'cancel'	=> __('Nothing to export. Theme Options have never been saved.', 'themeblvd')
 			);
 			$export = new Theme_Blvd_Export_Options( $this->id, $args );
@@ -258,7 +257,7 @@ class Theme_Blvd_Options_Page {
 		// Allow for importing
 		if ( $this->args['import'] ) {
 			$args = array(
-				'redirect' => admin_url($this->args['parent'].'?page='.$this->id) // Current options page URL
+				'redirect' => admin_url('themes.php?page='.$this->id) // Current options page URL
 			);
 			$import = new Theme_Blvd_Import_Options( $this->id, $args );
 			$this->importer_url = $import->get_url(); // URL of page where importer is
@@ -285,7 +284,7 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	public function add_page() {
-		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
+		$admin_page = add_theme_page( $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
 		if ( ! function_exists('wp_enqueue_media') ) {
@@ -452,7 +451,7 @@ class Theme_Blvd_Options_Page {
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
 							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
 							<?php if ( $this->args['export'] ) : ?>
-								<a href="<?php echo admin_url($this->args['parent'].'?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
+								<a href="<?php echo admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
 				           	<?php endif; ?>
 				           	<?php if ( $this->args['import'] ) : ?>
 								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd' ); ?></a>

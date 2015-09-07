@@ -1445,7 +1445,6 @@ class Theme_Blvd_Options_API {
 	 */
 	public function set_args() {
 		$this->args = array(
-			'parent'		=> 'themes.php',
 			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
