@@ -218,10 +218,9 @@ function themeblvd_is_admin_module() {
  */
 function themeblvd_clear_options() {
 	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
-		check_admin_referer( themeblvd_get_option_name().'-options' );
-		$option_id = $_POST['themeblvd_clear_options'];
-		delete_option( $option_id );
-		add_settings_error( $option_id , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'themeblvd-error error' );
+		check_admin_referer( $_POST['option_page'].'-options' );
+		delete_option( $_POST['themeblvd_clear_options'] );
+		add_settings_error( $_POST['themeblvd_clear_options'] , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'themeblvd-error error' );
 	}
 }
 
