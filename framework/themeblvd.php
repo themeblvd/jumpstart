@@ -37,8 +37,6 @@ add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
 
 // Hooks
 add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
-add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
-add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
