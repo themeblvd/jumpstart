@@ -11,6 +11,7 @@ Jump Start Changelog
 * Fixed: Parallax background fallback not being horizontally centered in IE9.
 * Fixed: Added missing localization for theme bases admin page text.
 * Fixed: Live changelog link in theme options footer.
+* Updated TGMA plugin installer to 2.5.2.
 
 --------------------------------------------------------------
 
