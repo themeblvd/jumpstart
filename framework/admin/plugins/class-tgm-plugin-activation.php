@@ -8,7 +8,7 @@
  * or theme author for support.
  *
  * @package   TGM-Plugin-Activation
- * @version   2.5.2 -- Patched by Theme Blvd -- Search "Theme Blvd" for any edits
+ * @version   2.5.2
  * @link      http://tgmpluginactivation.com/
  * @author    Thomas Griffin, Gary Jones, Juliette Reinders Folmer
  * @copyright Copyright (c) 2011, Thomas Griffin
@@ -638,9 +638,8 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			if ( 'themes.php' === $this->parent_slug ) {
 				$this->page_hook = call_user_func( 'add_theme_page', $args['page_title'], $args['menu_title'], $args['capability'], $args['menu_slug'], $args['function'] );
 			} else {
-				// Theme Blvd: Removed call to add_submenu_page due to Envato requirement
-				// to pass Theme Check and not use in add_submenu_page(). This may cause
-				// issues if other plugins are utilizing the packaged class
+				$type = 'submenu';
+				$this->page_hook = call_user_func( "add_{$type}_page", $args['parent_slug'], $args['page_title'], $args['menu_title'], $args['capability'], $args['menu_slug'], $args['function'] );
 			}
 		}
 
