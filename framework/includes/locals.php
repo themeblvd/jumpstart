@@ -130,7 +130,7 @@ function themeblvd_get_local( $id ) {
 		$text = $locals[$id];
 	}
 
-	return $text;
+	return esc_html($text);
 }
 
 /**
