@@ -121,8 +121,8 @@ class Theme_Blvd_Options_Page {
 
 		// Arguments
 		$defaults = array(
-			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
-			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
+			'page_title' 	=> __('Theme Options', 'themeblvd'),
+			'menu_title' 	=> __('Theme Options', 'themeblvd'),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'		=> '',
 			'icon'			=> '',
@@ -392,7 +392,7 @@ class Theme_Blvd_Options_Page {
 			$base = themeblvd_get_base();
 
 			if ( $base && ( empty($settings['theme_base']) || $settings['theme_base'] != $base ) ) {
-				add_settings_error( $this->id, 'theme_base_error', __( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ), 'themeblvd-error error' );
+				add_settings_error( $this->id, 'theme_base_error', __('Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd'), 'themeblvd-error error' );
 			}
 		}
 
@@ -443,13 +443,13 @@ class Theme_Blvd_Options_Page {
 						<?php settings_fields( $this->id ); ?>
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit" class="options-page-footer">
-							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
-							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
+							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd'); ?>" />
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd'); ?>" />
 							<?php if ( $this->args['export'] ) : ?>
-								<a href="<?php echo admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
+								<a href="<?php echo admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<?php if ( $this->args['import'] ) : ?>
-								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd' ); ?></a>
+								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<div class="clear"></div>
 						</div>
@@ -485,7 +485,7 @@ class Theme_Blvd_Options_Page {
 		// file will be added to the option for the active theme.
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'themeblvd-error error' );
+			add_settings_error( $this->id, 'restore_defaults', __('Default options restored.', 'themeblvd'), 'themeblvd-error error' );
 			return themeblvd_get_option_defaults( $this->options );
 		}
 
@@ -577,7 +577,7 @@ class Theme_Blvd_Options_Page {
 		// Add update message for page re-fresh
 		if ( ! $this->sanitized ) {
 			// Avoid duplicates
-			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'themeblvd-updated updated' );
+			add_settings_error( $this->id, 'save_options', __('Options saved.', 'themeblvd'), 'themeblvd-updated updated' );
 		}
 
 		// We know sanitization has happenned at least

@@ -165,7 +165,7 @@ class Theme_Blvd_Envato_Updates {
 		// Make sure the themes directory can be found.
 		$themes_directory = WP_CONTENT_DIR . '/themes';
 		if ( ! $wp_filesystem->find_folder( $themes_directory ) ) {
-			wp_die( __( 'Unable to locate WordPress Theme directory.', 'themeblvd' ) );
+			wp_die( __('Unable to locate WordPress Theme directory.', 'themeblvd') );
 		}
 
 		// Locations
@@ -175,7 +175,7 @@ class Theme_Blvd_Envato_Updates {
 		// Create destination if needed
 		if ( ! $wp_filesystem->exists( $to ) ) {
 			if ( ! $wp_filesystem->mkdir( $to, FS_CHMOD_DIR ) ) {
-				show_message( __( 'Could not create directory for backup.', 'themeblvd' ) );
+				show_message( __('Could not create directory for backup.', 'themeblvd') );
 				wp_die();
 			}
 		}

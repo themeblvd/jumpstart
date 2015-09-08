@@ -12,31 +12,31 @@ function themeblvd_add_meta_boxes() {
 	global $_themeblvd_post_meta_box;
 
 	// General page meta box
-	if ( themeblvd_supports( 'meta', 'page_options' ) ) {
+	if ( themeblvd_supports('meta', 'page_options') ) {
 		$meta = setup_themeblvd_page_meta();
 		$_themeblvd_page_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 	// Theme Layout meta box (posts and pages)
-	if ( themeblvd_supports( 'meta', 'layout' ) ) {
+	if ( themeblvd_supports('meta', 'layout') ) {
 		$meta = setup_themeblvd_layout_meta();
 		$_themeblvd_layout_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 	// Banner meta box (posts and pages)
-	if ( themeblvd_supports( 'meta', 'banner' ) && themeblvd_supports( 'display', 'banner' ) ) {
+	if ( themeblvd_supports('meta', 'banner') ) {
 		$meta = setup_themeblvd_banner_meta();
 		$_themeblvd_banner_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 	// "Post Grid" and "Post List" page template meta box
-	if ( themeblvd_supports( 'meta', 'pto' ) ) {
+	if ( themeblvd_supports('meta', 'pto') ) {
 		$meta = setup_themeblvd_pto_meta();
 		$_themeblvd_post_template_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
 	// General post meta box
-	if ( themeblvd_supports( 'meta', 'post_options' ) ) {
+	if ( themeblvd_supports('meta', 'post_options') ) {
 		$meta = setup_themeblvd_post_meta();
 		$_themeblvd_post_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
@@ -55,31 +55,31 @@ function setup_themeblvd_page_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_page_options',						// make it unique
-			'title' 	=> __( 'Page Options', 'themeblvd' ),		// title to show for entire meta box
-			'page'		=> array( 'page' ),							// can contain post, page, link, or custom post type's slug
+			'title' 	=> __('Page Options', 'themeblvd'),			// title to show for entire meta box
+			'page'		=> array('page'),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'high'									// high, core, default, or low
 		),
 		'options' => array(
 			'tb_title' => array(
 				'id'		=> '_tb_title',
-				'name' 		=> __( 'Page Title', 'themeblvd' ),
-				'desc'		=> __( 'This option will be ignored if you\'ve applied the "Custom Layout" template.', 'themeblvd' ),
+				'name' 		=> __('Page Title', 'themeblvd'),
+				'desc'		=> __('This option will be ignored if you\'ve applied the "Custom Layout" template.', 'themeblvd'),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'show' 		=> __( 'Show page\'s title above content', 'themeblvd' ),
-					'hide' 		=> __( 'Hide page\'s title above content', 'themeblvd' )
+					'show' 		=> __('Show page\'s title above content', 'themeblvd'),
+					'hide' 		=> __('Hide page\'s title above content', 'themeblvd')
 				)
 			),
 			'tb_breadcrumbs' => array(
 				'id'		=> '_tb_breadcrumbs',
-				'name' 		=> __( 'Breadcrumbs', 'themeblvd' ),
-				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this page or not. This option will be ignored if you\'ve applied the "Custom Layout" or "Blank Page" templates.', 'themeblvd' ),
+				'name' 		=> __('Breadcrumbs', 'themeblvd'),
+				'desc'		=> __('Select whether you\'d like breadcrumbs to show on this page or not. This option will be ignored if you\'ve applied the "Custom Layout" or "Blank Page" templates.', 'themeblvd'),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default' 	=> __( 'Use default setting', 'themeblvd' ),
-					'show' 		=> __( 'Yes, show breadcrumbs', 'themeblvd' ),
-					'hide' 		=> __( 'No, hide breadcrumbs', 'themeblvd' )
+					'default' 	=> __('Use default setting', 'themeblvd'),
+					'show' 		=> __('Yes, show breadcrumbs', 'themeblvd'),
+					'hide' 		=> __('No, hide breadcrumbs', 'themeblvd')
 				)
 			),
 			'section_start' => array(
@@ -88,49 +88,49 @@ function setup_themeblvd_page_meta() {
 			),
 			'tb_thumb_link' => array(
 				'id'		=> '_tb_thumb_link',
-				'name' 		=> __( 'Featured Image Link', 'themeblvd' ),
-				'desc'		=> __( 'Here you can select how you\'d like this page\'s featured image to react when clicked, if you\'ve set one.', 'themeblvd' ),
+				'name' 		=> __('Featured Image Link', 'themeblvd'),
+				'desc'		=> __('Here you can select how you\'d like this page\'s featured image to react when clicked, if you\'ve set one.', 'themeblvd'),
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
 				'options'	=> array(
-					'inactive'	=> __( 'Featured image is not a link', 'themeblvd' ),
-					'thumbnail' => __( 'It links to its enlarged lightbox version', 'themeblvd' ),
-					'image' 	=> __( 'It links to a custom lightbox image', 'themeblvd' ),
-					'video' 	=> __( 'It links to a lightbox video', 'themeblvd' ),
-					'external' 	=> __( 'It links to a webpage', 'themeblvd' ),
+					'inactive'	=> __('Featured image is not a link', 'themeblvd'),
+					'thumbnail' => __('It links to its enlarged lightbox version', 'themeblvd'),
+					'image' 	=> __('It links to a custom lightbox image', 'themeblvd'),
+					'video' 	=> __('It links to a lightbox video', 'themeblvd'),
+					'external' 	=> __('It links to a webpage', 'themeblvd'),
 				),
 				'class'		=> 'trigger'
 			),
 			'tb_image_link' => array(
 				'id'		=> '_tb_image_link',
-				'name' 		=> __( 'Featured Image - Image Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', 'themeblvd' ),
+				'name' 		=> __('Featured Image - Image Link', 'themeblvd'),
+				'desc'		=> __('Enter the full URL of enlarged image that the featured image will link to.', 'themeblvd').'<br><br>'.__('Ex: http://your-site.com/uploads/image.jpg', 'themeblvd'),
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-image'
 			),
 			'tb_video_link' => array(
 				'id'		=> '_tb_video_link',
-				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL to a video page supported by <a href="http://codex.wordpress.org/Embeds" target="_blank">WordPress\'s oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
+				'name' 		=> __('Featured Image - Video Link', 'themeblvd'),
+				'desc'		=> sprintf(__('Enter the full URL to a video page supported by %s.', 'themeblvd'), '<a href="http://codex.wordpress.org/Embeds" target="_blank">'.__('WordPress\'s oEmbed', 'themeblvd').'</a>').'<br><br>'.__('Ex', 'themeblvd').': http://www.youtube.com/watch?v=ginTCwWfGNY<br>'.__('Ex', 'themeblvd').': http://vimeo.com/11178250',
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-video'
 			),
 			'tb_external_link' => array(
 				'id'		=> '_tb_external_link',
-				'name' 		=> __( 'Featured Image - External Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', 'themeblvd' ),
+				'name' 		=> __('Featured Image - External Link', 'themeblvd'),
+				'desc'		=> __('Enter the full URL of where the featured image will link.', 'themeblvd').'<br><br>'.__('Ex: http://google.com', 'themeblvd'),
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-external'
 			),
 			'tb_external_link_target' => array(
 				'id'		=> '_tb_external_link_target',
-				'name' 		=> __( 'Featured Image - External Link Target', 'themeblvd' ),
-				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', 'themeblvd' ),
+				'name' 		=> __('Featured Image - External Link Target', 'themeblvd'),
+				'desc'		=> __('Select whether you\'d like the external link to open in a new window or not.', 'themeblvd'),
 				'type' 		=> 'radio',
 				'std'		=> '_blank',
 				'options'	=> array(
-					'_blank'	=> __( 'Open link in new window', 'themeblvd' ),
-					'_self' 	=> __( 'Open link in same window', 'themeblvd' )
+					'_blank'	=> __('Open link in new window', 'themeblvd'),
+					'_self' 	=> __('Open link in same window', 'themeblvd')
 				),
 				'class'		=> 'hide receiver receiver-external'
 			),
@@ -163,7 +163,7 @@ function setup_themeblvd_layout_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_layout_options',						// make it unique
-			'title' 	=> __( 'Theme Layout', 'themeblvd' ),		// title to show for entire meta box
+			'title' 	=> __('Theme Layout', 'themeblvd'),		// title to show for entire meta box
 			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'side',									// normal, advanced, or side
 			'priority'	=> 'core'									// high, core, default, or low
@@ -171,22 +171,22 @@ function setup_themeblvd_layout_meta() {
 		'options' => array(
 			'layout_header' => array(
 				'id'		=> '_tb_layout_header',
-				'name' 		=> __( 'Header', 'themeblvd' ),
-				'desc'		=> __( 'Note: The transparent header option will work better when a banner or custom layout is applied to the page.', 'themeblvd' ).' <a href="https://vimeo.com/118959469" target="_blank">'.__('Learn More', 'themeblvd').'</a>',
+				'name' 		=> __('Header', 'themeblvd'),
+				'desc'		=> __('Note: The transparent header option will work better when a banner or custom layout is applied to the page.', 'themeblvd').' <a href="https://vimeo.com/118959469" target="_blank">'.__('Learn More', 'themeblvd').'</a>',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default'		=> __( 'Standard Header', 'themeblvd' ),
-					'suck_up'		=> __( 'Transparent Header', 'themeblvd' ),
-					'hide'			=> __( 'Hide Header', 'themeblvd' )
+					'default'		=> __('Standard Header', 'themeblvd'),
+					'suck_up'		=> __('Transparent Header', 'themeblvd'),
+					'hide'			=> __('Hide Header', 'themeblvd')
 				)
 			),
 			'layout_footer' => array(
 				'id'		=> '_tb_layout_footer',
-				'name' 		=> __( 'Footer', 'themeblvd' ),
+				'name' 		=> __('Footer', 'themeblvd'),
 				'type' 		=> 'select',
 				'options'	=> array(
-					'default'		=> __( 'Standard Footer', 'themeblvd' ),
-					'hide'			=> __( 'Hide Footer', 'themeblvd' )
+					'default'		=> __('Standard Footer', 'themeblvd'),
+					'hide'			=> __('Hide Footer', 'themeblvd')
 				)
 			)
 		)
@@ -220,8 +220,8 @@ function setup_themeblvd_banner_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_banner_options',						// make it unique
-			'title' 	=> __( 'Banner', 'themeblvd' ),				// title to show for entire meta box
-			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
+			'title' 	=> __('Banner', 'themeblvd'),				// title to show for entire meta box
+			'page'		=> array('page', 'post'),					// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'core',									// high, core, default, or low
 			'group'		=> '_tb_banner',							// save all option to single meta entry "_tb_banner"
@@ -290,7 +290,7 @@ function setup_themeblvd_banner_meta() {
 			'bg_video' => array(
 				'id'		=> 'bg_video',
 				'name'		=> __('Background Video', 'themeblvd'),
-				'desc'		=> __('Setup a background video. For best results, make sure to use all three fields. The <em>.webm</em> file will display in Google Chrome, while the <em>.mp4</em> will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'),
+				'desc'		=> sprintf(__('Setup a background video. For best results, make sure to use all three fields. The %s file will display in Google Chrome, while the %s will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'), '<code>.webm</em>', '<em>.mp4</em>'),
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),
@@ -414,31 +414,31 @@ function setup_themeblvd_banner_meta() {
 			'height' => array(
 				'id'		=> 'height',
 				'name' 		=> null,
-				'desc' 		=> __( 'Apply custom banner height.', 'themeblvd' ),
+				'desc' 		=> __('Apply custom banner height.', 'themeblvd'),
 				'std'		=> 0,
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 		    ),
 			'height_desktop' => array(
 				'id'		=> 'height_desktop',
-				'name' 		=> __( 'Desktop Height', 'themeblvd' ),
-				'desc' 		=> __( 'Banner height (in pixels) when displayed at the standard desktop viewport range.', 'themeblvd' ),
+				'name' 		=> __('Desktop Height', 'themeblvd'),
+				'desc' 		=> __('Banner height (in pixels) when displayed at the standard desktop viewport range.', 'themeblvd'),
 				'std'		=> '200',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 		    ),
 		    'height_tablet' => array(
 				'id'		=> 'height_tablet',
-				'name' 		=> __( 'Tablet Height', 'themeblvd' ),
-				'desc' 		=> __( 'Banner height (in pixels) when displayed at the tablet viewport range.', 'themeblvd' ),
+				'name' 		=> __('Tablet Height', 'themeblvd'),
+				'desc' 		=> __('Banner height (in pixels) when displayed at the tablet viewport range.', 'themeblvd'),
 				'std'		=> '120',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 		    ),
 		    'height_mobile' => array(
 				'id'		=> 'height_mobile',
-				'name' 		=> __( 'Mobile Height', 'themeblvd' ),
-				'desc' 		=> __( 'Banner height (in pixels) when displayed at the mobile viewport range.', 'themeblvd' ),
+				'name' 		=> __('Mobile Height', 'themeblvd'),
+				'desc' 		=> __('Banner height (in pixels) when displayed at the mobile viewport range.', 'themeblvd'),
 				'std'		=> '100',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
@@ -467,7 +467,7 @@ function setup_themeblvd_pto_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 			=> 'pto',										// make it unique
-			'title' 		=> __( 'Post Template Options', 'themeblvd' ),	// title to show for entire meta box
+			'title' 		=> __('Post Template Options', 'themeblvd'),	// title to show for entire meta box
 			'page'			=> array('page'),								// can contain post, page, link, or custom post type's slug
 			'context' 		=> 'normal',									// normal, advanced, or side
 			'priority'  	=> 'low',										// high, core, default, or low
@@ -475,72 +475,72 @@ function setup_themeblvd_pto_meta() {
 		),
 		'options' => array(
 			'desc' => array(
-                'desc'      => __( 'Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the <a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>.', 'themeblvd' ),
+                'desc'      => sprintf(__('Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the %s.', 'themeblvd'), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>'),
                 'type'      => 'info'
             ),
             'cat' => array(
                 'id'        => 'cat',
-                'name'      => __( 'cat', 'themeblvd' ),
-                'desc'      => __( 'Category ID(s) to include/exclude.<br>Ex: 1<br>Ex: 1,2,3<br>Ex: -1,-2,-3', 'themeblvd' ),
+                'name'      => __('cat', 'themeblvd'),
+                'desc'      => __('Category ID(s) to include/exclude.', 'themeblvd').'<br>'.__('Ex: 1', 'themeblvd').'<br>'.__('Ex: 1,2,3', 'themeblvd').'<br>'.__('Ex: -1,-2,-3', 'themeblvd'),
                 'type'      => 'text'
             ),
             'category_name' => array(
                 'id'        => 'category_name',
-                'name'      => __( 'category_name', 'themeblvd' ),
-                'desc'      => __( 'Category slug(s) to include.<br>Ex: cat-1<br>Ex: cat-1,cat-2', 'themeblvd' ),
+                'name'      => __('category_name', 'themeblvd'),
+                'desc'      => __('Category slug(s) to include.', 'themeblvd').'<br>'.__('Ex: cat-1', 'themeblvd').'<br>'.__('Ex: cat-1,cat-2', 'themeblvd'),
                 'type'      => 'text'
             ),
             'tag' => array(
                 'id'        => 'tag',
-                'name'      => __( 'tag', 'themeblvd' ),
-                'desc'      => __( 'Tag(s) to include.<br>Ex: tag-1<br>Ex: tag-1,tag-2', 'themeblvd' ),
+                'name'      => __('tag', 'themeblvd'),
+                'desc'      => __('Tag(s) to include.', 'themeblvd').'<br>'.__('Ex: tag-1', 'themeblvd').'<br>'.__('Ex: tag-1,tag-2', 'themeblvd'),
                 'type'      => 'text'
             ),
             'posts_per_page' => array(
                 'id'        => 'posts_per_page',
-                'name'      => __( 'posts_per_page', 'themeblvd' ),
-                'desc'      => __( 'Number of posts per page. This option gets used for the Blog template, Post List template, and when using "masonry" style display for the Post Grid and Post Showcase template. Standard grid view for Post Grid and Post Showcase templates use rows*columns.', 'themeblvd' ),
+                'name'      => __('posts_per_page', 'themeblvd'),
+                'desc'      => __('Number of posts per page. This option gets used for the Blog template, Post List template, and when using "masonry" style display for the Post Grid and Post Showcase template. Standard grid view for Post Grid and Post Showcase templates use rows*columns.', 'themeblvd'),
                 'type'      => 'text'
             ),
             'orderby' => array(
                 'id'        => 'orderby',
-                'name'      => __( 'orderby', 'themeblvd' ),
-                'desc'      => __( 'What to order posts by -- date, title, rand, etc.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd' ),
+                'name'      => __('orderby', 'themeblvd'),
+                'desc'      => __('What to order posts by -- date, title, rand, etc.', 'themeblvd').'<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">'.__('Learn More', 'themeblvd').'</a>',
                 'type'      => 'text'
             ),
             'order' => array(
                 'id'        => 'order',
-                'name'      => __( 'order', 'themeblvd' ),
-                'desc'      => __( 'How to order posts -- ASC or DESC.<br>(<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">Learn More</a>)', 'themeblvd' ),
+                'name'      => __('order', 'themeblvd'),
+                'desc'      => __('How to order posts -- ASC or DESC.', 'themeblvd').'<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">'.__('Learn More', 'themeblvd').'</a>',
                 'type'      => 'text'
             ),
             'query' => array(
                 'id'        => 'query',
-                'name'      => __( 'query', 'themeblvd' ),
-                'desc'      => __( 'A custom query string. This will override other options.<br>Ex: <small>tag=baking</small><br>Ex: <small>post_type=my_type&my_tax=my_term</small>', 'themeblvd' ),
+                'name'      => __('query', 'themeblvd'),
+                'desc'      => __('A custom query string. This will override other options.', 'themeblvd').'<br>'.__('Ex: tag=baking', 'themeblvd').'<br>'.__('Ex: post_type=my_type&my_tax=my_term', 'themeblvd'),
                 'type'      => 'text'
             ),
             'columns' => array(
                 'id'        => 'columns',
-                'name'      => __( 'columns', 'themeblvd' ),
-                'desc'      => __( 'Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, this will default to 3.', 'themeblvd' ),
+                'name'      => __('columns', 'themeblvd'),
+                'desc'      => __('Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, this will default to 3.', 'themeblvd'),
                 'type'      => 'text'
             ),
             'rows' => array(
                 'id'        => 'rows',
-                'name'      => __( 'rows', 'themeblvd' ),
-                'desc'      => __( 'Number of rows for Post Grid and Post Showcase templates. When empty, this will default to 4.<br><br><em>Note: This option does not apply when using masonry.</em>', 'themeblvd' ),
+                'name'      => __('rows', 'themeblvd'),
+                'desc'      => __('Number of rows for Post Grid and Post Showcase templates. When empty, this will default to 4.', 'themeblvd').'<br><br><em>'.__('Note: This option does not apply when using masonry.', 'themeblvd').'</em>',
                 'type'      => 'text'
             ),
             'tb_display' => array(
                 'id'        => 'tb_display',
-                'name'      => __( 'tb_display', 'themeblvd' ),
-                'desc'      => __( 'When using Post Grid and Post Showcase template, this custom field allows you to override the default display option.', 'themeblvd' ),
+                'name'      => __('tb_display', 'themeblvd'),
+                'desc'      => __('When using Post Grid and Post Showcase template, this custom field allows you to override the default display option.', 'themeblvd'),
                 'type'    	=> 'select',
                 'options'	=> array(
-                	'0'					=> __( 'Use default setting', 'themeblvd' ),
-                	'paginated' 		=> __( 'Standard', 'themeblvd' ),
-					'masonry_paginated' => __( 'Masonry', 'themeblvd' )
+                	'0'					=> __('Use default setting', 'themeblvd'),
+                	'paginated' 		=> __('Standard', 'themeblvd'),
+					'masonry_paginated' => __('Masonry', 'themeblvd')
                 )
             )
 		)
@@ -571,96 +571,96 @@ function setup_themeblvd_post_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_post_options',						// make it unique
-			'title' 	=> __( 'Post Options', 'themeblvd' ),		// title to show for entire meta box
-			'page'		=> array( 'post' ),							// can contain post, page, link, or custom post type's slug
+			'title' 	=> __('Post Options', 'themeblvd'),		// title to show for entire meta box
+			'page'		=> array('post'),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'high'									// high, core, default, or low
 		),
 		'options' => array(
 			'tb_meta' => array(
 				'id' 		=> '_tb_meta',
-				'name' 		=> __( 'Meta Information (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'Select if you\'d like the meta information (like date posted, author, etc) to show on this single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd' ),
+				'name' 		=> __('Meta Information (the single post)', 'themeblvd'),
+				'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show on this single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default setting', 'themeblvd' ),
-					'show'		=> __( 'Show meta info', 'themeblvd' ),
-					'hide' 		=> __( 'Hide meta info', 'themeblvd' )
+					'default'	=> __('Use default setting', 'themeblvd'),
+					'show'		=> __('Show meta info', 'themeblvd'),
+					'hide' 		=> __('Hide meta info', 'themeblvd')
 				)
 			),
 			'tb_sub_meta' => array(
 				'id' 		=> '_tb_sub_meta',
-				'name' 		=> __( 'Sub Meta Information (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'Select if you\'d like the sub meta information (like tags, categories, etc) to show on this single post.', 'themeblvd' ),
+				'name' 		=> __('Sub Meta Information (the single post)', 'themeblvd'),
+				'desc' 		=> __('Select if you\'d like the sub meta information (like tags, categories, etc) to show on this single post.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default setting', 'themeblvd' ),
-					'show'		=> __( 'Show sub meta info', 'themeblvd' ),
-					'hide' 		=> __( 'Hide sub meta info', 'themeblvd' )
+					'default'	=> __('Use default setting', 'themeblvd'),
+					'show'		=> __('Show sub meta info', 'themeblvd'),
+					'hide' 		=> __('Hide sub meta info', 'themeblvd')
 				)
 			),
 			'tb_author_box' => array(
 				'id' 		=> '_tb_author_box',
-				'name' 		=> __( 'Author Box (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'Select if you\'d like to display a box with information about the post\'s author.', 'themeblvd' ),
+				'name' 		=> __('Author Box (the single post)', 'themeblvd'),
+				'desc' 		=> __('Select if you\'d like to display a box with information about the post\'s author.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use WordPress user\'s default setting', 'themeblvd' ),
-					'1'			=> __( 'Show author box', 'themeblvd' ), // Use "1" to match default user checkbox option
-					'hide' 		=> __( 'Hide author box', 'themeblvd' )
+					'default'	=> __('Use WordPress user\'s default setting', 'themeblvd'),
+					'1'			=> __('Show author box', 'themeblvd'), // Use "1" to match default user checkbox option
+					'hide' 		=> __('Hide author box', 'themeblvd')
 				)
 			),
 			'tb_related_posts' => array(
 				'id' 		=> '_tb_related_posts',
-				'name' 		=> __( 'Related Posts (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd' ).'<br><br><em>'.__('Note: This only applies to standard posts.', 'themeblvd').'</em>',
+				'name' 		=> __('Related Posts (the single post)', 'themeblvd'),
+				'desc' 		=> __('Select if you\'d like to show more posts related to the one being viewed.', 'themeblvd').'<br><br><em>'.__('Note: This only applies to standard posts.', 'themeblvd').'</em>',
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default setting', 'themeblvd' ),
-					'tag'		=> __( 'Show related posts by tag', 'themeblvd' ),
-					'category'	=> __( 'Show related posts by category', 'themeblvd' ),
-					'hide' 		=> __( 'Hide related posts', 'themeblvd' )
+					'default'	=> __('Use default setting', 'themeblvd'),
+					'tag'		=> __('Show related posts by tag', 'themeblvd'),
+					'category'	=> __('Show related posts by category', 'themeblvd'),
+					'hide' 		=> __('Hide related posts', 'themeblvd')
 				)
 			),
 			'tb_comments' => array(
 				'id' 		=> '_tb_comments',
-				'name' 		=> __( 'Comments (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'This will hide the presence of comments on this single post.', 'themeblvd' ),
+				'name' 		=> __('Comments (the single post)', 'themeblvd'),
+				'desc' 		=> __('This will hide the presence of comments on this single post.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default setting', 'themeblvd' ),
-					'show'		=> __( 'Show comments', 'themeblvd' ),
-					'hide' 		=> __( 'Hide comments', 'themeblvd' )
+					'default'	=> __('Use default setting', 'themeblvd'),
+					'show'		=> __('Show comments', 'themeblvd'),
+					'hide' 		=> __('Hide comments', 'themeblvd')
 				)
 			),
 			'tb_breadcrumbs' => array(
 				'id'		=> '_tb_breadcrumbs',
-				'name' 		=> __( 'Breadcrumbs (the single post)', 'themeblvd' ),
-				'desc'		=> __( 'Select whether you\'d like breadcrumbs to show on this post or not.', 'themeblvd' ),
+				'name' 		=> __('Breadcrumbs (the single post)', 'themeblvd'),
+				'desc'		=> __('Select whether you\'d like breadcrumbs to show on this post or not.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options'	=> array(
-					'default' 	=> __( 'Use default setting', 'themeblvd' ),
-					'show' 		=> __( 'Yes, show breadcrumbs', 'themeblvd' ),
-					'hide' 		=> __( 'No, hide breadcrumbs', 'themeblvd' )
+					'default' 	=> __('Use default setting', 'themeblvd'),
+					'show' 		=> __('Yes, show breadcrumbs', 'themeblvd'),
+					'hide' 		=> __('No, hide breadcrumbs', 'themeblvd')
 				)
 			),
 			'tb_thumb' => array(
 				'id' 		=> '_tb_thumb',
-				'name' 		=> __( 'Featured Image Display (the single post)', 'themeblvd' ),
-				'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the post. This does <em>not</em> apply to when this post is listed in a post list or post grid. This option only refers to this single post.', 'themeblvd' ),
+				'name' 		=> __('Featured Image Display (the single post)', 'themeblvd'),
+				'desc' 		=> __('Select how you\'d like the featured image to show at the top of the post. This option only refers to this single post.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
-					'default'	=> __( 'Use default setting', 'themeblvd' ),
-					//'small'		=> __( 'Show small thumbnail', 'themeblvd' ),
-					'full' 		=> __( 'Show featured image', 'themeblvd' ),
-					'hide' 		=> __( 'Hide featured image', 'themeblvd' )
+					'default'	=> __('Use default setting', 'themeblvd'),
+					//'small'		=> __('Show small thumbnail', 'themeblvd'),
+					'full' 		=> __('Show featured image', 'themeblvd'),
+					'hide' 		=> __('Hide featured image', 'themeblvd')
 				)
 			),
 			'section_start' => array(
@@ -669,63 +669,63 @@ function setup_themeblvd_post_meta() {
 			),
 			'tb_thumb_link' => array(
 				'id'		=> '_tb_thumb_link',
-				'name' 		=> __( 'Featured Image Link (everywhere)', 'themeblvd' ),
-				'desc'		=> __( 'Here you can select how you\'d like this post\'s featured image to react when clicked. This <em>does</em> apply to both this single post page and when this post is used in a post list or post grid.', 'themeblvd' ),
+				'name' 		=> __('Featured Image Link (everywhere)', 'themeblvd'),
+				'desc'		=> __('Here you can select how you\'d like this post\'s featured image to react when clicked. This DOES apply to both this single post page and when this post is used in a blog, post list, post grid, or post showcase.', 'themeblvd'),
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
 				'options'	=> array(
-					'inactive'	=> __( 'Featured image is not a link', 'themeblvd' ),
-					'post' 		=> __( 'It links to its post', 'themeblvd' ),
-					'thumbnail' => __( 'It links to its enlarged lightbox version', 'themeblvd' ),
-					'image' 	=> __( 'It links to a custom lightbox image', 'themeblvd' ),
-					'video' 	=> __( 'It links to a lightbox video', 'themeblvd' ),
-					'external' 	=> __( 'It links to a webpage', 'themeblvd' ),
+					'inactive'	=> __('Featured image is not a link', 'themeblvd'),
+					'post' 		=> __('It links to its post', 'themeblvd'),
+					'thumbnail' => __('It links to its enlarged lightbox version', 'themeblvd'),
+					'image' 	=> __('It links to a custom lightbox image', 'themeblvd'),
+					'video' 	=> __('It links to a lightbox video', 'themeblvd'),
+					'external' 	=> __('It links to a webpage', 'themeblvd'),
 				),
 				'class'		=> 'trigger'
 			),
 			'tb_image_link' => array(
 				'id'		=> '_tb_image_link',
-				'name' 		=> __( 'Featured Image - Image Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL of enlarged image that the featured image will link to.<br><br>Ex: http://your-site.com/uploads/image.jpg', 'themeblvd' ),
+				'name' 		=> __('Featured Image - Image Link', 'themeblvd'),
+				'desc'		=> __('Enter the full URL of enlarged image that the featured image will link to.', 'themeblvd').'<br><br>'.__('Ex: http://your-site.com/uploads/image.jpg', 'themeblvd'),
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-image'
 			),
 			'tb_video_link' => array(
 				'id'		=> '_tb_video_link',
-				'name' 		=> __( 'Featured Image - Video Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL to a video page supported by <a href="http://codex.wordpress.org/Embeds" target="_blank">WordPress\'s oEmbed</a>.<br><br>Ex: http://www.youtube.com/watch?v=ginTCwWfGNY<br>Ex: http://vimeo.com/11178250', 'themeblvd' ),
+				'name' 		=> __('Featured Image - Video Link', 'themeblvd'),
+				'desc'		=> sprintf(__('Enter the full URL to a video page supported by %s.', 'themeblvd'), '<a href="http://codex.wordpress.org/Embeds" target="_blank">'.__('WordPress\'s oEmbed', 'themeblvd').'</a>').'<br><br>'.__('Ex', 'themeblvd').': http://www.youtube.com/watch?v=ginTCwWfGNY<br>'.__('Ex', 'themeblvd').': http://vimeo.com/11178250',
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-video'
 			),
 			'tb_external_link' => array(
 				'id'		=> '_tb_external_link',
-				'name' 		=> __( 'Featured Image - External Link', 'themeblvd' ),
-				'desc'		=> __( 'Enter the full URL of where the featured image will link.<br><br>Ex: http://google.com', 'themeblvd' ),
+				'name' 		=> __('Featured Image - External Link', 'themeblvd'),
+				'desc'		=> __('Enter the full URL of where the featured image will link.', 'themeblvd').'<br><br>'.__('Ex: http://google.com', 'themeblvd'),
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-external'
 			),
 			'tb_external_link_target' => array(
 				'id'		=> '_tb_external_link_target',
-				'name' 		=> __( 'Featured Image - External Link Target', 'themeblvd' ),
-				'desc'		=> __( 'Select whether you\'d like the external link to open in a new window or not.', 'themeblvd' ),
+				'name' 		=> __('Featured Image - External Link Target', 'themeblvd'),
+				'desc'		=> __('Select whether you\'d like the external link to open in a new window or not.', 'themeblvd'),
 				'type' 		=> 'radio',
 				'std'		=> '_blank',
 				'options'	=> array(
-					'_blank'	=> __( 'Open link in new window', 'themeblvd' ),
-					'_self' 	=> __( 'Open link in same window', 'themeblvd' )
+					'_blank'	=> __('Open link in new window', 'themeblvd'),
+					'_self' 	=> __('Open link in same window', 'themeblvd')
 				),
 				'class'		=> 'hide receiver receiver-external'
 			),
 			'tb_thumb_link_single' => array(
 				'id'		=> '_tb_thumb_link_single',
-				'name' 		=> __( 'Featured Image Link (the single post)', 'themeblvd' ),
-				'desc'		=> __( 'If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'themeblvd' ),
+				'name' 		=> __('Featured Image Link (the single post)', 'themeblvd'),
+				'desc'		=> __('If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'themeblvd'),
 				'std' 		=> 'yes',
 				'type' 		=> 'radio',
 				'options'	=> array(
-					'yes'		=> __( 'Yes, apply featured image link to single post', 'themeblvd' ),
-					'no' 		=> __( 'No, don\'t apply featured image link to single post', 'themeblvd' ),
-					'thumbnail'	=> __( 'Link it to its enlarged lightbox version', 'themeblvd' )
+					'yes'		=> __('Yes, apply featured image link to single post', 'themeblvd'),
+					'no' 		=> __('No, don\'t apply featured image link to single post', 'themeblvd'),
+					'thumbnail'	=> __('Link it to its enlarged lightbox version', 'themeblvd')
 				),
 				'class'		=> 'hide receiver receiver-post receiver-thumbnail receiver-image receiver-video receiver-external'
 			),
@@ -734,8 +734,8 @@ function setup_themeblvd_post_meta() {
 			),
 			'tb_sidebar_layout' => array(
 				'id' 		=> '_tb_sidebar_layout',
-				'name' 		=> __( 'Sidebar Layout', 'themeblvd' ),
-				'desc' 		=> __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', 'themeblvd' ),
+				'name' 		=> __('Sidebar Layout', 'themeblvd'),
+				'desc' 		=> __('Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', 'themeblvd'),
 				'std' 		=> 'default',
 				'type' 		=> 'images',
 				'options' 	=> $sidebar_layouts,
@@ -797,7 +797,7 @@ echo themeblvd_sidebar_layout_dropdown( $sidebar_layout );
 ?>
 <p><strong><?php _e('Order', 'themeblvd') ?></strong></p>
 <p><label class="screen-reader-text" for="menu_order"><?php _e('Order', 'themeblvd') ?></label><input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo esc_attr($post->menu_order) ?>" /></p>
-<p><?php if ( 'page' == $post->post_type ) _e( 'Need help? Use the Help tab in the upper right of your screen.', 'themeblvd' ); ?></p>
+<p><?php if ( 'page' == $post->post_type ) _e( 'Need help? Use the Help tab in the upper right of your screen.', 'themeblvd'); ?></p>
 <?php
 }
 endif;

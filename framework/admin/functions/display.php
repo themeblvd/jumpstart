@@ -38,17 +38,17 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 	//$output .= '<div class="tb-fancy-select condensed">';
 	$output .= '<select name="action">';
-	$output .= '<option value="-1" selected="selected">'.__( 'Bulk Actions', 'themeblvd' ).'</option>';
-	$output .= '<option value="trash">'.__( 'Delete', 'themeblvd' ).' '.esc_attr($name).'</option>';
+	$output .= '<option value="-1" selected="selected">'.__('Bulk Actions', 'themeblvd').'</option>';
+	$output .= '<option value="trash">'.__('Delete', 'themeblvd').' '.esc_attr($name).'</option>';
 	$output .= '</select>';
 	//$output .= '<span class="trigger"></span>';
 	//$output .= '<span class="textbox"></span>';
 	//$output .= '</div>';
 
-	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.__( 'Apply', 'themeblvd' ).'">';
+	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.__('Apply', 'themeblvd').'">';
 	$output .= '</div>';
 	$output .= '<div class="alignright tablenav-pages">';
-	$output .= '<span class="displaying-num">'.sprintf( _n( '1 '.$singular_name, '%s '.$name, count($posts), 'themeblvd' ), number_format_i18n( count($posts) ) ).'</span>';
+	$output .= '<span class="displaying-num">'.sprintf( _n( '1 '.$singular_name, '%s '.$name, count($posts), 'themeblvd'), number_format_i18n( count($posts) ) ).'</span>';
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
 	$output .= '</div>';
@@ -74,20 +74,20 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';
-						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.stripslashes(esc_html($post->post_title)).'</strong></a>';
+						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.__('Edit', 'themeblvd').'">'.stripslashes(esc_html($post->post_title)).'</strong></a>';
 						$output .= '<div class="row-actions">';
 						$output .= '<span class="edit">';
-						$output .= '<a href="#'.esc_attr($post->ID).'" class="edit-post edit-'.$post_type.'" title="'.__( 'Edit', 'themeblvd' ).'">'.__( 'Edit', 'themeblvd' ).'</a> | ';
+						$output .= '<a href="#'.esc_attr($post->ID).'" class="edit-post edit-'.$post_type.'" title="'.__('Edit', 'themeblvd').'">'.__('Edit', 'themeblvd').'</a> | ';
 						$output .= '</span>';
 
 						if ( $post_type == 'tb_layout' && defined('TB_BUILDER_PLUGIN_VERSION') && version_compare(TB_BUILDER_PLUGIN_VERSION, '2.0.0', '>=') ) {
 							$output .= '<span class="export">';
-							$output .= '<a href="'.admin_url('admin.php?page=themeblvd_builder&themeblvd_export_layout=true&layout='.esc_attr($post->ID).'&security='.wp_create_nonce('themeblvd_export_layout')).'" class="export-layout" title="'.__( 'Export', 'themeblvd' ).'">'.__( 'Export', 'themeblvd' ).'</a> | ';
+							$output .= '<a href="'.admin_url('admin.php?page=themeblvd_builder&themeblvd_export_layout=true&layout='.esc_attr($post->ID).'&security='.wp_create_nonce('themeblvd_export_layout')).'" class="export-layout" title="'.__('Export', 'themeblvd').'">'.__('Export', 'themeblvd').'</a> | ';
 							$output .= '</span>';
 						}
 
 						$output .= '<span class="trash">';
-						$output .= '<a title="'.__( 'Delete', 'themeblvd' ).'" href="#'.esc_attr($post->ID).'">'.__( 'Delete', 'themeblvd' ).'</a>';
+						$output .= '<a title="'.__('Delete', 'themeblvd').'" href="#'.esc_attr($post->ID).'">'.__('Delete', 'themeblvd').'</a>';
 						$output .= '</span>';
 						$output .= '</div>';
 						break;
@@ -171,7 +171,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 								$output .= '</ul>';
 
 							} else {
-								$output .= '<span class="inactive">'.__( 'No Assignments', 'themeblvd' ).'</span>';
+								$output .= '<span class="inactive">'.__('No Assignments', 'themeblvd').'</span>';
 							}
 						} else {
 							$output .= '<span class="inactive">[floating]</span>';
@@ -225,21 +225,21 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	for ( $i = 0; $i <= 6; $i++  ) {
 		switch( $i ) {
 			case 0:
-				$message = __( 'Hide Columns', 'themeblvd' );
+				$message = __('Hide Columns', 'themeblvd');
 				break;
 			case 1:
-				$message = __( '1 Column', 'themeblvd' );
+				$message = __('1 Column', 'themeblvd');
 				break;
 			default:
-				$message = strval($i).' '.__( 'Columns', 'themeblvd' );
+				$message = strval($i).' '.__('Columns', 'themeblvd');
 		}
 		$data_num[$i] = $message;
 	}
 
 	// Dropdowns for column width configuration
 	$data_grid = array(
-		'10' => __( '10-Column Grid', 'themeblvd' ),
-		'12' => __( '12-Column Grid', 'themeblvd' )
+		'10' => __('10-Column Grid', 'themeblvd'),
+		'12' => __('12-Column Grid', 'themeblvd')
 	);
 
 	/*------------------------------------------------------*/
@@ -351,23 +351,23 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 	// Setup content types to choose from
 	$sources = array(
-		'null' 		=> __( '- Select Content Type -', 'themeblvd' ),
+		'null' 		=> __('- Select Content Type -', 'themeblvd'),
 	);
 
 	if ( in_array ( 'widget', $options ) ) {
-		$sources['widget'] = __( 'Floating Widget Area', 'themeblvd' );
+		$sources['widget'] = __('Floating Widget Area', 'themeblvd');
 	}
 
 	if ( in_array ( 'current', $options ) ) {
-		$sources['current'] = __( 'Content of Current Page', 'themeblvd' );
+		$sources['current'] = __('Content of Current Page', 'themeblvd');
 	}
 
 	if ( in_array ( 'page', $options ) ) {
-		$sources['page'] = __( 'Content of External Page', 'themeblvd' );
+		$sources['page'] = __('Content of External Page', 'themeblvd');
 	}
 
 	if ( in_array ( 'raw', $options ) ) {
-		$sources['raw'] = __( 'Raw Content', 'themeblvd' );
+		$sources['raw'] = __('Raw Content', 'themeblvd');
 	}
 
 	// Set default value
@@ -398,7 +398,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
 
 			// Message to get plugin
-			$select_sidebar = '<p class="warning">'.sprintf(__( 'In order for you to use this feature you need to have the %s plugin activated.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
+			$select_sidebar = '<p class="warning">'.sprintf(__('In order for you to use this feature you need to have the %s plugin activated.', 'themeblvd'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
 
 		} else {
 
@@ -422,7 +422,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 				$select_sidebar .= '<span class="textbox"></span>';
 				$select_sidebar .= '</div><!-- .tb-fancy-select (end) -->';
 			} else {
-				$select_sidebar = '<p class="warning">'.__( 'You haven\'t created any floating widget areas.', 'themeblvd' ).'</p>';
+				$select_sidebar = '<p class="warning">'.__('You haven\'t created any floating widget areas.', 'themeblvd').'</p>';
 			}
 		}
 
@@ -455,7 +455,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$select_page .= '<span class="textbox"></span>';
 			$select_page .= '</div><!-- .tb-fancy-select (end) -->';
 		} else {
-			$select_page = '<p class="warning">'.__( 'You haven\'t created any pages.', 'themeblvd' ).'</p>';
+			$select_page = '<p class="warning">'.__('You haven\'t created any pages.', 'themeblvd').'</p>';
 		}
 
 	}
@@ -490,7 +490,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		}
 
 		$raw_content .= sprintf( '<input class="checkbox of-input" type="checkbox" name="%s" %s>', esc_attr( $name.'['.$id.'][raw_format]' ), $checked );
-		$raw_content .= __( 'Apply WordPress automatic formatting.', 'themeblvd' );
+		$raw_content .= __('Apply WordPress automatic formatting.', 'themeblvd');
 	}
 
 	/*------------------------------------------------------*/
@@ -503,21 +503,21 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	if ( in_array ( 'widget', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-widget">';
 		$output .= $select_sidebar;
-		$output .= '<p class="note">'.__( 'Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way in the Widget Area manager.', 'themeblvd' ).'</p>';
+		$output .= '<p class="note">'.__('Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way in the Widget Area manager.', 'themeblvd').'</p>';
 		$output .= '</div>';
 	}
 
 	if ( in_array ( 'page', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-page">';
 		$output .= $select_page;
-		$output .= '<p class="note">'.__( 'Select an external page to pull content from.', 'themeblvd' ).'</p>';
+		$output .= '<p class="note">'.__('Select an external page to pull content from.', 'themeblvd').'</p>';
 		$output .= '</div>';
 	}
 
 	if ( in_array ( 'raw', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-raw">';
 		$output .= $raw_content;
-		$output .= '<p class="note">'.__( 'You can use basic HTML here, and most shortcodes.', 'themeblvd' ).'</p>';
+		$output .= '<p class="note">'.__('You can use basic HTML here, and most shortcodes.', 'themeblvd').'</p>';
 		$output .= '</div>';
 	}
 
@@ -704,9 +704,9 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				}
 
 				$output .= sprintf( '<textarea name="%s">%s</textarea>', esc_attr( $name.'['.$id.']['.$field.']' ), $assignment_list );
-				$output .= sprintf( '<p class="note">%s</p>', sprintf(__( 'Enter in a comma-separated list of the %s you\'d like to add to the assignments.', 'themeblvd' ), $multiple) );
+				$output .= sprintf( '<p class="note">%s</p>', sprintf(__('Enter in a comma-separated list of the %s you\'d like to add to the assignments.', 'themeblvd'), $multiple) );
 				$output .= sprintf( '<p class="note"><em>%1$s: %2$s-1, %2$s-2, %2$s-3</em></p>', __('Example', 'themeblvd'), $single );
-				$output .= sprintf( '<p class="note"><em>%s</em></p>', sprintf(__( 'Note: Any %s entered that don\'t exist won\'t be saved.', 'themeblvd' ), $multiple) );
+				$output .= sprintf( '<p class="note"><em>%s</em></p>', sprintf(__('Note: Any %s entered that don\'t exist won\'t be saved.', 'themeblvd'), $multiple) );
 				break;
 
 			// Categories
@@ -815,9 +815,9 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 				if ( ! $disable ) {
 					$output .= sprintf( '<input type="text" name="%s" value="%s" />', esc_attr( $name.'['.$id.']['.$conditional['field'].']' ), $assignments['custom'] );
-					$output .= sprintf( '<p class="note">%s</p>', __( 'Enter in a custom <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">conditional statement</a>.', 'themeblvd' ) );
-					$output .= sprintf( '<p class="note"><em>%s</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>', __( 'Examples:', 'themeblvd' ) );
-					$output .= sprintf( '<p class="note"><em>%s</em></p>', __( 'Warning: Make sure you know what you\'re doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website.', 'themeblvd' ) );
+					$output .= sprintf( '<p class="note">%s</p>', __('Enter in a custom <a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">conditional statement</a>.', 'themeblvd') );
+					$output .= sprintf( '<p class="note"><em>%s</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>', __('Examples:', 'themeblvd') );
+					$output .= sprintf( '<p class="note"><em>%s</em></p>', __('Warning: Make sure you know what you\'re doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website.', 'themeblvd') );
 				}
 				break;
 
@@ -859,11 +859,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	$types = array(
-		'default'		=> __( 'Default Logo', 'themeblvd' ),
-		'title' 		=> __( 'Site Title', 'themeblvd' ),
-		'title_tagline' => __( 'Site Title + Tagline', 'themeblvd' ),
-		'custom' 		=> __( 'Custom Text', 'themeblvd' ),
-		'image' 		=> __( 'Image', 'themeblvd' )
+		'default'		=> __('Default Logo', 'themeblvd'),
+		'title' 		=> __('Site Title', 'themeblvd'),
+		'title_tagline' => __('Site Title + Tagline', 'themeblvd'),
+		'custom' 		=> __('Custom Text', 'themeblvd'),
+		'image' 		=> __('Image', 'themeblvd')
 	);
 
 	if ( $id != 'trans_logo' ) {
@@ -892,9 +892,9 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	$site_title  = '<p class="note">';
-	$site_title .= __( 'Current Site Title', 'themeblvd' ).': <strong>';
+	$site_title .= __('Current Site Title', 'themeblvd').': <strong>';
 	$site_title .= get_bloginfo( 'name' ).'</strong><br><br>';
-	$site_title .= __( 'You can change your site title and tagline by going <a href="options-general.php" target="_blank">here</a>.', 'themeblvd' );
+	$site_title .= __('You can change your site title and tagline by going <a href="options-general.php" target="_blank">here</a>.', 'themeblvd');
 	$site_title .= '</p>';
 
 	/*------------------------------------------------------*/
@@ -902,11 +902,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	$site_title_tagline  = '<p class="note">';
-	$site_title_tagline .= __( 'Current Site Title', 'themeblvd' ).': <strong>';
+	$site_title_tagline .= __('Current Site Title', 'themeblvd').': <strong>';
 	$site_title_tagline .= get_bloginfo( 'name' ).'</strong><br>';
-	$site_title_tagline .= __( 'Current Tagline', 'themeblvd' ).': <strong>';
+	$site_title_tagline .= __('Current Tagline', 'themeblvd').': <strong>';
 	$site_title_tagline .= get_bloginfo( 'description' ).'</strong><br><br>';
-	$site_title_tagline .= __( 'You can change your site title by going <a href="options-general.php" target="_blank">here</a>.', 'themeblvd' );
+	$site_title_tagline .= __('You can change your site title by going <a href="options-general.php" target="_blank">here</a>.', 'themeblvd');
 	$site_title_tagline .= '</p>';
 
 	/*------------------------------------------------------*/
@@ -923,11 +923,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		$current_tagline = $val['custom_tagline'];
 	}
 
-	$custom_text  = sprintf( '<p><label class="inner-label"><strong>%s</strong></label>', __( 'Title', 'themeblvd' ) );
+	$custom_text  = sprintf( '<p><label class="inner-label"><strong>%s</strong></label>', __('Title', 'themeblvd') );
 	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name.'['.$id.'][custom]' ), esc_attr( $current_value ) );
-	$custom_text .= sprintf( '<p><label class="inner-label"><strong>%s</strong> (%s)</label>', __( 'Tagline', 'themeblvd' ), __( 'optional', 'themeblvd' ) );
+	$custom_text .= sprintf( '<p><label class="inner-label"><strong>%s</strong> (%s)</label>', __('Tagline', 'themeblvd'), __('optional', 'themeblvd') );
 	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name.'['.$id.'][custom_tagline]' ), esc_attr( $current_tagline ) );
-	$custom_text .= sprintf( '<p class="note">%s</p>', __( 'Insert your custom text.', 'themeblvd' ) );
+	$custom_text .= sprintf( '<p class="note">%s</p>', __('Insert your custom text.', 'themeblvd') );
 
 	/*------------------------------------------------------*/
 	/* Image
@@ -955,13 +955,13 @@ function themeblvd_logo_option( $id, $name, $val ) {
 
 	// Standard Image
 	$image_upload  = '<div class="section-upload image-standard">';
-	$image_upload .= '<label class="inner-label"><strong>'.__( 'Standard Image', 'themeblvd' ).'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>'.__('Standard Image', 'themeblvd').'</strong></label>';
 	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'value_height' => $current_value['height'], 'name' => 'image' ) );
 	$image_upload .= '</div>';
 
 	// Retina image (2x)
 	$image_upload .= '<div class="section-upload image-2x">';
-	$image_upload .= '<label class="inner-label"><strong>'.__( 'HiDPI-optimized Image (optional)', 'themeblvd' ).'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>'.__('HiDPI-optimized Image (optional)', 'themeblvd').'</strong></label>';
 	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo_2x', 'id' => $id, 'value' => $current_retina['url'], 'name' => 'image_2x' ) );
 	$image_upload .= '</div>';
 
@@ -1113,9 +1113,9 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
 
 	$sidebar_layouts = themeblvd_sidebar_layouts();
 
-	$output  = '<p><strong>'.__( 'Sidebar Layout', 'themeblvd' ).'</strong></p>';
+	$output  = '<p><strong>'.__('Sidebar Layout', 'themeblvd').'</strong></p>';
 	$output .= '<select name="_tb_sidebar_layout">';
-	$output .= '<option value="default">'.__( 'Default Sidebar Layout', 'themeblvd' ).'</option>';
+	$output .= '<option value="default">'.__('Default Sidebar Layout', 'themeblvd').'</option>';
 
 	foreach ( $sidebar_layouts as $sidebar_layout ) {
 		$output .= sprintf( '<option value="%s" %s>%s</option>', $sidebar_layout['id'], selected( $sidebar_layout['id'], $layout, false ), $sidebar_layout['name'] );
@@ -1140,12 +1140,12 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 
 	// Make sure layout builder plugin is installed
 	if ( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
-		$message = sprintf( __( 'In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'themeblvd' ), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
+		$message = sprintf( __('In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'themeblvd'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
 		return sprtinf( '<p class="tb_custom_layout"><em>%s</em></p>', $message );
 	}
 
 	$custom_layouts = get_posts('post_type=tb_layout&numberposts=-1');
-	$output = '<p><strong>'.__( 'Custom Layout', 'themeblvd' ).'</strong></p>';
+	$output = '<p><strong>'.__('Custom Layout', 'themeblvd').'</strong></p>';
 
 	if ( ! empty( $custom_layouts ) ) {
 
@@ -1156,7 +1156,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 		$output .= '</select>';
 
 	} else {
-		$output .='<p class="tb_custom_layout"><em>'.__( 'You haven\'t created any custom layouts in the Layout builder yet.', 'themeblvd' ).'</em></p>';
+		$output .='<p class="tb_custom_layout"><em>'.__('You haven\'t created any custom layouts in the Layout builder yet.', 'themeblvd').'</em></p>';
 	}
 
 	return $output;
@@ -1595,7 +1595,7 @@ function themeblvd_options_footer_text_default() {
 	// Changelog link
 	$changelog = '';
 	if ( defined( 'TB_THEME_ID' ) ) {
-		$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), __( 'Changelog', 'themeblvd' ) );
+		$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), __('Changelog', 'themeblvd') );
 	}
 
 	// Output

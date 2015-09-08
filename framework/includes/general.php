@@ -301,15 +301,15 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 	if ( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
 		if ( ! is_null( $message ) ) {
 
-			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd' ), $function, $version, $message ) );
+			trigger_error( sprintf( __('%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd'), $function, $version, $message ) );
 
 		} elseif ( ! is_null( $replacement ) ) {
 
-			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'themeblvd' ), $function, $version, $replacement ) );
+			trigger_error( sprintf( __('%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'themeblvd'), $function, $version, $replacement ) );
 
 		} else {
 
-			trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available.', 'themeblvd' ), $function, $version ) );
+			trigger_error( sprintf( __('%1$s is <strong>deprecated</strong> since version %2$s of the Theme Blvd framework with no alternative available.', 'themeblvd'), $function, $version ) );
 
 		}
 	}
@@ -417,8 +417,8 @@ function themeblvd_register_navs() {
 
 	// Setup nav menus
 	$menus = array(
-		'primary' => __( 'Primary Navigation', 'themeblvd' ),
-		'footer' => __( 'Footer Navigation', 'themeblvd' )
+		'primary' => __('Primary Navigation', 'themeblvd'),
+		'footer' => __('Footer Navigation', 'themeblvd')
 	);
 	$menus = apply_filters( 'themeblvd_nav_menus', $menus );
 
@@ -512,7 +512,7 @@ function themeblvd_admin_menu_bar() {
 		$wp_admin_bar->add_node(
 			array(
 				'id'			=> 'tb_theme_options',
-				'title'			=> __( 'Theme Options', 'themeblvd' ),
+				'title'			=> __('Theme Options', 'themeblvd'),
 				'parent'		=> 'site-name',
 				'href'			=> admin_url( $modules['options'] )
 			)
@@ -525,7 +525,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_sliders',
-					'title'		=> __( 'Sliders', 'themeblvd' ),
+					'title'		=> __('Sliders', 'themeblvd'),
 					'parent'	=> 'site-name',
 					'href'		=> admin_url( $modules['sliders'] )
 				)
@@ -539,7 +539,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_builder',
-					'title'		=> __( 'Templates', 'themeblvd' ),
+					'title'		=> __('Templates', 'themeblvd'),
 					'parent'	=> 'site-name',
 					'href'		=> admin_url( $modules['builder'] )
 				)
@@ -553,7 +553,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_sidebars',
-					'title'		=> __( 'Widget Areas', 'themeblvd' ),
+					'title'		=> __('Widget Areas', 'themeblvd'),
 					'parent'	=> 'site-name',
 					'href' 		=> admin_url( $modules['sidebars'] )
 				)
@@ -764,126 +764,126 @@ function themeblvd_get_textures() {
 
 	$textures = array(
 		'arches' => array(
-			'name' 		=> __( 'Arches', 'themeblvd' ),
+			'name' 		=> __('Arches', 'themeblvd'),
 			'url' 		=> $imagepath.'arches.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '103px 23px'
 		),
 		'boxy' => array(
-			'name' 		=> __( 'Boxy', 'themeblvd' ),
+			'name' 		=> __('Boxy', 'themeblvd'),
 			'url' 		=> $imagepath.'boxy.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'brick_wall' => array(
-			'name' 		=> __( 'Brick Wall', 'themeblvd' ),
+			'name' 		=> __('Brick Wall', 'themeblvd'),
 			'url' 		=> $imagepath.'brick_wall.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_classic' => array(
-			'name' 		=> __( 'Carbon Classic', 'themeblvd' ),
+			'name' 		=> __('Carbon Classic', 'themeblvd'),
 			'url' 		=> $imagepath.'carbon_classic.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_diagonal' => array(
-			'name' 		=> __( 'Carbon Diagonal', 'themeblvd' ),
+			'name' 		=> __('Carbon Diagonal', 'themeblvd'),
 			'url' 		=> $imagepath.'carbon_diagonal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_weave' => array(
-			'name' 		=> __( 'Carbon Weave', 'themeblvd' ),
+			'name' 		=> __('Carbon Weave', 'themeblvd'),
 			'url' 		=> $imagepath.'carbon_weave.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'chex' => array(
-			'name' 		=> __( 'Chex', 'themeblvd' ),
+			'name' 		=> __('Chex', 'themeblvd'),
 			'url' 		=> $imagepath.'chex.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'circles' => array(
-			'name' 		=> __( 'Circles', 'themeblvd' ),
+			'name' 		=> __('Circles', 'themeblvd'),
 			'url' 		=> $imagepath.'circles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'climpek' => array(
-			'name' 		=> __( 'Climpek', 'themeblvd' ),
+			'name' 		=> __('Climpek', 'themeblvd'),
 			'url' 		=> $imagepath.'climpek.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'concrete' => array(
-			'name' 		=> __( 'Concrete', 'themeblvd' ),
+			'name' 		=> __('Concrete', 'themeblvd'),
 			'url' 		=> $imagepath.'concrete.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cross' => array(
-			'name' 		=> __( 'Crosses', 'themeblvd' ),
+			'name' 		=> __('Crosses', 'themeblvd'),
 			'url' 		=> $imagepath.'cross.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'crystal' => array(
-			'name' 		=> __( 'Crystal', 'themeblvd' ),
+			'name' 		=> __('Crystal', 'themeblvd'),
 			'url' 		=> $imagepath.'crystal.png',
 			'position' 	=> '50% 50%',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cube_stack' => array(
-			'name' 		=> __( 'Cube Stack', 'themeblvd' ),
+			'name' 		=> __('Cube Stack', 'themeblvd'),
 			'url' 		=> $imagepath.'cube_stack.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'denim' => array(
-			'name' 		=> __( 'Denim', 'themeblvd' ),
+			'name' 		=> __('Denim', 'themeblvd'),
 			'url' 		=> $imagepath.'denim.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'diagnol_thin' => array(
-			'name' 		=> __( 'Diagonal (thin)', 'themeblvd' ),
+			'name' 		=> __('Diagonal (thin)', 'themeblvd'),
 			'url' 		=> $imagepath.'diagnol.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '6px 6px'
 		),
 		'diagnol_thick' => array(
-			'name' 		=> __( 'Diagonal (thick)', 'themeblvd' ),
+			'name' 		=> __('Diagonal (thick)', 'themeblvd'),
 			'url' 		=> $imagepath.'diagnol.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '20px 20px'
 		),
 		'diamonds' => array(
-			'name' 		=> __( 'Diamonds', 'themeblvd' ),
+			'name' 		=> __('Diamonds', 'themeblvd'),
 			'url' 		=> $imagepath.'diamonds.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'escheresque' => array(
-			'name' 		=> __( 'Escheresque', 'themeblvd' ),
+			'name' 		=> __('Escheresque', 'themeblvd'),
 			'url' 		=> $imagepath.'escheresque.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
@@ -891,489 +891,489 @@ function themeblvd_get_textures() {
 			'size'		=> 'auto'
 		),
 		'grid' => array(
-			'name' 		=> __( 'Grid', 'themeblvd' ),
+			'name' 		=> __('Grid', 'themeblvd'),
 			'url' 		=> $imagepath.'grid.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'grunge' => array(
-			'name' 		=> __( 'Grunge', 'themeblvd' ),
+			'name' 		=> __('Grunge', 'themeblvd'),
 			'url' 		=> $imagepath.'grunge.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'feather' => array(
-			'name' 		=> __( 'Feather', 'themeblvd' ),
+			'name' 		=> __('Feather', 'themeblvd'),
 			'url' 		=> $imagepath.'feather.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '500px 333px'
 		),
 		'hexagons' => array(
-			'name' 		=> __( 'Hexagons', 'themeblvd' ),
+			'name' 		=> __('Hexagons', 'themeblvd'),
 			'url' 		=> $imagepath.'hexagons.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'honey_comb' => array(
-			'name' 		=> __( 'Honey Comb', 'themeblvd' ),
+			'name' 		=> __('Honey Comb', 'themeblvd'),
 			'url' 		=> $imagepath.'honey_comb.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'leather' => array(
-			'name' 		=> __( 'Leather', 'themeblvd' ),
+			'name' 		=> __('Leather', 'themeblvd'),
 			'url' 		=> $imagepath.'leather.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'metal' => array(
-			'name' 		=> __( 'Metal', 'themeblvd' ),
+			'name' 		=> __('Metal', 'themeblvd'),
 			'url' 		=> $imagepath.'metal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic' => array(
-			'name' 		=> __( 'Mosaic', 'themeblvd' ),
+			'name' 		=> __('Mosaic', 'themeblvd'),
 			'url' 		=> $imagepath.'mosaic.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic_triangles' => array(
-			'name' 		=> __( 'Mosaic Triangles', 'themeblvd' ),
+			'name' 		=> __('Mosaic Triangles', 'themeblvd'),
 			'url' 		=> $imagepath.'mosaic_triangles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'noise' => array(
-			'name' 		=> __( 'Noise', 'themeblvd' ),
+			'name' 		=> __('Noise', 'themeblvd'),
 			'url' 		=> $imagepath.'noise.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'paper' => array(
-			'name' 		=> __( 'Paper', 'themeblvd' ),
+			'name' 		=> __('Paper', 'themeblvd'),
 			'url' 		=> $imagepath.'paper.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pixel_weave' => array(
-			'name' 		=> __( 'Pixel Weave', 'themeblvd' ),
+			'name' 		=> __('Pixel Weave', 'themeblvd'),
 			'url' 		=> $imagepath.'pixel_weave.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '64px 64px'
 		),
 		'plaid' => array(
-			'name' 		=> __( 'Plaid', 'themeblvd' ),
+			'name' 		=> __('Plaid', 'themeblvd'),
 			'url' 		=> $imagepath.'plaid.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pyramids' => array(
-			'name' 		=> __( 'Pyramids', 'themeblvd' ),
+			'name' 		=> __('Pyramids', 'themeblvd'),
 			'url' 		=> $imagepath.'pyramids.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'rubber' => array(
-			'name' 		=> __( 'Rubber', 'themeblvd' ),
+			'name' 		=> __('Rubber', 'themeblvd'),
 			'url' 		=> $imagepath.'rubber.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'skulls' => array(
-			'name' 		=> __( 'Skulls', 'themeblvd' ),
+			'name' 		=> __('Skulls', 'themeblvd'),
 			'url' 		=> $imagepath.'skulls.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'squares' => array(
-			'name' 		=> __( 'Squares', 'themeblvd' ),
+			'name' 		=> __('Squares', 'themeblvd'),
 			'url' 		=> $imagepath.'squares.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'stacked_circles' => array(
-			'name' 		=> __( 'Stacked Circles', 'themeblvd' ),
+			'name' 		=> __('Stacked Circles', 'themeblvd'),
 			'url' 		=> $imagepath.'stacked_circles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '9px 9px'
 		),
 		'swirl' => array(
-			'name' 		=> __( 'Swirl', 'themeblvd' ),
+			'name' 		=> __('Swirl', 'themeblvd'),
 			'url' 		=> $imagepath.'swirl.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 100px'
 		),
 		'textile' => array(
-			'name' 		=> __( 'Textile', 'themeblvd' ),
+			'name' 		=> __('Textile', 'themeblvd'),
 			'url' 		=> $imagepath.'textile.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'tiles' => array(
-			'name' 		=> __( 'Tiles', 'themeblvd' ),
+			'name' 		=> __('Tiles', 'themeblvd'),
 			'url' 		=> $imagepath.'tiles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 99px'
 		),
 		'vertical_fabric' => array(
-			'name' 		=> __( 'Vertical Fabric', 'themeblvd' ),
+			'name' 		=> __('Vertical Fabric', 'themeblvd'),
 			'url' 		=> $imagepath.'vertical_fabric.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'vintage' => array(
-			'name' 		=> __( 'Vintage', 'themeblvd' ),
+			'name' 		=> __('Vintage', 'themeblvd'),
 			'url' 		=> $imagepath.'vintage.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'waves' => array(
-			'name' 		=> __( 'Waves', 'themeblvd' ),
+			'name' 		=> __('Waves', 'themeblvd'),
 			'url' 		=> $imagepath.'waves.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood' => array(
-			'name' 		=> __( 'Wood', 'themeblvd' ),
+			'name' 		=> __('Wood', 'themeblvd'),
 			'url' 		=> $imagepath.'wood.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood_planks' => array(
-			'name' 		=> __( 'Wood Planks', 'themeblvd' ),
+			'name' 		=> __('Wood Planks', 'themeblvd'),
 			'url' 		=> $imagepath.'wood_planks.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'divider' => array(
-			'name' 		=> __( '---------------', 'themeblvd' ),
+			'name' 		=> __('---------------', 'themeblvd'),
 			'url' 		=> null,
 			'position' 	=> null,
 			'repeat' 	=> null,
 		),
 		'arches_light' => array(
-			'name' 		=> __( 'Light Arches', 'themeblvd' ),
+			'name' 		=> __('Light Arches', 'themeblvd'),
 			'url' 		=> $imagepath.'arches_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '103px 23px'
 		),
 		'boxy_light' => array(
-			'name' 		=> __( 'Light Boxy', 'themeblvd' ),
+			'name' 		=> __('Light Boxy', 'themeblvd'),
 			'url' 		=> $imagepath.'boxy_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'brick_wall_light' => array(
-			'name' 		=> __( 'Light Brick Wall', 'themeblvd' ),
+			'name' 		=> __('Light Brick Wall', 'themeblvd'),
 			'url' 		=> $imagepath.'brick_wall_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_classic_light' => array(
-			'name' 		=> __( 'Light Carbon Classic', 'themeblvd' ),
+			'name' 		=> __('Light Carbon Classic', 'themeblvd'),
 			'url' 		=> $imagepath.'carbon_classic_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_diagonal_light' => array(
-			'name' 		=> __( 'Light Carbon Diagonal', 'themeblvd' ),
+			'name' 		=> __('Light Carbon Diagonal', 'themeblvd'),
 			'url' 		=> $imagepath.'carbon_diagonal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_weave_light' => array(
-			'name' 		=> __( 'Light Carbon Weave', 'themeblvd' ),
+			'name' 		=> __('Light Carbon Weave', 'themeblvd'),
 			'url' 		=> $imagepath.'carbon_weave_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'chex_light' => array(
-			'name' 		=> __( 'Light Chex', 'themeblvd' ),
+			'name' 		=> __('Light Chex', 'themeblvd'),
 			'url' 		=> $imagepath.'chex_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'circles_light' => array(
-			'name' 		=> __( 'Light Circles', 'themeblvd' ),
+			'name' 		=> __('Light Circles', 'themeblvd'),
 			'url' 		=> $imagepath.'circles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'climpek_light' => array(
-			'name' 		=> __( 'Light Climpek', 'themeblvd' ),
+			'name' 		=> __('Light Climpek', 'themeblvd'),
 			'url' 		=> $imagepath.'climpek_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'concrete_light' => array(
-			'name' 		=> __( 'Light Concrete', 'themeblvd' ),
+			'name' 		=> __('Light Concrete', 'themeblvd'),
 			'url' 		=> $imagepath.'concrete_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cross_light' => array(
-			'name' 		=> __( 'Light Crosses', 'themeblvd' ),
+			'name' 		=> __('Light Crosses', 'themeblvd'),
 			'url' 		=> $imagepath.'cross_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cube_stack_light' => array(
-			'name' 		=> __( 'Light Cube Stack', 'themeblvd' ),
+			'name' 		=> __('Light Cube Stack', 'themeblvd'),
 			'url' 		=> $imagepath.'cube_stack_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'denim_light' => array(
-			'name' 		=> __( 'Light Denim', 'themeblvd' ),
+			'name' 		=> __('Light Denim', 'themeblvd'),
 			'url' 		=> $imagepath.'denim_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'diagnol_thin_light' => array(
-			'name' 		=> __( 'Light Diagonal (thin)', 'themeblvd' ),
+			'name' 		=> __('Light Diagonal (thin)', 'themeblvd'),
 			'url' 		=> $imagepath.'diagnol_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '6px 6px'
 		),
 		'diagnol_thick_light' => array(
-			'name' 		=> __( 'Light Diagonal (thick)', 'themeblvd' ),
+			'name' 		=> __('Light Diagonal (thick)', 'themeblvd'),
 			'url' 		=> $imagepath.'diagnol_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '20px 20px'
 		),
 		'diamonds_light' => array(
-			'name' 		=> __( 'Light Diamonds', 'themeblvd' ),
+			'name' 		=> __('Light Diamonds', 'themeblvd'),
 			'url' 		=> $imagepath.'diamonds_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'escheresque_light' => array(
-			'name' 		=> __( 'Light Escheresque', 'themeblvd' ),
+			'name' 		=> __('Light Escheresque', 'themeblvd'),
 			'url' 		=> $imagepath.'escheresque_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '46px 29px'
 		),
 		'grid_light' => array(
-			'name' 		=> __( 'Light Grid', 'themeblvd' ),
+			'name' 		=> __('Light Grid', 'themeblvd'),
 			'url' 		=> $imagepath.'grid_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'grunge_light' => array(
-			'name' 		=> __( 'Light Grunge', 'themeblvd' ),
+			'name' 		=> __('Light Grunge', 'themeblvd'),
 			'url' 		=> $imagepath.'grunge_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'feather_light' => array(
-			'name' 		=> __( 'Light Feather', 'themeblvd' ),
+			'name' 		=> __('Light Feather', 'themeblvd'),
 			'url' 		=> $imagepath.'feather_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '500px 333px'
 		),
 		'hexagons_light' => array(
-			'name' 		=> __( 'Light Hexagons', 'themeblvd' ),
+			'name' 		=> __('Light Hexagons', 'themeblvd'),
 			'url' 		=> $imagepath.'hexagons_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'honey_comb_light' => array(
-			'name' 		=> __( 'Light Honey Comb', 'themeblvd' ),
+			'name' 		=> __('Light Honey Comb', 'themeblvd'),
 			'url' 		=> $imagepath.'honey_comb_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'leather_light' => array(
-			'name' 		=> __( 'Light Leather', 'themeblvd' ),
+			'name' 		=> __('Light Leather', 'themeblvd'),
 			'url' 		=> $imagepath.'leather_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'metal_light' => array(
-			'name' 		=> __( 'Light Metal', 'themeblvd' ),
+			'name' 		=> __('Light Metal', 'themeblvd'),
 			'url' 		=> $imagepath.'metal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic_light' => array(
-			'name' 		=> __( 'Light Mosaic', 'themeblvd' ),
+			'name' 		=> __('Light Mosaic', 'themeblvd'),
 			'url' 		=> $imagepath.'mosaic_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic_triangles_light' => array(
-			'name' 		=> __( 'Light Mosaic Triangles', 'themeblvd' ),
+			'name' 		=> __('Light Mosaic Triangles', 'themeblvd'),
 			'url' 		=> $imagepath.'mosaic_triangles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'noise_light' => array(
-			'name' 		=> __( 'Light Noise', 'themeblvd' ),
+			'name' 		=> __('Light Noise', 'themeblvd'),
 			'url' 		=> $imagepath.'noise_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'paper_light' => array(
-			'name' 		=> __( 'Light Paper', 'themeblvd' ),
+			'name' 		=> __('Light Paper', 'themeblvd'),
 			'url' 		=> $imagepath.'paper_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pixel_weave_light' => array(
-			'name' 		=> __( 'Light Pixel Weave', 'themeblvd' ),
+			'name' 		=> __('Light Pixel Weave', 'themeblvd'),
 			'url' 		=> $imagepath.'pixel_weave_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '64px 64px'
 		),
 		'plaid_light' => array(
-			'name' 		=> __( 'Light Plaid', 'themeblvd' ),
+			'name' 		=> __('Light Plaid', 'themeblvd'),
 			'url' 		=> $imagepath.'plaid_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pyramids_light' => array(
-			'name' 		=> __( 'Light Pyramids', 'themeblvd' ),
+			'name' 		=> __('Light Pyramids', 'themeblvd'),
 			'url' 		=> $imagepath.'pyramids_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'rubber_light' => array(
-			'name' 		=> __( 'Light Rubber', 'themeblvd' ),
+			'name' 		=> __('Light Rubber', 'themeblvd'),
 			'url' 		=> $imagepath.'rubber_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'skulls_light' => array(
-			'name' 		=> __( 'Light Skulls', 'themeblvd' ),
+			'name' 		=> __('Light Skulls', 'themeblvd'),
 			'url' 		=> $imagepath.'skulls_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'squares_light' => array(
-			'name' 		=> __( 'Light Squares', 'themeblvd' ),
+			'name' 		=> __('Light Squares', 'themeblvd'),
 			'url' 		=> $imagepath.'squares_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'stacked_circles_light' => array(
-			'name' 		=> __( 'Light Stacked Circles', 'themeblvd' ),
+			'name' 		=> __('Light Stacked Circles', 'themeblvd'),
 			'url' 		=> $imagepath.'stacked_circles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '9px 9px'
 		),
 		'swirl_light' => array(
-			'name' 		=> __( 'Light Swirl', 'themeblvd' ),
+			'name' 		=> __('Light Swirl', 'themeblvd'),
 			'url' 		=> $imagepath.'swirl_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 100px'
 		),
 		'textile_light' => array(
-			'name' 		=> __( 'Light Textile', 'themeblvd' ),
+			'name' 		=> __('Light Textile', 'themeblvd'),
 			'url' 		=> $imagepath.'textile_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'tiles_light' => array(
-			'name' 		=> __( 'Light Tiles', 'themeblvd' ),
+			'name' 		=> __('Light Tiles', 'themeblvd'),
 			'url' 		=> $imagepath.'tiles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 99px'
 		),
 		'vertical_fabric_light' => array(
-			'name' 		=> __( 'Light Vertical Fabric', 'themeblvd' ),
+			'name' 		=> __('Light Vertical Fabric', 'themeblvd'),
 			'url' 		=> $imagepath.'vertical_fabric_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'vintage_light' => array(
-			'name' 		=> __( 'Light Vintage', 'themeblvd' ),
+			'name' 		=> __('Light Vintage', 'themeblvd'),
 			'url' 		=> $imagepath.'vintage_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'waves_light' => array(
-			'name' 		=> __( 'Light Waves', 'themeblvd' ),
+			'name' 		=> __('Light Waves', 'themeblvd'),
 			'url' 		=> $imagepath.'waves_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood_light' => array(
-			'name' 		=> __( 'Light Wood', 'themeblvd' ),
+			'name' 		=> __('Light Wood', 'themeblvd'),
 			'url' 		=> $imagepath.'wood_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood_planks_light' => array(
-			'name' 		=> __( 'Light Wood Planks', 'themeblvd' ),
+			'name' 		=> __('Light Wood Planks', 'themeblvd'),
 			'url' 		=> $imagepath.'wood_planks_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
@@ -1435,13 +1435,13 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					$select[$page->post_name] = $page->post_title;
 				}
 			} else {
-				$select['null'] = __( 'No pages exist.', 'themeblvd' );
+				$select['null'] = __('No pages exist.', 'themeblvd');
 			}
 			break;
 
 		// Categories
 		case 'categories' :
-			$select['all'] = __( '<strong>All Categories</strong>', 'themeblvd' );
+			$select['all'] = __('<strong>All Categories</strong>', 'themeblvd');
 
 			$categories = get_categories( array( 'hide_empty' => false ) );
 
@@ -1458,7 +1458,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					$select[$slider->post_name] = $slider->post_title;
 				}
 			} else {
-				$select['null'] = __( 'You haven\'t created any custom sliders yet.', 'themeblvd' );
+				$select['null'] = __('You haven\'t created any custom sliders yet.', 'themeblvd');
 			}
 			break;
 
@@ -1631,38 +1631,38 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
 
 	// Setup colors separated out to begin with.
 	$colors = array(
-		'default'		=> __( 'Default Color', 'themeblvd' ),
-		'custom'		=> __( 'Custom Color', 'themeblvd' ),
+		'default'		=> __('Default Color', 'themeblvd'),
+		'custom'		=> __('Custom Color', 'themeblvd'),
 	);
 	$boostrap_colors = array(
-		'primary' 		=> __( 'Primary', 'themeblvd' ),
-		'info' 			=> __( 'Info', 'themeblvd' ),
-		'success' 		=> __( 'Success', 'themeblvd' ),
-		'warning' 		=> __( 'Warning', 'themeblvd' ),
-		'danger' 		=> __( 'Danger', 'themeblvd' )
+		'primary' 		=> __('Primary', 'themeblvd'),
+		'info' 			=> __('Info', 'themeblvd'),
+		'success' 		=> __('Success', 'themeblvd'),
+		'warning' 		=> __('Warning', 'themeblvd'),
+		'danger' 		=> __('Danger', 'themeblvd')
 	);
 	$themeblvd_colors = array(
-		'black' 		=> __( 'Black', 'themeblvd' ),
-		'blue' 			=> __( 'Blue', 'themeblvd' ),
-		'dark_blue'		=> __( 'Blue (Dark)', 'themeblvd' ),
-		'royal'			=> __( 'Blue (Royal)', 'themeblvd' ),
-		'steel_blue'	=> __( 'Blue (Steel)', 'themeblvd' ),
-		'brown' 		=> __( 'Brown', 'themeblvd' ),
-		'dark_brown' 	=> __( 'Brown (Dark)', 'themeblvd' ),
-		'slate_grey'	=> __( 'Grey (Slate)', 'themeblvd' ),
-		'green' 		=> __( 'Green', 'themeblvd' ),
-		'dark_green' 	=> __( 'Green (Dark)', 'themeblvd' ),
-		'mauve' 		=> __( 'Mauve', 'themeblvd' ),
-		'orange'		=> __( 'Orange', 'themeblvd' ),
-		'pearl'			=> __( 'Pearl', 'themeblvd' ),
-		'pink'			=> __( 'Pink', 'themeblvd' ),
-		'purple'		=> __( 'Purple', 'themeblvd' ),
-		'red'			=> __( 'Red', 'themeblvd' ),
-		'silver'		=> __( 'Silver', 'themeblvd' ),
-		'teal'			=> __( 'Teal', 'themeblvd' ),
-		'yellow'		=> __( 'Yellow', 'themeblvd' ),
-		'wheat'			=> __( 'Wheat', 'themeblvd' ),
-		'white'			=> __( 'White', 'themeblvd' )
+		'black' 		=> __('Black', 'themeblvd'),
+		'blue' 			=> __('Blue', 'themeblvd'),
+		'dark_blue'		=> __('Blue (Dark)', 'themeblvd'),
+		'royal'			=> __('Blue (Royal)', 'themeblvd'),
+		'steel_blue'	=> __('Blue (Steel)', 'themeblvd'),
+		'brown' 		=> __('Brown', 'themeblvd'),
+		'dark_brown' 	=> __('Brown (Dark)', 'themeblvd'),
+		'slate_grey'	=> __('Grey (Slate)', 'themeblvd'),
+		'green' 		=> __('Green', 'themeblvd'),
+		'dark_green' 	=> __('Green (Dark)', 'themeblvd'),
+		'mauve' 		=> __('Mauve', 'themeblvd'),
+		'orange'		=> __('Orange', 'themeblvd'),
+		'pearl'			=> __('Pearl', 'themeblvd'),
+		'pink'			=> __('Pink', 'themeblvd'),
+		'purple'		=> __('Purple', 'themeblvd'),
+		'red'			=> __('Red', 'themeblvd'),
+		'silver'		=> __('Silver', 'themeblvd'),
+		'teal'			=> __('Teal', 'themeblvd'),
+		'yellow'		=> __('Yellow', 'themeblvd'),
+		'wheat'			=> __('Wheat', 'themeblvd'),
+		'white'			=> __('White', 'themeblvd')
 	);
 
 	// Merge colors
@@ -1922,141 +1922,141 @@ function themeblvd_conditionals_config() {
 	$conditionals = array(
 		'pages' => array(
 			'id'	=> 'pages',
-			'name'	=> __( 'Pages', 'themeblvd' ),
-			'empty'	=> __( 'No pages to display.', 'themeblvd' ),
+			'name'	=> __('Pages', 'themeblvd'),
+			'empty'	=> __('No pages to display.', 'themeblvd'),
 			'field'	=> 'page'
 		),
 		'posts' => array(
 			'id'	=> 'posts',
-			'name'	=> __( 'Posts', 'themeblvd' ),
-			'empty'	=> __( 'No posts to display.', 'themeblvd' ),
+			'name'	=> __('Posts', 'themeblvd'),
+			'empty'	=> __('No posts to display.', 'themeblvd'),
 			'field'	=> 'post'
 		),
 		'posts_in_category' => array(
 			'id'	=> 'posts_in_category',
-			'name'	=> __( 'Posts in Category', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'name'	=> __('Posts in Category', 'themeblvd'),
+			'empty'	=> __('No categories to display.', 'themeblvd'),
 			'field'	=> 'posts_in_category'
 		),
 		'categories' => array(
 			'id'	=> 'categories',
-			'name'	=> __( 'Category Archives', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'name'	=> __('Category Archives', 'themeblvd'),
+			'empty'	=> __('No categories to display.', 'themeblvd'),
 			'field'	=> 'category'
 		),
 		'tags' => array(
 			'id'	=> 'tags',
-			'name'	=> __( 'Tag Archives', 'themeblvd' ),
-			'empty'	=> __( 'No tags to display.', 'themeblvd' ),
+			'name'	=> __('Tag Archives', 'themeblvd'),
+			'empty'	=> __('No tags to display.', 'themeblvd'),
 			'field'	=> 'tag'
 		),
 		'portfolio_items' => array(
 			'id'	=> 'portfolio_items',
-			'name'	=> __( 'Single Portfolio Items', 'themeblvd' ),
-			'empty'	=> __( 'No portfolio items to display.', 'themeblvd' ),
+			'name'	=> __('Single Portfolio Items', 'themeblvd'),
+			'empty'	=> __('No portfolio items to display.', 'themeblvd'),
 			'field'	=> 'portfolio_item'
 		),
 		'portfolio_items_in_portfolio' => array(
 			'id'	=> 'portfolio_items_in_portfolio',
-			'name'	=> __( 'Items in Portfolio', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'name'	=> __('Items in Portfolio', 'themeblvd'),
+			'empty'	=> __('No categories to display.', 'themeblvd'),
 			'field'	=> 'portfolio_items_in_portfolio'
 		),
 		'portfolios' => array(
 			'id'	=> 'portfolios',
-			'name'	=> __( 'Portfolios', 'themeblvd' ),
-			'empty'	=> __( 'No portfolios to display.', 'themeblvd' ),
+			'name'	=> __('Portfolios', 'themeblvd'),
+			'empty'	=> __('No portfolios to display.', 'themeblvd'),
 			'field'	=> 'portfolio'
 		),
 		'portfolio_tags' => array(
 			'id'	=> 'portfolio_tags',
-			'name'	=> __( 'Portfolio Tag Archives', 'themeblvd' ),
-			'empty'	=> __( 'No portfolio tags to display.', 'themeblvd' ),
+			'name'	=> __('Portfolio Tag Archives', 'themeblvd'),
+			'empty'	=> __('No portfolio tags to display.', 'themeblvd'),
 			'field'	=> 'portfolio_tag'
 		),
 		'portfolio_top' => array(
 			'id'	=> 'portfolio_top',
-			'name'	=> __( 'Portfolio Hierarchy', 'themeblvd' ),
+			'name'	=> __('Portfolio Hierarchy', 'themeblvd'),
 			'empty'	=> null,
 			'field'	=> 'portfolio_top',
 			'items'	=> array(
-				'portfolio_items' 	=> __( 'All single portfolio items', 'themeblvd' ),
-				'portfolios' 		=> __( 'Items displayed by portfolio', 'themeblvd' ),
-				'portfolio_tags' 	=> __( 'Items displayed by portfolio tag', 'themeblvd' )
+				'portfolio_items' 	=> __('All single portfolio items', 'themeblvd'),
+				'portfolios' 		=> __('Items displayed by portfolio', 'themeblvd'),
+				'portfolio_tags' 	=> __('Items displayed by portfolio tag', 'themeblvd')
 			)
 		),
 		'product_cat' => array(
 			'id'	=> 'product_cat',
-			'name'	=> __( 'Product Category Archives', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'name'	=> __('Product Category Archives', 'themeblvd'),
+			'empty'	=> __('No categories to display.', 'themeblvd'),
 			'field'	=> 'product_cat'
 		),
 		'product_tags' => array(
 			'id'	=> 'product_tags',
-			'name'	=> __( 'Product Tag Archives', 'themeblvd' ),
-			'empty'	=> __( 'No tags to display.', 'themeblvd' ),
+			'name'	=> __('Product Tag Archives', 'themeblvd'),
+			'empty'	=> __('No tags to display.', 'themeblvd'),
 			'field'	=> 'product_tag'
 		),
 		'products_in_cat' => array(
 			'id'	=> 'products_in_cat',
-			'name'	=> __( 'Products in Category', 'themeblvd' ),
-			'empty'	=> __( 'No categories to display.', 'themeblvd' ),
+			'name'	=> __('Products in Category', 'themeblvd'),
+			'empty'	=> __('No categories to display.', 'themeblvd'),
 			'field'	=> 'products_in_cat'
 		),
 		'product_top' => array(
 			'id'	=> 'product_top',
-			'name'	=> __( 'Product Hierarchy', 'themeblvd' ),
+			'name'	=> __('Product Hierarchy', 'themeblvd'),
 			'empty'	=> null,
 			'field'	=> 'product_top',
 			'items'	=> array(
-				'woocommerce' 		=> __( 'All WooCommerce pages', 'themeblvd' ),
-				'products' 			=> __( 'All single products', 'themeblvd' ),
-				'product_cat' 		=> __( 'Products displayed by category', 'themeblvd' ),
-				'product_tag'		=> __( 'Products displayed by tag', 'themeblvd' ),
-				'product_search'	=> __( 'WooCommerce search results', 'themeblvd' ),
+				'woocommerce' 		=> __('All WooCommerce pages', 'themeblvd'),
+				'products' 			=> __('All single products', 'themeblvd'),
+				'product_cat' 		=> __('Products displayed by category', 'themeblvd'),
+				'product_tag'		=> __('Products displayed by tag', 'themeblvd'),
+				'product_search'	=> __('WooCommerce search results', 'themeblvd'),
 			)
 		),
 		'forums' => array(
 			'id'	=> 'forums',
-			'name'	=> __( 'Forums', 'themeblvd' ),
+			'name'	=> __('Forums', 'themeblvd'),
 			'empty'	=> null,
 			'field'	=> 'forum'
 		),
 		'forum_top' => array(
 			'id'	=> 'forum_top',
-			'name'	=> __( 'Forum Hierarchy', 'themeblvd' ),
+			'name'	=> __('Forum Hierarchy', 'themeblvd'),
 			'empty'	=> null,
 			'field'	=> 'forum_top',
 			'items'	=> array(
-				'bbpress' 			=> __( 'All bbPress pages', 'themeblvd' ),
-				'topic' 			=> __( 'All single topics', 'themeblvd' ),
-				'forum' 			=> __( 'All single forums', 'themeblvd' ),
-				'topic_tag' 		=> __( 'Viewing topics by tag', 'themeblvd' ),
-				'forum_user'		=> __( 'Public user profiles', 'themeblvd' ),
-				'forum_user_home'	=> __( 'Logged-in user home', 'themeblvd' )
+				'bbpress' 			=> __('All bbPress pages', 'themeblvd'),
+				'topic' 			=> __('All single topics', 'themeblvd'),
+				'forum' 			=> __('All single forums', 'themeblvd'),
+				'topic_tag' 		=> __('Viewing topics by tag', 'themeblvd'),
+				'forum_user'		=> __('Public user profiles', 'themeblvd'),
+				'forum_user_home'	=> __('Logged-in user home', 'themeblvd')
 			)
 		),
 		'top' => array(
 			'id'	=> 'top',
-			'name'	=> __( 'Hierarchy', 'themeblvd' ),
+			'name'	=> __('Hierarchy', 'themeblvd'),
 			'empty'	=> null,
 			'field'	=> 'top',
 			'items'	=> array(
-				'home' 				=> __( 'Homepage', 'themeblvd' ),
-				'posts' 			=> __( 'All posts (any post type)', 'themeblvd' ),
-				'blog_posts' 		=> __( 'All blog posts', 'themeblvd' ),
-				'pages' 			=> __( 'All pages', 'themeblvd' ),
-				'archives' 			=> __( 'All archives', 'themeblvd' ),
-				'categories'		=> __( 'All category archives', 'themeblvd' ),
-				'tags' 				=> __( 'All tag archives', 'themeblvd' ),
-				'authors' 			=> __( 'All author archives', 'themeblvd' ),
-				'search' 			=> __( 'Search Results', 'themeblvd' ),
-				'404' 				=> __( '404 Page', 'themeblvd' )
+				'home' 				=> __('Homepage', 'themeblvd'),
+				'posts' 			=> __('All posts (any post type)', 'themeblvd'),
+				'blog_posts' 		=> __('All blog posts', 'themeblvd'),
+				'pages' 			=> __('All pages', 'themeblvd'),
+				'archives' 			=> __('All archives', 'themeblvd'),
+				'categories'		=> __('All category archives', 'themeblvd'),
+				'tags' 				=> __('All tag archives', 'themeblvd'),
+				'authors' 			=> __('All author archives', 'themeblvd'),
+				'search' 			=> __('Search Results', 'themeblvd'),
+				'404' 				=> __('404 Page', 'themeblvd')
 			)
 		),
 		'custom' => array(
 			'id'	=> 'custom',
-			'name'	=> __( 'Custom', 'themeblvd' ),
+			'name'	=> __('Custom', 'themeblvd'),
 			'empty'	=> null,
 			'field'	=> 'custom'
 		)

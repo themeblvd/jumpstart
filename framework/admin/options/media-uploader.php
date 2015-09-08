@@ -68,10 +68,10 @@ function themeblvd_media_uploader( $args ) {
 
 	// Data passed to wp.media
 	$data = array(
-		'title' 	=> __( 'Select Media', 'themeblvd'),
-		'select'	=> __( 'Select', 'themeblvd'),
-		'upload'	=> __( 'Upload', 'themeblvd' ),
-		'remove'	=> __( 'Remove', 'themeblvd' ),
+		'title' 	=> __('Select Media', 'themeblvd'),
+		'select'	=> __('Select', 'themeblvd'),
+		'upload'	=> __('Upload', 'themeblvd'),
+		'remove'	=> __('Remove', 'themeblvd'),
 		'send_back'	=> $args['send_back'],
 		'class'		=> 'tb-modal-hide-settings'
 	);
@@ -83,7 +83,7 @@ function themeblvd_media_uploader( $args ) {
 			$data['title'] = __('Slide Image', 'themeblvd');
 			$data['select'] = __('Use for Slide', 'themeblvd');
 			$data['upload'] = __('Get Image', 'themeblvd');
-			$help = __( 'You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'themeblvd' );
+			$help = __('You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'themeblvd');
 			$output .= '<span class="locked"><span></span>';
 			$output .= '<a href="#" class="help-icon tb-icon-help-circled tooltip-link" title="'.$help.'"></a>';
 			$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.$name.'[id]" placeholder="'.__('Image ID', 'themeblvd').'" value="'.$args['value_id'].'" /></span>'."\n";
@@ -184,7 +184,7 @@ function themeblvd_media_uploader( $args ) {
 			}
 
 			// Standard generic output if it's not an image.
-			$title = __( 'View File', 'themeblvd' );
+			$title = __('View File', 'themeblvd');
 			$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
 		}
 	}

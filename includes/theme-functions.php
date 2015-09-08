@@ -141,7 +141,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );
 function jumpstart_base_check() {
 
 	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != themeblvd_get_base() ) {
-		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ) );
+		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __('Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd') );
 	}
 
 }

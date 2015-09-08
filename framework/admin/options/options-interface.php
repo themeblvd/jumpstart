@@ -718,7 +718,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Google Font support
 				if ( in_array( 'face', $value['atts'] ) ) {
 					$output .= '<div class="google-font hide">';
-					$output .= '<h5>'.__( 'Enter the name of a font from the <a href="http://www.google.com/webfonts" target="_blank">Google Font Directory</a>.', 'themeblvd' ).'</h5>';
+					$output .= '<h5>'.sprintf(__('Enter the name of a font from the %s.', 'themeblvd'), '<a href="http://www.google.com/webfonts" target="_blank">'.__('Google Font Directory', 'themeblvd').'</a>').'</h5>';
 					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr( $typography_stored['google'] ).'" />';
 					$output .= '<p class="note"><strong>'.__('Example', 'themeblvd').'</strong>: Open Sans<br />';
                     $output .= '<strong>'.__('Example with custom weight', 'themeblvd').'</strong>: Open Sans:300</p>';

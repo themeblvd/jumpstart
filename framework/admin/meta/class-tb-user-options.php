@@ -78,27 +78,27 @@ class Theme_Blvd_User_Options {
 			),
 			'facebook'	=> array(
 				'label'		=> themeblvd_get_local('contact_facebook'),
-				'option'	=> __( 'Facebook URL', 'themeblvd'),
+				'option'	=> __('Facebook URL', 'themeblvd'),
 				'key'		=> '_tb_contact_facebook'
 			),
 			'google'	=> array(
 				'label'		=> themeblvd_get_local('contact_gplus'),
-				'option'	=> __( 'Google+ URL', 'themeblvd'),
+				'option'	=> __('Google+ URL', 'themeblvd'),
 				'key'		=> '_tb_contact_google'
 			),
 			'linkedin'	=> array(
 				'label'		=> themeblvd_get_local('contact_linkedin'),
-				'option'	=> __( 'LinkedIn URL', 'themeblvd'),
+				'option'	=> __('LinkedIn URL', 'themeblvd'),
 				'key'		=> '_tb_contact_linkedin'
 			),
 			'pinterest'	=> array(
 				'label'		=> themeblvd_get_local('contact_pinterest'),
-				'option'	=> __( 'Pinterest URL', 'themeblvd'),
+				'option'	=> __('Pinterest URL', 'themeblvd'),
 				'key'		=> '_tb_contact_pinterest'
 			),
 			'twitter'	=> array(
 				'label'		=> themeblvd_get_local('contact_twitter'),
-				'option'	=> __( 'Twitter URL', 'themeblvd'),
+				'option'	=> __('Twitter URL', 'themeblvd'),
 				'key'		=> '_tb_contact_twitter'
 			)
 		));

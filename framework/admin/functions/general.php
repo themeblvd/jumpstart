@@ -162,7 +162,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 function themeblvd_hijack_page_atts() {
 	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		remove_meta_box( 'pageparentdiv', 'page', 'side' );
-		add_meta_box( 'themeblvd_pageparentdiv', __( 'Page Attributes', 'themeblvd' ), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
+		add_meta_box( 'themeblvd_pageparentdiv', __('Page Attributes', 'themeblvd'), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
 	}
 }
 
@@ -220,7 +220,7 @@ function themeblvd_clear_options() {
 	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
 		check_admin_referer( $_POST['option_page'].'-options' );
 		delete_option( $_POST['themeblvd_clear_options'] );
-		add_settings_error( $_POST['themeblvd_clear_options'] , 'clear_defaults', __( 'Options cleared from database.', 'themeblvd' ), 'themeblvd-error error' );
+		add_settings_error( $_POST['themeblvd_clear_options'] , 'clear_defaults', __('Options cleared from database.', 'themeblvd'), 'themeblvd-error error' );
 	}
 }
 

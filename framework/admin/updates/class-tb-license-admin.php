@@ -94,7 +94,7 @@ class Theme_Blvd_License_Admin {
 	 */
 	function add_page() {
 		if ( themeblvd_supports('admin', 'updates') && current_user_can( themeblvd_admin_module_cap( 'updates' ) ) ) {
-			add_theme_page( __( 'Theme License', 'themeblvd' ), __( 'Theme License', 'themeblvd' ), 'manage_options', 'themeblvd-license', array( $this, 'admin_page' ) );
+			add_theme_page( __('Theme License', 'themeblvd'), __('Theme License', 'themeblvd'), 'manage_options', 'themeblvd-license', array( $this, 'admin_page' ) );
 		}
 	}
 

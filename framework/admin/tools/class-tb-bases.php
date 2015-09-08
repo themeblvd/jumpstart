@@ -75,7 +75,7 @@ class Theme_Blvd_Bases {
 		$base = get_option( get_template().'_base' );
 
 		if ( $base && ( empty($settings['theme_base']) || $settings['theme_base'] != $base ) ) {
-			echo '<div class="error"><p><strong>'.__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ).'</strong></p></div>';
+			echo '<div class="error"><p><strong>'.__('Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd').'</strong></p></div>';
 		}
 
 		$theme = wp_get_theme(get_template());

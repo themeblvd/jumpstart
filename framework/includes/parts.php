@@ -998,7 +998,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'author' :
 
 					$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
-					$author_title = sprintf( __( 'View all posts by %s', 'themeblvd_frontend' ), get_the_author() );
+					$author_title = sprintf( __('View all posts by %s', 'themeblvd_frontend'), get_the_author() );
 					$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
 					$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, get_the_author() );
 					break;
