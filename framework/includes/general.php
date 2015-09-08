@@ -1760,6 +1760,18 @@ function themeblvd_allowed_tags() {
 }
 
 /**
+ * Apply wp_kses() to content with framework allowed tags.
+ *
+ * @since 2.5.2
+ *
+ * @param array $input Content to sanitize
+ * @return string Content that's been sanitized
+ */
+function themeblvd_kses( $input ) {
+	return wp_kses( $input, themeblvd_allowed_tags() );
+}
+
+/**
  * Add to WP's allowed inline CSS properties
  *
  * @since 2.5.0
