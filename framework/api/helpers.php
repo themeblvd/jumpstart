@@ -556,10 +556,10 @@ function themeblvd_get_sidebar_location_name( $location ) {
 	$sidebar = $handler->get_locations( $location );
 
 	if ( isset( $sidebar['location']['name'] ) ) {
-		return $sidebar['location']['name'];
+		return esc_html__($sidebar['location']['name']);
 	}
 
-	return __('Floating Widget Area', 'themeblvd');
+	return esc_html__('Floating Widget Area', 'themeblvd');
 }
 
 /**
