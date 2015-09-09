@@ -143,14 +143,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Set grouped value
 				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
-
 					$val = $settings[($value['group'])][($value['id'])];
-
-					// Striping slashes of non-array options
-					if ( ! is_array( $val ) ) {
-						$val = stripslashes( $val );
-					}
 				}
+
 			} else {
 
 				// Set non-grouped value

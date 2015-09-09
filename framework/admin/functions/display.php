@@ -74,7 +74,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';
-						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.esc_attr__('Edit', 'themeblvd').'">'.stripslashes(esc_html($post->post_title)).'</strong></a>';
+						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.esc_attr__('Edit', 'themeblvd').'">'.esc_html($post->post_title).'</strong></a>';
 						$output .= '<div class="row-actions">';
 						$output .= '<span class="edit">';
 						$output .= '<a href="#'.esc_attr($post->ID).'" class="edit-post edit-'.$post_type.'" title="'.esc_attr__('Edit', 'themeblvd').'">'.esc_attr__('Edit', 'themeblvd').'</a> | ';
@@ -494,7 +494,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		$raw_content .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 		$raw_content .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $id.'_raw' ).'" data-title="'.esc_attr__('Edit HTML', 'themeblvd').'" data-code_lang="html"><i class="tb-icon-code"></i></a>';
 		$raw_content .= '</nav>';
-		$raw_content .= sprintf( '<textarea id="%s" name="%s" class="of-input" cols="8" rows="8">%s</textarea>', esc_textarea( $id.'_raw' ), esc_attr( $name.'['.$id.'][raw]' ), stripslashes( esc_textarea( $current_value ) ) );
+		$raw_content .= sprintf( '<textarea id="%s" name="%s" class="of-input" cols="8" rows="8">%s</textarea>', esc_textarea( $id.'_raw' ), esc_attr( $name.'['.$id.'][raw]' ), esc_textarea($current_value) );
 		$raw_content .= '</div><!-- .textarea-wrap (end) -->';
 
 		// Checkbox for the_content filter (added in v2.0.6)

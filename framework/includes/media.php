@@ -1489,12 +1489,12 @@ function themeblvd_get_banner( $args = array() ) {
 		if ( $args['headline'] == 'title' ) {
 			$content .= sprintf( '<h1 class="banner-title">%s</h1>', get_the_title($args['post_id']) );
 		} else if ( $args['headline'] == 'custom' ) {
-			$content .= sprintf( '<h1 class="banner-title">%s</h1>', stripslashes($args['headline_custom']) );
+			$content .= sprintf( '<h1 class="banner-title">%s</h1>', $args['headline_custom'] );
 		}
 
 		if ( $args['tagline'] ) {
 			$class .= ' has-tagline';
-			$content .= sprintf( '<span class="banner-tagline ">%s</span>', stripslashes($args['tagline']) );
+			$content .= sprintf( '<span class="banner-tagline ">%s</span>', $args['tagline'] );
 		}
 
 	}

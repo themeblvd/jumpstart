@@ -888,7 +888,7 @@ function themeblvd_get_slogan( $args ) {
 
         }
 
-        $button = themeblvd_button( stripslashes($args['button_text']), $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
+        $button = themeblvd_button( $args['button_text'], $args['button_url'], $args['button_color'], $args['button_target'], $args['button_size'], null, null, $args['button_icon_before'], $args['button_icon_after'], $addon );
     }
 
     // Custom CSS classes
@@ -903,11 +903,11 @@ function themeblvd_get_slogan( $args ) {
     $content = '';
 
     if ( $args['headline'] ) {
-        $content .= sprintf('<div class="headline">%s</div>', stripslashes($args['headline']));
+        $content .= sprintf('<div class="headline">%s</div>', $args['headline']);
     }
 
     if ( $args['desc'] ) {
-        $content .= sprintf('<div class="desc">%s</div>', stripslashes($args['desc']));
+        $content .= sprintf('<div class="desc">%s</div>', $args['desc']);
     }
 
     // WP auto?
@@ -1008,7 +1008,7 @@ function themeblvd_get_tabs( $id, $args ) {
                 $tab_id = $id.'-'.$tab_id;
             }
 
-            $navigation .= sprintf('<li class="%s"><a href="#%s" data-toggle="%s" title="%s">%s</a></li>', $class, $tab_id, str_replace('s', '', $nav_type), stripslashes($name), stripslashes($name) );
+            $navigation .= sprintf('<li class="%s"><a href="#%s" data-toggle="%s" title="%s">%s</a></li>', $class, $tab_id, str_replace('s', '', $nav_type), esc_attr($name), themeblvd_kses($name) );
 
             $i++;
         }
@@ -1665,7 +1665,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
                 }
 
                 $output .= '<div class="button-wrap">';
-                $output .= themeblvd_button( stripslashes($col['button_text']), $col['button_url'], $col['button_color'], apply_filters('themeblvd_pricing_table_btn_target', '_self'), $col['button_size'], null, null, $col['button_icon_before'], $col['button_icon_after'], $addon );
+                $output .= themeblvd_button( $col['button_text'], $col['button_url'], $col['button_color'], apply_filters('themeblvd_pricing_table_btn_target', '_self'), $col['button_size'], null, null, $col['button_icon_before'], $col['button_icon_after'], $addon );
                 $output .= '</div>';
 
             }

@@ -255,7 +255,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					if ( $this->trigger == $option['id'] ) {
 						$class .= ' handle-trigger';
 					}
-					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
+					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($current) );
 					break;
 
 				/*---------------------------------------*/
@@ -280,7 +280,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$class .= ' handle-trigger';
 					}
 
-					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="text" value="%s"%s />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ), $place_holder );
+					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="text" value="%s"%s />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($current), $place_holder );
 					$item_output .= '</div><!-- .input-wrap (end) -->';
 					break;
 
@@ -325,7 +325,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$class .= ' handle-trigger';
 					}
 
-					$item_output .= sprintf( '<textarea id="%s" class="%s" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $option['id'] ), $class, stripslashes( esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ) ), esc_attr( $cols ), $place_holder, esc_textarea( $current ) );
+					$item_output .= sprintf( '<textarea id="%s" class="%s" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($cols), $place_holder, esc_textarea($current) );
 					$item_output .= '</div><!-- .textarea-wrap (end) -->';
 
 					break;
@@ -415,7 +415,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$current = $slide_options['min'].$slide_options['units'];
 					}
 
-					$item_output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
+					$item_output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($current) );
 					$item_output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 					break;
 
