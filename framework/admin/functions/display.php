@@ -910,7 +910,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/* Site Title
 	/*------------------------------------------------------*/
 
-	$link = '<a href="options-general.php" target="_blank">'.esc_html__('here', 'themeblvd').'</a>'
+	$link = '<a href="options-general.php" target="_blank">'.esc_html__('here', 'themeblvd').'</a>';
 	$site_title  = '<p class="note">';
 	$site_title .= esc_html__('Current Site Title', 'themeblvd').': <strong>';
 	$site_title .= get_bloginfo('name').'</strong><br><br>';
