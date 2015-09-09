@@ -88,8 +88,8 @@ class Theme_Blvd_Bases {
 		?>
 		<div id="themeblvd-base-admin" class="wrap">
 
-			<h2><?php _e('Theme Base', 'themeblvd'); ?></h2>
-			<p class="title-tagline"><em><?php _e('Who are you?', 'themeblvd'); ?></em> &ndash; <?php printf(esc_html__('Select the %s theme base that\'s right for you.', 'themeblvd'), $theme->get('Name')); ?></p>
+			<h2><?php esc_html_e('Theme Base', 'themeblvd'); ?></h2>
+			<p class="title-tagline"><em><?php esc_html_e('Who are you?', 'themeblvd'); ?></em> &ndash; <?php printf(esc_html__('Select the %s theme base that\'s right for you.', 'themeblvd'), $theme->get('Name')); ?></p>
 
 			<div class="theme-bases">
 
@@ -110,8 +110,8 @@ class Theme_Blvd_Bases {
 							<div class="<?php echo $class; ?>">
 								<div class="theme-base-screenshot">
 									<?php if ( $current != $id ) : ?>
-										<a href="<?php echo admin_url($url); ?>" class="select-base" data-confirm="<h4><?php _e('Are you sure you want to change your theme base?', 'themeblvd'); ?></h4><?php _e('This will effect your Theme Options page, and you must re-save your theme options page after changing theme bases.', 'themeblvd'); ?>">
-											<span><?php _e('Select Theme Base', 'themeblvd'); ?></span>
+										<a href="<?php echo admin_url($url); ?>" class="select-base" data-confirm="<h4><?php esc_html_e('Are you sure you want to change your theme base?', 'themeblvd'); ?></h4><?php esc_html_e('This will effect your Theme Options page, and you must re-save your theme options page after changing theme bases.', 'themeblvd'); ?>">
+											<span><?php esc_html_e('Select Theme Base', 'themeblvd'); ?></span>
 										</a>
 									<?php endif; ?>
 									<img src="<?php echo themeblvd_get_base_uri($id); ?>/preview.png" />
