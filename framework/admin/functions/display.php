@@ -1217,7 +1217,7 @@ function themeblvd_editor( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php _e('Edit Content', 'themeblvd'); ?></h1>
+						<h1><?php esc_html_e('Edit Content', 'themeblvd'); ?></h1>
 					</div><!-- .media-frame-title (end) -->
 
 					<div class="media-frame-content">
@@ -1233,15 +1233,15 @@ function themeblvd_editor( $args = array() ) {
 							<?php if ( $args['delete'] || $args['duplicate'] ) : ?>
 								<div class="media-toolbar-secondary">
 									<?php if ( $args['delete'] ) : ?>
-										<a href="#" class="button media-button button-secondary button-large media-button-delete"><?php _e('Delete', 'themeblvd'); ?></a>
+										<a href="#" class="button media-button button-secondary button-large media-button-delete"><?php esc_html_e('Delete', 'themeblvd'); ?></a>
 									<?php endif; ?>
 									<?php if ( $args['duplicate'] ) : ?>
-										<a href="#" class="button media-button button-secondary button-large media-button-secondary"><?php _e('Duplicate', 'themeblvd'); ?></a>
+										<a href="#" class="button media-button button-secondary button-large media-button-secondary"><?php esc_html_e('Duplicate', 'themeblvd'); ?></a>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php _e('Save', 'themeblvd'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Save', 'themeblvd'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
@@ -1283,7 +1283,7 @@ function themeblvd_icon_browser( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php _e('Select an Icon', 'themeblvd'); ?></h1>
+						<h1><?php esc_html_e('Select an Icon', 'themeblvd'); ?></h1>
 					</div><!-- .media-frame-title (end) -->
 
 					<div class="media-frame-content">
@@ -1316,7 +1316,7 @@ function themeblvd_icon_browser( $args = array() ) {
 						</div><!-- .media-toolbar-secondary (end) -->
 						<div class="media-toolbar">
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php _e('Use Icon', 'themeblvd'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Use Icon', 'themeblvd'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
@@ -1351,7 +1351,7 @@ function themeblvd_post_browser( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php _e('Find Post or Page ID', 'themeblvd'); ?></h1>
+						<h1><?php esc_html_e('Find Post or Page ID', 'themeblvd'); ?></h1>
 					</div><!-- .media-frame-title (end) -->
 
 					<div class="media-frame-content">
@@ -1361,7 +1361,7 @@ function themeblvd_post_browser( $args = array() ) {
 									<div class="post-browser-head clearfix">
 										<div class="search-box">
 											<input type="search" id="post-search-input" name="s" value="">
-											<input type="submit" name="" id="search-submit" class="button" value="<?php _e('Search Posts & Pages', 'themeblvd'); ?>">
+											<input type="submit" name="" id="search-submit" class="button" value="<?php esc_attr_e('Search Posts & Pages', 'themeblvd'); ?>">
 										</div>
 										<span class="tb-loader ajax-loading">
 	  										<i class="tb-icon-spinner"></i>
@@ -1400,11 +1400,11 @@ function themeblvd_ajax_post_browser(){
 	<table class="widefat">
 		<thead>
 			<tr>
-				<th class="head-title"><?php _e('Title', 'themeblvd'); ?></th>
-				<th class="head-slug"><?php _e('Slug', 'themeblvd'); ?></th>
-				<th class="head-type"><?php _e('Type', 'themeblvd'); ?></th>
-				<th class="head-id"><?php _e('ID', 'themeblvd'); ?></th>
-				<th class="head-select"><?php _e('Select', 'themeblvd'); ?></th>
+				<th class="head-title"><?php esc_html_e('Title', 'themeblvd'); ?></th>
+				<th class="head-slug"><?php esc_html_e('Slug', 'themeblvd'); ?></th>
+				<th class="head-type"><?php esc_html_e('Type', 'themeblvd'); ?></th>
+				<th class="head-id"><?php esc_html_e('ID', 'themeblvd'); ?></th>
+				<th class="head-select"><?php esc_html_e('Select', 'themeblvd'); ?></th>
 			</tr>
 		</thead>
 		<?php if ( $posts ) : ?>
@@ -1416,12 +1416,12 @@ function themeblvd_ajax_post_browser(){
 					<td><?php echo $post->post_name; ?></td>
 					<td><?php echo $type->labels->singular_name; ?></td>
 					<td><?php echo $post->ID; ?></td>
-					<td><a href="#" data-post-id="<?php echo $post->ID; ?>" class="select-post button-secondary"><?php _e('Use Post', 'themeblvd'); ?></a></td>
+					<td><a href="#" data-post-id="<?php echo $post->ID; ?>" class="select-post button-secondary"><?php esc_html_e('Use Post', 'themeblvd'); ?></a></td>
 				</tr>
 			<?php endforeach; ?>
 		<?php else : ?>
 			<tr>
-				<td colspan="5"><?php _e('No posts found.', 'themeblvd'); ?></td>
+				<td colspan="5"><?php esc_html_e('No posts found.', 'themeblvd'); ?></td>
 			</tr>
 		<?php endif; ?>
 	</table>
@@ -1454,7 +1454,7 @@ function themeblvd_texture_browser( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php _e('Select a texture', 'themeblvd'); ?></h1>
+						<h1><?php esc_html_e('Select a texture', 'themeblvd'); ?></h1>
 						<input id="texture-browser-perview-color" type="text" value="#00366d" data-default-color="#00366d" />
 					</div><!-- .media-frame-title (end) -->
 
@@ -1499,7 +1499,7 @@ function themeblvd_texture_browser( $args = array() ) {
 						</div><!-- .media-toolbar-secondary (end) -->
 						<div class="media-toolbar">
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php _e('Use Texture', 'themeblvd'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Use Texture', 'themeblvd'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
