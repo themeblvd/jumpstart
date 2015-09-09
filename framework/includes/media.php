@@ -688,7 +688,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	// Slider needs 2 or more attachments.
 	if ( count( $attachments ) <= 1 ) {
 		if ( is_user_logged_in() ) {
-			return sprintf( '<div class="alert alert-warning"><p>%s</p></div>', __('Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids="1,2,3"]', 'themeblvd') );
+			return sprintf( '<div class="alert alert-warning"><p>%s</p></div>', esc_html__('Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids="1,2,3"]', 'themeblvd') );
 		} else {
 			return;
 		}
