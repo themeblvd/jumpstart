@@ -106,31 +106,31 @@ class Theme_Blvd_License_Admin {
 		$status = get_option( 'themeblvd_license_key_status' );
 		?>
 		<div class="wrap">
-			<h2><?php _e('Theme License', 'themeblvd'); ?></h2>
+			<h2><?php esc_html_e('Theme License', 'themeblvd'); ?></h2>
 			<form method="post" action="options.php">
 				<?php settings_fields('themeblvd_license'); ?>
 				<table class="form-table">
 					<tbody>
 						<tr valign="top">
 							<th scope="row" valign="top">
-								<?php _e('License Key', 'themeblvd'); ?>
+								<?php esc_html_e('License Key', 'themeblvd'); ?>
 							</th>
 							<td>
 								<input id="themeblvd_license_key" name="themeblvd_license_key" type="text" class="regular-text" value="<?php echo esc_attr( $license ); ?>" />
-								<label class="description" for="themeblvd_license_key"><?php _e('Enter your license key', 'themeblvd'); ?></label>
+								<label class="description" for="themeblvd_license_key"><?php esc_html_e('Enter your license key', 'themeblvd'); ?></label>
 							</td>
 						</tr>
 						<?php if ( $license ) : ?>
 							<tr valign="top">
 								<th scope="row" valign="top">
-									<?php _e( 'Activate License', 'themeblvd' ); ?>
+									<?php esc_html_e( 'Activate License', 'themeblvd' ); ?>
 								</th>
 								<td>
 									<?php if ( $status !== false && $status == 'valid' ) : ?>
-										<span style="color:green;"><?php _e( 'active', 'themeblvd' ); ?></span>
+										<span style="color:green;"><?php esc_html_e( 'active', 'themeblvd' ); ?></span>
 									<?php else : ?>
 										<?php wp_nonce_field( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ); ?>
-										<input type="submit" class="button-secondary" name="themeblvd_license_activate" value="<?php _e( 'Activate License', 'themeblvd' ); ?>"/>
+										<input type="submit" class="button-secondary" name="themeblvd_license_activate" value="<?php esc_html_e( 'Activate License', 'themeblvd' ); ?>"/>
 									<?php endif; ?>
 								</td>
 							</tr>
