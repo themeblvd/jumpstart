@@ -46,9 +46,9 @@ get_header();
 
 				<!-- SIDEBARS (start) -->
 
-				<?php get_sidebar( 'left' ); ?>
+				<?php get_sidebar('left'); ?>
 
-				<?php get_sidebar( 'right' ); ?>
+				<?php get_sidebar('right'); ?>
 
 				<!-- SIDEBARS (end) -->
 
