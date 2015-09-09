@@ -213,7 +213,7 @@ class Theme_Blvd_User_Options {
 			</tbody>
 		</table>
 
-		<h3><?php _e('Author Archives', 'themeblvd'); ?></h3>
+		<h3><?php esc_html_e('Author Archives', 'themeblvd'); ?></h3>
 
 		<table class="form-table">
 			<tbody>
