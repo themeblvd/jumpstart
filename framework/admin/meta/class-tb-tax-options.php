@@ -117,7 +117,7 @@ class Theme_Blvd_Tax_Options {
 					<option value="show" <?php selected($info, 'show'); ?>><?php _e('Show', 'themeblvd'); ?></option>
 					<option value="hide" <?php selected($info, 'hide'); ?>><?php _e('Hide', 'themeblvd'); ?></option>
 				</select>
-				<p class="description"><?php printf(__('Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', 'themeblvd'), $taxonomy); ?></p>
+				<p class="description"><?php printf(esc_html__('Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', 'themeblvd'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
@@ -128,7 +128,7 @@ class Theme_Blvd_Tax_Options {
 						<option value="<?php echo $key; ?>" <?php selected($sidebar_layout, $key); ?>><?php echo esc_html($value); ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php printf(__('Select the sidebar layout used in displaying archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
+				<p class="description"><?php printf(esc_html__('Select the sidebar layout used in displaying archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
@@ -136,10 +136,10 @@ class Theme_Blvd_Tax_Options {
 			<td>
 				<select name="_tb_mode" id="_tb_mode" class="postform">
 					<?php foreach ( $select_modes as $key => $value ) : ?>
-						<option value="<?php echo $key; ?>" <?php selected($mode, $key); ?>><?php echo $value; ?></option>
+						<option value="<?php echo $key; ?>" <?php selected($mode, $key); ?>><?php echo esc_html($value); ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php printf(__('Select how posts are displayed on archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
+				<p class="description"><?php printf(esc_html__('Select how posts are displayed on archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<?php
