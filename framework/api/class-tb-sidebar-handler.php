@@ -497,7 +497,7 @@ class Theme_Blvd_Sidebar_Handler {
 
 				// Ouput message
 				echo '<div class="alert alert-warning">';
-				echo '	<p>'.$message.'</p>';
+				echo '	<p>'.esc_html($message).'</p>';
 				echo '</div><!-- .tb-warning (end) -->';
 
 			}
