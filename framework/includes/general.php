@@ -593,7 +593,7 @@ function themeblvd_sidebar_layouts() {
 
 	$layouts = array(
 		'full_width' => array(
-			'name' 		=> 'Full Width',
+			'name' 		=> __('Full Width', 'themeblvd'),
 			'id'		=> 'full_width',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-12",
@@ -602,7 +602,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'sidebar_right' => array(
-			'name' 		=> 'Sidebar Right',
+			'name' 		=> __('Sidebar Right', 'themeblvd'),
 			'id'		=> 'sidebar_right',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-8",
@@ -611,7 +611,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'sidebar_left' => array(
-			'name' 		=> 'Sidebar Left',
+			'name' 		=> __('Sidebar Left', 'themeblvd'),
 			'id'		=> 'sidebar_left',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-8",
@@ -620,7 +620,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'double_sidebar' => array(
-			'name' 		=> 'Double Sidebar',
+			'name' 		=> __('Double Sidebar', 'themeblvd'),
 			'id'		=> 'double_sidebar',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-6",
@@ -629,7 +629,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'double_sidebar_left' => array(
-			'name' 		=> 'Double Left Sidebars',
+			'name' 		=> __('Double Left Sidebars', 'themeblvd'),
 			'id'		=> 'double_sidebar_left',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-6",
@@ -638,7 +638,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'double_sidebar_right' => array(
-			'name' 		=> 'Double Right Sidebars',
+			'name' 		=> __('Double Right Sidebars', 'themeblvd'),
 			'id'		=> 'double_sidebar_right',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-6",

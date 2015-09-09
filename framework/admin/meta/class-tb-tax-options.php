@@ -125,7 +125,7 @@ class Theme_Blvd_Tax_Options {
 			<td>
 				<select name="_tb_sidebar_layout" id="_tb_sidebar_layout" class="postform">
 					<?php foreach ( $select_layouts as $key => $value ) : ?>
-						<option value="<?php echo $key; ?>" <?php selected($sidebar_layout, $key); ?>><?php echo $value; ?></option>
+						<option value="<?php echo $key; ?>" <?php selected($sidebar_layout, $key); ?>><?php echo esc_html($value); ?></option>
 					<?php endforeach; ?>
 				</select>
 				<p class="description"><?php printf(__('Select the sidebar layout used in displaying archives for this %s.', 'themeblvd'), $taxonomy); ?></p>

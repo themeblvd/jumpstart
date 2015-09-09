@@ -255,8 +255,11 @@ class Theme_Blvd_Options_API {
 
 		// Generate sidebar layout options
 		$sidebar_layouts = array();
+
 		if ( is_admin() ) {
+
 			$layouts = themeblvd_sidebar_layouts();
+
 			foreach ( $layouts as $layout ) {
 				$sidebar_layouts[$layout['id']] = $imagepath.'layout-'.$layout['id'].'.png';
 			}
@@ -264,8 +267,11 @@ class Theme_Blvd_Options_API {
 
 		// Pull all the categories into an array
 		$options_categories = array();
+
 		if ( is_admin() ) {
+
 			$options_categories_obj = get_categories( array( 'hide_empty' => false ) );
+
 			foreach ( $options_categories_obj as $category ) {
 		    	$options_categories[$category->cat_ID] = $category->cat_name;
 			}

@@ -222,7 +222,7 @@ class Theme_Blvd_User_Options {
 					<td>
 						<select name="_tb_sidebar_layout" id="_tb_sidebar_layout">
 							<?php foreach ( $select_layouts as $key => $value ) : ?>
-								<option value="<?php echo $key; ?>" <?php selected($archive_layout, $key); ?>><?php echo $value; ?></option>
+								<option value="<?php echo $key; ?>" <?php selected($archive_layout, $key); ?>><?php echo esc_html($value); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</td>
