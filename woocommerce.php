@@ -24,7 +24,7 @@ get_header();
 
 				<!-- CONTENT (start) -->
 
-				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
+				<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class('content') ); ?> clearfix" role="main">
 					<div class="inner">
 						<?php
 						themeblvd_content_top();

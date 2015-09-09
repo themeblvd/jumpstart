@@ -34,7 +34,7 @@
 					<?php themeblvd_content_top(); ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'content', themeblvd_get_part( 'page' ) ); ?>
+						<?php get_template_part( 'content', themeblvd_get_part('page') ); ?>
 					<?php endwhile; ?>
 
 					<?php themeblvd_content_bottom(); ?>
