@@ -767,8 +767,8 @@ function themeblvd_page_attributes_meta_box($post) {
 		$pages = wp_dropdown_pages(array('post_type' => $post->post_type, 'exclude_tree' => $post->ID, 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)', 'themeblvd'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0));
 		if ( ! empty($pages) ) {
 ?>
-<p><strong><?php _e('Parent', 'themeblvd') ?></strong></p>
-<label class="screen-reader-text" for="parent_id"><?php _e('Parent', 'themeblvd') ?></label>
+<p><strong><?php esc_html_e('Parent', 'themeblvd') ?></strong></p>
+<label class="screen-reader-text" for="parent_id"><?php esc_html_e('Parent', 'themeblvd') ?></label>
 <?php echo $pages; ?>
 <?php
 		} // end empty pages check
@@ -776,9 +776,9 @@ function themeblvd_page_attributes_meta_box($post) {
 	if ( 'page' == $post->post_type && 0 != count( get_page_templates() ) ) {
 		$template = !empty($post->page_template) ? $post->page_template : false;
 		?>
-<p><strong><?php _e('Template', 'themeblvd') ?></strong></p>
-<label class="screen-reader-text" for="page_template"><?php _e('Page Template', 'themeblvd') ?></label><select name="page_template" id="page_template">
-<option value='default'><?php _e('Default Template', 'themeblvd'); ?></option>
+<p><strong><?php esc_html_e('Template', 'themeblvd') ?></strong></p>
+<label class="screen-reader-text" for="page_template"><?php esc_html_e('Page Template', 'themeblvd') ?></label><select name="page_template" id="page_template">
+<option value='default'><?php esc_html_e('Default Template', 'themeblvd'); ?></option>
 <?php page_template_dropdown($template); ?>
 </select>
 <?php
@@ -796,9 +796,9 @@ echo themeblvd_sidebar_layout_dropdown( $sidebar_layout );
 /* ThemeBlvd Modifications (end)
 /*-----------------------------------------------------------------------------------*/
 ?>
-<p><strong><?php _e('Order', 'themeblvd') ?></strong></p>
-<p><label class="screen-reader-text" for="menu_order"><?php _e('Order', 'themeblvd') ?></label><input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo esc_attr($post->menu_order) ?>" /></p>
-<p><?php if ( 'page' == $post->post_type ) _e( 'Need help? Use the Help tab in the upper right of your screen.', 'themeblvd'); ?></p>
+<p><strong><?php esc_html_e('Order', 'themeblvd') ?></strong></p>
+<p><label class="screen-reader-text" for="menu_order"><?php esc_html_e('Order', 'themeblvd') ?></label><input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo esc_attr($post->menu_order) ?>" /></p>
+<p><?php if ( 'page' == $post->post_type ) esc_html_e( 'Need help? Use the Help tab in the upper right of your screen.', 'themeblvd'); ?></p>
 <?php
 }
 endif;
