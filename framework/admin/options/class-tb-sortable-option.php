@@ -122,7 +122,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		$ajax_nonce = wp_create_nonce( 'themeblvd_sortable_option' );
 
-		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s" data-max="%s">', $ajax_nonce, $option_name, $option_id, $this->type, $this->max );
+		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s" data-max="%s">', $ajax_nonce, esc_html($option_name), esc_html($option_id), $this->type, $this->max );
 
 		// Header (blank by default)
 		$output .= $this->get_display_header( $option_id, $option_name, $items );
@@ -130,7 +130,7 @@ abstract class Theme_Blvd_Sortable_Option {
 		// Output blank option for the sortable items. If the user doesn't
 		// setup any sortable items and then they save, this will ensure that
 		// at least a blank value get saved to the option.
-		$output .= sprintf( '<input type="hidden" name="%s" />', $option_name.'['.$option_id.']' );
+		$output .= sprintf( '<input type="hidden" name="%s" />', esc_attr($option_name.'['.$option_id.']') );
 
 		// Start sortable section
 		$output .= '<div class="item-container">';
@@ -170,17 +170,18 @@ abstract class Theme_Blvd_Sortable_Option {
 		$footer  = '<footer class="clearfix">';
 
 		$disabled = '';
+
 		if ( $this->max && count($items) >= $this->max ) {
 			$disabled = 'disabled';
 		}
 
-		$footer .= sprintf( '<input type="button" class="add-item button-secondary" value="%s" %s />', $this->labels['add'], $disabled );
+		$footer .= sprintf( '<input type="button" class="add-item button-secondary" value="%s" %s />', esc_attr($this->labels['add']), $disabled );
 
 		if ( $this->max ) {
-			$footer .= sprintf('<div class="max">%s: %s</div>', __('Maximum', 'themeblvd'), $this->max);
+			$footer .= sprintf('<div class="max">%s: %s</div>', esc_html__('Maximum', 'themeblvd'), $this->max);
 		}
 
-		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
+		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', esc_attr($this->labels['delete_all_confirm']), esc_attr($this->labels['delete_all']) );
 		$footer .= '</footer>';
 
 		return $footer;
@@ -205,7 +206,9 @@ abstract class Theme_Blvd_Sortable_Option {
 			// to be utilized from the javascript.
 
 			if ( $option['type'] == 'subgroup_start' ) {
+
 				$class = 'subgroup';
+
 				if ( isset( $option['class'] ) ) {
 					$class .= ' '.$option['class'];
 				}
@@ -221,20 +224,22 @@ abstract class Theme_Blvd_Sortable_Option {
 
 			// Continue with normal form items
 			$class = 'section-'.$option['type'];
+
 			if ( isset( $option['class'] ) ) {
 				$class .= ' '.$option['class'];
 			}
 
 			$item_output .= sprintf( '<div class="section %s">', $class );
 
-			if ( isset( $option['name'] ) && $option['name'] ) {
-				$item_output .= sprintf( '<h4>%s</h4>', $option['name'] );
+			if ( ! empty( $option['name'] ) ) {
+				$item_output .= sprintf( '<h4>%s</h4>', esc_html($option['name']) );
 			}
 
 			$item_output .= '<div class="option clearfix">';
 			$item_output .= '<div class="controls">';
 
 			$current = '';
+
 			if ( isset($option['id']) && isset($item[$option['id']]) ) {
 				$current = $item[$option['id']];
 			}
@@ -267,7 +272,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= '<div class="input-wrap">';
 
 					if ( isset( $option['icon'] ) && ( $option['icon'] == 'image' || $option['icon'] == 'vector' ) ) {
-						$item_output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$option['icon'].'" data-icon-type="'.$option['icon'].'" data-tooltip-text="'.__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+						$item_output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$option['icon'].'" data-icon-type="'.$option['icon'].'" data-tooltip-text="'.esc_attr__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
 					}
 
 					$class = 'of-input';
@@ -302,11 +307,11 @@ abstract class Theme_Blvd_Sortable_Option {
 						$item_output .= '<nav class="editor-nav">';
 
 						if ( isset( $option['editor'] ) && $option['editor'] ) {
-							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 						}
 
 						if ( isset( $option['code'] ) && in_array( $option['code'], array( 'html', 'javascript', 'css' ) ) ) {
-							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $option['id'] ).'" data-title="'.$option['name'].'" data-code_lang="'.$option['code'].'"><i class="tb-icon-code"></i></a>';
+							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $option['id'] ).'" data-title="'.esc_attr($option['name']).'" data-code_lang="'.$option['code'].'"><i class="tb-icon-code"></i></a>';
 						}
 
 						$item_output .= '</nav>';
@@ -341,7 +346,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= sprintf( '<select class="%s" name="%s" id="%s">', $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($option['id']) );
 
 					foreach ( $option['options'] as $key => $value ) {
-						$item_output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $current, false ), esc_attr( $key ), esc_html( $value ) );
+						$item_output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $current, false ), esc_attr($key), esc_html($value) );
 					}
 
 					$item_output .= '</select>';
@@ -376,7 +381,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					if ( ! empty( $option['std'] ) ) {
 						$def_color = $option['std'];
 					}
-					$item_output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr( $current ), $def_color );
+					$item_output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr( $current ), esc_attr($def_color) );
 					break;
 
 				/*---------------------------------------*/
@@ -506,28 +511,28 @@ abstract class Theme_Blvd_Sortable_Option {
 					// Latitude
 					$item_output .= '<div class="geo-lat">';
 					$item_output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][lat]' ), esc_attr($lat) );
-					$item_output .= '<span class="geo-label">'.__('Latitude', 'themeblvd').'</span>';
+					$item_output .= '<span class="geo-label">'.esc_html__('Latitude', 'themeblvd').'</span>';
 					$item_output .= '</div><!-- .geo-lat (end) -->';
 
 					// Longitude
 					$item_output .= '<div class="geo-long">';
 					$item_output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][long]' ), esc_attr($long) );
-					$item_output .= '<span class="geo-label">'.__('Longitude', 'themeblvd').'</span>';
+					$item_output .= '<span class="geo-label">'.esc_html__('Longitude', 'themeblvd').'</span>';
 					$item_output .= '</div><!-- .geo-long (end) -->';
 
 					$item_output .= '</div><!-- .geo-wrap (end) -->';
 
 					// Generate lat and long
 					$item_output .= '<div class="geo-generate">';
-					$item_output .= '<h5>'.__('Generate Coordinates', 'themeblvd').'</h5>';
+					$item_output .= '<h5>'.esc_html__('Generate Coordinates', 'themeblvd').'</h5>';
 					$item_output .= '<div class="data clearfix">';
 					$item_output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
 					$item_output .= '<input type="text" value="" class="address" />';
-					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', __('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), __('Generate', 'themeblvd') );
+					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), esc_html__('Generate', 'themeblvd') );
 					$item_output .= '</div><!-- .data (end) -->';
 					$item_output .= '<p class="note">';
-					$item_output .= __('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
-					$item_output .= __('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
+					$item_output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
+					$item_output .= esc_html__('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
 					$item_output .= '</p>';
 					$item_output .= '</div><!-- .geo-generate (end) -->';
 
@@ -539,12 +544,12 @@ abstract class Theme_Blvd_Sortable_Option {
 				if ( is_array( $option['desc'] ) ) {
 					foreach ( $option['desc'] as $desc_id => $desc ) {
 						$item_output .= '<div class="explain hide '.$desc_id.'">';
-						$item_output .= wp_kses( $desc, themeblvd_allowed_tags() );
+						$item_output .= themeblvd_kses($desc);
 						$item_output .= '</div>';
 					}
 				} else {
 					$item_output .= '<div class="explain">';
-					$item_output .= wp_kses( $option['desc'], themeblvd_allowed_tags() );
+					$item_output .= themeblvd_kses($option['desc']);
 					$item_output .= '</div>';
 				}
 			}
@@ -556,7 +561,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		// Delete item
 		$item_output .= '<div class="section">';
-		$item_output .= sprintf( '<a href="#%s" class="delete-sortable-item" title="%s">%s</a>', $item_id, $this->labels['delete_confirm'], $this->labels['delete'] );
+		$item_output .= sprintf( '<a href="#%s" class="delete-sortable-item" title="%s">%s</a>', $item_id, esc_attr($this->labels['delete_confirm']), esc_attr($this->labels['delete']) );
 		$item_output .= '</div>';
 
 		$item_output .= '</div><!-- .item-content (end) -->';
@@ -1093,8 +1098,8 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	protected function get_display_footer( $option_id, $option_name, $items ) {
 		$footer  = '<footer>';
-		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid('slider_'), $this->labels['modal_title'], $this->labels['modal_button'], $this->labels['add'] );
-		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
+		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid('slider_'), esc_attr($this->labels['modal_title']), esc_attr($this->labels['modal_button']), esc_attr($this->labels['add']) );
+		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', esc_attr($this->labels['delete_all_confirm']), esc_attr($this->labels['delete_all']) );
 		$footer .= '</footer>';
 		return $footer;
 	}
