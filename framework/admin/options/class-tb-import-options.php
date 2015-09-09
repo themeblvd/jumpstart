@@ -90,18 +90,18 @@ class Theme_Blvd_Import_Options {
 		}
 
 		?>
-		<h2><?php echo $title; ?></h2>
-		<p><?php _e('Upload an XML file previously exported from your options page.', 'themeblvd'); ?></p>
-		<p><strong><?php _e('Warning: This will override any currently saved options.', 'themeblvd'); ?></strong></p>
+		<h2><?php echo esc_html($title); ?></h2>
+		<p><?php esc_html_e('Upload an XML file previously exported from your options page.', 'themeblvd'); ?></p>
+		<p><strong><?php esc_html_e('Warning: This will override any currently saved options.', 'themeblvd'); ?></strong></p>
 		<form enctype="multipart/form-data" id="import-upload-form" method="post" class="wp-upload-form" action="admin.php?page=<?php echo $this->id; ?>-import-options&amp;themeblvd_import=true">
 			<p>
-				<label for="upload"><?php _e('Choose a file from your computer:', 'themeblvd'); ?></label><br />
+				<label for="upload"><?php esc_html_e('Choose a file from your computer:', 'themeblvd'); ?></label><br />
 				<input type="file" id="upload" name="import" size="25" />
 				<input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce( 'themeblvd_import_'.$this->id ); ?>" />
 				<input type="hidden" name="max_file_size" value="33554432" />
 			</p>
 			<p class="submit">
-				<input type="submit" name="submit" id="submit" class="button" value="<?php _e('Upload file and import', 'themeblvd'); ?>" disabled="" />
+				<input type="submit" name="submit" id="submit" class="button" value="<?php esc_attr_e('Upload file and import', 'themeblvd'); ?>" disabled="" />
 			</p>
 		</form>
 		<?php
