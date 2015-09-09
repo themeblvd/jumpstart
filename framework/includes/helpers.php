@@ -1447,13 +1447,13 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 
 	// Array of time period chunks
 	$chunks = array(
-		array( 60 * 60 * 24 * 365 , $locals['year'], $locals['years'] ),
-		array( 60 * 60 * 24 * 30 , $locals['month'], $locals['months'] ),
-		array( 60 * 60 * 24 * 7, $locals['week'], $locals['weeks'] ),
-		array( 60 * 60 * 24 , $locals['day'], $locals['days'] ),
-		array( 60 * 60 , $locals['hour'], $locals['hours'] ),
-		array( 60 , $locals['minute'], $locals['minutes'] ),
-		array( 1, $locals['second'], $locals['seconds'] )
+		array( 60 * 60 * 24 * 365, esc_html($locals['year']), esc_html($locals['years']) ),
+		array( 60 * 60 * 24 * 30, esc_html($locals['month']), esc_html($locals['months']) ),
+		array( 60 * 60 * 24 * 7, esc_html($locals['week']), esc_html($locals['weeks']) ),
+		array( 60 * 60 * 24, esc_html($locals['day']), esc_html($locals['days']) ),
+		array( 60 * 60, esc_html($locals['hour']), esc_html($locals['hours']) ),
+		array( 60, esc_html($locals['minute']), esc_html($locals['minutes']) ),
+		array( 1, esc_html($locals['second']), esc_html($locals['seconds']) )
 	);
 
 	if ( !is_numeric( $date ) ) {
@@ -1470,7 +1470,7 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 
 	// Something went wrong with date calculation and we ended up with a negative date.
 	if ( 0 > $since ) {
-		return $locals['error'];
+		return esc_html($locals['error']);
 	}
 
 	// Step one: the first chunk
@@ -1488,10 +1488,10 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
 
 	if ( !(int)trim($output) ){
-		$output = '0 ' . $locals['seconds'];
+		$output = '0 ' . esc_html($locals['seconds']);
 	}
 
-	$output .= ' '.$locals['ago'];
+	$output .= ' '.esc_html($locals['ago']);
 
 	return $output;
 }
