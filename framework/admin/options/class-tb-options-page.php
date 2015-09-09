@@ -426,7 +426,7 @@ class Theme_Blvd_Options_Page {
 
 		}
 		?>
-		<div class="<?php echo $class; ?>">
+		<div class="<?php echo esc_attr($class); ?>">
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
@@ -434,7 +434,7 @@ class Theme_Blvd_Options_Page {
 		        <?php if ( $return[1] ) : ?>
 		        	<?php echo $return[1]; ?>
 		        <?php else : ?>
-		        	<?php echo $this->args['page_title']; ?>
+		        	<?php echo esc_html($this->args['page_title']); ?>
 		        <?php endif; ?>
 		    </h2>
 		    <div class="metabox-holder">
@@ -444,12 +444,12 @@ class Theme_Blvd_Options_Page {
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit" class="options-page-footer">
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd'); ?>" />
-							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd'); ?>" />
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e('Clear Options', 'themeblvd'); ?>" />
 							<?php if ( $this->args['export'] ) : ?>
-								<a href="<?php echo admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd'); ?></a>
+								<a href="<?php echo admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Export options to XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Export Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<?php if ( $this->args['import'] ) : ?>
-								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd'); ?></a>
+								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Import options from XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Import Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<div class="clear"></div>
 						</div>
@@ -503,6 +503,7 @@ class Theme_Blvd_Options_Page {
 		// $input before sending back the final $clean array.
 
 		$clean = array();
+
 		foreach ( $this->options as $option ) {
 
 			// Skip if we don't have an ID or type.
