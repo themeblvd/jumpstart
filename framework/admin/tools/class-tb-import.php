@@ -399,7 +399,7 @@ class Theme_Blvd_Import {
 				$home = themeblvd_post_id_by_name( 'home', 'nav_menu_item' );
 
 				if ( $home ) {
-					update_post_meta( $home, '_menu_item_url', home_url() );
+					update_post_meta( $home, '_menu_item_url', esc_url( home_url() ) );
 				}
 
 				break;

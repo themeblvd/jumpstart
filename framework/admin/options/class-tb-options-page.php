@@ -446,10 +446,10 @@ class Theme_Blvd_Options_Page {
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd'); ?>" />
 							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e('Clear Options', 'themeblvd'); ?>" />
 							<?php if ( $this->args['export'] ) : ?>
-								<a href="<?php echo admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Export options to XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Export Options', 'themeblvd'); ?></a>
+								<a href="<?php echo esc_url(admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id ))); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Export options to XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Export Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<?php if ( $this->args['import'] ) : ?>
-								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Import options from XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Import Options', 'themeblvd'); ?></a>
+								<a href="<?php echo esc_url($this->importer_url); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Import options from XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Import Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<div class="clear"></div>
 						</div>

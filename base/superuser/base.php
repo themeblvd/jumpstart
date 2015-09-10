@@ -54,7 +54,7 @@ function jumpstart_su_options() {
 			'layout_shadow_opacity' => array(
 				'id'		=> 'layout_shadow_opacity',
 				'name'		=> __('Layout Shadow Strength', 'themeblvd'),
-				'desc'		=> sprintf(__('Select the opacity of the shadow for the boxed layout. The darker %s, the closer to 100%% you want to go.', 'themeblvd'), '<a href="'.admin_url('customize.php?autofocus[control]=background_image').'" target="_blank">'.__('your background', 'themeblvd').'</a>'),
+				'desc'		=> sprintf(__('Select the opacity of the shadow for the boxed layout. The darker %s, the closer to 100%% you want to go.', 'themeblvd'), '<a href="'.esc_url(admin_url('customize.php?autofocus[control]=background_image')).'" target="_blank">'.__('your background', 'themeblvd').'</a>'),
 				'std'		=> '0.3',
 				'type'		=> 'select',
 				'options'	=> array(

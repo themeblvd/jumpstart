@@ -82,7 +82,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 						if ( $post_type == 'tb_layout' && defined('TB_BUILDER_PLUGIN_VERSION') && version_compare(TB_BUILDER_PLUGIN_VERSION, '2.0.0', '>=') ) {
 							$output .= '<span class="export">';
-							$output .= '<a href="'.admin_url('admin.php?page=themeblvd_builder&themeblvd_export_layout=true&layout='.esc_attr($post->ID).'&security='.wp_create_nonce('themeblvd_export_layout')).'" class="export-layout" title="'.esc_attr__('Export', 'themeblvd').'">'.esc_attr__('Export', 'themeblvd').'</a> | ';
+							$output .= '<a href="'.esc_url(admin_url('admin.php?page=themeblvd_builder&themeblvd_export_layout=true&layout='.esc_attr($post->ID).'&security='.wp_create_nonce('themeblvd_export_layout'))).'" class="export-layout" title="'.esc_attr__('Export', 'themeblvd').'">'.esc_attr__('Export', 'themeblvd').'</a> | ';
 							$output .= '</span>';
 						}
 

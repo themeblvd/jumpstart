@@ -190,7 +190,7 @@ class Theme_Blvd_Import_Options {
 	 * @since 2.5.0
 	 */
 	public function get_url() {
-		return admin_url('admin.php?page='.$this->id.'-import-options');
+		return esc_url( admin_url('admin.php?page='.$this->id.'-import-options') );
 	}
 
 	/**

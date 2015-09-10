@@ -110,7 +110,7 @@ class Theme_Blvd_Bases {
 							<div class="<?php echo $class; ?>">
 								<div class="theme-base-screenshot">
 									<?php if ( $current != $id ) : ?>
-										<a href="<?php echo admin_url($url); ?>" class="select-base" data-confirm="<h4><?php esc_html_e('Are you sure you want to change your theme base?', 'themeblvd'); ?></h4><?php esc_html_e('This will effect your Theme Options page, and you must re-save your theme options page after changing theme bases.', 'themeblvd'); ?>">
+										<a href="<?php echo esc_url(admin_url($url)); ?>" class="select-base" data-confirm="<h4><?php esc_html_e('Are you sure you want to change your theme base?', 'themeblvd'); ?></h4><?php esc_html_e('This will effect your Theme Options page, and you must re-save your theme options page after changing theme bases.', 'themeblvd'); ?>">
 											<span><?php esc_html_e('Select Theme Base', 'themeblvd'); ?></span>
 										</a>
 									<?php endif; ?>

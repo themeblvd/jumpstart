@@ -216,7 +216,7 @@ class Theme_Blvd_Plugin_Management {
 		}
 
 		echo '</ol>';
-		echo '<p class="row-actions visible"><a href="'.admin_url('plugins.php').'">'.esc_html__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.$url.'">'.esc_html__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.esc_html__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
+		echo '<p class="row-actions visible"><a href="'.esc_url(admin_url('plugins.php')).'">'.esc_html__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.esc_url($url).'">'.esc_html__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.esc_html__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
 		echo '</div>';
 	}
 

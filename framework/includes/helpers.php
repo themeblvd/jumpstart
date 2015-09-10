@@ -598,7 +598,7 @@ function themeblvd_wp_title( $title ) {
  */
 function themeblvd_html5_compat() {
 	echo "<!--[if lt IE 9]>\n";
-	printf('<script src="%s/framework/assets/js/html5.js" type="text/javascript"></script>', get_template_directory_uri() );
+	printf('<script src="%s" type="text/javascript"></script>', esc_url( get_template_directory_uri() . '/framework/assets/js/html5.js' ) );
 	echo "\n<![endif]-->\n";
 }
 
