@@ -559,7 +559,7 @@ function themeblvd_loop( $args = array() ){
 	}
 
 	// Start output
-	echo '<div class="'.$class.'">';
+	echo '<div class="'.esc_attr($class).'">';
 
 	// Output title and content of current page, if this is a
 	// page template displaying secondary loop.
@@ -569,7 +569,7 @@ function themeblvd_loop( $args = array() ){
 
 	// Optional title passed in from shortcodes/elements
 	if ( $args['title'] ) {
-		printf( '<h3 class="title">%s</h3>', $args['title'] );
+		printf( '<h3 class="title">%s</h3>', themeblvd_kses($args['title']) );
 	}
 
 	if ( $args['display'] == 'filter' || $args['display'] == 'masonry_filter' ) {

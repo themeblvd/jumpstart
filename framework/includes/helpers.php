@@ -44,7 +44,7 @@ function themeblvd_get_font_face( $option ) {
 		$name = explode( ':', $option['google'] );
 
 		// And also check for accidental space at end
-		$name = trim( $name[0] );
+		$name = esc_attr( trim( $name[0] ) );
 
 		// Add the deafult font stack to the end of the
 		// google font.
@@ -73,7 +73,7 @@ function themeblvd_get_font_size( $option ) {
 		$size = $option['size'];
 	}
 
-	return apply_filters( 'themeblvd_font_size', $size, $option );
+	return apply_filters( 'themeblvd_font_size', esc_attr($size), $option );
 }
 
 /**
@@ -92,7 +92,7 @@ function themeblvd_get_font_style( $option ) {
 		$style = 'italic';
 	}
 
-	return apply_filters( 'themeblvd_font_style', $style, $option );
+	return apply_filters( 'themeblvd_font_style', esc_attr($style), $option );
 }
 
 /**
@@ -125,7 +125,7 @@ function themeblvd_get_font_weight( $option ) {
 		$weight = '400';
 	}
 
-	return apply_filters( 'themeblvd_font_weight', $weight, $option );
+	return apply_filters( 'themeblvd_font_weight', esc_attr($weight), $option );
 }
 
 /**
@@ -623,10 +623,10 @@ function themeblvd_standard_slider_js( $id, $options ) {
 				<?php endif; ?>
 				prevText: '<i class="fa fa-chevron-left"></i>',
 				nextText: '<i class="fa fa-chevron-right"></i>',
-				animation: "<?php echo $options['fx']; ?>",
+				animation: "<?php echo esc_attr($options['fx']); ?>",
 				// pauseOnHover: true - This was replaced with a custom solution to work with other controls, see below with "pause_on_hover" option.
 				<?php if ( $options['timeout'] ) : ?>
-				slideshowSpeed: <?php echo $options['timeout']; ?>000,
+				slideshowSpeed: <?php echo esc_attr($options['timeout']); ?>000,
 				<?php else : ?>
 				slideshow: false,
 				<?php endif; ?>
@@ -1383,8 +1383,8 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
  * @return string Text to filter
  */
 function themeblvd_footer_copyright_helpers( $text ) {
-	$text = str_replace( '%year%', date('Y'), $text );
-	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
+	$text = str_replace( '%year%', esc_attr( date('Y') ), $text );
+	$text = str_replace( '%site_title%', esc_html( get_bloginfo('site_title') ), $text );
 	return $text;
 }
 
@@ -1509,7 +1509,16 @@ function themeblvd_get_home_url() {
     	$url = get_home_url();
     }
 
-    return apply_filters( 'themeblvd_home_url', esc_url( trailingslashit($url) ) );
+    return apply_filters( 'themeblvd_home_url', esc_url( trailingslashit( $url ) ) );
+}
+
+/**
+ * Display site's home url
+ *
+ * @since 2.5.2
+ */
+function themeblvd_home_url() {
+	echo themeblvd_get_home_url();
 }
 
 /**
@@ -1611,7 +1620,7 @@ function themeblvd_do_fa( $str ) {
 		}
 	}
 
-	return $str;
+	return themeblvd_kses($str);
 }
 
 /**

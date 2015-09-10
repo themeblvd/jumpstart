@@ -70,7 +70,7 @@ function themeblvd_get_chart( $type, $args ) {
     $output = sprintf( '<div class="%s"', $class );
 
     foreach ( $options as $key => $value ) {
-        $output .= sprintf( ' data-%s="%s"', $key, $value );
+        $output .= sprintf( ' data-%s="%s"', esc_attr($key), esc_attr($value) );
     }
 
     $output .= '>';
@@ -79,19 +79,19 @@ function themeblvd_get_chart( $type, $args ) {
         foreach ( $args['data'] as $data ) {
             switch ( $type ) {
                 case 'bar' :
-                    $output .= sprintf( '<div class="data" data-label="%s" data-values="%s" data-fill="%s"></div>', $data['label'], str_replace(' ', '', $data['values']), $data['color'] );
+                    $output .= sprintf( '<div class="data" data-label="%s" data-values="%s" data-fill="%s"></div>', esc_attr($data['label']), esc_attr( str_replace(' ', '', $data['values']) ), esc_attr($data['color']) );
                     break;
                 case 'line' :
-                    $output .= sprintf( '<div class="data" data-label="%s" data-values="%s" data-fill="%s" data-stroke="%s" data-point="%s"></div>', $data['label'], str_replace(' ', '', $data['values']), themeblvd_get_rgb($data['color'], '0.2'), $data['color'], $data['color'] );
+                    $output .= sprintf( '<div class="data" data-label="%s" data-values="%s" data-fill="%s" data-stroke="%s" data-point="%s"></div>', esc_attr($data['label']), esc_attr( str_replace(' ', '', $data['values']) ), esc_attr( themeblvd_get_rgb($data['color'], '0.2') ), esc_attr($data['color']), esc_attr($data['color']) );
                     break;
                 case 'pie' :
-                    $output .= sprintf( '<div class="data" data-label="%s" data-value="%s" data-color="%s" data-hightlight="%s"></div>', $data['label'], $data['value'], $data['color'], themeblvd_adjust_color( $data['color'], 20, 'lighten' ) );
+                    $output .= sprintf( '<div class="data" data-label="%s" data-value="%s" data-color="%s" data-hightlight="%s"></div>', esc_attr($data['label']), esc_attr($data['value']), esc_attr($data['color']), themeblvd_adjust_color( $data['color'], 20, 'lighten' ) );
             }
         }
     }
 
     $output .= '<div class="chart-wrap">';
-    $output .= sprintf( '<canvas id="%s" width="%s" height="%s"></canvas>', $args['id'], $args['width'], $args['height'] );
+    $output .= sprintf( '<canvas id="%s" width="%s" height="%s"></canvas>', esc_attr($args['id']), esc_attr($args['width']), esc_attr($args['height']) );
     $output .= '</div><!-- .chart-wrap (end) -->';
 
     $output .= '</div><!-- .tb-chart (end) -->';
@@ -145,10 +145,10 @@ function themeblvd_get_milestone( $args ) {
         $milestone = str_replace( $num, '0', $milestone );
     }
 
-    $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', $args['color'], $num, $milestone );
+    $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', esc_attr($args['color']), esc_attr($num), esc_attr($milestone) );
 
     if ( $args['text'] ) {
-    	$output .= sprintf( '<span class="text">%s</span>', $args['text'] );
+    	$output .= sprintf( '<span class="text">%s</span>', themeblvd_kses($args['text']) );
     }
 
     $output .= '</div><!-- .tb-milestone (end) -->';
@@ -198,12 +198,12 @@ function themeblvd_get_milestone_ring( $args ) {
     	$class .= ' boxed';
     }
 
-    $output = sprintf( '<div class="%s">', $class );
+    $output = sprintf( '<div class="%s">', esc_attr($class) );
 
-    $output .= sprintf( '<div class="milestone chart" data-percent="%s" data-color="%s" data-track-color="%s">', $args['percent'], $args['color'], $args['track_color'] );
+    $output .= sprintf( '<div class="milestone chart" data-percent="%s" data-color="%s" data-track-color="%s">', esc_attr($args['percent']), esc_attr($args['color']), esc_attr($args['track_color']) );
 
     if ( $args['display'] ) {
-    	$output .= '<span class="display">'.$args['display'].'</span>';
+    	$output .= '<span class="display">'.themeblvd_kses($args['display']).'</span>';
     }
 
 	$output .= '</div><!-- .milestone (end) -->';
@@ -213,7 +213,7 @@ function themeblvd_get_milestone_ring( $args ) {
 		$output .= '<div class="content">';
 
 		if ( $args['title'] ) {
-			$output .= '<h3>'.$args['title'].'</h3>';
+			$output .= '<h3>'.themeblvd_kses($args['title']).'</h3>';
 		}
 
 		if ( $args['text'] ) {
@@ -267,16 +267,17 @@ function themeblvd_get_progress_bar( $args ) {
     $output = sprintf( '<div class="%s">', $class );
 
     if ( $args['label'] ) {
-        $output .= sprintf('<span class="label text">%s</span>', $args['label']);
+        $output .= sprintf('<span class="label text">%s</span>', esc_attr($args['label']));
     }
 
     if ( $args['label_value'] ) {
-        $output .= sprintf('<span class="label value">%s</span>', $args['label_value']);
+        $output .= sprintf('<span class="label value">%s</span>', esc_attr($args['label_value']));
     }
 
     $percent = ( intval($args['value']) / intval($args['total']) ) * 100;
 
     $display = '0';
+
     if ( ! themeblvd_supports( 'display', 'scroll_effects' ) || wp_is_mobile() ) {
         $display = $percent;
     }
@@ -294,12 +295,12 @@ function themeblvd_get_progress_bar( $args ) {
     $class = 'progress-bar';
 
     if ( strpos($args['color'], '#') === 0 ) {
-        $style .= sprintf( ' background-color: %s;', $args['color']);
+        $style .= sprintf( ' background-color: %s;', $args['color'] );
     } else {
         $class .= ' progress-bar-'.$args['color'];
     }
 
-    $output .= sprintf( '<div class="%s" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>', $class, $percent, $args['total'], $percent, $style );
+    $output .= sprintf( '<div class="%s" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>', esc_attr($class), $percent, esc_attr($args['total']), $percent, esc_attr($style) );
 
     $output .= '</div><!-- .progress (end) -->';
     $output .= '</div><!-- .tb-progress (end) -->';

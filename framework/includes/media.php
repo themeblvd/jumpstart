@@ -363,7 +363,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 			$output = themeblvd_get_link_to_lightbox($lightbox);
 
 		} else {
-			$output = sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $link['href'], $link['title'], $link['class'], $link['target'], $output );
+			$output = sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', esc_url($link['href']), esc_attr($link['title']), esc_attr($link['class']), esc_attr($link['target']), $output );
 		}
 
 	}
@@ -501,7 +501,7 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 	$icon = sprintf( '<i class="fa fa-%s"></i>',  themeblvd_get_format_icon($args['format'], true) );
 
 	if ( $args['link'] ) {
-		$icon = sprintf( '<a href="%s" title="%s">%s</a>', $args['link'], $args['title'], $icon );
+		$icon = sprintf( '<a href="%s" title="%s">%s</a>', esc_url($args['link']), esc_attr($args['title']), $icon );
 	}
 
 	$output = sprintf( '<div class="%s"><div class="placeholder" style="padding-bottom:%s">%s</div></div>', $class, $h, $icon );
@@ -706,11 +706,13 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	foreach ( $attachments as $attachment ) {
 
 		$title = '';
+
 		if ( $args['title'] ) {
 			$title = $attachment->post_title;
 		}
 
 		$caption = '';
+
 		if ( $args['caption'] ) {
 			$caption = $attachment->post_excerpt;
 		}
@@ -877,20 +879,20 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 		$style = "\n<style>\n";
 
-		$style .= sprintf( "#%s .img {\n", $args['id'] );
-		$style .= sprintf( "\tbackground-position: %s;\n", $args['position'] );
-		$style .= sprintf( "\theight: %spx;\n", $args['height_desktop'] );
+		$style .= sprintf( "#%s .img {\n", esc_attr($args['id']) );
+		$style .= sprintf( "\tbackground-position: %s;\n", esc_attr($args['position']) );
+		$style .= sprintf( "\theight: %spx;\n", esc_attr($args['height_desktop']) );
 		$style .= "}\n";
 
 		$style .= "@media (max-width: 991px) {\n";
-		$style .= sprintf( "\t#%s .img {\n", $args['id'] );
-		$style .= sprintf( "\t\theight: %spx;\n", $args['height_tablet'] );
+		$style .= sprintf( "\t#%s .img {\n", esc_attr($args['id']) );
+		$style .= sprintf( "\t\theight: %spx;\n", esc_attr($args['height_tablet']) );
 		$style .= "\t}\n";
 		$style .= "}\n";
 
 		$style .= "@media (max-width: 767px) {\n";
-		$style .= sprintf( "\t#%s .img {\n", $args['id'] );
-		$style .= sprintf( "\t\theight: %spx;\n", $args['height_mobile'] );
+		$style .= sprintf( "\t#%s .img {\n", esc_attr($args['id']) );
+		$style .= sprintf( "\t\theight: %spx;\n", esc_attr($args['height_mobile']) );
 		$style .= "\t}\n";
 		$style .= "}\n";
 
@@ -910,7 +912,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 					$img_src = str_replace('http://', 'https://', $img_src);
 				}
 
-				$load .= sprintf("url(%s) ", $img_src);
+				$load .= sprintf( "url(%s) ", esc_url($img_src) );
 
 			}
 
@@ -924,7 +926,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 	}
 
-	$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', $args['id'], $class, $interval, $pause, $args['wrap'] );
+	$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', esc_attr($args['id']), esc_attr($class), esc_attr($interval), esc_attr($pause), esc_attr($args['wrap']) );
 	$output .= '<div class="carousel-control-wrap">';
 
 	// Standard nav indicators
@@ -942,7 +944,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 				$class = 'active';
 			}
 
-			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $args['id'], $counter, $class );
+			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', esc_attr($args['id']), $counter, $class );
 
 			$counter++;
 		}
@@ -968,7 +970,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			$image = '';
 
-			$img_src = $img['src'];
+			$img_src = esc_url($img['src']);
 
 			if ( is_ssl() ) {
 				$img_src = str_replace('http://', 'https://', $img_src);
@@ -977,7 +979,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			if ( $args['cover'] ) {
 				$image = sprintf( '<div class="img" style="background-image: url(%s);"></div>', $img_src );
 			} else {
-				$image = sprintf( '<img src="%s" alt="%s" />', $img_src, $img['alt'] );
+				$image = sprintf( '<img src="%s" alt="%s" />', $img_src, esc_attr($img['alt']) );
 			}
 
 			if ( $img['title'] || $img['desc'] ) {
@@ -988,17 +990,17 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 					$caption_style = sprintf( 'background-color: %s; background-color: %s;', $args['caption_bg_color'], themeblvd_get_rgb( $args['caption_bg_color'], $args['caption_bg_opacity'] ) );
 				}
 
-				$image .= '<div class="carousel-caption" style="'.$caption_style.'">';
+				$image .= '<div class="carousel-caption" style="'.esc_attr($caption_style).'">';
 
 				if ( $img['title'] ) {
-					$image .= sprintf( '<h3>%s</h3>', $img['title'] );
+					$image .= sprintf( '<h3>%s</h3>', themeblvd_kses($img['title']) );
 				}
 
 				if ( $img['desc'] ) {
 					if ( $img['desc_wpautop'] ) {
-						$image .= wpautop( $img['desc'] );
+						$image .= wpautop( themeblvd_kses($img['desc']) );
 					} else {
-						$image .= $img['desc'];
+						$image .= themeblvd_kses($img['desc']);
 					}
 				}
 
@@ -1042,7 +1044,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 						}
 					}
 
-					$output .= sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', $img['link_url'], $img['alt'], $a_class, $img['link'], $image );
+					$output .= sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', esc_url($img['link_url']), esc_attr($img['alt']), $a_class, esc_attr($img['link']), $image );
 				}
 
 			} else {
@@ -1092,8 +1094,8 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 				$class = 'active';
 			}
 
-			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s">', $args['id'], $counter, $class );
-			$output .= sprintf( '<img src="%s" alt="%s" width="%s" />', $img['thumb'], $img['alt'], $size );
+			$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s">', esc_attr($args['id']), $counter, $class );
+			$output .= sprintf( '<img src="%s" alt="%s" width="%s" />', esc_url($img['thumb']), esc_attr($img['alt']), $size );
 			$output .= '</li>';
 
 			$counter++;
@@ -1124,17 +1126,6 @@ function themeblvd_simple_slider( $images, $args = array() ) {
  * @since 2.3.0
  *
  * @param $args array Arguments for lightbox link
- */
-function themeblvd_link_to_lightbox( $args ) {
-	echo themeblvd_get_link_to_lightbox( $args );
-}
-
-/**
- * Take a piece of markup and wrap it in a link to a lightbox.
- *
- * @since 2.3.0
- *
- * @param $args array Arguments for lightbox link
  * @return $output string Final HTML to output
  */
 function themeblvd_get_link_to_lightbox( $args ) {
@@ -1156,8 +1147,8 @@ function themeblvd_get_link_to_lightbox( $args ) {
 
 	// Start building link properties
 	$props = array(
-		'href'	=> $args['link'],
-		'title'	=> $args['title'],
+		'href'	=> esc_url($args['link']),
+		'title'	=> esc_html($args['title']),
 		'class'	=> ''
 	);
 
@@ -1202,13 +1193,14 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	}
 
 	$user_class = $args['class'];
+
 	if ( ! is_array( $args['class'] ) ) {
 		$user_class = explode(' ', $args['class'] );
 	}
 
 	$class = array_merge( $class, $user_class );
 	$class = apply_filters( 'themeblvd_lightbox_class', $class, $args, $type, $item ); // Filter while still an array
-	$props['class'] = implode( ' ', $class );
+	$props['class'] = esc_attr( implode( ' ', $class ) );
 
 	// Add user any additional properties passed in
 	if ( is_array( $args['props'] ) ) {
@@ -1223,17 +1215,28 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	foreach ( $props as $key => $value ) {
 		$output .= "{$key}=\"{$value}\" ";
 	}
-	$output = themeblvd_remove_trailing_char( $output, ' ' );
+	$output = trim($output);
 
 	// Manual addon
 	if ( $args['addon'] ) {
-		$output .= ' '.$args['addon'];
+		$output .= ' '.esc_attr($args['addon']);
 	}
 
 	// Finish link
-	$output .= sprintf( '>%s</a>', $item );
+	$output .= sprintf( '>%s</a>', themeblvd_kses($item) );
 
 	return apply_filters( 'themeblvd_link_to_lightbox', $output, $args, $props, $type, $item, $class );
+}
+
+/**
+ * Take a piece of markup and wrap it in a link to a lightbox.
+ *
+ * @since 2.3.0
+ *
+ * @param $args array Arguments for lightbox link
+ */
+function themeblvd_link_to_lightbox( $args ) {
+	echo themeblvd_get_link_to_lightbox( $args );
 }
 
 /**
@@ -1308,10 +1311,10 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	}
 
 	// Setup intial image
-	$img = sprintf( '<img src="%s" alt="%s" class="%s" ', $img_src, $title, $img_class );
+	$img = sprintf( '<img src="%s" alt="%s" class="%s" ', esc_url($img_src), esc_attr($title), esc_attr($img_class) );
 
 	if ( $args['width'] ) {
-		$img .= sprintf( 'width="%s" ', $args['width'] );
+		$img .= sprintf( 'width="%s" ', esc_attr($args['width']) );
 	}
 
 	$img .= '/>';
@@ -1370,14 +1373,14 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 
 			$style = '';
 
-			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s" style="%s">%s</a>', $args['link_url'], $anchor_classes, $title, $args['link'], $style, $output );
+			$output = sprintf( '<a href="%s" class="%s" title="%s" target="%s" style="%s">%s</a>', esc_url($args['link_url']), esc_attr($anchor_classes), esc_attr($title), esc_attr($args['link']), esc_attr($style), $output );
 
 		}
 	}
 
 	// Wrap image in max-width div?
 	if ( $args['width'] ) {
-		$output = sprintf('<div class="display-width %s" style="max-width:%spx;">%s</div>', $args['align'], $args['width'], $output);
+		$output = sprintf('<div class="display-width %s" style="max-width:%spx;">%s</div>', esc_attr($args['align']), esc_attr($args['width']), $output);
 	}
 
 	return apply_filters( 'themeblvd_image', $output, $img, $img_atts, $args );
@@ -1460,7 +1463,7 @@ function themeblvd_get_banner( $args = array() ) {
 
 	$style = themeblvd_get_display_inline_style($args);
 
-	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s">', $args['id'], implode(' ', themeblvd_get_display_class($args)), $style );
+	$output = sprintf('<div id="%s" class="tb-featured-banner %s" style="%s">', esc_attr($args['id']), esc_attr( implode( ' ', themeblvd_get_display_class($args) ) ), esc_attr($style) );
 
 	// Parallax
 	if ( themeblvd_do_parallax($args) ) {
@@ -1474,7 +1477,7 @@ function themeblvd_get_banner( $args = array() ) {
 
 	// Banner color shade
 	if ( ( $args['bg_type'] == 'image' || $args['bg_type'] == 'video' ) && $args['apply_bg_shade'] ) {
-		$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
+		$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', esc_attr( themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) ) );
 	}
 
 	$output .= '<div class="wrap">';
@@ -1484,17 +1487,17 @@ function themeblvd_get_banner( $args = array() ) {
 
 	if ( $args['headline'] && $args['headline'] != 'none' ) {
 
-		$class = sprintf( 'banner-content text-%s text-%s', $args['text_color'], $args['text_align'] );
+		$class = sprintf( 'banner-content text-%s text-%s', esc_attr($args['text_color']), esc_attr($args['text_align']) );
 
 		if ( $args['headline'] == 'title' ) {
-			$content .= sprintf( '<h1 class="banner-title">%s</h1>', get_the_title($args['post_id']) );
+			$content .= sprintf( '<h1 class="banner-title">%s</h1>', esc_html( get_the_title($args['post_id'] ) ) );
 		} else if ( $args['headline'] == 'custom' ) {
-			$content .= sprintf( '<h1 class="banner-title">%s</h1>', $args['headline_custom'] );
+			$content .= sprintf( '<h1 class="banner-title">%s</h1>', themeblvd_kses( $args['headline_custom'] ) );
 		}
 
 		if ( $args['tagline'] ) {
 			$class .= ' has-tagline';
-			$content .= sprintf( '<span class="banner-tagline ">%s</span>', $args['tagline'] );
+			$content .= sprintf( '<span class="banner-tagline ">%s</span>', themeblvd_kses( $args['tagline'] ) );
 		}
 
 	}
@@ -1539,7 +1542,7 @@ function themeblvd_banner_styles() {
 			$args['height_mobile'] = str_replace('px', '', $args['height_mobile']); // double check formatting
 
 			$print .= ".tb-featured-banner > .wrap {\n";
-			$print .= sprintf("\tmin-height: %spx;\n", $args['height_mobile']);
+			$print .= sprintf( "\tmin-height: %spx;\n", esc_attr( $args['height_mobile'] ) );
 			$print .= "}\n";
 
 		}
@@ -1556,7 +1559,7 @@ function themeblvd_banner_styles() {
 			$args['height_tablet'] = str_replace('px', '', $args['height_tablet']); // double check formatting
 
 			$print .= "\t.tb-featured-banner > .wrap {\n";
-			$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_tablet']);
+			$print .= sprintf( "\t\tmin-height: %spx;\n", esc_attr( $args['height_tablet'] ) );
 			$print .= "\t}\n";
 
 		}
@@ -1575,7 +1578,7 @@ function themeblvd_banner_styles() {
 			$args['height_desktop'] = str_replace('px', '', $args['height_desktop']); // double check formatting
 
 			$print .= "\t.tb-featured-banner > .wrap {\n";
-			$print .= sprintf("\t\tmin-height: %spx;\n", $args['height_desktop']);
+			$print .= sprintf( "\t\tmin-height: %spx;\n", esc_attr($args['height_desktop'] ) );
 			$print .= "\t}\n";
 		}
 
@@ -1599,14 +1602,14 @@ function themeblvd_slider( $slider ) {
 
 	// Kill it if there's no slider
 	if ( ! $slider ) {
-		printf('<div class="alert warning"><p>%s</p></div>', themeblvd_get_local( 'no_slider_selected.' ) );
+		printf('<div class="alert warning"><p>%s</p></div>', themeblvd_get_local('no_slider_selected') );
 		return;
 	}
 
 	// Get Slider ID
 	$slider_id = themeblvd_post_id_by_name( $slider, 'tb_slider' );
 	if ( ! $slider_id ) {
-		echo themeblvd_get_local( 'no_slider' );
+		echo themeblvd_get_local('no_slider');
 		return;
 	}
 
@@ -1666,44 +1669,44 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 			$class .= ' '.$logo['class'];
 		}
 
-		$output .= sprintf( '<div class="%s">', $class );
+		$output .= sprintf( '<div class="%s">', esc_attr($class) );
 
 		if ( ! empty( $logo['type'] ) ) {
 			switch ( $logo['type'] ) {
 
 				case 'title' :
-					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), get_bloginfo('name') );
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), esc_html( get_bloginfo('name') ) );
 					break;
 
 				case 'title_tagline' :
-					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), get_bloginfo('name') );
-					$output .= sprintf( '<span class="tagline">%s</span>', get_bloginfo('description') );
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), esc_html( get_bloginfo('name') ) );
+					$output .= sprintf( '<span class="tagline">%s</span>', esc_html( get_bloginfo('description') ) );
 					break;
 
 				case 'custom' :
 
-					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%s" title="%s">%s</a></h1>', themeblvd_get_home_url(), $logo['custom'], $logo['custom'] );
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), esc_attr( $logo['custom'] ) );
 
 					if ( $logo['custom_tagline'] ) {
-						$output .= sprintf( '<span class="tagline">%s</span>', $logo['custom_tagline'] );
+						$output .= sprintf( '<span class="tagline">%s</span>', themeblvd_kses( $logo['custom_tagline'] ) );
 					}
 					break;
 
 				case 'image' :
 
-					$output .= sprintf('<a href="%s" title="%s" class="tb-image-logo">', themeblvd_get_home_url(), get_bloginfo('name') );
-					$output .= sprintf( '<img src="%s" alt="%s" ', $logo['image'], get_bloginfo('name') );
+					$output .= sprintf('<a href="%s" title="%s" class="tb-image-logo">', themeblvd_get_home_url(), esc_html( get_bloginfo('name') ) );
+					$output .= sprintf( '<img src="%s" alt="%s" ', esc_url($logo['image']), esc_html( get_bloginfo('name') ) );
 
 					if ( ! empty( $logo['image_width'] ) ) {
-						$output .= sprintf( 'width="%s" ', $logo['image_width'] );
+						$output .= sprintf( 'width="%s" ', esc_attr( $logo['image_width'] ) );
 					}
 
 					if ( ! empty( $logo['image_height'] ) ) {
-						$output .= sprintf( 'height="%s" ', $logo['image_height'] );
+						$output .= sprintf( 'height="%s" ', esc_attr( $logo['image_height'] ) );
 					}
 
 					if ( ! empty( $logo['image_2x'] ) ) {
-						$output .= sprintf( 'data-image-2x="%s" ', $logo['image_2x'] );
+						$output .= sprintf( 'data-image-2x="%s" ', esc_url( $logo['image_2x'] ) );
 					}
 
 					$output .= '/></a>';
@@ -1768,7 +1771,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 		if ( $parallax ) {
 			$output .= sprintf( '<div class="%s">%s</div><!-- .item (end) -->', $class, themeblvd_get_bg_parallax(array('src' => $img_src)) );
 		} else {
-			$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, $img_src );
+			$output .= sprintf( '<div class="%s" style="background-image: url(%s);"></div><!-- .item (end) -->', $class, esc_url($img_src) );
 		}
 
 		$counter++;
@@ -1866,13 +1869,13 @@ function themeblvd_get_bg_parallax( $display ) {
 	}
 
 	// Start ouptut
-	$output = sprintf('<div class="%s" style="background-color:%s">', $class, $color);
+	$output = sprintf( '<div class="%s" style="background-color:%s">', esc_attr($class), esc_attr($color) );
 
 	if ( $type == 'texture' ) {
 		$texture = themeblvd_get_texture( $texture );
-		$output .= sprintf('<div class="img" style="background-image:url(%s);background-position:%s;background-repeat:%s;background-size:%s;"></div>', $texture['url'], $texture['position'], $texture['repeat'], $texture['size']);
+		$output .= sprintf('<div class="img" style="background-image:url(%s);background-position:%s;background-repeat:%s;background-size:%s;"></div>', esc_url($texture['url']), esc_attr($texture['position']), esc_attr($texture['repeat']), esc_attr($texture['size']));
 	} else {
-		$output .= sprintf('<img src="%s" alt="" />', $src);
+		$output .= sprintf('<img src="%s" alt="" />', esc_url($src));
 	}
 
 	$output .= '</div><!-- .parallax-figure (end) -->';
@@ -1922,21 +1925,21 @@ function themeblvd_get_bg_video( $video ) {
 	}
 
 	if ( $video['width'] ) {
-		$output .= sprintf(" width=\"%s\"", $video['width']);
+		$output .= sprintf( " width=\"%s\"", esc_attr($video['width']) );
 	}
 
 	if ( $video['height'] ) {
-		$output .= sprintf(" width=\"%s\"", $video['width']);
+		$output .= sprintf( " width=\"%s\"", esc_attr($video['width']) );
 	}
 
 	$output .= ">\n";
 
 	if ( $video['webm'] ) {
-		$output .= sprintf("\t\t<source src=\"%s\" type=\"video/webm\">\n", $video['webm']);
+		$output .= sprintf( "\t\t<source src=\"%s\" type=\"video/webm\">\n", esc_url($video['webm']) );
 	}
 
 	if ( $video['mp4'] ) {
-		$output .= sprintf("\t\t<source src=\"%s\" type=\"video/mp4\">\n", $video['mp4']);
+		$output .= sprintf( "\t\t<source src=\"%s\" type=\"video/mp4\">\n", esc_url($video['mp4']) );
 	}
 
 	$output .= "\t</video><!-- .tb-bg-video (end) -->\n";

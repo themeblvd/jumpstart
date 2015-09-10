@@ -83,7 +83,7 @@ function themeblvd_include_google_fonts() {
 				$font .= sprintf( '&subset=%s', implode(',', $atts['subset']) );
 			}
 
-			printf( '<link href="%sfonts.googleapis.com/css?family=%s" rel="stylesheet" type="text/css">'."\n", $protocol, $font );
+			printf( '<link href="%sfonts.googleapis.com/css?family=%s" rel="stylesheet" type="text/css">'."\n", $protocol, esc_attr($font) );
 
 		}
 
@@ -1706,7 +1706,7 @@ function themeblvd_image_size_names_choose( $sizes ) {
 	// Format sizes
 	$tb_sizes = array();
 	foreach ( $tb_raw_sizes as $id => $atts ) {
-		$tb_sizes[$id] = $atts['name'];
+		$tb_sizes[$id] = esc_html($atts['name']);
 	}
 
 	// Apply filter - Filter in filter... I know, I know.
@@ -1762,6 +1762,11 @@ function themeblvd_allowed_tags() {
  * @return string Content that's been sanitized
  */
 function themeblvd_kses( $input ) {
+
+	if ( apply_filters('themeblvd_disable_kses', false) ) { // I'd suggest not fucking with this
+		return $input;
+	}
+
 	return wp_kses( $input, themeblvd_allowed_tags() );
 }
 

@@ -22,8 +22,8 @@
 
 			<h2 id="comments-title">
 				<?php
-					printf( _n( themeblvd_get_local('comments_title_single'), themeblvd_get_local('comments_title_multiple'), get_comments_number(), 'themeblvd' ),
-						number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+					echo themeblvd_kses( sprintf( _n( themeblvd_get_local('comments_title_single'), themeblvd_get_local('comments_title_multiple'), get_comments_number(), 'themeblvd' ),
+						number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' ) );
 				?>
 			</h2>
 			<ol class="commentlist">

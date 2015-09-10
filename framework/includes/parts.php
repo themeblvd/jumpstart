@@ -53,7 +53,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 		$class .= ' clearfix';
 
-		$output .= '<ul class="'.$class.'">';
+		$output .= '<ul class="'.esc_attr($class).'">';
 
 		foreach ( $buttons as $button ) {
 
@@ -141,7 +141,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 				$content = sprintf('<i class="fa fa-fw fa-%s"></i>', $icon);
 			}
 
-			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>', $button['url'], $title, $class, $button['target'], $args['tooltip'], $content );
+			$output .= sprintf( '<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>', esc_url($button['url']), esc_attr($title), esc_attr($class), esc_attr($button['target']), esc_attr($args['tooltip']), themeblvd_kses($content) );
 		}
 
 		$output .= '</ul><!-- .themeblvd-contact-bar (end) -->';
@@ -237,7 +237,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 		$class .= ' '.$args['class'];
 	}
 
-	$output = sprintf( '<a href="#" class="%1$s" data-open="%2$s" data-close="%3$s" data-placement="%4$s"><i class="fa fa-%2$s"></i></a>', $class, $args['open'], $args['close'], $args['placement'] );
+	$output = sprintf( '<a href="#" class="%1$s" data-open="%2$s" data-close="%3$s" data-placement="%4$s"><i class="fa fa-%2$s"></i></a>', esc_attr($class), esc_attr($args['open']), esc_attr($args['close']), esc_attr($args['placement']) );
 
 	return apply_filters( 'themeblvd_floating_search_trigger', $output, $args );
 }
@@ -345,13 +345,13 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 		$class .= ' '.$args['class'];
 	}
 
-	$output = sprintf( '<a href="#" class="%1$s" data-toggle="modal" data-target="#%2$s" data-open="%3$s" data-close="%4$s" data-label=""><i class="fa fa-%3$s"></i></a>', $class, $args['target'], $args['open'], $args['close'] );
+	$output = sprintf( '<a href="#" class="%1$s" data-toggle="modal" data-target="#%2$s" data-open="%3$s" data-close="%4$s" data-label=""><i class="fa fa-%3$s"></i></a>', esc_attr($class), esc_attr($args['target']), esc_attr($args['open']), esc_attr($args['close']) );
 
 	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 		if ( $count = WC()->cart->get_cart_contents_count() ) {
 			$output =  str_replace('tb-cart-trigger', 'tb-cart-trigger has-label char-'.strlen(strval($count)), $output);
 			$label = sprintf( '<span class="trigger-label">%s</span>', $count );
-			$output =  str_replace('</a>', $label.'</a>', $output);
+			$output =  str_replace('</a>', themeblvd_kses($label).'</a>', $output);
 		}
 	}
 
@@ -390,7 +390,7 @@ function themeblvd_get_mobile_cart_link(){
 		}
 	}
 
-	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', apply_filters('themeblvd_cart_url', $cart_url), apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-cart"></i>'), $cart_label );
+	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', esc_url( apply_filters('themeblvd_cart_url', $cart_url) ), themeblvd_kses( apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-cart"></i>') ), themeblvd_kses($cart_label) );
 
 	return apply_filters('themeblvd_mobile_cart_link', $output, $cart_url, $cart_label);
 }
@@ -415,7 +415,7 @@ function themeblvd_get_header_text() {
 
 	if ( $text = themeblvd_get_option('header_text') ) {
 		$text = apply_filters( 'themeblvd_header_text', $text);
-		$output = sprintf( '<div class="header-text to-mobile">%s</div>', $text );
+		$output = sprintf( '<div class="header-text to-mobile">%s</div>', themeblvd_kses($text) );
 	}
 
 	return apply_filters( 'themeblvd_header_text_output', $output );
@@ -504,7 +504,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	} else {
 
 		// Standard button
-		$button = sprintf( '<a href="%s" title="%s" class="%s" target="%s"%s>%s</a>', $url, $title, $final_classes, $target, $addon, $text );
+		$button = sprintf( '<a href="%s" title="%s" class="%s" target="%s"%s>%s</a>', esc_url($url), esc_attr($title), esc_attr($final_classes), esc_attr($target), $addon, themeblvd_kses($text) );
 
 	}
 
@@ -584,7 +584,7 @@ function themeblvd_get_buttons( $buttons, $args ) {
 	                $border = 'transparent';
 	            }
 
-	            $addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', $bg, $border, $custom['text'], $custom['bg_hover'], $custom['text_hover'] );
+	            $addon = sprintf( 'style="background-color: %1$s; border-color: %2$s; color: %3$s;" data-bg="%1$s" data-bg-hover="%4$s" data-text="%3$s" data-text-hover="%5$s"', esc_attr($bg), esc_attr($border), themeblvd_kses($custom['text']), esc_attr($custom['bg_hover']), esc_attr($custom['text_hover']) );
 
 	        }
 
@@ -700,20 +700,20 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 			$style = '';
 
 			if ( $block['apply_bg_color'] ) {
-				$style .= sprintf( 'background-color:%s;', $block['bg_color'] ); // Fallback for older browsers
-	            $style .= sprintf( 'background-color:%s;', themeblvd_get_rgb( $block['bg_color'], $block['bg_opacity'] ) );
+				$style .= sprintf( 'background-color:%s;', esc_attr($block['bg_color']) ); // Fallback for older browsers
+	            $style .= sprintf( 'background-color:%s;', esc_attr( themeblvd_get_rgb( $block['bg_color'], $block['bg_opacity'] ) ) );
 				$class .= ' has-bg';
 			}
 
 			if ( $block['color'] ) {
-				$style .= sprintf( 'color:%s;', $block['color'] );
+				$style .= sprintf( 'color:%s;', esc_attr($block['color']) );
 			}
 
 			// Content
 			if ( $block['wpautop'] ) {
 				$content = themeblvd_get_content($block['text']);
 			} else {
-				$content = do_shortcode($block['text']);
+				$content = do_shortcode( themeblvd_kses($block['text']) );
 			}
 
 			// Output
@@ -793,7 +793,7 @@ function themeblvd_archive_title() {
     	// If this is an author archive
     	global $author;
 		$userdata = get_userdata($author);
-		echo themeblvd_get_local('crumb_author').' '.$userdata->display_name;
+		echo themeblvd_get_local('crumb_author').' '.esc_html($userdata->display_name);
 
     }
 }
@@ -890,7 +890,7 @@ function themeblvd_get_breadcrumbs_trail() {
 			$crumb = $part['text'];
 
 			if ( ! empty( $part['link'] ) ) {
-				$crumb = '<a href="'.esc_url($part['link']).'" class="'.$part['type'].'-link" title="'.$crumb.'">'.$crumb.'</a>';
+				$crumb = '<a href="'.esc_url($part['link']).'" class="'.$part['type'].'-link" title="'.esc_attr($crumb).'">'.esc_html($crumb).'</a>';
 			}
 
 			if ( $total == $count ) {
@@ -997,10 +997,11 @@ function themeblvd_get_meta( $args = array() ) {
 
 				case 'author' :
 
+					$author = esc_html( get_the_author() );
 					$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
-					$author_title = sprintf( __('View all posts by %s', 'themeblvd_frontend'), get_the_author() );
+					$author_title = sprintf( esc_html__('View all posts by %s', 'themeblvd_frontend'), $author );
 					$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
-					$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, get_the_author() );
+					$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, $author );
 					break;
 
 				case 'category' :
@@ -1053,9 +1054,23 @@ function themeblvd_get_meta( $args = array() ) {
 					$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-clock-o"></i>' : '';
 
 					if ( $args['time'] === 'ago' ) {
-						$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, themeblvd_get_time_ago( get_the_ID() ) );
+
+						$item_output = sprintf(
+							'<time class="entry-date updated" datetime="%s">%s%s</time>',
+							esc_attr( get_the_time('c') ),
+							$time_icon,
+							esc_html( themeblvd_get_time_ago( get_the_ID() ) )
+						);
+
 					} else {
-						$item_output = sprintf('<time class="entry-date updated" datetime="%s">%s%s</time>', get_the_time('c'), $time_icon, get_the_time( get_option('date_format') ) );
+
+						$item_output = sprintf(
+							'<time class="entry-date updated" datetime="%s">%s%s</time>',
+							esc_attr( get_the_time('c') ),
+							$time_icon,
+							esc_html( get_the_time( get_option('date_format') ) )
+						);
+
 					}
 					break;
 			}
@@ -1148,8 +1163,9 @@ function themeblvd_blog_share( $echo = true ) {
 
 	if ( $buttons && is_array($buttons) ) {
 
-		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'tb_thumb' );
 		$patterns = themeblvd_get_share_patterns();
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'tb_thumb' );
+		$thumb = esc_url($thumb[0]);
 		$permalink = get_permalink();
 		$shortlink = wp_get_shortlink();
 		$title = get_the_title();
@@ -1178,11 +1194,11 @@ function themeblvd_blog_share( $echo = true ) {
 				if ( $patterns[$network]['encode_urls'] ) {
 					$link = str_replace( '[permalink]', rawurlencode($permalink), $link );
 					$link = str_replace( '[shortlink]', rawurlencode($shortlink), $link );
-					$link = str_replace( '[thumbnail]', rawurlencode($thumb[0]), $link );
+					$link = str_replace( '[thumbnail]', rawurlencode($thumb), $link );
 				} else {
 					$link = str_replace( '[permalink]', $permalink, $link );
 					$link = str_replace( '[shortlink]', $shortlink, $link );
-					$link = str_replace( '[thumbnail]', $thumb[0], $link );
+					$link = str_replace( '[thumbnail]', $thumb, $link );
 				}
 
 				if ( $patterns[$network]['encode'] ) {
@@ -1222,6 +1238,7 @@ function themeblvd_get_simple_contact( $args ) {
 
 	// Setup icon links
 	$icons = array();
+
 	for ( $i = 1; $i <= 6; $i++ ) {
 		if ( ! empty( $args['link_'.$i.'_url'] ) ) {
 			$icons[$args['link_'.$i.'_icon']] = $args['link_'.$i.'_url'];
@@ -1233,32 +1250,32 @@ function themeblvd_get_simple_contact( $args ) {
 
 	// Phone #1
 	if ( ! empty( $args['phone_1'] ) ) {
-		$module .= sprintf( '<li class="phone">%s</li>', $args['phone_1'] );
+		$module .= sprintf( '<li class="phone">%s</li>', themeblvd_kses($args['phone_1']) );
 	}
 
 	// Phone #2
 	if ( ! empty( $args['phone_2'] ) ) {
-		$module .= sprintf( '<li class="phone">%s</li>', $args['phone_2'] );
+		$module .= sprintf( '<li class="phone">%s</li>', themeblvd_kses($args['phone_2']) );
 	}
 
 	// Email #1
 	if ( ! empty( $args['email_1'] ) ) {
-		$module .= sprintf( '<li class="email"><a href="mailto:%s">%s</a></li>', $args['email_1'], $args['email_1'] );
+		$module .= sprintf( '<li class="email"><a href="mailto:%s">%s</a></li>', esc_attr($args['email_1']), esc_html($args['email_1']) );
 	}
 
 	// Email #2
 	if ( ! empty( $args['email_2'] ) ) {
-		$module .= sprintf( '<li class="email"><a href="mailto:%s">%s</a></li>', $args['email_2'], $args['email_2'] );
+		$module .= sprintf( '<li class="email"><a href="mailto:%s">%s</a></li>', esc_attr($args['email_2']), esc_html($args['email_2']) );
 	}
 
 	// Contact Page
 	if ( ! empty( $args['contact'] ) ) {
-		$module .= sprintf( '<li class="contact"><a href="%s">%s</a></li>', $args['contact'], themeblvd_get_local( 'contact_us' ) );
+		$module .= sprintf( '<li class="contact"><a href="%s">%s</a></li>', esc_url($args['contact']), themeblvd_get_local('contact_us') );
 	}
 
 	// Skype
 	if ( ! empty( $args['skype'] ) ) {
-		$module .= sprintf( '<li class="skype">%s</li>', $args['skype'] );
+		$module .= sprintf( '<li class="skype">%s</li>', themeblvd_kses($args['skype']) );
 	}
 
 	// Social Icons
@@ -1277,7 +1294,7 @@ function themeblvd_get_simple_contact( $args ) {
 				$title = $sources[$icon];
 			}
 
-			$module .= sprintf( '<li class="%s"><a href="%s" target="_blank" title="%s">%s</a></li>', $icon, $url, $title, $title );
+			$module .= sprintf( '<li class="%s"><a href="%s" target="_blank" title="%s">%s</a></li>', esc_attr($icon), esc_url($url), esc_attr($title), esc_html($title) );
 		}
 
 		$module .= '</ul></li>';
@@ -1413,7 +1430,7 @@ function themeblvd_get_to_section( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$output = sprintf('<a href="#%s" class="tb-scroll-to-section %s">%s</a>', $args['to'], $args['class'], themeblvd_get_local('next'));
+	$output = sprintf('<a href="#%s" class="tb-scroll-to-section %s">%s</a>', esc_attr($args['to']), esc_attr($args['class']), themeblvd_get_local('next'));
 
 	return apply_filters( 'themeblvd_to_section', $output, $args );
 }
@@ -1482,7 +1499,7 @@ function themeblvd_get_tax_info() {
 
 	$output = $name = $desc = '';
 
-	$name = apply_filters('themeblvd_tax_info_name', strip_tags($term->name), $term);
+	$name = apply_filters('themeblvd_tax_info_name', esc_html($term->name), $term);
 
 	if ( $name ) {
 		$name = sprintf( '<h1 class="info-box-title archive-title">%s</h1>', $name );
@@ -1528,7 +1545,7 @@ function themeblvd_get_author_info( $user = null, $context = 'single' ) {
 	$output = sprintf('<section class="%s">', $class);
 
 	// Title
-	$title = apply_filters('themeblvd_author_info_title', $user->display_name, $user);
+	$title = apply_filters('themeblvd_author_info_title', esc_html($user->display_name), $user);
 
 	if ( $context == 'archive' ) {
 		$output .= sprintf('<h1 class="info-box-title archive-title">%s</h1>', $title);
@@ -1546,9 +1563,9 @@ function themeblvd_get_author_info( $user = null, $context = 'single' ) {
 
 	// Link to archive of user posts
 	if ( $context == 'single' && get_user_meta( $user->ID, '_tb_box_archive_link', true ) === '1' ) {
-		$text = sprintf(themeblvd_get_local('view_posts_by'), $user->display_name);
+		$text = sprintf(themeblvd_get_local('view_posts_by'), esc_html($user->display_name));
 		$desc .= "\n\n";
-		$desc .= sprintf('<a href="%s" class="view-posts-link">%s</a>', get_author_posts_url($user->ID), $text);
+		$desc .= sprintf('<a href="%s" class="view-posts-link">%s</a>', esc_url( get_author_posts_url($user->ID) ), $text);
 	}
 
 	if ( $desc ) {
@@ -1721,8 +1738,7 @@ function themeblvd_get_refine_search_menu() {
 			$active = $_GET['s_type'];
 		}
 
-		$url = untrailingslashit(home_url('/')).'/?s='.str_replace(' ', '+', get_search_query());
-		$url = esc_url($url);
+		$url = esc_url( untrailingslashit( home_url('/')).'/?s='.str_replace(' ', '+', get_search_query() ) );
 
 		$output .= '<div class="tb-inline-menu">';
 		$output .= '<ul class="list-inline search-refine-menu">';
@@ -1735,9 +1751,9 @@ function themeblvd_get_refine_search_menu() {
 
 		foreach ( $types as $type => $name ) {
 			if ( $active == $type ) {
-				$output .= sprintf( '<li><span class="active">%s</span></li>', $name );
+				$output .= sprintf( '<li><span class="active">%s</span></li>', esc_html($name) );
 			} else {
-				$output .= sprintf( '<li><a href="%s&s_type=%s">%s</a></li>', $url, $type, $name );
+				$output .= sprintf( '<li><a href="%s&s_type=%s">%s</a></li>', $url, esc_attr($type), esc_html($name) );
 			}
 		}
 
@@ -1801,7 +1817,7 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 		$output .= sprintf('<li class="active"><a href="#" data-filter=".iso-item" title="%1$s">%1$s</a></li>', themeblvd_get_local('all'));
 
 		foreach ( $terms as $key => $value ) {
-			$output .= sprintf('<li><a href="#" data-filter=".filter-%1$s" title="%2$s">%2$s</a></li>', $key, $value);
+			$output .= sprintf('<li><a href="#" data-filter=".filter-%1$s" title="%2$s">%2$s</a></li>', esc_attr($key), esc_html($value));
 		}
 
 		$output .= '</ul>';
@@ -1835,8 +1851,8 @@ function themeblvd_get_date_block( $post_id = 0 ) {
 	}
 
 	$output  = '<div class="tb-date-block">';
-	$output .= sprintf('<span class="bg-primary day">%s</span>', get_the_date( 'd', $post_id ));
-	$output .= sprintf('<span class="month">%s</span>', get_the_date( 'M', $post_id ));
+	$output .= sprintf( '<span class="bg-primary day">%s</span>', esc_html( get_the_date( 'd', $post_id ) ) );
+	$output .= sprintf( '<span class="month">%s</span>', esc_html( get_the_date( 'M', $post_id ) ) );
 	$output .= '</div><!-- .tb-date-block (end) -->';
 
 	return apply_filters( 'themeblvd_date_block', $output, $post_id );

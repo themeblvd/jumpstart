@@ -1482,8 +1482,8 @@ function themeblvd_texture_browser( $args = array() ) {
 										}
 
 										echo '<div class="select-texture-wrap">';
-										printf( '<a href="#" class="select-texture texture-%s" data-texture="%s" data-texture-name="%s"><span style="background-image: url(%s); background-position: %s; background-repeat: %s; background-size: %s;"></span></a>', $id, $id, $texture['name'], $texture['url'], $texture['position'], $texture['repeat'], $size );
-										printf( '<p class="texture-label">%s</p>', str_replace('Light ', '', $texture['name']) );
+										printf( '<a href="#" class="select-texture texture-%s" data-texture="%s" data-texture-name="%s"><span style="background-image: url(%s); background-position: %s; background-repeat: %s; background-size: %s;"></span></a>', $id, $id, esc_html($texture['name']), $texture['url'], $texture['position'], $texture['repeat'], $size );
+										printf( '<p class="texture-label">%s</p>', str_replace('Light ', '', esc_html($texture['name'])) );
 										echo '</div><!-- .select-texture-wrap (end) -->';
 									}
 									?>

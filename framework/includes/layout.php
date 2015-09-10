@@ -88,9 +88,9 @@ function themeblvd_element( $args ) {
 	$class = implode( ' ', themeblvd_get_element_class( $args ) );
 
 	// Open element
-	do_action( 'themeblvd_element_'.$args['type'].'_before', $args['id'], $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_before
-	printf( '<div id="%s" class="%s" style="%s">', $args['id'], $class, themeblvd_get_display_inline_style($args['display']) );
-	do_action( 'themeblvd_element_'.$args['type'].'_top', $args['id'], $args['options'], $args['section'], $args['display'], $args['context'] ); // Top of element: themeblvd_element_{type}_top
+	do_action( 'themeblvd_element_'.$args['type'].'_before', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_before
+	printf( '<div id="%s" class="%s" style="%s">', esc_attr($args['id']), esc_attr($class), themeblvd_get_display_inline_style($args['display']) );
+	do_action( 'themeblvd_element_'.$args['type'].'_top', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context'] ); // Top of element: themeblvd_element_{type}_top
 
 	// Display element
 	switch ( $args['type'] ) {
@@ -164,7 +164,7 @@ function themeblvd_element( $args ) {
 			if ( $args['options']['wpautop'] ) {
 				echo themeblvd_get_content($value);
 			} else {
-				echo do_shortcode($value);
+				echo do_shortcode( themeblvd_kses($value) );
 			}
 			break;
 
@@ -180,7 +180,7 @@ function themeblvd_element( $args ) {
 
 		// HTML
 		case 'html' :
-			printf( '<div class="entry-content">%s</div>', stripslashes($args['options']['html']) );
+			printf( '<div class="entry-content">%s</div>', themeblvd_kses($args['options']['html']) );
 			break;
 
 		// Quote
@@ -427,9 +427,9 @@ function themeblvd_element( $args ) {
 	do_action( 'themeblvd_'.$args['type'], $args['id'], $args['options'] );
 
 	// Close element
-	do_action( 'themeblvd_element_'.$args['type'].'_bottom', $args['id'], $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_bottom
-	printf( '</div><!-- #%s (end) -->', $args['id'] );
-	do_action( 'themeblvd_element_'.$args['type'].'_after', $args['id'], $args['options'], $args['section'], $args['display'], $args['context']  ); // Top of element: themeblvd_element_{type}_after
+	do_action( 'themeblvd_element_'.esc_attr($args['type']).'_bottom', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_bottom
+	printf( '</div><!-- #%s (end) -->', esc_attr($args['id']) );
+	do_action( 'themeblvd_element_'.esc_attr($args['type']).'_after', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context']  ); // Top of element: themeblvd_element_{type}_after
 
 }
 
@@ -918,7 +918,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 			$style .= sprintf( '%s: %s; ', $key, $value );
 		}
 
-		return trim($style);
+		return trim( esc_attr($style) );
 	}
 
 	return $params;
@@ -1035,7 +1035,7 @@ function themeblvd_columns( $args, $columns = null ) {
 
 		if ( $args['layout_id'] == 0 && $columns ) {
 
-			echo '<div class="col entry-content '.$grid_class.'">'; // "entry-content" class only because not using elements
+			echo '<div class="col entry-content '.esc_attr($grid_class).'">'; // "entry-content" class only because not using elements
 
 			if ( isset( $columns[$i] ) ) {
 
@@ -1053,7 +1053,7 @@ function themeblvd_columns( $args, $columns = null ) {
 	                    if ( ! empty( $columns[$i]['raw_format'] ) ) {
 	                        themeblvd_content( $columns[$i]['raw'] );
 	                    } else {
-	                        echo do_shortcode( $columns[$i]['raw'] );
+	                        echo do_shortcode( themeblvd_kses($columns[$i]['raw']) );
 	                    }
 	                    break;
 
@@ -1061,7 +1061,7 @@ function themeblvd_columns( $args, $columns = null ) {
 
 			}
 
-			echo '</div><!-- .'.$grid_class.' (end) -->';
+			echo '</div><!-- .'.esc_attr($grid_class).' (end) -->';
 
 		} else {
 
@@ -1075,8 +1075,8 @@ function themeblvd_columns( $args, $columns = null ) {
 			}
 
 			// Start column
-			$display_class = implode( ' ', themeblvd_get_display_class( $display ) );
-			printf('<div class="col %s %s" style="%s">', $grid_class, $display_class, themeblvd_get_display_inline_style($display) );
+			$display_class = implode( ' ', themeblvd_get_display_class($display) );
+			printf('<div class="col %s %s" style="%s">', esc_attr($grid_class), esc_attr($display_class), themeblvd_get_display_inline_style($display) );
 
 			// Add parallax effect
 			if ( themeblvd_do_parallax( $display ) ) {
@@ -1161,7 +1161,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 		}
 
 		// Slider auto rotate speed
-		$interval = $args['timeout'];
+		$interval = esc_attr($args['timeout']);
 
 		if ( $interval && intval($interval) < 100 ) {
 			$interval .= '000'; // User has inputted seconds, so we convert to milliseconds

@@ -45,7 +45,7 @@
 		<?php endif; ?>
 
 		<?php if ( themeblvd_get_att('more') == 'button' ) : ?>
-			<?php echo themeblvd_button( themeblvd_get_att('more_text'), get_permalink( get_the_ID() ), 'default', '_self', 'small', 'read-more', get_the_title( get_the_ID() ) ); ?>
+			<?php echo themeblvd_kses( themeblvd_button( themeblvd_get_att('more_text'), get_permalink( get_the_ID() ), 'default', '_self', 'small', 'read-more', get_the_title( get_the_ID() ) ) ); ?>
 		<?php elseif ( themeblvd_get_att('more') == 'text' ) : ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php echo themeblvd_get_att('more_text'); ?></a>
 		<?php endif; ?>

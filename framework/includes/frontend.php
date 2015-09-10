@@ -302,7 +302,7 @@ function themeblvd_header_class() {
 	}
 
 	if ( $class = apply_filters('themeblvd_header_class', $class ) ) {
-		$output = sprintf('class="%s"', implode(' ', $class) );
+		$output = sprintf( 'class="%s"', esc_attr( implode(' ', $class) ) );
 	}
 
 	echo apply_filters('themeblvd_header_class_output', $output, $class);
@@ -321,7 +321,7 @@ function themeblvd_main_class() {
 	$class = array('site-inner', $config->get_config('sidebar_layout'));
 
 	if ( $class = apply_filters('themeblvd_main_class', $class ) ) {
-		$output = sprintf('class="%s"', implode(' ', $class) );
+		$output = sprintf( 'class="%s"', esc_attr( implode(' ', $class) ) );
 	}
 
 	echo apply_filters('themeblvd_main_class_output', $output, $class);
@@ -338,7 +338,7 @@ function themeblvd_footer_class() {
 	$class = array('site-footer');
 
 	if ( $class = apply_filters('themeblvd_footer_class', $class ) ) {
-		$output = sprintf('class="%s"', implode(' ', $class) );
+		$output = sprintf( 'class="%s"', esc_attr( implode(' ', $class) ) );
 	}
 
 	echo apply_filters('themeblvd_footer_class_output', $output, $class);

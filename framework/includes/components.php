@@ -31,13 +31,13 @@ function themeblvd_get_alert( $args, $content = '' ) {
 
     // WP auto?
     if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
-        $content = themeblvd_get_content( $content );
+        $content = themeblvd_get_content($content);
     } else {
-    	$content = do_shortcode( $content );
+    	$content = do_shortcode( themeblvd_kses($content) );
     }
 
     // Construct alert
-    $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', $class, $content );
+    $output = sprintf( '<div class="%s">%s</div><!-- .panel (end) -->', esc_attr($class), $content );
 
     return apply_filters( 'themeblvd_alert', $output, $args, $content );
 }
@@ -121,11 +121,11 @@ function themeblvd_get_divider( $args = array() ) {
 	}
 
 	if ( $args['insert'] == 'text' && $args['type'] != 'shadow' ) {
-		$output = sprintf( '<div class="%s" style="%s"><span class="text">%s</span></div>', $class, $style, $args['text'] );
+		$output = sprintf( '<div class="%s" style="%s"><span class="text">%s</span></div>', esc_attr($class), esc_attr($style), themeblvd_kses($args['text']) );
 	} else if ( $args['insert'] == 'icon' && $args['type'] != 'shadow' ) {
-		$output = sprintf( '<div class="%s" style="%s"><i class="fa fa-%s"></i></div>', $class, $style, $args['icon'] );
+		$output = sprintf( '<div class="%s" style="%s"><i class="fa fa-%s"></i></div>', esc_attr($class), esc_attr($style), esc_attr($args['icon']) );
 	} else {
-    	$output = sprintf( '<div class="%s" style="%s"></div>', $class, $style );
+    	$output = sprintf( '<div class="%s" style="%s"></div>', esc_attr($class), esc_attr($style) );
 	}
 
     return apply_filters( 'themeblvd_divider', $output, $args['type'] );
@@ -178,10 +178,10 @@ function themeblvd_get_map( $args ) {
     }
 
     // Start map with config options
-    $output = sprintf( '<div class="tb-map" data-zoom="%s" data-lightness="%s" data-saturation="%s" data-hue="%s" data-zoom_control="%s" data-pan_control="%s" data-draggable="%s">', $args['zoom'], $args['lightness'], $args['saturation'], $hue, $args['zoom_control'], $args['pan_control'], $args['draggable'] );
+    $output = sprintf( '<div class="tb-map" data-zoom="%s" data-lightness="%s" data-saturation="%s" data-hue="%s" data-zoom_control="%s" data-pan_control="%s" data-draggable="%s">', esc_attr($args['zoom']), esc_attr($args['lightness']), esc_attr($args['saturation']), esc_attr($hue), esc_attr($args['zoom_control']), esc_attr($args['pan_control']), esc_attr($args['draggable']) );
 
     // Map gets inserted into this DIV
-    $output .= sprintf( '<div id="%s" class="map-canvas" style="height: %spx;"></div>', $args['id'], $args['height'] );
+    $output .= sprintf( '<div id="%s" class="map-canvas" style="height: %spx;"></div>', esc_attr($args['id']), esc_attr($args['height']) );
 
     // Map center point
     $center_lat = '0';
@@ -214,7 +214,7 @@ function themeblvd_get_map( $args ) {
 
     }
 
-    $output .= sprintf('<div class="map-center" data-lat="%s" data-long="%s"></div>', $center_lat, $center_long );
+    $output .= sprintf('<div class="map-center" data-lat="%s" data-long="%s"></div>', esc_attr($center_lat), esc_attr($center_long) );
 
     // Map markers
     if ( $args['markers'] ) {
@@ -248,7 +248,7 @@ function themeblvd_get_map( $args ) {
                 $image = $marker['image']['src'];
             }
 
-            $output .= sprintf('<div class="map-marker" data-name="%s" data-lat="%s" data-long="%s" data-image="%s">', $name, $lat, $long, $image );
+            $output .= sprintf('<div class="map-marker" data-name="%s" data-lat="%s" data-long="%s" data-image="%s">', esc_attr($name), esc_attr($lat), esc_attr($long), esc_url($image) );
             $output .= sprintf( '<div class="map-marker-info">%s</div>', themeblvd_get_content($info) );
             $output .= '</div><!-- .map-marker (end) -->';
         }
@@ -325,15 +325,15 @@ function themeblvd_get_icon_box( $args ) {
 		$size = intval( str_replace('px', '', $args['size']) );
 		$lh = (3*$size) - 2;
 		$lh = "{$lh}px";
-		$icon = sprintf( '<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="fa fa-%s" style="line-height: %s"></i></div>', $args['color'], $args['color'], $args['size'], $args['icon'], $lh );
+		$icon = sprintf( '<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="fa fa-%s" style="line-height: %s"></i></div>', esc_attr($args['color']), esc_attr($args['color']), esc_attr($args['size']), esc_attr($args['icon']), $lh );
 
     } else if ( $args['badge'] ) {
 
-        $icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="fa fa-circle fa-stack-2x" style="color: %s;"></i><i class="fa fa-%s fa-stack-1x fa-inverse"></i></span></div>', $args['size'], $args['color'], $args['icon'] );
+        $icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="fa fa-circle fa-stack-2x" style="color: %s;"></i><i class="fa fa-%s fa-stack-1x fa-inverse"></i></span></div>', esc_attr($args['size']), esc_attr($args['color']), esc_attr($args['icon']) );
 
     } else {
 
-        $icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fa fa-%s" style="width:%s;"></i></div>', $args['color'], $args['size'], $args['icon'], $args['size'] );
+        $icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fa fa-%s" style="width:%s;"></i></div>', esc_attr($args['color']), esc_attr($args['size']), esc_attr($args['icon']), esc_attr($args['size']) );
 
     }
 
@@ -361,8 +361,8 @@ function themeblvd_get_icon_box( $args ) {
     $style = '';
 
     if ( $args['style'] == 'custom' ) {
-        $style = sprintf( 'background-color: %s;', $args['bg_color'] ); // Fallback for older browsers
-        $style = sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) );
+        $style = sprintf( 'background-color: %s;', esc_attr($args['bg_color']) ); // Fallback for older browsers
+        $style = sprintf( 'background-color: %s;', esc_attr( themeblvd_get_rgb( $args['bg_color'], $args['bg_opacity'] ) ) );
     }
 
     // Final output
@@ -372,7 +372,7 @@ function themeblvd_get_icon_box( $args ) {
 
     if ( $args['title'] || $args['text'] ) {
         $output .= '<div class="entry-content" style="'.$content_style.'">';
-        $output .= '<h3 class="icon-box-title">'.$args['title'].'</h3>';
+        $output .= '<h3 class="icon-box-title">'.themeblvd_kses($args['title']).'</h3>';
         $output .= themeblvd_get_content( $args['text'] );
         $output .= '</div><!-- .content (end) -->';
     }
@@ -489,7 +489,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 		$content .= "\n\t</div><!-- .jumbotron-buttons -->\n";
     }
 
-    $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', $class, $style, $content );
+    $jumbotron = sprintf('<div class="%s" style="%s">%s</div>', esc_attr($class), esc_attr($style), $content );
 
     // Final output
     $output = sprintf( '<div class="jumbotron-wrap clearfix">%s</div>', $jumbotron );
@@ -512,10 +512,10 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 
 		$class .= ' '.implode(" ", themeblvd_get_display_class($args));
 
-		$output = sprintf('<div class="%s" style="%s">', $class, themeblvd_get_display_inline_style($args));
+		$output = sprintf( '<div class="%s" style="%s">', esc_attr($class), esc_attr( themeblvd_get_display_inline_style($args) ) );
 
 		if ( in_array($args['bg_type'], array('image', 'slideshow', 'video')) && ! empty($args['apply_bg_shade']) ) {
-			$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) );
+			$output .= sprintf( '<div class="bg-shade" style="background-color: %s;"></div>', esc_attr( themeblvd_get_rgb( $args['bg_shade_color'], $args['bg_shade_opacity'] ) ) );
 		}
 
 		if ( themeblvd_do_parallax( $args ) ) {
@@ -588,10 +588,10 @@ function themeblvd_get_logos( $args ) {
         }
     }
 
-    $output = sprintf( '<div class="%s" data-timeout="%s" data-nav="%s" data-fx="slide">', $class, $args['timeout'], $args['nav'] );
+    $output = sprintf( '<div class="%s" data-timeout="%s" data-nav="%s" data-fx="slide">', esc_attr($class), esc_attr($args['timeout']), esc_attr($args['nav']) );
 
     if ( $args['title'] ) {
-        $output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
+        $output .= sprintf( '<h3 class="title">%s</h3>', themeblvd_kses($args['title']) );
     }
 
     $output .= '<div class="tb-logos-inner tb-block-slider-inner slider-inner">';
@@ -644,12 +644,12 @@ function themeblvd_get_logos( $args ) {
 
         foreach ( $args['logos'] as $logo ) {
 
-            $img = sprintf( '<img src="%s" alt="%s" class="%s" />', $logo['src'], $logo['alt'], $img_class );
+            $img = sprintf( '<img src="%s" alt="%s" class="%s" />', esc_url($logo['src']), esc_attr($logo['alt']), esc_attr($img_class) );
 
             if ( $logo['link'] ) {
-                $img = sprintf( '<a href="%s" title="%s" class="%s" style="%s" target="_blank">%s</a>', $logo['link'], $logo['name'], $wrap_class, $wrap_style, $img );
+                $img = sprintf( '<a href="%s" title="%s" class="%s" style="%s" target="_blank">%s</a>', esc_url($logo['link']), esc_attr($logo['name']), esc_attr($wrap_class), esc_attr($wrap_style), $img );
             } else {
-                $img = sprintf( '<div class="%s" style="%s">%s</div>', $wrap_class, $wrap_style, $img );
+                $img = sprintf( '<div class="%s" style="%s">%s</div>', esc_attr($wrap_class), esc_attr($wrap_style), $img );
             }
 
             $output .= sprintf( '<div class="col %s">%s</div>', $grid_class, $img );
@@ -735,20 +735,20 @@ function themeblvd_get_panel( $args, $content = '' ) {
     if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
         $content = themeblvd_get_content( $content );
     } else {
-        $content = do_shortcode( $content );
+        $content = do_shortcode( themeblvd_kses($content) );
     }
 
     // Construct intial panel
-    $output = sprintf( '<div class="%s">', $class );
+    $output = sprintf( '<div class="%s">', esc_attr($class) );
 
     if ( $args['title'] ) {
-        $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', $args['title'] );
+        $output .= sprintf( '<div class="panel-heading"><h3 class="panel-title">%s</h3></div>', themeblvd_kses($args['title']) );
     }
 
     $output .= sprintf( '<div class="panel-body entry-content">%s</div>', $content );
 
     if ( $args['footer'] ) {
-        $output .= sprintf( '<div class="panel-footer">%s</div>', $args['footer'] );
+        $output .= sprintf( '<div class="panel-footer">%s</div>', themeblvd_kses($args['footer']) );
     }
 
     $output .= '</div><!-- .panel (end) -->';
@@ -897,17 +897,17 @@ function themeblvd_get_slogan( $args ) {
     }
 
     // Output
-    $output = sprintf( '<div class="%s" style="%s">', $class, $style );
+    $output = sprintf( '<div class="%s" style="%s">', esc_attr($class), esc_attr($style) );
 
     // Content
     $content = '';
 
     if ( $args['headline'] ) {
-        $content .= sprintf('<div class="headline">%s</div>', $args['headline']);
+        $content .= sprintf( '<div class="headline">%s</div>', themeblvd_kses($args['headline']) );
     }
 
     if ( $args['desc'] ) {
-        $content .= sprintf('<div class="desc">%s</div>', $args['desc']);
+        $content .= sprintf( '<div class="desc">%s</div>', themeblvd_kses($args['desc']) );
     }
 
     // WP auto?
@@ -990,7 +990,8 @@ function themeblvd_get_tabs( $id, $args ) {
     // Navigation
     $i = 1;
     $navigation .= '<ul class="nav nav-'.$nav_type.'">';
-    if ( $args['tabs'] && is_array($args['tabs']) ) {
+
+	if ( $args['tabs'] && is_array($args['tabs']) ) {
         foreach ( $args['tabs'] as $tab_id => $tab ) {
 
             $class = '';
@@ -1030,6 +1031,7 @@ function themeblvd_get_tabs( $id, $args ) {
         foreach ( $args['tabs'] as $tab_id => $tab ) {
 
             $class = 'tab-pane entry-content fade in clearfix';
+
             if ( $i == 1 ) {
                 $class .= ' active';
             }
@@ -1057,7 +1059,7 @@ function themeblvd_get_tabs( $id, $args ) {
                     if ( ! empty( $tab['content']['raw_format'] ) ) {
                         $content .= themeblvd_get_content( $tab['content']['raw'] );
                     } else {
-                        $content .= do_shortcode( $tab['content']['raw'] );
+                        $content .= do_shortcode( themeblvd_kses($tab['content']['raw']) );
                     }
                     break;
 
@@ -1114,7 +1116,7 @@ function themeblvd_get_team_member( $args ){
     $output = '<div class="tb-team-member">';
 
     if ( ! empty( $args['image']['src'] ) ) {
-        $output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" /></div>', $args['image']['src'], $args['image']['title'] );
+        $output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" /></div>', esc_url($args['image']['src']), esc_attr($args['image']['title']) );
     }
 
     $output .= '<div class="member-info clearfix">';
@@ -1122,11 +1124,11 @@ function themeblvd_get_team_member( $args ){
     $output .= '<div class="member-identity">';
 
     if ( $args['name'] ) {
-        $output .= sprintf( '<span class="member-name">%s</span>', $args['name'] );
+        $output .= sprintf( '<span class="member-name">%s</span>', themeblvd_kses($args['name']) );
     }
 
     if ( $args['tagline'] ) {
-        $output .= sprintf( '<span class="member-tagline">%s</span>', $args['tagline'] );
+        $output .= sprintf( '<span class="member-tagline">%s</span>', themeblvd_kses($args['tagline']) );
     }
 
     $output .= '</div><!-- .member-identity (end) -->';
@@ -1209,25 +1211,25 @@ function themeblvd_get_testimonial( $args ){
         if ( empty($args['image']['src']) ) {
             $output .= '<span class="author-image"><i class="fa fa-user"></i></span>';
         } else {
-            $output .= sprintf( '<span class="author-image"><img src="%s" alt="%s" /></span>', $args['image']['src'], $args['image']['title'] );
+            $output .= sprintf( '<span class="author-image"><img src="%s" alt="%s" /></span>', esc_url($args['image']['src']), esc_attr($args['image']['title']) );
         }
 
-        $output .= sprintf( '<span class="author-name">%s</span>', $args['name'] );
+        $output .= sprintf( '<span class="author-name">%s</span>', themeblvd_kses($args['name']) );
 
         if ( $args['tagline'] || $args['company'] ) {
 
             $tagline = '';
 
             if ( $args['tagline'] ) {
-                $tagline .= $args['tagline'];
+                $tagline .= esc_html($args['tagline']);
             }
 
             if ( $args['company'] ) {
 
-                $company = $args['company'];
+                $company = esc_html($args['company']);
 
                 if ( $args['company_url'] ) {
-                    $company = sprintf( '<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', $args['company_url'], $company );
+                    $company = sprintf( '<a href="%1$s" title="%2$s" target="_blank">%2$s</a>', esc_url($args['company_url']), $company );
                 }
 
                 if ( $tagline ) {
@@ -1300,7 +1302,7 @@ function themeblvd_get_testimonial_slider( $args ) {
         $class .= ' has-title';
     }
 
-    $output = sprintf('<div class="%s" data-timeout="%s" data-nav="%s" data-fx="%s">', $class, $args['timeout'], $args['nav'], $args['fx'] );
+    $output = sprintf('<div class="%s" data-timeout="%s" data-nav="%s" data-fx="%s">', $class, esc_attr($args['timeout']), esc_attr($args['nav']), esc_attr($args['fx']) );
 
     if ( $args['title'] && $args['display'] == 'standard' ) {
         $output .= sprintf( '<h3 class="title">%s</h3>', $args['title'] );
@@ -1387,20 +1389,21 @@ function themeblvd_get_toggle( $args ) {
     }
 
     if ( $args['last'] ) {
-        $class .= '  panel-last';
+        $class .= ' panel-last';
     }
 
-    // WP auto?
+    // WP autop?
     if ( $args['wpautop'] == 'true' || $args['wpautop'] == '1' ) {
         $content = themeblvd_get_content( $args['content'] );
     } else {
-        $content = do_shortcode( $args['content'] );
+        $content = do_shortcode( themeblvd_kses($args['content']) );
     }
 
     // Is toggle open?
     $state = 'panel-collapse collapse';
     $icon = 'plus-circle';
-    if( $args['open'] == 'true' || $args['open'] == '1' ) {
+
+	if( $args['open'] == 'true' || $args['open'] == '1' ) {
         $state .= ' in';
         $icon = 'minus-circle';
     }
@@ -1410,10 +1413,10 @@ function themeblvd_get_toggle( $args ) {
 
     // Bootstrap 3 output
     $output = '
-        <div class="'.$class.'">
+        <div class="'.esc_attr($class).'">
             <div class="panel-heading">
                 <a class="panel-title" data-toggle="collapse" data-parent="" href="#'.$toggle_id.'">
-                    <i class="fa fa-'.$icon.' switch-me"></i>'.$args['title'].'
+                    <i class="fa fa-'.$icon.' switch-me"></i>'.themeblvd_kses($args['title']).'
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="'.$toggle_id.'" class="'.$state.'">
@@ -1588,33 +1591,33 @@ function themeblvd_get_pricing_table( $cols, $args ) {
 
             // Title
             $output .= '<div class="title-wrap">';
-            $output .= sprintf('<span class="title">%s</span>', $col['title']);
+            $output .= sprintf( '<span class="title">%s</span>', themeblvd_kses($col['title']) );
 
             if ( $col['popout'] && $col['title_subline'] ) {
-                $output .= sprintf('<span class="title-subline">%s</span>', $col['title_subline']);
+                $output .= sprintf( '<span class="title-subline">%s</span>', themeblvd_kses($col['title_subline']) );
             }
 
             $output .= '</div>';
 
             // Price
-            $output .= sprintf('<div class="price-wrap currency-%s">', $args['currency_placement']);
+            $output .= sprintf( '<div class="price-wrap currency-%s">', esc_attr($args['currency_placement']) );
 
             $output .= '<span class="price">';
 
             if ( $args['currency'] && $args['currency_placement'] == 'before' ) {
-                $output .= sprintf('<span class="currency">%s</span>', $args['currency']);
+                $output .= sprintf( '<span class="currency">%s</span>', themeblvd_kses($args['currency']) );
             }
 
-            $output .= $col['price'];
+            $output .= themeblvd_kses($col['price']);
 
             if ( $args['currency'] && $args['currency_placement'] == 'after' ) {
-                $output .= sprintf('<span class="currency">%s</span>', $args['currency']);
+                $output .= sprintf( '<span class="currency">%s</span>', themeblvd_kses($args['currency']) );
             }
 
             $output .= '</span>';
 
             if ( $col['price_subline'] ) {
-                $output .= sprintf('<span class="price-subline">%s</span>', $col['price_subline']);
+                $output .= sprintf( '<span class="price-subline">%s</span>', themeblvd_kses($col['price_subline']) );
             }
 
             $output .= '</div>';
@@ -1629,7 +1632,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
                 $output .= '<ul class="list-unstyled feature-list">';
 
                 foreach ( $features as $feature ) {
-                    $output .= sprintf('<li class="feature">%s</li>', do_shortcode($feature));
+                    $output .= sprintf( '<li class="feature">%s</li>', do_shortcode( themeblvd_kses($feature) ) );
                 }
 
                 $output .= '</ul>';
