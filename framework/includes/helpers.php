@@ -828,7 +828,15 @@ function themeblvd_private_page( $template ) {
 	}
 
 	// Page Templates
-	$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
+	$page_templates = apply_filters('themeblvd_private_page_support', array(
+		'template_blog.php',
+		'template_grid.php',
+		'template_list.php',
+		'template_showcase.php',
+		'template_archives.php',
+		'template_sitemap.php'
+	));
+
 	foreach ( $page_templates as $page_template ) {
 		if ( is_page_template( $page_template ) ) {
 			$template = locate_template( 'page.php' );
