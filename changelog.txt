@@ -10,7 +10,10 @@ Jump Start Changelog
 * Fixed: In executive base, standard header background elements were being outputted with Transparent header.
 * Fixed: Parallax background fallback not being horizontally centered in IE9.
 * Fixed: Added missing localization for theme bases admin page text.
-* Fixed: Live changelog link in theme options footer.
+* Fixed: Live changelog link in theme options footer not working.
+* Improved: Security of outputted localized text strings.
+* Improved: Security of outputted data from various user-edited elements.
+* Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
 * Updated TGMA plugin installer to 2.5.2.
 
 --------------------------------------------------------------
