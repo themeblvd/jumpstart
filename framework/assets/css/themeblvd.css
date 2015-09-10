@@ -2237,7 +2237,7 @@ html[xmlns] .slides {
 }
 .tb-slider-arrows li a.right {
 	background-image: url(../svg/chev-right.svg);
-	background-size: 12px 21px;
+	background-size: 8px 14px;
 }
 .tb-slider-arrows li a.down {
 	background-image: url(../svg/chev-down.svg);
@@ -2245,7 +2245,7 @@ html[xmlns] .slides {
 }
 .tb-slider-arrows li a.left {
 	background-image: url(../svg/chev-left.svg);
-	background-size: 12px 21px;
+	background-size: 8px 14px;
 }
 .tb-slider-arrows li a.trans {
 	background-color: #dadada;
