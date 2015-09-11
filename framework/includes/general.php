@@ -467,7 +467,7 @@ function themeblvd_get_admin_modules() {
 	// Options page
 	$api = Theme_Blvd_Options_API::get_instance();
 	$args = $api->get_args();
-	$options_page = sprintf( '%s?page=%s', $args['parent'], $args['menu_slug'] );
+	$options_page = sprintf( 'themes.php?page=%s', $args['menu_slug'] );
 
 	// Admin modules
 	$modules = array(
