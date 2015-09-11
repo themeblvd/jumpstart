@@ -10,7 +10,7 @@
  */
 
 // Constants
-define( 'TB_FRAMEWORK_VERSION', '2.5.2' );
+define( 'TB_FRAMEWORK_VERSION', '2.5.1' );
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory().'/framework' );
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri().'/framework' );
 
@@ -37,6 +37,8 @@ add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
 
 // Hooks
 add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
+add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
+add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
@@ -121,7 +123,6 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'embed_oembed_html', 'themeblvd_oembed_result', 10, 2 );
 	add_filter( 'wp_audio_shortcode', 'themeblvd_audio_shortcode' );
 	add_filter( 'img_caption_shortcode', 'themeblvd_img_caption_shortcode', 10, 3 );
-	add_filter( 'themeblvd_the_content', 'themeblvd_kses' );
 	add_filter( 'themeblvd_the_content', array( $GLOBALS['wp_embed'], 'run_shortcode' ), 8 );
 	add_filter( 'themeblvd_the_content', array( $GLOBALS['wp_embed'], 'autoembed' ), 8 );
 	add_filter( 'themeblvd_the_content', 'wptexturize' );

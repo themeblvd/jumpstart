@@ -46,33 +46,7 @@ class Theme_Blvd_Import_Options {
 	 * @since 2.5.0
 	 */
 	public function add_page() {
-
-		global $submenu;
-
-		// Add admin page
-		add_theme_page( null, __('Theme Options Import', 'themeblvd'), themeblvd_admin_module_cap('options'), $this->id.'-import-options', array( $this, 'admin_page' ) );
-
-		// Hide the admin page link -- why?
-		//
-		// This admin page is linked to from an "Import" button
-		// on the theme options page, and so there's no need to
-		// clutter up main WP admin nav.
-		//
-		// And in trying to keep everything compliant with theme
-		// check, we must use the add_theme_page() function, and
-		// thus there's no way around our admin page link getting
-		// added at Appearance of WP admin menu. So, we can hide
-		// it by adding CSS class "hidden".
-
-		if ( ! empty($submenu['themes.php']) ) {
-			foreach ( $submenu['themes.php'] as $key => $val ) {
-				if ( isset($val[2]) && $val[2] == $this->id.'-import-options' ) {
-					$submenu['themes.php'][$key][4] = 'hidden';
-					break;
-				}
-			}
-		}
-
+		add_submenu_page( null, null, null, themeblvd_admin_module_cap('options'), $this->id.'-import-options', array( $this, 'admin_page' ) );
 	}
 
 	/**
@@ -90,18 +64,18 @@ class Theme_Blvd_Import_Options {
 		}
 
 		?>
-		<h2><?php echo esc_html($title); ?></h2>
-		<p><?php esc_html_e('Upload an XML file previously exported from your options page.', 'themeblvd'); ?></p>
-		<p><strong><?php esc_html_e('Warning: This will override any currently saved options.', 'themeblvd'); ?></strong></p>
+		<h2><?php echo $title; ?></h2>
+		<p><?php _e('Upload an XML file previously exported from your options page.', 'themeblvd'); ?></p>
+		<p><strong><?php _e('Warning: This will override any currently saved options.', 'themeblvd'); ?></strong></p>
 		<form enctype="multipart/form-data" id="import-upload-form" method="post" class="wp-upload-form" action="admin.php?page=<?php echo $this->id; ?>-import-options&amp;themeblvd_import=true">
 			<p>
-				<label for="upload"><?php esc_html_e('Choose a file from your computer:', 'themeblvd'); ?></label><br />
+				<label for="upload"><?php _e('Choose a file from your computer:', 'themeblvd'); ?></label><br />
 				<input type="file" id="upload" name="import" size="25" />
 				<input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce( 'themeblvd_import_'.$this->id ); ?>" />
 				<input type="hidden" name="max_file_size" value="33554432" />
 			</p>
 			<p class="submit">
-				<input type="submit" name="submit" id="submit" class="button" value="<?php esc_attr_e('Upload file and import', 'themeblvd'); ?>" disabled="" />
+				<input type="submit" name="submit" id="submit" class="button" value="<?php _e('Upload file and import', 'themeblvd'); ?>" disabled="" />
 			</p>
 		</form>
 		<?php
@@ -190,7 +164,7 @@ class Theme_Blvd_Import_Options {
 	 * @since 2.5.0
 	 */
 	public function get_url() {
-		return esc_url( admin_url('admin.php?page='.$this->id.'-import-options') );
+		return admin_url('admin.php?page='.$this->id.'-import-options');
 	}
 
 	/**

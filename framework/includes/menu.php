@@ -434,7 +434,7 @@ function themeblvd_primary_menu_fallback( $args ) {
 	$output = '';
 
 	if ( $args['theme_location'] = apply_filters('themeblvd_primary_menu_location', 'primary') && current_user_can('edit_theme_options') ) {
-		$output .= sprintf('<div class="alert alert-warning tb-menu-warning"><p><strong>%s</strong>: %s</p></div>', esc_html__('No Custom Menu', 'themeblvd'), esc_html__('Setup a custom menu at Appearance > Menus in your admin panel, and apply it to the "Primary Navigation" location.', 'themeblvd'));
+		$output .= sprintf('<div class="alert alert-warning tb-menu-warning"><p><strong>%s</strong>: %s</p></div>', __('No Custom Menu', 'themeblvd'), __('Setup a custom menu at <em>Appearance > Menus</em> in your admin panel, and apply it to the "Primary Navigation" location.', 'themeblvd'));
 	}
 
 	/**

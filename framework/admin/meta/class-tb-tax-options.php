@@ -110,36 +110,36 @@ class Theme_Blvd_Tax_Options {
 		$mode = $this->get( $taxonomy, $term->slug, 'mode', 'default' );
 		?>
 		<tr class="form-field">
-			<th scope="row"><label for="_tb_info"><?php esc_html_e('Archive Info Box', 'themeblvd'); ?></label></th>
+			<th scope="row"><label for="_tb_info"><?php _e('Archive Info Box', 'themeblvd'); ?></label></th>
 			<td>
 				<select name="_tb_info" id="_tb_info" class="postform">
-					<option value="default" <?php selected($info, 'default'); ?>><?php esc_html_e('Use default setting', 'themeblvd'); ?></option>
-					<option value="show" <?php selected($info, 'show'); ?>><?php esc_html_e('Show', 'themeblvd'); ?></option>
-					<option value="hide" <?php selected($info, 'hide'); ?>><?php esc_html_e('Hide', 'themeblvd'); ?></option>
+					<option value="default" <?php selected($info, 'default'); ?>><?php _e('Use default setting', 'themeblvd'); ?></option>
+					<option value="show" <?php selected($info, 'show'); ?>><?php _e('Show', 'themeblvd'); ?></option>
+					<option value="hide" <?php selected($info, 'hide'); ?>><?php _e('Hide', 'themeblvd'); ?></option>
 				</select>
-				<p class="description"><?php printf(esc_html__('Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', 'themeblvd'), $taxonomy); ?></p>
+				<p class="description"><?php printf(__('Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', 'themeblvd'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row"><label for="_tb_sidebar_layout"><?php esc_html_e('Archive Sidebar Layout', 'themeblvd'); ?></label></th>
+			<th scope="row"><label for="_tb_sidebar_layout"><?php _e('Archive Sidebar Layout', 'themeblvd'); ?></label></th>
 			<td>
 				<select name="_tb_sidebar_layout" id="_tb_sidebar_layout" class="postform">
 					<?php foreach ( $select_layouts as $key => $value ) : ?>
-						<option value="<?php echo $key; ?>" <?php selected($sidebar_layout, $key); ?>><?php echo esc_html($value); ?></option>
+						<option value="<?php echo $key; ?>" <?php selected($sidebar_layout, $key); ?>><?php echo $value; ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php printf(esc_html__('Select the sidebar layout used in displaying archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
+				<p class="description"><?php printf(__('Select the sidebar layout used in displaying archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row"><label for="_tb_mode"><?php esc_html_e('Archive Post Display', 'themeblvd'); ?></label></th>
+			<th scope="row"><label for="_tb_mode"><?php _e('Archive Post Display', 'themeblvd'); ?></label></th>
 			<td>
 				<select name="_tb_mode" id="_tb_mode" class="postform">
 					<?php foreach ( $select_modes as $key => $value ) : ?>
-						<option value="<?php echo $key; ?>" <?php selected($mode, $key); ?>><?php echo esc_html($value); ?></option>
+						<option value="<?php echo $key; ?>" <?php selected($mode, $key); ?>><?php echo $value; ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php printf(esc_html__('Select how posts are displayed on archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
+				<p class="description"><?php printf(__('Select how posts are displayed on archives for this %s.', 'themeblvd'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<?php

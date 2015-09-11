@@ -1,24 +1,6 @@
 Jump Start Changelog
 ====================
 
-2.0.2 - XX/XX/XXXX
-------------------
-
-* **Updated Theme Blvd framework to 2.5.2**
-* Improvement: Better handling of svg icons in IE9/10.
-* Fixed: WooCommerce cart thumbnail sizing issue in Firefox.
-* Fixed: In executive base, standard header background elements were being outputted with Transparent header.
-* Fixed: Parallax background fallback not being horizontally centered in IE9.
-* Fixed: Added missing localization for theme bases admin page text.
-* Fixed: Live changelog link in theme options footer not working.
-* Fixed: Blog and Post Showcase page templates not obeying WordPress page privacy settings.
-* Improved: Security of outputted localized text strings.
-* Improved: Security of outputted data from various user-edited elements.
-* Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
-* Updated TGMA plugin installer to 2.5.2.
-
---------------------------------------------------------------
-
 2.0.1 - 08/24/2015
 ------------------
 

@@ -208,7 +208,7 @@ class Theme_Blvd_Plugin_Management {
 		$url .= sprintf( '&security=%s', wp_create_nonce('themeblvd-plugin-nag') );
 
 		echo '<div class="error">';
-		echo '<p>'.sprintf(esc_html__('For everything to work properly with your current version of the %s theme, you must update the following plugins.', 'themeblvd'), '<em>'.$this->theme->get('Name').'</em>').'</p>';
+		echo '<p>'.sprintf(__('For everything to work properly with your current version of the %s theme, you must update the following plugins.', 'themeblvd'), '<em>'.$this->theme->get('Name').'</em>').'</p>';
 		echo '<ol>';
 
 		foreach ( $this->updates as $update ) {
@@ -216,7 +216,7 @@ class Theme_Blvd_Plugin_Management {
 		}
 
 		echo '</ol>';
-		echo '<p class="row-actions visible"><a href="'.esc_url(admin_url('plugins.php')).'">'.esc_html__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.esc_url($url).'">'.esc_html__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.esc_html__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
+		echo '<p class="row-actions visible"><a href="'.admin_url('plugins.php').'">'.__('Go to Plugins Page', 'themeblvd').'</a> | <a href="'.$url.'">'.__('Dismiss this notice', 'themeblvd').'</a> | <a href="http://www.themeblvd.com" target="_blank">'.__('Visit ThemeBlvd.com', 'themeblvd').'</a></p>';
 		echo '</div>';
 	}
 

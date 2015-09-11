@@ -75,7 +75,7 @@ function themeblvd_get_blockquote( $args ) {
 	}
 
 	// Output
-	$output = sprintf( '<blockquote class="%s" style="%s">%s</blockquote>', esc_attr($class), esc_attr($style), themeblvd_kses($quote) );
+	$output = sprintf( '<blockquote class="%s" style="%s">%s</blockquote>', $class, $style, $quote );
 
 	return apply_filters( 'themeblvd_blockquote', $output, $args, $quote, $source, $class, $style );
 }
@@ -100,7 +100,7 @@ function themeblvd_blockquote( $args ) {
  * @return string Formatted content
  */
 function themeblvd_get_content( $content ) {
-	return apply_filters( 'themeblvd_the_content', $content );
+	return apply_filters( 'themeblvd_the_content', stripslashes( $content ) );
 }
 
 /**
@@ -174,11 +174,11 @@ function themeblvd_get_content_block( $args ){
 	if ( $args['format'] ) {
 		$content = themeblvd_get_content( $args['content'] );
 	} else {
-		$content = do_shortcode( themeblvd_kses($args['content']) );
+		$content = do_shortcode( $args['content'] );
 	}
 
 	// Final output
-	$output = sprintf( '<div class="%s" style="%s">%s</div>', esc_attr($class), esc_attr($style), $content );
+	$output = sprintf( '<div class="%s" style="%s">%s</div>', $class, $style, $content );
 
 	return apply_filters( 'themeblvd_content_block', $output, $args );
 }
@@ -215,14 +215,14 @@ function themeblvd_get_headline( $args ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	// Swap in current page's title for %page_title%
-	$text = str_replace( '%page_title%', get_the_title( themeblvd_config('id') ), $args['text'] );
+	$text = str_replace( '%page_title%', get_the_title( themeblvd_config( 'id' ) ), $args['text'] );
 
 	// Output
-	$output  = '<div class="tb-headline text-'.esc_attr($args['align']).'">';
-	$output .= sprintf( '<%1$s>%2$s</%1$s>', esc_attr($args['tag']), themeblvd_kses($text) );
+	$output = '<div class="tb-headline text-'.$args['align'].'">';
+	$output .= sprintf( '<%1$s>%2$s</%1$s>', $args['tag'], stripslashes($text) );
 
 	if ( $args['tagline'] ) {
-		$output .= sprintf( '<p>%s</p>', themeblvd_kses($args['tagline']) );
+		$output .= sprintf( '<p>%s</p>', stripslashes($args['tagline']) );
 	}
 
 	$output .= '</div><!-- .tb-headline (end) -->';
@@ -324,7 +324,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
 	// Wrap title in link if there's a URL.
 	if ( $url ) {
-		$title = sprintf('<a href="%s" title="%s" target="%s">%s</a>', esc_url($url), esc_attr( the_title_attribute('echo=0') ), $target, esc_html($title) );
+		$title = sprintf('<a href="%s" title="%s" target="%s">%s</a>', esc_url( $url ), esc_attr( the_title_attribute('echo=0') ), $target, $title );
 	}
 
 	return apply_filters( 'themeblvd_the_title', $title, $url );
@@ -340,7 +340,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
  * @param bool $foce_link Whether to force the title to link.
  */
 function themeblvd_the_title( $post_id = 0, $force_link = false ) {
-	echo themeblvd_kses( themeblvd_get_the_title( $post_id, $force_link ) );
+	echo themeblvd_get_the_title( $post_id, $force_link );
 }
 
 /**

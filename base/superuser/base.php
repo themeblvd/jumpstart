@@ -27,21 +27,21 @@ function jumpstart_su_options() {
 				'class'		=> 'show-hide-toggle'
 			),
 			'layout_style' => array(
-				'name' 		=> __('Site Layout Style', 'themeblvd'),
-				'desc' 		=> __('Select whether you\'d like the layout of the theme to be boxed or not.', 'themeblvd'),
+				'name' 		=> __( 'Site Layout Style', 'themeblvd' ),
+				'desc' 		=> __( 'Select whether you\'d like the layout of the theme to be boxed or not.', 'themeblvd' ),
 				'id' 		=> 'layout_style',
 				'std' 		=> 'stretch',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'stretch' 	=> __('Stretch', 'themeblvd'),
-					'boxed' 	=> __('Boxed', 'themeblvd')
+					'stretch' 	=> __( 'Stretch', 'themeblvd' ),
+					'boxed' 	=> __( 'Boxed', 'themeblvd' )
 				),
 				'class'		=> 'trigger'
 			),
 			'layout_shadow_size' => array(
 				'id'		=> 'layout_shadow_size',
 				'name'		=> __('Layout Shadow Size', 'themeblvd'),
-				'desc'		=> __('Select the size of the shadow around the boxed layout. Set to 0px for no shadow.', 'themeblvd'),
+				'desc'		=> __('Select the size of the shadow around the boxed layout. Set to <em>0px</em> for no shadow.', 'themeblvd'),
 				'std'		=> '5px',
 				'type'		=> 'slide',
 				'options'	=> array(
@@ -54,7 +54,7 @@ function jumpstart_su_options() {
 			'layout_shadow_opacity' => array(
 				'id'		=> 'layout_shadow_opacity',
 				'name'		=> __('Layout Shadow Strength', 'themeblvd'),
-				'desc'		=> sprintf(__('Select the opacity of the shadow for the boxed layout. The darker %s, the closer to 100%% you want to go.', 'themeblvd'), '<a href="'.esc_url(admin_url('customize.php?autofocus[control]=background_image')).'" target="_blank">'.__('your background', 'themeblvd').'</a>'),
+				'desc'		=> __('Select the opacity of the shadow for the boxed layout. The darker <a href="themes.php?page=custom-background" target="_blank">your background</a>, the closer to 1.0 you want to go.', 'themeblvd'),
 				'std'		=> '0.3',
 				'type'		=> 'select',
 				'options'	=> array(
@@ -84,7 +84,7 @@ function jumpstart_su_options() {
 			'layout_border_width' => array(
 				'id'		=> 'layout_border_width',
 				'name'		=> __('Layout Border Width', 'themeblvd'),
-				'desc'		=> __('Select a width in pixels for the boxed layout. Set to 0px for no border.', 'themeblvd'),
+				'desc'		=> __('Select a width in pixels for the boxed layout. Set to <em>0px</em> for no border.', 'themeblvd'),
 				'std'		=> '0px',
 				'type'		=> 'slide',
 				'options'	=> array(
@@ -146,13 +146,13 @@ function jumpstart_su_options() {
 			),
 			'style' => array(
 				'id'		=> 'style',
-				'name' 		=> __('Content Style', 'themeblvd'),
-				'desc'		=> __('Select the content style of the site.', 'themeblvd'),
+				'name' 		=> __( 'Content Style', 'themeblvd' ),
+				'desc'		=> __( 'Select the content style of the site.', 'themeblvd' ),
 				'std'		=> 'light',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('Light', 'themeblvd'),
-					'dark' 	=> __('Dark', 'themeblvd')
+					'light' => __( 'Light', 'themeblvd' ),
+					'dark' 	=> __( 'Dark', 'themeblvd' )
 				)
 			)
 		),
@@ -163,14 +163,14 @@ function jumpstart_su_options() {
 				'class'		=> 'show-hide-toggle'
 			),
 			'header_info' => array(
-				'name' 		=> __('Header Info Display', 'themeblvd'),
-				'desc'		=> sprintf(__('Select where you\'d like the header info to display, configured at %s.', 'themeblvd'), '<em>'.__('Theme Options > Layout > Header', 'themeblvd').'</em>'),
+				'name' 		=> __( 'Header Info Display', 'themeblvd' ),
+				'desc' 		=> __( 'Select where you\'d like the header info to display, configured at <em>Theme Options > Layout > Header</em>.', 'themeblvd' ),
 				'id' 		=> 'header_info',
 				'std' 		=> 'header_top',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'header_top'	=> __('Top bar above header', 'themeblvd'),
-					'header_addon'	=> __('Within header', 'themeblvd')
+					'header_top'	=> __( 'Top bar above header', 'themeblvd' ),
+					'header_addon'	=> __( 'Within header', 'themeblvd' )
 				),
 				'class'		=> 'trigger'
 			),
@@ -374,7 +374,7 @@ function jumpstart_su_options() {
 			'header_bg_video' => array(
 				'id'		=> 'header_bg_video',
 				'name'		=> __('Background Video', 'themeblvd'),
-				'desc'		=> sprintf(__('Setup a background video. For best results, make sure to use all three fields. The %s file will display in Google Chrome, while the %s will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'), '<em>.webm</em>', '<em>.mp4</em>'),
+				'desc'		=> __('Setup a background video. For best results, make sure to use all three fields. The <em>.webm</em> file will display in Google Chrome, while the <em>.mp4</em> will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'),
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),
@@ -444,8 +444,8 @@ function jumpstart_su_options() {
 				'type'		=> 'slider'
 			),
 			'header_bg_slideshow_crop' => array(
-				'name' 		=> __('Slideshow Crop Size', 'themeblvd'),
-				'desc' 		=> __('Select the crop size to be used for the background slideshow images. Remember that the background images will be stretched to cover the area.', 'themeblvd'),
+				'name' 		=> __( 'Slideshow Crop Size', 'themeblvd' ),
+				'desc' 		=> __( 'Select the crop size to be used for the background slideshow images. Remember that the background images will be stretched to cover the area.', 'themeblvd' ),
 				'id' 		=> 'header_bg_slideshow_crop',
 				'std' 		=> 'full',
 				'type' 		=> 'select',
@@ -686,13 +686,13 @@ function jumpstart_su_options() {
 			),
 			'menu_bg_color_brightness' => array(
 				'id' 		=> 'menu_bg_color_brightness',
-				'name' 		=> __('Background Color Brightness', 'themeblvd'),
-				'desc' 		=> __('In the previous option, did you go dark or light?', 'themeblvd'),
+				'name' 		=> __( 'Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'std' 		=> 'dark',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('I chose a light color in the previous option.', 'themeblvd'),
-					'dark' 	=> __('I chose a dark color in the previous option.', 'themeblvd')
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				),
 				'class'		=> 'hide receiver receiver-color receiver-glassy receiver-textured receiver-gradient receiver-gradient_glassy'
 			),
@@ -738,13 +738,13 @@ function jumpstart_su_options() {
 			),
 			'menu_hover_bg_color_brightness' => array(
 				'id' 		=> 'menu_hover_bg_color_brightness',
-				'name' 		=> __('Button Hover Background Color Brightness', 'themeblvd'),
-				'desc' 		=> __('In the previous option, did you go dark or light?', 'themeblvd'),
+				'name' 		=> __( 'Button Hover Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'std' 		=> 'dark',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('I chose a light color in the previous option.', 'themeblvd'),
-					'dark' 	=> __('I chose a dark color in the previous option.', 'themeblvd')
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
 			'menu_sub_bg_color' => array(
@@ -756,13 +756,13 @@ function jumpstart_su_options() {
 			),
 			'menu_sub_bg_color_brightness' => array(
 				'id' 		=> 'menu_sub_bg_color_brightness',
-				'name' 		=> __('Dropdown Background Color Brightness', 'themeblvd'),
-				'desc' 		=> __('In the previous option, did you go dark or light?', 'themeblvd'),
+				'name' 		=> __( 'Dropdown Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'std' 		=> 'light',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('I chose a light color in the previous option.', 'themeblvd'),
-					'dark' 	=> __('I chose a dark color in the previous option.', 'themeblvd')
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
 			'sub_group_start_13' => array(
@@ -895,8 +895,8 @@ function jumpstart_su_options() {
 			),
 			'font_menu' => array(
 				'id' 		=> 'font_menu',
-				'name' 		=> __('Main Menu Font', 'themeblvd'),
-				'desc' 		=> __('This font applies to the top level items of the main menu.', 'themeblvd'),
+				'name' 		=> __( 'Main Menu Font', 'themeblvd' ),
+				'desc' 		=> __( 'This font applies to the top level items of the main menu.', 'themeblvd' ),
 				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#ffffff', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
 				'type' 		=> 'typography',
@@ -925,27 +925,27 @@ function jumpstart_su_options() {
 			),
 			'menu_mobile_bg_color_brightness' => array(
 				'id' 		=> 'menu_mobile_bg_color_brightness',
-				'name' 		=> __('Mobile Menu Background Color Brightness', 'themeblvd'),
-				'desc' 		=> __('In the previous option, did you go dark or light?', 'themeblvd'),
+				'name' 		=> __( 'Mobile Menu Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'std' 		=> 'dark',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('I chose a light color in the previous option.', 'themeblvd'),
-					'dark' 	=> __('I chose a dark color in the previous option.', 'themeblvd')
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				)
 			),
 			'menu_mobile_social_media_style' => array(
-				'name' 		=> __('Social Media Style', 'themeblvd'),
-				'desc'		=> __('Select the color you\'d like applied to the social icons in the mobile menu.', 'themeblvd'),
+				'name' 		=> __( 'Social Media Style', 'themeblvd' ),
+				'desc'		=> __( 'Select the color you\'d like applied to the social icons in the mobile menu.', 'themeblvd' ),
 				'id'		=> 'menu_mobile_social_media_style',
 				'std'		=> 'light',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'flat'			=> __('Flat Color', 'themeblvd'),
-					'dark' 			=> __('Flat Dark', 'themeblvd'),
-					'grey' 			=> __('Flat Grey', 'themeblvd'),
-					'light' 		=> __('Flat Light', 'themeblvd'),
-					'color'			=> __('Color', 'themeblvd')
+					'flat'			=> __( 'Flat Color', 'themeblvd' ),
+					'dark' 			=> __( 'Flat Dark', 'themeblvd' ),
+					'grey' 			=> __( 'Flat Grey', 'themeblvd' ),
+					'light' 		=> __( 'Flat Light', 'themeblvd' ),
+					'color'			=> __( 'Color', 'themeblvd' )
 				)
 			)
 		),
@@ -958,7 +958,7 @@ function jumpstart_su_options() {
 			'footer_bg_type' => array(
 				'id'		=> 'footer_bg_type',
 				'name'		=> __('Apply Footer Background', 'themeblvd'),
-				'desc'		=> __('Select if you\'d like to apply a custom background color to the footer.', 'themeblvd').'<br><br>'.sprintf(__('Note: To setup a more complex designed footer, go to %s and use the "Template Sync" feature.', 'themeblvd'), '<em>'.__('Layout > Footer', 'themeblvd').'</em>'),
+				'desc'		=> __('Select if you\'d like to apply a custom background color to the footer.<br><br>Note: To setup a more complex designed footer, go to <em>Layout > Footer</em> and use the "Template Sync" feature.', 'themeblvd'),
 				'std'		=> 'none',
 				'type'		=> 'select',
 				'options'	=> array(
@@ -986,13 +986,13 @@ function jumpstart_su_options() {
 			),
 			'footer_bg_color_brightness' => array(
 				'id' 		=> 'footer_bg_color_brightness',
-				'name' 		=> __('Background Color Brightness', 'themeblvd'),
-				'desc' 		=> __('In the previous option, did you go dark or light?', 'themeblvd'),
+				'name' 		=> __( 'Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'std' 		=> 'dark',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('I chose a light color in the previous option.', 'themeblvd'),
-					'dark' 	=> __('I chose a dark color in the previous option.', 'themeblvd')
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
@@ -1110,45 +1110,45 @@ function jumpstart_su_options() {
 		'typo' => array(
 			'font_body' => array(
 				'id' 		=> 'font_body',
-				'name' 		=> __('Primary Font', 'themeblvd'),
-				'desc' 		=> __('This applies to most of the text on your site.', 'themeblvd'),
+				'name' 		=> __( 'Primary Font', 'themeblvd' ),
+				'desc' 		=> __( 'This applies to most of the text on your site.', 'themeblvd' ),
 				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
 			'font_header' => array(
 				'id' 		=> 'font_header',
-				'name' 		=> __('Header Font', 'themeblvd'),
-				'desc' 		=> __('This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd'),
+				'name' 		=> __( 'Header Font', 'themeblvd' ),
+				'desc' 		=> __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'themeblvd' ),
 				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Raleway:400', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
 			'link_color' => array(
 				'id' 		=> 'link_color',
-				'name' 		=> __('Link Color', 'themeblvd'),
-				'desc' 		=> __('Choose the color you\'d like applied to links.', 'themeblvd'),
+				'name' 		=> __( 'Link Color', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the color you\'d like applied to links.', 'themeblvd' ),
 				'std' 		=> '#428bca',
 				'type' 		=> 'color'
 			),
 			'link_hover_color' => array(
 				'id' 		=> 'link_hover_color',
-				'name' 		=> __('Link Hover Color', 'themeblvd'),
-				'desc' 		=> __('Choose the color you\'d like applied to links when they are hovered over.', 'themeblvd'),
+				'name' 		=> __( 'Link Hover Color', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the color you\'d like applied to links when they are hovered over.', 'themeblvd' ),
 				'std' 		=> '#2a6496',
 				'type' 		=> 'color'
 			),
 			'footer_link_color' => array(
 				'id' 		=> 'footer_link_color',
-				'name' 		=> __('Footer Link Color', 'themeblvd'),
-				'desc' 		=> __('Choose the color you\'d like applied to links in the footer.', 'themeblvd'),
+				'name' 		=> __( 'Footer Link Color', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer.', 'themeblvd' ),
 				'std' 		=> '#428bca',
 				'type' 		=> 'color'
 			),
 			'footer_link_hover_color' => array(
 				'id' 		=> 'footer_link_hover_color',
-				'name' 		=> __('Footer Link Hover Color', 'themeblvd'),
-				'desc' 		=> __('Choose the color you\'d like applied to links in the footer when they are hovered over.', 'themeblvd'),
+				'name' 		=> __( 'Footer Link Hover Color', 'themeblvd' ),
+				'desc' 		=> __( 'Choose the color you\'d like applied to links in the footer when they are hovered over.', 'themeblvd' ),
 				'std' 		=> '#2a6496',
 				'type' 		=> 'color'
 			)
@@ -1156,8 +1156,8 @@ function jumpstart_su_options() {
 		'buttons' => array(
 			'btn_default' => array(
 				'id' 		=> 'btn_default',
-				'name'		=> __('Default Buttons', 'themeblvd'),
-				'desc'		=> __('Configure what a default button looks like.', 'themeblvd'),
+				'name'		=> __( 'Default Buttons', 'themeblvd' ),
+				'desc'		=> __( 'Configure what a default button looks like.', 'themeblvd' ),
 				'std'		=> array(
 					'bg' 				=> '#f8f8f8',
 					'bg_hover'			=> '#f5f5f5',
@@ -1171,8 +1171,8 @@ function jumpstart_su_options() {
 			),
 			'btn_primary' => array(
 				'id' 		=> 'btn_primary',
-				'name'		=> __('Primary Buttons', 'themeblvd'),
-				'desc'		=> __('Configure what a primary button looks like.', 'themeblvd'),
+				'name'		=> __( 'Primary Buttons', 'themeblvd' ),
+				'desc'		=> __( 'Configure what a primary button looks like.', 'themeblvd' ),
 				'std'		=> array(
 					'bg' 				=> '#333333',
 					'bg_hover'			=> '#222222',
@@ -1199,7 +1199,7 @@ function jumpstart_su_options() {
 			'btn_corners' => array(
 				'id'		=> 'btn_corners',
 				'name'		=> __('General Button Corners', 'themeblvd'),
-				'desc'		=> __('Set the border radius of button corners. Setting to 0px will mean buttons corners are square.', 'themeblvd'),
+				'desc'		=> __('Set the border radius of button corners. Setting to <em>0px</em> will mean buttons corners are square.', 'themeblvd'),
 				'std'		=> '0px',
 				'type'		=> 'slide',
 				'options'	=> array(
@@ -1218,7 +1218,7 @@ function jumpstart_su_options() {
 			'widget_style' => array(
 				'id'		=> 'widget_style',
 				'name' 		=> __('Widget Style', 'themeblvd'),
-				'desc'		=> __('Select how you want to style your widgets.', 'themeblvd').' <a href="http://getbootstrap.com/components/#panels" target="_blank">'.__('What\'s a Bootstrap panel?', 'themeblvd').'</a>',
+				'desc'		=> __('Select how you want to style your widgets.', 'themeblvd' ).' <a href="http://getbootstrap.com/components/#panels" target="_blank">'.__('What\'s a Bootstrap panel?', 'themeblvd').'</a>',
 				'std'		=> 'standard',
 				'type' 		=> 'select',
 				'options'	=> array(
@@ -1233,18 +1233,18 @@ function jumpstart_su_options() {
 				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
 			),
 			'widget_panel_style' => array(
-				'name' 		=> __('Panel Style', 'themeblvd'),
-				'desc' 		=> __('Select a style for the Bootstrap panel. You can use a preset style, or setup custom colors.', 'themeblvd'),
+				'name' 		=> __( 'Panel Style', 'themeblvd' ),
+				'desc' 		=> __( 'Select a style for the Bootstrap panel. You can use a preset style, or setup custom colors.', 'themeblvd' ),
 				'id' 		=> 'widget_panel_style',
 				'std' 		=> 'default',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'custom'	=> __('Custom Style', 'themeblvd'),
-					'default'	=> __('Bootstrap: Default', 'themeblvd'),
-					'primary'	=> __('Bootstrap: Primary', 'themeblvd'),
-					'info'		=> __('Bootstrap: Info (blue)', 'themeblvd'),
-					'warning'	=> __('Bootstrap: Warning (yellow)', 'themeblvd'),
-					'danger'	=> __('Bootstrap: Danger (red)', 'themeblvd')
+					'custom'	=> __( 'Custom Style', 'themeblvd' ),
+					'default'	=> __( 'Bootstrap: Default', 'themeblvd' ),
+					'primary'	=> __( 'Bootstrap: Primary', 'themeblvd' ),
+					'info'		=> __( 'Bootstrap: Info (blue)', 'themeblvd' ),
+					'warning'	=> __( 'Bootstrap: Warning (yellow)', 'themeblvd' ),
+					'danger'	=> __( 'Bootstrap: Danger (red)', 'themeblvd' )
 
 				),
 				'class'		=> 'trigger'
@@ -1278,14 +1278,14 @@ function jumpstart_su_options() {
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
 			'widget_bg_brightness' => array(
-				'name' 		=> __('Widget Background Color Brightness', 'themeblvd'),
-				'desc' 		=> __('In the previous option, did you go dark or light?', 'themeblvd'),
+				'name' 		=> __( 'Widget Background Color Brightness', 'themeblvd' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'themeblvd' ),
 				'id' 		=> 'widget_bg_brightness',
 				'std' 		=> 'light',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'light' => __('I chose a light color in the previous option.', 'themeblvd'),
-					'dark' 	=> __('I chose a dark color in the previous option.', 'themeblvd')
+					'light' => __( 'I chose a light color in the previous option.', 'themeblvd' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'themeblvd' )
 				),
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
@@ -1508,7 +1508,7 @@ function jumpstart_ent_include_fonts() {
 		themeblvd_get_option('font_menu')
 	);
 }
-add_action('wp_head', 'jumpstart_ent_include_fonts', 5);
+add_action( 'wp_head', 'jumpstart_ent_include_fonts', 5);
 
 /**
  * Enqueue any CSS
@@ -2504,17 +2504,13 @@ function jumpstart_su_css() {
 		$print .= $custom;
 	}
 
-	// Sanitize
-	$print = wp_kses( $print, array() );
-	$print = htmlspecialchars_decode( $print );
-
 	// Final output
 	if ( $print ) {
 		wp_add_inline_style( 'jumpstart-base', apply_filters('jumpstart_su_css_output', $print) );
 	}
 
 }
-add_action('wp_enqueue_scripts', 'jumpstart_su_css', 25);
+add_action( 'wp_enqueue_scripts', 'jumpstart_su_css', 25);
 
 /**
  * Add CSS classes and parralax data() to header
@@ -2654,7 +2650,7 @@ function jumpstart_su_header_top() {
 	);
 
 	if ( ( $display['bg_type'] == 'image' || $display['bg_type'] == 'slideshow' ) && ! empty($display['apply_bg_shade']) ) {
-		printf( '<div class="bg-shade" style="background-color: %s;"></div>', esc_attr( themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) ) );
+		printf( '<div class="bg-shade" style="background-color: %s;"></div>', themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) );
 	}
 
 	if ( themeblvd_do_parallax($display) ) {
@@ -2677,7 +2673,7 @@ function jumpstart_su_header_top() {
 	}
 
 }
-add_action('themeblvd_header_top', 'jumpstart_su_header_top', 5);
+add_action( 'themeblvd_header_top', 'jumpstart_su_header_top', 5 );
 
 /**
  * If user has selected to have the header info

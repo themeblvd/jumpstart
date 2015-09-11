@@ -68,10 +68,10 @@ function themeblvd_media_uploader( $args ) {
 
 	// Data passed to wp.media
 	$data = array(
-		'title' 	=> __('Select Media', 'themeblvd'),
-		'select'	=> __('Select', 'themeblvd'),
-		'upload'	=> __('Upload', 'themeblvd'),
-		'remove'	=> __('Remove', 'themeblvd'),
+		'title' 	=> __( 'Select Media', 'themeblvd'),
+		'select'	=> __( 'Select', 'themeblvd'),
+		'upload'	=> __( 'Upload', 'themeblvd' ),
+		'remove'	=> __( 'Remove', 'themeblvd' ),
 		'send_back'	=> $args['send_back'],
 		'class'		=> 'tb-modal-hide-settings'
 	);
@@ -83,19 +83,19 @@ function themeblvd_media_uploader( $args ) {
 			$data['title'] = __('Slide Image', 'themeblvd');
 			$data['select'] = __('Use for Slide', 'themeblvd');
 			$data['upload'] = __('Get Image', 'themeblvd');
-			$help = __('You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'themeblvd');
+			$help = __( 'You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'themeblvd' );
 			$output .= '<span class="locked"><span></span>';
-			$output .= '<a href="#" class="help-icon tb-icon-help-circled tooltip-link" title="'.esc_attr($help).'"></a>';
-			$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.esc_attr($name).'[id]" placeholder="'.esc_attr__('Image ID', 'themeblvd').'" value="'.esc_attr($args['value_id']).'" /></span>'."\n";
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="hidden" name="'.esc_attr($name).'[url]" value="'.esc_attr($value).'" />'."\n";
-			$output .= '<input id="'.$formfield.'_title" class="image-title upload'.$class.'" type="hidden" name="'.$name.'[title]" value="'.esc_attr($args['value_title']).'" />'."\n";
+			$output .= '<a href="#" class="help-icon tb-icon-help-circled tooltip-link" title="'.$help.'"></a>';
+			$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.$name.'[id]" placeholder="'.__('Image ID', 'themeblvd').'" value="'.$args['value_id'].'" /></span>'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="hidden" name="'.$name.'[url]" value="'.$value.'" />'."\n";
+			$output .= '<input id="'.$formfield.'_title" class="image-title upload'.$class.'" type="hidden" name="'.$name.'[title]" value="'.$args['value_title'].'" />'."\n";
 			break;
 
 		case 'video' :
 			$data['title'] = __('Select Video', 'themeblvd');
 			$data['select'] = __('Use Video', 'themeblvd');
 			$data['upload'] = __('Get Video', 'themeblvd');
-			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Video URL', 'themeblvd') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Video URL', 'themeblvd') .'" />'."\n";
 			break;
 
 		case 'logo' :
@@ -103,44 +103,44 @@ function themeblvd_media_uploader( $args ) {
 			$data['select'] = __('Use for Logo', 'themeblvd');
 			$width_name = str_replace( '[image]', '[image_width]', $name );
 			$height_name = str_replace( '[image]', '[image_height]', $name );
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Image URL', 'themeblvd').'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd').'" />'."\n";
 			break;
 
 		case 'logo_2x' :
 			$data['title'] = __('Logo HiDPI Image', 'themeblvd');
 			$data['select'] = __('Use for Logo', 'themeblvd');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('URL for image twice the size of standard image', 'themeblvd') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('URL for image twice the size of standard image', 'themeblvd') .'" />'."\n";
 			break;
 
 		case 'background' :
 			$data['title'] = __('Select Background Image', 'themeblvd');
 			$data['upload'] = __('Get Image', 'themeblvd');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Image URL', 'themeblvd') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('Image URL', 'themeblvd') .'" />'."\n";
 			break;
 
 		case 'media' :
 			$data['select'] = __('Insert Media', 'themeblvd');
 			$data['class'] = '';
-			$output .= '<textarea id="'.$formfield.'" class="image-url upload'.$class.'" name="'.esc_attr($name).'" value="'.esc_attr($value).'"></textarea>'."\n";
+			$output .= '<textarea id="'.$formfield.'" class="image-url upload'.$class.'" name="'.$name.'" value="'.$value.'"></textarea>'."\n";
 			break;
 
 		case 'advanced' :
 			$data['title'] = __('Select Image', 'themeblvd');
 			$data['class'] = str_replace( 'tb-modal-hide-settings', 'tb-modal-advanced-image', $data['class'] );
 			$data['select'] = __('Use Image', 'themeblvd');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'[src]" value="'.esc_attr($args['value_src']).'" placeholder="'.esc_attr__('No image chosen', 'themeblvd') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'[src]" value="'.$args['value_src'].'" placeholder="'.__('No image chosen', 'themeblvd') .'" />'."\n";
 			break;
 
 		default :
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('No file chosen', 'themeblvd') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.$name.'" value="'.$value.'" placeholder="'.__('No file chosen', 'themeblvd') .'" />'."\n";
 	}
 
 	$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
 
 	if ( ! $value || $type == 'video' || $type == 'media' ) {
-		$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.esc_attr($type).'" data-title="'.esc_attr($data['title']).'" data-select="'.esc_attr($data['select']).'" data-class="'.esc_attr($data['class']).'" data-upload="'.esc_attr($data['upload']).'" data-remove="'.esc_attr($data['remove']).'" data-send-back="'.esc_attr($data['send_back']).'" value="'.esc_attr($data['upload']).'" />'."\n";
+		$output .= '<input id="upload-'.$formfield.'" class="trigger upload-button button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" data-send-back="'.$data['send_back'].'" value="'.$data['upload'].'" />'."\n";
 	} else {
-		$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.esc_attr($type).'" data-title="'.esc_attr($data['title']).'" data-select="'.esc_attr($data['select']).'" data-class="'.esc_attr($data['class']).'" data-upload="'.esc_attr($data['upload']).'" data-remove="'.esc_attr($data['remove']).'" data-send-back="'.esc_attr($data['send_back']).'" value="'.esc_attr($data['remove']).'" />'."\n";
+		$output .= '<input id="remove-'.$formfield.'" class="trigger remove-file button" type="button" data-type="'.$type.'" data-title="'.$data['title'].'" data-select="'.$data['select'].'" data-class="'.$data['class'].'" data-upload="'.$data['upload'].'" data-remove="'.$data['remove'].'" data-send-back="'.$data['send_back'].'" value="'.$data['remove'].'" />'."\n";
 	}
 
 	if ( $type == 'logo' ) {
@@ -150,13 +150,13 @@ function themeblvd_media_uploader( $args ) {
 		$output .= '<div class="logo-atts clearfix">';
 
 		$output .= '<div class="logo-width">';
-		$output .= '<input id="'.$formfield.'_width" class="image-width upload'.$class.'" type="text" name="'.esc_attr($width_name).'" value="'.esc_attr($args['value_width']).'" />'."\n";
-		$output .= '<span class="logo-label logo-width-label">'.esc_html__('Width', 'themeblvd').'</span>';
+		$output .= '<input id="'.$formfield.'_width" class="image-width upload'.$class.'" type="text" name="'.$width_name.'" value="'.$args['value_width'].'" />'."\n";
+		$output .= '<span class="logo-label logo-width-label">'.__('Width', 'themeblvd').'</span>';
 		$output .= '</div>';
 
 		$output .= '<div class="logo-height">';
-		$output .= '<input id="'.$formfield.'_height" class="image-height upload'.$class.'" type="text" name="'.esc_attr($height_name).'" value="'.esc_attr($args['value_height']).'" />'."\n";
-		$output .= '<span class="logo-label logo-height-label">'.esc_html__('Height', 'themeblvd').'</span>';
+		$output .= '<input id="'.$formfield.'_height" class="image-height upload'.$class.'" type="text" name="'.$height_name.'" value="'.$args['value_height'].'" />'."\n";
+		$output .= '<span class="logo-label logo-height-label">'.__('Height', 'themeblvd').'</span>';
 		$output .= '</div>';
 
 		$output .= '</div><!-- .logo-atts (end) -->';
@@ -173,7 +173,7 @@ function themeblvd_media_uploader( $args ) {
 
 		if ( $image ) {
 
-			$output .= '<img src="' . esc_attr($value) . '" alt="" />' . $remove;
+			$output .= '<img src="' . $value . '" alt="" />' . $remove;
 
 		} else {
 
@@ -184,17 +184,19 @@ function themeblvd_media_uploader( $args ) {
 			}
 
 			// Standard generic output if it's not an image.
-			$title = esc_attr__('View File', 'themeblvd');
-			$output .= '<div class="no-image"><span class="file_link"><a href="' . esc_attr($value) . '" target="_blank" rel="external">'.esc_attr($title).'</a></span></div>';
+			$title = __( 'View File', 'themeblvd' );
+			$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
 		}
 	}
 
 	$output .= '</div>' . "\n";
 
 	if ( $type == 'advanced' ) {
-		$output .= '<input id="id-'.$formfield.'" class="image-id" name="'.esc_attr($name).'[id]" type="hidden" value="'.esc_attr($args['value_id']).'" />';
-		$output .= '<input id="title-'.$formfield.'" class="image-title" name="'.esc_attr($name).'[title]" type="hidden" value="'.esc_attr($args['value_title']).'" />';
-		$output .= '<input id="crop-'.$formfield.'" class="image-crop" name="'.esc_attr($name).'[crop]" type="hidden" value="'.esc_attr($args['value_crop']).'" />';
+		$output .= '<input id="id-'.$formfield.'" class="image-id" name="'.$name.'[id]" type="hidden" value="'.$args['value_id'].'" />';
+		$output .= '<input id="title-'.$formfield.'" class="image-title" name="'.$name.'[title]" type="hidden" value="'.$args['value_title'].'" />';
+		$output .= '<input id="crop-'.$formfield.'" class="image-crop" name="'.$name.'[crop]" type="hidden" value="'.$args['value_crop'].'" />';
+		// $output .= '<input id="width-'.$formfield.'" class="image-width" name="'.$name.'[width]" type="hidden" value="'.$args['value_width'].'" />';
+		// $output .= '<input id="height-'.$formfield.'" class="image-height" name="'.$name.'[height]" type="hidden" value="'.$args['value_height'].'" />';
 	}
 
 	return $output;

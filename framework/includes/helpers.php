@@ -44,7 +44,7 @@ function themeblvd_get_font_face( $option ) {
 		$name = explode( ':', $option['google'] );
 
 		// And also check for accidental space at end
-		$name = esc_attr( trim( $name[0] ) );
+		$name = trim( $name[0] );
 
 		// Add the deafult font stack to the end of the
 		// google font.
@@ -73,7 +73,7 @@ function themeblvd_get_font_size( $option ) {
 		$size = $option['size'];
 	}
 
-	return apply_filters( 'themeblvd_font_size', esc_attr($size), $option );
+	return apply_filters( 'themeblvd_font_size', $size, $option );
 }
 
 /**
@@ -92,7 +92,7 @@ function themeblvd_get_font_style( $option ) {
 		$style = 'italic';
 	}
 
-	return apply_filters( 'themeblvd_font_style', esc_attr($style), $option );
+	return apply_filters( 'themeblvd_font_style', $style, $option );
 }
 
 /**
@@ -125,7 +125,7 @@ function themeblvd_get_font_weight( $option ) {
 		$weight = '400';
 	}
 
-	return apply_filters( 'themeblvd_font_weight', esc_attr($weight), $option );
+	return apply_filters( 'themeblvd_font_weight', $weight, $option );
 }
 
 /**
@@ -598,7 +598,7 @@ function themeblvd_wp_title( $title ) {
  */
 function themeblvd_html5_compat() {
 	echo "<!--[if lt IE 9]>\n";
-	printf('<script src="%s" type="text/javascript"></script>', esc_url( get_template_directory_uri() . '/framework/assets/js/html5.js' ) );
+	printf('<script src="%s/framework/assets/js/html5.js" type="text/javascript"></script>', get_template_directory_uri() );
 	echo "\n<![endif]-->\n";
 }
 
@@ -623,10 +623,10 @@ function themeblvd_standard_slider_js( $id, $options ) {
 				<?php endif; ?>
 				prevText: '<i class="fa fa-chevron-left"></i>',
 				nextText: '<i class="fa fa-chevron-right"></i>',
-				animation: "<?php echo esc_attr($options['fx']); ?>",
+				animation: "<?php echo $options['fx']; ?>",
 				// pauseOnHover: true - This was replaced with a custom solution to work with other controls, see below with "pause_on_hover" option.
 				<?php if ( $options['timeout'] ) : ?>
-				slideshowSpeed: <?php echo esc_attr($options['timeout']); ?>000,
+				slideshowSpeed: <?php echo $options['timeout']; ?>000,
 				<?php else : ?>
 				slideshow: false,
 				<?php endif; ?>
@@ -828,15 +828,7 @@ function themeblvd_private_page( $template ) {
 	}
 
 	// Page Templates
-	$page_templates = apply_filters('themeblvd_private_page_support', array(
-		'template_blog.php',
-		'template_grid.php',
-		'template_list.php',
-		'template_showcase.php',
-		'template_archives.php',
-		'template_sitemap.php'
-	));
-
+	$page_templates = apply_filters( 'themeblvd_private_page_support', array( 'template_grid.php', 'template_list.php', 'template_archives.php', 'template_sitemap.php' ) );
 	foreach ( $page_templates as $page_template ) {
 		if ( is_page_template( $page_template ) ) {
 			$template = locate_template( 'page.php' );
@@ -1391,8 +1383,8 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
  * @return string Text to filter
  */
 function themeblvd_footer_copyright_helpers( $text ) {
-	$text = str_replace( '%year%', esc_attr( date('Y') ), $text );
-	$text = str_replace( '%site_title%', esc_html( get_bloginfo('site_title') ), $text );
+	$text = str_replace( '%year%', date('Y'), $text );
+	$text = str_replace( '%site_title%', get_bloginfo('site_title'), $text );
 	return $text;
 }
 
@@ -1455,13 +1447,13 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 
 	// Array of time period chunks
 	$chunks = array(
-		array( 60 * 60 * 24 * 365, esc_html($locals['year']), esc_html($locals['years']) ),
-		array( 60 * 60 * 24 * 30, esc_html($locals['month']), esc_html($locals['months']) ),
-		array( 60 * 60 * 24 * 7, esc_html($locals['week']), esc_html($locals['weeks']) ),
-		array( 60 * 60 * 24, esc_html($locals['day']), esc_html($locals['days']) ),
-		array( 60 * 60, esc_html($locals['hour']), esc_html($locals['hours']) ),
-		array( 60, esc_html($locals['minute']), esc_html($locals['minutes']) ),
-		array( 1, esc_html($locals['second']), esc_html($locals['seconds']) )
+		array( 60 * 60 * 24 * 365 , $locals['year'], $locals['years'] ),
+		array( 60 * 60 * 24 * 30 , $locals['month'], $locals['months'] ),
+		array( 60 * 60 * 24 * 7, $locals['week'], $locals['weeks'] ),
+		array( 60 * 60 * 24 , $locals['day'], $locals['days'] ),
+		array( 60 * 60 , $locals['hour'], $locals['hours'] ),
+		array( 60 , $locals['minute'], $locals['minutes'] ),
+		array( 1, $locals['second'], $locals['seconds'] )
 	);
 
 	if ( !is_numeric( $date ) ) {
@@ -1478,7 +1470,7 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 
 	// Something went wrong with date calculation and we ended up with a negative date.
 	if ( 0 > $since ) {
-		return esc_html($locals['error']);
+		return $locals['error'];
 	}
 
 	// Step one: the first chunk
@@ -1496,10 +1488,10 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
 
 	if ( !(int)trim($output) ){
-		$output = '0 ' . esc_html($locals['seconds']);
+		$output = '0 ' . $locals['seconds'];
 	}
 
-	$output .= ' '.esc_html($locals['ago']);
+	$output .= ' '.$locals['ago'];
 
 	return $output;
 }
@@ -1517,16 +1509,7 @@ function themeblvd_get_home_url() {
     	$url = get_home_url();
     }
 
-    return apply_filters( 'themeblvd_home_url', esc_url( trailingslashit( $url ) ) );
-}
-
-/**
- * Display site's home url
- *
- * @since 2.5.2
- */
-function themeblvd_home_url() {
-	echo themeblvd_get_home_url();
+    return apply_filters( 'themeblvd_home_url', esc_url( trailingslashit($url) ) );
 }
 
 /**
@@ -1628,7 +1611,7 @@ function themeblvd_do_fa( $str ) {
 		}
 	}
 
-	return themeblvd_kses($str);
+	return $str;
 }
 
 /**

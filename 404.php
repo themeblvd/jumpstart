@@ -24,10 +24,10 @@ get_header();
 
 				<!-- CONTENT (start) -->
 
-				<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class('content') ); ?> clearfix" role="main">
+				<div id="content" class="<?php echo themeblvd_get_column_class('content'); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
-						<?php get_template_part( 'content', themeblvd_get_part('404') ); ?>
+						<?php get_template_part( 'content', themeblvd_get_part( '404' ) ); ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->
@@ -36,9 +36,9 @@ get_header();
 
 				<!-- SIDEBARS (start) -->
 
-				<?php get_sidebar('left'); ?>
+				<?php get_sidebar( 'left' ); ?>
 
-				<?php get_sidebar('right'); ?>
+				<?php get_sidebar( 'right' ); ?>
 
 				<!-- SIDEBARS (end) -->
 

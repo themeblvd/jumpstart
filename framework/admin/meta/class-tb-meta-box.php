@@ -45,7 +45,7 @@ class Theme_Blvd_Meta_Box {
 		}
 
 		$defaults = array(
-			'page'			=> array('post'),		// can contain post, page, link, or custom post type's slug
+			'page'			=> array( 'post' ),		// can contain post, page, link, or custom post type's slug
 			'context'		=> 'normal',			// normal, advanced, or side
 			'priority'		=> 'high',
 			'save_empty'	=> true, 				// Save empty custom fields?
@@ -162,7 +162,7 @@ class Theme_Blvd_Meta_Box {
 
     	//  Finish content
     	if ( ! empty( $this->args['desc'] ) ) {
-    		printf( '<p class="tb-meta-desc">%s</p>', themeblvd_kses($this->args['desc']) );
+    		printf( '<p class="tb-meta-desc">%s</p>', $this->args['desc'] );
     	}
 
 		echo '</div><!-- .tb-meta-box (end) -->';

@@ -32,20 +32,20 @@ function jumpstart_bases() {
 
 		$bases = apply_filters('themeblvd_bases', array(
 			'dev' => array(
-				'name'		=> __('Developer', 'themeblvd'),
-				'desc'		=> __('If you\'re a developer looking to create a custom-designed child theme, this is the base for you.', 'themeblvd')
+				'name'		=> 'Developer',
+				'desc'		=> 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.'
 			),
 			'superuser' => array(
-				'name'		=> __('Super User', 'themeblvd'),
-				'desc'		=> __('For the super user, this base builds on the default theme to give you more visual, user options.', 'themeblvd')
+				'name'		=> 'Super User',
+				'desc'		=> 'For the super user, this base builds on the default theme to give you more visual, user options.'
 			),
 			'entrepreneur' => array(
-				'name'		=> __('Entrepreneur', 'themeblvd'),
-				'desc'		=> __('For the modern entrepreneur, this base embodies the current design trends of the web industry.', 'themeblvd')
+				'name'		=> 'Entrepreneur',
+				'desc'		=> 'For the modern entrepreneur, this base embodies the current design trends of the web industry.'
 			),
 			'executive' => array(
-				'name'		=> __('Executive', 'themeblvd'),
-				'desc'		=> __('For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.', 'themeblvd')
+				'name'		=> 'Executive',
+				'desc'		=> 'For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.'
 			)
 		));
 
@@ -141,7 +141,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );
 function jumpstart_base_check() {
 
 	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != themeblvd_get_base() ) {
-		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __('Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd') );
+		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ) );
 	}
 
 }
@@ -166,3 +166,17 @@ function jumpstart_sample_layouts( $layouts ) {
 	return $layouts;
 }
 add_filter('themeblvd_sample_layouts', 'jumpstart_sample_layouts');
+
+/**
+ * Separate changelog from v1 changelog.
+ *
+ * @TODO Down the road, when Jump Start v1 is no longer
+ * supported, we can remove this, and handle pointing
+ * "jumpstart-2" back to "jumpstart" from themeblvd.com
+ *
+ * @since 2.0.0
+ */
+function jumpstart_changelog_url( $url ) {
+	return str_replace('?theme=jumpstart', '?theme=jumpstart-2', $url);
+}
+add_filter('themeblvd_changelog_link', 'jumpstart_changelog_url');

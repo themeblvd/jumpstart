@@ -122,7 +122,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		$ajax_nonce = wp_create_nonce( 'themeblvd_sortable_option' );
 
-		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s" data-max="%s">', $ajax_nonce, esc_html($option_name), esc_html($option_id), $this->type, $this->max );
+		$output  = sprintf('<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s" data-max="%s">', $ajax_nonce, $option_name, $option_id, $this->type, $this->max );
 
 		// Header (blank by default)
 		$output .= $this->get_display_header( $option_id, $option_name, $items );
@@ -130,7 +130,7 @@ abstract class Theme_Blvd_Sortable_Option {
 		// Output blank option for the sortable items. If the user doesn't
 		// setup any sortable items and then they save, this will ensure that
 		// at least a blank value get saved to the option.
-		$output .= sprintf( '<input type="hidden" name="%s" />', esc_attr($option_name.'['.$option_id.']') );
+		$output .= sprintf( '<input type="hidden" name="%s" />', $option_name.'['.$option_id.']' );
 
 		// Start sortable section
 		$output .= '<div class="item-container">';
@@ -170,18 +170,17 @@ abstract class Theme_Blvd_Sortable_Option {
 		$footer  = '<footer class="clearfix">';
 
 		$disabled = '';
-
 		if ( $this->max && count($items) >= $this->max ) {
 			$disabled = 'disabled';
 		}
 
-		$footer .= sprintf( '<input type="button" class="add-item button-secondary" value="%s" %s />', esc_attr($this->labels['add']), $disabled );
+		$footer .= sprintf( '<input type="button" class="add-item button-secondary" value="%s" %s />', $this->labels['add'], $disabled );
 
 		if ( $this->max ) {
-			$footer .= sprintf('<div class="max">%s: %s</div>', esc_html__('Maximum', 'themeblvd'), $this->max);
+			$footer .= sprintf('<div class="max">%s: %s</div>', __('Maximum', 'themeblvd'), $this->max);
 		}
 
-		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', esc_attr($this->labels['delete_all_confirm']), esc_attr($this->labels['delete_all']) );
+		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
 		$footer .= '</footer>';
 
 		return $footer;
@@ -206,9 +205,7 @@ abstract class Theme_Blvd_Sortable_Option {
 			// to be utilized from the javascript.
 
 			if ( $option['type'] == 'subgroup_start' ) {
-
 				$class = 'subgroup';
-
 				if ( isset( $option['class'] ) ) {
 					$class .= ' '.$option['class'];
 				}
@@ -224,22 +221,20 @@ abstract class Theme_Blvd_Sortable_Option {
 
 			// Continue with normal form items
 			$class = 'section-'.$option['type'];
-
 			if ( isset( $option['class'] ) ) {
 				$class .= ' '.$option['class'];
 			}
 
 			$item_output .= sprintf( '<div class="section %s">', $class );
 
-			if ( ! empty( $option['name'] ) ) {
-				$item_output .= sprintf( '<h4>%s</h4>', esc_html($option['name']) );
+			if ( isset( $option['name'] ) && $option['name'] ) {
+				$item_output .= sprintf( '<h4>%s</h4>', $option['name'] );
 			}
 
 			$item_output .= '<div class="option clearfix">';
 			$item_output .= '<div class="controls">';
 
 			$current = '';
-
 			if ( isset($option['id']) && isset($item[$option['id']]) ) {
 				$current = $item[$option['id']];
 			}
@@ -255,7 +250,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					if ( $this->trigger == $option['id'] ) {
 						$class .= ' handle-trigger';
 					}
-					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($current) );
+					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
 					break;
 
 				/*---------------------------------------*/
@@ -272,7 +267,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= '<div class="input-wrap">';
 
 					if ( isset( $option['icon'] ) && ( $option['icon'] == 'image' || $option['icon'] == 'vector' ) ) {
-						$item_output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$option['icon'].'" data-icon-type="'.$option['icon'].'" data-tooltip-text="'.esc_attr__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+						$item_output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$option['icon'].'" data-icon-type="'.$option['icon'].'" data-tooltip-text="'.__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
 					}
 
 					$class = 'of-input';
@@ -280,7 +275,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$class .= ' handle-trigger';
 					}
 
-					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="text" value="%s"%s />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($current), $place_holder );
+					$item_output .= sprintf( '<input id="%s" class="%s" name="%s" type="text" value="%s"%s />', esc_attr( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ), $place_holder );
 					$item_output .= '</div><!-- .input-wrap (end) -->';
 					break;
 
@@ -307,11 +302,11 @@ abstract class Theme_Blvd_Sortable_Option {
 						$item_output .= '<nav class="editor-nav">';
 
 						if ( isset( $option['editor'] ) && $option['editor'] ) {
-							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 						}
 
 						if ( isset( $option['code'] ) && in_array( $option['code'], array( 'html', 'javascript', 'css' ) ) ) {
-							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $option['id'] ).'" data-title="'.esc_attr($option['name']).'" data-code_lang="'.$option['code'].'"><i class="tb-icon-code"></i></a>';
+							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $option['id'] ).'" data-title="'.$option['name'].'" data-code_lang="'.$option['code'].'"><i class="tb-icon-code"></i></a>';
 						}
 
 						$item_output .= '</nav>';
@@ -325,7 +320,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$class .= ' handle-trigger';
 					}
 
-					$item_output .= sprintf( '<textarea id="%s" class="%s" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $option['id'] ), $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($cols), $place_holder, esc_textarea($current) );
+					$item_output .= sprintf( '<textarea id="%s" class="%s" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $option['id'] ), $class, stripslashes( esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ) ), esc_attr( $cols ), $place_holder, esc_textarea( $current ) );
 					$item_output .= '</div><!-- .textarea-wrap (end) -->';
 
 					break;
@@ -346,7 +341,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= sprintf( '<select class="%s" name="%s" id="%s">', $class, esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($option['id']) );
 
 					foreach ( $option['options'] as $key => $value ) {
-						$item_output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $current, false ), esc_attr($key), esc_html($value) );
+						$item_output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $current, false ), esc_attr( $key ), esc_html( $value ) );
 					}
 
 					$item_output .= '</select>';
@@ -381,7 +376,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					if ( ! empty( $option['std'] ) ) {
 						$def_color = $option['std'];
 					}
-					$item_output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr( $current ), esc_attr($def_color) );
+					$item_output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr( $current ), $def_color );
 					break;
 
 				/*---------------------------------------*/
@@ -415,7 +410,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$current = $slide_options['min'].$slide_options['units'];
 					}
 
-					$item_output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), esc_attr($current) );
+					$item_output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $option['id'] ), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].']' ), stripslashes( esc_attr( $current ) ) );
 					$item_output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 					break;
 
@@ -511,28 +506,28 @@ abstract class Theme_Blvd_Sortable_Option {
 					// Latitude
 					$item_output .= '<div class="geo-lat">';
 					$item_output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][lat]' ), esc_attr($lat) );
-					$item_output .= '<span class="geo-label">'.esc_html__('Latitude', 'themeblvd').'</span>';
+					$item_output .= '<span class="geo-label">'.__('Latitude', 'themeblvd').'</span>';
 					$item_output .= '</div><!-- .geo-lat (end) -->';
 
 					// Longitude
 					$item_output .= '<div class="geo-long">';
 					$item_output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][long]' ), esc_attr($long) );
-					$item_output .= '<span class="geo-label">'.esc_html__('Longitude', 'themeblvd').'</span>';
+					$item_output .= '<span class="geo-label">'.__('Longitude', 'themeblvd').'</span>';
 					$item_output .= '</div><!-- .geo-long (end) -->';
 
 					$item_output .= '</div><!-- .geo-wrap (end) -->';
 
 					// Generate lat and long
 					$item_output .= '<div class="geo-generate">';
-					$item_output .= '<h5>'.esc_html__('Generate Coordinates', 'themeblvd').'</h5>';
+					$item_output .= '<h5>'.__('Generate Coordinates', 'themeblvd').'</h5>';
 					$item_output .= '<div class="data clearfix">';
 					$item_output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
 					$item_output .= '<input type="text" value="" class="address" />';
-					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), esc_html__('Generate', 'themeblvd') );
+					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', __('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), __('Generate', 'themeblvd') );
 					$item_output .= '</div><!-- .data (end) -->';
 					$item_output .= '<p class="note">';
-					$item_output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
-					$item_output .= esc_html__('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
+					$item_output .= __('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
+					$item_output .= __('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
 					$item_output .= '</p>';
 					$item_output .= '</div><!-- .geo-generate (end) -->';
 
@@ -544,12 +539,12 @@ abstract class Theme_Blvd_Sortable_Option {
 				if ( is_array( $option['desc'] ) ) {
 					foreach ( $option['desc'] as $desc_id => $desc ) {
 						$item_output .= '<div class="explain hide '.$desc_id.'">';
-						$item_output .= themeblvd_kses($desc);
+						$item_output .= wp_kses( $desc, themeblvd_allowed_tags() );
 						$item_output .= '</div>';
 					}
 				} else {
 					$item_output .= '<div class="explain">';
-					$item_output .= themeblvd_kses($option['desc']);
+					$item_output .= wp_kses( $option['desc'], themeblvd_allowed_tags() );
 					$item_output .= '</div>';
 				}
 			}
@@ -561,7 +556,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		// Delete item
 		$item_output .= '<div class="section">';
-		$item_output .= sprintf( '<a href="#%s" class="delete-sortable-item" title="%s">%s</a>', $item_id, esc_attr($this->labels['delete_confirm']), esc_attr($this->labels['delete']) );
+		$item_output .= sprintf( '<a href="#%s" class="delete-sortable-item" title="%s">%s</a>', $item_id, $this->labels['delete_confirm'], $this->labels['delete'] );
 		$item_output .= '</div>';
 
 		$item_output .= '</div><!-- .item-content (end) -->';
@@ -647,20 +642,20 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'label',
 				'name'		=> __('Display Label', 'themeblvd'),
-				'desc'		=> __('Enter a label for this display.', 'themeblvd').'<br>'.__('Ex: Graphic Design', 'themeblvd'),
+				'desc'		=> __('Enter a label for this display.<br>Ex: Graphic Design', 'themeblvd'),
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'label_value',
 				'name'		=> __('Value Display Label', 'themeblvd'),
-				'desc'		=> __('Enter a label to display the value.', 'themeblvd').'<br>'.__('Ex: 80%', 'themeblvd'),
+				'desc'		=> __('Enter a label to display the value.<br>Ex: 80%', 'themeblvd'),
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'value',
 				'name'		=> __('Value', 'themeblvd'),
-				'desc'		=> __('Enter a number for the value.', 'themeblvd').'<br>'.__('Ex: 80', 'themeblvd'),
+				'desc'		=> __('Enter a number for the value.<br>Ex: 80', 'themeblvd'),
 				'std'		=> '',
 				'type'		=> 'text'
 			),
@@ -735,16 +730,16 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __('Button Color', 'themeblvd'),
-				'desc'		=> __('Select what color you\'d like to use for this button.', 'themeblvd'),
+				'name'		=> __( 'Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Select what color you\'d like to use for this button.', 'themeblvd' ),
 				'type'		=> 'select',
 				'class'		=> 'trigger',
 				'options'	=> themeblvd_colors()
 			),
 			array(
 				'id' 		=> 'custom',
-				'name'		=> __('Custom Button Color', 'themeblvd'),
-				'desc'		=> __('Configure a custom style for the button.', 'themeblvd'),
+				'name'		=> __( 'Custom Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Configure a custom style for the button.', 'themeblvd' ),
 				'std'		=> array(
 					'bg' 				=> '#ffffff',
 					'bg_hover'			=> '#ebebeb',
@@ -762,57 +757,57 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'text',
-				'name'		=> __('Button Text', 'themeblvd'),
-				'desc'		=> __('Enter the text for the button.', 'themeblvd'),
+				'name'		=> __( 'Button Text', 'themeblvd' ),
+				'desc'		=> __( 'Enter the text for the button.', 'themeblvd' ),
 				'std'		=> 'Get Started Today!',
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'size',
-				'name'		=> __('Button Size', 'themeblvd'),
-				'desc'		=> __('Select the size you\'d like used for this button.', 'themeblvd'),
+				'name'		=> __( 'Button Size', 'themeblvd' ),
+				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd' ),
 				'type'		=> 'select',
 				'std'		=> 'large',
 				'options'	=> array(
-					'mini' 		=> __('Mini', 'themeblvd'),
-					'small' 	=> __('Small', 'themeblvd'),
-					'default' 	=> __('Normal', 'themeblvd'),
-					'large' 	=> __('Large', 'themeblvd'),
-					'x-large' 	=> __('X-Large', 'themeblvd'),
-					'xx-large' 	=> __('XX-Large', 'themeblvd'),
-					'xxx-large' => __('XXX-Large', 'themeblvd')
+					'mini' 		=> __( 'Mini', 'themeblvd' ),
+					'small' 	=> __( 'Small', 'themeblvd' ),
+					'default' 	=> __( 'Normal', 'themeblvd' ),
+					'large' 	=> __( 'Large', 'themeblvd' ),
+					'x-large' 	=> __( 'X-Large', 'themeblvd' ),
+					'xx-large' 	=> __( 'XX-Large', 'themeblvd' ),
+					'xxx-large' => __( 'XXX-Large', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> 'url',
-				'name'		=> __('Link URL', 'themeblvd'),
-				'desc'		=> __('Enter the full URL where you want the button\'s link to go.', 'themeblvd'),
+				'name'		=> __( 'Link URL', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd' ),
 				'std'		=> 'http://www.your-site.com/your-landing-page',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'target',
-				'name'		=> __('Link Target', 'themeblvd'),
-				'desc'		=> __('Select how you want the button to open the webpage.', 'themeblvd'),
+				'name'		=> __( 'Link Target', 'themeblvd' ),
+				'desc'		=> __( 'Select how you want the button to open the webpage.', 'themeblvd' ),
 				'type'		=> 'select',
 				'options'	=> array(
-			        '_self' 	=> __('Same Window', 'themeblvd'),
-			        '_blank' 	=> __('New Window', 'themeblvd'),
-			        'lightbox' 	=> __('Lightbox Popup', 'themeblvd')
+			        '_self' 	=> __( 'Same Window', 'themeblvd' ),
+			        '_blank' 	=> __( 'New Window', 'themeblvd' ),
+			        'lightbox' 	=> __( 'Lightbox Popup', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> 'icon_before',
-				'name'		=> __('Icon Before Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __( 'Icon Before Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
 				'type'		=> 'text',
 				'icon'		=> 'vector'
 			),
 			array(
 				'id' 		=> 'icon_after',
-				'name'		=> __('Icon After Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __( 'Icon After Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
 				'type'		=> 'text',
 				'icon'		=> 'vector'
 			)
@@ -877,7 +872,7 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'values',
 				'name'		=> __('Values', 'themeblvd'),
-				'desc'		=> __('Enter a comma separated list of values for this data set.', 'themeblvd').'<br>'.__('Ex: 10, 20, 30, 40, 50, 60', 'themeblvd'),
+				'desc'		=> __('Enter a comma separated list of values for this data set.<br>Ex: 10, 20, 30, 40, 50, 60', 'themeblvd'),
 				'std'		=> '',
 				'type'		=> 'text'
 			),
@@ -1098,8 +1093,8 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	protected function get_display_footer( $option_id, $option_name, $items ) {
 		$footer  = '<footer>';
-		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid('slider_'), esc_attr($this->labels['modal_title']), esc_attr($this->labels['modal_button']), esc_attr($this->labels['add']) );
-		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', esc_attr($this->labels['delete_all_confirm']), esc_attr($this->labels['delete_all']) );
+		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid('slider_'), $this->labels['modal_title'], $this->labels['modal_button'], $this->labels['add'] );
+		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', $this->labels['delete_all_confirm'], $this->labels['delete_all'] );
 		$footer .= '</footer>';
 		return $footer;
 	}
@@ -1183,26 +1178,26 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'link',
-				'name'		=> __('Link', 'themeblvd'),
-				'desc'		=> __('Select if and how this image should be linked.', 'themeblvd'),
+				'name'		=> __( 'Link', 'themeblvd' ),
+				'desc'		=> __( 'Select if and how this image should be linked.', 'themeblvd' ),
 				'type'		=> 'select',
 				'options'	=> array(
-			        'none'		=> __('No Link', 'themeblvd'),
-			        '_self' 	=> __('Link to webpage in same window.', 'themeblvd'),
-			        '_blank' 	=> __('Link to webpage in new window.', 'themeblvd'),
-			        'image' 	=> __('Link to image in lightbox popup.', 'themeblvd'),
-			        'video' 	=> __('Link to video in lightbox popup.', 'themeblvd')
+			        'none'		=> __( 'No Link', 'themeblvd' ),
+			        '_self' 	=> __( 'Link to webpage in same window.', 'themeblvd' ),
+			        '_blank' 	=> __( 'Link to webpage in new window.', 'themeblvd' ),
+			        'image' 	=> __( 'Link to image in lightbox popup.', 'themeblvd' ),
+			        'video' 	=> __( 'Link to video in lightbox popup.', 'themeblvd' )
 				),
 				'class'		=> 'trigger'
 			),
 			array(
 				'id' 		=> 'link_url',
-				'name'		=> __('Link URL', 'themeblvd'),
+				'name'		=> __( 'Link URL', 'themeblvd' ),
 				'desc'		=> array(
-			        '_self' 	=> __('Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd'),
-			        '_blank' 	=> __('Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd'),
-			        'image' 	=> __('Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd'),
-			        'video' 	=> __('Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250', 'themeblvd').'<br>'.__('Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd')
+			        '_self' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd' ),
+			        '_blank' 	=> __( 'Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd' ),
+			        'image' 	=> __( 'Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd' ),
+			        'video' 	=> __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250<br>Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd' )
 				),
 				'type'		=> 'text',
 				'std'		=> '',
@@ -1323,8 +1318,8 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 			*/
 			array(
 				'id' 		=> 'link',
-				'name'		=> __('Partner Link (optional)', 'themeblvd'),
-				'desc'		=> __('Enter a URL you\'d like this logo to link to.', 'themeblvd').'<br>'.__('Ex: http://partersite.com', 'themeblvd'),
+				'name'		=> __( 'Partner Link (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Enter a URL you\'d like this logo to link to.<br>Ex: http://partersite.com', 'themeblvd' ),
 				'type'		=> 'text',
 				'pholder'	=> 'http://'
 			)
@@ -1394,7 +1389,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'title',
 				'name'		=> __('Title', 'themeblvd'),
-				'desc'		=> __('Enter a title for this column.', 'themeblvd').'<br>'.__('Ex: Gold Package', 'themeblvd'),
+				'desc'		=> __('Enter a title for this column.<br>Ex: Gold Package', 'themeblvd'),
 				'type'		=> 'text',
 				'std'		=> '',
 				'trigger'	=> true
@@ -1413,7 +1408,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'title_subline',
 				'name'		=> __('Popout Title Subline', 'themeblvd'),
-				'desc'		=> __('Because the column is popped out, enter a very brief subline for the title.', 'themeblvd').'<br>'.__('Ex: Best Value', 'themeblvd'),
+				'desc'		=> __('Because the column is popped out, enter a very brief subline for the title.<br>Ex: Best Value', 'themeblvd'),
 				'type'		=> 'text',
 				'std'		=> 'Best Value',
 				'class'		=> 'hide receiver'
@@ -1424,21 +1419,21 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'price',
 				'name'		=> __('Price', 'themeblvd'),
-				'desc'		=> __('Enter a value for the price, without the currency symbol.', 'themeblvd').'<br>'.__('Ex: 50', 'themeblvd'),
+				'desc'		=> __('Enter a value for the price, without the currency symbol.<br>Ex: 50', 'themeblvd'),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
 			array(
 				'id' 		=> 'price_subline',
 				'name'		=> __('Price Subline (optional)', 'themeblvd'),
-				'desc'		=> __('Enter a very brief subline for the price to show what it represents.', 'themeblvd').'<br>'.__('Ex: per month', 'themeblvd'),
+				'desc'		=> __('Enter a very brief subline for the price to show what it represents.<br>Ex: per month', 'themeblvd'),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
 			array(
 				'id' 		=> 'features',
 				'name'		=> __('Feature List', 'themeblvd'),
-				'desc'		=> __('Enter each feature, seprated by a line break. If you like, spice it up with some icons.', 'themeblvd').'<br><br>[vector_icon icon="check" color="#00aa00"]<br>[vector_icon icon="times" color="#aa0000"]',
+				'desc'		=> __('Enter each feature, seprated by a line break. If you like, spice it up with some icons.<br><br><em>[vector_icon icon="check" color="#00aa00"]</em><br><em>[vector_icon icon="times" color="#aa0000"]</em>', 'themeblvd'),
 				'type'		=> 'textarea',
 				'std'		=> "Feature 1\nFeature 2\nFeature 3",
 				'html'		=> true,
@@ -1450,8 +1445,8 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 		    	'id' 		=> 'button',
-				'name'		=> __('Button', 'themeblvd'),
-				'desc'		=> __('Show button below feature list?', 'themeblvd'),
+				'name'		=> __( 'Button', 'themeblvd' ),
+				'desc'		=> __( 'Show button below feature list?', 'themeblvd' ),
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -1461,16 +1456,16 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'button_color',
-				'name'		=> __('Button Color', 'themeblvd'),
-				'desc'		=> __('Select what color you\'d like to use for this button.', 'themeblvd'),
+				'name'		=> __( 'Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Select what color you\'d like to use for this button.', 'themeblvd' ),
 				'type'		=> 'select',
 				'class'		=> 'trigger',
 				'options'	=> themeblvd_colors()
 			),
 			array(
 				'id' 		=> 'button_custom',
-				'name'		=> __('Custom Button Color', 'themeblvd'),
-				'desc'		=> __('Configure a custom style for the button.', 'themeblvd'),
+				'name'		=> __( 'Custom Button Color', 'themeblvd' ),
+				'desc'		=> __( 'Configure a custom style for the button.', 'themeblvd' ),
 				'std'		=> array(
 					'bg' 				=> '#ffffff',
 					'bg_hover'			=> '#ebebeb',
@@ -1488,47 +1483,47 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'button_text',
-				'name'		=> __('Button Text', 'themeblvd'),
-				'desc'		=> __('Enter the text for the button.', 'themeblvd'),
+				'name'		=> __( 'Button Text', 'themeblvd' ),
+				'desc'		=> __( 'Enter the text for the button.', 'themeblvd' ),
 				'std'		=> 'Purchase Now',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id' 		=> 'button_url',
-				'name'		=> __('Link URL', 'themeblvd'),
-				'desc'		=> __('Enter the full URL where you want the button\'s link to go.', 'themeblvd'),
+				'name'		=> __( 'Link URL', 'themeblvd' ),
+				'desc'		=> __( 'Enter the full URL where you want the button\'s link to go.', 'themeblvd' ),
 				'std'		=> 'http://www.your-site.com/your-landing-page',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id' 		=> 'button_size',
-				'name'		=> __('Button Size', 'themeblvd'),
-				'desc'		=> __('Select the size you\'d like used for this button.', 'themeblvd'),
+				'name'		=> __( 'Button Size', 'themeblvd' ),
+				'desc'		=> __( 'Select the size you\'d like used for this button.', 'themeblvd' ),
 				'type'		=> 'select',
 				'std'		=> 'default',
 				'class'		=> 'hide receiver',
 				'options'	=> array(
-					'mini' 		=> __('Mini', 'themeblvd'),
-					'small' 	=> __('Small', 'themeblvd'),
-					'default' 	=> __('Normal', 'themeblvd'),
-					'large' 	=> __('Large', 'themeblvd'),
-					'x-large' 	=> __('Extra Large', 'themeblvd')
+					'mini' 		=> __( 'Mini', 'themeblvd' ),
+					'small' 	=> __( 'Small', 'themeblvd' ),
+					'default' 	=> __( 'Normal', 'themeblvd' ),
+					'large' 	=> __( 'Large', 'themeblvd' ),
+					'x-large' 	=> __( 'Extra Large', 'themeblvd' )
 				)
 			),
 			array(
 				'id' 		=> 'button_icon_before',
-				'name'		=> __('Icon Before Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __( 'Icon Before Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
 				'type'		=> 'text',
 				'icon'		=> 'vector',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id' 		=> 'button_icon_after',
-				'name'		=> __('Icon After Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __( 'Icon After Button Text (optional)', 'themeblvd' ),
+				'desc'		=> __( 'Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd' ),
 				'type'		=> 'text',
 				'icon'		=> 'vector',
 				'class'		=> 'hide receiver'
@@ -1803,42 +1798,42 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			'text' => array(
 				'id' 		=> 'text',
-				'name' 		=> __('Testimonial Text', 'themeblvd'),
-				'desc'		=> __('Enter any text of the testimonial.', 'themeblvd'),
+				'name' 		=> __( 'Testimonial Text', 'themeblvd'),
+				'desc'		=> __( 'Enter any text of the testimonial.', 'themeblvd'),
 				'type'		=> 'textarea',
 				'editor'	=> true,
 				'code'		=> 'html'
 		    ),
 			'name' => array(
 				'id' 		=> 'name',
-				'name' 		=> __('Name', 'themeblvd'),
-				'desc'		=> __('Enter the name of the person giving the testimonial.', 'themeblvd'),
+				'name' 		=> __( 'Name', 'themeblvd'),
+				'desc'		=> __( 'Enter the name of the person giving the testimonial.', 'themeblvd'),
 				'type'		=> 'text',
 				'trigger'	=> true // Triggers this option's value to be used in toggle
 		    ),
 		    'tagline' => array(
 				'id' 		=> 'tagline',
-				'name' 		=> __('Tagline (optional)', 'themeblvd'),
-				'desc'		=> __('Enter a tagline for the person giving the testimonial.', 'themeblvd').'<br>'.__('Ex: Founder and CEO', 'themeblvd'),
+				'name' 		=> __( 'Tagline (optional)', 'themeblvd'),
+				'desc'		=> __( 'Enter a tagline for the person giving the testimonial.<br>Ex: Founder and CEO', 'themeblvd'),
 				'type'		=> 'text'
 		    ),
 		    'company' => array(
 				'id' 		=> 'company',
-				'name' 		=> __('Company (optional)', 'themeblvd'),
-				'desc'		=> __('Enter the company the person giving the testimonial belongs to.', 'themeblvd'),
+				'name' 		=> __( 'Company (optional)', 'themeblvd'),
+				'desc'		=> __( 'Enter the company the person giving the testimonial belongs to.', 'themeblvd'),
 				'type'		=> 'text'
 		    ),
 		    'company_url' => array(
 				'id' 		=> 'company_url',
-				'name' 		=> __('Company URL (optional)', 'themeblvd'),
-				'desc'		=> __('Enter the website URL for the company or the person giving the testimonial.', 'themeblvd'),
+				'name' 		=> __( 'Company URL (optional)', 'themeblvd'),
+				'desc'		=> __( 'Enter the website URL for the company or the person giving the testimonial.', 'themeblvd'),
 				'type'		=> 'text',
 				'pholder'	=> 'http://'
 		    ),
 		    'image' => array(
 				'id' 		=> 'image',
-				'name' 		=> __('Image (optional)', 'themeblvd'),
-				'desc'		=> __('Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'themeblvd'),
+				'name' 		=> __( 'Image (optional)', 'themeblvd'),
+				'desc'		=> __( 'Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'themeblvd'),
 				'type'		=> 'upload',
 				'advanced'	=> true
 		    )

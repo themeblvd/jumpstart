@@ -270,9 +270,9 @@ class Theme_Blvd_Import {
 			$theme = wp_get_theme();
 
 			if ( $this->error ) {
-				echo '<p>'.sprintf(esc_html__('There was an error with setting up your site like the %s demo. %s', 'themeblvd'), $theme->get('Name'), esc_html__($this->error)).'</p>';
+				echo '<p>'.sprintf(__('There was an error with setting up your site like the %s demo. %s', 'themeblvd'), $theme->get('Name'), $error).'</p>';
 			} else {
-				echo '<p>'.sprintf(esc_html__('%s demo data has been setup successfully.', 'themeblvd'), $theme->get('Name')).'</p>';
+				echo '<p>'.sprintf(__('%s demo data has been setup successfully.', 'themeblvd'), $theme->get('Name')).'</p>';
 			}
 		}
 
@@ -399,7 +399,7 @@ class Theme_Blvd_Import {
 				$home = themeblvd_post_id_by_name( 'home', 'nav_menu_item' );
 
 				if ( $home ) {
-					update_post_meta( $home, '_menu_item_url', esc_url( home_url() ) );
+					update_post_meta( $home, '_menu_item_url', home_url() );
 				}
 
 				break;
