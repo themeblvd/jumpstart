@@ -1219,7 +1219,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 
 	// Manual addon
 	if ( $args['addon'] ) {
-		$output .= ' '.esc_attr($args['addon']);
+		$output .= ' '.wp_kses( $args['addon'], array() );
 	}
 
 	// Finish link

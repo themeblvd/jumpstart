@@ -139,13 +139,13 @@ function themeblvd_get_milestone( $args ) {
     $num = filter_var( $args['milestone'], FILTER_SANITIZE_NUMBER_INT );
     $num = str_replace('-', '', $num);
     $num = str_replace('+', '', $num);
-    $milestone = str_replace( $num, '<span class="num">'.$num.'</span>', $args['milestone'] );
+    $milestone = str_replace( $num, '<span class="num">'.$num.'</span>', themeblvd_kses($args['milestone']) );
 
     if ( themeblvd_supports('display', 'scroll_effects') && ! wp_is_mobile() ) {
         $milestone = str_replace( $num, '0', $milestone );
     }
 
-    $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', esc_attr($args['color']), esc_attr($num), esc_attr($milestone) );
+    $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', esc_attr($args['color']), esc_attr($num), $milestone );
 
     if ( $args['text'] ) {
     	$output .= sprintf( '<span class="text">%s</span>', themeblvd_kses($args['text']) );

@@ -468,7 +468,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 
 	// Title param
 	if ( ! $title ) {
-		$title = strip_tags( $text );
+		$title = $text;
 	}
 
 	// Add icon before text?
@@ -504,7 +504,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	} else {
 
 		// Standard button
-		$button = sprintf( '<a href="%s" title="%s" class="%s" target="%s"%s>%s</a>', esc_url($url), esc_attr($title), esc_attr($final_classes), esc_attr($target), $addon, themeblvd_kses($text) );
+		$button = sprintf( '<a href="%s" title="%s" class="%s" target="%s"%s>%s</a>', esc_url($url), esc_attr($title), esc_attr($final_classes), esc_attr($target), wp_kses($addon, array()), themeblvd_kses($text) );
 
 	}
 
@@ -1430,7 +1430,13 @@ function themeblvd_get_to_section( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$output = sprintf('<a href="#%s" class="tb-scroll-to-section %s">%s</a>', esc_attr($args['to']), esc_attr($args['class']), themeblvd_get_local('next'));
+	$class = 'tb-scroll-to-section';
+
+	if ( $args['class'] ) {
+		$class .= ' '.esc_attr($args['class']);
+	}
+
+	$output = sprintf('<a href="#%s" class="%s">%s</a>', esc_attr($args['to']), $class, themeblvd_get_local('next'));
 
 	return apply_filters( 'themeblvd_to_section', $output, $args );
 }
