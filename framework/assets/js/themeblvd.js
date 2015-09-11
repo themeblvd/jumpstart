@@ -839,7 +839,6 @@ jQuery(document).ready(function($) {
 			$slider.find('.carousel-control-wrap').fadeIn(200, function(){
 				var height = $slider.find('.item.active .jumbotron-outer').outerHeight();
 				$slider.animate({'height': height});
-				console.log(height);
 				$slider.find('.tb-loader').fadeOut(100);
 			});
 		});
