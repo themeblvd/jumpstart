@@ -121,9 +121,8 @@ class Theme_Blvd_Options_Page {
 
 		// Arguments
 		$defaults = array(
-			'parent'		=> 'themes.php',
-			'page_title' 	=> __( 'Theme Options', 'themeblvd' ),
-			'menu_title' 	=> __( 'Theme Options', 'themeblvd' ),
+			'page_title' 	=> __('Theme Options', 'themeblvd'),
+			'menu_title' 	=> __('Theme Options', 'themeblvd'),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'		=> '',
 			'icon'			=> '',
@@ -249,7 +248,7 @@ class Theme_Blvd_Options_Page {
 		// Allow for exporting
 		if ( $this->args['export'] ) {
 			$args = array(
-				'base_url'	=> admin_url($this->args['parent'].'?page='.$this->id),
+				'base_url'	=> admin_url('themes.php?page='.$this->id),
 				'cancel'	=> __('Nothing to export. Theme Options have never been saved.', 'themeblvd')
 			);
 			$export = new Theme_Blvd_Export_Options( $this->id, $args );
@@ -258,7 +257,7 @@ class Theme_Blvd_Options_Page {
 		// Allow for importing
 		if ( $this->args['import'] ) {
 			$args = array(
-				'redirect' => admin_url($this->args['parent'].'?page='.$this->id) // Current options page URL
+				'redirect' => admin_url('themes.php?page='.$this->id) // Current options page URL
 			);
 			$import = new Theme_Blvd_Import_Options( $this->id, $args );
 			$this->importer_url = $import->get_url(); // URL of page where importer is
@@ -285,14 +284,9 @@ class Theme_Blvd_Options_Page {
 	 * @since 2.2.0
 	 */
 	public function add_page() {
-		$admin_page = add_submenu_page( $this->args['parent'], $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
+		$admin_page = add_theme_page( $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
 		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
 		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
-		if ( ! function_exists('wp_enqueue_media') ) {
-			// Legacy uploader
-			add_action( 'admin_print_styles-'.$admin_page, 'optionsframework_mlu_css', 0 );
-			add_action( 'admin_print_scripts-'.$admin_page, 'optionsframework_mlu_js', 0 );
-		}
 	}
 
 	/**
@@ -398,7 +392,7 @@ class Theme_Blvd_Options_Page {
 			$base = themeblvd_get_base();
 
 			if ( $base && ( empty($settings['theme_base']) || $settings['theme_base'] != $base ) ) {
-				add_settings_error( $this->id, 'theme_base_error', __( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd' ), 'themeblvd-error error' );
+				add_settings_error( $this->id, 'theme_base_error', __('Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'themeblvd'), 'themeblvd-error error' );
 			}
 		}
 
@@ -432,7 +426,7 @@ class Theme_Blvd_Options_Page {
 
 		}
 		?>
-		<div class="<?php echo $class; ?>">
+		<div class="<?php echo esc_attr($class); ?>">
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
@@ -440,7 +434,7 @@ class Theme_Blvd_Options_Page {
 		        <?php if ( $return[1] ) : ?>
 		        	<?php echo $return[1]; ?>
 		        <?php else : ?>
-		        	<?php echo $this->args['page_title']; ?>
+		        	<?php echo esc_html($this->args['page_title']); ?>
 		        <?php endif; ?>
 		    </h2>
 		    <div class="metabox-holder">
@@ -449,13 +443,13 @@ class Theme_Blvd_Options_Page {
 						<?php settings_fields( $this->id ); ?>
 						<?php echo $return[0]; /* Settings */ ?>
 				        <div id="optionsframework-submit" class="options-page-footer">
-							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd' ); ?>" />
-							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e( 'Clear Options', 'themeblvd' ); ?>" />
+							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'themeblvd'); ?>" />
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Delete options from the database.', 'themeblvd'); ?>" value="<?php esc_attr_e('Clear Options', 'themeblvd'); ?>" />
 							<?php if ( $this->args['export'] ) : ?>
-								<a href="<?php echo admin_url($this->args['parent'].'?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Export options to XML file.', 'themeblvd'); ?>"><?php _e( 'Export Options', 'themeblvd' ); ?></a>
+								<a href="<?php echo esc_url(admin_url('themes.php?page='.$this->id.'&themeblvd_export_'.$this->id.'=true&security='.wp_create_nonce( 'themeblvd_export_'.$this->id ))); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Export options to XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Export Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<?php if ( $this->args['import'] ) : ?>
-								<a href="<?php echo $this->importer_url; ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php _e('Import options from XML file.', 'themeblvd'); ?>"><?php _e( 'Import Options', 'themeblvd' ); ?></a>
+								<a href="<?php echo esc_url($this->importer_url); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Import options from XML file.', 'themeblvd'); ?>"><?php esc_attr_e( 'Import Options', 'themeblvd'); ?></a>
 				           	<?php endif; ?>
 				           	<div class="clear"></div>
 						</div>
@@ -491,7 +485,7 @@ class Theme_Blvd_Options_Page {
 		// file will be added to the option for the active theme.
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $this->id, 'restore_defaults', __( 'Default options restored.', 'themeblvd' ), 'themeblvd-error error' );
+			add_settings_error( $this->id, 'restore_defaults', __('Default options restored.', 'themeblvd'), 'themeblvd-error error' );
 			return themeblvd_get_option_defaults( $this->options );
 		}
 
@@ -509,6 +503,7 @@ class Theme_Blvd_Options_Page {
 		// $input before sending back the final $clean array.
 
 		$clean = array();
+
 		foreach ( $this->options as $option ) {
 
 			// Skip if we don't have an ID or type.
@@ -583,7 +578,7 @@ class Theme_Blvd_Options_Page {
 		// Add update message for page re-fresh
 		if ( ! $this->sanitized ) {
 			// Avoid duplicates
-			add_settings_error( $this->id, 'save_options', __( 'Options saved.', 'themeblvd' ), 'themeblvd-updated updated' );
+			add_settings_error( $this->id, 'save_options', __('Options saved.', 'themeblvd'), 'themeblvd-updated updated' );
 		}
 
 		// We know sanitization has happenned at least

@@ -559,7 +559,7 @@ function themeblvd_loop( $args = array() ){
 	}
 
 	// Start output
-	echo '<div class="'.$class.'">';
+	echo '<div class="'.esc_attr($class).'">';
 
 	// Output title and content of current page, if this is a
 	// page template displaying secondary loop.
@@ -569,7 +569,7 @@ function themeblvd_loop( $args = array() ){
 
 	// Optional title passed in from shortcodes/elements
 	if ( $args['title'] ) {
-		printf( '<h3 class="title">%s</h3>', $args['title'] );
+		printf( '<h3 class="title">%s</h3>', themeblvd_kses($args['title']) );
 	}
 
 	if ( $args['display'] == 'filter' || $args['display'] == 'masonry_filter' ) {
@@ -829,7 +829,7 @@ function themeblvd_get_grid_slider( $args ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	if ( ! $args['query'] ) {
-		return __('Error: No query supplied.', 'themeblvd');
+		return esc_html__('Error: No query supplied.', 'themeblvd');
 	}
 
 	$class = 'tb-grid-slider tb-block-slider post_grid themeblvd-gallery';
@@ -1276,11 +1276,11 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					'posts_per_page' 	=> -1
 				);
 			} else {
-				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', __('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'themeblvd_front'));
+				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'themeblvd_front'));
 			}
 
 		} else {
-			return sprintf('<div class="alert alert-warning">%s</div>', __('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'themeblvd_front'));
+			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'themeblvd_front'));
 		}
 
 	} else {

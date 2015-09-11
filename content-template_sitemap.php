@@ -19,10 +19,10 @@
         <?php $cats = get_categories(); ?>
         <?php foreach ( $cats as $cat ) : ?>
             <?php query_posts('cat='.$cat->cat_ID); ?>
-            <h3><?php echo $cat->cat_name; ?></h3>
+            <h3><?php echo esc_html($cat->cat_name); ?></h3>
                 <ul>
                 <?php while (have_posts()) : the_post(); ?>
-                    <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> - <?php echo themeblvd_get_local( 'comments' ); ?> (<?php echo $post->comment_count ?>)</li>
+                    <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> - <?php echo themeblvd_get_local( 'comments' ); ?> (<?php echo esc_html($post->comment_count); ?>)</li>
                 <?php endwhile; wp_reset_query(); ?>
             </ul>
         <?php endforeach; ?>

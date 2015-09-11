@@ -135,7 +135,7 @@ abstract class Theme_Blvd_Export {
 	 */
 	public function cancelled() {
 		if ( ! empty( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'themeblvd_export_fail' ) {
-			add_settings_error( $this->id, 'export-fail', $this->args['cancel'], 'themeblvd-error error' );
+			add_settings_error( $this->id, 'export-fail', esc_html($this->args['cancel']), 'themeblvd-error error' );
 		}
 	}
 

@@ -452,7 +452,7 @@ if ( !function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) :
  * @since 2.0.0
  */
 function themeblvd_fixed_sidebar_before_default( $side ) {
-	echo '<div class="fixed-sidebar '.$side.'-sidebar '.themeblvd_get_column_class( $side ).'">';
+	echo '<div class="fixed-sidebar '.$side.'-sidebar '.esc_attr(themeblvd_get_column_class($side)).'">';
 	echo '<div class="fixed-sidebar-inner">';
 }
 endif;
@@ -870,9 +870,9 @@ function themeblvd_after_signup_form() {
 
 				<!-- SIDEBARS (start) -->
 
-				<?php get_sidebar( 'left' ); ?>
+				<?php get_sidebar('left'); ?>
 
-				<?php get_sidebar( 'right' ); ?>
+				<?php get_sidebar('right'); ?>
 
 				<!-- SIDEBARS (end) -->
 

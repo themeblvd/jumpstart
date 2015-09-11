@@ -23,7 +23,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	$menu = '';
 	$output = '';
 	$advanced = Theme_Blvd_Advanced_Options::get_instance();
-	$option_name_orig = $option_name;
+	$option_name_orig = esc_attr($option_name);
 
 	foreach ( $options as $option_key => $value ) {
 
@@ -84,7 +84,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 	   		$id = str_replace( array('start_section_', 'section_start_'), '', $option_key );
 
-	   		$output .= '<div id="'.$id.'" class="postbox inner-section'.$class.' closed">';
+	   		$output .= '<div id="'.$id.'" class="postbox inner-section'.esc_attr($class).' closed">';
 
 	   		$output .= '<a href="#" class="section-toggle"><i class="tb-icon-up-dir"></i></a>';
 
@@ -102,7 +102,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 	   			$output .= '<div class="footer-sync-wrap">';
 	   			$output .= sprintf( '<input id="tb-footer-sync" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($option_name.'[footer_sync]'), checked( $val, 1, false ) );
-	   			$output .= sprintf( '<label for="footer_sync">%s</label>', __('Template Sync', 'themeblvd') );
+	   			$output .= sprintf( '<label for="footer_sync">%s</label>', esc_html__('Template Sync', 'themeblvd') );
 	   			$output .= '</div><!-- .footer-sync-wrap (end) -->';
    			}
 
@@ -143,25 +143,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Set grouped value
 				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
-
 					$val = $settings[($value['group'])][($value['id'])];
-
-					// Striping slashes of non-array options
-					if ( ! is_array( $val ) ) {
-						$val = stripslashes( $val );
-					}
 				}
+
 			} else {
 
 				// Set non-grouped value
 				if ( isset($settings[($value['id'])]) ) {
-
 					$val = $settings[($value['id'])];
-
-					// Striping slashes of non-array options
-					if ( ! is_array( $val ) ) {
-						$val = stripslashes( $val );
-					}
 				}
 			}
 		}
@@ -170,12 +159,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		if ( $value['type'] == 'hidden' ) {
 
 			$class = 'section section-hidden hide';
-			if ( ! empty( $value['class'] ) ) {
+
+            if ( ! empty( $value['class'] ) ) {
 				$class .= ' '.$value['class'];
 			}
 
-			$output .= sprintf('<div class="%s">', $class);
-			$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
+			$output .= sprintf( '<div class="%s">', esc_attr($class) );
+			$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val) );
 			$output .= '</div>';
 			continue;
 		}
@@ -208,7 +198,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			}
 
 			// Start Output
-			$output .= '<div id="'.esc_attr( $id ) .'" class="'.esc_attr( $class ).'">'."\n";
+			$output .= '<div id="'.esc_attr($id) .'" class="'.esc_attr($class).'">'."\n";
 
 			if ( ! empty( $value['name'] ) ) { // Name not required
 				$output .= '<h4 class="heading">'.esc_html( $value['name'] ).'</h4>'."\n";
@@ -227,21 +217,22 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'text':
 
 				$place_holder = '';
-				if ( ! empty( $value['pholder'] ) ) {
-					$place_holder = ' placeholder="'.$value['pholder'].'"';
+
+                if ( ! empty( $value['pholder'] ) ) {
+					$place_holder = ' placeholder="'.esc_attr($value['pholder']).'"';
 				}
 
 				$output .= '<div class="input-wrap">';
 
 				if ( isset($value['icon']) ) {
 					if ( $value['icon'] == 'image' || $value['icon'] == 'vector' ) {
-						$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$value['icon'].'" data-icon-type="'.$value['icon'].'" data-tooltip-text="'.__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+						$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.esc_attr($value['icon']).'" data-icon-type="'.esc_attr($value['icon']).'" data-tooltip-text="'.esc_attr__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
 					} else if ( $value['icon'] == 'post_id' ) {
-						$output .= '<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="'.__('Find Post or Page ID', 'themeblvd').'"><i class="tb-icon-barcode"></i></a>';
+						$output .= '<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="'.esc_attr__('Find Post or Page ID', 'themeblvd').'"><i class="tb-icon-barcode"></i></a>';
 					}
 				}
 
-				$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s"%s />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ), $place_holder );
+				$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s"%s />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val), $place_holder );
 				$output .= '</div><!-- .input-wrap (end) -->';
 				break;
 
@@ -252,27 +243,28 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'textarea' :
 
 				$place_holder = '';
-				if ( ! empty( $value['pholder'] ) ) {
-					$place_holder = ' placeholder="'.$value['pholder'].'"';
+
+                if ( ! empty( $value['pholder'] ) ) {
+					$place_holder = ' placeholder="'.esc_attr($value['pholder']).'"';
 				}
 
 				$cols = '8';
-				if ( isset( $value['options'] ) && isset( $value['options']['cols'] ) ) {
+
+                if ( isset( $value['options'] ) && isset( $value['options']['cols'] ) ) {
 					$cols = $value['options']['cols'];
 				}
 
 				if ( ! empty( $value['editor'] ) || ! empty( $value['code'] ) ) {
 
 					$output .= '<div class="textarea-wrap with-editor-nav">';
-
 					$output .= '<nav class="editor-nav">';
 
 					if ( ! empty( $value['editor'] ) ) {
-						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 					}
 
 					if ( isset( $value['code'] ) && in_array( $value['code'], array( 'html', 'javascript', 'css' ) ) ) {
-						$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.$value['name'].'" data-code_lang="'.$value['code'].'"><i class="tb-icon-code"></i></a>';
+						$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.esc_attr($value['name']).'" data-code_lang="'.esc_attr($value['code']).'"><i class="tb-icon-code"></i></a>';
 					}
 
 					$output .= '</nav>';
@@ -281,7 +273,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<div class="textarea-wrap">';
 				}
 
-				$output .= sprintf( '<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_textarea( $value['id'] ), stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_attr( $cols ), $place_holder, esc_textarea( $val ) );
+				$output .= sprintf( '<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($cols), $place_holder, esc_textarea($val) );
 				$output .= '</div><!-- .textarea-wrap (end) -->';
 				break;
 
@@ -395,7 +387,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// If any dynamic selects caused errors,
 				// don't display a select menu.
 				if ( $error ) {
-					$output .= sprintf('<p class="warning">%s</p>', $error);
+					$output .= sprintf('<p class="warning">%s</p>', esc_html($error));
 					break;
 				}
 
@@ -413,7 +405,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 						$output .= sprintf('<optgroup label="%s">', $optgroup['label']);
 
 						foreach ( $optgroup['options'] as $key => $option ) {
-							$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr( $key ), esc_html($option) );
+							$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr($key), esc_html($option) );
 						}
 
 						$output .= '</optgroup>';
@@ -423,7 +415,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					// Standard
 					foreach ( $value['options'] as $key => $option ) {
-						$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr( $key ), esc_html($option) );
+						$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr($key), esc_html($option) );
 					}
 
 				}
@@ -434,7 +426,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				if ( $textures ) {
-					$output .= '<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">'.__('Browse Textures', 'themeblvd').'</a>';
+					$output .= '<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">'.esc_attr__('Browse Textures', 'themeblvd').'</a>';
 				}
 
 				// If this is a builder sample select, show preview images
@@ -471,6 +463,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
 
 				$width = '';
+
 				if ( isset( $value['img_width'] ) ) {
 					$width = $value['img_width'];
 				}
@@ -483,7 +476,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					$output .= sprintf( '<input type="radio" id="%s" class="of-radio-img-radio" value="%s" name="%s" %s />', esc_attr($value['id'].'_'.$key), esc_attr($key), esc_attr($name), $checked );
 					$output .= sprintf( '<div class="of-radio-img-label">%s</div>', esc_html($key) );
-					$output .= sprintf( '<img src="%s" alt="%s" class="of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />', esc_url($option), $option, $selected, $width, esc_attr($value['id'].'_'.$key) );
+					$output .= sprintf( '<img src="%s" alt="%s" class="of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />', esc_url($option), esc_url($option), $selected, esc_attr($width), esc_attr($value['id'].'_'.$key) );
 
 				}
 				break;
@@ -542,7 +535,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'color' :
-				$output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr( $val ), esc_attr( $value['std'] ) );
+				$output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val), esc_attr($value['std']) );
 				break;
 
 			/*---------------------------------------*/
@@ -637,12 +630,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<div class="jquery-ui-slider"';
 
 					foreach ( $slide_options as $param_id => $param ) {
-						$output .= sprintf( ' data-%s="%s"', $param_id, $param );
+						$output .= sprintf( ' data-%s="%s"', esc_attr($param_id), esc_attr($param) );
 					}
 
 					$output .= '></div>';
 
-					$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'].'_size' ), esc_attr( $option_name.'['.$value['id'].'][size]' ), $typography_stored['size'] );
+					$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'].'_size' ), esc_attr( $option_name.'['.$value['id'].'][size]' ), esc_attr($typography_stored['size']) );
 					$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 
 				}
@@ -656,7 +649,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$styles = themeblvd_recognized_font_styles();
 
                     foreach ( $styles as $key => $style ) {
-						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['style'], $key, false ).'>'.esc_html( $style ).'</option>';
+						$output .= '<option value="'.esc_attr($key).'" '.selected( $typography_stored['style'], $key, false ).'>'.esc_html($style).'</option>';
 					}
 
 					$output .= '</select>';
@@ -674,7 +667,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$weights = themeblvd_recognized_font_weights();
 
                     foreach ( $weights as $key => $weight ) {
-						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['weight'], $key, false ).'>'.esc_html( $weight ).'</option>';
+						$output .= '<option value="'.esc_attr($key).'" '.selected( $typography_stored['weight'], $key, false ).'>'.esc_attr($weight).'</option>';
 					}
 
 					$output .= '</select>';
@@ -692,7 +685,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$faces = themeblvd_recognized_font_faces();
 
                     foreach ( $faces as $key => $face ) {
-						$output .= '<option value="'.esc_attr( $key ).'" '.selected( $typography_stored['face'], $key, false ).'>'.esc_html( $face ).'</option>';
+						$output .= '<option value="'.esc_attr($key).'" '.selected( $typography_stored['face'], $key, false ).'>'.esc_attr($face).'</option>';
 					}
 
 					$output .= '</select>';
@@ -718,10 +711,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Google Font support
 				if ( in_array( 'face', $value['atts'] ) ) {
 					$output .= '<div class="google-font hide">';
-					$output .= '<h5>'.__( 'Enter the name of a font from the <a href="http://www.google.com/webfonts" target="_blank">Google Font Directory</a>.', 'themeblvd' ).'</h5>';
-					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr( $typography_stored['google'] ).'" />';
-					$output .= '<p class="note"><strong>'.__('Example', 'themeblvd').'</strong>: Open Sans<br />';
-                    $output .= '<strong>'.__('Example with custom weight', 'themeblvd').'</strong>: Open Sans:300</p>';
+					$output .= '<h5>'.sprintf(esc_attr__('Enter the name of a font from the %s.', 'themeblvd'), '<a href="http://www.google.com/webfonts" target="_blank">'.esc_attr__('Google Font Directory', 'themeblvd').'</a>').'</h5>';
+					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr($typography_stored['google']).'" />';
+					$output .= '<p class="note"><strong>'.esc_attr__('Example', 'themeblvd').'</strong>: Open Sans<br />';
+                    $output .= '<strong>'.esc_attr__('Example with custom weight', 'themeblvd').'</strong>: Open Sans:300</p>';
 					$output .= '</div>';
 				}
 
@@ -749,7 +742,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 						$current_color = $background['color'];
 					}
 
-					$output .= sprintf( '<input id="%s_color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].'][color]' ), esc_attr( $current_color ), esc_attr( $current_color ));
+					$output .= sprintf( '<input id="%s_color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][color]' ), esc_attr($current_color), esc_attr($current_color));
 					$output .= '<br />';
 
 				}
@@ -776,11 +769,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= themeblvd_media_uploader( array( 'option_name' => $option_name, 'type' => 'background', 'id' => $value['id'], 'value' => $current_bg_url, 'name' => 'image' ) );
 
 				$class = 'of-background-properties';
-				if ( empty( $background['image'] ) ) {
+
+                if ( empty( $background['image'] ) ) {
 					$class .= ' hide';
 				}
 
-				$output .= '<div class="'.esc_attr( $class ).'">';
+				$output .= '<div class="'.esc_attr($class).'">';
 
 				// Background Repeat
 				$current_repeat = !empty($background['repeat']) ? $background['repeat'] : '';
@@ -798,13 +792,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				// Background Attachment
-				$current_attachment = !empty($background['attachment']) ? $background['attachment'] : '';
+				$current_attachment = ! empty($background['attachment']) ? $background['attachment'] : '';
 				$output .= '<div class="tb-fancy-select condensed">';
 				$output .= '<select class="of-background of-background-attachment" name="'.esc_attr( $option_name.'['.$value['id'].'][attachment]' ).'" id="'.esc_attr( $value['id'].'_attachment' ).'">';
 				$attachments = themeblvd_recognized_background_attachment();
 
 				// Parallax scrolling
 				$parallax = false;
+
 				if ( isset( $value['parallax'] ) ) {
 					$parallax = $value['parallax'];
 				}
@@ -814,7 +809,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				foreach ( $attachments as $key => $attachment ) {
-					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_attachment, $key, false ).'>'.esc_html( $attachment ).'</option>';
+					$output .= '<option value="'.esc_attr($key).'" '.selected( $current_attachment, $key, false ).'>'.esc_attr($attachment).'</option>';
 				}
 
 				$output .= '</select>';
@@ -823,13 +818,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				// Background Position
-				$current_position = !empty($background['position']) ? $background['position'] : '';
+				$current_position = ! empty($background['position']) ? $background['position'] : '';
 				$output .= '<div class="tb-fancy-select condensed">';
 				$output .= '<select class="of-background of-background-position" name="'.esc_attr( $option_name.'['.$value['id'].'][position]' ).'" id="'.esc_attr( $value['id'].'_position' ).'">';
 				$positions = themeblvd_recognized_background_position();
 
 				foreach ( $positions as $key => $position ) {
-					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_position, $key, false ).'>'. esc_html( $position ).'</option>';
+					$output .= '<option value="'.esc_attr($key).'" '.selected( $current_position, $key, false ).'>'. esc_html($position).'</option>';
 				}
 
 				$output .= '</select>';
@@ -838,14 +833,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				// Background Size
-				$current_size = !empty($background['size']) ? $background['size'] : '';
+				$current_size = ! empty($background['size']) ? $background['size'] : '';
 				$output .= '<div class="tb-fancy-select condensed">';
 				$output .= '<select class="of-background of-background-size" name="'.esc_attr( $option_name.'['.$value['id'].'][size]' ).'" id="'.esc_attr( $value['id'].'_size' ).'">';
 
 				$sizes = themeblvd_recognized_background_size();
 
 				foreach ( $sizes as $key => $size ) {
-					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_size, $key, false ).'>'. esc_html( $size ).'</option>';
+					$output .= '<option value="'.esc_attr($key).'" '.selected( $current_size, $key, false ).'>'. esc_html($size).'</option>';
 				}
 
 				$output .= '</select>';
@@ -865,7 +860,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
                 // mp4 video
                 $output .= '<div class="section-upload">';
-                $output .= '<p><strong>'.__('Video (mp4)', 'themeblvd').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video (mp4)', 'themeblvd').'</strong></p>';
 
                 $video_url = '';
 
@@ -885,7 +880,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
                 // webM video
                 $output .= '<div class="section-upload">';
-                $output .= '<p><strong>'.__('Video (webM)', 'themeblvd').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video (webM)', 'themeblvd').'</strong></p>';
 
                 $video_url = '';
 
@@ -905,7 +900,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
                 // Background image
                 $output .= '<div class="section-upload clearfix">';
-                $output .= '<p><strong>'.__('Video Fallback Image', 'themeblvd').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video Fallback Image', 'themeblvd').'</strong></p>';
 
                 $img_url = '';
 
@@ -957,13 +952,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Start color
 				$output .= '<div class="color-start">';
 				$output .= sprintf( '<input id="%s_start" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][start]'), esc_attr($start), esc_attr($start_def) );
-				$output .= '<span class="color-label">'.__('Top Color', 'themeblvd').'</span>';
+				$output .= '<span class="color-label">'.esc_attr__('Top Color', 'themeblvd').'</span>';
 				$output .= '</div><!-- .color-start (end) -->';
 
 				// End color
 				$output .= '<div class="color-end">';
 				$output .= sprintf( '<input id="%s_end" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][end]'), esc_attr($end), esc_attr($end_def) );
-				$output .= '<span class="color-label">'.__('Bottom Color', 'themeblvd').'</span>';
+				$output .= '<span class="color-label">'.esc_attr__('Bottom Color', 'themeblvd').'</span>';
 				$output .= '</div><!-- .color-end (end) -->';
 
 				$output .= '</div><!-- .gradient-wrap (end) -->';
@@ -985,11 +980,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Values
 				$lat = '';
+
 				if ( isset( $val['lat'] ) ) {
 					$lat = $val['lat'];
 				}
 
 				$long = '';
+
 				if ( isset( $val['long'] ) ) {
 					$long = $val['long'];
 				}
@@ -999,28 +996,28 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Latitude
 				$output .= '<div class="geo-lat">';
 				$output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][lat]' ), esc_attr($lat) );
-				$output .= '<span class="geo-label">'.__('Latitude', 'themeblvd').'</span>';
+				$output .= '<span class="geo-label">'.esc_html__('Latitude', 'themeblvd').'</span>';
 				$output .= '</div><!-- .geo-lat (end) -->';
 
 				// Longitude
 				$output .= '<div class="geo-long">';
 				$output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][long]' ), esc_attr($long) );
-				$output .= '<span class="geo-label">'.__('Longitude', 'themeblvd').'</span>';
+				$output .= '<span class="geo-label">'.esc_html__('Longitude', 'themeblvd').'</span>';
 				$output .= '</div><!-- .geo-long (end) -->';
 
 				$output .= '</div><!-- .geo-wrap (end) -->';
 
 				// Generate lat and long
 				$output .= '<div class="geo-generate">';
-				$output .= '<h5>'.__('Generate Coordinates', 'themeblvd').'</h5>';
+				$output .= '<h5>'.esc_html__('Generate Coordinates', 'themeblvd').'</h5>';
 				$output .= '<div class="data clearfix">';
 				$output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
 				$output .= '<input type="text" value="" class="address" />';
-				$output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', __('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), __('Generate', 'themeblvd') );
+				$output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), esc_html__('Generate', 'themeblvd') );
 				$output .= '</div><!-- .data (end) -->';
 				$output .= '<p class="note">';
-				$output .= __('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
-				$output .= __('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
+				$output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
+				$output .= esc_html__('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
 				$output .= '</p>';
 				$output .= '</div><!-- .geo-generate (end) -->';
 
@@ -1034,18 +1031,20 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Classes
 				$class = 'section';
-				if ( isset( $value['type'] ) ) {
+
+                if ( isset( $value['type'] ) ) {
 					$class .= ' section-'.$value['type'];
 				}
-				if ( isset( $value['class'] ) ) {
+
+                if ( isset( $value['class'] ) ) {
 					$class .= ' '.$value['class'];
 				}
 
 				// Start output
-				$output .= '<div class="'.esc_attr( $class ).'">'."\n";
+				$output .= '<div class="'.esc_attr($class).'">'."\n";
 
 				if ( isset($value['name']) ) {
-					$output .= '<h4 class="heading">'.esc_html( $value['name'] ).'</h4>'."\n";
+					$output .= '<h4 class="heading">'.esc_html($value['name']).'</h4>'."\n";
 				}
 
 				if ( isset( $value['desc'] ) ) {
@@ -1114,7 +1113,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="jquery-ui-slider"';
 
 				foreach ( $slide_options as $param_id => $param ) {
-					$output .= sprintf( ' data-%s="%s"', $param_id, $param );
+					$output .= sprintf( ' data-%s="%s"', esc_attr($param_id), esc_attr($param) );
 				}
 
 				$output .= '></div>';
@@ -1123,7 +1122,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$val = $slide_options['min'].$slide_options['units'];
 				}
 
-				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'] ), esc_attr( $option_name.'['.$value['id'].']' ), stripslashes( esc_attr( $val ) ) );
+				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val) );
 				$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 				break;
 
@@ -1290,6 +1289,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$explain_value = '';
 				$has_description = '';
+
 				if ( ! empty( $value['desc'] ) ) {
 					$explain_value = $value['desc'];
 					$has_description = ' has-desc';
@@ -1307,7 +1307,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= ob_get_clean();
 
 				if ( $desc_location == 'after' ) {
-					$output .= '<div class="explain">'.$explain_value.'</div>'."\n";
+					$output .= '<div class="explain">'.themeblvd_kses($explain_value).'</div>'."\n";
 				}
 
 				$output .= '</div><!-- .tb-wp-editor (end) -->';
@@ -1321,7 +1321,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			/*---------------------------------------*/
 
 			case 'editor_modal' :
-				$output .= sprintf( '<textarea id="%s" class="editor-modal-content" name="%s" cols="8" rows="8">%s</textarea>', esc_textarea( $value['id'] ), stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_textarea( $val ) );
+				$output .= sprintf( '<textarea id="%s" class="editor-modal-content" name="%s" cols="8" rows="8">%s</textarea>', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_textarea($val) );
 				break;
 
 			/*---------------------------------------*/
@@ -1333,12 +1333,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$id = uniqid('code_editor_');
 
 				$lang = 'html';
+
 				if ( isset( $value['lang'] ) && in_array( $value['lang'], array( 'javascript', 'html', 'css' )) ) {
 					$lang = $value['lang'];
 				}
 
 				$output .= '<div class="textarea-wrap">';
-				$output .= sprintf( '<textarea id="%s" data-code-lang="%s" name="%s" rows="8">%s</textarea>', $id, $lang, stripslashes( esc_attr( $option_name.'['.$value['id'].']') ), esc_textarea( $val ) );
+				$output .= sprintf( '<textarea id="%s" data-code-lang="%s" name="%s" rows="8">%s</textarea>', $id, esc_attr($lang), esc_attr( $option_name.'['.$value['id'].']' ), esc_textarea($val) );
 				$output .= '</div><!-- .textarea-wrap (end) -->';
 
 				break;
@@ -1354,6 +1355,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				$id = $value['name'];
+
 				if ( ! empty( $value['id'] ) ) {
 					$id = $value['id'];
 				}
@@ -1388,10 +1390,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				if ( ! empty( $value['desc'] ) ) {
 					if ( is_array( $value['desc'] ) ) {
 						foreach ( $value['desc'] as $desc_id => $desc ) {
-							$output .= '<div class="explain hide '.$desc_id.'">'.wp_kses( $desc, themeblvd_allowed_tags() ).'</div>'."\n";
+							$output .= '<div class="explain hide '.esc_attr($desc_id).'">'.themeblvd_kses($desc).'</div>'."\n";
 						}
 					} else {
-						$output .= '<div class="explain">'.wp_kses( $value['desc'], themeblvd_allowed_tags() ).'</div>'."\n";
+						$output .= '<div class="explain">'.themeblvd_kses($value['desc']).'</div>'."\n";
 					}
 				}
 			}

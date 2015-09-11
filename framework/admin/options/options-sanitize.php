@@ -83,8 +83,7 @@ function themeblvd_sanitize_hidden( $input, $option ) {
 
 	} else {
 
-		$allowedtags = themeblvd_allowed_tags();
-		$output = wp_kses( $input, $allowedtags );
+		$output = themeblvd_kses( $input );
 		$output = htmlspecialchars_decode( $output );
 		$output = str_replace( "\r\n", "\n", $output );
 
@@ -98,8 +97,7 @@ function themeblvd_sanitize_hidden( $input, $option ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_text( $input ) {
-	$allowedtags = themeblvd_allowed_tags();
-	$output = wp_kses( $input, $allowedtags );
+	$output = themeblvd_kses($input);
 	$output = htmlspecialchars_decode( $output );
 	$output = str_replace( "\r\n", "\n", $output );
 	return $output;
@@ -111,21 +109,9 @@ function themeblvd_sanitize_text( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_textarea( $input ) {
-	$allowedtags = themeblvd_allowed_tags();
-	$output = wp_kses( $input, $allowedtags );
+	$output = themeblvd_kses($input);
 	$output = htmlspecialchars_decode( $output );
 	$output = str_replace( "\r\n", "\n", $output );
-	return $output;
-}
-
-/**
- * Info
- *
- * @since 2.2.0
- */
-function themeblvd_sanitize_allowedtags( $input ) {
-	$allowedtags = themeblvd_allowed_tags();
-	$output = wpautop(wp_kses( $input, $allowedtags));
 	return $output;
 }
 

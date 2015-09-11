@@ -22,7 +22,7 @@ $meta = apply_filters('themeblvd_mini_list_meta_args', array('include' => array(
 		<h3 class="entry-title"><?php themeblvd_the_title(); ?></h3>
 		<?php if ( themeblvd_get_att('show_meta') ) : ?>
 			<div class="meta-wrapper">
-				<?php echo themeblvd_get_meta($meta); ?>
+				<?php echo themeblvd_kses( themeblvd_get_meta($meta) ); ?>
 			</div><!-- .meta-wrapper (end) -->
 		<?php endif; ?>
 	</div><!-- .content-wrapper (end) -->
