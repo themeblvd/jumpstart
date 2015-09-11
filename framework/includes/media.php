@@ -1279,6 +1279,13 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		$has_link = true;
 	}
 
+	// Does this image have a display width?
+	$width = esc_attr($args['width']);
+
+	if ( $width && strpos($args['width'], '%') === false && strpos($args['width'], 'px') === false ) {
+		$width += 'px';
+	}
+
 	// Image class
 	$img_class = 'wp-image-'.$img_atts['id'];
 
@@ -1313,8 +1320,8 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	// Setup intial image
 	$img = sprintf( '<img src="%s" alt="%s" class="%s" ', esc_url($img_src), esc_attr($title), esc_attr($img_class) );
 
-	if ( $args['width'] ) {
-		$img .= sprintf( 'width="%s" ', esc_attr($args['width']) );
+	if ( $width ) {
+		$img .= sprintf( 'style="width:%s;" ', $width );
 	}
 
 	$img .= '/>';
@@ -1379,8 +1386,8 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	}
 
 	// Wrap image in max-width div?
-	if ( $args['width'] ) {
-		$output = sprintf('<div class="display-width %s" style="max-width:%spx;">%s</div>', esc_attr($args['align']), esc_attr($args['width']), $output);
+	if ( $width ) {
+		$output = sprintf('<div class="display-width %s" style="max-width:%s;">%s</div>', esc_attr($args['align']), $width, $output);
 	}
 
 	return apply_filters( 'themeblvd_image', $output, $img, $img_atts, $args );
