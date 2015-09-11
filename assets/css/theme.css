@@ -59,6 +59,9 @@
 /* =Primary Structure
 ----------------------------------------------- */
 
+body {
+	overflow-x: hidden !important;
+}
 .header-top > .wrap,
 .header-above > .wrap,
 .header-content > .wrap,
@@ -119,6 +122,10 @@
 		max-width: 480px;
 		padding-left: 15px;
 		padding-right: 15px;
+	}
+	.element.popout .jumbotron-wrap {
+		padding-left: 0;
+		padding-right: 0;
 	}
 	.site-footer > .wrap {
 		padding-left: 30px;
