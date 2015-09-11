@@ -1094,7 +1094,11 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
 				// As add_settings_error() wraps the final message in a <p> and as the final message can't be
 				// filtered, using <p>'s in our html would render invalid html output.
-				$line_template = '<span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">%s</span>' . "\n";
+				// $line_template = '<span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">%s</span>' . "\n";
+
+				// Theme Blvd: Since below we're not using add_settings_error(), we don't
+				// have to worry about the above issue.
+				$line_template = '<p>%s</p>';
 
 				// If dismissable is false and a message is set, output it now.
 				if ( ! $this->dismissable && ! empty( $this->dismiss_msg ) ) {
@@ -1175,19 +1179,25 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					$rendered    .= apply_filters( 'tgmpa_notice_rendered_action_links', $action_links );
 				}
 
+				// Theme Blvd: Modifed admin nag to be outputted admin notice
+                // and not with settings_errors(), which conflicted with
+				// some other things.
+
 				// Register the nag messages and prepare them to be processed.
-				if ( ! empty( $this->strings['nag_type'] ) ) {
-					add_settings_error( 'tgmpa', 'tgmpa', $rendered, sanitize_html_class( strtolower( $this->strings['nag_type'] ) ) );
-				} else {
-					$nag_class = version_compare( $this->wp_version, '3.8', '<' ) ? 'updated' : 'update-nag';
-					add_settings_error( 'tgmpa', 'tgmpa', $rendered, $nag_class );
-				}
+				// if ( ! empty( $this->strings['nag_type'] ) ) {
+				// 	add_settings_error( 'tgmpa', 'tgmpa', $rendered, sanitize_html_class( strtolower( $this->strings['nag_type'] ) ) );
+				// } else {
+				// 	$nag_class = version_compare( $this->wp_version, '3.8', '<' ) ? 'updated' : 'update-nag';
+				// 	add_settings_error( 'tgmpa', 'tgmpa', $rendered, $nag_class );
+				// }
+
+				printf( '<div class="notice notice-warning settings-error">%s</div>', $rendered );
 			}
 
 			// Admin options pages already output settings_errors, so this is to avoid duplication.
-			if ( 'options-general' !== $GLOBALS['current_screen']->parent_base ) {
-				$this->display_settings_errors();
-			}
+			// if ( 'options-general' !== $GLOBALS['current_screen']->parent_base ) {
+			// 	$this->display_settings_errors();
+			// }
 		}
 
 		/**
