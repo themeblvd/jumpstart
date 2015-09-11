@@ -1006,12 +1006,12 @@ function themeblvd_columns( $args, $columns = null ) {
 	if ( $args['height'] && $args['layout_id'] != 0 && ! $columns ) {
 		$open_row = array(
 			'wrap'	=> "container-{$stack}-height",
-			'class'	=> "row row-{$stack}-height",
+			'class'	=> "row stack-{$stack} row-{$stack}-height",
 			'style'	=> $margin
 		);
 	} else {
 		$open_row = array(
-			'class'	=> 'row',
+			'class'	=> "row stack-{$stack}",
 			'style'	=> $margin
 		);
 	}
