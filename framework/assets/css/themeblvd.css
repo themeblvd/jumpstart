@@ -4717,7 +4717,11 @@ button.mfp-arrow:active {
 .element-columns .element.bg-content {
 	background: #ffffff;
 }
-.element-section > .element.popout.element-columns > .row {
+.element-section > .element.popout.element-columns > .row,
+.element-section > .element.popout.element-columns > .container-xs-height > .row,
+.element-section > .element.popout.element-columns > .container-sm-height > .row,
+.element-section > .element.popout.element-columns > .container-md-height > .row,
+.element-section > .element.popout.element-columns > .container-lg-height > .row {
 	margin: 0 !important;
 }
 
