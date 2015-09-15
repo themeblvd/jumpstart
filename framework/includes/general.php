@@ -247,7 +247,8 @@ function themeblvd_setup() {
 			'gmap'				=> true,			// Google Maps API v3
 			'charts'			=> true,			// Charts.js
 			'isotope'			=> true,			// Isotope script for sorting
-			'tag_cloud'			=> true 			// Framework tag cloud styling
+			'tag_cloud'			=> true, 			// Framework tag cloud styling
+			'in_footer'			=> true				// Whether theme scripts are enqueued in footer
 		),
 		'plugins' => array(
 			'bbpress'			=> true,			// bbPress by Automattic

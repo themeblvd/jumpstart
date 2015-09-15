@@ -8,6 +8,7 @@ Jump Start Changelog
 * Improvement: Better handling of svg icons in IE9/10.
 * Improvement: Hero unit slider display on mobile.
 * Improvement: Allow percentages to work properly for image element display width in Layout Builder.
+* Improvement: JavaScript files moved to footer. [More Info](http://news.themeblvd.com/2015/09/15/frontend-scripts-moved-to-footer-in-framework-2-5-2-update/)
 * Fixed: WooCommerce cart thumbnail sizing issue in Firefox.
 * Fixed: In executive base, standard header background elements were being outputted with Transparent header.
 * Fixed: Parallax background fallback not being horizontally centered in IE9.
@@ -17,6 +18,7 @@ Jump Start Changelog
 * Fixed: Negative horizontal margin overflow with "popout" columns element in Layout Builder.
 * Improved: Security of outputted localized text strings.
 * Improved: Security of outputted data from various user-edited elements.
+* Improved: Security of outputted urls and enqueued scripts and stylesheets.
 * Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
 * Updated TGMA plugin installer to 2.5.2.
 

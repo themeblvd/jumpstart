@@ -1744,7 +1744,7 @@ function themeblvd_get_refine_search_menu() {
 			$active = $_GET['s_type'];
 		}
 
-		$url = esc_url( untrailingslashit( home_url('/')).'/?s='.str_replace(' ', '+', get_search_query() ) );
+		$url = add_query_arg( array( 's' => str_replace( ' ', '+', get_search_query() ) ), themeblvd_get_home_url() );
 
 		$output .= '<div class="tb-inline-menu">';
 		$output .= '<ul class="list-inline search-refine-menu">';
@@ -1752,14 +1752,15 @@ function themeblvd_get_refine_search_menu() {
 		if ( $active == 'all' ) {
 			$output .= sprintf( '<li><span class="active">%s</span></li>', themeblvd_get_local('all') );
 		} else {
-			$output .= sprintf( '<li><a href="%s">%s</a></li>', $url, themeblvd_get_local('all') );
+			$output .= sprintf( '<li><a href="%s">%s</a></li>', esc_url($url), themeblvd_get_local('all') );
 		}
 
 		foreach ( $types as $type => $name ) {
 			if ( $active == $type ) {
 				$output .= sprintf( '<li><span class="active">%s</span></li>', esc_html($name) );
 			} else {
-				$output .= sprintf( '<li><a href="%s&s_type=%s">%s</a></li>', $url, esc_attr($type), esc_html($name) );
+				$url = add_query_arg( array( 's_type' => esc_attr($type) ), $url );
+				$output .= sprintf( '<li><a href="%s">%s</a></li>', esc_url($url), esc_html($name) );
 			}
 		}
 

@@ -224,7 +224,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		// Add increment buttons back for WC 2.3+
 		if ( version_compare( $this->get_version(), '2.3.0', '>=' ) ) {
-			wp_enqueue_script( 'wcqi-js', esc_url( TB_FRAMEWORK_URI . '/compat/woocommerce/wc-quantity-increment.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_enqueue_script( 'wcqi-js', esc_url( TB_FRAMEWORK_URI . '/compat/woocommerce/wc-quantity-increment.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION, themeblvd_supports('assets', 'in_footer') );
 		}
 
 		// Make sure WooCommerce doesn't load prettyPhoto
