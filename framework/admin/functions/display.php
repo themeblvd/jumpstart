@@ -13,7 +13,6 @@ function themeblvd_post_table( $post_type, $columns ) {
 	// Grab some details for post type
 	$post_type_object = get_post_type_object($post_type);
 	$name = $post_type_object->labels->name;
-	$singular_name = $post_type_object->labels->singular_name;
 
 	// Get posts
 	$posts = get_posts( array( 'post_type' => $post_type, 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
@@ -48,7 +47,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.esc_html__('Apply', 'themeblvd').'">';
 	$output .= '</div>';
 	$output .= '<div class="alignright tablenav-pages">';
-	$output .= '<span class="displaying-num">'.esc_html( sprintf( _n( '1 '.$singular_name, '%s '.$name, count($posts), 'themeblvd'), number_format_i18n( count($posts) ) ) ).'</span>';
+	$output .= '<span class="displaying-num">'.esc_html( sprintf( _n( '1 item', '%s items', count($posts), 'themeblvd'), number_format_i18n( count($posts) ) ) ).'</span>';
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
 	$output .= '</div>';

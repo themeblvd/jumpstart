@@ -807,6 +807,39 @@ function themeblvd_show_comments() {
 }
 
 /**
+ * Get comments title for comments.php -- In order to
+ * maintain our filterable localization strings, this
+ * function has to avoid using _n(), which probably
+ * looks seemingly weird, at first glance.
+ *
+ * @since 2.5.2
+ */
+function themeblvd_get_comments_title() {
+
+	$output = '';
+	$num = get_comments_number();
+
+	if ( $num == 0 ) {
+		$output = themeblvd_get_local('no_comments');
+	} else if ( $num == 1 ) {
+		$output = sprintf( themeblvd_get_local('comments_title_single'), number_format_i18n( get_comments_number() ), '<span>'.esc_html( get_the_title() ).'</span>' );
+	} else if ( $num >= 2 ) {
+		$output = sprintf( themeblvd_get_local('comments_title_multiple'), number_format_i18n( get_comments_number() ), '<span>'.esc_html( get_the_title() ).'</span>' );
+	}
+
+	return apply_filters( 'themeblvd_comments_title', $output, $num );
+}
+
+/**
+ * Display comments title
+ *
+ * @since 2.5.2
+ */
+function themeblvd_comments_title() {
+	echo themeblvd_get_comments_title();
+}
+
+/**
  * Forward password-protected pages using
  * page templates to page.php
  *

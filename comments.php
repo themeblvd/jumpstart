@@ -20,15 +20,12 @@
 
 			<!-- COMMENTS (start) -->
 
-			<h2 id="comments-title">
-				<?php
-					echo themeblvd_kses( sprintf( _n( themeblvd_get_local('comments_title_single'), themeblvd_get_local('comments_title_multiple'), get_comments_number(), 'themeblvd' ),
-						number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' ) );
-				?>
-			</h2>
+			<h2 id="comments-title"><?php themeblvd_comments_title(); ?></h2>
+
 			<ol class="commentlist">
 				<?php wp_list_comments( themeblvd_get_comment_list_args() ); ?>
 			</ol>
+
 			<?php if ( get_comment_pages_count() > 1 && get_option('page_comments') ) : // are there comments to navigate through ?>
 				<nav id="comment-nav-below">
 					<h1 class="assistive-text"><?php echo themeblvd_get_local('comment_navigation' ); ?></h1>
