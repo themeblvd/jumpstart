@@ -58,7 +58,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 		$deps = $handler->get_framework_deps();
 
-		wp_enqueue_style( 'themeblvd-gravityforms', TB_FRAMEWORK_URI.'/compat/gravityforms/gravityforms.min.css', $deps, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd-gravityforms', esc_url( TB_FRAMEWORK_URI . '/compat/gravityforms/gravityforms.min.css' ), $deps, TB_FRAMEWORK_VERSION );
 	}
 
 	/**

@@ -766,7 +766,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 				$texture = $textures[$display['bg_texture']];
 
-				$params['background-image'] = sprintf('url(%s)', $texture['url']);
+				$params['background-image'] = sprintf('url(%s)', esc_url($texture['url']));
 				$params['background-position'] = $texture['position'];
 				$params['background-repeat'] = $texture['repeat'];
 				$params['background-size'] = $texture['size'];
@@ -778,7 +778,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 			$repeat = false;
 
 			if ( ! empty( $display['bg_image']['image'] ) ) {
-				$params['background-image'] = sprintf('url(%s)', $display['bg_image']['image']);
+				$params['background-image'] = sprintf('url(%s)', esc_url($display['bg_image']['image']));
 			}
 
 			if ( ! empty( $display['bg_image']['repeat'] ) ) {
@@ -805,7 +805,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 		} else if ( $bg_type == 'video' ) {
 
 			if ( ! empty( $display['bg_video']['fallback'] ) ) {
-				$params['background-image'] = sprintf('url(%s)', $display['bg_video']['fallback']);
+				$params['background-image'] = sprintf('url(%s)', esc_url($display['bg_video']['fallback']));
 			}
 
 		}

@@ -367,59 +367,59 @@ function themeblvd_include_scripts() {
 
 	// Register scripts that get enqueued, as needed
 	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
-		wp_register_script( 'google_maps', 'https://maps.googleapis.com/maps/api/js', array(), null );
+		wp_register_script( 'google_maps', esc_url( 'https://maps.googleapis.com/maps/api/js' ), array(), null );
 	}
 
 	if ( themeblvd_supports( 'assets', 'charts' ) ) {
-		wp_register_script( 'charts', TB_FRAMEWORK_URI . '/assets/js/chart.min.js', array(), null );
+		wp_register_script( 'charts', esc_url( TB_FRAMEWORK_URI . '/assets/js/chart.min.js' ), array(), null );
 	}
 
 	// Enque Scripts
 	wp_enqueue_script( 'jquery' );
 
 	if ( wp_is_mobile() ) {
-		wp_enqueue_script( 'jquery_mobile_touch', TB_FRAMEWORK_URI . '/assets/js/jquery.mobile.touch.min.js', array('jquery'), '1.4.5' );
+		wp_enqueue_script( 'jquery_mobile_touch', esc_url( TB_FRAMEWORK_URI . '/assets/js/jquery.mobile.touch.min.js' ), array('jquery'), '1.4.5' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 		$scripts[] = 'flexslider';
-		wp_enqueue_script( 'flexslider', TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js', array('jquery'), '2.1' );
+		wp_enqueue_script( 'flexslider', esc_url( TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js' ), array('jquery'), '2.1' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'nivo' ) ) { // Only enabled by default if TB Sliders plugin installed
 		$scripts[] = 'nivo';
-		wp_enqueue_script( 'nivo', TB_FRAMEWORK_URI . '/assets/js/nivo.min.js', array('jquery'), '3.2' );
+		wp_enqueue_script( 'nivo', esc_url( TB_FRAMEWORK_URI . '/assets/js/nivo.min.js' ), array('jquery'), '3.2' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
-		wp_enqueue_script( 'bootstrap', TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '3.3.5' );
+		wp_enqueue_script( 'bootstrap', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js' ), array('jquery'), '3.3.5' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
 		$scripts[] = 'magnific_popup';
-		wp_enqueue_script( 'magnific_popup', TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js', array('jquery'), '0.9.3' );
+		wp_enqueue_script( 'magnific_popup', esc_url( TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js' ), array('jquery'), '0.9.3' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {
 		$scripts[] = 'superfish';
-		wp_enqueue_script( 'hoverintent', TB_FRAMEWORK_URI . '/assets/js/hoverintent.min.js', array('jquery'), 'r7' );
-		wp_enqueue_script( 'superfish', TB_FRAMEWORK_URI . '/assets/js/superfish.min.js', array('jquery'), '1.7.4' );
+		wp_enqueue_script( 'hoverintent', esc_url( TB_FRAMEWORK_URI . '/assets/js/hoverintent.min.js' ), array('jquery'), 'r7' );
+		wp_enqueue_script( 'superfish', esc_url( TB_FRAMEWORK_URI . '/assets/js/superfish.min.js' ), array('jquery'), '1.7.4' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'easypiechart' ) ) {
 		$scripts[] = 'easypiechart';
-		wp_enqueue_script( 'easypiechart', TB_FRAMEWORK_URI . '/assets/js/easypiechart.min.js', array('jquery'), '2.1.5' );
+		wp_enqueue_script( 'easypiechart', esc_url( TB_FRAMEWORK_URI . '/assets/js/easypiechart.min.js' ), array('jquery'), '2.1.5' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'isotope' ) ) {
 		$scripts[] = 'isotope';
-		wp_enqueue_script( 'isotope', TB_FRAMEWORK_URI . '/assets/js/isotope.min.js', array('jquery'), '2.0.1' );
+		wp_enqueue_script( 'isotope', esc_url( TB_FRAMEWORK_URI . '/assets/js/isotope.min.js' ), array('jquery'), '2.0.1' );
 	}
 
 	if ( themeblvd_supports( 'assets', 'primary_js' ) ) {
 		$scripts[] = 'themeblvd';
-		wp_enqueue_script( 'themeblvd', TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd', esc_url( TB_FRAMEWORK_URI . '/assets/js/themeblvd.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 		// Localize primary themeblvd.js script. This allows us to pass any filterable
 		// parameters through to our primary script.
 		wp_localize_script( 'themeblvd', 'themeblvd', themeblvd_get_js_locals() );

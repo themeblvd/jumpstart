@@ -2369,7 +2369,7 @@ function themeblvd_get_base_path( $base ) {
  * @since 2.5.0
  */
 function themeblvd_get_base_uri( $base ) {
-	return apply_filters( 'themeblvd_base_uri', sprintf( '%s/base/%s', get_template_directory_uri(), $base ), $base ) ;
+	return esc_url( apply_filters( 'themeblvd_base_uri', sprintf( '%s/base/%s', get_template_directory_uri(), $base ), $base ) );
 }
 
 /**

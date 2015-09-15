@@ -176,7 +176,7 @@ class Theme_Blvd_Import {
 			$name = $theme->get('Name');
 
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'themeblvd-import', TB_FRAMEWORK_URI . '/admin/assets/js/import.js', array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_enqueue_script( 'themeblvd-import', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/import.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 
 			$locals = apply_filters('themeblvd_import_locals', array(
 				'header' 			=> sprintf(__("Import %s Demo #%s", 'themeblvd'), $name, $this->num),
@@ -399,7 +399,7 @@ class Theme_Blvd_Import {
 				$home = themeblvd_post_id_by_name( 'home', 'nav_menu_item' );
 
 				if ( $home ) {
-					update_post_meta( $home, '_menu_item_url', esc_url( home_url() ) );
+					update_post_meta( $home, '_menu_item_url', esc_url( home_url('/') ) );
 				}
 
 				break;

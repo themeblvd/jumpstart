@@ -1682,17 +1682,17 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 			switch ( $logo['type'] ) {
 
 				case 'title' :
-					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), esc_html( get_bloginfo('name') ) );
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', esc_url( themeblvd_get_home_url() ), esc_html( get_bloginfo('name') ) );
 					break;
 
 				case 'title_tagline' :
-					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), esc_html( get_bloginfo('name') ) );
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', esc_url( themeblvd_get_home_url() ), esc_html( get_bloginfo('name') ) );
 					$output .= sprintf( '<span class="tagline">%s</span>', esc_html( get_bloginfo('description') ) );
 					break;
 
 				case 'custom' :
 
-					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', themeblvd_get_home_url(), esc_attr( $logo['custom'] ) );
+					$output .= sprintf( '<h1 class="tb-text-logo"><a href="%1$s" title="%2$s">%2$s</a></h1>', esc_url( themeblvd_get_home_url() ), esc_attr( $logo['custom'] ) );
 
 					if ( $logo['custom_tagline'] ) {
 						$output .= sprintf( '<span class="tagline">%s</span>', themeblvd_kses( $logo['custom_tagline'] ) );
@@ -1701,8 +1701,8 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 
 				case 'image' :
 
-					$output .= sprintf('<a href="%s" title="%s" class="tb-image-logo">', themeblvd_get_home_url(), esc_html( get_bloginfo('name') ) );
-					$output .= sprintf( '<img src="%s" alt="%s" ', esc_url($logo['image']), esc_html( get_bloginfo('name') ) );
+					$output .= sprintf('<a href="%s" title="%s" class="tb-image-logo">', esc_url( themeblvd_get_home_url() ), esc_html( get_bloginfo('name') ) );
+					$output .= sprintf( '<img src="%s" alt="%s" ', esc_url( $logo['image'] ), esc_html( get_bloginfo('name') ) );
 
 					if ( ! empty( $logo['image_width'] ) ) {
 						$output .= sprintf( 'width="%s" ', esc_attr( $logo['image_width'] ) );

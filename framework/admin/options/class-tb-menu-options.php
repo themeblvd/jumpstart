@@ -65,8 +65,8 @@ class Theme_Blvd_Menu_Options {
 	 */
 	public function assets( $hook ) {
 		if ( $hook == 'nav-menus.php' ) {
-			wp_enqueue_style( 'themeblvd_menus', TB_FRAMEWORK_URI . '/admin/assets/css/menu.css', null, TB_FRAMEWORK_VERSION );
-			wp_enqueue_script( 'themeblvd_menus', TB_FRAMEWORK_URI . '/admin/assets/js/menu.js', array('jquery'), TB_FRAMEWORK_VERSION );
+			wp_enqueue_style( 'themeblvd_menus', esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/menu.css' ), null, TB_FRAMEWORK_VERSION );
+			wp_enqueue_script( 'themeblvd_menus', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/menu.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 		}
 	}
 

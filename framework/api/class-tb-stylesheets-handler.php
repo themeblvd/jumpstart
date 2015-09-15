@@ -378,7 +378,7 @@ class Theme_Blvd_Stylesheet_Handler {
 		// Enqueue framework stylesheets
 		if ( $this->framework_stylesheets ) {
 			foreach ( $this->framework_stylesheets as $style ) {
-				wp_enqueue_style( $style['handle'], $style['src'], $style['deps'], $style['ver'], $style['media'] );
+				wp_enqueue_style( $style['handle'], esc_url($style['src']), $style['deps'], $style['ver'], $style['media'] );
 			}
 		}
 
@@ -423,7 +423,7 @@ class Theme_Blvd_Stylesheet_Handler {
 			// Manually insert level 4 stylesheets
 			if ( $this->client_stylesheets[4] ) {
 				foreach ( $this->client_stylesheets[4] as $file ) {
-					printf( "<link rel='stylesheet' id='%s' href='%s' type='text/css' media='%s' />\n", $file['handle'], $file['src'], $file['media'] );
+					printf( "<link rel='stylesheet' id='%s' href='%s' type='text/css' media='%s' />\n", $file['handle'], esc_url($file['src']), $file['media'] );
 				}
 			}
 
@@ -432,7 +432,7 @@ class Theme_Blvd_Stylesheet_Handler {
 			// Use WordPress's enqueue system
 			if ( $this->client_stylesheets[$level] ) {
 				foreach ( $this->client_stylesheets[$level] as $file ) {
-					wp_enqueue_style( $file['handle'], $file['src'], array(), $file['ver'], $file['media'] );
+					wp_enqueue_style( $file['handle'], esc_url($file['src']), array(), $file['ver'], $file['media'] );
 				}
 			}
 

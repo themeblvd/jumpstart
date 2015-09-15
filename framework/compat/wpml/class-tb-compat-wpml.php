@@ -80,7 +80,7 @@ class Theme_Blvd_Compat_WPML {
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 		$deps = $handler->get_framework_deps();
 
-		wp_enqueue_style( 'themeblvd-wpml', TB_FRAMEWORK_URI.'/compat/wpml/wpml.css', $deps, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd-wpml', esc_url( TB_FRAMEWORK_URI . '/compat/wpml/wpml.css' ), $deps, TB_FRAMEWORK_VERSION );
 	}
 
 	/**

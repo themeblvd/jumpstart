@@ -45,10 +45,10 @@ class Theme_Blvd_Bases {
 	 * @since 2.5.0
 	 */
 	public function assets() {
-		wp_enqueue_style( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css', null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_style( 'themeblvd-admin-base', TB_FRAMEWORK_URI . '/admin/assets/css/base.css', null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_script( 'themeblvd_admin', TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js', array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_enqueue_script( 'hemeblvd-admin-base', TB_FRAMEWORK_URI . '/admin/assets/js/base.js', array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd_admin', esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css' ), null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style( 'themeblvd-admin-base', esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/base.css' ), null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'themeblvd_admin', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script( 'hemeblvd-admin-base', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/base.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 	}
 
 	/**
@@ -114,7 +114,7 @@ class Theme_Blvd_Bases {
 											<span><?php esc_html_e('Select Theme Base', 'themeblvd'); ?></span>
 										</a>
 									<?php endif; ?>
-									<img src="<?php echo themeblvd_get_base_uri($id); ?>/preview.png" />
+									<img src="<?php echo esc_url( themeblvd_get_base_uri($id) . '/preview.png' ); ?>" />
 								</div>
 								<div class="theme-base-info<?php if ( $current == $id ) echo ' wp-ui-highlight'; ?>">
 									<h3><?php echo $info['name']; ?></h3>

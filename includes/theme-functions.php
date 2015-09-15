@@ -85,29 +85,29 @@ function jumpstart_css() {
 
 	// Main theme styles
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme-rtl.min.css', $handler->get_framework_deps(), $ver );
+		wp_enqueue_style( 'jumpstart', esc_url( get_template_directory_uri() . '/assets/css/theme-rtl.min.css' ), $handler->get_framework_deps(), $ver );
 	} else {
-		wp_enqueue_style( 'jumpstart', get_template_directory_uri().'/assets/css/theme.min.css', $handler->get_framework_deps(), $ver );
+		wp_enqueue_style( 'jumpstart', esc_url( get_template_directory_uri() . '/assets/css/theme.min.css' ), $handler->get_framework_deps(), $ver );
 	}
 
 	// Dark styles
 	if ( themeblvd_supports('display', 'dark') ) {
-		wp_enqueue_style( 'jumpstart-dark', get_template_directory_uri().'/assets/css/dark.min.css', $handler->get_framework_deps(), $ver );
+		wp_enqueue_style( 'jumpstart-dark', esc_url( get_template_directory_uri() . '/assets/css/dark.min.css' ), $handler->get_framework_deps(), $ver );
 	}
 
 	// Theme base styles
 	$base = themeblvd_get_base();
 
 	if ( $base && $base != 'dev' ) {
-		wp_enqueue_style( 'jumpstart-base', themeblvd_get_base_uri($base).'/base.css', $handler->get_framework_deps(), $ver );
+		wp_enqueue_style( 'jumpstart-base', esc_url( themeblvd_get_base_uri($base) . '/base.css' ), $handler->get_framework_deps(), $ver );
 	}
 
 	// IE Stylesheet
-	wp_enqueue_style( 'themeblvd-ie', get_template_directory_uri() . '/assets/css/ie.css', array(), $ver );
+	wp_enqueue_style( 'themeblvd-ie', esc_url( get_template_directory_uri() . '/assets/css/ie.css' ), array(), $ver );
 	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'IE' ); // Add IE conditional
 
 	// Primary style.css (mainly for child theme devs)
-	wp_enqueue_style( 'themeblvd-theme', get_stylesheet_uri(), $handler->get_framework_deps(), $ver );
+	wp_enqueue_style( 'themeblvd-theme', esc_url( get_stylesheet_uri() ), $handler->get_framework_deps(), $ver );
 
 	// Level 3 client API-added styles
 	$handler->print_styles(3);
@@ -125,7 +125,7 @@ function jumpstart_scripts() {
 	global $themeblvd_framework_scripts;
 
 	// Theme-specific script
-	wp_enqueue_script( 'themeblvd_theme', get_template_directory_uri() . '/assets/js/theme.js', $themeblvd_framework_scripts, null, true );
+	wp_enqueue_script( 'themeblvd_theme', esc_url( get_template_directory_uri() . '/assets/js/theme.js' ), $themeblvd_framework_scripts, null, true );
 
 }
 add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );

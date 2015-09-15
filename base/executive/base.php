@@ -2213,9 +2213,9 @@ function jumpstart_ex_css() {
 		}
 
 		if ( $options['bg_type'] == 'glassy' ) {
-			$print .= sprintf("\tbackground-image: url(%s);\n", themeblvd_get_base_uri('superuser').'/images/menu-glassy.png');
+			$print .= sprintf("\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/images/menu-glassy.png' ) );
 		} else if ( $options['bg_type'] == 'textured' ) {
-			$print .= sprintf("\tbackground-image: url(%s);\n", themeblvd_get_base_uri('superuser').'/images/menu-textured.png');
+			$print .= sprintf("\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/images/menu-textured.png' ) );
 			$print .= "\tbackground-position: 0 0;\n";
 			$print .= "\tbackground-repeat: repeat;\n";
 			$print .= "\tbackground-size: 72px 56px;\n";
