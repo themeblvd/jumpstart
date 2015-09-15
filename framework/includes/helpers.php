@@ -1709,21 +1709,3 @@ function themeblvd_do_floating_search() {
 
 	return apply_filters('themeblvd_do_floating_search', $do);
 }
-
-/**
- * Get the full URL of the current page
- *
- * @since 2.5.0
- */
-function themeblvd_get_current_uri() {
-
-	global $_SERVER;
-
-	$url = '';
-
-	if ( isset($_SERVER['REQUEST_URI']) ) {
-		$url = esc_url( home_url($_SERVER['REQUEST_URI']) );
-	}
-
-	return apply_filters( 'themeblvd_get_current_uri', $url );
-}
