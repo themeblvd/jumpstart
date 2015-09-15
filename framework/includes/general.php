@@ -300,7 +300,7 @@ function themeblvd_supports( $group, $feature ) {
 function themeblvd_deprecated_function( $function, $version, $replacement = null, $message = null ) {
 	if ( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
 		if ( $message ) {
-			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd'), $function, $version, esc_html__($message) ) );
+			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! %3$s', 'themeblvd'), $function, $version, esc_html($message) ) );
 		} else if ( $replacement ) {
 			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'themeblvd'), $function, $version, $replacement ) );
 		} else {
