@@ -16,6 +16,7 @@ Jump Start Changelog
 * Fixed: Live changelog link in theme options footer not working.
 * Fixed: Blog and Post Showcase page templates not obeying WordPress page privacy settings.
 * Fixed: Negative horizontal margin overflow with "popout" columns element in Layout Builder.
+* Fixed: Mini post lists with hidden featured images not displaying correctly.
 * Improved: Security of outputted localized text strings.
 * Improved: Security of outputted data from various user-edited elements.
 * Improved: Security of outputted urls and enqueued scripts and stylesheets.

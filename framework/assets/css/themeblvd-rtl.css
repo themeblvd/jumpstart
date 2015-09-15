@@ -5598,6 +5598,12 @@ blockquote small {
 .tb-mini-post-list.thumb-date .content-wrapper {
 	right: 65px;
 }
+.tb-mini-post-list.thumb-hide .content-wrapper {
+	position: static;
+	-ms-transform: none; /* IE9 */
+	-webkit-transform: none;
+	transform: none;
+}
 .tb-mini-post-list .entry-title {
 	font-size: 14px;
 	line-height: 1.2;
