@@ -651,6 +651,10 @@ article.tb-naked-page > .featured-item {
 	font-size: 16px;
 	margin: 0 2px 10px 0;
 }
+.text-light .entry-meta,
+.text-light .entry-meta .fa {
+  color: #cccccc;
+}
 .entry-meta a {
 	color: inherit;
 }
