@@ -1685,7 +1685,6 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
  */
 function themeblvd_load_theme_textdomain() {
 	load_theme_textdomain( 'themeblvd', get_template_directory() . '/lang' );
-	load_theme_textdomain( 'themeblvd_frontend', get_template_directory() . '/lang' );
 }
 
 /**

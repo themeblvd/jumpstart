@@ -1276,11 +1276,11 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					'posts_per_page' 	=> -1
 				);
 			} else {
-				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'themeblvd_front'));
+				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'themeblvd'));
 			}
 
 		} else {
-			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'themeblvd_front'));
+			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'themeblvd'));
 		}
 
 	} else {
