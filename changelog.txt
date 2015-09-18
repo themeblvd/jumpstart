@@ -9,6 +9,9 @@ Jump Start Changelog
 * Improvement: Hero unit slider display on mobile.
 * Improvement: Allow percentages to work properly for image element display width in Layout Builder.
 * Improvement: JavaScript files moved to footer. [More Info](http://news.themeblvd.com/2015/09/15/frontend-scripts-moved-to-footer-in-framework-2-5-2-update/)
+* Improvement: Security of outputted localized text strings.
+* Improvement: Security of outputted data from various user-edited elements.
+* Improvement: Security of outputted urls and enqueued scripts and stylesheets.
 * Fixed: WooCommerce cart thumbnail sizing issue in Firefox.
 * Fixed: In executive base, standard header background elements were being outputted with Transparent header.
 * Fixed: Parallax background fallback not being horizontally centered in IE9.
@@ -17,11 +20,10 @@ Jump Start Changelog
 * Fixed: Blog and Post Showcase page templates not obeying WordPress page privacy settings.
 * Fixed: Negative horizontal margin overflow with "popout" columns element in Layout Builder.
 * Fixed: Mini post lists with hidden featured images not displaying correctly.
-* Improved: Security of outputted localized text strings.
-* Improved: Security of outputted data from various user-edited elements.
-* Improved: Security of outputted urls and enqueued scripts and stylesheets.
 * Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
+* Removed: The `themeblvd_frontend` text domain is gone; all strings localized under `themeblvd` text domain.
 * Updated TGMA plugin installer to 2.5.2.
+* Moved all import/export functionality to plugin: [Theme Blvd Importer](https://wordpress.org/plugins/theme-blvd-importer)
 
 --------------------------------------------------------------
 

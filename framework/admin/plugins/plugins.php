@@ -69,6 +69,11 @@ function themeblvd_tgm_register() {
 			'required'	=> false
 		),
 		*/
+		'importer' => array(
+			'name'		=> 'Theme Blvd Importer',
+			'slug'		=> 'theme-blvd-importer',
+			'required'	=> false
+		),
 		'portfolios' => array(
 			'name'		=> 'Portfolios',
 			'slug'		=> 'portfolios',

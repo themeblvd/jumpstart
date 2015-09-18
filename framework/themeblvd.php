@@ -56,12 +56,8 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-meta-box.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/meta.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-export.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-import.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-export-options.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-import-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-menu-options.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );
@@ -81,7 +77,6 @@ if ( is_admin() ) {
 	add_action( 'admin_init', 'themeblvd_update_version' );
 	add_action( 'admin_menu', 'themeblvd_hijack_page_atts' );
 	add_action( 'save_post', 'themeblvd_save_page_atts' );
-	add_action( 'after_setup_theme', 'themeblvd_import' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
 	add_action( 'admin_init', 'themeblvd_add_meta_boxes' );
