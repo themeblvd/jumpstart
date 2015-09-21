@@ -269,11 +269,9 @@ function themeblvd_get_icons( $type = 'vector' ) {
 
 		$icons = array();
 		$fetch_icons = array();
-		$file_location = TB_FRAMEWORK_DIRECTORY.'/assets/plugins/fontawesome/css/font-awesome.css';
+		$file = wp_remote_fopen( esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.css' ) );
 
-		if ( file_exists( $file_location ) ) {
-
-			$file = file_get_contents($file_location);
+		if ( $file ) {
 
 			// Run through each line of font-awesome.css, and
 			// look for anything that could resemble a font ID.
