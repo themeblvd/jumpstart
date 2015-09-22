@@ -833,7 +833,7 @@ function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 	// Wrapping markup
 	$wrap  = '<div class="pagination-wrap">';
 	$wrap .= '	<div class="pagination">';
-	$wrap .= '		<div class="btn-group clearfix">';
+	$wrap .= '		<div class="btn-group paginate_links clearfix">';
 	$wrap .= '			%s';
 	$wrap .= '		</div>';
 	$wrap .= '	</div>';
