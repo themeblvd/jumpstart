@@ -382,7 +382,7 @@ function setup_themeblvd_banner_meta() {
 			'text_color' => array(
 				'id'		=> 'text_color',
 				'name'		=> __('Text Color', 'themeblvd'),
-				'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'themeblvd_builder'),
+				'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'themeblvd'),
 				'std'		=> 'light',
 				'type'		=> 'select',
 				'options'	=> array(

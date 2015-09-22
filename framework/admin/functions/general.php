@@ -330,11 +330,11 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 	if ( $context == 'section' || $context == 'banner' || $context == 'jumbotron' ) {
 
 		if ( themeblvd_supports( 'featured', 'style' ) ) {
-			$types['featured'] = __('Theme\'s preset "Featured" area background', 'themeblvd_builder');
+			$types['featured'] = __('Theme\'s preset "Featured" area background', 'themeblvd');
 		}
 
 		if ( themeblvd_supports( 'featured_below', 'style' ) ) {
-			$types['featured_below'] = __('Theme\'s preset "Featured Below" area background', 'themeblvd_builder');
+			$types['featured_below'] = __('Theme\'s preset "Featured Below" area background', 'themeblvd');
 		}
 
 	}
