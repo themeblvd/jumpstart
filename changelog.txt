@@ -12,6 +12,7 @@ Jump Start Changelog
 * Improvement: Security of outputted localized text strings.
 * Improvement: Security of outputted data from various user-edited elements.
 * Improvement: Security of outputted urls and enqueued scripts and stylesheets.
+* Improvement: Filters for modifying sorting menu for post grids and post showcases.
 * Fixed: WooCommerce cart thumbnail sizing issue in Firefox.
 * Fixed: In executive base, standard header background elements were being outputted with Transparent header.
 * Fixed: Parallax background fallback not being horizontally centered in IE9.

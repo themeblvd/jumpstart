@@ -1819,6 +1819,8 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 
 		asort($terms);
 
+		$terms = apply_filters( 'themeblvd_filter_nav_terms', $terms, $posts, $tax, $args );
+
 		$output .= '<div class="tb-inline-menu tb-filter-nav">';
 		$output .= '<ul class="list-inline filter-menu">';
 		$output .= sprintf('<li class="active"><a href="#" data-filter=".iso-item" title="%1$s">%1$s</a></li>', themeblvd_get_local('all'));
@@ -1834,7 +1836,7 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 
 	wp_reset_postdata();
 
-	return apply_filters( 'themeblvd_filter_nav', $output );
+	return apply_filters( 'themeblvd_filter_nav', $output, $posts, $tax, $args );
 }
 
 /**
