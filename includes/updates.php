@@ -51,6 +51,7 @@ function jumpstart_updates() {
 	// Adjust args for EDD_SL_Theme_Updater class.
 	$args['license'] = $license_key;
 	$args['author'] = 'Theme Blvd';
+	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID);
 
 	// Run Updater.
 	$_tb_jumpstart_edd_updater = new EDD_SL_Theme_Updater( $args );

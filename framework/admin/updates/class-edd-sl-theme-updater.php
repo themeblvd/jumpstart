@@ -7,6 +7,7 @@ class EDD_SL_Theme_Updater {
 	private $license_key;
 	private $version;
 	private $author;
+	private $changelog_url;
 
 	function __construct( $args = array() ) {
 		$args = wp_parse_args( $args, array(
@@ -16,7 +17,8 @@ class EDD_SL_Theme_Updater {
 			'item_name' => '',
 			'license' => '',
 			'version' => '',
-			'author' => ''
+			'author' => '',
+			'changelog_url' => ''
 		) );
 		extract( $args );
 
@@ -27,6 +29,7 @@ class EDD_SL_Theme_Updater {
 		$this->author = $author;
 		$this->remote_api_url = $remote_api_url;
 		$this->response_key = $this->theme_slug . '-update-response';
+		$this->changelog_url = $changelog_url;
 
 		// DEBUG
 		// delete_transient( $this->theme_slug . '-update-response' );
@@ -35,7 +38,7 @@ class EDD_SL_Theme_Updater {
 		add_filter( 'delete_site_transient_update_themes', array( &$this, 'delete_theme_update_transient' ) );
 		add_action( 'load-update-core.php', array( &$this, 'delete_theme_update_transient' ) );
 		add_action( 'load-themes.php', array( &$this, 'delete_theme_update_transient' ) );
-		add_action( 'load-themes.php', array( &$this, 'load_themes_screen' ) );
+		// add_action( 'load-themes.php', array( &$this, 'load_themes_screen' ) );
 	}
 
 	function load_themes_screen() {
@@ -43,7 +46,7 @@ class EDD_SL_Theme_Updater {
 		add_action( 'admin_notices', array( &$this, 'update_nag' ) );
 	}
 
-	function update_nag() {
+	function update_nag() { // currently inactive
 		$theme = wp_get_theme( $this->theme_slug );
 
 		$api_response = get_transient( $this->response_key );
@@ -87,8 +90,8 @@ class EDD_SL_Theme_Updater {
 	function check_for_update() {
 
 		$theme = wp_get_theme( $this->theme_slug );
-
 		$update_data = get_transient( $this->response_key );
+
 		if ( false === $update_data ) {
 			$failed = false;
 
@@ -115,15 +118,27 @@ class EDD_SL_Theme_Updater {
 
 			// if the response failed, try again in 30 minutes
 			if ( $failed ) {
+
 				$data = new stdClass;
 				$data->new_version = $theme->get( 'Version' );
+
+				if ( $this->changelog_url ) {
+					$data->url = esc_url($this->changelog_url);
+				}
+
 				set_transient( $this->response_key, $data, strtotime( '+30 minutes' ) );
 				return false;
 			}
 
 			// if the status is 'ok', return the update arguments
 			if ( ! $failed ) {
+
+				if ( $this->changelog_url ) {
+					$update_data->url = esc_url($this->changelog_url);
+				}
+
 				$update_data->sections = maybe_unserialize( $update_data->sections );
+
 				set_transient( $this->response_key, $update_data, strtotime( '+12 hours' ) );
 			}
 		}
