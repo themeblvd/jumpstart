@@ -286,7 +286,7 @@ function themeblvd_get_icons( $type = 'vector' ) {
 				}
 			}
 
-			// Sort icons alphebetically
+			// Sort icons alphabetically
 			sort( $fetch_icons );
 
 			// Format array for use in options framework
