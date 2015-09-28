@@ -22,6 +22,7 @@ Jump Start Changelog
 * Fixed: Blog and Post Showcase page templates not obeying WordPress page privacy settings.
 * Fixed: Negative horizontal margin overflow with "popout" columns element in Layout Builder.
 * Fixed: Mini post lists with hidden featured images not displaying correctly.
+* Fixed: The `[blog]` shortcode display issues.
 * Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
 * Removed: The `themeblvd_frontend` text domain is gone; all strings localized under `themeblvd` text domain.
 * Updated TGMA plugin installer to 2.5.2.

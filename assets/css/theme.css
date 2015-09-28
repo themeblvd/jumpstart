@@ -605,11 +605,17 @@ article.single {
 }
 .loop-shortcode > .blog-wrap > article {
 	background: transparent;
+	border: none;
 	padding: 0;
 }
 .blog-wrap > article > .featured-item,
 article.single > .featured-item {
 	margin: -30px -30px 30px -30px;
+}
+.loop-shortcode > .blog-wrap > article > .featured-item {
+	margin-top: 0;
+	margin-right: 0;
+	margin-left: 0;
 }
 .blog-wrap > article > .entry-content > p:last-child {
 	margin-bottom: 0;
