@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.5.2**
+* New: Optional width and height scaling options for custom Google map marker images.
 * Improvement: Better handling of svg icons in IE9/10.
 * Improvement: Hero unit slider display on mobile.
 * Improvement: Allow percentages to work properly for image element display width in Layout Builder.

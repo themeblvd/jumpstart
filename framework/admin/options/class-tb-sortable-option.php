@@ -971,6 +971,18 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 				'std'		=> '',
 				'type'		=> 'upload',
 				'advanced'	=> true
+			),
+			array(
+				'id' 		=> 'width',
+				'name'		=> __('Custom Marker Image Width (optional)', 'themeblvd'),
+				'desc'		=> __('If you\'d like to scale your custom marker image, input a width in pixels. Ex: 50', 'themeblvd'),
+				'type'		=> 'text'
+			),
+			array(
+				'id' 		=> 'height',
+				'name'		=> __('Custom Marker Image Height (optional)', 'themeblvd'),
+				'desc'		=> __('If you\'d like to scale your custom marker image, input a height in pixels. Ex: 32', 'themeblvd'),
+				'type'		=> 'text'
 			)
 		);
 		return $options;

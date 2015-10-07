@@ -224,31 +224,48 @@ function themeblvd_get_map( $args ) {
         foreach ( $args['markers'] as $marker ) {
 
             $name = '';
+
             if ( ! empty( $marker['name'] ) ) {
                 $name = $marker['name'];
             }
 
             $lat = '0';
+
             if ( ! empty( $marker['geo']['lat'] ) ) {
                 $lat = $marker['geo']['lat'];
             }
 
             $long = '0';
+
             if ( ! empty( $marker['geo']['long'] ) ) {
                 $long = $marker['geo']['long'];
             }
 
             $info = '';
+
             if ( ! empty( $marker['info'] ) ) {
                 $info = $marker['info'];
             }
 
             $image = '';
+
             if ( ! empty( $marker['image']['src'] ) ) {
                 $image = $marker['image']['src'];
             }
 
-            $output .= sprintf('<div class="map-marker" data-name="%s" data-lat="%s" data-long="%s" data-image="%s">', esc_attr($name), esc_attr($lat), esc_attr($long), esc_url($image) );
+			$width = '';
+
+            if ( $image && ! empty( $marker['width'] ) ) {
+                $width = $marker['width'];
+            }
+
+			$height = '';
+
+            if ( $image && ! empty( $marker['height'] ) ) {
+                $height = $marker['height'];
+            }
+
+            $output .= sprintf('<div class="map-marker" data-name="%s" data-lat="%s" data-long="%s" data-image="%s" data-image-width="%s" data-image-height="%s">', esc_attr($name), esc_attr($lat), esc_attr($long), esc_url($image), esc_attr($width), esc_attr($height) );
             $output .= sprintf( '<div class="map-marker-info">%s</div>', themeblvd_get_content($info) );
             $output .= '</div><!-- .map-marker (end) -->';
         }

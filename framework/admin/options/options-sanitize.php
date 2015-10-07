@@ -1317,6 +1317,8 @@ function themeblvd_sanitize_locations( $input ) {
 			$output[$item_id]['geo'] = apply_filters( 'themeblvd_sanitize_geo', $item['geo'] );
 			$output[$item_id]['info'] = apply_filters( 'themeblvd_sanitize_textarea', $item['info'] );
 			$output[$item_id]['image'] = apply_filters( 'themeblvd_sanitize_upload', $item['image'] );
+			$output[$item_id]['width'] = apply_filters( 'themeblvd_sanitize_text', $item['width'] );
+			$output[$item_id]['height'] = apply_filters( 'themeblvd_sanitize_text', $item['height'] );
 		}
 	}
 

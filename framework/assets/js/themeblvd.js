@@ -980,13 +980,24 @@ jQuery(document).ready(function($) {
 		        // Markers
 		        $map.find('.map-marker').each(function(){
 
-		        	var $marker = $(this);
+		        	var $marker = $(this),
+						img = {};
+
+					if ( $marker.data('image') ) {
+
+						img.url = $marker.data('image');
+
+						if ( $marker.data('image-width') && $marker.data('image-height') ) {
+							img.scaledSize = new google.maps.Size( parseInt( $marker.data('image-width') ), parseInt( $marker.data('image-height') ) );
+						}
+
+					}
 
 			        var marker = new google.maps.Marker({
 			            position: new google.maps.LatLng( $marker.data('lat'), $marker.data('long') ),
 			            map: map,
 			            title: $marker.data('name'),
-			            icon: $marker.data('image'),
+			            icon: img,
 			            animation: google.maps.Animation.DROP
 			        });
 
