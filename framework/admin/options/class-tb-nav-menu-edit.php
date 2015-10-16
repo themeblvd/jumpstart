@@ -19,6 +19,11 @@ class Theme_Blvd_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 
 		// Options to add
 		ob_start();
+
+		/**
+		 * Nav Menu Roles compat
+		 */
+		do_action( 'wp_nav_menu_item_custom_fields', $item->ID, $item, $depth, $args );
 		?>
 		<p class="tb-field-link-mega description">
 			<label for="edit-menu-item-mega-<?php echo $item->ID; ?>">
