@@ -290,7 +290,7 @@ function setup_themeblvd_banner_meta() {
 			'bg_video' => array(
 				'id'		=> 'bg_video',
 				'name'		=> __('Background Video', 'themeblvd'),
-				'desc'		=> sprintf(__('Setup a background video. For best results, make sure to use all three fields. The %s file will display in Google Chrome, while the %s will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'), '<code>.webm</em>', '<em>.mp4</em>'),
+				'desc'		=> sprintf(__('Setup a background video. For best results, make sure to use all three fields. The %s file will display in Google Chrome, while the %s will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'), '<em>.webm</em>', '<em>.mp4</em>'),
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),
