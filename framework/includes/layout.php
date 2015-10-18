@@ -1234,3 +1234,22 @@ function themeblvd_get_jumbotron_slider( $args ) {
 function themeblvd_jumbotron_slider( $args ) {
     echo themeblvd_get_jumbotron_slider( $args );
 }
+
+/**
+ * If a page with custom layout has a banner above
+ * content applied, bump the section start count from
+ * 1 to 2. This way, the banner essentially becomes
+ * the first section of the layout.
+ *
+ * @since 2.5.2
+ *
+ * @param int $count Number to start section count at, equal to 1 by default
+ */
+function themeblvd_builder_section_start_count( $count ) {
+
+	if ( themeblvd_config('banner') ) {
+		$count = 2;
+	}
+
+	return $count;
+}

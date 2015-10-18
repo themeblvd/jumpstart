@@ -134,6 +134,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'themeblvd_column_class', 'themeblvd_column_class_legacy' );
 	add_filter( 'walker_nav_menu_start_el', 'themeblvd_nav_menu_start_el', 10, 4 );
 	add_filter( 'nav_menu_css_class', 'themeblvd_nav_menu_css_class', 10, 4 );
+	add_filter( 'themeblvd_builder_section_start_count', 'themeblvd_builder_section_start_count' );
 
 	// Post Formats (if using)
 	add_filter( 'the_content', 'themeblvd_content_format_audio', 7 );
