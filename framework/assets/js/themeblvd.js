@@ -981,11 +981,13 @@ jQuery(document).ready(function($) {
 		        $map.find('.map-marker').each(function(){
 
 		        	var $marker = $(this),
-						img = {};
+						img = null;
 
 					if ( $marker.data('image') ) {
 
-						img.url = $marker.data('image');
+						img = {
+							url: $marker.data('image')
+						};
 
 						if ( $marker.data('image-width') && $marker.data('image-height') ) {
 							img.scaledSize = new google.maps.Size( parseInt( $marker.data('image-width') ), parseInt( $marker.data('image-height') ) );
