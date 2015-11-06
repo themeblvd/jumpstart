@@ -817,6 +817,9 @@ img.size-full {
 }
 
 /* Sticky Menu */
+.site-header.has-sticky.tb-parallax {
+	overflow: auto; /* Fix for when parallax header BG is selected */
+}
 .has-sticky.visible .tb-sticky-menu {
 	top: -48px;
 	-webkit-box-shadow: none;
