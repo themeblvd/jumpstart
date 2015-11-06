@@ -8,6 +8,7 @@ Jump Start Changelog
 * Fixed: Banner Meta box display issue on Edit Page screen in admin.
 * Fixed: Top padding issues when combining a transparent header, page banner and custom layout all on the same page.
 * Fixed: Javascript error when no custom image specified for Google map marker.
+* Fixed: Modal window not working with `[popup]` shortcode.
 
 --------------------------------------------------------------
 
