@@ -476,6 +476,11 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 		$text = sprintf('<i class="fa fa-%s before"></i>%s', $icon_before, $text);
 	}
 
+	// Make sure there's a default target
+	if ( ! $target ) {
+		$target = '_self';
+	}
+
 	// Add icon after text?
 	if ( $icon_after ) {
 		$text .= sprintf('<i class="fa fa-%s after"></i>', $icon_after);
