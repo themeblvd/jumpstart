@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.0.3 - XX/XX/XXXX
+2.0.3 - 11/10/2015
 ------------------
 
 * New: Added compatibility for [Nav Menu Roles](https://wordpress.org/plugins/nav-menu-roles) plugin.
