@@ -1661,7 +1661,7 @@ function themeblvd_do_fa( $str ) {
 		}
 	}
 
-	return themeblvd_kses($str);
+	return $str;
 }
 
 /**
