@@ -324,7 +324,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
 	// Wrap title in link if there's a URL.
 	if ( $url ) {
-		$title = sprintf('<a href="%s" title="%s" target="%s">%s</a>', esc_url($url), esc_attr( the_title_attribute('echo=0') ), $target, esc_html($title) );
+		$title = sprintf('<a href="%s" title="%s" target="%s">%s</a>', esc_url($url), esc_attr( the_title_attribute('echo=0') ), $target, themeblvd_kses($title) );
 	}
 
 	return apply_filters( 'themeblvd_the_title', $title, $url );
