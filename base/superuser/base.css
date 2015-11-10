@@ -58,6 +58,14 @@ Author URI: http://www.themeblvd.com
 	text-align: center;
 }
 
+/* BG parallax */
+.site-header.tb-parallax {
+	overflow: visible;
+}
+.site-header.tb-parallax .parallax-figure {
+	overflow: hidden;
+}
+
 /* BG shade */
 .site-header.has-bg-shade > .wrap > .bg-shade {
 	position: absolute;

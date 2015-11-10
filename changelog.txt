@@ -4,6 +4,8 @@ Jump Start Changelog
 2.0.4 - XX/XX/XXXX
 ------------------
 
+* Fixed: Dropdown menus not displaying when adding a parallax background image to site header from theme options.
+
 --------------------------------------------------------------
 
 2.0.3 - 11/10/2015
