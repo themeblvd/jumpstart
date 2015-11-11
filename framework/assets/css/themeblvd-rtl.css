@@ -5481,6 +5481,9 @@ blockquote small {
 	bottom: 0;
 	right: 0;
 	text-align: right;
+	-ms-transform: none;
+	-webkit-transform: none;
+	transform: none;
 	width: 40%;
 }
 .tb-post-slider.style-2.dark-text .carousel-caption {
