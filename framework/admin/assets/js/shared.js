@@ -269,9 +269,9 @@
 
 						var $el = $(this)
 							val = $el.find('.of-background-repeat').val(),
-							scroll = $el.find('.of-background-attachment').val();
+							scrolling = $el.find('.of-background-attachment').val();
 
-					    if ( val == 'no-repeat' && scroll != 'parallax' ) {
+					    if ( val == 'no-repeat' && scrolling != 'parallax' ) {
 					        $el.find('.of-background-size').closest('.tb-fancy-select').show();
 					    } else {
 					        $el.find('.of-background-size').closest('.tb-fancy-select').hide();
@@ -748,9 +748,9 @@
 					$this.on( 'change', '.of-background-properties .of-background-repeat', function(){
 
 						var $el = $(this).closest('.of-background-properties'),
-							scroll = $el.find('.of-background-attachment').val();
+							scrolling = $el.find('.of-background-attachment').val();
 
-						if ( $(this).val() == 'no-repeat' && scroll != 'parallax' ) {
+						if ( $(this).val() == 'no-repeat' && scrolling != 'parallax' ) {
 							$el.find('.of-background-size').closest('.tb-fancy-select').show();
 						} else {
 							$el.find('.of-background-size').closest('.tb-fancy-select').hide();
