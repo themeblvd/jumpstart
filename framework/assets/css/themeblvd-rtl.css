@@ -6082,13 +6082,15 @@ blockquote small {
 	left: -10px;
 	z-index: 2;
 }
-.jumbotron-outer.has-bg-shade .jumbotron-wrap {
+.jumbotron-outer.has-bg-shade .jumbotron-wrap,
+.jumbotron-outer.has-bg-video .jumbotron-wrap {
 	position: relative;
 	z-index: 3;
 }
 @media (min-width: 992px) and (min-height: 500px) {
 	/* @noflip */
 	.height-100vh .jumbotron-wrap,
+	.jumbotron-outer.has-bg-video.height-100vh .jumbotron-wrap,
 	.jumbotron-outer.has-bg-shade.height-100vh .jumbotron-wrap {
 		position: absolute;
 		top: 50%;

@@ -7,6 +7,7 @@ Jump Start Changelog
 * Fixed: Dropdown menus not displaying when adding a parallax background image to site header from theme options.
 * Fixed: Post slider style #2 captions not displaying correctly.
 * Fixed: Javascript conflicts with JetPack on Edit Page/Post screens.
+* Fixed: Hero unit text not displaying above background video.
 
 --------------------------------------------------------------
 
