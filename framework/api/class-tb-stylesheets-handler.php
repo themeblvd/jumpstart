@@ -172,10 +172,15 @@ class Theme_Blvd_Stylesheet_Handler {
 				'media'		=> 'all'
 			);
 
-			// @TODO
-			// if ( is_rtl() ) {
-			// 	$this->framework_stylesheets['themeblvd_grid']['src'] = TB_FRAMEWORK_URI.'/assets/css/grid-extended-rtl.min.css';  // Generated with CSSJanus
-			// }
+			if ( is_rtl() ) {
+				$this->framework_stylesheets['themeblvd_grid_rtl'] = array(
+					'handle'	=> 'themeblvd_grid_rtl',
+					'src'		=> TB_FRAMEWORK_URI.'/assets/css/grid-rtl.min.css',
+					'deps'		=> array(),
+					'ver'		=> TB_FRAMEWORK_VERSION,
+					'media'		=> 'all'
+				);
+			}
 
 			$this->framework_stylesheets['themeblvd'] = array(
 				'handle'	=> 'themeblvd',

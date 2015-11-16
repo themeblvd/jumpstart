@@ -208,17 +208,18 @@ function themeblvd_gcd( $a, $b ) {
     $a = abs($a);
     $b = abs($b);
 
-    if( $a < $b) {
-    	list( $b, $a ) = array( $a, $b );
+    if ( $a < $b ) {
+    	list($b, $a) = array($a, $b);
     }
 
-    if( $b == 0) {
+    if ( $b == 0) {
     	return $a;
 
     }
 
     $r = $a % $b;
-    while ( $r > 0 ) {
+
+	while ( $r > 0 ) {
         $a = $b;
         $b = $r;
         $r = $a % $b;
@@ -247,7 +248,7 @@ function themeblvd_get_open_row( $args = array() ) {
 		$output .= sprintf( '<div class="%s">', $args['wrap'] );
 	}
 
-	$output .= sprintf( '<div class="%s"', $args['class'] );
+	$output .= sprintf( '<div class="%s row-inner"', $args['class'] );
 
 	if ( $args['style'] ) {
 		$output .= sprintf(' style="%s"', $args['style']);

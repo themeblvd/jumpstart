@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.4 - XX/XX/XXXX
 ------------------
 
+* Improvement: Better RTL support for inner columns, from column shortcode and columns layout builder element.
 * Fixed: Dropdown menus not displaying when adding a parallax background image to site header from theme options.
 * Fixed: Post slider style #2 captions not displaying correctly.
 * Fixed: Javascript conflicts with JetPack on Edit Page/Post screens.
