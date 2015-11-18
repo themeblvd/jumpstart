@@ -1616,7 +1616,8 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
 
 	if ( $terms ) {
 		foreach ( $terms as $term ) {
-			$value .= sprintf('filter-%s ', $term->slug);
+			$slug = esc_attr( preg_replace('/[^a-zA-Z0-9._\-]/', '', $term->slug ) ); // Allow non-latin characters, and still work with jQuery
+			$value .= sprintf('filter-%s ', $slug);
 		}
 	}
 

@@ -1831,7 +1831,8 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 		$output .= sprintf('<li class="active"><a href="#" data-filter=".iso-item" title="%1$s">%1$s</a></li>', themeblvd_get_local('all'));
 
 		foreach ( $terms as $key => $value ) {
-			$output .= sprintf('<li><a href="#" data-filter=".filter-%1$s" title="%2$s">%2$s</a></li>', esc_attr($key), esc_html($value));
+			$key = esc_attr( preg_replace('/[^a-zA-Z0-9._\-]/', '', $key ) ); // Allow non-latin characters, and still work with jQuery
+			$output .= sprintf('<li><a href="#" data-filter=".filter-%1$s" title="%2$s">%2$s</a></li>', $key, esc_html($value));
 		}
 
 		$output .= '</ul>';
