@@ -1305,10 +1305,10 @@ body.admin-bar .tb-sticky-menu {
 }
 .tb-side-menu .sub-menu li li {
 	padding-left: 15px;
-	background-position: -10px 5px;
+	background-position: -10px -35px;
 }
 .rtl .tb-side-menu .sub-menu li li {
-	background-position: calc(100% - 10px) 5px;
+	background-position: calc(100% - 10px) -35px;
 }
 .tb-side-menu .sub-menu li li.menu-item-has-children {
 	background-position: -10px -35px;
