@@ -17,6 +17,9 @@
 	width: 34px;
 	text-align: center;
 }
+.wp-admin.rtl #themeblvd_options_page .postbox > .section-toggle {
+	float: left;
+}
 #themeblvd_options_page .postbox > .section-toggle:hover,
 #themeblvd_options_page .postbox > .section-toggle:focus {
 	color: #5a5a5a;
@@ -47,6 +50,9 @@
 	float: left;
 	margin: 0;
 }
+.wp-admin.rtl #themeblvd_options_page .tb-presets li {
+	float: right;
+}
 #themeblvd_options_page .tb-presets li a {
 	border: 1px solid #dddddd;
 	display: block;
@@ -54,6 +60,9 @@
 	line-height: 1;
 	margin: 2px 4px 2px 0;
 	padding: 5px 7px;
+}
+.wp-admin.rtl #themeblvd_options_page .tb-presets li a {
+	margin: 2px 0 2px 4px;
 }
 #themeblvd_options_page .tb-presets.has-images li a {
 	padding: 2px;
@@ -74,10 +83,18 @@
 	top: 0;
 	right: 20px;
 }
+.wp-admin.rtl #themeblvd_options_page .footer-sync-wrap {
+	right: inherit;
+	left: 20px;
+}
 #themeblvd_options_page .footer-sync-wrap label,
 #themeblvd_options_page .footer-sync-wrap input.checkbox {
 	clear: none;
 	float: right;
+}
+.wp-admin.rtl #themeblvd_options_page .footer-sync-wrap label,
+.wp-admin.rtl #themeblvd_options_page .footer-sync-wrap input.checkbox {
+	float: left;
 }
 #themeblvd_options_page .footer-sync-wrap label {
 	color: #888888;
@@ -171,12 +188,20 @@
 	width: 54%;
 	padding-right: 2%;
 }
+.wp-admin.rtl #optionsframework .section .controls {
+	float: right;
+	padding-right: 0;
+	padding-left: 2%;
+}
 #optionsframework .section .explain {
 	color: #666666;
 	float: left;
 	font-size: inherit;
 	line-height: 18px;
 	max-width: 38%;
+}
+.wp-admin.rtl #optionsframework .section .explain {
+	float: right;
 }
 #optionsframework .section .explain p {
 	margin: 0;
@@ -195,6 +220,7 @@
 #optionsframework .section-checkbox .controls {
 	min-width: 25px;
 	padding-right: 0;
+	padding-left: 0; /* rtl */
 	width: 25px;
 }
 #optionsframework .section-checkbox .explain {
@@ -229,6 +255,10 @@
 	display: block;
 	max-width: 330px;
 }
+.wp-admin.rtl #optionsframework .section-radio label,
+.wp-admin.rtl #optionsframework .section-multicheck label {
+	float: right;
+}
 #optionsframework input.checkbox,
 #optionsframework input.of-radio {
 	float: left;
@@ -236,6 +266,10 @@
 	margin-top: 0;
 	vertical-align: middle;
 	width: auto;
+}
+.wp-admin.rtl #optionsframework input.checkbox,
+.wp-admin.rtl #optionsframework input.of-radio {
+	float: right;
 }
 #optionsframework .section-multicheck label,
 #optionsframework .section-multicheck input.checkbox {
@@ -246,6 +280,9 @@
 	width: 80px !important;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+.wp-admin.rtl #optionsframework .controls .of-color {
+	float: right;
 }
 #optionsframework .of-background-properties {
 	clear: both;
@@ -258,6 +295,9 @@
 	float: left;
 	margin: 0 5px 10px 0;
 }
+.wp-admin.rtl #optionsframework .controls .of-radio-img-img {
+	float: right;
+}
 #optionsframework .controls .of-radio-img-selected {
 	border: 3px solid #ccc;
 }
@@ -268,9 +308,15 @@
 	width: 80px;
 	float: left;
 }
+.wp-admin.rtl #optionsframework .controls .of-border-width {
+	float: right;
+}
 #optionsframework .controls .of-border-style {
 	width: 120px;
 	float: left;
+}
+.wp-admin.rtl #optionsframework .controls .of-border-style {
+	float: right;
 }
 #optionsframework .hide {
 	display: none;
@@ -297,6 +343,11 @@
 	/* width: 125px; */
 	margin-right: 5px;
 	float: left;
+}
+.wp-admin.rtl #optionsframework .controls .of-background-repeat,
+.wp-admin.rtl #optionsframework .controls .of-background-position,
+.wp-admin.rtl #optionsframework .controls .of-background-attachment {
+	float: right;
 }
 #optionsframework .tb-footer-text {
 	background-color: #f8f8f8;
@@ -327,11 +378,15 @@
 	width: 73%;
 }
 #optionsframework .controls input.upload-button,
-#optionsframework .controls input.remove-file  {
+#optionsframework .controls input.remove-file {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	float: right;
 	width: 25%;
+}
+.wp-admin.rtl #optionsframework .controls input.upload-button,
+.wp-admin.rtl #optionsframework .controls input.remove-file {
+	float: left;
 }
 #optionsframework .screenshot {
 	float: left;
@@ -339,6 +394,11 @@
 	position: relative;
 	width: 344px;
 	margin-top: 3px;
+}
+.wp-admin.rtl #optionsframework .screenshot {
+	float: right;
+	margin-left: 0;
+	margin-right: 1px;
 }
 #optionsframework .screenshot img {
 	background: #FAFAFA;
@@ -349,6 +409,9 @@
 	border-style: solid;
 	border-width: 1px;
 	padding: 4px;
+}
+.wp-admin.rtl #optionsframework .screenshot img {
+	float: right;
 }
 #optionsframework .screenshot .remove-image {
 	background-image: none;
@@ -365,6 +428,11 @@
 	width: 24px;
 	height: 24px;
 }
+.wp-admin.rtl #optionsframework .screenshot .remove-image {
+	float: right;
+	left: inherit;
+	right: -10px;
+}
 #optionsframework .screenshot .remove-image:hover {
 	color: #ff4000;
 }
@@ -378,6 +446,10 @@
 #optionsframework .screenshot .no_image .file_link {
 	margin-left: 20px;
 }
+.wp-admin.rtl #optionsframework .screenshot .no_image .file_link {
+	margin-left: 0;
+	margin-right: 20px;
+}
 #optionsframework .screenshot .no_image .remove-image {
 	bottom: 0;
 }
@@ -385,6 +457,9 @@
 	margin-right: 10px;
 	float: left;
 	cursor: pointer;
+}
+.wp-admin.rtl #optionsframework .reset-button {
+	float: right;
 }
 
 /* Logo */
@@ -400,11 +475,21 @@
 	float: left;
 	width: 50%;
 }
+.wp-admin.rtl #optionsframework .section-logo .logo-width,
+.wp-admin.rtl #optionsframework .section-logo .logo-height {
+	float: right;
+}
 #optionsframework .section-logo .logo-width {
 	padding: 0 1px 5px 0;
 }
+.wp-admin.rtl #optionsframework .section-logo .logo-width {
+	padding: 0 0 5px 1px;
+}
 #optionsframework .section-logo .logo-height {
 	padding: 0 0 5px 1px;
+}
+.wp-admin.rtl #optionsframework .section-logo .logo-height {
+	padding: 0 1px 5px 0;
 }
 #optionsframework .section-logo .logo-label {
 	color: #999999;
@@ -421,17 +506,18 @@
 	margin-bottom: 5px;
 	width: 100%;
 }
-#optionsframework .section-logo .screenshot {
+#optionsframework .section-logo .screenshot,
+.wp-admin.rtl #optionsframework .section-logo .screenshot {
 	float: none;
 	margin-top: 15px;
 }
-#optionsframework .section-logo .screenshot img {
+#optionsframework .section-logo .screenshot img,
+.wp-admin.rtl #optionsframework .section-logo .screenshot img {
 	float: none;
 }
 #optionsframework .section-upload .section-upload {
 	background: #ffffff;
 	border: 1px solid #dfdfdf;
-	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	margin: 0 0 10px 0;
@@ -443,12 +529,19 @@
 #optionsframework .section-gradient .color-end {
 	float: left;
 }
+.wp-admin.rtl #optionsframework .section-gradient .color-start,
+.wp-admin.rtl #optionsframework .section-gradient .color-end {
+	float: right;
+}
 #optionsframework .section-gradient .color-label {
 	color: #999999;
 	display: block;
 	font-size: 11px;
 	font-style: italic;
 	margin: 0 0 10px 2px;
+}
+.wp-admin.rtl #optionsframework .section-gradient .color-label {
+	margin: 0 2px 10px 0;
 }
 #optionsframework .section-gradient .iris-picker {
 	margin-bottom: 10px;
@@ -464,12 +557,21 @@
 	box-sizing: border-box;
 	float: left;
 }
+.wp-admin.rtl #optionsframework .section-geo .geo-lat,
+.wp-admin.rtl #optionsframework .section-geo .geo-long,
+.wp-admin.rtl #optionsframework .section-geo .geo-button {
+	float: right;
+}
 #optionsframework .section-geo .geo-lat,
 #optionsframework .section-geo .geo-long {
 	width: 48%;
 }
 #optionsframework .section-geo .geo-lat {
 	margin-right: 2%;
+}
+.wp-admin.rtl #optionsframework .section-geo .geo-lat {
+	margin-right: 0;
+	margin-left: 2%;
 }
 #optionsframework .section-geo .geo-label {
 	color: #999999;
@@ -478,13 +580,19 @@
 	font-style: italic;
 	margin-left: 5px;
 }
+.wp-admin.rtl #optionsframework .section-geo .geo-label {
+	margin-left: 0;
+	margin-right: 5px;
+}
 #optionsframework .section-geo .controls .geo-input {
 	margin: 0 0 5px 2px;
+}
+.wp-admin.rtl #optionsframework .section-geo .controls .geo-input {
+	margin: 0 2px 5px 0;
 }
 #optionsframework .section-geo .geo-generate {
 	background: #ffffff;
 	border: 1px solid #dddddd;
-	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	padding: 10px;
@@ -518,10 +626,17 @@
 	margin: 1px 2% 5px 0;
 	width: 75%;
 }
+.wp-admin.rtl #optionsframework .section-geo .geo-generate input {
+	float: right;
+	margin: 1px 0 5px 2%;
+}
 #optionsframework .section-geo .geo-generate .geo-insert-lat-long {
 	float: left;
 	text-align: center;
 	width: 23%;
+}
+.wp-admin.rtl #optionsframework .section-geo .geo-generate .geo-insert-lat-long {
+	float: right;
 }
 #optionsframework .section-geo .geo-generate .note {
 	margin: 0;
@@ -541,12 +656,19 @@
 	padding-right: 0;
 	width: 25px;
 }
+.wp-admin.rtl #optionsframework .section-button .include-controls {
+	float: right;
+	padding-left: 0;
+}
 #optionsframework .section-button .include-explain {
 	color: #666;
 	float: left;
 	font-size: inherit;
 	line-height: 18px;
 	max-width: 93%;
+}
+.wp-admin.rtl #optionsframework .section-button .include-explain {
+	float: right;
 }
 
 /* Modal Window */
@@ -568,11 +690,18 @@
 	min-width: 0;
 	text-align: left;
 }
+.wp-admin.rtl .tb-modal-advanced-image .media-sidebar .setting span {
+	text-align: right;
+}
 .tb-modal-advanced-image .media-sidebar .setting input,
 .tb-modal-advanced-image .media-sidebar .setting select {
 	float: left;
 	max-width: 100%;
 	width: 80%;
+}
+.wp-admin.rtl .tb-modal-advanced-image .media-sidebar .setting input,
+.wp-admin.rtl .tb-modal-advanced-image .media-sidebar .setting select {
+	float: right;
 }
 .themeblvd-modal-wrap .media-frame .wp-color-result {
 	border: 1px solid #cccccc;
@@ -660,6 +789,12 @@
 	line-height: 24px;
 	margin-left: 2px;
 }
+.wp-admin.rtl #optionsframework .section-textarea .editor-nav a,
+.wp-admin.rtl #optionsframework .section-content .editor-nav a {
+	float: left;
+	margin-left: 0;
+	margin-right: 2px;
+}
 #optionsframework .section-textarea .editor-nav a:hover,
 #optionsframework .section-content .editor-nav a:hover {
 	color: #000000;
@@ -675,6 +810,11 @@
 	position: absolute;
 	top: 6px;
 	right: 4px;
+}
+.wp-admin.rtl #optionsframework .section-text .tb-input-icon-link,
+.wp-admin.rtl #optionsframework .section-text .tb-input-post-id-link {
+	right: inherit;
+	left: 4px;
 }
 #optionsframework .section-text .tb-input-post-id-link {
 	top: 8px;
@@ -698,12 +838,14 @@
 #optionsframework .button-primary {
 	float: right;
 }
+.wp-admin.rtl #optionsframework .button-primary {
+	float: left;
+}
 
 /* Google Font (addon to typography) */
 #optionsframework .google-font {
 	background: #ffffff;
 	border: 1px solid #dddddd;
-	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	padding: 10px;
@@ -726,7 +868,6 @@
 #optionsframework .tb-fancy-select {
 	background: #ffffff;
 	background-size: 7px 32px;
-	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 0 #ffffff, 0 1px 0 rgba(0, 0, 0, .08);
@@ -735,7 +876,7 @@
 	position: relative;
 	height: 33px;
 }
-#optionsframework .tb-fancy-select select  {
+#optionsframework .tb-fancy-select select {
 	margin: 0;
 	padding: 0;
 	filter: alpha(opacity=0);
@@ -746,9 +887,8 @@
 	height: 33px;
 	z-index: 3;
 }
-#optionsframework .tb-fancy-select .textbox  {
+#optionsframework .tb-fancy-select .textbox {
 	border: 1px solid #dfdfdf;
-	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	color: #666666;
@@ -763,14 +903,12 @@
 	left: 0;
 	z-index: 1;
 }
-#optionsframework .tb-fancy-select .trigger  {
+#optionsframework .tb-fancy-select .trigger {
 	background: url(../../assets/images/fancy-select-trigger_2x.png) no-repeat;
 	background-size: 25px 33px;
 	border-left: 1px solid #dfdfdf;
 	-webkit-border-top-right-radius: 3px;
 	-webkit-border-bottom-right-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	-moz-border-radius-bottomright: 3px;
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 	position: absolute;
@@ -779,6 +917,20 @@
 	width: 25px;
 	height: 31px; /* .textbox's height -2px so it's border displays */
 	z-index: 2;
+}
+.wp-admin.rtl #optionsframework .tb-fancy-select .trigger {
+	border-left: none;
+	border-right: 1px solid #dfdfdf;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	right: inherit;
+	left: 1px;
 }
 
 /* Condensed Fancy Select */
@@ -800,10 +952,8 @@
 
 /* Simple Fancy Select */
 #optionsframework .tb-fancy-select.simple {
-	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
-	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	height: 26px;
@@ -813,13 +963,11 @@
 }
 #optionsframework .tb-fancy-select.simple .trigger {
 	background-position: 0 -4px;
-	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
 	height: 25px;
 }
 #optionsframework .tb-fancy-select.simple .textbox {
-	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
 	font-size: 12px;
@@ -867,6 +1015,9 @@
 /* jQuery UI slider */
 #optionsframework .jquery-ui-slider-wrap {
 	padding: 20px 12px 0 0;
+}
+.wp-admin.rtl #optionsframework .jquery-ui-slider-wrap {
+	padding: 20px 0 0 12px;
 }
 #optionsframework .jquery-ui-slider {
 	border: 1px solid #ddd;
@@ -931,6 +1082,10 @@
 	margin-right: 3%;
 	width: 47%;
 }
+.wp-admin.rtl #optionsframework .section-columns .select-wrap {
+	margin-right: 0;
+	margin-left: 3%;
+}
 #optionsframework .section-columns .inactive {
 	margin: 5px 0 0;
 }
@@ -960,6 +1115,10 @@
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+.wp-admin.rtl #optionsframework .section-column_widths .select-grid-system {
+	right: inherit;
+	left: 0;
 }
 #optionsframework .section-column_widths .select-grid-system .textbox {
 	border-top: none;
@@ -1009,11 +1168,17 @@
 	top: 0;
 	z-index: 1;
 }
+.wp-admin.rtl #optionsframework .section-column_widths .grid-display .grid-column {
+	border-right: none;
+	border-left: 1px dashed #dddddd;
+}
 #optionsframework .section-column_widths .grid-display .grid-column:last-child {
 	border-right: none;
 }
+.wp-admin.rtl #optionsframework .section-column_widths .grid-display .grid-column:last-child {
+	border-left: none;
+}
 #optionsframework .section-column_widths p.explain {
-	text-align: center;
 	color: #888;
 	font-style: italic;
 	font-size: 12px;
@@ -1032,12 +1197,20 @@
 #optionsframework .section-sortable .add-item {
 	float: left;
 }
+.wp-admin.rtl #optionsframework .section-sortable .add-item {
+	float: right;
+}
 #optionsframework .section-sortable .max {
 	color: #888;
 	float: left;
 	font-size: 11px;
 	margin-top: 5px;
 	margin-left: 10px;
+}
+.wp-admin.rtl #optionsframework .section-sortable .max {
+	float: right;
+	margin-left: 0;
+	margin-right: 10px;
 }
 #optionsframework .section-sortable .delete-sortable-items {
 	font-size: 16px;
@@ -1046,6 +1219,10 @@
 	position: absolute;
 	right: 5px;
 	top: 10px;
+}
+.wp-admin.rtl #optionsframework .section-sortable .delete-sortable-items {
+	right: inherit;
+	left: 5px;
 }
 #optionsframework .section-sortable .delete-sortable-items:hover {
 	color: #f12323;
@@ -1059,7 +1236,6 @@
 	border: 1px solid #dfdfdf;
 	color: #464646;
 	cursor: move;
-	-moz-box-shadow: inset 0 1px 0 white;
 	-webkit-box-shadow: inset 0 1px 0 white;
 	box-shadow: inset 0 1px 0 white;
 	text-shadow: white 0 1px 0;
@@ -1072,18 +1248,24 @@
 	border: none;
 	cursor: move;
 	font-size: 13px;
-	padding: 0 10px 0 22px;
 	height: 32px; /* Fix for if <h3> happens to be empty */
 	line-height: 32px;
 	margin: 0;
 	overflow: hidden;
 	padding: 0 10px 0 22px;
 }
+.wp-admin.rtl #optionsframework .tb-sortable-option .item-handle h3 {
+	padding: 0 22px 0 10px;
+}
 #optionsframework .tb-sortable-option .item-handle .tb-icon-sort {
 	font-size: 14px;
 	position: absolute;
 	top: 9px;
 	left: 2px;
+}
+.wp-admin.rtl #optionsframework .tb-sortable-option .item-handle .tb-icon-sort {
+	left: inherit;
+	right: 2px;
 }
 #optionsframework .tb-sortable-option .item-handle a.toggle {
 	position: absolute;
@@ -1096,6 +1278,10 @@
 	text-align: center;
 	width: 30px;
 	height: 32px;
+}
+.wp-admin.rtl #optionsframework .tb-sortable-option .item-handle a.toggle {
+	right: inherit;
+	left: 0;
 }
 #optionsframework .tb-sortable-option .item-handle a.toggle:hover {
 	color: #000000;
@@ -1161,6 +1347,11 @@
 	top: 5px;
 	left: 25px;
 }
+.wp-admin.rtl #optionsframework .section-slider .tb-sortable-option .item-handle .preview,
+.wp-admin.rtl #optionsframework .section-logos .tb-sortable-option .item-handle .preview {
+	left: inherit;
+	right: 25px;
+}
 #optionsframework .section-slider .tb-sortable-option .item-handle,
 #optionsframework .section-logos .tb-sortable-option .item-handle {
 	background-color: #ffffff;
@@ -1171,7 +1362,6 @@
 	background-image: -ms-linear-gradient(top, #ffffff, #f7f7f7);
 	background-image: linear-gradient(top, #ffffff, #f7f7f7);
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ffffff', EndColorStr='#f7f7f7');
-	-moz-box-shadow: inset 0 -1px 0 #ffffff;
 	-webkit-box-shadow: inset 0 -1px 0 #ffffff;
 	box-shadow: inset inset 0 -1px 0 #ffffff;
 }
@@ -1183,9 +1373,14 @@
 }
 #optionsframework .section-slider .tb-sortable-option .item-handle h3,
 #optionsframework .section-logos .tb-sortable-option .item-handle h3 {
+	height: 60px;
 	line-height: 60px;
 	padding-left: 84px;
-	height: 60px;
+}
+#optionsframework .section-slider .tb-sortable-option .item-handle h3,
+#optionsframework .section-logos .tb-sortable-option .item-handle h3 {
+	padding-left: 0;
+	padding-right: 84px;
 }
 #optionsframework .section-slider .tb-sortable-option .item-handle .tb-icon-sort,
 #optionsframework .section-logos .tb-sortable-option .item-handle .tb-icon-sort {
@@ -1211,6 +1406,20 @@
 #optionsframework .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
 	right: -2px;
 }
+.wp-admin.rtl #optionsframework .full-width .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-bars .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-datasets .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-locations .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-price_cols .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-sectors .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-tabs .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-testimonials .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-text_blocks .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
+	right: inherit;
+	left: -2px;
+}
 #optionsframework #builder .full-width .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework #builder .section-bars .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework #builder .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
@@ -1223,6 +1432,20 @@
 #optionsframework #builder .section-text_blocks .tb-sortable-option .item-handle.closed a.toggle,
 #optionsframework #builder .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
 	right: 0;
+}
+.wp-admin.rtl #optionsframework #builder .full-width .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-bars .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-buttons .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-datasets .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-locations .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-price_cols .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-sectors .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-tabs .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-testimonials .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-text_blocks .tb-sortable-option .item-handle.closed a.toggle,
+.wp-admin.rtl #optionsframework #builder .section-toggles .tb-sortable-option .item-handle.closed a.toggle {
+	right: inherit;
+	left: 0;
 }
 #optionsframework .full-width > .option > .controls,
 #optionsframework .section-bars > .option > .controls,
@@ -1241,6 +1464,19 @@
 	padding: 0;
 	width: auto;
 }
+.wp-admin.rtl #optionsframework .full-width > .option > .controls,
+.wp-admin.rtl #optionsframework .section-bars > .option > .controls,
+.wp-admin.rtl #optionsframework .section-buttons > .option > .controls,
+.wp-admin.rtl #optionsframework .section-datasets > .option > .controls,
+.wp-admin.rtl #optionsframework .section-locations > .option > .controls,
+.wp-admin.rtl #optionsframework .section-price_cols > .option > .controls,
+.wp-admin.rtl #optionsframework .section-sectors > .option > .controls,
+.wp-admin.rtl #optionsframework .section-tabs > .option > .controls,
+.wp-admin.rtl #optionsframework .section-testimonials > .option > .controls,
+.wp-admin.rtl #optionsframework .section-text_blocks > .option > .controls,
+.wp-admin.rtl #optionsframework .section-toggles > .option > .controls {
+	float: none;
+}
 #optionsframework .full-width > .option > .explain,
 #optionsframework .section-bars > .option > .explain,
 #optionsframework .section-buttons > .option > .explain,
@@ -1255,6 +1491,19 @@
 	float: none;
 	max-width: none;
 	margin-top: 5px;
+}
+.wp-admin.rtl #optionsframework .full-width > .option > .explain,
+.wp-admin.rtl #optionsframework .section-bars > .option > .explain,
+.wp-admin.rtl #optionsframework .section-buttons > .option > .explain,
+.wp-admin.rtl #optionsframework .section-datasets > .option > .explain,
+.wp-admin.rtl #optionsframework .section-locations > .option > .explain,
+.wp-admin.rtl #optionsframework .section-price_cols > .option > .explain,
+.wp-admin.rtl #optionsframework .section-sectors > .option > .explain,
+.wp-admin.rtl #optionsframework .section-tabs > .option > .explain,
+.wp-admin.rtl #optionsframework .section-testimonials > .option > .explain,
+.wp-admin.rtl #optionsframework .section-text_blocks > .option > .explain,
+.wp-admin.rtl #optionsframework .section-toggles > .option > .explain {
+	float: none;
 }
 #optionsframework .full-width .tb-sortable-option textarea,
 #optionsframework .section-bars .tb-sortable-option textarea,
