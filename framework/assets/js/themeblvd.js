@@ -491,10 +491,26 @@ jQuery(document).ready(function($) {
 					$container.find('.tb-filter-nav').fadeIn(400);
 
 					$container.find('.filter-menu > li > a').on('click', function(){
-						var $link = $(this);
+
+						var $link = $(this),
+							select = $link.data('filter');
+
 						$container.find('.filter-menu > li').removeClass('active');
 						$link.closest('li').addClass('active');
-						$iso.isotope({ filter: $(this).data('filter') });
+						$iso.isotope({ filter: select });
+
+						$link.closest('.tb-filter').find('.grid-item').each(function(){
+
+							var $el = $(this);
+
+							if ( $el.is(select) ) {
+								$el.find('a.lightbox-gallery-item').addClass('visible');
+							} else {
+								$el.find('a.lightbox-gallery-item').removeClass('visible');
+							}
+
+						});
+
 						return false;
 					});
 				}
@@ -621,7 +637,7 @@ jQuery(document).ready(function($) {
 					css_class += ' image';
 
 					if ( themeblvd.magnific_popup == 'true' ) {
-						css_class += ' lightbox-gallery-item mfp-image image-button';
+						css_class += ' lightbox-gallery-item mfp-image image-button visible';
 					}
 
 				} else {
@@ -655,12 +671,12 @@ jQuery(document).ready(function($) {
 		$('.themeblvd-gallery').each(function() {
 
 			$(this).find('.themeblvd-lightbox').each(function(){
-				$(this).removeClass('themeblvd-lightbox').addClass('lightbox-gallery-item');
+				$(this).removeClass('themeblvd-lightbox').addClass('lightbox-gallery-item visible');
 			});
 
 			$(this).magnificPopup({
 				disableOn: themeblvd.lightbox_mobile_gallery,
-				delegate: 'a.lightbox-gallery-item',
+				delegate: 'a.lightbox-gallery-item.visible',
 				gallery: { enabled: true },
 				image: {
 					cursor: null,
