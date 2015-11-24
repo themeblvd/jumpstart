@@ -1712,8 +1712,20 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 						$output .= sprintf( 'height="%s" ', esc_attr( $logo['image_height'] ) );
 					}
 
-					if ( ! empty( $logo['image_2x'] ) ) {
-						$output .= sprintf( 'data-image-2x="%s" ', esc_url( $logo['image_2x'] ) );
+					$srcset = '';
+
+					if ( ! empty( $logo['image'] ) && ! empty( $logo['image_2x'] ) ) {
+						$srcset .= sprintf( '%s 1x, %s 2x', $logo['image'], $logo['image_2x'] );
+					}
+
+					if ( $srcset = apply_filters('themeblvd_logo_srcset', $srcset, $logo) ) {
+						$output .= sprintf( 'srcset="%s" ', $srcset );
+					}
+
+					$sizes = '';
+
+					if ( $sizes = apply_filters('themeblvd_logo_sizes', $sizes, $logo) ) {
+						$output .= sprintf( 'sizes="%s" ', $sizes );
 					}
 
 					$output .= '/></a>';

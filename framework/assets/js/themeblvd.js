@@ -74,29 +74,6 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
-	// Logo w/retina display support
-	// ---------------------------------------------------------
-
-	if ( themeblvd.retina_logo == 'true' ) {
-
-		// If a retina-otimized image was detected
-		// and should be displayed
-		if ( window.devicePixelRatio >= 1.5 ) {
-			$('.tb-image-logo').each(function(){
-
-				var $logo = $(this).find('img'),
-					img_2x = $logo.data('image-2x');
-
-				if (img_2x) {
-					$logo.attr('src', img_2x);
-				}
-
-			});
-		}
-
-	}
-
-	// ---------------------------------------------------------
 	// Menus
 	// ---------------------------------------------------------
 

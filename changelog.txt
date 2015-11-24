@@ -7,7 +7,8 @@ Jump Start Changelog
 * Improvement: Some frontend RTL fixes and improvements.
 * Improvement: Admin RTL fixes and improvements.
 * Improvement: Frontend post grid/showcase filtering now also effects navigating items in corresponding lightbox gallery.
-* Improvement: Minor comment form styling adjustments for changes in WordPress 4.4.
+* Improvement: Minor comment form styling adjustments for changes in WordPress 4.4+.
+* Improvement: Now using `srcset` for HiDPI/Retina logo with no javascript, to match practices of WordPress 4.4+.
 * Fixed: Dropdown menus not displaying when adding a parallax background image to site header from theme options.
 * Fixed: Post slider style #2 captions not displaying correctly.
 * Fixed: Javascript conflicts with JetPack on Edit Page/Post screens.
