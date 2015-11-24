@@ -698,17 +698,16 @@ endif;
  * @return array $args Arguments to be passed into wp_list_comments()
  */
 function themeblvd_get_comment_list_args() {
-	$args = array(
+	return apply_filters( 'themeblvd_comment_list', array(
 		'avatar_size' 		=> 60,
 		'style' 			=> 'ul',
 		'type' 				=> 'all',
-		'reply_text' 		=> themeblvd_get_local( 'reply' ),
-		'login_text' 		=> themeblvd_get_local( 'login_text' ),
+		'reply_text' 		=> themeblvd_get_local('reply'),
+		'login_text' 		=> themeblvd_get_local('login_text'),
 		'callback' 			=> null,
 		'reverse_top_level' => null,
 		'reverse_children' 	=> false
-	);
-	return apply_filters( 'themeblvd_comment_list', $args );
+	));
 }
 
 /**
@@ -719,18 +718,13 @@ function themeblvd_get_comment_list_args() {
  * @return array $args Arguments to be passed into comment_form()
  */
 function themeblvd_get_comment_form_args() {
-	$commenter = wp_get_current_commenter();
-	$req = get_option( 'require_name_email' );
-	$aria_req = ( $req ? " aria-required='true'" : '' );
-	$args = array(
+	return apply_filters( 'themeblvd_comment_form', array(
 		'comment_field'			=> '<p class="comment-form-comment"><label for="comment">'.themeblvd_get_local('comment').'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
-		'title_reply'			=> themeblvd_get_local( 'title_reply' ),
-		'title_reply_to'		=> themeblvd_get_local( 'title_reply_to' ),
-		'cancel_reply_link'		=> themeblvd_get_local( 'cancel_reply_link' ),
-		'label_submit'			=> themeblvd_get_local( 'label_submit' ),
-		'comment_notes_after'	=> '<p class="form-allowed-tags">' . sprintf( themeblvd_get_local('comments_notes_after'), '</p><code class="block">' . allowed_tags() . '</code>' ) . '</p>'
-	);
-	return apply_filters( 'themeblvd_comment_form', $args, $commenter, $req, $aria_req );
+		'title_reply'			=> themeblvd_get_local('title_reply'),
+		'title_reply_to'		=> themeblvd_get_local('title_reply_to'),
+		'cancel_reply_link'		=> themeblvd_get_local('cancel_reply_link'),
+		'label_submit'			=> themeblvd_get_local('label_submit')
+	));
 }
 
 /**

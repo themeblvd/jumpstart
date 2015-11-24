@@ -887,8 +887,8 @@ article.tb-naked-page > .featured-item {
 		width: 100%;
 	}
 }
-#respond .form-allowed-tags {
-	margin-bottom: 5px;
+#respond .comment-form-comment textarea {
+	margin: 0;
 }
 
 /* Comment Form (in reply) */
