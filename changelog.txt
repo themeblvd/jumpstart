@@ -13,6 +13,7 @@ Jump Start Changelog
 * Fixed: Post slider style #2 captions not displaying correctly.
 * Fixed: Javascript conflicts with JetPack on Edit Page/Post screens.
 * Fixed: Hero unit text not displaying above background video.
+* Fixed: WPML-translated pages not allowing to save a unique, translated custom layout.
 
 --------------------------------------------------------------
 
