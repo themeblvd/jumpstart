@@ -55,6 +55,7 @@
  *   10.5 - Mobile Menu (override .tb-side-menu)
  *   10.6 - Videos (oEmbed)
  *   10.7 - Self-hosted video embed
+ *   10.8 - WP Post Embed
  * 11.0 - Video/Audio
  *   11.1 - WP Built-in audio/video player
  * 12.0 - Plugins
@@ -1595,6 +1596,11 @@ body.mobile-menu-left-on #wrapper {
 }
 .wp-video video {
 	height: 100%;
+}
+
+/* WP Post Embed */
+.wp-embedded-content {
+	width: 100%;
 }
 
 /* =Video/Audio

@@ -578,15 +578,22 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 }
 
 /**
- * Add wrapper around embedded videos to allow for respnsive videos.
+ * Add wrapper around embedded videos to
+ * allow for responsive videos.
  *
  * @since 2.0.0
  */
-function themeblvd_oembed_result( $input, $url ) {
+function themeblvd_oembed_result( $html, $url ) {
 
-	// If this is a tweet, keep on movin' fella. @todo Create filterable list of items to skip other than twitter.com
-	if ( strpos( $url, 'twitter.com' ) ) {
-		return $input;
+	// If this is a tweet, keep on movin' fella.
+	if ( strpos($url, 'twitter.com') !== false ) {
+		return $html;
+	}
+
+	// If this is a link to external WP post
+	// (introduced in WP 4.4), abort.
+	if ( strpos($html, 'wp-embedded-content') !== false ) {
+		return $html;
 	}
 
 	// Since the framework applies this filter in two
@@ -595,25 +602,18 @@ function themeblvd_oembed_result( $input, $url ) {
 	// because WP has issues with caching the oembed
 	// result, and oembed_result doesn't always get
 	// applied when it's supposed to.
-	if ( strpos( $input, 'themeblvd-video-wrapper' ) ) {
-		return $input;
+	if ( strpos($html, 'themeblvd-video-wrapper') !== false ) {
+		return $html;
 	}
 
 	// Apply YouTube wmode fix
-	if ( strpos( $url, 'youtube' ) || strpos( $url, 'youtu.be' ) ) {
-		if ( ! strpos( $input, 'wmode=transparent' ) ) {
-			$input = str_replace('feature=oembed', 'feature=oembed&wmode=transparent', $input);
+	if ( strpos($url, 'youtube') !== false || strpos($url, 'youtu.be') !== false ) {
+		if ( strpos($html, 'wmode=transparent') === false ) {
+			$html = str_replace('feature=oembed', 'feature=oembed&wmode=transparent', $html);
 		}
 	}
 
-	// Wrap output
-	$output  = '<div class="themeblvd-video-wrapper">';
-	$output .= '<div class="video-inner">';
-	$output .= $input;
-	$output .= '</div>';
-	$output .= '</div>';
-
-	return $output;
+	return sprintf('<div class="themeblvd-video-wrapper"><div class="video-inner">%s</div></div>', $html);
 }
 
 /**
