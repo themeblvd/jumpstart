@@ -447,10 +447,15 @@ jQuery(document).ready(function($) {
 		$('.tb-isotope').each(function(){
 
 			var $container = $(this),
-				mode = 'fitRows';
+				mode = 'fitRows',
+				origin_left = true;
 
 			if ( $container.hasClass('tb-masonry') ) {
 				mode = 'masonry';
+			}
+
+			if ( $body.hasClass('rtl') ) {
+				origin_left = false;
 			}
 
 			$container.find('.post-wrap > .row').fadeIn(400, function(){
@@ -458,7 +463,8 @@ jQuery(document).ready(function($) {
 				var $iso = $container.find('.post-wrap > .row').isotope({
 					layoutMode: mode,
 					itemSelector: '.iso-item',
-					filter: '*'
+					filter: '*',
+					isOriginLeft: origin_left
 				});
 
 				$container.find('.tb-loader').fadeOut(100);
