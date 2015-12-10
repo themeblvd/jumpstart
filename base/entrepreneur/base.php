@@ -2235,7 +2235,9 @@ function jumpstart_ent_header_top() {
 	}
 
 	if ( $display['bg_type'] == 'video' && ! empty($display['bg_video']) ) {
+		echo '<div class="header-video">';
 		themeblvd_bg_video( $display['bg_video'] );
+		echo '</div><!-- .header-video (end) -->';
 	}
 
 	if ( $display['bg_type'] == 'slideshow' && ! empty($display['bg_slideshow']) ) {
