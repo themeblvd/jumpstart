@@ -1,17 +1,18 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jump Start\n"
+"Project-Id-Version: Jump Start 2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-14 16:24-1000\n"
-"PO-Revision-Date: 2015-10-14 16:24-1000\n"
+"POT-Creation-Date: 2015-12-11 11:33-1000\n"
+"PO-Revision-Date: 2015-12-11 11:33-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e;_n_noop;_n\n"
+"X-Poedit-KeywordsList: __;_e;_n;_n_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: \n"
 
 #: ../base/entrepreneur/base.php:30
 #: ../base/executive/base.php:30
@@ -5549,67 +5550,67 @@ msgstr ""
 msgid "Linkedin"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1471
+#: ../framework/includes/helpers.php:1465
 msgid "year"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1472
+#: ../framework/includes/helpers.php:1466
 msgid "years"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1473
+#: ../framework/includes/helpers.php:1467
 msgid "month"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1474
+#: ../framework/includes/helpers.php:1468
 msgid "months"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1475
+#: ../framework/includes/helpers.php:1469
 msgid "week"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1476
+#: ../framework/includes/helpers.php:1470
 msgid "weeks"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1477
+#: ../framework/includes/helpers.php:1471
 msgid "day"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1478
+#: ../framework/includes/helpers.php:1472
 msgid "days"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1479
+#: ../framework/includes/helpers.php:1473
 msgid "hour"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1480
+#: ../framework/includes/helpers.php:1474
 msgid "hours"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1481
+#: ../framework/includes/helpers.php:1475
 msgid "minute"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1482
+#: ../framework/includes/helpers.php:1476
 msgid "minutes"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1483
+#: ../framework/includes/helpers.php:1477
 msgid "second"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1484
+#: ../framework/includes/helpers.php:1478
 msgid "seconds"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1485
+#: ../framework/includes/helpers.php:1479
 msgid "ago"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1486
+#: ../framework/includes/helpers.php:1480
 msgid "sometime"
 msgstr ""
 

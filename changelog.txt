@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.0.4 - XX/XX/XXXX
+2.0.4 - 12/11/2015
 ------------------
 
 * Improvement: Some frontend RTL fixes and improvements.
