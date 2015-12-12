@@ -4,6 +4,8 @@ Jump Start Changelog
 2.0.5 - XX/XX/XXXX
 ------------------
 
+* Fixed: "Custom CSS" option code editor on theme options page not working with RTL.
+
 --------------------------------------------------------------
 
 2.0.4 - 12/11/2015
