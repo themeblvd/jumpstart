@@ -4,6 +4,7 @@ Jump Start Changelog
 2.0.5 - XX/XX/XXXX
 ------------------
 
+* Updated: FontAwesome to 4.5.
 * Fixed: "Custom CSS" option code editor on theme options page not working with RTL.
 
 --------------------------------------------------------------
