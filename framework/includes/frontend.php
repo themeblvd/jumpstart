@@ -386,7 +386,7 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 		$scripts[] = 'flexslider';
-		wp_enqueue_script( 'flexslider', esc_url( TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js' ), array('jquery'), '2.1', $in_footer );
+		wp_enqueue_script( 'flexslider', esc_url( TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js' ), array('jquery'), '2.6.0', $in_footer );
 	}
 
 	if ( themeblvd_supports( 'assets', 'nivo' ) ) { // Only enabled by default if TB Sliders plugin installed

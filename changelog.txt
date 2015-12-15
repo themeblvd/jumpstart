@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * Updated: FontAwesome to 4.5.
+* Updated: FlexSlider to 2.6.
 * Fixed: "Custom CSS" option code editor on theme options page not working with RTL.
 
 --------------------------------------------------------------
