@@ -1381,8 +1381,8 @@
 	line-height: 60px;
 	padding-left: 84px;
 }
-#optionsframework .section-slider .tb-sortable-option .item-handle h3,
-#optionsframework .section-logos .tb-sortable-option .item-handle h3 {
+.wp-admin.rtl #optionsframework .section-slider .tb-sortable-option .item-handle h3,
+.wp-admin.rtl #optionsframework .section-logos .tb-sortable-option .item-handle h3 {
 	padding-left: 0;
 	padding-right: 84px;
 }
