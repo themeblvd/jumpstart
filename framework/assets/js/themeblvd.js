@@ -206,7 +206,7 @@ jQuery(document).ready(function($) {
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
 
 		if ( themeblvd.sticky_logo ) {
-			$sticky.find('.header_logo_image img').attr('src', themeblvd.sticky_logo).removeAttr('width height');
+			$sticky.find('.header_logo_image img').attr('src', themeblvd.sticky_logo).removeAttr('width height srcset');
 		}
 
 		// Add nav menu

@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Updated: FontAwesome to 4.5.
 * Updated: FlexSlider to 2.6.
+* Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
 * Fixed: "Custom CSS" option code editor on theme options page not working with RTL.
 
 --------------------------------------------------------------
