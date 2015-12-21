@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.0.5 - XX/XX/XXXX
+2.1.0 - XX/XX/XXXX
 ------------------
 
 * Updated: FontAwesome to 4.5.
