@@ -858,9 +858,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'background_video':
 
-                // mp4 video
+                // Video
                 $output .= '<div class="section-upload">';
-                $output .= '<p><strong>'.esc_html__('Video (mp4)', 'themeblvd').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video URL', 'themeblvd').'</strong></p>';
 
                 $video_url = '';
 
@@ -874,26 +874,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
                     'id'            => $value['id'],
                     'value'         => $video_url,
                     'name'          => 'mp4'
-                ));
-
-                $output .= '</div><!-- .section-upload (end) -->';
-
-                // webM video
-                $output .= '<div class="section-upload">';
-                $output .= '<p><strong>'.esc_html__('Video (webM)', 'themeblvd').'</strong></p>';
-
-                $video_url = '';
-
-                if ( ! empty( $val['webm'] ) ) {
-                    $video_url = $val['webm'];
-                }
-
-                $output .= themeblvd_media_uploader(array(
-                    'option_name'   => $option_name,
-                    'type'          => 'video',
-                    'id'            => $value['id'],
-                    'value'         => $video_url,
-                    'name'          => 'webm'
                 ));
 
                 $output .= '</div><!-- .section-upload (end) -->';
@@ -917,6 +897,18 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
                 ));
 
                 $output .= '</div><!-- .section-upload (end) -->';
+
+                // Aspect ratio
+                $output .= '<p><strong>'.esc_html__('Video Aspect Ratio', 'themeblvd').'</strong></p>';
+
+                $ratio = '16:9';
+
+                if ( ! empty( $val['ratio'] ) ) {
+                    $ratio = $val['ratio'];
+                }
+
+                $output .= sprintf( '<input id="%s_ratio" name="%s" type="text" value="%s" class="of-input" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][ratio]'), esc_attr($ratio) );
+
 
                 break;
 

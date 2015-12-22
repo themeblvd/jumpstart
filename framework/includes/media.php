@@ -608,8 +608,8 @@ function themeblvd_oembed_result( $html, $url ) {
 
 	// Apply YouTube wmode fix
 	if ( strpos($url, 'youtube') !== false || strpos($url, 'youtu.be') !== false ) {
-		if ( strpos($html, 'wmode=transparent') === false ) {
-			$html = str_replace('feature=oembed', 'feature=oembed&wmode=transparent', $html);
+		if ( strpos($html, 'wmode=opaque') === false ) {
+			$html = str_replace('feature=oembed', 'feature=oembed&wmode=opaque', $html);
 		}
 	}
 
@@ -1919,49 +1919,192 @@ function themeblvd_bg_parallax( $display ) {
 function themeblvd_get_bg_video( $video ) {
 
 	$video = apply_filters('themeblvd_video_args', wp_parse_args( $video, array(
-		'mp4'		=> '',
-		'webm'		=> '',
-		'fallback'	=> '',
-		'autoplay' 	=> true,
-		'loop'		=> true,
-		'controls'	=> false,
-		'width'		=> false,
-		'height'	=> false
+		'id'		=> uniqid( 'video_'.rand() ),
+		'mp4'		=> '',		// .mp4, .ogg, .webm, vimeo url, or youtube url
+		'ratio'		=> '16:9',
+		'fallback'	=> ''
 	)));
 
-	$output = "\t<video class=\"tb-bg-video\"";
+	$source = themeblvd_get_video_source( $video['mp4'] );
 
-	if ( $video['autoplay'] ) {
-		$output .= " autoplay";
+	$output  = sprintf("\n<div class=\"tb-bg-video %s\" data-ratio=\"%s\">", $source, $video['ratio']);
+	$output .= "\n\t<div class=\"no-click\"></div>";
+
+	switch ( $source ) {
+
+		case 'html5' :
+
+			wp_enqueue_script('wp-mediaelement');
+
+			preg_match("!^(.+?)(?:\.([^.]+))?$!", $video['mp4'], $path_split);
+
+			$output .= sprintf("\n\t<video id=\"%s\" controls", $video['id']);
+
+			if ( $video['fallback'] && themeblvd_is_200($video['fallback']) ) {
+				$output .= sprintf(" poster=\"%s\"", $video['fallback']);
+			}
+
+			$output .= ">\n";
+
+			$types = apply_filters('themeblvd_html5_video_types', array(
+				'webm'	=> 'type="video/webm"',
+				'mp4'	=> 'type="video/mp4"',
+				'ogv'	=> 'type="video/ogg"'
+			));
+
+			foreach ( $types as $key => $type ) {
+				if ( $path_split[2] == $key || themeblvd_is_200($path_split[1].'.'.$key) ) {
+					$output .= sprintf("\t\t<source src=\"%s.%s\" %s />\n", $path_split[1], $key, $type);
+				}
+			}
+
+			$output .= "\t</video>\n";
+
+			break;
+
+		case 'youtube' :
+
+			$explode_at = strpos($video['mp4'], 'youtu.be/') !== false ? "/" : "v=";
+			$yt_id = explode($explode_at, trim($video['mp4']));
+			$yt_id = end($yt_id);
+
+			if ( $yt_id ) {
+
+				$args = apply_filters('themeblvd_youtube_bg_args', array(
+					'vid'				=> $yt_id,
+					'autoplay'			=> 0, // will play video through API after it's loaded
+					'loop'				=> 1,
+					'hd'				=> 1,
+					'controls'			=> 0,
+					'showinfo'			=> 0,
+					'modestbranding'	=> 1,
+					'iv_load_policy'	=> 3,
+					'rel'				=> 0,
+					'version'			=> 3,
+					'enablejsapi'		=> 1,
+					'wmode'				=> 'opaque',
+					'playlist'			=> $yt_id
+				));
+
+				$output .= sprintf("\n\t<div id=\"%s\" class=\"video\"", $video['id']);
+
+				foreach ( $args as $key => $val ) {
+					$output .= sprintf(' data-%s="%s"', $key, $val);
+				}
+
+				$output .= "></div>\n";
+			}
+
+			break;
+
+		case 'vimeo' :
+
+			wp_enqueue_script('froogaloop');
+
+			$v_id = explode('/', trim($video['mp4']));
+			$v_id = end($v_id);
+
+			$v_url = add_query_arg( apply_filters('themeblvd_vimeo_bg_args',array(
+				'portrait' 		=> 0,
+				'byline'		=> 0,
+				'title'			=> 0,
+				'badge'			=> 0,
+				'loop'			=> 1,
+				'autopause'		=> 0,
+				'api'			=> 1,
+				'rel'			=> 0,
+				'player_id'		=> $video['id'],
+				'background'	=> 1
+			)), 'https://player.vimeo.com/video/'.$v_id );
+
+			$output .= sprintf("\n\t<iframe id=\"%s\" src=\"%s\" height=\"1600\" width=\"900\" frameborder=\"\" class=\"video\"></iframe>\n", $video['id'], $v_url);
+
+			break;
+
 	}
 
-	if ( $video['loop'] ) {
-		$output .= " loop";
+	$output .= "</div><!-- .tb-bg-video (end) -->\n";
+
+	return $output;
+
+	// ... @TODO
+
+	if ( $video['source'] == 'youtube' ) {
+
+		if ( $video['youtube'] ) {
+
+			$id = '';
+
+			$bits = explode('?', $video['youtube']);
+			$bits = explode('&', $bits[1]);
+
+			if ( $bits ) {
+				foreach ( $bits as $bit ) {
+					if ( strpos($bit, 'v=') === 0 ) {
+						$id = str_replace('v=', '', $bit);
+						break;
+					}
+				}
+			}
+
+			if ( $id ) {
+
+				$output .= '<div class="tb-bg-video youtube">';
+				$output .= '<div class="no-click"></div>';
+
+				$ratio = explode(':', $video['ratio']);
+				$ratio = ( intval($ratio[1]) / intval($ratio[0]) ) * 100;
+
+				//echo '<pre>'; print_r($ratio); echo '</pre>';
+
+
+				$output .= sprintf('<div class="video-inner" style="padding-bottom:%s">', $ratio);
+
+				$output .= sprintf('<iframe frameborder="0" scrolling="no" seamless="seamless" width="100%%" height="100%%" src="http://youtube.com/embed/%1$s?autoplay=1&loop=1&hd=1&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&rel=0&playlist=%1$s"></iframe>', $id);
+				$output .= '</iframe>';
+				$output .= '</div><!-- .video-inner (end) -->';
+				$output .= '</div><!-- .tb-bg-video (end) -->';
+			}
+
+		}
+
+	} else {
+
+		$output .= "\t<video class=\"tb-bg-video\"";
+
+		if ( $video['autoplay'] ) {
+			$output .= " autoplay";
+		}
+
+		if ( $video['loop'] ) {
+			$output .= " loop";
+		}
+
+		if ( $video['controls'] ) {
+			$output .= " controls";
+		}
+
+		if ( $video['width'] ) {
+			$output .= sprintf( " width=\"%s\"", esc_attr($video['width']) );
+		}
+
+		if ( $video['height'] ) {
+			$output .= sprintf( " width=\"%s\"", esc_attr($video['width']) );
+		}
+
+		$output .= ">\n";
+
+		if ( $video['webm'] ) {
+			$output .= sprintf( "\t\t<source src=\"%s\" type=\"video/webm\">\n", esc_url($video['webm']) );
+		}
+
+		if ( $video['mp4'] ) {
+			$output .= sprintf( "\t\t<source src=\"%s\" type=\"video/mp4\">\n", esc_url($video['mp4']) );
+		}
+
+		$output .= "\t</video><!-- .tb-bg-video (end) -->\n";
+
 	}
-
-	if ( $video['controls'] ) {
-		$output .= " controls";
-	}
-
-	if ( $video['width'] ) {
-		$output .= sprintf( " width=\"%s\"", esc_attr($video['width']) );
-	}
-
-	if ( $video['height'] ) {
-		$output .= sprintf( " width=\"%s\"", esc_attr($video['width']) );
-	}
-
-	$output .= ">\n";
-
-	if ( $video['webm'] ) {
-		$output .= sprintf( "\t\t<source src=\"%s\" type=\"video/webm\">\n", esc_url($video['webm']) );
-	}
-
-	if ( $video['mp4'] ) {
-		$output .= sprintf( "\t\t<source src=\"%s\" type=\"video/mp4\">\n", esc_url($video['mp4']) );
-	}
-
-	$output .= "\t</video><!-- .tb-bg-video (end) -->\n";
 
 	return apply_filters( 'themeblvd_bg_video', $output, $video );
 }
@@ -1973,4 +2116,25 @@ function themeblvd_get_bg_video( $video ) {
  */
 function themeblvd_bg_video( $video ) {
 	echo themeblvd_get_bg_video( $video );
+}
+
+/**
+ * Get source of video.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_get_video_source( $video ) {
+
+	$source = false;
+	$filetype = wp_check_filetype($video);
+
+	if ( ! empty( $filetype['ext'] ) ) {
+		$source = 'html5';
+	} else if ( strpos($video, 'youtube.com/watch') !== false || strpos($video, 'youtu.be/') !== false ) {
+		$source = 'youtube';
+	} else if ( strpos($video, 'vimeo.com') !== false ) {
+		$source = 'vimeo';
+	}
+
+	return $source;
 }

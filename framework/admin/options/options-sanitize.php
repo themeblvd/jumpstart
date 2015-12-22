@@ -281,7 +281,7 @@ function themeblvd_sanitize_background_video( $input ) {
 
 	$output = array(
 		'mp4'		=> '',
-		'webm'		=> '',
+		'ratio'		=> '16:9',
 		'fallback'	=> ''
 	);
 
@@ -289,12 +289,12 @@ function themeblvd_sanitize_background_video( $input ) {
 		$output['mp4'] = apply_filters( 'themeblvd_sanitize_upload', $input['mp4'] );
 	}
 
-	if ( isset( $input['webm'] ) ) {
-		$output['webm'] = apply_filters( 'themeblvd_sanitize_upload', $input['webm'] );
-	}
-
 	if ( isset( $input['fallback'] ) ) {
 		$output['fallback'] = apply_filters( 'themeblvd_sanitize_upload', $input['fallback'] );
+	}
+
+	if ( isset( $input['ratio'] ) && strpos($input['ratio'], ':') !== false ) {
+		$output['ratio'] = apply_filters( 'themeblvd_sanitize_text', $input['ratio'] );
 	}
 
 	return $output;

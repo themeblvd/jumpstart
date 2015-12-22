@@ -1737,3 +1737,27 @@ function themeblvd_do_floating_search() {
 
 	return apply_filters('themeblvd_do_floating_search', $do);
 }
+
+/**
+ * Whether the URL returns an http 200 status.
+ *
+ * We use this primarily to determine if the URL to
+ * some file we're trying to display is accessible,
+ * like a video URL, for example.
+ *
+ * @since 2.6.0
+ *
+ * @var string $url The URL to some file, local or external
+ * @return bool Whether the https status was 200
+ */
+function themeblvd_is_200( $url ) {
+
+	$code = 0;
+	$response = wp_remote_head( $url, array('timeout' => 5) );
+
+	if ( ! is_wp_error( $response ) && isset( $response['response']['code'] ) ) {
+		$code = $response['response']['code'];
+	}
+
+	return $code === 200;
+}

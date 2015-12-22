@@ -374,7 +374,7 @@ function jumpstart_su_options() {
 			'header_bg_video' => array(
 				'id'		=> 'header_bg_video',
 				'name'		=> __('Background Video', 'themeblvd'),
-				'desc'		=> sprintf(__('Setup a background video. For best results, make sure to use all three fields. The %s file will display in Google Chrome, while the %s will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don\'t support HTML5 video.', 'themeblvd'), '<em>.webm</em>', '<em>.mp4</em>'),
+				'desc'		=> __('You can upload a web-video file (mp4, webm, ogv), or input a URL to a video page on YouTube or Vimeo. Your fallback image will display on mobile devices.', 'themeblvd').'<br><br>'.__('Examples:', 'themeblvd').'<br>https://vimeo.com/79048048<br>http://www.youtube.com/watch?v=5guMumPFBag',
 				'type'		=> 'background_video',
 				'class'		=> 'hide receiver receiver-video'
 			),

@@ -6,11 +6,96 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	var $window = $(window),
-		window_width = $window.width(),
-		$body = $('body'),
-		$header = $('#branding'),
-		$primary_menu = $('.tb-primary-menu');
+	var $window			= $(window),
+		window_width	= $window.width(),
+		$body			= $('body'),
+		$header			= $('#branding'),
+		$primary_menu	= $('.tb-primary-menu'),
+		youtube			= null,
+		yt_players		= {},
+		tbmethods		= {
+
+			/**
+			 * Inititate control over youtube
+			 * background video. Required in
+			 * order to mute the video.
+			 */
+			yt_init: function() {
+				$('.tb-bg-video.youtube .video').each(function() {
+
+					var $el = $(this),
+						params = $el.data();
+
+					yt_players[this.id] = new YT.Player(this.id, {
+						videoId: params.vid,
+						playerVars: params,
+						events: {
+							'onReady': tbmethods.yt_ready
+						}
+					});
+
+				});
+			},
+			yt_ready: function(e) {
+
+				var $el = $('#'+e.target.f.id);
+
+				e.target.mute();
+				e.target.playVideo();
+
+				$el.closest('.youtube').addClass('playing');
+				tbmethods.bg_video_size($el);
+
+				$window.on('resize', function(){
+					tbmethods.bg_video_size($el);
+				});
+
+			},
+
+			/**
+			 * Resize background video to fit
+			 * sections.
+			 */
+			bg_video_size: function( $el ) {
+
+				if ( ! $el.is('video, iframe') ) {
+					return;
+				}
+
+				var id 			= $el.attr('id'),
+					css 		= '',
+					$section 	= $el.closest('.has-bg-video'),
+					section_w 	= $section.outerWidth(),
+					section_h 	= $section.outerHeight(),
+					ratio		= $el.closest('.tb-bg-video').data('ratio').split(':'),
+					w			= 0,
+					h 			= 0,
+					video_w		= ratio[0],
+					video_h		= ratio[1],
+					cover_h		= ( video_h * section_w ) / video_w,
+					cover_w		= ( video_w * section_h ) / video_h;
+
+				css = '#'+id+' {';
+
+				if ( section_w / section_h > video_w / video_h ) {
+					w = Math.ceil( section_w );
+					h = Math.ceil( cover_h );
+				} else {
+					w = Math.ceil( cover_w );
+					h = Math.ceil( section_h );
+				}
+
+				css += 'width: ' + (w + 2) + 'px !important;'; // 2px buffer
+				css += 'height: ' + (h + 2) + 'px !important;'; // 2px buffer
+
+				css += '}';
+
+				$('#'+id+'-styles').remove();
+
+				$("<style type='text/css' id='"+id+"-styles'>"+css+"</style>").appendTo('head:first');
+
+			}
+		};
 
 	// ---------------------------------------------------------
 	// Dynamic Body Classes
@@ -839,6 +924,7 @@ jQuery(document).ready(function($) {
 				var height = $slider.find('.item.active .jumbotron-outer').outerHeight();
 				$slider.animate({'height': height});
 				$slider.find('.tb-loader').fadeOut(100);
+				tbmethods.bg_video_size( $slider.find('.tb-bg-video video, .tb-bg-video iframe') );
 			});
 		});
 
@@ -1418,6 +1504,77 @@ jQuery(document).ready(function($) {
 		});
 
 	});
+
+	// ---------------------------------------------------------
+	// Video Backgrounds
+	// ---------------------------------------------------------
+
+	// Self-hosted HTML5
+	$('.tb-bg-video.html5').each(function(){
+
+		var $video = $(this);
+
+		$video.find('video').mediaelementplayer({
+			startVolume: 0,
+			loop: false,
+			enableKeyboard: false,
+			pauseOtherPlayers: false,
+		    success: function( player ) {
+	            player.addEventListener('canplay', function() {
+					player.play();
+					tbmethods.bg_video_size( $video.find('video') );
+					$video.addClass('playing');
+	            }, false);
+		    }
+		});
+
+		$window.on('resize', function(){
+			tbmethods.bg_video_size( $video.find('video') );
+		});
+
+	});
+
+	// YouTube
+	if ( $('.tb-bg-video.youtube').length ) {
+		$.getScript("https://www.youtube.com/iframe_api", function(){
+			if ( typeof YT === "object" ) {
+				youtube = setInterval(function(){
+			        if ( typeof YT === "object" ) {
+			            tbmethods.yt_init();
+			            clearInterval(youtube);
+			        }
+			    },500);
+			}
+		});
+	}
+
+	// Vimeo
+	if ( typeof Froogaloop !== 'undefined' ) {
+		$('.tb-bg-video.vimeo').each(function(){
+
+			var $el = $(this),
+				$iframe = $el.find('iframe'),
+				player = $f( $iframe[0] );
+
+			player.addEvent('ready', function(){
+
+				tbmethods.bg_video_size( $iframe );
+
+				$window.on('resize', function(){
+					tbmethods.bg_video_size( $iframe );
+				});
+
+				player.addEvent('play', function(id){
+					$el.addClass('playing');
+				});
+
+				player.api('play');
+				player.api('setVolume', 0);
+
+			});
+
+		});
+	}
 
 });
 
