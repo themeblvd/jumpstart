@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.0 - XX/XX/XXXX
 ------------------
 
+* **Updated Theme Blvd framework to 2.6.0**
 * Improvement: Expanded video background support.
     * YouTube and Vimeo support added.
     * Simplified options for inputting video.
