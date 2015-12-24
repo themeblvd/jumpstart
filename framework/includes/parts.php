@@ -947,6 +947,15 @@ function themeblvd_get_meta( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
+	// Setup FA icons
+	$icons = apply_filters('themeblvd_meta_icons', array(
+		'time'		=> 'clock-o',
+		'author'	=> 'user',
+		'comments'	=> 'comment-o',
+		'category'	=> 'folder-o',
+		'portfolio'	=> 'briefcase',
+	));
+
 	// Go forth with comments?
 	if ( in_array('comments', $args['include']) && ! themeblvd_show_comments() ) {
 		$key = array_search('comments', $args['include']);
@@ -957,11 +966,11 @@ function themeblvd_get_meta( $args = array() ) {
 	if ( in_array('category', $args['include']) ) {
 
 		$tax = 'category';
-		$tax_icon = 'folder-o';
+		$tax_icon = $icons['category'];
 
 		if ( get_post_type() == 'portfolio_item' ) { // requires Portfolios plugin
 			$tax = 'portfolio';
-			$tax_icon = 'briefcase';
+			$tax_icon = $icons['portfolio'];
 		}
 
 		$category = get_the_term_list(get_the_ID(), $tax, '', ', ');
@@ -1005,7 +1014,7 @@ function themeblvd_get_meta( $args = array() ) {
 					$author = esc_html( get_the_author() );
 					$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
 					$author_title = sprintf( esc_html__('View all posts by %s', 'themeblvd'), $author );
-					$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-user"></i>' : '';
+					$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-'.$icons['author'].'"></i>' : '';
 					$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, $author );
 					break;
 
@@ -1028,7 +1037,7 @@ function themeblvd_get_meta( $args = array() ) {
 					$comment_link = ob_get_clean();
 
 					if ( in_array( $item, $args['icons'] ) ) {
-						$item_output .= '<i class="fa fa-comment-o"></i>';
+						$item_output .= '<i class="fa fa-'.$icons['comments'].'"></i>';
 					}
 
 					$item_output .= $comment_link;
@@ -1056,7 +1065,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 				case 'time' :
 
-					$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-clock-o"></i>' : '';
+					$time_icon = in_array($item, $args['icons']) ? '<i class="fa fa-'.$icons['time'].'"></i>' : '';
 
 					if ( $args['time'] === 'ago' ) {
 
