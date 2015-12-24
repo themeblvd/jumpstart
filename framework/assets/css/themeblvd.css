@@ -4483,7 +4483,12 @@ button.close {
 	outline: none !important;
 }
 
-/* MPF close button */
+/* MFP caption */
+.mfp-title {
+	font-size: 13px;
+}
+
+/* MFP close button */
 button.mfp-close,
 button.mfp-arrow {
 	background-color: transparent !important;
@@ -4492,21 +4497,23 @@ button.mfp-arrow {
 	box-shadow: none !important;
 }
 .mfp-wrap button.mfp-close {
+	background: url(../svg/close.svg) center center no-repeat;
+	background-size: 10px 10px;
 	border-radius: 100px;
 	border: 2px solid transparent;
 	line-height: 38px;
 	padding: 0;
 	position: absolute;
-	/* top: -5px; */
 	right: -13px;
 	text-align: center;
+	text-indent: -9999px;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 	width: 40px;
 	height: 40px;
 }
 .mfp-wrap button.mfp-close:hover {
-	border: 2px solid #ffffff;
+	border: 1px solid #ffffff;
 	transform: scale(0.8);
 	-webkit-transform: scale(0.8) rotateZ(90deg);
 }
@@ -4517,7 +4524,7 @@ button.mfp-arrow {
 	top: -40px;
 }
 
-/* Next/Prev */
+/* MFP Next/Prev */
 .mfp-arrow:before,
 .mfp-arrow .mfp-b,
 .mfp-arrow-right:after,
@@ -4533,37 +4540,27 @@ button.mfp-arrow {
 	height: auto;
 }
 button.mfp-arrow {
-	border-radius: 100%;
-	color: #ffffff !important;
-	font-family: "FontAwesome";
+	background-position: center center;
+	background-size: 16px 28px;
+	background-repeat: no-repeat;
 	font-size: 30px;
 	line-height: 2em;
-	-webkit-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	margin-top: -1em;
 	width: 2em;
 	height: 2em;
-	text-align: center;
 }
 button.mfp-arrow:active {
 	margin-top: -.95em;
 }
 /* @noflip */
 .mfp-arrow.mfp-arrow-left {
+	background-image: url(../svg/chev-left.svg);
 	left: 10px;
 }
 /* @noflip */
 .mfp-arrow.mfp-arrow-right {
+	background-image: url(../svg/chev-right.svg);
 	right: 10px;
-}
-.mfp-arrow.mfp-arrow-left:before {
-	content: "\f053";
-}
-.mfp-arrow.mfp-arrow-right:before {
-	content: "\f054";
 }
 
 /* Bottom bar for iframe popups in a gallery */
