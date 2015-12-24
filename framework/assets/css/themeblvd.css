@@ -5540,8 +5540,8 @@ blockquote small {
 .post_showcase .showcase-item.has-title .featured-item.showcase .cat {
 	font-size: 13px;
 }
-.post_showcase.has-gutters .featured-item.showcase img,
-.post_showcase.has-gutters .featured-item.showcase .img {
+.post_showcase .featured-item.showcase img,
+.post_showcase .featured-item.showcase .img {
 	-webkit-backface-visibility: visible;
 	backface-visibility: visible;
 	-webkit-transition: opacity .25s ease;
