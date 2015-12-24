@@ -110,12 +110,14 @@ class Theme_Blvd_Frontend_Init {
 			// Post List
 			'list'				=> 'list',			// content-list.php
 			'list_paginated'	=> 'list',			// content-list.php
+			'list_small'		=> 'small-list',	// content-mini-list.php
 			'list_mini'			=> 'mini-list',		// content-mini-list.php
 
 			// Post Grid
 			'grid' 				=> 'grid',			// content-grid.php
 			'grid_paginated' 	=> 'grid',			// content-grid.php
 			'grid_slider' 		=> 'grid',			// content-grid.php
+			'grid_small'		=> 'small-grid',	// content-small-grid.php
 			'grid_mini'			=> 'mini-grid',		// content-mini-grid.php
 
 			// Showcase

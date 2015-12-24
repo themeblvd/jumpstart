@@ -149,8 +149,10 @@
  *   25.4 - Post Slider (inherits from .tb-simple-slider)
  *   25.5 - Mini Post List
  *   25.6 - Mini Post Grid
- *   25.7 - Search Results
- *   25.8 - Posts using isotope
+ *   25.7 - Small Post List
+ *   25.8 - Small Post Grid
+ *   25.9 - Search Results
+ *   25.10 - Posts using isotope
  * 26.0 - Components (components.php)
  *   26.1 - Alert
  *   26.2 - Divider
@@ -5809,6 +5811,36 @@ blockquote small {
 }
 .element-mini_post_grid .alert {
 	margin-bottom: 0;
+}
+
+/* Small Post List */
+/* @TODO */
+
+/* Small Post Grid */
+.tb-small-post-grid .row {
+	margin-bottom: 30px;
+}
+.tb-small-post-grid .row:last-child {
+  	margin-bottom: 0;
+}
+.tb-small-post-grid .post {
+  	text-align: center;
+}
+.tb-small-post-grid .tb-thumb-link:before {
+	font-size: 12px;
+	line-height: 3em;
+	margin: -1.5em 0 0 -1.5em;
+	width: 3em;
+	height: 3em;
+}
+.tb-small-post-grid .entry-title {
+  	font-size: 14px;
+  	line-height: 1.4;
+  	margin: 10px 0 0 0;
+}
+.tb-small-post-grid .entry-meta {
+  	font-size: 13px;
+  	margin: 4px 0 0 0;
 }
 
 /* Search Results */

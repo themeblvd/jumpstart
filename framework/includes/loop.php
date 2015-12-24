@@ -334,8 +334,10 @@ function themeblvd_loop( $args = array() ){
 			themeblvd_set_att( 'crop', $crop );
 
 			// For any placeholders
-			themeblvd_set_att( 'crop_w', '640' );
-			themeblvd_set_att( 'crop_h', '360' );
+			$crop = themeblvd_get_image_sizes($crop);
+
+			themeblvd_set_att( 'crop_w', $crop['width'] );
+			themeblvd_set_att( 'crop_h', $crop['height'] );
 			break;
 
 		/**
@@ -411,6 +413,31 @@ function themeblvd_loop( $args = array() ){
 				$post_class .= ' has-excerpt';
 			}
 
+			break;
+
+		/**
+		 * Small post grid
+		 */
+		case 'small-grid' :
+
+			// Set crop size for featured images
+			$crop = themeblvd_get_image_sizes( $args['crop'] );
+
+			themeblvd_set_att( 'crop_w', $crop['width'] );
+			themeblvd_set_att( 'crop_h', $crop['height'] );
+
+			// Number of columns (i.e. posts per row)
+			$columns = '3';
+
+			if ( $args['columns'] ) {
+				$columns = $args['columns'];
+			}
+
+			$columns = themeblvd_set_att( 'columns', intval($columns) );
+
+			// Post class to determine column width
+			$post_class = sprintf( 'col %s', themeblvd_grid_class(intval($columns)) );
+
 	}
 
 	// Make sure that themeblvd_get_featured_image never
@@ -455,7 +482,7 @@ function themeblvd_loop( $args = array() ){
 
 			} else {
 
-				if ( $context == 'grid' || $context == 'showcase' ) {
+				if ( $context == 'grid' || $context == 'small-grid' || $context == 'showcase' ) {
 
 					$posts_per_page = '-1';
 
@@ -498,65 +525,67 @@ function themeblvd_loop( $args = array() ){
 	}
 
 	// CSS classes
-	$class = '';
+	$class = array();
 
 	if ( $context == 'blog' ) {
 
-		$class = 'blog';
+		$class[] = 'blog';
 
 		if ( $paginated ) {
-			$class .= ' paginated';
+			$class[] = 'paginated';
 		}
 
 	} else if ( $context == 'list' || $context == 'grid' || $context == 'showcase' ) {
 
-		$class = 'post_'.$context;
+		$class[] = 'post_'.$context;
 
 		if ( $context == 'grid' || $context == 'showcase' ) {
-			$class .= ' themeblvd-gallery';
+			$class[] = 'themeblvd-gallery';
 		}
 
 		if ( $paginated && $context != 'showcase' ) {
-			$class .= ' post_'.$context.'_paginated';
+			$class[] = 'post_'.$context.'_paginated';
 		}
 
 		if ( $context == 'showcase' && ! empty($gutters) ) {
 			if ( $gutters == 'show' ) {
-				$class .= ' has-gutters';
+				$class[] = 'has-gutters';
 			} else {
-				$class .= ' no-gutters';
+				$class[] = 'no-gutters';
 			}
 		}
 
 	}
 
 	if ( ! empty($columns) ) {
-		$class .= ' columns-'.$columns;
+		$class[] = 'columns-'.$columns;
 	}
 
 	if ( $isotope ) {
-		$class .= ' tb-isotope';
+		$class[] = 'tb-isotope';
 	}
 
 	if ( $args['display'] == 'filter' || $args['display'] == 'masonry_filter' ) {
-		$class .= ' tb-filter';
+		$class[] = 'tb-filter';
 	}
 
 	if ( $args['display'] == 'masonry' || $args['display'] == 'masonry_paginated' || $args['display'] == 'masonry_filter' ) {
-		$class .= ' tb-masonry';
+		$class[] = 'tb-masonry';
 	}
 
 	if ( $args['class'] ) {
-		$class .= ' '.$args['class'];
+		$class[] = $args['class'];
 	}
 
 	if ( $args['shortcode'] ) {
-		$class .= ' loop-shortcode';
+		$class[] = 'loop-shortcode';
 	}
 
 	if ( $args['element'] ) {
-		$class .= ' loop-element';
+		$class[] = 'loop-element';
 	}
+
+	$class = implode(' ', $class);
 
 	// Start output
 	echo '<div class="'.esc_attr($class).'">';
@@ -595,7 +624,7 @@ function themeblvd_loop( $args = array() ){
 		// Posts per column
 		$ppc = 0;
 
-		if ( $context != 'grid' && $context != 'showcase' && intval($args['columns']) >= 2 ) {
+		if ( $context != 'grid' && $context != 'small-grid' && $context != 'showcase' && intval($args['columns']) >= 2 ) {
 			$ppc = ceil( $total / intval($args['columns']) );
 		}
 
@@ -607,7 +636,7 @@ function themeblvd_loop( $args = array() ){
 		}
 
 		// Open row
-		if ( $context == 'grid' || $context == 'showcase' || $ppc || $isotope ) {
+		if ( $context == 'grid' || $context == 'small-grid' || $context == 'showcase' || $ppc || $isotope ) {
 			themeblvd_open_row();
 		}
 
@@ -641,7 +670,7 @@ function themeblvd_loop( $args = array() ){
 
 			// For grid, if last post in a row, but not the very last post.
 			// NOTE: This is only for standard grids not using isotope
-			if ( ! $isotope && ( $context == 'grid' || $context == 'showcase' ) && $counter % $columns == 0 && $total != $counter ) {
+			if ( ! $isotope && ( $context == 'grid' || $context == 'small-grid' || $context == 'showcase' ) && $counter % $columns == 0 && $total != $counter ) {
 
 				// Close current row
 				themeblvd_close_row();
@@ -673,7 +702,7 @@ function themeblvd_loop( $args = array() ){
 		}
 
 		// Close row
-		if ( $context == 'grid' || $context == 'showcase' || $ppc || $context == 'showcase' ) {
+		if ( $context == 'grid' || $context == 'small-grid' || $context == 'showcase' || $ppc || $context == 'showcase' ) {
 			themeblvd_close_row();
 		}
 
@@ -1337,4 +1366,111 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
  */
 function themeblvd_mini_post_grid( $query = '', $align = 'left', $thumb = 'smaller', $gallery = '' ) {
 	echo themeblvd_get_mini_post_grid( $query, $align, $thumb, $gallery );
+}
+
+/**
+ * Get Small Post List
+ *
+ * @since @TODO
+ *
+ * @param array $args Query and display options for element
+ * @return string $output HTML to output
+ */
+function themeblvd_get_small_post_list( $args = array() ) {
+
+	$args = wp_parse_args( $args, array(
+		// ...
+	));
+
+	// ... @TODO See themeblvd_get_small_post_grid() for structure
+
+	return apply_filters( 'themeblvd_small_post_list', '', $args );
+}
+
+/**
+ * Display Small Post List
+ *
+ * @since @TODO
+ *
+ * @param array $args Query and display options for element
+ * @return string $output HTML to output
+ * @return string $output HTML to output
+ */
+function themeblvd_small_post_list( $args = array() ) {
+	echo themeblvd_get_small_post_list( $args );
+}
+
+/**
+ * Get Small Post Grid
+ *
+ * @since 2.6.0
+ *
+ * @param array $args Query and display options for element
+ * @return string $output HTML to output
+ */
+function themeblvd_get_small_post_grid( $args = array() ) {
+
+	$args = wp_parse_args( $args, array(
+		'crop'		=> 'tb_grid',
+		'columns'	=> 3,
+		'rows'		=> 1,
+		'titles'	=> 1,
+		'meta'		=> 1
+	));
+
+	$class = 'tb-small-post-grid';
+
+	themeblvd_set_att('crop', $args['crop']);
+
+	if ( $args['titles'] ) {
+		$class .= ' has-titles';
+		themeblvd_set_att('show_title', true);
+	} else {
+		themeblvd_set_att('show_title', false);
+	}
+
+	if ( $args['meta'] ) {
+		$class .= ' has-meta';
+		themeblvd_set_att('show_meta', true);
+	} else {
+		themeblvd_set_att('show_meta', false);
+	}
+
+	$element = false;
+
+	if ( ! empty($args['element']) ) {
+		$element = true;
+	}
+
+	$shortcode = false;
+
+	if ( ! empty($query['shortcode']) ) {
+		$shortcode = true;
+	}
+
+	$args = array_merge( $args, array(
+		'display'	=> 'small-grid',
+		'context'	=> 'small-grid',
+		'part'		=> 'grid_small',	// by default, content-small-grid.php
+		'element'	=> $element,
+		'shortcode'	=> $shortcode,
+		'class'		=> $class
+	));
+
+	ob_start();
+	themeblvd_loop($args);
+	return apply_filters( 'themeblvd_small_post_grid', ob_get_clean(), $args );
+}
+
+/**
+ * Display Small Post Grid
+ *
+ * @since 2.6.0
+ *
+ * @param array $args Query and display options for element
+ * @return string $output HTML to output
+ * @return string $output HTML to output
+ */
+function themeblvd_small_post_grid( $args = array() ) {
+	echo themeblvd_get_small_post_grid( $args );
 }
