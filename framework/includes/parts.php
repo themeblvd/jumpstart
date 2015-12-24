@@ -1667,8 +1667,11 @@ function themeblvd_get_related_posts( $args = array() ) {
 		'post_id'		=> themeblvd_config('id'),
 		'post_type'		=> 'post',
 		'columns' 		=> 2,
+		'grid_columns'	=> 3,
+		'grid_rows'		=> 2,
 		'total'			=> 6,
 		'related_by'	=> themeblvd_get_option('single_related_posts', null, 'tag'),
+		'style'			=> themeblvd_get_option('single_related_posts_style', null, 'list'),
 		'thumbs'		=> 'smaller',
 		'meta'			=> true,
 		'query'			=> ''
@@ -1724,7 +1727,20 @@ function themeblvd_get_related_posts( $args = array() ) {
 	$output = '<section class="tb-related-posts">';
 	$output .= sprintf('<h2 class="related-posts-title">%s</h2>', themeblvd_get_local('related_posts'));
 	$output .= '<div class="inner">';
-	$output .= themeblvd_get_mini_post_list( $args, $args['thumbs'], $args['meta'] );
+
+	if ( $args['style'] == 'list' ) {
+
+		$output .= themeblvd_get_mini_post_list( $args, $args['thumbs'], $args['meta'] );
+
+	} else {
+
+		$args['columns'] = $args['grid_columns'];
+		$args['rows'] = $args['grid_rows'];
+
+		$output .= themeblvd_get_small_post_grid( $args );
+
+	}
+
 	$output .= '</div><!-- .inner (end) -->';
 	$output .= '</section><!-- .tb-related-posts (end) -->';
 

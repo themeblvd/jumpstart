@@ -628,6 +628,17 @@ class Theme_Blvd_Options_API {
 							'hide' 		=> __('Hide related posts', 'themeblvd')
 						)
 					),
+					'single_related_posts_style' => array(
+						'name' 		=> __('Related Posts Style', 'themeblvd'),
+						'desc' 		=> __('When showing, select how you\'d like to display the related posts.', 'themeblvd'),
+						'id' 		=> 'single_related_posts_style',
+						'std' 		=> 'list',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'list'		=> __('List', 'themeblvd'),
+							'grid'		=> __('Grid', 'themeblvd')
+						)
+					),
 					'single_comments' => array(
 						'name' 		=> __('Comments', 'themeblvd'),
 						'desc' 		=> __('This will hide the presence of comments on the single post.', 'themeblvd'),
