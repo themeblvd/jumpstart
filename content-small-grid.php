@@ -2,7 +2,7 @@
 /**
  * The default template for displaying content in small post grid.
  */
-$meta = apply_filters('themeblvd_mini_list_meta_args', array('include' => array('time'), 'icons' => array()));
+$meta = apply_filters('themeblvd_small_grid_meta_args', array('include' => array('time'), 'icons' => array()));
 ?>
 <div class="grid-item <?php echo themeblvd_get_att('class'); ?>">
     <article <?php post_class(); ?>>

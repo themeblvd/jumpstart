@@ -17,12 +17,12 @@ function themeblvd_get_modes() {
 }
 
 /**
- * Include font from google. Accepts unlimited
+ * Include font from google and typekit. Accepts unlimited
  * amount of font arguments.
  *
- * @since 2.0.0
+ * @since 2.6.0
  */
-function themeblvd_include_google_fonts() {
+function themeblvd_include_fonts() {
 
 	$input = func_get_args();
 	$used = array();
@@ -35,7 +35,8 @@ function themeblvd_include_google_fonts() {
 		$protocol = is_ssl() ? 'https://' : 'http://';
 
 		// Build fonts to include
-		$fonts = array();
+		$g_fonts = array();
+		$t_fonts = array();
 
 		foreach ( $input as $font ) {
 			if ( $font['face'] == 'google' && ! empty($font['google']) ) {
@@ -44,7 +45,7 @@ function themeblvd_include_google_fonts() {
 				$name = trim(str_replace(' ', '+', $font[0]));
 
 				if ( ! isset($fonts[$name]) ) {
-					$fonts[$name] = array(
+					$g_fonts[$name] = array(
 						'style'		=> array(),
 						'subset'	=> array()
 					);
@@ -58,22 +59,28 @@ function themeblvd_include_google_fonts() {
 						if ( strpos($part, 'subset') === 0 ) {
 							$part = str_replace('subset=', '', $part);
 							$part = explode(',', $part);
-							$part = array_merge($fonts[$name]['subset'], $part);
-							$fonts[$name]['subset'] = array_unique($part);
+							$part = array_merge($g_fonts[$name]['subset'], $part);
+							$g_fonts[$name]['subset'] = array_unique($part);
 						} else {
 							$part = explode(',', $part);
-							$part = array_merge($fonts[$name]['style'], $part);
-							$fonts[$name]['style'] = array_unique($part);
+							$part = array_merge($g_fonts[$name]['style'], $part);
+							$g_fonts[$name]['style'] = array_unique($part);
 						}
 					}
 
+				}
+
+			} else if ( $font['face'] == 'typekit' && ! empty($font['typekit_kit']) ) {
+
+				if ( ! in_array( $font['typekit_kit'], $t_fonts ) ) {
+					$t_fonts[] = $font['typekit_kit'];
 				}
 
 			}
 		}
 
 		// Include each font file from google
-		foreach ( $fonts as $font => $atts ) {
+		foreach ( $g_fonts as $font => $atts ) {
 
 			if ( ! empty($atts['style']) ) {
 				$font .= sprintf( ':%s', implode(',', $atts['style']) );
@@ -87,7 +94,25 @@ function themeblvd_include_google_fonts() {
 
 		}
 
+		// Include each font from Typekit
+		foreach ( $t_fonts as $font ) {
+			echo themeblvd_kses($font) . "\n";
+		}
+
 	}
+}
+
+/**
+ * Include font from google. Accepts unlimited
+ * amount of font arguments.
+ *
+ * @since 2.0.0
+ * @deprecated 2.6.0
+ */
+function themeblvd_include_google_fonts() {
+	themeblvd_deprecated_function( __FUNCTION__, '2.6.0', 'themeblvd_include_fonts' );
+	$args = func_get_args();
+    call_user_func_array('themeblvd_include_fonts', $args);
 }
 
 /**

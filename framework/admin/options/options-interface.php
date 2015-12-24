@@ -603,11 +603,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'typography' :
 
                 $typography_stored = wp_parse_args( $val, array(
-                    'size'      => '',
-                    'style'     => '',
-                    'weight'    => '400',   // @since 2.5.0
-                    'face'      => '',
-                    'color'     => ''       // @since 2.5.0
+                    'size'          => '',
+                    'style'         => '',
+                    'weight'        => '400',   // @since 2.5.0
+                    'face'          => '',
+                    'color'         => '',      // @since 2.5.0
+                    'google'        => '',
+                    'typekit'       => '',      // @since 2.6.0
+                    'typekit_kit'   => ''       // @since 2.6.0
                 ));
 
 				// Font Size
@@ -715,6 +718,16 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr($typography_stored['google']).'" />';
 					$output .= '<p class="note"><strong>'.esc_attr__('Example', 'themeblvd').'</strong>: Open Sans<br />';
                     $output .= '<strong>'.esc_attr__('Example with custom weight', 'themeblvd').'</strong>: Open Sans:300</p>';
+					$output .= '</div>';
+				}
+
+                // Typekit support
+				if ( in_array( 'face', $value['atts'] ) ) {
+					$output .= '<div class="typekit-font hide">';
+                    $output .= '<h5>'.esc_attr__('Typekit Font Family', 'themeblvd').'</h5>';
+                    $output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][typekit]' ).'" value="'.esc_attr($typography_stored['typekit']).'" />';
+                    $output .= '<h5>'.esc_attr__('Paste your kit\'s embed code below.', 'themeblvd').'</h5>';
+                    $output .= '<textarea name="'.esc_attr( $option_name.'['.$value['id'].'][typekit_kit]' ).'">'.themeblvd_kses($typography_stored['typekit_kit']).'</textarea>';
 					$output .= '</div>';
 				}
 

@@ -1214,7 +1214,7 @@ add_filter('themeblvd_top_height', 'jumpstart_ent_top_height');
  * @since 2.0.0
  */
 function jumpstart_ent_include_fonts() {
-	themeblvd_include_google_fonts(
+	themeblvd_include_fonts(
 		themeblvd_get_option('font_body'),
 		themeblvd_get_option('font_header'),
 		themeblvd_get_option('font_menu')

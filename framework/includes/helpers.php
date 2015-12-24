@@ -37,11 +37,17 @@ function themeblvd_get_font_face( $option ) {
 	$stack = '';
 	$stacks = themeblvd_font_stacks();
 
-	if ( $option['face'] == 'google'  ) {
+	if ( $option['face'] == 'google' || $option['face'] == 'typekit' ) {
+
+		if ( $option['face'] == 'typekit' ) {
+			$name = strtolower( str_replace(' ', '-', $option['typekit'] ) );
+		} else {
+			$name = $option['google'];
+		}
 
 		// Grab font face, making sure they didn't do the
 		// super, sneaky trick of including font weight or type.
-		$name = explode( ':', $option['google'] );
+		$name = explode( ':', $name );
 
 		// And also check for accidental space at end
 		$name = esc_attr( trim( $name[0] ) );

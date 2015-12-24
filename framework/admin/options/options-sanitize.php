@@ -425,12 +425,14 @@ function themeblvd_recognized_background_size() {
  */
 function themeblvd_sanitize_typography( $input ) {
 	$output = wp_parse_args( $input, array(
-		'size' 		=> '',
-		'face'  	=> '',
-		'style' 	=> '',
-		'weight'	=> '',
-		'color' 	=> '',
-		'google' 	=> ''
+		'size' 			=> '',
+		'face'  		=> '',
+		'style' 		=> '',
+		'weight'		=> '',
+		'color' 		=> '',
+		'google' 		=> '',
+		'typekit'		=> '',
+		'typekit_kit'	=> ''
 	) );
 	$output['size']  = apply_filters( 'themeblvd_font_size', $output['size'] );
 	$output['face']  = apply_filters( 'themeblvd_font_face', $output['face'] );
@@ -439,6 +441,9 @@ function themeblvd_sanitize_typography( $input ) {
 	$output['color'] = apply_filters( 'themeblvd_color', $output['color'] );
 	$output['google'] = str_replace('"', '', $output['google'] );
 	$output['google'] = apply_filters( 'themeblvd_sanitize_text', $output['google'] );
+	$output['typekit'] = str_replace('"', '', $output['typekit'] );
+	$output['typekit'] = apply_filters( 'themeblvd_sanitize_text', $output['typekit'] );
+	$output['typekit_kit'] = themeblvd_kses($output['typekit_kit']);
 	return $output;
 }
 
@@ -1238,7 +1243,8 @@ function themeblvd_recognized_font_faces() {
 		'times'     	=> 'Times New Roman',
 		'trebuchet' 	=> 'Trebuchet',
 		'verdana'   	=> 'Verdana, Geneva',
-		'google'		=> 'Google Font'
+		'google'		=> 'Google Font',
+		'typekit'		=> 'Typekit Font'
 	);
 	return apply_filters( 'themeblvd_recognized_font_faces', $default );
 }
@@ -1265,6 +1271,8 @@ function themeblvd_recognized_font_styles() {
  */
 function themeblvd_recognized_font_weights() {
 	$default = array(
+		'100' 			=> __('100', 'themeblvd'),
+		'200' 			=> __('200', 'themeblvd'),
 		'300' 			=> __('300', 'themeblvd'),
 		'400' 			=> __('400 (normal)', 'themeblvd'),
 		'500' 			=> __('500', 'themeblvd'),

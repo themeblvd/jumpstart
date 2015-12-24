@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.0**
+* New: [Adobe Typekit](https://typekit.com) support to typography theme options.
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
 * Improvement: Expanded video background support.
     * YouTube and Vimeo support added.

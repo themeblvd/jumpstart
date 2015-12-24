@@ -1502,7 +1502,7 @@ add_filter('body_class', 'jumpstart_su_body_class');
  * @since 2.0.0
  */
 function jumpstart_ent_include_fonts() {
-	themeblvd_include_google_fonts(
+	themeblvd_include_fonts(
 		themeblvd_get_option('font_body'),
 		themeblvd_get_option('font_header'),
 		themeblvd_get_option('font_menu')

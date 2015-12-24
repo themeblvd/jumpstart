@@ -842,26 +842,34 @@
 	float: left;
 }
 
-/* Google Font (addon to typography) */
-#optionsframework .google-font {
+/* Google/Typekit Font (addon to typography) */
+#optionsframework .google-font,
+#optionsframework .typekit-font {
 	background: #ffffff;
 	border: 1px solid #dddddd;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	padding: 10px;
 }
-#optionsframework .google-font .wrap {
+#optionsframework .google-font .wrap,
+#optionsframework .typekit-font .wrap {
 	margin: 0;
 }
-#optionsframework .google-font h5 {
+#optionsframework .google-font h5,
+#optionsframework .typekit-font h5 {
 	font-size: 12px;
 	margin: 4px 4px 10px 4px;
 }
-#optionsframework .google-font input {
+#optionsframework .google-font input,
+#optionsframework .typekit-font input {
 	margin-bottom: 5px;
 }
-#optionsframework .google-font .note {
+#optionsframework .google-font .note,
+#optionsframework .typekit-font .note {
 	margin: 0;
+}
+#optionsframework .typekit-font textarea {
+	height: 100px;
 }
 
 /* Fancy Selects */

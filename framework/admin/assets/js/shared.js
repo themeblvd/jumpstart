@@ -216,18 +216,24 @@
 
     				// Google font selection
     				$this.find('.section-typography .of-typography-face').each(function(){
-    					var el = $(this), value = el.val();
-    					if( value == 'google' )
-    						el.closest('.section-typography').find('.google-font').fadeIn('fast');
-    					else
-    						el.closest('.section-typography').find('.google-font').hide();
+
+						var $el = $(this);
+
+						$el.closest('.section-typography').find('.google-font').hide();
+						$el.closest('.section-typography').find('.typekit-font').hide();
+
+						$el.closest('.section-typography').find('.' + $el.val() + '-font').fadeIn('fast');
+
     				});
 
     				// Homepage Content
 	    			$this.find('#section-homepage_content').each(function(){
-    					var value = $(this).find('input:checked').val();
-    					if( value != 'custom_layout' )
+
+						var value = $(this).find('input:checked').val();
+
+						if ( value != 'custom_layout' ) {
     						$this.find('#section-homepage_custom_layout').hide();
+						}
     				});
 
     				// Image Options
@@ -684,13 +690,16 @@
 						parent.find('.'+value).show();
     				});
 
-    				// Google font selection
+    				// Google/Typekit font selection
     				$this.on( 'change', '.section-typography .of-typography-face', function() {
-    					var el = $(this), value = el.val();
-    					if( value == 'google' )
-    						el.closest('.section-typography').find('.google-font').fadeIn('fast');
-    					else
-    						el.closest('.section-typography').find('.google-font').hide();
+
+						var $el = $(this);
+
+						$el.closest('.section-typography').find('.google-font').hide();
+						$el.closest('.section-typography').find('.typekit-font').hide();
+
+						$el.closest('.section-typography').find('.' + $el.val() + '-font').fadeIn('fast');
+
     				});
 
     				// Homepage Content
