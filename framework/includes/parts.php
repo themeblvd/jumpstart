@@ -1882,3 +1882,59 @@ function themeblvd_get_date_block( $post_id = 0 ) {
 function themeblvd_date_block( $post_id = 0 ) {
 	echo themeblvd_get_date_block( $post_id );
 }
+
+/**
+ * Get title and category/portfolio for post showcase hover.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_get_item_info( $post_id = 0, $tax = '' ) {
+
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$post_type = get_post_type($post_id);
+
+	$output = '<span class="item-title">';
+	$output .= sprintf( '<span class="title">%s</span>', esc_html( get_the_title($post_id) ) );
+
+	if ( ! $tax ) {
+
+		$tax = 'category';
+
+		if ( $post_type == 'portfolio_item' ) {
+			$tax = 'portfolio';
+		}
+	}
+
+	$tax = apply_filters( 'themeblvd_item_info_tax', $tax, $post_type, $post_id );
+
+	$terms_obj = get_the_terms( $post_id, $tax );
+
+	if ( $terms_obj ) {
+
+		$terms = array();
+
+		foreach ( $terms_obj as $term ) {
+			$terms[] = $term->name;
+		}
+
+		$output .= sprintf( '<span class="cat">%s</span>', esc_html( implode($terms, ', ') ) );
+
+	}
+
+	$output .= '</span>';
+
+	return apply_filters('themeblvd_item_info', $output);
+}
+
+/**
+ * Display title and category/portfolio for post showcase hover.
+ * Must be within the loop.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_item_info( $post_id = 0, $tax = '' ) {
+	echo themeblvd_get_item_info( $post_id, $tax );
+}

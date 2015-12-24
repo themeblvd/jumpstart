@@ -1744,7 +1744,8 @@ function jumpstart_su_css() {
 	$print .= "}\n";
 
 	$print .= ".tb-thumb-link:before,\n";
-	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .item-title {\n";
+	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .tb-thumb-link:after,\n";
+	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase.tb-thumb-link:after {\n";
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($highlight, '0.8'));
 	$print .= "}\n";
 
