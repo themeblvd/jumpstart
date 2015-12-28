@@ -1473,7 +1473,7 @@ function themeblvd_get_toggles( $id, $options ) {
     $accordion = false;
 
     if ( isset($options['accordion']) ) {
-        if( $options['accordion'] == 'true' || $options['accordion'] == '1' || $options['accordion'] === 1 ) {
+        if ( $options['accordion'] == 'true' || $options['accordion'] == '1' || $options['accordion'] === 1 ) {
             $accordion = true;
         }
     }
@@ -1496,7 +1496,7 @@ function themeblvd_get_toggles( $id, $options ) {
     }
 
     if ( $accordion ) {
-        $output = sprintf( '<div id="%s" class="tb-accordion panel-group">%s</div>', $id, $output );
+        $output = sprintf( '<div id="accordion_%s" class="tb-accordion panel-group">%s</div>', $id, $output );
     }
 
     return apply_filters('themeblvd_toggles', $output, $options);
