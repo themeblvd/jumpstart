@@ -19,7 +19,12 @@ Jump Start Changelog
 * Updated: FlexSlider to 2.6.
 * Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
 * Fixed: Accordion feature not working with Toggles element of Layout Builder.
-* Fixed: "Custom CSS" option code editor on theme options page not working with RTL.
+* Fixed: More minor RTL bug fixes.
+    * Tabs and pills of Tabs element now align properly to right.
+    * Panels no longer force text to be aligned left.
+    * Pricing table columns now display in correct order, from right-to-left.
+    * Progress bars now display and animate out from right.
+    * "Custom CSS" option code editor on theme options page now works with RTL.
 
 --------------------------------------------------------------
 

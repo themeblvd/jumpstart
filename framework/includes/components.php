@@ -728,7 +728,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
         'style'         => 'default',   // Style of panel - primary, success, info, warning, danger
         'title'         => '',          // Header for panel
         'footer'        => '',          // Footer for panel
-        'text_align'    => 'left',      // How to align text - left, right, center
+        'text_align'    => '',      	// How to align text - left, right, center
         'align'         => '',          // How to align panel - left, right
         'max_width'     => '',          // Meant to be used with align left/right - 300px, 50%, etc
         'class'         => '',          // Any additional CSS classes
@@ -737,7 +737,11 @@ function themeblvd_get_panel( $args, $content = '' ) {
     $args = wp_parse_args( $args, $defaults );
 
     // CSS classes
-    $class = sprintf( 'tb-panel panel panel-%s text-%s', $args['style'], $args['text_align'] );
+    $class = sprintf( 'tb-panel panel panel-%s', $args['style'] );
+
+	if ( $args['text_align'] ) {
+		$class .= ' text-'.$args['text_align'];
+	}
 
     if ( $args['class'] ) {
         $class .= ' '.$args['class'];
@@ -1543,7 +1547,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
             }
         }
 
-        $class = 'tb-pricing-table row';
+        $class = 'tb-pricing-table row row-inner';
 
         if ( $has_popout ) {
             $class .= ' has-popout';

@@ -345,6 +345,13 @@ ul {
 }
 
 /* Tabs */
+.nav {
+	padding-left: 0;
+}
+.nav-tabs > li,
+.nav-pills > li {
+	float: left;
+}
 .nav-tabs > li > a {
 	border: none !important;
 	border-radius: 0;
@@ -7503,6 +7510,9 @@ blockquote small {
 }
 .tb-progress.has-label {
 	padding-top: 16px;
+}
+.tb-progress .progress-bar {
+	float: left;
 }
 .tb-progress .label {
 	color: inherit;
