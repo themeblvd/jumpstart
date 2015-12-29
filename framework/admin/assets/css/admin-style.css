@@ -877,6 +877,9 @@ body.themeblvd-stop-scroll {
 	left: 50%;
 	width: 500px;
 }
+.themeblvd-modal-wrap .hide-toolbar .media-frame-content {
+	bottom: 0;
+}
 .themeblvd-modal-wrap .small-modal .media-modal-content {
 	min-height: 0;
 }
@@ -914,6 +917,24 @@ body.themeblvd-stop-scroll {
 .themeblvd-modal-wrap .medium-height-modal {
 	top: 20%;
 	bottom: 20%;
+}
+
+/* Video in modal */
+.themeblvd-modal-wrap .modal-video {
+	max-height: 500px;
+}
+.themeblvd-modal-wrap .modal-video .media-frame-content {
+	border-bottom: none;
+	overflow: hidden;
+}
+.themeblvd-modal-wrap .modal-video iframe {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
 }
 
 /* Code editor in modal */

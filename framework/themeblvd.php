@@ -64,6 +64,7 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-sortable-option.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-bases.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-welcome.php' );
 
 	// Filters
 	add_filter( 'admin_body_class', 'themeblvd_admin_body_class' );

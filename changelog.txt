@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.0**
+* New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552).
 * New: [Adobe Typekit](https://typekit.com) support to typography theme options.
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
 * Improvement: Expanded video background support.
@@ -20,6 +21,7 @@ Jump Start Changelog
 * Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
 * Fixed: Accordion feature not working with Toggles element of Layout Builder.
 * Fixed: More minor RTL bug fixes.
+    * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
     * Tabs and pills of Tabs element now align properly to right.
     * Panels no longer force text to be aligned left.
     * Pricing table columns now display in correct order, from right-to-left.

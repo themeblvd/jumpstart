@@ -48,7 +48,7 @@ if ( typeof Object.create !== 'function' ) {
                 }
 
                 // ID for modal
-                self.id = self.target;
+                self.id = self.options.vimeo ? 'video-'+self.options.vimeo : self.target;
 
                 // Build the popup if needed
                 if ( self.options.build ) {
@@ -174,11 +174,26 @@ if ( typeof Object.create !== 'function' ) {
                 self.popup = self.popup.replace( '%content%', '<div id="optionsframework"></div>' );
             }
 
+            if ( self.options.vimeo ) {
+                self.popup = self.popup.replace( self.options.height+'-height-modal', 'modal-video');
+                self.popup = self.popup.replace( '%content%', '<iframe src="https://player.vimeo.com/video/'+this.options.vimeo+'?autoplay=1" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>' );
+            }
+
+            if ( self.options.custom ) {
+                self.popup = self.popup.replace( '%content%', '' );
+            }
+
             // Add to bottom of <body>. Will be removed
             // completely when modal is closed.
             $('body').append( self.popup );
 
             var $current = $('#'+self.id);
+
+            // Remove default button?
+            if ( ! self.options.button && ! self.options.button_secondary && ! self.options.button_delete ) {
+                $current.find('.media-frame-toolbar').remove();
+                $current.find('.themeblvd-modal').addClass('hide-toolbar');
+            }
 
             // Duplicate Button?
             if ( self.options.button_secondary ) {
@@ -452,6 +467,7 @@ if ( typeof Object.create !== 'function' ) {
         form: false,                    // Whether this modal is a set of options
         code_editor: false,             // Whether this modal is a code editor
         code_lang: 'html',              // If code editor, code language -- html, css, javascript
+        vimeo: '',                      // Vimeo video ID
         padding: false,                 // Size of modal - small, medium, large
         send_back: null,                // An object of something you want send to info back to, which you can utilize from callbacks
         css_class: '',                  // Optional CSS class to add to modal

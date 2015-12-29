@@ -6,6 +6,9 @@
  */
 function themeblvd_admin_init() {
 
+	// Framework welcome message
+	$welcome = Theme_Blvd_Welcome::get_instance();
+
 	// Allow theme options page to run if framework filters
 	// have don't have it hidden it and user is capable.
 	if ( themeblvd_supports('admin', 'options') && current_user_can( themeblvd_admin_module_cap( 'options' ) ) ) {
