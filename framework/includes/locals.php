@@ -241,6 +241,11 @@ function themeblvd_get_js_locals() {
 		$locals['sticky_logo'] = apply_filters('themeblvd_sticky_logo_uri', ''); // Optional override, so theme's header logo isn't used
 	}
 
+	// Custom scroll-to-section offset
+	if ( $offset = apply_filters('themeblvd_scroll_to_section_offset', '') ) {
+		$locals['scroll_to_section_offset'] = $offset;
+	}
+
 	// Tab deep linking -- i.e. link to a tab on a page and set it open
 	if ( apply_filters( 'themeblvd_tabs_deep_linking', false ) ) {
 		$locals['tabs_deep_linking'] = 'true';

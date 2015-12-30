@@ -649,8 +649,10 @@ jQuery(document).ready(function($) {
 
 		top = $(to).offset().top;
 
-		if ( themeblvd.sticky !== 'false' ) {
-			top = top - 48;
+		if ( themeblvd.scroll_to_section_offset ) {
+			top = top - parseInt( themeblvd.scroll_to_section_offset );
+		} else if ( themeblvd.sticky !== 'false' ) {
+			top = top - parseInt( themeblvd.sticky_offset );
 		}
 
 		$('html, body').animate({
