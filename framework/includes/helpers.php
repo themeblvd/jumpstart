@@ -310,7 +310,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 	}
 
 	// Posts per page
-	if ( is_array( $query ) && empty( $query['posts_per_page'] ) ) {
+	if ( is_array( $query ) && empty( $query['posts_per_page'] ) && ! isset( $query['post__in'] ) ) {
 
 		// Number of posts
 		if ( $type == 'grid' || $type == 'showcase' ) {
