@@ -1755,12 +1755,14 @@ function themeblvd_allowed_tags() {
 
 	global $allowedposttags;
 
-	// Match Theme Blvd tags with global HTML
-	// allowed for standard Posts/Pages.
-	$themeblvd_tags = $allowedposttags;
+	$tags = $allowedposttags;
 
-	// And make any adjustments
-	$themeblvd_tags['iframe'] = array(
+	$tags['a']['data-bg'] = true;
+	$tags['a']['data-bg-hover'] = true;
+	$tags['a']['data-text'] = true;
+	$tags['a']['data-text-hover'] = true;
+
+	$tags['iframe'] = array(
 		'style' 				=> true,
 		'width' 				=> true,
 		'height' 				=> true,
@@ -1770,12 +1772,13 @@ function themeblvd_allowed_tags() {
 		'webkitAllowFullScreen'	=> true,
 		'mozallowfullscreen' 	=> true
 	);
-	$themeblvd_tags['script'] = array(
+
+	$tags['script'] = array(
 		'type'					=> true,
 		'src' 					=> true
 	);
 
-	return apply_filters( 'themeblvd_allowed_tags', $themeblvd_tags );
+	return apply_filters('themeblvd_allowed_tags', $tags);
 }
 
 /**
