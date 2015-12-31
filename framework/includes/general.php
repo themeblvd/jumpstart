@@ -44,7 +44,7 @@ function themeblvd_include_fonts() {
 				$font = explode(':', $font['google']);
 				$name = trim(str_replace(' ', '+', $font[0]));
 
-				if ( ! isset($fonts[$name]) ) {
+				if ( ! isset($g_fonts[$name]) ) {
 					$g_fonts[$name] = array(
 						'style'		=> array(),
 						'subset'	=> array()
