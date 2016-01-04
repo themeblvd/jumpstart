@@ -246,7 +246,8 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		'frame'			=> apply_filters('themeblvd_featured_thumb_frame', false),
 		'link'			=> null, // FALSE to force no link, post, or thumbnail
 		'img_before'	=> null,
-		'img_after'		=> null
+		'img_after'		=> null,
+		'srcset'		=> true
 	));
 	$args = wp_parse_args( $args, $defaults );
 
@@ -319,6 +320,11 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 
 	$class = apply_filters('themeblvd_post_thumbnail_img_class', $class, $post->ID, $args['attachment_id']);
 
+	if ( ! $args['srcset'] ) {
+		add_filter('wp_calculate_image_sizes', 'themeblvd_return_false');
+		add_filter('wp_calculate_image_srcset', 'themeblvd_return_false');
+	}
+
 	// First attempt to get the actual post thumbnail for the
 	// post to make sure proper filtering is present for other
 	// plugins.
@@ -327,6 +333,11 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	// If no actual post thumbnail, we can work off a manually feed in attachment ID
 	if ( ! $output && $args['attachment_id'] ) {
 		$output = wp_get_attachment_image( $args['attachment_id'], $size, false, array('class' => $class) );
+	}
+
+	if ( ! $args['srcset'] ) {
+		remove_filter('wp_calculate_image_sizes', 'themeblvd_return_false');
+		remove_filter('wp_calculate_image_srcset', 'themeblvd_return_false');
 	}
 
 	// Apply content before/after image, if necessary

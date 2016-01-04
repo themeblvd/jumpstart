@@ -1767,3 +1767,21 @@ function themeblvd_is_200( $url ) {
 
 	return $code === 200;
 }
+
+/**
+ * Return false
+ *
+ * @since 2.6.0
+ */
+function themeblvd_return_false() {
+	return false;
+}
+
+/**
+ * Return true
+ *
+ * @since 2.6.0
+ */
+function themeblvd_return_true() {
+	return true;
+}
