@@ -4629,27 +4629,46 @@ button.mfp-arrow:active {
 	bottom: 0;
 	z-index: -1;
 }
-/* @noflip */
-.tb-parallax .parallax-figure img,
-.tb-parallax .parallax-figure .img {
-	display: block;
-	opacity: 0;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	max-width: none;
-	max-height: none;
-	min-width: 100%;
-	min-height: 120%;
-	-ms-transform: translate(-50%, 0); /* IE9 */
-	-webkit-transform: translate3d(-50%, 0, 0);
-	transform: translate3d(-50%, 0, 0);
-	transform: translateX(-50%);
-	-webkit-transition: opacity .3s ease-in-out;
-	transition: opacity .3s ease-in-out;
+@media (min-width: 992px) {
+	/* @noflip */
+	.tb-parallax .parallax-figure img,
+	.tb-parallax .parallax-figure .img {
+		display: block;
+		opacity: 0;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		max-width: none;
+		max-height: none;
+		min-width: 100%;
+		min-height: 120%;
+		-ms-transform: translate(-50%, 0); /* IE9 */
+		-webkit-transform: translate3d(-50%, 0, 0);
+		transform: translate3d(-50%, 0, 0);
+		transform: translateX(-50%);
+		-webkit-transition: opacity .3s ease-in-out;
+		transition: opacity .3s ease-in-out;
+	}
+	.tb-parallax .parallax-figure .img {
+		height: 150%;
+	}
 }
-.tb-parallax .parallax-figure .img {
-	height: 150%;
+@media (max-width: 991px) {
+	/* @noflip */
+	.tb-parallax .parallax-figure img,
+	.tb-parallax .parallax-figure .img {
+		min-width: 100%;
+		min-height: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-ms-transform: translate(-50%, -50%) !important; /* IE9 */
+		-webkit-transform: translate(-50%, -50%) !important;
+		transform: translate(-50%, -50%) !important;
+	}
+	.tb-parallax .parallax-figure .img {
+		height: 100%;
+	}
 }
 .tb-parallax .parallax-figure img.on,
 .tb-parallax .parallax-figure .img.on {

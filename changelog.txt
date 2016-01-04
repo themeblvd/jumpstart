@@ -16,6 +16,7 @@ Jump Start Changelog
     * Progressive loading for longer videos.
 * Improvement: Design enhancements for default post showcase display.
 * Improvement: Design enhancements for Magnific Popup lightbox navigation.
+* Improvement: Better mobile fallback for parallax background images.
 * Updated: FontAwesome to 4.5.
 * Updated: FlexSlider to 2.6.
 * Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
