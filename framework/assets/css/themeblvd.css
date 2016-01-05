@@ -4700,8 +4700,8 @@ button.mfp-arrow:active {
 .element-section > .element,
 .element-columns .element {
 	clear: both;
-	margin-bottom: 30px;
-	padding: 0.02px; /* margin overflow fix */
+	margin-bottom: 60px;
+	/* padding: 0.02px; /* margin overflow fix */
 }
 .element-section > .element.suck-down,
 .element-columns .element.suck-down {
@@ -4709,7 +4709,7 @@ button.mfp-arrow:active {
 }
 .element-section > .element.suck-up,
 .element-columns .element.suck-up {
-	margin-top: -20px;
+	margin-top: -50px;
 }
 .element-section > .element.first {
 	margin-top: 0;

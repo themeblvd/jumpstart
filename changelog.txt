@@ -17,6 +17,7 @@ Jump Start Changelog
 * Improvement: Design enhancements for default post showcase display.
 * Improvement: Design enhancements for Magnific Popup lightbox navigation.
 * Improvement: Better mobile fallback for parallax background images.
+* Improvement: More default spacing between elements in custom layouts.
 * Updated: FontAwesome to 4.5.
 * Updated: FlexSlider to 2.6.
 * Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
