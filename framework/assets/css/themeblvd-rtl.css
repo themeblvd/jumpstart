@@ -5977,8 +5977,21 @@ blockquote small {
 
 /* Divider */
 .tb-divider {
-	margin: 30px auto;
+	margin: 30px 0;
 	max-width: 1200px;
+	width: 100%;
+}
+.tb-divider.align-center {
+	margin-right: auto;
+	margin-left: auto;
+}
+/* @noflip */
+.tb-divider.align-left {
+	float: left;
+}
+/* @noflip */
+.tb-divider.align-right {
+	float: right;
 }
 .tb-divider.suck-up {
 	margin-top: 10px;

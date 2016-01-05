@@ -76,11 +76,12 @@ function themeblvd_get_divider( $args = array() ) {
 		'text_color'	=> '#666666',	// Color of icon or text
 		'text_size'		=> '15',		// Size of icon or text
 		'width'     	=> '',          // A width for the divider in pixels
-        'placement' 	=> 'equal'      // Where the divider sits between the content - equal, up (closer to content above), down (closer to content below)
+		'align'			=> 'center',	// How to horizontally align divider - center, left, right
+		'placement' 	=> 'equal'      // Where the divider sits between the content - equal, up (closer to content above), down (closer to content below)
     );
     $args = wp_parse_args( $args, $defaults );
 
-    $class = sprintf( 'tb-divider %s', $args['type'] );
+    $class = sprintf( 'tb-divider %s align-%s', $args['type'], $args['align'] );
 
     if ( $args['placement'] == 'up' || $args['placement'] == 'down' ) {
         $class .= ' suck-'.$args['placement'];
