@@ -1130,7 +1130,6 @@ function themeblvd_get_team_member( $args ){
         'name'          => '',      // Name of person
         'tagline'       => '',      // Tagline for person, Ex: Founder and CEO
         'icons'         => array(), // Social icons for themeblvd_contact_bar()
-        'icons_style'   => 'grey',  // Style of social icons - grey, light, dark, or color
         'text'          => ''       // Description for person
     );
     $args = wp_parse_args( $args, $defaults );
@@ -1138,32 +1137,37 @@ function themeblvd_get_team_member( $args ){
     $output = '<div class="tb-team-member">';
 
     if ( ! empty( $args['image']['src'] ) ) {
-        $output .= sprintf( '<div class="member-image"><img src="%s" alt="%s" /></div>', esc_url($args['image']['src']), esc_attr($args['image']['title']) );
-    }
 
-    $output .= '<div class="member-info clearfix">';
+		$output .= '<div class="member-image">';
 
-    $output .= '<div class="member-identity">';
+        $output .= sprintf( '<img src="%s" alt="%s" />', esc_url($args['image']['src']), esc_attr($args['image']['title']) );
 
-    if ( $args['name'] ) {
-        $output .= sprintf( '<span class="member-name">%s</span>', themeblvd_kses($args['name']) );
-    }
+		$output .= '<div class="member-info clearfix">';
 
-    if ( $args['tagline'] ) {
-        $output .= sprintf( '<span class="member-tagline">%s</span>', themeblvd_kses($args['tagline']) );
-    }
+	    $output .= '<div class="member-identity">';
 
-    $output .= '</div><!-- .member-identity (end) -->';
+	    if ( $args['name'] ) {
+	        $output .= sprintf( '<h5 class="member-name">%s</h5>', themeblvd_kses($args['name']) );
+	    }
 
-    if ( $args['icons'] ) {
-        $icon_args = array(
-            'style' => $args['icons_style'],
-            'class' => 'member-contact'
-        );
-        $output .= themeblvd_get_contact_bar( $args['icons'], $icon_args );
-    }
+	    if ( $args['tagline'] ) {
+	        $output .= sprintf( '<span class="member-tagline">%s</span>', themeblvd_kses($args['tagline']) );
+	    }
 
-    $output .= '</div><!-- .member-info (end) -->';
+	    $output .= '</div><!-- .member-identity (end) -->';
+
+	    if ( $args['icons'] ) {
+	        $output .= themeblvd_get_contact_bar( $args['icons'], array(
+	            'style'		=> 'light',
+	            'class'		=> 'member-contact',
+				'tooltip'	=> false
+	        ));
+	    }
+
+	    $output .= '</div><!-- .member-info (end) -->';
+
+		$output .= '</div><!-- .member-image (end) -->';
+	}
 
     if ( $args['text'] ) {
         $output .= sprintf('<div class="member-text entry-content">%s</div><!-- .member-text (end) -->', themeblvd_get_content($args['text']) );

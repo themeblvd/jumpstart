@@ -4851,13 +4851,13 @@ button.mfp-arrow:active {
 @media (max-width: 991px) {
 	.element-columns.stack-md > .row > .col:not(.has-bg),
 	.element-columns.stack-md > .container-md-height > .row > .col:not(.has-bg) {
-		margin-bottom: 30px;
+		margin-bottom: 50px;
 	}
 }
 @media (max-width: 767px) {
 	.element-columns.stack-sm > .row > .col:not(.has-bg),
 	.element-columns.stack-sm > .container-sm-height > .row > .col:not(.has-bg) {
-		margin-bottom: 30px;
+		margin-bottom: 50px;
 	}
 }
 
@@ -6761,35 +6761,81 @@ blockquote small {
 }
 
 /* Team Member */
-.tb-team-member .member-image,
+.tb-team-member .member-image {
+	position: relative;
+}
+.tb-team-member .member-image:before {
+	content: "";
+	background-color: #000000;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	-moz-transition: opacity 0.25s ease-out;
+	-webkit-transition: opacity 0.25s ease-out;
+	transition: opacity 0.25s ease-out;
+	z-index: 1;
+}
+.tb-team-member .member-image:hover:before {
+	opacity: .7;
+}
 .tb-team-member .member-info {
-	margin-bottom: 10px;
+	color: #ffffff;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	text-align: center;
+	-ms-transform: translate(0, -50%); /* IE9 */
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	-moz-transition: opacity 0.25s ease-out;
+	-webkit-transition: opacity 0.25s ease-out;
+	transition: opacity 0.25s ease-out;
+	z-index: 2;
+}
+.tb-team-member .member-image:hover .member-info {
+	opacity: 1;
 }
 .tb-team-member .member-identity {
-	float: left;
-}
-.tb-team-member .member-name,
-.tb-team-member .member-tagline {
-	display: block;
+	padding-bottom: 11px;
+	position: relative;
 }
 .tb-team-member .member-name {
-	font-size: 1.1em;
-	font-weight: bold;
+	color: inherit;
+	font-size: 16px;
+	margin: 0 0 4px 0;
 }
-.tb-team-member .member-contact {
-	float: right;
+.tb-team-member .member-tagline {
+	display: block;
+	font-size: 12px;
 }
-.tb-team-member .member-text p:last-child {
-	margin-bottom: 0;
+.tb-team-member .tb-social-icons {
+	display: inline-block;
+	padding-top: 12px;
+	position: relative;
 }
-@media (max-width: 991px) {
-	.tb-team-member .member-identity,
-	.tb-team-member .member-contact {
-		float: none;
-	}
-	.tb-team-member .member-contact {
-		margin-top: 5px;
-	}
+.tb-team-member .tb-social-icons:before {
+	content: "";
+	background-color: #ffffff;
+	border-radius: 1px;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+}
+.tb-team-member .tb-social-icons > li {
+	float: none;
+	display: inline-block;
+}
+.tb-team-member .member-text p {
+	margin: 20px 0 0 0;
 }
 
 /* Testimonial */
