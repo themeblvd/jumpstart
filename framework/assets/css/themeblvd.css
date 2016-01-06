@@ -4668,6 +4668,9 @@ button.mfp-arrow:active {
 		-webkit-transform: translate(-50%, -50%) !important;
 		transform: translate(-50%, -50%) !important;
 	}
+	.tb-parallax .parallax-figure img {
+		object-fit: cover;
+	}
 	.tb-parallax .parallax-figure .img {
 		height: 100%;
 	}
