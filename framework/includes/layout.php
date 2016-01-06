@@ -385,7 +385,7 @@ function themeblvd_element( $args ) {
 
 		// Contact Buttons
 		case 'contact' :
-			themeblvd_contact_bar( $args['options']['buttons'], $args['options'] );
+			echo themeblvd_get_contact_bar( $args['options']['buttons'], $args['options'] );
 			break;
 
 		/*------------------------------------------------------*/
