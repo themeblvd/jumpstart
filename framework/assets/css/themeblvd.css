@@ -4705,11 +4705,11 @@ button.mfp-arrow:active {
 }
 .element-section > .element.suck-down,
 .element-columns .element.suck-down {
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 .element-section > .element.suck-up,
 .element-columns .element.suck-up {
-	margin-top: -50px;
+	margin-top: -30px;
 }
 .element-section > .element.first {
 	margin-top: 0;
@@ -6801,7 +6801,7 @@ blockquote small {
 	opacity: 1;
 }
 .tb-team-member .member-identity {
-	padding-bottom: 11px;
+	padding-bottom: 12px;
 	position: relative;
 }
 .tb-team-member .member-name {
@@ -6815,7 +6815,7 @@ blockquote small {
 }
 .tb-team-member .tb-social-icons {
 	display: inline-block;
-	padding-top: 12px;
+	padding-top: 14px;
 	position: relative;
 }
 .tb-team-member .tb-social-icons:before {
