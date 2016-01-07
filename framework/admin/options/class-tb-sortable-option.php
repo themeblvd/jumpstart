@@ -2070,7 +2070,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'bold',
 				'name'		=> null,
-				'desc'		=> __('Bold the text.', 'themeblvd'),
+				'desc'		=> __('Use header font.', 'themeblvd'),
 				'type'		=> 'checkbox',
 				'std'		=> '0'
 			),

@@ -659,16 +659,16 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 			// CSS class
 			$class = sprintf('tb-text-block text-block-%s', $i);
 
-			if ( $block['bold'] ) {
-				$class .= ' bold';
-			}
-
 			if ( $block['italic'] ) {
 				$class .= ' italic';
+			} else {
+				$class .= ' no-italic';
 			}
 
 			if ( $block['caps'] ) {
 				$class .= ' caps';
+			} else {
+				$class .= ' no-caps';
 			}
 
 			// Font Size (outer style)
@@ -715,7 +715,7 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 			}
 
 			// Content
-			if ( $block['wpautop'] ) {
+			if ( $block['wpautop'] && ! $block['bold'] ) {
 				$content = themeblvd_get_content($block['text']);
 			} else {
 				$content = do_shortcode( themeblvd_kses($block['text']) );
@@ -723,7 +723,13 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 
 			// Output
 			$output .= sprintf("\n\t<div class=\"tb-text-block-wrap %s\" style=\"%s\">", $size_class, $size_style);
-			$output .= sprintf("\n\t\t<div class=\"%s\" style=\"%s\">\n\t\t\t%s\t\t</div><!-- .tb-text-block (end) -->", $class, $style, $content);
+
+			if ( $block['bold'] ) {
+				$output .= sprintf("\n\t\t<%1\$s class=\"%2\$s\" style=\"%3\$s\">%4\$s</%1\$s><!-- .tb-text-block (end) -->", apply_filters('themeblvd_text_block_header_tag', 'h1'), $class, $style, $content);
+			} else {
+				$output .= sprintf("\n\t\t<div class=\"%s\" style=\"%s\">\n\t\t\t%s\t\t</div><!-- .tb-text-block (end) -->", $class, $style, $content);
+			}
+
 			$output .= "\n\t</div><!-- .tb-text-block-wrap (end) -->";
 
 			$i++;

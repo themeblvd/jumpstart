@@ -7469,14 +7469,20 @@ blockquote small {
 	padding: .2em .5em;
 	text-shadow: none;
 }
-.tb-text-block.bold {
-	font-weight: bold;
-}
-.tb-text-block.italic {
+.tb-text-block-wrap .tb-text-block.italic {
 	font-style: italic;
 }
-.tb-text-block.caps {
+.tb-text-block-wrap .tb-text-block.no-italic {
+	font-style: normal;
+}
+.tb-text-block-wrap .tb-text-block.caps {
 	text-transform: uppercase;
+}
+.tb-text-block-wrap .tb-text-block.no-caps {
+	text-transform: none;
+}
+.jumbotron .tb-text-block-wrap .tb-text-block {
+	font-size: inherit; /* Make sure user-selected size sticks */
 }
 
 /* =Charts and Graphs (stats.php)
