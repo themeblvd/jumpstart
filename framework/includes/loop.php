@@ -989,6 +989,7 @@ function themeblvd_get_post_slider( $args ) {
 		'nav_standard'		=> '1',						// Whether to show standard navigation dots
 		'nav_arrows'		=> '1',						// Whether to show navigation arrows
 		'nav_thumbs'		=> '0',						// Whether to show navigation image thumbnails
+		'shade'				=> '0',						// Whether to shade entire image for text readability
 		'link'				=> '1',						// Whether linked slides have animated hover overlay effect
     	'title'				=> '1',						// Whether to include post title on each slide
     	'meta'				=> '1',						// Whether to include post meta on each slide

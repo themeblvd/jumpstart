@@ -5182,6 +5182,27 @@ blockquote small {
 .tb-simple-slider .carousel-caption p {
 	margin-bottom: 10px;
 }
+.tb-simple-slider .slide-link {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+.tb-simple-slider .bg-shade {
+	background-color: rgba(0,0,0,.4);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+.tb-simple-slider.dark-text .bg-shade {
+	background-color: rgba(255,255,255,.4);
+}
 
 /* Bootstrap fade slider (used for bg slideshow and jumbotron slider) */
 .tb-bg-slideshow .carousel-inner,
@@ -5602,7 +5623,8 @@ blockquote small {
 	text-shadow: none;
 }
 .tb-post-slider .entry-meta a,
-.tb-post-slider .entry-meta .sep {
+.tb-post-slider .entry-meta .sep,
+.tb-post-slider .entry-meta .fa {
 	color: inherit;
 }
 .tb-simple-slider.style-2 .tb-slider-arrows,

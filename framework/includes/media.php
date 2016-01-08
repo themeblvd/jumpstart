@@ -817,6 +817,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		'nav_arrows'			=> '1',					// Whether to show navigation arrows
 		'arrows'				=> 'standard',			// Nav arrow style - standard, mini
 		'nav_thumbs'			=> '0',					// Whether to show navigation image thumbnails
+		'shade'					=> '0',					// Whether entire image is shaded
 		'link'					=> '1',					// Whether linked slides have animated hover overlay effect
 		'thumb_size'			=> 'smaller',			// Size of thumbnails - small, smaller, smallest or custom int
 		'dark_text'				=> '0',					// Whether to use dark text for title/descriptions/standard nav, use when images are light
@@ -973,13 +974,46 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			$class = 'item';
 
+			if ( $img['link'] && $args['thumb_link'] ) {
+
+				$class .= ' tb-thumb-link';
+
+				if ( $img['link'] == 'image' || $img['link'] == 'video' ) {
+					$class .= ' '.$img['link'];
+				} else if ( $img['link'] == '_self' ) {
+					$class .= ' post';
+				} else if ( $img['link'] == '_blank' ) {
+					$class .= ' external';
+				}
+			}
+
 			if ( $counter == 0 ) {
 				$class .= ' active';
 			}
 
 			$output .= sprintf( '<div class="%s">', $class );
 
-			$image = '';
+			if ( $img['link'] ) {
+
+				if ( $img['link'] == 'image' || $img['link'] == 'video' ) {
+
+					$output .= themeblvd_get_link_to_lightbox(array(
+						'item' 		=> '',
+						'link' 		=> $img['link_url'],
+						'title' 	=> $img['alt']
+					));
+
+				} else {
+
+					$output .= sprintf( '<a href="%s" title="%s" class="slide-link" target="%s"></a>', esc_url($img['link_url']), esc_attr($img['alt']), esc_attr($img['link']));
+
+				}
+
+			}
+
+			if ( $args['shade'] ) {
+				$output .= '<div class="bg-shade"></div>';
+			}
 
 			$img_src = esc_url($img['src']);
 
@@ -988,9 +1022,9 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			}
 
 			if ( $args['cover'] ) {
-				$image = sprintf( '<div class="img" style="background-image: url(%s);"></div>', $img_src );
+				$output .= sprintf( '<div class="img" style="background-image: url(%s);"></div>', $img_src );
 			} else {
-				$image = sprintf( '<img src="%s" alt="%s" />', $img_src, esc_attr($img['alt']) );
+				$output .= sprintf( '<img src="%s" alt="%s" />', $img_src, esc_attr($img['alt']) );
 			}
 
 			if ( $img['title'] || $img['desc'] ) {
@@ -1001,65 +1035,26 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 					$caption_style = sprintf( 'background-color: %s; background-color: %s;', $args['caption_bg_color'], themeblvd_get_rgb( $args['caption_bg_color'], $args['caption_bg_opacity'] ) );
 				}
 
-				$image .= '<div class="carousel-caption" style="'.esc_attr($caption_style).'">';
+				$output .= '<div class="carousel-caption" style="'.esc_attr($caption_style).'">';
 
 				if ( $img['title'] ) {
-					$image .= sprintf( '<h3>%s</h3>', themeblvd_kses($img['title']) );
+					$output .= sprintf( '<h3>%s</h3>', themeblvd_kses($img['title']) );
 				}
 
 				if ( $img['desc'] ) {
 					if ( $img['desc_wpautop'] ) {
-						$image .= wpautop( themeblvd_kses($img['desc']) );
+						$output .= wpautop( themeblvd_kses($img['desc']) );
 					} else {
-						$image .= themeblvd_kses($img['desc']);
+						$output .= themeblvd_kses($img['desc']);
 					}
 				}
 
-				$image .= '</div><!-- .carousel-caption-wrap (end) -->';
+				$output .= '</div><!-- .carousel-caption-wrap (end) -->';
 
 			}
 
 			if ( $img['addon'] ) {
 				$output .= $img['addon'];
-			}
-
-			if ( $img['link'] ) {
-
-				$a_class = 'slide-link';
-
-				if ( $args['thumb_link'] ) {
-					$a_class .= ' tb-thumb-link';
-				}
-
-				if ( $img['link'] == 'image' || $img['link'] == 'video' ) {
-
-					if ( $args['thumb_link'] ) {
-						$a_class .= ' '.$img['link'];
-					}
-
-					$lightbox = array(
-						'item' 		=> $image,
-						'link' 		=> $img['link_url'],
-						'title' 	=> $img['alt'],
-						'class' 	=> $a_class
-					);
-					$output .= themeblvd_get_link_to_lightbox( $lightbox );
-
-				} else {
-
-					if ( $args['thumb_link'] ) {
-						if ( $img['link'] == '_self' ) {
-							$a_class .= ' post';
-						} else if ( $img['link'] == '_blank' ) {
-							$a_class .= ' external';
-						}
-					}
-
-					$output .= sprintf( '<a href="%s" title="%s" class="%s" target="%s">%s</a>', esc_url($img['link_url']), esc_attr($img['alt']), $a_class, esc_attr($img['link']), $image );
-				}
-
-			} else {
-				$output .= $image;
 			}
 
 			$output .= '</div><!-- .item (end) -->';
