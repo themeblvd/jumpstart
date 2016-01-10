@@ -1470,7 +1470,7 @@ function themeblvd_texture_browser( $args = array() ) {
 
 										if ( $id == 'divider' ) {
 											echo '<div class="texture-header">';
-											echo '<h2>'.esc_html__('Light Textures <span>(Above textures tweaked slightly to be overlaid on lighter background colors)</span>', 'themeblvd').'</h2>';
+											echo '<h2>'.esc_html__('Light Textures', 'themeblvd').' <span>('.esc_html__('Above textures tweaked slightly to be overlaid on lighter background colors', 'themeblvd').')</span></h2>';
 											echo '</div>';
 											continue;
 										}
