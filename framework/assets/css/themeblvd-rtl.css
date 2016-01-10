@@ -4915,6 +4915,9 @@ button.mfp-arrow:active {
 .tb-headline h6 {
 	margin: 0 0 5px 0;
 }
+.tb-headline p:last-child {
+	margin-bottom: 0;
+}
 
 /* Quote */
 .entry-content blockquote {
