@@ -100,15 +100,10 @@ function themeblvd_get_divider( $args = array() ) {
 		}
 	}
 
-    $style = '';
+	$style = '';
 
     if ( $args['width'] ) {
         $style .= sprintf( 'max-width: %spx;', $args['width'] );
-    }
-
-    if ( $args['color'] && $args['type'] != 'shadow'  ) {
-        $style .= sprintf( 'border-color: %s;', $args['color'] );
-        $style .= sprintf( 'border-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
     }
 
 	if ( ($args['insert'] == 'icon' || $args['insert'] == 'text')  && $args['type'] != 'shadow' ) {
@@ -121,13 +116,74 @@ function themeblvd_get_divider( $args = array() ) {
 		}
 	}
 
-	if ( $args['insert'] == 'text' && $args['type'] != 'shadow' ) {
-		$output = sprintf( '<div class="%s" style="%s"><span class="text">%s</span></div>', esc_attr($class), esc_attr($style), themeblvd_kses($args['text']) );
-	} else if ( $args['insert'] == 'icon' && $args['type'] != 'shadow' ) {
-		$output = sprintf( '<div class="%s" style="%s"><i class="fa fa-%s"></i></div>', esc_attr($class), esc_attr($style), esc_attr($args['icon']) );
-	} else {
-    	$output = sprintf( '<div class="%s" style="%s"></div>', esc_attr($class), esc_attr($style) );
+	$output = sprintf( '<div class="%s" style="%s">', esc_attr($class), esc_attr($style) );
+
+	if ( $args['type'] != 'shadow' ) {
+
+		$style = '';
+
+		if ( $args['color'] ) {
+			if ( $args['type'] == 'solid' || $args['type'] == 'thick-solid' ) {
+				$style .= sprintf( 'background-color: %s;', $args['color'] );
+		        $style .= sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
+			} else if ( $args['type'] == 'dashed' || $args['type'] == 'thick-dashed' ) {
+				$style .= sprintf( 'border-color: %s;', $args['color'] );
+		        $style .= sprintf( 'border-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
+			}
+		}
+
+		if ( $args['color'] && $args['type'] != 'shadow' ) {
+			if ( in_array( $args['type'], array('solid', 'thick-solid', 'double-solid' ) ) ) {
+				$style .= sprintf( 'background-color: %s;', $args['color'] );
+		        $style .= sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
+			} else {
+				$style .= sprintf( 'border-color: %s;', $args['color'] );
+		        $style .= sprintf( 'border-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
+			}
+		}
+
+		if ( $args['insert'] == 'text' || $args['insert'] == 'icon' ) {
+
+			if ( $args['insert'] == 'text' ) {
+				$divider = sprintf( '<span class="text">%s</span>', themeblvd_kses($args['text']) );
+			} else if ( $args['insert'] == 'icon' ) {
+				$divider = sprintf( '<i class="fa fa-%s"></i>', esc_attr($args['icon']) );
+			}
+
+			if ( $args['type'] == 'double-solid' ) {
+
+				$output .= '<span class="left">';
+				$output .= sprintf( '<span class="divider top" style="%s"></span>', esc_attr($style) );
+				$output .= sprintf( '<span class="divider bottom" style="%s"></span>', esc_attr($style) );
+				$output .= '</span>';
+
+				$output .= $divider;
+
+				$output .= '<span class="right">';
+				$output .= sprintf( '<span class="divider top" style="%s"></span>', esc_attr($style) );
+				$output .= sprintf( '<span class="divider bottom" style="%s"></span>', esc_attr($style) );
+				$output .= '</span>';
+
+			} else {
+				$output .= sprintf( '<span class="divider left" style="%s"></span>', esc_attr($style) );
+				$output .= $divider;
+				$output .= sprintf( '<span class="divider right" style="%s"></span>', esc_attr($style) );
+			}
+
+		} else {
+
+			if ( $args['type'] == 'double-solid' ) {
+				$output .= sprintf( '<span class="divider top" style="%s"></span>', esc_attr($style) );
+				$output .= sprintf( '<span class="divider bottom" style="%s"></span>', esc_attr($style) );
+			} else {
+				$output .= sprintf( '<span class="divider" style="%s"></span>', esc_attr($style) );
+			}
+
+		}
+
 	}
+
+	$output .= '</div><!-- .tb-divider (end) -->';
 
     return apply_filters( 'themeblvd_divider', $output, $args['type'] );
 }

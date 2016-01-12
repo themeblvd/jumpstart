@@ -6009,6 +6009,7 @@ blockquote small {
 /* Divider */
 .tb-divider {
 	margin: 30px 0;
+	position: relative;
 	max-width: 1200px;
 	width: 100%;
 }
@@ -6034,26 +6035,48 @@ blockquote small {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-.tb-divider.solid {
-	border-top: 1px solid #cccccc;
+.tb-divider .divider {
+	display: block;
 }
-.tb-divider.thick-solid {
-	border-top: 5px solid #cccccc;
+.tb-divider.solid .divider,
+.tb-divider.thick-solid .divider {
+	background-color: #cccccc;
+	border-radius: 1px;
+	height: 2px;
+}
+.tb-divider.thick-solid .divider {
+	height: 5px;
 }
 .tb-divider.double-solid {
-	border-top: 1px solid #cccccc;
-	border-bottom: 1px solid #cccccc;
+	position: relative;
 	height: 7px;
 }
-.tb-divider.dashed {
-	border-top: 1px dashed #cccccc;
+.tb-divider.double-solid .top,
+.tb-divider.double-solid .bottom {
+	background-color: #cccccc;
+	border-radius: 1px;
+	display: block;
+	position: absolute;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
 }
-.tb-divider.thick-dashed {
+.tb-divider.double-solid .top {
+	top: 0;
+}
+.tb-divider.double-solid .bottom {
+	bottom: 0;
+}
+.tb-divider.dashed .divider {
+	border-top: 2px dashed #cccccc;
+}
+.tb-divider.thick-dashed .divider {
 	border-top: 5px dashed #cccccc;
 }
-.tb-divider.double-dashed {
-	border-top: 1px dashed #cccccc;
-	border-bottom: 1px dashed #cccccc;
+.tb-divider.double-dashed .divider {
+	border-top: 2px dashed #cccccc;
+	border-bottom: 2px dashed #cccccc;
 	height: 7px;
 }
 .tb-divider.shadow {
@@ -6076,81 +6099,48 @@ blockquote small {
 	height: 6px;
 	width: 100%;
 }
-.element-divider {
-	margin-bottom: 0;
-	padding-bottom: 0;
-}
 .tb-divider.has-insert {
-	border-width: 0;
 	overflow: hidden;
-    text-align: center;
+	text-align: center;
 }
-.tb-divider.has-insert:before,
-.tb-divider.has-insert:after {
-	content: "";
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
+.tb-divider.has-insert .left,
+.tb-divider.has-insert .right {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
     width: 50%;
-	height: 1px;
 }
 /* @noflip */
-.tb-divider.has-insert:before {
-    right: 0.5em;
+.tb-divider.has-insert .left {
+    right: 0.8em;
     margin-left: -50%;
 }
 /* @noflip */
-.tb-divider.has-insert:after {
-    left: 0.5em;
+.tb-divider.has-insert .right {
+    left: 0.8em;
     margin-right: -50%;
 }
-.tb-divider.solid.has-insert:before,
-.tb-divider.solid.has-insert:after,
-.tb-divider.dashed.has-insert:before,
-.tb-divider.dashed.has-insert:after {
-	border-top-width: 1px;
-	border-top-style: solid;
-	border-top-color: inherit;
+.tb-divider.solid.has-insert .left,
+.tb-divider.solid.has-insert .right {
+	height: 2px;
 }
-.tb-divider.dashed.has-insert:before,
-.tb-divider.dashed.has-insert:after {
-	border-top-style: dashed;
-}
-.tb-divider.thick-solid.has-insert:before,
-.tb-divider.thick-solid.has-insert:after,
-.tb-divider.thick-dashed.has-insert:before,
-.tb-divider.thick-dashed.has-insert:after {
-	border-top-width: 5px;
-	border-top-style: solid;
-	border-top-color: inherit;
-}
-.tb-divider.thick-dashed.has-insert:before,
-.tb-divider.thick-dashed.has-insert:after {
-	border-top-style: dashed;
-}
-.tb-divider.double-solid.has-insert,
-.tb-divider.double-dashed.has-insert {
-	height: auto;
-}
-.tb-divider.double-solid.has-insert:before,
-.tb-divider.double-solid.has-insert:after,
-.tb-divider.double-dashed.has-insert:before,
-.tb-divider.double-dashed.has-insert:after {
-	border-top-width: 1px;
-	border-top-style: solid;
-	border-top-color: inherit;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: inherit;
+.tb-divider.double-solid.has-insert .left,
+.tb-divider.double-solid.has-insert .right {
 	height: 7px;
 }
-.tb-divider.double-dashed.has-insert:before,
-.tb-divider.double-dashed.has-insert:after {
-	border-top-style: dashed;
-	border-bottom-style: dashed;
-}
 .tb-divider.has-icon .fa {
-	width: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+	line-height: 1.6em;
+    margin-top: -.8em;
+    margin-left: -.8em;
+	width: 1.6em;
+	height: 1.6em;
+    text-align: center;
+}
+.tb-divider.has-text {
+	height: auto;
 }
 .tb-divider.has-text .text {
 	margin: 0 .5em;

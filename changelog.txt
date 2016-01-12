@@ -16,6 +16,7 @@ Jump Start Changelog
     * Progressive loading for longer videos.
 * Improvement: Design enhancements for default post showcase display.
 * Improvement: Design enhancements for Magnific Popup lightbox navigation.
+* Improvement: Design enhancements to Divider element.
 * Improvement: Better mobile fallback for parallax background images.
 * Improvement: Redesign of Team Member element.
 * Improvement: With a hero unit, when selecting to bold text, a header tag will now be used, allowing for more flexibility in fonts used.
