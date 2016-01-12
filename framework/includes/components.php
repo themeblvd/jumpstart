@@ -1022,7 +1022,7 @@ function themeblvd_get_tabs( $id, $args ) {
                 $class = 'active';
             }
 
-            $name = $tab['title'];
+			$name = $tab['title'];
 
             if ( $deep ) {
                 $tab_id = str_replace( ' ', '_', $name );
@@ -1059,7 +1059,7 @@ function themeblvd_get_tabs( $id, $args ) {
             }
 
             if ( $deep ) {
-                $tab_id = str_replace( ' ', '_', $name );
+                $tab_id = str_replace( ' ', '_', $tab['title'] );
                 $tab_id = preg_replace('/\W/', '', strtolower($tab_id) );
             } else {
                 $tab_id = $id.'-'.$tab_id;

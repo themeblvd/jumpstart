@@ -28,6 +28,7 @@ Jump Start Changelog
 * Fixed: When setting an element to pull from a list of pages, the total number of pages returned shouldn't be interfered with.
 * Fixed: Contact Bar element was outputting the set of icons twice.
 * Fixed: SPAN HTML tags showing in texture browser.
+* Fixed: When `themeblvd_tabs_deep_linking` is filtered to true, tab content wasn't changing properly.
 * Fixed: More minor RTL bug fixes.
     * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
     * Tabs and pills of Tabs element now align properly to right.
