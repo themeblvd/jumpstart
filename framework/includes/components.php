@@ -122,16 +122,6 @@ function themeblvd_get_divider( $args = array() ) {
 
 		$style = '';
 
-		if ( $args['color'] ) {
-			if ( $args['type'] == 'solid' || $args['type'] == 'thick-solid' ) {
-				$style .= sprintf( 'background-color: %s;', $args['color'] );
-		        $style .= sprintf( 'background-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
-			} else if ( $args['type'] == 'dashed' || $args['type'] == 'thick-dashed' ) {
-				$style .= sprintf( 'border-color: %s;', $args['color'] );
-		        $style .= sprintf( 'border-color: %s;', themeblvd_get_rgb( $args['color'], $args['opacity'] ) );
-			}
-		}
-
 		if ( $args['color'] && $args['type'] != 'shadow' ) {
 			if ( in_array( $args['type'], array('solid', 'thick-solid', 'double-solid' ) ) ) {
 				$style .= sprintf( 'background-color: %s;', $args['color'] );
