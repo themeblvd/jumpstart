@@ -267,7 +267,7 @@ function themeblvd_get_progress_bar( $args ) {
     $output = sprintf( '<div class="%s">', $class );
 
     if ( $args['label'] ) {
-        $output .= sprintf('<span class="label text">%s</span>', esc_attr($args['label']));
+        $output .= sprintf('<h5 class="label text">%s</h5>', esc_attr($args['label']));
     }
 
     if ( $args['label_value'] ) {

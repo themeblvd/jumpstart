@@ -7600,26 +7600,34 @@ blockquote small {
 	position: relative;
 }
 .tb-progress.has-label {
-	padding-top: 16px;
+	padding-top: 1.42em;
+}
+.tb-progress .progress {
+	border-radius: 2px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 .tb-progress .progress-bar {
+	-webkit-box-shadow: none;
+	box-shadow: none;
 	float: right;
 }
 .tb-progress .label {
 	color: inherit;
 	display: block;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: normal;
 	line-height: 1;
+	margin: 0;
 	padding: 0;
 	position: absolute;
 	top: 0;
 }
 .tb-progress .label.text {
-	right: 5px;
+	right: 2px;
 }
 .tb-progress .label.value {
-	left: 5px;
+	left: 2px;
 }
 
 /* =Pages
