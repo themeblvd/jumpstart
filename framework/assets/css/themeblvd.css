@@ -6860,7 +6860,8 @@ blockquote small {
 	display: inline-block;
 }
 .tb-team-member .member-text p {
-	margin: 20px 0 0 0;
+	font-size: 14px;
+	margin: 20px 5px 0 5px;
 }
 
 /* Testimonial */
