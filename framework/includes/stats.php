@@ -313,7 +313,7 @@ function themeblvd_get_progress_bar( $args ) {
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for milestone block.
+ * @param array $args Arguments for progress bar
  */
 function themeblvd_progress_bar( $args ) {
     echo themeblvd_get_progress_bar( $args );
@@ -324,7 +324,7 @@ function themeblvd_progress_bar( $args ) {
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for milestone block.
+ * @param array $args Arguments for progress bars
  */
 function themeblvd_get_progress_bars( $args ) {
 
@@ -353,7 +353,7 @@ function themeblvd_get_progress_bars( $args ) {
  *
  * @since 2.5.0
  *
- * @param array $args Arguments for milestone block.
+ * @param array $args Arguments for progress bars
  */
 function themeblvd_progress_bars( $args ) {
     echo themeblvd_get_progress_bars( $args );

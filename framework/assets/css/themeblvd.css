@@ -7550,7 +7550,8 @@ blockquote small {
 .tb-milestone.boxed {
 	border: 1px solid #f2f2f2;
 	border-color: rgba(220,220,220,.4);
-	padding: 20px 40px;
+	border-radius: 2px;
+	padding: 30px 40px;
 }
 .entry-content .tb-milestone {
 	margin-bottom: 20px;
@@ -7564,9 +7565,27 @@ blockquote small {
 .tb-milestone .milestone {
 	font-size: 50px;
 }
-.tb-milestone .tb-divider {
-	margin-top: 2px;
-	margin-bottom: 7px;
+.tb-milestone .text {
+	margin-top: 15px;
+	padding-top: 20px;
+	position: relative;
+}
+/* @noflip */
+.tb-milestone .text:before {
+	content: "";
+	background-color: #f2f2f2;
+	background-color: rgba(220,220,220,.4);
+	border-radius: 1px;
+	display: block;
+	margin-left: -35px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 70px;
+	height: 2px;
+}
+.text-light .tb-milestone .text:before {
+	background-color: #ffffff;
 }
 @media (max-width: 1199px) {
 	.tb-milestone .milestone {
