@@ -6429,6 +6429,9 @@ blockquote small {
 .entry-content .tb-logos {
 	margin-bottom: 20px;
 }
+.element-partners > .tb-logos {
+	margin-bottom: 0;
+}
 .tb-logos > .title {
 	margin: 0 0 5px 0;
 }
