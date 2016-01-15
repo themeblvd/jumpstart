@@ -90,7 +90,7 @@ class Theme_Blvd_Plugin_Management {
 			'builder' => array(
 				'name'		=> 'Theme Blvd Layout Builder',
 				'slug'		=> 'theme-blvd-layout-builder',
-				'suggested'	=> '2.0.0',
+				'suggested'	=> '2.0.9.5',
 				'current'	=> '',
 				'constant'	=> 'TB_BUILDER_PLUGIN_VERSION'
 			),
@@ -208,7 +208,7 @@ class Theme_Blvd_Plugin_Management {
 		$url .= sprintf( '&security=%s', wp_create_nonce('themeblvd-plugin-nag') );
 
 		echo '<div class="error">';
-		echo '<p>'.sprintf(esc_html__('For everything to work properly with your current version of the %s theme, you must update the following plugins.', 'themeblvd'), '<em>'.$this->theme->get('Name').'</em>').'</p>';
+		echo '<p>'.sprintf(esc_html__('For everything to work properly with your current version of the %s theme, you should update the following plugins.', 'themeblvd'), '<em>'.$this->theme->get('Name').'</em>').'</p>';
 		echo '<ol>';
 
 		foreach ( $this->updates as $update ) {
