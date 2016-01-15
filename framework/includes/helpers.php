@@ -215,21 +215,21 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 	}
 
-	// List of pages
+	// List of pages (but will allow standard posts and portfolio items also)
 	if ( ! isset( $query ) && $source == 'pages' && ! empty( $options['pages'] ) ) {
 
 		$options['pages'] = str_replace( ' ', '', $options['pages'] );
 		$options['pages'] = explode( ',', $options['pages'] );
 
 		$query = array(
-			'post_type' => 'page',
+			'post_type'	=> apply_filters('themeblvd_page_list_post_types', array('page', 'post', 'portfolio_item')),
 			'post__in' 	=> array(),
 			'orderby'	=> 'post__in'
 		);
 
 		if ( $options['pages'] ) {
 			foreach ( $options['pages'] as $pagename ) {
-				$query['post__in'][] = themeblvd_post_id_by_name( $pagename, 'page' );
+				$query['post__in'][] = themeblvd_post_id_by_name( $pagename );
 			}
 		}
 	}
