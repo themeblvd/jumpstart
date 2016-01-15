@@ -8,6 +8,7 @@ Jump Start Changelog
 * New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552).
 * New: [Adobe Typekit](https://typekit.com) support to typography theme options.
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
+* New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
 * Improvement: Expanded video background support.
     * YouTube and Vimeo support added.
     * Simplified options for inputting video.

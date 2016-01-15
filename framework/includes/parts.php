@@ -1450,7 +1450,7 @@ function themeblvd_get_to_section( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$class = 'tb-scroll-to-section';
+	$class = 'tb-scroll-to-section tb-scroll-to';
 
 	if ( $args['class'] ) {
 		$class .= ' '.esc_attr($args['class']);

@@ -635,7 +635,7 @@ jQuery(document).ready(function($) {
 
 	}
 
-	$('.tb-scroll-to-section').on('click', function(){
+	$('.tb-scroll-to').on('click', function(){
 
 		var $el = $(this),
 			to = null,
