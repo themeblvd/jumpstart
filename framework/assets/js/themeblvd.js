@@ -1282,8 +1282,8 @@ jQuery(document).ready(function($) {
 				var $chart = $(this).find('.chart');
 
 				$chart.easyPieChart({
-					lineWidth: 10,
-					size: 140,
+					lineWidth: 6,
+					size: 160,
 					animate: 1000,
 					barColor: $chart.data('color'),
 					trackColor: $chart.data('track-color'),
@@ -1475,8 +1475,8 @@ jQuery(document).ready(function($) {
 				offset: 0,
 				callbackFunction: function($elem, action){
 					$elem.easyPieChart({
-						lineWidth: 10,
-						size: 140,
+						lineWidth: 6,
+						size: 160,
 						animate: 1000,
 						barColor: $chart.data('color'),
 						trackColor: $chart.data('track-color'),

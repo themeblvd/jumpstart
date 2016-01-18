@@ -148,7 +148,7 @@ function themeblvd_get_milestone( $args ) {
     $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', esc_attr($args['color']), esc_attr($num), $milestone );
 
     if ( $args['text'] ) {
-    	$output .= sprintf( '<span class="text">%s</span>', themeblvd_kses($args['text']) );
+    	$output .= sprintf( '<h5 class="text">%s</h5>', themeblvd_kses($args['text']) );
     }
 
     $output .= '</div><!-- .tb-milestone (end) -->';
@@ -203,7 +203,11 @@ function themeblvd_get_milestone_ring( $args ) {
     $output .= sprintf( '<div class="milestone chart" data-percent="%s" data-color="%s" data-track-color="%s">', esc_attr($args['percent']), esc_attr($args['color']), esc_attr($args['track_color']) );
 
     if ( $args['display'] ) {
-    	$output .= '<span class="display">'.themeblvd_kses($args['display']).'</span>';
+        if ( strpos( $args['display'], 'fa' ) !== false ) {
+            $output .= '<span class="display">'.themeblvd_kses($args['display']).'</span>';
+        } else {
+            $output .= '<h5 class="display">'.themeblvd_kses($args['display']).'</h5>';
+       }
     }
 
 	$output .= '</div><!-- .milestone (end) -->';
@@ -213,7 +217,7 @@ function themeblvd_get_milestone_ring( $args ) {
 		$output .= '<div class="content">';
 
 		if ( $args['title'] ) {
-			$output .= '<h3>'.themeblvd_kses($args['title']).'</h3>';
+			$output .= '<h5>'.themeblvd_kses($args['title']).'</h5>';
 		}
 
 		if ( $args['text'] ) {

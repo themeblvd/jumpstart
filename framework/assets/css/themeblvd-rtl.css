@@ -7546,6 +7546,7 @@ blockquote small {
 .tb-milestone .text {
 	display: block;
 	line-height: 1.1;
+	margin: 0;
 	text-align: center;
 }
 .tb-milestone .milestone {
@@ -7594,15 +7595,17 @@ blockquote small {
 .tb-milestone-percent .milestone {
 	margin: 0 auto;
 	position: relative;
-	width: 140px;
-	height: 140px;
+	width: 160px;
+	height: 160px;
 }
 .tb-milestone-percent.has-text .milestone {
 	margin-bottom: 10px;
 }
 .tb-milestone-percent .display {
 	font-size: 18px;
-	line-height: 140px;
+	line-height: 160px;
+	margin: 0;
+	padding: 0;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -7612,11 +7615,20 @@ blockquote small {
 }
 .tb-milestone-percent .display .fa {
 	font-size: 40px;
-	line-height: 140px;
+	line-height: 160px;
 }
 .tb-milestone-percent .content > h3:last-child,
 .tb-milestone-percent .content > p:last-child {
 	margin-bottom: 0;
+}
+.tb-milestone-percent .content {
+	padding-top: 20px;
+}
+.tb-milestone-percent .content h5 {
+	margin-top: 0;
+}
+.tb-milestone-percent .content p {
+	font-size: 14px;
 }
 
 /* Progress Bars */
