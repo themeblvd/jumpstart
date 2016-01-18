@@ -5595,6 +5595,7 @@ blockquote small {
 	backface-visibility: visible;
 	-webkit-transition: opacity .25s ease;
 	transition: opacity .25s ease;
+	width: 100%;
 }
 .post_showcase .featured-item.tb-thumb-link:before,
 .post_showcase .featured-item.tb-thumb-link:after {
