@@ -7624,12 +7624,14 @@ blockquote small {
 	position: relative;
 }
 .tb-progress.has-label {
-	padding-top: 1.42em;
+	padding-top: 1.77em;
 }
 .tb-progress .progress {
 	border-radius: 2px;
 	-webkit-box-shadow: none;
 	box-shadow: none;
+	height: 6px;
+	margin-bottom: 25px;
 }
 .tb-progress .progress-bar {
 	-webkit-box-shadow: none;
@@ -7639,7 +7641,7 @@ blockquote small {
 .tb-progress .label {
 	color: inherit;
 	display: block;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: normal;
 	line-height: 1;
 	margin: 0;
@@ -7648,10 +7650,10 @@ blockquote small {
 	top: 0;
 }
 .tb-progress .label.text {
-	right: 2px;
+	right: 1px;
 }
 .tb-progress .label.value {
-	left: 2px;
+	left: 1px;
 }
 
 /* =Pages
