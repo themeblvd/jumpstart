@@ -531,17 +531,24 @@ class Theme_Blvd_Query {
 			$config = Theme_Blvd_Frontend_Init::get_instance();
 			$mode = $config->get_mode();
 
-			if ( $mode == 'grid' ) {
+			if ( $mode == 'grid' || $mode == 'showcase' ) {
 
-				$columns = intval(themeblvd_get_option('grid_columns', null, '3'));
-				$rows = intval(themeblvd_get_option('grid_rows', null, '3'));
+				if ( themeblvd_get_option( $mode.'_display' ) == 'masonry_paginated' ) {
 
-				$q->set('posts_per_page', $columns*$rows);
+					$num = intval( themeblvd_get_option( $mode.'_posts_per_page' ) );
+
+				} else {
+
+					$cols = intval( themeblvd_get_option( $mode.'_columns', null, '3' ) );
+					$rows = intval( themeblvd_get_option( $mode.'_rows', null, '3' ) );
+					$num = $cols*$rows;
+				}
+
+				$q->set('posts_per_page', $num);
 
 			} else if ( $mode == 'list' ) {
 
-				$default = get_option('posts_per_page');
-				$q->set( 'posts_per_page', intval(themeblvd_get_option('list_posts_per_page', null, $default)) );
+				$q->set( 'posts_per_page', intval( themeblvd_get_option( 'list_posts_per_page', null, get_option('posts_per_page') ) ) );
 
 			}
 		}
