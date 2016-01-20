@@ -26,6 +26,7 @@ Jump Start Changelog
 * Improvement: With a hero unit, when selecting to bold text, a header tag will now be used, allowing for more flexibility in fonts used.
 * Improvement: Added option to shade slider images for overlaid text readability; this applies to post slider and simple slider elements.
 * Improvement: When inputting a specific list of pages for post element query, you can now use slugs for pages, posts, and portfolio items.
+* Improvement: When selecting for a post grid element to "popout" in builder, there is now padding to separate from the browser edge.
 * Improvement: More default spacing between elements in custom layouts.
 * Updated: FontAwesome to 4.5.
 * Updated: FlexSlider to 2.6.

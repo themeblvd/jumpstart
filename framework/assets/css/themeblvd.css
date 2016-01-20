@@ -5482,6 +5482,9 @@ blockquote small {
 .post_grid.tb-isotope .grid-wrap > .row {
 	margin: -15px;
 }
+.element-post_grid.popout .post_grid.tb-isotope .grid-wrap > .row {
+	margin: -15px 0;
+}
 
 /* Post Showcase */
 .showcase-wrap {
