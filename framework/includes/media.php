@@ -501,9 +501,9 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 		$class .= ' thumbnail';
 	}
 
-	$h = 0;
+	$h = ( 9 / 16 ) * 100; // 16:9
 
-	if ( intval($args['height']) > 0 && intval($args['width']) > 0 ) {
+	if ( intval($args['height']) > 0 && intval($args['height']) < 9999 && intval($args['width']) > 0 ) {
 		$h = ( intval($args['height']) / intval($args['width']) ) * 100;
 	}
 
