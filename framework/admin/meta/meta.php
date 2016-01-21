@@ -572,7 +572,7 @@ function setup_themeblvd_post_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_post_options',						// make it unique
-			'title' 	=> __('Post Options', 'themeblvd'),		// title to show for entire meta box
+			'title' 	=> __('Post Options', 'themeblvd'),			// title to show for entire meta box
 			'page'		=> array('post'),							// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'normal',								// normal, advanced, or side
 			'priority'	=> 'high'									// high, core, default, or low
