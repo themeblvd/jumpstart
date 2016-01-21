@@ -4950,8 +4950,10 @@ blockquote small {
 }
 .tb-thumb-link img,
 .tb-thumb-link .img {
+	/*
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+	*/
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 }
