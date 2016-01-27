@@ -31,6 +31,7 @@ Jump Start Changelog
 * Updated: FontAwesome to 4.5.
 * Updated: FlexSlider to 2.6.
 * Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
+* Fixed: Sticky menu shouldn't display on any mobile device, no matter the viewport size.
 * Fixed: Accordion feature not working with Toggles element of Layout Builder.
 * Fixed: When setting an element to pull from a list of pages, the total number of pages returned shouldn't be interfered with.
 * Fixed: Contact Bar element was outputting the set of icons twice.
