@@ -394,6 +394,7 @@ jQuery(document).ready(function($) {
 				var $ul = $(this),
 					$li = $ul.closest('li'),
 					location = $li.offset(),
+					location = $body.hasClass('rtl') ? location['right'] : location['left'],
 					space = 200;
 
 				if ( ! $ul.hasClass('non-mega-sub-menu') || ! $li.hasClass('level-1') ) {
@@ -406,7 +407,7 @@ jQuery(document).ready(function($) {
 					space = 400;
 				}
 
-				if ( ($(window).width() - location['left']) <= space ) {
+				if ( ( $(window).width() - location ) <= space ) {
 
 					$ul.addClass('reverse');
 
