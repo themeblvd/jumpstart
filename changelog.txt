@@ -38,6 +38,7 @@ Jump Start Changelog
 * Fixed: SPAN HTML tags showing in texture browser.
 * Fixed: When `themeblvd_tabs_deep_linking` is filtered to true, tab content wasn't changing properly.
 * Fixed: Post showcase and grid display for archives not always applying the correct posts per page amount from Theme Options.
+* Fixed: Funky display issue on WooCommerce product reviews.
 * Fixed: More minor RTL bug fixes.
     * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
     * Tabs and pills of Tabs element now align properly to right.

@@ -951,7 +951,6 @@ ul.woocommerce-info {
 	border: 1px solid #f2f2f2;
 	border-color: rgba(220,220,220,.4);
 	border-radius: 2px;
-	float: left;
 	margin: 0 0 10px 0;
 	padding: 20px;
 	width: 100%;
@@ -1001,7 +1000,7 @@ ul.woocommerce-info {
 		transform: rotate(45deg);
 		width: 14px;
 		height: 14px;
-		z-index: 100;
+		z-index: 1;
 	}
 	.rtl #reviews .comment-text:before {
 		border-left-width: 0;
