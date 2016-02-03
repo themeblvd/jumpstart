@@ -1286,7 +1286,7 @@ function themeblvd_get_testimonial( $args ){
             $output .= sprintf( '<span class="author-image"><img src="%s" alt="%s" /></span>', esc_url($args['image']['src']), esc_attr($args['image']['title']) );
         }
 
-        $output .= sprintf( '<span class="author-name">%s</span>', themeblvd_kses($args['name']) );
+        $output .= sprintf( '<h5 class="author-name">%s</h5>', themeblvd_kses($args['name']) );
 
         if ( $args['tagline'] || $args['company'] ) {
 

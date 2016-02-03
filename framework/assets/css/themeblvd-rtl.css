@@ -6873,14 +6873,14 @@ blockquote small {
 	border-radius: 4px;
 	color: #333333;
 	font-size: 15px;
-	padding: 15px;
+	padding: 25px;
 	position: relative;
 	text-shadow: none;
 }
 .tb-testimonial.showcase .testimonial-text {
 	font-size: 28px;
 	line-height: 1.4;
-	padding: 15px 0;
+	padding: 15px 0 30px 0;
 	text-align: center;
 }
 .tb-testimonial .testimonial-text p:last-child {
@@ -6893,7 +6893,7 @@ blockquote small {
 	display: block;
 	position: absolute;
 	bottom: -5px;
-	right: 20px;
+	right: 35px;
 	width: 0;
 	height: 0;
 }
@@ -6902,28 +6902,25 @@ blockquote small {
 	margin-bottom: 15px;
 	max-width: 400px;
 }
-.tb-testimonial.standard .author {
-	padding-top: 5px;
-	padding-right: 10px;
-}
 .tb-testimonial.showcase .author {
+	padding-top: 20px;
 	text-align: center;
 }
-.tb-testimonial .author-name,
 .tb-testimonial .author-tagline {
 	display: block;
 }
 .tb-testimonial .author-name {
 	font-size: 1.1em;
-	font-weight: bold;
+	margin: 0 0 2px 0;
 }
-.tb-testimonial.standard .arrow {
-	right: 30px;
+.tb-testimonial.showcase .author-name {
+	margin-top: 15px
 }
 .tb-testimonial.standard .author {
+	font-size: 13px;
 	height: 65px;
 	padding-top: 15px;
-	padding-right: 70px; /* 10px + 50px + 10px */
+	padding-right: 80px;
 	position: relative;
 }
 .tb-testimonial.standard.tag-one-line .author {
@@ -6932,7 +6929,7 @@ blockquote small {
 .tb-testimonial.standard .author-image {
 	position: absolute;
 	top: 10px;
-	right: 10px;
+	right: 15px;
 }
 .tb-testimonial .author-image img {
 	border-radius: 50%;

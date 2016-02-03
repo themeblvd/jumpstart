@@ -21,6 +21,7 @@ Jump Start Changelog
 * Improvement: Design enhancements to Progress Bars element.
 * Improvement: Design enhancements to Milestone element.
 * Improvement: Design enhancements to Milestone Ring element.
+* Improvement: Design enhancements to Testimonial element.
 * Improvement: Better mobile fallback for parallax background images.
 * Improvement: Redesign of Team Member element.
 * Improvement: With a hero unit, when selecting to bold text, a header tag will now be used, allowing for more flexibility in fonts used.
