@@ -4550,13 +4550,15 @@ button.mfp-arrow {
 }
 button.mfp-arrow {
 	background-position: center center;
-	background-size: 16px 28px;
+	background-size: 12px 21px;
 	background-repeat: no-repeat;
 	font-size: 30px;
 	line-height: 2em;
 	margin-top: -1em;
 	width: 2em;
 	height: 2em;
+	-webkit-transform: none;
+    transform: none;
 }
 button.mfp-arrow:active {
 	margin-top: -.95em;
