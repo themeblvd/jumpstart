@@ -5273,13 +5273,8 @@ blockquote small {
 	position: relative;
 }
 @media (min-width: 992px) {
-	.has-bg-video {
+	body.desktop .has-bg-video {
 		background-image: none !important;
-	}
-}
-@media (max-width: 991px) {
-	.tb-bg-video {
-		display: none;
 	}
 }
 .tb-bg-video {
@@ -5293,6 +5288,14 @@ blockquote small {
 	height: 100%;
 	-webkit-transition: opacity 0.25s ease-in;
 	transition: opacity 0.25s ease-in;
+}
+body.mobile .tb-bg-video {
+	display: none;
+}
+@media (max-width: 991px) {
+	.tb-bg-video {
+		display: none;
+	}
 }
 .tb-bg-video.playing {
 	opacity: 1;
