@@ -5015,10 +5015,10 @@ blockquote small {
 	content: "\f008"; /* film strip */
 }
 .tb-thumb-link.post:before {
-	content: "\f061"; /* arrow, pointing right */
+	content: "\f178"; /* long-arrow, pointing right */
 }
 .rtl .tb-thumb-link.post:before {
-	content: "\f060"; /* arrow, pointing left */
+	content: "\f177"; /* long-arrow, pointing left */
 }
 .tb-thumb-link.external:before {
 	/* content: "\f0c1"; link anchor */
