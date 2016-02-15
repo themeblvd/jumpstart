@@ -603,7 +603,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'typography' :
 
                 $typography_stored = wp_parse_args( $val, array(
-                    'size'          => '',
+                    'size'          => '0px',
                     'style'         => '',
                     'weight'        => '400',   // @since 2.5.0
                     'face'          => '',
@@ -626,7 +626,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					$slide_options = array();
 					$slide_options['min'] = intval($sizes[0]);
-					$slide_options['max']	= intval(end($sizes));
+					$slide_options['max'] = intval(end($sizes));
 					$slide_options['step'] = intval($sizes[1])-intval($sizes[0]);
 					$slide_options['units'] = 'px';
 
