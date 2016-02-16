@@ -1699,31 +1699,26 @@ function themeblvd_get_related_posts( $args = array() ) {
         );
 
 		if ( $args['related_by'] == 'tag' ) {
+			$args['related_by'] = 'post_tag';
+		}
 
-			$tag_ids = array();
-			$tags = get_the_tags($args['post_id']);
+		$terms = array();
+		$term_obj = get_the_terms( $args['post_id'], $args['related_by'] );
 
-			if ( $tags ) {
-				foreach ( $tags as $tag ) {
-					$tag_ids[] = $tag->term_id;
-				}
+		if ( $term_obj && ! is_wp_error($term_obj) ) {
+			foreach ( $term_obj as $term ) {
+				$terms[] = $term->term_id;
 			}
+		}
 
-			$args['query']['tag__in'] = $tag_ids;
-
-		} else if ( $args['related_by'] == 'category' ) {
-
-			$cat_ids = array();
-			$cats = get_the_category($args['post_id']);
-
-			if ( $cats ) {
-				foreach ( $cats as $cat ) {
-					$cat_ids[] = $cat->term_id;
-				}
-			}
-
-			$args['query']['category__in'] = $cat_ids;
-
+		if ( $terms ) {
+			$args['query']['tax_query'] = array(
+				array(
+					'taxonomy'	=> $args['related_by'],
+					'field'		=> 'term_id',
+					'terms'		=> $terms
+				)
+			);
 		}
 
 		$args['query'] = apply_filters( 'themeblvd_related_posts_query', $args['query'], $args );
