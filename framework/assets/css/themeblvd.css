@@ -5885,14 +5885,21 @@ body.mobile .tb-bg-video {
 /* @TODO */
 
 /* Small Post Grid */
-.tb-small-post-grid .row {
-	margin-bottom: 30px;
+@media (min-width: 768px) {
+	.tb-small-post-grid .row {
+		margin-bottom: 30px;
+	}
 }
 .tb-small-post-grid .row:last-child {
   	margin-bottom: 0;
 }
-.tb-small-post-grid .post {
+.tb-small-post-grid article {
   	text-align: center;
+}
+@media (max-width: 767px) {
+	.tb-small-post-grid article {
+		margin-bottom: 30px;
+	}
 }
 .tb-small-post-grid .tb-thumb-link:before {
 	font-size: 12px;
