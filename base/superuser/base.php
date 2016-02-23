@@ -2731,7 +2731,7 @@ function jumpstart_su_header_addon() {
 
 		// Floating shopping cart
 		if ( themeblvd_do_cart() ) {
-			printf('<li class="top-cart">%s</li>', themeblvd_get_cart_popup());
+			printf('<li class="top-cart">%s</li>', themeblvd_get_cart_popup_trigger());
 		}
 
 		// Contact icons. Note: We're not using themeblvd_get_contact_bar()

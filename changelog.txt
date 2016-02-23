@@ -42,6 +42,7 @@ Jump Start Changelog
 * Fixed: When `themeblvd_tabs_deep_linking` is filtered to true, tab content wasn't changing properly.
 * Fixed: Post showcase and grid display for archives not always applying the correct posts per page amount from Theme Options.
 * Fixed: Funky display issue on WooCommerce product reviews.
+* Fixed: Shopping cart button not displaying with "Super User" and "Executive" theme bases, when header info is set to show "within header."
 * Fixed: More minor RTL bug fixes.
     * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
     * Tabs and pills of Tabs element now align properly to right.
