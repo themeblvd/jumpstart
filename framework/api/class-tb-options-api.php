@@ -8,7 +8,7 @@
  * from the client-side.
  *
  * Also, this class provides access to the saved
- * settings cooresponding to the these theme options.
+ * settings corresponding to the these theme options.
  *
  * @author		Jason Bobich
  * @copyright	Copyright (c) Jason Bobich

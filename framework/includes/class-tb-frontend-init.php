@@ -471,7 +471,7 @@ class Theme_Blvd_Frontend_Init {
 
 		// Determine which sidebar ID's belong to each sidebar location
 		// on the current page. For each location, this will be the
-		// framework's cooresponding default sidebar, unless something
+		// framework's corresponding default sidebar, unless something
 		// else is filtered in. -- Note: The Widget Areas plugin filters
 		// into this.
 

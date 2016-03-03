@@ -1812,7 +1812,7 @@ function themeblvd_safe_style_css( $props ) {
  *
  * @since 2.0.0
  *
- * @return array $widths All column options with cooresponding widths.
+ * @return array $widths All column options with corresponding widths.
  */
 function themeblvd_column_widths() {
 	$widths = array (
