@@ -6470,8 +6470,10 @@ body.mobile .tb-bg-video {
 	/* overflow: hidden; */
 	position: relative;
 }
-.tb-logos .slides img {
+.tb-logos .tb-logo img,
+.tb-logos .slides .tb-logo img {
 	margin: auto;
+	max-width: 100%;
 	max-height: 100%;
 	position: absolute;
 	top: 0;
@@ -6479,6 +6481,7 @@ body.mobile .tb-bg-video {
 	bottom: 0;
 	left: 0;
 	width: auto;
+	height: auto;
 }
 .tb-logo.boxed {
 	background-color: #ffffff;

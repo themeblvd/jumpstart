@@ -6457,7 +6457,8 @@ body.mobile .tb-bg-video {
 .tb-logos.has-boxed .col {
 	padding: 5px;
 }
-.tb-logo {
+.tb-logos .tb-logo img,
+.tb-logos .slides .tb-logo img {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
