@@ -38,17 +38,23 @@ jQuery(document).ready(function($) {
 			},
 			yt_ready: function(e) {
 
-				var $el = $('#'+e.target.f.id);
+				var iframe = e.target.getIframe(),
+					$el = $('#'+iframe.id);
 
 				e.target.mute();
 				e.target.playVideo();
 
-				$el.closest('.youtube').addClass('playing');
-				tbmethods.bg_video_size($el);
+				setTimeout(function(){ // eliminate intial flicker
 
-				$window.on('resize', function(){
+					$el.closest('.youtube').addClass('playing');
+
 					tbmethods.bg_video_size($el);
-				});
+
+					$window.on('resize', function(){
+						tbmethods.bg_video_size($el);
+					});
+
+				}, 500);
 
 			},
 
