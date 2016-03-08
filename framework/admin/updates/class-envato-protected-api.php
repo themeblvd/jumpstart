@@ -64,11 +64,11 @@ class Envato_Protected_API {
   public function __construct( $user_name = '', $api_key = '' ) {
 
     if ( $user_name == '' ) {
-      $this->set_error( 'user_name', __( 'Please enter your Envato Marketplace Username.', 'themeblvd' ) );
+      $this->set_error( 'user_name', __( 'Please enter your Envato Marketplace Username.', 'jumpstart' ) );
     }
 
     if ( $api_key == '' ) {
-      $this->set_error( 'api_key', __( 'Please enter your Envato Marketplace API Key.', 'themeblvd' ) );
+      $this->set_error( 'api_key', __( 'Please enter your Envato Marketplace API Key.', 'jumpstart' ) );
     }
 
     $this->user_name  = $user_name;
@@ -93,7 +93,7 @@ class Envato_Protected_API {
   public function private_user_data( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) {
 
     if ( $set == '' ) {
-      $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'themeblvd' ) );
+      $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'jumpstart' ) );
     }
 
     if ( $user_name == '' ) {
@@ -164,7 +164,7 @@ class Envato_Protected_API {
   public function wp_download( $item_id ) {
 
     if ( ! isset( $item_id ) ) {
-      $this->set_error( 'item_id', __( 'The Envato Marketplace "item ID" is a required parameter.', 'themeblvd' ) );
+      $this->set_error( 'item_id', __( 'The Envato Marketplace "item ID" is a required parameter.', 'jumpstart' ) );
     }
 
     $download = $this->private_user_data( 'wp-download', $this->user_name, $item_id );

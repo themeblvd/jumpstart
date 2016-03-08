@@ -78,27 +78,27 @@ class Theme_Blvd_User_Options {
 			),
 			'facebook'	=> array(
 				'label'		=> themeblvd_get_local('contact_facebook'),
-				'option'	=> __('Facebook URL', 'themeblvd'),
+				'option'	=> __('Facebook URL', 'jumpstart'),
 				'key'		=> '_tb_contact_facebook'
 			),
 			'google'	=> array(
 				'label'		=> themeblvd_get_local('contact_gplus'),
-				'option'	=> __('Google+ URL', 'themeblvd'),
+				'option'	=> __('Google+ URL', 'jumpstart'),
 				'key'		=> '_tb_contact_google'
 			),
 			'linkedin'	=> array(
 				'label'		=> themeblvd_get_local('contact_linkedin'),
-				'option'	=> __('LinkedIn URL', 'themeblvd'),
+				'option'	=> __('LinkedIn URL', 'jumpstart'),
 				'key'		=> '_tb_contact_linkedin'
 			),
 			'pinterest'	=> array(
 				'label'		=> themeblvd_get_local('contact_pinterest'),
-				'option'	=> __('Pinterest URL', 'themeblvd'),
+				'option'	=> __('Pinterest URL', 'jumpstart'),
 				'key'		=> '_tb_contact_pinterest'
 			),
 			'twitter'	=> array(
 				'label'		=> themeblvd_get_local('contact_twitter'),
-				'option'	=> __('Twitter URL', 'themeblvd'),
+				'option'	=> __('Twitter URL', 'jumpstart'),
 				'key'		=> '_tb_contact_twitter'
 			)
 		));
@@ -135,14 +135,14 @@ class Theme_Blvd_User_Options {
 
 		// Sidebar Layouts
 		$layouts = themeblvd_sidebar_layouts();
-		$select_layouts = array('default' => __('Default', 'themeblvd'));
+		$select_layouts = array('default' => __('Default', 'jumpstart'));
 
 		foreach ( $layouts as $layout ) {
 			$select_layouts[$layout['id']] = $layout['name'];
 		}
 
 		// Post Display modes
-		$select_modes = array_merge( array('default' =>__('Default', 'themeblvd')), themeblvd_get_modes() );
+		$select_modes = array_merge( array('default' =>__('Default', 'jumpstart')), themeblvd_get_modes() );
 
 		// Values
 		$box_single = get_user_meta($user->ID, '_tb_box_single', true);
@@ -173,52 +173,52 @@ class Theme_Blvd_User_Options {
 		$archive_layout = get_user_meta($user->ID, '_tb_sidebar_layout', true);
 		$archive_mode = get_user_meta($user->ID, '_tb_archive_mode', true);
 		?>
-		<h3><?php esc_html_e('Author Box', 'themeblvd'); ?></h3>
+		<h3><?php esc_html_e('Author Box', 'jumpstart'); ?></h3>
 
 		<table class="form-table">
 			<tbody>
 				<tr>
-					<th scope="row" valign="top"><?php esc_html_e('Display', 'themeblvd'); ?></th>
+					<th scope="row" valign="top"><?php esc_html_e('Display', 'jumpstart'); ?></th>
 					<td>
 						<label for="_tb_box_single">
 							<input id="_tb_box_single" name="_tb_box_single" type="checkbox" value="1" <?php checked($box_single, '1'); ?> />
-							<?php esc_html_e('Display Author Box on user\'s posts', 'themeblvd'); ?>
+							<?php esc_html_e('Display Author Box on user\'s posts', 'jumpstart'); ?>
 						</label><br>
 						<label for="_tb_box_archive">
 							<input id="_tb_box_archive" name="_tb_box_archive" type="checkbox" value="1" <?php checked($box_archive, '1'); ?> />
-							<?php esc_html_e('Display Author Box on user\'s archive', 'themeblvd'); ?>
+							<?php esc_html_e('Display Author Box on user\'s archive', 'jumpstart'); ?>
 						</label><br>
 						<label for="_tb_box_email">
 							<input id="_tb_box_archive" name="_tb_box_email" type="checkbox" value="1" <?php checked($box_email, '1'); ?> />
-							<?php esc_html_e('Display email icon in Author Box', 'themeblvd'); ?>
+							<?php esc_html_e('Display email icon in Author Box', 'jumpstart'); ?>
 						</label><br>
 						<label for="_tb_box_archive_link">
 							<input id="_tb_box_archive_link" name="_tb_box_archive_link" type="checkbox" value="1" <?php checked($box_archive_link, '1'); ?> />
-							<?php esc_html_e('Display link to user\'s archive in Author Box (on single posts)', 'themeblvd'); ?>
+							<?php esc_html_e('Display link to user\'s archive in Author Box (on single posts)', 'jumpstart'); ?>
 						</label>
 					</td>
 				</tr>
 				<tr>
-					<th><label for="_tb_box_icons"><?php esc_html_e('Icon Color', 'themeblvd'); ?></label></th>
+					<th><label for="_tb_box_icons"><?php esc_html_e('Icon Color', 'jumpstart'); ?></label></th>
 					<td>
 						<select name="_tb_box_icons" id="_tb_box_icons">
-							<option value="flat" <?php selected($box_icons, 'flat'); ?>><?php esc_html_e('Flat Color', 'themeblvd'); ?></option>
-							<option value="dark" <?php selected($box_icons, 'dark'); ?>><?php esc_html_e('Flat Dark', 'themeblvd'); ?></option>
-							<option value="grey" <?php selected($box_icons, 'grey'); ?>><?php esc_html_e('Flat Grey', 'themeblvd'); ?></option>
-							<option value="light" <?php selected($box_icons, 'light'); ?>><?php esc_html_e('Flat Light', 'themeblvd'); ?></option>
-							<option value="color" <?php selected($box_icons, 'color'); ?>><?php esc_html_e('Color', 'themeblvd'); ?></option>
+							<option value="flat" <?php selected($box_icons, 'flat'); ?>><?php esc_html_e('Flat Color', 'jumpstart'); ?></option>
+							<option value="dark" <?php selected($box_icons, 'dark'); ?>><?php esc_html_e('Flat Dark', 'jumpstart'); ?></option>
+							<option value="grey" <?php selected($box_icons, 'grey'); ?>><?php esc_html_e('Flat Grey', 'jumpstart'); ?></option>
+							<option value="light" <?php selected($box_icons, 'light'); ?>><?php esc_html_e('Flat Light', 'jumpstart'); ?></option>
+							<option value="color" <?php selected($box_icons, 'color'); ?>><?php esc_html_e('Color', 'jumpstart'); ?></option>
 						</select>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<h3><?php esc_html_e('Author Archives', 'themeblvd'); ?></h3>
+		<h3><?php esc_html_e('Author Archives', 'jumpstart'); ?></h3>
 
 		<table class="form-table">
 			<tbody>
 				<tr>
-					<th><label for="_tb_sidebar_layout"><?php esc_html_e('Sidebar Layout', 'themeblvd'); ?></label></th>
+					<th><label for="_tb_sidebar_layout"><?php esc_html_e('Sidebar Layout', 'jumpstart'); ?></label></th>
 					<td>
 						<select name="_tb_sidebar_layout" id="_tb_sidebar_layout">
 							<?php foreach ( $select_layouts as $key => $value ) : ?>
@@ -228,7 +228,7 @@ class Theme_Blvd_User_Options {
 					</td>
 				</tr>
 				<tr>
-					<th><label for="_tb_archive_mode"><?php esc_html_e('Post Display', 'themeblvd'); ?></label></th>
+					<th><label for="_tb_archive_mode"><?php esc_html_e('Post Display', 'jumpstart'); ?></label></th>
 					<td>
 						<select name="_tb_archive_mode" id="_tb_archive_mode">
 							<?php foreach ( $select_modes as $key => $value ) : ?>

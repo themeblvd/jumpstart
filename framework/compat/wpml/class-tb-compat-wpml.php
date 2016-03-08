@@ -247,10 +247,10 @@ class Theme_Blvd_Compat_WPML {
 		$current = get_option('tb_wpml_show_lang_switcher', '1');
 		?>
 		<div class="wpml-section-content-inner">
-			<h4><?php printf(esc_html__('%s by %s', 'themeblvd'), $theme->get('Name'), '<a href="http://themeblvd.com" target="_blank">Theme Blvd</a>' ); ?></h4>
+			<h4><?php printf(esc_html__('%s by %s', 'jumpstart'), $theme->get('Name'), '<a href="http://themeblvd.com" target="_blank">Theme Blvd</a>' ); ?></h4>
 			<label for="tb_wpml_show_lang_switcher">
 				<input type="checkbox" id="tb_wpml_show_lang_switcher" name="tb_wpml_show_lang_switcher" value="1" <?php checked('1', $current); ?> />
-				<?php printf(esc_html__('Display %s\'s default language switcher.', 'themeblvd'), $theme->get('Name')); ?>
+				<?php printf(esc_html__('Display %s\'s default language switcher.', 'jumpstart'), $theme->get('Name')); ?>
 			</label>
 		</div>
 		<?php

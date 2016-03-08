@@ -1019,7 +1019,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					$author = esc_html( get_the_author() );
 					$author_url = esc_url( get_author_posts_url( get_the_author_meta('ID') ) );
-					$author_title = sprintf( esc_html__('View all posts by %s', 'themeblvd'), $author );
+					$author_title = sprintf( esc_html__('View all posts by %s', 'jumpstart'), $author );
 					$author_icon = in_array($item, $args['icons']) ? '<i class="fa fa-'.$icons['author'].'"></i>' : '';
 					$item_output = sprintf( '<span class="byline author vcard">%s<a class="url fn n" href="%s" title="%s" rel="author">%s</a></span>', $author_icon, $author_url, $author_title, $author );
 					break;

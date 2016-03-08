@@ -79,11 +79,11 @@ abstract class Theme_Blvd_Sortable_Option {
 
 		// Setup labels
 		$this->labels = array(
-			'add' 					=> __('Add Item', 'themeblvd'),
-			'delete'				=> __('Delete Item', 'themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this item?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Items','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all items?','themeblvd')
+			'add' 					=> __('Add Item', 'jumpstart'),
+			'delete'				=> __('Delete Item', 'jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this item?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Items','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all items?','jumpstart')
 		);
 
 		// Set labels (inherited from child class)
@@ -178,7 +178,7 @@ abstract class Theme_Blvd_Sortable_Option {
 		$footer .= sprintf( '<input type="button" class="add-item button-secondary" value="%s" %s />', esc_attr($this->labels['add']), $disabled );
 
 		if ( $this->max ) {
-			$footer .= sprintf('<div class="max">%s: %s</div>', esc_html__('Maximum', 'themeblvd'), $this->max);
+			$footer .= sprintf('<div class="max">%s: %s</div>', esc_html__('Maximum', 'jumpstart'), $this->max);
 		}
 
 		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', esc_attr($this->labels['delete_all_confirm']), esc_attr($this->labels['delete_all']) );
@@ -272,7 +272,7 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= '<div class="input-wrap">';
 
 					if ( isset( $option['icon'] ) && ( $option['icon'] == 'image' || $option['icon'] == 'vector' ) ) {
-						$item_output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$option['icon'].'" data-icon-type="'.$option['icon'].'" data-tooltip-text="'.esc_attr__('Browse Icons', 'themeblvd').'"><i class="tb-icon-picture"></i></a>';
+						$item_output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.$option['icon'].'" data-icon-type="'.$option['icon'].'" data-tooltip-text="'.esc_attr__('Browse Icons', 'jumpstart').'"><i class="tb-icon-picture"></i></a>';
 					}
 
 					$class = 'of-input';
@@ -307,11 +307,11 @@ abstract class Theme_Blvd_Sortable_Option {
 						$item_output .= '<nav class="editor-nav">';
 
 						if ( isset( $option['editor'] ) && $option['editor'] ) {
-							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'themeblvd').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'jumpstart').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 						}
 
 						if ( isset( $option['code'] ) && in_array( $option['code'], array( 'html', 'javascript', 'css' ) ) ) {
-							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'themeblvd').'" data-target="'.esc_textarea( $option['id'] ).'" data-title="'.esc_attr($option['name']).'" data-code_lang="'.$option['code'].'"><i class="tb-icon-code"></i></a>';
+							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'jumpstart').'" data-target="'.esc_textarea( $option['id'] ).'" data-title="'.esc_attr($option['name']).'" data-code_lang="'.$option['code'].'"><i class="tb-icon-code"></i></a>';
 						}
 
 						$item_output .= '</nav>';
@@ -511,28 +511,28 @@ abstract class Theme_Blvd_Sortable_Option {
 					// Latitude
 					$item_output .= '<div class="geo-lat">';
 					$item_output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][lat]' ), esc_attr($lat) );
-					$item_output .= '<span class="geo-label">'.esc_html__('Latitude', 'themeblvd').'</span>';
+					$item_output .= '<span class="geo-label">'.esc_html__('Latitude', 'jumpstart').'</span>';
 					$item_output .= '</div><!-- .geo-lat (end) -->';
 
 					// Longitude
 					$item_output .= '<div class="geo-long">';
 					$item_output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($option['id']), esc_attr( $option_name.'['.$option_id.']['.$item_id.']['.$option['id'].'][long]' ), esc_attr($long) );
-					$item_output .= '<span class="geo-label">'.esc_html__('Longitude', 'themeblvd').'</span>';
+					$item_output .= '<span class="geo-label">'.esc_html__('Longitude', 'jumpstart').'</span>';
 					$item_output .= '</div><!-- .geo-long (end) -->';
 
 					$item_output .= '</div><!-- .geo-wrap (end) -->';
 
 					// Generate lat and long
 					$item_output .= '<div class="geo-generate">';
-					$item_output .= '<h5>'.esc_html__('Generate Coordinates', 'themeblvd').'</h5>';
+					$item_output .= '<h5>'.esc_html__('Generate Coordinates', 'jumpstart').'</h5>';
 					$item_output .= '<div class="data clearfix">';
 					$item_output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
 					$item_output .= '<input type="text" value="" class="address" />';
-					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'themeblvd'), esc_html__('Generate', 'themeblvd') );
+					$item_output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'jumpstart'), esc_html__('Generate', 'jumpstart') );
 					$item_output .= '</div><!-- .data (end) -->';
 					$item_output .= '<p class="note">';
-					$item_output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'themeblvd').'<br>';
-					$item_output .= esc_html__('Example Address', 'themeblvd').': "123 Smith St, Chicago, USA"';
+					$item_output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'jumpstart').'<br>';
+					$item_output .= esc_html__('Example Address', 'jumpstart').': "123 Smith St, Chicago, USA"';
 					$item_output .= '</p>';
 					$item_output .= '</div><!-- .geo-generate (end) -->';
 
@@ -646,35 +646,35 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'label',
-				'name'		=> __('Display Label', 'themeblvd'),
-				'desc'		=> __('Enter a label for this display.', 'themeblvd').'<br>'.__('Ex: Graphic Design', 'themeblvd'),
+				'name'		=> __('Display Label', 'jumpstart'),
+				'desc'		=> __('Enter a label for this display.', 'jumpstart').'<br>'.__('Ex: Graphic Design', 'jumpstart'),
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'label_value',
-				'name'		=> __('Value Display Label', 'themeblvd'),
-				'desc'		=> __('Enter a label to display the value.', 'themeblvd').'<br>'.__('Ex: 80%', 'themeblvd'),
+				'name'		=> __('Value Display Label', 'jumpstart'),
+				'desc'		=> __('Enter a label to display the value.', 'jumpstart').'<br>'.__('Ex: 80%', 'jumpstart'),
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'value',
-				'name'		=> __('Value', 'themeblvd'),
-				'desc'		=> __('Enter a number for the value.', 'themeblvd').'<br>'.__('Ex: 80', 'themeblvd'),
+				'name'		=> __('Value', 'jumpstart'),
+				'desc'		=> __('Enter a number for the value.', 'jumpstart').'<br>'.__('Ex: 80', 'jumpstart'),
 				'std'		=> '',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'total',
-				'name'		=> __('Total', 'themeblvd'),
-				'desc'		=> __('Enter a number, which your above value should be divided into. If your above value is meant to represent a straight percantage, then this "total" number should be 100.', 'themeblvd'),
+				'name'		=> __('Total', 'jumpstart'),
+				'desc'		=> __('Enter a number, which your above value should be divided into. If your above value is meant to represent a straight percantage, then this "total" number should be 100.', 'jumpstart'),
 				'std'		=> '100',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __('Color', 'themeblvd'),
-				'desc'		=> __('Select a color that represents this progress bar.', 'themeblvd'),
+				'name'		=> __('Color', 'jumpstart'),
+				'desc'		=> __('Select a color that represents this progress bar.', 'jumpstart'),
 				'std'		=> '#cccccc',
 				'type'		=> 'color'
 			)
@@ -689,11 +689,11 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Progress Bar','themeblvd'),
-			'delete' 				=> __('Delete Progress Bar','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this progress bar?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Progress Bars','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all progress bars?','themeblvd')
+			'add' 					=> __('Add Progress Bar','jumpstart'),
+			'delete' 				=> __('Delete Progress Bar','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this progress bar?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Progress Bars','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all progress bars?','jumpstart')
 		);
 		return $labels;
 	}
@@ -735,16 +735,16 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __('Button Color', 'themeblvd'),
-				'desc'		=> __('Select what color you\'d like to use for this button.', 'themeblvd'),
+				'name'		=> __('Button Color', 'jumpstart'),
+				'desc'		=> __('Select what color you\'d like to use for this button.', 'jumpstart'),
 				'type'		=> 'select',
 				'class'		=> 'trigger',
 				'options'	=> themeblvd_colors()
 			),
 			array(
 				'id' 		=> 'custom',
-				'name'		=> __('Custom Button Color', 'themeblvd'),
-				'desc'		=> __('Configure a custom style for the button.', 'themeblvd'),
+				'name'		=> __('Custom Button Color', 'jumpstart'),
+				'desc'		=> __('Configure a custom style for the button.', 'jumpstart'),
 				'std'		=> array(
 					'bg' 				=> '#ffffff',
 					'bg_hover'			=> '#ebebeb',
@@ -762,57 +762,57 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'text',
-				'name'		=> __('Button Text', 'themeblvd'),
-				'desc'		=> __('Enter the text for the button.', 'themeblvd'),
+				'name'		=> __('Button Text', 'jumpstart'),
+				'desc'		=> __('Enter the text for the button.', 'jumpstart'),
 				'std'		=> 'Get Started Today!',
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'size',
-				'name'		=> __('Button Size', 'themeblvd'),
-				'desc'		=> __('Select the size you\'d like used for this button.', 'themeblvd'),
+				'name'		=> __('Button Size', 'jumpstart'),
+				'desc'		=> __('Select the size you\'d like used for this button.', 'jumpstart'),
 				'type'		=> 'select',
 				'std'		=> 'large',
 				'options'	=> array(
-					'mini' 		=> __('Mini', 'themeblvd'),
-					'small' 	=> __('Small', 'themeblvd'),
-					'default' 	=> __('Normal', 'themeblvd'),
-					'large' 	=> __('Large', 'themeblvd'),
-					'x-large' 	=> __('X-Large', 'themeblvd'),
-					'xx-large' 	=> __('XX-Large', 'themeblvd'),
-					'xxx-large' => __('XXX-Large', 'themeblvd')
+					'mini' 		=> __('Mini', 'jumpstart'),
+					'small' 	=> __('Small', 'jumpstart'),
+					'default' 	=> __('Normal', 'jumpstart'),
+					'large' 	=> __('Large', 'jumpstart'),
+					'x-large' 	=> __('X-Large', 'jumpstart'),
+					'xx-large' 	=> __('XX-Large', 'jumpstart'),
+					'xxx-large' => __('XXX-Large', 'jumpstart')
 				)
 			),
 			array(
 				'id' 		=> 'url',
-				'name'		=> __('Link URL', 'themeblvd'),
-				'desc'		=> __('Enter the full URL where you want the button\'s link to go.', 'themeblvd'),
+				'name'		=> __('Link URL', 'jumpstart'),
+				'desc'		=> __('Enter the full URL where you want the button\'s link to go.', 'jumpstart'),
 				'std'		=> 'http://www.your-site.com/your-landing-page',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'target',
-				'name'		=> __('Link Target', 'themeblvd'),
-				'desc'		=> __('Select how you want the button to open the webpage.', 'themeblvd'),
+				'name'		=> __('Link Target', 'jumpstart'),
+				'desc'		=> __('Select how you want the button to open the webpage.', 'jumpstart'),
 				'type'		=> 'select',
 				'options'	=> array(
-			        '_self' 	=> __('Same Window', 'themeblvd'),
-			        '_blank' 	=> __('New Window', 'themeblvd'),
-			        'lightbox' 	=> __('Lightbox Popup', 'themeblvd')
+			        '_self' 	=> __('Same Window', 'jumpstart'),
+			        '_blank' 	=> __('New Window', 'jumpstart'),
+			        'lightbox' 	=> __('Lightbox Popup', 'jumpstart')
 				)
 			),
 			array(
 				'id' 		=> 'icon_before',
-				'name'		=> __('Icon Before Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __('Icon Before Button Text (optional)', 'jumpstart'),
+				'desc'		=> __('Icon before text of button. This can be any FontAwesome vector icon ID.', 'jumpstart'),
 				'type'		=> 'text',
 				'icon'		=> 'vector'
 			),
 			array(
 				'id' 		=> 'icon_after',
-				'name'		=> __('Icon After Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __('Icon After Button Text (optional)', 'jumpstart'),
+				'desc'		=> __('Icon after text of button. This can be any FontAwesome vector icon ID.', 'jumpstart'),
 				'type'		=> 'text',
 				'icon'		=> 'vector'
 			)
@@ -827,11 +827,11 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Button','themeblvd'),
-			'delete' 				=> __('Delete Button','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this button?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Buttons','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all buttons?','themeblvd')
+			'add' 					=> __('Add Button','jumpstart'),
+			'delete' 				=> __('Delete Button','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this button?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Buttons','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all buttons?','jumpstart')
 		);
 		return $labels;
 	}
@@ -869,22 +869,22 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'label',
-				'name'		=> __('Label', 'themeblvd'),
-				'desc'		=> __('Enter a label for this dataset.', 'themeblvd'),
+				'name'		=> __('Label', 'jumpstart'),
+				'desc'		=> __('Enter a label for this dataset.', 'jumpstart'),
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'values',
-				'name'		=> __('Values', 'themeblvd'),
-				'desc'		=> __('Enter a comma separated list of values for this data set.', 'themeblvd').'<br>'.__('Ex: 10, 20, 30, 40, 50, 60', 'themeblvd'),
+				'name'		=> __('Values', 'jumpstart'),
+				'desc'		=> __('Enter a comma separated list of values for this data set.', 'jumpstart').'<br>'.__('Ex: 10, 20, 30, 40, 50, 60', 'jumpstart'),
 				'std'		=> '',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __('Color', 'themeblvd'),
-				'desc'		=> __('Select a color that represents this data set.', 'themeblvd'),
+				'name'		=> __('Color', 'jumpstart'),
+				'desc'		=> __('Select a color that represents this data set.', 'jumpstart'),
 				'std'		=> '#cccccc',
 				'type'		=> 'color'
 			)
@@ -899,11 +899,11 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Data Set','themeblvd'),
-			'delete' 				=> __('Delete Data Set','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this data set?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Data Sets','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all data sets?','themeblvd')
+			'add' 					=> __('Add Data Set','jumpstart'),
+			'delete' 				=> __('Delete Data Set','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this data set?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Data Sets','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all data sets?','jumpstart')
 		);
 		return $labels;
 	}
@@ -941,15 +941,15 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'name',
-				'name'		=> __('Location Name', 'themeblvd'),
-				'desc'		=> __('Enter a name for this location.', 'themeblvd'),
+				'name'		=> __('Location Name', 'jumpstart'),
+				'desc'		=> __('Enter a name for this location.', 'jumpstart'),
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'geo',
-				'name'		=> __('Location Latitude and Longitude', 'themeblvd'),
-				'desc'		=> __('For this marker to be displayed, there needs to be a latitude and longitude saved. You can use the tool below the text fields to generate the coordinates.', 'themeblvd'),
+				'name'		=> __('Location Latitude and Longitude', 'jumpstart'),
+				'desc'		=> __('For this marker to be displayed, there needs to be a latitude and longitude saved. You can use the tool below the text fields to generate the coordinates.', 'jumpstart'),
 				'std'		=> array(
 					'lat'	=> 0,
 					'long'	=> 0
@@ -958,30 +958,30 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'info',
-				'name'		=> __('Location Information', 'themeblvd'),
-				'desc'		=> __('When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don\'t get too carried away.', 'themeblvd'),
+				'name'		=> __('Location Information', 'jumpstart'),
+				'desc'		=> __('When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don\'t get too carried away.', 'jumpstart'),
 				'type'		=> 'textarea',
 				'editor'	=> true,
 				'code'		=> 'html'
 			),
 			array(
 				'id' 		=> 'image',
-				'name'		=> __('Custom Marker Image (optional)', 'themeblvd'),
-				'desc'		=> __('If you\'d like a custom image to replace the default Google Map marker, you can insert it here.', 'themeblvd'),
+				'name'		=> __('Custom Marker Image (optional)', 'jumpstart'),
+				'desc'		=> __('If you\'d like a custom image to replace the default Google Map marker, you can insert it here.', 'jumpstart'),
 				'std'		=> '',
 				'type'		=> 'upload',
 				'advanced'	=> true
 			),
 			array(
 				'id' 		=> 'width',
-				'name'		=> __('Custom Marker Image Width (optional)', 'themeblvd'),
-				'desc'		=> __('If you\'d like to scale your custom marker image, input a width in pixels. Ex: 50', 'themeblvd'),
+				'name'		=> __('Custom Marker Image Width (optional)', 'jumpstart'),
+				'desc'		=> __('If you\'d like to scale your custom marker image, input a width in pixels. Ex: 50', 'jumpstart'),
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'height',
-				'name'		=> __('Custom Marker Image Height (optional)', 'themeblvd'),
-				'desc'		=> __('If you\'d like to scale your custom marker image, input a height in pixels. Ex: 32', 'themeblvd'),
+				'name'		=> __('Custom Marker Image Height (optional)', 'jumpstart'),
+				'desc'		=> __('If you\'d like to scale your custom marker image, input a height in pixels. Ex: 32', 'jumpstart'),
 				'type'		=> 'text'
 			)
 		);
@@ -995,11 +995,11 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Map Location','themeblvd'),
-			'delete' 				=> __('Delete Location','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this location?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Locations','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all map locations?','themeblvd')
+			'add' 					=> __('Add Map Location','jumpstart'),
+			'delete' 				=> __('Delete Location','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this location?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Locations','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all map locations?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1037,22 +1037,22 @@ class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'label',
-				'name'		=> __('Label', 'themeblvd'),
-				'desc'		=> __('Enter a label for this sector.', 'themeblvd'),
+				'name'		=> __('Label', 'jumpstart'),
+				'desc'		=> __('Enter a label for this sector.', 'jumpstart'),
 				'type'		=> 'text',
 				'trigger'	=> true
 			),
 			array(
 				'id' 		=> 'value',
-				'name'		=> __('Value', 'themeblvd'),
-				'desc'		=> __('Enter a numeric value for this sector.', 'themeblvd'),
+				'name'		=> __('Value', 'jumpstart'),
+				'desc'		=> __('Enter a numeric value for this sector.', 'jumpstart'),
 				'std'		=> '0',
 				'type'		=> 'text'
 			),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __('Color', 'themeblvd'),
-				'desc'		=> __('Select a color that represents this sector.', 'themeblvd'),
+				'name'		=> __('Color', 'jumpstart'),
+				'desc'		=> __('Select a color that represents this sector.', 'jumpstart'),
 				'std'		=> '#cccccc',
 				'type'		=> 'color'
 			)
@@ -1067,11 +1067,11 @@ class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Sector','themeblvd'),
-			'delete' 				=> __('Delete Sector','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this sector?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Sectors','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all sectors?','themeblvd')
+			'add' 					=> __('Add Sector','jumpstart'),
+			'delete' 				=> __('Delete Sector','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this sector?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Sectors','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all sectors?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1175,16 +1175,16 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'title',
-				'name'		=> __('Title (optional)', 'themeblvd'),
-				'desc'		=> __('If you\'d like a headline to show on the slide, you may enter it here.', 'themeblvd'),
+				'name'		=> __('Title (optional)', 'jumpstart'),
+				'desc'		=> __('If you\'d like a headline to show on the slide, you may enter it here.', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> '',
 				'class'		=> 'slide-title'
 			),
 			array(
 				'id' 		=> 'desc',
-				'name'		=> __('Description (optional)', 'themeblvd'),
-				'desc'		=> __('If you\'d like a description to show on the slide, you may enter it here.', 'themeblvd'),
+				'name'		=> __('Description (optional)', 'jumpstart'),
+				'desc'		=> __('If you\'d like a description to show on the slide, you may enter it here.', 'jumpstart'),
 				'type'		=> 'textarea',
 				'std'		=> '',
 				'class'		=> 'slide-desc'
@@ -1195,26 +1195,26 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'link',
-				'name'		=> __('Link', 'themeblvd'),
-				'desc'		=> __('Select if and how this image should be linked.', 'themeblvd'),
+				'name'		=> __('Link', 'jumpstart'),
+				'desc'		=> __('Select if and how this image should be linked.', 'jumpstart'),
 				'type'		=> 'select',
 				'options'	=> array(
-			        'none'		=> __('No Link', 'themeblvd'),
-			        '_self' 	=> __('Link to webpage in same window.', 'themeblvd'),
-			        '_blank' 	=> __('Link to webpage in new window.', 'themeblvd'),
-			        'image' 	=> __('Link to image in lightbox popup.', 'themeblvd'),
-			        'video' 	=> __('Link to video in lightbox popup.', 'themeblvd')
+			        'none'		=> __('No Link', 'jumpstart'),
+			        '_self' 	=> __('Link to webpage in same window.', 'jumpstart'),
+			        '_blank' 	=> __('Link to webpage in new window.', 'jumpstart'),
+			        'image' 	=> __('Link to image in lightbox popup.', 'jumpstart'),
+			        'video' 	=> __('Link to video in lightbox popup.', 'jumpstart')
 				),
 				'class'		=> 'trigger'
 			),
 			array(
 				'id' 		=> 'link_url',
-				'name'		=> __('Link URL', 'themeblvd'),
+				'name'		=> __('Link URL', 'jumpstart'),
 				'desc'		=> array(
-			        '_self' 	=> __('Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'themeblvd'),
-			        '_blank' 	=> __('Enter a URL to a webpage.<br />Ex: http://google.com', 'themeblvd'),
-			        'image' 	=> __('Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'themeblvd'),
-			        'video' 	=> __('Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250', 'themeblvd').'<br>'.__('Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'themeblvd')
+			        '_self' 	=> __('Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'jumpstart'),
+			        '_blank' 	=> __('Enter a URL to a webpage.<br />Ex: http://google.com', 'jumpstart'),
+			        'image' 	=> __('Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'jumpstart'),
+			        'video' 	=> __('Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250', 'jumpstart').'<br>'.__('Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'jumpstart')
 				),
 				'type'		=> 'text',
 				'std'		=> '',
@@ -1235,12 +1235,12 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Images','themeblvd'),
-			'delete' 				=> __('Remove Image','themeblvd'),
-			'delete_all' 			=> __('Remove All Images','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to remove all images?','themeblvd'),
-			'modal_title'			=> __('Select Images','themeblvd'),
-			'modal_button'			=> __('Add Images','themeblvd')
+			'add' 					=> __('Add Images','jumpstart'),
+			'delete' 				=> __('Remove Image','jumpstart'),
+			'delete_all' 			=> __('Remove All Images','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to remove all images?','jumpstart'),
+			'modal_title'			=> __('Select Images','jumpstart'),
+			'modal_button'			=> __('Add Images','jumpstart')
 		);
 		return $labels;
 	}
@@ -1319,24 +1319,24 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 			),
 			array(
 				'id' 		=> 'name',
-				'name'		=> __('Partner Name', 'themeblvd'),
-				'desc'		=> __('Enter a name that corresponds to this logo.', 'themeblvd'),
+				'name'		=> __('Partner Name', 'jumpstart'),
+				'desc'		=> __('Enter a name that corresponds to this logo.', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
 			/*
 			array(
 				'id' 		=> 'desc',
-				'name'		=> __('Partner Description (optional)', 'themeblvd'),
-				'desc'		=> __('Enter very brief description that will display as a tooltip when the user hovers on the logo.', 'themeblvd'),
+				'name'		=> __('Partner Description (optional)', 'jumpstart'),
+				'desc'		=> __('Enter very brief description that will display as a tooltip when the user hovers on the logo.', 'jumpstart'),
 				'type'		=> 'textarea',
 				'std'		=> ''
 			),
 			*/
 			array(
 				'id' 		=> 'link',
-				'name'		=> __('Partner Link (optional)', 'themeblvd'),
-				'desc'		=> __('Enter a URL you\'d like this logo to link to.', 'themeblvd').'<br>'.__('Ex: http://partersite.com', 'themeblvd'),
+				'name'		=> __('Partner Link (optional)', 'jumpstart'),
+				'desc'		=> __('Enter a URL you\'d like this logo to link to.', 'jumpstart').'<br>'.__('Ex: http://partersite.com', 'jumpstart'),
 				'type'		=> 'text',
 				'pholder'	=> 'http://'
 			)
@@ -1351,12 +1351,12 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Logos','themeblvd'),
-			'delete' 				=> __('Remove Logo','themeblvd'),
-			'delete_all' 			=> __('Remove All Logos','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to remove all logos?','themeblvd'),
-			'modal_title'			=> __('Select Logos','themeblvd'),
-			'modal_button'			=> __('Add Logos','themeblvd')
+			'add' 					=> __('Add Logos','jumpstart'),
+			'delete' 				=> __('Remove Logo','jumpstart'),
+			'delete_all' 			=> __('Remove All Logos','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to remove all logos?','jumpstart'),
+			'modal_title'			=> __('Select Logos','jumpstart'),
+			'modal_button'			=> __('Add Logos','jumpstart')
 		);
 		return $labels;
 	}
@@ -1397,16 +1397,16 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 		    array(
 				'id' 		=> 'highlight',
-				'name'		=> __('Highlight Color', 'themeblvd'),
-				'desc'		=> __('If you wish, you can give the column a highlight color.', 'themeblvd'),
+				'name'		=> __('Highlight Color', 'jumpstart'),
+				'desc'		=> __('If you wish, you can give the column a highlight color.', 'jumpstart'),
 				'type'		=> 'select',
 				'std'		=> 'none',
 				'options'	=> themeblvd_colors(true, false) // Include bootstrap, don't include "Custom Color" option
 			),
 			array(
 				'id' 		=> 'title',
-				'name'		=> __('Title', 'themeblvd'),
-				'desc'		=> __('Enter a title for this column.', 'themeblvd').'<br>'.__('Ex: Gold Package', 'themeblvd'),
+				'name'		=> __('Title', 'jumpstart'),
+				'desc'		=> __('Enter a title for this column.', 'jumpstart').'<br>'.__('Ex: Gold Package', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> '',
 				'trigger'	=> true
@@ -1418,14 +1418,14 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'popout',
 				'name'		=> null,
-				'desc'		=> __('Pop out column so it stands out from the rest.', 'themeblvd'),
+				'desc'		=> __('Pop out column so it stands out from the rest.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
 			array(
 				'id' 		=> 'title_subline',
-				'name'		=> __('Popout Title Subline', 'themeblvd'),
-				'desc'		=> __('Because the column is popped out, enter a very brief subline for the title.', 'themeblvd').'<br>'.__('Ex: Best Value', 'themeblvd'),
+				'name'		=> __('Popout Title Subline', 'jumpstart'),
+				'desc'		=> __('Because the column is popped out, enter a very brief subline for the title.', 'jumpstart').'<br>'.__('Ex: Best Value', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> 'Best Value',
 				'class'		=> 'hide receiver'
@@ -1435,22 +1435,22 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'price',
-				'name'		=> __('Price', 'themeblvd'),
-				'desc'		=> __('Enter a value for the price, without the currency symbol.', 'themeblvd').'<br>'.__('Ex: 50', 'themeblvd'),
+				'name'		=> __('Price', 'jumpstart'),
+				'desc'		=> __('Enter a value for the price, without the currency symbol.', 'jumpstart').'<br>'.__('Ex: 50', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
 			array(
 				'id' 		=> 'price_subline',
-				'name'		=> __('Price Subline (optional)', 'themeblvd'),
-				'desc'		=> __('Enter a very brief subline for the price to show what it represents.', 'themeblvd').'<br>'.__('Ex: per month', 'themeblvd'),
+				'name'		=> __('Price Subline (optional)', 'jumpstart'),
+				'desc'		=> __('Enter a very brief subline for the price to show what it represents.', 'jumpstart').'<br>'.__('Ex: per month', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
 			array(
 				'id' 		=> 'features',
-				'name'		=> __('Feature List', 'themeblvd'),
-				'desc'		=> __('Enter each feature, seprated by a line break. If you like, spice it up with some icons.', 'themeblvd').'<br><br>[vector_icon icon="check" color="#00aa00"]<br>[vector_icon icon="times" color="#aa0000"]',
+				'name'		=> __('Feature List', 'jumpstart'),
+				'desc'		=> __('Enter each feature, seprated by a line break. If you like, spice it up with some icons.', 'jumpstart').'<br><br>[vector_icon icon="check" color="#00aa00"]<br>[vector_icon icon="times" color="#aa0000"]',
 				'type'		=> 'textarea',
 				'std'		=> "Feature 1\nFeature 2\nFeature 3",
 				'html'		=> true,
@@ -1462,8 +1462,8 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 		    	'id' 		=> 'button',
-				'name'		=> __('Button', 'themeblvd'),
-				'desc'		=> __('Show button below feature list?', 'themeblvd'),
+				'name'		=> __('Button', 'jumpstart'),
+				'desc'		=> __('Show button below feature list?', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
@@ -1473,16 +1473,16 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 		    ),
 			array(
 				'id' 		=> 'button_color',
-				'name'		=> __('Button Color', 'themeblvd'),
-				'desc'		=> __('Select what color you\'d like to use for this button.', 'themeblvd'),
+				'name'		=> __('Button Color', 'jumpstart'),
+				'desc'		=> __('Select what color you\'d like to use for this button.', 'jumpstart'),
 				'type'		=> 'select',
 				'class'		=> 'trigger',
 				'options'	=> themeblvd_colors()
 			),
 			array(
 				'id' 		=> 'button_custom',
-				'name'		=> __('Custom Button Color', 'themeblvd'),
-				'desc'		=> __('Configure a custom style for the button.', 'themeblvd'),
+				'name'		=> __('Custom Button Color', 'jumpstart'),
+				'desc'		=> __('Configure a custom style for the button.', 'jumpstart'),
 				'std'		=> array(
 					'bg' 				=> '#ffffff',
 					'bg_hover'			=> '#ebebeb',
@@ -1500,47 +1500,47 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'button_text',
-				'name'		=> __('Button Text', 'themeblvd'),
-				'desc'		=> __('Enter the text for the button.', 'themeblvd'),
+				'name'		=> __('Button Text', 'jumpstart'),
+				'desc'		=> __('Enter the text for the button.', 'jumpstart'),
 				'std'		=> 'Purchase Now',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id' 		=> 'button_url',
-				'name'		=> __('Link URL', 'themeblvd'),
-				'desc'		=> __('Enter the full URL where you want the button\'s link to go.', 'themeblvd'),
+				'name'		=> __('Link URL', 'jumpstart'),
+				'desc'		=> __('Enter the full URL where you want the button\'s link to go.', 'jumpstart'),
 				'std'		=> 'http://www.your-site.com/your-landing-page',
 				'type'		=> 'text',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id' 		=> 'button_size',
-				'name'		=> __('Button Size', 'themeblvd'),
-				'desc'		=> __('Select the size you\'d like used for this button.', 'themeblvd'),
+				'name'		=> __('Button Size', 'jumpstart'),
+				'desc'		=> __('Select the size you\'d like used for this button.', 'jumpstart'),
 				'type'		=> 'select',
 				'std'		=> 'default',
 				'class'		=> 'hide receiver',
 				'options'	=> array(
-					'mini' 		=> __('Mini', 'themeblvd'),
-					'small' 	=> __('Small', 'themeblvd'),
-					'default' 	=> __('Normal', 'themeblvd'),
-					'large' 	=> __('Large', 'themeblvd'),
-					'x-large' 	=> __('Extra Large', 'themeblvd')
+					'mini' 		=> __('Mini', 'jumpstart'),
+					'small' 	=> __('Small', 'jumpstart'),
+					'default' 	=> __('Normal', 'jumpstart'),
+					'large' 	=> __('Large', 'jumpstart'),
+					'x-large' 	=> __('Extra Large', 'jumpstart')
 				)
 			),
 			array(
 				'id' 		=> 'button_icon_before',
-				'name'		=> __('Icon Before Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon before text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __('Icon Before Button Text (optional)', 'jumpstart'),
+				'desc'		=> __('Icon before text of button. This can be any FontAwesome vector icon ID.', 'jumpstart'),
 				'type'		=> 'text',
 				'icon'		=> 'vector',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id' 		=> 'button_icon_after',
-				'name'		=> __('Icon After Button Text (optional)', 'themeblvd'),
-				'desc'		=> __('Icon after text of button. This can be any FontAwesome vector icon ID.', 'themeblvd'),
+				'name'		=> __('Icon After Button Text (optional)', 'jumpstart'),
+				'desc'		=> __('Icon after text of button. This can be any FontAwesome vector icon ID.', 'jumpstart'),
 				'type'		=> 'text',
 				'icon'		=> 'vector',
 				'class'		=> 'hide receiver'
@@ -1560,11 +1560,11 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Pricing Table Column','themeblvd'),
-			'delete' 				=> __('Remove Column','themeblvd'),
-			'delete_confirm' 		=> __('Are you sure you want to delete this column?','themeblvd'),
-			'delete_all' 			=> __('Remove All Columns','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to remove all columns?','themeblvd')
+			'add' 					=> __('Add Pricing Table Column','jumpstart'),
+			'delete' 				=> __('Remove Column','jumpstart'),
+			'delete_confirm' 		=> __('Are you sure you want to delete this column?','jumpstart'),
+			'delete_all' 			=> __('Remove All Columns','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to remove all columns?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1602,7 +1602,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'icon',
-				'name'		=> __('Social Icon', 'themeblvd'),
+				'name'		=> __('Social Icon', 'jumpstart'),
 				'type'		=> 'select',
 				'std'		=> 'facebook',
 				'options'	=> themeblvd_get_social_media_sources(),
@@ -1610,24 +1610,24 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'url',
-				'name'		=> __('Link URL', 'themeblvd'),
+				'name'		=> __('Link URL', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> 'http://'
 			),
 			array(
 				'id' 		=> 'label',
-				'name'		=> __('Label', 'themeblvd'),
+				'name'		=> __('Label', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> ''
 			),
 			array(
 				'id' 		=> 'target',
-				'name'		=> __('Link Target', 'themeblvd'),
+				'name'		=> __('Link Target', 'jumpstart'),
 				'type'		=> 'select',
 				'std'		=> '_blank',
 				'options'	=> array(
-					'_blank'	=> __('New Window', 'themeblvd'),
-					'_self' 	=> __('Same Window', 'themeblvd')
+					'_blank'	=> __('New Window', 'jumpstart'),
+					'_self' 	=> __('Same Window', 'jumpstart')
 				)
 			)
 		);
@@ -1641,11 +1641,11 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Icon','themeblvd'),
-			'delete' 				=> __('Delete Icon','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this icon?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Icons','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all icons?','themeblvd')
+			'add' 					=> __('Add Icon','jumpstart'),
+			'delete' 				=> __('Delete Icon','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this icon?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Icons','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all icons?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1684,7 +1684,7 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'icon',
-				'name'		=> __('Social Icon', 'themeblvd'),
+				'name'		=> __('Social Icon', 'jumpstart'),
 				'type'		=> 'select',
 				'std'		=> 'facebook',
 				'options'	=> themeblvd_get_share_sources(),
@@ -1692,7 +1692,7 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'label',
-				'name'		=> __('Label', 'themeblvd'),
+				'name'		=> __('Label', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> ''
 			)
@@ -1707,11 +1707,11 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Share Icon','themeblvd'),
-			'delete' 				=> __('Delete Share Icon','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this share icon?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Share Icons','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all share icons?','themeblvd')
+			'add' 					=> __('Add Share Icon','jumpstart'),
+			'delete' 				=> __('Delete Share Icon','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this share icon?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Share Icons','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all share icons?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1749,16 +1749,16 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'title',
-				'name'		=> __('Tab Title', 'themeblvd'),
-				'desc'		=> __('Enter a short title to represent this tab.', 'themeblvd'),
+				'name'		=> __('Tab Title', 'jumpstart'),
+				'desc'		=> __('Enter a short title to represent this tab.', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> 'Tab Title',
 				'trigger'	=> true // Triggers this option's value to be used in toggle
 			),
 			array(
 				'id' 		=> 'content',
-				'name'		=> __('Tab Content', 'themeblvd'),
-				'desc'		=> __('Configure the content of the tab. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within a set of tabs.', 'themeblvd'),
+				'name'		=> __('Tab Content', 'jumpstart'),
+				'desc'		=> __('Configure the content of the tab. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within a set of tabs.', 'jumpstart'),
 				'type'		=> 'content',
 				'options'	=> array( 'page', 'raw', 'widget' )
 			)
@@ -1773,11 +1773,11 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Tab','themeblvd'),
-			'delete' 				=> __('Delete Tab','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Tabs','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all tabs?','themeblvd')
+			'add' 					=> __('Add Tab','jumpstart'),
+			'delete' 				=> __('Delete Tab','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Tabs','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all tabs?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1815,42 +1815,42 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			'text' => array(
 				'id' 		=> 'text',
-				'name' 		=> __('Testimonial Text', 'themeblvd'),
-				'desc'		=> __('Enter any text of the testimonial.', 'themeblvd'),
+				'name' 		=> __('Testimonial Text', 'jumpstart'),
+				'desc'		=> __('Enter any text of the testimonial.', 'jumpstart'),
 				'type'		=> 'textarea',
 				'editor'	=> true,
 				'code'		=> 'html'
 		    ),
 			'name' => array(
 				'id' 		=> 'name',
-				'name' 		=> __('Name', 'themeblvd'),
-				'desc'		=> __('Enter the name of the person giving the testimonial.', 'themeblvd'),
+				'name' 		=> __('Name', 'jumpstart'),
+				'desc'		=> __('Enter the name of the person giving the testimonial.', 'jumpstart'),
 				'type'		=> 'text',
 				'trigger'	=> true // Triggers this option's value to be used in toggle
 		    ),
 		    'tagline' => array(
 				'id' 		=> 'tagline',
-				'name' 		=> __('Tagline (optional)', 'themeblvd'),
-				'desc'		=> __('Enter a tagline for the person giving the testimonial.', 'themeblvd').'<br>'.__('Ex: Founder and CEO', 'themeblvd'),
+				'name' 		=> __('Tagline (optional)', 'jumpstart'),
+				'desc'		=> __('Enter a tagline for the person giving the testimonial.', 'jumpstart').'<br>'.__('Ex: Founder and CEO', 'jumpstart'),
 				'type'		=> 'text'
 		    ),
 		    'company' => array(
 				'id' 		=> 'company',
-				'name' 		=> __('Company (optional)', 'themeblvd'),
-				'desc'		=> __('Enter the company the person giving the testimonial belongs to.', 'themeblvd'),
+				'name' 		=> __('Company (optional)', 'jumpstart'),
+				'desc'		=> __('Enter the company the person giving the testimonial belongs to.', 'jumpstart'),
 				'type'		=> 'text'
 		    ),
 		    'company_url' => array(
 				'id' 		=> 'company_url',
-				'name' 		=> __('Company URL (optional)', 'themeblvd'),
-				'desc'		=> __('Enter the website URL for the company or the person giving the testimonial.', 'themeblvd'),
+				'name' 		=> __('Company URL (optional)', 'jumpstart'),
+				'desc'		=> __('Enter the website URL for the company or the person giving the testimonial.', 'jumpstart'),
 				'type'		=> 'text',
 				'pholder'	=> 'http://'
 		    ),
 		    'image' => array(
 				'id' 		=> 'image',
-				'name' 		=> __('Image (optional)', 'themeblvd'),
-				'desc'		=> __('Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'themeblvd'),
+				'name' 		=> __('Image (optional)', 'jumpstart'),
+				'desc'		=> __('Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square.', 'jumpstart'),
 				'type'		=> 'upload',
 				'advanced'	=> true
 		    )
@@ -1865,11 +1865,11 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Testimonial','themeblvd'),
-			'delete' 				=> __('Delete Testimonial','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this testimonial?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Testimonials','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all testimonials?','themeblvd')
+			'add' 					=> __('Add Testimonial','jumpstart'),
+			'delete' 				=> __('Delete Testimonial','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this testimonial?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Testimonials','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all testimonials?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1907,31 +1907,31 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'title',
-				'name'		=> __('Title', 'themeblvd'),
-				'desc'		=> __('Enter a short title to represent this toggle.', 'themeblvd'),
+				'name'		=> __('Title', 'jumpstart'),
+				'desc'		=> __('Enter a short title to represent this toggle.', 'jumpstart'),
 				'type'		=> 'text',
 				'std'		=> 'Toggle Title',
 				'trigger'	=> true // Triggers this option's value to be used in toggle
 			),
 			array(
 				'id' 		=> 'content',
-				'name'		=> __('Content', 'themeblvd'),
-				'desc'		=> __('Configure the content of the toggle. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden.', 'themeblvd'),
+				'name'		=> __('Content', 'jumpstart'),
+				'desc'		=> __('Configure the content of the toggle. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden.', 'jumpstart'),
 				'type'		=> 'textarea',
 				'editor'	=> true,
 				'code'		=> 'html'
 			),
 			array(
 				'id' 		=> 'wpautop',
-				'name'		=> __('Content Formatting', 'themeblvd'),
-				'desc'		=> __('Apply WordPress automatic formatting.', 'themeblvd'),
+				'name'		=> __('Content Formatting', 'jumpstart'),
+				'desc'		=> __('Apply WordPress automatic formatting.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '1'
 			),
 			array(
 				'id' 		=> 'open',
-				'name'		=> __('Initial State', 'themeblvd'),
-				'desc'		=> __('Toggle is open when the page intially loads.', 'themeblvd'),
+				'name'		=> __('Initial State', 'jumpstart'),
+				'desc'		=> __('Toggle is open when the page intially loads.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '0'
 			)
@@ -1946,11 +1946,11 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Toggle','themeblvd'),
-			'delete' 				=> __('Delete Toggle','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Toggles','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all toggles?','themeblvd')
+			'add' 					=> __('Add Toggle','jumpstart'),
+			'delete' 				=> __('Delete Toggle','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this tab?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Toggles','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all toggles?','jumpstart')
 		);
 		return $labels;
 	}
@@ -1988,16 +1988,16 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 		$options = array(
 			array(
 				'id' 		=> 'text',
-				'name'		=> __('Text', 'themeblvd'),
-				'desc'		=> __('Enter the text to display in this text block.', 'themeblvd'),
+				'name'		=> __('Text', 'jumpstart'),
+				'desc'		=> __('Enter the text to display in this text block.', 'jumpstart'),
 				'type'		=> 'textarea',
 				'std'		=> '',
 				'trigger'	=> true // Triggers this option's value to be used in toggle
 			),
 			array(
 				'id' 		=> 'size',
-				'name'		=> __('Text Size', 'themeblvd'),
-				'desc'		=> __('Set the size of the text, relative to the site\'s main font size.', 'themeblvd'),
+				'name'		=> __('Text Size', 'jumpstart'),
+				'desc'		=> __('Set the size of the text, relative to the site\'s main font size.', 'jumpstart'),
 				'std'		=> '200%',
 				'type'		=> 'slide',
 				'options'	=> array(
@@ -2009,8 +2009,8 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 			),
 			array(
 				'id' 		=> 'color',
-				'name'		=> __('Text Color', 'themeblvd'),
-				'desc'		=> __('Select the color of the text.', 'themeblvd'),
+				'name'		=> __('Text Color', 'jumpstart'),
+				'desc'		=> __('Select the color of the text.', 'jumpstart'),
 				'std'		=> '#333333',
 				'type'		=> 'color'
 			),
@@ -2021,23 +2021,23 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'apply_bg_color',
 				'name'		=> null,
-				'desc'		=> __('Apply background color around text block.', 'themeblvd'),
+				'desc'		=> __('Apply background color around text block.', 'jumpstart'),
 				'std'		=> '0',
 				'type'		=> 'checkbox',
 				'class'		=> 'trigger'
 			),
 			array(
 				'id' 		=> 'bg_color',
-				'name'		=> __('Background Color', 'themeblvd'),
-				'desc'		=> __('Select the color of the background around the text.', 'themeblvd'),
+				'name'		=> __('Background Color', 'jumpstart'),
+				'desc'		=> __('Select the color of the background around the text.', 'jumpstart'),
 				'std'		=> '#f2f2f2',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver'
 			),
 			array(
 				'id'		=> 'bg_opacity',
-				'name'		=> __('Background Color Opacity', 'themeblvd'),
-				'desc'		=> __('Select the opacity of the background color. Selecting "100%" means that the background color is not transparent, at all.', 'themeblvd'),
+				'name'		=> __('Background Color Opacity', 'jumpstart'),
+				'desc'		=> __('Select the opacity of the background color. Selecting "100%" means that the background color is not transparent, at all.', 'jumpstart'),
 				'std'		=> '1',
 				'type'		=> 'select',
 				'options'	=> array(
@@ -2070,35 +2070,35 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 			array(
 				'id' 		=> 'bold',
 				'name'		=> null,
-				'desc'		=> __('Use header font.', 'themeblvd'),
+				'desc'		=> __('Use header font.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '0'
 			),
 			array(
 				'id' 		=> 'italic',
 				'name'		=> null,
-				'desc'		=> __('Italicize the text.', 'themeblvd'),
+				'desc'		=> __('Italicize the text.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '0'
 			),
 			array(
 				'id' 		=> 'caps',
 				'name'		=> null,
-				'desc'		=> __('Display text in all caps.', 'themeblvd'),
+				'desc'		=> __('Display text in all caps.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '0'
 			),
 			array(
 				'id' 		=> 'suck_down',
 				'name'		=> null,
-				'desc'		=> __('Reduce space below text block.', 'themeblvd'),
+				'desc'		=> __('Reduce space below text block.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '0'
 			),
 			array(
 				'id' 		=> 'wpautop',
 				'name'		=> null,
-				'desc'		=> __('Apply WordPress automatic formatting.', 'themeblvd'),
+				'desc'		=> __('Apply WordPress automatic formatting.', 'jumpstart'),
 				'type'		=> 'checkbox',
 				'std'		=> '1'
 			)
@@ -2113,11 +2113,11 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function get_labels() {
 		$labels = array(
-			'add' 					=> __('Add Text Block','themeblvd'),
-			'delete' 				=> __('Delete Text Block','themeblvd'),
-			'delete_confirm'		=> __('Are you sure you want to delete this text block?', 'themeblvd'),
-			'delete_all' 			=> __('Delete All Text Blocks','themeblvd'),
-			'delete_all_confirm' 	=> __('Are you sure you want to delete all text blocks?','themeblvd')
+			'add' 					=> __('Add Text Block','jumpstart'),
+			'delete' 				=> __('Delete Text Block','jumpstart'),
+			'delete_confirm'		=> __('Are you sure you want to delete this text block?', 'jumpstart'),
+			'delete_all' 			=> __('Delete All Text Blocks','jumpstart'),
+			'delete_all_confirm' 	=> __('Are you sure you want to delete all text blocks?','jumpstart')
 		);
 		return $labels;
 	}

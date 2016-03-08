@@ -359,15 +359,15 @@ function themeblvd_sanitize_background_size( $value ) {
  */
 function themeblvd_recognized_background_position() {
 	$default = array(
-		'center top'    => __('Background Position: Top Center', 'themeblvd'),
-		'left top'      => __('Background Position: Top Left', 'themeblvd'),
-		'right top'     => __('Background Position: Top Right', 'themeblvd'),
-		'center center' => __('Background Position: Middle Center', 'themeblvd'),
-		'left center'   => __('Background Position: Middle Left', 'themeblvd'),
-		'right center'  => __('Background Position: Middle Right', 'themeblvd'),
-		'center bottom' => __('Background Position: Bottom Center', 'themeblvd'),
-		'left bottom'   => __('Background Position: Bottom Left', 'themeblvd'),
-		'right bottom'  => __('Background Position: Bottom Right', 'themeblvd')
+		'center top'    => __('Background Position: Top Center', 'jumpstart'),
+		'left top'      => __('Background Position: Top Left', 'jumpstart'),
+		'right top'     => __('Background Position: Top Right', 'jumpstart'),
+		'center center' => __('Background Position: Middle Center', 'jumpstart'),
+		'left center'   => __('Background Position: Middle Left', 'jumpstart'),
+		'right center'  => __('Background Position: Middle Right', 'jumpstart'),
+		'center bottom' => __('Background Position: Bottom Center', 'jumpstart'),
+		'left bottom'   => __('Background Position: Bottom Left', 'jumpstart'),
+		'right bottom'  => __('Background Position: Bottom Right', 'jumpstart')
 	);
 	return apply_filters( 'themeblvd_recognized_background_position', $default );
 }
@@ -379,9 +379,9 @@ function themeblvd_recognized_background_position() {
  */
 function themeblvd_recognized_background_attachment() {
 	$default = array(
-		'scroll' 	=> __('Background Scrolling: Normal', 'themeblvd'),
-		'parallax'  => __('Background Scrolling: Parallax Effect', 'themeblvd'),
-		'fixed'  	=> __('Background Scrolling: Fixed in Place', 'themeblvd'),
+		'scroll' 	=> __('Background Scrolling: Normal', 'jumpstart'),
+		'parallax'  => __('Background Scrolling: Parallax Effect', 'jumpstart'),
+		'fixed'  	=> __('Background Scrolling: Fixed in Place', 'jumpstart'),
 	);
 	return apply_filters( 'themeblvd_recognized_background_attachment', $default );
 }
@@ -393,10 +393,10 @@ function themeblvd_recognized_background_attachment() {
  */
 function themeblvd_recognized_background_repeat() {
 	$default = array(
-		'no-repeat' => __('Background Repeat: No Repeat', 'themeblvd'),
-		'repeat-x'  => __('Background Repeat: Repeat Horizontally', 'themeblvd'),
-		'repeat-y'  => __('Background Repeat: Repeat Vertically', 'themeblvd'),
-		'repeat'    => __('Background Repeat: Repeat All', 'themeblvd')
+		'no-repeat' => __('Background Repeat: No Repeat', 'jumpstart'),
+		'repeat-x'  => __('Background Repeat: Repeat Horizontally', 'jumpstart'),
+		'repeat-y'  => __('Background Repeat: Repeat Vertically', 'jumpstart'),
+		'repeat'    => __('Background Repeat: Repeat All', 'jumpstart')
 	);
 	return apply_filters( 'themeblvd_recognized_background_repeat', $default );
 }
@@ -408,12 +408,12 @@ function themeblvd_recognized_background_repeat() {
  */
 function themeblvd_recognized_background_size() {
 	$default = array(
-		'auto'    	=> __('Background Size: Auto', 'themeblvd'),
-		'cover'     => __('Background Size: Cover', 'themeblvd'),
-		'contain'   => __('Background Size: Contain', 'themeblvd'),
-		'100% 100%' => __('Background Size: 100% x 100%', 'themeblvd'),
-		'100% auto' => __('Background Size: Fit Horizontally', 'themeblvd'),
-		'auto 100%' => __('Background Size: Fit Vertically', 'themeblvd')
+		'auto'    	=> __('Background Size: Auto', 'jumpstart'),
+		'cover'     => __('Background Size: Cover', 'jumpstart'),
+		'contain'   => __('Background Size: Contain', 'jumpstart'),
+		'100% 100%' => __('Background Size: 100% x 100%', 'jumpstart'),
+		'100% auto' => __('Background Size: Fit Horizontally', 'jumpstart'),
+		'auto 100%' => __('Background Size: Fit Vertically', 'jumpstart')
 	);
 	return apply_filters( 'themeblvd_recognized_background_size', $default );
 }
@@ -1256,10 +1256,10 @@ function themeblvd_recognized_font_faces() {
  */
 function themeblvd_recognized_font_styles() {
 	$default = array(
-		'normal' 			=> __('Normal', 'themeblvd'),
-		'uppercase' 		=> __('Uppercase', 'themeblvd'),
-		'italic' 			=> __('Italic', 'themeblvd'),
-		'uppercase-italic'	=> __('Uppercase Italic', 'themeblvd')
+		'normal' 			=> __('Normal', 'jumpstart'),
+		'uppercase' 		=> __('Uppercase', 'jumpstart'),
+		'italic' 			=> __('Italic', 'jumpstart'),
+		'uppercase-italic'	=> __('Uppercase Italic', 'jumpstart')
 	);
 	return apply_filters( 'themeblvd_recognized_font_styles', $default );
 }
@@ -1271,15 +1271,15 @@ function themeblvd_recognized_font_styles() {
  */
 function themeblvd_recognized_font_weights() {
 	$default = array(
-		'100' 			=> __('100', 'themeblvd'),
-		'200' 			=> __('200', 'themeblvd'),
-		'300' 			=> __('300', 'themeblvd'),
-		'400' 			=> __('400 (normal)', 'themeblvd'),
-		'500' 			=> __('500', 'themeblvd'),
-		'600' 			=> __('600', 'themeblvd'),
-		'700' 			=> __('700 (bold)', 'themeblvd'),
-		'800' 			=> __('800', 'themeblvd'),
-		'900' 			=> __('900', 'themeblvd')
+		'100' 			=> __('100', 'jumpstart'),
+		'200' 			=> __('200', 'jumpstart'),
+		'300' 			=> __('300', 'jumpstart'),
+		'400' 			=> __('400 (normal)', 'jumpstart'),
+		'500' 			=> __('500', 'jumpstart'),
+		'600' 			=> __('600', 'jumpstart'),
+		'700' 			=> __('700 (bold)', 'jumpstart'),
+		'800' 			=> __('800', 'jumpstart'),
+		'900' 			=> __('900', 'jumpstart')
 	);
 	return apply_filters( 'themeblvd_recognized_font_styles', $default );
 }

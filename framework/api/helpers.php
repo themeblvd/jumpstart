@@ -537,7 +537,7 @@ function themeblvd_get_sidebar_locations() {
  * @since 2.0.0
  */
 function themeblvd_register_sidebars() {
-	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __('Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebar_Handler class.', 'themeblvd') );
+	themeblvd_deprecated_function( __FUNCTION__, '2.3.0', null, __('Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebar_Handler class.', 'jumpstart') );
 	$handler = Theme_Blvd_Sidebar_Handler::get_instance();
 	$handler->register();
 }
@@ -559,7 +559,7 @@ function themeblvd_get_sidebar_location_name( $location ) {
 		return esc_html($sidebar['location']['name']);
 	}
 
-	return esc_html__('Floating Widget Area', 'themeblvd');
+	return esc_html__('Floating Widget Area', 'jumpstart');
 }
 
 /**

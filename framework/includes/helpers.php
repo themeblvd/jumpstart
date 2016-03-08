@@ -1468,22 +1468,22 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	$date = get_post_time('G', true, $post_id);
 
 	$locals = apply_filters('themeblvd_time_ago_locals', array(
-		'year' 		=> __('year', 'themeblvd'),
-		'years' 	=> __('years', 'themeblvd'),
-		'month' 	=> __('month', 'themeblvd'),
-		'months' 	=> __('months', 'themeblvd'),
-		'week' 		=> __('week', 'themeblvd'),
-		'weeks' 	=> __('weeks', 'themeblvd'),
-		'day' 		=> __('day', 'themeblvd'),
-		'days' 		=> __('days', 'themeblvd'),
-		'hour' 		=> __('hour', 'themeblvd'),
-		'hours' 	=> __('hours', 'themeblvd'),
-		'minute' 	=> __('minute', 'themeblvd'),
-		'minutes' 	=> __('minutes', 'themeblvd'),
-		'second' 	=> __('second', 'themeblvd'),
-		'seconds' 	=> __('seconds', 'themeblvd'),
-		'ago'		=> __('ago', 'themeblvd'),
-		'error' 	=> __('sometime', 'themeblvd')
+		'year' 		=> __('year', 'jumpstart'),
+		'years' 	=> __('years', 'jumpstart'),
+		'month' 	=> __('month', 'jumpstart'),
+		'months' 	=> __('months', 'jumpstart'),
+		'week' 		=> __('week', 'jumpstart'),
+		'weeks' 	=> __('weeks', 'jumpstart'),
+		'day' 		=> __('day', 'jumpstart'),
+		'days' 		=> __('days', 'jumpstart'),
+		'hour' 		=> __('hour', 'jumpstart'),
+		'hours' 	=> __('hours', 'jumpstart'),
+		'minute' 	=> __('minute', 'jumpstart'),
+		'minutes' 	=> __('minutes', 'jumpstart'),
+		'second' 	=> __('second', 'jumpstart'),
+		'seconds' 	=> __('seconds', 'jumpstart'),
+		'ago'		=> __('ago', 'jumpstart'),
+		'error' 	=> __('sometime', 'jumpstart')
 	));
 
 	// Array of time period chunks

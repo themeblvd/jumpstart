@@ -858,7 +858,7 @@ function themeblvd_get_grid_slider( $args ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	if ( ! $args['query'] ) {
-		return esc_html__('Error: No query supplied.', 'themeblvd');
+		return esc_html__('Error: No query supplied.', 'jumpstart');
 	}
 
 	$class = 'tb-grid-slider tb-block-slider post_grid themeblvd-gallery';
@@ -1306,11 +1306,11 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					'posts_per_page' 	=> -1
 				);
 			} else {
-				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'themeblvd'));
+				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'jumpstart'));
 			}
 
 		} else {
-			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'themeblvd'));
+			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'jumpstart'));
 		}
 
 	} else {
