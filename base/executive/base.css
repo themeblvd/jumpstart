@@ -23,24 +23,6 @@ Author URI: http://www.themeblvd.com
 	}
 }
 
-/* Floating Search (from main menu), match width of main menu */
-.header-content .tb-floating-search.bottom,
-.header-content .tb-floating-search.below {
-	margin: 0 auto;
-	padding-right: 20px;
-	padding-left: 20px;
-	max-width: 1150px;
-}
-.header-content .tb-floating-search.bottom {
-	margin-bottom: 5px;
-}
-@media (max-width: 1199px) {
-	.header-content .tb-floating-search.bottom,
-	.header-content .tb-floating-search.below {
-		max-width: 940px;
-	}
-}
-
 /* Header Addon */
 .header-addon {
 	margin-top: -12px;
@@ -266,7 +248,6 @@ Author URI: http://www.themeblvd.com
 	padding: 0 15px;
 }
 .js-boxed .site-header > .wrap,
-.js-boxed .tb-floating-search > .wrap,
 .js-boxed .tb-featured-banner > .wrap,
 .js-boxed .site-breadcrumbs > .wrap,
 .js-boxed .site-inner > .wrap,
@@ -292,11 +273,6 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed .site-footer > .wrap {
 	padding: 0;
-}
-
-/* Floating Search */
-.js-boxed .tb-floating-search > .wrap {
-  padding: 0 20px;
 }
 
 /* Banner */

@@ -389,7 +389,6 @@ Author URI: http://www.themeblvd.com
 .js-boxed .header-above > .wrap,
 .js-boxed .header-content > .wrap,
 .js-boxed .header-nav > .wrap,
-.js-boxed .tb-floating-search > .wrap,
 .js-boxed .tb-featured-banner > .wrap,
 .js-boxed .site-breadcrumbs > .wrap,
 .js-boxed .site-inner > .wrap,
@@ -420,11 +419,6 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed .site-footer > .wrap {
 	padding: 0;
-}
-
-/* Floating Search */
-.js-boxed .tb-floating-search > .wrap {
-  padding: 0 20px;
 }
 
 /* Banner */

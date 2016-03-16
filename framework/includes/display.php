@@ -134,15 +134,6 @@ function themeblvd_header_content_default() {
 	?>
 	<div class="<?php echo $class; ?>" role="banner">
 
-		<?php
-		/**
-		 * Setup floating search bar
-		 */
-		if ( themeblvd_do_floating_search() ) {
-			themeblvd_floating_search();
-		}
-		?>
-
 		<div class="wrap clearfix">
 			<?php
 			/**

@@ -1461,6 +1461,7 @@ function jumpstart_ent_css() {
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($highlight, '0.8'));
 	$print .= "}\n";
 
+	$print .= ".tb-floating-search .tb-search .search-input:focus,\n";
 	$print .= ".tooltip-inner {\n";
 	$print .= sprintf("\tborder-color: %s;\n", $highlight);
 	$print .= "}\n";
@@ -1770,33 +1771,6 @@ function jumpstart_ent_css() {
 				}
 
 			}
-		}
-
-		// Floating search background color, to match header color
-		if ( $header_bg_color ) {
-
-			// Floating search background color, to match header color
-			$print .= ".tb-floating-search.below {\n";
-			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
-			$print .= "}\n";
-
-			if ( themeblvd_get_option('header_text_color') == 'light' ) {
-				$print .= ".tb-floating-search .tb-search .search-input,\n";
-				$print .= ".tb-floating-search .search-wrap:before {\n";
-				$print .= "\tcolor: #ffffff;\n";
-				$print .= "\topacity: 1;\n";
-				$print .= "}\n";
-				$print .= ".tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
-				$print .= "\tcolor: rgba(255,255,255,.8);\n";
-				$print .= "}\n";
-				$print .= ".tb-floating-search .tb-search .search-input:-ms-input-placeholder {\n";
-				$print .= "\tcolor: rgba(255,255,255,.8);\n";
-				$print .= "}\n";
-				$print .= ".tb-floating-search .tb-search .search-input::-webkit-input-placeholder {\n";
-				$print .= "\tcolor: rgba(255,255,255,.8);\n";
-				$print .= "}\n";
-			}
-
 		}
 
 	} else {
@@ -2141,7 +2115,7 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 	}
 
 	if ( themeblvd_get_option('searchform') == 'show' ) {
-		$items .= sprintf('<li class="menu-item level-1 menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'below', 'class' => 'menu-btn')));
+		$items .= sprintf('<li class="menu-item level-1 menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('class' => 'menu-btn')));
 	}
 
 	return $items;
@@ -2254,26 +2228,6 @@ function jumpstart_ent_header_top() {
 
 }
 add_action('themeblvd_header_top', 'jumpstart_ent_header_top', 5);
-
-/**
- * If we're showing a header top bar (i.e. there's header text), then
- * we want the floating search to be full-sized over header content
- * below. But if the're no top bar and search icon is in the menu,
- * we need the menu to open below the header.
- *
- * @since 2.0.0
- */
-function jumpstart_ent_floating_search_placement( $args ) {
-
-	if ( themeblvd_get_option('header_text') ) {
-		$args['placement'] = 'full';
-	} else {
-		$args['placement'] = 'below';
-	}
-
-	return $args;
-}
-add_filter('themeblvd_floating_search_trigger_defaults', 'jumpstart_ent_floating_search_placement');
 
 /**
  * Filter args that get filtered in when

@@ -1714,6 +1714,7 @@ function jumpstart_ex_css() {
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($highlight, '0.8'));
 	$print .= "}\n";
 
+	$print .= ".tb-floating-search .tb-search .search-input:focus,\n";
 	$print .= ".tooltip-inner {\n";
 	$print .= sprintf("\tborder-color: %s;\n", $highlight);
 	$print .= "}\n";
@@ -2034,33 +2035,6 @@ function jumpstart_ex_css() {
 			}
 		}
 
-		if ( $header_bg_color ) {
-
-			// Floating search background color, to match header color
-			$print .= ".tb-floating-search,\n";
-			$print .= ".tb-floating-search.below {\n";
-			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
-			$print .= "}\n";
-
-			if ( themeblvd_get_option('header_text_color') == 'light' ) {
-				$print .= ".tb-floating-search .tb-search .search-input,\n";
-				$print .= ".tb-floating-search .search-wrap:before {\n";
-				$print .= "\tcolor: #ffffff;\n";
-				$print .= "\topacity: 1;\n";
-				$print .= "}\n";
-				$print .= ".tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
-				$print .= "\tcolor: rgba(255,255,255,.8);\n";
-				$print .= "}\n";
-				$print .= ".tb-floating-search .tb-search .search-input:-ms-input-placeholder {\n";
-				$print .= "\tcolor: rgba(255,255,255,.8);\n";
-				$print .= "}\n";
-				$print .= ".tb-floating-search .tb-search .search-input::-webkit-input-placeholder {\n";
-				$print .= "\tcolor: rgba(255,255,255,.8);\n";
-				$print .= "}\n";
-			}
-
-		}
-
 	} else {
 
 		// For transparent header, give header the
@@ -2138,26 +2112,6 @@ function jumpstart_ex_css() {
 		}
 
 		$print .= "}\n";
-
-		$print .= ".tb-sticky-menu .tb-floating-search {\n";
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.8'));
-		$print .= "}\n";
-
-		if ( themeblvd_get_option('header_text_color') == 'light' ) {
-			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input,\n";
-			$print .= ".tb-sticky-menu .tb-floating-search .search-wrap:before {\n";
-			$print .= "\tcolor: #ffffff;\n";
-			$print .= "}\n";
-			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input::-moz-placeholder {\n";
-			$print .= "\tcolor: rgba(255,255,255,.8);\n";
-			$print .= "}\n";
-			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input:-ms-input-placeholder {\n";
-			$print .= "\tcolor: rgba(255,255,255,.8);\n";
-			$print .= "}\n";
-			$print .= ".tb-sticky-menu .tb-floating-search .tb-search .search-input::-webkit-input-placeholder {\n";
-			$print .= "\tcolor: rgba(255,255,255,.8);\n";
-			$print .= "}\n";
-		}
 
 	}
 
@@ -2371,9 +2325,7 @@ function jumpstart_ex_css() {
 	if ( $options['corners'] && $options['corners'] != '0px' ) {
 
 		$print .= ".header-nav,\n";
-		$print .= ".btn-navbar,\n";
-		$print .= ".header-content .tb-floating-search.bottom,\n";
-		$print .= ".header-content .tb-floating-search.below {\n";
+		$print .= ".btn-navbar {\n";
 		$print .= sprintf("\t-webkit-border-radius: %s;\n", $options['corners']);
 		$print .= sprintf("\tborder-radius: %s;\n", $options['corners']);
 		$print .= "}\n";
@@ -2762,7 +2714,7 @@ function jumpstart_ex_header_addon() {
 
 		// Floating search trigger
 		if ( themeblvd_get_option('searchform') == 'show' ) {
-			printf('<li class="top-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'below')));
+			printf('<li class="top-search">%s</li>', themeblvd_get_floating_search_trigger());
 		}
 
 		// Floating shopping cart
@@ -2805,7 +2757,7 @@ function jumpstart_ex_header_addon() {
 function jumpstart_ex_nav_search( $items, $args ) {
 
 	if ( $args->theme_location == 'primary' && themeblvd_get_option('menu_search') ) {
-		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_floating_search_trigger(array('placement' => 'bottom')));
+		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_floating_search_trigger());
 	}
 
 	return $items;

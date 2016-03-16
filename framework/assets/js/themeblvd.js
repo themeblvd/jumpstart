@@ -187,7 +187,7 @@ jQuery(document).ready(function($) {
 			max = parseInt(themeblvd.mobile_menu_viewport_max);
 
 		// Add search box, if exists in header
-		$header.find('.tb-search').first().clone().addClass('mini').appendTo( $side_holder );
+		$('.tb-floating-search .tb-search').first().clone().addClass('mini').appendTo( $side_holder );
 
 		// Add menu, header text, and social icons, if they exist
 		$primary_menu.clone().appendTo( $side_holder );
@@ -334,16 +334,14 @@ jQuery(document).ready(function($) {
 
 			// Search trigger already exists in menu, so just adjust
 			// the placement and add search box.
-			$sticky.find('.tb-search-trigger').data('placement', 'below').addClass('menu-btn');
-			$header.find('.tb-floating-search').clone().appendTo($sticky);
+			$sticky.find('.tb-search-trigger').addClass('menu-btn');
 
 		} else if ( $header.find('.tb-search-trigger').length ) {
 
 			// No search yet in menu, but it's present in header.
 			// Transfer this to a menu item.
-			$header.find('.tb-floating-search').clone().appendTo($sticky);
 			$header.find('.tb-search-trigger').first().clone().appendTo( $sticky.find('.tb-primary-menu') ).wrap('<li class="menu-item level-1 menu-search"></li>');
-			$sticky.find('.tb-search-trigger').data('placement', 'below').addClass('menu-btn');
+			$sticky.find('.tb-search-trigger').addClass('menu-btn');
 
 		}
 
@@ -354,14 +352,6 @@ jQuery(document).ready(function($) {
 			offset: parseInt(themeblvd.sticky_offset),
 			callbackFunction: function($elem, action){
 				if ( $elem.hasClass('visible') ) {
-
-					// Close open floating search
-					var $search_trigger = $elem.find('#sticky-menu .tb-search-trigger');
-
-					if ( $search_trigger.hasClass('open') ) {
-						$search_trigger.stop().removeClass('open').html( '<i class="fa fa-'+$search_trigger.data('open')+'"></i>' );
-				        $elem.find('#sticky-menu .tb-floating-search').fadeOut(250).attr('style', '').removeClass('below');
-					}
 
 					// Close open contact popovers
 					$elem.find('#sticky-menu .tb-contact-trigger').popover('hide');
@@ -457,78 +447,20 @@ jQuery(document).ready(function($) {
 
 	$('.tb-search-trigger').on('click', function(){
 
-	    var $el = $(this),
-	        placement = $el.data('placement'),
-	        $searchform = $el.closest('.site-header > .wrap, .tb-sticky-menu').find('.tb-floating-search'),
-			$header = $searchform.closest('.site-header');
+		var $el = $('.tb-floating-search');
 
-	    $searchform.removeClass('full bottom below top').addClass(placement);
+		$el.addClass('on');
 
-	    if ( $el.hasClass('open') ) {
-
-	        $el.stop().removeClass('open').html( '<i class="fa fa-'+$el.data('open')+'"></i>' );
-
-			$searchform.stop().fadeOut(250, function(){
-				$(this).attr('style', '');
-			});
-
-			if ( $header.find('.header-content > .wrap').hasClass('floating-search-full-on') ) {
-				$header.find('.header-content > .wrap').stop().animate({'opacity': 1}, 250).removeClass('floating-search-full-on');
-			} else if ( $header.find('.header-nav').hasClass('floating-search-below-on') ) {
-				$header.find('.header-nav').stop().animate({'opacity': 1}, 250).removeClass('floating-search-below-on');
-			}
-
-	    } else {
-
-	        $el.stop().addClass('open').html( '<i class="fa fa-'+$el.data('close')+'"></i>' );
-
-	        if ( placement == 'full' ) {
-
-				$searchform.fadeIn(250).find('.search-input').focus();
-				$header.find('.header-content > .wrap').stop().animate({'opacity': 0}, 250).addClass('floating-search-full-on');
-
-	        } else if ( placement == 'bottom' ) {
-
-				$searchform.stop().css({
-	                'bottom': -5,
-					'marginTop' : 0, // safeguard
-	                'display': 'block',
-	                'opacity': 0
-	            }).animate({
-	                'bottom' : 0,
-	                'opacity': 1
-	            }, 250).find('.search-input').focus();
-
-	        } else if ( placement == 'below' ) {
-
-				$searchform.stop().css({
-	                'top': '100%',
-					'marginTop' : -5,
-	                'display': 'block',
-	                'opacity': 0
-	            }).animate({
-	                'marginTop' : 0,
-	                'opacity': 1
-	            }, 250).find('.search-input').focus();
-
-				$('.site-header > .wrap > .header-nav').stop().animate({'opacity': 0.1}, 250).addClass('floating-search-below-on'); // Only when menu is below header content
-
-	        } else { // top
-
-	            $searchform.stop().css({
-	                'top': -5,
-					'marginTop' : 0, // safeguard
-	                'display': 'block',
-	                'opacity': 0
-	            }).animate({
-	                'top' : 0,
-	                'opacity': 1
-	            }, 250).find('.search-input').focus();
-
-	        }
-	    }
+		if ( ! $body.hasClass('mobile') ) {
+			$el.find('.search-input').focus();
+		}
 
 	    return false;
+	});
+
+	$('.tb-floating-search .close-search').on('click', function(){
+		$(this).closest('.tb-floating-search').removeClass('on');
+		return false;
 	});
 
 	// ---------------------------------------------------------

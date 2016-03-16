@@ -193,6 +193,7 @@ function themeblvd_get_floating_search( $args = array() ) {
 
 	$output  = '<div class="tb-floating-search">';
 	$output .= '<div class="wrap">';
+	$output .= '<a href="#" title="'.themeblvd_get_local('close').'" class="close-search">x</a>';
 	$output .= get_search_form(false);
 	$output .= '</div><!-- .wrap (end) -->';
 	$output .= '</div><!-- .tb-floating-search (end) -->';
@@ -209,7 +210,9 @@ function themeblvd_get_floating_search( $args = array() ) {
  * @param array $args Optional argments to override default behavior
  */
 function themeblvd_floating_search( $args = array() ) {
-	echo themeblvd_get_floating_search( $args );
+	if ( themeblvd_do_floating_search() ) {
+		echo themeblvd_get_floating_search( $args );
+	}
 }
 
 /**
@@ -225,8 +228,6 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	// Setup arguments
 	$defaults = apply_filters('themeblvd_floating_search_trigger_defaults', array(
 		'open'		=> 'search',	// FontAwesome icon to open
-		'close'		=> 'close',	 	// FontAwesome icon to close
-		'placement'	=> 'top',		// Placement relative to its container (header content by default) - top, bottom, below, full
 		'class'		=> ''			// Optional css classes to add to <a>
 	));
 	$args = wp_parse_args( $args, $defaults );
@@ -237,7 +238,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 		$class .= ' '.$args['class'];
 	}
 
-	$output = sprintf( '<a href="#" class="%1$s" data-open="%2$s" data-close="%3$s" data-placement="%4$s"><i class="fa fa-%2$s"></i></a>', esc_attr($class), esc_attr($args['open']), esc_attr($args['close']), esc_attr($args['placement']) );
+	$output = sprintf( '<a href="#" class="%s"><i class="fa fa-%s"></i></a>', esc_attr($class), esc_attr($args['open']) );
 
 	return apply_filters( 'themeblvd_floating_search_trigger', $output, $args );
 }

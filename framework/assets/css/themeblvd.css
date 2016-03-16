@@ -7136,113 +7136,85 @@ body.mobile .tb-bg-video {
 }
 
 /* Floating Search */
-.has-floating-search {
-	position: relative;
-}
-/* @noflip */
 .tb-floating-search {
-	background: #ffffff;
-	background: rgba(255,255,255,.8);
-	-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.1);
-	box-shadow: 0 1px 6px rgba(0,0,0,.1);
-	display: none;
-	padding: 15px 0;
-	position: absolute;
-	right: 0;
-	left: 0;
-	z-index: 10;
-}
-.tb-floating-search.below {
-	background: #ffffff;
-}
-.transparent .header-content .tb-floating-search {
 	background: #000000;
-	background: rgba(0,0,0,.3);
-}
-.tb-floating-search.full,
-.transparent .header-content .tb-floating-search.full {
-	background: transparent;
+	background-color: rgba(0,0,0,.9);
+	opacity: 0;
+	position: fixed;
 	top: 0;
+	right: 0;
 	bottom: 0;
-	-webkit-box-shadow: none;
-	box-shadow: none;
+	left: 0;
+	-webkit-transition: opacity 0.2s ease-in-out, visibility 0s 0.2s;
+	transition: opacity 0.2s ease-in-out, visibility 0s 0.2s;
+	visibility: hidden;
+	z-index: 1000;
 }
-.tb-floating-search.full > .wrap {
-	position: relative;
-	height: 100%;
+.tb-floating-search.on {
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: opacity 0.2s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
 }
-/* @noflip */
-.tb-floating-search.full .tb-search {
+.tb-floating-search .tb-search {
 	position: absolute;
 	top: 50%;
-	right: 10px;
-	left: 10px;
+	left: 50%;
+	width: 500px;
+	width: 50vw;
+	-ms-transform: translate(-50%, -60%); /* IE9 */
+	-webkit-transform: translate(-50%, -60%);
+	transform: translate(-50%, -60%);
+	-webkit-transition: transform 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out;
+}
+.tb-floating-search.on .tb-search {
+	-ms-transform: translate(-50%, -50%); /* IE9 */
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.tb-floating-search .tb-search .search-wrap:before {
+	content: "";
+	background: url('../svg/search.svg') center center no-repeat;
+	background-size: 3.5vh 3.5vh;
+	position: absolute;
+	top: 50%;
+	left: 4vh;
 	-ms-transform: translate(0, -50%); /* IE9 */
 	-webkit-transform: translate(0, -50%);
 	transform: translate(0, -50%);
-	width: 100%;
-}
-.tb-floating-search .search-wrap {
-	padding: 0 0 0 30px;
-}
-.tb-floating-search .search-wrap:before {
-	content: "\f002";
-	display: block;
-	font-family: "FontAwesome";
-	font-size: 18px;
-	line-height: 1.3em;
-	opacity: 0.5;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	width: 1em;
-}
-.tb-floating-search.full .search-wrap:before {
-	font-size: 22px;
-}
-.transparent .header-content .tb-floating-search .search-wrap:before {
-	color: #ffffff;
-	opacity: 1;
+	width: 4vh;
+	height: 4vh;
 }
 .tb-floating-search .tb-search .search-input {
 	background: transparent;
-	border: none;
-	display: block;
-	font-size: 18px;
-	height: 1.3em;
-	line-height: 1.3em;
-	padding: 0;
-}
-.tb-floating-search.full .tb-search .search-input {
-	font-size: 22px;
-}
-.transparent .header-content .tb-floating-search .tb-search .search-input {
+	border: 1px solid rgba(255,255,255,.3);
+	border-radius: 2px;
 	color: #ffffff;
+	font-size: 3.5vh;
+	height: auto;
+	padding: 1em 1.5em 1em 3.2em;
 }
-.tb-floating-search .tb-search .search-input::-moz-placeholder {
-	color: #888888;
-}
-.tb-floating-search .tb-search .search-input:-ms-input-placeholder {
-	color: #888888;
-}
-.tb-floating-search .tb-search .search-input::-webkit-input-placeholder {
-	color: #888888;
-}
-.transparent .header-content .tb-floating-search .tb-search .search-input::-moz-placeholder {
-	color: rgba(255,255,255,.8);
-}
-.transparent .header-content .tb-floating-search .tb-search .search-input:-ms-input-placeholder {
-	color: rgba(255,255,255,.8);
-}
-.transparent .header-content .tb-floating-search .tb-search .search-input::-webkit-input-placeholder {
-	color: rgba(255,255,255,.8);
+.tb-floating-search .tb-search .search-input:focus {
+	border-color: #fec527; /* highlight */
 }
 .tb-floating-search .tb-search .search-submit {
 	display: none;
+}
+.tb-floating-search .close-search {
+	background: url('../svg/close.svg') center center no-repeat;
+	background-size: 16px 16px;
+	opacity: .7;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-indent: -9999px;
+	width: 90px;
+	height: 90px;
+}
+.tb-floating-search .close-search:hover,
+.tb-floating-search .close-search:focus {
+	opacity: 1;
 }
 
 /* Contact Popover */
