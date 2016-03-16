@@ -1159,13 +1159,13 @@ function jumpstart_su_options() {
 				'name'		=> __('Default Buttons', 'jumpstart'),
 				'desc'		=> __('Configure what a default button looks like.', 'jumpstart'),
 				'std'		=> array(
-					'bg' 				=> '#f8f8f8',
-					'bg_hover'			=> '#f5f5f5',
-					'border' 			=> '#f2f2f2',
-					'text'				=> '#666666',
-					'text_hover'		=> '#666666',
+					'bg' 				=> '#333333',
+					'bg_hover'			=> '#222222',
+					'border' 			=> '#000000',
+					'text'				=> '#ffffff',
+					'text_hover'		=> '#ffffff',
 					'include_bg'		=> 1,
-					'include_border'	=> 1
+					'include_border'	=> 0
 				),
 				'type'		=> 'button'
 			),
@@ -1180,15 +1180,15 @@ function jumpstart_su_options() {
 					'text'				=> '#ffffff',
 					'text_hover'		=> '#ffffff',
 					'include_bg'		=> 1,
-					'include_border'	=> 1
+					'include_border'	=> 0
 				),
 				'type'		=> 'button'
 			),
 			'btn_border' => array(
 				'id'		=> 'btn_border',
 				'name'		=> __('General Button Border Width', 'jumpstart'),
-				'desc'		=> __('Select a width in pixels for border of buttons.', 'jumpstart'),
-				'std'		=> '2px',
+				'desc'		=> __('If your buttons are set to include a border, select a width in pixels for those borders.', 'jumpstart'),
+				'std'		=> '0px',
 				'type'		=> 'slide',
 				'options'	=> array(
 					'units'		=> 'px',
