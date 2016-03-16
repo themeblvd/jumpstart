@@ -588,7 +588,7 @@ p {
 /* Content Background */
 .bg-content {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 
 /* Posts */
@@ -596,7 +596,7 @@ p {
 article.single {
 	background: #ffffff;
 	margin-bottom: 50px;
-	padding: 30px;
+	padding: 40px;
 }
 article.single {
 	margin-bottom: 30px;
@@ -606,15 +606,6 @@ article.single {
 	border: none;
 	padding: 0;
 }
-.blog-wrap > article > .featured-item,
-article.single > .featured-item {
-	margin: -30px -30px 30px -30px;
-}
-.loop-shortcode > .blog-wrap > article > .featured-item {
-	margin-top: 0;
-	margin-right: 0;
-	margin-left: 0;
-}
 .blog-wrap > article > .entry-content > p:last-child {
 	margin-bottom: 0;
 }
@@ -622,26 +613,26 @@ article.single > .featured-item {
 /* Pages */
 article.page {
 	background: #ffffff;
-	padding: 30px;
-}
-article.page > .featured-item {
-	margin: -30px -30px 30px -30px;
+	padding: 40px;
 }
 article.tb-naked-page {
 	background: transparent !important;
 	border: none !important;
 	padding: 0;
 }
-article.tb-naked-page > .featured-item {
-	margin: 0 0 30px 0;
-}
 
 /* Titles */
 .entry-title {
 	margin-top: 0;
 }
-.entry-title-with-meta {
-	margin: 0;
+.entry-header {
+	margin-bottom: 25px;
+}
+.entry-header .entry-title {
+	margin-bottom: 0;
+}
+.entry-header.has-meta .entry-title {
+	margin-bottom: 10px;
 }
 .entry-title a:not(:hover) {
 	color: inherit;
@@ -651,7 +642,7 @@ article.tb-naked-page > .featured-item {
 .entry-meta {
 	color: #999999;
 	color: rgba(26,26,26,.4);
-	font-size: 16px;
+	font-size: 12px;
 	margin: 0 2px 10px 0;
 }
 .text-light .entry-meta,
@@ -673,34 +664,21 @@ article.tb-naked-page > .featured-item {
 /* Sub Meta */
 .sub-meta-wrapper,
 .tb-product-wrap .product_meta {
-	border-top: 2px solid #f2f2f2;
-	border-color: rgba(220,220,220,.4);
-	margin: 20px 0 0 0;
+	margin: 0;
 	padding: 20px 0 0 0;
 }
 .sub-meta-wrapper .share {
-	float: left;
-	margin-right: 20px;
-}
-.sub-meta-wrapper .info {
-	float: right;
+	margin: 0 0 15px 0;
 }
 .sub-meta-wrapper .sub-meta,
 .tb-product-wrap .product_meta {
+	border: none;
 	color: #999999;
 	color: rgba(26,26,26,.4);
 	font-size: 12px;
 	margin-bottom: 5px;
 }
-.sub-meta-wrapper .sub-meta > span {
-	display: block;
-	float: right;
-}
 @media (max-width: 767px) {
-	.sub-meta-wrapper .share,
-	.sub-meta-wrapper .info {
-		float: none;
-	}
 	.sub-meta-wrapper .share {
 		margin: 0 0 10px 0;
 	}
@@ -712,7 +690,7 @@ article.tb-naked-page > .featured-item {
 }
 .featured-quote .tb-blockquote {
 	border: none;
-	padding: 30px;
+	padding: 40px;
 }
 .featured-quote small {
 	color: inherit;
@@ -724,7 +702,7 @@ article.tb-naked-page > .featured-item {
 .products.related {
 	background: #ffffff;
 	margin-bottom: 30px;
-	padding: 30px;
+	padding: 40px;
 }
 .tb-related-posts .related-posts-title,
 .products.upsells > h2,
@@ -744,7 +722,7 @@ article.tb-naked-page > .featured-item {
 /* Comment List */
 #comments {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 #comments ol,
 #comments ul {
@@ -913,7 +891,7 @@ article.tb-naked-page > .featured-item {
 /* Archive Info and Author Box (single post and archives) */
 .tb-info-box {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 .tb-author-box .avatar-wrap img {
 	border-radius: 100%;
@@ -922,7 +900,7 @@ article.tb-naked-page > .featured-item {
 /* Search Results */
 .search-page {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 
 /* Posts Wrap */
@@ -930,7 +908,7 @@ article.tb-naked-page > .featured-item {
 .post_grid.archive-loop .post-wrap,
 .post_showcase.archive-loop .post-wrap {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 
 /* =Page Templates
@@ -939,19 +917,19 @@ article.tb-naked-page > .featured-item {
 /* Post List */
 .list-template-wrap .list-wrap {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 
 /* Post Grid */
 .grid-template-wrap .grid-wrap {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 
 /* Post Showcase */
 .showcase-template-wrap .showcase-wrap {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 .showcase-template-wrap .tb-sort-nav {
 	padding: 0 10px 5px 10px;
@@ -966,7 +944,7 @@ article.tb-naked-page > .featured-item {
 .element-section > .element.bg-content,
 .element-columns .element.bg-content {
 	background: #ffffff;
-	padding: 30px;
+	padding: 40px;
 }
 
 /* =Parts

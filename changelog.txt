@@ -9,6 +9,7 @@ Jump Start Changelog
 * New: [Adobe Typekit](https://typekit.com) support to typography theme options.
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
 * New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
+* New: Template file `content-blog.php` for the blog post style has been added.
 * Improvement: Expanded video background support.
     * YouTube and Vimeo support added.
     * Simplified options for inputting video.
@@ -16,6 +17,7 @@ Jump Start Changelog
     * Better dynamic video re-sizing to fit area, based on inputted aspect ratio.
     * Progressive loading for longer videos.
     * Fallback image now displays on large mobile devices, where background video isn't supported.
+* Improvement: Design for post in blog and single post has been simplified.
 * Improvement: Design enhancements for default post showcase display.
 * Improvement: Design enhancements for Magnific Popup lightbox navigation.
 * Improvement: Design enhancements to Divider element.

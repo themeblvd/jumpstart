@@ -71,11 +71,6 @@ article.page {
 }
 
 /* Sub Meta */
-.sub-meta-wrapper,
-.tb-product-wrap .product_meta {
-	border-top-color :#000000;
-	border-top-color: rgba(0,0,0,.9);
-}
 .sub-meta-wrapper .sub-meta,
 .tb-product-wrap .product_meta {
 	color: #ffffff;

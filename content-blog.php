@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content of single posts.
+ * The template used for displaying posts in a blog.
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(themeblvd_get_att('class')); ?>>
@@ -59,10 +59,6 @@
 
 	<?php if ( is_single() ) : ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . themeblvd_get_local('pages').': ', 'after' => '</div>' ) ); ?>
-	<?php endif; ?>
-
-	<?php if ( themeblvd_get_att('show_sub_meta') ) : ?>
-		<?php themeblvd_blog_sub_meta(); ?>
 	<?php endif; ?>
 
 	<?php edit_post_link( themeblvd_get_local( 'edit_post' ), '<div class="edit-link"><i class="fa fa-edit"></i> ', '</div>' ); ?>
