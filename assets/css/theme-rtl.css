@@ -606,6 +606,18 @@ article.single {
 	border: none;
 	padding: 0;
 }
+article.single > .entry-header,
+.blog-wrap > article > .entry-header {
+	margin-bottom: 25px;
+}
+article.single > .entry-header > .entry-title,
+.blog-wrap > article > .entry-header .entry-title {
+	margin-bottom: 0;
+}
+article.single .entry-header.has-meta .entry-title,
+.blog-wrap > article > .entry-header.has-meta .entry-title {
+	margin-bottom: 10px;
+}
 .blog-wrap > article > .entry-content > p:last-child {
 	margin-bottom: 0;
 }
@@ -624,15 +636,6 @@ article.tb-naked-page {
 /* Titles */
 .entry-title {
 	margin-top: 0;
-}
-.entry-header {
-	margin-bottom: 25px;
-}
-.entry-header .entry-title {
-	margin-bottom: 0;
-}
-.entry-header.has-meta .entry-title {
-	margin-bottom: 10px;
 }
 .entry-title a:not(:hover) {
 	color: inherit;
