@@ -154,7 +154,7 @@ class Theme_Blvd_Frontend_Init {
 
 		if ( $q->is_home() ) {
 
-			$this->mode = 'blog';
+			$this->mode = apply_filters('themeblvd_posts_page_mode', 'blog');
 
 		} else if ( $q->is_archive() ) {
 

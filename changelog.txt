@@ -10,6 +10,7 @@ Jump Start Changelog
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
 * New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
 * New: Template file `content-blog.php` for the blog post style has been added.
+* New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
 * Improvement: Expanded video background support.
     * YouTube and Vimeo support added.
     * Simplified options for inputting video.
