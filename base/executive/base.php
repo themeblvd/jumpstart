@@ -1582,6 +1582,8 @@ function jumpstart_ex_css() {
 		$print .= ".btn-default:focus,\n";
 		$print .= ".btn-default:active,\n";
 		$print .= ".btn-default.active,\n";
+		$print .= ".btn-default.active:hover,\n";
+		$print .= ".btn-default.active:focus,\n";
 		$print .= "input[type=\"submit\"]:hover,\n";
 		$print .= "input[type=\"submit\"]:focus,\n";
 		$print .= "input[type=\"submit\"]:active,\n";
