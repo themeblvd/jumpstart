@@ -243,8 +243,7 @@ class Theme_Blvd_Frontend_Init {
 			'top_height'				=> 0,			// If using suck up, figure out the height of the header
 			'top_height_tablet'			=> 0,			// If using suck up, figure out the height of the header
 			'top'						=> true,		// Whether to show entire #top section (header)
-			'bottom'					=> true, 		// Whether to show entire #bottom section (bottom)
-			'banner'					=> false		// Whether to show featured banner
+			'bottom'					=> true 		// Whether to show entire #bottom section (bottom)
 		);
 
 		/*------------------------------------------------------*/
@@ -572,19 +571,6 @@ class Theme_Blvd_Frontend_Init {
 
 		if ( themeblvd_supports('display', 'hide_bottom') && get_post_meta( $this->config['id'], '_tb_layout_footer', true ) == 'hide' ) {
 			$this->config['bottom'] = false;
-		}
-
-		/*------------------------------------------------------*/
-		/* Banner
-		/*------------------------------------------------------*/
-
-		if ( is_singular() && themeblvd_supports('display', 'banner') ) {
-
-			$banner = get_post_meta( $this->config['id'], '_tb_banner', true );
-
-			if ( $banner && ! empty($banner['bg_type']) && $banner['bg_type'] != 'none' ) {
-				$this->config['banner'] = $banner;
-			}
 		}
 
 		/*------------------------------------------------------*/

@@ -221,7 +221,6 @@ function themeblvd_setup() {
 			'page_options'		=> true,			// Meta box for basic page options
 			'post_options'		=> true,			// Meta box for basic post options
 			'pto'				=> true,			// Meta box for "Post Grid/List" page template
-			'banner'			=> true,			// Meta box for page banner
 			'layout'			=> true				// Meta box for theme layout adjustments
 		),
 		'featured' => array(
@@ -251,7 +250,6 @@ function themeblvd_setup() {
 			'sticky'			=> true,			// Sticky header as user scrolls past header
 			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
-			'banner'			=> true,			// Featured image banners for pages
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
 			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
 			'footer_sync'		=> true,			// Whether theme suppors syncing footer with template

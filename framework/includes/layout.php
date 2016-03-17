@@ -1236,9 +1236,9 @@ function themeblvd_jumbotron_slider( $args ) {
 }
 
 /**
- * If a page with custom layout has a banner above
+ * If a page with custom layout has a featured image above
  * content applied, bump the section start count from
- * 1 to 2. This way, the banner essentially becomes
+ * 1 to 2. This way, the featured image essentially becomes
  * the first section of the layout.
  *
  * @since 2.5.2
@@ -1247,8 +1247,8 @@ function themeblvd_jumbotron_slider( $args ) {
  */
 function themeblvd_builder_section_start_count( $count ) {
 
-	if ( themeblvd_config('banner') ) {
-		$count = 2;
+	if ( themeblvd_get_att('epic_thumb') ) {
+		$count++;
 	}
 
 	return $count;

@@ -141,7 +141,6 @@
  *   24.3 - Simple Slider
  *   24.4 - BG Slideshow/Jumbotron Slider Fade
  *   24.5 - BG Video
- *   24.6 - Featured Banner
  * 25.0 - Post Display (loop.php)
  *   25.1 - Post List
  *   25.2 - Post Grid
@@ -5330,73 +5329,6 @@ body.mobile .tb-bg-video {
 	-ms-transform: translate(-50%, -50%); /* IE9 */
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-}
-
-/* Featured Banner */
-.tb-featured-banner {
-	position: relative;
-}
-.tb-featured-banner .bg-shade {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-}
-.tb-featured-banner .wrap {
-	min-height: 200px;
-	position: relative;
-	z-index: 2;
-}
-.tb-featured-banner .banner-content {
-	padding: 0 20px;
-	position: absolute;
-	top: 50%;
-	right: 0;
-	left: 0;
-	-ms-transform: translate(0, -50%); /* IE9 */
-	-webkit-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-}
-.tb-featured-banner .banner-content.text-light {
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-.tb-featured-banner .banner-title {
-	font-size: 40px;
-	line-height: 1em;
-	margin: 0;
-	padding: 0;
-}
-.tb-featured-banner .banner-content.has-tagline .banner-title {
-	margin-bottom: 8px;
-}
-.tb-featured-banner .banner-tagline {
-	display: block;
-	font-size: 18px;
-	line-height: 1.3em;
-}
-@media (max-width: 991px) {
-	.tb-featured-banner > .wrap {
-		min-height: 170px;
-	}
-	.tb-featured-banner .banner-title {
-		font-size: 30px;
-	}
-	.tb-featured-banner .banner-content.has-tagline .banner-title {
-		margin-bottom: 6px;
-	}
-	.tb-featured-banner .banner-tagline {
-		font-size: 14px;
-	}
-}
-@media (max-width: 767px) {
-	.tb-featured-banner {
-		padding-top: 0 !important;
-	}
-	.tb-featured-banner > .wrap {
-		min-height: 140px;
-	}
 }
 
 /* =Post Display (loop.php)

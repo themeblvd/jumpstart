@@ -28,7 +28,6 @@
         <custom-field action="copy">_tb_sidebar_layout</custom-field>
         <custom-field action="copy">_tb_layout_header</custom-field>
         <custom-field action="copy">_tb_layout_footer</custom-field>
-        <custom-field action="translate">_tb_banner</custom-field>
         <custom-field action="copy">_tb_sidebars</custom-field>
         <custom-field action="translate">_tb_custom_layout</custom-field>
         <custom-field action="translate">_tb_builder_elements</custom-field>

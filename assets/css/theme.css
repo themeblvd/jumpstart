@@ -67,7 +67,6 @@ body {
 .header-content > .wrap,
 .header-nav > .wrap,
 .tb-sticky-menu > .wrap,
-.tb-featured-banner > .wrap,
 .site-breadcrumbs > .wrap,
 .site-inner > .wrap,
 .element-section > .element,
@@ -83,7 +82,6 @@ body {
 	.header-content > .wrap,
 	.header-nav > .wrap,
 	.tb-sticky-menu > .wrap,
-	.tb-featured-banner > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -97,7 +95,6 @@ body {
 	.header-above > .wrap,
 	.header-content > .wrap,
 	.header-nav > .wrap,
-	.tb-featured-banner > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -110,7 +107,6 @@ body {
 	.header-above > .wrap,
 	.header-content > .wrap,
 	.header-nav > .wrap,
-	.tb-featured-banner > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -1142,7 +1138,6 @@ article.tb-naked-page {
 		display: none;
 	}
 	.tb-print-styles #container,
-	.tb-print-styles .tb-featured-banner > .wrap,
 	.tb-print-styles .site-inner > .wrap,
 	.tb-print-styles .element-section > .element {
 		max-width: none !important;

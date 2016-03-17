@@ -364,7 +364,7 @@ class Theme_Blvd_Options_API {
 			// Section: Transparent Header
 			'header_trans' => array(
 				'name' => __('Transparent Header', 'jumpstart'),
-				'desc' => __('When you\'re configuring a page, if you select "Transparent Header" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature works best when you\'ve applied a banner or a custom layout to the page.', 'jumpstart'),
+				'desc' => __('When you\'re configuring a page, if you select "Transparent Header" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature will work best with a full-width or fulscreen featured image, or a when custom layout is applied to the page.', 'jumpstart'),
 				'options' => array(
 					'trans_logo' => array(
 						'name' 		=> __('Logo', 'jumpstart'),

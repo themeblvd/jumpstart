@@ -54,7 +54,8 @@ Jump Start Changelog
     * Pricing table columns now display in correct order, from right-to-left.
     * Progress bars now display and animate out from right.
     * "Custom CSS" option code editor on theme options page now works with RTL.
-* Important: Theme's registered text domain for localization was changed from `themeblvd` to `jumpstart` to meet wordpress.org localization standards.
+* **Important:** Theme's registered text domain for localization was changed from `themeblvd` to `jumpstart` to meet wordpress.org localization standards.
+* **Important:** Banner functionality has been removed, in favor of new featured image options. You can restore functionality with [Jump Start Banners](http://wordpress.org/extend/plugins/jumpstart-banners) plugin.
 
 --------------------------------------------------------------
 

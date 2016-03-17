@@ -23,12 +23,6 @@ function themeblvd_add_meta_boxes() {
 		$_themeblvd_layout_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
 	}
 
-	// Banner meta box (posts and pages)
-	if ( themeblvd_supports('meta', 'banner') ) {
-		$meta = setup_themeblvd_banner_meta();
-		$_themeblvd_banner_meta_box = new Theme_Blvd_Meta_Box( $meta['config']['id'], $meta['config'], $meta['options'] );
-	}
-
 	// "Post Grid" and "Post List" page template meta box
 	if ( themeblvd_supports('meta', 'pto') ) {
 		$meta = setup_themeblvd_pto_meta();
@@ -163,7 +157,7 @@ function setup_themeblvd_layout_meta() {
 	$setup = array(
 		'config' => array(
 			'id' 		=> 'tb_layout_options',						// make it unique
-			'title' 	=> __('Theme Layout', 'jumpstart'),		// title to show for entire meta box
+			'title' 	=> __('Theme Layout', 'jumpstart'),			// title to show for entire meta box
 			'page'		=> array( 'page', 'post' ),					// can contain post, page, link, or custom post type's slug
 			'context' 	=> 'side',									// normal, advanced, or side
 			'priority'	=> 'core'									// high, core, default, or low
@@ -172,7 +166,7 @@ function setup_themeblvd_layout_meta() {
 			'layout_header' => array(
 				'id'		=> '_tb_layout_header',
 				'name' 		=> __('Header', 'jumpstart'),
-				'desc'		=> __('Note: The transparent header option will work better when a banner or custom layout is applied to the page.', 'jumpstart').' <a href="https://vimeo.com/118959469" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
+				'desc'		=> __('Note: The transparent header option will work better with a full-width or full-screen featured image, or a when custom layout is applied to the page.', 'jumpstart').' <a href="https://vimeo.com/118959469" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
 				'type' 		=> 'select',
 				'options'	=> array(
 					'default'		=> __('Standard Header', 'jumpstart'),
@@ -206,253 +200,6 @@ function setup_themeblvd_layout_meta() {
 	}
 
 	return apply_filters( 'themeblvd_layout_meta', $setup );
-}
-
-/**
- * Get settings for the "Banner" meta box.
- *
- * @since 2.5.0
- *
- * @return $setup filterable options for metabox
- */
-function setup_themeblvd_banner_meta() {
-
-	$setup = array(
-		'config' => array(
-			'id' 		=> 'tb_banner_options',						// make it unique
-			'title' 	=> __('Banner', 'jumpstart'),				// title to show for entire meta box
-			'page'		=> array('page', 'post'),					// can contain post, page, link, or custom post type's slug
-			'context' 	=> 'normal',								// normal, advanced, or side
-			'priority'	=> 'core',									// high, core, default, or low
-			'group'		=> '_tb_banner',							// save all option to single meta entry "_tb_banner"
-			'textures'	=> true										// uses texture browser in options
-		),
-		'options' => array(
-			'subgroup_start_1' => array(
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide-toggle'
-			),
-			'bg_type' => array(
-				'id'		=> 'bg_type',
-				'name'		=> __('Apply Banner', 'jumpstart'),
-				'desc'		=> __('Select if you\'d like to apply a custom banner and how you want to set it up.', 'jumpstart'),
-				'std'		=> 'none',
-				'type'		=> 'select',
-				'options'	=> themeblvd_get_bg_types('banner'),
-				'class'		=> 'trigger'
-			),
-			'bg_color' => array(
-				'id'		=> 'bg_color',
-				'name'		=> __('Background Color', 'jumpstart'),
-				'desc'		=> __('Select a background color.', 'jumpstart'),
-				'std'		=> '#202020',
-				'type'		=> 'color',
-				'class'		=> 'hide receiver receiver-color receiver-texture receiver-image'
-			),
-			'bg_texture' => array(
-				'id'		=> 'bg_texture',
-				'name'		=> __('Background Texture', 'jumpstart'),
-				'desc'		=> __('Select a background texture.', 'jumpstart'),
-				'type'		=> 'select',
-				'select'	=> 'textures',
-				'class'		=> 'hide receiver receiver-texture'
-			),
-			'apply_bg_texture_parallax' => array(
-				'id'		=> 'apply_bg_texture_parallax',
-				'name'		=> null,
-				'desc'		=> __('Apply parallax scroll effect to background texture.', 'jumpstart'),
-				'type'		=> 'checkbox',
-				'class'		=> 'hide receiver receiver-texture'
-			),
-			'subgroup_start_2' => array(
-				'type'		=> 'subgroup_start',
-				'class'		=> 'select-parallax hide receiver receiver-image'
-			),
-			'bg_image' => array(
-				'id'		=> 'bg_image',
-				'name'		=> __('Background Image', 'jumpstart'),
-				'desc'		=> __('Select a background image.', 'jumpstart'),
-				'type'		=> 'background',
-				'std'		=> array(
-					'color'			=> '',
-					'image'			=> '',
-					'repeat'		=> 'no-repeat',
-					'position'		=> 'center center',
-					'attachment'	=> 'scroll',
-					'size'			=> '100% auto'
-				),
-				'color'		=> false,
-				'parallax'	=> true
-			),
-			'subgroup_end_2' => array(
-				'type'		=> 'subgroup_end'
-			),
-			'bg_video' => array(
-				'id'		=> 'bg_video',
-				'name'		=> __('Background Video', 'jumpstart'),
-				'desc'		=> __('You can upload a web-video file (mp4, webm, ogv), or input a URL to a video page on YouTube or Vimeo. Your fallback image will display on mobile devices.', 'jumpstart').'<br><br>'.__('Examples:', 'jumpstart').'<br>https://vimeo.com/79048048<br>http://www.youtube.com/watch?v=5guMumPFBag',
-				'type'		=> 'background_video',
-				'class'		=> 'hide receiver receiver-video'
-			),
-			'subgroup_start_3' => array(
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide hide receiver receiver-image receiver-slideshow receiver-video'
-			),
-			'apply_bg_shade' => array(
-				'id'		=> 'apply_bg_shade',
-				'name'		=> null,
-				'desc'		=> __('Shade background with transparent color.', 'jumpstart'),
-				'std'		=> 0,
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
-			),
-			'bg_shade_color' => array(
-				'id'		=> 'bg_shade_color',
-				'name'		=> __('Shade Color', 'jumpstart'),
-				'desc'		=> __('Select the color you want overlaid on your background.', 'jumpstart'),
-				'std'		=> '#000000',
-				'type'		=> 'color',
-				'class'		=> 'hide receiver'
-			),
-			'bg_shade_opacity' => array(
-				'id'		=> 'bg_shade_opacity',
-				'name'		=> __('Shade Opacity', 'jumpstart'),
-				'desc'		=> __('Select the opacity of the shade color overlaid on your background.', 'jumpstart'),
-				'std'		=> '0.5',
-				'type'		=> 'select',
-				'options'	=> array(
-					'0.05'	=> '5%',
-					'0.1'	=> '10%',
-					'0.15'	=> '15%',
-					'0.2'	=> '20%',
-					'0.25'	=> '25%',
-					'0.3'	=> '30%',
-					'0.35'	=> '35%',
-					'0.4'	=> '40%',
-					'0.45'	=> '45%',
-					'0.5'	=> '50%',
-					'0.55'	=> '55%',
-					'0.6'	=> '60%',
-					'0.65'	=> '65%',
-					'0.7'	=> '70%',
-					'0.75'	=> '75%',
-					'0.8'	=> '80%',
-					'0.85'	=> '85%',
-					'0.9'	=> '90%',
-					'0.95'	=> '95%'
-				),
-				'class'		=> 'hide receiver'
-			),
-			'subgroup_end_3' => array(
-				'type'		=> 'subgroup_end'
-			),
-			'subgroup_start_4' => array(
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide-toggle hide receiver receiver-color receiver-texture receiver-image receiver-video'
-			),
-			'headline' => array(
-				'id'		=> 'headline',
-				'name'		=> __('Banner Headline (optional)', 'jumpstart'),
-				'desc'		=> __('Select if you\'d like the banner to contain a headline.', 'jumpstart'),
-				'std'		=> 'none',
-				'type'		=> 'select',
-				'options'	=> array(
-					'none'		=> __('No headline', 'jumpstart'),
-					'title'		=> __('Display current title', 'jumpstart'),
-					'custom'	=> __('Display custom text', 'jumpstart'),
-				),
-				'class'		=> 'trigger'
-			),
-			'headline_custom' => array(
-				'id'		=> 'headline_custom',
-				'name'		=> __('Custom Headline', 'jumpstart'),
-				'desc'		=> __('Enter the text for the headline.', 'jumpstart'),
-				'std'		=> '',
-				'type'		=> 'text',
-				'class'		=> 'hide receiver receiver-custom'
-			),
-			'tagline' => array(
-				'id'		=> 'tagline',
-				'name'		=> __('Banner Tagline (optional)', 'jumpstart'),
-				'desc'		=> __('If you want a brief tagline to appear below the headline, enter it here.', 'jumpstart'),
-				'std'		=> '',
-				'type'		=> 'text',
-				'class'		=> 'hide receiver receiver-title receiver-custom'
-			),
-			'text_color' => array(
-				'id'		=> 'text_color',
-				'name'		=> __('Text Color', 'jumpstart'),
-				'desc'		=> __('If you\'re using a dark background color, select to show light text, and vice versa.', 'jumpstart'),
-				'std'		=> 'light',
-				'type'		=> 'select',
-				'options'	=> array(
-					'dark'		=> __('Dark Text', 'jumpstart'),
-					'light'		=> __('Light Text', 'jumpstart')
-				),
-				'class'		=> 'hide receiver receiver-title receiver-custom'
-			),
-			'text_align' => array(
-				'id'		=> 'text_align',
-				'name'		=> __('Text Align', 'jumpstart'),
-				'desc'		=> __('Select how to align the text of the headline and tagline.', 'jumpstart'),
-				'std'		=> 'left',
-				'type'		=> 'select',
-				'options'	=> array(
-					'left'		=> __('Left', 'jumpstart'),
-					'center'	=> __('Center', 'jumpstart'),
-					'right'		=> __('Right', 'jumpstart')
-				),
-				'class'		=> 'hide receiver receiver-title receiver-custom'
-			),
-			'subgroup_end_4' => array(
-				'type' 		=> 'subgroup_end'
-			),
-			'subgroup_start_5' => array(
-				'type'		=> 'subgroup_start',
-				'class'		=> 'show-hide hide receiver receiver-color receiver-texture receiver-image receiver-video'
-			),
-			'height' => array(
-				'id'		=> 'height',
-				'name' 		=> null,
-				'desc' 		=> __('Apply custom banner height.', 'jumpstart'),
-				'std'		=> 0,
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
-		    ),
-			'height_desktop' => array(
-				'id'		=> 'height_desktop',
-				'name' 		=> __('Desktop Height', 'jumpstart'),
-				'desc' 		=> __('Banner height (in pixels) when displayed at the standard desktop viewport range.', 'jumpstart'),
-				'std'		=> '200',
-				'type'		=> 'text',
-				'class'		=> 'hide receiver'
-		    ),
-		    'height_tablet' => array(
-				'id'		=> 'height_tablet',
-				'name' 		=> __('Tablet Height', 'jumpstart'),
-				'desc' 		=> __('Banner height (in pixels) when displayed at the tablet viewport range.', 'jumpstart'),
-				'std'		=> '120',
-				'type'		=> 'text',
-				'class'		=> 'hide receiver'
-		    ),
-		    'height_mobile' => array(
-				'id'		=> 'height_mobile',
-				'name' 		=> __('Mobile Height', 'jumpstart'),
-				'desc' 		=> __('Banner height (in pixels) when displayed at the mobile viewport range.', 'jumpstart'),
-				'std'		=> '100',
-				'type'		=> 'text',
-				'class'		=> 'hide receiver'
-		    ),
-			'subgroup_end_5' => array(
-				'type'		=> 'subgroup_end'
-			),
-			'subgroup_end_1' => array(
-				'type'		=> 'subgroup_end'
-			)
-		)
-	);
-
-	return apply_filters( 'themeblvd_banner_meta', $setup );
 }
 
 /**

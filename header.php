@@ -72,7 +72,7 @@
 
 		<?php
 		/**
-		 * @hooked themeblvd_banner - 10
+		 * @hooked null
 		 */
 		do_action('themeblvd_header_after');
 
