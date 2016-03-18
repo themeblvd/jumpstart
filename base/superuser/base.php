@@ -1118,6 +1118,27 @@ function jumpstart_su_options() {
 					'step'	=> '1'
 				)
 			),
+			'font_quote' => array(
+				'id' 		=> 'font_quote',
+				'name' 		=> __('Quote Font', 'jumpstart'),
+				'desc' 		=> __('This applies to quoted text in blockquote tags.', 'jumpstart'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Libre Baskerville:400italic', 'style' => 'italic'),
+				'atts'		=> array('face', 'style', 'weight'),
+				'type' 		=> 'typography'
+			),
+			'font_quote_sp' => array(
+				'id' 		=> 'font_quote_sp',
+				'name'		=> __('Quote Letter Spacing', 'jumpstart'),
+				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
+				'std'		=> '0px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> 'px',
+					'min'	=> '0',
+					'max'	=> '5',
+					'step'	=> '1'
+				)
+			),
 			// ...
 			'font_menu' => array(
 				'id' 		=> 'font_menu',
@@ -1605,6 +1626,26 @@ function jumpstart_su_css() {
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
 		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_header_sm_sp') );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+
+		$print .= "}\n";
+
+	}
+
+	// Quote Font
+	$font = themeblvd_get_option('font_quote');
+
+	if ( $font ) {
+
+		$print .= "blockquote,\n";
+		$print .= ".epic-thumb blockquote,\n";
+		$print .= ".entry-content blockquote,\n";
+		$print .= ".testimonial-text.entry-content {\n";
+
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
+		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_quote_sp') );
 		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 
 		$print .= "}\n";
