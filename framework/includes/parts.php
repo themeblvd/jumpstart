@@ -1481,7 +1481,7 @@ function themeblvd_to_section( $args = array() ) {
  * @return string $output Final content to output
  */
 function themeblvd_get_loader() {
-    return apply_filters( 'themeblvd_loader', '<div class="tb-loader"><i class="fa fa-spinner fa-spin"></i></div>' );
+    return apply_filters( 'themeblvd_loader', '<div class="tb-loader"><span class="icon-1"></span><span class="icon-2"></span><span class="icon-3"></span></div>' );
 }
 
 /**

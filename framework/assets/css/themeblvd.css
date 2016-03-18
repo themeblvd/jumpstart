@@ -7412,34 +7412,64 @@ body.mobile .tb-bg-video {
 
 /* Loader */
 .tb-loader {
-	background: #ffffff;
-	-webkit-border-radius: 99px;
-	border-radius: 99px;
+	background-color: rgba(0,0,0,.5);
+	border-radius: 2px;
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-	color: #888888;
-	margin: -25px -25px 0 0;
+	margin: -30px -51px 0 0;
 	position: absolute;
 	top: 50%;
 	right: 50%;
-	bottom: initial;
-	left: initial;
-	text-shadow: none !important;
-	width: 50px;
-	height: 50px;
+	width: 102px;
+	height: 60px;
 	z-index: 999;
 }
-.tb-loader .fa {
-	font-size: 20px;
-	line-height: 20px;
-	margin: -10px 0 0 -10px;
-	padding-left: 1px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	text-align: center;
-	width: 20px;
-	height: 20px;
+.tb-loader span {
+	border: 3px solid #ffffff;
+    border-radius: 100%;
+	margin-top: -7px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+	width: 14px;
+    height: 14px;
+    -webkit-transform: transformZ(0);
+    transform: transformZ(0);
+    -webkit-animation: LOADING 2s infinite;
+    animation: LOADING 2s infinite;
+}
+.tb-loader span.icon-1 {
+	left: 20px;
+	-webkit-animation-delay: 0s;
+	animation-delay: 0s;
+}
+.tb-loader span.icon-2 {
+	left: 44px;
+	-webkit-animation-delay: 0s;
+	animation-delay: 0.2s;
+}
+.tb-loader span.icon-3 {
+	left: 68px;
+	-webkit-animation-delay: 0s;
+	animation-delay: 0.4s;
+}
+@keyframes LOADING {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+		background: #ffffff;
+	}
+	50% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		background: rgba(0,0,0,.5);
+	}
+	100% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+		background: #ffffff;
+	}
 }
 
 /* Tags */
