@@ -277,6 +277,7 @@ function themeblvd_setup() {
 		'plugins' => array(
 			'bbpress'			=> true,			// bbPress by Automattic
 			'gravityforms'		=> true,			// Gravity Forms by Rocket Genius
+			'subtitles'			=> true,			// Subtitles by Philip Moore
 			'woocommerce'		=> true,			// WooCommerce by WooThemes
 			'wpml'				=> true				// WPML by On The Go Systems
 		)

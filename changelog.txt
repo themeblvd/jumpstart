@@ -11,6 +11,7 @@ Jump Start Changelog
 * New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
 * New: Template file `content-blog.php` for the blog post style has been added.
 * New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
+* New: Added compatibility for [Subtitles](https://wordpress.org/plugins/subtitles/) plugin.
 * New: Featured Media
     * New "Epic Thumbnails" on single posts; see Post and Page Options meta boxes for new featured images display options.
     * New variable-width slider carousel for gallery posts; see *Appearance > Theme Options > Content > General*.

@@ -30,6 +30,12 @@ function themeblvd_plugin_compat() {
 		$gravityforms = Theme_Blvd_Compat_Gravity_Forms::get_instance();
 	}
 
+	// Subtitles by Philip Moore
+	if ( themeblvd_installed('subtitles') && themeblvd_supports('plugins', 'subtitles') ) {
+		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/subtitles/class-tb-compat-subtitles.php' );
+		$gravityforms = Theme_Blvd_Compat_Subtitles::get_instance();
+	}
+
 }
 
 /**
@@ -48,7 +54,8 @@ function themeblvd_get_compat( $options = false ) {
 	if ( ! $options ) {
 		$plugins[] = 'gravityforms';
 		$plugins[] = 'portfolios';
-		$plugins[] = 'sitepress';
+		$plugins[] = 'wpml';
+		$plugins[] = 'subtitles';
 	}
 
 	return apply_filters('themeblvd_plugin_compat', $plugins, $options);
@@ -65,31 +72,43 @@ function themeblvd_installed( $plugin = '' ) {
 		switch ( $plugin ) {
 
 			case 'bbpress' :
+
 				if ( class_exists('bbPress') ) {
 					return true;
 				}
 				break;
 
 			case 'wpml' :
+
 				if ( class_exists('SitePress') ) {
 					return true;
 				}
 				break;
 
 			case 'woocommerce' :
+
 				if ( class_exists('WooCommerce') ) {
 					return true;
 				}
 				break;
 
 			case 'portfolios' :
+
 				if ( class_exists('Theme_Blvd_Portfolios') ) {
 					return true;
 				}
 				break;
 
 			case 'gravityforms' :
+
 				if ( class_exists('GFForms') ) {
+					return true;
+				}
+				break;
+
+			case 'subtitles' :
+
+				if ( class_exists('Subtitles') ) {
 					return true;
 				}
 
