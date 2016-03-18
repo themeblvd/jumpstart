@@ -4696,12 +4696,12 @@ button.mfp-arrow:active {
 
 /* Sections */
 .element-section {
-	padding: 60px 30px;
+	padding: 80px 30px;
 	position: relative;
 }
 @media (max-width: 767px) {
 	.element-section {
-		padding: 35px 20px;
+		padding: 60px 20px;
 	}
 }
 
