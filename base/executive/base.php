@@ -1104,7 +1104,27 @@ function jumpstart_ex_options() {
 					'step'	=> '1'
 				)
 			),
-			// ...
+			'font_epic' => array(
+				'id' 		=> 'font_epic',
+				'name' 		=> __('Featured Image Title Font', 'jumpstart'),
+				'desc' 		=> __('This applies when displaying a title on top of featured images.', 'jumpstart'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Montserrat:700', 'style' => 'uppercase'),
+				'atts'		=> array('face', 'style', 'weight'),
+				'type' 		=> 'typography'
+			),
+			'font_epic_sp' => array(
+				'id' 		=> 'font_epic_sp',
+				'name'		=> __('Featured Image Title Letter Spacing', 'jumpstart'),
+				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
+				'std'		=> '3px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> 'px',
+					'min'	=> '0',
+					'max'	=> '5',
+					'step'	=> '1'
+				)
+			),
 			'font_menu' => array(
 				'id' 		=> 'font_menu',
 				'name' 		=> __('Main Menu Font', 'jumpstart'),
@@ -1511,6 +1531,7 @@ function jumpstart_ex_include_fonts() {
 		themeblvd_get_option('font_header_sm'),
 		themeblvd_get_option('font_quote'),
 		themeblvd_get_option('font_meta'),
+		themeblvd_get_option('font_epic'),
 		themeblvd_get_option('font_menu')
 	);
 }
@@ -1598,6 +1619,24 @@ function jumpstart_ex_css() {
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
 		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_meta_sp') );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+
+		$print .= "}\n";
+
+	}
+
+	// Featured Image Title Font
+	$font = themeblvd_get_option('font_epic');
+
+	if ( $font ) {
+
+		$print .= ".epic-thumb .entry-title,\n";
+		$print .= ".tb-jumbotron .text-large {\n";
+
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
+		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_epic_sp') );
 		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 
 		$print .= "}\n";
