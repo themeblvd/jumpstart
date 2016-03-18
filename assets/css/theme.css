@@ -466,6 +466,10 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 /* =Main
 ----------------------------------------------- */
 
+.site-breadcrumbs,
+.site-inner {
+	background: #f9f9f9;
+}
 #main {
 	padding: 20px 0;
 }

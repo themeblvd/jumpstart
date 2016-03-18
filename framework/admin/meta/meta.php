@@ -58,11 +58,11 @@ function setup_themeblvd_page_meta() {
 			'tb_title' => array(
 				'id'		=> '_tb_title',
 				'name' 		=> __('Page Title', 'jumpstart'),
-				'desc'		=> __('This option will be ignored if you\'ve applied the "Custom Layout" template.', 'jumpstart'),
+				'desc'		=> __('Select whether to display the page\'s title.', 'jumpstart').'<br><br><em>Note:'.__('This option will be ignored if you\'ve applied the "Custom Layout" template; however, if you\'ve set your featured image to display above the content, it will still apply.', 'jumpstart').'</em>',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'show' 		=> __('Show page\'s title above content', 'jumpstart'),
-					'hide' 		=> __('Hide page\'s title above content', 'jumpstart')
+					'show' 		=> __('Yes, show page\'s title', 'jumpstart'),
+					'hide' 		=> __('No, hide page\'s title', 'jumpstart')
 				)
 			),
 			'tb_breadcrumbs' => array(
@@ -76,6 +76,20 @@ function setup_themeblvd_page_meta() {
 					'hide' 		=> __('No, hide breadcrumbs', 'jumpstart')
 				)
 			),
+			'tb_thumb' => array(
+                'id' 		=> '_tb_thumb',
+                'name' 		=> __( 'Featured Image Display', 'gnar' ),
+                'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the page.', 'gnar' ).'<br><br><em>'.__('Notes: (1) When not using the default page template, featured image can only displayed above the content. (2) The full-screen option will work best when a Transparent Header is set.', 'jumpstart').'</em>',
+                'std' 		=> 'default',
+                'type' 		=> 'radio',
+                'options' 	=> array(
+                    'default'	=> __('Use default setting (inherits from posts)', 'jumpstart'),
+                    'fw'        => __('Full width, above content', 'jumpstart'),
+                    'fs'        => __('Full screen parallax, above content', 'jumpstart'),
+                    'full'      => __('Standard, with content', 'jumpstart'),
+                    'hide'      => __('Hide featured images', 'jumpstart')
+                )
+            ),
 			'section_start' => array(
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
@@ -83,7 +97,7 @@ function setup_themeblvd_page_meta() {
 			'tb_thumb_link' => array(
 				'id'		=> '_tb_thumb_link',
 				'name' 		=> __('Featured Image Link', 'jumpstart'),
-				'desc'		=> __('Here you can select how you\'d like this page\'s featured image to react when clicked, if you\'ve set one.', 'jumpstart'),
+				'desc'		=> __('Here you can select how you\'d like this page\'s featured image to react when clicked, if you\'ve set one.', 'jumpstart').'<br><br><em>'.__('Note: This does not apply when the featured image is displayed above the content.', 'jumpstart').'</em>',
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
 				'options'	=> array(
@@ -400,15 +414,16 @@ function setup_themeblvd_post_meta() {
 			),
 			'tb_thumb' => array(
 				'id' 		=> '_tb_thumb',
-				'name' 		=> __('Featured Image Display (the single post)', 'jumpstart'),
-				'desc' 		=> __('Select how you\'d like the featured image to show at the top of the post. This option only refers to this single post.', 'jumpstart'),
+				'name' 		=> __('Featured Image or Gallery (the single post)', 'jumpstart'),
+				'desc' 		=> __('Select how you\'d like the featured image to show at the top of the post. This option only refers to this single post.', 'jumpstart').'<br><br><em>'.__('Note: The full-screen option will work best when a Transparent Header is set.', 'jumpstart').'</em>',
 				'std' 		=> 'default',
 				'type' 		=> 'radio',
 				'options' 	=> array(
 					'default'	=> __('Use default setting', 'jumpstart'),
-					//'small'		=> __('Show small thumbnail', 'jumpstart'),
-					'full' 		=> __('Show featured image', 'jumpstart'),
-					'hide' 		=> __('Hide featured image', 'jumpstart')
+			        'fw'        => __('Full width, above content', 'jumpstart'),
+			        'fs'        => __('Full screen parallax, above content', 'jumpstart'),
+			        'full'      => __('Standard, with content', 'jumpstart'),
+			        'hide'      => __('Hide featured image', 'jumpstart')
 				)
 			),
 			'section_start' => array(
@@ -418,7 +433,7 @@ function setup_themeblvd_post_meta() {
 			'tb_thumb_link' => array(
 				'id'		=> '_tb_thumb_link',
 				'name' 		=> __('Featured Image Link (everywhere)', 'jumpstart'),
-				'desc'		=> __('Here you can select how you\'d like this post\'s featured image to react when clicked. This DOES apply to both this single post page and when this post is used in a blog, post list, post grid, or post showcase.', 'jumpstart'),
+				'desc'		=> __('Here you can select how you\'d like this post\'s featured image to react when clicked. This DOES apply to both this single post page and when this post is used in a blog, post list, post grid, or post showcase.', 'jumpstart').'<br><br><em>'.__('Note: This does not apply to the single post when the featured image is displayed above the content.', 'jumpstart').'</em>',
 				'type' 		=> 'radio',
 				'std'		=> 'inactive',
 				'options'	=> array(
@@ -467,7 +482,7 @@ function setup_themeblvd_post_meta() {
 			'tb_thumb_link_single' => array(
 				'id'		=> '_tb_thumb_link_single',
 				'name' 		=> __('Featured Image Link (the single post)', 'jumpstart'),
-				'desc'		=> __('If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'jumpstart'),
+				'desc'		=> __('If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'jumpstart').'<br><br><em>'.__('Note: This does not apply when the featured image is displayed above the content.', 'gnar').'</em>',
 				'std' 		=> 'yes',
 				'type' 		=> 'radio',
 				'options'	=> array(

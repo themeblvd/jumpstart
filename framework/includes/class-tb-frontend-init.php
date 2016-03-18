@@ -103,9 +103,11 @@ class Theme_Blvd_Frontend_Init {
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
 
 			// Blog (default content.php)
-			'blog'				=> 'blog', 			// content-blog.php (doesn't exist by default)
-			'blog_paginated'	=> 'blog', 			// content-blog.php (doesn't exist by default)
+			'blog'				=> 'blog', 			// content-blog.php
+			'blog_paginated'	=> 'blog', 			// content-blog.php
 			'single'			=> 'single',		// content-single.php (doesn't exist by default)
+			'featured'			=> 'featured',		// content-featured.php
+			'featured-wc'		=> 'featured-wc',	// content-featured-wc.php
 
 			// Post List
 			'list'				=> 'list',			// content-list.php
@@ -769,6 +771,8 @@ class Theme_Blvd_Frontend_Init {
 	 */
 	public function atts_init() {
 
+		global $post;
+
 		// Single posts
 		if ( is_single() ) {
 
@@ -818,6 +822,55 @@ class Theme_Blvd_Frontend_Init {
 				'show_meta' 	=> $show_meta,
 				'show_sub_meta' => $show_sub_meta
 			));
+
+		}
+
+		// Epic Thumbnails
+		if ( is_singular( apply_filters( 'themeblvd_epic_thumb_types', array('post', 'page', 'portfolio_item') ) ) ) {
+
+			$thumbs = themeblvd_get_option( 'single_thumbs', null, 'fw' );
+			$meta = get_post_meta($post->ID, '_tb_thumb', true);
+
+			if ( $meta && $meta != 'default' ) {
+				$thumbs = $meta;
+			}
+
+			if ( $thumbs == 'hide' ) {
+				$thumbs = false;
+			}
+
+			if ( ! has_post_thumbnail($post->ID) && ! has_post_format('gallery', $post->ID) ) {
+				$thumbs = false;
+			}
+
+			if ( $thumbs == 'fs' && has_post_format('gallery', $post->ID) && ! themeblvd_get_option('gallery_carousel') ) {
+				$thumbs = 'fw';
+			}
+
+			$epic = false;
+
+			if ( $thumbs == 'fw' || $thumbs == 'fs' ) {
+
+				if ( has_post_format('gallery', $post->ID) ) {
+
+					if ( ! empty($post->post_content) ) {
+
+						$pattern = get_shortcode_regex();
+
+						if ( preg_match( "/$pattern/s", $post->post_content, $match ) && $match[2] == 'gallery' ) {
+							$epic = true;
+						}
+					}
+
+				} else if ( has_post_thumbnail($post->ID) ) {
+
+					$epic = true;
+
+				}
+			}
+
+			$this->atts['thumbs'] = $thumbs;
+			$this->atts['epic_thumb'] = $epic;
 
 		}
 

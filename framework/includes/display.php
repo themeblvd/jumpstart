@@ -206,6 +206,37 @@ function themeblvd_header_menu_default() {
 }
 endif;
 
+if ( !function_exists( 'themeblvd_epic_thumb' ) ) :
+/**
+ * Output epic thumbnail, hooked to themeblvd_header_after
+ *
+ * @since 2.6.0
+ */
+function themeblvd_epic_thumb() {
+
+	if ( themeblvd_get_att('epic_thumb') ) {
+
+		if ( themeblvd_installed('woocommerce') && ( is_shop() || is_product_category() )  ) {
+
+			get_template_part( 'content', themeblvd_get_part('featured-wc') );
+
+		} else {
+
+			if ( have_posts() ) {
+				while ( have_posts() ) {
+					the_post();
+					get_template_part( 'content', themeblvd_get_part('featured') );
+				}
+			}
+
+			rewind_posts();
+
+		}
+
+	}
+}
+endif;
+
 /*------------------------------------------------------------*/
 /* Featured Area (above)
 /*------------------------------------------------------------*/

@@ -166,6 +166,8 @@ class Theme_Blvd_Options_API {
 	 *		- breadcrumbs
 	 *		- scroll_to_top
 	 * Content
+	 *  - General
+	 *		- gallery_carousel
 	 *	- Single Posts
 	 *		- single_meta
 	 *		- single_sub_meta
@@ -554,6 +556,20 @@ class Theme_Blvd_Options_API {
 
 		$content_options = array(
 
+			// Section: General
+			'general' => array(
+				'name' => __('General', 'jumpstart'),
+				'options' => array(
+					'gallery_carousel' => array(
+			            'name' 		=> null,
+			            'desc' 		=> __('User variable width image carousel for gallery sliders.', 'jumpstart'),
+			            'id' 		=> 'gallery_carousel',
+			            'std' 		=> '1',
+			            'type' 		=> 'checkbox'
+			        )
+				)
+			),
+
 			// Section: Single Posts
 			'single' => array(
 				'name' => __('Single Posts', 'jumpstart'),
@@ -606,14 +622,16 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'share'
 					),
 					'single_thumbs' => array(
-						'name' 		=> __('Featured Images', 'jumpstart'),
+						'name' 		=> __('Featured Images &amp; Galleries', 'jumpstart'),
 						'desc' 		=> __('Choose how you want your featured images to show on the single post. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'jumpstart'),
 						'id' 		=> 'single_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'full' 		=> __('Show featured images', 'jumpstart'),
-							'hide' 		=> __('Hide featured images', 'jumpstart')
+							'fw'        => __('Full width, above content', 'jumpstart'),
+					        'fs'        => __('Full screen parallax, above content', 'jumpstart'),
+					        'full'      => __('Standard, with content', 'jumpstart'),
+					        'hide'      => __('Hide featured images', 'jumpstart')
 						)
 					),
 					'single_related_posts' => array(

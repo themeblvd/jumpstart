@@ -72,7 +72,7 @@
 
 		<?php
 		/**
-		 * @hooked null
+		 * @hooked themeblvd_epic_thumb - 10
 		 */
 		do_action('themeblvd_header_after');
 

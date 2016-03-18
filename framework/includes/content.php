@@ -403,7 +403,7 @@ function themeblvd_get_page_info() {
 	$post_id = themeblvd_config('id');
 	$output = $title = $content = '';
 
-	if ( get_post_meta( $post_id , '_tb_title', true ) != 'hide' ) {
+	if ( get_post_meta( $post_id , '_tb_title', true ) != 'hide' && ! themeblvd_get_att('epic_thumb') ) {
 		$title = sprintf( '<h1 class="info-box-title archive-title">%s</h1>', get_the_title($post_id) );
 	}
 

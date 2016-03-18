@@ -72,8 +72,8 @@ function themeblvd_get_image_sizes( $size = '' ) {
 		),
 		'slider-x-large' => array(
 			'name' 		=> __('Slider Extra Large', 'jumpstart'),
-			'width' 	=> 1200,
-			'height' 	=> 450,
+			'width' 	=> 1400,
+			'height' 	=> 525,
 			'crop' 		=> true
 		),
 		'slider-large' => array(
@@ -651,18 +651,19 @@ function themeblvd_audio_shortcode( $html ) {
 function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 	$defaults = apply_filters( 'themeblvd_gallery_slider_args', array(
-		'size'			=> '',					// Crop size for images
-		'thumb_size'	=> 'smallest', 			// Size of nav thumbnail images - small, smaller, smallest or custom int
-		'interval'		=> 'false',				// Milliseconds between transitions, false for no auto rotation (PHP string to output as JS boolean)
-		'pause'			=> 'true',				// Whether to pause on hover (PHP string to output as JS boolean)
-		'wrap'			=> 'true',				// Whether sliders continues auto rotate after first pass (PHP string to output as JS boolean)
-		'nav_standard'	=> false,				// Whether to show standard nav indicator dots
-		'nav_arrows'	=> true,				// Whether to show standard nav arrows
-		'arrows'		=> 'standard',			// Nav arrow style - standard, mini
-		'nav_thumbs'	=> false,				// Whether to show nav thumbnails (added by Theme Blvd framework)
-		'title'			=> false,				// Display title of attachments on slides
-		'caption'		=> false, 				// Display captions of attachments on slides
-		'dark_text'		=> false,				// Whether to use dark text for title/descriptions/standard nav, use when images are light
+		'size'			=> '',											// Crop size for images
+		'carousel'		=> themeblvd_get_option('gallery_carousel'),	// Whether to use variable width carousel or default bootstrap carousel
+		'thumb_size'	=> 'smallest', 									// Size of nav thumbnail images - small, smaller, smallest or custom int
+		'interval'		=> 'false',										// Milliseconds between transitions, false for no auto rotation (PHP string to output as JS boolean)
+		'pause'			=> 'true',										// Whether to pause on hover (PHP string to output as JS boolean)
+		'wrap'			=> 'true',										// Whether sliders continues auto rotate after first pass (PHP string to output as JS boolean)
+		'nav_standard'	=> false,										// Whether to show standard nav indicator dots
+		'nav_arrows'	=> true,										// Whether to show standard nav arrows
+		'arrows'		=> 'standard',									// Nav arrow style - standard, mini
+		'nav_thumbs'	=> false,										// Whether to show nav thumbnails (added by Theme Blvd framework)
+		'title'			=> false,										// Display title of attachments on slides
+		'caption'		=> false, 										// Display captions of attachments on slides
+		'dark_text'		=> false,										// Whether to use dark text for title/descriptions/standard nav, use when images are light
 		'frame'			=> apply_filters('themeblvd_featured_thumb_frame', false)
 	));
 	$args = wp_parse_args( $args, $defaults );
@@ -709,9 +710,18 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	$images = array();
 
 	if ( $args['size'] ) {
+
 		$crop = $args['size'];
+
 	} else {
-		$crop = apply_filters('themeblvd_gallery_slider_default_crop', 'slider-x-large');
+
+		$crop = 'slider-x-large';
+
+		if ( $args['carousel'] ) {
+			$crop = 'full';
+		}
+
+		$crop = apply_filters('themeblvd_gallery_slider_default_crop', $crop);
 	}
 
 	foreach ( $attachments as $attachment ) {
@@ -785,6 +795,8 @@ function themeblvd_gallery_slider( $gallery = '', $args = array() ) {
 function themeblvd_mini_gallery_slider( $gallery = '', $args = array() ) {
 
 	$defaults = apply_filters( 'themeblvd_mini_gallery_slider_args', array(
+		'class'			=> 'mini',
+		'carousel'		=> false,
 		'arrows'		=> 'mini',
 		'nav_thumbs'	=> false
 	));
@@ -810,6 +822,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	$defaults = array(
 		'id'					=> uniqid('slider_'),	// Unique ID for the slider
 		'crop'					=> 'slider-large',		// Crop size for images
+		'carousel'				=> '0',					// Whether to use variable width carousel or default bootstrap carousel
 		'interval'				=> '5',					// How fast to auto rotate betweens slides
 		'pause'					=> '1',					// Whether to pause slider on hover
 		'wrap'					=> '1',					// When slider auto-rotates, whether it continuously cycles
@@ -865,6 +878,10 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	}
 
 	$class = 'tb-simple-slider carousel slide';
+
+	if ( $args['carousel'] ) {
+		$class .= ' tb-gallery-carousel';
+	}
 
 	if ( $args['class'] ) {
 		$class .= ' '.$args['class'];
@@ -939,6 +956,11 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	}
 
 	$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="%s" data-wrap="%s">', esc_attr($args['id']), esc_attr($class), esc_attr($interval), esc_attr($pause), esc_attr($args['wrap']) );
+
+	if ( $args['carousel'] ) {
+		$output = str_replace(' data-ride="carousel"', '', $output); // disable bootstrap carousel, because we're using owl carousel
+	}
+
 	$output .= '<div class="carousel-control-wrap">';
 
 	// Standard nav indicators
@@ -965,7 +987,12 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	}
 
 	// Slides
-	$output .= '<div class="carousel-inner">';
+	if ( $args['carousel'] ) {
+		$output .= themeblvd_get_loader();
+		$output .= '<div class="carousel-inner owl-carousel">';
+	} else {
+		$output .= '<div class="carousel-inner">';
+	}
 
 	$counter = 0;
 

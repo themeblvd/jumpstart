@@ -199,22 +199,10 @@ Author URI: http://www.themeblvd.com
 /* =Boxed Layout
 -----------------------------------------------*/
 
-.js-boxed #wrapper {
-	padding: 20px 0;
-}
-@media (max-width: 480px) {
-	.js-boxed #wrapper {
-		padding: 0;
-	}
-}
 .js-boxed #container {
-	background: #ffffff;
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1170px;
-}
-.js-boxed.content_dark #container {
-	background: #222222;
 }
 @media (max-width: 1199px) {
 	.js-boxed #container {
@@ -230,6 +218,22 @@ Author URI: http://www.themeblvd.com
 	.js-boxed #container {
 		max-width: 480px;
 	}
+}
+.js-boxed .site-header:not(.has-bg),
+.js-boxed .site-breadcrumbs,
+.js-boxed .site-inner,
+.js-boxed .site-footer:not(.has-bg) {
+	background: #ffffff;
+}
+.js-boxed.content_dark .site-header:not(.has-bg),
+.js-boxed.content_dark .site-breadcrumbs,
+.js-boxed.content_dark .site-inner,
+.js-boxed.content_dark .site-footer:not(.has-bg) {
+	background: #222222;
+}
+.js-boxed .site-header.transparent,
+.js-boxed.content_dark .site-header.transparent {
+	background-color: transparent;
 }
 .js-boxed .tb-sticky-menu {
 	margin-left: -585px;
@@ -287,6 +291,27 @@ Author URI: http://www.themeblvd.com
 }
 .js-boxed .site-footer > .wrap {
 	padding: 0;
+}
+
+/* Epic Thumbmail */
+.js-boxed .epic-thumb.fs figure,
+.js-boxed .epic-thumb.fs figure img {
+    max-width: 1170px;
+}
+.js-boxed .epic-thumb.fs figure {
+    left: inherit;
+}
+@media (max-width: 1199px) {
+    .js-boxed .epic-thumb.fs figure,
+    .js-boxed .epic-thumb.fs figure img {
+        max-width: 960px;
+    }
+}
+@media (max-width: 991px) {
+    .js-boxed .epic-thumb.fs figure,
+    .js-boxed .epic-thumb.fs figure img {
+        max-width: 720px;
+    }
 }
 
 /* Content Padding */

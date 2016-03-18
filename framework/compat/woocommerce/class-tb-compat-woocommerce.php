@@ -84,6 +84,9 @@ class Theme_Blvd_Compat_WooCommerce {
 		add_filter( 'woocommerce_cart_item_thumbnail', array($this, 'thumb_class'), 10, 2 );
 		add_filter( 'woocommerce_single_product_image_thumbnail_html', array($this, 'thumb_class') );
 
+		// Epic thumbnails
+		add_action( 'wp', array($this, 'thumb_epic'), 11 ); // after frameowrk's set_atts()
+
 		/**
 		 * Modify WooCommerce settings page
 		 */
@@ -385,6 +388,39 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Add epic thumbnail to shop pages, if applied
+	 *
+	 * @since 2.6.0
+	 */
+	public function thumb_epic() {
+
+		if ( is_shop() ) {
+
+			$shop_id = get_option('woocommerce_shop_page_id');
+
+			if ( ! has_post_thumbnail($shop_id) ) {
+				return;
+			}
+
+			$val = get_post_meta($shop_id, '_tb_thumb', true);
+
+			if ( ! $val || $val == 'default' ) {
+				$val = themeblvd_get_option( 'single_thumbs', null, 'fw' );
+			}
+
+			if ( $val == 'fs' || $val == 'fw' ) {
+				themeblvd_set_att('thumbs', $val);
+				themeblvd_set_att('epic_thumb', true);
+			}
+
+		} else if ( is_product_category() ) {
+
+			// ... @TODO
+
+		}
 	}
 
 	/**

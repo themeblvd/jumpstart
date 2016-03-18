@@ -153,10 +153,21 @@ class Theme_Blvd_Stylesheet_Handler {
 		// Magnific Popup
 		if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
 			$this->framework_stylesheets['magnific_popup'] = array(
-				'handle'	=> 'magnific_popup',
+				'handle'	=> 'magnific-popup',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/css/magnificpopup.min.css',
 				'deps'		=> array(),
 				'ver'		=> '0.9.3',
+				'media'		=> 'all'
+			);
+		}
+
+		// Owl Carousel
+		if ( themeblvd_supports( 'assets', 'owl_carousel' ) && themeblvd_get_option('gallery_carousel') ) {
+			$this->framework_stylesheets['magnific_popup'] = array(
+				'handle'	=> 'owl-carousel',
+				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/owl-carousel/owl.carousel.min.css',
+				'deps'		=> array(),
+				'ver'		=> '2.0.0-beta.2.4',
 				'media'		=> 'all'
 			);
 		}
@@ -165,7 +176,7 @@ class Theme_Blvd_Stylesheet_Handler {
 		if ( themeblvd_supports( 'assets', 'primary_css' ) ) {
 
 			$this->framework_stylesheets['themeblvd_grid'] = array(
-				'handle'	=> 'themeblvd_grid',
+				'handle'	=> 'themeblvd-grid',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/css/grid-extended.min.css',
 				'deps'		=> array(),
 				'ver'		=> TB_FRAMEWORK_VERSION,
@@ -174,7 +185,7 @@ class Theme_Blvd_Stylesheet_Handler {
 
 			if ( is_rtl() ) {
 				$this->framework_stylesheets['themeblvd_grid_rtl'] = array(
-					'handle'	=> 'themeblvd_grid_rtl',
+					'handle'	=> 'themeblvd-grid-rtl',
 					'src'		=> TB_FRAMEWORK_URI.'/assets/css/grid-rtl.min.css',
 					'deps'		=> array(),
 					'ver'		=> TB_FRAMEWORK_VERSION,
@@ -199,7 +210,7 @@ class Theme_Blvd_Stylesheet_Handler {
 		// Primary dark css, re-styles themeblvd.css for dark content bg color
 		if ( themeblvd_supports( 'display', 'dark' ) && themeblvd_supports( 'assets', 'primary_dark_css' ) ) {
 			$this->framework_stylesheets['themeblvd_dark'] = array(
-				'handle'	=> 'themeblvd_dark',
+				'handle'	=> 'themeblvd-dark',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd-dark.min.css',
 				'deps'		=> array('themeblvd'),
 				'ver'		=> TB_FRAMEWORK_VERSION,
@@ -225,8 +236,8 @@ class Theme_Blvd_Stylesheet_Handler {
 
 		// Set framework $deps
 		if ( $this->framework_stylesheets ) {
-			foreach ( $this->framework_stylesheets as $handle => $args ) {
-				$this->framework_deps[] = $handle;
+			foreach ( $this->framework_stylesheets as $args ) {
+				$this->framework_deps[] = $args['handle'];
 			}
 		}
 

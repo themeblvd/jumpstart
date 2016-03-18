@@ -271,6 +271,7 @@ function themeblvd_setup() {
 			'charts'			=> true,			// Charts.js
 			'isotope'			=> true,			// Isotope script for sorting
 			'tag_cloud'			=> true, 			// Framework tag cloud styling
+			'owl_carousel'		=> true, 			// Owl Carousel for gallery sliders
 			'in_footer'			=> true				// Whether theme scripts are enqueued in footer
 		),
 		'plugins' => array(

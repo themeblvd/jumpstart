@@ -8,13 +8,13 @@ $page_class .= get_the_content() ? ' has-content' : ' no-content';
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class($page_class); ?>>
 
-	<?php if ( get_post_meta( $post->ID, '_tb_title', true ) != 'hide' ) : ?>
+	<?php if ( ! themeblvd_get_att('epic_thumb') && get_post_meta( get_the_ID(), '_tb_title', true ) != 'hide' ) : ?>
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header><!-- .entry-header -->
 	<?php endif; ?>
 
-	<?php if ( has_post_thumbnail() ) : ?>
+	<?php if ( has_post_thumbnail() && themeblvd_get_att('thumbs') && ! themeblvd_get_att('epic_thumb') ) : ?>
 		<div class="featured-item featured-image">
 			<?php themeblvd_the_post_thumbnail(); ?>
 		</div><!-- .featured-item(end) -->

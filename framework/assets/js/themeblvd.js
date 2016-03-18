@@ -464,6 +464,77 @@ jQuery(document).ready(function($) {
 	});
 
 	// ---------------------------------------------------------
+	// "Epic" Thumbnails
+	// ---------------------------------------------------------
+
+	if ( $body.hasClass('has-fs-epic-thumb') ) {
+
+		var $thumb = $('.epic-thumb.fs figure');
+
+		$window.scroll(function() {
+
+			// Disable for small screens
+			if ( $window.width() < 992 || $window.height() < 500 ) {
+				return;
+			}
+
+			var y = - ( $window.scrollTop() / 2 );
+
+			$thumb.css({
+				'-webkit-transform': 'translate3d(0, ' + y + 'px, 0)',
+				'transform': 'translate3d(0, ' + y + 'px, 0)'
+			});
+
+		});
+
+	}
+
+	$('.epic-thumb.gallery').on({
+		mouseenter: function () {
+			$(this).addClass('hover').find('.entry-header').stop().fadeOut(200);
+		},
+		mouseleave: function () {
+			$(this).removeClass('hover').find('.entry-header').stop().fadeIn(200);
+		}
+	});
+
+	// ---------------------------------------------------------
+	// Carousel Galleries
+	// ---------------------------------------------------------
+
+	if ( $.isFunction( $.fn.owlCarousel ) ) {
+
+		$('.tb-gallery-carousel').each(function(){
+
+			var $wrap = $(this),
+				$carousel = $wrap.find('.owl-carousel');
+
+			$carousel.owlCarousel({
+				rtl: $body.hasClass('rtl') ? true : false,
+				center: true,
+				autoWidth: true,
+				loop: true,
+				dots: false,
+				nav: false,
+				margin: 1,
+				onInitialized: function() {
+					$wrap.find('.tb-loader').fadeOut(100);
+				}
+			});
+
+			// Navigation
+			$wrap.find('.tb-slider-arrows a').on('click', function(){
+				if ( $(this).hasClass('next') ) {
+					$carousel.trigger('next.owl.carousel');
+				} else {
+					$carousel.trigger('prev.owl.carousel');
+				}
+			});
+
+		});
+	}
+
+	// ---------------------------------------------------------
 	// Sorting/Masonry
 	// ---------------------------------------------------------
 

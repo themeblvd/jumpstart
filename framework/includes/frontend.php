@@ -256,6 +256,16 @@ function themeblvd_body_class( $classes ) {
 		$classes[] = 'tb-suck-up';
 	}
 
+	// Epic thumbnail
+	if ( ( is_single() || is_page() ) && themeblvd_get_att('epic_thumb') ) {
+
+		$classes[] = 'has-epic-thumb';
+
+		if ( themeblvd_get_att('thumbs') == 'fs' ) {
+			$classes[] = 'has-fs-epic-thumb';
+		}
+	}
+
 	// Dark/Light content
 	if ( themeblvd_supports( 'display', 'dark' ) ) {
 		$classes[] = 'content_dark';
@@ -320,6 +330,10 @@ function themeblvd_main_class() {
 
 	$class = array('site-inner', $config->get_config('sidebar_layout'));
 
+	if ( themeblvd_get_att('epic_thumb') ) {
+		$class[] = 'has-epic-thumb-above';
+	}
+
 	if ( $class = apply_filters('themeblvd_main_class', $class ) ) {
 		$output = sprintf( 'class="%s"', esc_attr( implode(' ', $class) ) );
 	}
@@ -370,7 +384,7 @@ function themeblvd_include_scripts() {
 
 	// Register scripts that get enqueued, as needed
 	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
-		wp_register_script( 'google_maps', esc_url( 'https://maps.googleapis.com/maps/api/js' ), array(), null, $in_footer );
+		wp_register_script( 'google-maps', esc_url( 'https://maps.googleapis.com/maps/api/js' ), array(), null, $in_footer );
 	}
 
 	if ( themeblvd_supports( 'assets', 'charts' ) ) {
@@ -381,7 +395,7 @@ function themeblvd_include_scripts() {
 	wp_enqueue_script( 'jquery' );
 
 	if ( wp_is_mobile() ) {
-		wp_enqueue_script( 'jquery_mobile_touch', esc_url( TB_FRAMEWORK_URI . '/assets/js/jquery.mobile.touch.min.js' ), array('jquery'), '1.4.5', $in_footer );
+		wp_enqueue_script( 'jquery-mobile-touch', esc_url( TB_FRAMEWORK_URI . '/assets/js/jquery.mobile.touch.min.js' ), array('jquery'), '1.4.5', $in_footer );
 	}
 
 	if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
@@ -394,14 +408,19 @@ function themeblvd_include_scripts() {
 		wp_enqueue_script( 'nivo', esc_url( TB_FRAMEWORK_URI . '/assets/js/nivo.min.js' ), array('jquery'), '3.2', $in_footer );
 	}
 
+	if ( themeblvd_supports( 'assets', 'owl_carousel' ) && themeblvd_get_option('gallery_carousel') ) {
+		$scripts[] = 'owl-carousel';
+		wp_enqueue_script( 'owl-carousel', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/owl-carousel/owl.carousel.min.js' ), array('jquery'), '2.0.0-beta.2.4', $in_footer );
+	}
+
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 		$scripts[] = 'bootstrap';
 		wp_enqueue_script( 'bootstrap', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js' ), array('jquery'), '3.3.5', $in_footer );
 	}
 
 	if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
-		$scripts[] = 'magnific_popup';
-		wp_enqueue_script( 'magnific_popup', esc_url( TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js' ), array('jquery'), '0.9.3', $in_footer );
+		$scripts[] = 'magnific-popup';
+		wp_enqueue_script( 'magnific-popup', esc_url( TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js' ), array('jquery'), '0.9.3', $in_footer );
 	}
 
 	if ( themeblvd_supports( 'assets', 'superfish' ) ) {

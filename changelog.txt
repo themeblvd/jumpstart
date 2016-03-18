@@ -11,6 +11,11 @@ Jump Start Changelog
 * New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
 * New: Template file `content-blog.php` for the blog post style has been added.
 * New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
+* New: Featured Media
+    * New "Epic Thumbnails" on single posts; see Post and Page Options meta boxes for new featured images display options.
+    * New variable-width slider carousel for gallery posts; see *Appearance > Theme Options > Content > General*.
+    * Default gallery slider image size was increased from 1200x450 to 1400x525, when not using new variable width carousel.
+    * Removed banner functionality; you can restore with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
 * Improvement: Expanded video background support.
     * YouTube and Vimeo support added.
     * Simplified options for inputting video.
@@ -19,8 +24,8 @@ Jump Start Changelog
     * Progressive loading for longer videos.
     * Fallback image now displays on large mobile devices, where background video isn't supported.
 * Improvement: Design for post in blog and single post has been simplified.
-* Improvement: Design enhancements for default post showcase display.
-* Improvement: Design enhancements for Magnific Popup lightbox navigation.
+* Improvement: Design enhancements to default post showcase display.
+* Improvement: Design enhancements to Magnific Popup lightbox navigation.
 * Improvement: Design enhancements to Divider element.
 * Improvement: Design enhancements to Progress Bars element.
 * Improvement: Design enhancements to Milestone element.
@@ -55,7 +60,7 @@ Jump Start Changelog
     * Progress bars now display and animate out from right.
     * "Custom CSS" option code editor on theme options page now works with RTL.
 * **Important:** Theme's registered text domain for localization was changed from `themeblvd` to `jumpstart` to meet wordpress.org localization standards.
-* **Important:** Banner functionality has been removed, in favor of new featured image options. You can restore functionality with [Jump Start Banners](http://wordpress.org/extend/plugins/jumpstart-banners) plugin.
+* **Important:** Banner functionality has been removed, in favor of new featured image options. You can restore functionality with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
 
 --------------------------------------------------------------
 
