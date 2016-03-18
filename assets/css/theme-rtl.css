@@ -616,7 +616,7 @@ article.single > .entry-header > .entry-title,
 }
 article.single .entry-header.has-meta .entry-title,
 .blog-wrap > article > .entry-header.has-meta .entry-title {
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 }
 .blog-wrap > article > .entry-content > p:last-child {
 	margin-bottom: 0;
