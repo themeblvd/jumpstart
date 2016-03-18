@@ -1093,9 +1093,30 @@ function jumpstart_su_options() {
 				'id' 		=> 'font_header',
 				'name' 		=> __('Header Font', 'jumpstart'),
 				'desc' 		=> __('This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'jumpstart'),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Raleway:400', 'style' => 'normal'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Montserrat:400', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
+			),
+			'font_header_sm' => array(
+				'id' 		=> 'font_header_sm',
+				'name' 		=> __('Small Header Font', 'jumpstart'),
+				'desc' 		=> __('This applies to smaller sub headers throughout your website, like widget titles, for example.', 'jumpstart'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Montserrat:400', 'style' => 'normal'),
+				'atts'		=> array('face', 'style', 'weight'),
+				'type' 		=> 'typography'
+			),
+			'font_header_sm_sp' => array(
+				'id' 		=> 'font_header_sm_sp',
+				'name'		=> __('Small Header Letter Spacing', 'jumpstart'),
+				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
+				'std'		=> '0px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> 'px',
+					'min'	=> '0',
+					'max'	=> '5',
+					'step'	=> '1'
+				)
 			),
 			// ...
 			'font_menu' => array(
@@ -1501,6 +1522,7 @@ function jumpstart_ent_include_fonts() {
 	themeblvd_include_fonts(
 		themeblvd_get_option('font_body'),
 		themeblvd_get_option('font_header'),
+		themeblvd_get_option('font_header_sm'),
 		themeblvd_get_option('font_menu')
 	);
 }
@@ -1518,7 +1540,7 @@ function jumpstart_su_css() {
 	$header_bg_type = themeblvd_get_option('header_bg_type');
 	$header_bg_color = themeblvd_get_option('header_bg_color');
 
-	// Typography and links
+	// Primary Font
 	$font = themeblvd_get_option('font_body');
 
 	if ( $font ) {
@@ -1532,6 +1554,7 @@ function jumpstart_su_css() {
 		$print .= "}\n";
 	}
 
+	// Header Font
 	$font = themeblvd_get_option('font_header');
 
 	if ( $font ) {
@@ -1551,6 +1574,44 @@ function jumpstart_su_css() {
 		$print .= "}\n";
 	}
 
+	// Small Header Font
+	$font = themeblvd_get_option('font_header_sm');
+
+	if ( $font ) {
+
+		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+			$print .= ".woocommerce-tabs .panel h2,\n";
+			$print .= ".products.related > h2,\n";
+			$print .= ".products.upsells > h2,\n";
+		}
+
+		if ( themeblvd_installed('bbpress') && themeblvd_supports('plugins', 'bbpress') ) {
+			$print .= "#bbpress-forums fieldset.bbp-form legend,\n";
+		}
+
+		$print .= "h5,\n";
+		$print .= "h6,\n";
+		$print .= ".widget-title,\n";
+		$print .= ".related-posts-title,\n";
+		$print .= "#comments-title,\n";
+		$print .= "#respond .comment-reply-title,\n";
+		$print .= ".tb-author-box .info-box-title,\n";
+		$print .= ".modal-title,\n";
+		$print .= ".sf-menu .mega-section-header,\n";
+		$print .= ".tb-pricing-table .title,\n";
+		$print .= ".tb-icon-box .icon-box-title {\n";
+
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
+		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_header_sm_sp') );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+
+		$print .= "}\n";
+
+	}
+
+	// Links
 	$print .= "a {\n";
 	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('link_color'));
 	$print .= "}\n";
@@ -1743,7 +1804,7 @@ function jumpstart_su_css() {
 	// Disable circlular avatars & small thumbs
 	if ( ! themeblvd_get_option('thumbnail_circles') ) { // by default, theme styles these as circles with 100% border-radius
 
-		if ( themeblvd_installed('woocommerce') ) {
+		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 			$print .= ".product_list_widget li > a > img,\n";
 		}
 
@@ -1798,7 +1859,7 @@ function jumpstart_su_css() {
 			$print .= ".fixed-sidebar .widget-title,\n";
 		}
 
-		if ( themeblvd_installed('woocommerce') ) {
+		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 			$print .= ".products > h2,\n";
 		}
 
@@ -1818,7 +1879,7 @@ function jumpstart_su_css() {
 			$print .= ".fixed-sidebar .widget-title:before,\n";
 		}
 
-		if ( themeblvd_installed('woocommerce') ) {
+		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 			$print .= ".products > h2:before,\n";
 		}
 
@@ -1968,12 +2029,12 @@ function jumpstart_su_css() {
 			$print .= "#comments,\n";
 			$print .= ".tb-related-posts,\n";
 
-			if ( themeblvd_installed('woocommerce') ) {
+			if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 				$print .= ".products.upsells,\n";
 				$print .= ".products.related,\n";
 			}
 
-			if ( themeblvd_installed('bbpress') ) {
+			if ( themeblvd_installed('bbpress') && themeblvd_supports('plugins', 'bbpress') ) {
 				$print .= ".tb-naked-page .bbp-topic-form,\n";
 				$print .= ".tb-naked-page .bbp-reply-form,\n";
 			}
@@ -1995,7 +2056,7 @@ function jumpstart_su_css() {
 
 			$print .= "}\n";
 
-			if ( themeblvd_installed('woocommerce') ) {
+			if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 				$print .= ".woocommerce-tabs .panel,\n";
 				$print .= ".woocommerce-tabs .tabs > li.active {\n";
 				$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('content_border_color'));
