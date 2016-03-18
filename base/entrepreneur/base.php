@@ -774,7 +774,7 @@ function jumpstart_ent_options() {
 				'id' 		=> 'font_body',
 				'name' 		=> __('Primary Font', 'jumpstart'),
 				'desc' 		=> __('This applies to most of the text on your site.', 'jumpstart'),
-				'std' 		=> array('size' => '15px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Raleway:300', 'style' => 'normal'),
+				'std' 		=> array('size' => '16px', 'face' => 'google', 'weight' => '300', 'color' => '', 'google' => 'Raleway:300', 'style' => 'normal'),
 				'atts'		=> array('size', 'face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
