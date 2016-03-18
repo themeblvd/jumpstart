@@ -131,6 +131,7 @@
  *   22.5 - Section BG slideshow
  *   22.6 - Section BG video
  *   22.7 - Columns
+ *   22.8 - Animations
  * 23.0 - Content (content.php)
  *   23.1 - Content (direct input)
  *   23.2 - Headline
@@ -4865,6 +4866,27 @@ button.mfp-arrow:active {
 	.element-columns.stack-sm > .container-sm-height > .row > .col:not(.has-bg) {
 		margin-bottom: 50px;
 	}
+}
+
+/* Animations */
+.tb-scroll-effects.desktop .element-section > .element-content,
+.tb-scroll-effects.desktop .element-section > .element-columns .element-content,
+.tb-scroll-effects.desktop .element-section > .element-columns .element-icon_box {
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+	transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	-webkit-transition-delay: .15s;
+	transition-delay: .15s;
+}
+.tb-scroll-effects.desktop .element-section > .element-content.visible,
+.tb-scroll-effects.desktop .element-section > .element-columns.visible .element-content,
+.tb-scroll-effects.desktop .element-section > .element-columns.visible .element-icon_box {
+	opacity: 1;
+	-webkit-transform: scale(1, 1) translate3d(0,0,0);
+	transform: scale(1, 1) translate3d(0,0,0);
 }
 
 /* =Content (content.php)
