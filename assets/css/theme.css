@@ -471,7 +471,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	background: #f9f9f9;
 }
 #main {
-	padding: 20px 0;
+	padding: 20px 0 60px 0;
 }
 @media (max-width: 991px) {
 	#content,
