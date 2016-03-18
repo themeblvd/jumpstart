@@ -880,33 +880,6 @@ function jumpstart_su_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_16' => array(
-				'id'		=> 'sub_group_start_16',
-				'type' 		=> 'subgroup_start',
-				'class'		=> 'show-hide'
-			),
-			'menu_apply_font' => array(
-				'id'		=> 'menu_apply_font',
-				'name'		=> null,
-				'desc'		=> '<strong>'.__('Font', 'jumpstart').'</strong>: '.__('Apply custom font to main menu.', 'jumpstart'),
-				'std'		=> 1,
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
-			),
-			'font_menu' => array(
-				'id' 		=> 'font_menu',
-				'name' 		=> __('Main Menu Font', 'jumpstart'),
-				'desc' 		=> __('This font applies to the top level items of the main menu.', 'jumpstart'),
-				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#ffffff', 'google' => 'Raleway:300', 'style' => 'normal'),
-				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
-				'type' 		=> 'typography',
-				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
-				'class'		=> 'hide receiver'
-			),
-			'sub_group_end_16' => array(
-				'id'		=> 'sub_group_end_16',
-				'type' 		=> 'subgroup_end',
-			),
 			'menu_search' => array(
 				'id'		=> 'menu_search',
 				'name'		=> null,
@@ -950,8 +923,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_17' => array(
-				'id'		=> 'sub_group_start_17',
+			'sub_group_start_16' => array(
+				'id'		=> 'sub_group_start_16',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1026,12 +999,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_17' => array(
-				'id'		=> 'sub_group_end_17',
+			'sub_group_end_16' => array(
+				'id'		=> 'sub_group_end_16',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_18' => array(
-				'id'		=> 'sub_group_start_18',
+			'sub_group_start_17' => array(
+				'id'		=> 'sub_group_start_17',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1064,12 +1037,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_20' => array(
-				'id'		=> 'sub_group_end_20',
+			'sub_group_end_19' => array(
+				'id'		=> 'sub_group_end_19',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_19' => array(
-				'id'		=> 'sub_group_start_19',
+			'sub_group_start_18' => array(
+				'id'		=> 'sub_group_start_18',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -1102,8 +1075,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_19' => array(
-				'id'		=> 'sub_group_end_19',
+			'sub_group_end_18' => array(
+				'id'		=> 'sub_group_end_18',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1123,6 +1096,29 @@ function jumpstart_su_options() {
 				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Raleway:400', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
+			),
+			// ...
+			'font_menu' => array(
+				'id' 		=> 'font_menu',
+				'name' 		=> __('Main Menu Font', 'jumpstart'),
+				'desc' 		=> __('This font applies to the top level items of the main menu.', 'jumpstart'),
+				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#ffffff', 'google' => 'Raleway:300', 'style' => 'normal'),
+				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
+				'type' 		=> 'typography',
+				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18')
+			),
+			'font_menu_sp' => array(
+				'id' 		=> 'font_menu_sp',
+				'name'		=> __('Main Menu Letter Spacing', 'jumpstart'),
+				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
+				'std'		=> '0px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> 'px',
+					'min'	=> '0',
+					'max'	=> '5',
+					'step'	=> '1'
+				)
 			),
 			'link_color' => array(
 				'id' 		=> 'link_color',
@@ -1210,8 +1206,8 @@ function jumpstart_su_options() {
 			)
 		),
 		'widgets' => array(
-			'sub_group_start_20' => array(
-				'id'		=> 'sub_group_start_20',
+			'sub_group_start_19' => array(
+				'id'		=> 'sub_group_start_19',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -1227,8 +1223,8 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'trigger'
 			),
-			'sub_group_start_21' => array(
-				'id'		=> 'sub_group_start_21',
+			'sub_group_start_20' => array(
+				'id'		=> 'sub_group_start_20',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
 			),
@@ -1265,8 +1261,8 @@ function jumpstart_su_options() {
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-custom'
 			),
-			'sub_group_end_21' => array(
-				'id'		=> 'sub_group_end_21',
+			'sub_group_end_20' => array(
+				'id'		=> 'sub_group_end_20',
 				'type' 		=> 'subgroup_end'
 			),
 			'widget_bg_color' => array(
@@ -1348,8 +1344,8 @@ function jumpstart_su_options() {
 				'type'		=> 'checkbox',
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
-			'sub_group_start_22' => array(
-				'id'		=> 'sub_group_start_22',
+			'sub_group_start_21' => array(
+				'id'		=> 'sub_group_start_21',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-standard'
 			),
@@ -1382,12 +1378,12 @@ function jumpstart_su_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_22' => array(
-				'id'		=> 'sub_group_end_22',
+			'sub_group_end_21' => array(
+				'id'		=> 'sub_group_end_21',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_18' => array(
-				'id'		=> 'sub_group_end_18',
+			'sub_group_end_17' => array(
+				'id'		=> 'sub_group_end_17',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -2148,8 +2144,9 @@ function jumpstart_su_css() {
 			$print .= "\tcolor: #333333;\n";
 		}
 
-		if ( themeblvd_get_option('menu_apply_font') && $font = themeblvd_get_option('font_menu') ) {
+		if ( $font = themeblvd_get_option('font_menu') ) {
 			$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+			$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_menu_sp') );
 			$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 		}
 
@@ -2172,8 +2169,8 @@ function jumpstart_su_css() {
 	// Primary navigation
 	$options = array();
 
-	$options['apply_font'] = themeblvd_get_option('menu_apply_font');
 	$options['font'] = themeblvd_get_option('font_menu');
+	$options['font_sp'] = themeblvd_get_option('font_menu_sp');
 	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
 	$options['sub_bg_color_brightness'] = themeblvd_get_option('menu_sub_bg_color_brightness');
 
@@ -2249,32 +2246,25 @@ function jumpstart_su_css() {
 			$print .= "}\n";
 		}
 
-		if ( $options['bg_color_brightness'] == 'light' || $options['apply_font'] || $options['text_shadow'] ) {
-
-			if ( themeblvd_get_option('menu_search') ) {
-				$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
-			}
-
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
-
-			if ( $options['apply_font'] && $options['font'] ) {
-				$print .= sprintf("\tcolor: %s;\n", $options['font']['color'] );
-				$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
-				$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
-				$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
-				$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
-				$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($options['font']) );
-			} else if ( $options['bg_color_brightness'] == 'light' ) {
-				$print .= "\tcolor: #333333;\n";
-			}
-
-			if ( $options['text_shadow'] ) {
-				$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
-			}
-
-			$print .= "}\n";
-
+		if ( themeblvd_get_option('menu_search') ) {
+			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
 		}
+
+		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+
+		$print .= sprintf("\tcolor: %s;\n", $options['font']['color'] );
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
+		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
+		$print .= sprintf("\tletter-spacing: %s;\n", $options['font_sp'] );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($options['font']) );
+
+		if ( $options['text_shadow'] ) {
+			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+		}
+
+		$print .= "}\n";
 
 		if ( themeblvd_get_option('menu_search') ) {
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\n";
@@ -2359,7 +2349,7 @@ function jumpstart_su_css() {
 	} // end IF suck_up
 
 	// Primary nav custom font size/family for suck_up
-	if ( themeblvd_config('suck_up') && $options['apply_font'] ) {
+	if ( themeblvd_config('suck_up') && $options['font'] ) {
 
 		if ( themeblvd_get_option('menu_search') ) {
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
@@ -2589,11 +2579,8 @@ function jumpstart_su_top_height_addend( $addend, $context ) {
 		$addend += 18;
 
 		// Main menu font size
-		if ( themeblvd_get_option('menu_apply_font') ) {
-
-			$font = themeblvd_get_option('font_menu');
+		if ( $font = themeblvd_get_option('font_menu') ) {
 			$addend += intval($font['size']);
-
 		} else {
 			$addend += 14; // Default menu font size
 		}

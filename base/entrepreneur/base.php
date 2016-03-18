@@ -544,33 +544,6 @@ function jumpstart_ent_options() {
 				'std'		=> 0,
 				'type'		=> 'checkbox'
 			),
-			'sub_group_start_10' => array(
-				'id'		=> 'sub_group_start_10',
-				'type' 		=> 'subgroup_start',
-				'class'		=> 'show-hide'
-			),
-			'menu_apply_font' => array(
-				'id'		=> 'menu_apply_font',
-				'name'		=> null,
-				'desc'		=> '<strong>'.__('Font', 'jumpstart').'</strong>: '.__('Apply custom font to main menu.', 'jumpstart'),
-				'std'		=> 1,
-				'type'		=> 'checkbox',
-				'class'		=> 'trigger'
-			),
-			'font_menu' => array(
-				'id' 		=> 'font_menu',
-				'name' 		=> __('Main Menu Font', 'jumpstart'),
-				'desc' 		=> __('This font applies to the top level items of the main menu.', 'jumpstart'),
-				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#555555', 'google' => 'Raleway:300', 'style' => 'normal'),
-				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
-				'type' 		=> 'typography',
-				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18'),
-				'class'		=> 'hide receiver'
-			),
-			'sub_group_end_10' => array(
-				'id'		=> 'sub_group_end_10',
-				'type' 		=> 'subgroup_end',
-			),
 			'menu_highlight' => array(
 				'id'		=> 'menu_highlight',
 				'name'		=> __('Highlight Color', 'jumpstart'),
@@ -639,8 +612,8 @@ function jumpstart_ent_options() {
 			)
 		),
 		'footer' => array(
-			'sub_group_start_11' => array(
-				'id'		=> 'sub_group_start_11',
+			'sub_group_start_10' => array(
+				'id'		=> 'sub_group_start_10',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -715,12 +688,12 @@ function jumpstart_ent_options() {
 				),
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
-			'sub_group_end_11' => array(
-				'id'		=> 'sub_group_end_11',
+			'sub_group_end_10' => array(
+				'id'		=> 'sub_group_end_10',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_12' => array(
-				'id'		=> 'sub_group_start_12',
+			'sub_group_start_11' => array(
+				'id'		=> 'sub_group_start_11',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -753,12 +726,12 @@ function jumpstart_ent_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_12' => array(
-				'id'		=> 'sub_group_end_12',
+			'sub_group_end_11' => array(
+				'id'		=> 'sub_group_end_11',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_start_13' => array(
-				'id'		=> 'sub_group_start_13',
+			'sub_group_start_12' => array(
+				'id'		=> 'sub_group_start_12',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide'
 			),
@@ -791,8 +764,8 @@ function jumpstart_ent_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_13' => array(
-				'id'		=> 'sub_group_end_13',
+			'sub_group_end_12' => array(
+				'id'		=> 'sub_group_end_12',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -812,6 +785,29 @@ function jumpstart_ent_options() {
 				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Raleway:400', 'style' => 'normal'),
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
+			),
+			// ...
+			'font_menu' => array(
+				'id' 		=> 'font_menu',
+				'name' 		=> __('Main Menu Font', 'jumpstart'),
+				'desc' 		=> __('This font applies to the top level items of the main menu.', 'jumpstart'),
+				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#555555', 'google' => 'Raleway:300', 'style' => 'normal'),
+				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
+				'type' 		=> 'typography',
+				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18')
+			),
+			'font_menu_sp' => array(
+				'id' 		=> 'font_menu_sp',
+				'name'		=> __('Main Menu Letter Spacing', 'jumpstart'),
+				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
+				'std'		=> '0px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> 'px',
+					'min'	=> '0',
+					'max'	=> '5',
+					'step'	=> '1'
+				)
 			),
 			'link_color' => array(
 				'id' 		=> 'link_color',
@@ -899,8 +895,8 @@ function jumpstart_ent_options() {
 			)
 		),
 		'widgets' => array(
-			'sub_group_start_14' => array(
-				'id'		=> 'sub_group_start_14',
+			'sub_group_start_13' => array(
+				'id'		=> 'sub_group_start_13',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle'
 			),
@@ -916,8 +912,8 @@ function jumpstart_ent_options() {
 				),
 				'class'		=> 'trigger'
 			),
-			'sub_group_start_15' => array(
-				'id'		=> 'sub_group_start_15',
+			'sub_group_start_14' => array(
+				'id'		=> 'sub_group_start_14',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide-toggle hide receiver receiver-panel'
 			),
@@ -954,8 +950,8 @@ function jumpstart_ent_options() {
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-custom'
 			),
-			'sub_group_end_15' => array(
-				'id'		=> 'sub_group_end_15',
+			'sub_group_end_14' => array(
+				'id'		=> 'sub_group_end_14',
 				'type' 		=> 'subgroup_end'
 			),
 			'widget_bg_color' => array(
@@ -1037,8 +1033,8 @@ function jumpstart_ent_options() {
 				'type'		=> 'checkbox',
 				'class'		=> 'hide receiver receiver-standard receiver-panel'
 			),
-			'sub_group_start_16' => array(
-				'id'		=> 'sub_group_start_16',
+			'sub_group_start_15' => array(
+				'id'		=> 'sub_group_start_15',
 				'type' 		=> 'subgroup_start',
 				'class'		=> 'show-hide hide receiver receiver-standard'
 			),
@@ -1071,12 +1067,12 @@ function jumpstart_ent_options() {
 				),
 				'class'		=> 'hide receiver'
 			),
-			'sub_group_end_16' => array(
-				'id'		=> 'sub_group_end_16',
+			'sub_group_end_15' => array(
+				'id'		=> 'sub_group_end_15',
 				'type' 		=> 'subgroup_end'
 			),
-			'sub_group_end_14' => array(
-				'id'		=> 'sub_group_end_14',
+			'sub_group_end_13' => array(
+				'id'		=> 'sub_group_end_13',
 				'type' 		=> 'subgroup_end'
 			)
 		),
@@ -1840,7 +1836,7 @@ function jumpstart_ent_css() {
 	$header_text = themeblvd_get_option('header_text_color');
 	$menu_font = themeblvd_get_option('font_menu');
 
-	if ( themeblvd_get_option('menu_apply_font') && $menu_font ) {
+	if ( $menu_font ) {
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 
@@ -1857,6 +1853,7 @@ function jumpstart_ent_css() {
 		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($menu_font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($menu_font) );
+		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_menu_sp') );
 		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($menu_font) );
 
 		$print .= "}\n";
@@ -1957,7 +1954,7 @@ function jumpstart_ent_css() {
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
 
-		if ( themeblvd_get_option('menu_apply_font') && $menu_font ) {
+		if ( $menu_font ) {
 
 			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
 			$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($menu_font) );
