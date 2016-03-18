@@ -1062,27 +1062,6 @@ function jumpstart_ex_options() {
 				'atts'		=> array('face', 'style', 'weight'),
 				'type' 		=> 'typography'
 			),
-			'font_header_sm' => array(
-				'id' 		=> 'font_header_sm',
-				'name' 		=> __('Small Header Font', 'jumpstart'),
-				'desc' 		=> __('This applies to smaller sub headers throughout your website, like widget titles, for example.', 'jumpstart'),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Montserrat:400', 'style' => 'normal'),
-				'atts'		=> array('face', 'style', 'weight'),
-				'type' 		=> 'typography'
-			),
-			'font_header_sm_sp' => array(
-				'id' 		=> 'font_header_sm_sp',
-				'name'		=> __('Small Header Letter Spacing', 'jumpstart'),
-				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
-				'std'		=> '0px',
-				'type'		=> 'slide',
-				'options'	=> array(
-					'units'	=> 'px',
-					'min'	=> '0',
-					'max'	=> '5',
-					'step'	=> '1'
-				)
-			),
 			'font_quote' => array(
 				'id' 		=> 'font_quote',
 				'name' 		=> __('Quote Font', 'jumpstart'),
@@ -1094,6 +1073,27 @@ function jumpstart_ex_options() {
 			'font_quote_sp' => array(
 				'id' 		=> 'font_quote_sp',
 				'name'		=> __('Quote Letter Spacing', 'jumpstart'),
+				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
+				'std'		=> '0px',
+				'type'		=> 'slide',
+				'options'	=> array(
+					'units'	=> 'px',
+					'min'	=> '0',
+					'max'	=> '5',
+					'step'	=> '1'
+				)
+			),
+			'font_meta' => array(
+				'id' 		=> 'font_meta',
+				'name' 		=> __('Meta Info Font', 'jumpstart'),
+				'desc' 		=> __('This applies to meta info like the "Posted" date below a post title, for example.', 'jumpstart'),
+				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '400', 'color' => '', 'google' => 'Montserrat:400', 'style' => 'uppercase'),
+				'atts'		=> array('face', 'style', 'weight'),
+				'type' 		=> 'typography'
+			),
+			'font_meta_sp' => array(
+				'id' 		=> 'font_meta_sp',
+				'name'		=> __('Meta Info Letter Spacing', 'jumpstart'),
 				'desc'		=> __('Adjust the spacing between letters.', 'jumpstart'),
 				'std'		=> '0px',
 				'type'		=> 'slide',
@@ -1508,6 +1508,9 @@ function jumpstart_ex_include_fonts() {
 	themeblvd_include_fonts(
 		themeblvd_get_option('font_body'),
 		themeblvd_get_option('font_header'),
+		themeblvd_get_option('font_header_sm'),
+		themeblvd_get_option('font_quote'),
+		themeblvd_get_option('font_meta'),
 		themeblvd_get_option('font_menu')
 	);
 }
@@ -1559,43 +1562,6 @@ function jumpstart_ex_css() {
 		$print .= "}\n";
 	}
 
-	// Small Header Font
-	$font = themeblvd_get_option('font_header_sm');
-
-	if ( $font ) {
-
-		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
-			$print .= ".woocommerce-tabs .panel h2,\n";
-			$print .= ".products.related > h2,\n";
-			$print .= ".products.upsells > h2,\n";
-		}
-
-		if ( themeblvd_installed('bbpress') && themeblvd_supports('plugins', 'bbpress') ) {
-			$print .= "#bbpress-forums fieldset.bbp-form legend,\n";
-		}
-
-		$print .= "h5,\n";
-		$print .= "h6,\n";
-		$print .= ".widget-title,\n";
-		$print .= ".related-posts-title,\n";
-		$print .= "#comments-title,\n";
-		$print .= "#respond .comment-reply-title,\n";
-		$print .= ".tb-author-box .info-box-title,\n";
-		$print .= ".modal-title,\n";
-		$print .= ".sf-menu .mega-section-header,\n";
-		$print .= ".tb-pricing-table .title,\n";
-		$print .= ".tb-icon-box .icon-box-title {\n";
-
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_header_sm_sp') );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
-
-		$print .= "}\n";
-
-	}
-
 	// Quote Font
 	$font = themeblvd_get_option('font_quote');
 
@@ -1610,6 +1576,28 @@ function jumpstart_ex_css() {
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
 		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_quote_sp') );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+
+		$print .= "}\n";
+
+	}
+
+	// Meta Font
+	$font = themeblvd_get_option('font_meta');
+
+	if ( $font ) {
+
+		$print .= ".entry-header .entry-meta,\n";
+		$print .= ".post_grid .entry-meta,\n";
+		$print .= ".tb-post-slider .entry-meta,\n";
+		$print .= ".tweeple-feed .tweet-meta,\n";
+		$print .= "#comments .comment-body .comment-metadata,\n";
+		$print .= "blockquote cite {\n";
+
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
+		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
+		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_meta_sp') );
 		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 
 		$print .= "}\n";
