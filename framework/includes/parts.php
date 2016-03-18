@@ -958,8 +958,8 @@ function themeblvd_get_meta( $args = array() ) {
 	$icons = apply_filters('themeblvd_meta_icons', array(
 		'time'		=> 'clock-o',
 		'author'	=> 'user',
-		'comments'	=> 'comment-o',
-		'category'	=> 'folder-o',
+		'comments'	=> 'comment',
+		'category'	=> 'folder',
 		'portfolio'	=> 'briefcase',
 	));
 
