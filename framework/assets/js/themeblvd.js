@@ -210,14 +210,15 @@ jQuery(document).ready(function($) {
 					$top = $('<span class="menu-btn">'+$el.find('.tb-wpml-switcher > ul > li > a').html()+'</span>'),
 					$sub = $el.find('.lang-sub-menu');
 
-				$switcher.append( $top );
-
+				// Is there a dropdown of languages for this page?
 				if ( $sub.length ) {
+
+					$switcher.append( $top );
 					$top.find('.fa').addClass('sf-sub-indicator');
 					$switcher.append( $sub.clone().addClass('sub-menu non-mega-sub-menu') );
-				}
+					$switcher.appendTo( $side_holder.find('.tb-mobile-menu') );
 
-				$switcher.appendTo( $side_holder.find('.tb-mobile-menu') );
+				}
 
 			});
 		}
