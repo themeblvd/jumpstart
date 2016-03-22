@@ -78,21 +78,19 @@ if ( !function_exists( 'themeblvd_responsive_menu_toggle' ) ) :
  */
 function themeblvd_responsive_menu_toggle() {
 	?>
-	<div id="primary-menu-toggle">
+	<ul class="mobile-nav list-unstyled">
 
-		<a href="#" id="primary-menu-open" class="btn-navbar open">
-			<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<i class="fa fa-bars"></i>' ); ?>
-		</a>
-
-		<a href="#" id="primary-menu-close" class="btn-navbar close">
-			<?php echo apply_filters( 'themeblvd_btn_navbar_text_close', '<i class="fa fa-times"></i>' ); ?>
-		</a>
+		<li>
+			<a href="#" class="btn-navbar tb-nav-trigger">
+				<?php echo apply_filters( 'themeblvd_btn_navbar_text', '<span class="hamburger"><span class="top"></span><span class="middle"></span><span class="bottom"></span></span>' ); ?>
+			</a>
+		</li>
 
 		<?php if ( themeblvd_do_cart() ) : ?>
-			<?php themeblvd_mobile_cart_link(); ?>
+			<li><?php themeblvd_mobile_cart_link(); ?></li>
 		<?php endif; ?>
 
-	</div>
+	</ul>
 	<?php
 }
 endif;
@@ -138,6 +136,7 @@ function themeblvd_header_content_default() {
 			<?php
 			/**
 			 * @hooked themeblvd_header_logo_default - 10
+			 * @hooked themeblvd_header_logo_mobile - 20
 			 */
 			do_action('themeblvd_header_logo');
 
@@ -160,25 +159,49 @@ if ( !function_exists( 'themeblvd_header_logo_default' ) ) :
  */
 function themeblvd_header_logo_default() {
 
-	$logo = themeblvd_get_option('logo');
-	$trans = themeblvd_get_option('trans_logo');
+	if ( $logo = themeblvd_get_option('logo') ) {
 
-	if ( $logo ) {
+		$trans = themeblvd_get_option('trans_logo');
+
 		if ( themeblvd_config('suck_up') && ! empty($trans['type']) && $trans['type'] != 'default' ) {
 
 			$logo['class'] = 'logo-standard';
 			echo themeblvd_get_logo($logo);
 
-			if ( $trans ) {
-				$trans['class'] = 'logo-trans';
-				echo themeblvd_get_logo($trans);
-			}
+			$trans['class'] = 'logo-trans';
+			echo themeblvd_get_logo($trans);
 
 		} else {
 
+			$logo['class'] = 'logo-standard';
 			echo themeblvd_get_logo($logo);
 
 		}
+	}
+
+}
+endif;
+
+if ( !function_exists( 'themeblvd_header_logo_mobile' ) ) :
+/**
+ * Default display for action: themeblvd_header_logo
+ *
+ * @since 2.6.0
+ */
+function themeblvd_header_logo_mobile() {
+
+	$logo = themeblvd_get_option('mobile_logo');
+
+	if ( ! $logo ) {
+		$logo = themeblvd_get_option('logo');
+	}
+
+	if ( $logo ) {
+
+		$logo['class'] = 'logo-mobile';
+
+		echo themeblvd_get_logo($logo);
+
 	}
 
 }

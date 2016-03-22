@@ -159,6 +159,7 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 	add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle');
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
+	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_mobile', 20 );
 	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 	add_action( 'themeblvd_header_after', 'themeblvd_epic_thumb' );
 	add_filter( 'themeblvd_header_text', 'themeblvd_do_fa' );

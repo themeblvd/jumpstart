@@ -5,25 +5,38 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.0**
-* New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552).
-* New: [Adobe Typekit](https://typekit.com) support to typography theme options.
-* New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
-* New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
-* New: Template file `content-blog.php` for the blog post style has been added.
-* New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
-* New: Added compatibility for [Subtitles](https://wordpress.org/plugins/subtitles/) plugin.
-* New: Featured Media
-    * New "Epic Thumbnails" on single posts; see Post and Page Options meta boxes for new featured images display options.
+* New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552) when activating the theme.
+* New: Featured media above single post content.
+    * New "Epic Thumbnails" on single posts and pages; see Post and Page Options meta boxes for new featured images display options.
     * New variable-width slider carousel for gallery posts; see *Appearance > Theme Options > Content > General*.
     * Default gallery slider image size was increased from 1200x450 to 1400x525, when not using new variable width carousel.
+    * Added compatibility for [Subtitles](https://wordpress.org/plugins/subtitles/) plugin.
     * Removed banner functionality; you can restore with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
-* Improvement: Expanded video background support.
+* New: Expanded typography section on theme options for non-dev theme bases.
+    * Added [Adobe Typekit](https://typekit.com) support.
+    * Minor adjustments to default fonts.
+    * Menu font option is no longer optional, and was moved from *Styles > Main Menu* to *Styles > Typography*.
+    * Additional font options for quotes, meta info, and featured image titles (i.e. "Epic Thumbnails").
+    * Font spacing option added to menu font, and new font options.
+* New: Expanded video background support.
     * YouTube and Vimeo support added.
     * Simplified options for inputting video.
     * Additional HTML5 video formats (mp4, webm, ogv) automatically included, if exist.
     * Better dynamic video re-sizing to fit area, based on inputted aspect ratio.
     * Progressive loading for longer videos.
     * Fallback image now displays on large mobile devices, where background video isn't supported.
+* New: Mobile header redesigned.
+    * New header design for small mobile devices.
+    * Minor improvements to tablet header design.
+    * Minor improvements to mobile side menu.
+    * New animated menu toggle button for opening side menu.
+    * Smoother CSS animation for mobile side menu animating in and out.
+    * Added new logo option for small mobile devices; see *Appearance > Theme Options > Layout > Mobile Header*.
+    * Added new option for header background color on small mobile devices on non-developer theme bases; see *Appearance > Theme Options > Styles > Mobile Header*.
+* New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
+* New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
+* New: Template file `content-blog.php` for the blog post style has been added.
+* New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
 * Improvement: Design for post in blog and single post has been simplified.
 * Improvement: Design enhancements to default post showcase display.
 * Improvement: Design enhancements to Magnific Popup lightbox navigation.
@@ -53,7 +66,8 @@ Jump Start Changelog
 * Fixed: Funky display issue on WooCommerce product reviews.
 * Fixed: Shopping cart button not displaying with "Super User" and "Executive" theme bases, when header info is set to show "within header."
 * Fixed: Partner Logos slider stretching images 100% width of column.
-* Fixed: More minor RTL bug fixes.
+* Fixed: [WPML](http://themeblvd.com/links/wpml) switcher was producing "undefined" error in mobile menu on pages that only had one language.
+* Fixed: More minor RTL and Translation bug fixes.
     * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
     * Tabs and pills of Tabs element now align properly to right.
     * Panels no longer force text to be aligned left.

@@ -536,6 +536,26 @@ function jumpstart_ent_options() {
 				'type' 		=> 'subgroup_end'
 			)
 		),
+		'header_mobile' => array(
+			'header_mobile_bg_color' => array(
+				'id'		=> 'header_mobile_bg_color',
+				'name'		=> __('Background Color', 'jumpstart'),
+				'desc'		=> __('Select a background color for the mobile header.', 'jumpstart'),
+				'std'		=> '#333333',
+				'type'		=> 'color'
+			),
+			'header_mobile_bg_color_brightness' => array(
+				'id' 		=> 'header_mobile_bg_color_brightness',
+				'name' 		=> __('Background Color Brightness', 'jumpstart'),
+				'desc' 		=> __('In the previous option, did you go dark or light?', 'jumpstart'),
+				'std' 		=> 'dark',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'light' => __('I chose a light color in the previous option.', 'jumpstart'),
+					'dark' 	=> __('I chose a dark color in the previous option.', 'jumpstart')
+				)
+			)
+		),
 		'menu' => array(
 			'menu_text_shadow' => array(
 				'id'		=> 'menu_text_shadow',
@@ -581,7 +601,7 @@ function jumpstart_ent_options() {
 			'menu_mobile_bg_color' => array(
 				'id'		=> 'menu_mobile_bg_color',
 				'name'		=> __('Mobile Menu Background Color', 'jumpstart'),
-				'desc'		=> __('Select a background color for the main menu\'s drop down menus.', 'jumpstart'),
+				'desc'		=> __('Select a background color for the mobile menu side panel.', 'jumpstart'),
 				'std'		=> '#333333',
 				'type'		=> 'color'
 			),
@@ -1178,6 +1198,7 @@ function jumpstart_ent_options() {
 	themeblvd_add_option_section( 'styles', 'ent_general',		__('General', 'jumpstart'),			null, $options['general'] );
 	themeblvd_add_option_section( 'styles', 'ent_header_info',	__('Header Info', 'jumpstart'), 	null, $options['header_info'] );
 	themeblvd_add_option_section( 'styles', 'ent_header',		__('Header', 'jumpstart'),			null, $options['header'] );
+	themeblvd_add_option_section( 'styles', 'ent_header_mobile',	__('Mobile Header', 'jumpstart'),	null, $options['header_mobile'] );
 	themeblvd_add_option_section( 'styles', 'ent_menu',			__('Main Menu', 'jumpstart'),		null, $options['menu'] );
 	themeblvd_add_option_section( 'styles', 'ent_menu_mobile',	__('Mobile Menu', 'jumpstart'),		null, $options['menu_mobile'] );
 	themeblvd_add_option_section( 'styles', 'ent_footer', 		__('Footer', 'jumpstart'),			null, $options['footer'] );
@@ -1926,29 +1947,18 @@ function jumpstart_ent_css() {
 			}
 		}
 
-	} else {
-
-		// For transparent header, give header the
-		// selected background color for mobile.
-		$print .= "@media (max-width: 767px) {\n";
-		$print .= "\t.site-header {\n";
-		$print .= sprintf("\t\tbackground-color: %s;\n", $header_bg_color);
-		$print .= "\t}\n";
-		$print .= "}\n";
-
 	}
 
 	// Header Height and Main Menu
 	$height = intval(themeblvd_get_option('header_height'));
 
-	$print .= "@media (min-width: 768px) {\n";
+	$print .= "@media (min-width: 992px) {\n";
 	$print .= "\t.header-content {\n";
 	$print .= sprintf( "\t\theight: %spx;\n", $height );
 	$print .= "\t}\n";
-	$print .= "}\n";
-
 	$print .= ".header-content .header-logo img {\n";
 	$print .= sprintf( "\theight: %spx;\n", $height-20 );
+	$print .= "}\n";
 	$print .= "}\n";
 
 	$top = round( ($height-20) / 2 ); // 20px line-height for font
@@ -1968,15 +1978,6 @@ function jumpstart_ent_css() {
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 
-		if ( ! themeblvd_config('suck_up') ) {
-
-			$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
-
-			if ( $header_text == 'light' ) {
-				$print .= sprintf("\tcolor: %s;\n", themeblvd_get_rgb($menu_font['color'], '0.9') );
-			}
-		}
-
 		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($menu_font) );
 		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($menu_font) );
@@ -1986,20 +1987,9 @@ function jumpstart_ent_css() {
 
 		$print .= "}\n";
 
-		if ( ! themeblvd_config('suck_up') ) {
+	}
 
-			$print .= ".header-nav .tb-primary-menu > li > .menu-btn:hover {\n";
-
-			if ( $header_text == 'light' ) {
-				$print .= sprintf("\tcolor: %s;\n", $menu_font['color'] );
-			} else {
-				$print .= sprintf("\tcolor: %s;\n", themeblvd_adjust_color($menu_font['color'], 40, 'darken') );
-			}
-
-			$print .= "}\n";
-		}
-
-	} else if ( $header_text == 'light' ) {
+	if ( $header_text == 'light' ) {
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 	    $print .= "\tcolor: #ffffff;\n";
@@ -2037,17 +2027,15 @@ function jumpstart_ent_css() {
 
 	$text = themeblvd_text_color($highlight);
 
-	$print .= ".btn-navbar {\n";
-	$print .= sprintf("\tbackground-color: %s;\n", $highlight);
-	$print .= sprintf("\tcolor: %s;\n", $text);
-	$print .= "}\n";
+	$print .= "@media (min-width: 768px) {\n";
 
-	$print .= ".btn-navbar:hover {\n";
-
-	if ( $text == '#333333' ) {
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color($highlight, 20, 'darken'));
-	} else {
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_adjust_color($highlight, 20, 'lighten'));
+	if ( themeblvd_get_option('header_text_color') == 'dark' ) {
+		$print .= "\t.mobile-nav > li > a {\n";
+		$print .= "\t\tcolor: rgba(70,70,70,.9);";
+		$print .= "\t}\n";
+		$print .= "\t.tb-nav-trigger .hamburger span {\n";
+		$print .= "\t\tbackground-color: rgba(70,70,70,.9);";
+		$print .= "\t}\n";
 	}
 
 	$print .= "}\n";
@@ -2070,6 +2058,28 @@ function jumpstart_ent_css() {
 		$print .= "}\n";
 
 	}
+
+	// Header Mobile
+	$print .= "@media (max-width: 767px) {\n";
+
+	$print .= "\t.site-header {\n";
+	$print .= sprintf("\t\tbackground-color: %s;\n", themeblvd_get_option('header_mobile_bg_color'));
+	$print .= "\t}\n";
+
+	if ( themeblvd_get_option('header_mobile_bg_color_brightness') == 'light' ) {
+		$print .= "\t.mobile-nav,\n";
+		$print .= "\t.mobile-nav > li {\n";
+		$print .= "\t\tborder-color: rgba(100,100,100,.1);";
+		$print .= "\t}\n";
+		$print .= "\t.mobile-nav > li > a {\n";
+		$print .= "\t\tcolor: rgba(10,10,10,.9);";
+		$print .= "\t}\n";
+		$print .= "\t.tb-nav-trigger .hamburger span {\n";
+		$print .= "\t\tbackground-color: rgba(10,10,10,.9);";
+		$print .= "\t}\n";
+	}
+
+	$print .= "}\n";
 
 	// Header sticky menu
 	if ( $header_bg_type && $header_bg_type != 'none' && $header_bg_color ) {

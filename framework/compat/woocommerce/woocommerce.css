@@ -178,6 +178,13 @@ ul.woocommerce-info {
 .woocommerce-info:before {
 	content: "\f129";
 }
+@media (max-width: 767px) {
+	.woocommerce-info:before,
+	.woocommerce-message:before,
+	.woocommerce-info:before {
+		display: none;
+	}
+}
 
 /* Message clearfix */
 .woocommerce-info:after,
@@ -195,12 +202,28 @@ ul.woocommerce-info {
 	float: right;
 	margin-left: 15px;
 }
+@media (max-width: 767px) {
+	.woocommerce-message .btn,
+	.woocommerce-error .btn,
+	.woocommerce-info .btn {
+		float: none;
+		margin: 0;
+	}
+}
 .rtl .woocommerce-message .btn,
 .rtl .woocommerce-error .btn,
 .rtl .woocommerce-info .btn {
 	float: left;
 	margin-right: 15px;
 	margin-left: 0;
+}
+@media (max-width: 767px) {
+	.rtl .woocommerce-message .btn,
+	.rtl .woocommerce-error .btn,
+	.rtl .woocommerce-info .btn {
+		float: none;
+		margin: 0;
+	}
 }
 
 /* =Shop
@@ -1736,14 +1759,16 @@ ul.woocommerce-info {
 	-webkit-border-radius: 100px;
 	border-radius: 100px;
 	display: inline-block;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 9px;
-	font-weight: bold;
+	font-weight: 700;
+	height: 1.7em;
 	line-height: 1.7em;
+	min-width: 1.7em;
 	padding: 0 5px;
 	position: absolute;
 	left: 10px;
 	bottom: 0;
-	height: 1.7em;
 	text-align: center;
 }
 .header-top-mini .tb-cart-trigger .trigger-label {

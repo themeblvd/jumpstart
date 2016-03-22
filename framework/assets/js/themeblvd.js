@@ -181,9 +181,8 @@ jQuery(document).ready(function($) {
 
 		// Generate content for side menu
 		var $side_holder = $('.tb-mobile-menu-wrapper > .wrap'),
-			$toggle_open = $('#primary-menu-open'),
-			$toggle_close = $('#primary-menu-close'),
 			$extras = $('.tb-to-mobile-menu'), // Any items that you want to be moved in the side menu location, add class "tb-to-mobile-menu"
+			$nav_trigger = $('.tb-nav-trigger'),
 			max = parseInt(themeblvd.mobile_menu_viewport_max);
 
 		// Add search box, if exists in header
@@ -239,33 +238,29 @@ jQuery(document).ready(function($) {
 			);
 		}
 
-		// Show menu
-		$toggle_open.on('click', function(){
-			$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on');
-			$toggle_open.hide();
-			$toggle_close.show();
-			return false;
-		});
+		// Show hide mobile menu
+		$nav_trigger.on('click', function(){
 
-		// Close menu
-		$toggle_close.on('click', function(){
-			$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
-			$toggle_close.hide();
-			$toggle_open.show();
+			if ( $nav_trigger.hasClass('collapse') ) {
+				$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
+				$nav_trigger.removeClass('collapse');
+			} else {
+				$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on');
+				$nav_trigger.addClass('collapse');
+			}
+
 			return false;
 		});
 
 		$('#wrapper').on('click', function(){
 			$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
-			$toggle_close.hide();
-			$toggle_open.show();
+			$nav_trigger.removeClass('collapse');
 		});
 
 		$window.on('resize', function(){
 			if ( $window.width() > max ) {
 				$body.removeClass('mobile-menu-'+themeblvd.mobile_menu_location+'-on').addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
-				$toggle_close.hide();
-				$toggle_open.show();
+				$nav_trigger.removeClass('collapse');
 			}
 		});
 

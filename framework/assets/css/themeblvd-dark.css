@@ -555,6 +555,15 @@ button:active {
 /* =Media (media.php)
 -----------------------------------------------*/
 
+@media (max-width: 767px) {
+	.epic-thumb {
+		background: #222222;
+	}
+    .epic-thumb .epic-thumb-header .entry-title {
+		color: #ffffff;
+	}
+}
+
 /* =Post Display (loop.php)
 -----------------------------------------------*/
 

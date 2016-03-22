@@ -133,6 +133,11 @@ body {
 	background: #f5f5f5;
 	position: relative;
 }
+@media (max-width: 767px) {
+	.site-header {
+		background: #333333;
+	}
+}
 
 /* Header Top */
 .header-top {
@@ -143,7 +148,7 @@ body {
 .header-top-mini .header-top {
 	font-size: 12px;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
 	.header-top {
 		display: none;
 	}
@@ -236,64 +241,109 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 		padding: 20px 30px;
 	}
 }
+@media (max-width: 767px) {
+	.header-content > .wrap {
+		height: 64px;
+		padding: 0;
+	}
+}
 .header-logo {
 	float: left;
 }
 @media (max-width: 991px) {
 	.header-logo {
 		float: none;
-		padding-right: 75px;
+		padding: 0;
+		position: absolute;
+		top: 50%;
+		left: 30px;
+		-webkit-transform: translate(0, -50%);
+		transform: translate(0, -50%);
 	}
-	.has-cart-button .header-logo {
-		padding-right: 130px;
+	.header-logo img {
+		max-height: 64px;
+    	width: auto;
 	}
 }
-.btn-navbar {
-	background: #333333;
+@media (max-width: 767px) {
+	.header-logo img {
+		max-height: 44px;
+	}
+}
+.mobile-nav {
+	float: right;
+	margin: 0;
+}
+.mobile-nav > li {
+	float: right;
+	padding: 0 1px;
+}
+@media (max-width: 767px) {
+	.mobile-nav {
+		border-right: 1px solid rgba(0,0,0,.15);
+	}
+	.mobile-nav > li {
+		border-left: 1px solid rgba(0,0,0,.15);
+	}
+}
+.mobile-nav > li > a {
+	display: block;
 	color: #ffffff;
-	margin-top: -24px;
-	padding: 15px;
-	position: absolute;
-	top: 50%;
-	right: 30px;
-	text-align: center;
-	z-index: 10;
+	font-size: 20px;
+	line-height: 64px;
+	opacity: .95;
+	padding: 0 20px;
 }
-.btn-navbar:hover {
-	background: #000000;
-	color: #ffffff;
+@media (max-width: 767px) {
+	.mobile-nav > li > a {
+		opacity: .8;
+	}
 }
-.btn-navbar.cart {
-	right: 88px; /* 30 + 48 + 10 */
+.mobile-nav > li > a:hover {
+	opacity: 1;
 }
-.btn-navbar.cart .cart-count {
+.mobile-nav > li > a .fa {
+	width: 22px;
+}
+.mobile-nav .tb-nav-trigger {
+	font-size: 22px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.mobile-nav .cart {
+	position: relative;
+}
+.mobile-nav .cart .cart-count {
 	background: rgba(255,255,255,.1);
 	-webkit-border-radius: 100px;
 	border-radius: 100px;
 	display: inline-block;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 8px;
-	font-weight: bold;
-	line-height: 14px;
+	font-weight: 700;
+	height: 16px;
+	line-height: 16px;
+	margin: 2px 0px 0 2px;
+	min-width: 16px;
+	padding: 0 4px;
 	position: absolute;
-	right: 4px;
-	bottom: 8px;
-	width: 14px;
-	height: 14px;
+	top: 50%;
+	left: 50%;
 	text-align: center;
-}
-.btn-navbar .fa {
-	width: 18px; /* maintain consistent width, no matter what icon used */
 }
 
 /* Primary Navigation */
 .header-nav {
 	background: #333333;
 }
+.mobile-nav {
+	display: none;
+}
 @media (max-width: 991px) {
 	.header-nav {
 		display: none;
 	}
-	#primary-menu-toggle {
+	.mobile-nav {
 		display: block;
 	}
 }
@@ -363,14 +413,6 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .tb-mobile-menu-wrapper .tb-mobile-menu .sub-menu li.non-mega-sub-menu:last-child {
 	background-color: #333333;
 }
-/* @noflip */
-.tb-mobile-menu-wrapper.left {
-	border-right: 1px solid rgba(0,0,0,.2);
-}
-/* @noflip */
-.tb-mobile-menu-wrapper.right {
-	border-left: 1px solid rgba(0,0,0,.2);
-}
 .tb-mobile-menu-wrapper .tb-mobile-menu a,
 .tb-mobile-menu-wrapper .tb-mobile-menu span,
 .tb-mobile-menu-wrapper .header-text,
@@ -411,6 +453,16 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 }
 .tb-mobile-menu-wrapper .tb-search .search-input::-webkit-input-placeholder {
 	color: rgba(255,255,255,.5);
+}
+.tb-mobile-menu-wrapper .tb-social-icons > li > a {
+	font-size: 20px;
+	padding: .25em;
+}
+.tb-mobile-menu-wrapper .tb-social-icons > li:first-child > a {
+	padding-left: 0;
+}
+.tb-mobile-menu-wrapper .tb-social-icons > li:last-child > a {
+	padding-right: 0;
 }
 
 /* Transparent Header */
@@ -458,7 +510,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	}
 }
 @media (max-width: 767px) {
-	.breadcrumb {
+	.site-breadcrumbs {
 		display: none;
 	}
 }
@@ -555,8 +607,18 @@ h6 {
 h1 {
 	font-size: 2.29rem; /* 32px / 14px */
 }
+@media (max-width: 767px) {
+	h1 {
+		font-size: 1.9rem;
+	}
+}
 h2 {
 	font-size: 1.93rem; /* 27px / 14px */
+}
+@media (max-width: 767px) {
+	h2 {
+		font-size: 1.7;
+	}
 }
 h3 {
 	font-size: 1.42rem; /* 20px / 14px */

@@ -363,6 +363,20 @@ class Theme_Blvd_Options_API {
 				) // End header options
 			),
 
+			// Section: Mobile Header
+			'header_mobile' => array(
+				'name' => __('Mobile Header', 'jumpstart'),
+				'options' => array(
+					'mobile_logo' => array(
+						'name' 		=> __('Mobile Logo', 'jumpstart'),
+						'desc' 		=> __('Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you\'ll want to use an image shorter than that.', 'jumpstart').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart').'</em>',
+						'id' 		=> 'mobile_logo',
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-mobile.png', 'image_width' => '85', 'image_height' => '25', 'image_2x' => get_template_directory_uri().'/assets/images/logo-mobile_2x.png' ),
+						'type' 		=> 'logo'
+					)
+				) // End mobile header options
+			),
+
 			// Section: Transparent Header
 			'header_trans' => array(
 				'name' => __('Transparent Header', 'jumpstart'),
@@ -389,7 +403,7 @@ class Theme_Blvd_Options_API {
 							'color'			=> __('Color', 'jumpstart')
 						)
 					)
-				) // End header options
+				) // End trans header options
 			),
 
 			// Section: Footer

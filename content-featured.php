@@ -16,23 +16,27 @@ $to = is_page_template('template_builder.php') ? 'custom-main' : $to;
 
     <?php else : ?>
 
-        <header class="entry-header epic-thumb-header epic-thumb-content">
+        <?php if ( ( ! is_page() || get_post_meta( get_the_ID(), '_tb_title', true ) != 'hide' ) || themeblvd_get_att('show_meta') || has_post_format('audio') ) : ?>
 
-            <?php if ( ! is_page() || get_post_meta( get_the_ID(), '_tb_title', true ) != 'hide' ) : ?>
-                <h1 class="entry-title"><?php the_title(); ?></h1>
-            <?php endif; ?>
+            <header class="entry-header epic-thumb-header epic-thumb-content">
 
-            <?php if ( themeblvd_get_att('show_meta') ) : ?>
-                <div class="meta-wrapper above">
-                    <?php themeblvd_blog_meta(); ?>
-                </div><!-- .meta-wrapper (end) -->
-            <?php endif; ?>
+                <?php if ( ! is_page() || get_post_meta( get_the_ID(), '_tb_title', true ) != 'hide' ) : ?>
+                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                <?php endif; ?>
 
-            <?php if ( has_post_format('audio') ) : ?>
-                <?php themeblvd_content_audio(); ?>
-            <?php endif; ?>
+                <?php if ( themeblvd_get_att('show_meta') ) : ?>
+                    <div class="meta-wrapper above">
+                        <?php themeblvd_blog_meta(); ?>
+                    </div><!-- .meta-wrapper (end) -->
+                <?php endif; ?>
 
-        </header>
+                <?php if ( has_post_format('audio') ) : ?>
+                    <?php themeblvd_content_audio(); ?>
+                <?php endif; ?>
+
+            </header>
+
+        <?php endif; ?>
 
     <?php endif; ?>
 
