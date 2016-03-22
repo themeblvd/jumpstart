@@ -1414,7 +1414,7 @@ function themeblvd_get_testimonial_slider( $args ) {
     $output .= '</div><!-- .tb-testimonial-slider-inner (end) -->';
     $output .= '</div><!-- .tb-testimonial-slider (end) -->';
 
-    return apply_filters( 'themeblvd_testiomnial_slider', $output, $args );
+    return apply_filters( 'themeblvd_testimonial_slider', $output, $args );
 }
 
 /**
