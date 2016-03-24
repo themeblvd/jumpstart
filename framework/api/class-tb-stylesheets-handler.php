@@ -163,7 +163,7 @@ class Theme_Blvd_Stylesheet_Handler {
 
 		// Owl Carousel
 		if ( themeblvd_supports( 'assets', 'owl_carousel' ) && themeblvd_get_option('gallery_carousel') ) {
-			$this->framework_stylesheets['magnific_popup'] = array(
+			$this->framework_stylesheets['owl_carousel'] = array(
 				'handle'	=> 'owl-carousel',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/owl-carousel/owl.carousel.min.css',
 				'deps'		=> array(),
