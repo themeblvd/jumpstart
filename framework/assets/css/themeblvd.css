@@ -1446,12 +1446,16 @@ html {
 }
 
 /* Mobile Menu Container */
+.tb-mobile-menu-wrapper {
+	display: none;
+}
 @media (max-width: 991px) {
 	.tb-mobile-menu-wrapper {
 		border: 0;
 		border-radius: 0;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
+		display: block;
 		margin: 0 !important;
 		padding: 0;
 		overflow: auto !important;
