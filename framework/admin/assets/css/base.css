@@ -91,7 +91,10 @@
 	margin: 0 0 10px 0;
 }
 #themeblvd-base-admin .theme-base-info p {
+	font-size: 13px;
+	line-height: 1.3em;
 	margin: 0;
+	min-height: 2.6em;
 }
 #themeblvd-base-admin .theme-base.active {
 	/* background-color: #2f2f2f; */

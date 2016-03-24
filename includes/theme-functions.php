@@ -41,11 +41,11 @@ function jumpstart_bases() {
 			),
 			'entrepreneur' => array(
 				'name'		=> __('Entrepreneur', 'jumpstart'),
-				'desc'		=> __('For the modern entrepreneur, this base embodies the current design trends of the web industry.', 'jumpstart')
+				'desc'		=> __('A more standard, corporate design with a lot of user options.', 'jumpstart')
 			),
 			'executive' => array(
 				'name'		=> __('Executive', 'jumpstart'),
-				'desc'		=> __('For the confident, experienced executive, this base gives you a design you\'re familiar with, for success.', 'jumpstart')
+				'desc'		=> __('A more classic, corporate design with a lot of user options.', 'jumpstart')
 			)
 		));
 
