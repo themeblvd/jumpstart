@@ -1549,7 +1549,6 @@ function jumpstart_ex_include_fonts() {
 	themeblvd_include_fonts(
 		themeblvd_get_option('font_body'),
 		themeblvd_get_option('font_header'),
-		themeblvd_get_option('font_header_sm'),
 		themeblvd_get_option('font_quote'),
 		themeblvd_get_option('font_meta'),
 		themeblvd_get_option('font_epic'),

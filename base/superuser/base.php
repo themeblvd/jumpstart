@@ -1580,18 +1580,17 @@ add_filter('body_class', 'jumpstart_su_body_class');
  *
  * @since 2.0.0
  */
-function jumpstart_ent_include_fonts() {
+function jumpstart_su_include_fonts() {
 	themeblvd_include_fonts(
 		themeblvd_get_option('font_body'),
 		themeblvd_get_option('font_header'),
-		themeblvd_get_option('font_header_sm'),
 		themeblvd_get_option('font_quote'),
 		themeblvd_get_option('font_meta'),
 		themeblvd_get_option('font_epic'),
 		themeblvd_get_option('font_menu')
 	);
 }
-add_action('wp_head', 'jumpstart_ent_include_fonts', 5);
+add_action('wp_head', 'jumpstart_su_include_fonts', 5);
 
 /**
  * Enqueue any CSS
