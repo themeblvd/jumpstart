@@ -185,10 +185,10 @@ function themeblvd_was( $type, $helper = '' ) {
  * @param array $classes Current body classes
  * @return array $classes Body classes with browser classes added
  */
-function themeblvd_body_class( $classes ) {
+function themeblvd_body_class( $class ) {
 
 	if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
-		return $classes;
+		return $class;
 	}
 
 	// Get current user agent
@@ -196,99 +196,104 @@ function themeblvd_body_class( $classes ) {
 
 	// OS class
 	if ( preg_match( "/Mac/", $browser ) ) {
-		$classes[] = 'mac';
+		$class[] = 'mac';
 	} else if ( preg_match( "/Windows/", $browser ) ) {
-		$classes[] = 'windows';
+		$class[] = 'windows';
 	} else if ( preg_match( "/Linux/", $browser ) ) {
-		$classes[] = 'linux';
+		$class[] = 'linux';
 	} else {
-		$classes[] = 'unknown-os';
+		$class[] = 'unknown-os';
 	}
 
 	// Browser class
 	if ( preg_match( "/Chrome/", $browser ) ) {
-		$classes[] = 'chrome';
+		$class[] = 'chrome';
 	} else if ( preg_match( "/Safari/", $browser ) ) {
-		$classes[] = 'safari';
+		$class[] = 'safari';
 	} else if ( preg_match( "/Opera/", $browser ) ) {
-		$classes[] = 'opera';
+		$class[] = 'opera';
 	} else if ( preg_match( "/MSIE/", $browser ) ) {
 
 		// Internet Explorer... ugh, kill me now.
-		$classes[] = 'msie';
+		$class[] = 'msie';
 
 		if ( preg_match( "/MSIE 6.0/", $browser ) ) {
-			$classes[] = 'ie6';
+			$class[] = 'ie6';
 		} else if ( preg_match( "/MSIE 7.0/", $browser ) ) {
-			$classes[] = 'ie7';
+			$class[] = 'ie7';
 		} else if ( preg_match( "/MSIE 8.0/", $browser ) ) {
-			$classes[] = 'ie8';
+			$class[] = 'ie8';
 		} else if ( preg_match( "/MSIE 9.0/", $browser ) ) {
-			$classes[] = 'ie9';
+			$class[] = 'ie9';
 		} else if ( preg_match( "/MSIE 10.0/", $browser ) ) {
-			$classes[] = 'ie10';
+			$class[] = 'ie10';
 		} else if ( preg_match( "/MSIE 11.0/", $browser ) ) {
-			$classes[] = 'ie11';
+			$class[] = 'ie11';
 		}
 
 	} else if ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) {
-		$classes[] = 'firefox';
+		$class[] = 'firefox';
 	} else {
-		$classes[] = 'unknown-browser';
+		$class[] = 'unknown-browser';
 	}
 
 	// Add "mobile" class if this actually a mobile device,
 	// and not the curious user screwing around with their
 	// browser window.
 	if ( wp_is_mobile() ) {
-		$classes[] = 'mobile';
+		$class[] = 'mobile';
 	} else {
-		$classes[] = 'desktop';
+		$class[] = 'desktop';
 	}
 
 	// Scroll effects
-	if ( themeblvd_supports( 'display', 'scroll_effects' ) ) {
-		$classes[] = 'tb-scroll-effects';
+	if ( themeblvd_supports('display', 'scroll_effects') ) {
+		$class[] = 'tb-scroll-effects';
 	}
 
 	// Suck up custom layout into header
 	if ( themeblvd_config('suck_up') ) {
-		$classes[] = 'tb-suck-up';
+		$class[] = 'tb-suck-up';
 	}
 
 	// Epic thumbnail
 	if ( ( is_single() || is_page() ) && themeblvd_get_att('epic_thumb') ) {
 
-		$classes[] = 'has-epic-thumb';
+		$class[] = 'has-epic-thumb';
 
 		if ( themeblvd_get_att('thumbs') == 'fs' ) {
-			$classes[] = 'has-fs-epic-thumb';
+			$class[] = 'has-fs-epic-thumb';
 		}
 	}
 
+	// Breadcrumbs
+	if ( themeblvd_show_breadcrumbs() ) {
+		$class[] = 'has-breadcrumbs';
+	}
+
 	// Dark/Light content
-	if ( themeblvd_supports( 'display', 'dark' ) ) {
-		$classes[] = 'content_dark';
+	if ( themeblvd_supports('display', 'dark') ) {
+		$class[] = 'content_dark';
 	} else {
-		$classes[] = 'content_light';
+		$class[] = 'content_light';
 	}
 
 	// Tag Cloud styling
-	if ( themeblvd_supports( 'assets', 'tag_cloud' ) ) {
-		$classes[] = 'tb-tag-cloud';
+	if ( themeblvd_supports('assets', 'tag_cloud') ) {
+		$class[] = 'tb-tag-cloud';
 	}
 
 	// Blank page template
 	if ( is_page_template('template_blank.php') ) {
-		$classes[] = 'tb-blank-page';
+		$class[] = 'tb-blank-page';
 	}
 
 	// Print styles
-	if ( themeblvd_supports( 'display', 'print' ) ) {
-		$classes[] = 'tb-print-styles';
+	if ( themeblvd_supports('display', 'print') ) {
+		$class[] = 'tb-print-styles';
 	}
 
-	return apply_filters( 'themeblvd_browser_classes', $classes, $browser );
+	return apply_filters( 'themeblvd_browser_classes', $class, $browser );
 }
 
 /**

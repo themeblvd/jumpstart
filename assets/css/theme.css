@@ -306,7 +306,6 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	width: 22px;
 }
 .mobile-nav .tb-nav-trigger {
-	font-size: 22px;
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
@@ -523,7 +522,10 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	background: #f9f9f9;
 }
 #main {
-	padding: 20px 0 60px 0;
+	padding: 50px 0 60px 0;
+}
+.has-breadcrumbs #main {
+	padding-top: 20px;
 }
 @media (max-width: 991px) {
 	#content,
