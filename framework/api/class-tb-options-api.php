@@ -146,6 +146,8 @@ class Theme_Blvd_Options_API {
 	 *		- social_media
 	 *		- social_media_style
 	 *		- searchform
+	 *  - Mobile Header
+	 *      - mobile_logo
 	 *	- Transparent Header
 	 *		- trans_logo
 	 *		- trans_social_media_style
@@ -371,7 +373,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __('Mobile Logo', 'jumpstart'),
 						'desc' 		=> __('Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you\'ll want to use an image shorter than that.', 'jumpstart').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart').'</em>',
 						'id' 		=> 'mobile_logo',
-						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-mobile.png', 'image_width' => '85', 'image_height' => '25', 'image_2x' => get_template_directory_uri().'/assets/images/logo-mobile_2x.png' ),
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-smaller-light.png', 'image_width' => '85', 'image_height' => '25', 'image_2x' => get_template_directory_uri().'/assets/images/logo-smaller-light_2x.png' ),
 						'type' 		=> 'logo'
 					)
 				) // End mobile header options
@@ -386,7 +388,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __('Logo', 'jumpstart'),
 						'desc' 		=> __('Configure the primary branding logo for the header of your site.', 'jumpstart').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart').'</em>',
 						'id' 		=> 'trans_logo',
-						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-trans.png', 'image_width' => '250', 'image_height' => '75', 'image_2x' => get_template_directory_uri().'/assets/images/logo-trans_2x.png' ),
+						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-light.png', 'image_width' => '250', 'image_height' => '75', 'image_2x' => get_template_directory_uri().'/assets/images/logo-light_2x.png' ),
 						'type' 		=> 'logo'
 					),
 					'trans_social_media_style' => array(
