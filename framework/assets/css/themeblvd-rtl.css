@@ -1404,19 +1404,20 @@ html {
 	display: block;
 	position: relative;
 	width: 1em;
-	height: 0.6363em;
+	height: 14px;
 }
 .tb-nav-trigger .hamburger span {
 	background-color: #ffffff;
 	border-radius: 1px;
 	display: block;
+	opacity: 1;
 	position: absolute;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	-webkit-transition: -webkit-transform .2s cubic-bezier(0.04,.78,.35,.92);
-	transition: transform .2s cubic-bezier(0.04,.78,.35,.92);
+	-webkit-transition: -webkit-transform .2s cubic-bezier(0.04,.78,.35,.92), opacity .2s ease-in-out, top .2s ease-in-out;
+	transition: transform .2s cubic-bezier(0.04,.78,.35,.92), opacity .2s ease-in-out, top .2s ease-in-out;
 	width: 100%;
-	height: 0.09090em;
+	height: 2px;
 }
 .tb-nav-trigger .hamburger .top {
 	top: 0;
@@ -1429,10 +1430,10 @@ html {
 }
 .tb-nav-trigger .hamburger .middle {
 	top: 50%;
-	margin-top: -0.04545em;
+	margin-top: -1px;
 }
 .tb-nav-trigger.collapse .hamburger .middle {
-	display: none;
+	opacity: 0;
 }
 .tb-nav-trigger .hamburger .bottom {
 	bottom: 0;
