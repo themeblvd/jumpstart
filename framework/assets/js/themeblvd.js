@@ -286,8 +286,7 @@ jQuery(document).ready(function($) {
 	if ( themeblvd.sticky !== 'false' ) {
 
 		// Build sticky menu
-		var $sticky_spy = $(themeblvd.sticky),
-			$sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').appendTo( $sticky_spy );
+		var $sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').insertAfter( $('#wrapper') );
 
 		// Add the logo
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
@@ -342,18 +341,21 @@ jQuery(document).ready(function($) {
 		}
 
 		// Sticky menu, make selector dynamic
-		$sticky_spy.viewportChecker({
+		$header.viewportChecker({
 			classToAdd: 'visible',
-			repeat: true,
 			offset: parseInt(themeblvd.sticky_offset),
+			repeat: true,
 			callbackFunction: function($elem, action){
+
 				if ( $elem.hasClass('visible') ) {
 
+					$body.removeClass('sticky-on');
+
 					// Close open contact popovers
-					$elem.find('#sticky-menu .tb-contact-trigger').popover('hide');
+					$sticky.find('.tb-contact-trigger').popover('hide');
 
 					// Close open drodpdown menus
-					$elem.find('#sticky-menu .menu-item').each(function(){
+					$sticky.find('.menu-item').each(function(){
 
 						var $item = $(this).closest('li');
 
@@ -364,6 +366,10 @@ jQuery(document).ready(function($) {
 						}
 
 					});
+
+				} else {
+
+					$body.addClass('sticky-on');
 
 				}
 			}
@@ -463,27 +469,39 @@ jQuery(document).ready(function($) {
 	// "Epic" Thumbnails
 	// ---------------------------------------------------------
 
-	if ( $body.hasClass('has-fs-epic-thumb') ) {
+	/*
+	var $epic = $('.epic-thumb'),
+		offset = $epic.find('.epic-thumb-content').offset().top,
+		scroll_top = $window.scrollTop(),
+		opacity = ( offset - scroll_top ) / offset,
+		scale = ( scroll_top / 5000 ) + 1;
 
-		var $thumb = $('.epic-thumb.fs figure');
+	$epic.find('.epic-thumb-content').css({
+		'opacity': opacity,
+		'-webkit-transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')',
+		'transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')'
+	});
 
-		$window.scroll(function() {
+	$window.scroll(function() {
 
-			// Disable for small screens
-			if ( $window.width() < 992 || $window.height() < 500 ) {
-				return;
-			}
+		// Disable for small screens
+		if ( $window.width() < 992 || $window.height() < 500 ) {
+			return;
+		}
 
-			var y = - ( $window.scrollTop() / 2 );
+		var offset = $epic.find('.epic-thumb-content').offset().top,
+			scroll_top = $window.scrollTop(),
+			opacity = ( offset - scroll_top ) / offset,
+			scale = ( scroll_top / 5000 ) + 1;
 
-			$thumb.css({
-				'-webkit-transform': 'translate3d(0, ' + y + 'px, 0)',
-				'transform': 'translate3d(0, ' + y + 'px, 0)'
-			});
-
+		$epic.find('.epic-thumb-content').css({
+			'opacity': opacity,
+			'-webkit-transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')',
+			'transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')'
 		});
 
-	}
+	});
+	*/
 
 	$('.epic-thumb.gallery').on({
 		mouseenter: function () {
@@ -983,8 +1001,7 @@ jQuery(document).ready(function($) {
 
 			$img.addClass('on'); // fade in the image, after it's been placed
 
-		}); // end $parallax.each()
-
+		}); // end $parallax.each(
 	}); // end $window.load()
 
 	$window.on('scroll resize', function() {

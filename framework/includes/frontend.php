@@ -271,6 +271,10 @@ function themeblvd_body_class( $class ) {
 		$class[] = 'has-breadcrumbs';
 	}
 
+	if ( themeblvd_config('sticky') ) {
+		$class[] = 'has-sticky';
+	}
+
 	// Dark/Light content
 	if ( themeblvd_supports('display', 'dark') ) {
 		$class[] = 'content_dark';
@@ -309,11 +313,6 @@ function themeblvd_header_class() {
 		$class[] = 'transparent';
 	} else {
 		$class[] = 'standard';
-	}
-
-	if ( themeblvd_config('sticky') ) {
-		$class[] = 'has-sticky';
-		$class[] = 'visible';
 	}
 
 	if ( $class = apply_filters('themeblvd_header_class', $class ) ) {
