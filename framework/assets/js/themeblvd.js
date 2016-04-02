@@ -169,7 +169,7 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Responsive side menu
-	if ( themeblvd.mobile_side_menu == 'true' && $primary_menu.hasClass('tb-to-mobile-menu') ) {
+	if ( themeblvd.mobile_panel == 'true' && $primary_menu.hasClass('tb-to-mobile-menu') ) {
 
 		// Add initial class that denotes the menu is hidden on
 		// page load. The menu will be hidden on its own, but
@@ -177,7 +177,7 @@ jQuery(document).ready(function($) {
 		$body.addClass('mobile-menu-'+themeblvd.mobile_menu_location+'-off');
 
 		// Create empty wrapper for the side menu
-		$('#wrapper').after('<div class="tb-mobile-menu-wrapper '+themeblvd.mobile_menu_location+'"><div class="wrap"></div></div>');
+		$('#wrapper').after('<div class="tb-mobile-menu-wrapper '+themeblvd.mobile_panel_class+' '+themeblvd.mobile_menu_location+'"><div class="wrap"></div></div>');
 
 		// Generate content for side menu
 		var $side_holder = $('.tb-mobile-menu-wrapper > .wrap'),
@@ -186,19 +186,33 @@ jQuery(document).ready(function($) {
 			max = parseInt(themeblvd.mobile_menu_viewport_max);
 
 		// Add search box, if exists in header
-		$('.tb-floating-search .tb-search').first().clone().addClass('mini').appendTo( $side_holder );
+		$('.tb-floating-search .tb-search').first().clone().addClass('mini panel-item').appendTo( $side_holder );
 
-		// Add menu, header text, and social icons, if they exist
-		$primary_menu.clone().appendTo( $side_holder );
-		$body.find('.header-text.to-mobile').first().clone().appendTo( $side_holder );
-		$body.find('.tb-social-icons.to-mobile').first().clone().appendTo( $side_holder );
+		// Add primary menu
+		$primary_menu.first().clone().removeClass('sf-menu tb-primary-menu tb-to-mobile-menu').addClass('tb-mobile-menu tb-side-menu panel-item').appendTo( $side_holder ); // "tb-side-menu" class allows for level 2+ tree styling
+
+		// Add side panel menu
+		if ( themeblvd.side_panel == 'true' ) {
+
+			var $desktop_side_panel = $('.tb-side-panel > .wrap');
+
+			$desktop_side_panel.find('.menu').children('li').clone().appendTo( $side_holder.find('.tb-mobile-menu') );
+
+			// Remove submenu toggles
+			$side_holder.find('.submenu-toggle').remove();
+
+			// Add secondary menu from side panel
+			$desktop_side_panel.find('.secondary-menu').clone().addClass('panel-item').appendTo( $side_holder );
+
+		}
+
+		// Add header text and social icons, if they exist
+		$body.find('.header-text.to-mobile').first().clone().addClass('panel-item').appendTo( $side_holder );
+		$body.find('.tb-social-icons.to-mobile').first().clone().removeClass('grey dark light flat').addClass('panel-item').appendTo( $side_holder );
 
 		// If original <ul> had search or contact, remove because
 		// it's now elsewhere.
 		$side_holder.find('li.menu-search, li.menu-contact, li.menu-cart').remove();
-
-		// Adjust menu classes
-		$side_holder.find('.tb-primary-menu').removeClass('sf-menu tb-primary-menu').addClass('tb-mobile-menu tb-side-menu'); // "tb-side-menu" class allows for level 2+ tree styling
 
 		// Add WPML switcher, if exists in header
 		if ( ! $header.find('.menu-item-language').length ) { // Make sure main nav doesn't already hace switcher
@@ -211,31 +225,13 @@ jQuery(document).ready(function($) {
 
 				// Is there a dropdown of languages for this page?
 				if ( $sub.length ) {
-
 					$switcher.append( $top );
 					$top.find('.fa').addClass('sf-sub-indicator');
 					$switcher.append( $sub.clone().addClass('sub-menu non-mega-sub-menu') );
 					$switcher.appendTo( $side_holder.find('.tb-mobile-menu') );
-
 				}
 
 			});
-		}
-
-		// Adjust social media icon color
-		if ( themeblvd.mobile_side_menu_icon_color ) {
-			$side_holder.find('.tb-social-icons')
-				.removeClass('grey dark light flat color')
-				.addClass(themeblvd.mobile_side_menu_icon_color)
-				.find('.social-media > li > a')
-				.each(function(){
-					if ( themeblvd.mobile_side_menu_icon_color == 'color' ) {
-						$(this).removeClass('tb-icon');
-					} else {
-						$(this).addClass('tb-icon');
-					}
-				}
-			);
 		}
 
 		// Show hide mobile menu
@@ -280,13 +276,55 @@ jQuery(document).ready(function($) {
 			$el.removeClass('fa-'+$el.data('open'));
 			$el.addClass('open fa-'+$el.data('close'));
 		}
+
+		return false;
 	});
+
+	// Side Panel
+	if ( themeblvd.side_panel == 'true' ) {
+
+		$('.tb-side-trigger').on('click', function(){
+
+			var $el = $(this);
+
+			if ( $el.hasClass('collapse') ) {
+				$el.removeClass('collapse');
+				$body.removeClass('side-panel-on');
+			} else {
+				$el.addClass('collapse');
+				$body.addClass('side-panel-on');
+			}
+
+			return false;
+		});
+
+		$('.tb-side-panel .submenu-toggle').on('click', function() {
+
+			var $el = $(this);
+
+			if ( $el.hasClass('collapse') ) {
+				$el.removeClass('collapse').closest('li').find('.sub-menu').slideUp(200);
+			} else {
+				$el.addClass('collapse').closest('li').find('.sub-menu').slideDown(200);
+			}
+
+			return false;
+		});
+
+	}
 
 	// Sticky Menu
 	if ( themeblvd.sticky !== 'false' ) {
 
 		// Build sticky menu
 		var $sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').insertAfter( $('#wrapper') );
+
+		// Add dark/light class, if exists
+		if ( $header.hasClass('light') ) {
+			$sticky.addClass('light');
+		} else if ( $header.hasClass('dark') ) {
+			$sticky.addClass('dark');
+		}
 
 		// Add the logo
 		$header.find('.header-logo:first-child').clone().appendTo( $sticky.find('.sticky-wrap') );
@@ -340,6 +378,9 @@ jQuery(document).ready(function($) {
 
 		}
 
+		// Remove any list items from menu with class "no-sticky"
+		$sticky.find('.no-sticky').remove();
+
 		// Sticky menu, make selector dynamic
 		$header.viewportChecker({
 			classToAdd: 'visible',
@@ -392,8 +433,17 @@ jQuery(document).ready(function($) {
 				var $ul = $(this),
 					$li = $ul.closest('li'),
 					location = $li.offset(),
-					location = $body.hasClass('rtl') ? location['right'] : location['left'],
 					space = 200;
+
+				if ( ! location ) {
+					return;
+				}
+
+				if ( $body.hasClass('rtl') ) {
+					location = location['right'];
+				} else {
+					location = location['left'];
+				}
 
 				if ( ! $ul.hasClass('non-mega-sub-menu') || ! $li.hasClass('level-1') ) {
 					return;

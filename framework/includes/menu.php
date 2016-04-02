@@ -204,7 +204,11 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
  */
 function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 
-	$primary = apply_filters('themeblvd_primary_menu_location', 'primary');
+	$primary = themeblvd_get_wp_nav_menu_args('primary');
+	$primary = $primary['theme_location'];
+
+	$side = themeblvd_get_wp_nav_menu_args('side');
+	$side = $side['theme_location'];
 
 	// Add "menu-btn" to all menu items in main navigation.
 	// Note: If menu item's link was disabled in the walker, the
@@ -223,20 +227,11 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 		}
 	}
 
-	// Indicators for top-level toggle menus
-	// @TODO maybe later incorporate this into a widget,
-	// now that mobile menu no longer uses the toggle icon
-	/*
-	if ( in_array( 'menu-item-has-children', $item->classes ) && $depth < 1 ) {
-		if ( strpos($args->menu_class, 'tb-side-menu') !== false || ( $args->theme_location == $primary && themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) ) {
-			$icon_open = apply_filters( 'themeblvd_side_menu_icon_open', 'plus' );
-			$icon_close = apply_filters( 'themeblvd_side_menu_icon_close', 'minus' );
-			$icon = apply_filters( 'themeblvd_side_menu_icon', sprintf( '<i class="tb-side-menu-toggle fa fa-%1$s" data-open="%1$s" data-close="%2$s"></i>', $icon_open, $icon_close ) );
-			$item_output = str_replace( '</a>', '</a>'.$icon, $item_output );
-		}
-
+	// Dropdown toggles for side menu
+	if ( $args->theme_location == $side && in_array( 'menu-item-has-children', $item->classes ) && $depth < 1 ) {
+		$toggle = apply_filters('themeblvd_submenu_toggle', '<a href="#" class="submenu-toggle">+</a>');
+		$item_output = str_replace( '</a>', '</a>'.$toggle, $item_output );
 	}
-	*/
 
 	// Allow bootstrap "nav-header" class in menu items.
 	// Note: For primary navigation will only work on levels 2-3
@@ -398,7 +393,10 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 	$args = array();
 
 	switch ( $location ) {
+
+		// Primary Navigation
 		case 'primary' :
+
 			$args = array(
 				'walker'			=> new ThemeBlvd_Main_Menu_Walker(),
 				'menu_class'		=> 'tb-primary-menu tb-to-mobile-menu sf-menu sf-menu-with-fontawesome clearfix',
@@ -408,13 +406,40 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 			);
 			break;
 
+		// Footer Navigation
 		case 'footer' :
+
 			$args = array(
 				'menu_class'		=> 'list-inline',
 				'container' 		=> '',
 				'fallback_cb' 		=> false,
 				'theme_location'	=> apply_filters('themeblvd_footer_menu_location', 'footer'),
 				'depth' 			=> 1
+			);
+			break;
+
+		// Primary Side Navigation
+		case 'side' :
+
+			$args = array(
+				'walker'			=> new ThemeBlvd_Main_Menu_Walker(),
+				'menu_class'		=> 'menu',
+				'container' 		=> '',
+				'fallback_cb' 		=> false,
+				'theme_location'	=> apply_filters('themeblvd_side_menu_location', 'side'),
+				'depth'				=> 2
+			);
+			break;
+
+		// Secondary Side Navigation
+		case 'side_sub' :
+
+			$args = array(
+				'menu_class'		=> 'secondary-menu',
+				'container' 		=> '',
+				'fallback_cb' 		=> false,
+				'theme_location'	=> apply_filters('themeblvd_side_sub_menu_location', 'side_sub'),
+				'depth'				=> 1
 			);
 
 	}

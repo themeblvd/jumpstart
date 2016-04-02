@@ -6,7 +6,7 @@
 $to = themeblvd_show_breadcrumbs() ? 'breadcrumbs' : 'main'; // where full screen scroll-to-section goes
 $to = is_page_template('template_builder.php') ? 'custom-main' : $to;
 ?>
-<div class="epic-thumb <?php echo get_post_format(); ?> <?php echo themeblvd_get_att('thumbs'); ?>">
+<div class="epic-thumb<?php if ( ! has_post_format('gallery') ) echo ' tb-parallax'; echo ' '.themeblvd_get_att('thumbs'); if ( get_post_format() ) echo ' '.get_post_format(); ?>">
 
     <?php if ( has_post_format('quote') ) : ?>
 
@@ -46,9 +46,11 @@ $to = is_page_template('template_builder.php') ? 'custom-main' : $to;
 
     <?php else : ?>
 
-        <figure class="epic-thumb-img">
+        <?php if ( themeblvd_get_att('thumbs') == 'fs' ) : ?>
+            <?php themeblvd_bg_parallax( array( 'src' => wp_get_attachment_image_url( get_post_thumbnail_id(), 'tb_x_large' ) ) ); ?>
+        <?php else : ?>
             <?php the_post_thumbnail('full'); ?>
-        </figure>
+        <?php endif; ?>
 
     <?php endif; ?>
 

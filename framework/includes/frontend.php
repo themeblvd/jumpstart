@@ -271,6 +271,12 @@ function themeblvd_body_class( $class ) {
 		$class[] = 'has-breadcrumbs';
 	}
 
+	// Side Panel
+	if ( themeblvd_do_side_panel() ) {
+		$class[] = 'has-side-panel';
+	}
+
+	// Sticky Header
 	if ( themeblvd_config('sticky') ) {
 		$class[] = 'has-sticky';
 	}
@@ -320,6 +326,23 @@ function themeblvd_header_class() {
 	}
 
 	echo apply_filters('themeblvd_header_class_output', $output, $class);
+
+}
+
+/**
+ * Display HTML class header top bar.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_header_top_class() {
+
+	$class = array('header-top');
+
+	if ( $class = apply_filters('themeblvd_header_top_class', $class ) ) {
+		$output = sprintf( 'class="%s"', esc_attr( implode(' ', $class) ) );
+	}
+
+	echo apply_filters('themeblvd_header_top_class_output', $output, $class);
 
 }
 

@@ -35,14 +35,18 @@ function themeblvd_header_top_default() {
 
 	$icons = themeblvd_get_option('social_media');
 	?>
-	<div class="header-top">
+	<div <?php themeblvd_header_top_class(); ?>>
 		<div class="wrap clearfix">
 
 			<?php themeblvd_header_text(); ?>
 
-			<?php if ( themeblvd_get_option('searchform') == 'show' || themeblvd_do_cart() || $icons || themeblvd_do_lang_selector() ) : ?>
+			<?php if ( themeblvd_do_side_panel() || themeblvd_get_option('searchform') == 'show' || themeblvd_do_cart() || $icons || themeblvd_do_lang_selector() ) : ?>
 
-				<ul class="header-top-nav list-unstyled">
+			<ul class="header-top-nav list-unstyled">
+
+					<?php if ( themeblvd_do_side_panel() ) : ?>
+						<li class="top-side-panel"><?php themeblvd_side_trigger(); ?></li>
+					<?php endif; ?>
 
 					<?php if ( themeblvd_get_option('searchform') == 'show' ) : ?>
 						<li class="top-search"><?php themeblvd_floating_search_trigger(); ?></li>

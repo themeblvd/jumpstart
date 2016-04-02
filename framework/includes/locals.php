@@ -221,8 +221,8 @@ function themeblvd_get_js_locals() {
 	// Responsive nav menu fixed to the side on mobile
 	if ( themeblvd_supports('display', 'responsive') && themeblvd_supports('display', 'mobile_side_menu') ) {
 
-		$locals['mobile_side_menu'] = 'true';
-		$locals['mobile_side_menu_icon_color'] = apply_filters('themeblvd_mobile_side_menu_social_media_color', 'light');
+		$locals['mobile_panel'] = 'true';
+		$locals['mobile_panel_class'] = implode( ' ', apply_filters( 'themeblvd_mobile_panel_class', array() ) );
 		$locals['mobile_menu_viewport_max'] = '992';
 
 		$locals['mobile_menu_location'] = 'right';
@@ -230,6 +230,11 @@ function themeblvd_get_js_locals() {
 		if ( is_rtl() ) {
 			$locals['mobile_menu_location'] = 'left';
 		}
+	}
+
+	// Side Panel
+	if ( themeblvd_do_side_panel() ) {
+		$locals['side_panel'] = 'true';
 	}
 
 	// Sticky header

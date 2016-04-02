@@ -249,6 +249,7 @@ function themeblvd_setup() {
 			'dark'				=> false,			// Whether to display as dark theme
 			'sticky'			=> true,			// Sticky header as user scrolls past header
 			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
+			'side_panel'		=> true,			// Optional side panel navigation
 			'scroll_effects'	=> true, 			// Effects as user scrolls down page
 			'hide_top'			=> true,			// Whether theme supports hiding the #top
 			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
@@ -440,6 +441,12 @@ function themeblvd_register_navs() {
 		'primary' => __('Primary Navigation', 'jumpstart'),
 		'footer' => __('Footer Navigation', 'jumpstart')
 	);
+
+	if ( themeblvd_supports('display', 'side_panel') ) {
+		$menus['side'] = __('Primary Side Navigation', 'jumpstart');
+		$menus['side_sub'] = __('Secondary Side Navigation', 'jumpstart');
+	}
+
 	$menus = apply_filters( 'themeblvd_nav_menus', $menus );
 
 	// Register nav menus with WP

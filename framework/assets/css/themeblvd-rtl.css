@@ -51,11 +51,12 @@
  *   10.1 - Responsive visiblity classes
  *   10.2 - iOS Zoom Bug fix
  *   10.3 - Menu Toggle
- *   10.4 - Mobile Menu Container
- *   10.5 - Mobile Menu (override .tb-side-menu)
- *   10.6 - Videos (oEmbed)
- *   10.7 - Self-hosted video embed
- *   10.8 - WP Post Embed
+ *   10.4 - Side Panel Container
+ *   10.5 - Mobile Menu Container
+ *   10.6 - Mobile Menu (override .tb-side-menu)
+ *   10.7 - Videos (oEmbed)
+ *   10.8 - Self-hosted video embed
+ *   10.9 - WP Post Embed
  * 11.0 - Video/Audio
  *   11.1 - WP Built-in audio/video player
  * 12.0 - Plugins
@@ -1394,17 +1395,21 @@ html {
 }
 
 /* Menu Toggle */
-.tb-nav-trigger {
+.tb-nav-trigger,
+.tb-side-trigger {
+	display: block;
 	position: relative;
 }
-.tb-nav-trigger .hamburger {
+.tb-nav-trigger .hamburger,
+.tb-side-trigger .hamburger {
 	display: block;
 	position: relative;
 	width: 1em;
 	height: 14px;
 }
-.tb-nav-trigger .hamburger span {
-	background-color: #ffffff;
+.tb-nav-trigger .hamburger span,
+.tb-side-trigger .hamburger span {
+	background-color: #666666;
 	border-radius: 1px;
 	display: block;
 	opacity: 1;
@@ -1416,30 +1421,65 @@ html {
 	width: 100%;
 	height: 2px;
 }
-.tb-nav-trigger .hamburger .top {
+.tb-nav-trigger .hamburger .top,
+.tb-side-trigger .hamburger .top {
 	top: 0;
 }
-.tb-nav-trigger.collapse .hamburger .top {
+.tb-nav-trigger.collapse .hamburger .top,
+.tb-side-trigger.collapse .hamburger .top {
 	top: 50%;
 	-ms-transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-.tb-nav-trigger .hamburger .middle {
+.tb-nav-trigger .hamburger .middle,
+.tb-side-trigger .hamburger .middle {
 	top: 50%;
 	margin-top: -1px;
 }
-.tb-nav-trigger.collapse .hamburger .middle {
+.tb-nav-trigger.collapse .hamburger .middle,
+.tb-side-trigger.collapse .hamburger .middle {
 	opacity: 0;
 }
-.tb-nav-trigger .hamburger .bottom {
+.tb-nav-trigger .hamburger .bottom,
+.tb-side-trigger .hamburger .bottom {
 	bottom: 0;
 }
-.tb-nav-trigger.collapse .hamburger .bottom {
+.tb-nav-trigger.collapse .hamburger .bottom,
+.tb-side-trigger.collapse .hamburger .bottom {
 	top: 50%;
 	-ms-transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
+}
+
+/* Side Panel Container */
+.tb-side-panel {
+	display: none;
+}
+@media (min-width: 992px) {
+	.has-side-panel .tb-side-panel {
+		display: block;
+		padding: 0;
+		overflow: auto;
+		position: fixed;
+		top: 0;
+		left: -280px;
+		bottom: 0;
+		width: 280px;
+	}
+	.has-side-panel .tb-side-panel,
+	.has-side-panel #wrapper {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		-webkit-transition: transform .2s ease-out;
+		transition: transform .2s ease-out;
+	}
+	.has-side-panel.side-panel-on .tb-side-panel,
+	.has-side-panel.side-panel-on #wrapper {
+		-webkit-transform: translate3d(280px, 0, 0);
+		transform: translate3d(280px, 0, 0);
+	}
 }
 
 /* Mobile Menu Container */
@@ -1504,17 +1544,28 @@ html {
 		transform: translate3d(280px, 0, 0);
 	}
 }
-.tb-mobile-menu-wrapper .wrap > div:last-child {
-	padding-bottom: 10px;
+.tb-mobile-menu-wrapper .panel-item {
+	margin: 20px 0;
+}
+.tb-mobile-menu-wrapper .tb-mobile-menu {
+	margin-top: 0;
 }
 .tb-mobile-menu-wrapper .tb-search {
 	border-bottom: 1px solid #f2f2f2;
 	border-color: rgba(220,220,220,.4);
+	margin: 0;
 	padding: 10px;
+}
+.tb-mobile-menu-wrapper .secondary-menu {
+	list-style: none;
+	padding: 0 20px;
+}
+.tb-mobile-menu-wrapper .secondary-menu li {
+	padding: 3px 0;
 }
 .tb-mobile-menu-wrapper .header-text {
 	float: none;
-	padding: 10px 15px 0 15px;
+	padding: 0 20px;
 }
 .tb-mobile-menu-wrapper .header-text .list-inline {
 	margin: 0;
@@ -1522,10 +1573,20 @@ html {
 .tb-mobile-menu-wrapper .header-text .list-inline > li {
 	display: block;
 	margin: 0;
-	padding: 7px 0;
+	padding: 3px 0;
 }
 .tb-mobile-menu-wrapper .tb-social-icons {
-	padding: 15px;
+	padding: 0 15px;
+}
+.tb-mobile-menu-wrapper .tb-social-icons > li > a {
+	font-size: 20px;
+	padding: .25em;
+}
+.tb-mobile-menu-wrapper .tb-social-icons > li:first-child > a {
+	padding-right: 0;
+}
+.tb-mobile-menu-wrapper .tb-social-icons > li:last-child > a {
+	padding-left: 0;
 }
 .tb-mobile-menu-wrapper .tb-social-icons .tooltip {
 	display: none !important;

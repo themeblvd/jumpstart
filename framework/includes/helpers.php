@@ -1673,7 +1673,7 @@ function themeblvd_do_fa( $str ) {
  * @param array $inc Elements to check for
  * @return bool Whether we've got any info to show in header
  */
-function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 'social_media', 'wpml', 'cart') ) {
+function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 'social_media', 'wpml', 'cart', 'side_panel') ) {
 
 	$return = false;
 
@@ -1694,6 +1694,10 @@ function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 's
 	}
 
 	if ( in_array('cart', $inc) && themeblvd_do_cart() ) {
+		$return = true;
+	}
+
+	if ( in_array('side_panel', $inc) && themeblvd_do_side_panel() ) {
 		$return = true;
 	}
 
@@ -1742,6 +1746,28 @@ function themeblvd_do_floating_search() {
 	}
 
 	return apply_filters('themeblvd_do_floating_search', $do);
+}
+
+/**
+ * Whether to display side panel.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_do_side_panel() {
+
+	$do = false;
+
+	if ( themeblvd_supports('display', 'side_panel') ) {
+
+		$primary = themeblvd_get_wp_nav_menu_args('side');
+		$secondary = themeblvd_get_wp_nav_menu_args('side_sub');
+
+		if ( has_nav_menu( $primary['theme_location'] ) || has_nav_menu( $secondary['theme_location'] ) ) {
+			$do = true;
+		}
+	}
+
+	return apply_filters('themeblvd_do_side_panel', $do);
 }
 
 /**

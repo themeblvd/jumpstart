@@ -913,7 +913,7 @@ function jumpstart_su_options() {
 				'id'		=> 'menu_mobile_bg_color',
 				'name'		=> __('Mobile Menu Background Color', 'jumpstart'),
 				'desc'		=> __('Select a background color for the mobile menu side panel.', 'jumpstart'),
-				'std'		=> '#333333',
+				'std'		=> '#222222',
 				'type'		=> 'color'
 			),
 			'menu_mobile_bg_color_brightness' => array(
@@ -926,19 +926,30 @@ function jumpstart_su_options() {
 					'light' => __('I chose a light color in the previous option.', 'jumpstart'),
 					'dark' 	=> __('I chose a dark color in the previous option.', 'jumpstart')
 				)
+			)
+		),
+		'side_panel' => array(
+			'side_info' => array(
+				'id'		=> 'side_info',
+				'desc'		=> sprintf(__('These options apply to the side panel that shows on desktops when you assign a menu to the "Primary Side Navigation" or "Secondary Side Navigation" locations at %s.', 'jumpstart'), '<a href="nav-menus.php" target="_blank">'.__('Appearance > Menus', 'jumpstart').'</a>' ),
+				'type'		=> 'info'
 			),
-			'menu_mobile_social_media_style' => array(
-				'name' 		=> __('Social Media Style', 'jumpstart'),
-				'desc'		=> __('Select the color you\'d like applied to the social icons in the mobile menu.', 'jumpstart'),
-				'id'		=> 'menu_mobile_social_media_style',
-				'std'		=> 'light',
+			'side_bg_color' => array(
+				'id'		=> 'side_bg_color',
+				'name'		=> __('Side Panel Background Color', 'jumpstart'),
+				'desc'		=> __('Select a background color for the desktop side panel.', 'jumpstart'),
+				'std'		=> '#222222',
+				'type'		=> 'color'
+			),
+			'side_bg_color_brightness' => array(
+				'id' 		=> 'side_bg_color_brightness',
+				'name' 		=> __('Side Panel Background Color Brightness', 'jumpstart'),
+				'desc' 		=> __('In the previous option, did you go dark or light?', 'jumpstart'),
+				'std' 		=> 'dark',
 				'type' 		=> 'select',
 				'options'	=> array(
-					'flat'			=> __('Flat Color', 'jumpstart'),
-					'dark' 			=> __('Flat Dark', 'jumpstart'),
-					'grey' 			=> __('Flat Grey', 'jumpstart'),
-					'light' 		=> __('Flat Light', 'jumpstart'),
-					'color'			=> __('Color', 'jumpstart')
+					'light' => __('I chose a light color in the previous option.', 'jumpstart'),
+					'dark' 	=> __('I chose a dark color in the previous option.', 'jumpstart')
 				)
 			)
 		),
@@ -1512,6 +1523,7 @@ function jumpstart_su_options() {
 	themeblvd_add_option_section( 'styles', 'su_header_mobile',	__('Mobile Header', 'jumpstart'),	null, $options['header_mobile'] );
 	themeblvd_add_option_section( 'styles', 'su_menu',			__('Main Menu', 'jumpstart'),		null, $options['menu'] );
 	themeblvd_add_option_section( 'styles', 'su_menu_mobile',	__('Mobile Menu', 'jumpstart'),		null, $options['menu_mobile'] );
+	themeblvd_add_option_section( 'styles', 'su_side_panel',	__('Side Panel', 'jumpstart'),		null, $options['side_panel'] );
 	themeblvd_add_option_section( 'styles', 'su_footer',		__('Footer', 'jumpstart'),			null, $options['footer'] );
 	themeblvd_add_option_section( 'styles', 'su_typo',			__('Typography', 'jumpstart'), 		null, $options['typo'] );
 	themeblvd_add_option_section( 'styles', 'su_buttons',		__('Buttons', 'jumpstart'),			null, $options['buttons'] );
@@ -1536,17 +1548,6 @@ function jumpstart_su_global_config( $setup ) {
 	return $setup;
 }
 add_filter('themeblvd_global_config', 'jumpstart_su_global_config');
-
-/**
- * Change the color of social icons on
- * mobile side menu
- *
- * @since 2.0.0
- */
-function jumpstart_su_mobile_side_menu_social_media_color( $color ) {
-	return themeblvd_get_option('menu_mobile_social_media_style');
-}
-add_filter('themeblvd_mobile_side_menu_social_media_color', 'jumpstart_su_mobile_side_menu_social_media_color');
 
 /**
  * Body class
@@ -1574,6 +1575,16 @@ function jumpstart_su_body_class($class) {
 
 }
 add_filter('body_class', 'jumpstart_su_body_class');
+
+/**
+ * Add CSS class to mobile side panel for color brightness.
+ *
+ * @since 2.1.0
+ */
+function jumpstart_su_mobile_panel_class( $class ) {
+	return array_merge( $class, array( themeblvd_get_option('menu_mobile_bg_color_brightness') ) );
+}
+add_filter('themeblvd_mobile_panel_class', 'jumpstart_su_mobile_panel_class');
 
 /**
  * Include Google fonts, if needed
@@ -2194,15 +2205,6 @@ function jumpstart_su_css() {
 
 		}
 
-		if ( themeblvd_get_option('header_info') == 'header_addon' && themeblvd_get_option('header_text_color') == 'light' ) {
-			$print .= ".header-addon {\n";
-			$print .= "\tcolor: #ffffff;\n";
-			$print .= "}\n";
-			$print .= ".header-top-nav > li {\n";
-			$print .= "\tborder-color: rgba(0,0,0,.4);\n";
-			$print .= "}\n";
-		}
-
 		// Header top bar
 		if ( themeblvd_get_option('header_info') == 'header_top' ) {
 
@@ -2225,20 +2227,7 @@ function jumpstart_su_css() {
 					$print .= sprintf("\t%s: %s;\n", $prop, $value);
 				}
 
-				if ( themeblvd_get_option('top_text_color') == 'light' ) {
-					$print .= "\tcolor: #ffffff;\n";
-				} else {
-					$print .= "\tcolor: #666666;\n";
-					$print .= "\tcolor: rgba(26,26,26,.7);\n";
-				}
-
 				$print .= "}\n";
-
-				if ( themeblvd_get_option('top_text_color') == 'light' ) {
-					$print .= ".header-top-nav > li {\n";
-					$print .= "\tborder-color: rgba(0,0,0,0.4);\n";
-					$print .= "}\n";
-				}
 
 			}
 		}
@@ -2401,12 +2390,6 @@ function jumpstart_su_css() {
 
 		$print .= "}\n";
 
-		if ( $options['apply_border_top'] ) {
-			$print .= ".btn-navbar {\n";
-			$print .= sprintf("\tborder: %s solid %s;\n", $options['border_top_width'], $options['border_top_color'] );
-			$print .= "}\n";
-		}
-
 		if ( themeblvd_get_option('menu_search') ) {
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
 		}
@@ -2440,40 +2423,6 @@ function jumpstart_su_css() {
 			$print .= "\tcolor: #333333;\n";
 		}
 
-		$print .= "}\n";
-
-		// Primary menu mobile toggle
-		$print .= "@media(min-width: 768px) {\n";
-		$print .= "\t.btn-navbar {\n";
-
-		if ( $options['bg_type'] == 'gradient' ) {
-			$print .= sprintf("\t\tbackground-color: %s;\n", $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tbackground-image: linear-gradient(top, %s, %s);\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-			$print .= sprintf("\t\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $options['bg_gradient']['start'], $options['bg_gradient']['end'] );
-		} else {
-			$print .= sprintf("\t\tbackground-color: %s;\n", $options['bg_color']);
-		}
-
-		if ( $options['bg_color_brightness'] == 'light' ) {
-			$print .= "\t\tcolor: #333333 !important;\n";
-		}
-
-		$print .= "\t}\n";
-
-		$print .= "\t.btn-navbar:hover {\n";
-
-		if ( $options['bg_type'] == 'gradient' && $options['bg_gradient'] ) {
-			$print .= sprintf("\t\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_gradient']['end'] ) );
-		} else if ( $options['bg_color'] ) {
-			$print .= sprintf("\t\tbackground-color: %s;\n", themeblvd_adjust_color( $options['bg_color'] ) );
-		}
-
-		$print .= "\t}\n";
 		$print .= "}\n";
 
 		// Primary nav button dividers
@@ -2553,53 +2502,16 @@ function jumpstart_su_css() {
 
 	}
 
-	// Primary mobile menu
-	$print .= ".tb-mobile-menu-wrapper,\n";
-	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu,\n";
-	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu .sub-menu li.non-mega-sub-menu:last-child {\n";
+	// Mobile Panel
+	$print .= ".tb-mobile-menu-wrapper {\n";
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('menu_mobile_bg_color'));
 	$print .= "}\n";
 
-	if ( themeblvd_get_option('menu_mobile_bg_color_brightness') == 'light' ) {
-
-		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu a,\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu span,\n";
-		$print .= ".tb-mobile-menu-wrapper .header-text,\n";
-		$print .= ".tb-mobile-menu-wrapper .header-text a,\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input,";
-		$print .= ".tb-search.mini .search-submit {\n";
-		$print .= "\tcolor: #666666;\n";
-		$print .= "\tcolor: rgba(26,26,26,.7);\n";
+	// Side Panel
+	if ( themeblvd_do_side_panel() ) {
+		$print .= ".tb-side-panel {\n";
+		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('side_bg_color'));
 		$print .= "}\n";
-
-		$print .= ".tb-mobile-menu-wrapper .tb-search.mini > form,\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > a:hover,\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > a:active {\n";
-		$print .= "\tbackground-color: rgba(0,0,0,.05);\n";
-		$print .= "}\n";
-
-		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li,\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-search {\n";
-		$print .= "\tborder-color: rgba(0,0,0,.05);\n";
-		$print .= "}\n";
-
-		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input::-moz-placeholder {\n";
-		$print .= "\tcolor: rgba(0,0,0,.3);\n";
-		$print .= "}\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input:-ms-input-placeholder {\n";
-		$print .= "\tcolor: rgba(0,0,0,.3);\n";
-		$print .= "}\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-search .search-input::-webkit-input-placeholder {\n";
-		$print .= "\tcolor: rgba(0,0,0,.3);\n";
-		$print .= "}\n";
-
-		$print .= ".tb-mobile-menu-wrapper .tb-side-menu .sub-menu {\n";
-		$print .= sprintf("\tbackground-image: url(%s/assets/images/parts/side-nav-list-outer-cccccc.png);", TB_FRAMEWORK_URI);
-		$print .= "}\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-side-menu .sub-menu li {\n";
-		$print .= sprintf("\tbackground-image: url(%s/assets/images/parts/side-nav-list-ltr-cccccc.png);", TB_FRAMEWORK_URI);
-		$print .= "}\n";
-
 	}
 
 	// Footer
@@ -2679,9 +2591,42 @@ function jumpstart_su_header_class( $class ) {
 		$class[] = 'header-top-mini';
 	}
 
+	if ( themeblvd_config('suck_up') || themeblvd_get_option('header_text_color') == 'light' ) {
+		$class[] = 'dark';
+	} else {
+		$class[] = 'light';
+	}
+
 	return $class;
 }
-add_filter('themeblvd_header_class', 'jumpstart_su_header_class', 10, 2);
+add_filter('themeblvd_header_class', 'jumpstart_su_header_class');
+
+/**
+ * Add CSS classes to header top bar.
+ *
+ * @since 2.1.0
+ */
+function jumpstart_su_header_top_class( $class ) {
+
+	if ( themeblvd_config('suck_up') || themeblvd_get_option('top_text_color') == 'light' ) {
+		$class[] = 'dark';
+	} else {
+		$class[] = 'light';
+	}
+
+	return $class;
+}
+add_filter('themeblvd_header_top_class', 'jumpstart_su_header_top_class');
+
+/**
+ * Add CSS classes to side panel
+ *
+ * @since 2.1.0
+ */
+function jumpstart_su_side_panel_class( $class ) {
+	return array_merge( $class, array( themeblvd_get_option('side_bg_color_brightness') ) );
+}
+add_filter('themeblvd_side_panel_class', 'jumpstart_su_side_panel_class');
 
 /**
  * Add CSS classes to footer
@@ -2850,11 +2795,22 @@ function jumpstart_su_header_addon() {
 		$class .= ' header-addon-with-text';
 	}
 
+	if ( themeblvd_get_option('header_text_color') == 'light' ) {
+		$class .= ' dark';
+	} else {
+		$class .= ' light';
+	}
+
 	printf('<div class="%s">', $class);
 
-	if ( themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) ) {
+	if ( themeblvd_do_side_panel() || themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) ) {
 
 		echo '<ul class="header-top-nav list-unstyled clearfix">';
+
+		// Side panel
+		if ( themeblvd_do_side_panel() ) {
+			printf('<li class="top-side-panel">%s</li>', themeblvd_get_side_trigger());
+		}
 
 		// Floating search trigger
 		if ( themeblvd_get_option('searchform') == 'show' ) {
