@@ -395,7 +395,7 @@ class Theme_Blvd_Options_API {
 						'name' 		=> __('Social Media Style', 'jumpstart'),
 						'desc'		=> __('Select the color you\'d like applied to the social icons.', 'jumpstart'),
 						'id'		=> 'trans_social_media_style',
-						'std'		=> 'flat',
+						'std'		=> 'light',
 						'type' 		=> 'select',
 						'options'	=> array(
 							'flat'			=> __('Flat Color', 'jumpstart'),
