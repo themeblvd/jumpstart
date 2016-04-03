@@ -255,47 +255,6 @@ function themeblvd_floating_search_trigger( $args = array() ) {
 }
 
 /**
- * Get side panel.
- *
- * @since 2.6.0
- *
- * @param array $args Optional argments to override default behavior
- * @return string $output HTML to output for searchform
- */
-function themeblvd_get_side_panel( $args = array() ) {
-
-	// Setup arguments
-	// $defaults = apply_filters('themeblvd_side_panel_defaults', array());
-	// $args = wp_parse_args( $args, $defaults );
-
-	$class = apply_filters('themeblvd_side_panel_class', array('tb-side-panel') );
-
-	$output = sprintf('<div class="%s">', esc_attr( implode(' ', $class) ) );
-	$output .= '<div class="wrap">';
-
-	$output .= wp_nav_menu( array_merge( themeblvd_get_wp_nav_menu_args('side'), array('echo' => false) ) );
-	$output .= wp_nav_menu( array_merge( themeblvd_get_wp_nav_menu_args('side_sub'), array('echo' => false) ) );
-
-	$output .= '</div><!-- .wrap (end) -->';
-	$output .= '</div><!-- .tb-side-panel (end) -->';
-
-	return apply_filters( 'themeblvd_side_panel', $output, $args );
-}
-
-/**
- * Display side panel.
- *
- * @since 2.6.0
- *
- * @param array $args Optional argments to override default behavior
- */
-function themeblvd_side_panel( $args = array() ) {
-	if ( themeblvd_do_side_panel() ) {
-		echo themeblvd_get_side_panel( $args );
-	}
-}
-
-/**
  * Get side panel trigger link.
  *
  * @since 2.6.0

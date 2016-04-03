@@ -386,6 +386,23 @@ function themeblvd_footer_class() {
 
 }
 
+/**
+ * Display HTML class for side panel.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_side_panel_class() {
+
+	$class = array('tb-side-panel');
+
+	if ( $class = apply_filters('themeblvd_side_panel_class', $class ) ) {
+		$output = sprintf( 'class="%s"', esc_attr( implode(' ', $class) ) );
+	}
+
+	echo apply_filters('themeblvd_side_panel_class_output', $output, $class);
+
+}
+
 if ( !function_exists( 'themeblvd_include_scripts' ) ) :
 /**
  * Load framework's JS scripts

@@ -3,7 +3,7 @@
 /* <head>
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_viewport_default' ) ) :
+if ( ! function_exists('themeblvd_viewport_default') ) :
 /**
  * Add viewport meta to wp_head if responsive
  * design is enabled in framework.
@@ -21,7 +21,7 @@ endif;
 /* Header
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_header_top_default' ) ) :
+if ( ! function_exists('themeblvd_header_top_default') ) :
 /**
  * Default display for action: themeblvd_header_top
  *
@@ -74,7 +74,7 @@ function themeblvd_header_top_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_responsive_menu_toggle' ) ) :
+if ( ! function_exists('themeblvd_responsive_menu_toggle') ) :
 /**
  * Default display for action: themeblvd_header_top
  *
@@ -99,7 +99,7 @@ function themeblvd_responsive_menu_toggle() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_header_above_default' ) ) :
+if ( ! function_exists('themeblvd_header_above_default') ) :
 /**
  * Default display for action: themeblvd_header_above
  *
@@ -116,7 +116,7 @@ function themeblvd_header_above_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_header_content_default' ) ) :
+if ( ! function_exists('themeblvd_header_content_default') ) :
 /**
  * Default display for action: themeblvd_header_content
  *
@@ -155,7 +155,7 @@ function themeblvd_header_content_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_header_logo_default' ) ) :
+if ( ! function_exists('themeblvd_header_logo_default') ) :
 /**
  * Default display for action: themeblvd_header_logo
  *
@@ -186,7 +186,7 @@ function themeblvd_header_logo_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_header_logo_mobile' ) ) :
+if ( ! function_exists('themeblvd_header_logo_mobile') ) :
 /**
  * Default display for action: themeblvd_header_logo
  *
@@ -211,7 +211,7 @@ function themeblvd_header_logo_mobile() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_header_menu_default' ) ) :
+if ( ! function_exists('themeblvd_header_menu_default') ) :
 /**
  * Default display for action: themeblvd_header_main_menu
  *
@@ -233,7 +233,7 @@ function themeblvd_header_menu_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_epic_thumb' ) ) :
+if ( ! function_exists('themeblvd_epic_thumb') ) :
 /**
  * Output epic thumbnail, hooked to themeblvd_header_after
  *
@@ -268,7 +268,7 @@ endif;
 /* Featured Area (above)
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_featured_start_default' ) ) :
+if ( ! function_exists('themeblvd_featured_start_default') ) :
 /**
  * Default display for action: themeblvd_featured_start
  *
@@ -292,7 +292,7 @@ function themeblvd_featured_start_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_featured_end_default' ) ) :
+if ( ! function_exists('themeblvd_featured_end_default') ) :
 /**
  * Default display for action: themeblvd_featured_end
  *
@@ -313,7 +313,7 @@ endif;
 /* Featured Area (below)
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_featured_below_start_default' ) ) :
+if ( ! function_exists('themeblvd_featured_below_start_default') ) :
 /**
  * Default display for action: themeblvd_featured_below_start
  *
@@ -337,7 +337,7 @@ function themeblvd_featured_below_start_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_featured_below_end_default' ) ) :
+if ( ! function_exists('themeblvd_featured_below_end_default') ) :
 /**
  * Default display for action: themeblvd_featured_below
  *
@@ -358,7 +358,7 @@ endif;
 /* Main content area
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_main_start_default' ) ) :
+if ( ! function_exists('themeblvd_main_start_default') ) :
 /**
  * Default display for action: themeblvd_main_start
  *
@@ -374,7 +374,7 @@ function themeblvd_main_start_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_main_end_default' ) ) :
+if ( ! function_exists('themeblvd_main_end_default') ) :
 /**
  * Default display for action: themeblvd_main_end
  *
@@ -390,7 +390,7 @@ function themeblvd_main_end_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_main_top_default' ) ) :
+if ( ! function_exists('themeblvd_main_top_default') ) :
 /**
  * Default display for action: themeblvd_main_top
  *
@@ -407,7 +407,7 @@ function themeblvd_main_top_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_main_bottom_default' ) ) :
+if ( ! function_exists('themeblvd_main_bottom_default') ) :
 /**
  * Default display for action: themeblvd_main_top
  *
@@ -424,7 +424,7 @@ function themeblvd_main_bottom_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_breadcrumbs_default' ) ) :
+if ( ! function_exists('themeblvd_breadcrumbs_default') ) :
 /**
  * Default display for action: themeblvd_breadcrumbs
  *
@@ -441,7 +441,7 @@ endif;
 /* Sidebars
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_fixed_sidebars' ) ) :
+if ( ! function_exists('themeblvd_fixed_sidebars') ) :
 /**
  * Display fixed sidebar(s). Default display for action: themeblvd_sidebars
  *
@@ -494,7 +494,7 @@ function themeblvd_fixed_sidebars( $position ) {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) :
+if ( ! function_exists('themeblvd_fixed_sidebar_before_default') ) :
 /**
  * Default display for action: themeblvd_fixed_sidebar_before
  *
@@ -506,7 +506,7 @@ function themeblvd_fixed_sidebar_before_default( $side ) {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) :
+if ( ! function_exists('themeblvd_fixed_sidebar_after_default') ) :
 /**
  * Default display for action: themeblvd_fixed_sidebar_after
  *
@@ -522,7 +522,7 @@ endif;
 /* Footer
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_footer_content_default' ) ) :
+if ( ! function_exists('themeblvd_footer_content_default') ) :
 /**
  * Default display for action: themeblvd_footer_content
  *
@@ -557,7 +557,7 @@ function themeblvd_footer_content_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_footer_sub_content_default' ) ) :
+if ( ! function_exists('themeblvd_footer_sub_content_default') ) :
 /**
  * Default display for action: themeblvd_footer_sub_content
  *
@@ -585,25 +585,75 @@ function themeblvd_footer_sub_content_default() {
 }
 endif;
 
+if ( ! function_exists('themeblvd_footer_below_default') ) :
 /**
  * Default display for action: themeblvd_footer_below
  *
  * @since 2.0.0
  */
-if ( !function_exists( 'themeblvd_footer_below_default' ) ) {
-	function themeblvd_footer_below_default() {
-		?>
-		<div class="footer-below">
-			<div class="wrap clearfix">
-				<?php themeblvd_display_sidebar( 'ad_below_footer' ); ?>
-			</div><!-- .wrap (end) -->
-		</div><!-- .footer-below (end) -->
-		<?php
+function themeblvd_footer_below_default() {
+	?>
+	<div class="footer-below">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_below_footer' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .footer-below (end) -->
+	<?php
+}
+endif;
+
+/*------------------------------------------------------------*/
+/* Side Panel
+/*------------------------------------------------------------*/
+
+if ( ! function_exists('themeblvd_side_panel') ) :
+/**
+ * Display the optional, hidden side panel: themeblvd_after
+ *
+ * @since 2.6.0
+ */
+function themeblvd_side_panel() {
+
+	if ( ! themeblvd_do_side_panel() ) {
+		return;
 	}
+
+	?>
+	<div id="side-panel" <?php themeblvd_side_panel_class(); ?>>
+		<div class="wrap">
+			<?php
+			/**
+			 * @hooked themeblvd_side_panel_menu - 10
+			 * @hooked themeblvd_side_panel_sub_menu - 20
+			 */
+			do_action('themeblvd_side_panel');
+			?>
+		</div><!-- .wrap (end) -->
+	</div><!-- #side-panel (end) -->
+	<?php
+}
+endif;
+
+/**
+ * Display the "Primary Side Navigation" location.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_side_panel_menu() {
+	wp_nav_menu( array_merge( themeblvd_get_wp_nav_menu_args('side') ) );
+}
+
+/**
+ * Display the "Secondary Side Navigation" location.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_side_panel_sub_menu() {
+	wp_nav_menu( array_merge( themeblvd_get_wp_nav_menu_args('side_sub') ) );
 }
 
 /*------------------------------------------------------------*/
-/* (9) Content
+/* Content
 /*------------------------------------------------------------*/
 
 /**
@@ -686,7 +736,7 @@ function themeblvd_archive_info() {
 
 // The following must happen within the loop!
 
-if ( !function_exists( 'themeblvd_single_footer_default' ) ) :
+if ( ! function_exists('themeblvd_single_footer_default') ) :
 /**
  * Default display for action: themeblvd_single_footer
  *
@@ -720,7 +770,7 @@ function themeblvd_single_footer_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_blog_meta_default' ) ) :
+if ( ! function_exists('themeblvd_blog_meta_default') ) :
 /**
  * Default display for action: themeblvd_meta
  *
@@ -746,7 +796,7 @@ function themeblvd_blog_meta_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_grid_meta_default' ) ) :
+if ( ! function_exists('themeblvd_grid_meta_default') ) :
 /**
  * Default display for action: themeblvd_grid_meta
  *
@@ -764,7 +814,7 @@ function themeblvd_grid_meta_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_search_meta_default' ) ) :
+if ( ! function_exists('themeblvd_search_meta_default') ) :
 /**
  * Default display for action: themeblvd_search_meta
  *
@@ -788,7 +838,7 @@ function themeblvd_search_meta_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_blog_sub_meta_default' ) ) :
+if ( ! function_exists('themeblvd_blog_sub_meta_default') ) :
 /**
  * Default display for action: themeblvd_meta
  *
@@ -808,7 +858,7 @@ function themeblvd_blog_sub_meta_default() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_the_post_thumbnail_default' ) ) :
+if ( ! function_exists('themeblvd_the_post_thumbnail_default') ) :
 /**
  * Default display for action: themeblvd_the_post_thumbnail
  *
@@ -824,7 +874,7 @@ function themeblvd_the_post_thumbnail_default( $size = '', $args = array() ) {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_blog_content_default' ) ) :
+if ( ! function_exists('themeblvd_blog_content_default') ) :
 /**
  * Default display for action: themeblvd_content
  *
@@ -876,7 +926,7 @@ endif;
 /* WordPress Multisite
 /*------------------------------------------------------------*/
 
-if ( !function_exists( 'themeblvd_before_signup_form' ) ) :
+if ( ! function_exists('themeblvd_before_signup_form') ) :
 /**
  * Before sign-up form
  *
@@ -896,7 +946,7 @@ function themeblvd_before_signup_form() {
 }
 endif;
 
-if ( !function_exists( 'themeblvd_after_signup_form' ) ) :
+if ( ! function_exists('themeblvd_after_signup_form') ) :
 /**
  * After sign-up form
  *
