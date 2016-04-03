@@ -485,7 +485,7 @@ jQuery(document).ready(function($) {
 	}
 
 	// No-click menu items
-	$('ul.sf-menu li.no-click, ul.tb-mobile-menu li.no-click').find('a:first').on('click', function(){
+	$('ul.sf-menu li.no-click, ul.tb-mobile-menu li.no-click, .tb-side-panel li.no-click').find('a:first').on('click', function(){
 		return false;
 	});
 

@@ -489,6 +489,10 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .tb-side-panel .menu > li {
 	position: relative;
 }
+.tb-side-panel .menu li.no-click > a:not(.submenu-toggle) {
+	cursor: default;
+	color: rgba(255,255,255,.7);
+}
 .tb-side-panel .sf-sub-indicator {
 	display: none;
 }

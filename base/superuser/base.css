@@ -246,6 +246,9 @@ Author URI: http://www.themeblvd.com
 .tb-side-panel .secondary-menu a:focus {
 	color: rgba(26,26,26,.9);
 }
+.tb-side-panel.light .menu li.no-click > a:not(.submenu-toggle) {
+	color: rgba(26,26,26,.7);
+}
 .tb-side-panel.light .submenu-toggle:hover {
 	background-color: rgba(220,220,220,.5);
 }
