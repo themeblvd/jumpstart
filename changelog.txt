@@ -33,6 +33,13 @@ Jump Start Changelog
     * Smoother CSS animation for mobile side menu animating in and out.
     * Added new logo option for small mobile devices; see *Appearance > Theme Options > Layout > Mobile Header*.
     * Added new option for header background color on small mobile devices on non-developer theme bases; see *Appearance > Theme Options > Styles > Mobile Header*.
+* New: Hidden side panel for desktops.
+    * Added side panel that slides out on desktops, when at least one of the corresponding menu locations has an assignment.
+    * Added two new menu locations, Primary Side Navigation and Secondary Side Navigation.
+    * Added options to non-developer theme bases for modifying the background color of the side panel; see *Appearance > Theme Options > Styles*.
+    * Both new menu locations are automatically merged into the mobile menu.
+    * Developers can add to side panel by hooking to `themeblvd_side_panel`.
+    * Developers can extend whether the side panel shows by filtering `themeblvd_do_side_panel` boolean.
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
 * New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
 * New: Template file `content-blog.php` for the blog post style has been added.
