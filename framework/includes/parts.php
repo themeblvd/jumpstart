@@ -1647,7 +1647,11 @@ function themeblvd_get_author_info( $user = null, $context = 'single' ) {
 	$style = get_user_meta( $user->ID, '_tb_box_icons', true );
 
 	if ( ! $style ) {
-		$style = 'flat';
+		if ( themeblvd_supports('display', 'dark') ) {
+			$style = 'light';
+		} else {
+			$style = 'grey';
+		}
 	}
 
 	$icons = Theme_Blvd_User_Options::get_icons();

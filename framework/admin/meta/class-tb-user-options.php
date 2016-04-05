@@ -202,10 +202,10 @@ class Theme_Blvd_User_Options {
 					<th><label for="_tb_box_icons"><?php esc_html_e('Icon Color', 'jumpstart'); ?></label></th>
 					<td>
 						<select name="_tb_box_icons" id="_tb_box_icons">
-							<option value="flat" <?php selected($box_icons, 'flat'); ?>><?php esc_html_e('Flat Color', 'jumpstart'); ?></option>
-							<option value="dark" <?php selected($box_icons, 'dark'); ?>><?php esc_html_e('Flat Dark', 'jumpstart'); ?></option>
 							<option value="grey" <?php selected($box_icons, 'grey'); ?>><?php esc_html_e('Flat Grey', 'jumpstart'); ?></option>
+							<option value="dark" <?php selected($box_icons, 'dark'); ?>><?php esc_html_e('Flat Dark', 'jumpstart'); ?></option>
 							<option value="light" <?php selected($box_icons, 'light'); ?>><?php esc_html_e('Flat Light', 'jumpstart'); ?></option>
+							<option value="flat" <?php selected($box_icons, 'flat'); ?>><?php esc_html_e('Flat Color', 'jumpstart'); ?></option>
 							<option value="color" <?php selected($box_icons, 'color'); ?>><?php esc_html_e('Color', 'jumpstart'); ?></option>
 						</select>
 					</td>
