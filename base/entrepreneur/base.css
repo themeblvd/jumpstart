@@ -372,16 +372,63 @@ Author URI: http://www.themeblvd.com
 	background-color: #ffffff;
 }
 
+/* Sticky Menu */
+.tb-sticky-menu.dark .tb-primary-menu > li > .menu-btn {
+	color: #ffffff;
+}
+.tb-sticky-menu.dark .tb-primary-menu > li > .menu-btn:hover {
+	background-color: #000000;
+	background-color: rgba(255,255,255,.1);
+}
+
+/* Mobile Nav */
+@media (max-width: 991px) and (min-width: 768px) {
+	.site-header.dark .mobile-nav > li > a {
+		color: #ffffff;
+		color: rgba(255,255,255,.8);
+	}
+	.site-header.dark .mobile-nav > li > a:hover {
+		color: #ffffff;
+	}
+	.site-header.dark .tb-nav-trigger .hamburger span {
+		background-color: #ffffff;
+		background-color: rgba(255,255,255,.8);
+	}
+	.site-header.dark .tb-nav-trigger:hover .hamburger span,
+	.site-header.dark .tb-nav-trigger.collapse .hamburger span {
+		background-color: #ffffff;
+	}
+}
+@media (max-width: 768px) {
+	.site-header.mobile-light .mobile-nav,
+	.site-header.mobile-light .mobile-nav > li {
+		border-color: rgba(200,200,200,.3);
+	}
+	.site-header.mobile-light .mobile-nav > li > a {
+		color: rgba(10,10,10,.7);
+	}
+	.site-header.mobile-light .mobile-nav > li > a:hover {
+		color: #222222;
+	}
+	.site-header.mobile-light .tb-nav-trigger .hamburger span {
+		background-color: rgba(10,10,10,.7);
+	}
+	.site-header.mobile-light .tb-nav-trigger:hover .hamburger span,
+	.site-header.mobile-light .tb-nav-trigger.collapse .hamburger span {
+		background-color: #222222;
+	}
+}
+
 /* Side Panel */
-.tb-side-panel .menu-btn,
-.tb-side-panel .secondary-menu a {
+.tb-side-panel.light .menu-btn,
+.tb-side-panel.light .secondary-menu a {
 	color: #666666;
 	color: rgba(26,26,26,.7);
 }
-.tb-side-panel .menu-btn:hover,
-.tb-side-panel .menu-btn:focus,
-.tb-side-panel .secondary-menu a:hover,
-.tb-side-panel .secondary-menu a:focus {
+.tb-side-panel.light .menu-btn:hover,
+.tb-side-panel.light .menu-btn:focus,
+.tb-side-panel.light .secondary-menu a:hover,
+.tb-side-panel.light .secondary-menu a:focus {
 	color: rgba(26,26,26,.9);
 }
 .tb-side-panel.light .menu li.no-click > a:not(.submenu-toggle) {

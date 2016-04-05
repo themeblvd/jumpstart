@@ -319,11 +319,8 @@ jQuery(document).ready(function($) {
 		// Build sticky menu
 		var $sticky = $('<div id="sticky-menu" class="tb-sticky-menu"><div class="wrap sticky-wrap clearfix"><div class="nav"></div></div></div>').insertAfter( $('#wrapper') );
 
-		// Add dark/light class, if exists
-		if ( $header.hasClass('light') ) {
-			$sticky.addClass('light');
-		} else if ( $header.hasClass('dark') ) {
-			$sticky.addClass('dark');
+		if ( themeblvd.sticky_class ) {
+			$sticky.addClass(themeblvd.sticky_class);
 		}
 
 		// Add the logo

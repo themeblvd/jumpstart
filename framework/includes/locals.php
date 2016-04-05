@@ -242,6 +242,7 @@ function themeblvd_get_js_locals() {
 
 	if ( themeblvd_config('sticky') && ! wp_is_mobile() ) {
 		$locals['sticky'] = 'true';
+		$locals['sticky_class'] = implode( ' ', apply_filters( 'themeblvd_sticky_class', array() ) );
 		$locals['sticky_offset'] = apply_filters('themeblvd_sticky_offset', '40');
 		$locals['sticky_logo'] = apply_filters('themeblvd_sticky_logo_uri', ''); // Optional override, so theme's header logo isn't used
 	}

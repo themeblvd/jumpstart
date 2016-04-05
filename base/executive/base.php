@@ -1552,6 +1552,23 @@ function jumpstart_ex_mobile_panel_class( $class ) {
 add_filter('themeblvd_mobile_panel_class', 'jumpstart_ex_mobile_panel_class');
 
 /**
+ * Add CSS class to sticky header panel for color brightness.
+ *
+ * @since 2.1.0
+ */
+function jumpstart_ex_sticky_class( $class ) {
+
+	if ( themeblvd_get_option('header_text_color') == 'light' ) {
+		$class[] = 'dark';
+	} else {
+		$class[] = 'light';
+	}
+
+	return $class;
+}
+add_filter('themeblvd_sticky_class', 'jumpstart_ex_sticky_class');
+
+/**
  * Include Google fonts, if needed
  *
  * @since 2.0.0
@@ -2222,72 +2239,25 @@ function jumpstart_ex_css() {
 
 	// Header Mobile
 	$print .= "@media (max-width: 767px) {\n";
-
 	$print .= "\t.site-header {\n";
 	$print .= sprintf("\t\tbackground-color: %s;\n", themeblvd_get_option('header_mobile_bg_color'));
 	$print .= "\t}\n";
-
-	if ( themeblvd_get_option('header_mobile_bg_color_brightness') == 'light' ) {
-		$print .= "\t.mobile-nav,\n";
-		$print .= "\t.mobile-nav > li {\n";
-		$print .= "\t\tborder-color: rgba(100,100,100,.1);";
-		$print .= "\t}\n";
-		$print .= "\t.mobile-nav > li > a {\n";
-		$print .= "\t\tcolor: rgba(10,10,10,.9);";
-		$print .= "\t}\n";
-		$print .= "\t.tb-nav-trigger .hamburger span {\n";
-		$print .= "\t\tbackground-color: rgba(10,10,10,.9);";
-		$print .= "\t}\n";
-	}
-
 	$print .= "}\n";
 
 	// Header sticky menu
-	if ( $header_bg_type && $header_bg_type != 'none' && $header_bg_color ) {
-
-		$text_color = themeblvd_get_option('header_text_color');
-
+	if ( in_array( $header_bg_type, array('color', 'texture', 'image') ) ) {
 		$print .= ".tb-sticky-menu {\n";
 		$print .= sprintf("\tbackground-color: %s;\n", $header_bg_color);
 		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.9'));
-
-		if ( $text_color == 'light' ) {
-			$print .= "\tcolor: #ffffff;\n";
-		} else {
-			$print .= "\tcolor: #333333;\n";
-		}
-
 		$print .= "}\n";
+	}
 
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
-
-		if ( $text_color == 'light' ) {
-			$print .= "\tcolor: #ffffff;\n";
-		} else {
-			$print .= "\tcolor: #333333;\n";
-		}
-
-		if ( $font = themeblvd_get_option('font_menu') ) {
-			$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-			$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_menu_sp') );
-			$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
-		}
-
+	if ( $font = themeblvd_get_option('font_menu') ) {
+		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn {\n";
+		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
+		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_menu_sp') );
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 		$print .= "}\n";
-
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {\n";
-
-		if ( $text_color == 'light' ) {
-			$print .= "\tbackground-color: #000000;\n";
-			$print .= "\tbackground-color: rgba(255,255,255,.1);\n";
-		} else {
-			$print .= "\tbackground-color: #ffffff;\n";
-			$print .= "\tbackground-color: rgba(0,0,0,.1);\n";
-		}
-
-		$print .= "}\n";
-
 	}
 
 	// Primary navigation
@@ -2633,6 +2603,8 @@ function jumpstart_ex_header_class( $class ) {
 	} else {
 		$class[] = 'light';
 	}
+
+	$class[] .= 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
 
 	return $class;
 }
