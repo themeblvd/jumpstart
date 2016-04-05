@@ -518,7 +518,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
     height: 26px;
 }
 .tb-side-panel .submenu-toggle:hover {
-	background-color: rgba(0,0,0,.2);
+	background-color: rgba(0,0,0,.6);
 }
 .tb-side-panel .submenu-toggle:before,
 .tb-side-panel .submenu-toggle:after {
@@ -1155,6 +1155,13 @@ article.tb-naked-page {
 }
 .tb-author-box .avatar-wrap img {
 	border-radius: 100%;
+}
+.tb-author-box .tb-social-icons > li > a {
+	font-size: 15px;
+	padding: .33333em;
+}
+.tb-author-box .tb-social-icons > li:first-child > a {
+	padding-right: 0;
 }
 
 /* Search Results */
