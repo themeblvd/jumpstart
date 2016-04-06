@@ -281,6 +281,11 @@ function themeblvd_body_class( $class ) {
 		$class[] = 'has-sticky';
 	}
 
+	// Narrow full-width content
+	if ( themeblvd_do_fw_narrow() ) {
+		$class[] = 'tb-fw-narrow';
+	}
+
 	// Dark/Light content
 	if ( themeblvd_supports('display', 'dark') ) {
 		$class[] = 'content_dark';

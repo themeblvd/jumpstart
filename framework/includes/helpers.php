@@ -1771,6 +1771,34 @@ function themeblvd_do_side_panel() {
 }
 
 /**
+ * Whether to display side panel.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_do_fw_narrow() {
+
+	$do = false;
+
+	if ( themeblvd_get_option('fw_narrow') && themeblvd_config('sidebar_layout') == 'full_width' ) {
+		$do = true;
+	}
+
+	if ( is_page_template('template_builder.php') ) {
+		$do = true;
+	}
+
+	if ( is_page_template('template_blank.php') || is_page_template('template_grid.php') || is_page_template('template_showcase.php') ) {
+		$do = false;
+	}
+
+	if ( is_archive() && ( themeblvd_config('mode') == 'grid' || themeblvd_config('mode') == 'showcase' ) ) {
+		$do = false;
+	}
+
+	return apply_filters('themeblvd_do_fw_narrow', $do);
+}
+
+/**
  * Whether the URL returns an http 200 status.
  *
  * We use this primarily to determine if the URL to
