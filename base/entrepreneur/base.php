@@ -1988,20 +1988,25 @@ function jumpstart_ent_css() {
 	$header_text = themeblvd_get_option('header_text_color');
 	$menu_font = themeblvd_get_option('font_menu');
 
-	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+	$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
+	$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
+	$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
+	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn {\n";
 	$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($menu_font) );
-	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
 	$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($menu_font) );
 	$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($menu_font) );
 	$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_menu_sp') );
 	$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($menu_font) );
 	$print .= "}\n";
 
+	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($menu_font) );
+
 	if ( themeblvd_get_option('menu_text_shadow') ) {
-		$print .= ".tb-primary-menu > li > .menu-btn {\n";
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
-		$print .= "}\n";
 	}
+
+	$print .= "}\n";
 
 	// Main Menu highlight
 	$highlight = themeblvd_get_option('menu_highlight');

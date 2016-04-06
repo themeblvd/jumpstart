@@ -2369,12 +2369,6 @@ function jumpstart_su_css() {
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
 
 		$print .= sprintf("\tcolor: %s;\n", $options['font']['color'] );
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
-		$print .= sprintf("\tletter-spacing: %s;\n", $options['font_sp'] );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($options['font']) );
 
 		if ( $options['text_shadow'] ) {
 			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
@@ -2432,23 +2426,22 @@ function jumpstart_su_css() {
 
 	} // end IF suck_up
 
-	// Primary nav custom font size/family for suck_up
-	if ( themeblvd_config('suck_up') && $options['font'] ) {
+	$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
+	$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
+	$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
+	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn {\n";
 
-		if ( themeblvd_get_option('menu_search') ) {
-			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
-		}
+	$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
+	$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
+	$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
+	$print .= sprintf("\tletter-spacing: %s;\n", $options['font_sp'] );
+	$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($options['font']) );
 
-		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+	$print .= "}\n";
 
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($options['font']) );
-
-		$print .= "}\n";
-	}
+	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
+	$print .= "}\n";
 
 	// Primary nav sub menus
 	$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
