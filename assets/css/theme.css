@@ -470,15 +470,17 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 }
 .tb-side-panel li {
 	font-size: 13px;
-	line-height: 2em;
+	line-height: 1.4em;
 	list-style: none;
-	margin: 0;
-	padding: 0;
+	padding: .2em 0;
+}
+.tb-side-panel li.level-1.menu-item-has-children {
+	padding-right: 30px;
 }
 .tb-side-panel .menu-btn,
 .tb-side-panel .secondary-menu a {
 	color: #ffffff;
-	color: rgba(255,255,255,.7);
+	color: rgba(255,255,255,.85);
 }
 .tb-side-panel .menu-btn:hover,
 .tb-side-panel .menu-btn:focus,
@@ -488,10 +490,17 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 }
 .tb-side-panel .menu > li {
 	position: relative;
+	padding: .4em 0;
+}
+.tb-side-panel .menu > li:first-child {
+	padding-top: 0;
+}
+.tb-side-panel .menu > li:last-child {
+	padding-bottom: 0;
 }
 .tb-side-panel .menu li.no-click > a:not(.submenu-toggle) {
 	cursor: default;
-	color: rgba(255,255,255,.7);
+	color: rgba(255,255,255,.85);
 }
 .tb-side-panel .sf-sub-indicator {
 	display: none;
@@ -523,7 +532,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .tb-side-panel .submenu-toggle:after {
     content: "";
     background-color: #ffffff;
-    background-color: rgba(255,255,255,.7);
+    background-color: rgba(255,255,255,.85);
     display: block;
     opacity: 1;
     position: absolute;
@@ -575,7 +584,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .tb-mobile-menu-wrapper .header-text a,
 .tb-mobile-menu-wrapper .tb-social-icons a {
 	color: #ffffff; /* fallback */
-	color: rgba(255,255,255,.7);
+	color: rgba(255,255,255,.85);
 }
 .tb-mobile-menu-wrapper .tb-search.mini .search-submit:hover,
 .tb-mobile-menu-wrapper .tb-search.mini .search-submit:focus,
