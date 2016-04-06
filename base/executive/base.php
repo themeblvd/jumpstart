@@ -1689,6 +1689,12 @@ function jumpstart_ex_css() {
 
 		$print .= "}\n";
 
+		$print .= "@media (min-width: 992px) {\n";
+		$print .= "\t.epic-thumb .epic-thumb-header .entry-title {\n";
+		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
+		$print .= "\t}\n";
+		$print .= "}\n";
+
 	}
 
 	// Links

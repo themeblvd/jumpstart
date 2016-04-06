@@ -153,6 +153,13 @@ Author URI: http://www.themeblvd.com
 	z-index: 900; /* Help z-index drop down menus above elements below header */
 }
 
+/* Epic Thumb */
+@media (max-width: 767px) {
+	.epic-thumb .epic-thumb-header .entry-title {
+		letter-spacing: 0;
+	}
+}
+
 /* =Main Menu
 -----------------------------------------------*/
 

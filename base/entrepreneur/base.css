@@ -503,6 +503,13 @@ Author URI: http://www.themeblvd.com
 	color: rgba(26,26,26,.25);
 }
 
+/* Epic Thumb */
+@media (max-width: 767px) {
+	.epic-thumb .epic-thumb-header .entry-title {
+		letter-spacing: 0;
+	}
+}
+
 /* =Boxed Layout
 -----------------------------------------------*/
 
