@@ -1182,28 +1182,28 @@ function jumpstart_ex_options() {
 				'id' 		=> 'link_color',
 				'name' 		=> __('Link Color', 'jumpstart'),
 				'desc' 		=> __('Choose the color you\'d like applied to links.', 'jumpstart'),
-				'std' 		=> '#428bca',
+				'std' 		=> '#f9bc18',
 				'type' 		=> 'color'
 			),
 			'link_hover_color' => array(
 				'id' 		=> 'link_hover_color',
 				'name' 		=> __('Link Hover Color', 'jumpstart'),
 				'desc' 		=> __('Choose the color you\'d like applied to links when they are hovered over.', 'jumpstart'),
-				'std' 		=> '#2a6496',
+				'std' 		=> '#f9d718',
 				'type' 		=> 'color'
 			),
 			'footer_link_color' => array(
 				'id' 		=> 'footer_link_color',
 				'name' 		=> __('Footer Link Color', 'jumpstart'),
 				'desc' 		=> __('Choose the color you\'d like applied to links in the footer.', 'jumpstart'),
-				'std' 		=> '#428bca',
+				'std' 		=> '#f9bc18',
 				'type' 		=> 'color'
 			),
 			'footer_link_hover_color' => array(
 				'id' 		=> 'footer_link_hover_color',
 				'name' 		=> __('Footer Link Hover Color', 'jumpstart'),
 				'desc' 		=> __('Choose the color you\'d like applied to links in the footer when they are hovered over.', 'jumpstart'),
-				'std' 		=> '#2a6496',
+				'std' 		=> '#f9d718',
 				'type' 		=> 'color'
 			)
 		),
