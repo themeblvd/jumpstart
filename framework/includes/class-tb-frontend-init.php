@@ -163,10 +163,17 @@ class Theme_Blvd_Frontend_Init {
 			if ( $q->is_author() ) {
 
 				if ( get_query_var('author_name') ) {
+
 					$user = get_user_by('slug', get_query_var('author_name'));
-					$user_id = $user->ID;
+
+					if ( $user ) {
+						$user_id = $user->ID;
+					}
+
 				} else if ( get_query_var('author') ) {
+
 					$user_id = get_query_var('author');
+
 				}
 
 				if ( ! empty( $user_id ) ) {

@@ -73,6 +73,7 @@ Jump Start Changelog
 * Fixed: Funky display issue on WooCommerce product reviews.
 * Fixed: Shopping cart button not displaying with "Super User" and "Executive" theme bases, when header info is set to show "within header."
 * Fixed: Partner Logos slider stretching images 100% width of column.
+* Fixed: PHP warning on 404 pages, when going to incorrect author URL.
 * Fixed: [WPML](http://themeblvd.com/links/wpml) switcher was producing "undefined" error in mobile menu on pages that only had one language.
 * Fixed: More minor RTL and Translation bug fixes.
     * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
