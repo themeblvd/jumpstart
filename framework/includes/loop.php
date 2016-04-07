@@ -218,21 +218,17 @@ function themeblvd_loop( $args = array() ){
 			// Read More Link or Button
 			if ( ! $args['more'] || $args['more'] == 'default' ) {
 				$more = themeblvd_get_option('list_more', null, 'text');
+				$text = themeblvd_get_option('list_more_text', null, themeblvd_get_local('read_more'));
 			} else {
 				$more = $args['more'];
+				$text = $args['more_text'];
 			}
 
 			if ( $more == 'hide' ) {
 				themeblvd_set_att( 'more', false );
 			} else {
 				themeblvd_set_att( 'more', $more );
-			}
-
-			// Read More text
-			if ( $args['more_text'] ) {
-				themeblvd_set_att( 'more_text', $args['more_text'] );
-			} else {
-				themeblvd_set_att( 'more_text', themeblvd_get_option('list_more_text', null, themeblvd_get_local('read_more')) );
+				themeblvd_set_att( 'more_text', $text );
 			}
 
 			break;
@@ -281,18 +277,13 @@ function themeblvd_loop( $args = array() ){
 				themeblvd_set_att( 'excerpt', false );
 			}
 
-			// Read More Link or Button
+			// Read More Link or Button & Read More text
 			if ( ! $args['more'] || $args['more'] == 'default' ) {
 				themeblvd_set_att( 'more', themeblvd_get_option('grid_more', null, 'text') );
+				themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, themeblvd_get_local('read_more')) );
 			} else {
 				themeblvd_set_att( 'more', $args['more'] );
-			}
-
-			// Read More text
-			if ( $args['more_text'] ) {
 				themeblvd_set_att( 'more_text', $args['more_text'] );
-			} else {
-				themeblvd_set_att( 'more_text', themeblvd_get_option('grid_more_text', null, themeblvd_get_local('read_more')) );
 			}
 
 			// Number of columns (i.e. posts per row)
