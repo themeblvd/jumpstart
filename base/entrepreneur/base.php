@@ -1250,7 +1250,8 @@ function jumpstart_ent_body_class($class) {
 
 	// Boxed layout
 	if ( themeblvd_get_option('layout_style') == 'boxed' ) {
-		$class[] = 'js-boxed';
+		$class[] = 'tb-boxed';
+		$class[] = 'js-boxed'; // backwards compat
 	}
 
 	return $class;
@@ -1813,7 +1814,7 @@ function jumpstart_ent_css() {
 		// Boxed Layout
 
 		$print .= "@media (min-width: 481px) {\n";
-		$print .= "\t.js-boxed #container {\n";
+		$print .= "\t.tb-boxed #container {\n";
 		$print .= sprintf( "\t\tbox-shadow: 0 0 %s %s;\n", themeblvd_get_option('layout_shadow_size'), themeblvd_get_rgb( '#000000', themeblvd_get_option('layout_shadow_opacity') ) );
 		$print .= sprintf( "\tborder-right: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
 		$print .= sprintf( "\tborder-left: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
@@ -1824,7 +1825,7 @@ function jumpstart_ent_css() {
 
 		if ( $border > 0 ) {
 
-			$print .= ".js-boxed .tb-sticky-menu {\n";
+			$print .= ".tb-boxed .tb-sticky-menu {\n";
 
 			$width = 1170 - ( 2 * $border );
 
@@ -1835,7 +1836,7 @@ function jumpstart_ent_css() {
 
 			$print .= "@media (max-width: 1199px) {\n";
 
-			$print .= "\t.js-boxed .tb-sticky-menu {\n";
+			$print .= "\t.tb-boxed .tb-sticky-menu {\n";
 
 			$width = 960 - ( 2 * $border );
 

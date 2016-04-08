@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {
 				$popout_img.each(function(){
 
 					var $el = $(this),
-						width = $body.hasClass('js-boxed') ? $('#container').width() : $window.width();
+						width = $body.hasClass('tb-boxed') ? $('#container').width() : $window.width();
 
 					if ( $window.width() >= 992 ) {
 						if ( $el.hasClass('wp-caption') ) {

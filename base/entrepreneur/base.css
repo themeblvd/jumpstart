@@ -513,181 +513,181 @@ Author URI: http://www.themeblvd.com
 /* =Boxed Layout
 -----------------------------------------------*/
 
-.js-boxed #container {
+.tb-boxed #container {
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1170px;
 }
 @media (max-width: 1199px) {
-	.js-boxed #container {
+	.tb-boxed #container {
 		max-width: 960px;
 	}
 }
 @media (max-width: 991px) {
-	.js-boxed #container {
+	.tb-boxed #container {
 		max-width: 720px;
 	}
 }
 @media (max-width: 767px) {
-	.js-boxed #container {
+	.tb-boxed #container {
 		max-width: 480px;
 	}
 }
-.js-boxed .site-header:not(.has-bg),
-.js-boxed .site-breadcrumbs,
-.js-boxed .site-inner,
-.js-boxed .site-footer:not(.has-bg) {
+.tb-boxed .site-header:not(.has-bg),
+.tb-boxed .site-breadcrumbs,
+.tb-boxed .site-inner,
+.tb-boxed .site-footer:not(.has-bg) {
 	background: #ffffff;
 }
-.js-boxed.content_dark .site-header:not(.has-bg),
-.js-boxed.content_dark .site-breadcrumbs,
-.js-boxed.content_dark .site-inner,
-.js-boxed.content_dark .site-footer:not(.has-bg) {
+.tb-boxed.content_dark .site-header:not(.has-bg),
+.tb-boxed.content_dark .site-breadcrumbs,
+.tb-boxed.content_dark .site-inner,
+.tb-boxed.content_dark .site-footer:not(.has-bg) {
 	background: #222222;
 }
-.js-boxed .site-header.transparent,
-.js-boxed.content_dark .site-header.transparent {
+.tb-boxed .site-header.transparent,
+.tb-boxed.content_dark .site-header.transparent {
 	background-color: transparent;
 }
-.js-boxed .tb-sticky-menu {
+.tb-boxed .tb-sticky-menu {
 	margin-left: -585px;
 	max-width: 1170px;
 	left: 50%;
 }
 @media (max-width: 1199px) {
-	.js-boxed .tb-sticky-menu {
+	.tb-boxed .tb-sticky-menu {
 		margin-left: -480px;
 		max-width: 960px;
 	}
 }
-.js-boxed .tb-sticky-menu > .wrap {
+.tb-boxed .tb-sticky-menu > .wrap {
 	padding: 0 15px;
 }
-.js-boxed .header-top > .wrap,
-.js-boxed .header-above > .wrap,
-.js-boxed .header-content > .wrap,
-.js-boxed .header-nav > .wrap,
-.js-boxed .site-breadcrumbs > .wrap,
-.js-boxed .site-inner > .wrap,
-.js-boxed .element-section > .element.no-popout,
-.js-boxed .site-footer > .wrap {
+.tb-boxed .header-top > .wrap,
+.tb-boxed .header-above > .wrap,
+.tb-boxed .header-content > .wrap,
+.tb-boxed .header-nav > .wrap,
+.tb-boxed .site-breadcrumbs > .wrap,
+.tb-boxed .site-inner > .wrap,
+.tb-boxed .element-section > .element.no-popout,
+.tb-boxed .site-footer > .wrap {
 	margin-right: 0;
 	margin-left: 0;
 	max-width: none;
 }
-.js-boxed .header-content > .wrap {
+.tb-boxed .header-content > .wrap {
 	padding-right: 15px;
 	padding-left: 15px;
 }
-.js-boxed #breadcrumbs {
+.tb-boxed #breadcrumbs {
 	padding: 30px 30px 0 30px;
 }
-.js-boxed #main {
+.tb-boxed #main {
 	padding: 30px;
 }
-.js-boxed .footer-content {
+.tb-boxed .footer-content {
 	padding: 30px;
 }
-.js-boxed .footer-sub-content {
+.tb-boxed .footer-sub-content {
 	padding: 20px 30px;
 }
-.js-boxed .footer-sub-content .tb-social-icons {
+.tb-boxed .footer-sub-content .tb-social-icons {
 	right: 30px;
 }
-.js-boxed .site-footer > .wrap {
+.tb-boxed .site-footer > .wrap {
 	padding: 0;
 }
 
 /* Epic Thumbmail */
-.js-boxed .epic-thumb.fs figure,
-.js-boxed .epic-thumb.fs figure img {
+.tb-boxed .epic-thumb.fs figure,
+.tb-boxed .epic-thumb.fs figure img {
     max-width: 1170px;
 }
-.js-boxed .epic-thumb.fs figure {
+.tb-boxed .epic-thumb.fs figure {
     left: inherit;
 }
 @media (max-width: 1199px) {
-    .js-boxed .epic-thumb.fs figure,
-    .js-boxed .epic-thumb.fs figure img {
+    .tb-boxed .epic-thumb.fs figure,
+    .tb-boxed .epic-thumb.fs figure img {
         max-width: 960px;
     }
 }
 @media (max-width: 991px) {
-    .js-boxed .epic-thumb.fs figure,
-    .js-boxed .epic-thumb.fs figure img {
+    .tb-boxed .epic-thumb.fs figure,
+    .tb-boxed .epic-thumb.fs figure img {
         max-width: 720px;
     }
 }
 
 /* Content Padding */
-.js-boxed .blog-wrap > article,
-.js-boxed article.single,
-.js-boxed article.page,
-.js-boxed .search-page,
-.js-boxed .post_list.archive-loop,
-.js-boxed .post_grid.archive-loop,
-.js-boxed .post_showcase.archive-loop,
-.js-boxed .list-template-wrap .list-wrap,
-.js-boxed .grid-template-wrap .grid-wrap,
-.js-boxed .showcase-template-wrap .showcase-wrap,
-.js-boxed .tb-product-loop-wrap,
-.js-boxed .tb-product-wrap {
+.tb-boxed .blog-wrap > article,
+.tb-boxed article.single,
+.tb-boxed article.page,
+.tb-boxed .search-page,
+.tb-boxed .post_list.archive-loop,
+.tb-boxed .post_grid.archive-loop,
+.tb-boxed .post_showcase.archive-loop,
+.tb-boxed .list-template-wrap .list-wrap,
+.tb-boxed .grid-template-wrap .grid-wrap,
+.tb-boxed .showcase-template-wrap .showcase-wrap,
+.tb-boxed .tb-product-loop-wrap,
+.tb-boxed .tb-product-wrap {
 	background-color: transparent;
 	padding: 0 0 30px 0;
 }
 
 /* Info/Author Box and Comments */
-.js-boxed .tb-info-box,
-.js-boxed .tb-related-posts,
-.js-boxed .products.upsells,
-.js-boxed .products.related,
-.js-boxed #comments,
-.js-boxed .tb-naked-page .bbp-topic-form,
-.js-boxed .tb-naked-page .bbp-reply-form {
+.tb-boxed .tb-info-box,
+.tb-boxed .tb-related-posts,
+.tb-boxed .products.upsells,
+.tb-boxed .products.related,
+.tb-boxed #comments,
+.tb-boxed .tb-naked-page .bbp-topic-form,
+.tb-boxed .tb-naked-page .bbp-reply-form {
 	background: transparent;
 	margin-bottom: 50px;
 	padding: 0;
 }
 
 /* Blog */
-.js-boxed .blog-wrap > article,
-.js-boxed article.single {
+.tb-boxed .blog-wrap > article,
+.tb-boxed article.single {
 	padding: 0;
 }
-.js-boxed .blog-wrap > article > .featured-item,
-.js-boxed article.single > .featured-item {
+.tb-boxed .blog-wrap > article > .featured-item,
+.tb-boxed article.single > .featured-item {
 	margin: 0 0 20px 0;
 }
 
 /* Breadcrumbs */
-.js-boxed .breadcrumb {
+.tb-boxed .breadcrumb {
 	padding: 0 5px;
 }
 
 /* WooCommerce */
-.js-boxed .tb-product-wrap {
+.tb-boxed .tb-product-wrap {
 	padding-bottom: 0;
 }
-.js-boxed .woocommerce-tabs .tabs {
+.tb-boxed .woocommerce-tabs .tabs {
 	background-color: #f5f5f5;
 	border: 1px solid #f2f2f2;
 	border-color: rgba(220,220,220,.4);
 }
-.js-boxed .woocommerce-tabs .tabs > li {
+.tb-boxed .woocommerce-tabs .tabs > li {
 	border-right: 1px solid #f2f2f2;
 	border-right-color: rgba(220,220,220,.4);
 }
-.js-boxed.rtl .woocommerce-tabs .tabs > li {
+.tb-boxed.rtl .woocommerce-tabs .tabs > li {
 	border-right: none;
 	border-left: 1px solid #f2f2f2;
 	border-left-color: rgba(220,220,220,.4);
 }
-.js-boxed.content_dark .woocommerce-tabs .tabs,
-.js-boxed.content_dark .woocommerce-tabs .tabs > li {
+.tb-boxed.content_dark .woocommerce-tabs .tabs,
+.tb-boxed.content_dark .woocommerce-tabs .tabs > li {
 	background-color: #151515;
 	border-color: #000000;
 }
-.js-boxed .woocommerce-tabs .panel {
+.tb-boxed .woocommerce-tabs .panel {
 	background: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
