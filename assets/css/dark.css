@@ -91,6 +91,11 @@ article.page {
 	background: #222222;
 }
 
+/* Captions */
+.wp-caption .wp-caption-text {
+	background: #222222;
+}
+
 /* =Comments
 ----------------------------------------------- */
 

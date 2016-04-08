@@ -23,19 +23,19 @@
 
 	<?php if ( has_post_format('gallery') ) : ?>
 
-		<div class="featured-item featured-gallery">
+		<div class="featured-item featured-gallery popout">
 			<?php themeblvd_gallery_slider(); ?>
 		</div><!-- .featured-gallery (end) -->
 
 	<?php elseif ( has_post_format('video') ) : ?>
 
-		<div class="featured-item featured-video">
+		<div class="featured-item featured-video popout">
 			<?php themeblvd_content_video(); ?>
 		</div><!-- .featured-video (end) -->
 
 	<?php elseif ( has_post_format('audio') ) : ?>
 
-		<div class="featured-item featured-audio">
+		<div class="featured-item featured-audio popout">
 			<?php themeblvd_content_audio(); ?>
 		</div><!-- .featured-audio (end) -->
 
@@ -47,7 +47,7 @@
 
 	<?php elseif ( has_post_thumbnail() && themeblvd_get_att('thumbs') ) : ?>
 
-		<div class="featured-item featured-image">
+		<div class="featured-item featured-image standard popout">
 			<?php themeblvd_the_post_thumbnail(); ?>
 		</div><!-- .featured-item (end) -->
 

@@ -1771,7 +1771,7 @@ function themeblvd_do_side_panel() {
 }
 
 /**
- * Whether to display side panel.
+ * Whether to condense full-width content.
  *
  * @since 2.6.0
  */
@@ -1796,6 +1796,22 @@ function themeblvd_do_fw_narrow() {
 	}
 
 	return apply_filters('themeblvd_do_fw_narrow', $do);
+}
+
+/**
+ * Whether to condense full-width content.
+ *
+ * @since 2.6.0
+ */
+function themeblvd_do_img_popout() {
+
+	$do = false;
+
+	if ( themeblvd_do_fw_narrow() && themeblvd_get_option('img_popout') ) {
+		$do = true;
+	}
+
+	return apply_filters('themeblvd_do_img_popout', $do);
 }
 
 /**

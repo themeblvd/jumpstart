@@ -169,7 +169,8 @@ class Theme_Blvd_Options_API {
 	 *		- scroll_to_top
 	 * Content
 	 *  - General
-	 *      - narrow_fw
+	 *      - fw_narrow
+	 * 		- img_popout
 	 *		- gallery_carousel
 	 *	- Single Posts
 	 *		- single_meta
@@ -577,13 +578,29 @@ class Theme_Blvd_Options_API {
 			'general' => array(
 				'name' => __('General', 'jumpstart'),
 				'options' => array(
+					'general_sub_group_start' => array(
+						'type' 		=> 'subgroup_start',
+						'class'		=> 'show-hide'
+					),
 					'fw_narrow' => array(
 			            'name' 		=> null,
 			            'desc' 		=> __('Condense full-width content.', 'jumpstart'),
 			            'id' 		=> 'fw_narrow',
 			            'std' 		=> '0',
-			            'type' 		=> 'checkbox'
+			            'type' 		=> 'checkbox',
+						'class'		=> 'trigger'
 			        ),
+					'img_popout' => array(
+						'name' 		=> null,
+						'desc' 		=> __('Popout large images within full-width content.', 'jumpstart'),
+						'id' 		=> 'img_popout',
+						'std' 		=> '0',
+						'type' 		=> 'checkbox',
+						'class'		=> 'receiver hide'
+					),
+					'general_sub_group_end' => array(
+						'type' 		=> 'subgroup_end'
+					),
 					'gallery_carousel' => array(
 			            'name' 		=> null,
 			            'desc' 		=> __('Use variable width image carousel for gallery sliders.', 'jumpstart'),

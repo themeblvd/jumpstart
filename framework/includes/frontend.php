@@ -286,6 +286,11 @@ function themeblvd_body_class( $class ) {
 		$class[] = 'tb-fw-narrow';
 	}
 
+	// Image popouts
+	if ( themeblvd_do_img_popout() ) {
+		$class[] = 'tb-img-popout';
+	}
+
 	// Dark/Light content
 	if ( themeblvd_supports('display', 'dark') ) {
 		$class[] = 'content_dark';

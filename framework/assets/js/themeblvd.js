@@ -13,6 +13,7 @@ jQuery(document).ready(function($) {
 		$primary_menu	= $('.tb-primary-menu'),
 		youtube			= null,
 		yt_players		= {},
+		$popout_img 	= $('.site-inner.full_width .entry-content .alignnone'),
 		tbmethods		= {
 
 			/**
@@ -100,6 +101,45 @@ jQuery(document).ready(function($) {
 
 				$("<style type='text/css' id='"+id+"-styles'>"+css+"</style>").appendTo('head:first');
 
+			},
+
+			/**
+			 * Resize images to popout and fill viewport
+			 */
+			popout_img: function( $body, $window, $popout_img ) {
+
+				$popout_img.each(function(){
+
+					var $el = $(this),
+						width = $body.hasClass('js-boxed') ? $('#container').width() : $window.width();
+
+					if ( $window.width() >= 992 ) {
+						if ( $el.hasClass('wp-caption') ) {
+
+							var $img = $el.find('img');
+
+							if ( $img.hasClass('size-full') ) {
+
+								if ( $body.hasClass('rtl') ) {
+									$el.css({ 'margin-right': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'max-width': 'none' }).addClass('tb-img-popout');
+								} else {
+									$el.css({ 'margin-left': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'max-width': 'none' }).addClass('tb-img-popout');
+								}
+
+								$el.add($img).css({'width': width, 'max-width': 'none' });
+							}
+
+						} else if ( $el.hasClass('size-full') ) {
+
+							if ( $body.hasClass('rtl') ) {
+								$el.css( { 'margin-right': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'margin-left': '0', 'max-width': 'none', 'width': width }).addClass('tb-img-popout');
+							} else {
+								$el.css( { 'margin-left': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'margin-right': '0', 'max-width': 'none', 'width': width }).addClass('tb-img-popout');
+							}
+						}
+					}
+
+				});
 			}
 		};
 
@@ -516,40 +556,6 @@ jQuery(document).ready(function($) {
 	// "Epic" Thumbnails
 	// ---------------------------------------------------------
 
-	/*
-	var $epic = $('.epic-thumb'),
-		offset = $epic.find('.epic-thumb-content').offset().top,
-		scroll_top = $window.scrollTop(),
-		opacity = ( offset - scroll_top ) / offset,
-		scale = ( scroll_top / 5000 ) + 1;
-
-	$epic.find('.epic-thumb-content').css({
-		'opacity': opacity,
-		'-webkit-transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')',
-		'transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')'
-	});
-
-	$window.scroll(function() {
-
-		// Disable for small screens
-		if ( $window.width() < 992 || $window.height() < 500 ) {
-			return;
-		}
-
-		var offset = $epic.find('.epic-thumb-content').offset().top,
-			scroll_top = $window.scrollTop(),
-			opacity = ( offset - scroll_top ) / offset,
-			scale = ( scroll_top / 5000 ) + 1;
-
-		$epic.find('.epic-thumb-content').css({
-			'opacity': opacity,
-			'-webkit-transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')',
-			'transform': 'translate3d(-50%, -50%, 0) scale('+scale+', '+scale+')'
-		});
-
-	});
-	*/
-
 	$('.epic-thumb.gallery').on({
 		mouseenter: function () {
 			$(this).addClass('hover').find('.entry-header').stop().fadeOut(200);
@@ -558,6 +564,22 @@ jQuery(document).ready(function($) {
 			$(this).removeClass('hover').find('.entry-header').stop().fadeIn(200);
 		}
 	});
+
+	// ---------------------------------------------------------
+	// Popout Images
+	// ---------------------------------------------------------
+
+	if ( $body.hasClass('tb-img-popout') ) {
+
+		// Establish on initial page load
+		tbmethods.popout_img( $body, $window, $popout_img );
+
+		// Adjust images with browser resize
+		$window.resize(function(){
+			tbmethods.popout_img( $body, $window, $popout_img );
+		});
+
+	}
 
 	// ---------------------------------------------------------
 	// Carousel Galleries

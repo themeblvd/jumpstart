@@ -57,7 +57,7 @@
 
 	<?php elseif ( has_post_thumbnail() && themeblvd_get_att('thumbs') && ! themeblvd_get_att('epic_thumb') ) : ?>
 
-		<div class="featured-item featured-image popout standard">
+		<div class="featured-item featured-image standard popout">
 			<?php themeblvd_the_post_thumbnail(); ?>
 		</div><!-- .featured-item (end) -->
 
