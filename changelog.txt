@@ -12,6 +12,13 @@ Jump Start Changelog
     * Default gallery slider image size was increased from 1200x450 to 1400x525, when not using new variable width carousel.
     * Added compatibility for [Subtitles](https://wordpress.org/plugins/subtitles/) plugin.
     * Removed banner functionality; you can restore with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
+* New: Media and full-width content features.
+    * Added option to condense full-width pages to be more readable; see *Appearance > Theme Options > Content > General*.
+    * Added option to popout media on condensed full-width pages; see *Appearance > Theme Options > Content > General*.
+        * When enabled, images inserted into standard content that are "Full Size" with alignment "None" are popped out to the width of the browser window.
+        * When enabled, images inserted into standard content that are "Full Size" with alignment "Center" are popped out at 120% of content area.
+        * When enabled, featured media on full-width blogs are popped out 120% of content area.
+    * Improvements to general media caption styling.
 * New: Expanded typography section on theme options for non-dev theme bases.
     * Added [Adobe Typekit](https://typekit.com) support.
     * Minor adjustments to default fonts.
