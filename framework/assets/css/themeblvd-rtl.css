@@ -882,6 +882,7 @@ img.size-full {
 	margin: 5px 0;
 }
 .tb-sticky-menu .header-logo img {
+	display: block;
 	width: auto;
 	height: 38px;
 }
