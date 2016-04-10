@@ -1755,6 +1755,8 @@ function themeblvd_get_bg_parallax( $display ) {
 	// Start ouptut
 	$output = sprintf( '<div class="%s" style="background-color:%s">', esc_attr($class), esc_attr($color) );
 
+	$output .= themeblvd_get_loader();
+
 	if ( $type == 'texture' ) {
 		$texture = themeblvd_get_texture( $texture );
 		$output .= sprintf('<div class="img" style="background-image:url(%s);background-position:%s;background-repeat:%s;background-size:%s;"></div>', esc_url($texture['url']), esc_attr($texture['position']), esc_attr($texture['repeat']), esc_attr($texture['size']));

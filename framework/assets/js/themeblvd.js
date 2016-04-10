@@ -1068,7 +1068,7 @@ jQuery(document).ready(function($) {
 
 			}
 
-			$img.addClass('on'); // fade in the image, after it's been placed
+			$el.addClass('on').find('.tb-loader').fadeOut(); // fade in the image, after it's been placed
 
 		}); // end $parallax.each(
 	}); // end $window.load()

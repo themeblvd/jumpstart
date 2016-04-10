@@ -4775,8 +4775,8 @@ button.mfp-arrow:active {
 		height: 100%;
 	}
 }
-.tb-parallax .parallax-figure img.on,
-.tb-parallax .parallax-figure .img.on {
+.tb-parallax .parallax-figure.on img,
+.tb-parallax .parallax-figure.on .img {
 	opacity: 1;
 }
 
@@ -5505,8 +5505,10 @@ body.mobile .tb-bg-video {
 
 /* Epic Thumbnails */
 .epic-thumb {
-	min-height: 200px;
 	position: relative;
+}
+.epic-thumb.tb-parallax {
+	min-height: 550px;
 }
 .epic-thumb.fw img {
 	width: 100%;
@@ -5515,7 +5517,7 @@ body.mobile .tb-bg-video {
 	.epic-thumb.fw {
 		background: #000000;
 	}
-	.epic-thumb.tb-parallax .parallax-figure img.on,
+	.epic-thumb.tb-parallax .parallax-figure.on img,
 	.epic-thumb.fw img {
 		opacity: 0.6;
 	}
