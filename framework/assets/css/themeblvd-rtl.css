@@ -6631,9 +6631,15 @@ body.mobile .tb-bg-video {
 	padding: 60px;
 	position: relative;
 }
+.element-jumbotron_slider .jumbotron-outer.has-bg,
+.element-jumbotron_slider .item > .jumbotron-wrap { /* no .jumbotron-outer included */
+	padding-right: 80px;
+	padding-left: 80px;
+}
 @media (max-width: 767px) {
 	.element-jumbotron .jumbotron-outer.has-bg,
-	.element-jumbotron_slider .jumbotron-outer.has-bg { /* should always have bg */
+	.element-jumbotron_slider .jumbotron-outer.has-bg, /* should always have bg */
+	.element-jumbotron_slider .item > .jumbotron-wrap { /* no .jumbotron-outer included */
     	padding-right: 40px;
 		padding-left: 40px;
 	}

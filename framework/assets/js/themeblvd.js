@@ -999,6 +999,10 @@ jQuery(document).ready(function($) {
 
 			var height = $(e.relatedTarget).find('.jumbotron-outer').outerHeight();
 
+			if ( ! height ) {
+				height = $(e.relatedTarget).find('.jumbotron-wrap').outerHeight();
+			}
+
 			$slider.animate({ height: height }, 1000);
 
 			if ( ! $body.hasClass('mobile') ) {
