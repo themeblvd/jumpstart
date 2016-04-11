@@ -144,7 +144,7 @@ class Theme_Blvd_Stylesheet_Handler {
 				'handle'	=> 'fontawesome',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/fontawesome/css/font-awesome.min.css',
 				'deps'		=> array(),
-				'ver'		=> '4.5.0',
+				'ver'		=> '4.6.0',
 				'media'		=> 'all'
 			);
 
