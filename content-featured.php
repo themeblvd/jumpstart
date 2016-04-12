@@ -6,7 +6,7 @@
 $to = themeblvd_show_breadcrumbs() ? 'breadcrumbs' : 'main'; // where full screen scroll-to-section goes
 $to = is_page_template('template_builder.php') ? 'custom-main' : $to;
 ?>
-<div class="epic-thumb<?php if ( ! has_post_format('gallery') ) echo ' tb-parallax'; echo ' '.themeblvd_get_att('thumbs'); if ( get_post_format() ) echo ' '.get_post_format(); ?>">
+<div class="epic-thumb<?php if ( ! has_post_format('gallery') && themeblvd_get_att('thumbs') == 'fs' ) echo ' tb-parallax'; echo ' '.themeblvd_get_att('thumbs'); if ( get_post_format() ) echo ' '.get_post_format(); ?>">
 
     <?php if ( has_post_format('quote') ) : ?>
 
