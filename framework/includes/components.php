@@ -200,10 +200,11 @@ function themeblvd_divider( $args = array() ) {
  */
 function themeblvd_get_map( $args ) {
 
-    wp_enqueue_script( 'google_maps' );
+    wp_enqueue_script( 'google-maps' );
 
     $defaults = array(
         'id'            => uniqid('map_'),  // Unique ID for map
+		'mode'			=> 'roadmap',		// Map mode - roadmap, satellite, hybrid, terrain
         'markers'       => array(),         // Location markers for map
         'height'        => '400',           // CSS height of map
         'center_type'   => 'default',       // If default, will be first location - default or custom
@@ -220,12 +221,13 @@ function themeblvd_get_map( $args ) {
     $args = wp_parse_args( $args, $defaults );
 
     $hue = '0';
+
     if ( $args['has_hue'] && $args['hue'] ) {
         $hue = $args['hue'];
     }
 
     // Start map with config options
-    $output = sprintf( '<div class="tb-map" data-zoom="%s" data-lightness="%s" data-saturation="%s" data-hue="%s" data-zoom_control="%s" data-pan_control="%s" data-draggable="%s">', esc_attr($args['zoom']), esc_attr($args['lightness']), esc_attr($args['saturation']), esc_attr($hue), esc_attr($args['zoom_control']), esc_attr($args['pan_control']), esc_attr($args['draggable']) );
+    $output = sprintf( '<div class="tb-map" data-zoom="%s" data-lightness="%s" data-saturation="%s" data-hue="%s" data-zoom_control="%s" data-pan_control="%s" data-draggable="%s" data-mode="%s">', esc_attr($args['zoom']), esc_attr($args['lightness']), esc_attr($args['saturation']), esc_attr($hue), esc_attr($args['zoom_control']), esc_attr($args['pan_control']), esc_attr($args['draggable']), esc_attr($args['mode']) );
 
     // Map gets inserted into this DIV
     $output .= sprintf( '<div id="%s" class="map-canvas" style="height: %spx;"></div>', esc_attr($args['id']), esc_attr($args['height']) );

@@ -1141,8 +1141,19 @@ jQuery(document).ready(function($) {
 			var init = function() {
 
 		        var map_id = $map.find('.map-canvas').attr('id'),
+					mode = $map.data('mode'),
 		        	map_options,
 		            map;
+
+				if ( mode == 'roadmap' ) { // ... @TODO Not working and not sure why?
+					mode = google.maps.MapTypeId.ROADMAP;
+				} else if ( mode == 'satellite' ) {
+					mode = google.maps.MapTypeId.SATELLITE;
+				} else if ( mode == 'hybrid' ) {
+					mode = google.maps.MapTypeId.HYBRID;
+				} else if ( mode == 'terrain' ) {
+					mode = google.maps.MapTypeId.TERRAIN;
+				}
 
 		        map_options = {
 		            center: new google.maps.LatLng( $map.find('.map-center').data('lat'), $map.find('.map-center').data('long') ),
@@ -1152,7 +1163,7 @@ jQuery(document).ready(function($) {
 		            zoomControl: $map.data('zoom_control'),
 		            mapMaker: false,
 		            mapTypeControl: false,
-		            mapTypeId: google.maps.MapTypeId.ROADMAP,
+		            mapTypeId: mode, // ... @TODO Not working and not sure why?
 		            backgroundColor: 'transparent',
 		            streetViewControl: false,
 		            scrollwheel: false
