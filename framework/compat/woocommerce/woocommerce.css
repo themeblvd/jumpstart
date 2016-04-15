@@ -29,7 +29,7 @@
 	}
 }
 .rtl .onsale {
-	left: initial;
+	left: auto;
 	right: 25px;
 }
 @media screen and (max-width: 767px) {
@@ -116,7 +116,7 @@
 .rtl .star-rating span,
 .rtl .star-rating span:before {
 	right: 0;
-	left: initial;
+	left: auto;
 }
 
 /* =Messages and Notices
@@ -315,7 +315,7 @@ ul.woocommerce-info {
 }
 .rtl .tb-product .product-thumb:before {
 	content: "\f190"; /* arrow, facing left */
-	right: initial;
+	right: auto;
 	left: 10px;
 }
 .tb-product img {
@@ -433,7 +433,7 @@ ul.woocommerce-info {
 	background-color: transparent;
 	font-weight: normal;
 	color: inherit;
-	padding: initial;
+	padding: auto;
 }
 .product-category img {
 	margin-bottom: 15px;
@@ -491,7 +491,7 @@ ul.woocommerce-info {
 }
 .rtl .tb-product-loop-wrap.list-view .tb-product .onsale {
 	right: 10px;
-	left: initial;
+	left: auto;
 }
 .tb-product-loop-wrap.list-view .tb-product h3 {
 	font-size: 18px;
@@ -764,7 +764,7 @@ ul.woocommerce-info {
 	display: table-cell;
 	border-right: 1px dashed #f2f2f2;
 	border-color: rgba(220,220,220,.4);
-	text-align: initial;
+	text-align: auto;
 }
 .rtl .tb-product-wrap .variations td {
 	border-right: none;
@@ -784,7 +784,7 @@ ul.woocommerce-info {
 	font-size: 1rem;
 	font-weight: normal;
 	margin: 8px 0;
-	text-align: initial;
+	text-align: auto;
 }
 .content_dark .tb-product-wrap .variations label {
 	color: #ffffff;
@@ -996,7 +996,7 @@ ul.woocommerce-info {
 		height: 55px;
 	}
 	.rtl #reviews img.avatar {
-		left: initial;
+		left: auto;
 		right: 0;
 	}
 	#reviews .star-rating {
@@ -1035,7 +1035,7 @@ ul.woocommerce-info {
 		margin-left: 0;
 		margin-right: -7px;
 		right: 80px;
-		left: initial;
+		left: auto;
 	}
 }
 
@@ -1574,7 +1574,7 @@ ul.woocommerce-info {
 }
 .rtl .widget .product_list_widget li > a > img {
 	right: 0;
-	left: initial;
+	left: auto;
 }
 .widget .product_list_widget li:last-child {
 	margin-bottom: 0;
@@ -1776,7 +1776,7 @@ ul.woocommerce-info {
 }
 .rtl .tb-cart-trigger .trigger-label {
 	right: 10px;
-	left: initial;
+	left: auto;
 }
 .rtl .header-top-mini .tb-cart-trigger .trigger-label {
 	right: 8px;

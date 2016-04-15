@@ -44,7 +44,7 @@ Author URI: http://www.themeblvd.com
 	transform: translate(0, -50%);
 }
 .rtl .header-addon {
-	right: initial;
+	right: auto;
 	left: 20px;
 }
 .header-addon .header-text {
@@ -435,7 +435,7 @@ Author URI: http://www.themeblvd.com
 	right: 30px;
 }
 .tb-boxed.rtl .header-addon {
-	right: initial;
+	right: auto;
 	left: 30px;
 }
 .tb-boxed #breadcrumbs {

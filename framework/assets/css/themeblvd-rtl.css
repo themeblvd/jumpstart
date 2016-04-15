@@ -5492,7 +5492,7 @@ body.mobile .tb-bg-video {
 	opacity: .5 !important;
 	-webkit-transition: opacity .2s ease-out;
 	transition: opacity .2s ease-out;
-	width: auto;
+	width: auto !important;
 	height: 100%;
 }
 .tb-gallery-carousel .owl-item.active.center img {
@@ -5951,7 +5951,7 @@ body.mobile .tb-bg-video {
 	max-width: 450px;
 	padding: 3%;
 	top: 0;
-	left: initial;
+	left: auto;
 	bottom: 0;
 	right: 0;
 	text-align: right;
@@ -5992,8 +5992,8 @@ body.mobile .tb-bg-video {
 .tb-post-slider.style-3 .carousel-indicators {
 	margin: 0;
 	position: absolute;
-	top: initial;
-	right: initial;
+	top: auto;
+	right: auto;
 	left: 25px;
 	bottom: 20px;
 }

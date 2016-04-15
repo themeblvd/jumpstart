@@ -322,7 +322,7 @@ Author URI: http://www.themeblvd.com
 }
 .rtl .header-nav .tb-primary-menu > li > .tb-cart-trigger .trigger-label {
 	right: 20px;
-	left: initial;
+	left: auto;
 }
 .header-nav .tb-primary-menu > li > .tb-side-trigger .hamburger {
 	margin: 4px 0;

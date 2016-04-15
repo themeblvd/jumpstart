@@ -75,14 +75,14 @@
 	top: 1px;
 	width: 15px;
 	height: 10px;
-	vertical-align: initial;
+	vertical-align: baseline;
 }
 
 /* Main Menu Switchter */
 .menu-item-language img.iclflag {
 	position: relative;
 	top: 1px;
-	vertical-align: initial;
+	vertical-align: baseline;
 }
 
 /* Footer Switcher */
@@ -91,5 +91,5 @@
 }
 #lang_sel_footer ul li img {
 	top: 2px;
-	vertical-align: initial;
+	vertical-align: baseline;
 }
