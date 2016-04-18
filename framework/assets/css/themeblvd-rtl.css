@@ -2348,7 +2348,7 @@ span.entry-subtitle {
 }
 .tb-slider-arrows li a.right {
 	background-image: url(../svg/chev-right.svg);
-	background-size: 8px 14px;
+	background-size: 4px 7px;
 }
 .tb-slider-arrows li a.down {
 	background-image: url(../svg/chev-down.svg);
@@ -2356,7 +2356,7 @@ span.entry-subtitle {
 }
 .tb-slider-arrows li a.left {
 	background-image: url(../svg/chev-left.svg);
-	background-size: 8px 14px;
+	background-size: 4px 7px;
 }
 .tb-slider-arrows li a.trans {
 	background-color: #dadada;
@@ -5042,9 +5042,6 @@ button.mfp-arrow:active {
 }
 
 /* Quote */
-.entry-content blockquote {
-	margin-bottom: 20px;
-}
 blockquote.pull-right {
 	padding-right: 20px;
 }
@@ -5736,7 +5733,7 @@ body.mobile .tb-bg-video {
 }
 .list-wrap .entry-meta {
 	font-size: 11px;
-	margin: 5px 0 10px 0;
+	margin: 5px 0 14px 0;
 }
 @media (max-width: 767px) {
 	.list-wrap > article.has-thumbnail,
@@ -5748,6 +5745,12 @@ body.mobile .tb-bg-video {
 		display: none;
 	}
 }
+.list-wrap .featured-item,
+.list-wrap .themeblvd-video-wrapper,
+.list-wrap blockquote,
+.list-wrap p {
+	margin: 0 0 20px 0;
+}
 
 /* Post Grid */
 .grid-wrap {
@@ -5758,12 +5761,23 @@ body.mobile .tb-bg-video {
 	margin-bottom: 0;
 }
 .post_grid article {
-	margin-bottom: 30px;
+	margin-bottom: 50px;
+}
+@media (min-width: 1200px) {
+	.post_grid .grid-item > article {
+		padding: 0 10px;
+	}
+	.post_grid .pagination-wrap {
+		padding: 0 10px;
+	}
 }
 @media (min-width: 768px) {
 	.post_grid .row:last-child article {
 		margin-bottom: 0;
 	}
+}
+.post_grid .featured-item {
+	margin-bottom: 20px;
 }
 .post_grid .entry-title {
 	font-size: 16px;
@@ -5774,7 +5788,23 @@ body.mobile .tb-bg-video {
 }
 .post_grid .entry-meta {
 	font-size: 11px;
-	margin: 5px 0 10px 0;
+	margin: 5px 0 0 0;
+}
+.post_grid .entry-content {
+	font-size: 14px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.post_grid .entry-content p {
+	margin: 0;
+}
+.post_grid .entry-title,
+.post_grid .entry-meta,
+.post_grid .grid-item.has-meta .entry-title,
+.post_grid .entry-content,
+.post_grid .read-more {
+	margin-right: 4px;
+	margin-left: 4px;
 }
 .post_grid.tb-isotope .grid-wrap > .row {
 	margin: -15px;
@@ -6279,7 +6309,12 @@ body.mobile .tb-bg-video {
 	display: none;
 }
 .element > .tb-filter > .tb-filter-nav {
-	margin-bottom: 20px;
+	margin: 0;
+	padding: 20px 5px;
+}
+.element.popout > .tb-filter > .tb-filter-nav {
+	padding-left: 25px;
+	padding-right: 25px;
 }
 @media (min-width: 768px) {
 	.firefox .tb-isotope .col-sm-020 {
