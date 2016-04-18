@@ -5782,8 +5782,6 @@ body.mobile .tb-bg-video {
 .post_grid .entry-title {
 	font-size: 16px;
 	line-height: 1.3;
-}
-.post_grid .grid-item.has-meta .entry-title {
 	margin: 0;
 }
 .post_grid .entry-meta {
@@ -6311,6 +6309,10 @@ body.mobile .tb-bg-video {
 .element > .tb-filter > .tb-filter-nav {
 	margin: 0;
 	padding: 20px 5px;
+}
+.element > .post_grid.tb-filter > .tb-filter-nav {
+	padding-right: 16px;
+	padding-left: 16px;
 }
 .element.popout > .tb-filter > .tb-filter-nav {
 	padding-left: 25px;
