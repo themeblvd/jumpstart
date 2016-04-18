@@ -46,7 +46,7 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 		'link'		=> 'link',
 		'page'		=> 'file-o',
 		'portfolio'	=> 'briefcase',
-		'product'	=> 'shopping-cart',
+		'product'	=> 'shopping-basket',
 		'quote'		=> 'quote-left',
 		'status'	=> 'clock-o',
 		'video'		=> 'film'

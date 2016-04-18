@@ -114,7 +114,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 						break;
 
 					case 'store' :
-						$icon = 'shopping-cart';
+						$icon = 'shopping-basket';
 						break;
 
 					case 'write' :
@@ -376,13 +376,16 @@ function themeblvd_cart_popup( $args = array() ) {
 function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
 	// Setup arguments
-	$defaults = apply_filters('themeblvd_cart_popup_defaults', array( // filtering matches themeblvd_get_cart_popup() args
-		'open'			=> 'shopping-cart',			// FontAwesome icon to open
-		'close'			=> 'close',					// FontAwesome icon to close
+	$defaults = apply_filters('themeblvd_cart_popup_trigger_defaults', array( // filtering matches themeblvd_get_cart_popup() args
+		'icon'			=> 'shopping-basket',		// FontAwesome icon to open
 		'class'			=> '',						// Optional CSS classes to add
 		'target'		=> 'floating-shopping-cart'	// HTML ID of floating shopping cart linking to
 	));
 	$args = wp_parse_args( $args, $defaults );
+
+	if ( ! empty($args['open']) ) {
+		$args['icon'] = $args['open']; // backwards compat
+	}
 
 	$class = 'tb-cart-trigger menu-btn';
 
@@ -390,7 +393,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 		$class .= ' '.$args['class'];
 	}
 
-	$output = sprintf( '<a href="#" class="%1$s" data-toggle="modal" data-target="#%2$s" data-open="%3$s" data-close="%4$s" data-label=""><i class="fa fa-%3$s"></i></a>', esc_attr($class), esc_attr($args['target']), esc_attr($args['open']), esc_attr($args['close']) );
+	$output = sprintf( '<a href="#" class="%s" data-toggle="modal" data-target="#%s"><i class="fa fa-%3$s"></i></a>', esc_attr($class), esc_attr($args['target']), esc_attr($args['icon']) );
 
 	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 		if ( $count = WC()->cart->get_cart_contents_count() ) {
