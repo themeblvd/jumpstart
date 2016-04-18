@@ -520,12 +520,6 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	position: relative;
 	padding: 5px 0;
 }
-.tb-side-panel .menu > li:first-child {
-	padding-top: 0;
-}
-.tb-side-panel .menu > li:last-child {
-	padding-bottom: 0;
-}
 .tb-side-panel .menu li.no-click > a:not(.submenu-toggle) {
 	cursor: default;
 	color: rgba(255,255,255,.85);
