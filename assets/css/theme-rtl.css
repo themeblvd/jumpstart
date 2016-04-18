@@ -516,8 +516,9 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	color: #ffffff;
 }
 .tb-side-panel .menu > li {
+	line-height: 18px;
 	position: relative;
-	padding: .4em 0;
+	padding: 5px 0;
 }
 .tb-side-panel .menu > li:first-child {
 	padding-top: 0;
@@ -544,13 +545,13 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
     display: block;
     outline: 0;
     position: absolute;
-    top: 0;
+    top: 2px;
     left: 0;
     text-indent: -9999px;
     -webkit-transition: background-color .1s ease-in-out;
     transition: background-color .1s ease-in-out;
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
 }
 .tb-side-panel .submenu-toggle:hover {
 	background-color: rgba(0,0,0,.6);
@@ -564,23 +565,25 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
     opacity: 1;
     position: absolute;
     top: 50%;
-    left: 33%;
-    width: 34%;
+    left: 50%;
+    width: 33.3333%;
     height: 1px;
-    -ms-transition: opacity .2s ease-out,transform .2s ease-out;
-    -webkit-transition: opacity .2s ease-out,transform .2s ease-out;
-    transition: opacity .2s ease-out,transform .2s ease-out;
+	-ms-transform: translate(-50%,-50%); /* IE9 */
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+    -webkit-transition: opacity .2s ease-out, transform .2s ease-out;
+    transition: opacity .2s ease-out, transform .2s ease-out;
 }
 .tb-side-panel .submenu-toggle:after {
-    -ms-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
+    -ms-transform: translate(-50%,-50%) rotate(90deg); /* IE9 */
+	-webkit-transform: translate(-50%,-50%) rotate(90deg);
+	transform: translate(-50%,-50%) rotate(90deg);
 }
 .tb-side-panel .submenu-toggle.collapse:after {
     opacity: 0;
-    -ms-transform: rotate(0);
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
+    -ms-transform: translate(-50%,-50%) rotate(0); /* IE9 */
+    -webkit-transform: translate(-50%,-50%) rotate(0);
+    transform: translate(-50%,-50%) rotate(0);
 }
 
 /* Mobile Panel */
