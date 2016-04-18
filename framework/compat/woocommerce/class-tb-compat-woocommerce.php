@@ -747,17 +747,25 @@ class Theme_Blvd_Compat_WooCommerce {
 
 			}
 
+			// Add shop page from WooCommerce settings to breadcrumbs trail
 			if ( ! is_shop() || ( is_shop() && is_search() ) && apply_filters('themeblvd_woocommerce_add_shop_to_breadcrumbs', true) ) {
 
-				$add = array(
-					array(
-						'link'  => get_permalink( wc_get_page_id('shop') ),
-						'text'  => get_the_title( wc_get_page_id('shop') ),
-						'type'  => 'page'
-					)
-				);
+				$shop_id = wc_get_page_id('shop');
 
-				$parts = array_merge($add, $parts);
+				if ( $shop_id && $shop_id != -1 ) {
+
+					$add = array(
+						array(
+							'link'  => get_permalink( wc_get_page_id('shop') ),
+							'text'  => get_the_title( wc_get_page_id('shop') ),
+							'type'  => 'page'
+						)
+					);
+
+					$parts = array_merge($add, $parts);
+
+				}
+
 			}
 
 		}

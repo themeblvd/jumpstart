@@ -83,6 +83,7 @@ Jump Start Changelog
 * Fixed: PHP warning on 404 pages, when going to incorrect author URL.
 * Fixed: Default theme options "Read More" text not getting applied to post list and post grid elements.
 * Fixed: Minor issues with Hero Unit Slider element spacing and height calculation.
+* Fixed: WooCommerce breadcrumbs showing empty item, when no shop page is set from WooCommerce settings.
 * Fixed: [WPML](http://themeblvd.com/links/wpml) switcher was producing "undefined" error in mobile menu on pages that only had one language.
 * Fixed: More minor RTL and Translation bug fixes.
     * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
