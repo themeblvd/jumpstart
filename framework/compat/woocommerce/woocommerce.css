@@ -398,10 +398,9 @@ ul.woocommerce-info {
 	content: "\f060"; /* left arrow */
 }
 .tb-product .add_to_cart_button.loading:after {
-	content: "\f021"; /* refresh */
+	content: "\f1ce"; /* circle-o-notch */
 	-webkit-animation: fa-spin 2s infinite linear;
 	animation: fa-spin 2s infinite linear;
-	font-size: 14px;
 }
 .tb-product .add_to_cart_button.added:after {
 	content: "\f00c"; /* check */
