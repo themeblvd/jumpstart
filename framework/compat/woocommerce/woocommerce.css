@@ -536,7 +536,7 @@ ul.woocommerce-info {
 .content_dark .tb-product-loop-wrap.catalog-view .tb-product:hover {
 	background-color: #151515;
 }
-.tb-product-loop-wrap.catalog-view .tb-product td {
+.tb-product-loop-wrap.catalog-view td {
 	padding: 20px 8px;
 }
 .tb-product-loop-wrap.catalog-view .product-thumbnail {
