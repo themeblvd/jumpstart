@@ -1795,6 +1795,12 @@ function themeblvd_do_fw_narrow() {
 		$do = false;
 	}
 
+	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+		if ( is_shop() ) {
+			$do = false;
+		}
+	}
+
 	return apply_filters('themeblvd_do_fw_narrow', $do);
 }
 
