@@ -5076,14 +5076,10 @@ blockquote small {
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	*/
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
-}
-.safari .tb-thumb-link.alignright img,
-.safari .tb-thumb-link.alignleft img,
-.safari .tb-thumb-link.alignright .img,
-.safari .tb-thumb-link.alignleft .img {
-	-webkit-transition: none;
 }
 .tb-thumb-link:hover img,
 .tb-thumb-link:hover .img {
