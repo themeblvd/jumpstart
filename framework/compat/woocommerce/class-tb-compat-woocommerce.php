@@ -799,7 +799,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	public function up_sell() {
 		wc_get_template( 'single-product/up-sells.php', apply_filters('themeblvd_woocommerce_up_sell_args', array(
 			'posts_per_page'	=> '-1',
-			'orderby'			=> apply_filters( 'woocommerce_upsells_orderby', $orderby ), // woo default filter, let's keep it for compat
+			'orderby'			=> apply_filters('woocommerce_upsells_orderby', 'rand'), // woo default filter, let's keep it for compat
 			'columns'			=> $this->loop_columns()
 		)));
 	}
