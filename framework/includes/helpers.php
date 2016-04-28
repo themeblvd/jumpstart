@@ -1652,7 +1652,7 @@ function themeblvd_do_fa( $str ) {
 
 		foreach ( $icons[0] as $key => $val ) {
 
-			$html = apply_filters('themeblvd_do_fa_html', '<i class="fa fa-%s"></i>', $str);
+			$html = apply_filters('themeblvd_do_fa_html', '<i class="fa fa-fw fa-%s"></i>', $str);
 
 			if ( $list && $key > 0 ) {
 				$html = "<li>\n".$html;
