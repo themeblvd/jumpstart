@@ -240,7 +240,7 @@ function themeblvd_get_js_locals() {
 	// Sticky header
 	$locals['sticky'] = 'false';
 
-	if ( themeblvd_config('sticky') && ! wp_is_mobile() ) {
+	if ( themeblvd_config('sticky') && ! wp_is_mobile() && ! themeblvd_is_ie( array('7', '8', '9') ) ) {
 		$locals['sticky'] = 'true';
 		$locals['sticky_class'] = implode( ' ', apply_filters( 'themeblvd_sticky_class', array() ) );
 		$locals['sticky_offset'] = apply_filters('themeblvd_sticky_offset', '48');
