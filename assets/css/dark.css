@@ -1,34 +1,6 @@
 /* =Top
 ----------------------------------------------- */
 
-.site-header {
-	background: #151515;
-}
-
-/* Header Top */
-.header-top {
-	background: #222222;
-}
-.header-top-nav > li {
-	border-right-color: #000000;
-	border-right-color: rgba(0,0,0,.9);
-}
-.btn-navbar {
-	background: #333333;
-	color: #ffffff;
-}
-.btn-navbar:hover {
-	background: #000000;
-	background: rgba(0,0,0,.9);
-	color: #ffffff;
-}
-
-/* Primary Navigation (non-mobile view) */
-.header-nav {
-	background: #000000;
-	background: rgba(0,0,0,.9);
-}
-
 /* Sticky Menu */
 .tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
 	background: #222222;
@@ -93,7 +65,12 @@ article.page {
 
 /* Captions */
 .wp-caption .wp-caption-text {
-	background: #222222;
+	background: #151515;
+}
+
+/* Galleries */
+.gallery-item .gallery-caption {
+	background: #151515;
 }
 
 /* =Comments
