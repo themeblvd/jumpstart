@@ -1783,7 +1783,7 @@ function themeblvd_do_fw_narrow() {
 		$do = true;
 	}
 
-	if ( is_page_template('template_builder.php') ) {
+	if ( themeblvd_get_option('fw_narrow') && is_page_template('template_builder.php') ) {
 		$do = true;
 	}
 
