@@ -558,10 +558,14 @@ jQuery(document).ready(function($) {
 
 	$('.epic-thumb.gallery').on({
 		mouseenter: function () {
-			$(this).addClass('hover').find('.entry-header').stop().fadeOut(200);
+			if ( $window.width() >= 768 ) {
+				$(this).addClass('hover').find('.entry-header').stop().fadeOut(200);
+			}
 		},
 		mouseleave: function () {
-			$(this).removeClass('hover').find('.entry-header').stop().fadeIn(200);
+			if ( $window.width() >= 768 ) {
+				$(this).removeClass('hover').find('.entry-header').stop().fadeIn(200);
+			}
 		}
 	});
 
