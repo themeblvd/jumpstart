@@ -538,10 +538,11 @@ function themeblvd_footer_content_default() {
 		$args = array();
 		$args['num'] = count( explode( '-', $footer_setup ) );
 		$args['widths'] = $footer_setup;
+		$args = apply_filters('themeblvd_footer_columns_args', $args);
 
-		// Build array of columns
 		$i = 1;
 		$columns = array();
+
 		while ( $i <= $args['num'] ) {
 			$columns[$i] = themeblvd_get_option( 'footer_col_'.$i );
 			$i++;
