@@ -415,16 +415,6 @@ a.list-group-item.active:focus {
 /* =Responsive Elements
 -----------------------------------------------*/
 
-/* Menu Toggle */
-.btn-navbar {
-    background-color: #000000;
-    color: #ffffff !important;
-}
-.btn-navbar:hover,
-.btn-navbar:active {
-    background-color: #222222;
-}
-
 /* =Video/Audio
 ----------------------------------------------- */
 
