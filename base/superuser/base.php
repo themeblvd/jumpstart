@@ -1174,8 +1174,9 @@ function jumpstart_su_options() {
 				'id' 		=> 'font_epic',
 				'name' 		=> __('Featured Image Title Font', 'jumpstart'),
 				'desc' 		=> __('This applies when displaying a title on top of featured images.', 'jumpstart'),
-				'std' 		=> array('size' => '', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Montserrat:700', 'style' => 'uppercase'),
-				'atts'		=> array('face', 'style', 'weight'),
+				'std' 		=> array('size' => '50px', 'face' => 'google', 'weight' => '700', 'color' => '', 'google' => 'Montserrat:700', 'style' => 'uppercase'),
+				'atts'		=> array('face', 'style', 'weight', 'size'),
+				'sizes'		=> array('25', '26', '150'),
 				'type' 		=> 'typography'
 			),
 			'font_epic_sp' => array(
@@ -1724,8 +1725,11 @@ function jumpstart_su_css() {
 		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
 		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
 		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_epic_sp') );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 
+		$print .= "}\n";
+
+		$print .= ".epic-thumb .entry-title {\n";
+		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
 		$print .= "}\n";
 
 		$print .= "@media (min-width: 992px) {\n";
