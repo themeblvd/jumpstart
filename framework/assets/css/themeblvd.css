@@ -881,13 +881,19 @@ img.size-full {
 }
 .tb-sticky-menu .header-logo {
 	display: block !important;
-	float: left;
-	margin: 5px 0;
+	float: none;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-ms-transform: translate(0, -50%); /* IE9 */
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
 }
 .tb-sticky-menu .header-logo img {
 	display: block;
 	width: auto;
-	height: 38px;
+	max-height: 30px;
 }
 .tb-sticky-menu .header-text-logo {
 	padding: 0;
