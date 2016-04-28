@@ -422,7 +422,7 @@ class Theme_Blvd_Options_API {
 						'name'		=> __('Setup Columns', 'jumpstart'),
 						'desc'		=> null,
 						'id' 		=> 'footer_setup',
-						//'std'		=> '1/3-1/3-1/3',
+						'std'		=> '1/4-1/4-1/4-1/4',
 						'std'		=> '',
 						'type'		=> 'columns',
 						'options'	=> 'standard'
@@ -431,6 +431,11 @@ class Theme_Blvd_Options_API {
 						'name'		=> __('Footer Column #1', 'jumpstart'),
 						'desc'		=> __('Configure the content for the first column.', 'jumpstart'),
 						'id' 		=> 'footer_col_1',
+						'std'		=> array(
+					        'type'          => 'raw',
+					        'raw'           => "<h3 class=\"widget-title\">About Us</h3>\n\nHey there! Edit me from WP Admin > Appearance > Theme Options > Layout > Footer.\n\n%phone% 907.555.1234\n%envelope% you@youremail.com",
+					        'raw_format'	=> 1
+					    ),
 						'type'		=> 'content',
 						'class'		=> 'col_1',
 						'options'	=> array( 'widget', 'page', 'raw' )

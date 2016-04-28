@@ -517,9 +517,10 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	$output .= $select_type;
 
 	if ( in_array ( 'widget', $options ) ) {
+		$link = sprintf( '<a href="%s" target="_blank">%s</a>', esc_url( admin_url('themes.php?page=themeblvd_widget_areas') ), esc_html__('Appearance > Widget Areas', 'jumpstart') );
 		$output .= '<div class="column-content-type column-content-type-widget">';
 		$output .= $select_sidebar;
-		$output .= '<p class="note">'.esc_html__('Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way in the Widget Area manager.', 'jumpstart').'</p>';
+		$output .= '<p class="note">'.sprintf( esc_html__('Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way at %s.', 'jumpstart'), $link ).'</p>';
 		$output .= '</div>';
 	}
 

@@ -119,11 +119,14 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'img_caption_shortcode', 'themeblvd_img_caption_shortcode', 10, 3 );
 	add_filter( 'themeblvd_the_content', array( $GLOBALS['wp_embed'], 'run_shortcode' ), 8 );
 	add_filter( 'themeblvd_the_content', array( $GLOBALS['wp_embed'], 'autoembed' ), 8 );
+	add_filter( 'themeblvd_the_content', 'themeblvd_footer_copyright_helpers' );
+	add_filter( 'themeblvd_the_content', 'themeblvd_do_fa' );
 	add_filter( 'themeblvd_the_content', 'wptexturize' );
 	add_filter( 'themeblvd_the_content', 'wpautop' );
 	add_filter( 'themeblvd_the_content', 'shortcode_unautop' );
 	add_filter( 'themeblvd_the_content', 'do_shortcode' );
-	add_filter( 'themeblvd_the_content', 'themeblvd_footer_copyright_helpers' );
+	add_filter( 'widget_text', 'themeblvd_footer_copyright_helpers' );
+	add_filter( 'widget_text', 'themeblvd_do_fa' );
 	add_filter( 'themeblvd_sidebar_layout', 'themeblvd_wpmultisite_signup_sidebar_layout' );
 	add_filter( 'the_content_more_link', 'themeblvd_read_more_link', 10, 2 );
 	add_filter( 'use_default_gallery_style', '__return_false' );
