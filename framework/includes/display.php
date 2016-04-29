@@ -167,10 +167,14 @@ function themeblvd_header_logo_default() {
 
 		$trans = themeblvd_get_option('trans_logo');
 
-		if ( themeblvd_config('suck_up') && ! empty($trans['type']) && $trans['type'] != 'default' ) {
+		if ( themeblvd_config('suck_up') && ! empty($trans['type']) ) {
 
 			$logo['class'] = 'logo-standard';
 			echo themeblvd_get_logo($logo);
+
+			if ( $trans['type'] == 'default' ) {
+				$trans = $logo;
+			}
 
 			$trans['class'] = 'logo-trans';
 			echo themeblvd_get_logo($trans);
@@ -196,16 +200,13 @@ function themeblvd_header_logo_mobile() {
 
 	$logo = themeblvd_get_option('mobile_logo');
 
-	if ( ! $logo ) {
+	if ( ! $logo || ( ! empty($logo['type']) && $logo['type'] == 'default' ) ) {
 		$logo = themeblvd_get_option('logo');
 	}
 
 	if ( $logo ) {
-
 		$logo['class'] = 'logo-mobile';
-
 		echo themeblvd_get_logo($logo);
-
 	}
 
 }

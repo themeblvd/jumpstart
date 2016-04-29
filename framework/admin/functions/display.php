@@ -884,7 +884,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		'image' 		=> __('Image', 'jumpstart')
 	);
 
-	if ( $id != 'trans_logo' ) {
+	if ( $id != 'trans_logo' && $id != 'mobile_logo' ) {
 		unset( $types['default'] );
 	}
 
