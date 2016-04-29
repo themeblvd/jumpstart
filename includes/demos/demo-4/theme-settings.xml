@@ -2,11 +2,11 @@
 <settings id="jumpstart" themeblvd="options" url="http://demoblvd.com/themes/jumpstart-2/demo-4" template="jumpstart">
 	<setting>
 		<id>framework_version</id>
-		<value><![CDATA[Mi41LjA=]]></value>
+		<value><![CDATA[Mi42LjA=]]></value>
 	</setting>
 	<setting>
 		<id>theme_version</id>
-		<value><![CDATA[Mi4wLjA=]]></value>
+		<value><![CDATA[Mi4xLjA=]]></value>
 	</setting>
 	<setting>
 		<id>theme_base</id>
@@ -78,7 +78,7 @@
 	</setting>
 	<setting>
 		<id>header_height</id>
-		<value><![CDATA[OTBweA==]]></value>
+		<value><![CDATA[NzBweA==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_type</id>
@@ -101,16 +101,8 @@
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
-		<id>header_bg_texture_parallax</id>
-		<value><![CDATA[NQ==]]></value>
-	</setting>
-	<setting>
 		<id>header_bg_image</id>
 		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
-		<id>header_bg_image_parallax</id>
-		<value><![CDATA[Mg==]]></value>
 	</setting>
 	<setting>
 		<id>header_bg_video</id>
@@ -141,10 +133,6 @@
 		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
-		<id>header_bg_slideshow_parallax</id>
-		<value><![CDATA[NQ==]]></value>
-	</setting>
-	<setting>
 		<id>header_text_color</id>
 		<value><![CDATA[ZGFyaw==]]></value>
 	</setting>
@@ -162,27 +150,27 @@
 	</setting>
 	<setting>
 		<id>header_apply_border_bottom</id>
-		<value><![CDATA[MQ==]]></value>
+		<value><![CDATA[MA==]]></value>
 	</setting>
 	<setting>
 		<id>header_border_bottom_color</id>
-		<value><![CDATA[I2RkZGRkZA==]]></value>
+		<value><![CDATA[I2YyZjJmMg==]]></value>
 	</setting>
 	<setting>
 		<id>header_border_bottom_width</id>
 		<value><![CDATA[MXB4]]></value>
 	</setting>
 	<setting>
+		<id>header_mobile_bg_color</id>
+		<value><![CDATA[I2ZmZmZmZg==]]></value>
+	</setting>
+	<setting>
+		<id>header_mobile_bg_color_brightness</id>
+		<value><![CDATA[bGlnaHQ=]]></value>
+	</setting>
+	<setting>
 		<id>menu_text_shadow</id>
 		<value><![CDATA[MA==]]></value>
-	</setting>
-	<setting>
-		<id>menu_apply_font</id>
-		<value><![CDATA[MA==]]></value>
-	</setting>
-	<setting>
-		<id>font_menu</id>
-		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6NDoiMTNweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo2OiJ3ZWlnaHQiO3M6MzoiMzAwIjtzOjU6ImNvbG9yIjtzOjc6IiM1NTU1NTUiO3M6NjoiZ29vZ2xlIjtzOjExOiJSYWxld2F5OjMwMCI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO30=]]></value>
 	</setting>
 	<setting>
 		<id>menu_highlight</id>
@@ -202,15 +190,19 @@
 	</setting>
 	<setting>
 		<id>menu_mobile_bg_color</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[IzJhNjQ5Ng==]]></value>
 	</setting>
 	<setting>
 		<id>menu_mobile_bg_color_brightness</id>
 		<value><![CDATA[ZGFyaw==]]></value>
 	</setting>
 	<setting>
-		<id>menu_mobile_social_media_style</id>
-		<value><![CDATA[bGlnaHQ=]]></value>
+		<id>side_bg_color</id>
+		<value><![CDATA[IzJhNjQ5Ng==]]></value>
+	</setting>
+	<setting>
+		<id>side_bg_color_brightness</id>
+		<value><![CDATA[ZGFyaw==]]></value>
 	</setting>
 	<setting>
 		<id>footer_bg_type</id>
@@ -258,11 +250,43 @@
 	</setting>
 	<setting>
 		<id>font_body</id>
-		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6Njoid2VpZ2h0IjtzOjM6IjMwMCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjk6Ik9wZW4gU2FucyI7fQ==]]></value>
+		<value><![CDATA[YTo4OntzOjQ6InNpemUiO3M6NDoiMTRweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6Njoid2VpZ2h0IjtzOjM6IjMwMCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjk6Ik9wZW4gU2FucyI7czo3OiJ0eXBla2l0IjtzOjA6IiI7czoxMToidHlwZWtpdF9raXQiO3M6MDoiIjt9]]></value>
 	</setting>
 	<setting>
 		<id>font_header</id>
-		<value><![CDATA[YTo2OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo2OiJ3ZWlnaHQiO3M6MzoiNzAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MTU6IlJvYm90byBTbGFiOjcwMCI7fQ==]]></value>
+		<value><![CDATA[YTo4OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Im5vcm1hbCI7czo2OiJ3ZWlnaHQiO3M6MzoiNzAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MTU6IlJvYm90byBTbGFiOjcwMCI7czo3OiJ0eXBla2l0IjtzOjA6IiI7czoxMToidHlwZWtpdF9raXQiO3M6MDoiIjt9]]></value>
+	</setting>
+	<setting>
+		<id>font_quote</id>
+		<value><![CDATA[YTo4OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjY6Iml0YWxpYyI7czo2OiJ3ZWlnaHQiO3M6MzoiNDAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6Mjc6IkxpYnJlIEJhc2tlcnZpbGxlOjQwMGl0YWxpYyI7czo3OiJ0eXBla2l0IjtzOjA6IiI7czoxMToidHlwZWtpdF9raXQiO3M6MDoiIjt9]]></value>
+	</setting>
+	<setting>
+		<id>font_quote_sp</id>
+		<value><![CDATA[MHB4]]></value>
+	</setting>
+	<setting>
+		<id>font_meta</id>
+		<value><![CDATA[YTo4OntzOjQ6InNpemUiO3M6MDoiIjtzOjQ6ImZhY2UiO3M6NjoiZ29vZ2xlIjtzOjU6InN0eWxlIjtzOjk6InVwcGVyY2FzZSI7czo2OiJ3ZWlnaHQiO3M6MzoiNDAwIjtzOjU6ImNvbG9yIjtzOjA6IiI7czo2OiJnb29nbGUiO3M6MTQ6Ik1vbnRzZXJyYXQ6NDAwIjtzOjc6InR5cGVraXQiO3M6MDoiIjtzOjExOiJ0eXBla2l0X2tpdCI7czowOiIiO30=]]></value>
+	</setting>
+	<setting>
+		<id>font_meta_sp</id>
+		<value><![CDATA[MHB4]]></value>
+	</setting>
+	<setting>
+		<id>font_epic</id>
+		<value><![CDATA[YTo4OntzOjQ6InNpemUiO3M6NDoiNTBweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo5OiJ1cHBlcmNhc2UiO3M6Njoid2VpZ2h0IjtzOjM6IjcwMCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjE0OiJNb250c2VycmF0OjcwMCI7czo3OiJ0eXBla2l0IjtzOjA6IiI7czoxMToidHlwZWtpdF9raXQiO3M6MDoiIjt9]]></value>
+	</setting>
+	<setting>
+		<id>font_epic_sp</id>
+		<value><![CDATA[M3B4]]></value>
+	</setting>
+	<setting>
+		<id>font_menu</id>
+		<value><![CDATA[YTo4OntzOjQ6InNpemUiO3M6NDoiMTNweCI7czo0OiJmYWNlIjtzOjY6Imdvb2dsZSI7czo1OiJzdHlsZSI7czo2OiJub3JtYWwiO3M6Njoid2VpZ2h0IjtzOjM6IjcwMCI7czo1OiJjb2xvciI7czowOiIiO3M6NjoiZ29vZ2xlIjtzOjE1OiJSb2JvdG8gU2xhYjo3MDAiO3M6NzoidHlwZWtpdCI7czowOiIiO3M6MTE6InR5cGVraXRfa2l0IjtzOjA6IiI7fQ==]]></value>
+	</setting>
+	<setting>
+		<id>font_menu_sp</id>
+		<value><![CDATA[MHB4]]></value>
 	</setting>
 	<setting>
 		<id>link_color</id>
@@ -362,11 +386,11 @@
 	</setting>
 	<setting>
 		<id>custom_styles</id>
-		<value><![CDATA[LyogUGFnZSBCYW5uZXJzICovDQoudGItZmVhdHVyZWQtYmFubmVyIHsNCglib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RkZDsNCn0NCi50Yi1mZWF0dXJlZC1iYW5uZXIgLndyYXAgew0KCW1pbi1oZWlnaHQ6IDEwMHB4Ow0KfQ0KLnRiLWZlYXR1cmVkLWJhbm5lciAuYmFubmVyLXRpdGxlIHsNCglmb250LXNpemU6IDI0cHg7DQp9DQoNCi8qIEhvbWUgSGVybyBVbml0ICovDQouaG9tZSAuZWxlbWVudC1qdW1ib3Ryb24gLnRleHQtYmxvY2stMiB7DQoJZm9udC1mYW1pbHk6ICJSb2JvdG8gU2xhYiI7LyogVXNlIGhlYWRlciBmb250IGZyb20gdHlwb2dyYXBoeSBvcHRpb25zICovDQp9]]></value>
+		<value><![CDATA[LyogMTAwJSBvcGFjaXR5IGZvciBGZWF0dXJlZCBJbWFnZXMgKi8NCi5lcGljLXRodW1iLmZ3IGltZyB7DQoJb3BhY2l0eTogMTsJDQp9DQoNCi8qIEhvbWUgSGVybyBVbml0ICovDQouaG9tZSAuZWxlbWVudC1qdW1ib3Ryb24gLnRleHQtYmxvY2stMiB7DQoJZm9udC1mYW1pbHk6ICJSb2JvdG8gU2xhYiI7LyogVXNlIGhlYWRlciBmb250IGZyb20gdHlwb2dyYXBoeSBvcHRpb25zICovDQp9]]></value>
 	</setting>
 	<setting>
 		<id>logo</id>
-		<value><![CDATA[YTo3OntzOjQ6InR5cGUiO3M6NToiaW1hZ2UiO3M6NjoiY3VzdG9tIjtzOjA6IiI7czoxNDoiY3VzdG9tX3RhZ2xpbmUiO3M6MDoiIjtzOjU6ImltYWdlIjtzOjc0OiJodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3RoZW1lbHZkLWRlbW8tYXNzZXRzL2p1bXBzdGFydC1sb2dvLnBuZyI7czoxMToiaW1hZ2Vfd2lkdGgiO3M6MzoiMjUwIjtzOjEyOiJpbWFnZV9oZWlnaHQiO3M6MjoiNzUiO3M6ODoiaW1hZ2VfMngiO3M6Nzc6Imh0dHBzOi8vczMtdXMtd2VzdC0yLmFtYXpvbmF3cy5jb20vdGhlbWVsdmQtZGVtby1hc3NldHMvanVtcHN0YXJ0LWxvZ29fMngucG5nIjt9]]></value>
+		<value><![CDATA[YTo3OntzOjQ6InR5cGUiO3M6NToiaW1hZ2UiO3M6NjoiY3VzdG9tIjtzOjA6IiI7czoxNDoiY3VzdG9tX3RhZ2xpbmUiO3M6MDoiIjtzOjU6ImltYWdlIjtzOjczOiJodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3RoZW1lYmx2ZC1qdW1wc3RhcnQvc2l0ZS1sb2dvL2xvZ28ucG5nIjtzOjExOiJpbWFnZV93aWR0aCI7czozOiIyNTAiO3M6MTI6ImltYWdlX2hlaWdodCI7czoyOiI3NSI7czo4OiJpbWFnZV8yeCI7czo3NjoiaHR0cHM6Ly9zMy11cy13ZXN0LTIuYW1hem9uYXdzLmNvbS90aGVtZWJsdmQtanVtcHN0YXJ0L3NpdGUtbG9nby9sb2dvXzJ4LnBuZyI7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>header_text</id>
@@ -385,8 +409,12 @@
 		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>
+		<id>mobile_logo</id>
+		<value><![CDATA[YTo3OntzOjQ6InR5cGUiO3M6NToiaW1hZ2UiO3M6NjoiY3VzdG9tIjtzOjA6IiI7czoxNDoiY3VzdG9tX3RhZ2xpbmUiO3M6MDoiIjtzOjU6ImltYWdlIjtzOjc5OiJodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3RoZW1lYmx2ZC1qdW1wc3RhcnQvc2l0ZS1sb2dvL2xvZ28tc21hbGwucG5nIjtzOjExOiJpbWFnZV93aWR0aCI7czoyOiI4NSI7czoxMjoiaW1hZ2VfaGVpZ2h0IjtzOjI6IjI1IjtzOjg6ImltYWdlXzJ4IjtzOjgyOiJodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3RoZW1lYmx2ZC1qdW1wc3RhcnQvc2l0ZS1sb2dvL2xvZ28tc21hbGxfMngucG5nIjt9]]></value>
+	</setting>
+	<setting>
 		<id>trans_logo</id>
-		<value><![CDATA[YTo3OntzOjQ6InR5cGUiO3M6NToiaW1hZ2UiO3M6NjoiY3VzdG9tIjtzOjA6IiI7czoxNDoiY3VzdG9tX3RhZ2xpbmUiO3M6MDoiIjtzOjU6ImltYWdlIjtzOjgwOiJodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3RoZW1lbHZkLWRlbW8tYXNzZXRzL2p1bXBzdGFydC1sb2dvLXRyYW5zLnBuZyI7czoxMToiaW1hZ2Vfd2lkdGgiO3M6MzoiMjUwIjtzOjEyOiJpbWFnZV9oZWlnaHQiO3M6MjoiNzUiO3M6ODoiaW1hZ2VfMngiO3M6ODM6Imh0dHBzOi8vczMtdXMtd2VzdC0yLmFtYXpvbmF3cy5jb20vdGhlbWVsdmQtZGVtby1hc3NldHMvanVtcHN0YXJ0LWxvZ28tdHJhbnNfMngucG5nIjt9]]></value>
+		<value><![CDATA[YTo3OntzOjQ6InR5cGUiO3M6NToiaW1hZ2UiO3M6NjoiY3VzdG9tIjtzOjA6IiI7czoxNDoiY3VzdG9tX3RhZ2xpbmUiO3M6MDoiIjtzOjU6ImltYWdlIjtzOjc5OiJodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3RoZW1lYmx2ZC1qdW1wc3RhcnQvc2l0ZS1sb2dvL2xvZ28tbGlnaHQucG5nIjtzOjExOiJpbWFnZV93aWR0aCI7czozOiIyNTAiO3M6MTI6ImltYWdlX2hlaWdodCI7czoyOiI3NSI7czo4OiJpbWFnZV8yeCI7czo4MjoiaHR0cHM6Ly9zMy11cy13ZXN0LTIuYW1hem9uYXdzLmNvbS90aGVtZWJsdmQtanVtcHN0YXJ0L3NpdGUtbG9nby9sb2dvLWxpZ2h0XzJ4LnBuZyI7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>trans_social_media_style</id>
@@ -461,6 +489,18 @@
 		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
 	<setting>
+		<id>fw_narrow</id>
+		<value><![CDATA[MA==]]></value>
+	</setting>
+	<setting>
+		<id>img_popout</id>
+		<value><![CDATA[MA==]]></value>
+	</setting>
+	<setting>
+		<id>gallery_carousel</id>
+		<value><![CDATA[MQ==]]></value>
+	</setting>
+	<setting>
 		<id>single_meta</id>
 		<value><![CDATA[c2hvdw==]]></value>
 	</setting>
@@ -479,6 +519,10 @@
 	<setting>
 		<id>single_related_posts</id>
 		<value><![CDATA[dGFn]]></value>
+	</setting>
+	<setting>
+		<id>single_related_posts_style</id>
+		<value><![CDATA[bGlzdA==]]></value>
 	</setting>
 	<setting>
 		<id>single_comments</id>
