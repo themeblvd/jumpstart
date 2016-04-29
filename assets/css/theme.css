@@ -1196,7 +1196,6 @@ article.tb-naked-page {
 	position: relative;
 }
 #comments .comment-body .avatar {
-	border-radius: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1347,9 +1346,6 @@ article.tb-naked-page {
 		padding: 30px;
 	}
 }
-.tb-author-box .avatar-wrap img {
-	border-radius: 100%;
-}
 .tb-author-box .tb-social-icons > li > a {
 	font-size: 15px;
 	padding: .33333em;
@@ -1443,15 +1439,6 @@ article.tb-naked-page {
 
 /* =Parts
 ----------------------------------------------- */
-
-/* Mini Post List / Grid */
-.tb-mini-post-grid img,
-.tb-mini-post-grid .placeholder,
-.tb-mini-post-list img,
-.tb-mini-post-list .placeholder,
-.product_list_widget li > a > img {
-	border-radius: 100%;
-}
 
 /* Box Titles */
 .box-title,

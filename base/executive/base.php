@@ -1893,7 +1893,7 @@ function jumpstart_ex_css() {
 	}
 
 	// Disable circlular avatars & small thumbs
-	if ( ! themeblvd_get_option('thumbnail_circles') ) { // by default, theme styles these as circles with 100% border-radius
+	if ( themeblvd_get_option('thumbnail_circles') ) {
 
 		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
 			$print .= ".product_list_widget li > a > img,\n";
@@ -1905,8 +1905,9 @@ function jumpstart_ex_css() {
 		$print .= ".tb-mini-post-grid .placeholder,\n";
 		$print .= ".tb-mini-post-list img,\n";
 		$print .= ".tb-mini-post-list .placeholder {\n";
-		$print .= "\tborder-radius: 0;\n";
+		$print .= "\tborder-radius: 100%;\n";
 		$print .= "}\n";
+
 	}
 
 	// Highlight Color
