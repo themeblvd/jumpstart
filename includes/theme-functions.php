@@ -39,6 +39,10 @@ function jumpstart_bases() {
 				'name'		=> __('Super User', 'jumpstart'),
 				'desc'		=> __('For the super user, this base builds on the default theme to give you more visual, user options.', 'jumpstart')
 			),
+			'agent' => array(
+				'name'		=> __('Agent', 'jumpstart'),
+				'desc'		=> __('A modern and open, agency-style design with a bit less user options.', 'jumpstart')
+			),
 			'entrepreneur' => array(
 				'name'		=> __('Entrepreneur', 'jumpstart'),
 				'desc'		=> __('A more standard, corporate design with a lot of user options.', 'jumpstart')
