@@ -5537,13 +5537,11 @@ body.mobile .tb-bg-video {
 		width: 100%;
 		z-index: 1;
 	}
-	.epic-thumb .epic-thumb-header {
-		max-width: 1000px;
-	}
 	.epic-thumb .epic-thumb-header .entry-title {
 		color: #ffffff;
 		font-size: 50px;
 		margin: 0 auto;
+		max-width: 16em;
 	}
 	.epic-thumb .epic-thumb-header .entry-meta {
 		font-size: 12px;
