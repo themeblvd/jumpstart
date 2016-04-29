@@ -5764,6 +5764,13 @@ body.mobile .tb-bg-video {
 .list-wrap p {
 	margin: 0 0 20px 0;
 }
+.list-wrap .tb-thumb-link:before {
+	font-size: 18px;
+	line-height: 3em;
+	margin: -1.5em 0 0 -1.5em;
+	width: 3em;
+	height: 3em;
+}
 
 /* Post Grid */
 .grid-wrap {
