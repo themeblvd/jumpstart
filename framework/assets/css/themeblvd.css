@@ -18,6 +18,7 @@
  *   2.3 - Icon Lists
  *   2.4 - Rounded Corners
  *   2.5 - Viewport
+ *   2.6 - Play Button
  * 3.0 - WP Classes
  * 4.0 - Animation
  * 5.0 - Post Formats
@@ -534,6 +535,26 @@ img.size-full {
 	.ie9 .height-100vh {
 		min-height: 0;
 	}
+}
+
+/* Play Button */
+.tb-play {
+	background: url(../svg/play.svg) center center no-repeat;
+	background-size: 80px 80px;
+	display: block;
+	margin: 0 auto;
+	opacity: .8;
+	text-indent: -9999px;
+	width: 84px;
+	height: 84px;
+}
+.tb-play:hover,
+.tb-play:focus {
+	opacity: 1;
+	outline: none;
+}
+.tb-play.dark {
+	background-image: url(../svg/play-101010.svg);
 }
 
 /* =WordPress Standard Classes
