@@ -496,7 +496,7 @@ jQuery(document).ready(function($) {
 
 					$ul.addClass('reverse');
 
-					$ul.find('.fa-caret-right, .fa-caret-left').each(function(){
+					$ul.find('.fa-caret-right, .fa-caret-left, .fa-angle-right, fa-angle-left').each(function(){
 						$(this).addClass('inverse');
 					});
 
@@ -504,7 +504,7 @@ jQuery(document).ready(function($) {
 
 					$ul.removeClass('reverse');
 
-					$ul.find('.fa-caret-right, .fa-caret-left').each(function(){
+					$ul.find('.fa-caret-right, .fa-caret-left, .fa-angle-right, fa-angle-left').each(function(){
 						$(this).removeClass('inverse');
 					});
 
