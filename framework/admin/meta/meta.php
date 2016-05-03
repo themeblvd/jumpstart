@@ -180,7 +180,7 @@ function setup_themeblvd_layout_meta() {
 			'layout_header' => array(
 				'id'		=> '_tb_layout_header',
 				'name' 		=> __('Header', 'jumpstart'),
-				'desc'		=> __('Note: The transparent header option will work better with a full-width or full-screen featured image, or a when custom layout is applied to the page.', 'jumpstart').' <a href="https://vimeo.com/118959469" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
+				'desc'		=> __('Note: The transparent header option will work best when a large graphic is displayed prominently at the top of the page.', 'jumpstart').' <a href="https://vimeo.com/165052766" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
 				'type' 		=> 'select',
 				'options'	=> array(
 					'default'		=> __('Standard Header', 'jumpstart'),
