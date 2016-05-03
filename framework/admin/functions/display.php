@@ -888,6 +888,10 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		unset( $types['default'] );
 	}
 
+	if ( $id == 'mobile_logo' ) {
+		unset( $types['title_tagline'] );
+	}
+
 	$current_value = '';
 
 	if ( ! empty( $val ) && ! empty( $val['type'] ) ) {
