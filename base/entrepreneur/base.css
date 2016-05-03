@@ -222,8 +222,8 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li > .menu-btn:before {
 	content: "";
 	position: absolute;
-	left: 50%;
-	right: 50%;
+	left: 51%;
+	right: 51%;
 	bottom: 0;
 	background: #fec527; /* highlight */
 	height: 4px;
