@@ -144,9 +144,16 @@ Author URI: http://www.themeblvd.com
 .header-content .header-text-logo.header_logo_has_tagline {
 	padding: 22px 10px;
 }
-.header-content .header-text-logo .tb-text-logo {
-	font-size: 28px;
-	line-height: 1;
+@media (min-width: 768px) {
+	.header-content .header-text-logo .tb-text-logo {
+		font-size: 28px;
+		line-height: 1;
+	}
+}
+@media (max-width: 767px) {
+	.mobile-light .header-text-logo .tb-text-logo {
+		color: #222222;
+	}
 }
 .header-content .header-text-logo .tagline {
 	display: block;
@@ -155,6 +162,9 @@ Author URI: http://www.themeblvd.com
 	margin-top: 5px;
 }
 @media (min-width: 768px) {
+	.header-content .header-text-logo .tagline {
+		display: none;
+	}
 	.mobile-nav > li > a {
 		padding-right: 10px;
 		padding-left: 10px;

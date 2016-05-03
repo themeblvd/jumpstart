@@ -146,6 +146,11 @@ body {
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+	.epic-thumb .epic-thumb-header,
+	.epic-thumb .epic-thumb-quote {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
 	.element.popout .jumbotron-wrap {
 		padding-left: 0;
 		padding-right: 0;
@@ -319,22 +324,21 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	.header-logo img {
 		max-height: 44px;
 	}
+	.header-text-logo .tb-text-logo {
+		color: #ffffff;
+		font-size: 16px;
+	}
+	.header-text-logo .tagline {
+		display: none;
+	}
 }
 .mobile-nav {
 	float: left;
-	margin: 0;
+	margin: 0 0 0 16px;
 }
 .mobile-nav > li {
 	float: left;
-	padding: 0 1px;
-}
-@media (max-width: 767px) {
-	.mobile-nav {
-		border-left: 1px solid rgba(0,0,0,.15);
-	}
-	.mobile-nav > li {
-		border-right: 1px solid rgba(0,0,0,.15);
-	}
+	padding: 0;
 }
 .mobile-nav > li > a {
 	color: #666666;
@@ -343,7 +347,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	font-size: 20px;
 	line-height: 64px;
 	opacity: .95;
-	padding: 0 20px;
+	padding: 0 14px;
 }
 .mobile-nav > li > a:hover {
 	color: rgba(26,26,26,.9);

@@ -1045,6 +1045,9 @@ img.size-full {
 .sf-menu .fa-caret-left.inverse:before {
 	content: "\f0da";
 }
+.sf-menu .fa-angle-left.inverse:before {
+	content: "\f105";
+}
 .tb-primary-menu > li > a .sf-sub-indicator,
 .tb-primary-menu > [class^="menu-icon-"] > a .fa {
 	line-height: 1;
@@ -5134,8 +5137,7 @@ blockquote small {
 	/* content: "\f0c1"; link anchor */
 	content: "\f08e"; /* external-link */
 }
-.element-image .thumbnail,
-.tb-lightbox-shortcode .thumbnail {
+.element-image .thumbnail {
 	margin-bottom: 0;
 }
 .element-image .tb-thumb-link {
@@ -5506,16 +5508,25 @@ body.mobile .tb-bg-video {
 .epic-thumb {
 	position: relative;
 }
-.epic-thumb.tb-parallax {
-	min-height: 550px;
+@media (min-width: 992px) {
+	.epic-thumb.tb-parallax {
+		min-height: 550px;
+	}
+	.epic-thumb.fw {
+		min-height: 120px;
+	}
+}
+@media (min-width: 768px) {
+	.epic-thumb.tb-parallax,
+	.epic-thumb.fw {
+		background: #000000;
+		min-height: 120px;
+	}
 }
 .epic-thumb.fw img {
 	width: 100%;
 }
 @media (min-width: 768px) {
-	.epic-thumb.fw {
-		background: #000000;
-	}
 	.epic-thumb.tb-parallax .parallax-figure.on img,
 	.epic-thumb.fw img {
 		opacity: 0.6;
@@ -7269,6 +7280,7 @@ body.mobile .tb-bg-video {
 	max-width: 400px;
 }
 .tb-testimonial.showcase .author {
+	font-size: 13px;
 	padding-top: 20px;
 	text-align: center;
 }

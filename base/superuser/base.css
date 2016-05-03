@@ -58,6 +58,11 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Header Logo */
+@media (max-width: 767px) {
+	.mobile-light .header-text-logo .tb-text-logo {
+		color: #222222;
+	}
+}
 @media (min-width: 992px) {
 	.js-center-logo .header-content .header-logo {
 		float: none;
