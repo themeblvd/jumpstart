@@ -427,16 +427,21 @@ function jumpstart_ag_options() {
 	themeblvd_remove_option('layout', 'header_trans', 'trans_social_media_style');
 
 	// Set default logos
-	$logo = array(
+	themeblvd_edit_option('layout', 'header', 'logo', 'std', array(
 		'type'			=> 'image',
 		'image'			=> get_template_directory_uri().'/assets/images/logo-smaller-light.png',
 		'image_width'	=> '85',
 		'image_height'	=> '25',
 		'image_2x'		=> get_template_directory_uri().'/assets/images/logo-smaller-light_2x.png'
-	);
+	));
 
-	themeblvd_edit_option('layout', 'header', 'logo', 'std', $logo);
-	themeblvd_edit_option('layout', 'header_trans', 'trans_logo', 'std', $logo);
+	themeblvd_edit_option('layout', 'header_trans', 'trans_logo', 'std', array(
+		'type'			=> 'default',
+		'image'			=> '',
+		'image_width'	=> '',
+		'image_height'	=> '0',
+		'image_2x'		=> ''
+	));
 
 	// Make narrow full-width content and popout images on by default
 	themeblvd_edit_option('content', 'general', 'fw_narrow', 'std', '1');
@@ -563,7 +568,7 @@ function jumpstart_ag_css() {
 	/*------------------------------------------------------------*/
 
 	$print .= "/* Primary Buttons */\n";
-	$print .= ".btn:not(.tb-custom-button),\n";
+	$print .= ".btn-default,\n";
 	$print .= "input[type=\"submit\"],\n";
 	$print .= "input[type=\"reset\"],\n";
 	$print .= "input[type=\"button\"],\n";
@@ -890,14 +895,27 @@ function jumpstart_ag_css() {
 	$print .= "\t}\n";
 	$print .= "}\n";
 
-	// Height
+	// Get logo attributes
 	if ( themeblvd_config('suck_up') ) {
+
 		$logo = themeblvd_get_option('trans_logo');
+
+		if ( ! $logo || ( ! empty($logo['type']) && $logo['type'] == 'default' ) ) {
+			$logo = themeblvd_get_option('logo');
+		}
+
 	} else {
+
 		$logo = themeblvd_get_option('logo');
+
 	}
 
-	$h = 50 + intval($logo['image_height']);
+	// Height
+	if ( $logo['type'] == 'image' ) {
+		$h = 50 + intval($logo['image_height']);
+	} else {
+		$h = 76;
+	}
 
 	$print .= "@media (min-width: 768px) {\n";
 
@@ -914,15 +932,15 @@ function jumpstart_ag_css() {
 	$print .= "}\n";
 
 	// Logo width
-	if ( themeblvd_config('suck_up') ) {
-		$logo = themeblvd_get_option('trans_logo');
+	if ( $logo['type'] == 'image' ) {
+		$w = $logo['image_width'];
 	} else {
-		$logo = themeblvd_get_option('logo');
+		$w = '200';
 	}
 
 	$print .= "@media (min-width: 768px) {\n";
 	$print .= "\t.site-header .header-logo {\n";
-	$print .= sprintf("\t\tmax-width: %spx;\n", $logo['image_width']);
+	$print .= sprintf("\t\tmax-width: %spx;\n", $w);
 	$print .= "\t}\n";
 	$print .= "}\n";
 
