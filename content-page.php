@@ -15,7 +15,7 @@ $page_class .= get_the_content() ? ' has-content' : ' no-content';
 	<?php endif; ?>
 
 	<?php if ( has_post_thumbnail() && themeblvd_get_att('thumbs') && ! themeblvd_get_att('epic_thumb') ) : ?>
-		<div class="featured-item featured-image">
+		<div class="featured-item featured-image standard popout">
 			<?php themeblvd_the_post_thumbnail(); ?>
 		</div><!-- .featured-item(end) -->
 	<?php endif; ?>
