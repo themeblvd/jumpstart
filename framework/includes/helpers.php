@@ -1796,7 +1796,7 @@ function themeblvd_do_fw_narrow() {
 	}
 
 	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
-		if ( is_shop() ) {
+		if ( is_shop() || is_cart() || is_checkout() ) {
 			$do = false;
 		}
 	}
