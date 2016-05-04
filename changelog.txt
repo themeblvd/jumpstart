@@ -50,7 +50,9 @@ Jump Start Changelog
     * Developers can add to side panel by hooking to `themeblvd_side_panel`.
     * Developers can extend whether the side panel shows by filtering `themeblvd_do_side_panel` boolean.
 * New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
+* New: You can now add the CSS class `highlight` to top-level menu items to make them stand out in a navigation menu.
 * New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
+* New: You can now use the CSS class `tb-play` to set any generic link to look like a video play button.
 * New: Template file `content-blog.php` for the blog post style has been added.
 * New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
 * Improvement: Design for post in blog and single post has been simplified.

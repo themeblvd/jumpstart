@@ -265,7 +265,7 @@ function jumpstart_ent_options() {
 				'std'		=> '70px',
 				'options'	=> array(
 					'units'	=> 'px',
-					'min'	=> '40',
+					'min'	=> '45',
 					'max'	=> '150',
 					'step'	=> '1'
 				)
@@ -1405,6 +1405,7 @@ function jumpstart_ent_css() {
 
 	if ( $font ) {
 
+		$print .= '.post-date,';
 		$print .= ".entry-header .entry-meta,\n";
 		$print .= ".post_grid .entry-meta,\n";
 		$print .= ".tb-post-slider .entry-meta,\n";
@@ -1987,14 +1988,17 @@ function jumpstart_ent_css() {
 	$print .= "}\n";
 	$print .= "}\n";
 
-	$top = round( ($height-20) / 2 ); // 20px line-height for font
-	$bottom = ($height-20) - $top; // 20px line-height for font
+	$top = round( ($height - 20) / 2 ); // 20px line-height for font
+	$bottom = ($height - 20) - $top; // 20px line-height for font
 
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
-
 	$print .= sprintf( "\tpadding-top: %spx;\n", $top );
 	$print .= sprintf( "\tpadding-bottom: %spx;\n", $bottom );
+	$print .= "}\n";
 
+	$print .= ".site-header .tb-primary-menu > li.highlight {\n";
+	$print .= sprintf( "\tpadding-top: %spx;\n", max($top - 10, 0) );
+	$print .= sprintf( "\tpadding-bottom: %spx;\n", max($bottom - 10, 0) );
 	$print .= "}\n";
 
 	$header_text = themeblvd_get_option('header_text_color');

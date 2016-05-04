@@ -1695,6 +1695,7 @@ function jumpstart_su_css() {
 
 	if ( $font ) {
 
+		$print .= '.post-date,';
 		$print .= ".entry-header .entry-meta,\n";
 		$print .= ".tb-mini-post-list .entry-meta,\n";
 		$print .= ".post_grid .entry-meta,\n";
@@ -2387,6 +2388,32 @@ function jumpstart_su_css() {
 		}
 
 		$print .= "}\n";
+
+		if ( themeblvd_get_option('menu_bg_color_brightness') == 'light' ) {
+
+			$print .= ".site-header .tb-primary-menu > li.highlight > a {\n";
+			$print .= "border-color: #333333;\n";
+			$print .= "color: #333333;\n";
+			$print .= "}\n";
+			$print .= ".site-header .tb-primary-menu > li.highlight > a:hover {\n";
+			$print .= "background-color: #333333;\n";
+			$print .= "border-color: transparent;\n";
+			$print .= "color: #ffffff;\n";
+			$print .= "}\n";
+
+		} else {
+
+			$print .= ".site-header .tb-primary-menu > li.highlight > a {\n";
+			$print .= "border-color: #ffffff;\n";
+			$print .= "color: #ffffff;\n";
+			$print .= "}\n";
+			$print .= ".site-header .tb-primary-menu > li.highlight > a:hover {\n";
+			$print .= "background-color: #ffffff;\n";
+			$print .= "border-color: transparent;\n";
+			$print .= "color: #333333;\n";
+			$print .= "}\n";
+
+		}
 
 		if ( themeblvd_get_option('menu_search') ) {
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\n";

@@ -513,6 +513,52 @@ Author URI: http://www.themeblvd.com
 	color: rgba(26,26,26,.25);
 }
 
+/* Menu Highlight */
+.site-header .tb-primary-menu > li.highlight {
+	padding: 25px 0;
+}
+.site-header .tb-primary-menu > li.highlight > a {
+	border-color: #333333;
+	color: #333333;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.site-header .tb-primary-menu > li.highlight > a:hover {
+	background-color: #333333;
+	border-color: transparent;
+	color: #ffffff;
+}
+.site-header .header-nav .tb-primary-menu > li.highlight > .menu-btn:before {
+	display: none;
+}
+.site-header.dark .tb-primary-menu > li.highlight > a {
+	border-color: #ffffff;
+	color: #ffffff;
+}
+.site-header.dark .tb-primary-menu > li.highlight > a:hover {
+	background-color: #ffffff;
+	border-color: transparent;
+	color: #333333;
+}
+.tb-side-panel.light li.highlight > a {
+	border-color: #333333;
+	color: #333333;
+}
+.tb-side-panel.light li.highlight > a:hover {
+	background-color: #333333;
+	border-color: transparent;
+	color: #ffffff;
+}
+.tb-sticky-menu.dark .tb-primary-menu > li.highlight > a {
+	border-color: #ffffff;
+	color: #ffffff;
+}
+.tb-sticky-menu.dark .tb-primary-menu > li.highlight > .menu-btn:hover {
+	background-color: #ffffff;
+	border-color: transparent;
+	color: #333333;
+}
+
 /* Epic Thumb */
 @media (max-width: 767px) {
 	.epic-thumb .epic-thumb-header .entry-title {

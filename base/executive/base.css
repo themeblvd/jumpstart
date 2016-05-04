@@ -252,6 +252,15 @@ Author URI: http://www.themeblvd.com
 	background-color: #000000;
 	background-color: rgba(255,255,255,.1);
 }
+.tb-sticky-menu.dark .tb-primary-menu > li.highlight > a {
+	border-color: #ffffff;
+	color: #ffffff;
+}
+.tb-sticky-menu.dark .tb-primary-menu > li.highlight > .menu-btn:hover {
+	background-color: #ffffff;
+	border-color: transparent;
+	color: #333333;
+}
 
 /* Mobile Nav */
 @media (max-width: 991px) and (min-width: 768px) {
@@ -313,6 +322,15 @@ Author URI: http://www.themeblvd.com
 .tb-side-panel.light .submenu-toggle:after {
     background-color: #cccccc;
     background-color: rgba(26,26,26,.7);
+}
+.tb-side-panel.light li.highlight > a {
+	border-color: #333333;
+	color: #333333;
+}
+.tb-side-panel.light li.highlight > a:hover {
+	background-color: #333333;
+	border-color: transparent;
+	color: #ffffff;
 }
 
 /* Mobile Panel */

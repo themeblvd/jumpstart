@@ -43,11 +43,18 @@ article.page {
 }
 
 /* Meta */
-.entry-meta {
+.entry-meta,
+.post-date {
 	color: #ffffff
 }
 .entry-meta .fa {
 	color: #cccccc;
+}
+.text-dark .entry-meta,
+.text-dark .entry-meta .fa,
+.text-dark .post-date {
+	color: #999999;
+	color: rgba(26,26,26,.4);
 }
 
 /* Sub Meta */

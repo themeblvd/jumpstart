@@ -13,6 +13,7 @@
  *   2.7 - Side Panel
  *   2.8 - Mobile Panel
  *   2.9 - Transparent Header
+ *   2.10 - Menu Highlight
  * 3.0 - Main
  *   3.1 - Breadcrumbs
  * 4.0 - Bottom
@@ -689,6 +690,75 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	background-color: rgba(0,0,0,.4);
 }
 
+/* Menu Highlight */
+.site-header .tb-primary-menu > li.highlight,
+.site-header.transparent .header-nav .tb-primary-menu > li.highlight,
+.tb-sticky-menu .tb-primary-menu > li.highlight,
+.tb-side-panel li.highlight {
+	background-color: transparent;
+}
+.site-header .tb-primary-menu > li.highlight > a,
+.site-header.transparent .header-nav .tb-primary-menu > li.highlight > a,
+.tb-sticky-menu .tb-primary-menu > li.highlight > a,
+.tb-side-panel li.highlight > a {
+	border: 2px solid rgba(255,255,255,.85);
+}
+.site-header .tb-primary-menu > li.highlight > a:hover,
+.site-header.transparent .header-nav .tb-primary-menu > li.highlight > a:hover,
+.tb-sticky-menu .tb-primary-menu > li.highlight > a:hover,
+.tb-side-panel li.highlight > a:hover {
+	background-color: #ffffff;
+	border-color: transparent;
+	color: #333333;
+}
+
+/* Menu Highlight: Primary Navigation */
+.site-header .tb-primary-menu > li.highlight {
+	padding: 6px;
+}
+.site-header .tb-primary-menu > li.highlight > a {
+	padding: 10px 12px;
+}
+
+/* Menu Highlight: Sticky Menu */
+.tb-sticky-menu .tb-primary-menu > li.highlight {
+	padding: 4px 6px;
+}
+.tb-sticky-menu .tb-primary-menu > li.highlight > .menu-btn {
+	border-color: #333333;
+	line-height: 36px;
+	padding: 0 12px;
+}
+.tb-sticky-menu .tb-primary-menu > li.highlight > .menu-btn:hover {
+	background-color: #333333;
+	color: #ffffff;
+}
+
+/* Menu Highlight: Side Panel */
+.tb-side-panel li.highlight {
+	padding: 12px 0;
+}
+.tb-side-panel .secondary-menu li.highlight {
+	padding: 8px 0;
+}
+.tb-side-panel .secondary-menu li.highlight:first-child,
+.tb-side-panel .secondary-menu li.highlight:first-child {
+	padding-top: 0;
+}
+.tb-side-panel .secondary-menu li.highlight:last-child,
+.tb-side-panel .secondary-menu li.highlight:last-child {
+	padding-bottom: 0;
+}
+.tb-side-panel li.highlight > .menu-btn {
+	display: inline-block;
+	padding: 10px 12px;
+}
+.tb-side-panel .secondary-menu > li.highlight > a {
+	display: inline-block;
+	border-width: 1px;
+	padding: 6px 8px;
+}
+
 /* =Breadcrumbs
 ----------------------------------------------- */
 
@@ -738,6 +808,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 ----------------------------------------------- */
 
 .site-footer {
+	font-size: 14px;
 	padding: 30px 0;
 }
 .footer-content {
@@ -924,15 +995,17 @@ article.tb-naked-page {
 }
 
 /* Meta */
-.entry-meta {
+.entry-meta,
+.post-date {
 	color: #999999;
 	color: rgba(26,26,26,.4);
 	font-size: 12px;
 	margin: 0 2px 10px 0;
 }
 .text-light .entry-meta,
-.text-light .entry-meta .fa {
-  color: #cccccc;
+.text-light .entry-meta .fa,
+.text-light .post-date {
+	color: #cccccc;
 }
 .entry-meta a {
 	color: inherit;
@@ -1571,6 +1644,17 @@ article.tb-naked-page {
 }
 
 /* List Widgets */
+.widget_categories .widget-inner > ul > li,
+.widget_archive .widget-inner > ul > li,
+.widget_pages .widget-inner > ul > li,
+.widget_nav_menu .menu > li,
+.widget_recent_entries .widget-inner > ul > li,
+.widget_meta .widget-inner > ul > li,
+.widget_rss .widget-inner > ul > li,
+.widget_layered_nav .widget-inner > ul > li,
+.widget_display_forums .widget-inner > ul > li {
+	margin-bottom: 10px;
+}
 .widget_categories a:not(:hover),
 .widget_archive a:not(:hover),
 .widget_pages a:not(:hover),
@@ -1612,6 +1696,21 @@ article.tb-naked-page {
 .widget_search .tb-search .search-submit,
 .widget_product_search .tb-search .search-submit {
 	display: none;
+}
+
+/* Tweeple */
+.widget .tweeple-feed li.tweet {
+	font-size: 14px;
+	line-height: inherit;
+}
+.site-footer .tweeple-feed li.tweet {
+	padding-left: 0;
+}
+.site-footer .tweeple-feed li.tweet:before {
+	display: none;
+}
+.site-footer .tweeple-feed .tweet-meta {
+	margin-top: 5px;
 }
 
 /* =Printing

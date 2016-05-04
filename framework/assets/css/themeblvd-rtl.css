@@ -4394,7 +4394,7 @@ ul.tb-icon-list {
 /* WP Recent Posts Widgets */
 .widget_recent_entries .post-date {
 	display: block;
-	font-size: .9em;
+	font-size: 11px;
 	padding: 5px 0;
 }
 
@@ -6161,7 +6161,7 @@ body.mobile .tb-bg-video {
 	margin: 0 0 2px 0;
 }
 .tb-mini-post-list .entry-meta {
-	font-size: 12px;
+	font-size: 11px;
 	margin: 0;
 }
 .tb-mini-post-list .entry-meta .fa {
@@ -8138,7 +8138,8 @@ body.mobile .tb-bg-video {
 	-moz-osx-font-smoothing: grayscale;
 }
 .tweeple-feed .tweet-time a {
-    color: #888888;
+    color: #999999;
+    color: rgba(26,26,26,.4);
     font-size: 11px;
 }
 
