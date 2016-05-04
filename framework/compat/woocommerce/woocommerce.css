@@ -1419,30 +1419,10 @@ ul.woocommerce-info {
 }
 
 /* Dynamic select boxes */
-@media screen and (min-width: 768px) {
-	.select2-container {
-		width: 48%;
-	}
-	.col2-set .select2-container,
-	.form-row-last .select2-container,
-	.form-row-first .select2-container {
-		max-width: none;
-		width: 100%;
-	}
+@media (min-width: 768px) {
 	.select2-container .select2-choice {
 		height: 35px;
 		line-height: 35px;
-	}
-	.select2-container .select2-choice .select2-arrow {
-		width: 24px;
-	}
-	.select2-container .select2-choice .select2-arrow b,
-	.select2-container .select2-choice abbr,
-	.select2-search input, .select2-search-choice-close {
-		background-position: 3px 6px;
-	}
-	.select2-dropdown-open .select2-choice .select2-arrow b {
-		background-position: -15px 6px;
 	}
 }
 
