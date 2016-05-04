@@ -63,7 +63,7 @@ function jumpstart_ag_options() {
 				'id'		=> 'menu_placement',
 				'name'		=> __('Menu Placement', 'jumpstart'),
 				'desc'		=> __('Select where you\'d like the main menu placed within the header.', 'jumpstart'),
-				'std'		=> 'far',
+				'std'		=> 'center',
 				'type'		=> 'select',
 				'options'	=> array(
 					//'near'		=> __('Menu is next to the logo.', 'jumpstart'),
@@ -244,6 +244,50 @@ function jumpstart_ag_options() {
 				)
 			)
 		),
+		'widgets' => array(
+			'widget_info' => array(
+				'id'		=> 'widget_info',
+				'desc'		=> __('These options apply to widgets in your sidebar.', 'jumpstart'),
+				'type'		=> 'info'
+			),
+			'sub_group_start_1' => array(
+				'id'		=> 'sub_group_start_1',
+				'type' 		=> 'subgroup_start',
+				'class'		=> 'show-hide'
+			),
+			'widget_bg' => array(
+				'name' 		=> null,
+				'desc' 		=> __('Apply background color to widgets.', 'jumpstart'),
+				'id' 		=> 'widget_bg',
+				'std' 		=> '1',
+				'type' 		=> 'checkbox',
+				'class'		=> 'trigger'
+			),
+			'widget_bg_color' => array(
+				'id'		=> 'widget_bg_color',
+				'name'		=> __('Background Color', 'jumpstart'),
+				'desc'		=> __('Select a background color for widgets.', 'jumpstart'),
+				'std'		=> '#f8f8f8',
+				'type'		=> 'color',
+				'class'		=> 'receiver'
+			),
+			'widget_bg_color_brightness' => array(
+				'id' 		=> 'widget_bg_color_brightness',
+				'name' 		=> __('Background Color Brightness', 'jumpstart'),
+				'desc' 		=> __('In the previous option, did you go dark or light?', 'jumpstart'),
+				'std' 		=> 'light',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'light' => __('I chose a light color in the previous option.', 'jumpstart'),
+					'dark' 	=> __('I chose a dark color in the previous option.', 'jumpstart')
+				),
+				'class'		=> 'receiver'
+			),
+			'sub_group_end_1' => array(
+				'id'		=> 'sub_group_end_1',
+				'type' 		=> 'subgroup_end'
+			)
+		),
 		'typo' => array(
 			'font_body' => array(
 				'id' 		=> 'font_body',
@@ -417,6 +461,7 @@ function jumpstart_ag_options() {
 	themeblvd_add_option_section( 'styles', 'ag_header_mobile',	__('Mobile Header', 'jumpstart'),		null, $options['header_mobile'] );
 	themeblvd_add_option_section( 'styles', 'ag_footer',		__('Footer', 'jumpstart'),				null, $options['footer'] );
 	themeblvd_add_option_section( 'styles', 'ag_side',			__('Side Panel', 'jumpstart'),			null, $options['side'] );
+	themeblvd_add_option_section( 'styles', 'ag_widgets',		__('Widgets', 'jumpstart'),				null, $options['widgets'] );
 	themeblvd_add_option_section( 'styles', 'ag_typo',			__('Typography', 'jumpstart'), 			null, $options['typo'] );
 	themeblvd_add_option_section( 'styles', 'ag_css',			__('Custom CSS', 'jumpstart'), 			null, $options['css'] );
 
@@ -529,6 +574,12 @@ function jumpstart_ag_body_class($class) {
 
 	if ( themeblvd_get_option('sticky') == 'show' ) {
 		$class[] = 'has-sticky';
+	}
+
+	if ( themeblvd_get_option('widget_bg') ) {
+		$class[] = 'tb-widget-bg';
+		$class[] = themeblvd_get_option('widget_bg_color_brightness') . '-widgets';
+
 	}
 
 	return $class;
@@ -775,6 +826,7 @@ function jumpstart_ag_css() {
 
 	if ( $font ) {
 
+		$print .= '.post-date,';
 		$print .= ".entry-header .entry-meta,\n";
 		$print .= ".tb-mini-post-list .entry-meta,\n";
 		$print .= ".post_grid .entry-meta,\n";
@@ -979,9 +1031,23 @@ function jumpstart_ag_css() {
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('side_bg_color'));
 	$print .= "}\n";
 
-	// ...
+	/*------------------------------------------------------------*/
+	/* Widgets
+	/*------------------------------------------------------------*/
 
-	// Custom CSS
+	if ( themeblvd_get_option('widget_bg') ) {
+
+		$print .= "\n/* Widgets */\n";
+
+		$print .= ".tb-widget-bg .fixed-sidebar .widget {\n";
+		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('widget_bg_color'));
+		$print .= "}\n";
+	}
+
+	/*------------------------------------------------------------*/
+	/* Custom CSS
+	/*------------------------------------------------------------*/
+
 	if ( $custom = themeblvd_get_option('custom_styles') ) {
 		$print .= "\n/* =Custom CSS\n";
 		$print .= "-----------------------------------------------*/\n\n";
@@ -1341,3 +1407,21 @@ function jumpstart_ag_primary_menu_args( $args ) {
 	return $args;
 }
 add_filter('themeblvd_primary_menu_args', 'jumpstart_ag_primary_menu_args');
+
+/**
+ * Filter args that get filtered in when sidebars
+ * are registered.
+ *
+ * @since 2.1.0
+ */
+function themeblvd_agent_sidebar_args( $args, $sidebar, $location ) {
+
+	if ( in_array( $location, array('sidebar_left', 'sidebar_right') ) && themeblvd_get_option('widget_bg_color_brightness') == 'dark' ) {
+		$args['before_widget'] = str_replace('class="widget ', 'class="widget text-light ', $args['before_widget']);
+	}
+
+	return $args;
+
+}
+add_filter('themeblvd_default_sidebar_args', 'themeblvd_agent_sidebar_args', 10, 3);
+add_filter('themeblvd_custom_sidebar_args', 'themeblvd_agent_sidebar_args', 10, 3);
