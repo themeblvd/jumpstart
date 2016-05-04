@@ -83,7 +83,7 @@ function setup_themeblvd_page_meta() {
                 'std' 		=> 'default',
                 'type' 		=> 'radio',
                 'options' 	=> array(
-                    'default'	=> __('Use default setting (inherits from posts)', 'jumpstart'),
+                    'default'	=> __('Use default setting', 'jumpstart'),
                     'fw'        => __('Full width, above content', 'jumpstart'),
                     'fs'        => __('Full screen parallax, above content', 'jumpstart'),
                     'full'      => __('Standard, with content', 'jumpstart'),

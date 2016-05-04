@@ -7,8 +7,9 @@ Jump Start Changelog
 * **Updated Theme Blvd framework to 2.6.0**
 * New: "Agent" theme base - A modern and open, agency-style design with a bit less user options.
 * New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552) when activating the theme.
-* New: Featured media above single post content.
+* New: Featured media above page and post content.
     * New "Epic Thumbnails" on single posts and pages; see Post and Page Options meta boxes for new featured images display options.
+    * New global option for how pages display the featured image; see *Appearance > Theme Options > Content > Pages*.
     * New variable-width slider carousel for gallery posts; see *Appearance > Theme Options > Content > General*.
     * Default gallery slider image size was increased from 1200x450 to 1400x525, when not using new variable width carousel.
     * Added compatibility for [Subtitles](https://wordpress.org/plugins/subtitles/) plugin.

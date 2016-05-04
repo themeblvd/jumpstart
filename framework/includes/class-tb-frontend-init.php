@@ -835,7 +835,12 @@ class Theme_Blvd_Frontend_Init {
 		// Epic Thumbnails
 		if ( is_singular( apply_filters( 'themeblvd_epic_thumb_types', array('post', 'page', 'portfolio_item') ) ) ) {
 
-			$thumbs = themeblvd_get_option( 'single_thumbs', null, 'fw' );
+			if ( is_page() ) {
+				$thumbs = themeblvd_get_option( 'page_thumbs', null, 'fw' );
+			} else {
+				$thumbs = themeblvd_get_option( 'single_thumbs', null, 'fw' );
+			}
+
 			$meta = get_post_meta($post->ID, '_tb_thumb', true);
 
 			if ( $meta && $meta != 'default' ) {

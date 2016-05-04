@@ -179,6 +179,8 @@ class Theme_Blvd_Options_API {
 	 *		- single_thumbs
 	 *		- single_related_posts
 	 *		- single_comments
+	 *	- Pages
+	 *		- page_thumbs
 	 *	- Archives
 	 *		- archive_mode
 	 *		- category_info
@@ -669,7 +671,7 @@ class Theme_Blvd_Options_API {
 					),
 					'single_thumbs' => array(
 						'name' 		=> __('Featured Images &amp; Galleries', 'jumpstart'),
-						'desc' 		=> __('Choose how you want your featured images to show on the single post. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'jumpstart'),
+						'desc' 		=> __('Choose how you want your featured images to show on the single post, by default. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'jumpstart'),
 						'id' 		=> 'single_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
@@ -715,6 +717,26 @@ class Theme_Blvd_Options_API {
 						)
 					)
 				) // End single options
+			),
+
+			// Section: Pages
+			'pages' => array(
+				'name' => __('Pages', 'jumpstart'),
+				'options' => array(
+					'page_thumbs' => array(
+						'name' 		=> __('Featured Images', 'jumpstart'),
+						'desc' 		=> __('Choose how you want your featured images to show on pages, by default.', 'jumpstart'),
+						'id' 		=> 'page_thumbs',
+						'std' 		=> 'full',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'fw'        => __('Full width, above content', 'jumpstart'),
+					        'fs'        => __('Full screen parallax, above content', 'jumpstart'),
+					        'full'      => __('Standard, with content', 'jumpstart'),
+					        'hide'      => __('Hide featured images', 'jumpstart')
+						)
+					),
+				)
 			),
 
 			// Section: Archives
