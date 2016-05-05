@@ -644,8 +644,8 @@ function jumpstart_ag_css() {
 	$print .= ".highlight,\n";
 
 	if ( themeblvd_supports('plugins', 'wpml') && themeblvd_installed('wpml') ) {
-		$print .= ".gnar-lang-selector a:hover,\n";
-		$print .= ".gnar-lang-selector a:focus,\n";
+		$print .= ".tb-lang-popup a:hover,\n";
+		$print .= ".tb-lang-popup a:focus,\n";
 	}
 
 	if ( themeblvd_supports('plugins', 'woocommerce') && themeblvd_installed('woocommerce') ) {
@@ -1299,9 +1299,11 @@ function jumpstart_ag_footer_sub_content() {
 
 	echo '<div class="copyright">' . apply_filters( 'themeblvd_footer_copyright', themeblvd_get_content( themeblvd_get_option('footer_copyright') ) ) . '</div>';
 
-	if ( has_nav_menu('footer') ) {
+	$menu_args = themeblvd_get_wp_nav_menu_args('footer');
+
+	if ( has_nav_menu( $menu_args['theme_location'] ) ) {
 		echo '<div class="footer-nav">';
-		wp_nav_menu( themeblvd_get_wp_nav_menu_args('footer') );
+		wp_nav_menu( $menu_args );
 		echo '</div>';
 	}
 

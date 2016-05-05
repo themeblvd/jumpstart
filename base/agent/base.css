@@ -203,6 +203,7 @@ body {
 	right: 0;
 }
 .rtl .site-header.menu-center .header-toolbar {
+	right: auto;
 	left: 0;
 }
 .site-header.stretch .header-toolbar:before {
@@ -680,7 +681,7 @@ body {
 }
 .tb-lang-popup a:hover,
 .tb-lang-popup a:focus {
-	background-color: #ea4b37; /* highlight */
+	background-color: #2ea3f2; /* highlight */
 	color: #ffffff;
 }
 
