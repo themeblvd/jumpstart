@@ -1163,6 +1163,10 @@ function themeblvd_get_jumbotron_slider( $args ) {
 		// Slider auto rotate speed
 		$interval = esc_attr($args['timeout']);
 
+		if ( wp_is_mobile() ) {
+			$interval = '0'; // disable auto rotation for true mobile devices
+		}
+
 		if ( $interval && intval($interval) < 100 ) {
 			$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
 		}
