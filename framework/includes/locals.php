@@ -146,13 +146,17 @@ function themeblvd_get_local( $id ) {
  */
 function themeblvd_get_js_locals() {
 
-	// Start $locals array with any miscellaneous stuff
 	$locals = array (
-		'scroll_to_top'				=> 'true',
-		'custom_buttons'			=> 'true'
+		'scroll_to_top'		=> 'true',
+		'custom_buttons'	=> 'true'
 	);
 
-	// Mobile menu location
+	// Is this mobile? -- body class isn't always reliable.
+	if ( wp_is_mobile() ) {
+		$locals['mobile'] = 'true';
+	} else {
+		$locals['mobile'] = 'false';
+	}
 
 	// Extend $locals to accomodate scripts being included
 	// through our "themeblvd_global_config" filter.
