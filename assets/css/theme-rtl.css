@@ -323,7 +323,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 }
 @media (max-width: 767px) {
 	.header-logo img {
-		max-height: 44px;
+		max-height: 30px;
 	}
 	.header-text-logo .tb-text-logo {
 		color: #ffffff;
@@ -694,7 +694,8 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .site-header .tb-primary-menu > li.highlight,
 .site-header.transparent .header-nav .tb-primary-menu > li.highlight,
 .tb-sticky-menu .tb-primary-menu > li.highlight,
-.tb-side-panel li.highlight {
+.tb-side-panel li.highlight,
+.tb-mobile-menu li.highlight {
 	background-color: transparent;
 }
 .site-header .tb-primary-menu > li.highlight > a,
