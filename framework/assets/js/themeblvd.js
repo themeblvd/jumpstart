@@ -209,7 +209,7 @@ jQuery(document).ready(function($) {
 	// ---------------------------------------------------------
 
 	// Responsive side menu
-	if ( themeblvd.mobile_panel == 'true' && $primary_menu.hasClass('tb-to-mobile-menu') ) {
+	if ( themeblvd.mobile_panel == 'true' ) {
 
 		// Add initial class that denotes the menu is hidden on
 		// page load. The menu will be hidden on its own, but
@@ -229,14 +229,20 @@ jQuery(document).ready(function($) {
 		$('.tb-floating-search .tb-search').first().clone().addClass('mini panel-item').appendTo( $side_holder );
 
 		// Add primary menu
-		$primary_menu.first().clone().removeClass('sf-menu tb-primary-menu tb-to-mobile-menu').addClass('tb-mobile-menu tb-side-menu panel-item').appendTo( $side_holder ); // "tb-side-menu" class allows for level 2+ tree styling
+		if ( $primary_menu.hasClass('tb-to-mobile-menu') ) {
+			$primary_menu.first().clone().removeClass('sf-menu tb-primary-menu tb-to-mobile-menu').addClass('tb-mobile-menu tb-side-menu panel-item').appendTo( $side_holder ); // "tb-side-menu" class allows for level 2+ tree styling
+		}
 
 		// Add side panel menu
 		if ( themeblvd.side_panel == 'true' ) {
 
 			var $desktop_side_panel = $('.tb-side-panel > .wrap');
 
-			$desktop_side_panel.find('.menu').children('li').clone().appendTo( $side_holder.find('.tb-mobile-menu') );
+			if ( $side_holder.find('.tb-mobile-menu').length ) {
+				$desktop_side_panel.find('.menu').children('li').clone().appendTo( $side_holder.find('.tb-mobile-menu') );
+			} else {
+				$desktop_side_panel.find('.menu').first().clone().addClass('tb-mobile-menu tb-side-menu panel-item').appendTo( $side_holder );
+			}
 
 			// Remove submenu toggles
 			$side_holder.find('.submenu-toggle').remove();
