@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * **Updated Theme Blvd framework to 2.6.0**
 * New: "Agent" theme base - A modern and open, agency-style design with a bit less user options.
+* New: 5 new demos - [Demo #1](http://demoblvd.com/themes/jumpstart-2/demo-1), [Demo #8](http://demoblvd.com/themes/jumpstart-2/demo-8), [Demo #9](http://demoblvd.com/themes/jumpstart-2/demo-9), [Demo #10](http://demoblvd.com/themes/jumpstart-2/demo-10), and [Developer Demo](http://demoblvd.com/themes/jumpstart-2/demo-dev).
 * New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552) when activating the theme.
 * New: Featured media above page and post content.
     * New "Epic Thumbnails" on single posts and pages; see Post and Page Options meta boxes for new featured images display options.
