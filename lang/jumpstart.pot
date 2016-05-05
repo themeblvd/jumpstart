@@ -1,18 +1,624 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jump Start 2.0.4\n"
+"Project-Id-Version: Jump Start 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-11 11:33-1000\n"
-"PO-Revision-Date: 2015-12-11 11:33-1000\n"
+"POT-Creation-Date: 2016-05-05 13:44-1000\n"
+"PO-Revision-Date: 2016-05-05 13:44-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e;_n;_n_noop\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
-"X-Poedit-SearchPath-1: \n"
+
+#: ../base/agent/base.php:14
+#: ../base/entrepreneur/base.php:149
+#: ../base/executive/base.php:149
+#: ../base/superuser/base.php:149
+msgid "Content Style"
+msgstr ""
+
+#: ../base/agent/base.php:15
+#: ../base/entrepreneur/base.php:150
+#: ../base/executive/base.php:150
+#: ../base/superuser/base.php:150
+msgid "Select the content style of the site."
+msgstr ""
+
+#: ../base/agent/base.php:19
+#: ../base/entrepreneur/base.php:154
+#: ../base/executive/base.php:154
+#: ../base/superuser/base.php:154
+msgid "Light"
+msgstr ""
+
+#: ../base/agent/base.php:20
+#: ../base/entrepreneur/base.php:155
+#: ../base/executive/base.php:155
+#: ../base/superuser/base.php:155
+msgid "Dark"
+msgstr ""
+
+#: ../base/agent/base.php:25
+#: ../base/entrepreneur/base.php:953
+#: ../base/executive/base.php:1229
+#: ../base/superuser/base.php:1264
+msgid "Primary Buttons"
+msgstr ""
+
+#: ../base/agent/base.php:26
+msgid "Select a background color for primary buttons throughour your website."
+msgstr ""
+
+#: ../base/agent/base.php:32
+msgid "Default Highlight"
+msgstr ""
+
+#: ../base/agent/base.php:33
+msgid "Select a \"highlight\" color to be used throughour your website, like with button and thumbnail hovers, for example."
+msgstr ""
+
+#: ../base/agent/base.php:41
+#, php-format
+msgid "These options apply to the header of your website. Note that for the main menu to show, you must assign a menu to the \"Primary Navigation\" location, and for there to be a side menu to toggle open on desktops, you need to assign a menu to the \"Primary Side Navigation\" location. This can all be done at %s."
+msgstr ""
+
+#: ../base/agent/base.php:41
+#: ../base/agent/base.php:182
+#: ../base/agent/base.php:225
+#: ../base/entrepreneur/base.php:623
+#: ../base/executive/base.php:899
+#: ../base/superuser/base.php:934
+msgid "Appearance > Menus"
+msgstr ""
+
+#: ../base/agent/base.php:46
+#: ../base/agent/base.php:108
+#: ../base/agent/base.php:162
+#: ../base/agent/base.php:230
+#: ../base/agent/base.php:268
+#: ../base/entrepreneur/base.php:289
+#: ../base/entrepreneur/base.php:542
+#: ../base/entrepreneur/base.php:674
+#: ../base/executive/base.php:306
+#: ../base/executive/base.php:615
+#: ../base/executive/base.php:654
+#: ../base/executive/base.php:950
+#: ../base/superuser/base.php:306
+#: ../base/superuser/base.php:624
+#: ../base/superuser/base.php:663
+#: ../base/superuser/base.php:985
+msgid "Background Color"
+msgstr ""
+
+#: ../base/agent/base.php:47
+#: ../base/agent/base.php:109
+msgid "Select a background color for the header."
+msgstr ""
+
+#: ../base/agent/base.php:53
+#: ../base/agent/base.php:83
+#: ../base/agent/base.php:144
+#: ../base/agent/base.php:169
+#: ../base/agent/base.php:237
+#: ../base/agent/base.php:276
+#: ../base/entrepreneur/base.php:549
+#: ../base/entrepreneur/base.php:682
+#: ../base/executive/base.php:622
+#: ../base/executive/base.php:700
+#: ../base/executive/base.php:958
+#: ../base/superuser/base.php:631
+#: ../base/superuser/base.php:709
+#: ../base/superuser/base.php:993
+msgid "Background Color Brightness"
+msgstr ""
+
+#: ../base/agent/base.php:54
+#: ../base/agent/base.php:84
+#: ../base/agent/base.php:145
+#: ../base/agent/base.php:170
+#: ../base/agent/base.php:195
+#: ../base/agent/base.php:238
+#: ../base/agent/base.php:277
+#: ../base/entrepreneur/base.php:550
+#: ../base/entrepreneur/base.php:591
+#: ../base/entrepreneur/base.php:611
+#: ../base/entrepreneur/base.php:636
+#: ../base/entrepreneur/base.php:683
+#: ../base/entrepreneur/base.php:1061
+#: ../base/executive/base.php:623
+#: ../base/executive/base.php:701
+#: ../base/executive/base.php:753
+#: ../base/executive/base.php:771
+#: ../base/executive/base.php:887
+#: ../base/executive/base.php:912
+#: ../base/executive/base.php:959
+#: ../base/executive/base.php:1337
+#: ../base/superuser/base.php:632
+#: ../base/superuser/base.php:710
+#: ../base/superuser/base.php:762
+#: ../base/superuser/base.php:780
+#: ../base/superuser/base.php:922
+#: ../base/superuser/base.php:947
+#: ../base/superuser/base.php:994
+#: ../base/superuser/base.php:1372
+msgid "In the previous option, did you go dark or light?"
+msgstr ""
+
+#: ../base/agent/base.php:58
+#: ../base/agent/base.php:88
+#: ../base/agent/base.php:149
+#: ../base/agent/base.php:174
+#: ../base/agent/base.php:199
+#: ../base/agent/base.php:217
+#: ../base/agent/base.php:242
+#: ../base/agent/base.php:281
+#: ../base/entrepreneur/base.php:554
+#: ../base/entrepreneur/base.php:595
+#: ../base/entrepreneur/base.php:615
+#: ../base/entrepreneur/base.php:640
+#: ../base/entrepreneur/base.php:687
+#: ../base/entrepreneur/base.php:1066
+#: ../base/executive/base.php:627
+#: ../base/executive/base.php:705
+#: ../base/executive/base.php:757
+#: ../base/executive/base.php:775
+#: ../base/executive/base.php:891
+#: ../base/executive/base.php:916
+#: ../base/executive/base.php:963
+#: ../base/executive/base.php:1342
+#: ../base/superuser/base.php:636
+#: ../base/superuser/base.php:714
+#: ../base/superuser/base.php:766
+#: ../base/superuser/base.php:784
+#: ../base/superuser/base.php:926
+#: ../base/superuser/base.php:951
+#: ../base/superuser/base.php:998
+#: ../base/superuser/base.php:1377
+msgid "I chose a light color in the previous option."
+msgstr ""
+
+#: ../base/agent/base.php:59
+#: ../base/agent/base.php:89
+#: ../base/agent/base.php:150
+#: ../base/agent/base.php:175
+#: ../base/agent/base.php:200
+#: ../base/agent/base.php:218
+#: ../base/agent/base.php:243
+#: ../base/agent/base.php:282
+#: ../base/entrepreneur/base.php:555
+#: ../base/entrepreneur/base.php:596
+#: ../base/entrepreneur/base.php:616
+#: ../base/entrepreneur/base.php:641
+#: ../base/entrepreneur/base.php:688
+#: ../base/entrepreneur/base.php:1067
+#: ../base/executive/base.php:628
+#: ../base/executive/base.php:706
+#: ../base/executive/base.php:758
+#: ../base/executive/base.php:776
+#: ../base/executive/base.php:892
+#: ../base/executive/base.php:917
+#: ../base/executive/base.php:964
+#: ../base/executive/base.php:1343
+#: ../base/superuser/base.php:637
+#: ../base/superuser/base.php:715
+#: ../base/superuser/base.php:767
+#: ../base/superuser/base.php:785
+#: ../base/superuser/base.php:927
+#: ../base/superuser/base.php:952
+#: ../base/superuser/base.php:999
+#: ../base/superuser/base.php:1378
+msgid "I chose a dark color in the previous option."
+msgstr ""
+
+#: ../base/agent/base.php:64
+msgid "Menu Placement"
+msgstr ""
+
+#: ../base/agent/base.php:65
+msgid "Select where you'd like the main menu placed within the header."
+msgstr ""
+
+#: ../base/agent/base.php:70
+msgid "Menu is centered within the header."
+msgstr ""
+
+#: ../base/agent/base.php:71
+msgid "Menu is opposite the logo."
+msgstr ""
+
+#: ../base/agent/base.php:76
+msgid "Main Menu Dropdown Background Color"
+msgstr ""
+
+#: ../base/agent/base.php:77
+msgid "Select a background color for dropdown submenus of the main menu."
+msgstr ""
+
+#: ../base/agent/base.php:94
+msgid "Stretch header to full width."
+msgstr ""
+
+#: ../base/agent/base.php:103
+msgid "These options apply to pages where you've setup a transparent header."
+msgstr ""
+
+#: ../base/agent/base.php:115
+#: ../base/entrepreneur/base.php:297
+#: ../base/entrepreneur/base.php:694
+#: ../base/executive/base.php:314
+#: ../base/executive/base.php:670
+#: ../base/executive/base.php:970
+#: ../base/superuser/base.php:314
+#: ../base/superuser/base.php:679
+#: ../base/superuser/base.php:1005
+msgid "Background Color Opacity"
+msgstr ""
+
+#: ../base/agent/base.php:116
+msgid "Select the opacity of the background color."
+msgstr ""
+
+#: ../base/agent/base.php:157
+msgid "These options apply to the header on mobile devices."
+msgstr ""
+
+#: ../base/agent/base.php:163
+#: ../base/entrepreneur/base.php:543
+#: ../base/executive/base.php:616
+#: ../base/superuser/base.php:625
+msgid "Select a background color for the mobile header."
+msgstr ""
+
+#: ../base/agent/base.php:182
+#, php-format
+msgid "These options apply to the footer of your website. Note that for the footer menu to show in the copyright area, you must assign a menu to the \"Footer Navigation\" location at %s."
+msgstr ""
+
+#: ../base/agent/base.php:187
+msgid "Footer Background Color"
+msgstr ""
+
+#: ../base/agent/base.php:188
+msgid "Select a background color for the footer columns."
+msgstr ""
+
+#: ../base/agent/base.php:194
+msgid "Footer Background Color Brightness"
+msgstr ""
+
+#: ../base/agent/base.php:205
+msgid "Copyright Background Color"
+msgstr ""
+
+#: ../base/agent/base.php:206
+msgid "Select a background color for the copyright area below the footer columns."
+msgstr ""
+
+#: ../base/agent/base.php:212
+msgid "Copyright Background Color Brightness"
+msgstr ""
+
+#: ../base/agent/base.php:213
+#: ../base/entrepreneur/base.php:205
+#: ../base/entrepreneur/base.php:459
+#: ../base/executive/base.php:218
+#: ../base/executive/base.php:296
+#: ../base/superuser/base.php:218
+#: ../base/superuser/base.php:296
+msgid "If you're using a dark background color, select to show light text, and vice versa."
+msgstr ""
+
+#: ../base/agent/base.php:225
+#, php-format
+msgid "These options apply to your side panel that slides out from the side of your webste on desktop browsers, and the compiled menu that slides out on mobile devices. Note that for the side panel to show in desktop browsers, you must assign a menu to the \"Primary Side Navigation\" location at %s."
+msgstr ""
+
+#: ../base/agent/base.php:231
+msgid "Select a background color for the side panel."
+msgstr ""
+
+#: ../base/agent/base.php:250
+msgid "These options apply to widgets in your sidebar."
+msgstr ""
+
+#: ../base/agent/base.php:260
+msgid "Apply background color to widgets."
+msgstr ""
+
+#: ../base/agent/base.php:269
+#: ../base/entrepreneur/base.php:1054
+#: ../base/executive/base.php:1330
+#: ../base/superuser/base.php:1365
+msgid "Select a background color for widgets."
+msgstr ""
+
+#: ../base/agent/base.php:294
+#: ../base/entrepreneur/base.php:806
+#: ../base/executive/base.php:1082
+#: ../base/superuser/base.php:1117
+msgid "Primary Font"
+msgstr ""
+
+#: ../base/agent/base.php:295
+#: ../base/entrepreneur/base.php:807
+#: ../base/executive/base.php:1083
+#: ../base/superuser/base.php:1118
+msgid "This applies to most of the text on your site."
+msgstr ""
+
+#: ../base/agent/base.php:302
+#: ../base/entrepreneur/base.php:814
+#: ../base/executive/base.php:1090
+#: ../base/superuser/base.php:1125
+msgid "Header Font"
+msgstr ""
+
+#: ../base/agent/base.php:303
+#: ../base/entrepreneur/base.php:815
+#: ../base/executive/base.php:1091
+#: ../base/superuser/base.php:1126
+msgid "This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages."
+msgstr ""
+
+#: ../base/agent/base.php:310
+msgid "Small Header Font"
+msgstr ""
+
+#: ../base/agent/base.php:311
+msgid "This applies to smaller sub headers throughout your website, like widget titles, for example."
+msgstr ""
+
+#: ../base/agent/base.php:318
+msgid "Small Header Letter Spacing"
+msgstr ""
+
+#: ../base/agent/base.php:319
+#: ../base/agent/base.php:340
+#: ../base/agent/base.php:361
+#: ../base/agent/base.php:383
+#: ../base/agent/base.php:405
+#: ../base/entrepreneur/base.php:831
+#: ../base/entrepreneur/base.php:852
+#: ../base/entrepreneur/base.php:874
+#: ../base/entrepreneur/base.php:896
+#: ../base/executive/base.php:1107
+#: ../base/executive/base.php:1128
+#: ../base/executive/base.php:1150
+#: ../base/executive/base.php:1172
+#: ../base/superuser/base.php:1142
+#: ../base/superuser/base.php:1163
+#: ../base/superuser/base.php:1185
+#: ../base/superuser/base.php:1207
+msgid "Adjust the spacing between letters."
+msgstr ""
+
+#: ../base/agent/base.php:331
+#: ../base/entrepreneur/base.php:822
+#: ../base/executive/base.php:1098
+#: ../base/superuser/base.php:1133
+msgid "Quote Font"
+msgstr ""
+
+#: ../base/agent/base.php:332
+#: ../base/entrepreneur/base.php:823
+#: ../base/executive/base.php:1099
+#: ../base/superuser/base.php:1134
+msgid "This applies to quoted text in blockquote tags."
+msgstr ""
+
+#: ../base/agent/base.php:339
+#: ../base/entrepreneur/base.php:830
+#: ../base/executive/base.php:1106
+#: ../base/superuser/base.php:1141
+msgid "Quote Letter Spacing"
+msgstr ""
+
+#: ../base/agent/base.php:352
+#: ../base/entrepreneur/base.php:843
+#: ../base/executive/base.php:1119
+#: ../base/superuser/base.php:1154
+msgid "Meta Info Font"
+msgstr ""
+
+#: ../base/agent/base.php:353
+#: ../base/entrepreneur/base.php:844
+#: ../base/executive/base.php:1120
+#: ../base/superuser/base.php:1155
+msgid "This applies to meta info like the \"Posted\" date below a post title, for example."
+msgstr ""
+
+#: ../base/agent/base.php:360
+#: ../base/entrepreneur/base.php:851
+#: ../base/executive/base.php:1127
+#: ../base/superuser/base.php:1162
+msgid "Meta Info Letter Spacing"
+msgstr ""
+
+#: ../base/agent/base.php:373
+#: ../base/entrepreneur/base.php:864
+#: ../base/executive/base.php:1140
+#: ../base/superuser/base.php:1175
+msgid "Featured Image Title Font"
+msgstr ""
+
+#: ../base/agent/base.php:374
+#: ../base/entrepreneur/base.php:865
+#: ../base/executive/base.php:1141
+#: ../base/superuser/base.php:1176
+msgid "This applies when displaying a title on top of featured images."
+msgstr ""
+
+#: ../base/agent/base.php:382
+#: ../base/entrepreneur/base.php:873
+#: ../base/executive/base.php:1149
+#: ../base/superuser/base.php:1184
+msgid "Featured Image Title Letter Spacing"
+msgstr ""
+
+#: ../base/agent/base.php:395
+#: ../base/entrepreneur/base.php:886
+#: ../base/executive/base.php:1162
+#: ../base/superuser/base.php:1197
+msgid "Main Menu Font"
+msgstr ""
+
+#: ../base/agent/base.php:396
+#: ../base/entrepreneur/base.php:887
+#: ../base/executive/base.php:1163
+#: ../base/superuser/base.php:1198
+msgid "This font applies to the top level items of the main menu."
+msgstr ""
+
+#: ../base/agent/base.php:404
+#: ../base/entrepreneur/base.php:895
+#: ../base/executive/base.php:1171
+#: ../base/superuser/base.php:1206
+msgid "Main Menu Letter Spacing"
+msgstr ""
+
+#: ../base/agent/base.php:417
+#: ../base/entrepreneur/base.php:908
+#: ../base/executive/base.php:1184
+#: ../base/superuser/base.php:1219
+msgid "Link Color"
+msgstr ""
+
+#: ../base/agent/base.php:418
+#: ../base/entrepreneur/base.php:909
+#: ../base/executive/base.php:1185
+#: ../base/superuser/base.php:1220
+msgid "Choose the color you'd like applied to links."
+msgstr ""
+
+#: ../base/agent/base.php:424
+#: ../base/entrepreneur/base.php:915
+#: ../base/executive/base.php:1191
+#: ../base/superuser/base.php:1226
+msgid "Link Hover Color"
+msgstr ""
+
+#: ../base/agent/base.php:425
+#: ../base/entrepreneur/base.php:916
+#: ../base/executive/base.php:1192
+#: ../base/superuser/base.php:1227
+msgid "Choose the color you'd like applied to links when they are hovered over."
+msgstr ""
+
+#: ../base/agent/base.php:431
+#: ../base/entrepreneur/base.php:922
+#: ../base/executive/base.php:1198
+#: ../base/superuser/base.php:1233
+msgid "Footer Link Color"
+msgstr ""
+
+#: ../base/agent/base.php:432
+#: ../base/entrepreneur/base.php:923
+#: ../base/executive/base.php:1199
+#: ../base/superuser/base.php:1234
+msgid "Choose the color you'd like applied to links in the footer."
+msgstr ""
+
+#: ../base/agent/base.php:438
+#: ../base/entrepreneur/base.php:929
+#: ../base/executive/base.php:1205
+#: ../base/superuser/base.php:1240
+msgid "Footer Link Hover Color"
+msgstr ""
+
+#: ../base/agent/base.php:439
+#: ../base/entrepreneur/base.php:930
+#: ../base/executive/base.php:1206
+#: ../base/superuser/base.php:1241
+msgid "Choose the color you'd like applied to links in the footer when they are hovered over."
+msgstr ""
+
+#: ../base/agent/base.php:456
+#: ../base/entrepreneur/base.php:1208
+#: ../base/executive/base.php:1484
+#: ../base/superuser/base.php:1519
+msgid "Styles"
+msgstr ""
+
+#: ../base/agent/base.php:458
+#: ../base/entrepreneur/base.php:1210
+#: ../base/executive/base.php:1486
+#: ../base/superuser/base.php:1521
+msgid "General"
+msgstr ""
+
+#: ../base/agent/base.php:459
+#: ../base/entrepreneur/base.php:1212
+#: ../base/executive/base.php:1488
+#: ../base/superuser/base.php:1523
+msgid "Header"
+msgstr ""
+
+#: ../base/agent/base.php:460
+#: ../base/entrepreneur/base.php:577
+msgid "Transparent Header"
+msgstr ""
+
+#: ../base/agent/base.php:461
+#: ../base/entrepreneur/base.php:1213
+#: ../base/executive/base.php:1489
+#: ../base/superuser/base.php:1524
+msgid "Mobile Header"
+msgstr ""
+
+#: ../base/agent/base.php:462
+#: ../base/entrepreneur/base.php:1217
+#: ../base/executive/base.php:1493
+#: ../base/superuser/base.php:1528
+msgid "Footer"
+msgstr ""
+
+#: ../base/agent/base.php:463
+#: ../base/entrepreneur/base.php:1216
+#: ../base/executive/base.php:1492
+#: ../base/superuser/base.php:1527
+msgid "Side Panel"
+msgstr ""
+
+#: ../base/agent/base.php:464
+msgid "Widgets"
+msgstr ""
+
+#: ../base/agent/base.php:465
+#: ../base/entrepreneur/base.php:1218
+#: ../base/executive/base.php:1494
+#: ../base/superuser/base.php:1529
+msgid "Typography"
+msgstr ""
+
+#: ../base/agent/base.php:466
+#: ../base/entrepreneur/base.php:1222
+#: ../base/executive/base.php:1498
+#: ../base/superuser/base.php:1533
+msgid "Custom CSS"
+msgstr ""
+
+#: ../base/agent/base.php:496
+msgid "Contact"
+msgstr ""
+
+#: ../base/agent/base.php:498
+msgid "Contact Buttons"
+msgstr ""
+
+#: ../base/agent/base.php:499
+msgid "Configure the contact and social media buttons you'd like to use."
+msgstr ""
+
+#: ../base/agent/base.php:531
+msgid "Display contact buttons in side menu panel."
+msgstr ""
+
+#: ../base/agent/base.php:538
+msgid "Display contact buttons in footer."
+msgstr ""
 
 #: ../base/entrepreneur/base.php:30
 #: ../base/executive/base.php:30
@@ -120,16 +726,16 @@ msgstr ""
 #: ../base/entrepreneur/base.php:128
 #: ../base/entrepreneur/base.php:236
 #: ../base/entrepreneur/base.php:523
-#: ../base/entrepreneur/base.php:783
+#: ../base/entrepreneur/base.php:787
 #: ../base/executive/base.php:128
 #: ../base/executive/base.php:250
 #: ../base/executive/base.php:529
-#: ../base/executive/base.php:1059
+#: ../base/executive/base.php:1063
 #: ../base/superuser/base.php:128
 #: ../base/superuser/base.php:250
 #: ../base/superuser/base.php:529
-#: ../base/superuser/base.php:829
-#: ../base/superuser/base.php:1094
+#: ../base/superuser/base.php:849
+#: ../base/superuser/base.php:1098
 msgid "Bottom Border Width"
 msgstr ""
 
@@ -137,30 +743,6 @@ msgstr ""
 #: ../base/executive/base.php:129
 #: ../base/superuser/base.php:129
 msgid "Select a width in pixels for the border around content areas."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:149
-#: ../base/executive/base.php:149
-#: ../base/superuser/base.php:149
-msgid "Content Style"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:150
-#: ../base/executive/base.php:150
-#: ../base/superuser/base.php:150
-msgid "Select the content style of the site."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:154
-#: ../base/executive/base.php:154
-#: ../base/superuser/base.php:154
-msgid "Light"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:155
-#: ../base/executive/base.php:155
-#: ../base/superuser/base.php:155
-msgid "Dark"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:162
@@ -197,15 +779,6 @@ msgstr ""
 msgid "Top Bar Text Color"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:205
-#: ../base/entrepreneur/base.php:459
-#: ../base/executive/base.php:218
-#: ../base/executive/base.php:296
-#: ../base/superuser/base.php:218
-#: ../base/superuser/base.php:296
-msgid "If you're using a dark background color, select to show light text, and vice versa."
-msgstr ""
-
 #: ../base/entrepreneur/base.php:209
 #: ../base/entrepreneur/base.php:463
 #: ../base/executive/base.php:222
@@ -226,13 +799,13 @@ msgstr ""
 
 #: ../base/entrepreneur/base.php:221
 #: ../base/entrepreneur/base.php:508
-#: ../base/entrepreneur/base.php:768
+#: ../base/entrepreneur/base.php:772
 #: ../base/executive/base.php:514
-#: ../base/executive/base.php:1044
+#: ../base/executive/base.php:1048
 #: ../base/superuser/base.php:235
 #: ../base/superuser/base.php:514
-#: ../base/superuser/base.php:814
-#: ../base/superuser/base.php:1079
+#: ../base/superuser/base.php:834
+#: ../base/superuser/base.php:1083
 msgid "Bottom Border"
 msgstr ""
 
@@ -244,39 +817,39 @@ msgstr ""
 
 #: ../base/entrepreneur/base.php:228
 #: ../base/entrepreneur/base.php:515
-#: ../base/entrepreneur/base.php:775
+#: ../base/entrepreneur/base.php:779
 #: ../base/executive/base.php:242
 #: ../base/executive/base.php:521
-#: ../base/executive/base.php:1051
+#: ../base/executive/base.php:1055
 #: ../base/superuser/base.php:521
-#: ../base/superuser/base.php:821
-#: ../base/superuser/base.php:1086
+#: ../base/superuser/base.php:841
+#: ../base/superuser/base.php:1090
 msgid "Bottom Border Color"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:229
 #: ../base/entrepreneur/base.php:516
-#: ../base/entrepreneur/base.php:776
+#: ../base/entrepreneur/base.php:780
 #: ../base/executive/base.php:243
 #: ../base/executive/base.php:522
-#: ../base/executive/base.php:1052
+#: ../base/executive/base.php:1056
 #: ../base/superuser/base.php:243
 #: ../base/superuser/base.php:522
-#: ../base/superuser/base.php:822
-#: ../base/superuser/base.php:1087
+#: ../base/superuser/base.php:842
+#: ../base/superuser/base.php:1091
 msgid "Select a color for the bottom border."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:237
 #: ../base/entrepreneur/base.php:524
-#: ../base/entrepreneur/base.php:784
+#: ../base/entrepreneur/base.php:788
 #: ../base/executive/base.php:251
 #: ../base/executive/base.php:530
-#: ../base/executive/base.php:1060
+#: ../base/executive/base.php:1064
 #: ../base/superuser/base.php:251
 #: ../base/superuser/base.php:530
-#: ../base/superuser/base.php:830
-#: ../base/superuser/base.php:1095
+#: ../base/superuser/base.php:850
+#: ../base/superuser/base.php:1099
 msgid "Select a width in pixels for the bottom border."
 msgstr ""
 
@@ -308,38 +881,16 @@ msgstr ""
 
 #: ../base/entrepreneur/base.php:281
 #: ../base/executive/base.php:287
-#: ../base/executive/base.php:621
+#: ../base/executive/base.php:641
 #: ../base/superuser/base.php:287
-#: ../base/superuser/base.php:630
+#: ../base/superuser/base.php:650
 msgid "Select if you'd like to apply a custom background and how you want to control it."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:289
-#: ../base/entrepreneur/base.php:670
-#: ../base/executive/base.php:306
-#: ../base/executive/base.php:634
-#: ../base/executive/base.php:946
-#: ../base/superuser/base.php:306
-#: ../base/superuser/base.php:643
-#: ../base/superuser/base.php:981
-msgid "Background Color"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:290
 #: ../base/executive/base.php:307
 #: ../base/superuser/base.php:307
 msgid "Select a background color."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:297
-#: ../base/entrepreneur/base.php:690
-#: ../base/executive/base.php:314
-#: ../base/executive/base.php:650
-#: ../base/executive/base.php:966
-#: ../base/superuser/base.php:314
-#: ../base/superuser/base.php:659
-#: ../base/superuser/base.php:1001
-msgid "Background Color Opacity"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:298
@@ -349,20 +900,20 @@ msgid "Select the opacity of the background color. Selecting \"100%\" means that
 msgstr ""
 
 #: ../base/entrepreneur/base.php:327
-#: ../base/entrepreneur/base.php:662
+#: ../base/entrepreneur/base.php:666
 #: ../base/executive/base.php:344
-#: ../base/executive/base.php:938
+#: ../base/executive/base.php:942
 #: ../base/superuser/base.php:344
-#: ../base/superuser/base.php:973
+#: ../base/superuser/base.php:977
 msgid "Background Texture"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:328
-#: ../base/entrepreneur/base.php:663
+#: ../base/entrepreneur/base.php:667
 #: ../base/executive/base.php:345
-#: ../base/executive/base.php:939
+#: ../base/executive/base.php:943
 #: ../base/superuser/base.php:345
-#: ../base/superuser/base.php:974
+#: ../base/superuser/base.php:978
 msgid "Select a background texture."
 msgstr ""
 
@@ -393,8 +944,13 @@ msgstr ""
 #: ../base/entrepreneur/base.php:360
 #: ../base/executive/base.php:377
 #: ../base/superuser/base.php:377
-#, php-format
-msgid "Setup a background video. For best results, make sure to use all three fields. The %s file will display in Google Chrome, while the %s will display in most other modnern browsers. Your fallback image will display on mobile and in browsers that don't support HTML5 video."
+msgid "You can upload a web-video file (mp4, webm, ogv), or input a URL to a video page on YouTube or Vimeo. Your fallback image will display on mobile devices."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:360
+#: ../base/executive/base.php:377
+#: ../base/superuser/base.php:377
+msgid "Examples:"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:372
@@ -458,12 +1014,12 @@ msgid "Text Color"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:470
-#: ../base/entrepreneur/base.php:730
+#: ../base/entrepreneur/base.php:734
 #: ../base/executive/base.php:476
-#: ../base/executive/base.php:1006
+#: ../base/executive/base.php:1010
 #: ../base/superuser/base.php:476
-#: ../base/superuser/base.php:776
-#: ../base/superuser/base.php:1041
+#: ../base/superuser/base.php:796
+#: ../base/superuser/base.php:1045
 msgid "Top Border"
 msgstr ""
 
@@ -474,42 +1030,42 @@ msgid "Apply top border to header."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:477
-#: ../base/entrepreneur/base.php:737
+#: ../base/entrepreneur/base.php:741
 #: ../base/executive/base.php:483
-#: ../base/executive/base.php:1013
+#: ../base/executive/base.php:1017
 #: ../base/superuser/base.php:483
-#: ../base/superuser/base.php:783
-#: ../base/superuser/base.php:1048
+#: ../base/superuser/base.php:803
+#: ../base/superuser/base.php:1052
 msgid "Top Border Color"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:478
-#: ../base/entrepreneur/base.php:738
+#: ../base/entrepreneur/base.php:742
 #: ../base/executive/base.php:484
-#: ../base/executive/base.php:1014
+#: ../base/executive/base.php:1018
 #: ../base/superuser/base.php:484
-#: ../base/superuser/base.php:784
-#: ../base/superuser/base.php:1049
+#: ../base/superuser/base.php:804
+#: ../base/superuser/base.php:1053
 msgid "Select a color for the top border."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:485
-#: ../base/entrepreneur/base.php:745
+#: ../base/entrepreneur/base.php:749
 #: ../base/executive/base.php:491
-#: ../base/executive/base.php:1021
+#: ../base/executive/base.php:1025
 #: ../base/superuser/base.php:491
-#: ../base/superuser/base.php:791
-#: ../base/superuser/base.php:1056
+#: ../base/superuser/base.php:811
+#: ../base/superuser/base.php:1060
 msgid "Top Border Width"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:486
-#: ../base/entrepreneur/base.php:746
+#: ../base/entrepreneur/base.php:750
 #: ../base/executive/base.php:492
-#: ../base/executive/base.php:1022
+#: ../base/executive/base.php:1026
 #: ../base/superuser/base.php:492
-#: ../base/superuser/base.php:792
-#: ../base/superuser/base.php:1057
+#: ../base/superuser/base.php:812
+#: ../base/superuser/base.php:1061
 msgid "Select a width in pixels for the top border."
 msgstr ""
 
@@ -519,682 +1075,453 @@ msgstr ""
 msgid "Apply bottom border to header."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:543
-#: ../base/executive/base.php:812
-#: ../base/superuser/base.php:847
+#: ../base/entrepreneur/base.php:563
+#: ../base/executive/base.php:832
+#: ../base/superuser/base.php:867
 msgid "Text Shadow"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:543
-#: ../base/executive/base.php:812
-#: ../base/superuser/base.php:847
+#: ../base/entrepreneur/base.php:563
+#: ../base/executive/base.php:832
+#: ../base/superuser/base.php:867
 msgid "Apply shadow to the text of the main menu."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:543
+#: ../base/entrepreneur/base.php:563
 msgid "Note: This works better with a darker colored header."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:555
-#: ../base/executive/base.php:856
-#: ../base/superuser/base.php:891
-msgid "Font"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:555
-#: ../base/executive/base.php:856
-#: ../base/superuser/base.php:891
-msgid "Apply custom font to main menu."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:562
-#: ../base/executive/base.php:863
-#: ../base/superuser/base.php:898
-msgid "Main Menu Font"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:563
-#: ../base/executive/base.php:864
-#: ../base/superuser/base.php:899
-msgid "This font applies to the top level items of the main menu."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:576
-#: ../base/entrepreneur/base.php:1086
-#: ../base/executive/base.php:1362
-#: ../base/superuser/base.php:1397
+#: ../base/entrepreneur/base.php:569
+#: ../base/entrepreneur/base.php:1176
+#: ../base/executive/base.php:1452
+#: ../base/superuser/base.php:1487
 msgid "Highlight Color"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:577
+#: ../base/entrepreneur/base.php:570
 msgid "Select a color to be used as a sublte highlight to the main menu."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:584
-msgid "Transparent Header"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:584
+#: ../base/entrepreneur/base.php:577
 msgid "Also apply menu highlight color top-level menu items, when using transparent header."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:590
-#: ../base/executive/base.php:743
-#: ../base/superuser/base.php:752
+#: ../base/entrepreneur/base.php:583
+#: ../base/executive/base.php:763
+#: ../base/superuser/base.php:772
 msgid "Dropdown Background Color"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:591
-#: ../base/entrepreneur/base.php:611
-#: ../base/executive/base.php:744
-#: ../base/executive/base.php:887
-#: ../base/superuser/base.php:753
-#: ../base/superuser/base.php:922
+#: ../base/entrepreneur/base.php:584
+#: ../base/executive/base.php:764
+#: ../base/superuser/base.php:773
 msgid "Select a background color for the main menu's drop down menus."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:597
-#: ../base/executive/base.php:750
-#: ../base/superuser/base.php:759
+#: ../base/entrepreneur/base.php:590
+#: ../base/executive/base.php:770
+#: ../base/superuser/base.php:779
 msgid "Dropdown Background Color Brightness"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:598
-#: ../base/entrepreneur/base.php:618
-#: ../base/entrepreneur/base.php:679
-#: ../base/entrepreneur/base.php:971
-#: ../base/executive/base.php:681
-#: ../base/executive/base.php:733
-#: ../base/executive/base.php:751
-#: ../base/executive/base.php:894
-#: ../base/executive/base.php:955
-#: ../base/executive/base.php:1247
-#: ../base/superuser/base.php:690
-#: ../base/superuser/base.php:742
-#: ../base/superuser/base.php:760
-#: ../base/superuser/base.php:929
-#: ../base/superuser/base.php:990
-#: ../base/superuser/base.php:1282
-msgid "In the previous option, did you go dark or light?"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:602
-#: ../base/entrepreneur/base.php:622
-#: ../base/entrepreneur/base.php:683
-#: ../base/entrepreneur/base.php:976
-#: ../base/executive/base.php:685
-#: ../base/executive/base.php:737
-#: ../base/executive/base.php:755
-#: ../base/executive/base.php:898
-#: ../base/executive/base.php:959
-#: ../base/executive/base.php:1252
-#: ../base/superuser/base.php:694
-#: ../base/superuser/base.php:746
-#: ../base/superuser/base.php:764
-#: ../base/superuser/base.php:933
-#: ../base/superuser/base.php:994
-#: ../base/superuser/base.php:1287
-msgid "I chose a light color in the previous option."
-msgstr ""
-
 #: ../base/entrepreneur/base.php:603
-#: ../base/entrepreneur/base.php:623
-#: ../base/entrepreneur/base.php:684
-#: ../base/entrepreneur/base.php:977
-#: ../base/executive/base.php:686
-#: ../base/executive/base.php:738
-#: ../base/executive/base.php:756
-#: ../base/executive/base.php:899
-#: ../base/executive/base.php:960
-#: ../base/executive/base.php:1253
-#: ../base/superuser/base.php:695
-#: ../base/superuser/base.php:747
-#: ../base/superuser/base.php:765
-#: ../base/superuser/base.php:934
-#: ../base/superuser/base.php:995
-#: ../base/superuser/base.php:1288
-msgid "I chose a dark color in the previous option."
+#: ../base/executive/base.php:879
+#: ../base/superuser/base.php:914
+msgid "Mobile Menu Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:604
+#: ../base/executive/base.php:880
+#: ../base/superuser/base.php:915
+msgid "Select a background color for the mobile menu side panel."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:610
 #: ../base/executive/base.php:886
 #: ../base/superuser/base.php:921
-msgid "Mobile Menu Background Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:617
-#: ../base/executive/base.php:893
-#: ../base/superuser/base.php:928
 msgid "Mobile Menu Background Color Brightness"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:627
-#: ../base/executive/base.php:903
-#: ../base/superuser/base.php:938
-msgid "Social Media Style"
+#: ../base/entrepreneur/base.php:623
+#: ../base/executive/base.php:899
+#: ../base/superuser/base.php:934
+#, php-format
+msgid "These options apply to the side panel that shows on desktops when you assign a menu to the \"Primary Side Navigation\" or \"Secondary Side Navigation\" locations at %s."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:628
 #: ../base/executive/base.php:904
 #: ../base/superuser/base.php:939
-msgid "Select the color you'd like applied to the social icons in the mobile menu."
+msgid "Side Panel Background Color"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:633
-#: ../base/executive/base.php:909
-#: ../base/superuser/base.php:944
-msgid "Flat Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:634
-#: ../base/executive/base.php:910
-#: ../base/superuser/base.php:945
-msgid "Flat Dark"
+#: ../base/entrepreneur/base.php:629
+#: ../base/executive/base.php:905
+#: ../base/superuser/base.php:940
+msgid "Select a background color for the desktop side panel."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:635
 #: ../base/executive/base.php:911
 #: ../base/superuser/base.php:946
-msgid "Flat Grey"
+msgid "Side Panel Background Color Brightness"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:636
-#: ../base/executive/base.php:912
-#: ../base/superuser/base.php:947
-msgid "Flat Light"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:637
-#: ../base/executive/base.php:913
-#: ../base/superuser/base.php:948
-msgid "Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:649
+#: ../base/entrepreneur/base.php:653
 msgid "Footer Background"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:650
-#: ../base/executive/base.php:926
-#: ../base/superuser/base.php:961
-msgid "Select if you'd like to apply a custom background color to the footer."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:650
-#: ../base/executive/base.php:926
-#: ../base/superuser/base.php:961
-#, php-format
-msgid "Note: To setup a more complex designed footer, go to %s and use the \"Template Sync\" feature."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:650
-#: ../base/executive/base.php:926
-#: ../base/superuser/base.php:961
-msgid "Layout > Footer"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:654
 #: ../base/executive/base.php:930
 #: ../base/superuser/base.php:965
+msgid "Select if you'd like to apply a custom background color to the footer."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:654
+#: ../base/executive/base.php:930
+#: ../base/superuser/base.php:965
+#, php-format
+msgid "Note: To setup a more complex designed footer, go to %s and use the \"Template Sync\" feature."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:654
+#: ../base/executive/base.php:930
+#: ../base/superuser/base.php:965
+msgid "Layout > Footer"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:658
+#: ../base/executive/base.php:934
+#: ../base/superuser/base.php:969
 msgid "None"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:655
-#: ../base/executive/base.php:625
-#: ../base/executive/base.php:931
-#: ../base/superuser/base.php:634
-#: ../base/superuser/base.php:966
-#: ../framework/admin/functions/general.php:319
+#: ../base/entrepreneur/base.php:659
+#: ../base/executive/base.php:645
+#: ../base/executive/base.php:935
+#: ../base/superuser/base.php:654
+#: ../base/superuser/base.php:970
 msgid "Custom color"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:656
-#: ../base/executive/base.php:932
-#: ../base/superuser/base.php:967
-#: ../framework/admin/functions/general.php:320
+#: ../base/entrepreneur/base.php:660
+#: ../base/executive/base.php:936
+#: ../base/superuser/base.php:971
 msgid "Custom color + texture"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:671
-#: ../base/executive/base.php:947
-#: ../base/superuser/base.php:982
+#: ../base/entrepreneur/base.php:675
+#: ../base/executive/base.php:951
+#: ../base/superuser/base.php:986
 msgid "Select a background color for the footer."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:678
-#: ../base/executive/base.php:680
-#: ../base/executive/base.php:954
-#: ../base/superuser/base.php:689
-#: ../base/superuser/base.php:989
-msgid "Background Color Brightness"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:691
-#: ../base/entrepreneur/base.php:984
-#: ../base/executive/base.php:967
-#: ../base/executive/base.php:1260
-#: ../base/superuser/base.php:1002
-#: ../base/superuser/base.php:1295
+#: ../base/entrepreneur/base.php:695
+#: ../base/entrepreneur/base.php:1074
+#: ../base/executive/base.php:971
+#: ../base/executive/base.php:1350
+#: ../base/superuser/base.php:1006
+#: ../base/superuser/base.php:1385
 msgid "Select the opacity of the background color you chose."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:730
-#: ../base/executive/base.php:1006
-#: ../base/superuser/base.php:1041
+#: ../base/entrepreneur/base.php:734
+#: ../base/executive/base.php:1010
+#: ../base/superuser/base.php:1045
 msgid "Apply top border to footer."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:768
-#: ../base/executive/base.php:1044
-#: ../base/superuser/base.php:1079
+#: ../base/entrepreneur/base.php:772
+#: ../base/executive/base.php:1048
+#: ../base/superuser/base.php:1083
 msgid "Apply bottom border to footer."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:802
-#: ../base/executive/base.php:1078
-#: ../base/superuser/base.php:1113
-msgid "Primary Font"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:803
-#: ../base/executive/base.php:1079
-#: ../base/superuser/base.php:1114
-msgid "This applies to most of the text on your site."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:810
-#: ../base/executive/base.php:1086
-#: ../base/superuser/base.php:1121
-msgid "Header Font"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:811
-#: ../base/executive/base.php:1087
-#: ../base/superuser/base.php:1122
-msgid "This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:818
-#: ../base/executive/base.php:1094
-#: ../base/superuser/base.php:1129
-msgid "Link Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:819
-#: ../base/executive/base.php:1095
-#: ../base/superuser/base.php:1130
-msgid "Choose the color you'd like applied to links."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:825
-#: ../base/executive/base.php:1101
-#: ../base/superuser/base.php:1136
-msgid "Link Hover Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:826
-#: ../base/executive/base.php:1102
-#: ../base/superuser/base.php:1137
-msgid "Choose the color you'd like applied to links when they are hovered over."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:832
-#: ../base/executive/base.php:1108
-#: ../base/superuser/base.php:1143
-msgid "Footer Link Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:833
-#: ../base/executive/base.php:1109
-#: ../base/superuser/base.php:1144
-msgid "Choose the color you'd like applied to links in the footer."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:839
-#: ../base/executive/base.php:1115
-#: ../base/superuser/base.php:1150
-msgid "Footer Link Hover Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:840
-#: ../base/executive/base.php:1116
-#: ../base/superuser/base.php:1151
-msgid "Choose the color you'd like applied to links in the footer when they are hovered over."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:848
-#: ../base/executive/base.php:1124
-#: ../base/superuser/base.php:1159
+#: ../base/entrepreneur/base.php:938
+#: ../base/executive/base.php:1214
+#: ../base/superuser/base.php:1249
 msgid "Default Buttons"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:849
-#: ../base/executive/base.php:1125
-#: ../base/superuser/base.php:1160
+#: ../base/entrepreneur/base.php:939
+#: ../base/executive/base.php:1215
+#: ../base/superuser/base.php:1250
 msgid "Configure what a default button looks like."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:863
-#: ../base/executive/base.php:1139
-#: ../base/superuser/base.php:1174
-msgid "Primary Buttons"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:864
-#: ../base/executive/base.php:1140
-#: ../base/superuser/base.php:1175
+#: ../base/entrepreneur/base.php:954
+#: ../base/executive/base.php:1230
+#: ../base/superuser/base.php:1265
 msgid "Configure what a primary button looks like."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:878
-#: ../base/executive/base.php:1154
-#: ../base/superuser/base.php:1189
+#: ../base/entrepreneur/base.php:968
+#: ../base/executive/base.php:1244
+#: ../base/superuser/base.php:1279
 msgid "General Button Border Width"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:879
-#: ../base/executive/base.php:1155
-#: ../base/superuser/base.php:1190
-msgid "Select a width in pixels for border of buttons."
+#: ../base/entrepreneur/base.php:969
+#: ../base/executive/base.php:1245
+#: ../base/superuser/base.php:1280
+msgid "If your buttons are set to include a border, select a width in pixels for those borders."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:890
-#: ../base/executive/base.php:1166
-#: ../base/superuser/base.php:1201
+#: ../base/entrepreneur/base.php:980
+#: ../base/executive/base.php:1256
+#: ../base/superuser/base.php:1291
 msgid "General Button Corners"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:891
+#: ../base/entrepreneur/base.php:981
 msgid "Select the border radius of button corners."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:909
-#: ../base/executive/base.php:1185
-#: ../base/superuser/base.php:1220
+#: ../base/entrepreneur/base.php:999
+#: ../base/executive/base.php:1275
+#: ../base/superuser/base.php:1310
 msgid "Widget Style"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:910
-#: ../base/executive/base.php:1186
-#: ../base/superuser/base.php:1221
+#: ../base/entrepreneur/base.php:1000
+#: ../base/executive/base.php:1276
+#: ../base/superuser/base.php:1311
 msgid "Select how you want to style your widgets."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:910
-#: ../base/executive/base.php:1186
-#: ../base/superuser/base.php:1221
+#: ../base/entrepreneur/base.php:1000
+#: ../base/executive/base.php:1276
+#: ../base/superuser/base.php:1311
 msgid "What's a Bootstrap panel?"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:914
-#: ../base/executive/base.php:1190
-#: ../base/superuser/base.php:1225
+#: ../base/entrepreneur/base.php:1004
+#: ../base/executive/base.php:1280
+#: ../base/superuser/base.php:1315
 msgid "Standard"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:915
-#: ../base/executive/base.php:1191
-#: ../base/superuser/base.php:1226
+#: ../base/entrepreneur/base.php:1005
+#: ../base/executive/base.php:1281
+#: ../base/superuser/base.php:1316
 msgid "Bootstrap Panel"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:925
-#: ../base/executive/base.php:1201
-#: ../base/superuser/base.php:1236
+#: ../base/entrepreneur/base.php:1015
+#: ../base/executive/base.php:1291
+#: ../base/superuser/base.php:1326
 msgid "Panel Style"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:926
-#: ../base/executive/base.php:1202
-#: ../base/superuser/base.php:1237
+#: ../base/entrepreneur/base.php:1016
+#: ../base/executive/base.php:1292
+#: ../base/superuser/base.php:1327
 msgid "Select a style for the Bootstrap panel. You can use a preset style, or setup custom colors."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:931
-#: ../base/executive/base.php:1207
-#: ../base/superuser/base.php:1242
-msgid "Custom Style"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:932
-#: ../base/executive/base.php:1208
-#: ../base/superuser/base.php:1243
-msgid "Bootstrap: Default"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:933
-#: ../base/executive/base.php:1209
-#: ../base/superuser/base.php:1244
-msgid "Bootstrap: Primary"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:934
-#: ../base/executive/base.php:1210
-#: ../base/superuser/base.php:1245
-msgid "Bootstrap: Info (blue)"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:935
-#: ../base/executive/base.php:1211
-#: ../base/superuser/base.php:1246
-msgid "Bootstrap: Warning (yellow)"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:936
-#: ../base/executive/base.php:1212
-#: ../base/superuser/base.php:1247
-msgid "Bootstrap: Danger (red)"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:943
-#: ../base/executive/base.php:1219
-#: ../base/superuser/base.php:1254
-msgid "Panel Title Background"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:944
-#: ../base/executive/base.php:1220
-#: ../base/superuser/base.php:1255
-msgid "Select two colors to create a background gradient for widget titles. For a solid color, simply select the same color twice."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:951
-#: ../base/executive/base.php:1227
-#: ../base/superuser/base.php:1262
-msgid "Panel Border Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:952
-#: ../base/entrepreneur/base.php:1056
-#: ../base/executive/base.php:787
-#: ../base/executive/base.php:1228
-#: ../base/executive/base.php:1332
-#: ../base/superuser/base.php:1263
-#: ../base/superuser/base.php:1367
-msgid "Select a color for the border."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:963
-#: ../base/executive/base.php:1239
-#: ../base/superuser/base.php:1274
-msgid "Widget Background Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:964
-#: ../base/executive/base.php:1240
-#: ../base/superuser/base.php:1275
-msgid "Select a background color for widgets."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:970
-#: ../base/executive/base.php:1246
-#: ../base/superuser/base.php:1281
-msgid "Widget Background Color Brightness"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:983
-#: ../base/executive/base.php:1259
-#: ../base/superuser/base.php:1294
-msgid "Widget Background Color Opacity"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1013
-#: ../base/executive/base.php:1289
-#: ../base/superuser/base.php:1324
-msgid "Widget Title Text Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1014
-#: ../base/executive/base.php:1290
-#: ../base/superuser/base.php:1325
-msgid "Select the text color for titles of widgets."
 msgstr ""
 
 #: ../base/entrepreneur/base.php:1021
 #: ../base/executive/base.php:1297
 #: ../base/superuser/base.php:1332
-msgid "Widget Title Text Size"
+msgid "Custom Style"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:1022
 #: ../base/executive/base.php:1298
 #: ../base/superuser/base.php:1333
+msgid "Bootstrap: Default"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1023
+#: ../base/executive/base.php:1299
+#: ../base/superuser/base.php:1334
+msgid "Bootstrap: Primary"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1024
+#: ../base/executive/base.php:1300
+#: ../base/superuser/base.php:1335
+msgid "Bootstrap: Info (blue)"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1025
+#: ../base/executive/base.php:1301
+#: ../base/superuser/base.php:1336
+msgid "Bootstrap: Warning (yellow)"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1026
+#: ../base/executive/base.php:1302
+#: ../base/superuser/base.php:1337
+msgid "Bootstrap: Danger (red)"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1033
+#: ../base/executive/base.php:1309
+#: ../base/superuser/base.php:1344
+msgid "Panel Title Background"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1034
+#: ../base/executive/base.php:1310
+#: ../base/superuser/base.php:1345
+msgid "Select two colors to create a background gradient for widget titles. For a solid color, simply select the same color twice."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1041
+#: ../base/executive/base.php:1317
+#: ../base/superuser/base.php:1352
+msgid "Panel Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1042
+#: ../base/entrepreneur/base.php:1146
+#: ../base/executive/base.php:807
+#: ../base/executive/base.php:1318
+#: ../base/executive/base.php:1422
+#: ../base/superuser/base.php:1353
+#: ../base/superuser/base.php:1457
+msgid "Select a color for the border."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1053
+#: ../base/executive/base.php:1329
+#: ../base/superuser/base.php:1364
+msgid "Widget Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1060
+#: ../base/executive/base.php:1336
+#: ../base/superuser/base.php:1371
+msgid "Widget Background Color Brightness"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1073
+#: ../base/executive/base.php:1349
+#: ../base/superuser/base.php:1384
+msgid "Widget Background Color Opacity"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1103
+#: ../base/executive/base.php:1379
+#: ../base/superuser/base.php:1414
+msgid "Widget Title Text Color"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1104
+#: ../base/executive/base.php:1380
+#: ../base/superuser/base.php:1415
+msgid "Select the text color for titles of widgets."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1111
+#: ../base/executive/base.php:1387
+#: ../base/superuser/base.php:1422
+msgid "Widget Title Text Size"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1112
+#: ../base/executive/base.php:1388
+#: ../base/superuser/base.php:1423
 msgid "Select the text size for titles of widgets."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1035
-#: ../base/executive/base.php:1311
-#: ../base/superuser/base.php:1346
-msgid "Widget Title Text Shadow"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1035
-#: ../base/executive/base.php:1311
-#: ../base/superuser/base.php:1346
-msgid "Apply shadow to widget title text."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1048
-#: ../base/executive/base.php:1324
-#: ../base/superuser/base.php:1359
-msgid "Widget Border"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1048
-#: ../base/executive/base.php:1324
-#: ../base/superuser/base.php:1359
-msgid "Apply border around widgets."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1055
-#: ../base/executive/base.php:786
-#: ../base/executive/base.php:1331
-#: ../base/superuser/base.php:1366
-msgid "Border Color"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1063
-#: ../base/executive/base.php:794
-#: ../base/executive/base.php:1339
-#: ../base/superuser/base.php:1374
-msgid "Border Width"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1064
-#: ../base/executive/base.php:795
-#: ../base/executive/base.php:1340
-#: ../base/superuser/base.php:1375
-msgid "Select a width in pixels for the border."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1087
-#: ../base/executive/base.php:1363
-#: ../base/superuser/base.php:1398
-msgid "Select a Highlight color to be used in a few little areas throughout your site."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1094
-#: ../base/executive/base.php:1370
-#: ../base/superuser/base.php:1405
-msgid "Display special styling to titles of info boxes and standard widgets."
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1101
-#: ../base/executive/base.php:1377
-#: ../base/superuser/base.php:1412
-msgid "Display avatars and small featured images as circles"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1118
-#: ../base/executive/base.php:1394
-#: ../base/superuser/base.php:1429
-msgid "Styles"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1120
-#: ../base/executive/base.php:1396
-#: ../base/superuser/base.php:1431
-msgid "General"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1121
-#: ../base/executive/base.php:1397
-#: ../base/superuser/base.php:1432
-msgid "Header Info"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1122
-#: ../base/executive/base.php:1398
-#: ../base/superuser/base.php:1433
-msgid "Header"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1123
-#: ../base/executive/base.php:1399
-#: ../base/superuser/base.php:1434
-msgid "Main Menu"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1124
-#: ../base/executive/base.php:1400
-#: ../base/superuser/base.php:1435
-msgid "Mobile Menu"
 msgstr ""
 
 #: ../base/entrepreneur/base.php:1125
 #: ../base/executive/base.php:1401
 #: ../base/superuser/base.php:1436
-msgid "Footer"
+msgid "Widget Title Text Shadow"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:1126
-#: ../base/executive/base.php:1402
-#: ../base/superuser/base.php:1437
-msgid "Typography"
+#: ../base/entrepreneur/base.php:1125
+#: ../base/executive/base.php:1401
+#: ../base/superuser/base.php:1436
+msgid "Apply shadow to widget title text."
 msgstr ""
 
-#: ../base/entrepreneur/base.php:1127
-#: ../base/executive/base.php:1403
-#: ../base/superuser/base.php:1438
+#: ../base/entrepreneur/base.php:1138
+#: ../base/executive/base.php:1414
+#: ../base/superuser/base.php:1449
+msgid "Widget Border"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1138
+#: ../base/executive/base.php:1414
+#: ../base/superuser/base.php:1449
+msgid "Apply border around widgets."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1145
+#: ../base/executive/base.php:806
+#: ../base/executive/base.php:1421
+#: ../base/superuser/base.php:1456
+msgid "Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1153
+#: ../base/executive/base.php:814
+#: ../base/executive/base.php:1429
+#: ../base/superuser/base.php:1464
+msgid "Border Width"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1154
+#: ../base/executive/base.php:815
+#: ../base/executive/base.php:1430
+#: ../base/superuser/base.php:1465
+msgid "Select a width in pixels for the border."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1177
+#: ../base/executive/base.php:1453
+#: ../base/superuser/base.php:1488
+msgid "Select a Highlight color to be used in a few little areas throughout your site."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1184
+#: ../base/executive/base.php:1460
+#: ../base/superuser/base.php:1495
+msgid "Display special styling to titles of info boxes and standard widgets."
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1191
+#: ../base/executive/base.php:1467
+#: ../base/superuser/base.php:1502
+msgid "Display avatars and small featured images as circles"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1211
+#: ../base/executive/base.php:1487
+#: ../base/superuser/base.php:1522
+msgid "Header Info"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1214
+#: ../base/executive/base.php:1490
+#: ../base/superuser/base.php:1525
+msgid "Main Menu"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1215
+#: ../base/executive/base.php:1491
+#: ../base/superuser/base.php:1526
+msgid "Mobile Menu"
+msgstr ""
+
+#: ../base/entrepreneur/base.php:1219
+#: ../base/executive/base.php:1495
+#: ../base/superuser/base.php:1530
 msgid "Buttons"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:1128
-#: ../base/executive/base.php:1404
-#: ../base/superuser/base.php:1439
+#: ../base/entrepreneur/base.php:1220
+#: ../base/executive/base.php:1496
+#: ../base/superuser/base.php:1531
 msgid "Sidebar Widgets"
 msgstr ""
 
-#: ../base/entrepreneur/base.php:1129
-#: ../base/executive/base.php:1405
-#: ../base/superuser/base.php:1440
+#: ../base/entrepreneur/base.php:1221
+#: ../base/executive/base.php:1497
+#: ../base/superuser/base.php:1532
 msgid "Extras"
-msgstr ""
-
-#: ../base/entrepreneur/base.php:1130
-#: ../base/executive/base.php:1406
-#: ../base/superuser/base.php:1441
-msgid "Custom CSS"
 msgstr ""
 
 #: ../base/executive/base.php:166
@@ -1267,133 +1594,133 @@ msgstr ""
 msgid "Center align the logo within the header."
 msgstr ""
 
-#: ../base/executive/base.php:620
-#: ../base/superuser/base.php:629
+#: ../base/executive/base.php:640
+#: ../base/superuser/base.php:649
 msgid "Main Menu Background"
 msgstr ""
 
-#: ../base/executive/base.php:626
-#: ../base/superuser/base.php:635
+#: ../base/executive/base.php:646
+#: ../base/superuser/base.php:655
 msgid "Custom color + glassy overlay"
 msgstr ""
 
-#: ../base/executive/base.php:627
-#: ../base/superuser/base.php:636
+#: ../base/executive/base.php:647
+#: ../base/superuser/base.php:656
 msgid "Custom color + noisy texture"
 msgstr ""
 
-#: ../base/executive/base.php:628
-#: ../base/superuser/base.php:637
+#: ../base/executive/base.php:648
+#: ../base/superuser/base.php:657
 msgid "Custom gradient"
 msgstr ""
 
-#: ../base/executive/base.php:635
-#: ../base/superuser/base.php:644
+#: ../base/executive/base.php:655
+#: ../base/superuser/base.php:664
 msgid "Select a background color for the main menu."
 msgstr ""
 
-#: ../base/executive/base.php:642
-#: ../base/superuser/base.php:651
+#: ../base/executive/base.php:662
+#: ../base/superuser/base.php:671
 msgid "Background Gradient"
 msgstr ""
 
-#: ../base/executive/base.php:643
-#: ../base/superuser/base.php:652
+#: ../base/executive/base.php:663
+#: ../base/superuser/base.php:672
 msgid "Select two colors to create a gradient with for the main menu."
 msgstr ""
 
-#: ../base/executive/base.php:651
-#: ../base/superuser/base.php:660
+#: ../base/executive/base.php:671
+#: ../base/superuser/base.php:680
 msgid "Select the opacity of the background color(s). Selecting \"100%\" means that the background color is not transparent, at all."
 msgstr ""
 
-#: ../base/executive/base.php:696
-#: ../base/superuser/base.php:705
+#: ../base/executive/base.php:716
+#: ../base/superuser/base.php:725
 msgid "Button Hover Background Color"
 msgstr ""
 
-#: ../base/executive/base.php:697
-#: ../base/superuser/base.php:706
+#: ../base/executive/base.php:717
+#: ../base/superuser/base.php:726
 msgid "Select a background color for when buttons of the main are hovered on."
 msgstr ""
 
-#: ../base/executive/base.php:703
-#: ../base/superuser/base.php:712
+#: ../base/executive/base.php:723
+#: ../base/superuser/base.php:732
 msgid "Button Hover Background Color Opacity"
 msgstr ""
 
-#: ../base/executive/base.php:704
-#: ../base/superuser/base.php:713
+#: ../base/executive/base.php:724
+#: ../base/superuser/base.php:733
 msgid "Select the opacity of the color you selected in the previous option."
 msgstr ""
 
-#: ../base/executive/base.php:732
-#: ../base/superuser/base.php:741
+#: ../base/executive/base.php:752
+#: ../base/superuser/base.php:761
 msgid "Button Hover Background Color Brightness"
 msgstr ""
 
-#: ../base/executive/base.php:761
+#: ../base/executive/base.php:781
 msgid "Menu Corners"
 msgstr ""
 
-#: ../base/executive/base.php:762
+#: ../base/executive/base.php:782
 msgid "Set the border radius of menu corners. Setting to 0px will mean the menu corners are square."
 msgstr ""
 
-#: ../base/executive/base.php:779
+#: ../base/executive/base.php:799
 msgid "Border"
 msgstr ""
 
-#: ../base/executive/base.php:779
+#: ../base/executive/base.php:799
 msgid "Apply border around menu."
-msgstr ""
-
-#: ../base/executive/base.php:824
-#: ../base/superuser/base.php:859
-msgid "Dividers"
-msgstr ""
-
-#: ../base/executive/base.php:824
-#: ../base/superuser/base.php:859
-msgid "Add dividers between buttons of main menu."
-msgstr ""
-
-#: ../base/executive/base.php:831
-#: ../base/superuser/base.php:866
-msgid "Divider Color"
-msgstr ""
-
-#: ../base/executive/base.php:832
-#: ../base/superuser/base.php:867
-msgid "Select a color for the menu dividers."
 msgstr ""
 
 #: ../base/executive/base.php:844
 #: ../base/superuser/base.php:879
-msgid "Center"
+msgid "Dividers"
 msgstr ""
 
 #: ../base/executive/base.php:844
+#: ../base/superuser/base.php:879
+msgid "Add dividers between buttons of main menu."
+msgstr ""
+
+#: ../base/executive/base.php:851
+#: ../base/superuser/base.php:886
+msgid "Divider Color"
+msgstr ""
+
+#: ../base/executive/base.php:852
+#: ../base/superuser/base.php:887
+msgid "Select a color for the menu dividers."
+msgstr ""
+
+#: ../base/executive/base.php:864
+#: ../base/superuser/base.php:899
+msgid "Center"
+msgstr ""
+
+#: ../base/executive/base.php:864
 msgid "Center the main menu."
 msgstr ""
 
-#: ../base/executive/base.php:878
-#: ../base/superuser/base.php:913
+#: ../base/executive/base.php:871
+#: ../base/superuser/base.php:906
 msgid "Search Bar"
 msgstr ""
 
-#: ../base/executive/base.php:878
-#: ../base/superuser/base.php:913
+#: ../base/executive/base.php:871
+#: ../base/superuser/base.php:906
 msgid "Add popup with search bar to main menu."
 msgstr ""
 
-#: ../base/executive/base.php:925
-#: ../base/superuser/base.php:960
+#: ../base/executive/base.php:929
+#: ../base/superuser/base.php:964
 msgid "Apply Footer Background"
 msgstr ""
 
-#: ../base/executive/base.php:1167
-#: ../base/superuser/base.php:1202
+#: ../base/executive/base.php:1257
+#: ../base/superuser/base.php:1292
 msgid "Set the border radius of button corners. Setting to 0px will mean buttons corners are square."
 msgstr ""
 
@@ -1425,15 +1752,15 @@ msgstr ""
 msgid "Set the padding on the left of the header."
 msgstr ""
 
-#: ../base/superuser/base.php:776
+#: ../base/superuser/base.php:796
 msgid "Apply top border to menu."
 msgstr ""
 
-#: ../base/superuser/base.php:814
+#: ../base/superuser/base.php:834
 msgid "Apply bottom border to menu."
 msgstr ""
 
-#: ../base/superuser/base.php:879
+#: ../base/superuser/base.php:899
 msgid "Center align the buttons of the main menu."
 msgstr ""
 
@@ -1469,109 +1796,110 @@ msgstr ""
 msgid "Raw Content"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:695
+#: ../framework/admin/functions/display.php:696
 msgid "page"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:696
+#: ../framework/admin/functions/display.php:697
 msgid "pages"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:699
+#: ../framework/admin/functions/display.php:700
 msgid "post"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:700
+#: ../framework/admin/functions/display.php:701
 msgid "posts"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:703
+#: ../framework/admin/functions/display.php:704
 msgid "portfolio-item"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:704
+#: ../framework/admin/functions/display.php:705
 msgid "portfolio items"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:707
+#: ../framework/admin/functions/display.php:708
 msgid "portfolio-tag"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:708
+#: ../framework/admin/functions/display.php:709
 msgid "portfolio tags"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:711
+#: ../framework/admin/functions/display.php:712
+#: ../framework/admin/meta/meta.php:256
 msgid "tag"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:712
+#: ../framework/admin/functions/display.php:713
 msgid "tags"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:723
+#: ../framework/admin/functions/display.php:724
 #, php-format
 msgid "Enter in a comma-separated list of the %s you'd like to add to the assignments."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:725
+#: ../framework/admin/functions/display.php:726
 #, php-format
 msgid "Note: Any %s entered that don't exist won't be saved."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:879
+#: ../framework/admin/functions/display.php:880
 msgid "Default Logo"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:880
+#: ../framework/admin/functions/display.php:881
 msgid "Site Title"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:881
+#: ../framework/admin/functions/display.php:882
 msgid "Site Title + Tagline"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:882
+#: ../framework/admin/functions/display.php:883
 msgid "Custom Text"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:883
+#: ../framework/admin/functions/display.php:884
 msgid "Image"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:147
+#: ../framework/admin/functions/general.php:150
 msgid "Page Attributes"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:205
+#: ../framework/admin/functions/general.php:208
 msgid "Options cleared from database."
 msgstr ""
 
-#: ../framework/admin/functions/general.php:318
+#: ../framework/admin/functions/general.php:321
 msgid "No background"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:321
+#: ../framework/admin/functions/general.php:324
 msgid "Custom color + image"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:322
+#: ../framework/admin/functions/general.php:325
 msgid "Custom image slideshow"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:323
+#: ../framework/admin/functions/general.php:326
 msgid "Custom video"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:333
+#: ../framework/admin/functions/general.php:336
 msgid "Theme's preset \"Featured\" area background"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:337
+#: ../framework/admin/functions/general.php:340
 msgid "Theme's preset \"Featured Below\" area background"
 msgstr ""
 
-#: ../framework/admin/functions/general.php:343
+#: ../framework/admin/functions/general.php:346
 msgid "No banner"
 msgstr ""
 
@@ -1584,6 +1912,7 @@ msgid "Clear Options"
 msgstr ""
 
 #: ../framework/admin/functions/locals.php:24
+#: ../framework/admin/options/class-tb-sortable-option.php:84
 msgid "Are you sure you want to delete this item?"
 msgstr ""
 
@@ -1600,7 +1929,7 @@ msgid "Publish"
 msgstr ""
 
 #: ../framework/admin/functions/locals.php:28
-msgid "Are you sure you want to apply this group of preset options? This will override some of yoru current settings."
+msgid "Are you sure you want to apply this group of preset options? This will override some of your current settings."
 msgstr ""
 
 #: ../framework/admin/functions/locals.php:29
@@ -1617,6 +1946,15 @@ msgstr ""
 
 #: ../framework/admin/meta/class-tb-tax-options.php:98
 #: ../framework/admin/meta/class-tb-tax-options.php:105
+#: ../framework/admin/meta/meta.php:74
+#: ../framework/admin/meta/meta.php:86
+#: ../framework/admin/meta/meta.php:302
+#: ../framework/admin/meta/meta.php:349
+#: ../framework/admin/meta/meta.php:361
+#: ../framework/admin/meta/meta.php:385
+#: ../framework/admin/meta/meta.php:398
+#: ../framework/admin/meta/meta.php:410
+#: ../framework/admin/meta/meta.php:422
 msgid "Use default setting"
 msgstr ""
 
@@ -1645,560 +1983,512 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:58
+#: ../framework/admin/meta/meta.php:52
 msgid "Page Options"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:66
+#: ../framework/admin/meta/meta.php:60
 msgid "Page Title"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:67
-msgid "This option will be ignored if you've applied the \"Custom Layout\" template."
+#: ../framework/admin/meta/meta.php:61
+msgid "Select whether to display the page's title."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:61
+msgid "This option will be ignored if you've applied the \"Custom Layout\" template; however, if you've set your featured image to display above the content, it will still apply."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:64
+msgid "Yes, show page's title"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:65
+msgid "No, hide page's title"
 msgstr ""
 
 #: ../framework/admin/meta/meta.php:70
-msgid "Show page's title above content"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:71
-msgid "Hide page's title above content"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:76
 msgid "Breadcrumbs"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:77
+#: ../framework/admin/meta/meta.php:71
 msgid "Select whether you'd like breadcrumbs to show on this page or not. This option will be ignored if you've applied the \"Custom Layout\" or \"Blank Page\" templates."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:81
-#: ../framework/admin/meta/meta.php:650
+#: ../framework/admin/meta/meta.php:75
+#: ../framework/admin/meta/meta.php:411
 msgid "Yes, show breadcrumbs"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:82
-#: ../framework/admin/meta/meta.php:651
+#: ../framework/admin/meta/meta.php:76
+#: ../framework/admin/meta/meta.php:412
 msgid "No, hide breadcrumbs"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:91
-msgid "Featured Image Link"
+#: ../framework/admin/meta/meta.php:81
+msgid "Featured Image Display"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:92
-msgid "Here you can select how you'd like this page's featured image to react when clicked, if you've set one."
+#: ../framework/admin/meta/meta.php:82
+msgid "Select how you'd like the featured image to show at the top of the page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:96
-#: ../framework/admin/meta/meta.php:678
-msgid "Featured image is not a link"
+#: ../framework/admin/meta/meta.php:82
+msgid "Notes: (1) When not using the default page template, featured image can only displayed above the content. (2) The full-screen option will work best when a Transparent Header is set."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:97
-#: ../framework/admin/meta/meta.php:680
-msgid "It links to its enlarged lightbox version"
+#: ../framework/admin/meta/meta.php:87
+#: ../framework/admin/meta/meta.php:423
+msgid "Full width, above content"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:98
-#: ../framework/admin/meta/meta.php:681
-msgid "It links to a custom lightbox image"
+#: ../framework/admin/meta/meta.php:88
+#: ../framework/admin/meta/meta.php:424
+msgid "Full screen parallax, above content"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:89
+#: ../framework/admin/meta/meta.php:425
+msgid "Standard, with content"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:90
+msgid "Hide featured images"
 msgstr ""
 
 #: ../framework/admin/meta/meta.php:99
-#: ../framework/admin/meta/meta.php:682
-msgid "It links to a lightbox video"
+msgid "Featured Image Link"
 msgstr ""
 
 #: ../framework/admin/meta/meta.php:100
-#: ../framework/admin/meta/meta.php:683
-msgid "It links to a webpage"
+msgid "Here you can select how you'd like this page's featured image to react when clicked, if you've set one."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:100
+#: ../framework/admin/meta/meta.php:485
+msgid "Note: This does not apply when the featured image is displayed above the content."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:104
+#: ../framework/admin/meta/meta.php:440
+msgid "Featured image is not a link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:105
+#: ../framework/admin/meta/meta.php:442
+msgid "It links to its enlarged lightbox version"
 msgstr ""
 
 #: ../framework/admin/meta/meta.php:106
-#: ../framework/admin/meta/meta.php:689
-msgid "Featured Image - Image Link"
+#: ../framework/admin/meta/meta.php:443
+msgid "It links to a custom lightbox image"
 msgstr ""
 
 #: ../framework/admin/meta/meta.php:107
-#: ../framework/admin/meta/meta.php:690
-msgid "Enter the full URL of enlarged image that the featured image will link to."
+#: ../framework/admin/meta/meta.php:444
+msgid "It links to a lightbox video"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:107
-#: ../framework/admin/meta/meta.php:690
-msgid "Ex: http://your-site.com/uploads/image.jpg"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:113
-#: ../framework/admin/meta/meta.php:696
-msgid "Featured Image - Video Link"
+#: ../framework/admin/meta/meta.php:108
+#: ../framework/admin/meta/meta.php:445
+msgid "It links to a webpage"
 msgstr ""
 
 #: ../framework/admin/meta/meta.php:114
-#: ../framework/admin/meta/meta.php:697
+#: ../framework/admin/meta/meta.php:451
+msgid "Featured Image - Image Link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:115
+#: ../framework/admin/meta/meta.php:452
+msgid "Enter the full URL of enlarged image that the featured image will link to."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:115
+#: ../framework/admin/meta/meta.php:452
+msgid "Ex: http://your-site.com/uploads/image.jpg"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:121
+#: ../framework/admin/meta/meta.php:458
+msgid "Featured Image - Video Link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:122
+#: ../framework/admin/meta/meta.php:459
 #, php-format
 msgid "Enter the full URL to a video page supported by %s."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:114
-#: ../framework/admin/meta/meta.php:697
+#: ../framework/admin/meta/meta.php:122
+#: ../framework/admin/meta/meta.php:459
 msgid "WordPress's oEmbed"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:114
-#: ../framework/admin/meta/meta.php:697
+#: ../framework/admin/meta/meta.php:122
+#: ../framework/admin/meta/meta.php:459
 msgid "Ex"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:120
-#: ../framework/admin/meta/meta.php:703
+#: ../framework/admin/meta/meta.php:128
+#: ../framework/admin/meta/meta.php:465
 msgid "Featured Image - External Link"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:121
-#: ../framework/admin/meta/meta.php:704
+#: ../framework/admin/meta/meta.php:129
+#: ../framework/admin/meta/meta.php:466
 msgid "Enter the full URL of where the featured image will link."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:121
-#: ../framework/admin/meta/meta.php:704
+#: ../framework/admin/meta/meta.php:129
+#: ../framework/admin/meta/meta.php:466
 msgid "Ex: http://google.com"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:127
-#: ../framework/admin/meta/meta.php:710
+#: ../framework/admin/meta/meta.php:135
+#: ../framework/admin/meta/meta.php:472
 msgid "Featured Image - External Link Target"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:128
-#: ../framework/admin/meta/meta.php:711
+#: ../framework/admin/meta/meta.php:136
+#: ../framework/admin/meta/meta.php:473
 msgid "Select whether you'd like the external link to open in a new window or not."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:132
-#: ../framework/admin/meta/meta.php:715
+#: ../framework/admin/meta/meta.php:140
+#: ../framework/admin/meta/meta.php:477
 msgid "Open link in new window"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:133
-#: ../framework/admin/meta/meta.php:716
+#: ../framework/admin/meta/meta.php:141
+#: ../framework/admin/meta/meta.php:478
 msgid "Open link in same window"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:166
+#: ../framework/admin/meta/meta.php:174
 msgid "Theme Layout"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:175
-msgid "Note: The transparent header option will work better when a banner or custom layout is applied to the page."
+#: ../framework/admin/meta/meta.php:183
+msgid "Note: The transparent header option will work best when a large graphic is displayed prominently at the top of the page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:175
-#: ../framework/admin/meta/meta.php:508
-#: ../framework/admin/meta/meta.php:514
+#: ../framework/admin/meta/meta.php:183
+#: ../framework/admin/meta/meta.php:269
+#: ../framework/admin/meta/meta.php:275
 msgid "Learn More"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:178
+#: ../framework/admin/meta/meta.php:186
 msgid "Standard Header"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:180
+#: ../framework/admin/meta/meta.php:188
 msgid "Hide Header"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:188
+#: ../framework/admin/meta/meta.php:196
 msgid "Standard Footer"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:189
+#: ../framework/admin/meta/meta.php:197
 msgid "Hide Footer"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:223
-msgid "Banner"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:237
-msgid "Apply Banner"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:238
-msgid "Select if you'd like to apply a custom banner and how you want to set it up."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:355
-msgid "Banner Headline (optional)"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:356
-msgid "Select if you'd like the banner to contain a headline."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:360
-msgid "No headline"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:361
-msgid "Display current title"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:362
-msgid "Display custom text"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:368
-msgid "Custom Headline"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:369
-msgid "Enter the text for the headline."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:376
-msgid "Banner Tagline (optional)"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:377
-msgid "If you want a brief tagline to appear below the headline, enter it here."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:396
-msgid "Text Align"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:397
-msgid "Select how to align the text of the headline and tagline."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:401
-msgid "Left"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:403
-msgid "Right"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:417
-msgid "Apply custom banner height."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:424
-msgid "Desktop Height"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:425
-msgid "Banner height (in pixels) when displayed at the standard desktop viewport range."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:432
-msgid "Tablet Height"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:433
-msgid "Banner height (in pixels) when displayed at the tablet viewport range."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:440
-msgid "Mobile Height"
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:441
-msgid "Banner height (in pixels) when displayed at the mobile viewport range."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:470
+#: ../framework/admin/meta/meta.php:231
 msgid "Post Template Options"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:478
+#: ../framework/admin/meta/meta.php:239
 #, php-format
 msgid "Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress's Codex page on the %s."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:483
+#: ../framework/admin/meta/meta.php:244
 msgid "cat"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:484
+#: ../framework/admin/meta/meta.php:245
 msgid "Category ID(s) to include/exclude."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:484
+#: ../framework/admin/meta/meta.php:245
 msgid "Ex: 1"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:484
+#: ../framework/admin/meta/meta.php:245
 msgid "Ex: 1,2,3"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:484
+#: ../framework/admin/meta/meta.php:245
 msgid "Ex: -1,-2,-3"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:489
+#: ../framework/admin/meta/meta.php:250
 msgid "category_name"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:490
+#: ../framework/admin/meta/meta.php:251
 msgid "Category slug(s) to include."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:490
+#: ../framework/admin/meta/meta.php:251
 msgid "Ex: cat-1"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:490
+#: ../framework/admin/meta/meta.php:251
 msgid "Ex: cat-1,cat-2"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:496
+#: ../framework/admin/meta/meta.php:257
 msgid "Tag(s) to include."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:496
+#: ../framework/admin/meta/meta.php:257
 msgid "Ex: tag-1"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:496
+#: ../framework/admin/meta/meta.php:257
 msgid "Ex: tag-1,tag-2"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:501
+#: ../framework/admin/meta/meta.php:262
 msgid "posts_per_page"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:502
+#: ../framework/admin/meta/meta.php:263
 msgid "Number of posts per page. This option gets used for the Blog template, Post List template, and when using \"masonry\" style display for the Post Grid and Post Showcase template. Standard grid view for Post Grid and Post Showcase templates use rows*columns."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:507
+#: ../framework/admin/meta/meta.php:268
 msgid "orderby"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:508
+#: ../framework/admin/meta/meta.php:269
 msgid "What to order posts by -- date, title, rand, etc."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:513
+#: ../framework/admin/meta/meta.php:274
 msgid "order"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:514
+#: ../framework/admin/meta/meta.php:275
 msgid "How to order posts -- ASC or DESC."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:519
+#: ../framework/admin/meta/meta.php:280
 msgid "query"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:520
+#: ../framework/admin/meta/meta.php:281
 msgid "A custom query string. This will override other options."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:520
+#: ../framework/admin/meta/meta.php:281
 msgid "Ex: tag=baking"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:520
+#: ../framework/admin/meta/meta.php:281
 msgid "Ex: post_type=my_type&my_tax=my_term"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:525
+#: ../framework/admin/meta/meta.php:286
 msgid "columns"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:526
+#: ../framework/admin/meta/meta.php:287
 msgid "Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, this will default to 3."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:531
+#: ../framework/admin/meta/meta.php:292
 msgid "rows"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:532
+#: ../framework/admin/meta/meta.php:293
 msgid "Number of rows for Post Grid and Post Showcase templates. When empty, this will default to 4."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:532
+#: ../framework/admin/meta/meta.php:293
 msgid "Note: This option does not apply when using masonry."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:537
+#: ../framework/admin/meta/meta.php:298
 msgid "tb_display"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:538
+#: ../framework/admin/meta/meta.php:299
 msgid "When using Post Grid and Post Showcase template, this custom field allows you to override the default display option."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:543
+#: ../framework/admin/meta/meta.php:304
 msgid "Masonry"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:575
+#: ../framework/admin/meta/meta.php:336
 msgid "Post Options"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:583
+#: ../framework/admin/meta/meta.php:344
 msgid "Meta Information (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:584
+#: ../framework/admin/meta/meta.php:345
 msgid "Select if you'd like the meta information (like date posted, author, etc) to show on this single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:589
+#: ../framework/admin/meta/meta.php:350
 msgid "Show meta info"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:590
+#: ../framework/admin/meta/meta.php:351
 msgid "Hide meta info"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:595
+#: ../framework/admin/meta/meta.php:356
 msgid "Sub Meta Information (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:596
+#: ../framework/admin/meta/meta.php:357
 msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on this single post."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:601
+#: ../framework/admin/meta/meta.php:362
 msgid "Show sub meta info"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:602
+#: ../framework/admin/meta/meta.php:363
 msgid "Hide sub meta info"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:607
+#: ../framework/admin/meta/meta.php:368
 msgid "Author Box (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:608
+#: ../framework/admin/meta/meta.php:369
 msgid "Select if you'd like to display a box with information about the post's author."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:612
+#: ../framework/admin/meta/meta.php:373
 msgid "Use WordPress user's default setting"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:613
+#: ../framework/admin/meta/meta.php:374
 msgid "Show author box"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:614
+#: ../framework/admin/meta/meta.php:375
 msgid "Hide author box"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:619
+#: ../framework/admin/meta/meta.php:380
 msgid "Related Posts (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:620
+#: ../framework/admin/meta/meta.php:381
 msgid "Select if you'd like to show more posts related to the one being viewed."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:620
+#: ../framework/admin/meta/meta.php:381
 msgid "Note: This only applies to standard posts."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:625
+#: ../framework/admin/meta/meta.php:386
 msgid "Show related posts by tag"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:626
+#: ../framework/admin/meta/meta.php:387
 msgid "Show related posts by category"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:627
+#: ../framework/admin/meta/meta.php:388
 msgid "Hide related posts"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:632
+#: ../framework/admin/meta/meta.php:393
 msgid "Comments (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:633
+#: ../framework/admin/meta/meta.php:394
 msgid "This will hide the presence of comments on this single post."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:638
+#: ../framework/admin/meta/meta.php:399
 msgid "Show comments"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:639
+#: ../framework/admin/meta/meta.php:400
 msgid "Hide comments"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:644
+#: ../framework/admin/meta/meta.php:405
 msgid "Breadcrumbs (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:645
+#: ../framework/admin/meta/meta.php:406
 msgid "Select whether you'd like breadcrumbs to show on this post or not."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:656
-msgid "Featured Image Display (the single post)"
+#: ../framework/admin/meta/meta.php:417
+msgid "Featured Image or Gallery (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:657
+#: ../framework/admin/meta/meta.php:418
 msgid "Select how you'd like the featured image to show at the top of the post. This option only refers to this single post."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:663
-msgid "Show featured image"
+#: ../framework/admin/meta/meta.php:418
+msgid "Note: The full-screen option will work best when a Transparent Header is set."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:664
+#: ../framework/admin/meta/meta.php:426
 msgid "Hide featured image"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:673
+#: ../framework/admin/meta/meta.php:435
 msgid "Featured Image Link (everywhere)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:674
+#: ../framework/admin/meta/meta.php:436
 msgid "Here you can select how you'd like this post's featured image to react when clicked. This DOES apply to both this single post page and when this post is used in a blog, post list, post grid, or post showcase."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:679
+#: ../framework/admin/meta/meta.php:436
+msgid "Note: This does not apply to the single post when the featured image is displayed above the content."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:441
 msgid "It links to its post"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:722
+#: ../framework/admin/meta/meta.php:484
 msgid "Featured Image Link (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:723
+#: ../framework/admin/meta/meta.php:485
 msgid "If you've selected a featured image link above, select whether you'd like the image link to be applied to the featured image on the single post page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:727
+#: ../framework/admin/meta/meta.php:489
 msgid "Yes, apply featured image link to single post"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:728
+#: ../framework/admin/meta/meta.php:490
 msgid "No, don't apply featured image link to single post"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:729
+#: ../framework/admin/meta/meta.php:491
 msgid "Link it to its enlarged lightbox version"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:738
+#: ../framework/admin/meta/meta.php:500
 msgid "Sidebar Layout"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:739
+#: ../framework/admin/meta/meta.php:501
 msgid "Choose the sidebar layout for this specific post. Keeping it set to \"Website Default\" will allow this post to continue using the sidebar layout selected on the Theme Options page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:767
+#: ../framework/admin/meta/meta.php:529
 msgid "(no parent)"
 msgstr ""
 
@@ -2284,6 +2574,12 @@ msgstr ""
 msgid "Enter a number, which your above value should be divided into. If your above value is meant to represent a straight percantage, then this \"total\" number should be 100."
 msgstr ""
 
+#: ../framework/admin/options/class-tb-sortable-option.php:676
+#: ../framework/admin/options/class-tb-sortable-option.php:886
+#: ../framework/admin/options/class-tb-sortable-option.php:1054
+msgid "Color"
+msgstr ""
+
 #: ../framework/admin/options/class-tb-sortable-option.php:677
 msgid "Select a color that represents this progress bar."
 msgstr ""
@@ -2360,7 +2656,7 @@ msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:780
 #: ../framework/admin/options/class-tb-sortable-option.php:1527
-#: ../framework/admin/options/options-sanitize.php:1253
+#: ../framework/admin/options/options-sanitize.php:1259
 msgid "Normal"
 msgstr ""
 
@@ -3054,7 +3350,7 @@ msgid "Select the color of the background around the text."
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:2073
-msgid "Bold the text."
+msgid "Use header font."
 msgstr ""
 
 #: ../framework/admin/options/class-tb-sortable-option.php:2080
@@ -3291,43 +3587,51 @@ msgstr ""
 msgid "Background Size: Fit Vertically"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1254
+#: ../framework/admin/options/options-sanitize.php:1260
 msgid "Uppercase"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1255
+#: ../framework/admin/options/options-sanitize.php:1261
 msgid "Italic"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1256
+#: ../framework/admin/options/options-sanitize.php:1262
 msgid "Uppercase Italic"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1268
+#: ../framework/admin/options/options-sanitize.php:1274
+msgid "100"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1275
+msgid "200"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1276
 msgid "300"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1269
+#: ../framework/admin/options/options-sanitize.php:1277
 msgid "400 (normal)"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1270
+#: ../framework/admin/options/options-sanitize.php:1278
 msgid "500"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1271
+#: ../framework/admin/options/options-sanitize.php:1279
 msgid "600"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1272
+#: ../framework/admin/options/options-sanitize.php:1280
 msgid "700 (bold)"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1273
+#: ../framework/admin/options/options-sanitize.php:1281
 msgid "800"
 msgstr ""
 
-#: ../framework/admin/options/options-sanitize.php:1274
+#: ../framework/admin/options/options-sanitize.php:1282
 msgid "900"
 msgstr ""
 
@@ -3348,69 +3652,6 @@ msgstr ""
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:336
 #: ../framework/admin/plugins/plugins.php:115
 msgid "Something went wrong with the plugin API."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:338
-#: ../framework/admin/plugins/plugins.php:116
-#, php-format
-msgid "This theme requires the following plugin: %1$s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:343
-#: ../framework/admin/plugins/plugins.php:117
-#, php-format
-msgid "This theme recommends the following plugin: %1$s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:348
-#, php-format
-msgid "Sorry, but you do not have the correct permissions to install the %1$s plugin."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:353
-#: ../framework/admin/plugins/plugins.php:122
-#, php-format
-msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:358
-#, php-format
-msgid "There is an update available for: %1$s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:363
-#, php-format
-msgid "Sorry, but you do not have the correct permissions to update the %1$s plugin."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:368
-#: ../framework/admin/plugins/plugins.php:119
-#, php-format
-msgid "The following required plugin is currently inactive: %1$s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:373
-#: ../framework/admin/plugins/plugins.php:120
-#, php-format
-msgid "The following recommended plugin is currently inactive: %1$s."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:378
-#, php-format
-msgid "Sorry, but you do not have the correct permissions to activate the %1$s plugin."
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:383
-#: ../framework/admin/plugins/plugins.php:124
-msgid "Begin installing plugin"
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:388
-msgid "Begin updating plugin"
-msgstr ""
-
-#: ../framework/admin/plugins/class-tgm-plugin-activation.php:393
-msgid "Begin activating plugin"
 msgstr ""
 
 #: ../framework/admin/plugins/class-tgm-plugin-activation.php:397
@@ -3638,25 +3879,6 @@ msgstr ""
 msgid "Theme Plugins"
 msgstr ""
 
-#: ../framework/admin/plugins/plugins.php:118
-#, php-format
-msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
-msgstr ""
-
-#: ../framework/admin/plugins/plugins.php:121
-#, php-format
-msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
-msgstr ""
-
-#: ../framework/admin/plugins/plugins.php:123
-#, php-format
-msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
-msgstr ""
-
-#: ../framework/admin/plugins/plugins.php:125
-msgid "Activate installed plugin"
-msgstr ""
-
 #: ../framework/admin/plugins/plugins.php:128
 #, php-format
 msgid "All plugins installed and activated successfully. %s"
@@ -3664,6 +3886,20 @@ msgstr ""
 
 #: ../framework/admin/tools/class-tb-bases.php:37
 msgid "Theme Base"
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-welcome.php:97
+#, php-format
+msgid "Thank you for using %s with Theme Blvd Framework %s."
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-welcome.php:97
+msgid "Below are some resources to get started. You can find more videos and information in your \"All files and documentation\" download."
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-welcome.php:98
+#: ../framework/admin/tools/class-tb-welcome.php:99
+msgid "Getting Started"
 msgstr ""
 
 #: ../framework/admin/updates/class-edd-sl-theme-updater.php:58
@@ -3690,833 +3926,890 @@ msgstr ""
 msgid "Theme License"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:291
-#: ../framework/api/class-tb-options-api.php:370
+#: ../framework/api/class-tb-options-api.php:299
+#: ../framework/api/class-tb-options-api.php:392
 msgid "Logo"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:292
-#: ../framework/api/class-tb-options-api.php:371
+#: ../framework/api/class-tb-options-api.php:300
+#: ../framework/api/class-tb-options-api.php:393
 msgid "Configure the primary branding logo for the header of your site."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:292
-#: ../framework/api/class-tb-options-api.php:371
+#: ../framework/api/class-tb-options-api.php:300
+#: ../framework/api/class-tb-options-api.php:378
+#: ../framework/api/class-tb-options-api.php:393
 msgid "Note: If you're inputting a \"HiDPI-optimized\" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you'd like it to simply not have any effect."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:298
+#: ../framework/api/class-tb-options-api.php:306
 msgid "Header Text"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:299
+#: ../framework/api/class-tb-options-api.php:307
 #, php-format
 msgid "Enter a brief piece of text you'd like to show. You can use basic HTML here, or any %s ID formatted like %s."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:305
+#: ../framework/api/class-tb-options-api.php:313
 msgid "Social Media Buttons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:306
+#: ../framework/api/class-tb-options-api.php:314
 msgid "Configure the social media buttons you'd like to show."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:338
-#: ../framework/api/class-tb-options-api.php:378
+#: ../framework/api/class-tb-options-api.php:345
+#: ../framework/api/class-tb-options-api.php:399
+msgid "Social Media Style"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:346
+#: ../framework/api/class-tb-options-api.php:400
 msgid "Select the color you'd like applied to the social icons."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:351
-msgid "Search Form"
+#: ../framework/api/class-tb-options-api.php:405
+msgid "Flat Color"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:352
+#: ../framework/api/class-tb-options-api.php:406
+msgid "Flat Dark"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:353
+#: ../framework/api/class-tb-options-api.php:407
+msgid "Flat Grey"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:354
+#: ../framework/api/class-tb-options-api.php:408
+msgid "Flat Light"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:359
+msgid "Search Form"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:360
 msgid "Select whether you'd like to show a search form."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:357
+#: ../framework/api/class-tb-options-api.php:365
 msgid "Show search form"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:358
+#: ../framework/api/class-tb-options-api.php:366
 msgid "Hide search form"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:367
-msgid "When you're configuring a page, if you select \"Transparent Header\" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature works best when you've applied a banner or a custom layout to the page."
+#: ../framework/api/class-tb-options-api.php:377
+msgid "Mobile Logo"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:402
+#: ../framework/api/class-tb-options-api.php:378
+msgid "Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you'll want to use an image shorter than that."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:389
+msgid "When you're configuring a page, if you select \"Transparent Header\" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature will work best with a full-width or full-screen featured image, or a when custom layout is applied to the page."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:424
 msgid "Setup Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:411
+#: ../framework/api/class-tb-options-api.php:433
 msgid "Footer Column #1"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:412
+#: ../framework/api/class-tb-options-api.php:434
 msgid "Configure the content for the first column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:419
+#: ../framework/api/class-tb-options-api.php:446
 msgid "Footer Column #2"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:420
+#: ../framework/api/class-tb-options-api.php:447
 msgid "Configure the content for the second column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:427
+#: ../framework/api/class-tb-options-api.php:454
 msgid "Footer Column #3"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:428
+#: ../framework/api/class-tb-options-api.php:455
 msgid "Configure the content for the third column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:435
+#: ../framework/api/class-tb-options-api.php:462
 msgid "Footer Column #4"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:436
+#: ../framework/api/class-tb-options-api.php:463
 msgid "Configure the content for the fourth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:443
+#: ../framework/api/class-tb-options-api.php:470
 msgid "Footer Column #5"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:444
+#: ../framework/api/class-tb-options-api.php:471
 msgid "Configure the content for the fifth column."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:454
+#: ../framework/api/class-tb-options-api.php:481
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:455
+#: ../framework/api/class-tb-options-api.php:482
 msgid "Enter the copyright text you'd like to show in the footer of your site."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:455
+#: ../framework/api/class-tb-options-api.php:482
 msgid "Show current year."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:455
+#: ../framework/api/class-tb-options-api.php:482
 msgid "Show your site title."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:473
+#: ../framework/api/class-tb-options-api.php:500
 msgid "Choose the default sidebar layout for the main content area of your site."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:481
-#: ../framework/api/class-tb-options-api.php:559
+#: ../framework/api/class-tb-options-api.php:508
+#: ../framework/api/class-tb-options-api.php:623
 msgid "Single Posts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:482
+#: ../framework/api/class-tb-options-api.php:509
 msgid "When viewing a single post, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:490
+#: ../framework/api/class-tb-options-api.php:517
+#: ../framework/api/class-tb-options-api.php:724
 msgid "Pages"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:491
+#: ../framework/api/class-tb-options-api.php:518
 msgid "When viewing a standard page, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:499
-#: ../framework/api/class-tb-options-api.php:647
+#: ../framework/api/class-tb-options-api.php:526
+#: ../framework/api/class-tb-options-api.php:744
 msgid "Archives"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:500
+#: ../framework/api/class-tb-options-api.php:527
 msgid "When viewing a general archive of posts, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:515
+#: ../framework/api/class-tb-options-api.php:542
 msgid "Sticky Header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:516
+#: ../framework/api/class-tb-options-api.php:543
 msgid "If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:521
+#: ../framework/api/class-tb-options-api.php:548
 msgid "Yes, show sticky header"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:522
-#: ../framework/api/class-tb-options-api.php:544
+#: ../framework/api/class-tb-options-api.php:549
+#: ../framework/api/class-tb-options-api.php:571
 msgid "No, don't show it"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:527
+#: ../framework/api/class-tb-options-api.php:554
 msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:537
+#: ../framework/api/class-tb-options-api.php:564
 msgid "Scroll-to-Top Button"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:538
+#: ../framework/api/class-tb-options-api.php:565
 msgid "If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:543
+#: ../framework/api/class-tb-options-api.php:570
 msgid "Yes, show button"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:560
+#: ../framework/api/class-tb-options-api.php:594
+msgid "Condense full-width content."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:602
+msgid "Popout large images within full-width content."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:613
+msgid "Use variable width image carousel for gallery sliders."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:624
 msgid "These settings will only apply to vewing single posts. Additionally, most of these settings can be overridden in the Post Options meta box when editing individual posts."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:563
-#: ../framework/api/class-tb-options-api.php:700
-#: ../framework/api/class-tb-options-api.php:760
-#: ../framework/api/class-tb-options-api.php:842
+#: ../framework/api/class-tb-options-api.php:627
+#: ../framework/api/class-tb-options-api.php:797
+#: ../framework/api/class-tb-options-api.php:857
+#: ../framework/api/class-tb-options-api.php:939
 msgid "Meta Information"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:564
+#: ../framework/api/class-tb-options-api.php:628
 msgid "Select if you'd like the meta information (like date posted, author, etc) to show on the single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:574
-#: ../framework/api/class-tb-options-api.php:711
+#: ../framework/api/class-tb-options-api.php:638
+#: ../framework/api/class-tb-options-api.php:808
 msgid "Sub Meta Information"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:575
+#: ../framework/api/class-tb-options-api.php:639
 msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on the single post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:585
+#: ../framework/api/class-tb-options-api.php:649
 msgid "Share Icons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:586
+#: ../framework/api/class-tb-options-api.php:650
 msgid "Configure any share icons you'd like displayed within the Sub Meta of the single post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:609
-#: ../framework/api/class-tb-options-api.php:689
-#: ../framework/api/class-tb-options-api.php:748
-#: ../framework/api/class-tb-options-api.php:818
-msgid "Featured Images"
+#: ../framework/api/class-tb-options-api.php:673
+msgid "Featured Images &amp; Galleries"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:610
-msgid "Choose how you want your featured images to show on the single post. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those fetured images to show on the single posts."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:615
-#: ../framework/api/class-tb-options-api.php:695
-#: ../framework/api/class-tb-options-api.php:754
-#: ../framework/api/class-tb-options-api.php:824
-msgid "Show featured images"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:616
-#: ../framework/api/class-tb-options-api.php:696
-#: ../framework/api/class-tb-options-api.php:756
-#: ../framework/api/class-tb-options-api.php:825
-msgid "Hide featured images"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:620
-msgid "Related Posts"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:632
-msgid "Comments"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:633
-msgid "This will hide the presence of comments on the single post."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:651
-msgid "Post Display"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:652
-msgid "When viewing an archive of posts, how do you want them displayed by default?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:659
-msgid "Category Info Boxes"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:660
-msgid "When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:665
-#: ../framework/api/class-tb-options-api.php:676
-msgid "Yes, show info boxes"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:666
-#: ../framework/api/class-tb-options-api.php:677
-msgid "No, hide info boxes"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:670
-msgid "Tag Info Boxes"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:671
-msgid "When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:685
-msgid "Post Display: Blog"
+#: ../framework/api/class-tb-options-api.php:674
+msgid "Choose how you want your featured images to show on the single post, by default. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those fetured images to show on the single posts."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:686
-msgid "These settings apply to your main theme index page, \"posts page\" that you've selected under Settings > Reading, and ALL instances of the \"Blog\" page template. Additionally, any archives you select to display in the \"Blog\" post layout will use these settings."
+msgid "Related Posts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:690
-msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
+#: ../framework/api/class-tb-options-api.php:698
+msgid "Related Posts Style"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:701
-#: ../framework/api/class-tb-options-api.php:761
-#: ../framework/api/class-tb-options-api.php:843
-msgid "Select if you'd like the meta information (like date posted, author, etc) to show for each post."
+#: ../framework/api/class-tb-options-api.php:699
+msgid "When showing, select how you'd like to display the related posts."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:712
-msgid "Select if you'd like the sub meta information (like tags, categories, etc) to below each post."
+#: ../framework/api/class-tb-options-api.php:704
+#: ../framework/api/class-tb-options-api.php:1257
+#: ../framework/api/class-tb-options-api.php:1289
+msgid "List"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:722
-msgid "Excerpts of Full Content"
+#: ../framework/api/class-tb-options-api.php:705
+#: ../framework/api/class-tb-options-api.php:1256
+#: ../framework/api/class-tb-options-api.php:1288
+msgid "Grid"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:723
-msgid "Choose whether you want to show full content or post excerpts only."
+#: ../framework/api/class-tb-options-api.php:709
+msgid "Comments"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:710
+msgid "This will hide the presence of comments on the single post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:727
+#: ../framework/api/class-tb-options-api.php:786
+#: ../framework/api/class-tb-options-api.php:845
+#: ../framework/api/class-tb-options-api.php:915
+msgid "Featured Images"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:728
-msgid "Show full content"
+msgid "Choose how you want your featured images to show on pages, by default."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:729
-msgid "Show excerpt only"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:733
-msgid "Exclude Categories"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:734
-msgid "Select any categories you'd like to be excluded from your blog."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:734
-msgid "Note: This only applies to the main index blog or your \"posts page\" if you've set one.</em>"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:744
-msgid "Post Display: List"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:745
-msgid "These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the \"Post List\" page template and any archives you've set to display post lists. For more control over a specifc post list, you can apply the \"Post List\" element of the Builder or use the [post_list] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
+#: ../framework/api/class-tb-options-api.php:748
+msgid "Post Display"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:749
-#: ../framework/api/class-tb-options-api.php:819
-msgid "Choose whether or not you want featured images to show for each post."
+msgid "When viewing an archive of posts, how do you want them displayed by default?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:755
-msgid "Show date block"
+#: ../framework/api/class-tb-options-api.php:756
+msgid "Category Info Boxes"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:775
-#: ../framework/api/class-tb-options-api.php:868
-msgid "Read More"
+#: ../framework/api/class-tb-options-api.php:757
+msgid "When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:776
-#: ../framework/api/class-tb-options-api.php:869
-msgid "What would you like to show for each post to lead the reader to the full post?"
+#: ../framework/api/class-tb-options-api.php:762
+#: ../framework/api/class-tb-options-api.php:773
+msgid "Yes, show info boxes"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:781
-#: ../framework/api/class-tb-options-api.php:874
-msgid "Show text link"
+#: ../framework/api/class-tb-options-api.php:763
+#: ../framework/api/class-tb-options-api.php:774
+msgid "No, hide info boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:767
+msgid "Tag Info Boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:768
+msgid "When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:782
-#: ../framework/api/class-tb-options-api.php:875
-msgid "Show button"
+msgid "Post Display: Blog"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:783
-#: ../framework/api/class-tb-options-api.php:876
-msgid "Show no button or text link"
+msgid "These settings apply to your main theme index page, \"posts page\" that you've selected under Settings > Reading, and ALL instances of the \"Blog\" page template. Additionally, any archives you select to display in the \"Blog\" post layout will use these settings."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:788
-#: ../framework/api/class-tb-options-api.php:881
-msgid "Read More Text"
+#: ../framework/api/class-tb-options-api.php:787
+msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:789
-#: ../framework/api/class-tb-options-api.php:882
-msgid "Enter the text you'd like to use to lead the reader to the full post."
+#: ../framework/api/class-tb-options-api.php:792
+#: ../framework/api/class-tb-options-api.php:851
+#: ../framework/api/class-tb-options-api.php:921
+msgid "Show featured images"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:799
-#: ../framework/api/class-tb-options-api.php:929
-#: ../framework/api/class-tb-options-api.php:1026
-msgid "Posts Per Page"
+#: ../framework/api/class-tb-options-api.php:798
+#: ../framework/api/class-tb-options-api.php:858
+#: ../framework/api/class-tb-options-api.php:940
+msgid "Select if you'd like the meta information (like date posted, author, etc) to show for each post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:800
-msgid "When viewing a default post list, what is the maximum number of posts to display on each page?"
+#: ../framework/api/class-tb-options-api.php:809
+msgid "Select if you'd like the sub meta information (like tags, categories, etc) to below each post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:810
-msgid "Post Display: Grid"
+#: ../framework/api/class-tb-options-api.php:819
+msgid "Excerpts of Full Content"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:811
-msgid "These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the \"Post Grid\" page template and any archives you've set to display post grids. For more control over a specifc post grid, you can apply the \"Post Grid\" element of the Builder or use the [post_grid] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
+#: ../framework/api/class-tb-options-api.php:820
+msgid "Choose whether you want to show full content or post excerpts only."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:825
+msgid "Show full content"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:826
+msgid "Show excerpt only"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:830
+msgid "Exclude Categories"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:831
-#: ../framework/api/class-tb-options-api.php:949
-msgid "Featured Image Crop Size"
+msgid "Select any categories you'd like to be excluded from your blog."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:832
-#: ../framework/api/class-tb-options-api.php:950
-msgid "Select a custom crop size to be used for the images. If you select a crop size that doesn't have a consistent height, then you may want to enable \"Masonry\" display."
+#: ../framework/api/class-tb-options-api.php:831
+msgid "Note: This only applies to the main index blog or your \"posts page\" if you've set one.</em>"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:832
-#: ../framework/api/class-tb-options-api.php:950
-msgid "Note: Images are scaled proportionally to fit within their current containers."
+#: ../framework/api/class-tb-options-api.php:841
+msgid "Post Display: List"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:853
-#: ../framework/api/class-tb-options-api.php:967
-msgid "Excerpts"
+#: ../framework/api/class-tb-options-api.php:842
+msgid "These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the \"Post List\" page template and any archives you've set to display post lists. For more control over a specifc post list, you can apply the \"Post List\" element of the Builder or use the [post_list] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:854
-#: ../framework/api/class-tb-options-api.php:968
-msgid "Select if you'd like to show the excerpt or not for each post."
+#: ../framework/api/class-tb-options-api.php:846
+#: ../framework/api/class-tb-options-api.php:916
+msgid "Choose whether or not you want featured images to show for each post."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:859
+#: ../framework/api/class-tb-options-api.php:852
+msgid "Show date block"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:872
+#: ../framework/api/class-tb-options-api.php:965
+msgid "Read More"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:873
+#: ../framework/api/class-tb-options-api.php:966
+msgid "What would you like to show for each post to lead the reader to the full post?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:878
+#: ../framework/api/class-tb-options-api.php:971
+msgid "Show text link"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:879
+#: ../framework/api/class-tb-options-api.php:972
+msgid "Show button"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:880
 #: ../framework/api/class-tb-options-api.php:973
-msgid "Show excerpts"
+msgid "Show no button or text link"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:860
-#: ../framework/api/class-tb-options-api.php:974
-msgid "Hide excerpts"
+#: ../framework/api/class-tb-options-api.php:885
+#: ../framework/api/class-tb-options-api.php:978
+msgid "Read More Text"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:886
+#: ../framework/api/class-tb-options-api.php:979
+msgid "Enter the text you'd like to use to lead the reader to the full post."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:896
-#: ../framework/api/class-tb-options-api.php:993
-msgid "Display"
+#: ../framework/api/class-tb-options-api.php:1026
+#: ../framework/api/class-tb-options-api.php:1123
+msgid "Posts Per Page"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:897
-msgid "When viewing a default post grid, how should they be displayed?"
+msgid "When viewing a default post list, what is the maximum number of posts to display on each page?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:902
-msgid "Standard Grid"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:903
-msgid "Masonry Grid"
+#: ../framework/api/class-tb-options-api.php:907
+msgid "Post Display: Grid"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:908
-#: ../framework/api/class-tb-options-api.php:1005
-msgid "Columns"
+msgid "These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the \"Post Grid\" page template and any archives you've set to display post grids. For more control over a specifc post grid, you can apply the \"Post Grid\" element of the Builder or use the [post_grid] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:909
-msgid "When viewing a default post grid, how many columns should the posts be separated into?"
+#: ../framework/api/class-tb-options-api.php:928
+#: ../framework/api/class-tb-options-api.php:1046
+msgid "Featured Image Crop Size"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:914
-#: ../framework/api/class-tb-options-api.php:1011
-msgid "2 Columns"
+#: ../framework/api/class-tb-options-api.php:929
+#: ../framework/api/class-tb-options-api.php:1047
+msgid "Select a custom crop size to be used for the images. If you select a crop size that doesn't have a consistent height, then you may want to enable \"Masonry\" display."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:915
-#: ../framework/api/class-tb-options-api.php:1012
-msgid "3 Columns"
+#: ../framework/api/class-tb-options-api.php:929
+#: ../framework/api/class-tb-options-api.php:1047
+msgid "Note: Images are scaled proportionally to fit within their current containers."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:916
-#: ../framework/api/class-tb-options-api.php:1013
-msgid "4 Columns"
+#: ../framework/api/class-tb-options-api.php:950
+#: ../framework/api/class-tb-options-api.php:1064
+msgid "Excerpts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:917
-#: ../framework/api/class-tb-options-api.php:1014
-msgid "5 Columns"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:921
-#: ../framework/api/class-tb-options-api.php:1018
-msgid "Rows"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:922
-msgid "When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:922
-#: ../framework/api/class-tb-options-api.php:1019
-msgid "Note: The total posts on the page will be the number of rows times the number of columns."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:930
-msgid "When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:944
-msgid "Post Display: Showcase"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:945
-msgid "These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the \"Post Showcase\" page template and any archives you've set to display the post showcase. For more control over a specifc post showcase, you can apply the \"Post Showcase\" element of the Builder or use the [post_showcase] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
+#: ../framework/api/class-tb-options-api.php:951
+#: ../framework/api/class-tb-options-api.php:1065
+msgid "Select if you'd like to show the excerpt or not for each post."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:956
-msgid "Titles"
+#: ../framework/api/class-tb-options-api.php:1070
+msgid "Show excerpts"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:957
-msgid "Select if you'd like to show the title or not for each post."
+#: ../framework/api/class-tb-options-api.php:1071
+msgid "Hide excerpts"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:962
-msgid "Show titles"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:963
-msgid "Hide titles"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:978
-msgid "Gutters"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:979
-msgid "Select if you'd like to show spacing in between the showcase items."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:979
-msgid "Note: Hiding the gutters works best if you're using a consistent image crop size, or the masonry display."
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:984
-msgid "Show gutters"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:985
-msgid "Hide gutters"
+#: ../framework/api/class-tb-options-api.php:993
+#: ../framework/api/class-tb-options-api.php:1090
+msgid "Display"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:994
-msgid "When viewing a default post showcase, how should they be displayed?"
+msgid "When viewing a default post grid, how should they be displayed?"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:999
-msgid "Standard Showcase Grid"
+msgid "Standard Grid"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1000
-msgid "Masonry Showcase"
+msgid "Masonry Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1005
+#: ../framework/api/class-tb-options-api.php:1102
+msgid "Columns"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1006
-msgid "When viewing a default post showcase, how many columns should the posts be separated into?"
+msgid "When viewing a default post grid, how many columns should the posts be separated into?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1011
+#: ../framework/api/class-tb-options-api.php:1108
+msgid "2 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1012
+#: ../framework/api/class-tb-options-api.php:1109
+msgid "3 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1013
+#: ../framework/api/class-tb-options-api.php:1110
+msgid "4 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1014
+#: ../framework/api/class-tb-options-api.php:1111
+msgid "5 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1018
+#: ../framework/api/class-tb-options-api.php:1115
+msgid "Rows"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1019
-msgid "When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?"
+msgid "When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1019
+#: ../framework/api/class-tb-options-api.php:1116
+msgid "Note: The total posts on the page will be the number of rows times the number of columns."
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1027
-msgid "When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?"
+msgid "When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1041
-msgid "Lightbox"
+msgid "Post Display: Showcase"
 msgstr ""
 
 #: ../framework/api/class-tb-options-api.php:1042
+msgid "These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the \"Post Showcase\" page template and any archives you've set to display the post showcase. For more control over a specifc post showcase, you can apply the \"Post Showcase\" element of the Builder or use the [post_showcase] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1053
+msgid "Titles"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1054
+msgid "Select if you'd like to show the title or not for each post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1059
+msgid "Show titles"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1060
+msgid "Hide titles"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1075
+msgid "Gutters"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1076
+msgid "Select if you'd like to show spacing in between the showcase items."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1076
+msgid "Note: Hiding the gutters works best if you're using a consistent image crop size, or the masonry display."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1081
+msgid "Show gutters"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1082
+msgid "Hide gutters"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1091
+msgid "When viewing a default post showcase, how should they be displayed?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1096
+msgid "Standard Showcase Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1097
+msgid "Masonry Showcase"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1103
+msgid "When viewing a default post showcase, how many columns should the posts be separated into?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1116
+msgid "When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1124
+msgid "When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1138
+msgid "Lightbox"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1139
 #, php-format
 msgid "These settings apply to the built-in lightbox functionality, which utilizes the %s script."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1045
+#: ../framework/api/class-tb-options-api.php:1142
 msgid "Animate lightboxes?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1046
+#: ../framework/api/class-tb-options-api.php:1143
 msgid "Select if you'd like lightboxes to animate as they open and close."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1051
+#: ../framework/api/class-tb-options-api.php:1148
 msgid "No animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1052
+#: ../framework/api/class-tb-options-api.php:1149
 msgid "Fade animation"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1056
+#: ../framework/api/class-tb-options-api.php:1153
 msgid "Disable standard lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1057
+#: ../framework/api/class-tb-options-api.php:1154
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing a standard lightbox instance."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1062
-#: ../framework/api/class-tb-options-api.php:1073
-#: ../framework/api/class-tb-options-api.php:1084
+#: ../framework/api/class-tb-options-api.php:1159
+#: ../framework/api/class-tb-options-api.php:1170
+#: ../framework/api/class-tb-options-api.php:1181
 msgid "Yes, disable for mobile."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1063
-#: ../framework/api/class-tb-options-api.php:1074
-#: ../framework/api/class-tb-options-api.php:1085
+#: ../framework/api/class-tb-options-api.php:1160
+#: ../framework/api/class-tb-options-api.php:1171
+#: ../framework/api/class-tb-options-api.php:1182
 msgid "No, do not disable for mobile."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1067
+#: ../framework/api/class-tb-options-api.php:1164
 msgid "Disable iframe lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1068
+#: ../framework/api/class-tb-options-api.php:1165
 msgid "Select if you'd like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1078
+#: ../framework/api/class-tb-options-api.php:1175
 msgid "Disable gallery lightboxes for mobile?"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1079
+#: ../framework/api/class-tb-options-api.php:1176
 msgid "Select if you'd like the lightbox to be disabled for mobile users when viewing a gallery."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1100
+#: ../framework/api/class-tb-options-api.php:1197
 msgid "bbPress"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1104
+#: ../framework/api/class-tb-options-api.php:1201
 msgid "Lead Topic"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1105
+#: ../framework/api/class-tb-options-api.php:1202
 msgid "When viewing individual topics, display the topic prominently separated from the responses."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1111
+#: ../framework/api/class-tb-options-api.php:1208
 msgid "Content Background"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1112
+#: ../framework/api/class-tb-options-api.php:1209
 msgid "When viewing bbPress pages, remove standard page background design from wrapping forums and topics."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1118
+#: ../framework/api/class-tb-options-api.php:1215
 msgid "Forum Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1119
+#: ../framework/api/class-tb-options-api.php:1216
 msgid "Select the sidebar layout used for viewing forum pages generated by bbPress."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1127
+#: ../framework/api/class-tb-options-api.php:1224
 msgid "Topic Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1128
+#: ../framework/api/class-tb-options-api.php:1225
 msgid "Select the sidebar layout used for viewing individual topics."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1136
+#: ../framework/api/class-tb-options-api.php:1233
 msgid "Profile Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1137
+#: ../framework/api/class-tb-options-api.php:1234
 msgid "Select the sidebar layout used for viewing user profiles."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1149
+#: ../framework/api/class-tb-options-api.php:1246
 msgid "WooCommerce"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1153
+#: ../framework/api/class-tb-options-api.php:1250
 msgid "Shop View"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1154
+#: ../framework/api/class-tb-options-api.php:1251
 msgid "Select the default product display style for your main shop page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1159
-#: ../framework/api/class-tb-options-api.php:1191
-msgid "Grid"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:1160
-#: ../framework/api/class-tb-options-api.php:1192
-msgid "List"
-msgstr ""
-
-#: ../framework/api/class-tb-options-api.php:1161
-#: ../framework/api/class-tb-options-api.php:1193
+#: ../framework/api/class-tb-options-api.php:1258
+#: ../framework/api/class-tb-options-api.php:1290
 msgid "Catalog"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1165
+#: ../framework/api/class-tb-options-api.php:1262
 msgid "Shop Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1166
+#: ../framework/api/class-tb-options-api.php:1263
 msgid "Select the number of columns to display the products on your main shop page, when viewed as a grid."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1171
-#: ../framework/api/class-tb-options-api.php:1203
+#: ../framework/api/class-tb-options-api.php:1268
+#: ../framework/api/class-tb-options-api.php:1300
 msgid "2 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1172
-#: ../framework/api/class-tb-options-api.php:1204
+#: ../framework/api/class-tb-options-api.php:1269
+#: ../framework/api/class-tb-options-api.php:1301
 msgid "3 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1173
-#: ../framework/api/class-tb-options-api.php:1205
+#: ../framework/api/class-tb-options-api.php:1270
+#: ../framework/api/class-tb-options-api.php:1302
 msgid "4 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1174
-#: ../framework/api/class-tb-options-api.php:1206
+#: ../framework/api/class-tb-options-api.php:1271
+#: ../framework/api/class-tb-options-api.php:1303
 msgid "5 columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1178
+#: ../framework/api/class-tb-options-api.php:1275
 msgid "Shop Products Per Page"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1179
+#: ../framework/api/class-tb-options-api.php:1276
 msgid "Select the number products to display per page on your main shop page."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1185
+#: ../framework/api/class-tb-options-api.php:1282
 msgid "Archive View"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1186
+#: ../framework/api/class-tb-options-api.php:1283
 msgid "Select the default product display style for your product archives. This is when products are displayed by category or tag."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1197
+#: ../framework/api/class-tb-options-api.php:1294
 msgid "Archive Columns"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1198
+#: ../framework/api/class-tb-options-api.php:1295
 msgid "Select the number of columns to display the products in your product archives, when viewed as a grid."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1210
+#: ../framework/api/class-tb-options-api.php:1307
 msgid "Archives Products Per Page"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1211
+#: ../framework/api/class-tb-options-api.php:1308
 msgid "Select the number products to display per page in your product archives."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1217
+#: ../framework/api/class-tb-options-api.php:1314
 msgid "Shop Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1218
+#: ../framework/api/class-tb-options-api.php:1315
 msgid "Select the sidebar layout when viewing your main shop."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1226
+#: ../framework/api/class-tb-options-api.php:1323
 msgid "Archive Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1227
+#: ../framework/api/class-tb-options-api.php:1324
 msgid "Select the sidebar layout when viewing your product archives. This is when products are displayed by category or tag."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1235
+#: ../framework/api/class-tb-options-api.php:1332
 msgid "Product Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1236
+#: ../framework/api/class-tb-options-api.php:1333
 msgid "Select the sidebar layout when viewing a single product."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1244
+#: ../framework/api/class-tb-options-api.php:1341
 msgid "Shopping Cart Cross Sells"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1245
+#: ../framework/api/class-tb-options-api.php:1342
 msgid "For the shopping cart page, select if you'd like to display products customers may be interested in, based on what's currently in their cart."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1250
+#: ../framework/api/class-tb-options-api.php:1347
 msgid "Yes, show cross sells"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1251
+#: ../framework/api/class-tb-options-api.php:1348
 msgid "No, don't show cross sells"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1255
+#: ../framework/api/class-tb-options-api.php:1352
 msgid "Product View Toggle"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1256
+#: ../framework/api/class-tb-options-api.php:1353
 msgid "Select if you'd like to display buttons on your product pages that allow the user to toggle between list, grid and catalog view."
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1261
+#: ../framework/api/class-tb-options-api.php:1358
 msgid "Yes, show buttons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1262
+#: ../framework/api/class-tb-options-api.php:1359
 msgid "No, don't show buttons"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1275
+#: ../framework/api/class-tb-options-api.php:1372
 msgid "Layout"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1283
+#: ../framework/api/class-tb-options-api.php:1380
 msgid "Plugins"
 msgstr ""
 
-#: ../framework/api/class-tb-options-api.php:1392
+#: ../framework/api/class-tb-options-api.php:1489
 msgid "Note: The result of this option may vary with posts that are not the \"standard\" post format."
 msgstr ""
 
@@ -4624,993 +4917,995 @@ msgstr ""
 msgid "Showcase"
 msgstr ""
 
-#: ../framework/includes/general.php:415
+#: ../framework/includes/general.php:441
 msgid "Primary Navigation"
 msgstr ""
 
-#: ../framework/includes/general.php:416
+#: ../framework/includes/general.php:442
 msgid "Footer Navigation"
 msgstr ""
 
-#: ../framework/includes/general.php:523
+#: ../framework/includes/general.php:446
+msgid "Primary Side Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:447
+msgid "Secondary Side Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:555
 msgid "Sliders"
 msgstr ""
 
-#: ../framework/includes/general.php:537
+#: ../framework/includes/general.php:569
 msgid "Templates"
 msgstr ""
 
-#: ../framework/includes/general.php:551
+#: ../framework/includes/general.php:583
 msgid "Widget Areas"
 msgstr ""
 
-#: ../framework/includes/general.php:591
+#: ../framework/includes/general.php:623
 msgid "Full Width"
 msgstr ""
 
-#: ../framework/includes/general.php:600
+#: ../framework/includes/general.php:632
 msgid "Sidebar Right"
 msgstr ""
 
-#: ../framework/includes/general.php:609
+#: ../framework/includes/general.php:641
 msgid "Sidebar Left"
 msgstr ""
 
-#: ../framework/includes/general.php:618
+#: ../framework/includes/general.php:650
 msgid "Double Sidebar"
 msgstr ""
 
-#: ../framework/includes/general.php:627
+#: ../framework/includes/general.php:659
 msgid "Double Left Sidebars"
 msgstr ""
 
-#: ../framework/includes/general.php:636
+#: ../framework/includes/general.php:668
 msgid "Double Right Sidebars"
 msgstr ""
 
-#: ../framework/includes/general.php:762
+#: ../framework/includes/general.php:794
 msgid "Arches"
 msgstr ""
 
-#: ../framework/includes/general.php:769
+#: ../framework/includes/general.php:801
 msgid "Boxy"
 msgstr ""
 
-#: ../framework/includes/general.php:776
+#: ../framework/includes/general.php:808
 msgid "Brick Wall"
 msgstr ""
 
-#: ../framework/includes/general.php:783
+#: ../framework/includes/general.php:815
 msgid "Carbon Classic"
 msgstr ""
 
-#: ../framework/includes/general.php:790
+#: ../framework/includes/general.php:822
 msgid "Carbon Diagonal"
 msgstr ""
 
-#: ../framework/includes/general.php:797
+#: ../framework/includes/general.php:829
 msgid "Carbon Weave"
 msgstr ""
 
-#: ../framework/includes/general.php:804
+#: ../framework/includes/general.php:836
 msgid "Chex"
 msgstr ""
 
-#: ../framework/includes/general.php:811
+#: ../framework/includes/general.php:843
 msgid "Circles"
 msgstr ""
 
-#: ../framework/includes/general.php:818
+#: ../framework/includes/general.php:850
 msgid "Climpek"
 msgstr ""
 
-#: ../framework/includes/general.php:825
+#: ../framework/includes/general.php:857
 msgid "Concrete"
 msgstr ""
 
-#: ../framework/includes/general.php:832
+#: ../framework/includes/general.php:864
 msgid "Crosses"
 msgstr ""
 
-#: ../framework/includes/general.php:839
+#: ../framework/includes/general.php:871
 msgid "Crystal"
 msgstr ""
 
-#: ../framework/includes/general.php:846
+#: ../framework/includes/general.php:878
 msgid "Cube Stack"
 msgstr ""
 
-#: ../framework/includes/general.php:853
+#: ../framework/includes/general.php:885
 msgid "Denim"
 msgstr ""
 
-#: ../framework/includes/general.php:860
+#: ../framework/includes/general.php:892
 msgid "Diagonal (thin)"
 msgstr ""
 
-#: ../framework/includes/general.php:867
+#: ../framework/includes/general.php:899
 msgid "Diagonal (thick)"
 msgstr ""
 
-#: ../framework/includes/general.php:874
+#: ../framework/includes/general.php:906
 msgid "Diamonds"
 msgstr ""
 
-#: ../framework/includes/general.php:881
+#: ../framework/includes/general.php:913
 msgid "Escheresque"
 msgstr ""
 
-#: ../framework/includes/general.php:896
+#: ../framework/includes/general.php:928
 msgid "Grunge"
 msgstr ""
 
-#: ../framework/includes/general.php:903
+#: ../framework/includes/general.php:935
 msgid "Feather"
 msgstr ""
 
-#: ../framework/includes/general.php:910
+#: ../framework/includes/general.php:942
 msgid "Hexagons"
 msgstr ""
 
-#: ../framework/includes/general.php:917
+#: ../framework/includes/general.php:949
 msgid "Honey Comb"
 msgstr ""
 
-#: ../framework/includes/general.php:924
+#: ../framework/includes/general.php:956
 msgid "Leather"
 msgstr ""
 
-#: ../framework/includes/general.php:931
+#: ../framework/includes/general.php:963
 msgid "Metal"
 msgstr ""
 
-#: ../framework/includes/general.php:938
+#: ../framework/includes/general.php:970
 msgid "Mosaic"
 msgstr ""
 
-#: ../framework/includes/general.php:945
+#: ../framework/includes/general.php:977
 msgid "Mosaic Triangles"
 msgstr ""
 
-#: ../framework/includes/general.php:952
+#: ../framework/includes/general.php:984
 msgid "Noise"
 msgstr ""
 
-#: ../framework/includes/general.php:959
+#: ../framework/includes/general.php:991
 msgid "Paper"
 msgstr ""
 
-#: ../framework/includes/general.php:966
+#: ../framework/includes/general.php:998
 msgid "Pixel Weave"
 msgstr ""
 
-#: ../framework/includes/general.php:973
+#: ../framework/includes/general.php:1005
 msgid "Plaid"
 msgstr ""
 
-#: ../framework/includes/general.php:980
+#: ../framework/includes/general.php:1012
 msgid "Pyramids"
 msgstr ""
 
-#: ../framework/includes/general.php:987
+#: ../framework/includes/general.php:1019
 msgid "Rubber"
 msgstr ""
 
-#: ../framework/includes/general.php:994
+#: ../framework/includes/general.php:1026
 msgid "Skulls"
 msgstr ""
 
-#: ../framework/includes/general.php:1001
+#: ../framework/includes/general.php:1033
 msgid "Squares"
 msgstr ""
 
-#: ../framework/includes/general.php:1008
+#: ../framework/includes/general.php:1040
 msgid "Stacked Circles"
 msgstr ""
 
-#: ../framework/includes/general.php:1015
+#: ../framework/includes/general.php:1047
 msgid "Swirl"
 msgstr ""
 
-#: ../framework/includes/general.php:1022
+#: ../framework/includes/general.php:1054
 msgid "Textile"
 msgstr ""
 
-#: ../framework/includes/general.php:1029
+#: ../framework/includes/general.php:1061
 msgid "Tiles"
 msgstr ""
 
-#: ../framework/includes/general.php:1036
+#: ../framework/includes/general.php:1068
 msgid "Vertical Fabric"
 msgstr ""
 
-#: ../framework/includes/general.php:1043
+#: ../framework/includes/general.php:1075
 msgid "Vintage"
 msgstr ""
 
-#: ../framework/includes/general.php:1050
+#: ../framework/includes/general.php:1082
 msgid "Waves"
 msgstr ""
 
-#: ../framework/includes/general.php:1057
+#: ../framework/includes/general.php:1089
 msgid "Wood"
 msgstr ""
 
-#: ../framework/includes/general.php:1064
+#: ../framework/includes/general.php:1096
 msgid "Wood Planks"
 msgstr ""
 
-#: ../framework/includes/general.php:1071
+#: ../framework/includes/general.php:1103
 msgid "---------------"
 msgstr ""
 
-#: ../framework/includes/general.php:1077
+#: ../framework/includes/general.php:1109
 msgid "Light Arches"
 msgstr ""
 
-#: ../framework/includes/general.php:1084
+#: ../framework/includes/general.php:1116
 msgid "Light Boxy"
 msgstr ""
 
-#: ../framework/includes/general.php:1091
+#: ../framework/includes/general.php:1123
 msgid "Light Brick Wall"
 msgstr ""
 
-#: ../framework/includes/general.php:1098
+#: ../framework/includes/general.php:1130
 msgid "Light Carbon Classic"
 msgstr ""
 
-#: ../framework/includes/general.php:1105
+#: ../framework/includes/general.php:1137
 msgid "Light Carbon Diagonal"
 msgstr ""
 
-#: ../framework/includes/general.php:1112
+#: ../framework/includes/general.php:1144
 msgid "Light Carbon Weave"
 msgstr ""
 
-#: ../framework/includes/general.php:1119
+#: ../framework/includes/general.php:1151
 msgid "Light Chex"
 msgstr ""
 
-#: ../framework/includes/general.php:1126
+#: ../framework/includes/general.php:1158
 msgid "Light Circles"
 msgstr ""
 
-#: ../framework/includes/general.php:1133
+#: ../framework/includes/general.php:1165
 msgid "Light Climpek"
 msgstr ""
 
-#: ../framework/includes/general.php:1140
+#: ../framework/includes/general.php:1172
 msgid "Light Concrete"
 msgstr ""
 
-#: ../framework/includes/general.php:1147
+#: ../framework/includes/general.php:1179
 msgid "Light Crosses"
 msgstr ""
 
-#: ../framework/includes/general.php:1154
+#: ../framework/includes/general.php:1186
 msgid "Light Cube Stack"
 msgstr ""
 
-#: ../framework/includes/general.php:1161
+#: ../framework/includes/general.php:1193
 msgid "Light Denim"
 msgstr ""
 
-#: ../framework/includes/general.php:1168
+#: ../framework/includes/general.php:1200
 msgid "Light Diagonal (thin)"
 msgstr ""
 
-#: ../framework/includes/general.php:1175
+#: ../framework/includes/general.php:1207
 msgid "Light Diagonal (thick)"
 msgstr ""
 
-#: ../framework/includes/general.php:1182
+#: ../framework/includes/general.php:1214
 msgid "Light Diamonds"
 msgstr ""
 
-#: ../framework/includes/general.php:1189
+#: ../framework/includes/general.php:1221
 msgid "Light Escheresque"
 msgstr ""
 
-#: ../framework/includes/general.php:1196
+#: ../framework/includes/general.php:1228
 msgid "Light Grid"
 msgstr ""
 
-#: ../framework/includes/general.php:1203
+#: ../framework/includes/general.php:1235
 msgid "Light Grunge"
 msgstr ""
 
-#: ../framework/includes/general.php:1210
+#: ../framework/includes/general.php:1242
 msgid "Light Feather"
 msgstr ""
 
-#: ../framework/includes/general.php:1217
+#: ../framework/includes/general.php:1249
 msgid "Light Hexagons"
 msgstr ""
 
-#: ../framework/includes/general.php:1224
+#: ../framework/includes/general.php:1256
 msgid "Light Honey Comb"
 msgstr ""
 
-#: ../framework/includes/general.php:1231
+#: ../framework/includes/general.php:1263
 msgid "Light Leather"
 msgstr ""
 
-#: ../framework/includes/general.php:1238
+#: ../framework/includes/general.php:1270
 msgid "Light Metal"
 msgstr ""
 
-#: ../framework/includes/general.php:1245
+#: ../framework/includes/general.php:1277
 msgid "Light Mosaic"
 msgstr ""
 
-#: ../framework/includes/general.php:1252
+#: ../framework/includes/general.php:1284
 msgid "Light Mosaic Triangles"
 msgstr ""
 
-#: ../framework/includes/general.php:1259
+#: ../framework/includes/general.php:1291
 msgid "Light Noise"
 msgstr ""
 
-#: ../framework/includes/general.php:1266
+#: ../framework/includes/general.php:1298
 msgid "Light Paper"
 msgstr ""
 
-#: ../framework/includes/general.php:1273
+#: ../framework/includes/general.php:1305
 msgid "Light Pixel Weave"
 msgstr ""
 
-#: ../framework/includes/general.php:1280
+#: ../framework/includes/general.php:1312
 msgid "Light Plaid"
 msgstr ""
 
-#: ../framework/includes/general.php:1287
+#: ../framework/includes/general.php:1319
 msgid "Light Pyramids"
 msgstr ""
 
-#: ../framework/includes/general.php:1294
+#: ../framework/includes/general.php:1326
 msgid "Light Rubber"
 msgstr ""
 
-#: ../framework/includes/general.php:1301
+#: ../framework/includes/general.php:1333
 msgid "Light Skulls"
 msgstr ""
 
-#: ../framework/includes/general.php:1308
+#: ../framework/includes/general.php:1340
 msgid "Light Squares"
 msgstr ""
 
-#: ../framework/includes/general.php:1315
+#: ../framework/includes/general.php:1347
 msgid "Light Stacked Circles"
 msgstr ""
 
-#: ../framework/includes/general.php:1322
+#: ../framework/includes/general.php:1354
 msgid "Light Swirl"
 msgstr ""
 
-#: ../framework/includes/general.php:1329
+#: ../framework/includes/general.php:1361
 msgid "Light Textile"
 msgstr ""
 
-#: ../framework/includes/general.php:1336
+#: ../framework/includes/general.php:1368
 msgid "Light Tiles"
 msgstr ""
 
-#: ../framework/includes/general.php:1343
+#: ../framework/includes/general.php:1375
 msgid "Light Vertical Fabric"
 msgstr ""
 
-#: ../framework/includes/general.php:1350
+#: ../framework/includes/general.php:1382
 msgid "Light Vintage"
 msgstr ""
 
-#: ../framework/includes/general.php:1357
+#: ../framework/includes/general.php:1389
 msgid "Light Waves"
 msgstr ""
 
-#: ../framework/includes/general.php:1364
+#: ../framework/includes/general.php:1396
 msgid "Light Wood"
 msgstr ""
 
-#: ../framework/includes/general.php:1371
+#: ../framework/includes/general.php:1403
 msgid "Light Wood Planks"
 msgstr ""
 
-#: ../framework/includes/general.php:1433
+#: ../framework/includes/general.php:1465
 msgid "No pages exist."
 msgstr ""
 
-#: ../framework/includes/general.php:1439
+#: ../framework/includes/general.php:1471
 msgid "<strong>All Categories</strong>"
 msgstr ""
 
-#: ../framework/includes/general.php:1456
+#: ../framework/includes/general.php:1488
 msgid "You haven't created any custom sliders yet."
 msgstr ""
 
-#: ../framework/includes/general.php:1489
+#: ../framework/includes/general.php:1521
 msgid "Location:"
 msgstr ""
 
-#: ../framework/includes/general.php:1502
+#: ../framework/includes/general.php:1534
 msgid "Full Size"
 msgstr ""
 
-#: ../framework/includes/general.php:1532
+#: ../framework/includes/general.php:1564
 msgid "hard crop"
 msgstr ""
 
-#: ../framework/includes/general.php:1534
+#: ../framework/includes/general.php:1566
 msgid "no height crop"
 msgstr ""
 
-#: ../framework/includes/general.php:1536
+#: ../framework/includes/general.php:1568
 msgid "soft crop"
 msgstr ""
 
-#: ../framework/includes/general.php:1560
+#: ../framework/includes/general.php:1592
 msgid "For Darker Background Color"
 msgstr ""
 
-#: ../framework/includes/general.php:1564
+#: ../framework/includes/general.php:1596
 msgid "For Lighter Background Color"
 msgstr ""
 
-#: ../framework/includes/general.php:1629
+#: ../framework/includes/general.php:1661
 msgid "Default Color"
 msgstr ""
 
-#: ../framework/includes/general.php:1630
+#: ../framework/includes/general.php:1662
 msgid "Custom Color"
 msgstr ""
 
-#: ../framework/includes/general.php:1633
+#: ../framework/includes/general.php:1665
 msgid "Primary"
 msgstr ""
 
-#: ../framework/includes/general.php:1634
+#: ../framework/includes/general.php:1666
 msgid "Info"
 msgstr ""
 
-#: ../framework/includes/general.php:1635
+#: ../framework/includes/general.php:1667
 msgid "Success"
 msgstr ""
 
-#: ../framework/includes/general.php:1636
+#: ../framework/includes/general.php:1668
 msgid "Warning"
 msgstr ""
 
-#: ../framework/includes/general.php:1637
+#: ../framework/includes/general.php:1669
 msgid "Danger"
 msgstr ""
 
-#: ../framework/includes/general.php:1640
+#: ../framework/includes/general.php:1672
 msgid "Black"
 msgstr ""
 
-#: ../framework/includes/general.php:1641
+#: ../framework/includes/general.php:1673
 msgid "Blue"
 msgstr ""
 
-#: ../framework/includes/general.php:1642
+#: ../framework/includes/general.php:1674
 msgid "Blue (Dark)"
 msgstr ""
 
-#: ../framework/includes/general.php:1643
+#: ../framework/includes/general.php:1675
 msgid "Blue (Royal)"
 msgstr ""
 
-#: ../framework/includes/general.php:1644
+#: ../framework/includes/general.php:1676
 msgid "Blue (Steel)"
 msgstr ""
 
-#: ../framework/includes/general.php:1645
+#: ../framework/includes/general.php:1677
 msgid "Brown"
 msgstr ""
 
-#: ../framework/includes/general.php:1646
+#: ../framework/includes/general.php:1678
 msgid "Brown (Dark)"
 msgstr ""
 
-#: ../framework/includes/general.php:1647
+#: ../framework/includes/general.php:1679
 msgid "Grey (Slate)"
 msgstr ""
 
-#: ../framework/includes/general.php:1648
+#: ../framework/includes/general.php:1680
 msgid "Green"
 msgstr ""
 
-#: ../framework/includes/general.php:1649
+#: ../framework/includes/general.php:1681
 msgid "Green (Dark)"
 msgstr ""
 
-#: ../framework/includes/general.php:1650
+#: ../framework/includes/general.php:1682
 msgid "Mauve"
 msgstr ""
 
-#: ../framework/includes/general.php:1651
+#: ../framework/includes/general.php:1683
 msgid "Orange"
 msgstr ""
 
-#: ../framework/includes/general.php:1652
+#: ../framework/includes/general.php:1684
 msgid "Pearl"
 msgstr ""
 
-#: ../framework/includes/general.php:1653
+#: ../framework/includes/general.php:1685
 msgid "Pink"
 msgstr ""
 
-#: ../framework/includes/general.php:1654
+#: ../framework/includes/general.php:1686
 msgid "Purple"
 msgstr ""
 
-#: ../framework/includes/general.php:1655
+#: ../framework/includes/general.php:1687
 msgid "Red"
 msgstr ""
 
-#: ../framework/includes/general.php:1656
+#: ../framework/includes/general.php:1688
 msgid "Silver"
 msgstr ""
 
-#: ../framework/includes/general.php:1657
+#: ../framework/includes/general.php:1689
 msgid "Teal"
 msgstr ""
 
-#: ../framework/includes/general.php:1658
+#: ../framework/includes/general.php:1690
 msgid "Yellow"
 msgstr ""
 
-#: ../framework/includes/general.php:1659
+#: ../framework/includes/general.php:1691
 msgid "Wheat"
 msgstr ""
 
-#: ../framework/includes/general.php:1660
+#: ../framework/includes/general.php:1692
 msgid "White"
 msgstr ""
 
-#: ../framework/includes/general.php:1937
+#: ../framework/includes/general.php:1972
 msgid "No pages to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1942
+#: ../framework/includes/general.php:1977
 msgid "Posts"
 msgstr ""
 
-#: ../framework/includes/general.php:1943
+#: ../framework/includes/general.php:1978
 msgid "No posts to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1948
+#: ../framework/includes/general.php:1983
 msgid "Posts in Category"
 msgstr ""
 
-#: ../framework/includes/general.php:1949
-#: ../framework/includes/general.php:1955
-#: ../framework/includes/general.php:1973
-#: ../framework/includes/general.php:2002
-#: ../framework/includes/general.php:2014
+#: ../framework/includes/general.php:1984
+#: ../framework/includes/general.php:1990
+#: ../framework/includes/general.php:2008
+#: ../framework/includes/general.php:2037
+#: ../framework/includes/general.php:2049
 msgid "No categories to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1954
+#: ../framework/includes/general.php:1989
 msgid "Category Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1960
+#: ../framework/includes/general.php:1995
 msgid "Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1961
-#: ../framework/includes/general.php:2008
+#: ../framework/includes/general.php:1996
+#: ../framework/includes/general.php:2043
 msgid "No tags to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1966
+#: ../framework/includes/general.php:2001
 msgid "Single Portfolio Items"
 msgstr ""
 
-#: ../framework/includes/general.php:1967
+#: ../framework/includes/general.php:2002
 msgid "No portfolio items to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1972
+#: ../framework/includes/general.php:2007
 msgid "Items in Portfolio"
 msgstr ""
 
-#: ../framework/includes/general.php:1978
+#: ../framework/includes/general.php:2013
 msgid "Portfolios"
 msgstr ""
 
-#: ../framework/includes/general.php:1979
+#: ../framework/includes/general.php:2014
 msgid "No portfolios to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1984
+#: ../framework/includes/general.php:2019
 msgid "Portfolio Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1985
+#: ../framework/includes/general.php:2020
 msgid "No portfolio tags to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1990
+#: ../framework/includes/general.php:2025
 msgid "Portfolio Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:1994
+#: ../framework/includes/general.php:2029
 msgid "All single portfolio items"
 msgstr ""
 
-#: ../framework/includes/general.php:1995
+#: ../framework/includes/general.php:2030
 msgid "Items displayed by portfolio"
 msgstr ""
 
-#: ../framework/includes/general.php:1996
+#: ../framework/includes/general.php:2031
 msgid "Items displayed by portfolio tag"
 msgstr ""
 
-#: ../framework/includes/general.php:2001
+#: ../framework/includes/general.php:2036
 msgid "Product Category Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2007
+#: ../framework/includes/general.php:2042
 msgid "Product Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2013
+#: ../framework/includes/general.php:2048
 msgid "Products in Category"
 msgstr ""
 
-#: ../framework/includes/general.php:2019
+#: ../framework/includes/general.php:2054
 msgid "Product Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2023
+#: ../framework/includes/general.php:2058
 msgid "All WooCommerce pages"
 msgstr ""
 
-#: ../framework/includes/general.php:2024
+#: ../framework/includes/general.php:2059
 msgid "All single products"
 msgstr ""
 
-#: ../framework/includes/general.php:2025
+#: ../framework/includes/general.php:2060
 msgid "Products displayed by category"
 msgstr ""
 
-#: ../framework/includes/general.php:2026
+#: ../framework/includes/general.php:2061
 msgid "Products displayed by tag"
 msgstr ""
 
-#: ../framework/includes/general.php:2027
+#: ../framework/includes/general.php:2062
 msgid "WooCommerce search results"
 msgstr ""
 
-#: ../framework/includes/general.php:2032
+#: ../framework/includes/general.php:2067
 msgid "Forums"
 msgstr ""
 
-#: ../framework/includes/general.php:2038
+#: ../framework/includes/general.php:2073
 msgid "Forum Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2042
+#: ../framework/includes/general.php:2077
 msgid "All bbPress pages"
 msgstr ""
 
-#: ../framework/includes/general.php:2043
+#: ../framework/includes/general.php:2078
 msgid "All single topics"
 msgstr ""
 
-#: ../framework/includes/general.php:2044
+#: ../framework/includes/general.php:2079
 msgid "All single forums"
 msgstr ""
 
-#: ../framework/includes/general.php:2045
+#: ../framework/includes/general.php:2080
 msgid "Viewing topics by tag"
 msgstr ""
 
-#: ../framework/includes/general.php:2046
+#: ../framework/includes/general.php:2081
 msgid "Public user profiles"
 msgstr ""
 
-#: ../framework/includes/general.php:2047
+#: ../framework/includes/general.php:2082
 msgid "Logged-in user home"
 msgstr ""
 
-#: ../framework/includes/general.php:2052
+#: ../framework/includes/general.php:2087
 msgid "Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2056
+#: ../framework/includes/general.php:2091
 msgid "Homepage"
 msgstr ""
 
-#: ../framework/includes/general.php:2057
+#: ../framework/includes/general.php:2092
 msgid "All posts (any post type)"
 msgstr ""
 
-#: ../framework/includes/general.php:2058
+#: ../framework/includes/general.php:2093
 msgid "All blog posts"
 msgstr ""
 
-#: ../framework/includes/general.php:2059
+#: ../framework/includes/general.php:2094
 msgid "All pages"
 msgstr ""
 
-#: ../framework/includes/general.php:2060
+#: ../framework/includes/general.php:2095
 msgid "All archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2061
+#: ../framework/includes/general.php:2096
 msgid "All category archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2062
+#: ../framework/includes/general.php:2097
 msgid "All tag archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2063
+#: ../framework/includes/general.php:2098
 msgid "All author archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2064
+#: ../framework/includes/general.php:2099
 msgid "Search Results"
 msgstr ""
 
-#: ../framework/includes/general.php:2065
+#: ../framework/includes/general.php:2100
 msgid "404 Page"
 msgstr ""
 
-#: ../framework/includes/general.php:2070
+#: ../framework/includes/general.php:2105
 msgid "Custom"
 msgstr ""
 
-#: ../framework/includes/general.php:2158
+#: ../framework/includes/general.php:2193
 msgid "General: Chat"
 msgstr ""
 
-#: ../framework/includes/general.php:2159
+#: ../framework/includes/general.php:2194
 msgid "General: Cloud"
 msgstr ""
 
-#: ../framework/includes/general.php:2160
+#: ../framework/includes/general.php:2195
 msgid "General: Link"
 msgstr ""
 
-#: ../framework/includes/general.php:2161
+#: ../framework/includes/general.php:2196
 msgid "General: Mail"
 msgstr ""
 
-#: ../framework/includes/general.php:2162
+#: ../framework/includes/general.php:2197
 msgid "General: Movie"
 msgstr ""
 
-#: ../framework/includes/general.php:2163
+#: ../framework/includes/general.php:2198
 msgid "General: Music"
 msgstr ""
 
-#: ../framework/includes/general.php:2164
+#: ../framework/includes/general.php:2199
 msgid "General: Portfolio"
 msgstr ""
 
-#: ../framework/includes/general.php:2165
+#: ../framework/includes/general.php:2200
 msgid "General: RSS"
 msgstr ""
 
-#: ../framework/includes/general.php:2166
+#: ../framework/includes/general.php:2201
 msgid "General: Store"
 msgstr ""
 
-#: ../framework/includes/general.php:2167
+#: ../framework/includes/general.php:2202
 msgid "General: Write"
 msgstr ""
 
-#: ../framework/includes/general.php:2168
+#: ../framework/includes/general.php:2203
 msgid "Android"
 msgstr ""
 
-#: ../framework/includes/general.php:2169
+#: ../framework/includes/general.php:2204
 msgid "Apple"
 msgstr ""
 
-#: ../framework/includes/general.php:2170
+#: ../framework/includes/general.php:2205
 msgid "Behance"
 msgstr ""
 
-#: ../framework/includes/general.php:2171
+#: ../framework/includes/general.php:2206
 msgid "CodePen"
 msgstr ""
 
-#: ../framework/includes/general.php:2172
+#: ../framework/includes/general.php:2207
 msgid "Delicious"
 msgstr ""
 
-#: ../framework/includes/general.php:2173
+#: ../framework/includes/general.php:2208
 msgid "DeviantArt"
 msgstr ""
 
-#: ../framework/includes/general.php:2174
-#: ../framework/includes/general.php:2217
+#: ../framework/includes/general.php:2209
+#: ../framework/includes/general.php:2252
 msgid "Digg"
 msgstr ""
 
-#: ../framework/includes/general.php:2175
+#: ../framework/includes/general.php:2210
 msgid "Dribbble"
 msgstr ""
 
-#: ../framework/includes/general.php:2176
+#: ../framework/includes/general.php:2211
 msgid "Dropbox"
 msgstr ""
 
-#: ../framework/includes/general.php:2177
-#: ../framework/includes/general.php:2219
-#: ../framework/includes/locals.php:38
+#: ../framework/includes/general.php:2212
+#: ../framework/includes/general.php:2254
 msgid "Facebook"
 msgstr ""
 
-#: ../framework/includes/general.php:2178
+#: ../framework/includes/general.php:2213
 msgid "Flickr"
 msgstr ""
 
-#: ../framework/includes/general.php:2179
+#: ../framework/includes/general.php:2214
 msgid "Foursquare"
 msgstr ""
 
-#: ../framework/includes/general.php:2180
+#: ../framework/includes/general.php:2215
 msgid "GitHub"
 msgstr ""
 
-#: ../framework/includes/general.php:2181
-#: ../framework/includes/general.php:2220
-#: ../framework/includes/locals.php:39
+#: ../framework/includes/general.php:2216
+#: ../framework/includes/general.php:2255
 msgid "Google+"
 msgstr ""
 
-#: ../framework/includes/general.php:2182
+#: ../framework/includes/general.php:2217
 msgid "Instagram"
 msgstr ""
 
-#: ../framework/includes/general.php:2183
-#: ../framework/includes/locals.php:40
+#: ../framework/includes/general.php:2218
 msgid "LinkedIn"
 msgstr ""
 
-#: ../framework/includes/general.php:2184
+#: ../framework/includes/general.php:2219
 msgid "PayPal"
 msgstr ""
 
-#: ../framework/includes/general.php:2185
-#: ../framework/includes/general.php:2223
-#: ../framework/includes/locals.php:41
+#: ../framework/includes/general.php:2220
+#: ../framework/includes/general.php:2258
 msgid "Pinterest"
 msgstr ""
 
-#: ../framework/includes/general.php:2186
-#: ../framework/includes/general.php:2224
+#: ../framework/includes/general.php:2221
+#: ../framework/includes/general.php:2259
 msgid "Reddit"
 msgstr ""
 
-#: ../framework/includes/general.php:2187
+#: ../framework/includes/general.php:2222
 msgid "SlideShare"
 msgstr ""
 
-#: ../framework/includes/general.php:2188
+#: ../framework/includes/general.php:2223
 msgid "SoundCloud"
 msgstr ""
 
-#: ../framework/includes/general.php:2189
+#: ../framework/includes/general.php:2224
 msgid "StumbleUpon"
 msgstr ""
 
-#: ../framework/includes/general.php:2190
 #: ../framework/includes/general.php:2225
+#: ../framework/includes/general.php:2260
 msgid "Tumblr"
 msgstr ""
 
-#: ../framework/includes/general.php:2191
 #: ../framework/includes/general.php:2226
-#: ../framework/includes/locals.php:42
+#: ../framework/includes/general.php:2261
 msgid "Twitter"
 msgstr ""
 
-#: ../framework/includes/general.php:2192
+#: ../framework/includes/general.php:2227
 msgid "Vimeo"
 msgstr ""
 
-#: ../framework/includes/general.php:2193
+#: ../framework/includes/general.php:2228
 msgid "Vine"
 msgstr ""
 
-#: ../framework/includes/general.php:2194
+#: ../framework/includes/general.php:2229
 msgid "Windows"
 msgstr ""
 
-#: ../framework/includes/general.php:2195
+#: ../framework/includes/general.php:2230
 msgid "WordPress"
 msgstr ""
 
-#: ../framework/includes/general.php:2196
+#: ../framework/includes/general.php:2231
 msgid "XING"
 msgstr ""
 
-#: ../framework/includes/general.php:2197
+#: ../framework/includes/general.php:2232
 msgid "Yahoo"
 msgstr ""
 
-#: ../framework/includes/general.php:2198
+#: ../framework/includes/general.php:2233
 msgid "YouTube"
 msgstr ""
 
-#: ../framework/includes/general.php:2218
-#: ../framework/includes/locals.php:53
+#: ../framework/includes/general.php:2253
 msgid "Email"
 msgstr ""
 
-#: ../framework/includes/general.php:2221
+#: ../framework/includes/general.php:2256
 msgid "Linkedin"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1465
+#: ../framework/includes/helpers.php:1471
 msgid "year"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1466
+#: ../framework/includes/helpers.php:1472
 msgid "years"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1467
+#: ../framework/includes/helpers.php:1473
 msgid "month"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1468
+#: ../framework/includes/helpers.php:1474
 msgid "months"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1469
+#: ../framework/includes/helpers.php:1475
 msgid "week"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1470
+#: ../framework/includes/helpers.php:1476
 msgid "weeks"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1471
+#: ../framework/includes/helpers.php:1477
 msgid "day"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1472
+#: ../framework/includes/helpers.php:1478
 msgid "days"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1473
+#: ../framework/includes/helpers.php:1479
 msgid "hour"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1474
+#: ../framework/includes/helpers.php:1480
 msgid "hours"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1475
+#: ../framework/includes/helpers.php:1481
 msgid "minute"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1476
+#: ../framework/includes/helpers.php:1482
 msgid "minutes"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1477
+#: ../framework/includes/helpers.php:1483
 msgid "second"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1478
+#: ../framework/includes/helpers.php:1484
 msgid "seconds"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1479
+#: ../framework/includes/helpers.php:1485
 msgid "ago"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1480
+#: ../framework/includes/helpers.php:1486
 msgid "sometime"
 msgstr ""
 
@@ -6015,26 +6310,34 @@ msgid "For the super user, this base builds on the default theme to give you mor
 msgstr ""
 
 #: ../includes/theme-functions.php:43
-msgid "Entrepreneur"
+msgid "Agent"
 msgstr ""
 
 #: ../includes/theme-functions.php:44
-msgid "For the modern entrepreneur, this base embodies the current design trends of the web industry."
+msgid "A modern and open, agency-style design with a bit less user options."
 msgstr ""
 
 #: ../includes/theme-functions.php:47
-msgid "Executive"
+msgid "Entrepreneur"
 msgstr ""
 
 #: ../includes/theme-functions.php:48
-msgid "For the confident, experienced executive, this base gives you a design you're familiar with, for success."
+msgid "A more standard, corporate design with a lot of user options."
 msgstr ""
 
-#: ../includes/theme-functions.php:148
+#: ../includes/theme-functions.php:51
+msgid "Executive"
+msgstr ""
+
+#: ../includes/theme-functions.php:52
+msgid "A more classic, corporate design with a lot of user options."
+msgstr ""
+
+#: ../includes/theme-functions.php:152
 msgid "Warning: Your saved theme options do not currently match the theme base you've selected. Please configure and save your theme options page."
 msgstr ""
 
-#: ../includes/theme-functions.php:163
+#: ../includes/theme-functions.php:167
 msgid "Jump Start Homepage"
 msgstr ""
 
