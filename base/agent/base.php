@@ -1089,7 +1089,11 @@ function jumpstart_ag_header_class( $class ) {
 	$class[] = 'drop-' . themeblvd_get_option('menu_drop_bg_color_brightness');
 
 	// Location of menu
-	$class[] = 'menu-' . themeblvd_get_option('menu_placement');
+	$menu_args = themeblvd_get_wp_nav_menu_args('primary');
+
+	if ( has_nav_menu( $menu_args['theme_location'] ) ) {
+		$class[] = 'menu-' . themeblvd_get_option('menu_placement');
+	}
 
 	// Whether to stretch the header full width
 	if ( themeblvd_get_option('header_stretch') ) {
