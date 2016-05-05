@@ -2,35 +2,35 @@
 <settings>
 	<setting>
 		<id>sidebars_widgets</id>
-		<value><![CDATA[YToxNTp7czoxOToid3BfaW5hY3RpdmVfd2lkZ2V0cyI7YTowOnt9czoxMjoic2lkZWJhcl9sZWZ0IjthOjE6e2k6MDtzOjY6InRleHQtMiI7fXM6MTM6InNpZGViYXJfcmlnaHQiO2E6MTp7aTowO3M6NjoidGV4dC0zIjt9czoxNToiYWRfYWJvdmVfaGVhZGVyIjthOjA6e31zOjE2OiJhZF9hYm92ZV9jb250ZW50IjthOjA6e31zOjE2OiJhZF9iZWxvd19jb250ZW50IjthOjA6e31zOjE1OiJhZF9iZWxvd19mb290ZXIiO2E6MDp7fXM6NDoiYmxvZyI7YTo1OntpOjA7czozMzoidGhlbWVibHZkX21pbmlfcG9zdF9saXN0X3dpZGdldC0yIjtpOjE7czoyMToidHdlZXBsZV9mZWVkX3dpZGdldC0yIjtpOjI7czoxMjoiY2F0ZWdvcmllcy0yIjtpOjM7czoxMToidGFnX2Nsb3VkLTIiO2k6NDtzOjEwOiJhcmNoaXZlcy0yIjt9czo4OiJmZWF0dXJlcyI7YToxOntpOjA7czoxMDoibmF2X21lbnUtMiI7fXM6ODoiZm9vdGVyLTEiO2E6MTp7aTowO3M6MzM6InRoZW1lYmx2ZF9taW5pX3Bvc3RfZ3JpZF93aWRnZXQtMiI7fXM6ODoiZm9vdGVyLTIiO2E6MTp7aTowO3M6MTE6InRhZ19jbG91ZC0zIjt9czo4OiJmb290ZXItMyI7YToxOntpOjA7czoyNjoidGhlbWVibHZkX2NvbnRhY3Rfd2lkZ2V0LTIiO31zOjY6ImZvcnVtcyI7YTozOntpOjA7czoxOToiYmJwX2ZvcnVtc193aWRnZXQtMiI7aToxO3M6MTg6ImJicF9sb2dpbl93aWRnZXQtMiI7aToyO3M6MTg6ImJicF9zdGF0c193aWRnZXQtMiI7fXM6NDoic2hvcCI7YTo1OntpOjA7czoyODoid29vY29tbWVyY2VfcHJvZHVjdF9zZWFyY2gtMiI7aToxO3M6MjU6Indvb2NvbW1lcmNlX3dpZGdldF9jYXJ0LTIiO2k6MjtzOjI1OiJ3b29jb21tZXJjZV9sYXllcmVkX25hdi0yIjtpOjM7czoyNjoid29vY29tbWVyY2VfcHJpY2VfZmlsdGVyLTIiO2k6NDtzOjIyOiJ3b29jb21tZXJjZV9wcm9kdWN0cy0yIjt9czoxMzoiYXJyYXlfdmVyc2lvbiI7aTozO30=]]></value>
+		<value><![CDATA[YToxNTp7czoxOToid3BfaW5hY3RpdmVfd2lkZ2V0cyI7YTozOntpOjA7czozMzoidGhlbWVibHZkX21pbmlfcG9zdF9ncmlkX3dpZGdldC0zIjtpOjE7czoxNDoicmVjZW50LXBvc3RzLTIiO2k6MjtzOjIxOiJ0d2VlcGxlX2ZlZWRfd2lkZ2V0LTMiO31zOjEyOiJzaWRlYmFyX2xlZnQiO2E6MTp7aTowO3M6NjoidGV4dC0yIjt9czoxMzoic2lkZWJhcl9yaWdodCI7YToxOntpOjA7czo2OiJ0ZXh0LTMiO31zOjE1OiJhZF9hYm92ZV9oZWFkZXIiO2E6MDp7fXM6MTY6ImFkX2Fib3ZlX2NvbnRlbnQiO2E6MDp7fXM6MTY6ImFkX2JlbG93X2NvbnRlbnQiO2E6MDp7fXM6MTU6ImFkX2JlbG93X2Zvb3RlciI7YTowOnt9czo0OiJibG9nIjthOjY6e2k6MDtzOjg6InNlYXJjaC01IjtpOjE7czoxNDoicmVjZW50LXBvc3RzLTQiO2k6MjtzOjIxOiJ0d2VlcGxlX2ZlZWRfd2lkZ2V0LTIiO2k6MztzOjEyOiJjYXRlZ29yaWVzLTIiO2k6NDtzOjExOiJ0YWdfY2xvdWQtMiI7aTo1O3M6MTA6ImFyY2hpdmVzLTIiO31zOjg6ImZlYXR1cmVzIjthOjE6e2k6MDtzOjEwOiJuYXZfbWVudS0yIjt9czo4OiJmb290ZXItMSI7YToxOntpOjA7czoyMToidHdlZXBsZV9mZWVkX3dpZGdldC00Ijt9czo4OiJmb290ZXItMiI7YToxOntpOjA7czoxNDoicmVjZW50LXBvc3RzLTMiO31zOjg6ImZvb3Rlci0zIjthOjE6e2k6MDtzOjMzOiJ0aGVtZWJsdmRfbWluaV9wb3N0X2dyaWRfd2lkZ2V0LTQiO31zOjY6ImZvcnVtcyI7YTo0OntpOjA7czo4OiJzZWFyY2gtNCI7aToxO3M6MTk6ImJicF9mb3J1bXNfd2lkZ2V0LTIiO2k6MjtzOjE4OiJiYnBfbG9naW5fd2lkZ2V0LTIiO2k6MztzOjE4OiJiYnBfc3RhdHNfd2lkZ2V0LTIiO31zOjQ6InNob3AiO2E6NTp7aTowO3M6Mjg6Indvb2NvbW1lcmNlX3Byb2R1Y3Rfc2VhcmNoLTIiO2k6MTtzOjI1OiJ3b29jb21tZXJjZV93aWRnZXRfY2FydC0yIjtpOjI7czoyNToid29vY29tbWVyY2VfbGF5ZXJlZF9uYXYtMiI7aTozO3M6MjY6Indvb2NvbW1lcmNlX3ByaWNlX2ZpbHRlci0yIjtpOjQ7czoyMjoid29vY29tbWVyY2VfcHJvZHVjdHMtMiI7fXM6MTM6ImFycmF5X3ZlcnNpb24iO2k6Mzt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_themeblvd_contact_widget</id>
-		<value><![CDATA[YToyOntpOjI7YToxOTp7czo1OiJ0aXRsZSI7czoxMjoiR2V0IGluIFRvdWNoIjtzOjc6InBob25lXzEiO3M6MTI6IjkwNy0xMjMtNDU2NyI7czo3OiJwaG9uZV8yIjtzOjE0OiIxLTgwMC01NTUtNTU1NSI7czo3OiJlbWFpbF8xIjtzOjE4OiJhZG1pbkB5b3Vyc2l0ZS5jb20iO3M6NzoiZW1haWxfMiI7czowOiIiO3M6NzoiY29udGFjdCI7czoxOiIjIjtzOjU6InNreXBlIjtzOjEzOiJZb3VyU2t5cGVOYW1lIjtzOjExOiJsaW5rXzFfaWNvbiI7czo4OiJmYWNlYm9vayI7czoxMDoibGlua18xX3VybCI7czoxOiIjIjtzOjExOiJsaW5rXzJfaWNvbiI7czo3OiJ0d2l0dGVyIjtzOjEwOiJsaW5rXzJfdXJsIjtzOjE6IiMiO3M6MTE6ImxpbmtfM19pY29uIjtzOjg6ImxpbmtlZGluIjtzOjEwOiJsaW5rXzNfdXJsIjtzOjE6IiMiO3M6MTE6ImxpbmtfNF9pY29uIjtzOjY6Imdvb2dsZSI7czoxMDoibGlua180X3VybCI7czoxOiIjIjtzOjExOiJsaW5rXzVfaWNvbiI7czo3OiJ5b3V0dWJlIjtzOjEwOiJsaW5rXzVfdXJsIjtzOjE6IiMiO3M6MTE6ImxpbmtfNl9pY29uIjtzOjk6InBpbnRlcmVzdCI7czoxMDoibGlua182X3VybCI7czoxOiIjIjt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_themeblvd_horz_menu_widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_themeblvd_mini_post_grid_widget</id>
-		<value><![CDATA[YToyOntpOjI7YTo3OntzOjU6InRpdGxlIjtzOjk6IlBvcnRmb2xpbyI7czo1OiJ0aHVtYiI7czo4OiJzbWFsbGVzdCI7czo1OiJhbGlnbiI7czo0OiJsZWZ0IjtzOjg6ImNhdGVnb3J5IjtzOjM6ImFsbCI7czoxMToibnVtYmVycG9zdHMiO3M6MToiNiI7czo1OiJxdWVyeSI7czo0MjoicG9zdF90eXBlPXBvcnRmb2xpb19pdGVtJnBvc3RzX3Blcl9wYWdlPTE1IjtzOjc6ImdhbGxlcnkiO3M6MDoiIjt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
+		<value><![CDATA[YTozOntpOjM7YTo3OntzOjU6InRpdGxlIjtzOjExOiJSZWNlbnQgV29yayI7czo1OiJ0aHVtYiI7czo3OiJzbWFsbGVyIjtzOjU6ImFsaWduIjtzOjQ6ImxlZnQiO3M6ODoiY2F0ZWdvcnkiO3M6MzoiYWxsIjtzOjExOiJudW1iZXJwb3N0cyI7czoxOiI2IjtzOjU6InF1ZXJ5IjtzOjQxOiJwb3N0X3R5cGU9cG9ydGZvbGlvX2l0ZW0mcG9zdHNfcGVyX3BhZ2U9NiI7czo3OiJnYWxsZXJ5IjtzOjA6IiI7fWk6NDthOjc6e3M6NToidGl0bGUiO3M6MTE6IlJlY2VudCBXb3JrIjtzOjU6InRodW1iIjtzOjc6InNtYWxsZXIiO3M6NToiYWxpZ24iO3M6NDoibGVmdCI7czo4OiJjYXRlZ29yeSI7czozOiJhbGwiO3M6MTE6Im51bWJlcnBvc3RzIjtzOjE6IjYiO3M6NToicXVlcnkiO3M6MjQ6InBvc3RfdHlwZT1wb3J0Zm9saW9faXRlbSI7czo3OiJnYWxsZXJ5IjtzOjA6IiI7fXM6MTI6Il9tdWx0aXdpZGdldCI7aToxO30=]]></value>
 	</setting>
 	<setting>
 		<id>widget_themeblvd_mini_post_list_widget</id>
-		<value><![CDATA[YToyOntpOjI7YTo2OntzOjU6InRpdGxlIjtzOjEyOiJSZWNlbnQgUG9zdHMiO3M6NToidGh1bWIiO3M6Nzoic21hbGxlciI7czo0OiJtZXRhIjtzOjQ6InNob3ciO3M6ODoiY2F0ZWdvcnkiO3M6MzoiYWxsIjtzOjExOiJudW1iZXJwb3N0cyI7czoxOiI0IjtzOjU6InF1ZXJ5IjtzOjA6IiI7fXM6MTI6Il9tdWx0aXdpZGdldCI7aToxO30=]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_themeblvd_video_widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_pages</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_calendar</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_archives</id>
@@ -42,7 +42,7 @@
 	</setting>
 	<setting>
 		<id>widget_search</id>
-		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+		<value><![CDATA[YTozOntpOjQ7YToxOntzOjU6InRpdGxlIjtzOjA6IiI7fWk6NTthOjE6e3M6NToidGl0bGUiO3M6MDoiIjt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_text</id>
@@ -54,7 +54,7 @@
 	</setting>
 	<setting>
 		<id>widget_recent-posts</id>
-		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+		<value><![CDATA[YTo0OntpOjI7YTozOntzOjU6InRpdGxlIjtzOjEyOiJSZWNlbnQgUG9zdHMiO3M6NjoibnVtYmVyIjtpOjQ7czo5OiJzaG93X2RhdGUiO2I6MDt9aTozO2E6Mzp7czo1OiJ0aXRsZSI7czoxMjoiUmVjZW50IFBvc3RzIjtzOjY6Im51bWJlciI7aTo0O3M6OToic2hvd19kYXRlIjtiOjA7fWk6NDthOjM6e3M6NToidGl0bGUiO3M6MTI6IlJlY2VudCBQb3N0cyI7czo2OiJudW1iZXIiO2k6NTtzOjk6InNob3dfZGF0ZSI7YjoxO31zOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_recent-comments</id>
@@ -62,19 +62,19 @@
 	</setting>
 	<setting>
 		<id>widget_rss</id>
-		<value><![CDATA[YTowOnt9]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_tag_cloud</id>
-		<value><![CDATA[YTozOntpOjI7YToyOntzOjU6InRpdGxlIjtzOjQ6IlRhZ3MiO3M6ODoidGF4b25vbXkiO3M6ODoicG9zdF90YWciO31pOjM7YToyOntzOjU6InRpdGxlIjtzOjQ6IlRhZ3MiO3M6ODoidGF4b25vbXkiO3M6ODoicG9zdF90YWciO31zOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+		<value><![CDATA[YToyOntpOjI7YToyOntzOjU6InRpdGxlIjtzOjQ6IlRhZ3MiO3M6ODoidGF4b25vbXkiO3M6ODoicG9zdF90YWciO31zOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_nav_menu</id>
-		<value><![CDATA[YToyOntpOjI7YToyOntzOjU6InRpdGxlIjtzOjEwOiJDb29sIFN0dWZmIjtzOjg6Im5hdl9tZW51IjtzOjg6ImZlYXR1cmVzIjt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
+		<value><![CDATA[YToyOntpOjI7YToyOntzOjU6InRpdGxlIjtzOjEwOiJDb29sIFN0dWZmIjtzOjg6Im5hdl9tZW51IjtpOjEzNDt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_gform_widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_bbp_login_widget</id>
@@ -106,7 +106,7 @@
 	</setting>
 	<setting>
 		<id>widget_rev-slider-widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_woocommerce_widget_cart</id>
@@ -126,7 +126,7 @@
 	</setting>
 	<setting>
 		<id>widget_woocommerce_product_categories</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_woocommerce_product_search</id>
@@ -134,7 +134,7 @@
 	</setting>
 	<setting>
 		<id>widget_woocommerce_product_tag_cloud</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_woocommerce_products</id>
@@ -142,22 +142,22 @@
 	</setting>
 	<setting>
 		<id>widget_woocommerce_recent_reviews</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_woocommerce_recently_viewed_products</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_woocommerce_top_rated_products</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_icl_lang_sel_widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToyOntpOjE7YTowOnt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
 	</setting>
 	<setting>
 		<id>widget_tweeple_feed_widget</id>
-		<value><![CDATA[YToyOntpOjI7YToyOntzOjU6InRpdGxlIjtzOjEyOiJGcm9tIFR3aXR0ZXIiO3M6NzoiZmVlZF9pZCI7czo0OiI1MTI0Ijt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
+		<value><![CDATA[YTo0OntpOjI7YToyOntzOjU6InRpdGxlIjtzOjEyOiJGcm9tIFR3aXR0ZXIiO3M6NzoiZmVlZF9pZCI7czo0OiI1MTI0Ijt9aTozO2E6Mjp7czo1OiJ0aXRsZSI7czoxMjoiRnJvbSBUd2l0dGVyIjtzOjc6ImZlZWRfaWQiO3M6NDoiNTIzMCI7fWk6NDthOjI6e3M6NToidGl0bGUiO3M6MTI6IkZyb20gVHdpdHRlciI7czo3OiJmZWVkX2lkIjtzOjQ6IjUyMzAiO31zOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 </settings>
