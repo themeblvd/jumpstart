@@ -3,7 +3,7 @@
 	<settings>
 		<setting>
 			<id>blogname</id>
-			<value><![CDATA[Jump Start Demo]]></value>
+			<value><![CDATA[Jump Start Demo #10]]></value>
 		</setting>
 		<setting>
 			<id>blogdescription</id>
@@ -19,7 +19,7 @@
 		</setting>
 		<setting>
 			<id>page_on_front</id>
-			<value><![CDATA[homepage-1]]></value>
+			<value><![CDATA[home]]></value>
 		</setting>
 		<setting>
 			<id>page_for_posts</id>
@@ -57,30 +57,6 @@
 			<id>jumpstart_base</id>
 			<value><![CDATA[entrepreneur]]></value>
 		</setting>
-		<setting>
-			<id>shop_thumbnail_image_size</id>
-			<value><![CDATA[a:3:{s:5:"width";s:2:"90";s:6:"height";s:2:"90";s:4:"crop";s:1:"1";}]]></value>
-		</setting>
-		<setting>
-			<id>woocommerce_currency</id>
-			<value><![CDATA[USD]]></value>
-		</setting>
-		<setting>
-			<id>woocommerce_currency_pos</id>
-			<value><![CDATA[left]]></value>
-		</setting>
-		<setting>
-			<id>woocommerce_shop_page_id</id>
-			<value><![CDATA[shop]]></value>
-		</setting>
-		<setting>
-			<id>woocommerce_cart_page_id</id>
-			<value><![CDATA[cart]]></value>
-		</setting>
-		<setting>
-			<id>woocommerce_checkout_page_id</id>
-			<value><![CDATA[checkout]]></value>
-		</setting>
 	</settings>
 	<thememods>
 		<thememod>
@@ -109,6 +85,18 @@
 		</thememod>
 	</thememods>
 	<menus>
+		<menu>
+			<location>footer</location>
+			<assignment><![CDATA[sub-menu]]></assignment>
+		</menu>
+		<menu>
+			<location>side_sub</location>
+			<assignment><![CDATA[]]></assignment>
+		</menu>
+		<menu>
+			<location>side</location>
+			<assignment><![CDATA[]]></assignment>
+		</menu>
 		<menu>
 			<location>primary</location>
 			<assignment><![CDATA[main-menu]]></assignment>
