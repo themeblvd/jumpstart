@@ -397,7 +397,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function thumb_epic() {
 
-		if ( is_shop() ) {
+		if ( is_shop() && function_exists('themeblvd_set_att') ) {
 
 			$shop_id = get_option('woocommerce_shop_page_id');
 

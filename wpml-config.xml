@@ -10,25 +10,25 @@
         <taxonomy translate="1">portfolio_tag</taxonomy>
     </taxonomies>
     <custom-fields>
-        <custom-field action="copy">_tb_title</custom-field>
-        <custom-field action="copy">_tb_breadcrumbs</custom-field>
-        <custom-field action="copy">_tb_meta</custom-field>
-        <custom-field action="copy">_tb_sub_meta</custom-field>
-        <custom-field action="copy">_tb_author_box</custom-field>
-        <custom-field action="copy">_tb_related_posts</custom-field>
-        <custom-field action="copy">_tb_comments</custom-field>
-        <custom-field action="copy">_tb_breadcrumbs</custom-field>
-        <custom-field action="copy">_tb_thumb</custom-field>
-        <custom-field action="copy">_tb_thumb_link</custom-field>
-        <custom-field action="copy">_tb_image_link</custom-field>
-        <custom-field action="copy">_tb_video_link</custom-field>
-        <custom-field action="copy">_tb_external_link</custom-field>
-        <custom-field action="copy">_tb_external_link_target</custom-field>
-        <custom-field action="copy">_tb_thumb_link_single</custom-field>
-        <custom-field action="copy">_tb_sidebar_layout</custom-field>
-        <custom-field action="copy">_tb_layout_header</custom-field>
-        <custom-field action="copy">_tb_layout_footer</custom-field>
-        <custom-field action="copy">_tb_sidebars</custom-field>
+        <custom-field action="translate">_tb_title</custom-field>
+        <custom-field action="translate">_tb_breadcrumbs</custom-field>
+        <custom-field action="translate">_tb_meta</custom-field>
+        <custom-field action="translate">_tb_sub_meta</custom-field>
+        <custom-field action="translate">_tb_author_box</custom-field>
+        <custom-field action="translate">_tb_related_posts</custom-field>
+        <custom-field action="translate">_tb_comments</custom-field>
+        <custom-field action="translate">_tb_breadcrumbs</custom-field>
+        <custom-field action="translate">_tb_thumb</custom-field>
+        <custom-field action="translate">_tb_thumb_link</custom-field>
+        <custom-field action="translate">_tb_image_link</custom-field>
+        <custom-field action="translate">_tb_video_link</custom-field>
+        <custom-field action="translate">_tb_external_link</custom-field>
+        <custom-field action="translate">_tb_external_link_target</custom-field>
+        <custom-field action="translate">_tb_thumb_link_single</custom-field>
+        <custom-field action="translate">_tb_sidebar_layout</custom-field>
+        <custom-field action="translate">_tb_layout_header</custom-field>
+        <custom-field action="translate">_tb_layout_footer</custom-field>
+        <custom-field action="translate">_tb_sidebars</custom-field>
         <custom-field action="translate">_tb_custom_layout</custom-field>
         <custom-field action="translate">_tb_builder_elements</custom-field>
     </custom-fields>

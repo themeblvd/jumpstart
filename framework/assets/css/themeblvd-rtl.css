@@ -5617,7 +5617,7 @@ body.mobile .tb-bg-video {
 		color: #ffffff;
 		font-size: 50px;
 		margin: 0 auto;
-		max-width: 16em;
+		max-width: 18em;
 	}
 	.epic-thumb .epic-thumb-header .entry-meta {
 		font-size: 12px;
@@ -7414,6 +7414,10 @@ body.mobile .tb-bg-video {
 	}
 }
 @media (max-width: 767px) {
+	.tb-testimonial.showcase,
+	.tb-testimonial-slider .tb-testimonial.showcase {
+		padding: 0;
+	}
 	.tb-testimonial.showcase .testimonial-text {
 		font-size: 14px;
 	}
