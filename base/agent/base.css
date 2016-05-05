@@ -1245,6 +1245,27 @@ textarea {
 	border-bottom-color: #ea4b37; /* highlight */
 }
 
+/* Pagination */
+.pagination .btn {
+	background-color: #f2f2f2;
+	color: #666666;
+}
+.pagination .btn.active {
+	background-color: #dddddd;
+	color: #666666;
+}
+.content_dark .pagination .btn {
+	background-color: #151515;
+	color: #ffffff;
+}
+.content_dark .pagination .btn.active {
+	background-color: #000000;
+	color: #ffffff;
+}
+.pagination .btn:hover {
+	color: #ffffff;
+}
+
 /* =Widgets
 ----------------------------------------------- */
 

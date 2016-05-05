@@ -628,7 +628,6 @@ function jumpstart_ag_css() {
 	$print .= ".primary,\n";
 	$print .= ".bg-primary,\n";
 	$print .= ".btn-primary,\n";
-	$print .= ".pagination .btn-group .btn.active,\n";
 	$print .= "a.alt,\n";
 	$print .= "button.alt,\n";
 	$print .= "input.alt,\n";
