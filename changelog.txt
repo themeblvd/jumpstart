@@ -1,8 +1,10 @@
 Jump Start Changelog
 ====================
 
-2.1.0 - XX/XX/XXXX
+2.1.0 - 05/05/2016
 ------------------
+
+*Warning: Make sure to read this article before updating: [Updating to Jump Start 2.1](http://news.themeblvd.com/2016/05/05/updating-to-jump-start-2-1/)*
 
 * **Updated Theme Blvd framework to 2.6.0**
 * New: "Agent" theme base - A modern and open, agency-style design with a bit less user options.
