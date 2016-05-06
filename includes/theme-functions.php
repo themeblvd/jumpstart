@@ -163,12 +163,12 @@ add_action('themeblvd_before', 'jumpstart_base_check');
  */
 function jumpstart_sample_layouts( $layouts ) {
 
-	$layouts['jump-start-homepage'] = array(
-		'name'		=> __('Jump Start Homepage', 'jumpstart'),
-		'id'		=> 'jump-start-homepage',
-		'dir'		=> get_template_directory() . '/includes/layout/',
-		'uri'		=> get_template_directory_uri() . '/includes/layout/',
-		'assets'	=> get_template_directory_uri() . '/includes/layout/img/'
+	$layouts['jumpstart-home'] = array(
+		'name'		=> __('Jump Start: Home', 'jumpstart'),
+		'id'		=> 'jumpstart-home',
+		'dir'		=> get_template_directory() . '/includes/layouts/home/',
+		'uri'		=> get_template_directory_uri() . '/includes/layouts/home/',
+		'assets'	=> get_template_directory_uri() . '/includes/layouts/home/img/'
 	);
 
 	return $layouts;
