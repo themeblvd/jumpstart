@@ -1078,12 +1078,13 @@ function jumpstart_ag_header_class( $class ) {
 	}
 
 	// Background brightness
-	$class[] = themeblvd_get_option('header_bg_color_brightness');
-	$class[] = 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
-
 	if ( themeblvd_config('suck_up') ) {
 		$class[] = 'trans-' . themeblvd_get_option('header_trans_bg_color_brightness');
+	} else {
+		$class[] = themeblvd_get_option('header_bg_color_brightness');
 	}
+
+	$class[] = 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
 
 	// Dropdown brightness
 	$class[] = 'drop-' . themeblvd_get_option('menu_drop_bg_color_brightness');
