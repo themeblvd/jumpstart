@@ -4,6 +4,8 @@ Jump Start Changelog
 2.1.1 - XX/XX/XXXX
 ------------------
 
+* Fixed: Footer columns not pulling page content.
+
 --------------------------------------------------------------
 
 2.1.0 - 05/05/2016

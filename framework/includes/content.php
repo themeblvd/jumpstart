@@ -263,7 +263,7 @@ function themeblvd_get_post_content( $post_id = 0, $post_type = '' ) {
 	} else {
 
 		if ( is_string( $post_id ) ) {
-			$post_id = themeblvd_post_id_by_name( $post, $post_type );
+			$post_id = themeblvd_post_id_by_name( $post_id, $post_type );
 		}
 
 		$post = get_post( $post_id );
