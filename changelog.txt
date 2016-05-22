@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * Fixed: Footer columns not pulling page content.
+* Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
 
 --------------------------------------------------------------
 

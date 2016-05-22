@@ -670,7 +670,7 @@ jQuery(document).ready(function($) {
 						$link.closest('li').addClass('active');
 						$iso.isotope({ filter: select });
 
-						$link.closest('.tb-filter').find('.grid-item').each(function(){
+						$link.closest('.tb-filter').find('.grid-item, .showcase-item').each(function(){
 
 							var $el = $(this);
 
