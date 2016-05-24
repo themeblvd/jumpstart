@@ -97,9 +97,16 @@ function themeblvd_sanitize_hidden( $input, $option ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_text( $input ) {
-	$output = themeblvd_kses($input);
-	$output = htmlspecialchars_decode( $output );
+
+	if ( current_user_can('unfiltered_html') ) {
+		$output = $input;
+	} else {
+		$output = themeblvd_kses($input);
+		$output = htmlspecialchars_decode($output);
+	}
+
 	$output = str_replace( "\r\n", "\n", $output );
+
 	return $output;
 }
 
@@ -109,9 +116,16 @@ function themeblvd_sanitize_text( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_textarea( $input ) {
-	$output = themeblvd_kses($input);
-	$output = htmlspecialchars_decode( $output );
+
+	if ( current_user_can('unfiltered_html') ) {
+		$output = $input;
+	} else {
+		$output = themeblvd_kses($input);
+		$output = htmlspecialchars_decode($output);
+	}
+
 	$output = str_replace( "\r\n", "\n", $output );
+
 	return $output;
 }
 
@@ -1133,7 +1147,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
  * @since 2.2.0
  */
 function themeblvd_sanitize_editor( $input ) {
-	if ( current_user_can( 'unfiltered_html' ) ) {
+	if ( current_user_can('unfiltered_html') ) {
 		$output = $input;
 	} else {
 		$output = wp_kses( $input, themeblvd_allowed_tags() );

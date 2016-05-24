@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.1 - XX/XX/XXXX
 ------------------
 
+* Improvement: Allow unfiltered HTML when saving text and textareas.
 * Fixed: Footer columns not pulling page content.
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
 
