@@ -1503,7 +1503,7 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 		$date = gmmktime( (int)$time_chunks[1], (int)$time_chunks[2], (int)$time_chunks[3], (int)$date_chunks[1], (int)$date_chunks[2], (int)$date_chunks[0] );
 	}
 
-	$current_time = current_time( 'mysql', $gmt = 0 );
+	$current_time = current_time( 'mysql', 1 );
 	$newer_date = strtotime( $current_time );
 
 	// Difference in seconds

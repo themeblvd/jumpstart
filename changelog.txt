@@ -7,6 +7,7 @@ Jump Start Changelog
 * Improvement: Allow unfiltered HTML when saving text and textareas.
 * Fixed: Footer columns not pulling page content.
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
+* Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.
 
 --------------------------------------------------------------
 
