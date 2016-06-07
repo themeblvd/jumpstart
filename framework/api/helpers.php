@@ -65,11 +65,7 @@ function themeblvd_get_formatted_options() {
 function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
 
 	$api = Theme_Blvd_Options_API::get_instance();
-	$setting = $api->get_setting( $primary, $secondary );
-
-	if ( $setting === null ) {
-		$setting = $default;
-	}
+	$setting = $api->get_setting( $primary, $secondary, $default );
 
 	return apply_filters( 'themeblvd_get_option', $setting, $primary, $secondary, $default );
 }

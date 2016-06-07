@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.1 - XX/XX/XXXX
 ------------------
 
+* Improvement: Better handling of pulling default value for new option, when theme options have already been saved (i.e. smoother updates when the theme adds new options, which you haven't configured).
 * Improvement: Allow unfiltered HTML when saving text and textareas.
 * Fixed: Footer columns not pulling page content.
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.

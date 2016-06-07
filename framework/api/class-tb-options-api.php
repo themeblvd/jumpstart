@@ -1961,24 +1961,42 @@ class Theme_Blvd_Options_API {
 	 *
 	 * @param string $primary Optional primary ID of the option
 	 * @param string $secondary Optional $secondary ID to traverse deeper into arrays
+	 * @param string $default Optional default value to be applied if value is empty
 	 * @return array|string $settings Entire settings array or individual setting string
 	 */
-	public function get_setting( $primary = '', $seconday = '' ) {
+	public function get_setting( $primary = '', $secondary = '', $default = null ) {
 
 		if ( ! $primary ) {
 			return $this->settings;
 		}
 
-		if ( ! isset( $this->settings[$primary] ) ) {
-			return null;
+		if ( $secondary ) {
+
+			if ( ! isset( $this->settings[$primary][$secondary] ) ) {
+
+				if ( $default !== null ) {
+					return $default;
+				} else if ( isset( $this->formatted_options[$primary]['std'][$secondary] ) ) {
+					return $this->formatted_options[$primary]['std'][$secondary];
+				} else {
+					return null;
+				}
+
+			}
+
+			return $this->settings[$primary][$secondary];
 		}
 
-		if ( $seconday ) {
-			if ( isset( $this->settings[$primary][$seconday] ) ) {
-				return $this->settings[$primary][$seconday];
+		if ( ! isset( $this->settings[$primary] ) ) {
+
+			if ( $default !== null ) {
+				return $default;
+			} else if ( isset( $this->formatted_options[$primary]['std'] ) ) {
+				return $this->formatted_options[$primary]['std'];
 			} else {
 				return null;
 			}
+
 		}
 
 		return $this->settings[$primary];
