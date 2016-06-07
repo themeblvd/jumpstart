@@ -1635,7 +1635,7 @@ jQuery(document).ready(function($) {
 
 		$video.find('video').mediaelementplayer({
 			startVolume: 0,
-			loop: false,
+			loop: true,
 			enableKeyboard: false,
 			pauseOtherPlayers: false,
 		    success: function( player ) {
