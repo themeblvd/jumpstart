@@ -7,6 +7,7 @@ Jump Start Changelog
 * **Updated Theme Blvd framework to 2.6.1**
 * Improvement: Better handling of pulling default value for new option, when theme options have already been saved (i.e. smoother updates when the theme adds new options, which you haven't configured).
 * Improvement: Allow unfiltered HTML when saving text and textareas.
+* Improvement: De-enqueued `theme.js`, no longer needed with framework 2.6+.
 * Fixed: Footer columns not pulling page content.
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
 * Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.

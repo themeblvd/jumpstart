@@ -117,26 +117,7 @@ function jumpstart_css() {
 	$handler->print_styles(3);
 
 }
-add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
-
-/**
- * Jump Start scripts
- *
- * @since 1.0.0
- */
-function jumpstart_scripts() {
-
-	global $themeblvd_framework_scripts;
-
-	// Theme version
-	$theme = wp_get_theme( get_template() );
-	$ver = $theme->get('Version');
-
-	// Theme-specific script
-	wp_enqueue_script( 'themeblvd_theme', esc_url( get_template_directory_uri() . '/assets/js/theme.js' ), $themeblvd_framework_scripts, $ver, themeblvd_supports('assets', 'in_footer') );
-
-}
-add_action( 'wp_enqueue_scripts', 'jumpstart_scripts' );
+add_action('wp_enqueue_scripts', 'jumpstart_css', 20);
 
 /**
  * Jump Start base check. If WP user is logged in,
