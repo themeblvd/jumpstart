@@ -5602,6 +5602,10 @@ body.mobile .tb-bg-video {
 	.epic-thumb.fw img {
 		opacity: 0.6;
 	}
+	.epic-thumb.tb-parallax.no-text .parallax-figure.on img,
+	.epic-thumb.fw.no-text img {
+		opacity: 1;
+	}
 	/* @noflip */
 	.epic-thumb .epic-thumb-content {
 		padding: 0 30px;

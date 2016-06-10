@@ -244,7 +244,12 @@ function themeblvd_epic_thumb() {
 
 	if ( themeblvd_get_att('epic_thumb') ) {
 
+		$class = array( 'epic-thumb', themeblvd_get_att('thumbs') );
+
 		if ( themeblvd_installed('woocommerce') && ( is_shop() || is_product_category() )  ) {
+
+			$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
+			$class = themeblvd_set_att( 'class', implode(' ',  $class) );
 
 			get_template_part( 'content', themeblvd_get_part('featured-wc') );
 
@@ -252,8 +257,26 @@ function themeblvd_epic_thumb() {
 
 			if ( have_posts() ) {
 				while ( have_posts() ) {
+
 					the_post();
+
+					if ( ! has_post_format('gallery') && themeblvd_get_att('thumbs') == 'fs' ) {
+					    $class[] = 'tb-parallax';
+					}
+
+					if ( get_post_format() ) {
+					    $class[] = get_post_format();
+					}
+
+					if ( is_page() && get_post_meta( get_the_ID(), '_tb_title', true ) == 'hide' ) {
+						$class[] = 'no-text';
+					}
+
+					$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
+					$class = themeblvd_set_att( 'class', implode(' ',  $class) );
+
 					get_template_part( 'content', themeblvd_get_part('featured') );
+
 				}
 			}
 
