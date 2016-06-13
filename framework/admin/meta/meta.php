@@ -284,13 +284,13 @@ function setup_themeblvd_pto_meta() {
             'columns' => array(
                 'id'        => 'columns',
                 'name'      => __('columns', 'jumpstart'),
-                'desc'      => __('Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, this will default to 3.', 'jumpstart'),
+                'desc'      => __('Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, default value is used from theme options page.', 'jumpstart'),
                 'type'      => 'text'
             ),
             'rows' => array(
                 'id'        => 'rows',
                 'name'      => __('rows', 'jumpstart'),
-                'desc'      => __('Number of rows for Post Grid and Post Showcase templates. When empty, this will default to 4.', 'jumpstart').'<br><br><em>'.__('Note: This option does not apply when using masonry.', 'jumpstart').'</em>',
+                'desc'      => __('Number of rows for Post Grid and Post Showcase templates. When empty, default value is used from theme options page.', 'jumpstart').'<br><br><em>'.__('Note: This option does not apply when using masonry.', 'jumpstart').'</em>',
                 'type'      => 'text'
             ),
             'tb_display' => array(
