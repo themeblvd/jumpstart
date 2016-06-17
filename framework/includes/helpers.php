@@ -60,7 +60,7 @@ function themeblvd_get_font_face( $option ) {
 		$stack = $stacks[$option['face']];
 	}
 
-	return apply_filters( 'themeblvd_font_face', $stack, $option, $stacks );
+	return apply_filters( 'themeblvd_font_face_output', $stack, $option, $stacks );
 }
 
 /**
@@ -79,7 +79,7 @@ function themeblvd_get_font_size( $option ) {
 		$size = $option['size'];
 	}
 
-	return apply_filters( 'themeblvd_font_size', esc_attr($size), $option );
+	return apply_filters( 'themeblvd_font_size_output', esc_attr($size), $option );
 }
 
 /**
@@ -98,7 +98,7 @@ function themeblvd_get_font_style( $option ) {
 		$style = 'italic';
 	}
 
-	return apply_filters( 'themeblvd_font_style', esc_attr($style), $option );
+	return apply_filters( 'themeblvd_font_style_output', esc_attr($style), $option );
 }
 
 /**
@@ -131,7 +131,7 @@ function themeblvd_get_font_weight( $option ) {
 		$weight = '400';
 	}
 
-	return apply_filters( 'themeblvd_font_weight', esc_attr($weight), $option );
+	return apply_filters( 'themeblvd_font_weight_output', esc_attr($weight), $option );
 }
 
 /**
@@ -150,7 +150,7 @@ function themeblvd_get_text_transform( $option ) {
 		$tranform = 'uppercase';
 	}
 
-	return apply_filters( 'themeblvd_text_transform', $tranform, $option );
+	return apply_filters( 'themeblvd_text_transform_output', $tranform, $option );
 }
 
 /**
