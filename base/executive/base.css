@@ -36,6 +36,7 @@ Author URI: http://www.themeblvd.com
     background-color: rgba(255,255,255,.8);
 }
 .header-addon {
+	font-size: 14px;
 	position: absolute;
 	top: 50%;
 	right: 20px;
@@ -48,6 +49,7 @@ Author URI: http://www.themeblvd.com
 	left: 20px;
 }
 .header-addon .header-text {
+	float: none;
 	padding: 6px 0 0 0;
 	text-align: right;
 }
@@ -55,6 +57,9 @@ Author URI: http://www.themeblvd.com
 	.header-addon {
 		display: none;
 	}
+}
+.header-addon .tb-cart-trigger .trigger-label {
+	left: 12px;
 }
 
 /* Header Menu */
