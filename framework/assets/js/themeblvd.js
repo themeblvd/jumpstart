@@ -851,6 +851,8 @@ jQuery(document).ready(function($) {
 				disableOn: themeblvd.lightbox_mobile_gallery,
 				delegate: 'a.lightbox-gallery-item.visible',
 				gallery: { enabled: true },
+				removalDelay: remove_delay,
+				mainClass: main_class,
 				image: {
 					cursor: null,
 				},
@@ -865,8 +867,11 @@ jQuery(document).ready(function($) {
 					            '</div>'+
 					          '</div>'
 				},
-				removalDelay: remove_delay,
-				mainClass: main_class
+				callbacks: {
+					markupParse: function(template, values, item) {
+						values.title = item.el.attr('title');
+					}
+  				}
 			});
 
 		});
@@ -889,7 +894,23 @@ jQuery(document).ready(function($) {
 			disableOn: themeblvd.lightbox_mobile_iframe,
 			type: 'iframe',
 			removalDelay: remove_delay,
-			mainClass: main_class
+			mainClass: main_class,
+			iframe: {
+				// Add bottom bar for iframes in gallery
+				markup: '<div class="mfp-iframe-scaler">'+
+							'<div class="mfp-close"></div>'+
+							'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+							'<div class="mfp-bottom-bar">'+
+							  '<div class="mfp-title"></div>'+
+							  '<div class="mfp-counter"></div>'+
+							'</div>'+
+						  '</div>'
+			},
+			callbacks: {
+				markupParse: function(template, values, item) {
+					values.title = item.el.attr('title');
+				}
+			}
 		});
 
 		// Localize

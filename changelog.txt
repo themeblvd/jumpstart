@@ -13,6 +13,7 @@ Jump Start Changelog
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
 * Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.
 * Fixed: Self-hosted background video not looping in some browsers.
+* Fixed: Titles not showing below lightbox video popups.
 
 --------------------------------------------------------------
 
