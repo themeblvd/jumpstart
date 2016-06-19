@@ -963,7 +963,7 @@ function jumpstart_su_options() {
 				'id'		=> 'footer_bg_type',
 				'name'		=> __('Apply Footer Background', 'jumpstart'),
 				'desc'		=> __('Select if you\'d like to apply a custom background color to the footer.', 'jumpstart').'<br><br>'.sprintf(__('Note: To setup a more complex designed footer, go to %s and use the "Template Sync" feature.', 'jumpstart'), '<em>'.__('Layout > Footer', 'jumpstart').'</em>'),
-				'std'		=> 'none',
+				'std'		=> 'color',
 				'type'		=> 'select',
 				'options'	=> array(
 					'none'		=> __('None', 'jumpstart'),
@@ -984,7 +984,7 @@ function jumpstart_su_options() {
 				'id'		=> 'footer_bg_color',
 				'name'		=> __('Background Color', 'jumpstart'),
 				'desc'		=> __('Select a background color for the footer.', 'jumpstart'),
-				'std'		=> '#333333',
+				'std'		=> '#ffffff',
 				'type'		=> 'color',
 				'class'		=> 'hide receiver receiver-color receiver-texture'
 			),
@@ -992,7 +992,7 @@ function jumpstart_su_options() {
 				'id' 		=> 'footer_bg_color_brightness',
 				'name' 		=> __('Background Color Brightness', 'jumpstart'),
 				'desc' 		=> __('In the previous option, did you go dark or light?', 'jumpstart'),
-				'std' 		=> 'dark',
+				'std' 		=> 'light',
 				'type' 		=> 'select',
 				'options'	=> array(
 					'light' => __('I chose a light color in the previous option.', 'jumpstart'),
