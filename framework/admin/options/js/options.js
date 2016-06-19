@@ -169,6 +169,11 @@ jQuery(document).ready(function($) {
 					var $picker = $(this);
 					$picker.wpColorPicker('color', $picker.val() );
 				});
+
+				$section.find('.jquery-ui-slider-wrap').each(function(){
+					var $el = $(this);
+					$el.find('.display-value-text').text( $el.find('.slider-input').val() );
+				});
 	        }
 	    });
 
