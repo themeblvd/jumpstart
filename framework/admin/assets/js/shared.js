@@ -161,6 +161,7 @@
     						$el.find('.receiver').each(function(){
     							$(this).find('input, textarea, select').prop('disabled', true);
     						});
+							$el.children('.receiver').hide();
     					}
     				});
 
