@@ -1571,37 +1571,6 @@ function themeblvd_display_presets( $args, $option_name = '' ) {
 
 	}
 
-	if ( $args['sets'] ) {
-
-		$output .= "\n<script type=\"text/javascript\">\n";
-		$output .= "/* <![CDATA[ */\n";
-		$output .= "themeblvd_presets['".$args['id']."'] = {\n";
-
-		$last = end($args['sets']);
-
-		foreach ( $args['sets'] as $key => $value ) {
-
-			if ( $option_name ) {
-				$old_value = $value;
-				$value = array();
-				$value[$option_name] = $old_value;
-			}
-
-			$output .= sprintf('%s: %s', $key, json_encode($value));
-
-			if ( $value != $last ) {
-				$output .= ',';
-			}
-
-			$output .= "\n";
-		}
-
-		$output .= "};\n";
-		$output .= "/* ]]> */\n";
-		$output .= "</script>\n";
-
-	}
-
 	$output .= '</div><!-- .option-presets (end) -->';
 
 	return $output;

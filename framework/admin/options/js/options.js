@@ -152,28 +152,11 @@ jQuery(document).ready(function($) {
 	$('.tb-presets a').on('click', function(){
 
 		var $a = $(this);
-			$form = $a.closest('#themeblvd_options_page'),
-			$section = $a.closest('.section, .group'),
-			set = $a.data('set'),
-			id = $a.data('id')
-			data = themeblvd_presets[id][set];
+			$form = $a.closest('form');
 
 		tbc_confirm( themeblvd.preset, {'confirm':true}, function(r) {
 	    	if(r) {
-
-	    		$form.populate(data, {resetForm:false});
-
-				$section.themeblvd('options', 'setup');
-
-				$section.find('.wp-color-picker').each(function(){
-					var $picker = $(this);
-					$picker.wpColorPicker('color', $picker.val() );
-				});
-
-				$section.find('.jquery-ui-slider-wrap').each(function(){
-					var $el = $(this);
-					$el.find('.display-value-text').text( $el.find('.slider-input').val() );
-				});
+				$form.append('<input name="_tb_set_preset" value="' + $a.data('set') + '" type="hidden" />').submit();
 	        }
 	    });
 

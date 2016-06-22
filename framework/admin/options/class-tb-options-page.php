@@ -359,7 +359,6 @@ class Theme_Blvd_Options_Page {
 		}
 
 		// Framework
-		wp_enqueue_script( 'populate', esc_url( TB_FRAMEWORK_URI . '/admin/options/js/populate.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_enqueue_script( 'themeblvd_admin', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_enqueue_script( 'themeblvd_modal', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
 		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
@@ -376,11 +375,6 @@ class Theme_Blvd_Options_Page {
 			wp_enqueue_script( 'codemirror-modes', esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js' ), null, '4.0' );
 		}
 
-		echo "\n<script type=\"text/javascript\">\n";
-		echo "/* <![CDATA[ */\n";
-		echo "var themeblvd_presets = {};\n";
-		echo "/* ]]> */\n";
-		echo "</script>\n";
 	}
 
 	/**
@@ -582,6 +576,24 @@ class Theme_Blvd_Options_Page {
 			// For a value to be submitted to database it must pass through a sanitization filter
 			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) ) {
 				$clean[$id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[$id], $option );
+			}
+
+		}
+
+		// Merge set of preset options
+		if ( ! empty( $_POST['_tb_set_preset'] ) ) {
+
+			$presets = array();
+
+			foreach ( $this->options as $option ) {
+				if ( ! empty( $option['preset']['sets'][$_POST['_tb_set_preset']] ) ) {
+					$presets = $option['preset']['sets'][$_POST['_tb_set_preset']];
+					break;
+				}
+			}
+
+			if ( $presets ) {
+				$clean = array_merge( $clean, $presets );
 			}
 
 		}
