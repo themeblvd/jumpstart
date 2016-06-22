@@ -187,7 +187,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 */
 
 		// Floating shopping cart
-		add_filter( 'themeblvd_do_cart', '__return_true' );
+		add_filter( 'themeblvd_do_cart', array($this, 'do_cart') );
 		add_action( 'themeblvd_floating_cart', array($this, 'cart') );
 		add_action( 'themeblvd_after', array($this, 'add_cart') );
 
@@ -933,6 +933,20 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		return apply_filters('themeblvd_product_view', $view);
+	}
+
+	/**
+	 * Whether to display floating shopping cart.
+	 *
+	 * @since 2.6.1
+	 */
+	public function do_cart() {
+
+		if ( themeblvd_get_option('woo_floating_cart') != 'no' ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

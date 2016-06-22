@@ -1246,6 +1246,17 @@ class Theme_Blvd_Options_API {
 				'name' => __('WooCommerce', 'jumpstart'),
 				'desc' => null,
 				'options' => array(
+					'woo_floating_cart'	=> array(
+						'name'		=> __('Floating Shopping Cart', 'jumpstart'),
+						'desc'		=> __('Select whether you\'d like the floating shopping cart to display in the header of your website.', 'jumpstart'),
+						'id' 		=> 'woo_floating_cart',
+						'std' 		=> 'yes',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'yes'	=> __('Yes, show floating cart', 'jumpstart'),
+							'no' 	=> __('No, don\'t show floating cart', 'jumpstart')
+						)
+					),
 					'woo_shop_view' => array(
 						'name' 		=> __('Shop View', 'jumpstart'),
 						'desc' 		=> __('Select the default product display style for your main shop page.', 'jumpstart'),
