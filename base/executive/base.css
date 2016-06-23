@@ -95,6 +95,8 @@ Author URI: http://www.themeblvd.com
 	margin: 10px 0;
 	position: static;
 	text-align: center;
+	-webkit-transform: none;
+    transform: none;
 }
 .js-center-logo .header-addon .header-top-nav {
 	display: inline-block;
