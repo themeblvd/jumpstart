@@ -15,6 +15,7 @@ Jump Start Changelog
 * Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.
 * Fixed: Self-hosted background video not looping in some browsers.
 * Fixed: Titles not showing below lightbox video popups.
+* Fixed: Redirect page template not redirecting properly.
 
 --------------------------------------------------------------
 
