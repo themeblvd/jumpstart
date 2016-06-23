@@ -5,6 +5,11 @@
 include_once( get_template_directory() . '/base/superuser/options.php' );
 
 /**
+ * Theme Option Presets
+ */
+include_once( get_template_directory() . '/base/superuser/presets.php' );
+
+/**
  * Filter global config
  *
  * @since 2.0.0

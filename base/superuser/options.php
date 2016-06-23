@@ -1518,6 +1518,9 @@ function jumpstart_su_options() {
 
 	themeblvd_add_option_tab( 'styles', __('Styles', 'jumpstart'), true );
 
+	themeblvd_add_option_section( 'styles', 'presets', 			__('Preset Styles', 'jumpstart'), 	null, array());
+	themeblvd_add_option_presets( jumpstart_su_get_presets() );
+
 	themeblvd_add_option_section( 'styles', 'su_general',		__('General', 'jumpstart'), 		null, $options['general'] );
 	themeblvd_add_option_section( 'styles', 'su_header_info',	__('Header Info', 'jumpstart'),		null, $options['header_info'] );
 	themeblvd_add_option_section( 'styles', 'su_header',		__('Header', 'jumpstart'),			null, $options['header'] );
