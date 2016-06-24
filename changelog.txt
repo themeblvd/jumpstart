@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.1**
+* New: Added option to hide bounding border for transparent header of "Agent" base; see *Appearance > Theme Options > Styles > Transparent Header*.
 * New: Added option to disable theme's WooCommerce floating shopping cart; see *Appearance > Theme Options > Plugins > WooCommerce*.
 * Improvement: Better handling of pulling default value for new option, when theme options have already been saved (i.e. smoother updates when the theme adds new options, which you haven't configured).
 * Improvement: Allow unfiltered HTML when saving text and textareas.

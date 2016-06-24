@@ -221,6 +221,9 @@ body {
 .rtl .site-header.stretch .header-toolbar:before {
 	right: 0;
 }
+.site-header.stretch.no-border .header-toolbar:before {
+	display: none;
+}
 .header-toolbar li {
 	display: block;
 	float: left;
@@ -422,7 +425,7 @@ body {
 
 /* Transparent Header */
 @media (min-width: 768px) {
-	.tb-suck-up .site-header:before {
+	.site-header.transparent.has-border:before {
 		content: "";
 		background-color: rgba(255,255,255,0.15);
 		position: absolute;

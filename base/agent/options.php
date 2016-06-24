@@ -149,6 +149,13 @@ function jumpstart_ag_options() {
 					'light' => __('I chose a light color in the previous option.', 'jumpstart'),
 					'dark' 	=> __('I chose a dark color in the previous option.', 'jumpstart')
 				)
+			),
+			'header_trans_hide_border' => array(
+				'name' 		=> null,
+				'desc' 		=> __('Hide bounding borders around transparent theader.', 'jumpstart'),
+				'id' 		=> 'header_trans_hide_border',
+				'std' 		=> '0',
+				'type' 		=> 'checkbox'
 			)
 		),
 		'header_mobile' => array(
