@@ -17,6 +17,7 @@ Jump Start Changelog
 * Fixed: Self-hosted background video not looping in some browsers.
 * Fixed: Titles not showing below lightbox video popups.
 * Fixed: Redirect page template not redirecting properly.
+* Fixed: Bug with `h2` HTML tag font styling on mobile.
 
 --------------------------------------------------------------
 
