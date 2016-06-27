@@ -19,6 +19,7 @@ Jump Start Changelog
 * Fixed: Redirect page template not redirecting properly.
 * Fixed: Bug with `h2` HTML tag font styling on mobile.
 * Fixed: Bug with self-hosted WordPress videos not displaying after full-screen exit in some browsers.
+* Fixed: Header toolbar divider not matching header height with all logo sizes on "Agent" base.
 
 --------------------------------------------------------------
 

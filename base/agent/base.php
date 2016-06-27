@@ -425,15 +425,20 @@ function jumpstart_ag_css() {
 
 	$print .= "@media (min-width: 768px) {\n";
 
+	if ( themeblvd_get_option('header_stretch') ) {
+		$print .= "\t.site-header.stretch .header-toolbar:before,\n";
+	}
+
 	$print .= "\t.header-content > .wrap,\n";
-	$print .= "\t.has-sticky #top,\n";
-	$print .= "\t.site-header .header-toolbar:before {\n";
+	$print .= "\t.has-sticky #top {\n";
 	$print .= sprintf("\t\theight: %spx;\n", $h);
 	$print .= "\t}\n";
 
-	$print .= "\t.site-header .header-toolbar:before {\n";
-	$print .= sprintf("\t\ttop: -%spx;\n", round( ($h - 58) / 2 ) );
-	$print .= "\t}\n";
+	if ( themeblvd_get_option('header_stretch') ) {
+		$print .= "\t.site-header.stretch .header-toolbar:before {\n";
+		$print .= sprintf("\t\ttop: -%spx;\n", round( ($h - 58) / 2 ) );
+		$print .= "\t}\n";
+	}
 
 	$print .= "}\n";
 
