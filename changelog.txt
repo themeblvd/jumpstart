@@ -18,6 +18,7 @@ Jump Start Changelog
 * Fixed: Titles not showing below lightbox video popups.
 * Fixed: Redirect page template not redirecting properly.
 * Fixed: Bug with `h2` HTML tag font styling on mobile.
+* Fixed: Bug with self-hosted WordPress videos not displaying after full-screen exit in some browsers.
 
 --------------------------------------------------------------
 

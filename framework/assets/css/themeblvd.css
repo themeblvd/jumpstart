@@ -1712,23 +1712,8 @@ html {
 
 /* Self-hosted video embed */
 .wp-video {
-	max-width: 100%;
-	height: auto !important;
-}
-.wp-video .mejs-container {
-	max-width: 100%;
-	height: auto !important;
-	padding: 0 0 56.25% 0; /* 16:9 */
-}
-.wp-video .mejs-overlay-play {
-	height: 100% !important;
-}
-.wp-video .mejs-layers .mejs-overlay {
-	height: 100% !important;
 	width: 100% !important;
-}
-.wp-video video {
-	height: 100%;
+	margin-bottom: 20px;
 }
 
 /* WP Post Embed */
