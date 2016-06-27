@@ -1882,25 +1882,29 @@ class Theme_Blvd_Options_API {
 	 */
 	public function add_presets( $args ) {
 
+		/* Structure for sets:
+		array(
+			'set_1' => array(
+				'id'			=> 'set_1',
+				'name'			=> '',		// Optional: Used for tooltip and for link, if no thumb specified
+				'icon'			=> '',		// Full URL to image file
+				'icon_width'	=> '80',	// Display width for image, if empty, assumed using Text
+				'icon_height'	=> '',		// Optional force height of image
+				'icon_style'	=> '',		// Optional inline style for icon
+				'settings'		=> array(
+					'foo' 	=> 'bar',
+					'foo2' 	=> 'bar2'
+				)
+			)
+			// And so on...
+		)
+		*/
+
 		$defaults = array(
 			'id'		=> '',			// Unique ID for preset group (required)
 			'tab' 		=> '',			// Tab to display at (required)
 			'section'	=> '',			// Section within that tab (optional)
-			'options'	=> array(
-				'set_1' => 'img.jpg',
-				'set_2'	=> 'img2.jpg'
-			),
-			'sets'		=> array(
-				'set_1' => array(
-					'foo' 	=> 'bar',
-					'foo2' 	=> 'bar2'
-				),
-				'set_2' => array(
-					'foo' 	=> 'bar3',
-					'foo2' 	=> 'bar4'
-				)
-			),
-			'icon_width'	=> ''			// Display width for image options, if empty, assumed using Text
+			'sets'		=> array()		// Sets array (see above example)
 		);
 		$args = wp_parse_args( $args, $defaults );
 

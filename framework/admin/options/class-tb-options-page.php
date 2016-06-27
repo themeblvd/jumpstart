@@ -586,8 +586,8 @@ class Theme_Blvd_Options_Page {
 			$presets = array();
 
 			foreach ( $this->options as $option ) {
-				if ( ! empty( $option['preset']['sets'][$_POST['_tb_set_preset']] ) ) {
-					$presets = $option['preset']['sets'][$_POST['_tb_set_preset']];
+				if ( ! empty( $option['preset']['sets'][$_POST['_tb_set_preset']]['settings'] ) ) {
+					$presets = $option['preset']['sets'][$_POST['_tb_set_preset']]['settings'];
 					break;
 				}
 			}

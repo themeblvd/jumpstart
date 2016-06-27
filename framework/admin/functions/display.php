@@ -1528,42 +1528,67 @@ function themeblvd_display_presets( $args, $option_name = '' ) {
 
 	$defaults = array(
 		'id'			=> '',
-		'options'		=> array(),
 		'sets'			=> array(),
-		'icon_width'	=> '',
 		'level'			=> 1
 	);
 	$args = wp_parse_args( $args, $defaults );
 
 	$class = 'tb-presets level-'.$args['level'];
 
-	if ( $args['icon_width'] ) {
-		$class .= ' has-images';
+	foreach ( $args['sets'] as $set ) {
+		if ( ! empty($set['icon']) ) {
+			$class .= ' has-images';
+			break;
+		}
 	}
 
 	$output = '<div class="'.$class.'">';
 
-	if ( $args['options'] ) {
+	if ( $args['sets'] ) {
 
 		$output .= '<ul class="presets-menu">';
 
-		foreach ( $args['options'] as $key => $value ) {
+		foreach ( $args['sets'] as $id => $set ) {
 
-			if ( ! empty( $args['sets'][$key] ) ) {
+			$output .= '<li>';
 
-				$output .= '<li>';
+			if ( ! empty( $set['icon'] ) ) {
 
-				if ( $args['icon_width'] ) {
-					$item = sprintf('<img src="%s" width="%s" />', $value, $args['icon_width']);
-				} else {
-					$item = $value;
+				$item = '<img src="' . esc_url( $set['icon'] ) . '" ';
+
+				if ( ! empty( $set['icon_width'] ) ) {
+					$item .= 'width="' . esc_attr( $set['icon_width'] ) . '" ';
 				}
 
-				$output .= sprintf('<a href="#" class="tb-tooltip-link" data-set="%s" data-id="%s" data-tooltip-text="%s">%s</a>', $key, $args['id'], esc_html__('Apply Preset', 'jumpstart'), $item );
+				if ( ! empty( $set['icon_height'] ) ) {
+					$item .= 'height="' . esc_attr( $set['icon_height'] ) . '" ';
+				}
 
-				$output .= '</li>';
+				if ( ! empty( $set['icon_style'] ) ) {
+					$item .= 'style="' . esc_attr( $set['icon_style'] ) . '" ';
+				}
+
+				$item .= '/>';
+
+			} else {
+
+				if ( ! empty( $set['name'] ) ) {
+					$item = $set['name'];
+				} else {
+					$item = $id;
+				}
 
 			}
+
+			$tooltip = esc_html__('Apply Preset', 'jumpstart');
+
+			if ( ! empty( $set['name'] ) ) {
+				$tooltip .= ': ' . $set['name'];
+			}
+
+			$output .= sprintf('<a href="#" class="tb-tooltip-link" data-set="%s" data-id="%s" data-tooltip-text="%s">%s</a>', $id, $args['id'], $tooltip, $item );
+
+			$output .= '</li>';
 
 		}
 

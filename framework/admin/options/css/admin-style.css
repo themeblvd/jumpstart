@@ -43,13 +43,13 @@
 	margin-bottom: 10px;
 }
 #themeblvd_options_page .tb-presets ul {
-	margin: 0 -2px;
+	margin: -10px;
 }
 #themeblvd_options_page .tb-presets li {
 	display: block;
 	float: left;
 	margin: 0;
-	padding: 2px;
+	padding: 10px;
 }
 .wp-admin.rtl #themeblvd_options_page .tb-presets li {
 	float: right;
@@ -75,6 +75,8 @@
 }
 #themeblvd_options_page .tb-presets.has-images li a img {
 	display: block;
+	max-width: 100%;
+	height: auto;
 }
 #themeblvd_options_page .tb-presets li a {
 	text-decoration: none !important;
