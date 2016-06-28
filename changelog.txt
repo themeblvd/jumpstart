@@ -11,6 +11,7 @@ Jump Start Changelog
 * Improvement: Allow unfiltered HTML when saving text and textareas.
 * Improvement: De-enqueued `theme.js`, no longer needed with framework 2.6+.
 * Improvement: When page title is hidden on full-width or full-screen featured image, image is now 100% opacity.
+* Improvement: Removed dark form field styling when in an area with a dark background color; it causes messy CSS and too many plugin conflicts.
 * Fixed: Footer columns not pulling page content.
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
 * Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.
