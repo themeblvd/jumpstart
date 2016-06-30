@@ -355,7 +355,15 @@ class Theme_Blvd_Options_Page {
 
 		// Google maps
 		if ( $this->gmap ) {
-			wp_enqueue_script( 'themeblvd_gmap', esc_url('https://maps.googleapis.com/maps/api/js'), array(), null );
+
+			$gmaps = 'https://maps.googleapis.com/maps/api/js';
+
+			if ( $gmap_key = themeblvd_get_option('gmap_api_key') ) {
+				$gmaps = add_query_arg('key', $gmap_key, $gmaps);
+			}
+
+			wp_enqueue_script( 'themeblvd_gmap', esc_url($gmaps), array(), null );
+
 		}
 
 		// Framework

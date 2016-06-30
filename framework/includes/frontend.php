@@ -438,7 +438,15 @@ function themeblvd_include_scripts() {
 
 	// Register scripts that get enqueued, as needed
 	if ( themeblvd_supports( 'assets', 'gmap' ) ) {
-		wp_register_script( 'google-maps', esc_url( 'https://maps.googleapis.com/maps/api/js' ), array(), null, $in_footer );
+
+		$gmaps = 'https://maps.googleapis.com/maps/api/js';
+
+		if ( $gmap_key = themeblvd_get_option('gmap_api_key') ) {
+			$gmaps = add_query_arg('key', $gmap_key, $gmaps);
+		}
+
+		wp_register_script( 'google-maps', esc_url($gmaps), array(), null, $in_footer );
+
 	}
 
 	if ( themeblvd_supports( 'assets', 'charts' ) ) {

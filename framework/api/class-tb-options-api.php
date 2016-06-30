@@ -232,6 +232,9 @@ class Theme_Blvd_Options_API {
 	 *		- lightbox_mobile
 	 *		- lightbox_mobile_iframe
 	 *		- lightbox_mobile_gallery
+	 * Configuration
+	 *	- Google Maps
+	 *		- gmap_api_key
 	 * Plugins
 	 *	- bbPress
 	 *		- bbp_lead_topic
@@ -1187,7 +1190,34 @@ class Theme_Blvd_Options_API {
 		);
 
 		/*--------------------------------*/
-		/* Tab #3: Plugins
+		/* Tab #3: Configuration
+		/*--------------------------------*/
+
+		$config_options = array(
+
+			// Section: Google Maps
+			'gmap' => array(
+				'name' => __('Google Maps', 'jumpstart'),
+				'desc' => null,
+				'options' => array(
+					'gmap_info' => array(
+						'id'		=> 'gmap_info',
+						'desc'		=> __('If you\'re implementing Google Maps into your website after June 22, 2016 through our layout builder, you\'ll need to get an API key from Google.', 'jumpstart').' <a href="http://docs.themeblvd.com/article/56-google-maps-api" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
+						'type'		=> 'info'
+					),
+					'gmap_api_key' => array(
+						'name' 		=> __('Google Maps API Key', 'jumpstart'),
+						'desc' 		=> sprintf(__('You can generate a Google Map API key %s.', 'jumpstart'), '<a href="https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key" target="_blank">'.__('here', 'jumpstart').'</a>'),
+						'id' 		=> 'gmap_api_key',
+						'std' 		=> '',
+						'type' 		=> 'text'
+					)
+				)
+			)
+
+		);
+		/*--------------------------------*/
+		/* Tab #4: Plugins
 		/*--------------------------------*/
 
 		$plugin_options = array(
@@ -1386,6 +1416,10 @@ class Theme_Blvd_Options_API {
 			'content' 	=> array(
 				'name' 		=> __('Content', 'jumpstart'),
 				'sections' 	=> $content_options
+			),
+			'config' 	=> array(
+				'name' 		=> __('Configuration', 'jumpstart'),
+				'sections' 	=> $config_options
 			),
 			'plugins' 	=> array(
 				'name' 		=> __('Plugins', 'jumpstart'),
