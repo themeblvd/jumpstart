@@ -457,12 +457,6 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .tb-primary-menu ul.non-mega-sub-menu,
 .tb-primary-menu .sf-mega {
 	background: #ffffff;
-	border: 1px solid #f2f2f2;
-	border-color: rgba(220,220,220,.4);
-}
-.tb-primary-menu > li > ul.non-mega-sub-menu,
-.tb-primary-menu .sf-mega { /* Level 2 only */
-	border-top: none;
 }
 .tb-primary-menu ul.sub-menu .menu-btn,
 .tb-primary-menu .mega-section-header {
