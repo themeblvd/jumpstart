@@ -60,6 +60,8 @@ function jumpstart_ent_sticky_class( $class ) {
 		$class[] = 'light';
 	}
 
+	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
+
 	return $class;
 }
 add_filter('themeblvd_sticky_class', 'jumpstart_ent_sticky_class');
@@ -760,9 +762,9 @@ function jumpstart_ent_css() {
 	$print .= "\t.header-content {\n";
 	$print .= sprintf( "\t\theight: %spx;\n", $height );
 	$print .= "\t}\n";
-	$print .= ".header-content .header-logo img {\n";
-	$print .= sprintf( "\theight: %spx;\n", $height-20 );
-	$print .= "}\n";
+	$print .= "\t.header-content .header-logo img {\n";
+	$print .= sprintf( "\t\theight: %spx;\n", $height-20 );
+	$print .= "\t}\n";
 	$print .= "}\n";
 
 	$top = round( ($height - 20) / 2 ); // 20px line-height for font
@@ -823,19 +825,6 @@ function jumpstart_ent_css() {
 	$print .= ".tb-primary-menu .sf-mega {\n";
 	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('menu_sub_bg_color'));
 	$print .= "}\n";
-
-	if ( themeblvd_get_option('menu_sub_bg_color_brightness') == 'dark' ) {
-
-		$print .= ".tb-primary-menu ul.sub-menu .menu-btn,\n";
-		$print .= ".tb-primary-menu .mega-section-header {\n";
-		$print .= "\tcolor: #ffffff;\n";
-		$print .= "}\n";
-
-		$print .= "\t.tb-primary-menu ul.sub-menu a:hover {";
-		$print .= "background-color: rgba(255,255,255,.1)\n";
-		$print .= "}\n";
-
-	}
 
 	// Header Mobile
 	$print .= "@media (max-width: 767px) {\n";
@@ -963,7 +952,7 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 	if ( $icons = themeblvd_get_option('social_media') ) {
 
 		$items .= '<li class="menu-item level-1 menu-contact">';
-		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope-o" data-close="close"><i class="fa fa-envelope-o"></i></a>';
+		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="close"><i class="fa fa-envelope"></i></a>';
 
 		$color = themeblvd_get_option('social_media_style');
 
@@ -1023,7 +1012,8 @@ function jumpstart_ent_header_class( $class ) {
 		$class[] = 'light';
 	}
 
-	$class[] .= 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
+	$class[] = 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
+	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
 
 	return $class;
 }

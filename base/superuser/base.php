@@ -77,6 +77,8 @@ function jumpstart_su_sticky_class( $class ) {
 		}
 	}
 
+	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
+
 	return $class;
 }
 add_filter('themeblvd_sticky_class', 'jumpstart_su_sticky_class');
@@ -711,6 +713,13 @@ function jumpstart_su_css() {
 
 		}
 
+		if ( $options['apply_border_bottom'] ) {
+			$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
+			$print .= ".tb-primary-menu .sf-mega {\n";
+			$print .= sprintf("\tmargin-top: %s;\n", $options['border_bottom_width']);
+			$print .=  "}\n";
+		}
+
 		// Header top bar
 		if ( themeblvd_get_option('header_info') == 'header_top' ) {
 
@@ -781,7 +790,6 @@ function jumpstart_su_css() {
 	$options['font'] = themeblvd_get_option('font_menu');
 	$options['font_sp'] = themeblvd_get_option('font_menu_sp');
 	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
-	$options['sub_bg_color_brightness'] = themeblvd_get_option('menu_sub_bg_color_brightness');
 
 	if ( ! themeblvd_config('suck_up') ) {
 
@@ -831,9 +839,9 @@ function jumpstart_su_css() {
 		}
 
 		if ( $options['bg_type'] == 'glassy' ) {
-			$print .= sprintf( "\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/images/menu-glassy.png' ) );
+			$print .= sprintf( "\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/img/menu-glassy.png' ) );
 		} else if ( $options['bg_type'] == 'textured' ) {
-			$print .= sprintf( "\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/images/menu-textured.png' ) );
+			$print .= sprintf( "\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/img/menu-textured.png' ) );
 			$print .= "\tbackground-position: 0 0;\n";
 			$print .= "\tbackground-repeat: repeat;\n";
 			$print .= "\tbackground-size: 72px 56px;\n";
@@ -849,19 +857,17 @@ function jumpstart_su_css() {
 
 		$print .= "}\n";
 
-		if ( themeblvd_get_option('menu_search') ) {
-			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
-		}
-
-		$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
-
-		$print .= sprintf("\tcolor: %s;\n", $options['font']['color'] );
-
 		if ( $options['text_shadow'] ) {
-			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
-		}
 
-		$print .= "}\n";
+			if ( themeblvd_get_option('menu_search') ) {
+				$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
+			}
+
+			$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
+			$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
+			$print .= "}\n";
+
+		}
 
 		if ( themeblvd_get_option('menu_bg_color_brightness') == 'light' ) {
 
@@ -931,10 +937,6 @@ function jumpstart_su_css() {
 			$print .= sprintf("\tborder-%s: 1px solid %s;\n", $start, $options['divider_color']);
 			$print .= "}\n";
 
-			$print .= ".header-nav .tb-primary-menu > li > ul.non-mega-sub-menu {\n";
-			$print .= sprintf("\tmargin-%s: -1px;\n", $start);
-			$print .= "}\n";
-
 		}
 
 	} // end IF suck_up
@@ -961,24 +963,6 @@ function jumpstart_su_css() {
 	$print .= ".tb-primary-menu .sf-mega {\n";
 	$print .= sprintf("\tbackground-color: %s;\n", $options['sub_bg_color'] );
 	$print .= "}\n";
-
-	if ( $options['sub_bg_color_brightness'] == 'dark' ) {
-
-		$print .= ".tb-primary-menu ul.sub-menu .menu-btn,\n";
-		$print .= ".tb-primary-menu .mega-section-header {\n";
-		$print .= "\tcolor: #ffffff;\n";
-		$print .= "}\n";
-
-		$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
-		$print .= ".tb-primary-menu .sf-mega {\n";
-		$print .= "\tborder-color: rgba(0,0,0,.2);\n";
-		$print .= "}";
-
-		$print .= "\t.tb-primary-menu ul.sub-menu a:hover {";
-		$print .= "background-color: rgba(255,255,255,.1)\n";
-		$print .= "}\n";
-
-	}
 
 	// Mobile Panel
 	$print .= ".tb-mobile-menu-wrapper {\n";
@@ -1075,7 +1059,10 @@ function jumpstart_su_header_class( $class ) {
 		$class[] = 'light';
 	}
 
-	$class[] .= 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
+	$class[] = 'menu-' . themeblvd_get_option('menu_bg_color_brightness');
+	$class[] = 'menu-hover-' . themeblvd_get_option('menu_hover_bg_color_brightness');
+	$class[] = 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
+	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
 
 	return $class;
 }

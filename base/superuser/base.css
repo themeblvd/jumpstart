@@ -181,14 +181,29 @@ Author URI: http://www.themeblvd.com
 	background-repeat: repeat-x;
 	background-size: 20px 58px;
 }
+.menu-light .tb-primary-menu > li > .menu-btn,
+.menu-hover-light .tb-primary-menu > li > .menu-btn:hover {
+	color: #333333;
+}
+.menu-dark .tb-primary-menu > li > .menu-btn,
+.menu-hover-dark .tb-primary-menu > li > .menu-btn:hover {
+	color: #ffffff;
+}
 
 /* Level 2+ */
-.tb-primary-menu ul.non-mega-sub-menu,
-.tb-primary-menu .sf-mega {
-	border-color: rgba(0,0,0,.1);
+.drop-dark .tb-primary-menu ul.non-mega-sub-menu,
+.drop-dark .tb-primary-menu .sf-mega {
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
-.tb-primary-menu ul a:hover {
-	background-color: rgba(0,0,0,.1);
+.drop-dark .tb-primary-menu ul.sub-menu .menu-btn,
+.drop-dark .tb-primary-menu .mega-section-header {
+	color: #cccccc;
+	color: rgba(255,255,255,.80);
+}
+.drop-dark .tb-primary-menu .mega-section-header,
+.drop-dark .tb-primary-menu ul.sub-menu .menu-btn:hover {
+	color: #ffffff;
 }
 
 /* Menu Search */
@@ -363,10 +378,10 @@ Author URI: http://www.themeblvd.com
 	border-bottom-color: rgba(220,220,220,.5);
 }
 .tb-mobile-menu-wrapper.light .tb-side-menu .sub-menu {
-	background-image: url('../../framework/assets/images/parts/side-nav-list-outer-cccccc.png');
+	background-image: url('../../framework/assets/img/parts/side-nav-list-outer-cccccc.png');
 }
 .tb-mobile-menu-wrapper.light .tb-side-menu .sub-menu li {
-	background-image: url('../../framework/assets/images/parts/side-nav-list-ltr-cccccc.png');
+	background-image: url('../../framework/assets/img/parts/side-nav-list-ltr-cccccc.png');
 }
 .tb-mobile-menu-wrapper.light .tb-search {
 	border-bottom-color: rgba(220,220,220,.5);

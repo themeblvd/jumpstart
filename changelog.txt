@@ -13,6 +13,7 @@ Jump Start Changelog
 * Improvement: De-enqueued `theme.js`, no longer needed with framework 2.6+.
 * Improvement: When page title is hidden on full-width or full-screen featured image, image is now 100% opacity.
 * Improvement: Removed dark form field styling when in an area with a dark background color; it causes messy CSS and too many plugin conflicts.
+* Improvement: Minor styling adjustments to main menu dropdowns; across all theme bases, they now match more with "Agent" base.
 * Fixed: Footer columns not pulling page content.
 * Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
 * Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.
@@ -22,6 +23,7 @@ Jump Start Changelog
 * Fixed: Bug with `h2` HTML tag font styling on mobile.
 * Fixed: Bug with self-hosted WordPress videos not displaying after full-screen exit in some browsers.
 * Fixed: Header toolbar divider not matching header height with all logo sizes on "Agent" base.
+* Removed: Main menu font color selection for Super User and Executive bases from *Theme Options > Styles > Typography*; this was interfering with selecting dark vs light background colors for main menu bg color and main menu button hover bg color.
 
 --------------------------------------------------------------
 

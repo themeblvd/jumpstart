@@ -1196,8 +1196,8 @@ function jumpstart_su_options() {
 				'id' 		=> 'font_menu',
 				'name' 		=> __('Main Menu Font', 'jumpstart'),
 				'desc' 		=> __('This font applies to the top level items of the main menu.', 'jumpstart'),
-				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'color' => '#ffffff', 'google' => 'Raleway:300', 'style' => 'normal'),
-				'atts'		=> array('size', 'face', 'style', 'weight', 'color'),
+				'std' 		=> array('size' => '13px', 'face' => 'google', 'weight' => '300', 'google' => 'Raleway:300', 'style' => 'normal'),
+				'atts'		=> array('size', 'face', 'style', 'weight'),
 				'type' 		=> 'typography',
 				'sizes'		=> array('10', '11', '12', '13', '14', '15', '16', '17', '18')
 			),

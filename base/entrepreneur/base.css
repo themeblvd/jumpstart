@@ -133,6 +133,10 @@ Author URI: http://www.themeblvd.com
 	.rtl .header-content .header-logo {
 		padding: 10px 10px 10px 20px;
 	}
+	.header-content .header-logo .tb-image-logo {
+		display: block;
+		line-height: 1;
+	}
 	.header-content .header-logo img {
 		width: auto;
 		height: 70px;
@@ -175,7 +179,6 @@ Author URI: http://www.themeblvd.com
 .header-nav {
 	background: transparent;
 	float: right;
-	padding-right: 10px;
 }
 .rtl .header-nav {
 	float: left;
@@ -254,12 +257,6 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Level 2+ */
-.tb-primary-menu ul.non-mega-sub-menu,
-.tb-primary-menu .sf-mega {
-	border: none;
-	-webkit-box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-	box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-}
 .tb-primary-menu > li > ul.non-mega-sub-menu, /* 2nd level only */
 .tb-primary-menu .sf-mega {
 	border-top: 4px solid #1971af;
@@ -269,6 +266,20 @@ Author URI: http://www.themeblvd.com
 .tb-sticky-menu .tb-primary-menu .sf-mega {
 	border-top: none;
 	margin-top: 0;
+}
+.drop-dark .tb-primary-menu ul.non-mega-sub-menu,
+.drop-dark .tb-primary-menu .sf-mega {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.drop-dark .tb-primary-menu ul.sub-menu .menu-btn,
+.drop-dark .tb-primary-menu .mega-section-header {
+	color: #cccccc;
+	color: rgba(255,255,255,.80);
+}
+.drop-dark .tb-primary-menu .mega-section-header,
+.drop-dark .tb-primary-menu ul.sub-menu .menu-btn:hover {
+	color: #ffffff;
 }
 
 /* Menu Addons */
