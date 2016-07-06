@@ -1638,7 +1638,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 	// Put WPML filters back
 	if ( isset( $GLOBALS['sitepress'] ) ) {
-		add_filter( 'get_pages', array( $GLOBALS['sitepress'], 'exclude_other_language_pages2' ) );
+		add_filter( 'get_pages', array( $GLOBALS['sitepress'], 'exclude_other_language_pages2' ), 10, 2 );
 		add_filter( 'get_terms_args', array( $GLOBALS['sitepress'], 'get_terms_args_filter' ), 10, 2 );
 		add_filter( 'terms_clauses', array( $GLOBALS['sitepress'], 'terms_clauses' ), 10, 4 );
 	}
