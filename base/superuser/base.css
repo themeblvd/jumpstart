@@ -93,6 +93,7 @@ Author URI: http://www.themeblvd.com
 /* BG parallax */
 .site-header.tb-parallax {
 	overflow: visible;
+	z-index: 10;
 }
 .site-header.tb-parallax .parallax-figure {
 	overflow: hidden;
@@ -206,6 +207,26 @@ Author URI: http://www.themeblvd.com
 	color: #ffffff;
 }
 
+/* Menu Highlight */
+.site-header.menu-light .tb-primary-menu > li.highlight > a {
+	border-color: #333333;
+	color: #333333;
+}
+.site-header.menu-light .tb-primary-menu > li.highlight > a:hover {
+	background-color: #333333;
+	border-color: transparent;
+	color: #ffffff;
+}
+.site-header.menu-dark .tb-primary-menu > li.highlight > a {
+	border-color: #ffffff;
+	color: #ffffff;
+}
+.site-header.menu-dark .tb-primary-menu > li.highlight > a:hover {
+	background-color: #ffffff;
+	border-color: transparent;
+	color: #333333;
+}
+
 /* Menu Search */
 .tb-primary-menu .menu-search {
 	float: right;
@@ -214,7 +235,6 @@ Author URI: http://www.themeblvd.com
 	float: left;
 }
 .tb-primary-menu .menu-search .tb-search-trigger {
-	color: #ffffff;
 	display: block;
 	font-size: 14px;
 	line-height: 1;
@@ -222,8 +242,17 @@ Author URI: http://www.themeblvd.com
 	width: auto;
 	height: auto;
 }
-.tb-primary-menu .menu-search .tb-search-trigger:hover {
-	background: #222222;
+.menu-dark .tb-primary-menu .menu-search .tb-search-trigger {
+	color: #ffffff;
+}
+.menu-light .tb-primary-menu .menu-search .tb-search-trigger {
+	color: #333333
+}
+.menu-hover-dark .tb-primary-menu .menu-search .tb-search-trigger:hover {
+	color: #ffffff;
+}
+.menu-hover-light .tb-primary-menu .menu-search .tb-search-trigger:hover {
+	color: #333333
 }
 .tb-primary-menu .menu-search .tb-search-trigger .fa {
 	width: 1em;
