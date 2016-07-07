@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.1**
+* New: Styles presets added to theme options; see *Appearance > Theme Options > Styles*.
 * New: Added option to hide bounding border for transparent header of "Agent" base; see *Appearance > Theme Options > Styles > Transparent Header*.
 * New: Added option to disable theme's WooCommerce floating shopping cart; see *Appearance > Theme Options > Plugins > WooCommerce*.
 * New: Added option for Google Maps API Key, which is required by Google Maps API, as of June 22, 2016; see *Appearance > Theme Options > Configuration > Google Maps*. [Learn More](http://docs.themeblvd.com/article/56-google-maps-api)
