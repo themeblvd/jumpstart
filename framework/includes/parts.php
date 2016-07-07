@@ -900,7 +900,7 @@ function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 
 	$output = sprintf( $wrap, $output );
 
-	return apply_filters( 'themeblvd_pagination', $output, $parts );
+	return apply_filters( 'themeblvd_pagination', $output, $parts, $pages, $range );
 }
 
 /**
