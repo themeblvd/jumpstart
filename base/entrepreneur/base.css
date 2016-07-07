@@ -50,6 +50,7 @@ Author URI: http://www.themeblvd.com
 /* BG parallax */
 .site-header.tb-parallax {
 	overflow: visible;
+	z-index: 10;
 }
 .site-header.tb-parallax .parallax-figure {
 	overflow: hidden;
