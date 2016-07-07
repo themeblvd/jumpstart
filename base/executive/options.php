@@ -1482,6 +1482,11 @@ function jumpstart_ex_options() {
 	));
 
 	themeblvd_add_option_tab( 'styles', __('Styles', 'jumpstart'), true );
+	themeblvd_add_option_section( 'styles', 'presets', __('Preset Styles', 'jumpstart'), __('For a quick starting point, click any image below to merge its preset settings into your current option selections. Then, you can continue editing individual options.', 'jumpstart') . ' &mdash; ' . sprintf(__('Looking for more theme style variations? Try a different %s.', 'jumpstart'), '<a href="themes.php?page=jumpstart-base" target="_blank">Theme Base</a>' ), array() );
+
+	if ( is_admin() ) {
+		themeblvd_add_option_presets( jumpstart_ex_get_presets() );
+	}
 
 	themeblvd_add_option_section( 'styles', 'ex_general',		__('General', 'jumpstart'), 		null, $options['general'] );
 	themeblvd_add_option_section( 'styles', 'ex_header_info',	__('Header Info', 'jumpstart'), 	null, $options['header_info'] );

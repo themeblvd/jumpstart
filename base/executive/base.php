@@ -5,6 +5,11 @@
 include_once( get_template_directory() . '/base/executive/options.php' );
 
 /**
+ * Theme Option Presets
+ */
+include_once( get_template_directory() . '/base/executive/presets.php' );
+
+/**
  * Filter global config
  *
  * @since 2.0.0
@@ -862,45 +867,13 @@ function jumpstart_ex_css() {
 
 		}
 
-		if ( themeblvd_get_option('menu_bg_color_brightness') == 'light' ) {
-
-			$print .= ".site-header .tb-primary-menu > li.highlight > a {\n";
-			$print .= "border-color: #333333;\n";
-			$print .= "color: #333333;\n";
-			$print .= "}\n";
-			$print .= ".site-header .tb-primary-menu > li.highlight > a:hover {\n";
-			$print .= "background-color: #333333;\n";
-			$print .= "border-color: transparent;\n";
-			$print .= "color: #ffffff;\n";
-			$print .= "}\n";
-
-		} else {
-
-			$print .= ".site-header .tb-primary-menu > li.highlight > a {\n";
-			$print .= "border-color: #ffffff;\n";
-			$print .= "color: #ffffff;\n";
-			$print .= "}\n";
-			$print .= ".site-header .tb-primary-menu > li.highlight > a:hover {\n";
-			$print .= "background-color: #ffffff;\n";
-			$print .= "border-color: transparent;\n";
-			$print .= "color: #333333;\n";
-			$print .= "}\n";
-
-		}
-
 		if ( themeblvd_get_option('menu_search') ) {
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\n";
 		}
 
 		$print .= ".tb-primary-menu > li > a:hover {\n";
-
 		$print .= sprintf("\tbackground-color: %s;\n", $options['hover_bg_color'] );
 		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($options['hover_bg_color'], $options['hover_bg_color_opacity']) );
-
-		if ( $options['hover_bg_color_brightness'] == 'light' ) {
-			$print .= "\tcolor: #333333;\n";
-		}
-
 		$print .= "}\n";
 
 		// Button dividers
@@ -1116,8 +1089,11 @@ function jumpstart_ex_header_class( $class ) {
 		$class[] = 'light';
 	}
 
-	$class[] = 'menu-' . themeblvd_get_option('menu_bg_color_brightness');
-	$class[] = 'menu-hover-' . themeblvd_get_option('menu_hover_bg_color_brightness');
+	if ( ! themeblvd_config('suck_up') ) {
+		$class[] = 'menu-' . themeblvd_get_option('menu_bg_color_brightness');
+		$class[] = 'menu-hover-' . themeblvd_get_option('menu_hover_bg_color_brightness');
+	}
+
 	$class[] = 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
 	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
 
