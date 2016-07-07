@@ -5,6 +5,11 @@
 include_once( get_template_directory() . '/base/agent/options.php' );
 
 /**
+ * Theme Option Presets
+ */
+include_once( get_template_directory() . '/base/agent/presets.php' );
+
+/**
  * Filter global config
  *
  * @since 2.1.0
