@@ -4,6 +4,8 @@ Jump Start Changelog
 2.1.2 - XX/XX/XXXX
 ------------------
 
+* Fixed: Minor RTL fixes for options interfaces.
+
 --------------------------------------------------------------
 
 2.1.1 - 07/08/2016

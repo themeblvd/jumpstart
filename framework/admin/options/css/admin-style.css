@@ -1343,7 +1343,9 @@
 
 /* Sortables - slider, logos */
 #optionsframework .section-slider > .option > .controls,
-#optionsframework .section-logos > .option > .controls {
+#optionsframework .section-logos > .option > .controls,
+.wp-admin.rtl #optionsframework .section-slider > .option > .controls,
+.wp-admin.rtl #optionsframework .section-logos > .option > .controls {
 	float: none;
 	min-width: 0;
 	margin-bottom: 10px;
@@ -1351,7 +1353,9 @@
 	width: auto;
 }
 #optionsframework .section-slider > .option > .explain,
-#optionsframework .section-logos > .option > .explain {
+#optionsframework .section-logos > .option > .explain,
+.wp-admin.rtl #optionsframework .section-slider > .option > .explain,
+.wp-admin.rtl #optionsframework .section-logos > .option > .explain {
 	float: none;
 	max-width: none;
 }
