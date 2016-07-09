@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * Fixed: Minor RTL fixes for options interfaces.
+* Updated TGMA plugin installer to 2.6.1.
 
 --------------------------------------------------------------
 
