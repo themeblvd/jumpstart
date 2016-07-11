@@ -6,7 +6,7 @@
 $to = themeblvd_show_breadcrumbs() ? 'breadcrumbs' : 'main'; // where full screen scroll-to-section goes
 $to = is_page_template('template_builder.php') ? 'custom-main' : $to;
 ?>
-<div class="<?php echo themeblvd_get_att('class'); ?>">
+<div class="<?php echo themeblvd_get_att('epic_class'); ?>">
 
     <?php if ( has_post_format('quote') ) : ?>
 

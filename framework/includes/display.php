@@ -249,7 +249,7 @@ function themeblvd_epic_thumb() {
 		if ( themeblvd_installed('woocommerce') && ( is_shop() || is_product_category() )  ) {
 
 			$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
-			$class = themeblvd_set_att( 'class', implode(' ',  $class) );
+			$class = themeblvd_set_att( 'epic_class', implode(' ',  $class) );
 
 			get_template_part( 'content', themeblvd_get_part('featured-wc') );
 
@@ -273,7 +273,7 @@ function themeblvd_epic_thumb() {
 					}
 
 					$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
-					$class = themeblvd_set_att( 'class', implode(' ',  $class) );
+					$class = themeblvd_set_att( 'epic_class', implode(' ',  $class) );
 
 					get_template_part( 'content', themeblvd_get_part('featured') );
 

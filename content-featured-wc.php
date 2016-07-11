@@ -5,7 +5,7 @@
  */
 $to = themeblvd_show_breadcrumbs() ? 'breadcrumbs' : 'main'; // where full screen scroll-to-section goes
 ?>
-<div class="<?php echo themeblvd_get_att('class'); ?>">
+<div class="<?php echo themeblvd_get_att('epic_class'); ?>">
 
     <header class="entry-header epic-thumb-header epic-thumb-content">
         <?php if ( is_shop() ) : ?>
