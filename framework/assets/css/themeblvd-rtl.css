@@ -13,6 +13,7 @@
  *   1.8 - Code Elements
  *   1.9 - Pagination
  *   1.10 - Main Navigation
+ *   1.11 - Carousel
  * 2.0 - Common Classes
  *   2.1 - General
  *   2.2 - Images
@@ -441,6 +442,32 @@ code.block {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
+}
+
+/* Carousel */
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-inner > .item.next,
+    .carousel-inner > .item.active.right {
+        -webkit-transition: -webkit-transform 0.6s ease-in-out;
+        transition: transform 0.6s ease-in-out;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        right: 0;
+        left: auto;
+    }
+    .carousel-inner > .item.prev,
+    .carousel-inner > .item.active.left {
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        right: 0;
+        left: auto;
+    }
+    .carousel-inner > .item.next.left,
+    .carousel-inner > .item.prev.right,
+    .carousel-inner > .item.active {
+        right: 0;
+        left: auto;
+    }
 }
 
 /* =Common Classes
@@ -5234,9 +5261,8 @@ blockquote small {
 .tb-simple-slider .carousel-indicators {
 	padding: 0;
 }
-/* @noflip */
 .tb-simple-slider .carousel-indicators li {
-	float: left;
+	float: right;
 	display: block;
 	margin: 1px 2px;
 }

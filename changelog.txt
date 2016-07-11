@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.2 - XX/XX/XXXX
 ------------------
 
+* Improvement: Better RTL support for uses of Bootstrap carousel, like with simple slider element.
 * Fixed: Black background getting applied to single post content, when full-width or parallax featured image is set.
 * Fixed: Minor RTL fixes for options interfaces.
 * Updated TGMA plugin installer to 2.6.1.
