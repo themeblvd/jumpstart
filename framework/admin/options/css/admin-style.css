@@ -1110,7 +1110,9 @@
 	position: relative;
 }
 #optionsframework .section-columns .controls,
-#optionsframework .section-column_widths .controls {
+#optionsframework .section-column_widths .controls,
+.wp-admin.rtl #optionsframework .section-columns .controls,
+.wp-admin.rtl #optionsframework .section-column_widths .controls {
 	float: none;
 	min-width: 0;
 	margin-bottom: 10px;
@@ -1173,6 +1175,7 @@
 	font-weight: bold;
 	position: absolute;
 	top: 0;
+	left: 0;
 	height: 20px;
 	line-height: 20px;
 	text-align: center;
