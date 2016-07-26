@@ -57,3 +57,19 @@ function jumpstart_updates() {
 	$_tb_jumpstart_edd_updater = new EDD_SL_Theme_Updater( $args );
 
 }
+
+/**
+ * For auto updates, disable sslverify, which will
+ * allow for older hosts to download update.
+ *
+ * @since 2.1.3
+ */
+function jumpstart_updates_ssl_verify( $args, $url ) {
+
+    if ( strpos( $url, 'wpjumpstart.com' ) !== false ) {
+        $args['sslverify'] = false;
+    }
+
+    return $args;
+}
+add_filter('http_request_args', 'jumpstart_updates_ssl_verify', 10, 2);
