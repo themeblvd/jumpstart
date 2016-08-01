@@ -5276,6 +5276,7 @@ blockquote small {
 	-ms-transform: translate(0, -50%); /* IE9 */
 	-webkit-transform: translate(0, -50%);
 	transform: translate(0, -50%);
+	z-index: 15;
 }
 .tb-simple-slider.nav-arrows-standard .tb-slider-arrows a.prev {
 	background-size: 8px 14px;
@@ -6060,6 +6061,7 @@ body.mobile .tb-bg-video {
 	top: 5px;
 	right: 5px;
 	left: inherit;
+	z-index: 15;
 }
 .tb-post-slider.style-2 .carousel-caption {
 	background: #000000;
