@@ -4,8 +4,9 @@ Jump Start Changelog
 2.1.3 - XX/XX/XXXX
 ------------------
 
+* **Updated Theme Blvd framework to 2.6.2**
 * Fixed: In-dashboard theme updates not working with older server setups -- *An error occurred while updating Jump Start: Download failed. SSL: no alternative certificate subject name matches target host name 'wpjumpstart.com'*
-* Fixed: On some slider styles, navigation arrows were falling below image links, so they couldn't be clicked. 
+* Fixed: On some slider styles, navigation arrows were falling below image links, so they couldn't be clicked.
 
 --------------------------------------------------------------
 
