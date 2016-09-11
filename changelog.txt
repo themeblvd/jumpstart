@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.2**
+* Fixed: Action hooks `themeblvd_main_bottom` and `themeblvd_main_end` were reversed in *footer.php*.
 * Fixed: In-dashboard theme updates not working with older server setups -- *An error occurred while updating Jump Start: Download failed. SSL: no alternative certificate subject name matches target host name 'wpjumpstart.com'*
 * Fixed: On some slider styles, navigation arrows were falling below image links, so they couldn't be clicked.
 

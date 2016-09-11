@@ -19,14 +19,14 @@
 		if ( ! themeblvd_config( 'builder_post_id' ) ) {
 
 			/**
-			 * @hooked themeblvd_main_end_default - 10
-			 */
-			do_action('themeblvd_main_end');
-
-			/**
 			 * @hooked themeblvd_main_bottom_default - 10
 			 */
 			do_action('themeblvd_main_bottom');
+
+			/**
+			 * @hooked themeblvd_main_end_default - 10
+			 */
+			do_action('themeblvd_main_end');
 
 		}
 
@@ -95,11 +95,23 @@
 
 		<!-- FOOTER (end) -->
 
-		<?php do_action('themeblvd_footer_after'); ?>
+		<?php
+		/**
+		 * @hooked null
+		 */
+		do_action('themeblvd_footer_after');
+		?>
 
 	</div><!-- #container (end) -->
 </div><!-- #wrapper (end) -->
-<?php do_action('themeblvd_after'); ?>
+
+<?php
+/**
+ * @hooked null
+ */
+do_action('themeblvd_after');
+?>
+
 <?php wp_footer(); ?>
 </body>
 </html>
