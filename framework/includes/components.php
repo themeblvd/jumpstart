@@ -1477,7 +1477,7 @@ function themeblvd_get_toggle( $args ) {
     $state = 'panel-collapse collapse';
     $icon = 'plus-circle';
 
-	if( $args['open'] == 'true' || $args['open'] == '1' ) {
+	if ( $args['open'] == 'true' || $args['open'] == '1' ) {
         $state .= ' in';
         $icon = 'minus-circle';
     }

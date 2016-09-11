@@ -223,10 +223,16 @@ function themeblvd_header_menu_default() {
 	?>
 	<nav id="access" class="header-nav" role="navigation">
 		<div class="wrap clearfix">
+
+			<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') ); ?>
+
 			<?php
-			wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') );
+			/**
+			 * @hooked null
+			 */
 			do_action('themeblvd_header_menu_addon');
 			?>
+
 		</div><!-- .wrap (end) -->
 	</nav><!-- #access (end) -->
 	<?php
