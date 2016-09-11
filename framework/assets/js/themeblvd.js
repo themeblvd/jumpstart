@@ -280,6 +280,9 @@ jQuery(document).ready(function($) {
 			});
 		}
 
+		// Fire custom event
+		$body.trigger('themeblvd-mobile-panel', $side_holder);
+
 		// Show hide mobile menu
 		$nav_trigger.on('click', function(){
 
