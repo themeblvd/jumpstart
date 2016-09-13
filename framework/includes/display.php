@@ -21,6 +21,23 @@ endif;
 /* Header
 /*------------------------------------------------------------*/
 
+if ( ! function_exists('themeblvd_header_before_default') ) :
+/**
+ * Default display for action: themeblvd_header_before
+ *
+ * @since 2.6.2
+ */
+function themeblvd_header_before_default() {
+	?>
+	<div class="header-above">
+		<div class="wrap clearfix">
+			<?php themeblvd_display_sidebar( 'ad_above_header' ); ?>
+		</div><!-- .wrap (end) -->
+	</div><!-- .header-above (end) -->
+	<?php
+}
+endif;
+
 if ( ! function_exists('themeblvd_header_top_default') ) :
 /**
  * Default display for action: themeblvd_header_top
@@ -69,7 +86,7 @@ function themeblvd_header_top_default() {
 			<?php endif; ?>
 
 		</div><!-- .wrap (end) -->
-	</div><!-- .header-above (end) -->
+	</div><!-- .header-top (end) -->
 	<?php
 }
 endif;
@@ -95,23 +112,6 @@ function themeblvd_responsive_menu_toggle() {
 		<?php endif; ?>
 
 	</ul>
-	<?php
-}
-endif;
-
-if ( ! function_exists('themeblvd_header_above_default') ) :
-/**
- * Default display for action: themeblvd_header_above
- *
- * @since 2.0.0
- */
-function themeblvd_header_above_default() {
-	?>
-	<div class="header-above">
-		<div class="wrap clearfix">
-			<?php themeblvd_display_sidebar( 'ad_above_header' ); ?>
-		</div><!-- .wrap (end) -->
-	</div><!-- .header-above (end) -->
 	<?php
 }
 endif;

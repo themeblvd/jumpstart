@@ -36,7 +36,7 @@ do_action('themeblvd_before');
 
 		<?php
 		/**
-		 * @hooked null
+		 * @hooked themeblvd_header_before_default - 10
 		 */
 		do_action('themeblvd_header_before');
 		?>
@@ -55,7 +55,7 @@ do_action('themeblvd_before');
 						do_action('themeblvd_header_top');
 
 						/**
-						 * @hooked themeblvd_header_above_default - 10
+						 * @hooked null -- @deprecated
 						 */
 						do_action('themeblvd_header_above');
 
