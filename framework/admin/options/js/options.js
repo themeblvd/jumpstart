@@ -1,6 +1,6 @@
 /**
- * Prints out the inline javascript needed for the colorpicker and choosing
- * the tabs in the panel.
+ * Prints out the inline javascript needed for the outer
+ * functionality of top-level options pages.
  */
 jQuery(document).ready(function($) {
 
@@ -12,11 +12,11 @@ jQuery(document).ready(function($) {
 
 	var activetab = '';
 
-	if( typeof(localStorage) != 'undefined' ) {
+	if ( typeof(localStorage) != 'undefined' ) {
 		activetab = localStorage.getItem("tb-activetab");
 	}
 
-	if( activetab != '' && $(activetab).length ) {
+	if ( activetab != '' && $(activetab).length ) {
 		$(activetab).fadeIn();
 	} else {
 		$('.tb-options-js .group:first').fadeIn();
@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
 
 	$('.tb-options-js .group .collapsed').each(function(){
 		$(this).find('input:checked').parent().parent().parent().nextAll().each( function(){
-			if( $(this).hasClass('last') ) {
+			if ( $(this).hasClass('last') ) {
 				$(this).removeClass('hidden');
 				return false;
 			}
@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 		});
 	});
 
-	if( activetab != '' && $(activetab + '-tab').length ) {
+	if ( activetab != '' && $(activetab + '-tab').length ) {
 		$(activetab + '-tab').addClass('nav-tab-active');
 	} else {
 		$('.nav-tab-wrapper a:first').addClass('nav-tab-active');
@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
 
 		$el.addClass('nav-tab-active').blur();
 
-		if( typeof(localStorage) != 'undefined' ) {
+		if ( typeof(localStorage) != 'undefined' ) {
 			localStorage.setItem("tb-activetab", $el.attr('href'));
 		}
 
@@ -136,11 +136,11 @@ jQuery(document).ready(function($) {
 
 		var el = $(this);
 
-		if( el.attr('checked') ) {
+		if ( el.attr('checked') ) {
 			el.parent().parent().parent().nextAll().removeClass('hidden');
 		} else {
 			el.parent().parent().parent().nextAll().each(function(){
-				if( el.filter('.last').length ) {
+				if ( el.filter('.last').length ) {
 					el.addClass('hidden');
 					return false;
 				}
@@ -155,7 +155,7 @@ jQuery(document).ready(function($) {
 			$form = $a.closest('form');
 
 		tbc_confirm( themeblvd.preset, {'confirm':true}, function(r) {
-	    	if(r) {
+	    	if (r) {
 				$form.append('<input name="_tb_set_preset" value="' + $a.data('set') + '" type="hidden" />').submit();
 	        }
 	    });
