@@ -59,7 +59,6 @@ function themeblvd_update_version() {
 	update_option( 'themeblvd_framework_version', TB_FRAMEWORK_VERSION );
 }
 
-if ( !function_exists( 'themeblvd_non_modular_assets' ) ) :
 /**
  * Non-modular Admin Assets
  *
@@ -83,7 +82,6 @@ function themeblvd_non_modular_assets() {
 	wp_enqueue_style( 'tb_admin_global', esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css' ), null, TB_FRAMEWORK_VERSION );
 
 }
-endif;
 
 /**
  * Gather all assignments for posts into a single
@@ -209,7 +207,6 @@ function themeblvd_clear_options() {
 	}
 }
 
-if ( !function_exists( 'themeblvd_admin_content_width' ) ) :
 /**
  * Adjust frontend content width for admin panel.
  *
@@ -224,7 +221,6 @@ function themeblvd_admin_content_width() {
 	global $content_width;
 	$content_width = 600;
 }
-endif;
 
 /**
  * Integrate 3.8+ admin styling.
