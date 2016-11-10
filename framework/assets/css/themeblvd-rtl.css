@@ -111,6 +111,7 @@
  *   19.3 - Icon Link
  *   19.4 - Text Highlighting
  *   19.5 - Drop Caps
+ *   19.6 - Popup
  * 19.0 - Widgets
  *   19.1 - Widgets w/lists
  *   19.2 - Widgets w/menu tree
@@ -4358,6 +4359,11 @@ ul.tb-icon-list {
 	line-height: 1;
 	margin: 5px 0 0 7px;
 	position: relative;
+}
+
+/* Popup */
+.modal-header h3 {
+	margin: 0;
 }
 
 /* =Widgets
