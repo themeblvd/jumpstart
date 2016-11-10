@@ -755,6 +755,8 @@ tb-warning .tb-alert-inner {
 
 #optionsframework .postbox .handlediv {
 	background:url(../images/arrows.png) 4px 10px no-repeat;
+	cursor: pointer;
+	width: 30px;
 }
 #optionsframework .postbox .handlediv:hover {
 	background-position: 4px -25px;
