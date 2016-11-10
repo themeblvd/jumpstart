@@ -1214,6 +1214,13 @@ function themeblvd_get_link_to_lightbox( $args ) {
 			if ( substr( $filetype['type'], 0, 5 ) == 'image' ) {
 				$type = 'image';
 			}
+
+		}
+
+		// Not recognized as video, inline, or image.
+		// Display as standard webpage.
+		if ( ! $type ) {
+			$type = 'iframe';
 		}
 
 	}
@@ -1221,7 +1228,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	// CSS classes
 	$class = array( 'themeblvd-lightbox', "mfp-{$type}" );
 
-	if ( 'iframe' == $type ) {
+	if ( $type == 'iframe' ) {
 		$class[] = 'lightbox-iframe'; // Enables framework's separate JS for iframe video handling in non-galleries
 	}
 
