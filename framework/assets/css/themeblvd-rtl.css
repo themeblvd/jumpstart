@@ -6910,6 +6910,13 @@ body.mobile .tb-bg-video {
 .tb-logos.has-boxed .col {
 	padding: 5px;
 }
+.tb-logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	/* overflow: hidden; */
+	position: relative;
+}
 .tb-logo.boxed {
 	background-color: #ffffff;
 	border: 1px solid #f2f2f2;
