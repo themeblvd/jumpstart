@@ -10,6 +10,7 @@ Jump Start Changelog
 * Fixed: In-dashboard theme updates not working with older server setups -- *An error occurred while updating Jump Start: Download failed. SSL: no alternative certificate subject name matches target host name 'wpjumpstart.com'*
 * Fixed: On some slider styles, navigation arrows were falling below image links, so they couldn't be clicked.
 * Fixed: When setting a button's target in layout builder to "lightbox" -- it will now open up URLs not recognized as an image, video, or inline DIV, as a standard webpage.
+* Fixed: Loader icon on frontend of theme not being perfectly centered in RTL.
 
 --------------------------------------------------------------
 
