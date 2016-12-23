@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.4 - XX/XX/XXXX
 ------------------
 
+* Fixed: Pages 2+ of front-end search results not displaying correctly in WordPress 4.7.
 * Fixed: Polylang plugin errors when translating post.
 
 --------------------------------------------------------------

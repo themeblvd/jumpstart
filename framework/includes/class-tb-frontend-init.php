@@ -280,7 +280,8 @@ class Theme_Blvd_Frontend_Init {
 			$sync_id = 0;
 
 			// Custom Layout on static page
-			if ( is_page_template( 'template_builder.php' ) ) {
+			if ( is_page_template( 'template_builder.php' ) && ! is_search() && ! is_archive() ) {
+
 				if ( post_password_required() || ( 'private' == get_post_status() && ! current_user_can( 'edit_posts' ) ) ) {
 
 					// Password is currently required and so
@@ -420,7 +421,7 @@ class Theme_Blvd_Frontend_Init {
 		// The sidebar layout is how the left and right sidebar will
 		// be displayed on the current page.
 
-		if ( is_page_template('template_builder.php') ) {
+		if ( is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) {
 			$this->config['sidebar_layout'] = 'full_width';
 		}
 

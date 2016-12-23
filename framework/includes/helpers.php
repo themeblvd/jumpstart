@@ -1215,7 +1215,7 @@ function themeblvd_show_breadcrumbs() {
 	}
 
 	// Disable on custom layouts (can be added in layout from Builder)
-	if ( is_page_template('template_builder.php') ) {
+	if ( is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) {
 		$display = 'hide';
 	}
 
@@ -1783,7 +1783,7 @@ function themeblvd_do_fw_narrow() {
 		$do = true;
 	}
 
-	if ( themeblvd_get_option('fw_narrow') && is_page_template('template_builder.php') ) {
+	if ( themeblvd_get_option('fw_narrow') && is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) {
 		$do = true;
 	}
 
