@@ -71,6 +71,11 @@
 						<div class="wrap clearfix">
 							<?php
 							/**
+							 * @hooked null -- @deprecated
+							 */
+							do_action('themeblvd_footer_above');
+
+							/**
 							 * @hooked themeblvd_footer_content_default - 10
 							 */
 							do_action('themeblvd_footer_content');

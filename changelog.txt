@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * Fixed: Pages 2+ of front-end search results not displaying correctly in WordPress 4.7.
 * Fixed: Polylang plugin errors when translating post.
+* Fixed: Put back accidentally removed themeblvd_footer_above action (but deprecated).
 
 --------------------------------------------------------------
 
