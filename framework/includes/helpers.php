@@ -1215,7 +1215,7 @@ function themeblvd_show_breadcrumbs() {
 	}
 
 	// Disable on custom layouts (can be added in layout from Builder)
-	if ( is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) {
+	if ( is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
 		$display = 'hide';
 	}
 
@@ -1783,7 +1783,7 @@ function themeblvd_do_fw_narrow() {
 		$do = true;
 	}
 
-	if ( themeblvd_get_option('fw_narrow') && is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) {
+	if ( themeblvd_get_option('fw_narrow') && is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
 		$do = true;
 	}
 

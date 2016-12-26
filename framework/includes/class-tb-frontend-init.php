@@ -280,7 +280,7 @@ class Theme_Blvd_Frontend_Init {
 			$sync_id = 0;
 
 			// Custom Layout on static page
-			if ( is_page_template( 'template_builder.php' ) && ! is_search() && ! is_archive() ) {
+			if ( is_page_template( 'template_builder.php' ) && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
 
 				if ( post_password_required() || ( 'private' == get_post_status() && ! current_user_can( 'edit_posts' ) ) ) {
 
@@ -421,7 +421,7 @@ class Theme_Blvd_Frontend_Init {
 		// The sidebar layout is how the left and right sidebar will
 		// be displayed on the current page.
 
-		if ( is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) {
+		if ( is_page_template('template_builder.php') && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
 			$this->config['sidebar_layout'] = 'full_width';
 		}
 
