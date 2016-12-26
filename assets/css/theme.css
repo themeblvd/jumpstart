@@ -340,6 +340,11 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	float: right;
 	padding: 0;
 }
+@media (min-width: 768px) {
+	.mobile-nav > li {
+		margin-right: 5px;
+	}
+}
 .mobile-nav > li > a {
 	color: #666666;
     color: rgba(26,26,26,.7);
@@ -347,7 +352,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 	font-size: 20px;
 	line-height: 64px;
 	opacity: .95;
-	padding: 0 14px;
+	padding: 0 18px;
 }
 .mobile-nav > li > a:hover {
 	color: rgba(26,26,26,.9);

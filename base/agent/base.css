@@ -470,6 +470,21 @@ body {
 	.site-header.transparent .btn-navbar:hover {
 		background-color: transparent;
 	}
+	.site-header.transparent.trans-dark .mobile-nav > li > a {
+		color: #ffffff;
+		color: rgba(255,255,255,.8);
+	}
+	.site-header.transparent.trans-dark .mobile-nav > li > a:hover {
+		color: #ffffff;
+	}
+	.site-header.transparent.trans-dark .tb-nav-trigger .hamburger span {
+		background-color: #ffffff;
+		background-color: rgba(255,255,255,.8);
+	}
+	.site-header.transparent.trans-dark .tb-nav-trigger:hover .hamburger span,
+	.site-header.transparent.trans-dark .tb-nav-trigger.collapse .hamburger span {
+		background-color: #ffffff;
+	}
 }
 
 /* Sticky Menu */
