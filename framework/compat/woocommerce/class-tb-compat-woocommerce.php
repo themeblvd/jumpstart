@@ -161,8 +161,9 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Shortcodes
 		 */
 
-		// Hack into shortcoes to allow for the view to be set
+		// Hack into shortcodes to allow for the view to be set
 		add_filter( 'woocommerce_shortcode_products_query', array($this, 'shortcode_set_view'), 10, 2 );
+		add_filter( 'shortcode_atts_product_categories', array($this, 'shortcode_categories_set_view'), 10, 3 );
 
 		/**
 		 * Widgets
@@ -572,7 +573,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * @since 2.5.0
 	 */
 	public function loop_open() {
-		printf( '<div class="tb-product-loop-wrap shop-columns-%s %s-view bg-content">', $this->loop_columns(), $this->loop_view() );
+		printf( '<div class="tb-product-loop-wrap shop-columns-%s %s-view bg-content clearfix">', $this->loop_columns(), $this->loop_view() );
 	}
 
 	/**
@@ -838,6 +839,24 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		return $args; // pass $args back through, untouched
+	}
+
+	/**
+	 * Set the number of columns when using WooCommerce
+	 * [product_categories] shortcode.
+	 *
+	 * @since 2.5.0
+	 */
+	public function shortcode_categories_set_view( $out, $pairs, $atts ) {
+
+		if ( ! empty( $atts['columns'] ) ) {
+			themeblvd_set_att( 'woo_product_columns', $atts['columns'] );
+		}
+
+		themeblvd_set_att( 'woo_product_view_reset', themeblvd_get_att('woo_product_view') );
+		themeblvd_set_att( 'woo_product_view', 'grid' ); // Categories always displayed in a grid.
+
+		return $out; // pass $out back through, untouched
 	}
 
 	/**

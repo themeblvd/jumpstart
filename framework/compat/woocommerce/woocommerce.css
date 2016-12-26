@@ -422,6 +422,7 @@ ul.woocommerce-info {
 
 /* Product Categories */
 .product-category {
+	margin-bottom: 40px;
 	text-align: center;
 }
 .product-category a,

@@ -10,6 +10,7 @@ Jump Start Changelog
 * Fixed: Minor styling quirks on tablet transparent header menu icons.
 * Fixed: Option "Always start scale (y-axis) at 0" for bar and line chart elements not working.
 * Fixed: WooCommerce star ratings with partial stars not displaying properly in IE and Edge.
+* Fixed: WooCommerce `[product_categories]` shortcode not always displaying proper number of columns.
 
 --------------------------------------------------------------
 
