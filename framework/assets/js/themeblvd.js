@@ -1536,7 +1536,7 @@ jQuery(document).ready(function($) {
 
 				chart = new Chart(context).Bar(data, {
 					barShowStroke: false,
-					scaleBeginAtZero: $el.data('start'),
+					scaleBeginAtZero: $el.data('zero'),
 					showTooltips: $el.data('tooltips')
 				});
 
