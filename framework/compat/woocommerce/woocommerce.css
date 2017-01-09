@@ -62,8 +62,6 @@
 .quantity .qty:focus {
 	border-color: #f2f2f2;
 	border-color: rgba(220,220,220,.4);
-	border-right: none;
-	border-left: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;

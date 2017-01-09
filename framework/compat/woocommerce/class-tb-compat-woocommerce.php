@@ -226,10 +226,8 @@ class Theme_Blvd_Compat_WooCommerce {
 		// Style all of WooCommerce
 		wp_enqueue_style( 'themeblvd-wc', esc_url( TB_FRAMEWORK_URI . '/compat/woocommerce/woocommerce.min.css' ), $deps, TB_FRAMEWORK_VERSION );
 
-		// Add increment buttons back for WC 2.3+
-		if ( version_compare( $this->get_version(), '2.3.0', '>=' ) ) {
-			wp_enqueue_script( 'wcqi-js', esc_url( TB_FRAMEWORK_URI . '/compat/woocommerce/wc-quantity-increment.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION, themeblvd_supports('assets', 'in_footer') );
-		}
+		// Remove increment button styling, if using WooCommerce Quantity Increment plugin.
+		wp_dequeue_style( 'wcqi-css' );
 
 		// Make sure WooCommerce doesn't load prettyPhoto
 		if ( apply_filters('themeblvd_remove_prettyphoto', true) ) {
