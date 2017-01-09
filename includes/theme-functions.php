@@ -82,7 +82,15 @@ function jumpstart_css() {
 
 	// Theme version
 	$theme = wp_get_theme( get_template() );
-	$ver = $theme->get('Version');
+	$ver = $theme->get( 'Version' );
+	$stylesheet_ver = $ver;
+
+	if ( get_template() !== get_stylesheet() ) {
+
+		$theme = wp_get_theme( get_stylesheet() );
+		$stylesheet_ver = $theme->get( 'Version' );
+
+	}
 
 	// Get stylesheet API
 	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
@@ -111,7 +119,7 @@ function jumpstart_css() {
 	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'IE' ); // Add IE conditional
 
 	// Primary style.css (mainly for child theme devs)
-	wp_enqueue_style( 'themeblvd-theme', esc_url( get_stylesheet_uri() ), $handler->get_framework_deps(), $ver );
+	wp_enqueue_style( 'themeblvd-theme', esc_url( get_stylesheet_uri() ), $handler->get_framework_deps(), $stylesheet_ver );
 
 	// Level 3 client API-added styles
 	$handler->print_styles(3);
