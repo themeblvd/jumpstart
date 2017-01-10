@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.4 - XX/XX/XXXX
 ------------------
 
+* Improvement: Much better support translating pages with custom layouts in WPML.
 * Improvement: Enqueue child theme *style.css* with child theme version, and not parent theme version.
 * Fixed: Put back accidentally removed themeblvd_footer_above action (but deprecated).
 * Fixed: Occasional display issues on archives and search results, due to `is_page_template()` bug in WordPress 4.7.

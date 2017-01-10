@@ -40,11 +40,8 @@ class Theme_Blvd_Compat_WPML {
 	 */
 	public function __construct() {
 
-		global $sitepress;
-		global $icl_language_switcher;
-
-		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 );
-		add_filter( 'themeblvd_framework_stylesheets', array($this, 'add_style') );
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 15 );
+		add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
 
 		if ( apply_filters('themeblvd_wpml_has_switcher', true) ) {
 
@@ -53,10 +50,15 @@ class Theme_Blvd_Compat_WPML {
 			remove_all_actions( 'icl_language_selector' );
 			add_action( 'icl_language_selector', array( $this, 'language_selector' ) );
 
-			// Set theme tag themeblvd_do_lang_selector() to true, if necessary
-			add_filter( 'themeblvd_do_lang_selector', array($this, 'do_lang_selector') );
+			// Set theme tag themeblvd_do_lang_selector() to
+			// true, if necessary.
+			add_filter( 'themeblvd_do_lang_selector', array( $this, 'do_lang_selector' ) );
 
 		}
+
+		// Translate custom layouts manually, and avoid using
+		// wpml-config.xml for this.
+		add_action( 'wp_insert_post', 'translate_layout', 10, 3 );
 
 	}
 
@@ -169,6 +171,70 @@ class Theme_Blvd_Compat_WPML {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Translate custom layout from builder when a
+	 * translated post is created. This is a workaround
+	 * for:
+	 *
+	 * 1) The buggyness of WPML's wpml-config.xml and
+	 * making future changes to it.
+	 * 2) Copying the builder elements that have uniquely
+	 * generated meta keys for a given post.
+	 *
+	 * @since 2.5.0
+	 */
+	public function translate_layout( $post_id, $post, $update ) {
+
+		// Is this actually a new post?
+		if ( wp_is_post_revision( $post_id ) || $update ) {
+
+			return;
+
+		}
+
+		// Is this a WPML translation?
+		if ( ! isset( $_GET['trid'] ) ) {
+
+			return;
+
+		}
+
+		$fields = array(
+			'_tb_custom_layout',
+			'_tb_builder_plugin_version_created',
+			'_tb_builder_plugin_version_saved',
+			'_tb_builder_framework_version_created',
+			'_tb_builder_framework_version_saved',
+			'_tb_builder_elements',
+			'_tb_builder_sections',
+			'_tb_builder_styles'
+		);
+
+		foreach ( $fields as $field ) {
+
+			if ( $val = get_post_meta( $_GET['trid'], $field, true ) ) {
+
+				update_post_meta( $post_id, $field, $val );
+
+			}
+		}
+
+		if ( $meta = get_post_meta( $_GET['trid'] ) ) {
+
+			foreach ( $meta as $key => $val ) {
+
+				if ( false !== strpos( $key, '_tb_builder_element_' ) ) {
+
+					$val = get_post_meta( $_GET['trid'], $key, true );
+
+					update_post_meta( $post_id, $key, $val );
+
+				}
+			}
+		}
+
 	}
 
 }

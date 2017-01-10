@@ -29,13 +29,5 @@
         <custom-field action="translate">_tb_layout_header</custom-field>
         <custom-field action="translate">_tb_layout_footer</custom-field>
         <custom-field action="translate">_tb_sidebars</custom-field>
-        <custom-field action="translate">_tb_custom_layout</custom-field>
-        <custom-field action="translate">_tb_builder_elements</custom-field>
-        <custom-field action="translate">_tb_builder_plugin_version_created</custom-field>
-        <custom-field action="translate">_tb_builder_plugin_version_saved</custom-field>
-        <custom-field action="translate">_tb_builder_framework_version_created</custom-field>
-        <custom-field action="translate">_tb_builder_framework_version_saved</custom-field>
-        <custom-field action="translate">_tb_builder_sections</custom-field>
-        <custom-field action="translate">_tb_builder_styles</custom-field>
     </custom-fields>
 </wpml-config>
