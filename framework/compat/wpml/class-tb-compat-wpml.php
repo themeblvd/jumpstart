@@ -183,7 +183,7 @@ class Theme_Blvd_Compat_WPML {
 	 * 2) Copying the builder elements that have uniquely
 	 * generated meta keys for a given post.
 	 *
-	 * @since 2.5.0
+	 * @since 2.6.3
 	 */
 	public function translate_layout( $post_id, $post, $update ) {
 

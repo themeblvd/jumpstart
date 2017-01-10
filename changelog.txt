@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.4 - XX/XX/XXXX
 ------------------
 
+* **Updated Theme Blvd framework to 2.6.3**
 * Improvement: Much better support translating pages with custom layouts in WPML.
 * Improvement: Enqueue child theme *style.css* with child theme version, and not parent theme version.
 * Fixed: Put back accidentally removed themeblvd_footer_above action (but deprecated).
@@ -11,7 +12,8 @@ Jump Start Changelog
 * Fixed: Minor styling quirks on tablet transparent header menu icons with Agent base.
 * Fixed: Option "Always start scale (y-axis) at 0" for bar and line chart elements not working.
 * Fixed: Polylang plugin errors when translating pages.
-* Fixed: Issues with theme's WPML Language switcher in top bar in WPML 3.6. New option added to *Appearance > Theme Options > Plugins > WPML* to show or hide.
+* Fixed: Issues with theme's WPML Language switcher in top bar in WPML 3.6.
+* Fixed: Missing theme language switcher option in WPML 3.6, which was hooked to an action that no longer exists. New option added to *Appearance > Theme Options > Plugins > WPML* to show or hide.
 * Fixed: WooCommerce star ratings with partial stars not displaying properly in IE and Edge.
 * Fixed: WooCommerce `[product_categories]` shortcode not always displaying proper number of columns.
 * Removed: WooCommerce script to put back old increment buttons on shopping cart. Use [this plugin](https://wordpress.org/plugins/woocommerce-quantity-increment) to get them back.
