@@ -458,7 +458,7 @@ if ( typeof Object.create !== 'function' ) {
 
     $.fn.ThemeBlvdModal.options = {
         title: 'Setup',                 // Title of modal window
-        button: 'Save',                 // Button text
+        button: 'Apply',                // Button text
         button_delete: '',              // Text for delete button in lower left - if blank, no button.
         button_secondary: '',           // Text for duplicate button in lower left - if blank, no button.
         size: 'large',                  // Width of modal - small, medium, large
