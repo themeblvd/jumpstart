@@ -39,7 +39,7 @@ function themeblvd_plugin_compat() {
 }
 
 /**
- * Get all plugins that the framework provideds
+ * Get all plugins that the framework provides
  * compatibility for.
  *
  * @since 2.5.0
@@ -50,11 +50,11 @@ function themeblvd_get_compat( $options = false ) {
 
 	$plugins[] = 'bbpress';
 	$plugins[] = 'woocommerce';
+	$plugins[] = 'wpml';
 
 	if ( ! $options ) {
 		$plugins[] = 'gravityforms';
 		$plugins[] = 'portfolios';
-		$plugins[] = 'wpml';
 		$plugins[] = 'subtitles';
 	}
 

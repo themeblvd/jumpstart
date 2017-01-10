@@ -254,6 +254,8 @@ class Theme_Blvd_Options_API {
 	 *		- woo_product_sidebar_layout
 	 *		- woo_cross_sell
 	 * 		- woo_view_toggle
+	 *	- WPML
+	 *		- wpml_show_lang_switcher
 	 */
 	private function set_raw_options() {
 
@@ -1401,7 +1403,26 @@ class Theme_Blvd_Options_API {
 						)
 					)
 				)
-			) // End WooCommerce options
+			), // End WooCommerce options
+
+			// Section: WPML
+			'wpml' => array(
+				'name' => __('WPML', 'jumpstart'),
+				'desc' => null,
+				'options' => array(
+					'wpml_show_lang_switcher' => array(
+						'name' 		=> __('Language Switcher', 'jumpstart'),
+						'desc' 		=> __('Select if you\'d like to show the theme\'s built-in language switcher for WPML. You can hide this if you\'re using other features in WPML to display a language switcher.', 'jumpstart'),
+						'id' 		=> 'wpml_show_lang_switcher',
+						'std' 		=> 'yes',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'yes'	=> __('Yes, show theme\'s language switcher', 'jumpstart'),
+							'no' 	=> __('No, don\'t show it', 'jumpstart')
+						)
+					)
+				)
+			) // End WPML options
 		);
 
 		/*--------------------------------*/
@@ -1473,6 +1494,10 @@ class Theme_Blvd_Options_API {
 
 		if ( ! themeblvd_supports('display', 'sticky') && isset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] ) ) {
 			unset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] );
+		}
+
+		if ( ! apply_filters( 'themeblvd_wpml_has_switcher', true ) ) {
+			unset( $this->raw_options['plugins']['sections']['wpml'] );
 		}
 
 		// Allow mods to core options one last time
