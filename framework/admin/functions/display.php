@@ -1245,7 +1245,7 @@ function themeblvd_editor( $args = array() ) {
 								</div>
 							<?php endif; ?>
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Save', 'jumpstart'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Apply', 'jumpstart'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
