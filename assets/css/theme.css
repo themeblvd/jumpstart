@@ -290,6 +290,7 @@ body.woocommerce-cart .header-top-nav .tb-cart-trigger {
 .header-content > .wrap {
 	padding: 20px 10px;
 	position: relative;
+	z-index: 2;
 }
 @media (max-width: 991px) {
 	.header-content > .wrap {
