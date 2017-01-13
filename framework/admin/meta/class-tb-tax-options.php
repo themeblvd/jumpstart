@@ -63,9 +63,15 @@ class Theme_Blvd_Tax_Options {
 	}
 
 	/**
-	 * Display options on user profile edit
+	 * Geta meta data value.
 	 *
 	 * @since 2.5.0
+	 *
+	 * @param string $tax Taxonomy that the term belongs to.
+	 * @param string $term Specific term for that taxonomy.
+	 * @param string $key Option key to pull for meta.
+	 * @param string $default Default value, to return if no value is found.
+	 * @return string Value from meta data.
 	 */
 	public function get( $tax, $term, $key, $default = null ) {
 
@@ -87,9 +93,12 @@ class Theme_Blvd_Tax_Options {
 	}
 
 	/**
-	 * Display options when editing term
+	 * Display options when editing term.
 	 *
 	 * @since 2.5.0
+	 *
+	 * @param string $tax Taxonomy that the term belongs to.
+	 * @param string $term Specific term for that taxonomy.
 	 */
 	public function edit( $term, $taxonomy ) {
 
@@ -146,9 +155,13 @@ class Theme_Blvd_Tax_Options {
 	}
 
 	/**
-	 * Save author meta data for user profiles
+	 * Save meta data for term edit page.
 	 *
 	 * @since 2.5.0
+	 *
+	 * @param int $term_id Term ID.
+	 * @param int $tt_id Term taxonomy ID.
+	 * @param string $taxonomy Taxonomy slug.
 	 */
 	public function save( $term_id, $tt_id, $tax ) {
 
@@ -182,6 +195,11 @@ class Theme_Blvd_Tax_Options {
  * frontend template files.
  *
  * @since 2.5.0
+ *
+ * @param string $tax Taxonomy slug.
+ * @param string $term Term taxonomy slug.
+ * @param string $key Option key to pull for meta.
+ * @param string $default Default value, to return if no value is found.
  */
 function themeblvd_get_tax_meta( $tax, $term, $key, $default = null ) {
 	$tax_options = Theme_Blvd_Tax_Options::get_instance();

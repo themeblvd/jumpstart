@@ -58,7 +58,8 @@ class Theme_Blvd_User_Options {
 	}
 
 	/**
-	 * Get icons
+	 * Get social sharing icon options that we're adding
+	 * to user profile editing.
 	 *
 	 * @since 2.5.0
 	 */
@@ -105,9 +106,12 @@ class Theme_Blvd_User_Options {
 	}
 
 	/**
-	 * Display options on user profile edit
+	 * Display options on user profile edit.
 	 *
 	 * @since 2.5.0
+	 *
+	 * @param array $methods Current contact options (methods) WordPress has on Edit Profile page.
+	 * @return array Modified contact options, with our's added.
 	 */
 	public function contact( $methods ) {
 
@@ -127,9 +131,11 @@ class Theme_Blvd_User_Options {
 	}
 
 	/**
-	 * Display options on user profile edit
+	 * Display options on user profile edit.
 	 *
 	 * @since 2.5.0
+	 *
+	 * @param WP_User $user Current user profile is being edited for.
 	 */
 	public function display( $user ) {
 
@@ -243,9 +249,11 @@ class Theme_Blvd_User_Options {
 	}
 
 	/**
-	 * Save author meta data for user profiles
+	 * Save author meta data for user profiles.
 	 *
 	 * @since 2.5.0
+	 *
+	 * @param int $user_id User ID of user we're saving meta data for.
 	 */
 	public function save( $user_id ) {
 
