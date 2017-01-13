@@ -72,6 +72,7 @@ if ( typeof Object.create !== 'function' ) {
                 // Bind close
                 self.$modal_window.find('.media-modal-close').off( 'click.themeblvd-modal-close' );
                 self.$modal_window.find('.media-modal-close').on( 'click.themeblvd-modal-close', function(){
+					$(this).trigger('themeblvd-modal-close');
                     self.options.on_cancel.call(self);
                     self.close();
                     return false;
@@ -80,6 +81,7 @@ if ( typeof Object.create !== 'function' ) {
                 // Save
                 self.$modal_window.find('.media-button-insert').off( 'click.themeblvd-modal-insert' );
                 self.$modal_window.find('.media-button-insert').on( 'click.themeblvd-modal-insert', function(){
+					$(this).trigger('themeblvd-modal-insert');
                     self.options.on_save.call(self);
                     self.save();
                     self.close();
@@ -90,6 +92,7 @@ if ( typeof Object.create !== 'function' ) {
                 if ( self.options.button_secondary ) {
                     self.$modal_window.find('.media-button-secondary').off( 'click.themeblvd-modal-secondary' );
                     self.$modal_window.find('.media-button-secondary').on( 'click.themeblvd-modal-secondary', function(){
+						$(this).trigger('themeblvd-modal-secondary');
                         self.options.on_secondary.call(self);
                         self.close();
                         return false;
@@ -105,6 +108,7 @@ if ( typeof Object.create !== 'function' ) {
                     self.$modal_window.find('.media-button-delete').on( 'click.themeblvd-modal-delete', function(){
                         tbc_confirm( delete_msg, {'confirm': true}, function(r){
                             if(r) {
+								$(this).trigger('themeblvd-modal-delete');
                                 self.options.on_delete.call(self);
                                 self.close();
                             }
@@ -368,7 +372,7 @@ if ( typeof Object.create !== 'function' ) {
             // Unbind links within modal
             self.$modal_window.find('.media-button-secondary').off('click.themeblvd-modal-secondary');
             self.$modal_window.find('.media-modal-close').off('click.themeblvd-modal-close');
-            self.$modal_window.find('.media-button-insert').off('click.themeblvd-modal-indert');
+            self.$modal_window.find('.media-button-insert').off('click.themeblvd-modal-insert');
             self.$modal_window.find('.media-button-delete').off('click.themeblvd-modal-delete');
 
             // Hide or Remove modal
@@ -398,6 +402,7 @@ if ( typeof Object.create !== 'function' ) {
                 $('#themeblvd-modal-backdrop').remove();
 
             }
+
         },
 
         close_all: function() {
@@ -420,7 +425,9 @@ if ( typeof Object.create !== 'function' ) {
 
                 $('#themeblvd-modal-backdrop').remove();
                 $('body').removeClass('themeblvd-modal-on themeblvd-secondary-modal-on themeblvd-stop-scroll');
+
             });
+
         },
 
         save: function() {
@@ -445,6 +452,7 @@ if ( typeof Object.create !== 'function' ) {
                 textarea.val(content);
 
             }
+
         }
     };
 

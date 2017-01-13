@@ -319,7 +319,11 @@
 
 					// WP Color Picker
 					if ( $.isFunction( $.fn.wpColorPicker ) ) {
-						$this.find('.tb-color-picker').wpColorPicker();
+						$this.find('.tb-color-picker').wpColorPicker({
+							change: function( event, ui ) {
+								$(event.target).trigger('themeblvd-color-change');
+							}
+						});
 					}
 
 					// Button option type
