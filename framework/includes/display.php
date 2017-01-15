@@ -266,7 +266,6 @@ function themeblvd_epic_thumb() {
 
 					the_post();
 
-
 					if ( ! has_post_format('gallery') && themeblvd_get_att('thumbs') == 'fs' ) {
 					    $class[] = 'tb-parallax';
 					}
