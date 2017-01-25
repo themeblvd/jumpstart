@@ -526,7 +526,7 @@ class Theme_Blvd_Query {
 		}
 
 		// Adjust posts_per_page
-		if ( $q->is_archive() ) {
+		if ( $q->is_archive() && ! $q->get( 'posts_per_page' ) ) {
 
 			$config = Theme_Blvd_Frontend_Init::get_instance();
 			$mode = $config->get_mode();
