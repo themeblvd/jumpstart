@@ -782,9 +782,9 @@ class Theme_Blvd_Compat_WooCommerce {
 		if ( ! empty($_GET['per_page']) ) {
 			$per = $_GET['per_page'];
 		} else if ( is_product_category() || is_product_tag() || is_search() ) {
-			$per = themeblvd_get_option('woo_archive_per_page', null, 'grid');
+			$per = themeblvd_get_option('woo_archive_per_page', null, '12');
 		} else if ( is_shop() ) {
-			$per = themeblvd_get_option('woo_shop_per_page', null, 'grid');
+			$per = themeblvd_get_option('woo_shop_per_page', null, '12');
 		}
 
 		return intval($per);

@@ -526,7 +526,7 @@ class Theme_Blvd_Query {
 		}
 
 		// Adjust posts_per_page
-		if ( $q->is_archive() ) {
+		if ( $q->is_archive() && ! $q->get( 'posts_per_page' ) ) {
 
 			$config = Theme_Blvd_Frontend_Init::get_instance();
 			$mode = $config->get_mode();
@@ -542,9 +542,8 @@ class Theme_Blvd_Query {
 					$cols = intval( themeblvd_get_option( $mode.'_columns', null, '3' ) );
 					$rows = intval( themeblvd_get_option( $mode.'_rows', null, '3' ) );
 					$num = $cols*$rows;
-				}
 
-				$q->set('posts_per_page', $num);
+				}
 
 			} else if ( $mode == 'list' ) {
 
