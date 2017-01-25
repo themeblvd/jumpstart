@@ -1,13 +1,18 @@
 Jump Start Changelog
 ====================
 
+2.1.5 - XX/XX/XXXX
+------------------
+
+--------------------------------------------------------------
+
 2.1.4 - 01/16/2017
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.3**
 * Improvement: Much better support translating pages with custom layouts in WPML.
 * Improvement: Enqueue child theme *style.css* with child theme version, and not parent theme version.
-* Fixed: Put back accidentally removed themeblvd_footer_above action (but deprecated).
+* Fixed: Put back accidentally removed `themeblvd_footer_above` action (but deprecated).
 * Fixed: Occasional display issues on archives and search results, due to `is_page_template()` bug in WordPress 4.7.
 * Fixed: Minor styling quirks on tablet transparent header menu icons with Agent base.
 * Fixed: Option "Always start scale (y-axis) at 0" for bar and line chart elements not working.
