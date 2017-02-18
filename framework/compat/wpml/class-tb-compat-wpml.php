@@ -58,7 +58,7 @@ class Theme_Blvd_Compat_WPML {
 
 		// Translate custom layouts manually, and avoid using
 		// wpml-config.xml for this.
-		add_action( 'wp_insert_post', 'translate_layout', 10, 3 );
+		add_action( 'wp_insert_post', array( $this, 'translate_layout' ), 10, 3 );
 
 	}
 
