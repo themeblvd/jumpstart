@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.4**
+* Improvement: Floating search will now close on focusing out of search input box.
 * Fixed: In some cases, the framework's pre_get_posts filter was overriding WooCommerce from setting the correct products per page utilizing the loop_shop_per_page filter.
 * Fixed: Error when translating a page with [WPML](http://themeblvd.com/links/wpml) and the Layout Builder.
 

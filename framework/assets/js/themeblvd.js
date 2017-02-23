@@ -543,7 +543,7 @@ jQuery(document).ready(function($) {
 	// Floating Search
 	// ---------------------------------------------------------
 
-	$('.tb-search-trigger').on('click', function(){
+	$('.tb-search-trigger').on('click', function() {
 
 		var $el = $('.tb-floating-search');
 
@@ -554,11 +554,21 @@ jQuery(document).ready(function($) {
 		}
 
 	    return false;
+
 	});
 
-	$('.tb-floating-search .close-search').on('click', function(){
+	$('.tb-floating-search .close-search').on('click', function() {
+
 		$(this).closest('.tb-floating-search').removeClass('on');
+
 		return false;
+
+	});
+
+	$('.tb-floating-search .search-input').on('focusout', function() {
+
+		$(this).closest('.tb-floating-search').removeClass('on');
+
 	});
 
 	// ---------------------------------------------------------
