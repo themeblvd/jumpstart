@@ -203,20 +203,20 @@ function themeblvd_get_map( $args ) {
     wp_enqueue_script( 'google-maps' );
 
     $defaults = array(
-        'id'            => uniqid('map_'),  // Unique ID for map
-		'mode'			=> 'roadmap',		// Map mode - roadmap, satellite, hybrid, terrain
-        'markers'       => array(),         // Location markers for map
-        'height'        => '400',           // CSS height of map
-        'center_type'   => 'default',       // If default, will be first location - default or custom
-        'center'        => array(),         // If above is custom, this will be the center point of map
-        'zoom'          => '15',            // Zoom level of initial map- [1, 20]
-        'lightness'     => '0',             // Map brightness - [-100, 100]
-        'saturation'    => '0',             // Map color saturation - [-100, 100]
-        'has_hue'       => '0',             // Whether map has overlay color
-        'hue'           => '',              // Overlay color for map (i.e. hue)
-        'zoom_control'  => '1',             // Whether user has zoom control
-        'pan_control'   => '1',             // Whether user has pan control
-        'draggable'     => '1'              // Whether user can drag map around
+        'id'            => uniqid( 'map_' . rand() ),  	// Unique ID for map
+		'mode'			=> 'roadmap',					// Map mode - roadmap, satellite, hybrid, terrain
+        'markers'       => array(),         			// Location markers for map
+        'height'        => '400',           			// CSS height of map
+        'center_type'   => 'default',       			// If default, will be first location - default or custom
+        'center'        => array(),         			// If above is custom, this will be the center point of map
+        'zoom'          => '15',            			// Zoom level of initial map- [1, 20]
+        'lightness'     => '0',             			// Map brightness - [-100, 100]
+        'saturation'    => '0',             			// Map color saturation - [-100, 100]
+        'has_hue'       => '0',             			// Whether map has overlay color
+        'hue'           => '',              			// Overlay color for map (i.e. hue)
+        'zoom_control'  => '1',             			// Whether user has zoom control
+        'pan_control'   => '1',             			// Whether user has pan control
+        'draggable'     => '1'              			// Whether user can drag map around
     );
     $args = wp_parse_args( $args, $defaults );
 
@@ -1483,7 +1483,7 @@ function themeblvd_get_toggle( $args ) {
     }
 
     // Individual toggle ID (NOT the Accordion ID)
-    $toggle_id = uniqid( 'toggle_'.rand() );
+    $toggle_id = uniqid( 'toggle_' . rand() );
 
     // Bootstrap 3 output
     $output = '

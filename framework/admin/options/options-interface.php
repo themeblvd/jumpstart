@@ -1308,7 +1308,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				ob_start();
-				wp_editor( $val, uniqid( $value['id'].'_'.rand() ), $editor_settings );
+				wp_editor( $val, uniqid( $value['id'] . '_' . rand() ), $editor_settings );
 				$output .= ob_get_clean();
 
 				if ( $desc_location == 'after' ) {
@@ -1335,7 +1335,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'code' :
 
-				$id = uniqid('code_editor_');
+				$id = uniqid( 'code_editor_' . rand() );
 
 				$lang = 'html';
 

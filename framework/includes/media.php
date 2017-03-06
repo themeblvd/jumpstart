@@ -820,30 +820,30 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	$output = '';
 
 	$defaults = array(
-		'id'					=> uniqid('slider_'),	// Unique ID for the slider
-		'crop'					=> 'slider-large',		// Crop size for images
-		'carousel'				=> '0',					// Whether to use variable width carousel or default bootstrap carousel
-		'interval'				=> '5',					// How fast to auto rotate betweens slides
-		'pause'					=> '1',					// Whether to pause slider on hover
-		'wrap'					=> '1',					// When slider auto-rotates, whether it continuously cycles
-		'nav_standard'			=> '1',					// Whether to show standard navigation dots
-		'nav_arrows'			=> '1',					// Whether to show navigation arrows
-		'arrows'				=> 'standard',			// Nav arrow style - standard, mini
-		'nav_thumbs'			=> '0',					// Whether to show navigation image thumbnails
-		'shade'					=> '0',					// Whether entire image is shaded
-		'link'					=> '1',					// Whether linked slides have animated hover overlay effect
-		'thumb_size'			=> 'smaller',			// Size of thumbnails - small, smaller, smallest or custom int
-		'dark_text'				=> '0',					// Whether to use dark text for title/descriptions/standard nav, use when images are light
-		'caption_bg'			=> '0',					// Whether to add BG color to caption
-		'caption_bg_color'		=> '#000000',			// Caption BG color
-		'caption_bg_opacity'	=> '0.5',				// Caption BG color opacity
-		'cover'					=> '0',					// popout: Whether images horizontal space 100%
-		'position'				=> 'middle center',		// popout: If cover is true, how slider images are positioned (i.e. with background-position)
-		'height_desktop'		=> '400',				// popout: If cover is true, slider height for desktop viewport
-		'height_tablet'			=> '300',				// popout: If cover is true, slider height for tablet viewport
-		'height_mobile'			=> '200',				// popout: If cover is true, slider height for mobile viewport
-		'class'					=> ''					// Any CSS classes to add
-	);
+		'id'					=> uniqid( 'slider_' . rand() ),	// Unique ID for the slider
+		'crop'					=> 'slider-large',					// Crop size for images
+		'carousel'				=> '0',								// Whether to use variable width carousel or default bootstrap carousel
+		'interval'				=> '5',								// How fast to auto rotate betweens slides
+		'pause'					=> '1',								// Whether to pause slider on hover
+		'wrap'					=> '1',								// When slider auto-rotates, whether it continuously cycles
+		'nav_standard'			=> '1',								// Whether to show standard navigation dots
+		'nav_arrows'			=> '1',								// Whether to show navigation arrows
+		'arrows'				=> 'standard',						// Nav arrow style - standard, mini
+		'nav_thumbs'			=> '0',								// Whether to show navigation image thumbnails
+		'shade'					=> '0',								// Whether entire image is shaded
+		'link'					=> '1',								// Whether linked slides have animated hover overlay effect
+		'thumb_size'			=> 'smaller',						// Size of thumbnails - small, smaller, smallest or custom int
+		'dark_text'				=> '0',								// Whether to use dark text for title/descriptions/standard nav, use when images are light
+		'caption_bg'			=> '0',								// Whether to add BG color to caption
+		'caption_bg_color'		=> '#000000',						// Caption BG color
+		'caption_bg_opacity'	=> '0.5',							// Caption BG color opacity
+		'cover'					=> '0',								// popout: Whether images horizontal space 100%
+		'position'				=> 'middle center',					// popout: If cover is true, how slider images are positioned (i.e. with background-position)
+		'height_desktop'		=> '400',							// popout: If cover is true, slider height for desktop viewport
+		'height_tablet'			=> '300',							// popout: If cover is true, slider height for tablet viewport
+		'height_mobile'			=> '200',							// popout: If cover is true, slider height for mobile viewport
+		'class'					=> ''								// Any CSS classes to add
+				);
 	$args = apply_filters( 'themeblvd_simple_slider_args', wp_parse_args( $args, $defaults ) );
 
 	// Make sure $images array is setup properly
@@ -1793,7 +1793,7 @@ function themeblvd_bg_parallax( $display ) {
 function themeblvd_get_bg_video( $video ) {
 
 	$video = apply_filters('themeblvd_video_args', wp_parse_args( $video, array(
-		'id'		=> uniqid( 'video_'.rand() ),
+		'id'		=> uniqid( 'video_' . rand() ),
 		'mp4'		=> '',		// .mp4, .ogg, .webm, vimeo url, or youtube url
 		'ratio'		=> '16:9',
 		'fallback'	=> ''

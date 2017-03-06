@@ -212,7 +212,7 @@ function themeblvd_post_table( $post_type, $columns ) {
  */
 function themeblvd_columns_option( $type, $id, $name, $val ) {
 
-	$slider_id = uniqid('ui_slider_');
+	$slider_id = uniqid( 'ui_slider_' . rand() );
 
 	/*------------------------------------------------------*/
 	/* Setup Internal Options

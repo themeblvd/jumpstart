@@ -64,7 +64,7 @@ function themeblvd_media_uploader( $args ) {
 
 	// Allow multiple upload options on the same page with
 	// same ID -- This could happen in the Layout Builder, for example.
-	$formfield = uniqid( $id.'_' );
+	$formfield = uniqid( $id . '_' . rand() );
 
 	// Data passed to wp.media
 	$data = array(

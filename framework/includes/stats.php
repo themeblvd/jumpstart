@@ -12,18 +12,18 @@ function themeblvd_get_chart( $type, $args ) {
     wp_enqueue_script( 'charts' );
 
     $defaults = array(
-        'id'        => uniqid('chart_'),    // Unique ID for this chart
-        'data'      => array(),             // Data for charts - warning: formatted differently for different kinds of charts
-        'width'     => '200',               // Width of chart
-        'height'    => '200',               // Height of chart
-        'labels'    => '',                  // X-axis labels for line and bar graphs
-        'tooltips'  => '1',                 // Whether to display labels when hovered on
-        'legend'    => '0',                 // Whether to display chart legend
-        'doughnut'  => '0',                 // For pie chart, whether to display as doughnut
-        'curve'     => '1',                 // For line chart, whether to curve lines
-        'fill'      => '1',                 // For line chart, whether to fill datasets with color
-        'dot'       => '1',                 // For line chart, whether to display dots for each data point
-        'zero'      => '1'                  // For line/bar chart, whether to start the scale (y-axis) at 0
+        'id'        => uniqid( 'chart_' . rand() ),	// Unique ID for this chart
+        'data'      => array(),             		// Data for charts - warning: formatted differently for different kinds of charts
+        'width'     => '200',               		// Width of chart
+        'height'    => '200',               		// Height of chart
+        'labels'    => '',                  		// X-axis labels for line and bar graphs
+        'tooltips'  => '1',                 		// Whether to display labels when hovered on
+        'legend'    => '0',                 		// Whether to display chart legend
+        'doughnut'  => '0',                 		// For pie chart, whether to display as doughnut
+        'curve'     => '1',                 		// For line chart, whether to curve lines
+        'fill'      => '1',                 		// For line chart, whether to fill datasets with color
+        'dot'       => '1',                 		// For line chart, whether to display dots for each data point
+        'zero'      => '1'                  		// For line/bar chart, whether to start the scale (y-axis) at 0
     );
     $args = wp_parse_args( $args, $defaults );
 

@@ -609,7 +609,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 */
 	public function add_item() {
 		check_ajax_referer( 'themeblvd_sortable_option', 'security' );
-		echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_'.rand() ), $this->get_default(), $_POST['data']['option_name'] );
+		echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_' . rand() ), $this->get_default(), $_POST['data']['option_name'] );
 		die();
 	}
 
@@ -1110,7 +1110,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	protected function get_display_footer( $option_id, $option_name, $items ) {
 		$footer  = '<footer>';
-		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid('slider_'), esc_attr($this->labels['modal_title']), esc_attr($this->labels['modal_button']), esc_attr($this->labels['add']) );
+		$footer .= sprintf( '<a href="#" id="%s" class="add-images button-secondary" data-title="%s" data-button="%s">%s</a>', uniqid( 'slider_' . rand() ), esc_attr($this->labels['modal_title']), esc_attr($this->labels['modal_button']), esc_attr($this->labels['add']) );
 		$footer .= sprintf( '<a href="#" title="%s" class="tb-tooltip-link delete-sortable-items hide" data-tooltip-text="%s"><i class="tb-icon-cancel-circled"></i></a>', esc_attr($this->labels['delete_all_confirm']), esc_attr($this->labels['delete_all']) );
 		$footer .= '</footer>';
 		return $footer;
@@ -1260,7 +1260,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 				'alt'	=> $item['title'],
 				'thumb'	=> $item['preview']
 			);
-			echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_'.rand() ), $val, $_POST['data']['option_name'] );
+			echo $this->get_item( $_POST['data']['option_id'], uniqid( 'item_' . rand() ), $val, $_POST['data']['option_name'] );
 		}
 		die();
 	}
