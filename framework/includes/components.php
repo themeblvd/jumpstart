@@ -1323,7 +1323,7 @@ function themeblvd_get_testimonial( $args ){
 
     $output .= '</div><!-- .tb-testimonial (end) -->';
 
-    return apply_filters( 'themeblvd_testiomnial', $output, $args );
+    return apply_filters( 'themeblvd_testimonial', $output, $args );
 }
 
 
