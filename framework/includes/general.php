@@ -1760,9 +1760,7 @@ function themeblvd_image_size_names_choose( $sizes ) {
  */
 function themeblvd_allowed_tags() {
 
-	global $allowedposttags;
-
-	$tags = $allowedposttags;
+	$tags = wp_kses_allowed_html( 'post' );
 
 	$tags['a']['data-bg'] = true;
 	$tags['a']['data-bg-hover'] = true;
