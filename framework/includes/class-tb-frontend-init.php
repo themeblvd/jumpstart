@@ -684,47 +684,102 @@ class Theme_Blvd_Frontend_Init {
 		echo "\n<!--\n";
 		echo "Debug Info\n\n";
 
-		if ( $template == $stylesheet ) {
-			printf("Theme: %s\n", $parent->get('Name'));
-			printf("Directory: %s\n", $stylesheet);
-		} else {
+		if ( $template != $stylesheet ) {
+
 			$child = wp_get_theme( $stylesheet );
-			printf("Child Theme: %s\n", $child->get('Name'));
-			printf("Child Directory: %s\n", $stylesheet);
-			printf("Parent Theme: %s\n", $parent->get('Name'));
-			printf("Parent Directory: %s\n", $template);
+
+			printf( "Child Theme: %s\n", $child->get( 'Name' ) );
+			printf( "Child Directory: %s\n", $stylesheet );
+
+		} else {
+
+			echo "Child Theme: No\n";
+
 		}
 
-		printf("Version: %s\n", $parent->get('Version'));
+		printf( "Parent Theme: %s %s\n", $parent->get( 'Name' ), $parent->get( 'Version' ) );
 
-		printf("TB Framework: %s\n", TB_FRAMEWORK_VERSION);
+		printf( "Parent Theme Directory: %s\n", $template );
 
-		if ( defined('TB_BUILDER_PLUGIN_VERSION') ) {
-			printf("TB Builder: %s\n", TB_BUILDER_PLUGIN_VERSION);
+		if ( themeblvd_supports( 'admin', 'base' ) ) {
+
+			printf( "Theme Base: %s\n", themeblvd_get_base() );
+
 		}
 
-		if ( defined('TB_SHORTCODES_PLUGIN_VERSION') ) {
-			printf("TB Shortcodes: %s\n", TB_SHORTCODES_PLUGIN_VERSION);
+		printf( "Theme Blvd Framework: %s\n", TB_FRAMEWORK_VERSION );
+
+		if ( defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
+
+			printf( "Theme Blvd Builder: %s\n", TB_BUILDER_PLUGIN_VERSION );
+
 		}
 
-		if ( defined('TB_SIDEBARS_PLUGIN_VERSION') ) {
-			printf("TB Widget Areas: %s\n", TB_SIDEBARS_PLUGIN_VERSION);
+		if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) ) {
+
+			printf( "Theme Blvd Shortcodes: %s\n", TB_SHORTCODES_PLUGIN_VERSION );
+
 		}
 
-		if ( defined('TB_WIDGET_PACK_PLUGIN_VERSION') ) {
-			printf("TB Widget Pack: %s\n", TB_WIDGET_PACK_PLUGIN_VERSION);
+		if ( defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
+
+			printf( "Theme Blvd Widget Areas: %s\n", TB_SIDEBARS_PLUGIN_VERSION );
+
 		}
 
-		if ( defined('TB_SLIDERS_PLUGIN_VERSION') ) {
-			printf("TB Sliders: %s\n", TB_SLIDERS_PLUGIN_VERSION);
+		if ( defined( 'TB_WIDGET_PACK_PLUGIN_VERSION' ) ) {
+
+			printf( "Theme Blvd Widget Pack: %s\n", TB_WIDGET_PACK_PLUGIN_VERSION );
+
 		}
 
-		if ( defined('TB_PORTFOLIOS_PLUGIN_VERSION') ) {
-			printf("TB Portfolios: %s\n", TB_PORTFOLIOS_PLUGIN_VERSION);
+		if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) ) {
+
+			printf( "Theme Blvd Sliders: %s\n", TB_SLIDERS_PLUGIN_VERSION );
+
 		}
 
-		if ( isset($GLOBALS['wp_version']) ) {
-			printf("WordPress: %s\n", $GLOBALS['wp_version']);
+		if ( defined( 'TB_PORTFOLIOS_PLUGIN_VERSION' ) ) {
+
+			printf( "Theme Blvd Portfolios: %s\n", TB_PORTFOLIOS_PLUGIN_VERSION );
+
+		}
+
+		if ( function_exists( 'bbp_get_version' ) ) {
+
+			printf( "bbPress: %s\n", bbp_get_version() );
+
+		}
+
+		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+
+			printf( "WPML: %s\n", ICL_SITEPRESS_VERSION );
+
+		}
+
+		if ( class_exists( 'GFForms' ) ) {
+
+			printf( "Gravity Forms: %s\n", GFForms::$version );
+
+		}
+
+		if ( isset( $GLOBALS['woocommerce'] ) ) {
+
+			printf( "WooCommerce: %s\n", $GLOBALS['woocommerce']->version );
+
+		}
+
+		/**
+		 * Add debug info to framework output.
+		 *
+		 * @since 2.6.4
+		 */
+		do_action( 'themeblvd_debug_info' );
+
+		if ( isset( $GLOBALS['wp_version'] ) ) {
+
+			printf( "WordPress: %s\n", $GLOBALS['wp_version'] );
+
 		}
 
 		echo "-->\n";
