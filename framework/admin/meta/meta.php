@@ -119,7 +119,7 @@ function setup_themeblvd_page_meta() {
 			'tb_video_link' => array(
 				'id'		=> '_tb_video_link',
 				'name' 		=> __('Featured Image - Video Link', 'jumpstart'),
-				'desc'		=> sprintf(__('Enter the full URL to a video page supported by %s.', 'jumpstart'), '<a href="http://codex.wordpress.org/Embeds" target="_blank">'.__('WordPress\'s oEmbed', 'jumpstart').'</a>').'<br><br>'.__('Ex', 'jumpstart').': http://www.youtube.com/watch?v=ginTCwWfGNY<br>'.__('Ex', 'jumpstart').': http://vimeo.com/11178250',
+				'desc'		=> __('Enter the full webpage URL to a video from YouTube or Vimeo.', 'jumpstart').'<br><br>'.__('Ex', 'jumpstart').': http://www.youtube.com/watch?v=ginTCwWfGNY<br>'.__('Ex', 'jumpstart').': http://vimeo.com/11178250',
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-video'
 			),
@@ -456,7 +456,7 @@ function setup_themeblvd_post_meta() {
 			'tb_video_link' => array(
 				'id'		=> '_tb_video_link',
 				'name' 		=> __('Featured Image - Video Link', 'jumpstart'),
-				'desc'		=> sprintf(__('Enter the full URL to a video page supported by %s.', 'jumpstart'), '<a href="http://codex.wordpress.org/Embeds" target="_blank">'.__('WordPress\'s oEmbed', 'jumpstart').'</a>').'<br><br>'.__('Ex', 'jumpstart').': http://www.youtube.com/watch?v=ginTCwWfGNY<br>'.__('Ex', 'jumpstart').': http://vimeo.com/11178250',
+				'desc'		=> __('Enter the full webpage URL to a video from YouTube or Vimeo.', 'jumpstart').'<br><br>'.__('Ex', 'jumpstart').': http://www.youtube.com/watch?v=ginTCwWfGNY<br>'.__('Ex', 'jumpstart').': http://vimeo.com/11178250',
 				'type' 		=> 'text',
 				'class'		=> 'hide receiver receiver-video'
 			),
