@@ -208,21 +208,6 @@ function themeblvd_clear_options() {
 }
 
 /**
- * Adjust frontend content width for admin panel.
- *
- * This is a little ironic, as $content_width is only for
- * the frontend of the site. This was originally implemented
- * so videos can be displayed at a reasonable size with WP 3.6+
- * in the admin panel when editing a video format post.
- *
- * @since 2.2.1
- */
-function themeblvd_admin_content_width() {
-	global $content_width;
-	$content_width = 600;
-}
-
-/**
  * Integrate 3.8+ admin styling.
  *
  * This function will help the transition period as we go

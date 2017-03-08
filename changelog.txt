@@ -11,6 +11,7 @@ Jump Start Changelog
 * Fixed: In some cases, the framework's pre_get_posts filter was overriding WooCommerce from setting the correct products per page utilizing the loop_shop_per_page filter.
 * Fixed: Error when translating a page with [WPML](http://themeblvd.com/links/wpml) and the Layout Builder.
 * Fixed: Updated description of Video Link option in Post Options and Page Options meta boxes to state only Vimeo and YouTube are supported.
+* Removed: Admin-side global `$content_width` hack, originally implemented to help manage videos in WP editor. No longer needed and was causing other conflicts with inserting images.
 
 --------------------------------------------------------------
 

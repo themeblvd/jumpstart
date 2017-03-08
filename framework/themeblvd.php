@@ -79,7 +79,6 @@ if ( is_admin() ) {
 	add_action( 'admin_menu', 'themeblvd_hijack_page_atts' );
 	add_action( 'save_post', 'themeblvd_save_page_atts' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
-	add_action( 'after_setup_theme', 'themeblvd_admin_content_width' );
 	add_action( 'admin_init', 'themeblvd_add_meta_boxes' );
 
 	// Apply other hooks after theme has had a chance to add filters
