@@ -7,6 +7,8 @@ Jump Start Changelog
 * **Updated Theme Blvd framework to 2.6.4**
 * Improvement: Floating search will now close on focusing out of search input box.
 * Improvement: Increased likelihood of unique ID's for various HTML elements being unique, when they need to be.
+* Improvement: Google Maps API key must be set for all websites in order to use the Google Maps element of the layout builder.
+* Fixed: Google Maps API console JavaScript error in layout builder in some cases, when no Google Maps API key is set.
 * Fixed: In some cases, 0% opacity not working for transparent header on Agent base.
 * Fixed: In some cases, the framework's pre_get_posts filter was overriding WooCommerce from setting the correct products per page utilizing the loop_shop_per_page filter.
 * Fixed: Error when translating a page with [WPML](http://themeblvd.com/links/wpml) and the Layout Builder.

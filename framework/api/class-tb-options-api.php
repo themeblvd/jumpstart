@@ -1204,7 +1204,7 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'gmap_info' => array(
 						'id'		=> 'gmap_info',
-						'desc'		=> __('If you\'re implementing Google Maps into your website after June 22, 2016 through our layout builder, you\'ll need to get an API key from Google.', 'jumpstart').' <a href="http://docs.themeblvd.com/article/56-google-maps-api" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
+						'desc'		=> __('You must have a Google Maps API key setup to use the "Google Maps" element of our layout builder.', 'jumpstart').' <a href="http://docs.themeblvd.com/article/56-google-maps-api" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
 						'type'		=> 'info'
 					),
 					'gmap_api_key' => array(
