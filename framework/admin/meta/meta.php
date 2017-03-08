@@ -78,8 +78,8 @@ function setup_themeblvd_page_meta() {
 			),
 			'tb_thumb' => array(
                 'id' 		=> '_tb_thumb',
-                'name' 		=> __( 'Featured Image Display', 'gnar' ),
-                'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the page.', 'gnar' ).'<br><br><em>'.__('Notes: (1) When not using the default page template, featured image can only displayed above the content. (2) The full-screen option will work best when a Transparent Header is set.', 'jumpstart').'</em>',
+                'name' 		=> __( 'Featured Image Display', 'jumpstart' ),
+                'desc' 		=> __( 'Select how you\'d like the featured image to show at the top of the page.', 'jumpstart' ).'<br><br><em>'.__('Notes: (1) When not using the default page template, featured image can only displayed above the content. (2) The full-screen option will work best when a Transparent Header is set.', 'jumpstart').'</em>',
                 'std' 		=> 'default',
                 'type' 		=> 'radio',
                 'options' 	=> array(
@@ -482,7 +482,7 @@ function setup_themeblvd_post_meta() {
 			'tb_thumb_link_single' => array(
 				'id'		=> '_tb_thumb_link_single',
 				'name' 		=> __('Featured Image Link (the single post)', 'jumpstart'),
-				'desc'		=> __('If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'jumpstart').'<br><br><em>'.__('Note: This does not apply when the featured image is displayed above the content.', 'gnar').'</em>',
+				'desc'		=> __('If you\'ve selected a featured image link above, select whether you\'d like the image link to be applied to the featured image on the single post page.', 'jumpstart').'<br><br><em>'.__('Note: This does not apply when the featured image is displayed above the content.', 'jumpstart').'</em>',
 				'std' 		=> 'yes',
 				'type' 		=> 'radio',
 				'options'	=> array(
