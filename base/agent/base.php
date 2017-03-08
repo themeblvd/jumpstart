@@ -325,7 +325,7 @@ function jumpstart_ag_css() {
 
 		$print .= "@media (min-width: 992px) {\n";
 		$print .= "\t.epic-thumb .epic-thumb-header .entry-title {\n";
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
+		$print .= sprintf("\t\tfont-size: %s;\n", themeblvd_get_font_size($font) );
 		$print .= "\t}\n";
 		$print .= "}\n";
 
@@ -381,18 +381,26 @@ function jumpstart_ag_css() {
 	// Background color
 	$print .= "@media (min-width: 768px) {\n";
 
-	if ( themeblvd_config('suck_up') && $opacity = themeblvd_get_option('header_trans_bg_color_opacity') ) {
+	if ( themeblvd_config('suck_up') ) {
+
 		$print .= "\t.site-header.transparent {\n";
 		$print .= "\t\tbackground-color: transparent;\n";
-		$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option('header_trans_bg_color'),  $opacity ) );
+
+		if ( $opacity = themeblvd_get_option('header_trans_bg_color_opacity') ) {
+			$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option('header_trans_bg_color'), $opacity ) );
+		}
+
 		$print .= "\t}\n";
+
 	} else {
+
 		$print .= "\t.site-header {\n";
 		$print .= sprintf("\t\tbackground-color: %s;\n", $bg);
 		$print .= "\t}\n";
+
 	}
 
-	$print .= ".tb-sticky-menu {\n";
+	$print .= "\t.tb-sticky-menu {\n";
 	$print .= sprintf("\t\tbackground-color: %s;\n", $bg);
 	$print .= sprintf("\t\tbackground-color: %s;\n", themeblvd_get_rgb($bg, '0.9'));
 	$print .= "\t}\n";
