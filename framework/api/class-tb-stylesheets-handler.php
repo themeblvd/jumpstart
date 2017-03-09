@@ -131,7 +131,6 @@ class Theme_Blvd_Stylesheet_Handler {
 				'deps'		=> array(),
 				'ver'		=> '3.3.5',
 				'media'		=> 'all'
-
 			);
 
 			// @TODO How to handle RTL for elements in Bootrap
@@ -144,7 +143,7 @@ class Theme_Blvd_Stylesheet_Handler {
 				'handle'	=> 'fontawesome',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/fontawesome/css/font-awesome.min.css',
 				'deps'		=> array(),
-				'ver'		=> '4.6.0',
+				'ver'		=> '4.7.0',
 				'media'		=> 'all'
 			);
 
