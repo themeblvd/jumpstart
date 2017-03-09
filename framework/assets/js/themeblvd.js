@@ -613,28 +613,82 @@ jQuery(document).ready(function($) {
 		$('.tb-gallery-carousel').each(function(){
 
 			var $wrap = $(this),
-				$carousel = $wrap.find('.owl-carousel');
+				$carousel = $wrap.find('.owl-carousel'),
+				loop = true;
+
+			if ( $wrap.hasClass('has-nav-thumbs') || $wrap.hasClass('has-nav-dots') ) {
+				loop = false; // We can't support looping with thumbnail nav or dots nav, because of how owl carousel clones items.
+			}
 
 			$carousel.owlCarousel({
 				rtl: $body.hasClass('rtl') ? true : false,
 				center: true,
 				autoWidth: true,
-				loop: true,
+				loop: loop,
 				dots: false,
 				nav: false,
 				margin: 1,
 				onInitialized: function() {
 					$wrap.find('.tb-loader').fadeOut(100);
+				},
+				onChanged: function(e) {
+
+					if ( ! loop ) { // Only when thumbnail nav or dots nav exists, and looping is disabled.
+
+						// Make sure next and prev buttons don't show
+						// when at start or end of cycle.
+						if ( e.item.index == 0 ) {
+
+							$wrap.find('.tb-slider-arrows a.prev').fadeOut(100);
+							$wrap.find('.tb-slider-arrows a.next').fadeIn(100);
+
+						} else if ( e.item.index + 1 == e.item.count ) {
+
+							$wrap.find('.tb-slider-arrows a.next').fadeOut(100);
+							$wrap.find('.tb-slider-arrows a.prev').fadeIn(100);
+
+						} else {
+
+							$wrap.find('.tb-slider-arrows a.next, .tb-slider-arrows a.prev').fadeIn(100);
+
+						}
+
+						// Make sure thumbnail nav is effected on
+						// all state changes.
+						if ( $wrap.hasClass('has-nav-thumbs') ) {
+							$wrap.find('.carousel-thumb-nav li').removeClass('active');
+							$wrap.find('.carousel-thumb-nav li:nth-child(' + (e.item.index + 1) + ')').addClass('active');
+						}
+
+						// Make sure dots nav is effected on all
+						// state changes.
+						if ( $wrap.hasClass('has-nav-dots') ) {
+							$wrap.find('.carousel-indicators li').removeClass('active');
+							$wrap.find('.carousel-indicators li:nth-child(' + (e.item.index + 1) + ')').addClass('active');
+						}
+
+					}
 				}
 			});
 
-			// Navigation
+			// Arrow Navigation
 			$wrap.find('.tb-slider-arrows a').on('click', function(){
+
 				if ( $(this).hasClass('next') ) {
 					$carousel.trigger('next.owl.carousel');
 				} else {
 					$carousel.trigger('prev.owl.carousel');
 				}
+
+				return false;
+
+			});
+
+			// Thumbnail/Dots Navigation
+			$wrap.find('.carousel-thumb-nav li, .carousel-indicators li').on('click', function(){
+
+				$carousel.trigger( 'to.owl.carousel', $(this).data('slide-to') );
+
 			});
 
 		});
@@ -1341,10 +1395,15 @@ jQuery(document).ready(function($) {
 		});
 
 		// Carousel thumbnail navigation
-		$('.tb-simple-slider .carousel-thumb-nav li').click(function(){
+		$('.tb-simple-slider .carousel-thumb-nav li').on('click', function(){
+
 			var $el = $(this);
-			$el.closest('.carousel-thumb-nav').find('li').removeClass('active');
-			$el.addClass('active');
+
+			if ( $el.closest('.tb-simple-slider').data('ride') ) {
+				$el.closest('.carousel-thumb-nav').find('li').removeClass('active');
+				$el.addClass('active');
+			}
+
 		});
 
 		$('.tb-simple-slider').on('slid.bs.carousel', function () {

@@ -843,7 +843,8 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		'height_tablet'			=> '300',							// popout: If cover is true, slider height for tablet viewport
 		'height_mobile'			=> '200',							// popout: If cover is true, slider height for mobile viewport
 		'class'					=> ''								// Any CSS classes to add
-				);
+	);
+
 	$args = apply_filters( 'themeblvd_simple_slider_args', wp_parse_args( $args, $defaults ) );
 
 	// Make sure $images array is setup properly
@@ -901,6 +902,14 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 	if ( $args['nav_arrows'] ) {
 		$class .= ' nav-arrows-'.$args['arrows'];
+	}
+
+	if ( $args['nav_standard'] ) {
+		$class .= ' has-nav-dots';
+	}
+
+	if ( $args['nav_thumbs'] ) {
+		$class .= ' has-nav-thumbs';
 	}
 
 	// Inline styles for popout slider with background images that cover full width

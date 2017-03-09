@@ -5531,12 +5531,15 @@ body.mobile .tb-bg-video {
 .tb-gallery-carousel .owl-carousel.owl-loaded {
 	opacity: 1;
 }
+.tb-gallery-carousel .owl-carousel .owl-stage-outer {
+	background-color: #101010;
+}
 .tb-gallery-carousel .owl-carousel,
 .tb-gallery-carousel .owl-carousel .item {
 	height: 400px;
 }
 .tb-gallery-carousel .owl-carousel .item {
-	background: #000000;
+	background: #101010;
 }
 @media (max-width: 991px) {
 	.tb-gallery-carousel .owl-carousel,
