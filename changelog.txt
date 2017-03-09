@@ -15,7 +15,7 @@ Jump Start Changelog
 * Fixed: Updated description of Video Link option in Post Options and Page Options meta boxes to state only Vimeo and YouTube are supported.
 * Fixed: Gallery slider thumbnail and dots navigation not working when using variable width Owl Carousel.
 * Removed: Admin-side global `$content_width` hack, originally implemented to help manage videos in WP editor. No longer needed and was causing other conflicts with inserting images.
-* Updated Owl Carousel to 2.2.1.
+* Updated: Owl Carousel to 2.2.1.
 
 --------------------------------------------------------------
 
@@ -59,7 +59,7 @@ Jump Start Changelog
 * Improvement: Better RTL support for uses of Bootstrap carousel, like with simple slider element.
 * Fixed: Black background getting applied to single post content, when full-width or parallax featured image is set.
 * Fixed: Minor RTL fixes for options interfaces.
-* Updated TGMA plugin installer to 2.6.1.
+* Updated: TGMA plugin installer to 2.6.1.
 
 --------------------------------------------------------------
 
@@ -169,8 +169,6 @@ Jump Start Changelog
 * Improvement: Sticky menu logo now has more padding around it, and is slightly smaller at 30px in height.
 * Improvement: With setting up footer options, more clear default settings and instructions.
 * Improvement: Allow copyright and icon helpers in widgets and footer columns.
-* Updated: FontAwesome to 4.6.
-* Updated: FlexSlider to 2.6.
 * Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
 * Fixed: Sticky menu shouldn't display on any mobile device, no matter the viewport size.
 * Fixed: Accordion feature not working with Toggles element of Layout Builder.
@@ -197,6 +195,8 @@ Jump Start Changelog
     * Pricing table columns now display in correct order, from right-to-left.
     * Progress bars now display and animate out from right.
     * "Custom CSS" option code editor on theme options page now works with RTL.
+* Updated: FontAwesome to 4.6.
+* Updated: FlexSlider to 2.6.
 * **Important:** Removed old IE browser support; see updated [browser-compatibility terms](http://wpjumpstart.com/terms/#browsers).
 * **Important:** Theme's registered text domain for localization was changed from `themeblvd` to `jumpstart` to meet wordpress.org localization standards.
 * **Important:** Banner functionality has been removed, in favor of new featured image options. You can restore functionality with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
@@ -257,7 +257,7 @@ Jump Start Changelog
 * Fixed: The `[blog]` shortcode display issues.
 * Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
 * Removed: The `themeblvd_frontend` text domain is gone; all strings localized under `themeblvd` text domain.
-* Updated TGMA plugin installer to 2.5.2.
+* Updated: TGMA plugin installer to 2.5.2.
 * Moved all import/export functionality to plugin: [Theme Blvd Importer](https://wordpress.org/plugins/theme-blvd-importer)
 
 --------------------------------------------------------------
@@ -287,8 +287,8 @@ Jump Start Changelog
 * Removed: Parallax intensity options; now it's based on height of image, proportional to container.
 * Removed: Default customizer customizations and framework customizer API functions.
 * Regenerated default localization files.
-* Updated Bootstrap to 3.3.5.
-* Updated FontAwesome to 4.4.
+* Updated: Bootstrap to 3.3.5.
+* Updated: FontAwesome to 4.4.
 
 **Important!** For best results with this update:
 
