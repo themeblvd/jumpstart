@@ -1150,8 +1150,8 @@ jQuery(document).ready(function($) {
 			var $el = $(this),
 				$img = $el.find('img, .img');
 
-			// Disable for small screens
-			if ( $window.width() > 991 && $window.height() > 499 ) {
+			// Disable for small screens and true mobile devices.
+			if ( $body.hasClass('mobile') || $window.width() > 991 && $window.height() > 499 ) {
 
 				var img_height = $img.height(),
 					container_height = ($el.height() > 0) ? $el.height() : 500,
@@ -1177,8 +1177,8 @@ jQuery(document).ready(function($) {
 
 	$window.on('scroll resize', function() {
 
-		// Disable for small screens
-		if ( $window.width() < 992 || $window.height() < 500 ) {
+		// Disable for small screens and true mobile devices.
+		if ( $body.hasClass('mobile') || $window.width() < 992 || $window.height() < 500 ) {
 			return;
 		}
 
