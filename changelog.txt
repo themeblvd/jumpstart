@@ -15,6 +15,7 @@ Jump Start Changelog
 * Fixed: Updated description of Video Link option in Post Options and Page Options meta boxes to state only Vimeo and YouTube are supported.
 * Fixed: Gallery slider thumbnail and dots navigation not working when using variable width Owl Carousel.
 * Removed: Admin-side global `$content_width` hack, originally implemented to help manage videos in WP editor. No longer needed and was causing other conflicts with inserting images.
+* Updated Owl Carousel to 2.2.1.
 
 --------------------------------------------------------------
 

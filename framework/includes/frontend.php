@@ -472,7 +472,7 @@ function themeblvd_include_scripts() {
 
 	if ( themeblvd_supports( 'assets', 'owl_carousel' ) && themeblvd_get_option('gallery_carousel') ) {
 		$scripts[] = 'owl-carousel';
-		wp_enqueue_script( 'owl-carousel', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/owl-carousel/owl.carousel.min.js' ), array('jquery'), '2.0.0-beta.2.4', $in_footer );
+		wp_enqueue_script( 'owl-carousel', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/owl-carousel/owl.carousel.min.js' ), array('jquery'), '2.2.1', $in_footer );
 	}
 
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
