@@ -1,6 +1,11 @@
 Jump Start Changelog
 ====================
 
+X.X.X - XX/XX/XXXX
+------------------
+
+* Fixed: WPML switcher displaying when disabled in some instances.
+
 2.1.5 - 03/10/2017
 ------------------
 
@@ -10,7 +15,7 @@ Jump Start Changelog
 * Improvement: Google Maps API key must be set for all websites in order to use the Google Maps element of the layout builder.
 * Fixed: Google Maps API console JavaScript error in layout builder in some cases, when no Google Maps API key is set.
 * Fixed: In some cases, 0% opacity not working for transparent header on Agent base.
-* Fixed: In some cases, the framework's pre_get_posts filter was overriding WooCommerce from setting the correct products per page utilizing the loop_shop_per_page filter.
+* Fixed: In some cases, the framework's `pre_get_posts` filter was overriding WooCommerce from setting the correct products per page utilizing the `loop_shop_per_page` filter.
 * Fixed: Error when translating a page with [WPML](http://themeblvd.com/links/wpml) and the Layout Builder.
 * Fixed: Updated description of Video Link option in Post Options and Page Options meta boxes to state only Vimeo and YouTube are supported.
 * Fixed: Gallery slider thumbnail and dots navigation not working when using variable width Owl Carousel.

@@ -1689,7 +1689,7 @@ function themeblvd_has_header_info( $inc = array('header_text', 'searchform', 's
 		$return = true;
 	}
 
-	if ( in_array('wpml', $inc) && themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
+	if ( in_array('wpml', $inc) && themeblvd_do_lang_selector() ) {
 		$return = true;
 	}
 

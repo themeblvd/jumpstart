@@ -1300,7 +1300,7 @@ function jumpstart_ex_header_addon() {
 
 	printf('<div class="%s">', $class);
 
-	if ( themeblvd_do_side_panel() || themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) ) {
+	if ( themeblvd_do_side_panel() || themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || themeblvd_do_lang_selector() ) {
 
 		echo '<ul class="header-top-nav list-unstyled clearfix">';
 
@@ -1329,7 +1329,7 @@ function jumpstart_ex_header_addon() {
 		}
 
 		// WPML switcher
-		if ( themeblvd_installed('wpml') && themeblvd_supports('plugins', 'wpml') && get_option('tb_wpml_show_lang_switcher', '1') ) {
+		if ( themeblvd_do_lang_selector() ) {
 			echo '<li class="top-wpml">';
 			do_action('icl_language_selector');
 			echo '</li>';
