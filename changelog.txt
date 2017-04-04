@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-X.X.X - XX/XX/XXXX
+2.1.6 - XX/XX/XXXX
 ------------------
 
 * Fixed: WPML switcher displaying when disabled in some instances.
