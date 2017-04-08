@@ -61,6 +61,13 @@ class Theme_Blvd_Compat_WooCommerce {
 		add_filter( 'woocommerce_locate_template', array($this, 'templates'), 10, 3 );
 
 		/**
+		 * Gallery Features, WC 3.0+
+		 */
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
+		/**
 		 * Thumbnails
 		 */
 
@@ -74,10 +81,6 @@ class Theme_Blvd_Compat_WooCommerce {
 			add_filter( 'single_product_small_thumbnail_size', array($this, 'catalog_thumb') );
 
 		}
-
-		// Modify thumbnails to be ready for our lightbox
-		add_filter( 'woocommerce_single_product_image_html', array($this, 'lightbox') );
-		add_filter( 'woocommerce_single_product_image_thumbnail_html', array($this, 'lightbox') );
 
 		// Add "thumbnail" classes, if enabled for theme
 		add_filter( 'post_thumbnail_html', array($this, 'thumb_class'), 10, 2 );
@@ -645,10 +648,20 @@ class Theme_Blvd_Compat_WooCommerce {
 		echo '<span class="product-thumb">';
 
 		// We'll float the rating inside for when hovered on
-		$rating = $product->get_rating_html();
+		if ( function_exists( 'wc_get_rating_html' ) ) {
+
+			$rating = wc_get_rating_html( $product->get_average_rating() ); // WC 3.0+
+
+		} else {
+
+			$rating = $product->get_rating_html(); // @deprecated as of WC v3.0
+
+		}
 
 		if ( $rating ) {
+
 			printf( '<span class="rating-wrap">%s</span>', $rating );
+
 		}
 
 		// Output first image from product gallery, to show on hover
