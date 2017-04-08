@@ -12,6 +12,7 @@ Jump Start Changelog
 	* Fixed: Star ratings no longer showing on product thumbnails in shop view.
 	* Removed: Theme's Magnific Popup for product thumbnails.
 * Fixed: WPML switcher displaying when disabled in some instances.
+* Fixed: WPML switcher having white/invisible text in some instances.
 
 2.1.5 - 03/10/2017
 ------------------
