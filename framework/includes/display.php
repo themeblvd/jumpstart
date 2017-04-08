@@ -201,12 +201,17 @@ function themeblvd_header_logo_mobile() {
 	$logo = themeblvd_get_option('mobile_logo');
 
 	if ( ! $logo || ( ! empty($logo['type']) && $logo['type'] == 'default' ) ) {
-		$logo = themeblvd_get_option('logo');
+
+		$logo = themeblvd_get_option( 'logo' );
+
 	}
 
 	if ( $logo ) {
+
 		$logo['class'] = 'logo-mobile';
-		echo themeblvd_get_logo($logo);
+
+		echo themeblvd_get_logo( $logo );
+
 	}
 
 }

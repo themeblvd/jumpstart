@@ -1530,8 +1530,10 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 	    'class'				=> ''
 	);
 
-	if ( ! $logo || ( isset($logo['type']) && $logo['type'] == 'image' && empty($logo['image']) ) ) {
-		$logo = themeblvd_get_option('logo');
+	if ( ! $logo || ( isset($logo['type']) && $logo['type'] == 'image' && empty( $logo['image'] ) ) ) {
+
+		$logo = wp_parse_args( themeblvd_get_option('logo'), $logo );
+
 	}
 
 	$logo = wp_parse_args( $logo, $defaults );
