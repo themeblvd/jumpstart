@@ -10,7 +10,7 @@
  */
 
 // Constants
-define( 'TB_FRAMEWORK_VERSION', '2.6.5' );
+define( 'TB_FRAMEWORK_VERSION', '2.6.6' );
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory() . '/framework' );
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
 
