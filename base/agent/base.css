@@ -1538,12 +1538,6 @@ button:active {
 	font-size: 1rem;
 }
 
-/* Product Images */
-.tb-product img,
-.tb-product-wrap .product-wrap-inner > .images img {
-	border-radius: 2px;
-}
-
 /* Product Lists */
 .tb-product-loop-wrap.list-view li.product {
 	margin-bottom: 50px;

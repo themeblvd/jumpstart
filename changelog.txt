@@ -1,20 +1,26 @@
 Jump Start Changelog
 ====================
 
-2.1.6 - 04/08/2017
+2.1.6 - 04/10/2017
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.5**
 * WooCommerce v3 compatibility.
 	* New: Implemented new product gallery features, only available in WooCommerce v3+.
+	* New: Added option to disable new product gallery zoom feature at *Appearance > Theme Options > Plugins > WooCommerce > Product Gallery Zoom*.
 	* Improvement: On product pages, gallery and content now displayed at 50% width each; this better suites new gallery features.
 	* Fixed: Spacing on buttons in shopping cart widget.
 	* Fixed: Product titles on shop view too large.
 	* Fixed: Star ratings no longer showing on product thumbnails in shop view.
-	* Removed: Theme's Magnific Popup for product thumbnails.
+	* Fixed: Theme's custom shop image sizes, utilizing new WooCommerce v3+ filters.
+	* Fixed: Mobile view not using matching shopping-basket icon (you must clear your browser cache for new icon to show).
+	* Removed: Removed theme's Magnific Popup for product thumbnails, in favor of WooCommerce's new native lightbox.
+	* **Important:** For best results with this theme update and WooCommerce 3.0+, [regenerate your thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/).
 * Improvement: Better fallbacks for mobile logo option not being setup properly by user.
 * Fixed: WPML switcher displaying when disabled in some instances.
 * Fixed: WPML switcher having white/invisible text in some instances.
+
+--------------------------------------------------------------
 
 2.1.5 - 03/10/2017
 ------------------

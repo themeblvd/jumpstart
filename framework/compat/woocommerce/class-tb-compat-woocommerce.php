@@ -41,6 +41,12 @@ class Theme_Blvd_Compat_WooCommerce {
 	public function __construct() {
 
 		/**
+		 * Add any WooCommerce theme support features.
+		 */
+
+		add_action( 'init', array($this, 'add_theme_support'), 5 );
+
+		/**
 		 * Assets
 		 */
 
@@ -61,24 +67,19 @@ class Theme_Blvd_Compat_WooCommerce {
 		add_filter( 'woocommerce_locate_template', array($this, 'templates'), 10, 3 );
 
 		/**
-		 * Gallery Features, WC 3.0+
-		 */
-		add_theme_support( 'wc-product-gallery-zoom' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
-		/**
 		 * Thumbnails
 		 */
 
 		// Thumb sizes
 		if ( apply_filters('themeblvd_woocommerce_images', true) ) {
 
-			// Filter single product thumb sizes
-			add_filter( 'single_product_large_thumbnail_size', array($this, 'single_thumb') );
+			add_image_size( 'shop_thumbnail', '200', '200', 1 );
+			add_image_size( 'shop_catalog', '800', '800', 1 );
+			add_image_size( 'shop_single', '800', '800', 1 );
 
-			// Catalog thumbnails
-			add_filter( 'single_product_small_thumbnail_size', array($this, 'catalog_thumb') );
+			// Image Size filtering prior to WC v3.0 (@deprecated)
+			add_filter( 'single_product_large_thumbnail_size', array($this, 'single_thumb') ); // @deprecated as of WC v3.0
+			add_filter( 'single_product_small_thumbnail_size', array($this, 'catalog_thumb') ); // @deprecated as of WC v3.0
 
 		}
 
@@ -164,8 +165,20 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Shortcodes
 		 */
 
-		// Hack into shortcodes to allow for the view to be set
-		add_filter( 'woocommerce_shortcode_products_query', array($this, 'shortcode_set_view'), 10, 2 );
+		// Allow product displaying shortcodes to have the correct number of
+		// columns and accept "view" attribute of list, grid or catalog - which
+		// is specifc to the theme.
+		add_filter( 'shortcode_atts_recent_products', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_featured_products', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_products', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_product_category', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_sale_products', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_best_selling_products', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_related_products', array($this, 'shortcode_set_view') );
+		add_filter( 'shortcode_atts_top_rated_products', array($this, 'shortcode_set_view') );
+
+		// Allow category thumbnail display to have correct number of columns
+		// inputted by the user.
 		add_filter( 'shortcode_atts_product_categories', array($this, 'shortcode_categories_set_view'), 10, 3 );
 
 		/**
@@ -214,6 +227,24 @@ class Theme_Blvd_Compat_WooCommerce {
 			return WC_VERSION;
 		}
 		return 0;
+	}
+
+	/**
+	 * Add any WooCommerce theme support.
+	 *
+	 * @since 2.6.5
+	 */
+	public function add_theme_support() {
+
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
+		if ( 'no' !== themeblvd_get_option( 'woo_product_zoom' ) ) {
+
+			add_theme_support( 'wc-product-gallery-zoom' );
+
+		}
+
 	}
 
 	/**
@@ -331,20 +362,26 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * Filter "single_product_large_thumbnail_size"
 	 *
 	 * @since 2.5.0
+	 * @deprecated
 	 */
-	public function single_thumb() {
+	public function single_thumb( $size ) {
+
 		return apply_filters('themeblvd_woocommerce_single_product_small_thumb', 'tb_square_small');
+
 	}
 
 	/**
 	 * Filter catalog thumbnail
 	 *
 	 * @since 2.5.0
+	 * @deprecated
 	 */
 	public function catalog_thumb( $size ) {
 
-		if ( $size == 'shop_catalog' ) {
-			$size = apply_filters('themeblvd_woocommerce_catalog_thumb', 'tb_square_medium');
+		if ( $size == 'shop_catalog' ) { // @deprecated as of WC v3.0
+
+			return apply_filters('themeblvd_woocommerce_catalog_thumb', 'tb_square_medium');
+
 		}
 
 		return $size;
@@ -432,22 +469,22 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function remove_options( $options ) {
 
-		$remove = array(
-			'woocommerce_enable_lightbox'
-		);
+		$remove = array();
 
-		if ( apply_filters('themeblvd_woocommerce_images', true) ) {
-			// $remove[] = 'image_options';
+		if ( apply_filters( 'themeblvd_woocommerce_images', true ) ) {
+			$remove[] = 'image_options';
 			$remove[] = 'shop_catalog_image_size';
 			$remove[] = 'shop_single_image_size';
-			// $remove[] = 'shop_thumbnail_image_size';
+			$remove[] = 'shop_thumbnail_image_size';
 		}
 
 		$remove = apply_filters('themeblvd_woocommerce_remove_options', $remove);
 
-		foreach ( $options as $key => $value ) {
-			if ( ! empty($value['id']) && in_array($value['id'], $remove) ) {
-				unset($options[$key]);
+		if ( $remove ) {
+			foreach ( $options as $key => $value ) {
+				if ( ! empty($value['id']) && in_array($value['id'], $remove) ) {
+					unset($options[$key]);
+				}
 			}
 		}
 
@@ -838,7 +875,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 *
 	 * @since 2.5.0
 	 */
-	public function shortcode_set_view( $args = array(), $atts = array() ) {
+	public function shortcode_set_view( $atts ) {
 
 		if ( ! empty( $atts['columns'] ) ) {
 			themeblvd_set_att( 'woo_product_columns', $atts['columns'] );
@@ -849,7 +886,7 @@ class Theme_Blvd_Compat_WooCommerce {
 			themeblvd_set_att( 'woo_product_view', $atts['view'] );
 		}
 
-		return $args; // pass $args back through, untouched
+		return $args; // Pass $atts back through, untouched.
 	}
 
 	/**

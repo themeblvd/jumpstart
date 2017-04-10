@@ -254,6 +254,7 @@ class Theme_Blvd_Options_API {
 	 *		- woo_product_sidebar_layout
 	 *		- woo_cross_sell
 	 * 		- woo_view_toggle
+	 *		- woo_product_zoom
 	 *	- WPML
 	 *		- wpml_show_lang_switcher
 	 */
@@ -1401,7 +1402,18 @@ class Theme_Blvd_Options_API {
 							'yes'	=> __('Yes, show buttons', 'jumpstart'),
 							'no' 	=> __('No, don\'t show buttons', 'jumpstart')
 						)
-					)
+					),
+					'woo_product_zoom' => array(
+			            'name' 		=> __('Product Gallery Zoom', 'jumpstart'),
+						'desc' 		=> __('When viewing a single product, select whether you\'d like the WooCommerce zooming feature enabled on product galleries.', 'jumpstart'),
+						'id' 		=> 'woo_product_zoom',
+						'std' 		=> 'yes',
+						'type' 		=> 'select',
+						'options' 	=> array(
+							'yes'	=> __('Yes, enable gallery zooming', 'jumpstart'),
+							'no' 	=> __('No, disable gallery zooming', 'jumpstart')
+						)
+			        )
 				)
 			), // End WooCommerce options
 

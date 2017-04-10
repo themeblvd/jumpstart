@@ -420,7 +420,7 @@ function themeblvd_cart_popup_trigger( $args = array() ) {
  *
  * @since 2.5.0
  */
-function themeblvd_get_mobile_cart_link(){
+function themeblvd_get_mobile_cart_link() {
 
 	global $woocommerce;
 
@@ -438,7 +438,7 @@ function themeblvd_get_mobile_cart_link(){
 		}
 	}
 
-	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', esc_url( apply_filters('themeblvd_cart_url', $cart_url) ), themeblvd_kses( apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-cart"></i>') ), themeblvd_kses($cart_label) );
+	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', esc_url( apply_filters('themeblvd_cart_url', $cart_url) ), themeblvd_kses( apply_filters('themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-basket"></i>') ), themeblvd_kses($cart_label) );
 
 	return apply_filters('themeblvd_mobile_cart_link', $output, $cart_url, $cart_label);
 }
