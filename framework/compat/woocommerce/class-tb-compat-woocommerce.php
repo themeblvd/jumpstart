@@ -886,7 +886,7 @@ class Theme_Blvd_Compat_WooCommerce {
 			themeblvd_set_att( 'woo_product_view', $atts['view'] );
 		}
 
-		return $args; // Pass $atts back through, untouched.
+		return $atts; // Pass $atts back through, untouched.
 	}
 
 	/**

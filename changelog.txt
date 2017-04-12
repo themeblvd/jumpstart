@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.6**
+* Fixed: Shortcode parameters not getting passed properly to WooCommerce shortcodes after 2.1.6 theme update.
 * Fixed: WooCommerce cart widget buttons not sitting properly inline.
 
 --------------------------------------------------------------
