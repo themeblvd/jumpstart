@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.6**
+* Fixed: WooCommerce cart widget buttons not sitting properly inline.
 
 --------------------------------------------------------------
 

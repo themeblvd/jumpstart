@@ -1783,9 +1783,6 @@ ul.woocommerce-info {
 .widget_shopping_cart .buttons .button {
 	margin: 0 5px 5px 0;
 }
-.widget_shopping_cart .buttons .button:last-child {
-	margin-bottom: 0;
-}
 
 /* Floating Cart (trigger) */
 .tb-cart-trigger {
