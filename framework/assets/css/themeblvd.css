@@ -5595,6 +5595,9 @@ body.mobile .tb-bg-video {
 .epic-thumb.fw img {
 	width: 100%;
 }
+.epic-thumb .epic-thumb-quote blockquote {
+	float: none !important;
+}
 @media (min-width: 768px) {
 	.epic-thumb.tb-parallax .parallax-figure.on img,
 	.epic-thumb.fw img {
@@ -5656,6 +5659,23 @@ body.mobile .tb-bg-video {
 		left: 50%;
 		width: 60px;
 		height: 2px;
+	}
+	/* @noflip */
+	.epic-thumb-quote blockquote.pull-right cite:before,
+	.epic-thumb-quote blockquote.alignright cite:before {
+		margin-left: 0;
+		left: initial;
+		right: 5px;
+	}
+	/* @noflip */
+	.epic-thumb-quote blockquote.pull-left cite:before,
+	.epic-thumb-quote blockquote.alignleft cite:before {
+		margin-left: 0;
+		left: 5px;
+	}
+	.epic-thumb-quote blockquote.pull-right small:after,
+	.epic-thumb-quote blockquote.pull-left small:before {
+		content: "";
 	}
 	.epic-thumb-quote blockquote cite {
 		color: #ffffff;
