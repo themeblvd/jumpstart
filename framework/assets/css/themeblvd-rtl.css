@@ -5142,6 +5142,9 @@ blockquote p:last-of-type {
 blockquote small {
 	margin-top: 5px;
 }
+.featured-quote blockquote {
+	float: none !important;
+}
 
 /* =Media (media.php)
 -----------------------------------------------*/
