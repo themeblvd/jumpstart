@@ -4,6 +4,7 @@ Jump Start Changelog
 2.1.8 - XX/XX/XXXX
 ------------------
 
+* **Updated Theme Blvd framework to 2.6.7**
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
 
 --------------------------------------------------------------
