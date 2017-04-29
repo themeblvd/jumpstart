@@ -166,7 +166,7 @@ Author URI: http://www.themeblvd.com
 	line-height: 1;
 	margin-top: 5px;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
 	.header-content .header-text-logo .tagline {
 		display: none;
 	}
