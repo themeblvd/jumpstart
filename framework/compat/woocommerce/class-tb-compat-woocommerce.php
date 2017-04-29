@@ -859,13 +859,25 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * @since 2.5.0
 	 */
 	public function cross_sell() {
+
 		if ( is_cart() && themeblvd_get_option('woo_cross_sell') == 'yes' ) {
-			wc_get_template( 'cart/cross-sells.php', apply_filters('themeblvd_woocommerce_cross_sell_args', array(
-				'posts_per_page' => '-1',
-				'orderby'        => 'rand',
-				'columns'        => $this->loop_columns()
-			)));
+
+			$args = apply_filters('themeblvd_woocommerce_cross_sell_args', array(
+				'posts_per_page' 	=> '-1',
+				'order'				=> 'desc',
+				'orderby'        	=> 'rand',
+				'columns'        	=> $this->loop_columns()
+			));
+
+			woocommerce_cross_sell_display(
+				$args['posts_per_page'],
+				$args['columns'],
+				$args['orderby'],
+				$args['order']
+			);
+
 		}
+
 	}
 
 	/**

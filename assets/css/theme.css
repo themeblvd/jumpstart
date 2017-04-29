@@ -1081,7 +1081,8 @@ article.tb-naked-page {
 /* Related Posts/Products */
 .tb-related-posts,
 .products.upsells,
-.products.related {
+.products.related,
+.cross-sells {
 	background: #ffffff;
 	margin-bottom: 30px;
 	padding: 40px;
@@ -1089,15 +1090,23 @@ article.tb-naked-page {
 @media (max-width: 767px) {
 	.tb-related-posts,
 	.products.upsells,
-	.products.related {
+	.products.related,
+	.cross-sells {
 		padding: 30px;
 	}
 }
 .tb-related-posts .related-posts-title,
 .products.upsells > h2,
-.products.related > h2 {
+.products.related > h2,
+.cross-sells > h2 {
 	font-size: 24px;
 	margin: 0 0 1em 0;
+}
+.cross-sells {
+	margin-top: 30px;
+}
+.cross-sells .tb-product-loop-wrap {
+	padding: 0;
 }
 
 /* Edit Link */
