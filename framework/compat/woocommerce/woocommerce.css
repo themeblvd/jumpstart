@@ -1893,6 +1893,7 @@ ul.woocommerce-info {
 }
 .tb-cart-popup .widget_shopping_cart .buttons .button {
 	display: block;
+	margin: 0;
 	width: 49%;
 }
 .tb-cart-popup .widget_shopping_cart .buttons .button.wc-forward {

@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.7**
+* Fixed: WooCommerce floating shopping cart "View Cart" and "Checkout" buttons not lining up.
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
 
 --------------------------------------------------------------
