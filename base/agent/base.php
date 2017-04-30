@@ -592,7 +592,6 @@ add_filter('themeblvd_header_class', 'jumpstart_ag_header_class', 10, 2);
  * Remove header top
  */
 remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
-remove_action('themeblvd_header_menu', 'themeblvd_header_menu_default');
 
 /**
  * Remove default menu callback
