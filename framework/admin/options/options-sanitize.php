@@ -149,7 +149,7 @@ function themeblvd_sanitize_checkbox( $input ) {
  * @since 2.2.0
  */
 function themeblvd_sanitize_multicheck( $input, $option ) {
-	$output = '';
+	$output = array();
 	if ( is_array( $input ) ) {
 		foreach ( $option['options'] as $key => $value ) {
 			$output[$key] = "0";

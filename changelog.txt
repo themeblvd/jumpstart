@@ -8,6 +8,7 @@ Jump Start Changelog
 * Fixed: WooCommerce floating shopping cart "View Cart" and "Checkout" buttons not lining up.
 * Fixed: WoCommerce cross-sells not showing when enabled from Theme Options (and using WooCommerce 3.0+).
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
+* Fixed: "Illegal string offset" PHP warnings on some server configurations when saving data with multi-check option types.
 
 --------------------------------------------------------------
 
