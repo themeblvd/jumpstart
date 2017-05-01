@@ -747,6 +747,8 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 			'crop'		=> $crop,
 			'alt'		=> $attachment->post_title,
 			'src'		=> $img[0],
+			'width'		=> $img[1],
+			'height'	=> $img[2],
 			'thumb'		=> $thumb[0],
 			'title'		=> $title,
 			'desc'		=> $caption,
@@ -854,6 +856,8 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			'id'			=> 0,
 			'alt'			=> '',
 			'src'			=> '',
+			'width'			=> 0,
+			'height'		=> 0,
 			'thumb'			=> '',
 			'title'			=> '',
 			'desc'			=> '',
@@ -1058,9 +1062,27 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			}
 
 			if ( $args['cover'] ) {
+
 				$output .= sprintf( '<div class="img" style="background-image: url(%s);"></div>', $img_src );
+
 			} else {
-				$output .= sprintf( '<img src="%s" alt="%s" />', $img_src, esc_attr($img['alt']) );
+
+				$output .= sprintf( '<img src="%s" alt="%s"', $img_src, esc_attr($img['alt']) );
+
+				if ( $img['width'] ) {
+
+					$output .= sprintf( ' width="%s"', $img['width'] );
+
+				}
+
+				if ( $img['height'] ) {
+
+					$output .= sprintf( ' height="%s"', $img['height'] );
+
+				}
+
+				$output .= ' />';
+
 			}
 
 			if ( $img['title'] || $img['desc'] ) {

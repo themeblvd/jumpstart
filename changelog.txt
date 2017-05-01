@@ -9,6 +9,7 @@ Jump Start Changelog
 * Fixed: WoCommerce cross-sells not showing when enabled from Theme Options (and using WooCommerce 3.0+).
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
 * Fixed: "Illegal string offset" PHP warnings on some server configurations when saving data with multi-check option types.
+* Fixed: Occasional buggy behavior in loading variable-width Owl Carousel.
 
 --------------------------------------------------------------
 
@@ -55,7 +56,7 @@ Jump Start Changelog
 * Fixed: In some cases, the framework's `pre_get_posts` filter was overriding WooCommerce from setting the correct products per page utilizing the `loop_shop_per_page` filter.
 * Fixed: Error when translating a page with [WPML](http://themeblvd.com/links/wpml) and the Layout Builder.
 * Fixed: Updated description of Video Link option in Post Options and Page Options meta boxes to state only Vimeo and YouTube are supported.
-* Fixed: Gallery slider thumbnail and dots navigation not working when using variable width Owl Carousel.
+* Fixed: Gallery slider thumbnail and dots navigation not working when using variable-width Owl Carousel.
 * Fixed: Parallax backgrounds no longer display on mobile devices with large viewports (landscape oriented iPad for example); this was resulting in janky scrolling behavior and was never intended to be supported on true mobile devices.
 * Removed: Admin-side global `$content_width` hack, originally implemented to help manage videos in WP editor. No longer needed and was causing other conflicts with inserting images.
 * Updated: Owl Carousel to 2.2.1.

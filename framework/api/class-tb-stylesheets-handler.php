@@ -166,7 +166,7 @@ class Theme_Blvd_Stylesheet_Handler {
 				'handle'	=> 'owl-carousel',
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/owl-carousel/owl.carousel.min.css',
 				'deps'		=> array(),
-				'ver'		=> '2.0.0-beta.2.4',
+				'ver'		=> '2.2.1',
 				'media'		=> 'all'
 			);
 		}
