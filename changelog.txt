@@ -10,6 +10,7 @@ Jump Start Changelog
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
 * Fixed: "Illegal string offset" PHP warnings on some server configurations when saving data with multi-check option types.
 * Fixed: Occasional buggy behavior in loading variable-width Owl Carousel.
+* Fixed: Simple slider image links to lightbox not working.
 
 --------------------------------------------------------------
 

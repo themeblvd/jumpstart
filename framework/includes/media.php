@@ -1040,7 +1040,8 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 					$output .= themeblvd_get_link_to_lightbox(array(
 						'item' 		=> '',
 						'link' 		=> $img['link_url'],
-						'title' 	=> $img['alt']
+						'title' 	=> $img['alt'],
+						'class'		=> 'slide-link'
 					));
 
 				} else {
