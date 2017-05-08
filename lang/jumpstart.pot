@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jump Start 2.1.7\n"
+"Project-Id-Version: Jump Start 2.1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 15:16-0700\n"
 "PO-Revision-Date: 2017-04-10 15:16-0700\n"
