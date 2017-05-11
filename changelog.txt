@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.8**
+* Fixed: WooCommerce up-sells not showing on product pages (and using WooCommerce 3.0+).
 
 --------------------------------------------------------------
 
@@ -13,7 +14,7 @@ Jump Start Changelog
 
 * **Updated Theme Blvd framework to 2.6.7**
 * Fixed: WooCommerce floating shopping cart "View Cart" and "Checkout" buttons not lining up.
-* Fixed: WoCommerce cross-sells not showing when enabled from Theme Options (and using WooCommerce 3.0+).
+* Fixed: WooCommerce cross-sells not showing when enabled from Theme Options (and using WooCommerce 3.0+).
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
 * Fixed: "Illegal string offset" PHP warnings on some server configurations when saving data with multi-check option types.
 * Fixed: Occasional buggy behavior in loading variable-width Owl Carousel.
