@@ -1067,7 +1067,10 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function cart_link_fragment( $fragments ) {
 
-		$fragments['.tb-cart-trigger'] = themeblvd_get_cart_popup_trigger();
+		$fragments['.tb-woocommerce-cart-popup-link'] = themeblvd_get_cart_popup_trigger();
+
+		$fragments['.tb-woocommerce-cart-page-link'] = themeblvd_get_cart_popup_trigger( array( 'target' => null ) );
+
 		$fragments['#mobile-to-cart'] = themeblvd_get_mobile_cart_link();
 
 		return $fragments;

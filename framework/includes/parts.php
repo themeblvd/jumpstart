@@ -375,33 +375,101 @@ function themeblvd_cart_popup( $args = array() ) {
  */
 function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
+	// Is WooCommerce plugin active and are we supporting it?
+	$woocommerce = false;
+
+	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+		$woocommerce = true;
+	}
+
 	// Setup arguments
-	$defaults = apply_filters('themeblvd_cart_popup_trigger_defaults', array( // filtering matches themeblvd_get_cart_popup() args
-		'icon'			=> 'shopping-basket',		// FontAwesome icon to open
-		'class'			=> '',						// Optional CSS classes to add
-		'target'		=> 'floating-shopping-cart'	// HTML ID of floating shopping cart linking to
+	$defaults = apply_filters('themeblvd_cart_popup_trigger_defaults', array( // Filtering matches themeblvd_get_cart_popup() args.
+		'id'			=> '',
+		'icon'			=> 'shopping-basket',			// FontAwesome icon to open.
+		'class'			=> '',							// Optional CSS classes to add.
+		'target'		=> 'floating-shopping-cart',	// HTML ID of floating shopping cart linking to.
+		'url'			=> '#',							// Cart URL.
+		'count'			=> '',							// Cart item count.
 	));
 	$args = wp_parse_args( $args, $defaults );
 
 	if ( ! empty($args['open']) ) {
-		$args['icon'] = $args['open']; // backwards compat
+		$args['icon'] = $args['open']; // Backwards compat.
 	}
 
-	$class = 'tb-cart-trigger menu-btn';
-
-	if ( $args['class'] ) {
-		$class .= ' '.$args['class'];
-	}
-
-	$output = sprintf( '<a href="#" class="%s" data-toggle="modal" data-target="#%s"><i class="fa fa-%3$s"></i></a>', esc_attr($class), esc_attr($args['target']), esc_attr($args['icon']) );
-
-	if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
-		if ( $count = WC()->cart->get_cart_contents_count() ) {
-			$output =  str_replace('tb-cart-trigger', 'tb-cart-trigger has-label char-'.strlen(strval($count)), $output);
-			$label = sprintf( '<span class="trigger-label">%s</span>', $count );
-			$output =  str_replace('</a>', themeblvd_kses($label).'</a>', $output);
+	// Disable floating cart on WooCommerce cart and
+	// checkout page.
+	if ( $woocommerce ) {
+		if ( is_cart() || is_checkout() ) {
+			$args['target'] = null;
 		}
 	}
+
+	// Cart URL.
+	$url = $args['url'];
+
+	if ( $woocommerce ) {
+		if ( ! $args['target'] ) {
+			$url = WC()->cart->get_cart_url(); // Full cart URL, because floating cart disabled.
+		}
+	}
+
+	$url = apply_filters( 'themeblvd_cart_url', $url );
+
+	// Cart count.
+	$count = null;
+
+	if ( $woocommerce ) {
+		$count = WC()->cart->get_cart_contents_count();
+	}
+
+	$count = apply_filters( 'themeblvd_cart_count', $count );
+
+	// CSS class.
+	$class = 'tb-cart-trigger menu-btn';
+
+	if ( $count ) {
+		$class .= ' has-label char-' . strlen( strval( $count ) );
+	}
+
+	if ( $woocommerce ) {
+		if ( $args['target'] ) {
+			$class .= ' tb-woocommerce-cart-popup-link';
+		} else {
+			$class .= ' tb-woocommerce-cart-page-link';
+		}
+	}
+
+	if ( $args['target'] ) {
+		$class .= ' has-popup';
+	} else {
+		$class .= ' no-popup';
+	}
+
+	if ( $args['class'] ) {
+		$class .= ' ' . $args['class'];
+	}
+
+	// Build output.
+	$output = '<a href="' . esc_url($url) . '" class="' . esc_attr($class) . '"';
+
+	if ( $args['id'] ) {
+		$output .= ' id="' . $id . '"';
+	}
+
+	if ( $args['target'] ) {
+		$output .= ' data-toggle="modal" data-target="#' . esc_attr($args['target']) . '"';
+	}
+
+	$output .= '>';
+
+	$output .= '<i class="fa fa-' . esc_attr($args['icon']) . '"></i>';
+
+	if ( $count ) {
+		$output .= sprintf( '<span class="trigger-label">%s</span>', $count );
+	}
+
+	$output .= '</a>';
 
 	return apply_filters('themeblvd_cart_popup_trigger', $output, $args);
 }

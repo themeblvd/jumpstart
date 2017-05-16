@@ -5,6 +5,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.8**
+* Improvement: On pages where where WooCommerce floating cart isn't supported (like checkout and cart page, itself), the cart icon now links to the cart page.
 * Fixed: WooCommerce up-sells not showing on product pages (and using WooCommerce 3.0+).
 
 --------------------------------------------------------------
