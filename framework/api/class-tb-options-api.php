@@ -181,6 +181,8 @@ class Theme_Blvd_Options_API {
 	 *		- single_comments
 	 *	- Pages
 	 *		- page_thumbs
+	 *	- Blog Homepage
+	 *		- home_mode
 	 *	- Archives
 	 *		- archive_mode
 	 *		- category_info
@@ -745,6 +747,22 @@ class Theme_Blvd_Options_API {
 				)
 			),
 
+			// Section: Blog Homepage
+			'home' => array(
+				'name' => __('Blog Homepage', 'jumpstart'),
+				'desc' => __('These settings apply when you\'re viewing your blog homepage or "posts page" set at Settings > Reading > Frontpage displays.', 'jumpstart'),
+				'options' => array(
+					'home_mode' => array(
+						'name' 		=> __('Post Display', 'jumpstart'),
+						'desc' 		=> __('When viewing your blog homepage, how do you want the posts displayed by default?', 'jumpstart'),
+						'id' 		=> 'home_mode',
+						'std' 		=> 'blog',
+						'type' 		=> 'select',
+						'options' 	=> themeblvd_get_modes()
+					)
+				) // End blog homepage options
+			),
+
 			// Section: Archives
 			'archives' => array(
 				'name' => __('Archives', 'jumpstart'),
@@ -786,7 +804,7 @@ class Theme_Blvd_Options_API {
 			// Section: Primary Posts Display
 			'blog' => array(
 				'name' => __('Post Display: Blog', 'jumpstart'),
-				'desc' => __('These settings apply to your main theme index page, "posts page" that you\'ve selected under Settings > Reading, and ALL instances of the "Blog" page template. Additionally, any archives you select to display in the "Blog" post layout will use these settings.', 'jumpstart'),
+				'desc' => __('These settings allow you to setup the default configuration for using the blog post display. These settings will be applied automatically to the "Blog" page template and any posts you\'ve set to display in the blog format.<br><br>For more control over a specific blog, you can apply the "Blog" element of the Layout Builder or use the [blog] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
 				'options' => array(
 					'blog_thumbs' => array(
 						'name' 		=> __('Featured Images', 'jumpstart'),
@@ -845,7 +863,7 @@ class Theme_Blvd_Options_API {
 			// Section: Post Lists
 			'list' => array(
 				'name' => __('Post Display: List', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the "Post List" page template and any archives you\'ve set to display post lists. For more control over a specifc post list, you can apply the "Post List" element of the Builder or use the [post_list] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'jumpstart'),
+				'desc' => __('These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the "Post List" page template and any posts you\'ve set to display in the post list format.<br><br>For more control over a specific post list, you can apply the "Post List" element of the Layout Builder or use the [post_list] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
 				'options' => array(
 					'list_thumbs' => array(
 						'name' 		=> __('Featured Images', 'jumpstart'),
@@ -911,7 +929,7 @@ class Theme_Blvd_Options_API {
 			// Section: Post Grids
 			'grid' => array(
 				'name' => __('Post Display: Grid', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the "Post Grid" page template and any archives you\'ve set to display post grids. For more control over a specifc post grid, you can apply the "Post Grid" element of the Builder or use the [post_grid] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'jumpstart'),
+				'desc' => __('These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the "Post Grid" page template and any posts you\'ve set to display in the post grid format.<br><br>For more control over a specific post grid, you can apply the "Post Grid" element of the Layout Builder or use the [post_grid] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
 				'options' => array(
 					'grid_sub_group_start_1' => array(
 						'type' 		=> 'subgroup_start',
@@ -1045,7 +1063,7 @@ class Theme_Blvd_Options_API {
 			// Section: Showcase
 			'showcase' => array(
 				'name' => __('Post Display: Showcase', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the "Post Showcase" page template and any archives you\'ve set to display the post showcase. For more control over a specifc post showcase, you can apply the "Post Showcase" element of the Builder or use the [post_showcase] shortcode in a page, which will both give you the ability to reconfigure all of these options for that instance.', 'jumpstart'),
+				'desc' => __('These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the "Post Showcase" page template and any posts you\'ve set to display in the post showcase format.<br><br>For more control over a specific post showcase, you can apply the "Post Showcase" element of the Layout Builder or use the [post_showcase] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
 				'options' => array(
 					'showcase_crop' => array(
 				    	'id' 		=> 'showcase_crop',

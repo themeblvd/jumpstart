@@ -156,7 +156,9 @@ class Theme_Blvd_Frontend_Init {
 
 		if ( $q->is_home() ) {
 
-			$this->mode = apply_filters('themeblvd_posts_page_mode', 'blog');
+			$this->mode = themeblvd_get_option( 'home_mode', null, 'blog' );
+
+			$this->mode = apply_filters( 'themeblvd_posts_page_mode', $this->mode ); // For backwards compat; this filter existed before end-user option did.
 
 		} else if ( $q->is_archive() ) {
 
