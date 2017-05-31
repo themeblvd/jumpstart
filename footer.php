@@ -67,7 +67,7 @@
 			<?php else : ?>
 
 				<div id="bottom">
-					<footer id="colophon" <?php themeblvd_footer_class(); ?> role="contentinfo">
+					<footer id="colophon" <?php themeblvd_footer_class(); ?>>
 						<div class="wrap clearfix">
 							<?php
 							/**

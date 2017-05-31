@@ -226,7 +226,7 @@ if ( ! function_exists('themeblvd_header_menu_default') ) :
 function themeblvd_header_menu_default() {
 	do_action( 'themeblvd_header_menu_before' );
 	?>
-	<nav id="access" class="header-nav" role="navigation">
+	<nav id="access" class="header-nav">
 		<div class="wrap clearfix">
 
 			<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args('primary') ); ?>

@@ -46,7 +46,7 @@ do_action('themeblvd_before');
 		<?php if ( themeblvd_config('top') ) : ?>
 
 			<div id="top">
-				<header id="branding" <?php themeblvd_header_class(); ?> role="banner">
+				<header id="branding" <?php themeblvd_header_class(); ?>>
 					<div class="wrap clearfix">
 						<?php
 						/**

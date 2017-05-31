@@ -612,7 +612,7 @@ function jumpstart_ag_header_menu() {
 
 	?>
 
-	<nav id="access" class="header-nav" role="navigation">
+	<nav id="access" class="header-nav">
 		<div class="wrap clearfix">
 
 			<?php if ( themeblvd_get_option('searchform') == 'show' || themeblvd_do_cart() || themeblvd_do_lang_selector() || themeblvd_do_side_panel() ) : ?>
