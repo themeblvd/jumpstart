@@ -10,6 +10,7 @@ Jump Start Changelog
 * Fixed: WooCommerce up-sells not showing on product pages (with WooCommerce 3.0+).
 * Fixed: Minor WooCommerce HTML5 validation errors (with WooCommerce 3.0+).
 * Fixed: Minor PHP warnings and errors on some server configurations.
+* Fixed: Italic font style for quotes selected from Typography theme options not applying to quotes overlaid on featured images in Quote format posts.
 
 --------------------------------------------------------------
 
