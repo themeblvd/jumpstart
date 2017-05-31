@@ -135,7 +135,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		add_filter( 'woocommerce_show_page_title', '__return_false' );
 
 		// Wrap products
-		add_filter( 'woocommerce_before_shop_loop_item', array($this, 'loop_product_open') );
+		add_filter( 'woocommerce_before_shop_loop_item', array($this, 'loop_product_open'), 5 );
 		add_filter( 'woocommerce_after_shop_loop_item', array($this, 'loop_product_close') );
 
 		// Product thumbnail crossfade and thumb class
@@ -696,6 +696,8 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		if ( $rating ) {
+
+			$rating = str_replace( 'div', 'span', $rating );
 
 			printf( '<span class="rating-wrap">%s</span>', $rating );
 

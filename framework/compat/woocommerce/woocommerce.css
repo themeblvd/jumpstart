@@ -340,6 +340,7 @@ ul.woocommerce-info {
 	z-index: 3;
 }
 .tb-product .rating-wrap .star-rating {
+	display: block;
 	float: none;
 	margin: 0 auto;
 }
