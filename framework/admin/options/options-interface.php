@@ -739,7 +739,11 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			case 'background':
 
-				$background = $val;
+				$background = array();
+
+				if ( $val ) {
+					$background = $val;
+				}
 
 				// Show background color?
 				$color = true;
@@ -783,7 +787,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$class = 'of-background-properties';
 
-                if ( empty( $background['image'] ) ) {
+				if ( empty( $background['image'] ) ) {
 					$class .= ' hide';
 				}
 

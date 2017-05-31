@@ -828,21 +828,26 @@ function themeblvd_sanitize_slide( $input ) {
  */
 function themeblvd_sanitize_slider( $input ) {
 
-	// Remove admin attachment restrains
+	// Remove admin attachment restraints.
 	add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
-
-	// Setup crop size
-	$crop = 'full';
-
-	if ( ! empty($input['crop']) ) {
-		$crop = wp_kses( $input['crop'], array() );
-	}
-
-	unset($input['crop']);
 
 	$output = array();
 
-	if ( $input && is_array($input) ) {
+	if ( $input && is_array( $input ) ) {
+
+		// Setup crop size.
+
+		$crop = 'full';
+
+		if ( ! empty( $input['crop'] ) ) {
+			$crop = wp_kses( $input['crop'], array() );
+		}
+
+		if ( isset( $input['crop'] ) ) {
+			unset( $input['crop'] );
+		}
+
+		// Begin loop through slides.
 
 		foreach ( $input as $item_id => $item ) {
 
