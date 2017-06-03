@@ -1,6 +1,11 @@
 Jump Start Changelog
 ====================
 
+2.1.10 - XX/XX/XXXX
+-------------------
+
+--------------------------------------------------------------
+
 2.1.9 - 05/31/2017
 ------------------
 
@@ -44,7 +49,7 @@ Jump Start Changelog
 * WooCommerce v3 compatibility.
 	* New: Implemented new product gallery features, only available in WooCommerce v3+.
 	* New: Added option to disable new product gallery zoom feature at *Appearance > Theme Options > Plugins > WooCommerce > Product Gallery Zoom*.
-	* Improvement: On product pages, gallery and content now displayed at 50% width each; this better suites new gallery features.
+	* Improvement: On product pages, gallery and content now displayed at 50% width each; this better suits new gallery features.
 	* Fixed: Spacing on buttons in shopping cart widget.
 	* Fixed: Product titles on shop view too large.
 	* Fixed: Star ratings no longer showing on product thumbnails in shop view.
