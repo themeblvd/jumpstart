@@ -1211,9 +1211,9 @@ function themeblvd_editor( $args = array() ) {
 	<div id="themeblvd-editor-modal" class="themeblvd-modal-wrap hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-editor">
 
-			<button type="button" class="button-link media-modal-close">
+			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">x</span>
+					<span class="screen-reader-text">Close media panel</span>
 				</span>
 			</button>
 
@@ -1277,9 +1277,9 @@ function themeblvd_icon_browser( $args = array() ) {
 	<div id="themeblvd-icon-browser-<?php echo $args['type']; ?>" class="themeblvd-modal-wrap themeblvd-icon-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
 
-			<button type="button" class="button-link media-modal-close">
+			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">x</span>
+					<span class="screen-reader-text">Close media panel</span>
 				</span>
 			</button>
 
@@ -1345,9 +1345,9 @@ function themeblvd_post_browser( $args = array() ) {
 	<div id="themeblvd-post-browser" class="themeblvd-modal-wrap themeblvd-post-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
 
-			<button type="button" class="button-link media-modal-close">
+			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">x</span>
+					<span class="screen-reader-text">Close media panel</span>
 				</span>
 			</button>
 
@@ -1448,9 +1448,9 @@ function themeblvd_texture_browser( $args = array() ) {
 	<div id="themeblvd-texture-browser" class="themeblvd-modal-wrap themeblvd-texture-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
 
-			<button type="button" class="button-link media-modal-close">
+			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">x</span>
+					<span class="screen-reader-text">Close media panel</span>
 				</span>
 			</button>
 

@@ -4,6 +4,8 @@ Jump Start Changelog
 2.1.10 - XX/XX/XXXX
 -------------------
 
+* Fixed: Minor admin styling issues with WordPress 4.8+.
+
 --------------------------------------------------------------
 
 2.1.9 - 05/31/2017
