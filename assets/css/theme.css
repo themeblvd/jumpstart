@@ -242,11 +242,6 @@ body {
 .header-top-mini .header-top-nav .tb-cart-trigger {
 	line-height: 20px;
 }
-body.woocommerce-checkout .header-top-nav .tb-cart-trigger,
-body.woocommerce-cart .header-top-nav .tb-cart-trigger {
-	cursor: default;
-	opacity: 1;
-}
 .header-top-nav .tb-cart-trigger.has-label {
 	margin-right: 10px;
 }
