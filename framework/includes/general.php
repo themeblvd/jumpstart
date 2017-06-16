@@ -2137,42 +2137,38 @@ function themeblvd_is_lightbox_url( $url ) {
 
 	if ( $url ) {
 
-		// Link to Vimeo page?
-		if ( strpos( $url, 'vimeo.com' ) !== false ) {
+		if ( strpos( $url, 'vimeo.com' ) !== false ) { // Vimeo video?
+
 			$icon = 'video';
-		}
 
-		// Link to YouTube page?
-		if ( strpos( $url, 'youtube.com' ) !== false ) {
+		} else if ( strpos( $url, 'youtube.com' ) !== false ) { // YouTube video?
+
 			$icon = 'video';
-		}
 
-		// Link to Google map?
-		if ( strpos( $url, 'maps.google.com' ) !== false ) {
-			$icon = 'image'; // represents more of an "enlarge" icon
-		}
+		} else if ( strpos( $url, 'maps.google.com' ) !== false ) { // Google map?
 
-		// Link to inline popup?
-		if ( strpos( $url, '#' ) === 0 ) {
-			$icon = 'image'; // represents more of an "enlarge" icon
-		}
+			$icon = 'image';
 
-		if ( ! $icon ) {
+		} else if ( strpos( $url, '#' ) === 0 ) { // Inline content?
+
+			$icon = 'image';
+
+		} else { // Image?
 
 			$parsed_url = parse_url( $url );
 
-			if ( ! empty($parsed_url['path']) ) {
+			if ( ! empty( $parsed_url['path'] ) ) {
 
 				$type = wp_check_filetype( $parsed_url['path'] );
 
-				// Link to image file?
 				if ( substr( $type['type'], 0, 5 ) == 'image' ) {
+
 					$icon = 'image';
+
 				}
-
 			}
-
 		}
+
 	}
 
 	return apply_filters( 'themeblvd_is_lightbox_url', $icon, $url );

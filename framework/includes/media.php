@@ -1199,7 +1199,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		'item' 		=> themeblvd_get_local('link_to_lightbox'), // HTML Markup to be wrapped in link
 		'link' 		=> '',										// Source for media in lightbox
 		'title' 	=> '', 										// Title for link
-		'type'		=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
+		'type'		=> 'iframe',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
 		'class' 	=> '', 										// Additional CSS classes to add
 		'props'		=> array(),									// Additional properties for anchor tag, i.e. array( 'data-something' => 'whatever' )
 		'addon'		=> '',										// Optional addon for anchor tag, i.e. data-something="whatever"
@@ -1228,31 +1228,27 @@ function themeblvd_get_link_to_lightbox( $args ) {
 
 	if ( ! in_array( $type, $types ) ) {
 
+		$type = 'iframe'; // Default, will work for videos, google maps, webpages, etc.
+
 		// Auto lightbox type detection
-		if ( strpos( $props['href'], 'youtube.com' ) !== false || strpos( $props['href'], 'vimeo.com' ) !== false || strpos( $props['href'], 'maps.google.com' ) !== false ) {
-
-			$type = 'iframe';
-
-		} else if ( strpos( $props['href'], '#' ) === 0 ) {
+		if ( strpos( $props['href'], '#' ) === 0 ) {
 
 			$type = 'inline';
 
 		} else {
 
 			$parsed_url = parse_url( $props['href'] );
-			$filetype = wp_check_filetype( $parsed_url['path'] );
 
-			// Link to image file?
-			if ( substr( $filetype['type'], 0, 5 ) == 'image' ) {
-				$type = 'image';
+			if ( ! empty( $parsed_url['path'] ) ) {
+
+				$filetype = wp_check_filetype( $parsed_url['path'] );
+
+				// Link to image file?
+				if ( substr( $filetype['type'], 0, 5 ) == 'image' ) {
+					$type = 'image';
+				}
 			}
 
-		}
-
-		// Not recognized as video, inline, or image.
-		// Display as standard webpage.
-		if ( ! $type ) {
-			$type = 'iframe';
 		}
 
 	}
@@ -1295,7 +1291,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	}
 
 	// Finish link
-	$output .= sprintf( '>%s</a>', themeblvd_kses($item) );
+	$output .= sprintf( '>%s</a>', themeblvd_kses($item) ); $output .= 'hello?';
 
 	return apply_filters( 'themeblvd_link_to_lightbox', $output, $args, $props, $type, $item, $class );
 }
