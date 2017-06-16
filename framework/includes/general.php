@@ -1767,6 +1767,9 @@ function themeblvd_allowed_tags() {
 	$tags['a']['data-text'] = true;
 	$tags['a']['data-text-hover'] = true;
 
+	$tags['img']['srcset'] = true;
+	$tags['img']['sizes'] = true;
+
 	$tags['iframe'] = array(
 		'style' 				=> true,
 		'width' 				=> true,
