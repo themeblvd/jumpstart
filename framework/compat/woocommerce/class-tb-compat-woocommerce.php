@@ -901,6 +901,10 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function shortcode_set_view( $atts ) {
 
+		if ( ! function_exists('themeblvd_set_att') ) {
+			return $atts;
+		}
+
 		if ( ! empty( $atts['columns'] ) ) {
 			themeblvd_set_att( 'woo_product_columns', $atts['columns'] );
 		}
@@ -921,6 +925,10 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function shortcode_categories_set_view( $out, $pairs, $atts ) {
 
+		if ( ! function_exists('themeblvd_set_att') ) {
+			return $atts;
+		}
+
 		if ( ! empty( $atts['columns'] ) ) {
 			themeblvd_set_att( 'woo_product_columns', $atts['columns'] );
 		}
@@ -939,6 +947,10 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * @since 2.5.0
 	 */
 	public function shortcode_reset_view() {
+
+		if ( ! function_exists('themeblvd_set_att') ) {
+			return $atts;
+		}
 
 		if ( themeblvd_get_att('woo_product_columns') ) {
 			themeblvd_set_att( 'woo_product_columns', null );
