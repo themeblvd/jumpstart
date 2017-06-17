@@ -1291,7 +1291,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	}
 
 	// Finish link
-	$output .= sprintf( '>%s</a>', themeblvd_kses($item) ); $output .= 'hello?';
+	$output .= sprintf( '>%s</a>', themeblvd_kses($item) );
 
 	return apply_filters( 'themeblvd_link_to_lightbox', $output, $args, $props, $type, $item, $class );
 }
