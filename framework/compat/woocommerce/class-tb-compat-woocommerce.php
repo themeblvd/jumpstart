@@ -926,7 +926,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	public function shortcode_categories_set_view( $out, $pairs, $atts ) {
 
 		if ( ! function_exists('themeblvd_set_att') ) {
-			return $atts;
+			return $out;
 		}
 
 		if ( ! empty( $atts['columns'] ) ) {
@@ -949,7 +949,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	public function shortcode_reset_view() {
 
 		if ( ! function_exists('themeblvd_set_att') ) {
-			return $atts;
+			return;
 		}
 
 		if ( themeblvd_get_att('woo_product_columns') ) {
