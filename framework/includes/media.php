@@ -1108,7 +1108,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 					}
 				}
 
-				$output .= '</div><!-- .carousel-caption-wrap (end) -->';
+				$output .= '</div><!-- .carousel-caption (end) -->';
 
 			}
 
