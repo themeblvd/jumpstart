@@ -255,7 +255,6 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 
 			} else if ( ! empty( $options['categories'] ) && empty( $options['categories']['all'] ) ) {
 
-				unset( $options['categories']['all'] );
 				$categories = '';
 
 				foreach ( $options['categories'] as $category => $include ) {

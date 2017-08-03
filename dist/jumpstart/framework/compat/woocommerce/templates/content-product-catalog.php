@@ -9,11 +9,11 @@ global $product;
 
 	<td class="product-name">
 		<h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-		<?php echo $product->get_categories(', '); ?>
+		<?php echo wc_get_product_category_list( $product->get_id() ); ?>
 	</td>
 
 	<td class="product-rating">
-		<?php echo $product->get_rating_html(); ?>
+		<?php echo wc_get_rating_html( $product->get_average_rating() ); ?>
 	</td>
 
 	<td class="product-price">
