@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jump Start 2.1.9\n"
+"Project-Id-Version: Jump Start 2.1.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-31 12:12-0700\n"
-"PO-Revision-Date: 2017-05-31 12:12-0700\n"
+"POT-Creation-Date: 2017-08-03 11:56-0700\n"
+"PO-Revision-Date: 2017-08-03 11:56-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -5397,449 +5397,449 @@ msgstr ""
 msgid "White"
 msgstr ""
 
-#: ../framework/includes/general.php:1970
+#: ../framework/includes/general.php:1973
 msgid "No pages to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1975
+#: ../framework/includes/general.php:1978
 msgid "Posts"
 msgstr ""
 
-#: ../framework/includes/general.php:1976
+#: ../framework/includes/general.php:1979
 msgid "No posts to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1981
+#: ../framework/includes/general.php:1984
 msgid "Posts in Category"
 msgstr ""
 
-#: ../framework/includes/general.php:1982
-#: ../framework/includes/general.php:1988
-#: ../framework/includes/general.php:2006
-#: ../framework/includes/general.php:2035
-#: ../framework/includes/general.php:2047
+#: ../framework/includes/general.php:1985
+#: ../framework/includes/general.php:1991
+#: ../framework/includes/general.php:2009
+#: ../framework/includes/general.php:2038
+#: ../framework/includes/general.php:2050
 msgid "No categories to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1987
+#: ../framework/includes/general.php:1990
 msgid "Category Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1993
+#: ../framework/includes/general.php:1996
 msgid "Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:1994
-#: ../framework/includes/general.php:2041
+#: ../framework/includes/general.php:1997
+#: ../framework/includes/general.php:2044
 msgid "No tags to display."
 msgstr ""
 
-#: ../framework/includes/general.php:1999
+#: ../framework/includes/general.php:2002
 msgid "Single Portfolio Items"
 msgstr ""
 
-#: ../framework/includes/general.php:2000
+#: ../framework/includes/general.php:2003
 msgid "No portfolio items to display."
 msgstr ""
 
-#: ../framework/includes/general.php:2005
+#: ../framework/includes/general.php:2008
 msgid "Items in Portfolio"
 msgstr ""
 
-#: ../framework/includes/general.php:2011
+#: ../framework/includes/general.php:2014
 msgid "Portfolios"
 msgstr ""
 
-#: ../framework/includes/general.php:2012
+#: ../framework/includes/general.php:2015
 msgid "No portfolios to display."
 msgstr ""
 
-#: ../framework/includes/general.php:2017
+#: ../framework/includes/general.php:2020
 msgid "Portfolio Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2018
+#: ../framework/includes/general.php:2021
 msgid "No portfolio tags to display."
 msgstr ""
 
-#: ../framework/includes/general.php:2023
+#: ../framework/includes/general.php:2026
 msgid "Portfolio Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2027
+#: ../framework/includes/general.php:2030
 msgid "All single portfolio items"
 msgstr ""
 
-#: ../framework/includes/general.php:2028
+#: ../framework/includes/general.php:2031
 msgid "Items displayed by portfolio"
 msgstr ""
 
-#: ../framework/includes/general.php:2029
+#: ../framework/includes/general.php:2032
 msgid "Items displayed by portfolio tag"
 msgstr ""
 
-#: ../framework/includes/general.php:2034
+#: ../framework/includes/general.php:2037
 msgid "Product Category Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2040
+#: ../framework/includes/general.php:2043
 msgid "Product Tag Archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2046
+#: ../framework/includes/general.php:2049
 msgid "Products in Category"
 msgstr ""
 
-#: ../framework/includes/general.php:2052
+#: ../framework/includes/general.php:2055
 msgid "Product Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2056
+#: ../framework/includes/general.php:2059
 msgid "All WooCommerce pages"
 msgstr ""
 
-#: ../framework/includes/general.php:2057
+#: ../framework/includes/general.php:2060
 msgid "All single products"
 msgstr ""
 
-#: ../framework/includes/general.php:2058
+#: ../framework/includes/general.php:2061
 msgid "Products displayed by category"
 msgstr ""
 
-#: ../framework/includes/general.php:2059
+#: ../framework/includes/general.php:2062
 msgid "Products displayed by tag"
 msgstr ""
 
-#: ../framework/includes/general.php:2060
+#: ../framework/includes/general.php:2063
 msgid "WooCommerce search results"
 msgstr ""
 
-#: ../framework/includes/general.php:2065
+#: ../framework/includes/general.php:2068
 msgid "Forums"
 msgstr ""
 
-#: ../framework/includes/general.php:2071
+#: ../framework/includes/general.php:2074
 msgid "Forum Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2075
+#: ../framework/includes/general.php:2078
 msgid "All bbPress pages"
 msgstr ""
 
-#: ../framework/includes/general.php:2076
+#: ../framework/includes/general.php:2079
 msgid "All single topics"
 msgstr ""
 
-#: ../framework/includes/general.php:2077
+#: ../framework/includes/general.php:2080
 msgid "All single forums"
 msgstr ""
 
-#: ../framework/includes/general.php:2078
+#: ../framework/includes/general.php:2081
 msgid "Viewing topics by tag"
 msgstr ""
 
-#: ../framework/includes/general.php:2079
+#: ../framework/includes/general.php:2082
 msgid "Public user profiles"
 msgstr ""
 
-#: ../framework/includes/general.php:2080
+#: ../framework/includes/general.php:2083
 msgid "Logged-in user home"
 msgstr ""
 
-#: ../framework/includes/general.php:2085
+#: ../framework/includes/general.php:2088
 msgid "Hierarchy"
 msgstr ""
 
-#: ../framework/includes/general.php:2089
+#: ../framework/includes/general.php:2092
 msgid "Homepage"
 msgstr ""
 
-#: ../framework/includes/general.php:2090
+#: ../framework/includes/general.php:2093
 msgid "All posts (any post type)"
 msgstr ""
 
-#: ../framework/includes/general.php:2091
+#: ../framework/includes/general.php:2094
 msgid "All blog posts"
 msgstr ""
 
-#: ../framework/includes/general.php:2092
+#: ../framework/includes/general.php:2095
 msgid "All pages"
 msgstr ""
 
-#: ../framework/includes/general.php:2093
+#: ../framework/includes/general.php:2096
 msgid "All archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2094
+#: ../framework/includes/general.php:2097
 msgid "All category archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2095
+#: ../framework/includes/general.php:2098
 msgid "All tag archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2096
+#: ../framework/includes/general.php:2099
 msgid "All author archives"
 msgstr ""
 
-#: ../framework/includes/general.php:2097
+#: ../framework/includes/general.php:2100
 msgid "Search Results"
 msgstr ""
 
-#: ../framework/includes/general.php:2098
+#: ../framework/includes/general.php:2101
 msgid "404 Page"
 msgstr ""
 
-#: ../framework/includes/general.php:2103
+#: ../framework/includes/general.php:2106
 msgid "Custom"
 msgstr ""
 
-#: ../framework/includes/general.php:2191
+#: ../framework/includes/general.php:2190
 msgid "General: Chat"
 msgstr ""
 
-#: ../framework/includes/general.php:2192
+#: ../framework/includes/general.php:2191
 msgid "General: Cloud"
 msgstr ""
 
-#: ../framework/includes/general.php:2193
+#: ../framework/includes/general.php:2192
 msgid "General: Link"
 msgstr ""
 
-#: ../framework/includes/general.php:2194
+#: ../framework/includes/general.php:2193
 msgid "General: Mail"
 msgstr ""
 
-#: ../framework/includes/general.php:2195
+#: ../framework/includes/general.php:2194
 msgid "General: Movie"
 msgstr ""
 
-#: ../framework/includes/general.php:2196
+#: ../framework/includes/general.php:2195
 msgid "General: Music"
 msgstr ""
 
-#: ../framework/includes/general.php:2197
+#: ../framework/includes/general.php:2196
 msgid "General: Portfolio"
 msgstr ""
 
-#: ../framework/includes/general.php:2198
+#: ../framework/includes/general.php:2197
 msgid "General: RSS"
 msgstr ""
 
-#: ../framework/includes/general.php:2199
+#: ../framework/includes/general.php:2198
 msgid "General: Store"
 msgstr ""
 
-#: ../framework/includes/general.php:2200
+#: ../framework/includes/general.php:2199
 msgid "General: Write"
 msgstr ""
 
-#: ../framework/includes/general.php:2201
+#: ../framework/includes/general.php:2200
 msgid "Android"
 msgstr ""
 
-#: ../framework/includes/general.php:2202
+#: ../framework/includes/general.php:2201
 msgid "Apple"
 msgstr ""
 
-#: ../framework/includes/general.php:2203
+#: ../framework/includes/general.php:2202
 msgid "Behance"
 msgstr ""
 
-#: ../framework/includes/general.php:2204
+#: ../framework/includes/general.php:2203
 msgid "CodePen"
 msgstr ""
 
-#: ../framework/includes/general.php:2205
+#: ../framework/includes/general.php:2204
 msgid "Delicious"
 msgstr ""
 
-#: ../framework/includes/general.php:2206
+#: ../framework/includes/general.php:2205
 msgid "DeviantArt"
 msgstr ""
 
-#: ../framework/includes/general.php:2207
-#: ../framework/includes/general.php:2250
+#: ../framework/includes/general.php:2206
+#: ../framework/includes/general.php:2249
 msgid "Digg"
 msgstr ""
 
-#: ../framework/includes/general.php:2208
+#: ../framework/includes/general.php:2207
 msgid "Dribbble"
 msgstr ""
 
-#: ../framework/includes/general.php:2209
+#: ../framework/includes/general.php:2208
 msgid "Dropbox"
 msgstr ""
 
-#: ../framework/includes/general.php:2210
-#: ../framework/includes/general.php:2252
+#: ../framework/includes/general.php:2209
+#: ../framework/includes/general.php:2251
 #: ../framework/includes/locals.php:38
 msgid "Facebook"
 msgstr ""
 
-#: ../framework/includes/general.php:2211
+#: ../framework/includes/general.php:2210
 msgid "Flickr"
 msgstr ""
 
-#: ../framework/includes/general.php:2212
+#: ../framework/includes/general.php:2211
 msgid "Foursquare"
 msgstr ""
 
-#: ../framework/includes/general.php:2213
+#: ../framework/includes/general.php:2212
 msgid "GitHub"
 msgstr ""
 
-#: ../framework/includes/general.php:2214
-#: ../framework/includes/general.php:2253
+#: ../framework/includes/general.php:2213
+#: ../framework/includes/general.php:2252
 #: ../framework/includes/locals.php:39
 msgid "Google+"
 msgstr ""
 
-#: ../framework/includes/general.php:2215
+#: ../framework/includes/general.php:2214
 msgid "Instagram"
 msgstr ""
 
-#: ../framework/includes/general.php:2216
+#: ../framework/includes/general.php:2215
 #: ../framework/includes/locals.php:40
 msgid "LinkedIn"
 msgstr ""
 
-#: ../framework/includes/general.php:2217
+#: ../framework/includes/general.php:2216
 msgid "PayPal"
 msgstr ""
 
-#: ../framework/includes/general.php:2218
-#: ../framework/includes/general.php:2256
+#: ../framework/includes/general.php:2217
+#: ../framework/includes/general.php:2255
 #: ../framework/includes/locals.php:41
 msgid "Pinterest"
 msgstr ""
 
-#: ../framework/includes/general.php:2219
-#: ../framework/includes/general.php:2257
+#: ../framework/includes/general.php:2218
+#: ../framework/includes/general.php:2256
 msgid "Reddit"
 msgstr ""
 
-#: ../framework/includes/general.php:2220
+#: ../framework/includes/general.php:2219
 msgid "SlideShare"
 msgstr ""
 
-#: ../framework/includes/general.php:2221
+#: ../framework/includes/general.php:2220
 msgid "SoundCloud"
 msgstr ""
 
-#: ../framework/includes/general.php:2222
+#: ../framework/includes/general.php:2221
 msgid "StumbleUpon"
+msgstr ""
+
+#: ../framework/includes/general.php:2222
+#: ../framework/includes/general.php:2257
+msgid "Tumblr"
 msgstr ""
 
 #: ../framework/includes/general.php:2223
 #: ../framework/includes/general.php:2258
-msgid "Tumblr"
-msgstr ""
-
-#: ../framework/includes/general.php:2224
-#: ../framework/includes/general.php:2259
 #: ../framework/includes/locals.php:42
 msgid "Twitter"
 msgstr ""
 
-#: ../framework/includes/general.php:2225
+#: ../framework/includes/general.php:2224
 msgid "Vimeo"
 msgstr ""
 
-#: ../framework/includes/general.php:2226
+#: ../framework/includes/general.php:2225
 msgid "Vine"
 msgstr ""
 
-#: ../framework/includes/general.php:2227
+#: ../framework/includes/general.php:2226
 msgid "Windows"
 msgstr ""
 
-#: ../framework/includes/general.php:2228
+#: ../framework/includes/general.php:2227
 msgid "WordPress"
 msgstr ""
 
-#: ../framework/includes/general.php:2229
+#: ../framework/includes/general.php:2228
 msgid "XING"
 msgstr ""
 
-#: ../framework/includes/general.php:2230
+#: ../framework/includes/general.php:2229
 msgid "Yahoo"
 msgstr ""
 
-#: ../framework/includes/general.php:2231
+#: ../framework/includes/general.php:2230
 msgid "YouTube"
 msgstr ""
 
-#: ../framework/includes/general.php:2251
+#: ../framework/includes/general.php:2250
 #: ../framework/includes/locals.php:53
 msgid "Email"
 msgstr ""
 
-#: ../framework/includes/general.php:2254
+#: ../framework/includes/general.php:2253
 msgid "Linkedin"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1471
+#: ../framework/includes/helpers.php:1470
 msgid "year"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1472
+#: ../framework/includes/helpers.php:1471
 msgid "years"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1473
+#: ../framework/includes/helpers.php:1472
 msgid "month"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1474
+#: ../framework/includes/helpers.php:1473
 msgid "months"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1475
+#: ../framework/includes/helpers.php:1474
 msgid "week"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1476
+#: ../framework/includes/helpers.php:1475
 msgid "weeks"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1477
+#: ../framework/includes/helpers.php:1476
 msgid "day"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1478
+#: ../framework/includes/helpers.php:1477
 msgid "days"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1479
+#: ../framework/includes/helpers.php:1478
 msgid "hour"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1480
+#: ../framework/includes/helpers.php:1479
 msgid "hours"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1481
+#: ../framework/includes/helpers.php:1480
 msgid "minute"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1482
+#: ../framework/includes/helpers.php:1481
 msgid "minutes"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1483
+#: ../framework/includes/helpers.php:1482
 msgid "second"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1484
+#: ../framework/includes/helpers.php:1483
 msgid "seconds"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1485
+#: ../framework/includes/helpers.php:1484
 msgid "ago"
 msgstr ""
 
-#: ../framework/includes/helpers.php:1486
+#: ../framework/includes/helpers.php:1485
 msgid "sometime"
 msgstr ""
 
