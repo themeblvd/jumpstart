@@ -1,13 +1,15 @@
 Jump Start Changelog
 ====================
 
-2.1.10 - XX/XX/XXXX
+2.1.10 - 08/03/2017
 -------------------
 
+* **Updated Theme Blvd framework to 2.6.9**
 * Fixed: Image `srcset` property not getting printed out when featured image is linked to lightbox.
 * Fixed: Minor admin styling issues with WordPress 4.8+.
 * Fixed: Minor broken image links in CSS for Executive and Superuser bases.
 * Fixed: Ajax errors in some combinations of third-party plugins, WooCommerce, and the theme.
+* Fixed: Deprecated notices in theme's "catalog view" display for WooCommerce products.
 
 --------------------------------------------------------------
 
