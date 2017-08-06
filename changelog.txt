@@ -5,6 +5,9 @@ Jump Start Changelog
 -------------------
 
 * **Updated Theme Blvd framework to 2.6.10**
+* Fixed: "Iframe" 16:9 lightbox type getting applied where it shouldn't.
+
+--------------------------------------------------------------
 
 2.1.10 - 08/03/2017
 -------------------
