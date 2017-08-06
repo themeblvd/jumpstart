@@ -1,0 +1,127 @@
+/* Typography */
+body {
+	color: #333333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.6;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #333333;
+	font-weight: bold;
+	line-height: 1.1;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+h1 {
+	font-size: 32px;
+}
+h2 {
+	font-size: 27px;
+}
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 15px;
+}
+h5 {
+	font-size: 13px;
+}
+h6 {
+	font-size: 11px;
+}
+a {
+	color: #428bca;
+	text-decoration: none;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Thumbnails */
+.thumbnail,
+.pretty {/* Match framework's thumb classes to bootstrap's .thumbnail */
+	padding: 4px;
+	line-height: 1.428571429;
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 0;
+	/* border-radius: 4px; */
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-bottom: 20px;
+}
+a.pretty:hover,
+a.pretty:focus,
+a.pretty:active,
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail:active {
+	border-color: #bbbbbb;
+	-webkit-box-shadow: 0 1px 4px #cccccc;
+	-moz-box-shadow: 0 1px 4px #cccccc;
+	box-shadow: 0 1px 4px #cccccc;
+}
+
+/* WP Classes */
+.aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+.tb-thumb-link.alignnone,
+.tb-thumb-link.aligncenter {
+	display: block;
+}
+.wp-caption {
+	max-width: 100%;
+	text-align: center;
+}
+.wp-caption.alignnone {
+	margin: 5px 0 20px 0;
+}
+.wp-caption.alignleft {
+	margin: 5px 20px 20px 0;
+}
+.wp-caption.alignright {
+	margin: 5px 0 20px 20px;
+}
+.wp-caption img {
+	border: 0 none;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+.wp-caption-text,
+.wp-caption-dd {
+	font-size: .9em;
+	line-height: 1.4;
+	text-align: center;
+}
+.wp-caption .wp-caption-text {
+	padding: 10px 5px 0 5px;
+	margin: 0;
+}
+.wp-caption.thumbnail .wp-caption-text {
+	padding: 10px;
+}

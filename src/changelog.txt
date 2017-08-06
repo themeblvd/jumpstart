@@ -1,0 +1,449 @@
+Jump Start Changelog
+====================
+
+2.2.0 - XX/XX/XXXX
+------------------
+
+--------------------------------------------------------------
+
+2.1.11 - 08/07/2017
+-------------------
+
+* **Updated Theme Blvd framework to 2.6.10**
+* Fixed: "Iframe" 16:9 lightbox type getting applied where it shouldn't.
+
+--------------------------------------------------------------
+
+2.1.10 - 08/03/2017
+-------------------
+
+* **Updated Theme Blvd framework to 2.6.9**
+* Fixed: Image `srcset` property not getting printed out when featured image is linked to lightbox.
+* Fixed: Minor admin styling issues with WordPress 4.8+.
+* Fixed: Minor broken image links in CSS for Executive and Superuser bases.
+* Fixed: Ajax errors in some combinations of third-party plugins, WooCommerce, and the theme.
+* Fixed: Deprecated notices in theme's "catalog view" display for WooCommerce products.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+
+2.1.9 - 05/31/2017
+------------------
+
+* **Updated Theme Blvd framework to 2.6.8**
+* New: Added option at *Appearance > Theme Options > Content > Blog Homepage* to set a separate post display for the blog homepage or "posts page."
+* Improvement: On pages where where WooCommerce floating cart isn't supported (like checkout and cart page, itself), the cart icon now links to the cart page.
+* Fixed: WooCommerce up-sells not showing on product pages (with WooCommerce 3.0+).
+* Fixed: Minor WooCommerce HTML5 validation errors (with WooCommerce 3.0+).
+* Fixed: Minor PHP warnings and errors on some server configurations.
+* Fixed: Italic font style for quotes selected from Typography theme options not applying to quotes overlaid on featured images in Quote format posts.
+
+--------------------------------------------------------------
+
+2.1.8 - 05/08/2017
+------------------
+
+* **Updated Theme Blvd framework to 2.6.7**
+* Fixed: WooCommerce floating shopping cart "View Cart" and "Checkout" buttons not lining up.
+* Fixed: WooCommerce cross-sells not showing when enabled from Theme Options (and using WooCommerce 3.0+).
+* Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.
+* Fixed: "Illegal string offset" PHP warnings on some server configurations when saving data with multi-check option types.
+* Fixed: Occasional buggy behavior in loading variable-width Owl Carousel.
+* Fixed: Simple slider image links to lightbox not working.
+
+--------------------------------------------------------------
+
+2.1.7 - 04/14/2017
+------------------
+
+* **Updated Theme Blvd framework to 2.6.6**
+* Improvement: Better support for aligning quotes left/right with quote format posts.
+* Fixed: Shortcode parameters not getting passed properly to WooCommerce shortcodes after 2.1.6 theme update.
+* Fixed: WooCommerce cart widget buttons not sitting properly inline.
+
+--------------------------------------------------------------
+
+2.1.6 - 04/10/2017
+------------------
+
+* **Updated Theme Blvd framework to 2.6.5**
+* WooCommerce v3 compatibility.
+	* New: Implemented new product gallery features, only available in WooCommerce v3+.
+	* New: Added option to disable new product gallery zoom feature at *Appearance > Theme Options > Plugins > WooCommerce > Product Gallery Zoom*.
+	* Improvement: On product pages, gallery and content now displayed at 50% width each; this better suits new gallery features.
+	* Fixed: Spacing on buttons in shopping cart widget.
+	* Fixed: Product titles on shop view too large.
+	* Fixed: Star ratings no longer showing on product thumbnails in shop view.
+	* Fixed: Theme's custom shop image sizes, utilizing new WooCommerce v3+ filters.
+	* Fixed: Mobile view not using matching shopping-basket icon (you must clear your browser cache for new icon to show).
+	* Removed: Removed theme's Magnific Popup for product thumbnails, in favor of WooCommerce's new native lightbox.
+	* **Important:** For best results with this theme update and WooCommerce 3.0+, [regenerate your thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/).
+* Improvement: Better fallbacks for mobile logo option not being setup properly by user.
+* Fixed: WPML switcher displaying when disabled in some instances.
+* Fixed: WPML switcher having white/invisible text in some instances.
+
+--------------------------------------------------------------
+
+2.1.5 - 03/10/2017
+------------------
+
+* **Updated Theme Blvd framework to 2.6.4**
+* Improvement: Floating search will now close on focusing out of search input box.
+* Improvement: Increased likelihood of unique ID's for various HTML elements being unique, when they need to be.
+* Improvement: Google Maps API key must be set for all websites in order to use the Google Maps element of the layout builder.
+* Fixed: Google Maps API console JavaScript error in layout builder in some cases, when no Google Maps API key is set.
+* Fixed: In some cases, 0% opacity not working for transparent header on Agent base.
+* Fixed: In some cases, the framework's `pre_get_posts` filter was overriding WooCommerce from setting the correct products per page utilizing the `loop_shop_per_page` filter.
+* Fixed: Error when translating a page with [WPML](http://themeblvd.com/links/wpml) and the Layout Builder.
+* Fixed: Updated description of Video Link option in Post Options and Page Options meta boxes to state only Vimeo and YouTube are supported.
+* Fixed: Gallery slider thumbnail and dots navigation not working when using variable-width Owl Carousel.
+* Fixed: Parallax backgrounds no longer display on mobile devices with large viewports (landscape oriented iPad for example); this was resulting in janky scrolling behavior and was never intended to be supported on true mobile devices.
+* Removed: Admin-side global `$content_width` hack, originally implemented to help manage videos in WP editor. No longer needed and was causing other conflicts with inserting images.
+* Updated: Owl Carousel to 2.2.1.
+* Updated: FontAwesome to 4.7.
+
+--------------------------------------------------------------
+
+2.1.4 - 01/16/2017
+------------------
+
+* **Updated Theme Blvd framework to 2.6.3**
+* Improvement: Much better support translating pages with custom layouts in WPML.
+* Improvement: Enqueue child theme *style.css* with child theme version, and not parent theme version.
+* Fixed: Put back accidentally removed `themeblvd_footer_above` action (but deprecated).
+* Fixed: Occasional display issues on archives and search results, due to `is_page_template()` bug in WordPress 4.7.
+* Fixed: Minor styling quirks on tablet transparent header menu icons with Agent base.
+* Fixed: Option "Always start scale (y-axis) at 0" for bar and line chart elements not working.
+* Fixed: Polylang plugin errors when translating pages.
+* Fixed: Issues with theme's WPML Language switcher in top bar in WPML 3.6.
+* Fixed: Missing theme language switcher option in WPML 3.6, which was hooked to an action that no longer exists. New option added to *Appearance > Theme Options > Plugins > WPML* to show or hide.
+* Fixed: WooCommerce star ratings with partial stars not displaying properly in IE and Edge.
+* Fixed: WooCommerce `[product_categories]` shortcode not always displaying proper number of columns.
+* Removed: WooCommerce script to put back old increment buttons on shopping cart. Use [this plugin](https://wordpress.org/plugins/woocommerce-quantity-increment) to get them back.
+
+--------------------------------------------------------------
+
+2.1.3 - 11/10/2016
+------------------
+
+* **Updated Theme Blvd framework to 2.6.2**
+* Improvement: Moved "Ads Above Header" widget area before header, outside of the `#top` container; this causes less interference with all the potential user options that can be applied to he header.
+* Fixed: Action hooks `themeblvd_main_bottom` and `themeblvd_main_end` were reversed in *footer.php*.
+* Fixed: In-dashboard theme updates not working with older server setups -- *An error occurred while updating Jump Start: Download failed. SSL: no alternative certificate subject name matches target host name 'wpjumpstart.com'*
+* Fixed: On some slider styles, navigation arrows were falling below image links, so they couldn't be clicked.
+* Fixed: When setting a button's target in layout builder to "lightbox" -- it will now open up URLs not recognized as an image, video, or inline DIV, as a standard webpage.
+* Fixed: Minor RTL and Translation bug fixes.
+    * Loader icon on frontend of theme not being perfectly centered in RTL.
+    * Added some missing styles for partner logo element in RTL.
+
+--------------------------------------------------------------
+
+2.1.2 - 07/12/2016
+------------------
+
+* Improvement: Better RTL support for uses of Bootstrap carousel, like with simple slider element.
+* Fixed: Black background getting applied to single post content, when full-width or parallax featured image is set.
+* Fixed: Minor RTL fixes for options interfaces.
+* Updated: TGMA plugin installer to 2.6.1.
+
+--------------------------------------------------------------
+
+2.1.1 - 07/08/2016
+------------------
+
+* **Updated Theme Blvd framework to 2.6.1**
+* New: Styles presets added to theme options; see *Appearance > Theme Options > Styles*.
+* New: Added option to hide bounding border for transparent header of "Agent" base; see *Appearance > Theme Options > Styles > Transparent Header*.
+* New: Added option to disable theme's WooCommerce floating shopping cart; see *Appearance > Theme Options > Plugins > WooCommerce*.
+* New: Added option for Google Maps API Key, which is required by Google Maps API, as of June 22, 2016; see *Appearance > Theme Options > Configuration > Google Maps*. [Learn More](http://docs.themeblvd.com/article/56-google-maps-api)
+* Improvement: Better handling of pulling default value for new option, when theme options have already been saved (i.e. smoother updates when the theme adds new options, which you haven't configured).
+* Improvement: Allow unfiltered HTML when saving text and textareas.
+* Improvement: De-enqueued `theme.js`, no longer needed with framework 2.6+.
+* Improvement: When page title is hidden on full-width or full-screen featured image, image is now 100% opacity.
+* Improvement: Removed dark form field styling when in an area with a dark background color; it causes messy CSS and too many plugin conflicts.
+* Improvement: Minor styling adjustments to main menu dropdowns; across all theme bases, they now match more with "Agent" base.
+* Fixed: Footer columns not pulling page content.
+* Fixed: Post showcase filtering not correctly effecting corresponding lightbox gallery.
+* Fixed: Time ago date formatting not calculated correctly when time zone changed from GMT-0.
+* Fixed: Self-hosted background video not looping in some browsers.
+* Fixed: Titles not showing below lightbox video popups.
+* Fixed: Redirect page template not redirecting properly.
+* Fixed: Bug with `h2` HTML tag font styling on mobile.
+* Fixed: Bug with self-hosted WordPress videos not displaying after full-screen exit in some browsers.
+* Fixed: Header toolbar divider not matching header height with all logo sizes on "Agent" base.
+* Fixed: Some minor compatibility warnings with WPML 3.4.
+* Removed: Main menu font color selection for Super User and Executive bases from *Theme Options > Styles > Typography*; this was interfering with selecting dark vs light background colors for main menu bg color and main menu button hover bg color.
+
+--------------------------------------------------------------
+
+2.1.0 - 05/05/2016
+------------------
+
+*Warning: Make sure to read this article before updating: [Updating to Jump Start 2.1](http://news.themeblvd.com/2016/05/05/updating-to-jump-start-2-1/)*
+
+* **Updated Theme Blvd framework to 2.6.0**
+* New: "Agent" theme base - A modern and open, agency-style design with a bit less user options.
+* New: 5 new demos - [Demo #1](http://demoblvd.com/themes/jumpstart-2/demo-1), [Demo #8](http://demoblvd.com/themes/jumpstart-2/demo-8), [Demo #9](http://demoblvd.com/themes/jumpstart-2/demo-9), [Demo #10](http://demoblvd.com/themes/jumpstart-2/demo-10), and [Developer Demo](http://demoblvd.com/themes/jumpstart-2/demo-dev).
+* New: Theme welcome message that leads user to the [framework overview video](https://vimeo.com/124567552) when activating the theme.
+* New: Featured media above page and post content.
+    * New "Epic Thumbnails" on single posts and pages; see Post and Page Options meta boxes for new featured images display options.
+    * New global option for how pages display the featured image; see *Appearance > Theme Options > Content > Pages*.
+    * New variable-width slider carousel for gallery posts; see *Appearance > Theme Options > Content > General*.
+    * Default gallery slider image size was increased from 1200x450 to 1400x525, when not using new variable width carousel.
+    * Added compatibility for [Subtitles](https://wordpress.org/plugins/subtitles/) plugin.
+    * Removed banner functionality; you can restore with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
+* New: Media and full-width content features.
+    * Added option to condense full-width pages to be more readable; see *Appearance > Theme Options > Content > General*.
+    * Added option to popout media on condensed full-width pages; see *Appearance > Theme Options > Content > General*.
+        * When enabled, images inserted into standard content that are "Full Size" with alignment "None" are popped out to the width of the browser window.
+        * When enabled, images inserted into standard content that are "Full Size" with alignment "Center" are popped out at 120% of content area.
+        * When enabled, featured media on full-width blogs are popped out 120% of content area.
+    * Improvements to general media caption styling.
+* New: Expanded typography section on theme options for non-dev theme bases.
+    * Added [Adobe Typekit](https://typekit.com) support.
+    * Minor adjustments to default fonts.
+    * Menu font option is no longer optional, and was moved from *Styles > Main Menu* to *Styles > Typography*.
+    * Additional font options for quotes, meta info, and featured image titles (i.e. "Epic Thumbnails").
+    * Font spacing option added to menu font, and new font options.
+* New: Expanded video background support.
+    * YouTube and Vimeo support added.
+    * Simplified options for inputting video.
+    * Additional HTML5 video formats (mp4, webm, ogv) automatically included, if exist.
+    * Better dynamic video re-sizing to fit area, based on inputted aspect ratio.
+    * Progressive loading for longer videos.
+    * Fallback image now displays on large mobile devices, where background video isn't supported.
+* New: Mobile header redesigned.
+    * New header design for small mobile devices.
+    * Minor improvements to tablet header design.
+    * Minor improvements to mobile side menu.
+    * New animated menu toggle button for opening side menu.
+    * Smoother CSS animation for mobile side menu animating in and out.
+    * Added new logo option for small mobile devices; see *Appearance > Theme Options > Layout > Mobile Header*.
+    * Added new option for header background color on small mobile devices on non-developer theme bases; see *Appearance > Theme Options > Styles > Mobile Header*.
+* New: Hidden side panel for desktops.
+    * Added side panel that slides out on desktops, when at least one of the corresponding menu locations has an assignment.
+    * Added two new menu locations, Primary Side Navigation and Secondary Side Navigation.
+    * Added options to non-developer theme bases for modifying the background color of the side panel; see *Appearance > Theme Options > Styles*.
+    * Both new menu locations are automatically merged into the mobile menu.
+    * Developers can add to side panel by hooking to `themeblvd_side_panel`.
+    * Developers can extend whether the side panel shows by filtering `themeblvd_do_side_panel` boolean.
+* New: Choose to display related posts as a small grid at *Appearance > Theme Options > Content > Single Posts > Related Posts Style*.
+* New: You can now add the CSS class `highlight` to top-level menu items to make them stand out in a navigation menu.
+* New: You can now use the CSS class `tb-scoll-to` to set any generic button or link to scroll to an element ID on the current page.
+* New: You can now use the CSS class `tb-play` to set any generic link to look like a video play button.
+* New: Template file `content-blog.php` for the blog post style has been added.
+* New: Added filter `themeblvd_posts_page_mode`, which can be filter to list, grid, or showcase.
+* Improvement: Design for post in blog and single post has been simplified.
+* Improvement: Design enhancements to default post showcase display.
+* Improvement: Design enhancements to Magnific Popup lightbox navigation.
+* Improvement: Design enhancements to Divider element.
+* Improvement: Design enhancements to Progress Bars element.
+* Improvement: Design enhancements to Milestone element.
+* Improvement: Design enhancements to Milestone Ring element.
+* Improvement: Design enhancements to Testimonial element.
+* Improvement: Better mobile fallback for parallax background images.
+* Improvement: Force Hero Unit Slider auto rotation to be disabled for mobile.
+* Improvement: Redesign of Team Member element.
+* Improvement: With a hero unit, when selecting to bold text, a header tag will now be used, allowing for more flexibility in fonts used.
+* Improvement: Added option to shade slider images for overlaid text readability; this applies to post slider and simple slider elements.
+* Improvement: When inputting a specific list of pages for post element query, you can now use slugs for pages, posts, and portfolio items.
+* Improvement: When selecting for a post grid element to "popout" in builder, there is now padding to separate from the browser edge.
+* Improvement: More default spacing around sections and elements in custom layouts.
+* Improvement: Function `themeblvd_related_posts()` will now allow you to pass any post type and associated taxonomy.
+* Improvement: Now using `fa-shopping-basket` icon throughout theme instead of `fa-shopping-cart`.
+* Improvement: Sticky menu logo now has more padding around it, and is slightly smaller at 30px in height.
+* Improvement: With setting up footer options, more clear default settings and instructions.
+* Improvement: Allow copyright and icon helpers in widgets and footer columns.
+* Fixed: Sticky menu logo shouldn't get `srcset` from main header logo.
+* Fixed: Sticky menu shouldn't display on any mobile device, no matter the viewport size.
+* Fixed: Accordion feature not working with Toggles element of Layout Builder.
+* Fixed: When setting an element to pull from a list of pages, the total number of pages returned shouldn't be interfered with.
+* Fixed: Contact Bar element was outputting the set of icons twice.
+* Fixed: SPAN HTML tags showing in texture browser.
+* Fixed: When `themeblvd_tabs_deep_linking` is filtered to true, tab content wasn't changing properly.
+* Fixed: Post showcase and grid display for archives not always applying the correct posts per page amount from Theme Options.
+* Fixed: Funky display issue on WooCommerce product reviews.
+* Fixed: Shopping cart button not displaying with "Super User" and "Executive" theme bases, when header info is set to show "within header."
+* Fixed: Partner Logos slider stretching images 100% width of column.
+* Fixed: PHP warning on 404 pages, when going to incorrect author URL.
+* Fixed: Default theme options "Read More" text not getting applied to post list and post grid elements.
+* Fixed: Minor issues with Hero Unit Slider element spacing and height calculation.
+* Fixed: Don't display sticky menu in IE9.
+* Fixed: Don't apply show/hide gallery post title effect on mobile viewport.
+* Fixed: WooCommerce breadcrumbs showing empty item, when no shop page is set from WooCommerce settings.
+* Fixed: WooCommerce PHP warning in product page up sell section.
+* Fixed: [WPML](http://themeblvd.com/links/wpml) switcher was producing "undefined" error in mobile menu on pages that only had one language.
+* Fixed: More minor RTL and Translation bug fixes.
+    * Frontend post grid/showcase filtering and masonry now aligns correctly to the right.
+    * Tabs and pills of Tabs element now align properly to right.
+    * Panels no longer force text to be aligned left.
+    * Pricing table columns now display in correct order, from right-to-left.
+    * Progress bars now display and animate out from right.
+    * "Custom CSS" option code editor on theme options page now works with RTL.
+* Updated: FontAwesome to 4.6.
+* Updated: FlexSlider to 2.6.
+* **Important:** Removed old IE browser support; see updated [browser-compatibility terms](http://wpjumpstart.com/terms/#browsers).
+* **Important:** Theme's registered text domain for localization was changed from `themeblvd` to `jumpstart` to meet wordpress.org localization standards.
+* **Important:** Banner functionality has been removed, in favor of new featured image options. You can restore functionality with [Jump Start Banners](http://wordpress.org/plugins/jumpstart-banners) plugin.
+
+--------------------------------------------------------------
+
+2.0.4 - 12/11/2015
+------------------
+
+* Improvement: Some frontend RTL fixes and improvements.
+* Improvement: Admin RTL fixes and improvements.
+* Improvement: Frontend post grid/showcase filtering now also effects navigating items in corresponding lightbox gallery.
+* Improvement: Minor comment form styling adjustments for changes in WordPress 4.4+.
+* Improvement: Now using `srcset` for HiDPI/Retina logo with no javascript, to match practices of WordPress 4.4+.
+* Fixed: Dropdown menus not displaying when adding a parallax background image or video background to site header from theme options.
+* Fixed: Post slider style #2 captions not displaying correctly.
+* Fixed: Javascript conflicts with JetPack on Edit Page/Post screens.
+* Fixed: Hero unit text not displaying above background video.
+* Fixed: WPML-translated pages not allowing to save a unique, translated custom layout.
+* Fixed: Display issues with new post embedding, introduced in WordPress 4.4.
+
+--------------------------------------------------------------
+
+2.0.3 - 11/10/2015
+------------------
+
+* New: Added compatibility for [Nav Menu Roles](https://wordpress.org/plugins/nav-menu-roles) plugin.
+* Fixed: Banner Meta box display issue on Edit Page screen in admin.
+* Fixed: Top padding issues when combining a transparent header, page banner and custom layout all on the same page.
+* Fixed: Javascript error when no custom image specified for Google map marker.
+* Fixed: Modal window not working with `[popup]` shortcode.
+* Fixed: Sticky menu not displaying when adding a parallax background image to site header from theme options.
+
+--------------------------------------------------------------
+
+2.0.2 - 10/15/2015
+------------------
+
+* **Updated Theme Blvd framework to 2.5.2**
+* New: Optional width and height scaling options for custom Google map marker images.
+* Improvement: Better handling of svg icons in IE9/10.
+* Improvement: Hero unit slider display on mobile.
+* Improvement: Allow percentages to work properly for image element display width in Layout Builder.
+* Improvement: JavaScript files moved to footer. [More Info](http://news.themeblvd.com/2015/09/15/frontend-scripts-moved-to-footer-in-framework-2-5-2-update/)
+* Improvement: Security of outputted localized text strings.
+* Improvement: Security of outputted data from various user-edited elements.
+* Improvement: Security of outputted urls and enqueued scripts and stylesheets.
+* Improvement: Filters for modifying sorting menu for post grids and post showcases.
+* Improvement: Nicer looking changelog in theme update system, when clicking, "View version X details."
+* Fixed: WooCommerce cart thumbnail sizing issue in Firefox.
+* Fixed: In executive base, standard header background elements were being outputted with Transparent header.
+* Fixed: Parallax background fallback not being horizontally centered in IE9.
+* Fixed: Added missing localization for theme bases admin page text.
+* Fixed: Live changelog link in theme options footer not working.
+* Fixed: Blog and Post Showcase page templates not obeying WordPress page privacy settings.
+* Fixed: Negative horizontal margin overflow with "popout" columns element in Layout Builder.
+* Fixed: Mini post lists with hidden featured images not displaying correctly.
+* Fixed: The `[blog]` shortcode display issues.
+* Removed: Support of `magic_quotes_gpc` for those using unsupported versions of PHP.
+* Removed: The `themeblvd_frontend` text domain is gone; all strings localized under `themeblvd` text domain.
+* Updated: TGMA plugin installer to 2.5.2.
+* Moved all import/export functionality to plugin: [Theme Blvd Importer](https://wordpress.org/plugins/theme-blvd-importer)
+
+--------------------------------------------------------------
+
+2.0.1 - 08/24/2015
+------------------
+
+* **Updated Theme Blvd framework to 2.5.1**
+* Cleaned up and optimized assets in `/framework` directory, reducing file size by about 2MB.
+* New: CSS class "has-nav" to footer copyright area if Footer Navigation location has menu.
+* New: More accuracy for opacity selections.
+* New: In custom layouts, "visible" CSS class gets added to top-level elements and sections as you scroll down the page.
+* Improvement: General comments template and comments link logic.
+* Improvement: Allow WooCommerce shop to accept theme-related options from original static page.
+* Improvement: Hero unit full-screen horizontal alignment, when text is aligned left or right.
+* Improvement: Parallax background image performance.
+* Fixed: Responsiveness of images with captions.
+* Fixed: Awkward spacing of captions on slider captions; now vertically centered.
+* Fixed: Portfolios and portfolio tags not showing in portfolio item sub meta.
+* Fixed: Columns in custom layouts with backgrounds had margin below, when stacking for mobile.
+* Fixed: Incorrect file permissions of files at `/framework/assets/svg/` for those uploading the theme manually outside of WordPress.
+* Fixed: Theme's default WPML language selector listing languages without translations.
+* Fixed: System for generating FontAwesome icon selections in admin.
+* Fixed: Minor admin compatibility issue with WPML 3.2 update.
+* Fixed: Minor admin styling issues with WordPress 4.3.
+* Fixed: Outputted Google Font name CSS declarations not being in quotes.
+* Removed: Parallax intensity options; now it's based on height of image, proportional to container.
+* Removed: Default customizer customizations and framework customizer API functions.
+* Regenerated default localization files.
+* Updated: Bootstrap to 3.3.5.
+* Updated: FontAwesome to 4.4.
+
+**Important!** For best results with this update:
+
+* You should update to the latest version of the Theme Blvd Layout Builder plugin.
+* You should update to the latest version of the Theme Blvd Shortcodes plugin.
+
+--------------------------------------------------------------
+
+2.0.0 - 07/09/2015
+------------------
+
+* **Updated Theme Blvd framework to 2.5.0**
+* New: Support for tons of new elements and enhancements in [Layout Builder 2.0](https://wordpress.org/plugins/theme-blvd-layout-builder/changelog/) update.
+* New: Complete frontend theme re-design.
+* New: "Theme Base" system at *Appearance > Theme Base*, allows you to configure different designs and options within the theme.
+* New: Post format support.
+* New: Mega menus, configured from *Appearance > Menus*.
+* New: Frontend sticky menu.
+* New: Frontend "Scroll to Top" button.
+* New: Frontend floating search box.
+* New: Frontend social icons.
+* New: Share icons to single posts.
+* New: Related posts display to single posts.
+* New: "Author Box" for author archives and single posts, configured from user profile admin page.
+* New: Code syntax highlighting to "Custom CSS" options.
+* New: [WooCommerce](http://wordpress.org/plugins/woocommerce) support, Theme Blvd WooCommerce patch plugin no longer needed.
+* New: [WPML](http://themeblvd.com/links/wpml) support, Theme Blvd WPML bridge plugin no longer needed.
+* New: [Gravity Forms](http://themeblvd.com/links/gforms) support.
+* New: [Revolution slider](http://themeblvd.com/links/revslider) support.
+* New: [bbPress](http://wordpress.org/plugins/bbpress) support.
+* New: Theme support for `title-tag` in WP 4.1+
+* New: Parallax background support.
+* New: Video background support.
+* New: Slideshow background support.
+* New: Modern mobile menu design, with intuitive off-canvas concept.
+* New: Import/Export system for Theme Options.
+* New: Blog post display (new default for blogroll and archives).
+* New: Post Showcase post display.
+* New: Banner feature for pages, configured from "Banner" meta box when editing a page.
+* New: Feature to hide header or footer, configured from "Theme Layout" meta box when editing a page.
+* New: Transparent Header feature for pages, where background of page will get sucked up behind header.
+* New: "Blog" page template.
+* New: "Blank Page" page template.
+* New: "Post Showcase" page template.
+* New: "Naked Page" page template, which outputs a standard page without content background.
+* New: Demo import system merged into WordPress's system at *Tools > Import* to get a full working copy of the demo with settings, widgets, and all.
+* Improvement: Sidebars always outputted below content for better SEO, no matter the sidebar layout used.
+* Improvement: Complete overhaul of Theme Options page and available options.
+* Improvement: Many new framework option types to integrate with Layout Builder and Theme Options.
+* Improvement: Added selection of post display type for archive pages, editable from theme options or editing specific categories and tags.
+* Improvement: Enhancements to default Post Grid display.
+* Improvement: Redesign of default Post List display.
+* Improvement: Redesign of Post Slider; now part of framework and removed from Theme Blvd Sliders plugin.
+* Improvement: Revamped search results page.
+* Improvement: Pages now display featured images and have featured image options, similar to posts.
+* Improvement: Framework now expands grid system for Bootstrap ([see article](http://dev.themeblvd.com/tutorial/grid-system/)).
+* Improvement: Overhaul of image crop sizes; **make sure to run [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) plugin!**
+* Improvement: Typography options can now be set more precisely to use specific weights and subsets from Google Font directory.
+* Removed: Post List Slider.
+* Updated: Bootstrap to 3.3.
+* Updated: FontAwesome to 4.2.
+
+**Important!** If updating from a development, beta, or RC version of Jump Start 2:
+
+* You must update to the latest version of the Layout Builder plugin.
+* You must reconfigure options of any "Hero Unit" (previously named Jumbotron) used in Builder.
+* You must reconfigure any selections for "Responsive Visibility" display options in Builder.
+* You must reconfigure any Typography options on your theme options page.
+
+--------------------------------------------------------------
+
+[View Jump Start v1 development track changelog](http://themeblvd.com/changelog/?theme=jumpstart-1)

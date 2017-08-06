@@ -1,0 +1,1 @@
+Make sure to keep uncompressed fontawesome.css because it’s used for compiling icon selections in admin.

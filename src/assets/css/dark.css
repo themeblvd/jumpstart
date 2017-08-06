@@ -1,0 +1,157 @@
+/* =Top
+----------------------------------------------- */
+
+/* Sticky Menu */
+.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
+	background: #222222;
+}
+
+/* =Main
+----------------------------------------------- */
+
+.site-breadcrumbs,
+.site-inner {
+	background: #151515;
+}
+
+/* =Content
+----------------------------------------------- */
+
+/* Typography */
+body {
+	background: #151515;
+	color: #ffffff;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #ffffff;
+}
+
+/* Content Background */
+.bg-content {
+	background: #222222;
+}
+
+/* Posts */
+.blog-wrap > article,
+article.single {
+	background: #222222;
+}
+
+/* Pages */
+article.page {
+	background: #222222;
+}
+
+/* Meta */
+.entry-meta,
+.post-date {
+	color: #ffffff
+}
+.entry-meta .fa {
+	color: #cccccc;
+}
+.text-dark .entry-meta,
+.text-dark .entry-meta .fa,
+.text-dark .post-date {
+	color: #999999;
+	color: rgba(26,26,26,.4);
+}
+
+/* Sub Meta */
+.sub-meta-wrapper .sub-meta,
+.tb-product-wrap .product_meta {
+	color: #ffffff;
+}
+
+/* Related Posts/Products */
+.tb-related-posts,
+.products.upsells,
+.products.related {
+	background: #222222;
+}
+
+/* Captions */
+.wp-caption .wp-caption-text {
+	background: #151515;
+}
+
+/* Galleries */
+.gallery-item .gallery-caption {
+	background: #151515;
+}
+
+/* =Comments
+----------------------------------------------- */
+
+/* Comment List */
+#comments {
+	background: #222222;
+}
+#comments ol.commentlist {
+	border-color: #000000;
+	border-color: rgba(0,0,0,.9);
+}
+#comments .comment-body .comment-metadata {
+	color: #ffffff;
+}
+
+/* Children */
+#comments ul.children {
+	border-color: #000000;
+	border-color: rgba(0,0,0,.9);
+}
+#comments ul.children .comment-body .avatar {
+	border-color: #222222;
+}
+
+/* =Archives
+----------------------------------------------- */
+
+/* Archive Info and Author Box (single post and archives) */
+.tb-info-box {
+	background: #222222;
+}
+
+/* Search Results */
+.search-page {
+	background: #222222;
+}
+
+/* Posts Wrap */
+.post_list.archive-loop .post-wrap,
+.post_grid.archive-loop .post-wrap,
+.post_showcase.archive-loop .post-wrap {
+	background: #222222;
+}
+
+/* =Page Templates
+----------------------------------------------- */
+
+/* Post List */
+.list-template-wrap .list-wrap {
+	background: #222222;
+}
+
+/* Post Grid */
+.grid-template-wrap .grid-wrap {
+	background: #222222;
+}
+
+/* Post Showcase */
+.showcase-template-wrap .showcase-wrap {
+	background: #222222;
+}
+
+/* Custom Layout */
+.element-section > .element.bg-content,
+.element-columns .element.bg-content {
+	background: #222222;
+}
+
+/* =Widgets
+----------------------------------------------- */
+
+/* Fixed Sidebars */
+.fixed-sidebar .widget {
+	background: #222222;
+}

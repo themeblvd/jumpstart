@@ -1,0 +1,31 @@
+.ie8 .header-logo img,
+.ie8 .featured-item > .tb-thumb-link > img,
+.ie8 .featured-item > img,
+.ie8 .featured-image img,
+.ie8 .thumb-wrapper img {
+	width: auto;
+}
+.ie8 .tb-sticky-menu {
+	display: none;
+}
+.tb-blend {
+	display: none;
+}
+
+/* Isotope */
+.tb-isotope .grid-wrap > .row,
+.tb-isotope .list-wrap > .row,
+.tb-isotope .showcase-wrap > .row {
+	display: block;
+}
+.tb-isotope .tb-loader {
+	display: none;
+}
+
+/* Responsive visiblity classes */
+.hide_on_standard,
+.hide_on_standard_and_tablet,
+.hide_on_standard_and_tablet_and_mobile,
+.hide_on_standard_and_mobile {
+	display: none;
+}
