@@ -1199,7 +1199,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		'item' 		=> themeblvd_get_local('link_to_lightbox'), // HTML Markup to be wrapped in link
 		'link' 		=> '',										// Source for media in lightbox
 		'title' 	=> '', 										// Title for link
-		'type'		=> 'iframe',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
+		'type'		=> '',										// Type of lightbox link - image, iframe, ajax, inline - leave blank for auto detection
 		'class' 	=> '', 										// Additional CSS classes to add
 		'props'		=> array(),									// Additional properties for anchor tag, i.e. array( 'data-something' => 'whatever' )
 		'addon'		=> '',										// Optional addon for anchor tag, i.e. data-something="whatever"
