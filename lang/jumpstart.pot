@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jump Start 2.1.10\n"
+"Project-Id-Version: Jump Start 2.1.11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-03 11:56-0700\n"
 "PO-Revision-Date: 2017-08-03 11:56-0700\n"
@@ -6274,4 +6274,3 @@ msgstr ""
 #: ../includes/theme-functions.php:156
 msgid "Jump Start: Home"
 msgstr ""
-
