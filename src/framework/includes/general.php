@@ -1711,12 +1711,12 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
 }
 
 /**
- * Load theme text domains
+ * Load theme text domains.
  *
  * @since 2.2.0
  */
 function themeblvd_load_theme_textdomain() {
-	load_theme_textdomain( 'jumpstart', get_template_directory() . '/lang' );
+	load_theme_textdomain( 'jumpstart', get_template_directory() . '/languages' );
 }
 
 /**
