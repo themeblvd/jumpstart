@@ -1,12 +1,11 @@
 <?php
 /**
- * Theme Blvd theme bases admin
+ * Theme Blvd theme bases admin.
  *
  * @author		Jason Bobich
- * @copyright	Copyright (c) Jason Bobich
- * @link		http://jasonbobich.com
+ * @copyright	2009-2017 Theme Blvd
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
+ * @package 	@@name-package
  */
 class Theme_Blvd_Bases {
 

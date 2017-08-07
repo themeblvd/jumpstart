@@ -1,4 +1,14 @@
 <?php
+/**
+ * The template used to display an individual
+ * WooCommerce product in the "catalog" view.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
 global $product;
 ?>
 <tr class="tb-product">

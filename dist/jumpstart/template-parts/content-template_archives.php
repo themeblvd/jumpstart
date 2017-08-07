@@ -1,6 +1,11 @@
 <?php
 /**
  * The template used for displaying content in template_archives.php
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

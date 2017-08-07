@@ -1,12 +1,11 @@
 <?php
 /**
- * Add options to WP edit user profile
+ * Add options to WP edit user profile.
  *
  * @author		Jason Bobich
- * @copyright	Copyright (c) Jason Bobich
- * @link		http://jasonbobich.com
+ * @copyright	2009-2017 Theme Blvd
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
+ * @package 	@@name-package
  */
 class Theme_Blvd_User_Options {
 

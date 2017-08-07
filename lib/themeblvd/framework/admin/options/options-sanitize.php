@@ -1,5 +1,14 @@
 <?php
 /**
+ * Functions for all option sanitization.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Sanitization Filters
  *
  * This function gets hooked to admin_init when the framework

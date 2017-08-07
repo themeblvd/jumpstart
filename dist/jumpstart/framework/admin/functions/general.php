@@ -1,5 +1,14 @@
 <?php
 /**
+ * General admin functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Initialize anything needed for admin panel to run.
  *
  * @since 2.0.0

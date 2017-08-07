@@ -1,5 +1,14 @@
 <?php
 /**
+ * Admin text strings, requiring localization.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Return user read text strings. This function allows
  * to have all of the framework's common localized text
  * strings in once place. Also, the following filters can

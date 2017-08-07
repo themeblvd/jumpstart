@@ -1,5 +1,14 @@
 <?php
 /**
+ * General-use functions, included on frontend and admin.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Setup the config array for which features the
  * framework supports. This can easily be filtered, so the
  * theme author has a chance to disable the framework's

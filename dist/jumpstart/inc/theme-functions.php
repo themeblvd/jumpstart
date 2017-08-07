@@ -1,6 +1,19 @@
 <?php
 /**
- * Automatic updates
+ * Theme-specific functionality, outside of framework.
+ *
+ * This file is included immediately after framework
+ * runs and serves as basis for all theme-specific
+ * modifications.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/*
+ * Automatic updates.
  */
 include_once( get_template_directory() . '/inc/theme-updates.php' );
 

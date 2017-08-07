@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend post format functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Get the FontAwesome icon ID to represent a post format
  *
  * @since 2.5.0

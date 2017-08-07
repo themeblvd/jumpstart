@@ -1,5 +1,14 @@
 <?php
 /**
+ * API helper functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Setup framework handler and API's.
  *
  * @global array $_themeblvd_customizer_sections

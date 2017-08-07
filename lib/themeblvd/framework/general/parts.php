@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend functions for smaller parts.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Get contact button bar
  *
  * $buttons array should be formatted like this:

@@ -1,5 +1,14 @@
 <?php
 /**
+ * Functions to create sets of end-user options.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Generates the options fields that are used in forms for
  * internal options framework.
  *

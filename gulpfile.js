@@ -72,7 +72,21 @@ gulp.task('render-src', ['render-themeblvd'], function() {
  * Render text domain by replacing all instances of
  * @@text-domain with theme slug.
  */
-gulp.task('render-text-domain', ['render-src'], function() {
+gulp.task('render-info', ['render-src'], function() {
+
+	var packageName = themeName.replace(' ', '_');
+
+	return gulp.src('dist/**/*.php')
+		.pipe(replace('@@name-package', packageName))
+    	.pipe(gulp.dest('dist'));
+
+});
+
+/**
+ * Render text domain by replacing all instances of
+ * @@text-domain with theme slug.
+ */
+gulp.task('render-text-domain', ['render-info'], function() {
 
 	return gulp.src('dist/**/*.php')
 		.pipe(replace('@@text-domain', theme))

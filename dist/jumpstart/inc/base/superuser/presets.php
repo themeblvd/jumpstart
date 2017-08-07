@@ -1,5 +1,14 @@
 <?php
 /**
+ * Super User theme base preset style functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Get option presets.
  *
  * @since 2.1.1

@@ -4,6 +4,11 @@
  * automatic updates from Theme Blvd servers.
  * This only applies to Theme Blvd themes sold
  * from Theme Blvd-hosted websites.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
  */
 class Theme_Blvd_License_Admin {
 

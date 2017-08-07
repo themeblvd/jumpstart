@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend loop functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Post List (secondary loops)
  *
  * @since 2.5.0

@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend media functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Get Image Sizes
  *
  * By having this in a separate function, hopefully

@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend helper functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Remove trailing space from string.
  *
  * @since 2.0.0

@@ -1,6 +1,11 @@
 <?php
 /**
  * The default template for displaying content in post list.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
  */
 ?>
 <article <?php post_class(themeblvd_get_att('class')); ?>>

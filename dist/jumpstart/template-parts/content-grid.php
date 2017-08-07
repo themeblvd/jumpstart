@@ -1,6 +1,11 @@
 <?php
 /**
  * The template used for displaying posts in a grid.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
  */
 ?>
 <div class="grid-item <?php echo themeblvd_get_att('class'); ?>">

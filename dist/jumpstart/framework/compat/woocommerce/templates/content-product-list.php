@@ -1,3 +1,14 @@
+<?php
+/**
+ * The template used to display an individual
+ * WooCommerce product in the "list" view.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+?>
 <li <?php post_class(); ?>>
 
 	<div class="tb-product">

@@ -1,5 +1,14 @@
 <?php
 /**
+ * Super User theme base functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Theme Options Mods
  */
 include_once( get_template_directory() . '/base/superuser/options.php' );

@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend content functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Get blockquote formatted correctly for Bootstrap
  *
  * @since 2.4.0

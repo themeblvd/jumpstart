@@ -1,5 +1,14 @@
 <?php
 /**
+ * Executive theme base functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Theme Options Mods
  */
 include_once( get_template_directory() . '/base/executive/options.php' );

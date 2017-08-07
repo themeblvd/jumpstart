@@ -5,14 +5,13 @@
  * WARNING: This template file is a core part of the
  * Theme Blvd WordPress Framework. It is advised
  * that any edits to the way this file displays its
- * content be done with via hooks, filters, and
+ * content be done with via actions, filters, and
  * template parts.
  *
  * @author		Jason Bobich
- * @copyright	Copyright (c) Jason Bobich
- * @link		http://jasonbobich.com
+ * @copyright	2009-2017 Theme Blvd
  * @link		http://themeblvd.com
- * @package 	Theme Blvd WordPress Framework
+ * @package 	@@name-package
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>

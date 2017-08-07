@@ -1,5 +1,14 @@
 <?php
 /**
+ * Theme Base helper functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Get path to theme base.
  *
  * @since 2.5.0

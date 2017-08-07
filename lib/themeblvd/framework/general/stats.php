@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend statistical element functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Get chart using chart.js
  *
  * @since 2.5.0

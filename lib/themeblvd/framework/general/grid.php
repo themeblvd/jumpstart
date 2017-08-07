@@ -1,5 +1,14 @@
 <?php
 /**
+ * Frontend grid functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Get class for a column based on our framework grid keys.
  * See: http://dev.themeblvd.com/tutorial/grid-system/
  *

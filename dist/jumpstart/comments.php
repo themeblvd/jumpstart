@@ -2,7 +2,16 @@
 /**
  * The template for displaying Comments.
  *
- * @package Theme Blvd WordPress Framework
+ * WARNING: This template file is a core part of the
+ * Theme Blvd WordPress Framework. It is advised
+ * that any edits to the way this file displays its
+ * content be done with via actions, filters, and
+ * template parts.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
  */
 ?>
 <?php if ( themeblvd_show_comments() ) : ?>

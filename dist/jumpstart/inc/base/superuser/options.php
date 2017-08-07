@@ -1,5 +1,14 @@
 <?php
 /**
+ * Super User theme base option functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
+/**
  * Add theme options to framework.
  *
  * @since 2.0.0

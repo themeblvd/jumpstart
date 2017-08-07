@@ -1,4 +1,15 @@
 <?php
+/**
+ * The template used to add sorting to a display of
+ * products in WooCommerce. We also use this template
+ * to add a toggle between the theme's added product views.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	Jump_Start
+ */
+
 $compat = Theme_Blvd_Compat_WooCommerce::get_instance();
 $default = themeblvd_get_option('woo_shop_view');
 $current = $compat->loop_view();

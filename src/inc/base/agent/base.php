@@ -1,5 +1,14 @@
 <?php
 /**
+ * Agent theme base functions.
+ *
+ * @author		Jason Bobich
+ * @copyright	2009-2017 Theme Blvd
+ * @link		http://themeblvd.com
+ * @package 	@@name-package
+ */
+
+/**
  * Theme Options Mods
  */
 include_once( themeblvd_get_base_path( 'agent' ) . '/options.php' );
