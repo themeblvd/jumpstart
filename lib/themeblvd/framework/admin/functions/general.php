@@ -145,7 +145,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 function themeblvd_hijack_page_atts() {
 	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
 		remove_meta_box( 'pageparentdiv', 'page', 'side' );
-		add_meta_box( 'themeblvd_pageparentdiv', __('Page Attributes', 'jumpstart'), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
+		add_meta_box( 'themeblvd_pageparentdiv', __('Page Attributes', '@@text-domain'), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
 	}
 }
 
@@ -203,7 +203,7 @@ function themeblvd_clear_options() {
 	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
 		check_admin_referer( $_POST['option_page'].'-options' );
 		delete_option( $_POST['themeblvd_clear_options'] );
-		add_settings_error( $_POST['themeblvd_clear_options'] , 'clear_defaults', __('Options cleared from database.', 'jumpstart'), 'themeblvd-error error' );
+		add_settings_error( $_POST['themeblvd_clear_options'] , 'clear_defaults', __('Options cleared from database.', '@@text-domain'), 'themeblvd-error error' );
 	}
 }
 
@@ -299,12 +299,12 @@ function themeblvd_get_icons( $type = 'vector' ) {
 function themeblvd_get_bg_types( $context = 'section' ) {
 
 	$types = array(
-		'none'		=> __('No background', 'jumpstart'),
-		'color'		=> __('Custom color', 'jumpstart'),
-		'texture'	=> __('Custom color + texture', 'jumpstart'),
-		'image'		=> __('Custom color + image', 'jumpstart'),
-		'slideshow'	=> __('Custom image slideshow', 'jumpstart'),
-		'video'		=> __('Custom video', 'jumpstart')
+		'none'		=> __('No background', '@@text-domain'),
+		'color'		=> __('Custom color', '@@text-domain'),
+		'texture'	=> __('Custom color + texture', '@@text-domain'),
+		'image'		=> __('Custom color + image', '@@text-domain'),
+		'slideshow'	=> __('Custom image slideshow', '@@text-domain'),
+		'video'		=> __('Custom video', '@@text-domain')
 	);
 
 	if ( $context != 'section' ) {
@@ -314,17 +314,17 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 	if ( $context == 'section' || $context == 'banner' || $context == 'jumbotron' ) {
 
 		if ( themeblvd_supports( 'featured', 'style' ) ) {
-			$types['featured'] = __('Theme\'s preset "Featured" area background', 'jumpstart');
+			$types['featured'] = __('Theme\'s preset "Featured" area background', '@@text-domain');
 		}
 
 		if ( themeblvd_supports( 'featured_below', 'style' ) ) {
-			$types['featured_below'] = __('Theme\'s preset "Featured Below" area background', 'jumpstart');
+			$types['featured_below'] = __('Theme\'s preset "Featured Below" area background', '@@text-domain');
 		}
 
 	}
 
 	if ( $context == 'banner' ) {
-		$types['none'] = __('No banner', 'jumpstart');
+		$types['none'] = __('No banner', '@@text-domain');
 	}
 
 	return apply_filters( "themeblvd_{$context}_bg_types", $types );

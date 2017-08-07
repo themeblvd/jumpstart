@@ -160,12 +160,12 @@ class Theme_Blvd_Envato_Updates {
 		$old_version = isset( $current_update['old_version'] ) ? $current_update['old_version'] : null;
 
 		// Start the process
-		show_message( sprintf( esc_html__('Backing up %2$s v%1$s before udpating to new version...', 'jumpstart' ), $old_version, $theme_name ) );
+		show_message( sprintf( esc_html__('Backing up %2$s v%1$s before udpating to new version...', '@@text-domain' ), $old_version, $theme_name ) );
 
 		// Make sure the themes directory can be found.
 		$themes_directory = WP_CONTENT_DIR . '/themes';
 		if ( ! $wp_filesystem->find_folder( $themes_directory ) ) {
-			wp_die( esc_html__('Unable to locate WordPress Theme directory.', 'jumpstart') );
+			wp_die( esc_html__('Unable to locate WordPress Theme directory.', '@@text-domain') );
 		}
 
 		// Locations
@@ -175,7 +175,7 @@ class Theme_Blvd_Envato_Updates {
 		// Create destination if needed
 		if ( ! $wp_filesystem->exists( $to ) ) {
 			if ( ! $wp_filesystem->mkdir( $to, FS_CHMOD_DIR ) ) {
-				show_message( esc_html__('Could not create directory for backup.', 'jumpstart') );
+				show_message( esc_html__('Could not create directory for backup.', '@@text-domain') );
 				wp_die();
 			}
 		}
@@ -189,7 +189,7 @@ class Theme_Blvd_Envato_Updates {
 
 		// End the process
 		$backup_path = '<code>/wp-content/themes/'.$theme.'-'.$old_version.'/</code>'; // just for display purposes
-		show_message( sprintf( esc_html__('%2$s v%1$s has been backed up sucessfully to %3$s...', 'jumpstart' ), $old_version, $theme_name, $backup_path ) );
+		show_message( sprintf( esc_html__('%2$s v%1$s has been backed up sucessfully to %3$s...', '@@text-domain' ), $old_version, $theme_name, $backup_path ) );
 
 	}
 

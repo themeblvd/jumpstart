@@ -15,15 +15,15 @@ function jumpstart_su_get_presets( $preset = '' ) {
 
 	// Predefined colors
     $colors = apply_filters('jumpstart_su_preset_colors', array(
-        'default'       => array( __('Default', 'jumpstart'),       '#333333', '#222222' ),
-        'green'         => array( __('Green', 'jumpstart'),         '#4fba6f', '#4ca165' ),
-        'sea-green'     => array( __('Sea Green', 'jumpstart'),     '#18a185', '#268f77' ),
-        'blue'          => array( __('Blue', 'jumpstart'),          '#2880ba', '#3174a2' ),
-        'midnight-blue' => array( __('Midnight Blue', 'jumpstart'), '#2c3e50', '#1a2836' ),
-        'purple'        => array( __('Purple', 'jumpstart'),        '#894b9d', '#7b478b' ),
-        'orange'        => array( __('Orange', 'jumpstart'),        '#d15627', '#b85128' ),
-        'red'           => array( __('Red', 'jumpstart'),           '#c03b2b', '#a93b2a' ),
-        'grey'          => array( __('Grey', 'jumpstart'),          '#7f8c8d', '#727e7e' )
+        'default'       => array( __('Default', '@@text-domain'),       '#333333', '#222222' ),
+        'green'         => array( __('Green', '@@text-domain'),         '#4fba6f', '#4ca165' ),
+        'sea-green'     => array( __('Sea Green', '@@text-domain'),     '#18a185', '#268f77' ),
+        'blue'          => array( __('Blue', '@@text-domain'),          '#2880ba', '#3174a2' ),
+        'midnight-blue' => array( __('Midnight Blue', '@@text-domain'), '#2c3e50', '#1a2836' ),
+        'purple'        => array( __('Purple', '@@text-domain'),        '#894b9d', '#7b478b' ),
+        'orange'        => array( __('Orange', '@@text-domain'),        '#d15627', '#b85128' ),
+        'red'           => array( __('Red', '@@text-domain'),           '#c03b2b', '#a93b2a' ),
+        'grey'          => array( __('Grey', '@@text-domain'),          '#7f8c8d', '#727e7e' )
     ));
 
     // Predefined attributes
@@ -36,11 +36,11 @@ function jumpstart_su_get_presets( $preset = '' ) {
     );
 
     $styles = array(
-        'style-1' => __('Style 1', 'jumpstart'),
-        'style-2' => __('Style 2', 'jumpstart'),
-        'style-3' => __('Style 3', 'jumpstart'),
-		'style-4' => __('Style 4', 'jumpstart'),
-		'style-5' => __('Style 5', 'jumpstart')
+        'style-1' => __('Style 1', '@@text-domain'),
+        'style-2' => __('Style 2', '@@text-domain'),
+        'style-3' => __('Style 3', '@@text-domain'),
+		'style-4' => __('Style 4', '@@text-domain'),
+		'style-5' => __('Style 5', '@@text-domain')
     );
 
 	// Do we only want return one preset?

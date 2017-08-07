@@ -1467,22 +1467,22 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	$date = get_post_time('G', true, $post_id);
 
 	$locals = apply_filters('themeblvd_time_ago_locals', array(
-		'year' 		=> __('year', 'jumpstart'),
-		'years' 	=> __('years', 'jumpstart'),
-		'month' 	=> __('month', 'jumpstart'),
-		'months' 	=> __('months', 'jumpstart'),
-		'week' 		=> __('week', 'jumpstart'),
-		'weeks' 	=> __('weeks', 'jumpstart'),
-		'day' 		=> __('day', 'jumpstart'),
-		'days' 		=> __('days', 'jumpstart'),
-		'hour' 		=> __('hour', 'jumpstart'),
-		'hours' 	=> __('hours', 'jumpstart'),
-		'minute' 	=> __('minute', 'jumpstart'),
-		'minutes' 	=> __('minutes', 'jumpstart'),
-		'second' 	=> __('second', 'jumpstart'),
-		'seconds' 	=> __('seconds', 'jumpstart'),
-		'ago'		=> __('ago', 'jumpstart'),
-		'error' 	=> __('sometime', 'jumpstart')
+		'year' 		=> __('year', '@@text-domain'),
+		'years' 	=> __('years', '@@text-domain'),
+		'month' 	=> __('month', '@@text-domain'),
+		'months' 	=> __('months', '@@text-domain'),
+		'week' 		=> __('week', '@@text-domain'),
+		'weeks' 	=> __('weeks', '@@text-domain'),
+		'day' 		=> __('day', '@@text-domain'),
+		'days' 		=> __('days', '@@text-domain'),
+		'hour' 		=> __('hour', '@@text-domain'),
+		'hours' 	=> __('hours', '@@text-domain'),
+		'minute' 	=> __('minute', '@@text-domain'),
+		'minutes' 	=> __('minutes', '@@text-domain'),
+		'second' 	=> __('second', '@@text-domain'),
+		'seconds' 	=> __('seconds', '@@text-domain'),
+		'ago'		=> __('ago', '@@text-domain'),
+		'error' 	=> __('sometime', '@@text-domain')
 	));
 
 	// Array of time period chunks

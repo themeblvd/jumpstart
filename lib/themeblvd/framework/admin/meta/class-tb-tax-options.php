@@ -104,14 +104,14 @@ class Theme_Blvd_Tax_Options {
 
 		// Sidebar Layouts
 		$layouts = themeblvd_sidebar_layouts();
-		$select_layouts = array('default' => __('Use default setting', 'jumpstart'));
+		$select_layouts = array('default' => __('Use default setting', '@@text-domain'));
 
 		foreach ( $layouts as $layout ) {
 			$select_layouts[$layout['id']] = $layout['name'];
 		}
 
 		// Post Display modes
-		$select_modes = array_merge( array('default' => __('Use default setting', 'jumpstart')), themeblvd_get_modes() );
+		$select_modes = array_merge( array('default' => __('Use default setting', '@@text-domain')), themeblvd_get_modes() );
 
 		// Values
 		$sidebar_layout = $this->get( $taxonomy, $term->slug, 'sidebar_layout', 'default' );
@@ -119,36 +119,36 @@ class Theme_Blvd_Tax_Options {
 		$mode = $this->get( $taxonomy, $term->slug, 'mode', 'default' );
 		?>
 		<tr class="form-field">
-			<th scope="row"><label for="_tb_info"><?php esc_html_e('Archive Info Box', 'jumpstart'); ?></label></th>
+			<th scope="row"><label for="_tb_info"><?php esc_html_e('Archive Info Box', '@@text-domain'); ?></label></th>
 			<td>
 				<select name="_tb_info" id="_tb_info" class="postform">
-					<option value="default" <?php selected($info, 'default'); ?>><?php esc_html_e('Use default setting', 'jumpstart'); ?></option>
-					<option value="show" <?php selected($info, 'show'); ?>><?php esc_html_e('Show', 'jumpstart'); ?></option>
-					<option value="hide" <?php selected($info, 'hide'); ?>><?php esc_html_e('Hide', 'jumpstart'); ?></option>
+					<option value="default" <?php selected($info, 'default'); ?>><?php esc_html_e('Use default setting', '@@text-domain'); ?></option>
+					<option value="show" <?php selected($info, 'show'); ?>><?php esc_html_e('Show', '@@text-domain'); ?></option>
+					<option value="hide" <?php selected($info, 'hide'); ?>><?php esc_html_e('Hide', '@@text-domain'); ?></option>
 				</select>
-				<p class="description"><?php printf(esc_html__('Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', 'jumpstart'), $taxonomy); ?></p>
+				<p class="description"><?php printf(esc_html__('Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', '@@text-domain'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row"><label for="_tb_sidebar_layout"><?php esc_html_e('Archive Sidebar Layout', 'jumpstart'); ?></label></th>
+			<th scope="row"><label for="_tb_sidebar_layout"><?php esc_html_e('Archive Sidebar Layout', '@@text-domain'); ?></label></th>
 			<td>
 				<select name="_tb_sidebar_layout" id="_tb_sidebar_layout" class="postform">
 					<?php foreach ( $select_layouts as $key => $value ) : ?>
 						<option value="<?php echo $key; ?>" <?php selected($sidebar_layout, $key); ?>><?php echo esc_html($value); ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php printf(esc_html__('Select the sidebar layout used in displaying archives for this %s.', 'jumpstart'), $taxonomy); ?></p>
+				<p class="description"><?php printf(esc_html__('Select the sidebar layout used in displaying archives for this %s.', '@@text-domain'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row"><label for="_tb_mode"><?php esc_html_e('Archive Post Display', 'jumpstart'); ?></label></th>
+			<th scope="row"><label for="_tb_mode"><?php esc_html_e('Archive Post Display', '@@text-domain'); ?></label></th>
 			<td>
 				<select name="_tb_mode" id="_tb_mode" class="postform">
 					<?php foreach ( $select_modes as $key => $value ) : ?>
 						<option value="<?php echo $key; ?>" <?php selected($mode, $key); ?>><?php echo esc_html($value); ?></option>
 					<?php endforeach; ?>
 				</select>
-				<p class="description"><?php printf(esc_html__('Select how posts are displayed on archives for this %s.', 'jumpstart'), $taxonomy); ?></p>
+				<p class="description"><?php printf(esc_html__('Select how posts are displayed on archives for this %s.', '@@text-domain'), $taxonomy); ?></p>
 			</td>
 		</tr>
 		<?php

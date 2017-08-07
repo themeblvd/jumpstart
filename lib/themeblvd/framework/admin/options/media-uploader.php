@@ -68,10 +68,10 @@ function themeblvd_media_uploader( $args ) {
 
 	// Data passed to wp.media
 	$data = array(
-		'title' 	=> __('Select Media', 'jumpstart'),
-		'select'	=> __('Select', 'jumpstart'),
-		'upload'	=> __('Upload', 'jumpstart'),
-		'remove'	=> __('Remove', 'jumpstart'),
+		'title' 	=> __('Select Media', '@@text-domain'),
+		'select'	=> __('Select', '@@text-domain'),
+		'upload'	=> __('Upload', '@@text-domain'),
+		'remove'	=> __('Remove', '@@text-domain'),
 		'send_back'	=> $args['send_back'],
 		'class'		=> 'tb-modal-hide-settings'
 	);
@@ -80,59 +80,59 @@ function themeblvd_media_uploader( $args ) {
 	switch ( $type ) {
 
 		case 'slider' :
-			$data['title'] = __('Slide Image', 'jumpstart');
-			$data['select'] = __('Use for Slide', 'jumpstart');
-			$data['upload'] = __('Get Image', 'jumpstart');
-			$help = __('You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'jumpstart');
+			$data['title'] = __('Slide Image', '@@text-domain');
+			$data['select'] = __('Use for Slide', '@@text-domain');
+			$data['upload'] = __('Get Image', '@@text-domain');
+			$help = __('You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', '@@text-domain');
 			$output .= '<span class="locked"><span></span>';
 			$output .= '<a href="#" class="help-icon tb-icon-help-circled tooltip-link" title="'.esc_attr($help).'"></a>';
-			$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.esc_attr($name).'[id]" placeholder="'.esc_attr__('Image ID', 'jumpstart').'" value="'.esc_attr($args['value_id']).'" /></span>'."\n";
+			$output .= '<input id="'.$formfield.'_id" class="image-id locked upload'.$class.'" type="text" name="'.esc_attr($name).'[id]" placeholder="'.esc_attr__('Image ID', '@@text-domain').'" value="'.esc_attr($args['value_id']).'" /></span>'."\n";
 			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="hidden" name="'.esc_attr($name).'[url]" value="'.esc_attr($value).'" />'."\n";
 			$output .= '<input id="'.$formfield.'_title" class="image-title upload'.$class.'" type="hidden" name="'.$name.'[title]" value="'.esc_attr($args['value_title']).'" />'."\n";
 			break;
 
 		case 'video' :
-			$data['title'] = __('Select Video', 'jumpstart');
-			$data['select'] = __('Use Video', 'jumpstart');
-			$data['upload'] = __('Get Video', 'jumpstart');
-			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Video URL', 'jumpstart') .'" />'."\n";
+			$data['title'] = __('Select Video', '@@text-domain');
+			$data['select'] = __('Use Video', '@@text-domain');
+			$data['upload'] = __('Get Video', '@@text-domain');
+			$output .= '<input id="'.$formfield.'" class="video-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Video URL', '@@text-domain') .'" />'."\n";
 			break;
 
 		case 'logo' :
-			$data['title'] = __('Logo Image', 'jumpstart');
-			$data['select'] = __('Use for Logo', 'jumpstart');
+			$data['title'] = __('Logo Image', '@@text-domain');
+			$data['select'] = __('Use for Logo', '@@text-domain');
 			$width_name = str_replace( '[image]', '[image_width]', $name );
 			$height_name = str_replace( '[image]', '[image_height]', $name );
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Image URL', 'jumpstart').'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Image URL', '@@text-domain').'" />'."\n";
 			break;
 
 		case 'logo_2x' :
-			$data['title'] = __('Logo HiDPI Image', 'jumpstart');
-			$data['select'] = __('Use for Logo', 'jumpstart');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('URL for image twice the size of standard image', 'jumpstart') .'" />'."\n";
+			$data['title'] = __('Logo HiDPI Image', '@@text-domain');
+			$data['select'] = __('Use for Logo', '@@text-domain');
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('URL for image twice the size of standard image', '@@text-domain') .'" />'."\n";
 			break;
 
 		case 'background' :
-			$data['title'] = __('Select Background Image', 'jumpstart');
-			$data['upload'] = __('Get Image', 'jumpstart');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Image URL', 'jumpstart') .'" />'."\n";
+			$data['title'] = __('Select Background Image', '@@text-domain');
+			$data['upload'] = __('Get Image', '@@text-domain');
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('Image URL', '@@text-domain') .'" />'."\n";
 			break;
 
 		case 'media' :
-			$data['select'] = __('Insert Media', 'jumpstart');
+			$data['select'] = __('Insert Media', '@@text-domain');
 			$data['class'] = '';
 			$output .= '<textarea id="'.$formfield.'" class="image-url upload'.$class.'" name="'.esc_attr($name).'" value="'.esc_attr($value).'"></textarea>'."\n";
 			break;
 
 		case 'advanced' :
-			$data['title'] = __('Select Image', 'jumpstart');
+			$data['title'] = __('Select Image', '@@text-domain');
 			$data['class'] = str_replace( 'tb-modal-hide-settings', 'tb-modal-advanced-image', $data['class'] );
-			$data['select'] = __('Use Image', 'jumpstart');
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'[src]" value="'.esc_attr($args['value_src']).'" placeholder="'.esc_attr__('No image chosen', 'jumpstart') .'" />'."\n";
+			$data['select'] = __('Use Image', '@@text-domain');
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'[src]" value="'.esc_attr($args['value_src']).'" placeholder="'.esc_attr__('No image chosen', '@@text-domain') .'" />'."\n";
 			break;
 
 		default :
-			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('No file chosen', 'jumpstart') .'" />'."\n";
+			$output .= '<input id="'.$formfield.'" class="image-url upload'.$class.'" type="text" name="'.esc_attr($name).'" value="'.esc_attr($value).'" placeholder="'.esc_attr__('No file chosen', '@@text-domain') .'" />'."\n";
 	}
 
 	$data = apply_filters('themeblvd_media_uploader_data', $data, $type);
@@ -145,18 +145,18 @@ function themeblvd_media_uploader( $args ) {
 
 	if ( $type == 'logo' ) {
 
-		// $output .= '<span class="logo-label logo-url-label">'.__('Image URL', 'jumpstart').'</span>';
+		// $output .= '<span class="logo-label logo-url-label">'.__('Image URL', '@@text-domain').'</span>';
 
 		$output .= '<div class="logo-atts clearfix">';
 
 		$output .= '<div class="logo-width">';
 		$output .= '<input id="'.$formfield.'_width" class="image-width upload'.$class.'" type="text" name="'.esc_attr($width_name).'" value="'.esc_attr($args['value_width']).'" />'."\n";
-		$output .= '<span class="logo-label logo-width-label">'.esc_html__('Width', 'jumpstart').'</span>';
+		$output .= '<span class="logo-label logo-width-label">'.esc_html__('Width', '@@text-domain').'</span>';
 		$output .= '</div>';
 
 		$output .= '<div class="logo-height">';
 		$output .= '<input id="'.$formfield.'_height" class="image-height upload'.$class.'" type="text" name="'.esc_attr($height_name).'" value="'.esc_attr($args['value_height']).'" />'."\n";
-		$output .= '<span class="logo-label logo-height-label">'.esc_html__('Height', 'jumpstart').'</span>';
+		$output .= '<span class="logo-label logo-height-label">'.esc_html__('Height', '@@text-domain').'</span>';
 		$output .= '</div>';
 
 		$output .= '</div><!-- .logo-atts (end) -->';
@@ -184,7 +184,7 @@ function themeblvd_media_uploader( $args ) {
 			}
 
 			// Standard generic output if it's not an image.
-			$title = esc_attr__('View File', 'jumpstart');
+			$title = esc_attr__('View File', '@@text-domain');
 			$output .= '<div class="no-image"><span class="file_link"><a href="' . esc_attr($value) . '" target="_blank" rel="external">'.esc_attr($title).'</a></span></div>';
 		}
 	}

@@ -94,9 +94,9 @@ class Theme_Blvd_Welcome {
         $theme = wp_get_theme($template);
 
         $args = apply_filters('themeblvd_welcome_args', array(
-            'msg'   => sprintf( '<p><strong>'.__('Thank you for using %s with Theme Blvd Framework %s.', 'jumpstart').'</strong></p><p>'.__('Below are some resources to get started. You can find more videos and information in your "All files and documentation" download.', 'jumpstart').'</p>', $theme->get('Name'), TB_FRAMEWORK_VERSION ),
-            'btn'   => __('Getting Started', 'jumpstart'),
-            'title' => __('Getting Started', 'jumpstart'),
+            'msg'   => sprintf( '<p><strong>'.__('Thank you for using %s with Theme Blvd Framework %s.', '@@text-domain').'</strong></p><p>'.__('Below are some resources to get started. You can find more videos and information in your "All files and documentation" download.', '@@text-domain').'</p>', $theme->get('Name'), TB_FRAMEWORK_VERSION ),
+            'btn'   => __('Getting Started', '@@text-domain'),
+            'title' => __('Getting Started', '@@text-domain'),
             'video' => '124567552'
         ), $theme);
 
@@ -114,19 +114,19 @@ class Theme_Blvd_Welcome {
                 <?php if ( themeblvd_supports('admin', 'base') ) : ?>
                     <a href="<?php echo esc_url( admin_url('themes.php?page='.$template.'-base') ) ?>" class="button button-secondary">
                         <span class="dashicons dashicons-admin-tools" style="line-height:26px;"></span>
-                        <?php esc_html_e('Select Theme Base', 'jumpstart'); ?>
+                        <?php esc_html_e('Select Theme Base', '@@text-domain'); ?>
                     </a>
                 <?php endif; ?>
 
                 <a href="<?php echo esc_url( admin_url( 'themes.php?page='.themeblvd_get_option_name() ) ) ?>" class="button button-secondary">
                     <span class="dashicons dashicons-admin-settings" style="line-height:26px;"></span>
-                    <?php esc_html_e('Setup Theme Options', 'jumpstart'); ?>
+                    <?php esc_html_e('Setup Theme Options', '@@text-domain'); ?>
                 </a>
             </p>
 
             <p>
                 <a href="<?php echo esc_url( $this->disable_url() ); ?>">
-                    <?php esc_html_e('Dismiss this notice', 'jumpstart'); ?>
+                    <?php esc_html_e('Dismiss this notice', '@@text-domain'); ?>
                 </a>
             </p>
 

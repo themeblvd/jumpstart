@@ -37,17 +37,17 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 	//$output .= '<div class="tb-fancy-select condensed">';
 	$output .= '<select name="action">';
-	$output .= '<option value="-1" selected="selected">'.esc_html__('Bulk Actions', 'jumpstart').'</option>';
-	$output .= '<option value="trash">'.esc_html__('Delete', 'jumpstart').' '.esc_attr($name).'</option>';
+	$output .= '<option value="-1" selected="selected">'.esc_html__('Bulk Actions', '@@text-domain').'</option>';
+	$output .= '<option value="trash">'.esc_html__('Delete', '@@text-domain').' '.esc_attr($name).'</option>';
 	$output .= '</select>';
 	//$output .= '<span class="trigger"></span>';
 	//$output .= '<span class="textbox"></span>';
 	//$output .= '</div>';
 
-	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.esc_html__('Apply', 'jumpstart').'">';
+	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="'.esc_html__('Apply', '@@text-domain').'">';
 	$output .= '</div>';
 	$output .= '<div class="alignright tablenav-pages">';
-	$output .= '<span class="displaying-num">'.esc_html( sprintf( _n( '1 item', '%s items', count($posts), 'jumpstart'), number_format_i18n( count($posts) ) ) ).'</span>';
+	$output .= '<span class="displaying-num">'.esc_html( sprintf( _n( '1 item', '%s items', count($posts), '@@text-domain'), number_format_i18n( count($posts) ) ) ).'</span>';
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
 	$output .= '</div>';
@@ -73,20 +73,20 @@ function themeblvd_post_table( $post_type, $columns ) {
 
 					case 'title' :
 						$output .= '<td class="post-title page-title column-title">';
-						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.esc_attr__('Edit', 'jumpstart').'">'.esc_html($post->post_title).'</strong></a>';
+						$output .= '<strong><a href="#'.esc_attr($post->ID).'" class="title-link edit-'.$post_type.'" title="'.esc_attr__('Edit', '@@text-domain').'">'.esc_html($post->post_title).'</strong></a>';
 						$output .= '<div class="row-actions">';
 						$output .= '<span class="edit">';
-						$output .= '<a href="#'.esc_attr($post->ID).'" class="edit-post edit-'.$post_type.'" title="'.esc_attr__('Edit', 'jumpstart').'">'.esc_attr__('Edit', 'jumpstart').'</a> | ';
+						$output .= '<a href="#'.esc_attr($post->ID).'" class="edit-post edit-'.$post_type.'" title="'.esc_attr__('Edit', '@@text-domain').'">'.esc_attr__('Edit', '@@text-domain').'</a> | ';
 						$output .= '</span>';
 
 						if ( $post_type == 'tb_layout' && defined('TB_BUILDER_PLUGIN_VERSION') && version_compare(TB_BUILDER_PLUGIN_VERSION, '2.0.0', '>=') ) {
 							$output .= '<span class="export">';
-							$output .= '<a href="'.esc_url(admin_url('admin.php?page=themeblvd_builder&themeblvd_export_layout=true&layout='.esc_attr($post->ID).'&security='.wp_create_nonce('themeblvd_export_layout'))).'" class="export-layout" title="'.esc_attr__('Export', 'jumpstart').'">'.esc_attr__('Export', 'jumpstart').'</a> | ';
+							$output .= '<a href="'.esc_url(admin_url('admin.php?page=themeblvd_builder&themeblvd_export_layout=true&layout='.esc_attr($post->ID).'&security='.wp_create_nonce('themeblvd_export_layout'))).'" class="export-layout" title="'.esc_attr__('Export', '@@text-domain').'">'.esc_attr__('Export', '@@text-domain').'</a> | ';
 							$output .= '</span>';
 						}
 
 						$output .= '<span class="trash">';
-						$output .= '<a title="'.esc_attr__('Delete', 'jumpstart').'" href="#'.esc_attr($post->ID).'">'.esc_attr__('Delete', 'jumpstart').'</a>';
+						$output .= '<a title="'.esc_attr__('Delete', '@@text-domain').'" href="#'.esc_attr($post->ID).'">'.esc_attr__('Delete', '@@text-domain').'</a>';
 						$output .= '</span>';
 						$output .= '</div>';
 						break;
@@ -170,7 +170,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 								$output .= '</ul>';
 
 							} else {
-								$output .= '<span class="inactive">'.esc_attr__('No Assignments', 'jumpstart').'</span>';
+								$output .= '<span class="inactive">'.esc_attr__('No Assignments', '@@text-domain').'</span>';
 							}
 						} else {
 							$output .= '<span class="inactive">[floating]</span>';
@@ -188,7 +188,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 		}
 	} else {
 		$num = count( $columns ) + 1; // number of columns + the checkbox column
-		$output .= '<tr><td colspan="'.$num.'">'.esc_html__('No items have been created yet. Click the Add tab above to get started.', 'jumpstart').'</td></tr>';
+		$output .= '<tr><td colspan="'.$num.'">'.esc_html__('No items have been created yet. Click the Add tab above to get started.', '@@text-domain').'</td></tr>';
 	}
 	$output .= '</tbody>';
 	$output .= '</table>';
@@ -224,21 +224,21 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	for ( $i = 0; $i <= 6; $i++  ) {
 		switch( $i ) {
 			case 0:
-				$message = esc_html__('Hide Columns', 'jumpstart');
+				$message = esc_html__('Hide Columns', '@@text-domain');
 				break;
 			case 1:
-				$message = esc_html__('1 Column', 'jumpstart');
+				$message = esc_html__('1 Column', '@@text-domain');
 				break;
 			default:
-				$message = strval($i).' '.esc_html__('Columns', 'jumpstart');
+				$message = strval($i).' '.esc_html__('Columns', '@@text-domain');
 		}
 		$data_num[$i] = $message;
 	}
 
 	// Dropdowns for column width configuration
 	$data_grid = array(
-		'10' => __('10-Column Grid', 'jumpstart'),
-		'12' => __('12-Column Grid', 'jumpstart')
+		'10' => __('10-Column Grid', '@@text-domain'),
+		'12' => __('12-Column Grid', '@@text-domain')
 	);
 
 	/*------------------------------------------------------*/
@@ -302,7 +302,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 
 	$width_option  = sprintf( '<div id="%s" class="slider"></div>', $slider_id );
 	$width_option .= sprintf( '<input id="%s" class="of-input column-width-input" name="%s" type="hidden" value="%s" />', esc_attr($id), esc_attr($name.'['.$id.']'), esc_attr($val) );
-	$width_option .= '<p class="explain">'.esc_html__('Click and drag the above column dividers left or right.', 'jumpstart').'</p>';
+	$width_option .= '<p class="explain">'.esc_html__('Click and drag the above column dividers left or right.', '@@text-domain').'</p>';
 
 	/*------------------------------------------------------*/
 	/* Primary Output
@@ -350,23 +350,23 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 	// Setup content types to choose from
 	$sources = array(
-		'null' 		=> __('- Select Content Type -', 'jumpstart'),
+		'null' 		=> __('- Select Content Type -', '@@text-domain'),
 	);
 
 	if ( in_array ( 'widget', $options ) ) {
-		$sources['widget'] = __('Floating Widget Area', 'jumpstart');
+		$sources['widget'] = __('Floating Widget Area', '@@text-domain');
 	}
 
 	if ( in_array ( 'current', $options ) ) {
-		$sources['current'] = __('Content of Current Page', 'jumpstart');
+		$sources['current'] = __('Content of Current Page', '@@text-domain');
 	}
 
 	if ( in_array ( 'page', $options ) ) {
-		$sources['page'] = __('Content of External Page', 'jumpstart');
+		$sources['page'] = __('Content of External Page', '@@text-domain');
 	}
 
 	if ( in_array ( 'raw', $options ) ) {
-		$sources['raw'] = __('Raw Content', 'jumpstart');
+		$sources['raw'] = __('Raw Content', '@@text-domain');
 	}
 
 	// Set default value
@@ -399,7 +399,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
 
 			// Message to get plugin
-			$select_sidebar = '<p class="warning">'.sprintf(esc_html__('In order for you to use this feature you need to have the %s plugin activated.', 'jumpstart'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
+			$select_sidebar = '<p class="warning">'.sprintf(esc_html__('In order for you to use this feature you need to have the %s plugin activated.', '@@text-domain'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>').'</p>';
 
 		} else {
 
@@ -428,7 +428,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 			} else {
 
-				$select_sidebar = '<p class="warning">'.esc_html__('You haven\'t created any floating widget areas.', 'jumpstart').'</p>';
+				$select_sidebar = '<p class="warning">'.esc_html__('You haven\'t created any floating widget areas.', '@@text-domain').'</p>';
 
 			}
 		}
@@ -468,7 +468,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 		} else {
 
-			$select_page = '<p class="warning">'.esc_html__('You haven\'t created any pages.', 'jumpstart').'</p>';
+			$select_page = '<p class="warning">'.esc_html__('You haven\'t created any pages.', '@@text-domain').'</p>';
 
 		}
 
@@ -490,8 +490,8 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		// Text area
 		$raw_content  = '<div class="textarea-wrap with-editor-nav">';
 		$raw_content .= '<nav class="editor-nav clearfix">';
-		$raw_content .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'jumpstart').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
-		$raw_content .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'jumpstart').'" data-target="'.esc_textarea( $id.'_raw' ).'" data-title="'.esc_attr__('Edit HTML', 'jumpstart').'" data-code_lang="html"><i class="tb-icon-code"></i></a>';
+		$raw_content .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', '@@text-domain').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+		$raw_content .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', '@@text-domain').'" data-target="'.esc_textarea( $id.'_raw' ).'" data-title="'.esc_attr__('Edit HTML', '@@text-domain').'" data-code_lang="html"><i class="tb-icon-code"></i></a>';
 		$raw_content .= '</nav>';
 		$raw_content .= sprintf( '<textarea id="%s" name="%s" class="of-input" cols="8" rows="8">%s</textarea>', esc_textarea( $id.'_raw' ), esc_attr( $name.'['.$id.'][raw]' ), esc_textarea($current_value) );
 		$raw_content .= '</div><!-- .textarea-wrap (end) -->';
@@ -506,7 +506,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 		}
 
 		$raw_content .= sprintf( '<input class="checkbox of-input" type="checkbox" name="%s" %s>', esc_attr( $name.'['.$id.'][raw_format]' ), $checked );
-		$raw_content .= esc_html__('Apply WordPress automatic formatting.', 'jumpstart');
+		$raw_content .= esc_html__('Apply WordPress automatic formatting.', '@@text-domain');
 	}
 
 	/*------------------------------------------------------*/
@@ -517,24 +517,24 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	$output .= $select_type;
 
 	if ( in_array ( 'widget', $options ) ) {
-		$link = sprintf( '<a href="%s" target="_blank">%s</a>', esc_url( admin_url('themes.php?page=themeblvd_widget_areas') ), esc_html__('Appearance > Widget Areas', 'jumpstart') );
+		$link = sprintf( '<a href="%s" target="_blank">%s</a>', esc_url( admin_url('themes.php?page=themeblvd_widget_areas') ), esc_html__('Appearance > Widget Areas', '@@text-domain') );
 		$output .= '<div class="column-content-type column-content-type-widget">';
 		$output .= $select_sidebar;
-		$output .= '<p class="note">'.sprintf( esc_html__('Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way at %s.', 'jumpstart'), $link ).'</p>';
+		$output .= '<p class="note">'.sprintf( esc_html__('Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way at %s.', '@@text-domain'), $link ).'</p>';
 		$output .= '</div>';
 	}
 
 	if ( in_array ( 'page', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-page">';
 		$output .= $select_page;
-		$output .= '<p class="note">'.esc_html__('Select an external page to pull content from.', 'jumpstart').'</p>';
+		$output .= '<p class="note">'.esc_html__('Select an external page to pull content from.', '@@text-domain').'</p>';
 		$output .= '</div>';
 	}
 
 	if ( in_array ( 'raw', $options ) ) {
 		$output .= '<div class="column-content-type column-content-type-raw">';
 		$output .= $raw_content;
-		$output .= '<p class="note">'.esc_html__('You can use basic HTML here, and most shortcodes.', 'jumpstart').'</p>';
+		$output .= '<p class="note">'.esc_html__('You can use basic HTML here, and most shortcodes.', '@@text-domain').'</p>';
 		$output .= '</div>';
 	}
 
@@ -693,24 +693,24 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 			case 'product_tags' :
 
 				if ( $conditional['id'] == 'pages' ) {
-					$single = __('page', 'jumpstart');
-					$multiple = __('pages', 'jumpstart');
+					$single = __('page', '@@text-domain');
+					$multiple = __('pages', '@@text-domain');
 					$field = 'page';
 				} else if ( $conditional['id'] == 'posts' ) {
-					$single = __('post', 'jumpstart');
-					$multiple = __('posts', 'jumpstart');
+					$single = __('post', '@@text-domain');
+					$multiple = __('posts', '@@text-domain');
 					$field = 'post';
 				} else if ( $conditional['id'] == 'portfolio_items' ) {
-					$single = __('portfolio-item', 'jumpstart');
-					$multiple = __('portfolio items', 'jumpstart');
+					$single = __('portfolio-item', '@@text-domain');
+					$multiple = __('portfolio items', '@@text-domain');
 					$field = 'portfolio_item';
 				} else if ( $conditional['id'] == 'portfolio_tags' ) {
-					$single = __('portfolio-tag', 'jumpstart');
-					$multiple = __('portfolio tags', 'jumpstart');
+					$single = __('portfolio-tag', '@@text-domain');
+					$multiple = __('portfolio tags', '@@text-domain');
 					$field = 'portfolio_tag';
 				} else {
-					$single = __('tag', 'jumpstart');
-					$multiple = __('tags', 'jumpstart');
+					$single = __('tag', '@@text-domain');
+					$multiple = __('tags', '@@text-domain');
 					$field = $conditional['id'] == 'product_tags' ? 'product_tag' : 'tag';
 				}
 
@@ -721,9 +721,9 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				}
 
 				$output .= sprintf( '<textarea name="%s">%s</textarea>', esc_attr( $name.'['.$id.']['.$field.']' ), $assignment_list );
-				$output .= sprintf( '<p class="note">%s</p>', esc_html(sprintf(__('Enter in a comma-separated list of the %s you\'d like to add to the assignments.', 'jumpstart'), $multiple) ) );
-				$output .= sprintf( '<p class="note"><em>%1$s: %2$s-1, %2$s-2, %2$s-3</em></p>', esc_html__('Example', 'jumpstart'), esc_html($single) );
-				$output .= sprintf( '<p class="note"><em>%s</em></p>', esc_html( sprintf(__('Note: Any %s entered that don\'t exist won\'t be saved.', 'jumpstart'), $multiple) ) );
+				$output .= sprintf( '<p class="note">%s</p>', esc_html(sprintf(__('Enter in a comma-separated list of the %s you\'d like to add to the assignments.', '@@text-domain'), $multiple) ) );
+				$output .= sprintf( '<p class="note"><em>%1$s: %2$s-1, %2$s-2, %2$s-3</em></p>', esc_html__('Example', '@@text-domain'), esc_html($single) );
+				$output .= sprintf( '<p class="note"><em>%s</em></p>', esc_html( sprintf(__('Note: Any %s entered that don\'t exist won\'t be saved.', '@@text-domain'), $multiple) ) );
 				break;
 
 			// Categories
@@ -831,11 +831,11 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				$disable = apply_filters( 'themeblvd_disable_sidebar_custom_conditional', false );
 
 				if ( ! $disable ) {
-					$link = '<a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">'.esc_html__('conditional statement', 'jumpstart').'</a>';
+					$link = '<a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">'.esc_html__('conditional statement', '@@text-domain').'</a>';
 					$output .= sprintf( '<input type="text" name="%s" value="%s" />', esc_attr( $name.'['.$id.']['.$conditional['field'].']' ), esc_attr($assignments['custom']) );
-					$output .= sprintf( '<p class="note">%s</p>', sprintf(esc_html__('Enter in a custom %s.', 'jumpstart'), $link) );
-					$output .= sprintf( '<p class="note"><em>%s</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>', esc_html__('Examples:', 'jumpstart') );
-					$output .= sprintf( '<p class="note"><em>%s</em></p>', esc_html__('Warning: Make sure you know what you\'re doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website.', 'jumpstart') );
+					$output .= sprintf( '<p class="note">%s</p>', sprintf(esc_html__('Enter in a custom %s.', '@@text-domain'), $link) );
+					$output .= sprintf( '<p class="note"><em>%s</em><br /><code>is_home()</code><br /><code>is_home() || is_single()</code><br /><code>"book" == get_post_type() || is_tax("author")</code></p>', esc_html__('Examples:', '@@text-domain') );
+					$output .= sprintf( '<p class="note"><em>%s</em></p>', esc_html__('Warning: Make sure you know what you\'re doing here. If you enter invalid conditional functions, you will most likely get PHP errors on the frontend of your website.', '@@text-domain') );
 				}
 				break;
 
@@ -877,11 +877,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	$types = array(
-		'default'		=> __('Default Logo', 'jumpstart'),
-		'title' 		=> __('Site Title', 'jumpstart'),
-		'title_tagline' => __('Site Title + Tagline', 'jumpstart'),
-		'custom' 		=> __('Custom Text', 'jumpstart'),
-		'image' 		=> __('Image', 'jumpstart')
+		'default'		=> __('Default Logo', '@@text-domain'),
+		'title' 		=> __('Site Title', '@@text-domain'),
+		'title_tagline' => __('Site Title + Tagline', '@@text-domain'),
+		'custom' 		=> __('Custom Text', '@@text-domain'),
+		'image' 		=> __('Image', '@@text-domain')
 	);
 
 	if ( $id != 'trans_logo' && $id != 'mobile_logo' ) {
@@ -914,11 +914,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/* Site Title
 	/*------------------------------------------------------*/
 
-	$link = '<a href="options-general.php" target="_blank">'.esc_html__('here', 'jumpstart').'</a>';
+	$link = '<a href="options-general.php" target="_blank">'.esc_html__('here', '@@text-domain').'</a>';
 	$site_title  = '<p class="note">';
-	$site_title .= esc_html__('Current Site Title', 'jumpstart').': <strong>';
+	$site_title .= esc_html__('Current Site Title', '@@text-domain').': <strong>';
 	$site_title .= get_bloginfo('name').'</strong><br><br>';
-	$site_title .= sprintf(esc_html__('You can change your site title and tagline by going %s.', 'jumpstart'), $link);
+	$site_title .= sprintf(esc_html__('You can change your site title and tagline by going %s.', '@@text-domain'), $link);
 	$site_title .= '</p>';
 
 	/*------------------------------------------------------*/
@@ -926,11 +926,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	/*------------------------------------------------------*/
 
 	$site_title_tagline  = '<p class="note">';
-	$site_title_tagline .= esc_html__('Current Site Title', 'jumpstart').': <strong>';
+	$site_title_tagline .= esc_html__('Current Site Title', '@@text-domain').': <strong>';
 	$site_title_tagline .= get_bloginfo('name').'</strong><br>';
-	$site_title_tagline .= esc_html__('Current Tagline', 'jumpstart').': <strong>';
+	$site_title_tagline .= esc_html__('Current Tagline', '@@text-domain').': <strong>';
 	$site_title_tagline .= get_bloginfo('description').'</strong><br><br>';
-	$site_title_tagline .= sprintf(esc_html__('You can change your site title by going %s.', 'jumpstart'), $link);
+	$site_title_tagline .= sprintf(esc_html__('You can change your site title by going %s.', '@@text-domain'), $link);
 	$site_title_tagline .= '</p>';
 
 	/*------------------------------------------------------*/
@@ -949,11 +949,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		$current_tagline = $val['custom_tagline'];
 	}
 
-	$custom_text  = sprintf( '<p><label class="inner-label"><strong>%s</strong></label>', esc_html__('Title', 'jumpstart') );
+	$custom_text  = sprintf( '<p><label class="inner-label"><strong>%s</strong></label>', esc_html__('Title', '@@text-domain') );
 	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name.'['.$id.'][custom]' ), esc_attr($current_value) );
-	$custom_text .= sprintf( '<p><label class="inner-label"><strong>%s</strong> (%s)</label>', esc_html__('Tagline', 'jumpstart'), esc_html__('optional', 'jumpstart') );
+	$custom_text .= sprintf( '<p><label class="inner-label"><strong>%s</strong> (%s)</label>', esc_html__('Tagline', '@@text-domain'), esc_html__('optional', '@@text-domain') );
 	$custom_text .= sprintf( '<input type="text" name="%s" value="%s" /></p>', esc_attr( $name.'['.$id.'][custom_tagline]' ), esc_attr($current_tagline) );
-	$custom_text .= sprintf( '<p class="note">%s</p>', esc_html__('Insert your custom text.', 'jumpstart') );
+	$custom_text .= sprintf( '<p class="note">%s</p>', esc_html__('Insert your custom text.', '@@text-domain') );
 
 	/*------------------------------------------------------*/
 	/* Image
@@ -981,13 +981,13 @@ function themeblvd_logo_option( $id, $name, $val ) {
 
 	// Standard Image
 	$image_upload  = '<div class="section-upload image-standard">';
-	$image_upload .= '<label class="inner-label"><strong>'.esc_html__('Standard Image', 'jumpstart').'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>'.esc_html__('Standard Image', '@@text-domain').'</strong></label>';
 	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo', 'id' => $id, 'value' => $current_value['url'], 'value_width' => $current_value['width'], 'value_height' => $current_value['height'], 'name' => 'image' ) );
 	$image_upload .= '</div>';
 
 	// Retina image (2x)
 	$image_upload .= '<div class="section-upload image-2x">';
-	$image_upload .= '<label class="inner-label"><strong>'.esc_html__('HiDPI-optimized Image (optional)', 'jumpstart').'</strong></label>';
+	$image_upload .= '<label class="inner-label"><strong>'.esc_html__('HiDPI-optimized Image (optional)', '@@text-domain').'</strong></label>';
 	$image_upload .= themeblvd_media_uploader( array( 'option_name' => $name, 'type' => 'logo_2x', 'id' => $id, 'value' => $current_retina['url'], 'name' => 'image_2x' ) );
 	$image_upload .= '</div>';
 
@@ -1107,7 +1107,7 @@ function themeblvd_button_option( $id, $name, $val ) {
 
 	$output .= '<div class="include bg clearfix">';
 	$output .= sprintf( '<div class="include-controls"><input id="%s_include_bg" class="checkbox of-input" type="checkbox" name="%s" %s /></div>', esc_attr($id), esc_attr($name.'['.$id.'][include_bg]'), checked( $include_bg, 1, false ) );
-	$output .= '<div class="include-explain">'.esc_html__('Button has background color', 'jumpstart').'</div>';
+	$output .= '<div class="include-explain">'.esc_html__('Button has background color', '@@text-domain').'</div>';
 	$output .= '</div><!-- .include (end) -->';
 
 	// Include border
@@ -1119,7 +1119,7 @@ function themeblvd_button_option( $id, $name, $val ) {
 
 	$output .= '<div class="include border clearfix">';
 	$output .= sprintf( '<div class="include-controls"><input id="%s_include_border" class="checkbox of-input" type="checkbox" name="%s" %s /></div>', esc_attr($id), esc_attr($name.'['.$id.'][include_border]'), checked( $include_border, 1, false ) );
-	$output .= '<div class="include-explain">'.esc_html__('Button has border', 'jumpstart').'</div>';
+	$output .= '<div class="include-explain">'.esc_html__('Button has border', '@@text-domain').'</div>';
 	$output .= '</div><!-- .include (end) -->';
 
 	return $output;
@@ -1139,9 +1139,9 @@ function themeblvd_sidebar_layout_dropdown( $layout = null ) {
 
 	$sidebar_layouts = themeblvd_sidebar_layouts();
 
-	$output  = '<p><strong>'.esc_html__('Sidebar Layout', 'jumpstart').'</strong></p>';
+	$output  = '<p><strong>'.esc_html__('Sidebar Layout', '@@text-domain').'</strong></p>';
 	$output .= '<select name="_tb_sidebar_layout">';
-	$output .= '<option value="default">'.esc_html__('Default Sidebar Layout', 'jumpstart').'</option>';
+	$output .= '<option value="default">'.esc_html__('Default Sidebar Layout', '@@text-domain').'</option>';
 
 	foreach ( $sidebar_layouts as $sidebar_layout ) {
 		$output .= sprintf( '<option value="%s" %s>%s</option>', $sidebar_layout['id'], selected( $sidebar_layout['id'], $layout, false ), esc_html($sidebar_layout['name']) );
@@ -1166,12 +1166,12 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 
 	// Make sure layout builder plugin is installed
 	if ( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
-		$message = sprintf( esc_html__('In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'jumpstart'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
+		$message = sprintf( esc_html__('In order to use the "Custom Layout" template, you must have the %s plugin installed.', '@@text-domain'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' );
 		return sprtinf( '<p class="tb_custom_layout"><em>%s</em></p>', $message );
 	}
 
 	$custom_layouts = get_posts('post_type=tb_layout&numberposts=-1');
-	$output = '<p><strong>'.esc_html__('Custom Layout', 'jumpstart').'</strong></p>';
+	$output = '<p><strong>'.esc_html__('Custom Layout', '@@text-domain').'</strong></p>';
 
 	if ( ! empty( $custom_layouts ) ) {
 
@@ -1184,7 +1184,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 		$output .= '</select>';
 
 	} else {
-		$output .='<p class="tb_custom_layout"><em>'.esc_html__('You haven\'t created any custom layouts in the Layout builder yet.', 'jumpstart').'</em></p>';
+		$output .='<p class="tb_custom_layout"><em>'.esc_html__('You haven\'t created any custom layouts in the Layout builder yet.', '@@text-domain').'</em></p>';
 	}
 
 	return $output;
@@ -1221,7 +1221,7 @@ function themeblvd_editor( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php esc_html_e('Edit Content', 'jumpstart'); ?></h1>
+						<h1><?php esc_html_e('Edit Content', '@@text-domain'); ?></h1>
 					</div><!-- .media-frame-title (end) -->
 
 					<div class="media-frame-content">
@@ -1237,15 +1237,15 @@ function themeblvd_editor( $args = array() ) {
 							<?php if ( $args['delete'] || $args['duplicate'] ) : ?>
 								<div class="media-toolbar-secondary">
 									<?php if ( $args['delete'] ) : ?>
-										<a href="#" class="button media-button button-secondary button-large media-button-delete"><?php esc_html_e('Delete', 'jumpstart'); ?></a>
+										<a href="#" class="button media-button button-secondary button-large media-button-delete"><?php esc_html_e('Delete', '@@text-domain'); ?></a>
 									<?php endif; ?>
 									<?php if ( $args['duplicate'] ) : ?>
-										<a href="#" class="button media-button button-secondary button-large media-button-secondary"><?php esc_html_e('Duplicate', 'jumpstart'); ?></a>
+										<a href="#" class="button media-button button-secondary button-large media-button-secondary"><?php esc_html_e('Duplicate', '@@text-domain'); ?></a>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Apply', 'jumpstart'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Apply', '@@text-domain'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
@@ -1287,7 +1287,7 @@ function themeblvd_icon_browser( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php esc_html_e('Select an Icon', 'jumpstart'); ?></h1>
+						<h1><?php esc_html_e('Select an Icon', '@@text-domain'); ?></h1>
 					</div><!-- .media-frame-title (end) -->
 
 					<div class="media-frame-content">
@@ -1320,7 +1320,7 @@ function themeblvd_icon_browser( $args = array() ) {
 						</div><!-- .media-toolbar-secondary (end) -->
 						<div class="media-toolbar">
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Use Icon', 'jumpstart'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Use Icon', '@@text-domain'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
@@ -1355,7 +1355,7 @@ function themeblvd_post_browser( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php esc_html_e('Find Post or Page ID', 'jumpstart'); ?></h1>
+						<h1><?php esc_html_e('Find Post or Page ID', '@@text-domain'); ?></h1>
 					</div><!-- .media-frame-title (end) -->
 
 					<div class="media-frame-content">
@@ -1365,7 +1365,7 @@ function themeblvd_post_browser( $args = array() ) {
 									<div class="post-browser-head clearfix">
 										<div class="search-box">
 											<input type="search" id="post-search-input" name="s" value="">
-											<input type="submit" name="" id="search-submit" class="button" value="<?php esc_attr_e('Search Posts & Pages', 'jumpstart'); ?>">
+											<input type="submit" name="" id="search-submit" class="button" value="<?php esc_attr_e('Search Posts & Pages', '@@text-domain'); ?>">
 										</div>
 										<span class="tb-loader ajax-loading">
 	  										<i class="tb-icon-spinner"></i>
@@ -1404,11 +1404,11 @@ function themeblvd_ajax_post_browser(){
 	<table class="widefat">
 		<thead>
 			<tr>
-				<th class="head-title"><?php esc_html_e('Title', 'jumpstart'); ?></th>
-				<th class="head-slug"><?php esc_html_e('Slug', 'jumpstart'); ?></th>
-				<th class="head-type"><?php esc_html_e('Type', 'jumpstart'); ?></th>
-				<th class="head-id"><?php esc_html_e('ID', 'jumpstart'); ?></th>
-				<th class="head-select"><?php esc_html_e('Select', 'jumpstart'); ?></th>
+				<th class="head-title"><?php esc_html_e('Title', '@@text-domain'); ?></th>
+				<th class="head-slug"><?php esc_html_e('Slug', '@@text-domain'); ?></th>
+				<th class="head-type"><?php esc_html_e('Type', '@@text-domain'); ?></th>
+				<th class="head-id"><?php esc_html_e('ID', '@@text-domain'); ?></th>
+				<th class="head-select"><?php esc_html_e('Select', '@@text-domain'); ?></th>
 			</tr>
 		</thead>
 		<?php if ( $posts ) : ?>
@@ -1420,12 +1420,12 @@ function themeblvd_ajax_post_browser(){
 					<td><?php echo $post->post_name; ?></td>
 					<td><?php echo $type->labels->singular_name; ?></td>
 					<td><?php echo $post->ID; ?></td>
-					<td><a href="#" data-post-id="<?php echo $post->ID; ?>" class="select-post button-secondary"><?php esc_html_e('Use Post', 'jumpstart'); ?></a></td>
+					<td><a href="#" data-post-id="<?php echo $post->ID; ?>" class="select-post button-secondary"><?php esc_html_e('Use Post', '@@text-domain'); ?></a></td>
 				</tr>
 			<?php endforeach; ?>
 		<?php else : ?>
 			<tr>
-				<td colspan="5"><?php esc_html_e('No posts found.', 'jumpstart'); ?></td>
+				<td colspan="5"><?php esc_html_e('No posts found.', '@@text-domain'); ?></td>
 			</tr>
 		<?php endif; ?>
 	</table>
@@ -1458,7 +1458,7 @@ function themeblvd_texture_browser( $args = array() ) {
 				<div class="media-frame wp-core-ui hide-menu hide-router">
 
 					<div class="media-frame-title">
-						<h1><?php esc_html_e('Select a texture', 'jumpstart'); ?></h1>
+						<h1><?php esc_html_e('Select a texture', '@@text-domain'); ?></h1>
 						<input id="texture-browser-perview-color" type="text" value="#00366d" data-default-color="#00366d" />
 					</div><!-- .media-frame-title (end) -->
 
@@ -1468,14 +1468,14 @@ function themeblvd_texture_browser( $args = array() ) {
 								<div class="icon-browser">
 									<?php
 									echo '<div class="texture-header">';
-									echo '<h2>'.esc_html__('Dark Textures', 'jumpstart').'</h2>';
+									echo '<h2>'.esc_html__('Dark Textures', '@@text-domain').'</h2>';
 									echo '</div>';
 
 									foreach ( $textures as $id => $texture ) {
 
 										if ( $id == 'divider' ) {
 											echo '<div class="texture-header">';
-											echo '<h2>'.esc_html__('Light Textures', 'jumpstart').' <span>('.esc_html__('Above textures tweaked slightly to be overlaid on lighter background colors', 'jumpstart').')</span></h2>';
+											echo '<h2>'.esc_html__('Light Textures', '@@text-domain').' <span>('.esc_html__('Above textures tweaked slightly to be overlaid on lighter background colors', '@@text-domain').')</span></h2>';
 											echo '</div>';
 											continue;
 										}
@@ -1503,7 +1503,7 @@ function themeblvd_texture_browser( $args = array() ) {
 						</div><!-- .media-toolbar-secondary (end) -->
 						<div class="media-toolbar">
 							<div class="media-toolbar-primary">
-								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Use Texture', 'jumpstart'); ?></a>
+								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e('Use Texture', '@@text-domain'); ?></a>
 							</div>
 						</div><!-- .media-toolbar (end) -->
 					</div><!-- .media-frame-toolbar (end) -->
@@ -1580,7 +1580,7 @@ function themeblvd_display_presets( $args, $option_name = '' ) {
 
 			}
 
-			$tooltip = esc_html__('Apply Preset', 'jumpstart');
+			$tooltip = esc_html__('Apply Preset', '@@text-domain');
 
 			if ( ! empty( $set['name'] ) ) {
 				$tooltip .= ': ' . $set['name'];
@@ -1617,7 +1617,7 @@ function themeblvd_options_footer_text_default() {
 	// Changelog link
 	$changelog = '';
 	if ( defined( 'TB_THEME_ID' ) ) {
-		$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), esc_html__('Changelog', 'jumpstart') );
+		$changelog = sprintf('( <a href="%s" target="_blank">%s</a> )', apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID), esc_html__('Changelog', '@@text-domain') );
 	}
 
 	// Output

@@ -301,25 +301,25 @@ class Theme_Blvd_Options_API {
 
 			// Section: Header
 			'header' => array(
-				'name' => __('Header', 'jumpstart'),
+				'name' => __('Header', '@@text-domain'),
 				'options' => array(
 					'logo' => array(
-						'name' 		=> __('Logo', 'jumpstart'),
-						'desc' 		=> __('Configure the primary branding logo for the header of your site.', 'jumpstart').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart').'</em>',
+						'name' 		=> __('Logo', '@@text-domain'),
+						'desc' 		=> __('Configure the primary branding logo for the header of your site.', '@@text-domain').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', '@@text-domain').'</em>',
 						'id' 		=> 'logo',
 						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo.png', 'image_width' => '250', 'image_height' => '75', 'image_2x' => get_template_directory_uri().'/assets/images/logo_2x.png' ),
 						'type' 		=> 'logo'
 					),
 					'header_text' => array(
-						'name' 		=> __('Header Text', 'jumpstart'),
-						'desc'		=> sprintf(__('Enter a brief piece of text you\'d like to show. You can use basic HTML here, or any %s ID formatted like %s.', 'jumpstart'), '<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>', '<code>%name%</code>'),
+						'name' 		=> __('Header Text', '@@text-domain'),
+						'desc'		=> sprintf(__('Enter a brief piece of text you\'d like to show. You can use basic HTML here, or any %s ID formatted like %s.', '@@text-domain'), '<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>', '<code>%name%</code>'),
 						'id'		=> 'header_text',
 						'std'		=> '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'type' 		=> 'text'
 					),
 					'social_media' => array(
-						'name' 		=> __('Social Media Buttons', 'jumpstart'),
-						'desc' 		=> __('Configure the social media buttons you\'d like to show.', 'jumpstart'),
+						'name' 		=> __('Social Media Buttons', '@@text-domain'),
+						'desc' 		=> __('Configure the social media buttons you\'d like to show.', '@@text-domain'),
 						'id' 		=> 'social_media',
 						'std' 		=> array(
 							'item_1' => array(
@@ -350,28 +350,28 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'social_media'
 					),
 					'social_media_style' => array(
-						'name' 		=> __('Social Media Style', 'jumpstart'),
-						'desc'		=> __('Select the color you\'d like applied to the social icons.', 'jumpstart'),
+						'name' 		=> __('Social Media Style', '@@text-domain'),
+						'desc'		=> __('Select the color you\'d like applied to the social icons.', '@@text-domain'),
 						'id'		=> 'social_media_style',
 						'std'		=> 'grey',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'flat'			=> __('Flat Color', 'jumpstart'),
-							'dark' 			=> __('Flat Dark', 'jumpstart'),
-							'grey' 			=> __('Flat Grey', 'jumpstart'),
-							'light' 		=> __('Flat Light', 'jumpstart'),
-							'color'			=> __('Color', 'jumpstart')
+							'flat'			=> __('Flat Color', '@@text-domain'),
+							'dark' 			=> __('Flat Dark', '@@text-domain'),
+							'grey' 			=> __('Flat Grey', '@@text-domain'),
+							'light' 		=> __('Flat Light', '@@text-domain'),
+							'color'			=> __('Color', '@@text-domain')
 						)
 					),
 					'searchform' => array(
-						'name' 		=> __('Search Form', 'jumpstart'),
-						'desc'		=> __('Select whether you\'d like to show a search form.', 'jumpstart'),
+						'name' 		=> __('Search Form', '@@text-domain'),
+						'desc'		=> __('Select whether you\'d like to show a search form.', '@@text-domain'),
 						'id'		=> 'searchform',
 						'std'		=> 'show',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'show'			=> __('Show search form', 'jumpstart'),
-							'hide' 			=> __('Hide search form', 'jumpstart')
+							'show'			=> __('Show search form', '@@text-domain'),
+							'hide' 			=> __('Hide search form', '@@text-domain')
 						)
 					),
 				) // End header options
@@ -379,11 +379,11 @@ class Theme_Blvd_Options_API {
 
 			// Section: Mobile Header
 			'header_mobile' => array(
-				'name' => __('Mobile Header', 'jumpstart'),
+				'name' => __('Mobile Header', '@@text-domain'),
 				'options' => array(
 					'mobile_logo' => array(
-						'name' 		=> __('Mobile Logo', 'jumpstart'),
-						'desc' 		=> __('Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you\'ll want to use an image shorter than that.', 'jumpstart').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart').'</em>',
+						'name' 		=> __('Mobile Logo', '@@text-domain'),
+						'desc' 		=> __('Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you\'ll want to use an image shorter than that.', '@@text-domain').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', '@@text-domain').'</em>',
 						'id' 		=> 'mobile_logo',
 						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-smaller-light.png', 'image_width' => '85', 'image_height' => '25', 'image_2x' => get_template_directory_uri().'/assets/images/logo-smaller-light_2x.png' ),
 						'type' 		=> 'logo'
@@ -393,28 +393,28 @@ class Theme_Blvd_Options_API {
 
 			// Section: Transparent Header
 			'header_trans' => array(
-				'name' => __('Transparent Header', 'jumpstart'),
-				'desc' => __('When you\'re configuring a page, if you select "Transparent Header" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature will work best with a full-width or full-screen featured image, or a when custom layout is applied to the page.', 'jumpstart'),
+				'name' => __('Transparent Header', '@@text-domain'),
+				'desc' => __('When you\'re configuring a page, if you select "Transparent Header" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature will work best with a full-width or full-screen featured image, or a when custom layout is applied to the page.', '@@text-domain'),
 				'options' => array(
 					'trans_logo' => array(
-						'name' 		=> __('Logo', 'jumpstart'),
-						'desc' 		=> __('Configure the primary branding logo for the header of your site.', 'jumpstart').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart').'</em>',
+						'name' 		=> __('Logo', '@@text-domain'),
+						'desc' 		=> __('Configure the primary branding logo for the header of your site.', '@@text-domain').'<br /><br /><em>'.__('Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', '@@text-domain').'</em>',
 						'id' 		=> 'trans_logo',
 						'std' 		=> array( 'type' => 'image', 'image' => get_template_directory_uri().'/assets/images/logo-light.png', 'image_width' => '250', 'image_height' => '75', 'image_2x' => get_template_directory_uri().'/assets/images/logo-light_2x.png' ),
 						'type' 		=> 'logo'
 					),
 					'trans_social_media_style' => array(
-						'name' 		=> __('Social Media Style', 'jumpstart'),
-						'desc'		=> __('Select the color you\'d like applied to the social icons.', 'jumpstart'),
+						'name' 		=> __('Social Media Style', '@@text-domain'),
+						'desc'		=> __('Select the color you\'d like applied to the social icons.', '@@text-domain'),
 						'id'		=> 'trans_social_media_style',
 						'std'		=> 'light',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'flat'			=> __('Flat Color', 'jumpstart'),
-							'dark' 			=> __('Flat Dark', 'jumpstart'),
-							'grey' 			=> __('Flat Grey', 'jumpstart'),
-							'light' 		=> __('Flat Light', 'jumpstart'),
-							'color'			=> __('Color', 'jumpstart')
+							'flat'			=> __('Flat Color', '@@text-domain'),
+							'dark' 			=> __('Flat Dark', '@@text-domain'),
+							'grey' 			=> __('Flat Grey', '@@text-domain'),
+							'light' 		=> __('Flat Light', '@@text-domain'),
+							'color'			=> __('Color', '@@text-domain')
 						)
 					)
 				) // End trans header options
@@ -422,14 +422,14 @@ class Theme_Blvd_Options_API {
 
 			// Section: Footer
 			'footer' => array(
-				'name' => __('Footer', 'jumpstart'),
+				'name' => __('Footer', '@@text-domain'),
 				'options' => array(
 					'start_footer_cols' => array(
 						'type'		=> 'subgroup_start',
 						'class'		=> 'columns standard-footer-setup'
 					),
 					'footer_setup' => array(
-						'name'		=> __('Setup Columns', 'jumpstart'),
+						'name'		=> __('Setup Columns', '@@text-domain'),
 						'desc'		=> null,
 						'id' 		=> 'footer_setup',
 						'std'		=> '1/4-1/4-1/4-1/4',
@@ -438,8 +438,8 @@ class Theme_Blvd_Options_API {
 						'options'	=> 'standard'
 					),
 					'footer_col_1' => array(
-						'name'		=> __('Footer Column #1', 'jumpstart'),
-						'desc'		=> __('Configure the content for the first column.', 'jumpstart'),
+						'name'		=> __('Footer Column #1', '@@text-domain'),
+						'desc'		=> __('Configure the content for the first column.', '@@text-domain'),
 						'id' 		=> 'footer_col_1',
 						'std'		=> array(
 					        'type'          => 'raw',
@@ -451,32 +451,32 @@ class Theme_Blvd_Options_API {
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_2' => array(
-						'name'		=> __('Footer Column #2', 'jumpstart'),
-						'desc'		=> __('Configure the content for the second column.', 'jumpstart'),
+						'name'		=> __('Footer Column #2', '@@text-domain'),
+						'desc'		=> __('Configure the content for the second column.', '@@text-domain'),
 						'id' 		=> 'footer_col_2',
 						'type'		=> 'content',
 						'class'		=> 'col_2',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_3' => array(
-						'name'		=> __('Footer Column #3', 'jumpstart'),
-						'desc'		=> __('Configure the content for the third column.', 'jumpstart'),
+						'name'		=> __('Footer Column #3', '@@text-domain'),
+						'desc'		=> __('Configure the content for the third column.', '@@text-domain'),
 						'id' 		=> 'footer_col_3',
 						'type'		=> 'content',
 						'class'		=> 'col_3',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_4' => array(
-						'name'		=> __('Footer Column #4', 'jumpstart'),
-						'desc'		=> __('Configure the content for the fourth column.', 'jumpstart'),
+						'name'		=> __('Footer Column #4', '@@text-domain'),
+						'desc'		=> __('Configure the content for the fourth column.', '@@text-domain'),
 						'id' 		=> 'footer_col_4',
 						'type'		=> 'content',
 						'class'		=> 'col_4',
 						'options'	=> array( 'widget', 'page', 'raw' )
 					),
 					'footer_col_5' => array(
-						'name'		=> __('Footer Column #5', 'jumpstart'),
-						'desc'		=> __('Configure the content for the fifth column.', 'jumpstart'),
+						'name'		=> __('Footer Column #5', '@@text-domain'),
+						'desc'		=> __('Configure the content for the fifth column.', '@@text-domain'),
 						'id' 		=> 'footer_col_5',
 						'type'		=> 'content',
 						'class'		=> 'col_5',
@@ -486,8 +486,8 @@ class Theme_Blvd_Options_API {
 						'type'		=> 'subgroup_end'
 					),
 					'footer_copyright' => array(
-						'name' 		=> __('Footer Copyright Text', 'jumpstart'),
-						'desc' 		=> __('Enter the copyright text you\'d like to show in the footer of your site.', 'jumpstart').'<br><br><em>%year%</em> &mdash; '.__('Show current year.', 'jumpstart').'<br><em>%site_title%</em> &mdash; '.__('Show your site title.', 'jumpstart'),
+						'name' 		=> __('Footer Copyright Text', '@@text-domain'),
+						'desc' 		=> __('Enter the copyright text you\'d like to show in the footer of your site.', '@@text-domain').'<br><br><em>%year%</em> &mdash; '.__('Show current year.', '@@text-domain').'<br><em>%site_title%</em> &mdash; '.__('Show your site title.', '@@text-domain'),
 						'id' 		=> 'footer_copyright',
 						'std' 		=> '(c) %year% %site_title% - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
 						'type' 		=> 'textarea',
@@ -500,12 +500,12 @@ class Theme_Blvd_Options_API {
 
 			// Section: Sidebar Layouts
 			'sidebar_layouts' => array(
-				'name' => __('Sidebar Layout', 'jumpstart'),
-				//'desc' => __('These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', 'jumpstart'),
+				'name' => __('Sidebar Layout', '@@text-domain'),
+				//'desc' => __('These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', '@@text-domain'),
 				'options' => array(
 					'sidebar_layout' => array(
-						'name' 		=> __('Default', 'jumpstart'),
-						'desc' 		=> __('Choose the default sidebar layout for the main content area of your site.', 'jumpstart'),
+						'name' 		=> __('Default', '@@text-domain'),
+						'desc' 		=> __('Choose the default sidebar layout for the main content area of your site.', '@@text-domain'),
 						'id' 		=> 'sidebar_layout',
 						'std' 		=> 'sidebar_right',
 						'type' 		=> 'images',
@@ -513,8 +513,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'single_sidebar_layout' => array(
-						'name' 		=> __('Single Posts', 'jumpstart'),
-						'desc' 		=> __('When viewing a single post, what do you want to use for the sidebar layout?', 'jumpstart'),
+						'name' 		=> __('Single Posts', '@@text-domain'),
+						'desc' 		=> __('When viewing a single post, what do you want to use for the sidebar layout?', '@@text-domain'),
 						'id' 		=> 'single_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
@@ -522,8 +522,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'page_sidebar_layout' => array(
-						'name' 		=> __('Pages', 'jumpstart'),
-						'desc' 		=> __('When viewing a standard page, what do you want to use for the sidebar layout?', 'jumpstart'),
+						'name' 		=> __('Pages', '@@text-domain'),
+						'desc' 		=> __('When viewing a standard page, what do you want to use for the sidebar layout?', '@@text-domain'),
 						'id' 		=> 'page_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
@@ -531,8 +531,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'archive_sidebar_layout' => array(
-						'name' 		=> __('Archives', 'jumpstart'),
-						'desc' 		=> __('When viewing a general archive of posts, what do you want to use for the sidebar layout?', 'jumpstart'),
+						'name' 		=> __('Archives', '@@text-domain'),
+						'desc' 		=> __('When viewing a general archive of posts, what do you want to use for the sidebar layout?', '@@text-domain'),
 						'id' 		=> 'archive_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
@@ -544,39 +544,39 @@ class Theme_Blvd_Options_API {
 
 			// Section: Extras
 			'extras' => array(
-				'name' => __('Extras', 'jumpstart'),
+				'name' => __('Extras', '@@text-domain'),
 				'options' => array(
 					'sticky' => array(
-						'name' 		=> __('Sticky Header', 'jumpstart'),
-						'desc' 		=> __('If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page.', 'jumpstart'),
+						'name' 		=> __('Sticky Header', '@@text-domain'),
+						'desc' 		=> __('If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page.', '@@text-domain'),
 						'id' 		=> 'sticky',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'show'	=> __('Yes, show sticky header', 'jumpstart'),
-							'hide'	=> __('No, don\'t show it', 'jumpstart'),
+							'show'	=> __('Yes, show sticky header', '@@text-domain'),
+							'hide'	=> __('No, don\'t show it', '@@text-domain'),
 						)
 					),
 					'breadcrumbs' => array(
-						'name' 		=> __('Breadcrumbs', 'jumpstart'),
-						'desc'		=> __('Select whether you\'d like breadcrumbs to show throughout the site or not.', 'jumpstart'),
+						'name' 		=> __('Breadcrumbs', '@@text-domain'),
+						'desc'		=> __('Select whether you\'d like breadcrumbs to show throughout the site or not.', '@@text-domain'),
 						'id'		=> 'breadcrumbs',
 						'std'		=> 'show',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'show' => __('Yes, show breadcrumbs', 'jumpstart'),
-							'hide' => __('No, hide breadcrumbs', 'jumpstart')
+							'show' => __('Yes, show breadcrumbs', '@@text-domain'),
+							'hide' => __('No, hide breadcrumbs', '@@text-domain')
 						)
 					),
 					'scroll_to_top' => array(
-						'name' 		=> __('Scroll-to-Top Button', 'jumpstart'),
-						'desc' 		=> __('If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website.', 'jumpstart'),
+						'name' 		=> __('Scroll-to-Top Button', '@@text-domain'),
+						'desc' 		=> __('If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website.', '@@text-domain'),
 						'id' 		=> 'scroll_to_top',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options'	=> array(
-							'show'	=> __('Yes, show button', 'jumpstart'),
-							'hide'	=> __('No, don\'t show it', 'jumpstart'),
+							'show'	=> __('Yes, show button', '@@text-domain'),
+							'hide'	=> __('No, don\'t show it', '@@text-domain'),
 						)
 					)
 				)
@@ -591,7 +591,7 @@ class Theme_Blvd_Options_API {
 
 			// Section: General
 			'general' => array(
-				'name' => __('General', 'jumpstart'),
+				'name' => __('General', '@@text-domain'),
 				'options' => array(
 					'general_sub_group_start' => array(
 						'type' 		=> 'subgroup_start',
@@ -599,7 +599,7 @@ class Theme_Blvd_Options_API {
 					),
 					'fw_narrow' => array(
 			            'name' 		=> null,
-			            'desc' 		=> __('Condense full-width content.', 'jumpstart'),
+			            'desc' 		=> __('Condense full-width content.', '@@text-domain'),
 			            'id' 		=> 'fw_narrow',
 			            'std' 		=> '0',
 			            'type' 		=> 'checkbox',
@@ -607,7 +607,7 @@ class Theme_Blvd_Options_API {
 			        ),
 					'img_popout' => array(
 						'name' 		=> null,
-						'desc' 		=> __('Popout large images within full-width content.', 'jumpstart'),
+						'desc' 		=> __('Popout large images within full-width content.', '@@text-domain'),
 						'id' 		=> 'img_popout',
 						'std' 		=> '0',
 						'type' 		=> 'checkbox',
@@ -618,7 +618,7 @@ class Theme_Blvd_Options_API {
 					),
 					'gallery_carousel' => array(
 			            'name' 		=> null,
-			            'desc' 		=> __('Use variable width image carousel for gallery sliders.', 'jumpstart'),
+			            'desc' 		=> __('Use variable width image carousel for gallery sliders.', '@@text-domain'),
 			            'id' 		=> 'gallery_carousel',
 			            'std' 		=> '1',
 			            'type' 		=> 'checkbox'
@@ -628,34 +628,34 @@ class Theme_Blvd_Options_API {
 
 			// Section: Single Posts
 			'single' => array(
-				'name' => __('Single Posts', 'jumpstart'),
-				'desc' => __('These settings will only apply to vewing single posts. Additionally, most of these settings can be overridden in the Post Options meta box when editing individual posts.', 'jumpstart'),
+				'name' => __('Single Posts', '@@text-domain'),
+				'desc' => __('These settings will only apply to vewing single posts. Additionally, most of these settings can be overridden in the Post Options meta box when editing individual posts.', '@@text-domain'),
 				'options' => array(
 					'single_meta' => array(
-						'name' 		=> __('Meta Information', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show on the single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', 'jumpstart'),
+						'name' 		=> __('Meta Information', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show on the single post. If you\'re going for a non-blog type of setup, you may want to hide the meta info.', '@@text-domain'),
 						'id' 		=> 'single_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show meta info', 'jumpstart'),
-							'hide' 		=> __('Hide meta info', 'jumpstart')
+							'show'		=> __('Show meta info', '@@text-domain'),
+							'hide' 		=> __('Hide meta info', '@@text-domain')
 						)
 					),
 					'single_sub_meta' => array(
-						'name' 		=> __('Sub Meta Information', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the sub meta information (like tags, categories, etc) to show on the single post.', 'jumpstart'),
+						'name' 		=> __('Sub Meta Information', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the sub meta information (like tags, categories, etc) to show on the single post.', '@@text-domain'),
 						'id' 		=> 'single_sub_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show sub meta info', 'jumpstart'),
-							'hide' 		=> __('Hide sub meta info', 'jumpstart')
+							'show'		=> __('Show sub meta info', '@@text-domain'),
+							'hide' 		=> __('Hide sub meta info', '@@text-domain')
 						)
 					),
 					'share' => array( // generic name "share" so it can be thoertically moved to another option section, if applied to more than just signle post
-						'name' 		=> __('Share Icons', 'jumpstart'),
-						'desc' 		=> __('Configure any share icons you\'d like displayed within the Sub Meta of the single post.', 'jumpstart'),
+						'name' 		=> __('Share Icons', '@@text-domain'),
+						'desc' 		=> __('Configure any share icons you\'d like displayed within the Sub Meta of the single post.', '@@text-domain'),
 						'id' 		=> 'share',
 						'std' 		=> array(
 							'item_1' => array(
@@ -678,50 +678,50 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'share'
 					),
 					'single_thumbs' => array(
-						'name' 		=> __('Featured Images &amp; Galleries', 'jumpstart'),
-						'desc' 		=> __('Choose how you want your featured images to show on the single post, by default. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', 'jumpstart'),
+						'name' 		=> __('Featured Images &amp; Galleries', '@@text-domain'),
+						'desc' 		=> __('Choose how you want your featured images to show on the single post, by default. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', '@@text-domain'),
 						'id' 		=> 'single_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'fw'        => __('Full width, above content', 'jumpstart'),
-					        'fs'        => __('Full screen parallax, above content', 'jumpstart'),
-					        'full'      => __('Standard, with content', 'jumpstart'),
-					        'hide'      => __('Hide featured images', 'jumpstart')
+							'fw'        => __('Full width, above content', '@@text-domain'),
+					        'fs'        => __('Full screen parallax, above content', '@@text-domain'),
+					        'full'      => __('Standard, with content', '@@text-domain'),
+					        'hide'      => __('Hide featured images', '@@text-domain')
 						)
 					),
 					'single_related_posts' => array(
-						'name' 		=> __('Related Posts', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to show more posts related to the one being viewed.', 'jumpstart').'<br><br><em>'.__('Note: This only applies to standard posts.', 'jumpstart').'</em>',
+						'name' 		=> __('Related Posts', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to show more posts related to the one being viewed.', '@@text-domain').'<br><br><em>'.__('Note: This only applies to standard posts.', '@@text-domain').'</em>',
 						'id' 		=> 'single_related_posts',
 						'std' 		=> 'tag',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'tag'		=> __('Show related posts by tag', 'jumpstart'),
-							'category'	=> __('Show related posts by category', 'jumpstart'),
-							'hide' 		=> __('Hide related posts', 'jumpstart')
+							'tag'		=> __('Show related posts by tag', '@@text-domain'),
+							'category'	=> __('Show related posts by category', '@@text-domain'),
+							'hide' 		=> __('Hide related posts', '@@text-domain')
 						)
 					),
 					'single_related_posts_style' => array(
-						'name' 		=> __('Related Posts Style', 'jumpstart'),
-						'desc' 		=> __('When showing, select how you\'d like to display the related posts.', 'jumpstart'),
+						'name' 		=> __('Related Posts Style', '@@text-domain'),
+						'desc' 		=> __('When showing, select how you\'d like to display the related posts.', '@@text-domain'),
 						'id' 		=> 'single_related_posts_style',
 						'std' 		=> 'list',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'list'		=> __('List', 'jumpstart'),
-							'grid'		=> __('Grid', 'jumpstart')
+							'list'		=> __('List', '@@text-domain'),
+							'grid'		=> __('Grid', '@@text-domain')
 						)
 					),
 					'single_comments' => array(
-						'name' 		=> __('Comments', 'jumpstart'),
-						'desc' 		=> __('This will hide the presence of comments on the single post.', 'jumpstart'),
+						'name' 		=> __('Comments', '@@text-domain'),
+						'desc' 		=> __('This will hide the presence of comments on the single post.', '@@text-domain'),
 						'id' 		=> 'single_comments',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show comments', 'jumpstart'),
-							'hide' 		=> __('Hide comments', 'jumpstart')
+							'show'		=> __('Show comments', '@@text-domain'),
+							'hide' 		=> __('Hide comments', '@@text-domain')
 						)
 					)
 				) // End single options
@@ -729,19 +729,19 @@ class Theme_Blvd_Options_API {
 
 			// Section: Pages
 			'pages' => array(
-				'name' => __('Pages', 'jumpstart'),
+				'name' => __('Pages', '@@text-domain'),
 				'options' => array(
 					'page_thumbs' => array(
-						'name' 		=> __('Featured Images', 'jumpstart'),
-						'desc' 		=> __('Choose how you want your featured images to show on pages, by default.', 'jumpstart'),
+						'name' 		=> __('Featured Images', '@@text-domain'),
+						'desc' 		=> __('Choose how you want your featured images to show on pages, by default.', '@@text-domain'),
 						'id' 		=> 'page_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'fw'        => __('Full width, above content', 'jumpstart'),
-					        'fs'        => __('Full screen parallax, above content', 'jumpstart'),
-					        'full'      => __('Standard, with content', 'jumpstart'),
-					        'hide'      => __('Hide featured images', 'jumpstart')
+							'fw'        => __('Full width, above content', '@@text-domain'),
+					        'fs'        => __('Full screen parallax, above content', '@@text-domain'),
+					        'full'      => __('Standard, with content', '@@text-domain'),
+					        'hide'      => __('Hide featured images', '@@text-domain')
 						)
 					),
 				)
@@ -749,12 +749,12 @@ class Theme_Blvd_Options_API {
 
 			// Section: Blog Homepage
 			'home' => array(
-				'name' => __('Blog Homepage', 'jumpstart'),
-				'desc' => __('These settings apply when you\'re viewing your blog homepage or "posts page" set at Settings > Reading > Frontpage displays.', 'jumpstart'),
+				'name' => __('Blog Homepage', '@@text-domain'),
+				'desc' => __('These settings apply when you\'re viewing your blog homepage or "posts page" set at Settings > Reading > Frontpage displays.', '@@text-domain'),
 				'options' => array(
 					'home_mode' => array(
-						'name' 		=> __('Post Display', 'jumpstart'),
-						'desc' 		=> __('When viewing your blog homepage, how do you want the posts displayed by default?', 'jumpstart'),
+						'name' 		=> __('Post Display', '@@text-domain'),
+						'desc' 		=> __('When viewing your blog homepage, how do you want the posts displayed by default?', '@@text-domain'),
 						'id' 		=> 'home_mode',
 						'std' 		=> 'blog',
 						'type' 		=> 'select',
@@ -765,37 +765,37 @@ class Theme_Blvd_Options_API {
 
 			// Section: Archives
 			'archives' => array(
-				'name' => __('Archives', 'jumpstart'),
-				//'desc' => __('These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', 'jumpstart'),
+				'name' => __('Archives', '@@text-domain'),
+				//'desc' => __('These settings apply when you\'re viewing posts specific to a category, tag, date, author, etc.', '@@text-domain'),
 				'options' => array(
 					'archive_mode' => array(
-						'name' 		=> __('Post Display', 'jumpstart'),
-						'desc' 		=> __('When viewing an archive of posts, how do you want them displayed by default?', 'jumpstart'),
+						'name' 		=> __('Post Display', '@@text-domain'),
+						'desc' 		=> __('When viewing an archive of posts, how do you want them displayed by default?', '@@text-domain'),
 						'id' 		=> 'archive_mode',
 						'std' 		=> 'blog',
 						'type' 		=> 'select',
 						'options' 	=> themeblvd_get_modes()
 					),
 					'category_info' => array(
-						'name' 		=> __('Category Info Boxes', 'jumpstart'),
-						'desc' 		=> __('When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?', 'jumpstart'),
+						'name' 		=> __('Category Info Boxes', '@@text-domain'),
+						'desc' 		=> __('When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?', '@@text-domain'),
 						'id' 		=> 'category_info',
 						'std' 		=> 'hide',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'	=> __('Yes, show info boxes', 'jumpstart'),
-							'hide' 	=> __('No, hide info boxes', 'jumpstart')
+							'show'	=> __('Yes, show info boxes', '@@text-domain'),
+							'hide' 	=> __('No, hide info boxes', '@@text-domain')
 						)
 					),
 					'tag_info' => array(
-						'name' 		=> __('Tag Info Boxes', 'jumpstart'),
-						'desc' 		=> __('When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?', 'jumpstart'),
+						'name' 		=> __('Tag Info Boxes', '@@text-domain'),
+						'desc' 		=> __('When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?', '@@text-domain'),
 						'id' 		=> 'tag_info',
 						'std' 		=> 'hide',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'	=> __('Yes, show info boxes', 'jumpstart'),
-							'hide' 	=> __('No, hide info boxes', 'jumpstart')
+							'show'	=> __('Yes, show info boxes', '@@text-domain'),
+							'hide' 	=> __('No, hide info boxes', '@@text-domain')
 						)
 					)
 				) // End archives options
@@ -803,56 +803,56 @@ class Theme_Blvd_Options_API {
 
 			// Section: Primary Posts Display
 			'blog' => array(
-				'name' => __('Post Display: Blog', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using the blog post display. These settings will be applied automatically to the "Blog" page template and any posts you\'ve set to display in the blog format.<br><br>For more control over a specific blog, you can apply the "Blog" element of the Layout Builder or use the [blog] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
+				'name' => __('Post Display: Blog', '@@text-domain'),
+				'desc' => __('These settings allow you to setup the default configuration for using the blog post display. These settings will be applied automatically to the "Blog" page template and any posts you\'ve set to display in the blog format.<br><br>For more control over a specific blog, you can apply the "Blog" element of the Layout Builder or use the [blog] shortcode in a page, which will allow you to override these options for that instance.', '@@text-domain'),
 				'options' => array(
 					'blog_thumbs' => array(
-						'name' 		=> __('Featured Images', 'jumpstart'),
-						'desc' 		=> __('Select the size of the blog\'s post thumbnail or whether you\'d like to hide them all together when posts are listed.', 'jumpstart'),
+						'name' 		=> __('Featured Images', '@@text-domain'),
+						'desc' 		=> __('Select the size of the blog\'s post thumbnail or whether you\'d like to hide them all together when posts are listed.', '@@text-domain'),
 						'id' 		=> 'blog_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'full' 		=> __('Show featured images', 'jumpstart'),
-							'hide' 		=> __('Hide featured images', 'jumpstart')
+							'full' 		=> __('Show featured images', '@@text-domain'),
+							'hide' 		=> __('Hide featured images', '@@text-domain')
 						)
 					),
 					'blog_meta' => array(
-						'name' 		=> __('Meta Information', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'jumpstart'),
+						'name' 		=> __('Meta Information', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', '@@text-domain'),
 						'id' 		=> 'blog_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show meta info', 'jumpstart'),
-							'hide' 		=> __('Hide meta info', 'jumpstart')
+							'show'		=> __('Show meta info', '@@text-domain'),
+							'hide' 		=> __('Hide meta info', '@@text-domain')
 						)
 					),
 					'blog_sub_meta' => array(
-						'name' 		=> __('Sub Meta Information', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the sub meta information (like tags, categories, etc) to below each post.', 'jumpstart'),
+						'name' 		=> __('Sub Meta Information', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the sub meta information (like tags, categories, etc) to below each post.', '@@text-domain'),
 						'id' 		=> 'blog_sub_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show sub meta info', 'jumpstart'),
-							'hide' 		=> __('Hide sub meta info', 'jumpstart')
+							'show'		=> __('Show sub meta info', '@@text-domain'),
+							'hide' 		=> __('Hide sub meta info', '@@text-domain')
 						)
 					),
 					'blog_content' => array(
-						'name' 		=> __('Excerpts of Full Content', 'jumpstart'),
-						'desc' 		=> __('Choose whether you want to show full content or post excerpts only.', 'jumpstart'),
+						'name' 		=> __('Excerpts of Full Content', '@@text-domain'),
+						'desc' 		=> __('Choose whether you want to show full content or post excerpts only.', '@@text-domain'),
 						'id' 		=> 'blog_content',
 						'std' 		=> 'excerpt',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'content'	=> __('Show full content', 'jumpstart'),
-							'excerpt' 	=> __('Show excerpt only', 'jumpstart')
+							'content'	=> __('Show full content', '@@text-domain'),
+							'excerpt' 	=> __('Show excerpt only', '@@text-domain')
 						)
 					),
 					'blog_categories' => array(
-						'name' 		=> __('Exclude Categories', 'jumpstart'),
-						'desc' 		=> __('Select any categories you\'d like to be excluded from your blog.', 'jumpstart').'<br><br><em>'.__('Note: This only applies to the main index blog or your "posts page" if you\'ve set one.</em>', 'jumpstart'),
+						'name' 		=> __('Exclude Categories', '@@text-domain'),
+						'desc' 		=> __('Select any categories you\'d like to be excluded from your blog.', '@@text-domain').'<br><br><em>'.__('Note: This only applies to the main index blog or your "posts page" if you\'ve set one.</em>', '@@text-domain'),
 						'id' 		=> 'blog_categories',
 						'type' 		=> 'multicheck',
 						'options' 	=> $options_categories
@@ -862,30 +862,30 @@ class Theme_Blvd_Options_API {
 
 			// Section: Post Lists
 			'list' => array(
-				'name' => __('Post Display: List', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the "Post List" page template and any posts you\'ve set to display in the post list format.<br><br>For more control over a specific post list, you can apply the "Post List" element of the Layout Builder or use the [post_list] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
+				'name' => __('Post Display: List', '@@text-domain'),
+				'desc' => __('These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the "Post List" page template and any posts you\'ve set to display in the post list format.<br><br>For more control over a specific post list, you can apply the "Post List" element of the Layout Builder or use the [post_list] shortcode in a page, which will allow you to override these options for that instance.', '@@text-domain'),
 				'options' => array(
 					'list_thumbs' => array(
-						'name' 		=> __('Featured Images', 'jumpstart'),
-						'desc' 		=> __('Choose whether or not you want featured images to show for each post.', 'jumpstart'),
+						'name' 		=> __('Featured Images', '@@text-domain'),
+						'desc' 		=> __('Choose whether or not you want featured images to show for each post.', '@@text-domain'),
 						'id' 		=> 'list_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
 						'options' => array(
-							'full'		=> __('Show featured images', 'jumpstart'),
-							'date'		=> __('Show date block', 'jumpstart'),
-							'hide' 		=> __('Hide featured images', 'jumpstart')
+							'full'		=> __('Show featured images', '@@text-domain'),
+							'date'		=> __('Show date block', '@@text-domain'),
+							'hide' 		=> __('Hide featured images', '@@text-domain')
 						)
 					),
 					'list_meta' => array(
-						'name' 		=> __('Meta Information', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'jumpstart'),
+						'name' 		=> __('Meta Information', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', '@@text-domain'),
 						'id' 		=> 'list_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show meta info', 'jumpstart'),
-							'hide' 		=> __('Hide meta info', 'jumpstart')
+							'show'		=> __('Show meta info', '@@text-domain'),
+							'hide' 		=> __('Hide meta info', '@@text-domain')
 						)
 					),
 					'list_sub_group_start' => array(
@@ -893,21 +893,21 @@ class Theme_Blvd_Options_API {
 						'class'		=> 'show-hide-toggle'
 					),
 					'list_more' => array(
-						'name' 		=> __('Read More', 'jumpstart'),
-						'desc' 		=> __('What would you like to show for each post to lead the reader to the full post?', 'jumpstart'),
+						'name' 		=> __('Read More', '@@text-domain'),
+						'desc' 		=> __('What would you like to show for each post to lead the reader to the full post?', '@@text-domain'),
 						'id' 		=> 'list_more',
 						'std' 		=> 'text',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'text' 		=> __('Show text link', 'jumpstart'),
-							'button'	=> __('Show button', 'jumpstart'),
-							'none'		=> __('Show no button or text link', 'jumpstart')
+							'text' 		=> __('Show text link', '@@text-domain'),
+							'button'	=> __('Show button', '@@text-domain'),
+							'none'		=> __('Show no button or text link', '@@text-domain')
 						),
 						'class'		=> 'trigger'
 					),
 					'list_more_text' => array(
-						'name' 		=> __('Read More Text', 'jumpstart'),
-						'desc' 		=> __('Enter the text you\'d like to use to lead the reader to the full post.', 'jumpstart'),
+						'name' 		=> __('Read More Text', '@@text-domain'),
+						'desc' 		=> __('Enter the text you\'d like to use to lead the reader to the full post.', '@@text-domain'),
 						'id' 		=> 'list_more_text',
 						'std' 		=> 'Read More <i class="fa fa-long-arrow-right"></i>',
 						'type' 		=> 'text',
@@ -917,8 +917,8 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'subgroup_end'
 					),
 					'list_posts_per_page' => array(
-						'name' 		=> __('Posts Per Page', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post list, what is the maximum number of posts to display on each page?', 'jumpstart'),
+						'name' 		=> __('Posts Per Page', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post list, what is the maximum number of posts to display on each page?', '@@text-domain'),
 						'id' 		=> 'list_posts_per_page',
 						'std' 		=> '10',
 						'type' 		=> 'text'
@@ -928,29 +928,29 @@ class Theme_Blvd_Options_API {
 
 			// Section: Post Grids
 			'grid' => array(
-				'name' => __('Post Display: Grid', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the "Post Grid" page template and any posts you\'ve set to display in the post grid format.<br><br>For more control over a specific post grid, you can apply the "Post Grid" element of the Layout Builder or use the [post_grid] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
+				'name' => __('Post Display: Grid', '@@text-domain'),
+				'desc' => __('These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the "Post Grid" page template and any posts you\'ve set to display in the post grid format.<br><br>For more control over a specific post grid, you can apply the "Post Grid" element of the Layout Builder or use the [post_grid] shortcode in a page, which will allow you to override these options for that instance.', '@@text-domain'),
 				'options' => array(
 					'grid_sub_group_start_1' => array(
 						'type' 		=> 'subgroup_start',
 						'class'		=> 'show-hide-toggle'
 					),
 					'grid_thumbs' => array(
-						'name' 		=> __('Featured Images', 'jumpstart'),
-						'desc' 		=> __('Choose whether or not you want featured images to show for each post.', 'jumpstart'),
+						'name' 		=> __('Featured Images', '@@text-domain'),
+						'desc' 		=> __('Choose whether or not you want featured images to show for each post.', '@@text-domain'),
 						'id' 		=> 'grid_thumbs',
 						'std' 		=> 'full',
 						'type' 		=> 'select',
 						'options' => array(
-							'full'		=> __('Show featured images', 'jumpstart'),
-							'hide' 		=> __('Hide featured images', 'jumpstart')
+							'full'		=> __('Show featured images', '@@text-domain'),
+							'hide' 		=> __('Hide featured images', '@@text-domain')
 						),
 						'class'		=> 'trigger'
 					),
 					'grid_crop' => array(
 				    	'id' 		=> 'grid_crop',
-						'name'		=> __('Featured Image Crop Size', 'jumpstart' ),
-						'desc'		=> __('Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.', 'temeblvd').'<br><br><em>'.__('Note: Images are scaled proportionally to fit within their current containers.', 'jumpstart').'</em>',
+						'name'		=> __('Featured Image Crop Size', '@@text-domain' ),
+						'desc'		=> __('Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.', 'temeblvd').'<br><br><em>'.__('Note: Images are scaled proportionally to fit within their current containers.', '@@text-domain').'</em>',
 						'type'		=> 'select',
 						'select'	=> 'crop',
 						'std'		=> 'tb_grid',
@@ -960,25 +960,25 @@ class Theme_Blvd_Options_API {
 						'type' 		=> 'subgroup_end'
 					),
 					'grid_meta' => array(
-						'name' 		=> __('Meta Information', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', 'jumpstart'),
+						'name' 		=> __('Meta Information', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the meta information (like date posted, author, etc) to show for each post.', '@@text-domain'),
 						'id' 		=> 'grid_meta',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show meta info', 'jumpstart'),
-							'hide' 		=> __('Hide meta info', 'jumpstart')
+							'show'		=> __('Show meta info', '@@text-domain'),
+							'hide' 		=> __('Hide meta info', '@@text-domain')
 						)
 					),
 					'grid_excerpt' => array(
-						'name' 		=> __('Excerpts', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to show the excerpt or not for each post.', 'jumpstart'),
+						'name' 		=> __('Excerpts', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to show the excerpt or not for each post.', '@@text-domain'),
 						'id' 		=> 'grid_excerpt',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show excerpts', 'jumpstart'),
-							'hide' 		=> __('Hide excerpts', 'jumpstart')
+							'show'		=> __('Show excerpts', '@@text-domain'),
+							'hide' 		=> __('Hide excerpts', '@@text-domain')
 						)
 					),
 					'grid_sub_group_start_2' => array(
@@ -986,21 +986,21 @@ class Theme_Blvd_Options_API {
 						'class'		=> 'show-hide-toggle'
 					),
 					'grid_more' => array(
-						'name' 		=> __('Read More', 'jumpstart'),
-						'desc' 		=> __('What would you like to show for each post to lead the reader to the full post?', 'jumpstart'),
+						'name' 		=> __('Read More', '@@text-domain'),
+						'desc' 		=> __('What would you like to show for each post to lead the reader to the full post?', '@@text-domain'),
 						'id' 		=> 'grid_more',
 						'std' 		=> 'button',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'text' 		=> __('Show text link', 'jumpstart'),
-							'button'	=> __('Show button', 'jumpstart'),
-							'none'		=> __('Show no button or text link', 'jumpstart')
+							'text' 		=> __('Show text link', '@@text-domain'),
+							'button'	=> __('Show button', '@@text-domain'),
+							'none'		=> __('Show no button or text link', '@@text-domain')
 						),
 						'class'		=> 'trigger'
 					),
 					'grid_more_text' => array(
-						'name' 		=> __('Read More Text', 'jumpstart'),
-						'desc' 		=> __('Enter the text you\'d like to use to lead the reader to the full post.', 'jumpstart'),
+						'name' 		=> __('Read More Text', '@@text-domain'),
+						'desc' 		=> __('Enter the text you\'d like to use to lead the reader to the full post.', '@@text-domain'),
 						'id' 		=> 'grid_more_text',
 						'std' 		=> 'Read More',
 						'type' 		=> 'text',
@@ -1014,41 +1014,41 @@ class Theme_Blvd_Options_API {
 						'class'		=> 'show-hide-toggle'
 					),
 					'grid_display' => array(
-						'name' 		=> __('Display', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post grid, how should they be displayed?', 'jumpstart'),
+						'name' 		=> __('Display', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post grid, how should they be displayed?', '@@text-domain'),
 						'id' 		=> 'grid_display',
 						'std' 		=> 'paginated',
 						'type' 		=> 'select',
 						'options' => array(
-							'paginated' 		=> __('Standard Grid', 'jumpstart'),
-							'masonry_paginated' => __('Masonry Grid', 'jumpstart')
+							'paginated' 		=> __('Standard Grid', '@@text-domain'),
+							'masonry_paginated' => __('Masonry Grid', '@@text-domain')
 						),
 						'class'		=> 'trigger'
 					),
 					'grid_columns' => array(
-						'name' 		=> __('Columns', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post grid, how many columns should the posts be separated into?', 'jumpstart'),
+						'name' 		=> __('Columns', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post grid, how many columns should the posts be separated into?', '@@text-domain'),
 						'id' 		=> 'grid_columns',
 						'std' 		=> '3',
 						'type' 		=> 'select',
 						'options' => array(
-							'2'			=> __('2 Columns', 'jumpstart'),
-							'3' 		=> __('3 Columns', 'jumpstart'),
-							'4' 		=> __('4 Columns', 'jumpstart'),
-							'5' 		=> __('5 Columns', 'jumpstart')
+							'2'			=> __('2 Columns', '@@text-domain'),
+							'3' 		=> __('3 Columns', '@@text-domain'),
+							'4' 		=> __('4 Columns', '@@text-domain'),
+							'5' 		=> __('5 Columns', '@@text-domain')
 						)
 					),
 					'grid_rows' => array(
-						'name' 		=> __('Rows', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?', 'jumpstart').'<br><br><em>'.__('Note: The total posts on the page will be the number of rows times the number of columns.', 'jumpstart').'</em>',
+						'name' 		=> __('Rows', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?', '@@text-domain').'<br><br><em>'.__('Note: The total posts on the page will be the number of rows times the number of columns.', '@@text-domain').'</em>',
 						'id' 		=> 'grid_rows',
 						'std' 		=> '3',
 						'type' 		=> 'text',
 						'class'		=> 'hide receiver receiver-paginated'
 					),
 					'grid_posts_per_page' => array(
-						'name' 		=> __('Posts Per Page', 'jumpstart'),
-						'desc' 		=> __('When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?', 'jumpstart'),
+						'name' 		=> __('Posts Per Page', '@@text-domain'),
+						'desc' 		=> __('When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?', '@@text-domain'),
 						'id' 		=> 'grid_posts_per_page',
 						'std' 		=> '12',
 						'type' 		=> 'text',
@@ -1062,48 +1062,48 @@ class Theme_Blvd_Options_API {
 
 			// Section: Showcase
 			'showcase' => array(
-				'name' => __('Post Display: Showcase', 'jumpstart'),
-				'desc' => __('These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the "Post Showcase" page template and any posts you\'ve set to display in the post showcase format.<br><br>For more control over a specific post showcase, you can apply the "Post Showcase" element of the Layout Builder or use the [post_showcase] shortcode in a page, which will allow you to override these options for that instance.', 'jumpstart'),
+				'name' => __('Post Display: Showcase', '@@text-domain'),
+				'desc' => __('These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the "Post Showcase" page template and any posts you\'ve set to display in the post showcase format.<br><br>For more control over a specific post showcase, you can apply the "Post Showcase" element of the Layout Builder or use the [post_showcase] shortcode in a page, which will allow you to override these options for that instance.', '@@text-domain'),
 				'options' => array(
 					'showcase_crop' => array(
 				    	'id' 		=> 'showcase_crop',
-						'name'		=> __('Featured Image Crop Size', 'jumpstart' ),
-						'desc'		=> __('Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.', 'jumpstart').'<br><br><em>'.__('Note: Images are scaled proportionally to fit within their current containers.', 'jumpstart').'</em>',
+						'name'		=> __('Featured Image Crop Size', '@@text-domain' ),
+						'desc'		=> __('Select a custom crop size to be used for the images. If you select a crop size that doesn\'t have a consistent height, then you may want to enable "Masonry" display.', '@@text-domain').'<br><br><em>'.__('Note: Images are scaled proportionally to fit within their current containers.', '@@text-domain').'</em>',
 						'type'		=> 'select',
 						'select'	=> 'crop',
 						'std'		=> 'tb_grid'
 					),
 					'showcase_titles' => array(
-						'name' 		=> __('Titles', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to show the title or not for each post.', 'jumpstart'),
+						'name' 		=> __('Titles', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to show the title or not for each post.', '@@text-domain'),
 						'id' 		=> 'showcase_titles',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show titles', 'jumpstart'),
-							'hide' 		=> __('Hide titles', 'jumpstart')
+							'show'		=> __('Show titles', '@@text-domain'),
+							'hide' 		=> __('Hide titles', '@@text-domain')
 						)
 					),
 					'showcase_excerpt' => array(
-						'name' 		=> __('Excerpts', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to show the excerpt or not for each post.', 'jumpstart'),
+						'name' 		=> __('Excerpts', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to show the excerpt or not for each post.', '@@text-domain'),
 						'id' 		=> 'showcase_excerpt',
 						'std' 		=> 'hide',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show excerpts', 'jumpstart'),
-							'hide' 		=> __('Hide excerpts', 'jumpstart')
+							'show'		=> __('Show excerpts', '@@text-domain'),
+							'hide' 		=> __('Hide excerpts', '@@text-domain')
 						)
 					),
 					'showcase_gutters' => array(
-						'name' 		=> __('Gutters', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to show spacing in between the showcase items.', 'jumpstart').'<br><br><em>'.__('Note: Hiding the gutters works best if you\'re using a consistent image crop size, or the masonry display.', 'jumpstart').'</em>',
+						'name' 		=> __('Gutters', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to show spacing in between the showcase items.', '@@text-domain').'<br><br><em>'.__('Note: Hiding the gutters works best if you\'re using a consistent image crop size, or the masonry display.', '@@text-domain').'</em>',
 						'id' 		=> 'showcase_gutters',
 						'std' 		=> 'show',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'show'		=> __('Show gutters', 'jumpstart'),
-							'hide' 		=> __('Hide gutters', 'jumpstart')
+							'show'		=> __('Show gutters', '@@text-domain'),
+							'hide' 		=> __('Hide gutters', '@@text-domain')
 						)
 					),
 					'showcase_sub_group_start_1' => array(
@@ -1111,41 +1111,41 @@ class Theme_Blvd_Options_API {
 						'class'		=> 'show-hide-toggle'
 					),
 					'showcase_display' => array(
-						'name' 		=> __('Display', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post showcase, how should they be displayed?', 'jumpstart'),
+						'name' 		=> __('Display', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post showcase, how should they be displayed?', '@@text-domain'),
 						'id' 		=> 'showcase_display',
 						'std' 		=> 'paginated',
 						'type' 		=> 'select',
 						'options' => array(
-							'paginated' 		=> __('Standard Showcase Grid', 'jumpstart'),
-							'masonry_paginated' => __('Masonry Showcase', 'jumpstart')
+							'paginated' 		=> __('Standard Showcase Grid', '@@text-domain'),
+							'masonry_paginated' => __('Masonry Showcase', '@@text-domain')
 						),
 						'class'		=> 'trigger'
 					),
 					'showcase_columns' => array(
-						'name' 		=> __('Columns', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post showcase, how many columns should the posts be separated into?', 'jumpstart'),
+						'name' 		=> __('Columns', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post showcase, how many columns should the posts be separated into?', '@@text-domain'),
 						'id' 		=> 'showcase_columns',
 						'std' 		=> '3',
 						'type' 		=> 'select',
 						'options' => array(
-							'2'			=> __('2 Columns', 'jumpstart'),
-							'3' 		=> __('3 Columns', 'jumpstart'),
-							'4' 		=> __('4 Columns', 'jumpstart'),
-							'5' 		=> __('5 Columns', 'jumpstart')
+							'2'			=> __('2 Columns', '@@text-domain'),
+							'3' 		=> __('3 Columns', '@@text-domain'),
+							'4' 		=> __('4 Columns', '@@text-domain'),
+							'5' 		=> __('5 Columns', '@@text-domain')
 						)
 					),
 					'showcase_rows' => array(
-						'name' 		=> __('Rows', 'jumpstart'),
-						'desc' 		=> __('When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?', 'jumpstart').'<br><br><em>'.__('Note: The total posts on the page will be the number of rows times the number of columns.', 'jumpstart').'</em>',
+						'name' 		=> __('Rows', '@@text-domain'),
+						'desc' 		=> __('When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?', '@@text-domain').'<br><br><em>'.__('Note: The total posts on the page will be the number of rows times the number of columns.', '@@text-domain').'</em>',
 						'id' 		=> 'showcase_rows',
 						'std' 		=> '3',
 						'type' 		=> 'text',
 						'class'		=> 'hide receiver receiver-paginated'
 					),
 					'showcase_posts_per_page' => array(
-						'name' 		=> __('Posts Per Page', 'jumpstart'),
-						'desc' 		=> __('When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?', 'jumpstart'),
+						'name' 		=> __('Posts Per Page', '@@text-domain'),
+						'desc' 		=> __('When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?', '@@text-domain'),
 						'id' 		=> 'showcase_posts_per_page',
 						'std' 		=> '12',
 						'type' 		=> 'text',
@@ -1159,51 +1159,51 @@ class Theme_Blvd_Options_API {
 
 			// Section: Lightbox
 			'lightbox' => array(
-				'name' => __('Lightbox', 'jumpstart'),
-				'desc' => sprintf(__('These settings apply to the built-in lightbox functionality, which utilizes the %s script.', 'jumpstart'), '<a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a>'),
+				'name' => __('Lightbox', '@@text-domain'),
+				'desc' => sprintf(__('These settings apply to the built-in lightbox functionality, which utilizes the %s script.', '@@text-domain'), '<a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a>'),
 				'options' => array(
 					'lightbox_animation' => array(
-						'name' 		=> __('Animate lightboxes?', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like lightboxes to animate as they open and close.', 'jumpstart'),
+						'name' 		=> __('Animate lightboxes?', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like lightboxes to animate as they open and close.', '@@text-domain'),
 						'id' 		=> 'lightbox_animation',
 						'std' 		=> 'fade',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'none'		=> __('No animation', 'jumpstart'),
-							'fade' 		=> __('Fade animation', 'jumpstart')
+							'none'		=> __('No animation', '@@text-domain'),
+							'fade' 		=> __('Fade animation', '@@text-domain')
 						)
 					),
 					'lightbox_mobile' => array(
-						'name' 		=> __('Disable standard lightboxes for mobile?', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the lightbox to be disabled for mobile users viewing a standard lightbox instance.', 'jumpstart'),
+						'name' 		=> __('Disable standard lightboxes for mobile?', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the lightbox to be disabled for mobile users viewing a standard lightbox instance.', '@@text-domain'),
 						'id' 		=> 'lightbox_mobile',
 						'std' 		=> 'no',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'		=> __('Yes, disable for mobile.', 'jumpstart'),
-							'no' 		=> __('No, do not disable for mobile.', 'jumpstart')
+							'yes'		=> __('Yes, disable for mobile.', '@@text-domain'),
+							'no' 		=> __('No, do not disable for mobile.', '@@text-domain')
 						)
 					),
 					'lightbox_mobile_iframe' => array(
-						'name' 		=> __('Disable iframe lightboxes for mobile?', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup.', 'jumpstart'),
+						'name' 		=> __('Disable iframe lightboxes for mobile?', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup.', '@@text-domain'),
 						'id' 		=> 'lightbox_mobile_iframe',
 						'std' 		=> 'yes',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'		=> __('Yes, disable for mobile.', 'jumpstart'),
-							'no' 		=> __('No, do not disable for mobile.', 'jumpstart')
+							'yes'		=> __('Yes, disable for mobile.', '@@text-domain'),
+							'no' 		=> __('No, do not disable for mobile.', '@@text-domain')
 						)
 					),
 					'lightbox_mobile_gallery' => array(
-						'name' 		=> __('Disable gallery lightboxes for mobile?', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like the lightbox to be disabled for mobile users when viewing a gallery.', 'jumpstart'),
+						'name' 		=> __('Disable gallery lightboxes for mobile?', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like the lightbox to be disabled for mobile users when viewing a gallery.', '@@text-domain'),
 						'id' 		=> 'lightbox_mobile_gallery',
 						'std' 		=> 'no',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'		=> __('Yes, disable for mobile.', 'jumpstart'),
-							'no' 		=> __('No, do not disable for mobile.', 'jumpstart')
+							'yes'		=> __('Yes, disable for mobile.', '@@text-domain'),
+							'no' 		=> __('No, do not disable for mobile.', '@@text-domain')
 						)
 					)
 				)
@@ -1218,17 +1218,17 @@ class Theme_Blvd_Options_API {
 
 			// Section: Google Maps
 			'gmap' => array(
-				'name' => __('Google Maps', 'jumpstart'),
+				'name' => __('Google Maps', '@@text-domain'),
 				'desc' => null,
 				'options' => array(
 					'gmap_info' => array(
 						'id'		=> 'gmap_info',
-						'desc'		=> __('You must have a Google Maps API key setup to use the "Google Maps" element of our layout builder.', 'jumpstart').' <a href="http://docs.themeblvd.com/article/56-google-maps-api" target="_blank">'.__('Learn More', 'jumpstart').'</a>',
+						'desc'		=> __('You must have a Google Maps API key setup to use the "Google Maps" element of our layout builder.', '@@text-domain').' <a href="http://docs.themeblvd.com/article/56-google-maps-api" target="_blank">'.__('Learn More', '@@text-domain').'</a>',
 						'type'		=> 'info'
 					),
 					'gmap_api_key' => array(
-						'name' 		=> __('Google Maps API Key', 'jumpstart'),
-						'desc' 		=> sprintf(__('You can generate a Google Map API key %s.', 'jumpstart'), '<a href="https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key" target="_blank">'.__('here', 'jumpstart').'</a>'),
+						'name' 		=> __('Google Maps API Key', '@@text-domain'),
+						'desc' 		=> sprintf(__('You can generate a Google Map API key %s.', '@@text-domain'), '<a href="https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key" target="_blank">'.__('here', '@@text-domain').'</a>'),
 						'id' 		=> 'gmap_api_key',
 						'std' 		=> '',
 						'type' 		=> 'text'
@@ -1245,26 +1245,26 @@ class Theme_Blvd_Options_API {
 
 			// Section: bbPress
 			'bbpress' => array(
-				'name' => __('bbPress', 'jumpstart'),
+				'name' => __('bbPress', '@@text-domain'),
 				'desc' => null,
 				'options' => array(
 					'bbp_lead_topic' => array(
-						'name' 		=> __('Lead Topic', 'jumpstart'),
-						'desc' 		=> __('When viewing individual topics, display the topic prominently separated from the responses.', 'jumpstart'),
+						'name' 		=> __('Lead Topic', '@@text-domain'),
+						'desc' 		=> __('When viewing individual topics, display the topic prominently separated from the responses.', '@@text-domain'),
 						'id' 		=> 'bbp_lead_topic',
 						'std' 		=> '1',
 						'type' 		=> 'checkbox'
 					),
 					'bbp_naked_page' => array(
-						'name' 		=> __('Content Background', 'jumpstart'),
-						'desc' 		=> __('When viewing bbPress pages, remove standard page background design from wrapping forums and topics.', 'jumpstart'),
+						'name' 		=> __('Content Background', '@@text-domain'),
+						'desc' 		=> __('When viewing bbPress pages, remove standard page background design from wrapping forums and topics.', '@@text-domain'),
 						'id' 		=> 'bbp_naked_page',
 						'std' 		=> '1',
 						'type' 		=> 'checkbox'
 					),
 					'bbp_sidebar_layout' => array(
-						'name' 		=> __('Forum Sidebar Layout', 'jumpstart'),
-						'desc' 		=> __('Select the sidebar layout used for viewing forum pages generated by bbPress.', 'jumpstart'),
+						'name' 		=> __('Forum Sidebar Layout', '@@text-domain'),
+						'desc' 		=> __('Select the sidebar layout used for viewing forum pages generated by bbPress.', '@@text-domain'),
 						'id' 		=> 'bbp_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
@@ -1272,8 +1272,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'bbp_topic_sidebar_layout' => array(
-						'name' 		=> __('Topic Sidebar Layout', 'jumpstart'),
-						'desc' 		=> __('Select the sidebar layout used for viewing individual topics.', 'jumpstart'),
+						'name' 		=> __('Topic Sidebar Layout', '@@text-domain'),
+						'desc' 		=> __('Select the sidebar layout used for viewing individual topics.', '@@text-domain'),
 						'id' 		=> 'bbp_topic_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
@@ -1281,8 +1281,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'bbp_user_sidebar_layout' => array(
-						'name' 		=> __('Profile Sidebar Layout', 'jumpstart'),
-						'desc' 		=> __('Select the sidebar layout used for viewing user profiles.', 'jumpstart'),
+						'name' 		=> __('Profile Sidebar Layout', '@@text-domain'),
+						'desc' 		=> __('Select the sidebar layout used for viewing user profiles.', '@@text-domain'),
 						'id' 		=> 'bbp_user_sidebar_layout',
 						'std' 		=> 'default',
 						'type' 		=> 'images',
@@ -1294,87 +1294,87 @@ class Theme_Blvd_Options_API {
 
 			// Section: WooCommerce
 			'woocommerce' => array(
-				'name' => __('WooCommerce', 'jumpstart'),
+				'name' => __('WooCommerce', '@@text-domain'),
 				'desc' => null,
 				'options' => array(
 					'woo_floating_cart'	=> array(
-						'name'		=> __('Floating Shopping Cart', 'jumpstart'),
-						'desc'		=> __('Select whether you\'d like the floating shopping cart to display in the header of your website.', 'jumpstart'),
+						'name'		=> __('Floating Shopping Cart', '@@text-domain'),
+						'desc'		=> __('Select whether you\'d like the floating shopping cart to display in the header of your website.', '@@text-domain'),
 						'id' 		=> 'woo_floating_cart',
 						'std' 		=> 'yes',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'	=> __('Yes, show floating cart', 'jumpstart'),
-							'no' 	=> __('No, don\'t show floating cart', 'jumpstart')
+							'yes'	=> __('Yes, show floating cart', '@@text-domain'),
+							'no' 	=> __('No, don\'t show floating cart', '@@text-domain')
 						)
 					),
 					'woo_shop_view' => array(
-						'name' 		=> __('Shop View', 'jumpstart'),
-						'desc' 		=> __('Select the default product display style for your main shop page.', 'jumpstart'),
+						'name' 		=> __('Shop View', '@@text-domain'),
+						'desc' 		=> __('Select the default product display style for your main shop page.', '@@text-domain'),
 						'id' 		=> 'woo_shop_view',
 						'std' 		=> 'grid',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'grid'		=> __('Grid', 'jumpstart'),
-							'list'		=> __('List', 'jumpstart'),
-							'catalog'	=> __('Catalog', 'jumpstart')
+							'grid'		=> __('Grid', '@@text-domain'),
+							'list'		=> __('List', '@@text-domain'),
+							'catalog'	=> __('Catalog', '@@text-domain')
 						)
 					),
 					'woo_shop_columns' => array(
-						'name' 		=> __('Shop Columns', 'jumpstart'),
-						'desc' 		=> __('Select the number of columns to display the products on your main shop page, when viewed as a grid.', 'jumpstart'),
+						'name' 		=> __('Shop Columns', '@@text-domain'),
+						'desc' 		=> __('Select the number of columns to display the products on your main shop page, when viewed as a grid.', '@@text-domain'),
 						'id' 		=> 'woo_shop_columns',
 						'std' 		=> '4',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'2'		=> __('2 columns', 'jumpstart'),
-							'3'		=> __('3 columns', 'jumpstart'),
-							'4' 	=> __('4 columns', 'jumpstart'),
-							'5' 	=> __('5 columns', 'jumpstart')
+							'2'		=> __('2 columns', '@@text-domain'),
+							'3'		=> __('3 columns', '@@text-domain'),
+							'4' 	=> __('4 columns', '@@text-domain'),
+							'5' 	=> __('5 columns', '@@text-domain')
 						)
 					),
 					'woo_shop_per_page' => array(
-						'name' 		=> __('Shop Products Per Page', 'jumpstart'),
-						'desc' 		=> __('Select the number products to display per page on your main shop page.', 'jumpstart'),
+						'name' 		=> __('Shop Products Per Page', '@@text-domain'),
+						'desc' 		=> __('Select the number products to display per page on your main shop page.', '@@text-domain'),
 						'id' 		=> 'woo_shop_per_page',
 						'std' 		=> '12',
 						'type' 		=> 'text'
 					),
 					'woo_archive_view' => array(
-						'name' 		=> __('Archive View', 'jumpstart'),
-						'desc' 		=> __('Select the default product display style for your product archives. This is when products are displayed by category or tag.', 'jumpstart'),
+						'name' 		=> __('Archive View', '@@text-domain'),
+						'desc' 		=> __('Select the default product display style for your product archives. This is when products are displayed by category or tag.', '@@text-domain'),
 						'id' 		=> 'woo_archive_view',
 						'std' 		=> 'grid',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'grid'		=> __('Grid', 'jumpstart'),
-							'list'		=> __('List', 'jumpstart'),
-							'catalog'	=> __('Catalog', 'jumpstart')
+							'grid'		=> __('Grid', '@@text-domain'),
+							'list'		=> __('List', '@@text-domain'),
+							'catalog'	=> __('Catalog', '@@text-domain')
 						)
 					),
 					'woo_archive_columns' => array(
-						'name' 		=> __('Archive Columns', 'jumpstart'),
-						'desc' 		=> __('Select the number of columns to display the products in your product archives, when viewed as a grid.', 'jumpstart'),
+						'name' 		=> __('Archive Columns', '@@text-domain'),
+						'desc' 		=> __('Select the number of columns to display the products in your product archives, when viewed as a grid.', '@@text-domain'),
 						'id' 		=> 'woo_archive_columns',
 						'std' 		=> '3',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'2'		=> __('2 columns', 'jumpstart'),
-							'3'		=> __('3 columns', 'jumpstart'),
-							'4' 	=> __('4 columns', 'jumpstart'),
-							'5' 	=> __('5 columns', 'jumpstart')
+							'2'		=> __('2 columns', '@@text-domain'),
+							'3'		=> __('3 columns', '@@text-domain'),
+							'4' 	=> __('4 columns', '@@text-domain'),
+							'5' 	=> __('5 columns', '@@text-domain')
 						)
 					),
 					'woo_archive_per_page' => array(
-						'name' 		=> __('Archives Products Per Page', 'jumpstart'),
-						'desc' 		=> __('Select the number products to display per page in your product archives.', 'jumpstart'),
+						'name' 		=> __('Archives Products Per Page', '@@text-domain'),
+						'desc' 		=> __('Select the number products to display per page in your product archives.', '@@text-domain'),
 						'id' 		=> 'woo_archive_per_page',
 						'std' 		=> '12',
 						'type' 		=> 'text'
 					),
 					'woo_shop_sidebar_layout' => array(
-						'name' 		=> __('Shop Sidebar Layout', 'jumpstart'),
-						'desc' 		=> __('Select the sidebar layout when viewing your main shop.', 'jumpstart'),
+						'name' 		=> __('Shop Sidebar Layout', '@@text-domain'),
+						'desc' 		=> __('Select the sidebar layout when viewing your main shop.', '@@text-domain'),
 						'id' 		=> 'woo_shop_sidebar_layout',
 						'std' 		=> 'full_width',
 						'type' 		=> 'images',
@@ -1382,8 +1382,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'woo_archive_sidebar_layout' => array(
-						'name' 		=> __('Archive Sidebar Layout', 'jumpstart'),
-						'desc' 		=> __('Select the sidebar layout when viewing your product archives. This is when products are displayed by category or tag.', 'jumpstart'),
+						'name' 		=> __('Archive Sidebar Layout', '@@text-domain'),
+						'desc' 		=> __('Select the sidebar layout when viewing your product archives. This is when products are displayed by category or tag.', '@@text-domain'),
 						'id' 		=> 'woo_archive_sidebar_layout',
 						'std' 		=> 'sidebar_left',
 						'type' 		=> 'images',
@@ -1391,8 +1391,8 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'woo_product_sidebar_layout' => array(
-						'name' 		=> __('Product Sidebar Layout', 'jumpstart'),
-						'desc' 		=> __('Select the sidebar layout when viewing a single product.', 'jumpstart'),
+						'name' 		=> __('Product Sidebar Layout', '@@text-domain'),
+						'desc' 		=> __('Select the sidebar layout when viewing a single product.', '@@text-domain'),
 						'id' 		=> 'woo_product_sidebar_layout',
 						'std' 		=> 'sidebar_left',
 						'type' 		=> 'images',
@@ -1400,36 +1400,36 @@ class Theme_Blvd_Options_API {
 						'img_width'	=> '45'
 					),
 					'woo_cross_sell' => array(
-						'name' 		=> __('Shopping Cart Cross Sells', 'jumpstart'),
-						'desc' 		=> __('For the shopping cart page, select if you\'d like to display products customers may be interested in, based on what\'s currently in their cart.', 'jumpstart'),
+						'name' 		=> __('Shopping Cart Cross Sells', '@@text-domain'),
+						'desc' 		=> __('For the shopping cart page, select if you\'d like to display products customers may be interested in, based on what\'s currently in their cart.', '@@text-domain'),
 						'id' 		=> 'woo_cross_sell',
 						'std' 		=> 'no',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'	=> __('Yes, show cross sells', 'jumpstart'),
-							'no' 	=> __('No, don\'t show cross sells', 'jumpstart')
+							'yes'	=> __('Yes, show cross sells', '@@text-domain'),
+							'no' 	=> __('No, don\'t show cross sells', '@@text-domain')
 						)
 					),
 					'woo_view_toggle' => array(
-						'name' 		=> __('Product View Toggle', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to display buttons on your product pages that allow the user to toggle between list, grid and catalog view.', 'jumpstart'),
+						'name' 		=> __('Product View Toggle', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to display buttons on your product pages that allow the user to toggle between list, grid and catalog view.', '@@text-domain'),
 						'id' 		=> 'woo_view_toggle',
 						'std' 		=> 'yes',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'	=> __('Yes, show buttons', 'jumpstart'),
-							'no' 	=> __('No, don\'t show buttons', 'jumpstart')
+							'yes'	=> __('Yes, show buttons', '@@text-domain'),
+							'no' 	=> __('No, don\'t show buttons', '@@text-domain')
 						)
 					),
 					'woo_product_zoom' => array(
-			            'name' 		=> __('Product Gallery Zoom', 'jumpstart'),
-						'desc' 		=> __('When viewing a single product, select whether you\'d like the WooCommerce zooming feature enabled on product galleries.', 'jumpstart'),
+			            'name' 		=> __('Product Gallery Zoom', '@@text-domain'),
+						'desc' 		=> __('When viewing a single product, select whether you\'d like the WooCommerce zooming feature enabled on product galleries.', '@@text-domain'),
 						'id' 		=> 'woo_product_zoom',
 						'std' 		=> 'yes',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'	=> __('Yes, enable gallery zooming', 'jumpstart'),
-							'no' 	=> __('No, disable gallery zooming', 'jumpstart')
+							'yes'	=> __('Yes, enable gallery zooming', '@@text-domain'),
+							'no' 	=> __('No, disable gallery zooming', '@@text-domain')
 						)
 			        )
 				)
@@ -1437,18 +1437,18 @@ class Theme_Blvd_Options_API {
 
 			// Section: WPML
 			'wpml' => array(
-				'name' => __('WPML', 'jumpstart'),
+				'name' => __('WPML', '@@text-domain'),
 				'desc' => null,
 				'options' => array(
 					'wpml_show_lang_switcher' => array(
-						'name' 		=> __('Language Switcher', 'jumpstart'),
-						'desc' 		=> __('Select if you\'d like to show the theme\'s built-in language switcher for WPML. You can hide this if you\'re using other features in WPML to display a language switcher.', 'jumpstart'),
+						'name' 		=> __('Language Switcher', '@@text-domain'),
+						'desc' 		=> __('Select if you\'d like to show the theme\'s built-in language switcher for WPML. You can hide this if you\'re using other features in WPML to display a language switcher.', '@@text-domain'),
 						'id' 		=> 'wpml_show_lang_switcher',
 						'std' 		=> 'yes',
 						'type' 		=> 'select',
 						'options' 	=> array(
-							'yes'	=> __('Yes, show theme\'s language switcher', 'jumpstart'),
-							'no' 	=> __('No, don\'t show it', 'jumpstart')
+							'yes'	=> __('Yes, show theme\'s language switcher', '@@text-domain'),
+							'no' 	=> __('No, don\'t show it', '@@text-domain')
 						)
 					)
 				)
@@ -1461,19 +1461,19 @@ class Theme_Blvd_Options_API {
 
 		$this->raw_options = array(
 			'layout' 	=> array(
-				'name' 		=> __('Layout', 'jumpstart'),
+				'name' 		=> __('Layout', '@@text-domain'),
 				'sections' 	=> $layout_options
 			),
 			'content' 	=> array(
-				'name' 		=> __('Content', 'jumpstart'),
+				'name' 		=> __('Content', '@@text-domain'),
 				'sections' 	=> $content_options
 			),
 			'config' 	=> array(
-				'name' 		=> __('Configuration', 'jumpstart'),
+				'name' 		=> __('Configuration', '@@text-domain'),
 				'sections' 	=> $config_options
 			),
 			'plugins' 	=> array(
-				'name' 		=> __('Plugins', 'jumpstart'),
+				'name' 		=> __('Plugins', '@@text-domain'),
 				'sections' 	=> $plugin_options
 			)
 		);
@@ -1586,7 +1586,7 @@ class Theme_Blvd_Options_API {
 			$options = apply_filters('themeblvd_apply_post_format_warning', array('single_thumbs', 'blog_thumbs'));
 
 			foreach ( $options as $option_id ) {
-				$this->formatted_options[$option_id]['desc'] .= '<br><br><em>'.__('Note: The result of this option may vary with posts that are not the "standard" post format.', 'jumpstart').'</em>';
+				$this->formatted_options[$option_id]['desc'] .= '<br><br><em>'.__('Note: The result of this option may vary with posts that are not the "standard" post format.', '@@text-domain').'</em>';
 			}
 		}
 
@@ -1648,8 +1648,8 @@ class Theme_Blvd_Options_API {
 	 */
 	public function set_args() {
 		$this->args = array(
-			'page_title' 	=> __('Theme Options', 'jumpstart'),
-			'menu_title' 	=> __('Theme Options', 'jumpstart'),
+			'page_title' 	=> __('Theme Options', '@@text-domain'),
+			'menu_title' 	=> __('Theme Options', '@@text-domain'),
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'		=> $this->get_option_id(),
 			'icon'			=> '',

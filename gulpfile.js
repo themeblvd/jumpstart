@@ -1,6 +1,7 @@
 var gulp 	= require('gulp'),
 	zip 	= require('gulp-zip'),
-	clean	= require('gulp-clean');
+	clean	= require('gulp-clean'),
+	replace = require('gulp-replace');
 
 /**
  * Theme slug.
@@ -67,11 +68,22 @@ gulp.task('render-src', ['render-themeblvd'], function() {
 
 });
 
+/**
+ * Render text domain by replacing all instances of
+ * @@text-domain with theme slug.
+ */
+gulp.task('render-text-domain', ['render-src'], function() {
+
+	return gulp.src('dist/**/*.php')
+		.pipe(replace('@@text-domain', theme))
+    	.pipe(gulp.dest('dist'));
+
+});
 
 /**
  * Zip WordPress theme.
  */
-gulp.task('render-theme-zip', ['render-src'], function() {
+gulp.task('render-theme-zip', ['render-text-domain'], function() {
 
 	return gulp.src('dist/**')
 		.pipe(zip(theme + '-' + version + '.zip'))

@@ -17,79 +17,79 @@ function themeblvd_get_image_sizes( $size = '' ) {
 	// Crop sizes
 	$sizes = array(
 		'tb_x_large' => array(
-			'name' 		=> __('Theme Blvd XL', 'jumpstart'),
+			'name' 		=> __('Theme Blvd XL', '@@text-domain'),
 			'width' 	=> $max,
 			'height' 	=> 9999,
 			'crop' 		=> false
 		),
 		'tb_large' => array(
-			'name' 		=> __('Theme Blvd L', 'jumpstart'),
+			'name' 		=> __('Theme Blvd L', '@@text-domain'),
 			'width' 	=> 800,
 			'height'	=> 9999,
 			'crop' 		=> false
 		),
 		'tb_medium' => array(
-			'name' 		=> __('Theme Blvd M', 'jumpstart'),
+			'name' 		=> __('Theme Blvd M', '@@text-domain'),
 			'width' 	=> 500,
 			'height'	=> 9999,
 			'crop' 		=> false
 		),
 		'tb_thumb'	=> array(
-			'name' 		=> __('Theme Blvd Thumbnail', 'jumpstart'),
+			'name' 		=> __('Theme Blvd Thumbnail', '@@text-domain'),
 			'width' 	=> 200,
 			'height' 	=> 200,
 			'crop' 		=> true
 		),
 		'tb_grid' => array(
-			'name' 		=> __('Theme Blvd 16:9', 'jumpstart'), // 16:9
+			'name' 		=> __('Theme Blvd 16:9', '@@text-domain'), // 16:9
 			'width' 	=> 640,
 			'height' 	=> 360,
 			'crop' 		=> true
 		),
 		'tb_square_x_large' => array(
-			'name' 		=> __('Theme Blvd XL Square', 'jumpstart'),
+			'name' 		=> __('Theme Blvd XL Square', '@@text-domain'),
 			'width' 	=> 1200,
 			'height' 	=> 1200,
 			'crop' 		=> true
 		),
 		'tb_square_large' => array(
-			'name' 		=> __('Theme Blvd L Square', 'jumpstart'),
+			'name' 		=> __('Theme Blvd L Square', '@@text-domain'),
 			'width' 	=> 960,
 			'height' 	=> 960,
 			'crop' 		=> true
 		),
 		'tb_square_medium' => array(
-			'name' 		=> __('Theme Blvd M Square', 'jumpstart'),
+			'name' 		=> __('Theme Blvd M Square', '@@text-domain'),
 			'width' 	=> 800,
 			'height' 	=> 800,
 			'crop' 		=> true
 		),
 		'tb_square_small' => array(
-			'name' 		=> __('Theme Blvd S Square', 'jumpstart'),
+			'name' 		=> __('Theme Blvd S Square', '@@text-domain'),
 			'width' 	=> 500,
 			'height' 	=> 500,
 			'crop' 		=> true
 		),
 		'slider-x-large' => array(
-			'name' 		=> __('Slider Extra Large', 'jumpstart'),
+			'name' 		=> __('Slider Extra Large', '@@text-domain'),
 			'width' 	=> 1400,
 			'height' 	=> 525,
 			'crop' 		=> true
 		),
 		'slider-large' => array(
-			'name' 		=> __('Slider Large', 'jumpstart'),
+			'name' 		=> __('Slider Large', '@@text-domain'),
 			'width' 	=> 960,
 			'height' 	=> 360,
 			'crop' 		=> true
 		),
 		'slider-medium' => array(
-			'name' 		=> __('Slider Medium', 'jumpstart'),
+			'name' 		=> __('Slider Medium', '@@text-domain'),
 			'width' 	=> 800,
 			'height' 	=> 300,
 			'crop' 		=> true
 		),
 		'slider-staged' => array(
-			'name' 		=> __('Slider Staged', 'jumpstart'),
+			'name' 		=> __('Slider Staged', '@@text-domain'),
 			'width' 	=> 690,
 			'height' 	=> 415,
 			'crop' 		=> true
@@ -700,7 +700,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	// Slider needs 2 or more attachments.
 	if ( count( $attachments ) <= 1 ) {
 		if ( is_user_logged_in() ) {
-			return sprintf( '<div class="alert alert-warning"><p>%s</p></div>', esc_html__('Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids="1,2,3"]', 'jumpstart') );
+			return sprintf( '<div class="alert alert-warning"><p>%s</p></div>', esc_html__('Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids="1,2,3"]', '@@text-domain') );
 		} else {
 			return;
 		}

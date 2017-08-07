@@ -102,7 +102,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 	   			$output .= '<div class="footer-sync-wrap">';
 	   			$output .= sprintf( '<input id="tb-footer-sync" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($option_name.'[footer_sync]'), checked( $val, 1, false ) );
-	   			$output .= sprintf( '<label for="footer_sync">%s</label>', esc_html__('Template Sync', 'jumpstart') );
+	   			$output .= sprintf( '<label for="footer_sync">%s</label>', esc_html__('Template Sync', '@@text-domain') );
 	   			$output .= '</div><!-- .footer-sync-wrap (end) -->';
    			}
 
@@ -124,7 +124,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	   	if ( $value['type'] == 'section_end' ) {
 
             $output .= '<div class="section save clearfix">';
-            $output .= sprintf('<input type="submit" class="button-primary" name="update" value="%s" />', esc_attr__('Save Options', 'jumpstart') );
+            $output .= sprintf('<input type="submit" class="button-primary" name="update" value="%s" />', esc_attr__('Save Options', '@@text-domain') );
             $output .= '</div>';
 
             $output .= '</div><!-- .inner-section-content (end) -->';
@@ -226,9 +226,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				if ( isset($value['icon']) ) {
 					if ( $value['icon'] == 'image' || $value['icon'] == 'vector' ) {
-						$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.esc_attr($value['icon']).'" data-icon-type="'.esc_attr($value['icon']).'" data-tooltip-text="'.esc_attr__('Browse Icons', 'jumpstart').'"><i class="tb-icon-picture"></i></a>';
+						$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.esc_attr($value['icon']).'" data-icon-type="'.esc_attr($value['icon']).'" data-tooltip-text="'.esc_attr__('Browse Icons', '@@text-domain').'"><i class="tb-icon-picture"></i></a>';
 					} else if ( $value['icon'] == 'post_id' ) {
-						$output .= '<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="'.esc_attr__('Find Post or Page ID', 'jumpstart').'"><i class="tb-icon-barcode"></i></a>';
+						$output .= '<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="'.esc_attr__('Find Post or Page ID', '@@text-domain').'"><i class="tb-icon-barcode"></i></a>';
 					}
 				}
 
@@ -260,11 +260,11 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<nav class="editor-nav">';
 
 					if ( ! empty( $value['editor'] ) ) {
-						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'jumpstart').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', '@@text-domain').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
 					}
 
 					if ( isset( $value['code'] ) && in_array( $value['code'], array( 'html', 'javascript', 'css' ) ) ) {
-						$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'jumpstart').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.esc_attr($value['name']).'" data-code_lang="'.esc_attr($value['code']).'"><i class="tb-icon-code"></i></a>';
+						$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', '@@text-domain').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.esc_attr($value['name']).'" data-code_lang="'.esc_attr($value['code']).'"><i class="tb-icon-code"></i></a>';
 					}
 
 					$output .= '</nav>';
@@ -298,7 +298,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'pages' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No pages were found.', 'jumpstart');
+								$error = __('No pages were found.', '@@text-domain');
 							}
 							break;
 
@@ -307,20 +307,20 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'categories' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No categories sidebars were found.', 'jumpstart');
+								$error = __('No categories sidebars were found.', '@@text-domain');
 							}
 							break;
 
 						case 'sidebars' :
 
 							if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
-								$error = __('You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area.', 'jumpstart');
+								$error = __('You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area.', '@@text-domain');
 							}
 
 							$value['options'] = themeblvd_get_select( 'sidebars' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No floating widget areas were found.', 'jumpstart');
+								$error = __('No floating widget areas were found.', '@@text-domain');
 							}
 							break;
 
@@ -329,7 +329,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'sidebars_all' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No registered sidebars were found.', 'jumpstart');
+								$error = __('No registered sidebars were found.', '@@text-domain');
 							}
 							break;
 
@@ -338,7 +338,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'crop' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No registered crop sizes were found.', 'jumpstart');
+								$error = __('No registered crop sizes were found.', '@@text-domain');
 							}
 							break;
 
@@ -349,7 +349,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'textures' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No textures were found.', 'jumpstart');
+								$error = __('No textures were found.', '@@text-domain');
 							}
 							break;
 
@@ -358,7 +358,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'templates' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('You haven\'t created any custom templates yet.', 'jumpstart');
+								$error = __('You haven\'t created any custom templates yet.', '@@text-domain');
 							}
 							break;
 
@@ -367,7 +367,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'authors' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('Couldn\'t find any authors.', 'jumpstart');
+								$error = __('Couldn\'t find any authors.', '@@text-domain');
 							}
 							break;
 
@@ -376,7 +376,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$value['options'] = themeblvd_get_select( 'sliders' );
 
 							if ( count( $value['options'] ) < 1 ) {
-								$error = __('Couldn\'t find any sliders.', 'jumpstart');
+								$error = __('Couldn\'t find any sliders.', '@@text-domain');
 							}
 							break;
 
@@ -426,7 +426,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				if ( $textures ) {
-					$output .= '<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">'.esc_attr__('Browse Textures', 'jumpstart').'</a>';
+					$output .= '<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">'.esc_attr__('Browse Textures', '@@text-domain').'</a>';
 				}
 
 				// If this is a builder sample select, show preview images
@@ -714,19 +714,19 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Google Font support
 				if ( in_array( 'face', $value['atts'] ) ) {
 					$output .= '<div class="google-font hide">';
-					$output .= '<h5>'.sprintf(esc_attr__('Enter the name of a font from the %s.', 'jumpstart'), '<a href="http://www.google.com/webfonts" target="_blank">'.esc_attr__('Google Font Directory', 'jumpstart').'</a>').'</h5>';
+					$output .= '<h5>'.sprintf(esc_attr__('Enter the name of a font from the %s.', '@@text-domain'), '<a href="http://www.google.com/webfonts" target="_blank">'.esc_attr__('Google Font Directory', '@@text-domain').'</a>').'</h5>';
 					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr($typography_stored['google']).'" />';
-					$output .= '<p class="note"><strong>'.esc_attr__('Example', 'jumpstart').'</strong>: Open Sans<br />';
-                    $output .= '<strong>'.esc_attr__('Example with custom weight', 'jumpstart').'</strong>: Open Sans:300</p>';
+					$output .= '<p class="note"><strong>'.esc_attr__('Example', '@@text-domain').'</strong>: Open Sans<br />';
+                    $output .= '<strong>'.esc_attr__('Example with custom weight', '@@text-domain').'</strong>: Open Sans:300</p>';
 					$output .= '</div>';
 				}
 
                 // Typekit support
 				if ( in_array( 'face', $value['atts'] ) ) {
 					$output .= '<div class="typekit-font hide">';
-                    $output .= '<h5>'.esc_attr__('Typekit Font Family', 'jumpstart').'</h5>';
+                    $output .= '<h5>'.esc_attr__('Typekit Font Family', '@@text-domain').'</h5>';
                     $output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][typekit]' ).'" value="'.esc_attr($typography_stored['typekit']).'" />';
-                    $output .= '<h5>'.esc_attr__('Paste your kit\'s embed code below.', 'jumpstart').'</h5>';
+                    $output .= '<h5>'.esc_attr__('Paste your kit\'s embed code below.', '@@text-domain').'</h5>';
                     $output .= '<textarea name="'.esc_attr( $option_name.'['.$value['id'].'][typekit_kit]' ).'">'.themeblvd_kses($typography_stored['typekit_kit']).'</textarea>';
 					$output .= '</div>';
 				}
@@ -877,7 +877,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
                 // Video
                 $output .= '<div class="section-upload">';
-                $output .= '<p><strong>'.esc_html__('Video URL', 'jumpstart').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video URL', '@@text-domain').'</strong></p>';
 
                 $video_url = '';
 
@@ -897,7 +897,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
                 // Background image
                 $output .= '<div class="section-upload clearfix">';
-                $output .= '<p><strong>'.esc_html__('Video Fallback Image', 'jumpstart').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video Fallback Image', '@@text-domain').'</strong></p>';
 
                 $img_url = '';
 
@@ -916,7 +916,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
                 $output .= '</div><!-- .section-upload (end) -->';
 
                 // Aspect ratio
-                $output .= '<p><strong>'.esc_html__('Video Aspect Ratio', 'jumpstart').'</strong></p>';
+                $output .= '<p><strong>'.esc_html__('Video Aspect Ratio', '@@text-domain').'</strong></p>';
 
                 $ratio = '16:9';
 
@@ -961,13 +961,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Start color
 				$output .= '<div class="color-start">';
 				$output .= sprintf( '<input id="%s_start" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][start]'), esc_attr($start), esc_attr($start_def) );
-				$output .= '<span class="color-label">'.esc_attr__('Top Color', 'jumpstart').'</span>';
+				$output .= '<span class="color-label">'.esc_attr__('Top Color', '@@text-domain').'</span>';
 				$output .= '</div><!-- .color-start (end) -->';
 
 				// End color
 				$output .= '<div class="color-end">';
 				$output .= sprintf( '<input id="%s_end" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][end]'), esc_attr($end), esc_attr($end_def) );
-				$output .= '<span class="color-label">'.esc_attr__('Bottom Color', 'jumpstart').'</span>';
+				$output .= '<span class="color-label">'.esc_attr__('Bottom Color', '@@text-domain').'</span>';
 				$output .= '</div><!-- .color-end (end) -->';
 
 				$output .= '</div><!-- .gradient-wrap (end) -->';
@@ -1005,28 +1005,28 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Latitude
 				$output .= '<div class="geo-lat">';
 				$output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][lat]' ), esc_attr($lat) );
-				$output .= '<span class="geo-label">'.esc_html__('Latitude', 'jumpstart').'</span>';
+				$output .= '<span class="geo-label">'.esc_html__('Latitude', '@@text-domain').'</span>';
 				$output .= '</div><!-- .geo-lat (end) -->';
 
 				// Longitude
 				$output .= '<div class="geo-long">';
 				$output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][long]' ), esc_attr($long) );
-				$output .= '<span class="geo-label">'.esc_html__('Longitude', 'jumpstart').'</span>';
+				$output .= '<span class="geo-label">'.esc_html__('Longitude', '@@text-domain').'</span>';
 				$output .= '</div><!-- .geo-long (end) -->';
 
 				$output .= '</div><!-- .geo-wrap (end) -->';
 
 				// Generate lat and long
 				$output .= '<div class="geo-generate">';
-				$output .= '<h5>'.esc_html__('Generate Coordinates', 'jumpstart').'</h5>';
+				$output .= '<h5>'.esc_html__('Generate Coordinates', '@@text-domain').'</h5>';
 				$output .= '<div class="data clearfix">';
 				$output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
 				$output .= '<input type="text" value="" class="address" />';
-				$output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'jumpstart'), esc_html__('Generate', 'jumpstart') );
+				$output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', '@@text-domain'), esc_html__('Generate', '@@text-domain') );
 				$output .= '</div><!-- .data (end) -->';
 				$output .= '<p class="note">';
-				$output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'jumpstart').'<br>';
-				$output .= esc_html__('Example Address', 'jumpstart').': "123 Smith St, Chicago, USA"';
+				$output .= esc_html__('Enter an address, as you would do at maps.google.com.', '@@text-domain').'<br>';
+				$output .= esc_html__('Example Address', '@@text-domain').': "123 Smith St, Chicago, USA"';
 				$output .= '</p>';
 				$output .= '</div><!-- .geo-generate (end) -->';
 

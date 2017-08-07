@@ -131,10 +131,10 @@ function themeblvd_supports( $group, $feature ) {
  */
 function themeblvd_get_modes() {
 	return apply_filters('themeblvd_modes', array(
-		'blog' 		=> __('Blog', 'jumpstart'),
-		'list' 		=> __('List', 'jumpstart'),
-		'grid' 		=> __('Grid', 'jumpstart'),
-		'showcase' 	=> __('Showcase', 'jumpstart')
+		'blog' 		=> __('Blog', '@@text-domain'),
+		'list' 		=> __('List', '@@text-domain'),
+		'grid' 		=> __('Grid', '@@text-domain'),
+		'showcase' 	=> __('Showcase', '@@text-domain')
 	));
 }
 
@@ -327,11 +327,11 @@ function themeblvd_read_more_link( $read_more, $more_link_text ) {
 function themeblvd_deprecated_function( $function, $version, $replacement = null, $message = null ) {
 	if ( WP_DEBUG && apply_filters( 'deprecated_function_trigger_error', true ) ) {
 		if ( $message ) {
-			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! %3$s', 'jumpstart'), $function, $version, esc_html($message) ) );
+			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! %3$s', '@@text-domain'), $function, $version, esc_html($message) ) );
 		} else if ( $replacement ) {
-			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'jumpstart'), $function, $version, $replacement ) );
+			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework! Use %3$s instead.', '@@text-domain'), $function, $version, $replacement ) );
 		} else {
-			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available.', 'jumpstart'), $function, $version ) );
+			trigger_error( sprintf( esc_html__('%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available.', '@@text-domain'), $function, $version ) );
 		}
 	}
 }
@@ -438,13 +438,13 @@ function themeblvd_register_navs() {
 
 	// Setup nav menus
 	$menus = array(
-		'primary' => __('Primary Navigation', 'jumpstart'),
-		'footer' => __('Footer Navigation', 'jumpstart')
+		'primary' => __('Primary Navigation', '@@text-domain'),
+		'footer' => __('Footer Navigation', '@@text-domain')
 	);
 
 	if ( themeblvd_supports('display', 'side_panel') ) {
-		$menus['side'] = __('Primary Side Navigation', 'jumpstart');
-		$menus['side_sub'] = __('Secondary Side Navigation', 'jumpstart');
+		$menus['side'] = __('Primary Side Navigation', '@@text-domain');
+		$menus['side_sub'] = __('Secondary Side Navigation', '@@text-domain');
 	}
 
 	$menus = apply_filters( 'themeblvd_nav_menus', $menus );
@@ -539,7 +539,7 @@ function themeblvd_admin_menu_bar() {
 		$wp_admin_bar->add_node(
 			array(
 				'id'			=> 'tb_theme_options',
-				'title'			=> __('Theme Options', 'jumpstart'),
+				'title'			=> __('Theme Options', '@@text-domain'),
 				'parent'		=> 'site-name',
 				'href'			=> admin_url( $modules['options'] )
 			)
@@ -552,7 +552,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_sliders',
-					'title'		=> __('Sliders', 'jumpstart'),
+					'title'		=> __('Sliders', '@@text-domain'),
 					'parent'	=> 'site-name',
 					'href'		=> admin_url( $modules['sliders'] )
 				)
@@ -566,7 +566,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_builder',
-					'title'		=> __('Templates', 'jumpstart'),
+					'title'		=> __('Templates', '@@text-domain'),
 					'parent'	=> 'site-name',
 					'href'		=> admin_url( $modules['builder'] )
 				)
@@ -580,7 +580,7 @@ function themeblvd_admin_menu_bar() {
 			$wp_admin_bar->add_node(
 				array(
 					'id'		=> 'tb_sidebars',
-					'title'		=> __('Widget Areas', 'jumpstart'),
+					'title'		=> __('Widget Areas', '@@text-domain'),
 					'parent'	=> 'site-name',
 					'href' 		=> admin_url( $modules['sidebars'] )
 				)
@@ -620,7 +620,7 @@ function themeblvd_sidebar_layouts() {
 
 	$layouts = array(
 		'full_width' => array(
-			'name' 		=> __('Full Width', 'jumpstart'),
+			'name' 		=> __('Full Width', '@@text-domain'),
 			'id'		=> 'full_width',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-12",
@@ -629,7 +629,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'sidebar_right' => array(
-			'name' 		=> __('Sidebar Right', 'jumpstart'),
+			'name' 		=> __('Sidebar Right', '@@text-domain'),
 			'id'		=> 'sidebar_right',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-8",
@@ -638,7 +638,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'sidebar_left' => array(
-			'name' 		=> __('Sidebar Left', 'jumpstart'),
+			'name' 		=> __('Sidebar Left', '@@text-domain'),
 			'id'		=> 'sidebar_left',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-8",
@@ -647,7 +647,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'double_sidebar' => array(
-			'name' 		=> __('Double Sidebar', 'jumpstart'),
+			'name' 		=> __('Double Sidebar', '@@text-domain'),
 			'id'		=> 'double_sidebar',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-6",
@@ -656,7 +656,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'double_sidebar_left' => array(
-			'name' 		=> __('Double Left Sidebars', 'jumpstart'),
+			'name' 		=> __('Double Left Sidebars', '@@text-domain'),
 			'id'		=> 'double_sidebar_left',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-6",
@@ -665,7 +665,7 @@ function themeblvd_sidebar_layouts() {
 			)
 		),
 		'double_sidebar_right' => array(
-			'name' 		=> __('Double Right Sidebars', 'jumpstart'),
+			'name' 		=> __('Double Right Sidebars', '@@text-domain'),
 			'id'		=> 'double_sidebar_right',
 			'columns'	=> array(
 				'content' 	=> "col-{$stack}-6",
@@ -791,126 +791,126 @@ function themeblvd_get_textures() {
 
 	$textures = array(
 		'arches' => array(
-			'name' 		=> __('Arches', 'jumpstart'),
+			'name' 		=> __('Arches', '@@text-domain'),
 			'url' 		=> $imagepath.'arches.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '103px 23px'
 		),
 		'boxy' => array(
-			'name' 		=> __('Boxy', 'jumpstart'),
+			'name' 		=> __('Boxy', '@@text-domain'),
 			'url' 		=> $imagepath.'boxy.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'brick_wall' => array(
-			'name' 		=> __('Brick Wall', 'jumpstart'),
+			'name' 		=> __('Brick Wall', '@@text-domain'),
 			'url' 		=> $imagepath.'brick_wall.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_classic' => array(
-			'name' 		=> __('Carbon Classic', 'jumpstart'),
+			'name' 		=> __('Carbon Classic', '@@text-domain'),
 			'url' 		=> $imagepath.'carbon_classic.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_diagonal' => array(
-			'name' 		=> __('Carbon Diagonal', 'jumpstart'),
+			'name' 		=> __('Carbon Diagonal', '@@text-domain'),
 			'url' 		=> $imagepath.'carbon_diagonal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_weave' => array(
-			'name' 		=> __('Carbon Weave', 'jumpstart'),
+			'name' 		=> __('Carbon Weave', '@@text-domain'),
 			'url' 		=> $imagepath.'carbon_weave.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'chex' => array(
-			'name' 		=> __('Chex', 'jumpstart'),
+			'name' 		=> __('Chex', '@@text-domain'),
 			'url' 		=> $imagepath.'chex.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'circles' => array(
-			'name' 		=> __('Circles', 'jumpstart'),
+			'name' 		=> __('Circles', '@@text-domain'),
 			'url' 		=> $imagepath.'circles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'climpek' => array(
-			'name' 		=> __('Climpek', 'jumpstart'),
+			'name' 		=> __('Climpek', '@@text-domain'),
 			'url' 		=> $imagepath.'climpek.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'concrete' => array(
-			'name' 		=> __('Concrete', 'jumpstart'),
+			'name' 		=> __('Concrete', '@@text-domain'),
 			'url' 		=> $imagepath.'concrete.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cross' => array(
-			'name' 		=> __('Crosses', 'jumpstart'),
+			'name' 		=> __('Crosses', '@@text-domain'),
 			'url' 		=> $imagepath.'cross.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'crystal' => array(
-			'name' 		=> __('Crystal', 'jumpstart'),
+			'name' 		=> __('Crystal', '@@text-domain'),
 			'url' 		=> $imagepath.'crystal.png',
 			'position' 	=> '50% 50%',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cube_stack' => array(
-			'name' 		=> __('Cube Stack', 'jumpstart'),
+			'name' 		=> __('Cube Stack', '@@text-domain'),
 			'url' 		=> $imagepath.'cube_stack.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'denim' => array(
-			'name' 		=> __('Denim', 'jumpstart'),
+			'name' 		=> __('Denim', '@@text-domain'),
 			'url' 		=> $imagepath.'denim.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'diagnol_thin' => array(
-			'name' 		=> __('Diagonal (thin)', 'jumpstart'),
+			'name' 		=> __('Diagonal (thin)', '@@text-domain'),
 			'url' 		=> $imagepath.'diagnol.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '6px 6px'
 		),
 		'diagnol_thick' => array(
-			'name' 		=> __('Diagonal (thick)', 'jumpstart'),
+			'name' 		=> __('Diagonal (thick)', '@@text-domain'),
 			'url' 		=> $imagepath.'diagnol.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '20px 20px'
 		),
 		'diamonds' => array(
-			'name' 		=> __('Diamonds', 'jumpstart'),
+			'name' 		=> __('Diamonds', '@@text-domain'),
 			'url' 		=> $imagepath.'diamonds.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'escheresque' => array(
-			'name' 		=> __('Escheresque', 'jumpstart'),
+			'name' 		=> __('Escheresque', '@@text-domain'),
 			'url' 		=> $imagepath.'escheresque.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
@@ -918,489 +918,489 @@ function themeblvd_get_textures() {
 			'size'		=> 'auto'
 		),
 		'grid' => array(
-			'name' 		=> __('Grid', 'jumpstart'),
+			'name' 		=> __('Grid', '@@text-domain'),
 			'url' 		=> $imagepath.'grid.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'grunge' => array(
-			'name' 		=> __('Grunge', 'jumpstart'),
+			'name' 		=> __('Grunge', '@@text-domain'),
 			'url' 		=> $imagepath.'grunge.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'feather' => array(
-			'name' 		=> __('Feather', 'jumpstart'),
+			'name' 		=> __('Feather', '@@text-domain'),
 			'url' 		=> $imagepath.'feather.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '500px 333px'
 		),
 		'hexagons' => array(
-			'name' 		=> __('Hexagons', 'jumpstart'),
+			'name' 		=> __('Hexagons', '@@text-domain'),
 			'url' 		=> $imagepath.'hexagons.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'honey_comb' => array(
-			'name' 		=> __('Honey Comb', 'jumpstart'),
+			'name' 		=> __('Honey Comb', '@@text-domain'),
 			'url' 		=> $imagepath.'honey_comb.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'leather' => array(
-			'name' 		=> __('Leather', 'jumpstart'),
+			'name' 		=> __('Leather', '@@text-domain'),
 			'url' 		=> $imagepath.'leather.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'metal' => array(
-			'name' 		=> __('Metal', 'jumpstart'),
+			'name' 		=> __('Metal', '@@text-domain'),
 			'url' 		=> $imagepath.'metal.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic' => array(
-			'name' 		=> __('Mosaic', 'jumpstart'),
+			'name' 		=> __('Mosaic', '@@text-domain'),
 			'url' 		=> $imagepath.'mosaic.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic_triangles' => array(
-			'name' 		=> __('Mosaic Triangles', 'jumpstart'),
+			'name' 		=> __('Mosaic Triangles', '@@text-domain'),
 			'url' 		=> $imagepath.'mosaic_triangles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'noise' => array(
-			'name' 		=> __('Noise', 'jumpstart'),
+			'name' 		=> __('Noise', '@@text-domain'),
 			'url' 		=> $imagepath.'noise.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'paper' => array(
-			'name' 		=> __('Paper', 'jumpstart'),
+			'name' 		=> __('Paper', '@@text-domain'),
 			'url' 		=> $imagepath.'paper.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pixel_weave' => array(
-			'name' 		=> __('Pixel Weave', 'jumpstart'),
+			'name' 		=> __('Pixel Weave', '@@text-domain'),
 			'url' 		=> $imagepath.'pixel_weave.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '64px 64px'
 		),
 		'plaid' => array(
-			'name' 		=> __('Plaid', 'jumpstart'),
+			'name' 		=> __('Plaid', '@@text-domain'),
 			'url' 		=> $imagepath.'plaid.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pyramids' => array(
-			'name' 		=> __('Pyramids', 'jumpstart'),
+			'name' 		=> __('Pyramids', '@@text-domain'),
 			'url' 		=> $imagepath.'pyramids.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'rubber' => array(
-			'name' 		=> __('Rubber', 'jumpstart'),
+			'name' 		=> __('Rubber', '@@text-domain'),
 			'url' 		=> $imagepath.'rubber.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'skulls' => array(
-			'name' 		=> __('Skulls', 'jumpstart'),
+			'name' 		=> __('Skulls', '@@text-domain'),
 			'url' 		=> $imagepath.'skulls.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'squares' => array(
-			'name' 		=> __('Squares', 'jumpstart'),
+			'name' 		=> __('Squares', '@@text-domain'),
 			'url' 		=> $imagepath.'squares.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'stacked_circles' => array(
-			'name' 		=> __('Stacked Circles', 'jumpstart'),
+			'name' 		=> __('Stacked Circles', '@@text-domain'),
 			'url' 		=> $imagepath.'stacked_circles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '9px 9px'
 		),
 		'swirl' => array(
-			'name' 		=> __('Swirl', 'jumpstart'),
+			'name' 		=> __('Swirl', '@@text-domain'),
 			'url' 		=> $imagepath.'swirl.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 100px'
 		),
 		'textile' => array(
-			'name' 		=> __('Textile', 'jumpstart'),
+			'name' 		=> __('Textile', '@@text-domain'),
 			'url' 		=> $imagepath.'textile.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'tiles' => array(
-			'name' 		=> __('Tiles', 'jumpstart'),
+			'name' 		=> __('Tiles', '@@text-domain'),
 			'url' 		=> $imagepath.'tiles.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 99px'
 		),
 		'vertical_fabric' => array(
-			'name' 		=> __('Vertical Fabric', 'jumpstart'),
+			'name' 		=> __('Vertical Fabric', '@@text-domain'),
 			'url' 		=> $imagepath.'vertical_fabric.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'vintage' => array(
-			'name' 		=> __('Vintage', 'jumpstart'),
+			'name' 		=> __('Vintage', '@@text-domain'),
 			'url' 		=> $imagepath.'vintage.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'waves' => array(
-			'name' 		=> __('Waves', 'jumpstart'),
+			'name' 		=> __('Waves', '@@text-domain'),
 			'url' 		=> $imagepath.'waves.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood' => array(
-			'name' 		=> __('Wood', 'jumpstart'),
+			'name' 		=> __('Wood', '@@text-domain'),
 			'url' 		=> $imagepath.'wood.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood_planks' => array(
-			'name' 		=> __('Wood Planks', 'jumpstart'),
+			'name' 		=> __('Wood Planks', '@@text-domain'),
 			'url' 		=> $imagepath.'wood_planks.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'divider' => array(
-			'name' 		=> __('---------------', 'jumpstart'),
+			'name' 		=> __('---------------', '@@text-domain'),
 			'url' 		=> null,
 			'position' 	=> null,
 			'repeat' 	=> null,
 		),
 		'arches_light' => array(
-			'name' 		=> __('Light Arches', 'jumpstart'),
+			'name' 		=> __('Light Arches', '@@text-domain'),
 			'url' 		=> $imagepath.'arches_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '103px 23px'
 		),
 		'boxy_light' => array(
-			'name' 		=> __('Light Boxy', 'jumpstart'),
+			'name' 		=> __('Light Boxy', '@@text-domain'),
 			'url' 		=> $imagepath.'boxy_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'brick_wall_light' => array(
-			'name' 		=> __('Light Brick Wall', 'jumpstart'),
+			'name' 		=> __('Light Brick Wall', '@@text-domain'),
 			'url' 		=> $imagepath.'brick_wall_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_classic_light' => array(
-			'name' 		=> __('Light Carbon Classic', 'jumpstart'),
+			'name' 		=> __('Light Carbon Classic', '@@text-domain'),
 			'url' 		=> $imagepath.'carbon_classic_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_diagonal_light' => array(
-			'name' 		=> __('Light Carbon Diagonal', 'jumpstart'),
+			'name' 		=> __('Light Carbon Diagonal', '@@text-domain'),
 			'url' 		=> $imagepath.'carbon_diagonal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'carbon_weave_light' => array(
-			'name' 		=> __('Light Carbon Weave', 'jumpstart'),
+			'name' 		=> __('Light Carbon Weave', '@@text-domain'),
 			'url' 		=> $imagepath.'carbon_weave_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'chex_light' => array(
-			'name' 		=> __('Light Chex', 'jumpstart'),
+			'name' 		=> __('Light Chex', '@@text-domain'),
 			'url' 		=> $imagepath.'chex_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'circles_light' => array(
-			'name' 		=> __('Light Circles', 'jumpstart'),
+			'name' 		=> __('Light Circles', '@@text-domain'),
 			'url' 		=> $imagepath.'circles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'climpek_light' => array(
-			'name' 		=> __('Light Climpek', 'jumpstart'),
+			'name' 		=> __('Light Climpek', '@@text-domain'),
 			'url' 		=> $imagepath.'climpek_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'concrete_light' => array(
-			'name' 		=> __('Light Concrete', 'jumpstart'),
+			'name' 		=> __('Light Concrete', '@@text-domain'),
 			'url' 		=> $imagepath.'concrete_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cross_light' => array(
-			'name' 		=> __('Light Crosses', 'jumpstart'),
+			'name' 		=> __('Light Crosses', '@@text-domain'),
 			'url' 		=> $imagepath.'cross_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'cube_stack_light' => array(
-			'name' 		=> __('Light Cube Stack', 'jumpstart'),
+			'name' 		=> __('Light Cube Stack', '@@text-domain'),
 			'url' 		=> $imagepath.'cube_stack_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'denim_light' => array(
-			'name' 		=> __('Light Denim', 'jumpstart'),
+			'name' 		=> __('Light Denim', '@@text-domain'),
 			'url' 		=> $imagepath.'denim_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'diagnol_thin_light' => array(
-			'name' 		=> __('Light Diagonal (thin)', 'jumpstart'),
+			'name' 		=> __('Light Diagonal (thin)', '@@text-domain'),
 			'url' 		=> $imagepath.'diagnol_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '6px 6px'
 		),
 		'diagnol_thick_light' => array(
-			'name' 		=> __('Light Diagonal (thick)', 'jumpstart'),
+			'name' 		=> __('Light Diagonal (thick)', '@@text-domain'),
 			'url' 		=> $imagepath.'diagnol_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '20px 20px'
 		),
 		'diamonds_light' => array(
-			'name' 		=> __('Light Diamonds', 'jumpstart'),
+			'name' 		=> __('Light Diamonds', '@@text-domain'),
 			'url' 		=> $imagepath.'diamonds_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'escheresque_light' => array(
-			'name' 		=> __('Light Escheresque', 'jumpstart'),
+			'name' 		=> __('Light Escheresque', '@@text-domain'),
 			'url' 		=> $imagepath.'escheresque_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '46px 29px'
 		),
 		'grid_light' => array(
-			'name' 		=> __('Light Grid', 'jumpstart'),
+			'name' 		=> __('Light Grid', '@@text-domain'),
 			'url' 		=> $imagepath.'grid_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'grunge_light' => array(
-			'name' 		=> __('Light Grunge', 'jumpstart'),
+			'name' 		=> __('Light Grunge', '@@text-domain'),
 			'url' 		=> $imagepath.'grunge_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'feather_light' => array(
-			'name' 		=> __('Light Feather', 'jumpstart'),
+			'name' 		=> __('Light Feather', '@@text-domain'),
 			'url' 		=> $imagepath.'feather_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '500px 333px'
 		),
 		'hexagons_light' => array(
-			'name' 		=> __('Light Hexagons', 'jumpstart'),
+			'name' 		=> __('Light Hexagons', '@@text-domain'),
 			'url' 		=> $imagepath.'hexagons_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'honey_comb_light' => array(
-			'name' 		=> __('Light Honey Comb', 'jumpstart'),
+			'name' 		=> __('Light Honey Comb', '@@text-domain'),
 			'url' 		=> $imagepath.'honey_comb_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'leather_light' => array(
-			'name' 		=> __('Light Leather', 'jumpstart'),
+			'name' 		=> __('Light Leather', '@@text-domain'),
 			'url' 		=> $imagepath.'leather_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'metal_light' => array(
-			'name' 		=> __('Light Metal', 'jumpstart'),
+			'name' 		=> __('Light Metal', '@@text-domain'),
 			'url' 		=> $imagepath.'metal_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic_light' => array(
-			'name' 		=> __('Light Mosaic', 'jumpstart'),
+			'name' 		=> __('Light Mosaic', '@@text-domain'),
 			'url' 		=> $imagepath.'mosaic_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'mosaic_triangles_light' => array(
-			'name' 		=> __('Light Mosaic Triangles', 'jumpstart'),
+			'name' 		=> __('Light Mosaic Triangles', '@@text-domain'),
 			'url' 		=> $imagepath.'mosaic_triangles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'noise_light' => array(
-			'name' 		=> __('Light Noise', 'jumpstart'),
+			'name' 		=> __('Light Noise', '@@text-domain'),
 			'url' 		=> $imagepath.'noise_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'paper_light' => array(
-			'name' 		=> __('Light Paper', 'jumpstart'),
+			'name' 		=> __('Light Paper', '@@text-domain'),
 			'url' 		=> $imagepath.'paper_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pixel_weave_light' => array(
-			'name' 		=> __('Light Pixel Weave', 'jumpstart'),
+			'name' 		=> __('Light Pixel Weave', '@@text-domain'),
 			'url' 		=> $imagepath.'pixel_weave_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '64px 64px'
 		),
 		'plaid_light' => array(
-			'name' 		=> __('Light Plaid', 'jumpstart'),
+			'name' 		=> __('Light Plaid', '@@text-domain'),
 			'url' 		=> $imagepath.'plaid_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'pyramids_light' => array(
-			'name' 		=> __('Light Pyramids', 'jumpstart'),
+			'name' 		=> __('Light Pyramids', '@@text-domain'),
 			'url' 		=> $imagepath.'pyramids_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'rubber_light' => array(
-			'name' 		=> __('Light Rubber', 'jumpstart'),
+			'name' 		=> __('Light Rubber', '@@text-domain'),
 			'url' 		=> $imagepath.'rubber_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'skulls_light' => array(
-			'name' 		=> __('Light Skulls', 'jumpstart'),
+			'name' 		=> __('Light Skulls', '@@text-domain'),
 			'url' 		=> $imagepath.'skulls_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'squares_light' => array(
-			'name' 		=> __('Light Squares', 'jumpstart'),
+			'name' 		=> __('Light Squares', '@@text-domain'),
 			'url' 		=> $imagepath.'squares_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'stacked_circles_light' => array(
-			'name' 		=> __('Light Stacked Circles', 'jumpstart'),
+			'name' 		=> __('Light Stacked Circles', '@@text-domain'),
 			'url' 		=> $imagepath.'stacked_circles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '9px 9px'
 		),
 		'swirl_light' => array(
-			'name' 		=> __('Light Swirl', 'jumpstart'),
+			'name' 		=> __('Light Swirl', '@@text-domain'),
 			'url' 		=> $imagepath.'swirl_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 100px'
 		),
 		'textile_light' => array(
-			'name' 		=> __('Light Textile', 'jumpstart'),
+			'name' 		=> __('Light Textile', '@@text-domain'),
 			'url' 		=> $imagepath.'textile_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'tiles_light' => array(
-			'name' 		=> __('Light Tiles', 'jumpstart'),
+			'name' 		=> __('Light Tiles', '@@text-domain'),
 			'url' 		=> $imagepath.'tiles_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> '100px 99px'
 		),
 		'vertical_fabric_light' => array(
-			'name' 		=> __('Light Vertical Fabric', 'jumpstart'),
+			'name' 		=> __('Light Vertical Fabric', '@@text-domain'),
 			'url' 		=> $imagepath.'vertical_fabric_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'vintage_light' => array(
-			'name' 		=> __('Light Vintage', 'jumpstart'),
+			'name' 		=> __('Light Vintage', '@@text-domain'),
 			'url' 		=> $imagepath.'vintage_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'waves_light' => array(
-			'name' 		=> __('Light Waves', 'jumpstart'),
+			'name' 		=> __('Light Waves', '@@text-domain'),
 			'url' 		=> $imagepath.'waves_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood_light' => array(
-			'name' 		=> __('Light Wood', 'jumpstart'),
+			'name' 		=> __('Light Wood', '@@text-domain'),
 			'url' 		=> $imagepath.'wood_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
 			'size'		=> 'auto'
 		),
 		'wood_planks_light' => array(
-			'name' 		=> __('Light Wood Planks', 'jumpstart'),
+			'name' 		=> __('Light Wood Planks', '@@text-domain'),
 			'url' 		=> $imagepath.'wood_planks_light.png',
 			'position' 	=> '0 0',
 			'repeat' 	=> 'repeat',
@@ -1462,13 +1462,13 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					$select[$page->post_name] = $page->post_title;
 				}
 			} else {
-				$select['null'] = __('No pages exist.', 'jumpstart');
+				$select['null'] = __('No pages exist.', '@@text-domain');
 			}
 			break;
 
 		// Categories
 		case 'categories' :
-			$select['all'] = __('<strong>All Categories</strong>', 'jumpstart');
+			$select['all'] = __('<strong>All Categories</strong>', '@@text-domain');
 
 			$categories = get_categories( array( 'hide_empty' => false ) );
 
@@ -1485,7 +1485,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					$select[$slider->post_name] = $slider->post_title;
 				}
 			} else {
-				$select['null'] = __('You haven\'t created any custom sliders yet.', 'jumpstart');
+				$select['null'] = __('You haven\'t created any custom sliders yet.', '@@text-domain');
 			}
 			break;
 
@@ -1518,7 +1518,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					// Remove the word "Location" to avoid confusion,
 					// as the concept of locations doesn't really apply
 					// in this instance.
-					$name = str_replace( __('Location:', 'jumpstart'), __('Default', 'jumpstart'), $sidebar['name'] );
+					$name = str_replace( __('Location:', '@@text-domain'), __('Default', '@@text-domain'), $sidebar['name'] );
 
 					$select[$sidebar['id']] = $name;
 				}
@@ -1531,7 +1531,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 			$registered = get_intermediate_image_sizes();
 			$atts = $GLOBALS['_wp_additional_image_sizes'];
 
-			$select['full'] = __('Full Size','jumpstart');
+			$select['full'] = __('Full Size','@@text-domain');
 
 			foreach ( $registered as $size ) {
 
@@ -1561,11 +1561,11 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 				// Crop mode message
 				if ( $crop ) {
-					$crop_desc = __('hard crop', 'jumpstart');
+					$crop_desc = __('hard crop', '@@text-domain');
 				} else if ( $height == 9999 ) {
-					$crop_desc = __('no height crop', 'jumpstart');
+					$crop_desc = __('no height crop', '@@text-domain');
 				} else {
-					$crop_desc = __('soft crop', 'jumpstart');
+					$crop_desc = __('soft crop', '@@text-domain');
 				}
 
 				// Piece it all together
@@ -1589,11 +1589,11 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 				$select = array(
 					'dark' => array(
-						'label' 	=> __('For Darker Background Color', 'jumpstart'),
+						'label' 	=> __('For Darker Background Color', '@@text-domain'),
 						'options'	=> array()
 					),
 					'light' => array(
-						'label' 	=> __('For Lighter Background Color', 'jumpstart'),
+						'label' 	=> __('For Lighter Background Color', '@@text-domain'),
 						'options'	=> array()
 					)
 				);
@@ -1658,38 +1658,38 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
 
 	// Setup colors separated out to begin with.
 	$colors = array(
-		'default'		=> __('Default Color', 'jumpstart'),
-		'custom'		=> __('Custom Color', 'jumpstart'),
+		'default'		=> __('Default Color', '@@text-domain'),
+		'custom'		=> __('Custom Color', '@@text-domain'),
 	);
 	$boostrap_colors = array(
-		'primary' 		=> __('Primary', 'jumpstart'),
-		'info' 			=> __('Info', 'jumpstart'),
-		'success' 		=> __('Success', 'jumpstart'),
-		'warning' 		=> __('Warning', 'jumpstart'),
-		'danger' 		=> __('Danger', 'jumpstart')
+		'primary' 		=> __('Primary', '@@text-domain'),
+		'info' 			=> __('Info', '@@text-domain'),
+		'success' 		=> __('Success', '@@text-domain'),
+		'warning' 		=> __('Warning', '@@text-domain'),
+		'danger' 		=> __('Danger', '@@text-domain')
 	);
 	$themeblvd_colors = array(
-		'black' 		=> __('Black', 'jumpstart'),
-		'blue' 			=> __('Blue', 'jumpstart'),
-		'dark_blue'		=> __('Blue (Dark)', 'jumpstart'),
-		'royal'			=> __('Blue (Royal)', 'jumpstart'),
-		'steel_blue'	=> __('Blue (Steel)', 'jumpstart'),
-		'brown' 		=> __('Brown', 'jumpstart'),
-		'dark_brown' 	=> __('Brown (Dark)', 'jumpstart'),
-		'slate_grey'	=> __('Grey (Slate)', 'jumpstart'),
-		'green' 		=> __('Green', 'jumpstart'),
-		'dark_green' 	=> __('Green (Dark)', 'jumpstart'),
-		'mauve' 		=> __('Mauve', 'jumpstart'),
-		'orange'		=> __('Orange', 'jumpstart'),
-		'pearl'			=> __('Pearl', 'jumpstart'),
-		'pink'			=> __('Pink', 'jumpstart'),
-		'purple'		=> __('Purple', 'jumpstart'),
-		'red'			=> __('Red', 'jumpstart'),
-		'silver'		=> __('Silver', 'jumpstart'),
-		'teal'			=> __('Teal', 'jumpstart'),
-		'yellow'		=> __('Yellow', 'jumpstart'),
-		'wheat'			=> __('Wheat', 'jumpstart'),
-		'white'			=> __('White', 'jumpstart')
+		'black' 		=> __('Black', '@@text-domain'),
+		'blue' 			=> __('Blue', '@@text-domain'),
+		'dark_blue'		=> __('Blue (Dark)', '@@text-domain'),
+		'royal'			=> __('Blue (Royal)', '@@text-domain'),
+		'steel_blue'	=> __('Blue (Steel)', '@@text-domain'),
+		'brown' 		=> __('Brown', '@@text-domain'),
+		'dark_brown' 	=> __('Brown (Dark)', '@@text-domain'),
+		'slate_grey'	=> __('Grey (Slate)', '@@text-domain'),
+		'green' 		=> __('Green', '@@text-domain'),
+		'dark_green' 	=> __('Green (Dark)', '@@text-domain'),
+		'mauve' 		=> __('Mauve', '@@text-domain'),
+		'orange'		=> __('Orange', '@@text-domain'),
+		'pearl'			=> __('Pearl', '@@text-domain'),
+		'pink'			=> __('Pink', '@@text-domain'),
+		'purple'		=> __('Purple', '@@text-domain'),
+		'red'			=> __('Red', '@@text-domain'),
+		'silver'		=> __('Silver', '@@text-domain'),
+		'teal'			=> __('Teal', '@@text-domain'),
+		'yellow'		=> __('Yellow', '@@text-domain'),
+		'wheat'			=> __('Wheat', '@@text-domain'),
+		'white'			=> __('White', '@@text-domain')
 	);
 
 	// Merge colors
@@ -1716,7 +1716,7 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
  * @since 2.2.0
  */
 function themeblvd_load_theme_textdomain() {
-	load_theme_textdomain( 'jumpstart', get_template_directory() . '/languages' );
+	load_theme_textdomain( '@@text-domain', get_template_directory() . '/languages' );
 }
 
 /**
@@ -1969,141 +1969,141 @@ function themeblvd_conditionals_config() {
 	$conditionals = array(
 		'pages' => array(
 			'id'	=> 'pages',
-			'name'	=> __('Pages', 'jumpstart'),
-			'empty'	=> __('No pages to display.', 'jumpstart'),
+			'name'	=> __('Pages', '@@text-domain'),
+			'empty'	=> __('No pages to display.', '@@text-domain'),
 			'field'	=> 'page'
 		),
 		'posts' => array(
 			'id'	=> 'posts',
-			'name'	=> __('Posts', 'jumpstart'),
-			'empty'	=> __('No posts to display.', 'jumpstart'),
+			'name'	=> __('Posts', '@@text-domain'),
+			'empty'	=> __('No posts to display.', '@@text-domain'),
 			'field'	=> 'post'
 		),
 		'posts_in_category' => array(
 			'id'	=> 'posts_in_category',
-			'name'	=> __('Posts in Category', 'jumpstart'),
-			'empty'	=> __('No categories to display.', 'jumpstart'),
+			'name'	=> __('Posts in Category', '@@text-domain'),
+			'empty'	=> __('No categories to display.', '@@text-domain'),
 			'field'	=> 'posts_in_category'
 		),
 		'categories' => array(
 			'id'	=> 'categories',
-			'name'	=> __('Category Archives', 'jumpstart'),
-			'empty'	=> __('No categories to display.', 'jumpstart'),
+			'name'	=> __('Category Archives', '@@text-domain'),
+			'empty'	=> __('No categories to display.', '@@text-domain'),
 			'field'	=> 'category'
 		),
 		'tags' => array(
 			'id'	=> 'tags',
-			'name'	=> __('Tag Archives', 'jumpstart'),
-			'empty'	=> __('No tags to display.', 'jumpstart'),
+			'name'	=> __('Tag Archives', '@@text-domain'),
+			'empty'	=> __('No tags to display.', '@@text-domain'),
 			'field'	=> 'tag'
 		),
 		'portfolio_items' => array(
 			'id'	=> 'portfolio_items',
-			'name'	=> __('Single Portfolio Items', 'jumpstart'),
-			'empty'	=> __('No portfolio items to display.', 'jumpstart'),
+			'name'	=> __('Single Portfolio Items', '@@text-domain'),
+			'empty'	=> __('No portfolio items to display.', '@@text-domain'),
 			'field'	=> 'portfolio_item'
 		),
 		'portfolio_items_in_portfolio' => array(
 			'id'	=> 'portfolio_items_in_portfolio',
-			'name'	=> __('Items in Portfolio', 'jumpstart'),
-			'empty'	=> __('No categories to display.', 'jumpstart'),
+			'name'	=> __('Items in Portfolio', '@@text-domain'),
+			'empty'	=> __('No categories to display.', '@@text-domain'),
 			'field'	=> 'portfolio_items_in_portfolio'
 		),
 		'portfolios' => array(
 			'id'	=> 'portfolios',
-			'name'	=> __('Portfolios', 'jumpstart'),
-			'empty'	=> __('No portfolios to display.', 'jumpstart'),
+			'name'	=> __('Portfolios', '@@text-domain'),
+			'empty'	=> __('No portfolios to display.', '@@text-domain'),
 			'field'	=> 'portfolio'
 		),
 		'portfolio_tags' => array(
 			'id'	=> 'portfolio_tags',
-			'name'	=> __('Portfolio Tag Archives', 'jumpstart'),
-			'empty'	=> __('No portfolio tags to display.', 'jumpstart'),
+			'name'	=> __('Portfolio Tag Archives', '@@text-domain'),
+			'empty'	=> __('No portfolio tags to display.', '@@text-domain'),
 			'field'	=> 'portfolio_tag'
 		),
 		'portfolio_top' => array(
 			'id'	=> 'portfolio_top',
-			'name'	=> __('Portfolio Hierarchy', 'jumpstart'),
+			'name'	=> __('Portfolio Hierarchy', '@@text-domain'),
 			'empty'	=> null,
 			'field'	=> 'portfolio_top',
 			'items'	=> array(
-				'portfolio_items' 	=> __('All single portfolio items', 'jumpstart'),
-				'portfolios' 		=> __('Items displayed by portfolio', 'jumpstart'),
-				'portfolio_tags' 	=> __('Items displayed by portfolio tag', 'jumpstart')
+				'portfolio_items' 	=> __('All single portfolio items', '@@text-domain'),
+				'portfolios' 		=> __('Items displayed by portfolio', '@@text-domain'),
+				'portfolio_tags' 	=> __('Items displayed by portfolio tag', '@@text-domain')
 			)
 		),
 		'product_cat' => array(
 			'id'	=> 'product_cat',
-			'name'	=> __('Product Category Archives', 'jumpstart'),
-			'empty'	=> __('No categories to display.', 'jumpstart'),
+			'name'	=> __('Product Category Archives', '@@text-domain'),
+			'empty'	=> __('No categories to display.', '@@text-domain'),
 			'field'	=> 'product_cat'
 		),
 		'product_tags' => array(
 			'id'	=> 'product_tags',
-			'name'	=> __('Product Tag Archives', 'jumpstart'),
-			'empty'	=> __('No tags to display.', 'jumpstart'),
+			'name'	=> __('Product Tag Archives', '@@text-domain'),
+			'empty'	=> __('No tags to display.', '@@text-domain'),
 			'field'	=> 'product_tag'
 		),
 		'products_in_cat' => array(
 			'id'	=> 'products_in_cat',
-			'name'	=> __('Products in Category', 'jumpstart'),
-			'empty'	=> __('No categories to display.', 'jumpstart'),
+			'name'	=> __('Products in Category', '@@text-domain'),
+			'empty'	=> __('No categories to display.', '@@text-domain'),
 			'field'	=> 'products_in_cat'
 		),
 		'product_top' => array(
 			'id'	=> 'product_top',
-			'name'	=> __('Product Hierarchy', 'jumpstart'),
+			'name'	=> __('Product Hierarchy', '@@text-domain'),
 			'empty'	=> null,
 			'field'	=> 'product_top',
 			'items'	=> array(
-				'woocommerce' 		=> __('All WooCommerce pages', 'jumpstart'),
-				'products' 			=> __('All single products', 'jumpstart'),
-				'product_cat' 		=> __('Products displayed by category', 'jumpstart'),
-				'product_tag'		=> __('Products displayed by tag', 'jumpstart'),
-				'product_search'	=> __('WooCommerce search results', 'jumpstart'),
+				'woocommerce' 		=> __('All WooCommerce pages', '@@text-domain'),
+				'products' 			=> __('All single products', '@@text-domain'),
+				'product_cat' 		=> __('Products displayed by category', '@@text-domain'),
+				'product_tag'		=> __('Products displayed by tag', '@@text-domain'),
+				'product_search'	=> __('WooCommerce search results', '@@text-domain'),
 			)
 		),
 		'forums' => array(
 			'id'	=> 'forums',
-			'name'	=> __('Forums', 'jumpstart'),
+			'name'	=> __('Forums', '@@text-domain'),
 			'empty'	=> null,
 			'field'	=> 'forum'
 		),
 		'forum_top' => array(
 			'id'	=> 'forum_top',
-			'name'	=> __('Forum Hierarchy', 'jumpstart'),
+			'name'	=> __('Forum Hierarchy', '@@text-domain'),
 			'empty'	=> null,
 			'field'	=> 'forum_top',
 			'items'	=> array(
-				'bbpress' 			=> __('All bbPress pages', 'jumpstart'),
-				'topic' 			=> __('All single topics', 'jumpstart'),
-				'forum' 			=> __('All single forums', 'jumpstart'),
-				'topic_tag' 		=> __('Viewing topics by tag', 'jumpstart'),
-				'forum_user'		=> __('Public user profiles', 'jumpstart'),
-				'forum_user_home'	=> __('Logged-in user home', 'jumpstart')
+				'bbpress' 			=> __('All bbPress pages', '@@text-domain'),
+				'topic' 			=> __('All single topics', '@@text-domain'),
+				'forum' 			=> __('All single forums', '@@text-domain'),
+				'topic_tag' 		=> __('Viewing topics by tag', '@@text-domain'),
+				'forum_user'		=> __('Public user profiles', '@@text-domain'),
+				'forum_user_home'	=> __('Logged-in user home', '@@text-domain')
 			)
 		),
 		'top' => array(
 			'id'	=> 'top',
-			'name'	=> __('Hierarchy', 'jumpstart'),
+			'name'	=> __('Hierarchy', '@@text-domain'),
 			'empty'	=> null,
 			'field'	=> 'top',
 			'items'	=> array(
-				'home' 				=> __('Homepage', 'jumpstart'),
-				'posts' 			=> __('All posts (any post type)', 'jumpstart'),
-				'blog_posts' 		=> __('All blog posts', 'jumpstart'),
-				'pages' 			=> __('All pages', 'jumpstart'),
-				'archives' 			=> __('All archives', 'jumpstart'),
-				'categories'		=> __('All category archives', 'jumpstart'),
-				'tags' 				=> __('All tag archives', 'jumpstart'),
-				'authors' 			=> __('All author archives', 'jumpstart'),
-				'search' 			=> __('Search Results', 'jumpstart'),
-				'404' 				=> __('404 Page', 'jumpstart')
+				'home' 				=> __('Homepage', '@@text-domain'),
+				'posts' 			=> __('All posts (any post type)', '@@text-domain'),
+				'blog_posts' 		=> __('All blog posts', '@@text-domain'),
+				'pages' 			=> __('All pages', '@@text-domain'),
+				'archives' 			=> __('All archives', '@@text-domain'),
+				'categories'		=> __('All category archives', '@@text-domain'),
+				'tags' 				=> __('All tag archives', '@@text-domain'),
+				'authors' 			=> __('All author archives', '@@text-domain'),
+				'search' 			=> __('Search Results', '@@text-domain'),
+				'404' 				=> __('404 Page', '@@text-domain')
 			)
 		),
 		'custom' => array(
 			'id'	=> 'custom',
-			'name'	=> __('Custom', 'jumpstart'),
+			'name'	=> __('Custom', '@@text-domain'),
 			'empty'	=> null,
 			'field'	=> 'custom'
 		)
@@ -2187,47 +2187,47 @@ function themeblvd_is_lightbox_url( $url ) {
 function themeblvd_get_social_media_sources() {
 
  	$sources = array(
-		'chat' 				=> __('General: Chat', 'jumpstart'), // fa: comments
-		'cloud' 			=> __('General: Cloud', 'jumpstart'),
-		'anchor' 			=> __('General: Link', 'jumpstart'), // fa: link
-		'email' 			=> __('General: Mail', 'jumpstart'), // fa: envelope
-		'movie' 			=> __('General: Movie', 'jumpstart'), // fa: film
-		'music' 			=> __('General: Music', 'jumpstart'),
-		'portfolio' 		=> __('General: Portfolio', 'jumpstart'), // fa: briefcase
- 		'rss' 				=> __('General: RSS', 'jumpstart'),
- 		'store' 			=> __('General: Store', 'jumpstart'), // fa: shopping-cart
-		'write' 			=> __('General: Write', 'jumpstart'), // fa: pencil
- 		'android' 			=> __('Android', 'jumpstart'),
- 		'apple' 			=> __('Apple', 'jumpstart'),
- 		'behance' 			=> __('Behance', 'jumpstart'),
- 		'codepen' 			=> __('CodePen', 'jumpstart'),
- 		'delicious' 		=> __('Delicious', 'jumpstart'),
- 		'deviantart'		=> __('DeviantArt', 'jumpstart'),
- 		'digg' 				=> __('Digg', 'jumpstart'),
- 		'dribbble' 			=> __('Dribbble', 'jumpstart'),
- 		'dropbox' 			=> __('Dropbox', 'jumpstart'),
- 		'facebook' 			=> __('Facebook', 'jumpstart'),
- 		'flickr' 			=> __('Flickr', 'jumpstart'),
- 		'foursquare' 		=> __('Foursquare', 'jumpstart'),
- 		'github' 			=> __('GitHub', 'jumpstart'), // fa: github-alt
- 		'google' 			=> __('Google+', 'jumpstart'), // fa: google-plus
- 		'instagram'			=> __('Instagram', 'jumpstart'),
- 		'linkedin'			=> __('LinkedIn', 'jumpstart'),
- 		'paypal'			=> __('PayPal', 'jumpstart'),
- 		'pinterest'			=> __('Pinterest', 'jumpstart'), // fa: pinterest-p
- 		'reddit'			=> __('Reddit', 'jumpstart'),
- 		'slideshare'		=> __('SlideShare', 'jumpstart'),
- 		'soundcloud'		=> __('SoundCloud', 'jumpstart'),
- 		'stumbleupon' 		=> __('StumbleUpon', 'jumpstart'),
- 		'tumblr' 			=> __('Tumblr', 'jumpstart'),
- 		'twitter' 			=> __('Twitter', 'jumpstart'),
- 		'vimeo' 			=> __('Vimeo', 'jumpstart'), // fa: vimeo-square
- 		'vine' 				=> __('Vine', 'jumpstart'),
- 		'windows' 			=> __('Windows', 'jumpstart'),
- 		'wordpress' 		=> __('WordPress', 'jumpstart'),
- 		'xing' 				=> __('XING', 'jumpstart'),
- 		'yahoo' 			=> __('Yahoo', 'jumpstart'),
- 		'youtube'			=> __('YouTube', 'jumpstart')
+		'chat' 				=> __('General: Chat', '@@text-domain'), // fa: comments
+		'cloud' 			=> __('General: Cloud', '@@text-domain'),
+		'anchor' 			=> __('General: Link', '@@text-domain'), // fa: link
+		'email' 			=> __('General: Mail', '@@text-domain'), // fa: envelope
+		'movie' 			=> __('General: Movie', '@@text-domain'), // fa: film
+		'music' 			=> __('General: Music', '@@text-domain'),
+		'portfolio' 		=> __('General: Portfolio', '@@text-domain'), // fa: briefcase
+ 		'rss' 				=> __('General: RSS', '@@text-domain'),
+ 		'store' 			=> __('General: Store', '@@text-domain'), // fa: shopping-cart
+		'write' 			=> __('General: Write', '@@text-domain'), // fa: pencil
+ 		'android' 			=> __('Android', '@@text-domain'),
+ 		'apple' 			=> __('Apple', '@@text-domain'),
+ 		'behance' 			=> __('Behance', '@@text-domain'),
+ 		'codepen' 			=> __('CodePen', '@@text-domain'),
+ 		'delicious' 		=> __('Delicious', '@@text-domain'),
+ 		'deviantart'		=> __('DeviantArt', '@@text-domain'),
+ 		'digg' 				=> __('Digg', '@@text-domain'),
+ 		'dribbble' 			=> __('Dribbble', '@@text-domain'),
+ 		'dropbox' 			=> __('Dropbox', '@@text-domain'),
+ 		'facebook' 			=> __('Facebook', '@@text-domain'),
+ 		'flickr' 			=> __('Flickr', '@@text-domain'),
+ 		'foursquare' 		=> __('Foursquare', '@@text-domain'),
+ 		'github' 			=> __('GitHub', '@@text-domain'), // fa: github-alt
+ 		'google' 			=> __('Google+', '@@text-domain'), // fa: google-plus
+ 		'instagram'			=> __('Instagram', '@@text-domain'),
+ 		'linkedin'			=> __('LinkedIn', '@@text-domain'),
+ 		'paypal'			=> __('PayPal', '@@text-domain'),
+ 		'pinterest'			=> __('Pinterest', '@@text-domain'), // fa: pinterest-p
+ 		'reddit'			=> __('Reddit', '@@text-domain'),
+ 		'slideshare'		=> __('SlideShare', '@@text-domain'),
+ 		'soundcloud'		=> __('SoundCloud', '@@text-domain'),
+ 		'stumbleupon' 		=> __('StumbleUpon', '@@text-domain'),
+ 		'tumblr' 			=> __('Tumblr', '@@text-domain'),
+ 		'twitter' 			=> __('Twitter', '@@text-domain'),
+ 		'vimeo' 			=> __('Vimeo', '@@text-domain'), // fa: vimeo-square
+ 		'vine' 				=> __('Vine', '@@text-domain'),
+ 		'windows' 			=> __('Windows', '@@text-domain'),
+ 		'wordpress' 		=> __('WordPress', '@@text-domain'),
+ 		'xing' 				=> __('XING', '@@text-domain'),
+ 		'yahoo' 			=> __('Yahoo', '@@text-domain'),
+ 		'youtube'			=> __('YouTube', '@@text-domain')
 	);
 
  	// Backwards compat filter
@@ -2246,16 +2246,16 @@ function themeblvd_get_social_media_sources() {
 function themeblvd_get_share_sources() {
 
 	$sources = array(
-		'digg' 			=> __('Digg', 'jumpstart'),
-		'email' 		=> __('Email', 'jumpstart'),
-		'facebook' 		=> __('Facebook', 'jumpstart'),
-		'google' 		=> __('Google+', 'jumpstart'),
-		'linkedin' 		=> __('Linkedin', 'jumpstart'),
-		// 'wordpress' 	=> __('Press This', 'jumpstart'),
-		'pinterest' 	=> __('Pinterest', 'jumpstart'),
-		'reddit' 		=> __('Reddit', 'jumpstart'),
-		'tumblr' 		=> __('Tumblr', 'jumpstart'),
-		'twitter' 		=> __('Twitter', 'jumpstart')
+		'digg' 			=> __('Digg', '@@text-domain'),
+		'email' 		=> __('Email', '@@text-domain'),
+		'facebook' 		=> __('Facebook', '@@text-domain'),
+		'google' 		=> __('Google+', '@@text-domain'),
+		'linkedin' 		=> __('Linkedin', '@@text-domain'),
+		// 'wordpress' 	=> __('Press This', '@@text-domain'),
+		'pinterest' 	=> __('Pinterest', '@@text-domain'),
+		'reddit' 		=> __('Reddit', '@@text-domain'),
+		'tumblr' 		=> __('Tumblr', '@@text-domain'),
+		'twitter' 		=> __('Twitter', '@@text-domain')
 	);
 
 	return apply_filters( 'themeblvd_share_sources', $sources );
