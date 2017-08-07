@@ -8,18 +8,15 @@ var gulp 	= require('gulp'),
 var theme = 'jumpstart';
 
 /**
+ * Theme name.
+ */
+var themeName = 'Jump Start';
+
+
+/**
  * Theme version.
  */
 var version = '2.2.0';
-
-/**
- * All required tasks for distribution.
- */
-var serve = [
-	'clean',
-	'render-wp-theme',
-	'render-wp-theme-zip'
-];
 
 /**
  * Supported browsers for CSS autoprefixer.
@@ -51,19 +48,30 @@ gulp.task('clean', function() {
 });
 
 /**
+ * Merge theme framework into theme.
+ */
+gulp.task('render-themeblvd', ['clean'], function() {
+
+	return gulp.src('lib/themeblvd/**')
+    	.pipe(gulp.dest('dist/' + theme));
+
+});
+
+/**
  * Render WordPress theme.
  */
-gulp.task('render-wp-theme', ['clean'], function() {
+gulp.task('render-src', ['render-themeblvd'], function() {
 
 	return gulp.src('src/**')
     	.pipe(gulp.dest('dist/' + theme));
 
 });
 
+
 /**
  * Zip WordPress theme.
  */
-gulp.task('render-wp-theme-zip', ['render-wp-theme'], function() {
+gulp.task('render-theme-zip', ['render-src'], function() {
 
 	return gulp.src('dist/**')
 		.pipe(zip(theme + '-' + version + '.zip'))
@@ -74,6 +82,6 @@ gulp.task('render-wp-theme-zip', ['render-wp-theme'], function() {
 /**
  * Serve all distrubtion tasks.
  */
-gulp.task('serve', serve, function() {
+gulp.task('serve', ['render-theme-zip'], function() {
 	return;
 });
