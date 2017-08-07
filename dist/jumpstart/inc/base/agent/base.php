@@ -2,12 +2,12 @@
 /**
  * Theme Options Mods
  */
-include_once( get_template_directory() . '/base/agent/options.php' );
+include_once( themeblvd_get_base_path( 'agent' ) . '/options.php' );
 
 /**
  * Theme Option Presets
  */
-include_once( get_template_directory() . '/base/agent/presets.php' );
+include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 
 /**
  * Filter global config

@@ -28,6 +28,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-handler.php' )
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/general.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/general/base.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/grid.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/locals.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/media.php' );
