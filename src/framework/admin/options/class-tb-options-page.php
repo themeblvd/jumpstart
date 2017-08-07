@@ -320,7 +320,7 @@ class Theme_Blvd_Options_Page {
 		// Shortcode Generator
 		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
 			wp_enqueue_style( 'fontawesome', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css' ), null, TB_FRAMEWORK_VERSION );
-			wp_enqueue_style( 'tb_shortcode_generator', esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css' ), false, TB_SHORTCODES_PLUGIN_VERSION );
+			wp_enqueue_style( 'tb_shortcode_generator', esc_url( TB_SHORTCODES_PLUGIN_URI . '/general/admin/generator/assets/css/generator.min.css' ), false, TB_SHORTCODES_PLUGIN_VERSION );
 		}
 
 		// Icon Browser (vector)
@@ -374,7 +374,7 @@ class Theme_Blvd_Options_Page {
 
 		// Shortcode Generator
 		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
-			wp_enqueue_script( 'tb_shortcode_generator', esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/js/generator.min.js' ), false, TB_SHORTCODES_PLUGIN_VERSION );
+			wp_enqueue_script( 'tb_shortcode_generator', esc_url( TB_SHORTCODES_PLUGIN_URI . '/general/admin/generator/assets/js/generator.min.js' ), false, TB_SHORTCODES_PLUGIN_VERSION );
 		}
 
 		// Code Editor

@@ -8,7 +8,7 @@ define( 'TB_THEME_NAME', 'JumpStart' );
 /**
  * Automatic updates
  */
-include_once( get_template_directory() . '/includes/theme-updates.php' );
+include_once( get_template_directory() . '/inc/theme-updates.php' );
 
 /**
  * Global configuration, enable theme bases
@@ -155,9 +155,9 @@ function jumpstart_sample_layouts( $layouts ) {
 	$layouts['jumpstart-home'] = array(
 		'name'		=> __('Jump Start: Home', 'jumpstart'),
 		'id'		=> 'jumpstart-home',
-		'dir'		=> get_template_directory() . '/includes/layouts/home/',
-		'uri'		=> get_template_directory_uri() . '/includes/layouts/home/',
-		'assets'	=> get_template_directory_uri() . '/includes/layouts/home/img/'
+		'dir'		=> get_template_directory() . '/inc/layouts/home/',
+		'uri'		=> get_template_directory_uri() . '/inc/layouts/home/',
+		'assets'	=> get_template_directory_uri() . '/inc/layouts/home/img/'
 	);
 
 	return $layouts;
