@@ -222,4 +222,4 @@ do_action( 'themeblvd_localize' );
 do_action( 'themeblvd_api' );
 
 // Run theme functions
-include_once( get_template_directory() . '/includes/theme-functions.php' );
+include_once( get_template_directory() . '/inc/theme-functions.php' );
