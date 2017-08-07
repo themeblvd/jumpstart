@@ -8,7 +8,7 @@ define( 'TB_THEME_NAME', 'JumpStart' );
 /**
  * Automatic updates
  */
-include_once( get_template_directory() . '/includes/updates.php' );
+include_once( get_template_directory() . '/includes/theme-updates.php' );
 
 /**
  * Global configuration, enable theme bases
