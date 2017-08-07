@@ -17,7 +17,7 @@
 
 #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image,
 #adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image {
-	background-image: url('../images/menu.png');
+	background-image: url('../img/menu.png');
 }
 #adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image {
 	background-position: -1px -1px;
@@ -40,7 +40,7 @@
 		only screen and (min-resolution: 1.5dppx) {
 	#adminmenu #toplevel_page_themeblvd_builder div.wp-menu-image,
 	#adminmenu #toplevel_page_themeblvd_sliders div.wp-menu-image {
-		background-image: url('../images/menu_2x.png');
+		background-image: url('../img/menu_2x.png');
 		background-size: 60px 64px;
 	}
 }

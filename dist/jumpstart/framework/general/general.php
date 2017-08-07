@@ -787,7 +787,7 @@ function themeblvd_column_class_legacy( $class ) {
  */
 function themeblvd_get_textures() {
 
-	$imagepath = apply_filters( 'themeblvd_textures_img_path', get_template_directory_uri().'/framework/assets/images/textures/' );
+	$imagepath = apply_filters( 'themeblvd_textures_img_path', get_template_directory_uri().'/framework/assets/img/textures/' );
 
 	$textures = array(
 		'arches' => array(

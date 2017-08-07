@@ -1326,7 +1326,7 @@ img.size-full {
 
 /* Level 2+ */
 .tb-side-menu .sub-menu {
-	background: url('../images/parts/side-nav-list-outer-cccccc.png') 10px 0 repeat-y;
+	background: url('../img/parts/side-nav-list-outer-cccccc.png') 10px 0 repeat-y;
 	background-size: 21px 5px;
 	font-size: 12px;
 	margin: 0 0 10px 0;
@@ -1342,7 +1342,7 @@ img.size-full {
 	margin-bottom: 10px;
 }
 .tb-side-menu .sub-menu li {
-	background: url('../images/parts/side-nav-list-ltr-cccccc.png') 10px 5px no-repeat;
+	background: url('../img/parts/side-nav-list-ltr-cccccc.png') 10px 5px no-repeat;
 	background-size: 21px 60px;
 	padding: 7px 12px 7px 35px;
 }
@@ -2172,7 +2172,7 @@ span.entry-subtitle {
 }
 .standard-slider-wrapper .flex-control-nav li a,
 .tb-nivo-slider-wrapper .nivo-controlNav a {
-	background: url('../images/elements/slider-nav.png') no-repeat;
+	background: url('../img/elements/slider-nav.png') no-repeat;
 	cursor: pointer;
 	display: block;
 	outline: none;
@@ -2205,7 +2205,7 @@ span.entry-subtitle {
 }
 .standard-slider-wrapper .flex-direction-nav li a,
 .tb-nivo-slider-wrapper .nivo-directionNav a {
-	background-image: url('../images/elements/slider-arrows.png');
+	background-image: url('../img/elements/slider-arrows.png');
 	background-position: 0 0;
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -2258,12 +2258,12 @@ span.entry-subtitle {
 	/* Slider controls - Use 2x image for retina */
 	.standard-slider-wrapper .flex-control-nav li a,
 	.tb-nivo-slider-wrapper .nivo-controlNav a {
-		background-image: url('../images/elements/slider-nav_2x.png');
+		background-image: url('../img/elements/slider-nav_2x.png');
 		background-size: 20px 11px;
 	}
 	.standard-slider-wrapper .flex-direction-nav li a,
 	.tb-nivo-slider-wrapper .nivo-directionNav a {
-		background-image: url('../images/elements/slider-arrows_2x.png');
+		background-image: url('../img/elements/slider-arrows_2x.png');
 		background-size: 32px 64px;
 	}
 }
@@ -2760,124 +2760,124 @@ span.entry-subtitle {
 	height: 24px;
 }
 .tb-social-icons.color > li > .chat {
-	background-image: url('../images/social/chat.png');
+	background-image: url('../img/social/chat.png');
 }
 .tb-social-icons.color > li > .cloud {
-	background-image: url('../images/social/cloud.png');
+	background-image: url('../img/social/cloud.png');
 }
 .tb-social-icons.color > li > .anchor {
-	background-image: url('../images/social/anchor.png');
+	background-image: url('../img/social/anchor.png');
 }
 .tb-social-icons.color > li > .email {
-	background-image: url('../images/social/email.png');
+	background-image: url('../img/social/email.png');
 }
 .tb-social-icons.color > li > .movie {
-	background-image: url('../images/social/movie.png');
+	background-image: url('../img/social/movie.png');
 }
 .tb-social-icons.color > li > .music {
-	background-image: url('../images/social/music.png');
+	background-image: url('../img/social/music.png');
 }
 .tb-social-icons.color > li > .portfolio {
-	background-image: url('../images/social/portfolio.png');
+	background-image: url('../img/social/portfolio.png');
 }
 .tb-social-icons.color > li > .rss  {
-	background-image: url('../images/social/rss.png');
+	background-image: url('../img/social/rss.png');
 }
 .tb-social-icons.color > li > .store {
-	background-image: url('../images/social/store.png');
+	background-image: url('../img/social/store.png');
 }
 .tb-social-icons.color > li > .write {
-	background-image: url('../images/social/write.png');
+	background-image: url('../img/social/write.png');
 }
 .tb-social-icons.color > li > .apple {
-	background-image: url('../images/social/apple.png');
+	background-image: url('../img/social/apple.png');
 }
 .tb-social-icons.color > li > .android {
-	background-image: url('../images/social/android.png');
+	background-image: url('../img/social/android.png');
 }
 .tb-social-icons.color > li > .behance {
-	background-image: url('../images/social/behance.png');
+	background-image: url('../img/social/behance.png');
 }
 .tb-social-icons.color > li > .delicious  {
-	background-image: url('../images/social/delicious.png');
+	background-image: url('../img/social/delicious.png');
 }
 .tb-social-icons.color > li > .deviantart  {
-	background-image: url('../images/social/deviantart.png');
+	background-image: url('../img/social/deviantart.png');
 }
 .tb-social-icons.color > li > .digg  {
-	background-image: url('../images/social/digg.png');
+	background-image: url('../img/social/digg.png');
 }
 .tb-social-icons.color > li > .dribbble  {
-	background-image: url('../images/social/dribbble.png');
+	background-image: url('../img/social/dribbble.png');
 }
 .tb-social-icons.color > li > .dropbox {
-	background-image: url('../images/social/dropbox.png');
+	background-image: url('../img/social/dropbox.png');
 }
 .tb-social-icons.color > li > .facebook  {
-	background-image: url('../images/social/facebook.png');
+	background-image: url('../img/social/facebook.png');
 }
 .tb-social-icons.color > li > .flickr  {
-	background-image: url('../images/social/flickr.png');
+	background-image: url('../img/social/flickr.png');
 }
 .tb-social-icons.color > li > .foursquare  {
-	background-image: url('../images/social/foursquare.png');
+	background-image: url('../img/social/foursquare.png');
 }
 .tb-social-icons.color > li > .github  {
-	background-image: url('../images/social/github.png');
+	background-image: url('../img/social/github.png');
 }
 .tb-social-icons.color > li > .google  {
-	background-image: url('../images/social/google.png');
+	background-image: url('../img/social/google.png');
 }
 .tb-social-icons.color > li > .instagram  {
-	background-image: url('../images/social/instagram.png');
+	background-image: url('../img/social/instagram.png');
 }
 .tb-social-icons.color > li > .linkedin  {
-	background-image: url('../images/social/linkedin.png');
+	background-image: url('../img/social/linkedin.png');
 }
 .tb-social-icons.color > li > .paypal  {
-	background-image: url('../images/social/paypal.png');
+	background-image: url('../img/social/paypal.png');
 }
 .tb-social-icons.color > li > .pinterest  {
-	background-image: url('../images/social/pinterest.png');
+	background-image: url('../img/social/pinterest.png');
 }
 .tb-social-icons.color > li > .reddit  {
-	background-image: url('../images/social/reddit.png');
+	background-image: url('../img/social/reddit.png');
 }
 .tb-social-icons.color > li > .slideshare {
-	background-image: url('../images/social/slideshare.png');
+	background-image: url('../img/social/slideshare.png');
 }
 .tb-social-icons.color > li > .soundcloud {
-	background-image: url('../images/social/soundcloud.png');
+	background-image: url('../img/social/soundcloud.png');
 }
 .tb-social-icons.color > li > .stumbleupon {
-	background-image: url('../images/social/stumbleupon.png');
+	background-image: url('../img/social/stumbleupon.png');
 }
 .tb-social-icons.color > li > .tumblr  {
-	background-image: url('../images/social/tumblr.png');
+	background-image: url('../img/social/tumblr.png');
 }
 .tb-social-icons.color > li > .twitter  {
-	background-image: url('../images/social/twitter.png');
+	background-image: url('../img/social/twitter.png');
 }
 .tb-social-icons.color > li > .vimeo  {
-	background-image: url('../images/social/vimeo.png');
+	background-image: url('../img/social/vimeo.png');
 }
 .tb-social-icons.color > li > .stumbleupon {
-	background-image: url('../images/social/stumbleupon.png');
+	background-image: url('../img/social/stumbleupon.png');
 }
 .tb-social-icons.color > li > .windows {
-	background-image: url('../images/social/windows.png');
+	background-image: url('../img/social/windows.png');
 }
 .tb-social-icons.color > li > .wordpress {
-	background-image: url('../images/social/wordpress.png');
+	background-image: url('../img/social/wordpress.png');
 }
 .tb-social-icons.color > li > .xing {
-	background-image: url('../images/social/xing.png');
+	background-image: url('../img/social/xing.png');
 }
 .tb-social-icons.color > li > .yahoo  {
-	background-image: url('../images/social/yahoo.png');
+	background-image: url('../img/social/yahoo.png');
 }
 .tb-social-icons.color > li > .youtube  {
-	background-image: url('../images/social/youtube.png');
+	background-image: url('../img/social/youtube.png');
 }
 
 /*=Forms
@@ -3908,376 +3908,376 @@ button:active {
 -----------------------------------------------*/
 
 .tb-texture-arches {
-	background-image: url('../images/textures/arches.png');
+	background-image: url('../img/textures/arches.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 103px 23px;
 }
 .tb-texture-arches_light {
-	background-image: url('../images/textures/arches_light.png');
+	background-image: url('../img/textures/arches_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 103px 23px;
 }
 .tb-texture-boxy {
-	background-image: url('../images/textures/boxy.png');
+	background-image: url('../img/textures/boxy.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-boxy_light {
-	background-image: url('../images/textures/boxy_light.png');
+	background-image: url('../img/textures/boxy_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-brick_wall {
-	background-image: url('../images/textures/brick_wall.png');
+	background-image: url('../img/textures/brick_wall.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-brick_wall_light {
-	background-image: url('../images/textures/brick_wall_light.png');
+	background-image: url('../img/textures/brick_wall_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-carbon_classic {
-	background-image: url('../images/textures/carbon_classic.png');
+	background-image: url('../img/textures/carbon_classic.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-carbon_classic_light {
-	background-image: url('../images/textures/carbon_classic_light.png');
+	background-image: url('../img/textures/carbon_classic_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-carbon_diagonal {
-	background-image: url('../images/textures/carbon_diagonal.png');
+	background-image: url('../img/textures/carbon_diagonal.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-carbon_diagonal_light {
-	background-image: url('../images/textures/carbon_diagonal_light.png');
+	background-image: url('../img/textures/carbon_diagonal_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-carbon_weave {
-	background-image: url('../images/textures/carbon_weave.png');
+	background-image: url('../img/textures/carbon_weave.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-carbon_weave_light {
-	background-image: url('../images/textures/carbon_weave_light.png');
+	background-image: url('../img/textures/carbon_weave_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-chex {
-	background-image: url('../images/textures/chex.png');
+	background-image: url('../img/textures/chex.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-chex_light {
-	background-image: url('../images/textures/chex_light.png');
+	background-image: url('../img/textures/chex_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-concrete {
-	background-image: url('../images/textures/concrete.png');
+	background-image: url('../img/textures/concrete.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-concrete_light {
-	background-image: url('../images/textures/concrete_light.png');
+	background-image: url('../img/textures/concrete_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-climpek {
-	background-image: url('../images/textures/climpek.png');
+	background-image: url('../img/textures/climpek.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 103px 23px;
 }
 .tb-texture-climpek_light {
-	background-image: url('../images/textures/climpek_light.png');
+	background-image: url('../img/textures/climpek_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 103px 23px;
 }
 .tb-texture-cross {
-	background-image: url('../images/textures/cross.png');
+	background-image: url('../img/textures/cross.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-cross_light {
-	background-image: url('../images/textures/cross_light.png');
+	background-image: url('../img/textures/cross_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-denim {
-	background-image: url('../images/textures/denim.png');
+	background-image: url('../img/textures/denim.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-denim_light {
-	background-image: url('../images/textures/denim_light.png');
+	background-image: url('../img/textures/denim_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-diagnol_thin {
-	background-image: url('../images/textures/diagnol_thin.png');
+	background-image: url('../img/textures/diagnol_thin.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-diagnol_thin_light {
-	background-image: url('../images/textures/diagnol_thin_light.png');
+	background-image: url('../img/textures/diagnol_thin_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-diagnol_thick {
-	background-image: url('../images/textures/diagnol_thick.png');
+	background-image: url('../img/textures/diagnol_thick.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-diagnol_thick_light {
-	background-image: url('../images/textures/diagnol_thick_light.png');
+	background-image: url('../img/textures/diagnol_thick_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-diamonds {
-	background-image: url('../images/textures/diamonds.png');
+	background-image: url('../img/textures/diamonds.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-diamonds_light {
-	background-image: url('../images/textures/diamonds_light.png');
+	background-image: url('../img/textures/diamonds_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-escheresque {
-	background-image: url('../images/textures/escheresque.png');
+	background-image: url('../img/textures/escheresque.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 46px 29px;
 }
 .tb-texture-escheresque_light {
-	background-image: url('../images/textures/escheresque_light.png');
+	background-image: url('../img/textures/escheresque_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 46px 29px;
 }
 .tb-texture-grid {
-	background-image: url('../images/textures/grid.png');
+	background-image: url('../img/textures/grid.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-grid_light {
-	background-image: url('../images/textures/grid_light.png');
+	background-image: url('../img/textures/grid_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-grunge {
-	background-image: url('../images/textures/grunge.png');
+	background-image: url('../img/textures/grunge.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-grunge_light {
-	background-image: url('../images/textures/grunge_light.png');
+	background-image: url('../img/textures/grunge_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-feather {
-	background-image: url('../images/textures/feather.png');
+	background-image: url('../img/textures/feather.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 500px 333px;
 }
 .tb-texture-feather_light {
-	background-image: url('../images/textures/feather_light.png');
+	background-image: url('../img/textures/feather_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 500px 333px;
 }
 .tb-texture-honey_comb {
-	background-image: url('../images/textures/honey_comb.png');
+	background-image: url('../img/textures/honey_comb.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-honey_comb_light {
-	background-image: url('../images/textures/honey_comb_light.png');
+	background-image: url('../img/textures/honey_comb_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-leather {
-	background-image: url('../images/textures/leather.png');
+	background-image: url('../img/textures/leather.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-leather_light {
-	background-image: url('../images/textures/leather_light.png');
+	background-image: url('../img/textures/leather_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-metal {
-	background-image: url('../images/textures/metal.png');
+	background-image: url('../img/textures/metal.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-metal_light {
-	background-image: url('../images/textures/metal_light.png');
+	background-image: url('../img/textures/metal_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-mosaic {
-	background-image: url('../images/textures/mosaic.png');
+	background-image: url('../img/textures/mosaic.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-mosaic_light {
-	background-image: url('../images/textures/mosaic_light.png');
+	background-image: url('../img/textures/mosaic_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-mosaic_triangles {
-	background-image: url('../images/textures/mosaic_triangles.png');
+	background-image: url('../img/textures/mosaic_triangles.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-mosaic_triangles_light {
-	background-image: url('../images/textures/mosaic_triangles_light.png');
+	background-image: url('../img/textures/mosaic_triangles_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-noise {
-	background-image: url('../images/textures/noise.png');
+	background-image: url('../img/textures/noise.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-noise_light {
-	background-image: url('../images/textures/noise_light.png');
+	background-image: url('../img/textures/noise_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-paper {
-	background-image: url('../images/textures/paper.png');
+	background-image: url('../img/textures/paper.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-paper_light {
-	background-image: url('../images/textures/paper_light.png');
+	background-image: url('../img/textures/paper_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-plaid {
-	background-image: url('../images/textures/plaid.png');
+	background-image: url('../img/textures/plaid.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-plaid_light {
-	background-image: url('../images/textures/plaid_light.png');
+	background-image: url('../img/textures/plaid_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-pixel_weave {
-	background-image: url('../images/textures/pixel_weave.png');
+	background-image: url('../img/textures/pixel_weave.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 64px 64px;
 }
 .tb-texture-pixel_weave_light {
-	background-image: url('../images/textures/pixel_weave_light.png');
+	background-image: url('../img/textures/pixel_weave_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 64px 64px;
 }
 .tb-texture-rubber {
-	background-image: url('../images/textures/rubber.png');
+	background-image: url('../img/textures/rubber.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-rubber_light {
-	background-image: url('../images/textures/rubber_light.png');
+	background-image: url('../img/textures/rubber_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-squares {
-	background-image: url('../images/textures/squares.png');
+	background-image: url('../img/textures/squares.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-squares_light {
-	background-image: url('../images/textures/squares_light.png');
+	background-image: url('../img/textures/squares_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-stacked_circles {
-	background-image: url('../images/textures/stacked_circles.png');
+	background-image: url('../img/textures/stacked_circles.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 9px 9px;
 }
 .tb-texture-stacked_circles_light {
-	background-image: url('../images/textures/stacked_circles_light.png');
+	background-image: url('../img/textures/stacked_circles_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 9px 9px;
 }
 .tb-texture-swirl {
-	background-image: url('../images/textures/swirl.png');
+	background-image: url('../img/textures/swirl.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 100px 100px;
 }
 .tb-texture-swirl_light {
-	background-image: url('../images/textures/swirl_light.png');
+	background-image: url('../img/textures/swirl_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 	background-size: 100px 100px;
 }
 .tb-texture-textile {
-	background-image: url('../images/textures/textile.png');
+	background-image: url('../img/textures/textile.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-textile_light {
-	background-image: url('../images/textures/textile_light.png');
+	background-image: url('../img/textures/textile_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-vertical_fabric {
-	background-image: url('../images/textures/vertical_fabric.png');
+	background-image: url('../img/textures/vertical_fabric.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-vertical_fabric_light {
-	background-image: url('../images/textures/vertical_fabric_light.png');
+	background-image: url('../img/textures/vertical_fabric_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-vintage {
-	background-image: url('../images/textures/vintage.png');
+	background-image: url('../img/textures/vintage.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-vintage_light {
-	background-image: url('../images/textures/vintage_light.png');
+	background-image: url('../img/textures/vintage_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-wood {
-	background-image: url('../images/textures/wood.png');
+	background-image: url('../img/textures/wood.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-wood_light {
-	background-image: url('../images/textures/wood_light.png');
+	background-image: url('../img/textures/wood_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-wood_planks {
-	background-image: url('../images/textures/wood_planks.png');
+	background-image: url('../img/textures/wood_planks.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
 .tb-texture-wood_planks_light {
-	background-image: url('../images/textures/wood_planks_light.png');
+	background-image: url('../img/textures/wood_planks_light.png');
 	background-position: 0 0;
 	background-repeat: repeat;
 }
@@ -4291,7 +4291,7 @@ button:active {
 	/* Use 2x images for retina */
 	/*
 	.tb-texture-honey_comb {
-		background-image: url('../images/textures/honey_comb_2x.png');
+		background-image: url('../img/textures/honey_comb_2x.png');
 	}
 	*/
 }
@@ -4511,124 +4511,124 @@ ul.tb-icon-list {
 	height: 16px;
 }
 .tb-contact_widget ul.simple-contact ul.icons li.chat a {
-	background-image: url('../images/social/chat.png');
+	background-image: url('../img/social/chat.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.cloud a {
-	background-image: url('../images/social/cloud.png');
+	background-image: url('../img/social/cloud.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.email a {
-	background-image: url('../images/social/email.png');
+	background-image: url('../img/social/email.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.movie a {
-	background-image: url('../images/social/movie.png');
+	background-image: url('../img/social/movie.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.music a {
-	background-image: url('../images/social/music.png');
+	background-image: url('../img/social/music.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.portfolio a {
-	background-image: url('../images/social/portfolio.png');
+	background-image: url('../img/social/portfolio.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.rss  a {
-	background-image: url('../images/social/rss.png');
+	background-image: url('../img/social/rss.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.store a {
-	background-image: url('../images/social/store.png');
+	background-image: url('../img/social/store.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.write a {
-	background-image: url('../images/social/write.png');
+	background-image: url('../img/social/write.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.android a {
-	background-image: url('../images/social/android.png');
+	background-image: url('../img/social/android.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.apple a {
-	background-image: url('../images/social/apple.png');
+	background-image: url('../img/social/apple.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.behance a {
-	background-image: url('../images/social/behance.png');
+	background-image: url('../img/social/behance.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.delicious  a {
-	background-image: url('../images/social/delicious.png');
+	background-image: url('../img/social/delicious.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.deviantart  a {
-	background-image: url('../images/social/deviantart.png');
+	background-image: url('../img/social/deviantart.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.digg  a {
-	background-image: url('../images/social/digg.png');
+	background-image: url('../img/social/digg.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.dribbble  a {
-	background-image: url('../images/social/dribbble.png');
+	background-image: url('../img/social/dribbble.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.dropbox a {
-	background-image: url('../images/social/dropbox.png');
+	background-image: url('../img/social/dropbox.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.facebook  a {
-	background-image: url('../images/social/facebook.png');
+	background-image: url('../img/social/facebook.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.flickr  a {
-	background-image: url('../images/social/flickr.png');
+	background-image: url('../img/social/flickr.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.foursquare  a {
-	background-image: url('../images/social/foursquare.png');
+	background-image: url('../img/social/foursquare.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.github  a {
-	background-image: url('../images/social/github.png');
+	background-image: url('../img/social/github.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.google  a {
-	background-image: url('../images/social/google.png');
+	background-image: url('../img/social/google.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.instagram  a {
-	background-image: url('../images/social/instagram.png');
+	background-image: url('../img/social/instagram.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.linkedin  a {
-	background-image: url('../images/social/linkedin.png');
+	background-image: url('../img/social/linkedin.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.myspace  a {
-	background-image: url('../images/social/myspace.png');
+	background-image: url('../img/social/myspace.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.paypal  a {
-	background-image: url('../images/social/paypal.png');
+	background-image: url('../img/social/paypal.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.pinterest  a {
-	background-image: url('../images/social/pinterest.png');
+	background-image: url('../img/social/pinterest.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.reddit  a {
-	background-image: url('../images/social/reddit.png');
+	background-image: url('../img/social/reddit.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.slideshare a {
-	background-image: url('../images/social/slideshare.png');
+	background-image: url('../img/social/slideshare.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.soundcloud a {
-	background-image: url('../images/social/soundcloud.png');
+	background-image: url('../img/social/soundcloud.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.stumbleupon a {
-	background-image: url('../images/social/stumbleupon.png');
+	background-image: url('../img/social/stumbleupon.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.tumblr  a {
-	background-image: url('../images/social/tumblr.png');
+	background-image: url('../img/social/tumblr.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.twitter  a {
-	background-image: url('../images/social/twitter.png');
+	background-image: url('../img/social/twitter.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.vimeo  a {
-	background-image: url('../images/social/vimeo.png');
+	background-image: url('../img/social/vimeo.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.vine a {
-	background-image: url('../images/social/vine.png');
+	background-image: url('../img/social/vine.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.windows a {
-	background-image: url('../images/social/windows.png');
+	background-image: url('../img/social/windows.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.wordpress a {
-	background-image: url('../images/social/wordpress.png');
+	background-image: url('../img/social/wordpress.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.xing a {
-	background-image: url('../images/social/xing.png');
+	background-image: url('../img/social/xing.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.yahoo  a {
-	background-image: url('../images/social/yahoo.png');
+	background-image: url('../img/social/yahoo.png');
 }
 .tb-contact_widget ul.simple-contact ul.icons li.youtube  a {
-	background-image: url('../images/social/youtube.png');
+	background-image: url('../img/social/youtube.png');
 }
 
 /* =Lightbox

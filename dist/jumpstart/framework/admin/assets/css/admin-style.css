@@ -306,7 +306,7 @@
 	position: relative;
 }
 #optionsframework span.locked span {
-	background: #fff url(../images/icon-lock.png) 4px 5px no-repeat;
+	background: #fff url(../img/icon-lock.png) 4px 5px no-repeat;
 	display: block;
 	position: absolute;
 	-ms-filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=20);
@@ -469,25 +469,25 @@ tb-warning .tb-alert-inner {
 	margin-right: 5px;
 }
 #optionsframework .active-icon {
-	background: url(../images/icon-active.png) no-repeat;
+	background: url(../img/icon-active.png) no-repeat;
 }
 #optionsframework .add-icon {
-	background: url(../images/icon-add.png) no-repeat;
+	background: url(../img/icon-add.png) no-repeat;
 }
 #optionsframework .delete-icon {
-	background: url(../images/icon-delete.png) no-repeat;
+	background: url(../img/icon-delete.png) no-repeat;
 }
 #optionsframework .help-icon {
-	background: url(../images/icon-help.png) no-repeat;
+	background: url(../img/icon-help.png) no-repeat;
 }
 #optionsframework .inactive-icon {
-	background: url(../images/icon-inactive.png) no-repeat;
+	background: url(../img/icon-inactive.png) no-repeat;
 }
 #optionsframework .refresh-icon {
-	background: url(../images/icon-refresh.png) no-repeat;
+	background: url(../img/icon-refresh.png) no-repeat;
 }
 #optionsframework .remove-icon {
-	background: url(../images/icon-remove.png) no-repeat;
+	background: url(../img/icon-remove.png) no-repeat;
 }
 @media 	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -495,31 +495,31 @@ tb-warning .tb-alert-inner {
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
 	#optionsframework .active-icon {
-		background-image: url(../images/icon-active_2x.png);
+		background-image: url(../img/icon-active_2x.png);
 		background-size: 16px 16px;
 	}
 	#optionsframework .add-icon {
-		background-image: url(../images/icon-add_2x.png);
+		background-image: url(../img/icon-add_2x.png);
 		background-size: 16px 16px;
 	}
 	#optionsframework .delete-icon {
-		background-image: url(../images/icon-delete_2x.png);
+		background-image: url(../img/icon-delete_2x.png);
 		background-size: 16px 16px;
 	}
 	#optionsframework .help-icon {
-		background-image: url(../images/icon-help_2x.png);
+		background-image: url(../img/icon-help_2x.png);
 		background-size: 16px 16px;
 	}
 	#optionsframework .inactive-icon {
-		background-image: url(../images/icon-inactive_2x.png);
+		background-image: url(../img/icon-inactive_2x.png);
 		background-size: 16px 16px;
 	}
 	#optionsframework .refresh-icon {
-		background-image: url(../images/icon-refresh_2x.png);
+		background-image: url(../img/icon-refresh_2x.png);
 		background-size: 16px 16px;
 	}
 	#optionsframework .remove-icon {
-		background-image: url(../images/icon-remove_2x.png);
+		background-image: url(../img/icon-remove_2x.png);
 		background-size: 16px 16px;
 	}
 }
@@ -620,7 +620,7 @@ tb-warning .tb-alert-inner {
 	padding: 0 10px;
 }
 #optionsframework .widget-name .widget-name-arrow {
-	background: url(../images/arrows.png) 5px 9px no-repeat;
+	background: url(../img/arrows.png) 5px 9px no-repeat;
 	border-left: none;
 	display: block;
 	float: right;
@@ -696,7 +696,7 @@ tb-warning .tb-alert-inner {
 		only screen and (min-device-pixel-ratio: 1.5),
 		only screen and (min-resolution: 1.5dppx) {
 	#optionsframework .widget-name .widget-name-arrow{
-		background-image: url(../images/arrows_2x.png);
+		background-image: url(../img/arrows_2x.png);
 		background-size: 15px 50px;
 	}
 }
@@ -754,7 +754,7 @@ tb-warning .tb-alert-inner {
 -----------------------------------------------*/
 
 #optionsframework .postbox .handlediv {
-	background:url(../images/arrows.png) 4px 10px no-repeat;
+	background:url(../img/arrows.png) 4px 10px no-repeat;
 	cursor: pointer;
 	width: 30px;
 }
@@ -767,7 +767,7 @@ tb-warning .tb-alert-inner {
 		only screen and (min-device-pixel-ratio:1.5),
 		only screen and (min-resolution:1.5dppx) {
 	#optionsframework .postbox .handlediv {
-		background-image: url(../images/arrows_2x.png);
+		background-image: url(../img/arrows_2x.png);
 		background-size: 15px 50px;
 	}
 }

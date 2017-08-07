@@ -917,7 +917,7 @@
 	z-index: 1;
 }
 #optionsframework .tb-fancy-select .trigger {
-	background: url(../../assets/images/fancy-select-trigger_2x.png) no-repeat;
+	background: url(../../assets/img/fancy-select-trigger_2x.png) no-repeat;
 	background-size: 25px 33px;
 	border-left: 1px solid #dfdfdf;
 	-webkit-border-top-right-radius: 3px;

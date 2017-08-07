@@ -504,10 +504,10 @@ Author URI: http://www.themeblvd.com
 	border-bottom-color: rgba(220,220,220,.5);
 }
 .tb-mobile-menu-wrapper.light .tb-side-menu .sub-menu {
-	background-image: url('../../framework/assets/images/parts/side-nav-list-outer-cccccc.png');
+	background-image: url('../../framework/assets/img/parts/side-nav-list-outer-cccccc.png');
 }
 .tb-mobile-menu-wrapper.light .tb-side-menu .sub-menu li {
-	background-image: url('../../framework/assets/images/parts/side-nav-list-ltr-cccccc.png');
+	background-image: url('../../framework/assets/img/parts/side-nav-list-ltr-cccccc.png');
 }
 .tb-mobile-menu-wrapper.light .tb-search {
 	border-bottom-color: rgba(220,220,220,.5);

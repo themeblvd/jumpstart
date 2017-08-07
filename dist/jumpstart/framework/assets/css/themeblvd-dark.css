@@ -403,10 +403,10 @@ a.list-group-item.active:focus {
 
 /* Level 2+ */
 .tb-side-menu .sub-menu {
-    background-image: url('../images/parts/side-nav-list-outer-000000.png');
+    background-image: url('../img/parts/side-nav-list-outer-000000.png');
 }
 .tb-side-menu .sub-menu li {
-    background-image: url('../images/parts/side-nav-list-000000.png');
+    background-image: url('../img/parts/side-nav-list-000000.png');
 }
 .tb-side-menu .sub-menu li.non-mega-sub-menu:last-child {
     background-color: #222222;

@@ -641,10 +641,10 @@ body {
 	border-bottom: 1px solid rgba(0,0,0,.2);
 }
 .tb-mobile-menu-wrapper .tb-side-menu .sub-menu {
-	background-image: url('../../framework/assets/images/parts/side-nav-list-outer-000000.png');
+	background-image: url('../../framework/assets/img/parts/side-nav-list-outer-000000.png');
 }
 .tb-mobile-menu-wrapper .tb-side-menu .sub-menu li {
-	background-image: url('../../framework/assets/images/parts/side-nav-list-ltr-000000.png');
+	background-image: url('../../framework/assets/img/parts/side-nav-list-ltr-000000.png');
 }
 .tb-mobile-menu-wrapper .tb-search {
 	border-bottom: 1px solid rgba(0,0,0,.2);

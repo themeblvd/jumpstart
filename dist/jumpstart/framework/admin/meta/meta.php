@@ -320,7 +320,7 @@ function setup_themeblvd_pto_meta() {
 function setup_themeblvd_post_meta() {
 
 	// If using image radio buttons, define a directory path
-	$imagepath =  get_template_directory_uri() . '/framework/admin/assets/images/';
+	$imagepath = get_template_directory_uri() . '/framework/admin/assets/img/';
 
 	// Generate sidebar layout options
 	$sidebar_layouts = array( 'default' =>  $imagepath.'layout-default.png' );
