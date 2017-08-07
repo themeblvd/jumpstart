@@ -1,5 +1,127 @@
 <?php
 /**
+ * Setup the config array for which features the
+ * framework supports. This can easily be filtered, so the
+ * theme author has a chance to disable the framework's
+ * various features. The filter is this:
+ *
+ * themeblvd_global_config
+ *
+ * @since 2.0.0
+ *
+ * @return array $setup Features framework support
+ */
+function themeblvd_setup() {
+	$setup = array(
+		'admin' => array(
+			'options'			=> true,			// Theme Options
+			'sliders' 			=> true,			// Sliders page
+			'builder'			=> true,			// Layouts page
+			'sidebars'			=> true,			// Sidebars page
+			'updates'			=> true,			// Updates (if theme supports)
+			'user'				=> true,			// User profile options
+			'tax'				=> true,			// Taxonomy options
+			'menus'				=> true, 			// Options added to WP menu builder
+			'base'				=> false			// Theme base
+		),
+		'meta' => array(
+			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
+			'page_options'		=> true,			// Meta box for basic page options
+			'post_options'		=> true,			// Meta box for basic post options
+			'pto'				=> true,			// Meta box for "Post Grid/List" page template
+			'layout'			=> true				// Meta box for theme layout adjustments
+		),
+		'featured' => array(
+			'style'				=> false,			// Whether current theme has special styling for featured area
+			'archive'			=> false,			// Featured area on/off by default
+			'blog'				=> false,			// Featured area on/off by default
+			'grid'				=> false,			// Featured area on/off by default
+			'page'				=> false,			// Featured area on/off by default
+			'single'			=> false			// Featured area on/off by default
+		),
+		'featured_below' => array(
+			'style'				=> false,			// Whether current theme has special styling for featured below area
+			'archive'			=> false,			// Featured area on/off by default
+			'blog'				=> false,			// Featured area on/off by default
+			'grid'				=> false,			// Featured area on/off by default
+			'page'				=> false,			// Featured area on/off by default
+			'single'			=> false			// Featured area on/off by default
+		),
+		'comments' => array(
+			'posts'				=> true,			// Comments on posts
+			'pages'				=> false,			// Comments on pages
+			'attachments'		=> false			// Comments on attachments
+		),
+		'display' => array(
+			'responsive' 		=> true,			// Responsive elements
+			'dark'				=> false,			// Whether to display as dark theme
+			'sticky'			=> true,			// Sticky header as user scrolls past header
+			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
+			'side_panel'		=> true,			// Optional side panel navigation
+			'scroll_effects'	=> true, 			// Effects as user scrolls down page
+			'hide_top'			=> true,			// Whether theme supports hiding the #top
+			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
+			'footer_sync'		=> true,			// Whether theme suppors syncing footer with template
+			'suck_up'			=> true,			// Whether theme supports sucking custom layout content up into header
+			'gallery'			=> true,			// Integration of thumbnail classes and lightbox to WP [gallery]
+			'print'				=> true				// Whether to apply basic styles for printing
+		),
+		'assets' => array(
+			'primary_js'		=> true,			// Primary "themeblvd" script
+			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
+			'primary_dark_css'	=> true,			// Primary "themeblvd_dark" stylesheet (if supports display=>dark)
+			'flexslider'		=> true,			// Flexslider script by WooThemes
+			'nivo'				=> false,			// Nivo script by Dev7studios
+			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
+			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
+			'superfish'			=> true,			// "superfish" script
+			'easypiechart'		=> true,			// "EasyPieChart" scrip
+			'gmap'				=> true,			// Google Maps API v3
+			'charts'			=> true,			// Charts.js
+			'isotope'			=> true,			// Isotope script for sorting
+			'tag_cloud'			=> true, 			// Framework tag cloud styling
+			'owl_carousel'		=> true, 			// Owl Carousel for gallery sliders
+			'in_footer'			=> true				// Whether theme scripts are enqueued in footer
+		),
+		'plugins' => array(
+			'bbpress'			=> true,			// bbPress by Automattic
+			'gravityforms'		=> true,			// Gravity Forms by Rocket Genius
+			'subtitles'			=> true,			// Subtitles by Philip Moore
+			'woocommerce'		=> true,			// WooCommerce by WooThemes
+			'wpml'				=> true				// WPML by On The Go Systems
+		)
+	);
+
+	// Only needed for Theme Blvd sliders plugin
+	if ( defined('TB_SLIDERS_PLUGIN_VERSION') ) {
+		$setup['assets']['nivo'] = true;
+	}
+
+	return apply_filters( 'themeblvd_global_config', $setup );
+}
+
+/**
+ * Test whether an feature is currently supported.
+ *
+ * @since 2.0.0
+ *
+ * @param string $group Admin or frontend
+ * @param string $feature Feature key to check
+ * @return boolean $supports Whether feature is supported or not
+ */
+function themeblvd_supports( $group, $feature ) {
+
+	$setup = themeblvd_setup();
+	$supports = false;
+
+	if ( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) ) {
+		$supports = true;
+	}
+
+	return $supports;
+}
+
+/**
  * Get post display modes
  *
  * @since 2.5.0
@@ -189,128 +311,6 @@ function themeblvd_read_more_link( $read_more, $more_link_text ) {
 	$button = themeblvd_button( $args['text'], $args['url'], $args['color'], $args['target'], $args['size'], $args['classes'], $args['title'], $args['icon_before'], $args['icon_after'], $args['addon'] );
 
 	return apply_filters( 'themeblvd_read_more_link', $button );
-}
-
-/**
- * Setup the config array for which features the
- * framework supports. This can easily be filtered, so the
- * theme author has a chance to disable the framework's
- * various features. The filter is this:
- *
- * themeblvd_global_config
- *
- * @since 2.0.0
- *
- * @return array $setup Features framework support
- */
-function themeblvd_setup() {
-	$setup = array(
-		'admin' => array(
-			'options'			=> true,			// Theme Options
-			'sliders' 			=> true,			// Sliders page
-			'builder'			=> true,			// Layouts page
-			'sidebars'			=> true,			// Sidebars page
-			'updates'			=> true,			// Updates (if theme supports)
-			'user'				=> true,			// User profile options
-			'tax'				=> true,			// Taxonomy options
-			'menus'				=> true, 			// Options added to WP menu builder
-			'base'				=> false			// Theme base
-		),
-		'meta' => array(
-			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
-			'page_options'		=> true,			// Meta box for basic page options
-			'post_options'		=> true,			// Meta box for basic post options
-			'pto'				=> true,			// Meta box for "Post Grid/List" page template
-			'layout'			=> true				// Meta box for theme layout adjustments
-		),
-		'featured' => array(
-			'style'				=> false,			// Whether current theme has special styling for featured area
-			'archive'			=> false,			// Featured area on/off by default
-			'blog'				=> false,			// Featured area on/off by default
-			'grid'				=> false,			// Featured area on/off by default
-			'page'				=> false,			// Featured area on/off by default
-			'single'			=> false			// Featured area on/off by default
-		),
-		'featured_below' => array(
-			'style'				=> false,			// Whether current theme has special styling for featured below area
-			'archive'			=> false,			// Featured area on/off by default
-			'blog'				=> false,			// Featured area on/off by default
-			'grid'				=> false,			// Featured area on/off by default
-			'page'				=> false,			// Featured area on/off by default
-			'single'			=> false			// Featured area on/off by default
-		),
-		'comments' => array(
-			'posts'				=> true,			// Comments on posts
-			'pages'				=> false,			// Comments on pages
-			'attachments'		=> false			// Comments on attachments
-		),
-		'display' => array(
-			'responsive' 		=> true,			// Responsive elements
-			'dark'				=> false,			// Whether to display as dark theme
-			'sticky'			=> true,			// Sticky header as user scrolls past header
-			'mobile_side_menu'	=> true,			// Responsive menu position fixed to the side of the screen on mobile
-			'side_panel'		=> true,			// Optional side panel navigation
-			'scroll_effects'	=> true, 			// Effects as user scrolls down page
-			'hide_top'			=> true,			// Whether theme supports hiding the #top
-			'hide_bottom'		=> true, 			// Whether theme supports hiding the #bottom
-			'footer_sync'		=> true,			// Whether theme suppors syncing footer with template
-			'suck_up'			=> true,			// Whether theme supports sucking custom layout content up into header
-			'gallery'			=> true,			// Integration of thumbnail classes and lightbox to WP [gallery]
-			'print'				=> true				// Whether to apply basic styles for printing
-		),
-		'assets' => array(
-			'primary_js'		=> true,			// Primary "themeblvd" script
-			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
-			'primary_dark_css'	=> true,			// Primary "themeblvd_dark" stylesheet (if supports display=>dark)
-			'flexslider'		=> true,			// Flexslider script by WooThemes
-			'nivo'				=> false,			// Nivo script by Dev7studios
-			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
-			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
-			'superfish'			=> true,			// "superfish" script
-			'easypiechart'		=> true,			// "EasyPieChart" scrip
-			'gmap'				=> true,			// Google Maps API v3
-			'charts'			=> true,			// Charts.js
-			'isotope'			=> true,			// Isotope script for sorting
-			'tag_cloud'			=> true, 			// Framework tag cloud styling
-			'owl_carousel'		=> true, 			// Owl Carousel for gallery sliders
-			'in_footer'			=> true				// Whether theme scripts are enqueued in footer
-		),
-		'plugins' => array(
-			'bbpress'			=> true,			// bbPress by Automattic
-			'gravityforms'		=> true,			// Gravity Forms by Rocket Genius
-			'subtitles'			=> true,			// Subtitles by Philip Moore
-			'woocommerce'		=> true,			// WooCommerce by WooThemes
-			'wpml'				=> true				// WPML by On The Go Systems
-		)
-	);
-
-	// Only needed for Theme Blvd sliders plugin
-	if ( defined('TB_SLIDERS_PLUGIN_VERSION') ) {
-		$setup['assets']['nivo'] = true;
-	}
-
-	return apply_filters( 'themeblvd_global_config', $setup );
-}
-
-/**
- * Test whether an feature is currently supported.
- *
- * @since 2.0.0
- *
- * @param string $group Admin or frontend
- * @param string $feature Feature key to check
- * @return boolean $supports Whether feature is supported or not
- */
-function themeblvd_supports( $group, $feature ) {
-
-	$setup = themeblvd_setup();
-	$supports = false;
-
-	if ( ! empty( $setup ) && ! empty( $setup[$group][$feature] ) ) {
-		$supports = true;
-	}
-
-	return $supports;
 }
 
 /**
