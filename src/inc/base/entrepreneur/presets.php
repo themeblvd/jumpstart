@@ -28,7 +28,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 
     // Predefined attributes
     $atts = array(
-        'icon'			=> get_template_directory_uri() . '/base/entrepreneur/img/',
+		'icon'			=> trailingslashit( themeblvd_get_base_uri( 'entrepreneur' ) ) . 'img/',
         'icon_width'	=> '70',
         'icon_height'	=> '40',
         'icon_style'    => 'width: 70px; height: 40px',
