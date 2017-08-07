@@ -27,7 +27,7 @@ get_header();
 				<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class('content') ); ?> clearfix" role="main">
 					<div class="inner">
 						<?php themeblvd_content_top(); ?>
-						<?php get_template_part( 'content', themeblvd_get_part('404') ); ?>
+						<?php themeblvd_get_template_part( '404' ); ?>
 						<?php themeblvd_content_bottom(); ?>
 					</div><!-- .inner (end) -->
 				</div><!-- #content (end) -->

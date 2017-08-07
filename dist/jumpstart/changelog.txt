@@ -4,6 +4,11 @@ Jump Start Changelog
 2.2.0 - XX/XX/XXXX
 ------------------
 
+* Theme Code Overhaul
+	* All template part files moved from root to `template-parts` directory.
+	* Use of themeblvd_get_part() now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
+* **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
+
 --------------------------------------------------------------
 
 2.1.11 - 08/07/2017

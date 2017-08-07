@@ -30,7 +30,7 @@ get_header();
 
 						<?php while ( have_posts() ) : the_post(); ?>
 
-							<?php get_template_part( 'content', themeblvd_get_part('single') ); ?>
+							<?php themeblvd_get_template_part( 'single' ); ?>
 
 							<?php themeblvd_single_footer(); ?>
 

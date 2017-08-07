@@ -6,7 +6,7 @@
  */
 function themeblvd_frontend_init() {
 
-	/**
+	/*
 	 * Setup frontend
 	 * (1) Template Parts
 	 * (2) Template Attributes
@@ -20,7 +20,7 @@ function themeblvd_frontend_init() {
 	 */
 	Theme_Blvd_Frontend_Init::get_instance();
 
-	/**
+	/*
 	 * Setup any secondary queries or hook any modifications
 	 * to the primary query.
 	 */
@@ -29,19 +29,63 @@ function themeblvd_frontend_init() {
 }
 
 /**
- * Get content extension for uses of get_template_part
- * End Usage: get_template_part( 'content', {$part} )
- * File name structure: content-{$part}.php
+ * Wrapper for WP's get_template_part().
+ *
+ * This wrapper function helps us to create a unified system
+ * where the template parts are consistently filtered.
+ *
+ * @since 2.2.0
+ *
+ * @param string $type Type of template part to get.
+ */
+function themeblvd_get_template_part( $type ) {
+
+	$config = Theme_Blvd_Frontend_Init::get_instance();
+
+	/**
+	 * Filter the first $slug paramter passed to get_template_part().
+	 *
+	 * @since 2.7.0
+	 *
+	 * @param string Template part slug.
+	 * @param string $type Type of template part.
+	 */
+	$slug = apply_filters( 'themeblvd_template_part_slug', 'template-parts/content', $type );
+
+	/**
+	 * Filter the first $slug paramter passed to get_template_part().
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string Name of specialised template.
+	 * @param string $type Type of template part.
+	 */
+	$name = apply_filters( 'themeblvd_template_part', $config->get_template_parts( $type ), $type );
+
+	/*
+	 * Include template file.
+	 */
+	get_template_part( $slug, $name );
+
+}
+
+/**
+ * Get second $name parameter for uses of get_template_part().
  *
  * @since 2.0.0
+ * @deprecated 2.7.0
  *
- * @param string $type Type of template part to get
- * @return string $part Extension to use for get_template_part
+ * @param string $type Type of template part to get.
  */
 function themeblvd_get_part( $type ) {
-	$config = Theme_Blvd_Frontend_Init::get_instance();
-	$part = $config->get_template_parts( $type );
-	return apply_filters( 'themeblvd_template_part', $part, $type );
+
+	themeblvd_deprecated_function(
+		__FUNCTION__,
+		'2.7.0',
+		'themeblvd_get_template_part',
+		__( 'Instead of using themeblvd_get_part(), you should now use themeblvd_get_template_part() wrapper function to completely replace get_template_part() instance.' , 'jumpstart')
+	);
+
 }
 
 /**

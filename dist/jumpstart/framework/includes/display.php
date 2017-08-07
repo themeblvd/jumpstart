@@ -262,7 +262,7 @@ function themeblvd_epic_thumb() {
 			$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
 			$class = themeblvd_set_att( 'epic_class', implode(' ',  $class) );
 
-			get_template_part( 'content', themeblvd_get_part('featured-wc') );
+			themeblvd_get_template_part( 'featured-wc' );
 
 		} else {
 
@@ -286,7 +286,7 @@ function themeblvd_epic_thumb() {
 					$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
 					$class = themeblvd_set_att( 'epic_class', implode(' ',  $class) );
 
-					get_template_part( 'content', themeblvd_get_part('featured') );
+					themeblvd_get_template_part( 'featured' );
 
 				}
 			}

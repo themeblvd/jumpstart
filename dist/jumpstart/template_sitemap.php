@@ -30,7 +30,7 @@ get_header();
 
 						<?php while ( have_posts() ) : the_post(); ?>
 
-							<?php get_template_part( 'content', 'template_sitemap' ); ?>
+							<?php themeblvd_get_template_part( 'template_sitemap' ); ?>
 
 							<?php themeblvd_page_footer(); ?>
 

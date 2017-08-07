@@ -657,7 +657,7 @@ function themeblvd_loop( $args = array() ){
 			themeblvd_set_att('class', trim($current_post_class));
 
 			// Get template part
-			get_template_part( 'content', themeblvd_get_part($part) );
+			themeblvd_get_template_part( $part );
 
 			// For grid, if last post in a row, but not the very last post.
 			// NOTE: This is only for standard grids not using isotope
@@ -902,7 +902,7 @@ function themeblvd_get_grid_slider( $args ) {
 			$more = 0;
 
 			ob_start();
-			get_template_part( 'content', themeblvd_get_part( 'grid_slider' ) );
+			themeblvd_get_template_part( 'grid_slider' );
 			$output .= ob_get_clean();
 
     		if ( $i % $num_per == 0 && $i < $total ) {

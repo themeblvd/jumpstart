@@ -615,7 +615,7 @@ class Theme_Blvd_Frontend_Init {
 		}
 
 		if ( ! isset( $this->template_parts[$part] ) ) {
-			return null;
+			return $part;
 		}
 
 		return $this->template_parts[$part];
