@@ -25,7 +25,8 @@ function jumpstart_updates() {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-tb-license-admin.php' );
 
 	// Theme Data
-	$theme_data = wp_get_theme( get_template() ); // Will ignore Child theme
+	$theme = get_template();
+	$theme_data = wp_get_theme( $theme );
 
 	// Args
 	$args = array(
@@ -51,7 +52,16 @@ function jumpstart_updates() {
 	// Adjust args for EDD_SL_Theme_Updater class.
 	$args['license'] = $license_key;
 	$args['author'] = 'Theme Blvd';
-	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme='.TB_THEME_ID);
+
+	/**
+	 * Filter changelog URL.
+	 *
+	 * @since 2.7.0
+	 *
+	 * @param string URL to changelog.
+	 * @param string Template slug retrieved from get_template().
+	 */
+	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme=' . $theme, $theme );
 
 	// Run Updater.
 	$_tb_jumpstart_edd_updater = new EDD_SL_Theme_Updater( $args );

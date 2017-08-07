@@ -1,10 +1,5 @@
 <?php
 /**
- * Define theme constants
- */
-define( 'TB_THEME_ID', 'jumpstart' );
-
-/**
  * Automatic updates
  */
 include_once( get_template_directory() . '/inc/theme-updates.php' );
