@@ -21,12 +21,18 @@ include_once( get_template_directory() . '/inc/theme-updates.php' );
  * Global configuration, enable theme bases
  *
  * @since 2.0.0
+ *
+ * @param array $config Configuration settings from framework.
+ * @return array $config Modified configuration settings.
  */
 function jumpstart_global_config( $config ) {
+
 	$config['admin']['base'] = true;
+
 	return $config;
+
 }
-add_filter('themeblvd_global_config', 'jumpstart_global_config');
+add_filter( 'themeblvd_global_config', 'jumpstart_global_config' );
 
 /**
  * Setup theme bases admin
@@ -35,43 +41,54 @@ add_filter('themeblvd_global_config', 'jumpstart_global_config');
  */
 function jumpstart_bases() {
 
-	if ( is_admin() && themeblvd_supports('admin', 'base') ) {
+	if ( is_admin() && themeblvd_supports( 'admin', 'base' ) ) {
 
-		$bases = apply_filters('themeblvd_bases', array(
+		/**
+		 * Filter theme bases added by Jump Start, which
+		 * are passed to the object created with
+		 * class Theme_Blvd_Bases.
+		 *
+		 * @param array Theme bases being added.
+		 */
+		$bases = apply_filters( 'themeblvd_bases', array(
 			'dev' => array(
-				'name'		=> __('Developer', '@@text-domain'),
-				'desc'		=> __('If you\'re a developer looking to create a custom-designed child theme, this is the base for you.', '@@text-domain')
+				'name' => __( 'Developer', '@@text-domain' ),
+				'desc' => __( 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.', '@@text-domain' ),
 			),
 			'superuser' => array(
-				'name'		=> __('Super User', '@@text-domain'),
-				'desc'		=> __('For the super user, this base builds on the default theme to give you more visual, user options.', '@@text-domain')
+				'name' => __( 'Super User', '@@text-domain' ),
+				'desc' => __( 'For the super user, this base builds on the default theme to give you more visual, user options.', '@@text-domain' ),
 			),
 			'agent' => array(
-				'name'		=> __('Agent', '@@text-domain'),
-				'desc'		=> __('A modern and open, agency-style design with a bit less user options.', '@@text-domain')
+				'name' => __( 'Agent', '@@text-domain' ),
+				'desc' => __( 'A modern and open, agency-style design with a bit less user options.', '@@text-domain' ),
 			),
 			'entrepreneur' => array(
-				'name'		=> __('Entrepreneur', '@@text-domain'),
-				'desc'		=> __('A more standard, corporate design with a lot of user options.', '@@text-domain')
+				'name' => __( 'Entrepreneur', '@@text-domain' ),
+				'desc' => __( 'A more standard, corporate design with a lot of user options.', '@@text-domain' ),
 			),
 			'executive' => array(
-				'name'		=> __('Executive', '@@text-domain'),
-				'desc'		=> __('A more classic, corporate design with a lot of user options.', '@@text-domain')
-			)
+				'name' => __( 'Executive', '@@text-domain' ),
+				'desc' => __( 'A more classic, corporate design with a lot of user options.', '@@text-domain' ),
+			),
 		));
 
-		$admin = new Theme_Blvd_Bases( $bases, themeblvd_get_default_base() ); // class included with is_admin()
+		$admin = new Theme_Blvd_Bases( $bases, themeblvd_get_default_base() ); // Class included with is_admin().
 
 	}
 
 }
-add_action('after_setup_theme', 'jumpstart_bases');
+add_action( 'after_setup_theme', 'jumpstart_bases' );
 
-/**
+/*
  * Include theme base
  */
-if ( $base = themeblvd_get_base() ) {
-	include_once( themeblvd_get_base_path($base) . '/base.php' );
+$base = themeblvd_get_base();
+
+if ( $base ) {
+
+	include_once( themeblvd_get_base_path( $base ) . '/base.php' );
+
 }
 
 /**
@@ -81,13 +98,12 @@ if ( $base = themeblvd_get_base() ) {
  */
 function jumpstart_css() {
 
-	// For plugins not inserting their scripts/stylesheets
-	// correctly in the admin.
 	if ( is_admin() ) {
+
 		return;
+
 	}
 
-	// Theme version
 	$theme = wp_get_theme( get_template() );
 	$ver = $theme->get( 'Version' );
 	$stylesheet_ver = $ver;
@@ -99,40 +115,87 @@ function jumpstart_css() {
 
 	}
 
-	// Get stylesheet API
 	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 
-	// Main theme styles
+	/*
+	 * Theme Stylesheet
+	 */
 	if ( is_rtl() ) {
-		wp_enqueue_style( '@@text-domain', esc_url( get_template_directory_uri() . '/assets/css/theme-rtl.min.css' ), $handler->get_framework_deps(), $ver );
+
+		wp_enqueue_style(
+			'jumpstart',
+			esc_url( get_template_directory_uri() . '/assets/css/theme-rtl.min.css' ),
+			$handler->get_framework_deps(),
+			$ver
+		);
+
 	} else {
-		wp_enqueue_style( '@@text-domain', esc_url( get_template_directory_uri() . '/assets/css/theme.min.css' ), $handler->get_framework_deps(), $ver );
+
+		wp_enqueue_style(
+			'jumpstart',
+			esc_url( get_template_directory_uri() . '/assets/css/theme.min.css' ),
+			$handler->get_framework_deps(),
+			$ver
+		);
+
 	}
 
-	// Dark styles
-	if ( themeblvd_supports('display', 'dark') ) {
-		wp_enqueue_style( 'jumpstart-dark', esc_url( get_template_directory_uri() . '/assets/css/dark.min.css' ), $handler->get_framework_deps(), $ver );
+	/*
+	 * Dark Stylesheet
+	 */
+	if ( themeblvd_supports( 'display', 'dark' ) ) {
+
+		wp_enqueue_style(
+			'jumpstart-dark',
+			esc_url( get_template_directory_uri() . '/assets/css/dark.min.css' ),
+			$handler->get_framework_deps(),
+			$ver
+		);
+
 	}
 
-	// Theme base styles
+	/*
+	 * Theme Base Stylesheet
+	 */
 	$base = themeblvd_get_base();
 
-	if ( $base && $base != 'dev' ) {
-		wp_enqueue_style( 'jumpstart-base', esc_url( themeblvd_get_base_uri($base) . '/base.css' ), $handler->get_framework_deps(), $ver );
+	if ( $base && 'dev' !== $base ) {
+
+		wp_enqueue_style(
+			'jumpstart-base',
+			esc_url( themeblvd_get_base_uri( $base ) . '/base.css' ),
+			$handler->get_framework_deps(),
+			$ver
+		);
+
 	}
 
-	// IE Stylesheet
-	wp_enqueue_style( 'themeblvd-ie', esc_url( get_template_directory_uri() . '/assets/css/ie.css' ), array(), $ver );
-	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'IE' ); // Add IE conditional
+	/*
+	 * IE Stylesheet
+	 */
+	wp_enqueue_style(
+		'themeblvd-ie',
+		esc_url( get_template_directory_uri() . '/assets/css/ie.css' ),
+		array(),
+		$ver
+	);
 
-	// Primary style.css (mainly for child theme devs)
-	wp_enqueue_style( 'themeblvd-theme', esc_url( get_stylesheet_uri() ), $handler->get_framework_deps(), $stylesheet_ver );
+	$GLOBALS['wp_styles']->add_data( 'themeblvd-ie', 'conditional', 'IE' );
 
-	// Level 3 client API-added styles
-	$handler->print_styles(3);
+	/*
+	 * Primary style.css
+	 */
+	wp_enqueue_style(
+		'themeblvd-theme',
+		esc_url( get_stylesheet_uri() ),
+		$handler->get_framework_deps(),
+		$stylesheet_ver
+	);
+
+	$handler->print_styles( 3 ); // @TODO Remove.
 
 }
-add_action('wp_enqueue_scripts', 'jumpstart_css', 20);
+add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
 
 /**
  * Jump Start base check. If WP user is logged in,
@@ -144,29 +207,49 @@ add_action('wp_enqueue_scripts', 'jumpstart_css', 20);
  */
 function jumpstart_base_check() {
 
-	if ( is_user_logged_in() && themeblvd_supports('admin', 'base') && themeblvd_get_option('theme_base') != themeblvd_get_base() ) {
-		themeblvd_alert( array('style' => 'warning', 'class' => 'full'), __('Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain') );
+	if ( ! is_user_logged_in() ) {
+		return;
 	}
 
+	if ( ! themeblvd_supports( 'admin', 'base' ) ) {
+		return;
+	}
+
+	if ( themeblvd_get_option( 'theme_base' ) == themeblvd_get_base() ) {
+		return; // All good!
+	}
+
+	themeblvd_alert(
+		array(
+			'style' => 'warning',
+			'class' => 'full',
+		),
+		__( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain' )
+	);
+
 }
-add_action('themeblvd_before', 'jumpstart_base_check');
+add_action( 'themeblvd_before', 'jumpstart_base_check' );
 
 /**
  * Add Jump Start Homepage to sample layouts of
  * Layout Builder plugin.
  *
  * @since 2.0.0
+ *
+ * @param array $layouts All sample layouts.
+ * @return array $layouts Modified sample layouts.
  */
 function jumpstart_sample_layouts( $layouts ) {
 
 	$layouts['jumpstart-home'] = array(
-		'name'		=> __('Jump Start: Home', '@@text-domain'),
-		'id'		=> 'jumpstart-home',
-		'dir'		=> get_template_directory() . '/inc/layouts/home/',
-		'uri'		=> get_template_directory_uri() . '/inc/layouts/home/',
-		'assets'	=> get_template_directory_uri() . '/inc/layouts/home/img/'
+		'name'   => __( 'Jump Start: Home', '@@text-domain' ),
+		'id'     => 'jumpstart-home',
+		'dir'    => get_template_directory() . '/inc/layouts/home/',
+		'uri'    => get_template_directory_uri() . '/inc/layouts/home/',
+		'assets' => get_template_directory_uri() . '/inc/layouts/home/img/',
 	);
 
 	return $layouts;
+
 }
-add_filter('themeblvd_sample_layouts', 'jumpstart_sample_layouts');
+add_filter( 'themeblvd_sample_layouts', 'jumpstart_sample_layouts' );
