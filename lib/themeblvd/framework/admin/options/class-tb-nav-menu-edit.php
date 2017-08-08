@@ -2,10 +2,10 @@
 /**
  * Modifications to the Appearance > Menus screen.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 
 if ( class_exists('Walker_Nav_Menu_Edit') ) :

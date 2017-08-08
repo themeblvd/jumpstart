@@ -2,10 +2,10 @@
 /**
  * The default template for displaying content of single posts.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(themeblvd_get_att('class')); ?>>

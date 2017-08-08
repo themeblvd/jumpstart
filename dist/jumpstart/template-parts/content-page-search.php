@@ -2,10 +2,10 @@
 /**
  * The template used for displaying no search results in search.php
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 global $wp_query;
 $post_types = themeblvd_get_search_types();

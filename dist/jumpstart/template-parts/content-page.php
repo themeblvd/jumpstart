@@ -2,10 +2,10 @@
 /**
  * The template used for displaying page content in page.php
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 $page_class  = 'top'; // Help to force consistency for plugins like bbPress using in non-page context
 $page_class .= get_post_meta( $post->ID, '_tb_title', true ) != 'hide' ? ' has-title' : ' no-title';

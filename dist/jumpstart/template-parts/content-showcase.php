@@ -2,10 +2,10 @@
 /**
  * The template used for displaying posts in a showcase.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 $link = get_post_meta( get_the_ID(), '_tb_thumb_link', true );
 ?>

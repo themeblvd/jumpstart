@@ -3,10 +3,10 @@
  * The template used for displaying content
  * in 404.php.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 ?>
 <article class="404 bg-content">

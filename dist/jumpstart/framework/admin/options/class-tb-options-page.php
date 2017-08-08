@@ -3,10 +3,10 @@
  * Theme Blvd Options Page. Create an options panel
  * using internal options framework.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 class Theme_Blvd_Options_Page {
 

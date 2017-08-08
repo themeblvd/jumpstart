@@ -6,10 +6,10 @@
  * marketplace through WordPress theme updater system
  * and Envato API.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 class Theme_Blvd_Envato_Updates {
 

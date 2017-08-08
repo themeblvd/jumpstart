@@ -2,10 +2,10 @@
 /**
  * The default template for displaying content in search results
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 $meta = array('include' => array('time', 'comments'), 'time' => 'ago');
 ?>

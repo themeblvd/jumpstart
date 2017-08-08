@@ -4,10 +4,10 @@
  * products in WooCommerce. We also use this template
  * to add a toggle between the theme's added product views.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 
 $compat = Theme_Blvd_Compat_WooCommerce::get_instance();

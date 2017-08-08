@@ -13,10 +13,10 @@
  *	- Level 3: After Theme styles (implemented at theme level)
  *	- Level 4: After everything. (end of wp_head)
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 class Theme_Blvd_Stylesheet_Handler {
 

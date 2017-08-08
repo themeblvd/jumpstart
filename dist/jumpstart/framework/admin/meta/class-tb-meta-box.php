@@ -3,10 +3,10 @@
  * Theme Blvd Meta Box. Adds meta boxes through
  * WP's built-in add_meta_box functionality.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 class Theme_Blvd_Meta_Box {
 

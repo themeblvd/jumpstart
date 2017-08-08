@@ -8,10 +8,10 @@
  * content be done with via actions, filters, and
  * template parts.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 ?>
 <?php if ( themeblvd_show_comments() ) : ?>

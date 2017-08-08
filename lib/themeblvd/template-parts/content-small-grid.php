@@ -2,10 +2,10 @@
 /**
  * The default template for displaying content in small post grid.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 $meta = apply_filters('themeblvd_small_grid_meta_args', array('include' => array('time'), 'icons' => array()));
 ?>

@@ -2,10 +2,10 @@
 /**
  * Theme Base helper functions.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 
 /**
@@ -58,6 +58,6 @@ function themeblvd_get_default_base() {
  */
 function themeblvd_get_base() {
 
-	return apply_filters( 'themeblvd_base', get_option( get_template().'_base', themeblvd_get_default_base() ) );
+	return apply_filters( 'themeblvd_base', get_option( get_template() . '_base', themeblvd_get_default_base() ) );
 
 }

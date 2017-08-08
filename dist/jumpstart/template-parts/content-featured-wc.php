@@ -3,10 +3,10 @@
  * The template used for displaying "epic" thumbnail
  * above main site wrapper for WooCommerce shop.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	Jump_Start
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     Jump_Start
  */
 $to = themeblvd_show_breadcrumbs() ? 'breadcrumbs' : 'main'; // where full screen scroll-to-section goes
 ?>

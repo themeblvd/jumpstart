@@ -2,10 +2,10 @@
 /**
  * The template used to start a WooCommerce loop.
  *
- * @author		Jason Bobich
- * @copyright	2009-2017 Theme Blvd
- * @link		http://themeblvd.com
- * @package 	@@name-package
+ * @author      Jason Bobich
+ * @copyright   2009-2017 Theme Blvd
+ * @link        http://themeblvd.com
+ * @package     @@name-package
  */
 
 if ( ! is_shop() && ! is_product_category() && ! is_product_tag() ) {
