@@ -526,6 +526,7 @@ function jumpstart_ag_options() {
 	));
 
 	themeblvd_add_option_tab( 'styles', __( 'Styles', '@@text-domain' ), true );
+
 	// Translators: Placeholder is link to Theme Base admin page.
 	themeblvd_add_option_section( 'styles', 'presets', __( 'Preset Styles', '@@text-domain' ), __( 'For a quick starting point, click any image below to merge its preset settings into your current option selections. Then, you can continue editing individual options.', '@@text-domain' ) . ' &mdash; ' . sprintf( __( 'Looking for more theme style variations? Try a different %s.', '@@text-domain' ), '<a href="themes.php?page=jumpstart-base" target="_blank">Theme Base</a>' ), array() );
 

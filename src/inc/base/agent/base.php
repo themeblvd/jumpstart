@@ -19,7 +19,7 @@ include_once( themeblvd_get_base_path( 'agent' ) . '/options.php' );
 include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 
 /**
- * Filter global config
+ * Filter global config.
  *
  * @since 2.1.0
  *
@@ -38,31 +38,7 @@ function jumpstart_ag_global_config( $setup ) {
 add_filter( 'themeblvd_global_config', 'jumpstart_ag_global_config' );
 
 /**
- * Body class
- *
- * @since 2.1.0
- *
- * @param array $class WordPress classes to add to body.
- * @return array $class Modified WordPress classes to add to body.
- */
-function jumpstart_ag_body_class( $class ) {
-
-	if ( 'show' === themeblvd_get_option( 'sticky' ) ) {
-		$class[] = 'has-sticky';
-	}
-
-	if ( themeblvd_get_option( 'widget_bg' ) ) {
-		$class[] = 'tb-widget-bg';
-		$class[] = themeblvd_get_option( 'widget_bg_color_brightness' ) . '-widgets';
-	}
-
-	return $class;
-
-}
-add_filter( 'body_class', 'jumpstart_ag_body_class' );
-
-/**
- * Include Google fonts, if needed
+ * Include Google fonts, if needed.
  *
  * @since 2.1.0
  */
@@ -550,7 +526,8 @@ function jumpstart_ag_css() {
 	$print = htmlspecialchars_decode( $print );
 
 	/**
-	 * Filter final printed inline CSS output.
+	 * Filters final printed inline CSS output
+	 * for Agent theme base.
 	 *
 	 * @param string $print CSS output.
 	 */
@@ -564,6 +541,30 @@ function jumpstart_ag_css() {
 
 }
 add_action( 'wp_enqueue_scripts', 'jumpstart_ag_css', 25 );
+
+/**
+ * Add CSS classes to <body>.
+ *
+ * @since 2.1.0
+ *
+ * @param array $class WordPress classes to add to body.
+ * @return array $class Modified WordPress classes to add to body.
+ */
+function jumpstart_ag_body_class( $class ) {
+
+	if ( 'show' === themeblvd_get_option( 'sticky' ) ) {
+		$class[] = 'has-sticky';
+	}
+
+	if ( themeblvd_get_option( 'widget_bg' ) ) {
+		$class[] = 'tb-widget-bg';
+		$class[] = themeblvd_get_option( 'widget_bg_color_brightness' ) . '-widgets';
+	}
+
+	return $class;
+
+}
+add_filter( 'body_class', 'jumpstart_ag_body_class' );
 
 /**
  * Add CSS classes to header.

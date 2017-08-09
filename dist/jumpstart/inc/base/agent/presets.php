@@ -87,7 +87,8 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	);
 
 	/**
-	 * Filters predefined hex color values.
+	 * Filters predefined hex color values
+	 * used in Agent theme base.
 	 *
 	 * @param $hex array Color values.
 	 */
