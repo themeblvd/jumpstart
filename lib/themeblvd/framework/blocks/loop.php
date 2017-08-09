@@ -1,11 +1,11 @@
 <?php
 /**
- * Frontend loop functions.
+ * Frontend loop blocks.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @package     @@name-package
  */
 
 /**
@@ -16,7 +16,7 @@
  * @param array $args All arguments for post list
  * @param string $part Template part to use for loop
  */
-function themeblvd_loop( $args = array() ){
+function themeblvd_loop( $args = array() ) {
 
 	global $wp_query;
 	global $post;
@@ -858,7 +858,7 @@ function themeblvd_get_grid_slider( $args ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	if ( ! $args['query'] ) {
-		return esc_html__('Error: No query supplied.', 'jumpstart');
+		return esc_html__('Error: No query supplied.', '@@text-domain');
 	}
 
 	$class = 'tb-grid-slider tb-block-slider post_grid themeblvd-gallery';
@@ -1306,11 +1306,11 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 					'posts_per_page' 	=> -1
 				);
 			} else {
-				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'jumpstart'));
+				return sprintf('<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>', esc_html__('Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', '@@text-domain'));
 			}
 
 		} else {
-			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'jumpstart'));
+			return sprintf('<div class="alert alert-warning">%s</div>', esc_html__('Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', '@@text-domain'));
 		}
 
 	} else {

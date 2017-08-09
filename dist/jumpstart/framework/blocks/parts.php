@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend functions for smaller parts.
+ * Frontend smaller part blocks.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

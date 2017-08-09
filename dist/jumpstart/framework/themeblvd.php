@@ -96,18 +96,19 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	// Include files
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-tb-query.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-tb-frontend-init.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/general/components.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/general/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/display.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/frontend.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/helpers.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/layout.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/general/loop.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/menu.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/general/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/post-formats.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/general/stats.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/tags.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/content.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/components.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/loop.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/media.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/parts.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/stats.php' );
 
 	// Filters
 	add_filter( 'body_class','themeblvd_body_class' );
