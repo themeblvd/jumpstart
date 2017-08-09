@@ -8,87 +8,34 @@
  * @package     @@name-package
  */
 
-/**
+/*
  * Theme Options Mods
  */
-include_once( get_template_directory() . '/base/executive/options.php' );
+include_once( themeblvd_get_base_path( 'executive' ) . '/options.php' );
 
-/**
+/*
  * Theme Option Presets
  */
-include_once( get_template_directory() . '/base/executive/presets.php' );
+include_once( themeblvd_get_base_path( 'executive' ) . '/presets.php' );
 
 /**
- * Filter global config
+ * Filter global config.
  *
  * @since 2.0.0
+ *
+ * @param array $setup Framework global configuration settings.
+ * @return array $setup Modified framework global configuration settings.
  */
 function jumpstart_ex_global_config( $setup ) {
 
-	if ( themeblvd_get_option('style') == 'dark' ) {
+	if ( 'dark' === themeblvd_get_option( 'style' ) ) {
 		$setup['display']['dark'] = true;
 	}
 
 	return $setup;
-}
-add_filter('themeblvd_global_config', 'jumpstart_ex_global_config');
-
-/**
- * Body class
- *
- * @since 2.0.0
- */
-function jumpstart_ex_body_class($class) {
-
-	// Boxed layout
-	if ( themeblvd_get_option('layout_style') == 'boxed' ) {
-		$class[] = 'tb-boxed';
-		$class[] = 'js-boxed'; // backwards compat
-	}
-
-	// Centered header logo
-	if ( themeblvd_get_option('logo_center') ) {
-		$class[] = 'js-center-logo';
-	}
-
-	// Centered main menu
-	if ( themeblvd_get_option('menu_center') ) {
-		$class[] = 'js-center-menu';
-	}
-
-	return $class;
 
 }
-add_filter('body_class', 'jumpstart_ex_body_class');
-
-/**
- * Add CSS class to mobile side panel for color brightness.
- *
- * @since 2.1.0
- */
-function jumpstart_ex_mobile_panel_class( $class ) {
-	return array_merge( $class, array( themeblvd_get_option('menu_mobile_bg_color_brightness') ) );
-}
-add_filter('themeblvd_mobile_panel_class', 'jumpstart_ex_mobile_panel_class');
-
-/**
- * Add CSS class to sticky header panel for color brightness.
- *
- * @since 2.1.0
- */
-function jumpstart_ex_sticky_class( $class ) {
-
-	if ( themeblvd_get_option('header_text_color') == 'light' ) {
-		$class[] = 'dark';
-	} else {
-		$class[] = 'light';
-	}
-
-	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
-
-	return $class;
-}
-add_filter('themeblvd_sticky_class', 'jumpstart_ex_sticky_class');
+add_filter( 'themeblvd_global_config', 'jumpstart_ex_global_config' );
 
 /**
  * Include Google fonts, if needed
@@ -96,19 +43,22 @@ add_filter('themeblvd_sticky_class', 'jumpstart_ex_sticky_class');
  * @since 2.0.0
  */
 function jumpstart_ex_include_fonts() {
+
 	themeblvd_include_fonts(
-		themeblvd_get_option('font_body'),
-		themeblvd_get_option('font_header'),
-		themeblvd_get_option('font_quote'),
-		themeblvd_get_option('font_meta'),
-		themeblvd_get_option('font_epic'),
-		themeblvd_get_option('font_menu')
+		themeblvd_get_option( 'font_body' ),
+		themeblvd_get_option( 'font_header' ),
+		themeblvd_get_option( 'font_quote' ),
+		themeblvd_get_option( 'font_meta' ),
+		themeblvd_get_option( 'font_epic' ),
+		themeblvd_get_option( 'font_menu' )
 	);
+
 }
-add_action('wp_head', 'jumpstart_ex_include_fonts', 5);
+add_action( 'wp_head', 'jumpstart_ex_include_fonts', 5 );
 
 /**
- * Enqueue any CSS
+ * Generate output string to pass to
+ * wp_add_inline_style().
  *
  * @since 2.0.0
  */
@@ -116,29 +66,29 @@ function jumpstart_ex_css() {
 
 	$print = '';
 
-	$header_bg_type = themeblvd_get_option('header_bg_type');
-	$header_bg_color = themeblvd_get_option('header_bg_color');
+	$header_bg_type = themeblvd_get_option( 'header_bg_type' );
+	$header_bg_color = themeblvd_get_option( 'header_bg_color' );
 
 	// Primary Font
-	$font = themeblvd_get_option('font_body');
+	$font = themeblvd_get_option( 'font_body' );
 
 	if ( $font ) {
 		$print .= "html,\n";
 		$print .= "body {\n";
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tfont-size: %s;\n", themeblvd_get_font_size( $font ) );
+		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
+		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 		$print .= "}\n";
 	}
 
 	// Header Font
-	$font = themeblvd_get_option('font_header');
+	$font = themeblvd_get_option( 'font_header' );
 
 	if ( $font ) {
 
-		if ( themeblvd_installed('gravityforms') && themeblvd_supports('plugins', 'gravityforms') ) {
+		if ( themeblvd_installed( 'gravityforms' ) && themeblvd_supports( 'plugins', 'gravityforms' ) ) {
 			$print .= ".tb-gforms-compat .gform_wrapper .gsection .gfield_label,\n";
 			$print .= ".tb-gforms-compat .gform_wrapper h2.gsection_title,\n";
 			$print .= ".tb-gforms-compat .gform_wrapper h3.gform_title,\n";
@@ -146,15 +96,15 @@ function jumpstart_ex_css() {
 
 		$print .= ".sf-menu .mega-section-header,\n";
 		$print .= "h1, h2, h3, h4, h5, h6 {\n";
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
+		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 		$print .= "}\n";
 	}
 
 	// Quote Font
-	$font = themeblvd_get_option('font_quote');
+	$font = themeblvd_get_option( 'font_quote' );
 
 	if ( $font ) {
 
@@ -163,18 +113,18 @@ function jumpstart_ex_css() {
 		$print .= ".entry-content blockquote,\n";
 		$print .= ".testimonial-text.entry-content {\n";
 
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_quote_sp') );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
+		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
+		$print .= sprintf( "\tletter-spacing: %s;\n", themeblvd_get_option( 'font_quote_sp' ) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 
 		$print .= "}\n";
 
 	}
 
 	// Meta Font
-	$font = themeblvd_get_option('font_meta');
+	$font = themeblvd_get_option( 'font_meta' );
 
 	if ( $font ) {
 
@@ -186,38 +136,38 @@ function jumpstart_ex_css() {
 		$print .= "#comments .comment-body .comment-metadata,\n";
 		$print .= "blockquote cite {\n";
 
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_meta_sp') );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
+		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
+		$print .= sprintf( "\tletter-spacing: %s;\n", themeblvd_get_option( 'font_meta_sp' ) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 
 		$print .= "}\n";
 
 	}
 
 	// Featured Image Title Font
-	$font = themeblvd_get_option('font_epic');
+	$font = themeblvd_get_option( 'font_epic' );
 
 	if ( $font ) {
 
 		$print .= ".epic-thumb .entry-title,\n";
 		$print .= ".tb-jumbotron .text-large {\n";
 
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($font) );
-		$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($font) );
-		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_epic_sp') );
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
+		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
+		$print .= sprintf( "\tletter-spacing: %s;\n", themeblvd_get_option( 'font_epic_sp' ) );
 
 		$print .= "}\n";
 
 		$print .= ".epic-thumb .entry-title {\n";
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 		$print .= "}\n";
 
 		$print .= "@media (min-width: 992px) {\n";
 		$print .= "\t.epic-thumb .epic-thumb-header .entry-title {\n";
-		$print .= sprintf("\t\tfont-size: %s;\n", themeblvd_get_font_size($font) );
+		$print .= sprintf( "\t\tfont-size: %s;\n", themeblvd_get_font_size( $font ) );
 		$print .= "\t}\n";
 		$print .= "}\n";
 
@@ -225,26 +175,26 @@ function jumpstart_ex_css() {
 
 	// Links
 	$print .= "a {\n";
-	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('link_color'));
+	$print .= sprintf( "\tcolor: %s;\n", themeblvd_get_option( 'link_color' ) );
 	$print .= "}\n";
 
 	$print .= "a:hover {\n";
-	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('link_hover_color'));
+	$print .= sprintf( "\tcolor: %s;\n", themeblvd_get_option( 'link_hover_color' ) );
 	$print .= "}\n";
 
 	$print .= ".site-footer a {\n";
-	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('footer_link_color'));
+	$print .= sprintf( "\tcolor: %s;\n", themeblvd_get_option( 'footer_link_color' ) );
 	$print .= "}\n";
 
 	$print .= ".site-footer a:hover {\n";
-	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('footer_link_hover_color'));
+	$print .= sprintf( "\tcolor: %s;\n", themeblvd_get_option( 'footer_link_hover_color' ) );
 	$print .= "}\n";
 
 	// Buttons
 
-	$border = themeblvd_get_option('btn_border');
+	$border = themeblvd_get_option( 'btn_border' );
 
-	if ( $border == '0px' ) {
+	if ( '0px' === $border ) {
 
 		$print .= ".btn,\n";
 		$print .= "input[type=\"submit\"],\n";
@@ -252,7 +202,7 @@ function jumpstart_ex_css() {
 		$print .= "input[type=\"button\"],\n";
 		$print .= ".button,\n";
 		$print .= "button {\n";
-		$print .= sprintf("\tborder-radius: %s;\n", themeblvd_get_option('btn_corners'));
+		$print .= sprintf( "\tborder-radius: %s;\n", themeblvd_get_option( 'btn_corners' ) );
 		$print .= "}\n";
 
 		$print .= ".btn:not(.tb-custom-button),\n";
@@ -272,13 +222,13 @@ function jumpstart_ex_css() {
 		$print .= "input[type=\"button\"],\n";
 		$print .= ".button,\n";
 		$print .= "button {\n";
-		$print .= sprintf("\tborder-radius: %s;\n", themeblvd_get_option('btn_corners'));
-		$print .= sprintf("\tborder-width: %s;\n", themeblvd_get_option('btn_border'));
+		$print .= sprintf( "\tborder-radius: %s;\n", themeblvd_get_option( 'btn_corners' ) );
+		$print .= sprintf( "\tborder-width: %s;\n", themeblvd_get_option( 'btn_border' ) );
 		$print .= "}\n";
 
 	}
 
-	$btn = themeblvd_get_option('btn_default');
+	$btn = themeblvd_get_option( 'btn_default' );
 
 	if ( $btn ) {
 
@@ -290,13 +240,13 @@ function jumpstart_ex_css() {
 		$print .= "button {\n";
 
 		if ( $btn['include_bg'] ) {
-			$print .= sprintf("\tbackground-color: %s;\n", $btn['bg']);
+			$print .= sprintf( "\tbackground-color: %s;\n", $btn['bg'] );
 		} else {
 			$print .= "\tbackground-color: transparent;\n";
 		}
 
 		if ( $btn['include_border'] ) {
-			$print .= sprintf("\tborder-color: %s;\n", $btn['border']);
+			$print .= sprintf( "\tborder-color: %s;\n", $btn['border'] );
 		} else {
 			$print .= "\tborder: none;\n";
 		}
@@ -304,7 +254,7 @@ function jumpstart_ex_css() {
 		$print .= "\t-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);\n";
 		$print .= "\tbox-shadow: inset 0 1px 0 rgba(255,255,255,.2);\n";
 
-		$print .= sprintf("\tcolor: %s;\n", $btn['text']);
+		$print .= sprintf( "\tcolor: %s;\n", $btn['text'] );
 
 		$print .= "}\n";
 
@@ -331,21 +281,21 @@ function jumpstart_ex_css() {
 		$print .= "button:focus,\n";
 		$print .= "button:active {\n";
 
-		$print .= sprintf("\tbackground-color: %s;\n", $btn['bg_hover']);
+		$print .= sprintf( "\tbackground-color: %s;\n", $btn['bg_hover'] );
 
 		if ( $btn['include_border'] ) {
-			$print .= sprintf("\tborder-color: %s;\n", $btn['border']);
+			$print .= sprintf( "\tborder-color: %s;\n", $btn['border'] );
 		}
 
 		$print .= "\t-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);\n";
 		$print .= "\tbox-shadow: inset 0 1px 0 rgba(255,255,255,.1);\n";
 
-		$print .= sprintf("\tcolor: %s;\n", $btn['text_hover']);
+		$print .= sprintf( "\tcolor: %s;\n", $btn['text_hover'] );
 		$print .= "}\n";
 
 	}
 
-	$btn = themeblvd_get_option('btn_primary');
+	$btn = themeblvd_get_option( 'btn_primary' );
 
 	if ( $btn ) {
 
@@ -359,23 +309,23 @@ function jumpstart_ex_css() {
 		$print .= ".panel-primary > .panel-heading {\n";
 
 		if ( $btn['include_bg'] ) {
-			$print .= sprintf("\tbackground-color: %s;\n", $btn['bg']);
+			$print .= sprintf( "\tbackground-color: %s;\n", $btn['bg'] );
 		} else {
 			$print .= "\tbackground-color: transparent;\n";
 		}
 
 		if ( $btn['include_border'] ) {
-			$print .= sprintf("\tborder-color: %s;\n", $btn['border']);
+			$print .= sprintf( "\tborder-color: %s;\n", $btn['border'] );
 		} else {
 			$print .= "\tborder: none;\n";
 		}
 
-		$print .= sprintf("\tcolor: %s;\n", $btn['text']);
+		$print .= sprintf( "\tcolor: %s;\n", $btn['text'] );
 
 		$print .= "}\n";
 
 		$print .= ".panel-primary > .panel-heading > .panel-title {\n";
-		$print .= sprintf("\tcolor: %s;\n", $btn['text']);
+		$print .= sprintf( "\tcolor: %s;\n", $btn['text'] );
 		$print .= "}\n";
 
 		$print .= ".primary:hover,\n";
@@ -392,20 +342,20 @@ function jumpstart_ex_css() {
 		$print .= "input.alt:hover,\n";
 		$print .= "input.alt:focus {\n";
 
-		$print .= sprintf("\tbackground-color: %s;\n", $btn['bg_hover']);
+		$print .= sprintf( "\tbackground-color: %s;\n", $btn['bg_hover'] );
 
 		if ( $btn['include_border'] ) {
-			$print .= sprintf("\tborder-color: %s;\n", $btn['border']);
+			$print .= sprintf( "\tborder-color: %s;\n", $btn['border'] );
 		}
 
-		$print .= sprintf("\tcolor: %s;\n", $btn['text_hover']);
+		$print .= sprintf( "\tcolor: %s;\n", $btn['text_hover'] );
 
 		$print .= "}\n";
 
 		$print .= ".panel-primary {\n";
 
 		if ( $btn['include_border'] ) {
-			$print .= sprintf("\tborder-color: %s;\n", $btn['border']);
+			$print .= sprintf( "\tborder-color: %s;\n", $btn['border'] );
 		} else {
 			$print .= "\tborder: none;\n";
 		}
@@ -414,9 +364,9 @@ function jumpstart_ex_css() {
 	}
 
 	// Disable circlular avatars & small thumbs
-	if ( themeblvd_get_option('thumbnail_circles') ) {
+	if ( themeblvd_get_option( 'thumbnail_circles' ) ) {
 
-		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+		if ( themeblvd_installed( 'woocommerce' ) && themeblvd_supports( 'plugins', 'woocommerce' ) ) {
 			$print .= ".product_list_widget li > a > img,\n";
 		}
 
@@ -432,47 +382,47 @@ function jumpstart_ex_css() {
 	}
 
 	// Highlight Color
-	$highlight = themeblvd_get_option('highlight');
+	$highlight = themeblvd_get_option( 'highlight' );
 
 	$print .= ".tb-tag-cloud .tagcloud a:hover,\n";
 	$print .= ".tb-tags a:hover,\n";
 	$print .= ".tb-tags a:focus,\n";
 	$print .= ".btn-share:hover,\n";
 	$print .= ".btn-share:focus {\n";
-	$print .= sprintf("\tbackground-color: %s\n", $highlight);
+	$print .= sprintf( "\tbackground-color: %s\n", $highlight );
 	$print .= "}\n";
 
 	$print .= ".tb-thumb-link:before,\n";
 	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .tb-thumb-link:after,\n";
 	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase.tb-thumb-link:after {\n";
-	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($highlight, '0.8'));
+	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $highlight, '0.8' ) );
 	$print .= "}\n";
 
 	$print .= ".tb-floating-search .tb-search .search-input:focus,\n";
 	$print .= ".tooltip-inner {\n";
-	$print .= sprintf("\tborder-color: %s;\n", $highlight);
+	$print .= sprintf( "\tborder-color: %s;\n", $highlight );
 	$print .= "}\n";
 	$print .= ".tooltip.top .tooltip-arrow,\n";
 	$print .= ".tb-contact-popover.bottom {\n";
-	$print .= sprintf("\tborder-top-color: %s;\n", $highlight);
+	$print .= sprintf( "\tborder-top-color: %s;\n", $highlight );
 	$print .= "}\n";
 	$print .= ".tooltip.bottom .tooltip-arrow,\n";
 	$print .= ".tb-contact-popover.bottom > .arrow:after {\n";
-	$print .= sprintf("\tborder-bottom-color: %s;\n", $highlight);
+	$print .= sprintf( "\tborder-bottom-color: %s;\n", $highlight );
 	$print .= "}\n";
 
 	/* Box Titles & Widgets */
-	$widget_style = themeblvd_get_option('widget_style');
+	$widget_style = themeblvd_get_option( 'widget_style' );
 
-	if ( themeblvd_get_option('box_titles') ) {
+	if ( themeblvd_get_option( 'box_titles' ) ) {
 
 		$print .= ".box-title,\n";
 
-		if ( $widget_style == 'standard' ) {
+		if ( 'standard' === $widget_style ) {
 			$print .= ".fixed-sidebar .widget-title,\n";
 		}
 
-		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+		if ( themeblvd_installed( 'woocommerce' ) && themeblvd_supports( 'plugins', 'woocommerce' ) ) {
 			$print .= ".products > h2,\n";
 		}
 
@@ -488,11 +438,11 @@ function jumpstart_ex_css() {
 		$print .= ".box-title:before,\n";
 		$print .= ".box-title:after,\n";
 
-		if ( $widget_style == 'standard' ) {
+		if ( 'standard' === $widget_style ) {
 			$print .= ".fixed-sidebar .widget-title:before,\n";
 		}
 
-		if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+		if ( themeblvd_installed( 'woocommerce' ) && themeblvd_supports( 'plugins', 'woocommerce' ) ) {
 			$print .= ".products > h2:before,\n";
 		}
 
@@ -500,7 +450,7 @@ function jumpstart_ex_css() {
 		$print .= ".info-box-title:before,\n";
 		$print .= ".tb-related-posts .related-posts-title:before {\n";
 		$print .= "\tcontent: \"\";\n";
-		$print .= sprintf("\tbackground: %s; /* highlight */\n", $highlight);
+		$print .= sprintf( "\tbackground: %s; /* highlight */\n", $highlight );
 		$print .= "\tposition: absolute;\n";
 		$print .= "\tbottom: -2px;\n";
 
@@ -528,59 +478,59 @@ function jumpstart_ex_css() {
 		$print .= "\tz-index: 1;\n";
 		$print .= "}\n";
 
-		if ( $widget_style == 'standard' && themeblvd_get_option('widget_bg_brightness') == 'dark' ) {
+		if ( 'standard' === $widget_style && 'dark' === themeblvd_get_option( 'widget_bg_brightness' ) ) {
 			$print .= ".fixed-sidebar .widget-title {\n";
 			$print .= "\tborder-color: rgba(0,0,0,.9)";
 			$print .= "}\n";
 		}
 	}
 
-	$print .= sprintf(".fixed-sidebar .widget.%s {\n", $widget_style);
+	$print .= sprintf( ".fixed-sidebar .widget.%s {\n", $widget_style );
 
-	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('widget_bg_color'));
-	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option('widget_bg_color'), themeblvd_get_option('widget_bg_color_opacity') ) );
+	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'widget_bg_color' ) );
+	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option( 'widget_bg_color' ), themeblvd_get_option( 'widget_bg_color_opacity' ) ) );
 
-	if ( $widget_style == 'standard' && themeblvd_get_option('widget_apply_border') ) {
-		$print .= sprintf("\tborder: %s solid %s;\n", themeblvd_get_option('widget_border_width'), themeblvd_get_option('widget_border_color'));
-	} else if ( $widget_style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
-		$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('widget_panel_border_color'));
+	if ( 'standard' === $widget_style && themeblvd_get_option( 'widget_apply_border' ) ) {
+		$print .= sprintf( "\tborder: %s solid %s;\n", themeblvd_get_option( 'widget_border_width' ), themeblvd_get_option( 'widget_border_color' ) );
+	} elseif ( 'panel' === $widget_style && 'custom' === themeblvd_get_option( 'widget_panel_style' ) ) {
+		$print .= sprintf( "\tborder-color: %s;\n", themeblvd_get_option( 'widget_panel_border_color' ) );
 	}
 
 	$print .= "}\n";
 
-	if ( $widget_style == 'panel' && themeblvd_get_option('widget_panel_style') == 'custom' ) {
+	if ( 'panel' === $widget_style && 'custom' === themeblvd_get_option( 'widget_panel_style' ) ) {
 
-		$color = themeblvd_get_option('widget_panel_title_bg_color');
+		$color = themeblvd_get_option( 'widget_panel_title_bg_color' );
 
-		$print .= sprintf(".fixed-sidebar .widget.%s .panel-heading {\n", $widget_style);
+		$print .= sprintf( ".fixed-sidebar .widget.%s .panel-heading {\n", $widget_style );
 
 		if ( $color['start'] == $color['end'] ) {
-			$print .= sprintf("\tbackground-color: %s;\n", $color['end']);
+			$print .= sprintf( "\tbackground-color: %s;\n", $color['end'] );
 		} else {
-			$print .= sprintf("\tbackground-color: %s;\n", $color['end'] );
-			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $color['start'], $color['end'] );
-			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
-			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
-			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
-			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
-			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
-			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-color: %s;\n", $color['end'] );
+			$print .= sprintf( "\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-image: linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $color['start'], $color['end'] );
 		}
 
-		$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('widget_panel_border_color'));
+		$print .= sprintf( "\tborder-color: %s;\n", themeblvd_get_option( 'widget_panel_border_color' ) );
 
 		$print .= "}\n";
 	}
 
 	$print .= ".fixed-sidebar .widget-title {\n";
-	$print .= sprintf("\tcolor: %s;\n", themeblvd_get_option('widget_title_color'));
-	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_option('widget_title_size'));
+	$print .= sprintf( "\tcolor: %s;\n", themeblvd_get_option( 'widget_title_color' ) );
+	$print .= sprintf( "\tfont-size: %s;\n", themeblvd_get_option( 'widget_title_size' ) );
 
-	if ( $widget_style == 'panel' ) {
+	if ( 'panel' === $widget_style ) {
 		$print .= "\tmargin-bottom: 0;\n";
 	}
 
-	if ( themeblvd_get_option('widget_title_shadow') ) {
+	if ( themeblvd_get_option( 'widget_title_shadow' ) ) {
 		$print .= "\ttext-shadow: 1px 1px 1px rgba(0,0,0,.8);\n";
 	} else {
 		$print .= "\ttext-shadow: none;\n";
@@ -588,19 +538,19 @@ function jumpstart_ex_css() {
 
 	$print .= "}\n";
 
-	if ( themeblvd_get_option('layout_style') == 'boxed'  ) {
+	if ( themeblvd_get_option( 'layout_style' ) == 'boxed' ) {
 
 		// Boxed Layout
 
 		$print .= "@media (min-width: 481px) {\n";
 		$print .= "\t.tb-boxed #container {\n";
-		$print .= sprintf( "\t\tbox-shadow: 0 0 %s %s;\n", themeblvd_get_option('layout_shadow_size'), themeblvd_get_rgb( '#000000', themeblvd_get_option('layout_shadow_opacity') ) );
-		$print .= sprintf( "\tborder-right: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
-		$print .= sprintf( "\tborder-left: %s solid %s;\n", themeblvd_get_option('layout_border_width'), themeblvd_get_option('layout_border_color') );
+		$print .= sprintf( "\t\tbox-shadow: 0 0 %s %s;\n", themeblvd_get_option( 'layout_shadow_size' ), themeblvd_get_rgb( '#000000', themeblvd_get_option( 'layout_shadow_opacity' ) ) );
+		$print .= sprintf( "\tborder-right: %s solid %s;\n", themeblvd_get_option( 'layout_border_width' ), themeblvd_get_option( 'layout_border_color' ) );
+		$print .= sprintf( "\tborder-left: %s solid %s;\n", themeblvd_get_option( 'layout_border_width' ), themeblvd_get_option( 'layout_border_color' ) );
 		$print .= "\t}\n";
 		$print .= "}\n";
 
-		$border = intval(themeblvd_get_option('layout_border_width'));
+		$border = intval( themeblvd_get_option( 'layout_border_width' ) );
 
 		if ( $border > 0 ) {
 
@@ -608,8 +558,8 @@ function jumpstart_ex_css() {
 
 			$width = 1170 - ( 2 * $border );
 
-			$print .= sprintf( "\tmargin-left: -%spx;\n", $width/2);
-			$print .= sprintf( "\tmax-width: %spx;\n", $width);
+			$print .= sprintf( "\tmargin-left: -%spx;\n", $width / 2 );
+			$print .= sprintf( "\tmax-width: %spx;\n", $width );
 
 			$print .= "}\n";
 
@@ -619,20 +569,19 @@ function jumpstart_ex_css() {
 
 			$width = 960 - ( 2 * $border );
 
-			$print .= sprintf( "\t\tmargin-left: -%spx;\n", $width/2);
-			$print .= sprintf( "\t\tmax-width: %spx;\n", $width);
+			$print .= sprintf( "\t\tmargin-left: -%spx;\n", $width / 2 );
+			$print .= sprintf( "\t\tmax-width: %spx;\n", $width );
 
 			$print .= "\t}\n";
 			$print .= "}\n";
 
 		}
-
 	} else {
 
 		// Stretch Layout
 
 		// Content border
-		if ( themeblvd_get_option('apply_content_border') ) {
+		if ( themeblvd_get_option( 'apply_content_border' ) ) {
 
 			$print .= ".bg-content,\n";
 
@@ -643,12 +592,12 @@ function jumpstart_ex_css() {
 			$print .= "#comments,\n";
 			$print .= ".tb-related-posts,\n";
 
-			if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+			if ( themeblvd_installed( 'woocommerce' ) && themeblvd_supports( 'plugins', 'woocommerce' ) ) {
 				$print .= ".products.upsells,\n";
 				$print .= ".products.related,\n";
 			}
 
-			if ( themeblvd_installed('bbpress') && themeblvd_supports('plugins', 'bbpress') ) {
+			if ( themeblvd_installed( 'bbpress' ) && themeblvd_supports( 'plugins', 'bbpress' ) ) {
 				$print .= ".tb-naked-page .bbp-topic-form,\n";
 				$print .= ".tb-naked-page .bbp-reply-form,\n";
 			}
@@ -666,44 +615,42 @@ function jumpstart_ex_css() {
 			$print .= ".element-section > .element.bg-content,\n";
 			$print .= ".element-columns .element.bg-content {\n";
 
-			$print .= sprintf("\tborder: %s solid %s;\n", themeblvd_get_option('content_border_width'), themeblvd_get_option('content_border_color'));
+			$print .= sprintf( "\tborder: %s solid %s;\n", themeblvd_get_option( 'content_border_width' ), themeblvd_get_option( 'content_border_color' ) );
 
 			$print .= "}\n";
 
-			if ( themeblvd_installed('woocommerce') && themeblvd_supports('plugins', 'woocommerce') ) {
+			if ( themeblvd_installed( 'woocommerce' ) && themeblvd_supports( 'plugins', 'woocommerce' ) ) {
 				$print .= ".woocommerce-tabs .panel,\n";
 				$print .= ".woocommerce-tabs .tabs > li.active {\n";
-				$print .= sprintf("\tborder-color: %s;\n", themeblvd_get_option('content_border_color'));
+				$print .= sprintf( "\tborder-color: %s;\n", themeblvd_get_option( 'content_border_color' ) );
 				$print .= "}\n";
 			}
-
 		}
-
 	}
 
 	// Header background (entire header, behind top bar and main menu)
-	if ( ! themeblvd_config('suck_up') ) {
+	if ( ! themeblvd_config( 'suck_up' ) ) {
 
 		$options = array();
 
 		$options['bg_type'] = $header_bg_type;
 		$options['bg_color'] = $header_bg_color;
-		$options['bg_color_opacity'] = themeblvd_get_option('header_bg_color_opacity');
-		$options['bg_texture'] = themeblvd_get_option('header_bg_texture');
-		$options['apply_bg_texture_parallax'] = themeblvd_get_option('header_apply_bg_texture_parallax');
-		$options['bg_image'] = themeblvd_get_option('header_bg_image');
-		$options['bg_video'] = themeblvd_get_option('header_bg_video');
-		$options['apply_bg_shade'] = themeblvd_get_option('header_apply_bg_shade');
-		$options['bg_shade_color'] = themeblvd_get_option('header_bg_shade_color');
-		$options['bg_shade_opacity'] = themeblvd_get_option('header_bg_shade_opacity');
+		$options['bg_color_opacity'] = themeblvd_get_option( 'header_bg_color_opacity' );
+		$options['bg_texture'] = themeblvd_get_option( 'header_bg_texture' );
+		$options['apply_bg_texture_parallax'] = themeblvd_get_option( 'header_apply_bg_texture_parallax' );
+		$options['bg_image'] = themeblvd_get_option( 'header_bg_image' );
+		$options['bg_video'] = themeblvd_get_option( 'header_bg_video' );
+		$options['apply_bg_shade'] = themeblvd_get_option( 'header_apply_bg_shade' );
+		$options['bg_shade_color'] = themeblvd_get_option( 'header_bg_shade_color' );
+		$options['bg_shade_opacity'] = themeblvd_get_option( 'header_bg_shade_opacity' );
 
-		$options['apply_border_top'] = themeblvd_get_option('header_apply_border_top');
-		$options['border_top_color'] = themeblvd_get_option('header_border_top_color');
-		$options['border_top_width'] = themeblvd_get_option('header_border_top_width');
+		$options['apply_border_top'] = themeblvd_get_option( 'header_apply_border_top' );
+		$options['border_top_color'] = themeblvd_get_option( 'header_border_top_color' );
+		$options['border_top_width'] = themeblvd_get_option( 'header_border_top_width' );
 
-		$options['apply_border_bottom'] = themeblvd_get_option('header_apply_border_bottom');
-		$options['border_bottom_color'] = themeblvd_get_option('header_border_bottom_color');
-		$options['border_bottom_width'] = themeblvd_get_option('header_border_bottom_width');
+		$options['apply_border_bottom'] = themeblvd_get_option( 'header_apply_border_bottom' );
+		$options['border_bottom_color'] = themeblvd_get_option( 'header_border_bottom_color' );
+		$options['border_bottom_width'] = themeblvd_get_option( 'header_border_bottom_width' );
 
 		$styles = themeblvd_get_display_inline_style( $options, 'external' );
 
@@ -712,8 +659,8 @@ function jumpstart_ex_css() {
 			$print .= ".site-header {\n";
 
 			foreach ( $styles['general'] as $prop => $value ) {
-				$prop = str_replace('-2', '', $prop);
-				$print .= sprintf("\t%s: %s;\n", $prop, $value);
+				$prop = str_replace( '-2', '', $prop );
+				$print .= sprintf( "\t%s: %s;\n", $prop, $value );
 			}
 
 			$print .= "}\n";
@@ -721,15 +668,15 @@ function jumpstart_ex_css() {
 		}
 
 		// Header top bar
-		if ( themeblvd_get_option('header_info') == 'header_top' ) {
+		if ( themeblvd_get_option( 'header_info' ) == 'header_top' ) {
 
 			$options = array();
-			$options['bg_color'] = themeblvd_get_option('top_bg_color');
+			$options['bg_color'] = themeblvd_get_option( 'top_bg_color' );
 			$options['bg_type'] = $options['bg_color'] ? 'color' : 'none';
-			$options['apply_border_bottom'] = themeblvd_get_option('top_apply_border_bottom');
-			$options['border_bottom_color'] = themeblvd_get_option('top_border_bottom_color');
-			$options['border_bottom_width'] = themeblvd_get_option('top_border_bottom_width');
-			$options['bg_color_opacity'] = themeblvd_get_option('top_bg_color_opacity');
+			$options['apply_border_bottom'] = themeblvd_get_option( 'top_apply_border_bottom' );
+			$options['border_bottom_color'] = themeblvd_get_option( 'top_border_bottom_color' );
+			$options['border_bottom_width'] = themeblvd_get_option( 'top_border_bottom_width' );
+			$options['bg_color_opacity'] = themeblvd_get_option( 'top_bg_color_opacity' );
 
 			$styles = themeblvd_get_display_inline_style( $options, 'external' );
 
@@ -738,31 +685,30 @@ function jumpstart_ex_css() {
 				$print .= ".header-top {\n";
 
 				foreach ( $styles['general'] as $prop => $value ) {
-					$prop = str_replace('-2', '', $prop);
-					$print .= sprintf("\t%s: %s;\n", $prop, $value);
+					$prop = str_replace( '-2', '', $prop );
+					$print .= sprintf( "\t%s: %s;\n", $prop, $value );
 				}
 
 				$print .= "}\n";
 
 			}
 		}
-
 	}
 
 	// Header padding
-	if ( themeblvd_get_option('header_apply_padding_top') || themeblvd_get_option('header_apply_padding_bottom') ) {
+	if ( themeblvd_get_option( 'header_apply_padding_top' ) || themeblvd_get_option( 'header_apply_padding_bottom' ) ) {
 
 		$print .= "@media (min-width: 992px) {\n";
 
-		if ( themeblvd_get_option('header_apply_padding_top') ) {
+		if ( themeblvd_get_option( 'header_apply_padding_top' ) ) {
 			$print .= "\t.header-content > .wrap {\n";
-			$print .= sprintf("\t\tpadding-top: %s;\n", themeblvd_get_option('header_padding_top'));
+			$print .= sprintf( "\t\tpadding-top: %s;\n", themeblvd_get_option( 'header_padding_top' ) );
 			$print .= "\t}\n";
 		}
 
-		if ( ! themeblvd_config('suck_up') && themeblvd_get_option('header_apply_padding_bottom') ) { // Bottom padding doesn't get applied on suck_up
+		if ( ! themeblvd_config( 'suck_up' ) && themeblvd_get_option( 'header_apply_padding_bottom' ) ) { // Bottom padding doesn't get applied on suck_up
 			$print .= "\t.site-header > .wrap {\n";
-			$print .= sprintf("\t\tpadding-bottom: %s;\n", themeblvd_get_option('header_padding_bottom'));
+			$print .= sprintf( "\t\tpadding-bottom: %s;\n", themeblvd_get_option( 'header_padding_bottom' ) );
 			$print .= "\t}\n";
 		}
 
@@ -773,91 +719,97 @@ function jumpstart_ex_css() {
 	// Header Mobile
 	$print .= "@media (max-width: 767px) {\n";
 	$print .= "\t.site-header {\n";
-	$print .= sprintf("\t\tbackground-color: %s;\n", themeblvd_get_option('header_mobile_bg_color'));
+	$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_option( 'header_mobile_bg_color' ) );
 	$print .= "\t}\n";
 	$print .= "}\n";
 
 	// Header sticky menu
-	if ( in_array( $header_bg_type, array('color', 'texture', 'image') ) ) {
+	if ( in_array( $header_bg_type, array( 'color', 'texture', 'image' ) ) ) {
 		$print .= ".tb-sticky-menu {\n";
-		$print .= sprintf("\tbackground-color: %s;\n", $header_bg_color);
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($header_bg_color, '0.9'));
+		$print .= sprintf( "\tbackground-color: %s;\n", $header_bg_color );
+		$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $header_bg_color, '0.9' ) );
 		$print .= "}\n";
 	}
 
-	if ( $font = themeblvd_get_option('font_menu') ) {
+	$font = themeblvd_get_option( 'font_menu' );
+
+	if ( $font ) {
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn {\n";
-		$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($font) );
-		$print .= sprintf("\tletter-spacing: %s;\n", themeblvd_get_option('font_menu_sp') );
-		$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($font) );
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tletter-spacing: %s;\n", themeblvd_get_option( 'font_menu_sp' ) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 		$print .= "}\n";
 	}
 
 	// Primary navigation
 	$options = array();
 
-	$options['corners'] = themeblvd_get_option('menu_corners');
-	$options['font'] = themeblvd_get_option('font_menu');
-	$options['font_sp'] = themeblvd_get_option('font_menu_sp');
-	$options['sub_bg_color'] = themeblvd_get_option('menu_sub_bg_color');
+	$options['corners'] = themeblvd_get_option( 'menu_corners' );
+	$options['font'] = themeblvd_get_option( 'font_menu' );
+	$options['font_sp'] = themeblvd_get_option( 'font_menu_sp' );
+	$options['sub_bg_color'] = themeblvd_get_option( 'menu_sub_bg_color' );
 
-	if ( ! themeblvd_config('suck_up') ) {
+	if ( ! themeblvd_config( 'suck_up' ) ) {
 
-		$options['bg_type'] = themeblvd_get_option('menu_bg_type');
-		$options['bg_color'] = themeblvd_get_option('menu_bg_color');
-		$options['bg_gradient'] = themeblvd_get_option('menu_bg_gradient');
-		$options['bg_color_brightness'] = themeblvd_get_option('menu_bg_color_brightness');
-		$options['bg_color_opacity'] = themeblvd_get_option('menu_bg_color_opacity');
+		$options['bg_type'] = themeblvd_get_option( 'menu_bg_type' );
+		$options['bg_color'] = themeblvd_get_option( 'menu_bg_color' );
+		$options['bg_gradient'] = themeblvd_get_option( 'menu_bg_gradient' );
+		$options['bg_color_brightness'] = themeblvd_get_option( 'menu_bg_color_brightness' );
+		$options['bg_color_opacity'] = themeblvd_get_option( 'menu_bg_color_opacity' );
 
-		$options['hover_bg_color'] = themeblvd_get_option('menu_hover_bg_color');
-		$options['hover_bg_color_opacity'] = themeblvd_get_option('menu_hover_bg_color_opacity');
-		$options['hover_bg_color_brightness'] = themeblvd_get_option('menu_hover_bg_color_brightness');
+		$options['hover_bg_color'] = themeblvd_get_option( 'menu_hover_bg_color' );
+		$options['hover_bg_color_opacity'] = themeblvd_get_option( 'menu_hover_bg_color_opacity' );
+		$options['hover_bg_color_brightness'] = themeblvd_get_option( 'menu_hover_bg_color_brightness' );
 
-		$options['text_shadow'] = themeblvd_get_option('menu_text_shadow');
+		$options['text_shadow'] = themeblvd_get_option( 'menu_text_shadow' );
 
-		$options['apply_border'] = themeblvd_get_option('menu_apply_border');
-		$options['border_color'] = themeblvd_get_option('menu_border_color');
-		$options['border_width'] = themeblvd_get_option('menu_border_width');
+		$options['apply_border'] = themeblvd_get_option( 'menu_apply_border' );
+		$options['border_color'] = themeblvd_get_option( 'menu_border_color' );
+		$options['border_width'] = themeblvd_get_option( 'menu_border_width' );
 
-		$options['divider'] = themeblvd_get_option('menu_divider');
-		$options['divider_color'] = themeblvd_get_option('menu_divider_color');
+		$options['divider'] = themeblvd_get_option( 'menu_divider' );
+		$options['divider_color'] = themeblvd_get_option( 'menu_divider_color' );
 
 		$print .= ".header-nav {\n";
 
-		if ( $options['bg_type'] == 'gradient' ) {
+		if ( 'gradient' === $options['bg_type'] ) {
 
 			$start = themeblvd_get_rgb( $options['bg_gradient']['start'], $options['bg_color_opacity'] );
 			$end = themeblvd_get_rgb( $options['bg_gradient']['end'], $options['bg_color_opacity'] );
 
-			$print .= sprintf("\tbackground-color: %s;\n", $end );
-			$print .= sprintf("\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $start, $end );
-			$print .= sprintf("\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $start, $end );
-			$print .= sprintf("\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $start, $end );
-			$print .= sprintf("\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $start, $end );
-			$print .= sprintf("\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $start, $end );
-			$print .= sprintf("\tbackground-image: linear-gradient(top, %s, %s);\n", $start, $end );
-			$print .= sprintf("\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $start, $end );
+			$print .= sprintf( "\tbackground-color: %s;\n", $end );
+			$print .= sprintf( "\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $start, $end );
+			$print .= sprintf( "\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf( "\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf( "\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf( "\tbackground-image: -ms-linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf( "\tbackground-image: linear-gradient(top, %s, %s);\n", $start, $end );
+			$print .= sprintf( "\tfilter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='%s', EndColorStr='%s');\n", $start, $end );
 
 		} else {
 
-			$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb( $options['bg_color'], $options['bg_color_opacity'] ));
+			$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $options['bg_color'], $options['bg_color_opacity'] ) );
 
 		}
 
-		if ( $options['bg_type'] == 'glassy' ) {
-			$print .= sprintf("\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/img/menu-glassy.png' ) );
-		} else if ( $options['bg_type'] == 'textured' ) {
-			$print .= sprintf("\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri('superuser') . '/img/menu-textured.png' ) );
+		if ( 'glassy' === $options['bg_type'] ) {
+
+			$print .= sprintf( "\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri( 'superuser' ) . '/img/menu-glassy.png' ) );
+
+		} elseif ( 'textured' === $options['bg_type'] ) {
+
+			$print .= sprintf( "\tbackground-image: url(%s);\n", esc_url( themeblvd_get_base_uri( 'superuser' ) . '/img/menu-textured.png' ) );
 			$print .= "\tbackground-position: 0 0;\n";
 			$print .= "\tbackground-repeat: repeat;\n";
 			$print .= "\tbackground-size: 72px 56px;\n";
+
 		}
 
 		if ( $options['apply_border'] ) {
 
-			$print .= sprintf("\tborder: %s solid %s;\n", $options['border_width'], $options['border_color'] );
+			$print .= sprintf( "\tborder: %s solid %s;\n", $options['border_width'], $options['border_color'] );
 
-			if ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') == '0px' ) {
+			if ( themeblvd_get_option( 'header_apply_padding_bottom' ) && themeblvd_get_option( 'header_padding_bottom' ) == '0px' ) {
 				$print .= "\tborder-bottom: none;\n";
 			}
 		}
@@ -866,7 +818,7 @@ function jumpstart_ex_css() {
 
 		if ( $options['text_shadow'] ) {
 
-			if ( themeblvd_get_option('menu_search') ) {
+			if ( themeblvd_get_option( 'menu_search' ) ) {
 				$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger,\n";
 			}
 
@@ -876,13 +828,13 @@ function jumpstart_ex_css() {
 
 		}
 
-		if ( themeblvd_get_option('menu_search') ) {
+		if ( themeblvd_get_option( 'menu_search' ) ) {
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\n";
 		}
 
 		$print .= ".tb-primary-menu > li > a:hover {\n";
-		$print .= sprintf("\tbackground-color: %s;\n", $options['hover_bg_color'] );
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_rgb($options['hover_bg_color'], $options['hover_bg_color_opacity']) );
+		$print .= sprintf( "\tbackground-color: %s;\n", $options['hover_bg_color'] );
+		$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $options['hover_bg_color'], $options['hover_bg_color_opacity'] ) );
 		$print .= "}\n";
 
 		// Button dividers
@@ -897,24 +849,22 @@ function jumpstart_ex_css() {
 			}
 
 			$print .= ".header-nav .tb-primary-menu > li {\n";
-			$print .= sprintf("\tborder-%s: 1px solid %s;\n", $end, $options['divider_color']);
+			$print .= sprintf( "\tborder-%s: 1px solid %s;\n", $end, $options['divider_color'] );
 			$print .= "}\n";
 
-			if ( themeblvd_get_option('menu_center') ) {
+			if ( themeblvd_get_option( 'menu_center' ) ) {
 				$print .= ".header-nav .tb-primary-menu > li:first-child {\n";
-				$print .= sprintf("\tborder-%s: 1px solid %s;\n", $start, $options['divider_color']);
+				$print .= sprintf( "\tborder-%s: 1px solid %s;\n", $start, $options['divider_color'] );
 				$print .= "}\n";
 			}
 
-			if ( themeblvd_get_option('menu_search') && ! themeblvd_get_option('menu_center') ) {
+			if ( themeblvd_get_option( 'menu_search' ) && ! themeblvd_get_option( 'menu_center' ) ) {
 				$print .= ".header-nav .tb-primary-menu .menu-search {\n";
-				$print .= sprintf("\tborder-%s: 1px solid %s;\n", $start, $options['divider_color']);
-				$print .= sprintf("\tborder-%s: none;\n", $end);
+				$print .= sprintf( "\tborder-%s: 1px solid %s;\n", $start, $options['divider_color'] );
+				$print .= sprintf( "\tborder-%s: none;\n", $end );
 				$print .= "}\n";
 			}
-
 		}
-
 	} // end IF suck_up
 
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
@@ -922,27 +872,27 @@ function jumpstart_ex_css() {
 	$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
 	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn {\n";
 
-	$print .= sprintf("\tfont-family: %s;\n", themeblvd_get_font_face($options['font']) );
-	$print .= sprintf("\tfont-style: %s;\n", themeblvd_get_font_style($options['font']) );
-	$print .= sprintf("\tfont-weight: %s;\n", themeblvd_get_font_weight($options['font']) );
-	$print .= sprintf("\tletter-spacing: %s;\n", $options['font_sp'] );
-	$print .= sprintf("\ttext-transform: %s;\n", themeblvd_get_text_transform($options['font']) );
+	$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $options['font'] ) );
+	$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $options['font'] ) );
+	$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $options['font'] ) );
+	$print .= sprintf( "\tletter-spacing: %s;\n", $options['font_sp'] );
+	$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $options['font'] ) );
 
 	$print .= "}\n";
 
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn {\n";
-	$print .= sprintf("\tfont-size: %s;\n", themeblvd_get_font_size($options['font']) );
+	$print .= sprintf( "\tfont-size: %s;\n", themeblvd_get_font_size( $options['font'] ) );
 	$print .= "}\n";
 
 	// Primary nav border radius
-	if ( $options['corners'] && $options['corners'] != '0px' ) {
+	if ( $options['corners'] && '0px' !== $options['corners'] ) {
 
 		$print .= ".header-nav,\n";
 		$print .= ".btn-navbar {\n";
-		$print .= sprintf("\tborder-radius: %s;\n", $options['corners']);
+		$print .= sprintf( "\tborder-radius: %s;\n", $options['corners'] );
 		$print .= "}\n";
 
-		if ( ! themeblvd_config('suck_up') && (themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') == '0px') ) {
+		if ( ! themeblvd_config( 'suck_up' ) && (themeblvd_get_option( 'header_apply_padding_bottom' ) && themeblvd_get_option( 'header_padding_bottom' ) == '0px') ) {
 			$print .= ".header-nav {\n";
 			$print .= "\t-webkit-border-bottom-right-radius: 0;\n";
 			$print .= "\t-webkit-border-bottom-left-radius: 0;\n";
@@ -952,11 +902,11 @@ function jumpstart_ex_css() {
 		}
 
 		// Fix for buttons hugging corners
-		$fix = intval($options['corners']);
+		$fix = intval( $options['corners'] );
 
-		if ( ! themeblvd_config('suck_up') && $options['apply_border'] ) { // menu border not applied on suck_up
+		if ( ! themeblvd_config( 'suck_up' ) && $options['apply_border'] ) { // menu border not applied on suck_up
 
-			$border = intval($options['border_width']);
+			$border = intval( $options['border_width'] );
 
 			if ( ($fix - $border) >= 0 ) {
 				$fix = $fix - $border;
@@ -972,65 +922,64 @@ function jumpstart_ex_css() {
 		}
 
 		$print .= ".header-nav .tb-primary-menu > li:first-child > .menu-btn {\n";
-		$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $start, $fix);
-		$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $start, $fix);
+		$print .= sprintf( "\t-webkit-border-top-%s-radius: %spx;\n", $start, $fix );
+		$print .= sprintf( "\tborder-top-%s-radius: %spx;\n", $start, $fix );
 
-		if ( themeblvd_config('suck_up') || ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
-			$print .= sprintf("\t-webkit-border-bottom-%s-radius: %spx;\n", $start, $fix);
-			$print .= sprintf("\tborder-bottom-%s-radius: %spx;\n", $start, $fix);
+		if ( themeblvd_config( 'suck_up' ) || ! themeblvd_get_option( 'header_apply_padding_bottom' ) || ( themeblvd_get_option( 'header_apply_padding_bottom' ) && themeblvd_get_option( 'header_padding_bottom' ) != '0px') ) {
+			$print .= sprintf( "\t-webkit-border-bottom-%s-radius: %spx;\n", $start, $fix );
+			$print .= sprintf( "\tborder-bottom-%s-radius: %spx;\n", $start, $fix );
 		}
 
 		$print .= "}\n";
 
-		if ( themeblvd_get_option('menu_search') ) {
+		if ( themeblvd_get_option( 'menu_search' ) ) {
 
 			$print .= ".header-nav .tb-primary-menu .menu-search .tb-search-trigger {\n";
-			$print .= sprintf("\t-webkit-border-top-%s-radius: %spx;\n", $end, $fix);
-			$print .= sprintf("\tborder-top-%s-radius: %spx;\n", $end, $fix);
+			$print .= sprintf( "\t-webkit-border-top-%s-radius: %spx;\n", $end, $fix );
+			$print .= sprintf( "\tborder-top-%s-radius: %spx;\n", $end, $fix );
 
-			if ( themeblvd_config('suck_up') || ! themeblvd_get_option('header_apply_padding_bottom') || ( themeblvd_get_option('header_apply_padding_bottom') && themeblvd_get_option('header_padding_bottom') != '0px') ) {
-				$print .= sprintf("\t-webkit-border-bottom-%s-radius: %spx;\n", $end, $fix);
-				$print .= sprintf("\tborder-bottom-%s-radius: %spx;\n", $end, $fix);
+			if ( themeblvd_config( 'suck_up' ) || ! themeblvd_get_option( 'header_apply_padding_bottom' ) || ( themeblvd_get_option( 'header_apply_padding_bottom' ) && themeblvd_get_option( 'header_padding_bottom' ) != '0px') ) {
+				$print .= sprintf( "\t-webkit-border-bottom-%s-radius: %spx;\n", $end, $fix );
+				$print .= sprintf( "\tborder-bottom-%s-radius: %spx;\n", $end, $fix );
 			}
 
 			$print .= "}\n";
 		}
-
 	}
 
 	// Primary nav sub menus
 	$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
 	$print .= ".tb-primary-menu .sf-mega {\n";
-	$print .= sprintf("\tbackground-color: %s;\n", $options['sub_bg_color'] );
+	$print .= sprintf( "\tbackground-color: %s;\n", $options['sub_bg_color'] );
 	$print .= "}\n";
 
 	// Mobile Panel
 	$print .= ".tb-mobile-menu-wrapper {\n";
-	$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('menu_mobile_bg_color'));
+	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'menu_mobile_bg_color' ) );
 	$print .= "}\n";
 
 	// Side Panel
 	if ( themeblvd_do_side_panel() ) {
 		$print .= ".tb-side-panel {\n";
-		$print .= sprintf("\tbackground-color: %s;\n", themeblvd_get_option('side_bg_color'));
+		$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'side_bg_color' ) );
 		$print .= "}\n";
 	}
 
 	// Footer
 	$options = array();
 
-	$options['bg_type'] = themeblvd_get_option('footer_bg_type');
-	$options['bg_texture'] = themeblvd_get_option('footer_bg_texture');
-	$options['bg_color'] = themeblvd_get_option('footer_bg_color');
-	$options['bg_color_opacity'] = themeblvd_get_option('footer_bg_color_opacity');
+	$options['bg_type'] = themeblvd_get_option( 'footer_bg_type' );
+	$options['bg_texture'] = themeblvd_get_option( 'footer_bg_texture' );
+	$options['bg_color'] = themeblvd_get_option( 'footer_bg_color' );
+	$options['bg_color_opacity'] = themeblvd_get_option( 'footer_bg_color_opacity' );
 
-	$options['apply_border_top'] = themeblvd_get_option('footer_apply_border_top');
-	$options['border_top_color'] = themeblvd_get_option('footer_border_top_color');
-	$options['border_top_width'] = themeblvd_get_option('footer_border_top_width');
+	$options['apply_border_top'] = themeblvd_get_option( 'footer_apply_border_top' );
+	$options['border_top_color'] = themeblvd_get_option( 'footer_border_top_color' );
+	$options['border_top_width'] = themeblvd_get_option( 'footer_border_top_width' );
 
-	$options['apply_border_bottom'] = themeblvd_get_option('footer_apply_border_bottom');
-	$options['border_bottom_color'] = themeblvd_get_option('footer_border_bottom_color');
-	$options['border_bottom_width'] = themeblvd_get_option('footer_border_bottom_width');
+	$options['apply_border_bottom'] = themeblvd_get_option( 'footer_apply_border_bottom' );
+	$options['border_bottom_color'] = themeblvd_get_option( 'footer_border_bottom_color' );
+	$options['border_bottom_width'] = themeblvd_get_option( 'footer_border_bottom_width' );
 
 	$styles = themeblvd_get_display_inline_style( $options, 'external' );
 
@@ -1039,116 +988,214 @@ function jumpstart_ex_css() {
 		$print .= ".site-footer {\n";
 
 		foreach ( $styles['general'] as $prop => $value ) {
-			$prop = str_replace('-2', '', $prop);
-			$print .= sprintf("\t%s: %s;\n", $prop, $value);
+			$prop = str_replace( '-2', '', $prop );
+			$print .= sprintf( "\t%s: %s;\n", $prop, $value );
 		}
 
 		$print .= "}\n";
 
 	}
 
-	// Custom CSS
-	if ( $custom = themeblvd_get_option('custom_styles') ) {
+	/*------------------------------------------------------------*/
+	/* Custom CSS
+	/*------------------------------------------------------------*/
+
+	$custom = themeblvd_get_option( 'custom_styles' );
+
+	if ( $custom ) {
 		$print .= "\n/* =Custom CSS\n";
 		$print .= "-----------------------------------------------*/\n\n";
 		$print .= $custom;
 	}
 
-	// Sanitize
 	$print = wp_kses( $print, array() );
 	$print = htmlspecialchars_decode( $print );
 
-	// Final output
+	/**
+	 * Filters final printed inline CSS output
+	 * for Entrepreneur theme base.
+	 *
+	 * @param string $print CSS output.
+	 */
+	$print = apply_filters( 'jumpstart_ex_css_output', $print );
+
 	if ( $print ) {
-		wp_add_inline_style( 'jumpstart-base', apply_filters('jumpstart_ex_css_output', $print) );
+
+		wp_add_inline_style( 'jumpstart-base', $print );
+
 	}
 
 }
-add_action('wp_enqueue_scripts', 'jumpstart_ex_css', 25);
+add_action( 'wp_enqueue_scripts', 'jumpstart_ex_css', 25 );
 
 /**
- * Add CSS classes and parralax data() to header
+ * Add CSS classes to <body>.
  *
- * @since 2.0.0
+ * @param array $class WordPress classes to add to body.
+ * @return array $class Modified WordPress classes to add to body.
  */
-function jumpstart_ex_header_class( $class ) {
+function jumpstart_ex_body_class( $class ) {
 
-	$options = array(
-		'bg_type'						=> themeblvd_get_option('header_bg_type'),
-		'apply_bg_shade'				=> themeblvd_get_option('header_apply_bg_shade'),
-		'apply_bg_texture_parallax'		=> themeblvd_get_option('header_apply_bg_texture_parallax'),
-		'bg_image'						=> themeblvd_get_option('header_bg_image'),
-		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
-		'bg_video'						=> themeblvd_get_option('header_bg_video')
-	);
-
-	if ( themeblvd_config('suck_up') ) {
-		unset($options['bg_type']);
+	// Boxed layout
+	if ( 'boxed' === themeblvd_get_option( 'layout_style' ) ) {
+		$class[] = 'tb-boxed';
+		$class[] = 'js-boxed'; // backwards compat
 	}
 
-	$class = array_merge( $class, themeblvd_get_display_class($options) );
-
-	if ( themeblvd_get_option('top_mini', null, '0') ) {
-		$class[] = 'header-top-mini';
+	// Centered header logo
+	if ( themeblvd_get_option( 'logo_center' ) ) {
+		$class[] = 'js-center-logo';
 	}
 
-	if ( themeblvd_config('suck_up') || themeblvd_get_option('header_text_color') == 'light' ) {
+	// Centered main menu
+	if ( themeblvd_get_option( 'menu_center' ) ) {
+		$class[] = 'js-center-menu';
+	}
+
+	return $class;
+
+}
+add_filter( 'body_class', 'jumpstart_ex_body_class' );
+
+/**
+ * Add CSS classes to mobile side panel for
+ * color brightness.
+ *
+ * @since 2.1.0
+ *
+ * @param array $class Classes to add to mobile panel.
+ * @return array Modified classes to add to mobile panel.
+ */
+function jumpstart_ex_mobile_panel_class( $class ) {
+
+	return array_merge( $class, array( themeblvd_get_option( 'menu_mobile_bg_color_brightness' ) ) );
+
+}
+add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ex_mobile_panel_class' );
+
+/**
+ * Add CSS classes to sticky header panel for
+ * color brightness.
+ *
+ * @since 2.1.0
+ *
+ * @param array $class Classes to add to sticky header.
+ * @return array $class Modified classes to add to sticky header.
+ */
+function jumpstart_ex_sticky_class( $class ) {
+
+	if ( 'light' === themeblvd_get_option( 'header_text_color' ) ) {
 		$class[] = 'dark';
 	} else {
 		$class[] = 'light';
 	}
 
-	if ( ! themeblvd_config('suck_up') ) {
-		$class[] = 'menu-' . themeblvd_get_option('menu_bg_color_brightness');
-		$class[] = 'menu-hover-' . themeblvd_get_option('menu_hover_bg_color_brightness');
-	}
-
-	$class[] = 'mobile-' . themeblvd_get_option('header_mobile_bg_color_brightness');
-	$class[] = 'drop-' . themeblvd_get_option('menu_sub_bg_color_brightness');
+	$class[] = 'drop-' . themeblvd_get_option( 'menu_sub_bg_color_brightness' );
 
 	return $class;
+
 }
-add_filter('themeblvd_header_class', 'jumpstart_ex_header_class');
+add_filter( 'themeblvd_sticky_class', 'jumpstart_ex_sticky_class' );
+
+/**
+ * Add CSS classes to header.
+ *
+ * @since 2.0.0
+ *
+ * @param array $class Classes to add to header.
+ * @return array $class Modified classes to add to header.
+ */
+function jumpstart_ex_header_class( $class ) {
+
+	$options = array(
+		'bg_type'                   => themeblvd_get_option( 'header_bg_type' ),
+		'apply_bg_shade'            => themeblvd_get_option( 'header_apply_bg_shade' ),
+		'apply_bg_texture_parallax' => themeblvd_get_option( 'header_apply_bg_texture_parallax' ),
+		'bg_image'                  => themeblvd_get_option( 'header_bg_image' ),
+		'bg_slideshow'              => themeblvd_get_option( 'header_bg_slideshow' ),
+		'bg_video'                  => themeblvd_get_option( 'header_bg_video' ),
+	);
+
+	if ( themeblvd_config( 'suck_up' ) ) {
+		unset( $options['bg_type'] );
+	}
+
+	$class = array_merge( $class, themeblvd_get_display_class( $options ) );
+
+	if ( themeblvd_get_option( 'top_mini', null, '0' ) ) {
+		$class[] = 'header-top-mini';
+	}
+
+	if ( themeblvd_config( 'suck_up' ) || 'light' === themeblvd_get_option( 'header_text_color' ) ) {
+		$class[] = 'dark';
+	} else {
+		$class[] = 'light';
+	}
+
+	if ( ! themeblvd_config( 'suck_up' ) ) {
+		$class[] = 'menu-' . themeblvd_get_option( 'menu_bg_color_brightness' );
+		$class[] = 'menu-hover-' . themeblvd_get_option( 'menu_hover_bg_color_brightness' );
+	}
+
+	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
+	$class[] = 'drop-' . themeblvd_get_option( 'menu_sub_bg_color_brightness' );
+
+	return $class;
+
+}
+add_filter( 'themeblvd_header_class', 'jumpstart_ex_header_class' );
 
 /**
  * Add CSS classes to header top bar.
  *
  * @since 2.1.0
+ *
+ * @param array $class Classes to add to top bar.
+ * @return array $class Modified classes to add to top bar.
  */
 function jumpstart_ex_header_top_class( $class ) {
 
-	if ( themeblvd_config('suck_up') || themeblvd_get_option('top_text_color') == 'light' ) {
+	if ( themeblvd_config( 'suck_up' ) || themeblvd_get_option( 'top_text_color' ) == 'light' ) {
 		$class[] = 'dark';
 	} else {
 		$class[] = 'light';
 	}
 
 	return $class;
+
 }
-add_filter('themeblvd_header_top_class', 'jumpstart_ex_header_top_class');
+add_filter( 'themeblvd_header_top_class', 'jumpstart_ex_header_top_class' );
 
 /**
- * Add CSS classes to side panel
+ * Add CSS classes to side panel.
  *
  * @since 2.1.0
+ *
+ * @param array $class Classes to add to side panel.
+ * @return array $class Modified classes to add to side panel.
  */
 function jumpstart_ex_side_panel_class( $class ) {
-	return array_merge( $class, array( themeblvd_get_option('side_bg_color_brightness') ) );
+
+	return array_merge( $class, array( themeblvd_get_option( 'side_bg_color_brightness' ) ) );
+
 }
-add_filter('themeblvd_side_panel_class', 'jumpstart_ex_side_panel_class');
+add_filter( 'themeblvd_side_panel_class', 'jumpstart_ex_side_panel_class' );
 
 /**
- * Add CSS classes to footer
+ * Add CSS classes to footer.
  *
  * @since 2.0.0
+ *
+ * @param array $class Classes to add to header.
+ * @return array $class Modified classes to add to header.
  */
 function jumpstart_ex_footer_class( $class ) {
 
-	$bg_type = themeblvd_get_option('footer_bg_type');
+	$bg_type = themeblvd_get_option( 'footer_bg_type' );
 
-	if ( $bg_type == 'color' || $bg_type == 'texture' ) {
+	if ( 'color' === $bg_type || 'texture' === $bg_type ) {
 
-		if ( themeblvd_get_option('footer_bg_color_brightness') == 'dark' ) {
+		if ( 'dark' === themeblvd_get_option( 'footer_bg_color_brightness' ) ) {
 			$class[] = 'text-light';
 		}
 
@@ -1157,27 +1204,31 @@ function jumpstart_ex_footer_class( $class ) {
 	}
 
 	return $class;
+
 }
-add_filter('themeblvd_footer_class', 'jumpstart_ex_footer_class');
+add_filter( 'themeblvd_footer_class', 'jumpstart_ex_footer_class' );
 
 /**
  * Height of the header, not including the logo.
  * Used with "suck up" feature.
  *
  * @since 2.0.0
+ *
+ * @param int $addend Height of header excluding logo.
+ * @param string $viewport Viewport range this applies to.
  */
 function jumpstart_ex_top_height_addend( $addend, $context ) {
 
 	$addend = 0;
 
 	// Header top bar
-	if ( themeblvd_get_option('header_info') == 'header_top' && themeblvd_has_header_info() ) {
+	if ( 'header_top' === themeblvd_get_option( 'header_info' ) && themeblvd_has_header_info() ) {
 		$addend += 48;
 	}
 
 	// Header top padding
-	if ( themeblvd_get_option('header_apply_padding_top') ) {
-		$addend += intval(themeblvd_get_option('header_padding_top'));
+	if ( themeblvd_get_option( 'header_apply_padding_top' ) ) {
+		$addend += intval( themeblvd_get_option( 'header_padding_top' ) );
 	} else {
 		$addend += 20;
 	}
@@ -1185,14 +1236,16 @@ function jumpstart_ex_top_height_addend( $addend, $context ) {
 	// Space between logo and menu
 	$addend += 20;
 
-	if ( $context == 'desktop' ) {
+	if ( 'desktop' === $context ) {
 
 		// Main menu default top padding
 		$addend += 18;
 
 		// Main menu font size
-		if ( $font = themeblvd_get_option('font_menu') ) {
-			$addend += intval($font['size']);
+		$font = themeblvd_get_option( 'font_menu' );
+
+		if ( $font ) {
+			$addend += intval( $font['size'] );
 		} else {
 			$addend += 14; // Default menu font size
 		}
@@ -1208,7 +1261,7 @@ function jumpstart_ex_top_height_addend( $addend, $context ) {
 	return $addend;
 
 }
-add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend', 10, 2);
+add_filter( 'themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend', 10, 2 );
 
 /**
  * Add any outputted HTML needed for header styling
@@ -1218,51 +1271,59 @@ add_filter('themeblvd_top_height_addend', 'jumpstart_ex_top_height_addend', 10, 
  */
 function jumpstart_ex_header_top() {
 
-	if ( themeblvd_config('suck_up') ) {
+	if ( themeblvd_config( 'suck_up' ) ) {
 		return;
 	}
 
 	$display = array(
-		'bg_type' 						=> themeblvd_get_option('header_bg_type'),
-		'bg_color' 						=> themeblvd_get_option('header_bg_color'),
-		'bg_texture'					=> themeblvd_get_option('header_bg_texture'),
-		'apply_bg_texture_parallax'		=> themeblvd_get_option('header_apply_bg_texture_parallax'),
-		'bg_image' 						=> themeblvd_get_option('header_bg_image'),
-		'apply_bg_shade'				=> themeblvd_get_option('header_apply_bg_shade'),
-		'bg_shade_color'				=> themeblvd_get_option('header_bg_shade_color'),
-		'bg_shade_opacity'				=> themeblvd_get_option('header_bg_shade_opacity'),
-		'bg_slideshow'					=> themeblvd_get_option('header_bg_slideshow'),
-		'apply_bg_slideshow_parallax'	=> themeblvd_get_option('header_apply_bg_slideshow_parallax'),
-		'bg_video'						=> themeblvd_get_option('header_bg_video')
+		'bg_type'                     => themeblvd_get_option( 'header_bg_type' ),
+		'bg_color'                    => themeblvd_get_option( 'header_bg_color' ),
+		'bg_texture'                  => themeblvd_get_option( 'header_bg_texture' ),
+		'apply_bg_texture_parallax'   => themeblvd_get_option( 'header_apply_bg_texture_parallax' ),
+		'bg_image'                    => themeblvd_get_option( 'header_bg_image' ),
+		'apply_bg_shade'              => themeblvd_get_option( 'header_apply_bg_shade' ),
+		'bg_shade_color'              => themeblvd_get_option( 'header_bg_shade_color' ),
+		'bg_shade_opacity'            => themeblvd_get_option( 'header_bg_shade_opacity' ),
+		'bg_slideshow'                => themeblvd_get_option( 'header_bg_slideshow' ),
+		'apply_bg_slideshow_parallax' => themeblvd_get_option( 'header_apply_bg_slideshow_parallax' ),
+		'bg_video'                    => themeblvd_get_option( 'header_bg_video' ),
 	);
 
-	if ( ( $display['bg_type'] == 'image' || $display['bg_type'] == 'slideshow' ) && ! empty($display['apply_bg_shade']) ) {
-		printf( '<div class="bg-shade" style="background-color: %s;"></div>', esc_attr( themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) ) );
+	if ( 'image' === $display['bg_type'] || 'slideshow' === $display['bg_type'] ) {
+		if ( ! empty( $display['apply_bg_shade'] ) ) {
+
+			printf(
+				'<div class="bg-shade" style="background-color: %s;"></div>',
+				esc_attr( themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) )
+			);
+
+		}
 	}
 
-	if ( themeblvd_do_parallax($display) ) {
-		themeblvd_bg_parallax($display);
+	if ( themeblvd_do_parallax( $display ) ) {
+		themeblvd_bg_parallax( $display );
 	}
 
-	if ( $display['bg_type'] == 'video' && ! empty($display['bg_video']) ) {
+	if ( 'video' === $display['bg_type'] && ! empty( $display['bg_video'] ) ) {
 		echo '<div class="header-video">';
 		themeblvd_bg_video( $display['bg_video'] );
 		echo '</div><!-- .header-video (end) -->';
 	}
 
-	if ( $display['bg_type'] == 'slideshow' && ! empty($display['bg_slideshow']) ) {
+	if ( 'slideshow' === $display['bg_type'] && ! empty( $display['bg_slideshow'] ) ) {
 
 		$parallax = false;
 
-		if ( ! empty($display['apply_bg_slideshow_parallax']) ) {
+		if ( ! empty( $display['apply_bg_slideshow_parallax'] ) ) {
 			$parallax = true;
 		}
 
 		themeblvd_bg_slideshow( 'header', $display['bg_slideshow'], $parallax );
+
 	}
 
 }
-add_action('themeblvd_header_top', 'jumpstart_ex_header_top', 5);
+add_action( 'themeblvd_header_top', 'jumpstart_ex_header_top', 5 );
 
 /**
  * If user has selected to have the header info
@@ -1274,15 +1335,19 @@ add_action('themeblvd_header_top', 'jumpstart_ex_header_top', 5);
  */
 function jumpstart_ex_header_info() {
 
-	if ( themeblvd_get_option('header_info') == 'header_addon' ) {
-		remove_action('themeblvd_header_top', 'themeblvd_header_top_default');
-		add_action('themeblvd_header_addon', 'jumpstart_ex_header_addon');
+	if ( 'header_addon' === themeblvd_get_option( 'header_info' ) ) {
+
+		remove_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
+		add_action( 'themeblvd_header_addon', 'jumpstart_ex_header_addon' );
+
 	}
+
 }
-add_action('wp', 'jumpstart_ex_header_info');
+add_action( 'wp', 'jumpstart_ex_header_info' );
 
 /**
- * Add header text, search, and social icons to header content area.
+ * Add header text, search, and social icons to
+ * header content area.
  *
  * @since 2.0.0
  */
@@ -1292,8 +1357,8 @@ function jumpstart_ex_header_addon() {
 		return;
 	}
 
-	$header_text = themeblvd_get_option('header_text');
-	$icons = themeblvd_get_option('social_media');
+	$header_text = themeblvd_get_option( 'header_text' );
+	$icons = themeblvd_get_option( 'social_media' );
 
 	$class = 'header-addon';
 
@@ -1301,47 +1366,70 @@ function jumpstart_ex_header_addon() {
 		$class .= ' header-addon-with-text';
 	}
 
-	if ( themeblvd_get_option('header_text_color') == 'light' ) {
+	if ( themeblvd_get_option( 'header_text_color' ) == 'light' ) {
 		$class .= ' dark';
 	} else {
 		$class .= ' light';
 	}
 
-	printf('<div class="%s">', $class);
+	printf( '<div class="%s">', $class );
 
-	if ( themeblvd_do_side_panel() || themeblvd_get_option('searchform') == 'show' || $icons || themeblvd_do_cart() || themeblvd_do_lang_selector() ) {
+	if ( themeblvd_do_side_panel() || 'show' === themeblvd_get_option( 'searchform' ) || $icons || themeblvd_do_cart() || themeblvd_do_lang_selector() ) {
 
 		echo '<ul class="header-top-nav list-unstyled clearfix">';
 
 		// Side panel
 		if ( themeblvd_do_side_panel() ) {
-			printf('<li class="top-side-panel">%s</li>', themeblvd_get_side_trigger());
+
+			printf(
+				'<li class="top-side-panel">%s</li>',
+				themeblvd_get_side_trigger()
+			);
+
 		}
 
 		// Floating search trigger
-		if ( themeblvd_get_option('searchform') == 'show' ) {
-			printf('<li class="top-search">%s</li>', themeblvd_get_floating_search_trigger());
+		if ( themeblvd_get_option( 'searchform' ) == 'show' ) {
+
+			printf(
+				'<li class="top-search">%s</li>',
+				themeblvd_get_floating_search_trigger()
+			);
+
 		}
 
 		// Floating shopping cart
 		if ( themeblvd_do_cart() ) {
-			printf('<li class="top-cart">%s</li>', themeblvd_get_cart_popup_trigger());
+
+			printf(
+				'<li class="top-cart">%s</li>',
+				themeblvd_get_cart_popup_trigger()
+			);
+
 		}
 
 		// Contact icons. Note: We're not using themeblvd_get_contact_bar()
 		// to account for the "suck up" header and outputting extra
 		// contact icon set.
 		if ( $icons ) {
+
 			echo '<li class="top-icons">';
-			themeblvd_contact_bar( $icons, array('class' => 'to-mobile') );
+
+			themeblvd_contact_bar( $icons, array(
+				'class' => 'to-mobile',
+			));
+
 			echo '</li>';
+
 		}
 
 		// WPML switcher
 		if ( themeblvd_do_lang_selector() ) {
+
 			echo '<li class="top-wpml">';
-			do_action('icl_language_selector');
+			do_action( 'icl_language_selector' );
 			echo '</li>';
+
 		}
 
 		echo '</ul>';
@@ -1359,67 +1447,86 @@ function jumpstart_ex_header_addon() {
  * Add floating search to main menu.
  *
  * @since 2.0.0
+ *
+ * @param string $items Current output for WordPress menu.
+ * @param array $args Arguments for WordPress menu.
+ * @return string $items Modifed output for WordPress menu.
  */
 function jumpstart_ex_nav_search( $items, $args ) {
 
-	if ( $args->theme_location == 'primary' && themeblvd_get_option('menu_search') ) {
-		$items .= sprintf('<li class="menu-search">%s</li>', themeblvd_get_floating_search_trigger());
+	if ( 'primary' === $args->theme_location && themeblvd_get_option( 'menu_search' ) ) {
+
+		$items .= sprintf(
+			'<li class="menu-search">%s</li>',
+			themeblvd_get_floating_search_trigger()
+		);
+
 	}
 
 	return $items;
+
 }
-add_filter('wp_nav_menu_items', 'jumpstart_ex_nav_search', 10, 2);
+add_filter( 'wp_nav_menu_items', 'jumpstart_ex_nav_search', 10, 2 );
 
 /**
  * Make sure floating search outputs in header if user
  * selected it for main menu.
  *
  * @since 2.0.0
+ *
+ * @param bool $do Whether to show floating search popup.
+ * @return bool $do Whether to show floating search popup.
  */
 function jumpstart_ex_do_floating_search( $do ) {
 
-	if ( themeblvd_get_option('menu_search') ) {
+	if ( themeblvd_get_option( 'menu_search' ) ) {
 		$do = true;
 	}
 
 	return $do;
+
 }
-add_filter('themeblvd_do_floating_search', 'jumpstart_ex_do_floating_search');
+add_filter( 'themeblvd_do_floating_search', 'jumpstart_ex_do_floating_search' );
 
 /**
- * Filter args that get filtered in when
- * all sidebars are registered.
+ * Filter args that get filtered in when all
+ * sidebars are registered.
  *
- * @since 2.5.0
+ * @since 2.0.0
+ *
+ * @param array $args Arguments passed to register_sidebar().
+ * @param array $sidebar Sidebar information from framework.
+ * @param string $location ID of widget area being registered.
+ * @return array Modified arguments passed to register_sidebar().
  */
 function themeblvd_ex_sidebar_args( $args, $sidebar, $location ) {
 
-	if ( in_array( $location, array('sidebar_left', 'sidebar_right') ) ) {
+	if ( in_array( $location, array( 'sidebar_left', 'sidebar_right' ) ) ) {
 
 		$text = 'text-dark';
 
-		if ( themeblvd_get_option('widget_bg_brightness') == 'dark' ) {
+		if ( 'dark' === themeblvd_get_option( 'widget_bg_brightness' ) ) {
 			$text = 'text-light';
 		}
 
-		if ( themeblvd_get_option('widget_style') == 'panel' ) {
+		if ( 'panel' === themeblvd_get_option( 'widget_style' ) ) {
 
-			$class = sprintf('panel panel-%s %s', themeblvd_get_option('widget_panel_style'), $text);
+			$class = sprintf( 'panel panel-%s %s', themeblvd_get_option( 'widget_panel_style' ), $text );
 
-			$args['before_widget'] = '<aside id="%1$s" class="widget '.$class.' %2$s">';
+			$args['before_widget'] = '<aside id="%1$s" class="widget ' . $class . ' %2$s">';
 			$args['after_widget'] = '</aside>';
 			$args['before_title'] = '<div class="panel-heading"><h3 class="widget-title panel-title">';
 			$args['after_title'] = '</h3></div>';
 
 		} else {
 
-			$args['before_widget'] = str_replace('class="widget ', 'class="widget standard '.$text.' ', $args['before_widget']);
+			$args['before_widget'] = str_replace( 'class="widget ', 'class="widget standard ' . $text . ' ', $args['before_widget'] );
 
 		}
-
 	}
 
 	return $args;
+
 }
-add_filter('themeblvd_default_sidebar_args', 'themeblvd_ex_sidebar_args', 10, 3);
-add_filter('themeblvd_custom_sidebar_args', 'themeblvd_ex_sidebar_args', 10, 3);
+add_filter( 'themeblvd_default_sidebar_args', 'themeblvd_ex_sidebar_args', 10, 3 );
+add_filter( 'themeblvd_custom_sidebar_args', 'themeblvd_ex_sidebar_args', 10, 3 );
