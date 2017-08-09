@@ -22,7 +22,12 @@ function jumpstart_su_get_presets( $preset = '' ) {
 		'sets'          => array(),
 	);
 
-	// Predefined colors
+	/**
+	 * Filters predefined hex color values
+	 * used in Super User theme base.
+	 *
+	 * @param $hex array Color values.
+	 */
 	$colors = apply_filters( 'jumpstart_su_preset_colors', array(
 		'default'       => array( __( 'Default', '@@text-domain' ), '#333333', '#222222' ),
 		'green'         => array( __( 'Green', '@@text-domain' ), '#4fba6f', '#4ca165' ),
