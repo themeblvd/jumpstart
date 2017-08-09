@@ -1019,7 +1019,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_su_mobile_panel_class' );
  * @since 2.1.0
  *
  * @param array $class Classes to add to sticky header.
- * @return array Modified classes to add to sticky header.
+ * @return array $class Modified classes to add to sticky header.
  */
 function jumpstart_su_sticky_class( $class ) {
 
@@ -1044,7 +1044,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_su_sticky_class' );
  * @since 2.0.0
  *
  * @param array $class Classes to add to header.
- * @return array Modified classes to add to header.
+ * @return array $class Modified classes to add to header.
  */
 function jumpstart_su_header_class( $class ) {
 
@@ -1093,7 +1093,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_su_header_class' );
  * @since 2.1.0
  *
  * @param array $class Classes to add to top bar.
- * @return array Modified classes to add to top bar.
+ * @return array $class Modified classes to add to top bar.
  */
 function jumpstart_su_header_top_class( $class ) {
 
@@ -1114,7 +1114,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_su_header_top_class' );
  * @since 2.1.0
  *
  * @param array $class Classes to add to side panel.
- * @return array Modified classes to add to side panel.
+ * @return array $class Modified classes to add to side panel.
  */
 function jumpstart_su_side_panel_class( $class ) {
 
@@ -1129,7 +1129,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_su_side_panel_class' );
  * @since 2.0.0
  *
  * @param array $class Classes to add to header.
- * @return array Modified classes to add to header.
+ * @return array $class Modified classes to add to header.
  */
 function jumpstart_su_footer_class( $class ) {
 
@@ -1266,6 +1266,7 @@ function jumpstart_su_header_top() {
 		}
 
 		themeblvd_bg_slideshow( 'header', $display['bg_slideshow'], $parallax );
+
 	}
 
 }

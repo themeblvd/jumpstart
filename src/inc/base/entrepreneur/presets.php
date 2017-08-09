@@ -28,7 +28,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	 *
 	 * @param $hex array Color values.
 	 */
-	$colors = apply_filters('jumpstart_ent_preset_colors', array(
+	$colors = apply_filters( 'jumpstart_ent_preset_colors', array(
 		'default'       => array( __( 'Default', '@@text-domain' ), '#ffffff', '#ffffff' ),
 		'green'         => array( __( 'Green', '@@text-domain' ), '#4fba6f', '#4ca165' ),
 		'sea-green'     => array( __( 'Sea Green', '@@text-domain' ), '#18a185', '#268f77' ),
@@ -120,7 +120,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 			switch ( $style ) {
 
 				case 'style-1':
-					$settings = wp_parse_args(array(
+					$settings = wp_parse_args( array(
 						'header_height'              => '70px',
 						'header_apply_border_bottom' => '0',
 						'header_text'                => '',
@@ -163,7 +163,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					break;
 
 				case 'style-2':
-					$settings = wp_parse_args(array(
+					$settings = wp_parse_args( array(
 						'top_bg_color'               => $val[1],
 						'top_bg_color_opacity'       => '1',
 						'top_text_color'             => 'light',
@@ -213,7 +213,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					break;
 
 				case 'style-3':
-					$settings = wp_parse_args(array(
+					$settings = wp_parse_args( array(
 						'top_bg_color'               => $val[2],
 						'top_bg_color_opacity'       => '1',
 						'top_text_color'             => 'light',
@@ -251,7 +251,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					break;
 
 				case 'style-4':
-					$settings = wp_parse_args(array(
+					$settings = wp_parse_args( array(
 						'top_bg_color'               => '#ffffff',
 						'top_bg_color_opacity'       => '1',
 						'top_text_color'             => 'dark',
@@ -287,7 +287,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					}
 			}
 
-			$args['sets'][ $style . '-' . $key ] = wp_parse_args(array(
+			$args['sets'][ $style . '-' . $key ] = wp_parse_args( array(
 				'id'       => $style . '-' . $key,
 				'name'     => $name . ' - ' . $val[0],
 				'settings' => $settings,
@@ -315,7 +315,9 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	$args = apply_filters( 'jumpstart_ent_style_presets', $args, $colors );
 
 	if ( $preset && isset( $args['sets'][ $preset ]['settings'] ) ) {
+
 		$args = $args['sets'][ $preset ]['settings'];
+
 	}
 
 	return $args;

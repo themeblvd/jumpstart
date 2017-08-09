@@ -58,7 +58,8 @@ function jumpstart_ag_include_fonts() {
 add_action( 'wp_head', 'jumpstart_ag_include_fonts', 5 );
 
 /**
- * Enqueue any CSS
+ * Generate output string to pass to
+ * wp_add_inline_style().
  *
  * @since 2.1.0
  */
@@ -749,7 +750,7 @@ add_action( 'themeblvd_side_panel', 'jumpstart_ag_side_panel_contact', 30 );
  * @since 2.1.0
  *
  * @param array $class CSS classes being added.
- * @return array Modified CSS classes being added.
+ * @return array $class Modified CSS classes being added.
  */
 function jumpstart_ag_sticky_class( $class ) {
 
@@ -761,6 +762,7 @@ function jumpstart_ag_sticky_class( $class ) {
 	}
 
 	return $class;
+
 }
 add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
 
@@ -770,7 +772,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
  * @since 2.1.0
  *
  * @param array $class CSS classes being added.
- * @return array Modified CSS classes being added.
+ * @return array $class $class Modified CSS classes being added.
  */
 function jumpstart_ag_footer_class( $class ) {
 
@@ -787,8 +789,11 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_ag_footer_class' );
  * Used with "suck up" feature.
  *
  * @since 2.1.0
+ *
+ * @param int $addend Height of header excluding logo.
+ * @param string $viewport Viewport range this applies to.
  */
-function jumpstart_ag_top_height_addend( $addend, $context ) {
+function jumpstart_ag_top_height_addend( $addend, $viewport ) {
 
 	return 50; /* Default logo 25px + 50px = 75px */
 

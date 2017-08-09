@@ -92,7 +92,7 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	 *
 	 * @param $hex array Color values.
 	 */
-	$hex = apply_filters('jumpstart_ag_preset_colors', array(
+	$hex = apply_filters( 'jumpstart_ag_preset_colors', array(
 		'green'         => array( __( 'Green', '@@text-domain' ), '#4fba6f', '#4ca165' ),
 		'sea-green'     => array( __( 'Sea Green', '@@text-domain' ), '#18a185', '#268f77' ),
 		'blue'          => array( __( 'Blue', '@@text-domain' ), '#2880ba', '#3174a2' ),

@@ -17,7 +17,7 @@ function jumpstart_ent_options() {
 
 	// Background support
 	add_theme_support( 'custom-background', array(
-		'default-color' => 'f9f9f9',
+		'default-color' => 'f8f8f8',
 		'default-image' => '',
 	));
 
@@ -1287,25 +1287,21 @@ function jumpstart_ent_options() {
 	themeblvd_add_option_section( 'styles', 'ent_extras',        __( 'Extras', 'jumpstart' ),          null, $options['extras'] );
 	themeblvd_add_option_section( 'styles', 'ent_css',           __( 'Custom CSS', 'jumpstart' ),      null, $options['css'] );
 
-	themeblvd_edit_option( 'layout', 'header', 'logo', 'std',
-		array(
-			'type'         => 'image',
-			'image'        => get_template_directory_uri() . '/assets/img/logo-small.png',
-			'image_width'  => '165',
-			'image_height' => '50',
-			'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small_2x.png',
-		)
-	);
+	themeblvd_edit_option( 'layout', 'header', 'logo', 'std', array(
+		'type'         => 'image',
+		'image'        => get_template_directory_uri() . '/assets/img/logo-small.png',
+		'image_width'  => '165',
+		'image_height' => '50',
+		'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small_2x.png',
+	));
 
-	themeblvd_edit_option( 'layout', 'header_trans', 'trans_logo', 'std',
-		array(
-			'type'         => 'image',
-			'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
-			'image_width'  => '165',
-			'image_height' => '50',
-			'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
-		)
-	);
+	themeblvd_edit_option( 'layout', 'header_trans', 'trans_logo', 'std', array(
+		'type'         => 'image',
+		'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+		'image_width'  => '165',
+		'image_height' => '50',
+		'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
+	));
 
 }
 add_action( 'after_setup_theme', 'jumpstart_ent_options' );

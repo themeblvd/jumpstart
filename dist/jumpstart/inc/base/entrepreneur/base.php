@@ -73,7 +73,7 @@ function jumpstart_ent_top_height() {
 add_filter( 'themeblvd_top_height', 'jumpstart_ent_top_height' );
 
 /**
- * Include Google fonts, if needed
+ * Include Google fonts, if needed.
  *
  * @since 2.0.0
  */
@@ -92,7 +92,8 @@ function jumpstart_ent_include_fonts() {
 add_action( 'wp_head', 'jumpstart_ent_include_fonts', 5 );
 
 /**
- * Enqueue any CSS
+ * Generate output string to pass to
+ * wp_add_inline_style().
  *
  * @since 2.0.0
  */
@@ -932,9 +933,13 @@ remove_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 add_action( 'themeblvd_header_addon', 'themeblvd_header_menu_default' );
 
 /**
- * Header menu addons
+ * Header menu addons.
  *
  * @since 2.0.0
+ *
+ * @param string $items Current output for WordPress menu.
+ * @param array $args Arguments for WordPress menu.
+ * @return string $items Modifed output for WordPress menu.
  */
 function jumpstart_ent_menu_addon( $items, $args ) {
 
@@ -961,14 +966,11 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 		$items .= sprintf(
 			'<div class="contact-popover-content hide">%s</div>',
-			themeblvd_get_contact_bar(
-				$icons,
-				array(
-					'tooltip' => false,
-					'style'   => $color,
-					'class'   => 'to-mobile',
-				)
-			)
+			themeblvd_get_contact_bar( $icons, array(
+				'tooltip' => false,
+				'style'   => $color,
+				'class'   => 'to-mobile',
+			))
 		);
 
 		$items .= '</li>';
@@ -1059,7 +1061,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ent_mobile_panel_class' )
  * @since 2.1.0
  *
  * @param array $class Classes to add to sticky header.
- * @return array Modified classes to add to sticky header.
+ * @return array $class Modified classes to add to sticky header.
  */
 function jumpstart_ent_sticky_class( $class ) {
 
@@ -1082,7 +1084,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ent_sticky_class' );
  * @since 2.0.0
  *
  * @param array $class Classes to add to header.
- * @return array Modified classes to add to header.
+ * @return array $class Modified classes to add to header.
  */
 function jumpstart_ent_header_class( $class ) {
 
@@ -1125,7 +1127,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_ent_header_class' );
  * @since 2.1.0
  *
  * @param array $class Classes to add to top bar.
- * @return array Modified classes to add to top bar.
+ * @return array $class Modified classes to add to top bar.
  */
 function jumpstart_ent_header_top_class( $class ) {
 
@@ -1146,7 +1148,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_ent_header_top_class' );
  * @since 2.1.0
  *
  * @param array $class Classes to add to side panel.
- * @return array Modified classes to add to side panel.
+ * @return array $class Modified classes to add to side panel.
  */
 function jumpstart_ent_side_panel_class( $class ) {
 
@@ -1161,7 +1163,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_ent_side_panel_class' );
  * @since 2.0.0
  *
  * @param array $class Classes to add to header.
- * @return array Modified classes to add to header.
+ * @return array $class Modified classes to add to header.
  */
 function jumpstart_ent_footer_class( $class ) {
 
@@ -1245,10 +1247,10 @@ function jumpstart_ent_header_top() {
 add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
 
 /**
- * Filter args that get filtered in when
- * all sidebars are registered.
+ * Filter args that get filtered in when all
+ * sidebars are registered.
  *
- * @since 2.5.0
+ * @since 2.0.0
  *
  * @param array $args Arguments passed to register_sidebar().
  * @param array $sidebar Sidebar information from framework.
