@@ -8,20 +8,20 @@
  * @package     @@name-package
  */
 
-/*
- * Theme Options Mods
+/**
+ * Include modifications to Theme Options page.
  */
 include_once( themeblvd_get_base_path( 'agent' ) . '/options.php' );
 
-/*
- * Theme Option Presets
+/**
+ * Include preset styles for Theme Options.
  */
 include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 
 /**
  * Filter global config.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $setup Framework global configuration settings.
  * @return array $setup Modified framework global configuration settings.
@@ -40,7 +40,7 @@ add_filter( 'themeblvd_global_config', 'jumpstart_ag_global_config' );
 /**
  * Include Google fonts, if needed.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function jumpstart_ag_include_fonts() {
 
@@ -61,7 +61,7 @@ add_action( 'wp_head', 'jumpstart_ag_include_fonts', 5 );
  * Generate output string to pass to
  * wp_add_inline_style().
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function jumpstart_ag_css() {
 
@@ -530,6 +530,8 @@ function jumpstart_ag_css() {
 	 * Filters final printed inline CSS output
 	 * for Agent theme base.
 	 *
+	 * @since @@name-package @@name-package 2.1.0
+	 *
 	 * @param string $print CSS output.
 	 */
 	$print = apply_filters( 'jumpstart_ag_css_output', $print );
@@ -546,7 +548,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ag_css', 25 );
 /**
  * Add CSS classes to <body>.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
@@ -570,7 +572,7 @@ add_filter( 'body_class', 'jumpstart_ag_body_class' );
 /**
  * Add CSS classes to header.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class CSS classes being added to theme header.
  * @return array $class Modified CSS classes being added to theme header.
@@ -635,7 +637,7 @@ remove_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 /**
  * Custom menu callback with header toolbar added
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function jumpstart_ag_header_menu() {
 
@@ -705,7 +707,7 @@ add_action( 'themeblvd_header_addon', 'jumpstart_ag_header_menu' );
 /**
  * Add CSS classes to side panel and mobile menu.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class CSS classes being added.
  * @return array Modified CSS classes being added.
@@ -721,7 +723,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ag_side_panel_class' );
 /**
  * Add social icons to side panel.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function jumpstart_ag_side_panel_contact() {
 
@@ -747,7 +749,7 @@ add_action( 'themeblvd_side_panel', 'jumpstart_ag_side_panel_contact', 30 );
 /**
  * Add CSS class to sticky header panel for color brightness.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -769,7 +771,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
 /**
  * Add CSS classes to footer
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class CSS classes being added.
  * @return array $class $class Modified CSS classes being added.
@@ -788,7 +790,7 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_ag_footer_class' );
  * Height of the header, not including the logo.
  * Used with "suck up" feature.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param int $addend Height of header excluding logo.
  * @param string $viewport Viewport range this applies to.
@@ -804,7 +806,7 @@ add_filter( 'themeblvd_top_height_addend', 'jumpstart_ag_top_height_addend', 10,
  * Change main menu sub icon from fa-caret-* to
  * fa-angle-*.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param string $html HTML output for menu.
  * @return string $html Modified HTML output for menu.
@@ -824,7 +826,7 @@ remove_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_def
 /**
  * Add custom footer copyright area.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function jumpstart_ag_footer_sub_content() {
 
@@ -855,6 +857,8 @@ function jumpstart_ag_footer_sub_content() {
 	 * Filters the output of the copyright message,
 	 * which is retrieved from the theme options.
 	 *
+	 * @since @@name-package 2.1.0
+	 *
 	 * @param string Copyright text.
 	 */
 	echo '<div class="copyright">' . apply_filters( 'themeblvd_footer_copyright', themeblvd_get_content( themeblvd_get_option( 'footer_copyright' ) ) ) . '</div>';
@@ -876,7 +880,7 @@ add_action( 'themeblvd_footer_sub_content', 'jumpstart_ag_footer_sub_content' );
 /**
  * More narrow sidebars
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $layouts All layouts and their configurations.
  * @param string $stack The stacking point for the main grid system.
@@ -953,6 +957,8 @@ function jumpstart_ag_get_lang_popup() {
 	 * Filters the output for the WPML language
 	 * switcher popup in Agent base.
 	 *
+	 * @since @@name-package 2.1.0
+	 *
 	 * @param string $output HTML output for switcher.
 	 */
 	return apply_filters( 'jumpstart_ag_lang_selector', $output );
@@ -962,7 +968,7 @@ function jumpstart_ag_get_lang_popup() {
 /**
  * Output modal window for WPML language switcher.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function jumpstart_ag_lang_popup() {
 
@@ -976,7 +982,7 @@ add_action( 'themeblvd_after', 'jumpstart_ag_lang_popup' );
 /**
  * Allow main menu to be empty.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $args Arguments passed to wp_nav_menu().
  * @return array $args Modified arguments passed to wp_nav_menu().
@@ -994,7 +1000,7 @@ add_filter( 'themeblvd_primary_menu_args', 'jumpstart_ag_primary_menu_args' );
  * Filter args that get filtered in when sidebars
  * are registered.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  */
 function themeblvd_agent_sidebar_args( $args, $sidebar, $location ) {
 

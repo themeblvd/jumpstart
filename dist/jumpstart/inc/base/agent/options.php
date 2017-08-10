@@ -11,13 +11,15 @@
 /**
  * Add theme options to framework.
  *
- * @since 2.1.0
+ * @since Jump_Start 2.1.0
  */
 function jumpstart_ag_options() {
 
 	/**
 	 * Filters the options added by the Agent base
 	 * to the theme options page.
+	 *
+	 * @since Jump_Start 2.1.0
 	 *
 	 * @param array Options added.
 	 */

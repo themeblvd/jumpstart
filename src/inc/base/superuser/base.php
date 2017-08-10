@@ -8,20 +8,20 @@
  * @package     @@name-package
  */
 
-/*
- * Theme Options Mods
+/**
+ * Include modifications to Theme Options.
  */
 include_once( themeblvd_get_base_path( 'superuser' ) . '/options.php' );
 
-/*
- * Theme Option Presets
+/**
+ * Include preset styles for Theme Options.
  */
 include_once( themeblvd_get_base_path( 'superuser' ) . '/presets.php' );
 
 /**
  * Filter global config.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_global_config( $setup ) {
 
@@ -37,7 +37,7 @@ add_filter( 'themeblvd_global_config', 'jumpstart_su_global_config' );
 /**
  * Include Google fonts, if needed.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_include_fonts() {
 
@@ -57,7 +57,7 @@ add_action( 'wp_head', 'jumpstart_su_include_fonts', 5 );
  * Generate output string to pass to
  * wp_add_inline_style().
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_css() {
 
@@ -954,6 +954,8 @@ function jumpstart_su_css() {
 	 * Filters final printed inline CSS output
 	 * for Super User theme base.
 	 *
+	 * @since @@name-package 2.0.0
+	 *
 	 * @param string $print CSS output.
 	 */
 	$print = apply_filters( 'jumpstart_su_css_output', $print );
@@ -969,6 +971,8 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_su_css', 25 );
 
 /**
  * Add CSS classes to <body>.
+ *
+ * @since @@name-package 2.0.0
  *
  * @param array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
@@ -1000,7 +1004,7 @@ add_filter( 'body_class', 'jumpstart_su_body_class' );
  * Add CSS classes to mobile side panel for
  * color brightness.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class Classes to add to mobile panel.
  * @return array Modified classes to add to mobile panel.
@@ -1016,7 +1020,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_su_mobile_panel_class' );
  * Add CSS classes to sticky header panel for
  * color brightness.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
@@ -1041,7 +1045,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_su_sticky_class' );
 /**
  * Add CSS classes to header.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  *
  * @param array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
@@ -1090,7 +1094,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_su_header_class' );
 /**
  * Add CSS classes to header top bar.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
@@ -1111,7 +1115,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_su_header_top_class' );
 /**
  * Add CSS classes to side panel.
  *
- * @since 2.1.0
+ * @since @@name-package 2.1.0
  *
  * @param array $class Classes to add to side panel.
  * @return array $class Modified classes to add to side panel.
@@ -1126,7 +1130,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_su_side_panel_class' );
 /**
  * Add CSS classes to footer.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  *
  * @param array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
@@ -1154,7 +1158,7 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_su_footer_class' );
  * Height of the header, not including the logo.
  * Used with "suck up" feature.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  *
  * @param int $addend Height of header excluding logo.
  * @param string $viewport Viewport range this applies to.
@@ -1214,7 +1218,7 @@ add_filter( 'themeblvd_top_height_addend', 'jumpstart_su_top_height_addend', 10,
  * Add any outputted HTML needed for header styling
  * options to work.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_header_top() {
 
@@ -1278,7 +1282,7 @@ add_action( 'themeblvd_header_top', 'jumpstart_su_header_top', 5 );
  * it from the themeblvd_header action, and move
  * to the themeblvd_header_addon action.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_header_info() {
 
@@ -1296,7 +1300,7 @@ add_action( 'wp', 'jumpstart_su_header_info' );
  * Add header text, search, and social icons to
  * header content area.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_header_addon() {
 
@@ -1393,7 +1397,7 @@ function jumpstart_su_header_addon() {
 /**
  * Add floating search to main menu.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  *
  * @param string $items Current output for WordPress menu.
  * @param array $args Arguments for WordPress menu.
@@ -1419,7 +1423,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_su_nav_search', 10, 2 );
  * Make sure floating search outputs in header if user
  * selected it for main menu.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  *
  * @param bool $do Whether to show floating search popup.
  * @return bool $do Whether to show floating search popup.
@@ -1439,7 +1443,7 @@ add_filter( 'themeblvd_do_floating_search', 'jumpstart_su_do_floating_search' );
  * Filter args that get filtered in when all
  * sidebars are registered.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  *
  * @param array $args Arguments passed to register_sidebar().
  * @param array $sidebar Sidebar information from framework.

@@ -13,6 +13,10 @@ var theme = 'jumpstart';
  */
 var themeName = 'Jump Start';
 
+/**
+ * Framework name.
+ */
+var frameworkName = 'Theme Blvd';
 
 /**
  * Theme version.
@@ -69,15 +73,16 @@ gulp.task('render-src', ['render-themeblvd'], function() {
 });
 
 /**
- * Render text domain by replacing all instances of
- * @@text-domain with theme slug.
+ * Render theme info through PHP DocBlocks.
  */
 gulp.task('render-info', ['render-src'], function() {
 
-	var packageName = themeName.replace(' ', '_');
+	var packageSlug = themeName.replace(' ', '_'),
+		frameworkSlug = frameworkName.replace(' ', '_');
 
 	return gulp.src('dist/**/*.php')
-		.pipe(replace('@@name-package', packageName))
+		.pipe(replace('@@name-package', packageSlug))
+		.pipe(replace('@@name-framework', frameworkSlug))
     	.pipe(gulp.dest('dist'));
 
 });

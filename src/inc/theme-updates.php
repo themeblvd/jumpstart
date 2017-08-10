@@ -11,7 +11,7 @@
 /**
  * Enable auto updates and license management.
  *
- * @since 1.0.0
+ * @since @@name-package 1.0.0
  */
 function jumpstart_updates_init() {
 
@@ -25,7 +25,7 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
 /**
  * Setup auto updates.
  *
- * @since 1.0.0
+ * @since @@name-package 1.0.0
  */
 function jumpstart_updates() {
 
@@ -59,6 +59,8 @@ function jumpstart_updates() {
 	/**
 	 * Filter changelog URL.
 	 *
+	 * @since @@name-framework 2.0.0
+	 *
 	 * @param string URL to changelog.
 	 * @param string Template slug retrieved from get_template().
 	 */
@@ -75,7 +77,7 @@ function jumpstart_updates() {
  * For auto updates, disable sslverify, which will
  * allow for older hosts to download update.
  *
- * @since 2.1.3
+ * @since @@name-package 2.1.3
  *
  * @param array $args An array of HTTP request arguments.
  * @param string $url The request URL.
@@ -88,5 +90,6 @@ function jumpstart_updates_ssl_verify( $args, $url ) {
 	}
 
 	return $args;
+
 }
 add_filter( 'http_request_args', 'jumpstart_updates_ssl_verify', 10, 2 );

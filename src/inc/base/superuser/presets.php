@@ -11,7 +11,7 @@
 /**
  * Get option presets.
  *
- * @since 2.1.1
+ * @since @@name-package 2.1.1
  */
 function jumpstart_su_get_presets( $preset = '' ) {
 
@@ -25,6 +25,8 @@ function jumpstart_su_get_presets( $preset = '' ) {
 	/**
 	 * Filters predefined hex color values
 	 * used in Super User theme base.
+	 *
+	 * @since @@name-package 2.1.1
 	 *
 	 * @param $hex array Color values.
 	 */
@@ -388,6 +390,8 @@ function jumpstart_su_get_presets( $preset = '' ) {
 	/**
 	 * Filters the preset styles added by the
 	 * Super User base.
+	 *
+	 * @since @@name-package 2.1.1
 	 *
 	 * @param array $args All presets added.
 	 * @param array $colors Color names and hex values.

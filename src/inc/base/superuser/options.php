@@ -11,7 +11,7 @@
 /**
  * Add theme options to framework.
  *
- * @since 2.0.0
+ * @since @@name-package 2.0.0
  */
 function jumpstart_su_options() {
 
@@ -30,6 +30,8 @@ function jumpstart_su_options() {
 	/**
 	 * Filters the options added by the Super User base
 	 * to the theme options page.
+	 *
+	 * @since @@name-package 2.0.0
 	 *
 	 * @param array Options added.
 	 */

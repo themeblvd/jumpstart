@@ -8,20 +8,20 @@
  * @package     Jump_Start
  */
 
-/*
- * Theme Options Mods
+/**
+ * Include modifications to Theme Options page.
  */
 include_once( themeblvd_get_base_path( 'entrepreneur' ) . '/options.php' );
 
-/*
- * Theme Option Presets
+/**
+ * Include preset styles for Theme Options.
  */
 include_once( themeblvd_get_base_path( 'entrepreneur' ) . '/presets.php' );
 
 /**
  * Filter global config.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $setup Framework global configuration settings.
  * @return array $setup Modified framework global configuration settings.
@@ -41,7 +41,7 @@ add_filter( 'themeblvd_global_config', 'jumpstart_ent_global_config' );
  * Height of the header. Used with "suck up"
  * feature.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @return int $height Height of header area.
  */
@@ -75,7 +75,7 @@ add_filter( 'themeblvd_top_height', 'jumpstart_ent_top_height' );
 /**
  * Include Google fonts, if needed.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_ent_include_fonts() {
 
@@ -95,7 +95,7 @@ add_action( 'wp_head', 'jumpstart_ent_include_fonts', 5 );
  * Generate output string to pass to
  * wp_add_inline_style().
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_ent_css() {
 
@@ -888,6 +888,8 @@ function jumpstart_ent_css() {
 	 * Filters final printed inline CSS output
 	 * for Entrepreneur theme base.
 	 *
+	 * @since Jump_Start 2.0.0
+	 *
 	 * @param string $print CSS output.
 	 */
 	$print = apply_filters( 'jumpstart_ent_css_output', $print );
@@ -905,7 +907,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ent_css', 25 );
  * Only trigger default header info top bar,
  * if there's header text saved.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function themeblvd_ent_has_header_info() {
 
@@ -918,6 +920,8 @@ function themeblvd_ent_has_header_info() {
 	/**
 	 * Filters whether top bar of header should
 	 * show in Entrepreneur theme base.
+	 *
+	 * @since Jump_Start 2.0.0
 	 *
 	 * @param bool $return Whether to show top bar or not.
 	 */
@@ -935,7 +939,7 @@ add_action( 'themeblvd_header_addon', 'themeblvd_header_menu_default' );
 /**
  * Header menu addons.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param string $items Current output for WordPress menu.
  * @param array $args Arguments for WordPress menu.
@@ -1020,7 +1024,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_ent_menu_addon', 10, 2 );
 /**
  * Add CSS classes to <body>.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
@@ -1042,7 +1046,7 @@ add_filter( 'body_class', 'jumpstart_ent_body_class' );
  * Add CSS classes to mobile side panel for
  * color brightness.
  *
- * @since 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param array $class Classes to add to mobile panel.
  * @return array Modified classes to add to mobile panel.
@@ -1058,7 +1062,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ent_mobile_panel_class' )
  * Add CSS classes to sticky header panel for
  * color brightness.
  *
- * @since 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
@@ -1081,7 +1085,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ent_sticky_class' );
 /**
  * Add CSS classes to header.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
@@ -1124,7 +1128,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_ent_header_class' );
 /**
  * Add CSS classes to header top bar.
  *
- * @since 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
@@ -1145,7 +1149,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_ent_header_top_class' );
 /**
  * Add CSS classes to side panel.
  *
- * @since 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param array $class Classes to add to side panel.
  * @return array $class Modified classes to add to side panel.
@@ -1160,7 +1164,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_ent_side_panel_class' );
 /**
  * Add CSS classes to footer.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
@@ -1188,7 +1192,7 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_ent_footer_class' );
  * Add any outputted HTML needed for header styling
  * options to work.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_ent_header_top() {
 
@@ -1250,7 +1254,7 @@ add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
  * Filter args that get filtered in when all
  * sidebars are registered.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $args Arguments passed to register_sidebar().
  * @param array $sidebar Sidebar information from framework.

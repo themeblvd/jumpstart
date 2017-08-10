@@ -12,15 +12,15 @@
  * @package     Jump_Start
  */
 
-/*
- * Automatic updates.
+/**
+ * Include in-dashboard update system.
  */
 include_once( get_template_directory() . '/inc/theme-updates.php' );
 
 /**
- * Global configuration, enable theme bases
+ * Global configuration, enable theme bases.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $config Configuration settings from framework.
  * @return array $config Modified configuration settings.
@@ -35,9 +35,9 @@ function jumpstart_global_config( $config ) {
 add_filter( 'themeblvd_global_config', 'jumpstart_global_config' );
 
 /**
- * Setup theme bases admin
+ * Setup theme bases admin.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_bases() {
 
@@ -47,6 +47,8 @@ function jumpstart_bases() {
 		 * Filter theme bases added by Jump Start, which
 		 * are passed to the object created with
 		 * class Theme_Blvd_Bases.
+		 *
+		 * @since Jump_Start 2.0.0
 		 *
 		 * @param array Theme bases being added.
 		 */
@@ -81,7 +83,7 @@ function jumpstart_bases() {
 add_action( 'after_setup_theme', 'jumpstart_bases' );
 
 /*
- * Include theme base
+ * Include theme base.
  */
 $base = themeblvd_get_base();
 
@@ -92,7 +94,7 @@ if ( $base ) {
 }
 
 /**
- * Jump Start CSS Files
+ * Enqueue Jump Start CSS files.
  *
  * @since 1.0.0
  */
@@ -198,12 +200,13 @@ function jumpstart_css() {
 add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
 
 /**
- * Jump Start base check. If WP user is logged in,
- * output message on frontend to tell them their saved
- * theme options don't match the theme base they've
- * selected.
+ * Jump Start base check.
  *
- * @since 2.0.0
+ * If WP user is logged in, output message on frontend
+ * to tell them their saved theme options don't match
+ * the theme base they've selected.
+ *
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_base_check() {
 
@@ -234,7 +237,7 @@ add_action( 'themeblvd_before', 'jumpstart_base_check' );
  * Add Jump Start Homepage to sample layouts of
  * Layout Builder plugin.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param array $layouts All sample layouts.
  * @return array $layouts Modified sample layouts.

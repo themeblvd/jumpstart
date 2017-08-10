@@ -11,7 +11,7 @@
 /**
  * Add theme options to framework.
  *
- * @since 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_ex_options() {
 
@@ -30,6 +30,8 @@ function jumpstart_ex_options() {
 	/**
 	 * Filters the options added by the Executive base
 	 * to the theme options page.
+	 *
+	 * @since Jump_Start 2.0.0
 	 *
 	 * @param array Options added.
 	 */
