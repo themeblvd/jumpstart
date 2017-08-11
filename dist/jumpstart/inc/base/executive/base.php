@@ -23,7 +23,7 @@ include_once( themeblvd_get_base_path( 'executive' ) . '/presets.php' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $setup Framework global configuration settings.
+ * @param  array $setup Framework global configuration settings.
  * @return array $setup Modified framework global configuration settings.
  */
 function jumpstart_ex_global_config( $setup ) {
@@ -1033,7 +1033,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ex_css', 25 );
 /**
  * Add CSS classes to <body>.
  *
- * @param array $class WordPress classes to add to body.
+ * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
  */
 function jumpstart_ex_body_class( $class ) {
@@ -1065,8 +1065,8 @@ add_filter( 'body_class', 'jumpstart_ex_body_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to mobile panel.
- * @return array Modified classes to add to mobile panel.
+ * @param  array $class Classes to add to mobile panel.
+ * @return array        Modified classes to add to mobile panel.
  */
 function jumpstart_ex_mobile_panel_class( $class ) {
 
@@ -1081,7 +1081,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ex_mobile_panel_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to sticky header.
+ * @param  array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
  */
 function jumpstart_ex_sticky_class( $class ) {
@@ -1104,7 +1104,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ex_sticky_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class Classes to add to header.
+ * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
  */
 function jumpstart_ex_header_class( $class ) {
@@ -1152,7 +1152,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_ex_header_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to top bar.
+ * @param  array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
  */
 function jumpstart_ex_header_top_class( $class ) {
@@ -1173,7 +1173,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_ex_header_top_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to side panel.
+ * @param  array $class Classes to add to side panel.
  * @return array $class Modified classes to add to side panel.
  */
 function jumpstart_ex_side_panel_class( $class ) {
@@ -1188,7 +1188,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_ex_side_panel_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class Classes to add to header.
+ * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
  */
 function jumpstart_ex_footer_class( $class ) {
@@ -1216,7 +1216,7 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_ex_footer_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param int $addend Height of header excluding logo.
+ * @param int    $addend   Height of header excluding logo.
  * @param string $viewport Viewport range this applies to.
  */
 function jumpstart_ex_top_height_addend( $addend, $context ) {
@@ -1450,8 +1450,8 @@ function jumpstart_ex_header_addon() {
  *
  * @since Jump_Start 2.0.0
  *
- * @param string $items Current output for WordPress menu.
- * @param array $args Arguments for WordPress menu.
+ * @param  string $items Current output for WordPress menu.
+ * @param  array  $args  Arguments for WordPress menu.
  * @return string $items Modifed output for WordPress menu.
  */
 function jumpstart_ex_nav_search( $items, $args ) {
@@ -1476,7 +1476,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_ex_nav_search', 10, 2 );
  *
  * @since Jump_Start 2.0.0
  *
- * @param bool $do Whether to show floating search popup.
+ * @param  bool $do Whether to show floating search popup.
  * @return bool $do Whether to show floating search popup.
  */
 function jumpstart_ex_do_floating_search( $do ) {
@@ -1496,10 +1496,10 @@ add_filter( 'themeblvd_do_floating_search', 'jumpstart_ex_do_floating_search' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $args Arguments passed to register_sidebar().
- * @param array $sidebar Sidebar information from framework.
- * @param string $location ID of widget area being registered.
- * @return array Modified arguments passed to register_sidebar().
+ * @param  array  $args     Arguments passed to register_sidebar().
+ * @param  array  $sidebar  Sidebar information from framework.
+ * @param  string $location ID of widget area being registered.
+ * @return array            Modified arguments passed to register_sidebar().
  */
 function themeblvd_ex_sidebar_args( $args, $sidebar, $location ) {
 

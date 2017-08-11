@@ -12,6 +12,9 @@
  * Get option presets.
  *
  * @since @@name-package 2.1.1
+ *
+ * @param  string $preset Optional preset style to retrieve.
+ * @return array  $args   All preset styles or specific preset if $preset specified.
  */
 function jumpstart_ent_get_presets( $preset = '' ) {
 
@@ -314,7 +317,6 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	 *
 	 * @param array $args All presets added.
 	 * @param array $colors Color names and hex values.
-	 * @return array $args Modified presets added.
 	 */
 	$args = apply_filters( 'jumpstart_ent_style_presets', $args, $colors );
 

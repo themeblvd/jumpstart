@@ -23,7 +23,7 @@ include_once( themeblvd_get_base_path( 'entrepreneur' ) . '/presets.php' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $setup Framework global configuration settings.
+ * @param  array $setup Framework global configuration settings.
  * @return array $setup Modified framework global configuration settings.
  */
 function jumpstart_ent_global_config( $setup ) {
@@ -941,8 +941,8 @@ add_action( 'themeblvd_header_addon', 'themeblvd_header_menu_default' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param string $items Current output for WordPress menu.
- * @param array $args Arguments for WordPress menu.
+ * @param  string $items Current output for WordPress menu.
+ * @param  array  $args  Arguments for WordPress menu.
  * @return string $items Modifed output for WordPress menu.
  */
 function jumpstart_ent_menu_addon( $items, $args ) {
@@ -1026,7 +1026,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_ent_menu_addon', 10, 2 );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class WordPress classes to add to body.
+ * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
  */
 function jumpstart_ent_body_class( $class ) {
@@ -1048,8 +1048,8 @@ add_filter( 'body_class', 'jumpstart_ent_body_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to mobile panel.
- * @return array Modified classes to add to mobile panel.
+ * @param  array $class Classes to add to mobile panel.
+ * @return array        Modified classes to add to mobile panel.
  */
 function jumpstart_ent_mobile_panel_class( $class ) {
 
@@ -1064,7 +1064,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ent_mobile_panel_class' )
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to sticky header.
+ * @param  array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
  */
 function jumpstart_ent_sticky_class( $class ) {
@@ -1087,7 +1087,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ent_sticky_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class Classes to add to header.
+ * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
  */
 function jumpstart_ent_header_class( $class ) {
@@ -1130,7 +1130,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_ent_header_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to top bar.
+ * @param  array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
  */
 function jumpstart_ent_header_top_class( $class ) {
@@ -1151,7 +1151,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_ent_header_top_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to side panel.
+ * @param  array $class Classes to add to side panel.
  * @return array $class Modified classes to add to side panel.
  */
 function jumpstart_ent_side_panel_class( $class ) {
@@ -1166,7 +1166,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_ent_side_panel_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class Classes to add to header.
+ * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
  */
 function jumpstart_ent_footer_class( $class ) {
@@ -1256,10 +1256,10 @@ add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $args Arguments passed to register_sidebar().
- * @param array $sidebar Sidebar information from framework.
- * @param string $location ID of widget area being registered.
- * @return array Modified arguments passed to register_sidebar().
+ * @param  array  $args     Arguments passed to register_sidebar().
+ * @param  array  $sidebar  Sidebar information from framework.
+ * @param  string $location ID of widget area being registered.
+ * @return array            Modified arguments passed to register_sidebar().
  */
 function themeblvd_ent_sidebar_args( $args, $sidebar, $location ) {
 

@@ -61,8 +61,8 @@ function jumpstart_updates() {
 	 *
 	 * @since @@name-framework 2.0.0
 	 *
-	 * @param string URL to changelog.
-	 * @param string Template slug retrieved from get_template().
+	 * @param string        Website URL to changelog.
+	 * @param string $theme Template slug retrieved from get_template().
 	 */
 	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme=' . $theme, $theme );
 
@@ -79,9 +79,9 @@ function jumpstart_updates() {
  *
  * @since @@name-package 2.1.3
  *
- * @param array $args An array of HTTP request arguments.
- * @param string $url The request URL.
- * @return bool $args Modified sample layouts.
+ * @param  array  $args An array of HTTP request arguments.
+ * @param  string $url The request URL.
+ * @return bool   $args Modified sample layouts.
  */
 function jumpstart_updates_ssl_verify( $args, $url ) {
 

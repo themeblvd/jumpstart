@@ -23,7 +23,7 @@ include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $setup Framework global configuration settings.
+ * @param  array $setup Framework global configuration settings.
  * @return array $setup Modified framework global configuration settings.
  */
 function jumpstart_ag_global_config( $setup ) {
@@ -550,7 +550,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ag_css', 25 );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $class WordPress classes to add to body.
+ * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
  */
 function jumpstart_ag_body_class( $class ) {
@@ -574,7 +574,7 @@ add_filter( 'body_class', 'jumpstart_ag_body_class' );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $class CSS classes being added to theme header.
+ * @param  array $class CSS classes being added to theme header.
  * @return array $class Modified CSS classes being added to theme header.
  */
 function jumpstart_ag_header_class( $class ) {
@@ -709,8 +709,8 @@ add_action( 'themeblvd_header_addon', 'jumpstart_ag_header_menu' );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $class CSS classes being added.
- * @return array Modified CSS classes being added.
+ * @param  array $class CSS classes being added.
+ * @return array        Modified CSS classes being added.
  */
 function jumpstart_ag_side_panel_class( $class ) {
 
@@ -751,7 +751,7 @@ add_action( 'themeblvd_side_panel', 'jumpstart_ag_side_panel_contact', 30 );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $class CSS classes being added.
+ * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
  */
 function jumpstart_ag_sticky_class( $class ) {
@@ -773,7 +773,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $class CSS classes being added.
+ * @param  array $class CSS classes being added.
  * @return array $class $class Modified CSS classes being added.
  */
 function jumpstart_ag_footer_class( $class ) {
@@ -792,7 +792,7 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_ag_footer_class' );
  *
  * @since @@name-package 2.1.0
  *
- * @param int $addend Height of header excluding logo.
+ * @param int    $addend   Height of header excluding logo.
  * @param string $viewport Viewport range this applies to.
  */
 function jumpstart_ag_top_height_addend( $addend, $viewport ) {
@@ -808,7 +808,7 @@ add_filter( 'themeblvd_top_height_addend', 'jumpstart_ag_top_height_addend', 10,
  *
  * @since @@name-package 2.1.0
  *
- * @param string $html HTML output for menu.
+ * @param  string $html HTML output for menu.
  * @return string $html Modified HTML output for menu.
  */
 function jumpstart_ag_menu_sub_indicator( $html ) {
@@ -882,9 +882,9 @@ add_action( 'themeblvd_footer_sub_content', 'jumpstart_ag_footer_sub_content' );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $layouts All layouts and their configurations.
- * @param string $stack The stacking point for the main grid system.
- * @return array $layouts Modified layouts and their configurations.
+ * @param  array  $layouts All layouts and their configurations.
+ * @param  string $stack   The stacking point for the main grid system.
+ * @return array  $layouts Modified layouts and their configurations.
  */
 function jumpstart_ag_sidebar_layouts( $layouts, $stack ) {
 
@@ -984,7 +984,7 @@ add_action( 'themeblvd_after', 'jumpstart_ag_lang_popup' );
  *
  * @since @@name-package 2.1.0
  *
- * @param array $args Arguments passed to wp_nav_menu().
+ * @param  array $args Arguments passed to wp_nav_menu().
  * @return array $args Modified arguments passed to wp_nav_menu().
  */
 function jumpstart_ag_primary_menu_args( $args ) {

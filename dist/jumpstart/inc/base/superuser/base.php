@@ -974,7 +974,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_su_css', 25 );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class WordPress classes to add to body.
+ * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
  */
 function jumpstart_su_body_class( $class ) {
@@ -1006,8 +1006,8 @@ add_filter( 'body_class', 'jumpstart_su_body_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to mobile panel.
- * @return array Modified classes to add to mobile panel.
+ * @param  array $class Classes to add to mobile panel.
+ * @return array        Modified classes to add to mobile panel.
  */
 function jumpstart_su_mobile_panel_class( $class ) {
 
@@ -1022,7 +1022,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_su_mobile_panel_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to sticky header.
+ * @param  array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
  */
 function jumpstart_su_sticky_class( $class ) {
@@ -1047,7 +1047,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_su_sticky_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class Classes to add to header.
+ * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
  */
 function jumpstart_su_header_class( $class ) {
@@ -1096,7 +1096,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_su_header_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to top bar.
+ * @param  array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
  */
 function jumpstart_su_header_top_class( $class ) {
@@ -1117,7 +1117,7 @@ add_filter( 'themeblvd_header_top_class', 'jumpstart_su_header_top_class' );
  *
  * @since Jump_Start 2.1.0
  *
- * @param array $class Classes to add to side panel.
+ * @param  array $class Classes to add to side panel.
  * @return array $class Modified classes to add to side panel.
  */
 function jumpstart_su_side_panel_class( $class ) {
@@ -1132,7 +1132,7 @@ add_filter( 'themeblvd_side_panel_class', 'jumpstart_su_side_panel_class' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $class Classes to add to header.
+ * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
  */
 function jumpstart_su_footer_class( $class ) {
@@ -1399,8 +1399,8 @@ function jumpstart_su_header_addon() {
  *
  * @since Jump_Start 2.0.0
  *
- * @param string $items Current output for WordPress menu.
- * @param array $args Arguments for WordPress menu.
+ * @param  string $items Current output for WordPress menu.
+ * @param  array  $args  Arguments for WordPress menu.
  * @return string $items Modifed output for WordPress menu.
  */
 function jumpstart_su_nav_search( $items, $args ) {
@@ -1425,7 +1425,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_su_nav_search', 10, 2 );
  *
  * @since Jump_Start 2.0.0
  *
- * @param bool $do Whether to show floating search popup.
+ * @param  bool $do Whether to show floating search popup.
  * @return bool $do Whether to show floating search popup.
  */
 function jumpstart_su_do_floating_search( $do ) {
@@ -1445,10 +1445,10 @@ add_filter( 'themeblvd_do_floating_search', 'jumpstart_su_do_floating_search' );
  *
  * @since Jump_Start 2.0.0
  *
- * @param array $args Arguments passed to register_sidebar().
- * @param array $sidebar Sidebar information from framework.
- * @param string $location ID of widget area being registered.
- * @return array Modified arguments passed to register_sidebar().
+ * @param  array  $args     Arguments passed to register_sidebar().
+ * @param  array  $sidebar  Sidebar information from framework.
+ * @param  string $location ID of widget area being registered.
+ * @return array            Modified arguments passed to register_sidebar().
  */
 function themeblvd_su_sidebar_args( $args, $sidebar, $location ) {
 

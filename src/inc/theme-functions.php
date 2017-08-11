@@ -22,7 +22,7 @@ include_once( get_template_directory() . '/inc/theme-updates.php' );
  *
  * @since @@name-package 2.0.0
  *
- * @param array $config Configuration settings from framework.
+ * @param  array $config Configuration settings from framework.
  * @return array $config Modified configuration settings.
  */
 function jumpstart_global_config( $config ) {
@@ -239,7 +239,7 @@ add_action( 'themeblvd_before', 'jumpstart_base_check' );
  *
  * @since @@name-package 2.0.0
  *
- * @param array $layouts All sample layouts.
+ * @param  array $layouts All sample layouts.
  * @return array $layouts Modified sample layouts.
  */
 function jumpstart_sample_layouts( $layouts ) {
