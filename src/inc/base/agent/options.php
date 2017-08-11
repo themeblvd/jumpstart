@@ -54,7 +54,7 @@ function jumpstart_ag_options() {
 		'header' => array(
 			'header_info' => array(
 				'id'      => 'header_info',
-				// Translators: Placeholder is link to WP Menus admin page.
+				// translators: Placeholder is link to WP Menus admin page.
 				'desc'    => sprintf( __( 'These options apply to the header of your website. Note that for the main menu to show, you must assign a menu to the "Primary Navigation" location, and for there to be a side menu to toggle open on desktops, you need to assign a menu to the "Primary Side Navigation" location. This can all be done at %s.', '@@text-domain' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', '@@text-domain' ) . '</a>' ),
 				'type'    => 'info',
 			),
@@ -202,7 +202,7 @@ function jumpstart_ag_options() {
 		'footer' => array(
 			'footer_info' => array(
 				'id'       => 'footer_info',
-				// Translators: Placeholder is link to WP Menus admin page.
+				// translators: Placeholder is link to WP Menus admin page.
 				'desc'     => sprintf( __( 'These options apply to the footer of your website. Note that for the footer menu to show in the copyright area, you must assign a menu to the "Footer Navigation" location at %s.', '@@text-domain' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', '@@text-domain' ) . '</a>' ),
 				'type'     => 'info',
 			),
@@ -246,7 +246,7 @@ function jumpstart_ag_options() {
 		'side' => array(
 			'side_info' => array(
 				'id'       => 'side_info',
-				// Translators: Placeholder is link to WP Menus admin page.
+				// translators: Placeholder is link to WP Menus admin page.
 				'desc'     => sprintf( __( 'These options apply to your side panel that slides out from the side of your webste on desktop browsers, and the compiled menu that slides out on mobile devices. Note that for the side panel to show in desktop browsers, you must assign a menu to the "Primary Side Navigation" location at %s.', '@@text-domain' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', '@@text-domain' ) . '</a>' ),
 				'type'     => 'info',
 			),
@@ -529,7 +529,7 @@ function jumpstart_ag_options() {
 
 	themeblvd_add_option_tab( 'styles', __( 'Styles', '@@text-domain' ), true );
 
-	// Translators: Placeholder is link to Theme Base admin page.
+	// translators: Placeholder is link to Theme Base admin page.
 	themeblvd_add_option_section( 'styles', 'presets', __( 'Preset Styles', '@@text-domain' ), __( 'For a quick starting point, click any image below to merge its preset settings into your current option selections. Then, you can continue editing individual options.', '@@text-domain' ) . ' &mdash; ' . sprintf( __( 'Looking for more theme style variations? Try a different %s.', '@@text-domain' ), '<a href="themes.php?page=jumpstart-base" target="_blank">Theme Base</a>' ), array() );
 
 	if ( is_admin() ) {
