@@ -1,6 +1,6 @@
 <?php
 /**
- * Run Theme Blvd wordPress framework.
+ * Run Theme Blvd WordPress framework.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
@@ -8,34 +8,110 @@
  * @package     @@name-package
  */
 
-// Constants
+/**
+ * Set famework constants.
+ */
 define( 'TB_FRAMEWORK_VERSION', '2.7.0' );
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory() . '/framework' );
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
 
 /*------------------------------------------------------*/
-/* General Hooks, Filters, and Files
+/* General Files and Hooks
 /*------------------------------------------------------*/
 
-// Include files
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' ); 	// Needed on frontend if options haven't been saved
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' );	// Needed on frontend to grab user contact icons
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );	// Needed on frontend to retrieve fake tax meta
+/**
+ * Include option sanitization funtions.
+ *
+ * Note: This file is included generally because
+ * on the frontend it's needed when options aren't
+ * saved properly.
+ */
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
+
+/**
+ * Include options for user profiles.
+ *
+ * Note: This file is included generally because
+ * on the frontend to grab the user contsact icons.
+ */
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' );
+
+/**
+ * Include options for edit taxonomy pages.
+ *
+ * Note: This file is included generally because
+ * it's also used to retrieve the stored taxonomy
+ * settings on the frontend.
+ */
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );
+
+/**
+ * Include all default framework options to build
+ * the theme options page.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
+
+/**
+ * Include all default framework widget area
+ * handling and registration.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebar-handler.php' );
+
+/**
+ * Include CSS stylesheet API system.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-handler.php' );
+
+/**
+ * Include API helper functions. These are mostly
+ * wrapper functions for the various API objects.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
+
+/**
+ * Include third-party plugin compatibility
+ * functionality.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );
+
+/**
+ * Include general functions, which need to be
+ * available on the frontend and backend.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/general.php' );
+
+/**
+ * Include helper functions for using theme bases,
+ * which must be enabled at the theme level.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/base.php' );
+
+/**
+ * Include grid functions, which help to calculate
+ * and lay out columns throughout the framework.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/grid.php' );
+
+/**
+ * Include all frontend text strings and and
+ * JavaScript localization, coming from the
+ * framework.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/locals.php' );
+
+/**
+ * Include media-related helper functions.
+ */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/media.php' );
 
-// Filters
+/*
+ * Hook general filters.
+ */
 add_filter( 'image_size_names_choose', 'themeblvd_image_size_names_choose' );
 
-// Hooks
+/*
+ * Hook general actions.
+ */
 add_action( 'themeblvd_localize', 'themeblvd_load_theme_textdomain' );
 add_action( 'themeblvd_api', 'themeblvd_api_init' );
 add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
@@ -45,32 +121,118 @@ add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
 add_action( 'after_setup_theme', 'themeblvd_register_navs' );
 
 /*------------------------------------------------------*/
-/* Admin Hooks, Filters, and Files
+/* Admin Files and Hooks
 /*------------------------------------------------------*/
 
 if ( is_admin() ) {
 
-	// Include files
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
+	/**
+	 * Include general setup and helper functions for the
+	 * WordPress admin panel.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
+
+	/**
+	 * Include partial display functions for various WordPress
+	 * admin components.
+	 */
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
+
+	/**
+	 * Include user-facing text strings for the WordPress
+	 * admin panel, mostly incorporated through JavaScript.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/locals.php' );
+
+	/**
+	 * Include re-usable class used to set up meta boxes
+	 * which can be used when editing posts and pages.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-meta-box.php' );
+
+	/**
+	 * Include setup for all framework meta boxes.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/meta.php' );
+
+	/**
+	 * Include display function for options interface.
+	 *
+	 * The themeblvd_option_fields() function serves the
+	 * output for all option panels generated on admin
+	 * settings pages and in the layout builder.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-interface.php' );
+
+	/**
+	 * Include media upload handler for admin options.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/media-uploader.php' );
+
+	/**
+	 * Include singleton class for adding framework options
+	 * to WordPress's menu builder.
+	 *
+	 * Note: This object is also responsible for including
+	 * class-tb-nav-menu-edit.php, which actually extends
+	 * Walker_Nav_Menu_Edit to add the specific options for
+	 * enabling framework Mega Menu and menu item styling.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-menu-options.php' );
+
+	/**
+	 * Include re-usable class for creating option pages
+	 * in the WordPress admin.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
+
+	/**
+	 * Include singleton class for setting advanced option
+	 * types, which are not directly setup within
+	 * themeblvd_option_fields() in options-interface.php.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );
+
+	/**
+	 * Include re-usable abstract class for setting up
+	 * sortable options, along with child classes for
+	 * each type of sortable option.
+	 *
+	 * Note: All sortable option types are registered
+	 * configured from class-tb-advanced-options.php
+	 * (just above).
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-sortable-option.php' );
+
+	/**
+	 * Include system for suggesting plugins to the
+	 * end-user. Utilizes TGM class.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
+
+	/**
+	 * Include singleton class which sets up the interface
+	 * for the end-user to select a theme base (if enabled
+	 * at the theme level).
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-bases.php' );
+
+	/**
+	 * Include singleton class which gives first-time users
+	 * a welcome message, pointing them to info on getting
+	 * started.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-welcome.php' );
 
-	// Filters
+	/*
+	 * Hook admin filters.
+	 */
 	add_filter( 'admin_body_class', 'themeblvd_admin_body_class' );
 	add_filter( 'safe_style_css', 'themeblvd_safe_style_css' );
 
-	// Apply initial hooks
+	/*
+	 * Hook admin actions.
+	 */
 	add_action( 'admin_enqueue_scripts', 'themeblvd_non_modular_assets' );
 	add_action( 'admin_init', 'themeblvd_add_sanitization' );
 	add_action( 'admin_init', 'themeblvd_clear_options' );
@@ -81,28 +243,91 @@ if ( is_admin() ) {
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	add_action( 'admin_init', 'themeblvd_add_meta_boxes' );
 
-	// Apply other hooks after theme has had a chance to add filters
-	// Note: Options API/Settings finalized at after_setup_theme, 1000
+	/*
+	 * Apply other hooks after theme has had a chance
+	 * to add filters.
+	 *
+	 * Note: Options API/Settings finalized at
+	 * after_setup_theme, priority 1000.
+	 */
 	add_action( 'after_setup_theme', 'themeblvd_admin_init', 1001 );
 
 }
 
 /*------------------------------------------------------*/
-/* Frontend Hooks, Filters, and Files
+/* Frontend Files and Hooks
 /*------------------------------------------------------*/
 
-if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
+if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
-	// Include files
+	/**
+	 * Include singleton class which sets up any secondary
+	 * queries and hooks in any modifications to the main
+	 * WP Query.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-tb-query.php' );
+
+	/**
+	 * Include singleton class which initializes the website
+	 * frontend.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-tb-frontend-init.php' );
+
+	/**
+	 * Include frontend display functions, which serve as default
+	 * callback functions for primary framework actions.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/display.php' );
+
+	/**
+	 * Include frontend setup functions.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/frontend.php' );
+
+	/**
+	 * Include frontend helper functions.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/helpers.php' );
-	include_once( TB_FRAMEWORK_DIRECTORY . '/general/layout.php' );
+
+	/**
+	 * Include frontend functions to modify WordPress menus.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/menu.php' );
+
+	/**
+	 * Include frontend post format functions and filter
+	 * callbacks used for modifying content, in regards
+	 * to post formats.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/post-formats.php' );
+
+	/**
+	 * Include frontend template tag action wrappers.
+	 *
+	 * While most action hooks are generally left exposed in the
+	 * wild, some are easier to understand as a function call.
+	 * So these functions primarily serve to wrap some of the
+	 * inner do_action() calls used in top-level template files.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/general/tags.php' );
+
+	/**
+	 * Include frontend layout functions.
+	 *
+	 * These functions help to serve any custom layouts built
+	 * from the Theme Blvd Layout Builder plugin, which consist
+	 * of blocks (see next section).
+	 */
+	include_once( TB_FRAMEWORK_DIRECTORY . '/general/layout.php' );
+
+	/**
+	 * Include frontend blocks.
+	 *
+	 * Frontend blocks consist of smaller pieces, ready to
+	 * be displayed throoughout the website. All blocks have a
+	 * themeblvd_get_{block}() function that reutnrs a filterable
+	 * output, along with a themeblvd_{block}() display function.
+	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/components.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/loop.php' );
@@ -110,7 +335,9 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/parts.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/stats.php' );
 
-	// Filters
+	/*
+	 * Hook frontend filters.
+	 */
 	add_filter( 'body_class','themeblvd_body_class' );
 	add_filter( 'post_class', 'themeblvd_post_class' );
 	add_filter( 'oembed_result', 'themeblvd_oembed_result', 10, 2 );
@@ -139,65 +366,91 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_filter( 'nav_menu_css_class', 'themeblvd_nav_menu_css_class', 10, 4 );
 	add_filter( 'themeblvd_builder_section_start_count', 'themeblvd_builder_section_start_count' );
 
-	// Post Formats (if using)
+	/*
+	 * Hook post-format-specific filters.
+	 */
 	add_filter( 'the_content', 'themeblvd_content_format_audio', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_gallery', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_quote', 7 );
 	add_filter( 'the_content', 'themeblvd_content_format_video', 7 );
 
-	// Apply other hooks after theme has had a chance to add filters
-	// Note: Options API/Settings finalized at after_setup_theme, 1000
+	/*
+	 * Apply other hooks after theme has had a chance
+	 * to add filters.
+	 *
+	 * Note: Options API/Settings finalized at
+	 * after_setup_theme, priority 1000.
+	 */
 	add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
 
-	// <head> hooks
+	/*
+	 * Hook frontend actions for the document <head>.
+	 */
 	add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 	add_action( 'wp_print_scripts', 'themeblvd_html5_compat' ); // For IE8
 	add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
 	add_filter( 'wp_head', 'themeblvd_wp_title_compat', 5 ); // Only used with WP 4.0-
 
-	// Header hooks
+	/*
+	 * Hook frontend actions for the website header.
+	 */
 	add_action( 'themeblvd_header_before', 'themeblvd_header_before_default' );
 	add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 	add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
-	add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle');
+	add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle' );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
 	add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_mobile', 20 );
 	add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 	add_action( 'themeblvd_header_after', 'themeblvd_epic_thumb' );
 	add_filter( 'themeblvd_header_text', 'themeblvd_do_fa' );
 
-	// Sidebars
+	/*
+	 * Hook frontend actions for the website sidebars.
+	 */
 	add_action( 'themeblvd_fixed_sidebar_before', 'themeblvd_fixed_sidebar_before_default' );
 	add_action( 'themeblvd_fixed_sidebar_after', 'themeblvd_fixed_sidebar_after_default' );
 	add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
 
-	// Featured area hooks
+	/*
+	 * Hook frontend actions for the website
+	 * featured area. @deprecated @TODO Remove.
+	 */
 	add_action( 'themeblvd_featured', 'themeblvd_featured_start_default', 5 );
 	add_action( 'themeblvd_featured', 'themeblvd_featured_end_default', 20 );
 	add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_start_default', 5 );
 	add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_end_default', 20 );
 
-	// Main content area hooks
+	/*
+	 * Hook frontend actions for the website main
+	 * content area.
+	 */
 	add_action( 'themeblvd_main_start', 'themeblvd_main_start_default' );
 	add_action( 'themeblvd_main_top', 'themeblvd_main_top_default' );
 	add_action( 'themeblvd_main_bottom', 'themeblvd_main_bottom_default' );
 	add_action( 'themeblvd_main_end', 'themeblvd_main_end_default' );
 	add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
 
-	// Footer
+	/*
+	 * Hook frontend actions for the website footer.
+	 */
 	add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
 	add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 	add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
 	add_action( 'themeblvd_after', 'themeblvd_floating_search' );
 	add_action( 'themeblvd_after', 'themeblvd_to_top' );
 
-	// Side Panel
+	/*
+	 * Hook frontend actions for the website side panel.
+	 */
 	add_action( 'themeblvd_after', 'themeblvd_side_panel' );
 	add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_menu' );
 	add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_sub_menu', 20 );
 
-	// Content
+	/*
+	 * Hook frontend actions for the website inner
+	 * content area.
+	 */
 	add_action( 'themeblvd_content_top', 'themeblvd_archive_info' );
 	add_action( 'themeblvd_single_footer', 'themeblvd_single_footer_default' );
 	add_action( 'themeblvd_blog_meta', 'themeblvd_blog_meta_default' );
@@ -207,20 +460,48 @@ if ( ! is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) {
 	add_action( 'themeblvd_the_post_thumbnail', 'themeblvd_the_post_thumbnail_default', 9, 2 );
 	add_action( 'themeblvd_blog_content', 'themeblvd_blog_content_default' );
 
-	// WordPress Multisite Signup
+	/*
+	 * Hook frontend actions for structuring the
+	 * WordPress multisite signup page to fit with
+	 * the theme.
+	 */
 	add_action( 'before_signup_form', 'themeblvd_before_signup_form' );
 	add_action( 'after_signup_form', 'themeblvd_after_signup_form' );
+
 }
 
-// Optional Intervene for anything that needs to
-// happen before API is established.
+/**
+ * Action hook for intervening between framework
+ * running and API being established.
+ *
+ * @since @@framework-name 2.3.0
+ * @hooked null
+ */
 do_action( 'themeblvd_intervene' );
 
-// Register text domains
+/**
+ * Fires when text-domains should be registered
+ * for localization.
+ *
+ * @since @@framework-name 2.3.0
+ * @hooked themeblvd_load_theme_textdomain - 10
+ */
 do_action( 'themeblvd_localize' );
 
-// Initiate API
+/**
+ * Fires when API objects should be established
+ * in framework.
+ *
+ * @since @@framework-name 2.3.0
+ * @hooked themeblvd_api_init - 10
+ */
 do_action( 'themeblvd_api' );
 
-// Run theme functions
+/**
+ * Include theme-specific functions.
+ *
+ * Any theme-specific functions to extend the framework
+ * should be held within the top-level `/inc/` directory.
+ * This should all stem from /inc/theme-functions.php.
+ */
 include_once( get_template_directory() . '/inc/theme-functions.php' );
