@@ -1222,7 +1222,9 @@ function themeblvd_editor( $args = array() ) {
 
 			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close media panel</span>
+					<span class="screen-reader-text">
+						<?php esc_html_e( 'Close editor panel', '@@text-domain' ); ?>
+					</span>
 				</span>
 			</button>
 
@@ -1288,7 +1290,9 @@ function themeblvd_icon_browser( $args = array() ) {
 
 			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close media panel</span>
+					<span class="screen-reader-text">
+						<?php esc_html_e( 'Close icon browser panel', '@@text-domain' ); ?>
+					</span>
 				</span>
 			</button>
 
@@ -1356,7 +1360,9 @@ function themeblvd_post_browser( $args = array() ) {
 
 			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close media panel</span>
+					<span class="screen-reader-text">
+						<?php esc_html_e( 'Close post browser panel', '@@text-domain' ); ?>
+					</span>
 				</span>
 			</button>
 
@@ -1459,7 +1465,9 @@ function themeblvd_texture_browser( $args = array() ) {
 
 			<button type="button" class="media-modal-close">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close media panel</span>
+					<span class="screen-reader-text">
+						<?php esc_html_e( 'Close texture browser panel', '@@text-domain' ); ?>
+					</span>
 				</span>
 			</button>
 
@@ -1623,7 +1631,7 @@ function themeblvd_options_footer_text_default() {
 	/**
 	 * Filter changelog URL.
 	 *
-	 * @since 2.7.0
+	 * @since @@name-framework 2.0.0
 	 *
 	 * @param string URL to changelog.
 	 * @param string Template slug retrieved from get_template().
