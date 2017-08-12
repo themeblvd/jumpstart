@@ -225,11 +225,6 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-welcome.php' );
 
 	/*
-	 * Hook admin filters.
-	 */
-	add_filter( 'safe_style_css', 'themeblvd_safe_style_css' );
-
-	/*
 	 * Hook admin actions.
 	 */
 	add_action( 'admin_enqueue_scripts', 'themeblvd_non_modular_assets' );

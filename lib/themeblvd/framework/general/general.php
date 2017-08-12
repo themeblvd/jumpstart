@@ -1816,15 +1816,6 @@ function themeblvd_kses( $input ) {
 }
 
 /**
- * Add to WP's allowed inline CSS properties
- *
- * @since 2.5.0
- */
-function themeblvd_safe_style_css( $props ) {
-	return array_merge($props, array('max-width'));
-}
-
-/**
  * Generates default column widths for column element.
  *
  * @since 2.0.0
