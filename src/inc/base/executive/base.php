@@ -1,6 +1,6 @@
 <?php
 /**
- * Executive theme base functions.
+ * Executive Functions
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

@@ -1,6 +1,6 @@
 <?php
 /**
- * Entrepeneur theme base option functions.
+ * Entrepeneur Options
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

@@ -1,6 +1,6 @@
 <?php
 /**
- * Super User theme base preset style functions.
+ * Super User Style Presets
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

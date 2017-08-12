@@ -1,6 +1,6 @@
 <?php
 /**
- * Super User theme base option functions.
+ * Super User Options
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

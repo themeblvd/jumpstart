@@ -1,6 +1,6 @@
 <?php
 /**
- * Run Theme Blvd WordPress framework.
+ * Theme Blvd WordPress Framework
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

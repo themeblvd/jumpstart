@@ -1,6 +1,6 @@
 <?php
 /**
- * Agent theme base preset style functions.
+ * Agent Preset Styles
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

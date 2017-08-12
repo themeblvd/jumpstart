@@ -1,6 +1,9 @@
 <?php
 /**
- * In-dashboard update functions, specific to the theme.
+ * In-Dashboad Updates
+ *
+ * This file include the in-dashboard update functions,
+ * which are specific to the theme.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

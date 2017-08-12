@@ -1,10 +1,15 @@
 <?php
 /**
- * Theme-specific functionality, outside of framework.
+ * Theme-Specific Functions
  *
  * This file is included immediately after framework
  * runs and serves as basis for all theme-specific
  * modifications.
+ *
+ * All theme-specific functionality should be included
+ * in the theme's root `inc` directory. And any files
+ * in there besides this one should be included from
+ * this file.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

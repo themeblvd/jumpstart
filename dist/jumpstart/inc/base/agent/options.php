@@ -1,6 +1,6 @@
 <?php
 /**
- * Agent theme base option functions.
+ * Agent Options
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

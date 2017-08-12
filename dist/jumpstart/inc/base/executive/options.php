@@ -1,6 +1,6 @@
 <?php
 /**
- * Executive theme base option functions.
+ * Executive Options
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd

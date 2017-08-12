@@ -1,6 +1,6 @@
 <?php
 /**
- * Entrepreneur theme base preset style functions.
+ * Entrepreneur Preset Styles.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
