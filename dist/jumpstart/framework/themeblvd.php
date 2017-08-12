@@ -227,7 +227,6 @@ if ( is_admin() ) {
 	/*
 	 * Hook admin filters.
 	 */
-	add_filter( 'admin_body_class', 'themeblvd_admin_body_class' );
 	add_filter( 'safe_style_css', 'themeblvd_safe_style_css' );
 
 	/*

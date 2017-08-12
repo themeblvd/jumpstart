@@ -1,0 +1,26 @@
+@font-face {
+	font-family: 'theme-blvd-admin';
+	src:url('../font/theme-blvd-admin.eot?wjjqg6');
+	src:url('../font/theme-blvd-admin.eot?#iefixwjjqg6') format('embedded-opentype'),
+		url('../font/theme-blvd-admin.woff?wjjqg6') format('woff'),
+		url('../font/theme-blvd-admin.ttf?wjjqg6') format('truetype'),
+		url('../font/theme-blvd-admin.svg?wjjqg6#theme-blvd-admin') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#toplevel_page_themeblvd_builder div.wp-menu-image:before,
+#toplevel_page_themeblvd_sliders div.wp-menu-image:before,
+#menu-posts-portfolio_item div.wp-menu-image:before {
+	font-family: "theme-blvd-admin" !important;
+	font-size: 18px !important;
+}
+#toplevel_page_themeblvd_builder div.wp-menu-image:before {
+	content: '\e800';
+}
+#toplevel_page_themeblvd_sliders div.wp-menu-image:before {
+	content: '\e801';
+}
+#menu-posts-portfolio_item div.wp-menu-image:before {
+	content: '\e813';
+}

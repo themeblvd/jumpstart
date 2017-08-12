@@ -171,7 +171,7 @@ function themeblvd_non_modular_assets() {
 	 */
 	wp_enqueue_style(
 		'tb_admin_global',
-		esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-global.min.css' ),
+		esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-menu.min.css' ),
 		null,
 		TB_FRAMEWORK_VERSION
 	);
@@ -334,37 +334,6 @@ function themeblvd_clear_options() {
 		);
 
 	}
-
-}
-
-/**
- * Integrate 3.8+ admin styling.
- *
- * This function will help the transition period as we go
- * from MP6 to these new admin styles being incorporated
- * into WP core.
- *
- * @todo Remove sometime after WP 3.8 has been released. No rush.
- *
- * @since Theme_Blvd 2.4.0
- */
-function themeblvd_admin_body_class( $classes ) {
-
-	global $wp_version;
-
-	// If WordPress 3.8+, add themeblvd-ui class.
-	if ( version_compare( floatval( $wp_version ), '3.8', '>=' ) ) {
-
-		$classes = explode( ' ', $classes );
-
-		if ( ! in_array( 'themeblvd-ui', $classes ) ) {
-			$classes[] = 'themeblvd-ui';
-		}
-
-		$classes = implode( ' ', $classes );
-	}
-
-	return $classes;
 
 }
 
