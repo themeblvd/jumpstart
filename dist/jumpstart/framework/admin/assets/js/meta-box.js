@@ -3,19 +3,20 @@
  */
 jQuery(document).ready(function($) {
 
+	"use strict";
+
 	/**
-	 * Sidebar layout selection added to Page Attributes.
+	 * Toggle sidebar layout selection added to Page
+	 * Attributes meta box.
 	 *
 	 * When the "Custom Layout" or "Blank Page" page template
 	 * are selected, we want to hide the selection for a
 	 * sidebar layout, to make it obvious these template do
 	 * not use a sidebar layout.
 	 */
-	$('#page_template').on( 'change', function() {
+	$('#page_template').on('change', function() {
 
 		var value = $(this).val();
-
-		console.log(value);
 
 		if ( value == 'template_builder.php' || value == 'template_blank.php' ) {
 			$('#tb-sidebar-layout').hide();
