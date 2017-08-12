@@ -184,20 +184,20 @@ if ( is_admin() ) {
 	 * Walker_Nav_Menu_Edit to add the specific options for
 	 * enabling framework Mega Menu and menu item styling.
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-menu-options.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-theme-blvd-menu-options.php' );
 
 	/**
 	 * Include re-usable class for creating option pages
 	 * in the WordPress admin.
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-options-page.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-theme-blvd-options-page.php' );
 
 	/**
 	 * Include singleton class for setting advanced option
 	 * types, which are not directly setup within
 	 * themeblvd_option_fields() in options-interface.php.
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-advanced-options.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-theme-blvd-advanced-options.php' );
 
 	/**
 	 * Include re-usable abstract class for setting up
@@ -208,7 +208,7 @@ if ( is_admin() ) {
 	 * configured from class-tb-advanced-options.php
 	 * (just above).
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-sortable-option.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-theme-blvd-sortable-option.php' );
 
 	/**
 	 * Include system for suggesting plugins to the

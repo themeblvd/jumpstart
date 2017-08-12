@@ -580,9 +580,25 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
-			// For a value to be submitted to database it must pass through a sanitization filter
 			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) ) {
-				$clean[$id] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[$id], $option );
+
+				/*
+				 * Filters each setting in the data passed through
+				 * $_POST, which matches up with the supplied options
+				 * array.
+				 *
+				 * These filter names vary by the type of option, and
+				 * the framework hooks all sanitization here by default.
+				 *
+				 * @since Theme_Blvd 2.0.0
+				 *
+				 * @see themeblvd_add_sanitization()
+				 *
+				 * @param mixed $setting The setting value veing sanitized.
+				 * @param array $option  The original option array, for reference.
+				 */
+				$clean[ $id ] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[ $id ], $option );
+
 			}
 
 		}

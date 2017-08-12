@@ -5,7 +5,7 @@
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
- * @package     @@name-package
+ * @package     Jump_Start
  */
 class Theme_Blvd_Menu_Options {
 
@@ -76,7 +76,7 @@ class Theme_Blvd_Menu_Options {
 	 * @since 2.5.0
 	 */
 	public function walker() {
-		include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-tb-nav-menu-edit.php' );
+		include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-theme-blvd-nav-menu-edit.php' );
 		return 'Theme_Blvd_Nav_Menu_Edit';
 	}
 

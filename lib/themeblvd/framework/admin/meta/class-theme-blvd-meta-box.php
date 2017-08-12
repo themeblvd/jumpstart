@@ -286,7 +286,7 @@ class Theme_Blvd_Meta_Box {
 
 				} elseif ( isset( $input[ $id ] ) ) {
 
-					/** This filter is documented in framework/admin/options/class-tb-options-page.php */
+					/** This filter is documented in framework/admin/options/class-theme-blvd-options-page.php */
 					$input[ $id ] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[ $id ], $option );
 
 					if ( ! empty( $this->args['group'] ) ) {
