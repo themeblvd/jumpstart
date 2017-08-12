@@ -1098,6 +1098,11 @@ body.themeblvd-stop-scroll {
 	max-width: none !important;
 }
 
+/* Page Attributes */
+#tb-sidebar-layout {
+	margin-top: 0.5em;
+}
+
 /* =Confirmation prompt (Originally from Apprise plugin)
 -----------------------------------------------*/
 

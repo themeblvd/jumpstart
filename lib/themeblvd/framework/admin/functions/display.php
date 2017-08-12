@@ -1476,38 +1476,58 @@ function themeblvd_button_option( $id, $name, $val ) {
 
 /**
  * Option for selecting a sidebar layout that gets
- * inserted into out Hi-jacked "Page Attributes"
- * meta box.
+ * inserted into the "Page Attributes" meta box
+ * via the action "page_attributes_meta_box_template".
+ *
+ * This function was re-written in @@name-framework 2.7.0
+ * to simply output a sidebar layout <select> menu,
+ * and have the parameters passed in that are passed
+ * from WordPress's "page_attributes_meta_box_template"
+ * action hook.
  *
  * @since @@name-framework 2.0.0
  *
  * @param  string $layout Current sidebar layout.
  * @return string $output HTML to output.
  */
-function themeblvd_sidebar_layout_dropdown( $layout = '' ) {
+function themeblvd_sidebar_layout_dropdown( $template, $post ) {
 
-	$sidebar_layouts = themeblvd_sidebar_layouts();
+	$layouts = themeblvd_sidebar_layouts();
 
-	$output  = '<p><strong>' . esc_html__( 'Sidebar Layout', '@@text-domain' ) . '</strong></p>';
+	$current_layout = get_post_meta( $post->ID, '_tb_sidebar_layout', true );
 
-	$output .= '<select name="_tb_sidebar_layout">';
+	$excluded_templates = array( 'template_builder.php', 'template_blank.php' );
 
-	$output .= '<option value="default">' . esc_html__( 'Default Sidebar Layout', '@@text-domain' ) . '</option>';
+	echo "\n<br>\n";
 
-	foreach ( $sidebar_layouts as $sidebar_layout ) {
+	if ( in_array( $template, $excluded_templates, true ) ) {
 
-		$output .= sprintf(
-			'<option value="%s" %s>%s</option>',
-			$sidebar_layout['id'],
-			selected( $sidebar_layout['id'], $layout, false ),
-			esc_html( $sidebar_layout['name'] )
+		echo "<select id=\"tb-sidebar-layout\" name=\"_tb_sidebar_layout\" style=\"display: none\">\n";
+
+	} else {
+
+		echo "<select id=\"tb-sidebar-layout\" name=\"_tb_sidebar_layout\">\n";
+
+	}
+
+	printf(
+		"\t<option value='default'%s>%s</option>\n",
+		selected( 'default', $current_layout, false ),
+		__( 'Default Sidebar Layout', '@@text-domain' )
+	);
+
+	foreach ( $layouts as $layout ) {
+
+		printf(
+			"\t<option value='%s'%s>%s</option>\n",
+			$layout['id'],
+			selected( $layout['id'], $current_layout, false ),
+			esc_html( $layout['name'] )
 		);
 
 	}
 
-	$output .= '</select>';
-
-	return $output;
+	echo "</select>\n";
 
 }
 

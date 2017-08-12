@@ -1,39 +1,33 @@
 /**
  * All scripts for metaboxes.
  */
-
 jQuery(document).ready(function($) {
 
-	/*-----------------------------------------------------------------------------------*/
-	/* Hi-jacked Page Attributes meta box
-	/*-----------------------------------------------------------------------------------*/
+	/**
+	 * Sidebar layout selection added to Page Attributes.
+	 *
+	 * When the "Custom Layout" or "Blank Page" page template
+	 * are selected, we want to hide the selection for a
+	 * sidebar layout, to make it obvious these template do
+	 * not use a sidebar layout.
+	 */
+	$('#page_template').on( 'change', function() {
 
-	// Show the proper option on page load
-	var page_atts = $('#themeblvd_pageparentdiv'),
-		template = page_atts.find('select[name="page_template"]').val();
+		var value = $(this).val();
 
-	if( template == 'template_builder.php' || template == 'template_blank.php' ) {
-		page_atts.find('select[name="_tb_sidebar_layout"]').hide().prev('p').hide();
-	} else {
-		page_atts.find('p.tb_custom_layout').hide().prev('p').hide();
-	}
+		console.log(value);
 
-	// Show the proper option when user changes <select>
-	page_atts.find('select[name="page_template"]').change(function(){
-		var template = $(this).val();
-		if( template == 'template_builder.php' || template == 'template_blank.php' ) {
-			page_atts.find('select[name="_tb_sidebar_layout"]').hide().prev('p').hide();
-			page_atts.find('p.tb_custom_layout').show().prev('p').show();
+		if ( value == 'template_builder.php' || value == 'template_blank.php' ) {
+			$('#tb-sidebar-layout').hide();
 		} else {
-			page_atts.find('p.tb_custom_layout').hide().prev('p').hide();
-			page_atts.find('select[name="_tb_sidebar_layout"]').show().prev('p').show();
+			$('#tb-sidebar-layout').show();
 		}
+
 	});
 
-	/*-----------------------------------------------------------------------------------*/
-	/* Apply framework scripts to our meta boxes
-	/*-----------------------------------------------------------------------------------*/
-
+	/**
+	 * Apply framework scripts to our meta boxes.
+	 */
 	$('.tb-meta-box').themeblvd('init');
 	$('.tb-meta-box').themeblvd('options', 'bind');
 	$('.tb-meta-box').themeblvd('options', 'setup');
