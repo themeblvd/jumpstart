@@ -29,12 +29,14 @@ define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
 
 /**
- * Include options for user profiles.
+ * Include options for user profiles, mainly for
+ * configuring author box settings and author
+ * archive post display.
  *
  * Note: This file is included generally because
- * on the frontend to grab the user contsact icons.
+ * it's used on the frontend to get user contact icons.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-theme-blvd-user-options.php' );
 
 /**
  * Include options for edit taxonomy pages.
@@ -43,7 +45,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-user-options.php' )
  * it's also used to retrieve the stored taxonomy
  * settings on the frontend.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-tax-options.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-theme-blvd-tax-options.php' );
 
 /**
  * Include all default framework options to build
@@ -152,7 +154,7 @@ if ( is_admin() ) {
 	 * Include re-usable class used to set up meta boxes
 	 * which can be used when editing posts and pages.
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-tb-meta-box.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-theme-blvd-meta-box.php' );
 
 	/**
 	 * Include setup for all framework meta boxes.
