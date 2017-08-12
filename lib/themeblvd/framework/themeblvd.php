@@ -127,14 +127,18 @@ add_action( 'after_setup_theme', 'themeblvd_register_navs' );
 if ( is_admin() ) {
 
 	/**
-	 * Include general setup and helper functions for the
-	 * WordPress admin panel.
+	 * Include admin setup functions.
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/general.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/setup.php' );
 
 	/**
-	 * Include partial display functions for various WordPress
-	 * admin components.
+	 * Include admin helper functions.
+	 */
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/helpers.php' );
+
+	/**
+	 * Include partial display functions for various admin
+	 * components.
 	 */
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/functions/display.php' );
 
