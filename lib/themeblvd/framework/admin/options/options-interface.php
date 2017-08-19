@@ -17,12 +17,12 @@
  * @param  string  $option_name Prefix for all field name attributes.
  * @param  array   $options     All options to show in form.
  * @param  array   $settings    Any current settings for all form fields.
- * @param  bool    $close       Whether to add closing </div>.
- * @return array   $form {
+ * @param  bool    $close       Whether to add closing </div>. @deprecated Now figured out automatically.
+ * @return array {
  *     Final options form.
  *
  *     @type string HTML output for optins page.
- *     @type array  Tabbed navigation, if exists.
+ *     @type string HTML output for tabbed navigation, if exists.
  * }
  */
 function themeblvd_option_fields( $option_name, $options, $settings, $close = true ) {
@@ -2587,16 +2587,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		}
 	}
 
-	// Optional closing div.
-	if ( $menu && $close ) {
-		$output .= '</div>';
+	/*
+	 * If a tabbed navigation was added with any options
+	 * with type `heading`, close the last tab.
+	 */
+	if ( $menu ) {
+		$output .= '</div><!-- .group (end) -->';
 	}
 
-	$form = array(
+	return array(
 		$output, // The actual options form, split into sections and tabs.
 		$menu,   // Navigation tabs, if there were any `heading` option types.
 	);
-
-	return $form;
 
 }
