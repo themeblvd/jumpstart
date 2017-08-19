@@ -34,7 +34,6 @@ function themeblvd_setup() {
 			'base'				=> false			// Theme base
 		),
 		'meta' => array(
-			'hijack_atts'		=> true,			// Hijack and modify "Page Attributes"
 			'page_options'		=> true,			// Meta box for basic page options
 			'post_options'		=> true,			// Meta box for basic post options
 			'pto'				=> true,			// Meta box for "Post Grid/List" page template
@@ -1796,6 +1795,7 @@ function themeblvd_allowed_tags() {
 	);
 
 	return apply_filters('themeblvd_allowed_tags', $tags);
+
 }
 
 /**
