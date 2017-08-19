@@ -70,35 +70,34 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 }
 
 /**
- * Hijack and modify default WP's "Page Attributes"
- * meta box.
+ * Saved any data we've added to the Page Attributes
+ * meta box of WordPress.
+ *
+ * Currently this just includes an option for a sidebar
+ * layout selection, when editing pages.
  *
  * @since @@name-framework 2.0.0
- */
-function themeblvd_hijack_page_atts() {
-
-	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
-
-		remove_meta_box( 'pageparentdiv', 'page', 'side' );
-		add_meta_box( 'themeblvd_pageparentdiv', __( 'Page Attributes', '@@text-domain' ), 'themeblvd_page_attributes_meta_box', 'page', 'side', 'core' );
-
-	}
-
-}
-
-/**
- * Saved data from Hi-jacked "Page Attributes"
- * meta box.
  *
- * @since @@name-framework 2.0.0
+ * @param int $post_id Post ID for post being saved.
  */
 function themeblvd_save_page_atts( $post_id ) {
 
-	if ( themeblvd_supports( 'meta', 'hijack_atts' ) ) {
+	check_admin_referer(
+		'themeblvd_save_page_atts_' . $post_id,
+		'themeblvd_save_page_atts_nonce'
+	);
 
-		if ( isset( $_POST['_tb_sidebar_layout'] ) ) {
+	if ( isset( $_POST['_tb_sidebar_layout'] ) ) {
 
-			// Save sidebar layout.
+		$layouts = array_merge(
+			array(
+				'default' => null,
+			),
+			themeblvd_sidebar_layouts()
+		);
+
+		if ( array_key_exists( $_POST['_tb_sidebar_layout'], $layouts ) ) {
+
 			update_post_meta(
 				$post_id,
 				'_tb_sidebar_layout',
@@ -106,18 +105,8 @@ function themeblvd_save_page_atts( $post_id ) {
 			);
 
 		}
-
-		if ( isset( $_POST['_tb_custom_layout'] ) ) { // Backwards compat.
-
-			// Save custom layout.
-			update_post_meta(
-				$post_id,
-				'_tb_custom_layout',
-				$_POST['_tb_custom_layout']
-			);
-
-		}
 	}
+
 }
 
 /**

@@ -241,7 +241,7 @@ if ( is_admin() ) {
 	add_action( 'themeblvd_options_footer_text', 'themeblvd_options_footer_text_default' );
 	add_action( 'admin_init', 'themeblvd_update_version' );
 	add_action( 'page_attributes_meta_box_template', 'themeblvd_sidebar_layout_dropdown', 10, 2 );
-	add_action( 'save_post', 'themeblvd_save_page_atts' );
+	add_action( 'save_post_page', 'themeblvd_save_page_atts' );
 	add_action( 'after_setup_theme', 'themeblvd_plugins' );
 	add_action( 'admin_init', 'themeblvd_add_meta_boxes' );
 
