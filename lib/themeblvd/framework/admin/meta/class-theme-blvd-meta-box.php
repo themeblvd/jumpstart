@@ -64,6 +64,7 @@ class Theme_Blvd_Meta_Box {
 	public function __construct( $id, $args, $options ) {
 
 		$this->id = $id;
+
 		$this->options = $options;
 
 		if ( ! $this->options ) {
@@ -73,16 +74,19 @@ class Theme_Blvd_Meta_Box {
 		$this->args = wp_parse_args(
 			$args, array(
 				'page'       => array( 'post' ), // Can contain post, page, link, or custom post type's slug.
-			'context'    => 'normal',        // normal, advanced, or side
-			'priority'   => 'high',          // default, high, or low
-			'save_empty' => true,            // Save empty custom fields?
-			'textures'   => false,           // Include texture browser?
+				'context'    => 'normal',        // normal, advanced, or side
+				'priority'   => 'high',          // default, high, or low
+				'save_empty' => true,            // Save empty custom fields?
+				'textures'   => false,           // Include texture browser?
 			)
 		);
 
 		add_action( 'current_screen', array( $this, 'helpers' ) );
+
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
+
 		add_action( 'save_post', array( $this, 'save' ) );
+
 	}
 
 	/**
@@ -172,9 +176,13 @@ class Theme_Blvd_Meta_Box {
 				$settings[ $option['id'] ] = get_post_meta( $post->ID, $option['id'], true );
 
 				if ( ! $settings[ $option['id'] ] ) {
+
 					if ( 'radio' == $option['type'] || 'images' == $option['type'] || 'select' == $option['type'] ) {
+
 						if ( isset( $option['std'] ) ) {
+
 							$settings[ $option['id'] ] = $option['std'];
+
 						}
 					}
 				}
@@ -183,15 +191,19 @@ class Theme_Blvd_Meta_Box {
 
 		$hidden = array(
 			'placeholder' => array(
-				'id'    => '_tb_placeholder',
-				'std'   => 1,
-				'type'  => 'hidden',
+				'id'   => '_tb_placeholder',
+				'std'  => 1,
+				'type' => 'hidden',
 			),
 		);
 
 		$options = array_merge( $hidden, $this->options );
 
-		$form = themeblvd_option_fields( 'themeblvd_meta[' . $this->id . ']', $options, $settings, false );
+		$form = themeblvd_option_fields(
+			'themeblvd_meta[' . $this->id . ']',
+			$options,
+			$settings
+		);
 
 		echo $form[0];
 
@@ -199,12 +211,13 @@ class Theme_Blvd_Meta_Box {
 
 			printf(
 				'<p class="tb-meta-desc">%s</p>',
-				hemeblvd_kses( $this->args['desc'] )
+				themeblvd_kses( $this->args['desc'] )
 			);
 
 		}
 
 		echo '</div><!-- .tb-meta-box (end) -->';
+
 	}
 
 	/**
@@ -225,6 +238,7 @@ class Theme_Blvd_Meta_Box {
 		}
 
 		if ( ! empty( $input ) ) {
+
 			foreach ( $this->options as $option ) {
 
 				if ( empty( $option['id'] ) ) {

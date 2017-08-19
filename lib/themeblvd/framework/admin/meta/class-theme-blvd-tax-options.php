@@ -132,7 +132,7 @@ class Theme_Blvd_Tax_Options {
 	 */
 	public function edit( $term, $taxonomy ) {
 
-		// Sidebar Layouts
+		// Setup sidebar layouts to choose from.
 		$layouts = themeblvd_sidebar_layouts();
 
 		$select_layouts = array(
@@ -143,7 +143,7 @@ class Theme_Blvd_Tax_Options {
 			$select_layouts[ $layout['id'] ] = $layout['name'];
 		}
 
-		// Post Display modes
+		// Setup pst display modes to choose from.
 		$select_modes = array_merge(
 			array(
 				'default' => __( 'Use default setting', '@@text-domain' ),
@@ -151,9 +151,11 @@ class Theme_Blvd_Tax_Options {
 			themeblvd_get_modes()
 		);
 
-		// Values
+		// Set current values for form.
 		$sidebar_layout = $this->get( $taxonomy, $term->slug, 'sidebar_layout', 'default' );
+
 		$info = $this->get( $taxonomy, $term->slug, 'info', 'default' );
+
 		$mode = $this->get( $taxonomy, $term->slug, 'mode', 'default' );
 
 		?>
@@ -246,6 +248,7 @@ class Theme_Blvd_Tax_Options {
 		global $_POST;
 
 		$term = get_term_by( 'id', $term_id, $tax );
+
 		$term = $term->slug;
 
 		$meta = get_option( "tb_meta_{$tax}_{$term}", array() );

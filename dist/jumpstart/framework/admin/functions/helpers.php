@@ -20,12 +20,17 @@
 function themeblvd_get_assignment_conflicts( $posts ) {
 
 	$non_conflicts = array();
+
 	$conflicts = array();
+
 	$locations = themeblvd_get_sidebar_locations();
 
 	foreach ( $locations as $location ) {
+
 		$conflicts[ $location['location']['id'] ] = array();
+
 		$non_conflicts[ $location['location']['id'] ] = array();
+
 	}
 
 	/*
@@ -48,6 +53,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 			$assignments = get_post_meta( $post->ID, 'assignments', true );
 
 			if ( is_array( $assignments ) && ! empty( $assignments ) ) {
+
 				foreach ( $assignments as $key => $assignment ) {
 
 					if ( 'custom' !== $key && in_array( $key, $non_conflicts[ $location ] ) ) {
@@ -171,6 +177,7 @@ function themeblvd_get_icons( $type = 'vector' ) {
 	if ( ! $icons ) {
 
 		$icons = array();
+
 		$fetch_icons = array();
 
 		$file = wp_remote_fopen( esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.css' ) );
@@ -188,7 +195,9 @@ function themeblvd_get_icons( $type = 'vector' ) {
 				if ( false !== strpos( $line, '.fa-' ) && false !== strpos( $line, ':before' ) ) {
 
 					$icon = str_replace( '.fa-', '', $line );
+
 					$icon = str_replace( ':before {', '', $icon );
+
 					$icon = str_replace( ':before,', '', $icon );
 
 					$fetch_icons[] = trim( $icon );

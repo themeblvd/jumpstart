@@ -351,7 +351,6 @@ class Theme_Blvd_User_Options {
 		 * the framework handles checkbpxes, for a consistent
 		 * experience on the frontend, when retrieving the values.
 		 */
-
 		if ( empty( $_POST['_tb_box_single'] ) ) {
 			update_user_meta( $user_id, '_tb_box_single', '0' );
 		} else {

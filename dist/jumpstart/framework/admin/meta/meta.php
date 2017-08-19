@@ -526,6 +526,7 @@ function setup_themeblvd_layout_meta() {
 	} elseif ( ! themeblvd_supports( 'display', 'suck_up' ) ) {
 
 		unset( $setup['options']['tb_layout_header']['options']['suck_up'] );
+
 		unset( $setup['options']['tb_layout_header']['desc'] );
 
 	} elseif ( ! themeblvd_supports( 'display', 'hide_top' ) ) {
