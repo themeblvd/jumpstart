@@ -1652,7 +1652,6 @@ class Theme_Blvd_Options_API {
 			'cap'			=> themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'		=> $this->get_option_id(),
 			'icon'			=> '',
-			'closer'		=> true, // Needs to be false if option page has no tabs
 			'export'		=> true,
 			'import'		=> true
 		);

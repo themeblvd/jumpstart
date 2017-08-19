@@ -1,19 +1,36 @@
 <?php
 /**
- * Theme Blvd Options Page. Create an options panel
- * using internal options framework.
+ * Option Pages
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
  * @package     @@name-package
  */
+
+/**
+ * This is a re-usable class used to create options
+ * pages within the framework.
+ *
+ * By default, it's used to create the theme options
+ * page. But it's also used by other Theme Blvd plugins
+ * to create their options pages.
+ *
+ * This class incorporates the options interface system,
+ * which is actually separate. See themeblvd_option_fields().
+ *
+ * @since @@name-framework 2.2.0
+ *
+ * @param string $id      A unique ID for this admin page
+ * @param array  $options Options for admin page
+ * @param array  $args    Arguments to setup various elements of the admin page
+ */
 class Theme_Blvd_Options_Page {
 
 	/**
 	 * ID that the options panel is going to be saved under.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 * @var array
 	 */
 	public $id;
@@ -21,7 +38,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Options for the panel.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 * @var array
 	 */
 	public $options;
@@ -29,7 +46,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Arguments to pass into admin page function.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 * @var array
 	 */
 	public $args;
@@ -38,7 +55,7 @@ class Theme_Blvd_Options_Page {
 	 * If sanitization has run yet or not when saving
 	 * options.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 * @var bool
 	 */
 	private $sanitized = false;
@@ -46,7 +63,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has editor modal.
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $editor = false;
@@ -54,7 +71,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has code editor modal.
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $code_editor = false;
@@ -62,7 +79,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has vector icon browser
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $icons_vector = false;
@@ -70,7 +87,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has image icon browser
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $icons_image = false;
@@ -78,7 +95,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has post ID browser
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $find_post_id = false;
@@ -86,7 +103,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has texture browser
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $textures = false;
@@ -94,7 +111,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page needs google maps
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var bool
 	 */
 	public $gmap = false;
@@ -102,74 +119,72 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * URL to importer, if enabled
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 * @var string
 	 */
 	public $importer_url = '';
 
 	/**
-	 * Constructor.
+	 * Class constructor.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 *
-	 * @param string $id A unique ID for this admin page
-	 * @param array $options Options for admin page
-	 * @param array $args Arguments to setup various elements of the admin page
+	 * @param string $id      A unique ID for this admin page.
+	 * @param array  $options Options for admin page.
+	 * @param array  $args    Arguments to setup various elements of the admin page.
 	 */
 	public function __construct( $id, $options, $args = null ) {
 
-		// Arguments
-		$defaults = array(
-			'page_title' 	=> __('Theme Options', '@@text-domain'),
-			'menu_title' 	=> __('Theme Options', '@@text-domain'),
-			'cap'			=> themeblvd_admin_module_cap( 'options' ),
-			'menu_slug'		=> '',
-			'icon'			=> '',
-			'form_action'	=> 'options.php',
-			'export'		=> false,
-			'import'		=> false
-		);
-		$this->args = wp_parse_args( $args, $defaults );
+		$this->args = wp_parse_args( $args, array(
+			'page_title'  => __( 'Theme Options', '@@text-domain' ),
+			'menu_title'  => __( 'Theme Options', '@@text-domain' ),
+			'cap'         => themeblvd_admin_module_cap( 'options' ),
+			'menu_slug'   => '',
+			'icon'        => '',
+			'form_action' => 'options.php',
+			'export'      => false,
+			'import'      => false,
+		));
 
-		// Options page menu slug
 		if ( ! $this->args['menu_slug'] ) {
 			$this->args['menu_slug'] = $id;
 		}
 
-		// Option ID -- i.e. get_option( $id )
 		$this->id = $id;
 
-		// Form options
 		$this->options = $options;
 
-		// Add admin page and register settings
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
 		add_action( 'admin_init', array( $this, 'register' ) );
 
-		// Whether options page has hidden modals
+		/*
+		 * Here, we'l figure out if any options included in
+		 * this options page require hidden modal windows
+		 * from the framework.
+		 */
 		foreach ( $this->options as $option ) {
 
-			// Text option, looking for icon browsers
-			if ( $option['type'] == 'text' ) {
+			// Text option, looking for icon browsers.
+			if ( 'text' === $option['type'] ) {
 
 				if ( isset( $option['icon'] ) ) {
 
-					if ( $option['icon'] == 'vector' ) {
+					if ( 'vector' === $option['icon'] ) {
 						$this->icons_vector = true;
 					}
 
-					if ( $option['icon'] == 'image' ) {
+					if ( 'image' === $option['icon'] ) {
 						$this->icons_image = true;
 					}
 
-					if ( $option['icon'] == 'post_id' ) {
+					if ( 'post_id' === $option['icon'] ) {
 						$this->find_post_id = true;
 					}
 				}
 			}
 
-			// Textareas, looking for visual or code editor
-			if ( $option['type'] == 'textarea' ) {
+			// Textarea option, looking for visual or code editor.
+			if ( 'textarea' === $option['type'] ) {
 
 				if ( isset( $option['editor'] ) && $option['editor'] ) {
 					$this->editor = true;
@@ -180,76 +195,89 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
-			// Directly embedded code editor
-			if ( $option['type'] == 'code' ) {
+			// Directly embedded code editor.
+			if ( 'code' === $option['type'] ) {
 				$this->code_editor = true;
 			}
 
-			// Selects, looking for texture browser
-			if ( $option['type'] == 'select' ) {
-
-				if ( isset( $option['select'] ) && $option['select'] == 'textures' ) {
+			// Selects, looking for texture browser.
+			if ( 'select' === $option['type'] ) {
+				if ( isset( $option['select'] ) && 'textures' === $option['select'] ) {
 					$this->textures = true;
 				}
-
 			}
 
-			// Look for "geo" option type
-			if ( $option['type'] == 'geo' ) {
+			// Look for "geo" option type.
+			if ( 'geo' === $option['type'] ) {
 				$this->gmap = true;
 			}
 
+			// We can just end the loop, if using all the hidden modals.
 			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->find_post_id && $this->textures && $this->gmap ) {
 				break;
 			}
 		}
 
-		// Add icon browsers
+		// Add icon browsers.
 		if ( $this->icons_vector || $this->icons_image ) {
 			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
 		}
 
-		// Add Post ID browser
+		// Add Post ID browser.
 		if ( $this->find_post_id ) {
 			add_action( 'current_screen', array( $this, 'add_post_browser' ) );
 		}
 
-		// Add texture browsers
+		// Add texture browsers.
 		if ( $this->textures ) {
 			add_action( 'current_screen', array( $this, 'add_texture_browser' ) );
 		}
 
-		// Add Editor into footer, which any textarea type
-		// options with "editor" set to true can utilize.
+		/*
+		 * Add Editor into footer, which any textarea type
+		 * options with "editor" set to true can utilize.
+		 */
 		if ( $this->editor ) {
 
 			add_action( 'current_screen', array( $this, 'add_editor' ) );
 
-			// Shortcode generator for Editor modal
-			if ( defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
+			// Shortcode generator for Editor modal.
+			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
 				if ( isset( $GLOBALS['_themeblvd_shortcode_generator'] ) ) {
-					add_action( 'admin_footer-appearance_page_'.$this->id, array( $GLOBALS['_themeblvd_shortcode_generator'], 'add_modal' ) );
-				}
 
+					add_action(
+						'admin_footer-appearance_page_' . $this->id,
+						array( $GLOBALS['_themeblvd_shortcode_generator'], 'add_modal' )
+					);
+
+				}
 			}
 		}
 
-		// Create any objects needed for certain types of
-		// options. Our create() method will ensure no
-		// duplicates are created, and only objects are created
-		// on neccessary option types.
+		/*
+		 * Create any objects needed for certain types of options.
+		 * Our create() method will ensure no duplicates are created,
+		 * and only objects are created on neccessary option types.
+		 */
 		$advanced = Theme_Blvd_Advanced_Options::get_instance();
 
 		foreach ( $this->options as $option ) {
+
 			$advanced->create( $option['type'] );
+
 		}
 
-		// Allow for exporting
-		if ( $this->args['export'] && class_exists('Theme_Blvd_Export_Options') ) { // requires Theme Blvd Importer plugin
+		// Allow for exporting.
+		if ( $this->args['export'] && class_exists( 'Theme_Blvd_Export_Options' ) ) { // requires Theme Blvd Importer plugin
 
 			$args = array(
-				'base_url'	=> add_query_arg( array('page' => $this->id), admin_url('themes.php') ),
-				'cancel'	=> __('Nothing to export. Theme Options have never been saved.', '@@text-domain')
+				'base_url' => add_query_arg(
+					array(
+						'page' => $this->id,
+					),
+					admin_url( 'themes.php' )
+				),
+				'cancel'   => __( 'Nothing to export. Theme Options have never been saved.', '@@text-domain' ),
 			);
 
 			$export = new Theme_Blvd_Export_Options( $this->id, $args );
@@ -260,15 +288,21 @@ class Theme_Blvd_Options_Page {
 
 		}
 
-		// Allow for importing
-		if ( $this->args['import'] && class_exists('Theme_Blvd_Import_Options') ) { // requires Theme Blvd Importer plugin
+		// Allow for importing.
+		if ( $this->args['import'] && class_exists( 'Theme_Blvd_Import_Options' ) ) { // Requires Theme Blvd Importer plugin.
 
 			$args = array(
-				'redirect' => add_query_arg( array('page' => $this->id), admin_url('themes.php') ) // Current options page URL
+				'redirect' => add_query_arg(
+					array(
+						'page' => $this->id,
+					),
+					admin_url( 'themes.php' )
+				), // Current options page URL
 			);
 
 			$import = new Theme_Blvd_Import_Options( $this->id, $args );
-			$this->importer_url = $import->get_url(); // URL of page where importer is
+
+			$this->importer_url = $import->get_url(); // URL of page where importer is.
 
 		} else {
 
@@ -284,102 +318,202 @@ class Theme_Blvd_Options_Page {
 	 * This set of options will all be registered under one
 	 * option in a single multi-dimensional array.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 */
 	public function register() {
-		// Registers the settings fields and callback
-		register_setting( $this->id, $this->id, array( $this, 'validate' ) );
+
+		register_setting(
+			$this->id,
+			$this->id,
+			array( $this, 'validate' )
+		);
+
 	}
 
 	/**
 	 * Add the menu page.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 */
 	public function add_page() {
-		$admin_page = add_theme_page( $this->args['page_title'], $this->args['menu_title'], $this->args['cap'], $this->args['menu_slug'], array( $this, 'admin_page' ) );
-		add_action( 'admin_print_styles-'.$admin_page, array( $this, 'load_styles' ) );
-		add_action( 'admin_print_scripts-'.$admin_page, array( $this, 'load_scripts' ) );
+
+		$admin_page = add_theme_page(
+			$this->args['page_title'],
+			$this->args['menu_title'],
+			$this->args['cap'],
+			$this->args['menu_slug'],
+			array( $this, 'admin_page' )
+		);
+
+		add_action(
+			'admin_print_styles-' . $admin_page,
+			array( $this, 'load_styles' )
+		);
+
+		add_action(
+			'admin_print_scripts-' . $admin_page,
+			array( $this, 'load_scripts' )
+		);
+
 	}
 
 	/**
-	 * Load CSS.
+	 * Enqueue CSS for options page.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 */
 	public function load_styles() {
 
-		// WP Built-in styles
 		wp_enqueue_style( 'wp-color-picker' );
 
-		// Framework
-		wp_enqueue_style( 'themeblvd_admin', esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css' ), null, TB_FRAMEWORK_VERSION );
-		wp_enqueue_style( 'themeblvd_options', esc_url( TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css' ), null, TB_FRAMEWORK_VERSION );
+		wp_enqueue_style(
+			'themeblvd_admin',
+			esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css' ),
+			null,
+			TB_FRAMEWORK_VERSION
+		);
 
-		// Shortcode Generator
-		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
-			wp_enqueue_style( 'fontawesome', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css' ), null, TB_FRAMEWORK_VERSION );
-			wp_enqueue_style( 'tb_shortcode_generator', esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css' ), false, TB_SHORTCODES_PLUGIN_VERSION );
+		wp_enqueue_style(
+			'themeblvd_options',
+			esc_url( TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css' ),
+			null,
+			TB_FRAMEWORK_VERSION
+		);
+
+		// FontAwesome is required for icon browser and shortcode generator.
+		if ( $this->icons_vector || $this->editor ) {
+
+			wp_enqueue_style(
+				'fontawesome',
+				esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css' ),
+				null,
+				TB_FRAMEWORK_VERSION
+			);
+
 		}
 
-		// Icon Browser (vector)
-		if ( $this->icons_vector ) {
-			wp_enqueue_style( 'fontawesome', esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css' ), null, TB_FRAMEWORK_VERSION );
+		/// Shortcode generator for Theme Blvd shortcodes plugin.
+		if ( $this->editor ) {
+			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
+
+				wp_enqueue_style(
+					'tb_shortcode_generator',
+					esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css' ),
+					false,
+					TB_SHORTCODES_PLUGIN_VERSION
+				);
+
+			}
 		}
 
-		// Code Editor
+		// Code mirror is required for code editor.
 		if ( $this->code_editor ) {
-			wp_enqueue_style( 'codemirror', esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css' ), null, '4.0' );
-			wp_enqueue_style( 'codemirror-theme', esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/themeblvd.min.css' ), null, '4.0' );
+
+			wp_enqueue_style(
+				'codemirror',
+				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css' ),
+				null, '4.0'
+			);
+
+			wp_enqueue_style(
+				'codemirror-theme',
+				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/themeblvd.min.css' ),
+				null,
+				'4.0'
+			);
+
 		}
 	}
 
 	/**
-	 * Load scripts.
+	 * Enqueue JavaScript for options page.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 */
 	public function load_scripts() {
 
-		// WP Built-in scripts
-		wp_enqueue_script( 'jquery-ui-core');
+		wp_enqueue_script( 'jquery-ui-core' );
+
 		wp_enqueue_script( 'jquery-ui-sortable' );
+
 		wp_enqueue_script( 'jquery-ui-slider' );
+
 		wp_enqueue_script( 'wp-color-picker' );
 
-		// WP Built-in Media Modal
-		if ( function_exists( 'wp_enqueue_media' ) ) {
-			wp_enqueue_media();
-		}
+		wp_enqueue_media();
 
-		// Google maps
 		if ( $this->gmap ) {
 
 			$gmaps = 'https://maps.googleapis.com/maps/api/js';
 
-			if ( $gmap_key = themeblvd_get_option('gmap_api_key') ) {
-				$gmaps = add_query_arg('key', $gmap_key, $gmaps);
+			$gmap_key = themeblvd_get_option( 'gmap_api_key' );
+
+			if ( $gmap_key ) {
+				$gmaps = add_query_arg( 'key', $gmap_key, $gmaps );
 			}
 
-			wp_enqueue_script( 'themeblvd_gmap', esc_url($gmaps), array(), null );
+			wp_enqueue_script( 'themeblvd_gmap', esc_url( $gmaps ), array(), null );
 
 		}
 
-		// Framework
-		wp_enqueue_script( 'themeblvd_admin', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_enqueue_script( 'themeblvd_modal', esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
-		wp_localize_script( 'themeblvd_admin', 'themeblvd', themeblvd_get_admin_locals( 'js' ) );
-		wp_enqueue_script( 'themeblvd_options', esc_url( TB_FRAMEWORK_URI . '/admin/options/js/options.min.js' ), array('jquery'), TB_FRAMEWORK_VERSION );
+		wp_enqueue_script(
+			'themeblvd_admin',
+			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js' ),
+			array( 'jquery' ),
+			TB_FRAMEWORK_VERSION
+		);
 
-		// Shortcode Generator
-		if ( $this->editor && defined('TB_SHORTCODES_PLUGIN_VERSION') && version_compare(TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=') ) {
-			wp_enqueue_script( 'tb_shortcode_generator', esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/js/generator.min.js' ), false, TB_SHORTCODES_PLUGIN_VERSION );
+		wp_enqueue_script(
+			'themeblvd_modal',
+			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js' ),
+			array( 'jquery' ),
+			TB_FRAMEWORK_VERSION
+		);
+
+		wp_localize_script(
+			'themeblvd_admin',
+			'themeblvd',
+			themeblvd_get_admin_locals( 'js' )
+		);
+
+		wp_enqueue_script(
+			'themeblvd_options',
+			esc_url( TB_FRAMEWORK_URI . '/admin/options/js/options.min.js' ),
+			array( 'jquery' ),
+			TB_FRAMEWORK_VERSION
+		);
+
+		// Shortcode generator for Theme Blvd shortcodes plugin.
+		if ( $this->editor ) {
+			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
+
+				wp_enqueue_script(
+					'tb_shortcode_generator',
+					esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/js/generator.min.js' ),
+					false,
+					TB_SHORTCODES_PLUGIN_VERSION
+				);
+
+			}
 		}
 
-		// Code Editor
+		// Code mirror is required for code editor.
 		if ( $this->code_editor ) {
-			wp_enqueue_script( 'codemirror', esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.js' ), null, '4.0' );
-			wp_enqueue_script( 'codemirror-modes', esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js' ), null, '4.0' );
+
+			wp_enqueue_script(
+				'codemirror',
+				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.js' ),
+				null,
+				'4.0'
+			);
+
+			wp_enqueue_script(
+				'codemirror-modes',
+				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js' ),
+				null,
+				'4.0'
+			);
+
 		}
 
 	}
@@ -395,191 +529,379 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * Nonces are provided using the settings_fields()
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 */
 	public function admin_page() {
 
-		// Get any current settings from the database.
-		$settings = apply_filters( 'themeblvd_frontend_options', get_option( $this->id ) ); // Name of filter isn't very logical, but has been around through many versions, so must remain
+		/**
+		 * Filters current settings from the database.
+		 *
+		 * The filter name isn't all too logical in this circumstance,
+		 * but has been around since the beginning; so it must remain!
+		 *
+		 * @since @@name-framework 2.0.0
+		 *
+		 * @param array Settings from database for entire options page.
+		 */
+		$settings = apply_filters( 'themeblvd_frontend_options', get_option( $this->id ) );
 
-		if ( themeblvd_supports('admin', 'base') && isset($this->options['theme_base']) ) {
+		/*
+		 * Add warning to user if the currently saved theme base doesn't
+		 * match up to saved options.
+		 *
+		 * If the this is the theme options page and theme bases are
+		 * being used, this message will basically show any time the
+		 * theme base has been changed by the user at Appearance > Theme Base,
+		 * but the theme options page hasn't been saved again.
+		 *
+		 * Because theme bases alter the available options, it's required
+		 * that the end-user configure and re-save theme options page when
+		 * switching between theme bases.
+		 */
+		if ( themeblvd_supports( 'admin', 'base' ) && isset( $this->options['theme_base'] ) ) {
 
 			$base = themeblvd_get_base();
 
-			if ( $base && ( empty($settings['theme_base']) || $settings['theme_base'] != $base ) ) {
-				add_settings_error( $this->id, 'theme_base_error', __('Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain'), 'themeblvd-error error' );
+			if ( $base && ( empty( $settings['theme_base'] ) || $settings['theme_base'] != $base ) ) {
+
+				add_settings_error(
+					$this->id,
+					'theme_base_error',
+					__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain' ),
+					'themeblvd-error error'
+				);
+
 			}
 		}
 
-	    // Setup options form
-		$return = themeblvd_option_fields( $this->id, $this->options, $settings );
+		$fields = themeblvd_option_fields( $this->id, $this->options, $settings );
 
-		// Display any errors or update messages.
 		settings_errors( $this->id );
 
-		// Wrap classes
 		$class = 'wrap';
 
-		if ( $this->id == themeblvd_get_option_name() ) {
+		if ( themeblvd_get_option_name() == $this->id ) {
 
 			$class .= ' tb-theme-options-wrap';
 
-			foreach ( themeblvd_get_compat(true) as $plugin ) {
-				if ( $plugin != 'portfolios' && themeblvd_installed($plugin) ) {
-					$class .= sprintf(' %s-installed', $plugin);
+			foreach ( themeblvd_get_compat( true ) as $plugin ) {
+
+				if ( 'portfolios' !== $plugin && themeblvd_installed( $plugin ) ) {
+
+					$class .= sprintf( ' %s-installed', $plugin );
+
 				}
 			}
 
-			if ( strpos($class, 'installed') !== false ) {
+			if ( strpos( $class, 'installed' ) !== false ) {
 				$class .= ' plugins-installed';
 			}
 
-			// If we want to add options for another plugin, you
-			// can ensure the "Plugins" tab is shown by making sure
-			// "plugins-installed" class is filtered on here.
-			$class = apply_filters('themeblvd_theme_options_wrap_class', $class, $this->id);
+			/**
+			 * Filter the CSS class that gets added to the wrapping DIV
+			 * of an options page.
+			 *
+			 * If we want to add options for another plugin, you
+			 * can ensure the "Plugins" tab is shown by making sure
+			 * "plugins-installed" class is filtered on here.
+			 *
+			 * @since @@name-framework 2.5.0
+			 *
+			 * @param string $class CSS class used on wrapping DIV.
+			 * @param string $id    Unique ID for this options page.
+			 */
+			$class = apply_filters( 'themeblvd_theme_options_wrap_class', $class, $this->id );
 
 		}
 		?>
-		<div class="<?php echo esc_attr($class); ?>">
+		<div class="<?php echo esc_attr( $class ); ?>">
+
 			<div class="admin-module-header">
 				<?php do_action( 'themeblvd_admin_module_header', 'options' ); ?>
 			</div>
-		    <h2<?php if ( $return[1] ) echo ' class="nav-tab-wrapper"' ?>>
-		        <?php if ( $return[1] ) : ?>
-		        	<?php echo $return[1]; ?>
-		        <?php else : ?>
-		        	<?php echo esc_html($this->args['page_title']); ?>
-		        <?php endif; ?>
-		    </h2>
-		    <div class="metabox-holder">
-			    <div id="optionsframework" class="tb-options-js">
+
+			<?php if ( $fields[1] ) : ?>
+				<h2 class="nav-tab-wrapper"><?php echo $fields[1]; ?></h2>
+			<?php else : ?>
+				<h2><?php echo esc_html( $this->args['page_title'] ); ?></h2>
+			<?php endif; ?>
+
+			<div class="metabox-holder">
+
+				<div id="optionsframework" class="tb-options-js">
+
 					<form id="themeblvd_options_page" action="<?php echo $this->args['form_action']; ?>" method="post">
+
 						<?php settings_fields( $this->id ); ?>
-						<?php echo $return[0]; /* Settings */ ?>
-				        <div id="optionsframework-submit" class="options-page-footer">
-							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', '@@text-domain'); ?>" />
-							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Delete options from the database.', '@@text-domain'); ?>" value="<?php esc_attr_e('Clear Options', '@@text-domain'); ?>" />
+
+						<?php echo $fields[0]; /* Settings */ ?>
+
+						<div id="optionsframework-submit" class="options-page-footer">
+
+							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', '@@text-domain' ); ?>" />
+
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Delete options from the database.', '@@text-domain' ); ?>" value="<?php esc_attr_e( 'Clear Options', '@@text-domain' ); ?>" />
+
 							<?php if ( $this->args['export'] ) : ?>
-								<a href="<?php echo esc_url(add_query_arg( array( 'page' => $this->id, 'themeblvd_export_'.$this->id => true, 'security' => wp_create_nonce('themeblvd_export_'.$this->id) ), admin_url('themes.php') )); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Export options to XML file.', '@@text-domain'); ?>"><?php esc_attr_e( 'Export Options', '@@text-domain'); ?></a>
-				           	<?php endif; ?>
-				           	<?php if ( $this->args['import'] ) : ?>
-								<a href="<?php echo esc_url($this->importer_url); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e('Import options from XML file.', '@@text-domain'); ?>"><?php esc_attr_e( 'Import Options', '@@text-domain'); ?></a>
-				           	<?php endif; ?>
-				           	<div class="clear"></div>
-						</div>
-					</form>
+
+								<?php
+								$url = add_query_arg(
+									array(
+										'page'                          => $this->id,
+										'themeblvd_export_' . $this->id => true,
+										'security'                      => wp_create_nonce( 'themeblvd_export_' . $this->id ),
+									),
+									admin_url( 'themes.php' )
+								);
+								?>
+
+								<a href="<?php echo esc_url( $url ); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Export options to XML file.', '@@text-domain' ); ?>">
+									<?php esc_attr_e( 'Export Options', '@@text-domain' ); ?>
+								</a>
+
+							<?php endif; ?>
+
+							<?php if ( $this->args['import'] ) : ?>
+
+								<a href="<?php echo esc_url( $this->importer_url ); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Import options from XML file.', '@@text-domain' ); ?>">
+									<?php esc_attr_e( 'Import Options', '@@text-domain' ); ?>
+								</a>
+
+							<?php endif; ?>
+
+							<div class="clear"></div>
+
+						</div><!-- .options-page-footer (end) -->
+
+					</form><!-- #themeblvd_options_page (end) -->
+
 					<div class="tb-footer-text">
-						<?php do_action( 'themeblvd_options_footer_text' ); ?>
+
+						<?php
+						/**
+						 * Fires at the base of the theme options page.
+						 *
+						 * @hooked themeblvd_options_footer_text_default - 10
+						 */
+						do_action( 'themeblvd_options_footer_text' );
+						?>
+
 					</div><!-- .tb-footer-text (end) -->
+
 				</div><!-- #optionsframework (end) -->
+
 				<div class="admin-module-footer">
-					<?php do_action( 'themeblvd_admin_module_footer', 'options' ); ?>
+
+					<?php
+					/**
+					 * Fires at below everything on the page for
+					 * a framework admin page.
+					 *
+					 * @hooked null
+					 *
+					 * @param string Type of framework admin page.
+					 */
+					do_action( 'themeblvd_admin_module_footer', 'options' );
+					?>
+
 				</div><!-- .admin-module-footer (end) -->
+
 			</div><!-- .metabox-holder (end) -->
+
 		</div><!-- .wrap (end) -->
 		<?php
 	}
 
 	/**
-	 * Validate Options.
+	 * Sanitize options.
 	 *
 	 * This runs after the submit/reset button has been clicked and
-	 * validates the inputs.
+	 * validates the inputted data.
 	 *
-	 * @since 2.2.0
+	 * @since @@name-framework 2.2.0
 	 *
-	 * @param array $input Input from submitted form
-	 * @return array $clean Sanitized options from submitted form
+	 * @param  array $input Input from submitted form.
+	 * @return array $clean Sanitized options from submitted form.
 	 */
 	public function validate( $input ) {
 
-		// Restore Defaults --
-		// In the event that the user clicked the "Restore Defaults"
-		// button, the options defined in the theme's options.php
-		// file will be added to the option for the active theme.
-
+		/*
+		 * Restore Defaults.
+		 *
+		 * In the event that the user clicked the "Restore Defaults"
+		 * button, the options defined in the theme's options.php
+		 * file will be added to the option for the active theme.
+		 */
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( $this->id, 'restore_defaults', __('Default options restored.', '@@text-domain'), 'themeblvd-error error' );
+
+			add_settings_error(
+				$this->id,
+				'restore_defaults',
+				__( 'Default options restored.', '@@text-domain' ),
+				'themeblvd-error error'
+			);
+
 			return themeblvd_get_option_defaults( $this->options );
+
 		}
 
-		// Options Import --
-		// Importing options from Tools > Import through custom demo
-		// importer system.
-
+		/*
+		 * Import options from XML.
+		 *
+		 * Importing options from Tools > Import through custom demo
+		 * importer system.
+		 *
+		 * @todo Can we improve this? There are some potential
+		 * security holes here.
+		 */
 		if ( isset( $_POST['themeblvd_import_theme_settings'] ) ) {
+
 			return $input;
+
 		}
 
-		// Update Settings --
-		// Basically, we're just looping through the current options
-		// registered in this set and sanitizing each value from the
-		// $input before sending back the final $clean array.
-
+		/*
+		 * Update Settings.
+		 *
+		 * Basically, we're just looping through the current options
+		 * registered in this set and sanitizing each value from the
+		 * $input before sending back the final $clean array.
+		 *
+		 * So if a value is passed through $input with a key that
+		 * doesn't exist in the original $options array, it'll get
+		 * left out.
+		 */
 		$clean = array();
 
 		foreach ( $this->options as $option ) {
 
-			// Skip if we don't have an ID or type.
+			/*
+			 * If an $option array doesn't have both an `id` and
+			 * `type` key, then skip it; we can't use it.
+			 */
 			if ( ! isset( $option['id'] ) || ! isset( $option['type'] ) ) {
+
 				continue;
+
 			}
 
-			// Make sure ID is formatted right.
+			/*
+			 * Before we atually add the final setting to the $clean
+			 * array, let's just make sure that ID from the original
+			 * options array is formatted properly for saving.
+			 */
 			$id = preg_replace( '/\W/', '', strtolower( $option['id'] ) );
 
-			// Set checkbox to false if it wasn't sent in the $_POST
-			if ( $option['type'] == 'checkbox' && ! isset( $input[$id] ) ) {
-				if ( ! empty( $option['inactive'] ) && $option['inactive'] === 'true' ) {
-					$input[$id] = '1';
+			/*
+			 * When dealing with checkbox type options, they won't exist
+			 * in the data passed if they were unchecked; so in this case
+			 * we still want them to exist in the final $clean array,
+			 * always as a string `1` or `0`, for consistency.
+			 */
+			if ( 'checkbox' === $option['type'] && ! isset( $input[ $id ] ) ) {
+
+				if ( ! empty( $option['inactive'] ) && 'true' === $option['inactive'] ) {
+
+					$input[ $id ] = '1';
+
 				} else {
-					$input[$id] = '0';
+
+					$input[ $id ] = '0';
+
 				}
 			}
 
-			// Set each item in the multicheck to false if it wasn't sent in the $_POST
-			if ( $option['type'] == 'multicheck' && ! isset( $input[$id] ) && ! empty( $option['options'] ) ) {
+			/*
+			 * Similarly to a standard checkbox, multi-check options are
+			 * going to be missing any values the user didn't check; so
+			 * we'll make sure all the empty values are added to the final
+			 * array with the string value `0`.
+			 */
+			if ( 'multicheck' === $option['type'] && ! isset( $input[ $id ] ) && ! empty( $option['options'] ) ) {
+
 				foreach ( $option['options'] as $key => $value ) {
-					$input[$id][$key] = '0';
+
+					$input[ $id ][ $key ] = '0';
+
 				}
 			}
 
-			// If option wasn't sent through, set it the default
-			if ( ! isset( $input[$id] ) && ! in_array( $option['type'], array('subgroup_start', 'subgroup_end', 'section_start', 'section_end', 'heading', 'info') ) ) {
+			/*
+			 * If the submitted form data doesn't match up with the original
+			 * $options array, we want to catch these values and make sure
+			 * they still get saved to the final $clean data. In these cases,
+			 * the default value will get assigned (if it exists).
+			 */
+			$excluded_types = array(
+				'subgroup_start',
+				'subgroup_end',
+				'section_start',
+				'section_end',
+				'heading',
+				'info',
+			);
+
+			if ( ! isset( $input[ $id ] ) && ! in_array( $option['type'], $excluded_types, true ) ) {
+
 				if ( isset( $option['std'] ) ) {
-					$clean[$id] = $option['std'];
+
+					$clean[ $id ] = $option['std'];
+
 				} else {
-					$clean[$id] = '';
+
+					$clean[ $id ] = '';
+
 				}
+
 				continue;
+
 			}
 
-			// For slider option type, if the option set has crop setting attached,
-			// we can apply that for saving the slider option.
-			if ( $option['type'] == 'slider' ) {
+			/*
+			 * For the `slider` option type, if the option set has crop
+			 * setting attached, we can apply that for saving the
+			 * slider option.
+			 */
+			if ( 'slider' === $option['type'] ) {
 
 				$crop = 'full';
 
-				if ( ! empty( $input[$id.'_crop'] ) ) {
-					$crop = wp_kses( $input[$id.'_crop'], array() );
+				if ( ! empty( $input[ $id . '_crop' ] ) ) {
+
+					$crop = wp_kses( $input[ $id . '_crop' ], array() );
+
 				}
 
-				$input[$id]['crop'] = $crop;
+				$input[ $id ]['crop'] = $crop;
 
 			}
 
-			// For button option type, set checkbox to false if it wasn't
-			// sent in the $_POST
-			if ( $option['type'] == 'button' ) {
-				if ( ! isset( $input[$id]['include_bg'] ) ) {
-					$input[$id]['include_bg'] = '0';
+			/*
+			 * For `button` option type, set checkboxes to `0`` if they
+			 * weren't selected by the user.
+			 */
+			if ( 'button' === $option['type'] ) {
+
+				if ( ! isset( $input[ $id ]['include_bg'] ) ) {
+
+					$input[ $id ]['include_bg'] = '0';
+
 				}
-				if ( ! isset( $input[$id]['include_border'] ) ) {
-					$input[$id]['include_border'] = '0';
+
+				if ( ! isset( $input[ $id ]['include_border'] ) ) {
+
+					$input[ $id ]['include_border'] = '0';
+
 				}
 			}
 
+			/*
+			 * For options that have made it this far, their settings
+			 * can only get added to the final $clean array, if a
+			 * sanitization function is hooked for their type.
+			 *
+			 * @see themeblvd_add_sanitization()
+			 */
 			if ( has_filter( 'themeblvd_sanitize_' . $option['type'] ) ) {
 
 				/*
@@ -600,108 +922,167 @@ class Theme_Blvd_Options_Page {
 				$clean[ $id ] = apply_filters( 'themeblvd_sanitize_' . $option['type'], $input[ $id ], $option );
 
 			}
-
 		}
 
-		// Merge set of preset options
+		/*
+		 * Merge option presets.
+		 *
+		 * If the current options page is utilizing the presets feature,
+		 * the gist of what's happenning is that we've passed all
+		 * user-submitted settings to the final $clean array already,
+		 * but now we're going to override any settings with options
+		 * that are part of the preset.
+		 */
 		if ( ! empty( $_POST['_tb_set_preset'] ) ) {
 
 			$presets = array();
 
 			foreach ( $this->options as $option ) {
-				if ( ! empty( $option['preset']['sets'][$_POST['_tb_set_preset']]['settings'] ) ) {
-					$presets = $option['preset']['sets'][$_POST['_tb_set_preset']]['settings'];
+
+				if ( ! empty( $option['preset']['sets'][ $_POST['_tb_set_preset'] ]['settings'] ) ) {
+
+					$presets = $option['preset']['sets'][ $_POST['_tb_set_preset'] ]['settings'];
+
 					break;
+
 				}
 			}
 
 			if ( $presets ) {
+
 				$clean = array_merge( $clean, $presets );
+
 			}
+		}
+
+		/*
+		 * After options have been saved, add a success message upon the
+		 * page refreshing.
+		 */
+		if ( ! $this->sanitized ) { // Avoid success message getting printed more than once.
+
+			add_settings_error(
+				$this->id,
+				'save_options',
+				__( 'Options saved.', '@@text-domain' ),
+				'themeblvd-updated updated'
+			);
 
 		}
 
-		// Extend
-		$clean = apply_filters( 'themeblvd_options_sanitize_'.$this->id, $clean, $input );
-
-		// Add update message for page re-fresh
-		if ( ! $this->sanitized ) {
-			// Avoid duplicates
-			add_settings_error( $this->id, 'save_options', __('Options saved.', '@@text-domain'), 'themeblvd-updated updated' );
-		}
-
-		// We know sanitization has happenned at least
-		// once at this point; so set to true.
+		/*
+		 * This is just a simple fail-safe for the odd circumstances where
+		 * the WordPress Settings API will fire santiziation more than
+		 * once.
+		 *
+		 * Basically, by setting this to true, it will stop from displaying
+		 * the "Options Saved" success message to the user more than once.
+		 */
 		$this->sanitized = true;
 
-		// Return sanitized options
-		return $clean;
+		/**
+		 * Filters all data one last time before it's actually passed
+		 * to the database.
+		 *
+		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $clean Settings being passed to the database.
+		 * @param array $input The original data submitted from the form.
+		 */
+		return apply_filters( 'themeblvd_options_sanitize_' . $this->id, $clean, $input );
+
 	}
 
 	/**
 	 * Hook in hidden editor modal.
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 */
 	public function add_editor() {
 
 		$page = get_current_screen();
 
-		if ( $page->base == 'appearance_page_'.$this->id ) {
+		if ( 'appearance_page_' . $this->id === $page->base ) {
+
 			add_action( 'in_admin_header', 'themeblvd_editor' );
+
 		}
+
 	}
 
 	/**
-	 * Hook in hidden icon browser modal(s).
+	 * Hook in hidden icon browser modal.
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
 	 */
 	public function add_icon_browser() {
 
 		$page = get_current_screen();
 
-		if ( $page->base == 'appearance_page_'.$this->id ) {
+		if ( 'appearance_page_' . $this->id === $page->base ) {
+
 			add_action( 'in_admin_header', array( $this, 'display_icon_browser' ) );
+
 		}
+
 	}
+
+	/**
+	 * Display the actual icon browser, hooked to
+	 * `in_admin_header` from the previous method.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @see themeblvd_icon_browser()
+	 */
 	public function display_icon_browser() {
 
 		if ( $this->icons_vector ) {
-			themeblvd_icon_browser( array( 'type' => 'vector' ) );
+
+			themeblvd_icon_browser( array(
+				'type' => 'vector',
+			));
+
 		}
 
-		if ( $this->icons_image ) {
-			themeblvd_icon_browser( array( 'type' => 'image' ) );
-		}
 	}
 
 	/**
 	 * Hook in hidden post browser modal.
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @see themeblvd_post_browser()
 	 */
 	public function add_post_browser() {
 
 		$page = get_current_screen();
 
-		if ( $page->base == 'appearance_page_'.$this->id ) {
+		if ( 'appearance_page_' . $this->id === $page->base ) {
+
 			add_action( 'in_admin_header', 'themeblvd_post_browser' );
+
 		}
+
 	}
 
 	/**
 	 * Hook in hidden texture browser modal.
 	 *
-	 * @since 2.5.0
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @see themeblvd_texture_browser()
 	 */
 	public function add_texture_browser() {
 
 		$page = get_current_screen();
 
-		if ( $page->base == 'appearance_page_'.$this->id ) {
+		if ( 'appearance_page_' . $this->id === $page->base ) {
+
 			add_action( 'in_admin_header', 'themeblvd_texture_browser' );
+
 		}
+
 	}
 
 }

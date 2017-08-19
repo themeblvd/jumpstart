@@ -1,25 +1,37 @@
 <?php
 /**
- * Theme Blvd Advanced Options. For advanced
- * option types, this class acts as a factory
- * to create these objects, as needed, and
- * store their instances.
+ * Advanced Option Types
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
  * @package     Jump_Start
  */
-class Theme_Blvd_Advanced_Options {
 
-	/*--------------------------------------------*/
-	/* Properties, private
-	/*--------------------------------------------*/
+/**
+ * Manage advanced option types, that are not easily created
+ * from directly within the framework's option system.
+ *
+ * This class loosely follows a basic factory design pattern,
+ * to manage all of the advanced option types, and instantiate
+ * their objects.
+ *
+ * For that purpose, it also takes on singleton pattern, to
+ * only be instantiated once.
+ *
+ * Currently, advanced option types only conist of various
+ * types of sortable options. See the Theme_Blvd_Sortable_Option
+ * abstract for more documentation on sortable options.
+ *
+ * @since Theme_Blvd 2.5.0
+ */
+class Theme_Blvd_Advanced_Options {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 * @var Theme_Blvd_Advanced_Options
 	 */
 	private static $instance = null;
 
@@ -28,7 +40,7 @@ class Theme_Blvd_Advanced_Options {
 	 * These are available types, not instantiated
 	 * objects.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var array
 	 */
 	private $reference = array();
@@ -36,49 +48,38 @@ class Theme_Blvd_Advanced_Options {
 	/**
 	 * An array of all option type objects.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 * @var array
 	 */
 	private $types = array();
 
-	/*--------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------*/
-
 	/**
-     * Creates or returns an instance of this class.
-     *
-     * @since 2.5.0
-     *
-     * @return Theme_Blvd_Options_API A single instance of this class.
-     */
+	 * Creates or returns an instance of this class.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @return Theme_Blvd_Advanced_Options A single instance of this class.
+	 */
 	public static function get_instance() {
 
-		if ( self::$instance == null ) {
-            self::$instance = new self;
-        }
+		if ( null === self::$instance ) {
 
-        return self::$instance;
+			self::$instance = new self;
+
+		}
+
+		return self::$instance;
+
 	}
 
 	/**
-	 * Constructor. Hook everything in and setup API.
+	 * Class constructor. Stores library of option
+	 * types to instance.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private function __construct() {
-		$this->set_reference();
-	}
 
-	/*--------------------------------------------*/
-	/* Methods, mutators
-	/*--------------------------------------------*/
-
-	/**
-	 * Set reference of all available option types.
-	 *
-	 * @since 2.5.0
-	 */
-	public function set_reference() {
 		$this->reference = array(
 			'bars',
 			'buttons',
@@ -93,23 +94,27 @@ class Theme_Blvd_Advanced_Options {
 			'tabs',
 			'text_blocks',
 			'testimonials',
-			'toggles'
+			'toggles',
 		);
+
 	}
 
 	/**
-	 * Create an advanced option type instance and store it.
+	 * Create an advanced option type instance and
+	 * store it.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param string $type Type of option.
 	 */
 	public function create( $type ) {
 
-		// Do not allow duplicates
-		if ( isset( $this->types[$type] ) ) {
+		// Do not allow duplicates.
+		if ( isset( $this->types[ $type ] ) ) {
 			return;
 		}
 
-		// Check if valid type
+		// Make sure it's a valid type.
 		if ( ! $this->is_type( $type ) ) {
 			return;
 		}
@@ -117,99 +122,127 @@ class Theme_Blvd_Advanced_Options {
 		switch ( $type ) {
 
 			case 'bars':
-				$this->types[$type] = new Theme_Blvd_Bars_Option();
+				$this->types[ $type ] = new Theme_Blvd_Bars_Option();
 				break;
 
 			case 'buttons':
-				$this->types[$type] = new Theme_Blvd_Buttons_Option();
+				$this->types[ $type ] = new Theme_Blvd_Buttons_Option();
 				break;
 
 			case 'datasets':
-				$this->types[$type] = new Theme_Blvd_Datasets_Option();
+				$this->types[ $type ] = new Theme_Blvd_Datasets_Option();
 				break;
 
 			case 'locations':
-				$this->types[$type] = new Theme_Blvd_Locations_Option();
+				$this->types[ $type ] = new Theme_Blvd_Locations_Option();
 				break;
 
 			case 'logos':
-				$this->types[$type] = new Theme_Blvd_Logos_Option();
+				$this->types[ $type ] = new Theme_Blvd_Logos_Option();
 				break;
 
 			case 'price_cols':
-				$this->types[$type] = new Theme_Blvd_Price_Cols_Option();
+				$this->types[ $type ] = new Theme_Blvd_Price_Cols_Option();
 				break;
 
 			case 'sectors':
-				$this->types[$type] = new Theme_Blvd_Sectors_Option();
+				$this->types[ $type ] = new Theme_Blvd_Sectors_Option();
 				break;
 
 			case 'share':
-				$this->types[$type] = new Theme_Blvd_Share_Option();
+				$this->types[ $type ] = new Theme_Blvd_Share_Option();
 				break;
 
 			case 'slider':
-				$this->types[$type] = new Theme_Blvd_Slider_Option();
+				$this->types[ $type ] = new Theme_Blvd_Slider_Option();
 				break;
 
 			case 'social_media':
-				$this->types[$type] = new Theme_Blvd_Social_Option();
+				$this->types[ $type ] = new Theme_Blvd_Social_Option();
 				break;
 
 			case 'tabs':
-				$this->types[$type] = new Theme_Blvd_Tabs_Option();
+				$this->types[ $type ] = new Theme_Blvd_Tabs_Option();
 				break;
 
 			case 'testimonials':
-				$this->types[$type] = new Theme_Blvd_Testimonials_Option();
+				$this->types[ $type ] = new Theme_Blvd_Testimonials_Option();
 				break;
 
 			case 'text_blocks':
-				$this->types[$type] = new Theme_Blvd_Text_Blocks_Option();
+				$this->types[ $type ] = new Theme_Blvd_Text_Blocks_Option();
 				break;
 
 			case 'toggles':
-				$this->types[$type] = new Theme_Blvd_Toggles_Option();
+				$this->types[ $type ] = new Theme_Blvd_Toggles_Option();
 				break;
 
 		}
 
 	}
 
-	/*--------------------------------------------*/
-	/* Methods, accessors
-	/*--------------------------------------------*/
-
 	/**
 	 * Get a stored instance of an option type object.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  string       $type Type of option.
+	 * @return Theme_Blvd_*       Instantiated object for type.
 	 */
 	public function get( $type ) {
 
-		if ( ! isset( $this->types[$type] ) ) {
+		if ( ! isset( $this->types[ $type ] ) ) {
 			return null;
 		}
 
-		return $this->types[$type];
+		return $this->types[ $type ];
+
 	}
 
 	/**
 	 * Check if an option type exists.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  string $type Type of option.
+	 * @return bool         Whether option type exists.
 	 */
 	public function is_type( $type ) {
+
 		return in_array( $type, $this->reference );
+
 	}
 
 	/**
-	 * Check if an options type is one of our sortable ones.
+	 * Check if an options type is one of our sortable
+	 * ones.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  string $type Type of option.
+	 * @return bool         Whether option is sortable.
 	 */
 	public function is_sortable( $type ) {
-		return in_array( $type, array( 'bars', 'buttons', 'datasets', 'locations', 'logos', 'price_cols', 'sectors', 'share', 'slider', 'social_media', 'tabs', 'testimonials', 'text_blocks', 'toggles' ) );
+
+		$sortable = array(
+			'bars',
+			'buttons',
+			'datasets',
+			'locations',
+			'logos',
+			'price_cols',
+			'sectors',
+			'share',
+			'slider',
+			'social_media',
+			'tabs',
+			'testimonials',
+			'text_blocks',
+			'toggles',
+		);
+
+		return in_array( $type, $sortable );
+
 	}
 
 }

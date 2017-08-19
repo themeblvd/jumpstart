@@ -26,7 +26,9 @@ define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
  * on the frontend it's needed when options aren't
  * saved properly.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/options-sanitize.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/sanitize.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/sanitize-specialized.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/sanitize-advanced.php' );
 
 /**
  * Include options for user profiles, mainly for
@@ -474,7 +476,7 @@ if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
  * Action hook for intervening between framework
  * running and API being established.
  *
- * @since @@framework-name 2.3.0
+ * @since @@name-framework 2.3.0
  * @hooked null
  */
 do_action( 'themeblvd_intervene' );
@@ -483,7 +485,7 @@ do_action( 'themeblvd_intervene' );
  * Fires when text-domains should be registered
  * for localization.
  *
- * @since @@framework-name 2.3.0
+ * @since @@name-framework 2.3.0
  * @hooked themeblvd_load_theme_textdomain - 10
  */
 do_action( 'themeblvd_localize' );
@@ -492,7 +494,7 @@ do_action( 'themeblvd_localize' );
  * Fires when API objects should be established
  * in framework.
  *
- * @since @@framework-name 2.3.0
+ * @since @@name-framework 2.3.0
  * @hooked themeblvd_api_init - 10
  */
 do_action( 'themeblvd_api' );

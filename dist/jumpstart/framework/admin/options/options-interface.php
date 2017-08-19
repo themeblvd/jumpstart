@@ -9,505 +9,946 @@
  */
 
 /**
- * Generates the options fields that are used in forms for
- * internal options framework.
+ * Generates the options fields that are used in
+ * forms for internal options framework.
  *
- * Total props to Devin Price for originally creating this function
- * for his "Options Framework" -- This function has since been adapted
- * over time to be utilized throughout many parts of the Theme Blvd
- * theme framework.
- * Devin Price's website: http://wptheming.com
+ * @since Theme_Blvd 2.2.0
  *
- * @since 2.2.0
+ * @param  string  $option_name Prefix for all field name attributes.
+ * @param  array   $options     All options to show in form.
+ * @param  array   $settings    Any current settings for all form fields.
+ * @param  bool    $close       Whether to add closing </div>.
+ * @return array   $form {
+ *     Final options form.
  *
- * @param string $option_name Prefix for all field name attributes
- * @param array $options All options to show in form
- * @param array $settings Any current settings for all form fields
- * @param boolean $close Whether to add closing </div>
- * @return array $form Final options form
+ *     @type string HTML output for optins page.
+ *     @type array  Tabbed navigation, if exists.
+ * }
  */
 function themeblvd_option_fields( $option_name, $options, $settings, $close = true ) {
 
-    $counter = 0;
-	$menu = '';
-	$output = '';
-	$advanced = Theme_Blvd_Advanced_Options::get_instance();
-	$option_name_orig = esc_attr($option_name);
+	$counter = 0;
 
-	foreach ( $options as $option_key => $value ) {
+	$menu = '';
+
+	$output = '';
+
+	$advanced = Theme_Blvd_Advanced_Options::get_instance();
+
+	$option_name_orig = esc_attr( $option_name );
+
+	foreach ( $options as $option_key => $option ) {
 
 		$counter++;
-		$val = '';
+
+		$current = '';
+
 		$select_value = '';
+
 		$checked = '';
+
 		$class = '';
+
 		$option_name = $option_name_orig;
 
-		// Footer sync option is just a placeholder, skip it
-		if ( $option_key === 'footer_sync' ) { // Need strict because 0 == 'footer_sync'
+		/*
+		 * Footer sync option is just a placeholder; so we
+		 * can skip it in our display.
+		 */
+		if ( 'footer_sync' === $option_key ) {
 			continue;
 		}
 
-		// Sub Groups --
-		// This allows for a wrapping div around groups of elements.
-		// The primary reason for this is to help link certain options
-		// together in order to apply custom javascript for certain
-		// common groups.
-	   	if ( $value['type'] == 'subgroup_start' ) {
-	   		if ( isset( $value['class'] ) ) {
-	   			$class = ' '.$value['class'];
-	   		}
-	   		$output .= '<div class="subgroup'.$class.'">';
-	   		continue;
-	   	}
+		/*
+		 * Start or end an option subgroup.
+		 *
+		 * This allows for a wrapping div around groups of
+		 * elements. The primary reason for this is to help
+		 * link certain options together in order to apply
+		 * custom javascript for certain common groups.
+		 */
+		if ( 'subgroup_start' === $option['type'] ) {
 
-	   	if ( $value['type'] == 'subgroup_end' ) {
-	   		$output .= '</div><!-- .subgroup (end) -->';
-	   		continue;
-	   	}
+			if ( isset( $option['class'] ) ) {
+				$class = ' ' . $option['class'];
+			}
 
-	   	// Name Grouping --
-	   	// This allows certain options to be grouped together in the
-	   	// final saved options array by adding a common prefix to their
-	   	// name form attributes.
-		if ( isset( $value['group'] ) ) {
-			$option_name .= '['.$value['group'].']';
+			$output .= '<div class="subgroup' . $class . '">' . "\n";
+
+			continue;
+
 		}
 
-	   	// Sections --
-		// This allows for a wrapping div around certain sections. This
-		// is meant to create visual dividing styles between sections,
-		// opposed to sub groups, which are used to section off the code
-		// for hidden purposes.
-	   	if ( $value['type'] == 'section_start' ) {
+		if ( 'subgroup_end' === $option['type'] ) {
 
-	   		$name = ! empty( $value['name'] ) ? esc_html( $value['name'] ) : '';
+			$output .= '</div><!-- .subgroup (end) -->' . "\n";
 
-	   		if ( isset( $value['class'] ) ) {
-	   			$class = ' '.$value['class'];
-	   		}
+			continue;
 
-	   		if ( ! $name ) {
-	   			$class .= ' no-name';
-	   		}
-
-	   		$id = str_replace( array('start_section_', 'section_start_'), '', $option_key );
-
-	   		$output .= '<div id="'.$id.'" class="postbox inner-section'.esc_attr($class).' closed">';
-
-	   		$output .= '<a href="#" class="section-toggle"><i class="tb-icon-up-dir"></i></a>';
-
-	   		if ( $name ) {
-	   			$output .= '<h3 class="hndle">'.$name.'</h3>';
-	   		}
-
-   			if ( $option_key == 'start_section_footer' && isset( $options['footer_sync'] ) ) {
-
-	   			$val = 0;
-
-	   			if ( ! empty( $settings['footer_sync'] ) ) {
-	   				$val = 1;
-	   			}
-
-	   			$output .= '<div class="footer-sync-wrap">';
-	   			$output .= sprintf( '<input id="tb-footer-sync" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($option_name.'[footer_sync]'), checked( $val, 1, false ) );
-	   			$output .= sprintf( '<label for="footer_sync">%s</label>', esc_html__('Template Sync', 'jumpstart') );
-	   			$output .= '</div><!-- .footer-sync-wrap (end) -->';
-   			}
-
-   			$output .= '<div class="inner-section-content hide">';
-
-	   		if ( ! empty( $value['desc'] ) ) {
-	   			$output .= '<div class="section-description">'.$value['desc'].'</div>';
-	   		}
-
-	   		if ( ! empty( $value['preset'] ) ) {
-	   			$output .= '<div class="section-presets">';
-	   			$output .= themeblvd_display_presets($value['preset'], $option_name);
-	   			$output .= '</div>';
-	   		}
-
-	   		continue;
-	   	}
-
-	   	if ( $value['type'] == 'section_end' ) {
-
-            $output .= '<div class="section save clearfix">';
-            $output .= sprintf('<input type="submit" class="button-primary" name="update" value="%s" />', esc_attr__('Save Options', 'jumpstart') );
-            $output .= '</div>';
-
-            $output .= '</div><!-- .inner-section-content (end) -->';
-	   		$output .= '</div><!-- .inner-section (end) -->';
-	   		continue;
-	   	}
-
-		// Set default value to $val
-		if ( isset( $value['std'] ) ) {
-			$val = $value['std'];
 		}
 
-		// If the option is already saved, override $val
-		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
-			if ( isset( $value['group'] ) ) {
+		/*
+		 * Configure option name grouping.
+		 *
+		 * This allows certain options to be grouped together
+		 * in the final saved options array by adding a common
+		 * prefix to their name form attributes.
+		 */
+		if ( isset( $option['group'] ) ) {
 
-				// Set grouped value
-				if ( isset( $settings[($value['group'])][($value['id'])] ) ) {
-					$val = $settings[($value['group'])][($value['id'])];
+			$option_name .= '[' . $option['group'] . ']';
+
+		}
+
+		/*
+		 * Start and end an option section.
+		 *
+		 * This allows for a wrapping div around certain sections.
+		 * This is meant to create visual dividing styles between
+		 * sections, opposed to sub groups, which are used to
+		 * section off the code for hidden purposes.
+		 */
+		if ( 'section_start' === $option['type'] ) {
+
+			$name = '';
+
+			if ( ! empty( $option['name'] ) ) {
+				$name = esc_html( $option['name'] );
+			}
+
+			if ( isset( $option['class'] ) ) {
+				$class = ' ' . $option['class'];
+			}
+
+			if ( ! $name ) {
+				$class .= ' no-name';
+			}
+
+			$id = str_replace(
+				array( 'start_section_', 'section_start_' ),
+				'',
+				$option_key
+			);
+
+			$output .= sprintf(
+				'<div id="%s" class="postbox inner-section%s closed">',
+				$id,
+				esc_attr( $class )
+			);
+
+			$output .= '<a href="#" class="section-toggle"><i class="tb-icon-up-dir"></i></a>';
+
+			if ( $name ) {
+				$output .= '<h3 class="hndle">' . $name . '</h3>';
+			}
+
+			if ( 'start_section_footer' === $option_key && isset( $options['footer_sync'] ) ) {
+
+				$current = 0;
+
+				if ( ! empty( $settings['footer_sync'] ) ) {
+					$current = 1;
 				}
 
+				$output .= '<div class="footer-sync-wrap">' . "\n";
+
+				$output .= sprintf(
+					'<input id="tb-footer-sync" class="checkbox of-input" type="checkbox" name="%s" %s />',
+					esc_attr( $option_name . '[footer_sync]' ),
+					checked( $current, 1, false )
+				);
+
+				$output .= sprintf(
+					'<label for="footer_sync">%s</label>',
+					esc_html__( 'Template Sync', 'jumpstart' )
+				);
+
+				$output .= '</div><!-- .footer-sync-wrap (end) -->' . "\n";
+
+			}
+
+			$output .= '<div class="inner-section-content hide">' . "\n";
+
+			if ( ! empty( $option['desc'] ) ) {
+
+				$output .= sprintf(
+					'<div class="section-description">%s</div>',
+					$option['desc']
+				);
+
+				$output .= "\n";
+
+			}
+
+			if ( ! empty( $option['preset'] ) ) {
+
+				$output .= sprintf(
+					'<div class="section-presets">%s</div>',
+					themeblvd_display_presets( $option['preset'], $option_name )
+				);
+
+				$output .= "\n";
+
+			}
+
+			continue;
+
+		}
+
+		if ( 'section_end' === $option['type'] ) {
+
+			$output .= '<div class="section save clearfix">';
+
+			$output .= "\n";
+
+			$output .= sprintf(
+				'<input type="submit" class="button-primary" name="update" value="%s" />',
+				esc_attr__( 'Save Options', 'jumpstart' )
+			);
+
+			$output .= '</div>';
+
+			$output .= '</div><!-- .inner-section-content (end) -->' . "\n";
+
+			$output .= '</div><!-- .inner-section (end) -->' . "\n";
+
+			continue;
+
+		}
+
+		// Set current value.
+		if ( isset( $option['std'] ) ) {
+			$current = $option['std'];
+		}
+
+		if ( 'heading' !== $option['type'] && 'info' !== $option['type'] ) {
+
+			if ( isset( $option['group'] ) ) {
+
+				// Set grouped value.
+				if ( isset( $settings[ ($option['group']) ][ ($option['id']) ] ) ) {
+
+					$current = $settings[ ($option['group']) ][ ($option['id']) ];
+
+				}
 			} else {
 
-				// Set non-grouped value
-				if ( isset($settings[($value['id'])]) ) {
-					$val = $settings[($value['id'])];
+				// Set non-grouped value.
+				if ( isset( $settings[ ($option['id']) ] ) ) {
+
+					$current = $settings[ ($option['id']) ];
+
 				}
 			}
 		}
 
-		// Hidden options
-		if ( $value['type'] == 'hidden' ) {
+		// Add hidden options to display.
+		if ( 'hidden' === $option['type'] ) {
 
 			$class = 'section section-hidden hide';
 
-            if ( ! empty( $value['class'] ) ) {
-				$class .= ' '.$value['class'];
+			if ( ! empty( $option['class'] ) ) {
+				$class .= ' ' . $option['class'];
 			}
 
-			$output .= sprintf( '<div class="%s">', esc_attr($class) );
-			$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val) );
-			$output .= '</div>';
+			$output .= sprintf( '<div class="%s">', esc_attr( $class ) );
+
+			$output .= "\n";
+
+			$output .= sprintf(
+				'<input id="%s" class="of-input" name="%s" type="text" value="%s" />',
+				esc_attr( $option['id'] ),
+				esc_attr( $option_name . '[' . $option['id'] . ']' ),
+				esc_attr( $current )
+			);
+
+			$output .= '</div><!-- .section.section-hidden (end) -->' . "\n";
+
 			continue;
+
 		}
 
-		// Wrap all options
-		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+		/*
+		 * Wrap all options.
+		 *
+		 * At this point, any options that haven't been
+		 * displayed will follow the basic template of
+		 * being wrapped by the same markup with heading
+		 * and description.
+		 */
+		if ( 'heading' !== $option['type'] && 'info' !== $option['type'] ) {
 
-			// Keep all ids lowercase with no spaces
-			$value['id'] = preg_replace('/\W/', '', strtolower($value['id']) );
+			$option['id'] = preg_replace( '/\W/', '', strtolower( $option['id'] ) );
 
-			// Determine CSS classes
-			$id = 'section-'.$value['id'];
+			$id = 'section-' . $option['id'];
+
 			$class = 'section ';
 
-			if ( isset( $value['type'] ) ) {
+			if ( isset( $option['type'] ) ) {
 
-				$class .= ' section-'.$value['type'];
+				$class .= ' section-' . $option['type'];
 
-				if ( $advanced->is_sortable( $value['type'] ) ) {
+				if ( $advanced->is_sortable( $option['type'] ) ) {
 					$class .= ' section-sortable';
 				}
 
-				if ( $value['type'] == 'logo' || $value['type'] == 'background' ) {
+				if ( 'logo' === $option['type'] || 'background' === $option['type'] ) {
 					$class .= ' section-upload';
 				}
 			}
 
-			if ( ! empty( $value['class'] ) ) {
-				$class .= ' '.$value['class'];
+			if ( ! empty( $option['class'] ) ) {
+				$class .= ' ' . $option['class'];
 			}
 
-			// Start Output
-			$output .= '<div id="'.esc_attr($id) .'" class="'.esc_attr($class).'">'."\n";
+			$output .= sprintf(
+				'<div id="%s" class="%s">',
+				esc_attr( $id ),
+				esc_attr( $class )
+			);
 
-			if ( ! empty( $value['name'] ) ) { // Name not required
-				$output .= '<h4 class="heading">'.esc_html( $value['name'] ).'</h4>'."\n";
+			$output .= "\n";
+
+			if ( ! empty( $option['name'] ) ) { // Heading for option isn't required.
+
+				$output .= sprintf(
+					'<h4 class="heading">%s</h4>',
+					esc_html( $option['name'] )
+				);
+
+				$output .= "\n";
+
 			}
 
-			$output .= '<div class="option">'."\n".'<div class="controls">'."\n";
+			$output .= '<div class="option">' . "\n";
+
+			$output .= '<div class="controls">' . "\n";
+
 		}
 
-        // Add each option to output based on type.
-		switch ( $value['type'] ) {
+		// Display individual options, by type.
+		switch ( $option['type'] ) {
 
-			/*---------------------------------------*/
-			/* Basic Text Input
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `heading`.
+			 *
+			 * This is not actually an option, but lets you break
+			 * your option sets into top-level tabs.
+			 *
+			 * @param array $option {
+			 *     @type string $id     Unique ID for option.
+			 *     @type string $name   Title for tab.
+			 *     @type string $type   Type of option, should be `heading`.
+			 *     @type array  $preset Optional. Presets at top of tab.
+			 * }
+			 */
+			case 'heading':
+				// If this isn't the first tab, close the previous.
+				if ( $menu ) {
+					$output .= '</div><!-- .group (end) -->' . "\n";
+				}
 
+				$id = $option['name'];
+
+				if ( ! empty( $option['id'] ) ) {
+					$id = $option['id'];
+				}
+
+				$click_hook = preg_replace( '/[^a-zA-Z0-9._\-]/', '', strtolower( $id ) );
+
+				$click_hook = 'of-option-' . $click_hook;
+
+				$menu .= sprintf(
+					'<a id="%s-tab" class="nav-tab" title="%s" href="%s">%s</a>',
+					esc_attr( $click_hook ),
+					esc_attr( $option['name'] ),
+					esc_attr( '#' . $click_hook ),
+					esc_html( $option['name'] )
+				);
+
+				$output .= sprintf(
+					'<div class="group" id="%s">',
+					$click_hook
+				);
+
+				if ( ! empty( $option['preset'] ) ) {
+					$output .= themeblvd_display_presets( $option['preset'], $option_name );
+				}
+
+				break;
+
+			/*
+			 * Display option type, `info`.
+			 *
+			 * This is not actually an option, but gives you a
+			 * chance to add a block of information at any point
+			 * in a set of options, which will take up its own row.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Optional. Title for information block.
+			 *     @type string $desc Description for information block.
+			 *     @type string $type Type of option, should be `info`.
+			 * }
+			 */
+			case 'info':
+				$class = 'section-info';
+
+				if ( isset( $option['class'] ) ) {
+					$class .= ' ' . $option['class'];
+				}
+
+				$output .= '<div class="' . esc_attr( $class ) . '">' . "\n";
+
+				if ( isset( $option['name'] ) ) {
+
+					$output .= sprintf(
+						'<h4 class="heading">%s</h4>',
+						esc_html( $option['name'] )
+					);
+
+					$output .= "\n";
+
+				}
+
+				if ( isset( $option['desc'] ) ) {
+					$output .= $option['desc'] . "\n";
+				}
+
+				$output .= '<div class="clear"></div>';
+
+				$output .= '</div><!-- .section (end) -->' . "\n";
+
+				break;
+
+			/*
+			 * Display option type, `text`.
+			 *
+			 * The `text` option type is generally just a
+			 * standard <input type="text" /> option.
+			 *
+			 * One exception is that you can configure a `text`
+			 * option to link to a browser by passing in
+			 * $option['icon'] as `vector` or `post_id`, which
+			 * allows the user to find a value to send back to
+			 * the input field.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type string $std  Default value.
+			 *     @type string $type Type of option, should be `text`.
+			 *     @type string $icon Type of browser, if including browser link, `vector` or `post_id`.
+		 	 * }
+			 */
 			case 'text':
+				$pholder = '';
 
-				$place_holder = '';
+				if ( ! empty( $option['pholder'] ) ) {
 
-                if ( ! empty( $value['pholder'] ) ) {
-					$place_holder = ' placeholder="'.esc_attr($value['pholder']).'"';
+					$pholder = ' placeholder="' . esc_attr( $option['pholder'] ) . '"';
+
 				}
 
 				$output .= '<div class="input-wrap">';
 
-				if ( isset($value['icon']) ) {
-					if ( $value['icon'] == 'image' || $value['icon'] == 'vector' ) {
-						$output .= '<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-'.esc_attr($value['icon']).'" data-icon-type="'.esc_attr($value['icon']).'" data-tooltip-text="'.esc_attr__('Browse Icons', 'jumpstart').'"><i class="tb-icon-picture"></i></a>';
-					} else if ( $value['icon'] == 'post_id' ) {
-						$output .= '<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="'.esc_attr__('Find Post or Page ID', 'jumpstart').'"><i class="tb-icon-barcode"></i></a>';
+				/*
+				 * If $option['icon'] is passed through, transform to
+				 * specialized text field, linking to browser, which
+				 * will let the user find a value to send back to
+				 * text field.
+				 */
+				if ( isset( $option['icon'] ) ) {
+
+					if ( 'vector' === $option['icon'] ) {
+
+						$output .= sprintf(
+							'<a href="#" class="tb-input-icon-link tb-tooltip-link" data-target="themeblvd-icon-browser-vector" data-icon-type="vector" data-tooltip-text="%s"><i class="tb-icon-picture"></i></a>',
+							esc_attr__( 'Browse Icons', 'jumpstart' )
+						);
+
+					} elseif ( 'post_id' === $option['icon'] ) {
+
+						$output .= sprintf(
+							'<a href="#" class="tb-input-post-id-link tb-tooltip-link" data-target="themeblvd-post-browser" data-icon-type="post_id" data-tooltip-text="%s"><i class="tb-icon-barcode"></i></a>',
+							esc_attr__( 'Find Post or Page ID', 'jumpstart' )
+						);
+
 					}
 				}
 
-				$output .= sprintf( '<input id="%s" class="of-input" name="%s" type="text" value="%s"%s />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val), $place_holder );
+				$output .= sprintf(
+					'<input id="%s" class="of-input" name="%s" type="text" value="%s"%s />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					esc_attr( $current ),
+					$pholder
+				);
+
 				$output .= '</div><!-- .input-wrap (end) -->';
+
 				break;
 
-			/*---------------------------------------*/
-			/* Text Area
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `textarea`.
+			 *
+			 * The `textarea` option tpe is generally just
+			 * a standard <textarea> option.
+			 *
+			 * This option type can be extended by adding
+			 * links to edit the contents of the textarea in
+			 * a WP visual editor or code editor modal window.
+			 * This is done by passing in $option['editor']
+			 * or $option['code'].
+			 *
+			 * @param array $option {
+			 *     @type string $id     Unique ID for option.
+			 *     @type string $name   Title for option.
+			 *     @type string $desc   Description for option.
+			 *     @type string $std    Default value.
+			 *     @type string $type   Type of option, should be `textarea`.
+			 *     @type bool   $editor Whether to include WP visual editor link.
+			 *     @type string $code   Type of coding language, if including code editor link, `html`, `javascript`, or `css`.
+		 	 * }
+			 */
+			case 'textarea':
+				$pholder = '';
 
-			case 'textarea' :
-
-				$place_holder = '';
-
-                if ( ! empty( $value['pholder'] ) ) {
-					$place_holder = ' placeholder="'.esc_attr($value['pholder']).'"';
+				if ( ! empty( $option['pholder'] ) ) {
+					$pholder = ' placeholder="' . esc_attr( $option['pholder'] ) . '"';
 				}
 
 				$cols = '8';
 
-                if ( isset( $value['options'] ) && isset( $value['options']['cols'] ) ) {
-					$cols = $value['options']['cols'];
+				if ( isset( $option['options'] ) && isset( $option['options']['cols'] ) ) {
+					$cols = $option['options']['cols'];
 				}
 
-				if ( ! empty( $value['editor'] ) || ! empty( $value['code'] ) ) {
+				/*
+				 * Determine how to wrap the textarea.
+				 *
+				 * If the textarea is supposed to include a link to
+				 * edit the contents in a WP visual editor and/or
+				 * code editor, we'll tackle that here.
+				 */
+				if ( ! empty( $option['editor'] ) || ! empty( $option['code'] ) ) {
 
 					$output .= '<div class="textarea-wrap with-editor-nav">';
+
 					$output .= '<nav class="editor-nav">';
 
-					if ( ! empty( $value['editor'] ) ) {
-						$output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Editor', 'jumpstart').'" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
+					if ( ! empty( $option['editor'] ) ) {
+
+						$output .= sprintf(
+							'<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="%s" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>',
+							esc_attr__( 'Open in Editor', 'jumpstart' )
+						);
+
 					}
 
-					if ( isset( $value['code'] ) && in_array( $value['code'], array( 'html', 'javascript', 'css' ) ) ) {
-						$output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="'.esc_attr__('Open in Code Editor', 'jumpstart').'" data-target="'.esc_textarea( $value['id'] ).'" data-title="'.esc_attr($value['name']).'" data-code_lang="'.esc_attr($value['code']).'"><i class="tb-icon-code"></i></a>';
+					if ( isset( $option['code'] ) && in_array( $option['code'], array( 'html', 'javascript', 'css' ) ) ) {
+
+						$output .= sprintf(
+							'<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="%s" data-target="%s" data-title="%s" data-code_lang="%s"><i class="tb-icon-code"></i></a>',
+							esc_attr__( 'Open in Code Editor', 'jumpstart' ),
+							esc_attr( $option['id'] ),
+							esc_attr( $option['name'] ),
+							esc_attr( $option['code'] )
+						);
+
 					}
 
 					$output .= '</nav>';
 
 				} else {
-					$output .= '<div class="textarea-wrap">';
+
+					$output .= '<div class="textarea-wrap">'; // Standard wrap, with no editors.
+
 				}
 
-				$output .= sprintf( '<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($cols), $place_holder, esc_textarea($val) );
+				$output .= sprintf(
+					'<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					esc_attr( $cols ),
+					$pholder,
+					esc_textarea( $current )
+				);
+
 				$output .= '</div><!-- .textarea-wrap (end) -->';
+
 				break;
 
-			/*---------------------------------------*/
-			/* Select
-			/*---------------------------------------*/
-
-			case 'select' :
-
+			/*
+			 * Display option type, `select`.
+			 *
+			 * The `select` option type is generally just a
+			 * standard <select> menu meant to let the user
+			 * select one selection from a group.
+			 *
+			 * For a standard select menu, an array of items
+			 * is passed in through $option['options'].
+			 *
+			 * Alternately, a dynamic set of options can be
+			 * generated by passing in $option['select'] as
+			 * one of the following values:
+			 *
+			 * `pages`        List of pages.
+			 * `categories`   List of post categories.
+			 * `sidebars`     List of custom widget areas.
+			 * `sidebars_all` List of all widget areas, except collapsible.
+			 * `crop`         List of registered crop sizes.
+			 * `textures`     List of framework textures.
+			 * `templates`    List of templates built with layout builder.
+			 * `authors`      List of site's users w/Contributer role or higher.
+			 *
+			 * @param array $option {
+			 *     @type string $id      Unique ID for option.
+			 *     @type string $name    Title for option.
+			 *     @type string $desc    Description for option.
+			 *     @type string $std     Default value.
+			 *     @type string $type    Type of option, should be `select`.
+			 *     @type array  $options Associative array of selections.
+			 *     @type string $select  Optional. Type of dynamic select to generate (see above).
+		 	 * }
+			 */
+			case 'select':
 				$error = '';
+
 				$textures = false;
 
-				// Dynamic select types
-				if ( ! isset( $value['options'] ) && isset( $value['select'] ) ) {
+				// Generate dynamic select types.
+				if ( ! isset( $option['options'] ) && isset( $option['select'] ) ) {
 
-					$value['options'] = array();
+					$option['options'] = array();
 
-					switch ( $value['select'] ) {
+					switch ( $option['select'] ) {
 
-						case 'pages' :
+						case 'pages':
+							$option['options'] = themeblvd_get_select( 'pages' );
 
-							$value['options'] = themeblvd_get_select( 'pages' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No pages were found.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'No pages were found.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'categories' :
+						case 'categories':
+							$option['options'] = themeblvd_get_select( 'categories' );
 
-							$value['options'] = themeblvd_get_select( 'categories' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No categories sidebars were found.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'No categories sidebars were found.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'sidebars' :
-
+						case 'sidebars':
 							if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
-								$error = __('You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area.', 'jumpstart');
+								$error = __( 'You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area.', 'jumpstart' );
 							}
 
-							$value['options'] = themeblvd_get_select( 'sidebars' );
+							$option['options'] = themeblvd_get_select( 'sidebars' );
 
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No floating widget areas were found.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'No floating widget areas were found.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'sidebars_all' :
+						case 'sidebars_all':
+							$option['options'] = themeblvd_get_select( 'sidebars_all' );
 
-							$value['options'] = themeblvd_get_select( 'sidebars_all' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No registered sidebars were found.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'No registered sidebars were found.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'crop' :
+						case 'crop':
+							$option['options'] = themeblvd_get_select( 'crop' );
 
-							$value['options'] = themeblvd_get_select( 'crop' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No registered crop sizes were found.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'No registered crop sizes were found.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'textures' :
-
+						case 'textures':
 							$textures = true;
 
-							$value['options'] = themeblvd_get_select( 'textures' );
+							$option['options'] = themeblvd_get_select( 'textures' );
 
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('No textures were found.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'No textures were found.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'templates' :
+						case 'templates':
+							$option['options'] = themeblvd_get_select( 'templates' );
 
-							$value['options'] = themeblvd_get_select( 'templates' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('You haven\'t created any custom templates yet.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'You haven\'t created any custom templates yet.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'authors' :
+						case 'authors':
+							$option['options'] = themeblvd_get_select( 'authors' );
 
-							$value['options'] = themeblvd_get_select( 'authors' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('Couldn\'t find any authors.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'Couldn\'t find any authors.', 'jumpstart' );
 							}
+
 							break;
 
-						case 'sliders' :
+						case 'sliders': // @deprecated
+							$option['options'] = themeblvd_get_select( 'sliders' );
 
-							$value['options'] = themeblvd_get_select( 'sliders' );
-
-							if ( count( $value['options'] ) < 1 ) {
-								$error = __('Couldn\'t find any sliders.', 'jumpstart');
+							if ( count( $option['options'] ) < 1 ) {
+								$error = __( 'Couldn\'t find any sliders.', 'jumpstart' );
 							}
+
 							break;
 
 					}
-
 				}
 
-				// If any dynamic selects caused errors,
-				// don't display a select menu.
+				/*
+				 * If any dynamic selects caused errors (or no items
+				 * were found), don't display a select menu.
+				 */
 				if ( $error ) {
-					$output .= sprintf('<p class="warning">%s</p>', esc_html($error));
+
+					$output .= sprintf(
+						'<p class="warning">%s</p>',
+						esc_html( $error )
+					);
+
 					break;
+
 				}
 
-				// Start output for <select>
+				// Start output for <select>.
 				$output .= '<div class="tb-fancy-select">';
-				$output .= sprintf( '<select class="of-input" name="%s" id="%s">', esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($value['id']) );
 
-				$first = reset($value['options']);
+				$output .= sprintf(
+					'<select class="of-input" name="%s" id="%s">',
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					esc_attr( $option['id'] )
+				);
+
+				$first = reset( $option['options'] );
 
 				if ( is_array( $first ) ) {
 
-					// Option groups
-					foreach ( $value['options'] as $optgroup_id => $optgroup ) {
+					// Option groups.
+					foreach ( $option['options'] as $optgroup_id => $optgroup ) {
 
-						$output .= sprintf('<optgroup label="%s">', $optgroup['label']);
+						$output .= sprintf( '<optgroup label="%s">', $optgroup['label'] );
 
-						foreach ( $optgroup['options'] as $key => $option ) {
-							$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr($key), esc_html($option) );
+						foreach ( $optgroup['options'] as $key => $selection ) {
+
+							$output .= sprintf(
+								'<option%s value="%s">%s</option>',
+								selected( $key, $current, false ),
+								esc_attr( $key ),
+								esc_html( $selection )
+							);
+
 						}
 
 						$output .= '</optgroup>';
-					}
 
+					}
 				} else {
 
-					// Standard
-					foreach ( $value['options'] as $key => $option ) {
-						$output .= sprintf( '<option%s value="%s">%s</option>', selected( $key, $val, false ), esc_attr($key), esc_html($option) );
-					}
+					// Standard <select>.
+					foreach ( $option['options'] as $key => $selection ) {
 
+						$output .= sprintf(
+							'<option%s value="%s">%s</option>',
+							selected( $key, $current, false ),
+							esc_attr( $key ),
+							esc_html( $selection )
+						);
+
+					}
 				}
 
 				$output .= '</select>';
+
 				$output .= '<span class="trigger"></span>';
+
 				$output .= '<span class="textbox"></span>';
+
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				if ( $textures ) {
-					$output .= '<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">'.esc_attr__('Browse Textures', 'jumpstart').'</a>';
+
+					$output .= sprintf(
+						'<a href="#" class="tb-texture-browser-link" data-target="themeblvd-texture-browser">%s</a>',
+						esc_attr__( 'Browse Textures', 'jumpstart' )
+					);
+
 				}
 
-				// If this is a builder sample select, show preview images
-				if ( isset( $value['class'] ) && strpos($value['class'], 'builder-samples') !== false ) {
+				// If this is a builder sample select, show preview images.
+				if ( isset( $option['class'] ) && false !== strpos( $option['class'], 'builder-samples' ) ) {
+
 					if ( function_exists( 'themeblvd_builder_sample_previews' ) ) {
+
 						$output .= themeblvd_builder_sample_previews();
+
 					}
 				}
+
 				break;
 
-			/*---------------------------------------*/
-			/* Radio
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `radio`.
+			 *
+			 * This option is a basic set of radio inputs, meant
+			 * to let the user select one selection from a group.
+			 *
+			 * @param array $option {
+			 *     @type string $id      Unique ID for option.
+			 *     @type string $name    Title for option.
+			 *     @type string $desc    Description for option.
+			 *     @type string $std     Default value.
+			 *     @type string $type    Type of option, should be `radio`.
+			 *     @type array  $options Associative array of selections.
+			 * }
+			 */
+			case 'radio':
+				$name = $option_name . '[' . $option['id'] . ']';
 
-			case 'radio' :
+				foreach ( $option['options'] as $key => $input ) {
 
-				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
+					$id = sprintf( '%s-%s-%s', $option_name, $option['id'], $key );
 
-				foreach ( $value['options'] as $key => $option ) {
-					$id = sprintf( '%s-%s-%s', $option_name, $value['id'], $key );
 					$output .= '<div class="radio-input clearfix">';
-					$output .= sprintf( '<input class="of-input of-radio" type="radio" name="%s" id="%s" value="%s" %s />', esc_attr($name), esc_attr($id), esc_attr($key), checked( $val, $key, false ) );
-					$output .= sprintf( '<label for="%s">%s</label>', esc_attr($id), $option );
+
+					$output .= sprintf(
+						'<input class="of-input of-radio" type="radio" name="%s" id="%s" value="%s" %s />',
+						esc_attr( $name ),
+						esc_attr( $id ),
+						esc_attr( $key ),
+						checked( $current, $key, false )
+					);
+
+					$output .= sprintf(
+						'<label for="%s">%s</label>',
+						esc_attr( $id ),
+						$input
+					);
+
 					$output .= '</div><!-- .radio-input (end) -->';
+
 				}
+
 				break;
 
-			/*---------------------------------------*/
-			/* Image Selectors
-			/*---------------------------------------*/
-
-			case 'images' :
-
-				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
+			/*
+			 * Display option type, `images`.
+			 *
+			 * This option is a basic set of radio inputs, meant
+			 * to let the user select one selection from a group.
+			 * But each input selection is represented by an image.
+			 *
+			 * @param array $option {
+			 *     @type string $id      Unique ID for option.
+			 *     @type string $name    Title for option.
+			 *     @type string $desc    Description for option.
+			 *     @type string $std     Default value.
+			 *     @type string $type    Type of option, should be `images`.
+			 *     @type array  $options Associative array of selections.
+			 * }
+			 */
+			case 'images':
+				$name = $option_name . '[' . $option['id'] . ']';
 
 				$width = '';
 
-				if ( isset( $value['img_width'] ) ) {
-					$width = $value['img_width'];
+				if ( isset( $option['img_width'] ) ) {
+					$width = $option['img_width'];
 				}
 
-				foreach ( $value['options'] as $key => $option ) {
+				foreach ( $option['options'] as $key => $img ) {
+
+					$checked = checked( $current, $key, false );
 
 					$selected = '';
-					$checked = checked( $val, $key, false );
-					$selected = $checked ? ' of-radio-img-selected' : '';
 
-					$output .= sprintf( '<input type="radio" id="%s" class="of-radio-img-radio" value="%s" name="%s" %s />', esc_attr($value['id'].'_'.$key), esc_attr($key), esc_attr($name), $checked );
-					$output .= sprintf( '<div class="of-radio-img-label">%s</div>', esc_html($key) );
-					$output .= sprintf( '<img src="%s" alt="%s" class="of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />', esc_url($option), esc_url($option), $selected, esc_attr($width), esc_attr($value['id'].'_'.$key) );
+					if ( $checked ) {
+						$selected = ' of-radio-img-selected';
+					}
+
+					$output .= sprintf(
+						'<input type="radio" id="%s" class="of-radio-img-radio" value="%s" name="%s" %s />',
+						esc_attr( $option['id'] . '_' . $key ),
+						esc_attr( $key ),
+						esc_attr( $name ),
+						$checked
+					);
+
+					$output .= sprintf(
+						'<div class="of-radio-img-label">%s</div>',
+						esc_html( $key )
+					);
+
+					$output .= sprintf(
+						'<img src="%s" alt="%s" class="of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />',
+						esc_url( $img ),
+						esc_url( $img ),
+						$selected,
+						esc_attr( $width ),
+						esc_attr( $option['id'] . '_' . $key )
+					);
 
 				}
+
 				break;
 
-			/*---------------------------------------*/
-			/* Checkbox
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `checkbox`.
+			 *
+			 * This option type is just a single checkbox.
+			 *
+			 * @param array $option {
+			 *     @type string $id       Unique ID for option.
+			 *     @type string $name     Title for option.
+			 *     @type string $desc     Description for option.
+			 *     @type string $std      Default value, `0` or `1`.
+			 *     @type string $type     Type of option, should be `checkbox`.
+			 *     @type string $inactive Optional. A value to force the on the checkbox, if disabling.
+			 * }
+			 */
+			case 'checkbox':
+				if ( ! empty( $option['inactive'] ) ) {
 
-			case 'checkbox' :
+					if ( '1' === $option['inactive'] || 'true' === $option['inactive'] ) {
 
-				if ( ! empty( $value['inactive'] ) ) {
-					if ( $value['inactive'] === 'true' ) {
-						$val = 1;
-					} else if( $value['inactive'] === 'false' ) {
-						$val = 0;
+						$current = '1';
+
+					} elseif ( '0' === $option['inactive'] || 'false' === $option['inactive'] ) {
+
+						$current = '0';
+
 					}
 				}
 
-				$name = sprintf( '%s[%s]', $option_name, $value['id'] );
-				$checkbox = sprintf( '<input id="%s" class="checkbox of-input" type="checkbox" name="%s" %s />', esc_attr($value['id']), esc_attr($name), checked( $val, 1, false ) );
+				$name = $option_name . '[' . $option['id'] . ']';
 
-				if ( ! empty( $value['inactive'] ) ) {
+				$checkbox = sprintf(
+					'<input id="%s" class="checkbox of-input" type="checkbox" name="%s" %s />',
+					esc_attr( $option['id'] ),
+					esc_attr( $name ),
+					checked( $current, '1', false )
+				);
+
+				if ( ! empty( $option['inactive'] ) ) {
 					$checkbox = str_replace( '/>', 'disabled="disabled" />', $checkbox );
 				}
 
@@ -515,88 +956,148 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				break;
 
-			/*---------------------------------------*/
-			/* Multicheck
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `multicheck`.
+			 *
+			 * This option is a basic set of checkboxes, meant
+			 * to let the user select multiple selection from
+			 * a group.
+			 *
+			 * @param array $option {
+			 *     @type string $id      Unique ID for option.
+			 *     @type string $name    Title for option.
+			 *     @type string $desc    Description for option.
+			 *     @type string $std     Default value.
+			 *     @type string $type    Type of option, should be `multicheck`.
+			 *     @type array  $options Associative array of selections.
+			 * }
+			 */
+			case 'multicheck':
+				foreach ( $option['options'] as $key => $checkbox ) {
 
-			case 'multicheck' :
-				foreach ( $value['options'] as $key => $option ) {
+					$checked = '';
 
-					$checked = isset( $val[$key] ) ? checked( $val[$key], 1, false ) : '';
-					$label = $option;
-					$option = preg_replace( '/\W/', '', strtolower( $key ) );
+					if ( isset( $current[ $key ] ) ) {
+						$checked = checked( $current[ $key ], 1, false );
+					}
 
-					$id = sprintf( '%s-%s-%s', $option_name, $value['id'], $option );
-					$name = sprintf( '%s[%s][%s]', $option_name, $value['id'], $key );
+					$label = $checkbox;
+
+					$checkbox = preg_replace( '/\W/', '', strtolower( $key ) );
+
+					$id = $option_name . '-' . $option['id'] . '-' . $checkbox;
+
+					$name = $option_name . '[' . $option['id'] . '][' . $key . ']';
 
 					$class = 'checkbox of-input';
 
-					if ( $key == 'all' ) {
+					if ( 'all' === $key ) {
 						$class .= ' all';
 					}
 
-					$output .= sprintf( '<input id="%s" class="%s" type="checkbox" name="%s" %s /><label for="%s">%s</label>', esc_attr($id), $class, esc_attr($name), $checked, esc_attr($id), $label );
+					$output .= sprintf(
+						'<input id="%s" class="%s" type="checkbox" name="%s" %s /><label for="%s">%s</label>',
+						esc_attr( $id ),
+						$class,
+						esc_attr( $name ),
+						$checked,
+						esc_attr( $id ),
+						$label
+					);
+
 				}
+
 				break;
 
-			/*---------------------------------------*/
-			/* Color picker
-			/*---------------------------------------*/
-
-			case 'color' :
-				$output .= sprintf( '<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val), esc_attr($value['std']) );
-				break;
-
-			/*---------------------------------------*/
-			/* Uploader
-			/*---------------------------------------*/
-
-			case 'upload' :
-
-				// Media uploader WP 3.5+
-				$args = array(
-					'option_name'	=> $option_name,
-					'id'			=> $value['id']
+			/*
+			 * Display option type, `color`.
+			 *
+			 * This option uses WordPress's built-in color
+			 * picker to let the user select a color hex code.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type string $std  Default value.
+			 *     @type string $type Type of option, should be `color`.
+			 * }
+			 */
+			case 'color':
+				$output .= sprintf(
+					'<input id="%s" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					esc_attr( $current ),
+					esc_attr( $option['std'] )
 				);
 
-				if ( ! empty( $value['advanced'] ) ) {
+				break;
 
-					// Advanced type will allow for selecting
-					// image crop size for URL.
+			/*
+			 * Display option type, `upload`.
+			 *
+			 * This option lets the user upload media, using
+			 * WordPress's media modal.
+			 *
+			 * @param array $option {
+			 *     @type string       $id        Unique ID for option.
+			 *     @type string       $name      Title for option.
+			 *     @type string       $desc      Description for option.
+			 *     @type string|array $std       Default value.
+			 *     @type string|array $type      Type of option, should be `upload`.
+			 *     @type string       $send_back On standard upload type, what to send to input field, `url` or `id`.
+			 *     @type bool         $advanced  Whether this is an `advanced` upload type.
+			 *     @type bool         $video     Whether this is a `video` upload type.
+			 *     @type bool         $media     Whether this is a `media` upload type, to select from any form of media to send back to a <textarea>.
+			 * }
+			 */
+			case 'upload':
+				$args = array(
+					'option_name' => $option_name,
+					'id'          => $option['id'],
+				);
+
+				if ( ! empty( $option['advanced'] ) ) {
+
+					/*
+					 * Advanced type will allow for selecting
+					 * image crop size for URL.
+					 */
 					$args['type'] = 'advanced';
 
-					if ( isset( $val['src'] ) ) {
-						$args['value_src'] = $val['src'];
+					if ( isset( $current['src'] ) ) {
+						$args['value_src'] = $current['src'];
 					}
 
-					if ( isset( $val['id'] ) ) {
-						$args['value_id'] = $val['id'];
+					if ( isset( $current['id'] ) ) {
+						$args['value_id'] = $current['id'];
 					}
 
-					if ( isset( $val['title'] ) ) {
-						$args['value_title'] = $val['title'];
+					if ( isset( $current['title'] ) ) {
+						$args['value_title'] = $current['title'];
 					}
 
-					if ( isset( $val['crop'] ) ) {
-						$args['value_crop'] = $val['crop'];
+					if ( isset( $current['crop'] ) ) {
+						$args['value_crop'] = $current['crop'];
 					}
-
 				} else {
 
-					$args['value'] = $val;
+					$args['value'] = $current;
+
 					$args['type'] = 'standard';
 
-					if ( isset( $value['send_back'] ) ) {
-						$args['send_back'] = $value['send_back'];
+					if ( isset( $option['send_back'] ) ) {
+						$args['send_back'] = $option['send_back'];
 					} else {
-						$args['send_back'] = 'url';
+						$args['send_back'] = 'url'; // Default.
 					}
 
-					if ( ! empty( $value['video'] ) ) {
+					if ( ! empty( $option['video'] ) ) {
 						$args['type'] = 'video';
 					}
 
-					if ( ! empty( $value['media'] ) ) { // ... @TODO Framework javascript currently doesn't support this
+					if ( ! empty( $option['media'] ) ) { // @TODO Framework javascript currently doesn't support this
 						$args['type'] = 'media';
 					}
 				}
@@ -605,194 +1106,341 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				break;
 
-			/*---------------------------------------*/
-			/* Typography
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `typography`.
+			 *
+			 * This option lets the user configure a font, with
+			 * support included for the Google Font Directory and
+			 * Typekit.
+			 *
+			 * You can control how many attributes about the font
+			 * are configurable by passing in the $atts param.
+			 * `array( 'size', 'style', 'weight', 'face', 'color' )`
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `typography`.
+			 *     @type array  $atts List of attributes to include from `size`, `style`, `weight`, `face`, and `color`.
+			 * }
+			 */
+			case 'typography':
+				$current = wp_parse_args( $current, array(
+					'size'        => '0px',
+					'style'       => '',
+					'weight'      => '400', // @since Theme_Blvd 2.5.0
+					'face'        => '',
+					'color'       => '',    // @since Theme_Blvd 2.5.0
+					'google'      => '',
+					'typekit'     => '',    // @since Theme_Blvd 2.6.0
+					'typekit_kit' => '',    // @since Theme_Blvd 2.6.0
+				));
 
-			case 'typography' :
-
-                $typography_stored = wp_parse_args( $val, array(
-                    'size'          => '0px',
-                    'style'         => '',
-                    'weight'        => '400',   // @since 2.5.0
-                    'face'          => '',
-                    'color'         => '',      // @since 2.5.0
-                    'google'        => '',
-                    'typekit'       => '',      // @since 2.6.0
-                    'typekit_kit'   => ''       // @since 2.6.0
-                ));
-
-				// Font Size
-				if ( in_array( 'size', $value['atts'] ) ) {
+				// Add font-size selection to output.
+				if ( in_array( 'size', $option['atts'] ) ) {
 
 					$output .= '<div class="jquery-ui-slider-wrap">';
 
-					if ( ! empty($value['sizes']) ) {
-						$sizes = $value['sizes'];
+					if ( ! empty( $option['sizes'] ) ) {
+						$sizes = $option['sizes'];
 					} else {
 						$sizes = themeblvd_recognized_font_sizes();
 					}
 
-					$slide_options = array();
-					$slide_options['min'] = intval($sizes[0]);
-					$slide_options['max'] = intval(end($sizes));
-					$slide_options['step'] = intval($sizes[1])-intval($sizes[0]);
-					$slide_options['units'] = 'px';
+					$slide_options = array(
+						'min'   => intval( $sizes[0] ),
+						'max'   => intval( end( $sizes ) ),
+						'step'  => intval( $sizes[1] ) - intval( $sizes[0] ),
+						'units' => 'px',
+					);
 
 					$output .= '<div class="jquery-ui-slider"';
 
 					foreach ( $slide_options as $param_id => $param ) {
-						$output .= sprintf( ' data-%s="%s"', esc_attr($param_id), esc_attr($param) );
+
+						$output .= sprintf(
+							' data-%s="%s"',
+							esc_attr( $param_id ),
+							esc_attr( $param )
+						);
+
 					}
 
 					$output .= '></div>';
 
-					$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr( $value['id'].'_size' ), esc_attr( $option_name.'['.$value['id'].'][size]' ), esc_attr($typography_stored['size']) );
+					$output .= sprintf(
+						'<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />',
+						esc_attr( $option['id'] . '_size' ),
+						esc_attr( $option_name . '[' . $option['id'] . '][size]' ),
+						esc_attr( $current['size'] )
+					);
+
 					$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 
 				}
 
-				// Font Style
-				if ( in_array( 'style', $value['atts'] ) ) {
+				// Add font-style selection to output.
+				if ( in_array( 'style', $option['atts'] ) ) {
 
 					$output .= '<div class="tb-fancy-select">';
-					$output .= '<select class="of-typography of-typography-style" name="'.esc_attr( $option_name.'['.$value['id'].'][style]' ).'" id="'.esc_attr( $value['id'].'_style' ).'">';
+
+					$output .= sprintf(
+						'<select class="of-typography of-typography-style" name="%s" id="%s">',
+						esc_attr( $option_name . '[' . $option['id'] . '][style]' ),
+						esc_attr( $option['id'] . '_style' )
+					);
 
 					$styles = themeblvd_recognized_font_styles();
 
-                    foreach ( $styles as $key => $style ) {
-						$output .= '<option value="'.esc_attr($key).'" '.selected( $typography_stored['style'], $key, false ).'>'.esc_html($style).'</option>';
+					foreach ( $styles as $key => $style ) {
+
+						$output .= sprintf(
+							'<option value="%s" %s>%s</option>',
+							esc_attr( $key ),
+							selected( $current['style'], $key, false ),
+							esc_html( $style )
+						);
+
 					}
 
 					$output .= '</select>';
+
 					$output .= '<span class="trigger"></span>';
+
 					$output .= '<span class="textbox"></span>';
+
 					$output .= '</div><!-- .tb-fancy-select (end) -->';
+
 				}
 
-                // Font Weight
-                if ( in_array( 'weight', $value['atts'] ) ) {
+				// Add font-weight selection to output.
+				if ( in_array( 'weight', $option['atts'] ) ) {
 
 					$output .= '<div class="tb-fancy-select">';
-					$output .= '<select class="of-typography of-typography-weight" name="'.esc_attr( $option_name.'['.$value['id'].'][weight]' ).'" id="'.esc_attr( $value['id'].'_weight' ).'">';
+
+					$output .= sprintf(
+						'<select class="of-typography of-typography-weight" name="%s" id="%s">',
+						esc_attr( $option_name . '[' . $option['id'] . '][weight]' ),
+						esc_attr( $option['id'] . '_weight' )
+					);
 
 					$weights = themeblvd_recognized_font_weights();
 
-                    foreach ( $weights as $key => $weight ) {
-						$output .= '<option value="'.esc_attr($key).'" '.selected( $typography_stored['weight'], $key, false ).'>'.esc_attr($weight).'</option>';
+					foreach ( $weights as $key => $weight ) {
+
+						$output .= sprintf(
+							'<option value="%s" %s>%s</option>',
+							esc_attr( $key ),
+							selected( $current['weight'], $key, false ),
+							esc_attr( $weight )
+						);
+
 					}
 
 					$output .= '</select>';
+
 					$output .= '<span class="trigger"></span>';
+
 					$output .= '<span class="textbox"></span>';
+
 					$output .= '</div><!-- .tb-fancy-select (end) -->';
+
 				}
 
-				// Font Face
-				if ( in_array( 'face', $value['atts'] ) ) {
+				// Add font-family selection to output.
+				if ( in_array( 'face', $option['atts'] ) ) {
 
 					$output .= '<div class="tb-fancy-select">';
-					$output .= '<select class="of-typography of-typography-face" name="'.esc_attr( $option_name.'['.$value['id'].'][face]' ).'" id="'.esc_attr( $value['id'].'_face' ).'">';
+
+					$output .= sprintf(
+						'<select class="of-typography of-typography-face" name="%s" id="%s">',
+						esc_attr( $option_name . '[' . $option['id'] . '][face]' ),
+						esc_attr( $option['id'] . '_face' )
+					);
 
 					$faces = themeblvd_recognized_font_faces();
 
-                    foreach ( $faces as $key => $face ) {
-						$output .= '<option value="'.esc_attr($key).'" '.selected( $typography_stored['face'], $key, false ).'>'.esc_attr($face).'</option>';
+					foreach ( $faces as $key => $face ) {
+
+						$output .= sprintf(
+							'<option value="%s" %s>%s</option>',
+							esc_attr( $key ),
+							selected( $current['face'], $key, false ),
+							esc_attr( $face )
+						);
+
 					}
 
 					$output .= '</select>';
+
 					$output .= '<span class="trigger"></span>';
+
 					$output .= '<span class="textbox"></span>';
+
 					$output .= '</div><!-- .tb-fancy-select (end) -->';
+
 				}
 
-				// Font Color
-				if ( in_array( 'color', $value['atts'] ) ) {
+				// Add color selection to output.
+				if ( in_array( 'color', $option['atts'] ) ) {
 
-					$def = '#666666';
+					$default = '#666666';
 
-					if ( ! empty($value['std']['color']) ) {
-						$def = $value['std']['color'];
+					if ( ! empty( $option['std']['color'] ) ) {
+						$default = $option['std']['color'];
 					}
 
-					$output .= sprintf( '<input id="%s-color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][color]'), esc_attr($typography_stored['color']), esc_attr($def) );
+					$output .= sprintf(
+						'<input id="%s-color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />',
+						esc_attr( $option['id'] ),
+						esc_attr( $option_name . '[' . $option['id'] . '][color]' ),
+						esc_attr( $current['color'] ),
+						esc_attr( $default )
+					);
+
 				}
 
 				$output .= '<div class="clear"></div>';
 
-				// Google Font support
-				if ( in_array( 'face', $value['atts'] ) ) {
+				// Add Google Font field to output.
+				if ( in_array( 'face', $option['atts'] ) ) {
+
 					$output .= '<div class="google-font hide">';
-					$output .= '<h5>'.sprintf(esc_attr__('Enter the name of a font from the %s.', 'jumpstart'), '<a href="http://www.google.com/webfonts" target="_blank">'.esc_attr__('Google Font Directory', 'jumpstart').'</a>').'</h5>';
-					$output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][google]' ).'" value="'.esc_attr($typography_stored['google']).'" />';
-					$output .= '<p class="note"><strong>'.esc_attr__('Example', 'jumpstart').'</strong>: Open Sans<br />';
-                    $output .= '<strong>'.esc_attr__('Example with custom weight', 'jumpstart').'</strong>: Open Sans:300</p>';
+
+					$output .= sprintf(
+						// translators: Placeholder is link to Google Font Directory.
+						'<h5>' . esc_html__( 'Enter the name of a font from the %s.', 'jumpstart' ) . '</h5>',
+						'<a href="http://www.google.com/webfonts" target="_blank">' . esc_attr__( 'Google Font Directory', 'jumpstart' ) . '</a>'
+					);
+
+					$output .= sprintf(
+						'<input type="text" name="%s" value="%s" />',
+						esc_attr( $option_name . '[' . $option['id'] . '][google]' ),
+						esc_attr( $current['google'] )
+					);
+
+					$output .= sprintf(
+						'<p class="note"><strong>%s</strong> Open Sans<br />',
+						esc_html__( 'Example:', 'jumpstart' )
+					);
+
+					$output .= sprintf(
+						'<strong>%s</strong> Open Sans:300</p>',
+						esc_html__( 'Example with custom weight:', 'jumpstart' )
+					);
+
 					$output .= '</div>';
+
 				}
 
-                // Typekit support
-				if ( in_array( 'face', $value['atts'] ) ) {
+				// Add Typekit field to output.
+				if ( in_array( 'face', $option['atts'] ) ) {
+
 					$output .= '<div class="typekit-font hide">';
-                    $output .= '<h5>'.esc_attr__('Typekit Font Family', 'jumpstart').'</h5>';
-                    $output .= '<input type="text" name="'.esc_attr( $option_name.'['.$value['id'].'][typekit]' ).'" value="'.esc_attr($typography_stored['typekit']).'" />';
-                    $output .= '<h5>'.esc_attr__('Paste your kit\'s embed code below.', 'jumpstart').'</h5>';
-                    $output .= '<textarea name="'.esc_attr( $option_name.'['.$value['id'].'][typekit_kit]' ).'">'.themeblvd_kses($typography_stored['typekit_kit']).'</textarea>';
+
+					$output .= sprintf(
+						'<h5>%s</h5>',
+						esc_attr__( 'Typekit Font Family', 'jumpstart' )
+					);
+
+					$output .= sprintf(
+						'<input type="text" name="%s" value="%s" />',
+						esc_attr( $option_name . '[' . $option['id'] . '][typekit]' ),
+						esc_attr( $current['typekit'] )
+					);
+
+					$output .= sprintf(
+						'<h5>%s</h5>',
+						esc_attr__( 'Paste your kit\'s embed code below.', 'jumpstart' )
+					);
+
+					$output .= sprintf(
+						'<textarea name="%s">%s</textarea>',
+						esc_attr( $option_name . '[' . $option['id'] . '][typekit_kit]' ),
+						themeblvd_kses( $current['typekit_kit'] )
+					);
+
 					$output .= '</div>';
+
 				}
 
 				break;
 
-			/*---------------------------------------*/
-			/* Background
-			/*---------------------------------------*/
-
+			/*
+			 * Display option type, `background`.
+			 *
+			 * This option lets the user configure a background
+			 * image for a section.
+			 *
+			 * @param array $option {
+			 *     @type string $id       Unique ID for option.
+			 *     @type string $name     Title for option.
+			 *     @type string $desc     Description for option.
+			 *     @type array  $std      Default value.
+			 *     @type string $type     Type of option, should be `background`.
+			 *     @type bool   $color    Whether to include background-color selection.
+			 *     @type bool   $parallax Whether to let the user select parallax effect.
+			 * }
+			 */
 			case 'background':
-
 				$background = array();
 
-				if ( $val ) {
-					$background = $val;
+				if ( $current ) {
+					$background = $current;
 				}
 
-				// Show background color?
 				$color = true;
-				if ( isset( $value['color'] ) ) {
-					$color = $value['color'];
+
+				if ( isset( $option['color'] ) ) {
+					$color = $option['color'];
 				}
 
-				// Background Color
+				// Add background-color picker to output.
 				if ( $color ) {
 
 					$current_color = '';
+
 					if ( ! empty( $background['color'] ) ) {
 						$current_color = $background['color'];
 					}
 
-					$output .= sprintf( '<input id="%s_color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][color]' ), esc_attr($current_color), esc_attr($current_color));
+					$output .= sprintf(
+						'<input id="%s_color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />',
+						esc_attr( $option['id'] ),
+						esc_attr( $option_name . '[' . $option['id'] . '][color]' ),
+						esc_attr( $current_color ),
+						esc_attr( $current_color )
+					);
+
 					$output .= '<br />';
 
 				}
 
-				// Background Image
+				// Add background-image upload to output.
 				if ( ! isset( $background['image'] ) ) {
 					$background['image'] = '';
 				}
 
-				// Currrent BG formatted correctly
 				$current_bg_url = '';
+
 				if ( ! empty( $background['image'] ) ) {
 					$current_bg_url = $background['image'];
 				}
 
 				$current_bg_image = array(
-					'url'	=> $current_bg_url,
-					'id'	=> ''
+					'url' => $current_bg_url,
+					'id'  => '',
 				);
 
-				// Start output
-
-				// Uploader
-				$output .= themeblvd_media_uploader( array( 'option_name' => $option_name, 'type' => 'background', 'id' => $value['id'], 'value' => $current_bg_url, 'name' => 'image' ) );
+				$output .= themeblvd_media_uploader( array(
+					'option_name' => $option_name,
+					'type'        => 'background',
+					'id'          => $option['id'],
+					'value'       => $current_bg_url,
+					'name'        => 'image',
+				));
 
 				$class = 'of-background-properties';
 
@@ -800,34 +1448,65 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$class .= ' hide';
 				}
 
-				$output .= '<div class="'.esc_attr($class).'">';
+				$output .= '<div class="' . esc_attr( $class ) . '">';
 
-				// Background Repeat
-				$current_repeat = !empty($background['repeat']) ? $background['repeat'] : '';
+				// Add background-repeat selection to output.
+				$current_repeat = '';
+
+				if ( ! empty( $background['repeat'] ) ) {
+					$current_repeat = $background['repeat'];
+				}
+
 				$output .= '<div class="tb-fancy-select condensed">';
-				$output .= '<select class="of-background of-background-repeat" name="'.esc_attr( $option_name.'['.$value['id'].'][repeat]'  ).'" id="'.esc_attr( $value['id'].'_repeat' ).'">';
+
+				$output .= sprintf(
+					'<select class="of-background of-background-repeat" name="%s" id="%s">',
+					esc_attr( $option_name . '[' . $option['id'] . '][repeat]' ),
+					esc_attr( $option['id'] . '_repeat' )
+				);
+
 				$repeats = themeblvd_recognized_background_repeat();
 
 				foreach ( $repeats as $key => $repeat ) {
-					$output .= '<option value="'.esc_attr( $key ).'" '.selected( $current_repeat, $key, false ).'>'. esc_html( $repeat ).'</option>';
+
+					$output .= sprintf(
+						'<option value="%s" %s>%s</option>',
+						esc_attr( $key ),
+						selected( $current_repeat, $key, false ),
+						esc_html( $repeat )
+					);
+
 				}
 
 				$output .= '</select>';
+
 				$output .= '<span class="trigger"></span>';
+
 				$output .= '<span class="textbox"></span>';
+
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
-				// Background Attachment
-				$current_attachment = ! empty($background['attachment']) ? $background['attachment'] : '';
+				// Add background-attachment selection to output.
+				$current_attachment = '';
+
+				if ( ! empty( $background['attachment'] ) ) {
+					$current_attachment = $background['attachment'];
+				}
+
 				$output .= '<div class="tb-fancy-select condensed">';
-				$output .= '<select class="of-background of-background-attachment" name="'.esc_attr( $option_name.'['.$value['id'].'][attachment]' ).'" id="'.esc_attr( $value['id'].'_attachment' ).'">';
+
+				$output .= sprintf(
+					'<select class="of-background of-background-attachment" name="%s" id="%s">',
+					esc_attr( $option_name . '[' . $option['id'] . '][attachment]' ),
+					esc_attr( $option['id'] . '_attachment' )
+				);
+
 				$attachments = themeblvd_recognized_background_attachment();
 
-				// Parallax scrolling
 				$parallax = false;
 
-				if ( isset( $value['parallax'] ) ) {
-					$parallax = $value['parallax'];
+				if ( isset( $option['parallax'] ) ) {
+					$parallax = $option['parallax'];
 				}
 
 				if ( ! $parallax ) {
@@ -835,601 +1514,1089 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				foreach ( $attachments as $key => $attachment ) {
-					$output .= '<option value="'.esc_attr($key).'" '.selected( $current_attachment, $key, false ).'>'.esc_attr($attachment).'</option>';
+
+					$output .= sprintf(
+						'<option value="%s" %s>%s</option>',
+						esc_attr( $key ),
+						selected( $current_attachment, $key, false ),
+						esc_attr( $attachment )
+					);
+
 				}
 
 				$output .= '</select>';
+
 				$output .= '<span class="trigger"></span>';
+
 				$output .= '<span class="textbox"></span>';
+
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
-				// Background Position
-				$current_position = ! empty($background['position']) ? $background['position'] : '';
+				// Add background-position selection to output.
+				$current_position = '';
+
+				if ( ! empty( $background['position'] ) ) {
+					$current_position = $background['position'];
+				}
+
 				$output .= '<div class="tb-fancy-select condensed">';
-				$output .= '<select class="of-background of-background-position" name="'.esc_attr( $option_name.'['.$value['id'].'][position]' ).'" id="'.esc_attr( $value['id'].'_position' ).'">';
+
+				$output .= '<select class="of-background of-background-position" name="' . esc_attr( $option_name . '[' . $option['id'] . '][position]' ) . '" id="' . esc_attr( $option['id'] . '_position' ) . '">';
+
 				$positions = themeblvd_recognized_background_position();
 
 				foreach ( $positions as $key => $position ) {
-					$output .= '<option value="'.esc_attr($key).'" '.selected( $current_position, $key, false ).'>'. esc_html($position).'</option>';
+
+					$output .= sprintf(
+						'<option value="%s" %s>%s</option>',
+						esc_attr( $key ),
+						selected( $current_position, $key, false ),
+						esc_attr( $position )
+					);
+
 				}
 
 				$output .= '</select>';
+
 				$output .= '<span class="trigger"></span>';
+
 				$output .= '<span class="textbox"></span>';
+
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
-				// Background Size
-				$current_size = ! empty($background['size']) ? $background['size'] : '';
+				// Add background-size selection to output.
+				$current_size = '';
+
+				if ( ! empty( $background['size'] ) ) {
+					$current_size = $background['size'];
+				}
+
 				$output .= '<div class="tb-fancy-select condensed">';
-				$output .= '<select class="of-background of-background-size" name="'.esc_attr( $option_name.'['.$value['id'].'][size]' ).'" id="'.esc_attr( $value['id'].'_size' ).'">';
+
+				$output .= sprintf(
+					'<select class="of-background of-background-size" name="%s" id="%s">',
+					esc_attr( $option_name . '[' . $option['id'] . '][size]' ),
+					esc_attr( $option['id'] . '_size' )
+				);
 
 				$sizes = themeblvd_recognized_background_size();
 
 				foreach ( $sizes as $key => $size ) {
-					$output .= '<option value="'.esc_attr($key).'" '.selected( $current_size, $key, false ).'>'. esc_html($size).'</option>';
+
+					$output .= sprintf(
+						'<option value="%s" %s>%s</option>',
+						esc_attr( $key ),
+						selected( $current_size, $key, false ),
+						esc_attr( $size )
+					);
+
 				}
 
 				$output .= '</select>';
+
 				$output .= '<span class="trigger"></span>';
+
 				$output .= '<span class="textbox"></span>';
+
 				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				$output .= '</div>';
 
 				break;
 
-            /*---------------------------------------*/
-			/* Background Video
-			/*---------------------------------------*/
-
+			/*
+			 * Display option type, `background_video`.
+			 *
+			 * This option lets the user configure a background
+			 * video for a section.
+			 *
+			 * @param array $option {
+			 *     @type string $id       Unique ID for option.
+			 *     @type string $name     Title for option.
+			 *     @type string $desc     Description for option.
+			 *     @type array  $std      Default value.
+			 *     @type string $type     Type of option, should be `background_video`.
+			 * }
+			 */
 			case 'background_video':
+				// Add video upload field to output.
+				$output .= '<div class="section-upload">';
 
-                // Video
-                $output .= '<div class="section-upload">';
-                $output .= '<p><strong>'.esc_html__('Video URL', 'jumpstart').'</strong></p>';
+				$output .= sprintf(
+					'<p><strong>%s</strong></p>',
+					esc_html__( 'Video URL', 'jumpstart' )
+				);
 
-                $video_url = '';
+				$video_url = '';
 
-                if ( ! empty( $val['mp4'] ) ) {
-                    $video_url = $val['mp4'];
-                }
+				if ( ! empty( $current['mp4'] ) ) {
+					$video_url = $current['mp4'];
+				}
 
-                $output .= themeblvd_media_uploader(array(
-                    'option_name'   => $option_name,
-                    'type'          => 'video',
-                    'id'            => $value['id'],
-                    'value'         => $video_url,
-                    'name'          => 'mp4'
-                ));
+				$output .= themeblvd_media_uploader( array(
+					'option_name' => $option_name,
+					'type'        => 'video',
+					'id'          => $option['id'],
+					'value'       => $video_url,
+					'name'        => 'mp4',
+				));
 
-                $output .= '</div><!-- .section-upload (end) -->';
+				$output .= '</div><!-- .section-upload (end) -->';
 
-                // Background image
-                $output .= '<div class="section-upload clearfix">';
-                $output .= '<p><strong>'.esc_html__('Video Fallback Image', 'jumpstart').'</strong></p>';
+				// Add fallback image upload field to output.
+				$output .= '<div class="section-upload clearfix">';
 
-                $img_url = '';
+				$output .= sprintf(
+					'<p><strong>%s</strong></p>',
+					esc_html__( 'Video Fallback Image', 'jumpstart' )
+				);
 
-                if ( ! empty( $val['fallback'] ) ) {
-                    $img_url = $val['fallback'];
-                }
+				$img_url = '';
 
-                $output .= themeblvd_media_uploader(array(
-                    'option_name'   => $option_name,
-                    'type'          => 'background',
-                    'id'            => $value['id'],
-                    'value'         => $img_url,
-                    'name'          => 'fallback'
-                ));
+				if ( ! empty( $current['fallback'] ) ) {
+					$img_url = $current['fallback'];
+				}
 
-                $output .= '</div><!-- .section-upload (end) -->';
+				$output .= themeblvd_media_uploader( array(
+					'option_name' => $option_name,
+					'type'        => 'background',
+					'id'          => $option['id'],
+					'value'       => $img_url,
+					'name'        => 'fallback',
+				));
 
-                // Aspect ratio
-                $output .= '<p><strong>'.esc_html__('Video Aspect Ratio', 'jumpstart').'</strong></p>';
+				$output .= '</div><!-- .section-upload (end) -->';
 
-                $ratio = '16:9';
+				// Add aspect ratior field to output.
+				$output .= sprintf(
+					'<p><strong>%s</strong></p>',
+					esc_html__( 'Video Aspect Ratio', 'jumpstart' )
+				);
 
-                if ( ! empty( $val['ratio'] ) ) {
-                    $ratio = $val['ratio'];
-                }
+				$ratio = '16:9';
 
-                $output .= sprintf( '<input id="%s_ratio" name="%s" type="text" value="%s" class="of-input" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][ratio]'), esc_attr($ratio) );
+				if ( ! empty( $current['ratio'] ) ) {
+					$ratio = $current['ratio'];
+				}
 
+				$output .= sprintf(
+					'<input id="%s_ratio" name="%s" type="text" value="%s" class="of-input" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . '][ratio]' ),
+					esc_attr( $ratio )
+				);
 
-                break;
+				break;
 
-			/*---------------------------------------*/
-			/* Gradient
-			/*---------------------------------------*/
-
+			/*
+			 * Display option type, `gradient`.
+			 *
+			 * This option let's the user setup a gradient
+			 * background by selecting a top and bottom color,
+			 * to blend together.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `gradient`.
+			 * }
+			 */
 			case 'gradient':
-
 				$start = '';
+
 				$start_def = '#000000';
+
 				$end = '';
+
 				$end_def = '#000000';
 
-				if ( ! empty( $val['start'] ) ) {
-					$start = $val['start'];
+				if ( ! empty( $current['start'] ) ) {
+					$start = $current['start'];
 				}
 
-				if ( ! empty( $val['end'] ) ) {
-					$end = $val['end'];
+				if ( ! empty( $current['end'] ) ) {
+					$end = $current['end'];
 				}
 
-				if ( ! empty( $value['std']['start'] ) ) {
-					$start_def = $value['std']['start'];
+				if ( ! empty( $option['std']['start'] ) ) {
+					$start_def = $option['std']['start'];
 				}
 
-				if ( ! empty( $value['std']['end'] ) ) {
-					$end_def = $value['std']['end'];
+				if ( ! empty( $option['std']['end'] ) ) {
+					$end_def = $option['std']['end'];
 				}
 
 				$output .= '<div class="gradient-wrap">';
 
-				// Start color
+				// Add color picker for start color to output.
 				$output .= '<div class="color-start">';
-				$output .= sprintf( '<input id="%s_start" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][start]'), esc_attr($start), esc_attr($start_def) );
-				$output .= '<span class="color-label">'.esc_attr__('Top Color', 'jumpstart').'</span>';
+
+				$output .= sprintf(
+					'<input id="%s_start" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . '][start]' ),
+					esc_attr( $start ),
+					esc_attr( $start_def )
+				);
+
+				$output .= sprintf(
+					'<span class="color-label">%s</span>',
+					esc_attr__( 'Top Color', 'jumpstart' )
+				);
+
 				$output .= '</div><!-- .color-start (end) -->';
 
-				// End color
+				// Add color picker for end color to output.
 				$output .= '<div class="color-end">';
-				$output .= sprintf( '<input id="%s_end" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />', esc_attr($value['id']), esc_attr($option_name.'['.$value['id'].'][end]'), esc_attr($end), esc_attr($end_def) );
-				$output .= '<span class="color-label">'.esc_attr__('Bottom Color', 'jumpstart').'</span>';
+
+				$output .= sprintf(
+					'<input id="%s_end" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . '][end]' ),
+					esc_attr( $end ),
+					esc_attr( $end_def )
+				);
+
+				$output .= sprintf(
+					'<span class="color-label">%s</span>',
+					esc_attr__( 'Bottom Color', 'jumpstart' )
+				);
+
 				$output .= '</div><!-- .color-end (end) -->';
 
 				$output .= '</div><!-- .gradient-wrap (end) -->';
 				break;
 
-			/*---------------------------------------*/
-			/* Button
-			/*---------------------------------------*/
-
+			/*
+			 * Display option type, `button`.
+			 *
+			 * This option lets the user configure the colors
+			 * and settings for a custom button.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `button`.
+			 * }
+			 */
 			case 'button':
-				$output .= themeblvd_button_option( $value['id'], $option_name, $val );
+				$output .= themeblvd_button_option(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
 				break;
 
-			/*---------------------------------------*/
-			/* Geo (Latitude and Longitude)
-			/*---------------------------------------*/
-
-			case 'geo' :
-
-				// Values
+			/*
+			 * Display option type, `geo`.
+			 *
+			 * This option type is used to set the coordinates,
+			 * latitude and longitude for a Google Map marker.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `geo`.
+			 * }
+			 */
+			case 'geo':
 				$lat = '';
 
-				if ( isset( $val['lat'] ) ) {
-					$lat = $val['lat'];
+				if ( isset( $current['lat'] ) ) {
+					$lat = $current['lat'];
 				}
 
 				$long = '';
 
-				if ( isset( $val['long'] ) ) {
-					$long = $val['long'];
+				if ( isset( $current['long'] ) ) {
+					$long = $current['long'];
 				}
 
 				$output .= '<div class="geo-wrap clearfix">';
 
-				// Latitude
+				// Add latitude field to output.
 				$output .= '<div class="geo-lat">';
-				$output .= sprintf( '<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][lat]' ), esc_attr($lat) );
-				$output .= '<span class="geo-label">'.esc_html__('Latitude', 'jumpstart').'</span>';
+
+				$output .= sprintf(
+					'<input id="%s_lat" class="of-input geo-input" name="%s" type="text" value="%s" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . '][lat]' ),
+					esc_attr( $lat )
+				);
+
+				$output .= '<span class="geo-label">' . esc_html__( 'Latitude', 'jumpstart' ) . '</span>';
+
 				$output .= '</div><!-- .geo-lat (end) -->';
 
-				// Longitude
+				// Add longitude field to output.
 				$output .= '<div class="geo-long">';
-				$output .= sprintf( '<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].'][long]' ), esc_attr($long) );
-				$output .= '<span class="geo-label">'.esc_html__('Longitude', 'jumpstart').'</span>';
+
+				$output .= sprintf(
+					'<input id="%s_long" class="of-input geo-input" name="%s" type="text" value="%s" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . '][long]' ),
+					esc_attr( $long )
+				);
+
+				$output .= '<span class="geo-label">' . esc_html__( 'Longitude', 'jumpstart' ) . '</span>';
+
 				$output .= '</div><!-- .geo-long (end) -->';
 
 				$output .= '</div><!-- .geo-wrap (end) -->';
 
-				// Generate lat and long
+				/*
+				 * Add helper fields to let the user look up a set
+				 * of coordinates through the Google Maps API, by
+				 * searching an address.
+				 */
 				$output .= '<div class="geo-generate">';
-				$output .= '<h5>'.esc_html__('Generate Coordinates', 'jumpstart').'</h5>';
+
+				$output .= '<h5>' . esc_html__( 'Generate Coordinates', 'jumpstart' ) . '</h5>';
+
 				$output .= '<div class="data clearfix">';
+
 				$output .= '<span class="overlay"><span class="tb-loader ajax-loading"><i class="tb-icon-spinner"></i></span></span>';
+
 				$output .= '<input type="text" value="" class="address" />';
-				$output .= sprintf( '<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>', esc_html__('Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'jumpstart'), esc_html__('Generate', 'jumpstart') );
+
+				$output .= sprintf(
+					'<a href="#" class="button-secondary geo-insert-lat-long" data-oops="%s">%s</a>',
+					esc_html__( 'Oops! Sorry, we weren\'t able to get coordinates from that address. Try again.', 'jumpstart' ),
+					esc_html__( 'Generate', 'jumpstart' )
+				);
+
 				$output .= '</div><!-- .data (end) -->';
+
 				$output .= '<p class="note">';
-				$output .= esc_html__('Enter an address, as you would do at maps.google.com.', 'jumpstart').'<br>';
-				$output .= esc_html__('Example Address', 'jumpstart').': "123 Smith St, Chicago, USA"';
+
+				$output .= esc_html__( 'Enter an address, as you would do at maps.google.com.', 'jumpstart' ) . '<br>';
+
+				$output .= esc_html__( 'Example Address', 'jumpstart' ) . ': "123 Smith St, Chicago, USA"';
+
 				$output .= '</p>';
+
 				$output .= '</div><!-- .geo-generate (end) -->';
 
 				break;
 
-			/*---------------------------------------*/
-			/* Info
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `columns`.
+			 *
+			 * This option type lets the user setup the widths
+			 * of a set of columns.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type string $std  Default value.
+			 *     @type string $type Type of option, should be `columns`.
+			 * }
+			 */
+			case 'columns':
+				$output .= themeblvd_columns_option(
+					$option['options'],
+					$option['id'],
+					$option_name,
+					$current
+				);
 
-			case 'info' :
-
-				// Classes
-				$class = 'section';
-
-                if ( isset( $value['type'] ) ) {
-					$class .= ' section-'.$value['type'];
-				}
-
-                if ( isset( $value['class'] ) ) {
-					$class .= ' '.$value['class'];
-				}
-
-				// Start output
-				$output .= '<div class="'.esc_attr($class).'">'."\n";
-
-				if ( isset($value['name']) ) {
-					$output .= '<h4 class="heading">'.esc_html($value['name']).'</h4>'."\n";
-				}
-
-				if ( isset( $value['desc'] ) ) {
-					$output .= $value['desc']."\n";
-				}
-
-				$output .= '<div class="clear"></div></div>'."\n";
 				break;
 
-			/*---------------------------------------*/
-			/* Columns Setup
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `content`.
+			 *
+			 * This option gives the user a choice to populate some
+			 * sort of content area with either a widget area,
+			 * content from a post, content from the current post,
+			 * or raw input.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `content`.
+			 * }
+			 */
+			case 'content':
+				$output .= themeblvd_content_option(
+					$option['id'],
+					$option_name,
+					$current,
+					$option['options']
+				);
 
-			case 'columns' :
-				$output .= themeblvd_columns_option( $value['options'], $value['id'], $option_name, $val );
 				break;
 
-			/*---------------------------------------*/
-			/* Content --
-			/* Originally designed to work in conjunction
-			/* with setting up columns and tabs.
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `conditionals`.
+			 *
+			 * This option was built for the Theme Blvd Widget
+			 * Areas plugin, giving the user a way to select
+			 * what pages on the website a custom sidebar
+			 * should show.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `conditionals`.
+			 * }
+			 */
+			case 'conditionals':
+				$output .= themeblvd_conditionals_option(
+					$option['id'],
+					$option_name,
+					$current
+				);
 
-			case 'content' :
-				$output .= themeblvd_content_option( $value['id'], $option_name, $val, $value['options'] );
 				break;
 
-			/*---------------------------------------*/
-			/* Conditionals --
-			/* Originally designed to allow users to
-			/* assign custom sidebars to certain pages.
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `logo`.
+			 *
+			 * This option is meant to let the user setup
+			 * the website branding logo.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `logo`.
+			 * }
+			 */
+			case 'logo':
+				$output .= themeblvd_logo_option(
+					$option['id'],
+					$option_name,
+					$current
+				);
 
-			case 'conditionals' :
-				$output .= themeblvd_conditionals_option( $value['id'], $option_name, $val );
 				break;
 
-			/*---------------------------------------*/
-			/* Logo
-			/*---------------------------------------*/
-
-			case 'logo' :
-				$output .= themeblvd_logo_option( $value['id'], $option_name, $val );
-				break;
-
-
-			/*---------------------------------------*/
-			/* Slide (jQuery UI slider)
-			/*---------------------------------------*/
-
-			case 'slide' :
-
+			/*
+			 * Display option type, `slide`.
+			 *
+			 * This option is just a simple number slider,
+			 * utilizing the slider component of jQuery UI.
+			 * It's meant to let the user pick a number
+			 * from a given a range.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `slide`.
+			 * }
+			 */
+			case 'slide':
 				$output .= '<div class="jquery-ui-slider-wrap">';
 
 				$slide_options = array(
-					'min'	=> '1',
-					'max'	=> '100',
-					'step'	=> '1',
-					'units'	=> '' // for display only
+					'min'   => '1',
+					'max'   => '100',
+					'step'  => '1',
+					'units' => '', // For display purpses only.
 				);
 
-				if ( isset( $value['options'] ) ) {
-					$slide_options = wp_parse_args( $value['options'], $slide_options );
+				if ( isset( $option['options'] ) ) {
+					$slide_options = wp_parse_args( $option['options'], $slide_options );
 				}
 
 				$output .= '<div class="jquery-ui-slider"';
 
 				foreach ( $slide_options as $param_id => $param ) {
-					$output .= sprintf( ' data-%s="%s"', esc_attr($param_id), esc_attr($param) );
+
+					$output .= sprintf(
+						' data-%s="%s"',
+						esc_attr( $param_id ),
+						esc_attr( $param )
+					);
+
 				}
 
 				$output .= '></div>';
 
-				if ( ! $val && $val !== '0' ) { // $val can't be empty or else the UI slider won't work
-					$val = $slide_options['min'].$slide_options['units'];
+				// $current can't be empty or else the UI slider won't work.
+				if ( ! $current && '0' !== $current ) {
+					$current = $slide_options['min'] . $slide_options['units'];
 				}
 
-				$output .= sprintf( '<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_attr($val) );
-				$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
-				break;
-
-			/*---------------------------------------*/
-			/* Progress Bars
-			/*---------------------------------------*/
-
-			case 'bars' :
-				$bars = $advanced->get('bars');
-				$output .= $bars->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Buttons
-			/*---------------------------------------*/
-
-			case 'buttons' :
-				$buttons = $advanced->get('buttons');
-				$output .= $buttons->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Data Sets
-			/*---------------------------------------*/
-
-			case 'datasets' :
-				$datasets = $advanced->get('datasets');
-				$output .= $datasets->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Locations
-			/*---------------------------------------*/
-
-			case 'locations' :
-				$locations = $advanced->get('locations');
-				$output .= $locations->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Logos
-			/*---------------------------------------*/
-
-			case 'logos' :
-				$logos = $advanced->get('logos');
-				$output .= $logos->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Pricing Table Columns
-			/*---------------------------------------*/
-
-			case 'price_cols' :
-				$price_cols = $advanced->get('price_cols');
-				$output .= $price_cols->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Sectors
-			/*---------------------------------------*/
-
-			case 'sectors' :
-				$sectors = $advanced->get('sectors');
-				$output .= $sectors->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Share Icons
-			/*---------------------------------------*/
-
-			case 'share' :
-				$share = $advanced->get('share');
-				$output .= $share->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Slider
-			/*---------------------------------------*/
-
-			case 'slider' :
-				$slider = $advanced->get('slider');
-				$output .= $slider->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Social Media
-			/*---------------------------------------*/
-
-			case 'social_media' :
-				$social_media = $advanced->get('social_media');
-				$output .= $social_media->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Testimonials
-			/*---------------------------------------*/
-
-			case 'testimonials' :
-				$testimonials = $advanced->get('testimonials');
-				$output .= $testimonials->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Tabs
-			/*---------------------------------------*/
-
-			case 'tabs' :
-				$tabs = $advanced->get('tabs');
-				$output .= $tabs->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Toggles
-			/*---------------------------------------*/
-
-			case 'toggles' :
-				$toggles = $advanced->get('toggles');
-				$output .= $toggles->get_display( $value['id'], $option_name, $val );
-				break;
-
-            /*---------------------------------------*/
-			/* Text Blocks
-			/*---------------------------------------*/
-
-			case 'text_blocks' :
-				$text_blocks = $advanced->get('text_blocks');
-				$output .= $text_blocks->get_display( $value['id'], $option_name, $val );
-				break;
-
-			/*---------------------------------------*/
-			/* Editor
-			/*---------------------------------------*/
-
-			case 'editor':
-
-				// Settings
-				$editor_settings = array(
-					'wpautop' 			=> true,
-					'text_area_name' 	=> esc_attr( $option_name.'['.$value['id'].']' ),
-					'media_buttons'		=> true,
-					'tinymce' 			=> array( 'plugins' => 'wordpress' ),
-					'height'			=> 'small' // small, medium, large (Not part of WP's TinyMCE settings
+				$output .= sprintf(
+					'<input id="%s" class="of-input slider-input" name="%s" type="hidden" value="%s" />',
+					esc_attr( $option['id'] ),
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					esc_attr( $current )
 				);
 
-				// @todo -- Add TB shortcode generator button.
-				// This will work however currently there is a quirk that won't allow for
-				// more than one editor on a page. Shortcodes will get inserted in whichever
-				// the last editor the cursor was in.
-				/*
-				if ( defined('TB_SHORTCODES_PLUGIN_VERSION') && get_option('themeblvd_shortcode_generator') != 'no' )
-					$editor_settings['tinymce']['plugins'] .= ',ThemeBlvdShortcodes';
-				*/
+				$output .= '</div><!-- .jquery-ui-slider-wrap (end) -->';
 
-				if ( ! empty( $value['settings'] ) ) {
-					$editor_settings = wp_parse_args( $value['settings'], $editor_settings );
+				break;
+
+			/*
+			 * Display option type, `editor`.
+			 *
+			 * Adds a WordPress vidual editor for the user,
+			 * using wp_editor().
+			 *
+			 * @param array $option {
+			 *     @type string $id            Unique ID for option.
+			 *     @type string $name          Title for option.
+			 *     @type string $desc          Description for option.
+			 *     @type string $std           Default value.
+			 *     @type string $type          Type of option, should be `editor`.
+			 *     @type string $desc_location Location of option description, `before` or `after`.
+			 *     @type array  $settings      Any setting overrides to pass to wp_editor().
+			 * }
+			 */
+			case 'editor':
+				$editor_settings = array(
+					'wpautop'        => true,
+					'text_area_name' => esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					'media_buttons'  => true,
+					'tinymce'        => array(
+						'plugins' => 'wordpress',
+					),
+					'height'         => 'small', // small, medium, large (Not part of WP's TinyMCE settings
+				);
+
+				/*
+				 * @todo -- Add TB shortcode generator button.
+				 * This will work however currently there is a quirk that won't allow for
+				 * more than one editor on a page. Shortcodes will get inserted in whichever
+				 * the last editor the cursor was in.
+				 */
+				// if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && 'no' != get_option( 'themeblvd_shortcode_generator' ) ) {
+				// 	$editor_settings['tinymce']['plugins'] .= ',ThemeBlvdShortcodes';
+				// }
+
+				if ( ! empty( $option['settings'] ) ) {
+					$editor_settings = wp_parse_args( $option['settings'], $editor_settings );
 				}
 
-				// Setup description
-				if ( ! empty( $value['desc_location'] ) && $value['desc_location'] == 'before' ) {
+				if ( ! empty( $option['desc_location'] ) && 'before' === $option['desc_location'] ) {
 					$desc_location = 'before';
 				} else {
 					$desc_location = 'after';
 				}
 
 				$explain_value = '';
+
 				$has_description = '';
 
-				if ( ! empty( $value['desc'] ) ) {
-					$explain_value = $value['desc'];
-					$has_description = ' has-desc';
+				if ( ! empty( $option['desc'] ) ) {
+
+					$explain_value = $option['desc'];
+
+					$has_description = 'has-desc';
+
 				}
 
-				// Output description and editor
-				$output .= '<div class="tb-wp-editor desc-'.$desc_location.$has_description.' height-'.$editor_settings['height'].'">';
+				// Add description to output, if set to come before editor.
+				$output .= sprintf(
+					'<div class="tb-wp-editor desc-%s %s height-%s">',
+					$desc_location,
+					$has_description,
+					esc_attr( $editor_settings['height'] )
+				);
 
-				if ( $desc_location == 'before' ) {
-					$output .= '<div class="explain">'.$explain_value.'</div>'."\n";
+				if ( 'before' === $desc_location ) {
+					$output .= '<div class="explain">' . $explain_value . '</div>' . "\n";
 				}
 
+				// Add WP editor to output.
 				ob_start();
-				wp_editor( $val, uniqid( $value['id'] . '_' . rand() ), $editor_settings );
+
+				wp_editor(
+					$current,
+					uniqid( $option['id'] . '_' . rand() ),
+					$editor_settings
+				);
+
 				$output .= ob_get_clean();
 
-				if ( $desc_location == 'after' ) {
-					$output .= '<div class="explain">'.themeblvd_kses($explain_value).'</div>'."\n";
+				// Add description to output, if set to come after editor.
+				if ( 'after' === $desc_location ) {
+					$output .= '<div class="explain">' . themeblvd_kses( $explain_value ) . '</div>' . "\n";
 				}
 
 				$output .= '</div><!-- .tb-wp-editor (end) -->';
 
 				break;
 
-			/*---------------------------------------*/
-			/* Editor that opens up in a modal
-			/* (Use this editor type for any AJAX
-			/* requsted options)
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `code`.
+			 *
+			 * This option adds an inline code editor with syntax
+			 * highlighting, which can be setup for HTML, JavaScript
+			 * or CSS.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type string $std  Default value.
+			 *     @type string $type Type of option, should be `code`.
+			 *     @type string $lang Coding language, `html`, `javascript` or `css`.
+			 * }
+			 */
+			case 'code':
+				$lang = 'html'; // Default, $option['lang'] not passed through.
 
-			case 'editor_modal' :
-				$output .= sprintf( '<textarea id="%s" class="editor-modal-content" name="%s" cols="8" rows="8">%s</textarea>', esc_attr($value['id']), esc_attr( $option_name.'['.$value['id'].']' ), esc_textarea($val) );
-				break;
-
-			/*---------------------------------------*/
-			/* Code Editor
-			/*---------------------------------------*/
-
-			case 'code' :
-
-				$id = uniqid( 'code_editor_' . rand() );
-
-				$lang = 'html';
-
-				if ( isset( $value['lang'] ) && in_array( $value['lang'], array( 'javascript', 'html', 'css' )) ) {
-					$lang = $value['lang'];
+				if ( isset( $option['lang'] ) && in_array( $option['lang'], array( 'html', 'javascript', 'css' ) ) ) {
+					$lang = $option['lang'];
 				}
 
 				$output .= '<div class="textarea-wrap">';
-				$output .= sprintf( '<textarea id="%s" data-code-lang="%s" name="%s" rows="8">%s</textarea>', $id, esc_attr($lang), esc_attr( $option_name.'['.$value['id'].']' ), esc_textarea($val) );
+
+				$output .= sprintf(
+					'<textarea id="%s" data-code-lang="%s" name="%s" rows="8">%s</textarea>',
+					esc_attr( uniqid( 'code_editor_' . rand() ) ),
+					esc_attr( $lang ),
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					esc_textarea( $current )
+				);
+
 				$output .= '</div><!-- .textarea-wrap (end) -->';
 
 				break;
 
-			/*---------------------------------------*/
-			/* Heading for Navigation
-			/*---------------------------------------*/
+			/*
+			 * Display option type, `bars`.
+			 *
+			 * Sortable option type to configure a group of
+			 * progress bars.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `bars`.
+			 * }
+			 */
+			case 'bars':
+				$bars = $advanced->get( 'bars' );
 
-			case 'heading' :
-
-				if ( $menu ) {
-				   $output .= '</div>'."\n";
-				}
-
-				$id = $value['name'];
-
-				if ( ! empty( $value['id'] ) ) {
-					$id = $value['id'];
-				}
-
-				$jquery_click_hook = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($id) );
-				$jquery_click_hook = esc_attr( "of-option-".$jquery_click_hook );
-
-				$menu .= sprintf( '<a id="%s-tab" class="nav-tab" title="%s" href="%s">%s</a>', $jquery_click_hook, esc_attr($value['name']), esc_attr('#'.$jquery_click_hook), esc_html($value['name']) );
-				$output .= sprintf( '<div class="group" id="%s">', $jquery_click_hook );
-
-				if ( ! empty( $value['preset'] ) ) {
-	   				$output .= themeblvd_display_presets($value['preset'], $option_name);
-	   			}
+				$output .= $bars->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
 
 				break;
 
-		} // end switch ( $value['type'] )
+			/*
+			 * Display option type, `buttons`.
+			 *
+			 * Sortable option type to configure a group of
+			 * buttons.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `buttons`.
+			 * }
+			 */
+			case 'buttons':
+				$buttons = $advanced->get( 'buttons' );
 
-		// Here's your chance to add in your own custom
-		// option type while we're looping through each
-		// option. If you come up with a unique $type,
-		// you can intercept things here and append
-		// to the $output.
-		$output = apply_filters( 'themeblvd_option_type', $output, $value, $option_name, $val );
+				$output .= $buttons->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
 
-		// Finish off standard options and add description
-		if ( $value['type'] != 'heading' && $value['type'] != 'info' ) {
+				break;
 
-			$output .= '</div>';
+			/*
+			 * Display option type, `datasets`.
+			 *
+			 * Sortable option type to configure the values
+			 * for a line or bar graph.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `datasets`.
+			 * }
+			 */
+			case 'datasets':
+				$datasets = $advanced->get( 'datasets' );
 
-			if ( $value['type'] != 'editor' ) { // Editor displays description above it
-				if ( ! empty( $value['desc'] ) ) {
-					if ( is_array( $value['desc'] ) ) {
-						foreach ( $value['desc'] as $desc_id => $desc ) {
-							$output .= '<div class="explain hide '.esc_attr($desc_id).'">'.themeblvd_kses($desc).'</div>'."\n";
+				$output .= $datasets->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `locations`.
+			 *
+			 * Sortable option type to configure the location
+			 * markers of Google Map.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `locations`.
+			 * }
+			 */
+			case 'locations':
+				$locations = $advanced->get( 'locations' );
+
+				$output .= $locations->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `price_cols`.
+			 *
+			 * Sortable option type to configure columns
+			 * of a pricing table.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `price_cols`.
+			 * }
+			 */
+			case 'price_cols':
+				$price_cols = $advanced->get( 'price_cols' );
+
+				$output .= $price_cols->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `sectors`.
+			 *
+			 * Sortable option type to configure sectors
+			 * of a pie chart.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `sectors`.
+			 * }
+			 */
+			case 'sectors':
+				$sectors = $advanced->get( 'sectors' );
+
+				$output .= $sectors->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `share`.
+			 *
+			 * Sortable option type to configure group of
+			 * share buttons for a post.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `share`.
+			 * }
+			 */
+			case 'share':
+				$share = $advanced->get( 'share' );
+
+				$output .= $share->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `social_media`.
+			 *
+			 * Sortable option type to configure social
+			 * media buttons of a contact bar.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `social_media`.
+			 * }
+			 */
+			case 'social_media':
+				$social_media = $advanced->get( 'social_media' );
+
+				$output .= $social_media->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `slider`.
+			 *
+			 * Sortable option type to configure images
+			 * of a simple slider.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `slider`.
+			 * }
+			 */
+			case 'slider':
+				$slider = $advanced->get( 'slider' );
+
+				$output .= $slider->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `logos`.
+			 *
+			 * Sortable option type to configure a group of
+			 * logos, originally designed for the "Partner Logos"
+			 * element of the layout builder.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `logos`.
+			 * }
+			 */
+			case 'logos':
+				$logos = $advanced->get( 'logos' );
+
+				$output .= $logos->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `tabs`.
+			 *
+			 * Sortable option type to configure group
+			 * of tabs in tabs element.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `tabs`.
+			 * }
+			 */
+			case 'tabs':
+				$tabs = $advanced->get( 'tabs' );
+
+				$output .= $tabs->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `testimonials`.
+			 *
+			 * Sortable option type to configure group of
+			 * testimonials in a testimonial slider.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `testimonials`.
+			 * }
+			 */
+			case 'testimonials':
+				$testimonials = $advanced->get( 'testimonials' );
+
+				$output .= $testimonials->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `text_blocks`.
+			 *
+			 * Sortable option type to configure text blocks
+			 * of a hero unit element.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `text_blocks`.
+			 * }
+			 */
+			case 'text_blocks':
+				$text_blocks = $advanced->get( 'text_blocks' );
+
+				$output .= $text_blocks->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+			/*
+			 * Display option type, `toggles`.
+			 *
+			 * Sortable option type to configure a group of
+			 * toggled content in a toggles element.
+			 *
+			 * @param array $option {
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `toggles`.
+			 * }
+			 */
+			case 'toggles':
+				$toggles = $advanced->get( 'toggles' );
+
+				$output .= $toggles->get_display(
+					$option['id'],
+					$option_name,
+					$current
+				);
+
+				break;
+
+		} // end switch ( $option['type'] )
+
+		/**
+		 * Filters the output of the options page, during the
+		 * looping of each option. Use to add custom option type.
+		 *
+		 * With a unique $type that's not used anywhere above,
+		 * you can intercept things here and append to the $output,
+		 * if your $option['type'] is in play.
+		 *
+		 * Also remember that in order for you option to save to
+		 * the database, you must filter on a sanitization function
+		 * to `themeblvd_sanitize_{type}`.
+		 *
+		 * @param string $output      All HTML for options page, up to this point.
+		 * @param array  $option      Data for current option in loop.
+		 * @param string $option_name Constructed name attribute for option, use like `name={$option_name[ $option['id'] ]}`.
+		 * @param array  $current     Current saved value, or default value if not saved yet.
+		 */
+		$output = apply_filters( 'themeblvd_option_type', $output, $option, $option_name, $current );
+
+		// Finish off standard options and add description.
+		if ( 'heading' !== $option['type'] && 'info' !== $option['type'] ) {
+
+			$output .= '</div><!-- .controls (end) -->' . "\n";;
+
+			if ( 'editor' !== $option['type'] ) { // The `editor` type handles its own description.
+
+				if ( ! empty( $option['desc'] ) ) {
+
+					if ( is_array( $option['desc'] ) ) {
+
+						foreach ( $option['desc'] as $desc_id => $desc ) {
+
+							$output .= sprintf(
+								'<div class="explain hide %s">%s</div>',
+								esc_attr( $desc_id ),
+								themeblvd_kses( $desc )
+							);
+
 						}
 					} else {
-						$output .= '<div class="explain">'.themeblvd_kses($value['desc']).'</div>'."\n";
+
+						$output .= sprintf(
+							'<div class="explain">%s</div>',
+							themeblvd_kses( $option['desc'] )
+						);
+
 					}
+
+					$output .= "\n";
+
 				}
 			}
 
-			$output .= '<div class="clear"></div></div></div>'."\n";
+			$output .= '<div class="clear"></div>' . "\n";;
+
+			$output .= '</div><!-- .option (end) -->' . "\n";
+
+			$output .= '</div><!-- .section (end) -->' . "\n\n";;
+
 		}
 	}
 
-	// Optional closing div
-    if ( $menu && $close ) {
-    	$output .= '</div>';
-    }
+	// Optional closing div.
+	if ( $menu && $close ) {
+		$output .= '</div>';
+	}
 
-    // Construct final return
-    $form = array(
-    	$output,	// The actual options form
-    	$menu		// Navigation, will not always be needed
-    );
+	$form = array(
+		$output, // The actual options form, split into sections and tabs.
+		$menu,   // Navigation tabs, if there were any `heading` option types.
+	);
 
-    return $form;
+	return $form;
+
 }
