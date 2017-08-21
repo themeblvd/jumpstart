@@ -88,29 +88,30 @@ function themeblvd_get_assignment_conflicts( $posts ) {
  */
 function themeblvd_save_page_atts( $post_id ) {
 
+	if ( ! isset( $_POST['_tb_sidebar_layout'] ) ) {
+		return;
+	}
+
 	check_admin_referer(
 		'themeblvd_save_page_atts_' . $post_id,
 		'themeblvd_save_page_atts_nonce'
 	);
 
-	if ( isset( $_POST['_tb_sidebar_layout'] ) ) {
+	$layouts = array_merge(
+		array(
+			'default' => null,
+		),
+		themeblvd_sidebar_layouts()
+	);
 
-		$layouts = array_merge(
-			array(
-				'default' => null,
-			),
-			themeblvd_sidebar_layouts()
+	if ( array_key_exists( $_POST['_tb_sidebar_layout'], $layouts ) ) {
+
+		update_post_meta(
+			$post_id,
+			'_tb_sidebar_layout',
+			$_POST['_tb_sidebar_layout']
 		);
 
-		if ( array_key_exists( $_POST['_tb_sidebar_layout'], $layouts ) ) {
-
-			update_post_meta(
-				$post_id,
-				'_tb_sidebar_layout',
-				$_POST['_tb_sidebar_layout']
-			);
-
-		}
 	}
 
 }
