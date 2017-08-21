@@ -1,6 +1,6 @@
 <?php
 /**
- * Include Theme Blvd wordPress framework.
+ * Include Theme Blvd WordPress framework.
  *
  * Below is the file needed to load the parent theme and theme framework.
  * It's included with require_once() so that it can be included via a child
