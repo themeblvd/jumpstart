@@ -342,10 +342,12 @@ class Theme_Blvd_User_Options {
 
 		global $_POST;
 
+		check_admin_referer( 'update-user_' . $user_id );
+
 		/*
 		 * For all checkboxes, we'll still save a value of
 		 * string '0', if the checkbox wasn't checked, and
-		 * if it was we'll save a string '1'.
+		 * if it was we'll save a string `1`.
 		 *
 		 * This is meant to emulate how the options system in
 		 * the framework handles checkbpxes, for a consistent

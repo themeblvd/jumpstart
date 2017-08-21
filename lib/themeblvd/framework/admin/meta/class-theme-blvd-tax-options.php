@@ -247,6 +247,8 @@ class Theme_Blvd_Tax_Options {
 
 		global $_POST;
 
+		check_admin_referer( 'update-tag_' . $term_id );
+
 		$term = get_term_by( 'id', $term_id, $tax );
 
 		$term = $term->slug;
