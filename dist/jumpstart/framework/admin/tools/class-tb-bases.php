@@ -59,7 +59,7 @@ class Theme_Blvd_Bases {
 
 		// Update theme base
 		if ( ! empty($_GET['select-base']) ) {
-			if ( ! empty($_GET['security']) && wp_verify_nonce($_GET['security'], 'select-base') ) {
+			if ( ! empty($_GET['security']) && wp_verify_nonce($_GET['security'], 'themeblvd-select-base') ) {
 				if ( array_key_exists($_GET['select-base'], $this->bases) ) {
 					update_option( get_template().'_base', $_GET['select-base'] );
 					echo '<div class="updated"><p><strong>'.esc_html__('Theme base updated successfully.', 'jumpstart').'</strong></p></div>';
@@ -79,7 +79,7 @@ class Theme_Blvd_Bases {
 
 		$theme = wp_get_theme(get_template());
 		$current = get_option(get_template().'_base');
-		$security = wp_create_nonce('select-base');
+		$security = wp_create_nonce('themeblvd-select-base');
 
 		if ( ! $current ) {
 			$current = $this->default;

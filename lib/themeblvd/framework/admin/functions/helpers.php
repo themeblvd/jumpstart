@@ -93,8 +93,8 @@ function themeblvd_save_page_atts( $post_id ) {
 	}
 
 	check_admin_referer(
-		'themeblvd_save_page_atts_' . $post_id,
-		'themeblvd_save_page_atts_nonce'
+		'themeblvd-save-page-atts_' . $post_id,
+		'themeblvd-save-page-atts_' . $post_id
 	);
 
 	$layouts = array_merge(

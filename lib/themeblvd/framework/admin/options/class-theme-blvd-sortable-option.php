@@ -212,7 +212,7 @@ abstract class Theme_Blvd_Sortable_Option {
 		 * Start output, with ajax data and security passed
 		 * as data attributes to our JavaScript.
 		 */
-		$ajax_nonce = wp_create_nonce( 'themeblvd_sortable_option' );
+		$ajax_nonce = wp_create_nonce( 'themeblvd-sortable-option' );
 
 		$output  = sprintf(
 			'<div class="tb-sortable-option" data-security="%s" data-name="%s" data-id="%s" data-type="%s" data-max="%s">',
@@ -918,7 +918,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 */
 	public function add_item() {
 
-		check_ajax_referer( 'themeblvd_sortable_option', 'security' );
+		check_ajax_referer( 'themeblvd-sortable-option', 'security' );
 
 		echo $this->get_item(
 			$_POST['data']['option_id'],
@@ -2089,7 +2089,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 */
 	public function add_item() {
 
-		check_ajax_referer( 'themeblvd_sortable_option', 'security' );
+		check_ajax_referer( 'themeblvd-sortable-option', 'security' );
 
 		$items = $_POST['data']['items'];
 

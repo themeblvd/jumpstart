@@ -1576,8 +1576,8 @@ function themeblvd_button_option( $id, $name, $val ) {
 function themeblvd_sidebar_layout_dropdown( $template, $post ) {
 
 	wp_nonce_field(
-		'themeblvd_save_page_atts_' . $post->ID,
-		'themeblvd_save_page_atts_nonce',
+		'themeblvd-save-page-atts_' . $post->ID,
+		'themeblvd-save-page-atts_' . $post->ID,
 		false // No need for _wp_http_referer; it already exists on Edit Page screen.
 	);
 

@@ -55,11 +55,17 @@ class Theme_Blvd_License_Admin {
 	 */
 	function activate_license() {
 
-		if ( isset( $_POST['themeblvd_license_activate'] ) ) {
+		/*
+		 * @TODO Later, when this is all redone -- When remotely activating
+		 * license key, we'll need to add the following at wpjumpstart.com:
+		 * define( 'EDD_BYPASS_NAME_CHECK', true );
+		 * ... so we can activate licenses for multiple products, w/out
+		 * having to update the theme with the product names.
+		 */
 
-		 	if ( ! check_admin_referer( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ) ) {
-				return; // get out if we didn't click the Activate button
-			}
+		if ( isset( $_POST['themeblvd_activate_license'] ) ) {
+
+			check_admin_referer( 'themeblvd_license-options' );
 
 			global $wp_version;
 
@@ -134,8 +140,7 @@ class Theme_Blvd_License_Admin {
 									<?php if ( $status !== false && $status == 'valid' ) : ?>
 										<span style="color:green;"><?php esc_html_e( 'active', 'jumpstart' ); ?></span>
 									<?php else : ?>
-										<?php wp_nonce_field( 'themeblvd_license_nonce', 'themeblvd_license_nonce' ); ?>
-										<input type="submit" class="button-secondary" name="themeblvd_license_activate" value="<?php esc_html_e( 'Activate License', 'jumpstart' ); ?>"/>
+										<input type="submit" class="button-secondary" name="themeblvd_activate_license" value="<?php esc_html_e( 'Activate License', 'jumpstart' ); ?>"/>
 									<?php endif; ?>
 								</td>
 							</tr>

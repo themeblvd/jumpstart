@@ -188,8 +188,8 @@ class Theme_Blvd_Meta_Box {
 		echo '<div id="optionsframework" class="' . $class . '">';
 
 		wp_nonce_field(
-			'themeblvd_save_meta_box_' . $this->id,
-			'themeblvd_save_meta_box_' . $this->id . '_nonce',
+			'themeblvd-save-meta-box_' . $this->id,
+			'themeblvd-save-meta-box_' . $this->id,
 			false // No need for _wp_http_referer; it already exists on Edit Post screen.
 		);
 
@@ -283,8 +283,8 @@ class Theme_Blvd_Meta_Box {
 		}
 
 		check_admin_referer(
-			'themeblvd_save_meta_box_' . $this->id,
-			'themeblvd_save_meta_box_' . $this->id . '_nonce'
+			'themeblvd-save-meta-box_' . $this->id,
+			'themeblvd-save-meta-box_' . $this->id
 		);
 
 		$clean = array(); // Use for grouped options only.
