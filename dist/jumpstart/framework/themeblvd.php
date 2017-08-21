@@ -8,7 +8,7 @@
  * @package     Jump_Start
  */
 
-/**
+/*
  * Set famework constants.
  */
 define( 'TB_FRAMEWORK_VERSION', '2.7.0' );
