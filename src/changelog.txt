@@ -8,6 +8,7 @@ Jump Start Changelog
 	* All template part files moved from root to `template-parts` directory.
 	* Use of themeblvd_get_part() now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
+	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 * Fixed: TinyMCE toolbar's dropdown menus not showing when the using Visual Editor within Theme Blvd Layout Builder.
 * **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
 

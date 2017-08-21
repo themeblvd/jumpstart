@@ -138,7 +138,7 @@ function setup_themeblvd_post_meta() {
 		'config' => array(
 			'id'        => 'tb_post_options',                     // Make it unique.
 			'title'     => __( 'Post Options', 'jumpstart' ), // Title to show for entire meta box.
-			'page'      => array( 'post' ),                       // Can contain post, page, link, or custom post type's slug.
+			'screen'    => array( 'post' ),                       // Can contain post, page, link, or custom post type's slug.
 			'context'   => 'normal',                              // normal, advanced, or side
 			'priority'  => 'high',                                // high, core, default, or low
 		),
@@ -352,7 +352,7 @@ function setup_themeblvd_page_meta() {
 		'config' => array(
 			'id'        => 'tb_page_options',                     // Make it unique.
 			'title'     => __( 'Page Options', 'jumpstart' ), // Title to show for entire meta box.
-			'page'      => array( 'page' ),                       // Can contain post, page, link, or custom post type's slug.
+			'screen'    => array( 'page' ),                       // Can contain post, page, link, or custom post type's slug.
 			'context'   => 'normal',                              // normal, advanced, or side
 			'priority'  => 'high',                                // high, core, default, or low
 		),
@@ -491,7 +491,7 @@ function setup_themeblvd_layout_meta() {
 		'config' => array(
 			'id'        => 'tb_layout_options',                   // Make it unique.
 			'title'     => __( 'Theme Layout', 'jumpstart' ), // Title to show for entire meta box.
-			'page'      => array( 'page', 'post' ),               // Can contain post, page, link, or custom post type's slug.
+			'screen'    => array( 'page', 'post' ),               // Can contain post, page, link, or custom post type's slug.
 			'context'   => 'side',                                // normal, advanced, or side
 			'priority'  => 'core',                                // high, core, default, or low
 		),
@@ -582,7 +582,7 @@ function setup_themeblvd_pto_meta() {
 		'config' => array(
 			'id'         => 'pto',                                          // Make it unique.
 			'title'      => __( 'Post Template Options', 'jumpstart' ), // Title to show for entire meta box.
-			'page'       => array( 'page' ),                                // Can contain post, page, link, or custom post type's slug.
+			'screen'     => array( 'page' ),                                // Can contain post, page, link, or custom post type's slug.
 			'context'    => 'normal',                                       // normal, advanced, or side
 			'priority'   => 'low',                                          // high, core, default, or low
 			'save_empty' => false,                                          // Whether to save empty values to custom fields
@@ -620,13 +620,13 @@ function setup_themeblvd_pto_meta() {
 			'orderby' => array(
 				'id'        => 'orderby',
 				'name'      => __( 'orderby', 'jumpstart' ),
-				'desc'      => __( 'What to order posts by -- date, title, rand, etc.', 'jumpstart' ) . '<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
+				'desc'      => __( 'What to order posts by &mdash; date, title, rand, etc.', 'jumpstart' ) . '<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
 				'type'      => 'text',
 			),
 			'order' => array(
 				'id'        => 'order',
 				'name'      => __( 'order', 'jumpstart' ),
-				'desc'      => __( 'How to order posts -- ASC or DESC.', 'jumpstart' ) . '<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
+				'desc'      => __( 'How to order posts &mdash; ASC or DESC.', 'jumpstart' ) . '<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
 				'type'      => 'text',
 			),
 			'query' => array(

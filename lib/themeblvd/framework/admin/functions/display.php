@@ -1578,7 +1578,7 @@ function themeblvd_sidebar_layout_dropdown( $template, $post ) {
 	wp_nonce_field(
 		'themeblvd_save_page_atts_' . $post->ID,
 		'themeblvd_save_page_atts_nonce',
-		false // No need for _wp_http_referer, already exists on Edit Page screen.
+		false // No need for _wp_http_referer; it already exists on Edit Page screen.
 	);
 
 	$layouts = themeblvd_sidebar_layouts();

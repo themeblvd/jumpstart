@@ -23,9 +23,8 @@
  * @param array  $args {
  *     Setup array for meta box.
  *
- *     @type string $id         Unique ID for meta box.
  *     @type string $title      Title for meta box.
- *     @type array  $page       Post types meta box will show for.
+ *     @type array  $screen     Post type edit screens meta box will show on.
  *     @type string $context    Contex parameter passed to add_meta_box().
  *     @type string $priority   Priority parameter passed to add_meta_box().
  *     @type bool   $save_empty Optional. Whether to save empty values to database.
@@ -58,8 +57,9 @@ class Theme_Blvd_Meta_Box {
 	 *
 	 * @since Theme_Blvd 2.3.0
 	 *
-	 * @param array $args    Setup array for meta box (see class docs).
-	 * @param array $options Options for meta box (see class docs).
+	 * @param string $id      Unique ID for meta box.
+	 * @param array  $args    Setup array for meta box (see class docs).
+	 * @param array  $options Options for meta box (see class docs).
 	 */
 	public function __construct( $id, $args, $options ) {
 
@@ -71,21 +71,53 @@ class Theme_Blvd_Meta_Box {
 			return;
 		}
 
-		$this->args = wp_parse_args(
-			$args, array(
-				'page'       => array( 'post' ), // Can contain post, page, link, or custom post type's slug.
-				'context'    => 'normal',        // normal, advanced, or side
-				'priority'   => 'high',          // default, high, or low
-				'save_empty' => true,            // Save empty custom fields?
-				'textures'   => false,           // Include texture browser?
-			)
-		);
+		$this->args = wp_parse_args( $args, array(
+			'screen'     => array( 'post' ),
+			'context'    => 'normal',
+			'priority'   => 'high',
+			'save_empty' => true,
+			'textures'   => false,
+		));
 
+		/*
+		 * Backwards compat for older arguments.
+		 *
+		 * Prior to Theme_Blvd 2.7.0, $this->args['screen']
+		 * was named $this->args['page']; so we'll just make sure
+		 * that continues to work, if anyone's using it.
+		 */
+		if ( isset( $this->args['page'] ) ) {
+
+			$this->args['screen'] = $this->args['page'];
+
+			unset( $this->args['page'] );
+
+		}
+
+		/*
+		 * Add any extra hidden items for the page that may
+		 * be utilized for extra functionality. For example,
+		 * the texture browser to select a texture.
+		 */
 		add_action( 'current_screen', array( $this, 'helpers' ) );
 
+		/*
+		 * Add actual calls to WordPress's add_meta_box().
+		 * This is done with a loop through $this->args['screen'],
+		 * calling add_meta_box() for each post type.
+		 */
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 
-		add_action( 'save_post', array( $this, 'save' ) );
+		/*
+		 * Add the save() method to `save_post_*` for each
+		 * post type, so that it's not just generally hooked
+		 * to `save_post` action.
+		 */
+		foreach ( $this->args['screen'] as $post_type ) {
+
+			add_action( "save_post_{$post_type}", array( $this, 'save' ) );
+
+		}
 
 	}
 
@@ -97,9 +129,9 @@ class Theme_Blvd_Meta_Box {
 	 */
 	public function helpers() {
 
-		$page = get_current_screen();
+		$screen = get_current_screen();
 
-		if ( $this->args['textures'] && 'post' === $page->base && in_array( $page->post_type, $this->args['page'] ) ) {
+		if ( $this->args['textures'] && 'post' === $screen->base && in_array( $screen->post_type, $this->args['screen'] ) ) {
 
 			add_action( 'in_admin_header', 'themeblvd_texture_browser' );
 
@@ -113,15 +145,17 @@ class Theme_Blvd_Meta_Box {
 	 */
 	public function add() {
 
-		foreach ( $this->args['page'] as $page ) {
+		foreach ( $this->args['screen'] as $screen ) {
+
 			add_meta_box(
 				$this->id,
 				$this->args['title'],
 				array( $this, 'display' ),
-				$page,
+				$screen,
 				$this->args['context'],
 				$this->args['priority']
 			);
+
 		}
 
 	}
@@ -144,9 +178,7 @@ class Theme_Blvd_Meta_Box {
 			return;
 		}
 
-		/*
-		 * Begin building output.
-		 */
+		// Begin building output.
 		$class = 'tb-meta-box';
 
 		if ( 'side' === $this->args['context'] ) {
@@ -155,9 +187,15 @@ class Theme_Blvd_Meta_Box {
 
 		echo '<div id="optionsframework" class="' . $class . '">';
 
+		wp_nonce_field(
+			'themeblvd_save_meta_box_' . $this->id,
+			'themeblvd_save_meta_box_' . $this->id . '_nonce',
+			false // No need for _wp_http_referer; it already exists on Edit Post screen.
+		);
+
 		/*
-		 * Gather any already saved settings or defaults for option types
-		 * that need a starting value
+		 * Gather any already saved settings or defaults for
+		 * option types that need a starting value.
 		 */
 		$settings = array();
 
@@ -189,6 +227,12 @@ class Theme_Blvd_Meta_Box {
 			}
 		}
 
+		/*
+		 * When a post/page is saved that has our meta box,
+		 * in the cases where no data passed, this hidden
+		 * option will ensure that there is always at least
+		 * one entry, and thus the array exists.
+		 */
 		$hidden = array(
 			'placeholder' => array(
 				'id'   => '_tb_placeholder',
@@ -229,13 +273,23 @@ class Theme_Blvd_Meta_Box {
 	 */
 	public function save( $post_id ) {
 
-		$clean = array(); // Use for grouped options only
-
-		if ( isset( $_POST['themeblvd_meta'][ $this->id ] ) ) {
-
-			$input = $_POST['themeblvd_meta'][ $this->id ];
-
+		/*
+		 * If our meta box existed on the Edit screen, this
+		 * should always be set because of the hidden
+		 * _tb_placeholder option inserted into every meta box.
+		 */
+		if ( ! isset( $_POST['themeblvd_meta'][ $this->id ] ) ) {
+			return;
 		}
+
+		check_admin_referer(
+			'themeblvd_save_meta_box_' . $this->id,
+			'themeblvd_save_meta_box_' . $this->id . '_nonce'
+		);
+
+		$clean = array(); // Use for grouped options only.
+
+		$input = $_POST['themeblvd_meta'][ $this->id ];
 
 		if ( ! empty( $input ) ) {
 
