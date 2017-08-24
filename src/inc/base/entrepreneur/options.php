@@ -70,7 +70,7 @@ function jumpstart_ent_options() {
 			'layout_shadow_opacity' => array(
 				'id'      => 'layout_shadow_opacity',
 				'name'    => __( 'Layout Shadow Strength', '@@text-domain' ),
-				// translators: Placeholder is link to Backgrounds admin screen.
+				// translators: 1: link to Backgrounds admin screen
 				'desc'    => sprintf( __( 'Select the opacity of the shadow for the boxed layout. The darker %s, the closer to 100%% you want to go.', '@@text-domain' ), '<a href="' . esc_url( admin_url( 'customize.php?autofocus[control]=background_image' ) ) . '" target="_blank">' . __( 'your background', '@@text-domain' ) . '</a>' ),
 				'std'     => '0.3',
 				'type'    => 'select',
@@ -637,7 +637,7 @@ function jumpstart_ent_options() {
 		'side_panel' => array(
 			'side_info' => array(
 				'id'      => 'side_info',
-				// translators: Placeholder is link to Menus admin screen.
+				// translators: 1: link to Menus admin screen
 				'desc'    => sprintf( __( 'These options apply to the side panel that shows on desktops when you assign a menu to the "Primary Side Navigation" or "Secondary Side Navigation" locations at %s.', '@@text-domain' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', '@@text-domain' ) . '</a>' ),
 				'type'    => 'info',
 			),
@@ -669,7 +669,7 @@ function jumpstart_ent_options() {
 			'footer_bg_type' => array(
 				'id'      => 'footer_bg_type',
 				'name'    => __( 'Footer Background', '@@text-domain' ),
-				// translators: Placeholder is location of where to setup Template Sync feature on Theme Options screen.
+				// translators: 1: location of where to setup Template Sync feature on Theme Options screen
 				'desc'    => __( 'Select if you\'d like to apply a custom background color to the footer.', '@@text-domain' ) . '<br><br>' . sprintf( __( 'Note: To setup a more complex designed footer, go to %s and use the "Template Sync" feature.', '@@text-domain' ), '<em>' . __( 'Layout > Footer', '@@text-domain' ) . '</em>' ),
 				'std'     => 'color',
 				'type'    => 'select',
@@ -1271,7 +1271,7 @@ function jumpstart_ent_options() {
 
 	themeblvd_add_option_tab( 'styles', __( 'Styles', '@@text-domain' ), true );
 
-	// translators: Placeholder is link to Theme Base admin page.
+	// translators: 1: link to Theme Base admin page
 	themeblvd_add_option_section( 'styles', 'presets', __( 'Preset Styles', '@@text-domain' ), __( 'For a quick starting point, click any image below to merge its preset settings into your current option selections. Then, you can continue editing individual options.', '@@text-domain' ) . ' &mdash; ' . sprintf( __( 'Looking for more theme style variations? Try a different %s.', '@@text-domain' ), '<a href="themes.php?page=jumpstart-base" target="_blank">Theme Base</a>' ), array() );
 
 	if ( is_admin() ) {

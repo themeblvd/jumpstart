@@ -1310,7 +1310,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<div class="google-font hide">';
 
 					$output .= sprintf(
-						// translators: Placeholder is link to Google Font Directory.
+						// translators: 1: link to Google Font Directory
 						'<h5>' . esc_html__( 'Enter the name of a font from the %s.', '@@text-domain' ) . '</h5>',
 						'<a href="http://www.google.com/webfonts" target="_blank">' . esc_attr__( 'Google Font Directory', '@@text-domain' ) . '</a>'
 					);

@@ -155,6 +155,7 @@ class Theme_Blvd_Options_Page {
 		$this->options = $options;
 
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
+
 		add_action( 'admin_init', array( $this, 'register' ) );
 
 		/*

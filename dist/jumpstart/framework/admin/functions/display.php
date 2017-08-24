@@ -60,7 +60,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 	$output .= '<input type="submit" id="doaction" class="button-secondary action" value="' . esc_html__( 'Apply', 'jumpstart' ) . '">';
 	$output .= '</div>';
 	$output .= '<div class="alignright tablenav-pages">';
-	// translators: Placeholder is number of current posts in our custom post table output.
+	// translators: 1: number of current posts in our custom post table output
 	$output .= '<span class="displaying-num">' . esc_html( sprintf( _n( '%s item', '%s items', count( $posts ), 'jumpstart' ), number_format_i18n( count( $posts ) ) ) ) . '</span>';
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
@@ -545,7 +545,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$select_sidebar  = '<p class="warning">';
 
 			$select_sidebar .= sprintf(
-				// translators: Placeholder is link to Theme Blvd Widget Areas plugin.
+				// translators: 1: link to Theme Blvd Widget Areas plugin
 				esc_html__( 'In order for you to use this feature you need to have the %s plugin activated.', 'jumpstart' ),
 				'<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>'
 			);
@@ -682,7 +682,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 		$output .= $select_sidebar;
 
-		// translators: Placeholder is link to Widget Areas admin screen, added by the Theme Blvd Widget Areas plugin.
+		// translators: 1: link to Widget Areas admin screen, added by the Theme Blvd Widget Areas plugin
 		$output .= '<p class="note">' . sprintf( esc_html__( 'Select from your floating custom widget areas. In order for a custom widget area to be "floating" you must have it configured this way at %s.', 'jumpstart' ), $link ) . '</p>';
 
 		$output .= '</div>';
@@ -926,7 +926,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 				$output .= sprintf(
 					'<p class="note">%s</p>',
-					// translators: Placeholder is the multiple instance term for the item to be listed by the end-user.
+					// translators: 1: multiple instance term for the item to be listed by the end-user
 					esc_html( sprintf( __( 'Enter in a comma-separated list of the %s you\'d like to add to the assignments.', 'jumpstart' ), $multiple ) )
 				);
 
@@ -938,7 +938,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 				$output .= sprintf(
 					'<p class="note"><em>%s</em></p>',
-					// translators: Placeholder is the multiple instance term for the item to be listed by the end-user.
+					// translators: 1: multiple instance term for the item to be listed by the end-user
 					esc_html( sprintf( __( 'Note: Any %s entered that don\'t exist won\'t be saved.', 'jumpstart' ), $multiple ) )
 				);
 
@@ -1098,7 +1098,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 					$output .= sprintf(
 						'<p class="note">%s</p>',
-						// translators: Placeholder is link to the Conditional Tags docs in WordPress codex, w/the translated string "conditional tag" string.
+						// translators: 1: link to the Conditional Tags docs in WordPress codex, w/the translated string "conditional tag" string
 						sprintf( esc_html__( 'Enter in a custom %s.', 'jumpstart' ), $link )
 					);
 
@@ -1214,7 +1214,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 
 	$site_title .= get_bloginfo( 'name' ) . '</strong><br><br>';
 
-	// translators: Placeholder is link to WordPress general settings page, w/translated text string "here".
+	// translators: 1: link to WordPress general settings page, w/translated text string "here"
 	$site_title .= sprintf( esc_html__( 'You can change your site title and tagline by going %s.', 'jumpstart' ), $link );
 
 	$site_title .= '</p>';
@@ -1233,7 +1233,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 
 	$site_title_tagline .= get_bloginfo( 'description' ) . '</strong><br><br>';
 
-	// translators: Placeholder is link to WordPress general settings page, w/translated text string "here".
+	// translators: 1: link to WordPress general settings page, w/translated text string "here"
 	$site_title_tagline .= sprintf(
 		esc_html__( 'You can change your site title by going %s.', 'jumpstart' ),
 		$link
@@ -1639,7 +1639,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 	if ( ! defined( 'TB_BUILDER_PLUGIN_VERSION' ) ) {
 
 		$message = sprintf(
-			// translators: Placeholder is Link to Theme Blvd Layout Builder plugin.
+			// translators: 1: link to Theme Blvd Layout Builder plugin
 			esc_html__( 'In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'jumpstart' ),
 			'<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>'
 		);

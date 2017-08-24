@@ -589,7 +589,7 @@ function setup_themeblvd_pto_meta() {
 		),
 		'options' => array(
 			'desc' => array(
-				// translators: Placeholder is link to WP_Query documentation on WordPress Codex.
+				// translators: 1: link to WP_Query documentation on WordPress Codex
 				'desc'      => sprintf( __( 'Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the %s.', '@@text-domain' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>' ),
 				'type'      => 'info',
 			),

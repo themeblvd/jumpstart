@@ -70,7 +70,7 @@ function jumpstart_ex_options() {
 			'layout_shadow_opacity' => array(
 				'id'        => 'layout_shadow_opacity',
 				'name'      => __( 'Layout Shadow Strength', 'jumpstart' ),
-				// translators: Placeholder is link to Background admin screen.
+				// translators: 1: link to Background admin screen
 				'desc'      => sprintf( __( 'Select the opacity of the shadow for the boxed layout. The darker %s, the closer to 100%% you want to go.', 'jumpstart' ), '<a href="' . esc_url( admin_url( 'customize.php?autofocus[control]=background_image' ) ) . '" target="_blank">' . __( 'your background', 'jumpstart' ) . '</a>' ),
 				'std'       => '0.3',
 				'type'      => 'select',
@@ -181,7 +181,7 @@ function jumpstart_ex_options() {
 			),
 			'header_info' => array(
 				'name'      => __( 'Header Info Display', 'jumpstart' ),
-				// translators: Placeholder is location of where to setup Header features on Theme Options screen.
+				// translators: 1: location of where to setup Header features on Theme Options screen
 				'desc'      => sprintf( __( 'Select where you\'d like the header info to display, configured at %s.', 'jumpstart' ), '<em>' . __( 'Layout > Header', 'jumpstart' ) . '</em>' ),
 				'id'        => 'header_info',
 				'std'       => 'header_addon',
@@ -917,7 +917,7 @@ function jumpstart_ex_options() {
 		'side_panel' => array(
 			'side_info' => array(
 				'id'        => 'side_info',
-				// translators: Placeholder is link to Menus admin screen.
+				// translators: 1: link to Menus admin screen
 				'desc'      => sprintf( __( 'These options apply to the side panel that shows on desktops when you assign a menu to the "Primary Side Navigation" or "Secondary Side Navigation" locations at %s.', 'jumpstart' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', 'jumpstart' ) . '</a>' ),
 				'type'      => 'info',
 			),
@@ -949,7 +949,7 @@ function jumpstart_ex_options() {
 			'footer_bg_type' => array(
 				'id'        => 'footer_bg_type',
 				'name'      => __( 'Apply Footer Background', 'jumpstart' ),
-				// translators: Placeholder is location of where to setup Footer features on Theme Options screen.
+				// translators: 1: location of where to setup Footer features on Theme Options screen
 				'desc'      => __( 'Select if you\'d like to apply a custom background color to the footer.', 'jumpstart' ) . '<br><br>' . sprintf( __( 'Note: To setup a more complex designed footer, go to %s and use the "Template Sync" feature.', 'jumpstart' ), '<em>' . __( 'Layout > Footer', 'jumpstart' ) . '</em>' ),
 				'std'       => 'none',
 				'type'      => 'select',
@@ -1550,7 +1550,7 @@ function jumpstart_ex_options() {
 
 	themeblvd_add_option_tab( 'styles', __( 'Styles', 'jumpstart' ), true );
 
-	// translators: Placeholder is link to Theme Base admin page.
+	// translators: 1: link to Theme Base admin page
 	themeblvd_add_option_section( 'styles', 'presets', __( 'Preset Styles', 'jumpstart' ), __( 'For a quick starting point, click any image below to merge its preset settings into your current option selections. Then, you can continue editing individual options.', 'jumpstart' ) . ' &mdash; ' . sprintf( __( 'Looking for more theme style variations? Try a different %s.', 'jumpstart' ), '<a href="themes.php?page=jumpstart-base" target="_blank">Theme Base</a>' ), array() );
 
 	if ( is_admin() ) {

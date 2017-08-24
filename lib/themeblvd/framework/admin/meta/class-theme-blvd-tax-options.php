@@ -175,7 +175,7 @@ class Theme_Blvd_Tax_Options {
 				</select>
 				<p class="description">
 					<?php
-					// translators: Placeholder is the slug of current taxonomy.
+					// translators: 1: slug of current taxonomy
 					printf( esc_html__( 'Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', '@@text-domain' ), $taxonomy );
 					?>
 				</p>
@@ -199,7 +199,7 @@ class Theme_Blvd_Tax_Options {
 				</select>
 				<p class="description">
 					<?php
-					// translators: Placeholder is the slug of current taxonomy.
+					// translators: 1: slug of current taxonomy
 					printf( esc_html__( 'Select the sidebar layout used in displaying archives for this %s.', '@@text-domain' ), $taxonomy );
 					?>
 				</p>
@@ -223,7 +223,7 @@ class Theme_Blvd_Tax_Options {
 				</select>
 				<p class="description">
 					<?php
-					// translators: Placeholder is the slug of current taxonomy.
+					// translators: 1: slug of current taxonomy
 					printf( esc_html__( 'Select how posts are displayed on archives for this %s.', '@@text-domain' ), $taxonomy );
 					?>
 				</p>
