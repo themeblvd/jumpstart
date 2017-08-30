@@ -4,7 +4,8 @@ Jump Start Changelog
 2.2.0 - XX/XX/XXXX
 ------------------
 
-* Theme Code Overhaul
+* New: Added support for applying background shade to individual columns in the layout builder.
+* New: Theme Code Overhaul
 	* All template part files moved from root to `template-parts` directory.
 	* Use of themeblvd_get_part() now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.

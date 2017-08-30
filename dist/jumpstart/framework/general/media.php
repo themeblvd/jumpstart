@@ -794,7 +794,7 @@ function themeblvd_bg_slideshow( $id, $images, $parallax = false ) {
 
 /**
  * When using a standard set of display options,
- * determine of parallax should be used for standard
+ * determine if parallax should be used for standard
  * image and texture backgrounds.
  *
  * @since 2.5.1
@@ -816,6 +816,30 @@ function themeblvd_do_parallax( $display ) {
 	}
 
 	return false;
+}
+
+/**
+ * When using a standard set of display options,
+ * determine of background shade is applied.
+ *
+ * @since 2.7.0
+ */
+function themeblvd_do_bg_shade( $display ) {
+
+	if ( empty( $display['bg_type'] ) ) {
+		return false;
+	}
+
+	if ( ! in_array( $display['bg_type'], array( 'image', 'slideshow', 'video' ) ) ) {
+		return false;
+	}
+
+	if ( empty( $display['apply_bg_shade'] ) ) {
+		return false;
+	}
+
+	return true;
+
 }
 
 /**
@@ -890,6 +914,37 @@ function themeblvd_get_bg_parallax( $display ) {
  */
 function themeblvd_bg_parallax( $display ) {
 	echo themeblvd_get_bg_parallax( $display );
+}
+
+/**
+ * Get background parallax image.
+ *
+ * @since 2.7.0
+ */
+function themeblvd_get_bg_shade( $display ) {
+
+	$output = '';
+
+	if ( ! empty( $display['bg_shade_color'] ) && ! empty( $display['bg_shade_opacity'] ) ) {
+
+		$output = sprintf(
+			'<div class="bg-shade" style="background-color: %s;"></div>',
+			esc_attr( themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) )
+		);
+
+	}
+
+	return apply_filters( 'themeblvd_bg_shade', $output, $display );
+
+}
+
+/**
+ * Display background parallax image.
+ *
+ * @since 2.7.0
+ */
+function themeblvd_bg_shade( $display ) {
+	echo themeblvd_get_bg_shade( $display );
 }
 
 /**

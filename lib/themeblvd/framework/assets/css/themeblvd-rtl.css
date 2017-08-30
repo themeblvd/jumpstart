@@ -134,7 +134,7 @@
  *   22.1 - Stray Elements
  *   22.2 - Sections
  *   22.3 - Elements
- *   22.4 - Section BG shade
+ *   22.4 - BG shade
  *   22.5 - Section BG slideshow
  *   22.6 - Section BG video
  *   22.7 - Columns
@@ -4945,16 +4945,18 @@ button.mfp-arrow:active {
 	margin: 0 !important;
 }
 
-/* Section BG shade */
-.element-section.has-bg-shade > .bg-shade {
+/* BG shade */
+.element-section.has-bg-shade > .bg-shade,
+.element-columns .col.has-bg-shade > .bg-shade {
 	position: absolute;
 	top: 0;
-	left: 0;
-	bottom: 0;
 	right: 0;
+	bottom: 0;
+	left: 0;
 	z-index: 2;
 }
-.element-section.has-bg-shade > .element {
+.element-section.has-bg-shade > .element,
+.element-columns .col.has-bg-shade > .element {
 	position: relative;
 	z-index: 3;
 }

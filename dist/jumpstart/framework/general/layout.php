@@ -1087,6 +1087,11 @@ function themeblvd_columns( $args, $columns = null ) {
 			$display_class = implode( ' ', themeblvd_get_display_class($display) );
 			printf('<div class="col %s %s" style="%s">', esc_attr($grid_class), esc_attr($display_class), themeblvd_get_display_inline_style($display) );
 
+			// Add background shade
+			if ( themeblvd_do_bg_shade( $display ) ) {
+				themeblvd_bg_shade( $display );
+			}
+
 			// Add parallax effect
 			if ( themeblvd_do_parallax( $display ) ) {
 				themeblvd_bg_parallax( $display );
