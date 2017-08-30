@@ -1794,6 +1794,11 @@ function themeblvd_allowed_tags() {
 		'src' 					=> true
 	);
 
+	$tags['time'] = array(
+		'class'                 => true,
+		'datetime'              => true,
+	);
+
 	return apply_filters('themeblvd_allowed_tags', $tags);
 
 }
