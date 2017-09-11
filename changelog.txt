@@ -5,6 +5,7 @@ Jump Start Changelog
 -------------------
 
 * **Updated Theme Blvd framework to 2.6.11**
+* Fixed: Sticky menu and scroll effects not working in Chrome v61.
 
 --------------------------------------------------------------
 
