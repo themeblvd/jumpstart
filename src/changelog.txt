@@ -7,13 +7,23 @@ Jump Start Changelog
 * New: Added support for applying background shade to individual columns in the layout builder.
 * New: Theme Code Overhaul
 	* All template part files moved from root to `template-parts` directory.
-	* Use of themeblvd_get_part() now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
+	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 	* Improved security for saving options added to Edit Tag and Edit Category screens.
 	* Improved security for saving options added to Edit Profile screen.
 * Fixed: TinyMCE toolbar's dropdown menus not showing when the using Visual Editor within Theme Blvd Layout Builder.
 * **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
+
+--------------------------------------------------------------
+
+2.1.12 - 09/11/2017
+-------------------
+
+* **Updated Theme Blvd framework to 2.6.11**
+* Improvement: Sticky menu is now at 0 opacity when it's hidden for protection against systems that allow temporary scrolling past the viewport top.
+* Fixed: Sticky menu and scroll effects not working in Chrome v61.
+* Fixed: PHP warning from media.php, "A non-numeric value encountered."
 
 --------------------------------------------------------------
 
