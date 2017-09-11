@@ -1351,7 +1351,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	$width = esc_attr($args['width']);
 
 	if ( $width && strpos($args['width'], '%') === false && strpos($args['width'], 'px') === false ) {
-		$width += 'px';
+		$width .= 'px';
 	}
 
 	// Image class
