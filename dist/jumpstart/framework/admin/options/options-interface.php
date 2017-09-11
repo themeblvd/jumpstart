@@ -392,7 +392,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * }
 			 */
 			case 'info':
-				$class = 'section-info';
+				$class = 'section section-info';
 
 				if ( isset( $option['class'] ) ) {
 					$class .= ' ' . $option['class'];
