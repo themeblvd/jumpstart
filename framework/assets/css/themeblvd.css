@@ -882,21 +882,23 @@ img.size-full {
 .tb-sticky-menu {
 	background: rgba(255,255,255,0.9);
 	color: #333333;
+	opacity: 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	-webkit-transition: -webkit-transform 0.25s ease-in-out;
-	transition: transform 0.25s ease-in-out;
+	-webkit-transition: -webkit-transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+	transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 	-webkit-transform: translate3d(0, -48px, 0);
 	transform: translate3d(0, -48px, 0);
 	z-index: 1000;
 }
 .sticky-on .tb-sticky-menu {
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
 	box-shadow: 0 0 10px rgba(0,0,0,.2);
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 .admin-bar.sticky-on .tb-sticky-menu {
 	-webkit-transform: translate3d(0, 32px, 0);

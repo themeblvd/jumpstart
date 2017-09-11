@@ -5,6 +5,7 @@ Jump Start Changelog
 -------------------
 
 * **Updated Theme Blvd framework to 2.6.11**
+* Improvement: Sticky menu is now at 0 opacity when it's hidden for protection against systems that allow temporary scrolling past the viewport top.
 * Fixed: Sticky menu and scroll effects not working in Chrome v61.
 
 --------------------------------------------------------------
