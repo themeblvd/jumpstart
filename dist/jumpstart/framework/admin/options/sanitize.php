@@ -279,12 +279,15 @@ function themeblvd_sanitize_multicheck( $input, $option ) {
 
 		}
 
-		foreach ( $input as $key => $value ) {
+		if ( $input ) {
 
-			if ( array_key_exists( $key, $option['options'] ) && $value ) {
+			foreach ( $input as $key => $value ) {
 
-				$output[ $key ] = '1';
+				if ( array_key_exists( $key, $option['options'] ) && $value ) {
 
+					$output[ $key ] = '1';
+
+				}
 			}
 		}
 	}

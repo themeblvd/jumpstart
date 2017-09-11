@@ -813,18 +813,14 @@ class Theme_Blvd_Options_Page {
 			}
 
 			/*
-			 * Similarly to a standard checkbox, multi-check options are
-			 * going to be missing any values the user didn't check; so
-			 * we'll make sure all the empty values are added to the final
-			 * array with the string value `0`.
+			 * Make sure at least an empty array gets sent to sanitization
+			 * if no items were checked. Sanitization will result in a `0`
+			 * value set for each unchecked box.
 			 */
-			if ( 'multicheck' === $option['type'] && ! isset( $input[ $id ] ) && ! empty( $option['options'] ) ) {
+			if ( 'multicheck' === $option['type'] && ! isset( $input[ $id ] ) ) {
 
-				foreach ( $option['options'] as $key => $value ) {
+				$input[ $id ] = array();
 
-					$input[ $id ][ $key ] = '0';
-
-				}
 			}
 
 			/*
@@ -873,7 +869,11 @@ class Theme_Blvd_Options_Page {
 
 				}
 
-				$input[ $id ]['crop'] = $crop;
+				if ( is_array( $input[ $id ] ) ) {
+
+					$input[ $id ]['crop'] = $crop;
+
+				}
 
 			}
 
@@ -883,16 +883,19 @@ class Theme_Blvd_Options_Page {
 			 */
 			if ( 'button' === $option['type'] ) {
 
-				if ( ! isset( $input[ $id ]['include_bg'] ) ) {
+				if ( is_array( $input[ $id ] ) ) {
 
-					$input[ $id ]['include_bg'] = '0';
+					if ( ! isset( $input[ $id ]['include_bg'] ) ) {
 
-				}
+						$input[ $id ]['include_bg'] = '0';
 
-				if ( ! isset( $input[ $id ]['include_border'] ) ) {
+					}
 
-					$input[ $id ]['include_border'] = '0';
+					if ( ! isset( $input[ $id ]['include_border'] ) ) {
 
+						$input[ $id ]['include_border'] = '0';
+
+					}
 				}
 			}
 

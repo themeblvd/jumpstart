@@ -336,16 +336,14 @@ class Theme_Blvd_Meta_Box {
 				}
 
 				/*
-				 * Set each item in the multicheck to false if it wasn't sent
-				 * in the $_POST.
+				 * Make sure at least an empty array gets sent to sanitization
+				 * if no items were checked. Sanitization will result in a `0`
+				 * value set for each unchecked box.
 				 */
-				if ( 'multicheck' === $option['type'] && ! isset( $input[ $id ] ) && ! empty( $option['options'] ) ) {
+				if ( 'multicheck' === $option['type'] && ! isset( $input[ $id ] ) ) {
 
-					foreach ( $option['options'] as $key => $value ) {
+					$input[ $id ] = array();
 
-						$input[ $id ][ $key ] = '0';
-
-					}
 				}
 
 				if ( ! $this->args['save_empty'] && empty( $input[ $id ] ) ) {
