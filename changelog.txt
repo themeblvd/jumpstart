@@ -5,6 +5,7 @@ Jump Start Changelog
 -------------------
 
 * **Updated Theme Blvd framework to 2.6.12**
+* Fixed: TinyMCE toolbar's dropdown menus not showing when the using Visual Editor within Theme Blvd Layout Builder.
 
 --------------------------------------------------------------
 

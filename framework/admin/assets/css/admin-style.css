@@ -851,13 +851,13 @@ body.themeblvd-stop-scroll {
 	display: none;
 }
 .themeblvd-modal-wrap .themeblvd-modal {
-	z-index: 100001;
+	z-index: 50001;
 }
 .themeblvd-modal-wrap .themeblvd-second-modal {
-	z-index: 100003;
+	z-index: 50003;
 }
 #themeblvd-modal-backdrop {
-	z-index: 100000;
+	z-index: 50000;
 }
 .themeblvd-modal-wrap .inline-media-modal-backdrop {
 	background-color: rgba(0, 0, 0, .6);
@@ -866,7 +866,7 @@ body.themeblvd-stop-scroll {
 	right: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 100002;
+	z-index: 50002;
 }
 .themeblvd-modal-wrap.small-modal .media-modal-content {
 	min-height: 0;
