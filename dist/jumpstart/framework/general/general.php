@@ -31,7 +31,8 @@ function themeblvd_setup() {
 			'user'				=> true,			// User profile options
 			'tax'				=> true,			// Taxonomy options
 			'menus'				=> true, 			// Options added to WP menu builder
-			'base'				=> false			// Theme base
+			'base'				=> false,			// Theme base
+			'plugins'           => true,			// Plugin manager interface.
 		),
 		'meta' => array(
 			'page_options'		=> true,			// Meta box for basic page options

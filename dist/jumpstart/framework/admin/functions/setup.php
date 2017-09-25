@@ -90,6 +90,87 @@ function themeblvd_admin_init() {
 }
 
 /**
+ * Setup suggested plugin manager.
+ *
+ * In version 2.7.0 this function was majorly altered to
+ * use "My Plugin Manager" instead of the TGMPA script.
+ *
+ * @since Theme_Blvd 2.2.0
+ */
+function themeblvd_plugins() {
+
+	if ( ! themeblvd_supports( 'admin', 'plugins' ) ) {
+		return;
+	}
+
+	/**
+	 * Include plugin manager class.
+	 */
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugin-manager/class-theme-blvd-plugin-manager.php' );
+
+	/*
+	 * Setup suggested plugins.
+	 */
+	$plugins = apply_filters( 'themeblvd_plugins', array(
+		'builder' => array(
+			'name'    => 'Theme Blvd Layout Builder',
+			'slug'    => 'theme-blvd-layout-builder',
+			'version' => '2.1.5+',
+		),
+		'sidebars' => array(
+			'name'    => 'Theme Blvd Widget Areas',
+			'slug'    => 'theme-blvd-widget-areas',
+			'version' => '1.2+',
+		),
+		'widgets' => array(
+			'name'    => 'Theme Blvd Widget Pack',
+			'slug'    => 'theme-blvd-widget-pack',
+			'version' => '1.0.5+',
+		),
+		'shortcodes' => array(
+			'name'    => 'Theme Blvd Shortcodes',
+			'slug'    => 'theme-blvd-shortcodes',
+			'version' => '1.6+',
+		),
+		'importer' => array(
+			'name'    => 'Theme Blvd Importer',
+			'slug'    => 'theme-blvd-importer',
+			'version' => '1.0.3+',
+		),
+		'portfolios' => array(
+			'name'    => 'Portfolios',
+			'slug'    => 'portfolios',
+			'version' => '1.1.4+',
+		),
+		'tweeple' => array(
+			'name'    => 'Tweeple',
+			'slug'    => 'tweeple',
+			'version' => '0.9.4+',
+		),
+		'analytics' => array(
+			'name'    => 'Simple Analytics',
+			'slug'    => 'simple-analytics',
+			'version' => '1.1+',
+		),
+	));
+
+	/*
+	 * Setup arguments for plugin manager interface.
+	 */
+	$args = array(
+		'page_title' => __( 'Suggested Plugins', 'jumpstart' ),
+		'menu_slug'  => 'themeblvd-suggested-plugins',
+	);
+
+	/*
+	 * Create plugin manager object, passing in the suggested
+	 * plugins and optional arguments.
+	 */
+	$manager = new Theme_Blvd_Plugin_Manager( $plugins, $args );
+
+}
+
+/**
  * Save current version of framework to database.
  *
  * The framework hooks this to "admin_init" action

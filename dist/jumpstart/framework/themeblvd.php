@@ -213,12 +213,6 @@ if ( is_admin() ) {
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/options/class-theme-blvd-sortable-option.php' );
 
 	/**
-	 * Include system for suggesting plugins to the
-	 * end-user. Utilizes TGM class.
-	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/plugins/plugins.php' );
-
-	/**
 	 * Include singleton class which sets up the interface
 	 * for the end-user to select a theme base (if enabled
 	 * at the theme level).

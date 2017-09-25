@@ -12,7 +12,7 @@ Jump Start Changelog
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 	* Improved security for saving options added to Edit Tag and Edit Category screens.
 	* Improved security for saving options added to Edit Profile screen.
-* Fixed: TinyMCE toolbar's dropdown menus not showing when the using Visual Editor within Theme Blvd Layout Builder.
+* Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
 
 --------------------------------------------------------------

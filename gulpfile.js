@@ -63,9 +63,19 @@ gulp.task('render-themeblvd', ['clean'], function() {
 });
 
 /**
+ * Merge plugin manager into theme.
+ */
+gulp.task('render-plugin-manager', ['render-themeblvd'], function() {
+
+	return gulp.src('lib/plugin-manager/**')
+    	.pipe(gulp.dest('dist/' + theme + '/framework/admin/plugin-manager'));
+
+});
+
+/**
  * Render WordPress theme.
  */
-gulp.task('render-src', ['render-themeblvd'], function() {
+gulp.task('render-src', ['render-plugin-manager'], function() {
 
 	return gulp.src('src/**')
     	.pipe(gulp.dest('dist/' + theme));
