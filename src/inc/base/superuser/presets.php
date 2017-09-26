@@ -391,12 +391,11 @@ function jumpstart_su_get_presets( $preset = '' ) {
 	}
 
 	/**
-	 * Filters the preset styles added by the
-	 * Super User base.
+	 * Filters the preset styles added by the Super User base.
 	 *
 	 * @since @@name-package 2.1.1
 	 *
-	 * @param array $args All presets added.
+	 * @param array $args   All presets added.
 	 * @param array $colors Color names and hex values.
 	 */
 	$args = apply_filters( 'jumpstart_su_style_presets', $args, $colors );

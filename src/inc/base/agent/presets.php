@@ -285,7 +285,7 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	 *
 	 * @since @@name-package 2.1.1
 	 *
-	 * @param array $args All presets added.
+	 * @param array $args   All presets added.
 	 * @param array $colors Color names and hex values.
 	 */
 	$args = apply_filters( 'jumpstart_ag_style_presets', $args, $colors );

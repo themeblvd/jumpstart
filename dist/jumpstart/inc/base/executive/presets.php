@@ -347,12 +347,11 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 	}
 
 	/**
-	 * Filters the preset styles added by the
-	 * Executive base.
+	 * Filters the preset styles added by the Executive base.
 	 *
 	 * @since Jump_Start 2.1.1
 	 *
-	 * @param array $args All presets added.
+	 * @param array $args   All presets added.
 	 * @param array $colors Color names and hex values.
 	 */
 	$args = apply_filters( 'jumpstart_ex_style_presets', $args, $colors );
