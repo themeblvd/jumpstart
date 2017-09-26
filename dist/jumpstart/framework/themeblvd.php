@@ -217,14 +217,14 @@ if ( is_admin() ) {
 	 * for the end-user to select a theme base (if enabled
 	 * at the theme level).
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-bases.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-theme-blvd-bases.php' );
 
 	/**
 	 * Include singleton class which gives first-time users
 	 * a welcome message, pointing them to info on getting
 	 * started.
 	 */
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-tb-welcome.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/tools/class-theme-blvd-welcome.php' );
 
 	/*
 	 * Hook admin actions.
