@@ -53,18 +53,18 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/admin/meta/class-theme-blvd-tax-options
  * Include all default framework options to build
  * the theme options page.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-options-api.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-options-api.php' );
 
 /**
  * Include all default framework widget area
  * handling and registration.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-sidebar-handler.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-sidebar-handler.php' );
 
 /**
  * Include CSS stylesheet API system.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-tb-stylesheets-handler.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-stylesheets-handler.php' );
 
 /**
  * Include API helper functions. These are mostly
