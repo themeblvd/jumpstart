@@ -356,11 +356,11 @@ function themeblvd_sanitize_price_cols( $input ) {
 			}
 
 			if ( ! empty( $item['popout'] ) ) {
-				$item['popout'] = '1';
+				$output[ $item_id ]['popout'] = '1';
 			}
 
 			if ( ! empty( $item['button'] ) ) {
-				$item['button'] = '1';
+				$output[ $item_id ]['button'] = '1';
 			}
 		}
 	}

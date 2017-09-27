@@ -1365,11 +1365,11 @@ function themeblvd_sanitize_button( $input ) {
 	}
 
 	if ( ! empty( $input['include_bg'] ) ) {
-		$input['include_bg'] = '1';
+		$output['include_bg'] = '1';
 	}
 
 	if ( ! empty( $input['include_border'] ) ) {
-		$input['include_border'] = '1';
+		$output['include_border'] = '1';
 	}
 
 	return $output;
