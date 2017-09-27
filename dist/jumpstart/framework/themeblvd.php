@@ -70,7 +70,12 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-stylesheets-handle
  * Include API helper functions. These are mostly
  * wrapper functions for the various API objects.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-deprecated.php' ); // For backwards compat only.
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-builder.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-options.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-sidebar.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-sliders.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-stylesheet.php' );
 
 /**
  * Include third-party plugin compatibility
