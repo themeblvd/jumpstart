@@ -360,11 +360,6 @@ function themeblvd_element( $args ) {
 			themeblvd_content( sprintf('[rev_slider %s]', $args['options']['id']) );
 			break;
 
-		// Slider (Custom, requires Theme Blvd Sliders plugin)
-		case 'slider' :
-			themeblvd_slider( $args['options']['slider_id'] );
-			break;
-
 		// Simple Slider (standard and popout)
 		case 'simple_slider' :
 		case 'simple_slider_popout' :
@@ -536,15 +531,6 @@ function themeblvd_get_element_class( $args ) {
 	// For columns, add a class for when they collapse/stack
 	if ( $args['type'] == 'columns' ) {
 		$class[] = 'stack-'.$args['options']['stack'];
-	}
-
-	// For custom sliders, we can specify the type of slider
-	if ( $args['type'] == 'slider' ) {
-		if ( isset( $args['options']['slider_id'] ) ) {
-			$slider_id = themeblvd_post_id_by_name( $args['options']['slider_id'], 'tb_slider' );
-			$slider_type = get_post_meta( $slider_id, 'type', true );
-			$class[] = 'element-slider-'.$slider_type;
-		}
 	}
 
 	// For paginated post list/grid we want to output the shared

@@ -703,15 +703,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 							break;
 
-						case 'sliders': // @deprecated
-							$option['options'] = themeblvd_get_select( 'sliders' );
-
-							if ( count( $option['options'] ) < 1 ) {
-								$error = __( 'Couldn\'t find any sliders.', '@@text-domain' );
-							}
-
-							break;
-
 					}
 				}
 

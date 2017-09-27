@@ -74,7 +74,6 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-deprecated.php' ); // For b
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-builder.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-options.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-sidebar.php' );
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-sliders.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-stylesheet.php' );
 
 /**

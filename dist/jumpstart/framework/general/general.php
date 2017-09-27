@@ -1,12 +1,44 @@
 <?php
 /**
- * General-use functions, included on frontend and admin.
+ * General-use functions, included on frontend
+ * and admin.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
  * @package     Jump_Start
  */
+
+/**
+ * Setup framework handler and APIs.
+ *
+ * This function is hooked to the action `themeblvd_api`
+ * which fires in /framework/themeblvd.php.
+ *
+ * @since Theme_Blvd 2.1.0
+ */
+function themeblvd_api_init() {
+
+	/*
+	 * Setup Theme Options API and establish theme settings.
+	 * From this point client can use themeblvd_get_option().
+	 */
+	Theme_Blvd_Options_API::get_instance();
+
+	/*
+	 * Setup framework stylesheets and handler for frontend to
+	 * modify these stylesheets.
+	 */
+	Theme_Blvd_Stylesheet_Handler::get_instance();
+
+	/*
+	 * Setup widget areas handler. This registers all default
+	 * sidebars and provides methods to modify them and
+	 * display them.
+	 */
+	Theme_Blvd_Sidebar_Handler::get_instance();
+
+}
 
 /**
  * Setup the config array for which features the
@@ -24,7 +56,6 @@ function themeblvd_setup() {
 	$setup = array(
 		'admin' => array(
 			'options'			=> true,			// Theme Options
-			'sliders' 			=> true,			// Sliders page
 			'builder'			=> true,			// Layouts page
 			'sidebars'			=> true,			// Sidebars page
 			'updates'			=> true,			// Updates (if theme supports)
@@ -80,7 +111,6 @@ function themeblvd_setup() {
 			'primary_css'		=> true,			// Primary "themeblvd" stylesheet
 			'primary_dark_css'	=> true,			// Primary "themeblvd_dark" stylesheet (if supports display=>dark)
 			'flexslider'		=> true,			// Flexslider script by WooThemes
-			'nivo'				=> false,			// Nivo script by Dev7studios
 			'bootstrap'			=> true,			// "bootstrap" script/stylesheet
 			'magnific_popup'	=> true,			// "magnific_popup" script/stylesheet
 			'superfish'			=> true,			// "superfish" script
@@ -100,11 +130,6 @@ function themeblvd_setup() {
 			'wpml'				=> true				// WPML by On The Go Systems
 		)
 	);
-
-	// Only needed for Theme Blvd sliders plugin
-	if ( defined('TB_SLIDERS_PLUGIN_VERSION') ) {
-		$setup['assets']['nivo'] = true;
-	}
 
 	return apply_filters( 'themeblvd_global_config', $setup );
 }
@@ -361,7 +386,6 @@ function themeblvd_admin_module_cap( $module ) {
 		'builder' 	=> 'edit_theme_options', 		// Role: Administrator
 		'options' 	=> 'edit_theme_options',		// Role: Administrator
 		'sidebars' 	=> 'edit_theme_options',		// Role: Administrator
-		'sliders' 	=> 'edit_theme_options',		// Role: Administrator
 		'updates' 	=> 'edit_theme_options'			// Role: Administrator
 	);
 	$module_caps = apply_filters( 'themeblvd_admin_module_caps', $module_caps );
@@ -500,7 +524,6 @@ function themeblvd_add_theme_support() {
  * 1) Theme Options
  * 2) Layout Builder 	(plugin)
  * 3) Widget Areas 		(plugin)
- * 4) Sliders 			(plugin)
  *
  * @since 2.3.0
  */
@@ -516,7 +539,6 @@ function themeblvd_get_admin_modules() {
 		'options'	=> $options_page,
 		'builder'	=> 'admin.php?page=themeblvd_builder',
 		'sidebars'	=> 'themes.php?page=themeblvd_widget_areas',
-		'sliders'	=> 'admin.php?page=themeblvd_sliders',
 	);
 
 	return apply_filters( 'themeblvd_admin_modules', $modules );
@@ -553,20 +575,6 @@ function themeblvd_admin_menu_bar() {
 				'href'			=> admin_url( $modules['options'] )
 			)
 		);
-	}
-
-	// Sliders (if sliders plugin is installed)
-	if ( defined( 'TB_SLIDERS_PLUGIN_VERSION' ) && isset( $modules['sliders'] ) ) {
-		if ( themeblvd_supports( 'admin', 'sliders' ) && current_user_can( themeblvd_admin_module_cap( 'sliders' ) ) ) {
-			$wp_admin_bar->add_node(
-				array(
-					'id'		=> 'tb_sliders',
-					'title'		=> __('Sliders', 'jumpstart'),
-					'parent'	=> 'site-name',
-					'href'		=> admin_url( $modules['sliders'] )
-				)
-			);
-		}
 	}
 
 	// Builder (if layout builder plugin is installed)
@@ -1483,18 +1491,6 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 			foreach ( $categories as $category ) {
 				$select[$category->slug] = $category->name;
-			}
-			break;
-
-		// Sliders
-		case 'sliders' :
-			$sliders = get_posts( 'post_type=tb_slider&numberposts=-1' );
-			if ( ! empty( $sliders ) ) {
-				foreach ( $sliders as $slider ) {
-					$select[$slider->post_name] = $slider->post_title;
-				}
-			} else {
-				$select['null'] = __('You haven\'t created any custom sliders yet.', 'jumpstart');
 			}
 			break;
 
