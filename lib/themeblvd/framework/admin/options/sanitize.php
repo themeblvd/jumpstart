@@ -372,7 +372,7 @@ function themeblvd_sanitize_color( $input ) {
 	 */
 	$output = apply_filters( 'themeblvd_default_color', '#000000' );
 
-	if ( themeblvd_validate_hex( $hex ) ) {
+	if ( themeblvd_validate_hex( $input ) ) {
 
 		$output = $input;
 
