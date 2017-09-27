@@ -569,25 +569,25 @@ function themeblvd_sanitize_slider( $input ) {
 
 			$output[ $item_id ]['crop'] = $crop;
 
-			$item_id = 0;
+			$image_id = 0;
 
 			if ( isset( $item['id'] ) ) {
 
-				$item_id = intval( $item['id'] );
+				$image_id = intval( $item['id'] );
 
-				$output[ $item_id ]['id'] = $item_id;
+				$output[ $item_id ]['id'] = $image_id;
 
-				$output[ $item_id ]['alt'] = get_the_title( $item_id );
+				$output[ $item_id ]['alt'] = get_the_title( $image_id );
 
 			}
 
-			if ( $item_id ) {
+			if ( $image_id ) {
 
-				$attachment = wp_get_attachment_image_src( $item_id, $crop );
+				$attachment = wp_get_attachment_image_src( $image_id, $crop );
 
 				if ( $attachment ) {
 
-					$downsize = themeblvd_image_downsize( $attachment, $item_id, $crop );
+					$downsize = themeblvd_image_downsize( $attachment, $image_id, $crop );
 
 					if ( isset( $downsize[0] ) ) {
 						/** This filter is documented in framework/admin/options/class-theme-blvd-options-page.php */
@@ -595,7 +595,7 @@ function themeblvd_sanitize_slider( $input ) {
 					}
 				}
 
-				$thumb = wp_get_attachment_image_src( $item_id, 'tb_thumb' );
+				$thumb = wp_get_attachment_image_src( $image_id, 'tb_thumb' );
 
 				if ( isset( $thumb[0] ) ) {
 					/** This filter is documented in framework/admin/options/class-theme-blvd-options-page.php */
@@ -685,28 +685,28 @@ function themeblvd_sanitize_logos( $input ) {
 				'link'  => '',
 			);
 
-			$item_id = 0;
+			$image_id = 0;
 
 			if ( isset( $item['id'] ) ) {
 
-				$item_id = intval( $item['id'] );
+				$image_id = intval( $item['id'] );
 
-				$output[ $item_id ]['id'] = $item_id;
+				$output[ $item_id ]['id'] = $image_id;
 
-				$output[ $item_id ]['alt'] = get_the_title( $item_id );
+				$output[ $item_id ]['alt'] = get_the_title( $image_id );
 
 			}
 
-			if ( $item_id ) {
+			if ( $image_id ) {
 
-				$attachment = wp_get_attachment_image_src( $output[ $item_id ]['id'], 'full' );
+				$attachment = wp_get_attachment_image_src( $image_id, 'full' );
 
 				if ( isset( $attachment[0] ) ) {
 					/** This filter is documented in framework/admin/options/class-theme-blvd-options-page.php */
 					$output[ $item_id ]['src'] = apply_filters( 'themeblvd_sanitize_upload', $attachment[0] );
 				}
 
-				$thumb = wp_get_attachment_image_src( $output[ $item_id ]['id'], 'tb_thumb' );
+				$thumb = wp_get_attachment_image_src( $image_id, 'tb_thumb' );
 
 				if ( isset( $thumb[0] ) ) {
 					/** This filter is documented in framework/admin/options/class-theme-blvd-options-page.php */
