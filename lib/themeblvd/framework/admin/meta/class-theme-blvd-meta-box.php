@@ -88,7 +88,10 @@ class Theme_Blvd_Meta_Box {
 		 */
 		if ( isset( $this->args['page'] ) ) {
 
-			$this->args['screen'] = $this->args['page'];
+			$this->args['screen'] = array_merge(
+				$this->args['page'],
+				$this->args['screen']
+			);
 
 			unset( $this->args['page'] );
 
