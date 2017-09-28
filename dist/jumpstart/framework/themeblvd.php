@@ -8,11 +8,32 @@
  * @package     Jump_Start
  */
 
-/*
- * Set famework constants.
+/*------------------------------------------------------*/
+/* Constants
+/*------------------------------------------------------*/
+
+/**
+ * Current framework version.
+ *
+ * @since 2.0.0
+ * @var string TB_FRAMEWORK_VERSION
  */
 define( 'TB_FRAMEWORK_VERSION', '2.7.0' );
+
+/**
+ * Absolute file path to framework directory.
+ *
+ * @since 2.0.0
+ * @var string TB_FRAMEWORK_VERSION
+ */
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory() . '/framework' );
+
+/**
+ * URI to framework directory.
+ *
+ * @since 2.0.0
+ * @var string TB_FRAMEWORK_VERSION
+ */
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
 
 /*------------------------------------------------------*/
