@@ -2,10 +2,11 @@
 /**
  * The template used for displaying posts in a blog.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.0.0
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(themeblvd_get_att('class')); ?>>

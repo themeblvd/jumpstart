@@ -1,11 +1,11 @@
 <?php
 /**
- * Super User Options
+ * Theme Base: Super User, Options
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @author    Jason Bobich <info@themeblvd.com>
+ * @copyright 2009-2017 Theme Blvd
+ * @package   Jump_Start
+ * @since     Jump_Start 2.0.0
  */
 
 /**

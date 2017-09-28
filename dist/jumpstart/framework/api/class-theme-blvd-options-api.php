@@ -2,10 +2,11 @@
 /**
  * Theme Options API
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
@@ -22,6 +23,8 @@
  * Note: This class does not setup the options system;
  * it sets up the default framework options which then
  * later get sent to the options system.
+ *
+ * @since Theme_Blvd 2.3.0
  */
 class Theme_Blvd_Options_API {
 

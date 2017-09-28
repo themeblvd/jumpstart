@@ -2,10 +2,24 @@
 /**
  * Activation Welcome
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * When the theme is activated a message will
+ * display at the top of the screen until the
+ * corrent user has dismissed it.
+ *
+ * The goal of this message to help the user get
+ * started with the theme. It links them to the
+ * following resources:
+ *
+ *     1. Online, public theme documenation.
+ *     2. "Getting Started" video in a lightbox.
+ *     3. "Theme Bases" page to select a theme base.
+ *     4. "Theme Options" page to configure options.
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.6.0
  */
 
 /**

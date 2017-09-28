@@ -3,10 +3,11 @@
  * The default template for displaying content in
  * mini post list.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.0.0
  */
 $class  = themeblvd_get_att('thumbs') ? 'has-thumbnail' : ''; // Whether thumb displays, not if it has one
 $class .= themeblvd_get_att('show_meta') ? ' has-meta' : '';

@@ -10,10 +10,11 @@
  * child theme's functions.php. By doing this you're overriding the file being
  * included here.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.0.0
  */
 
 require_once( get_template_directory() . '/framework/themeblvd.php' );

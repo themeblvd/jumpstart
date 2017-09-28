@@ -1,11 +1,11 @@
 <?php
 /**
- * Agent Preset Styles
+ * Theme Base: Agent, Style Presets
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * @author    Jason Bobich <info@themeblvd.com>
+ * @copyright 2009-2017 Theme Blvd
+ * @package   @@name-package
+ * @since     @@name-package 2.1.1
  */
 
 /**

@@ -28,10 +28,11 @@
  * 12. *_Text_Blocks_Option   `text_blocks`   Text blocks of a hero unit element.
  * 13. *_Toggles_Option       `toggles`       Group of toggles in a toggles element.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**

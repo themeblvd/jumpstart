@@ -5,10 +5,10 @@
  * This file include the in-dashboard update functions,
  * which are specific to the theme.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @author    Jason Bobich <info@themeblvd.com>
+ * @copyright 2009-2017 Theme Blvd
+ * @package   Jump_Start
+ * @since     Jump_Start 1.0.0
  */
 
 /**

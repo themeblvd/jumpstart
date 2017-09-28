@@ -8,10 +8,11 @@
  * content be done with via actions, filters, and
  * template parts.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 get_header();

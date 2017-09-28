@@ -1,11 +1,11 @@
 <?php
 /**
- * Entrepreneur Preset Styles.
+ * Theme Base: Entrepreneur, Style Presets
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * @author    Jason Bobich <info@themeblvd.com>
+ * @copyright 2009-2017 Theme Blvd
+ * @package   @@name-package
+ * @since     @@name-package 2.1.1
  */
 
 /**

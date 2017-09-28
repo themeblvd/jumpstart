@@ -2,14 +2,26 @@
 /**
  * Theme Blvd WordPress Framework
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * This file sets up the framework, by defining framework
+ * constants, including all files, and hooking in all
+ * intial actions and filters to start everything.
+ *
+ * It has been split into four sections:
+ *
+ *     1. Define Constants
+ *     2. General Files and Hooks
+ *     3. Admin Files and Hooks
+ *     4. Frontend Files and Hooks
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.0.0
  */
 
 /*------------------------------------------------------*/
-/* Constants
+/* Define Constants
 /*------------------------------------------------------*/
 
 /**

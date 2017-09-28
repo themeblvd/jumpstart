@@ -1,11 +1,12 @@
 <?php
 /**
- * Frontend grid functions.
+ * Grid layout functions.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -13,12 +14,13 @@
  * See: http://dev.themeblvd.com/tutorial/grid-system/
  *
  * Accepted inputs for $key:
- * 1: A fraction (as string) equivalent to 1/12 - 11/12
- * 2: A fraction (as string) equivalent to a percent divisable by 10
- * 3: A classic grid key for 12-col - grid_{1-12}
- * 4: A classic grid key for fifths - grid_fifth_{1-5}
- * 5: A classic grid key for tenths - grid_tenth_{1-10}
- * 6: An integer from 1-6, representing the number of equal-width columns
+ *
+ *     1. A fraction (as string) equivalent to 1/12 - 11/12
+ *     2. A fraction (as string) equivalent to a percent divisable by 10
+ *     3. A classic grid key for 12-col - grid_{1-12}
+ *     4. A classic grid key for fifths - grid_fifth_{1-5}
+ *     5. A classic grid key for tenths - grid_tenth_{1-10}
+ *     6. An integer from 1-6, representing the number of equal-width columns
  *
  * @since 2.0.0
  *

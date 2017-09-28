@@ -5,10 +5,11 @@
  * This only applies to Theme Blvd themes sold
  * from Theme Blvd-hosted websites.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.0.0
  */
 class Theme_Blvd_License_Admin {
 
