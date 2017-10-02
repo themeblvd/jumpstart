@@ -1,41 +1,49 @@
 <?php
 /**
- * Theme Blvd Widget Area Handler
+ * Widget Area Handler
  *
  * The framework is made up widget area "locations"
  * and there is a default sidebar registered with
- * WordPress for each location. This opens up a chance
- * for the Widget Area plugin to filter in and replace
- * locations with custom sidebars created by the end-user
- * for specific pages of the website.
+ * WordPress for each location.
+ *
+ * This opens up a chance for the Widget Area plugin
+ * to filter in and replace locations with custom
+ * sidebars created by the end-user for specific pages
+ * of the website.
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.3.0
+ */
+
+/**
+ * Sets up widget areas.
  *
  * This handler controls setting up these locations and
- * registering the default location sidebars. Also, there
- * are some handler methods to all locations to be added and
- * removed.
+ * registering the default location sidebars.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     @@name-package
+ * Also, there are some handler methods to all locations
+ * to be added and removed.
+ *
+ * @since @@name-framework 2.3.0
  */
 class Theme_Blvd_Sidebar_Handler {
-
-	/*--------------------------------------------*/
-	/* Properties, private
-	/*--------------------------------------------*/
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
+	 * @var Theme_Blvd_Sidebar_Handler
 	 */
 	private static $instance = null;
 
 	/**
 	 * Core framework sidebar locations.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $core_locations = array();
 
@@ -43,14 +51,16 @@ class Theme_Blvd_Sidebar_Handler {
 	 * Sidebar locations added through client
 	 * mutators.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $client_locations = array();
 
 	/**
 	 * Sidebar locations to remove.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $remove_locations = array();
 
@@ -58,56 +68,59 @@ class Theme_Blvd_Sidebar_Handler {
 	 * Final array of sidebar locations. This combines
 	 * $core_elements and $client_elements. WP-Admin only.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $locations = array();
 
-	/*--------------------------------------------*/
-	/* Constructor
-	/*--------------------------------------------*/
-
 	/**
-     * Creates or returns an instance of this class.
-     *
-     * @since 2.3.0
-     *
-     * @return Theme_Blvd_Sidebar_Handler A single instance of this class.
-     */
+	 * Creates or returns an instance of this class.
+	 *
+	 * @since @@name-framework 2.3.0
+	 *
+	 * @return Theme_Blvd_Sidebar_Handler A single instance of this class.
+	 */
 	public static function get_instance() {
 
-		if ( self::$instance == null ) {
-            self::$instance = new self;
-        }
+		if ( null === self::$instance ) {
 
-        return self::$instance;
+			self::$instance = new self;
+
+		}
+
+		return self::$instance;
+
 	}
 
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 */
 	private function __construct() {
 
-		// Set core framework locations
 		$this->set_core_locations();
 
-		// Finalize locations after client handler has had a chance to modify them.
+		/*
+		 * Finalize locations after client handler has had
+		 * a chance to modify them.
+		 */
 		add_action( 'after_setup_theme', array( $this, 'set_locations' ), 1001 );
 
-		// Regiser sidebars from locations.
-		add_action( 'widgets_init', array( $this, 'register' ) ); // Widget Areas plugin hooks in at priority 11, just after
+		/*
+		 * Register sidebars for default locations.
+		 *
+		 * Note: Theme Blvd Widget Areas plugin hooks in at priority
+		 * 11, just after this.
+		 */
+		add_action( 'widgets_init', array( $this, 'register' ) );
 
 	}
-
-	/*--------------------------------------------*/
-	/* Methods, mutators
-	/*--------------------------------------------*/
 
 	/**
 	 * Set core framework sidebar locations.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 */
 	private function set_core_locations() {
 
@@ -116,144 +129,160 @@ class Theme_Blvd_Sidebar_Handler {
 		// Default Left Sidebar
 		$this->core_locations['sidebar_left'] = array(
 			'type' => 'fixed',
-			'location'	=> array(
-				'name' 	=> __('Left Sidebar', '@@text-domain'),
-				'id' 	=> 'sidebar_left'
+			'location' => array(
+				'name' => __( 'Left Sidebar', '@@text-domain' ),
+				'id'   => 'sidebar_left',
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id' 	=> 'sidebar_left'
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => 'sidebar_left',
+				),
 			),
 			'args' => array(
-			    'name' 			=> __('Location: Left Sidebar', '@@text-domain'),
-			    'description' 	=> __('This is default placeholder for the "Left Sidebar" location.', '@@text-domain'),
-			    'id' 			=> 'sidebar_left'
-			)
+				'name'        => __( 'Location: Left Sidebar', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Left Sidebar" location.', '@@text-domain' ),
+				'id'          => 'sidebar_left',
+			),
 		);
 
 		// Default Right Sidebar
 		$this->core_locations['sidebar_right'] = array(
 			'type' => 'fixed',
 			'location' => array(
-				'name' 	=> __('Right Sidebar', '@@text-domain'),
-				'id'	=> 'sidebar_right'
+				'name' => __( 'Right Sidebar', '@@text-domain' ),
+				'id'   => 'sidebar_right',
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id' 	=> 'sidebar_right'
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => 'sidebar_right',
+				),
 			),
 			'args' => array(
-			    'name' 			=> __('Location: Right Sidebar', '@@text-domain'),
-			    'description' 	=> __('This is default placeholder for the "Right Sidebar" location.', '@@text-domain'),
-			    'id' 			=> 'sidebar_right'
-			)
+				'name'        => __( 'Location: Right Sidebar', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Right Sidebar" location.', '@@text-domain' ),
+				'id'          => 'sidebar_right',
+			),
 		);
 
 		// Default Ad Space - Above Header
 		$this->core_locations['ad_above_header'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' 	=> __('Ads Above Header', '@@text-domain'),
-				'id'	=> 'ad_above_header'
+				'name' => __( 'Ads Above Header', '@@text-domain' ),
+				'id'   => 'ad_above_header',
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id' 	=> 'ad_above_header'
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => 'ad_above_header',
+				),
 			),
 			'args' => array(
-			    'name' 			=> __('Location: Ads Above Header', '@@text-domain'),
-			    'description' 	=> __('This is default placeholder for the "Ads Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain'),
-			    'id' 			=> 'ad_above_header'
-			)
+				'name'        => __( 'Location: Ads Above Header', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Ads Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'id'          => 'ad_above_header',
+			),
 		);
 
 		// Default Ad Space - Above Content
 		$this->core_locations['ad_above_content'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' 	=> __('Ads Above Content', '@@text-domain'),
-				'id'	=> 'ad_above_content'
+				'name' => __( 'Ads Above Content', '@@text-domain' ),
+				'id'   => 'ad_above_content',
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id' 	=> 'ad_above_content'
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => 'ad_above_content',
+				),
 			),
 			'args' => array(
-			    'name' 			=> __('Location: Ads Above Content', '@@text-domain'),
-			    'description' 	=> __('This is default placeholder for the "Ads Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain'),
-			    'id' 			=> 'ad_above_content'
-			)
+				'name'        => __( 'Location: Ads Above Content', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Ads Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'id'          => 'ad_above_content',
+			),
 		);
 
 		// Default Ad Space - Below Content
 		$this->core_locations['ad_below_content'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' 	=> __('Ads Below Content', '@@text-domain'),
-				'id'	=> 'ad_below_content'
+				'name' => __( 'Ads Below Content', '@@text-domain' ),
+				'id'   => 'ad_below_content',
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id' 	=> 'ad_below_content'
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => 'ad_below_content',
+				),
 			),
 			'args' => array(
-			    'name' 			=> __('Location: Ads Below Content', '@@text-domain'),
-			    'description' 	=> __('This is default placeholder for the "Ads Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain'),
-			    'id' 			=> 'ad_below_content'
-			)
+				'name'        => __( 'Location: Ads Below Content', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Ads Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'id'          => 'ad_below_content',
+			),
 		);
 
 		// Default Ad Space - Below Footer
 		$this->core_locations['ad_below_footer'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' 	=> __('Ads Below Footer', '@@text-domain'),
-				'id'	=> 'ad_below_footer'
+				'name' => __( 'Ads Below Footer', '@@text-domain' ),
+				'id'   => 'ad_below_footer',
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id' 	=> 'ad_below_footer'
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => 'ad_below_footer',
+				),
 			),
 			'args' => array(
-			    'name' 			=> __('Location: Ads Below Footer', '@@text-domain'),
-			    'description' 	=> __('This is default placeholder for the "Ads Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain'),
-			    'id' 			=> 'ad_below_footer'
-			)
+				'name'        => __( 'Location: Ads Below Footer', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Ads Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'id'          => 'ad_below_footer',
+			),
 		);
 
-		// Add in shared arguments
+		// Add shared data to core widget areas.
+		$shared_args = array(
+			'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
+			'after_widget'  => '</div></aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		);
+
 		foreach ( $this->core_locations as $id => $location ) {
-			$this->core_locations[$id]['args']['before_widget'] = '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">';
-			$this->core_locations[$id]['args']['after_widget'] 	= '</div></aside>';
-			$this->core_locations[$id]['args']['before_title'] 	= '<h3 class="widget-title">';
-			$this->core_locations[$id]['args']['after_title'] 	= '</h3>';
+
+			foreach ( $shared_args as $key => $value ) {
+
+				$this->core_locations[ $id ]['args'][ $key ] = $value;
+
+			}
 		}
 
-		// Extend
+		/**
+		 * Filters all data used to register the core location
+		 * widget areas.
+		 *
+		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $core_locations Shared arguments for register_sidebar().
+		 */
 		$this->core_locations = apply_filters( 'themeblvd_core_sidebar_locations', $this->core_locations );
 
 	}
@@ -262,70 +291,82 @@ class Theme_Blvd_Sidebar_Handler {
 	 * Set final sidebar locations. This sets the merged result
 	 * of core locations and client added locations.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 */
 	public function set_locations() {
 
 		// Merge core locations with client added locations.
 		$this->locations = array_merge( $this->core_locations, $this->client_locations );
 
-		// Remove locations
+		// Remove locations.
 		if ( $this->remove_locations ) {
+
 			foreach ( $this->remove_locations as $location ) {
-				unset( $this->locations[$location] );
+
+				unset( $this->locations[ $location ] );
+
 			}
 		}
 
-		// Extend
+		/**
+		 * Filters the final sidebar locations, after API has ran
+		 * and client sidebar locations have been merged with
+		 * framework defaults.
+		 *
+		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $locations All widget area locations.
+		 */
 		$this->locations = apply_filters( 'themeblvd_sidebar_locations', $this->locations );
 
 	}
 
-	/*--------------------------------------------*/
-	/* Methods, client handler mutators
-	/*--------------------------------------------*/
-
 	/**
 	 * Add sidebar location.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
-	 * @param string $id ID of location
-	 * @param string $name Name of location
-	 * @param string $type Type of location - fixed or collapsible
-	 * @param string $desc Description or widget area
+	 * @param string $id   ID of location.
+	 * @param string $name Name of location.
+	 * @param string $type Type of location, `fixed` or `collapsible`.
+	 * @param string $desc Description or widget area.
 	 */
 	public function add_location( $id, $name, $type, $desc = '' ) {
 
-		// Description
 		if ( ! $desc ) {
-			$desc = sprintf( __('This is default placeholder for the "%s" location.', '@@text-domain'), $name );
+
+			$desc = sprintf(
+				// translators: 1: name of sidebar location
+				__( 'This is default placeholder for the "%s" location.', '@@text-domain' ),
+				$name
+			);
+
 		}
 
-		// Add Sidebar location
-		$this->client_locations[$id] = array(
+		$this->client_locations[ $id ] = array(
 			'type' => $type,
 			'location' => array(
-				'name' 	=> $name,
-				'id'	=> $id
+				'name' => $name,
+				'id'   => $id,
 			),
 			'assignments' => array(
 				'default' => array(
-					'type' 			=> 'default',
-					'id' 			=> null,
-					'name' 			=> 'Everything',
-					'sidebar_id'	=> $id
-				)
+					'type'       => 'default',
+					'id'         => null,
+					'name'       => 'Everything',
+					'sidebar_id' => $id,
+				),
 			),
 			'args' => array(
-			    'name'			=> sprintf( __('Location: %s', '@@text-domain'), $name ),
-			    'description' 	=> $desc,
-			    'id' 			=> $id,
-			    'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
-				'after_widget' 	=> '</div></aside>',
-				'before_title' 	=> '<h3 class="widget-title">',
-				'after_title' 	=> '</h3>'
-			)
+				// translators: 1: name of sidebar location
+				'name'          => sprintf( __( 'Location: %s', '@@text-domain' ), $name ),
+				'description'   => $desc,
+				'id'            => $id,
+				'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
+				'after_widget'  => '</div></aside>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			),
 		);
 
 	}
@@ -333,49 +374,53 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Remove sidebar location.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
-	 * @param string $id ID of location to remove
+	 * @param string $id ID of location to remove.
 	 */
 	public function remove_location( $id ) {
-		$this->remove_locations[] = $id;
-	}
 
-	/*--------------------------------------------*/
-	/* Methods, accessors
-	/*--------------------------------------------*/
+		$this->remove_locations[] = $id;
+
+	}
 
 	/**
 	 * Get core framework sidebar locations.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
 	 * @return array $registered_elements
 	 */
 	public function get_core_locations() {
+
 		return $this->core_locations;
+
 	}
 
 	/**
 	 * Get added locations from client handler mutators.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
 	 * @return array $registered_elements
 	 */
 	public function get_client_locations() {
+
 		return $this->client_locations;
+
 	}
 
 	/**
 	 * Get locations to be removed by client handler mutators.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
 	 * @return array $registered_elements
 	 */
 	public function get_remove_locations() {
+
 		return $this->remove_locations;
+
 	}
 
 	/**
@@ -383,43 +428,48 @@ class Theme_Blvd_Sidebar_Handler {
 	 * of core locations and client added locations. This
 	 * is available after WP's "after_setup_theme" hook.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
-	 * @param string $location_id Optional ID of specific location to pull.
-	 * @return array $locations All locations or specific location.
+	 * @param  string $location_id  Optional ID of specific location to pull.
+	 * @return array  $locations    All locations or specific location.
 	 */
 	public function get_locations( $location_id = '' ) {
 
 		if ( ! $location_id ) {
+
 			return $this->locations;
+
 		}
 
-		if ( isset( $this->locations[$location_id] ) ) {
-			return $this->locations[$location_id];
+		if ( isset( $this->locations[ $location_id ] ) ) {
+
+			return $this->locations[ $location_id ];
+
 		}
 
 		return array();
 	}
 
-	/*--------------------------------------------*/
-	/* Methods, helpers
-	/*--------------------------------------------*/
-
 	/**
-	 * Register sidebars with WordPress. Hooked to "after_setup_theme"
-	 * at priority 1001.
+	 * Register sidebars with WordPress.
 	 *
-	 * @since 2.3.0
+	 * Hooked to "after_setup_theme" at priority 1001.
+	 *
+	 * @since @@name-framework 2.3.0
 	 */
 	public function register() {
 
-		// Loop through locations and register a default
-		// placeholder sidebar for each location.
+		/*
+		 * Loop through locations and register a default
+		 * placeholder sidebar for each location.
+		 */
 		foreach ( $this->locations as $sidebar ) {
 
 			/**
 			 * Filters the arguments used in registering
-			 * the default widget areas.
+			 * the default "location" widget areas.
+			 *
+			 * @since @@name-framework 2.3.0
 			 *
 			 * @param array  $args     Arguments passed to register_sidebar().
 			 * @param array  $sidebar  Sidebar information from framework.
@@ -427,7 +477,6 @@ class Theme_Blvd_Sidebar_Handler {
 			 */
 			$args = apply_filters( 'themeblvd_default_sidebar_args', $sidebar['args'], $sidebar, $sidebar['location']['id'] );
 
-			// Register sidebar with WordPress
 			register_sidebar( $args );
 
 		}
@@ -435,106 +484,130 @@ class Theme_Blvd_Sidebar_Handler {
 	}
 
 	/**
-	 * Display Sidebar
+	 * Display sidebar.
 	 *
-	 * @since 2.3.0
+	 * @since @@name-framework 2.3.0
 	 *
-	 * @param string $location Location ID for the sidebar to display
+	 * @param string $location Location ID for the sidebar to display.
 	 */
 	public function display( $location ) {
 
-		// Setup type
-		if ( ! isset( $this->locations[$location]['type'] ) ) {
+		if ( ! isset( $this->locations[ $location ]['type'] ) ) {
 			return;
 		}
 
-		$type = $this->locations[$location]['type'];
+		$type = $this->locations[ $location ]['type'];
 
-		// Current configuration for sidebar
 		$sidebar = themeblvd_config( 'sidebars', $location );
 
-		// If sidebar is set to false or sidebar doesn't
-		// exist, kill it.
 		if ( ! $sidebar ) {
 			return;
 		}
 
-		// If this is a collapsible default sidebar with
-		// no errors, we'll want to just kill it if it
-		// has no widgets.
-		if ( $type == 'collapsible' && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) ) {
+		/*
+		 * If this is a collapsible default sidebar with no errors,
+		 * we'll want to just kill it if it has no widgets.
+		 */
+		if ( 'collapsible' === $type && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) ) {
 			return;
 		}
 
 		/**
+		 * Fires before a widget area's output is started.
+		 *
 		 * @hooked null
+		 *
+		 * @since @@name-framework 2.3.0
 		 */
-		do_action( 'themeblvd_sidebar_'.$type.'_before' );
+		do_action( 'themeblvd_sidebar_' . $type . '_before' );
 
 		/**
+		 * Fires before a widget area's output is started.
+		 *
 		 * @hooked null
+		 *
+		 * @since @@name-framework 2.3.0
 		 */
-		do_action( 'themeblvd_sidebar_'.$location.'_before' );
+		do_action( 'themeblvd_sidebar_' . $location . '_before' );
 
-		// Start display
-		echo '<div class="widget-area widget-area-'.$type.'">';
+		echo '<div class="widget-area widget-area-' . $type . '">';
 
 		/**
+		 * Fires before just inside a widget area.
+		 *
 		 * @hooked null
+		 *
+		 * @since @@name-framework 2.3.0
 		 */
-		do_action( 'themeblvd_widgets_'.$location.'_before');
+		do_action( 'themeblvd_widgets_' . $location . '_before' );
 
-		// Proceed, but check for error
 		if ( $sidebar['error'] ) {
 
-			// Only show error message if user is logged in.
 			if ( is_user_logged_in() ) {
 
-				// Set message
 				switch ( $type ) {
-					case 'collapsible' :
-						$message = sprintf( __('This is a collapsible widget area with ID, %s, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', '@@text-domain'), $sidebar['id'] );
+
+					case 'collapsible':
+						$message = sprintf(
+							// translators: 1: ID of widget area
+							__( 'This is a collapsible widget area with ID, %s, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', '@@text-domain' ),
+							$sidebar['id']
+						);
 						break;
 
-					case 'fixed' :
-						$message = sprintf( __('This is a fixed sidebar with ID, %s, but you haven\'t put any widgets in it yet.', '@@text-domain'), $sidebar['id'] );
+					case 'fixed':
+						$message = sprintf(
+							// translators: 1: ID of widget area
+							__( 'This is a fixed sidebar with ID, %s, but you haven\'t put any widgets in it yet.', '@@text-domain' ),
+							$sidebar['id']
+						);
 						break;
 				}
 
-				// Ouput message
 				echo '<div class="alert alert-warning">';
-				echo '	<p>'.esc_html($message).'</p>';
+				echo '	<p>' . esc_html( $message ) . '</p>';
 				echo '</div><!-- .tb-warning (end) -->';
 
 			}
-
 		} else {
 
-			// Sidebar ID exists and there are no errors.
-			// So, let's display the darn thing.
+			/*
+			 * Sidebar ID exists and there are no errors; so
+			 * let's display the darn thing.
+			 */
 			dynamic_sidebar( $sidebar['id'] );
 
 		}
 
 		/**
+		 * Fires inside a widget area, just before its closed.
+		 *
 		 * @hooked null
+		 *
+		 * @since @@name-framework 2.3.0
 		 */
-		do_action( 'themeblvd_widgets_'.$location.'_after');
+		do_action( 'themeblvd_widgets_' . $location . '_after' );
 
-
-		// End display
 		echo '</div><!-- .widget_area (end) -->';
 
 		/**
+		 * Fires just outside a widget area, after its closed.
+		 *
 		 * @hooked null
+		 *
+		 * @since @@name-framework 2.3.0
 		 */
-		do_action( 'themeblvd_sidebar_'.$location.'_after' );
+		do_action( 'themeblvd_sidebar_' . $location . '_after' );
 
 		/**
+		 * Fires just outside a widget area, after its closed.
+		 *
 		 * @hooked null
+		 *
+		 * @since @@name-framework 2.3.0
 		 */
-		do_action( 'themeblvd_sidebar_'.$type.'_after' );
+		do_action( 'themeblvd_sidebar_' . $type . '_after' );
 
 	}
 
-} // End class Theme_Blvd_Sidebar_Handler
+} // End class Theme_Blvd_Sidebar_Handler.
