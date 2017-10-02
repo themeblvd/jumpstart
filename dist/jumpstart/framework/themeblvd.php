@@ -507,8 +507,9 @@ if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
  * Action hook for intervening between framework
  * running and API being established.
  *
- * @since Theme_Blvd 2.3.0
  * @hooked null
+ *
+ * @since Theme_Blvd 2.3.0
  */
 do_action( 'themeblvd_intervene' );
 
@@ -516,8 +517,9 @@ do_action( 'themeblvd_intervene' );
  * Fires when text-domains should be registered
  * for localization.
  *
- * @since Theme_Blvd 2.3.0
  * @hooked themeblvd_load_theme_textdomain - 10
+ *
+ * @since Theme_Blvd 2.3.0
  */
 do_action( 'themeblvd_localize' );
 
@@ -525,8 +527,9 @@ do_action( 'themeblvd_localize' );
  * Fires when API objects should be established
  * in framework.
  *
- * @since Theme_Blvd 2.3.0
  * @hooked themeblvd_api_init - 10
+ *
+ * @since Theme_Blvd 2.3.0
  */
 do_action( 'themeblvd_api' );
 

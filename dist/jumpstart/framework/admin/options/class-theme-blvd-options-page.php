@@ -684,6 +684,8 @@ class Theme_Blvd_Options_Page {
 						 * Fires at the base of the theme options page.
 						 *
 						 * @hooked themeblvd_options_footer_text_default - 10
+						 *
+						 * @since Theme_Blvd 2.2.0
 						 */
 						do_action( 'themeblvd_options_footer_text' );
 						?>
@@ -700,6 +702,8 @@ class Theme_Blvd_Options_Page {
 					 * a framework admin page.
 					 *
 					 * @hooked null
+					 *
+					 * @since Theme_Blvd 2.2.0
 					 *
 					 * @param string Type of framework admin page.
 					 */
