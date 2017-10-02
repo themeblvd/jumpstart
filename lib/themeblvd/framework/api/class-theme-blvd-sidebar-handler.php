@@ -477,6 +477,22 @@ class Theme_Blvd_Sidebar_Handler {
 			 */
 			$args = apply_filters( 'themeblvd_default_sidebar_args', $sidebar['args'], $sidebar, $sidebar['location']['id'] );
 
+			/**
+			 * Filters the arguments used in registering
+			 * all widget area, default and custom.
+			 *
+			 * Note: This same filter is also used in the Theme
+			 * Blvd Widget Areas plugin, for creating custom
+			 * widget areas.
+			 *
+			 * @since @@name-framework 2.7.0
+			 *
+			 * @param array  $args     Arguments passed to register_sidebar().
+			 * @param array  $sidebar  Sidebar information from framework.
+			 * @param string $location ID of widget area being registered.
+			 */
+			$args = apply_filters( 'themeblvd_sidebar_args', $sidebar['args'], $sidebar, $sidebar['location']['id'] );
+
 			register_sidebar( $args );
 
 		}

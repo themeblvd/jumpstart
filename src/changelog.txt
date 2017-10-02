@@ -12,6 +12,7 @@ Jump Start Changelog
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 	* Improved security for saving options added to Edit Tag and Edit Category screens.
 	* Improved security for saving options added to Edit Profile screen.
+	* New filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
 * **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
