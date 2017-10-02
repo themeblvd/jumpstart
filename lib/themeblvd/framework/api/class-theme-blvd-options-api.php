@@ -32,6 +32,7 @@ class Theme_Blvd_Options_API {
 	 * A single instance of this class.
 	 *
 	 * @since @@name-framework 2.3.0
+	 * @var Theme_Blvd_Options_API
 	 */
 	private static $instance = null;
 
@@ -40,6 +41,7 @@ class Theme_Blvd_Options_API {
 	 * options and settings. i.e. get_option( $option_id )
 	 *
 	 * @since @@name-framework 2.3.0
+	 * @var string
 	 */
 	private $option_id = '';
 
@@ -47,6 +49,7 @@ class Theme_Blvd_Options_API {
 	 * Raw options modified along the way by client.
 	 *
 	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $raw_options = array();
 
@@ -54,6 +57,7 @@ class Theme_Blvd_Options_API {
 	 * Formatted options after client modifications.
 	 *
 	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $formatted_options = array();
 
@@ -61,6 +65,7 @@ class Theme_Blvd_Options_API {
 	 * Settings saved in the DB for the current site.
 	 *
 	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $settings = array();
 
@@ -69,6 +74,7 @@ class Theme_Blvd_Options_API {
 	 * get passed through to Theme_Blvd_Options_Page class.
 	 *
 	 * @since @@name-framework 2.3.0
+	 * @var array
 	 */
 	private $args = array();
 
@@ -142,6 +148,8 @@ class Theme_Blvd_Options_API {
 		 * This is an alternative to using the filter
 		 * `themeblvd_option_id` which gets applied every
 		 * time an option ID is retrieved.
+		 *
+		 * @since @@name-framework 2.3.0
 		 *
 		 * @param string $option_id ID options are saved to in the database.
 		 */
@@ -2250,6 +2258,8 @@ class Theme_Blvd_Options_API {
 		 *
 		 * The option ID is used to retrieve the theme's
 		 * options like `get_option( $option_id )`.
+		 *
+		 * @since @@name-framework 2.3.0
 		 *
 		 * @param string $option_id ID options are saved to in the database.
 		 */

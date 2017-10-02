@@ -530,7 +530,7 @@ function jumpstart_ag_css() {
 	 * Filters final printed inline CSS output
 	 * for Agent theme base.
 	 *
-	 * @since Jump_Start Jump_Start 2.1.0
+	 * @since Jump_Start 2.1.0
 	 *
 	 * @param string $print CSS output.
 	 */

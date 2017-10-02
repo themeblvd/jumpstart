@@ -225,6 +225,8 @@ function themeblvd_get_icons( $type = 'vector' ) {
 	 * Filters the array of icons that the user can
 	 * select from in the icon browser.
 	 *
+	 * @since Theme_Blvd 2.3.0
+	 *
 	 * @param array $icons All icons found from fontawesome.css.
 	 */
 	return apply_filters( 'themeblvd_' . $type . '_icons', $icons );
@@ -273,6 +275,8 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 	 * Filters the types of backgrounds that can be
 	 * selected from when setting up display options
 	 * in different contexts.
+	 *
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $types Types of backgrounds.
 	 */

@@ -64,6 +64,8 @@ function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
 	 * Filters an individual theme setting returned from
 	 * saved theme options.
 	 *
+	 * @since @@name-framework 2.2.0
+	 *
 	 * @param string|array $setting   Setting value.
 	 * @param string       $primary   Primary ID of option.
 	 * @param string       $secondary Optional secondary ID to traverse deeper into arrays.

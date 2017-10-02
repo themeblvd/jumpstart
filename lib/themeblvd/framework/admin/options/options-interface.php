@@ -2529,6 +2529,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		 * the database, you must filter on a sanitization function
 		 * to `themeblvd_sanitize_{type}`.
 		 *
+		 * @since @@name-framework 2.2.0
+		 *
 		 * @param string $output      All HTML for options page, up to this point.
 		 * @param array  $option      Data for current option in loop.
 		 * @param string $option_name Constructed name attribute for option, use like `name={$option_name[ $option['id'] ]}`.
