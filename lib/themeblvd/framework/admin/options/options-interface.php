@@ -368,7 +368,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				);
 
 				$output .= sprintf(
-					'<div class="group" id="%s">',
+					'<div class="group hide" id="%s">',
 					$click_hook
 				);
 
