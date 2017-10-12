@@ -69,15 +69,17 @@ class Theme_Blvd_Menu_Options {
 
 		if ( 'nav-menus.php' === $hook ) {
 
+			$suffix = SCRIPT_DEBUG ? '' : '.min';
+
 			wp_enqueue_style(
-				'themeblvd_menus', esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/menu.css' ),
+				'themeblvd-admin-menus', esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/menu{$suffix}.css" ),
 				null,
 				TB_FRAMEWORK_VERSION
 			);
 
 			wp_enqueue_script(
-				'themeblvd_menus',
-				esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/menu.js' ),
+				'themeblvd-admin-menus',
+				esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/menu{$suffix}.js" ),
 				array( 'jquery' ),
 				TB_FRAMEWORK_VERSION
 			);

@@ -366,18 +366,13 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function load_styles() {
 
-		wp_enqueue_style( 'wp-color-picker' );
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+		themeblvd_admin_assets( 'styles' );
 
 		wp_enqueue_style(
-			'themeblvd_admin',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css' ),
-			null,
-			TB_FRAMEWORK_VERSION
-		);
-
-		wp_enqueue_style(
-			'themeblvd_options',
-			esc_url( TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css' ),
+			'themeblvd-admin-options-page',
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/options-page{$suffix}.css" ),
 			null,
 			TB_FRAMEWORK_VERSION
 		);
@@ -387,7 +382,7 @@ class Theme_Blvd_Options_Page {
 
 			wp_enqueue_style(
 				'fontawesome',
-				esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.min.css' ),
+				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/fontawesome/css/font-awesome{$suffix}.css" ),
 				null,
 				TB_FRAMEWORK_VERSION
 			);
@@ -396,11 +391,12 @@ class Theme_Blvd_Options_Page {
 
 		/// Shortcode generator for Theme Blvd shortcodes plugin.
 		if ( $this->editor ) {
+
 			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
 
 				wp_enqueue_style(
-					'tb_shortcode_generator',
-					esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/css/generator.min.css' ),
+					'themeblvd-shortcode-generator',
+					esc_url( TB_SHORTCODES_PLUGIN_URI . "/includes/admin/generator/assets/css/generator{$suffix}.css" ),
 					false,
 					TB_SHORTCODES_PLUGIN_VERSION
 				);
@@ -413,13 +409,13 @@ class Theme_Blvd_Options_Page {
 
 			wp_enqueue_style(
 				'codemirror',
-				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css' ),
+				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css' ), // No unminified file.
 				null, '4.0'
 			);
 
 			wp_enqueue_style(
 				'codemirror-theme',
-				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/themeblvd.min.css' ),
+				esc_url( TB_FRAMEWORK_URI . "/admin/assets/plugins/codemirror/themeblvd{$suffix}.css" ),
 				null,
 				'4.0'
 			);
@@ -434,15 +430,7 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function load_scripts() {
 
-		wp_enqueue_script( 'jquery-ui-core' );
-
-		wp_enqueue_script( 'jquery-ui-sortable' );
-
-		wp_enqueue_script( 'jquery-ui-slider' );
-
-		wp_enqueue_script( 'wp-color-picker' );
-
-		wp_enqueue_media();
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 		if ( $this->gmap ) {
 
@@ -454,44 +442,27 @@ class Theme_Blvd_Options_Page {
 				$gmaps = add_query_arg( 'key', $gmap_key, $gmaps );
 			}
 
-			wp_enqueue_script( 'themeblvd_gmap', esc_url( $gmaps ), array(), null );
+			wp_enqueue_script( 'themeblvd-gmap', esc_url( $gmaps ), array(), null );
 
 		}
 
-		wp_enqueue_script(
-			'themeblvd_admin',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js' ),
-			array( 'jquery' ),
-			TB_FRAMEWORK_VERSION
-		);
+		themeblvd_admin_assets( 'scripts' );
 
 		wp_enqueue_script(
-			'themeblvd_modal',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js' ),
-			array( 'jquery' ),
-			TB_FRAMEWORK_VERSION
-		);
-
-		wp_localize_script(
-			'themeblvd_admin',
-			'themeblvd',
-			themeblvd_get_admin_locals( 'js' )
-		);
-
-		wp_enqueue_script(
-			'themeblvd_options',
-			esc_url( TB_FRAMEWORK_URI . '/admin/options/js/options.min.js' ),
+			'themeblvd-admin-options-page',
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/options-page{$suffix}.js" ),
 			array( 'jquery' ),
 			TB_FRAMEWORK_VERSION
 		);
 
 		// Shortcode generator for Theme Blvd shortcodes plugin.
 		if ( $this->editor ) {
+
 			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
 
 				wp_enqueue_script(
-					'tb_shortcode_generator',
-					esc_url( TB_SHORTCODES_PLUGIN_URI . '/includes/admin/generator/assets/js/generator.min.js' ),
+					'themeblvd-shortcode-generator',
+					esc_url( TB_SHORTCODES_PLUGIN_URI . "/includes/admin/generator/assets/js/generator{$suffix}.js" ),
 					false,
 					TB_SHORTCODES_PLUGIN_VERSION
 				);
@@ -580,7 +551,7 @@ class Theme_Blvd_Options_Page {
 
 		settings_errors( $this->id );
 
-		$class = 'wrap';
+		$class = 'wrap tb-options-page';
 
 		if ( themeblvd_get_option_name() == $this->id ) {
 
@@ -632,7 +603,7 @@ class Theme_Blvd_Options_Page {
 
 				<div id="optionsframework" class="tb-options-js">
 
-					<form id="themeblvd_options_page" action="<?php echo $this->args['form_action']; ?>" method="post">
+					<form id="tb-options-page-form" action="<?php echo $this->args['form_action']; ?>" method="post">
 
 						<?php settings_fields( $this->id ); ?>
 
@@ -675,7 +646,7 @@ class Theme_Blvd_Options_Page {
 
 						</div><!-- .options-page-footer (end) -->
 
-					</form><!-- #themeblvd_options_page (end) -->
+					</form><!-- #tb-options-page-form (end) -->
 
 					<div class="tb-footer-text">
 

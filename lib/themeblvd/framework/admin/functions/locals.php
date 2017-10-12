@@ -29,16 +29,25 @@ function themeblvd_get_admin_locals( $type ) {
 
 		case 'js':
 			$locals = array(
-				'clear'          => __( 'By doing this, you will clear your database of this option set. In other words, you will lose any previously saved settings. Are you sure you want to continue?', '@@text-domain' ),
-				'clear_title'    => __( 'Clear Options', '@@text-domain' ),
-				'delete_item'    => __( 'Are you sure you want to delete this item?', '@@text-domain' ),
-				'no_name'        => __( 'Oops! You forgot to enter a name.', '@@text-domain' ),
-				'invalid_name'   => __( 'Oops! The name you entered is either taken or too close to another name you\'ve already used.', '@@text-domain' ),
-				'publish'        => __( 'Publish', '@@text-domain' ),
-				'preset'         => __( 'Are you sure you want to apply this group of preset options? This will override some of your current settings.', '@@text-domain' ),
-				'primary_query'  => __( 'Oops! You\'ve already got another element displaying paginated posts. When you have more than one paginated set of posts on a page, you\'re going to get funky results.', '@@text-domain' ),
-				'reset'          => __( 'By doing this, all of your default theme settings will be saved, and you will lose any previously saved settings. Are you sure you want to continue?', '@@text-domain' ),
-				'reset_title'    => __( 'Restore Defaults', '@@text-domain' ),
+				'bg_color'         => __( 'Background Color', '@@text-domain' ),
+				'bg_color_hover'   => __( 'Background Hover Color', '@@text-domain' ),
+				'border_color'     => __( 'Border Color', '@@text-domain' ),
+				'cancel'           => __( 'Cancel', '@@text-domain' ),
+				'clear'            => __( 'By doing this, you will clear your database of this option set. In other words, you will lose any previously saved settings. Are you sure you want to continue?', '@@text-domain' ),
+				'clear_title'      => __( 'Clear Options', '@@text-domain' ),
+				'delete_item'      => __( 'Are you sure you want to delete this item?', '@@text-domain' ),
+				'invalid_name'     => __( 'Oops! The name you entered is either taken or too close to another name you\'ve already used.', '@@text-domain' ),
+				'no'               => __( 'No', '@@text-domain' ),
+				'no_name'          => __( 'Oops! You forgot to enter a name.', '@@text-domain' ),
+				'ok'               => __( 'Ok', '@@text-domain' ),
+				'publish'          => __( 'Publish', '@@text-domain' ),
+				'preset'           => __( 'Are you sure you want to apply this group of preset options? This will override some of your current settings.', '@@text-domain' ),
+				'primary_query'    => __( 'Oops! You\'ve already got another element displaying paginated posts. When you have more than one paginated set of posts on a page, you\'re going to get funky results.', '@@text-domain' ),
+				'reset'            => __( 'By doing this, all of your default theme settings will be saved, and you will lose any previously saved settings. Are you sure you want to continue?', '@@text-domain' ),
+				'reset_title'      => __( 'Restore Defaults', '@@text-domain' ),
+				'text_color'       => __( 'Text Color', '@@text-domain' ),
+				'text_color_hover' => __( 'Text Hover Color', '@@text-domain' ),
+				'yes'              => __( 'Yes', '@@text-domain' ),
 			);
 			break;
 

@@ -87,23 +87,12 @@ class Theme_Blvd_Bases {
 
 			$suffix = SCRIPT_DEBUG ? '' : '.min';
 
-			wp_enqueue_style(
-				'themeblvd_admin',
-				esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/admin-style{$suffix}.css" ),
-				null,
-				TB_FRAMEWORK_VERSION
-			);
+			themeblvd_admin_assets();
 
 			wp_enqueue_style(
 				'themeblvd-admin-base',
 				esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/base{$suffix}.css" ),
 				null,
-				TB_FRAMEWORK_VERSION
-			);
-
-			wp_enqueue_script( 'themeblvd_admin',
-				esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/shared{$suffix}.js" ),
-				array( 'jquery' ),
 				TB_FRAMEWORK_VERSION
 			);
 
@@ -137,7 +126,7 @@ class Theme_Blvd_Bases {
 					update_option( $template . '_base', $_GET['select-base'] );
 
 					printf(
-						'<div class="updated"><p><strong>%s</strong></p></div>',
+						'<div class="updated"><p>%s</p></div>',
 						esc_html__( 'Theme base updated successfully.', 'jumpstart' )
 					);
 
@@ -145,7 +134,7 @@ class Theme_Blvd_Bases {
 			} else {
 
 				printf(
-					'<div class="error"><p><strong>%s</strong></p></div>',
+					'<div class="error"><p>%s</p></div>',
 					esc_html__( 'Security check failed. Couldn\'t update theme base.', 'jumpstart' )
 				);
 
@@ -160,8 +149,10 @@ class Theme_Blvd_Bases {
 		if ( $base && ( empty( $settings['theme_base'] ) || $settings['theme_base'] !== $base ) ) {
 
 			printf(
-				'<div class="error"><p><strong>%s</strong></p></div>',
-				esc_html__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'jumpstart' )
+				'<div class="error"><p>%1$s</p><p><a href="%2$s">%3$s</a></p></div>',
+				esc_html__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'jumpstart' ),
+				esc_url( admin_url( 'themes.php?page=' . themeblvd_get_option_name() ) ),
+				esc_html__( 'Configure Theme Options', 'jumpstart' )
 			);
 
 		}

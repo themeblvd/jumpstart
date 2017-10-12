@@ -19,7 +19,11 @@
   "devDependencies": {
     "gulp": "latest",
     "gulp-clean": "latest",
-    "gulp-replace": "^0.6.1",
-    "gulp-zip": "latest"
+    "gulp-replace": "latest",
+    "gulp-rename": "latest",
+    "gulp-zip": "latest",
+    "gulp-concat": "latest",
+    "gulp-uglify": "latest",
+    "gulp-clean-css": "latest"
   }
 }

@@ -199,7 +199,7 @@ class Theme_Blvd_Welcome {
 
 				<a href="<?php echo esc_url( admin_url( 'themes.php?page=' . themeblvd_get_option_name() ) ); ?>" class="button button-secondary">
 					<span class="dashicons dashicons-admin-settings" style="line-height:26px;"></span>
-					<?php esc_html_e( 'Setup Theme Options', 'jumpstart' ); ?>
+					<?php esc_html_e( 'Configure Theme Options', 'jumpstart' ); ?>
 				</a>
 			</p>
 

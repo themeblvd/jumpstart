@@ -1,7 +1,11 @@
-var gulp 	= require('gulp'),
-	zip 	= require('gulp-zip'),
-	clean	= require('gulp-clean'),
-	replace = require('gulp-replace');
+var gulp      = require('gulp'),
+	zip       = require('gulp-zip'),
+	clean     = require('gulp-clean'),
+	replace   = require('gulp-replace'),
+	rename    = require('gulp-rename'),
+	concat 	  = require('gulp-concat'),
+	minifyjs  = require('gulp-uglify'),
+	minifycss = require('gulp-clean-css');
 
 /**
  * Theme slug.
@@ -83,14 +87,117 @@ gulp.task('render-src', ['render-plugin-manager'], function() {
 });
 
 /**
+ * Render admin scripts (all except for options).
+ */
+gulp.task('render-admin-js', ['render-src'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/js/';
+
+	var files = [
+		dir + 'base.js',
+		dir + 'menu.js',
+		dir + 'meta-box.js',
+		dir + 'modal.js',
+		dir + 'options-page.js',
+		// dir + 'shared.js',
+		dir + 'welcome.js'
+	];
+
+	return gulp.src(files)
+		.pipe(minifyjs())
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir));
+
+});
+
+/**
+ * Render admin options scripts.
+ */
+gulp.task('render-admin-options-js', ['render-admin-js'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/js/';
+
+	var files = [
+		dir + 'options/options-init.js',
+		dir + 'options/options-setup.js',
+		dir + 'options/options-bind.js',
+		dir + 'options/options-media-uploader.js',
+		dir + 'options/options-editor.js',
+		dir + 'options/options-code-editor.js',
+		dir + 'options/options-column-widths.js',
+		dir + 'options/options-sortable.js',
+		dir + 'options/options-browsers.js'
+	];
+
+	return gulp.src(files)
+    	.pipe(concat('options.js'))
+		.pipe(gulp.dest(dir))
+		.pipe(minifyjs({output: {comments: /^!|@license/i}}))
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir));
+
+});
+
+/**
+ * Clear admin options partial scripts.
+ */
+gulp.task('clear-admin-options-js-partials', ['render-admin-options-js'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/js/options/';
+
+	return gulp.src(dir, {read: false})
+        .pipe(clean());
+
+});
+
+/**
+ * Render admin utility scripts.
+ */
+gulp.task('render-admin-utils-js', ['clear-admin-options-js-partials'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/js/';
+
+	var files = [
+		dir + 'utils/utils-init.js',
+		dir + 'utils/utils-tools.js',
+		dir + 'utils/utils-confirm.js',
+		dir + 'utils/utils-jquery.js',
+		dir + 'utils/utils-modal.js',
+		dir + 'utils/utils-setup.js',
+		dir + 'utils/utils-accordion.js',
+		dir + 'utils/utils-widgets.js'
+	];
+
+	return gulp.src(files)
+    	.pipe(concat('utils.js'))
+		.pipe(gulp.dest(dir))
+		.pipe(minifyjs({output: {comments: /^!|@license/i}}))
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir));
+
+});
+
+/**
+ * Clear admin utility partial scripts.
+ */
+gulp.task('clear-admin-utils-js-partials', ['render-admin-utils-js'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/js/utils/';
+
+	return gulp.src(dir, {read: false})
+        .pipe(clean());
+
+});
+
+/**
  * Render theme info through PHP DocBlocks.
  */
-gulp.task('render-info', ['render-src'], function() {
+gulp.task('render-info', ['clear-admin-utils-js-partials'], function() {
 
 	var packageSlug = themeName.replace(' ', '_'),
 		frameworkSlug = frameworkName.replace(' ', '_');
 
-	return gulp.src('dist/**/*.php')
+	return gulp.src(['dist/**/*.php', 'dist/**/*.js'])
 		.pipe(replace('@@name-package', packageSlug))
 		.pipe(replace('@@name-framework', frameworkSlug))
     	.pipe(gulp.dest('dist'));

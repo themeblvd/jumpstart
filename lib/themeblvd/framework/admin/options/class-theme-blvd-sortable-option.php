@@ -129,10 +129,10 @@ abstract class Theme_Blvd_Sortable_Option {
 		if ( $ajax ) {
 
 			// Make sure there's no duplicate AJAX actions added.
-			remove_all_actions( 'wp_ajax_themeblvd_add_' . $this->type . '_item' );
+			remove_all_actions( 'wp_ajax_themeblvd-add-' . $this->type . '-item' );
 
-			// Add item with AJAX - Use: themeblvd_add_{$option_type}_item.
-			add_action( 'wp_ajax_themeblvd_add_' . $this->type . '_item', array( $this, 'add_item' ) );
+			// Add item with AJAX - Use: themeblvd-add-{$option_type}-item.
+			add_action( 'wp_ajax_themeblvd-add-' . $this->type . '-item', array( $this, 'add_item' ) );
 
 		}
 	}

@@ -186,59 +186,33 @@ function themeblvd_update_version() {
 }
 
 /**
- * Setup non-modular admin assets.
+ * Enqueue admin scripts and stylesheets.
+ *
+ * Note: This function was previously named
+ * themeblvd_non_modular_assets() prior to framework
+ * 2.7.0.
  *
  * @since Theme_Blvd 2.0.0
  */
-function themeblvd_non_modular_assets() {
+function themeblvd_admin_enqueue() {
 
 	global $pagenow;
 
+	$suffix = SCRIPT_DEBUG ? '' : '.min';
+
 	/*
-	 * Enqueue assets required for editing
-	 * posts and pages.
+	 * Enqueue assets required for editing posts and
+	 * pages.
 	 */
 	if ( 'post-new.php' === $pagenow || 'post.php' === $pagenow ) {
 
-		wp_enqueue_style(
-			'themeblvd_admin',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-style.min.css' ),
-			null,
-			TB_FRAMEWORK_VERSION
-		);
-
-		wp_enqueue_style(
-			'themeblvd_options',
-			esc_url( TB_FRAMEWORK_URI . '/admin/options/css/admin-style.min.css' ),
-			null,
-			TB_FRAMEWORK_VERSION
-		);
+		themeblvd_admin_assets();
 
 		wp_enqueue_script(
-			'themeblvd_modal',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/modal.min.js' ),
+			'themeblvd-meta-box',
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/meta-box{$suffix}.js" ),
 			array( 'jquery' ),
 			TB_FRAMEWORK_VERSION
-		);
-
-		wp_enqueue_script(
-			'themeblvd_admin',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/shared.min.js' ),
-			array( 'jquery' ),
-			TB_FRAMEWORK_VERSION
-		);
-
-		wp_enqueue_script(
-			'tb_meta_box-scripts',
-			esc_url( TB_FRAMEWORK_URI . '/admin/assets/js/meta-box.min.js' ),
-			array( 'jquery' ),
-			TB_FRAMEWORK_VERSION
-		);
-
-		wp_localize_script(
-			'tb_meta_box-scripts',
-			'themeblvd',
-			themeblvd_get_admin_locals( 'js' )
 		);
 
 	}
@@ -252,10 +226,89 @@ function themeblvd_non_modular_assets() {
 	 * needed throughout the entire WordPress admin!
 	 */
 	wp_enqueue_style(
-		'tb_admin_global',
-		esc_url( TB_FRAMEWORK_URI . '/admin/assets/css/admin-menu.min.css' ),
+		'themeblvd-admin-global',
+		esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/global{$suffix}.css" ),
 		null,
 		TB_FRAMEWORK_VERSION
 	);
+
+}
+
+/**
+ * Include all standard admin stylesheets and scripts,
+ * meant to be called from other functions hooked to
+ * admin_enqueue_scripts.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param string $type Type of assets to load, `styles` or 'scripts'.
+ */
+function themeblvd_admin_assets( $type = '' ) {
+
+	$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+	// Enqueue stylesheets.
+	if ( ! $type || 'styles' === $type ) {
+
+		wp_enqueue_style( 'wp-color-picker' );
+
+		wp_enqueue_style(
+			'themeblvd-admin-utils',
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/utils{$suffix}.css" ),
+			null,
+			TB_FRAMEWORK_VERSION
+		);
+
+		wp_enqueue_style(
+			'themeblvd-admin-options', // @TODO separation of options page and options?
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/options{$suffix}.css" ),
+			null,
+			TB_FRAMEWORK_VERSION
+		);
+
+	}
+
+	// Enqueue scripts.
+	if ( ! $type || 'scripts' === $type ) {
+
+		$required = array(
+			'jquery',
+			'jquery-ui-core',
+			'jquery-ui-sortable',
+			'jquery-ui-slider',
+			'wp-color-picker',
+			'media-editor',
+		);
+
+		foreach ( $required as $handle ) {
+
+			if ( 'media-editor' === $handle ) {
+				wp_enqueue_media();
+			} else {
+				wp_enqueue_script( $handle );
+			}
+		}
+
+		wp_enqueue_script(
+			'themeblvd-admin-utils',
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/utils{$suffix}.js" ),
+			$required,
+			TB_FRAMEWORK_VERSION
+		);
+
+		wp_localize_script(
+			'themeblvd-admin-utils',
+			'themeblvdL10n',
+			themeblvd_get_admin_locals( 'js' )
+		);
+
+		wp_enqueue_script(
+			'themeblvd-admin-options',
+			esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/options{$suffix}.js" ),
+			array( 'themeblvd-admin-utils' ),
+			TB_FRAMEWORK_VERSION
+		);
+
+	}
 
 }
