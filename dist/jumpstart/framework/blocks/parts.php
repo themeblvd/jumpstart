@@ -420,7 +420,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
 	if ( $woocommerce ) {
 		if ( ! $args['target'] ) {
-			$url = WC()->cart->get_cart_url(); // Full cart URL, because floating cart disabled.
+			$url = wc_get_cart_url(); // Full cart URL, because floating cart disabled.
 		}
 	}
 
@@ -507,7 +507,7 @@ function themeblvd_get_mobile_cart_link() {
 
 	if ( themeblvd_installed('woocommerce') ) {
 
-		$cart_url = WC()->cart->get_cart_url();
+		$cart_url = wc_get_cart_url();
 
 		$count = WC()->cart->get_cart_contents_count();
 
