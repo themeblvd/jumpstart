@@ -106,7 +106,7 @@ window.themeblvd = {};
 			className:  ''
 		}, args );
 
-		if ( args.input_desc ) { // Backwards compat.
+		if ( args.input_desc ) { // Backwards compatibility.
 			args.inputDesc = args.input_desc;
 		}
 
@@ -138,7 +138,7 @@ window.themeblvd = {};
 
 		if ( args.input ) {
 
-            if ( typeof( 'string' == args.input ) ) {
+            if ( 'string' == typeof( args.input ) ) {
 
 				$inner.append( '<div class="themeblvd-confirm-input"><input type="text" class="themeblvd-confirm-text-box" t="themeblvd-confirm-text-box" value="' + args.input + '" /></div>' );
 
@@ -148,7 +148,7 @@ window.themeblvd = {};
 
 			} else {
 
-			    $inner.append( '<div class="themeblvd-confirm-input"><input type="text" class="themeblvd-confirm-text-box" t="themeblvd-confirm-text-box" /></div>' );
+			    $inner.append( '<div class="themeblvd-confirm-input"><input type="text" class="themeblvd-confirm-text-box" /></div>' );
 
 			}
 
@@ -450,7 +450,9 @@ function tbc_confirm( message, args, callback ) {
 	 */
 	admin.modal.init = function( element, settings ) {
 
-		var self = admin.modal;
+		var self = Object.create( admin.modal );
+
+		// var self = admin.modal;
 
 		self.element   = element;
 		self.$element  = $( element );
@@ -491,7 +493,7 @@ function tbc_confirm( message, args, callback ) {
 			// Build the popup if needed.
 			if ( self.settings.build ) {
 				self.id += '_build';
-				self.build();
+				self.build( self );
 			}
 
 			self.$modalWindow = $( '#' + self.id );
@@ -517,7 +519,7 @@ function tbc_confirm( message, args, callback ) {
 
 				self.settings.onCancel( self );
 
-				self.close();
+				self.close( self );
 
 			} );
 
@@ -532,9 +534,9 @@ function tbc_confirm( message, args, callback ) {
 
 				self.settings.onSave( self );
 
-				self.save();
+				self.save( self );
 
-				self.close();
+				self.close( self );
 
 			} );
 
@@ -551,7 +553,7 @@ function tbc_confirm( message, args, callback ) {
 
 					self.settings.onSecondary( self );
 
-					self.close();
+					self.close( self );
 
 				} );
 			}
@@ -575,7 +577,7 @@ function tbc_confirm( message, args, callback ) {
 
 							self.settings.onDelete( self );
 
-							self.close();
+							self.close( self );
 
 						}
 
@@ -585,7 +587,7 @@ function tbc_confirm( message, args, callback ) {
 			}
 
 			// Display it.
-			self.display();
+			self.display( self );
 
 			// onDisplay() callback.
 			self.settings.onDisplay( self );
@@ -599,9 +601,7 @@ function tbc_confirm( message, args, callback ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	admin.modal.build = function() {
-
-		var self = admin.modal;
+	admin.modal.build = function( self ) {
 
 		self.popup = '<div id="%id%" class="themeblvd-modal-wrap build" style="display:none;"> \
 							<div class="themeblvd-modal %size%-modal %height%-height-modal media-modal wp-core-ui hide"> \
@@ -723,10 +723,9 @@ function tbc_confirm( message, args, callback ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	admin.modal.display = function() {
+	admin.modal.display = function( self ) {
 
-		var self  = admin.modal,
-			$body = $( 'body' ),
+		var $body = $( 'body' ),
 			height;
 
 		if ( self.secondary ) {
@@ -761,7 +760,7 @@ function tbc_confirm( message, args, callback ) {
 
 				self.settings.onCancel( self );
 
-				self.closeAll();
+				self.closeAll( self );
 
 			});
 		}
@@ -862,10 +861,9 @@ function tbc_confirm( message, args, callback ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	admin.modal.close = function() {
+	admin.modal.close = function( self ) {
 
-		var self  = admin.modal,
-			$body = $( 'body' );
+		var $body = $( 'body' );
 
 		// Put content from modal back to original location.
 		if ( self.settings.build ) {
@@ -917,7 +915,7 @@ function tbc_confirm( message, args, callback ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	admin.modal.closeAll = function() {
+	admin.modal.closeAll = function( self ) {
 
 		$( '.themeblvd-modal-wrap' ).each( function() {
 
@@ -955,9 +953,7 @@ function tbc_confirm( message, args, callback ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	admin.modal.save = function() {
-
-		var self = admin.modal;
+	admin.modal.save = function( self ) {
 
 		/*
 		 * If code editor, on save we can trasfer the code
