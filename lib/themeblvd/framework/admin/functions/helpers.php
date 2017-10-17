@@ -182,7 +182,7 @@ function themeblvd_get_icons( $type = 'vector' ) {
 
 		$fetch_icons = array();
 
-		$file = wp_remote_fopen( esc_url( TB_FRAMEWORK_URI . '/assets/plugins/fontawesome/css/font-awesome.css' ) );
+		$file = file_get_contents( TB_FRAMEWORK_DIRECTORY . '/assets/plugins/fontawesome/css/font-awesome.css' );
 
 		if ( $file ) {
 

@@ -437,8 +437,8 @@ window.themeblvd.options = {};
 			size: 'custom', // Something other than `large` to trigger auto height.
 			onDisplay: function( self ) {
 
-				var $input   = self.$elem,
-					$browser = self.$modal_window,
+				var $input   = self.$element,
+					$browser = self.$modalWindow,
 					icon     = $input.closest( '.input-wrap' ).find( 'input' ).val();
 
 				// Reset icon browser.
@@ -462,10 +462,10 @@ window.themeblvd.options = {};
 			},
 			onSave: function( self ) {
 
-				var icon = self.$modal_window.find( '.icon-selection' ).val();
+				var icon = self.$modalWindow.find( '.icon-selection' ).val();
 
 				// Send icon name back to input.
-				self.$elem.closest( '.input-wrap' ).find( 'input' ).val( icon );
+				self.$element.closest( '.input-wrap' ).find( 'input' ).val( icon );
 
 			}
 		});
@@ -483,8 +483,8 @@ window.themeblvd.options = {};
 			size: 'custom', // Something other than `large` to trigger auto height.
 			onDisplay: function( self ) {
 
-				var $input   = self.$elem,
-					$browser = self.$modal_window;
+				var $input   = self.$element,
+					$browser = self.$modalWindow;
 
 				// Bind search ajax.
 				$browser.find( '#search-submit' ).off( 'click.tb-search-posts' );
@@ -531,7 +531,7 @@ window.themeblvd.options = {};
 			},
 			onCancel: function( self ) {
 
-				$browser = self.$modal_window;
+				$browser = self.$modalWindow;
 
 				$browser.find( '#post-search-input' ).val( '' );
 
@@ -552,8 +552,8 @@ window.themeblvd.options = {};
 			size: 'custom', // Something other than `large` to trigger auto height.
 			onDisplay: function( self ) {
 
-				var $input   = self.$elem,
-					$browser = self.$modal_window,
+				var $input   = self.$element,
+					$browser = self.$modalWindow,
 					texture  = $input.closest( '.controls' ).find( '.of-input' ).val();
 
 				$browser.find( '.media-frame-content' ).scrollTop( 0 );
@@ -579,8 +579,8 @@ window.themeblvd.options = {};
 			},
 			onSave: function( self ) {
 
-				var $select = self.$elem.closest( '.controls' ).find( '.of-input' ),
-					texture = self.$modal_window.find( '.texture-selection' ).val();
+				var $select = self.$element.closest( '.controls' ).find( '.of-input' ),
+					texture = self.$modalWindow.find( '.texture-selection' ).val();
 
 				// Send texture back to original <select>.
 				$select.val( texture );
@@ -1657,7 +1657,7 @@ window.themeblvd.options = {};
 			} );
 
 			data = {
-				action: 'themeblvd_add_' + $option.data( 'type' ) + '_item',
+				action: 'themeblvd-add-' + $option.data( 'type' ) + '-item',
 				security: $option.data( 'security' ),
 				data: {
 					option_name: $option.data( 'name' ),
@@ -2692,21 +2692,11 @@ window.themeblvd.options = {};
 
 			$browser.find( '.icon-selection' ).val( icon );
 
-			$browser.find( '.media-toolbar-secondary' ).find( '.fa, span, img' ).remove();
+			$browser.find( '.icon-selection-wrap' ).find( '.fa, span' ).remove();
 
-			if ( $btn.hasClass( 'select-image-icon' ) ) {
-
-				$browser
-					.find( '.media-toolbar-secondary' )
-					.append( '<img src="' + $btn.find( 'img' ).attr( 'src' ) + '" /><span>' + icon + '</span>' );
-
-			} else {
-
-				$browser
-					.find( '.media-toolbar-secondary' )
-					.append( '<i class="fa fa-' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
-
-			}
+			$browser
+				.find( '.icon-selection-wrap' )
+				.append( '<i class="fa fa-' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
 
 		} );
 

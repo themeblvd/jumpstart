@@ -1824,7 +1824,7 @@ function themeblvd_icon_browser( $args = array() ) {
 
 									<?php foreach ( $icons as $icon ) : ?>
 										<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $icon; ?>" data-tooltip-text="<?php echo $icon; ?>">
-											<i class="fa fa-%1$s fa-fw fa-2x"></i>
+											<i class="fa fa-<?php echo $icon; ?> fa-fw fa-2x"></i>
 										</a>
 									<?php endforeach; ?>
 
@@ -1835,11 +1835,10 @@ function themeblvd_icon_browser( $args = array() ) {
 
 					<div class="media-frame-toolbar">
 
-						<div class="media-toolbar-secondary">
-							<input type="hidden" class="icon-selection" value="" />
-						</div><!-- .media-toolbar-secondary (end) -->
-
 						<div class="media-toolbar">
+							<div class="icon-selection-wrap">
+								<input type="hidden" class="icon-selection" value="" />
+							</div>
 							<div class="media-toolbar-primary">
 								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e( 'Use Icon', '@@text-domain' ); ?></a>
 							</div>
