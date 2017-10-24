@@ -169,7 +169,7 @@ function jumpstart_ag_options() {
 			'header_trans_hide_border' => array(
 				'id'       => 'header_trans_hide_border',
 				'name'     => null,
-				'desc'     => __( 'Hide bounding borders around transparent theader.', 'jumpstart' ),
+				'desc'     => __( 'Hide bounding borders around transparent header.', 'jumpstart' ),
 				'std'      => '0',
 				'type'     => 'checkbox',
 			),
