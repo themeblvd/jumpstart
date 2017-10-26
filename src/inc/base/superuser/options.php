@@ -649,7 +649,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'dark',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -730,7 +730,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'dark',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -782,7 +782,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Button Hover Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'dark',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -800,7 +800,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Dropdown Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'light',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -942,7 +942,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Mobile Menu Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'dark',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -968,7 +968,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Side Panel Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'dark',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -1016,7 +1016,7 @@ function jumpstart_su_options() {
 				'name'      => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'       => 'light',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -1439,7 +1439,7 @@ function jumpstart_su_options() {
 				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'id'        => 'widget_bg_brightness',
 				'std'       => 'light',
-				'type'      => 'select',
+				'type'      => 'radio',
 				'options'   => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),

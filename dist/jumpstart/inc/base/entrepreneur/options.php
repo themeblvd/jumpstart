@@ -566,7 +566,7 @@ function jumpstart_ent_options() {
 				'name'    => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -607,7 +607,7 @@ function jumpstart_ent_options() {
 				'name'    => __( 'Dropdown Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'light',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -627,7 +627,7 @@ function jumpstart_ent_options() {
 				'name'    => __( 'Mobile Menu Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -653,7 +653,7 @@ function jumpstart_ent_options() {
 				'name'    => __( 'Side Panel Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -701,7 +701,7 @@ function jumpstart_ent_options() {
 				'name'    => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'light',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -1125,7 +1125,7 @@ function jumpstart_ent_options() {
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'id'      => 'widget_bg_brightness',
 				'std'     => 'light',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),

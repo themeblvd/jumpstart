@@ -70,7 +70,7 @@ function jumpstart_ag_options() {
 				'name'    => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -81,7 +81,7 @@ function jumpstart_ag_options() {
 				'name'    => __( 'Menu Placement', 'jumpstart' ),
 				'desc'    => __( 'Select where you\'d like the main menu placed within the header.', 'jumpstart' ),
 				'std'     => 'center',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'center' => __( 'Menu is centered within the header.', 'jumpstart' ),
 					'far'    => __( 'Menu is opposite the logo.', 'jumpstart' ),
@@ -99,7 +99,7 @@ function jumpstart_ag_options() {
 				'name'    => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -160,10 +160,10 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark' => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
+					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
 				),
 			),
 			'header_trans_hide_border' => array(
@@ -192,7 +192,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -218,10 +218,10 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Footer Background Color Brightness', 'jumpstart' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark' => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
+					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
 				),
 			),
 			'copyright_bg_color' => array(
@@ -236,7 +236,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Copyright Background Color Brightness', 'jumpstart' ),
 				'desc'     => __( 'If you\'re using a dark background color, select to show light text, and vice versa.', 'jumpstart' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -262,7 +262,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
@@ -301,7 +301,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', 'jumpstart' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
 				'std'      => 'light',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),

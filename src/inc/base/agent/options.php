@@ -70,7 +70,7 @@ function jumpstart_ag_options() {
 				'name'    => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -81,7 +81,7 @@ function jumpstart_ag_options() {
 				'name'    => __( 'Menu Placement', '@@text-domain' ),
 				'desc'    => __( 'Select where you\'d like the main menu placed within the header.', '@@text-domain' ),
 				'std'     => 'center',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'center' => __( 'Menu is centered within the header.', '@@text-domain' ),
 					'far'    => __( 'Menu is opposite the logo.', '@@text-domain' ),
@@ -99,7 +99,7 @@ function jumpstart_ag_options() {
 				'name'    => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'     => 'dark',
-				'type'    => 'select',
+				'type'    => 'radio',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -160,10 +160,10 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark' => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
+					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
 				),
 			),
 			'header_trans_hide_border' => array(
@@ -192,7 +192,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -218,10 +218,10 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Footer Background Color Brightness', '@@text-domain' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark' => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
+					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
 				),
 			),
 			'copyright_bg_color' => array(
@@ -236,7 +236,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Copyright Background Color Brightness', '@@text-domain' ),
 				'desc'     => __( 'If you\'re using a dark background color, select to show light text, and vice versa.', '@@text-domain' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -262,7 +262,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'      => 'dark',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
@@ -301,7 +301,7 @@ function jumpstart_ag_options() {
 				'name'     => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'     => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'      => 'light',
-				'type'     => 'select',
+				'type'     => 'radio',
 				'options'  => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
