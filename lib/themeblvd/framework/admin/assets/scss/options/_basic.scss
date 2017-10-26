@@ -1,0 +1,276 @@
+////
+/// Admin: Options, Basic
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+//
+// Text Input & Textarea
+//
+
+.tb-options-wrap .controls {
+	input[type="text"],
+	textarea {
+		margin-bottom: 10px;
+		outline: 0;
+		width: 100%;
+	}
+	textarea {
+		line-height: 150%;
+	}
+}
+
+//
+// Select Menu
+//
+
+.tb-options-wrap .controls select {
+	width: 100%;
+}
+
+//
+// Fancy Selects
+//
+
+.tb-options-wrap .tb-fancy-select {
+	background: #ffffff;
+	background-size: 7px 32px;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 0 #ffffff, 0 1px 0 rgba(0, 0, 0, .08);
+	margin-bottom: 10px;
+	position: relative;
+	height: 33px;
+}
+.tb-options-wrap .tb-fancy-select select {
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	position: relative;
+	height: 33px;
+	z-index: 3;
+}
+.tb-options-wrap .tb-fancy-select .textbox {
+	border: 1px solid #dfdfdf;
+	border-radius: 4px;
+	color: $clr-text;
+	display: block;
+	line-height: 33px;
+	overflow: hidden;
+	padding: 0 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+.tb-options-wrap .tb-fancy-select .trigger {
+	background: url(../../assets/img/fancy-select-trigger_2x.png) no-repeat;
+	background-size: 25px 33px;
+	border-left: 1px solid #dfdfdf;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	width: 25px;
+	height: 31px; // .textbox's height -2px so it's border displays.
+	z-index: 2;
+}
+.wp-admin.rtl .tb-options-wrap .tb-fancy-select .trigger {
+	border-left: none;
+	border-right: 1px solid #dfdfdf;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	right: inherit;
+	left: 1px;
+}
+
+// Condensed Fancy Select
+.tb-options-wrap .tb-fancy-select.condensed {
+	height: 26px;
+}
+.tb-options-wrap .tb-fancy-select.condensed select {
+	height: 26px;
+}
+.tb-options-wrap .tb-fancy-select.condensed .trigger {
+	background-position: 0 -3px;
+	height: 25px;
+}
+.tb-options-wrap .tb-fancy-select.condensed .textbox {
+	font-size: 12px;
+	height: 26px;
+	line-height: 26px;
+}
+
+// Simple Fancy Select
+.tb-options-wrap .tb-fancy-select.simple {
+	border-radius: 0;
+	box-shadow: none;
+	height: 26px;
+}
+.tb-options-wrap .tb-fancy-select.simple select {
+	height: 26px;
+}
+.tb-options-wrap .tb-fancy-select.simple .trigger {
+	background-position: 0 -4px;
+	border-radius: 0;
+	height: 25px;
+}
+.tb-options-wrap .tb-fancy-select.simple .textbox {
+	border-radius: 0;
+	font-size: 12px;
+	height: 25px;
+	line-height: 25px;
+}
+
+//
+// Radio
+//
+
+.tb-options-wrap {
+	.section-radio label {
+		float: left;
+		font-size: 14px;
+		line-height: 1.2em;
+		display: block;
+		max-width: 330px;
+	}
+	.radio-input {
+		margin: 4px 0 7px 0;
+		padding: 0;
+	}
+	input.tb-radio {
+		float: left;
+		clear: both;
+		margin-top: 0;
+		vertical-align: middle;
+		width: auto;
+	}
+}
+.wp-admin.rtl .tb-options-wrap .section-radio label {
+	float: right;
+}
+.wp-admin.rtl .tb-options-wrap input.tb-radio {
+	float: right;
+}
+
+//
+// Checkbox
+//
+
+.tb-options-wrap {
+	input.checkbox {
+		float: left;
+		clear: both;
+		margin-top: 0;
+		vertical-align: middle;
+		width: auto;
+	}
+	.section-checkbox {
+		.controls {
+			min-width: 25px;
+			padding-right: 0;
+			padding-left: 0; // For RTL.
+			width: 25px;
+		}
+		.explain {
+			max-width: 93%;
+		}
+	}
+}
+.wp-admin.rtl .tb-options-wrap input.checkbox {
+	float: right;
+}
+
+//
+// Multi-check
+//
+
+.tb-options-wrap .section-multicheck {
+	label {
+		float: left;
+		font-size: 14px;
+		line-height: 1.2em;
+		display: block;
+		max-width: 330px;
+	}
+	label,
+	input.checkbox {
+		margin-top: 4px;
+	}
+}
+.wp-admin.rtl .tb-options-wrap .section-multicheck label {
+	float: right;
+}
+
+//
+// Color Picker
+//
+
+.tb-options-wrap {
+	.section-color .controls {
+		min-width: 125px;
+	}
+	.controls input[type="text"].tb-color-picker {
+		margin-bottom: 0;
+		width: 65px;
+	}
+}
+.themeblvd-modal-wrap .media-frame {
+	.wp-color-result {
+		border: 1px solid $clr-border;
+	}
+	.tb-color-picker {
+		padding: 3px 5px;
+	}
+}
+
+//
+// Background Properties
+//
+
+.tb-options-wrap {
+	.tb-background-properties {
+		clear: both;
+		margin-top: 18px;
+	}
+	.tb-background-repeat,
+	.tb-background-position,
+	.tb-background-attachment {
+		margin-right: 5px;
+		float: left;
+	}
+}
+.wp-admin.rtl .tb-options-wrap .tb-background-repeat,
+.wp-admin.rtl .tb-options-wrap .tb-background-position,
+.wp-admin.rtl .tb-options-wrap .tb-background-attachment {
+	float: right;
+}
+
+//
+// Image Select
+//
+
+.tb-options-wrap {
+	.tb-radio-img-img {
+		border: 3px solid $clr-bg-light;
+		cursor: pointer;
+		display: none;
+		float: left;
+		margin: 0 5px 10px 0;
+	}
+	.tb-radio-img-selected {
+		border: 3px solid $clr-border;
+	}
+	.tb-radio-img-img:hover {
+		opacity: 0.8;
+	}
+}
+.wp-admin.rtl .tb-options-wrap .tb-radio-img-img {
+	float: right;
+}

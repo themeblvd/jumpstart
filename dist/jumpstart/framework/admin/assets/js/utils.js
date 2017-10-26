@@ -645,7 +645,7 @@ function tbc_confirm( message, args, callback ) {
 		}
 
 		if ( self.settings.form ) {
-			self.popup = self.popup.replace( '%content%', '<div id="optionsframework"></div>' );
+			self.popup = self.popup.replace( '%content%', '<div class="tb-options-wrap"></div>' );
 		}
 
 		if ( self.settings.vimeo ) {
@@ -709,7 +709,7 @@ function tbc_confirm( message, args, callback ) {
 
 			// Apend user content.
 			if ( self.settings.form ) {
-			   $current.find( '#optionsframework' ).append( self.$target );
+			   $current.find( '.tb-options-wrap' ).append( self.$target );
 			} else {
 			   $current.find( '.content-mitt' ).append( self.$target );
 			}

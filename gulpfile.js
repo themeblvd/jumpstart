@@ -1,11 +1,13 @@
-var gulp      = require('gulp'),
-	zip       = require('gulp-zip'),
-	clean     = require('gulp-clean'),
-	replace   = require('gulp-replace'),
-	rename    = require('gulp-rename'),
-	concat 	  = require('gulp-concat'),
-	minifyjs  = require('gulp-uglify'),
-	minifycss = require('gulp-clean-css');
+var gulp         = require('gulp'),
+	zip          = require('gulp-zip'),
+	clean        = require('gulp-clean'),
+	replace      = require('gulp-replace'),
+	rename       = require('gulp-rename'),
+	concat 	     = require('gulp-concat'),
+	minifyjs     = require('gulp-uglify'),
+	sass         = require('gulp-sass'),
+	minifycss    = require('gulp-clean-css'),
+	autoprefixer = require('gulp-autoprefixer');
 
 /**
  * Theme slug.
@@ -87,7 +89,8 @@ gulp.task('render-src', ['render-plugin-manager'], function() {
 });
 
 /**
- * Render admin scripts (all except for options).
+ * Render admin scripts (all except for options and
+ * utils because they are built from partials).
  */
 gulp.task('render-admin-js', ['render-src'], function() {
 
@@ -99,7 +102,6 @@ gulp.task('render-admin-js', ['render-src'], function() {
 		dir + 'meta-box.js',
 		dir + 'modal.js',
 		dir + 'options-page.js',
-		// dir + 'shared.js',
 		dir + 'welcome.js'
 	];
 
@@ -190,9 +192,51 @@ gulp.task('clear-admin-utils-js-partials', ['render-admin-utils-js'], function()
 });
 
 /**
+ * Render admin CSS.
+ */
+gulp.task('render-admin-css', ['clear-admin-utils-js-partials'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/';
+
+	var files = [
+		dir + 'scss/base.scss',
+		dir + 'scss/global.scss',
+		dir + 'scss/menu.scss',
+		dir + 'scss/options-page.scss',
+		dir + 'scss/options.scss',
+		dir + 'scss/utils.scss'
+	];
+
+	return gulp.src(files)
+		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		.pipe(autoprefixer({
+            browsers: browsers,
+            cascade: false
+        }))
+		.pipe(gulp.dest(dir + '/css'))
+		.pipe(minifycss())
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir + '/css'));
+
+});
+
+/**
+ * Clear admin Sass files from distributed
+ * directory.
+ */
+gulp.task('clear-admin-scss', ['render-admin-css'], function() {
+
+	var dir = 'dist/' + theme + '/framework/admin/assets/scss/';
+
+	return gulp.src(dir, {read: false})
+        .pipe(clean());
+
+});
+
+/**
  * Render theme info through PHP DocBlocks.
  */
-gulp.task('render-info', ['clear-admin-utils-js-partials'], function() {
+gulp.task('render-info', ['clear-admin-scss'], function() {
 
 	var packageSlug = themeName.replace(' ', '_'),
 		frameworkSlug = frameworkName.replace(' ', '_');

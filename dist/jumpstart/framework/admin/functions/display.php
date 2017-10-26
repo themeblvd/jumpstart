@@ -1885,7 +1885,7 @@ function themeblvd_post_browser( $args = array() ) {
 
 					<div class="media-frame-content">
 						<div class="media-frame-content-inner">
-							<div id="optionsframework" class="content-mitt">
+							<div class="tb-options-wrap content-mitt">
 								<div class="post-browser">
 
 									<div class="post-browser-head clearfix">

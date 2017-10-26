@@ -1,0 +1,61 @@
+////
+/// Admin: Utilities, Meta Box
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+//
+// General meta box structure
+//
+
+.tb-meta-box {
+
+	margin: -6px -12px;
+	max-width: none !important;
+
+	.section {
+		border-top: 1px solid $clr-border;
+		border-bottom: none !important;
+	}
+	> .section:nth-child(2),
+	> .subgroup:nth-child(2) > .section:first-child {
+		border-top: none;
+	}
+}
+
+//
+// Condensed meta box in sidebar
+//
+
+.tb-meta-box.side {
+
+	margin-top: -6px;
+
+	.section .heading {
+		margin: 0 2px 10px 2px !important;
+	}
+	.section .controls {
+		float: none !important;
+		min-width: 0 !important;
+		width: auto !important;
+	}
+	.tb-fancy-select {
+		margin-bottom: 0 !important;
+	}
+	.section .explain {
+		float: none !important;
+		margin-top: 10px;
+		max-width: none !important;
+	}
+
+}
+
+//
+// Page Attributes
+//
+
+#tb-sidebar-layout {
+	margin-top: 0.5em;
+}

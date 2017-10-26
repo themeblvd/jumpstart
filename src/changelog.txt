@@ -14,6 +14,7 @@ Jump Start Changelog
 	* Improved security for saving options added to Edit Profile screen.
 	* New filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.
 	* Re-structured all admin JavaScript for better organization and efficiency.
+	* Re-structured all admin CSS for better organization and efficiency.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Fixed: WooCommerce deprecated use of `WC_Cart::get_cart_url`.

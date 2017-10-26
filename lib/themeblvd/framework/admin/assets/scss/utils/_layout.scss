@@ -1,0 +1,44 @@
+////
+/// Admin: Utilities, Sidebar Layout
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+.tb-options-wrap {
+	.inner-sidebar {
+		clear: right;
+		float: right;
+		width: 280px;
+		position: relative;
+	}
+	.has-right-sidebar #post-body {
+		clear: left;
+		float: left;
+		width: 100%;
+		margin-right: -2000px;
+	}
+	.has-right-sidebar #post-body-content {
+		float: none;
+		margin-right: 300px;
+		width: auto;
+	}
+}
+
+.wp-admin.rtl .tb-options-wrap {
+	.inner-sidebar {
+		clear: left;
+		float: left;
+	}
+	.has-right-sidebar #post-body {
+		clear: right;
+		float: right;
+		margin-right: 0;
+		margin-left: -2000px;
+	}
+	.has-right-sidebar #post-body-content {
+		margin-right: 0;
+		margin-left: 300px;
+	}
+}

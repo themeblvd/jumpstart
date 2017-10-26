@@ -1,0 +1,105 @@
+////
+/// Admin: Options, Layout
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+.tb-options-wrap {
+	.section {
+		border-bottom: 1px solid $clr-border;
+		padding: 15px;
+	}
+	.section.save {
+		padding: 7px 10px;
+	}
+	.section-description {
+		border-bottom: 1px solid $clr-border;
+		color: #888888;
+		font-family: inherit;
+		font-size: inherit;
+		font-style: italic;
+		line-height: 1.5em;
+		padding: 15px;
+	}
+	p {
+		margin: 0;
+		padding: 0 0 10px 0;
+	}
+	.section .heading {
+		font-size: 1.1em;
+		margin: 10px 2px;
+		padding: 0;
+	}
+	.section-info {
+		color: #888888;
+		font-size: 12px;
+		font-style: italic;
+		line-height: 1.5em;
+		padding: 15px;
+	}
+	.section-info p {
+		margin: 5px 0 0;
+		padding: 0 5px;
+	}
+	.section .controls {
+		float: left;
+		min-width: 350px;
+		width: 54%;
+		padding-right: 2%;
+	}
+	.section .explain {
+		color: $clr-text;
+		float: left;
+		font-size: inherit;
+		line-height: 18px;
+		max-width: 38%;
+	}
+	.section .explain p {
+		margin: 0;
+		padding-bottom: 10px;
+	}
+	.section .explain p:last-of-type {
+		padding-bottom: 0;
+	}
+	.section-description .controls {
+		display: none;
+	}
+	.section-description .explain {
+		max-width: inherit;
+		width: 100%;
+	}
+}
+
+//
+// Utilities
+//
+
+.tb-options-wrap {
+	.hide {
+		display: none;
+	}
+	.note code,
+	.widefat code {
+		padding: 0;
+	}
+	.widefat tr:nth-child(odd) {
+		background: $clr-bg-light;
+	}
+}
+
+//
+// RTL
+//
+
+.wp-admin.rtl .tb-options-wrap {
+	.section .controls {
+		float: right;
+		padding-right: 0;
+		padding-left: 2%;
+	}
+	.section .explain {
+		float: right;
+	}
+}

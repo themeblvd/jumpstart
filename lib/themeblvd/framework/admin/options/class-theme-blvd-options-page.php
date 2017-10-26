@@ -601,7 +601,7 @@ class Theme_Blvd_Options_Page {
 
 			<div class="metabox-holder">
 
-				<div id="optionsframework" class="tb-options-js">
+				<div class="tb-options-wrap tb-options-js">
 
 					<form id="tb-options-page-form" action="<?php echo $this->args['form_action']; ?>" method="post">
 
@@ -609,7 +609,7 @@ class Theme_Blvd_Options_Page {
 
 						<?php echo $fields[0]; /* Settings */ ?>
 
-						<div id="optionsframework-submit" class="options-page-footer">
+						<div class="options-page-footer">
 
 							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', '@@text-domain' ); ?>" />
 
@@ -663,7 +663,7 @@ class Theme_Blvd_Options_Page {
 
 					</div><!-- .tb-footer-text (end) -->
 
-				</div><!-- #optionsframework (end) -->
+				</div><!-- .tb-options-wrap.tb-options-js (end) -->
 
 				<div class="admin-module-footer">
 

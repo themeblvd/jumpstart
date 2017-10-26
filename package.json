@@ -24,6 +24,8 @@
     "gulp-zip": "latest",
     "gulp-concat": "latest",
     "gulp-uglify": "latest",
+    "gulp-sass": "latest",
+    "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest"
   }
 }

@@ -1,0 +1,102 @@
+////
+/// Admin: Options, Code & Content Editors
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+//
+// Link to code and content editors
+//
+
+.tb-options-wrap .section-textarea,
+.tb-options-wrap .section-content {
+	.textarea-wrap.with-editor-nav {
+		margin-bottom: 10px;
+		padding-bottom: 25px;
+		position: relative;
+	}
+	.textarea-wrap.with-editor-nav textarea {
+		margin: 0;
+		vertical-align: top;
+	}
+	.editor-nav {
+		background: $clr-bg-light;
+		border: 1px solid $clr-border;
+		border-top: none;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.editor-nav a {
+		color: $clr-text;
+		font-size: 16px;
+		float: right;
+		height: 24px;
+		line-height: 24px;
+		margin-left: 2px;
+	}
+	.editor-nav a:hover {
+		color: #000000;
+	}
+}
+
+.wp-admin.rtl .tb-options-wrap {
+	.section-textarea .editor-nav a,
+	.section-content .editor-nav a {
+		float: left;
+		margin-left: 0;
+		margin-right: 2px;
+	}
+}
+
+//
+// Inline Content Editor
+//
+
+.tb-options-wrap .section-editor {
+	.desc-after.has-desc .explain {
+		padding-top: 10px;
+	}
+	.wp-editor-container{
+		background-color: #ffffff;
+	}
+	.quicktags-toolbar input {
+		width: auto;
+	}
+	.controls textarea {
+		margin: 0;
+	}
+	.height-small .wp_themeSkin iframe {
+		height: 150px !important;
+	}
+	.height-medium .wp_themeSkin iframe {
+		height: 250px !important;
+	}
+	.height-large .wp_themeSkin iframe {
+		height: 340px !important;
+	}
+	.height-small textarea {
+		height: 150px;
+	}
+	.height-medium textarea {
+		height: 250px;
+	}
+	.height-large textarea {
+		height: 340px;
+	}
+}
+
+//
+// Inline Code Editor
+//
+
+.tb-options-wrap .CodeMirror.cm-s-themeblvd {
+	border: 1px solid $clr-border;
+}
+
+.wp-admin.rtl .tb-options-wrap .section-code .controls {
+	direction: ltr;
+}

@@ -183,13 +183,13 @@ class Theme_Blvd_Meta_Box {
 		}
 
 		// Begin building output.
-		$class = 'tb-meta-box';
+		$class = 'tb-meta-box tb-options-wrap';
 
 		if ( 'side' === $this->args['context'] ) {
 			$class .= ' side';
 		}
 
-		echo '<div id="optionsframework" class="' . $class . '">';
+		echo '<div class="' . $class . '">';
 
 		wp_nonce_field(
 			'themeblvd-save-meta-box_' . $this->id,

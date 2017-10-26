@@ -184,7 +184,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			if ( ! empty( $option['preset'] ) ) {
 
 				$output .= sprintf(
-					'<div class="section-presets">%s</div>',
+					'<div class="section section-presets">%s</div>',
 					themeblvd_display_presets( $option['preset'], $option_name )
 				);
 
@@ -293,6 +293,39 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$class .= ' section-sortable';
 				}
 
+				/**
+				 * Filters which option types will be displayed as
+				 * full-width in an options set.
+				 *
+				 * Specifically, this refers to the layout of an option
+				 * where you have the option controls to the left and
+				 * the description to the right. With these, option
+				 * controls will be stretched full-width of the options
+				 * panel, with the description falling below.
+				 *
+				 * @since @@name-framework 2.7.0
+				 *
+				 * @param array All options to display as full-width.
+				 */
+				$full_width = apply_filters( 'themeblvd_full_width_options', array(
+					'bars',
+					'buttons',
+					'code',
+					'editor',
+					'datasets',
+					'locations',
+					'price_cols',
+					'sectors',
+					'tabs',
+					'testimonials',
+					'text_blocks',
+					'toggles',
+				));
+
+				if ( in_array( $option['type'], $full_width ) ) {
+					$class .= ' full-width';
+				}
+
 				if ( 'logo' === $option['type'] || 'background' === $option['type'] ) {
 					$class .= ' section-upload';
 				}
@@ -357,7 +390,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$click_hook = preg_replace( '/[^a-zA-Z0-9._\-]/', '', strtolower( $id ) );
 
-				$click_hook = 'of-option-' . $click_hook;
+				$click_hook = 'tb-options-page-' . $click_hook;
 
 				$menu .= sprintf(
 					'<a id="%s-tab" class="nav-tab" title="%s" href="%s">%s</a>',
@@ -823,7 +856,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<div class="radio-input clearfix">';
 
 					$output .= sprintf(
-						'<input class="of-input of-radio" type="radio" name="%s" id="%s" value="%s" %s />',
+						'<input class="tb-radio of-input of-radio" type="radio" name="%s" id="%s" value="%s" %s />',
 						esc_attr( $name ),
 						esc_attr( $id ),
 						esc_attr( $key ),
@@ -874,11 +907,11 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$selected = '';
 
 					if ( $checked ) {
-						$selected = ' of-radio-img-selected';
+						$selected = ' tb-radio-img-selected of-radio-img-selected';
 					}
 
 					$output .= sprintf(
-						'<input type="radio" id="%s" class="of-radio-img-radio" value="%s" name="%s" %s />',
+						'<input type="radio" id="%s" class="tb-radio-img-radio of-radio-img-radio" value="%s" name="%s" %s />',
 						esc_attr( $option['id'] . '_' . $key ),
 						esc_attr( $key ),
 						esc_attr( $name ),
@@ -886,12 +919,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					);
 
 					$output .= sprintf(
-						'<div class="of-radio-img-label">%s</div>',
+						'<div class="tb-radio-img-label of-radio-img-label">%s</div>',
 						esc_html( $key )
 					);
 
 					$output .= sprintf(
-						'<img src="%s" alt="%s" class="of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />',
+						'<img src="%s" alt="%s" class="tb-radio-img-img of-radio-img-img%s" width="%s" onclick="document.getElementById(\'%s\').checked=true;" />',
 						esc_url( $img ),
 						esc_url( $img ),
 						$selected,
@@ -1434,7 +1467,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'name'        => 'image',
 				));
 
-				$class = 'of-background-properties';
+				$class = 'tb-background-properties of-background-properties';
 
 				if ( empty( $background['image'] ) ) {
 					$class .= ' hide';
@@ -1452,7 +1485,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-fancy-select condensed">';
 
 				$output .= sprintf(
-					'<select class="of-background of-background-repeat" name="%s" id="%s">',
+					'<select class="tb-background tb-background-repeat of-background of-background-repeat" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][repeat]' ),
 					esc_attr( $option['id'] . '_repeat' )
 				);
@@ -1488,7 +1521,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-fancy-select condensed">';
 
 				$output .= sprintf(
-					'<select class="of-background of-background-attachment" name="%s" id="%s">',
+					'<select class="tb-background tb-background-attachment of-background of-background-attachment" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][attachment]' ),
 					esc_attr( $option['id'] . '_attachment' )
 				);
@@ -1533,7 +1566,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '<div class="tb-fancy-select condensed">';
 
-				$output .= '<select class="of-background of-background-position" name="' . esc_attr( $option_name . '[' . $option['id'] . '][position]' ) . '" id="' . esc_attr( $option['id'] . '_position' ) . '">';
+				$output .= '<select class="tb-background tb-background-position of-background of-background-position" name="' . esc_attr( $option_name . '[' . $option['id'] . '][position]' ) . '" id="' . esc_attr( $option['id'] . '_position' ) . '">';
 
 				$positions = themeblvd_recognized_background_position();
 
@@ -1566,7 +1599,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="tb-fancy-select condensed">';
 
 				$output .= sprintf(
-					'<select class="of-background of-background-size" name="%s" id="%s">',
+					'<select class="tb-background tb-background-size of-background of-background-size" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][size]' ),
 					esc_attr( $option['id'] . '_size' )
 				);
