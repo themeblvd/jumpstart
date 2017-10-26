@@ -326,9 +326,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	}
 
 	// Build <select> for number of columns.
-	$select_number  = '<div class="tb-fancy-select">';
-
-	$select_number .= '<select class="select-col-num" data-slider="' . $slider_id . '">';
+	$select_number = '<select class="select-col-num" data-slider="' . $slider_id . '">';
 
 	$count = 0;
 
@@ -342,16 +340,8 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 
 	$select_number .= '</select>';
 
-	$select_number .= '<span class="trigger"></span>';
-
-	$select_number .= '<span class="textbox"></span>';
-
-	$select_number .= '</div><!-- .tb-fancy-select (end) -->';
-
 	// Build <select> for grid system.
-	$select_grid  = '<div class="tb-fancy-select">';
-
-	$select_grid .= '<select class="select-grid-system" data-slider="' . $slider_id . '">';
+	$select_grid = '<select class="select-grid-system" data-slider="' . $slider_id . '">';
 
 	$grid = '12';
 
@@ -364,12 +354,6 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
 	}
 
 	$select_grid .= '</select>';
-
-	$select_grid .= '<span class="trigger"></span>';
-
-	$select_grid .= '<span class="textbox"></span>';
-
-	$select_grid .= '</div><!-- .tb-fancy-select (end) -->';
 
 	// Build width option, using jQuery UI slider.
 	$width_option  = sprintf(
@@ -469,9 +453,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	}
 
 	// Build <select>.
-	$select_type  = '<div class="tb-fancy-select">';
-
-	$select_type .= sprintf(
+	$select_type = sprintf(
 		'<select class="select-type" name= "%s">',
 		esc_attr( $name . '[' . $id . '][type]' )
 	);
@@ -489,12 +471,6 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 	$select_type .= '</select>';
 
-	$select_type .= '<span class="trigger"></span>';
-
-	$select_type .= '<span class="textbox"></span>';
-
-	$select_type .= '</div><!-- .tb-fancy-select (end) -->';
-
 	/*
 	 * Build <select> for widget area.
 	 */
@@ -510,9 +486,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 			if ( ! empty( $sidebars ) ) {
 
-				$select_sidebar  = '<div class="tb-fancy-select">';
-
-				$select_sidebar .= sprintf(
+				$select_sidebar = sprintf(
 					'<select class="select-sidebar" name= "%s">',
 					esc_attr( $name . '[' . $id . '][sidebar]' )
 				);
@@ -529,12 +503,6 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 				}
 
 				$select_sidebar .= '</select>';
-
-				$select_sidebar .= '<span class="trigger"></span>';
-
-				$select_sidebar .= '<span class="textbox"></span>';
-
-				$select_sidebar .= '</div><!-- .tb-fancy-select (end) -->';
 
 			} else {
 
@@ -571,9 +539,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 
 		if ( ! empty( $pages ) ) {
 
-			$select_page  = '<div class="tb-fancy-select">';
-
-			$select_page .= sprintf(
+			$select_page = sprintf(
 				'<select name="%s">',
 				esc_attr( $name . '[' . $id . '][page]' )
 			);
@@ -590,12 +556,6 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			}
 
 			$select_page .= '</select>';
-
-			$select_page .= '<span class="trigger"></span>';
-
-			$select_page .= '<span class="textbox"></span>';
-
-			$select_page .= '</div><!-- .tb-fancy-select (end) -->';
 
 		} else {
 
@@ -1177,9 +1137,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		$current_value = $val['type'];
 	}
 
-	$select_type  = '<div class="tb-fancy-select">';
-
-	$select_type .= sprintf(
+	$select_type = sprintf(
 		'<select name="%s">',
 		esc_attr( $name . '[' . $id . '][type]' )
 	);
@@ -1196,12 +1154,6 @@ function themeblvd_logo_option( $id, $name, $val ) {
 	}
 
 	$select_type .= '</select>';
-
-	$select_type .= '<span class="trigger"></span>';
-
-	$select_type .= '<span class="textbox"></span>';
-
-	$select_type .= '</div><!-- .tb-fancy-select (end) -->';
 
 	/*
 	 * Logo Type: Site Title

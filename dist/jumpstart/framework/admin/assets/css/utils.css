@@ -876,7 +876,7 @@ body.themeblvd-stop-scroll {
   width: auto !important;
 }
 
-.tb-meta-box.side .tb-fancy-select {
+.tb-meta-box.side select {
   margin-bottom: 0 !important;
 }
 

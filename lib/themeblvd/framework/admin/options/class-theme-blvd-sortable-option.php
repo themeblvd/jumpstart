@@ -531,8 +531,6 @@ abstract class Theme_Blvd_Sortable_Option {
 				/*---------------------------------------*/
 
 				case 'select':
-					$item_output .= '<div class="tb-fancy-select">';
-
 					$class = 'of-input';
 
 					if ( $this->trigger == $option['id'] ) {
@@ -558,9 +556,6 @@ abstract class Theme_Blvd_Sortable_Option {
 					}
 
 					$item_output .= '</select>';
-					$item_output .= '<span class="trigger"></span>';
-					$item_output .= '<span class="textbox"></span>';
-					$item_output .= '</div><!-- .tb-fancy-select (end) -->';
 
 					break;
 

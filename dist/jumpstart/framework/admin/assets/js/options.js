@@ -42,21 +42,6 @@ window.themeblvd.options = {};
 		var $element = $( element );
 
 		/**
-		 * Sets up fancy selects.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$element.find( '.tb-fancy-select' ).each(function(){
-
-			var $select = $(this),
-				value   = $select.find( 'select' ).val(),
-				text    = $select.find( 'option[value="' + value + '"]' ).text();
-
-			$select.find( '.textbox' ).text( text );
-
-		} );
-
-		/**
 		 * Option subgroup, show/hide checkbox.
 		 *
 		 * Within a subgroup with class `show-hide` a checkbox
@@ -270,21 +255,21 @@ window.themeblvd.options = {};
 
 			if ( 'parallax' === value ) {
 
-				$select.find( '.of-background-repeat' ).closest( '.tb-fancy-select' ).hide();
+				$select.find( '.tb-background-repeat' ).hide();
 
-				$select.find( '.of-background-position' ).closest( '.tb-fancy-select' ).hide();
+				$select.find( '.tb-background-position' ).hide();
 
-				$select.find( '.of-background-size' ).closest( '.tb-fancy-select' ).hide();
+				$select.find( '.tb-background-size' ).hide();
 
 				$select.find( '.parallax' ).show();
 
 			} else {
 
-				$select.find( '.of-background-repeat' ).closest( '.tb-fancy-select' ).show();
+				$select.find( '.tb-background-repeat' ).show();
 
-				$select.find( '.of-background-position' ).closest( '.tb-fancy-select' ).show();
+				$select.find( '.tb-background-position' ).show();
 
-				$select.find( '.of-background-size' ).closest( '.tb-fancy-select' ).show();
+				$select.find( '.tb-background-size' ).show();
 
 				$select.find( '.parallax' ).hide();
 
@@ -306,11 +291,11 @@ window.themeblvd.options = {};
 
 			if ( 'no-repeat' === repeatValue && 'parallax' !== scrollingValue ) {
 
-				$select.find( '.of-background-size' ).closest( '.tb-fancy-select' ).show();
+				$select.find( '.of-background-size' ).show();
 
 			} else {
 
-				$select.find( '.of-background-size' ).closest( '.tb-fancy-select' ).hide();
+				$select.find( '.of-background-size' ).hide();
 
 			}
 
@@ -585,8 +570,6 @@ window.themeblvd.options = {};
 				// Send texture back to original <select>.
 				$select.val( texture );
 
-				$select.closest( '.tb-fancy-select' ).find( '.textbox' ).text( $select.find( 'option[value="' + texture + '"]' ).text() );
-
 			}
 		} );
 
@@ -623,8 +606,6 @@ window.themeblvd.options = {};
  */
 ( function( $, admin ) {
 
-	var $body = $( 'body' );
-
 	/**
 	 * Handles general option binding, called from the
 	 * jQuery `themeblvd` namespace.
@@ -635,25 +616,8 @@ window.themeblvd.options = {};
 	 */
 	admin.options.bind = function( element ) {
 
-		var $element = $( element );
-
-		/**
-		 * Bind fancy selects.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$element.on( 'change', '.tb-fancy-select select', function() {
-
-			var $select = $( this ),
-				value   = $select.val(),
-				text    = $select.find( 'option[value="' + value + '"]' ).text( );
-
-			$select
-				.closest( '.tb-fancy-select' )
-				.find( '.textbox' )
-				.text( text );
-
-		} );
+		var $element = $( element ),
+			$body    = $( 'body' );
 
 		/**
 		 * Bind modals by default to all links with `tb-modal-link`
@@ -1083,21 +1047,21 @@ window.themeblvd.options = {};
 
 			if ( 'parallax' == $select.val() ) {
 
-				$option.find( '.of-background-repeat' ).closest( '.tb-fancy-select' ).hide();
+				$option.find( '.tb-background-repeat' ).hide();
 
-				$option.find( '.of-background-position' ).closest( '.tb-fancy-select' ).hide();
+				$option.find( '.tb-background-position' ).hide();
 
-				$option.find( '.of-background-size' ).closest( '.tb-fancy-select' ).hide();
+				$option.find( '.tb-background-size' ).hide();
 
 				$option.find( '.parallax' ).show();
 
 			} else {
 
-				$option.find( '.of-background-repeat' ).closest( '.tb-fancy-select' ).show();
+				$option.find( '.tb-background-repeat' ).show();
 
-				$option.find( '.of-background-position' ).closest( '.tb-fancy-select' ).show();
+				$option.find( '.tb-background-position' ).show();
 
-				$option.find( '.of-background-size' ).closest( '.tb-fancy-select' ).show();
+				$option.find( '.tb-background-size' ).show();
 
 				$option.find( '.parallax' ).hide();
 
@@ -1120,11 +1084,11 @@ window.themeblvd.options = {};
 
 			if ( 'no-repeat' === repeatValue && 'parallax' !== scrollingValue ) {
 
-				$option.find( '.of-background-size' ).closest( '.tb-fancy-select' ).show();
+				$option.find( '.tb-background-size' ).show();
 
 			} else {
 
-				$option.find( '.of-background-size' ).closest( '.tb-fancy-select' ).hide();
+				$option.find( '.tb-background-size' ).hide();
 
 			}
 

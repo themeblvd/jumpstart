@@ -1117,21 +1117,6 @@ function tbc_confirm( message, args, callback ) {
 
 		} );
 
-		/**
-		 * Setup fancy selects.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$element.find( '.tb-fancy-select' ).each( function(){
-
-			var $select = $( this ),
-				value   = $select.find( 'select' ).val(),
-				text    = $select.find( 'option[value="' + value + '"]' ).text();
-
-			$select.find( '.textbox' ).text( text );
-
-		} );
-
 	};
 
 } )( jQuery, window.themeblvd );

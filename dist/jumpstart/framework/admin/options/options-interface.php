@@ -756,8 +756,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				// Start output for <select>.
-				$output .= '<div class="tb-fancy-select">';
-
 				$output .= sprintf(
 					'<select class="of-input" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . ']' ),
@@ -803,12 +801,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				$output .= '</select>';
-
-				$output .= '<span class="trigger"></span>';
-
-				$output .= '<span class="textbox"></span>';
-
-				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				if ( $textures ) {
 
@@ -1209,8 +1201,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// Add font-style selection to output.
 				if ( in_array( 'style', $option['atts'] ) ) {
 
-					$output .= '<div class="tb-fancy-select">';
-
 					$output .= sprintf(
 						'<select class="of-typography of-typography-style" name="%s" id="%s">',
 						esc_attr( $option_name . '[' . $option['id'] . '][style]' ),
@@ -1232,18 +1222,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					$output .= '</select>';
 
-					$output .= '<span class="trigger"></span>';
-
-					$output .= '<span class="textbox"></span>';
-
-					$output .= '</div><!-- .tb-fancy-select (end) -->';
-
 				}
 
 				// Add font-weight selection to output.
 				if ( in_array( 'weight', $option['atts'] ) ) {
-
-					$output .= '<div class="tb-fancy-select">';
 
 					$output .= sprintf(
 						'<select class="of-typography of-typography-weight" name="%s" id="%s">',
@@ -1266,18 +1248,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					$output .= '</select>';
 
-					$output .= '<span class="trigger"></span>';
-
-					$output .= '<span class="textbox"></span>';
-
-					$output .= '</div><!-- .tb-fancy-select (end) -->';
-
 				}
 
 				// Add font-family selection to output.
 				if ( in_array( 'face', $option['atts'] ) ) {
-
-					$output .= '<div class="tb-fancy-select">';
 
 					$output .= sprintf(
 						'<select class="of-typography of-typography-face" name="%s" id="%s">',
@@ -1299,12 +1273,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					}
 
 					$output .= '</select>';
-
-					$output .= '<span class="trigger"></span>';
-
-					$output .= '<span class="textbox"></span>';
-
-					$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				}
 
@@ -1482,8 +1450,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$current_repeat = $background['repeat'];
 				}
 
-				$output .= '<div class="tb-fancy-select condensed">';
-
 				$output .= sprintf(
 					'<select class="tb-background tb-background-repeat of-background of-background-repeat" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][repeat]' ),
@@ -1505,20 +1471,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '</select>';
 
-				$output .= '<span class="trigger"></span>';
-
-				$output .= '<span class="textbox"></span>';
-
-				$output .= '</div><!-- .tb-fancy-select (end) -->';
-
 				// Add background-attachment selection to output.
 				$current_attachment = '';
 
 				if ( ! empty( $background['attachment'] ) ) {
 					$current_attachment = $background['attachment'];
 				}
-
-				$output .= '<div class="tb-fancy-select condensed">';
 
 				$output .= sprintf(
 					'<select class="tb-background tb-background-attachment of-background of-background-attachment" name="%s" id="%s">',
@@ -1551,20 +1509,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '</select>';
 
-				$output .= '<span class="trigger"></span>';
-
-				$output .= '<span class="textbox"></span>';
-
-				$output .= '</div><!-- .tb-fancy-select (end) -->';
-
 				// Add background-position selection to output.
 				$current_position = '';
 
 				if ( ! empty( $background['position'] ) ) {
 					$current_position = $background['position'];
 				}
-
-				$output .= '<div class="tb-fancy-select condensed">';
 
 				$output .= '<select class="tb-background tb-background-position of-background of-background-position" name="' . esc_attr( $option_name . '[' . $option['id'] . '][position]' ) . '" id="' . esc_attr( $option['id'] . '_position' ) . '">';
 
@@ -1583,20 +1533,12 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '</select>';
 
-				$output .= '<span class="trigger"></span>';
-
-				$output .= '<span class="textbox"></span>';
-
-				$output .= '</div><!-- .tb-fancy-select (end) -->';
-
 				// Add background-size selection to output.
 				$current_size = '';
 
 				if ( ! empty( $background['size'] ) ) {
 					$current_size = $background['size'];
 				}
-
-				$output .= '<div class="tb-fancy-select condensed">';
 
 				$output .= sprintf(
 					'<select class="tb-background tb-background-size of-background of-background-size" name="%s" id="%s">',
@@ -1618,12 +1560,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				}
 
 				$output .= '</select>';
-
-				$output .= '<span class="trigger"></span>';
-
-				$output .= '<span class="textbox"></span>';
-
-				$output .= '</div><!-- .tb-fancy-select (end) -->';
 
 				$output .= '</div>';
 
