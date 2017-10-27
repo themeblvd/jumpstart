@@ -32,7 +32,7 @@ function themeblvd_add_slider( $slider_id, $slider_name, $slide_types, $media_po
 		__FUNCTION__,
 		'2.7.0',
 		null,
-		__( 'The Theme Blvd Sliders plugin is no longer supported.' , 'jumpstart')
+		__( 'The Theme Blvd Sliders plugin is no longer supported.' , 'jumpstart' )
 	);
 
 }
@@ -54,7 +54,7 @@ function themeblvd_remove_slider( $slider_id ) {
 		__FUNCTION__,
 		'2.7.0',
 		null,
-		__( 'The Theme Blvd Sliders plugin is no longer supported.' , 'jumpstart')
+		__( 'The Theme Blvd Sliders plugin is no longer supported.' , 'jumpstart' )
 	);
 
 }
