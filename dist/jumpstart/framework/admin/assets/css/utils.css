@@ -243,7 +243,7 @@
 
 .tb-options-wrap .warning {
   background: #f8f8f8;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   border-radius: 4px;
   color: #666;
   line-height: 1.3em;
@@ -368,7 +368,7 @@
 
 .tb-options-wrap .widget-name {
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   color: #464646;
   cursor: move;
   font-size: 13px;
@@ -424,7 +424,7 @@
 .tb-options-wrap .widget-content {
   background-color: #fff;
   border-radius: 0 0 3px 3px;
-  border-color: #ddd;
+  border-color: #eee;
   border-style: none solid solid;
   border-width: 0 1px 1px;
 }
@@ -853,7 +853,7 @@ body.themeblvd-stop-scroll {
 }
 
 .tb-meta-box .section {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #eee;
   border-bottom: none !important;
 }
 
@@ -929,7 +929,7 @@ body.themeblvd-stop-scroll {
 .themeblvd-confirm-inner .themeblvd-confirm-buttons,
 .themeblvd-confirm-inner .themeblvd-confirm-input {
   background: #f8f8f8;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #eee;
   margin: 20px -20px -20px -20px;
   padding: 10px;
   text-align: center;
@@ -942,7 +942,7 @@ body.themeblvd-stop-scroll {
 }
 
 .themeblvd-confirm-inner .themeblvd-confirm-text-box {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   font-size: 12px;
   padding: 5px 10px;
   width: 180px;

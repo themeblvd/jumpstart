@@ -9,7 +9,7 @@
  * @license GPL-2.0+
  */
 .tb-options-wrap .section {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
   padding: 15px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .tb-options-wrap .section-description {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
   color: #888888;
   font-family: inherit;
   font-size: inherit;
@@ -206,7 +206,7 @@
 }
 
 .themeblvd-modal-wrap .media-frame .wp-color-result {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
 }
 
 .themeblvd-modal-wrap .media-frame .tb-color-picker {
@@ -240,7 +240,7 @@
 }
 
 .tb-options-wrap .tb-radio-img-selected {
-  border: 3px solid #ddd;
+  border: 3px solid #eee;
 }
 
 .tb-options-wrap .tb-radio-img-img:hover {
@@ -252,13 +252,13 @@
 }
 
 .tb-options-wrap .accordion {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   border-top: none;
 }
 
 .tb-options-wrap .accordion .element .element-trigger {
   background-color: #fff;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #eee;
   display: block;
   color: #666;
   padding: 7px;
@@ -278,7 +278,7 @@
 
 .tb-options-wrap .accordion .element .element-content {
   background: #fff;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #eee;
   height: 300px;
   overflow: auto;
   padding: 10px;
@@ -344,7 +344,7 @@
 
 .tb-options-wrap .section-upload .screenshot img {
   background: #f8f8f8;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   float: left;
   max-width: 334px;
   margin-bottom: 10px;
@@ -466,7 +466,7 @@
 
 .tb-options-wrap .section-upload .section-upload {
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   margin: 0 0 10px 0;
   padding: 12px 15px;
 }
@@ -667,7 +667,7 @@
 .tb-options-wrap .google-font,
 .tb-options-wrap .typekit-font {
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   padding: 10px;
 }
 
@@ -715,7 +715,7 @@
 }
 
 .tb-options-wrap .jquery-ui-slider .ui-slider-handle {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   background: whitesmoke;
   border-radius: 99px;
   -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
@@ -732,7 +732,7 @@
 
 .tb-options-wrap .jquery-ui-slider .display-value {
   background: #f8f8f8;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
   display: block;
@@ -754,7 +754,7 @@
 .tb-options-wrap .jquery-ui-slider .display-value-arrow {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #ddd;
+  border-top: 5px solid #eee;
   display: block;
   position: absolute;
   bottom: -6px;
@@ -818,7 +818,7 @@
 .tb-options-wrap .section-textarea .editor-nav,
 .tb-options-wrap .section-content .editor-nav {
   background: #f8f8f8;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   border-top: none;
   position: absolute;
   right: 0;
@@ -889,7 +889,7 @@
 }
 
 .tb-options-wrap .CodeMirror.cm-s-themeblvd {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
 }
 
 .wp-admin.rtl .tb-options-wrap .section-code .controls {
@@ -972,13 +972,13 @@
 
 .tb-options-wrap .section-column_widths .slider {
   background: #f8f8f8;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   height: 20px;
   position: relative;
 }
 
 .tb-options-wrap .section-column_widths .ui-slider-handle {
-  background: #ddd;
+  background: #eee;
   cursor: col-resize;
   display: block;
   margin-left: -3px;
@@ -1014,7 +1014,7 @@
 }
 
 .tb-options-wrap .section-column_widths .grid-display .grid-column {
-  border-right: 1px dashed #ddd;
+  border-right: 1px dashed #eee;
   height: 20px;
   position: absolute;
   top: 0;
@@ -1054,7 +1054,7 @@
 
 .wp-admin.rtl .tb-options-wrap .section-column_widths .grid-display .grid-column {
   border-right: none;
-  border-left: 1px dashed #ddd;
+  border-left: 1px dashed #eee;
 }
 
 .wp-admin.rtl .tb-options-wrap .section-column_widths .grid-display .grid-column:last-child {
@@ -1112,14 +1112,14 @@
 
 .tb-options-wrap .tb-sortable-option .item-handle {
   background: #f8f8f8;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   color: #464646;
   cursor: move;
   position: relative;
 }
 
 .tb-options-wrap .tb-sortable-option .item-handle:hover {
-  border-color: #aaaaaa;
+  border-color: #bbbbbb;
 }
 
 .tb-options-wrap .tb-sortable-option .item-handle h3 {
@@ -1164,7 +1164,7 @@
 }
 
 .tb-options-wrap .tb-sortable-option .item-content {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   border-top: none;
   display: none;
 }
@@ -1237,7 +1237,7 @@
 .tb-options-wrap .section-slider .tb-sortable-option .item-handle .preview,
 .tb-options-wrap .section-logos .tb-sortable-option .item-handle .preview {
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   padding: 4px;
   position: absolute;
   top: 5px;
