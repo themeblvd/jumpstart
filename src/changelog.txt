@@ -4,7 +4,8 @@ Jump Start Changelog
 2.2.0 - XX/XX/XXXX
 ------------------
 
-* New: Added support for applying background shade to individual columns in the layout builder.
+* New: Implementation of [Front Street](http://frontstreet.io) frontend framework, officially replacing Bootstrap.
+	* Removed "striped" effect from progress bars.
 * New: Theme Code Overhaul
 	* All template part files moved from root to `template-parts` directory.
 	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
@@ -16,6 +17,7 @@ Jump Start Changelog
 	* Re-structured all admin JavaScript for better organization and efficiency.
 	* Re-structured all admin CSS for better organization and efficiency.
 	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
+* New: Added support for applying background shade to individual columns in the layout builder.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Fixed: WooCommerce deprecated use of `WC_Cart::get_cart_url`.

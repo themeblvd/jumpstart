@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend statistical blocks.
+ * Frontend Blocks: Statistical Elements
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -10,215 +10,387 @@
  */
 
 /**
- * Get chart using chart.js
+ * Get a chart block, using chart.js script.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param string $type Type of chart - pie, line, graph
- * @param array $args Options for from "Milestone" block
+ * @param  string $type Type of chart, `pie`, `line` or `graph`.
+ * @param  array  $args {
+ *     Block arguments.
+ *
+ *     @type string      $id       Unique ID for this chart.
+ *     @type array       $data     Data for charts from layout builder; this data is formatted differently for chart types.
+ *     @type string|int  $width    Width of chart, like `200`.
+ *     @type string|int  $height   Height of chart, like `200`.
+ *     @type string      $labels   If $type == `line` || $type == `bar`, x-axis labels.
+ *     @type string|bool $tooltips Whether to display labels when hovered chart elements are hovered on.
+ *     @type string|bool $legend   Whether to display chart legend.
+ *     @type string|bool $doughnut If $type == `pie`, whether to display as doughnut.
+ *     @type string|bool $curve    If $type == `line`, whether to curve lines.
+ *     @type string|bool $fill     If $type == `line`, whether to fill datasets with color.
+ *     @type string|bool $dot      If $type == `line`, whether to display dots for each data point.
+ *     @type string|bool $zero     If $type == `pie` || $type == `bar`, whether to start the y-axis scale at 0.
+ * }
+ * @return string $output Final HTML output for block.
  */
 function themeblvd_get_chart( $type, $args ) {
 
-    wp_enqueue_script( 'charts' );
+	wp_enqueue_script( 'charts' );
 
-    $defaults = array(
-        'id'        => uniqid( 'chart_' . rand() ),	// Unique ID for this chart
-        'data'      => array(),             		// Data for charts - warning: formatted differently for different kinds of charts
-        'width'     => '200',               		// Width of chart
-        'height'    => '200',               		// Height of chart
-        'labels'    => '',                  		// X-axis labels for line and bar graphs
-        'tooltips'  => '1',                 		// Whether to display labels when hovered on
-        'legend'    => '0',                 		// Whether to display chart legend
-        'doughnut'  => '0',                 		// For pie chart, whether to display as doughnut
-        'curve'     => '1',                 		// For line chart, whether to curve lines
-        'fill'      => '1',                 		// For line chart, whether to fill datasets with color
-        'dot'       => '1',                 		// For line chart, whether to display dots for each data point
-        'zero'      => '1'                  		// For line/bar chart, whether to start the scale (y-axis) at 0
-    );
-    $args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'id'       => uniqid( 'chart_' . rand() ),
+		'data'     => array(),
+		'width'    => '200',
+		'height'   => '200',
+		'labels'   => '',
+		'tooltips' => '1',
+		'legend'   => '0',
+		'doughnut' => '0',
+		'curve'    => '1',
+		'fill'     => '1',
+		'dot'      => '1',
+		'zero'     => '1',
+	));
 
-    $class = 'tb-chart';
+	$class = 'tb-chart';
 
-    if ( $type == 'line' || $type == 'bar' ) {
-        $class .= ' '.$type;
-    } else if ( $type == 'pie' ) {
-        if ( $args['doughnut'] ) {
-            $class .= ' doughnut';
-        } else {
-            $class .= ' pie';
-        }
+	if ( 'line' === $type || 'bar' === $type ) {
 
-    }
+		$class .= ' ' . $type;
 
-    if ( $args['legend'] ) {
-        $class .= ' has-legend';
-    }
+	} elseif ( 'pie' === $type ) {
 
-    $options = array(
-        'legend' => $args['legend']
-    );
+		if ( $args['doughnut'] ) {
 
-    switch ( $type ) {
-        case 'bar' :
-            $options['labels'] = str_replace(' ', '', $args['labels']);
-            $options['zero'] = $args['zero'];
-            $options['tooltips'] = $args['tooltips'];
-            break;
-        case 'line' :
-            $options['labels'] = str_replace(' ', '', $args['labels']);
-            $options['zero'] = $args['zero'];
-            $options['curve'] = $args['curve'];
-            $options['fill'] = $args['fill'];
-            $options['dot'] = $args['dot'];
-            $options['tooltips'] = $args['tooltips'];
-            break;
-        case 'pie' :
-            $options['tooltips'] = $args['tooltips'];
-            break;
-    }
+			$class .= ' doughnut';
 
-    $output = sprintf( '<div class="%s"', $class );
+		} else {
 
-    foreach ( $options as $key => $value ) {
-        $output .= sprintf( ' data-%s="%s"', esc_attr($key), esc_attr($value) );
-    }
+			$class .= ' pie';
 
-    $output .= '>';
+		}
+	}
 
-    if ( $args['data'] ) {
-        foreach ( $args['data'] as $data ) {
-            switch ( $type ) {
-                case 'bar' :
-                    $output .= sprintf( '<div class="data" data-label="%s" data-values="%s" data-fill="%s"></div>', esc_attr($data['label']), esc_attr( str_replace(' ', '', $data['values']) ), esc_attr($data['color']) );
-                    break;
-                case 'line' :
-                    $output .= sprintf( '<div class="data" data-label="%s" data-values="%s" data-fill="%s" data-stroke="%s" data-point="%s"></div>', esc_attr($data['label']), esc_attr( str_replace(' ', '', $data['values']) ), esc_attr( themeblvd_get_rgb($data['color'], '0.2') ), esc_attr($data['color']), esc_attr($data['color']) );
-                    break;
-                case 'pie' :
-                    $output .= sprintf( '<div class="data" data-label="%s" data-value="%s" data-color="%s" data-hightlight="%s"></div>', esc_attr($data['label']), esc_attr($data['value']), esc_attr($data['color']), themeblvd_adjust_color( $data['color'], 20, 'lighten' ) );
-            }
-        }
-    }
+	if ( $args['legend'] ) {
 
-    $output .= '<div class="chart-wrap">';
-    $output .= sprintf( '<canvas id="%s" width="%s" height="%s"></canvas>', esc_attr($args['id']), esc_attr($args['width']), esc_attr($args['height']) );
-    $output .= '</div><!-- .chart-wrap (end) -->';
+		$class .= ' has-legend';
 
-    $output .= '</div><!-- .tb-chart (end) -->';
+	}
 
-    return apply_filters( 'themeblvd_chart', $output, $type, $args );
+	$options = array(
+		'legend' => $args['legend'],
+	);
+
+	switch ( $type ) {
+		case 'bar':
+			$options['labels'] = str_replace( ' ', '', $args['labels'] );
+
+			$options['zero'] = $args['zero'];
+
+			$options['tooltips'] = $args['tooltips'];
+
+			break;
+
+		case 'line':
+			$options['labels'] = str_replace( ' ', '', $args['labels'] );
+
+			$options['zero'] = $args['zero'];
+
+			$options['curve'] = $args['curve'];
+
+			$options['fill'] = $args['fill'];
+
+			$options['dot'] = $args['dot'];
+
+			$options['tooltips'] = $args['tooltips'];
+
+			break;
+
+		case 'pie':
+			$options['tooltips'] = $args['tooltips'];
+
+	}
+
+	$output = sprintf( '<div class="%s"', $class );
+
+	foreach ( $options as $key => $value ) {
+
+		$output .= sprintf(
+			' data-%s="%s"',
+			esc_attr( $key ),
+			esc_attr( $value )
+		);
+
+	}
+
+	$output .= '>';
+
+	if ( $args['data'] ) {
+
+		foreach ( $args['data'] as $data ) {
+
+			switch ( $type ) {
+
+				case 'bar':
+					$output .= sprintf(
+						'<div class="data" data-label="%s" data-values="%s" data-fill="%s"></div>',
+						esc_attr( $data['label'] ),
+						esc_attr( str_replace( ' ', '', $data['values'] ) ),
+						esc_attr( $data['color'] )
+					);
+
+					break;
+
+				case 'line':
+					$output .= sprintf(
+						'<div class="data" data-label="%s" data-values="%s" data-fill="%s" data-stroke="%s" data-point="%s"></div>',
+						esc_attr( $data['label'] ),
+						esc_attr( str_replace( ' ', '', $data['values'] ) ),
+						esc_attr( themeblvd_get_rgb( $data['color'], '0.2' ) ),
+						esc_attr( $data['color'] ),
+						esc_attr( $data['color'] )
+					);
+
+					break;
+
+				case 'pie':
+					$output .= sprintf(
+						'<div class="data" data-label="%s" data-value="%s" data-color="%s" data-hightlight="%s"></div>',
+						esc_attr( $data['label'] ),
+						esc_attr( $data['value'] ),
+						esc_attr( $data['color'] ),
+						themeblvd_adjust_color( $data['color'], 20, 'lighten' )
+					);
+
+			}
+		}
+	}
+
+	$output .= '<div class="chart-wrap">';
+
+	$output .= sprintf(
+		'<canvas id="%s" width="%s" height="%s"></canvas>',
+		esc_attr( $args['id'] ),
+		esc_attr( $args['width'] ),
+		esc_attr( $args['height'] )
+	);
+
+	$output .= '</div><!-- .chart-wrap (end) -->';
+
+	$output .= '</div><!-- .tb-chart (end) -->';
+
+	/**
+	 * Filters the final HTML output for a chart
+	 * block, using chart.js script.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param string $type Type of chart, `pie`, `line` or `graph`.
+	 * @param array  $args {
+	 *     Block arguments.
+	 *
+	 *     @type string      $id       Unique ID for this chart.
+	 *     @type array       $data     Data for charts from layout builder; this data is formatted differently for chart types.
+	 *     @type string|int  $width    Width of chart, like `200`.
+	 *     @type string|int  $height   Height of chart, like `200`.
+	 *     @type string      $labels   If $type == `line` || $type == `bar`, x-axis labels.
+	 *     @type string|bool $tooltips Whether to display labels when hovered chart elements are hovered on.
+	 *     @type string|bool $legend   Whether to display chart legend.
+	 *     @type string|bool $doughnut If $type == `pie`, whether to display as doughnut.
+	 *     @type string|bool $curve    If $type == `line`, whether to curve lines.
+	 *     @type string|bool $fill     If $type == `line`, whether to fill datasets with color.
+	 *     @type string|bool $dot      If $type == `line`, whether to display dots for each data point.
+	 *     @type string|bool $zero     If $type == `pie` || $type == `bar`, whether to start the y-axis scale at 0.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_chart', $output, $type, $args );
+
 }
 
 /**
- * Display chart using chart.js
+ * Display a chart block, using chart.js script.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param string $type Type of chart - pie, line, graph
- * @param array $args Arguments for chart.
+ * @param string $type Type of chart, `pie`, `line` or `graph`.
+ * @param array  $args Block arguments, see themeblvd_get_chart() docs.
  */
 function themeblvd_chart( $type, $args ) {
-    echo themeblvd_get_chart( $type, $args );
+
+	echo themeblvd_get_chart( $type, $args );
+
 }
 
 /**
- * Get milestone
+ * Get a milestone block.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Options for from "Milestone" block
+ * @param  array  $args {
+ *     Block arguments.
+ *
+ *     @type string      $milestone Number for the milestone.
+ *     @type string      $color     Color of text for milestone number.
+ *     @type string      $text      Brief text to describe milestone.
+ *     @type string|bool $boxed     Whether to wrap milestone in bordered box.
+ * }
+ * @return string $output Final HTML output for block.
  */
 function themeblvd_get_milestone( $args ) {
 
-	$defaults = array(
-		'milestone'		=> '100',		// The number for the milestone
-		'color'			=> '#0c9df0',	// Color of text for milestone number
-		'text'			=> '',			// Brief text to describe milestone
-		'boxed'			=> '0'			// Whether to wrap milestone in borered box
-    );
-    $args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'milestone' => '100',
+		'color'     => '#0c9df0',
+		'text'      => '',
+		'boxed'     => '0',
+	));
 
-    $class = 'tb-milestone';
+	$class = 'tb-milestone';
 
-    if ( $args['boxed'] ) {
-    	$class .= ' boxed';
-    }
+	if ( $args['boxed'] ) {
 
-    $output = sprintf( '<div class="%s">', $class );
+		$class .= ' boxed';
 
-    $num = filter_var( $args['milestone'], FILTER_SANITIZE_NUMBER_INT );
-    $num = str_replace('-', '', $num);
-    $num = str_replace('+', '', $num);
-    $milestone = str_replace( $num, '<span class="num">'.$num.'</span>', themeblvd_kses($args['milestone']) );
+	}
 
-    if ( themeblvd_supports('display', 'scroll_effects') && ! wp_is_mobile() ) {
-        $milestone = str_replace( $num, '0', $milestone );
-    }
+	$output = sprintf( '<div class="%s">', $class );
 
-    $output .= sprintf( '<span class="milestone" style="color: %s;" data-num="%s">%s</span>', esc_attr($args['color']), esc_attr($num), $milestone );
+	$num = filter_var( $args['milestone'], FILTER_SANITIZE_NUMBER_INT );
 
-    if ( $args['text'] ) {
-    	$output .= sprintf( '<h5 class="text">%s</h5>', themeblvd_kses($args['text']) );
-    }
+	$num = str_replace( '-', '', $num );
 
-    $output .= '</div><!-- .tb-milestone (end) -->';
+	$num = str_replace( '+', '', $num );
 
-    return apply_filters( 'themeblvd_milestone', $output, $args );
+	$milestone = str_replace(
+		$num,
+		'<span class="num">' . $num . '</span>',
+		themeblvd_kses( $args['milestone'] )
+	);
+
+	if ( themeblvd_supports( 'display', 'scroll_effects' ) && ! wp_is_mobile() ) {
+
+		$milestone = str_replace( $num, '0', $milestone );
+
+	}
+
+	$output .= sprintf(
+		'<span class="milestone" style="color: %s;" data-num="%s">%s</span>',
+		esc_attr( $args['color'] ),
+		esc_attr( $num ),
+		$milestone
+	);
+
+	if ( $args['text'] ) {
+
+		$output .= sprintf(
+			'<h5 class="text">%s</h5>',
+			themeblvd_kses( $args['text'] )
+		);
+
+	}
+
+	$output .= '</div><!-- .tb-milestone (end) -->';
+
+	/**
+	 * Filters the final HTML output for a foo
+	 * block.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param array  $args {
+	 *     Block arguments.
+	 *
+	 *     @type string      $milestone Number for the milestone.
+	 *     @type string      $color     Color of text for milestone number.
+	 *     @type string      $text      Brief text to describe milestone.
+	 *     @type string|bool $boxed     Whether to wrap milestone in bordered box.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_milestone', $output, $args );
+
 }
 
 /**
- * Display milestone
+ * Display a milestone block.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments for milestone block.
+ * @param array $args Block arguments, see themeblvd_get_milestone() docs.
  */
 function themeblvd_milestone( $args ) {
 	echo themeblvd_get_milestone( $args );
 }
 
 /**
- * Get milestone percentage as pie chart
+ * Get a milestone percentage block, as a
+ * pie chart.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Options for from "Milestone" block
+ * @param  array  $args {
+ *     Block arguments.
+ *
+ *     @type string|int  $percent     Percentage for pie chart, like `75`.
+ *     @type string      $color       Color of the printed milestone percentage, like `#000`.
+ *     @type string      $track_color Color of track the ring sits on, like `#000`.
+ *     @type string      $display     Text in the middle of the pie chart.
+ *     @type string      $title       Title below pie chart.
+ *     @type string      $text        Description below title.
+ *     @type string      $text_align  Text alignment, `left`, `right` or `center`.
+ *     @type string|bool $boxed       Whether to wrap milestone in bordered box.
+ * }
+ * @return string $output Final HTML output for block.
  */
 function themeblvd_get_milestone_ring( $args ) {
 
-	$defaults = array(
-		'percent'		=> '75',		// Percentage for pie chart
-		'color'			=> '#0c9df0',	// Color of the milestone percentage
-		'track_color'	=> '#eeeeee',	// Color track containing milestone ring (currently no option in builder, may add in the future)
-		'display'		=> '',			// Text in the middle of the pie chart
-		'title'			=> '',			// Title below pie chart
-		'text'			=> '',			// Description below title
-		'text_align'	=> 'center',	// Text alignment - left, right, or center
-		'boxed'			=> '0'			// Whether to wrap milestone in borered box
-    );
-    $args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'percent'     => '75',
+		'color'       => '#0c9df0',
+		'track_color' => '#eeeeee',
+		'display'     => '',
+		'title'       => '',
+		'text'        => '',
+		'text_align'  => 'center',
+		'boxed'       => '0',
+	));
 
-    $class = 'tb-milestone-percent text-'.$args['text_align'];
+	$class = 'tb-milestone-percent text-' . $args['text_align'];
 
-    if ( $args['title'] || $args['text'] ) {
-    	$class .= ' has-text';
-    }
+	if ( $args['title'] || $args['text'] ) {
 
-    if ( $args['boxed'] ) {
-    	$class .= ' boxed';
-    }
+		$class .= ' has-text';
 
-    $output = sprintf( '<div class="%s">', esc_attr($class) );
+	}
 
-    $output .= sprintf( '<div class="milestone chart" data-percent="%s" data-color="%s" data-track-color="%s">', esc_attr($args['percent']), esc_attr($args['color']), esc_attr($args['track_color']) );
+	if ( $args['boxed'] ) {
 
-    if ( $args['display'] ) {
-        if ( strpos( $args['display'], 'fa' ) !== false ) {
-            $output .= '<span class="display">'.themeblvd_kses($args['display']).'</span>';
-        } else {
-            $output .= '<h5 class="display">'.themeblvd_kses($args['display']).'</h5>';
-       }
-    }
+		$class .= ' boxed';
+
+	}
+
+	$output = sprintf( '<div class="%s">', esc_attr( $class ) );
+
+	$output .= sprintf(
+		'<div class="milestone chart" data-percent="%s" data-color="%s" data-track-color="%s">',
+		esc_attr( $args['percent'] ),
+		esc_attr( $args['color'] ),
+		esc_attr( $args['track_color'] )
+	);
+
+	if ( $args['display'] ) {
+
+		if ( false !== strpos( $args['display'], 'fa' ) ) {
+
+			$output .= '<span class="display">' . themeblvd_kses( $args['display'] ) . '</span>';
+
+		} else {
+
+			$output .= '<h5 class="display">' . themeblvd_kses( $args['display'] ) . '</h5>';
+
+		}
+	}
 
 	$output .= '</div><!-- .milestone (end) -->';
 
@@ -227,148 +399,246 @@ function themeblvd_get_milestone_ring( $args ) {
 		$output .= '<div class="content">';
 
 		if ( $args['title'] ) {
-			$output .= '<h5>'.themeblvd_kses($args['title']).'</h5>';
+
+			$output .= '<h5>' . themeblvd_kses( $args['title'] ) . '</h5>';
+
 		}
 
 		if ( $args['text'] ) {
+
 			$output .= themeblvd_get_content( $args['text'] );
+
 		}
 
 		$output .= '</div><!-- .content (end) -->';
+
 	}
 
-    $output .= '</div><!-- .tb-milestone (end) -->';
+	$output .= '</div><!-- .tb-milestone (end) -->';
 
-    return apply_filters( 'themeblvd_milestone_ring', $output, $args );
+	/**
+	 * Filters the final HTML output for a foo
+	 * block.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param array  $args {
+	 *     Block arguments.
+	 *
+	 *     @type string|int  $percent     Percentage for pie chart, like `75`.
+	 *     @type string      $color       Color of the printed milestone percentage, like `#000`.
+	 *     @type string      $track_color Color of track the ring sits on, like `#000`.
+	 *     @type string      $display     Text in the middle of the pie chart.
+	 *     @type string      $title       Title below pie chart.
+	 *     @type string      $text        Description below title.
+	 *     @type string      $text_align  Text alignment, `left`, `right` or `center`.
+	 *     @type string|bool $boxed       Whether to wrap milestone in bordered box.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_milestone_ring', $output, $args );
+
 }
 
 /**
- * Display milestone percentage as pie chart
+ * Display a milestone percentage block, as a
+ * pie chart.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments for milestone block.
+ * @param array $args Block arguments, see themeblvd_get_milestone_ring() docs.
  */
 function themeblvd_milestone_ring( $args ) {
+
 	echo themeblvd_get_milestone_ring( $args );
+
 }
 
 /**
- * Get individual progress bar
+ * Get an individual progress bar block.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments for milestone block.
+ * @param  array  $args {
+ *     Block arguments.
+ *
+ *     @type string     $label       Label of what is represented, like `Graphic Design`.
+ *     @type string     $label_value Label for value, like `80%`.
+ *     @type string|int $value       Actual numeric value, like `50`.
+ *     @type string|int $total       Number that $value should be devided into, to find percentage, like `100`.
+ *     @type string     $color       Color of the progress bar value, like `#000`.
+ * }
+ * @return string $output Final HTML output for block.
  */
 function themeblvd_get_progress_bar( $args ) {
 
-    $defaults = array(
-        'label'         => '',          // Label of what this bar represents, like "Graphic Design"
-        'label_value'   => '',          // Label for value, like "80%"
-        'value'         => '50',        // The actual numeric value
-        'total'         => '100',       // The number that the value should be devided into
-        'color'         => '#428bca',   // Color of the progress bar
-        'striped'       => '0'          // Whether they contain striped effect
-    );
-    $args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'label'       => '',
+		'label_value' => '',
+		'value'       => '50',
+		'total'       => '100',
+		'color'       => '#428bca',
+	));
 
-    $class = 'tb-progress';
+	$class = 'tb-progress';
 
-    if ( $args['label'] || $args['label_value'] ) {
-        $class .= ' has-label';
-    }
+	if ( $args['label'] || $args['label_value'] ) {
 
-    $output = sprintf( '<div class="%s">', $class );
+		$class .= ' has-label';
 
-    if ( $args['label'] ) {
-        $output .= sprintf('<h5 class="label text">%s</h5>', esc_attr($args['label']));
-    }
+	}
 
-    if ( $args['label_value'] ) {
-        $output .= sprintf('<span class="label value">%s</span>', esc_attr($args['label_value']));
-    }
+	$output = sprintf( '<div class="%s">', $class );
 
-    $percent = ( intval($args['value']) / intval($args['total']) ) * 100;
+	if ( $args['label'] ) {
 
-    $display = '0';
+		$output .= sprintf(
+			'<h5 class="label text">%s</h5>',
+			esc_attr( $args['label'] )
+		);
 
-    if ( ! themeblvd_supports( 'display', 'scroll_effects' ) || wp_is_mobile() ) {
-        $display = $percent;
-    }
+	}
 
-    $style = sprintf( 'width: %s%%;', $display );
+	if ( $args['label_value'] ) {
 
-    $class = 'progress';
+		$output .= sprintf(
+			'<span class="label value">%s</span>',
+			esc_attr( $args['label_value'] )
+		);
 
-    if ( $args['striped'] ) {
-        $class .= ' progress-striped';
-    }
+	}
 
-    $output .= sprintf('<div class="%s">', $class);
+	$percent = ( intval( $args['value'] ) / intval( $args['total'] ) ) * 100;
 
-    $class = 'progress-bar';
+	$display = '0';
 
-    if ( strpos($args['color'], '#') === 0 ) {
-        $style .= sprintf( ' background-color: %s;', $args['color'] );
-    } else {
-        $class .= ' progress-bar-'.$args['color'];
-    }
+	if ( ! themeblvd_supports( 'display', 'scroll_effects' ) || wp_is_mobile() ) {
 
-    $output .= sprintf( '<div class="%s" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>', esc_attr($class), $percent, esc_attr($args['total']), $percent, esc_attr($style) );
+		$display = $percent;
 
-    $output .= '</div><!-- .progress (end) -->';
-    $output .= '</div><!-- .tb-progress (end) -->';
+	}
 
-    return apply_filters( 'themeblvd_progress_bar', $output, $args );
+	$style = sprintf( 'width: %s%%;', $display );
+
+	$class = 'progress';
+
+	$output .= sprintf( '<div class="%s">', $class );
+
+	$class = 'progress-bar';
+
+	if ( strpos( $args['color'], '#' ) === 0 ) {
+
+		$style .= sprintf( ' background-color: %s;', $args['color'] );
+
+	} else {
+
+		$class .= ' progress-bar-' . $args['color'];
+
+	}
+
+	$output .= sprintf(
+		'<div class="%s" role="progressbar" aria-valuenow="%s" aria-valuemin="0" aria-valuemax="%s" data-percent="%s" style="%s"></div>',
+		esc_attr( $class ),
+		$percent,
+		esc_attr( $args['total'] ),
+		$percent,
+		esc_attr( $style )
+	);
+
+	$output .= '</div><!-- .progress (end) -->';
+
+	$output .= '</div><!-- .tb-progress (end) -->';
+
+	/**
+	 * Filters the final HTML output for an
+	 * individual progress bar block.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param array  $args {
+	 *     Block arguments.
+	 *
+	 *     @type string     $label       Label of what is represented, like `Graphic Design`.
+	 *     @type string     $label_value Label for value, like `80%`.
+	 *     @type string|int $value       Actual numeric value, like `50`.
+	 *     @type string|int $total       Number that $value should be devided into, to find percentage, like `100`.
+	 *     @type string     $color       Color of the progress bar value, like `#000`.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_progress_bar', $output, $args );
+
 }
 
 /**
- * Display individual progress bar
+ * Display an individual progress bar block.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments for progress bar
+ * @param array $args Block arguments, see themeblvd_get_progress_bar() docs.
  */
 function themeblvd_progress_bar( $args ) {
-    echo themeblvd_get_progress_bar( $args );
+
+	echo themeblvd_get_progress_bar( $args );
+
 }
 
 /**
- * Get set of progress bars
+ * Get a set of progress bars.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments for progress bars
+ * @param array $args {
+ *     Block arguments.
+ *
+ *     @type array $bars Array of progress bars formatted for themeblvd_get_progress_bar().
+ * }
  */
 function themeblvd_get_progress_bars( $args ) {
 
-    $defaults = array(
-        'bars'      => array(),     // Progress bars
-        'striped'   => '0'          // Whether they contain striped effect
-    );
-    $args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'bars' => array(),
+	));
 
-    $output = '<div class="tb-progress-bars">';
+	$output = '<div class="tb-progress-bars">';
 
-    if ( $args['bars'] ) {
-        foreach ( $args['bars'] as $bar ) {
-            $bar['striped'] = $args['striped'];
-            $output .= themeblvd_progress_bar( $bar );
-        }
-    }
+	if ( $args['bars'] ) {
 
-    $output .= '</div><!-- .tb-progress-bars (end) -->';
+		foreach ( $args['bars'] as $bar ) {
 
-    return apply_filters( 'themeblvd_progress_bars', $output, $args );
+			$output .= themeblvd_progress_bar( $bar );
+
+		}
+	}
+
+	$output .= '</div><!-- .tb-progress-bars (end) -->';
+
+	/**
+	 * Filters the final HTML output for a set
+	 * of progress bars.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param array  $args {
+	 *     Block arguments.
+	 *
+	 *     @type array $bars Array of progress bars formatted for themeblvd_get_progress_bar().
+	 * }
+	 */
+	return apply_filters( 'themeblvd_progress_bars', $output, $args );
+
 }
 
 /**
- * Display set of progress bars
+ * Display a set of progress bars.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
  * @param array $args Arguments for progress bars
  */
 function themeblvd_progress_bars( $args ) {
-    echo themeblvd_get_progress_bars( $args );
+
+	echo themeblvd_get_progress_bars( $args );
+
 }

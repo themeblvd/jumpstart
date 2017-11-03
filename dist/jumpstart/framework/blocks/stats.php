@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend statistical blocks.
+ * Frontend Blocks: Statistical Elements
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd

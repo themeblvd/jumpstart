@@ -357,15 +357,19 @@ if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 	 * Include frontend blocks.
 	 *
 	 * Frontend blocks consist of smaller pieces, ready to
-	 * be displayed throoughout the website. All blocks have a
-	 * themeblvd_get_{block}() function that reutnrs a filterable
-	 * output, along with a themeblvd_{block}() display function.
+	 * be displayed throoughout the website.
+	 *
+	 * Most blocks have a themeblvd_get_{block}() function
+	 * that returns a filterable output, along with a
+	 * themeblvd_{block}() display function.
 	 */
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/archive.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/content.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/components.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/loop.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/media.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/parts.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/post.php' );
 	include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/stats.php' );
 
 	/*
