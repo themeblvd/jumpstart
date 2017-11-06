@@ -1572,16 +1572,18 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * video for a section.
 			 *
 			 * @param array $option {
-			 *     @type string $id       Unique ID for option.
-			 *     @type string $name     Title for option.
-			 *     @type string $desc     Description for option.
-			 *     @type array  $std      Default value.
-			 *     @type string $type     Type of option, should be `background_video`.
+			 *     @type string $id   Unique ID for option.
+			 *     @type string $name Title for option.
+			 *     @type string $desc Description for option.
+			 *     @type array  $std  Default value.
+			 *     @type string $type Type of option, should be `background_video`.
 			 * }
 			 */
 			case 'background_video':
 				// Add video upload field to output.
-				$output .= '<div class="section-upload">';
+				$output .= '<div class="section-upload clearfix">';
+
+				$output .= '<div class="controls">';
 
 				$output .= sprintf(
 					'<p><strong>%s</strong></p>',
@@ -1602,10 +1604,14 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'name'        => 'mp4',
 				));
 
+				$output .= '</div><!-- .controls (end) -->';
+
 				$output .= '</div><!-- .section-upload (end) -->';
 
 				// Add fallback image upload field to output.
 				$output .= '<div class="section-upload clearfix">';
+
+				$output .= '<div class="controls">';
 
 				$output .= sprintf(
 					'<p><strong>%s</strong></p>',
@@ -1625,6 +1631,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'value'       => $img_url,
 					'name'        => 'fallback',
 				));
+
+				$output .= '</div><!-- .controls (end) -->';
 
 				$output .= '</div><!-- .section-upload (end) -->';
 
