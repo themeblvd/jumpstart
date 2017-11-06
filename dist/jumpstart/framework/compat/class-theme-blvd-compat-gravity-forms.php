@@ -1,5 +1,15 @@
 <?php
 /**
+ * Plugin Compatibility: Gravity Forms
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
+ */
+
+/**
  * Add extended Gravity Forms compatibility.
  *
  * @author      Jason Bobich
@@ -40,9 +50,11 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	public function __construct() {
 
 		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 ); // Gravity Forms is at priority 11
+
 		add_filter( 'body_class', array($this, 'body_class') );
 
 		add_filter( 'gform_validation_message', array($this, 'error') );
+
 		add_filter( 'gform_confirmation', array($this, 'confirm') );
 
 	}
@@ -55,9 +67,18 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	public function assets( $type ) {
 
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+
 		$deps = $handler->get_framework_deps();
 
-		wp_enqueue_style( 'themeblvd-gravityforms', esc_url( TB_FRAMEWORK_URI . '/compat/gravityforms/gravityforms.min.css' ), $deps, TB_FRAMEWORK_VERSION );
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+		wp_enqueue_style(
+			'themeblvd-gravityforms',
+			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/gravityforms{$suffix}.css" ),
+			$deps,
+			TB_FRAMEWORK_VERSION
+		);
+
 	}
 
 	/**

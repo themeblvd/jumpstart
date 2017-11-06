@@ -1,11 +1,21 @@
 <?php
 /**
+ * Plugin Compatibility: WooCommerce
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
+ */
+
+/**
  * Add extended WooCommerce compatibility.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
- * @package     @@name-package
+ * @package     Jump_Start
  */
 class Theme_Blvd_Compat_WooCommerce {
 
@@ -254,10 +264,17 @@ class Theme_Blvd_Compat_WooCommerce {
 	public function assets( $type ) {
 
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+
 		$deps = $handler->get_framework_deps();
 
-		// Style all of WooCommerce
-		wp_enqueue_style( 'themeblvd-wc', esc_url( TB_FRAMEWORK_URI . '/compat/woocommerce/woocommerce.min.css' ), $deps, TB_FRAMEWORK_VERSION );
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+		wp_enqueue_style(
+			'themeblvd-wc',
+			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/woocommerce{$suffix}.css" ),
+			$deps,
+			TB_FRAMEWORK_VERSION
+		);
 
 		// Remove increment button styling, if using WooCommerce Quantity Increment plugin.
 		wp_dequeue_style( 'wcqi-css' );
@@ -312,7 +329,7 @@ class Theme_Blvd_Compat_WooCommerce {
 			$view = $this->loop_view();
 
 			if ( in_array( $view, array('list', 'catalog') ) ) {
-				$template = apply_filters('themeblvd_woocommerce_'.$view.'_template', trailingslashit(TB_FRAMEWORK_DIRECTORY) . 'compat/woocommerce/templates/' . 'content-product-'.$view.'.php');
+				$template = apply_filters('themeblvd_woocommerce_'.$view.'_template', trailingslashit(TB_FRAMEWORK_DIRECTORY) . 'compat/templates/woocommerce/' . 'content-product-'.$view.'.php');
 			}
 		}
 
@@ -351,7 +368,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		if ( in_array($template_name, $override) ) {
 			$file = explode('/', $template_name);
-			$template = trailingslashit(TB_FRAMEWORK_DIRECTORY) . 'compat/woocommerce/templates/' . end($file);
+			$template = trailingslashit(TB_FRAMEWORK_DIRECTORY) . 'compat/templates/woocommerce/' . end($file);
 		}
 
 		return $template;

@@ -1,5 +1,15 @@
 <?php
 /**
+ * Plugin Compatibility: Subtitles
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.5.0
+ */
+
+/**
  * Add extended Subtitles plugin compatibility.
  *
  * @author      Jason Bobich

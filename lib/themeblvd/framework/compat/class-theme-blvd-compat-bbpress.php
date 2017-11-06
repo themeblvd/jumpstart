@@ -1,11 +1,21 @@
 <?php
 /**
+ * Plugin Compatibility: bbPress
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    @@name-package
+ * @subpackage @@name-framework
+ * @since      @@name-framework 2.5.0
+ */
+
+/**
  * Add extended bbPress compatibility.
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
- * @package     Jump_Start
+ * @package     @@name-package
  */
 class Theme_Blvd_Compat_bbPress {
 
@@ -114,9 +124,18 @@ class Theme_Blvd_Compat_bbPress {
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 
 		$deps = $handler->get_framework_deps();
+
 		$deps[] = 'bbp-default';
 
-		wp_enqueue_style( 'themeblvd-bbp', esc_url( TB_FRAMEWORK_URI.'/compat/bbpress/bbpress.min.css' ), $deps, TB_FRAMEWORK_VERSION );
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+		wp_enqueue_style(
+			'themeblvd-bbp',
+			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/bbpress{$suffix}.css" ),
+			$deps,
+			TB_FRAMEWORK_VERSION
+		);
+
 	}
 
 	/**

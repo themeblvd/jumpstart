@@ -213,10 +213,10 @@ gulp.task('render-admin-css', ['clear-admin-utils-js-partials'], function() {
             browsers: browsers,
             cascade: false
         }))
-		.pipe(gulp.dest(dir + '/css'))
+		.pipe(gulp.dest(dir + 'css'))
 		.pipe(minifycss())
 		.pipe(rename({ suffix: '.min' }))
-    	.pipe(gulp.dest(dir + '/css'));
+    	.pipe(gulp.dest(dir + 'css'));
 
 });
 
@@ -234,9 +234,49 @@ gulp.task('clear-admin-scss', ['render-admin-css'], function() {
 });
 
 /**
+ * Render third-party plugin compatibility CSS.
+ */
+gulp.task('render-compat-css', ['clear-admin-scss'], function() {
+
+	var dir = 'dist/' + theme + '/framework/compat/assets/';
+
+	var files = [
+		dir + 'scss/bbpress.scss',
+		dir + 'scss/gravityforms.scss',
+		dir + 'scss/woocommerce.scss',
+		dir + 'scss/wpml.scss'
+	];
+
+	return gulp.src(files)
+		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		.pipe(autoprefixer({
+            browsers: browsers,
+            cascade: false
+        }))
+		.pipe(gulp.dest(dir + 'css'))
+		.pipe(minifycss())
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir + 'css'));
+
+});
+
+/**
+ * Clear third-party plugin compatibility Sass
+ * files from distributed directory.
+ */
+gulp.task('clear-compat-scss', ['render-compat-css'], function() {
+
+	var dir = 'dist/' + theme + '/framework/compat/assets/scss/';
+
+	return gulp.src(dir, {read: false})
+        .pipe(clean());
+
+});
+
+/**
  * Render theme info through PHP DocBlocks.
  */
-gulp.task('render-info', ['clear-admin-scss'], function() {
+gulp.task('render-info', ['clear-compat-scss'], function() {
 
 	var packageSlug = themeName.replace(' ', '_'),
 		frameworkSlug = frameworkName.replace(' ', '_');

@@ -1,5 +1,15 @@
 <?php
 /**
+ * Plugin Compatibility: WPML
+ *
+ * @author     Jason Bobich <info@themeblvd.com>
+ * @copyright  2009-2017 Theme Blvd
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
+ */
+
+/**
  * Add extended WPML compatibility
  *
  * @author      Jason Bobich
@@ -69,9 +79,17 @@ class Theme_Blvd_Compat_WPML {
 	public function assets( $type ) {
 
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+
 		$deps = $handler->get_framework_deps();
 
-		wp_enqueue_style( 'themeblvd-wpml', esc_url( TB_FRAMEWORK_URI . '/compat/wpml/wpml.css' ), $deps, TB_FRAMEWORK_VERSION );
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+		wp_enqueue_style(
+			'themeblvd-wpml',
+			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/wpml{$suffix}.css" ),
+			$deps,
+			TB_FRAMEWORK_VERSION
+		);
 
 	}
 
