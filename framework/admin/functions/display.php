@@ -1205,7 +1205,8 @@ function themeblvd_editor( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	ob_start();
-	wp_editor( '', 'themeblvd_editor' );
+	$settings = apply_filters( 'themeblvd_editor_settings', array() );
+	wp_editor( '', 'themeblvd_editor', $settings );
 	$editor = ob_get_clean();
 	?>
 	<div id="themeblvd-editor-modal" class="themeblvd-modal-wrap hide">
