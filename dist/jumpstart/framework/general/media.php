@@ -975,7 +975,7 @@ function themeblvd_get_bg_video( $video ) {
 
 			preg_match("!^(.+?)(?:\.([^.]+))?$!", $video['mp4'], $path_split);
 
-			$output .= sprintf("\n\t<video id=\"%s\" controls", $video['id']);
+			$output .= sprintf("\n\t<video id=\"%s\" class=\"video\" controls", $video['id']);
 
 			if ( $video['fallback'] && themeblvd_is_200($video['fallback']) ) {
 				$output .= sprintf(" poster=\"%s\"", $video['fallback']);
@@ -1009,7 +1009,7 @@ function themeblvd_get_bg_video( $video ) {
 
 				$args = apply_filters('themeblvd_youtube_bg_args', array(
 					'vid'				=> $yt_id,
-					'autoplay'			=> 0, // will play video through API after it's loaded
+					'autoplay'			=> 0, // Will play video through API after it's loaded.
 					'loop'				=> 1,
 					'hd'				=> 1,
 					'controls'			=> 0,
@@ -1036,8 +1036,6 @@ function themeblvd_get_bg_video( $video ) {
 
 		case 'vimeo' :
 
-			wp_enqueue_script('froogaloop');
-
 			$v_id = explode('/', trim($video['mp4']));
 			$v_id = end($v_id);
 
@@ -1047,11 +1045,12 @@ function themeblvd_get_bg_video( $video ) {
 				'title'			=> 0,
 				'badge'			=> 0,
 				'loop'			=> 1,
+				'autoplay'      => 0,
 				'autopause'		=> 0,
 				'api'			=> 1,
 				'rel'			=> 0,
 				'player_id'		=> $video['id'],
-				'background'	=> 1
+				'background'	=> 1,
 			)), 'https://player.vimeo.com/video/'.$v_id );
 
 			$output .= sprintf("\n\t<iframe id=\"%s\" src=\"%s\" height=\"1600\" width=\"900\" frameborder=\"\" class=\"video\"></iframe>\n", $video['id'], $v_url);

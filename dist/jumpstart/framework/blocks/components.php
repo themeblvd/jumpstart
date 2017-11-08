@@ -339,7 +339,7 @@ function themeblvd_divider( $args = array() ) {
  */
 function themeblvd_get_map( $args ) {
 
-	wp_enqueue_script( 'google-maps' );
+	wp_enqueue_script( 'google-maps-api' );
 
 	$args = wp_parse_args( $args, array(
 		'id'           => uniqid( 'map_' . rand() ),
