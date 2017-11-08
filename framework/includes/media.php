@@ -1876,7 +1876,7 @@ function themeblvd_get_bg_video( $video ) {
 
 				$args = apply_filters('themeblvd_youtube_bg_args', array(
 					'vid'				=> $yt_id,
-					'autoplay'			=> 0, // will play video through API after it's loaded
+					'autoplay'			=> 0, // Will play video through API after it's loaded.
 					'loop'				=> 1,
 					'hd'				=> 1,
 					'controls'			=> 0,
@@ -1897,13 +1897,12 @@ function themeblvd_get_bg_video( $video ) {
 				}
 
 				$output .= "></div>\n";
+
 			}
 
 			break;
 
 		case 'vimeo' :
-
-			wp_enqueue_script('froogaloop');
 
 			$v_id = explode('/', trim($video['mp4']));
 			$v_id = end($v_id);

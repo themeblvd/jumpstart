@@ -445,7 +445,7 @@ function themeblvd_include_scripts() {
 			$gmaps = add_query_arg('key', $gmap_key, $gmaps);
 		}
 
-		wp_register_script( 'google-maps', esc_url($gmaps), array(), null, $in_footer );
+		wp_register_script( 'google-maps-api', esc_url($gmaps), array(), null, $in_footer );
 
 	}
 

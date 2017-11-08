@@ -11,53 +11,8 @@ jQuery(document).ready(function($) {
 		$body			= $('body'),
 		$header			= $('#branding'),
 		$primary_menu	= $('.tb-primary-menu'),
-		youtube			= null,
-		yt_players		= {},
 		$popout_img 	= $('.site-inner.full_width .entry-content .alignnone'),
 		tbmethods		= {
-
-			/**
-			 * Inititate control over youtube
-			 * background video. Required in
-			 * order to mute the video.
-			 */
-			yt_init: function() {
-				$('.tb-bg-video.youtube .video').each(function() {
-
-					var $el = $(this),
-						params = $el.data();
-
-					yt_players[this.id] = new YT.Player(this.id, {
-						videoId: params.vid,
-						playerVars: params,
-						events: {
-							'onReady': tbmethods.yt_ready
-						}
-					});
-
-				});
-			},
-			yt_ready: function(e) {
-
-				var iframe = e.target.getIframe(),
-					$el = $('#'+iframe.id);
-
-				e.target.mute();
-				e.target.playVideo();
-
-				setTimeout(function(){ // eliminate intial flicker
-
-					$el.closest('.youtube').addClass('playing');
-
-					tbmethods.bg_video_size($el);
-
-					$window.on('resize', function(){
-						tbmethods.bg_video_size($el);
-					});
-
-				}, 500);
-
-			},
 
 			/**
 			 * Resize background video to fit
@@ -1752,46 +1707,124 @@ jQuery(document).ready(function($) {
 	});
 
 	// YouTube
-	if ( $('.tb-bg-video.youtube').length ) {
-		$.getScript("https://www.youtube.com/iframe_api", function(){
-			if ( typeof YT === "object" ) {
-				youtube = setInterval(function(){
-			        if ( typeof YT === "object" ) {
-			            tbmethods.yt_init();
-			            clearInterval(youtube);
-			        }
-			    },500);
-			}
-		});
-	}
+	if ( 'true' == themeblvd.youtube_api ) {
 
-	// Vimeo
-	if ( typeof Froogaloop !== 'undefined' ) {
-		$('.tb-bg-video.vimeo').each(function(){
+		var $youtubeVideo = $( '.tb-bg-video.youtube' );
 
-			var $el = $(this),
-				$iframe = $el.find('iframe'),
-				player = $f( $iframe[0] );
+		if ( $youtubeVideo.length ) {
 
-			player.addEvent('ready', function(){
+			$.getScript( 'https://www.youtube.com/iframe_api', function() {
 
-				tbmethods.bg_video_size( $iframe );
+				if ( 'undefined' !== typeof YT ) {
 
-				$window.on('resize', function(){
+					/*
+					 * Create a timed loop, to keep checking for YouTube
+					 * API to be fully available.
+					 */
+					var youtubeApiCheck = setInterval( function() {
+
+						if ( 'undefined' !== typeof YT.Player ) {
+
+							$youtubeVideo.each( function() {
+
+								var $wrap     = $(this),
+									params    = $wrap.find( '.video' ).data(),
+									elementID = $wrap.find( '.video' ).attr( 'id' ),
+									videoID   = params.vid;
+
+								var player = new YT.Player( elementID, {
+									videoId: videoID,
+									playerVars: params
+								});
+
+								player.addEventListener( 'onReady', function( event ) {
+
+									var iframe = event.target.getIframe(),
+										$iframe = $( '#' + iframe.id );
+
+									event.target.mute();
+
+									event.target.playVideo();
+
+									setTimeout(function(){ // Eliminate intial flicker.
+
+										$wrap.addClass('playing');
+
+										tbmethods.bg_video_size( $iframe );
+
+										$window.on('resize', function(){
+											tbmethods.bg_video_size( $iframe );
+										});
+
+									}, 500 );
+
+								});
+
+							});
+
+						    clearInterval( youtubeApiCheck );
+
+						}
+
+				    }, 500 );
+
+				}
+
+			}); // End $.getScript().
+
+		} // End if $youtubeVideo.length.
+	} // Enf if themeblvd.youtube_api.
+
+	if ( 'true' == themeblvd.vimeo_api ) {
+
+		var $vimeoVideo = $( '.tb-bg-video.vimeo' );
+
+		if ( $vimeoVideo.length ) {
+
+			$.getScript( 'https://player.vimeo.com/api/player.js', function() {
+
+				$vimeoVideo.each( function() {
+
+					var $wrap   = $( this ),
+						$iframe = $wrap.find( 'iframe' ),
+						player  = new Vimeo.Player( $iframe );
+
 					tbmethods.bg_video_size( $iframe );
+
+					$window.on( 'resize', function() {
+
+						tbmethods.bg_video_size( $iframe );
+
+					});
+
+					player.ready().then(function() {
+
+						player.setVolume(0);
+
+						player.play();
+
+					});
+
+					player.addCuePoint( 0.25, {
+					    startVideo: true
+					});
+
+					player.on( 'cuepoint', function( event ) {
+
+						if ( event.data.startVideo ) {
+
+							$wrap.addClass( 'playing' );
+
+						}
+
+					});
+
 				});
 
-				player.addEvent('play', function(id){
-					$el.addClass('playing');
-				});
+			}); // End $.getScript().
 
-				player.api('play');
-				player.api('setVolume', 0);
-
-			});
-
-		});
-	}
+		} // End if $vimeoVideo.length.
+	} // Enf if themeblvd.vimeo_api.
 
 });
 

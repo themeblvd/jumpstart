@@ -270,6 +270,8 @@ function themeblvd_setup() {
 			'easypiechart'		=> true,			// "EasyPieChart" scrip
 			'gmap'				=> true,			// Google Maps API v3
 			'charts'			=> true,			// Charts.js
+			'vimeo'				=> true,			// Latest Vimeo API.
+			'youtube'			=> true,			// Latest YouTube Iframe API.
 			'isotope'			=> true,			// Isotope script for sorting
 			'tag_cloud'			=> true, 			// Framework tag cloud styling
 			'owl_carousel'		=> true, 			// Owl Carousel for gallery sliders

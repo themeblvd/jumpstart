@@ -261,5 +261,15 @@ function themeblvd_get_js_locals() {
 		$locals['tabs_deep_linking'] = 'true';
 	}
 
+	// YouTube API
+	if ( themeblvd_supports( 'assets', 'youtube' ) ) {
+		$locals['youtube_api'] = 'true';
+	}
+
+	// Vimeo API
+	if ( themeblvd_supports( 'assets', 'vimeo' ) ) {
+		$locals['vimeo_api'] = 'true';
+	}
+
 	return apply_filters( 'themeblvd_js_locals', $locals );
 }

@@ -200,7 +200,7 @@ function themeblvd_divider( $args = array() ) {
  */
 function themeblvd_get_map( $args ) {
 
-    wp_enqueue_script( 'google-maps' );
+    wp_enqueue_script( 'google-maps-api' );
 
     $defaults = array(
         'id'            => uniqid( 'map_' . rand() ),  	// Unique ID for map
