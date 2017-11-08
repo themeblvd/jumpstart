@@ -6,6 +6,7 @@ Jump Start Changelog
 
 * **Updated Theme Blvd framework to 2.6.13**
 * Improvement: Better consistency loading background video from YouTube and Vimeo.
+* Improvement: Include all frontend functionality generally for better compatibility for third-party plugins that may be incorporating frontend components within the admin panel. 
 
 --------------------------------------------------------------
 
