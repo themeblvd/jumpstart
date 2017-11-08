@@ -16,25 +16,29 @@
  */
 function themeblvd_frontend_init() {
 
-	/*
-	 * Setup frontend
-	 * (1) Template Parts
-	 * (2) Template Attributes
-	 * (3) Theme Mode (list or grid)
-	 * (4) Main Configuration
-	 *	- a. Original $post object ID
-	 * 	- b. Builder name and post ID (if custom layout)
-	 * 	- c. Featured areas classes (if present)
-	 * 	- d. Sidebar layout
-	 * 	- e. Sidebar ID's
-	 */
-	Theme_Blvd_Frontend_Init::get_instance();
+	if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
-	/*
-	 * Setup any secondary queries or hook any modifications
-	 * to the primary query.
-	 */
-	Theme_Blvd_Query::get_instance();
+		/*
+		 * Setup frontend
+		 * (1) Template Parts
+		 * (2) Template Attributes
+		 * (3) Theme Mode (list or grid)
+		 * (4) Main Configuration
+		 *	- a. Original $post object ID
+		 * 	- b. Builder name and post ID (if custom layout)
+		 * 	- c. Featured areas classes (if present)
+		 * 	- d. Sidebar layout
+		 * 	- e. Sidebar ID's
+		 */
+		Theme_Blvd_Frontend_Init::get_instance();
+
+		/*
+		 * Setup any secondary queries or hook any modifications
+		 * to the primary query.
+		 */
+		Theme_Blvd_Query::get_instance();
+
+	}
 
 }
 
