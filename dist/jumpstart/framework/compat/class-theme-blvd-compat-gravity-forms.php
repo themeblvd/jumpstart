@@ -68,7 +68,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
-	public function assets( $type ) {
+	public function assets() {
 
 		if ( themeblvd_get_option( 'gforms_styles' ) ) {
 
