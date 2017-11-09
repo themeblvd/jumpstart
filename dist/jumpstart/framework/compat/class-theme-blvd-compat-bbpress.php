@@ -146,14 +146,34 @@ class Theme_Blvd_Compat_BBPress {
 
 		add_action( 'bbp_template_before_single_forum', array( $this, 'forum_subscribe' ) );
 
-		/*
-		 * Setup "lead topic" style.
+		/**
+		 * Filters whether lead topic is applied to
+		 * bbPress.
 		 *
-		 * @TODO Make 'lead topic' the default and remove theme option.
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param bool Whether bbPress's lead-topic is applied.
 		 */
-		add_action( 'wp', array( $this, 'lead_topic' ) );
+		if ( apply_filters( 'themeblvd_bbp_show_lead_topic', true ) ) {
 
-		// Add user's website URL to public profile.
+			add_filter( 'bbp_show_lead_topic', '__return_true' );
+
+			add_filter( 'get_post_metadata', array( $this, 'hide_lead_title' ), 10, 4 );
+
+			add_action( 'bbp_template_before_lead_topic', array( $this, 'lead_before' ) );
+
+			add_action( 'bbp_template_after_lead_topic', array( $this, 'lead_after' ) );
+
+		}
+
+		/**
+		 * Filters whether to add user's website URL to their
+		 * public bbPress profile.
+		 *
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param bool Whether bbPress's lead-topic is applied.
+		 */
 		if ( apply_filters( 'themeblvd_bbp_do_website', true ) ) {
 
 			add_filter( 'bbp_get_displayed_user_field', array( $this, 'user_website' ), 10, 2 );
@@ -778,41 +798,6 @@ class Theme_Blvd_Compat_BBPress {
 	}
 
 	/**
-	 * Setup lead topic. Hooked to "wp" action so we
-	 * make use of themeblvd_get_option().
-	 *
-	 * @since Theme_Blvd 2.5.0
-	 * @TODO Will get removed from fixing issue #326; code will get moved to constructor.
-	 */
-	public function lead_topic() {
-
-		/**
-		 * Filters whether lead topic is applied to
-		 * bbPress.
-		 *
-		 * @since Theme_Blvd 2.5.0
-		 *
-		 * @param bool Whether bbPress's lead-topic is applied.
-		 */
-		if ( apply_filters( 'themeblvd_bbp_show_lead_topic', themeblvd_get_option( 'bbp_lead_topic' ) ) ) {
-
-			add_filter( 'bbp_show_lead_topic', '__return_true' );
-
-			add_filter( 'get_post_metadata', array( $this, 'hide_lead_title' ), 10, 4 );
-
-			add_action( 'bbp_template_before_lead_topic', array( $this, 'lead_before' ) );
-
-			add_action( 'bbp_template_after_lead_topic', array( $this, 'lead_after' ) );
-
-		} else {
-
-			add_action( 'bbp_template_before_replies_loop', array( $this, 'topic_header' ) );
-
-		}
-
-	}
-
-	/**
 	 * On a single topic, hide the title.
 	 *
 	 * We're doing this so we can display the title
@@ -899,41 +884,6 @@ class Theme_Blvd_Compat_BBPress {
 
 		</div><!-- .tb-lead-topic (end) -->
 		<?php
-	}
-
-	/**
-	 * Output subscribe links for a topic, when not using the
-	 * lead topic display.
-	 *
-	 * @TODO Will get removed from fixing issue #326.
-	 *
-	 * @since Theme_Blvd 2.5.0
-	 */
-	public function topic_header() {
-
-		$tags = array(
-			'before'    => '<div class="tb-tags bbp-tags tags"><i class="fa fa-tags"></i>',
-			'after'     => '</div><!-- .tb-tags (end) -->',
-		);
-
-		if ( is_user_logged_in() || $tag_list = bbp_get_topic_tag_list( bbp_get_topic_id(), $tags ) ) {
-
-			echo '<div class="topic-header clearfix">';
-
-			if ( ! empty( $tag_list ) ) {
-				echo $tag_list;
-			}
-
-			if ( is_user_logged_in() ) {
-				echo '<div class="tb-bbp-buttons topic-subscribe clearfix">';
-				bbp_topic_subscription_link();
-				bbp_user_favorites_link();
-				echo '</div><!-- .tb-bbp-buttons (end) -->';
-			}
-
-			echo '</div>';
-
-		}
 	}
 
 	/**

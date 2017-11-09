@@ -266,7 +266,6 @@ class Theme_Blvd_Options_API {
 	 *      - gmap_api_key
 	 * Plugins
 	 *  - bbPress
-	 *      - bbp_lead_topic
 	 *      - bbp_naked_page
 	 *      - bbp_sidebar_layout
 	 *      - bbp_topic_sidebar_layout
@@ -1304,13 +1303,6 @@ class Theme_Blvd_Options_API {
 			'bbpress' => array(
 				'name'    => __( 'bbPress', '@@text-domain' ),
 				'options' => array(
-					'bbp_lead_topic' => array(
-						'name'     => __( 'Lead Topic', '@@text-domain' ),
-						'desc'     => __( 'When viewing individual topics, display the topic prominently separated from the responses.', '@@text-domain' ),
-						'id'       => 'bbp_lead_topic',
-						'std'      => '1',
-						'type'     => 'checkbox',
-					),
 					'bbp_naked_page' => array(
 						'name'     => __( 'Content Background', '@@text-domain' ),
 						'desc'     => __( 'When viewing bbPress pages, remove standard page background design from wrapping forums and topics.', '@@text-domain' ),

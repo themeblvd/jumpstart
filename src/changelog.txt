@@ -17,6 +17,8 @@ Jump Start Changelog
 	* Re-structured all admin JavaScript for better organization and efficiency.
 	* Re-structured all admin CSS for better organization and efficiency.
 	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
+* Plugin Compatibility
+	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filer `themeblvd_bbp_show_lead_topic` to disable.
 * New: Added support for applying background shade to individual columns in the layout builder.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
