@@ -153,7 +153,9 @@
 .tb-theme-options-wrap {
 	#of-option-plugins-tab,
 	#bbpress,
-	#woocommerce {
+	#gravityforms,
+	#woocommerce,
+	#wpml {
 		display: none;
 	}
 	&.plugins-installed #tb-options-page-plugins-tab {
@@ -162,7 +164,13 @@
 	&.bbpress-installed #bbpress {
 		display: block;
 	}
+	&.gravityforms-installed #gravityforms {
+		display: block;
+	}
 	&.woocommerce-installed #woocommerce {
+		display: block;
+	}
+	&.wpml-installed #wpml {
 		display: block;
 	}
 }

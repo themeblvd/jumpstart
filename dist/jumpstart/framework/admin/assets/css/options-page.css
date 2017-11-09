@@ -142,7 +142,9 @@
 
 .tb-theme-options-wrap #of-option-plugins-tab,
 .tb-theme-options-wrap #bbpress,
-.tb-theme-options-wrap #woocommerce {
+.tb-theme-options-wrap #gravityforms,
+.tb-theme-options-wrap #woocommerce,
+.tb-theme-options-wrap #wpml {
   display: none;
 }
 
@@ -154,7 +156,15 @@
   display: block;
 }
 
+.tb-theme-options-wrap.gravityforms-installed #gravityforms {
+  display: block;
+}
+
 .tb-theme-options-wrap.woocommerce-installed #woocommerce {
+  display: block;
+}
+
+.tb-theme-options-wrap.wpml-installed #wpml {
   display: block;
 }
 

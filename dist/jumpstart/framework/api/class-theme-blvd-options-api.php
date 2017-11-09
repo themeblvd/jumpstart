@@ -1365,7 +1365,7 @@ class Theme_Blvd_Options_API {
 			), // End bbpress options.
 
 			// Section: Gravity Forms
-			'gforms' => array(
+			'gravityforms' => array(
 				'name'    => __( 'Gravity Forms', 'jumpstart' ),
 				'options' => array(
 					'gforms_styles' => array(
