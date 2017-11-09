@@ -111,12 +111,8 @@
   padding: 0 5px;
 }
 
-.bbp-pagination .bbp-pagination-links {
-  display: none;
-}
-
-.bbp-pagination ~ .bbp-pagination .bbp-pagination-links {
-  display: block;
+.bbp-pagination-links a:hover {
+  border: none;
 }
 
 .type-topic .bbp-pagination {
@@ -141,22 +137,6 @@
 
 .type-topic .bbp-pagination-links .pagination {
   margin: 10px 0 30px 0;
-}
-
-.bbp-pagination-links a {
-  border-color: #cccccc;
-}
-
-.bbp-pagination-links a,
-.bbp-pagination-links span.current {
-  font-size: 12px;
-  padding: 6px 12px;
-}
-
-.bbp-pagination-links a:hover,
-.bbp-pagination-links span.current {
-  background: #ebebeb;
-  border-color: #adadad;
 }
 
 .bbp-pagination-links span.dots {

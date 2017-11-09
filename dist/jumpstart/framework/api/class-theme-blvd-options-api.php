@@ -1303,9 +1303,16 @@ class Theme_Blvd_Options_API {
 			'bbpress' => array(
 				'name'    => __( 'bbPress', 'jumpstart' ),
 				'options' => array(
+					'bbp_styles' => array(
+						'name'     => __( 'Custom Styles', 'jumpstart' ),
+						'desc'     => __( 'Add theme\'s custom styling for bbPress.', 'jumpstart' ),
+						'id'       => 'bbp_styles',
+						'std'      => '1',
+						'type'     => 'checkbox',
+					),
 					'bbp_naked_page' => array(
 						'name'     => __( 'Content Background', 'jumpstart' ),
-						'desc'     => __( 'When viewing bbPress pages, remove standard page background design from wrapping forums and topics.', 'jumpstart' ),
+						'desc'     => __( 'When viewing bbPress pages and using a closed content style, remove standard page background design from wrapping forums and topics.', 'jumpstart' ),
 						'id'       => 'bbp_naked_page',
 						'std'      => '1',
 						'type'     => 'checkbox',

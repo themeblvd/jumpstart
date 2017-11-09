@@ -67,10 +67,10 @@ class Theme_Blvd_Compat_BBPress {
 		 * We're not creating a new theme or completely replacing
 		 * default stylesheet, but just overriding select styles
 		 * of the current bbPress default theme.
+		 *
+		 * This can be disabled from Theme Options > Plugins > bbPress.
 		 */
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
-
-		add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
 
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 
@@ -187,24 +187,33 @@ class Theme_Blvd_Compat_BBPress {
 	 *
 	 * This method is filtered onto `wp_enqueue_scripts`.
 	 *
+	 * Enqueuing the stylesheet can be disabled from
+	 * Theme Options > Plugins > bbPress.
+	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
 
-		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+		if ( themeblvd_get_option( 'bbp_styles' ) ) {
 
-		$deps = $handler->get_framework_deps();
+			add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
 
-		$deps[] = 'bbp-default';
+			$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$deps = $handler->get_framework_deps();
 
-		wp_enqueue_style(
-			'themeblvd-bbpress',
-			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/bbpress{$suffix}.css" ),
-			$deps,
-			TB_FRAMEWORK_VERSION
-		);
+			$deps[] = 'bbp-default';
+
+			$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+			wp_enqueue_style(
+				'themeblvd-bbpress',
+				esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/bbpress{$suffix}.css" ),
+				$deps,
+				TB_FRAMEWORK_VERSION
+			);
+
+		}
 
 	}
 
@@ -646,11 +655,21 @@ class Theme_Blvd_Compat_BBPress {
 	public function pagination( $input ) {
 
 		if ( ! $input ) {
+
 			return '';
+
+		}
+
+		if ( ! themeblvd_get_option( 'bbp_styles' ) ) {
+
+			return $input;
+
 		}
 
 		// First, adjust the the inner HTML bits.
-		$input = str_replace( "<span class='page-numbers", "<span class='btn btn-default", $input );
+		$input = str_replace( "<span class='page-numbers current", "<a class='btn btn-default active", $input );
+
+		$input = str_replace( '</span>', '</a>', $input );
 
 		$input = str_replace( "<a class='page-numbers", "<a class='btn btn-default", $input );
 
@@ -673,7 +692,7 @@ class Theme_Blvd_Compat_BBPress {
 
 		$output .= '<div class="pagination">';
 
-		$output .= '<div class="btn-group clearfix">';
+		$output .= '<div class="btn-group paginate_links clearfix">';
 
 		$output .= $input;
 
@@ -747,6 +766,12 @@ class Theme_Blvd_Compat_BBPress {
 	 */
 	public function strip( $input ) {
 
+		if ( ! themeblvd_get_option( 'bbp_styles' ) ) {
+
+			return $input;
+
+		}
+
 		return str_replace( '&nbsp;', '', $input );
 
 	}
@@ -766,6 +791,12 @@ class Theme_Blvd_Compat_BBPress {
 	 * @since Theme_Blvd 2.5.0
 	 */
 	public function forum_subscribe() {
+
+		if ( ! themeblvd_get_option( 'bbp_styles' ) ) {
+
+			return;
+
+		}
 
 		if ( bbp_get_user_subscribe_link() ) {
 
@@ -791,7 +822,11 @@ class Theme_Blvd_Compat_BBPress {
 	 */
 	public function author( $args ) {
 
-		$args['sep'] = '';
+		if ( themeblvd_get_option( 'bbp_styles' ) ) {
+
+			$args['sep'] = '';
+
+		}
 
 		return $args;
 
@@ -835,6 +870,11 @@ class Theme_Blvd_Compat_BBPress {
 	 */
 	public function lead_before() {
 
+		if ( ! themeblvd_get_option( 'bbp_styles' ) ) {
+
+			return;
+
+		}
 		?>
 		<div class="tb-lead-topic">
 
@@ -855,6 +895,12 @@ class Theme_Blvd_Compat_BBPress {
 	 * @since Theme_Blvd 2.5.0
 	 */
 	public function lead_after() {
+
+		if ( ! themeblvd_get_option( 'bbp_styles' ) ) {
+
+			return;
+
+		}
 
 		$tags = array(
 			'before' => '<div class="tb-tags bbp-tags tags"><i class="fa fa-tags"></i>',
@@ -899,15 +945,28 @@ class Theme_Blvd_Compat_BBPress {
 		if ( $field == 'description' && ! bbp_is_single_user_edit() && $url = bbp_get_displayed_user_field( 'user_url' ) ) {
 
 			$value .= '</p><p class="bbp-user-forum-role">';
+
 			$value .= themeblvd_get_local( 'website' ) . ': ';
 
 			$url = esc_url( $url );
+
 			$link = sprintf( '<a href="%s" title="%s" target="_blank" rel="nofollow">%s</a>', $url, esc_attr( bbp_get_displayed_user_field( 'display_name' ) ), str_replace( array( 'http://', 'https://' ), '', $url ) );
 
+			/**
+			 * Filters the HTML output for the website link
+			 * added to a bbPress user's public profile.
+			 *
+			 * @since Theme_Blvd 2.5.0
+			 *
+			 * @param string $link HTML for link.
+			 * @param string $url  URL used in link, like `http://google.com`.
+			 */
 			$value .= apply_filters( 'themeblvd_bbp_website_link_html', $link, $url );
+
 		}
 
 		return $value;
+
 	}
 
 }
