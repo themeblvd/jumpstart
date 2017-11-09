@@ -1,9 +1,5 @@
 /* =General
 ----------------------------------------------- */
-.wc-legacy input[type=number] {
-  -moz-appearance: textfield;
-}
-
 .woocommerce ins {
   text-decoration: none;
 }
@@ -1554,39 +1550,13 @@ ul.woocommerce-info {
   }
 }
 
-@media screen and (min-width: 768px) {
-  .wc-legacy .cart-collaterals:after {
-    display: table;
-    content: " ";
-    clear: both;
-  }
-  .wc-legacy .cart_totals {
-    float: left;
-    margin: 0;
-    width: 48%;
-  }
-  .wc-legacy .shipping_calculator {
-    float: right;
-    width: 48%;
-  }
-  .wc-legacy.rtl .cart_totals {
-    float: right;
-  }
-  .wc-legacy.rtl .shipping_calculator {
-    float: left;
-  }
-}
-
-.cart_totals h2,
-.wc-legacy .shipping_calculator h2 {
+.cart_totals h2 {
   font-size: 18px;
   margin: 0 5px 12px 5px;
 }
 
 .cart_totals h2:before,
-.woocommerce-shipping-calculator > p:first-child:before,
-.wc-legacy .shipping_calculator h2:before,
-.wc-legacy .shipping_calculator h2 a:after {
+.woocommerce-shipping-calculator > p:first-child:before {
   font-family: "FontAwesome";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1647,27 +1617,12 @@ ul.woocommerce-info {
 }
 
 /* Shipping Calculator */
-.woocommerce-shipping-calculator > p:first-child:before,
-.wc-legacy .shipping_calculator h2:before {
+.woocommerce-shipping-calculator > p:first-child:before {
   content: "\f0ac";
   /* globe */
 }
 
-.wc-legacy .shipping_calculator h2 a:after {
-  content: "\f063";
-  /* down arrow */
-  font-size: 14px;
-  margin-left: 5px;
-  text-decoration: none;
-}
-
-.wc-legacy .shipping_calculator h2 a:hover,
-.wc-legacy .shipping_calculator h2 a:focus {
-  text-decoration: none;
-}
-
-.woocommerce-shipping-calculator p,
-.wc-legacy .shipping_calculator p {
+.woocommerce-shipping-calculator p {
   margin-bottom: 0;
 }
 
