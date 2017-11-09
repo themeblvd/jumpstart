@@ -331,7 +331,6 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 function themeblvd_get_media_placeholder( $args = array() ) {
 
 	$defaults = array(
-		'frame'			=> apply_filters('themeblvd_featured_thumb_frame', false),
 		'format'		=> get_post_format(),
 		'type'			=> themeblvd_get_att('placeholder'),
 		'width'			=> themeblvd_get_att('crop_w'),
