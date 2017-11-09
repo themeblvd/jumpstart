@@ -20,6 +20,7 @@ Jump Start Changelog
 * Plugin Compatibility
 	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filer `themeblvd_bbp_show_lead_topic` to disable.
 	* bbPress: Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
+	* Gravity Forms: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > bbPress*.
 * New: Added support for applying background shade to individual columns in the layout builder.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.

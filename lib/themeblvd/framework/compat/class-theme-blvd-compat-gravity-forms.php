@@ -70,18 +70,22 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 */
 	public function assets( $type ) {
 
-		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
+		if ( themeblvd_get_option( 'gforms_styles' ) ) {
 
-		$deps = $handler->get_framework_deps();
+			$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$deps = $handler->get_framework_deps();
 
-		wp_enqueue_style(
-			'themeblvd-gravityforms',
-			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/gravityforms{$suffix}.css" ),
-			$deps,
-			TB_FRAMEWORK_VERSION
-		);
+			$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+			wp_enqueue_style(
+				'themeblvd-gravityforms',
+				esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/gravityforms{$suffix}.css" ),
+				$deps,
+				TB_FRAMEWORK_VERSION
+			);
+
+		}
 
 	}
 
@@ -106,7 +110,11 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 */
 	public function body_class( $class ) {
 
-		$class[] = 'tb-gforms-compat';
+		if ( themeblvd_get_option( 'gforms_styles' ) ) {
+
+			$class[] = 'tb-gforms-compat';
+
+		}
 
 		return $class;
 

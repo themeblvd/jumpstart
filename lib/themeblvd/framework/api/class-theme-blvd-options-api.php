@@ -266,10 +266,13 @@ class Theme_Blvd_Options_API {
 	 *      - gmap_api_key
 	 * Plugins
 	 *  - bbPress
+	 *      - bbp_styles
 	 *      - bbp_naked_page
 	 *      - bbp_sidebar_layout
 	 *      - bbp_topic_sidebar_layout
 	 *      - bbp_user_sidebar_layout
+	 *  - Gravity Forms
+	 *      - gforms_styles
 	 *  - WooCommerce
 	 *      - woo_shop_view
 	 *      - woo_shop_columns
@@ -1360,6 +1363,20 @@ class Theme_Blvd_Options_API {
 					),
 				),
 			), // End bbpress options.
+
+			// Section: Gravity Forms
+			'gforms' => array(
+				'name'    => __( 'Gravity Forms', '@@text-domain' ),
+				'options' => array(
+					'gforms_styles' => array(
+						'name'     => __( 'Custom Styles', '@@text-domain' ),
+						'desc'     => __( 'Add theme\'s custom styling for Gravity Forms.', '@@text-domain' ),
+						'id'       => 'gforms_styles',
+						'std'      => '1',
+						'type'     => 'checkbox',
+					),
+				),
+			),
 
 			// Section: WooCommerce
 			'woocommerce' => array(

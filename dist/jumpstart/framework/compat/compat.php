@@ -22,7 +22,7 @@ function themeblvd_plugin_compat() {
 
 		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/class-theme-blvd-compat-bbpress.php' );
 
-		$bbpress = Theme_Blvd_Compat_bbPress::get_instance();
+		$bbpress = Theme_Blvd_Compat_BBPress::get_instance();
 
 	}
 
@@ -58,7 +58,7 @@ function themeblvd_plugin_compat() {
 
 		include_once( TB_FRAMEWORK_DIRECTORY . '/compat/class-theme-blvd-compat-subtitles.php' );
 
-		$gravityforms = Theme_Blvd_Compat_Subtitles::get_instance();
+		$subtitles = Theme_Blvd_Compat_Subtitles::get_instance();
 
 	}
 
@@ -77,13 +77,14 @@ function themeblvd_get_compat( $options = false ) {
 
 	$plugins[] = 'bbpress';
 
+	$plugins[] = 'gravityforms';
+
 	$plugins[] = 'woocommerce';
 
 	$plugins[] = 'wpml';
 
-	if ( ! $options ) {
 
-		$plugins[] = 'gravityforms';
+	if ( ! $options ) {
 
 		$plugins[] = 'portfolios';
 
