@@ -66,6 +66,9 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	/**
 	 * Add custom styling for Gravity Forms.
 	 *
+	 * This method is filtered onto:
+	 * 1. `wp_enqueue_scripts` - 15
+	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
@@ -103,6 +106,9 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 * footer of the website. In these cases, our body
 	 * class can help us to write overriding styles.
 	 *
+	 * This method is filtered onto:
+	 * 1. `body_class` - 10
+	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $class Current CSS classes on <body>.
@@ -124,6 +130,9 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 * Filter validation error message to use our
 	 * framework's alert styling.
 	 *
+	 * This method is filtered onto:
+	 * 1. `gform_validation_message` - 10
+	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $message Original validation message.
@@ -144,6 +153,9 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	/**
 	 * Filter confirmation message to use our
 	 * framework's alert styling.
+	 *
+	 * This method is filtered onto:
+	 * 1. `gform_confirmation` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *

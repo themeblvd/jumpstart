@@ -185,7 +185,8 @@ class Theme_Blvd_Compat_BBPress {
 	/**
 	 * Add overriding CSS for bbPress pages.
 	 *
-	 * This method is filtered onto `wp_enqueue_scripts`.
+	 * This method is hooked to:
+	 * 1. `wp_enqueue_scripts` - 10
 	 *
 	 * Enqueuing the stylesheet can be disabled from
 	 * Theme Options > Plugins > bbPress.
@@ -224,8 +225,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * bbpress.css file gets loaded in the
 	 * correct place.
 	 *
-	 * This method is filtered onto
-	 * `themeblvd_framework_stylesheets`.
+	 * This method is filtered onto:
+	 * 1. `themeblvd_framework_stylesheets` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -244,11 +245,10 @@ class Theme_Blvd_Compat_BBPress {
 	 * Add CSS classes needed to the <body> tag, for
 	 * custom styling from our bbpress.css.
 	 *
-	 * This method is filtered onto `body_class`.
+	 * This method is filtered onto:
+	 * 1. `body_class` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
-	 *
-	 * @see body_class()
 	 *
 	 * @param  array $class Current body classes from WordPress.
 	 * @return array $class Modified body classes.
@@ -275,7 +275,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * Add CSS classes to article wrap for bbPress
 	 * pages.
 	 *
-	 * This method is filtered onto `post_class`.
+	 * This method is filtered onto:
+	 * 1. `post_class` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -320,7 +321,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * depending on selections from the theme options
 	 * page.
 	 *
-	 * This method is filetered onto `themeblvd_sidebar_layout`.
+	 * This method is filetered onto:
+	 * 1. `themeblvd_sidebar_layout` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -360,8 +362,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * Remove redundant descriptions.
 	 *
 	 * This method is filtered onto:
-	 * 1. `bbp_get_single_forum_description`
-	 * 2. `bbp_get_single_topic_description`
+	 * 1. `bbp_get_single_forum_description` - 10
+	 * 2. `bbp_get_single_topic_description` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -380,9 +382,9 @@ class Theme_Blvd_Compat_BBPress {
 	 * results.
 	 *
 	 * This method is filtered onto:
-	 * 1. `bbp_register_forum_post_type`
-	 * 2. `bbp_register_topic_post_type`
-	 * 3. `bbp_register_reply_post_type`
+	 * 1. `bbp_register_forum_post_type` - 10
+	 * 2. `bbp_register_topic_post_type` - 10
+	 * 3. `bbp_register_reply_post_type` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -405,7 +407,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * we no longer need the bbPress-specific search
 	 * box.
 	 *
-	 * This method is filtered onto `bbp_allow_search`.
+	 * This method is filtered onto:
+	 * 1. `bbp_allow_search` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -426,7 +429,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * we can specify which icons in the theme should
 	 * be used to visually represent them.
 	 *
-	 * This method is filtered onto `themeblvd_format_icon`.
+	 * This method is filtered onto:
+	 * 1. `themeblvd_format_icon` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -494,7 +498,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * so it can be referenced when building breadcrumbs
 	 * into theme framework's system.
 	 *
-	 * This method is filtered onto `bbp_get_breadcrumb`.
+	 * This method is filtered onto:
+	 * 1. `bbp_get_breadcrumb` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -518,8 +523,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * Add bbPress breadcrumbs to theme framework's
 	 * breadcrumbs.
 	 *
-	 * This method is filtered onto
-	 * `themeblvd_pre_breadcrumb_parts`.
+	 * This method is filtered onto:
+	 * 1. `themeblvd_pre_breadcrumb_parts` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -643,9 +648,9 @@ class Theme_Blvd_Compat_BBPress {
 	 * work better with theme framework styling.
 	 *
 	 * This method is filtered onto:
-	 * 1. `bbp_get_topic_pagination_links`
-	 * 2. `bbp_get_forum_pagination_links`
-	 * 3. `bbp_get_search_pagination_links`
+	 * 1. `bbp_get_topic_pagination_links` - 10
+	 * 2. `bbp_get_forum_pagination_links` - 10
+	 * 3. `bbp_get_search_pagination_links` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -710,7 +715,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * Filter logout link used in login widget, to
 	 * display some more info in the widget.
 	 *
-	 * This method is filtered onto `bbp_get_logout_link`.
+	 * This method is filtered onto:
+	 * 1. `bbp_get_logout_link` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -754,10 +760,10 @@ class Theme_Blvd_Compat_BBPress {
 	 * Remove unnecessary unbreakable spaces.
 	 *
 	 * This method is filtered onto:
-	 * 1. `bbp_get_topic_revision_log`
-	 * 2. `bbp_get_reply_revision_log`
-	 * 3. `bbp_get_topic_author_link`
-	 * 4. `bbp_get_reply_author_link`
+	 * 1. `bbp_get_topic_revision_log` - 10
+	 * 2. `bbp_get_reply_revision_log` - 10
+	 * 3. `bbp_get_topic_author_link` - 10
+	 * 4. `bbp_get_reply_author_link` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -784,9 +790,9 @@ class Theme_Blvd_Compat_BBPress {
 	 * with the forum subscribe link, we want to style
 	 * those links, as well.
 	 *
-	 * This method is filtered onto:
-	 * 1. `bbp_template_before_forums_index`
-	 * 2. `bbp_template_before_single_forum`
+	 * This method is hooked to:
+	 * 1. `bbp_template_before_forums_index` - 10
+	 * 2. `bbp_template_before_single_forum` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
@@ -815,8 +821,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * details.
 	 *
 	 * This method is filtered onto:
-	 * 1. `bbp_after_get_topic_author_link_parse_args`
-	 * 2. `bbp_after_get_reply_author_link_parse_args`
+	 * 1. `bbp_after_get_topic_author_link_parse_args` - 10
+	 * 2. `bbp_after_get_reply_author_link_parse_args` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
@@ -838,7 +844,8 @@ class Theme_Blvd_Compat_BBPress {
 	 * We're doing this so we can display the title
 	 * below with the lead topic.
 	 *
-	 * This method is filtered onto `get_post_metadata`.
+	 * This method is filtered onto:
+	 * 1. `get_post_metadata` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
@@ -866,6 +873,9 @@ class Theme_Blvd_Compat_BBPress {
 	 * Before lead topic. Output opening DIV and
 	 * new title section.
 	 *
+	 * This method is hooked to:
+	 * 1. `bbp_template_before_lead_topic` - 10
+	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
 	public function lead_before() {
@@ -891,6 +901,9 @@ class Theme_Blvd_Compat_BBPress {
 
 	/**
 	 * After lead topic. Output closing DIV.
+	 *
+	 * This method is hooked to:
+	 * 1. `bbp_template_after_lead_topic` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
@@ -935,8 +948,8 @@ class Theme_Blvd_Compat_BBPress {
 	/**
 	 * Add user's website URL to output with profile.
 	 *
-	 * This method is filtered onto
-	 * `bbp_get_displayed_user_field`.
+	 * This method is filtered onto:
+	 * 1. `bbp_get_displayed_user_field` - 10
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 */
