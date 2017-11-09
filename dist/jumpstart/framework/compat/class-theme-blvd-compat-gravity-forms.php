@@ -12,57 +12,61 @@
 /**
  * Add extended Gravity Forms compatibility.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * This class follows the singleton pattern,
+ * meaning it can only be instantiated in
+ * one instance.
+ *
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Compat_Gravity_Forms {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
-     * Creates or returns an instance of this class.
-     *
-     * @since 2.5.0
-     *
-     * @return Theme_Blvd_Compat_bbPress A single instance of this class.
-     */
+	 * Creates or returns an instance of this class.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @return Theme_Blvd_Compat_Gravity_Forms A single instance of this class.
+	 */
 	public static function get_instance() {
 
-		if ( self::$instance == null ) {
-            self::$instance = new self;
-        }
+		if ( null === self::$instance ) {
 
-        return self::$instance;
+			self::$instance = new self;
+
+		}
+
+		return self::$instance;
+
 	}
 
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
-		add_action( 'wp_enqueue_scripts', array($this, 'assets'), 15 ); // Gravity Forms is at priority 11
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 15 ); // Gravity Forms is at priority 11.
 
-		add_filter( 'body_class', array($this, 'body_class') );
+		add_filter( 'body_class', array( $this, 'body_class' ) );
 
-		add_filter( 'gform_validation_message', array($this, 'error') );
+		add_filter( 'gform_validation_message', array( $this, 'error' ) );
 
-		add_filter( 'gform_confirmation', array($this, 'confirm') );
+		add_filter( 'gform_confirmation', array( $this, 'confirm' ) );
 
 	}
 
 	/**
-	 * Add CSS
+	 * Add custom styling for Gravity Forms.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets( $type ) {
 
@@ -82,39 +86,72 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	}
 
 	/**
-	 * Add "tb-gforms-compat" class to <body>
+	 * Add `tb-gforms-compat` class to <body>, to
+	 * help with custom styling when Gravity Form's
+	 * stylesheet preceed our's.
 	 *
-	 * It's unpredicatable where Gravity Forms is going to output
-	 * the CSS files, as they do it dynamically depending on if a form
-	 * exists on the page, and then inserts to the wp_footer().
-	 * This body class allows us to style everything one more class
-	 * specifically to make sure we always override.
+	 * If a form is present within the standard content
+	 * of a page, Gravity Froms will generally output
+	 * all stylesheets properly in the <head>.
 	 *
-	 * @since 2.5.0
+	 * However, when forms are present outside of the
+	 * loop, Gravity Forms may print stylesheets in the
+	 * footer of the website. In these cases, our body
+	 * class can help us to write overriding styles.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  array $class Current CSS classes on <body>.
+	 * @return array $class Modified CSS classes on <body>.
 	 */
 	public function body_class( $class ) {
+
 		$class[] = 'tb-gforms-compat';
+
 		return $class;
+
 	}
 
 	/**
-	 * Filter validation error message to use our framework's
-	 * alert styling.
+	 * Filter validation error message to use our
+	 * framework's alert styling.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  string $message Original validation message.
+	 * @return string $message Modified validation message.
 	 */
-	public function error( $msg ) {
-		return str_replace('validation_error', 'tb-alert alert alert-danger', $msg);
+	public function error( $message ) {
+
+		$message = str_replace(
+			'validation_error',
+			'tb-alert alert alert-danger',
+			$message
+		);
+
+		return $message;
+
 	}
 
 	/**
-	 * Filter confirmation message to use our framework's
-	 * alert styling.
+	 * Filter confirmation message to use our
+	 * framework's alert styling.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  string $message Original validation message.
+	 * @return string $message Modified validation message.
 	 */
 	public function confirm( $msg ) {
-		return str_replace('gform_confirmation_message', 'tb-alert alert alert-success', $msg);
+
+		$message = str_replace(
+			'gform_confirmation_message',
+			'tb-alert alert alert-success',
+			$msg
+		);
+
+		return $message;
+
 	}
 
 }
