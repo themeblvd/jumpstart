@@ -1653,6 +1653,18 @@ function themeblvd_editor( $args = array() ) {
 		'duplicate' => false,
 	));
 
+	/**
+	 * Filters the settings passed when the framework
+	 * calls wp_editor().
+	 *
+	 * @link https://codex.wordpress.org/Function_Reference/wp_editor
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param array Settings passed to wp_editor().
+	 */
+	$settings = apply_filters( 'themeblvd_editor_settings', array() );
+
 	?>
 	<div id="themeblvd-editor-modal" class="themeblvd-modal-wrap hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-editor">
@@ -1675,7 +1687,7 @@ function themeblvd_editor( $args = array() ) {
 					<div class="media-frame-content">
 						<div class="media-frame-content-inner">
 							<div class="content-mitt">
-								<?php wp_editor( '', 'themeblvd_editor' ); ?>
+								<?php wp_editor( '', 'themeblvd_editor', $settings ); ?>
 							</div>
 						</div><!-- .media-frame-content-inner (end) -->
 					</div><!-- .media-frame-content (end) -->
