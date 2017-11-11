@@ -740,7 +740,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 	 * }
 	 * @param array  $query Query parameters to pass to WP_Query.
 	 */
-	return apply_filters( 'themeblvd_related_posts', $output, $args, $query );
+	return apply_filters( 'themeblvd_related_posts', $output, $args, $args['query'] );
 
 }
 
