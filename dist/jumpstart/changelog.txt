@@ -20,8 +20,9 @@ Jump Start Changelog
 * Third-Party Plugin Compatibility
 	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filer `themeblvd_bbp_show_lead_topic` to disable.
 	* bbPress: Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
-	* Gravity Forms: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > bbPress*.
+	* Gravity Forms: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > Gravity Forms*.
 	* WooCommerce: Removed any legacy code for WooCommerce versions prior to 3.0.
+	* WooCommerce: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > WooCommerce*.
 	* WPML: Fixed WPML options showing on Theme Options, when WPML isn't installed.
 * New: Added support for applying background shade to individual columns in the layout builder.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).

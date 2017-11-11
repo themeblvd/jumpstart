@@ -729,11 +729,11 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function availability( $args ) {
 
-		if ( $args['class'] == 'in-stock' ) {
+		if ( 'in-stock' === $args['class'] ) {
 
 			$args['class'] .= ' text-success';
 
-		} elseif ( $args['class'] == 'out-of-stock' ) {
+		} elseif ( 'out-of-stock' === $args['class'] ) {
 
 			$args['class'] .= ' text-danger';
 
@@ -1125,7 +1125,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 					$shop_id = wc_get_page_id( 'shop' );
 
-					if ( $shop_id && $shop_id != -1 ) {
+					if ( $shop_id && -1 != $shop_id ) {
 
 						$add = array(
 							array(
