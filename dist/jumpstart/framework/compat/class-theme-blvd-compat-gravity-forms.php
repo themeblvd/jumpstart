@@ -120,6 +120,8 @@ class Theme_Blvd_Compat_Gravity_Forms {
 
 			$class[] = 'tb-gforms-compat';
 
+			$class[] = 'tb-gforms-styles'; // Better framework consistency.
+
 		}
 
 		return $class;

@@ -1005,10 +1005,10 @@ blockquote small:before {
 #comments-title,
 #respond .comment-reply-title,
 .tb-author-box .info-box-title,
-.woocommerce-tabs .panel h2,
+.tb-wc-styles .woocommerce-tabs .panel h2,
 .products.related > h2,
 .products.upsells > h2,
-#bbpress-forums fieldset.bbp-form legend,
+.tb-bbp-styles #bbpress-forums fieldset.bbp-form legend,
 .modal-title,
 .tb-pricing-table .title,
 .tb-icon-box .icon-box-title {
@@ -1434,26 +1434,26 @@ button:active {
 ----------------------------------------------- */
 
 /* Single Product Wrap */
-.tb-product-wrap .product_meta {
+.tb-wc-styles .tb-product-wrap .product_meta {
 	border-top: none;
 	padding: 0;
 }
 
 /* Single Product Tabs */
-.woocommerce-tabs {
+.tb-wc-styles .woocommerce-tabs {
 	margin-top: 60px;
 }
-.woocommerce-tabs .tabs {
+.tb-wc-styles .woocommerce-tabs .tabs {
 	margin: 0 0 20px 0;
 }
-.woocommerce-tabs .tabs > li,
-.woocommerce-tabs .tabs > li.active {
+.tb-wc-styles .woocommerce-tabs .tabs > li,
+.tb-wc-styles .woocommerce-tabs .tabs > li.active {
 	background-color: transparent;
 	border: none;
 	padding: 0 12px 0 0;
 }
-.woocommerce-tabs .tabs > li > a,
-.woocommerce-tabs .tabs > li.active > a {
+.tb-wc-styles .woocommerce-tabs .tabs > li > a,
+.tb-wc-styles .woocommerce-tabs .tabs > li.active > a {
 	background-color: transparent;
 	border: 2px solid #f2f2f2;
 	border-color: rgba(220,220,220,.4);
@@ -1466,41 +1466,37 @@ button:active {
 	-webkit-transition: background-color .2s ease-out, border-color .2s ease-out;
 	transition: background-color .2s ease-out, border-color .2s ease-out;
 }
-.content_dark .woocommerce-tabs .tabs > li > a,
-.content_dark .woocommerce-tabs .tabs > li.active > a {
-	border-color: rgba(0,0,0,.2);
-}
-.woocommerce-tabs .tabs > li > a:hover,
-.woocommerce-tabs .tabs > li > a:focus,
-.woocommerce-tabs .tabs > li.active > a {
+.tb-wc-styles .woocommerce-tabs .tabs > li > a:hover,
+.tb-wc-styles .woocommerce-tabs .tabs > li > a:focus,
+.tb-wc-styles .woocommerce-tabs .tabs > li.active > a {
 	background-color: #36b3a8; /* highlight */
 	border-color: transparent;
 	color: #ffffff;
 }
-.woocommerce-tabs .tabs > li.active > a,
-.woocommerce-tabs .tabs > li.active > a:hover,
-.woocommerce-tabs .tabs > li.active > a:focus {
+.tb-wc-styles .woocommerce-tabs .tabs > li.active > a,
+.tb-wc-styles .woocommerce-tabs .tabs > li.active > a:hover,
+.tb-wc-styles .woocommerce-tabs .tabs > li.active > a:focus {
 	background-color: #1b1b1b; /* primary */
 }
 @media (max-width: 767px) {
-	.woocommerce-tabs .tabs {
+	.tb-wc-styles .woocommerce-tabs .tabs {
 		border: none;
 	}
-	.woocommerce-tabs .tabs > li,
-	.woocommerce-tabs .tabs > li.active {
+	.tb-wc-styles .tb-wc-styles .woocommerce-tabs .tabs > li,
+	.tb-wc-styles .woocommerce-tabs .tabs > li.active {
 		margin-bottom: 10px;
 		padding: 0;
 	}
-	.woocommerce-tabs .tabs > li:last-child {
+	.tb-wc-styles .woocommerce-tabs .tabs > li:last-child {
 		margin-bottom: 0;
 	}
-	.woocommerce-tabs .tabs > li > a,
-	.woocommerce-tabs .tabs > li.active > a {
+	.tb-wc-styles .woocommerce-tabs .tabs > li > a,
+	.tb-wc-styles .woocommerce-tabs .tabs > li.active > a {
 		font-size: 1.2em;
 		padding: 14px 14px;
 	}
 }
-.woocommerce-tabs .panel {
+.tb-wc-styles .woocommerce-tabs .panel {
 	background: #fafafa;
 	border: 2px solid #f5f5f5;
 	border-color: rgba(220,220,220,.3);
@@ -1509,150 +1505,129 @@ button:active {
 	margin-bottom: 0;
 	padding: 40px;
 }
-.content_dark .woocommerce-tabs .panel {
-	background: rgba(0,0,0,.1);
-	border-color: rgba(0,0,0,.2);
-}
 
 /* Reviews */
-#reviews #comments {
+.tb-wc-styles #reviews #comments {
 	margin-top: 0;
 }
-#reviews #respond .comment-form-author,
-#reviews #respond .comment-form-email {
+.tb-wc-styles #reviews #respond .comment-form-author,
+.tb-wc-styles #reviews #respond .comment-form-email {
 	width: 48%;
 }
-#reviews #respond .comment-form-author {
+.tb-wc-styles #reviews #respond .comment-form-author {
 	margin-right: 2%;
 }
-#reviews #respond .comment-form-email {
+.tb-wc-styles #reviews #respond .comment-form-email {
 	margin-right: 0;
 }
 
 /* Related/Upsell Products */
-.products.related,
-.products.upsells {
+.tb-wc-styles .products.related,
+.tb-wc-styles .products.upsells {
 	margin-top: 60px;
 }
-.products.related > h2,
-.products.upsells > h2 {
+.tb-wc-styles .products.related > h2,
+.tb-wc-styles .products.upsells > h2 {
 	font-size: 1rem;
 }
 
 /* Product Lists */
-.tb-product-loop-wrap.list-view li.product {
+.tb-wc-styles .tb-product-loop-wrap.list-view li.product {
 	margin-bottom: 50px;
 }
-.tb-product-loop-wrap.list-view .tb-product h3 {
+.tb-wc-styles .tb-product-loop-wrap.list-view .tb-product h3 {
 	font-size: 24px;
 }
-.tb-product-loop-wrap.list-view .tb-product h3 a:not(:hover) {
+.tb-wc-styles .tb-product-loop-wrap.list-view .tb-product h3 a:not(:hover) {
 	color: inherit;
 }
-.tb-product-loop-wrap.list-view .tb-product .price {
+.tb-wc-styles .tb-product-loop-wrap.list-view .tb-product .price {
 	margin-bottom: 15px;
 }
-.tb-product-loop-wrap.list-view li.product p {
+.tb-wc-styles .tb-product-loop-wrap.list-view li.product p {
 	margin-bottom: 15px;
 }
 
 /* Shop Tables */
-.shop_table {
+.tb-wc-styles .shop_table {
 	background: #fafafa;
 	border-width: 2px;
 	border-color: #f2f2f2;
 	border-radius: 2px;
 }
-.content_dark .shop_table {
-	background: rgba(0,0,0,.1);
-	border-color: rgba(0,0,0,.2);
-}
-.shop_table th {
+.tb-wc-styles .shop_table th {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-.shop_table th:first-child {
+.tb-wc-styles .shop_table th:first-child {
 	border-radius: 1px 0 0 0;
 }
-.shop_table th:last-child {
+.tb-wc-styles .shop_table th:last-child {
 	border-radius: 0 1px 0 0;
 }
-.shop_table > thead > tr > th,
-.shop_table > tbody > tr > th,
-.shop_table > tfoot > tr > th,
-.shop_table > thead > tr > td,
-.shop_table > tbody > tr > td,
-.shop_table > tfoot > tr > td {
+.tb-wc-styles .shop_table > thead > tr > th,
+.tb-wc-styles .shop_table > tbody > tr > th,
+.tb-wc-styles .shop_table > tfoot > tr > th,
+.tb-wc-styles .shop_table > thead > tr > td,
+.tb-wc-styles .shop_table > tbody > tr > td,
+.tb-wc-styles .shop_table > tfoot > tr > td {
 	border-color: #f2f2f2;
 	border-width: 2px;
-}
-.content_dark .shop_table > thead > tr > th,
-.content_dark .shop_table > tbody > tr > th,
-.content_dark .shop_table > tfoot > tr > th,
-.content_dark .shop_table > thead > tr > td,
-.content_dark .shop_table > tbody > tr > td,
-.content_dark .shop_table > tfoot > tr > td {
-	border-color: rgba(0,0,0,.2);
 }
 
 /* Dynamic select boxes */
 @media (min-width: 768px) {
-	.select2-container .select2-choice {
+	.tb-wc-styles .select2-container .select2-choice {
 		height: 46px;
 		line-height: 46px;
 	}
 }
 
 /* Cart */
-.cart_item .product-remove {
+.tb-wc-styles .cart_item .product-remove {
 	border-width: 2px;
 }
-.cart_totals {
+.tb-wc-styles .cart_totals {
 	margin-top: 50px;
 }
-.sidebar-layout-full_width .cart_totals {
+.tb-wc-styles .sidebar-layout-full_width .cart_totals {
 	width: auto;
 }
-.cart_totals table,
-.cart_totals th,
-.cart_totals tr {
+.tb-wc-styles .cart_totals table,
+.tb-wc-styles .cart_totals th,
+.tb-wc-styles .cart_totals tr {
 	border-width: 2px;
 	border-color: #f2f2f2;
 }
-.content_dark .cart_totals table,
-.content_dark .cart_totals th,
-.content_dark .cart_totals tr {
-	border-color: rgba(0,0,0,.2);
-}
-.cart_totals th {
+.tb-wc-styles .cart_totals th {
 	background: #fafafa;
 }
-.content_dark .cart_totals th {
+.tb-wc-styles .content_dark .cart_totals th {
 	background: rgba(0,0,0,.1);
 }
-.shop_table.cart td.actions .coupon .input-text {
+.tb-wc-styles .shop_table.cart td.actions .coupon .input-text {
 	height: 39px;
 }
 
 /* Checkout */
-.woocommerce-page .login .form-row {
+.tb-wc-styles .woocommerce-page .login .form-row {
 	margin-bottom: 15px;
 }
-.woocommerce-page .login .form-row .inline {
+.tb-wc-styles .woocommerce-page .login .form-row .inline {
 	font-size: 13px;
 	padding-top: 8px;
 }
-.checkout_coupon input[type="text"] {
+.tb-wc-styles .checkout_coupon input[type="text"] {
  	height: 40px;
 }
-.woocommerce #order_review tr > td.product-name,
-.woocommerce #order_review tfoot > tr > th {
+.tb-wc-styles .woocommerce #order_review tr > td.product-name,
+.tb-wc-styles .woocommerce #order_review tfoot > tr > th {
 	border-width: 2px;
 }
 
 /* Floating Cart */
-.tb-cart-popup .product_list_widget li,
-.tb-cart-popup .widget_shopping_cart .buttons {
+.tb-wc-styles .tb-cart-popup .product_list_widget li,
+.tb-wc-styles .tb-cart-popup .widget_shopping_cart .buttons {
 	border-width: 2px;
 }
 
@@ -1660,86 +1635,80 @@ button:active {
 ----------------------------------------------- */
 
 /* Forums */
-#bbpress-forums ul.bbp-topics,
-#bbpress-forums ul.bbp-forums {
+.tb-bbp-styles #bbpress-forums ul.bbp-topics,
+.tb-bbp-styles #bbpress-forums ul.bbp-forums {
 	border-radius: 3px 3px 0 0;
 	border-width: 2px;
 }
-#bbpress-forums li.bbp-header {
+.tb-bbp-styles #bbpress-forums li.bbp-header {
 	border-radius: 1px 1px 0 0;
 	border-width: 2px;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-#bbpress-forums li.bbp-body ul.forum,
-#bbpress-forums li.bbp-body ul.topic {
+.tb-bbp-styles #bbpress-forums li.bbp-body ul.forum,
+.tb-bbp-styles #bbpress-forums li.bbp-body ul.topic {
 	border-width: 2px;
 }
 
 /* Lead Topic */
-#bbpress-forums .tb-lead-topic > .wrap {
+.tb-bbp-styles #bbpress-forums .tb-lead-topic > .wrap {
 	border-radius: 3px 3px 0 0;
 	border-width: 2px;
 }
-#bbpress-forums .tb-lead-topic .lead-topic-header {
+.tb-bbp-styles #bbpress-forums .tb-lead-topic .lead-topic-header {
 	border-bottom-width: 2px;
 	border-radius: 1px 1px 0 0;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-#bbpress-forums .tb-lead-topic div.bbp-topic-header {
+.tb-bbp-styles #bbpress-forums .tb-lead-topic div.bbp-topic-header {
 	border-width: 2px;
 }
 
 /* Reply */
-#bbpress-forums ul.bbp-replies .bbp-reply-header {
+.tb-bbp-styles #bbpress-forums ul.bbp-replies .bbp-reply-header {
 	border-color: #f2f2f2;
 	border-radius: 2px 2px 0 0;
 	border-width: 2px;
 }
-.content_dark #bbpress-forums ul.bbp-replies .bbp-reply-header {
-	border-color: rgba(0,0,0,.2);
-}
-#bbpress-forums div.reply {
+.tb-bbp-styles #bbpress-forums div.reply {
 	border-width: 2px;
 }
 
 /* Single Reply */
-#bbpress-forums div.bbp-reply-header {
+.tb-bbp-styles #bbpress-forums div.bbp-reply-header {
 	border: 2px solid #f2f2f2;
 	border-radius: 2px 2px 0 0;
 	font-size: 14px;
 	padding: 10px 15px;
 }
-.content_dark #bbpress-forums div.bbp-reply-header {
-	border-color: rgba(0,0,0,.2);
-}
 
 /* Topic & Reply Form */
-#bbpress-forums fieldset.bbp-form legend {
+.tb-bbp-styles #bbpress-forums fieldset.bbp-form legend {
 	font-size: 1rem;
 }
-.tb-naked-page .bbp-topic-form,
-.tb-naked-page .bbp-reply-form {
+.tb-bbp-styles .tb-naked-page .bbp-topic-form,
+.tb-bbp-styles .tb-naked-page .bbp-reply-form {
 	background: transparent;
 	margin: 0;
 	padding: 30px 0 0 0;
 }
 
 /* Login Form */
-.bbp-login-form .bbp-username input,
-.bbp-login-form .bbp-email input,
-.bbp-login-form .bbp-password input {
+.tb-bbp-styles .bbp-login-form .bbp-username input,
+.tb-bbp-styles .bbp-login-form .bbp-email input,
+.tb-bbp-styles .bbp-login-form .bbp-password input {
 	padding: 12px 14px;
 }
 
 /* User Details */
-#bbpress-forums #bbp-single-user-details {
+.tb-bbp-styles #bbpress-forums #bbp-single-user-details {
 	border-width: 2px;
 }
 
 /* User Edit */
-#bbpress-forums fieldset.bbp-form {
+.tb-bbp-styles #bbpress-forums fieldset.bbp-form {
 	background: #fafafa;
 	border: 2px solid #f5f5f5;
 	border-color: rgba(220,220,220,.3);
@@ -1748,12 +1717,8 @@ button:active {
 	margin-bottom: 40px;
 	padding: 40px;
 }
-.content_dark #bbpress-forums fieldset.bbp-form {
-	background: rgba(0,0,0,.1);
-	border-color: rgba(0,0,0,.2);
-}
-#bbpress-forums .bbp-topic-form fieldset.bbp-form,
-#bbpress-forums .bbp-reply-form fieldset.bbp-form {
+.tb-bbp-styles #bbpress-forums .bbp-topic-form fieldset.bbp-form,
+.tb-bbp-styles #bbpress-forums .bbp-reply-form fieldset.bbp-form {
 	background: transparent;
 	border: none;
 	padding: 0;
@@ -1762,7 +1727,7 @@ button:active {
 /* =Gravity Forms
 ----------------------------------------------- */
 
-.tb-gforms-compat .gform_wrapper .gform_footer input.button,
-.tb-gforms-compat .gform_wrapper .gform_footer input[type=submit] {
+.tb-gforms-styles .gform_wrapper .gform_footer input.button,
+.tb-gforms-styles .gform_wrapper .gform_footer input[type=submit] {
   font-size: 11px;
 }

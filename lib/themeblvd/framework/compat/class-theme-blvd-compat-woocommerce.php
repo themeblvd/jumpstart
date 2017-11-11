@@ -53,16 +53,44 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function __construct() {
 
+		/*
+		 * Determine if we're adding custom styles.
+		 *
+		 * Because this constructor is running early in the
+		 * loading process, we can't use `themeblvd_get_option()`.
+		 */
+		$settings = get_option( themeblvd_get_option_name() );
+
+		$do_custom_styles = true;
+
+		if ( isset( $settings['woo_styles'] ) ) {
+
+			$do_custom_styles = (bool) $settings['woo_styles'];
+
+		}
+
 		// Add any WooCommerce theme support features.
 		add_action( 'init', array( $this, 'add_theme_support' ), 5 );
 
-		// Remove all WooCommerce stylsheets. // @TODO option to disable; will require new hooked function for this.
-		add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+		if ( $do_custom_styles ) {
 
-		// Add theme's custom WooCommerce stylesheets and scripts. // @TODO option to disable.
-		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 15 );
+			/*
+			 * Add body class, that can optionally be used for styling
+			 * that comes from the theme outside of our custum WooCommerce
+			 * stylesheet.
+			 */
+			add_filter( 'body_class', array( $this, 'body_class' ) );
 
-		add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) ); // @TODO Add to function with woocommerce_enqueue_styles.
+			// Remove all WooCommerce stylesheets.
+			add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+			// Add the theme's WooCommerce stylesheet as a framework dependency.
+			add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
+
+			// Add theme's custom WooCommerce stylesheets and scripts.
+			add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 15 );
+
+		}
 
 		/*
 		 * Add custom product view template files.
@@ -74,8 +102,15 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * This filter will replace WooCommerce's content-product.php
 		 * with the correct template file in the theme for the
 		 * current product view.
+		 *
+		 * Note: These product loop views DO require the theme's
+		 * custom WooCommerce styling.
 		 */
-		add_filter( 'wc_get_template_part', array( $this, 'product_template' ), 10, 3 );
+		if ( $do_custom_styles ) {
+
+			add_filter( 'wc_get_template_part', array( $this, 'product_template' ), 10, 3 );
+
+		}
 
 		// Add any other custom template overrides.
 		add_filter( 'woocommerce_locate_template', array( $this, 'templates' ), 10, 3 );
@@ -160,14 +195,22 @@ class Theme_Blvd_Compat_WooCommerce {
 		// End wrapping HTML for individual product in loop.
 		add_filter( 'woocommerce_after_shop_loop_item', array( $this, 'loop_product_close' ) );
 
-		// Remove default display for product image in product loop.
-		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail' );
+		/*
+		 * Handle custom image display for loop products, only if
+		 * custom styles are enabled.
+		 */
+		if ( $do_custom_styles ) {
 
-		// Add Custom display for product image in product loop.
-		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'show_product_image' ), 20 );
+			// Remove default display for product image in product loop.
+			remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail' );
 
-		// Remove the default rating display, becuase we're adding it to the product image.
-		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+			// Add Custom display for product image in product loop.
+			add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'show_product_image' ), 20 );
+
+			// Remove the default rating display, becuase we're adding it to the product image.
+			remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+
+		}
 
 		// Add to theme's breadcrumbs.
 		add_filter( 'themeblvd_pre_breadcrumb_parts', array( $this, 'add_breadcrumb' ), 10, 2 );
@@ -175,17 +218,28 @@ class Theme_Blvd_Compat_WooCommerce {
 		// Modify the products to display per page, in a product loop.
 		add_filter( 'loop_shop_per_page', array( $this, 'per_page' ) );
 
-		// Remove default display for upsells.
-		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+		/*
+		 * Adjust up sell and cross sell displays.
+		 *
+		 * Note: This requires the theme's custom WooCommerce
+		 * styling.
+		 */
+		if ( $do_custom_styles ) {
 
-		// Add custom display for upsells.
-		add_action( 'woocommerce_after_single_product_summary', array( $this, 'up_sell' ), 15 );
+			// Remove default display for upsells.
+			remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 
-		// Remove default display for cross sells.
-		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+			// Add custom display for upsells.
+			add_action( 'woocommerce_after_single_product_summary', array( $this, 'up_sell' ), 15 );
 
-		// Add custom display for cross sells.
-		add_action( 'themeblvd_content_bottom', array( $this, 'cross_sell' ) );
+			// Remove default display for cross sells.
+			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+
+			// Add custom display for cross sells.
+			add_action( 'themeblvd_content_bottom', array( $this, 'cross_sell' ) );
+
+		}
+
 		/*
 		 * Set global attributes used in shortcodes
 		 * that display product loops.
@@ -286,8 +340,29 @@ class Theme_Blvd_Compat_WooCommerce {
 	}
 
 	/**
+	 * Add body class, that can optionally be used
+	 * for styling that comes from the theme outside
+	 * of our custum WooCommerce stylesheet.
+	 *
+	 * This method is filtered onto:
+	 * 1. `body_class` - 10
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param  array $class Current classes for <body>.
+	 * @return array $class Modified classes for <body>.
+	 */
+	public function body_class( $class ) {
+
+		$class[] = 'tb-wc-styles';
+
+		return $class;
+
+	}
+
+	/**
 	 * Add custom stylesheets and scripts to
-	 * modify WooCommerce. @TODO option to disable styles.
+	 * modify WooCommerce.
 	 *
 	 * This method is hooked to:
 	 * 1. `wp_enqueue_scripts` - 15
@@ -318,9 +393,14 @@ class Theme_Blvd_Compat_WooCommerce {
 	}
 
 	/**
-	 * Add our stylesheet to framework $deps. This will make
-	 * sure our wpml.css file comes between framework
-	 * styles and child theme's style.css
+	 * Add our stylesheet to framework $deps.
+	 *
+	 * This will make sure our woocommerce.css file
+	 * comes between framework styles and child
+	 * theme's style.css.
+	 *
+	 * This method is filtered onto:
+	 * 1. `themeblvd_framework_stylesheets` - 10
 	 *
 	 * @since @@name-framework 2.5.0
 	 */
@@ -413,6 +493,21 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function templates( $template, $template_name, $template_path ) {
 
+		// Setup page templates to override from WooCommerce.
+		$override = array(
+			'loop/pagination.php' => 'loop/pagination.php',
+			'loop/loop-start.php' => 'loop/loop-start.php',
+			'loop/loop-end.php'   => 'loop/loop-end.php',
+			'loop/orderby.php'    => 'loop/orderby.php',
+		);
+
+		// Remove templates overrides requiring custom styles.
+		if ( ! themeblvd_get_option( 'woo_styles' ) ) {
+
+			unset( $override['loop/orderby.php'] );
+
+		}
+
 		/**
 		 * Filters the template files the theme overrides.
 		 *
@@ -423,14 +518,9 @@ class Theme_Blvd_Compat_WooCommerce {
 		 *
 		 * @since @@name-framework 2.5.0
 		 *
-		 * @param array WooCommerce template files the theme overrides.
+		 * @param array $override WooCommerce template files the theme overrides.
 		 */
-		$override = apply_filters( 'themeblvd_woocommerce_template_overrides', array(
-			'loop/pagination.php' => 'loop/pagination.php',
-			'loop/loop-start.php' => 'loop/loop-start.php',
-			'loop/loop-end.php'   => 'loop/loop-end.php',
-			'loop/orderby.php'    => 'loop/orderby.php',
-		));
+		$override = apply_filters( 'themeblvd_woocommerce_template_overrides', $override );
 
 		if ( in_array( $template_name, $override ) ) {
 

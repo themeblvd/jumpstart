@@ -255,6 +255,12 @@ class Theme_Blvd_Compat_BBPress {
 	 */
 	public function body_class( $class ) {
 
+		if ( themeblvd_get_option( 'bbp_styles' ) ) {
+
+			$class[] = 'tb-bbp-styles';
+
+		}
+
 		if ( bbp_is_topic() && bbp_show_lead_topic() ) {
 
 			$class[] = 'bbp-show-lead-topic';

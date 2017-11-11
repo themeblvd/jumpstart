@@ -274,6 +274,7 @@ class Theme_Blvd_Options_API {
 	 *  - Gravity Forms
 	 *      - gforms_styles
 	 *  - WooCommerce
+	 *      - woo_styles
 	 *      - woo_shop_view
 	 *      - woo_shop_columns
 	 *      - woo_shop_per_page
@@ -302,7 +303,9 @@ class Theme_Blvd_Options_API {
 			$layouts = themeblvd_sidebar_layouts();
 
 			foreach ( $layouts as $layout ) {
+
 				$sidebar_layouts[ $layout['id'] ] = $imagepath . 'layout-' . $layout['id'] . '.png';
+
 			}
 		}
 
@@ -316,7 +319,9 @@ class Theme_Blvd_Options_API {
 			));
 
 			foreach ( $options_categories_obj as $category ) {
+
 				$options_categories[ $category->cat_ID ] = $category->cat_name;
+
 			}
 		}
 
@@ -1308,7 +1313,7 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'bbp_styles' => array(
 						'name'     => __( 'Custom Styles', 'jumpstart' ),
-						'desc'     => __( 'Add theme\'s custom styling for bbPress.', 'jumpstart' ),
+						'desc'     => __( 'Add theme\'s custom styling for bbPress.', 'jumpstart' ) . '<br><br><em>' . __( 'Note: By disabling the theme\'s custom bbPress styling, all of the plugin\'s default features may not be fully supported.', 'jumpstart' ) . '</em>',
 						'id'       => 'bbp_styles',
 						'std'      => '1',
 						'type'     => 'checkbox',
@@ -1370,7 +1375,7 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'gforms_styles' => array(
 						'name'     => __( 'Custom Styles', 'jumpstart' ),
-						'desc'     => __( 'Add theme\'s custom styling for Gravity Forms.', 'jumpstart' ),
+						'desc'     => __( 'Add theme\'s custom styling for Gravity Forms.', 'jumpstart' ) . '<br><br><em>' . __( 'Note: By disabling the theme\'s custom Gravity Forms styling, all of the plugin\'s default features may not be fully supported.', 'jumpstart' ) . '</em>',
 						'id'       => 'gforms_styles',
 						'std'      => '1',
 						'type'     => 'checkbox',
@@ -1382,6 +1387,13 @@ class Theme_Blvd_Options_API {
 			'woocommerce' => array(
 				'name'    => __( 'WooCommerce', 'jumpstart' ),
 				'options' => array(
+					'woo_styles' => array(
+						'name'     => __( 'Custom Styles', 'jumpstart' ),
+						'desc'     => __( 'Add theme\'s custom styling for WooCommerce.', 'jumpstart' ) . '<br><br><em>' . __( 'Note: By disabling the theme\'s custom WooCommerce styling, all of the plugin\'s default features may not be fully supported. Also, several of the options below may not work exactly as expected.', 'jumpstart' ) . '</em>',
+						'id'       => 'woo_styles',
+						'std'      => '1',
+						'type'     => 'checkbox',
+					),
 					'woo_floating_cart' => array(
 						'name'     => __( 'Floating Shopping Cart', 'jumpstart' ),
 						'desc'     => __( 'Select whether you\'d like the floating shopping cart to display in the header of your website.', 'jumpstart' ),
