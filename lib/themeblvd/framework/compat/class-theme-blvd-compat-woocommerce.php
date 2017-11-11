@@ -347,7 +347,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `body_class` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since @@name-framework 2.7.0
 	 *
 	 * @param  array $class Current classes for <body>.
 	 * @return array $class Modified classes for <body>.
@@ -393,7 +393,8 @@ class Theme_Blvd_Compat_WooCommerce {
 	}
 
 	/**
-	 * Add our stylesheet to framework $deps.
+	 * Add theme's WooCommerce stylesheet to framework
+	 * dependencies.
 	 *
 	 * This will make sure our woocommerce.css file
 	 * comes between framework styles and child
@@ -403,6 +404,9 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * 1. `themeblvd_framework_stylesheets` - 10
 	 *
 	 * @since @@name-framework 2.5.0
+	 *
+	 * @param  array $deps Stylesheets the theme framework depends on.
+	 * @return array $deps Modified stylesheets the theme framework depends on.
 	 */
 	public function add_style( $deps ) {
 

@@ -10,73 +10,96 @@
  */
 
 /**
- * Add extended WPML compatibility
+ * Add extended WPML compatibility.
  *
- * @author      Jason Bobich
- * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
- * @package     Jump_Start
+ * This class follows the singleton pattern,
+ * meaning it can only be instantiated in
+ * one instance.
+ *
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Compat_WPML {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
-     * Creates or returns an instance of this class.
-     *
-     * @since 2.5.0
-     *
-     * @return Theme_Blvd_Compat_bbPress A single instance of this class.
-     */
+	 * Creates or returns an instance of this class.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @return Theme_Blvd_Compat_WPML A single instance of this class.
+	 */
 	public static function get_instance() {
 
-		if ( self::$instance == null ) {
-            self::$instance = new self;
-        }
+		if ( null === self::$instance ) {
 
-        return self::$instance;
+			self::$instance = new self;
+
+		}
+
+		return self::$instance;
+
 	}
 
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
+		// Add custom stylesheet for WPML switcher(s).
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 15 );
+
+		// Add the theme's WPML stylesheet as a framework dependency.
 		add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
 
-		if ( apply_filters('themeblvd_wpml_has_switcher', true) ) {
+		/**
+		 * Fitlers whether the theme's custom language
+		 * switcher gets added.
+		 *
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param bool Whether to implement the theme's custom language switcher.
+		 */
+		if ( apply_filters( 'themeblvd_wpml_has_switcher', true ) ) {
 
-			// Remove WPML default lang switcher and create our own.
-			// remove_all_actions('icl_language_selector');
+			// Remove WPML default language switcher.
 			remove_all_actions( 'icl_language_selector' );
+
+			// Add custom language switcher.
 			add_action( 'icl_language_selector', array( $this, 'language_selector' ) );
 
-			// Set theme tag themeblvd_do_lang_selector() to
-			// true, if necessary.
+			/*
+			 * Let framework know that a language switcher of some
+			 * kind is enabled.
+			 */
 			add_filter( 'themeblvd_do_lang_selector', array( $this, 'do_lang_selector' ) );
 
 		}
 
-		// Translate custom layouts manually, and avoid using
-		// wpml-config.xml for this.
+		/*
+		 * Translate custom layouts manually, and avoid using
+		 * wpml-config.xml for this.
+		 */
 		add_action( 'wp_insert_post', array( $this, 'translate_layout' ), 10, 3 );
 
 	}
 
 	/**
-	 * Add CSS
+	 * Add theme's custom stylesheet for WPML.
 	 *
-	 * @since 2.5.0
+	 * This method is hooked to:
+	 * 1. `wp_enqueue_scripts` - 15
+	 *
+	 * @since Theme_Blvd 2.5.0
 	 */
-	public function assets( $type ) {
+	public function assets() {
 
 		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
 
@@ -94,11 +117,16 @@ class Theme_Blvd_Compat_WPML {
 	}
 
 	/**
-	 * Add our stylesheet to framework $deps. This will make
-	 * sure our wpml.css file comes between framework
-	 * styles and child theme's style.css
+	 * Add theme's WooCommerce stylesheet to framework
+	 * dependencies.
 	 *
-	 * @since 2.5.0
+	 * This method is filtered onto:
+	 * 1. `themeblvd_framework_stylesheets` - 10
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param  array $deps Stylesheets the theme framework depends on.
+	 * @return array $deps Modified stylesheets the theme framework depends on.
 	 */
 	public function add_style( $deps ) {
 
@@ -108,65 +136,107 @@ class Theme_Blvd_Compat_WPML {
 	}
 
 	/**
-	 * Display custom language switcher
+	 * Get custom language switcher block.
 	 *
-	 * @since 2.5.0
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @return string $output Final HTML output for block.
 	 */
 	public function get_language_selector() {
 
 		$output = '';
-		$langs = icl_get_languages('skip_missing=1');
+
+		$langs = icl_get_languages( 'skip_missing=1' );
 
 		if ( $langs ) {
 
 			$active = array();
 
 			foreach ( $langs as $key => $lang ) {
-				if ( isset($lang['active']) && $lang['active'] == 1 ) {
+
+				if ( isset( $lang['active'] ) && 1 == $lang['active'] ) {
+
 					$active = $lang;
-					unset($langs[$key]);
+
+					unset( $langs[ $key ] );
+
 					break;
+
 				}
 			}
 
 			if ( $active ) {
 
 				$output .= "\n<div class=\"tb-wpml-switcher\">\n";
+
 				$output .= "\t<ul>\n";
+
 				$output .= "\t\t<li>\n";
 
-				if ( count($langs) ) {
+				if ( count( $langs ) ) {
 
-					$output .= sprintf("\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s<i class=\"fa fa-caret-down\"></i></a>", $active['url'], $active['language_code'], $active['translated_name']);
+					$output .= sprintf(
+						"\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s<i class=\"fa fa-caret-down\"></i></a>",
+						$active['url'],
+						$active['language_code'],
+						$active['translated_name']
+					);
+
 					$output .= "\t\t\t<ul class=\"lang-sub-menu\">\n";
 
 					foreach ( $langs as $lang ) {
-						$output .= sprintf("\t\t\t\t<li class=\"lang-%1\$s\"><a href=\"%2\$s\" title=\"%3\$s\">%3\$s</a></li>\n", $lang['language_code'], $lang['url'], $lang['translated_name']);
+
+						$output .= sprintf(
+							"\t\t\t\t<li class=\"lang-%1\$s\"><a href=\"%2\$s\" title=\"%3\$s\">%3\$s</a></li>\n",
+							$lang['language_code'],
+							$lang['url'],
+							$lang['translated_name']
+						);
+
 					}
 
 					$output .= "\t\t\t</ul>\n";
 
 				} else {
 
-					$output .= sprintf("\t\t\t<span class=\"active\">%s</span>\n", $active['translated_name']);
+					$output .= sprintf(
+						"\t\t\t<span class=\"active\">%s</span>\n",
+						$active['translated_name']
+					);
 
 				}
 
 				$output .= "\t\t</li><!-- .active (end) -->\n";
-				$output .= "\t</ul>\n";
-				$output .= "</div> <!-- .tb-wpml-switcher -->";
-			}
 
+				$output .= "\t</ul>\n";
+
+				$output .= '</div> <!-- .tb-wpml-switcher -->';
+
+			}
 		}
 
+		/**
+		 * Filters the final output for the custom language
+		 * switcher the theme adds.
+		 *
+		 * Note: This funcionality can also be completely disabled
+		 * by filtering to `themeblvd_wpml_has_switcher` FALSE.
+		 *
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param string $output Final HTML for language switcher block.
+		 */
 		return apply_filters( 'themeblvd_wpml_switcher', $output );
 
 	}
 
 	/**
-	 * Display custom language switcher
+	 * Display custom language switcher block.
 	 *
-	 * @since 2.5.0
+	 * This method is hooked to:
+	 * 1. `icl_language_selector` - 10
+	 *
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function language_selector() {
 
@@ -175,9 +245,16 @@ class Theme_Blvd_Compat_WPML {
 	}
 
 	/**
-	 * Whether to display custom language switcher
+	 * This tells the framework whether a custom
+	 * language switcher (from any plugin) should
+	 * be displayed.
 	 *
-	 * @since 2.5.1
+	 * This method is filtered onto:
+	 * 1. `themeblvd_do_lang_selector` - 10
+	 *
+	 * @since Theme_Blvd 2.5.1
+	 *
+	 * @return bool Whether to display language switcher.
 	 */
 	public function do_lang_selector() {
 
@@ -188,19 +265,28 @@ class Theme_Blvd_Compat_WPML {
 		}
 
 		return false;
+
 	}
 
 	/**
-	 * Translate custom layout from builder when a
-	 * translated post is created. This is a workaround
-	 * for:
+	 * Translate a custom layout from the layout builder,
+	 * when a translated page is created.
 	 *
-	 * 1) The buggyness of WPML's wpml-config.xml and
+	 * This is a workaround for the following:
+	 *
+	 * 1. The buggyness of WPML's wpml-config.xml and
 	 * making future changes to it.
-	 * 2) Copying the builder elements that have uniquely
+	 * 2. Copying the builder elements that have uniquely
 	 * generated meta keys for a given post.
 	 *
-	 * @since 2.6.3
+	 * This method is hooked to:
+	 * 1. `wp_insert_post` - 10
+	 *
+	 * @since Theme_Blvd 2.6.3
+	 *
+	 * @param int     $post_ID Post ID.
+	 * @param WP_Post $post    Post object.
+	 * @param bool    $update  Whether this is an existing post being updated or not.
 	 */
 	public function translate_layout( $post_id, $post, $update ) {
 
@@ -226,19 +312,23 @@ class Theme_Blvd_Compat_WPML {
 			'_tb_builder_framework_version_saved',
 			'_tb_builder_elements',
 			'_tb_builder_sections',
-			'_tb_builder_styles'
+			'_tb_builder_styles',
 		);
 
 		foreach ( $fields as $field ) {
 
-			if ( $val = get_post_meta( $_GET['trid'], $field, true ) ) {
+			$val = get_post_meta( $_GET['trid'], $field, true );
+
+			if ( $val ) {
 
 				update_post_meta( $post_id, $field, $val );
 
 			}
 		}
 
-		if ( $meta = get_post_meta( $_GET['trid'] ) ) {
+		$meta = get_post_meta( $_GET['trid'] );
+
+		if ( $meta ) {
 
 			foreach ( $meta as $key => $val ) {
 

@@ -219,7 +219,8 @@ class Theme_Blvd_Compat_BBPress {
 	}
 
 	/**
-	 * Add our stylesheet to framework $deps.
+	 * Add theme's bbPress stylesheet to framework
+	 * dependencies.
 	 *
 	 * This will help to ensure that the theme's
 	 * bbpress.css file gets loaded in the
