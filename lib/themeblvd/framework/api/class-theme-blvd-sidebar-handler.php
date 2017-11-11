@@ -582,7 +582,7 @@ class Theme_Blvd_Sidebar_Handler {
 
 				echo '<div class="alert alert-warning">';
 				echo '	<p>' . esc_html( $message ) . '</p>';
-				echo '</div><!-- .tb-warning (end) -->';
+				echo '</div><!-- .alert-warning (end) -->';
 
 			}
 		} else {
