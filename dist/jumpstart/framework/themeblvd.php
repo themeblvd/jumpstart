@@ -420,7 +420,6 @@ add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
  * Hook frontend actions for the document <head>.
  */
 add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
-add_action( 'wp_print_scripts', 'themeblvd_html5_compat' ); // For IE8
 add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
 
 /*
