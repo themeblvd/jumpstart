@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend helper functions.
+ * Frontend Helpers
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -545,30 +545,6 @@ function themeblvd_responsive_visibility_class( $hide ) {
 }
 
 /**
- * Output <title> if using WordPress 4.0-.
- * WordPress 4.1+ uses native `title-tag`
- * theme feature.
- *
- * @since 2.5.0
- */
-function themeblvd_wp_title_compat() {
-
-	// If WP 4.1+, do nothing
-	if ( function_exists( '_wp_render_title_tag' ) ) {
-		return;
-	}
-
-	add_filter( 'wp_title', 'themeblvd_wp_title' );
-
-	// Weirdness in calling wp_title() here and opening/closing
-	// PHP is to get around silly quirck in theme-check plugin.
-	?>
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
-	<?php
-
-}
-
-/**
  * Display <title>
  * This is added to wp_title filter.
  *
@@ -959,23 +935,35 @@ function themeblvd_link_pages_link( $link, $i ) {
  * Construct parts of a breadcrumbs trail as an array
  * to be used when displaying breadcrumbs.
  *
- * @since 2.2.1
+ * @since @@name-framework 2.2.1
  *
- * @param string $atts Filtered attributes for breadcrumbs
- * @return array $breadcrumbs Breadcrumbs parts to display trail
+ * @param  array $args {
+ *     Breadcrumb arguments.
+ *
+ *     @type string $delimiter HTML between breadcrumb pieces.
+ *     @type string $home      Home link text.
+ *     @type string $home_link Home link URL.
+ *     @type string $before    HTML before current breadcrumb item.
+ *     @type string $after     HTML after current breadcrumb item.
+ * }
+ * @return array $breadcrumbs Breadcrumbs parts to display trail.
  */
-function themeblvd_get_breadcrumb_parts( $atts ) {
+function themeblvd_get_breadcrumb_parts( $args ) {
 
 	global $post;
+
 	global $wp_query;
+
 	$breadcrumbs = array();
+
 	$parts = array();
+
 	wp_reset_query();
 
 	// Home
 	$breadcrumbs[] = array(
-		'link' 	=> $atts['home_link'],
-		'text' 	=> $atts['home'],
+		'link' 	=> $args['home_link'],
+		'text' 	=> $args['home'],
 		'type'	=> 'home'
 	);
 
@@ -1182,18 +1170,37 @@ function themeblvd_get_breadcrumb_parts( $atts ) {
 
 	}
 
-	// Filter the trail before the Home link is
-	// added to the start, or the page num is
-	// added to the end.
-	$parts = apply_filters( 'themeblvd_pre_breadcrumb_parts', $parts, $atts );
+	/**
+	 * Filters the breadcrumbs trail before the home
+	 * link is added to the start or the page number
+	 * is added to the end.
+	 *
+	 * @since @@name-framework 2.2.1
+	 *
+	 * @param array $parts Breadcrumbs parts.
+	 * @param array $args {
+	 *     Breadcrumb arguments.
+	 *
+	 *     @type string $delimiter HTML between breadcrumb pieces.
+	 *     @type string $home      Home link text.
+	 *     @type string $home_link Home link URL.
+	 *     @type string $before    HTML before current breadcrumb item.
+	 *     @type string $after     HTML after current breadcrumb item.
+	 * }
+	 */
+	$parts = apply_filters( 'themeblvd_pre_breadcrumb_parts', $parts, $args );
 
-	// Add page number if is paged
+	// Add page number, if is paged.
 	if ( get_query_var('paged') ) {
-		$last = count($parts) - 1;
-		$parts[$last]['text'] .= ' ('.themeblvd_get_local('page').' '.get_query_var('paged').')';
+
+		$last = count( $parts ) - 1;
+
+		$parts[ $last ]['text'] .= ' (' . themeblvd_get_local('page') . ' ' . get_query_var('paged') . ')';
+
 	}
 
-	return apply_filters( 'themeblvd_breadcrumb_parts', array_merge($breadcrumbs, $parts), $atts );
+	return apply_filters( 'themeblvd_breadcrumb_parts', array_merge($breadcrumbs, $parts), $args );
+
 }
 
 /**
@@ -1854,7 +1861,11 @@ function themeblvd_is_200( $url ) {
 }
 
 /**
- * Return false
+ * Return false.
+ *
+ * This is a replacement for WordPress's `__return_false`;
+ * when used it makes it easier for us to keep track
+ * of where its hooked so it can be removed, if needed.
  *
  * @since 2.6.0
  */
@@ -1863,7 +1874,11 @@ function themeblvd_return_false() {
 }
 
 /**
- * Return true
+ * Return true.
+ *
+ * This is a replacement for WordPress's `__return_true`;
+ * when used it makes it easier for us to keep track
+ * of where its hooked so it can be removed, if needed.
  *
  * @since 2.6.0
  */

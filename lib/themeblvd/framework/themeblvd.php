@@ -27,24 +27,21 @@
 /**
  * Current framework version.
  *
- * @since 2.0.0
- * @var string TB_FRAMEWORK_VERSION
+ * @since @@name-framework 2.0.0
  */
 define( 'TB_FRAMEWORK_VERSION', '2.7.0' );
 
 /**
  * Absolute file path to framework directory.
  *
- * @since 2.0.0
- * @var string TB_FRAMEWORK_VERSION
+ * @since @@name-framework 2.0.0
  */
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory() . '/framework' );
 
 /**
  * URI to framework directory.
  *
- * @since 2.0.0
- * @var string TB_FRAMEWORK_VERSION
+ * @since @@name-framework 2.0.0
  */
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
 
@@ -296,13 +293,13 @@ if ( is_admin() ) {
  * queries and hooks in any modifications to the main
  * WP Query.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-tb-query.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-theme-blvd-query.php' );
 
 /**
  * Include singleton class which initializes the website
  * frontend.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-tb-frontend-init.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/general/class-theme-blvd-frontend-init.php' );
 
 /**
  * Include frontend display functions, which serve as default
@@ -425,7 +422,6 @@ add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
 add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 add_action( 'wp_print_scripts', 'themeblvd_html5_compat' ); // For IE8
 add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
-add_filter( 'wp_head', 'themeblvd_wp_title_compat', 5 ); // Only used with WP 4.0-
 
 /*
  * Hook frontend actions for the website header.
