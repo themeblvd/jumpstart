@@ -1684,24 +1684,35 @@ jQuery(document).ready(function($) {
 	// Self-hosted HTML5
 	$('.tb-bg-video.html5').each(function(){
 
-		var $video = $(this);
+		var $videoWrap = $( this ),
+			$video     = $videoWrap.find( 'video' );
+			videoID    = $video.attr( 'id' );
 
-		$video.find('video').mediaelementplayer({
-			startVolume: 0,
-			loop: true,
-			enableKeyboard: false,
-			pauseOtherPlayers: false,
-		    success: function( player ) {
-	            player.addEventListener('canplay', function() {
-					player.play();
-					tbmethods.bg_video_size( $video.find('video') );
-					$video.addClass('playing');
-	            }, false);
-		    }
-		});
+		var playerCheck = setInterval( function() {
+
+			if ( 'undefined' !== typeof MediaElementPlayer ) {
+
+				var player = new MediaElementPlayer( videoID, {
+					startVolume: 0,
+					loop: true,
+					enableKeyboard: false,
+					pauseOtherPlayers: false,
+					stretching: 'responsive',
+				    success: function( player ) {
+						player.play();
+						tbmethods.bg_video_size( $video );
+						$videoWrap.addClass('playing');
+				    }
+				});
+
+				clearInterval( playerCheck );
+
+			}
+
+		}, 500 );
 
 		$window.on('resize', function(){
-			tbmethods.bg_video_size( $video.find('video') );
+			tbmethods.bg_video_size( $video );
 		});
 
 	});
