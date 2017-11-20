@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.1.15 - XX/XX/2017
+2.1.15 - 11/20/2017
 -------------------
 
 * **Updated Theme Blvd framework to 2.6.14**
