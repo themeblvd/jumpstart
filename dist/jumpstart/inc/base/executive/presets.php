@@ -19,10 +19,10 @@
 function jumpstart_ex_get_presets( $preset = '' ) {
 
 	$args = array(
-		'id'            => 'style_presets',
-		'tab'           => 'styles',
-		'section'       => 'presets',
-		'sets'          => array(),
+		'id'      => 'style_presets',
+		'tab'     => 'styles',
+		'section' => 'presets',
+		'sets'    => array(),
 	);
 
 	/**
@@ -45,13 +45,13 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 		'grey'          => array( __( 'Grey', 'jumpstart' ), '#7f8c8d', '#727e7e' ),
 	));
 
-	// Predefined attributes
+	// Predefined attributes.
 	$atts = array(
-		'icon'          => trailingslashit( themeblvd_get_base_uri( 'executive' ) ) . 'img/',
-		'icon_width'    => '70',
-		'icon_height'   => '40',
-		'icon_style'    => 'width: 70px; height: 40px',
-		'settings'      => array(),
+		'icon'        => trailingslashit( themeblvd_get_base_uri( 'executive' ) ) . 'img/',
+		'icon_width'  => '70',
+		'icon_height' => '40',
+		'icon_style'  => 'width: 70px; height: 40px',
+		'settings'    => array(),
 	);
 
 	$styles = array(
@@ -64,32 +64,45 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 	if ( $preset ) {
 
 		$parts = explode( '-', $preset );
+
 		$color = $parts[2];
 
 		if ( isset( $parts[3] ) ) {
+
 			$color .= '-' . $parts[3];
+
 		}
 
 		foreach ( $colors as $key => $val ) {
+
 			if ( $key != $color ) {
+
 				unset( $colors[ $key ] );
+
 			}
 		}
 
 		foreach ( $styles as $key => $val ) {
+
 			if ( $key != $parts[0] . '-' . $parts[1] ) {
+
 				unset( $styles[ $key ] );
+
 			}
 		}
 	}
 
-	// Build presets
+	// Build presets.
 	foreach ( $styles as $style => $name ) {
+
 		foreach ( $colors as $key => $val ) {
 
 			if ( 'style-3' === $style && 'default' === $key ) {
+
 				$val[1] = '#333333';
+
 				$val[2] = '#222222';
+
 			}
 
 			$settings = array(
@@ -182,20 +195,35 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['header_border_top_color'] = '#333333';
+
 						$settings['header_mobile_bg_color'] = '#333333';
+
 						$settings['menu_bg_color'] = '#333333';
+
 						$settings['menu_sub_bg_color'] = '#333333';
+
 						$settings['menu_mobile_bg_color'] = '#222222';
+
 						$settings['side_bg_color'] = '#222222';
+
 						$settings['footer_bg_color'] = '#ffffff';
+
 						$settings['footer_bg_color_brightness'] = 'light';
+
 						$settings['highlight'] = '#fec527';
+
 						$settings['link_color'] = '#f9d718';
+
 						$settings['link_hover_color'] = '#f9bc18';
+
 						$settings['footer_link_color'] = '#f9d718';
+
 						$settings['footer_link_hover_color'] = '#f9bc18';
+
 						$settings['social_media_style'] = 'dark';
+
 					}
 
 					break;
@@ -251,27 +279,46 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['top_text_color'] = 'dark';
+
 						$settings['top_border_bottom_color'] = '#dddddd';
+
 						$settings['header_text_color'] = 'dark';
+
 						$settings['header_border_top_color'] = '#333333';
+
 						$settings['header_border_bottom_color'] = '#dddddd';
+
 						$settings['header_mobile_bg_color'] = '#333333';
+
 						$settings['menu_bg_gradient'] = array(
 							'start' => '#fefefe',
 							'end'   => '#f3f3f3',
 						);
+
 						$settings['menu_bg_color_brightness'] = 'light';
+
 						$settings['menu_hover_bg_color_brightness'] = 'light';
+
 						$settings['menu_border_color'] = '#dddddd';
+
 						$settings['menu_divider_color'] = '#dddddd';
+
 						$settings['menu_sub_bg_color_brightness'] = 'light';
+
 						$settings['side_bg_color'] = '#333333';
+
 						$settings['highlight'] = '#fec527';
+
 						$settings['link_color'] = '#f9d718';
+
 						$settings['link_hover_color'] = '#f9bc18';
+
 						$settings['footer_link_color'] = '#f9d718';
+
 						$settings['footer_link_hover_color'] = '#f9bc18';
+
 					}
 
 					break;
@@ -323,9 +370,13 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
-						 $settings['highlight'] = '#fec527';
-						 $settings['link_color'] = '#f9d718';
-						 $settings['link_hover_color'] = '#f9bc18';
+
+						$settings['highlight'] = '#fec527';
+
+						$settings['link_color'] = '#f9d718';
+
+						$settings['link_hover_color'] = '#f9bc18';
+
 					}
 			}
 
@@ -336,9 +387,13 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 			), $atts );
 
 			if ( 'default' === $key ) {
+
 				$args['sets'][ $style . '-' . $key ]['icon_width'] = '100%';
+
 				$args['sets'][ $style . '-' . $key ]['icon_height'] = '';
+
 				$args['sets'][ $style . '-' . $key ]['icon_style'] = '';
+
 			}
 
 			$args['sets'][ $style . '-' . $key ]['icon'] .= 'preset-' . $style . '-' . $key . '.jpg';
@@ -347,7 +402,8 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 	}
 
 	/**
-	 * Filters the preset styles added by the Executive base.
+	 * Filters the preset styles added by the
+	 * Executive base.
 	 *
 	 * @since Jump_Start 2.1.1
 	 *

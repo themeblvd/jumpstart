@@ -24,7 +24,9 @@ function jumpstart_su_options() {
 	$bg_types = array();
 
 	if ( function_exists( 'themeblvd_get_bg_types' ) ) {
+
 		$bg_types = themeblvd_get_bg_types( 'section' );
+
 	}
 
 	/**
@@ -1595,17 +1597,29 @@ function jumpstart_su_options() {
 	}
 
 	themeblvd_add_option_section( 'styles', 'su_general',       __( 'General', '@@text-domain' ),         null, $options['general'] );
+
 	themeblvd_add_option_section( 'styles', 'su_header_info',   __( 'Header Info', '@@text-domain' ),     null, $options['header_info'] );
+
 	themeblvd_add_option_section( 'styles', 'su_header',        __( 'Header', '@@text-domain' ),          null, $options['header'] );
+
 	themeblvd_add_option_section( 'styles', 'su_header_mobile', __( 'Mobile Header', '@@text-domain' ),   null, $options['header_mobile'] );
+
 	themeblvd_add_option_section( 'styles', 'su_menu',          __( 'Main Menu', '@@text-domain' ),       null, $options['menu'] );
+
 	themeblvd_add_option_section( 'styles', 'su_menu_mobile',   __( 'Mobile Menu', '@@text-domain' ),     null, $options['menu_mobile'] );
+
 	themeblvd_add_option_section( 'styles', 'su_side_panel',    __( 'Side Panel', '@@text-domain' ),      null, $options['side_panel'] );
+
 	themeblvd_add_option_section( 'styles', 'su_footer',        __( 'Footer', '@@text-domain' ),          null, $options['footer'] );
+
 	themeblvd_add_option_section( 'styles', 'su_typo',          __( 'Typography', '@@text-domain' ),      null, $options['typo'] );
+
 	themeblvd_add_option_section( 'styles', 'su_buttons',       __( 'Buttons', '@@text-domain' ),         null, $options['buttons'] );
+
 	themeblvd_add_option_section( 'styles', 'su_widgets',       __( 'Sidebar Widgets', '@@text-domain' ), null, $options['widgets'] );
+
 	themeblvd_add_option_section( 'styles', 'su_extras',        __( 'Extras', '@@text-domain' ),          null, $options['extras'] );
+
 	themeblvd_add_option_section( 'styles', 'su_css',           __( 'Custom CSS', '@@text-domain' ),      null, $options['css'] );
 
 }

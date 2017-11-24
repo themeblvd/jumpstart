@@ -111,114 +111,114 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	// Predefined colors.
 	$colors = array(
 		'dark'  => array(
-			'name'                              => __( 'Dark', '@@text-domain' ),
-			'btn_color'                         => '#1b1b1b',
-			'header_bg_color'                   => '#101010',
-			'menu_drop_bg_color'                => '#202020',
-			'header_mobile_bg_color'            => '#101010',
-			'footer_bg_color'                   => '#222222',
-			'copyright_bg_color'                => '#1b1b1b',
-			'side_bg_color'                     => '#1b1b1b',
-			'link_color'                        => '#2ea3f2',
-			'link_hover_color'                  => '#337ab7',
+			'name'                   => __( 'Dark', '@@text-domain' ),
+			'btn_color'              => '#1b1b1b',
+			'header_bg_color'        => '#101010',
+			'menu_drop_bg_color'     => '#202020',
+			'header_mobile_bg_color' => '#101010',
+			'footer_bg_color'        => '#222222',
+			'copyright_bg_color'     => '#1b1b1b',
+			'side_bg_color'          => '#1b1b1b',
+			'link_color'             => '#2ea3f2',
+			'link_hover_color'       => '#337ab7',
 		),
 		'green' => array(
-			'name'                              => $hex['green'][0],
-			'btn_color'                         => $hex['green'][1],
-			'header_bg_color'                   => $hex['green'][1],
-			'menu_drop_bg_color'                => $hex['green'][2],
-			'header_mobile_bg_color'            => $hex['green'][1],
-			'footer_bg_color'                   => $hex['green'][2],
-			'copyright_bg_color'                => $hex['green'][1],
-			'side_bg_color'                     => $hex['green'][2],
-			'link_color'                        => $hex['green'][1],
-			'link_hover_color'                  => $hex['green'][2],
+			'name'                   => $hex['green'][0],
+			'btn_color'              => $hex['green'][1],
+			'header_bg_color'        => $hex['green'][1],
+			'menu_drop_bg_color'     => $hex['green'][2],
+			'header_mobile_bg_color' => $hex['green'][1],
+			'footer_bg_color'        => $hex['green'][2],
+			'copyright_bg_color'     => $hex['green'][1],
+			'side_bg_color'          => $hex['green'][2],
+			'link_color'             => $hex['green'][1],
+			'link_hover_color'       => $hex['green'][2],
 		),
 		'sea-green' => array(
-			'name'                              => $hex['sea-green'][0],
-			'btn_color'                         => $hex['sea-green'][1],
-			'header_bg_color'                   => $hex['sea-green'][1],
-			'menu_drop_bg_color'                => $hex['sea-green'][2],
-			'header_mobile_bg_color'            => $hex['sea-green'][1],
-			'footer_bg_color'                   => $hex['sea-green'][2],
-			'copyright_bg_color'                => $hex['sea-green'][1],
-			'side_bg_color'                     => $hex['sea-green'][2],
-			'link_color'                        => $hex['sea-green'][1],
-			'link_hover_color'                  => $hex['sea-green'][2],
+			'name'                   => $hex['sea-green'][0],
+			'btn_color'              => $hex['sea-green'][1],
+			'header_bg_color'        => $hex['sea-green'][1],
+			'menu_drop_bg_color'     => $hex['sea-green'][2],
+			'header_mobile_bg_color' => $hex['sea-green'][1],
+			'footer_bg_color'        => $hex['sea-green'][2],
+			'copyright_bg_color'     => $hex['sea-green'][1],
+			'side_bg_color'          => $hex['sea-green'][2],
+			'link_color'             => $hex['sea-green'][1],
+			'link_hover_color'       => $hex['sea-green'][2],
 		),
 		'blue' => array(
-			'name'                              => $hex['blue'][0],
-			'btn_color'                         => $hex['blue'][1],
-			'header_bg_color'                   => $hex['blue'][1],
-			'menu_drop_bg_color'                => $hex['blue'][2],
-			'header_mobile_bg_color'            => $hex['blue'][1],
-			'footer_bg_color'                   => $hex['blue'][2],
-			'copyright_bg_color'                => $hex['blue'][1],
-			'side_bg_color'                     => $hex['blue'][2],
-			'link_color'                        => $hex['blue'][1],
-			'link_hover_color'                  => $hex['blue'][2],
+			'name'                   => $hex['blue'][0],
+			'btn_color'              => $hex['blue'][1],
+			'header_bg_color'        => $hex['blue'][1],
+			'menu_drop_bg_color'     => $hex['blue'][2],
+			'header_mobile_bg_color' => $hex['blue'][1],
+			'footer_bg_color'        => $hex['blue'][2],
+			'copyright_bg_color'     => $hex['blue'][1],
+			'side_bg_color'          => $hex['blue'][2],
+			'link_color'             => $hex['blue'][1],
+			'link_hover_color'       => $hex['blue'][2],
 		),
 		'midnight-blue' => array(
-			'name'                              => $hex['midnight-blue'][0],
-			'btn_color'                         => $hex['midnight-blue'][1],
-			'header_bg_color'                   => $hex['midnight-blue'][1],
-			'menu_drop_bg_color'                => $hex['midnight-blue'][2],
-			'header_mobile_bg_color'            => $hex['midnight-blue'][1],
-			'footer_bg_color'                   => $hex['midnight-blue'][2],
-			'copyright_bg_color'                => $hex['midnight-blue'][1],
-			'side_bg_color'                     => $hex['midnight-blue'][2],
-			'link_color'                        => $hex['midnight-blue'][1],
-			'link_hover_color'                  => $hex['midnight-blue'][2],
+			'name'                   => $hex['midnight-blue'][0],
+			'btn_color'              => $hex['midnight-blue'][1],
+			'header_bg_color'        => $hex['midnight-blue'][1],
+			'menu_drop_bg_color'     => $hex['midnight-blue'][2],
+			'header_mobile_bg_color' => $hex['midnight-blue'][1],
+			'footer_bg_color'        => $hex['midnight-blue'][2],
+			'copyright_bg_color'     => $hex['midnight-blue'][1],
+			'side_bg_color'          => $hex['midnight-blue'][2],
+			'link_color'             => $hex['midnight-blue'][1],
+			'link_hover_color'       => $hex['midnight-blue'][2],
 		),
 		'purple' => array(
-			'name'                              => $hex['purple'][0],
-			'btn_color'                         => $hex['purple'][1],
-			'header_bg_color'                   => $hex['purple'][1],
-			'menu_drop_bg_color'                => $hex['purple'][2],
-			'header_mobile_bg_color'            => $hex['purple'][1],
-			'footer_bg_color'                   => $hex['purple'][2],
-			'copyright_bg_color'                => $hex['purple'][1],
-			'side_bg_color'                     => $hex['purple'][2],
-			'link_color'                        => $hex['purple'][1],
-			'link_hover_color'                  => $hex['purple'][2],
+			'name'                   => $hex['purple'][0],
+			'btn_color'              => $hex['purple'][1],
+			'header_bg_color'        => $hex['purple'][1],
+			'menu_drop_bg_color'     => $hex['purple'][2],
+			'header_mobile_bg_color' => $hex['purple'][1],
+			'footer_bg_color'        => $hex['purple'][2],
+			'copyright_bg_color'     => $hex['purple'][1],
+			'side_bg_color'          => $hex['purple'][2],
+			'link_color'             => $hex['purple'][1],
+			'link_hover_color'       => $hex['purple'][2],
 		),
 		'orange' => array(
-			'name'                              => $hex['orange'][0],
-			'btn_color'                         => $hex['orange'][1],
-			'header_bg_color'                   => $hex['orange'][1],
-			'menu_drop_bg_color'                => $hex['orange'][2],
-			'header_mobile_bg_color'            => $hex['orange'][1],
-			'footer_bg_color'                   => $hex['orange'][2],
-			'copyright_bg_color'                => $hex['orange'][1],
-			'side_bg_color'                     => $hex['orange'][2],
-			'link_color'                        => $hex['orange'][1],
-			'link_hover_color'                  => $hex['orange'][2],
+			'name'                   => $hex['orange'][0],
+			'btn_color'              => $hex['orange'][1],
+			'header_bg_color'        => $hex['orange'][1],
+			'menu_drop_bg_color'     => $hex['orange'][2],
+			'header_mobile_bg_color' => $hex['orange'][1],
+			'footer_bg_color'        => $hex['orange'][2],
+			'copyright_bg_color'     => $hex['orange'][1],
+			'side_bg_color'          => $hex['orange'][2],
+			'link_color'             => $hex['orange'][1],
+			'link_hover_color'       => $hex['orange'][2],
 		),
 		'red' => array(
-			'name'                              => $hex['red'][0],
-			'btn_color'                         => $hex['red'][1],
-			'header_bg_color'                   => $hex['red'][1],
-			'menu_drop_bg_color'                => $hex['red'][2],
-			'header_mobile_bg_color'            => $hex['red'][1],
-			'footer_bg_color'                   => $hex['red'][2],
-			'copyright_bg_color'                => $hex['red'][1],
-			'side_bg_color'                     => $hex['red'][2],
-			'link_color'                        => $hex['red'][1],
-			'link_hover_color'                  => $hex['red'][2],
+			'name'                   => $hex['red'][0],
+			'btn_color'              => $hex['red'][1],
+			'header_bg_color'        => $hex['red'][1],
+			'menu_drop_bg_color'     => $hex['red'][2],
+			'header_mobile_bg_color' => $hex['red'][1],
+			'footer_bg_color'        => $hex['red'][2],
+			'copyright_bg_color'     => $hex['red'][1],
+			'side_bg_color'          => $hex['red'][2],
+			'link_color'             => $hex['red'][1],
+			'link_hover_color'       => $hex['red'][2],
 		),
 		'grey' => array(
-			'name'                              => $hex['grey'][0],
-			'btn_color'                         => $hex['grey'][1],
-			'header_bg_color'                   => $hex['grey'][1],
-			'menu_drop_bg_color'                => $hex['grey'][2],
-			'header_mobile_bg_color'            => $hex['grey'][1],
-			'footer_bg_color'                   => $hex['grey'][2],
-			'copyright_bg_color'                => $hex['grey'][1],
-			'side_bg_color'                     => $hex['grey'][2],
-			'link_color'                        => $hex['grey'][1],
-			'link_hover_color'                  => $hex['grey'][2],
-			'link_color'                        => '#2ea3f2',
-			'link_hover_color'                  => '#337ab7',
+			'name'                   => $hex['grey'][0],
+			'btn_color'              => $hex['grey'][1],
+			'header_bg_color'        => $hex['grey'][1],
+			'menu_drop_bg_color'     => $hex['grey'][2],
+			'header_mobile_bg_color' => $hex['grey'][1],
+			'footer_bg_color'        => $hex['grey'][2],
+			'copyright_bg_color'     => $hex['grey'][1],
+			'side_bg_color'          => $hex['grey'][2],
+			'link_color'             => $hex['grey'][1],
+			'link_hover_color'       => $hex['grey'][2],
+			'link_color'             => '#2ea3f2',
+			'link_hover_color'       => '#337ab7',
 		),
 	);
 
@@ -226,21 +226,30 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	if ( $preset ) {
 
 		$parts = explode( '-', $preset );
+
 		$color = $parts[2];
 
 		if ( isset( $parts[3] ) ) {
+
 			$color .= '-' . $parts[3];
+
 		}
 
 		foreach ( $colors as $key => $val ) {
+
 			if ( $key != $color ) {
+
 				unset( $colors[ $key ] );
+
 			}
 		}
 
 		foreach ( $styles as $key => $val ) {
+
 			if ( $key != $parts[0] . '-' . $parts[1] ) {
+
 				unset( $styles[ $key ] );
+
 			}
 		}
 	}
@@ -265,8 +274,11 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 			if ( 'dark' === $color ) {
 
 				$args['sets'][ $style . '-' . $color ]['icon'] .= 'preset-' . $style . '-' . $color . '.jpg';
+
 				$args['sets'][ $style . '-' . $color ]['icon_width'] = '100%';
+
 				$args['sets'][ $style . '-' . $color ]['icon_height'] = '';
+
 				$args['sets'][ $style . '-' . $color ]['icon_style'] = '';
 
 			} else {
@@ -281,7 +293,8 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	}
 
 	/**
-	 * Filters the preset styles added by the Agent base.
+	 * Filters the preset styles added by the
+	 * Agent base.
 	 *
 	 * @since @@name-package 2.1.1
 	 *

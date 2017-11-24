@@ -19,10 +19,10 @@
 function jumpstart_su_get_presets( $preset = '' ) {
 
 	$args = array(
-		'id'            => 'style_presets',
-		'tab'           => 'styles',
-		'section'       => 'presets',
-		'sets'          => array(),
+		'id'      => 'style_presets',
+		'tab'     => 'styles',
+		'section' => 'presets',
+		'sets'    => array(),
 	);
 
 	/**
@@ -45,13 +45,13 @@ function jumpstart_su_get_presets( $preset = '' ) {
 		'grey'          => array( __( 'Grey', '@@text-domain' ), '#7f8c8d', '#727e7e' ),
 	));
 
-	// Predefined attributes
+	// Predefined attributes.
 	$atts = array(
-		'icon'          => trailingslashit( themeblvd_get_base_uri( 'superuser' ) ) . 'img/',
-		'icon_width'    => '70',
-		'icon_height'   => '40',
-		'icon_style'    => 'width: 70px; height: 40px',
-		'settings'      => array(),
+		'icon'        => trailingslashit( themeblvd_get_base_uri( 'superuser' ) ) . 'img/',
+		'icon_width'  => '70',
+		'icon_height' => '40',
+		'icon_style'  => 'width: 70px; height: 40px',
+		'settings'    => array(),
 	);
 
 	$styles = array(
@@ -66,27 +66,37 @@ function jumpstart_su_get_presets( $preset = '' ) {
 	if ( $preset ) {
 
 		$parts = explode( '-', $preset );
+
 		$color = $parts[2];
 
 		if ( isset( $parts[3] ) ) {
+
 			$color .= '-' . $parts[3];
+
 		}
 
 		foreach ( $colors as $key => $val ) {
+
 			if ( $key != $color ) {
+
 				unset( $colors[ $key ] );
+
 			}
 		}
 
 		foreach ( $styles as $key => $val ) {
+
 			if ( $key != $parts[0] . '-' . $parts[1] ) {
+
 				unset( $styles[ $key ] );
+
 			}
 		}
 	}
 
-	// Build presets
+	// Build presets.
 	foreach ( $styles as $style => $name ) {
+
 		foreach ( $colors as $key => $val ) {
 
 			$settings = array(
@@ -165,11 +175,17 @@ function jumpstart_su_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['highlight'] = '#f9bc18';
+
 						$settings['link_color'] = '#f9bc18';
+
 						$settings['link_hover_color'] = '#f9d718';
+
 						$settings['footer_link_color'] = '#f9bc18';
+
 						$settings['footer_link_hover_color'] = '#f9d718';
+
 					}
 
 					break;
@@ -206,15 +222,25 @@ function jumpstart_su_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['menu_bg_color'] = '#ffffff';
+
 						$settings['menu_bg_color_brightness'] = 'light';
+
 						$settings['menu_hover_bg_color'] = '#f8f8f8';
+
 						$settings['menu_hover_bg_color_brightness'] = 'light';
+
 						$settings['highlight'] = '#f9bc18';
+
 						$settings['link_color'] = '#f9bc18';
+
 						$settings['link_hover_color'] = '#f9d718';
+
 						$settings['footer_link_color'] = '#f9bc18';
+
 						$settings['footer_link_hover_color'] = '#f9d718';
+
 					}
 
 					break;
@@ -250,13 +276,21 @@ function jumpstart_su_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['header_border_bottom_color'] = '#ffffff';
+
 						$settings['highlight'] = '#f9bc18';
+
 						$settings['link_color'] = '#f9bc18';
+
 						$settings['link_hover_color'] = '#f9d718';
+
 						$settings['footer_link_color'] = '#f9bc18';
+
 						$settings['footer_link_hover_color'] = '#f9d718';
+
 						$settings['custom_styles'] = "/**\r\n * Custom CSS Example: Add highlight color\r\n * to active top-level main menu item.\r\n */\r\n.tb-primary-menu > li.current-menu-item > .menu-btn,\r\n.tb-primary-menu > li.current-menu-item > .menu-btn:hover {\r\n\tbackground-color: #ffffff;\r\n\tcolor: #333333;\r\n}\r\n.header-nav .tb-primary-menu ul.non-mega-sub-menu,\r\n.header-nav .tb-primary-menu .sf-mega {\r\n\tmargin-top: 0;\r\n}";
+
 					}
 
 					break;
@@ -299,25 +333,45 @@ function jumpstart_su_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['header_bg_color'] = '#ffffff';
+
 						$settings['header_text_color'] = 'dark';
+
 						$settings['header_border_bottom_color'] = '#dddddd';
+
 						$settings['menu_bg_color'] = '#ffffff';
+
 						$settings['menu_bg_color_brightness'] = 'light';
+
 						$settings['menu_hover_bg_color'] = '#f8f8f8';
+
 						$settings['menu_hover_bg_color_brightness'] = 'light';
+
 						$settings['menu_border_top_color'] = '#dddddd';
+
 						$settings['menu_sub_bg_color'] = '#ffffff';
+
 						$settings['menu_sub_bg_color_brightness'] = 'light';
+
 						$settings['menu_divider_color'] = '#dddddd';
+
 						$settings['footer_bg_color'] = '#ffffff';
+
 						$settings['footer_bg_color_brightness'] = 'light';
+
 						$settings['highlight'] = '#f9bc18';
+
 						$settings['link_color'] = '#f9bc18';
+
 						$settings['link_hover_color'] = '#f9d718';
+
 						$settings['footer_link_color'] = '#f9bc18';
+
 						$settings['footer_link_hover_color'] = '#f9d718';
+
 						$settings['social_media_style'] = 'dark';
+
 					}
 
 					break;
@@ -353,36 +407,58 @@ function jumpstart_su_get_presets( $preset = '' ) {
 					), $settings );
 
 					if ( 'default' === $key ) {
+
 						$settings['top_bg_color'] = '#222222';
+
 						$settings['header_bg_color'] = '#ffffff';
+
 						$settings['header_text_color'] = 'dark';
+
 						$settings['header_mobile_bg_color'] = '#222222';
+
 						$settings['menu_sub_bg_color'] = '#222222';
+
 						$settings['menu_bg_color'] = '#ffffff';
+
 						$settings['menu_bg_color_brightness'] = 'light';
+
 						$settings['menu_hover_bg_color'] = '#ffffff';
+
 						$settings['menu_hover_bg_color_brightness'] = 'light';
+
 						$settings['side_bg_color'] = '#222222';
+
 						$settings['footer_bg_color'] = '#ffffff';
+
 						$settings['footer_bg_color_brightness'] = 'light';
+
 						$settings['highlight'] = '#f9bc18';
+
 						$settings['link_color'] = '#f9bc18';
+
 						$settings['link_hover_color'] = '#f9d718';
+
 						$settings['footer_link_color'] = '#f9bc18';
+
 						$settings['footer_link_hover_color'] = '#f9d718';
+
 					}
 			}
 
 			$args['sets'][ $style . '-' . $key ] = wp_parse_args( array(
-				'id'        => $style . '-' . $key,
-				'name'      => $name . ' - ' . $val[0],
-				'settings'  => $settings,
+				'id'       => $style . '-' . $key,
+				'name'     => $name . ' - ' . $val[0],
+				'settings' => $settings,
 			), $atts );
 
 			if ( 'default' === $key ) {
+
 				$args['sets'][ $style . '-' . $key ]['icon_width'] = '100%';
+
 				$args['sets'][ $style . '-' . $key ]['icon_height'] = '';
+
 				$args['sets'][ $style . '-' . $key ]['icon_style'] = '';
+
 			}
 
 			$args['sets'][ $style . '-' . $key ]['icon'] .= 'preset-' . $style . '-' . $key . '.jpg';

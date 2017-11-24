@@ -68,24 +68,33 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 		$color = $parts[2];
 
 		if ( isset( $parts[3] ) ) {
+
 			$color .= '-' . $parts[3];
+
 		}
 
 		foreach ( $colors as $key => $val ) {
+
 			if ( $key != $color ) {
+
 				unset( $colors[ $key ] );
+
 			}
 		}
 
 		foreach ( $styles as $key => $val ) {
+
 			if ( $key != $parts[0] . '-' . $parts[1] ) {
+
 				unset( $styles[ $key ] );
+
 			}
 		}
 	}
 
 	// Build presets.
 	foreach ( $styles as $style => $name ) {
+
 		foreach ( $colors as $key => $val ) {
 
 			$settings = array(
@@ -143,26 +152,47 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					), $settings);
 
 					if ( 'default' === $key ) {
+
 						$settings['header_apply_border_bottom'] = '1';
+
 						$settings['header_border_bottom_width'] = '1px';
+
 						$settings['header_border_bottom_color'] = '#f2f2f2';
+
 						$settings['footer_apply_border_top'] = '1';
+
 						$settings['footer_border_top_width'] = '1px';
+
 						$settings['footer_border_top_color'] = '#f2f2f2';
+
 						$settings['header_text_color'] = 'dark';
+
 						$settings['header_mobile_bg_color'] = '#333333';
+
 						$settings['menu_highlight'] = '#333333';
+
 						$settings['menu_sub_bg_color_brightness'] = 'light';
+
 						$settings['menu_mobile_bg_color'] = '#222222';
+
 						$settings['side_bg_color'] = '#222222';
+
 						$settings['footer_bg_color_brightness'] = 'light';
+
 						$settings['highlight'] = '#fec527';
+
 						$settings['link_color'] = '#f9d718';
+
 						$settings['link_hover_color'] = '#f9bc18';
+
 						$settings['footer_link_color'] = '#f9d718';
+
 						$settings['footer_link_hover_color'] = '#f9bc18';
+
 						$settings['social_media_style'] = 'dark';
+
 						$settings['font_menu']['color'] = '#333333';
+
 					}
 
 					break;
@@ -193,26 +223,47 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					), $settings);
 
 					if ( 'default' === $key ) {
+
 						$settings['top_text_color'] = 'dark';
+
 						$settings['top_border_bottom_color'] = '#f2f2f2';
+
 						$settings['header_border_bottom_color'] = '#f2f2f2';
+
 						$settings['footer_apply_border_top'] = '1';
+
 						$settings['footer_border_top_width'] = '1px';
+
 						$settings['footer_border_top_color'] = '#f2f2f2';
+
 						$settings['header_text_color'] = 'dark';
+
 						$settings['header_mobile_bg_color'] = '#333333';
+
 						$settings['menu_highlight'] = '#333333';
+
 						$settings['menu_sub_bg_color_brightness'] = 'light';
+
 						$settings['menu_mobile_bg_color'] = '#222222';
+
 						$settings['side_bg_color'] = '#222222';
+
 						$settings['footer_bg_color_brightness'] = 'light';
+
 						$settings['highlight'] = '#fec527';
+
 						$settings['link_color'] = '#f9d718';
+
 						$settings['link_hover_color'] = '#f9bc18';
+
 						$settings['footer_link_color'] = '#f9d718';
+
 						$settings['footer_link_hover_color'] = '#f9bc18';
+
 						$settings['social_media_style'] = 'dark';
+
 						$settings['font_menu']['color'] = '#333333';
+
 					}
 
 					break;
@@ -239,18 +290,31 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					), $settings);
 
 					if ( 'default' === $key ) {
+
 						$settings['top_bg_color'] = '#1b1b1b';
+
 						$settings['header_bg_color'] = '#252525';
+
 						$settings['highlight'] = '#fec527';
+
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
+
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
+
 						$settings['menu_mobile_bg_color'] = '#1b1b1b';
+
 						$settings['side_bg_color'] = '#1b1b1b';
+
 						$settings['footer_bg_color'] = '#1b1b1b';
+
 						$settings['link_color'] = '#f9d718';
+
 						$settings['link_hover_color'] = '#f9bc18';
+
 						$settings['footer_link_color'] = '#f9d718';
+
 						$settings['footer_link_hover_color'] = '#f9bc18';
+
 					}
 
 					break;
@@ -278,17 +342,29 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 					), $settings);
 
 					if ( 'default' === $key ) {
+
 						$settings['header_bg_color'] = '#252525';
+
 						$settings['highlight'] = '#fec527';
+
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
+
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
+
 						$settings['menu_mobile_bg_color'] = '#1b1b1b';
+
 						$settings['side_bg_color'] = '#1b1b1b';
+
 						$settings['footer_bg_color'] = '#1b1b1b';
+
 						$settings['link_color'] = '#f9d718';
+
 						$settings['link_hover_color'] = '#f9bc18';
+
 						$settings['footer_link_color'] = '#f9d718';
+
 						$settings['footer_link_hover_color'] = '#f9bc18';
+
 					}
 			}
 
@@ -299,9 +375,13 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 			), $atts);
 
 			if ( 'default' === $key ) {
+
 				$args['sets'][ $style . '-' . $key ]['icon_width'] = '100%';
+
 				$args['sets'][ $style . '-' . $key ]['icon_height'] = '';
+
 				$args['sets'][ $style . '-' . $key ]['icon_style'] = '';
+
 			}
 
 			$args['sets'][ $style . '-' . $key ]['icon'] .= 'preset-' . $style . '-' . $key . '.jpg';
@@ -310,7 +390,8 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	}
 
 	/**
-	 * Filters the preset styles added by the Entrepreneur base.
+	 * Filters the preset styles added by the
+	 * Entrepreneur base.
 	 *
 	 * @since Jump_Start 2.1.1
 	 *

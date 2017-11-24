@@ -539,22 +539,33 @@ function jumpstart_ag_options() {
 	}
 
 	themeblvd_add_option_section( 'styles', 'ag_general',       __( 'General', '@@text-domain' ),            null, $options['general'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_header',        __( 'Header', '@@text-domain' ),             null, $options['header'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_header_trans',  __( 'Transparent Header', '@@text-domain' ), null, $options['header_trans'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_header_mobile', __( 'Mobile Header', '@@text-domain' ),      null, $options['header_mobile'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_footer',        __( 'Footer', '@@text-domain' ),             null, $options['footer'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_side',          __( 'Side Panel', '@@text-domain' ),         null, $options['side'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_widgets',       __( 'Widgets', '@@text-domain' ),            null, $options['widgets'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_typo',          __( 'Typography', '@@text-domain' ),         null, $options['typo'] );
+
 	themeblvd_add_option_section( 'styles', 'ag_css',           __( 'Custom CSS', '@@text-domain' ),         null, $options['css'] );
 
-	// Remove options
+	// Remove options.
 	themeblvd_remove_option( 'layout', 'header', 'header_text' );
+
 	themeblvd_remove_option( 'layout', 'header', 'social_media' );
+
 	themeblvd_remove_option( 'layout', 'header', 'social_media_style' );
+
 	themeblvd_remove_option( 'layout', 'header_trans', 'trans_social_media_style' );
 
-	// Set default logos
+	// Set default logos.
 	themeblvd_edit_option( 'layout', 'header', 'logo', 'std', array(
 		'type'         => 'image',
 		'image'        => get_template_directory_uri() . '/assets/img/logo-smaller-light.png',
@@ -571,11 +582,12 @@ function jumpstart_ag_options() {
 		'image_2x'     => '',
 	));
 
-	// Make narrow full-width content and popout images on by default
+	// Make narrow full-width content and popout images on by default.
 	themeblvd_edit_option( 'content', 'general', 'fw_narrow', 'std', '1' );
+
 	themeblvd_edit_option( 'content', 'general', 'img_popout', 'std', '1' );
 
-	// Add Layout > Contact
+	// Add Layout > Contact.
 	themeblvd_add_option_section('layout', 'contact', __( 'Contact', '@@text-domain' ), null, array(
 		'social_media' => array(
 			'id'       => 'social_media',
@@ -627,6 +639,7 @@ function jumpstart_ag_options() {
 
 	// Change default sidebar layout to full width for single posts and pages.
 	themeblvd_edit_option( 'layout', 'sidebar_layouts', 'single_sidebar_layout', 'std', 'full_width' );
+
 	themeblvd_edit_option( 'layout', 'sidebar_layouts', 'page_sidebar_layout', 'std', 'full_width' );
 
 }

@@ -19,7 +19,7 @@ include_once( themeblvd_get_base_path( 'agent' ) . '/options.php' );
 include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 
 /**
- * Filter global config.
+ * Filter global configuration.
  *
  * @since @@name-package 2.1.0
  *
@@ -29,7 +29,9 @@ include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 function jumpstart_ag_global_config( $setup ) {
 
 	if ( 'dark' === themeblvd_get_option( 'style' ) ) {
+
 		$setup['display']['dark'] = true;
+
 	}
 
 	return $setup;
@@ -58,10 +60,14 @@ function jumpstart_ag_include_fonts() {
 add_action( 'wp_head', 'jumpstart_ag_include_fonts', 5 );
 
 /**
- * Generate output string to pass to
+ * Add custom styles for theme options.
+ *
+ * This generate output string to pass to
  * wp_add_inline_style().
  *
  * @since @@name-package 2.1.0
+ *
+ * @return string $print CSS code to print.
  */
 function jumpstart_ag_css() {
 
@@ -97,14 +103,18 @@ function jumpstart_ag_css() {
 	$print .= ".highlight,\n";
 
 	if ( themeblvd_supports( 'plugins', 'wpml' ) && themeblvd_installed( 'wpml' ) ) {
+
 		$print .= ".tb-lang-popup a:hover,\n";
 		$print .= ".tb-lang-popup a:focus,\n";
+
 	}
 
 	if ( themeblvd_supports( 'plugins', 'woocommerce' ) && themeblvd_installed( 'woocommerce' ) ) {
+
 		$print .= ".woocommerce-tabs .tabs > li > a:hover,\n";
 		$print .= ".woocommerce-tabs .tabs > li > a:focus,\n";
 		$print .= ".woocommerce-tabs .tabs > li.active > a,\n";
+
 	}
 
 	$print .= ".tb-thumb-link:before,\n";
@@ -187,6 +197,7 @@ function jumpstart_ag_css() {
 	$font = themeblvd_get_option( 'font_body' );
 
 	if ( $font ) {
+
 		$print .= "html,\n";
 		$print .= "body {\n";
 		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
@@ -195,6 +206,7 @@ function jumpstart_ag_css() {
 		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
 		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 		$print .= "}\n";
+
 	}
 
 	// Header Font
@@ -203,9 +215,11 @@ function jumpstart_ag_css() {
 	if ( $font ) {
 
 		if ( themeblvd_installed( 'gravityforms' ) && themeblvd_supports( 'plugins', 'gravityforms' ) ) {
+
 			$print .= ".tb-gforms-compat .gform_wrapper .gsection .gfield_label,\n";
 			$print .= ".tb-gforms-compat .gform_wrapper h2.gsection_title,\n";
 			$print .= ".tb-gforms-compat .gform_wrapper h3.gform_title,\n";
+
 		}
 
 		$print .= "h1,\n";
@@ -220,6 +234,7 @@ function jumpstart_ag_css() {
 		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
 		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 		$print .= "}\n";
+
 	}
 
 	// Small Header Font
@@ -251,6 +266,7 @@ function jumpstart_ag_css() {
 		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
 
 		$print .= "}\n";
+
 	}
 
 	// Quote Font
@@ -382,7 +398,9 @@ function jumpstart_ag_css() {
 		$opacity = themeblvd_get_option( 'header_trans_bg_color_opacity' );
 
 		if ( $opacity ) {
+
 			$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option( 'header_trans_bg_color' ), $opacity ) );
+
 		}
 
 		$print .= "\t}\n";
@@ -409,13 +427,15 @@ function jumpstart_ag_css() {
 	$print .= "\t}\n";
 	$print .= "}\n";
 
-	// Get logo attributes
+	// Get logo attributes.
 	if ( themeblvd_config( 'suck_up' ) ) {
 
 		$logo = themeblvd_get_option( 'trans_logo' );
 
 		if ( ! $logo || ( ! empty( $logo['type'] ) && 'default' === $logo['type'] ) ) {
+
 			$logo = themeblvd_get_option( 'logo' );
+
 		}
 	} else {
 
@@ -423,11 +443,14 @@ function jumpstart_ag_css() {
 
 	}
 
-	// Height
 	if ( 'image' === $logo['type'] ) {
-		$h = 50 + intval( $logo['image_height'] );
+
+		$hright = 50 + intval( $logo['image_height'] );
+
 	} else {
-		$h = 76;
+
+		$hright = 76;
+
 	}
 
 	$print .= "@media (min-width: 768px) {\n";
@@ -438,27 +461,32 @@ function jumpstart_ag_css() {
 
 	$print .= "\t.header-content > .wrap,\n";
 	$print .= "\t.has-sticky #top {\n";
-	$print .= sprintf( "\t\theight: %spx;\n", $h );
+	$print .= sprintf( "\t\theight: %spx;\n", $hright );
 	$print .= "\t}\n";
 
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
+
 		$print .= "\t.site-header.stretch .header-toolbar:before {\n";
-		$print .= sprintf( "\t\ttop: -%spx;\n", round( ($h - 58) / 2 ) );
+		$print .= sprintf( "\t\ttop: -%spx;\n", round( ($hright - 58) / 2 ) );
 		$print .= "\t}\n";
+
 	}
 
 	$print .= "}\n";
 
-	// Logo width
 	if ( 'image' === $logo['type'] ) {
-		$w = $logo['image_width'];
+
+		$width = $logo['image_width'];
+
 	} else {
-		$w = '200';
+
+		$width = '200';
+
 	}
 
 	$print .= "@media (min-width: 768px) {\n";
 	$print .= "\t.site-header .header-logo {\n";
-	$print .= sprintf( "\t\tmax-width: %spx;\n", $w );
+	$print .= sprintf( "\t\tmax-width: %spx;\n", $width );
 	$print .= "\t}\n";
 	$print .= "}\n";
 
@@ -490,7 +518,9 @@ function jumpstart_ag_css() {
 	$print .= "\n/* Side Panels */\n";
 
 	if ( themeblvd_do_side_panel() ) {
+
 		$print .= ".tb-side-panel,\n";
+
 	}
 
 	$print .= ".tb-mobile-menu-wrapper {\n";
@@ -518,12 +548,17 @@ function jumpstart_ag_css() {
 	$custom = themeblvd_get_option( 'custom_styles' );
 
 	if ( $custom ) {
+
 		$print .= "\n/* =Custom CSS\n";
+
 		$print .= "-----------------------------------------------*/\n\n";
+
 		$print .= $custom;
+
 	}
 
 	$print = wp_kses( $print, array() );
+
 	$print = htmlspecialchars_decode( $print );
 
 	/**
@@ -556,12 +591,17 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ag_css', 25 );
 function jumpstart_ag_body_class( $class ) {
 
 	if ( 'show' === themeblvd_get_option( 'sticky' ) ) {
+
 		$class[] = 'has-sticky';
+
 	}
 
 	if ( themeblvd_get_option( 'widget_bg' ) ) {
+
 		$class[] = 'tb-widget-bg';
+
 		$class[] = themeblvd_get_option( 'widget_bg_color_brightness' ) . '-widgets';
+
 	}
 
 	return $class;
@@ -583,7 +623,9 @@ function jumpstart_ag_header_class( $class ) {
 	$key = array_search( 'has-sticky', $class );
 
 	if ( false !== $key ) {
+
 		unset( $class[ $key ] );
+
 	}
 
 	// Background brightness.
@@ -592,9 +634,13 @@ function jumpstart_ag_header_class( $class ) {
 		$class[] = 'trans-' . themeblvd_get_option( 'header_trans_bg_color_brightness' );
 
 		if ( themeblvd_get_option( 'header_trans_hide_border' ) ) {
+
 			$class[] = 'no-border';
+
 		} else {
+
 			$class[] = 'has-border';
+
 		}
 	} else {
 
@@ -611,12 +657,16 @@ function jumpstart_ag_header_class( $class ) {
 	$menu_args = themeblvd_get_wp_nav_menu_args( 'primary' );
 
 	if ( has_nav_menu( $menu_args['theme_location'] ) ) {
+
 		$class[] = 'menu-' . themeblvd_get_option( 'menu_placement' );
+
 	}
 
 	// Whether to stretch the header full width.
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
+
 		$class[] = 'stretch';
+
 	}
 
 	return $class;
@@ -625,79 +675,92 @@ function jumpstart_ag_header_class( $class ) {
 add_filter( 'themeblvd_header_class', 'jumpstart_ag_header_class', 10, 2 );
 
 /*
- * Remove header top
+ * Remove header top.
  */
 remove_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 
 /*
- * Remove default menu callback
+ * Remove default menu callback.
  */
 remove_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 
 /**
- * Custom menu callback with header toolbar added
+ * Custom menu callback with header toolbar
+ * added.
  *
  * @since @@name-package 2.1.0
  */
 function jumpstart_ag_header_menu() {
 
 	/**
-	 * Action hook fires before the primary
-	 * navigation.
+	 * Fires before the primary navigation.
 	 *
-	 * @hooked null
+	 * @since @@name-framework 2.0.0
 	 */
 	do_action( 'themeblvd_header_menu_before' );
 
 	?>
-
 	<nav id="access" class="header-nav">
+
 		<div class="wrap clearfix">
 
 			<?php if ( themeblvd_get_option( 'searchform' ) == 'show' || themeblvd_do_cart() || themeblvd_do_lang_selector() || themeblvd_do_side_panel() ) : ?>
+
 				<ul class="header-toolbar list-unstyled">
 
 					<?php if ( themeblvd_do_cart() ) : ?>
+
 						<li class="top-cart"><?php themeblvd_cart_popup_trigger(); ?></li>
+
 					<?php endif; ?>
 
 					<?php if ( themeblvd_do_lang_selector() ) : ?>
+
 						<li class="top-lang">
 							<a href="#" class="tb-lang-trigger" title="<?php echo themeblvd_get_local( 'language' ); ?>" data-toggle="modal" data-target="#floating-lang-switcher">
 								<i class="fa fa-globe"></i>
 							</a>
 						</li>
+
 					<?php endif; ?>
 
 					<?php if ( 'show' === themeblvd_get_option( 'searchform' ) ) : ?>
+
 						<li class="top-search"><?php themeblvd_floating_search_trigger(); ?></li>
+
 					<?php endif; ?>
 
 					<?php if ( themeblvd_do_side_panel() ) : ?>
+
 						<li class="top-side-panel"><?php themeblvd_side_trigger(); ?></li>
+
 					<?php endif; ?>
 
 				</ul>
+
 			<?php endif; ?>
 
 			<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args( 'primary' ) ); ?>
 
 			<?php
 			/**
-			 * @hooked null
+			 * Fires just after the main menu, within
+			 * the main menu's <nav> wrapper.
+			 *
+			 * @since @@name-framework 2.0.0
 			 */
 			do_action( 'themeblvd_header_menu_addon' );
 			?>
 
 		</div><!-- .wrap (end) -->
+
 	</nav><!-- #access (end) -->
 
 	<?php
 	/**
-	 * Action hook fires after the primary
-	 * navigation.
+	 * Fires after the primary navigation.
 	 *
-	 * @hooked null
+	 * @since @@name-framework 2.0.0
 	 */
 	do_action( 'themeblvd_header_menu_after' );
 
@@ -714,7 +777,9 @@ add_action( 'themeblvd_header_addon', 'jumpstart_ag_header_menu' );
  */
 function jumpstart_ag_side_panel_class( $class ) {
 
-	return array_merge( $class, array( themeblvd_get_option( 'side_bg_color_brightness' ) ) );
+	$class[] = themeblvd_get_option( 'side_bg_color_brightness' );
+
+	return $class;
 
 }
 add_filter( 'themeblvd_side_panel_class', 'jumpstart_ag_side_panel_class' );
@@ -732,10 +797,12 @@ function jumpstart_ag_side_panel_contact() {
 		$color = 'light';
 
 		if ( 'dark' === themeblvd_get_option( 'side_text_color' ) ) {
+
 			$color = 'grey';
+
 		}
 
-		echo themeblvd_get_contact_bar(null, array(
+		echo themeblvd_get_contact_bar( null, array(
 			'tooltip' => false,
 			'style'   => $color,
 			'class'   => 'to-mobile',
@@ -747,7 +814,8 @@ function jumpstart_ag_side_panel_contact() {
 add_action( 'themeblvd_side_panel', 'jumpstart_ag_side_panel_contact', 30 );
 
 /**
- * Add CSS class to sticky header panel for color brightness.
+ * Add CSS class to sticky header panel for
+ * color brightness.
  *
  * @since @@name-package 2.1.0
  *
@@ -757,10 +825,13 @@ add_action( 'themeblvd_side_panel', 'jumpstart_ag_side_panel_contact', 30 );
 function jumpstart_ag_sticky_class( $class ) {
 
 	$class[] = themeblvd_get_option( 'header_bg_color_brightness' );
+
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_drop_bg_color_brightness' );
 
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
+
 		$class[] = 'stretch';
+
 	}
 
 	return $class;
@@ -769,7 +840,7 @@ function jumpstart_ag_sticky_class( $class ) {
 add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
 
 /**
- * Add CSS classes to footer
+ * Add CSS classes to footer.
  *
  * @since @@name-package 2.1.0
  *
@@ -779,6 +850,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
 function jumpstart_ag_footer_class( $class ) {
 
 	$class[] = themeblvd_get_option( 'footer_bg_color_brightness' );
+
 	$class[] = 'copyright-' . themeblvd_get_option( 'copyright_bg_color_brightness' );
 
 	return $class;
@@ -797,7 +869,7 @@ add_filter( 'themeblvd_footer_class', 'jumpstart_ag_footer_class' );
  */
 function jumpstart_ag_top_height_addend( $addend, $viewport ) {
 
-	return 50; /* Default logo 25px + 50px = 75px */
+	return 50; // Default logo 25px + 50px = 75px
 
 }
 add_filter( 'themeblvd_top_height_addend', 'jumpstart_ag_top_height_addend', 10, 2 );
@@ -819,7 +891,8 @@ function jumpstart_ag_menu_sub_indicator( $html ) {
 add_filter( 'themeblvd_menu_sub_indicator', 'jumpstart_ag_menu_sub_indicator' );
 
 /*
- * Remove framework default footer copyright area.
+ * Remove framework default footer copyright
+ * area.
  */
 remove_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 
@@ -833,6 +906,7 @@ function jumpstart_ag_footer_sub_content() {
 	$bg = themeblvd_get_option( 'copyright_bg_color_brightness' );
 
 	echo '<div class="footer-sub-content ' . $bg . '">';
+
 	echo '<div class="wrap clearfix">';
 
 	if ( themeblvd_get_option( 'social_footer' ) ) {
@@ -843,15 +917,14 @@ function jumpstart_ag_footer_sub_content() {
 			$style = 'dark';
 		}
 
-		echo themeblvd_get_contact_bar(
-			null,
-			array(
-				'tooltip' => 'top',
-				'style' => $style,
-			)
-		);
+		echo themeblvd_get_contact_bar( null, array(
+			'tooltip' => 'top',
+			'style' => $style,
+		));
 
 	}
+
+	echo '<div class="copyright">';
 
 	/**
 	 * Filters the output of the copyright message,
@@ -861,24 +934,34 @@ function jumpstart_ag_footer_sub_content() {
 	 *
 	 * @param string Copyright text.
 	 */
-	echo '<div class="copyright">' . apply_filters( 'themeblvd_footer_copyright', themeblvd_get_content( themeblvd_get_option( 'footer_copyright' ) ) ) . '</div>';
+	echo apply_filters(
+		'themeblvd_footer_copyright',
+		themeblvd_get_content( themeblvd_get_option( 'footer_copyright' ) )
+	);
+
+	echo '</div>';
 
 	$menu_args = themeblvd_get_wp_nav_menu_args( 'footer' );
 
 	if ( has_nav_menu( $menu_args['theme_location'] ) ) {
+
 		echo '<div class="footer-nav">';
+
 		wp_nav_menu( $menu_args );
+
 		echo '</div>';
+
 	}
 
 	echo '</div><!-- .wrap (end) -->';
+
 	echo '</div><!-- .footer-sub-content (end) -->';
 
 }
 add_action( 'themeblvd_footer_sub_content', 'jumpstart_ag_footer_sub_content' );
 
 /**
- * More narrow sidebars
+ * More narrow sidebars.
  *
  * @since @@name-package 2.1.0
  *
@@ -888,11 +971,14 @@ add_action( 'themeblvd_footer_sub_content', 'jumpstart_ag_footer_sub_content' );
  */
 function jumpstart_ag_sidebar_layouts( $layouts, $stack ) {
 
-	// More narrow sidebars
+	// Make the sidebars more narrow. @TODO Issue #265. Remove this.
+
 	$layouts['sidebar_right']['columns']['content'] = "col-{$stack}-9";
+
 	$layouts['sidebar_right']['columns']['right'] = "col-{$stack}-3";
 
 	$layouts['sidebar_left']['columns']['content'] = "col-{$stack}-9";
+
 	$layouts['sidebar_left']['columns']['left'] = "col-{$stack}-3";
 
 	return $layouts;
@@ -908,12 +994,19 @@ add_filter( 'themeblvd_sidebar_layouts', 'jumpstart_ag_sidebar_layouts', 9, 2 );
 function jumpstart_ag_get_lang_popup() {
 
 	$output  = '<div id="floating-lang-switcher" class="tb-lang-popup modal fade">';
+
 	$output .= '<div class="modal-dialog modal-sm">';
+
 	$output .= '<div class="modal-content">';
+
 	$output .= '<div class="modal-header">';
+
 	$output .= '<button type="button" class="close" data-dismiss="modal" aria-label="' . themeblvd_get_local( 'close' ) . '"><span aria-hidden="true">&times;</span></button>';
+
 	$output .= '<h4 class="modal-title">' . themeblvd_get_local( 'language' ) . '</h4>';
+
 	$output .= '</div>';
+
 	$output .= '<div class="modal-body clearfix">';
 
 	if ( function_exists( 'icl_get_languages' ) ) {
@@ -929,15 +1022,21 @@ function jumpstart_ag_get_lang_popup() {
 				$class = 'lang-' . $lang['language_code'];
 
 				if ( $lang['active'] ) {
+
 					$class .= ' active';
+
 				}
 
 				$output .= '<li class="' . $class . '">';
 
 				if ( $lang['active'] ) {
+
 					$output .= sprintf( '<span title="%1$s">%1$s</span>', $lang['translated_name'] );
+
 				} else {
+
 					$output .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', $lang['url'], $lang['translated_name'] );
+
 				}
 
 				$output .= '</li>';
@@ -949,8 +1048,11 @@ function jumpstart_ag_get_lang_popup() {
 	}
 
 	$output .= '</div><!-- .modal-body (end) -->';
+
 	$output .= '</div><!-- .modal-content (end) -->';
+
 	$output .= '</div><!-- .modal-dialog (end) -->';
+
 	$output .= '</div><!-- .tb-wpml-switcher (end) -->';
 
 	/**
@@ -966,14 +1068,17 @@ function jumpstart_ag_get_lang_popup() {
 }
 
 /**
- * Output modal window for WPML language switcher.
+ * Output modal window for WPML language
+ * switcher.
  *
  * @since @@name-package 2.1.0
  */
 function jumpstart_ag_lang_popup() {
 
 	if ( themeblvd_do_lang_selector() ) {
+
 		echo jumpstart_ag_get_lang_popup();
+
 	}
 
 }
@@ -1004,8 +1109,17 @@ add_filter( 'themeblvd_primary_menu_args', 'jumpstart_ag_primary_menu_args' );
  */
 function themeblvd_agent_sidebar_args( $args, $sidebar, $location ) {
 
-	if ( in_array( $location, array( 'sidebar_left', 'sidebar_right' ) ) && 'dark' === themeblvd_get_option( 'widget_bg_color_brightness' ) ) {
-		$args['before_widget'] = str_replace( 'class="widget ', 'class="widget text-light ', $args['before_widget'] );
+	if ( in_array( $location, array( 'sidebar_left', 'sidebar_right' ) ) ) {
+
+		if ( 'dark' === themeblvd_get_option( 'widget_bg_color_brightness' ) ) {
+
+			$args['before_widget'] = str_replace(
+				'class="widget ',
+				'class="widget text-light ',
+				$args['before_widget']
+			);
+
+		}
 	}
 
 	return $args;

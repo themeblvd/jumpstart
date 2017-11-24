@@ -24,7 +24,9 @@ function jumpstart_ent_options() {
 	$bg_types = array();
 
 	if ( function_exists( 'themeblvd_get_bg_types' ) ) {
+
 		$bg_types = themeblvd_get_bg_types( 'section' );
+
 	}
 
 	/**
@@ -1281,17 +1283,29 @@ function jumpstart_ent_options() {
 	}
 
 	themeblvd_add_option_section( 'styles', 'ent_general',       __( 'General', 'jumpstart' ),         null, $options['general'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_header_info',   __( 'Header Info', 'jumpstart' ),     null, $options['header_info'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_header',        __( 'Header', 'jumpstart' ),          null, $options['header'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_header_mobile', __( 'Mobile Header', 'jumpstart' ),   null, $options['header_mobile'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_menu',          __( 'Main Menu', 'jumpstart' ),       null, $options['menu'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_menu_mobile',   __( 'Mobile Menu', 'jumpstart' ),     null, $options['menu_mobile'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_side_panel',    __( 'Side Panel', 'jumpstart' ),      null, $options['side_panel'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_footer',        __( 'Footer', 'jumpstart' ),          null, $options['footer'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_typo',          __( 'Typography', 'jumpstart' ),      null, $options['typo'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_buttons',       __( 'Buttons', 'jumpstart' ),         null, $options['buttons'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_widgets',       __( 'Sidebar Widgets', 'jumpstart' ), null, $options['widgets'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_extras',        __( 'Extras', 'jumpstart' ),          null, $options['extras'] );
+
 	themeblvd_add_option_section( 'styles', 'ent_css',           __( 'Custom CSS', 'jumpstart' ),      null, $options['css'] );
 
 	themeblvd_edit_option( 'layout', 'header', 'logo', 'std', array(
