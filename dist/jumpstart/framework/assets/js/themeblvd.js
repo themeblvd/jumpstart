@@ -826,11 +826,6 @@ jQuery(document).ready(function($) {
 					url = url[0],
 					css_class = 'tb-thumb-link';
 
-				// Add bootstrap thumbnail class
-				if ( themeblvd.gallery_thumb_frame == 'true' ) {
-					css_class += ' thumbnail';
-				}
-
 				// Append lightbox and hover effect if thumb links to an image
 				if ( url.match(/\.(jpe?g|png|bmp|gif|tiff?)$/i ) ) {
 
