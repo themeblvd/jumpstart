@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend layout functions.
+ * Frontend Layout
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -10,53 +10,70 @@
  */
 
 /**
- * Display set of elements
+ * Display set of elements from a custom layout.
  *
- * @since 2.5.0
+ * Note: When the $context of an element set is
+ * `block` it means it's a set of elements
+ * within a column.
  *
- * @param string $section_id ID of current section holding elements
- * @param array $elements All elements to loop through and display
- * @param string $context Context for elements, element or block (within a column)
- * @param int $max Maximum width of container
+ * @since @@name-framework 2.5.0
+ *
+ * @param string $section_id Section ID, where all of these elements exist.
+ * @param array  $elements   All elements to disolay within section.
+ * @param string $context    Context for elements, `element` or `block`.
+ * @param int    $max        Maximum width of container.
  */
 function themeblvd_elements( $section_id, $elements, $context = 'element', $max = 0 ) {
 
 	if ( $elements ) {
 
-		// Maximum width of container for elements. If the
-		// context is "block" this shouldn't be empty to start.
+		/*
+		 * Maximum width of container for elements. If the
+		 * context is `block` this shouldn't be empty to start.
+		 */
 		if ( ! $max ) {
-			$max = themeblvd_get_max_width('element');
+
+			$max = themeblvd_get_max_width( 'element' );
+
 		}
 
 		$i = 1;
-		$total = count($elements);
+
+		$total = count( $elements );
 
 		foreach ( $elements as $id => $element ) {
 
 			$args = array(
-				'section'	=> $section_id,
-				'id'		=> $id,
-				'num'		=> $i,
-				'total'		=> $total,
-				'context'	=> $context,
-				'max_width'	=> $max
+				'section'   => $section_id,
+				'id'        => $id,
+				'num'       => $i,
+				'total'     => $total,
+				'context'   => $context,
+				'max_width' => $max,
 			);
 
 			if ( isset( $element['type'] ) ) {
+
 				$args['type'] = $element['type'];
+
 			}
 
 			if ( isset( $element['label'] ) ) {
+
 				$args['label'] = $element['label'];
+
 			}
 
 			if ( isset( $element['options'] ) ) {
+
 				$args['options'] = $element['options'];
+
 			}
 
 			if ( isset( $element['display'] ) ) {
+
 				$args['display'] = $element['display'];
+
 			}
 
 			themeblvd_element( $args );
@@ -68,62 +85,116 @@ function themeblvd_elements( $section_id, $elements, $context = 'element', $max 
 }
 
 /**
- * Display individual element
+ * Display an individual element.
  *
- * @since 2.5.0
+ * @see themeblvd_elements()
  *
- * @param array $args Arguments for display
+ * @since @@name-framework 2.5.0
+ *
+ * @param  array  $args {
+ *     Element arguments.
+ *
+ *     @type string $section   Section ID, containing this element.
+ *     @type string $id        Element ID.
+ *     @type string $type      Element type.
+ *     @type string $label     Element label.
+ *     @type string $options   Element settings, different for each element type.
+ *     @type string $display   Element display settings.
+ *     @type int    $num       Element's sequential count, among the other element its displayed with.
+ *     @type int    $total     Total number of elements this element is displayed with.
+ *     @type string $context   Context for elements, `element` or `block`.
+ *     @type string $max_width Maximum width of container.
+ * }
  */
 function themeblvd_element( $args ) {
 
-	$defaults = array(
-		'section'	=> '',			// Unique ID for the section
-		'id'		=> '',			// Unique ID for the element
-		'type'		=> '',			// The type of element to display
-		'label'		=> '',			// Element label
-		'options'	=> array(),		// Settings for this element
-		'display'	=> array(),		// Display settings for this element
-		'num'		=> 1,			// Current count for the element being displayed
-		'total'		=> 1,			// Total number of elements in parent section
-		'context'	=> 'element',	// Context for elements, element or block (within a column)
-		'max_width'	=> ''
-	);
-	$args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'section'   => '',
+		'id'        => '',
+		'type'      => '',
+		'label'     => '',
+		'options'   => array(),
+		'display'   => array(),
+		'num'       => 1,
+		'total'     => 1,
+		'context'   => 'element',
+		'max_width' => '',
+	));
 
-	// Allow any elements to utilize the container
-	// max width
 	$args['options']['max_width'] = $args['max_width'];
 
-	// Element class
 	$class = implode( ' ', themeblvd_get_element_class( $args ) );
 
-	// Open element
-	do_action( 'themeblvd_element_'.$args['type'].'_before', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_before
-	printf( '<div id="%s" class="%s" style="%s">', esc_attr($args['id']), esc_attr($class), themeblvd_get_display_inline_style($args['display']) );
-	do_action( 'themeblvd_element_'.$args['type'].'_top', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context'] ); // Top of element: themeblvd_element_{type}_top
+	/**
+	 * Fires before the start of any custom layout
+	 * element's HTML output.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $id      Element ID.
+	 * @param string $options Element settings, different for each element type.
+	 * @param string $section Section ID, containing this element.
+	 * @param string $display Element display settings.
+	 * @param string $context Context for elements, `element` or `block`.
+	 */
+	do_action(
+		'themeblvd_element_' . $args['type'] . '_before',
+		$args['id'],
+		$args['options'],
+		$args['section'],
+		$args['display'],
+		$args['context']
+	);
 
-	// Display element
+	// Open element.
+	printf( '<div id="%s" class="%s" style="%s">', esc_attr( $args['id'] ), esc_attr( $class ), themeblvd_get_display_inline_style( $args['display'] ) );
+
+	/**
+	 * Fires just within the start of any custom
+	 * layout element's HTML output.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $id      Element ID.
+	 * @param string $options Element settings, different for each element type.
+	 * @param string $section Section ID, containing this element.
+	 * @param string $display Element display settings.
+	 * @param string $context Context for elements, `element` or `block`.
+	 */
+	do_action(
+		'themeblvd_element_' . $args['type'] . '_top',
+		$args['id'],
+		$args['options'],
+		$args['section'],
+		$args['display'],
+		$args['context']
+	);
+
+	// Display element.
 	switch ( $args['type'] ) {
 
 		/*------------------------------------------------------*/
 		/* Layout (layout.php)
 		/*------------------------------------------------------*/
 
-		case 'columns' :
-		case 'jumbotron_slider' :
+		case 'columns':
+		case 'jumbotron_slider':
+			if ( themeblvd_get_att( 'footer_sync' ) ) {
 
-			if ( themeblvd_get_att('footer_sync') ) {
-				$layout_id = themeblvd_config('bottom_builder_post_id');
+				$layout_id = themeblvd_config( 'bottom_builder_post_id' );
+
 			} else {
-				$layout_id = themeblvd_config('builder_post_id');
+
+				$layout_id = themeblvd_config( 'builder_post_id' );
+
 			}
 
-			if ( $args['type'] == 'jumbotron_slider' ) {
+			if ( 'jumbotron_slider' === $args['type'] ) {
 
 				$hero_args = array(
-					'section'		=> $args['section'],
-					'layout_id'		=> $layout_id,
-					'element_id' 	=> $args['id'],
+					'section'    => $args['section'],
+					'layout_id'  => $layout_id,
+					'element_id' => $args['id'],
 				);
 
 				themeblvd_jumbotron_slider( array_merge( $hero_args, $args['options'] ) );
@@ -132,19 +203,21 @@ function themeblvd_element( $args ) {
 
 				$num = 1;
 
-				if ( isset($args['options']['setup']) && is_string( $args['options']['setup'] ) ) {
+				if ( isset( $args['options']['setup'] ) && is_string( $args['options']['setup'] ) ) {
+
 					$num = count( explode( '-', $args['options']['setup'] ) );
+
 				}
 
 				$col_args = array(
-					'section'		=> $args['section'],
-					'layout_id'		=> $layout_id,
-					'element_id' 	=> $args['id'],
-					'num'			=> $num,
-					'widths'		=> $args['options']['setup'],
-					'stack' 		=> $args['options']['stack'],
-					'height'		=> $args['options']['height'],
-					'align'			=> $args['options']['align']
+					'section'    => $args['section'],
+					'layout_id'  => $layout_id,
+					'element_id' => $args['id'],
+					'num'        => $num,
+					'widths'     => $args['options']['setup'],
+					'stack'      => $args['options']['stack'],
+					'height'     => $args['options']['height'],
+					'align'      => $args['options']['align'],
 				);
 
 				themeblvd_columns( $col_args );
@@ -157,49 +230,55 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		// Content (direct input)
-		case 'content' :
+		case 'content':
 			themeblvd_content_block( $args['options'] );
 			break;
 
 		// Current (from post content)
-		case 'current' :
+		case 'current':
 			themeblvd_post_content();
 			break;
 
 		// Custom Field
-		case 'custom_field' :
-
-			$value = get_post_meta( themeblvd_config('id'), $args['options']['key'], true );
+		case 'custom_field':
+			$value = get_post_meta( themeblvd_config( 'id' ), $args['options']['key'], true );
 
 			if ( $args['options']['wpautop'] ) {
-				echo themeblvd_get_content($value);
+
+				echo themeblvd_get_content( $value );
+
 			} else {
-				echo do_shortcode( themeblvd_kses($value) );
+
+				echo do_shortcode( themeblvd_kses( $value ) );
+
 			}
 			break;
 
 		// External Page/Post content
-		case 'external' :
-			themeblvd_post_content( intval($args['options']['post_id']) );
+		case 'external':
+			themeblvd_post_content( intval( $args['options']['post_id'] ) );
 			break;
 
 		// Headline
-		case 'headline' :
+		case 'headline':
 			themeblvd_headline( $args['options'] );
 			break;
 
 		// HTML
-		case 'html' :
-			printf( '<div class="entry-content">%s</div>', themeblvd_kses($args['options']['html']) );
+		case 'html':
+			printf(
+				'<div class="entry-content">%s</div>',
+				themeblvd_kses( $args['options']['html'] )
+			);
 			break;
 
 		// Quote
-		case 'quote' :
+		case 'quote':
 			themeblvd_blockquote( $args['options'] );
 			break;
 
 		// Widget area
-		case 'widget' :
+		case 'widget':
 			themeblvd_widgets( $args['options']['sidebar'], $args['context'] );
 			break;
 
@@ -208,72 +287,72 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		// Alert
-		case 'alert' :
+		case 'alert':
 			themeblvd_alert( $args['options'] );
 			break;
 
 		// Divider
-		case 'divider' :
+		case 'divider':
 			themeblvd_divider( $args['options'] );
 			break;
 
 		// Google Map
-		case 'map' :
+		case 'map':
 			themeblvd_map( $args['options'] );
 			break;
 
 		// Icon Box
-		case 'icon_box' :
+		case 'icon_box':
 			themeblvd_icon_box( $args['options'] );
 			break;
 
 		// Hero Unit
-		case 'jumbotron' :
+		case 'jumbotron':
 			themeblvd_jumbotron( $args['options'] );
 			break;
 
 		// Panel
-		case 'panel' :
+		case 'panel':
 			themeblvd_panel( $args['options'] );
 			break;
 
 		// Partner Logos
-		case 'partners' :
+		case 'partners':
 			themeblvd_logos( $args['options'] );
 			break;
 
 		// Pricing Table
-		case 'pricing_table' :
+		case 'pricing_table':
 			themeblvd_pricing_table( $args['options']['columns'], $args['options'] );
 			break;
 
 		// Promo Box
-		case 'slogan' :
+		case 'slogan':
 			themeblvd_slogan( $args['options'] );
 			break;
 
 		// Tabs
-		case 'tabs' :
+		case 'tabs':
 			themeblvd_tabs( $args['id'], $args['options'] );
 			break;
 
 		// Team Member
-		case 'team_member' :
+		case 'team_member':
 			themeblvd_team_member( $args['options'] );
 			break;
 
 		// Testimonial
-		case 'testimonial' :
+		case 'testimonial':
 			themeblvd_testimonial( $args['options'] );
 			break;
 
 		// Testimonial Slider
-		case 'testimonial_slider' :
+		case 'testimonial_slider':
 			themeblvd_testimonial_slider( $args['options'] );
 			break;
 
 		// Toggles
-		case 'toggles' :
+		case 'toggles':
 			themeblvd_toggles( $args['id'], $args['options'] );
 			break;
 
@@ -282,63 +361,81 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		// Blog
-		case 'blog' :
+		case 'blog':
 			$args['options']['context'] = 'blog';
+
 			$args['options']['element'] = true;
+
 			themeblvd_loop( $args['options'] );
+
 			break;
 
 		// Post Grid
-		case 'post_grid' :
+		case 'post_grid':
 			$args['options']['context'] = 'grid';
+
 			$args['options']['element'] = true;
+
 			themeblvd_loop( $args['options'] );
+
 			break;
 
 		// Post List
-		case 'post_list' :
+		case 'post_list':
 			$args['options']['context'] = 'list';
+
 			$args['options']['element'] = true;
+
 			themeblvd_loop( $args['options'] );
+
 			break;
 
 		// Post Showcase
-		case 'post_showcase' :
+		case 'post_showcase':
 			$args['options']['context'] = 'showcase';
+
 			$args['options']['element'] = true;
+
 			themeblvd_loop( $args['options'] );
+
 			break;
 
 		// Post Slider
-		case 'post_slider' :
-		case 'post_slider_popout' :
+		case 'post_slider':
+		case 'post_slider_popout':
 			$args['options']['element'] = true;
+
 			themeblvd_post_slider( $args['options'] );
+
 			break;
 
 		// Mini Post List
-		case 'mini_post_list' :
+		case 'mini_post_list':
 			$args['options']['element'] = true;
+
 			themeblvd_mini_post_list( $args['options'], $args['options']['thumbs'], $args['options']['meta'] );
+
 			break;
 
 		// Mini Post Grid
-		case 'mini_post_grid' :
-
+		case 'mini_post_grid':
 			$gallery = '';
 
-			if ( $args['options']['source'] == 'gallery' ) {
+			if ( 'gallery' === $args['options']['source'] ) {
 
 				$gallery = $args['options']['gallery'];
 
 				if ( ! $gallery ) {
+
 					$gallery = 'error';
+
 				}
 			}
 
 			$args['options']['element'] = true;
 
 			themeblvd_mini_post_grid( $args['options'], $args['options']['align'], $args['options']['thumbs'], $gallery );
+
 			break;
 
 		/*------------------------------------------------------*/
@@ -346,31 +443,36 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		// Featured Image
-		case 'featured_image' :
+		case 'featured_image':
 			wp_reset_query();
+
 			themeblvd_the_post_thumbnail( $args['options']['crop'] );
+
 			break;
 
 		// Image
-		case 'image' :
+		case 'image':
 			themeblvd_image( $args['options']['image'], $args['options'] );
 			break;
 
 		// Revolution Slider (requires Revolution Sliders plugin)
-		case 'revslider' :
-			themeblvd_content( sprintf('[rev_slider %s]', $args['options']['id']) );
+		case 'revslider':
+			themeblvd_content( sprintf( '[rev_slider %s]', $args['options']['id'] ) );
 			break;
 
 		// Simple Slider (standard and popout)
-		case 'simple_slider' :
-		case 'simple_slider_popout' :
+		case 'simple_slider':
+		case 'simple_slider_popout':
 			$images = $args['options']['images'];
+
 			unset( $args['options']['images'] );
+
 			themeblvd_simple_slider( $images, $args['options'] );
+
 			break;
 
 		// Video
-		case 'video' :
+		case 'video':
 			themeblvd_video( $args['options']['video'], $args['options'] );
 			break;
 
@@ -379,17 +481,17 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		// Author Box
-		case 'author_box' :
-			themeblvd_author_info( get_user_by('slug', $args['options']['user']) );
+		case 'author_box':
+			themeblvd_author_info( get_user_by( 'slug', $args['options']['user'] ) );
 			break;
 
 		// Breacrumbs
-		case 'breadcrumbs' :
+		case 'breadcrumbs':
 			themeblvd_the_breadcrumbs();
 			break;
 
 		// Contact Buttons
-		case 'contact' :
+		case 'contact':
 			echo themeblvd_get_contact_bar( $args['options']['buttons'], $args['options'] );
 			break;
 
@@ -398,230 +500,368 @@ function themeblvd_element( $args ) {
 		/*------------------------------------------------------*/
 
 		// Chart (bar)
-		case 'chart_bar' :
+		case 'chart_bar':
 			themeblvd_chart( 'bar', $args['options'] );
 			break;
 
 		// Chart (line)
-		case 'chart_line' :
+		case 'chart_line':
 			themeblvd_chart( 'line', $args['options'] );
 			break;
 
 		// Chart (pie)
-		case 'chart_pie' :
+		case 'chart_pie':
 			themeblvd_chart( 'pie', $args['options'] );
 			break;
 
 		// Milestone
-		case 'milestone' :
+		case 'milestone':
 			themeblvd_milestone( $args['options'] );
 			break;
 
 		// Milestone Ring (represents percentage)
-		case 'milestone_ring' :
+		case 'milestone_ring':
 			themeblvd_milestone_ring( $args['options'] );
 			break;
 
 		// Progress Bars
-		case 'progress_bars' :
+		case 'progress_bars':
 			themeblvd_progress_bars( $args['options'] );
 
 	}
 
-	// Custom Element
-	do_action( 'themeblvd_'.$args['type'], $args['id'], $args['options'] );
+	/**
+	 * Fires for the output for custom layout
+	 * elements.
+	 *
+	 * @TODO Issue #322. Rename to themeblvd_element_{$type}.
+	 * Also needs to chnage in layout builder plugin so custom
+	 * elements get hooked correctly.
+	 *
+	 * @since @@name-framework 2.2.0
+	 *
+	 * @param string $id      Element ID.
+	 * @param array  $options Element settings.
+	 * @param array  $args    All arguments originally passed for element, see themeblvd_element() docs.
+	 */
+	do_action( 'themeblvd_' . $args['type'], $args['id'], $args['options'], $args );
 
-	// Close element
-	do_action( 'themeblvd_element_'.esc_attr($args['type']).'_bottom', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context'] ); // Before element: themeblvd_element_{type}_bottom
-	printf( '</div><!-- #%s (end) -->', esc_attr($args['id']) );
-	do_action( 'themeblvd_element_'.esc_attr($args['type']).'_after', esc_attr($args['id']), $args['options'], $args['section'], $args['display'], $args['context']  ); // Top of element: themeblvd_element_{type}_after
+	/**
+	 * Fires just before the end of any custom
+	 * layout element's HTML output.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $id      Element ID.
+	 * @param string $options Element settings, different for each element type.
+	 * @param string $section Section ID, containing this element.
+	 * @param string $display Element display settings.
+	 * @param string $context Context for elements, `element` or `block`.
+	 */
+	do_action(
+		'themeblvd_element_' . $args['type'] . '_bottom',
+		$args['id'],
+		$args['options'],
+		$args['section'],
+		$args['display'],
+		$args['context']
+	);
+
+	// Close element.
+	printf( '</div><!-- #%s (end) -->', esc_attr( $args['id'] ) );
+
+	/**
+	 * Fires after the end of any custom layout
+	 * element's HTML output.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $id      Element ID.
+	 * @param string $options Element settings, different for each element type.
+	 * @param string $section Section ID, containing this element.
+	 * @param string $display Element display settings.
+	 * @param string $context Context for elements, `element` or `block`.
+	 */
+	do_action(
+		'themeblvd_element_' . $args['type'] . '_after',
+		$args['id'],
+		$args['options'],
+		$args['section'],
+		$args['display'],
+		$args['context']
+	);
 
 }
 
 /**
- * Get CSS classes needed for individual element
+ * Get CSS classes for an indvidual element.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments from themeblvd_element()
- * @return string $class CSS class to return
+ * @param  array  $args  Element arguments. See docs for themeblvd_element().
+ * @return string $class Element CSS class.
  */
 function themeblvd_get_element_class( $args ) {
 
-	// Ensure that $args is setup right and matches
-	// what should be coming from themeblvd_element()
-	$defaults = array(
-		'id'		=> '',			// Unique ID for the element
-		'type'		=> '',			// The type of element to display
-		'label'		=> '',			// Element label
-		'options'	=> array(),		// Settings for this element
-		'display'	=> array(),		// Display settings for this element
-		'num'		=> 1,			// Current count for the element being displayed
-		'total'		=> 1,			// Total number of elements in parent section
-		'context'	=> 'element'	// Context for elements, element or block (within a column)
-	);
-	$args = wp_parse_args( $args, $defaults );
+	/*
+	 * Ensure that $args is set up right and matches
+	 * what should be coming from themeblvd_element().
+	 */
+	$args = wp_parse_args( $args, array(
+		'id'        => '',
+		'type'      => '',
+		'label'     => '',
+		'options'   => array(),
+		'display'   => array(),
+		'num'       => 1,
+		'total'     => 1,
+		'context'   => 'element',
+	));
 
-	// Start class
-	$class = array( 'element', 'element-'.$args['num'], 'element-'.$args['type'] );
+	$class = array(
+		'element',
+		'element-' . $args['num'],
+		'element-' . $args['type'],
+	);
 
 	// Is the element being display within the "Columns" element?
-	if ( $args['context'] == 'block' ) {
+	if ( 'block' === $args['context'] ) {
+
 		$class[] = 'element-block';
+
 	}
 
-	// First and last elements
-	if ( $args['num'] == 1 ) {
+	// First and last elements.
+	if ( 1 == $args['num'] ) {
+
 		$class[] = 'first';
+
 	}
+
 	if ( $args['total'] == $args['num'] ) {
+
 		$class[] = 'last';
+
 	}
 
-	// Label
-	if ( $args['label'] && $args['label'] != '...' ) {
+	// Add class for label.
+	if ( $args['label'] && '...' !== $args['label'] ) {
+
 		$label = str_replace( ' ', '-', $args['label'] );
+
 		$label = preg_replace( '/[^\w-]/', '', $label );
-		$class[] = strtolower($label);
+
+		$class[] = strtolower( $label );
+
 	}
 
-	// Display classes
+	// Add display option classes.
 	if ( $args['display'] ) {
 
 		// Is the element popped out?
 		if ( ! empty( $args['display']['apply_popout'] ) ) {
+
 			$class[] = 'popout';
+
 		} else {
+
 			$class[] = 'no-popout';
+
 		}
 
-		// Does the element have the default content BG applied?
+		// Does the element have the default content background applied?
 		if ( ! empty( $args['display']['bg_content'] ) ) {
 
 			$class[] = 'bg-content';
 
-			if ( themeblvd_supports('display', 'dark') ) {
-				$class[] = 'text-light';
-			} else {
-				$class[] = 'text-dark';
+			$class[] = 'text-dark';
+
+		}
+
+		// Is the element sucked up, closer to the elment above it?
+		if ( ! empty( $args['display']['suck_up'] ) ) {
+
+			$class[] = 'suck-up';
+
+		}
+
+		// Or sucked down, closer to the elment below it?
+		if ( ! empty( $args['display']['suck_down'] ) ) {
+
+			$class[] = 'suck-down';
+
+		}
+
+		// Add responsive visibility class.
+		if ( ! empty( $args['display']['hide'] ) ) {
+
+			$visibility = themeblvd_responsive_visibility_class( $args['display']['hide'] );
+
+			if ( $visibility ) {
+
+				$class[] = $visibility;
+
 			}
 		}
 
-		// Is the element sucked up?
-		if ( ! empty( $args['display']['suck_up'] ) ) {
-			$class[] = 'suck-up';
-		}
-
-		// Or maybe sucked down?
-		if ( ! empty( $args['display']['suck_down'] ) ) {
-			$class[] = 'suck-down';
-		}
-
-		// Responsive visibility
-		if ( ! empty( $args['display']['hide'] ) && $visibility = themeblvd_responsive_visibility_class( $args['display']['hide'] ) ) {
-			$class[] = $visibility;
-		}
-
-		// User-added CSS classes
+		// Add any end-user custom-added classes.
 		if ( ! empty( $args['display']['classes'] ) ) {
-			$class[] = $args['display']['classes'];
+
+			$add = explode( ' ', $args['display']['classes'] );
+
+			$class = array_merge( $class, $add );
+
 		}
+	}
+
+	// For columns, add a class for when they collapse.
+	if ( 'columns' === $args['type'] ) {
+
+		$class[] = 'stack-' . $args['options']['stack'];
 
 	}
 
-	// For columns, add a class for when they collapse/stack
-	if ( $args['type'] == 'columns' ) {
-		$class[] = 'stack-'.$args['options']['stack'];
-	}
+	/*
+	 * For paginated post list/grid we want to output the
+	 * shared class that Post List/Grid page templates, and
+	 * main index.php are using.
+	 */
+	if ( 'post_list' === $args['type'] || 'post_grid' === $args['type'] ) {
 
-	// For paginated post list/grid we want to output the shared
-	// class that Post List/Grid page templates, and main index.php
-	// are using.
-	if ( $args['type'] == 'post_list' || $args['type'] == 'post_grid' ) {
-		if ( isset( $args['options']['display'] ) && $args['options']['display'] == 'paginated' ) {
+		if ( isset( $args['options']['display'] ) && 'paginated' === $args['options']['display'] ) {
+
 			$class[] = sprintf( 'paginated_%s', $args['type'] );
+
 		}
 	}
 
-	// Post grid galleries
-	if ( in_array( $args['type'], apply_filters( 'themeblvd_gallery_elements', array( 'post_grid', 'portfolio' ) ) ) ) {
+	// Group any lightbox elements within a Post Grid element.
+	if ( 'post_grid' === $args['type'] ) {
+
 		$class[] = 'themeblvd-gallery';
+
 	}
 
-	// Allow thumb link images within Image Element to be centered
-	if ( $args['type'] == 'image' && ! empty( $args['options']['align'] ) && $args['options']['align'] == 'center' ) {
-		$class[] = 'text-center';
+	// Allow thumb link images within Image element to be centered.
+	if ( 'image' === $args['type'] ) {
+
+		if ( ! empty( $args['options']['align'] ) && 'center' === $args['options']['align'] ) {
+
+			$class[] = 'text-center';
+
+		}
 	}
 
-	// For CSS fixes, apply no-width class on image elements with
-	// the display width option left blank
-	if ( $args['type'] == 'image' && empty( $args['options']['width'] ) ) {
+	/*
+	 * For CSS fixes, apply no-width class on image
+	 * elements with the display width option left blank.
+	 */
+	if ( 'image' === $args['type'] && empty( $args['options']['width'] ) ) {
+
 		$class[] = 'no-width';
+
 	}
 
-	// Any elements that have heights to match viewport
-	// Note: For hero unit, if user is "popping out", they
-	// should be applying the background to the hero unit
-	// element, not section.
-	if ( ! empty( $args['options']['height_100vh'] ) && ! in_array('popout', $class) ) {
+	/*
+	 * Setup any elements that have heights to match
+	 * viewport.
+	 *
+	 * Note: For a Hero Unit, if user is using the
+	 * `popout` option, they should be applying the
+	 * background to the hero unit element, not the
+	 * section.
+	 */
+	if ( ! empty( $args['options']['height_100vh'] ) && ! in_array( 'popout', $class ) ) {
+
 		$class[] = 'height-100vh';
+
 	}
 
-	// Clear fix
+	// Add clear fix.
 	$class[] = 'clearfix';
 
 	/**
-	 * If you want to filter element classes, use the following
-	 * "themeblvd_element_class" and check for $type.
+	 * Filters the CSS classes for a custom layout
+	 * element.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $class Element CSS classes.
+	 * @param string $type  Element type.
+	 * @param array  $args  Element arguments, see themeblvd_element() docs.
 	 */
 	return apply_filters( 'themeblvd_element_class', $class, $args['type'], $args );
+
 }
 
 /**
- * Get CSS classes needed for individual section
+ * Get CSS classes for an section of elements.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Data saved for section
- * @param int $count Number of elements in the current section
- * @return string $class CSS class to return
+ * @param  string $id    Section ID.
+ * @param  array  $args  Section data.
+ * @param  int    $count Number of elements in the current section.
+ * @return string $class Section CSS class.
  */
 function themeblvd_get_section_class( $id, $data, $count ) {
 
 	$class = array();
 
-	if ( strpos($id, 'section_') === false ) {
-		$class[] = 'section_'.$id;
+	if ( false === strpos( $id, 'section_' ) ) {
+
+		$class[] = 'section_' . $id;
+
 	} else {
+
 		$class[] = $id;
+
 	}
 
 	$class[] = 'element-section';
-	$class[] = 'element-count-'.$count;
 
-	// Label
-	if ( $data['label'] && $data['label'] != '...' ) {
+	$class[] = 'element-count-' . $count;
+
+	if ( $data['label'] && '...' !== $data['label'] ) {
+
 		$label = str_replace( ' ', '-', $data['label'] );
+
 		$label = preg_replace( '/[^\w-]/', '', $label );
-		$class[] = strtolower($label);
+
+		$class[] = strtolower( $label );
+
 	}
 
-	// Display classes
 	if ( ! empty( $data['display'] ) ) {
+
 		$class = array_merge( $class, themeblvd_get_display_class( $data['display'] ) );
+
 	}
 
+	/**
+	 * Filters the CSS classes for a custom layout
+	 * section of elements.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $class Section CSS class.
+	 * @param array  $args  Section data.
+	 * @param int    $count Number of elements in the current section.
+	 */
 	return apply_filters( 'themeblvd_section_class', $class, $data, $count );
+
 }
 
 /**
- * Get class for a set of display options. Used for
- * sections and columns, NOT elements.
+ * Get display classes for sections and columns.
  *
- * @since 2.5.0
+ * Note: This is NOT used for indvidual elements,
+ * other than a `Columns` element.
  *
- * @param array $display Display options
- * @return string $style Inline style line to be used
+ * @since @@name-framework 2.5.0
+ *
+ * @param  array  $display Display settings.
+ * @return string $class   Display CSS classes.
  */
 function themeblvd_get_display_class( $display ) {
 
@@ -631,181 +871,237 @@ function themeblvd_get_display_class( $display ) {
 
 		$bg_type = $display['bg_type'];
 
-		if ( $bg_type == 'none' ) {
+		if ( 'none' === $bg_type ) {
 
 			$class[] = 'standard';
 
 		} else {
 
 			$class[] = 'has-bg';
+
 			$class[] = $bg_type;
 
-			if ( in_array( $bg_type, array('color', 'image', 'texture', 'slideshow', 'video') ) ) {
-				if ( ! empty( $display['text_color'] ) && $display['text_color'] != 'none' ) {
-					$class[] = 'text-'.$display['text_color'];
+			if ( in_array( $bg_type, array( 'color', 'image', 'texture', 'slideshow', 'video' ) ) ) {
+
+				if ( ! empty( $display['text_color'] ) && 'none' !== $display['text_color'] ) {
+
+					$class[] = 'text-' . $display['text_color'];
+
 				}
 			}
 
-			if ( ( $bg_type == 'image' || $bg_type == 'slideshow' || $bg_type == 'video' ) && ! empty( $display['apply_bg_shade'] ) ) {
-				$class[] = 'has-bg-shade';
-			}
+			if ( 'image' === $bg_type || 'slideshow' === $bg_type || 'video' === $bg_type ) {
 
+				if ( ! empty( $display['apply_bg_shade'] ) ) {
+
+					$class[] = 'has-bg-shade';
+
+				}
+			}
 		}
 
-		if ( $bg_type == 'texture' ) {
+		if ( 'texture' === $bg_type ) {
 
 			if ( ! empty( $display['apply_bg_texture_parallax'] ) ) {
+
 				$class[] = 'tb-parallax';
+
 			}
 
 			if ( ! empty( $display['bg_texture'] ) ) {
+
 				$texture = themeblvd_get_texture( $display['bg_texture'] );
+
 				$class[] = $texture['repeat'];
+
 			}
+		} elseif ( 'image' === $bg_type ) {
 
-		} else if ( $bg_type == 'image' ) {
+			if ( ! empty( $display['bg_image']['attachment'] ) && 'parallax' === $display['bg_image']['attachment'] ) {
 
-			if ( ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
 				$class[] = 'tb-parallax';
+
 			}
 
 			if ( ! empty( $display['bg_image']['repeat'] ) ) {
-				$class[] = $display['bg_image']['repeat'];
-			}
 
-		} else if ( $bg_type == 'slideshow' ) {
+				$class[] = $display['bg_image']['repeat'];
+
+			}
+		} elseif ( 'slideshow' === $bg_type ) {
 
 			$class[] = 'has-bg-slideshow';
 
-		}  else if ( $bg_type == 'video' ) {
+		} elseif ( 'video' === $bg_type ) {
 
 			$class[] = 'has-bg-video';
 
 		}
 
-		// Custom padding?
 		if ( ! empty( $display['apply_padding'] ) ) {
+
 			$class[] = 'has-custom-padding';
+
 		}
 
-		// Responsive visibility
 		if ( ! empty( $display['hide'] ) ) {
+
 			$class[] = themeblvd_responsive_visibility_class( $display['hide'] );
+
 		}
 
-		// User-added CSS classes
 		if ( ! empty( $display['classes'] ) ) {
-			$class[] = $display['classes'];
-		}
 
+			$add = explode( ' ', $display['classes'] );
+
+			$class = array_merge( $class, $add );
+
+		}
 	}
 
+	/**
+	 * Filters the display classes for sections
+	 * and columns.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $class   Display CSS classes.
+	 * @param array  $display Display settings.
+	 */
 	return apply_filters( 'themeblvd_display_class', $class, $display );
+
 }
 
 /**
- * Get inline styles for a set of display options.
+ * Get inline styles for a set of display
+ * settings.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $display Display options
- * @param string $print How to return the styles, use "inline" or "external"
- * @return string $style Inline style line to be used
+ * @param  array        $display Display settings.
+ * @param  string       $print   How to return the styles, use `inline` or `external`.
+ * @return string|array          If $print == `inline`, inline style HTML, otherwise array of style parameters are returned.
  */
 function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 	$bg_type = '';
+
 	$style = '';
+
 	$params = array();
 
 	if ( empty( $display['bg_type'] ) ) {
+
 		$bg_type = 'none';
+
 	} else {
+
 		$bg_type = $display['bg_type'];
+
 	}
 
 	$parallax = false;
 
-	if ( $bg_type == 'image' && ! empty( $display['bg_image']['attachment'] ) && $display['bg_image']['attachment'] == 'parallax' ) {
-		$parallax = true;
+	if ( 'image' === $bg_type ) {
+
+		if ( ! empty( $display['bg_image']['attachment'] ) && 'parallax' === $display['bg_image']['attachment'] ) {
+
+			$parallax = true;
+
+		}
+	} elseif ( 'texture' === $bg_type ) {
+
+		if ( ! empty( $display['apply_bg_texture_parallax'] ) ) {
+
+			$parallax = true;
+
+		}
 	}
 
-	if ( $bg_type == 'texture' && ! empty($display['apply_bg_texture_parallax']) ) {
-		$parallax = true;
-	}
+	if ( in_array( $bg_type, array( 'color', 'texture', 'image', 'video', 'none' ) ) ) {
 
-	if ( in_array( $bg_type, array('color', 'texture', 'image', 'video', 'none') ) ) {
-
-		if ( ( $bg_type == 'none' && empty($display['bg_content']) ) || $parallax ) {
+		if ( ( 'none' === $bg_type && empty( $display['bg_content'] ) ) || $parallax ) {
 
 			$params['background-color'] = 'transparent';
 
-		} else if ( ! empty( $display['bg_color'] ) ) {
+		} elseif ( ! empty( $display['bg_color'] ) ) {
 
 			$bg_color = $display['bg_color'];
 
-			$params['background-color'] = $bg_color; // non-rgba, for old browsers
-
 			if ( ! empty( $display['bg_color_opacity'] ) ) {
+
 				$bg_color = themeblvd_get_rgb( $bg_color, $display['bg_color_opacity'] );
+
 			}
 
-			$params['background-color-2'] = $bg_color;
+			$params['background-color'] = $bg_color;
 
 		}
 
-		if ( $bg_type == 'texture' && ! $parallax ) {
+		if ( 'texture' === $bg_type && ! $parallax ) {
 
 			$textures = themeblvd_get_textures();
 
-			if ( ! empty( $display['bg_texture'] ) && ! empty( $textures[$display['bg_texture']] ) ) {
+			if ( ! empty( $display['bg_texture'] ) && ! empty( $textures[ $display['bg_texture'] ] ) ) {
 
-				$texture = $textures[$display['bg_texture']];
+				$texture = $textures[ $display['bg_texture'] ];
 
-				$params['background-image'] = sprintf('url(%s)', esc_url($texture['url']));
+				$params['background-image'] = sprintf( 'url(%s)', esc_url( $texture['url'] ) );
+
 				$params['background-position'] = $texture['position'];
+
 				$params['background-repeat'] = $texture['repeat'];
+
 				$params['background-size'] = $texture['size'];
 
 			}
-
-		} else if ( $bg_type == 'image' && ! $parallax ) {
+		} elseif ( 'image' === $bg_type && ! $parallax ) {
 
 			$repeat = false;
 
 			if ( ! empty( $display['bg_image']['image'] ) ) {
-				$params['background-image'] = sprintf('url(%s)', esc_url($display['bg_image']['image']));
+
+				$params['background-image'] = sprintf( 'url(%s)', esc_url( $display['bg_image']['image'] ) );
+
 			}
 
 			if ( ! empty( $display['bg_image']['repeat'] ) ) {
 
-				if ( $display['bg_image']['repeat'] != 'no-repeat' ) {
+				if ( 'no-repeat' !== $display['bg_image']['repeat'] ) {
+
 					$repeat = true;
+
 				}
 
 				$params['background-repeat'] = $display['bg_image']['repeat'];
+
 			}
 
 			if ( ! $repeat && ! empty( $display['bg_image']['size'] ) ) {
+
 				$params['background-size'] = $display['bg_image']['size'];
+
 			}
 
 			if ( ! wp_is_mobile() && ! empty( $display['bg_image']['attachment'] ) ) {
+
 				$params['background-attachment'] = $display['bg_image']['attachment'];
+
 			}
 
 			if ( ! empty( $display['bg_image']['position'] ) ) {
-				$params['background-position'] = $display['bg_image']['position'];
-			}
 
-		} else if ( $bg_type == 'video' ) {
+				$params['background-position'] = $display['bg_image']['position'];
+
+			}
+		} elseif ( 'video' === $bg_type ) {
 
 			if ( ! empty( $display['bg_video']['fallback'] ) ) {
-				$params['background-image'] = sprintf('url(%s)', esc_url($display['bg_video']['fallback']));
+
+				$params['background-image'] = sprintf( 'url(%s)', esc_url( $display['bg_video']['fallback'] ) );
+
 			}
-
 		}
-
 	}
 
 	if ( ! empty( $display['apply_border_top'] ) ) {
@@ -813,13 +1109,16 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 		$params['border-top-style'] = 'solid';
 
 		if ( ! empty( $display['border_top_width'] ) ) {
+
 			$params['border-top-width'] = $display['border_top_width'];
+
 		}
 
 		if ( ! empty( $display['border_top_color'] ) ) {
-			$params['border-top-color'] = $display['border_top_color'];
-		}
 
+			$params['border-top-color'] = $display['border_top_color'];
+
+		}
 	}
 
 	if ( ! empty( $display['apply_border_bottom'] ) ) {
@@ -827,31 +1126,40 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 		$params['border-bottom-style'] = 'solid';
 
 		if ( ! empty( $display['border_bottom_width'] ) ) {
+
 			$params['border-bottom-width'] = $display['border_bottom_width'];
+
 		}
 
 		if ( ! empty( $display['border_bottom_color'] ) ) {
-			$params['border-bottom-color'] = $display['border_bottom_color'];
-		}
 
+			$params['border-bottom-color'] = $display['border_bottom_color'];
+
+		}
 	}
 
 	if ( ! empty( $display['apply_padding'] ) ) {
 
 		if ( ! empty( $display['padding_top'] ) ) {
+
 			$params['padding-top'] = $display['padding_top'];
+
 		}
 
 		if ( ! empty( $display['padding_bottom'] ) ) {
+
 			$params['padding-bottom'] = $display['padding_bottom'];
+
 		}
 
 		if ( ! empty( $display['padding_right'] ) ) {
 
 			$params['padding-right'] = $display['padding_right'];
 
-			if ( ! empty($display['apply_popout']) ) {
-				$params['padding-right'] .= ' !important'; // override popout
+			if ( ! empty( $display['apply_popout'] ) ) {
+
+				$params['padding-right'] .= ' !important'; // Override popout.
+
 			}
 		}
 
@@ -859,138 +1167,178 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 
 			$params['padding-left'] = $display['padding_left'];
 
-			if ( ! empty($display['apply_popout']) ) {
-				$params['padding-left'] .= ' !important'; // override popout
+			if ( ! empty( $display['apply_popout'] ) ) {
+				$params['padding-left'] .= ' !important'; // Override popout.
 			}
 		}
-
 	}
 
-	if ( $print == 'external' ) {
+	if ( 'external' === $print ) {
 
 		$params = array(
-			'general'	=> $params,
-			'desktop'	=> array(),
-			'tablet'	=> array(),
-			'mobile'	=> array()
+			'general'   => $params,
+			'desktop'   => array(),
+			'tablet'    => array(),
+			'mobile'    => array(),
 		);
 
 		foreach ( $params as $key => $value ) {
 
-			if ( $key == 'general' ) {
+			if ( 'general' === $key ) {
+
 				continue;
-			}
-
-			if ( ! empty( $display['apply_padding_'.$key] ) ) {
-
-				if ( ! empty( $display['padding_top_'.$key] ) ) {
-					$params[$key]['padding-top'] = $display['padding_top_'.$key];
-				}
-
-				if ( ! empty( $display['padding_bottom_'.$key] ) ) {
-					$params[$key]['padding-bottom'] = $display['padding_bottom_'.$key];
-				}
-
-				if ( ! empty( $display['padding_right_'.$key] ) ) {
-					$params[$key]['padding-right'] = $display['padding_right_'.$key];
-				}
-
-				if ( ! empty( $display['padding_left_'.$key] ) ) {
-					$params[$key]['padding-left'] = $display['padding_left_'.$key];
-				}
 
 			}
 
+			if ( ! empty( $display[ 'apply_padding_' . $key ] ) ) {
+
+				if ( ! empty( $display[ 'padding_top_' . $key ] ) ) {
+
+					$params[ $key ]['padding-top'] = $display[ 'padding_top_' . $key ];
+
+				}
+
+				if ( ! empty( $display[ 'padding_bottom_' . $key ] ) ) {
+
+					$params[ $key ]['padding-bottom'] = $display[ 'padding_bottom_' . $key ];
+
+				}
+
+				if ( ! empty( $display[ 'padding_right_' . $key ] ) ) {
+
+					$params[ $key ]['padding-right'] = $display[ 'padding_right_' . $key ];
+
+				}
+
+				if ( ! empty( $display[ 'padding_left_' . $key ] ) ) {
+
+					$params[ $key ]['padding-left'] = $display[ 'padding_left_' . $key ];
+
+				}
+			}
 		}
-
 	}
 
+	/**
+	 * Filters the inline style parameters generated
+	 * for a section or column.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param array $params  Inline style parameters.
+	 * @param array $display Display settings.
+	 */
 	$params = apply_filters( 'themeblvd_display_inline_style', $params, $display );
 
-	if ( $print == 'inline' ) {
+	if ( 'inline' === $print ) {
 
 		foreach ( $params as $key => $value ) {
-			$key = str_replace('-2', '', $key);
+
+			// Handles the second instance of any duplicate parameters.
+			$key = str_replace( '-2', '', $key );
+
 			$style .= sprintf( '%s: %s; ', $key, $value );
+
 		}
 
-		return trim( esc_attr($style) );
+		return trim( esc_attr( $style ) );
+
 	}
 
 	return $params;
+
 }
 
 /**
  * Dislay set of columns.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args
- * @param array Optionally force-feed column data
+ * @param array $args {
+ *     Arguments for column layout.
+ *
+ *     @type string $section    Section containing columnss.
+ *     @type int    $layout_id  Custom layout ID, if included within a custom layout.
+ *     @type string $element_id Element ID, if included within a custom layout.
+ *     @type int    $num        Number of columns.
+ *     @type string $widths     Column widths.
+ *     @type string $stack      Viewport slug columns collapse at, like `sm`, `md`, etc.
+ *     @type bool   $height     Whether all columns should match the tallest column in height.
+ *     @type string $align      How column content is aligned, `top`, `middle` or `bottom`.
+ * }
+ * @param array $columns Manually feed column data.
  */
 function themeblvd_columns( $args, $columns = null ) {
 
-	$defaults = array(
-		'section'		=> '',
-		'layout_id'		=> 0,
-		'element_id'	=> 'element_',
-		'num'			=> 1,
-		'widths'		=> 'grid_12',
-		'stack'			=> 'md',
-		'height'		=> 0,
-		'align'			=> 'top'
-	);
-	$args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'section'    => '',
+		'layout_id'  => 0,
+		'element_id' => 'element_',
+		'num'        => 1,
+		'widths'     => 'grid_12',
+		'stack'      => 'md',
+		'height'     => 0,
+		'align'      => 'top',
+	));
 
-	// Number of columns
 	$num = intval( $args['num'] );
 
-	// Bootstrap stack point
 	$stack = $args['stack'];
 
-	if ( themeblvd_is_ie( array('8') ) ) {
-		$stack = 'xs';
-	}
-
-	// Kill it if number of columns doesn't match the
-	// number of widths exploded from the string.
+	/*
+	 * Kill it if number of columns doesn't match the
+	 * number of widths exploded from the string.
+	 */
 	$widths = explode( '-', $args['widths'] );
 
-	if ( $num != count( $widths ) ) {
+	if ( count( $widths ) !== $num ) {
+
 		return;
+
 	}
 
-	// Column Margins
-	//
-	// Problem: By default with Bootstrap, a row of columns
-	// has -15px margin on the sides. However, when a background is
-	// applied to a column, we need to eliminate that so the background
-	// of the column doesn't over hang outside of the container.
-	// Note: Using Bootstrap's "container-fluid" class will not work
-	// in this case, because we're doing this per individual side.
-	//
-	// Solution: If it's the first column and has a BG, change row
-	// left margin to 0, and if the last column has a BG, change row
-	// right margin to 0.
+	/*
+	 * Column Margins
+	 *
+	 * Problem: By default with Bootstrap, a row of columns
+	 * has -15px margin on the sides. However, when a background is
+	 * applied to a column, we need to eliminate that so the background
+	 * of the column doesn't over hang outside of the container.
+	 * Note: Using Bootstrap's "container-fluid" class will not work
+	 * in this case, because we're doing this per individual side.
+	 *
+	 * Solution: If it's the first column and has a BG, change row
+	 * left margin to 0, and if the last column has a BG, change row
+	 * right margin to 0.
+	 */
 	$margin_left = '-15px';
+
 	$margin_right = '-15px';
 
 	for ( $i = 1; $i <= $num; $i++ ) {
 
-		// If first or last
-		if ( $i == 1 || $i == $num ) {
+		// If first or last.
+		if ( 1 === $i || $num === $i ) {
 
-			$column = get_post_meta( $args['layout_id'], '_tb_builder_'.$args['element_id'].'_col_'.strval($i), true ); // Ex: _tb_builder_element_123_col_1
+			$column = get_post_meta(
+				$args['layout_id'],
+				'_tb_builder_' . $args['element_id'] . '_col_' . strval( $i ),
+				true
+			); // Example: `_tb_builder_element_123_col_1`
 
 			if ( ! empty( $column['display']['bg_type'] ) ) {
+
 				if ( in_array( $column['display']['bg_type'], array( 'color', 'image', 'texture' ) ) ) {
 
-					if ( $i == 1 ) {
-						$margin_left = '0';
-					} else if ( $i == $num ) {
-						$margin_right = '0';
-					}
+					if ( 1 === $i ) { // First column.
 
+						$margin_left = '0';
+
+					} elseif ( $num === $i ) { // Last column.
+
+						$margin_right = '0';
+
+					}
 				}
 			}
 		}
@@ -998,26 +1346,30 @@ function themeblvd_columns( $args, $columns = null ) {
 
 	$margin = sprintf( 'margin: 0 %s 0 %s;', $margin_right, $margin_left );
 
-	// Open column row
-	if ( $args['height'] && $args['layout_id'] != 0 && ! $columns ) {
+	// Open column row.
+	if ( $args['height'] && 0 != $args['layout_id'] && ! $columns ) {
+
 		$open_row = array(
-			'wrap'	=> "container-{$stack}-height",
-			'class'	=> "row stack-{$stack} row-{$stack}-height",
-			'style'	=> $margin
+			'wrap'  => "container-{$stack}-height",
+			'class' => "row stack-{$stack} row-{$stack}-height",
+			'style' => $margin,
 		);
+
 	} else {
+
 		$open_row = array(
-			'class'	=> "row stack-{$stack}",
-			'style'	=> $margin
+			'class' => "row stack-{$stack}",
+			'style' => $margin,
 		);
+
 	}
 
-	themeblvd_open_row($open_row);
+	themeblvd_open_row( $open_row );
 
-	// Display columns
+	// Display columns.
 	for ( $i = 1; $i <= $num; $i++ ) {
 
-		$grid_class = themeblvd_grid_class( $widths[$i-1], $stack );
+		$grid_class = themeblvd_grid_class( $widths[ $i - 1 ], $stack );
 
 		// Equal height columns?
 		if ( $args['height'] ) {
@@ -1025,157 +1377,223 @@ function themeblvd_columns( $args, $columns = null ) {
 			$grid_class .= " col-{$stack}-height";
 
 			if ( in_array( $args['align'], array( 'top', 'middle', 'bottom' ) ) ) {
-				$grid_class .= ' col-'.$args['align'];
+
+				$grid_class .= ' col-' . $args['align'];
+
 			}
 		}
 
-		if ( $args['layout_id'] == 0 && $columns ) {
+		if ( 0 == $args['layout_id'] && $columns ) {
 
-			echo '<div class="col entry-content '.esc_attr($grid_class).'">'; // "entry-content" class only because not using elements
+			echo '<div class="col entry-content ' . esc_attr( $grid_class ) . '">'; // Use "entry-content" class only because not using elements.
 
-			if ( isset( $columns[$i] ) ) {
+			if ( isset( $columns[ $i ] ) ) {
 
-				switch ( $columns[$i]['type'] ) {
+				switch ( $columns[ $i ]['type'] ) {
 
-	                case 'widget' :
-						themeblvd_widgets( $columns[$i]['sidebar'], 'tabs' );
-	                    break;
+					case 'widget':
+						themeblvd_widgets( $columns[ $i ]['sidebar'], 'tabs' );
 
-	                case 'page' :
-	                    themeblvd_post_content( $columns[$i]['page'], 'page' );
-	                    break;
+						break;
 
-	                case 'raw' :
-	                    if ( ! empty( $columns[$i]['raw_format'] ) ) {
-	                        themeblvd_content( $columns[$i]['raw'] );
-	                    } else {
-	                        echo do_shortcode( themeblvd_kses($columns[$i]['raw']) );
-	                    }
-	                    break;
+					case 'page':
+						themeblvd_post_content( $columns[ $i ]['page'], 'page' );
 
-	            }
+						break;
 
+					case 'raw':
+						if ( ! empty( $columns[ $i ]['raw_format'] ) ) {
+
+							themeblvd_content( $columns[ $i ]['raw'] );
+
+						} else {
+
+							echo do_shortcode( themeblvd_kses( $columns[ $i ]['raw'] ) );
+
+						}
+
+						break;
+
+				}
 			}
 
-			echo '</div><!-- .'.esc_attr($grid_class).' (end) -->';
+			echo '</div><!-- .' . esc_attr( $grid_class ) . ' (end) -->';
 
 		} else {
 
 			$blocks = array();
+
 			$display = array();
-			$column = get_post_meta( $args['layout_id'], '_tb_builder_'.$args['element_id'].'_col_'.strval($i), true ); // Ex: _tb_builder_element_123_col_1
 
-			// Display options
+			$column = get_post_meta(
+				$args['layout_id'],
+				'_tb_builder_' . $args['element_id'] . '_col_' . strval( $i ),
+				true
+			); // Example: `_tb_builder_element_123_col_1`
+
 			if ( ! empty( $column['display'] ) ) {
+
 				$display = $column['display'];
+
 			}
 
-			// Start column
-			$display_class = implode( ' ', themeblvd_get_display_class($display) );
-			printf('<div class="col %s %s" style="%s">', esc_attr($grid_class), esc_attr($display_class), themeblvd_get_display_inline_style($display) );
+			// Start column.
+			$display_class = implode( ' ', themeblvd_get_display_class( $display ) );
 
-			// Add background shade
-			if ( themeblvd_do_bg_shade( $display ) ) {
-				themeblvd_bg_shade( $display );
-			}
-
-			// Add parallax effect
-			if ( themeblvd_do_parallax( $display ) ) {
-				themeblvd_bg_parallax( $display );
-			}
-
-			// Content blocks
-			if ( ! empty( $column['elements'] ) ) {
-				$blocks = $column['elements'];
-			}
-
-			// Max container width for elements
-			$width_atts = array(
-				'context'	=> 'block',
-				'col'		=> $widths[$i-1]
+			printf(
+				'<div class="col %s %s" style="%s">',
+				esc_attr( $grid_class ),
+				esc_attr( $display_class ),
+				themeblvd_get_display_inline_style( $display )
 			);
 
-			// Display elements
-			themeblvd_elements( $args['section'], $blocks, 'block', themeblvd_get_max_width($width_atts) );
+			if ( themeblvd_do_bg_shade( $display ) ) {
 
-			echo '</div><!-- .'.$grid_class.' (end) -->';
+				themeblvd_bg_shade( $display );
+
+			}
+
+			if ( themeblvd_do_parallax( $display ) ) {
+
+				themeblvd_bg_parallax( $display );
+
+			}
+
+			if ( ! empty( $column['elements'] ) ) {
+
+				$blocks = $column['elements'];
+
+			}
+
+			$width_atts = array(
+				'context' => 'block',
+				'col'     => $widths[ $i - 1 ],
+			);
+
+			// Display elements.
+			themeblvd_elements(
+				$args['section'],
+				$blocks, 'block',
+				themeblvd_get_max_width( $width_atts )
+			);
+
+			echo '</div><!-- .' . $grid_class . ' (end) -->';
 
 		}
-
 	}
 
 	if ( $args['height'] ) {
-		themeblvd_close_row( array('wrap' => true) );
+
+		themeblvd_close_row( array(
+			'wrap' => true,
+		));
+
 	} else {
+
 		themeblvd_close_row();
+
 	}
 }
 
 /**
- * Get hero unit slider
+ * Get a hero unit slider.
  *
- * @since 2.5.0
+ * @since @@name-framework 2.5.0
  *
- * @param array $args Arguments for hero unit.
- * @return string $output Output for hero unit slider
+ * @param  array  $args {
+ *     Hero unit arguments.
+ *
+ *     @type string      $section    Section ID containing hero unit slider.
+ *     @type string|int  $layout_id  Custom layout ID containing hero unit slider.
+ *     @type string      $element_id Hero unit slider element ID.
+ *     @type string      $fx         Transition effect, `slide` or `fade`; for now, this is disabled to the user and will always be `fade`.
+ *     @type string      $timeout    Seconds between transitions, use `0` for no auto-rotation.
+ *     @type string|bool $nav        Whether to show slider navigation.
+ * }
+ * @return string $output Final HTML output for block.
  */
 function themeblvd_get_jumbotron_slider( $args ) {
 
-    $defaults = array(
-		'section'		=> '',					// Section ID (not really used for anything)
-        'layout_id'		=> 0,					// Current ID of custom layout or page (to pull hero units from meta)
-		'element_id'	=> 'element_',			// Current ID of element (also to pull hero units from meta)
-		'fx'            => 'fade',          	// Slide transition effect (slide or fade) -- option from builder currently disabled, will always be fade
-        'timeout'       => '3',         		// Secods in between transitions, can be 0 for no auto rotation
-        'nav'           => '1'         			// Whether to show slider navigation
-    );
-    $args = wp_parse_args( $args, $defaults );
+	$args = wp_parse_args( $args, array(
+		'section'    => '',
+		'layout_id'  => 0,
+		'element_id' => 'element_',
+		'fx'         => 'fade',
+		'timeout'    => '3',
+		'nav'        => '1',
+	));
 
 	$output = '';
 
-	// Get data with hero units, saved outside of initial layout elements
-	$data = get_post_meta( $args['layout_id'], '_tb_builder_'.$args['element_id'].'_col_1', true ); // Ex: _tb_builder_element_123_col_1
+	// Get data with hero units, saved outside of initial layout elements.
+	$data = get_post_meta(
+		$args['layout_id'],
+		'_tb_builder_' . $args['element_id'] . '_col_1',
+		true
+	); // Example: `_tb_builder_element_123_col_1`
 
-	if ( $data && ! empty($data['elements']) ) {
+	if ( $data && ! empty( $data['elements'] ) ) {
 
-		// Create ID for slider
-		$slider_id = str_replace('element_', 'jumbotron_slider_', $args['element_id']);
+		// Create ID for slider.
+		$slider_id = str_replace(
+			'element_',
+			'jumbotron_slider_',
+			$args['element_id']
+		);
 
-		// Wrapping CSS classes
 		$class = 'tb-jumbotron-slider carousel';
 
-	    if ( $args['nav'] ) {
-	        $class .= ' has-nav';
-	    }
+		if ( $args['nav'] ) {
+
+			$class .= ' has-nav';
+
+		}
 
 		$fs = true;
 
 		foreach ( $data['elements'] as $elem ) {
+
 			if ( empty( $elem['options']['height_100vh'] ) ) {
+
 				$fs = false;
+
 				break;
+
 			}
 		}
 
 		if ( $fs ) {
-			$class .= ' fs'; // Added if all slides are full viewport height
+
+			$class .= ' fs'; // Added if all slides are full viewport height.
+
 		}
 
-		// Slider auto rotate speed
-		$interval = esc_attr($args['timeout']);
+		$interval = esc_attr( $args['timeout'] );
 
 		if ( wp_is_mobile() ) {
-			$interval = '0'; // disable auto rotation for true mobile devices
+
+			$interval = '0'; // Disable auto rotation for true mobile devices.
+
 		}
 
-		if ( $interval && intval($interval) < 100 ) {
-			$interval .= '000'; // User has inputted seconds, so we convert to milliseconds
+		if ( $interval && intval( $interval ) < 100 ) {
+
+			$interval .= '000'; // User has probably inputted seconds; convert it to milliseconds.
+
 		}
 
-		// Start output
-		$output .= sprintf( '<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="hover">', $slider_id, $class, $interval );
+		// Start output.
+		$output .= sprintf(
+			'<div id="%s" class="%s" data-ride="carousel" data-interval="%s" data-pause="hover">',
+			$slider_id,
+			$class,
+			$interval
+		);
+
 		$output .= themeblvd_get_loader();
+
 		$output .= '<div class="carousel-control-wrap">';
+
 		$output .= '<div class="carousel-inner">';
 
 		$count = 1;
@@ -1184,77 +1602,132 @@ function themeblvd_get_jumbotron_slider( $args ) {
 
 			$class = 'item';
 
-			if ( $count == 1 ) {
+			if ( 1 === $count ) {
+
 				$class .= ' active';
+
 			}
 
-			$output .= sprintf('<div class="%s">%s</div>', $class, themeblvd_get_jumbotron( $elem['options'] ));
+			$output .= sprintf(
+				'<div class="%s">%s</div>',
+				$class,
+				themeblvd_get_jumbotron( $elem['options'] )
+			);
 
 			$count++;
+
 		}
 
 		$output .= '</div><!-- .carousel-inner (end) -->';
 
-		// Navigation dots
+		// Add navigation dots.
 		if ( $args['nav'] ) {
-			if ( $data && ! empty($data['elements']) ) {
+
+			if ( $data && ! empty( $data['elements'] ) ) {
 
 				$output .= '<ol class="carousel-indicators">';
+
 				$count = 0;
 
 				foreach ( $data['elements'] as $elem ) {
 
 					$class = '';
 
-					if ( $count == 0 ) {
+					if ( 0 === $count ) {
+
 						$class = 'active';
+
 					}
 
-					$output .= sprintf( '<li data-target="#%s" data-slide-to="%s" class="%s"></li>', $slider_id, $count, $class );
+					$output .= sprintf(
+						'<li data-target="#%s" data-slide-to="%s" class="%s"></li>',
+						$slider_id,
+						$count,
+						$class
+					);
 
 					$count++;
+
 				}
 
 				$output .= '</ol>';
-			}
-	    }
 
-		// Directional nav
-		$output .= themeblvd_get_slider_controls( array('carousel' => $slider_id, 'color' => 'trans') );
+			}
+		}
+
+		// Add directional nav.
+		$output .= themeblvd_get_slider_controls( array(
+			'carousel' => $slider_id,
+			'color'    => 'trans',
+		));
 
 		$output .= '</div><!-- .carousel-control-wrap (end) -->';
+
 		$output .= '</div><!-- .tb-jumbotron-slider (end) -->';
 
 	}
-    return apply_filters( 'themeblvd_jumbotron_slider', $output, $args );
+
+	/**
+	 * Filters the HTML output for a hero unit
+	 * slider.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param array  $args {
+	 *     Hero unit arguments.
+	 *
+	 *     @type string      $section    Section ID containing hero unit slider.
+	 *     @type string|int  $layout_id  Custom layout ID containing hero unit slider.
+	 *     @type string      $element_id Hero unit slider element ID.
+	 *     @type string      $fx         Transition effect, `slide` or `fade`; for now, this is disabled to the user and will always be `fade`.
+	 *     @type string      $timeout    Seconds between transitions, use `0` for no auto-rotation.
+	 *     @type string|bool $nav        Whether to show slider navigation.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_jumbotron_slider', $output, $args );
+
 }
 
 /**
- * Display hero unit
+ * Display a hero unit slider.
  *
- * @since 2.4.2
+ * @since @@name-framework 2.4.2
  *
- * @param array $args Arguments for hero unit.
+ * @param array $args Block arguments, see themeblvd_get_jumbotron_slider() docs.
  */
 function themeblvd_jumbotron_slider( $args ) {
-    echo themeblvd_get_jumbotron_slider( $args );
+
+	echo themeblvd_get_jumbotron_slider( $args );
+
 }
 
 /**
+ * Bump the starting count for a section by one.
+ *
  * If a page with custom layout has a featured image above
  * content applied, bump the section start count from
- * 1 to 2. This way, the featured image essentially becomes
+ * 1 to 2.
+ *
+ * This way, the featured image essentially becomes
  * the first section of the layout.
  *
- * @since 2.5.2
+ * This function is filtered onto:
+ * 1. `themeblvd_builder_section_start_count` - 10
  *
- * @param int $count Number to start section count at, equal to 1 by default
+ * @since @@name-framework 2.5.2
+ *
+ * @param  int $count Number to start section count at.
+ * @return int $count Modified number to start section count at.
  */
 function themeblvd_builder_section_start_count( $count ) {
 
-	if ( themeblvd_get_att('epic_thumb') ) {
+	if ( themeblvd_get_att( 'epic_thumb' ) ) {
+
 		$count++;
+
 	}
 
 	return $count;
+
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Frontend post format functions.
+ * Post Formats
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -10,462 +10,602 @@
  */
 
 /**
- * Get the FontAwesome icon ID to represent a post format
+ * Get the FontAwesome icon name to represent
+ * a post format.
  *
- * @since 2.5.0
+ * When the $force parameter is FALSE, an icon
+ * name will only be returned when working with
+ * a standard post type with a post format.
  *
- * @param string $format Post format
- * @param book $force Force icon return, if no post format
- * @return string FontAwesime icon ID
+ * However, when $force is TRUE, an icon name will
+ * also be returned to represent some different
+ * post types.
+ *
+ * @since Theme_Blvd 2.5.0
+ *
+ * @param  string $format Current post format, like `aside`.
+ * @param  bool   $force  Whether to return icon, when no post format.
+ * @return string         Icon name, like `pencil`.
  */
 function themeblvd_get_format_icon( $format = '', $force = false ) {
 
 	$icon = '';
+
 	$post_type = get_post_type();
 
+	/*
+	 * Set icon name based on post type.
+	 *
+	 * If there's no post format and $force is
+	 * TRUE, we'll add an icon name to represent
+	 * different post types the theme uses.
+	 */
 	if ( ! $format && $force ) {
 
 		switch ( $post_type ) {
-			case 'page' :
-				$format = 'page';		// Standard Pages
+
+			// Standard Pages
+			case 'page':
+				$format = 'page';
 				break;
-			case 'attachment' :
-				$format = 'attachment';	// Media Library
+
+			// Media Attachment
+			case 'attachment':
+				$format = 'attachment';
 				break;
-			case 'portfolio_item' :		// TB Portfolios
-			case 'portfolio' :			// General, other portfolio plugins
+
+			// Portfolio Items
+			case 'portfolio_item':
+			case 'portfolio':
 				$format = 'portfolio';
 				break;
-			case 'product' : 			// WooCommerce
-			case 'download' : 			// EDD
+
+			// Products (from WooCommerce or EDD)
+			case 'product':
+			case 'download':
 				$format = 'product';
 				break;
-			default :					// Standard Post
+
+			default:
 				$format = 'standard';
+
 		}
 	}
 
-	$icons = apply_filters('themeblvd_format_icons', array(
-		'standard'	=> 'pencil',		// Alt: thumb-tack
-		'audio'		=> 'volume-up',		// Alt: music
-		'aside'		=> 'thumb-tack', 	// Alt: file-text
-		'attachment'=> 'picture-o',
-		'chat'		=> 'comments',
-		'gallery'	=> 'picture-o',
-		'image'		=> 'camera',
-		'link'		=> 'link',
-		'page'		=> 'file-o',
-		'portfolio'	=> 'briefcase',
-		'product'	=> 'shopping-basket',
-		'quote'		=> 'quote-left',
-		'status'	=> 'clock-o',
-		'video'		=> 'film'
+	/**
+	 * Filters the icons used from FontAwesome to
+	 * represent each post type and post format.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param array Icons used for post formats and post types.
+	 */
+	$icons = apply_filters( 'themeblvd_format_icons', array(
+		'standard'   => 'pencil',     // Logical alternate could be `thumb-tack`.
+		'audio'      => 'volume-up',  // Logical alternate could be `music`.
+		'aside'      => 'thumb-tack', // Logical alternate could be `file-text`.
+		'attachment' => 'picture-o',
+		'chat'       => 'comments',
+		'gallery'    => 'picture-o',
+		'image'      => 'camera',
+		'link'       => 'link',
+		'page'       => 'file-o',
+		'portfolio'  => 'briefcase',
+		'product'    => 'shopping-basket',
+		'quote'      => 'quote-left',
+		'status'     => 'clock-o',
+		'video'      => 'film',
 	));
 
-	if ( ! empty( $icons[$format] ) ) {
-		$icon = $icons[$format];
+	if ( ! empty( $icons[ $format ] ) ) {
+
+		$icon = $icons[ $format ];
+
 	}
 
+	/**
+	 * Filters the individual icon used to represent a
+	 * post format.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param string $icon        Icon name.
+	 * @param string $format      Post format of current post, or post type if no post format and $force is TRUE.
+	 * @param bool   $force       Whether to force an icon to still show when no post format.
+	 * @param string $post_type   Post type of current post.
+	 */
 	return apply_filters( 'themeblvd_format_icon', $icon, $format, $force, $post_type );
+
 }
 
 /**
  * Remove the first instance of a [gallery]
- * shortcode from a block of content.
+ * shortcode from a block of content for a gallery
+ * format post.
  *
  * This is intended to be a helper function that
  * can be filtered onto the_content() for use in
  * the loop with the "gallery" post format.
  *
- * @since 2.3.0
+ * This function is filtered onto:
+ * 1. `the_content` - 7
  *
- * @param string $content Content of post
- * @return string $content Filtered content of post
+ * @since Theme_Blvd 2.3.0
+ *
+ * @param  string $content Post content.
+ * @return string $content Modified post content.
  */
 function themeblvd_content_format_gallery( $content ) {
 
-	// Only continue if this is a "gallery" format post.
-	if ( ! has_post_format('gallery') ) {
+	if ( ! has_post_format( 'gallery' ) ) {
+
 		return $content;
+
 	}
 
 	$pattern = get_shortcode_regex();
 
 	if ( preg_match( "/$pattern/s", $content, $match ) && 'gallery' == $match[2] ) {
+
 		$content = str_replace( $match[0], '', $content );
+
 	}
 
 	return $content;
+
 }
-// USAGE: add_filter( 'the_content', 'themeblvd_content_format_gallery', 7 );
 
 /**
  * Filter out the first URL or HTML link of the
- * content in a "Link" format post.
+ * content in a link format post.
  *
- * @since 2.3.0
+ * This function is filtered onto:
+ * 1. `the_content` - 7
  *
- * @param string $content Content of post
- * @return string $content Filtered content of post
+ * @since Theme_Blvd 2.3.0
+ *
+ * @param  string $content Post content.
+ * @return string $content Modified post content.
  */
 function themeblvd_content_format_link( $content ) {
 
-	// Only continue if this is a "link" format post.
-	if ( ! has_post_format('link') ) {
+	if ( ! has_post_format( 'link' ) ) {
+
 		return $content;
+
 	}
 
-	// Get the URL from the content.
+	// Get the URL from the first line of content.
 	$url = themeblvd_get_content_url( $content );
 
-	// Remove that URL from the start of content,
-	// if that's where it was.
+	/*
+	 * Remove that URL from the start of content,
+	 * if that's where it was.
+	 */
 	if ( $url ) {
-		$content = str_replace( $url[0], '', $content ); // $url[0] is first line of content
+
+		$content = str_replace( $url[0], '', $content ); // $url[0] will be first line of content.
+
 	}
 
 	return $content;
 
 }
-// USAGE: add_filter( 'the_content', 'themeblvd_content_format_link', 7 );
 
 /**
- * Extract a URL from first line of passed content, if
- * possible. Checks for a URL on the first line of the
+ * Find URL in first line of content.
+ *
+ * Extracts a URL string from first line of passed
+ * content, if possible.
+ *
+ * Also checks for a URL on the first line of the
  * content or and <a> tag.
  *
- * @since 2.4.0
+ * @since Theme_Blvd 2.4.0
  *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @param  string $content A string which might contain a URL, passed by reference.
+ * @return string          The found URL.
  */
 function themeblvd_get_content_url( $content ) {
 
 	if ( empty( $content ) ) {
+
 		return '';
+
 	}
 
-	$trimmed = trim($content);
+	$trimmed = trim( $content );
+
 	$lines = explode( "\n", $trimmed );
-	$line = trim( array_shift($lines) );
+
+	$line = trim( array_shift( $lines ) );
 
 	$find_link = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
 
-  	if ( preg_match("/$find_link/siU", $line, $matches) ) {
+	if ( preg_match( "/$find_link/siU", $line, $matches ) ) {
 
-  		// First line of content is HTML link
-  		return array( $line, $matches[2] );
+		// First line of content is HTML link.
+		return array( $line, $matches[2] );
 
-  	} else if ( stripos( $line, 'http' ) === 0 ) {
+	} elseif ( stripos( $line, 'http' ) === 0 ) {
 
-  		// First line of content is URL
-  		return array( $line, esc_url_raw($line) );
+		// First line of content is URL.
+		return array( $line, esc_url_raw( $line ) );
 
-  	}
+	}
 
 	return '';
+
 }
 
 /**
- * Filter out the first quote from the
- * content in a "Quote" format post.
- * (Framework does not implement by default)
+ * Filter out the first quote from the content for
+ * a quote format post.
  *
- * @since 2.5.0
+ * This will filter out either a <blockquote> or a
+ * [blockquote] that exists on the first line of the
+ * content.
  *
- * @param string $content Content of post
- * @return string $content Filtered content of post
+ * This function is filtered onto:
+ * 1. `the_content` - 7
+ *
+ * @since Theme_Blvd 2.5.0
+ *
+ * @param  string $content Post content.
+ * @return string $content Modified post content.
  */
 function themeblvd_content_format_quote( $content ) {
 
-	// Only continue if this is a "quote" format post.
-	if ( ! has_post_format('quote') ) {
+	if ( ! has_post_format( 'quote' ) ) {
+
 		return $content;
+
 	}
 
-	// Get the URL from the content.
+	// Get the quote from the content.
 	$quote = themeblvd_get_content_quote( $content, false );
 
-	// Remove that URL from the start of content,
-	// if that's where it was.
+	// Remove the quote, if we found one.
 	if ( $quote ) {
+
 		$content = str_replace( $quote, '', $content );
+
 	}
 
 	return $content;
 
 }
-// USAGE: add_filter( 'the_content', 'themeblvd_content_format_quote', 7 );
 
 /**
- * Extract a quote from first line of passed content, if
- * possible. Checks for a <blockquote> on the first line of the
- * content or [blockquote] shortcode.
+ * Get a quote from the first line a block of
+ * content.
  *
- * @since 2.5.0
+ * Checks for a <blockquote> or [blockquote]
+ * shortcode on the first line of the content.
  *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @since Theme_Blvd 2.5.0
+ *
+ * @param  string $content A string which might contain a quote, passed by reference.
+ * @param  bool   $run     If a [blockquote] shortcode is found, whether to process it into HTML.
+ * @return string          The found quote.
  */
 function themeblvd_get_content_quote( $content, $run = true ) {
 
 	if ( empty( $content ) ) {
+
 		return '';
+
 	}
 
-	$trimmed = trim($content);
-	$lines = explode( "\n", $trimmed );
-	$line = trim( array_shift($lines) );
+	$trimmed = trim( $content );
 
-	// [blockquote]
-	if ( strpos($line, '[blockquote' ) === 0) {
+	$lines = explode( "\n", $trimmed );
+
+	$line = trim( array_shift( $lines ) );
+
+	// Look for `[blockquote]`.
+	if ( strpos( $line, '[blockquote' ) === 0 ) {
+
 		if ( $run ) {
-			return do_shortcode($line);
+
+			return do_shortcode( $line );
+
 		} else {
+
 			return $line;
+
 		}
 	}
 
-	// <blockquote>
-	if ( strpos($trimmed, '<blockquote') === 0 ) {
-		$end = strpos($trimmed, '</blockquote>') + 13;
+	// Look for `<blockquote>`.
+	if ( 0 === strpos( $trimmed, '<blockquote' ) ) {
+
+		$end = strpos( $trimmed, '</blockquote>' ) + 13; // `</blockquote>` = 13 characters
+
 		return substr( $trimmed, 0, $end );
+
 	}
 
 	return '';
+
 }
 
 /**
- * Display first quote from current post's content in the loop.
+ * Display the extracted quote from a quote
+ * format post.
  *
- * @since 2.5.0
- *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_content_quote() {
 
-	// Only continue if this is a "quote" format post.
-	if ( ! has_post_format('quote') ) {
+	if ( ! has_post_format( 'quote' ) ) {
+
 		return;
+
 	}
 
 	echo themeblvd_get_content_quote( get_the_content() );
+
 }
 
 /**
- * Filter out the first video from the
- * content in a "Video" format post.
+ * Filter out the first video from the content for
+ * a quote format post.
  *
- * @since 2.5.0
+ * This function is filtered onto:
+ * 1. `the_content` - 7
  *
- * @param string $content Content of post
- * @return string $content Filtered content of post
+ * @since Theme_Blvd 2.5.0
+ *
+ * @param  string $content Post content.
+ * @return string $content Modified post content.
  */
 function themeblvd_content_format_video( $content ) {
 
-	// Only continue if this is a "link" format post.
-	if ( ! has_post_format('video') ) {
+	if ( ! has_post_format( 'video' ) ) {
+
 		return $content;
+
 	}
 
-	// Get the URL from the content.
+	// Get the video from the content.
 	$video = themeblvd_get_content_video( $content, false );
 
-	// Remove that URL from the start of content,
-	// if that's where it was.
+	// Remove that video, if one was found.
 	if ( $video ) {
+
 		$content = str_replace( $video, '', $content );
+
 	}
 
 	return $content;
 
 }
-// USAGE: add_filter( 'the_content', 'themeblvd_content_format_video', 7 );
 
 /**
- * Extract a video from first line of passed content, if
- * possible. Checks for a <blockquote> on the first line of the
- * content or the first encountered href attribute.
+ * Get a video from the first line a block of
+ * content.
  *
- * @since 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @param  string $content A string which might contain a video, passed by reference.
+ * @param  bool   $run     Whether to process the HTML for an oembed URL or [video] shortcode.
+ * @return string          The found video.
  */
 function themeblvd_get_content_video( $content, $run = true ) {
 
 	if ( empty( $content ) ) {
+
 		return '';
+
 	}
 
-	$trimmed = trim($content);
-	$lines = explode( "\n", $trimmed );
-	$line = trim( array_shift($lines) );
+	$trimmed = trim( $content );
 
-	// Video oembed get
-	if ( strpos($line, 'http' ) === 0) {
+	$lines = explode( "\n", $trimmed );
+
+	$line = trim( array_shift( $lines ) );
+
+	// Check for URL, intended for oEmbed.
+	if ( 0 === strpos( $line, 'http' ) ) {
+
 		if ( $run ) {
-			return wp_oembed_get($line);
+
+			return wp_oembed_get( $line );
+
 		} else {
+
 			return $line;
+
 		}
 	}
 
-	// [video]
-	if ( strpos($trimmed, '[video') === 0 ) {
+	// Check for `[video]` shortcode.
+	if ( 0 === strpos( $trimmed, '[video' ) ) {
 
-		$end = strpos($trimmed, '[/video]') + 8;
+		$end = strpos( $trimmed, '[/video]' ) + 8;
+
 		$video = substr( $trimmed, 0, $end );
 
 		if ( $run ) {
-			$video = do_shortcode($video);
+
+			$video = do_shortcode( $video );
+
 		}
 
 		return $video;
+
 	}
 
 	return '';
+
 }
 
 /**
- * Display first video from current post's content in the loop.
+ * Display the extracted video from the content
+ * of a video format post.
  *
- * @since 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @param bool $placeholder Whether to display placeholder, when no video exists.
  */
 function themeblvd_content_video( $placeholder = false ) {
 
-	// Only continue if this is a "video" format post.
-	if ( ! has_post_format('video') ) {
+	if ( ! has_post_format( 'video' ) ) {
+
 		return;
+
 	}
 
 	$video = themeblvd_get_content_video( get_the_content() );
 
-	if ( $video && apply_filters('themeblvd_featured_thumb_frame', false) ) {
-		$video = sprintf('<div class="thumbnail">%s</div>', $video);
-	} else if ( ! $video && $placeholder ) {
+	if ( ! $video && $placeholder ) {
+
 		$video = themeblvd_get_media_placeholder();
+
 	}
 
 	echo $video;
+
 }
 
 /**
- * Filter out the first audio from the
- * content in a "Audio" format post.
+ * Filter out the first audio player from the
+ * content in an audio format post.
  *
- * @since 2.5.0
+ * This function is filtered onto:
+ * 1. `the_content` - 7
  *
- * @param string $content Content of post
- * @return string $content Filtered content of post
+ * @since Theme_Blvd 2.5.0
+ *
+ * @param  string $content Post content.
+ * @return string $content Modified post content.
  */
 function themeblvd_content_format_audio( $content ) {
 
-	// Only continue if this is a "link" format post.
-	if ( ! has_post_format('audio') ) {
+	if ( ! has_post_format( 'audio' ) ) {
+
 		return $content;
+
 	}
 
-	// Get the URL from the content.
+	// Get the audio player from the content.
 	$audio = themeblvd_get_content_audio( $content, false );
 
-	// Remove that URL from the start of content,
-	// if that's where it was.
+	// Remove that audio player, if one was found.
 	if ( $audio ) {
+
 		$content = str_replace( $audio, '', $content );
+
 	}
 
 	return $content;
 
 }
-// USAGE: add_filter( 'the_content', 'themeblvd_content_format_audio', 7 );
 
 /**
- * Extract a audio from first line of passed content, if
- * possible. Checks for a <blockquote> on the first line of the
- * content or the first encountered href attribute.
+ * Get an audio player from the first line a
+ * block of content.
  *
- * @since 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @param  string $content A string which might contain an audio player, passed by reference.
+ * @param  bool   $run     Whether to process the HTML for an oembed URL or [audio] shortcode.
+ * @return string          The found audio.
  */
 function themeblvd_get_content_audio( $content, $run = true ) {
 
 	if ( empty( $content ) ) {
+
 		return '';
+
 	}
 
-	$trimmed = trim($content);
-	$lines = explode( "\n", $trimmed );
-	$line = trim( array_shift($lines) );
+	$trimmed = trim( $content );
 
-	// Audio oembed get
-	if ( strpos($line, 'http' ) === 0) {
+	$lines = explode( "\n", $trimmed );
+
+	$line = trim( array_shift( $lines ) );
+
+	// Check for URL, intended for oEmbed.
+	if ( strpos( $line, 'http' ) === 0 ) {
 		if ( $run ) {
-			return wp_oembed_get($line);
+			return wp_oembed_get( $line );
 		} else {
 			return $line;
 		}
 	}
 
-	// [audio]
-	if ( strpos($trimmed, '[audio') === 0 ) {
+	// Check for `[audio]` shortcode.
+	if ( strpos( $trimmed, '[audio' ) === 0 ) {
 
-		$end = strpos($trimmed, '[/audio]') + 8;
+		$end = strpos( $trimmed, '[/audio]' ) + 8;
+
 		$audio = substr( $trimmed, 0, $end );
 
 		if ( $run ) {
-			$audio = do_shortcode($audio);
+
+			$audio = do_shortcode( $audio );
+
 		}
 
 		return $audio;
+
 	}
 
 	return '';
+
 }
 
 /**
- * Display first audio from current post's content in the loop.
+ * Display the extracted audio from the content
+ * of an audio format post.
  *
- * @since 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
- * @param string $content A string which might contain a URL, passed by reference.
- * @return string The found URL.
+ * @param bool $placeholder Whether to display placeholder, when no audio exists.
  */
 function themeblvd_content_audio( $placeholder = false ) {
 
-	// Only continue if this is a "audio" format post.
-	if ( ! has_post_format('audio') ) {
+	if ( ! has_post_format( 'audio' ) ) {
+
 		return;
+
 	}
 
 	$audio = themeblvd_get_content_audio( get_the_content(), false );
-	$img = themeblvd_get_post_thumbnail( themeblvd_get_att('crop'), array('link' => false, 'placeholder' => false) );
 
-	if ( ! $img && $placeholder && strpos($audio, '[audio' ) !== false ) {
+	$img = themeblvd_get_post_thumbnail( themeblvd_get_att( 'crop' ), array(
+		'link'        => false,
+		'placeholder' => false,
+	));
+
+	if ( ! $img && $placeholder && false !== strpos( $audio, '[audio' ) ) {
+
 		$img = themeblvd_get_media_placeholder();
+
 	}
 
-	if ( strpos($audio, 'http' ) === 0) {
+	if ( 0 === strpos( $audio, 'http' ) ) {
 
-		$audio = wp_oembed_get($audio);
-
-		if ( apply_filters('themeblvd_featured_thumb_frame', false) ) {
-			$audio = sprintf('<div class="thumbnail">%s</div>', $audio);
-		}
+		$audio = wp_oembed_get( $audio );
 
 	} else {
-		$audio = do_shortcode($audio);
+		$audio = do_shortcode( $audio );
 	}
 
 	if ( $img ) {
-		printf('<div class="tb-audio-image">%s<div class="audio-wrap">%s</div></div>', $img, $audio );
-	}else {
+
+		printf(
+			'<div class="tb-audio-image">%s<div class="audio-wrap">%s</div></div>',
+			$img,
+			$audio
+		);
+
+	} else {
+
 		echo $audio;
+
 	}
+
 }

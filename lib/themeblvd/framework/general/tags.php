@@ -1,5 +1,7 @@
 <?php
 /**
+ * Template Tags
+ *
  * Frontend template tags, which serve primarily
  * as action hook wrappers.
  *
@@ -11,141 +13,463 @@
  */
 
 /**
- * Within the main content column, just before
- * the_content().
+ * Display at the top of the content of most
+ * template files.
  *
- * Default hooked function includes (1) handling
- * titles on archive pages and (2) outputting page
- * title and content at the top of Post List and
- * Post Grid page templates.
- *
- * @since 2.0.0
- * @see themeblvd_content_top_default()
+ * @since @@name-framework 2.0.0
  */
 function themeblvd_content_top() {
+
+	/**
+	 * Fires at the top of the content of most
+	 * template files.
+	 *
+	 * @hooked themeblvd_archive_info - 10
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
 	do_action( 'themeblvd_content_top' );
+
 }
 
 /**
- * At the end of the main content column, after
- * comments template.
+ * Display at the bottom of the content of most
+ * template files.
  *
- * No default hooked function.
- *
- * @since 2.3.0
+ * @since @@name-framework 2.3.0
  */
 function themeblvd_content_bottom() {
+
+	/**
+	 * Fires at the bottom of the content of most
+	 * template files.
+	 *
+	 * @since @@name-framework 2.3.0
+	 */
 	do_action( 'themeblvd_content_bottom' );
+
 }
 
 /**
- * The meta info that generally displays with a blog
- * post below the title.
+ * Display meta info for a post, in the `blog`
+ * post display.
  *
- * @since 2.0.0
- * @see themeblvd_blog_meta_default()
+ * @since @@name-framework 2.0.0
  */
 function themeblvd_blog_meta() {
+
+	/**
+	 * Fires where the meta info for a post should be
+	 * inserted, in the `blog` post display.
+	 *
+	 * The meta info that generally displays below
+	 * the post title with information like the post
+	 * format, publish data, author, etc.
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
 	do_action( 'themeblvd_blog_meta' );
+
 }
 
 /**
- * The meta info that generally displays with a blog
- * post after the post content.
+ * Display the sub meta below the post content
+ * in the `blog` post display.
  *
- * @since 2.5.0
- * @see themeblvd_blog_sub_meta_default()
+ * @since @@name-framework 2.5.0
  */
 function themeblvd_blog_sub_meta() {
+
+	/**
+	 * Fires where the sub meta info for a post
+	 * should be inserted, in the `blog` post
+	 * display.
+	 *
+	 * The sub meta info generally displays below
+	 * the post's content with things like the links
+	 * to share a post and the post tags.
+	 *
+	 * @hooked themeblvd_blog_sub_meta_default - 10
+	 *
+	 * @since @@name-framework 2.5.0
+	 */
 	do_action( 'themeblvd_blog_sub_meta' );
+
 }
 
 /**
- * The meta info that generally displays with a blog
- * post below the title.
+ * Display meta info for a post, in the `grid`
+ * post display.
  *
- * @since 2.5.0
- * @see themeblvd_grid_meta_default()
+ * @since @@name-framework 2.5.0
  */
 function themeblvd_grid_meta() {
+
+	/**
+	 * Fires where the meta info for a post should be
+	 * inserted, in the `grid` post display.
+	 *
+	 * The meta info that generally displays below
+	 * the post title with information like the post
+	 * format, publish data, author, etc.
+	 *
+	 * @hooked themeblvd_grid_meta_default - 10
+	 *
+	 * @since @@name-framework 2.5.0
+	 */
 	do_action( 'themeblvd_grid_meta' );
+
 }
 
 /**
- * The meta info that generally displays with a post
- * in search results.
+ * Display meta info for a post, in a list
+ * of search results.
  *
- * @since 2.5.0
- * @see themeblvd_search_meta_default()
+ * @since @@name-framework 2.5.0
  */
 function themeblvd_search_meta() {
+
+	/**
+	 * Fires where the meta info for a post, in a
+	 * list of search results.
+	 *
+	 * The meta info that generally displays below
+	 * the post title with information like the post
+	 * format, publish data, author, etc.
+	 *
+	 * @hooked themeblvd_search_meta_default - 10
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
 	do_action( 'themeblvd_search_meta' );
+
 }
 
 /**
  * Display the featured image, accounting for framework's
  * Image Link settings.
  *
- * @since 2.0.0
- * @see themeblvd_the_post_thumbnail_default()
+ * @see themeblvd_get_post_thumbnail()
  *
- * @param string $location Where the thumbnail is being used -- primary, featured, single -- sort of a wild card to build on in the future as conflicts arise.
- * @param string $size For the image crop size of the thumbnail
- * @param bool $link Set to false to force a thumbnail to ignore post's Image Link options
- * @param bool $allow_filters Whether to allow general filters on the thumbnail or not
+ * @since @@name-framework 2.0.0
+ *
+ * @param string $size Optional. Image crop size.
+ * @param array  $args Optional. See themeblvd_get_post_thumbnail().
  */
 function themeblvd_the_post_thumbnail( $size = '', $args = array() ) {
 
-	// Deal with backwards compat issues
-	// Deprecated declaration: themeblvd_the_post_thumbnail( $location = 'primary', $size = '' )
+	/*
+	 * Handle backwards compatibility.
+	 *
+	 * The themeblvd_the_post_thumbnail() function used to
+	 * take different parameters like:
+	 * themeblvd_the_post_thumbnail( $location, $size )
+	 */
 	$new_args = array();
 
-	if ( $size == 'primary' || $size == 'single' ) {
+	if ( 'primary' === $size || 'single' === $size ) {
+
 		$new_args['location'] = $size;
+
 	}
+
 	if ( $args && ! is_array($args) ) {
+
 		$size = $args;
+
 		$args = array();
+
 	}
 
 	$args = wp_parse_args( $args, $new_args );
 
+	/**
+	 * Fires in most scenarios where the featured
+	 * image should be displayed.
+	 *
+	 * @hooked themeblvd_the_post_thumbnail_default - 10
+	 *
+	 * @since @@name-framework 2.0.0
+	 *
+	 * @param string $size Optional. Image crop size.
+	 * @param array  $args Optional. See themeblvd_get_post_thumbnail().
+	 */
 	do_action( 'themeblvd_the_post_thumbnail', $size, $args );
+
 }
 
 /**
- * Display either (1) the_content() or (2) the_excerpt()
- * followed by a button to the permalink.
+ * Display the content for a post, within the
+ * `blog` post display type.
  *
- * @since 2.0.0
- * @see themeblvd_blog_content_default()
+ * @since @@name-framework 2.0.0
  *
- * @param string $type Type of content -- content or excerpt
+ * @param string $type Type of content, `content` or `excerpt`.
  */
 function themeblvd_blog_content( $type ) {
+
+	/**
+	 * Fires when the content is displayed for a
+	 * post, within the `blog` post display type.
+	 *
+	 * @hooked themeblvd_blog_content_default - 10
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
 	do_action( 'themeblvd_blog_content', $type );
+
 }
 
 /**
- * Below the content within single.php, before
- * comments template.
+ * Display immediately following the content
+ * of a single post, before the comments
+ * display.
  *
- * No default hooked function.
- *
- * @since 2.0.0
+ * @since @@name-framework 2.0.0
  */
 function themeblvd_single_footer() {
+
+	/**
+	 * Fires below the content of a single post,
+	 * but before the comments.
+	 *
+	 * @hooked themeblvd_single_footer_default - 10
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
 	do_action( 'themeblvd_single_footer' );
 }
 
 /**
- * Below the content within page.php, before
- * comments template.
+ * Display immediately following the content
+ * of a page, before the comments display.
  *
- * No default hooked function.
- *
- * @since 2.0.0
+ * @since @@name-framework 2.0.0
  */
 function themeblvd_page_footer() {
+
+	/**
+	 * Fires below the content of a page, but
+	 * before the comments.
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
 	do_action( 'themeblvd_page_footer' );
+
+}
+
+/**
+ * Display HTML class for the main website
+ * top bar.
+ *
+ * @since @@name-framework 2.6.0
+ */
+function themeblvd_header_top_class() {
+
+	$class = array( 'header-top' );
+
+	/**
+	 * Filters the CSS classes used with the main
+	 * website top bar.
+	 *
+	 * @since @@name-framework 2.6.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_header_top_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the main website top bar.
+	 *
+	 * @since @@name-framework 2.6.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_header_top_class_output', $output, $class );
+
+}
+
+/**
+ * Display HTML class for the main website
+ * header.
+ *
+ * @since @@name-framework 2.5.0
+ */
+function themeblvd_header_class() {
+
+	$class = array( 'site-header' );
+
+	if ( themeblvd_config( 'suck_up' ) ) {
+
+		$class[] = 'transparent';
+
+	} else {
+
+		$class[] = 'standard';
+
+	}
+
+	/**
+	 * Filters the CSS classes used with the main
+	 * website header.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_header_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the main website header.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_header_class_output', $output, $class );
+
+}
+
+/**
+ * Display HTML class for the main website
+ * content wrapper.
+ *
+ * @since @@name-framework 2.5.1
+ */
+function themeblvd_main_class() {
+
+	$config = Theme_Blvd_Frontend_Init::get_instance();
+
+	$class = array(
+		'site-inner',
+		$config->get_config( 'sidebar_layout' )
+	);
+
+	if ( themeblvd_get_att( 'epic_thumb' ) ) {
+
+		$class[] = 'has-epic-thumb-above';
+
+	}
+
+	/**
+	 * Filters the CSS classes used with the main
+	 * website content wrapper.
+	 *
+	 * @since @@name-framework 2.5.1
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_main_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the main website content wrapper.
+	 *
+	 * @since @@name-framework 2.5.1
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_main_class_output', $output, $class );
+
+}
+
+/**
+ * Display HTML class for main website
+ * footer.
+ *
+ * @since @@name-framework 2.5.0
+ */
+function themeblvd_footer_class() {
+
+	$class = array( 'site-footer' );
+
+	/**
+	 * Filters the CSS classes used with the main
+	 * website footer.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_footer_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the main website footer.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_footer_class_output', $output, $class );
+
+}
+
+/**
+ * Display HTML class for the hidden
+ * side panel.
+ *
+ * @since @@name-framework 2.6.0
+ */
+function themeblvd_side_panel_class() {
+
+	$class = array( 'tb-side-panel' );
+
+	/**
+	 * Filters the CSS classes used with the
+	 * hidden side panel.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_side_panel_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the hidden side panel.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_side_panel_class_output', $output, $class );
+
 }

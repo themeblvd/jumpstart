@@ -1085,23 +1085,6 @@ function jumpstart_ag_lang_popup() {
 add_action( 'themeblvd_after', 'jumpstart_ag_lang_popup' );
 
 /**
- * Allow main menu to be empty.
- *
- * @since @@name-package 2.1.0
- *
- * @param  array $args Arguments passed to wp_nav_menu().
- * @return array $args Modified arguments passed to wp_nav_menu().
- */
-function jumpstart_ag_primary_menu_args( $args ) {
-
-	$args['fallback_cb'] = false;
-
-	return $args;
-
-}
-add_filter( 'themeblvd_primary_menu_args', 'jumpstart_ag_primary_menu_args' );
-
-/**
  * Filter args that get filtered in when sidebars
  * are registered.
  *

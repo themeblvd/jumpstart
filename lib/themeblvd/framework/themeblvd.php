@@ -113,10 +113,9 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-stylesheet.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );
 
 /**
- * Include general functions, which need to be
- * available on the frontend and backend.
+ * Include general setup functions.
  */
-include_once( TB_FRAMEWORK_DIRECTORY . '/general/general.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/general/setup.php' );
 
 /**
  * Include helper functions for using theme bases,
@@ -313,11 +312,6 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/general/display.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/frontend.php' );
 
 /**
- * Include frontend helper functions.
- */
-include_once( TB_FRAMEWORK_DIRECTORY . '/general/helpers.php' );
-
-/**
  * Include frontend functions to modify WordPress menus.
  */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/menu.php' );
@@ -347,6 +341,17 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/general/tags.php' );
  * of blocks (see next section).
  */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/layout.php' );
+
+/**
+ * Include general helper functions.
+ */
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/comments.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/general.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/layout.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/media.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/nav.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/posts.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/style.php' );
 
 /**
  * Include frontend blocks.
