@@ -1,6 +1,6 @@
 <?php
 /**
- * Framework Meta Boxes
+ * Add framework meta boxes.
  *
  * This file primarily utilizes our framework class
  * Theme_Blvd_Meta_Box to create the default meta
@@ -12,6 +12,9 @@
  * 2. Theme Layout
  * 3. Post Template Options
  * 4. Post Options
+ *
+ * This function is hooked to:
+ * 1. `admin_init` - 10
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -28,8 +31,11 @@
 function themeblvd_add_meta_boxes() {
 
 	global $_themeblvd_page_meta_box;
+
 	global $_themeblvd_layout_meta_box;
+
 	global $_themeblvd_post_template_meta_box;
+
 	global $_themeblvd_post_meta_box;
 
 	/*
@@ -132,7 +138,9 @@ function setup_themeblvd_post_meta() {
 	$layouts = themeblvd_sidebar_layouts();
 
 	foreach ( $layouts as $layout ) {
+
 		$sidebar_layouts[ $layout['id'] ] = $imagepath . 'layout-' . $layout['id'] . '.png';
+
 	}
 
 	$setup = array(

@@ -112,6 +112,7 @@ function themeblvd_has_header_info( $include = array() ) {
  *
  * This function is filtered onto:
  * 1. `themeblvd_the_content` - 10
+ * 2. `widget_text` - 10
  *
  * @since Theme_Blvd 2.5.0
  *
@@ -412,6 +413,9 @@ function themeblvd_responsive_visibility_class( $hide ) {
  * content outside of the_content(), this is helpful
  * to still hide that content.
  *
+ * This function is filtered onto:
+ * 1. `template_include` - 10
+ *
  * @since Theme_Blvd 2.2.1
  *
  * @param  string $template Current custom page template file location.
@@ -590,7 +594,7 @@ function themeblvd_get_column_class( $column ) {
  * using older methods.
  *
  * This function is filtered onto:
- * 1. `themeblvd_column_class` - 20
+ * 1. `themeblvd_column_class` - 10
  *
  * @since Theme_Blvd 2.4.0
  *

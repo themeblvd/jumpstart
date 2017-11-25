@@ -20,15 +20,20 @@
  */
 
 /**
- * Sanitization Filters
+ * Add sanitization filters.
  *
- * This function gets hooked to `admin_init` when the framework
- * runs on the admin side.
+ * This function gets hooked to `admin_init` when the
+ * framework runs on the admin side.
  *
- * Furthermore, on the frontend of the site, if the options have
- * never been saved we can call this function to allow default
- * option values to be generated. This will almost never happen,
- * so this is our way of including them, but only if needed.
+ * Furthermore, on the frontend of the site, if the
+ * options have never been saved we can call this function
+ * to allow default option values to be generated.
+ *
+ * This will almost never happen, so this is our way of
+ * including them, but only if needed.
+ *
+ * This function is hooked to:
+ * 1. `admin_init` - 10
  *
  * @since @@name-framework 2.2.0
  */
@@ -124,6 +129,7 @@ function themeblvd_sanitize_hidden( $input, $option ) {
 	} elseif ( 'theme_version' === $option['id'] ) {
 
 		$theme = wp_get_theme( get_template() );
+
 		$output = $theme->get( 'Version' );
 
 	} elseif ( 'theme_base' === $option['id'] ) {
@@ -133,7 +139,9 @@ function themeblvd_sanitize_hidden( $input, $option ) {
 	} else {
 
 		$output = themeblvd_kses( $input );
+
 		$output = htmlspecialchars_decode( $output );
+
 		$output = str_replace( "\r\n", "\n", $output );
 
 	}
@@ -235,9 +243,12 @@ function themeblvd_sanitize_textarea( $input ) {
 function themeblvd_sanitize_checkbox( $input ) {
 
 	if ( $input && '0' !== $input ) {
+
 		$output = '1';
 	} else {
+
 		$output = '0';
+
 	}
 
 	return $output;
@@ -342,8 +353,11 @@ function themeblvd_validate_hex( $hex ) {
 	}
 
 	if ( 0 === preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
+
 		return false;
+
 	} else {
+
 		return true;
 	}
 

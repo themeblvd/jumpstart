@@ -60,7 +60,9 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 					if ( 'custom' !== $key && in_array( $key, $non_conflicts[ $location ] ) ) {
 
 						if ( ! in_array( $key, $conflicts[ $location ] ) ) {
+
 							$conflicts[ $location ][] = $key;
+
 						}
 					} else {
 
@@ -83,6 +85,9 @@ function themeblvd_get_assignment_conflicts( $posts ) {
  * Currently this just includes an option for a sidebar
  * layout selection, when editing pages.
  *
+ * This function is hooked to:
+ * 1. `save_post_page` - 10
+ *
  * @since Theme_Blvd 2.0.0
  *
  * @param int $post_id Post ID for post being saved.
@@ -90,7 +95,9 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 function themeblvd_save_page_atts( $post_id ) {
 
 	if ( ! isset( $_POST['_tb_sidebar_layout'] ) ) {
+
 		return;
+
 	}
 
 	check_admin_referer(
@@ -118,7 +125,10 @@ function themeblvd_save_page_atts( $post_id ) {
 }
 
 /**
- * Clear set of options. Hooked to "admin_init".
+ * Clear set of options.
+ *
+ * This function is hooked to:
+ * 1. `admin_init` - 10
  *
  * @since Theme_Blvd 2.3.0
  */
@@ -187,7 +197,9 @@ function themeblvd_get_icons( $type = 'vector' ) {
 			sort( $fetch_icons ); // Sort alphabetically.
 
 			foreach ( $fetch_icons as $icon ) {
+
 				$icons[ $icon ] = $icon;
+
 			}
 		}
 
@@ -230,22 +242,30 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 	);
 
 	if ( 'section' !== $context ) {
+
 		unset( $types['slideshow'] );
+
 	}
 
 	if ( 'section' === $context || 'banner' === $context || 'jumbotron' === $context ) {
 
 		if ( themeblvd_supports( 'featured', 'style' ) ) {
+
 			$types['featured'] = __( 'Theme\'s preset "Featured" area background', 'jumpstart' );
+
 		}
 
 		if ( themeblvd_supports( 'featured_below', 'style' ) ) {
+
 			$types['featured_below'] = __( 'Theme\'s preset "Featured Below" area background', 'jumpstart' );
+
 		}
 	}
 
 	if ( 'banner' === $context ) {
+
 		$types['none'] = __( 'No banner', 'jumpstart' );
+
 	}
 
 	/**

@@ -1521,6 +1521,9 @@ function themeblvd_button_option( $id, $name, $val ) {
  * from WordPress's "page_attributes_meta_box_template"
  * action hook.
  *
+ * This function is hooked to:
+ * 1. `page_attributes_meta_box_template` - 10
+ *
  * @since @@name-framework 2.0.0
  *
  * @param string  $template Current page template selected.
@@ -2147,6 +2150,9 @@ function themeblvd_display_presets( $args, $option_name = '' ) {
  *
  * This function is hooked as the default callback
  * for the action themeblvd_options_footer_text.
+ *
+ * This function is hooked to:
+ * 1. `themeblvd_options_footer_text` - 10
  *
  * @since @@name-framework 2.2.0
  */

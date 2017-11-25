@@ -527,6 +527,7 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
  *
  * This function is filtered onto:
  * 1. `oembed_result` - 10
+ * 2. `embed_oembed_html` - 10
  *
  * @since @@name-framework 2.0.0
  *
@@ -599,6 +600,9 @@ function themeblvd_oembed_result( $input, $url ) {
 /**
  * Add 100% width to <audio> tag of WP's built-in
  * audio player to make it responsive.
+ *
+ * This function is filtered onto:
+ * 1. `wp_audio_shortcode` - 10
  *
  * @since @@name-framework 2.2.1
  *

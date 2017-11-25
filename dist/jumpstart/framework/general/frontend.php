@@ -770,7 +770,10 @@ function themeblvd_body_class( $class ) {
 if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 	/**
-	 * Load framework's frontend scripts
+	 * Load framework's frontend scripts.
+	 *
+	 * This functin is hooked to:
+	 * 1. `wp_enqueue_scripts` - 10
 	 *
 	 * @since Theme_Blvd 2.0.0
 	 */

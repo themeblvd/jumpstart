@@ -154,7 +154,10 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 if ( ! function_exists( 'themeblvd_responsive_menu_toggle' ) ) {
 
 	/**
-	 * Default display for action: themeblvd_header_top
+	 * Display the mobile navigation buttons.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_header_addon` - 10
 	 *
 	 * @since @@name-framework 2.0.0
 	 */
@@ -334,7 +337,10 @@ if ( ! function_exists( 'themeblvd_header_logo_mobile' ) ) {
 if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 
 	/**
-	 * Default display for action: themeblvd_header_main_menu
+	 * Display the primary navigation.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_header_main_menu` - 10
 	 *
 	 * @since @@name-framework 2.0.0
 	 */
@@ -1566,6 +1572,9 @@ if ( ! function_exists( 'themeblvd_before_signup_form' ) ) {
 	 * Start wrapping HTML before WordPress
 	 * multi-site sign-up form.
 	 *
+	 * This function is hooked to:
+	 * 1. `before_signup_form` - 10
+	 *
 	 * @since @@name-framework 2.1.0
 	 */
 	function themeblvd_before_signup_form() {
@@ -1593,6 +1602,9 @@ if ( ! function_exists( 'themeblvd_after_signup_form' ) ) {
 	/**
 	 * End wrapping HTML before WordPress
 	 * multi-site sign-up form.
+	 *
+	 * This function is hooked to:
+	 * 1. `after_signup_form` - 10
 	 *
 	 * @since @@name-framework 2.1.0
 	 */

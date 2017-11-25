@@ -13,6 +13,9 @@
  * Include compatibility integration for select
  * third-party plugins.
  *
+ * This function is hooked to:
+ * 1. `after_setup_theme` - 10
+ *
  * @since Theme_Blvd 2.5.0
  */
 function themeblvd_plugin_compat() {

@@ -10,8 +10,11 @@
  */
 
 /**
- * Initialize anything needed for admin panel
+ * Initialize everything needed for admin panel
  * to run.
+ *
+ * This function is hooked to:
+ * 1. `after_setup_theme` - 1001
  *
  * @since @@name-framework 2.0.0
  */
@@ -93,15 +96,21 @@ function themeblvd_admin_init() {
 /**
  * Setup suggested plugin manager.
  *
- * In version 2.7.0 this function was majorly altered to
- * use "My Plugin Manager" instead of the TGMPA script.
+ * In version 2.7.0 this function was majorly
+ * altered to use "My Plugin Manager" instead
+ * of the TGMPA script.
+ *
+ * This function is hooked to:
+ * 1. `after_setup_theme` - 10
  *
  * @since @@name-framework 2.2.0
  */
 function themeblvd_plugins() {
 
 	if ( ! themeblvd_supports( 'admin', 'plugins' ) ) {
+
 		return;
+
 	}
 
 	/**
@@ -174,8 +183,8 @@ function themeblvd_plugins() {
 /**
  * Save current version of framework to database.
  *
- * The framework hooks this to "admin_init" action
- * from /framework/themeblvd.php
+ * This function is hooked to:
+ * 1. `admin_init` - 10
  *
  * @since @@name-framework 2.3.0
  */
@@ -191,6 +200,9 @@ function themeblvd_update_version() {
  * Note: This function was previously named
  * themeblvd_non_modular_assets() prior to framework
  * 2.7.0.
+ *
+ * This function is hooked to:
+ * 1. `admin_enqueue_scripts` - 10
  *
  * @since @@name-framework 2.0.0
  */
@@ -283,9 +295,13 @@ function themeblvd_admin_assets( $type = '' ) {
 		foreach ( $required as $handle ) {
 
 			if ( 'media-editor' === $handle ) {
+
 				wp_enqueue_media();
+
 			} else {
+
 				wp_enqueue_script( $handle );
+
 			}
 		}
 
