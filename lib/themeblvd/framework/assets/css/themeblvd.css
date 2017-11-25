@@ -8,11 +8,10 @@
  *   1.4 - Alerts
  *   1.5 - Panels
  *   1.6 - Tabs
- *   1.7 - Thumbnails
- *   1.8 - Code Elements
- *   1.9 - Pagination
- *   1.10 - Main Navigation
- *   1.11 - Carousel
+ *   1.7 - Code Elements
+ *   1.8 - Pagination
+ *   1.9 - Main Navigation
+ *   1.10 - Carousel
  * 2.0 - Common Classes
  *   2.1 - General
  *   2.2 - Images
@@ -209,14 +208,14 @@
  *   31.3 - Breadcrumbs
  * 32.0 - Dark Text Color
  *   32.1 - Typography
- *   32.2 - Thumbnails
+ *   32.2 - Captions
  *   32.3 - Forms
  *   32.4 - Form Buttons
  * 33.0 - Light Text Color
  *   33.1 - Typography
  *   33.2 - Breadcrumbs
  *   33.3 - Block Slider Nav
- *   33.4 - Thumbnails
+ *   33.4 - Captions
  *   33.5 - Forms
  *   33.6 - Form Buttons
  * 34.0 - Primary Color
@@ -368,41 +367,6 @@ ul {
 }
 .nav-tabs > li > a {
 	border: none !important;
-}
-
-/* Thumbnails */
-.thumbnail,
-.pretty {/* Match framework's thumb classes to bootstrap's .thumbnail */
-	padding: 4px;
-	line-height: 1.428571429;
-	background-color: #ffffff;
-	border: 1px solid #f2f2f2;
-	border-color: rgba(220,220,220,.4);
-	border-radius: 0;
-	/* border-radius: 4px; */
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-	display: inline-block;
-	max-width: 100%;
-	height: auto;
-	display: block;
-	margin-bottom: 20px;
-}
-a.pretty:hover,
-a.pretty:focus,
-a.pretty:active,
-a.thumbnail:hover,
-a.thumbnail:focus,
-a.thumbnail:active {
-	border-color: #bbbbbb;
-	border-color: rgba(220,220,220,.6);
-	-webkit-box-shadow: 0 1px 4px rgba(200,200,200,.4);
-	-moz-box-shadow: 0 1px 4px rgba(200,200,200,.4);
-	box-shadow: 0 1px 4px rgba(200,200,200,.4);
-}
-p > .thumbnail,
-p > .pretty {
-	margin-bottom: 0;
 }
 
 /* Code elements */
@@ -666,9 +630,6 @@ img.size-full {
 	padding: 10px 5px 0 5px;
 	margin: 0;
 }
-.wp-caption.thumbnail .wp-caption-text {
-	padding: 10px;
-}
 .has-caption {
 	display: inline-block;
 	margin-bottom: 8px;
@@ -742,9 +703,6 @@ img.size-full {
 /* Featured Format Item */
 .featured-item {
 	margin-bottom: 20px;
-}
-.featured-item .thumbnail {
-	margin-bottom: 0;
 }
 
 /* Featured Video */
@@ -4850,9 +4808,6 @@ blockquote small {
 	/* content: "\f0c1"; link anchor */
 	content: "\f08e"; /* external-link */
 }
-.element-image .thumbnail {
-	margin-bottom: 0;
-}
 .element-image .tb-thumb-link {
 	display: inline-block;
 }
@@ -5831,9 +5786,6 @@ body.mobile .tb-bg-video {
 .tb-mini-post-list article {
 	position: relative;
 }
-.tb-mini-post-list .thumbnail {
-	margin-bottom: 0;
-}
 .tb-mini-post-list.thumb-small .thumb-wrapper {
 	width: 100px;
 	height: 100px;
@@ -5950,9 +5902,6 @@ body.mobile .tb-bg-video {
 .tb-mini-post-grid.thumb-smallest .featured-image {
 	width: 45px;
 	height: 45px;
-}
-.tb-mini-post-grid .thumbnail {
-	margin-bottom: 0;
 }
 .tb-mini-post-grid .featured-image .placeholder .fa {
 	font-size: 20px;
@@ -7994,24 +7943,11 @@ body.mobile .tb-bg-video {
 	color: #333333;
 }
 
-/* Thumbnails */
-.text-dark .thumbnail,
-.text-dark .pretty,
+/* Captions */
 .text-dark .wp-caption {
 	background-color: #ffffff;
 	border-color: #f2f2f2;
 	border-color: rgba(220,220,220,.4);
-}
-.text-dark a.pretty:hover,
-.text-dark a.pretty:focus,
-.text-dark a.pretty:active,
-.text-dark a.thumbnail:hover,
-.text-dark a.thumbnail:focus,
-.text-dark a.thumbnail:active {
-	border-color: rgba(220,220,220,.6);
-	-webkit-box-shadow: 0 1px 4px rgba(200,200,200,.4);
-	-moz-box-shadow: 0 1px 4px rgba(200,200,200,.4);
-	box-shadow: 0 1px 4px rgba(200,200,200,.4);
 }
 
 /* =Light Text Color (for themeblvd-dark.css, flip with Dark Text section)
@@ -8041,23 +7977,10 @@ body.mobile .tb-bg-video {
 	color: #ffffff;
 }
 
-/* Thumbnails */
-.text-light .thumbnail,
-.text-light .pretty,
+/* Captions */
 .text-light .wp-caption {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-color: rgba(0, 0, 0, 0.7);
-}
-.text-light a.pretty:hover,
-.text-light a.pretty:focus,
-.text-light a.pretty:active,
-.text-light a.thumbnail:hover,
-.text-light a.thumbnail:focus,
-.text-light a.thumbnail:active {
-	border-color: rgba(0, 0, 0, 0.9);
-	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* =Primary Color
