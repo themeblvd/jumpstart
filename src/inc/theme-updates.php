@@ -19,7 +19,9 @@
 function jumpstart_updates_init() {
 
 	if ( is_admin() ) {
+
 		add_action( 'init', 'jumpstart_updates' );
+
 	}
 
 }
@@ -33,11 +35,13 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
 function jumpstart_updates() {
 
 	global $_tb_jumpstart_edd_updater;
+
 	global $_tb_jumpstart_license_admin;
 
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-tb-license-admin.php' );
 
 	$theme = get_template();
+
 	$theme_data = wp_get_theme( $theme );
 
 	$args = array(
@@ -48,15 +52,19 @@ function jumpstart_updates() {
 	$_tb_jumpstart_license_admin = new Theme_Blvd_License_Admin( $args );
 
 	$license_key = get_option( 'themeblvd_license_key' );
+
 	$license_key_status = get_option( 'themeblvd_license_key_status' );
 
 	if ( ! $license_key || ! $license_key_status ) {
+
 		return;
+
 	}
 
 	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-edd-sl-theme-updater.php' );
 
 	$args['license'] = $license_key;
+
 	$args['author'] = 'Theme Blvd';
 
 	/**
@@ -89,7 +97,9 @@ function jumpstart_updates() {
 function jumpstart_updates_ssl_verify( $args, $url ) {
 
 	if ( false !== strpos( $url, 'wpjumpstart.com' ) ) {
+
 		$args['sslverify'] = false;
+
 	}
 
 	return $args;

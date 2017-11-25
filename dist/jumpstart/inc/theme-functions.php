@@ -112,12 +112,15 @@ function jumpstart_css() {
 	}
 
 	$theme = wp_get_theme( get_template() );
+
 	$ver = $theme->get( 'Version' );
+
 	$stylesheet_ver = $ver;
 
 	if ( get_template() !== get_stylesheet() ) {
 
 		$theme = wp_get_theme( get_stylesheet() );
+
 		$stylesheet_ver = $theme->get( 'Version' );
 
 	}
@@ -216,15 +219,21 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
 function jumpstart_base_check() {
 
 	if ( ! is_user_logged_in() ) {
+
 		return;
+
 	}
 
 	if ( ! themeblvd_supports( 'admin', 'base' ) ) {
+
 		return;
+
 	}
 
 	if ( themeblvd_get_option( 'theme_base' ) == themeblvd_get_base() ) {
+
 		return; // All good!
+
 	}
 
 	themeblvd_alert(
