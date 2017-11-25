@@ -974,7 +974,7 @@ function themeblvd_header_text( $text = '' ) {
  * @param  string $color       Color class of button.
  * @param  string $url         URL where the button links to.
  * @param  string $target      Anchor tag's target, `_self`, `_blank` or `lightbox`.
- * @param  string $size        Size of button - `small`, `medium`, `default`, `large`, `x-large`, `xx-large` or `xxx-large`.
+ * @param  string $size        Size of button, `small`, `medium`, `default`, `large`, `x-large`, `xx-large` or `xxx-large`.
  * @param  string $classes     CSS classes to add, like `foo bar baz`.
  * @param  string $title       Title for anchor tag, will default to $text if blank.
  * @param  string $icon_before FontAwesome icon name before text, like `pencil`.
