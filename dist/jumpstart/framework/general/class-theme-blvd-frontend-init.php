@@ -323,8 +323,6 @@ class Theme_Blvd_Frontend_Init {
 			'bottom_builder'         => false,
 			'bottom_builder_post_id' => 0,
 			'sidebar_layout'         => '',
-			'featured'               => array(), // @TODO Remove featured area. Issue #210.
-			'featured_below'         => array(), // @TODO Remove featured area. Issue #210.
 			'sidebars'               => array(),
 			'sticky'                 => false,
 			'suck_up'                => false,
@@ -486,26 +484,6 @@ class Theme_Blvd_Frontend_Init {
 					$this->config['bottom_builder_post_id'] = $bottom_template_id;
 
 				}
-			}
-		}
-
-		/*
-		 * Set featured area CSS classes.
-		 *
-		 * @TODO Remove featured area. Issue #210.
-		 */
-		if ( is_page_template( 'template_list.php' ) ) {
-
-			if ( themeblvd_supports( 'featured', 'blog' ) ) {
-
-				$this->config['featured'][] = 'has_blog_featured';
-
-			}
-
-			if ( themeblvd_supports( 'featured_below', 'blog' ) ) {
-
-				$this->config['featured_below'][] = 'has_blog_featured_below';
-
 			}
 		}
 
@@ -1213,28 +1191,6 @@ class Theme_Blvd_Frontend_Init {
 	 * @return array $classes Modified body classes.
 	 */
 	public function body_class( $class ) {
-
-		// Featured Area @TODO Remove featured area. Issue #210.
-		if ( $this->config['featured'] ) {
-
-			$class[] = 'show-featured-area';
-
-		} else {
-
-			$class[] = 'hide-featured-area';
-
-		}
-
-		// Featured Area (below) @TODO Remove featured area. Issue #210.
-		if ( $this->config['featured_below'] ) {
-
-			$class[] = 'show-featured-area-below';
-
-		} else {
-
-			$class[] = 'hide-featured-area-above';
-
-		}
 
 		/*
 		 * Add classes to designate page has a custom

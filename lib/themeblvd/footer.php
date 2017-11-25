@@ -30,17 +30,6 @@
 
 		}
 
-		// Featured area (below)
-		if ( themeblvd_config( 'featured_below' ) ) {
-
-			/**
-			 * @hooked themeblvd_featured_below_start_default - 5
-			 * @hooked themeblvd_featured_below_end_default - 20
-			 */
-			do_action('themeblvd_featured_below');
-
-		}
-
 		/**
 		 * @hooked null
 		 */

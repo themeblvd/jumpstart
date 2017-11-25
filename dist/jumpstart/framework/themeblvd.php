@@ -448,15 +448,6 @@ add_action( 'themeblvd_fixed_sidebar_after', 'themeblvd_fixed_sidebar_after_defa
 add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
 
 /*
- * Hook frontend actions for the website
- * featured area. @deprecated @TODO Remove.
- */
-add_action( 'themeblvd_featured', 'themeblvd_featured_start_default', 5 );
-add_action( 'themeblvd_featured', 'themeblvd_featured_end_default', 20 );
-add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_start_default', 5 );
-add_action( 'themeblvd_featured_below', 'themeblvd_featured_below_end_default', 20 );
-
-/*
  * Hook frontend actions for the website main
  * content area.
  */
