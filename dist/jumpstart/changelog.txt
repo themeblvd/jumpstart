@@ -33,6 +33,9 @@ Jump Start Changelog
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
 * Removed: No more html5shiv for HTML5 compatibility with IE8.
+* Updated: Chart.js to 2.7.1.
+* Updated: easyPieChart to 2.1.6.
+* Updated: Isotope to 3.0.4.
 * **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
 
 --------------------------------------------------------------
