@@ -430,7 +430,7 @@ add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
 /*
  * Hook frontend actions for the website header.
  */
-add_action( 'themeblvd_header_before', 'themeblvd_header_before_default' );
+add_action( 'themeblvd_before', 'themeblvd_widgets_above_header', 20 );
 add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle' );
@@ -452,8 +452,8 @@ add_action( 'themeblvd_sidebars', 'themeblvd_fixed_sidebars' );
  * content area.
  */
 add_action( 'themeblvd_main_start', 'themeblvd_main_start_default' );
-add_action( 'themeblvd_main_top', 'themeblvd_main_top_default' );
-add_action( 'themeblvd_main_bottom', 'themeblvd_main_bottom_default' );
+add_action( 'themeblvd_main_top', 'themeblvd_widgets_above_content' );
+add_action( 'themeblvd_main_bottom', 'themeblvd_widgets_below_content' );
 add_action( 'themeblvd_main_end', 'themeblvd_main_end_default' );
 add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
 
@@ -462,7 +462,7 @@ add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
  */
 add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
 add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
-add_action( 'themeblvd_footer_below', 'themeblvd_footer_below_default' );
+add_action( 'themeblvd_after', 'themeblvd_widgets_below_footer', 5 );
 add_action( 'themeblvd_after', 'themeblvd_floating_search' );
 add_action( 'themeblvd_after', 'themeblvd_to_top' );
 

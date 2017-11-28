@@ -509,7 +509,9 @@ class Theme_Blvd_Sidebar_Handler {
 	public function display( $location ) {
 
 		if ( ! isset( $this->locations[ $location ]['type'] ) ) {
+
 			return;
+
 		}
 
 		$type = $this->locations[ $location ]['type'];
@@ -517,7 +519,9 @@ class Theme_Blvd_Sidebar_Handler {
 		$sidebar = themeblvd_config( 'sidebars', $location );
 
 		if ( ! $sidebar ) {
+
 			return;
+
 		}
 
 		/*
@@ -525,37 +529,83 @@ class Theme_Blvd_Sidebar_Handler {
 		 * we'll want to just kill it if it has no widgets.
 		 */
 		if ( 'collapsible' === $type && ! $sidebar['error'] && ! is_active_sidebar( $sidebar['id'] ) ) {
+
 			return;
+
 		}
 
 		/**
-		 * Fires before a widget area's output is started.
-		 *
-		 * @hooked null
+		 * Fires before a widget area's output
+		 * is started.
 		 *
 		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $sidebar Current widget area configuration.
 		 */
-		do_action( 'themeblvd_sidebar_' . $type . '_before' );
+		do_action( 'themeblvd_sidebar_' . $type . '_before', $sidebar );
 
 		/**
-		 * Fires before a widget area's output is started.
-		 *
-		 * @hooked null
+		 * Fires before a widget area's output
+		 * is started.
 		 *
 		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $sidebar Current widget area configuration.
 		 */
-		do_action( 'themeblvd_sidebar_' . $location . '_before' );
+		do_action( 'themeblvd_sidebar_' . $location . '_before', $sidebar );
 
-		echo '<div class="widget-area widget-area-' . $type . '">';
+		$class = array(
+			'widget-area',
+			'widget-area-' . $type,
+		);
+
+		switch ( $location ) {
+
+			case 'ad_above_header':
+				$class[] = 'widgets-above-header';
+				break;
+
+			case 'ad_above_content':
+				$class[] = 'widgets-above-content';
+				break;
+
+			case 'ad_below_content':
+				$class[] = 'widgets-below-content';
+				break;
+
+			case 'ad_below_footer':
+				$class[] = 'widgets-below-footer';
+
+		}
 
 		/**
-		 * Fires before just inside a widget area.
+		 * Filters the CSS classes for to wrap a
+		 * widget area.
 		 *
-		 * @hooked null
+		 * @since @@name-framework 2.7.0
+		 *
+		 * @param array  $class    CSS classes.
+		 * @param array  $sidebar  Current widget area configuration.
+		 * @param string $location Widget area location.
+		 * @param string $type     Type of widget area location, `fixed` or `collapsible`.
+		 */
+		$class = apply_filters( 'themeblvd_sidebar_class', $class, $sidebar, $location, $type );
+
+		$class = implode( ' ', $class );
+
+		echo "\n<div class=\"" . $class . "\">\n";
+
+		echo "\t<div class=\"wrap\">\n";
+
+		/**
+		 * Fires before just inside a widget
+		 * area.
 		 *
 		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $sidebar Current widget area configuration.
 		 */
-		do_action( 'themeblvd_widgets_' . $location . '_before' );
+		do_action( 'themeblvd_widgets_' . $location . '_before', $sidebar );
 
 		if ( $sidebar['error'] ) {
 
@@ -581,7 +631,9 @@ class Theme_Blvd_Sidebar_Handler {
 				}
 
 				echo '<div class="alert alert-warning">';
+
 				echo '	<p>' . esc_html( $message ) . '</p>';
+
 				echo '</div><!-- .alert-warning (end) -->';
 
 			}
@@ -596,33 +648,38 @@ class Theme_Blvd_Sidebar_Handler {
 		}
 
 		/**
-		 * Fires inside a widget area, just before its closed.
-		 *
-		 * @hooked null
-		 *
-		 * @since @@name-framework 2.3.0
-		 */
-		do_action( 'themeblvd_widgets_' . $location . '_after' );
-
-		echo '</div><!-- .widget_area (end) -->';
-
-		/**
-		 * Fires just outside a widget area, after its closed.
-		 *
-		 * @hooked null
+		 * Fires inside a widget area, just
+		 * before its closed.
 		 *
 		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $sidebar Current widget area configuration.
 		 */
-		do_action( 'themeblvd_sidebar_' . $location . '_after' );
+		do_action( 'themeblvd_widgets_' . $location . '_after', $sidebar );
+
+		echo "\n\t</div><!-- .wrap -->\n";
+
+		echo "</div><!-- .widget-area -->\n";
 
 		/**
-		 * Fires just outside a widget area, after its closed.
-		 *
-		 * @hooked null
+		 * Fires just outside a widget area,
+		 * after its closed.
 		 *
 		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $sidebar Current widget area configuration.
 		 */
-		do_action( 'themeblvd_sidebar_' . $type . '_after' );
+		do_action( 'themeblvd_sidebar_' . $location . '_after', $sidebar );
+
+		/**
+		 * Fires just outside a widget area,
+		 * after its closed.
+		 *
+		 * @since @@name-framework 2.3.0
+		 *
+		 * @param array $sidebar Current widget area configuration.
+		 */
+		do_action( 'themeblvd_sidebar_' . $type . '_after', $sidebar );
 
 	}
 

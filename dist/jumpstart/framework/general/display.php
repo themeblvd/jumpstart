@@ -38,30 +38,20 @@ if ( ! function_exists( 'themeblvd_viewport_default' ) ) {
 	}
 }
 
-if ( ! function_exists( 'themeblvd_header_before_default' ) ) {
+if ( ! function_exists( 'themeblvd_widgets_above_header' ) ) {
 
 	/**
 	 * Display the "Above Header" collapsible widget
-	 * above the main site header.
+	 * area above the main site container.
 	 *
 	 * This function is hooked to:
-	 * 1. `themeblvd_header_before` - 10
+	 * 1. `themeblvd_before` - 20
 	 *
-	 * @since Theme_Blvd 2.6.2
+	 * @since Theme_Blvd 2.7.0
 	 */
-	function themeblvd_header_before_default() {
+	function themeblvd_widgets_above_header() {
 
-		?>
-		<div class="header-above">
-
-			<div class="wrap clearfix">
-
-				<?php themeblvd_display_sidebar( 'ad_above_header' ); ?>
-
-			</div><!-- .wrap (end) -->
-
-		</div><!-- .header-above (end) -->
-		<?php
+		themeblvd_display_sidebar( 'ad_above_header' );
 
 	}
 }
@@ -518,58 +508,38 @@ if ( ! function_exists( 'themeblvd_main_end_default' ) ) {
 	}
 }
 
-if ( ! function_exists( 'themeblvd_main_top_default' ) ) {
+if ( ! function_exists( 'themeblvd_widgets_above_content' ) ) {
 
 	/**
 	 * Display the "Above Content" collapsible widget
-	 * just within the main site wrapper.
+	 * area just above the content.
 	 *
 	 * This function is hooked to:
 	 * 1. `themeblvd_main_top` - 10
 	 *
-	 * @since Theme_Blvd 2.0.0
+	 * @since Theme_Blvd 2.7.0
 	 */
-	function themeblvd_main_top_default() {
+	function themeblvd_widgets_above_content() {
 
-		?>
-		<div class="main-top">
-
-			<div class="wrap clearfix">
-
-				<?php themeblvd_display_sidebar( 'ad_above_content' ); ?>
-
-			</div><!-- .wrap (end) -->
-
-		</div><!-- .main-top (end) -->
-		<?php
+		themeblvd_display_sidebar( 'ad_above_content' );
 
 	}
 }
 
-if ( ! function_exists( 'themeblvd_main_bottom_default' ) ) {
+if ( ! function_exists( 'themeblvd_widgets_below_content' ) ) {
 
 	/**
 	 * Display the "Below Content" collapsible widget
-	 * just within the main site wrapper.
+	 * area just below the content.
 	 *
 	 * This function is hooked to:
 	 * 1. `themeblvd_main_bottom` - 10
 	 *
-	 * @since Theme_Blvd 2.0.0
+	 * @since Theme_Blvd 2.7.0
 	 */
-	function themeblvd_main_bottom_default() {
+	function themeblvd_widgets_below_content() {
 
-		?>
-		<div class="main-bottom">
-
-			<div class="wrap clearfix">
-
-				<?php themeblvd_display_sidebar( 'ad_below_content' ); ?>
-
-			</div><!-- .wrap (end) -->
-
-		</div><!-- .main-bottom (end) -->
-		<?php
+		themeblvd_display_sidebar( 'ad_below_content' );
 
 	}
 }
@@ -932,30 +902,20 @@ if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 	}
 }
 
-if ( ! function_exists( 'themeblvd_footer_below_default' ) ) {
+if ( ! function_exists( 'themeblvd_widgets_below_footer' ) ) {
 
 	/**
 	 * Display the "Below Footer" collapsible widget
-	 * above the main site header.
+	 * area after the main site container.
 	 *
 	 * This function is hooked to:
-	 * 1. `themeblvd_footer_below` - 10
+	 * 1. `themeblvd_after` - 5
 	 *
-	 * @since Theme_Blvd 2.0.0
+	 * @since Theme_Blvd 2.7.0
 	 */
-	function themeblvd_footer_below_default() {
+	function themeblvd_widgets_below_footer() {
 
-		?>
-		<div class="footer-below">
-
-			<div class="wrap clearfix">
-
-				<?php themeblvd_display_sidebar( 'ad_below_footer' ); ?>
-
-			</div><!-- .wrap (end) -->
-
-		</div><!-- .footer-below (end) -->
-		<?php
+		themeblvd_display_sidebar( 'ad_below_footer' );
 
 	}
 }
@@ -973,7 +933,9 @@ if ( ! function_exists( 'themeblvd_side_panel' ) ) {
 	function themeblvd_side_panel() {
 
 		if ( ! themeblvd_do_side_panel() ) {
+
 			return;
+
 		}
 
 		?>

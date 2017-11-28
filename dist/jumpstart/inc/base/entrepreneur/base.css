@@ -84,7 +84,6 @@ Author URI: http://www.themeblvd.com
 	z-index: 2;
 }
 .site-header.has-bg-shade > .wrap > .header-top,
-.site-header.has-bg-shade > .wrap > .header-above,
 .site-header.has-bg-shade > .wrap > .header-content,
 .site-header.has-bg-shade > .wrap > .header-nav {
 	position: relative;
@@ -104,7 +103,6 @@ Author URI: http://www.themeblvd.com
 	z-index: 1;
 }
 .site-header.has-bg-slideshow > .wrap > .header-top,
-.site-header.has-bg-slideshow > .wrap > .header-above,
 .site-header.has-bg-slideshow > .wrap > .header-content,
 .site-header.has-bg-slideshow > .wrap > .header-nav {
 	position: relative;
@@ -116,7 +114,6 @@ Author URI: http://www.themeblvd.com
 	z-index: 1;
 }
 .site-header.has-bg-video > .wrap > .header-top,
-.site-header.has-bg-video > .wrap > .header-above,
 .site-header.has-bg-video > .wrap > .header-content,
 .site-header.has-bg-video > .wrap > .header-nav {
 	position: relative;
@@ -632,7 +629,6 @@ Author URI: http://www.themeblvd.com
 	padding: 0 15px;
 }
 .tb-boxed .header-top > .wrap,
-.tb-boxed .header-above > .wrap,
 .tb-boxed .header-content > .wrap,
 .tb-boxed .header-nav > .wrap,
 .tb-boxed .site-breadcrumbs > .wrap,

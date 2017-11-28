@@ -47,7 +47,8 @@ body {
 	}
 }
 @media (max-width: 767px) {
-	.header-above > .wrap,
+	.widgets-above-header > .wrap,
+	.widgets-below-footer > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
