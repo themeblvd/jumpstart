@@ -174,7 +174,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_above_header'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Ads Above Header', '@@text-domain' ),
+				'name' => __( 'Above Header', '@@text-domain' ),
 				'id'   => 'ad_above_header',
 			),
 			'assignments' => array(
@@ -186,8 +186,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Ads Above Header', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Ads Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Above Header', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
 				'id'          => 'ad_above_header',
 			),
 		);
@@ -196,7 +196,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_above_content'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Ads Above Content', '@@text-domain' ),
+				'name' => __( 'Above Content', '@@text-domain' ),
 				'id'   => 'ad_above_content',
 			),
 			'assignments' => array(
@@ -208,8 +208,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Ads Above Content', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Ads Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Above Content', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
 				'id'          => 'ad_above_content',
 			),
 		);
@@ -218,7 +218,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_below_content'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Ads Below Content', '@@text-domain' ),
+				'name' => __( 'Below Content', '@@text-domain' ),
 				'id'   => 'ad_below_content',
 			),
 			'assignments' => array(
@@ -230,8 +230,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Ads Below Content', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Ads Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Below Content', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
 				'id'          => 'ad_below_content',
 			),
 		);
@@ -240,7 +240,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_below_footer'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Ads Below Footer', '@@text-domain' ),
+				'name' => __( 'Below Footer', '@@text-domain' ),
 				'id'   => 'ad_below_footer',
 			),
 			'assignments' => array(
@@ -252,8 +252,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Ads Below Footer', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Ads Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Below Footer', '@@text-domain' ),
+				'description' => __( 'This is default placeholder for the "Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
 				'id'          => 'ad_below_footer',
 			),
 		);

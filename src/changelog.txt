@@ -31,6 +31,7 @@ Jump Start Changelog
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Improvement: On all theme bases, if no "Primary Navigation" menu is assigned, menu will not display (previously, only the Agent base behaved like this).
+* Improvement: Collapsible widget area locations no longer have the word "Ads" in their titles.
 * Fixed: WooCommerce deprecated use of `WC_Cart::get_cart_url`.
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
