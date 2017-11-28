@@ -1361,7 +1361,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		themeblvd_set_att( 'woo_product_view', 'grid' ); // Categories always displayed in a grid.
 
-		return $out; // Pass $atts back through, unmodified.
+		return $out; // Pass $out back through, unmodified.
 
 	}
 
