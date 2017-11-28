@@ -136,6 +136,13 @@ class Theme_Blvd_Frontend_Init {
 		 */
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
 
+			// Set header template parts.
+			'head'               => 'head',          // content-head.php
+			'header'             => 'header',        // content-header.php
+
+			// Set footer template parts.
+			'footer'             => 'footer',        // content-footer.php
+
 			// Set blog template parts.
 			'blog'               => 'blog',          // content-blog.php
 			'blog_paginated'     => 'blog',          // content-blog.php
@@ -170,7 +177,7 @@ class Theme_Blvd_Frontend_Init {
 			'search_results'     => 'search-result', // content-search-result.php
 
 			// Set single attachment template parts.
-			'attachment'         => 'attachment',     // content-attachment.php
+			'attachment'         => 'attachment',    // content-attachment.php
 
 		));
 

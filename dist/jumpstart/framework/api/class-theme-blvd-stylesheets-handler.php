@@ -99,12 +99,13 @@ class Theme_Blvd_Stylesheet_Handler {
 		// Setup stylesheets from Framework and Client Handler.
 		// No enqueuing yet.
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_framework_stylesheets' ), 1 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'set_client_stylesheets' ), 1 );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'set_client_stylesheets' ), 1 );
 
 		// Include stylesheets, framework and levels 1, 2, and 4
 		// Note: Level 3 needs to be included at the theme level.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_framework_stylesheets' ), 5 );
-		add_action( 'wp_head', array( $this, 'closing_stylesheets' ), 11 );
+		// add_action( 'wp_head', array( $this, 'closing_stylesheets' ), 11 );
+
 	}
 
 	/*--------------------------------------------*/
@@ -387,7 +388,7 @@ class Theme_Blvd_Stylesheet_Handler {
 	public function enqueue_framework_stylesheets() {
 
 		// Level 1 client stylesheets
-		$this->print_styles(1);
+		// $this->print_styles(1);
 
 		// Enqueue framework stylesheets
 		if ( $this->framework_stylesheets ) {
@@ -397,7 +398,7 @@ class Theme_Blvd_Stylesheet_Handler {
 		}
 
 		// Level 2 client stylesheets
-		$this->print_styles(2);
+		// $this->print_styles(2);
 
 	}
 

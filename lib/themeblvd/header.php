@@ -20,13 +20,7 @@
 
 <head>
 
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
-
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
-	<?php wp_head(); ?>
+	<?php themeblvd_get_template_part( 'head' ); ?>
 
 </head>
 
@@ -64,46 +58,7 @@
 
 				<div id="top">
 
-					<header id="branding" <?php themeblvd_header_class(); ?>>
-
-						<div class="wrap clearfix">
-
-							<?php
-							/**
-							 * Fires at the top of the header.
-							 *
-							 * By default, this is where the optional
-							 * header top bar gets displayed.
-							 *
-							 * @hooked themeblvd_header_top_default - 10
-							 *
-							 * @since @@name-framework 2.0.0
-							 */
-							do_action( 'themeblvd_header_top' );
-
-							/**
-							 * Fires where the content of the header
-							 * goes.
-							 *
-							 * @hooked themeblvd_header_content_default - 10
-							 *
-							 * @since @@name-framework 2.0.0
-							 */
-							do_action( 'themeblvd_header_content' );
-
-							/**
-							 * Fires where the main menu goes.
-							 *
-							 * @hooked themeblvd_header_menu_default - 10
-							 *
-							 * @since @@name-framework 2.0.0
-							 */
-							do_action( 'themeblvd_header_menu' );
-							?>
-
-						</div><!-- .wrap -->
-
-					</header><!-- #branding -->
+					<?php themeblvd_get_template_part( 'header' ); ?>
 
 				</div><!-- #top -->
 

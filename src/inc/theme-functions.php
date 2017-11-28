@@ -202,7 +202,7 @@ function jumpstart_css() {
 		$stylesheet_ver
 	);
 
-	$handler->print_styles( 3 ); // @TODO Remove.
+	// $handler->print_styles( 3 ); // @TODO Remove.
 
 }
 add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
