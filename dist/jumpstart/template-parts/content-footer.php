@@ -9,7 +9,7 @@
  * @copyright  2009-2017 Theme Blvd
  * @package    Jump_Start
  * @subpackage Theme_Blvd
- * @since      Theme_Blvd 2.0.0
+ * @since      Theme_Blvd 2.7.0
  */
 ?>
 <footer id="colophon" <?php themeblvd_footer_class(); ?>>
