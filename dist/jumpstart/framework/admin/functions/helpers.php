@@ -367,12 +367,16 @@ function themeblvd_get_select( $type, $force_single = false ) {
 				foreach ( $wp_registered_sidebars as $sidebar ) {
 
 					/*
-					 * Exclude collapsible widget area locations.
+					 * Exclude collapsible widget area locations,
+					 * which already show in a custom layout.
 					 *
-					 * It could work to include these, but it's just
-					 * sort of confusing, conceptually.
+					 * Because this select menu is intended to be
+					 * used with custom layouts, `ad_above_header`
+					 * and `ad_below_footer` display already and so
+					 * it wouldn't really make sense (in most cases)
+					 * to include them in a custom layout.
 					 */
-					if ( in_array( $sidebar['id'], array( 'ad_above_header', 'ad_above_content', 'ad_below_content', 'ad_below_footer' ) ) ) {
+					if ( in_array( $sidebar['id'], array( 'ad_above_header', 'ad_below_footer' ) ) ) {
 
 						continue;
 
