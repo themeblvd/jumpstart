@@ -1059,7 +1059,7 @@ class Theme_Blvd_Frontend_Init {
 		 *
 		 * @param bool Whether debug info shows.
 		 */
-		if ( ! apply_filters( 'themeblvd_debug_info', true ) ) {
+		if ( ! apply_filters( 'themeblvd_do_debug_info', true ) ) {
 
 			return;
 
