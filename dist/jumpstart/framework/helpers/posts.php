@@ -216,7 +216,9 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 		$seconds = $chunks[ $i ][0];
 
 		// Finding the biggest chunk (if the chunk fits, break).
-		if ( 0 !== floor( $since / $seconds ) ) {
+		$count = floor( $since / $seconds );
+
+		if ( 0 !== $count ) {
 
 			break;
 
