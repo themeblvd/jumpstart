@@ -30,7 +30,7 @@ get_header();
 
 						<?php while ( have_posts() ) : the_post(); ?>
 
-							<?php themeblvd_get_template_part( 'template_archives' ); ?>
+							<?php themeblvd_get_template_part( 'template-archives' ); ?>
 
 							<?php themeblvd_page_footer(); ?>
 

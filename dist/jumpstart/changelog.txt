@@ -8,7 +8,8 @@ Jump Start Changelog
 	* Revamped look for progress bars; "striped" effect removed.
 * New: Theme Code Overhaul
 	* All template part files moved from root to `template-parts` directory.
-	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function.
+	* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
+	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 	* Improved security for saving options added to Edit Tag and Edit Category screens.

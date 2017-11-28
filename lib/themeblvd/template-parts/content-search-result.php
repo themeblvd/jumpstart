@@ -1,6 +1,9 @@
 <?php
 /**
- * The default template for displaying content in search results
+ * The template for displaying each post in
+ * a search results list.
+ *
+ * @link http://dev.themeblvd.com/tutorial/template-parts-framework-2-5
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -8,7 +11,6 @@
  * @subpackage @@name-framework
  * @since      @@name-framework 2.0.0
  */
-$meta = array('include' => array('time', 'comments'), 'time' => 'ago');
 ?>
 <div class="search-result">
 
@@ -16,14 +18,20 @@ $meta = array('include' => array('time', 'comments'), 'time' => 'ago');
 		<i class="fa fa-<?php echo themeblvd_get_format_icon( get_post_format(), true ); ?>"></i>
 	</span>
 
-	<h3 class="entry-title"><?php themeblvd_the_title(); ?></h3>
+	<h3 class="entry-title">
+		<?php themeblvd_the_title(); ?>
+	</h3>
 
 	<div class="meta-wrapper">
+
 		<?php echo themeblvd_search_meta(); ?>
-	</div><!-- .meta-wrapper (end) -->
+
+	</div><!-- .meta-wrapper -->
 
 	<div class="entry-content">
+
 		<?php the_excerpt(); ?>
+
 	</div>
 
-</div><!-- .search-result (end) -->
+</div><!-- .search-result -->
