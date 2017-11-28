@@ -133,11 +133,15 @@ class Theme_Blvd_Welcome {
 		global $current_user;
 
 		if ( get_user_meta( $current_user->ID, 'themeblvd-ignore-welcome', true ) ) {
+
 			return;
+
 		}
 
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
+
 			return;
+
 		}
 
 		$template = get_template();
@@ -168,16 +172,15 @@ class Theme_Blvd_Welcome {
 		 *     @type string $btn   Text of button leading to lightbox video.
 		 *     @type string $title Text of button's title leading to lightbox video.
 		 *     @type string $video ID of video on Vimeo to display in lightbox.
-		  * }
+		 * }
+		 * @param WP_Theme Parent theme object.
 		 */
-		$args = apply_filters(
-			'themeblvd_welcome_args', array(
-				'msg'   => $msg,
-				'btn'   => __( 'Getting Started', 'jumpstart' ),
-				'title' => __( 'Getting Started', 'jumpstart' ),
-				'video' => '124567552',
-			), $theme
-		);
+		$args = apply_filters( 'themeblvd_welcome_args', array(
+			'msg'   => $msg,
+			'btn'   => __( 'Getting Started', 'jumpstart' ),
+			'title' => __( 'Getting Started', 'jumpstart' ),
+			'video' => '124567552',
+		), $theme );
 
 		?>
 		<div class="notice notice-warning">
@@ -223,15 +226,24 @@ class Theme_Blvd_Welcome {
 		global $current_user;
 
 		if ( ! isset( $_GET['nag-ignore'] ) ) {
+
 			return;
+
 		}
 
 		if ( 'themeblvd-ignore-welcome' !== $_GET['nag-ignore'] ) {
+
 			return;
+
 		}
 
-		if ( isset( $_GET['security'] ) && wp_verify_nonce( $_GET['security'], 'themeblvd-ignore-welcome' ) ) {
-			add_user_meta( $current_user->ID, $_GET['nag-ignore'], 'true', true );
+		if ( isset( $_GET['security'] ) ) {
+
+			if ( wp_verify_nonce( $_GET['security'], 'themeblvd-ignore-welcome' ) ) {
+
+				add_user_meta( $current_user->ID, $_GET['nag-ignore'], 'true', true );
+
+			}
 		}
 
 	}
@@ -240,6 +252,8 @@ class Theme_Blvd_Welcome {
 	 * Get URL to disable welcome message.
 	 *
 	 * @since Theme_Blvd 2.6.0
+	 *
+	 * @return string $url URL to disable welcome message.
 	 */
 	private function disable_url() {
 
@@ -248,15 +262,15 @@ class Theme_Blvd_Welcome {
 		$url = admin_url( $pagenow );
 
 		if ( ! empty( $_SERVER['QUERY_STRING'] ) ) {
+
 			$url .= '?' . $_SERVER['QUERY_STRING'];
+
 		}
 
-		$url = add_query_arg(
-			array(
-				'nag-ignore' => 'themeblvd-ignore-welcome',
-				'security'   => wp_create_nonce( 'themeblvd-ignore-welcome' ),
-			), $url
-		);
+		$url = add_query_arg( array(
+			'nag-ignore' => 'themeblvd-ignore-welcome',
+			'security'   => wp_create_nonce( 'themeblvd-ignore-welcome' ),
+		), $url );
 
 		return esc_url( $url );
 

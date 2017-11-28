@@ -20,10 +20,21 @@
  */
 function themeblvd_admin_init() {
 
-	/*
-	 * Add framework welcome message.
+	/**
+	 * Filters whether framework message displays.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param bool Whether framework welcome message displays.
 	 */
-	$welcome = Theme_Blvd_Welcome::get_instance();
+	if ( apply_filters( 'themeblvd_do_welcome_message', true ) ) {
+
+		/*
+		 * Add framework welcome message.
+		 */
+		$welcome = Theme_Blvd_Welcome::get_instance();
+
+	}
 
 	/*
 	 * Allow theme options page to run if framework filters

@@ -19,6 +19,7 @@ Jump Start Changelog
 	* Re-structured all admin CSS for better organization and efficiency.
 	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
 	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_debug_info` to return `false`.
+	* Added filter to remove admin framework welcome message; just filter `themeblvd_do_welcome_message` to `false`.
 * Third-Party Plugin Compatibility
 	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* bbPress: Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
