@@ -1,6 +1,6 @@
 <?php
 /**
- * The Header for our theme.
+ * The header for the theme.
  *
  * WARNING: This template file is a core part of the
  * Theme Blvd WordPress Framework. It is advised
@@ -15,95 +15,158 @@
  * @since      Theme_Blvd 2.0.0
  */
 ?><!DOCTYPE html>
+
 <html <?php language_attributes(); ?>>
+
 <head>
-<meta charset="<?php bloginfo('charset'); ?>" />
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<?php wp_head(); ?>
+
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+	<?php wp_head(); ?>
+
 </head>
+
 <body <?php body_class(); ?>>
 
-<?php
-/**
- * @hooked null
- */
-do_action('themeblvd_before');
-?>
+	<?php
+	/**
+	 * Fires just inside the <body> tag, before
+	 * any HTML markup.
+	 *
+	 * @since Theme_Blvd 2.0.0
+	 */
+	do_action( 'themeblvd_before' );
+	?>
 
-<div id="wrapper">
-	<div id="container">
+	<div id="wrapper">
 
-		<?php
-		/**
-		 * @hooked themeblvd_header_before_default - 10
-		 */
-		do_action('themeblvd_header_before');
-		?>
+		<div id="container">
 
-		<!-- HEADER (start) -->
+			<?php
+			/**
+			 * Fires just inside the main container, before
+			 * the header has started.
+			 *
+			 * @hooked themeblvd_header_before_default - 10
+			 *
+			 * @since Theme_Blvd 2.0.0
+			 */
+			do_action( 'themeblvd_header_before' );
+			?>
 
-		<?php if ( themeblvd_config('top') ) : ?>
+			<!-- HEADER (start) -->
 
-			<div id="top">
-				<header id="branding" <?php themeblvd_header_class(); ?>>
-					<div class="wrap clearfix">
-						<?php
-						/**
-						 * @hooked themeblvd_header_top_default - 10
-						 */
-						do_action('themeblvd_header_top');
+			<?php if ( themeblvd_config( 'top' ) ) : ?>
 
-						/**
-						 * @hooked null -- @deprecated
-						 */
-						do_action('themeblvd_header_above');
+				<div id="top">
 
-						/**
-						 * @hooked themeblvd_header_content_default - 10
-						 */
-						do_action('themeblvd_header_content');
+					<header id="branding" <?php themeblvd_header_class(); ?>>
 
-						/**
-						 * @hooked themeblvd_header_menu_default - 10
-						 */
-						do_action('themeblvd_header_menu');
-						?>
-					</div><!-- .wrap (end) -->
-				</header><!-- #branding (end) -->
-			</div><!-- #top (end) -->
+						<div class="wrap clearfix">
 
-		<?php endif; ?>
+							<?php
+							/**
+							 * Fires at the top of the header.
+							 *
+							 * By default, this is where the optional
+							 * header top bar gets displayed.
+							 *
+							 * @hooked themeblvd_header_top_default - 10
+							 *
+							 * @since Theme_Blvd 2.0.0
+							 */
+							do_action( 'themeblvd_header_top' );
 
-		<!-- HEADER (end) -->
+							/**
+							 * Fires where the content of the header
+							 * goes.
+							 *
+							 * @hooked themeblvd_header_content_default - 10
+							 *
+							 * @since Theme_Blvd 2.0.0
+							 */
+							do_action( 'themeblvd_header_content' );
 
-		<?php
-		/**
-		 * @hooked themeblvd_epic_thumb - 10
-		 */
-		do_action('themeblvd_header_after');
+							/**
+							 * Fires where the main menu goes.
+							 *
+							 * @hooked themeblvd_header_menu_default - 10
+							 *
+							 * @since Theme_Blvd 2.0.0
+							 */
+							do_action( 'themeblvd_header_menu' );
+							?>
 
-		/**
-		 * @hooked themeblvd_breadcrumbs_default - 10
-		 */
-		do_action('themeblvd_breadcrumbs');
+						</div><!-- .wrap -->
 
-		// Start main area (if not a custom layout)
-		if ( ! themeblvd_config( 'builder_post_id' ) ) {
+					</header><!-- #branding -->
+
+				</div><!-- #top -->
+
+			<?php endif; ?>
+
+			<!-- HEADER (end) -->
+
+			<?php
+			/**
+			 * Fires after the header.
+			 *
+			 * By default, this is where full-width and
+			 * full-screen featured images display.
+			 *
+			 * @hooked themeblvd_epic_thumb - 10
+			 *
+			 * @since Theme_Blvd 2.0.0
+			 */
+			do_action( 'themeblvd_header_after' );
 
 			/**
-			 * @hooked themeblvd_main_start_default - 10
+			 * Fires where the breadcrumbs go.
+			 *
+			 * @hooked themeblvd_breadcrumbs_default - 10
+			 *
+			 * @since Theme_Blvd 2.0.0
 			 */
-			do_action('themeblvd_main_start');
+			do_action( 'themeblvd_breadcrumbs' );
+
+			/*
+			 * Start the main content.
+			 *
+			 * Note: When displaying a custom layout, this does
+			 * not get outputted; see `template_builder.php`.
+			 */
+			if ( ! themeblvd_config( 'builder_post_id' ) ) {
+
+				/**
+				 * Fires to start the wrapper for the
+				 * main content.
+				 *
+				 * @hooked themeblvd_main_start_default - 10
+				 *
+				 * @since Theme_Blvd 2.0.0
+				 */
+				do_action( 'themeblvd_main_start' );
+
+				/**
+				 * Fires just inside the main content
+				 * wrapper.
+				 *
+				 * @hooked themeblvd_main_top_default - 10
+				 *
+				 * @since Theme_Blvd 2.0.0
+				 */
+				do_action( 'themeblvd_main_top' );
+
+			}
 
 			/**
-			 * @hooked themeblvd_main_top_default - 10
+			 * Fires just before the sidebar layout
+			 * is started.
+			 *
+			 * @since Theme_Blvd 2.0.0
 			 */
-			do_action('themeblvd_main_top');
-
-		}
-
-		/**
-		 * @hooked null
-		 */
-		do_action('themeblvd_before_layout');
+			do_action( 'themeblvd_before_layout' );

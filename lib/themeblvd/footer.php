@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The footer for the theme.
  *
  * WARNING: This template file is a core part of the
  * Theme Blvd WordPress Framework. It is advised
@@ -15,97 +15,152 @@
  * @since      @@name-framework 2.0.0
  */
 
-		// End main area (if not a custom layout)
-		if ( ! themeblvd_config( 'builder_post_id' ) ) {
+			/*
+			 * End the main content.
+			 *
+			 * Note: When displaying a custom layout,
+			 * this does not get outputted; see
+			 * `template_builder.php`.
+			 */
+			if ( ! themeblvd_config( 'builder_post_id' ) ) {
+
+				/**
+				 * Fires just inside the bottom of the
+				 * main content wrapper.
+				 *
+				 * @hooked themeblvd_main_bottom_default - 10
+				 *
+				 * @since @@name-framework 2.0.0
+				 */
+				do_action( 'themeblvd_main_bottom' );
+
+				/**
+				 * Fires to end the wrapper for the
+				 * main content.
+				 *
+				 * @hooked themeblvd_main_end_default - 10
+				 *
+				 * @since @@name-framework 2.0.0
+				 */
+				do_action( 'themeblvd_main_end' );
+
+			}
 
 			/**
-			 * @hooked themeblvd_main_bottom_default - 10
+			 * Fires before the header.
+			 *
+			 * @since @@name-framework 2.0.0
 			 */
-			do_action('themeblvd_main_bottom');
+			do_action( 'themeblvd_footer_before' );
+			?>
 
-			/**
-			 * @hooked themeblvd_main_end_default - 10
-			 */
-			do_action('themeblvd_main_end');
+			<!-- FOOTER (start) -->
 
-		}
+			<?php if ( themeblvd_config( 'bottom' ) ) : ?>
 
-		/**
-		 * @hooked null
-		 */
-		do_action('themeblvd_footer_before');
-		?>
+				<?php if ( themeblvd_config( 'bottom_builder_post_id' ) ) : ?>
 
-		<!-- FOOTER (start) -->
+					<div id="custom-bottom" class="clearfix" role="contentinfo">
 
-		<?php if ( themeblvd_config('bottom') ) : ?>
+						<?php
+						/** This action is documented in template_builder.php */
+						do_action( 'themeblvd_builder_content', 'footer' );
+						?>
 
-			<?php if ( themeblvd_config('bottom_builder_post_id') ) : ?>
+					</div><!-- #custom-bottom (end) -->
 
-				<div id="custom-bottom" class="clearfix" role="contentinfo">
+				<?php else : ?>
 
-					<?php
-					/**
-					 * @hooked themeblvd_builder_layout - 10
-					 */
-					do_action( 'themeblvd_builder_content', 'footer' );
-					?>
+					<div id="bottom">
 
-				</div><!-- #custom-bottom (end) -->
+						<footer id="colophon" <?php themeblvd_footer_class(); ?>>
 
-			<?php else : ?>
+							<div class="wrap clearfix">
 
-				<div id="bottom">
-					<footer id="colophon" <?php themeblvd_footer_class(); ?>>
-						<div class="wrap clearfix">
-							<?php
-							/**
-							 * @hooked null -- @deprecated
-							 */
-							do_action('themeblvd_footer_above');
+								<?php
+								/**
+								 * Fires above the footer content.
+								 *
+								 * @since @@name-framework 2.0.0
+								 */
+								do_action( 'themeblvd_footer_above' );
 
-							/**
-							 * @hooked themeblvd_footer_content_default - 10
-							 */
-							do_action('themeblvd_footer_content');
+								/**
+								 * Fires where the footer content goes.
+								 *
+								 * By default this is includes the footer
+								 * column configured from the theme options.
+								 *
+								 * @hooked themeblvd_footer_content_default - 10
+								 *
+								 * @since @@name-framework 2.0.0
+								 */
+								do_action( 'themeblvd_footer_content' );
 
-							/**
-							 * @hooked themeblvd_footer_sub_content_default - 10
-							 */
-							do_action('themeblvd_footer_sub_content');
+								/**
+								 * Fires where the footer sub content goes.
+								 *
+								 * By default this includes the copyright
+								 * info and the Footer Navigation menu
+								 * location.
+								 *
+								 * @hooked themeblvd_footer_sub_content_default - 10
+								 *
+								 * @since @@name-framework 2.0.0
+								 */
+								do_action( 'themeblvd_footer_sub_content' );
 
-							/**
-							 * @hooked themeblvd_footer_below_default - 10
-							 */
-							do_action('themeblvd_footer_below');
-							?>
-						</div><!-- .wrap (end) -->
-					</footer><!-- #colophon (end) -->
-				</div><!-- #bottom (end) -->
+								/**
+								 * Fires below the footer content and sub
+								 * content.
+								 *
+								 * By default this includes the collapsible
+								 * widget area below the footer.
+								 *
+								 * @hooked themeblvd_footer_below_default - 10
+								 *
+								 * @since @@name-framework 2.0.0
+								 */
+								do_action( 'themeblvd_footer_below' );
+								?>
+
+							</div><!-- .wrap -->
+
+						</footer><!-- #colophon -->
+
+					</div><!-- #bottom -->
+
+				<?php endif; ?>
 
 			<?php endif; ?>
 
-		<?php endif; ?>
+			<!-- FOOTER (end) -->
 
-		<!-- FOOTER (end) -->
+			<?php
+			/**
+			 * Fires after the header.
+			 *
+			 * @since @@name-framework 2.0.0
+			 */
+			do_action( 'themeblvd_footer_after' );
+			?>
 
-		<?php
-		/**
-		 * @hooked null
-		 */
-		do_action('themeblvd_footer_after');
-		?>
+		</div><!-- #container -->
 
-	</div><!-- #container (end) -->
-</div><!-- #wrapper (end) -->
+	</div><!-- #wrapper -->
 
-<?php
-/**
- * @hooked null
- */
-do_action('themeblvd_after');
-?>
+	<?php
+	/**
+	 * Fires after all HTML markup, but before
+	 * wp_footer().
+	 *
+	 * @since @@name-framework 2.0.0
+	 */
+	do_action( 'themeblvd_after' );
+	?>
 
-<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
+
 </body>
+
 </html>
