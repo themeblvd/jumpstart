@@ -15,51 +15,55 @@
  */
 ( function( $ ) {
 
-	/**
-	 * Toggle sidebar layout selection added to Page
-	 * Attributes meta box.
-	 *
-	 * When the "Custom Layout" or "Blank Page" page template
-	 * are selected, we want to hide the selection for a
-	 * sidebar layout, to make it obvious these template do
-	 * not use a sidebar layout.
-	 *
-	 * @since Theme_Blvd 2.2.0
-	 */
-	$( '#page_template' ).on( 'change', function() {
+	$( document ).ready( function( $ ) {
 
-		var value = $( this ).val();
+		/**
+		 * Toggle sidebar layout selection added to Page
+		 * Attributes meta box.
+		 *
+		 * When the "Custom Layout" or "Blank Page" page template
+		 * are selected, we want to hide the selection for a
+		 * sidebar layout, to make it obvious these template do
+		 * not use a sidebar layout.
+		 *
+		 * @since Theme_Blvd 2.2.0
+		 */
+		$( '#page_template' ).on( 'change', function() {
 
-		if ( 'template_builder.php' === value || 'template_blank.php' === value ) {
+			var value = $( this ).val();
 
-			$( '#tb-sidebar-layout' ).hide();
+			if ( 'template_builder.php' === value || 'template_blank.php' === value ) {
 
-		} else {
+				$( '#tb-sidebar-layout' ).hide();
 
-			$( '#tb-sidebar-layout' ).show();
+			} else {
 
-		}
+				$( '#tb-sidebar-layout' ).show();
+
+			}
+
+		} );
+
+		// Setup options with $.fn.themeblvd namspace.
+
+		var $metaBoxes = $( '.tb-meta-box' );
+
+		$metaBoxes.themeblvd( 'init' );
+
+		$metaBoxes.themeblvd( 'options', 'bind' );
+
+		$metaBoxes.themeblvd( 'options', 'setup' );
+
+		$metaBoxes.themeblvd( 'options', 'media-uploader' );
+
+		$metaBoxes.themeblvd( 'options', 'editor' );
+
+		$metaBoxes.themeblvd( 'options', 'code-editor' );
+
+		$metaBoxes.themeblvd( 'options', 'column-widths' );
+
+		$metaBoxes.themeblvd( 'options', 'sortable' );
 
 	} );
-
-	// Setup options with $.fn.themeblvd namspace.
-
-	var $metaBoxes = $( '.tb-meta-box' );
-
-	$metaBoxes.themeblvd( 'init' );
-
-	$metaBoxes.themeblvd( 'options', 'bind' );
-
-	$metaBoxes.themeblvd( 'options', 'setup' );
-
-	$metaBoxes.themeblvd( 'options', 'media-uploader' );
-
-	$metaBoxes.themeblvd( 'options', 'editor' );
-
-	$metaBoxes.themeblvd( 'options', 'code-editor' );
-
-	$metaBoxes.themeblvd( 'options', 'column-widths' );
-
-	$metaBoxes.themeblvd( 'options', 'sortable' );
 
 } )( jQuery );
