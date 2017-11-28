@@ -793,14 +793,7 @@ class Theme_Blvd_Frontend_Init {
 		 * Note: The sticky header is independent from the
 		 * standard header.
 		 */
-		if ( themeblvd_supports( 'display', 'sticky' ) ) {
-
-			if ( 'hide' !== themeblvd_get_option( 'sticky' ) ) {
-
-				$this->config['sticky'] = true;
-
-			}
-		}
+		$this->config['sticky'] = themeblvd_do_sticky();
 
 		/*
 		 * Determine "Theme Layout" pieces of the

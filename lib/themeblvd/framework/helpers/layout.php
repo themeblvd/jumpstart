@@ -221,6 +221,43 @@ function themeblvd_do_floating_search() {
 }
 
 /**
+ * Whether to display the sticky header.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @return bool $do Whether to display the sticky header.
+ */
+function themeblvd_do_sticky() {
+
+	$do = true;
+
+	if ( ! themeblvd_supports( 'display', 'sticky' ) ) {
+
+		$do = false;
+
+	} elseif ( 'hide' === themeblvd_get_option( 'sticky' ) ) {
+
+		$do = false;
+
+	} elseif ( wp_is_mobile() ) {
+
+		$do = false;
+
+	}
+
+	/**
+	 * Filters whether to display the sticky
+	 * header.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @return bool $do Whether to display the sticky header.
+	 */
+	return apply_filters( 'themeblvd_do_sticky', $do );
+
+}
+
+/**
  * Whether to display the hidden side panel.
  *
  * @since @@name-framework 2.6.0

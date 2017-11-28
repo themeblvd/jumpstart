@@ -301,7 +301,7 @@ function themeblvd_get_js_locals() {
 
 	$locals['sticky'] = 'false';
 
-	if ( themeblvd_config( 'sticky' ) && ! wp_is_mobile() && ! themeblvd_is_ie( array( '7', '8', '9' ) ) ) {
+	if ( themeblvd_do_sticky() ) {
 
 		$locals['sticky'] = 'true';
 

@@ -715,7 +715,7 @@ function themeblvd_body_class( $class ) {
 	}
 
 	// Add supporting class for sticky header.
-	if ( themeblvd_config( 'sticky' ) ) {
+	if ( themeblvd_do_sticky() ) {
 
 		$class[] = 'has-sticky';
 

@@ -590,12 +590,6 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ag_css', 25 );
  */
 function jumpstart_ag_body_class( $class ) {
 
-	if ( 'show' === themeblvd_get_option( 'sticky' ) ) {
-
-		$class[] = 'has-sticky';
-
-	}
-
 	if ( themeblvd_get_option( 'widget_bg' ) ) {
 
 		$class[] = 'tb-widget-bg';
