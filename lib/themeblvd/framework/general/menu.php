@@ -246,7 +246,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			 */
 			$args->link_after = apply_filters(
 				'themeblvd_menu_sub_indicator',
-				sprintf( '<i class="sf-sub-indicator fa fa-caret-%s"></i>', $direction ),
+				sprintf( '<i class="sf-sub-indicator fa fa-angle-%s"></i>', $direction ),
 				$direction
 			);
 

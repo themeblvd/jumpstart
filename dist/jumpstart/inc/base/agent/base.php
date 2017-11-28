@@ -868,22 +868,6 @@ function jumpstart_ag_top_height_addend( $addend, $viewport ) {
 }
 add_filter( 'themeblvd_top_height_addend', 'jumpstart_ag_top_height_addend', 10, 2 );
 
-/**
- * Change main menu sub icon from fa-caret-* to
- * fa-angle-*.
- *
- * @since Jump_Start 2.1.0
- *
- * @param  string $html HTML output for menu.
- * @return string $html Modified HTML output for menu.
- */
-function jumpstart_ag_menu_sub_indicator( $html ) {
-
-	return str_replace( 'caret', 'angle', $html );
-
-}
-add_filter( 'themeblvd_menu_sub_indicator', 'jumpstart_ag_menu_sub_indicator' );
-
 /*
  * Remove framework default footer copyright
  * area.
