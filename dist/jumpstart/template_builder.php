@@ -18,14 +18,44 @@
 get_header();
 ?>
 
-	<div id="custom-main" class="clearfix" role="main">
-		<?php themeblvd_content_top(); ?>
-		<?php if ( has_action( 'themeblvd_builder_content' ) ) : ?>
-			<?php do_action( 'themeblvd_builder_content', 'main' ); ?>
-		<?php else : ?>
-			<div class="alert alert-warning"><p><?php printf( themeblvd_get_local('no_builder_plugin'), '<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>' ); ?></p></div>
-		<?php endif; ?>
-		<?php themeblvd_content_bottom(); ?>
-	</div><!-- #elements (end) -->
+<div id="custom-main" class="clearfix" role="main">
+
+	<?php themeblvd_content_top(); ?>
+
+	<?php if ( has_action( 'themeblvd_builder_content' ) ) : ?>
+
+		<?php
+		/**
+		 * Fires for the content of a custom layout.
+		 *
+		 * @hooked themeblvd_builder_layout - 10
+		 *
+		 * @since Theme_Blvd 2.0.0
+		 *
+		 * @param string Context of custom layout.
+		 */
+		do_action( 'themeblvd_builder_content', 'main' );
+		?>
+
+	<?php else : ?>
+
+		<div class="alert alert-warning">
+
+			<p>
+				<?php
+				printf(
+					themeblvd_get_local( 'no_builder_plugin' ),
+					'<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>'
+				);
+				?>
+			</p>
+
+		</div>
+
+	<?php endif; ?>
+
+	<?php themeblvd_content_bottom(); ?>
+
+</div><!-- #elements -->
 
 <?php get_footer(); ?>

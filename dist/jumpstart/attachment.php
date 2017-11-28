@@ -18,42 +18,52 @@
 get_header();
 ?>
 
-	<div id="sidebar_layout" class="clearfix">
-		<div class="sidebar_layout-inner">
-			<div class="row grid-protection">
+<div id="sidebar_layout" class="clearfix">
 
-				<!-- CONTENT (start) -->
+	<div class="sidebar_layout-inner">
 
-				<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class('content') ); ?> clearfix" role="main">
-					<div class="inner">
-						<?php themeblvd_content_top(); ?>
+		<div class="row grid-protection">
 
-						<?php while ( have_posts() ) : the_post(); ?>
+			<!-- CONTENT (start) -->
 
-							<?php themeblvd_get_template_part( 'attachment' ); ?>
+			<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class( 'content' ) ); ?> clearfix" role="main">
 
-							<?php if ( themeblvd_supports( 'comments', 'attachments' ) ) : ?>
-								<?php comments_template( '', true ); ?>
-							<?php endif; ?>
+				<div class="inner">
 
-						<?php endwhile; ?>
+					<?php themeblvd_content_top(); ?>
 
-						<?php themeblvd_content_bottom(); ?>
-					</div><!-- .inner (end) -->
-				</div><!-- #content (end) -->
+					<?php while ( have_posts() ) : the_post(); ?>
 
-				<!-- CONTENT (end) -->
+						<?php themeblvd_get_template_part( 'attachment' ); ?>
 
-				<!-- SIDEBARS (start) -->
+						<?php if ( themeblvd_supports( 'comments', 'attachments' ) ) : ?>
 
-				<?php get_sidebar('left'); ?>
+							<?php comments_template( '', true ); ?>
 
-				<?php get_sidebar('right'); ?>
+						<?php endif; ?>
 
-				<!-- SIDEBARS (end) -->
+					<?php endwhile; ?>
 
-			</div><!-- .grid-protection (end) -->
-		</div><!-- .sidebar_layout-inner (end) -->
-	</div><!-- #sidebar_layout (end) -->
+					<?php themeblvd_content_bottom(); ?>
+
+				</div><!-- .inner -->
+
+			</div><!-- #content -->
+
+			<!-- CONTENT (end) -->
+
+			<!-- SIDEBARS (start) -->
+
+			<?php get_sidebar( 'left' ); ?>
+
+			<?php get_sidebar( 'right' ); ?>
+
+			<!-- SIDEBARS (end) -->
+
+		</div><!-- .grid-protection (end) -->
+
+	</div><!-- .sidebar_layout-inner (end) -->
+
+</div><!-- #sidebar_layout (end) -->
 
 <?php get_footer(); ?>

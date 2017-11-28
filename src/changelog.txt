@@ -8,7 +8,7 @@ Jump Start Changelog
 	* Revamped look for progress bars; "striped" effect removed.
 * New: Theme Code Overhaul
 	* All template part files moved from root to `template-parts` directory.
-	* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
+	* New template parts added, `content-head.php`, `content-header.php` and `content-footer.php`.
 	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
@@ -20,7 +20,7 @@ Jump Start Changelog
 	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
 	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_debug_info` to return `false`.
 * Third-Party Plugin Compatibility
-	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filer `themeblvd_bbp_show_lead_topic` to disable.
+	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* bbPress: Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
 	* Gravity Forms: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > Gravity Forms*.
 	* WooCommerce: Removed any legacy code for WooCommerce versions prior to 3.0.
@@ -38,7 +38,12 @@ Jump Start Changelog
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.
 * Updated: Isotope to 3.0.4.
-* **Important:** If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
+
+* **Important Developer Notes:**
+	* If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
+	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
+	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
+	* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
 
 --------------------------------------------------------------
 

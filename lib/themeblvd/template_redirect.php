@@ -8,7 +8,7 @@
  * content be done with via actions, filters, and
  * template parts.
  *
- * USAGE INSTRUCTIONS:
+ * Usage Instructions:
  *
  * 1. Create a new page.
  * 2. Add a title to the page.
@@ -22,19 +22,30 @@
  * @subpackage @@name-framework
  * @since      @@name-framework 2.0.0
  */
-?>
-<?php
-if ( have_posts() ) : the_post();
-$url = get_the_content();
-if ( ! preg_match('/^http:\/\//', $url) && ! preg_match('/^https:\/\//', $url) ) $url = 'http://' . $url;
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Refresh" content="0; url=<?php echo esc_url($url); ?>">
-</head>
+?><!DOCTYPE html>
 
-<body>
-</body>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<?php if ( have_posts() ) : the_post(); ?>
+
+	<?php
+	$url = get_the_content();
+
+	if ( ! preg_match( '/^http:\/\//', $url ) && ! preg_match( '/^https:\/\//', $url ) ) {
+
+		$url = 'http://' . $url;
+
+	}
+	?>
+
+	<head>
+
+		<meta http-equiv="Refresh" content="0; url=<?php echo esc_url( $url ); ?>">
+
+	</head>
+
+	<body></body>
+
 <?php endif; ?>
+
+</html>

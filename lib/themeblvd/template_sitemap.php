@@ -18,44 +18,54 @@
 get_header();
 ?>
 
-	<div id="sidebar_layout" class="clearfix">
-		<div class="sidebar_layout-inner">
-			<div class="row grid-protection">
+<div id="sidebar_layout" class="clearfix">
 
-				<!-- CONTENT (start) -->
+	<div class="sidebar_layout-inner">
 
-				<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class('content') ); ?> clearfix" role="main">
-					<div class="inner sitemap-template-wrap">
-						<?php themeblvd_content_top(); ?>
+		<div class="row grid-protection">
 
-						<?php while ( have_posts() ) : the_post(); ?>
+			<!-- CONTENT (start) -->
 
-							<?php themeblvd_get_template_part( 'template-sitemap' ); ?>
+			<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class( 'content' ) ); ?> clearfix" role="main">
 
-							<?php themeblvd_page_footer(); ?>
+				<div class="inner sitemap-template-wrap">
 
-							<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
-								<?php comments_template( '', true ); ?>
-							<?php endif; ?>
+					<?php themeblvd_content_top(); ?>
 
-						<?php endwhile; ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-						<?php themeblvd_content_bottom(); ?>
-					</div><!-- .inner (end) -->
-				</div><!-- #content (end) -->
+						<?php themeblvd_get_template_part( 'template-sitemap' ); ?>
 
-				<!-- CONTENT (end) -->
+						<?php themeblvd_page_footer(); ?>
 
-				<!-- SIDEBARS (start) -->
+						<?php if ( themeblvd_supports( 'comments', 'pages' ) ) : ?>
 
-				<?php get_sidebar('left'); ?>
+							<?php comments_template( '', true ); ?>
 
-				<?php get_sidebar('right'); ?>
+						<?php endif; ?>
 
-				<!-- SIDEBARS (end) -->
+					<?php endwhile; ?>
 
-			</div><!-- .grid-protection (end) -->
-		</div><!-- .sidebar_layout-inner (end) -->
-	</div><!-- #sidebar_layout (end) -->
+					<?php themeblvd_content_bottom(); ?>
+
+				</div><!-- .inner -->
+
+			</div><!-- #content -->
+
+			<!-- CONTENT (end) -->
+
+			<!-- SIDEBARS (start) -->
+
+			<?php get_sidebar( 'left' ); ?>
+
+			<?php get_sidebar( 'right' ); ?>
+
+			<!-- SIDEBARS (end) -->
+
+		</div><!-- .grid-protection -->
+
+	</div><!-- .sidebar_layout-inner -->
+
+</div><!-- #sidebar_layout -->
 
 <?php get_footer(); ?>

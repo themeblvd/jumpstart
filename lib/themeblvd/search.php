@@ -18,32 +18,42 @@
 get_header();
 ?>
 
-	<div id="sidebar_layout" class="clearfix">
-		<div class="sidebar_layout-inner">
-			<div class="row grid-protection">
+<div id="sidebar_layout" class="clearfix">
 
-				<!-- CONTENT (start) -->
+	<div class="sidebar_layout-inner">
 
-				<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class('content') ); ?> clearfix" role="main">
-					<div class="inner">
-						<?php themeblvd_content_top(); ?>
-						<?php themeblvd_get_template_part( 'search' ); ?>
-						<?php themeblvd_content_bottom(); ?>
-					</div><!-- .inner (end) -->
-				</div><!-- #content (end) -->
+		<div class="row grid-protection">
 
-				<!-- CONTENT (end) -->
+			<!-- CONTENT (start) -->
 
-				<!-- SIDEBARS (start) -->
+			<div id="content" class="<?php echo esc_attr( themeblvd_get_column_class( 'content' ) ); ?> clearfix" role="main">
 
-				<?php get_sidebar('left'); ?>
+				<div class="inner">
 
-				<?php get_sidebar('right'); ?>
+					<?php themeblvd_content_top(); ?>
 
-				<!-- SIDEBARS (end) -->
+					<?php themeblvd_get_template_part( 'search' ); ?>
 
-			</div><!-- .grid-protection (end) -->
-		</div><!-- .sidebar_layout-inner (end) -->
-	</div><!-- .#sidebar_layout (end) -->
+					<?php themeblvd_content_bottom(); ?>
+
+				</div><!-- .inner -->
+
+			</div><!-- #content -->
+
+			<!-- CONTENT (end) -->
+
+			<!-- SIDEBARS (start) -->
+
+			<?php get_sidebar( 'left' ); ?>
+
+			<?php get_sidebar( 'right' ); ?>
+
+			<!-- SIDEBARS (end) -->
+
+		</div><!-- .grid-protection -->
+
+	</div><!-- .sidebar_layout-inner -->
+
+</div><!-- .#sidebar_layout -->
 
 <?php get_footer(); ?>

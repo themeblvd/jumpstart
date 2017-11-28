@@ -17,6 +17,11 @@
  */
 
 /**
+ * Fires for both the left and right sidebars, with
+ * the context (right or left) passed in.
+ *
  * @hooked themeblvd_fixed_sidebars - 10
+ *
+ * @param string Sidebar context, `right` or `left`.
  */
 do_action( 'themeblvd_sidebars', 'left' );
