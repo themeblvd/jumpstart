@@ -553,6 +553,10 @@ ul.woocommerce-info {
 .rtl .tb-product-loop-wrap.catalog-view .product-name {
 	text-align: right;
 }
+.tb-product-loop-wrap.catalog-view .product-name h3 {
+	margin-top: 0;
+  	margin-bottom: 0px;
+}
 .tb-product-loop-wrap.catalog-view .product-name h3 a {
 	color: inherit;
 }

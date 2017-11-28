@@ -823,7 +823,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		// Set product display view.
 		$view = 'grid'; // Default view.
 
-		$view = array( 'grid', 'list', 'catalog' );
+		$views = array( 'grid', 'list', 'catalog' );
 
 		if ( ! empty( $_GET['view'] ) && in_array( $_GET['view'], $views ) ) {
 
@@ -1307,7 +1307,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		if ( ! function_exists( 'themeblvd_set_att' ) ) {
 
-			return $atts;
+			return $out;
 
 		}
 
@@ -1325,7 +1325,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		}
 
-		return $atts; // Pass $atts back through, unmodified.
+		return $out; // Pass back through, unmodified.
 
 	}
 
