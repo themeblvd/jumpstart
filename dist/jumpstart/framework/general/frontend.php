@@ -675,7 +675,7 @@ function themeblvd_body_class( $class ) {
 	}
 
 	// Add support for scroll effects.
-	if ( themeblvd_supports( 'display', 'scroll_effects' ) ) {
+	if ( themeblvd_do_scroll_effects() ) {
 
 		$class[] = 'tb-scroll-effects';
 

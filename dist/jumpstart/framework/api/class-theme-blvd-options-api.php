@@ -199,6 +199,7 @@ class Theme_Blvd_Options_API {
 	 *      - fw_narrow
 	 *      - img_popout
 	 *      - gallery_carousel
+	 *      - scroll_effects
 	 *  - Single Posts
 	 *      - single_meta
 	 *      - single_sub_meta
@@ -683,6 +684,13 @@ class Theme_Blvd_Options_API {
 						'name'  => null,
 						'desc'  => __( 'Use variable width image carousel for gallery sliders.', 'jumpstart' ),
 						'id'    => 'gallery_carousel',
+						'std'   => '1',
+						'type'  => 'checkbox',
+					),
+					'scroll_effects' => array(
+						'name'  => null,
+						'desc'  => __( 'Use scroll effects, where supported.', 'jumpstart' ),
+						'id'    => 'scroll_effects',
 						'std'   => '1',
 						'type'  => 'checkbox',
 					),
@@ -1639,16 +1647,42 @@ class Theme_Blvd_Options_API {
 		}
 
 		// Remove any options for unsupported features.
-		if ( ! themeblvd_supports( 'display', 'suck_up' ) && isset( $this->raw_options['layout']['sections']['header_trans'] ) ) {
-			unset( $this->raw_options['layout']['sections']['header_trans'] );
+
+		if ( ! themeblvd_supports( 'display', 'suck_up' ) ) {
+
+			if ( isset( $this->raw_options['layout']['sections']['header_trans'] ) ) {
+
+				unset( $this->raw_options['layout']['sections']['header_trans'] );
+
+			}
 		}
 
-		if ( ! themeblvd_supports( 'display', 'sticky' ) && isset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] ) ) {
-			unset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] );
+		if ( ! themeblvd_supports( 'display', 'sticky' ) ) {
+
+			if ( isset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] ) ) {
+
+				unset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] );
+
+			}
 		}
 
+		if ( ! themeblvd_supports( 'display', 'scroll_effects' ) ) {
+
+			if ( isset( $this->raw_options['content']['sections']['general']['options']['scroll_effects'] ) ) {
+
+				unset( $this->raw_options['content']['sections']['general']['options']['scroll_effects'] );
+
+			}
+		}
+
+		/** This filter is documented in framework/compat/wpml/class-theme-blvd-compat-wpml.php */
 		if ( ! apply_filters( 'themeblvd_wpml_has_switcher', true ) ) {
-			unset( $this->raw_options['plugins']['sections']['wpml'] );
+
+			if ( isset( $this->raw_options['plugins']['sections']['wpml'] ) ) {
+
+				unset( $this->raw_options['plugins']['sections']['wpml'] );
+
+			}
 		}
 
 		/**

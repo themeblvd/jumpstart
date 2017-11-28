@@ -268,7 +268,7 @@ function themeblvd_get_milestone( $args ) {
 		themeblvd_kses( $args['milestone'] )
 	);
 
-	if ( themeblvd_supports( 'display', 'scroll_effects' ) && ! wp_is_mobile() ) {
+	if ( themeblvd_do_scroll_effects() ) {
 
 		$milestone = str_replace( $num, '0', $milestone );
 
@@ -512,7 +512,7 @@ function themeblvd_get_progress_bar( $args ) {
 
 	$display = '0';
 
-	if ( ! themeblvd_supports( 'display', 'scroll_effects' ) || wp_is_mobile() ) {
+	if ( ! themeblvd_do_scroll_effects() ) {
 
 		$display = $percent;
 

@@ -221,6 +221,44 @@ function themeblvd_do_floating_search() {
 }
 
 /**
+ * Whether to use scroll effects with
+ * supported elements.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @return bool $do Whether to use scroll effects.
+ */
+function themeblvd_do_scroll_effects() {
+
+	$do = true;
+
+	if ( ! themeblvd_supports( 'display', 'scroll_effects' ) ) {
+
+		$do = false;
+
+	} elseif ( '0' === themeblvd_get_option( 'scroll_effects' ) ) {
+
+		$do = false;
+
+	} elseif ( wp_is_mobile() ) {
+
+		$do = false;
+
+	}
+
+	/**
+	 * Filters whether to use scroll effects
+	 * with supported elements.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @return bool $do Whether to use scroll effects.
+	 */
+	return apply_filters( 'themeblvd_do_scroll_effects', $do );
+
+}
+
+/**
  * Whether to display the sticky header.
  *
  * @since Theme_Blvd 2.7.0

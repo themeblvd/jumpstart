@@ -28,6 +28,7 @@ Jump Start Changelog
 	* WooCommerce: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > WooCommerce*.
 	* WPML: Fixed WPML options showing on Theme Options, when WPML isn't installed.
 * New: Added support for applying background shade to individual columns in the layout builder.
+* New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
 * Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Improvement: On all theme bases, if no "Primary Navigation" menu is assigned, menu will not display (previously, only the Agent base behaved like this).
