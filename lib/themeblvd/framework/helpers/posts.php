@@ -261,14 +261,12 @@ function themeblvd_get_modes() {
 	 *
 	 * @param array Post display modes.
 	 */
-	return apply_filters(
-		'themeblvd_modes', array(
-			'blog'     => __( 'Blog', '@@text-domain' ),
-			'list'     => __( 'List', '@@text-domain' ),
-			'grid'     => __( 'Grid', '@@text-domain' ),
-			'showcase' => __( 'Showcase', '@@text-domain' ),
-		)
-	);
+	return apply_filters( 'themeblvd_modes', array(
+		'blog'     => __( 'Blog', '@@text-domain' ),
+		'list'     => __( 'List', '@@text-domain' ),
+		'grid'     => __( 'Grid', '@@text-domain' ),
+		'showcase' => __( 'Showcase', '@@text-domain' ),
+	));
 
 }
 

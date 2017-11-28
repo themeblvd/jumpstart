@@ -261,14 +261,12 @@ function themeblvd_get_modes() {
 	 *
 	 * @param array Post display modes.
 	 */
-	return apply_filters(
-		'themeblvd_modes', array(
-			'blog'     => __( 'Blog', 'jumpstart' ),
-			'list'     => __( 'List', 'jumpstart' ),
-			'grid'     => __( 'Grid', 'jumpstart' ),
-			'showcase' => __( 'Showcase', 'jumpstart' ),
-		)
-	);
+	return apply_filters( 'themeblvd_modes', array(
+		'blog'     => __( 'Blog', 'jumpstart' ),
+		'list'     => __( 'List', 'jumpstart' ),
+		'grid'     => __( 'Grid', 'jumpstart' ),
+		'showcase' => __( 'Showcase', 'jumpstart' ),
+	));
 
 }
 
