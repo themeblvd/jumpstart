@@ -499,10 +499,8 @@ add_action( 'after_signup_form', 'themeblvd_after_signup_form' );
 /*------------------------------------------------------*/
 
 /**
- * Action hook for intervening between framework
+ * Fires for intervening between framework
  * running and API being established.
- *
- * @hooked null
  *
  * @since @@name-framework 2.3.0
  */
