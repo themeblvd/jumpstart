@@ -25,13 +25,6 @@ function themeblvd_include_fonts() {
 
 	if ( ! empty( $input ) ) {
 
-		/*
-		 * Before including files, determine if SSL is being
-		 * used because if we include an external file without https
-		 * on a secure server, they'll get an error.
-		 */
-		$protocol = is_ssl() ? 'https://' : 'http://';
-
 		$g_fonts = array();
 
 		$t_fonts = array();
@@ -90,30 +83,54 @@ function themeblvd_include_fonts() {
 			}
 		}
 
-		// Include each font file from google.
-		foreach ( $g_fonts as $font => $atts ) {
+		// Include fonts from Google.
+		if ( $g_fonts ) {
 
-			if ( ! empty( $atts['style'] ) ) {
+			$url = array();
 
-				$font .= sprintf( ':%s', implode( ',', $atts['style'] ) );
+			foreach ( $g_fonts as $font => $atts ) {
+
+				if ( ! empty( $atts['style'] ) ) {
+
+					$font .= sprintf( ':%s', implode( ',', $atts['style'] ) );
+
+				}
+
+				if ( ! empty( $atts['subset'] ) ) {
+
+					$font .= sprintf( '&subset=%s', implode( ',', $atts['subset'] ) );
+
+				}
+
+				$url[] = $font;
 
 			}
 
-			if ( ! empty( $atts['subset'] ) ) {
+			$url = sprintf(
+				'https://fonts.googleapis.com/css?family=%s',
+				implode( '|', $url )
+			);
 
-				$font .= sprintf( '&subset=%s', implode( ',', $atts['subset'] ) );
-
-			}
+			/**
+			 * Filters the URL to include fonts from
+			 * Google Font Directory.
+			 *
+			 * @since Theme_Blvd 2.7.0
+			 *
+			 * @param string $url      Full URL, like `https://fonts.googleapis.com/css?family=Foo`.
+			 * @param array  $g_fonts  Font data.
+			 * @param string $protocol Website protocol, `http://` or `https://`.
+			 */
+			$url = apply_filters( 'themeblvd_google_font_url', $url, $g_fonts );
 
 			printf(
-				'<link href="%sfonts.googleapis.com/css?family=%s" rel="stylesheet" type="text/css">' . "\n",
-				$protocol,
-				esc_attr( $font )
+				'<link href="%s" rel="stylesheet" type="text/css">' . "\n",
+				esc_url( $url )
 			);
 
 		}
 
-		// Include each font from Typekit.
+		// Include fonts from Typekit.
 		foreach ( $t_fonts as $font ) {
 
 			echo themeblvd_kses( $font ) . "\n";
