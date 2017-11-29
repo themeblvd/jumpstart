@@ -114,15 +114,21 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			$name = '';
 
 			if ( ! empty( $option['name'] ) ) {
+
 				$name = esc_html( $option['name'] );
+
 			}
 
 			if ( isset( $option['class'] ) ) {
+
 				$class = ' ' . $option['class'];
+
 			}
 
 			if ( ! $name ) {
+
 				$class .= ' no-name';
+
 			}
 
 			$id = str_replace(
@@ -140,7 +146,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			$output .= '<a href="#" class="section-toggle"><i class="tb-icon-up-dir"></i></a>';
 
 			if ( $name ) {
+
 				$output .= '<h3 class="hndle">' . $name . '</h3>';
+
 			}
 
 			if ( 'start_section_footer' === $option_key && isset( $options['footer_sync'] ) ) {
@@ -148,7 +156,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current = 0;
 
 				if ( ! empty( $settings['footer_sync'] ) ) {
+
 					$current = 1;
+
 				}
 
 				$output .= '<div class="footer-sync-wrap">' . "\n";
@@ -249,7 +259,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			$class = 'section section-hidden hide';
 
 			if ( ! empty( $option['class'] ) ) {
+
 				$class .= ' ' . $option['class'];
+
 			}
 
 			$output .= sprintf( '<div class="%s">', esc_attr( $class ) );
@@ -290,7 +302,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$class .= ' section-' . $option['type'];
 
 				if ( $advanced->is_sortable( $option['type'] ) ) {
+
 					$class .= ' section-sortable';
+
 				}
 
 				/**
@@ -323,16 +337,22 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				));
 
 				if ( in_array( $option['type'], $full_width ) ) {
+
 					$class .= ' full-width';
+
 				}
 
 				if ( 'logo' === $option['type'] || 'background' === $option['type'] ) {
+
 					$class .= ' section-upload';
+
 				}
 			}
 
 			if ( ! empty( $option['class'] ) ) {
+
 				$class .= ' ' . $option['class'];
+
 			}
 
 			$output .= sprintf(
@@ -379,13 +399,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			case 'heading':
 				// If this isn't the first tab, close the previous.
 				if ( $menu ) {
+
 					$output .= '</div><!-- .group (end) -->' . "\n";
+
 				}
 
 				$id = $option['name'];
 
 				if ( ! empty( $option['id'] ) ) {
+
 					$id = $option['id'];
+
 				}
 
 				$click_hook = preg_replace( '/[^a-zA-Z0-9._\-]/', '', strtolower( $id ) );
@@ -429,7 +453,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$class = 'section section-info';
 
 				if ( isset( $option['class'] ) ) {
+
 					$class .= ' ' . $option['class'];
+
 				}
 
 				$output .= '<div class="' . esc_attr( $class ) . '">' . "\n";
@@ -550,13 +576,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$pholder = '';
 
 				if ( ! empty( $option['pholder'] ) ) {
+
 					$pholder = ' placeholder="' . esc_attr( $option['pholder'] ) . '"';
+
 				}
 
 				$cols = '8';
 
 				if ( isset( $option['options'] ) && isset( $option['options']['cols'] ) ) {
+
 					$cols = $option['options']['cols'];
+
 				}
 
 				/*
@@ -663,7 +693,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'pages' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'No pages were found.', 'jumpstart' );
+
 							}
 
 							break;
@@ -672,20 +704,26 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'categories' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'No categories sidebars were found.', 'jumpstart' );
+
 							}
 
 							break;
 
 						case 'sidebars':
 							if ( ! defined( 'TB_SIDEBARS_PLUGIN_VERSION' ) ) {
+
 								$error = __( 'You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area.', 'jumpstart' );
+
 							}
 
 							$option['options'] = themeblvd_get_select( 'sidebars' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'No floating widget areas were found.', 'jumpstart' );
+
 							}
 
 							break;
@@ -694,7 +732,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'sidebars_all' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'No registered sidebars were found.', 'jumpstart' );
+
 							}
 
 							break;
@@ -703,7 +743,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'crop' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'No registered crop sizes were found.', 'jumpstart' );
+
 							}
 
 							break;
@@ -714,7 +756,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'textures' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'No textures were found.', 'jumpstart' );
+
 							}
 
 							break;
@@ -723,7 +767,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'templates' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'You haven\'t created any custom templates yet.', 'jumpstart' );
+
 							}
 
 							break;
@@ -732,7 +778,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 							$option['options'] = themeblvd_get_select( 'authors' );
 
 							if ( count( $option['options'] ) < 1 ) {
+
 								$error = __( 'Couldn\'t find any authors.', 'jumpstart' );
+
 							}
 
 							break;
@@ -889,7 +937,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$width = '';
 
 				if ( isset( $option['img_width'] ) ) {
+
 					$width = $option['img_width'];
+
 				}
 
 				foreach ( $option['options'] as $key => $img ) {
@@ -899,7 +949,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$selected = '';
 
 					if ( $checked ) {
+
 						$selected = ' tb-radio-img-selected of-radio-img-selected';
+
 					}
 
 					$output .= sprintf(
@@ -966,7 +1018,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				);
 
 				if ( ! empty( $option['inactive'] ) ) {
+
 					$checkbox = str_replace( '/>', 'disabled="disabled" />', $checkbox );
+
 				}
 
 				$output .= $checkbox;
@@ -1009,7 +1063,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$class = 'checkbox of-input';
 
 					if ( 'all' === $key ) {
+
 						$class .= ' all';
+
 					}
 
 					$output .= sprintf(
@@ -1084,19 +1140,27 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$args['type'] = 'advanced';
 
 					if ( isset( $current['src'] ) ) {
+
 						$args['value_src'] = $current['src'];
+
 					}
 
 					if ( isset( $current['id'] ) ) {
+
 						$args['value_id'] = $current['id'];
+
 					}
 
 					if ( isset( $current['title'] ) ) {
+
 						$args['value_title'] = $current['title'];
+
 					}
 
 					if ( isset( $current['crop'] ) ) {
+
 						$args['value_crop'] = $current['crop'];
+
 					}
 				} else {
 
@@ -1105,17 +1169,25 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$args['type'] = 'standard';
 
 					if ( isset( $option['send_back'] ) ) {
+
 						$args['send_back'] = $option['send_back'];
+
 					} else {
+
 						$args['send_back'] = 'url'; // Default.
+
 					}
 
 					if ( ! empty( $option['video'] ) ) {
+
 						$args['type'] = 'video';
+
 					}
 
 					if ( ! empty( $option['media'] ) ) { // @TODO Framework javascript currently doesn't support this
+
 						$args['type'] = 'media';
+
 					}
 				}
 
@@ -1161,9 +1233,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= '<div class="jquery-ui-slider-wrap">';
 
 					if ( ! empty( $option['sizes'] ) ) {
+
 						$sizes = $option['sizes'];
+
 					} else {
+
 						$sizes = themeblvd_recognized_font_sizes();
+
 					}
 
 					$slide_options = array(
@@ -1381,13 +1457,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$background = array();
 
 				if ( $current ) {
+
 					$background = $current;
+
 				}
 
 				$color = true;
 
 				if ( isset( $option['color'] ) ) {
+
 					$color = $option['color'];
+
 				}
 
 				// Add background-color picker to output.
@@ -1396,7 +1476,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$current_color = '';
 
 					if ( ! empty( $background['color'] ) ) {
+
 						$current_color = $background['color'];
+
 					}
 
 					$output .= sprintf(
@@ -1413,13 +1495,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Add background-image upload to output.
 				if ( ! isset( $background['image'] ) ) {
+
 					$background['image'] = '';
+
 				}
 
 				$current_bg_url = '';
 
 				if ( ! empty( $background['image'] ) ) {
+
 					$current_bg_url = $background['image'];
+
 				}
 
 				$current_bg_image = array(
@@ -1438,7 +1524,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$class = 'tb-background-properties of-background-properties';
 
 				if ( empty( $background['image'] ) ) {
+
 					$class .= ' hide';
+
 				}
 
 				$output .= '<div class="' . esc_attr( $class ) . '">';
@@ -1475,7 +1563,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_attachment = '';
 
 				if ( ! empty( $background['attachment'] ) ) {
+
 					$current_attachment = $background['attachment'];
+
 				}
 
 				$output .= sprintf(
@@ -1489,11 +1579,15 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$parallax = false;
 
 				if ( isset( $option['parallax'] ) ) {
+
 					$parallax = $option['parallax'];
+
 				}
 
 				if ( ! $parallax ) {
+
 					unset( $attachments['parallax'] );
+
 				}
 
 				foreach ( $attachments as $key => $attachment ) {
@@ -1513,7 +1607,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_position = '';
 
 				if ( ! empty( $background['position'] ) ) {
+
 					$current_position = $background['position'];
+
 				}
 
 				$output .= '<select class="tb-background tb-background-position of-background of-background-position" name="' . esc_attr( $option_name . '[' . $option['id'] . '][position]' ) . '" id="' . esc_attr( $option['id'] . '_position' ) . '">';
@@ -1537,7 +1633,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current_size = '';
 
 				if ( ! empty( $background['size'] ) ) {
+
 					$current_size = $background['size'];
+
 				}
 
 				$output .= sprintf(
@@ -1593,7 +1691,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$video_url = '';
 
 				if ( ! empty( $current['mp4'] ) ) {
+
 					$video_url = $current['mp4'];
+
 				}
 
 				$output .= themeblvd_media_uploader( array(
@@ -1621,7 +1721,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$img_url = '';
 
 				if ( ! empty( $current['fallback'] ) ) {
+
 					$img_url = $current['fallback'];
+
 				}
 
 				$output .= themeblvd_media_uploader( array(
@@ -1645,7 +1747,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$ratio = '16:9';
 
 				if ( ! empty( $current['ratio'] ) ) {
+
 					$ratio = $current['ratio'];
+
 				}
 
 				$output .= sprintf(
@@ -1682,19 +1786,27 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$end_def = '#000000';
 
 				if ( ! empty( $current['start'] ) ) {
+
 					$start = $current['start'];
+
 				}
 
 				if ( ! empty( $current['end'] ) ) {
+
 					$end = $current['end'];
+
 				}
 
 				if ( ! empty( $option['std']['start'] ) ) {
+
 					$start_def = $option['std']['start'];
+
 				}
 
 				if ( ! empty( $option['std']['end'] ) ) {
+
 					$end_def = $option['std']['end'];
+
 				}
 
 				$output .= '<div class="gradient-wrap">';
@@ -1736,6 +1848,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</div><!-- .color-end (end) -->';
 
 				$output .= '</div><!-- .gradient-wrap (end) -->';
+
 				break;
 
 			/*
@@ -1779,13 +1892,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$lat = '';
 
 				if ( isset( $current['lat'] ) ) {
+
 					$lat = $current['lat'];
+
 				}
 
 				$long = '';
 
 				if ( isset( $current['long'] ) ) {
+
 					$long = $current['long'];
+
 				}
 
 				$output .= '<div class="geo-wrap clearfix">';
@@ -1980,7 +2097,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				);
 
 				if ( isset( $option['options'] ) ) {
+
 					$slide_options = wp_parse_args( $option['options'], $slide_options );
+
 				}
 
 				$output .= '<div class="jquery-ui-slider"';
@@ -1999,7 +2118,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// $current can't be empty or else the UI slider won't work.
 				if ( ! $current && '0' !== $current ) {
+
 					$current = $slide_options['min'] . $slide_options['units'];
+
 				}
 
 				$output .= sprintf(
@@ -2041,7 +2162,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				);
 
 				/*
-				 * @todo -- Add TB shortcode generator button.
+				 * @TODO -- Add TB shortcode generator button.
 				 * This will work however currently there is a quirk that won't allow for
 				 * more than one editor on a page. Shortcodes will get inserted in whichever
 				 * the last editor the cursor was in.
@@ -2051,13 +2172,19 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				// }
 
 				if ( ! empty( $option['settings'] ) ) {
+
 					$editor_settings = wp_parse_args( $option['settings'], $editor_settings );
+
 				}
 
 				if ( ! empty( $option['desc_location'] ) && 'before' === $option['desc_location'] ) {
+
 					$desc_location = 'before';
+
 				} else {
+
 					$desc_location = 'after';
+
 				}
 
 				$explain_value = '';
@@ -2097,7 +2224,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				// Add description to output, if set to come after editor.
 				if ( 'after' === $desc_location ) {
+
 					$output .= '<div class="explain">' . themeblvd_kses( $explain_value ) . '</div>' . "\n";
+
 				}
 
 				$output .= '</div><!-- .tb-wp-editor (end) -->';
@@ -2124,7 +2253,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$lang = 'html'; // Default, $option['lang'] not passed through.
 
 				if ( isset( $option['lang'] ) && in_array( $option['lang'], array( 'html', 'javascript', 'css' ) ) ) {
+
 					$lang = $option['lang'];
+
 				}
 
 				$output .= '<div class="textarea-wrap">';
@@ -2563,7 +2694,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 	 * with type `heading`, close the last tab.
 	 */
 	if ( $menu ) {
+
 		$output .= '</div><!-- .group (end) -->';
+
 	}
 
 	return array(
