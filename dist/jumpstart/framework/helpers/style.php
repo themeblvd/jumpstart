@@ -140,16 +140,31 @@ function themeblvd_get_font_face( $option ) {
 
 	$stacks = themeblvd_font_stacks();
 
-	if ( 'google' === $option['face'] || 'typekit' === $option['face'] ) {
+	if ( in_array( $option['face'], array( 'google', 'typekit', 'custom' ) ) ) {
+
+		$name = '';
 
 		if ( 'typekit' === $option['face'] ) {
 
-			$name = strtolower( str_replace( ' ', '-', $option['typekit'] ) );
+			if ( isset( $option['typekit'] ) ) {
 
-		} else {
+				$name = strtolower( str_replace( ' ', '-', $option['typekit'] ) );
 
-			$name = $option['google'];
+			}
+		} elseif ( 'google' === $option['face'] ) {
 
+			if ( isset( $option['google'] ) ) {
+
+				$name = $option['google'];
+
+			}
+		} elseif ( 'custom' === $option['face'] ) {
+
+			if ( isset( $option['custom'] ) ) {
+
+				$name = $option['custom'];
+
+			}
 		}
 
 		/*

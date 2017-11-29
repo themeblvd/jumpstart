@@ -1225,6 +1225,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'google'      => '',
 					'typekit'     => '',    // @since @@name-framework 2.6.0
 					'typekit_kit' => '',    // @since @@name-framework 2.6.0
+					'custom'      => '',    // @since @@name-framework 2.7.0
 				));
 
 				// Add font-size selection to output.
@@ -1373,8 +1374,9 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= '<div class="clear"></div>';
 
-				// Add Google Font field to output.
 				if ( in_array( 'face', $option['atts'] ) ) {
+
+					// Add Google Font field to output.
 
 					$output .= '<div class="google-font hide">';
 
@@ -1402,10 +1404,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 					$output .= '</div>';
 
-				}
-
-				// Add Typekit field to output.
-				if ( in_array( 'face', $option['atts'] ) ) {
+					// Add Typekit field to output.
 
 					$output .= '<div class="typekit-font hide">';
 
@@ -1429,6 +1428,28 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 						'<textarea name="%s">%s</textarea>',
 						esc_attr( $option_name . '[' . $option['id'] . '][typekit_kit]' ),
 						themeblvd_kses( $current['typekit_kit'] )
+					);
+
+					$output .= '</div>';
+
+					// Add custom font field to output.
+
+					$output .= '<div class="custom-font hide">';
+
+					$output .= sprintf(
+						'<h5>%s</h5>',
+						esc_attr__( 'Enter the name of your custom font.', '@@text-domain' )
+					);
+
+					$output .= sprintf(
+						'<input type="text" name="%s" value="%s" />',
+						esc_attr( $option_name . '[' . $option['id'] . '][custom]' ),
+						esc_attr( $current['custom'] )
+					);
+
+					$output .= sprintf(
+						'<p class="note">%s</p>',
+						esc_html__( 'Use a font name formatted like "My Font" that corresponds to a web font you\'ve included through customization or a third-party plugin.', '@@text-domain' )
 					);
 
 					$output .= '</div>';

@@ -646,6 +646,10 @@ function themeblvd_sanitize_typography( $input ) {
 		$output['typekit_kit'] = themeblvd_kses( $input['typekit_kit'] );
 	}
 
+	if ( isset( $input['custom'] ) ) {
+		$output['custom'] = themeblvd_kses( $input['custom'] );
+	}
+
 	return $output;
 
 }
@@ -871,6 +875,7 @@ function themeblvd_recognized_font_faces() {
 		'verdana'     => 'Verdana, Geneva',
 		'google'      => 'Google Font',
 		'typekit'     => 'Typekit Font',
+		'custom'      => 'Custom Font',
 	));
 
 }

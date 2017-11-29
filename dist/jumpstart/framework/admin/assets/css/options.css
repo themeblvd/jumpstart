@@ -665,30 +665,29 @@
 }
 
 .tb-options-wrap .google-font,
-.tb-options-wrap .typekit-font {
+.tb-options-wrap .typekit-font,
+.tb-options-wrap .custom-font {
   background: #fff;
   border: 1px solid #eee;
   padding: 10px;
 }
 
-.tb-options-wrap .google-font .wrap,
-.tb-options-wrap .typekit-font .wrap {
-  margin: 0;
-}
-
 .tb-options-wrap .google-font h5,
-.tb-options-wrap .typekit-font h5 {
+.tb-options-wrap .typekit-font h5,
+.tb-options-wrap .custom-font h5 {
   font-size: 12px;
   margin: 4px 4px 10px 4px;
 }
 
 .tb-options-wrap .google-font input,
-.tb-options-wrap .typekit-font input {
+.tb-options-wrap .typekit-font input,
+.tb-options-wrap .custom-font input {
   margin-bottom: 5px;
 }
 
 .tb-options-wrap .google-font .note,
-.tb-options-wrap .typekit-font .note {
+.tb-options-wrap .typekit-font .note,
+.tb-options-wrap .custom-font .note {
   margin: 0;
 }
 
