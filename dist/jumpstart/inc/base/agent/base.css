@@ -158,7 +158,10 @@ body {
 	}
 	.site-header.dark .tb-text-logo,
 	.site-header.dark .tagline {
-		color: #ffffff;
+		color: #fff;
+	}
+	.tb-sticky-menu.dark .tb-text-logo {
+  		color: #fff;
 	}
 }
 
