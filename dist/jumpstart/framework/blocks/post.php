@@ -515,16 +515,17 @@ function themeblvd_blog_share( $echo = true ) {
 			}
 
 			$output .= sprintf(
-				'<li><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"><i class="fa fa-fw fa-%s"></i></a></li>',
-				$link,
-				$button['label'],
-				$class,
+				'<li class="li-%s"><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"><i class="fa fa-fw fa-%s"></i></a></li>',
+				esc_attr( $network ),
+				esc_url( $link ),
+				esc_html( $button['label'] ),
+				esc_attr( $class ),
 				$patterns[ $network ]['icon']
 			);
 
 		}
 
-		$output .= '</ul><!-- .tb-share (end) -->';
+		$output .= '</ul><!-- .tb-share -->';
 
 	}
 

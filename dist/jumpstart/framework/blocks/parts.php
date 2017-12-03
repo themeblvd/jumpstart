@@ -182,7 +182,8 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 			}
 
 			$output .= sprintf(
-				'<li><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>',
+				'<li class="li-%s"><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>',
+				esc_attr( $button['icon'] ),
 				esc_url( $button['url'] ),
 				esc_attr( $title ),
 				esc_attr( $class ),
@@ -193,7 +194,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 		}
 
-		$output .= '</ul><!-- .themeblvd-contact-bar (end) -->';
+		$output .= '</ul><!-- .themeblvd-contact-bar -->';
 
 	}
 
