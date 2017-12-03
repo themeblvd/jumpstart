@@ -566,17 +566,24 @@ function themeblvd_element( $args ) {
 	 * Fires for the output for custom layout
 	 * elements.
 	 *
-	 * @TODO Issue #322. Rename to themeblvd_element_{$type}.
-	 * Also needs to chnage in layout builder plugin so custom
-	 * elements get hooked correctly.
+	 * Note: While this filter technically was created
+	 * in 2.2.0, its name needed to be changed from
+	 * `themeblvd_{$type}` to `themeblvd_element_{$type}`
+	 * to avoid conflicts with element output filters.
+	 * Issue #322.
 	 *
-	 * @since Theme_Blvd 2.2.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $id      Element ID.
 	 * @param array  $options Element settings.
 	 * @param array  $args    All arguments originally passed for element, see themeblvd_element() docs.
 	 */
-	do_action( 'themeblvd_' . $args['type'], $args['id'], $args['options'], $args );
+	do_action(
+		'themeblvd_element_' . $args['type'],
+		$args['id'],
+		$args['options'],
+		$args
+	);
 
 	/**
 	 * Fires just before the end of any custom
