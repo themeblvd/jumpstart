@@ -14,12 +14,14 @@ Jump Start Changelog
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 	* Improved security for saving options added to Edit Tag and Edit Category screens.
 	* Improved security for saving options added to Edit Profile screen.
-	* New filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.
 	* Re-structured all admin JavaScript for better organization and efficiency.
 	* Re-structured all admin CSS for better organization and efficiency.
 	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
 	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_do_debug_info` to return `false`.
 	* Added filter to remove admin framework welcome message; just filter `themeblvd_do_welcome_message` to `false`.
+	* Added filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.
+	* Added filter `themeblvd_element_{$type}_options` to modify options for any element being outputted from the layout builder.
+	* Added filter `themeblvd_element_{$type}_display` to modify display options for any element being outputted from the layout builder.
 * Third-Party Plugin Compatibility
 	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* bbPress: Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.

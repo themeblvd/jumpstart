@@ -123,7 +123,32 @@ function themeblvd_element( $args ) {
 
 	$args['options']['max_width'] = $args['max_width'];
 
-	$class = implode( ' ', themeblvd_get_element_class( $args ) );
+	/**
+	 * Filters the options passed for an individual
+	 * element from the layout builder.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array $options Element options.
+	 */
+	$args['options'] = apply_filters(
+		'themeblvd_element_' . $args['type'] . '_options',
+		$args['options']
+	);
+
+	/**
+	 * Filters the display options passed for
+	 * an individual element from the layout
+	 * builder.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array $display Element display options.
+	 */
+	$args['display'] = apply_filters(
+		'themeblvd_element_' . $args['type'] . '_display',
+		$args['display']
+	);
 
 	/**
 	 * Fires before the start of any custom layout
@@ -146,8 +171,15 @@ function themeblvd_element( $args ) {
 		$args['context']
 	);
 
+	$class = implode( ' ', themeblvd_get_element_class( $args ) );
+
 	// Open element.
-	printf( '<div id="%s" class="%s" style="%s">', esc_attr( $args['id'] ), esc_attr( $class ), themeblvd_get_display_inline_style( $args['display'] ) );
+	printf(
+		'<div id="%s" class="%s" style="%s">',
+		esc_attr( $args['id'] ),
+		esc_attr( $class ),
+		themeblvd_get_display_inline_style( $args['display'] )
+	);
 
 	/**
 	 * Fires just within the start of any custom
