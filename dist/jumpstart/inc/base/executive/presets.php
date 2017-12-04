@@ -184,13 +184,20 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 						'footer_link_color'                 => $val[1],
 						'footer_link_hover_color'           => $val[2],
 						'font_menu'                         => array(
-							'size'          => '13px',
-							'face'          => 'google',
-							'style'         => 'normal',
-							'weight'        => '300',
-							'google'        => 'Raleway:300',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'size'         => '13px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo_2x.png',
 						),
 					), $settings );
 
@@ -267,14 +274,21 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 						'social_media_style'                => 'color',
 						'custom_styles'                     => "/**\r\n * Custom CSS Example: Move dropdown menus down 1px\r\n */\r\n.tb-primary-menu ul.non-mega-sub-menu,\r\n.tb-primary-menu .sf-mega {\r\n\tmargin-top: 1px;\r\n}",
 						'font_menu'                         => array(
-							'color'         => '#ffffff',
-							'size'          => '14px',
-							'face'          => 'google',
-							'style'         => 'normal',
-							'weight'        => '300',
-							'google'        => 'Raleway:300',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'color'        => '#ffffff',
+							'size'         => '14px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
 						),
 					), $settings );
 
@@ -319,6 +333,14 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 
 						$settings['footer_link_hover_color'] = '#f9bc18';
 
+						$settings['logo'] = array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo_2x.png',
+						);
+
 					}
 
 					break;
@@ -358,14 +380,21 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 						'font_menu_sp'                      => '1px',
 						'custom_styles'                     => ".header-nav {\n\tborder-right: none;\n\tborder-left: none;\n}\n.header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\n.header-nav .tb-primary-menu > li > .menu-btn:hover {\n\tcolor: #ffffff;\n}",
 						'font_menu'                         => array(
-							'color'         => '#333333',
-							'size'          => '10px',
-							'face'          => 'google',
-							'style'         => 'uppercase',
-							'weight'        => '700',
-							'google'        => 'Lato:700',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'color'        => '#333333',
+							'size'         => '10px',
+							'face'         => 'google',
+							'style'        => 'uppercase',
+							'weight'       => '700',
+							'google'       => 'Lato:700',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo_2x.png',
 						),
 					), $settings );
 

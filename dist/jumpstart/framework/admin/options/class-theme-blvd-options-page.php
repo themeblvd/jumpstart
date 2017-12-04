@@ -930,14 +930,73 @@ class Theme_Blvd_Options_Page {
 
 			if ( $presets ) {
 
+				/*
+				 * Maybe don't apply logo preset.
+				 *
+				 * For specifically the main site logo option, we
+				 * only want to apply the potential preset if the
+				 * user hasn't configured their own logo.
+				 *
+				 * The following tell us the user has configured
+				 * the logo:
+				 *
+				 * 1. The logo option is NOT empty.
+				 * 2. The logo type is NOT `image`, or the logo image
+				 * URL does NOT contain the path to default theme logos.
+				 */
+				if ( isset( $presets['logo'] ) ) {
+
+					$do_logo_preset = false;
+
+					$current_logo = array();
+
+					if ( isset( $clean['logo'] ) ) {
+
+						$current_logo = $clean['logo'];
+
+					}
+
+					if ( ! isset( $current_logo['type'] ) ) {
+
+						// User logo option must be empty, apply preset.
+						$do_logo_preset = true;
+
+					} else {
+
+						if ( 'image' === $current_logo['type'] ) {
+
+							// Default path where a theme default logo would be.
+							$default_path = get_template_directory_uri() . '/assets/img';
+
+							if ( isset( $current_logo['image'] ) && false !== strpos( $current_logo['image'], $default_path ) ) {
+
+								/*
+								 * User's saved image contains $default_path; so
+								 * it must be a default logo. We can apply the
+								 * preset.
+								 */
+								$do_logo_preset = true;
+
+							}
+						}
+					}
+
+					if ( ! $do_logo_preset ) {
+
+						unset( $presets['logo'] );
+
+					}
+				}
+
+				// Override any style presets over saved options.
 				$clean = array_merge( $clean, $presets );
 
 			}
 		}
 
 		/*
-		 * After options have been saved, add a success message upon the
-		 * page refreshing.
+		 * After options have been saved, add a success message
+		 * upon the page refreshing.
 		 */
 		if ( ! $this->sanitized ) { // Avoid success message getting printed more than once.
 

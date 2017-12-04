@@ -65,6 +65,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	if ( $preset ) {
 
 		$parts = explode( '-', $preset );
+
 		$color = $parts[2];
 
 		if ( isset( $parts[3] ) ) {
@@ -140,14 +141,21 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 						'header_text'                => '',
 						'font_menu_sp'               => '1px',
 						'font_menu'                  => array(
-							'color'       => '#ffffff',
-							'size'        => '11px',
-							'face'        => 'google',
-							'style'       => 'uppercase',
-							'weight'      => '700',
-							'google'      => 'Lato:700',
-							'typekit'     => '',
-							'typekit_kit' => '',
+							'color'        => '#ffffff',
+							'size'         => '11px',
+							'face'         => 'google',
+							'style'        => 'uppercase',
+							'weight'       => '700',
+							'google'       => 'Lato:700',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                       => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
 						),
 					), $settings);
 
@@ -193,6 +201,14 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 
 						$settings['font_menu']['color'] = '#333333';
 
+						$settings['logo'] = array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small_2x.png',
+						);
+
 					}
 
 					break;
@@ -211,14 +227,21 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 						'header_border_bottom_color' => $val[2],
 						'header_text'                => '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'font_menu'                  => array(
-							'color'       => '#ffffff',
-							'size'        => '13px',
-							'face'        => 'google',
-							'style'       => 'normal',
-							'weight'      => '300',
-							'google'      => 'Raleway:300',
-							'typekit'     => '',
-							'typekit_kit' => '',
+							'color'        => '#ffffff',
+							'size'         => '13px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                       => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
 						),
 					), $settings);
 
@@ -264,6 +287,14 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 
 						$settings['font_menu']['color'] = '#333333';
 
+						$settings['logo'] = array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small_2x.png',
+						);
+
 					}
 
 					break;
@@ -278,14 +309,21 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 						'header_apply_border_bottom' => '0',
 						'header_text'                => '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'font_menu'                  => array(
-							'color'       => '#ffffff',
-							'size'        => '13px',
-							'face'        => 'google',
-							'style'       => 'normal',
-							'weight'      => '600',
-							'google'      => 'Raleway:600',
-							'typekit'     => '',
-							'typekit_kit' => '',
+							'color'        => '#ffffff',
+							'size'         => '13px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '600',
+							'google'       => 'Raleway:600',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                       => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '86',
+							'image_height' => '26',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
 						),
 					), $settings);
 
@@ -330,14 +368,21 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 						'header_text'                => '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'social_media_style'         => 'dark',
 						'font_menu'                  => array(
-							'color'       => '#ffffff',
-							'size'        => '11px',
-							'face'        => 'google',
-							'style'       => 'uppercase',
-							'weight'      => '300',
-							'google'      => 'Lato:300',
-							'typekit'     => '',
-							'typekit_kit' => '',
+							'color'        => '#ffffff',
+							'size'         => '11px',
+							'face'         => 'google',
+							'style'        => 'uppercase',
+							'weight'       => '300',
+							'google'       => 'Lato:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                       => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
 						),
 					), $settings);
 

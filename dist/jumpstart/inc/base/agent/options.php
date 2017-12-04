@@ -574,7 +574,7 @@ function jumpstart_ag_options() {
 		'image_2x'     => get_template_directory_uri() . '/assets/img/logo-smaller-light_2x.png',
 	));
 
-	themeblvd_edit_option('layout', 'header_trans', 'trans_logo', 'std', array(
+	themeblvd_edit_option( 'layout', 'header_trans', 'trans_logo', 'std', array(
 		'type'         => 'default',
 		'image'        => '',
 		'image_width'  => '',
@@ -588,7 +588,7 @@ function jumpstart_ag_options() {
 	themeblvd_edit_option( 'content', 'general', 'img_popout', 'std', '1' );
 
 	// Add Layout > Contact.
-	themeblvd_add_option_section('layout', 'contact', __( 'Contact', 'jumpstart' ), null, array(
+	themeblvd_add_option_section( 'layout', 'contact', __( 'Contact', 'jumpstart' ), null, array(
 		'social_media' => array(
 			'id'       => 'social_media',
 			'name'     => __( 'Contact Buttons', 'jumpstart' ),

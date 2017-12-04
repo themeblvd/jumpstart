@@ -64,6 +64,13 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 			'typekit'     => '',
 			'typekit_kit' => '',
 		),
+		'logo'                              => array(
+			'type'         => 'image',
+			'image'        => get_template_directory_uri() . '/assets/img/logo-smaller-light.png',
+			'image_width'  => '85',
+			'image_height' => '25',
+			'image_2x'     => get_template_directory_uri() . '/assets/img/logo-smaller-light_2x.png',
+		),
 	);
 
 	$styles = array(

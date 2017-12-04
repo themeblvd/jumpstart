@@ -164,13 +164,20 @@ function jumpstart_su_get_presets( $preset = '' ) {
 						'footer_link_hover_color'           => $val[2],
 						'social_media_style'                => 'grey',
 						'font_menu'                         => array(
-							'size'          => '13px',
-							'face'          => 'google',
-							'style'         => 'normal',
-							'weight'        => '300',
-							'google'        => 'Raleway:300',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'size'         => '13px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo_2x.png',
 						),
 					), $settings );
 
@@ -211,13 +218,20 @@ function jumpstart_su_get_presets( $preset = '' ) {
 						'footer_link_color'                 => $val[1],
 						'footer_link_hover_color'           => $val[2],
 						'font_menu'                         => array(
-							'size'          => '13px',
-							'face'          => 'google',
-							'style'         => 'normal',
-							'weight'        => '300',
-							'google'        => 'Raleway:300',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'size'         => '13px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
 						),
 					), $settings );
 
@@ -265,13 +279,20 @@ function jumpstart_su_get_presets( $preset = '' ) {
 						'footer_link_hover_color'           => $val[2],
 						'custom_styles'                     => "/**\r\n * Custom CSS Example: Add highlight color\r\n * to active top-level main menu item.\r\n */\r\n.tb-primary-menu > li.current-menu-item > .menu-btn,\r\n.tb-primary-menu > li.current-menu-item > .menu-btn:hover {\r\n\tbackground-color: " . $val[1] . ";\r\n}\r\n.header-nav .tb-primary-menu ul.non-mega-sub-menu,\r\n.header-nav .tb-primary-menu .sf-mega {\r\n\tmargin-top: 0;\r\n}",
 						'font_menu'                         => array(
-							'size'          => '13px',
-							'face'          => 'google',
-							'style'         => 'normal',
-							'weight'        => '300',
-							'google'        => 'Raleway:300',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'size'         => '13px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
 						),
 					), $settings );
 
@@ -322,13 +343,20 @@ function jumpstart_su_get_presets( $preset = '' ) {
 						'header_text'                       => '',
 						'searchform'                        => 'hide',
 						'font_menu'                         => array(
-							'size'          => '14px',
-							'face'          => 'google',
-							'style'         => 'normal',
-							'weight'        => '300',
-							'google'        => 'Raleway:300',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'size'         => '14px',
+							'face'         => 'google',
+							'style'        => 'normal',
+							'weight'       => '300',
+							'google'       => 'Raleway:300',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
 						),
 					), $settings );
 
@@ -372,6 +400,14 @@ function jumpstart_su_get_presets( $preset = '' ) {
 
 						$settings['social_media_style'] = 'dark';
 
+						$settings['logo'] = array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo_2x.png',
+						);
+
 					}
 
 					break;
@@ -396,13 +432,20 @@ function jumpstart_su_get_presets( $preset = '' ) {
 						'footer_bg_color_brightness'        => 'dark',
 						'custom_styles'                     => "/**\r\n * Custom CSS Example: Add 20px of space\r\n * to bottom of header, below menu.\r\n */\r\n@media (min-width: 992px) {\r\n\t.site-header {\r\n\t\tpadding-bottom: 20px;\r\n\t}\r\n\t.header-nav .tb-primary-menu .menu-search .tb-search-trigger,\r\n\t\t.tb-primary-menu > li > a {\r\n\t\topacity: .8;\r\n\t}\r\n\t.header-nav .tb-primary-menu .menu-search .tb-search-trigger:hover,\r\n\t.tb-primary-menu > li > a:hover {\r\n\t\tbackground: transparent;\r\n\t\topacity: 1;\r\n\t}\r\n}",
 						'font_menu'                         => array(
-							'size'          => '11px',
-							'face'          => 'google',
-							'style'         => 'uppercase',
-							'weight'        => '700',
-							'google'        => 'Lato:700',
-							'typekit'       => '',
-							'typekit_kit'   => '',
+							'size'         => '11px',
+							'face'         => 'google',
+							'style'        => 'uppercase',
+							'weight'       => '700',
+							'google'       => 'Lato:700',
+							'typekit'      => '',
+							'typekit_kit'  => '',
+						),
+						'logo'                              => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
 						),
 					), $settings );
 
@@ -441,6 +484,14 @@ function jumpstart_su_get_presets( $preset = '' ) {
 						$settings['footer_link_color'] = '#f9bc18';
 
 						$settings['footer_link_hover_color'] = '#f9d718';
+
+						$settings['logo'] = array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo.png',
+							'image_width'  => '250',
+							'image_height' => '75',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo_2x.png',
+						);
 
 					}
 			}
