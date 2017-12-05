@@ -43,6 +43,7 @@ Jump Start Changelog
 * Fixed: WooCommerce deprecated use of `WC_Cart::get_cart_url`.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
+* Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
 * Removed: No more html5shiv for HTML5 compatibility with IE8.

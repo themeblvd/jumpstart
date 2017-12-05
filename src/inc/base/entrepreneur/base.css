@@ -152,9 +152,15 @@ Author URI: http://www.themeblvd.com
 		line-height: 1;
 	}
 }
+@media (min-width: 768px) {
+	.site-header.dark .header-text-logo .tb-text-logo,
+	.site-header.dark .header-text-logo .tagline {
+		color: #fff;
+	}
+}
 @media (max-width: 767px) {
 	.mobile-light .header-text-logo .tb-text-logo {
-		color: #222222;
+		color: #222;
 	}
 }
 .header-content .header-text-logo .tagline {
