@@ -1425,7 +1425,7 @@ jQuery(document).ready(function($) {
 			var hash = document.location.hash;
 
 			if ( hash && hash.indexOf('tab_') != -1 ) {
-				$('.element-tabs a[href="'+hash.replace('tab_', '')+'"]').tab('show');
+				$('.tb-tabs a[href="'+hash.replace('tab_', '')+'"]').tab('show');
 			}
 		}
 
