@@ -575,6 +575,8 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$current_value = $val['raw'];
 		}
 
+		// @TODO Add themeblvd_do_rich_editing()
+
 		$raw_content = sprintf(
 			'<textarea id="%s" class="tb-editor-input" name="%s" data-style="mini">%s</textarea>',
 			esc_attr( uniqid( 'tb-editor-' . $id ) ),

@@ -307,36 +307,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				}
 
-				/**
-				 * Filters which option types will be displayed as
-				 * full-width in an options set.
-				 *
-				 * Specifically, this refers to the layout of an option
-				 * where you have the option controls to the left and
-				 * the description to the right. With these, option
-				 * controls will be stretched full-width of the options
-				 * panel, with the description falling below.
-				 *
-				 * @since @@name-framework 2.7.0
-				 *
-				 * @param array All options to display as full-width.
-				 */
-				$full_width = apply_filters( 'themeblvd_full_width_options', array(
-					'bars',
-					'buttons',
-					'code',
-					'editor',
-					'datasets',
-					'locations',
-					'price_cols',
-					'sectors',
-					'tabs',
-					'testimonials',
-					'text_blocks',
-					'toggles',
-				));
-
-				if ( in_array( $option['type'], $full_width ) ) {
+				if ( in_array( $option['type'], themeblvd_get_full_width_option_types() ) ) {
 
 					$class .= ' full-width';
 
@@ -2132,6 +2103,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * }
 			 */
 			case 'editor':
+				// @TODO Add themeblvd_do_rich_editing()
 				if ( user_can_richedit() ) {
 
 					add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );

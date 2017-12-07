@@ -160,6 +160,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * 9.  upload    Media uploader option. d
 	 * 10. button    Configure custom button.
 	 * 11. geo       Coordinates for a Google map marker.
+	 * 12. editor    WordPress visual editor.
 	 *
 	 * Note: One difference here from a set of framework options,
 	 * is that for one option in each sortable item set, you'll
@@ -366,7 +367,6 @@ abstract class Theme_Blvd_Sortable_Option {
 			 * Wrap a some of the options in a DIV
 			 * to be utilized from the javascript.
 			 */
-
 			if ( 'subgroup_start' === $option['type'] ) {
 
 				$class = 'subgroup';
@@ -394,6 +394,10 @@ abstract class Theme_Blvd_Sortable_Option {
 			 */
 
 			$class = 'section-' . $option['type'];
+
+			if ( in_array( $option['type'], themeblvd_get_full_width_option_types() ) ) {
+				$class .= ' full-width';
+			}
 
 			if ( isset( $option['class'] ) ) {
 				$class .= ' ' . $option['class'];
@@ -786,6 +790,22 @@ abstract class Theme_Blvd_Sortable_Option {
 					$item_output .= '</p>';
 
 					$item_output .= '</div><!-- .geo-generate (end) -->';
+
+					break;
+
+				/*---------------------------------------*/
+				/* Editor
+				/*---------------------------------------*/
+
+				// @TODO Add themeblvd_do_rich_editing()
+
+				case 'editor':
+					$item_output .= sprintf(
+						'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
+						esc_attr( uniqid( 'tb-editor-' . $option_id ) ),
+						esc_attr( $option_name . '[' . $option_id . '][' . $item_id . '][' . $option['id'] . ']' ),
+						$current
+					);
 
 			}
 
@@ -1304,8 +1324,6 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 				'name'     => __( 'Location Information', 'jumpstart' ),
 				'desc'     => __( 'When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don\'t get too carried away.', 'jumpstart' ),
 				'type'     => 'textarea',
-				'editor'   => true,
-				'code'     => 'html',
 			),
 			array(
 				'id'       => 'image',
@@ -1452,8 +1470,6 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 				'desc'    => __( 'Enter each feature, seprated by a line break. If you like, spice it up with some icons.', 'jumpstart' ) . '<br><br>[vector_icon icon="check" color="#00aa00"]<br>[vector_icon icon="times" color="#aa0000"]',
 				'type'    => 'textarea',
 				'std'     => "Feature 1\nFeature 2\nFeature 3",
-				'html'    => true,
-				'editor'  => true,
 			),
 			array(
 				'type'    => 'subgroup_start',
@@ -2319,11 +2335,9 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 		return array(
 			array(
 				'id'       => 'text',
-				'name'     => __( 'Testimonial Text', 'jumpstart' ),
-				'desc'     => __( 'Enter any text of the testimonial.', 'jumpstart' ),
-				'type'     => 'textarea',
-				'editor'   => true,
-				'code'     => 'html',
+				'name'     => null,
+				'desc'     => __( 'Enter the text for the testimonial in the editor above.', 'jumpstart' ),
+				'type'     => 'editor',
 			),
 			array(
 				'id'       => 'name',
@@ -2605,20 +2619,18 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 
 		return array(
 			array(
+				'id'      => 'content',
+				'name'    => null,
+				'desc'    => __( 'Enter the content of the toggle in the editor above. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden.', 'jumpstart' ),
+				'type'    => 'editor',
+			),
+			array(
 				'id'      => 'title',
 				'name'    => __( 'Title', 'jumpstart' ),
 				'desc'    => __( 'Enter a short title to represent this toggle.', 'jumpstart' ),
 				'type'    => 'text',
 				'std'     => 'Toggle Title',
 				'trigger' => true, // Triggers this option's value to be used in toggle
-			),
-			array(
-				'id'      => 'content',
-				'name'    => __( 'Content', 'jumpstart' ),
-				'desc'    => __( 'Configure the content of the toggle. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden.', 'jumpstart' ),
-				'type'    => 'textarea',
-				'editor'  => true,
-				'code'    => 'html',
 			),
 			array(
 				'id'      => 'wpautop',

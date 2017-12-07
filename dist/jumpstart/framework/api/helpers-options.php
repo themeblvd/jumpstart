@@ -1296,3 +1296,50 @@ function themeblvd_conditionals_config() {
 	return apply_filters( 'themeblvd_conditionals_config', $conditionals );
 
 }
+
+/**
+ * Get full-width option types.
+ *
+ * This list of option types will be used to
+ * determine if an option displays full-width,
+ * with the description appearing below, in a
+ * given options interface instance.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @return array $types All option types to display as full-width.
+ */
+function themeblvd_get_full_width_option_types() {
+
+	/**
+	 * Filters which option types will be displayed as
+	 * full-width in an options set.
+	 *
+	 * Specifically, this refers to the layout of an option
+	 * where you have the option controls to the left and
+	 * the description to the right. With these, option
+	 * controls will be stretched full-width of the options
+	 * panel, with the description falling below.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array All option types to display as full-width.
+	 */
+	$types = apply_filters( 'themeblvd_full_width_option_types', array(
+		'bars',
+		'buttons',
+		'code',
+		'editor',
+		'datasets',
+		'locations',
+		'price_cols',
+		'sectors',
+		'tabs',
+		'testimonials',
+		'text_blocks',
+		'toggles',
+	));
+
+	return $types;
+
+}
