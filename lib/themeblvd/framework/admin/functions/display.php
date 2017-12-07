@@ -442,7 +442,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 	}
 
 	if ( in_array( 'raw', $options ) ) {
-		$sources['raw'] = __( 'Raw Content', '@@text-domain' );
+		$sources['raw'] = __( 'Custom Content', '@@text-domain' );
 	}
 
 	// Set default value.
@@ -575,32 +575,12 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$current_value = $val['raw'];
 		}
 
-		$raw_content  = '<div class="textarea-wrap with-editor-nav">';
-
-		$raw_content .= '<nav class="editor-nav clearfix">';
-
-		$raw_content .= sprintf(
-			'<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="%s" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>',
-			esc_attr__( 'Open in Editor', '@@text-domain' )
-		);
-
-		$raw_content .= sprintf(
-			'<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="%s" data-target="%s" data-title="%s" data-code_lang="html"><i class="tb-icon-code"></i></a>',
-			esc_attr__( 'Open in Code Editor', '@@text-domain' ),
-			esc_textarea( $id . '_raw' ),
-			esc_attr__( 'Edit HTML', '@@text-domain' )
-		);
-
-		$raw_content .= '</nav>';
-
-		$raw_content .= sprintf(
-			'<textarea id="%s" name="%s" class="of-input" cols="8" rows="8">%s</textarea>',
-			esc_textarea( $id . '_raw' ),
+		$raw_content = sprintf(
+			'<textarea id="%s" class="tb-editor-input" name="%s" data-style="mini">%s</textarea>',
+			esc_attr( uniqid( 'tb-editor-' . $id ) ),
 			esc_attr( $name . '[' . $id . '][raw]' ),
-			esc_textarea( $current_value )
+			$current_value
 		);
-
-		$raw_content .= '</div><!-- .textarea-wrap (end) -->';
 
 		/*
 		 * Checkbox for the_content filter (added in v2.0.6).

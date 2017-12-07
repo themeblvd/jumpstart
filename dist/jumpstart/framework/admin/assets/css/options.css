@@ -845,6 +845,10 @@
   height: 340px;
 }
 
+.tb-options-wrap .column-content-type-raw .wp-editor-wrap {
+  margin: 10px 0 20px 0;
+}
+
 .tb-options-wrap .CodeMirror.cm-s-themeblvd {
   border: 1px solid #eee;
 }
