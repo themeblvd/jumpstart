@@ -542,9 +542,7 @@ class Theme_Blvd_Options_API {
 						'desc'    => __( 'Enter the copyright text you\'d like to show in the footer of your site.', '@@text-domain' ) . '<br><br><em>%year%</em> &mdash; ' . __( 'Show current year.', '@@text-domain' ) . '<br><em>%site_title%</em> &mdash; ' . __( 'Show your site title.', '@@text-domain' ),
 						'id'      => 'footer_copyright',
 						'std'     => '(c) %year% %site_title% - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
-						'type'    => 'textarea',
-						'editor'  => true,
-						'code'    => 'html',
+						'type'    => 'editor',
 						'class'   => 'standard-footer-setup',
 					),
 				), // End footer options.
