@@ -498,7 +498,7 @@ abstract class Theme_Blvd_Sortable_Option {
 
 					$item_output .= sprintf(
 						'<textarea id="%s" class="%s" name="%s" cols="%s" rows="8"%s>%s</textarea>',
-						esc_textarea( $option['id'] ),
+						esc_attr( $option['id'] ),
 						$class,
 						esc_attr( $option_name . '[' . $option_id . '][' . $item_id . '][' . $option['id'] . ']' ),
 						esc_attr( $cols ),
@@ -797,15 +797,48 @@ abstract class Theme_Blvd_Sortable_Option {
 				/* Editor
 				/*---------------------------------------*/
 
-				// @TODO Add themeblvd_do_rich_editing()
-
 				case 'editor':
-					$item_output .= sprintf(
-						'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
-						esc_attr( uniqid( 'tb-editor-' . $option_id ) ),
-						esc_attr( $option_name . '[' . $option_id . '][' . $item_id . '][' . $option['id'] . ']' ),
-						$current
-					);
+					if ( themeblvd_do_rich_editing() ) {
+
+						add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
+
+						/** This filter is documented in wp-includes/class-wp-editor.php */
+						$current = apply_filters( 'the_editor_content', $current, 'tinymce' );
+
+						remove_filter( 'the_editor_content', 'format_for_editor' );
+
+						/*
+						 * Prevent premature closing of textarea in case
+						 * format_for_editor() didn't apply or the_editor_content
+						 * filter did a wrong thing.
+						 */
+						$current = preg_replace( '#</textarea#i', '&lt;/textarea', $current );
+
+						$item_output .= sprintf(
+							'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
+							esc_attr( uniqid( 'tb-editor-' . $option['id'] ) ),
+							esc_attr( $option_name . '[' . $option_id . '][' . $item_id . '][' . $option['id'] . ']' ),
+							$current
+						);
+
+					} else {
+
+						/*
+						 * When rich editing is disabled, display
+						 * standard <textarea>.
+						 */
+						$item_output .= '<div class="textarea-wrap">';
+
+						$item_output .= sprintf(
+							'<textarea id="%s" class="of-input" name="%s" cols="8" rows="8">%s</textarea>',
+							esc_attr( $option['id'] ),
+							esc_attr( $option_name . '[' . $option_id . '][' . $item_id . '][' . $option['id'] . ']' ),
+							esc_textarea( $current )
+						);
+
+						$item_output .= '</div><!-- .textarea-wrap (end) -->';
+
+					}
 
 			}
 

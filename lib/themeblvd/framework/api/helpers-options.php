@@ -1343,3 +1343,38 @@ function themeblvd_get_full_width_option_types() {
 	return $types;
 
 }
+
+/**
+ * Whether to allow rich-editing throughout
+ * option interfaces with `editor` type
+ * option.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @param bool $do Whether to allow rich editing.
+ */
+function themeblvd_do_rich_editing() {
+
+	$do = false;
+
+	if ( user_can_richedit() ) {
+
+		$do = true;
+
+	}
+
+	/**
+	 * Filters whether rich-editing is added
+	 * throughout option interfaces.
+	 *
+	 * When FALSE, all `editor` type framework
+	 * options will be rendered as a standard
+	 * <textarea>.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param bool $do Whether to allow rich editing.
+	 */
+	return apply_filters( 'themeblvd_do_rich_editing', $do );
+
+}

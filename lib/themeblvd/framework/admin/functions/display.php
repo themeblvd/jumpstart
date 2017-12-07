@@ -575,14 +575,46 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$current_value = $val['raw'];
 		}
 
-		// @TODO Add themeblvd_do_rich_editing()
+		if ( themeblvd_do_rich_editing() ) {
 
-		$raw_content = sprintf(
-			'<textarea id="%s" class="tb-editor-input" name="%s" data-style="mini">%s</textarea>',
-			esc_attr( uniqid( 'tb-editor-' . $id ) ),
-			esc_attr( $name . '[' . $id . '][raw]' ),
-			$current_value
-		);
+			add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
+
+			/** This filter is documented in wp-includes/class-wp-editor.php */
+			$current_value = apply_filters( 'the_editor_content', $current_value, 'tinymce' );
+
+			remove_filter( 'the_editor_content', 'format_for_editor' );
+
+			/*
+			 * Prevent premature closing of textarea in case
+			 * format_for_editor() didn't apply or the_editor_content
+			 * filter did a wrong thing.
+			 */
+			$current_value = preg_replace( '#</textarea#i', '&lt;/textarea', $current_value );
+
+			$raw_content = sprintf(
+				'<textarea id="%s" class="tb-editor-input" name="%s" data-style="mini">%s</textarea>',
+				esc_attr( uniqid( 'tb-editor-' . $id ) ),
+				esc_attr( $name . '[' . $id . '][raw]' ),
+				$current_value
+			);
+
+		} else {
+
+			/*
+			 * When rich editing is disabled, display
+			 * standard <textarea>.
+			 */
+			$raw_content = '<div class="textarea-wrap">';
+
+			$raw_content .= sprintf(
+				'<textarea class="of-input" name="%s" cols="8" rows="8">%s</textarea>',
+				esc_attr( $name . '[' . $id . '][raw]' ),
+				esc_textarea( $current_value )
+			);
+
+			$raw_content .= '</div><!-- .textarea-wrap (end) -->';
+
+		}
 
 		/*
 		 * Checkbox for the_content filter (added in v2.0.6).

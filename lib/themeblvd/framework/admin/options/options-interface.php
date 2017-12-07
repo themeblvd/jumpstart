@@ -527,12 +527,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * The `textarea` option tpe is generally just
 			 * a standard <textarea> option.
 			 *
-			 * This option type can be extended by adding
-			 * links to edit the contents of the textarea in
-			 * a WP visual editor or code editor modal window.
-			 * This is done by passing in $option['editor']
-			 * or $option['code'].
-			 *
 			 * @param array $option {
 			 *     @type string $id     Unique ID for option.
 			 *     @type string $name   Title for option.
@@ -2103,42 +2097,47 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * }
 			 */
 			case 'editor':
-				// @TODO Add themeblvd_do_rich_editing()
-				if ( user_can_richedit() ) {
+				if ( themeblvd_do_rich_editing() ) {
 
 					add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
 
-					$default_editor = 'tinymce';
-
-				} else {
-
-					$default_editor = 'html';
-
-				}
-
-				/** This filter is documented in wp-includes/class-wp-editor.php */
-				$current = apply_filters( 'the_editor_content', $current, $default_editor );
-
-				// Reset filter addition.
-				if ( user_can_richedit() ) {
+					/** This filter is documented in wp-includes/class-wp-editor.php */
+					$current = apply_filters( 'the_editor_content', $current, 'tinymce' );
 
 					remove_filter( 'the_editor_content', 'format_for_editor' );
 
+					/*
+					 * Prevent premature closing of textarea in case
+					 * format_for_editor() didn't apply or the_editor_content
+					 * filter did a wrong thing.
+					 */
+					$current = preg_replace( '#</textarea#i', '&lt;/textarea', $current );
+
+					$output .= sprintf(
+						'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
+						esc_attr( uniqid( 'tb-editor-' . $option['id'] ) ),
+						esc_attr( $option_name . '[' . $option['id'] . ']' ),
+						$current
+					);
+
+				} else {
+
+					/*
+					 * When rich editing is disabled, display
+					 * standard <textarea>.
+					 */
+					$output .= '<div class="textarea-wrap">';
+
+					$output .= sprintf(
+						'<textarea id="%s" class="of-input" name="%s" cols="8" rows="8">%s</textarea>',
+						esc_attr( $option['id'] ),
+						esc_attr( $option_name . '[' . $option['id'] . ']' ),
+						esc_textarea( $current )
+					);
+
+					$output .= '</div><!-- .textarea-wrap (end) -->';
+
 				}
-
-				/*
-				 * Prevent premature closing of textarea in case
-				 * format_for_editor() didn't apply or the_editor_content
-				 * filter did a wrong thing.
-				 */
-				$current = preg_replace( '#</textarea#i', '&lt;/textarea', $current );
-
-				$output .= sprintf(
-					'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
-					esc_attr( uniqid( 'tb-editor-' . $option['id'] ) ),
-					esc_attr( $option_name . '[' . $option['id'] . ']' ),
-					$current
-				);
 
 				break;
 
@@ -2560,33 +2559,30 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 			$output .= '</div><!-- .controls (end) -->' . "\n";;
 
-			if ( 'editor' !== $option['type'] ) { // The `editor` type handles its own description.
+			if ( ! empty( $option['desc'] ) ) {
 
-				if ( ! empty( $option['desc'] ) ) {
+				if ( is_array( $option['desc'] ) ) {
 
-					if ( is_array( $option['desc'] ) ) {
-
-						foreach ( $option['desc'] as $desc_id => $desc ) {
-
-							$output .= sprintf(
-								'<div class="explain hide %s">%s</div>',
-								esc_attr( $desc_id ),
-								themeblvd_kses( $desc )
-							);
-
-						}
-					} else {
+					foreach ( $option['desc'] as $desc_id => $desc ) {
 
 						$output .= sprintf(
-							'<div class="explain">%s</div>',
-							themeblvd_kses( $option['desc'] )
+							'<div class="explain hide %s">%s</div>',
+							esc_attr( $desc_id ),
+							themeblvd_kses( $desc )
 						);
 
 					}
+				} else {
 
-					$output .= "\n";
+					$output .= sprintf(
+						'<div class="explain">%s</div>',
+						themeblvd_kses( $option['desc'] )
+					);
 
 				}
+
+				$output .= "\n";
+
 			}
 
 			$output .= '<div class="clear"></div>' . "\n";;
