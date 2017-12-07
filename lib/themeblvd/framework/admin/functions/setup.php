@@ -301,6 +301,7 @@ function themeblvd_admin_assets( $type = '' ) {
 			'jquery-ui-slider',
 			'wp-color-picker',
 			'media-editor',
+			'editor',
 		);
 
 		foreach ( $required as $handle ) {
@@ -308,6 +309,10 @@ function themeblvd_admin_assets( $type = '' ) {
 			if ( 'media-editor' === $handle ) {
 
 				wp_enqueue_media();
+
+			} elseif ( 'editor' === $handle ) {
+
+				wp_enqueue_editor();
 
 			} else {
 

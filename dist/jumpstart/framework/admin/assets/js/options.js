@@ -1752,7 +1752,9 @@ window.themeblvd.options = {};
  * @param {object} admin Theme Blvd admin object.
  * @param {object} l10n  Localized admin text strings.
  */
-( function( $, admin, l10n ) {
+( function( $, window, admin, l10n ) {
+
+	wp = window.wp || {};
 
 	/**
 	 * Handles setting up content editor, called from the
@@ -1765,137 +1767,63 @@ window.themeblvd.options = {};
 	admin.options.editor = function( element ) {
 
 		/**
-		 * Bind modal content editor instances to all links
-		 * with class `tb-textarea-editor-link`.
+		 * Build inline editors.
 		 *
-		 * @since Theme_Blvd 2.5.0
+		 * @requires WordPress 4.8
+		 * @since Theme_Blvd 2.7.0
 		 */
-		$( element ).find( '.tb-textarea-editor-link' ).themeblvd( 'modal', null, {
-			build: false,
-			padding: true,
-			height: 'auto',
-			onLoad: function( self ) {
+		if ( 'undefined' !== typeof wp.editor ) {
 
-				// Temporary override WP's active editor.
-				wpActiveEditor = 'themeblvd_editor';
+			$( element ).find( '.tb-editor-input' ).each( function() {
 
-				var editor       = {},
-					editorID     = 'themeblvd_editor',
-					textarea     = {},
-					fieldName    = '',
-					content      = '',
-					hasTinymce   = 'undefined' !== typeof tinymce,
-					$modalWindow = self.$modalWindow;
+				var $textarea = $( this ),
+					editorID  = $textarea.attr( 'id' ),
+					style     = $textarea.data( 'style' ),
+					height    = 250,
+					toolbar   = 'formatselect bold italic | bullist numlist | blockquote | alignleft aligncenter alignright | link unlink | spellchecker';
 
-				if ( self.$element.is( '.tb-block-editor-link' ) ) {
+				// The user has disabled TinyMCE.
+				if ( 'undefined' === typeof window.tinymce ) {
 
-					fieldName = self.$element.closest( '.block' ).data( 'field-name' );
+					wp.editor.initialize( editorID, {
+						tinymce: false,
+						quicktags: true,
+						mediaButtons: true
+					} );
 
-					textarea = self.$element.closest( '.block' ).find( 'textarea[name="' + fieldName + '[content]"]' );
-
-				} else {
-
-					textarea = self.$element.closest( '.textarea-wrap' ).find( 'textarea' );
+					return;
 
 				}
 
-				// Get initial raw content.
-				content = textarea.val();
-
-				// Height of editor
-				$modalWindow.find( '.wp-editor-area, iframe' ).height( 300 );
-
-				if ( $modalWindow.find( '.wp-editor-wrap' ).is( '.tmce-active' ) ) {
-
-					// Get the current editor by ID.
-					if ( hasTinymce ) {
-						editor = tinymce.get( editorID );
-					}
-
-					// To "Visual" editor.
-					if ( editor ) {
-						content = window.switchEditors.wpautop( content );
-						editor.setContent( content, {format:'raw'} );
-					}
-				} else {
-
-					// To "Text" editor.
-					$modalWindow.find( 'textarea' ).val( content );
-
+				if ( tinymce.get( editorID ) ) {
+					wp.editor.remove( editorID );
 				}
 
-				// Prevent textarea scroll to show over modal.
-				textarea.css( 'overflow', 'hidden' );
-
-			},
-			onSave: function( self ) {
-
-				// Put back WP's active editor
-				wpActiveEditor = 'content';
-
-				var editor       = {},
-					editorID     = 'themeblvd_editor',
-					content      = '',
-					fieldName    = '',
-					$textarea    = {},
-					hasTinymce   = 'undefined' !== typeof tinymce,
-					$modalWindow = self.$modalWindow;
-
-				if ( self.$element.is( '.tb-block-editor-link' ) ) {
-
-					fieldName = self.$element.closest( '.block' ).data( 'field-name' );
-
-					$textarea = self.$element.closest( '.block' ).find( 'textarea[name="' + fieldName + '[content]"]' );
-
-				} else {
-
-					$textarea = self.$element.closest( '.textarea-wrap' ).find( 'textarea' );
-
+				if ( 'mini' == style ) {
+					height = 200;
+					toolbar = 'formatselect bold italic bullist link';
 				}
 
-				if ( $modalWindow.find( '.wp-editor-wrap' ).is( '.tmce-active' ) ) {
+				// Initialize editor with QuickTags and TinyMCE.
+				wp.editor.initialize( editorID, {
+					tinymce: {
+						wpautop: true,
+						theme: 'modern',
+						height : height,
+						plugins : 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
+						toolbar1: toolbar
+					},
+					quicktags: true,
+					mediaButtons: true
+				} );
 
-					if ( hasTinymce ) {
-						editor = tinymce.get( editorID );
-					}
+			} );
 
-					// From "Visual" editor
-					if ( editor ) {
-
-						content = editor.getContent();
-
-						content = window.switchEditors.pre_wpautop( content );
-
-					}
-
-				} else {
-
-					// From "Text" editor.
-					content = $modalWindow.find( '.wp-editor-area' ).val();
-
-				}
-
-				// Update options textara with new contnet from Editor.
-				$textarea.val( content );
-
-				// Put back textarea scrolling.
-				$textarea.css( 'overflow', 'visible' );
-
-			},
-			onCancel: function( self ) {
-
-				// Put back WP's active editor.
-				wpActiveEditor = 'content';
-
-				// Put back textarea scrolling.
-				self.$element.closest( '.textarea-wrap' ).find( 'textarea' ).css( 'overflow', 'visible' );
-
-			}
-		} );
+		}
 
 	};
 
-} )( jQuery, window.themeblvd, themeblvdL10n );
+} )( jQuery, window, window.themeblvd, themeblvdL10n );
 
 /**
  * Options System: Code Editor

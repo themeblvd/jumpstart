@@ -606,7 +606,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 						$output .= sprintf(
 							'<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="%s" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>',
-							esc_attr__( 'Open in Editor', '@@text-domain' )
+							esc_attr__( 'Open in Editor', 'jumpstart' )
 						);
 
 					}
@@ -615,7 +615,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 						$output .= sprintf(
 							'<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="%s" data-target="%s" data-title="%s" data-code_lang="%s"><i class="tb-icon-code"></i></a>',
-							esc_attr__( 'Open in Code Editor', '@@text-domain' ),
+							esc_attr__( 'Open in Code Editor', 'jumpstart' ),
 							esc_attr( $option['id'] ),
 							esc_attr( $option['name'] ),
 							esc_attr( $option['code'] )
@@ -2172,85 +2172,41 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * }
 			 */
 			case 'editor':
-				$editor_settings = array(
-					'wpautop'        => true,
-					'text_area_name' => esc_attr( $option_name . '[' . $option['id'] . ']' ),
-					'media_buttons'  => true,
-					'tinymce'        => array(
-						'plugins' => 'wordpress',
-					),
-					'height'         => 'small', // small, medium, large (Not part of WP's TinyMCE settings
-				);
+				if ( user_can_richedit() ) {
 
-				/*
-				 * @TODO -- Add TB shortcode generator button.
-				 * This will work however currently there is a quirk that won't allow for
-				 * more than one editor on a page. Shortcodes will get inserted in whichever
-				 * the last editor the cursor was in.
-				 */
-				// if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && 'no' != get_option( 'themeblvd_shortcode_generator' ) ) {
-				// 	$editor_settings['tinymce']['plugins'] .= ',ThemeBlvdShortcodes';
-				// }
+					add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
 
-				if ( ! empty( $option['settings'] ) ) {
-
-					$editor_settings = wp_parse_args( $option['settings'], $editor_settings );
-
-				}
-
-				if ( ! empty( $option['desc_location'] ) && 'before' === $option['desc_location'] ) {
-
-					$desc_location = 'before';
+					$default_editor = 'tinymce';
 
 				} else {
 
-					$desc_location = 'after';
+					$default_editor = 'html';
 
 				}
 
-				$explain_value = '';
+				/** This filter is documented in wp-includes/class-wp-editor.php */
+				$current = apply_filters( 'the_editor_content', $current, $default_editor );
 
-				$has_description = '';
+				// Reset filter addition.
+				if ( user_can_richedit() ) {
 
-				if ( ! empty( $option['desc'] ) ) {
-
-					$explain_value = $option['desc'];
-
-					$has_description = 'has-desc';
+					remove_filter( 'the_editor_content', 'format_for_editor' );
 
 				}
 
-				// Add description to output, if set to come before editor.
+				/*
+				 * Prevent premature closing of textarea in case
+				 * format_for_editor() didn't apply or the_editor_content
+				 * filter did a wrong thing.
+				 */
+				$current = preg_replace( '#</textarea#i', '&lt;/textarea', $current );
+
 				$output .= sprintf(
-					'<div class="tb-wp-editor desc-%s %s height-%s">',
-					$desc_location,
-					$has_description,
-					esc_attr( $editor_settings['height'] )
+					'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
+					esc_attr( uniqid( 'tb-editor-' . $option['id'] ) ),
+					esc_attr( $option_name . '[' . $option['id'] . ']' ),
+					$current
 				);
-
-				if ( 'before' === $desc_location ) {
-					$output .= '<div class="explain">' . $explain_value . '</div>' . "\n";
-				}
-
-				// Add WP editor to output.
-				ob_start();
-
-				wp_editor(
-					$current,
-					uniqid( $option['id'] . '_' . rand() ),
-					$editor_settings
-				);
-
-				$output .= ob_get_clean();
-
-				// Add description to output, if set to come after editor.
-				if ( 'after' === $desc_location ) {
-
-					$output .= '<div class="explain">' . themeblvd_kses( $explain_value ) . '</div>' . "\n";
-
-				}
-
-				$output .= '</div><!-- .tb-wp-editor (end) -->';
 
 				break;
 

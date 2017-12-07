@@ -42,6 +42,7 @@ function themeblvd_add_sanitization() {
 	add_filter( 'themeblvd_sanitize_hidden',           'themeblvd_sanitize_hidden',                10, 2 );
 	add_filter( 'themeblvd_sanitize_text',             'themeblvd_sanitize_text',                  10, 1 );
 	add_filter( 'themeblvd_sanitize_textarea',         'themeblvd_sanitize_textarea',              10, 1 );
+	add_filter( 'themeblvd_sanitize_editor',           'themeblvd_sanitize_textarea',              10, 1 );
 	add_filter( 'themeblvd_sanitize_select',           'themeblvd_sanitize_text',                  10, 2 );
 	add_filter( 'themeblvd_sanitize_radio',            'themeblvd_sanitize_text',                  10, 2 );
 	add_filter( 'themeblvd_sanitize_images',           'themeblvd_sanitize_text',                  10, 2 );
@@ -220,6 +221,7 @@ function themeblvd_sanitize_textarea( $input ) {
 	$output = str_replace( "\r\n", "\n", $output );
 
 	return $output;
+
 }
 
 /**
