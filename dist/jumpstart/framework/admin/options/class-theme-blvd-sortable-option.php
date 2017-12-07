@@ -484,27 +484,7 @@ abstract class Theme_Blvd_Sortable_Option {
 						$cols = $option['options']['cols'];
 					}
 
-					if ( isset( $option['editor'] ) || isset( $option['code'] ) ) {
-
-						$item_output .= '<div class="textarea-wrap with-editor-nav">';
-
-						$item_output .= '<nav class="editor-nav">';
-
-						if ( isset( $option['editor'] ) && $option['editor'] ) {
-							$item_output .= '<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="' . esc_attr__( 'Open in Editor', 'jumpstart' ) . '" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>';
-						}
-
-						if ( isset( $option['code'] ) && in_array( $option['code'], array( 'html', 'javascript', 'css' ) ) ) {
-							$item_output .= '<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="' . esc_attr__( 'Open in Code Editor', 'jumpstart' ) . '" data-target="' . esc_textarea( $option['id'] ) . '" data-title="' . esc_attr( $option['name'] ) . '" data-code_lang="' . $option['code'] . '"><i class="tb-icon-code"></i></a>';
-						}
-
-						$item_output .= '</nav>';
-
-					} else {
-
-						$item_output .= '<div class="textarea-wrap">';
-
-					}
+					$item_output .= '<div class="textarea-wrap">';
 
 					$class = 'of-input';
 

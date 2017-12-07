@@ -801,50 +801,8 @@
   float: right;
 }
 
-.tb-options-wrap .section-textarea .textarea-wrap.with-editor-nav,
-.tb-options-wrap .section-content .textarea-wrap.with-editor-nav {
-  margin-bottom: 10px;
-  padding-bottom: 25px;
-  position: relative;
-}
-
-.tb-options-wrap .section-textarea .textarea-wrap.with-editor-nav textarea,
-.tb-options-wrap .section-content .textarea-wrap.with-editor-nav textarea {
-  margin: 0;
-  vertical-align: top;
-}
-
-.tb-options-wrap .section-textarea .editor-nav,
-.tb-options-wrap .section-content .editor-nav {
-  background: #f8f8f8;
-  border: 1px solid #eee;
-  border-top: none;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.tb-options-wrap .section-textarea .editor-nav a,
-.tb-options-wrap .section-content .editor-nav a {
-  color: #666;
-  font-size: 16px;
-  float: right;
-  height: 24px;
-  line-height: 24px;
-  margin-left: 2px;
-}
-
-.tb-options-wrap .section-textarea .editor-nav a:hover,
-.tb-options-wrap .section-content .editor-nav a:hover {
-  color: #000000;
-}
-
-.wp-admin.rtl .tb-options-wrap .section-textarea .editor-nav a,
-.wp-admin.rtl .tb-options-wrap .section-content .editor-nav a {
-  float: left;
-  margin-left: 0;
-  margin-right: 2px;
+.tb-options-wrap .tb-editor-input {
+  height: 250px;
 }
 
 .tb-options-wrap .section-editor .desc-after.has-desc .explain {

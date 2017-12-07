@@ -7,49 +7,11 @@
 ////
 
 //
-// Link to code and content editors
+// Inline content editor
 //
 
-.tb-options-wrap .section-textarea,
-.tb-options-wrap .section-content {
-	.textarea-wrap.with-editor-nav {
-		margin-bottom: 10px;
-		padding-bottom: 25px;
-		position: relative;
-	}
-	.textarea-wrap.with-editor-nav textarea {
-		margin: 0;
-		vertical-align: top;
-	}
-	.editor-nav {
-		background: $clr-bg-light;
-		border: 1px solid $clr-border;
-		border-top: none;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
-	.editor-nav a {
-		color: $clr-text;
-		font-size: 16px;
-		float: right;
-		height: 24px;
-		line-height: 24px;
-		margin-left: 2px;
-	}
-	.editor-nav a:hover {
-		color: #000000;
-	}
-}
-
-.wp-admin.rtl .tb-options-wrap {
-	.section-textarea .editor-nav a,
-	.section-content .editor-nav a {
-		float: left;
-		margin-left: 0;
-		margin-right: 2px;
-	}
+.tb-options-wrap .tb-editor-input {
+	height: 250px;
 }
 
 //

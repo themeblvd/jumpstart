@@ -589,47 +589,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				}
 
-				/*
-				 * Determine how to wrap the textarea.
-				 *
-				 * If the textarea is supposed to include a link to
-				 * edit the contents in a WP visual editor and/or
-				 * code editor, we'll tackle that here.
-				 */
-				if ( ! empty( $option['editor'] ) || ! empty( $option['code'] ) ) {
-
-					$output .= '<div class="textarea-wrap with-editor-nav">';
-
-					$output .= '<nav class="editor-nav">';
-
-					if ( ! empty( $option['editor'] ) ) {
-
-						$output .= sprintf(
-							'<a href="#" class="tb-textarea-editor-link tb-tooltip-link" data-tooltip-text="%s" data-target="themeblvd-editor-modal"><i class="tb-icon-pencil"></i></a>',
-							esc_attr__( 'Open in Editor', 'jumpstart' )
-						);
-
-					}
-
-					if ( isset( $option['code'] ) && in_array( $option['code'], array( 'html', 'javascript', 'css' ) ) ) {
-
-						$output .= sprintf(
-							'<a href="#" class="tb-textarea-code-link tb-tooltip-link" data-tooltip-text="%s" data-target="%s" data-title="%s" data-code_lang="%s"><i class="tb-icon-code"></i></a>',
-							esc_attr__( 'Open in Code Editor', 'jumpstart' ),
-							esc_attr( $option['id'] ),
-							esc_attr( $option['name'] ),
-							esc_attr( $option['code'] )
-						);
-
-					}
-
-					$output .= '</nav>';
-
-				} else {
-
-					$output .= '<div class="textarea-wrap">'; // Standard wrap, with no editors.
-
-				}
+				$output .= '<div class="textarea-wrap">';
 
 				$output .= sprintf(
 					'<textarea id="%s" class="of-input" name="%s" cols="%s" rows="8"%s>%s</textarea>',
