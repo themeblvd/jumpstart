@@ -62,14 +62,6 @@ class Theme_Blvd_Options_Page {
 	private $sanitized = false;
 
 	/**
-	 * Whether options page has editor modal.
-	 *
-	 * @since Theme_Blvd 2.5.0
-	 * @var bool
-	 */
-	public $editor = false;
-
-	/**
 	 * Whether options page has code editor modal.
 	 *
 	 * @since Theme_Blvd 2.5.0
@@ -185,18 +177,6 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
-			// Textarea option, looking for visual or code editor.
-			if ( 'textarea' === $option['type'] ) {
-
-				if ( isset( $option['editor'] ) && $option['editor'] ) {
-					$this->editor = true;
-				}
-
-				if ( isset( $option['code'] ) && $option['code'] ) {
-					$this->code_editor = true;
-				}
-			}
-
 			// Directly embedded code editor.
 			if ( 'code' === $option['type'] ) {
 				$this->code_editor = true;
@@ -215,7 +195,7 @@ class Theme_Blvd_Options_Page {
 			}
 
 			// We can just end the loop, if using all the hidden modals.
-			if ( $this->editor && $this->code_editor && $this->icons_vector && $this->icons_image && $this->find_post_id && $this->textures && $this->gmap ) {
+			if ( $this->code_editor && $this->icons_vector && $this->icons_image && $this->find_post_id && $this->textures && $this->gmap ) {
 				break;
 			}
 		}
@@ -233,27 +213,6 @@ class Theme_Blvd_Options_Page {
 		// Add texture browsers.
 		if ( $this->textures ) {
 			add_action( 'current_screen', array( $this, 'add_texture_browser' ) );
-		}
-
-		/*
-		 * Add Editor into footer, which any textarea type
-		 * options with "editor" set to true can utilize.
-		 */
-		if ( $this->editor ) {
-
-			add_action( 'current_screen', array( $this, 'add_editor' ) );
-
-			// Shortcode generator for Editor modal.
-			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
-				if ( isset( $GLOBALS['_themeblvd_shortcode_generator'] ) ) {
-
-					add_action(
-						'admin_footer-appearance_page_' . $this->id,
-						array( $GLOBALS['_themeblvd_shortcode_generator'], 'add_modal' )
-					);
-
-				}
-			}
 		}
 
 		/*
@@ -378,7 +337,7 @@ class Theme_Blvd_Options_Page {
 		);
 
 		// FontAwesome is required for icon browser and shortcode generator.
-		if ( $this->icons_vector || $this->editor ) {
+		if ( $this->icons_vector ) {
 
 			wp_enqueue_style(
 				'fontawesome',
@@ -387,21 +346,6 @@ class Theme_Blvd_Options_Page {
 				TB_FRAMEWORK_VERSION
 			);
 
-		}
-
-		/// Shortcode generator for Theme Blvd shortcodes plugin.
-		if ( $this->editor ) {
-
-			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
-
-				wp_enqueue_style(
-					'themeblvd-shortcode-generator',
-					esc_url( TB_SHORTCODES_PLUGIN_URI . "/includes/admin/generator/assets/css/generator{$suffix}.css" ),
-					false,
-					TB_SHORTCODES_PLUGIN_VERSION
-				);
-
-			}
 		}
 
 		// Code mirror is required for code editor.
@@ -454,21 +398,6 @@ class Theme_Blvd_Options_Page {
 			array( 'jquery' ),
 			TB_FRAMEWORK_VERSION
 		);
-
-		// Shortcode generator for Theme Blvd shortcodes plugin.
-		if ( $this->editor ) {
-
-			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) && version_compare( TB_SHORTCODES_PLUGIN_VERSION, '1.4.0', '>=' ) ) {
-
-				wp_enqueue_script(
-					'themeblvd-shortcode-generator',
-					esc_url( TB_SHORTCODES_PLUGIN_URI . "/includes/admin/generator/assets/js/generator{$suffix}.js" ),
-					false,
-					TB_SHORTCODES_PLUGIN_VERSION
-				);
-
-			}
-		}
 
 		// Code mirror is required for code editor.
 		if ( $this->code_editor ) {
@@ -1029,23 +958,6 @@ class Theme_Blvd_Options_Page {
 		 * @param array $input The original data submitted from the form.
 		 */
 		return apply_filters( 'themeblvd_options_sanitize_' . $this->id, $clean, $input );
-
-	}
-
-	/**
-	 * Hook in hidden editor modal.
-	 *
-	 * @since Theme_Blvd 2.5.0
-	 */
-	public function add_editor() {
-
-		$page = get_current_screen();
-
-		if ( 'appearance_page_' . $this->id === $page->base ) {
-
-			add_action( 'in_admin_header', 'themeblvd_editor' );
-
-		}
 
 	}
 
