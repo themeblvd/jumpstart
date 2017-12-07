@@ -1780,7 +1780,7 @@ window.themeblvd.options = {};
 					editorID  = $textarea.attr( 'id' ),
 					style     = $textarea.data( 'style' ),
 					height    = 250,
-					toolbar   = 'formatselect bold italic | bullist numlist | blockquote | alignleft aligncenter alignright | link unlink | spellchecker';
+					toolbar   = 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link';
 
 				// The user has disabled TinyMCE.
 				if ( 'undefined' === typeof window.tinymce ) {
@@ -2348,7 +2348,7 @@ window.themeblvd.options = {};
 				max      = $option.data( 'max' );
 
 			// Setup sortable items
-			$section.find( '.item' ).each(function() {
+			$section.find( '.item' ).each( function() {
 				admin.options.sortable.setupItem( $( this ) );
 			} );
 
@@ -2357,7 +2357,10 @@ window.themeblvd.options = {};
 			}
 
 			$section.find( '.item-container' ).sortable( {
-				handle: '.item-handle'
+				handle: '.item-handle',
+				stop: function( event, ui ) {
+					ui.item.themeblvd( 'options', 'editor' );
+				}
 			} );
 
 			// Bind "Add Item" button.
@@ -2389,7 +2392,7 @@ window.themeblvd.options = {};
 					// Make it green for a bit to indicate it was just added.
 					$newItem.addClass( 'add' );
 
-					window.setTimeout(function() {
+					window.setTimeout( function() {
 
 						$newItem.removeClass( 'add' );
 
