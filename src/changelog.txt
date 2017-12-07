@@ -30,10 +30,11 @@ Jump Start Changelog
 	* WooCommerce: Removed any legacy code for WooCommerce versions prior to 3.0.
 	* WooCommerce: Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > WooCommerce*.
 	* WPML: Fixed WPML options showing on Theme Options, when WPML isn't installed.
+* New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
 * New: Added support for applying background shade to individual columns in the layout builder.
 * New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
 * New: Added "Custom Font" selection to typography options; this allows you to use custom fonts with the theme, that you've included yourself through customization or a third-party plugin.
-* Improvement: Swap TGMPA for [My Plugin Manager](http://mypluginmanager.com).
+* New: Added new suggested plugin manager; this swaps TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Improvement: On all theme bases, if no "Primary Navigation" menu is assigned, menu will not display (previously, only the Agent base behaved like this).
 * Improvement: Collapsible widget area locations no longer have the word "Ads" in their titles.
