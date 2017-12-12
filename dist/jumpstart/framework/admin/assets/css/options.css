@@ -849,12 +849,8 @@
   margin: 10px 0 20px 0;
 }
 
-.tb-options-wrap .CodeMirror.cm-s-themeblvd {
+.tb-options-wrap .CodeMirror {
   border: 1px solid #eee;
-}
-
-.wp-admin.rtl .tb-options-wrap .section-code .controls {
-  direction: ltr;
 }
 
 .tb-options-wrap .section-text .input-wrap {

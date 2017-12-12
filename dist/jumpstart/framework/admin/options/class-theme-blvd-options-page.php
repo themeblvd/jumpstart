@@ -64,10 +64,10 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has code editor modal.
 	 *
-	 * @since Theme_Blvd 2.5.0
-	 * @var bool
+	 * @since Theme_Blvd 2.7.0
+	 * @var array
 	 */
-	public $code_editor = false;
+	public $code_editors = array();
 
 	/**
 	 * Whether options page has vector icon browser
@@ -177,9 +177,13 @@ class Theme_Blvd_Options_Page {
 				}
 			}
 
-			// Directly embedded code editor.
+			// Directly embedded code editors.
 			if ( 'code' === $option['type'] ) {
-				$this->code_editor = true;
+				if ( ! empty( $option['editor_id'] ) ) {
+					$this->code_editors[ $option['editor_id'] ] = $option['lang'];
+				} else {
+					$this->code_editors[ 'tb-code-editor-' . $option['id'] ] = $option['lang'];
+				}
 			}
 
 			// Selects, looking for texture browser.
@@ -192,11 +196,6 @@ class Theme_Blvd_Options_Page {
 			// Look for "geo" option type.
 			if ( 'geo' === $option['type'] ) {
 				$this->gmap = true;
-			}
-
-			// We can just end the loop, if using all the hidden modals.
-			if ( $this->code_editor && $this->icons_vector && $this->icons_image && $this->find_post_id && $this->textures && $this->gmap ) {
-				break;
 			}
 		}
 
@@ -348,23 +347,6 @@ class Theme_Blvd_Options_Page {
 
 		}
 
-		// Code mirror is required for code editor.
-		if ( $this->code_editor ) {
-
-			wp_enqueue_style(
-				'codemirror',
-				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.css' ), // No unminified file.
-				null, '4.0'
-			);
-
-			wp_enqueue_style(
-				'codemirror-theme',
-				esc_url( TB_FRAMEWORK_URI . "/admin/assets/plugins/codemirror/themeblvd{$suffix}.css" ),
-				null,
-				'4.0'
-			);
-
-		}
 	}
 
 	/**
@@ -399,23 +381,24 @@ class Theme_Blvd_Options_Page {
 			TB_FRAMEWORK_VERSION
 		);
 
-		// Code mirror is required for code editor.
-		if ( $this->code_editor ) {
+		if ( $this->code_editors ) {
 
-			wp_enqueue_script(
-				'codemirror',
-				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/codemirror.min.js' ),
-				null,
-				'4.0'
-			);
+			foreach( $this->code_editors as $id => $lang ) {
 
-			wp_enqueue_script(
-				'codemirror-modes',
-				esc_url( TB_FRAMEWORK_URI . '/admin/assets/plugins/codemirror/modes.min.js' ),
-				null,
-				'4.0'
-			);
+				$settings = wp_enqueue_code_editor( array(
+					'type' => 'text/' . $lang
+				));
 
+				wp_add_inline_script(
+			        'themeblvd-admin-options-page',
+			        sprintf(
+			            'jQuery( function() { window.themeblvd.options.addCodeEditor( "%s", %s ); } );',
+						$id,
+						wp_json_encode( $settings )
+			        )
+			    );
+
+			}
 		}
 
 	}

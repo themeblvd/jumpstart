@@ -41,6 +41,7 @@ Jump Start Changelog
 * Improvement: Better consistency and styling with displaying collapsible widget areas.
 * Improvement: Selections for "Above Content" and "Below Content" default widget areas now available with Widget Area element of layout builder.
 * Improvement: Theme option style presets will now apply corresponding default theme logo to fit selected design, if the user hasn't configured a custom logo of their own.
+* Improvement: Admin code editors now use WordPress's implementation of CodeMirror editor with coding help and error hints, introduced in WordPress 4.9.
 * Fixed: WooCommerce deprecated use of `WC_Cart::get_cart_url`.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.

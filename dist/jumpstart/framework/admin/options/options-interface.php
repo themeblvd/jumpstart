@@ -2166,11 +2166,21 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				}
 
+				if ( ! empty( $option['editor_id'] ) ) {
+
+					$editor_id = $option['editor_id'];
+
+				} else {
+
+					$editor_id = 'tb-code-editor-' . $option['id'];
+
+				}
+
 				$output .= '<div class="textarea-wrap">';
 
 				$output .= sprintf(
 					'<textarea id="%s" data-code-lang="%s" name="%s" rows="8">%s</textarea>',
-					esc_attr( uniqid( 'code_editor_' . rand() ) ),
+					esc_attr( $editor_id ),
 					esc_attr( $lang ),
 					esc_attr( $option_name . '[' . $option['id'] . ']' ),
 					esc_textarea( $current )

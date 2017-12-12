@@ -82,15 +82,7 @@
 			$pane.fadeIn();
 
 			// Refresh any code editors in this tab.
-			$pane.find( '.section-code' ).each( function() {
-
-					var editor = $( this ).find( 'textarea' ).data( 'CodeMirrorInstance' );
-
-					if ( editor ) {
-						editor.refresh();
-					}
-				}
-			);
+			$pane.themeblvd( 'options', 'code-editor' );
 
 		} );
 
@@ -113,15 +105,8 @@
 				$postbox.removeClass( 'closed' ).find( '.inner-section-content' ).show();
 
 				// Refresh any code editor options
-				$postbox.find( '.section-code' ).each( function() {
+				$postbox.themeblvd( 'options', 'code-editor' );
 
-						var editor = $( this ).find( 'textarea' ).data( 'CodeMirrorInstance' );
-
-						if ( editor ) {
-							editor.refresh();
-						}
-					}
-				);
 			}
 
 		} );
@@ -148,15 +133,7 @@
 				}
 
 				// Refresh any code editor options.
-				$postbox.find( '.section-code' ).each( function() {
-
-						var editor = $( this ).find( 'textarea' ).data( 'CodeMirrorInstance' );
-
-						if ( editor ) {
-							editor.refresh();
-						}
-					}
-				);
+				$postbox.themeblvd( 'options', 'code-editor' );
 
 			} else {
 

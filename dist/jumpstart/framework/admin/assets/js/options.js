@@ -1766,60 +1766,60 @@ window.themeblvd.options = {};
 	 */
 	admin.options.editor = function( element ) {
 
+		if ( 'undefined' === typeof wp.editor ) {
+			return;
+		}
+
 		/**
 		 * Build inline editors.
 		 *
 		 * @requires WordPress 4.8
 		 * @since Theme_Blvd 2.7.0
 		 */
-		if ( 'undefined' !== typeof wp.editor ) {
+		$( element ).find( '.tb-editor-input' ).each( function() {
 
-			$( element ).find( '.tb-editor-input' ).each( function() {
+			var $textarea = $( this ),
+				editorID  = $textarea.attr( 'id' ),
+				style     = $textarea.data( 'style' ),
+				height    = 250,
+				toolbar   = 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link';
 
-				var $textarea = $( this ),
-					editorID  = $textarea.attr( 'id' ),
-					style     = $textarea.data( 'style' ),
-					height    = 250,
-					toolbar   = 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link';
+			// The user has disabled TinyMCE.
+			if ( 'undefined' === typeof window.tinymce ) {
 
-				// The user has disabled TinyMCE.
-				if ( 'undefined' === typeof window.tinymce ) {
-
-					wp.editor.initialize( editorID, {
-						tinymce: false,
-						quicktags: true,
-						mediaButtons: true
-					} );
-
-					return;
-
-				}
-
-				if ( tinymce.get( editorID ) ) {
-					wp.editor.remove( editorID );
-				}
-
-				if ( 'mini' == style ) {
-					height = 200;
-					toolbar = 'formatselect bold italic bullist link';
-				}
-
-				// Initialize editor with QuickTags and TinyMCE.
 				wp.editor.initialize( editorID, {
-					tinymce: {
-						wpautop: true,
-						theme: 'modern',
-						height : height,
-						plugins : 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
-						toolbar1: toolbar
-					},
+					tinymce: false,
 					quicktags: true,
 					mediaButtons: true
 				} );
 
+				return;
+
+			}
+
+			if ( tinymce.get( editorID ) ) {
+				wp.editor.remove( editorID );
+			}
+
+			if ( 'mini' == style ) {
+				height = 200;
+				toolbar = 'formatselect bold italic bullist link';
+			}
+
+			// Initialize editor with QuickTags and TinyMCE.
+			wp.editor.initialize( editorID, {
+				tinymce: {
+					wpautop: true,
+					theme: 'modern',
+					height : height,
+					plugins : 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
+					toolbar1: toolbar
+				},
+				quicktags: true,
+				mediaButtons: true
 			} );
 
-		}
+		} );
 
 	};
 
@@ -1834,7 +1834,52 @@ window.themeblvd.options = {};
  * @param {object} admin Theme Blvd admin object.
  * @param {object} l10n  Localized admin text strings.
  */
-( function( $, admin, l10n ) {
+( function( $, window, admin, l10n ) {
+
+	wp = window.wp || {};
+
+	admin.options.codeEditorLangs = {};
+
+	admin.options.codeEditors = {};
+
+	/**
+	 * Add a code editor's settings to our global
+	 * cache.
+	 *
+	 * This gets called inline as we pass settings
+	 * from PHP using `wp_enqueue_code_editor()`.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param {string} lang     Coding language, like `css`, `javascript` or `html`.
+	 * @param {object} settings Settings for codemirror.
+	 */
+	admin.options.addCodeEditorLang = function( lang, settings ) {
+
+		admin.options.codeEditorLangs[ lang ] = settings;
+
+	};
+
+	/**
+	 * Add a code editor's settings to our global
+	 * cache.
+	 *
+	 * This gets called inline as we pass settings
+	 * from PHP using `wp_enqueue_code_editor()`.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param {object} element this
+	 */
+	admin.options.addCodeEditor = function( id, settings ) {
+
+		if ( 'undefined' === typeof wp.codeEditor ) {
+			return;
+		}
+
+		admin.options.codeEditors[ id ] = wp.codeEditor.initialize( id, settings );
+
+	};
 
 	/**
 	 * Handles setting up content editor, called from the
@@ -1846,19 +1891,11 @@ window.themeblvd.options = {};
 	 */
 	admin.options.codeEditor = function( element ) {
 
-		var $element = $( element );
+		if ( 'undefined' === typeof wp.codeEditor ) {
+			return;
+		}
 
-		/**
-		 * Bind modal code editor instances to all links
-		 * with class `tb-textarea-code-link`.
-		 *
-		 * @since Theme_Blvd 2.5.0
-		 */
-		$element.find( '.tb-textarea-code-link' ).themeblvd( 'modal', null, {
-			codeEditor: true,
-			size: 'medium',
-			height: 'auto'
-		} );
+		var $element = $( element );
 
 		/**
 		 * Sets up a code editor directly within an
@@ -1871,64 +1908,33 @@ window.themeblvd.options = {};
 		 */
 		$element.find( '.section-code' ).each( function() {
 
-			var $section  = $( this ),
-				$textarea = $section.find( 'textarea' ),
-				lang      = $textarea.data( 'code-lang' ),
-				mode      = '',
-				editor    = {};
+			var editors     = window.themeblvd.options.codeEditors,
+				editorLangs = window.themeblvd.options.codeEditorLangs,
+				$textarea   = $( this ).find( 'textarea' ),
+				editorID    = $textarea.attr( 'id' ),
+				editorLang  = $textarea.data( 'code-lang' );
 
-			// Look for existing instance of this editor.
-			editor = $textarea.data( 'CodeMirrorInstance' );
+			// Editor already exists; refresh it.
+			if ( 'undefined' != typeof editors[ editorID ] ) {
 
-			// Editor doesn't exist, so let's create one.
-			if ( ! editor ) {
+				editors[ editorID ].codemirror.refresh();
 
-				// Setup mode for CodeMirror.
-				if ( lang == 'html' ) {
-					mode = {
-						name: "htmlmixed",
-						scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
-									   mode: null},
-									  {matches: /(text|application)\/(x-)?vb(a|script)/i,
-									   mode: "vbscript"}]
-					};
-				} else {
-					mode = lang;
-				}
-
-				// Setup CodeMirror instance
-				editor = CodeMirror.fromTextArea( document.getElementById( $textarea.attr( 'id' ) ), {
-					mode: mode,
-					lineNumbers: true,
-					theme: 'themeblvd',
-					indentUnit: 4,
-					tabSize: 4,
-					indentWithTabs: true
-				});
-
-				/*
-				 * Make sure that code editor content gets sent back
-				 * to form's textarea
-				 */
-				editor.on( 'blur', function() {
-
-					$textarea.val( editor.getValue() );
-
-				} );
-
-				/*
-				 * Store CodeMirror instance with textarea so we can
-				 * access it again later.
-				 */
-				$textarea.data( 'CodeMirrorInstance', editor );
+				return;
 
 			}
-		});
 
+			// Cooresponding settings exist, initialize editor.
+			if ( 'undefined' != typeof editorLangs[ editorLang ] ) {
+
+				admin.options.addCodeEditor( editorID, editorLangs[ editorLang ] );
+
+			}
+
+		} );
 
 	};
 
-} )( jQuery, window.themeblvd, themeblvdL10n );
+} )( jQuery, window, window.themeblvd, themeblvdL10n );
 
 /**
  * Options System: Column Widths
