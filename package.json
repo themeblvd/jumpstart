@@ -18,14 +18,16 @@
   "homepage": "https://wpjumpstart.com",
   "devDependencies": {
     "gulp": "latest",
-    "gulp-clean": "latest",
-    "gulp-replace": "latest",
-    "gulp-rename": "latest",
-    "gulp-zip": "latest",
-    "gulp-concat": "latest",
-    "gulp-uglify": "latest",
-    "gulp-sass": "latest",
     "gulp-autoprefixer": "latest",
-    "gulp-clean-css": "latest"
-  }
+    "gulp-clean": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-concat": "latest",
+    "gulp-rename": "latest",
+    "gulp-replace": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-yaml": "^1.0.1",
+    "gulp-zip": "latest"
+  },
+  "dependencies": {}
 }

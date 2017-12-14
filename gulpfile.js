@@ -7,7 +7,8 @@ var gulp         = require('gulp'),
 	minifyjs     = require('gulp-uglify'),
 	sass         = require('gulp-sass'),
 	minifycss    = require('gulp-clean-css'),
-	autoprefixer = require('gulp-autoprefixer');
+	autoprefixer = require('gulp-autoprefixer'),
+	yaml         = require('gulp-yaml');
 
 /**
  * Theme slug.
@@ -103,9 +104,20 @@ gulp.task('render-fontawesome', ['render-plugin-manager'], function() {
 });
 
 /**
+ * Merge FontAwesome yml.
+ */
+gulp.task('render-fontawesome-yml', ['render-fontawesome'], function() {
+
+	return gulp.src('lib/fontawesome/advanced-options/metadata/icons.yml')
+		.pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
+    	.pipe(gulp.dest('dist/' + theme + '/framework/admin/assets/data'));
+
+});
+
+/**
  * Render WordPress theme.
  */
-gulp.task('render-src', ['render-fontawesome'], function() {
+gulp.task('render-src', ['render-fontawesome-yml'], function() {
 
 	return gulp.src('src/**')
     	.pipe(gulp.dest('dist/' + theme));

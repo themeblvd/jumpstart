@@ -741,3 +741,59 @@ function themeblvd_get_video_source( $video ) {
 	return $source;
 
 }
+
+/**
+ * Get array of framework icons.
+ *
+ * @since @@name-framework 2.3.0
+ *
+ * @param  string $type  Type of icons to retrieve, `solid` or `brands`.
+ * @return array  $icons Array of icons.
+ */
+function themeblvd_get_icons( $type = 'solid' ) {
+
+	$icons = get_transient( 'themeblvd_' . get_template() . '_icons_' . $type );
+
+	if ( ! $icons ) {
+
+		$icons = array();
+
+		$file = TB_FRAMEWORK_DIRECTORY . '/admin/assets/data/icons.json';
+
+		if ( file_exists( $file ) ) {
+
+			$data = file_get_contents( $file );
+
+			if ( $data ) {
+
+				$data = json_decode( $data );
+
+				foreach ( $data as $key => $value ) {
+
+					if ( in_array( $type, $value->styles ) ) {
+
+						$icons[ $key ] = $value->label;
+
+					}
+				}
+			}
+
+			/*
+			 * We'll store our result in a 1-day transient.
+			 */
+			set_transient( 'themeblvd_' . get_template() . '_icons_' . $type, $icons, '86400' );
+
+		}
+	}
+
+	/**
+	 * Filters the array of icons that the user can
+	 * select from in the icon browser.
+	 *
+	 * @since @@name-framework 2.3.0
+	 *
+	 * @param array $icons All icons found from fontawesome.css.
+	 */
+	return apply_filters( 'themeblvd_icons', $icons, $type );
+
+}

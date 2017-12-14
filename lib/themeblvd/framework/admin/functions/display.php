@@ -1669,22 +1669,9 @@ function themeblvd_icon_browser( $args = array() ) {
 		'type' => 'vector', // Currently, only "vector" is a valid type.
 	));
 
-	/*
-	 * Get icons from the framework, which currently relies
-	 * on FontAwesome.
-	 *
-	 * This works by reading the theme's copy of fontawesome.css,
-	 * reading it line-by-line and constructing an array of the
-	 * icons based on the FontAwesome classes.
-	 *
-	 * There can be limitations, based on web hosting settings,
-	 * which would prevent the wp_remote_fopen() system from
-	 * being able to open the fontawesome.css.
-	 *
-	 * Icons are stored in a 24 hour transient named:
-	 * themeblvd_{theme}_vector_icons
-	 */
-	$icons = themeblvd_get_icons( $args['type'] );
+	$icons = themeblvd_get_icons( 'solid' );
+
+	$brand_icons = themeblvd_get_icons( 'brands' );
 
 	?>
 	<div id="themeblvd-icon-browser-<?php echo $args['type']; ?>" class="themeblvd-modal-wrap themeblvd-icon-browser hide">
@@ -1710,9 +1697,19 @@ function themeblvd_icon_browser( $args = array() ) {
 							<div class="content-mitt">
 								<div class="icon-browser">
 
-									<?php foreach ( $icons as $icon ) : ?>
-										<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $icon; ?>" data-tooltip-text="<?php echo $icon; ?>">
-											<i class="fa fa-<?php echo $icon; ?> fa-fw fa-2x"></i>
+									<h2><?php esc_html_e( 'Solid Icons', '@@text-domain' ); ?></h2>
+
+									<?php foreach ( $icons as $name => $label ) : ?>
+										<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $name; ?>" data-tooltip-text="<?php echo $label; ?>">
+											<i class="fas fa-<?php echo $name; ?> fa-fw fa-2x"></i>
+										</a>
+									<?php endforeach; ?>
+
+									<h2><?php esc_html_e( 'Brand Icons', '@@text-domain' ); ?></h2>
+
+									<?php foreach ( $brand_icons as $name => $label ) : ?>
+										<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $name; ?>" data-tooltip-text="<?php echo $label; ?>">
+											<i class="fab fa-<?php echo $name; ?> fa-fw fa-2x"></i>
 										</a>
 									<?php endforeach; ?>
 
