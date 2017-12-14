@@ -880,7 +880,26 @@ function themeblvd_get_mobile_cart_link() {
 		}
 	}
 
-	$output = sprintf( '<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>', esc_url( apply_filters( 'themeblvd_cart_url', $cart_url ) ), themeblvd_kses( apply_filters( 'themeblvd_btn_navbar_cart_text', '<i class="fa fa-shopping-basket"></i>' ) ), themeblvd_kses( $cart_label ) );
+	$output = sprintf(
+		'<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>',
+		/**
+		 * Filters the url to the shopping cart page.
+		 *
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param string $cart_url Shopping cart URL like `https://mysite.com/cart`.
+		 */
+		esc_url( apply_filters( 'themeblvd_cart_url', $cart_url ) ),
+		/**
+		 * Filters the HTML for shopping cart icon in header.
+		 *
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param string Basic HTML For cart icon.
+		 */
+		themeblvd_kses( apply_filters( 'themeblvd_btn_navbar_cart_text', '<i class="fas fa-shopping-basket"></i>' ) ),
+		themeblvd_kses( $cart_label )
+	);
 
 	/**
 	 * Filters link to shopping cart page, intended for

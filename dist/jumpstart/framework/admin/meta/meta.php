@@ -339,7 +339,7 @@ function setup_themeblvd_post_meta() {
 	 *          @type bool   $save_empty Optional. Whether to save empty values to database.
 	 *     }
 	 *     @type array $options {
-	 *          Standard farmework array of options.
+	 *          Standard framework array of options.
 	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
@@ -478,7 +478,7 @@ function setup_themeblvd_page_meta() {
 	 *          @type bool   $save_empty Optional. Whether to save empty values to database.
 	 *     }
 	 *     @type array $options {
-	 *          Standard farmework array of options.
+	 *          Standard framework array of options.
 	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
@@ -569,7 +569,7 @@ function setup_themeblvd_layout_meta() {
 	 *          @type bool   $save_empty Optional. Whether to save empty values to database.
 	 *     }
 	 *     @type array $options {
-	 *          Standard farmework array of options.
+	 *          Standard framework array of options.
 	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
@@ -689,7 +689,7 @@ function setup_themeblvd_pto_meta() {
 	 *          @type bool   $save_empty Optional. Whether to save empty values to database.
 	 *     }
 	 *     @type array $options {
-	 *          Standard farmework array of options.
+	 *          Standard framework array of options.
 	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }

@@ -31,7 +31,7 @@
  *     @type bool   $save_empty Optional. Whether to save empty values to database.
  * }
  * @param array  $options {
- *     Standard farmework array of options.
+ *     Standard framework array of options.
  *     @link http://dev.themeblvd.com/tutorial/formatting-options/
  * }
  */
