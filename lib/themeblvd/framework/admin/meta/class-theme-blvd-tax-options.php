@@ -248,6 +248,12 @@ class Theme_Blvd_Tax_Options {
 
 		global $_POST;
 
+		if ( ! in_array( $tax, array( 'post_tag', 'category' ) ) ) {
+
+			return;
+
+		}
+
 		check_admin_referer( 'update-tag_' . $term_id );
 
 		$term = get_term_by( 'id', $term_id, $tax );
