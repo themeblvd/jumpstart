@@ -978,7 +978,7 @@ class Theme_Blvd_Options_API {
 						'name'    => __( 'Read More Text', '@@text-domain' ),
 						'desc'    => __( 'Enter the text you\'d like to use to lead the reader to the full post.', '@@text-domain' ),
 						'id'      => 'list_more_text',
-						'std'     => 'Read More <i class="fa fa-long-arrow-right"></i>',
+						'std'     => 'Read More <i class="far fa-long-arrow-right"></i>',
 						'type'    => 'text',
 						'class'   => 'hide receiver receiver-text receiver-button',
 					),

@@ -121,7 +121,7 @@ class Theme_Blvd_Stylesheet_Handler {
 
 		$this->framework_stylesheets = array();
 
-		// Bootstrap/FontAwesome
+		// Bootstrap
 		if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 
 			// Boostrap
@@ -130,20 +130,6 @@ class Theme_Blvd_Stylesheet_Handler {
 				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/bootstrap/css/bootstrap.min.css',
 				'deps'		=> array(),
 				'ver'		=> '3.3.5',
-				'media'		=> 'all'
-			);
-
-			// @TODO How to handle RTL for elements in Bootrap
-			// if ( is_rtl() ) {
-			// 	$this->framework_stylesheets['bootstrap']['src'] = TB_FRAMEWORK_URI.'/assets/css/bootstrap-rtl.min.css'; // Generated with CSSJanus
-			// }
-
-			// FontAwesome
-			$this->framework_stylesheets['fontawesome'] = array(
-				'handle'	=> 'fontawesome',
-				'src'		=> TB_FRAMEWORK_URI.'/assets/plugins/fontawesome/css/font-awesome.min.css',
-				'deps'		=> array(),
-				'ver'		=> '4.7.0',
 				'media'		=> 'all'
 			);
 

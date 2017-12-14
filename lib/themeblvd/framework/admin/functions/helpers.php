@@ -161,6 +161,8 @@ function themeblvd_clear_options() {
  */
 function themeblvd_get_icons( $type = 'vector' ) {
 
+	return array(); // ... @TODO
+
 	$icons = get_transient( 'themeblvd_' . get_template() . '_' . $type . '_icons' );
 
 	if ( ! $icons ) {

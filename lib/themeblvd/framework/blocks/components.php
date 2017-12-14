@@ -219,7 +219,7 @@ function themeblvd_get_divider( $args = array() ) {
 
 			} elseif ( 'icon' === $args['insert'] ) {
 
-				$divider = sprintf( '<i class="fa fa-%s"></i>', esc_attr( $args['icon'] ) );
+				$divider = sprintf( '<i class="far fa-%s"></i>', esc_attr( $args['icon'] ) );
 
 			}
 
@@ -642,7 +642,7 @@ function themeblvd_get_icon_box( $args ) {
 		$lh = $lh . 'px';
 
 		$icon = sprintf(
-			'<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="fa fa-%s" style="line-height: %s"></i></div>',
+			'<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="far fa-%s" style="line-height: %s"></i></div>',
 			esc_attr( $args['color'] ),
 			esc_attr( $args['color'] ),
 			esc_attr( $args['size'] ),
@@ -652,11 +652,11 @@ function themeblvd_get_icon_box( $args ) {
 
 	} elseif ( $args['badge'] ) {
 
-		$icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="fa fa-circle fa-stack-2x" style="color: %s;"></i><i class="fa fa-%s fa-stack-1x fa-inverse"></i></span></div>', esc_attr( $args['size'] ), esc_attr( $args['color'] ), esc_attr( $args['icon'] ) );
+		$icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="far fa-circle fa-stack-2x" style="color: %s;"></i><i class="far fa-%s fa-stack-1x fa-inverse"></i></span></div>', esc_attr( $args['size'] ), esc_attr( $args['color'] ), esc_attr( $args['icon'] ) );
 
 	} else {
 
-		$icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fa fa-%s" style="width:%s;"></i></div>', esc_attr( $args['color'] ), esc_attr( $args['size'] ), esc_attr( $args['icon'] ), esc_attr( $args['size'] ) );
+		$icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fas fa-%s" style="width:%s;"></i></div>', esc_attr( $args['color'] ), esc_attr( $args['size'] ), esc_attr( $args['icon'] ), esc_attr( $args['size'] ) );
 
 	}
 
@@ -2124,7 +2124,7 @@ function themeblvd_get_testimonial( $args ) {
 
 		if ( empty( $args['image']['src'] ) ) {
 
-			$output .= '<span class="author-image"><i class="fa fa-user"></i></span>';
+			$output .= '<span class="author-image"><i class="far fa-user"></i></span>';
 
 		} else {
 
@@ -2464,7 +2464,7 @@ function themeblvd_get_toggle( $args ) {
         <div class="' . esc_attr( $class ) . '">
             <div class="panel-heading">
                 <a class="panel-title" data-toggle="collapse" data-parent="" href="#' . $toggle_id . '">
-                    <i class="fa fa-' . $icon . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
+                    <i class="far fa-' . $icon . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="' . $toggle_id . '" class="' . $state . '">
