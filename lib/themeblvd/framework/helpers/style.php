@@ -767,19 +767,9 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 
 	if ( $add_base_class ) {
 
-		/**
-		 * Filters the available icon names that are
-		 * identified as brands.
-		 *
-		 * @since @@name-framework 2.7.0
-		 *
-		 * @param array Brand icon names.
-		 */
-		$brands = apply_filters( 'themeblvd_icon_brands', array(
-			// ... @TODO Can we get this from admin transient?
-		));
+		$brands = themeblvd_get_icons( 'brands' );
 
-		if ( in_array( $icon, $brands ) ) {
+		if ( array_key_exists( $icon, $brands ) ) {
 
 			$class[] = 'fab';
 
