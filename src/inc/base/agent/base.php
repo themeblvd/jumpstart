@@ -712,7 +712,7 @@ function jumpstart_ag_header_menu() {
 
 						<li class="top-lang">
 							<a href="#" class="tb-lang-trigger" title="<?php echo themeblvd_get_local( 'language' ); ?>" data-toggle="modal" data-target="#floating-lang-switcher">
-								<i class="fa fa-globe"></i>
+								<i class="<?php echo esc_attr( themeblvd_get_icon_class( 'globe' ) ); ?>"></i>
 							</a>
 						</li>
 

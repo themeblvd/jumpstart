@@ -301,9 +301,9 @@ Author URI: http://www.themeblvd.com
 	padding-right: 8px;
 	padding-left: 8px;
 }
-.header-nav .tb-primary-menu > li > .tb-search-trigger .fa,
-.header-nav .tb-primary-menu > li > .tb-contact-trigger .fa,
-.header-nav .tb-primary-menu > li > .tb-cart-trigger .fa {
+.header-nav .tb-primary-menu > li > .tb-search-trigger .svg-inline--fa,
+.header-nav .tb-primary-menu > li > .tb-contact-trigger .svg-inline--fa,
+.header-nav .tb-primary-menu > li > .tb-cart-trigger .svg-inline--fa {
 	margin: 0;
 	width: 1em;
 	text-align: center;

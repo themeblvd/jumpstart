@@ -72,6 +72,29 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 		}
 	}
 
+	$icons = array(
+		'standard'   => 'pencil-alt',      // Logical alternate could be `thumbtack`.
+		'audio'      => 'volume-up',       // Logical alternate could be `music` or `headphones`.
+		'aside'      => 'thumbtack',       // Logical alternate could be `file-alt`.
+		'attachment' => 'image',
+		'chat'       => 'comments',
+		'gallery'    => 'images',
+		'image'      => 'camera-retro',    // Logical alternate could be `camera`.
+		'link'       => 'link',
+		'page'       => 'file',
+		'portfolio'  => 'briefcase',
+		'product'    => 'shopping-basket', // Logical alternate could be `shopping-cart` or `shopping-bag`.
+		'quote'      => 'quote-left',
+		'status'     => 'clock',
+		'video'      => 'film',
+	);
+
+	if ( is_rtl() ) {
+
+		$icons['quote'] = 'quote-right';
+
+	}
+
 	/**
 	 * Filters the icons used from FontAwesome to
 	 * represent each post type and post format.
@@ -80,22 +103,7 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 	 *
 	 * @param array Icons used for post formats and post types.
 	 */
-	$icons = apply_filters( 'themeblvd_format_icons', array(
-		'standard'   => 'pencil',     // Logical alternate could be `thumb-tack`.
-		'audio'      => 'volume-up',  // Logical alternate could be `music`.
-		'aside'      => 'thumb-tack', // Logical alternate could be `file-text`.
-		'attachment' => 'picture-o',
-		'chat'       => 'comments',
-		'gallery'    => 'picture-o',
-		'image'      => 'camera',
-		'link'       => 'link',
-		'page'       => 'file-o',
-		'portfolio'  => 'briefcase',
-		'product'    => 'shopping-basket',
-		'quote'      => 'quote-left',
-		'status'     => 'clock-o',
-		'video'      => 'film',
-	));
+	$icons = apply_filters( 'themeblvd_format_icons', $icons );
 
 	if ( ! empty( $icons[ $format ] ) ) {
 

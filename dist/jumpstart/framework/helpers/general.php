@@ -202,7 +202,7 @@ function themeblvd_do_fa( $str ) {
 			 * @param string      FontAwesome icon HTML, with `%s` representing the icon name.,
 			 * @param string $str Original Content string.
 			 */
-			$html = apply_filters( 'themeblvd_do_fa_html', '<i class="fa fa-fw fa-%s"></i>', $str );
+			$html = apply_filters( 'themeblvd_do_fa_html', '<i class="%s"></i>', $str );
 
 			if ( $list && $key > 0 ) {
 
@@ -210,7 +210,14 @@ function themeblvd_do_fa( $str ) {
 
 			}
 
-			$str = str_replace( $val, sprintf( $html, $icons[1][ $key ] ), $str );
+			$str = str_replace(
+				$val,
+				sprintf(
+					$html,
+					esc_attr( themeblvd_get_icon_class( $icons[1][ $key ], array( 'fa-fw' ) ) )
+				),
+				$str
+			);
 
 		}
 	}

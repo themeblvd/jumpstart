@@ -18,7 +18,7 @@
 			<input type="search" class="search-input" name="s" placeholder="<?php echo themeblvd_get_local( 'search' ); ?>" />
 
 			<button class="search-submit btn-primary" type="submit">
-				<i class="fa fa-search"></i>
+				<i class="<?php echo esc_attr( themeblvd_get_icon_class( 'search' ) ); ?>"></i>
 			</button>
 
 		</div>

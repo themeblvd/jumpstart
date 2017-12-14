@@ -115,7 +115,7 @@ function themeblvd_alert( $args, $content = '' ) {
  *     @type string $bold       Whether text should be bolded.
  *     @type string $text_color Color of icon or text, like `#666`.
  *     @type string $text_size  Size of icon or text in pixels without units, like `15`, `16`, etc.
- *     @type string $width      A width for the divider in pixels without units like `100`, `200`, etc.
+ *     @type string       A width for the divider in pixels without units like `100`, `200`, etc.
  *     @type string $align      How to horizontally align divider, `center`, `left` or `right`.
  *     @type string $placement  Where the divider sits between the content, `equal`, `up` (closer to content above) or `down` (closer to content below).
  * }
@@ -219,7 +219,7 @@ function themeblvd_get_divider( $args = array() ) {
 
 			} elseif ( 'icon' === $args['insert'] ) {
 
-				$divider = sprintf( '<i class="fa fa-%s"></i>', esc_attr( $args['icon'] ) );
+				$divider = sprintf( '<i class="%s"></i>', esc_attr( themeblvd_get_icon_class( $args['icon'] ) ) );
 
 			}
 
@@ -290,7 +290,7 @@ function themeblvd_get_divider( $args = array() ) {
 	 *     @type string $bold       Whether text should be bolded.
 	 *     @type string $text_color Color of icon or text, like `#666`.
 	 *     @type string $text_size  Size of icon or text in pixels without units, like `15`, `16`, etc.
-	 *     @type string $width      A width for the divider in pixels without units like `100`, `200`, etc.
+	 *     @type string       A width for the divider in pixels without units like `100`, `200`, etc.
 	 *     @type string $align      How to horizontally align divider, `center`, `left` or `right`.
 	 *     @type string $placement  Where the divider sits between the content, `equal`, `up` (closer to content above) or `down` (closer to content below).
 	 * }
@@ -642,21 +642,40 @@ function themeblvd_get_icon_box( $args ) {
 		$lh = $lh . 'px';
 
 		$icon = sprintf(
-			'<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="fa fa-%s" style="line-height: %s"></i></div>',
+			'<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="%s" style="line-height: %s"></i></div>',
 			esc_attr( $args['color'] ),
 			esc_attr( $args['color'] ),
 			esc_attr( $args['size'] ),
-			esc_attr( $args['icon'] ),
+			esc_attr( themeblvd_get_icon_class( $args['icon'] ) ),
 			$lh
 		);
 
 	} elseif ( $args['badge'] ) {
 
-		$icon = sprintf( '<div class="icon"><span class="fa-stack fa-lg" style="font-size: %s;"><i class="fa fa-circle fa-stack-2x" style="color: %s;"></i><i class="fa fa-%s fa-stack-1x fa-inverse"></i></span></div>', esc_attr( $args['size'] ), esc_attr( $args['color'] ), esc_attr( $args['icon'] ) );
+		$size_3x = intval( $args['size'] );
+
+		$size_3x = $size_3x * 3;
+
+		$size_3x = $size_3x . 'px';
+
+		$icon = sprintf(
+			'<div class="icon"><span class="fa-layers fa-fw" style="font-size: %1$s; width: %1$s;"><i class="%2$s" style="color: %3$s;"></i><i class="%4$s" style="font-size: %5$s;"></i></span></div>',
+			$size_3x,
+			esc_attr( themeblvd_get_icon_class( 'circle', array( 'fas' ) ) ), // Passing `fas` forces to use .fas if the default base icon class were filters to something different.
+			esc_attr( $args['color'] ),
+			esc_attr( themeblvd_get_icon_class( $args['icon'], array( 'fa-inverse' ) ) ),
+			esc_attr( $args['size'] )
+		);
 
 	} else {
 
-		$icon = sprintf( '<div class="icon" style="color: %s; font-size: %s;"><i class="fa fa-%s" style="width:%s;"></i></div>', esc_attr( $args['color'] ), esc_attr( $args['size'] ), esc_attr( $args['icon'] ), esc_attr( $args['size'] ) );
+		$icon = sprintf(
+			'<div class="icon" style="color: %s; font-size: %s;"><i class="%s" style="width:%s;"></i></div>',
+			esc_attr( $args['color'] ),
+			esc_attr( $args['size'] ),
+			esc_attr( themeblvd_get_icon_class( $args['icon'] ) ),
+			esc_attr( $args['size'] )
+		);
 
 	}
 
@@ -665,7 +684,7 @@ function themeblvd_get_icon_box( $args ) {
 
 	if ( 'side' === $args['location'] || 'side-alt' === $args['location'] ) {
 
-		$width = intval( str_replace( 'px', '', $args['size'] ) );
+		$width = intval( $args['size'] );
 
 		if ( $args['badge'] ) {
 
@@ -2124,7 +2143,10 @@ function themeblvd_get_testimonial( $args ) {
 
 		if ( empty( $args['image']['src'] ) ) {
 
-			$output .= '<span class="author-image"><i class="fa fa-user"></i></span>';
+			$output .= sprintf(
+				'<span class="author-image"><i class="%s"></i></span>',
+				themeblvd_get_icon_class( 'user' )
+			);
 
 		} else {
 
@@ -2464,7 +2486,7 @@ function themeblvd_get_toggle( $args ) {
         <div class="' . esc_attr( $class ) . '">
             <div class="panel-heading">
                 <a class="panel-title" data-toggle="collapse" data-parent="" href="#' . $toggle_id . '">
-                    <i class="fa fa-' . $icon . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
+                    <i class="fas fa-' . $icon . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="' . $toggle_id . '" class="' . $state . '">

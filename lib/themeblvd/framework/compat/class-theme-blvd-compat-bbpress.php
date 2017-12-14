@@ -923,7 +923,7 @@ class Theme_Blvd_Compat_BBPress {
 		}
 
 		$tags = array(
-			'before' => '<div class="tb-tags bbp-tags tags"><i class="fa fa-tags"></i>',
+			'before' => '<div class="tb-tags bbp-tags tags"><i class="' . themeblvd_get_icon_class( 'tags' ) . '"></i>',
 			'after'  => '</div><!-- .tb-tags (end) -->',
 		);
 

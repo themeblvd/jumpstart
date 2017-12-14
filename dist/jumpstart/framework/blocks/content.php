@@ -498,7 +498,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
 			$url = $find[1];
 
-			$title = $title . ' <i class="fa fa-external-link"></i>';
+			$title = $title . ' <i class="' . themeblvd_get_icon_class( 'fa-external-link-square-alt' ) . '"></i>';
 
 		}
 	}
@@ -664,9 +664,10 @@ function themeblvd_get_page_info() {
 	if ( $content && $edit ) {
 
 		$content .= sprintf(
-			'<div class="edit-link"><i class="fa fa-edit"></i> <a href="%s">%s</a></div>',
-			$edit,
-			themeblvd_get_local( 'edit_page' )
+			'<div class="edit-link"><i class="%s"></i> <a href="%s">%s</a></div>',
+			esc_attr( themeblvd_get_icon_class( 'fa-edit' ) ),
+			esc_url( $edit ),
+			esc_html( themeblvd_get_local( 'edit_page' ) )
 		);
 
 	}

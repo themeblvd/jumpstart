@@ -246,7 +246,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			 */
 			$args->link_after = apply_filters(
 				'themeblvd_menu_sub_indicator',
-				sprintf( '<i class="sf-sub-indicator fa fa-angle-%s"></i>', $direction ),
+				sprintf( '<i class="sf-sub-indicator %s"></i>', themeblvd_get_icon_class( 'angle-' . $direction ) ),
 				$direction
 			);
 
@@ -474,7 +474,10 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 		/** Default WordPress Filter. */
 		$text = apply_filters( 'the_title', $item->title, $item->ID );
 
-		$icon_output = sprintf( '<i class="fa fa-%s fa-fw"></i>', $icon );
+		$icon_output = sprintf(
+			'<i class="%s"></i>',
+			esc_attr( themeblvd_get_icon_class( $icon, array( 'fa-fw' ) ) )
+		);
 
 		if ( $primary == $args->theme_location && $depth == 0 ) {
 

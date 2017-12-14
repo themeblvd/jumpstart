@@ -821,6 +821,18 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 		wp_enqueue_script( 'jquery' );
 
+		if ( themeblvd_supports( 'assets', 'fontawesome' ) ) {
+
+			wp_enqueue_script(
+				'fontawesome',
+				esc_url( TB_FRAMEWORK_URI . "/assets/js/themeblvd-fontawesome{$suffix}.js" ),
+				array(),
+				'5.0.1',
+				$in_footer
+			);
+
+		}
+
 		if ( themeblvd_supports( 'assets', 'flexslider' ) ) {
 
 			wp_enqueue_script( // @TODO Can we remove with Front Street integration?

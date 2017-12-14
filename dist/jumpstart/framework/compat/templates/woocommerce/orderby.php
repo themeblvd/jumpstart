@@ -11,12 +11,15 @@
  */
 
 $compat = Theme_Blvd_Compat_WooCommerce::get_instance();
+
 $default = themeblvd_get_option('woo_shop_view');
+
 $current = $compat->loop_view();
+
 $views = apply_filters( 'themeblvd_woo_views', array(
-	'grid' 		=> '<i class="fa fa-th"></i>',
-	'list' 		=> '<i class="fa fa-list"></i>',
-	'catalog' 	=> '<i class="fa fa-list-alt"></i>'
+	'grid' 		=> '<i class="' . themeblvd_get_icon_class( 'th' ) . '"></i>',
+	'list' 		=> '<i class="' . themeblvd_get_icon_class( 'th-list' ) . '"></i>',
+	'catalog' 	=> '<i class="' . themeblvd_get_icon_class( 'list' ) . '"></i>'
 ));
 ?>
 <div class="tb-woo-ordering">

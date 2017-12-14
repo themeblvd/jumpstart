@@ -99,6 +99,7 @@ function themeblvd_setup() {
 		'primary_css'       => true, // Primary "themeblvd" stylesheet
 		'flexslider'        => true, // Flexslider script by WooThemes
 		'bootstrap'         => true, // "bootstrap" script/stylesheet
+		'fontawesome'       => true, // FontAwesome script
 		'magnific_popup'    => true, // "magnific_popup" script/stylesheet
 		'superfish'         => true, // "superfish" script
 		'easypiechart'      => true, // "EasyPieChart" script

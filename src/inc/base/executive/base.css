@@ -273,11 +273,11 @@ Author URI: http://www.themeblvd.com
 .menu-hover-light .tb-primary-menu .menu-search .tb-search-trigger:hover {
 	color: #333333
 }
-.tb-primary-menu .menu-search .tb-search-trigger .fa {
+.tb-primary-menu .menu-search .tb-search-trigger .svg-inline--fa {
 	width: 1em;
 	text-align: center;
 }
-.tb-primary-menu .menu-search .fa {
+.tb-primary-menu .menu-search .svg-inline--fa {
 	margin: 0;
 }
 

@@ -11,11 +11,14 @@
  * @subpackage Theme_Blvd
  * @since      Theme_Blvd 2.0.0
  */
+
+$icon = themeblvd_get_format_icon( get_post_format(), true );
+
 ?>
 <div class="search-result">
 
 	<span class="search-result-icon bg-primary">
-		<i class="fa fa-<?php echo themeblvd_get_format_icon( get_post_format(), true ); ?>"></i>
+		<i class="<?php echo esc_attr( themeblvd_get_icon_class( $icon ) ); ?>"></i>
 	</span>
 
 	<h3 class="entry-title">

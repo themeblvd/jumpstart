@@ -79,9 +79,33 @@ gulp.task('render-plugin-manager', ['render-themeblvd'], function() {
 });
 
 /**
+ * Merge FontAwesome into theme.
+ */
+gulp.task('render-fontawesome', ['render-plugin-manager'], function() {
+
+	var dir = 'dist/' + theme + '/framework/assets/js/';
+
+	var files = [
+		dir + 'themeblvd-fontawesome.js',
+		'lib/fontawesome/svg-with-js/js/fa-brands.js',
+		'lib/fontawesome/svg-with-js/js/fa-solid.js',
+		'lib/fontawesome/svg-with-js/js/fontawesome.js'
+		// 'lib/fontawesome/svg-with-js/js/fontawesome-all.js'
+	];
+
+	return gulp.src(files)
+    	.pipe(concat('themeblvd-fontawesome.js'))
+		.pipe(gulp.dest(dir))
+		.pipe(minifyjs({output: {comments: /^!|@license/i}}))
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir));
+
+});
+
+/**
  * Render WordPress theme.
  */
-gulp.task('render-src', ['render-plugin-manager'], function() {
+gulp.task('render-src', ['render-fontawesome'], function() {
 
 	return gulp.src('src/**')
     	.pipe(gulp.dest('dist/' + theme));

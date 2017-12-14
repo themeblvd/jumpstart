@@ -1061,7 +1061,7 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 		$items .= '<li class="menu-item level-1 menu-contact">';
 
-		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="close"><i class="fa fa-envelope"></i></a>';
+		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="times"><i class="far fa-envelope"></i></a>';
 
 		$color = themeblvd_get_option( 'social_media_style' );
 

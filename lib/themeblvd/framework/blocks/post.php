@@ -66,7 +66,7 @@ function themeblvd_get_meta( $args = array() ) {
 	 * }
 	 */
 	$icons = apply_filters( 'themeblvd_meta_icons', array(
-		'time'      => 'clock-o',
+		'time'      => 'clock',
 		'author'    => 'user',
 		'comments'  => 'comment',
 		'category'  => 'folder',
@@ -153,7 +153,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$author_icon = '<i class="fa fa-' . $icons['author'] . '"></i>';
+						$author_icon = '<i class="' . themeblvd_get_icon_class( $icons['author'] ) . '"></i>';
 
 					} else {
 
@@ -174,7 +174,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'category':
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$category_icon = '<i class="fa fa-' . $tax_icon . '"></i>';
+						$category_icon = '<i class="' . themeblvd_get_icon_class( $tax_icon ) . '"></i>';
 
 					} else {
 
@@ -213,7 +213,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$item_output .= '<i class="fa fa-' . $icons['comments'] . '"></i>';
+						$item_output .= '<i class="' . themeblvd_get_icon_class( $icons['comments'] ) . '"></i>';
 
 					}
 
@@ -237,8 +237,8 @@ function themeblvd_get_meta( $args = array() ) {
 							if ( $format_icon ) {
 
 								$format_icon = sprintf(
-									'<i class="fa fa-%s"></i>',
-									$format_icon
+									'<i class="%s"></i>',
+									themeblvd_get_icon_class( $format_icon )
 								);
 
 							}
@@ -257,7 +257,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'time':
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$time_icon = '<i class="fa fa-' . $icons['time'] . '"></i>';
+						$time_icon = '<i class="' . themeblvd_get_icon_class( $icons['time'] ) . '"></i>';
 
 					} else {
 
@@ -515,12 +515,12 @@ function themeblvd_blog_share( $echo = true ) {
 			}
 
 			$output .= sprintf(
-				'<li class="li-%s"><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"><i class="fa fa-fw fa-%s"></i></a></li>',
+				'<li class="li-%s"><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"><i class="%s"></i></a></li>',
 				esc_attr( $network ),
 				esc_url( $link ),
 				esc_html( $button['label'] ),
 				esc_attr( $class ),
-				$patterns[ $network ]['icon']
+				esc_attr( themeblvd_get_icon_class( $patterns[ $network ]['icon'], array( 'fa-fw' ) ) )
 			);
 
 		}

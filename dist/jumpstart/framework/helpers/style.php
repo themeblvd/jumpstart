@@ -733,3 +733,89 @@ function themeblvd_get_texture( $texture ) {
 	return false;
 
 }
+
+/**
+ * Get the CSS classes for displaying an icon.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param  string $icon  Icon name.
+ * @param  array  $add   CSS classes to add.
+ * @return string $class CSS classes separated by spaces.
+ */
+function themeblvd_get_icon_class( $icon, $add = array() ) {
+
+	$class = array();
+
+	$add_base_class = true;
+
+	/*
+	 * Determine if a base class has been passed
+	 * already through $add.
+	 */
+	if ( $add ) {
+
+		foreach ( array( 'fas', 'far', 'fab' ) as $base ) {
+
+			if ( in_array( $base, $add ) ) {
+
+				$add_base_class = false;
+
+			}
+		}
+	}
+
+	if ( $add_base_class ) {
+
+		/**
+		 * Filters the available icon names that are
+		 * identified as brands.
+		 *
+		 * @since Theme_Blvd 2.7.0
+		 *
+		 * @param array Brand icon names.
+		 */
+		$brands = apply_filters( 'themeblvd_icon_brands', array(
+			// ... @TODO Can we get this from admin transient?
+		));
+
+		if ( in_array( $icon, $brands ) ) {
+
+			$class[] = 'fab';
+
+		} else {
+
+			/**
+			 * Filters the default fallback base class
+			 * used for icons.
+			 *
+			 * @since Theme_Blvd 2.7.0
+			 *
+			 * @param string Default base class.
+			 */
+			$class[] = apply_filters( 'themeblvd_icon_base_class', 'fas' );
+
+		}
+	}
+
+	$class[] = 'fa-' . str_replace( 'fa-', '', $icon );
+
+	if ( $add ) {
+
+		$class = array_merge( $class, $add );
+
+	}
+
+	/**
+	 * Filters the classes used for displaying a
+	 * generic icon.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_icon_class', $class );
+
+	return implode( ' ', $class );
+
+}

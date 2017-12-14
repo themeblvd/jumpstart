@@ -157,7 +157,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 						break;
 
 					case 'write':
-						$icon = 'pencil';
+						$icon = 'pencil-alt';
 						break;
 
 					case 'github':
@@ -177,7 +177,10 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 				}
 
-				$content = sprintf( '<i class="fa fa-fw fa-%s"></i>', $icon );
+				$content = sprintf(
+					'<i class="%s"></i>',
+					themeblvd_get_icon_class( $icon, array( 'fa-fw' ) )
+				);
 
 			}
 
@@ -362,7 +365,11 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 
 	}
 
-	$output = sprintf( '<a href="#" class="%s"><i class="fa fa-%s"></i></a>', esc_attr( $class ), esc_attr( $args['open'] ) );
+	$output = sprintf(
+		'<a href="#" class="%s"><i class="%s"></i></a>',
+		esc_attr( $class ),
+		esc_attr( themeblvd_get_icon_class( $args['open'] ) )
+	);
 
 	/**
 	 * Filters the final HTML output for a link to display
@@ -803,7 +810,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
 	$output .= '>';
 
-	$output .= '<i class="fa fa-' . esc_attr( $args['icon'] ) . '"></i>';
+	$output .= '<i class="' . esc_attr( themeblvd_get_icon_class( $args['icon'] ) ) . '"></i>';
 
 	if ( $count ) {
 
@@ -1036,8 +1043,8 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	if ( $icon_before ) {
 
 		$text = sprintf(
-			'<i class="fa fa-%s before"></i>%s',
-			$icon_before,
+			'<i class="%s before"></i>%s',
+			esc_attr( themeblvd_get_icon_class( $icon_before ) ),
 			$text
 		);
 
@@ -1046,8 +1053,8 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	if ( $icon_after ) {
 
 		$text .= sprintf(
-			'<i class="fa fa-%s after"></i>',
-			$icon_after
+			'<i class="%s after"></i>',
+			esc_attr( themeblvd_get_icon_class( $icon_after ) )
 		);
 
 	}

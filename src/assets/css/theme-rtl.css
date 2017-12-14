@@ -367,7 +367,7 @@ body {
 		color: #ffffff;
 	}
 }
-.mobile-nav > li > a .fa {
+.mobile-nav > li > a .svg-inline--fa {
 	width: 22px;
 }
 .mobile-nav .tb-nav-trigger {
@@ -1024,7 +1024,7 @@ article.tb-naked-page {
 .entry-meta a {
 	color: inherit;
 }
-.entry-meta .fa {
+.entry-meta .svg-inline--fa {
 	color: rgba(100,100,100,.4);
 	margin-left: .6em;
 }
@@ -1057,7 +1057,7 @@ article.tb-naked-page {
 }
 
 /* Post Formats */
-.entry-title a .fa {
+.entry-title a .svg-inline--fa {
 	font-size: .7em;
 }
 .featured-quote blockquote {

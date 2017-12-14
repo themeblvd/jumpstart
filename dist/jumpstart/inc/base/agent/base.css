@@ -250,7 +250,12 @@ body {
 .header-toolbar li a:hover {
 	color: #ffffff;
 }
-.header-toolbar li a .fa,
+.header-toolbar li a {
+	line-height: 38px;
+}
+.header-toolbar .tb-side-trigger {
+	height: 38px;
+}
 .header-toolbar .tb-side-trigger .hamburger {
 	position: absolute;
 	top: 50%;
@@ -830,7 +835,7 @@ body {
 .footer-content .entry-content p:last-child {
 	margin-bottom: 0;
 }
-.footer-content p > .fa {
+.footer-content p > .svg-inline--fa {
 	margin-right: 5px;
 	width: 1.28571429em;
 	text-align: center;
