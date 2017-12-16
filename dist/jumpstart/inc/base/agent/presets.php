@@ -42,7 +42,7 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 		'menu_drop_bg_color_brightness'     => 'dark',
 		'header_mobile_bg_color_brightness' => 'dark',
 		'header_trans_bg_color'             => '#000000',
-		'header_trans_bg_color_opacity'     => '1',
+		'header_trans_bg_color_opacity'     => '0',
 		'header_trans_bg_color_brightness'  => 'dark',
 		'header_trans_hide_border'          => '0',
 		'footer_bg_color_brightness'        => 'dark',
@@ -65,6 +65,13 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 			'typekit_kit' => '',
 		),
 		'logo'                              => array(
+			'type'         => 'image',
+			'image'        => get_template_directory_uri() . '/assets/img/logo-smaller-light.png',
+			'image_width'  => '85',
+			'image_height' => '25',
+			'image_2x'     => get_template_directory_uri() . '/assets/img/logo-smaller-light_2x.png',
+		),
+		'trans_logo'                        => array(
 			'type'         => 'image',
 			'image'        => get_template_directory_uri() . '/assets/img/logo-smaller-light.png',
 			'image_width'  => '85',

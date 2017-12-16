@@ -155,6 +155,13 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 				'searchform'                        => 'show',
 				'font_menu_sp'                      => '0px',
 				'custom_styles'                     => '',
+				'trans_logo'                        => array(
+					'type'         => 'image',
+					'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+					'image_width'  => '250',
+					'image_height' => '75',
+					'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
+				),
 			);
 
 			switch ( $style ) {

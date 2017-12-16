@@ -882,6 +882,8 @@ class Theme_Blvd_Options_Page {
 
 						unset( $presets['logo'] );
 
+						unset( $presets['trans_logo'] );
+
 					}
 				}
 

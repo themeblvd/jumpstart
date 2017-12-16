@@ -143,6 +143,13 @@ function jumpstart_su_get_presets( $preset = '' ) {
 				'footer_link_color'                 => '#cccccc',
 				'footer_link_hover_color'           => '#ffffff',
 				'font_menu_sp'                      => '1px',
+				'trans_logo'                        => array(
+					'type'         => 'image',
+					'image'        => get_template_directory_uri() . '/assets/img/logo-light.png',
+					'image_width'  => '250',
+					'image_height' => '75',
+					'image_2x'     => get_template_directory_uri() . '/assets/img/logo-light_2x.png',
+				),
 			);
 
 			switch ( $style ) {

@@ -157,6 +157,13 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 							'image_height' => '50',
 							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
 						),
+						'trans_logo'                 => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
+						),
 					), $settings);
 
 					if ( 'default' === $key ) {
@@ -237,6 +244,13 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 							'typekit_kit'  => '',
 						),
 						'logo'                       => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
+						),
+						'trans_logo'                 => array(
 							'type'         => 'image',
 							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
 							'image_width'  => '165',
@@ -325,6 +339,13 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 							'image_height' => '26',
 							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
 						),
+						'trans_logo'                 => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '86',
+							'image_height' => '26',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
+						),
 					), $settings);
 
 					if ( 'default' === $key ) {
@@ -378,6 +399,13 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 							'typekit_kit'  => '',
 						),
 						'logo'                       => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
+							'image_width'  => '165',
+							'image_height' => '50',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
+						),
+						'trans_logo'                 => array(
 							'type'         => 'image',
 							'image'        => get_template_directory_uri() . '/assets/img/logo-small-light.png',
 							'image_width'  => '165',
