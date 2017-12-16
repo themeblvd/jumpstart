@@ -1669,10 +1669,6 @@ function themeblvd_icon_browser( $args = array() ) {
 		'type' => 'vector', // Currently, only "vector" is a valid type.
 	));
 
-	$icons = themeblvd_get_icons( 'solid' );
-
-	$brand_icons = themeblvd_get_icons( 'brands' );
-
 	?>
 	<div id="themeblvd-icon-browser-<?php echo $args['type']; ?>" class="themeblvd-modal-wrap themeblvd-icon-browser hide">
 		<div class="themeblvd-modal medium-modal media-modal wp-core-ui tb-modal-with-icon-browser">
@@ -1697,20 +1693,20 @@ function themeblvd_icon_browser( $args = array() ) {
 							<div class="content-mitt">
 								<div class="icon-browser">
 
-									<h2><?php esc_html_e( 'Solid Icons', 'jumpstart' ); ?></h2>
+									<?php foreach ( themeblvd_get_icon_types() as $prefix => $type ) : ?>
 
-									<?php foreach ( $icons as $name => $label ) : ?>
-										<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $name; ?>" data-tooltip-text="<?php echo $label; ?>">
-											<i class="fas fa-<?php echo $name; ?> fa-fw fa-2x"></i>
-										</a>
-									<?php endforeach; ?>
+										<h2><?php echo ucfirst( $type ); ?></h2>
 
-									<h2><?php esc_html_e( 'Brand Icons', 'jumpstart' ); ?></h2>
+										<?php $icons = themeblvd_get_icons( $type ); ?>
 
-									<?php foreach ( $brand_icons as $name => $label ) : ?>
-										<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $name; ?>" data-tooltip-text="<?php echo $label; ?>">
-											<i class="fab fa-<?php echo $name; ?> fa-fw fa-2x"></i>
-										</a>
+										<?php foreach ( $icons as $icon ) : ?>
+											<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $prefix; ?> fa-<?php echo $icon['name']; ?>" data-terms="<?php echo implode( ',', array_merge( array( $icon['name'] ), $icon['terms'] ) ); ?>" data-tooltip-text="<?php echo $icon['label']; ?>">
+												<i class="<?php echo $prefix; ?> fa-<?php echo $icon['name']; ?> fa-fw fa-2x"></i>
+											</a>
+										<?php endforeach; ?>
+
+										<hr>
+
 									<?php endforeach; ?>
 
 								</div>

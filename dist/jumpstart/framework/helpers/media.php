@@ -758,7 +758,16 @@ function themeblvd_get_icons( $type = 'solid' ) {
 
 		$icons = array();
 
-		$file = TB_FRAMEWORK_DIRECTORY . '/admin/assets/data/icons.json';
+		/**
+		 * Filters the URL to the data file used
+		 * determine which icons are included
+		 * from FontAwesome.
+		 *
+		 * @since Theme_Blvd 2.7.0
+		 *
+		 * @param string File URL, like `http://my-site.com/file.json`.
+		 */
+		$file = apply_filters( 'themeblvd_icon_data_file_url', TB_FRAMEWORK_DIRECTORY . '/admin/assets/data/icons.json' );
 
 		if ( file_exists( $file ) ) {
 
@@ -772,7 +781,11 @@ function themeblvd_get_icons( $type = 'solid' ) {
 
 					if ( in_array( $type, $value->styles ) ) {
 
-						$icons[ $key ] = $value->label;
+						$icons[ $key ] = array(
+							'name'  => $key,
+							'label' => $value->label,
+							'terms' => $value->search->terms,
+						);
 
 					}
 				}
@@ -795,5 +808,31 @@ function themeblvd_get_icons( $type = 'solid' ) {
 	 * @param array $icons All icons found from fontawesome.css.
 	 */
 	return apply_filters( 'themeblvd_icons', $icons, $type );
+
+}
+
+/**
+ * Get icon types.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @return array $types Icon types.
+ */
+function themeblvd_get_icon_types() {
+
+	$types = array(
+		'fas' => 'solid',
+		'fab' => 'brands',
+	);
+
+	/**
+	 * Filters the array of icons that the user can
+	 * select from in the icon browser.
+	 *
+	 * @since Theme_Blvd 2.3.0
+	 *
+	 * @param array $types Icon types.
+	 */
+	return apply_filters( 'themeblvd_icon_types', $types );
 
 }
