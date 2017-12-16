@@ -509,7 +509,7 @@ window.themeblvd.options = {};
 
 					$input.closest( '.input-wrap' ).find( '.of-input' ).val( $( this ).data( 'post-id' ) );
 
-					self.close();
+					self.close( self );
 
 				} );
 
