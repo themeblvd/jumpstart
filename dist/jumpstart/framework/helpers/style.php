@@ -739,39 +739,52 @@ function themeblvd_get_texture( $texture ) {
  *
  * @since Theme_Blvd 2.7.0
  *
- * @param  string $icon  Icon name.
+ * @param  string $icon  Icon name like `bolt` or instance like `fas fa-bolt`.
  * @param  array  $add   CSS classes to add.
  * @return string $class CSS classes separated by spaces.
  */
 function themeblvd_get_icon_class( $icon, $add = array() ) {
 
-	$class = array();
+	$icon_name = '';
 
-	$add_base_class = true;
+	$icon = explode( ' ', $icon );
 
-	/*
-	 * Determine if a base class has been passed
-	 * already through $add.
-	 */
-	if ( $add ) {
+	$bases = array_keys( themeblvd_get_icon_types() );
 
-		foreach ( array( 'fas', 'far', 'fab' ) as $base ) {
+	$key = 0; // Set location of icon name.
 
-			if ( in_array( $base, $add ) ) {
+	if ( count( $icon ) > 1 ) {
 
-				$add_base_class = false;
+		$key = 1;
 
-			}
+	}
+
+	$icon_name = str_replace( 'fa-', '', $icon[ $key ] );
+
+	$icon[ $key ] = 'fa-' . $icon_name;
+
+	$class = array_unique( array_merge( $icon, $add ) );
+
+	// Do we already have a base class?
+	$has_base_class = false;
+
+	foreach ( $bases as $base ) {
+
+		if ( in_array( $base, $icon ) ) {
+
+			$has_base_class = true;
+
 		}
 	}
 
-	if ( $add_base_class ) {
+	// If no base class, figure out what to use.
+	if ( ! $has_base_class ) {
 
 		$brands = themeblvd_get_icons( 'brands' );
 
-		if ( array_key_exists( $icon, $brands ) ) {
+		if ( array_key_exists( $icon_name, $brands ) ) {
 
-			$class[] = 'fab';
+			array_unshift( $class, 'fab' );
 
 		} else {
 
@@ -783,18 +796,14 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 			 *
 			 * @param string Default base class.
 			 */
-			$class[] = apply_filters( 'themeblvd_icon_base_class', 'fas' );
+			$base = apply_filters( 'themeblvd_icon_base_class', 'fas', $icon_name );
+
+			array_unshift( $class, $base );
 
 		}
 	}
 
-	$class[] = 'fa-' . str_replace( 'fa-', '', $icon );
-
-	if ( $add ) {
-
-		$class = array_merge( $class, $add );
-
-	}
+	// print_r($class);
 
 	/**
 	 * Filters the classes used for displaying a
@@ -802,9 +811,12 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 *
-	 * @param array $class CSS classes.
+	 * @param array  $class     CSS classes.
+	 * @param string $icon_name Determined name of icon, like `bolt`.
+	 * @param string $icon      Original icon value passed in like `bolt` or like `fas fa-bolt`.
+	 * @param array  $add       Any CSS classes to add.
 	 */
-	$class = apply_filters( 'themeblvd_icon_class', $class );
+	$class = apply_filters( 'themeblvd_icon_class', $class, $icon_name, $icon, $add );
 
 	return implode( ' ', $class );
 
