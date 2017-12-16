@@ -75,15 +75,7 @@ class Theme_Blvd_Options_Page {
 	 * @since Theme_Blvd 2.5.0
 	 * @var bool
 	 */
-	public $icons_vector = false;
-
-	/**
-	 * Whether options page has image icon browser
-	 *
-	 * @since Theme_Blvd 2.5.0
-	 * @var bool
-	 */
-	public $icons_image = false;
+	public $icon_browser = false;
 
 	/**
 	 * Whether options page has post ID browser
@@ -164,11 +156,7 @@ class Theme_Blvd_Options_Page {
 				if ( isset( $option['icon'] ) ) {
 
 					if ( 'vector' === $option['icon'] ) {
-						$this->icons_vector = true;
-					}
-
-					if ( 'image' === $option['icon'] ) {
-						$this->icons_image = true;
+						$this->icon_browser = true;
 					}
 
 					if ( 'post_id' === $option['icon'] ) {
@@ -200,7 +188,7 @@ class Theme_Blvd_Options_Page {
 		}
 
 		// Add icon browsers.
-		if ( $this->icons_vector || $this->icons_image ) {
+		if ( $this->icon_browser ) {
 			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
 		}
 
@@ -335,18 +323,6 @@ class Theme_Blvd_Options_Page {
 			TB_FRAMEWORK_VERSION
 		);
 
-		// FontAwesome is required for icon browser and shortcode generator.
-		if ( $this->icons_vector ) {
-
-			wp_enqueue_style(
-				'fontawesome',
-				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/fontawesome/css/font-awesome{$suffix}.css" ),
-				null,
-				TB_FRAMEWORK_VERSION
-			);
-
-		}
-
 	}
 
 	/**
@@ -369,6 +345,15 @@ class Theme_Blvd_Options_Page {
 			}
 
 			wp_enqueue_script( 'themeblvd-gmap', esc_url( $gmaps ), array(), null );
+
+		}
+
+		if ( $this->icon_browser ) {
+
+			/** This filter is documented in /framework/general/frontend.php */
+			$file = apply_filters( 'themeblvd_icon_js_file', TB_FRAMEWORK_URI . "/assets/js/themeblvd-fontawesome{$suffix}.js" );
+
+			wp_enqueue_script( 'fontawesome', esc_url( $file ), array(), '5.0.1' );
 
 		}
 
@@ -971,7 +956,7 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function display_icon_browser() {
 
-		if ( $this->icons_vector ) {
+		if ( $this->icon_browser ) {
 
 			themeblvd_icon_browser( array(
 				'type' => 'vector',
