@@ -814,11 +814,13 @@ img.size-full {
 		transform: translateZ(0); /* Fix text flicker in Safari, when other CSS3 animations are happenning. z-indexed below */
 	}
 	.site-header.transparent .logo-standard,
-	.site-header.transparent .header-top .tb-social-icons {
+	.site-header.transparent .header-top .tb-social-icons,
+	.site-header.transparent .header-addon .tb-social-icons {
 		display: none;
 	}
 	.site-header.transparent .logo-trans,
-	.site-header.transparent .header-top .social-trans {
+	.site-header.transparent .header-top .social-trans,
+	.site-header.transparent .header-addon .social-trans {
 		display: block;
 	}
 }
