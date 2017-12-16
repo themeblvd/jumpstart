@@ -431,7 +431,7 @@ window.themeblvd.options = {};
 
 				$browser.find( '.select-icon' ).removeClass( 'selected' );
 
-				$browser.find( '.media-toolbar-secondary' ).find( '.fa, span, img' ).remove();
+				$browser.find( '.media-toolbar-secondary' ).find( 'i, span, .svg-inline--fa' ).remove();
 
 				// If valid icon exists in text input, apply the selection.
 				if ( $browser.find( '[data-icon="' + icon + '"]' ).length > 0 ) {
@@ -440,7 +440,7 @@ window.themeblvd.options = {};
 
 					$browser.find( '.icon-selection' ).val( icon );
 
-					$browser.find( '.media-toolbar-secondary' ).append( '<i class="fa fa-' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
+					$browser.find( '.media-toolbar-secondary' ).append( '<i class="' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
 
 				}
 
@@ -2593,11 +2593,11 @@ window.themeblvd.options = {};
 
 			$browser.find( '.icon-selection' ).val( icon );
 
-			$browser.find( '.icon-selection-wrap' ).find( '.fa, span' ).remove();
+			$browser.find( '.icon-selection-wrap' ).find( 'i, span, .svg-inline--fa' ).remove();
 
 			$browser
 				.find( '.icon-selection-wrap' )
-				.append( '<i class="fa fa-' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
+				.append( '<i class="' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
 
 		} );
 
