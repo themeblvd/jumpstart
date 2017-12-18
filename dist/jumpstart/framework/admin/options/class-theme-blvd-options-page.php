@@ -156,50 +156,70 @@ class Theme_Blvd_Options_Page {
 				if ( isset( $option['icon'] ) ) {
 
 					if ( 'vector' === $option['icon'] ) {
+
 						$this->icon_browser = true;
+
 					}
 
 					if ( 'post_id' === $option['icon'] ) {
+
 						$this->find_post_id = true;
+
 					}
 				}
 			}
 
 			// Directly embedded code editors.
 			if ( 'code' === $option['type'] ) {
+
 				if ( ! empty( $option['editor_id'] ) ) {
+
 					$this->code_editors[ $option['editor_id'] ] = $option['lang'];
+
 				} else {
+
 					$this->code_editors[ 'tb-code-editor-' . $option['id'] ] = $option['lang'];
+
 				}
 			}
 
 			// Selects, looking for texture browser.
 			if ( 'select' === $option['type'] ) {
+
 				if ( isset( $option['select'] ) && 'textures' === $option['select'] ) {
+
 					$this->textures = true;
+
 				}
 			}
 
 			// Look for "geo" option type.
 			if ( 'geo' === $option['type'] ) {
+
 				$this->gmap = true;
+
 			}
 		}
 
 		// Add icon browsers.
 		if ( $this->icon_browser ) {
+
 			add_action( 'current_screen', array( $this, 'add_icon_browser' ) );
+
 		}
 
 		// Add Post ID browser.
 		if ( $this->find_post_id ) {
+
 			add_action( 'current_screen', array( $this, 'add_post_browser' ) );
+
 		}
 
 		// Add texture browsers.
 		if ( $this->textures ) {
+
 			add_action( 'current_screen', array( $this, 'add_texture_browser' ) );
+
 		}
 
 		/*
@@ -341,10 +361,17 @@ class Theme_Blvd_Options_Page {
 			$gmap_key = themeblvd_get_option( 'gmap_api_key' );
 
 			if ( $gmap_key ) {
+
 				$gmaps = add_query_arg( 'key', $gmap_key, $gmaps );
+
 			}
 
-			wp_enqueue_script( 'themeblvd-gmap', esc_url( $gmaps ), array(), null );
+			wp_enqueue_script(
+				'themeblvd-gmap',
+				esc_url( $gmaps ),
+				array(),
+				null
+			);
 
 		}
 
@@ -352,7 +379,12 @@ class Theme_Blvd_Options_Page {
 
 			$file = themeblvd_get_icon_js_file();
 
-			wp_enqueue_script( $file['handle'], esc_url( $file['url'] ), array(), esc_attr( $file['version'] ) );
+			wp_enqueue_script(
+				$file['handle'],
+				esc_url( $file['url'] ),
+				array(),
+				esc_attr( $file['version'] )
+			);
 
 		}
 
@@ -463,7 +495,9 @@ class Theme_Blvd_Options_Page {
 			}
 
 			if ( strpos( $class, 'installed' ) !== false ) {
+
 				$class .= ' plugins-installed';
+
 			}
 
 			/**
@@ -490,9 +524,13 @@ class Theme_Blvd_Options_Page {
 			</div>
 
 			<?php if ( $fields[1] ) : ?>
+
 				<h2 class="nav-tab-wrapper"><?php echo $fields[1]; ?></h2>
+
 			<?php else : ?>
+
 				<h2><?php echo esc_html( $this->args['page_title'] ); ?></h2>
+
 			<?php endif; ?>
 
 			<div class="metabox-holder">
