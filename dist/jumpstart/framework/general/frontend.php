@@ -823,26 +823,13 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 		if ( themeblvd_supports( 'assets', 'fontawesome' ) ) {
 
-			/**
-			 * Filters the URL to include the icon font
-			 * JavaScript file.
-			 *
-			 * The theme currently uses FontAwesome for
-			 * this, and so this can be useful if you're
-			 * trying to include a custom version of
-			 * FontAwesome with more styles.
-			 *
-			 * @since Theme_Blvd 2.7.0
-			 *
-			 * @param string URL to icon font file.
-			 */
-			$file = apply_filters( 'themeblvd_icon_js_file', TB_FRAMEWORK_URI . "/assets/js/themeblvd-fontawesome{$suffix}.js" );
+			$file = themeblvd_get_icon_js_file();
 
 			wp_enqueue_script(
-				'fontawesome',
-				esc_url( $file ),
+				$file['handle'],
+				esc_url( $file['url'] ),
 				array(),
-				'5.0.1',
+				esc_attr( $file['version'] ),
 				$in_footer
 			);
 

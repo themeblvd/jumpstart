@@ -836,3 +836,63 @@ function themeblvd_get_icon_types() {
 	return apply_filters( 'themeblvd_icon_types', $types );
 
 }
+
+/**
+ * Get icon JavaScript file.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @return array $file {
+ *     @type string $handle  Icon library handle.
+ *     @type string $url     Icon library JavaScript file URL.
+ *     @type string $version Icon library version.
+ * }
+ */
+function themeblvd_get_icon_js_file() {
+
+	$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+	/**
+	 * Filters the URL to include the icon font
+	 * JavaScript file.
+	 *
+	 * Note: If you'd like to filter not only
+	 * the file URL, but also the handle and/or
+	 * version number, you can use the
+	 * `themeblvd_icon_js_file` filter below instead.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $url JavaScript file URL, like `http://mysite.com/file.js`.
+	 */
+	$url = apply_filters(
+		'themeblvd_icon_js_file_url',
+		TB_FRAMEWORK_URI . "/assets/js/themeblvd-fontawesome{$suffix}.js"
+	);
+
+	$file = array(
+		'handle'  => 'fontawesome',
+		'url'     => $url,
+		'version' => '5.0.1',
+	);
+
+	/**
+	 * Filters the handle, url and version to include
+	 * the icon font JavaScript file.
+	 *
+	 * The theme currently uses FontAwesome for
+	 * this, and so this can be useful if you're
+	 * trying to include a custom version of
+	 * FontAwesome with more styles or icons.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param array $file {
+	 *     @type string $handle  Icon library handle.
+	 *     @type string $url     Icon library JavaScript file URL.
+	 *     @type string $version Icon library version.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_icon_js_file', $file );
+
+}

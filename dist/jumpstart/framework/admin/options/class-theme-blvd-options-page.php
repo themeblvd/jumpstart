@@ -350,10 +350,9 @@ class Theme_Blvd_Options_Page {
 
 		if ( $this->icon_browser ) {
 
-			/** This filter is documented in /framework/general/frontend.php */
-			$file = apply_filters( 'themeblvd_icon_js_file', TB_FRAMEWORK_URI . "/assets/js/themeblvd-fontawesome{$suffix}.js" );
+			$file = themeblvd_get_icon_js_file();
 
-			wp_enqueue_script( 'fontawesome', esc_url( $file ), array(), '5.0.1' );
+			wp_enqueue_script( $file['handle'], esc_url( $file['url'] ), array(), esc_attr( $file['version'] ) );
 
 		}
 
