@@ -1052,12 +1052,6 @@ img.size-full {
 .sf-menu .svg-inline--fa {
 	margin-left: 5px;
 }
-.sf-menu .fa-caret-left.inverse:before {
-	content: "\f0da";
-}
-.sf-menu .fa-angle-left.inverse:before {
-	content: "\f105";
-}
 .tb-primary-menu > li > a .sf-sub-indicator,
 .tb-primary-menu > [class^="menu-icon-"] > a .svg-inline--fa {
 	line-height: 1;

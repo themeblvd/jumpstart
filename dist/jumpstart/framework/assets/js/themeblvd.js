@@ -458,19 +458,11 @@ jQuery(document).ready(function($) {
 
 				if ( ( $(window).width() - location ) <= space ) {
 
-					$ul.addClass('reverse');
-
-					$ul.find('.fa-caret-right, .fa-caret-left, .fa-angle-right, fa-angle-left').each(function(){
-						$(this).addClass('inverse');
-					});
+					$ul.addClass( 'reverse' );
 
 				} else {
 
-					$ul.removeClass('reverse');
-
-					$ul.find('.fa-caret-right, .fa-caret-left, .fa-angle-right, fa-angle-left').each(function(){
-						$(this).removeClass('inverse');
-					});
+					$ul.removeClass( 'reverse' );
 
 				}
 
