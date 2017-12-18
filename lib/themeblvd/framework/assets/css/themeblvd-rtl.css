@@ -60,165 +60,163 @@
  *   10.9 - WP Post Embed
  *   10.10 - Background Utilities
  *   10.11 - Padding Utilities
- * 11.0 - Video/Audio
- *   11.1 - WP Built-in audio/video player
- * 12.0 - Plugins
- *   12.1 - FlexSlider
- *   12.2 - Subtitles
- * 13.0 - Sliders
- *   13.1 - Block Slider
- *   13.2 - Hero Unit Slider (formerly Jumbotron Slider)
- *   13.3 - Common slider arrows
- *   13.4 - Showcase Slider
- * 14.0 - Social Icons
- *   14.1 - Contact Bar
- *   14.2 - Color (flat) Social Icons
- *   14.3 - Color (image) Social Icons
- * 15.0 - Forms
- *   15.1 - General
- *   15.2 - Form Buttons
- * 16.0 - Buttons
- *   16.1 - All Colors
- *   16.2 - Black
- *   16.3 - Blue
- *   16.4 - Brown
- *   16.5 - Dark Blue
- *   16.6 - Dark Brown
- *   16.7 - Dark Green
- *   16.8 - Green
- *   16.9 - Orange
- *   16.10 - Pearl
- *   16.11 - Pink
- *   16.12 - Purple
- *   16.13 - Red
- *   16.14 - Royal Blue
- *   16.15 - Slate Grey
- *   16.16 - Silver
- *   16.17 - Steel Blue
- *   16.18 - Teal
- *   16.19 - Yellow
- *   16.20 - Wheat
- * 17.0 - Textures
- * 18.0 - Shortcodes
- *   19.1 - Buttons
- *   19.2 - Icon List
- *   19.3 - Icon Link
- *   19.4 - Text Highlighting
- *   19.5 - Drop Caps
- *   19.6 - Popup
- * 19.0 - Widgets
- *   19.1 - Widgets w/lists
- *   19.2 - Widgets w/menu tree
- *   19.3 - WP Text Widget
- *   19.4 - WP RSS Widget
- *   19.5 - WP Tag Cloud
- *   19.6 - WP Calendar Widget
- *   19.7 - WP Recent Posts Widget
- *   19.8 - Twitter Widget
- *   19.9 - Simple Contact
- * 20.0 - Lightbox
- *   20.1 - Basic inline popup styling
- *   20.2 - MPF close button
- *   20.3 - Next/Prev
- *   20.4 - Bottom bar for iframe popups in a gallery
- *   20.5 - General iframe animation fix
- *   20.6 - Fade animation
- * 21.0 - Parallax background
- * 22.0 - Custom Layouts
- *   22.1 - Stray Elements
- *   22.2 - Sections
- *   22.3 - Elements
- *   22.4 - BG shade
- *   22.5 - Section BG slideshow
- *   22.6 - Section BG video
- *   22.7 - Columns
- *   22.8 - Animations
- * 23.0 - Content (content.php)
- *   23.1 - Content (direct input)
- *   23.2 - Headline
- *   23.3 - Quote
- * 24.0 - Media (media.php)
- *   24.1 - Image
- *   24.2 - Video
- *   24.3 - Simple Slider
- *   24.4 - BG Slideshow/Jumbotron Slider Fade
- *   24.5 - BG Video
- *   24.6 - BG Video - Self-Hosted HTML5
- *   24.7 - BG Video - Youtube / Vimeo
- *   24.8 - Gallery Carousel
- *   24.9 - Epic Thumbnails
- * 25.0 - Post Display (loop.php)
- *   25.1 - Post List
- *   25.2 - Post Grid
- *   25.3 - Post Showcase
- *   25.4 - Post Slider (inherits from .tb-simple-slider)
- *   25.5 - Mini Post List
- *   25.6 - Mini Post Grid
- *   25.7 - Small Post List
- *   25.8 - Small Post Grid
- *   25.9 - Search Results
- *   25.10 - Posts using isotope
- * 26.0 - Components (components.php)
- *   26.1 - Alert
- *   26.2 - Divider
- *   26.3 - Google Maps
- *   26.4 - Icon Box
- *   26.5 - Jumbotron
- *   26.6 - Panel
- *   26.7 - Partner Logos (inherits from tb-block-slider)
- *   26.8 - Pricing Tables
- *   26.9 - Promo Box (slogan)
- *   26.10 - Tabs
- *   26.11 - Team Member
- *   26.12 - Testimonial
- *   26.13 - Testimonial Slider
- *   26.14 - Toggles
- * 27.0 - Parts (parts.php)
- *   27.1 - Breadcrumbs
- *   27.2 - Contact
- *   27.3 - Search Form (also searchform.php)
- *   27.4 - Mini Search
- *   27.5 - Floating Search
- *   27.6 - Contact Popover
- *   27.7 - Loader
- *   27.8 - Tags
- *   27.9 - Share Icons
- *   27.10 - Scroll-to-Top Button
- *   27.11 - Scroll-to-Section Button
- *   27.12 - Info Boxes
- *   27.13 - Author Box (inherits from info box)
- *   27.14 - Related Posts
- *   27.15 - Inline Menu
- *   27.16 - Date Block
- *   27.17 - Text Blocks (used in jumbotron)
- * 28.0 - Charts and Graphs (stats.php)
- *   28.1 - Charts
- *   28.2 - Milestone
- *   28.3 - Milestone Ring
- *   28.4 - Progress Bars
- * 29.0 - Pages
- *   29.1 - Blank Page
- *   29.2 - Search Results
- * 30.0 - Tweeple
- *   30.1 - General
- *   30.2 - "Tweet" Builder Element
- * 31.0 - WPML Bridge
- *   31.1 - Flag List
- *   31.2 - Header menu addon
- *   31.3 - Breadcrumbs
- * 32.0 - Dark Text Color
+ * 11.0 - Plugins
+ *   11.1 - FlexSlider
+ *   11.2 - Subtitles
+ * 12.0 - Sliders
+ *   12.1 - Block Slider
+ *   12.2 - Hero Unit Slider (formerly Jumbotron Slider)
+ *   12.3 - Common slider arrows
+ *   12.4 - Showcase Slider
+ * 13.0 - Social Icons
+ *   13.1 - Contact Bar
+ *   13.2 - Color (flat) Social Icons
+ *   13.3 - Color (image) Social Icons
+ * 14.0 - Forms
+ *   14.1 - General
+ *   14.2 - Form Buttons
+ * 15.0 - Buttons
+ *   15.1 - All Colors
+ *   15.2 - Black
+ *   15.3 - Blue
+ *   15.4 - Brown
+ *   15.5 - Dark Blue
+ *   15.6 - Dark Brown
+ *   15.7 - Dark Green
+ *   15.8 - Green
+ *   15.9 - Orange
+ *   15.10 - Pearl
+ *   15.11 - Pink
+ *   15.12 - Purple
+ *   15.13 - Red
+ *   15.14 - Royal Blue
+ *   15.15 - Slate Grey
+ *   15.15 - Silver
+ *   15.17 - Steel Blue
+ *   15.18 - Teal
+ *   15.19 - Yellow
+ *   15.20 - Wheat
+ * 16.0 - Textures
+ * 17.0 - Shortcodes
+ *   17.1 - Buttons
+ *   17.2 - Icon List
+ *   17.3 - Icon Link
+ *   17.4 - Text Highlighting
+ *   17.5 - Drop Caps
+ *   17.6 - Popup
+ * 18.0 - Widgets
+ *   18.1 - Widgets w/lists
+ *   18.2 - Widgets w/menu tree
+ *   18.3 - WP Text Widget
+ *   18.4 - WP RSS Widget
+ *   18.5 - WP Tag Cloud
+ *   18.6 - WP Calendar Widget
+ *   18.7 - WP Recent Posts Widget
+ *   18.8 - Twitter Widget
+ *   18.9 - Simple Contact
+ * 19.0 - Lightbox
+ *   19.1 - Basic inline popup styling
+ *   19.2 - MPF close button
+ *   19.3 - Next/Prev
+ *   19.4 - Bottom bar for iframe popups in a gallery
+ *   19.5 - General iframe animation fix
+ *   19.6 - Fade animation
+ * 20.0 - Parallax background
+ * 21.0 - Custom Layouts
+ *   21.1 - Stray Elements
+ *   21.2 - Sections
+ *   21.3 - Elements
+ *   21.4 - BG shade
+ *   21.5 - Section BG slideshow
+ *   21.6 - Section BG video
+ *   21.7 - Columns
+ *   21.8 - Animations
+ * 22.0 - Content (content.php)
+ *   22.1 - Content (direct input)
+ *   22.2 - Headline
+ *   22.3 - Quote
+ * 23.0 - Media (media.php)
+ *   23.1 - Image
+ *   23.2 - Video
+ *   23.3 - Simple Slider
+ *   23.4 - BG Slideshow/Jumbotron Slider Fade
+ *   23.5 - BG Video
+ *   23.6 - BG Video - Self-Hosted HTML5
+ *   23.7 - BG Video - Youtube / Vimeo
+ *   23.8 - Gallery Carousel
+ *   23.9 - Epic Thumbnails
+ * 24.0 - Post Display (loop.php)
+ *   24.1 - Post List
+ *   24.2 - Post Grid
+ *   24.3 - Post Showcase
+ *   24.4 - Post Slider (inherits from .tb-simple-slider)
+ *   24.5 - Mini Post List
+ *   24.6 - Mini Post Grid
+ *   24.7 - Small Post List
+ *   24.8 - Small Post Grid
+ *   24.9 - Search Results
+ *   24.10 - Posts using isotope
+ * 25.0 - Components (components.php)
+ *   25.1 - Alert
+ *   25.2 - Divider
+ *   25.3 - Google Maps
+ *   25.4 - Icon Box
+ *   25.5 - Jumbotron
+ *   25.6 - Panel
+ *   25.7 - Partner Logos (inherits from tb-block-slider)
+ *   25.8 - Pricing Tables
+ *   25.9 - Promo Box (slogan)
+ *   25.10 - Tabs
+ *   25.11 - Team Member
+ *   25.12 - Testimonial
+ *   25.13 - Testimonial Slider
+ *   25.14 - Toggles
+ * 26.0 - Parts (parts.php)
+ *   26.1 - Breadcrumbs
+ *   26.2 - Contact
+ *   26.3 - Search Form (also searchform.php)
+ *   26.4 - Mini Search
+ *   26.5 - Floating Search
+ *   26.6 - Contact Popover
+ *   26.7 - Loader
+ *   26.8 - Tags
+ *   26.9 - Share Icons
+ *   26.10 - Scroll-to-Top Button
+ *   26.11 - Scroll-to-Section Button
+ *   26.12 - Info Boxes
+ *   26.13 - Author Box (inherits from info box)
+ *   26.14 - Related Posts
+ *   26.15 - Inline Menu
+ *   26.16 - Date Block
+ *   26.17 - Text Blocks (used in jumbotron)
+ * 27.0 - Charts and Graphs (stats.php)
+ *   27.1 - Charts
+ *   27.2 - Milestone
+ *   27.3 - Milestone Ring
+ *   27.4 - Progress Bars
+ * 28.0 - Pages
+ *   28.1 - Blank Page
+ *   28.2 - Search Results
+ * 29.0 - Tweeple
+ *   29.1 - General
+ *   29.2 - "Tweet" Builder Element
+ * 30.0 - WPML Bridge
+ *   30.1 - Flag List
+ *   30.2 - Header menu addon
+ *   30.3 - Breadcrumbs
+ * 31.0 - Dark Text Color
+ *   31.1 - Typography
+ *   31.2 - Captions
+ *   31.3 - Forms
+ *   31.4 - Form Buttons
+ * 32.0 - Light Text Color
  *   32.1 - Typography
- *   32.2 - Captions
- *   32.3 - Forms
- *   32.4 - Form Buttons
- * 33.0 - Light Text Color
- *   33.1 - Typography
- *   33.2 - Breadcrumbs
- *   33.3 - Block Slider Nav
- *   33.4 - Captions
- *   33.5 - Forms
- *   33.6 - Form Buttons
- * 34.0 - Primary Color
+ *   32.2 - Breadcrumbs
+ *   32.3 - Block Slider Nav
+ *   32.4 - Captions
+ *   32.5 - Forms
+ *   32.6 - Form Buttons
+ * 33.0 - Primary Color
 ----------------------------------------------- */
 
 /* =Bootstrap Mods
@@ -1742,108 +1740,6 @@ html {
 	.no-padding-xs {
 		padding: 0 !important;
 	}
-}
-
-/* =Video/Audio
------------------------------------------------ */
-
-/* WP Built-in audio/video player */
-.mejs-container {
-	background-color: transparent !important;
-	background-image: none !important;
-}
-.mejs-poster {
-	background-size: cover !important;
-}
-.mejs-container .mejs-poster img {
-	max-width: none !important;
-	width: 100% !important;
-}
-.mejs-container-fullscreen .mejs-poster img  {
-	height: 100 %!important;
-}
-.mejs-controls .mejs-time-rail .mejs-time-current {
-	background: #ffffff !important;
-	background: rgba(255,255,255,0.8);
-	background: -webkit-gradient(linear,100% 0,0% 100%,from(rgba(255,255,255,0.9)),to(rgba(200,200,200,0.8))) !important;
-	background: -webkit-linear-gradient(top,rgba(255,255,255,0.9),rgba(200,200,200,0.8)) !important;
-	background: -moz-linear-gradient(top,rgba(255,255,255,0.9),rgba(200,200,200,0.8)) !important;
-	background: -o-linear-gradient(top,rgba(255,255,255,0.9),rgba(200,200,200,0.8)) !important;
-	background: -ms-linear-gradient(top,rgba(255,255,255,0.9),rgba(200,200,200,0.8)) !important;
-	background: linear-gradient(rgba(255,255,255,0.9),rgba(200,200,200,0.8)) !important;
-}
-.mejs-controls .mejs-time-rail .mejs-time-loaded {
-	background-color: #232323 !important;
-	background-image: -webkit-gradient(linear, right top, right bottom, from(#232323), to(#2c2b2c)) !important;
-	background-image: -webkit-linear-gradient(top, #232323, #2c2b2c) !important;
-	background-image: -moz-linear-gradient(top, #232323, #2c2b2c) !important;
-	background-image: -o-linear-gradient(top, #232323, #2c2b2c) !important;
-	background-image: -ms-linear-gradient(top, #232323, #2c2b2c) !important;
-	background-image: linear-gradient(top, #232323, #2c2b2c) !important;
-}
-.mejs-controls button {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	outline: none !important;
-	opacity: 0.8;
-}
-.mejs-controls button:hover,
-.mejs-controls .mejs-fullscreen-button:hover button {
-	opacity: 1 !important;
-}
-.mejs-controls .mejs-volume-button .mejs-volume-slider .mejs-volume-handle {
-	top: 5px;
-}
-.mejs-overlay-button {
-	background-image: none !important;
-	border: 6px solid transparent;
-	border-radius: 100px;
-	color: #ffffff;
-	color: rgba(255, 255, 255, 0.8);
-	font-size: 70px;
-	/* line-height: 130px; */
-	line-height: 126px;
-	margin-top: -75px !important;
-	margin-left: -65px !important;
-	text-align: center;
-	-webkit-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
-	width: 130px !important;
-	height: 130px !important;
-	top: 50% !important;
-}
-.mejs-overlay-button:hover {
-	border-color: #ffffff;
-	color: #ffffff;
-	transform: scale(0.8);
-	-webkit-transform: scale(0.8);
-}
-.mejs-overlay-button:before {
-	content: "\f04b";
-	font-family: "FontAwesome";
-	padding-left: 15px;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-@media (max-width: 767px) {
-	.mejs-overlay-button {
-		font-size: 40px;
-		width: 100px !important;
-		height: 100px !important;
-		line-height: 90px;
-		margin-top: -60px !important;
-		margin-left: -50px !important;
-	}
-	.mejs-overlay-button:before {
-		padding-left: 10px;
-	}
-}
-.mejs-container.mejs-video .mejs-controls {
-	right: 2% !important;
-	bottom: 2% !important;
-	left: 2% !important;
-	width: 96%;
 }
 
 /* =Plugins
