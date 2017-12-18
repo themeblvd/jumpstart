@@ -3342,13 +3342,6 @@ ul.tb-icon-list {
 .widget_rss .widget-title a.rsswidget:first-child img {
 	display: none;
 }
-.widget_rss .widget-title a.rsswidget:first-child:before {
-	content: "\f143";
-	font-family: 'FontAwesome';
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
 
 /* WP Tag Cloud */
 .tb-tag-cloud .tagcloud {
