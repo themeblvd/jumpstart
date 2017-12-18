@@ -1693,6 +1693,8 @@ function themeblvd_icon_browser( $args = array() ) {
 							<div class="content-mitt">
 								<div class="icon-browser">
 
+									<input class="icon-search-input" type="text" placeholder="<?php esc_html_e( 'Search for an icon...', 'jumpstart' ); ?>">
+
 									<?php foreach ( themeblvd_get_icon_types() as $prefix => $type ) : ?>
 
 										<h2><?php echo ucfirst( $type ); ?></h2>
@@ -1700,8 +1702,8 @@ function themeblvd_icon_browser( $args = array() ) {
 										<?php $icons = themeblvd_get_icons( $type ); ?>
 
 										<?php foreach ( $icons as $icon ) : ?>
-											<a href="#" class="select-icon select-vector-icon tb-tooltip-link" data-icon="<?php echo $prefix; ?> fa-<?php echo $icon['name']; ?>" data-terms="<?php echo implode( ',', array_merge( array( $icon['name'] ), $icon['terms'] ) ); ?>" data-tooltip-text="<?php echo $icon['label']; ?>">
-												<i class="<?php echo $prefix; ?> fa-<?php echo $icon['name']; ?> fa-fw fa-2x"></i>
+											<a href="#" class="select-icon icon-<?php echo esc_attr( $icon ); ?> select-vector-icon tb-tooltip-link" data-icon="<?php echo esc_attr( $prefix ); ?> fa-<?php echo esc_attr( $icon ); ?>" data-tooltip-text="<?php echo esc_attr( $icon ); ?>">
+												<i class="<?php echo esc_attr( $prefix ); ?> fa-<?php echo esc_attr( $icon ); ?> fa-fw fa-2x"></i>
 											</a>
 										<?php endforeach; ?>
 

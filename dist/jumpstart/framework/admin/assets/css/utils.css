@@ -753,6 +753,12 @@ body.themeblvd-stop-scroll {
   margin-top: 7px;
 }
 
+.themeblvd-icon-browser .media-frame .icon-search-input {
+  font-size: 18px;
+  padding: 18px;
+  width: 100%;
+}
+
 .themeblvd-texture-browser .themeblvd-modal {
   z-index: 100002;
 }

@@ -758,16 +758,7 @@ function themeblvd_get_icons( $type = 'solid' ) {
 
 		$icons = array();
 
-		/**
-		 * Filters the URL to the data file used
-		 * determine which icons are included
-		 * from FontAwesome.
-		 *
-		 * @since Theme_Blvd 2.7.0
-		 *
-		 * @param string File URL, like `http://my-site.com/file.json`.
-		 */
-		$file = apply_filters( 'themeblvd_icon_data_file_url', TB_FRAMEWORK_DIRECTORY . '/admin/assets/data/icons.json' );
+		$file = themeblvd_get_icon_data_file();
 
 		if ( file_exists( $file ) ) {
 
@@ -781,19 +772,13 @@ function themeblvd_get_icons( $type = 'solid' ) {
 
 					if ( in_array( $type, $value->styles ) ) {
 
-						$icons[ $key ] = array(
-							'name'  => $key,
-							'label' => $value->label,
-							'terms' => $value->search->terms,
-						);
+						$icons[] = $key;
 
 					}
 				}
 			}
 
-			/*
-			 * We'll store our result in a 1-day transient.
-			 */
+			// We'll store our result in a 1-day transient.
 			set_transient( 'themeblvd_' . get_template() . '_icons_' . $type, $icons, '86400' );
 
 		}
@@ -834,6 +819,86 @@ function themeblvd_get_icon_types() {
 	 * @param array $types Icon types.
 	 */
 	return apply_filters( 'themeblvd_icon_types', $types );
+
+}
+
+/**
+ * Get the URL to the data file used determine
+ * which icons are included from FontAwesome.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @return string File URL, like `http://my-site.com/file.json`.
+ */
+function themeblvd_get_icon_data_file() {
+
+	/**
+	 * Filters the URL to the data file used
+	 * determine which icons are included
+	 * from FontAwesome.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string File URL, like `http://my-site.com/file.json`.
+	 */
+	return apply_filters( 'themeblvd_icon_data_file_url', TB_FRAMEWORK_DIRECTORY . '/admin/assets/data/icons.json' );
+
+}
+
+/**
+ * Get icon search data.
+ *
+ * This data gets printed to allow the user to
+ * filter quickly through available icons.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @return array $data Searchable icon data.
+ */
+function themeblvd_get_icon_search_data() {
+
+	$data = get_transient( 'themeblvd_' . get_template() . '_icon_search_data' );
+
+	if ( ! $data ) {
+
+		$data = array();
+
+		$file = themeblvd_get_icon_data_file();
+
+		if ( file_exists( $file ) ) {
+
+			$json = file_get_contents( $file );
+
+			if ( $json ) {
+
+				$raw_data = json_decode( $json );
+
+				foreach ( $raw_data as $key => $value ) {
+
+					$terms = explode( '-', $key );
+
+					$terms = array_merge( $terms, $value->search->terms );
+
+					$data[ $key ] = $terms;
+
+				}
+			}
+
+			// We'll store our result in a 1-day transient.
+			set_transient( 'themeblvd_' . get_template() . '_icon_search_data', $data, '86400' );
+
+		}
+
+	}
+
+	/**
+	 * Filters the searchable icon data.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array $data Searchable icon data.
+	 */
+	return apply_filters( 'themeblvd_icon_search_data', $data );
 
 }
 

@@ -429,7 +429,9 @@ window.themeblvd.options = {};
 				// Reset icon browser.
 				$browser.find( '.media-frame-content' ).scrollTop( 0 );
 
-				$browser.find( '.select-icon' ).removeClass( 'selected' );
+				$browser.find( '.icon-search-input' ).val( '' );
+
+				$browser.find( '.select-icon' ).removeClass( 'selected' ).show();
 
 				$browser.find( '.media-toolbar-secondary' ).find( 'i, span, .svg-inline--fa' ).remove();
 
@@ -2575,11 +2577,13 @@ window.themeblvd.options = {};
 		 *
 		 * @since Theme_Blvd 2.5.0
 		 */
-		$( '.themeblvd-icon-browser' ).themeblvd( 'options', 'setup' );
+		var $iconBrowser = $( '.themeblvd-icon-browser' );
 
-		$( '.themeblvd-icon-browser' ).themeblvd( 'options', 'bind' );
+		$iconBrowser.themeblvd( 'options', 'setup' );
 
-		$( '.themeblvd-icon-browser .select-icon' ).on( 'click', function( event ){
+		$iconBrowser.themeblvd( 'options', 'bind' );
+
+		$iconBrowser.find( '.select-icon' ).on( 'click', function( event ){
 
 			event.preventDefault();
 
@@ -2598,6 +2602,47 @@ window.themeblvd.options = {};
 			$browser
 				.find( '.icon-selection-wrap' )
 				.append( '<i class="' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
+
+		} );
+
+		$iconBrowser.find( '.icon-search-input' ).on( 'keyup', function( event ) {
+
+			var value   = $( this ).val(),
+				results = [];
+
+			console.log( 'VALUE: ' + value );
+
+			if ( ! value ) {
+				$iconBrowser.find( '.select-icon' ).show();
+				return;
+			}
+
+			$iconBrowser.find( '.select-icon' ).hide();
+
+			if ( 'undefined' !== typeof themeblvdIconSearchData ) {
+
+				$.each( themeblvdIconSearchData, function( name, terms ) {
+
+					var i, term;
+
+					for ( i = 0; i < terms.length; i++ ) {
+
+						term = terms[ i ];
+
+						if ( 0 === term.indexOf( value ) ) {
+
+							results.push( '.icon-' + name );
+
+							i = terms.length; // End loop.
+
+						}
+					}
+
+				} );
+
+			}
+
+			$iconBrowser.find( results.join() ).show();
 
 		} );
 

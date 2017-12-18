@@ -386,6 +386,12 @@ class Theme_Blvd_Options_Page {
 				esc_attr( $file['version'] )
 			);
 
+			wp_localize_script(
+				$file['handle'],
+				'themeblvdIconSearchData',
+				themeblvd_get_icon_search_data()
+			);
+
 		}
 
 		themeblvd_admin_assets( 'scripts' );
