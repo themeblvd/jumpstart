@@ -180,7 +180,7 @@ class Theme_Blvd_Compat_WPML {
 						$active['url'],
 						$active['language_code'],
 						$active['translated_name'],
-						themeblvd_get_icon_class( 'fa-angle-down' )
+						themeblvd_get_icon_class( 'angle-down' )
 					);
 
 					$output .= "\t\t\t<ul class=\"lang-sub-menu\">\n";

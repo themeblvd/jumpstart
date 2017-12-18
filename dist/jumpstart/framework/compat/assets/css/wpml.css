@@ -18,11 +18,11 @@
   padding: 0 5px;
 }
 
-.tb-wpml-switcher .active .fa {
+.tb-wpml-switcher .active i {
   margin-left: 5px;
 }
 
-.rtl .tb-wpml-switcher .active .fa {
+.rtl .tb-wpml-switcher .active i {
   margin-right: 5px;
   margin-left: 0;
 }
