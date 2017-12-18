@@ -225,8 +225,8 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 	$height = strval( $height ) . '%';
 
 	$icon = sprintf(
-		'<i class="fa fa-%s"></i>',
-		themeblvd_get_format_icon( $args['format'], true )
+		'<i class="%s"></i>',
+		themeblvd_get_icon_class( themeblvd_get_format_icon( $args['format'], true ) )
 	);
 
 	if ( $args['link'] ) {
