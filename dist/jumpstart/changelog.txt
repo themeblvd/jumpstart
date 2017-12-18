@@ -23,6 +23,11 @@ Jump Start Changelog
 	* Added filter `themeblvd_element_{$type}_options` to modify options for any element being outputted from the layout builder.
 	* Added filter `themeblvd_element_{$type}_display` to modify display options for any element being outputted from the layout builder.
 	* Added additional CSS classes to contact buttons and social sharing buttons, for more complex styling.
+* New: [FontAwesome 5](https://fontawesome.com) Implementation.
+	* More modern implementation of icons through JavaScript.
+	* Improved admin icon browser with live search.
+	* More icons to choose from; all free FontAwesome 5 solid and brand icons included by default.
+	* New filters added for developers to implement FontAwesome Pro (or alternative icon styles) on frontend and into admin icon browser.
 * Third-Party Plugin Compatibility
 	* bbPress: "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* bbPress: Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
@@ -46,15 +51,20 @@ Jump Start Changelog
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
 * Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.
-* Fixed: Tab deeplinking not working, when enabled from child theme (see [tutorial](http://dev.themeblvd.com/tutorial/tab-deeplinking)).
+* Fixed: Tab deep linking not working, when enabled from child theme (see [tutorial](http://dev.themeblvd.com/tutorial/tab-deeplinking)).
 * Fixed: Post ID browser modal window not closing in admin when selecting post.
+* Fixed: Social contact icons not showing in correct color on transparent header in some cases, with Super User and Executive theme bases.
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
 * Removed: No more html5shiv for HTML5 compatibility with IE8.
 * Removed: The deprecated "featured" areas (as of framework 2.5), using `themeblvd_featured_*` action hooks have been completely removed.
+* Updated: FontAwesome to 5.0.1.
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.
 * Updated: Isotope to 3.0.4.
+
+* **Important General Notes:**
+	* If icons you've implemented are not showing up, [take a look here](https://fontawesome.com/how-to-use/upgrading-from-4#icon-name-changes-complete-list) to make sure you're not using FontAwesome icon names that they changed in v5.
 
 * **Important Developer Notes:**
 	* If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
