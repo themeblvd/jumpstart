@@ -1696,12 +1696,10 @@ article.tb-naked-page {
 .widget_product_search .tb-search .search-wrap {
 	position: relative;
 }
-.widget_search .tb-search .search-wrap:before,
-.widget_product_search .tb-search .search-wrap:before {
-	content: "\f002";
+.widget_search .tb-search .search-wrap .search-icon,
+.widget_product_search .tb-search .search-wrap .search-icon {
 	color: rgba(200,200,200,.7);
 	display: block;
-	font-family: "FontAwesome";
 	line-height: 1em;
 	position: absolute;
 	top: 50%;

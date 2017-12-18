@@ -1342,45 +1342,6 @@ textarea {
 	font-size: 14px;
 }
 
-/* Search Widget */
-.widget_search .tb-search .search-wrap,
-.widget_product_search .tb-search .search-wrap,
-.search-page-header .tb-search .search-wrap {
-	position: relative;
-}
-.widget_search .tb-search .search-wrap:before,
-.widget_product_search .tb-search .search-wrap:before,
-.search-page-header .tb-search .search-wrap:before {
-	content: "\f002";
-	color: rgba(200,200,200,.7);
-	display: block;
-	font-family: "FontAwesome";
-	line-height: 1em;
-	position: absolute;
-	top: 50%;
-	left: 14px;
-	text-align: center;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-ms-transform: translate(0, -50%); /* IE9 */
-	-webkit-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	width: 1em;
-	height: 1em;
-}
-.widget_search .tb-search .search-input,
-.widget_product_search .tb-search .search-input,
-.search-page-header .tb-search .search-input {
-	height: auto;
-	padding: 12px 14px 12px 36px;
-}
-.widget_search .tb-search .search-submit,
-.widget_product_search .tb-search .search-submit,
-.search-page-header .tb-search .search-submit {
-	display: none;
-}
-
 /* WP Tag Cloud */
 .tb-tag-cloud .tagcloud a:hover {
 	background: #36b3a8; /* highlight */
