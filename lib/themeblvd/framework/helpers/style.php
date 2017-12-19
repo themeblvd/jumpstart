@@ -782,7 +782,7 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 
 		$brands = themeblvd_get_icons( 'brands' );
 
-		if ( array_key_exists( $icon_name, $brands ) ) {
+		if ( in_array( $icon_name, $brands ) ) {
 
 			array_unshift( $class, 'fab' );
 
@@ -802,8 +802,6 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 
 		}
 	}
-
-	// print_r($class);
 
 	/**
 	 * Filters the classes used for displaying a
