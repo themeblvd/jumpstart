@@ -1709,25 +1709,14 @@ function themeblvd_the_breadcrumbs( $args = array() ) {
  */
 function themeblvd_get_simple_contact( $args ) {
 
-	// Setup icon links.
-	$icons = array();
-
-	for ( $i = 1; $i <= 6; $i++ ) {
-
-		if ( ! empty( $args[ 'link_' . $i . '_url' ] ) ) {
-
-			$icons[ $args[ 'link_' . $i . '_icon' ] ] = $args[ 'link_' . $i . '_url' ];
-
-		}
-	}
-
 	// Start output.
 	$output = '<ul class="simple-contact">';
 
 	if ( ! empty( $args['phone_1'] ) ) {
 
 		$output .= sprintf(
-			'<li class="phone">%s</li>',
+			'<li class="faphone"><i class="%s"></i>%s</li>',
+			esc_attr( themeblvd_get_icon_class( 'phone', array( 'fa-fw' ) ) ),
 			themeblvd_kses( $args['phone_1'] )
 		);
 
@@ -1736,7 +1725,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['phone_2'] ) ) {
 
 		$output .= sprintf(
-			'<li class="phone">%s</li>',
+			'<li class="phone"><i class="%s"></i>%s</li>',
+			esc_attr( themeblvd_get_icon_class( 'phone', array( 'fa-fw' ) ) ),
 			themeblvd_kses( $args['phone_2'] )
 		);
 
@@ -1745,7 +1735,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['email_1'] ) ) {
 
 		$output .= sprintf(
-			'<li class="email"><a href="mailto:%s">%s</a></li>',
+			'<li class="email"><i class="%s"></i><a href="mailto:%s">%s</a></li>',
+			esc_attr( themeblvd_get_icon_class( 'envelope', array( 'fa-fw' ) ) ),
 			esc_attr( $args['email_1'] ),
 			esc_html( $args['email_1'] )
 		);
@@ -1755,7 +1746,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['email_2'] ) ) {
 
 		$output .= sprintf(
-			'<li class="email"><a href="mailto:%s">%s</a></li>',
+			'<li class="email"><i class="%s"></i><a href="mailto:%s">%s</a></li>',
+			esc_attr( themeblvd_get_icon_class( 'envelope', array( 'fa-fw' ) ) ),
 			esc_attr( $args['email_2'] ),
 			esc_html( $args['email_2'] )
 		);
@@ -1765,7 +1757,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['contact'] ) ) {
 
 		$output .= sprintf(
-			'<li class="contact"><a href="%s">%s</a></li>',
+			'<li class="contact"><i class="%s"></i><a href="%s">%s</a></li>',
+			esc_attr( themeblvd_get_icon_class( 'pencil-alt', array( 'fa-fw' ) ) ),
 			esc_url( $args['contact'] ),
 			themeblvd_get_local( 'contact_us' )
 		);
@@ -1775,39 +1768,56 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['skype'] ) ) {
 
 		$output .= sprintf(
-			'<li class="skype">%s</li>',
+			'<li class="skype"><i class="%s"></i>%s</li>',
+			esc_attr( themeblvd_get_icon_class( 'skype', array( 'fa-fw' ) ) ),
 			themeblvd_kses( $args['skype'] )
 		);
 
 	}
 
-	if ( ! empty( $icons ) ) {
+	// Setup icons that can be sent to themeblvd_get_contact_bar().
+	$icons = array();
 
-		$sources = themeblvd_get_social_media_sources();
+	$sources = themeblvd_get_social_media_sources();
 
-		$output .= '<li class="link"><ul class="icons">';
+	for ( $i = 1; $i <= 6; $i++ ) {
 
-		foreach ( $icons as $icon => $url ) {
+		if ( ! empty( $args[ 'link_' . $i . '_url' ] ) ) {
 
-			$title = '';
+			$icon = $args[ 'link_' . $i . '_icon' ];
+
+			$icons[ $icon ] = array();
+
+			$icons[ $icon ]['icon'] = $icon;
+
+			$icons[ $icon ]['url'] = $args[ 'link_' . $i . '_url' ];
+
+			$icons[ $icon ]['target'] = '_blank';
 
 			if ( isset( $sources[ $icon ] ) ) {
 
-				$title = $sources[ $icon ];
+				$icons[ $icon ]['label'] = $sources[ $icon ];
 
 			}
-
-			$output .= sprintf(
-				'<li class="%s"><a href="%s" target="_blank" title="%s">%s</a></li>',
-				esc_attr( $icon ),
-				esc_url( $url ),
-				esc_attr( $title ),
-				esc_html( $title )
-			);
-
 		}
+	}
 
-		$output .= '</ul></li>';
+	if ( $icons ) {
+
+		$output .= sprintf(
+			'<li class="link"><i class="%s"></i>',
+			esc_attr( themeblvd_get_icon_class( 'link', array( 'fa-fw' ) ) )
+		);
+
+		$output .= themeblvd_get_contact_bar(
+			$icons,
+			array(
+				'style'   => 'color',
+				'tooltip' => 'top',
+			)
+		);
+
+		$output .= '</li>';
 
 	}
 

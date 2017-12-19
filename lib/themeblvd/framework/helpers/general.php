@@ -182,13 +182,17 @@ function themeblvd_do_fa( $str ) {
 		$list = true;
 
 		if ( substr_count( trim( $str ), "\n" ) ) {
-			$list = false; // If text has more than one line, we won't make into an inline list
+
+			$list = false; // If text has more than one line, we won't make into an inline list.
+
 		}
 
 		$total = count( $icons[0] );
 
 		if ( $list ) {
+
 			$str = sprintf( "<ul class=\"list-inline\">\n<li>%s</li>\n</ul>", $str );
+
 		}
 
 		foreach ( $icons[0] as $key => $val ) {
