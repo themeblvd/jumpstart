@@ -2486,7 +2486,7 @@ function themeblvd_get_toggle( $args ) {
         <div class="' . esc_attr( $class ) . '">
             <div class="panel-heading">
                 <a class="panel-title" data-toggle="collapse" data-parent="" href="#' . $toggle_id . '">
-                    <i class="fas fa-' . $icon . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
+                    <i class="' . themeblvd_get_icon_class( $icon ) . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="' . $toggle_id . '" class="' . $state . '">
