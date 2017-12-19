@@ -481,6 +481,9 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 			// Strip link.
 			$content = str_replace( array( '<a href="' . $url[1] . '">', '</a>' ), '', $content );
 
+			// Add thumbnail icon.
+			$content .= themeblvd_get_thumbnail_link_icon( $lightbox );
+
 			// Re-wrap image with link.
 			$content = themeblvd_get_link_to_lightbox( array(
 				'item'  => $content,
@@ -494,9 +497,13 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 
 				$content = str_replace( '<a', '<a class="tb-thumb-link post"', $content );
 
+				$content = str_replace( '</a>', themeblvd_get_thumbnail_link_icon( 'post' ) . '</a>' );
+
 			} else {
 
 				$content = str_replace( '<a', '<a class="tb-thumb-link external" target="_blank"', $content );
+
+				$content = str_replace( '</a>', themeblvd_get_thumbnail_link_icon( 'external' ) . '</a>' );
 
 			}
 		}

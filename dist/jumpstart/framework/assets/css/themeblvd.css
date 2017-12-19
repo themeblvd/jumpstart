@@ -552,7 +552,9 @@ img.size-full {
 .gallery-item .tb-thumb-link {
 	margin-bottom: 0;
 }
-.gallery-item .tb-thumb-link:before {
+/*
+@TODO
+.gallery-item .tb-thumb-link .thumb-link-icon {
 	font-size: 18px;
 	line-height: 3em;
 	margin: -1.5em 0 0 -1.5em;
@@ -560,10 +562,11 @@ img.size-full {
 	height: 3em;
 }
 @media (max-width: 767px) {
-	.gallery-item .tb-thumb-link:before {
+	.gallery-item .tb-thumb-link .thumb-link-icon {
 		font-size: 11px;
 	}
 }
+*/
 .gallery-item img {
 	display: inline-block;
 }
@@ -3928,17 +3931,12 @@ blockquote small {
 .tb-thumb-link:hover .img {
 	opacity: 0.4;
 }
-.tb-thumb-link:before {
-	content: "\f067"; /* plus sign */
+.tb-thumb-link .thumb-link-icon {
 	background: rgba(0,0,0,.6);
-	-webkit-border-radius: 50px;
 	border-radius: 50px;
 	color: #ffffff;
 	display: block;
-	font-family: "FontAwesome" !important;
 	font-size: 20px;
-	font-style: normal !important;
-	font-weight: normal !important;
 	line-height: 4em;
 	opacity: 0;
 	position: absolute;
@@ -3948,11 +3946,6 @@ blockquote small {
 	width: 4em;
 	height: 4em;
 	text-align: center;
-	text-rendering: auto;
-	text-shadow: none;
-	vertical-align: middle;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	-webkit-transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
 	transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
 	-ms-transform: scale(0.9,0.9);
@@ -3960,28 +3953,10 @@ blockquote small {
 	transform: scale(0.9,0.9);
 	z-index: 2;
 }
-.tb-thumb-link:hover:before {
+.tb-thumb-link:hover .thumb-link-icon {
 	opacity: 1;
-	-ms-transform: scale(1,1);
 	-webkit-transform: scale(1,1);
 	transform: scale(1,1);
-}
-.tb-thumb-link.image:before {
-	/* content: "\f067"; /* plus sign */
-	content: "\f065"; /* expand */
-}
-.tb-thumb-link.video:before  {
-	content: "\f008"; /* film strip */
-}
-.tb-thumb-link.post:before {
-	content: "\f178"; /* long-arrow, pointing right */
-}
-.rtl .tb-thumb-link.post:before {
-	content: "\f177"; /* long-arrow, pointing left */
-}
-.tb-thumb-link.external:before {
-	/* content: "\f0c1"; link anchor */
-	content: "\f08e"; /* external-link */
 }
 .element-image .tb-thumb-link {
 	display: inline-block;
@@ -4642,7 +4617,7 @@ body.mobile .tb-bg-video {
 .list-wrap p {
 	margin: 0 0 20px 0;
 }
-.list-wrap .tb-thumb-link:before {
+.list-wrap .tb-thumb-link .thumb-link-icon {
 	font-size: 18px;
 	line-height: 3em;
 	margin: -1.5em 0 0 -1.5em;
@@ -4738,20 +4713,17 @@ body.mobile .tb-bg-video {
 	margin: 0;
 	position: relative;
 }
-.post_showcase .showcase-item.has-title .featured-item.showcase .tb-thumb-link:before {
+.post_showcase .showcase-item.has-title .featured-item.showcase .tb-thumb-link .thumb-link-icon {
 	background-color: transparent;
-	background-position: center center;
-	background-repeat: no-repeat;
 	font-size: 18px;
 	line-height: 2.5em;
 	margin: 0;
 	position: absolute;
 	top: 0;
 	right: 0;
-	left: inherit;
+	left: initial;
 	width: 2.5em;
     height: 2.5em;
-	-ms-transform: none;
 	-webkit-transform: none;
 	transform: none;
 	-webkit-transition: opacity 0.25s ease-in, top 0.25s ease-in;
@@ -4826,7 +4798,7 @@ body.mobile .tb-bg-video {
 	transition: opacity .25s ease;
 	width: 100%;
 }
-.post_showcase .featured-item.tb-thumb-link:before,
+.post_showcase .featured-item.tb-thumb-link .thumb-link-icon,
 .post_showcase .featured-item.tb-thumb-link:after {
 	display: none; /* when showcase image doesn't have a link */
 }
@@ -5019,7 +4991,7 @@ body.mobile .tb-bg-video {
 .tb-mini-post-list .featured-image .placeholder .svg-inline--fa {
 	font-size: 20px;
 }
-.tb-mini-post-list .tb-thumb-link:before {
+.tb-mini-post-list .tb-thumb-link .thum-link-icon {
 	font-size: 12px;
 	line-height: 3em;
 	margin: -1.5em 0 0 -1.5em;
@@ -5081,7 +5053,7 @@ body.mobile .tb-bg-video {
 .tb-mini-post-grid .featured-image .placeholder .svg-inline--fa {
 	font-size: 20px;
 }
-.tb-mini-post-grid .tb-thumb-link:before {
+.tb-mini-post-grid .tb-thumb-link .thumb-link-icon {
 	font-size: 12px;
 	line-height: 3em;
 	margin: -1.5em 0 0 -1.5em;
@@ -5112,7 +5084,7 @@ body.mobile .tb-bg-video {
 		margin-bottom: 30px;
 	}
 }
-.tb-small-post-grid .tb-thumb-link:before {
+.tb-small-post-grid .tb-thumb-link .thumb-link-icon {
 	font-size: 12px;
 	line-height: 3em;
 	margin: -1.5em 0 0 -1.5em;

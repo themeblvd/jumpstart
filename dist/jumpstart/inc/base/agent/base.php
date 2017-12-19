@@ -117,7 +117,7 @@ function jumpstart_ag_css() {
 
 	}
 
-	$print .= ".tb-thumb-link:before,\n";
+	$print .= ".tb-thumb-link .thumb-link-icon,\n";
 	$print .= ".tb-tags a:hover,\n";
 	$print .= ".tb-tags a:focus,\n";
 	$print .= ".btn-share:hover,\n";

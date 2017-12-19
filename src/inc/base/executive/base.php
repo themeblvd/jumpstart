@@ -418,7 +418,7 @@ function jumpstart_ex_css() {
 	$print .= sprintf( "\tbackground-color: %s\n", $highlight );
 	$print .= "}\n";
 
-	$print .= ".tb-thumb-link:before,\n";
+	$print .= ".tb-thumb-link .thumb-link-icon,\n";
 	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase .tb-thumb-link:after,\n";
 	$print .= ".post_showcase .showcase-item.has-title .featured-item.showcase.tb-thumb-link:after {\n";
 	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $highlight, '0.8' ) );

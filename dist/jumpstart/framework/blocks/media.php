@@ -249,6 +249,8 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	// Wrap image in link, if necessary.
 	if ( $link ) {
 
+		$output .= themeblvd_get_thumbnail_link_icon( $link );
+
 		$link = themeblvd_get_post_thumbnail_link(
 			$post->ID,
 			$args['attachment_id'],
@@ -926,6 +928,8 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			if ( $img['link'] ) {
 
+				$output .= themeblvd_get_thumbnail_link_icon( $img['link'] );
+
 				if ( 'image' === $img['link'] || 'video' === $img['link'] ) {
 
 					$output .= themeblvd_get_link_to_lightbox( array(
@@ -1286,6 +1290,8 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 
 	// Wrap image in link
 	if ( $has_link ) {
+
+		$output .= themeblvd_get_thumbnail_link_icon( $args['link'] );
 
 		$anchor_classes = 'tb-thumb-link';
 

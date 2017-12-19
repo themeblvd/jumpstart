@@ -180,6 +180,70 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 }
 
 /**
+ * Get the icon used for a thumbnail link.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param  string $type Type of thumbnail link, `image`, `video`, `post` or `external`.
+ * @return array  $icon Final HTML output for icon.
+ */
+function themeblvd_get_thumbnail_link_icon( $type = '' ) {
+
+	$output = '';
+
+	$icon_name = 'plus-square';
+
+	switch ( $type ) {
+
+		case 'video':
+			$icon_name = 'film';
+			break;
+
+		case 'post':
+			if ( is_rtl() ) {
+
+				$icon_name = 'long-arrow-alt-left';
+
+			} else {
+
+				$icon_name = 'long-arrow-alt-right';
+
+			}
+			break;
+
+		case 'external':
+			$icon_name = 'external-link-alt';
+
+	}
+
+	/**
+	 * Filters the icon name used for a thumbnail
+	 * link icon.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string $icon_name Icon name.
+	 */
+	$icon_name = apply_filters( 'themeblvd_thumbnail_link_icon_name', $icon_name );
+
+	$icon = sprintf(
+		'<span class="thumb-link-icon"><i class="%s"></i></span>',
+		esc_attr( themeblvd_get_icon_class( $icon_name ) )
+	);
+
+	/**
+	 * Filters the output for the icon used in
+	 * a thumbnail link.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string $icon Final HTML output for icon.
+	 */
+	return apply_filters( 'themeblvd_thumbnail_link_icon', $icon );
+
+}
+
+/**
  * Get a placeholder for the featured image.
  *
  * When displaying featured images, some post
