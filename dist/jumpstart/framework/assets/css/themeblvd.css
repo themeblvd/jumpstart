@@ -3384,180 +3384,26 @@ ul.tb-icon-list {
 }
 
 /* Simple Contact */
-.tb-contact_widget ul.simple-contact {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-.tb-contact_widget ul.simple-contact li {
-	line-height: 20px;
-	margin: 2px 0;
-	position: relative;
-	padding: 0 0 0 25px;
-}
-.tb-contact_widget ul.simple-contact li:before {
-	content: "";
-	font-family: "FontAwesome";
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-.tb-contact_widget ul.simple-contact > li.link:before {
-	content: "\f0c1";
-}
-.tb-contact_widget ul.simple-contact > li.phone:before {
-	content: "\f095";
-}
-.tb-contact_widget ul.simple-contact > li.email:before {
-	content: "\f0e0";;
-}
-.tb-contact_widget ul.simple-contact > li.contact:before {
-	content: "\f040";
-}
-.tb-contact_widget ul.simple-contact > li.skype:before {
-	content: "\f303";
-}
-.tb-contact_widget ul.simple-contact ul.icons {
-	margin: 0;
-	padding: 0;
-}
-.tb-contact_widget ul.simple-contact ul.icons li {
-	float: left;
-	height: 20px;
-	margin: 0;
-	padding: 0;
-}
-.tb-contact_widget ul.simple-contact ul.icons li a {
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-size: 16px 16px;
-	display: block;
+.tb-contact_widget .simple-contact .link {
 	line-height: 1;
-	margin: 2px 2px 0 0;
 	padding: 0;
-	text-indent: -9999px;
-	width: 16px;
-	height: 16px;
+	padding-left: 1.6em;
+	position: relative;
 }
-.tb-contact_widget ul.simple-contact ul.icons li.chat a {
-	background-image: url('../img/social/chat.png');
+.tb-contact_widget .simple-contact .link .svg-inline--fa {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
 }
-.tb-contact_widget ul.simple-contact ul.icons li.cloud a {
-	background-image: url('../img/social/cloud.png');
+.tb-contact_widget .simple-contact .tb-social-icons {
+	display: inline-block;
+	padding: 0;
 }
-.tb-contact_widget ul.simple-contact ul.icons li.email a {
-	background-image: url('../img/social/email.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.movie a {
-	background-image: url('../img/social/movie.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.music a {
-	background-image: url('../img/social/music.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.portfolio a {
-	background-image: url('../img/social/portfolio.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.rss  a {
-	background-image: url('../img/social/rss.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.store a {
-	background-image: url('../img/social/store.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.write a {
-	background-image: url('../img/social/write.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.android a {
-	background-image: url('../img/social/android.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.apple a {
-	background-image: url('../img/social/apple.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.behance a {
-	background-image: url('../img/social/behance.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.delicious  a {
-	background-image: url('../img/social/delicious.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.deviantart  a {
-	background-image: url('../img/social/deviantart.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.digg  a {
-	background-image: url('../img/social/digg.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.dribbble  a {
-	background-image: url('../img/social/dribbble.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.dropbox a {
-	background-image: url('../img/social/dropbox.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.facebook  a {
-	background-image: url('../img/social/facebook.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.flickr  a {
-	background-image: url('../img/social/flickr.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.foursquare  a {
-	background-image: url('../img/social/foursquare.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.github  a {
-	background-image: url('../img/social/github.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.google  a {
-	background-image: url('../img/social/google.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.instagram  a {
-	background-image: url('../img/social/instagram.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.linkedin  a {
-	background-image: url('../img/social/linkedin.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.myspace  a {
-	background-image: url('../img/social/myspace.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.paypal  a {
-	background-image: url('../img/social/paypal.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.pinterest  a {
-	background-image: url('../img/social/pinterest.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.reddit  a {
-	background-image: url('../img/social/reddit.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.slideshare a {
-	background-image: url('../img/social/slideshare.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.soundcloud a {
-	background-image: url('../img/social/soundcloud.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.stumbleupon a {
-	background-image: url('../img/social/stumbleupon.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.tumblr  a {
-	background-image: url('../img/social/tumblr.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.twitter  a {
-	background-image: url('../img/social/twitter.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.vimeo  a {
-	background-image: url('../img/social/vimeo.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.vine a {
-	background-image: url('../img/social/vine.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.windows a {
-	background-image: url('../img/social/windows.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.wordpress a {
-	background-image: url('../img/social/wordpress.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.xing a {
-	background-image: url('../img/social/xing.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.yahoo  a {
-	background-image: url('../img/social/yahoo.png');
-}
-.tb-contact_widget ul.simple-contact ul.icons li.youtube  a {
-	background-image: url('../img/social/youtube.png');
+.tb-contact_widget .simple-contact .tb-social-icons li {
+	margin: 0;
+	margin-right: 2px;
 }
 
 /* =Lightbox
