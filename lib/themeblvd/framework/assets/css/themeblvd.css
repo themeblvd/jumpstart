@@ -15,10 +15,9 @@
  * 2.0 - Common Classes
  *   2.1 - General
  *   2.2 - Images
- *   2.3 - Icon Lists
- *   2.4 - Rounded Corners
- *   2.5 - Viewport
- *   2.6 - Play Button
+ *   2.3 - Rounded Corners
+ *   2.4 - Viewport
+ *   2.5 - Play Button
  * 3.0 - WP Classes
  * 4.0 - Animation
  * 5.0 - Post Formats
@@ -462,14 +461,6 @@ img.size-full {
 	margin-bottom: 0;
 	margin-top: 0;
 	padding: 0;
-}
-
-/* Icon Lists */
-.tb-icon-list.fa-ul > li {
-	line-height: 1.6em;
-}
-.tb-icon-list.fa-ul .fa-li {
-	top: .3em;
 }
 
 /* Rounded Corners */
@@ -3424,7 +3415,7 @@ ul.tb-icon-list {
 	content: "\f040";
 }
 .tb-contact_widget ul.simple-contact > li.skype:before {
-	content: "\f17e";
+	content: "\f303";
 }
 .tb-contact_widget ul.simple-contact ul.icons {
 	margin: 0;
