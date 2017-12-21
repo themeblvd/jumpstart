@@ -163,17 +163,6 @@ function jumpstart_ex_options() {
 				'id'        => 'sub_group_end_1',
 				'type'      => 'subgroup_end',
 			),
-			'style' => array(
-				'id'        => 'style',
-				'name'      => __( 'Content Style', '@@text-domain' ),
-				'desc'      => __( 'Select the content style of the site.', '@@text-domain' ),
-				'std'       => 'light',
-				'type'      => 'select',
-				'options'   => array(
-					'light' => __( 'Light', '@@text-domain' ),
-					'dark'  => __( 'Dark', '@@text-domain' ),
-				),
-			),
 		),
 		'header_info' => array(
 			'sub_group_start_3' => array(

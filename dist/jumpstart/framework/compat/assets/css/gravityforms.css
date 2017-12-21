@@ -139,10 +139,6 @@
   padding-bottom: 20px;
 }
 
-.tb-gforms-compat.content_dark .gform_wrapper .gsection {
-  border-color: #000000;
-}
-
 .tb-gforms-compat .gform_wrapper .top_label > .gsection:first-child {
   margin-top: 0;
 }

@@ -59,7 +59,8 @@ Jump Start Changelog
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
 * Removed: No more html5shiv for HTML5 compatibility with IE8.
-* Removed: The deprecated "featured" areas (as of framework 2.5), using `themeblvd_featured_*` action hooks have been completely removed.
+* Removed: No more "Dark" site-wide content style.
+* Removed: The long-time deprecated "featured" areas (as of framework 2.5), using `themeblvd_featured_*` action hooks have been completely removed.
 * Updated: FontAwesome to 5.0.1.
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.

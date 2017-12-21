@@ -81,7 +81,6 @@ function themeblvd_setup() {
 
 	$setup['display'] = array(
 		'responsive'       => true,  // Responsive elements.
-		'dark'             => false, // Whether to display as dark theme.
 		'sticky'           => true,  // Sticky header as user scrolls past header.
 		'mobile_side_menu' => true,  // Responsive menu position fixed to the side of the screen on mobile.
 		'side_panel'       => true,  // Optional side panel navigation.

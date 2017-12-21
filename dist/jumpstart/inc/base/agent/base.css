@@ -672,9 +672,6 @@ body {
 .tb-lang-popup li {
 	border-bottom: 2px solid #e5e5e5;
 }
-.content_dark .tb-lang-popup li {
-	border-bottom-color: #000000;
-}
 .tb-lang-popup li:last-child {
 	border-bottom: none;
 }
@@ -685,16 +682,9 @@ body {
 	color: #666666;
 	padding: 10px 15px;
 }
-.content_dark .tb-lang-popup a,
-.content_dark .tb-lang-popup .active span {
-	color: #ffffff;
-}
 .tb-lang-popup .active span {
 	background-color: #f2f2f2;
 	cursor: default;
-}
-.content_dark .tb-lang-popup .active span {
-	background-color: #101010;
 }
 .tb-lang-popup a:hover,
 .tb-lang-popup a:focus {
@@ -711,9 +701,6 @@ body {
     margin: 0;
     padding: 32px 24px;
 }
-.content_dark .site-breadcrumbs {
-	background-color: #151515;
-}
 .breadcrumb {
 	padding: 0;
 }
@@ -729,16 +716,8 @@ body {
 .breadcrumb > li+li:before {
 	color: rgba(26,26,26,.4);
 }
-.content_dark .breadcrumb a:not(:hover),
-.content_dark .breadcrumb > li+li:before {
-	color: #cccccc;
-	color: rgba(255,255,255,.6);
-}
 .breadcrumb > .active {
 	color: rgba(26,26,26,.8);
-}
-.content_dark .breadcrumb > .active {
-	color: #ffffff;
 }
 
 /* =Main
@@ -748,10 +727,6 @@ body {
 #custom-main,
 #blank-page {
 	background-color: #ffffff;
-}
-.content_dark #main,
-.content_dark #custom-main {
-	background-color: #222222;
 }
 #main {
 	padding: 60px 0;
@@ -969,12 +944,6 @@ blockquote {
 .text-light .entry-content blockquote {
 	color: #ffffff;
 }
-.content_dark .entry-content blockquote {
-	color: #ffffff;
-}
-.content_dark .text-dark .entry-content blockquote {
-	color: #161616;
-}
 blockquote cite,
 blockquote small,
 blockquote small:before {
@@ -988,17 +957,6 @@ blockquote small:before {
 .text-light blockquote small:before {
 	color: #cccccc;
 	color: rgba(255,255,255,.6);
-}
-.content_dark blockquote cite,
-.content_dark blockquote small,
-.content_dark blockquote small:before {
-	color: #cccccc;
-	color: rgba(255,255,255,.6);
-}
-.content_dark .text-dark blockquote cite,
-.content_dark .text-dark blockquote small,
-.content_dark .text-dark blockquote small:before {
-	color: #161616;
 }
 ::selection {
 	color: #ffffff;
@@ -1145,10 +1103,6 @@ textarea {
 	border-radius: 3px;
 	padding: 40px;
 }
-.content_dark .tb-info-box {
-	background-color: #151515;
-	border-color: #000000;
-}
 .tb-info-info .info-box-title{
 	font-size: 1em;
 	text-transform: uppercase;
@@ -1274,14 +1228,6 @@ textarea {
 	background-color: #dddddd;
 	color: #666666;
 }
-.content_dark .pagination .btn {
-	background-color: #151515;
-	color: #ffffff;
-}
-.content_dark .pagination .btn.active {
-	background-color: #000000;
-	color: #ffffff;
-}
 .pagination .btn:hover {
 	color: #ffffff;
 }
@@ -1329,9 +1275,6 @@ textarea {
 	font-size: 13px;
 	margin: -30px -30px 20px -30px;
 	padding: 20px 30px;
-}
-.content_dark.tb-widget-bg .fixed-sidebar .widget-title {
-	border-bottom-color: #222222;
 }
 
 /* Footer */
@@ -1572,9 +1515,6 @@ button:active {
 }
 .tb-wc-styles .cart_totals th {
 	background: #fafafa;
-}
-.tb-wc-styles .content_dark .cart_totals th {
-	background: rgba(0,0,0,.1);
 }
 .tb-wc-styles .shop_table.cart td.actions .coupon .input-text {
 	height: 39px;

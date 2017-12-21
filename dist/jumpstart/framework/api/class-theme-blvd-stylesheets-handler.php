@@ -192,17 +192,6 @@ class Theme_Blvd_Stylesheet_Handler {
 
 		}
 
-		// Primary dark css, re-styles themeblvd.css for dark content bg color
-		if ( themeblvd_supports( 'display', 'dark' ) && themeblvd_supports( 'assets', 'primary_dark_css' ) ) {
-			$this->framework_stylesheets['themeblvd_dark'] = array(
-				'handle'	=> 'themeblvd-dark',
-				'src'		=> TB_FRAMEWORK_URI.'/assets/css/themeblvd-dark.min.css',
-				'deps'		=> array('themeblvd'),
-				'ver'		=> TB_FRAMEWORK_VERSION,
-				'media'		=> 'all'
-			);
-		}
-
 		// Remove stylesheets
 		if ( $this->remove_stylesheets ) {
 			foreach ( $this->remove_stylesheets as $key => $handle ) {

@@ -19,24 +19,6 @@ include_once( themeblvd_get_base_path( 'superuser' ) . '/options.php' );
 include_once( themeblvd_get_base_path( 'superuser' ) . '/presets.php' );
 
 /**
- * Filter global configuration.
- *
- * @since @@name-package 2.0.0
- */
-function jumpstart_su_global_config( $setup ) {
-
-	if ( 'dark' == themeblvd_get_option( 'style' ) ) {
-
-		$setup['display']['dark'] = true;
-
-	}
-
-	return $setup;
-
-}
-add_filter( 'themeblvd_global_config', 'jumpstart_su_global_config' );
-
-/**
  * Include Google fonts, if needed.
  *
  * @since @@name-package 2.0.0

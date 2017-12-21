@@ -25,17 +25,6 @@ function jumpstart_ag_options() {
 	 */
 	$options = apply_filters( 'jumpstart_ag_options', array(
 		'general' => array(
-			'style' => array(
-				'id'      => 'style',
-				'name'    => __( 'Content Style', '@@text-domain' ),
-				'desc'    => __( 'Select the content style of the site.', '@@text-domain' ),
-				'std'     => 'light',
-				'type'    => 'select',
-				'options' => array(
-					'light' => __( 'Light', '@@text-domain' ),
-					'dark'  => __( 'Dark', '@@text-domain' ),
-				),
-			),
 			'btn_color' => array(
 				'id'      => 'btn_color',
 				'name'    => __( 'Primary Buttons', '@@text-domain' ),

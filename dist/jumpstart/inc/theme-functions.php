@@ -151,20 +151,6 @@ function jumpstart_css() {
 	}
 
 	/*
-	 * Dark Stylesheet
-	 */
-	if ( themeblvd_supports( 'display', 'dark' ) ) {
-
-		wp_enqueue_style(
-			'jumpstart-dark',
-			esc_url( get_template_directory_uri() . '/assets/css/dark.min.css' ),
-			$handler->get_framework_deps(),
-			$ver
-		);
-
-	}
-
-	/*
 	 * Theme Base Stylesheet
 	 */
 	$base = themeblvd_get_base();

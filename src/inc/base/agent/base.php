@@ -19,27 +19,6 @@ include_once( themeblvd_get_base_path( 'agent' ) . '/options.php' );
 include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 
 /**
- * Filter global configuration.
- *
- * @since @@name-package 2.1.0
- *
- * @param  array $setup Framework global configuration settings.
- * @return array $setup Modified framework global configuration settings.
- */
-function jumpstart_ag_global_config( $setup ) {
-
-	if ( 'dark' === themeblvd_get_option( 'style' ) ) {
-
-		$setup['display']['dark'] = true;
-
-	}
-
-	return $setup;
-
-}
-add_filter( 'themeblvd_global_config', 'jumpstart_ag_global_config' );
-
-/**
  * Include Google fonts, if needed.
  *
  * @since @@name-package 2.1.0
