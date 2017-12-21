@@ -176,21 +176,6 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 
 	}
 
-	if ( 'section' === $context || 'banner' === $context || 'jumbotron' === $context ) {
-
-		if ( themeblvd_supports( 'featured', 'style' ) ) {
-
-			$types['featured'] = __( 'Theme\'s preset "Featured" area background', 'jumpstart' );
-
-		}
-
-		if ( themeblvd_supports( 'featured_below', 'style' ) ) {
-
-			$types['featured_below'] = __( 'Theme\'s preset "Featured Below" area background', 'jumpstart' );
-
-		}
-	}
-
 	if ( 'banner' === $context ) {
 
 		$types['none'] = __( 'No banner', 'jumpstart' );
