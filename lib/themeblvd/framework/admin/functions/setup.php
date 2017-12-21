@@ -136,17 +136,17 @@ function themeblvd_plugins() {
 		'builder' => array(
 			'name'    => 'Theme Blvd Layout Builder',
 			'slug'    => 'theme-blvd-layout-builder',
-			'version' => '2.1.5+',
+			'version' => '2.2+',
 		),
 		'sidebars' => array(
 			'name'    => 'Theme Blvd Widget Areas',
 			'slug'    => 'theme-blvd-widget-areas',
-			'version' => '1.2+',
+			'version' => '1.3+',
 		),
 		'widgets' => array(
 			'name'    => 'Theme Blvd Widget Pack',
 			'slug'    => 'theme-blvd-widget-pack',
-			'version' => '1.0.5+',
+			'version' => '1.0.6+',
 		),
 		'shortcodes' => array(
 			'name'    => 'Theme Blvd Shortcodes',
@@ -166,7 +166,7 @@ function themeblvd_plugins() {
 		'tweeple' => array(
 			'name'    => 'Tweeple',
 			'slug'    => 'tweeple',
-			'version' => '0.9.4+',
+			'version' => '0.9.5+',
 		),
 		'analytics' => array(
 			'name'    => 'Simple Analytics',
