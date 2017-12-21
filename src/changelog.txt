@@ -25,6 +25,7 @@ Jump Start Changelog
 	* Added additional CSS classes to contact buttons and social sharing buttons, for more complex styling.
 	* Added improved script and stylesheet debugging by setting WordPress's `SCRIPT_DEBUG` constants to `true`.
 	* Removed overly complex stylesheet API; all framework CSS files now enqueued through simple, pluggable function `themeblvd_include_styles()`.
+	* Optimized (minified) CSS file included on frontend for each theme base.
 * New: [FontAwesome 5](https://fontawesome.com) Implementation.
 	* More modern implementation of icons through JavaScript.
 	* Improved admin icon browser with live search.

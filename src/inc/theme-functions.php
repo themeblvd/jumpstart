@@ -153,7 +153,7 @@ function jumpstart_css() {
 
 		wp_enqueue_style(
 			'jumpstart-base',
-			esc_url( themeblvd_get_base_uri( $base ) . '/base.css' ),
+			esc_url( themeblvd_get_base_uri( $base ) . "/base{$suffix}.css" ),
 			array( 'themeblvd' ),
 			$ver
 		);
