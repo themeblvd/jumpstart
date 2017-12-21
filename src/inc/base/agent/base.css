@@ -745,7 +745,8 @@ body {
 ----------------------------------------------- */
 
 #main,
-#custom-main {
+#custom-main,
+#blank-page {
 	background-color: #ffffff;
 }
 .content_dark #main,
