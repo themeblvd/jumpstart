@@ -170,7 +170,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array {
-	 *      Standard farmework array of options, but
+	 *      Standard framework array of options, but
 	 *      with only above types being supported.
 	 *      @link http://dev.themeblvd.com/tutorial/formatting-options/
 	 * }
