@@ -200,6 +200,7 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 			break;
 
 		case 'post':
+		case '_self':
 			if ( is_rtl() ) {
 
 				$icon_name = 'long-arrow-alt-left';
@@ -212,6 +213,7 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 			break;
 
 		case 'external':
+		case '_blank':
 			$icon_name = 'external-link-alt';
 
 	}

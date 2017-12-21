@@ -622,7 +622,7 @@ function themeblvd_mini_gallery_slider( $gallery = '', $args = array() ) {
  *     @type string|bool $nav_thumbs         Whether to show slider thumbnail navigation.
  *     @type string|int  $thumb_size         If $nav_thumbs is true, thumb size, `small`, `smaller`, `smallest` or custom integer.
  *     @type string|bool $shade              Whether entire image is shaded, to allow overlaid text display more clearly.
- *     @type string|bool $link               Whether linked slides have animated hover overlay effect.
+ *     @type string|bool $thumb_link         Whether linked slides have animated hover overlay effect.
  *     @type string|bool $dark_text          Whether to use dark text for title, descriptions and navigation; use when images are light.
  *     @type string|bool $caption_bg         Whether to add background color to caption.
  *     @type string      $caption_bg_color   If $caption_bg is true, background color for caption, like `#000`.
@@ -653,7 +653,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		'nav_thumbs'         => '0',
 		'thumb_size'         => 'smaller',
 		'shade'              => '0',
-		'link'               => '1',
+		'thumb_link'         => '1',
 		'dark_text'          => '0',
 		'caption_bg'         => '0',
 		'caption_bg_color'   => '#000000',
