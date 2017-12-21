@@ -627,12 +627,7 @@ function themeblvd_mini_gallery_slider( $gallery = '', $args = array() ) {
  *     @type string|bool $caption_bg         Whether to add background color to caption.
  *     @type string      $caption_bg_color   If $caption_bg is true, background color for caption, like `#000`.
  *     @type string      $caption_bg_opacity If $caption_bg is true, background color opacity, like `0.5`, `1`, etc.
- *     @type string|bool $cover             Whether slider is popped out to 100% width of browser.
- *     @type string|bool $position          If $cover is true, how slider images are positioned (i.e. with background-position).
- *     @type string|bool $height_desktop    If $cover is true, slider height for desktop viewport.
- *     @type string|bool $height_tablet     If $cover is true, slider height for tablet viewport.
- *     @type string|bool $height_mobile     If $cover is true, slider height for mobile viewport.
- *     @type string      $class             Any additional CSS classes to add, like `foo bar baz`.
+ *     @type string      $class              Any additional CSS classes to add, like `foo bar baz`.
  * }
  * @return string $output Final HTML output for block.
  */
@@ -658,11 +653,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		'caption_bg'         => '0',
 		'caption_bg_color'   => '#000000',
 		'caption_bg_opacity' => '0.5',
-		'cover'              => '0',
-		'position'           => 'middle center',
-		'height_desktop'     => '400',
-		'height_tablet'      => '300',
-		'height_mobile'      => '200',
 		'class'              => '',
 	);
 
@@ -740,12 +730,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 	}
 
-	if ( $args['cover'] ) {
-
-		$class .= ' cover';
-
-	}
-
 	if ( $args['nav_arrows'] ) {
 
 		$class .= ' nav-arrows-' . $args['arrows'];
@@ -761,74 +745,6 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	if ( $args['nav_thumbs'] ) {
 
 		$class .= ' has-nav-thumbs';
-
-	}
-
-	// @TODO This feature should be converted to inline images.
-	// @link https://github.com/themeblvd/jumpstart/issues/233
-	if ( $args['cover'] ) {
-
-		$style = "\n<style>\n";
-
-		$style .= sprintf( "#%s .img {\n", esc_attr( $args['id'] ) );
-
-		$style .= sprintf( "\tbackground-position: %s;\n", esc_attr( $args['position'] ) );
-
-		$style .= sprintf( "\theight: %spx;\n", esc_attr( $args['height_desktop'] ) );
-
-		$style .= "}\n";
-
-		$style .= "@media (max-width: 991px) {\n";
-
-		$style .= sprintf( "\t#%s .img {\n", esc_attr( $args['id'] ) );
-
-		$style .= sprintf( "\t\theight: %spx;\n", esc_attr( $args['height_tablet'] ) );
-
-		$style .= "\t}\n";
-
-		$style .= "}\n";
-
-		$style .= "@media (max-width: 767px) {\n";
-
-		$style .= sprintf( "\t#%s .img {\n", esc_attr( $args['id'] ) );
-
-		$style .= sprintf( "\t\theight: %spx;\n", esc_attr( $args['height_mobile'] ) );
-
-		$style .= "\t}\n";
-
-		$style .= "}\n";
-
-		// Pre-load BG images.
-		if ( count( $images ) > 1 ) {
-
-			$style .= "body:after {\n";
-
-			$style .= "\tdisplay: none;\n";
-
-			$load = '';
-
-			foreach ( $images as $img ) {
-
-				$img_src = $img['src'];
-
-				if ( is_ssl() ) {
-					$img_src = str_replace( 'http://', 'https://', $img_src );
-				}
-
-				$load .= sprintf( 'url(%s) ', esc_url( $img_src ) );
-
-			}
-
-			$style .= sprintf( "\tcontent: %s;\n", trim( $load ) );
-
-			$style .= "}\n";
-
-		}
-
-		$style .= "</style>\n";
-
-		/** @TODO Not documenting filter because it will be removed, issue #233 */
-		$output .= apply_filters( 'themeblvd_simple_slider_cover_style', $style, $args, $images );
 
 	}
 
@@ -970,32 +886,21 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			}
 
-			if ( $args['cover'] ) {
+			$output .= sprintf( '<img src="%s" alt="%s"', $img_src, esc_attr( $img['alt'] ) );
 
-				$output .= sprintf(
-					'<div class="img" style="background-image: url(%s);"></div>',
-					$img_src
-				);
+			if ( $img['width'] ) {
 
-			} else {
-
-				$output .= sprintf( '<img src="%s" alt="%s"', $img_src, esc_attr( $img['alt'] ) );
-
-				if ( $img['width'] ) {
-
-					$output .= sprintf( ' width="%s"', $img['width'] );
-
-				}
-
-				if ( $img['height'] ) {
-
-					$output .= sprintf( ' height="%s"', $img['height'] );
-
-				}
-
-				$output .= ' />';
+				$output .= sprintf( ' width="%s"', $img['width'] );
 
 			}
+
+			if ( $img['height'] ) {
+
+				$output .= sprintf( ' height="%s"', $img['height'] );
+
+			}
+
+			$output .= ' />';
 
 			if ( $img['title'] || $img['desc'] ) {
 
@@ -1146,12 +1051,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	 *     @type string|bool $caption_bg         Whether to add background color to caption.
 	 *     @type string      $caption_bg_color   If $caption_bg is true, background color for caption, like `#000`.
 	 *     @type string      $caption_bg_opacity If $caption_bg is true, background color opacity, like `0.5`, `1`, etc.
-	 *     @type string|bool $cover             Whether slider is popped out to 100% width of browser.
-	 *     @type string|bool $position          If $cover is true, how slider images are positioned (i.e. with background-position).
-	 *     @type string|bool $height_desktop    If $cover is true, slider height for desktop viewport.
-	 *     @type string|bool $height_tablet     If $cover is true, slider height for tablet viewport.
-	 *     @type string|bool $height_mobile     If $cover is true, slider height for mobile viewport.
-	 *     @type string      $class             Any additional CSS classes to add, like `foo bar baz`.
+	 *     @type string      $class              Any additional CSS classes to add, like `foo bar baz`.
 	 * }
 	 * @param array  $images Images for slider.
 	 */

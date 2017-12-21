@@ -1506,11 +1506,6 @@ function themeblvd_grid_slider( $args ) {
  *     @type string|bool  $title          Whether to include post title on each slide.
  *     @type string|bool  $meta           Whether to include post meta on each slide.
  *     @type string|bool  $excerpt        Whether to include post excerpt on each slide.
- *     @type string|bool  $cover          Whether slider is popped out to 100% width of browser.
- *     @type string|bool  $position       If $cover is true, how slider images are positioned (i.e. with background-position).
- *     @type string|bool  $height_desktop If $cover is true, slider height for desktop viewport.
- *     @type string|bool  $height_tablet  If $cover is true, slider height for tablet viewport.
- *     @type string|bool  $height_mobile  If $cover is true, slider height for mobile viewport.
  * }
  * @return string $output Final HTML output for block.
  */
@@ -1549,11 +1544,6 @@ function themeblvd_get_post_slider( $args ) {
 		'title'          => '1',
 		'meta'           => '1',
 		'excerpt'        => '0',
-		'cover'          => '0',
-		'position'       => 'middle center',
-		'height_desktop' => '400',
-		'height_tablet'  => '300',
-		'height_mobile'  => '200',
 	));
 
 	/*
