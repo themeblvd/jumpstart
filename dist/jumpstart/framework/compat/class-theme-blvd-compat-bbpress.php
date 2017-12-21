@@ -197,48 +197,16 @@ class Theme_Blvd_Compat_BBPress {
 
 		if ( themeblvd_get_option( 'bbp_styles' ) ) {
 
-			add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
-
-			$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
-
-			$deps = $handler->get_framework_deps();
-
-			$deps[] = 'bbp-default';
-
 			$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 			wp_enqueue_style(
 				'themeblvd-bbpress',
 				esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/bbpress{$suffix}.css" ),
-				$deps,
+				array( 'themeblvd' ),
 				TB_FRAMEWORK_VERSION
 			);
 
 		}
-
-	}
-
-	/**
-	 * Add theme's bbPress stylesheet to framework
-	 * dependencies.
-	 *
-	 * This will help to ensure that the theme's
-	 * bbpress.css file gets loaded in the
-	 * correct place.
-	 *
-	 * This method is filtered onto:
-	 * 1. `themeblvd_framework_stylesheets` - 10
-	 *
-	 * @since Theme_Blvd 2.5.0
-	 *
-	 * @param  array $deps Stylesheets the theme framework depends on.
-	 * @return array $deps Modified stylesheets the theme framework depends on.
-	 */
-	public function add_style( $deps ) {
-
-		$deps[] = 'bbpress';
-
-		return $deps;
 
 	}
 

@@ -92,11 +92,6 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-options-api.php' )
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-sidebar-handler.php' );
 
 /**
- * Include CSS stylesheet API system.
- */
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/class-theme-blvd-stylesheets-handler.php' );
-
-/**
  * Include API helper functions. These are mostly
  * wrapper functions for the various API objects.
  */
@@ -104,7 +99,6 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-deprecated.php' ); // For b
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-builder.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-options.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-sidebar.php' );
-include_once( TB_FRAMEWORK_DIRECTORY . '/api/helpers-stylesheet.php' );
 
 /**
  * Include third-party plugin compatibility
@@ -425,6 +419,7 @@ add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
  * Hook frontend actions for the document <head>.
  */
 add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
+add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles' );
 add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
 
 /*

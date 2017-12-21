@@ -75,16 +75,12 @@ class Theme_Blvd_Compat_Gravity_Forms {
 
 		if ( themeblvd_get_option( 'gforms_styles' ) ) {
 
-			$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
-
-			$deps = $handler->get_framework_deps();
-
 			$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 			wp_enqueue_style(
 				'themeblvd-gravityforms',
 				esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/gravityforms{$suffix}.css" ),
-				$deps,
+				array( 'themeblvd' ),
 				TB_FRAMEWORK_VERSION
 			);
 

@@ -105,11 +105,7 @@ if ( $base ) {
  */
 function jumpstart_css() {
 
-	if ( is_admin() ) {
-
-		return;
-
-	}
+	$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 	$theme = wp_get_theme( get_template() );
 
@@ -125,8 +121,6 @@ function jumpstart_css() {
 
 	}
 
-	$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
-
 	/*
 	 * Theme Stylesheet
 	 */
@@ -134,8 +128,8 @@ function jumpstart_css() {
 
 		wp_enqueue_style(
 			'jumpstart',
-			esc_url( get_template_directory_uri() . '/assets/css/theme-rtl.min.css' ),
-			$handler->get_framework_deps(),
+			esc_url( get_template_directory_uri() . "/assets/css/theme-rtl{$suffix}.css" ),
+			array( 'themeblvd' ),
 			$ver
 		);
 
@@ -143,8 +137,8 @@ function jumpstart_css() {
 
 		wp_enqueue_style(
 			'jumpstart',
-			esc_url( get_template_directory_uri() . '/assets/css/theme.min.css' ),
-			$handler->get_framework_deps(),
+			esc_url( get_template_directory_uri() . "/assets/css/theme{$suffix}.css" ),
+			array( 'themeblvd' ),
 			$ver
 		);
 
@@ -160,7 +154,7 @@ function jumpstart_css() {
 		wp_enqueue_style(
 			'jumpstart-base',
 			esc_url( themeblvd_get_base_uri( $base ) . '/base.css' ),
-			$handler->get_framework_deps(),
+			array( 'themeblvd' ),
 			$ver
 		);
 
@@ -184,11 +178,9 @@ function jumpstart_css() {
 	wp_enqueue_style(
 		'themeblvd-theme',
 		esc_url( get_stylesheet_uri() ),
-		$handler->get_framework_deps(),
+		array( 'themeblvd' ),
 		$stylesheet_ver
 	);
-
-	// $handler->print_styles( 3 ); // @TODO Remove.
 
 }
 add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );

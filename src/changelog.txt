@@ -23,6 +23,8 @@ Jump Start Changelog
 	* Added filter `themeblvd_element_{$type}_options` to modify options for any element being outputted from the layout builder.
 	* Added filter `themeblvd_element_{$type}_display` to modify display options for any element being outputted from the layout builder.
 	* Added additional CSS classes to contact buttons and social sharing buttons, for more complex styling.
+	* Added improved script and stylesheet debugging by setting WordPress's `SCRIPT_DEBUG` constants to `true`.
+	* Removed overly complex stylesheet API; all framework CSS files now enqueued through simple, pluggable function `themeblvd_include_styles()`.
 * New: [FontAwesome 5](https://fontawesome.com) Implementation.
 	* More modern implementation of icons through JavaScript.
 	* Improved admin icon browser with live search.
@@ -65,6 +67,8 @@ Jump Start Changelog
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.
 * Updated: Isotope to 3.0.4.
+* Updated: Magnific Popup to 1.1.0.
+* Updated: Bootstrap to 3.3.7.
 
 * **Important General Notes:**
 	* If icons you've implemented are not showing up, [take a look here](https://fontawesome.com/how-to-use/upgrading-from-4#icon-name-changes-complete-list) to make sure you're not using FontAwesome icon names that they changed in v5.

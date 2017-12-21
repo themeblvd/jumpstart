@@ -772,7 +772,7 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	/**
 	 * Load framework's frontend scripts.
 	 *
-	 * This functin is hooked to:
+	 * This function is hooked to:
 	 * 1. `wp_enqueue_scripts` - 10
 	 *
 	 * @since Theme_Blvd 2.0.0
@@ -839,9 +839,9 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 			wp_enqueue_script( // @TODO Can we remove with Front Street integration?
 				'flexslider',
-				esc_url( TB_FRAMEWORK_URI . '/assets/js/flexslider.min.js' ),
+				esc_url( TB_FRAMEWORK_URI . "/assets/js/flexslider{$suffix}.js" ),
 				array( 'jquery' ),
-				'2.6.0',
+				'2.6.4',
 				$in_footer
 			);
 
@@ -851,7 +851,7 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 			wp_enqueue_script( // @TODO Will be bundled with Front Street.
 				'owl-carousel',
-				esc_url( TB_FRAMEWORK_URI . '/assets/plugins/owl-carousel/owl.carousel.min.js' ),
+				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/owl-carousel/owl-carousel{$suffix}.js" ),
 				array( 'jquery' ),
 				'2.2.1',
 				$in_footer
@@ -863,9 +863,9 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 			wp_enqueue_script( // @TODO Will be removed with the implementation of Front Street.
 				'bootstrap',
-				esc_url( TB_FRAMEWORK_URI . '/assets/plugins/bootstrap/js/bootstrap.min.js' ),
+				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/bootstrap/js/bootstrap{$suffix}.js" ),
 				array( 'jquery' ),
-				'3.3.5',
+				'3.3.7',
 				$in_footer
 			);
 
@@ -875,9 +875,9 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 			wp_enqueue_script( // @TODO Will be bundled with Front Street.
 				'magnific-popup',
-				esc_url( TB_FRAMEWORK_URI . '/assets/js/magnificpopup.min.js' ),
+				esc_url( TB_FRAMEWORK_URI . "/assets/js/magnific-popup{$suffix}.js" ),
 				array( 'jquery' ),
-				'0.9.3',
+				'1.1.0',
 				$in_footer
 			);
 
@@ -947,6 +947,99 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 
 		}
+	}
+}
+
+if ( ! function_exists( 'themeblvd_include_styles' ) ) {
+
+	/**
+	 * Load framework's frontend stylesheets.
+	 *
+	 * This function is hooked to:
+	 * 1. `wp_enqueue_scripts` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_include_styles() {
+
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
+		if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
+
+			wp_enqueue_style(
+				'bootstrap',
+				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/bootstrap/css/bootstrap{$suffix}.css" ),
+				array(),
+				'3.3.7',
+				'all'
+			);
+
+		}
+
+		if ( themeblvd_supports( 'assets', 'magnific_popup' ) ) {
+
+			wp_enqueue_style(
+				'magnific-popup',
+				esc_url( TB_FRAMEWORK_URI . "/assets/css/magnific-popup{$suffix}.css" ),
+				array(),
+				'1.1.0',
+				'all'
+			);
+
+		}
+
+		if ( themeblvd_supports( 'assets', 'owl_carousel' ) && themeblvd_get_option( 'gallery_carousel' ) ) {
+
+			wp_enqueue_style(
+				'owl-carousel',
+				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/owl-carousel/owl-carousel{$suffix}.css" ),
+				array(),
+				'2.2.1',
+				'all'
+			);
+
+		}
+
+		if ( themeblvd_supports( 'assets', 'primary_css' ) ) {
+
+			wp_enqueue_style(
+				'themeblvd-grid',
+				esc_url( TB_FRAMEWORK_URI . "/assets/css/grid-extended{$suffix}.css" ),
+				array( 'bootstrap' ),
+				TB_FRAMEWORK_VERSION,
+				'all'
+			);
+
+			if ( is_rtl() ) {
+
+				wp_enqueue_style(
+					'themeblvd-grid-rtl',
+					esc_url( TB_FRAMEWORK_URI . "/assets/css/grid-rtl{$suffix}.css" ),
+					array( 'bootstrap', 'themeblvd-grid' ),
+					TB_FRAMEWORK_VERSION,
+					'all'
+				);
+
+			}
+
+			$url = TB_FRAMEWORK_URI . "/assets/css/themeblvd{$suffix}.css";
+
+			if ( is_rtl() ) {
+
+				$url = TB_FRAMEWORK_URI . "/assets/css/themeblvd-rtl{$suffix}.css";
+
+			}
+
+			wp_enqueue_style(
+				'themeblvd',
+				esc_url( $url ),
+				array( 'bootstrap' ),
+				TB_FRAMEWORK_VERSION,
+				'all'
+			);
+
+		}
+
 	}
 }
 

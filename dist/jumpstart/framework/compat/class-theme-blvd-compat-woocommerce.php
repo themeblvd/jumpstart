@@ -371,16 +371,12 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function assets() {
 
-		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
-
-		$deps = $handler->get_framework_deps();
-
 		$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 		wp_enqueue_style(
 			'themeblvd-woocommerce',
 			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/woocommerce{$suffix}.css" ),
-			$deps,
+			array( 'themeblvd' ),
 			TB_FRAMEWORK_VERSION
 		);
 

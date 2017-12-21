@@ -101,16 +101,12 @@ class Theme_Blvd_Compat_WPML {
 	 */
 	public function assets() {
 
-		$handler = Theme_Blvd_Stylesheet_Handler::get_instance();
-
-		$deps = $handler->get_framework_deps();
-
 		$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 		wp_enqueue_style(
 			'themeblvd-wpml',
 			esc_url( TB_FRAMEWORK_URI . "/compat/assets/css/wpml{$suffix}.css" ),
-			$deps,
+			array( 'themeblvd' ),
 			TB_FRAMEWORK_VERSION
 		);
 

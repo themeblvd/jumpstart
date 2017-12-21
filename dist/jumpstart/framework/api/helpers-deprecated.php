@@ -58,3 +58,60 @@ function themeblvd_remove_slider( $slider_id ) {
 	);
 
 }
+
+/**
+ * Add custom stylesheet
+ *
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.2.0
+ *
+ * @param string $handle ID for this stylesheet.
+ * @param string $src    URL to stylesheet.
+ * @param int    $level  Level determines where stylesheet gets placed - 1, 2, 3, 4.
+ * @param string $ver    Version of stylesheet.
+ * @param string $media  Type of media target for stylesheet.
+ */
+function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $media = 'all' ) {
+
+	themeblvd_deprecated_function(
+		__FUNCTION__,
+		'2.2.0',
+		null,
+		__( 'Custom stylesheets should be enqueued via the WordPress wp_enqueu_scripts action hook. Alternatively, if you\'re using an old custom.css file for child theme CSS customization, you can also just move all that CSS code to your child theme\'s style.css.' , 'jumpstart' )
+	);
+
+}
+
+/**
+ * Remove custom stylesheet
+ *
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.2.0
+ *
+ * @param string $handle ID for this stylesheet
+ */
+function themeblvd_remove_stylesheet( $handle ) {
+
+	themeblvd_deprecated_function(
+		__FUNCTION__,
+		'2.2.0'
+	);
+
+}
+
+/**
+ * Print out styles.
+ *
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.2.0
+ *
+ * @param int $level Level to apply stylesheets - 1, 2, 3, 4
+ */
+function themeblvd_print_styles( $level ) {
+
+	themeblvd_deprecated_function(
+		__FUNCTION__,
+		'2.2.0'
+	);
+
+}

@@ -26,12 +26,6 @@ function themeblvd_api_init() {
 	Theme_Blvd_Options_API::get_instance();
 
 	/*
-	 * Setup framework stylesheets and handler for frontend to
-	 * modify these stylesheets.
-	 */
-	Theme_Blvd_Stylesheet_Handler::get_instance();
-
-	/*
 	 * Setup widget areas handler. This registers all default
 	 * sidebars and provides methods to modify them and
 	 * display them.

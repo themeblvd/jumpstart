@@ -4,7 +4,7 @@
 
 2) fontawesome.css => fontawesome.min.css
 
-3) magnificpopup.css => magnificpopup.min.css
+3) magnific-popup.css => magnific-popup.min.css
 
 4) grid-extended.css => grid-extended.min.css (RTL generated, but not being used at this time)
 
