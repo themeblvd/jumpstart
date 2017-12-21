@@ -141,7 +141,7 @@ function themeblvd_plugins() {
 		'sidebars' => array(
 			'name'    => 'Theme Blvd Widget Areas',
 			'slug'    => 'theme-blvd-widget-areas',
-			'version' => '1.3+',
+			'version' => '1.2.5+',
 		),
 		'widgets' => array(
 			'name'    => 'Theme Blvd Widget Pack',
