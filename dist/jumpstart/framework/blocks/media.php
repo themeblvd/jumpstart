@@ -928,7 +928,12 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			if ( $img['link'] ) {
 
-				$output .= themeblvd_get_thumbnail_link_icon( $img['link'] );
+				// Add icon needed for hover effect?
+				if ( $args['thumb_link'] ) {
+
+					$output .= themeblvd_get_thumbnail_link_icon( $img['link'] );
+
+				}
 
 				if ( 'image' === $img['link'] || 'video' === $img['link'] ) {
 
