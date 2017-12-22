@@ -408,27 +408,6 @@ Author URI: http://www.themeblvd.com
 	background-color: rgba(255,255,255,.1);
 }
 
-/* Mobile Nav */
-@media (max-width: 991px) {
-	.site-header.mobile-light .mobile-nav,
-	.site-header.mobile-light .mobile-nav > li {
-		border-color: rgba(200,200,200,.3);
-	}
-	.site-header.mobile-light .mobile-nav > li > a {
-		color: rgba(10,10,10,.7);
-	}
-	.site-header.mobile-light .mobile-nav > li > a:hover {
-		color: #222222;
-	}
-	.site-header.mobile-light .tb-nav-trigger .hamburger span {
-		background-color: rgba(10,10,10,.7);
-	}
-	.site-header.mobile-light .tb-nav-trigger:hover .hamburger span,
-	.site-header.mobile-light .tb-nav-trigger.collapse .hamburger span {
-		background-color: #222222;
-	}
-}
-
 /* Side Panel */
 .tb-side-panel.light .menu-btn,
 .tb-side-panel.light .secondary-menu a {

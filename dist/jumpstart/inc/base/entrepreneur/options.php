@@ -557,21 +557,17 @@ function jumpstart_ent_options() {
 				'std'     => '#333333',
 				'type'    => 'color',
 			),
-			'header_mobile_bg_color_brightness' => array(
-				'id'      => 'header_mobile_bg_color_brightness',
-				'name'    => __( 'Background Color Brightness', 'jumpstart' ),
-				'desc'    => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
-				'std'     => 'dark',
-				'type'    => 'radio',
-				'options' => array(
-					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
-				),
+			'header_mobile_icon_color' => array(
+				'id'       => 'header_mobile_icon_color',
+				'name'     => __( 'Icon Color', 'jumpstart' ),
+				'desc'     => __( 'Select a color for the navigational icons in the mobile header.', 'jumpstart' ),
+				'std'      => '#ffffff',
+				'type'     => 'color',
 			),
 			'header_mobile_height' => array(
 				'id'       => 'header_mobile_height',
 				'name'     => __( 'Height', 'jumpstart' ),
-				'desc'     => __( 'Set the height of your mobile header in pixels. Make sure this number is higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', 'jumpstart' ),
+				'desc'     => __( 'Set the height of your mobile header in pixels. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', 'jumpstart' ),
 				'std'      => '64px',
 				'type'     => 'slide',
 				'options'  => array(

@@ -631,21 +631,17 @@ function jumpstart_ex_options() {
 				'std'       => '#333333',
 				'type'      => 'color',
 			),
-			'header_mobile_bg_color_brightness' => array(
-				'id'        => 'header_mobile_bg_color_brightness',
-				'name'      => __( 'Background Color Brightness', '@@text-domain' ),
-				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
-				'std'       => 'dark',
-				'type'      => 'radio',
-				'options'   => array(
-					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
-				),
+			'header_mobile_icon_color' => array(
+				'id'       => 'header_mobile_icon_color',
+				'name'     => __( 'Icon Color', '@@text-domain' ),
+				'desc'     => __( 'Select a color for the navigational icons in the mobile header.', '@@text-domain' ),
+				'std'      => '#ffffff',
+				'type'     => 'color',
 			),
 			'header_mobile_height' => array(
 				'id'       => 'header_mobile_height',
 				'name'     => __( 'Height', '@@text-domain' ),
-				'desc'     => __( 'Set the height of your mobile header in pixels. Make sure this number is higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
+				'desc'     => __( 'Set the height of your mobile header in pixels. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
 				'std'      => '64px',
 				'type'     => 'slide',
 				'options'  => array(

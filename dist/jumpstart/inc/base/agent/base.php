@@ -399,14 +399,33 @@ function jumpstart_ag_css() {
 
 	$print .= "}\n";
 
-	// Mobile Styles
+	// Mobile Header
 	$print .= "@media (max-width: 991px) {\n";
+
 	$print .= "\t.site-header {\n";
 	$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_option( 'header_mobile_bg_color' ) );
 	$print .= "\t}\n";
+
 	$print .= "\t.header-content > .wrap {\n";
 	$print .= sprintf( "\t\theight: %s;\n", themeblvd_get_option( 'header_mobile_height' ) );
 	$print .= "\t}\n";
+
+	$icon_color = themeblvd_get_option( 'header_mobile_icon_color' );
+
+	$print .= "\t.site-header .mobile-nav > li > a {\n";
+	$print .= sprintf( "\t\tcolor: %s;\n", esc_attr( themeblvd_get_rgb( $icon_color, '0.7' ) ) );
+	$print .= "\t}\n";
+	$print .= "\t.site-header .mobile-nav > li > a:hover {\n";
+	$print .= sprintf( "\t\tcolor: %s;\n", esc_attr( $icon_color ) );
+	$print .= "\t}\n";
+	$print .= "\t.site-header .tb-nav-trigger .hamburger span {\n";
+	$print .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( themeblvd_get_rgb( $icon_color, '0.7' ) ) );
+	$print .= "\t}\n";
+	$print .= "\t.site-header .tb-nav-trigger:hover .hamburger span,\n";
+	$print .= "\t.site-header .tb-nav-trigger.collapse .hamburger span {\n";
+	$print .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( $icon_color ) );
+	$print .= "\t}\n";
+
 	$print .= "}\n";
 
 	// Get logo attributes.
@@ -607,8 +626,6 @@ function jumpstart_ag_header_class( $class ) {
 		$class[] = themeblvd_get_option( 'header_bg_color_brightness' );
 
 	}
-
-	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
 
 	// Dropdown brightness.
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_drop_bg_color_brightness' );
