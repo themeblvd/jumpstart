@@ -399,10 +399,13 @@ function jumpstart_ag_css() {
 
 	$print .= "}\n";
 
-	// Mobile Background
-	$print .= "@media (max-width: 767px) {\n";
+	// Mobile Styles
+	$print .= "@media (max-width: 991px) {\n";
 	$print .= "\t.site-header {\n";
 	$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_option( 'header_mobile_bg_color' ) );
+	$print .= "\t}\n";
+	$print .= "\t.header-content > .wrap {\n";
+	$print .= sprintf( "\t\theight: %s;\n", themeblvd_get_option( 'header_mobile_height' ) );
 	$print .= "\t}\n";
 	$print .= "}\n";
 
@@ -424,15 +427,15 @@ function jumpstart_ag_css() {
 
 	if ( 'image' === $logo['type'] ) {
 
-		$hright = 50 + intval( $logo['image_height'] );
+		$height = 50 + intval( $logo['image_height'] );
 
 	} else {
 
-		$hright = 76;
+		$height = 76;
 
 	}
 
-	$print .= "@media (min-width: 768px) {\n";
+	$print .= "@media (min-width: 992px) {\n";
 
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
 		$print .= "\t.site-header.stretch .header-toolbar:before,\n";
@@ -440,33 +443,17 @@ function jumpstart_ag_css() {
 
 	$print .= "\t.header-content > .wrap,\n";
 	$print .= "\t.has-sticky #top {\n";
-	$print .= sprintf( "\t\theight: %spx;\n", $hright );
+	$print .= sprintf( "\t\theight: %spx;\n", $height );
 	$print .= "\t}\n";
 
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
 
 		$print .= "\t.site-header.stretch .header-toolbar:before {\n";
-		$print .= sprintf( "\t\ttop: -%spx;\n", round( ($hright - 58) / 2 ) );
+		$print .= sprintf( "\t\ttop: -%spx;\n", round( ($height - 58) / 2 ) );
 		$print .= "\t}\n";
 
 	}
 
-	$print .= "}\n";
-
-	if ( 'image' === $logo['type'] ) {
-
-		$width = $logo['image_width'];
-
-	} else {
-
-		$width = '200';
-
-	}
-
-	$print .= "@media (min-width: 768px) {\n";
-	$print .= "\t.site-header .header-logo {\n";
-	$print .= sprintf( "\t\tmax-width: %spx;\n", $width );
-	$print .= "\t}\n";
 	$print .= "}\n";
 
 	// Main Menu Dropdowns

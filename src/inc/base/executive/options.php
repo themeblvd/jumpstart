@@ -619,6 +619,11 @@ function jumpstart_ex_options() {
 			),
 		),
 		'header_mobile' => array(
+			'header_mobile_info' => array(
+				'id'      => 'header_mobile_info',
+				'desc'    => __( 'These styles are applied to your header across most mobile devices and portrait tablets.', '@@text-domain' ),
+				'type'    => 'info',
+			),
 			'header_mobile_bg_color' => array(
 				'id'        => 'header_mobile_bg_color',
 				'name'      => __( 'Background Color', '@@text-domain' ),
@@ -637,6 +642,19 @@ function jumpstart_ex_options() {
 					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
 				),
 			),
+			'header_mobile_height' => array(
+				'id'       => 'header_mobile_height',
+				'name'     => __( 'Height', '@@text-domain' ),
+				'desc'     => __( 'Set the height of your mobile header in pixels. Make sure this number is higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
+				'std'      => '64px',
+				'type'     => 'slide',
+				'options'  => array(
+					'min'   => '40',
+					'max'   => '150',
+					'step'  => '1',
+					'units' => 'px',
+				)
+ 			),
 		),
 		'menu' => array(
 			'sub_group_start_13' => array(

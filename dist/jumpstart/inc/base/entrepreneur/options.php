@@ -545,6 +545,11 @@ function jumpstart_ent_options() {
 			),
 		),
 		'header_mobile' => array(
+			'header_mobile_info' => array(
+				'id'      => 'header_mobile_info',
+				'desc'    => __( 'These styles are applied to your header across most mobile devices and portrait tablets.', 'jumpstart' ),
+				'type'    => 'info',
+			),
 			'header_mobile_bg_color' => array(
 				'id'      => 'header_mobile_bg_color',
 				'name'    => __( 'Background Color', 'jumpstart' ),
@@ -563,6 +568,19 @@ function jumpstart_ent_options() {
 					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
 				),
 			),
+			'header_mobile_height' => array(
+				'id'       => 'header_mobile_height',
+				'name'     => __( 'Height', 'jumpstart' ),
+				'desc'     => __( 'Set the height of your mobile header in pixels. Make sure this number is higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', 'jumpstart' ),
+				'std'      => '64px',
+				'type'     => 'slide',
+				'options'  => array(
+					'min'   => '40',
+					'max'   => '150',
+					'step'  => '1',
+					'units' => 'px',
+				)
+ 			),
 		),
 		'menu' => array(
 			'menu_text_shadow' => array(

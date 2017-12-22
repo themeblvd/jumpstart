@@ -780,9 +780,12 @@ function jumpstart_ex_css() {
 	}
 
 	// Header Mobile
-	$print .= "@media (max-width: 767px) {\n";
+	$print .= "@media (max-width: 991px) {\n";
 	$print .= "\t.site-header {\n";
 	$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_option( 'header_mobile_bg_color' ) );
+	$print .= "\t}\n";
+	$print .= "\t.header-content > .wrap {\n";
+	$print .= sprintf( "\t\theight: %s;\n", themeblvd_get_option( 'header_mobile_height' ) );
 	$print .= "\t}\n";
 	$print .= "}\n";
 

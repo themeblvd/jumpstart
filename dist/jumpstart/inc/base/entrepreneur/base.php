@@ -859,9 +859,12 @@ function jumpstart_ent_css() {
 	$print .= "}\n";
 
 	// Header Mobile
-	$print .= "@media (max-width: 767px) {\n";
+	$print .= "@media (max-width: 991px) {\n";
 	$print .= "\t.site-header {\n";
 	$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_option( 'header_mobile_bg_color' ) );
+	$print .= "\t}\n";
+	$print .= "\t.header-content > .wrap {\n";
+	$print .= sprintf( "\t\theight: %s;\n", themeblvd_get_option( 'header_mobile_height' ) );
 	$print .= "\t}\n";
 	$print .= "}\n";
 
@@ -1040,7 +1043,7 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 		$items .= '<li class="menu-item level-1 menu-contact">';
 
-		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="times"><i class="far fa-envelope"></i></a>';
+		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="times"><i class="' . esc_attr( themeblvd_get_icon_class( 'envelope' ) ) . '"></i></a>';
 
 		$color = themeblvd_get_option( 'social_media_style' );
 
