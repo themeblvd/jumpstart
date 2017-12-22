@@ -1691,37 +1691,6 @@ article.tb-naked-page {
 	color: inherit;
 }
 
-/* Search Widget */
-.widget_search .tb-search .search-wrap,
-.widget_product_search .tb-search .search-wrap {
-	position: relative;
-}
-.widget_search .tb-search .search-wrap .search-icon,
-.widget_product_search .tb-search .search-wrap .search-icon {
-	color: rgba(200,200,200,.7);
-	display: block;
-	line-height: 1em;
-	position: absolute;
-	top: 50%;
-	right: 10px;
-	text-align: center;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	width: 1em;
-	height: 1em;
-}
-.widget_search .tb-search .search-input,
-.widget_product_search .tb-search .search-input {
-	padding: 6px 30px 6px 10px;
-}
-.widget_search .tb-search .search-submit,
-.widget_product_search .tb-search .search-submit {
-	display: none;
-}
-
 /* Tweeple */
 .widget .tweeple-feed li.tweet {
 	font-size: 14px;
