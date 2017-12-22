@@ -301,24 +301,7 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Mobile Nav */
-@media (max-width: 991px) and (min-width: 768px) {
-	.site-header.dark .mobile-nav > li > a {
-		color: #ffffff;
-		color: rgba(255,255,255,.8);
-	}
-	.site-header.dark .mobile-nav > li > a:hover {
-		color: #ffffff;
-	}
-	.site-header.dark .tb-nav-trigger .hamburger span {
-		background-color: #ffffff;
-		background-color: rgba(255,255,255,.8);
-	}
-	.site-header.dark .tb-nav-trigger:hover .hamburger span,
-	.site-header.dark .tb-nav-trigger.collapse .hamburger span {
-		background-color: #ffffff;
-	}
-}
-@media (max-width: 768px) {
+@media (max-width: 991px) {
 	.site-header.mobile-light .mobile-nav,
 	.site-header.mobile-light .mobile-nav > li {
 		border-color: rgba(200,200,200,.3);

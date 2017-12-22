@@ -105,13 +105,14 @@ body {
 /* =Top
 ----------------------------------------------- */
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	.site-header {
 		background-color: #101010; /* header bg */
 	}
 	.header-content > .wrap {
 		height: 75px; /* 25px + {logo height} + 25px */
-		padding: 0;
+		padding-top: 0;
+		padding-bottom: 0;
 		position: relative;
 		z-index: 2;
 	}
@@ -122,7 +123,7 @@ body {
 }
 
 /* Logo */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	.site-header .header-logo {
 		max-width: 85px; /* logo width */
 		position: absolute;
@@ -521,41 +522,7 @@ body {
 }
 
 /* Mobile Nav */
-@media (max-width: 991px) and (min-width: 768px) {
-	.mobile-nav {
-		position: absolute;
-		top: 50%;
-		right: 20px;
-		-webkit-transform: translate(0, -50%);
-		transform: translate(0, -50%);
-	}
-	.rtl .mobile-nav {
-		right: auto;
-		left: 20px;
-	}
-	.mobile-nav > li {
-		padding: 0;
-	}
-	.mobile-nav > li > a {
-		padding: 0 14px;
-	}
-	.site-header.dark .mobile-nav > li > a {
-		color: #ffffff;
-		color: rgba(255,255,255,.8);
-	}
-	.site-header.dark .mobile-nav > li > a:hover {
-		color: #ffffff;
-	}
-	.site-header.dark .tb-nav-trigger .hamburger span {
-		background-color: #ffffff;
-		background-color: rgba(255,255,255,.8);
-	}
-	.site-header.dark .tb-nav-trigger:hover .hamburger span,
-	.site-header.dark .tb-nav-trigger.collapse .hamburger span {
-		background-color: #ffffff;
-	}
-}
-@media (max-width: 768px) {
+@media (max-width: 991px) {
 	.site-header.mobile-light .mobile-nav,
 	.site-header.mobile-light .mobile-nav > li {
 		border-color: rgba(200,200,200,.3);

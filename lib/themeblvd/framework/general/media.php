@@ -638,7 +638,30 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 
 		}
 
-		$output .= sprintf( '<div class="%s">', esc_attr( $class ) );
+		$style = '';
+
+		if ( 'image' === $logo['type'] && ! empty( $logo['image_width'] ) ) {
+
+			$style = sprintf(
+				'max-width: %spx;',
+				$logo['image_width']
+			);
+
+		}
+
+		if ( $style ) {
+
+			$output .= sprintf(
+				'<div class="%s" style="%s">',
+				esc_attr( $class ),
+				esc_attr( $style )
+			);
+
+		} else {
+
+			$output .= sprintf( '<div class="%s">', esc_attr( $class ) );
+
+		}
 
 		if ( ! empty( $logo['type'] ) ) {
 

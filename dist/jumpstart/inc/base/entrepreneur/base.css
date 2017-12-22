@@ -126,7 +126,8 @@ Author URI: http://www.themeblvd.com
 		padding: 0;
 	}
 	.header-content .header-logo {
-		padding: 10px 20px 10px 10px;
+		margin: 0 20px 0 10px;
+		padding: 10px 0;
 	}
 	.rtl .header-content .header-logo {
 		padding: 10px 10px 10px 20px;
@@ -297,6 +298,7 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li.menu-contact > .tb-contact-trigger,
 .header-nav .tb-primary-menu > li.menu-cart > .tb-cart-trigger,
 .header-nav .tb-primary-menu > li.menu-side-panel > .tb-side-trigger {
+	font-size: 14px; /* Without this, user-selected menu font size will apply to icon. */
 	outline: none;
 	padding-right: 8px;
 	padding-left: 8px;
@@ -407,24 +409,7 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Mobile Nav */
-@media (max-width: 991px) and (min-width: 768px) {
-	.site-header.dark .mobile-nav > li > a {
-		color: #ffffff;
-		color: rgba(255,255,255,.8);
-	}
-	.site-header.dark .mobile-nav > li > a:hover {
-		color: #ffffff;
-	}
-	.site-header.dark .tb-nav-trigger .hamburger span {
-		background-color: #ffffff;
-		background-color: rgba(255,255,255,.8);
-	}
-	.site-header.dark .tb-nav-trigger:hover .hamburger span,
-	.site-header.dark .tb-nav-trigger.collapse .hamburger span {
-		background-color: #ffffff;
-	}
-}
-@media (max-width: 768px) {
+@media (max-width: 991px) {
 	.site-header.mobile-light .mobile-nav,
 	.site-header.mobile-light .mobile-nav > li {
 		border-color: rgba(200,200,200,.3);

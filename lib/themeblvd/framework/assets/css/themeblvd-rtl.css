@@ -792,7 +792,7 @@ img.size-full {
 .site-header .social-trans {
 	display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
 	.site-header .logo-standard {
 		display: none;
 	}
@@ -810,7 +810,7 @@ img.size-full {
 }
 
 /* Suck layout up into header */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	body.tb-suck-up #container {
 		position: relative;
 	}
