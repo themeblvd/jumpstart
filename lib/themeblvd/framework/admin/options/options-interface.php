@@ -2025,11 +2025,17 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * from a given a range.
 			 *
 			 * @param array $option {
-			 *     @type string $id   Unique ID for option.
-			 *     @type string $name Title for option.
-			 *     @type string $desc Description for option.
-			 *     @type array  $std  Default value.
-			 *     @type string $type Type of option, should be `slide`.
+			 *     @type string $id      Unique ID for option.
+			 *     @type string $name    Title for option.
+			 *     @type string $desc    Description for option.
+			 *     @type array  $std     Default value.
+			 *     @type string $type    Type of option, should be `slide`.
+			 *     @type array  $options {
+			 *          @type string|int $min   Minimum number on selection scale, like `1`.
+			 *          @type string|int $max   Maximum number on selection scale, like `100`.
+			 *          @type string|int $step  How far to progress overall selection with each bump, like `1`.
+			 *          @type string     $units Optional. Display units for selection, like `px`.
+			 *     }
 			 * }
 			 */
 			case 'slide':
