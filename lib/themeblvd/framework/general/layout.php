@@ -434,6 +434,7 @@ function themeblvd_element( $args ) {
 
 		// Post Slider
 		case 'post_slider':
+		case 'post_slider_popout': // Backwards compat.
 			$args['options']['element'] = true;
 
 			themeblvd_post_slider( $args['options'] );
@@ -493,6 +494,7 @@ function themeblvd_element( $args ) {
 
 		// Simple Slider (standard and popout)
 		case 'simple_slider':
+		case 'simple_slider_popout': // Backwards compat.
 			$images = $args['options']['images'];
 
 			unset( $args['options']['images'] );
