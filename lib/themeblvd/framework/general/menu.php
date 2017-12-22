@@ -164,6 +164,8 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 
 		}
 
+		$output = str_replace( "\n", '', $output );
+
 	}
 
 	/**
