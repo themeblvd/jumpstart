@@ -29,15 +29,7 @@ function jumpstart_ent_options() {
 
 	}
 
-	/**
-	 * Filters the options added by the Entrepeneur
-	 * base to the theme options page.
-	 *
-	 * @since @@name-package 2.0.0
-	 *
-	 * @param array Options added.
-	 */
-	$options = apply_filters( 'jumpstart_ent_options', array(
+	$options = array(
 		'general' => array(
 			'sub_group_start_1' => array(
 				'id'      => 'sub_group_start_1',
@@ -543,51 +535,6 @@ function jumpstart_ent_options() {
 				'id'      => 'sub_group_end_9',
 				'type'    => 'subgroup_end',
 			),
-		),
-		'header_mobile' => array(
-			'header_mobile_info' => array(
-				'id'      => 'header_mobile_info',
-				'desc'    => __( 'These styles are applied to your header across most mobile devices and portrait tablets.', '@@text-domain' ),
-				'type'    => 'info',
-			),
-			'header_mobile_bg_color' => array(
-				'id'      => 'header_mobile_bg_color',
-				'name'    => __( 'Background Color', '@@text-domain' ),
-				'desc'    => __( 'Select a background color for the mobile header.', '@@text-domain' ),
-				'std'     => '#333333',
-				'type'    => 'color',
-			),
-			'header_mobile_bg_color_brightness' => array(
-				'id' 		=> 'header_mobile_bg_color_brightness',
-				'name' 		=> __( 'Background Color Brightness', '@@text-domain' ),
-				'desc' 		=> __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
-				'std' 		=> 'dark',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark' 	=> __( 'I chose a dark color in the previous option.', '@@text-domain' )
-				),
-			),
-			'header_mobile_icon_color' => array(
-				'id'       => 'header_mobile_icon_color',
-				'name'     => __( 'Icon Color', '@@text-domain' ),
-				'desc'     => __( 'Select a color for the navigational icons in the mobile header.', '@@text-domain' ),
-				'std'      => '#ffffff',
-				'type'     => 'color',
-			),
-			'header_mobile_height' => array(
-				'id'       => 'header_mobile_height',
-				'name'     => __( 'Height', '@@text-domain' ),
-				'desc'     => __( 'Set the height of your mobile header in pixels. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
-				'std'      => '64px',
-				'type'     => 'slide',
-				'options'  => array(
-					'min'   => '40',
-					'max'   => '150',
-					'step'  => '1',
-					'units' => 'px',
-				)
- 			),
 		),
 		'menu' => array(
 			'menu_text_shadow' => array(
@@ -1283,7 +1230,21 @@ function jumpstart_ent_options() {
 				'lang'     => 'css',
 			),
 		),
-	));
+	);
+
+	// Add options, shared across multiple theme bases.
+
+	$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
+
+	/**
+	 * Filters the options added by the Entrepeneur
+	 * base to the theme options page.
+	 *
+	 * @since @@name-package 2.0.0
+	 *
+	 * @param array Options added.
+	 */
+	$options = apply_filters( 'jumpstart_ent_options', $options );
 
 	themeblvd_add_option_tab( 'styles', __( 'Styles', '@@text-domain' ), true );
 

@@ -226,6 +226,117 @@ function jumpstart_base_check() {
 add_action( 'themeblvd_before', 'jumpstart_base_check' );
 
 /**
+ * Get re-useable option sets for theme bases.
+ *
+ * As theme bases have grown, many options have become
+ * fairly consistent across multiple theme bases. So
+ * this function can help to eliminate a lot of duplicate
+ * code that has crept up.
+ *
+ * @since @@name-package 2.2.0
+ *
+ * @param  string $type     Type of option set, like `typography`, `buttons`, `widgets`, etc.
+ * @param  array  $defaults Any custom default values.
+ * @return array  $options  Options set.
+ */
+function jumpstart_get_shared_options( $type, $defaults = array() ) {
+
+	$options = array();
+
+	switch ( $type ) {
+
+		case 'mobile-header':
+			$options = array(
+				'header_mobile_info' => array(
+					'id'      => 'header_mobile_info',
+					'desc'    => __( 'These styles are applied to your header across most mobile devices and portrait tablets.', '@@text-domain' ),
+					'type'    => 'info',
+				),
+				'header_mobile_bg_color' => array(
+					'id'       => 'header_mobile_bg_color',
+					'name'     => __( 'Background Color', '@@text-domain' ),
+					'desc'     => __( 'Select a background color for the mobile header.', '@@text-domain' ),
+					'std'      => '#101010',
+					'type'     => 'color',
+				),
+				'header_mobile_bg_color_brightness' => array(
+					'id' 		=> 'header_mobile_bg_color_brightness',
+					'name' 		=> __( 'Background Color Brightness', '@@text-domain' ),
+					'desc' 		=> __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
+					'std' 		=> 'dark',
+					'type' 		=> 'select',
+					'options'	=> array(
+						'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
+						'dark' 	=> __( 'I chose a dark color in the previous option.', '@@text-domain' )
+					),
+				),
+				'header_mobile_icon_color' => array(
+					'id'       => 'header_mobile_icon_color',
+					'name'     => __( 'Icon Color', '@@text-domain' ),
+					'desc'     => __( 'Select a color for the navigational icons in the mobile header.', '@@text-domain' ),
+					'std'      => '#ffffff',
+					'type'     => 'color',
+				),
+				'header_mobile_height' => array(
+					'id'       => 'header_mobile_height',
+					'name'     => __( 'Height', '@@text-domain' ),
+					'desc'     => __( 'Set the height of your mobile header in pixels. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
+					'std'      => '64px',
+					'type'     => 'slide',
+					'options'  => array(
+						'min'   => '40',
+						'max'   => '150',
+						'step'  => '1',
+						'units' => 'px',
+					)
+	 			),
+			);
+
+			break;
+
+		case 'typography':
+			// ...
+			break;
+
+		case 'buttons':
+			// ...
+			break;
+
+		case 'widgets':
+			// @TODO Issue #265
+			// @link https://github.com/themeblvd/jumpstart/issues/265
+			break;
+
+		case 'footer':
+			// @TODO Issue #343
+			// @link https://github.com/themeblvd/jumpstart/issues/343
+			break;
+
+		case 'branding':
+			// @TODO Issue #264
+			// @link https://github.com/themeblvd/jumpstart/issues/264
+
+
+	}
+
+	if ( $defaults && $options ) {
+
+		foreach ( $options as $option_id => $option ) {
+
+			if ( isset( $defaults[ $option_id ] ) ) {
+
+				$options[ $option_id ]['std'] = $defaults[ $option_id ];
+
+			}
+		}
+
+	}
+
+	return $options;
+
+}
+
+/**
  * Add Jump Start Homepage to sample layouts of
  * Layout Builder plugin.
  *

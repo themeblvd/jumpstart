@@ -29,15 +29,7 @@ function jumpstart_ex_options() {
 
 	}
 
-	/**
-	 * Filters the options added by the Executive base
-	 * to the theme options page.
-	 *
-	 * @since Jump_Start 2.0.0
-	 *
-	 * @param array Options added.
-	 */
-	$options = apply_filters( 'jumpstart_ex_options', array(
+	$options = array(
 		'general' => array(
 			'sub_group_start_1' => array(
 				'id'        => 'sub_group_start_1',
@@ -618,51 +610,6 @@ function jumpstart_ex_options() {
 				'type'      => 'checkbox',
 			),
 		),
-		'header_mobile' => array(
-			'header_mobile_info' => array(
-				'id'      => 'header_mobile_info',
-				'desc'    => __( 'These styles are applied to your header across most mobile devices and portrait tablets.', 'jumpstart' ),
-				'type'    => 'info',
-			),
-			'header_mobile_bg_color' => array(
-				'id'        => 'header_mobile_bg_color',
-				'name'      => __( 'Background Color', 'jumpstart' ),
-				'desc'      => __( 'Select a background color for the mobile header.', 'jumpstart' ),
-				'std'       => '#333333',
-				'type'      => 'color',
-			),
-			'header_mobile_bg_color_brightness' => array(
-				'id' 		=> 'header_mobile_bg_color_brightness',
-				'name' 		=> __( 'Background Color Brightness', 'jumpstart' ),
-				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
-				'std' 		=> 'dark',
-				'type' 		=> 'select',
-				'options'	=> array(
-					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark' 	=> __( 'I chose a dark color in the previous option.', 'jumpstart' )
-				),
-			),
-			'header_mobile_icon_color' => array(
-				'id'       => 'header_mobile_icon_color',
-				'name'     => __( 'Icon Color', 'jumpstart' ),
-				'desc'     => __( 'Select a color for the navigational icons in the mobile header.', 'jumpstart' ),
-				'std'      => '#ffffff',
-				'type'     => 'color',
-			),
-			'header_mobile_height' => array(
-				'id'       => 'header_mobile_height',
-				'name'     => __( 'Height', 'jumpstart' ),
-				'desc'     => __( 'Set the height of your mobile header in pixels. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', 'jumpstart' ),
-				'std'      => '64px',
-				'type'     => 'slide',
-				'options'  => array(
-					'min'   => '40',
-					'max'   => '150',
-					'step'  => '1',
-					'units' => 'px',
-				)
- 			),
-		),
 		'menu' => array(
 			'sub_group_start_13' => array(
 				'id'        => 'sub_group_start_13',
@@ -676,10 +623,10 @@ function jumpstart_ex_options() {
 				'std'       => 'color',
 				'type'      => 'select',
 				'options'   => array(
-					'color'             => __( 'Custom color', 'jumpstart' ),
-					'glassy'            => __( 'Custom color + glassy overlay', 'jumpstart' ),
-					'textured'          => __( 'Custom color + noisy texture', 'jumpstart' ),
-					'gradient'          => __( 'Custom gradient', 'jumpstart' ),
+					'color'    => __( 'Custom color', 'jumpstart' ),
+					'glassy'   => __( 'Custom color + glassy overlay', 'jumpstart' ),
+					'textured' => __( 'Custom color + noisy texture', 'jumpstart' ),
+					'gradient' => __( 'Custom gradient', 'jumpstart' ),
 				),
 				'class'     => 'trigger',
 			),
@@ -1562,7 +1509,21 @@ function jumpstart_ex_options() {
 				'lang'      => 'css',
 			),
 		),
-	));
+	);
+
+	// Add options, shared across multiple theme bases.
+
+	$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
+
+	/**
+	 * Filters the options added by the Executive base
+	 * to the theme options page.
+	 *
+	 * @since Jump_Start 2.0.0
+	 *
+	 * @param array Options added.
+	 */
+	$options = apply_filters( 'jumpstart_ex_options', $options );
 
 	themeblvd_add_option_tab( 'styles', __( 'Styles', 'jumpstart' ), true );
 
