@@ -693,10 +693,14 @@ function jumpstart_ag_header_menu() {
 
 					<?php if ( themeblvd_do_lang_selector() ) : ?>
 
-						<li class="top-lang">
+						<li class="top-wpml">
 							<a href="#" class="tb-lang-trigger" title="<?php echo themeblvd_get_local( 'language' ); ?>" data-toggle="modal" data-target="#floating-lang-switcher">
 								<i class="<?php echo esc_attr( themeblvd_get_icon_class( 'globe' ) ); ?>"></i>
 							</a>
+							<!-- Used to build mobile menu's language switcher -->
+							<div class="hide">
+								<?php do_action( 'icl_language_selector' ); ?>
+							</div>
 						</li>
 
 					<?php endif; ?>
@@ -1014,7 +1018,7 @@ function jumpstart_ag_get_lang_popup() {
 
 	$output .= '</div><!-- .modal-dialog (end) -->';
 
-	$output .= '</div><!-- .tb-wpml-switcher (end) -->';
+	$output .= '</div><!-- .tb-lang-popup (end) -->';
 
 	/**
 	 * Filters the output for the WPML language

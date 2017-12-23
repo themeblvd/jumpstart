@@ -54,7 +54,9 @@ Jump Start Changelog
 	* WooCommerce: Added option to disable theme's WooCommerce styling at *Appearance > Theme Options > Plugins > WooCommerce*.
 	* WooCommerce: Fixed "Billing details" and "Ship to a different address" columns being reversed on Checkout page.
 	* WooCommerce: Fixed shipping method selection styling on Shopping Cart page.
+	* WooCommerce: Fixed deprecated use of `WC_Cart::get_cart_url`.
 	* WPML: Fixed WPML options showing on Theme Options, when WPML isn't installed.
+	* WPML: Fixed theme's language switcher not getting added to the mobile navigation, when using the Agent base.
 * New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header*.
 * New: Added option for mobile header navigational icon color at *Appearance > Theme Options > Styles > Mobile Header*.
 * New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
@@ -72,7 +74,6 @@ Jump Start Changelog
 * Improvement: Admin code editors now use WordPress's implementation of CodeMirror editor with coding help and error hints, introduced in WordPress 4.9.
 * Improvement: New styling for the "Tweet" element added to the layout builder from the [Tweeple plugin](https://wordpress.org/plugins/tweeple).
 * Improvement: There is now only one Post Slider and Simple Slider element; apply the "Popout" display option to these elements to achieve the full-width versions, which now display inline images.
-* Fixed: WooCommerce deprecated use of `WC_Cart::get_cart_url`.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
 * Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.
