@@ -28,6 +28,7 @@ function jumpstart_su_include_fonts() {
 	themeblvd_include_fonts(
 		themeblvd_get_option( 'font_body' ),
 		themeblvd_get_option( 'font_header' ),
+		themeblvd_get_option( 'font_header_sm' ),
 		themeblvd_get_option( 'font_quote' ),
 		themeblvd_get_option( 'font_meta' ),
 		themeblvd_get_option( 'font_epic' ),
@@ -86,6 +87,38 @@ function jumpstart_su_css() {
 		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
 		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
 		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
+		$print .= "}\n";
+
+	}
+
+	// Small Header Font
+	$font = themeblvd_get_option( 'font_header_sm' );
+
+	if ( $font ) {
+
+		$print .= "h5,\n";
+		$print .= "h6,\n";
+		$print .= ".widget-title,\n";
+		$print .= ".related-posts-title,\n";
+		$print .= ".tb-info-box .info-box-title,\n";
+		$print .= "#comments-title,\n";
+		$print .= "#respond .comment-reply-title,\n";
+		$print .= ".tb-author-box .info-box-title,\n";
+		$print .= ".woocommerce-tabs .panel h2,\n";
+		$print .= ".products.related > h2,\n";
+		$print .= ".products.upsells > h2,\n";
+		$print .= "#bbpress-forums fieldset.bbp-form legend,\n";
+		$print .= ".modal-title,\n";
+		$print .= ".sf-menu .mega-section-header,\n";
+		$print .= ".tb-pricing-table .title,\n";
+		$print .= ".tb-icon-box .icon-box-title {\n";
+
+		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
+		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
+		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
+		$print .= sprintf( "\tletter-spacing: %s;\n", themeblvd_get_option( 'font_header_sm_sp' ) );
+		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
+
 		$print .= "}\n";
 
 	}

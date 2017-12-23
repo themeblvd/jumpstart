@@ -269,208 +269,6 @@ function jumpstart_ag_options() {
 				'type'     => 'subgroup_end',
 			),
 		),
-		'typo' => array(
-			'font_body' => array(
-				'id'       => 'font_body',
-				'name'     => __( 'Primary Font', 'jumpstart' ),
-				'desc'     => __( 'This applies to most of the text on your site.', 'jumpstart' ),
-				'std'      => array(
-					'size'   => '16px',
-					'face'   => 'google',
-					'weight' => '300',
-					'color'  => '',
-					'google' => 'Lato:300',
-					'style'  => 'normal',
-				),
-				'atts'     => array( 'size', 'face', 'style', 'weight' ),
-				'type'     => 'typography',
-			),
-			'font_header' => array(
-				'id'       => 'font_header',
-				'name'     => __( 'Header Font', 'jumpstart' ),
-				'desc'     => __( 'This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages.', 'jumpstart' ),
-				'std'      => array(
-					'size'   => '',
-					'face'   => 'google',
-					'weight' => '600',
-					'color'  => '',
-					'google' => 'Hind:600',
-					'style'  => 'normal',
-				),
-				'atts'     => array( 'face', 'style', 'weight' ),
-				'type'     => 'typography',
-			),
-			'font_header_sm' => array(
-				'id'       => 'font_header_sm',
-				'name'     => __( 'Small Header Font', 'denali' ),
-				'desc'     => __( 'This applies to smaller sub headers throughout your website, like widget titles, for example.', 'denali' ),
-				'std'      => array(
-					'size'   => '',
-					'face'   => 'google',
-					'weight' => '700',
-					'color'  => '',
-					'google' => 'Lato:700',
-					'style'  => 'uppercase',
-				),
-				'atts'     => array( 'face', 'style', 'weight' ),
-				'type'     => 'typography',
-			),
-			'font_header_sm_sp' => array(
-				'id'       => 'font_header_sm_sp',
-				'name'     => __( 'Small Header Letter Spacing', 'denali' ),
-				'desc'     => __( 'Adjust the spacing between letters.', 'denali' ),
-				'std'      => '1px',
-				'type'     => 'slide',
-				'options'  => array(
-					'units' => 'px',
-					'min'   => '0',
-					'max'   => '5',
-					'step'  => '1',
-				),
-			),
-			'font_quote' => array(
-				'id'       => 'font_quote',
-				'name'     => __( 'Quote Font', 'jumpstart' ),
-				'desc'     => __( 'This applies to quoted text in blockquote tags.', 'jumpstart' ),
-				'std'      => array(
-					'size'   => '',
-					'face'   => 'google',
-					'weight' => '400',
-					'color'  => '',
-					'google' => 'Libre Baskerville:400italic',
-					'style'  => 'italic',
-				),
-				'atts'     => array( 'face', 'style', 'weight' ),
-				'type'     => 'typography',
-			),
-			'font_quote_sp' => array(
-				'id'       => 'font_quote_sp',
-				'name'     => __( 'Quote Letter Spacing', 'jumpstart' ),
-				'desc'     => __( 'Adjust the spacing between letters.', 'jumpstart' ),
-				'std'      => '0px',
-				'type'     => 'slide',
-				'options'  => array(
-					'units' => 'px',
-					'min'   => '0',
-					'max'   => '5',
-					'step'  => '1',
-				),
-			),
-			'font_meta' => array(
-				'id'       => 'font_meta',
-				'name'     => __( 'Meta Info Font', 'jumpstart' ),
-				'desc'     => __( 'This applies to meta info like the "Posted" date below a post title, for example.', 'jumpstart' ),
-				'std'      => array(
-					'size'   => '',
-					'face'   => 'google',
-					'weight' => '700',
-					'color'  => '',
-					'google' => 'Lato:700',
-					'style'  => 'uppercase',
-				),
-				'atts'     => array( 'face', 'style', 'weight' ),
-				'type'     => 'typography',
-			),
-			'font_meta_sp' => array(
-				'id'       => 'font_meta_sp',
-				'name'     => __( 'Meta Info Letter Spacing', 'jumpstart' ),
-				'desc'     => __( 'Adjust the spacing between letters.', 'jumpstart' ),
-				'std'      => '0px',
-				'type'     => 'slide',
-				'options'  => array(
-					'units' => 'px',
-					'min'   => '0',
-					'max'   => '5',
-					'step'  => '1',
-				),
-			),
-			'font_epic' => array(
-				'id'       => 'font_epic',
-				'name'     => __( 'Featured Image Title Font', 'jumpstart' ),
-				'desc'     => __( 'This applies when displaying a title on top of featured images.', 'jumpstart' ),
-				'std'      => array(
-					'size'   => '50px',
-					'face'   => 'google',
-					'weight' => '700',
-					'color'  => '',
-					'google' => 'Montserrat:700',
-					'style'  => 'uppercase',
-				),
-				'atts'     => array( 'face', 'style', 'weight', 'size' ),
-				'sizes'    => array( '25', '26', '150' ),
-				'type'     => 'typography',
-			),
-			'font_epic_sp' => array(
-				'id'       => 'font_epic_sp',
-				'name'     => __( 'Featured Image Title Letter Spacing', 'jumpstart' ),
-				'desc'     => __( 'Adjust the spacing between letters.', 'jumpstart' ),
-				'std'      => '3px',
-				'type'     => 'slide',
-				'options'  => array(
-					'units' => 'px',
-					'min'   => '0',
-					'max'   => '5',
-					'step'  => '1',
-				),
-			),
-			'font_menu' => array(
-				'id'       => 'font_menu',
-				'name'     => __( 'Main Menu Font', 'jumpstart' ),
-				'desc'     => __( 'This font applies to the top level items of the main menu.', 'jumpstart' ),
-				'std'      => array(
-					'size'   => '11px',
-					'face'   => 'google',
-					'weight' => '700',
-					'color'  => '#ffffff',
-					'google' => 'Lato:700',
-					'style'  => 'uppercase',
-				),
-				'atts'     => array( 'size', 'face', 'style', 'weight', 'color' ),
-				'type'     => 'typography',
-				'sizes'    => array( '10', '11', '12', '13', '14', '15', '16', '17', '18' ),
-			),
-			'font_menu_sp' => array(
-				'id'       => 'font_menu_sp',
-				'name'     => __( 'Main Menu Letter Spacing', 'jumpstart' ),
-				'desc'     => __( 'Adjust the spacing between letters.', 'jumpstart' ),
-				'std'      => '1px',
-				'type'     => 'slide',
-				'options'  => array(
-					'units' => 'px',
-					'min'   => '0',
-					'max'   => '5',
-					'step'  => '1',
-				),
-			),
-			'link_color' => array(
-				'id'       => 'link_color',
-				'name'     => __( 'Link Color', 'jumpstart' ),
-				'desc'     => __( 'Choose the color you\'d like applied to links.', 'jumpstart' ),
-				'std'      => '#2ea3f2',
-				'type'     => 'color',
-			),
-			'link_hover_color' => array(
-				'id'       => 'link_hover_color',
-				'name'     => __( 'Link Hover Color', 'jumpstart' ),
-				'desc'     => __( 'Choose the color you\'d like applied to links when they are hovered over.', 'jumpstart' ),
-				'std'      => '#337ab7',
-				'type'     => 'color',
-			),
-			'footer_link_color' => array(
-				'id'       => 'footer_link_color',
-				'name'     => __( 'Footer Link Color', 'jumpstart' ),
-				'desc'     => __( 'Choose the color you\'d like applied to links in the footer.', 'jumpstart' ),
-				'std'      => '#2ea3f2',
-				'type'     => 'color',
-			),
-			'footer_link_hover_color' => array(
-				'id'       => 'footer_link_hover_color',
-				'name'     => __( 'Footer Link Hover Color', 'jumpstart' ),
-				'desc'     => __( 'Choose the color you\'d like applied to links in the footer when they are hovered over.', 'jumpstart' ),
-				'std'      => '#337ab7',
-				'type'     => 'color',
-			),
-		),
 		'css' => array(
 			'custom_styles' => array(
 				'id'       => 'custom_styles',
@@ -483,9 +281,79 @@ function jumpstart_ag_options() {
 		),
 	);
 
-	// Add options, shared across multiple theme bases.
-
+	/*
+	 * Add standard mobile header options, shared across
+	 * all theme bases.
+	 */
 	$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
+
+	/*
+	 * Add standard typography options, with custom default
+	 * values for this theme base.
+	 */
+	$font_defaults = array();
+
+	$font_defaults['font_body'] = array(
+		'size'   => '16px',
+		'face'   => 'google',
+		'weight' => '300',
+		'color'  => '',
+		'google' => 'Lato:300',
+		'style'  => 'normal',
+	);
+
+	$font_defaults['font_header'] = array(
+		'size'   => '',
+		'face'   => 'google',
+		'weight' => '600',
+		'color'  => '',
+		'google' => 'Hind:600',
+		'style'  => 'normal',
+	);
+
+	$font_defaults['font_header_sm'] = array(
+		'size'   => '',
+		'face'   => 'google',
+		'weight' => '700',
+		'color'  => '',
+		'google' => 'Lato:700',
+		'style'  => 'uppercase',
+	);
+
+	$font_defaults['font_header_sm_sp'] = '1px';
+
+	$font_defaults['font_meta'] = array(
+		'size'   => '',
+		'face'   => 'google',
+		'weight' => '700',
+		'color'  => '',
+		'google' => 'Lato:700',
+		'style'  => 'uppercase',
+	);
+
+	$font_defaults['font_meta_sp'] = '0px';
+
+	$font_defaults['font_menu'] = array(
+		'size'   => '11px',
+		'face'   => 'google',
+		'weight' => '700',
+		'color'  => '#ffffff',
+		'google' => 'Lato:700',
+		'style'  => 'uppercase',
+	);
+
+	$font_defaults['font_menu_sp'] = '1px';
+
+	$options['typo'] = jumpstart_get_shared_options( 'typography', $font_defaults );
+
+	/*
+	 * Add color selection to menu font.
+	 *
+	 * Agent is currently only base that allows menu
+	 * font color selection; so it needs to be added
+	 * onto the shared options retrieved.
+	 */
+	$options['type']['font_menu']['atts'][] = 'color';
 
 	/**
 	 * Filters the options added by the Agent base
@@ -497,6 +365,10 @@ function jumpstart_ag_options() {
 	 */
 	$options = apply_filters( 'jumpstart_ag_options', $options );
 
+	/*
+	 * Add all options set up above from the $options
+	 * array to a new section called "Styles."
+	 */
 	themeblvd_add_option_tab( 'styles', __( 'Styles', 'jumpstart' ), true );
 
 	// translators: 1: link to Theme Base admin page

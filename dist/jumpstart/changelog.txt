@@ -63,6 +63,7 @@ Jump Start Changelog
 * New: Added support for applying background shade to individual columns in the layout builder.
 * New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
 * New: Added "Custom Font" selection to typography options; this allows you to use custom fonts with the theme, that you've included yourself through customization or a third-party plugin.
+* New: Added "Small Header Font" option at *Appearance > Theme Options > Styles > Typography*, to Super User, Executive and Entrepreneur theme bases (like Agent base already has).
 * New: Added new suggested plugin manager; this swaps TGMPA for [My Plugin Manager](http://mypluginmanager.com).
 * Improvement: Mobile header styling is now applied consistently at 991px and below to ease the transition from desktop to mobile, and generally simplify styling.
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
