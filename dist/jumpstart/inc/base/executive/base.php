@@ -1283,6 +1283,8 @@ function jumpstart_ex_header_class( $class ) {
 
 	}
 
+	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
+
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_sub_bg_color_brightness' );
 
 	return $class;

@@ -166,6 +166,13 @@ body {
 	}
 }
 
+/* Mobile Logo */
+@media (max-width: 991px) {
+	.site-header.mobile-light .header-text-logo .tb-text-logo {
+		color: #333;
+	}
+}
+
 /* Menu Container */
 .header-nav {
 	background: transparent;

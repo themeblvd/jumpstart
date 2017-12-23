@@ -627,6 +627,9 @@ function jumpstart_ag_header_class( $class ) {
 
 	}
 
+	// Header brightness.
+	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
+
 	// Dropdown brightness.
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_drop_bg_color_brightness' );
 

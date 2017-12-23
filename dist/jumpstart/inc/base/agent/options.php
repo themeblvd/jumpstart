@@ -176,6 +176,17 @@ function jumpstart_ag_options() {
 				'std'      => '#101010',
 				'type'     => 'color',
 			),
+			'header_mobile_bg_color_brightness' => array(
+				'id' 		=> 'header_mobile_bg_color_brightness',
+				'name' 		=> __( 'Background Color Brightness', 'jumpstart' ),
+				'desc' 		=> __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
+				'std' 		=> 'dark',
+				'type' 		=> 'select',
+				'options'	=> array(
+					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
+					'dark' 	=> __( 'I chose a dark color in the previous option.', 'jumpstart' )
+				),
+			),
 			'header_mobile_icon_color' => array(
 				'id'       => 'header_mobile_icon_color',
 				'name'     => __( 'Icon Color', 'jumpstart' ),

@@ -47,6 +47,13 @@ Author URI: http://www.themeblvd.com
 	background-color: #ffffff;
 }
 
+/* Mobile Header Logo */
+@media (max-width: 991px) {
+	.site-header.mobile-light .header-text-logo .tb-text-logo {
+		color: #333;
+	}
+}
+
 /* BG parallax */
 .site-header.tb-parallax {
 	overflow: visible;

@@ -96,6 +96,13 @@ Author URI: http://www.themeblvd.com
 	text-align: center;
 }
 
+/* Mobile Header Logo */
+@media (max-width: 991px) {
+	.site-header.mobile-light .header-text-logo .tb-text-logo {
+		color: #333;
+	}
+}
+
 /* BG parallax */
 .site-header.tb-parallax {
 	overflow: visible;
