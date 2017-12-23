@@ -332,7 +332,7 @@ body {
     	width: auto;
 	}
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
 	.header-text-logo .tb-text-logo {
 		color: #ffffff;
 		font-size: 16px;
