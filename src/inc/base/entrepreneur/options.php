@@ -25,7 +25,7 @@ function jumpstart_ent_options() {
 
 	if ( function_exists( 'themeblvd_get_bg_types' ) ) {
 
-		$bg_types = themeblvd_get_bg_types( 'section' );
+		$bg_types = themeblvd_get_bg_types( 'basic' );
 
 	}
 
@@ -278,11 +278,22 @@ function jumpstart_ent_options() {
 			'header_bg_type' => array(
 				'id'      => 'header_bg_type',
 				'name'    => __( 'Apply Header Background', '@@text-domain' ),
-				'desc'    => __( 'Select if you\'d like to apply a custom background and how you want to control it.', '@@text-domain' ),
+				'desc'    => __( 'Select the type of background you\'d like applied to your website header.', '@@text-domain' ),
 				'std'     => 'color',
 				'type'    => 'select',
 				'options' => $bg_types,
 				'class'   => 'trigger',
+			),
+			'header_text_color' => array(
+				'id'      => 'header_text_color',
+				'name'    => __( 'Text Color', '@@text-domain' ),
+				'desc'    => __( 'If you\'re using a dark background, select to show light text, and vice versa.', '@@text-domain' ),
+				'std'     => 'dark',
+				'type'    => 'select',
+				'options' => array(
+					'dark'  => __( 'Dark Text', '@@text-domain' ),
+					'light' => __( 'Light Text', '@@text-domain' ),
+				),
 			),
 			'header_bg_color' => array(
 				'id'      => 'header_bg_color',
@@ -330,119 +341,12 @@ function jumpstart_ent_options() {
 				'select'  => 'textures',
 				'class'   => 'hide receiver receiver-texture',
 			),
-			'header_apply_bg_texture_parallax' => array(
-				'id'      => 'header_apply_bg_texture_parallax',
-				'name'    => null,
-				'desc'    => __( 'Apply parallax scroll effect to background texture.', '@@text-domain' ),
-				'type'    => 'checkbox',
-				'class'   => 'hide receiver receiver-texture',
-			),
-			'sub_group_start_5' => array(
-				'id'      => 'sub_group_start_5',
-				'type'    => 'subgroup_start',
-				'class'   => 'select-parallax hide receiver receiver-image',
-			),
 			'header_bg_image' => array(
 				'id'      => 'header_bg_image',
 				'name'    => __( 'Background Image', '@@text-domain' ),
 				'desc'    => __( 'Select a background image.', '@@text-domain' ),
 				'type'    => 'background',
-				'color'    => false,
-				'parallax' => true,
-			),
-			'sub_group_end_5' => array(
-				'id'      => 'sub_group_end_5',
-				'type'    => 'subgroup_end',
-			),
-			'header_bg_video' => array(
-				'id'      => 'header_bg_video',
-				'name'    => __( 'Background Video', '@@text-domain' ),
-				'desc'    => __( 'You can upload a web-video file (mp4, webm, ogv), or input a URL to a video page on YouTube or Vimeo. Your fallback image will display on mobile devices.', '@@text-domain' ) . '<br><br>' . __( 'Examples:', '@@text-domain' ) . '<br>https://vimeo.com/79048048<br>http://www.youtube.com/watch?v=5guMumPFBag',
-				'type'    => 'background_video',
-				'class'   => 'hide receiver receiver-video',
-			),
-			'sub_group_start_6' => array(
-				'id'      => 'sub_group_start_6',
-				'type'    => 'subgroup_start',
-				'class'   => 'show-hide hide receiver receiver-image receiver-slideshow',
-			),
-			'header_apply_bg_shade' => array(
-				'id'      => 'header_apply_bg_shade',
-				'name'    => null,
-				'desc'    => __( 'Shade background with transparent color.', '@@text-domain' ),
-				'std'     => 0,
-				'type'    => 'checkbox',
-				'class'   => 'trigger',
-			),
-			'header_bg_shade_color' => array(
-				'id'      => 'header_bg_shade_color',
-				'name'    => __( 'Shade Color', '@@text-domain' ),
-				'desc'    => __( 'Select the color you want overlaid on your background.', '@@text-domain' ),
-				'std'     => '#000000',
-				'type'    => 'color',
-				'class'   => 'hide receiver',
-			),
-			'header_bg_shade_opacity' => array(
-				'id'      => 'header_bg_shade_opacity',
-				'name'    => __( 'Shade Opacity', '@@text-domain' ),
-				'desc'    => __( 'Select the opacity of the shade color overlaid on your background.', '@@text-domain' ),
-				'std'     => '0.5',
-				'type'    => 'select',
-				'options' => array(
-					'0.05' => '5%',
-					'0.1'  => '10%',
-					'0.15' => '15%',
-					'0.2'  => '20%',
-					'0.25' => '25%',
-					'0.3'  => '30%',
-					'0.35' => '35%',
-					'0.4'  => '40%',
-					'0.45' => '45%',
-					'0.5'  => '50%',
-					'0.55' => '55%',
-					'0.6'  => '60%',
-					'0.65' => '65%',
-					'0.7'  => '70%',
-					'0.75' => '75%',
-					'0.8'  => '80%',
-					'0.85' => '85%',
-					'0.9'  => '90%',
-					'0.95' => '95%',
-				),
-				'class'   => 'hide receiver',
-			),
-			'sub_group_end_6' => array(
-				'id'      => 'sub_group_end_6',
-				'type'    => 'subgroup_end',
-			),
-			'sub_group_start_7' => array(
-				'id'      => 'sub_group_start_7',
-				'type'    => 'subgroup_start',
-				'class'   => 'section-bg-slideshow hide receiver receiver-slideshow',
-			),
-			'header_bg_slideshow' => array(
-				'id'      => 'header_bg_slideshow',
-				'name'    => __( 'Slideshow Images', '@@text-domain' ),
-				'desc'    => null,
-				'type'    => 'slider',
-			),
-			'header_bg_slideshow_crop' => array(
-				'name'    => __( 'Slideshow Crop Size', '@@text-domain' ),
-				'desc'    => __( 'Select the crop size to be used for the background slideshow images. Remember that the background images will be stretched to cover the area.', '@@text-domain' ),
-				'id'      => 'header_bg_slideshow_crop',
-				'std'     => 'full',
-				'type'    => 'select',
-				'select'  => 'crop',
-			),
-			'header_apply_bg_slideshow_parallax' => array(
-				'id'      => 'header_apply_bg_slideshow_parallax',
-				'name'    => null,
-				'desc'    => __( 'Apply parallax scroll effect to background slideshow.', '@@text-domain' ),
-				'type'    => 'checkbox',
-			),
-			'sub_group_end_7' => array(
-				'id'      => 'sub_group_end_7',
-				'type'    => 'subgroup_end',
+				'class'   => 'hide receiver receiver-image',
 			),
 			'sub_group_end_4' => array(
 				'id'      => 'sub_group_end_4',
@@ -452,17 +356,6 @@ function jumpstart_ent_options() {
 				'id'      => 'sub_group_start_8',
 				'type'    => 'subgroup_start',
 				'class'   => 'show-hide',
-			),
-			'header_text_color' => array(
-				'id'      => 'header_text_color',
-				'name'    => __( 'Text Color', '@@text-domain' ),
-				'desc'    => __( 'If you\'re using a dark background color, select to show light text, and vice versa.', '@@text-domain' ),
-				'std'     => 'dark',
-				'type'    => 'select',
-				'options' => array(
-					'dark'  => __( 'Dark Text', '@@text-domain' ),
-					'light' => __( 'Light Text', '@@text-domain' ),
-				),
 			),
 			'header_apply_border_top' => array(
 				'id'      => 'header_apply_border_top',

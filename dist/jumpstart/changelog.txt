@@ -82,6 +82,7 @@ Jump Start Changelog
 * Fixed: Post ID browser modal window not closing in admin when selecting post.
 * Fixed: Social contact icons not showing in correct color on transparent header in some cases, with Super User and Executive theme bases.
 * Fixed: "Blank Page" template not displaying correctly with white background on Agent base.
+* Removed: Header background options were simplified a bit for Super User, Executive and Entrepreneur theme bases; there are no more background parallax, slideshow or video options.
 * Removed: No more "Background Color Brightness" option at *Appearance > Theme Options > Styles > Mobile Header*; use new "Icon Color" option instead.
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.

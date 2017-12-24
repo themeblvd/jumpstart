@@ -747,12 +747,7 @@ function jumpstart_ent_css() {
 		$options['bg_color'] = $header_bg_color;
 		$options['bg_color_opacity'] = themeblvd_get_option( 'header_bg_color_opacity' );
 		$options['bg_texture'] = themeblvd_get_option( 'header_bg_texture' );
-		$options['apply_bg_texture_parallax'] = themeblvd_get_option( 'header_apply_bg_texture_parallax' );
 		$options['bg_image'] = themeblvd_get_option( 'header_bg_image' );
-		$options['bg_video'] = themeblvd_get_option( 'header_bg_video' );
-		$options['apply_bg_shade'] = themeblvd_get_option( 'header_apply_bg_shade' );
-		$options['bg_shade_color'] = themeblvd_get_option( 'header_bg_shade_color' );
-		$options['bg_shade_opacity'] = themeblvd_get_option( 'header_bg_shade_opacity' );
 
 		$options['apply_border_top'] = themeblvd_get_option( 'header_apply_border_top' );
 		$options['border_top_color'] = themeblvd_get_option( 'header_border_top_color' );
@@ -1237,12 +1232,8 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ent_sticky_class' );
 function jumpstart_ent_header_class( $class ) {
 
 	$options = array(
-		'bg_type'                   => themeblvd_get_option( 'header_bg_type' ),
-		'apply_bg_shade'            => themeblvd_get_option( 'header_apply_bg_shade' ),
-		'apply_bg_texture_parallax' => themeblvd_get_option( 'header_apply_bg_texture_parallax' ),
-		'bg_image'                  => themeblvd_get_option( 'header_bg_image' ),
-		'bg_slideshow'              => themeblvd_get_option( 'header_bg_slideshow' ),
-		'bg_video'                  => themeblvd_get_option( 'header_bg_video' ),
+		'bg_type'  => themeblvd_get_option( 'header_bg_type' ),
+		'bg_image' => themeblvd_get_option( 'header_bg_image' ),
 	);
 
 	if ( themeblvd_config( 'suck_up' ) ) {
@@ -1348,79 +1339,6 @@ function jumpstart_ent_footer_class( $class ) {
 
 }
 add_filter( 'themeblvd_footer_class', 'jumpstart_ent_footer_class' );
-
-/**
- * Add any outputted HTML needed for header styling
- * options to work.
- *
- * @since Jump_Start 2.0.0
- */
-function jumpstart_ent_header_top() {
-
-	if ( themeblvd_config( 'suck_up' ) ) {
-
-		return;
-
-	}
-
-	$display = array(
-		'bg_type'                     => themeblvd_get_option( 'header_bg_type' ),
-		'bg_color'                    => themeblvd_get_option( 'header_bg_color' ),
-		'bg_texture'                  => themeblvd_get_option( 'header_bg_texture' ),
-		'apply_bg_texture_parallax'   => themeblvd_get_option( 'header_apply_bg_texture_parallax' ),
-		'bg_image'                    => themeblvd_get_option( 'header_bg_image' ),
-		'apply_bg_shade'              => themeblvd_get_option( 'header_apply_bg_shade' ),
-		'bg_shade_color'              => themeblvd_get_option( 'header_bg_shade_color' ),
-		'bg_shade_opacity'            => themeblvd_get_option( 'header_bg_shade_opacity' ),
-		'bg_slideshow'                => themeblvd_get_option( 'header_bg_slideshow' ),
-		'apply_bg_slideshow_parallax' => themeblvd_get_option( 'header_apply_bg_slideshow_parallax' ),
-		'bg_video'                    => themeblvd_get_option( 'header_bg_video' ),
-	);
-
-	if ( 'image' === $display['bg_type'] || 'slideshow' === $display['bg_type'] ) {
-
-		if ( ! empty( $display['apply_bg_shade'] ) ) {
-
-			printf(
-				'<div class="bg-shade" style="background-color: %s;"></div>',
-				esc_attr( themeblvd_get_rgb( $display['bg_shade_color'], $display['bg_shade_opacity'] ) )
-			);
-
-		}
-	}
-
-	if ( themeblvd_do_parallax( $display ) ) {
-
-		themeblvd_bg_parallax( $display );
-
-	}
-
-	if ( 'video' === $display['bg_type'] && ! empty( $display['bg_video'] ) ) {
-
-		echo '<div class="header-video">';
-
-		themeblvd_bg_video( $display['bg_video'] );
-
-		echo '</div><!-- .header-video (end) -->';
-
-	}
-
-	if ( 'slideshow' === $display['bg_type'] && ! empty( $display['bg_slideshow'] ) ) {
-
-		$parallax = false;
-
-		if ( ! empty( $display['apply_bg_slideshow_parallax'] ) ) {
-
-			$parallax = true;
-
-		}
-
-		themeblvd_bg_slideshow( 'header', $display['bg_slideshow'], $parallax );
-
-	}
-
-}
-add_action( 'themeblvd_header_top', 'jumpstart_ent_header_top', 5 );
 
 /**
  * Filter args that get filtered in when all

@@ -176,9 +176,11 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 
 	}
 
-	if ( 'banner' === $context ) {
+	if ( 'basic' === $context ) {
 
-		$types['none'] = __( 'No banner', 'jumpstart' );
+		unset( $types['slideshow'] );
+
+		unset( $types['video'] );
 
 	}
 
