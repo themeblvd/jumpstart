@@ -1395,7 +1395,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 *     @type string $desc     Description for option.
 			 *     @type array  $std      Default value.
 			 *     @type string $type     Type of option, should be `background`.
-			 *     @type bool   $color    Whether to include background-color selection.
 			 *     @type bool   $parallax Whether to let the user select parallax effect.
 			 * }
 			 */
@@ -1405,37 +1404,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				if ( $current ) {
 
 					$background = $current;
-
-				}
-
-				$color = true;
-
-				if ( isset( $option['color'] ) ) {
-
-					$color = $option['color'];
-
-				}
-
-				// Add background-color picker to output.
-				if ( $color ) {
-
-					$current_color = '';
-
-					if ( ! empty( $background['color'] ) ) {
-
-						$current_color = $background['color'];
-
-					}
-
-					$output .= sprintf(
-						'<input id="%s_color" name="%s" type="text" value="%s" class="tb-color-picker" data-default-color="%s" />',
-						esc_attr( $option['id'] ),
-						esc_attr( $option_name . '[' . $option['id'] . '][color]' ),
-						esc_attr( $current_color ),
-						esc_attr( $current_color )
-					);
-
-					$output .= '<br />';
 
 				}
 
