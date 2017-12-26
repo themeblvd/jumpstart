@@ -487,14 +487,7 @@ function jumpstart_ag_css() {
 
 	$print .= "\n/* Footer */\n";
 
-	$print .= ".site-footer {\n";
-	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'footer_bg_color' ) );
-	$print .= "}\n";
-
-	$print .= 'body,';
-	$print .= ".site-footer .footer-sub-content {\n";
-	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'copyright_bg_color' ) );
-	$print .= "}\n";
+	$print .= themeblvd_get_shared_style( 'footer' );
 
 	/*------------------------------------------------------------*/
 	/* Side Panels
@@ -502,15 +495,7 @@ function jumpstart_ag_css() {
 
 	$print .= "\n/* Side Panels */\n";
 
-	if ( themeblvd_do_side_panel() ) {
-
-		$print .= ".tb-side-panel,\n";
-
-	}
-
-	$print .= ".tb-mobile-menu-wrapper {\n";
-	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'side_bg_color' ) );
-	$print .= "}\n";
+	$print .= themeblvd_get_shared_style( 'side-panel' );
 
 	/*------------------------------------------------------------*/
 	/* Widgets
@@ -684,7 +669,7 @@ function jumpstart_ag_header_menu() {
 
 		<div class="wrap clearfix">
 
-			<?php if ( themeblvd_get_option( 'searchform' ) == 'show' || themeblvd_do_cart() || themeblvd_do_lang_selector() || themeblvd_do_side_panel() ) : ?>
+			<?php if ( 'show' === themeblvd_get_option( 'searchform' ) || themeblvd_do_cart() || themeblvd_do_lang_selector() || themeblvd_do_side_panel() ) : ?>
 
 				<ul class="header-toolbar list-unstyled">
 
@@ -751,51 +736,16 @@ function jumpstart_ag_header_menu() {
 }
 add_action( 'themeblvd_header_addon', 'jumpstart_ag_header_menu' );
 
-/**
+/*
  * Add CSS classes to side panel and mobile menu.
- *
- * @since Jump_Start 2.1.0
- *
- * @param  array $class CSS classes being added.
- * @return array        Modified CSS classes being added.
  */
-function jumpstart_ag_side_panel_class( $class ) {
+add_filter( 'themeblvd_side_panel_class', 'jumpstart_side_panel_class' );
+add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_side_panel_class' );
 
-	$class[] = themeblvd_get_option( 'side_bg_color_brightness' );
-
-	return $class;
-
-}
-add_filter( 'themeblvd_side_panel_class', 'jumpstart_ag_side_panel_class' );
-add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ag_side_panel_class' );
-
-/**
- * Add social icons to side panel.
- *
- * @since Jump_Start 2.1.0
+/*
+ * Adjust the style of the side panel contact bar.
  */
-function jumpstart_ag_side_panel_contact() {
-
-	if ( themeblvd_get_option( 'social_panel' ) ) {
-
-		$color = 'light';
-
-		if ( 'dark' === themeblvd_get_option( 'side_text_color' ) ) {
-
-			$color = 'grey';
-
-		}
-
-		echo themeblvd_get_contact_bar( null, array(
-			'tooltip' => false,
-			'style'   => $color,
-			'class'   => 'to-mobile',
-		));
-
-	}
-
-}
-add_action( 'themeblvd_side_panel', 'jumpstart_ag_side_panel_contact', 30 );
+add_filter( 'themeblvd_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
 
 /**
  * Add CSS class to sticky header panel for
@@ -823,24 +773,20 @@ function jumpstart_ag_sticky_class( $class ) {
 }
 add_filter( 'themeblvd_sticky_class', 'jumpstart_ag_sticky_class' );
 
-/**
+/*
  * Add CSS classes to footer.
- *
- * @since Jump_Start 2.1.0
- *
- * @param  array $class CSS classes being added.
- * @return array $class $class Modified CSS classes being added.
  */
-function jumpstart_ag_footer_class( $class ) {
+add_filter( 'themeblvd_footer_class', 'jumpstart_footer_class' );
 
-	$class[] = themeblvd_get_option( 'footer_bg_color_brightness' );
+/*
+ * Add CSS classes to copyright.
+ */
+add_filter( 'themeblvd_copyright_class', 'jumpstart_copyright_class' );
 
-	$class[] = 'copyright-' . themeblvd_get_option( 'copyright_bg_color_brightness' );
-
-	return $class;
-
-}
-add_filter( 'themeblvd_footer_class', 'jumpstart_ag_footer_class' );
+/*
+ * Adjust the style of the copyright contact bar.
+ */
+add_filter( 'themeblvd_copyright_contact_bar_args', 'jumpstart_copyright_contact_bar_args' );
 
 /**
  * Height of the header, not including the logo.
@@ -857,76 +803,6 @@ function jumpstart_ag_top_height_addend( $addend, $viewport ) {
 
 }
 add_filter( 'themeblvd_top_height_addend', 'jumpstart_ag_top_height_addend', 10, 2 );
-
-/*
- * Remove framework default footer copyright
- * area.
- */
-remove_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
-
-/**
- * Add custom footer copyright area.
- *
- * @since Jump_Start 2.1.0
- */
-function jumpstart_ag_footer_sub_content() {
-
-	$bg = themeblvd_get_option( 'copyright_bg_color_brightness' );
-
-	echo '<div class="footer-sub-content ' . $bg . '">';
-
-	echo '<div class="wrap clearfix">';
-
-	if ( themeblvd_get_option( 'social_footer' ) ) {
-
-		$style = 'light'; // "light" means it's meant to display over dark BG
-
-		if ( 'light' === $bg ) {
-			$style = 'dark';
-		}
-
-		echo themeblvd_get_contact_bar( null, array(
-			'tooltip' => 'top',
-			'style' => $style,
-		));
-
-	}
-
-	echo '<div class="copyright">';
-
-	/**
-	 * Filters the output of the copyright message,
-	 * which is retrieved from the theme options.
-	 *
-	 * @since Jump_Start 2.1.0
-	 *
-	 * @param string Copyright text.
-	 */
-	echo apply_filters(
-		'themeblvd_footer_copyright',
-		themeblvd_get_content( themeblvd_get_option( 'footer_copyright' ) )
-	);
-
-	echo '</div>';
-
-	$menu_args = themeblvd_get_wp_nav_menu_args( 'footer' );
-
-	if ( has_nav_menu( $menu_args['theme_location'] ) ) {
-
-		echo '<div class="footer-nav">';
-
-		wp_nav_menu( $menu_args );
-
-		echo '</div>';
-
-	}
-
-	echo '</div><!-- .wrap (end) -->';
-
-	echo '</div><!-- .footer-sub-content (end) -->';
-
-}
-add_action( 'themeblvd_footer_sub_content', 'jumpstart_ag_footer_sub_content' );
 
 /**
  * More narrow sidebars.

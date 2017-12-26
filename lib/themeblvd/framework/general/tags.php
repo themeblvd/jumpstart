@@ -436,6 +436,56 @@ function themeblvd_footer_class() {
 }
 
 /**
+ * Display HTML class for main website
+ * footer.
+ *
+ * @since @@name-framework 2.7.0
+ */
+function themeblvd_copyright_class() {
+
+	$class = array(
+		'site-copyright',
+		'footer-sub-content', // Backwards compatibility.
+	);
+
+	$menu = themeblvd_get_wp_nav_menu_args( 'footer' );
+
+	if ( has_nav_menu( $menu['theme_location'] ) ) {
+
+		$class[] = 'has-nav';
+
+	}
+
+	/**
+	 * Filters the CSS classes used with the website
+	 * copyright at the bottom of the footer.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_copyright_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for website copyright at the bottom of the footer.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_copyright_class_output', $output, $class );
+
+}
+
+/**
  * Display HTML class for the hidden
  * side panel.
  *

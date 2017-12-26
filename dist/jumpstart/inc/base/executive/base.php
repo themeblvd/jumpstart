@@ -1093,53 +1093,11 @@ function jumpstart_ex_css() {
 	$print .= sprintf( "\tbackground-color: %s;\n", $options['sub_bg_color'] );
 	$print .= "}\n";
 
-	// Mobile Panel
-	$print .= ".tb-mobile-menu-wrapper {\n";
-	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'menu_mobile_bg_color' ) );
-	$print .= "}\n";
-
-	// Side Panel
-	if ( themeblvd_do_side_panel() ) {
-
-		$print .= ".tb-side-panel {\n";
-		$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'side_bg_color' ) );
-		$print .= "}\n";
-
-	}
+	// Side Panel and Mobile Menu
+	$print .= themeblvd_get_shared_style( 'side-panel' );
 
 	// Footer
-	$options = array();
-
-	$options['bg_type'] = themeblvd_get_option( 'footer_bg_type' );
-	$options['bg_texture'] = themeblvd_get_option( 'footer_bg_texture' );
-	$options['bg_color'] = themeblvd_get_option( 'footer_bg_color' );
-	$options['bg_color_opacity'] = themeblvd_get_option( 'footer_bg_color_opacity' );
-
-	$options['apply_border_top'] = themeblvd_get_option( 'footer_apply_border_top' );
-	$options['border_top_color'] = themeblvd_get_option( 'footer_border_top_color' );
-	$options['border_top_width'] = themeblvd_get_option( 'footer_border_top_width' );
-
-	$options['apply_border_bottom'] = themeblvd_get_option( 'footer_apply_border_bottom' );
-	$options['border_bottom_color'] = themeblvd_get_option( 'footer_border_bottom_color' );
-	$options['border_bottom_width'] = themeblvd_get_option( 'footer_border_bottom_width' );
-
-	$styles = themeblvd_get_display_inline_style( $options, 'external' );
-
-	if ( ! empty( $styles['general'] ) ) {
-
-		$print .= ".site-footer {\n";
-
-		foreach ( $styles['general'] as $prop => $value ) {
-
-			$prop = str_replace( '-2', '', $prop );
-
-			$print .= sprintf( "\t%s: %s;\n", $prop, $value );
-
-		}
-
-		$print .= "}\n";
-
-	}
+	$print .= themeblvd_get_shared_style( 'footer' );
 
 	/*------------------------------------------------------------*/
 	/* Custom CSS
@@ -1212,24 +1170,6 @@ function jumpstart_ex_body_class( $class ) {
 
 }
 add_filter( 'body_class', 'jumpstart_ex_body_class' );
-
-/**
- * Add CSS classes to mobile side panel for
- * color brightness.
- *
- * @since Jump_Start 2.1.0
- *
- * @param  array $class Classes to add to mobile panel.
- * @return array        Modified classes to add to mobile panel.
- */
-function jumpstart_ex_mobile_panel_class( $class ) {
-
-	$class[] = themeblvd_get_option( 'menu_mobile_bg_color_brightness' );
-
-	return $class;
-
-}
-add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_ex_mobile_panel_class' );
 
 /**
  * Add CSS classes to sticky header panel for
@@ -1340,51 +1280,31 @@ function jumpstart_ex_header_top_class( $class ) {
 }
 add_filter( 'themeblvd_header_top_class', 'jumpstart_ex_header_top_class' );
 
-/**
- * Add CSS classes to side panel.
- *
- * @since Jump_Start 2.1.0
- *
- * @param  array $class Classes to add to side panel.
- * @return array $class Modified classes to add to side panel.
+/*
+ * Add CSS classes to side panel and mobile menu.
  */
-function jumpstart_ex_side_panel_class( $class ) {
+add_filter( 'themeblvd_side_panel_class', 'jumpstart_side_panel_class' );
+add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_side_panel_class' );
 
-	$class[] = themeblvd_get_option( 'side_bg_color_brightness' );
+/*
+ * Adjust the style of the side panel contact bar.
+ */
+add_filter( 'themeblvd_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
 
-	return $class;
-
-}
-add_filter( 'themeblvd_side_panel_class', 'jumpstart_ex_side_panel_class' );
-
-/**
+/*
  * Add CSS classes to footer.
- *
- * @since Jump_Start 2.0.0
- *
- * @param  array $class Classes to add to header.
- * @return array $class Modified classes to add to header.
  */
-function jumpstart_ex_footer_class( $class ) {
+add_filter( 'themeblvd_footer_class', 'jumpstart_footer_class' );
 
-	$bg_type = themeblvd_get_option( 'footer_bg_type' );
+/*
+ * Add CSS classes to copyright.
+ */
+add_filter( 'themeblvd_copyright_class', 'jumpstart_copyright_class' );
 
-	if ( 'color' === $bg_type || 'texture' === $bg_type ) {
-
-		if ( 'dark' === themeblvd_get_option( 'footer_bg_color_brightness' ) ) {
-
-			$class[] = 'text-light';
-
-		}
-
-		$class[] = 'has-bg';
-
-	}
-
-	return $class;
-
-}
-add_filter( 'themeblvd_footer_class', 'jumpstart_ex_footer_class' );
+/*
+ * Adjust the style of the copyright contact bar.
+ */
+add_filter( 'themeblvd_copyright_contact_bar_args', 'jumpstart_copyright_contact_bar_args' );
 
 /**
  * Height of the header, not including the logo.
@@ -1488,6 +1408,8 @@ function jumpstart_ex_header_addon() {
 
 	$header_text = themeblvd_get_option( 'header_text' );
 
+	$do_icons = themeblvd_get_option( 'social_header' );
+
 	$icons = themeblvd_get_option( 'social_media' );
 
 	$class = 'header-addon';
@@ -1510,7 +1432,7 @@ function jumpstart_ex_header_addon() {
 
 	printf( '<div class="%s">', $class );
 
-	if ( themeblvd_do_side_panel() || 'show' === themeblvd_get_option( 'searchform' ) || $icons || themeblvd_do_cart() || themeblvd_do_lang_selector() ) {
+	if ( themeblvd_do_side_panel() || 'show' === themeblvd_get_option( 'searchform' ) || ( $icons && $do_icons ) || themeblvd_do_cart() || themeblvd_do_lang_selector() ) {
 
 		echo '<ul class="header-top-nav list-unstyled clearfix">';
 
@@ -1551,7 +1473,7 @@ function jumpstart_ex_header_addon() {
 		 * to account for the "suck up" header and outputting extra
 		 * contact icon set.
 		 */
-		if ( $icons ) {
+		if ( $icons && $do_icons ) {
 
 			echo '<li class="top-icons">';
 

@@ -170,7 +170,6 @@ class Theme_Blvd_Options_API {
 	 *  - Header
 	 *      - logo
 	 *      - header_text
-	 *      - social_media
 	 *      - social_media_style
 	 *      - searchform
 	 *  - Mobile Header
@@ -191,6 +190,11 @@ class Theme_Blvd_Options_API {
 	 *      - single_sidebar_layout
 	 *      - page_sidebar_layout
 	 *      - archive_sidebar_layout
+	 * - Contact
+	 *      - social_media
+	 *      - social_header
+	 *      - social_panel
+	 *      - social_footer
 	 *  - Extras
 	 *      - breadcrumbs
 	 *      - scroll_to_top
@@ -357,41 +361,9 @@ class Theme_Blvd_Options_API {
 						'std'     => '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'type'    => 'text',
 					),
-					'social_media' => array(
-						'name'    => __( 'Social Media Buttons', '@@text-domain' ),
-						'desc'    => __( 'Configure the social media buttons you\'d like to show.', '@@text-domain' ),
-						'id'      => 'social_media',
-						'std'     => array(
-							'item_1' => array(
-								'icon'   => 'facebook',
-								'url'    => 'http://facebook.com/jasonbobich',
-								'label'  => 'Facebook',
-								'target' => '_blank',
-							),
-							'item_2' => array(
-								'icon'   => 'google',
-								'url'    => 'https://plus.google.com/116531311472104544767/posts',
-								'label'  => 'Google+',
-								'target' => '_blank',
-							),
-							'item_3' => array(
-								'icon'   => 'twitter',
-								'url'    => 'http://twitter.com/jasonbobich',
-								'label'  => 'Twitter',
-								'target' => '_blank',
-							),
-							'item_4' => array(
-								'icon'   => 'rss',
-								'url'    => get_feed_link(),
-								'label'  => 'RSS Feed',
-								'target' => '_blank',
-							),
-						),
-						'type'    => 'social_media',
-					),
 					'social_media_style' => array(
-						'name'    => __( 'Social Media Style', '@@text-domain' ),
-						'desc'    => __( 'Select the color you\'d like applied to the social icons.', '@@text-domain' ),
+						'name'    => __( 'Contact Menu Style', '@@text-domain' ),
+						'desc'    => __( 'If you have a contact menu setup for your header, select the color you\'d like applied to them.<br><br>Note: Your contact menu can be setup below at <em>Layout > Contact</em>.', '@@text-domain' ),
 						'id'      => 'social_media_style',
 						'std'     => 'grey',
 						'type'    => 'select',
@@ -485,7 +457,6 @@ class Theme_Blvd_Options_API {
 						'desc'    => null,
 						'id'      => 'footer_setup',
 						'std'     => '1/4-1/4-1/4-1/4',
-						'std'     => '',
 						'type'    => 'columns',
 						'options' => 'standard',
 					),
@@ -600,6 +571,66 @@ class Theme_Blvd_Options_API {
 							), $sidebar_layouts
 						),
 						'img_width' => '45',
+					),
+				),
+			),
+
+			// Section: Contact
+			'contact' => array(
+				'name'    => __( 'Contact', '@@text-domain' ),
+				'options' => array(
+					'social_media' => array(
+						'name'    => __( 'Contact Menu', '@@text-domain' ),
+						'desc'    => __( 'Configure your contact menu.', '@@text-domain' ),
+						'id'      => 'social_media',
+						'std'     => array(
+							'item_1' => array(
+								'icon'   => 'facebook',
+								'url'    => 'http://facebook.com/jasonbobich',
+								'label'  => 'Facebook',
+								'target' => '_blank',
+							),
+							'item_2' => array(
+								'icon'   => 'google',
+								'url'    => 'https://plus.google.com/116531311472104544767/posts',
+								'label'  => 'Google+',
+								'target' => '_blank',
+							),
+							'item_3' => array(
+								'icon'   => 'twitter',
+								'url'    => 'http://twitter.com/jasonbobich',
+								'label'  => 'Twitter',
+								'target' => '_blank',
+							),
+							'item_4' => array(
+								'icon'   => 'rss',
+								'url'    => get_feed_link(),
+								'label'  => 'RSS Feed',
+								'target' => '_blank',
+							),
+						),
+						'type'    => 'social_media',
+					),
+					'social_header' => array(
+						'id'       => 'social_header',
+						'name'     => null,
+						'desc'     => __( 'Display contact buttons in the website header.', '@@text-domain' ),
+						'std'      => '1',
+						'type'     => 'checkbox',
+					),
+					'social_panel' => array(
+						'id'       => 'social_panel',
+						'name'     => null,
+						'desc'     => __( 'Display contact buttons in the website side menu panel (if exists).', '@@text-domain' ),
+						'std'      => '1',
+						'type'     => 'checkbox',
+					),
+					'social_footer' => array(
+						'id'       => 'social_footer',
+						'name'     => null,
+						'desc'     => __( 'Display contact buttons in the website footer.', '@@text-domain' ),
+						'std'      => '1',
+						'type'     => 'checkbox',
 					),
 				),
 			),
@@ -1909,7 +1940,9 @@ class Theme_Blvd_Options_API {
 		$version = '0';
 
 		if ( ! empty( $settings['framework_version'] ) ) {
+
 			$version = $settings['framework_version'];
+
 		}
 
 		/*
@@ -1989,7 +2022,9 @@ class Theme_Blvd_Options_API {
 
 		// If update flag was set, update in the database.
 		if ( $update ) {
+
 			update_option( $this->get_option_id(), $settings );
+
 		}
 
 		return get_option( $this->get_option_id() );

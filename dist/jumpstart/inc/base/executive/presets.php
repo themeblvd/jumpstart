@@ -128,16 +128,14 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 				'menu_sub_bg_color'                 => $val[1],
 				'menu_sub_bg_color_brightness'      => 'dark',
 				'menu_text_shadow'                  => '0',
-				'menu_mobile_bg_color'              => $val[2],
-				'menu_mobile_bg_color_brightness'   => 'dark',
 				'side_bg_color'                     => $val[2],
 				'side_bg_color_brightness'          => 'dark',
+				'footer_apply_border_top'           => '0',
 				'footer_bg_type'                    => 'color',
 				'footer_bg_color'                   => $val[1],
 				'footer_bg_color_brightness'        => 'dark',
 				'footer_bg_color_opacity'           => '1',
-				'footer_apply_border_top'           => '0',
-				'footer_apply_border_bottom'        => '0',
+				'copyright_apply_bg'                => '0',
 				'highlight'                         => $val[1],
 				'link_color'                        => $val[1],
 				'link_hover_color'                  => $val[2],
@@ -218,8 +216,6 @@ function jumpstart_ex_get_presets( $preset = '' ) {
 						$settings['menu_bg_color'] = '#333333';
 
 						$settings['menu_sub_bg_color'] = '#333333';
-
-						$settings['menu_mobile_bg_color'] = '#222222';
 
 						$settings['side_bg_color'] = '#222222';
 

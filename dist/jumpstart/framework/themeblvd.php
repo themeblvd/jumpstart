@@ -467,6 +467,7 @@ add_action( 'themeblvd_after', 'themeblvd_to_top' );
 add_action( 'themeblvd_after', 'themeblvd_side_panel' );
 add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_menu' );
 add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_sub_menu', 20 );
+add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_contact', 30 );
 
 /*
  * Hook frontend actions for the website inner

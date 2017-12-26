@@ -750,211 +750,6 @@ function jumpstart_ex_options() {
 				'type'      => 'checkbox',
 			),
 		),
-		'menu_mobile' => array(
-			'menu_mobile_bg_color' => array(
-				'id'        => 'menu_mobile_bg_color',
-				'name'      => __( 'Mobile Menu Background Color', '@@text-domain' ),
-				'desc'      => __( 'Select a background color for the mobile menu side panel.', '@@text-domain' ),
-				'std'       => '#222222',
-				'type'      => 'color',
-			),
-			'menu_mobile_bg_color_brightness' => array(
-				'id'        => 'menu_mobile_bg_color_brightness',
-				'name'      => __( 'Mobile Menu Background Color Brightness', '@@text-domain' ),
-				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
-				'std'       => 'dark',
-				'type'      => 'radio',
-				'options'   => array(
-					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
-				),
-			),
-		),
-		'side_panel' => array(
-			'side_info' => array(
-				'id'        => 'side_info',
-				// translators: 1: link to Menus admin screen
-				'desc'      => sprintf( __( 'These options apply to the side panel that shows on desktops when you assign a menu to the "Primary Side Navigation" or "Secondary Side Navigation" locations at %s.', '@@text-domain' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', '@@text-domain' ) . '</a>' ),
-				'type'      => 'info',
-			),
-			'side_bg_color' => array(
-				'id'        => 'side_bg_color',
-				'name'      => __( 'Side Panel Background Color', '@@text-domain' ),
-				'desc'      => __( 'Select a background color for the desktop side panel.', '@@text-domain' ),
-				'std'       => '#222222',
-				'type'      => 'color',
-			),
-			'side_bg_color_brightness' => array(
-				'id'        => 'side_bg_color_brightness',
-				'name'      => __( 'Side Panel Background Color Brightness', '@@text-domain' ),
-				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
-				'std'       => 'dark',
-				'type'      => 'radio',
-				'options'   => array(
-					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
-				),
-			),
-		),
-		'footer' => array(
-			'sub_group_start_16' => array(
-				'id'        => 'sub_group_start_16',
-				'type'      => 'subgroup_start',
-				'class'     => 'show-hide-toggle',
-			),
-			'footer_bg_type' => array(
-				'id'        => 'footer_bg_type',
-				'name'      => __( 'Apply Footer Background', '@@text-domain' ),
-				// translators: 1: location of where to setup Footer features on Theme Options screen
-				'desc'      => __( 'Select if you\'d like to apply a custom background color to the footer.', '@@text-domain' ) . '<br><br>' . sprintf( __( 'Note: To setup a more complex designed footer, go to %s and use the "Template Sync" feature.', '@@text-domain' ), '<em>' . __( 'Layout > Footer', '@@text-domain' ) . '</em>' ),
-				'std'       => 'none',
-				'type'      => 'select',
-				'options'   => array(
-					'none'      => __( 'None', '@@text-domain' ),
-					'color'     => __( 'Custom color', '@@text-domain' ),
-					'texture'   => __( 'Custom color + texture', '@@text-domain' ),
-				),
-				'class'     => 'trigger',
-			),
-			'footer_bg_texture' => array(
-				'id'        => 'footer_bg_texture',
-				'name'      => __( 'Background Texture', '@@text-domain' ),
-				'desc'      => __( 'Select a background texture.', '@@text-domain' ),
-				'type'      => 'select',
-				'select'    => 'textures',
-				'class'     => 'hide receiver receiver-texture',
-			),
-			'footer_bg_color' => array(
-				'id'        => 'footer_bg_color',
-				'name'      => __( 'Background Color', '@@text-domain' ),
-				'desc'      => __( 'Select a background color for the footer.', '@@text-domain' ),
-				'std'       => '#333333',
-				'type'      => 'color',
-				'class'     => 'hide receiver receiver-color receiver-texture',
-			),
-			'footer_bg_color_brightness' => array(
-				'id'        => 'footer_bg_color_brightness',
-				'name'      => __( 'Background Color Brightness', '@@text-domain' ),
-				'desc'      => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
-				'std'       => 'dark',
-				'type'      => 'radio',
-				'options'   => array(
-					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
-				),
-				'class'     => 'hide receiver receiver-color receiver-texture',
-			),
-			'footer_bg_color_opacity' => array(
-				'id'        => 'footer_bg_color_opacity',
-				'name'      => __( 'Background Color Opacity', '@@text-domain' ),
-				'desc'      => __( 'Select the opacity of the background color you chose.', '@@text-domain' ),
-				'std'       => '1',
-				'type'      => 'select',
-				'options'   => array(
-					'0.05'  => '5%',
-					'0.1'   => '10%',
-					'0.15'  => '15%',
-					'0.2'   => '20%',
-					'0.25'  => '25%',
-					'0.3'   => '30%',
-					'0.35'  => '35%',
-					'0.4'   => '40%',
-					'0.45'  => '45%',
-					'0.5'   => '50%',
-					'0.55'  => '55%',
-					'0.6'   => '60%',
-					'0.65'  => '65%',
-					'0.7'   => '70%',
-					'0.75'  => '75%',
-					'0.8'   => '80%',
-					'0.85'  => '85%',
-					'0.9'   => '90%',
-					'0.95'  => '95%',
-					'1'     => '100%',
-				),
-				'class'     => 'hide receiver receiver-color receiver-texture',
-			),
-			'sub_group_end_16' => array(
-				'id'        => 'sub_group_end_16',
-				'type'      => 'subgroup_end',
-			),
-			'sub_group_start_17' => array(
-				'id'        => 'sub_group_start_17',
-				'type'      => 'subgroup_start',
-				'class'     => 'show-hide',
-			),
-			'footer_apply_border_top' => array(
-				'id'        => 'footer_apply_border_top',
-				'name'      => null,
-				'desc'      => '<strong>' . __( 'Top Border', '@@text-domain' ) . '</strong>: ' . __( 'Apply top border to footer.', '@@text-domain' ),
-				'std'       => 0,
-				'type'      => 'checkbox',
-				'class'     => 'trigger',
-			),
-			'footer_border_top_color' => array(
-				'id'        => 'footer_border_top_color',
-				'name'      => __( 'Top Border Color', '@@text-domain' ),
-				'desc'      => __( 'Select a color for the top border.', '@@text-domain' ),
-				'std'       => '#181818',
-				'type'      => 'color',
-				'class'     => 'hide receiver',
-			),
-			'footer_border_top_width' => array(
-				'id'        => 'footer_border_top_width',
-				'name'      => __( 'Top Border Width', '@@text-domain' ),
-				'desc'      => __( 'Select a width in pixels for the top border.', '@@text-domain' ),
-				'std'       => '1px',
-				'type'      => 'slide',
-				'options'   => array(
-					'units'     => 'px',
-					'min'       => '1',
-					'max'       => '10',
-				),
-				'class'     => 'hide receiver',
-			),
-			'sub_group_end_17' => array(
-				'id'        => 'sub_group_end_17',
-				'type'      => 'subgroup_end',
-			),
-			'sub_group_start_19' => array(
-				'id'        => 'sub_group_start_19',
-				'type'      => 'subgroup_start',
-				'class'     => 'show-hide',
-			),
-			'footer_apply_border_bottom' => array(
-				'id'        => 'footer_apply_border_bottom',
-				'name'      => null,
-				'desc'      => '<strong>' . __( 'Bottom Border', '@@text-domain' ) . '</strong>: ' . __( 'Apply bottom border to footer.', '@@text-domain' ),
-				'std'       => 0,
-				'type'      => 'checkbox',
-				'class'     => 'trigger',
-			),
-			'footer_border_bottom_color' => array(
-				'id'        => 'footer_border_bottom_color',
-				'name'      => __( 'Bottom Border Color', '@@text-domain' ),
-				'desc'      => __( 'Select a color for the bottom border.', '@@text-domain' ),
-				'std'       => '#181818',
-				'type'      => 'color',
-				'class'     => 'hide receiver',
-			),
-			'footer_border_bottom_width' => array(
-				'id'        => 'footer_border_bottom_width',
-				'name'      => __( 'Bottom Border Width', '@@text-domain' ),
-				'desc'      => __( 'Select a width in pixels for the bottom border.', '@@text-domain' ),
-				'std'       => '1px',
-				'type'      => 'slide',
-				'options'   => array(
-					'units'     => 'px',
-					'min'       => '1',
-					'max'       => '10',
-				),
-				'class'     => 'hide receiver',
-			),
-			'sub_group_end_19' => array(
-				'id'        => 'sub_group_end_19',
-				'type'      => 'subgroup_end',
-			),
-		),
 		'buttons' => array(
 			'btn_default' => array(
 				'id'        => 'btn_default',
@@ -1238,6 +1033,30 @@ function jumpstart_ex_options() {
 	$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
 
 	/*
+	 * Add standard side panel options, shared across
+	 * all theme bases.
+	 */
+	$options['side'] = jumpstart_get_shared_options( 'side-panel', array(
+		'side_bg_color'            => '#222222',
+		'side_bg_color_brightness' => 'dark',
+	) );
+
+	/*
+	 * Add standard footer options, shared across all
+	 * theme bases.
+	 */
+	$options['footer'] = jumpstart_get_shared_options( 'footer', array(
+		'footer_apply_border_top'    => '1',
+		'footer_border_top_color'    => '#1e73be',
+		'footer_border_top_width'    => '7px',
+		'footer_bg_type'             => 'color',
+		'footer_bg_color_brightness' => 'light',
+		'footer_bg_color'            => '#ffffff',
+		'footer_bg_color_opacity'    => '1',
+		'copyright_apply_bg'         => '0',
+	) );
+
+	/*
 	 * Add standard typography options, with custom default
 	 * values for this theme base.
 	 */
@@ -1331,9 +1150,7 @@ function jumpstart_ex_options() {
 
 	themeblvd_add_option_section( 'styles', 'ex_menu',          __( 'Main Menu', '@@text-domain' ),       null, $options['menu'] );
 
-	themeblvd_add_option_section( 'styles', 'ex_menu_mobile',   __( 'Mobile Menu', '@@text-domain' ),     null, $options['menu_mobile'] );
-
-	themeblvd_add_option_section( 'styles', 'ex_side_panel',    __( 'Side Panel', '@@text-domain' ),      null, $options['side_panel'] );
+	themeblvd_add_option_section( 'styles', 'ex_side_panel',    __( 'Side Panel', '@@text-domain' ),      null, $options['side'] );
 
 	themeblvd_add_option_section( 'styles', 'ex_footer',        __( 'Footer', '@@text-domain' ),          null, $options['footer'] );
 

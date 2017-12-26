@@ -465,11 +465,11 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 				'class' => 'show-hide',
 			);
 
-			$options['footer_apply_copyright_bg'] = array(
-				'id'        => 'footer_apply_copyright_bg',
+			$options['copyright_apply_bg'] = array(
+				'id'        => 'copyright_apply_bg',
 				'name'      => null,
 				'desc'      => '<strong>' . __( 'Copyright Background Color', '@@text-domain' ) . '</strong>: ' . __( 'Apply background color to copyright area below footer columns.', '@@text-domain' ),
-				'std'       => 1,
+				'std'       => 0,
 				'type'      => 'checkbox',
 				'class'     => 'trigger',
 			);
@@ -504,6 +504,40 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 			break;
 
 		/*
+		 * Set up options for side panel and mobile
+		 * menu styling.
+		 */
+		case 'side-panel':
+			$options['side_info'] = array(
+				'id'   => 'side_info',
+				// translators: 1: link to WP Menus admin page
+				'desc' => sprintf( __( 'These options apply to your side panel that slides out from the side of your webste on desktop browsers, and the compiled menu that slides out on mobile devices. Note that for the side panel to show in desktop browsers, you must assign a menu to the "Primary Side Navigation" location at %s.', '@@text-domain' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', '@@text-domain' ) . '</a>' ),
+				'type' => 'info',
+			);
+
+			$options['side_bg_color'] = array(
+				'id'   => 'side_bg_color',
+				'name' => __( 'Background Color', '@@text-domain' ),
+				'desc' => __( 'Select a background color for the side panel.', '@@text-domain' ),
+				'std'  => '#000000',
+				'type' => 'color',
+			);
+
+			$options['side_bg_color_brightness'] = array(
+				'id'      => 'side_bg_color_brightness',
+				'name'    => __( 'Background Color Brightness', '@@text-domain' ),
+				'desc'    => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
+				'std'     => 'dark',
+				'type'    => 'radio',
+				'options' => array(
+					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
+					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
+				),
+			);
+
+			break;
+
+		/*
 		 * Set up options for Front Street branding
 		 * colors.
 		 */
@@ -528,5 +562,223 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 	}
 
 	return $options;
+
+}
+
+/**
+ * Get styles output for shared sections used in
+ * different theme bases.
+ *
+ * @since @@name-package 2.2.0
+ *
+ * @param  string $set    Type of option set to style, like `footer`.
+ * @return string $output CSS output used with wp_add_inline_style().
+ */
+function themeblvd_get_shared_style( $set ) {
+
+	$output = '';
+
+	switch ( $set ) {
+
+		/*
+		 * Style the side panel and mobile menu.
+		 */
+		case 'side-panel':
+			if ( themeblvd_do_side_panel() ) {
+
+				$output .= ".tb-side-panel,\n";
+
+			}
+
+			$output .= ".tb-mobile-menu-wrapper {\n";
+
+			$output .= sprintf(
+				"\tbackground-color: %s;\n",
+				esc_attr( themeblvd_get_option( 'side_bg_color' ) )
+			);
+
+			$output .= "}\n";
+
+			break;
+
+		/*
+		 * Style the website footer.
+		 */
+		case 'footer':
+			$args = array(
+				'bg_type'          => themeblvd_get_option( 'footer_bg_type' ),
+				'bg_color'         => themeblvd_get_option( 'footer_bg_color' ),
+				'bg_color_opacity' => themeblvd_get_option( 'footer_bg_color_opacity' ),
+				'bg_texture'       => themeblvd_get_option( 'footer_bg_texture' ),
+				'bg_image'         => themeblvd_get_option( 'footer_bg_image' ),
+				'apply_border_top' => themeblvd_get_option( 'footer_apply_border_top' ),
+				'border_top_color' => themeblvd_get_option( 'footer_border_top_color' ),
+				'border_top_width' => themeblvd_get_option( 'footer_border_top_width' ),
+			);
+
+			$styles = themeblvd_get_display_inline_style( $args, 'external' );
+
+			if ( ! empty( $styles['general'] ) ) {
+
+				$output .= ".site-footer {\n";
+
+				foreach ( $styles['general'] as $prop => $value ) {
+
+					$prop = str_replace( '-2', '', $prop );
+
+					$output .= sprintf( "\t%s: %s;\n", esc_attr( $prop ), esc_attr( $value ) );
+
+				}
+
+				$output .= "}\n";
+
+			}
+
+			if ( themeblvd_get_option( 'copyright_apply_bg' ) ) {
+
+				$output .= ".site-copyright {\n";
+
+				$output .= sprintf(
+					"\tbackground-color: %s;\n",
+					esc_attr( themeblvd_get_option( 'copyright_bg_color' ) )
+				);
+
+				$output .= "}\n";
+
+			}
+	}
+
+	return $output;
+
+}
+
+/**
+ * Add CSS classes to side panel and mobile menu.
+ *
+ * @since @@name-package 2.1.0
+ *
+ * @param  array $class CSS classes being added.
+ * @return array $class Modified CSS classes being added.
+ */
+function jumpstart_side_panel_class( $class ) {
+
+	$class[] = themeblvd_get_option( 'side_bg_color_brightness' );
+
+	return $class;
+
+}
+
+/**
+ * Add CSS classes to footer.
+ *
+ * @since @@name-package 2.2.0
+ *
+ * @param  array $class CSS classes being added.
+ * @return array $class Modified CSS classes being added.
+ */
+function jumpstart_footer_class( $class ) {
+
+	$bg_type = themeblvd_get_option( 'footer_bg_type' );
+
+	if ( $bg_type && 'none' !== $bg_type ) {
+
+		$class[] = themeblvd_get_option( 'footer_bg_color_brightness' );
+
+		if ( themeblvd_get_option( 'copyright_apply_bg' ) ) {
+
+			$class[] = 'copyright-' . themeblvd_get_option( 'copyright_bg_color_brightness' );
+
+		} else {
+
+			$class[] = 'copyright-' . themeblvd_get_option( 'footer_bg_color_brightness' );
+
+		}
+
+		$class[] = 'has-bg';
+
+	}
+
+	return $class;
+
+}
+
+/**
+ * Add CSS classes to site copyright at the
+ * bottom of the footer.
+ *
+ * @since @@name-package 2.2.0
+ *
+ * @param  array $class CSS classes being added.
+ * @return array $class Modified CSS classes being added.
+ */
+function jumpstart_copyright_class( $class ) {
+
+	if ( themeblvd_get_option( 'copyright_apply_bg' ) ) {
+
+		$class[] = 'has-bg';
+
+	}
+
+	return $class;
+
+}
+
+/**
+ * Adjust the style of the side panel contact
+ * bar.
+ *
+ * To use, filter onto:
+ * `themeblvd_panel_contact_bar_args`
+ *
+ * @since @@name-package 2.2.0
+ *
+ * @param  array $args Arguments to pass to themeblvd_contact_bar().
+ * @return array $args Modified arguments to pass to themeblvd_contact_bar().
+ */
+function jumpstart_panel_contact_bar_args( $args ) {
+
+	if ( 'light' === themeblvd_get_option( 'side_bg_color_brightness' ) ) {
+
+		$args['style'] = 'dark';
+
+	}
+
+	if ( ! themeblvd_get_option( 'social_header' ) ) {
+
+		$args['class'] = 'to-mobile';
+
+	}
+
+	return $args;
+
+}
+
+/**
+ * Adjust the style of the copyright contact bar.
+ *
+ * To use, filter onto:
+ * `themeblvd_copyright_contact_bar_args`
+ *
+ * @since @@name-package 2.2.0
+ *
+ * @param  array $args Arguments to pass to themeblvd_contact_bar().
+ * @return array $args Modified arguments to pass to themeblvd_contact_bar().
+ */
+function jumpstart_copyright_contact_bar_args( $args ) {
+
+	if ( themeblvd_get_option( 'copyright_apply_bg' ) ) {
+
+		if ( 'dark' === themeblvd_get_option( 'copyright_bg_color_brightness' ) ) {
+
+			$args['style'] = 'light';
+
+		}
+	} else if ( 'dark' === themeblvd_get_option( 'footer_bg_color_brightness' ) ) {
+
+		$args['style'] = 'light';
+
+	}
+
+	return $args;
 
 }

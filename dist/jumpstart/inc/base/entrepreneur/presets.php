@@ -113,16 +113,14 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 				'menu_text_shadow'                  => '0',
 				'menu_sub_bg_color'                 => $val[2],
 				'menu_sub_bg_color_brightness'      => 'dark',
-				'menu_mobile_bg_color'              => $val[2],
-				'menu_mobile_bg_color_brightness'   => 'dark',
 				'side_bg_color'                     => $val[2],
 				'side_bg_color_brightness'          => 'dark',
+				'footer_apply_border_top'           => '0',
 				'footer_bg_type'                    => 'color',
 				'footer_bg_color'                   => $val[2],
 				'footer_bg_color_brightness'        => 'dark',
 				'footer_bg_color_opacity'           => '1',
-				'footer_apply_border_top'           => '0',
-				'footer_apply_border_bottom'        => '0',
+				'copyright_apply_bg'                => '0',
 				'searchform'                        => 'show',
 				'social_media_style'                => 'light',
 				'highlight'                         => $val[1],
@@ -188,8 +186,6 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 						$settings['menu_highlight'] = '#333333';
 
 						$settings['menu_sub_bg_color_brightness'] = 'light';
-
-						$settings['menu_mobile_bg_color'] = '#222222';
 
 						$settings['side_bg_color'] = '#222222';
 
@@ -282,8 +278,6 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 
 						$settings['menu_sub_bg_color_brightness'] = 'light';
 
-						$settings['menu_mobile_bg_color'] = '#222222';
-
 						$settings['side_bg_color'] = '#222222';
 
 						$settings['footer_bg_color_brightness'] = 'light';
@@ -361,8 +355,6 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
 
-						$settings['menu_mobile_bg_color'] = '#1b1b1b';
-
 						$settings['side_bg_color'] = '#1b1b1b';
 
 						$settings['footer_bg_color'] = '#1b1b1b';
@@ -424,8 +416,6 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
 
 						$settings['menu_sub_bg_color'] = '#1b1b1b';
-
-						$settings['menu_mobile_bg_color'] = '#1b1b1b';
 
 						$settings['side_bg_color'] = '#1b1b1b';
 

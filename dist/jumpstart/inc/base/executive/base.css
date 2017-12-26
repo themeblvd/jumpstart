@@ -343,6 +343,56 @@ Author URI: http://www.themeblvd.com
 	color: rgba(26,26,26,.25);
 }
 
+/* =Bottom
+----------------------------------------------- */
+
+.site-footer.dark {
+	color: rgba(255,255,255,0.9);
+}
+.site-footer.dark h1,
+.site-footer.dark h2,
+.site-footer.dark h3,
+.site-footer.dark h4,
+.site-footer.dark h5,
+.site-footer.dark h6 {
+	color: rgba(255,255,255,0.9);
+}
+
+/* Copyright */
+.site-footer.copyright-dark .site-copyright {
+	color: rgba(255,255,255,0.5);
+}
+.site-footer.copyright-light .site-copyright {
+	color: rgba(34,34,34,0.5);
+}
+.site-footer .site-copyright.has-bg > .wrap {
+	padding-top: 40px;
+}
+.site-footer .site-copyright a {
+	color: inherit;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+	padding-bottom: 1px;
+}
+.site-footer.copyright-light .site-copyright a {
+	border-color: rgba(34,34,34,0.5);
+}
+.site-footer .site-copyright a:hover,
+.site-footer .site-copyright a:focus {
+	border-color: rgba(255,255,255,.8);
+	color: rgba(255,255,255,0.8);
+}
+.site-footer.copyright-light .site-copyright a:hover,
+.site-footer.copyright-light .site-copyright a:focus {
+	border-color: rgba(34,34,34,.8);
+	color: rgba(34,34,34,0.8);
+}
+.site-footer .site-copyright .tb-social-icons.light > li > a,
+.site-footer .site-copyright .tb-social-icons.grey > li > a,
+.site-footer .site-copyright .tb-social-icons.dark > li > a {
+	border: none;
+	font-size: 20px;
+}
+
 /* =Boxed Layout
 -----------------------------------------------*/
 

@@ -72,6 +72,8 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 			return;
 		}
 
+		$do_icons = themeblvd_get_option( 'social_header' );
+
 		$icons = themeblvd_get_option( 'social_media' );
 
 		?>
@@ -81,7 +83,7 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 
 				<?php themeblvd_header_text(); ?>
 
-				<?php if ( themeblvd_do_side_panel() || themeblvd_get_option( 'searchform' ) == 'show' || themeblvd_do_cart() || $icons || themeblvd_do_lang_selector() ) : ?>
+				<?php if ( themeblvd_do_side_panel() || 'show' === themeblvd_get_option( 'searchform' ) || themeblvd_do_cart() || ( $icons && $do_icons ) || themeblvd_do_lang_selector() ) : ?>
 
 					<ul class="header-top-nav list-unstyled">
 
@@ -109,7 +111,7 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 
 						<?php endif; ?>
 
-						<?php if ( $icons ) : ?>
+						<?php if ( $icons && $do_icons ) : ?>
 
 							<li class="top-icons">
 								<?php
@@ -847,48 +849,60 @@ if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 	 */
 	function themeblvd_footer_sub_content_default() {
 
-		$class = 'footer-sub-content';
-
-		if ( has_nav_menu( 'footer' ) ) {
-			$class .= ' has-nav';
-		}
+		$menu = themeblvd_get_wp_nav_menu_args( 'footer' );
 
 		?>
-		<div class="<?php echo $class; ?>">
+		<div <?php themeblvd_copyright_class(); ?>>
 
 			<div class="wrap clearfix">
 
+				<?php if ( themeblvd_get_option( 'social_footer' ) ) : ?>
+
+					<?php
+					/**
+					 * Filters the arguments used for the footer
+					 * copyright contact bar.
+					 *
+					 * @since Theme_Blvd 2.7.0
+					 *
+					 * @param array Arguments passed to themeblvd_get_contact_bar().
+					 */
+					$args = apply_filters(
+						'themeblvd_copyright_contact_bar_args',
+						array(
+							'tooltip' => 'top',
+							'style'   => 'dark',
+						)
+					);
+					?>
+
+					<?php echo themeblvd_get_contact_bar( null, $args ); ?>
+
+				<?php endif; ?>
+
 				<div class="copyright">
 
-					<div class="copyright-inner">
-
-						<?php
-						/**
-						 * Filters the footer copyright text.
-						 *
-						 * @since Theme_Blvd 2.0.0
-						 *
-						 * @param string $output Final HTML output.
-						 */
-						echo apply_filters(
-							'themeblvd_footer_copyright',
-							themeblvd_get_content( themeblvd_get_option( 'footer_copyright' ) )
-						);
-						?>
-
-					</div>
+					<?php
+					/**
+					 * Filters the footer copyright text.
+					 *
+					 * @since Theme_Blvd 2.0.0
+					 *
+					 * @param string $output Final HTML output.
+					 */
+					echo apply_filters(
+						'themeblvd_footer_copyright',
+						themeblvd_get_content( themeblvd_get_option( 'footer_copyright' ) )
+					);
+					?>
 
 				</div><!-- .copyright (end) -->
 
-				<?php if ( has_nav_menu( 'footer' ) ) : ?>
+				<?php if ( has_nav_menu( $menu['theme_location'] ) ) : ?>
 
 					<div class="footer-nav">
 
-						<div class="footer-nav-inner">
-
-							<?php wp_nav_menu( themeblvd_get_wp_nav_menu_args( 'footer' ) ); ?>
-
-						</div>
+						<?php wp_nav_menu( $menu ); ?>
 
 					</div><!-- .footer-nav (end) -->
 
@@ -896,7 +910,7 @@ if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 
 			</div><!-- .wrap (end) -->
 
-		</div><!-- .footer-sub-content (end) -->
+		</div><!-- .site-copyright (end) -->
 		<?php
 
 	}
@@ -949,6 +963,7 @@ if ( ! function_exists( 'themeblvd_side_panel' ) ) {
 				 *
 				 * @hooked themeblvd_side_panel_menu - 10
 				 * @hooked themeblvd_side_panel_sub_menu - 20
+				 * @hooked themeblvd_side_panel_contact - 30
 				 *
 				 * @since Theme_Blvd 2.6.0
 				 */
@@ -995,6 +1010,44 @@ if ( ! function_exists( 'themeblvd_side_panel_sub_menu' ) ) {
 	function themeblvd_side_panel_sub_menu() {
 
 		wp_nav_menu( themeblvd_get_wp_nav_menu_args( 'side_sub' ) );
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_side_panel_contact' ) ) {
+
+	/**
+	 * Display the contact icons in the side panel,
+	 * when enabled from the theme options.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_side_panel` - 30
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_side_panel_contact() {
+
+		if ( themeblvd_get_option( 'social_panel' ) ) {
+
+			/**
+			 * Filters the arguments used for the side
+			 * panel contact bar.
+			 *
+			 * @since Theme_Blvd 2.7.0
+			 *
+			 * @param array Arguments passed to themeblvd_get_contact_bar().
+			 */
+			$args = apply_filters(
+				'themeblvd_panel_contact_bar_args',
+				array(
+					'tooltip' => false,
+					'style'   => 'light',
+				)
+			);
+
+			echo themeblvd_get_contact_bar( null, $args );
+
+		}
 
 	}
 }

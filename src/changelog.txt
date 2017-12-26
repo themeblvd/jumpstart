@@ -6,8 +6,15 @@ Jump Start Changelog
 
 * **Important General Notes:**
 	* If icons you've implemented are not showing up, [take a look here](https://fontawesome.com/how-to-use/upgrading-from-4#icon-name-changes-complete-list) to make sure you're not using FontAwesome icon names that they changed in v5.
-	* Make sure to setup the new options at *Appearance > Theme Options > Styles > Mobile Header* (if not using the Developer theme base).
-	* With this theme update, you must also update the following plugins, if you're using any of them:
+	* The following sections at *Appearance > Theme Options* have been added or modified. Make sure to double check these options are set up the way you want after updating.
+		* *Styles > Mobile Header* (All theme bases, except Developer)
+		* *Styles > Footer* -- All theme bases, except Developer.
+		* *Layout > Contact* -- All theme bases, except Agent.
+		* *Content > General* -- All theme bases.
+		* *Plugins > bbPress* -- All theme bases, if using bbPress plugin.
+		* *Plugins > Gravity Forms* -- All theme bases, if using Gravity Forms plugin.
+		* *Plugins > WooCommerce* -- All theme bases, if using WooCommerce plugin.
+	* With this theme update, you must also update the following plugins, if you're using any of them.
 		* Theme Blvd Layout Builder to 2.2+.
 		* Theme Blvd Widget Areas to 1.3+.
 		* Theme Blvd Shortcodes to 1.6+.
@@ -19,6 +26,7 @@ Jump Start Changelog
 	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
 	* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
 
+* **Full List of Changes:**
 * New: Theme Code Overhaul
 	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
@@ -65,7 +73,9 @@ Jump Start Changelog
 * New: Added "Custom Font" selection to typography options; this allows you to use custom fonts with the theme, that you've included yourself through customization or a third-party plugin.
 * New: Added "Small Header Font" option at *Appearance > Theme Options > Styles > Typography*, to Super User, Executive and Entrepreneur theme bases (like Agent base already has).
 * New: Added new suggested plugin manager; this swaps TGMPA for [My Plugin Manager](http://mypluginmanager.com).
+* New: Added options section at *Appearance > Theme Options > Layout > Contact* for Developer, Super User, Executive and Entrepreneur bases; your social media contact icons are no longer directly associated with the website header, but can be displayed in different locations.
 * Improvement: Mobile header styling is now applied consistently at 991px and below to ease the transition from desktop to mobile, and generally simplify styling.
+* Improvement: Footer design and user options have now been standardized across all theme bases; for all theme bases except Developer, see modified options at *Appearance > Theme Options > Styles > Footer*.
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Improvement: On all theme bases, if no "Primary Navigation" menu is assigned, menu will not display (previously, only the Agent base behaved like this).
 * Improvement: Collapsible widget area locations no longer have the word "Ads" in their titles.
@@ -75,6 +85,7 @@ Jump Start Changelog
 * Improvement: Admin code editors now use WordPress's implementation of CodeMirror editor with coding help and error hints, introduced in WordPress 4.9.
 * Improvement: New styling for the "Tweet" element added to the layout builder from the [Tweeple plugin](https://wordpress.org/plugins/tweeple).
 * Improvement: There is now only one Post Slider and Simple Slider element; apply the "Popout" display option to these elements to achieve the full-width versions, which now display inline images.
+* Improvement: For simplification, side panel background color and mobile menu background color options on Super User, Executive and Entrepreneur theme bases have been combined into one option; this was already the case on the Agent theme base.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
 * Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.
@@ -165,6 +176,7 @@ Jump Start Changelog
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.7**
+
 * Fixed: WooCommerce floating shopping cart "View Cart" and "Checkout" buttons not lining up.
 * Fixed: WooCommerce cross-sells not showing when enabled from Theme Options (and using WooCommerce 3.0+).
 * Fixed: On Entrepreneur base, when selecting Title + Tagline for logo display in theme options, tagline wasn't displaying.

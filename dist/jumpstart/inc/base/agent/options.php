@@ -155,76 +155,6 @@ function jumpstart_ag_options() {
 				'type'     => 'checkbox',
 			),
 		),
-		'footer' => array(
-			'footer_info' => array(
-				'id'       => 'footer_info',
-				// translators: 1: link to WP Menus admin page
-				'desc'     => sprintf( __( 'These options apply to the footer of your website. Note that for the footer menu to show in the copyright area, you must assign a menu to the "Footer Navigation" location at %s.', 'jumpstart' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', 'jumpstart' ) . '</a>' ),
-				'type'     => 'info',
-			),
-			'footer_bg_color' => array(
-				'id'       => 'footer_bg_color',
-				'name'     => __( 'Footer Background Color', 'jumpstart' ),
-				'desc'     => __( 'Select a background color for the footer columns.', 'jumpstart' ),
-				'std'      => '#222222',
-				'type'     => 'color',
-			),
-			'footer_bg_color_brightness' => array(
-				'id'       => 'footer_bg_color_brightness',
-				'name'     => __( 'Footer Background Color Brightness', 'jumpstart' ),
-				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
-				'std'      => 'dark',
-				'type'     => 'radio',
-				'options'  => array(
-					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
-				),
-			),
-			'copyright_bg_color' => array(
-				'id'       => 'copyright_bg_color',
-				'name'     => __( 'Copyright Background Color', 'jumpstart' ),
-				'desc'     => __( 'Select a background color for the copyright area below the footer columns.', 'jumpstart' ),
-				'std'      => '#1b1b1b',
-				'type'     => 'color',
-			),
-			'copyright_bg_color_brightness' => array(
-				'id'       => 'copyright_bg_color_brightness',
-				'name'     => __( 'Copyright Background Color Brightness', 'jumpstart' ),
-				'desc'     => __( 'If you\'re using a dark background color, select to show light text, and vice versa.', 'jumpstart' ),
-				'std'      => 'dark',
-				'type'     => 'radio',
-				'options'  => array(
-					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
-				),
-			),
-		),
-		'side' => array(
-			'side_info' => array(
-				'id'       => 'side_info',
-				// translators: 1: link to WP Menus admin page
-				'desc'     => sprintf( __( 'These options apply to your side panel that slides out from the side of your webste on desktop browsers, and the compiled menu that slides out on mobile devices. Note that for the side panel to show in desktop browsers, you must assign a menu to the "Primary Side Navigation" location at %s.', 'jumpstart' ), '<a href="nav-menus.php" target="_blank">' . __( 'Appearance > Menus', 'jumpstart' ) . '</a>' ),
-				'type'     => 'info',
-			),
-			'side_bg_color' => array(
-				'id'       => 'side_bg_color',
-				'name'     => __( 'Background Color', 'jumpstart' ),
-				'desc'     => __( 'Select a background color for the side panel.', 'jumpstart' ),
-				'std'      => '#1b1b1b',
-				'type'     => 'color',
-			),
-			'side_bg_color_brightness' => array(
-				'id'       => 'side_bg_color_brightness',
-				'name'     => __( 'Background Color Brightness', 'jumpstart' ),
-				'desc'     => __( 'In the previous option, did you go dark or light?', 'jumpstart' ),
-				'std'      => 'dark',
-				'type'     => 'radio',
-				'options'  => array(
-					'light' => __( 'I chose a light color in the previous option.', 'jumpstart' ),
-					'dark'  => __( 'I chose a dark color in the previous option.', 'jumpstart' ),
-				),
-			),
-		),
 		'widgets' => array(
 			'widget_info' => array(
 				'id'       => 'widget_info',
@@ -286,6 +216,30 @@ function jumpstart_ag_options() {
 	 * all theme bases.
 	 */
 	$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
+
+	/*
+	 * Add standard side panel options, shared across
+	 * all theme bases.
+	 */
+	$options['side'] = jumpstart_get_shared_options( 'side-panel', array(
+		'side_bg_color'            => '#1b1b1b',
+		'side_bg_color_brightness' => 'dark',
+	) );
+
+	/*
+	 * Add standard footer options, shared across all
+	 * theme bases.
+	 */
+	$options['footer'] = jumpstart_get_shared_options( 'footer', array(
+		'footer_apply_border_top'       => '0',
+		'footer_bg_type'                => 'color',
+		'footer_bg_color_brightness'    => 'dark',
+		'footer_bg_color'               => '#222222',
+		'footer_bg_color_opacity'       => '1',
+		'copyright_apply_bg'            => '1',
+		'copyright_bg_color'            => '#1b1b1b',
+		'copyright_bg_color_brightness' => 'dark',
+	) );
 
 	/*
 	 * Add standard typography options, with custom default
@@ -401,11 +355,11 @@ function jumpstart_ag_options() {
 	// Remove options.
 	themeblvd_remove_option( 'layout', 'header', 'header_text' );
 
-	themeblvd_remove_option( 'layout', 'header', 'social_media' );
-
 	themeblvd_remove_option( 'layout', 'header', 'social_media_style' );
 
 	themeblvd_remove_option( 'layout', 'header_trans', 'trans_social_media_style' );
+
+	themeblvd_remove_option( 'layout', 'contact', 'social_header' );
 
 	// Set default logos.
 	themeblvd_edit_option( 'layout', 'header', 'logo', 'std', array(
@@ -428,56 +382,6 @@ function jumpstart_ag_options() {
 	themeblvd_edit_option( 'content', 'general', 'fw_narrow', 'std', '1' );
 
 	themeblvd_edit_option( 'content', 'general', 'img_popout', 'std', '1' );
-
-	// Add Layout > Contact.
-	themeblvd_add_option_section( 'layout', 'contact', __( 'Contact', 'jumpstart' ), null, array(
-		'social_media' => array(
-			'id'       => 'social_media',
-			'name'     => __( 'Contact Buttons', 'jumpstart' ),
-			'desc'     => __( 'Configure the contact and social media buttons you\'d like to use.', 'jumpstart' ),
-			'type'     => 'social_media',
-			'std'      => array(
-				'item_1' => array(
-					'icon'   => 'facebook',
-					'url'    => 'http://facebook.com/jasonbobich',
-					'label'  => 'Facebook',
-					'target' => '_blank',
-				),
-				'item_2' => array(
-					'icon'   => 'google',
-					'url'    => 'https://plus.google.com/116531311472104544767/posts',
-					'label'  => 'Google+',
-					'target' => '_blank',
-				),
-				'item_3' => array(
-					'icon'   => 'twitter',
-					'url'    => 'http://twitter.com/jasonbobich',
-					'label'  => 'Twitter',
-					'target' => '_blank',
-				),
-				'item_4' => array(
-					'icon'   => 'rss',
-					'url'    => get_feed_link(),
-					'label'  => 'RSS Feed',
-					'target' => '_blank',
-				),
-			),
-		),
-		'social_panel' => array(
-			'id'       => 'social_panel',
-			'name'     => null,
-			'desc'     => __( 'Display contact buttons in side menu panel.', 'jumpstart' ),
-			'std'      => '1',
-			'type'     => 'checkbox',
-		),
-		'social_footer' => array(
-			'id'       => 'social_footer',
-			'name'     => null,
-			'desc'     => __( 'Display contact buttons in footer.', 'jumpstart' ),
-			'std'      => '1',
-			'type'     => 'checkbox',
-		),
-	));
 
 	// Change default sidebar layout to full width for single posts and pages.
 	themeblvd_edit_option( 'layout', 'sidebar_layouts', 'single_sidebar_layout', 'std', 'full_width' );

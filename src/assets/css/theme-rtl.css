@@ -80,7 +80,8 @@ body {
 .site-inner > .wrap,
 .element-section > .element,
 .element.popout .jumbotron-wrap,
-.site-footer > .wrap,
+.footer-content > .wrap,
+.site-copyright > .wrap,
 .tb-fw-narrow .element-section > .element-blog,
 .tb-fw-narrow .element-section > .element-post_list,
 .tb-fw-narrow .element-section > .element-current {
@@ -106,7 +107,8 @@ body {
 	.site-inner > .wrap,
 	.element-section > .element,
 	.element.popout .jumbotron-wrap,
-	.site-footer > .wrap {
+	.footer-content > .wrap,
+	.site-copyright > .wrap {
 		max-width: 940px;
 	}
 	.tb-fw-narrow #container > .site-breadcrumbs > .wrap,
@@ -127,7 +129,8 @@ body {
 	.site-inner > .wrap,
 	.element-section > .element,
 	.element.popout .jumbotron-wrap,
-	.site-footer > .wrap,
+	.footer-content > .wrap,
+	.site-copyright > .wrap,
 	.tb-fw-narrow #container > .site-breadcrumbs > .wrap,
 	.tb-fw-narrow .site-inner > .wrap,
 	.tb-fw-narrow .element-section > .element-blog,
@@ -145,25 +148,28 @@ body {
 	.site-inner > .wrap,
 	.element-section > .element,
 	.element.popout .jumbotron-wrap,
-	.site-footer > .wrap,
+	.footer-content > .wrap,
+	.site-copyright > .wrap,
 	.epic-thumb .epic-thumb-header,
 	.epic-thumb .epic-thumb-quote {
 		max-width: 480px;
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+	.footer-content > .wrap,
+	.site-copyright > .wrap,
 	.epic-thumb .epic-thumb-header,
 	.epic-thumb .epic-thumb-quote {
-		padding-left: 30px;
-		padding-right: 30px;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	.element-section > .element {
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 	.element.popout .jumbotron-wrap {
 		padding-left: 0;
 		padding-right: 0;
-	}
-	.site-footer > .wrap {
-		padding-left: 30px;
-		padding-right: 30px;
 	}
 }
 
@@ -589,6 +595,16 @@ body {
     -webkit-transform: translate(-50%,-50%) rotate(0);
     transform: translate(-50%,-50%) rotate(0);
 }
+.tb-side-panel .tb-social-icons > li {
+	padding: 1px 0 1px 8px;
+}
+.tb-side-panel .tb-social-icons > li:last-child {
+	padding: 1px 0;
+}
+.tb-side-panel .tb-social-icons > li > a {
+	font-size: 16px;
+	line-height: 1;
+}
 
 /* Mobile Panel */
 .tb-mobile-menu-wrapper {
@@ -700,7 +716,7 @@ body {
 .site-header.transparent .header-nav .tb-primary-menu > li.highlight,
 .tb-sticky-menu .tb-primary-menu > li.highlight,
 .tb-side-panel li.highlight,
-.tb-mobile-menu li.highlight {
+.tb-mobile-menu-wrapper li.highlight {
 	background-color: transparent;
 }
 .site-header .tb-primary-menu > li.highlight > a,
@@ -815,31 +831,67 @@ body {
 
 .site-footer {
 	font-size: 14px;
-	padding: 30px 0;
 }
-.footer-content {
-	padding: 20px 0 40px 0;
+
+/* Footer Columns */
+.footer-content > .wrap > .row {
+	padding: 50px 0 0 0;
 }
-.footer-content .entry-content > p:last-child {
+.footer-content > .wrap > .row > .col {
+	margin-bottom: 50px;
+}
+@media (min-width:1200px) { /* Widen column gutters on large screens. */
+	.footer-content > .wrap > .row {
+		margin-right: -25px !important;
+		margin-left: -25px !important;
+	}
+	.footer-content > .wrap > .row > .col {
+		padding-right: 25px;
+		padding-left: 25px;
+	}
+}
+.footer-content .entry-content p {
+	margin: 0 0 20px 0;
+}
+.footer-content .entry-content p:last-child {
 	margin-bottom: 0;
 }
-@media (max-width: 991px) {
-	.footer-content .col {
-		margin-bottom: 30px;
-	}
-	.footer-content .col:last-child {
-		margin-bottom: 0;
-	}
-}
-.footer-sub-content {
-	font-size: 12px;
+.footer-content p > .svg-inline--fa {
+	margin-left: 5px;
+	width: 1.28571429em;
 	text-align: center;
 }
-.footer-sub-content p {
-	margin-bottom: 10px;
+
+/* Copyright */
+.site-copyright {
+	font-size: 13px;
+	text-align: center;
 }
-.footer-sub-content ul {
+.site-copyright > .wrap {
+	padding: 0 30px 40px 30px;
+}
+.site-copyright .copyright {
+	margin-bottom: 5px;
+}
+.site-copyright .tb-social-icons {
+	margin: 5px 0 25px 0;
+}
+.site-copyright .tb-social-icons > li {
+	padding: 1px 1px 1px 5px;
+}
+.site-copyright .tb-social-icons > li > a {
+	font-size: 22px;
+	padding: 0 5px;
+}
+.site-copyright p {
 	margin: 0;
+}
+.site-copyright ul {
+	margin: 0;
+}
+.site-copyright .tb-social-icons > li {
+	display: inline-block;
+	float: none;
 }
 
 /* =Layouts
