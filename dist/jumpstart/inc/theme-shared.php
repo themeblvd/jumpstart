@@ -581,6 +581,74 @@ function themeblvd_get_shared_style( $set ) {
 	switch ( $set ) {
 
 		/*
+		 * Style the mobile header.
+		 */
+		case 'mobile-header':
+			$output .= "@media (max-width: 991px) {\n";
+
+			$output .= "\t.site-header {\n";
+
+			$output .= sprintf(
+				"\t\tbackground-color: %s;\n",
+				esc_attr( themeblvd_get_option( 'header_mobile_bg_color' ) )
+			);
+
+			$output .= "\t}\n";
+
+			$output .= "\t.header-content > .wrap {\n";
+
+			$output .= sprintf(
+				"\t\theight: %s;\n",
+				esc_attr( themeblvd_get_option( 'header_mobile_height' ) )
+			);
+
+			$output .= "\t}\n";
+
+			$output .= "\t.header-logo img {\n";
+
+			$output .= sprintf(
+				"\t\tmax-height: %s;\n",
+				esc_attr( themeblvd_get_option( 'header_mobile_height' ) )
+			);
+
+			$output .= "\t}\n";
+
+			$icon_color = themeblvd_get_option( 'header_mobile_icon_color' );
+
+			$output .= "\t.site-header .mobile-nav > li > a {\n";
+
+			$output .= sprintf(
+				"\t\tcolor: %s;\n",
+				esc_attr( themeblvd_get_rgb( $icon_color, '0.7' ) )
+			);
+
+			$output .= "\t}\n";
+
+			$output .= "\t.site-header .mobile-nav > li > a:hover {\n";
+
+			$output .= sprintf( "\t\tcolor: %s;\n", esc_attr( $icon_color ) );
+
+			$output .= "\t}\n";
+
+			$output .= "\t.site-header .tb-nav-trigger .hamburger span {\n";
+
+			$output .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( themeblvd_get_rgb( $icon_color, '0.7' ) ) );
+
+			$output .= "\t}\n";
+
+			$output .= "\t.site-header .tb-nav-trigger:hover .hamburger span,\n";
+
+			$output .= "\t.site-header .tb-nav-trigger.collapse .hamburger span {\n";
+
+			$output .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( $icon_color ) );
+
+			$output .= "\t}\n";
+
+			$output .= "}\n";
+
+			break;
+
+		/*
 		 * Style the side panel and mobile menu.
 		 */
 		case 'side-panel':
