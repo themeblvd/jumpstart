@@ -74,6 +74,14 @@ class Theme_Blvd_Compat_Subtitles {
 		 */
 		add_action( 'themeblvd_single_footer', array( $this, 'single_footer' ) );
 
+		/*
+		 * Add subtitles to post showcases.
+		 *
+		 * The subititle will replace the taxonomy terms output
+		 * below the title when a featured image is hovered on.
+		 */
+		add_filter( 'themeblvd_item_info_subtitle', array( $this, 'item_info_subtitle' ), 10, 2 );
+
 	}
 
 	/**
@@ -113,6 +121,37 @@ class Theme_Blvd_Compat_Subtitles {
 	public function single_footer() {
 
 		add_filter( 'subtitle_view_supported', '__return_false' );
+
+	}
+
+	/**
+	 * Display the subititle with post showcase
+	 * featured images.
+	 *
+	 * This method is filtered onto:
+	 * `themeblvd_item_info_subtitle` - 10
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param  string $input   HTML output for item subtitle.
+	 * @param  int    $post_id Post ID.
+	 * @return string $output  Modified HTML output for item subtitle.
+	 */
+	public function item_info_subtitle( $input, $post_id ) {
+
+		$subtitle = get_the_subtitle( $post_id );
+
+		if ( $subtitle ) {
+
+			$output = $subtitle;
+
+		} else {
+
+			$output = $input;
+
+		}
+
+		return $output;
 
 	}
 

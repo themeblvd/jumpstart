@@ -868,40 +868,43 @@ function themeblvd_get_item_info( $post_id = 0, $tax = '' ) {
 	 */
 	$tax = apply_filters( 'themeblvd_item_info_tax', $tax, $post_type, $post_id );
 
-	$terms_obj = get_the_terms( $post_id, $tax );
+	/**
+	 * Filters the subtitle used in the item info.
+	 *
+	 * Note: By default the item info is used for
+	 * displaying information about a post when
+	 * the featured image is hovered on in a post
+	 * showcase.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string            Subtitle text to display below title.
+	 * @param int    $post_id   ID of current post.
+	 * @param string $post_type Post typ of current post.
+	 * @param string $tax       Taxonomy originally used to pull terms from.
+	 */
+	$subtitle = apply_filters( 'themeblvd_item_info_subtitle', '', $post_id, $post_type, $tax );
 
-	if ( $terms_obj ) {
+	if ( ! $subtitle ) {
 
-		$terms = array();
+		$terms_obj = get_the_terms( $post_id, $tax );
 
-		foreach ( $terms_obj as $term ) {
+		if ( $terms_obj ) {
 
-			$terms[] = $term->name;
+			$terms = array();
+
+			foreach ( $terms_obj as $term ) {
+
+				$terms[] = $term->name;
+
+			}
+
+			$subtitle = esc_html( implode( $terms, ', ' ) );
 
 		}
-
-		$subtitle = esc_html( implode( $terms, ', ' ) );
-
-		/**
-		 * Filters the subtitle used in the item info.
-		 *
-		 * Note: By default the item info is used for
-		 * displaying information about a post when
-		 * the featured image is hovered on in a post
-		 * showcase.
-		 *
-		 * @since Theme_Blvd 2.7.0
-		 *
-		 * @param string $subtitle  Subtitle text to display below title.
-		 * @param int    $post_id   ID of current post.
-		 * @param string $post_type Post typ of current post.
-		 * @param string $tax       Taxonomy originally used to pull terms from.
-		 */
-		$subtitle = apply_filters( 'themeblvd_item_info_subtitle', $subtitle, $post_id, $post_type, $tax );
-
-		$output .= sprintf( '<span class="cat">%s</span>', $subtitle );
-
 	}
+
+	$output .= sprintf( '<span class="cat">%s</span>', $subtitle );
 
 	$output .= '</span>';
 
