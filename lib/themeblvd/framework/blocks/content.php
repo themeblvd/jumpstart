@@ -558,6 +558,110 @@ function themeblvd_the_title( $post_id = 0, $force_link = false ) {
 }
 
 /**
+ * Get the archive title.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @return string $title Archive title.
+ */
+function themeblvd_get_the_archive_title() {
+
+	global $wp_query;
+
+	/**
+	 * Filters the archive title used for archive
+	 * banners and archive info boxes.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @return string Archive title.
+	 */
+	$title = apply_filters( 'themeblvd_archive_title', '' );
+
+	if ( ! $title ) {
+
+		if ( is_category() || is_tag() || is_tax() ) {
+
+			if ( is_tax() ) {
+
+				$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+			} else {
+
+				$term = $wp_query->get_queried_object();
+
+			}
+
+			if ( $term ) {
+
+				$title = $term->name;
+
+			}
+
+			if ( is_tag() ) {
+
+				$title = sprintf( themeblvd_get_local( 'crumb_tag' ), $title );
+
+			}
+
+		} elseif ( is_date() ) {
+
+			if ( is_day() ) {
+
+				$title = get_the_time( get_option( 'date_format' ) );
+
+			} elseif ( is_month() ) {
+
+				$title = get_the_time( 'F Y' );
+
+			} elseif ( is_year() ) {
+
+				$title = get_the_time( 'Y' );
+
+			}
+
+		} elseif ( is_author() ) {
+
+			if ( get_query_var( 'author_name' ) ) {
+
+				$user = get_user_by( 'slug', get_query_var( 'author_name' ) );
+
+			} elseif ( get_query_var( 'author' ) ) {
+
+				$user = get_user_by( 'id', get_query_var( 'author' ) );
+
+			}
+
+			if ( ! empty( $user ) ) {
+
+				$title = themeblvd_get_local( 'crumb_author' ) . ' ' . $user->display_name;
+
+			}
+
+		} elseif ( is_search() ) {
+
+			$title = sprintf( themeblvd_get_local( 'crumb_search' ), get_search_query() );
+
+		}
+	}
+
+	return $title;
+
+}
+
+/**
+ * Display the archive title.
+ *
+ * @since @@name-framework 2.7.0
+ */
+function themeblvd_the_archive_title() {
+
+	echo themeblvd_kses( themeblvd_get_the_archive_title() );
+
+}
+
+
+/**
  * Get a widget area block.
  *
  * @since @@name-framework 2.5.0

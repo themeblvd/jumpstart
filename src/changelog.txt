@@ -66,6 +66,7 @@ Jump Start Changelog
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed deprecated use of `WC_Cart::get_cart_url`.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed WPML options showing on Theme Options, when WPML isn't installed.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed theme's language switcher not getting added to the mobile navigation, when using the Agent base.
+* New: Added a new feature for displaying a banner across post archives; see *Appearance > Theme Options > Content > Archives > Apply banner to post archives*.
 * New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header*.
 * New: Added option for mobile header navigational icon color at *Appearance > Theme Options > Styles > Mobile Header*.
 * New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.

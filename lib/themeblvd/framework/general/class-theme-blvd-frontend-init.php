@@ -809,6 +809,23 @@ class Theme_Blvd_Frontend_Init {
 		 */
 		$header = get_post_meta( $this->config['id'], '_tb_layout_header', true );
 
+		/*
+		 * And aside from standard pages, the transparent
+		 * header can also be triggered on archives, if an
+		 * archive banner is applied from the theme options.
+		 */
+		if ( themeblvd_get_option( 'apply_archive_banner' ) ) {
+
+			if ( is_category() || is_tag() || is_author() || is_date() ) {
+
+				if (  themeblvd_get_option( 'apply_archive_trans_header' ) ) {
+
+					$header = 'suck_up';
+
+				}
+			}
+		}
+
 		/**
 		 * Filters how the header is displayed.
 		 *
@@ -1393,6 +1410,21 @@ class Theme_Blvd_Frontend_Init {
 
 			$this->atts['epic_thumb'] = $epic;
 
+		}
+
+		/*
+		 * Set template attributes used for archive banner,
+		 * above the content (i.e. "epic banner").
+		 */
+		if ( themeblvd_get_option( 'apply_archive_banner' ) ) {
+
+			if ( is_category() || is_tag() || is_author() || is_date() ) {
+
+				$this->atts['thumbs'] = themeblvd_get_option( 'archive_banner_display' );
+
+				$this->atts['epic_banner'] = true;
+
+			}
 		}
 
 	}

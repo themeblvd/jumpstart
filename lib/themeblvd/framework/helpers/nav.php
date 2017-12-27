@@ -240,7 +240,7 @@ function themeblvd_get_breadcrumb_parts( $args ) {
 
 		$parts[] = array(
 			'link' => '',
-			'text' => themeblvd_get_local( 'crumb_tag' ) . ' "' . single_tag_title( '', false ) . '"',
+			'text' => sprintf( themeblvd_get_local( 'crumb_tag' ), single_tag_title( '', false ) ),
 			'type' => 'tag',
 		);
 
@@ -327,7 +327,7 @@ function themeblvd_get_breadcrumb_parts( $args ) {
 
 		$parts[] = array(
 			'link' => '',
-			'text' => themeblvd_get_local( 'crumb_search' ) . ' "' . get_search_query() . '"',
+			'text' => sprintf( themeblvd_get_local( 'crumb_search' ), get_search_query() ),
 			'type' => 'search',
 		);
 

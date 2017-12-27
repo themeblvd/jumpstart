@@ -229,20 +229,20 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 	 * @param object $user    Author user data.
 	 * @param string $context Where the author box is displaying, `single` or `archive`.
 	 */
-	$title = apply_filters( 'themeblvd_author_info_title', esc_html( $user->display_name ), $user, $context );
+	$title = apply_filters( 'themeblvd_author_info_title', $user->display_name, $user, $context );
 
 	if ( 'archive' === $context ) {
 
 		$output .= sprintf(
 			'<h1 class="info-box-title archive-title">%s</h1>',
-			$title
+			esc_html( $title )
 		);
 
 	} else {
 
 		$output .= sprintf(
 			'<h3 class="info-box-title">%s</h3>',
-			$title
+			esc_html( $title )
 		);
 
 	}

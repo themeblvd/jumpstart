@@ -219,6 +219,10 @@ class Theme_Blvd_Options_API {
 	 *      - archive_mode
 	 *      - category_info
 	 *      - tag_info
+	 *      - apply_archive_banner
+	 *      - archive_banner
+	 *      - archive_banner_display
+	 *      - apply_archive_trans_header
 	 *  - Blog
 	 *      - blog_thumbs
 	 *      - blog_meta
@@ -897,6 +901,49 @@ class Theme_Blvd_Options_API {
 							'show' => __( 'Yes, show info boxes', '@@text-domain' ),
 							'hide' => __( 'No, hide info boxes', '@@text-domain' ),
 						),
+					),
+					'archive_banner_sub_group_start' => array(
+						'type'  => 'subgroup_start',
+						'class' => 'show-hide',
+					),
+					'apply_archive_banner' => array(
+						'name'  => null,
+						'desc'  => __( 'Apply banner to post archives.', '@@text-domain' ),
+						'id'    => 'apply_archive_banner',
+						'std'   => '0',
+						'type'  => 'checkbox',
+						'class' => 'trigger',
+					),
+					'archive_banner' => array(
+						'name'     => __( 'Archive Banner Image', '@@text-domain' ),
+						'desc'     => __( 'Select the image to be used as the archive banner.', '@@text-domain' ),
+						'id'       => 'archive_banner',
+						'type'     => 'upload',
+						'advanced' => true,
+						'class'    => 'hide receiver',
+					),
+					'archive_banner_display' => array(
+						'name'    => __( 'Archive Banner Display', '@@text-domain' ),
+						'desc'    => __( 'Select how you\'d like the archive banner to show at the top of all post archives.', '@@text-domain' ),
+						'id'      => 'archive_banner_display',
+						'std'     => 'fw',
+						'type'    => 'select',
+						'options' => array(
+							'fw' => __( 'Full width, above content', '@@text-domain' ),
+							'fs' => __( 'Full screen parallax, above content', '@@text-domain' ),
+						),
+						'class'   => 'hide receiver',
+					),
+					'apply_archive_trans_header' => array(
+						'name'  => null,
+						'desc'  => __( 'Apply transparent header to post archives.', '@@text-domain' ),
+						'id'    => 'apply_archive_trans_header',
+						'std'   => '0',
+						'type'  => 'checkbox',
+						'class' => 'hide receiver',
+					),
+					'archive_banner_sub_group_end' => array(
+						'type' => 'subgroup_end',
 					),
 				), // End archives options.
 			),
@@ -1682,6 +1729,12 @@ class Theme_Blvd_Options_API {
 			if ( isset( $this->raw_options['layout']['sections']['header_trans'] ) ) {
 
 				unset( $this->raw_options['layout']['sections']['header_trans'] );
+
+			}
+
+			if ( isset( $this->raw_options['content']['sections']['archives']['options']['apply_archive_trans_header'] ) ) {
+
+				unset( $this->raw_options['content']['sections']['archives']['options']['apply_archive_trans_header'] );
 
 			}
 		}

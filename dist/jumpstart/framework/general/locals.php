@@ -55,10 +55,13 @@ function themeblvd_get_all_locals() {
 		'contact_twitter'           => __( 'Twitter', 'jumpstart' ),
 		'contact_us'                => __( 'Contact Us', 'jumpstart' ),
 		'crumb_404'                 => __( 'Error 404', 'jumpstart' ),
-		'crumb_author'              => __( 'Articles posted by', 'jumpstart' ),
-		'crumb_search'              => __( 'Search results for', 'jumpstart' ),
-		'crumb_tag'                 => __( 'Posts tagged', 'jumpstart' ),
-		'crumb_tag_products'        => __( 'Products tagged', 'jumpstart' ),
+		'crumb_author'              => __( 'Posts by', 'jumpstart' ),
+		// translators: 1. search term
+		'crumb_search'              => __( 'Search results for "%s"', 'jumpstart' ),
+		// translators: 1. post archive tag
+		'crumb_tag'                 => __( 'Posts tagged "%s"', 'jumpstart' ),
+		// translators: 1. product archive tag
+		'crumb_tag_products'        => __( 'Products tagged "%s"', 'jumpstart' ),
 		'edit_attachment'           => __( 'Edit Attachment', 'jumpstart' ),
 		'edit_page'                 => __( 'Edit Page', 'jumpstart' ),
 		'edit_post'                 => __( 'Edit Post', 'jumpstart' ),

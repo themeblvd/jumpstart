@@ -405,61 +405,83 @@ if ( ! function_exists( 'themeblvd_epic_thumb' ) ) {
 	 */
 	function themeblvd_epic_thumb() {
 
-		if ( themeblvd_get_att( 'epic_thumb' ) ) {
+		if ( ! themeblvd_get_att( 'epic_thumb' ) && ! themeblvd_get_att( 'epic_banner' ) ) {
 
-			$class = array( 'epic-thumb', themeblvd_get_att( 'thumbs' ) );
+			return;
 
-			if ( themeblvd_installed( 'woocommerce' ) && ( is_shop() || is_product_category() ) ) {
+		}
 
-				$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
+		$class = array( 'epic-thumb', themeblvd_get_att( 'thumbs' ) );
 
-				$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
+		if ( themeblvd_installed( 'woocommerce' ) && ( is_shop() || is_product_category() ) ) {
 
-				themeblvd_get_template_part( 'featured-wc' );
+			$class[] = 'epic-banner';
 
-			} else {
+			$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
 
-				if ( have_posts() ) {
+			$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
 
-					while ( have_posts() ) {
+			themeblvd_get_template_part( 'featured-wc' );
 
-						the_post();
+		} elseif ( is_category() || is_tag() || is_author() || is_date() ) {
 
-						if ( ! has_post_format( 'gallery' ) && themeblvd_get_att( 'thumbs' ) == 'fs' ) {
+			$class[] = 'epic-banner';
 
-							$class[] = 'tb-parallax';
+			if ( 'fs' === themeblvd_get_att( 'thumbs' ) ) {
 
-						}
-
-						if ( get_post_format() ) {
-
-							$class[] = get_post_format();
-
-						}
-
-						if ( is_page() ) {
-
-							if ( 'hide' === get_post_meta( get_the_ID(), '_tb_title', true ) ) {
-
-								$class[] = 'no-text';
-
-							}
-						}
-
-						$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
-
-						$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
-
-						themeblvd_get_template_part( 'featured' );
-
-					}
-				}
-
-				rewind_posts();
+				$class[] = 'tb-parallax';
 
 			}
+
+			$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
+
+			$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
+
+			themeblvd_get_template_part( 'featured-archives' );
+
+		} else {
+
+			if ( have_posts() ) {
+
+				while ( have_posts() ) {
+
+					the_post();
+
+					if ( ! has_post_format( 'gallery' ) && 'fs' === themeblvd_get_att( 'thumbs' ) ) {
+
+						$class[] = 'tb-parallax';
+
+					}
+
+					if ( get_post_format() ) {
+
+						$class[] = get_post_format();
+
+					}
+
+					if ( is_page() ) {
+
+						if ( 'hide' === get_post_meta( get_the_ID(), '_tb_title', true ) ) {
+
+							$class[] = 'no-text';
+
+						}
+					}
+
+					$class = apply_filters( 'themeblvd_epic_thumb_class', $class );
+
+					$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
+
+					themeblvd_get_template_part( 'featured' );
+
+				}
+			}
+
+			rewind_posts();
+
 		}
 	}
+
 }
 
 if ( ! function_exists( 'themeblvd_main_start_default' ) ) {

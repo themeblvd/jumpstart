@@ -102,4 +102,4 @@ if ( is_page_template( 'template_builder.php' ) ) {
 
 	<?php endif; ?>
 
-</div><!-- .epic-thumbnail (end) -->
+</div><!-- .epic-thumb (end) -->

@@ -1079,7 +1079,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 				$parts[] = array(
 					'link' => '',
-					'text' => sprintf( '%s "%s"', themeblvd_get_local( 'crumb_tag_products' ), $tag_obj->name ),
+					'text' => sprintf( themeblvd_get_local( 'crumb_tag_products' ), $tag_obj->name ),
 					'type' => 'tag',
 				);
 
