@@ -574,7 +574,7 @@ function themeblvd_get_the_archive_title() {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 *
-	 * @return string Archive title.
+	 * @param string Archive title.
 	 */
 	$title = apply_filters( 'themeblvd_archive_title', '' );
 
@@ -660,6 +660,113 @@ function themeblvd_the_archive_title() {
 
 }
 
+/**
+ * Get the archive banner image.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param  array $image {
+ *     Archive banner image arguments.
+ *
+ *     @type int    $id    Attachment ID.
+ *     @type string $src   Source URL of cropped image.
+ *     @type string $full  Source URL of full-size image.
+ *     @type string $title Image title.
+ *     @type string $crop  Image crop size.
+ * }
+ * @return string $output Final HTML output.
+ */
+function themeblvd_get_the_archive_banner_image( $image = array() ) {
+
+	$output = '';
+
+	if ( ! $image ) {
+
+		$image = themeblvd_get_option( 'archive_banner' );
+
+	}
+
+	/**
+	 * Filters the archive banner image arguments.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array $image {
+	 *     Archive banner image arguments.
+	 *
+	 *     @type int    $id    Attachment ID.
+	 *     @type string $src   Source URL of cropped image.
+	 *     @type string $full  Source URL of full-size image.
+	 *     @type string $title Image title.
+	 *     @type string $crop  Image crop size.
+	 * }
+	 */
+	$image = apply_filters( 'themeblvd_archive_banner_image_args', $image );
+
+	if ( 'fs' === themeblvd_get_att( 'thumbs' ) ) {
+
+		$output .= themeblvd_get_bg_parallax( array(
+			'src' => $image['src'],
+		) );
+
+		$to = 'main';
+
+		if ( themeblvd_show_breadcrumbs() ) {
+
+			$to = 'breadcrumbs';
+
+		}
+
+		$output .= themeblvd_get_to_section( array(
+			'to' => $to,
+		) );
+
+	} else {
+
+		$output .= wp_get_attachment_image( $image['id'], $image['crop'] );
+
+	}
+
+	/**
+	 * Filters the archive banner image.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string $output Final HTML output.
+	 * @param array  $image {
+	 *     Archive banner image arguments.
+	 *
+	 *     @type int    $id    Attachment ID.
+	 *     @type string $src   Source URL of cropped image.
+	 *     @type string $full  Source URL of full-size image.
+	 *     @type string $title Image title.
+	 *     @type string $crop  Image crop size.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_archive_banner_image', $output, $image );
+
+}
+
+/**
+ * Display the archive banner image.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param  array {
+ *     Archive banner image arguments.
+ *
+ *     @type int    $id    Attachment ID.
+ *     @type string $src   Source URL of cropped image.
+ *     @type string $full  Source URL of full-size image.
+ *     @type string $title Image title.
+ *     @type string $crop  Image crop size.
+ * }
+ */
+function themeblvd_the_archive_banner_image( $image = array() ) {
+
+	echo themeblvd_get_the_archive_banner_image( $image );
+
+}
 
 /**
  * Get a widget area block.
