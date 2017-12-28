@@ -4337,13 +4337,6 @@ body.mobile .tb-bg-video {
 		min-height: 120px;
 	}
 }
-@media (min-width: 768px) {
-	.epic-thumb.tb-parallax,
-	.epic-thumb.fw {
-		background: #000000;
-		min-height: 120px;
-	}
-}
 .epic-thumb.fw img {
 	width: 100%;
 }
