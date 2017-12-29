@@ -79,6 +79,7 @@ Jump Start Changelog
 * New: Added options section at *Appearance > Theme Options > Layout > Contact* for Developer, Super User, Executive and Entrepreneur bases; your social media contact icons are no longer directly associated with the website header, but can be displayed in different locations.
 * Improvement: Mobile header styling is now applied consistently at 991px and below to ease the transition from desktop to mobile, and generally simplify styling.
 * Improvement: Footer design and user options have now been standardized across all theme bases; for all theme bases except Developer, see modified options at *Appearance > Theme Options > Styles > Footer*.
+* Improvement: Better handling of background video; instead of just a black screen, the placeholder image will now display as a background image while the video is loading, and continue to show when the video can't be loaded.
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Improvement: On all theme bases, if no "Primary Navigation" menu is assigned, menu will not display (previously, only the Agent base behaved like this).
 * Improvement: Collapsible widget area locations no longer have the word "Ads" in their titles.

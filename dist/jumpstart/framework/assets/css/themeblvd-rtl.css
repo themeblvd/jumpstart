@@ -4231,11 +4231,6 @@ blockquote small {
 	overflow: hidden;
 	position: relative;
 }
-@media (min-width: 992px) {
-	body.desktop .has-bg-video {
-		background-image: none !important;
-	}
-}
 .tb-bg-video {
 	opacity: 0;
 	position: absolute;
@@ -4346,6 +4341,7 @@ body.mobile .tb-bg-video {
 
 /* Epic Thumbnails */
 .epic-thumb {
+	background: #000;
 	position: relative;
 }
 @media (min-width: 992px) {

@@ -1629,7 +1629,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$output .= sprintf(
 					'<p><strong>%s</strong></p>',
-					esc_html__( 'Video Fallback Image', '@@text-domain' )
+					esc_html__( 'Video Placeholder Image', '@@text-domain' )
 				);
 
 				$img_url = '';
