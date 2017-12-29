@@ -112,12 +112,6 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/compat/compat.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/setup.php' );
 
 /**
- * Include helper functions for using theme bases,
- * which must be enabled at the theme level.
- */
-include_once( TB_FRAMEWORK_DIRECTORY . '/general/base.php' );
-
-/**
  * Include grid functions, which help to calculate
  * and lay out columns throughout the framework.
  */
@@ -339,6 +333,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/general/layout.php' );
 /**
  * Include general helper functions.
  */
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/base.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/comments.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/general.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/layout.php' );
