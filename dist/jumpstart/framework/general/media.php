@@ -1334,7 +1334,7 @@ function themeblvd_get_bg_video( $video ) {
 			 */
 			$args = apply_filters( 'themeblvd_vimeo_bg_args', array(
 				'id'         => $vimeo_id,
-				'background' => 'true',
+				'background' => 'true', // Supposed to take care of autoplay but works inconsistently.
 				'autoplay'   => 'true',
 				'loop'       => 'true',
 				'autopause'  => 'false',
