@@ -1,0 +1,109 @@
+////
+/// Admin: Options, Google Map Coordinates
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+.tb-options-wrap .section-geo {
+	.geo-wrap {
+		margin-bottom: 10px;
+	}
+	.geo-lat,
+	.geo-long,
+	.geo-button {
+		box-sizing: border-box;
+		float: left;
+	}
+	.geo-lat,
+	.geo-long {
+		width: 48%;
+	}
+	.geo-lat {
+		margin-right: 2%;
+	}
+	.geo-label {
+		color: $clr-text-light;
+		display: block;
+		font-size: 11px;
+		font-style: italic;
+		margin-left: 5px;
+	}
+	.controls .geo-input {
+		margin: 0 0 5px 2px;
+	}
+	.geo-generate {
+		background: #ffffff;
+		border: 1px solid #dddddd;
+		border-radius: 4px;
+		padding: 10px;
+		position: relative;
+	}
+	.geo-generate .overlay {
+		background: #ffffff;
+		border-radius: 5px;
+		display: none;
+		opacity: .8;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.geo-generate .overlay .tb-loader {
+		display: block;
+		position: absolute;
+		top: 50%;
+		margin-top: -8px;
+		left: 50%;
+		margin-left: -11px;
+	}
+	.geo-generate h5 {
+		font-size: 12px;
+		margin: 4px 4px 10px 4px;
+	}
+	.geo-generate input {
+		float: left;
+		margin: 1px 2% 5px 0;
+		width: 75%;
+	}
+	.geo-generate .geo-insert-lat-long {
+		float: left;
+		text-align: center;
+		width: 23%;
+	}
+	.geo-generate .note {
+		margin: 0;
+	}
+}
+
+//
+// RTL
+//
+
+.wp-admin.rtl .tb-options-wrap .section-geo {
+	.geo-lat,
+	.geo-long,
+	.geo-button {
+		float: right;
+	}
+	.geo-lat {
+		margin-right: 0;
+		margin-left: 2%;
+	}
+	.geo-label {
+		margin-left: 0;
+		margin-right: 5px;
+	}
+	.controls .geo-input {
+		margin: 0 2px 5px 0;
+	}
+	.geo-generate input {
+		float: right;
+		margin: 1px 0 5px 2%;
+	}
+	.geo-generate .geo-insert-lat-long {
+		float: right;
+	}
+}

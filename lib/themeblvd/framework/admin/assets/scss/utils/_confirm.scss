@@ -1,0 +1,81 @@
+////
+/// Admin: Utilities, Confirmation Prompt
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+//
+// Dark overlay behind prompt
+//
+
+.themeblvd-confirm-overlay {
+	background: rgba($clr-bg-black, 0.7);
+	min-height: 360px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 101000;
+}
+
+//
+// Outer styling for prompt box
+//
+
+.themeblvd-confirm-outer {
+	background: $clr-bg-white;
+	box-shadow: 0 3px 7px rgba($clr-bg-black, 0.8);
+	display: none;
+	min-width: 200px;
+	min-height: 50px;
+	max-width: 75%;
+	position: fixed;
+	width: 350px;
+	z-index: 99999999;
+}
+.themeblvd-confirm-outer.text-center {
+	text-align: center;
+}
+
+//
+// Inner styling for prompt box
+//
+
+.themeblvd-confirm-inner {
+
+	padding: 20px;
+
+	.button-secondary {
+		margin: 0 2px;
+	}
+	.themeblvd-confirm-buttons,
+	.themeblvd-confirm-input {
+		background: $clr-bg-light;
+		border-top: 1px solid $clr-border;
+		margin: 20px -20px -20px -20px;
+		padding: 10px;
+		text-align: center;
+	}
+	.themeblvd-confirm-input label {
+		color: $clr-text-light;
+		display: block;
+		padding: 8px 0 0 0;
+	}
+	.themeblvd-confirm-text-box {
+		border: 1px solid $clr-border;
+		font-size: 12px;
+		padding: 5px 10px;
+		width: 180px;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: 0;
+	}
+}

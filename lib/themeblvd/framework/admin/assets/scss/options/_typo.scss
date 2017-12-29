@@ -1,0 +1,36 @@
+////
+/// Admin: Options, Typography
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+.tb-options-wrap {
+	.google-font,
+	.typekit-font,
+	.custom-font {
+		background: $clr-bg-white;
+		border: 1px solid $clr-border;
+		padding: 10px;
+	}
+	.google-font h5,
+	.typekit-font h5,
+	.custom-font h5 {
+		font-size: 12px;
+		margin: 4px 4px 10px 4px;
+	}
+	.google-font input,
+	.typekit-font input,
+	.custom-font input {
+		margin-bottom: 5px;
+	}
+	.google-font .note,
+	.typekit-font .note,
+	.custom-font .note {
+		margin: 0;
+	}
+	.typekit-font textarea {
+		height: 100px;
+	}
+}

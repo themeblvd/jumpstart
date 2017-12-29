@@ -1,0 +1,239 @@
+/*!
+ * Admin: Options Page
+ *
+ * This file is included with all options pages
+ * created with the Theme_Blvd_Options_Page class.
+ *
+ * @package @@name-package
+ * @subpackage @@name-framework
+ * @license GPL-2.0+
+ */
+
+@import "variables";
+
+//
+// Page Wrap
+//
+
+.tb-options-page .tb-options-wrap {
+	background: transparent;
+	position: relative;
+	max-width: $options-page-width;
+	z-index: 0;
+}
+
+//
+// Page Setup
+//
+
+.tb-options-page {
+	.postbox {
+		margin-bottom: 10px;
+	}
+	.postbox .hndle {
+		cursor: default;
+	}
+	.postbox.closed .hndle {
+		border-bottom: none;
+	}
+	.postbox > .section-toggle {
+		color: #a5a5a5;
+		display: block;
+		float: right;
+		font-size: 16px;
+		line-height: 34px;
+		outline: none;
+		width: 34px;
+		text-align: center;
+	}
+	.postbox > .section-toggle:hover,
+	.postbox > .section-toggle:focus {
+		color: #5a5a5a;
+		box-shadow: none;
+	}
+	.postbox.closed > .section-toggle {
+		transform: rotate(180deg);
+	}
+}
+
+.wp-admin.rtl .tb-options-page .postbox > .section-toggle {
+	float: left;
+}
+
+//
+// Presets
+//
+
+#tb-options-page-form {
+	.tb-presets {
+		overflow: hidden;
+	}
+	.tb-presets.level-1 {
+		margin-bottom: 10px;
+	}
+	.tb-presets ul {
+		margin: -10px;
+	}
+	.tb-presets li {
+		display: block;
+		float: left;
+		margin: 0;
+		padding: 10px;
+	}
+	.tb-presets li a {
+		box-shadow: none;
+		border: 1px solid $clr-border;
+		display: block;
+		font-size: 12px;
+		line-height: 1;
+		margin: 0;
+		padding: 5px 7px;
+	}
+	.tb-presets.has-images li a {
+		padding: 2px;
+	}
+	.tb-presets.has-images li a:hover {
+		opacity: 0.8;
+	}
+	.tb-presets.has-images li a img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+	.tb-presets li a {
+		text-decoration: none !important;
+	}
+}
+
+.wp-admin.rtl #tb-options-page-form .tb-presets li {
+	float: right;
+}
+
+//
+// Footer Template Sync
+//
+
+#tb-options-page-form .footer-sync-wrap {
+
+	position: absolute;
+	top: 0;
+	right: 20px;
+
+	label,
+	input.checkbox {
+		clear: none;
+		float: right;
+	}
+	label {
+		color: $clr-text-light;
+		cursor: default;
+		font-style: italic;
+		margin-top: 12px;
+	}
+	input.checkbox {
+		margin: 10px;
+	}
+}
+
+.wp-admin.rtl #tb-options-page-form .footer-sync-wrap {
+
+	right: inherit;
+	left: 20px;
+
+	label,
+	input.checkbox {
+		float: left;
+	}
+}
+
+//
+// Plugin Options
+//
+
+.tb-theme-options-wrap {
+	#of-option-plugins-tab,
+	#bbpress,
+	#gravityforms,
+	#woocommerce,
+	#wpml {
+		display: none;
+	}
+	&.plugins-installed #tb-options-page-plugins-tab {
+		display: inline-block;
+	}
+	&.bbpress-installed #bbpress {
+		display: block;
+	}
+	&.gravityforms-installed #gravityforms {
+		display: block;
+	}
+	&.woocommerce-installed #woocommerce {
+		display: block;
+	}
+	&.wpml-installed #wpml {
+		display: block;
+	}
+}
+
+//
+// Options Page Footer
+//
+
+.tb-options-wrap .options-page-footer {
+	background: #ffffff;
+	border: 1px solid #dedede;
+	padding: 10px;
+}
+.tb-options-wrap .button-primary {
+	float: right;
+}
+.wp-admin.rtl .tb-options-wrap .button-primary {
+	float: left;
+}
+.tb-options-wrap .options-page-footer .ajax-loading {
+	display: none;
+	float: right;
+	visibility: visible;
+	margin: 4px 5px 0 0;
+}
+.wp-admin.rtl .tb-options-wrap .options-page-footer .ajax-loading {
+	float: left;
+	margin: 4px 0 0 5px;
+}
+
+//
+// Footer Text
+//
+// Note: This is BELOW .options-page-footer
+// element.
+//
+
+.tb-options-wrap .tb-footer-text {
+
+	background-color: $clr-bg-light;
+	border: 1px solid $clr-border;
+	border-top: none;
+	color: $clr-text-light;
+	font-style: italic;
+	padding: 10px;
+
+	i {
+		font-size: 15px;
+	}
+	.tb-update-log {
+		text-decoration: none;
+	}
+}
+
+//
+// Update message
+//
+
+.tb-options-page {
+	.themeblvd-updated,
+	.themeblvd-error {
+		box-sizing: border-box;
+		margin-bottom: 0 !important;
+		width: $options-page-width;
+	}
+}

@@ -1,0 +1,62 @@
+////
+/// Admin: Options, Media Modal
+///
+/// @package @@name-package
+/// @subpackage @@name-framework
+/// @license GPL-2.0+
+////
+
+//
+// Standard Media Selection
+//
+// This hides all of the standard attachment
+// details from the user because configuring
+// them will not have any effect in our
+// implementation of the media modal.
+//
+
+.tb-modal-hide-settings .attachment-details label.setting {
+	display: none;
+}
+
+//
+// Advanced Image Selection
+//
+// The "advanced" type of image selection allows
+// the user to select a crop size, but still hides
+// most other attachment settings.
+//
+
+.tb-modal-advanced-image .media-sidebar {
+	.attachment-details .setting[data-setting="caption"],
+	.attachment-details .setting[data-setting="alt"],
+	.attachment-details .setting[data-setting="description"],
+	.attachment-display-settings h3,
+	.attachment-display-settings .setting {
+		display: none;
+	}
+	.attachment-display-settings label.setting:last-child {
+		display: block;
+	}
+	.setting span {
+		max-width: 12%;
+		min-width: 0;
+		text-align: left;
+	}
+	.setting input,
+	.setting select {
+		float: left;
+		max-width: 100%;
+		width: 80%;
+	}
+}
+
+.wp-admin.rtl .tb-modal-advanced-image .media-sidebar {
+	.setting span {
+		text-align: right;
+	}
+	.setting input,
+	.setting select {
+		float: right;
+	}
+}

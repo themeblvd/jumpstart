@@ -1,0 +1,25 @@
+/*!
+ * Admin: Menu Builder
+ *
+ * This file is used at Appearance > Menus, to help
+ * with adding the framework's mega menu options.
+ *
+ * @package @@name-package
+ * @subpackage @@name-framework
+ * @license GPL-2.0+
+ */
+
+.tb-field-link-mega,
+.tb-field-link-mega-hide-headers {
+	display: none;
+}
+.menu-item-depth-0 {
+	.tb-field-link-mega,
+	.tb-field-link-mega-hide-headers {
+		display: block;
+	}
+	.tb-field-link-deactivate,
+	.tb-field-link-placeholder {
+		display: none;
+	}
+}

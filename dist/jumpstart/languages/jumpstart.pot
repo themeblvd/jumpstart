@@ -1,0 +1,6277 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jump Start 2.1.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-31 12:12-0700\n"
+"PO-Revision-Date: 2017-05-31 12:12-0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../base/agent/options.php:14
+msgid "Content Style"
+msgstr ""
+
+#: ../base/agent/options.php:15
+msgid "Select the content style of the site."
+msgstr ""
+
+#: ../base/agent/options.php:19
+msgid "Light"
+msgstr ""
+
+#: ../base/agent/options.php:20
+#: ../base/agent/presets.php:95
+msgid "Dark"
+msgstr ""
+
+#: ../base/agent/options.php:25
+msgid "Primary Buttons"
+msgstr ""
+
+#: ../base/agent/options.php:26
+msgid "Select a background color for primary buttons throughour your website."
+msgstr ""
+
+#: ../base/agent/options.php:32
+msgid "Default Highlight"
+msgstr ""
+
+#: ../base/agent/options.php:33
+msgid "Select a \"highlight\" color to be used throughour your website, like with button and thumbnail hovers, for example."
+msgstr ""
+
+#: ../base/agent/options.php:41
+#, php-format
+msgid "These options apply to the header of your website. Note that for the main menu to show, you must assign a menu to the \"Primary Navigation\" location, and for there to be a side menu to toggle open on desktops, you need to assign a menu to the \"Primary Side Navigation\" location. This can all be done at %s."
+msgstr ""
+
+#: ../base/agent/options.php:41
+#: ../base/agent/options.php:189
+#: ../base/agent/options.php:232
+msgid "Appearance > Menus"
+msgstr ""
+
+#: ../base/agent/options.php:46
+#: ../base/agent/options.php:108
+#: ../base/agent/options.php:169
+#: ../base/agent/options.php:237
+#: ../base/agent/options.php:275
+msgid "Background Color"
+msgstr ""
+
+#: ../base/agent/options.php:47
+#: ../base/agent/options.php:109
+msgid "Select a background color for the header."
+msgstr ""
+
+#: ../base/agent/options.php:53
+#: ../base/agent/options.php:83
+#: ../base/agent/options.php:144
+#: ../base/agent/options.php:176
+#: ../base/agent/options.php:244
+#: ../base/agent/options.php:283
+msgid "Background Color Brightness"
+msgstr ""
+
+#: ../base/agent/options.php:54
+#: ../base/agent/options.php:84
+#: ../base/agent/options.php:145
+#: ../base/agent/options.php:177
+#: ../base/agent/options.php:202
+#: ../base/agent/options.php:245
+#: ../base/agent/options.php:284
+msgid "In the previous option, did you go dark or light?"
+msgstr ""
+
+#: ../base/agent/options.php:58
+#: ../base/agent/options.php:88
+#: ../base/agent/options.php:149
+#: ../base/agent/options.php:181
+#: ../base/agent/options.php:206
+#: ../base/agent/options.php:224
+#: ../base/agent/options.php:249
+#: ../base/agent/options.php:288
+msgid "I chose a light color in the previous option."
+msgstr ""
+
+#: ../base/agent/options.php:59
+#: ../base/agent/options.php:89
+#: ../base/agent/options.php:150
+#: ../base/agent/options.php:182
+#: ../base/agent/options.php:207
+#: ../base/agent/options.php:225
+#: ../base/agent/options.php:250
+#: ../base/agent/options.php:289
+msgid "I chose a dark color in the previous option."
+msgstr ""
+
+#: ../base/agent/options.php:64
+msgid "Menu Placement"
+msgstr ""
+
+#: ../base/agent/options.php:65
+msgid "Select where you'd like the main menu placed within the header."
+msgstr ""
+
+#: ../base/agent/options.php:70
+msgid "Menu is centered within the header."
+msgstr ""
+
+#: ../base/agent/options.php:71
+msgid "Menu is opposite the logo."
+msgstr ""
+
+#: ../base/agent/options.php:76
+msgid "Main Menu Dropdown Background Color"
+msgstr ""
+
+#: ../base/agent/options.php:77
+msgid "Select a background color for dropdown submenus of the main menu."
+msgstr ""
+
+#: ../base/agent/options.php:94
+msgid "Stretch header to full width."
+msgstr ""
+
+#: ../base/agent/options.php:103
+msgid "These options apply to pages where you've setup a transparent header."
+msgstr ""
+
+#: ../base/agent/options.php:115
+msgid "Background Color Opacity"
+msgstr ""
+
+#: ../base/agent/options.php:116
+msgid "Select the opacity of the background color."
+msgstr ""
+
+#: ../base/agent/options.php:155
+msgid "Hide bounding borders around transparent theader."
+msgstr ""
+
+#: ../base/agent/options.php:164
+msgid "These options apply to the header on mobile devices."
+msgstr ""
+
+#: ../base/agent/options.php:170
+msgid "Select a background color for the mobile header."
+msgstr ""
+
+#: ../base/agent/options.php:189
+#, php-format
+msgid "These options apply to the footer of your website. Note that for the footer menu to show in the copyright area, you must assign a menu to the \"Footer Navigation\" location at %s."
+msgstr ""
+
+#: ../base/agent/options.php:194
+msgid "Footer Background Color"
+msgstr ""
+
+#: ../base/agent/options.php:195
+msgid "Select a background color for the footer columns."
+msgstr ""
+
+#: ../base/agent/options.php:201
+msgid "Footer Background Color Brightness"
+msgstr ""
+
+#: ../base/agent/options.php:212
+msgid "Copyright Background Color"
+msgstr ""
+
+#: ../base/agent/options.php:213
+msgid "Select a background color for the copyright area below the footer columns."
+msgstr ""
+
+#: ../base/agent/options.php:219
+msgid "Copyright Background Color Brightness"
+msgstr ""
+
+#: ../base/agent/options.php:220
+msgid "If you're using a dark background color, select to show light text, and vice versa."
+msgstr ""
+
+#: ../base/agent/options.php:232
+#, php-format
+msgid "These options apply to your side panel that slides out from the side of your webste on desktop browsers, and the compiled menu that slides out on mobile devices. Note that for the side panel to show in desktop browsers, you must assign a menu to the \"Primary Side Navigation\" location at %s."
+msgstr ""
+
+#: ../base/agent/options.php:238
+msgid "Select a background color for the side panel."
+msgstr ""
+
+#: ../base/agent/options.php:257
+msgid "These options apply to widgets in your sidebar."
+msgstr ""
+
+#: ../base/agent/options.php:267
+msgid "Apply background color to widgets."
+msgstr ""
+
+#: ../base/agent/options.php:276
+msgid "Select a background color for widgets."
+msgstr ""
+
+#: ../base/agent/options.php:301
+msgid "Primary Font"
+msgstr ""
+
+#: ../base/agent/options.php:302
+msgid "This applies to most of the text on your site."
+msgstr ""
+
+#: ../base/agent/options.php:309
+msgid "Header Font"
+msgstr ""
+
+#: ../base/agent/options.php:310
+msgid "This applies to all of the primary headers throughout your site (h1, h2, h3, h4, h5, h6). This would include header tags used in redundant areas like widgets and the content of posts and pages."
+msgstr ""
+
+#: ../base/agent/options.php:317
+msgid "Small Header Font"
+msgstr ""
+
+#: ../base/agent/options.php:318
+msgid "This applies to smaller sub headers throughout your website, like widget titles, for example."
+msgstr ""
+
+#: ../base/agent/options.php:325
+msgid "Small Header Letter Spacing"
+msgstr ""
+
+#: ../base/agent/options.php:326
+#: ../base/agent/options.php:347
+#: ../base/agent/options.php:368
+#: ../base/agent/options.php:390
+#: ../base/agent/options.php:412
+msgid "Adjust the spacing between letters."
+msgstr ""
+
+#: ../base/agent/options.php:338
+msgid "Quote Font"
+msgstr ""
+
+#: ../base/agent/options.php:339
+msgid "This applies to quoted text in blockquote tags."
+msgstr ""
+
+#: ../base/agent/options.php:346
+msgid "Quote Letter Spacing"
+msgstr ""
+
+#: ../base/agent/options.php:359
+msgid "Meta Info Font"
+msgstr ""
+
+#: ../base/agent/options.php:360
+msgid "This applies to meta info like the \"Posted\" date below a post title, for example."
+msgstr ""
+
+#: ../base/agent/options.php:367
+msgid "Meta Info Letter Spacing"
+msgstr ""
+
+#: ../base/agent/options.php:380
+msgid "Featured Image Title Font"
+msgstr ""
+
+#: ../base/agent/options.php:381
+msgid "This applies when displaying a title on top of featured images."
+msgstr ""
+
+#: ../base/agent/options.php:389
+msgid "Featured Image Title Letter Spacing"
+msgstr ""
+
+#: ../base/agent/options.php:402
+msgid "Main Menu Font"
+msgstr ""
+
+#: ../base/agent/options.php:403
+msgid "This font applies to the top level items of the main menu."
+msgstr ""
+
+#: ../base/agent/options.php:411
+msgid "Main Menu Letter Spacing"
+msgstr ""
+
+#: ../base/agent/options.php:424
+msgid "Link Color"
+msgstr ""
+
+#: ../base/agent/options.php:425
+msgid "Choose the color you'd like applied to links."
+msgstr ""
+
+#: ../base/agent/options.php:431
+msgid "Link Hover Color"
+msgstr ""
+
+#: ../base/agent/options.php:432
+msgid "Choose the color you'd like applied to links when they are hovered over."
+msgstr ""
+
+#: ../base/agent/options.php:438
+msgid "Footer Link Color"
+msgstr ""
+
+#: ../base/agent/options.php:439
+msgid "Choose the color you'd like applied to links in the footer."
+msgstr ""
+
+#: ../base/agent/options.php:445
+msgid "Footer Link Hover Color"
+msgstr ""
+
+#: ../base/agent/options.php:446
+msgid "Choose the color you'd like applied to links in the footer when they are hovered over."
+msgstr ""
+
+#: ../base/agent/options.php:463
+msgid "Styles"
+msgstr ""
+
+#: ../base/agent/options.php:464
+msgid "Preset Styles"
+msgstr ""
+
+#: ../base/agent/options.php:464
+msgid "For a quick starting point, click any image below to merge its preset settings into your current option selections. Then, you can continue editing individual options."
+msgstr ""
+
+#: ../base/agent/options.php:464
+#, php-format
+msgid "Looking for more theme style variations? Try a different %s."
+msgstr ""
+
+#: ../base/agent/options.php:470
+msgid "General"
+msgstr ""
+
+#: ../base/agent/options.php:471
+msgid "Header"
+msgstr ""
+
+#: ../base/agent/options.php:472
+msgid "Transparent Header"
+msgstr ""
+
+#: ../base/agent/options.php:473
+msgid "Mobile Header"
+msgstr ""
+
+#: ../base/agent/options.php:474
+msgid "Footer"
+msgstr ""
+
+#: ../base/agent/options.php:475
+msgid "Side Panel"
+msgstr ""
+
+#: ../base/agent/options.php:476
+msgid "Widgets"
+msgstr ""
+
+#: ../base/agent/options.php:477
+msgid "Typography"
+msgstr ""
+
+#: ../base/agent/options.php:478
+msgid "Custom CSS"
+msgstr ""
+
+#: ../base/agent/options.php:508
+msgid "Contact"
+msgstr ""
+
+#: ../base/agent/options.php:510
+msgid "Contact Buttons"
+msgstr ""
+
+#: ../base/agent/options.php:511
+msgid "Configure the contact and social media buttons you'd like to use."
+msgstr ""
+
+#: ../base/agent/options.php:543
+msgid "Display contact buttons in side menu panel."
+msgstr ""
+
+#: ../base/agent/options.php:550
+msgid "Display contact buttons in footer."
+msgstr ""
+
+#: ../base/agent/presets.php:59
+msgid "Style 1"
+msgstr ""
+
+#: ../base/agent/presets.php:64
+msgid "Style 2"
+msgstr ""
+
+#: ../base/agent/presets.php:69
+msgid "Style 3"
+msgstr ""
+
+#: ../base/agent/presets.php:74
+msgid "Style 4"
+msgstr ""
+
+#: ../base/agent/presets.php:82
+msgid "Green"
+msgstr ""
+
+#: ../base/agent/presets.php:83
+msgid "Sea Green"
+msgstr ""
+
+#: ../base/agent/presets.php:84
+msgid "Blue"
+msgstr ""
+
+#: ../base/agent/presets.php:85
+msgid "Midnight Blue"
+msgstr ""
+
+#: ../base/agent/presets.php:86
+msgid "Purple"
+msgstr ""
+
+#: ../base/agent/presets.php:87
+msgid "Orange"
+msgstr ""
+
+#: ../base/agent/presets.php:88
+msgid "Red"
+msgstr ""
+
+#: ../base/agent/presets.php:89
+msgid "Grey"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:30
+#: ../base/executive/options.php:30
+#: ../base/superuser/options.php:30
+msgid "Site Layout Style"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:31
+#: ../base/executive/options.php:31
+#: ../base/superuser/options.php:31
+msgid "Select whether you'd like the layout of the theme to be boxed or not."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:36
+#: ../base/executive/options.php:36
+#: ../base/superuser/options.php:36
+msgid "Stretch"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:37
+#: ../base/executive/options.php:37
+#: ../base/superuser/options.php:37
+msgid "Boxed"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:43
+#: ../base/executive/options.php:43
+#: ../base/superuser/options.php:43
+msgid "Layout Shadow Size"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:44
+#: ../base/executive/options.php:44
+#: ../base/superuser/options.php:44
+msgid "Select the size of the shadow around the boxed layout. Set to 0px for no shadow."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:56
+#: ../base/executive/options.php:56
+#: ../base/superuser/options.php:56
+msgid "Layout Shadow Strength"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:57
+#: ../base/executive/options.php:57
+#: ../base/superuser/options.php:57
+#, php-format
+msgid "Select the opacity of the shadow for the boxed layout. The darker %s, the closer to 100%% you want to go."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:57
+#: ../base/executive/options.php:57
+#: ../base/superuser/options.php:57
+msgid "your background"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:86
+#: ../base/executive/options.php:86
+#: ../base/superuser/options.php:86
+msgid "Layout Border Width"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:87
+#: ../base/executive/options.php:87
+#: ../base/superuser/options.php:87
+msgid "Select a width in pixels for the boxed layout. Set to 0px for no border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:99
+#: ../base/executive/options.php:99
+#: ../base/superuser/options.php:99
+msgid "Layout Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:100
+#: ../base/executive/options.php:100
+#: ../base/superuser/options.php:100
+msgid "Select a color for the border around the boxed layout."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:113
+#: ../base/executive/options.php:113
+#: ../base/superuser/options.php:113
+msgid "Content Border"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:113
+#: ../base/executive/options.php:113
+#: ../base/superuser/options.php:113
+msgid "Apply border around content areas."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:120
+#: ../base/executive/options.php:120
+#: ../base/superuser/options.php:120
+msgid "Content Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:121
+#: ../base/executive/options.php:121
+#: ../base/superuser/options.php:121
+msgid "Select a color for the border around content areas."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:128
+#: ../base/entrepreneur/options.php:236
+#: ../base/entrepreneur/options.php:523
+#: ../base/entrepreneur/options.php:787
+#: ../base/executive/options.php:128
+#: ../base/executive/options.php:250
+#: ../base/executive/options.php:529
+#: ../base/executive/options.php:1063
+#: ../base/superuser/options.php:128
+#: ../base/superuser/options.php:250
+#: ../base/superuser/options.php:529
+#: ../base/superuser/options.php:849
+#: ../base/superuser/options.php:1098
+msgid "Bottom Border Width"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:129
+#: ../base/executive/options.php:129
+#: ../base/superuser/options.php:129
+msgid "Select a width in pixels for the border around content areas."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:162
+msgid "Note: With the Entrepeneur theme base, for the header info top bar to show, you must enter text at Theme Options > Layout > Header > Header Text. Without this, other header info elements like social icons and searchform, will be displayed next to the main menu instead."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:168
+#: ../base/executive/options.php:179
+#: ../base/superuser/options.php:179
+msgid "Top Bar Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:169
+#: ../base/executive/options.php:180
+#: ../base/superuser/options.php:180
+msgid "Select a background color for the bar that runs across the top of the header."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:175
+#: ../base/executive/options.php:187
+#: ../base/superuser/options.php:187
+msgid "Top Bar Background Color Opacity"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:176
+#: ../base/executive/options.php:188
+#: ../base/superuser/options.php:188
+msgid "Select the opacity of the above background color. Selecting \"100%\" means that the background color is not transparent, at all."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:204
+#: ../base/executive/options.php:217
+#: ../base/superuser/options.php:217
+msgid "Top Bar Text Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:209
+#: ../base/entrepreneur/options.php:463
+#: ../base/executive/options.php:222
+#: ../base/executive/options.php:300
+#: ../base/superuser/options.php:222
+#: ../base/superuser/options.php:300
+msgid "Dark Text"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:210
+#: ../base/entrepreneur/options.php:464
+#: ../base/executive/options.php:223
+#: ../base/executive/options.php:301
+#: ../base/superuser/options.php:223
+#: ../base/superuser/options.php:301
+msgid "Light Text"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:221
+#: ../base/entrepreneur/options.php:508
+#: ../base/entrepreneur/options.php:772
+#: ../base/executive/options.php:514
+#: ../base/executive/options.php:1048
+#: ../base/superuser/options.php:235
+#: ../base/superuser/options.php:514
+#: ../base/superuser/options.php:834
+#: ../base/superuser/options.php:1083
+msgid "Bottom Border"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:221
+#: ../base/executive/options.php:235
+#: ../base/superuser/options.php:235
+msgid "Apply bottom border to the top bar of the header."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:228
+#: ../base/entrepreneur/options.php:515
+#: ../base/entrepreneur/options.php:779
+#: ../base/executive/options.php:242
+#: ../base/executive/options.php:521
+#: ../base/executive/options.php:1055
+#: ../base/superuser/options.php:521
+#: ../base/superuser/options.php:841
+#: ../base/superuser/options.php:1090
+msgid "Bottom Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:229
+#: ../base/entrepreneur/options.php:516
+#: ../base/entrepreneur/options.php:780
+#: ../base/executive/options.php:243
+#: ../base/executive/options.php:522
+#: ../base/executive/options.php:1056
+#: ../base/superuser/options.php:243
+#: ../base/superuser/options.php:522
+#: ../base/superuser/options.php:842
+#: ../base/superuser/options.php:1091
+msgid "Select a color for the bottom border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:237
+#: ../base/entrepreneur/options.php:524
+#: ../base/entrepreneur/options.php:788
+#: ../base/executive/options.php:251
+#: ../base/executive/options.php:530
+#: ../base/executive/options.php:1064
+#: ../base/superuser/options.php:251
+#: ../base/superuser/options.php:530
+#: ../base/superuser/options.php:850
+#: ../base/superuser/options.php:1099
+msgid "Select a width in pixels for the bottom border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:254
+#: ../base/executive/options.php:268
+#: ../base/superuser/options.php:268
+msgid "Mini Display"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:254
+#: ../base/executive/options.php:268
+#: ../base/superuser/options.php:268
+msgid "Display top bar a bit smaller and more condensed."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:262
+msgid "Header Height"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:263
+msgid "Apply a fixed height to the header. Keep in mind that your header logo image will always be displayed to match the height of your header, minus 20px."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:280
+#: ../base/executive/options.php:286
+#: ../base/superuser/options.php:286
+msgid "Apply Header Background"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:281
+#: ../base/executive/options.php:287
+#: ../base/executive/options.php:641
+#: ../base/superuser/options.php:287
+#: ../base/superuser/options.php:650
+msgid "Select if you'd like to apply a custom background and how you want to control it."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:290
+#: ../base/executive/options.php:307
+#: ../base/superuser/options.php:307
+msgid "Select a background color."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:298
+#: ../base/executive/options.php:315
+#: ../base/superuser/options.php:315
+msgid "Select the opacity of the background color. Selecting \"100%\" means that the background color is not transparent, at all."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:327
+#: ../base/entrepreneur/options.php:666
+#: ../base/executive/options.php:344
+#: ../base/executive/options.php:942
+#: ../base/superuser/options.php:344
+#: ../base/superuser/options.php:977
+msgid "Background Texture"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:328
+#: ../base/entrepreneur/options.php:667
+#: ../base/executive/options.php:345
+#: ../base/executive/options.php:943
+#: ../base/superuser/options.php:345
+#: ../base/superuser/options.php:978
+msgid "Select a background texture."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:336
+#: ../base/executive/options.php:353
+#: ../base/superuser/options.php:353
+msgid "Apply parallax scroll effect to background texture."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:347
+#: ../base/executive/options.php:364
+#: ../base/superuser/options.php:364
+msgid "Background Image"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:348
+#: ../base/executive/options.php:365
+#: ../base/superuser/options.php:365
+msgid "Select a background image."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:359
+#: ../base/executive/options.php:376
+#: ../base/superuser/options.php:376
+msgid "Background Video"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:360
+#: ../base/executive/options.php:377
+#: ../base/superuser/options.php:377
+msgid "You can upload a web-video file (mp4, webm, ogv), or input a URL to a video page on YouTube or Vimeo. Your fallback image will display on mobile devices."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:360
+#: ../base/executive/options.php:377
+#: ../base/superuser/options.php:377
+msgid "Examples:"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:372
+#: ../base/executive/options.php:389
+#: ../base/superuser/options.php:389
+msgid "Shade background with transparent color."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:379
+#: ../base/executive/options.php:396
+#: ../base/superuser/options.php:396
+msgid "Shade Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:380
+#: ../base/executive/options.php:397
+#: ../base/superuser/options.php:397
+msgid "Select the color you want overlaid on your background."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:387
+#: ../base/executive/options.php:404
+#: ../base/superuser/options.php:404
+msgid "Shade Opacity"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:388
+#: ../base/executive/options.php:405
+#: ../base/superuser/options.php:405
+msgid "Select the opacity of the shade color overlaid on your background."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:425
+#: ../base/executive/options.php:442
+#: ../base/superuser/options.php:442
+msgid "Slideshow Images"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:430
+#: ../base/executive/options.php:447
+#: ../base/superuser/options.php:447
+msgid "Slideshow Crop Size"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:431
+#: ../base/executive/options.php:448
+#: ../base/superuser/options.php:448
+msgid "Select the crop size to be used for the background slideshow images. Remember that the background images will be stretched to cover the area."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:440
+#: ../base/executive/options.php:457
+#: ../base/superuser/options.php:457
+msgid "Apply parallax scroll effect to background slideshow."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:458
+#: ../base/executive/options.php:295
+#: ../base/superuser/options.php:295
+msgid "Text Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:470
+#: ../base/entrepreneur/options.php:734
+#: ../base/executive/options.php:476
+#: ../base/executive/options.php:1010
+#: ../base/superuser/options.php:476
+#: ../base/superuser/options.php:796
+#: ../base/superuser/options.php:1045
+msgid "Top Border"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:470
+#: ../base/executive/options.php:476
+#: ../base/superuser/options.php:476
+msgid "Apply top border to header."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:477
+#: ../base/entrepreneur/options.php:741
+#: ../base/executive/options.php:483
+#: ../base/executive/options.php:1017
+#: ../base/superuser/options.php:483
+#: ../base/superuser/options.php:803
+#: ../base/superuser/options.php:1052
+msgid "Top Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:478
+#: ../base/entrepreneur/options.php:742
+#: ../base/executive/options.php:484
+#: ../base/executive/options.php:1018
+#: ../base/superuser/options.php:484
+#: ../base/superuser/options.php:804
+#: ../base/superuser/options.php:1053
+msgid "Select a color for the top border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:485
+#: ../base/entrepreneur/options.php:749
+#: ../base/executive/options.php:491
+#: ../base/executive/options.php:1025
+#: ../base/superuser/options.php:491
+#: ../base/superuser/options.php:811
+#: ../base/superuser/options.php:1060
+msgid "Top Border Width"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:486
+#: ../base/entrepreneur/options.php:750
+#: ../base/executive/options.php:492
+#: ../base/executive/options.php:1026
+#: ../base/superuser/options.php:492
+#: ../base/superuser/options.php:812
+#: ../base/superuser/options.php:1061
+msgid "Select a width in pixels for the top border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:508
+#: ../base/executive/options.php:514
+#: ../base/superuser/options.php:514
+msgid "Apply bottom border to header."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:563
+#: ../base/executive/options.php:832
+#: ../base/superuser/options.php:867
+msgid "Text Shadow"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:563
+#: ../base/executive/options.php:832
+#: ../base/superuser/options.php:867
+msgid "Apply shadow to the text of the main menu."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:563
+msgid "Note: This works better with a darker colored header."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:569
+#: ../base/entrepreneur/options.php:1176
+#: ../base/executive/options.php:1452
+#: ../base/superuser/options.php:1487
+msgid "Highlight Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:570
+msgid "Select a color to be used as a sublte highlight to the main menu."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:577
+msgid "Also apply menu highlight color top-level menu items, when using transparent header."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:583
+#: ../base/executive/options.php:763
+#: ../base/superuser/options.php:772
+msgid "Dropdown Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:584
+#: ../base/executive/options.php:764
+#: ../base/superuser/options.php:773
+msgid "Select a background color for the main menu's drop down menus."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:590
+#: ../base/executive/options.php:770
+#: ../base/superuser/options.php:779
+msgid "Dropdown Background Color Brightness"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:603
+#: ../base/executive/options.php:879
+#: ../base/superuser/options.php:914
+msgid "Mobile Menu Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:604
+#: ../base/executive/options.php:880
+#: ../base/superuser/options.php:915
+msgid "Select a background color for the mobile menu side panel."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:610
+#: ../base/executive/options.php:886
+#: ../base/superuser/options.php:921
+msgid "Mobile Menu Background Color Brightness"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:623
+#: ../base/executive/options.php:899
+#: ../base/superuser/options.php:934
+#, php-format
+msgid "These options apply to the side panel that shows on desktops when you assign a menu to the \"Primary Side Navigation\" or \"Secondary Side Navigation\" locations at %s."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:628
+#: ../base/executive/options.php:904
+#: ../base/superuser/options.php:939
+msgid "Side Panel Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:629
+#: ../base/executive/options.php:905
+#: ../base/superuser/options.php:940
+msgid "Select a background color for the desktop side panel."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:635
+#: ../base/executive/options.php:911
+#: ../base/superuser/options.php:946
+msgid "Side Panel Background Color Brightness"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:653
+msgid "Footer Background"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:654
+#: ../base/executive/options.php:930
+#: ../base/superuser/options.php:965
+msgid "Select if you'd like to apply a custom background color to the footer."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:654
+#: ../base/executive/options.php:930
+#: ../base/superuser/options.php:965
+#, php-format
+msgid "Note: To setup a more complex designed footer, go to %s and use the \"Template Sync\" feature."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:654
+#: ../base/executive/options.php:930
+#: ../base/superuser/options.php:965
+msgid "Layout > Footer"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:658
+#: ../base/executive/options.php:934
+#: ../base/superuser/options.php:969
+msgid "None"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:659
+#: ../base/executive/options.php:645
+#: ../base/executive/options.php:935
+#: ../base/superuser/options.php:654
+#: ../base/superuser/options.php:970
+#: ../framework/admin/functions/general.php:303
+msgid "Custom color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:660
+#: ../base/executive/options.php:936
+#: ../base/superuser/options.php:971
+#: ../framework/admin/functions/general.php:304
+msgid "Custom color + texture"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:675
+#: ../base/executive/options.php:951
+#: ../base/superuser/options.php:986
+msgid "Select a background color for the footer."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:695
+#: ../base/entrepreneur/options.php:1074
+#: ../base/executive/options.php:971
+#: ../base/executive/options.php:1350
+#: ../base/superuser/options.php:1006
+#: ../base/superuser/options.php:1385
+msgid "Select the opacity of the background color you chose."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:734
+#: ../base/executive/options.php:1010
+#: ../base/superuser/options.php:1045
+msgid "Apply top border to footer."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:772
+#: ../base/executive/options.php:1048
+#: ../base/superuser/options.php:1083
+msgid "Apply bottom border to footer."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:938
+#: ../base/executive/options.php:1214
+#: ../base/superuser/options.php:1249
+msgid "Default Buttons"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:939
+#: ../base/executive/options.php:1215
+#: ../base/superuser/options.php:1250
+msgid "Configure what a default button looks like."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:954
+#: ../base/executive/options.php:1230
+#: ../base/superuser/options.php:1265
+msgid "Configure what a primary button looks like."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:968
+#: ../base/executive/options.php:1244
+#: ../base/superuser/options.php:1279
+msgid "General Button Border Width"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:969
+#: ../base/executive/options.php:1245
+#: ../base/superuser/options.php:1280
+msgid "If your buttons are set to include a border, select a width in pixels for those borders."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:980
+#: ../base/executive/options.php:1256
+#: ../base/superuser/options.php:1291
+msgid "General Button Corners"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:981
+msgid "Select the border radius of button corners."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:999
+#: ../base/executive/options.php:1275
+#: ../base/superuser/options.php:1310
+msgid "Widget Style"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1000
+#: ../base/executive/options.php:1276
+#: ../base/superuser/options.php:1311
+msgid "Select how you want to style your widgets."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1000
+#: ../base/executive/options.php:1276
+#: ../base/superuser/options.php:1311
+msgid "What's a Bootstrap panel?"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1004
+#: ../base/executive/options.php:1280
+#: ../base/superuser/options.php:1315
+#: ../framework/admin/meta/meta.php:303
+msgid "Standard"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1005
+#: ../base/executive/options.php:1281
+#: ../base/superuser/options.php:1316
+msgid "Bootstrap Panel"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1015
+#: ../base/executive/options.php:1291
+#: ../base/superuser/options.php:1326
+msgid "Panel Style"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1016
+#: ../base/executive/options.php:1292
+#: ../base/superuser/options.php:1327
+msgid "Select a style for the Bootstrap panel. You can use a preset style, or setup custom colors."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1021
+#: ../base/executive/options.php:1297
+#: ../base/superuser/options.php:1332
+msgid "Custom Style"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1022
+#: ../base/executive/options.php:1298
+#: ../base/superuser/options.php:1333
+msgid "Bootstrap: Default"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1023
+#: ../base/executive/options.php:1299
+#: ../base/superuser/options.php:1334
+msgid "Bootstrap: Primary"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1024
+#: ../base/executive/options.php:1300
+#: ../base/superuser/options.php:1335
+msgid "Bootstrap: Info (blue)"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1025
+#: ../base/executive/options.php:1301
+#: ../base/superuser/options.php:1336
+msgid "Bootstrap: Warning (yellow)"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1026
+#: ../base/executive/options.php:1302
+#: ../base/superuser/options.php:1337
+msgid "Bootstrap: Danger (red)"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1033
+#: ../base/executive/options.php:1309
+#: ../base/superuser/options.php:1344
+msgid "Panel Title Background"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1034
+#: ../base/executive/options.php:1310
+#: ../base/superuser/options.php:1345
+msgid "Select two colors to create a background gradient for widget titles. For a solid color, simply select the same color twice."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1041
+#: ../base/executive/options.php:1317
+#: ../base/superuser/options.php:1352
+msgid "Panel Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1042
+#: ../base/entrepreneur/options.php:1146
+#: ../base/executive/options.php:807
+#: ../base/executive/options.php:1318
+#: ../base/executive/options.php:1422
+#: ../base/superuser/options.php:1353
+#: ../base/superuser/options.php:1457
+msgid "Select a color for the border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1053
+#: ../base/executive/options.php:1329
+#: ../base/superuser/options.php:1364
+msgid "Widget Background Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1060
+#: ../base/executive/options.php:1336
+#: ../base/superuser/options.php:1371
+msgid "Widget Background Color Brightness"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1073
+#: ../base/executive/options.php:1349
+#: ../base/superuser/options.php:1384
+msgid "Widget Background Color Opacity"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1103
+#: ../base/executive/options.php:1379
+#: ../base/superuser/options.php:1414
+msgid "Widget Title Text Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1104
+#: ../base/executive/options.php:1380
+#: ../base/superuser/options.php:1415
+msgid "Select the text color for titles of widgets."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1111
+#: ../base/executive/options.php:1387
+#: ../base/superuser/options.php:1422
+msgid "Widget Title Text Size"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1112
+#: ../base/executive/options.php:1388
+#: ../base/superuser/options.php:1423
+msgid "Select the text size for titles of widgets."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1125
+#: ../base/executive/options.php:1401
+#: ../base/superuser/options.php:1436
+msgid "Widget Title Text Shadow"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1125
+#: ../base/executive/options.php:1401
+#: ../base/superuser/options.php:1436
+msgid "Apply shadow to widget title text."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1138
+#: ../base/executive/options.php:1414
+#: ../base/superuser/options.php:1449
+msgid "Widget Border"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1138
+#: ../base/executive/options.php:1414
+#: ../base/superuser/options.php:1449
+msgid "Apply border around widgets."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1145
+#: ../base/executive/options.php:806
+#: ../base/executive/options.php:1421
+#: ../base/superuser/options.php:1456
+msgid "Border Color"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1153
+#: ../base/executive/options.php:814
+#: ../base/executive/options.php:1429
+#: ../base/superuser/options.php:1464
+msgid "Border Width"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1154
+#: ../base/executive/options.php:815
+#: ../base/executive/options.php:1430
+#: ../base/superuser/options.php:1465
+msgid "Select a width in pixels for the border."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1177
+#: ../base/executive/options.php:1453
+#: ../base/superuser/options.php:1488
+msgid "Select a Highlight color to be used in a few little areas throughout your site."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1184
+#: ../base/executive/options.php:1460
+#: ../base/superuser/options.php:1495
+msgid "Display special styling to titles of info boxes and standard widgets."
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1191
+#: ../base/executive/options.php:1467
+#: ../base/superuser/options.php:1502
+msgid "Display avatars and small featured images as circles"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1218
+#: ../base/executive/options.php:1492
+#: ../base/superuser/options.php:1527
+msgid "Header Info"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1221
+#: ../base/executive/options.php:1495
+#: ../base/superuser/options.php:1530
+msgid "Main Menu"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1222
+#: ../base/executive/options.php:1496
+#: ../base/superuser/options.php:1531
+msgid "Mobile Menu"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1226
+#: ../base/executive/options.php:1500
+#: ../base/superuser/options.php:1535
+msgid "Buttons"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1227
+#: ../base/executive/options.php:1501
+#: ../base/superuser/options.php:1536
+msgid "Sidebar Widgets"
+msgstr ""
+
+#: ../base/entrepreneur/options.php:1228
+#: ../base/executive/options.php:1502
+#: ../base/superuser/options.php:1537
+msgid "Extras"
+msgstr ""
+
+#: ../base/entrepreneur/presets.php:18
+#: ../base/executive/presets.php:18
+#: ../base/superuser/presets.php:18
+#: ../framework/admin/meta/class-tb-user-options.php:144
+#: ../framework/admin/meta/class-tb-user-options.php:151
+msgid "Default"
+msgstr ""
+
+#: ../base/executive/options.php:166
+#: ../base/superuser/options.php:166
+msgid "Header Info Display"
+msgstr ""
+
+#: ../base/executive/options.php:167
+#: ../base/superuser/options.php:167
+#, php-format
+msgid "Select where you'd like the header info to display, configured at %s."
+msgstr ""
+
+#: ../base/executive/options.php:167
+#: ../base/superuser/options.php:167
+msgid "Theme Options > Layout > Header"
+msgstr ""
+
+#: ../base/executive/options.php:172
+#: ../base/superuser/options.php:172
+msgid "Top bar above header"
+msgstr ""
+
+#: ../base/executive/options.php:173
+#: ../base/superuser/options.php:173
+msgid "Within header"
+msgstr ""
+
+#: ../base/executive/options.php:235
+msgid "Top Bar Bottom Border"
+msgstr ""
+
+#: ../base/executive/options.php:552
+#: ../base/executive/options.php:559
+#: ../base/superuser/options.php:559
+msgid "Top Padding"
+msgstr ""
+
+#: ../base/executive/options.php:552
+msgid "Apply custom padding top the top of the header."
+msgstr ""
+
+#: ../base/executive/options.php:560
+#: ../base/superuser/options.php:560
+msgid "Set the padding on the top of the header."
+msgstr ""
+
+#: ../base/executive/options.php:582
+#: ../base/executive/options.php:589
+#: ../base/superuser/options.php:585
+msgid "Bottom Padding"
+msgstr ""
+
+#: ../base/executive/options.php:582
+msgid "Apply custom padding bottom the bottom of the header."
+msgstr ""
+
+#: ../base/executive/options.php:590
+#: ../base/superuser/options.php:586
+msgid "Set the padding on the bottom of the header."
+msgstr ""
+
+#: ../base/executive/options.php:607
+#: ../base/superuser/options.php:616
+msgid "Center Logo"
+msgstr ""
+
+#: ../base/executive/options.php:607
+#: ../base/superuser/options.php:616
+msgid "Center align the logo within the header."
+msgstr ""
+
+#: ../base/executive/options.php:640
+#: ../base/superuser/options.php:649
+msgid "Main Menu Background"
+msgstr ""
+
+#: ../base/executive/options.php:646
+#: ../base/superuser/options.php:655
+msgid "Custom color + glassy overlay"
+msgstr ""
+
+#: ../base/executive/options.php:647
+#: ../base/superuser/options.php:656
+msgid "Custom color + noisy texture"
+msgstr ""
+
+#: ../base/executive/options.php:648
+#: ../base/superuser/options.php:657
+msgid "Custom gradient"
+msgstr ""
+
+#: ../base/executive/options.php:655
+#: ../base/superuser/options.php:664
+msgid "Select a background color for the main menu."
+msgstr ""
+
+#: ../base/executive/options.php:662
+#: ../base/superuser/options.php:671
+msgid "Background Gradient"
+msgstr ""
+
+#: ../base/executive/options.php:663
+#: ../base/superuser/options.php:672
+msgid "Select two colors to create a gradient with for the main menu."
+msgstr ""
+
+#: ../base/executive/options.php:671
+#: ../base/superuser/options.php:680
+msgid "Select the opacity of the background color(s). Selecting \"100%\" means that the background color is not transparent, at all."
+msgstr ""
+
+#: ../base/executive/options.php:716
+#: ../base/superuser/options.php:725
+msgid "Button Hover Background Color"
+msgstr ""
+
+#: ../base/executive/options.php:717
+#: ../base/superuser/options.php:726
+msgid "Select a background color for when buttons of the main are hovered on."
+msgstr ""
+
+#: ../base/executive/options.php:723
+#: ../base/superuser/options.php:732
+msgid "Button Hover Background Color Opacity"
+msgstr ""
+
+#: ../base/executive/options.php:724
+#: ../base/superuser/options.php:733
+msgid "Select the opacity of the color you selected in the previous option."
+msgstr ""
+
+#: ../base/executive/options.php:752
+#: ../base/superuser/options.php:761
+msgid "Button Hover Background Color Brightness"
+msgstr ""
+
+#: ../base/executive/options.php:781
+msgid "Menu Corners"
+msgstr ""
+
+#: ../base/executive/options.php:782
+msgid "Set the border radius of menu corners. Setting to 0px will mean the menu corners are square."
+msgstr ""
+
+#: ../base/executive/options.php:799
+msgid "Border"
+msgstr ""
+
+#: ../base/executive/options.php:799
+msgid "Apply border around menu."
+msgstr ""
+
+#: ../base/executive/options.php:844
+#: ../base/superuser/options.php:879
+msgid "Dividers"
+msgstr ""
+
+#: ../base/executive/options.php:844
+#: ../base/superuser/options.php:879
+msgid "Add dividers between buttons of main menu."
+msgstr ""
+
+#: ../base/executive/options.php:851
+#: ../base/superuser/options.php:886
+msgid "Divider Color"
+msgstr ""
+
+#: ../base/executive/options.php:852
+#: ../base/superuser/options.php:887
+msgid "Select a color for the menu dividers."
+msgstr ""
+
+#: ../base/executive/options.php:864
+#: ../base/superuser/options.php:899
+msgid "Center"
+msgstr ""
+
+#: ../base/executive/options.php:864
+msgid "Center the main menu."
+msgstr ""
+
+#: ../base/executive/options.php:871
+#: ../base/superuser/options.php:906
+msgid "Search Bar"
+msgstr ""
+
+#: ../base/executive/options.php:871
+#: ../base/superuser/options.php:906
+msgid "Add popup with search bar to main menu."
+msgstr ""
+
+#: ../base/executive/options.php:929
+#: ../base/superuser/options.php:964
+msgid "Apply Footer Background"
+msgstr ""
+
+#: ../base/executive/options.php:1257
+#: ../base/superuser/options.php:1292
+msgid "Set the border radius of button corners. Setting to 0px will mean buttons corners are square."
+msgstr ""
+
+#: ../base/superuser/options.php:242
+msgid "Top Bar Bottom Border Color"
+msgstr ""
+
+#: ../base/superuser/options.php:552
+msgid "Padding"
+msgstr ""
+
+#: ../base/superuser/options.php:552
+msgid "Apply custom padding around header content."
+msgstr ""
+
+#: ../base/superuser/options.php:572
+msgid "Right Padding"
+msgstr ""
+
+#: ../base/superuser/options.php:573
+msgid "Set the padding on the right of the header."
+msgstr ""
+
+#: ../base/superuser/options.php:598
+msgid "Left Padding"
+msgstr ""
+
+#: ../base/superuser/options.php:599
+msgid "Set the padding on the left of the header."
+msgstr ""
+
+#: ../base/superuser/options.php:796
+msgid "Apply top border to menu."
+msgstr ""
+
+#: ../base/superuser/options.php:834
+msgid "Apply bottom border to menu."
+msgstr ""
+
+#: ../base/superuser/options.php:899
+msgid "Center align the buttons of the main menu."
+msgstr ""
+
+#: ../base/superuser/presets.php:43
+msgid "Style 5"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:50
+msgid "1 item"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:240
+msgid "10-Column Grid"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:241
+msgid "12-Column Grid"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:353
+msgid "- Select Content Type -"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:357
+msgid "Floating Widget Area"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:361
+msgid "Content of Current Page"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:365
+msgid "Content of External Page"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:369
+msgid "Raw Content"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:696
+msgid "page"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:697
+msgid "pages"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:700
+msgid "post"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:701
+msgid "posts"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:704
+msgid "portfolio-item"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:705
+msgid "portfolio items"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:708
+msgid "portfolio-tag"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:709
+msgid "portfolio tags"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:712
+#: ../framework/admin/meta/meta.php:256
+msgid "tag"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:713
+msgid "tags"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:724
+#, php-format
+msgid "Enter in a comma-separated list of the %s you'd like to add to the assignments."
+msgstr ""
+
+#: ../framework/admin/functions/display.php:726
+#, php-format
+msgid "Note: Any %s entered that don't exist won't be saved."
+msgstr ""
+
+#: ../framework/admin/functions/display.php:880
+msgid "Default Logo"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:881
+msgid "Site Title"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:882
+msgid "Site Title + Tagline"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:883
+msgid "Custom Text"
+msgstr ""
+
+#: ../framework/admin/functions/display.php:884
+msgid "Image"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:148
+msgid "Page Attributes"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:206
+msgid "Options cleared from database."
+msgstr ""
+
+#: ../framework/admin/functions/general.php:302
+msgid "No background"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:305
+msgid "Custom color + image"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:306
+msgid "Custom image slideshow"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:307
+msgid "Custom video"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:317
+msgid "Theme's preset \"Featured\" area background"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:321
+msgid "Theme's preset \"Featured Below\" area background"
+msgstr ""
+
+#: ../framework/admin/functions/general.php:327
+msgid "No banner"
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:22
+msgid "By doing this, you will clear your database of this option set. In other words, you will lose any previously saved settings. Are you sure you want to continue?"
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:23
+msgid "Clear Options"
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:24
+msgid "Are you sure you want to delete this item?"
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:25
+msgid "Oops! You forgot to enter a name."
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:26
+msgid "Oops! The name you entered is either taken or too close to another name you've already used."
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:27
+msgid "Publish"
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:28
+msgid "Are you sure you want to apply this group of preset options? This will override some of your current settings."
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:29
+msgid "Oops! You've already got another element displaying paginated posts. When you have more than one paginated set of posts on a page, you're going to get funky results."
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:30
+msgid "By doing this, all of your default theme settings will be saved, and you will lose any previously saved settings. Are you sure you want to continue?"
+msgstr ""
+
+#: ../framework/admin/functions/locals.php:31
+msgid "Restore Defaults"
+msgstr ""
+
+#: ../framework/admin/meta/class-tb-tax-options.php:107
+#: ../framework/admin/meta/class-tb-tax-options.php:114
+#: ../framework/admin/meta/meta.php:74
+#: ../framework/admin/meta/meta.php:86
+#: ../framework/admin/meta/meta.php:302
+#: ../framework/admin/meta/meta.php:349
+#: ../framework/admin/meta/meta.php:361
+#: ../framework/admin/meta/meta.php:385
+#: ../framework/admin/meta/meta.php:398
+#: ../framework/admin/meta/meta.php:410
+#: ../framework/admin/meta/meta.php:422
+msgid "Use default setting"
+msgstr ""
+
+#: ../framework/admin/meta/class-tb-user-options.php:82
+msgid "Facebook URL"
+msgstr ""
+
+#: ../framework/admin/meta/class-tb-user-options.php:87
+msgid "Google+ URL"
+msgstr ""
+
+#: ../framework/admin/meta/class-tb-user-options.php:92
+msgid "LinkedIn URL"
+msgstr ""
+
+#: ../framework/admin/meta/class-tb-user-options.php:97
+msgid "Pinterest URL"
+msgstr ""
+
+#: ../framework/admin/meta/class-tb-user-options.php:102
+msgid "Twitter URL"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:52
+msgid "Page Options"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:60
+msgid "Page Title"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:61
+msgid "Select whether to display the page's title."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:61
+msgid "This option will be ignored if you've applied the \"Custom Layout\" template; however, if you've set your featured image to display above the content, it will still apply."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:64
+msgid "Yes, show page's title"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:65
+msgid "No, hide page's title"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:70
+msgid "Breadcrumbs"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:71
+msgid "Select whether you'd like breadcrumbs to show on this page or not. This option will be ignored if you've applied the \"Custom Layout\" or \"Blank Page\" templates."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:75
+#: ../framework/admin/meta/meta.php:411
+msgid "Yes, show breadcrumbs"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:76
+#: ../framework/admin/meta/meta.php:412
+msgid "No, hide breadcrumbs"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:81
+msgid "Featured Image Display"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:82
+msgid "Select how you'd like the featured image to show at the top of the page."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:82
+msgid "Notes: (1) When not using the default page template, featured image can only displayed above the content. (2) The full-screen option will work best when a Transparent Header is set."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:87
+#: ../framework/admin/meta/meta.php:423
+msgid "Full width, above content"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:88
+#: ../framework/admin/meta/meta.php:424
+msgid "Full screen parallax, above content"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:89
+#: ../framework/admin/meta/meta.php:425
+msgid "Standard, with content"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:90
+msgid "Hide featured images"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:99
+msgid "Featured Image Link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:100
+msgid "Here you can select how you'd like this page's featured image to react when clicked, if you've set one."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:100
+#: ../framework/admin/meta/meta.php:485
+msgid "Note: This does not apply when the featured image is displayed above the content."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:104
+#: ../framework/admin/meta/meta.php:440
+msgid "Featured image is not a link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:105
+#: ../framework/admin/meta/meta.php:442
+msgid "It links to its enlarged lightbox version"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:106
+#: ../framework/admin/meta/meta.php:443
+msgid "It links to a custom lightbox image"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:107
+#: ../framework/admin/meta/meta.php:444
+msgid "It links to a lightbox video"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:108
+#: ../framework/admin/meta/meta.php:445
+msgid "It links to a webpage"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:114
+#: ../framework/admin/meta/meta.php:451
+msgid "Featured Image - Image Link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:115
+#: ../framework/admin/meta/meta.php:452
+msgid "Enter the full URL of enlarged image that the featured image will link to."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:115
+#: ../framework/admin/meta/meta.php:452
+msgid "Ex: http://your-site.com/uploads/image.jpg"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:121
+#: ../framework/admin/meta/meta.php:458
+msgid "Featured Image - Video Link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:122
+#: ../framework/admin/meta/meta.php:459
+msgid "Enter the full webpage URL to a video from YouTube or Vimeo."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:122
+#: ../framework/admin/meta/meta.php:459
+msgid "Ex"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:128
+#: ../framework/admin/meta/meta.php:465
+msgid "Featured Image - External Link"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:129
+#: ../framework/admin/meta/meta.php:466
+msgid "Enter the full URL of where the featured image will link."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:129
+#: ../framework/admin/meta/meta.php:466
+msgid "Ex: http://google.com"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:135
+#: ../framework/admin/meta/meta.php:472
+msgid "Featured Image - External Link Target"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:136
+#: ../framework/admin/meta/meta.php:473
+msgid "Select whether you'd like the external link to open in a new window or not."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:140
+#: ../framework/admin/meta/meta.php:477
+msgid "Open link in new window"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:141
+#: ../framework/admin/meta/meta.php:478
+msgid "Open link in same window"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:174
+msgid "Theme Layout"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:183
+msgid "Note: The transparent header option will work best when a large graphic is displayed prominently at the top of the page."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:183
+#: ../framework/admin/meta/meta.php:269
+#: ../framework/admin/meta/meta.php:275
+msgid "Learn More"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:186
+msgid "Standard Header"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:188
+msgid "Hide Header"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:196
+msgid "Standard Footer"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:197
+msgid "Hide Footer"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:231
+msgid "Post Template Options"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:239
+#, php-format
+msgid "Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress's Codex page on the %s."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:244
+msgid "cat"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:245
+msgid "Category ID(s) to include/exclude."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:245
+msgid "Ex: 1"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:245
+msgid "Ex: 1,2,3"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:245
+msgid "Ex: -1,-2,-3"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:250
+msgid "category_name"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:251
+msgid "Category slug(s) to include."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:251
+msgid "Ex: cat-1"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:251
+msgid "Ex: cat-1,cat-2"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:257
+msgid "Tag(s) to include."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:257
+msgid "Ex: tag-1"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:257
+msgid "Ex: tag-1,tag-2"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:262
+msgid "posts_per_page"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:263
+msgid "Number of posts per page. This option gets used for the Blog template, Post List template, and when using \"masonry\" style display for the Post Grid and Post Showcase template. Standard grid view for Post Grid and Post Showcase templates use rows*columns."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:268
+msgid "orderby"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:269
+msgid "What to order posts by -- date, title, rand, etc."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:274
+msgid "order"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:275
+msgid "How to order posts -- ASC or DESC."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:280
+msgid "query"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:281
+msgid "A custom query string. This will override other options."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:281
+msgid "Ex: tag=baking"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:281
+msgid "Ex: post_type=my_type&my_tax=my_term"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:286
+msgid "columns"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:287
+msgid "Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, default value is used from theme options page."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:292
+msgid "rows"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:293
+msgid "Number of rows for Post Grid and Post Showcase templates. When empty, default value is used from theme options page."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:293
+msgid "Note: This option does not apply when using masonry."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:298
+msgid "tb_display"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:299
+msgid "When using Post Grid and Post Showcase template, this custom field allows you to override the default display option."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:304
+msgid "Masonry"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:336
+msgid "Post Options"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:344
+msgid "Meta Information (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:345
+msgid "Select if you'd like the meta information (like date posted, author, etc) to show on this single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:350
+msgid "Show meta info"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:351
+msgid "Hide meta info"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:356
+msgid "Sub Meta Information (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:357
+msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on this single post."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:362
+msgid "Show sub meta info"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:363
+msgid "Hide sub meta info"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:368
+msgid "Author Box (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:369
+msgid "Select if you'd like to display a box with information about the post's author."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:373
+msgid "Use WordPress user's default setting"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:374
+msgid "Show author box"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:375
+msgid "Hide author box"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:380
+msgid "Related Posts (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:381
+msgid "Select if you'd like to show more posts related to the one being viewed."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:381
+msgid "Note: This only applies to standard posts."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:386
+msgid "Show related posts by tag"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:387
+msgid "Show related posts by category"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:388
+msgid "Hide related posts"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:393
+msgid "Comments (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:394
+msgid "This will hide the presence of comments on this single post."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:399
+msgid "Show comments"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:400
+msgid "Hide comments"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:405
+msgid "Breadcrumbs (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:406
+msgid "Select whether you'd like breadcrumbs to show on this post or not."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:417
+msgid "Featured Image or Gallery (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:418
+msgid "Select how you'd like the featured image to show at the top of the post. This option only refers to this single post."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:418
+msgid "Note: The full-screen option will work best when a Transparent Header is set."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:426
+msgid "Hide featured image"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:435
+msgid "Featured Image Link (everywhere)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:436
+msgid "Here you can select how you'd like this post's featured image to react when clicked. This DOES apply to both this single post page and when this post is used in a blog, post list, post grid, or post showcase."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:436
+msgid "Note: This does not apply to the single post when the featured image is displayed above the content."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:441
+msgid "It links to its post"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:484
+msgid "Featured Image Link (the single post)"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:485
+msgid "If you've selected a featured image link above, select whether you'd like the image link to be applied to the featured image on the single post page."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:489
+msgid "Yes, apply featured image link to single post"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:490
+msgid "No, don't apply featured image link to single post"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:491
+msgid "Link it to its enlarged lightbox version"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:500
+msgid "Sidebar Layout"
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:501
+msgid "Choose the sidebar layout for this specific post. Keeping it set to \"Website Default\" will allow this post to continue using the sidebar layout selected on the Theme Options page."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:529
+msgid "(no parent)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-options-page.php:124
+#: ../framework/admin/options/class-tb-options-page.php:125
+msgid "Theme Options"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-options-page.php:253
+msgid "Nothing to export. Theme Options have never been saved."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-options-page.php:411
+msgid "Your saved options do not currently match the theme base you've selected. Please configure and save your theme options page."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-options-page.php:504
+msgid "Default options restored."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-options-page.php:615
+msgid "Options saved."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:82
+msgid "Add Item"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:83
+msgid "Delete Item"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:85
+msgid "Delete All Items"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:86
+msgid "Are you sure you want to delete all items?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:649
+msgid "Display Label"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:650
+msgid "Enter a label for this display."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:650
+msgid "Ex: Graphic Design"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:656
+msgid "Value Display Label"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:657
+msgid "Enter a label to display the value."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:657
+msgid "Ex: 80%"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:662
+#: ../framework/admin/options/class-tb-sortable-option.php:1047
+msgid "Value"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:663
+msgid "Enter a number for the value."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:663
+msgid "Ex: 80"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:669
+msgid "Total"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:670
+msgid "Enter a number, which your above value should be divided into. If your above value is meant to represent a straight percantage, then this \"total\" number should be 100."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:676
+#: ../framework/admin/options/class-tb-sortable-option.php:886
+#: ../framework/admin/options/class-tb-sortable-option.php:1054
+msgid "Color"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:677
+msgid "Select a color that represents this progress bar."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:692
+msgid "Add Progress Bar"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:693
+msgid "Delete Progress Bar"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:694
+msgid "Are you sure you want to delete this progress bar?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:695
+msgid "Delete All Progress Bars"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:696
+msgid "Are you sure you want to delete all progress bars?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:738
+#: ../framework/admin/options/class-tb-sortable-option.php:1476
+msgid "Button Color"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:739
+#: ../framework/admin/options/class-tb-sortable-option.php:1477
+msgid "Select what color you'd like to use for this button."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:746
+#: ../framework/admin/options/class-tb-sortable-option.php:1484
+msgid "Custom Button Color"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:747
+#: ../framework/admin/options/class-tb-sortable-option.php:1485
+msgid "Configure a custom style for the button."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:765
+#: ../framework/admin/options/class-tb-sortable-option.php:1503
+msgid "Button Text"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:766
+#: ../framework/admin/options/class-tb-sortable-option.php:1504
+msgid "Enter the text for the button."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:773
+#: ../framework/admin/options/class-tb-sortable-option.php:1519
+msgid "Button Size"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:774
+#: ../framework/admin/options/class-tb-sortable-option.php:1520
+msgid "Select the size you'd like used for this button."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:778
+#: ../framework/admin/options/class-tb-sortable-option.php:1525
+msgid "Mini"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:779
+#: ../framework/admin/options/class-tb-sortable-option.php:1526
+msgid "Small"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:780
+#: ../framework/admin/options/class-tb-sortable-option.php:1527
+#: ../framework/admin/options/options-sanitize.php:1278
+msgid "Normal"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:781
+#: ../framework/admin/options/class-tb-sortable-option.php:1528
+msgid "Large"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:782
+msgid "X-Large"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:783
+msgid "XX-Large"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:784
+msgid "XXX-Large"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:789
+#: ../framework/admin/options/class-tb-sortable-option.php:1212
+#: ../framework/admin/options/class-tb-sortable-option.php:1511
+#: ../framework/admin/options/class-tb-sortable-option.php:1613
+msgid "Link URL"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:790
+#: ../framework/admin/options/class-tb-sortable-option.php:1512
+msgid "Enter the full URL where you want the button's link to go."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:796
+#: ../framework/admin/options/class-tb-sortable-option.php:1625
+msgid "Link Target"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:797
+msgid "Select how you want the button to open the webpage."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:800
+#: ../framework/admin/options/class-tb-sortable-option.php:1630
+msgid "Same Window"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:801
+#: ../framework/admin/options/class-tb-sortable-option.php:1629
+msgid "New Window"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:802
+msgid "Lightbox Popup"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:807
+#: ../framework/admin/options/class-tb-sortable-option.php:1534
+msgid "Icon Before Button Text (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:808
+#: ../framework/admin/options/class-tb-sortable-option.php:1535
+msgid "Icon before text of button. This can be any FontAwesome vector icon ID."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:814
+#: ../framework/admin/options/class-tb-sortable-option.php:1542
+msgid "Icon After Button Text (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:815
+#: ../framework/admin/options/class-tb-sortable-option.php:1543
+msgid "Icon after text of button. This can be any FontAwesome vector icon ID."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:830
+msgid "Add Button"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:831
+msgid "Delete Button"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:832
+msgid "Are you sure you want to delete this button?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:833
+msgid "Delete All Buttons"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:834
+msgid "Are you sure you want to delete all buttons?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:872
+#: ../framework/admin/options/class-tb-sortable-option.php:1040
+#: ../framework/admin/options/class-tb-sortable-option.php:1619
+#: ../framework/admin/options/class-tb-sortable-option.php:1695
+msgid "Label"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:873
+msgid "Enter a label for this dataset."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:879
+msgid "Values"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:880
+msgid "Enter a comma separated list of values for this data set."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:880
+msgid "Ex: 10, 20, 30, 40, 50, 60"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:887
+msgid "Select a color that represents this data set."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:902
+msgid "Add Data Set"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:903
+msgid "Delete Data Set"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:904
+msgid "Are you sure you want to delete this data set?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:905
+msgid "Delete All Data Sets"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:906
+msgid "Are you sure you want to delete all data sets?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:944
+msgid "Location Name"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:945
+msgid "Enter a name for this location."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:951
+msgid "Location Latitude and Longitude"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:952
+msgid "For this marker to be displayed, there needs to be a latitude and longitude saved. You can use the tool below the text fields to generate the coordinates."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:961
+msgid "Location Information"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:962
+msgid "When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don't get too carried away."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:969
+msgid "Custom Marker Image (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:970
+msgid "If you'd like a custom image to replace the default Google Map marker, you can insert it here."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:977
+msgid "Custom Marker Image Width (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:978
+msgid "If you'd like to scale your custom marker image, input a width in pixels. Ex: 50"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:983
+msgid "Custom Marker Image Height (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:984
+msgid "If you'd like to scale your custom marker image, input a height in pixels. Ex: 32"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:998
+msgid "Add Map Location"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:999
+msgid "Delete Location"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1000
+msgid "Are you sure you want to delete this location?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1001
+msgid "Delete All Locations"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1002
+msgid "Are you sure you want to delete all map locations?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1041
+msgid "Enter a label for this sector."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1048
+msgid "Enter a numeric value for this sector."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1055
+msgid "Select a color that represents this sector."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1070
+msgid "Add Sector"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1071
+msgid "Delete Sector"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1072
+msgid "Are you sure you want to delete this sector?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1073
+msgid "Delete All Sectors"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1074
+msgid "Are you sure you want to delete all sectors?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1178
+msgid "Title (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1179
+msgid "If you'd like a headline to show on the slide, you may enter it here."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1186
+msgid "Description (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1187
+msgid "If you'd like a description to show on the slide, you may enter it here."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1198
+msgid "Link"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1199
+msgid "Select if and how this image should be linked."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1202
+msgid "No Link"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1203
+msgid "Link to webpage in same window."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1204
+msgid "Link to webpage in new window."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1205
+msgid "Link to image in lightbox popup."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1206
+msgid "Link to video in lightbox popup."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1214
+msgid "Enter a URL to a webpage.<br />Ex: http://yoursite.com/example"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1215
+msgid "Enter a URL to a webpage.<br />Ex: http://google.com"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1216
+msgid "Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1217
+msgid "Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1217
+msgid "Ex: https://youtube.com/watch?v=ginTCwWfGNY"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1238
+#: ../framework/admin/options/class-tb-sortable-option.php:1243
+msgid "Add Images"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1239
+msgid "Remove Image"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1240
+msgid "Remove All Images"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1241
+msgid "Are you sure you want to remove all images?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1242
+msgid "Select Images"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1322
+msgid "Partner Name"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1323
+msgid "Enter a name that corresponds to this logo."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1338
+msgid "Partner Link (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1339
+msgid "Enter a URL you'd like this logo to link to."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1339
+msgid "Ex: http://partersite.com"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1354
+#: ../framework/admin/options/class-tb-sortable-option.php:1359
+msgid "Add Logos"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1355
+msgid "Remove Logo"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1356
+msgid "Remove All Logos"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1357
+msgid "Are you sure you want to remove all logos?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1358
+msgid "Select Logos"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1401
+msgid "If you wish, you can give the column a highlight color."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1408
+#: ../framework/admin/options/class-tb-sortable-option.php:1910
+msgid "Title"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1409
+msgid "Enter a title for this column."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1409
+msgid "Ex: Gold Package"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1421
+msgid "Pop out column so it stands out from the rest."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1427
+msgid "Popout Title Subline"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1428
+msgid "Because the column is popped out, enter a very brief subline for the title."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1428
+msgid "Ex: Best Value"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1438
+msgid "Price"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1439
+msgid "Enter a value for the price, without the currency symbol."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1439
+msgid "Ex: 50"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1445
+msgid "Price Subline (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1446
+msgid "Enter a very brief subline for the price to show what it represents."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1446
+msgid "Ex: per month"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1452
+msgid "Feature List"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1453
+msgid "Enter each feature, seprated by a line break. If you like, spice it up with some icons."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1465
+msgid "Button"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1466
+msgid "Show button below feature list?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1529
+msgid "Extra Large"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1563
+msgid "Add Pricing Table Column"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1564
+msgid "Remove Column"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1565
+msgid "Are you sure you want to delete this column?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1566
+msgid "Remove All Columns"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1567
+msgid "Are you sure you want to remove all columns?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1605
+#: ../framework/admin/options/class-tb-sortable-option.php:1687
+msgid "Social Icon"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1644
+msgid "Add Icon"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1645
+msgid "Delete Icon"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1646
+msgid "Are you sure you want to delete this icon?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1647
+msgid "Delete All Icons"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1648
+msgid "Are you sure you want to delete all icons?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1710
+msgid "Add Share Icon"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1711
+msgid "Delete Share Icon"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1712
+msgid "Are you sure you want to delete this share icon?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1713
+msgid "Delete All Share Icons"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1714
+msgid "Are you sure you want to delete all share icons?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1752
+msgid "Tab Title"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1753
+msgid "Enter a short title to represent this tab."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1760
+msgid "Tab Content"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1761
+msgid "Configure the content of the tab. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within a set of tabs."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1776
+msgid "Add Tab"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1777
+msgid "Delete Tab"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1778
+#: ../framework/admin/options/class-tb-sortable-option.php:1951
+msgid "Are you sure you want to delete this tab?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1779
+msgid "Delete All Tabs"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1780
+msgid "Are you sure you want to delete all tabs?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1818
+msgid "Testimonial Text"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1819
+msgid "Enter any text of the testimonial."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1826
+msgid "Name"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1827
+msgid "Enter the name of the person giving the testimonial."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1833
+msgid "Tagline (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1834
+msgid "Enter a tagline for the person giving the testimonial."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1834
+msgid "Ex: Founder and CEO"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1839
+msgid "Company (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1840
+msgid "Enter the company the person giving the testimonial belongs to."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1845
+msgid "Company URL (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1846
+msgid "Enter the website URL for the company or the person giving the testimonial."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1852
+msgid "Image (optional)"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1853
+msgid "Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1868
+msgid "Add Testimonial"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1869
+msgid "Delete Testimonial"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1870
+msgid "Are you sure you want to delete this testimonial?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1871
+msgid "Delete All Testimonials"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1872
+msgid "Are you sure you want to delete all testimonials?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1911
+msgid "Enter a short title to represent this toggle."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1918
+msgid "Content"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1919
+msgid "Configure the content of the toggle. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1926
+msgid "Content Formatting"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1927
+#: ../framework/admin/options/class-tb-sortable-option.php:2101
+msgid "Apply WordPress automatic formatting."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1933
+msgid "Initial State"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1934
+msgid "Toggle is open when the page intially loads."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1949
+msgid "Add Toggle"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1950
+msgid "Delete Toggle"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1952
+msgid "Delete All Toggles"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1953
+msgid "Are you sure you want to delete all toggles?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1991
+msgid "Text"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1992
+msgid "Enter the text to display in this text block."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:1999
+msgid "Text Size"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2000
+msgid "Set the size of the text, relative to the site's main font size."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2013
+msgid "Select the color of the text."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2024
+msgid "Apply background color around text block."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2032
+msgid "Select the color of the background around the text."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2073
+msgid "Use header font."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2080
+msgid "Italicize the text."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2087
+msgid "Display text in all caps."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2094
+msgid "Reduce space below text block."
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2116
+msgid "Add Text Block"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2117
+msgid "Delete Text Block"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2118
+msgid "Are you sure you want to delete this text block?"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2119
+msgid "Delete All Text Blocks"
+msgstr ""
+
+#: ../framework/admin/options/class-tb-sortable-option.php:2120
+msgid "Are you sure you want to delete all text blocks?"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:71
+msgid "Select Media"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:72
+msgid "Select"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:73
+msgid "Upload"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:74
+msgid "Remove"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:83
+msgid "Slide Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:84
+msgid "Use for Slide"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:85
+#: ../framework/admin/options/media-uploader.php:117
+msgid "Get Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:86
+msgid "You must use the 'Get Image' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents."
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:95
+msgid "Select Video"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:96
+msgid "Use Video"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:97
+msgid "Get Video"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:102
+msgid "Logo Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:103
+#: ../framework/admin/options/media-uploader.php:111
+msgid "Use for Logo"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:110
+msgid "Logo HiDPI Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:116
+msgid "Select Background Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:122
+msgid "Insert Media"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:128
+msgid "Select Image"
+msgstr ""
+
+#: ../framework/admin/options/media-uploader.php:130
+msgid "Use Image"
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:301
+msgid "No pages were found."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:310
+msgid "No categories sidebars were found."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:317
+msgid "You must install the Theme Blvd Widget Areas plugin in order to insert a floating widget area."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:323
+msgid "No floating widget areas were found."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:332
+msgid "No registered sidebars were found."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:341
+msgid "No registered crop sizes were found."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:352
+msgid "No textures were found."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:361
+msgid "You haven't created any custom templates yet."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:370
+msgid "Couldn't find any authors."
+msgstr ""
+
+#: ../framework/admin/options/options-interface.php:379
+msgid "Couldn't find any sliders."
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:376
+msgid "Background Position: Top Center"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:377
+msgid "Background Position: Top Left"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:378
+msgid "Background Position: Top Right"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:379
+msgid "Background Position: Middle Center"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:380
+msgid "Background Position: Middle Left"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:381
+msgid "Background Position: Middle Right"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:382
+msgid "Background Position: Bottom Center"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:383
+msgid "Background Position: Bottom Left"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:384
+msgid "Background Position: Bottom Right"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:396
+msgid "Background Scrolling: Normal"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:397
+msgid "Background Scrolling: Parallax Effect"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:398
+msgid "Background Scrolling: Fixed in Place"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:410
+msgid "Background Repeat: No Repeat"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:411
+msgid "Background Repeat: Repeat Horizontally"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:412
+msgid "Background Repeat: Repeat Vertically"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:413
+msgid "Background Repeat: Repeat All"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:425
+msgid "Background Size: Auto"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:426
+msgid "Background Size: Cover"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:427
+msgid "Background Size: Contain"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:428
+msgid "Background Size: 100% x 100%"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:429
+msgid "Background Size: Fit Horizontally"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:430
+msgid "Background Size: Fit Vertically"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1279
+msgid "Uppercase"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1280
+msgid "Italic"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1281
+msgid "Uppercase Italic"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1293
+msgid "100"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1294
+msgid "200"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1295
+msgid "300"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1296
+msgid "400 (normal)"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1297
+msgid "500"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1298
+msgid "600"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1299
+msgid "700 (bold)"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1300
+msgid "800"
+msgstr ""
+
+#: ../framework/admin/options/options-sanitize.php:1301
+msgid "900"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:337
+#: ../framework/admin/plugins/plugins.php:114
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:340
+#: ../framework/admin/plugins/plugins.php:115
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:392
+#: ../framework/admin/plugins/plugins.php:126
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:393
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:394
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3255
+#: ../framework/admin/plugins/plugins.php:127
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:395
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3048
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:399
+#, php-format
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:403
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2078
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2369
+msgid "Required"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2372
+msgid "Recommended"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2388
+msgid "WordPress Repository"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2391
+msgid "External Source"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2394
+msgid "Pre-Packaged"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2411
+msgid "Not Installed"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2415
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2417
+msgid "Active"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2423
+msgid "Required Update not Available"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2426
+msgid "Requires Update"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2429
+msgid "Update recommended"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2488
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2492
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2496
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2586
+msgid "Installed version:"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2594
+msgid "Minimum required version:"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2606
+msgid "Available version:"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2643
+msgid "Plugin"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2644
+msgid "Source"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2645
+msgid "Type"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2649
+msgid "Version"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2650
+msgid "Status"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2699
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2704
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2710
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2813
+msgid "Install"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2819
+msgid "Update"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2822
+msgid "Activate"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2853
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2855
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2896
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:2898
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3254
+msgid "Plugin activation failed."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3594
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3597
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3599
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3603
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3606
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3608
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3611
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3614
+msgid "All installations have been completed."
+msgstr ""
+
+#: ../framework/admin/plugins/class-tgm-plugin-activation.php:3616
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../framework/admin/plugins/plugins.php:112
+msgid "Install Recommended Plugins"
+msgstr ""
+
+#: ../framework/admin/plugins/plugins.php:113
+msgid "Theme Plugins"
+msgstr ""
+
+#: ../framework/admin/plugins/plugins.php:128
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-bases.php:37
+msgid "Theme Base"
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-welcome.php:97
+#, php-format
+msgid "Thank you for using %s with Theme Blvd Framework %s."
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-welcome.php:97
+msgid "Below are some resources to get started. You can find more videos and information in your \"All files and documentation\" download."
+msgstr ""
+
+#: ../framework/admin/tools/class-tb-welcome.php:98
+#: ../framework/admin/tools/class-tb-welcome.php:99
+msgid "Getting Started"
+msgstr ""
+
+#: ../framework/admin/updates/class-edd-sl-theme-updater.php:58
+msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
+msgstr ""
+
+#: ../framework/admin/updates/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr ""
+
+#: ../framework/admin/updates/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr ""
+
+#: ../framework/admin/updates/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr ""
+
+#: ../framework/admin/updates/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr ""
+
+#: ../framework/admin/updates/class-tb-license-admin.php:97
+msgid "Theme License"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:307
+#: ../framework/api/class-tb-options-api.php:400
+msgid "Logo"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:308
+#: ../framework/api/class-tb-options-api.php:401
+msgid "Configure the primary branding logo for the header of your site."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:308
+#: ../framework/api/class-tb-options-api.php:386
+#: ../framework/api/class-tb-options-api.php:401
+msgid "Note: If you're inputting a \"HiDPI-optimized\" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you'd like it to simply not have any effect."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:314
+msgid "Header Text"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:315
+#, php-format
+msgid "Enter a brief piece of text you'd like to show. You can use basic HTML here, or any %s ID formatted like %s."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:321
+msgid "Social Media Buttons"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:322
+msgid "Configure the social media buttons you'd like to show."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:353
+#: ../framework/api/class-tb-options-api.php:407
+msgid "Social Media Style"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:354
+#: ../framework/api/class-tb-options-api.php:408
+msgid "Select the color you'd like applied to the social icons."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:359
+#: ../framework/api/class-tb-options-api.php:413
+msgid "Flat Color"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:360
+#: ../framework/api/class-tb-options-api.php:414
+msgid "Flat Dark"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:361
+#: ../framework/api/class-tb-options-api.php:415
+msgid "Flat Grey"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:362
+#: ../framework/api/class-tb-options-api.php:416
+msgid "Flat Light"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:367
+msgid "Search Form"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:368
+msgid "Select whether you'd like to show a search form."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:373
+msgid "Show search form"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:374
+msgid "Hide search form"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:385
+msgid "Mobile Logo"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:386
+msgid "Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you'll want to use an image shorter than that."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:397
+msgid "When you're configuring a page, if you select \"Transparent Header\" in the Theme Layout box, here you can setup special options for how the header displays over your content, which has been sucked up beneath. This feature will work best with a full-width or full-screen featured image, or a when custom layout is applied to the page."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:432
+msgid "Setup Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:441
+msgid "Footer Column #1"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:442
+msgid "Configure the content for the first column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:454
+msgid "Footer Column #2"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:455
+msgid "Configure the content for the second column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:462
+msgid "Footer Column #3"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:463
+msgid "Configure the content for the third column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:470
+msgid "Footer Column #4"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:471
+msgid "Configure the content for the fourth column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:478
+msgid "Footer Column #5"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:479
+msgid "Configure the content for the fifth column."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:489
+msgid "Footer Copyright Text"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:490
+msgid "Enter the copyright text you'd like to show in the footer of your site."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:490
+msgid "Show current year."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:490
+msgid "Show your site title."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:508
+msgid "Choose the default sidebar layout for the main content area of your site."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:516
+#: ../framework/api/class-tb-options-api.php:631
+msgid "Single Posts"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:517
+msgid "When viewing a single post, what do you want to use for the sidebar layout?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:525
+#: ../framework/api/class-tb-options-api.php:732
+msgid "Pages"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:526
+msgid "When viewing a standard page, what do you want to use for the sidebar layout?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:534
+#: ../framework/api/class-tb-options-api.php:768
+msgid "Archives"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:535
+msgid "When viewing a general archive of posts, what do you want to use for the sidebar layout?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:550
+msgid "Sticky Header"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:551
+msgid "If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:556
+msgid "Yes, show sticky header"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:557
+#: ../framework/api/class-tb-options-api.php:579
+#: ../framework/api/class-tb-options-api.php:1451
+msgid "No, don't show it"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:562
+msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:572
+msgid "Scroll-to-Top Button"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:573
+msgid "If enabled, this will display a button that appears on the screen, which allows the user to quickly scroll back to the top of the website."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:578
+msgid "Yes, show button"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:602
+msgid "Condense full-width content."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:610
+msgid "Popout large images within full-width content."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:621
+msgid "Use variable width image carousel for gallery sliders."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:632
+msgid "These settings will only apply to vewing single posts. Additionally, most of these settings can be overridden in the Post Options meta box when editing individual posts."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:635
+#: ../framework/api/class-tb-options-api.php:821
+#: ../framework/api/class-tb-options-api.php:881
+#: ../framework/api/class-tb-options-api.php:963
+msgid "Meta Information"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:636
+msgid "Select if you'd like the meta information (like date posted, author, etc) to show on the single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:646
+#: ../framework/api/class-tb-options-api.php:832
+msgid "Sub Meta Information"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:647
+msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on the single post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:657
+msgid "Share Icons"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:658
+msgid "Configure any share icons you'd like displayed within the Sub Meta of the single post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:681
+msgid "Featured Images &amp; Galleries"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:682
+msgid "Choose how you want your featured images to show on the single post, by default. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those fetured images to show on the single posts."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:694
+msgid "Related Posts"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:706
+msgid "Related Posts Style"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:707
+msgid "When showing, select how you'd like to display the related posts."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:712
+#: ../framework/api/class-tb-options-api.php:1319
+#: ../framework/api/class-tb-options-api.php:1351
+msgid "List"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:713
+#: ../framework/api/class-tb-options-api.php:1318
+#: ../framework/api/class-tb-options-api.php:1350
+msgid "Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:717
+msgid "Comments"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:718
+msgid "This will hide the presence of comments on the single post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:735
+#: ../framework/api/class-tb-options-api.php:810
+#: ../framework/api/class-tb-options-api.php:869
+#: ../framework/api/class-tb-options-api.php:939
+msgid "Featured Images"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:736
+msgid "Choose how you want your featured images to show on pages, by default."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:752
+msgid "Blog Homepage"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:753
+msgid "These settings apply when you're viewing your blog homepage or \"posts page\" set at Settings > Reading > Frontpage displays."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:756
+#: ../framework/api/class-tb-options-api.php:772
+msgid "Post Display"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:757
+msgid "When viewing your blog homepage, how do you want the posts displayed by default?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:773
+msgid "When viewing an archive of posts, how do you want them displayed by default?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:780
+msgid "Category Info Boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:781
+msgid "When viewing a category archive, would you like to show an info box at the top that contains the title and description of the current category?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:786
+#: ../framework/api/class-tb-options-api.php:797
+msgid "Yes, show info boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:787
+#: ../framework/api/class-tb-options-api.php:798
+msgid "No, hide info boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:791
+msgid "Tag Info Boxes"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:792
+msgid "When viewing a tag archive, would you like to show an info box at the top that contains the title and description of the current tag?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:806
+msgid "Post Display: Blog"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:807
+msgid "These settings allow you to setup the default configuration for using the blog post display. These settings will be applied automatically to the \"Blog\" page template and any posts you've set to display in the blog format.<br><br>For more control over a specific blog, you can apply the \"Blog\" element of the Layout Builder or use the [blog] shortcode in a page, which will allow you to override these options for that instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:811
+msgid "Select the size of the blog's post thumbnail or whether you'd like to hide them all together when posts are listed."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:816
+#: ../framework/api/class-tb-options-api.php:875
+#: ../framework/api/class-tb-options-api.php:945
+msgid "Show featured images"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:822
+#: ../framework/api/class-tb-options-api.php:882
+#: ../framework/api/class-tb-options-api.php:964
+msgid "Select if you'd like the meta information (like date posted, author, etc) to show for each post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:833
+msgid "Select if you'd like the sub meta information (like tags, categories, etc) to below each post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:843
+msgid "Excerpts of Full Content"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:844
+msgid "Choose whether you want to show full content or post excerpts only."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:849
+msgid "Show full content"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:850
+msgid "Show excerpt only"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:854
+msgid "Exclude Categories"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:855
+msgid "Select any categories you'd like to be excluded from your blog."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:855
+msgid "Note: This only applies to the main index blog or your \"posts page\" if you've set one.</em>"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:865
+msgid "Post Display: List"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:866
+msgid "These settings allow you to setup the default configuration for using post lists. These settings will be applied automatically to the \"Post List\" page template and any posts you've set to display in the post list format.<br><br>For more control over a specific post list, you can apply the \"Post List\" element of the Layout Builder or use the [post_list] shortcode in a page, which will allow you to override these options for that instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:870
+#: ../framework/api/class-tb-options-api.php:940
+msgid "Choose whether or not you want featured images to show for each post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:876
+msgid "Show date block"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:896
+#: ../framework/api/class-tb-options-api.php:989
+msgid "Read More"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:897
+#: ../framework/api/class-tb-options-api.php:990
+msgid "What would you like to show for each post to lead the reader to the full post?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:902
+#: ../framework/api/class-tb-options-api.php:995
+msgid "Show text link"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:903
+#: ../framework/api/class-tb-options-api.php:996
+msgid "Show button"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:904
+#: ../framework/api/class-tb-options-api.php:997
+msgid "Show no button or text link"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:909
+#: ../framework/api/class-tb-options-api.php:1002
+msgid "Read More Text"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:910
+#: ../framework/api/class-tb-options-api.php:1003
+msgid "Enter the text you'd like to use to lead the reader to the full post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:920
+#: ../framework/api/class-tb-options-api.php:1050
+#: ../framework/api/class-tb-options-api.php:1147
+msgid "Posts Per Page"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:921
+msgid "When viewing a default post list, what is the maximum number of posts to display on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:931
+msgid "Post Display: Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:932
+msgid "These settings allow you to setup the default configuration for using post grids. These settings will be applied automatically to the \"Post Grid\" page template and any posts you've set to display in the post grid format.<br><br>For more control over a specific post grid, you can apply the \"Post Grid\" element of the Layout Builder or use the [post_grid] shortcode in a page, which will allow you to override these options for that instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:952
+#: ../framework/api/class-tb-options-api.php:1070
+msgid "Featured Image Crop Size"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:953
+#: ../framework/api/class-tb-options-api.php:1071
+msgid "Select a custom crop size to be used for the images. If you select a crop size that doesn't have a consistent height, then you may want to enable \"Masonry\" display."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:953
+#: ../framework/api/class-tb-options-api.php:1071
+msgid "Note: Images are scaled proportionally to fit within their current containers."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:974
+#: ../framework/api/class-tb-options-api.php:1088
+msgid "Excerpts"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:975
+#: ../framework/api/class-tb-options-api.php:1089
+msgid "Select if you'd like to show the excerpt or not for each post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:980
+#: ../framework/api/class-tb-options-api.php:1094
+msgid "Show excerpts"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:981
+#: ../framework/api/class-tb-options-api.php:1095
+msgid "Hide excerpts"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1017
+#: ../framework/api/class-tb-options-api.php:1114
+msgid "Display"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1018
+msgid "When viewing a default post grid, how should they be displayed?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1023
+msgid "Standard Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1024
+msgid "Masonry Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1029
+#: ../framework/api/class-tb-options-api.php:1126
+msgid "Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1030
+msgid "When viewing a default post grid, how many columns should the posts be separated into?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1035
+#: ../framework/api/class-tb-options-api.php:1132
+msgid "2 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1036
+#: ../framework/api/class-tb-options-api.php:1133
+msgid "3 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1037
+#: ../framework/api/class-tb-options-api.php:1134
+msgid "4 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1038
+#: ../framework/api/class-tb-options-api.php:1135
+msgid "5 Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1042
+#: ../framework/api/class-tb-options-api.php:1139
+msgid "Rows"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1043
+msgid "When viewing a default post grid, what is the maximum number of rows that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1043
+#: ../framework/api/class-tb-options-api.php:1140
+msgid "Note: The total posts on the page will be the number of rows times the number of columns."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1051
+msgid "When viewing a default masonry post grid, what is the maximum number of posts that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1065
+msgid "Post Display: Showcase"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1066
+msgid "These settings allow you to setup the default configuration for using the post showcase. These settings will be applied automatically to the \"Post Showcase\" page template and any posts you've set to display in the post showcase format.<br><br>For more control over a specific post showcase, you can apply the \"Post Showcase\" element of the Layout Builder or use the [post_showcase] shortcode in a page, which will allow you to override these options for that instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1077
+msgid "Titles"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1078
+msgid "Select if you'd like to show the title or not for each post."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1083
+msgid "Show titles"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1084
+msgid "Hide titles"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1099
+msgid "Gutters"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1100
+msgid "Select if you'd like to show spacing in between the showcase items."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1100
+msgid "Note: Hiding the gutters works best if you're using a consistent image crop size, or the masonry display."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1105
+msgid "Show gutters"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1106
+msgid "Hide gutters"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1115
+msgid "When viewing a default post showcase, how should they be displayed?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1120
+msgid "Standard Showcase Grid"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1121
+msgid "Masonry Showcase"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1127
+msgid "When viewing a default post showcase, how many columns should the posts be separated into?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1140
+msgid "When viewing a default post showcase, what is the maximum number of rows that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1148
+msgid "When viewing a default masonry post showcase, what is the maximum number of posts that should be displayed on each page?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1162
+msgid "Lightbox"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1163
+#, php-format
+msgid "These settings apply to the built-in lightbox functionality, which utilizes the %s script."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1166
+msgid "Animate lightboxes?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1167
+msgid "Select if you'd like lightboxes to animate as they open and close."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1172
+msgid "No animation"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1173
+msgid "Fade animation"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1177
+msgid "Disable standard lightboxes for mobile?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1178
+msgid "Select if you'd like the lightbox to be disabled for mobile users viewing a standard lightbox instance."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1183
+#: ../framework/api/class-tb-options-api.php:1194
+#: ../framework/api/class-tb-options-api.php:1205
+msgid "Yes, disable for mobile."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1184
+#: ../framework/api/class-tb-options-api.php:1195
+#: ../framework/api/class-tb-options-api.php:1206
+msgid "No, do not disable for mobile."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1188
+msgid "Disable iframe lightboxes for mobile?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1189
+msgid "Select if you'd like the lightbox to be disabled for mobile users viewing an iframe lightbox instance. This includes linking to YouTube videos, Vimeo videos, and Google Maps in a lightbox popup."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1199
+msgid "Disable gallery lightboxes for mobile?"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1200
+msgid "Select if you'd like the lightbox to be disabled for mobile users when viewing a gallery."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1221
+msgid "Google Maps"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1226
+msgid "You must have a Google Maps API key setup to use the \"Google Maps\" element of our layout builder."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1230
+msgid "Google Maps API Key"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1231
+#, php-format
+msgid "You can generate a Google Map API key %s."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1231
+msgid "here"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1248
+msgid "bbPress"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1252
+msgid "Lead Topic"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1253
+msgid "When viewing individual topics, display the topic prominently separated from the responses."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1259
+msgid "Content Background"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1260
+msgid "When viewing bbPress pages, remove standard page background design from wrapping forums and topics."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1266
+msgid "Forum Sidebar Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1267
+msgid "Select the sidebar layout used for viewing forum pages generated by bbPress."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1275
+msgid "Topic Sidebar Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1276
+msgid "Select the sidebar layout used for viewing individual topics."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1284
+msgid "Profile Sidebar Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1285
+msgid "Select the sidebar layout used for viewing user profiles."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1297
+msgid "WooCommerce"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1301
+msgid "Floating Shopping Cart"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1302
+msgid "Select whether you'd like the floating shopping cart to display in the header of your website."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1307
+msgid "Yes, show floating cart"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1308
+msgid "No, don't show floating cart"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1312
+msgid "Shop View"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1313
+msgid "Select the default product display style for your main shop page."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1320
+#: ../framework/api/class-tb-options-api.php:1352
+msgid "Catalog"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1324
+msgid "Shop Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1325
+msgid "Select the number of columns to display the products on your main shop page, when viewed as a grid."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1330
+#: ../framework/api/class-tb-options-api.php:1362
+msgid "2 columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1331
+#: ../framework/api/class-tb-options-api.php:1363
+msgid "3 columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1332
+#: ../framework/api/class-tb-options-api.php:1364
+msgid "4 columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1333
+#: ../framework/api/class-tb-options-api.php:1365
+msgid "5 columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1337
+msgid "Shop Products Per Page"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1338
+msgid "Select the number products to display per page on your main shop page."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1344
+msgid "Archive View"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1345
+msgid "Select the default product display style for your product archives. This is when products are displayed by category or tag."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1356
+msgid "Archive Columns"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1357
+msgid "Select the number of columns to display the products in your product archives, when viewed as a grid."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1369
+msgid "Archives Products Per Page"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1370
+msgid "Select the number products to display per page in your product archives."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1376
+msgid "Shop Sidebar Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1377
+msgid "Select the sidebar layout when viewing your main shop."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1385
+msgid "Archive Sidebar Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1386
+msgid "Select the sidebar layout when viewing your product archives. This is when products are displayed by category or tag."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1394
+msgid "Product Sidebar Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1395
+msgid "Select the sidebar layout when viewing a single product."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1403
+msgid "Shopping Cart Cross Sells"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1404
+msgid "For the shopping cart page, select if you'd like to display products customers may be interested in, based on what's currently in their cart."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1409
+msgid "Yes, show cross sells"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1410
+msgid "No, don't show cross sells"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1414
+msgid "Product View Toggle"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1415
+msgid "Select if you'd like to display buttons on your product pages that allow the user to toggle between list, grid and catalog view."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1420
+msgid "Yes, show buttons"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1421
+msgid "No, don't show buttons"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1425
+msgid "Product Gallery Zoom"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1426
+msgid "When viewing a single product, select whether you'd like the WooCommerce zooming feature enabled on product galleries."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1431
+msgid "Yes, enable gallery zooming"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1432
+msgid "No, disable gallery zooming"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1440
+msgid "WPML"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1444
+msgid "Language Switcher"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1445
+msgid "Select if you'd like to show the theme's built-in language switcher for WPML. You can hide this if you're using other features in WPML to display a language switcher."
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1450
+msgid "Yes, show theme's language switcher"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1464
+msgid "Layout"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1472
+msgid "Configuration"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1476
+msgid "Plugins"
+msgstr ""
+
+#: ../framework/api/class-tb-options-api.php:1589
+msgid "Note: The result of this option may vary with posts that are not the \"standard\" post format."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:121
+msgid "Left Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:133
+msgid "Location: Left Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:134
+msgid "This is default placeholder for the \"Left Sidebar\" location."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:143
+msgid "Right Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:155
+msgid "Location: Right Sidebar"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:156
+msgid "This is default placeholder for the \"Right Sidebar\" location."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:165
+msgid "Ads Above Header"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:177
+msgid "Location: Ads Above Header"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:178
+msgid "This is default placeholder for the \"Ads Above Header\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:187
+msgid "Ads Above Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:199
+msgid "Location: Ads Above Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:200
+msgid "This is default placeholder for the \"Ads Above Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:209
+msgid "Ads Below Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:221
+msgid "Location: Ads Below Content"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:222
+msgid "This is default placeholder for the \"Ads Below Content\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:231
+msgid "Ads Below Footer"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:243
+msgid "Location: Ads Below Footer"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:244
+msgid "This is default placeholder for the \"Ads Below Footer\" location, which is designed for banner ads, and so not all widgets will appear as expected."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:303
+#, php-format
+msgid "This is default placeholder for the \"%s\" location."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:322
+#, php-format
+msgid "Location: %s"
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:490
+#, php-format
+msgid "This is a collapsible widget area with ID, %s, but you haven't put any widgets in it yet. Normally this wouldn't show at all when empty, but since you have assigned a custom widget area here and didn't put any widgets in it, you are seeing this message."
+msgstr ""
+
+#: ../framework/api/class-tb-sidebar-handler.php:494
+#, php-format
+msgid "This is a fixed sidebar with ID, %s, but you haven't put any widgets in it yet."
+msgstr ""
+
+#: ../framework/api/helpers.php:536
+msgid "Default sidebars are now registered within the register() method of the Theme_Blvd_Sidebar_Handler class."
+msgstr ""
+
+#: ../framework/includes/general.php:12
+msgid "Blog"
+msgstr ""
+
+#: ../framework/includes/general.php:15
+msgid "Showcase"
+msgstr ""
+
+#: ../framework/includes/general.php:441
+msgid "Primary Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:442
+msgid "Footer Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:446
+msgid "Primary Side Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:447
+msgid "Secondary Side Navigation"
+msgstr ""
+
+#: ../framework/includes/general.php:555
+msgid "Sliders"
+msgstr ""
+
+#: ../framework/includes/general.php:569
+msgid "Templates"
+msgstr ""
+
+#: ../framework/includes/general.php:583
+msgid "Widget Areas"
+msgstr ""
+
+#: ../framework/includes/general.php:623
+msgid "Full Width"
+msgstr ""
+
+#: ../framework/includes/general.php:632
+msgid "Sidebar Right"
+msgstr ""
+
+#: ../framework/includes/general.php:641
+msgid "Sidebar Left"
+msgstr ""
+
+#: ../framework/includes/general.php:650
+msgid "Double Sidebar"
+msgstr ""
+
+#: ../framework/includes/general.php:659
+msgid "Double Left Sidebars"
+msgstr ""
+
+#: ../framework/includes/general.php:668
+msgid "Double Right Sidebars"
+msgstr ""
+
+#: ../framework/includes/general.php:794
+msgid "Arches"
+msgstr ""
+
+#: ../framework/includes/general.php:801
+msgid "Boxy"
+msgstr ""
+
+#: ../framework/includes/general.php:808
+msgid "Brick Wall"
+msgstr ""
+
+#: ../framework/includes/general.php:815
+msgid "Carbon Classic"
+msgstr ""
+
+#: ../framework/includes/general.php:822
+msgid "Carbon Diagonal"
+msgstr ""
+
+#: ../framework/includes/general.php:829
+msgid "Carbon Weave"
+msgstr ""
+
+#: ../framework/includes/general.php:836
+msgid "Chex"
+msgstr ""
+
+#: ../framework/includes/general.php:843
+msgid "Circles"
+msgstr ""
+
+#: ../framework/includes/general.php:850
+msgid "Climpek"
+msgstr ""
+
+#: ../framework/includes/general.php:857
+msgid "Concrete"
+msgstr ""
+
+#: ../framework/includes/general.php:864
+msgid "Crosses"
+msgstr ""
+
+#: ../framework/includes/general.php:871
+msgid "Crystal"
+msgstr ""
+
+#: ../framework/includes/general.php:878
+msgid "Cube Stack"
+msgstr ""
+
+#: ../framework/includes/general.php:885
+msgid "Denim"
+msgstr ""
+
+#: ../framework/includes/general.php:892
+msgid "Diagonal (thin)"
+msgstr ""
+
+#: ../framework/includes/general.php:899
+msgid "Diagonal (thick)"
+msgstr ""
+
+#: ../framework/includes/general.php:906
+msgid "Diamonds"
+msgstr ""
+
+#: ../framework/includes/general.php:913
+msgid "Escheresque"
+msgstr ""
+
+#: ../framework/includes/general.php:928
+msgid "Grunge"
+msgstr ""
+
+#: ../framework/includes/general.php:935
+msgid "Feather"
+msgstr ""
+
+#: ../framework/includes/general.php:942
+msgid "Hexagons"
+msgstr ""
+
+#: ../framework/includes/general.php:949
+msgid "Honey Comb"
+msgstr ""
+
+#: ../framework/includes/general.php:956
+msgid "Leather"
+msgstr ""
+
+#: ../framework/includes/general.php:963
+msgid "Metal"
+msgstr ""
+
+#: ../framework/includes/general.php:970
+msgid "Mosaic"
+msgstr ""
+
+#: ../framework/includes/general.php:977
+msgid "Mosaic Triangles"
+msgstr ""
+
+#: ../framework/includes/general.php:984
+msgid "Noise"
+msgstr ""
+
+#: ../framework/includes/general.php:991
+msgid "Paper"
+msgstr ""
+
+#: ../framework/includes/general.php:998
+msgid "Pixel Weave"
+msgstr ""
+
+#: ../framework/includes/general.php:1005
+msgid "Plaid"
+msgstr ""
+
+#: ../framework/includes/general.php:1012
+msgid "Pyramids"
+msgstr ""
+
+#: ../framework/includes/general.php:1019
+msgid "Rubber"
+msgstr ""
+
+#: ../framework/includes/general.php:1026
+msgid "Skulls"
+msgstr ""
+
+#: ../framework/includes/general.php:1033
+msgid "Squares"
+msgstr ""
+
+#: ../framework/includes/general.php:1040
+msgid "Stacked Circles"
+msgstr ""
+
+#: ../framework/includes/general.php:1047
+msgid "Swirl"
+msgstr ""
+
+#: ../framework/includes/general.php:1054
+msgid "Textile"
+msgstr ""
+
+#: ../framework/includes/general.php:1061
+msgid "Tiles"
+msgstr ""
+
+#: ../framework/includes/general.php:1068
+msgid "Vertical Fabric"
+msgstr ""
+
+#: ../framework/includes/general.php:1075
+msgid "Vintage"
+msgstr ""
+
+#: ../framework/includes/general.php:1082
+msgid "Waves"
+msgstr ""
+
+#: ../framework/includes/general.php:1089
+msgid "Wood"
+msgstr ""
+
+#: ../framework/includes/general.php:1096
+msgid "Wood Planks"
+msgstr ""
+
+#: ../framework/includes/general.php:1103
+msgid "---------------"
+msgstr ""
+
+#: ../framework/includes/general.php:1109
+msgid "Light Arches"
+msgstr ""
+
+#: ../framework/includes/general.php:1116
+msgid "Light Boxy"
+msgstr ""
+
+#: ../framework/includes/general.php:1123
+msgid "Light Brick Wall"
+msgstr ""
+
+#: ../framework/includes/general.php:1130
+msgid "Light Carbon Classic"
+msgstr ""
+
+#: ../framework/includes/general.php:1137
+msgid "Light Carbon Diagonal"
+msgstr ""
+
+#: ../framework/includes/general.php:1144
+msgid "Light Carbon Weave"
+msgstr ""
+
+#: ../framework/includes/general.php:1151
+msgid "Light Chex"
+msgstr ""
+
+#: ../framework/includes/general.php:1158
+msgid "Light Circles"
+msgstr ""
+
+#: ../framework/includes/general.php:1165
+msgid "Light Climpek"
+msgstr ""
+
+#: ../framework/includes/general.php:1172
+msgid "Light Concrete"
+msgstr ""
+
+#: ../framework/includes/general.php:1179
+msgid "Light Crosses"
+msgstr ""
+
+#: ../framework/includes/general.php:1186
+msgid "Light Cube Stack"
+msgstr ""
+
+#: ../framework/includes/general.php:1193
+msgid "Light Denim"
+msgstr ""
+
+#: ../framework/includes/general.php:1200
+msgid "Light Diagonal (thin)"
+msgstr ""
+
+#: ../framework/includes/general.php:1207
+msgid "Light Diagonal (thick)"
+msgstr ""
+
+#: ../framework/includes/general.php:1214
+msgid "Light Diamonds"
+msgstr ""
+
+#: ../framework/includes/general.php:1221
+msgid "Light Escheresque"
+msgstr ""
+
+#: ../framework/includes/general.php:1228
+msgid "Light Grid"
+msgstr ""
+
+#: ../framework/includes/general.php:1235
+msgid "Light Grunge"
+msgstr ""
+
+#: ../framework/includes/general.php:1242
+msgid "Light Feather"
+msgstr ""
+
+#: ../framework/includes/general.php:1249
+msgid "Light Hexagons"
+msgstr ""
+
+#: ../framework/includes/general.php:1256
+msgid "Light Honey Comb"
+msgstr ""
+
+#: ../framework/includes/general.php:1263
+msgid "Light Leather"
+msgstr ""
+
+#: ../framework/includes/general.php:1270
+msgid "Light Metal"
+msgstr ""
+
+#: ../framework/includes/general.php:1277
+msgid "Light Mosaic"
+msgstr ""
+
+#: ../framework/includes/general.php:1284
+msgid "Light Mosaic Triangles"
+msgstr ""
+
+#: ../framework/includes/general.php:1291
+msgid "Light Noise"
+msgstr ""
+
+#: ../framework/includes/general.php:1298
+msgid "Light Paper"
+msgstr ""
+
+#: ../framework/includes/general.php:1305
+msgid "Light Pixel Weave"
+msgstr ""
+
+#: ../framework/includes/general.php:1312
+msgid "Light Plaid"
+msgstr ""
+
+#: ../framework/includes/general.php:1319
+msgid "Light Pyramids"
+msgstr ""
+
+#: ../framework/includes/general.php:1326
+msgid "Light Rubber"
+msgstr ""
+
+#: ../framework/includes/general.php:1333
+msgid "Light Skulls"
+msgstr ""
+
+#: ../framework/includes/general.php:1340
+msgid "Light Squares"
+msgstr ""
+
+#: ../framework/includes/general.php:1347
+msgid "Light Stacked Circles"
+msgstr ""
+
+#: ../framework/includes/general.php:1354
+msgid "Light Swirl"
+msgstr ""
+
+#: ../framework/includes/general.php:1361
+msgid "Light Textile"
+msgstr ""
+
+#: ../framework/includes/general.php:1368
+msgid "Light Tiles"
+msgstr ""
+
+#: ../framework/includes/general.php:1375
+msgid "Light Vertical Fabric"
+msgstr ""
+
+#: ../framework/includes/general.php:1382
+msgid "Light Vintage"
+msgstr ""
+
+#: ../framework/includes/general.php:1389
+msgid "Light Waves"
+msgstr ""
+
+#: ../framework/includes/general.php:1396
+msgid "Light Wood"
+msgstr ""
+
+#: ../framework/includes/general.php:1403
+msgid "Light Wood Planks"
+msgstr ""
+
+#: ../framework/includes/general.php:1465
+msgid "No pages exist."
+msgstr ""
+
+#: ../framework/includes/general.php:1471
+msgid "<strong>All Categories</strong>"
+msgstr ""
+
+#: ../framework/includes/general.php:1488
+msgid "You haven't created any custom sliders yet."
+msgstr ""
+
+#: ../framework/includes/general.php:1521
+msgid "Location:"
+msgstr ""
+
+#: ../framework/includes/general.php:1534
+msgid "Full Size"
+msgstr ""
+
+#: ../framework/includes/general.php:1564
+msgid "hard crop"
+msgstr ""
+
+#: ../framework/includes/general.php:1566
+msgid "no height crop"
+msgstr ""
+
+#: ../framework/includes/general.php:1568
+msgid "soft crop"
+msgstr ""
+
+#: ../framework/includes/general.php:1592
+msgid "For Darker Background Color"
+msgstr ""
+
+#: ../framework/includes/general.php:1596
+msgid "For Lighter Background Color"
+msgstr ""
+
+#: ../framework/includes/general.php:1661
+msgid "Default Color"
+msgstr ""
+
+#: ../framework/includes/general.php:1662
+msgid "Custom Color"
+msgstr ""
+
+#: ../framework/includes/general.php:1665
+msgid "Primary"
+msgstr ""
+
+#: ../framework/includes/general.php:1666
+msgid "Info"
+msgstr ""
+
+#: ../framework/includes/general.php:1667
+msgid "Success"
+msgstr ""
+
+#: ../framework/includes/general.php:1668
+msgid "Warning"
+msgstr ""
+
+#: ../framework/includes/general.php:1669
+msgid "Danger"
+msgstr ""
+
+#: ../framework/includes/general.php:1672
+msgid "Black"
+msgstr ""
+
+#: ../framework/includes/general.php:1674
+msgid "Blue (Dark)"
+msgstr ""
+
+#: ../framework/includes/general.php:1675
+msgid "Blue (Royal)"
+msgstr ""
+
+#: ../framework/includes/general.php:1676
+msgid "Blue (Steel)"
+msgstr ""
+
+#: ../framework/includes/general.php:1677
+msgid "Brown"
+msgstr ""
+
+#: ../framework/includes/general.php:1678
+msgid "Brown (Dark)"
+msgstr ""
+
+#: ../framework/includes/general.php:1679
+msgid "Grey (Slate)"
+msgstr ""
+
+#: ../framework/includes/general.php:1681
+msgid "Green (Dark)"
+msgstr ""
+
+#: ../framework/includes/general.php:1682
+msgid "Mauve"
+msgstr ""
+
+#: ../framework/includes/general.php:1684
+msgid "Pearl"
+msgstr ""
+
+#: ../framework/includes/general.php:1685
+msgid "Pink"
+msgstr ""
+
+#: ../framework/includes/general.php:1688
+msgid "Silver"
+msgstr ""
+
+#: ../framework/includes/general.php:1689
+msgid "Teal"
+msgstr ""
+
+#: ../framework/includes/general.php:1690
+msgid "Yellow"
+msgstr ""
+
+#: ../framework/includes/general.php:1691
+msgid "Wheat"
+msgstr ""
+
+#: ../framework/includes/general.php:1692
+msgid "White"
+msgstr ""
+
+#: ../framework/includes/general.php:1970
+msgid "No pages to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1975
+msgid "Posts"
+msgstr ""
+
+#: ../framework/includes/general.php:1976
+msgid "No posts to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1981
+msgid "Posts in Category"
+msgstr ""
+
+#: ../framework/includes/general.php:1982
+#: ../framework/includes/general.php:1988
+#: ../framework/includes/general.php:2006
+#: ../framework/includes/general.php:2035
+#: ../framework/includes/general.php:2047
+msgid "No categories to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1987
+msgid "Category Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1993
+msgid "Tag Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:1994
+#: ../framework/includes/general.php:2041
+msgid "No tags to display."
+msgstr ""
+
+#: ../framework/includes/general.php:1999
+msgid "Single Portfolio Items"
+msgstr ""
+
+#: ../framework/includes/general.php:2000
+msgid "No portfolio items to display."
+msgstr ""
+
+#: ../framework/includes/general.php:2005
+msgid "Items in Portfolio"
+msgstr ""
+
+#: ../framework/includes/general.php:2011
+msgid "Portfolios"
+msgstr ""
+
+#: ../framework/includes/general.php:2012
+msgid "No portfolios to display."
+msgstr ""
+
+#: ../framework/includes/general.php:2017
+msgid "Portfolio Tag Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2018
+msgid "No portfolio tags to display."
+msgstr ""
+
+#: ../framework/includes/general.php:2023
+msgid "Portfolio Hierarchy"
+msgstr ""
+
+#: ../framework/includes/general.php:2027
+msgid "All single portfolio items"
+msgstr ""
+
+#: ../framework/includes/general.php:2028
+msgid "Items displayed by portfolio"
+msgstr ""
+
+#: ../framework/includes/general.php:2029
+msgid "Items displayed by portfolio tag"
+msgstr ""
+
+#: ../framework/includes/general.php:2034
+msgid "Product Category Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2040
+msgid "Product Tag Archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2046
+msgid "Products in Category"
+msgstr ""
+
+#: ../framework/includes/general.php:2052
+msgid "Product Hierarchy"
+msgstr ""
+
+#: ../framework/includes/general.php:2056
+msgid "All WooCommerce pages"
+msgstr ""
+
+#: ../framework/includes/general.php:2057
+msgid "All single products"
+msgstr ""
+
+#: ../framework/includes/general.php:2058
+msgid "Products displayed by category"
+msgstr ""
+
+#: ../framework/includes/general.php:2059
+msgid "Products displayed by tag"
+msgstr ""
+
+#: ../framework/includes/general.php:2060
+msgid "WooCommerce search results"
+msgstr ""
+
+#: ../framework/includes/general.php:2065
+msgid "Forums"
+msgstr ""
+
+#: ../framework/includes/general.php:2071
+msgid "Forum Hierarchy"
+msgstr ""
+
+#: ../framework/includes/general.php:2075
+msgid "All bbPress pages"
+msgstr ""
+
+#: ../framework/includes/general.php:2076
+msgid "All single topics"
+msgstr ""
+
+#: ../framework/includes/general.php:2077
+msgid "All single forums"
+msgstr ""
+
+#: ../framework/includes/general.php:2078
+msgid "Viewing topics by tag"
+msgstr ""
+
+#: ../framework/includes/general.php:2079
+msgid "Public user profiles"
+msgstr ""
+
+#: ../framework/includes/general.php:2080
+msgid "Logged-in user home"
+msgstr ""
+
+#: ../framework/includes/general.php:2085
+msgid "Hierarchy"
+msgstr ""
+
+#: ../framework/includes/general.php:2089
+msgid "Homepage"
+msgstr ""
+
+#: ../framework/includes/general.php:2090
+msgid "All posts (any post type)"
+msgstr ""
+
+#: ../framework/includes/general.php:2091
+msgid "All blog posts"
+msgstr ""
+
+#: ../framework/includes/general.php:2092
+msgid "All pages"
+msgstr ""
+
+#: ../framework/includes/general.php:2093
+msgid "All archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2094
+msgid "All category archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2095
+msgid "All tag archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2096
+msgid "All author archives"
+msgstr ""
+
+#: ../framework/includes/general.php:2097
+msgid "Search Results"
+msgstr ""
+
+#: ../framework/includes/general.php:2098
+msgid "404 Page"
+msgstr ""
+
+#: ../framework/includes/general.php:2103
+msgid "Custom"
+msgstr ""
+
+#: ../framework/includes/general.php:2191
+msgid "General: Chat"
+msgstr ""
+
+#: ../framework/includes/general.php:2192
+msgid "General: Cloud"
+msgstr ""
+
+#: ../framework/includes/general.php:2193
+msgid "General: Link"
+msgstr ""
+
+#: ../framework/includes/general.php:2194
+msgid "General: Mail"
+msgstr ""
+
+#: ../framework/includes/general.php:2195
+msgid "General: Movie"
+msgstr ""
+
+#: ../framework/includes/general.php:2196
+msgid "General: Music"
+msgstr ""
+
+#: ../framework/includes/general.php:2197
+msgid "General: Portfolio"
+msgstr ""
+
+#: ../framework/includes/general.php:2198
+msgid "General: RSS"
+msgstr ""
+
+#: ../framework/includes/general.php:2199
+msgid "General: Store"
+msgstr ""
+
+#: ../framework/includes/general.php:2200
+msgid "General: Write"
+msgstr ""
+
+#: ../framework/includes/general.php:2201
+msgid "Android"
+msgstr ""
+
+#: ../framework/includes/general.php:2202
+msgid "Apple"
+msgstr ""
+
+#: ../framework/includes/general.php:2203
+msgid "Behance"
+msgstr ""
+
+#: ../framework/includes/general.php:2204
+msgid "CodePen"
+msgstr ""
+
+#: ../framework/includes/general.php:2205
+msgid "Delicious"
+msgstr ""
+
+#: ../framework/includes/general.php:2206
+msgid "DeviantArt"
+msgstr ""
+
+#: ../framework/includes/general.php:2207
+#: ../framework/includes/general.php:2250
+msgid "Digg"
+msgstr ""
+
+#: ../framework/includes/general.php:2208
+msgid "Dribbble"
+msgstr ""
+
+#: ../framework/includes/general.php:2209
+msgid "Dropbox"
+msgstr ""
+
+#: ../framework/includes/general.php:2210
+#: ../framework/includes/general.php:2252
+#: ../framework/includes/locals.php:38
+msgid "Facebook"
+msgstr ""
+
+#: ../framework/includes/general.php:2211
+msgid "Flickr"
+msgstr ""
+
+#: ../framework/includes/general.php:2212
+msgid "Foursquare"
+msgstr ""
+
+#: ../framework/includes/general.php:2213
+msgid "GitHub"
+msgstr ""
+
+#: ../framework/includes/general.php:2214
+#: ../framework/includes/general.php:2253
+#: ../framework/includes/locals.php:39
+msgid "Google+"
+msgstr ""
+
+#: ../framework/includes/general.php:2215
+msgid "Instagram"
+msgstr ""
+
+#: ../framework/includes/general.php:2216
+#: ../framework/includes/locals.php:40
+msgid "LinkedIn"
+msgstr ""
+
+#: ../framework/includes/general.php:2217
+msgid "PayPal"
+msgstr ""
+
+#: ../framework/includes/general.php:2218
+#: ../framework/includes/general.php:2256
+#: ../framework/includes/locals.php:41
+msgid "Pinterest"
+msgstr ""
+
+#: ../framework/includes/general.php:2219
+#: ../framework/includes/general.php:2257
+msgid "Reddit"
+msgstr ""
+
+#: ../framework/includes/general.php:2220
+msgid "SlideShare"
+msgstr ""
+
+#: ../framework/includes/general.php:2221
+msgid "SoundCloud"
+msgstr ""
+
+#: ../framework/includes/general.php:2222
+msgid "StumbleUpon"
+msgstr ""
+
+#: ../framework/includes/general.php:2223
+#: ../framework/includes/general.php:2258
+msgid "Tumblr"
+msgstr ""
+
+#: ../framework/includes/general.php:2224
+#: ../framework/includes/general.php:2259
+#: ../framework/includes/locals.php:42
+msgid "Twitter"
+msgstr ""
+
+#: ../framework/includes/general.php:2225
+msgid "Vimeo"
+msgstr ""
+
+#: ../framework/includes/general.php:2226
+msgid "Vine"
+msgstr ""
+
+#: ../framework/includes/general.php:2227
+msgid "Windows"
+msgstr ""
+
+#: ../framework/includes/general.php:2228
+msgid "WordPress"
+msgstr ""
+
+#: ../framework/includes/general.php:2229
+msgid "XING"
+msgstr ""
+
+#: ../framework/includes/general.php:2230
+msgid "Yahoo"
+msgstr ""
+
+#: ../framework/includes/general.php:2231
+msgid "YouTube"
+msgstr ""
+
+#: ../framework/includes/general.php:2251
+#: ../framework/includes/locals.php:53
+msgid "Email"
+msgstr ""
+
+#: ../framework/includes/general.php:2254
+msgid "Linkedin"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1471
+msgid "year"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1472
+msgid "years"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1473
+msgid "month"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1474
+msgid "months"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1475
+msgid "week"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1476
+msgid "weeks"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1477
+msgid "day"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1478
+msgid "days"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1479
+msgid "hour"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1480
+msgid "hours"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1481
+msgid "minute"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1482
+msgid "minutes"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1483
+msgid "second"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1484
+msgid "seconds"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1485
+msgid "ago"
+msgstr ""
+
+#: ../framework/includes/helpers.php:1486
+msgid "sometime"
+msgstr ""
+
+#: ../framework/includes/locals.php:14
+msgid "Apologies, but the page you're looking for can't be found."
+msgstr ""
+
+#: ../framework/includes/locals.php:15
+msgid "404 Error"
+msgstr ""
+
+#: ../framework/includes/locals.php:16
+msgid "All"
+msgstr ""
+
+#: ../framework/includes/locals.php:17
+msgid "Apologies, but there are no posts to display."
+msgstr ""
+
+#: ../framework/includes/locals.php:18
+msgid "Archive"
+msgstr ""
+
+#: ../framework/includes/locals.php:19
+msgid "Aside"
+msgstr ""
+
+#: ../framework/includes/locals.php:20
+msgid "Audio"
+msgstr ""
+
+#: ../framework/includes/locals.php:21
+msgid "by"
+msgstr ""
+
+#: ../framework/includes/locals.php:22
+msgid "Cancel reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:23
+msgid "Shopping Cart"
+msgstr ""
+
+#: ../framework/includes/locals.php:24
+msgid "Categories"
+msgstr ""
+
+#: ../framework/includes/locals.php:25
+msgid "Category"
+msgstr ""
+
+#: ../framework/includes/locals.php:26
+msgid "Chat"
+msgstr ""
+
+#: ../framework/includes/locals.php:27
+msgid "Close"
+msgstr ""
+
+#: ../framework/includes/locals.php:28
+msgid "Comment navigation"
+msgstr ""
+
+#: ../framework/includes/locals.php:29
+msgid "Comment"
+msgstr ""
+
+#: ../framework/includes/locals.php:31
+msgid "Comments are closed."
+msgstr ""
+
+#: ../framework/includes/locals.php:32
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../framework/includes/locals.php:33
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../framework/includes/locals.php:34
+#, php-format
+msgid "You may use these HTML tags and attributes: %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:35
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../framework/includes/locals.php:36
+#, php-format
+msgid "One comment on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: ../framework/includes/locals.php:37
+#, php-format
+msgid "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: ../framework/includes/locals.php:43
+msgid "Contact Us"
+msgstr ""
+
+#: ../framework/includes/locals.php:44
+msgid "Error 404"
+msgstr ""
+
+#: ../framework/includes/locals.php:45
+msgid "Articles posted by"
+msgstr ""
+
+#: ../framework/includes/locals.php:46
+msgid "Search results for"
+msgstr ""
+
+#: ../framework/includes/locals.php:47
+msgid "Posts tagged"
+msgstr ""
+
+#: ../framework/includes/locals.php:48
+msgid "Products tagged"
+msgstr ""
+
+#: ../framework/includes/locals.php:49
+msgid "Edit Attachment"
+msgstr ""
+
+#: ../framework/includes/locals.php:50
+msgid "Edit Page"
+msgstr ""
+
+#: ../framework/includes/locals.php:51
+msgid "Edit Post"
+msgstr ""
+
+#: ../framework/includes/locals.php:52
+msgid "Edit Profile"
+msgstr ""
+
+#: ../framework/includes/locals.php:54
+msgid "Enlarge Image"
+msgstr ""
+
+#: ../framework/includes/locals.php:55
+msgid "Gallery"
+msgstr ""
+
+#: ../framework/includes/locals.php:56
+msgid "Visit Website"
+msgstr ""
+
+#: ../framework/includes/locals.php:57
+msgid "Home"
+msgstr ""
+
+#: ../framework/includes/locals.php:59
+msgid "in"
+msgstr ""
+
+#: ../framework/includes/locals.php:60
+msgid "Invalid Layout ID: The layout ID currently assigned to this page no longer exists."
+msgstr ""
+
+#: ../framework/includes/locals.php:61
+msgid "Post Comment"
+msgstr ""
+
+#: ../framework/includes/locals.php:62
+msgid "Set Language"
+msgstr ""
+
+#: ../framework/includes/locals.php:63
+msgid "The Last 30 Posts"
+msgstr ""
+
+#: ../framework/includes/locals.php:64
+msgid "Leave a Comment"
+msgstr ""
+
+#: ../framework/includes/locals.php:65
+msgid "%curr% of %total%"
+msgstr ""
+
+#: ../framework/includes/locals.php:66
+msgid "The lightbox media could not be loaded."
+msgstr ""
+
+#: ../framework/includes/locals.php:68
+msgid "Link to lightbox"
+msgstr ""
+
+#: ../framework/includes/locals.php:69
+msgid "Loading..."
+msgstr ""
+
+#: ../framework/includes/locals.php:70
+msgid "Log in to Reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:71
+msgid "Monthly Archives"
+msgstr ""
+
+#: ../framework/includes/locals.php:72
+msgid "My Account"
+msgstr ""
+
+#: ../framework/includes/locals.php:74
+#, php-format
+msgid "In order for your custom layout to be displayed, you must be have the %s plugin installed."
+msgstr ""
+
+#: ../framework/includes/locals.php:75
+msgid "Page"
+msgstr ""
+
+#: ../framework/includes/locals.php:77
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:78
+msgid "Play Movie"
+msgstr ""
+
+#: ../framework/includes/locals.php:79
+msgid "Posted on"
+msgstr ""
+
+#: ../framework/includes/locals.php:80
+msgid "Posted in"
+msgstr ""
+
+#: ../framework/includes/locals.php:81
+msgid "Posts per category"
+msgstr ""
+
+#: ../framework/includes/locals.php:82
+msgid "Navigation"
+msgstr ""
+
+#: ../framework/includes/locals.php:83
+msgid "Next"
+msgstr ""
+
+#: ../framework/includes/locals.php:84
+msgid "No Comments"
+msgstr ""
+
+#: ../framework/includes/locals.php:85
+msgid "Slider does not exist."
+msgstr ""
+
+#: ../framework/includes/locals.php:86
+msgid "Oops! You have not selected a slider in your layout."
+msgstr ""
+
+#: ../framework/includes/locals.php:87
+msgid "The video url could not retrieve a video."
+msgstr ""
+
+#: ../framework/includes/locals.php:88
+msgid "Previous"
+msgstr ""
+
+#: ../framework/includes/locals.php:89
+msgid "Quote"
+msgstr ""
+
+#: ../framework/includes/locals.php:92
+msgid "Reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:93
+msgid "Search the site..."
+msgstr ""
+
+#: ../framework/includes/locals.php:94
+msgid "Search"
+msgstr ""
+
+#: ../framework/includes/locals.php:95
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: ../framework/includes/locals.php:96
+#, php-format
+msgid "%s total search results found for: %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:98
+msgid "Tag"
+msgstr ""
+
+#: ../framework/includes/locals.php:99
+msgid "Tags"
+msgstr ""
+
+#: ../framework/includes/locals.php:100
+msgid "Leave a Reply"
+msgstr ""
+
+#: ../framework/includes/locals.php:101
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:102
+msgid "Top"
+msgstr ""
+
+#: ../framework/includes/locals.php:103
+msgid "via"
+msgstr ""
+
+#: ../framework/includes/locals.php:104
+msgid "Video"
+msgstr ""
+
+#: ../framework/includes/locals.php:105
+msgid "View Post"
+msgstr ""
+
+#: ../framework/includes/locals.php:106
+msgid "View Item Details"
+msgstr ""
+
+#: ../framework/includes/locals.php:107
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: ../framework/includes/locals.php:108
+msgid "Website"
+msgstr ""
+
+#: ../framework/includes/media.php:20
+msgid "Theme Blvd XL"
+msgstr ""
+
+#: ../framework/includes/media.php:26
+msgid "Theme Blvd L"
+msgstr ""
+
+#: ../framework/includes/media.php:32
+msgid "Theme Blvd M"
+msgstr ""
+
+#: ../framework/includes/media.php:38
+msgid "Theme Blvd Thumbnail"
+msgstr ""
+
+#: ../framework/includes/media.php:44
+msgid "Theme Blvd 16:9"
+msgstr ""
+
+#: ../framework/includes/media.php:50
+msgid "Theme Blvd XL Square"
+msgstr ""
+
+#: ../framework/includes/media.php:56
+msgid "Theme Blvd L Square"
+msgstr ""
+
+#: ../framework/includes/media.php:62
+msgid "Theme Blvd M Square"
+msgstr ""
+
+#: ../framework/includes/media.php:68
+msgid "Theme Blvd S Square"
+msgstr ""
+
+#: ../framework/includes/media.php:74
+msgid "Slider Extra Large"
+msgstr ""
+
+#: ../framework/includes/media.php:80
+msgid "Slider Large"
+msgstr ""
+
+#: ../framework/includes/media.php:86
+msgid "Slider Medium"
+msgstr ""
+
+#: ../framework/includes/media.php:92
+msgid "Slider Staged"
+msgstr ""
+
+#: ../includes/theme-functions.php:35
+msgid "Developer"
+msgstr ""
+
+#: ../includes/theme-functions.php:36
+msgid "If you're a developer looking to create a custom-designed child theme, this is the base for you."
+msgstr ""
+
+#: ../includes/theme-functions.php:39
+msgid "Super User"
+msgstr ""
+
+#: ../includes/theme-functions.php:40
+msgid "For the super user, this base builds on the default theme to give you more visual, user options."
+msgstr ""
+
+#: ../includes/theme-functions.php:43
+msgid "Agent"
+msgstr ""
+
+#: ../includes/theme-functions.php:44
+msgid "A modern and open, agency-style design with a bit less user options."
+msgstr ""
+
+#: ../includes/theme-functions.php:47
+msgid "Entrepreneur"
+msgstr ""
+
+#: ../includes/theme-functions.php:48
+msgid "A more standard, corporate design with a lot of user options."
+msgstr ""
+
+#: ../includes/theme-functions.php:51
+msgid "Executive"
+msgstr ""
+
+#: ../includes/theme-functions.php:52
+msgid "A more classic, corporate design with a lot of user options."
+msgstr ""
+
+#: ../includes/theme-functions.php:141
+msgid "Warning: Your saved theme options do not currently match the theme base you've selected. Please configure and save your theme options page."
+msgstr ""
+
+#: ../includes/theme-functions.php:156
+msgid "Jump Start: Home"
+msgstr ""
+
