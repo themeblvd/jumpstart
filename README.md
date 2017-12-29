@@ -12,10 +12,14 @@ The Jump Start WordPress theme is a powerful, multi-purpose WordPress theme. Jum
 	* `jumpstart/`
 	* `jumpstart-x.x.x.zip`
 * `lib/`
+	* `fontawesome/`
+		* *Mirror of the current FontAwesome 5 distributed package.*
 	* `frontstreet/`
 		* *Mirror of [Front Street](https://github.com/themeblvd/frontstreet) `src`.*
+	* `plugin-manager/`
+		* *Custom build of [My Plugin Manager](https://github.com/themeblvd/my-plugin-manager) for the Theme Blvd WordPress Framework.*
 	* `themeblvd/`
-		* *All php and asset files for the Theme Blvd WordPress framework.*
+		* *All php and asset files for the Theme Blvd WordPress Framework.*
 * `src/`
 	* *All php and asset files, specific to the Jump Start theme.*
 
