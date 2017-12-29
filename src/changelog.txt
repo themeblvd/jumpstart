@@ -56,11 +56,12 @@ Jump Start Changelog
 	* New filters added for developers to implement FontAwesome Pro (or alternative icon styles) on frontend and into admin icon browser.
 * Third-Party Plugin Compatibility
 	* [bbPress](https://wordpress.org/plugins/bbpress/): "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
-	* [bbPress](https://wordpress.org/plugins/bbpress/): Added option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
-	* [Gravity Forms](http://themeblvd.com/links/gforms): Added option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > Gravity Forms*.
+	* [bbPress](https://wordpress.org/plugins/bbpress/): Added new option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
+	* [Gravity Forms](http://themeblvd.com/links/gforms): Added new option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > Gravity Forms*.
 	* [Subtitles](https://wordpress.org/plugins/subtitles/): When a subtitle exists for a post in a post showcase, it will replace the current taxonomy term output, when hovering on the featured image.
+	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Added new option to disable theme's custom WooCommerce styling at *Appearance > Theme Options > Plugins > WooCommerce*.
+	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Added new "Shop Banner" option at *Appearance > Theme Options > Plugins > WooCommerce.*
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Removed any legacy code for WooCommerce versions prior to 3.0.
-	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Added option to disable theme's WooCommerce styling at *Appearance > Theme Options > Plugins > WooCommerce*.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed "Billing details" and "Ship to a different address" columns being reversed on Checkout page.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed shipping method selection styling on Shopping Cart page.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed deprecated use of `WC_Cart::get_cart_url`.

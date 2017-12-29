@@ -413,7 +413,7 @@ if ( ! function_exists( 'themeblvd_epic_thumb' ) ) {
 
 		$class = array( 'epic-thumb', themeblvd_get_att( 'thumbs' ) );
 
-		if ( themeblvd_installed( 'woocommerce' ) && ( is_shop() || is_product_category() ) ) {
+		if ( themeblvd_installed( 'woocommerce' ) && is_woocommerce() ) {
 
 			$class[] = 'epic-banner';
 

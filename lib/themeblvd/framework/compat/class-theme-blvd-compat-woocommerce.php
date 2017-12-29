@@ -134,12 +134,16 @@ class Theme_Blvd_Compat_WooCommerce {
 		}
 
 		/*
-		 * Add support for "epic thumbnails".
+		 * Add support for "epic thumbnails."
 		 *
-		 * This refers to the big featured images, the
-		 * theme displays prominently above the content.
+		 * Displays the featured image above the content
+		 * on the shop page. And if applied from theme options,
+		 * this will get used as a banner across the entire shop.
 		 */
 		add_action( 'wp', array( $this, 'thumb_epic' ), 11 ); // After framework's set_atts().
+
+		// With support for epic thumbnails, apply transparent header also.
+		add_filter( 'themeblvd_frontend_config_header', array( $this, 'trans_header' ) );
 
 		// Modify WooCommerce settings page.
 		add_filter( 'woocommerce_product_settings', array( $this, 'remove_options' ) );
@@ -545,7 +549,21 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function thumb_epic() {
 
-		if ( is_shop() && function_exists( 'themeblvd_set_att' ) ) {
+		if ( ! is_woocommerce() ) {
+
+			return;
+
+		}
+
+		$do_banner = true;
+
+		if ( ! is_shop() && ! themeblvd_get_option( 'woo_banner' ) ) {
+
+			$do_banner = false;
+
+		}
+
+		if ( $do_banner ) {
 
 			$shop_id = get_option( 'woocommerce_shop_page_id' );
 
@@ -567,14 +585,41 @@ class Theme_Blvd_Compat_WooCommerce {
 
 				themeblvd_set_att( 'thumbs', $val );
 
-				themeblvd_set_att( 'epic_thumb', true );
+				themeblvd_set_att( 'epic_banner', true );
 
 			}
-		} elseif ( is_product_category() ) {
-
-			// ... @TODO
-
 		}
+
+	}
+
+	/**
+	 * Apply transparent header.
+	 *
+	 * This method is filtered onto:
+	 * 1. `themeblvd_frontend_config_header` - 10
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param  string $header Website header setting.
+	 * @return string $header Modified website header setting.
+	 */
+	public function trans_header( $header ) {
+
+		if ( is_woocommerce() && ! is_shop() ) {
+
+			if ( themeblvd_get_option( 'woo_banner' ) ) {
+
+	            $header = get_post_meta(
+					wc_get_page_id( 'shop' ),
+					'_tb_layout_header',
+					true
+				);
+
+			}
+        }
+
+		return $header;
+
 	}
 
 	/**

@@ -290,6 +290,7 @@ class Theme_Blvd_Options_API {
 	 *      - woo_archive_view
 	 *      - woo_archive_columns
 	 *      - woo_archive_per_page
+	 *      - woo_apply_shop_banner
 	 *      - woo_shop_sidebar_layout
 	 *      - woo_archive_sidebar_layout
 	 *      - woo_product_sidebar_layout
@@ -1476,6 +1477,13 @@ class Theme_Blvd_Options_API {
 						'desc'     => __( 'Add theme\'s custom styling for WooCommerce.', '@@text-domain' ) . '<br><br><em>' . __( 'Note: By disabling the theme\'s custom WooCommerce styling, all of the plugin\'s default features may not be fully supported. Also, several of the options below may not work exactly as expected.', '@@text-domain' ) . '</em>',
 						'id'       => 'woo_styles',
 						'std'      => '1',
+						'type'     => 'checkbox',
+					),
+					'woo_banner' => array(
+						'name'     => __( 'Shop Banner', '@@text-domain' ),
+						'desc'     => __( 'Apply your shop\'s featured image as a banner across all product archives.', '@@text-domain' ) . '<br><br><em>' . __( 'Note: For this to work, you must set a featured image on your shop page and set it to display above the content from the page\'s options. If your shop page has a transparent header, this setting will also get applied across your entire shop.', '@@text-domain' ) . '</em>',
+						'id'       => 'woo_banner',
+						'std'      => '0',
 						'type'     => 'checkbox',
 					),
 					'woo_floating_cart' => array(

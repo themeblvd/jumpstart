@@ -27,42 +27,22 @@ if ( themeblvd_show_breadcrumbs() ) {
 
 	<header class="entry-header epic-thumb-header epic-thumb-content">
 
-		<?php if ( is_shop() ) : ?>
-
-			<h1 class="entry-title">
-				<?php echo get_the_title( get_option( 'woocommerce_shop_page_id' ) ); ?>
-			</h1>
-
-		<?php elseif ( is_product_category() ) : ?>
-
-			@TODO
-
-		<?php endif; ?>
+		<h1 class="entry-title">
+			<?php echo get_the_title( get_option( 'woocommerce_shop_page_id' ) ); ?>
+		</h1>
 
 	</header>
 
-	<figure class="epic-thumb-img">
+	<?php
+	$attachment_id = get_post_thumbnail_id( get_option( 'woocommerce_shop_page_id' ) );
 
-		<?php if ( function_exists( 'is_shop' ) && is_shop() ) : ?>
+	$attachment = wp_get_attachment_image_src( $attachment_id );
 
-			<?php echo get_the_post_thumbnail( get_option( 'woocommerce_shop_page_id' ), 'full' ); ?>
+	themeblvd_the_archive_banner_image( array(
+		'id'   => $attachment_id,
+		'src'  => $attachment[0],
+		'crop' => 'full'
+	) );
+	?>
 
-		<?php elseif ( is_product_category() ) : ?>
-
-			@TODO
-
-		<?php endif; ?>
-
-	</figure>
-
-	<?php if ( 'fs' === themeblvd_get_att( 'thumbs' ) ) : ?>
-
-		<?php
-		themeblvd_to_section( array(
-			'to' => $to,
-		));
-		?>
-
-	<?php endif; ?>
-
-</div><!-- .epic-thumbnail -->
+</div><!-- .epic-banner (end) -->
