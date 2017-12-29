@@ -1164,13 +1164,11 @@ function themeblvd_get_bg_video( $video ) {
 
 	$source = themeblvd_get_video_source( $video['mp4'] );
 
-	$output  = sprintf(
+	$output = sprintf(
 		"\n<div class=\"tb-bg-video %s\" data-ratio=\"%s\">",
-		esc_url( $source ),
+		esc_attr( $source ),
 		esc_attr( $video['ratio'] )
 	);
-
-	$output .= "\n\t<div class=\"no-click\"></div>";
 
 	switch ( $source ) {
 
@@ -1264,16 +1262,16 @@ function themeblvd_get_bg_video( $video ) {
 				 */
 				$args = apply_filters( 'themeblvd_youtube_bg_args', array(
 					'vid'            => $youtube_id,
-					'autoplay'       => 0, // Will play video through API after it's loaded.
-					'loop'           => 1,
-					'hd'             => 1,
-					'controls'       => 0,
-					'showinfo'       => 0,
-					'modestbranding' => 1,
-					'iv_load_policy' => 3,
-					'rel'            => 0,
-					'version'        => 3,
-					'enablejsapi'    => 1,
+					'autoplay'       => 'true',
+					'loop'           => 'true',
+					'hd'             => 'true',
+					'controls'       => 'false',
+					'showinfo'       => 'false',
+					'modestbranding' => 'true',
+					'iv_load_policy' => '3',
+					'rel'            => 'false',
+					'version'        => '3',
+					'enablejsapi'    => 'true',
 					'wmode'          => 'opaque',
 					'playlist'       => $youtube_id,
 				), $video );
@@ -1304,6 +1302,20 @@ function themeblvd_get_bg_video( $video ) {
 
 			$vimeo_id = end( $vimeo_id );
 
+			/*
+			 * Re-start output.
+			 *
+			 * Unlike the YouTube API which, *replaces* the outer
+			 * <div>, the Vimeo API adds the <iframe> inside; so
+			 * the video API parameters need to be on the outer
+			 * <div>, itself.
+			 */
+			$output = sprintf(
+				'<div id="%s" class="tb-bg-video vimeo" data-ratio="%s" ',
+				esc_attr( $video['id'] ),
+				esc_attr( $video['ratio'] )
+			);
+
 			/**
 			 * Filters the arguments used to embed a
 			 * background video from Vimeo API.
@@ -1321,33 +1333,33 @@ function themeblvd_get_bg_video( $video ) {
 			 * }
 			 */
 			$args = apply_filters( 'themeblvd_vimeo_bg_args', array(
-				'portrait'   => 0,
-				'byline'     => 0,
-				'title'      => 0,
-				'badge'      => 0,
-				'loop'       => 1,
-				'autoplay'   => 0,
-				'autopause'  => 0,
-				'api'        => 1,
-				'rel'        => 0,
-				'player_id'  => $video['id'],
-				'background' => 1,
+				'id'         => $vimeo_id,
+				'background' => 'true',
+				'autoplay'   => 'true',
+				'loop'       => 'true',
+				'autopause'  => 'false',
+				'byline'     => 'false',
+				'title'      => 'false',
+				'portrait'   => 'false',
 			), $video );
 
-			$vimeo_url = add_query_arg(
-				$args,
-				'https://player.vimeo.com/video/' . $vimeo_id
-			);
+			foreach ( $args as $key => $value ) {
 
-			$output .= sprintf(
-				"\n\t<iframe id=\"%s\" src=\"%s\" height=\"1600\" width=\"900\" frameborder=\"\" class=\"video\"></iframe>\n",
-				esc_attr( $video['id'] ),
-				esc_url( $vimeo_url )
-			);
+				$output .= sprintf(
+					' data-vimeo-%s="%s"',
+					esc_attr( $key ),
+					esc_attr( $value )
+				);
+
+			}
+
+			$output .= '>';
 
 			break;
 
 	}
+
+	$output .= "\n\t<div class=\"no-click\"></div>";
 
 	$output .= "</div><!-- .tb-bg-video (end) -->\n";
 
