@@ -31,7 +31,7 @@ Jump Start Changelog
 	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
 	* All template part files moved from the theme root to a `template-parts` directory.
-	* New template parts added, `content-head.php`, `content-header.php` and `content-footer.php`.
+	* New template parts added, `content-head.php`, `content-header.php`, `content-footer.php` and `content-panel.php`.
 	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.

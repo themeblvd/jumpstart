@@ -968,34 +968,11 @@ if ( ! function_exists( 'themeblvd_side_panel' ) ) {
 	 */
 	function themeblvd_side_panel() {
 
-		if ( ! themeblvd_do_side_panel() ) {
+		if ( themeblvd_do_side_panel() ) {
 
-			return;
+			themeblvd_get_template_part( 'panel' );
 
 		}
-
-		?>
-		<div id="side-panel" <?php themeblvd_side_panel_class(); ?>>
-
-			<div class="wrap">
-
-				<?php
-				/**
-				 * Fires within the hidden side panel.
-				 *
-				 * @hooked themeblvd_side_panel_menu - 10
-				 * @hooked themeblvd_side_panel_sub_menu - 20
-				 * @hooked themeblvd_side_panel_contact - 30
-				 *
-				 * @since Theme_Blvd 2.6.0
-				 */
-				do_action( 'themeblvd_side_panel' );
-				?>
-
-			</div><!-- .wrap (end) -->
-
-		</div><!-- #side-panel (end) -->
-		<?php
 
 	}
 }

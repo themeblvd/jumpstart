@@ -179,6 +179,9 @@ class Theme_Blvd_Frontend_Init {
 			// Set single attachment template parts.
 			'attachment'         => 'attachment',    // content-attachment.php
 
+			// Set side and mobile panel template parts.
+			'panel'              => 'panel',         // content-panel.php
+
 		));
 
 	}
