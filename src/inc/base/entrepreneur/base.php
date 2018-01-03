@@ -839,7 +839,7 @@ function jumpstart_ent_css() {
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
 	$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
 	$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
-	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn {\n";
+	$print .= ".tb-mobile-panel .tb-mobile-menu > li > .menu-btn {\n";
 	$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $menu_font ) );
 	$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $menu_font ) );
 	$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $menu_font ) );
@@ -1019,28 +1019,25 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 	if ( $icons && themeblvd_get_option( 'social_header' ) ) {
 
-		$items .= '<li class="menu-item level-1 menu-contact">';
+		$contact = themeblvd_get_contact_bar( $icons, array(
+			'tooltip'   => false,
+			'container' => false,
+			'style'     => 'flat',
+		) );
 
-		$items .= '<a href="#" class="tb-contact-trigger menu-btn" tabindex="0" data-toggle="popover" data-container="body" data-placement="bottom" data-open="envelope" data-close="times"><i class="' . esc_attr( themeblvd_get_icon_class( 'envelope' ) ) . '"></i></a>';
-
-		$color = themeblvd_get_option( 'social_media_style' );
-
-		if ( 'light' === $color ) { // Color can't be light because it's in a white popover.
-
-			$color = 'grey';
-
-		}
-
-		$items .= sprintf(
-			'<div class="contact-popover-content hide">%s</div>',
-			themeblvd_get_contact_bar( $icons, array(
-				'tooltip' => false,
-				'style'   => $color,
-				'class'   => 'to-mobile',
-			))
+		$contact = str_replace(
+			'contact-bar-item',
+			'contact-bar-item menu-item',
+			$contact
 		);
 
-		$items .= '</li>';
+		$contact = str_replace(
+			'class="tb-icon',
+			'class="tb-icon menu-btn',
+			$contact
+		);
+
+		$items .= $contact;
 
 	}
 
@@ -1218,6 +1215,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_side_panel_class' );
  * Adjust the style of the side panel contact bar.
  */
 add_filter( 'themeblvd_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
+add_filter( 'themeblvd_mobile_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
 
 /*
  * Add CSS classes to footer.

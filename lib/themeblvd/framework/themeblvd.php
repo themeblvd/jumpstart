@@ -465,6 +465,15 @@ add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_sub_menu', 20 );
 add_action( 'themeblvd_side_panel', 'themeblvd_side_panel_contact', 30 );
 
 /*
+ * Hook frontend actions for the website mobile panel.
+ */
+add_action( 'themeblvd_after', 'themeblvd_mobile_panel' );
+add_action( 'themeblvd_mobile_panel', 'themeblvd_mobile_panel_search' );
+add_action( 'themeblvd_mobile_panel', 'themeblvd_mobile_panel_menu', 20 );
+add_action( 'themeblvd_mobile_panel', 'themeblvd_mobile_panel_sub_menu', 30 );
+add_action( 'themeblvd_mobile_panel', 'themeblvd_mobile_panel_contact', 40 );
+
+/*
  * Hook frontend actions for the website inner
  * content area.
  */

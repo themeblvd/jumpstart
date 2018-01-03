@@ -31,7 +31,7 @@ Jump Start Changelog
 	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
 	* All template part files moved from the theme root to a `template-parts` directory.
-	* New template parts added, `content-head.php`, `content-header.php`, `content-footer.php` and `content-panel.php`.
+	* New template parts added, `content-head.php`, `content-header.php`, `content-footer.php`, `content-panel.php` and `content-mobile-panel.php`.
 	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
@@ -90,6 +90,7 @@ Jump Start Changelog
 * Improvement: New styling for the "Tweet" element added to the layout builder from the [Tweeple plugin](https://wordpress.org/plugins/tweeple).
 * Improvement: There is now only one Post Slider and Simple Slider element; apply the "Popout" display option to these elements to achieve the full-width versions, which now display inline images.
 * Improvement: For simplification, side panel background color and mobile menu background color options on Super User, Executive and Entrepreneur theme bases have been combined into one option; this was already the case on the Agent theme base.
+* Improvement: Contact icons can now show in the main menu of the Entrepreneur and Agent theme bases; this also replaces the popover style contact icons that used to exist with the Entrepreneur base.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
 * Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.

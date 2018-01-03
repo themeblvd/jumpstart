@@ -974,7 +974,7 @@ function jumpstart_su_css() {
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
 	$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
 	$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
-	$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn {\n";
+	$print .= ".tb-mobile-panel .tb-mobile-menu > li > .menu-btn {\n";
 
 	$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $options['font'] ) );
 	$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $options['font'] ) );
@@ -1203,6 +1203,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_side_panel_class' );
  * Adjust the style of the side panel contact bar.
  */
 add_filter( 'themeblvd_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
+add_filter( 'themeblvd_mobile_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
 
 /*
  * Add CSS classes to footer.
@@ -1401,9 +1402,7 @@ function jumpstart_su_header_addon() {
 
 			echo '<li class="top-icons">';
 
-			themeblvd_contact_bar( $icons, array(
-				'class' => 'to-mobile',
-			));
+			themeblvd_contact_bar( $icons );
 
 			echo '</li>';
 

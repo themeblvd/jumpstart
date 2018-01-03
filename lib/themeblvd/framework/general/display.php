@@ -114,11 +114,7 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 						<?php if ( $icons && $do_icons ) : ?>
 
 							<li class="top-icons">
-								<?php
-								themeblvd_contact_bar( $icons, array(
-									'class' => 'to-mobile',
-								));
-								?>
+								<?php themeblvd_contact_bar( $icons ); ?>
 							</li>
 
 						<?php endif; ?>
@@ -155,27 +151,37 @@ if ( ! function_exists( 'themeblvd_responsive_menu_toggle' ) ) {
 	 */
 	function themeblvd_responsive_menu_toggle() {
 
+		if ( ! themeblvd_supports( 'display', 'mobile_panel' ) && ! themeblvd_do_cart() ) {
+
+			return;
+
+		}
+
 		?>
 		<ul class="mobile-nav list-unstyled">
 
-			<li>
-				<a href="#" class="btn-navbar tb-nav-trigger">
-					<?php
-					/**
-					 * Filters the HTML output for the "hamburger"
-					 * mobile menu toggle button.
-					 *
-					 * @since @@name-framework 2.0.0
-					 *
-					 * @param array Final HTML output.
-					 */
-					echo apply_filters(
-						'themeblvd_btn_navbar_text',
-						'<span class="hamburger"><span class="top"></span><span class="middle"></span><span class="bottom"></span></span>'
-					);
-					?>
-				</a>
-			</li>
+			<?php if ( themeblvd_supports( 'display', 'mobile_panel' ) ) : ?>
+
+				<li>
+					<a href="#" class="btn-navbar tb-nav-trigger">
+						<?php
+						/**
+						 * Filters the HTML output for the "hamburger"
+						 * mobile menu toggle button.
+						 *
+						 * @since @@name-framework 2.0.0
+						 *
+						 * @param array Final HTML output.
+						 */
+						echo apply_filters(
+							'themeblvd_btn_navbar_text',
+							'<span class="hamburger"><span class="top"></span><span class="middle"></span><span class="bottom"></span></span>'
+						);
+						?>
+					</a>
+				</li>
+
+			<?php endif; ?>
 
 			<?php if ( themeblvd_do_cart() ) : ?>
 
@@ -1041,6 +1047,148 @@ if ( ! function_exists( 'themeblvd_side_panel_contact' ) ) {
 				array(
 					'tooltip' => false,
 					'style'   => 'light',
+				)
+			);
+
+			echo themeblvd_get_contact_bar( null, $args );
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_panel' ) ) {
+
+	/**
+	 * Display the hidden mobile menu panel.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_after` - 10
+	 *
+	 * @since @@name-framework 2.7.0
+	 */
+	function themeblvd_mobile_panel() {
+
+		if ( themeblvd_supports( 'display', 'mobile_panel' ) ) {
+
+			themeblvd_get_template_part( 'mobile_panel' );
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_panel_search' ) ) {
+
+	/**
+	 * Display the search bar in the mobile
+	 * menu.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_mobile_panel` - 10
+	 *
+	 * @since @@name-framework 2.7.0
+	 */
+	function themeblvd_mobile_panel_search() {
+
+		if ( themeblvd_do_floating_search() ) {
+
+			themeblvd_set_att( 'search_class', 'panel-item mini' );
+
+			get_search_form();
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_panel_menu' ) ) {
+
+	/**
+	 * Display the main menu in the mobile panel.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_mobile_panel` - 20
+	 *
+	 * @since @@name-framework 2.7.0
+	 */
+	function themeblvd_mobile_panel_menu() {
+
+		?>
+		<ul class="tb-mobile-menu tb-side-menu primary-menu panel-item">
+			<!-- Menu items inserted with JavaScript. -->
+		</ul>
+		<?php
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_panel_sub_menu' ) ) {
+
+	/**
+	 * Display the sub menu in the mobile panel.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_mobile_panel` - 30
+	 *
+	 * @since @@name-framework 2.7.0
+	 */
+	function themeblvd_mobile_panel_sub_menu() {
+
+		$args = themeblvd_get_wp_nav_menu_args( 'side_sub' );
+
+		if ( has_nav_menu( $args['theme_location'] ) ) {
+
+			?>
+			<ul class="secondary-menu panel-item">
+				<!-- Menu items inserted with JavaScript. -->
+			</ul>
+			<?php
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_panel_contact' ) ) {
+
+	/**
+	 * Display the contact icons and header text in the
+	 * mobile panel.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_mobile_panel` - 40
+	 *
+	 * @since @@name-framework 2.7.0
+	 */
+	function themeblvd_mobile_panel_contact() {
+
+		$header_text = themeblvd_get_option( 'header_text' );
+
+		if ( $header_text ) {
+
+			themeblvd_header_text( $header_text, array(
+				'class' => 'panel-item',
+			) );
+
+		}
+
+		if ( themeblvd_get_option( 'social_header' ) || themeblvd_get_option( 'social_panel' ) ) {
+
+			/**
+			 * Filters the arguments used for the side
+			 * panel contact bar.
+			 *
+			 * @since @@name-framework 2.7.0
+			 *
+			 * @param array Arguments passed to themeblvd_get_contact_bar().
+			 */
+			$args = apply_filters(
+				'themeblvd_mobile_panel_contact_bar_args',
+				array(
+					'tooltip' => false,
+					'style'   => 'light',
+					'class'   => 'panel-item',
 				)
 			);
 

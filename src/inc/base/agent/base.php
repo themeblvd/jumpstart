@@ -327,7 +327,7 @@ function jumpstart_ag_css() {
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
 		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
 		$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
-		$print .= ".tb-mobile-menu-wrapper .tb-mobile-menu > li > .menu-btn {\n";
+		$print .= ".tb-mobile-panel .tb-mobile-menu > li > .menu-btn {\n";
 		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
 		$print .= sprintf( "\tfont-style: %s;\n", themeblvd_get_font_style( $font ) );
 		$print .= sprintf( "\tfont-weight: %s;\n", themeblvd_get_font_weight( $font ) );
@@ -638,14 +638,30 @@ function jumpstart_ag_header_menu() {
 	 */
 	do_action( 'themeblvd_header_menu_before' );
 
+	$icons = themeblvd_get_option( 'social_media' );
+
+	$do_icons = themeblvd_get_option( 'social_header' );
+
 	?>
 	<nav id="access" class="header-nav">
 
 		<div class="wrap clearfix">
 
-			<?php if ( 'show' === themeblvd_get_option( 'searchform' ) || themeblvd_do_cart() || themeblvd_do_lang_selector() || themeblvd_do_side_panel() ) : ?>
+			<?php if ( ( $icons && $do_icons ) || 'show' === themeblvd_get_option( 'searchform' ) || themeblvd_do_cart() || themeblvd_do_lang_selector() || themeblvd_do_side_panel() ) : ?>
 
 				<ul class="header-toolbar list-unstyled">
+
+					<?php if ( $icons && $do_icons ) : ?>
+
+						<?php
+						echo themeblvd_get_contact_bar( $icons, array(
+							'tooltip'   => false,
+							'container' => false,
+							'style'     => 'flat',
+						) );
+						?>
+
+					<?php endif; ?>
 
 					<?php if ( themeblvd_do_cart() ) : ?>
 
@@ -720,6 +736,7 @@ add_filter( 'themeblvd_mobile_panel_class', 'jumpstart_side_panel_class' );
  * Adjust the style of the side panel contact bar.
  */
 add_filter( 'themeblvd_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
+add_filter( 'themeblvd_mobile_panel_contact_bar_args', 'jumpstart_panel_contact_bar_args' );
 
 /**
  * Add CSS class to sticky header panel for

@@ -76,7 +76,7 @@ function themeblvd_setup() {
 	$setup['display'] = array(
 		'responsive'       => true,  // Responsive elements.
 		'sticky'           => true,  // Sticky header as user scrolls past header.
-		'mobile_side_menu' => true,  // Responsive menu position fixed to the side of the screen on mobile.
+		'mobile_panel'     => true,  // Responsive menu position fixed to the side of the screen on mobile.
 		'side_panel'       => true,  // Optional side panel navigation.
 		'scroll_effects'   => true,  // Effects as user scrolls down page.
 		'hide_top'         => true,  // Whether theme supports hiding the #top.

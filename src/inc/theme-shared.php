@@ -658,7 +658,7 @@ function themeblvd_get_shared_style( $set ) {
 
 			}
 
-			$output .= ".tb-mobile-menu-wrapper {\n";
+			$output .= ".tb-mobile-panel {\n";
 
 			$output .= sprintf(
 				"\tbackground-color: %s;\n",
@@ -808,12 +808,6 @@ function jumpstart_panel_contact_bar_args( $args ) {
 	if ( 'light' === themeblvd_get_option( 'side_bg_color_brightness' ) ) {
 
 		$args['style'] = 'dark';
-
-	}
-
-	if ( ! themeblvd_get_option( 'social_header' ) ) {
-
-		$args['class'] = 'to-mobile';
 
 	}
 

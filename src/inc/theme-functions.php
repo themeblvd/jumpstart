@@ -59,9 +59,7 @@ function jumpstart_bases() {
 	if ( is_admin() && themeblvd_supports( 'admin', 'base' ) ) {
 
 		/**
-		 * Filter theme bases added by Jump Start, which
-		 * are passed to the object created with
-		 * class Theme_Blvd_Bases.
+		 * Filters the theme bases added by the theme.
 		 *
 		 * @since @@name-package 2.0.0
 		 *
@@ -164,7 +162,7 @@ function jumpstart_css() {
 		wp_enqueue_style(
 			'jumpstart-base',
 			esc_url( themeblvd_get_base_uri( $base ) . "/base{$suffix}.css" ),
-			array( 'themeblvd' ),
+			array( 'themeblvd', 'jumpstart' ),
 			$ver
 		);
 
@@ -176,7 +174,7 @@ function jumpstart_css() {
 	wp_enqueue_style(
 		'themeblvd-ie',
 		esc_url( get_template_directory_uri() . '/assets/css/ie.css' ),
-		array(),
+		array( 'themeblvd' ),
 		$ver
 	);
 
@@ -188,7 +186,7 @@ function jumpstart_css() {
 	wp_enqueue_style(
 		'themeblvd-theme',
 		esc_url( get_stylesheet_uri() ),
-		array( 'themeblvd' ),
+		array(),
 		$stylesheet_ver
 	);
 

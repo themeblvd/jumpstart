@@ -489,7 +489,7 @@ function themeblvd_copyright_class() {
  * Display HTML class for the hidden
  * side panel.
  *
- * @since @@name-framework 2.6.0
+ * @since @@name-framework 2.7.0
  */
 function themeblvd_side_panel_class() {
 
@@ -499,7 +499,7 @@ function themeblvd_side_panel_class() {
 	 * Filters the CSS classes used with the
 	 * hidden side panel.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since @@name-framework 2.7.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -515,11 +515,126 @@ function themeblvd_side_panel_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the hidden side panel.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since @@name-framework 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
 	 */
 	echo apply_filters( 'themeblvd_side_panel_class_output', $output, $class );
+
+}
+
+/**
+ * Display HTML class for the hidden
+ * side panel.
+ *
+ * @since @@name-framework 2.7.0
+ */
+function themeblvd_mobile_panel_class() {
+
+	$class = array(
+		'tb-mobile-panel',
+		'tb-mobile-menu-wrapper', // Backwards compatibility.
+	);
+
+	$location = 'right';
+
+	if ( is_rtl() ) {
+
+		$location = 'left';
+
+	}
+
+	/**
+	 * Filters the location that the mobile menu
+	 * slides out from.
+	 *
+	 * This can currently only be left or right,
+	 * but may be extended in the future.
+	 * @TODO Issue #185.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $location Location of mobile menu, `left` or `right`.
+	 */
+	$location = apply_filters( 'themeblvd_mobile_panel_location', $location );
+
+	$class[] = $location;
+
+	/**
+	 * Filters the CSS classes used with the
+	 * hidden mobile panel.
+	 *
+	 * @since @@name-framework 2.5.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_mobile_panel_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the hidden mobile panel.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_mobile_panel_class_output', $output, $class );
+
+}
+
+/**
+ * Display HTML class for the searchform
+ * from get_searchform()
+ *
+ * @since @@name-framework 2.7.0
+ */
+function themeblvd_searchform_class() {
+
+	$class = array( 'tb-search' );
+
+	$add = themeblvd_get_att( 'search_class' );
+
+	if ( $add ) {
+
+		$add = explode( ' ', $add );
+
+		$class = array_merge( $class, $add );
+
+	}
+
+	/**
+	 * Filters the CSS classes used with the
+	 * searchform from get_searchform().
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_searchform_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for searchform from get_searchform().
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_searchform_class_output', $output, $class );
 
 }

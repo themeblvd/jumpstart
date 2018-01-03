@@ -270,30 +270,23 @@ function themeblvd_get_js_locals() {
 	}
 
 	// Responsive nav menu fixed to the side on mobile.
-	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'display', 'mobile_side_menu' ) ) {
+	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'display', 'mobile_panel' ) ) {
 
 		$locals['mobile_panel'] = 'true';
 
-		/**
-		 * Filters any additional CSS classes to be
-		 * added to the mobile menu panel, generated
-		 * with JavaScript.
-		 *
-		 * @since @@name-framework 2.5.0
-		 *
-		 * @param array CSS classes.
-		 */
-		$locals['mobile_panel_class'] = implode( ' ', apply_filters( 'themeblvd_mobile_panel_class', array() ) );
-
 		$locals['mobile_menu_viewport_max'] = '992';
 
-		$locals['mobile_menu_location'] = 'right';
+		$location = 'right';
 
 		if ( is_rtl() ) {
 
-			$locals['mobile_menu_location'] = 'left';
+			$location = 'left';
 
 		}
+
+		/** This filter is documented in framework/general/tags.php */
+		$locals['mobile_menu_location'] = apply_filters( 'themeblvd_mobile_panel_location', $location );
+
 	}
 
 	if ( themeblvd_do_side_panel() ) {

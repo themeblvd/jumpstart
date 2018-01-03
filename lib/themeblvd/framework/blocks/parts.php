@@ -63,6 +63,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 		'tooltip'    => 'bottom',
 		'class'      => '',
 		'authorship' => false,
+		'container'  => 'ul',
 	));
 
 	$args = wp_parse_args( $args, $defaults );
@@ -71,17 +72,25 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 	if ( $buttons && is_array( $buttons ) ) {
 
-		$class = 'themeblvd-contact-bar tb-social-icons ' . $args['style'];
+		if ( $args['container'] ) {
 
-		if ( $args['class'] ) {
+			$class = 'themeblvd-contact-bar tb-social-icons ' . $args['style'];
 
-			$class .= ' ' . $args['class'];
+			if ( $args['class'] ) {
+
+				$class .= ' ' . $args['class'];
+
+			}
+
+			$class .= ' clearfix';
+
+			$output .= sprintf(
+				'<%s class="%s">',
+				$args['container'],
+				esc_attr( $class )
+			);
 
 		}
-
-		$class .= ' clearfix';
-
-		$output .= '<ul class="' . esc_attr( $class ) . '">';
 
 		foreach ( $buttons as $button ) {
 
@@ -185,7 +194,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 			}
 
 			$output .= sprintf(
-				'<li class="li-%s"><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>',
+				'<li class="contact-bar-item li-%s"><a href="%s" title="%s" class="%s" target="%s" data-toggle="tooltip" data-placement="%s">%s</a></li>',
 				esc_attr( $button['icon'] ),
 				esc_url( $button['url'] ),
 				esc_attr( $title ),
@@ -197,7 +206,11 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 
 		}
 
-		$output .= '</ul><!-- .themeblvd-contact-bar -->';
+		if ( $args['container'] ) {
+
+			$output .= '</ul><!-- .themeblvd-contact-bar -->';
+
+		}
 
 	}
 
@@ -275,17 +288,17 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
  */
 function themeblvd_get_floating_search( $args = array() ) {
 
-	$output  = '<div class="tb-floating-search">';
+	$output  = "\n<div class=\"tb-floating-search\">\n";
 
-	$output .= '<div class="wrap">';
+	$output .= "\t<div class=\"wrap\">\n\n";
 
 	$output .= '<a href="#" title="' . themeblvd_get_local( 'close' ) . '" class="close-search">x</a>';
 
 	$output .= get_search_form( false );
 
-	$output .= '</div><!-- .wrap (end) -->';
+	$output .= "\n\t</div><!-- .wrap (end) -->\n";
 
-	$output .= '</div><!-- .tb-floating-search (end) -->';
+	$output .= "</div><!-- .tb-floating-search (end) -->\n";
 
 	/**
 	 * Filters the final HTML output for a floating
@@ -939,9 +952,14 @@ function themeblvd_mobile_cart_link() {
  * @since @@name-framework 2.5.0
  *
  * @param  string $text   Text to display; when left blank, pulls from `header_text` theme option.
+ * @param  array  $args {
+ *     Optional Arguments
+ *
+ *     @type array $class CSS classes to add to output.
+ * }
  * @return string $output Final HTML output for block.
  */
-function themeblvd_get_header_text( $text = '' ) {
+function themeblvd_get_header_text( $text = '', $args = array() ) {
 
 	$output = '';
 
@@ -962,7 +980,22 @@ function themeblvd_get_header_text( $text = '' ) {
 
 	if ( $text ) {
 
-		$output = sprintf( '<div class="header-text to-mobile">%s</div>', themeblvd_kses( $text ) );
+		$class = 'header-text';
+
+		if ( ! empty( $args['class'] ) ) {
+
+			if ( is_array( $args['class'] ) ) {
+
+				$class .= ' ' . implode( ' ' , $args['class'] );
+
+			} else {
+
+				$class .= ' ' . $args['class'];
+
+			}
+		}
+
+		$output = sprintf( '<div class="%s">%s</div>', $class, themeblvd_kses( $text ) );
 
 	}
 
@@ -986,9 +1019,9 @@ function themeblvd_get_header_text( $text = '' ) {
  *
  * @param string $text Text to display; when left blank, pulls from `header_text` theme option.
  */
-function themeblvd_header_text( $text = '' ) {
+function themeblvd_header_text( $text = '', $args = array() ) {
 
-	echo themeblvd_get_header_text( $text );
+	echo themeblvd_get_header_text( $text, $args );
 
 }
 
@@ -1982,6 +2015,8 @@ function themeblvd_get_to_top( $args = array() ) {
 		$class,
 		themeblvd_get_local( 'top' )
 	);
+
+	$output = "\n" . $output . "\n";
 
 	/**
 	 * Filters the final HTML output for a button

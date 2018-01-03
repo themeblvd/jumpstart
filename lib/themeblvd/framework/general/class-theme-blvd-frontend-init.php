@@ -181,6 +181,7 @@ class Theme_Blvd_Frontend_Init {
 
 			// Set side and mobile panel template parts.
 			'panel'              => 'panel',         // content-panel.php
+			'mobile_panel'       => 'mobile-panel',  // content-mobile-panel.php
 
 		));
 

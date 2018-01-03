@@ -359,7 +359,8 @@ function jumpstart_ag_options() {
 
 	themeblvd_remove_option( 'layout', 'header_trans', 'trans_social_media_style' );
 
-	themeblvd_remove_option( 'layout', 'contact', 'social_header' );
+	// Set social icons in header to be hidden by default.
+	themeblvd_edit_option( 'layout', 'contact', 'social_header', 'std', '0' );
 
 	// Set default logos.
 	themeblvd_edit_option( 'layout', 'header', 'logo', 'std', array(

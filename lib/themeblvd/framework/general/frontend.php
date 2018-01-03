@@ -754,6 +754,24 @@ function themeblvd_body_class( $class ) {
 
 	}
 
+	// Add toggle class for mobile menu.
+	if ( themeblvd_supports( 'display', 'mobile_panel' ) ) {
+
+		$location = 'right';
+
+		if ( is_rtl() ) {
+
+			$location = 'left';
+
+		}
+
+		/** This filter is documented in framework/general/tags.php */
+		$location = apply_filters( 'themeblvd_mobile_panel_location', $location );
+
+		$class[] = 'mobile-menu-' . $location . '-off';
+
+	}
+
 	/**
 	 * Filters the <body> classes, after the theme
 	 * has added to them.

@@ -15,7 +15,7 @@
  * @copyright  2009-2017 Theme Blvd
  * @package    @@name-package
  * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @since      @@name-framework 2.7.0
  */
 ?>
 <div id="side-panel" <?php themeblvd_side_panel_class(); ?>>

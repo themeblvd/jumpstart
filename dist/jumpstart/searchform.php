@@ -9,7 +9,7 @@
  * @since      Theme_Blvd 2.0.0
  */
 ?>
-<div class="tb-search">
+<div <?php themeblvd_searchform_class(); ?>>
 
 	<form method="get" action="<?php themeblvd_home_url(); ?>">
 

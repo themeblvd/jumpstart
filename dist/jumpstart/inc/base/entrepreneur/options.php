@@ -19,7 +19,7 @@ function jumpstart_ent_options() {
 	add_theme_support( 'custom-background', array(
 		'default-color' => 'f8f8f8',
 		'default-image' => '',
-	));
+	) );
 
 	$bg_types = array();
 
@@ -888,7 +888,7 @@ function jumpstart_ent_options() {
 		'image_width'  => '165',
 		'image_height' => '50',
 		'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small_2x.png',
-	));
+	) );
 
 	themeblvd_edit_option( 'layout', 'header_trans', 'trans_logo', 'std', array(
 		'type'         => 'image',
@@ -896,7 +896,15 @@ function jumpstart_ent_options() {
 		'image_width'  => '165',
 		'image_height' => '50',
 		'image_2x'     => get_template_directory_uri() . '/assets/img/logo-small-light_2x.png',
-	));
+	) );
+
+	$desc = __( 'If you have a contact menu setup for your header, select the color you\'d like applied to them.', 'jumpstart' );
+
+	$desc .= '<br><br>' . __( 'Note: With the Entrepeneur theme base, this option only gets applied when using the top bar and the Header Text option.', 'jumpstart' );
+
+	$desc .= '<br><br>' . __( 'Note: Your contact menu can be setup below at <em>Layout > Contact</em>.', 'jumpstart' );
+
+	themeblvd_edit_option( 'layout', 'header', 'social_media_style', 'desc', $desc );
 
 }
 add_action( 'after_setup_theme', 'jumpstart_ent_options' );
