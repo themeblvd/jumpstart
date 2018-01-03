@@ -1253,7 +1253,7 @@ function themeblvd_get_logos( $args ) {
 				$img
 			);
 
-			if ( $i % 0 === $num_per && $i < $total ) {
+			if ( 0 === $i % $num_per && $i < $total ) {
 
 				$output .= themeblvd_get_close_row();
 
