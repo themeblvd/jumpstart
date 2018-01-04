@@ -82,7 +82,7 @@ class Theme_Blvd_License_Admin {
 				'timeout'		=> 20,
 				'sslverify'		=> false,
 				'body'			=> $api_params
-			));
+			) );
 
 			$response = wp_remote_post( $this->remote_api_url, $remote_post_args );
 

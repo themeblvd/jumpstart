@@ -50,7 +50,7 @@ function themeblvd_media_uploader( $args ) {
 		'value_height' => '',
 		'value_title'  => '',
 		'value_crop'   => '',
-	));
+	) );
 
 	$output = '';
 

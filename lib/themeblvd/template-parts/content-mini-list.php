@@ -42,7 +42,7 @@ $meta = apply_filters( 'themeblvd_mini_list_meta_args', array(
 	'include'  => array( 'time', 'comments' ),
 	'comments' => 'mini',
 	'time'     => 'ago',
-));
+) );
 
 ?>
 <article <?php post_class( $class ); ?>>

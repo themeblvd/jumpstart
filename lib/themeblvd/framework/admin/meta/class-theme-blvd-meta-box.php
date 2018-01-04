@@ -78,7 +78,7 @@ class Theme_Blvd_Meta_Box {
 			'priority'   => 'high',
 			'save_empty' => true,
 			'textures'   => false,
-		));
+		) );
 
 		/*
 		 * Backwards compat for older arguments.

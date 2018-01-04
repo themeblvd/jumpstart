@@ -27,7 +27,7 @@
 				<?php
 				themeblvd_the_post_thumbnail( 'tb_thumb', array(
 					'placeholder' => true,
-				));
+				) );
 				?>
 
 			<?php endif; ?>

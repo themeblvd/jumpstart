@@ -300,7 +300,7 @@ function themeblvd_admin_menu_bar() {
 		'options'  => $options_page,
 		'builder'  => 'admin.php?page=themeblvd_builder',
 		'sidebars' => 'themes.php?page=themeblvd_widget_areas',
-	));
+	) );
 
 	if ( ! $modules ) {
 
@@ -317,7 +317,7 @@ function themeblvd_admin_menu_bar() {
 				'title'  => __( 'Theme Options', '@@text-domain' ),
 				'parent' => 'site-name',
 				'href'   => admin_url( $modules['options'] ),
-			));
+			) );
 		}
 	}
 
@@ -330,7 +330,7 @@ function themeblvd_admin_menu_bar() {
 				'title'  => __( 'Templates', '@@text-domain' ),
 				'parent' => 'site-name',
 				'href'   => admin_url( $modules['builder'] ),
-			));
+			) );
 
 		}
 	}
@@ -344,7 +344,7 @@ function themeblvd_admin_menu_bar() {
 				'title'  => __( 'Widget Areas', '@@text-domain' ),
 				'parent' => 'site-name',
 				'href'   => admin_url( $modules['sidebars'] ),
-			));
+			) );
 
 		}
 	}

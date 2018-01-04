@@ -173,7 +173,7 @@ function themeblvd_plugins() {
 			'slug'    => 'simple-analytics',
 			'version' => '1.1+',
 		),
-	));
+	) );
 
 	/*
 	 * Setup arguments for plugin manager interface.

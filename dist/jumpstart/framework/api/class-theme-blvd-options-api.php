@@ -326,7 +326,7 @@ class Theme_Blvd_Options_API {
 
 			$options_categories_obj = get_categories( array(
 				'hide_empty' => false,
-			));
+			) );
 
 			foreach ( $options_categories_obj as $category ) {
 

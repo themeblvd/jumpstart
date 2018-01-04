@@ -37,7 +37,7 @@ function themeblvd_get_blockquote( $args ) {
 		'max_width'   => '',
 		'reverse'     => 'false',
 		'class'       => '',
-	));
+	) );
 
 	$class = 'tb-blockquote';
 
@@ -226,7 +226,7 @@ function themeblvd_get_content_block( $args ) {
 		'text_color' => 'none',
 		'bg_color'   => '#cccccc',
 		'bg_opacity' => '1',
-	));
+	) );
 
 	$class = 'tb-content-block entry-content';
 

@@ -40,7 +40,7 @@ function themeblvd_get_comment_list_args() {
 		'callback'          => null,
 		'reverse_top_level' => null,
 		'reverse_children'  => false,
-	));
+	) );
 
 }
 
@@ -72,7 +72,7 @@ function themeblvd_get_comment_form_args() {
 		'title_reply_to'    => themeblvd_get_local( 'title_reply_to' ),
 		'cancel_reply_link' => themeblvd_get_local( 'cancel_reply_link' ),
 		'label_submit'      => themeblvd_get_local( 'label_submit' ),
-	));
+	) );
 
 }
 

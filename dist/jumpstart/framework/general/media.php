@@ -276,7 +276,7 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 		'height' => themeblvd_get_att( 'crop_h' ),
 		'link'   => '',
 		'title'  => '',
-	));
+	) );
 
 	$class = 'placeholder-wrap featured-image';
 
@@ -366,7 +366,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 		'props'   => array(),
 		'addon'   => '',
 		'gallery' => false,
-	));
+	) );
 
 	$item = $args['item'];
 
@@ -871,7 +871,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 			'id'   => 0,
 			'alt'  => '',
 			'src'  => '',
-		));
+		) );
 
 	}
 
@@ -1160,7 +1160,7 @@ function themeblvd_get_bg_video( $video ) {
 		'mp4'      => '',
 		'ratio'    => '16:9',
 		'fallback' => '',
-	)));
+	)) );
 
 	$source = themeblvd_get_video_source( $video['mp4'] );
 
@@ -1215,7 +1215,7 @@ function themeblvd_get_bg_video( $video ) {
 				'webm'  => 'type="video/webm"',
 				'mp4'   => 'type="video/mp4"',
 				'ogv'   => 'type="video/ogg"',
-			));
+			) );
 
 			foreach ( $types as $key => $type ) {
 

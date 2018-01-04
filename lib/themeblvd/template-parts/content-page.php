@@ -78,7 +78,7 @@ $class = implode( ' ', $class );
 	wp_link_pages( array(
 		'before' => '<div class="page-link">' . themeblvd_get_local( 'pages' ) . ': ',
 		'after'  => '</div>',
-	));
+	) );
 	?>
 
 	<?php

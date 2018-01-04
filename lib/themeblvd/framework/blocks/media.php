@@ -76,7 +76,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		'img_before'    => null,
 		'img_after'     => null,
 		'srcset'        => true,
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -89,7 +89,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 				$output = themeblvd_get_media_placeholder( array(
 					'link'  => get_permalink(),
 					'title' => get_the_title(),
-				));
+				) );
 
 			} else {
 
@@ -197,7 +197,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	 */
 	$output = get_the_post_thumbnail( $post->ID, $size, array(
 		'class' => $class,
-	));
+	) );
 
 	/*
 	 * Manually pull image, based on inputted attachment
@@ -373,7 +373,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		'title'        => false,
 		'caption'      => false,
 		'dark_text'    => false,
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -579,7 +579,7 @@ function themeblvd_get_mini_gallery_slider( $gallery = '', $args = array() ) {
 		'carousel'   => false,
 		'arrows'     => 'mini',
 		'nav_thumbs' => false,
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -685,7 +685,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 			'link'         => '',
 			'link_url'     => '',
 			'addon'        => '',
-		));
+		) );
 	}
 
 	$interval = $args['interval'];
@@ -858,7 +858,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 						'link'  => $img['link_url'],
 						'title' => $img['alt'],
 						'class' => 'slide-link',
-					));
+					) );
 
 				} else {
 
@@ -962,7 +962,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 		$output .= themeblvd_get_slider_controls( array(
 			'carousel' => $args['id'],
 			'color'    => 'trans',
-		));
+		) );
 
 	}
 
@@ -1107,7 +1107,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		'full'  => '',
 		'title' => '',
 		'crop'  => '',
-	));
+	) );
 
 	$args = wp_parse_args( $args, array(
 		'link'     => 'none',
@@ -1116,7 +1116,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		'title'    => '',
 		'width'    => '',
 		'class'    => '',
-	));
+	) );
 
 	// Is this image going to be linked?
 	$has_link = false;
@@ -1242,7 +1242,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 				'title'     => $title,
 				'props'     => $props,
 				'class'     => $anchor_classes,
-			));
+			) );
 
 		} else {
 

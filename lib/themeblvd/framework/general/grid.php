@@ -335,7 +335,7 @@ function themeblvd_get_open_row( $args = array() ) {
 		'wrap'  => '',
 		'class' => 'row',
 		'style' => '',
-	));
+	) );
 
 	if ( $args['wrap'] ) {
 
@@ -402,7 +402,7 @@ function themeblvd_get_close_row( $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		'wrap'  => false,
-	));
+	) );
 
 	$output = '</div><!-- .row (end) -->';
 
@@ -476,7 +476,7 @@ function themeblvd_get_max_width( $args = '' ) {
 		'context' => '',
 		'col'     => '',
 		'cols'    => 2,
-	));
+	) );
 
 	/*
 	 * The framework uses WP's global `content_width` as

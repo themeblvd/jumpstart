@@ -19,7 +19,7 @@ function jumpstart_su_options() {
 	add_theme_support( 'custom-background', array(
 		'default-color' => 'f8f8f8',
 		'default-image' => '',
-	));
+	) );
 
 	$bg_types = array();
 

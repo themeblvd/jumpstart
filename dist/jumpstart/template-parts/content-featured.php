@@ -81,7 +81,7 @@ if ( is_page_template( 'template_builder.php' ) ) {
 			<?php
 			themeblvd_bg_parallax( array(
 				'src' => wp_get_attachment_image_url( get_post_thumbnail_id(), 'tb_x_large' ),
-			));
+			) );
 			?>
 
 		<?php else : ?>
@@ -97,7 +97,7 @@ if ( is_page_template( 'template_builder.php' ) ) {
 		<?php
 		themeblvd_to_section( array(
 			'to' => $to,
-		));
+		) );
 		?>
 
 	<?php endif; ?>

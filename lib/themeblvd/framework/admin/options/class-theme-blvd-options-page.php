@@ -129,7 +129,7 @@ class Theme_Blvd_Options_Page {
 			'form_action' => 'options.php',
 			'export'      => false,
 			'import'      => false,
-		));
+		) );
 
 		if ( ! $this->args['menu_slug'] ) {
 			$this->args['menu_slug'] = $id;
@@ -409,7 +409,7 @@ class Theme_Blvd_Options_Page {
 
 				$settings = wp_enqueue_code_editor( array(
 					'type' => 'text/' . $lang
-				));
+				) );
 
 				wp_add_inline_script(
 			        'themeblvd-admin-options-page',
@@ -1005,7 +1005,7 @@ class Theme_Blvd_Options_Page {
 
 			themeblvd_icon_browser( array(
 				'type' => 'vector',
-			));
+			) );
 
 		}
 

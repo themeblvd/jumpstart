@@ -105,7 +105,7 @@ if ( themeblvd_get_att( 'show_meta' ) ) {
 		wp_link_pages( array(
 			'before' => '<div class="page-link">' . themeblvd_get_local( 'pages' ) . ': ',
 			'after'  => '</div>',
-		));
+		) );
 		?>
 
 	<?php endif; ?>

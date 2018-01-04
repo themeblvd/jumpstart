@@ -538,7 +538,7 @@ function themeblvd_private_page( $template ) {
 		'template_showcase.php',
 		'template_archives.php',
 		'template_sitemap.php',
-	));
+	) );
 
 	foreach ( $page_templates as $page_template ) {
 

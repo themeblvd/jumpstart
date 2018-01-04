@@ -1350,7 +1350,7 @@ if ( ! function_exists( 'themeblvd_single_footer_default' ) ) {
 
 			themeblvd_related_posts( array(
 				'related_by' => $setting,
-			));
+			) );
 
 		}
 
@@ -1394,7 +1394,7 @@ if ( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 		 */
 		$args = apply_filters( 'themeblvd_blog_meta_args', array(
 			'include' => array( 'format', 'time', 'author', 'category', 'comments' ),
-		));
+		) );
 
 		echo themeblvd_get_meta( $args );
 
@@ -1430,7 +1430,7 @@ if ( ! function_exists( 'themeblvd_grid_meta_default' ) ) {
 			'include'  => array( 'time', 'author', 'comments' ),
 			'comments' => 'mini',
 			//'time'   => 'ago'
-		));
+		) );
 
 		echo themeblvd_get_meta( $args );
 
@@ -1613,7 +1613,7 @@ if ( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 				'icon_after'  => null,
 				'addon'       => null,
 				'p'           => true,
-			));
+			) );
 
 			the_excerpt();
 

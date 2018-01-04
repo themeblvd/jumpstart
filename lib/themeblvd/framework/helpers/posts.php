@@ -266,7 +266,7 @@ function themeblvd_get_modes() {
 		'list'     => __( 'List', '@@text-domain' ),
 		'grid'     => __( 'Grid', '@@text-domain' ),
 		'showcase' => __( 'Showcase', '@@text-domain' ),
-	));
+	) );
 
 }
 

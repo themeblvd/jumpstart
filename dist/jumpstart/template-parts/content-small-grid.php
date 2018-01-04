@@ -56,7 +56,7 @@
 						$meta = apply_filters( 'themeblvd_small_grid_meta_args', array(
 							'include' => array( 'time' ),
 							'icons'   => array(),
-						));
+						) );
 
 						echo themeblvd_get_meta( $meta );
 						?>

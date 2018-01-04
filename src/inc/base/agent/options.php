@@ -369,7 +369,7 @@ function jumpstart_ag_options() {
 		'image_width'  => '85',
 		'image_height' => '25',
 		'image_2x'     => get_template_directory_uri() . '/assets/img/logo-smaller-light_2x.png',
-	));
+	) );
 
 	themeblvd_edit_option( 'layout', 'header_trans', 'trans_logo', 'std', array(
 		'type'         => 'default',
@@ -377,7 +377,7 @@ function jumpstart_ag_options() {
 		'image_width'  => '',
 		'image_height' => '0',
 		'image_2x'     => '',
-	));
+	) );
 
 	// Make narrow full-width content and popout images on by default.
 	themeblvd_edit_option( 'content', 'general', 'fw_narrow', 'std', '1' );

@@ -104,7 +104,7 @@ function themeblvd_loop( $args = array() ) {
 		'max_width'      => 0,
 		'wp_query'       => false,
 		'msg_no_posts'   => themeblvd_get_local( 'archive_no_posts' ),
-	));
+	) );
 
 	// Is this a paginated post list?
 	$paginated = false;
@@ -1294,7 +1294,7 @@ function themeblvd_get_grid_slider( $args ) {
 		'columns' => '3',
 		'nav'     => '1',
 		'timeout' => '3',
-	));
+	) );
 
 	if ( ! $args['query'] ) {
 
@@ -1544,7 +1544,7 @@ function themeblvd_get_post_slider( $args ) {
 		'title'          => '1',
 		'meta'           => '1',
 		'excerpt'        => '0',
-	));
+	) );
 
 	/*
 	 * Pass a class onto the slider so we know
@@ -1578,7 +1578,7 @@ function themeblvd_get_post_slider( $args ) {
 			'text_hover'     => '#333333',
 			'include_bg'     => '0',
 			'include_border' => '1',
-		));
+		) );
 
 		if ( 'custom' === $args['button_color'] ) {
 
@@ -2151,7 +2151,7 @@ function themeblvd_get_small_post_list( $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		// ...
-	));
+	) );
 
 	//  @TODO
 
@@ -2205,7 +2205,7 @@ function themeblvd_get_small_post_grid( $args = array() ) {
 		'rows'    => 1,
 		'titles'  => 1,
 		'meta'    => 1,
-	));
+	) );
 
 	$class = 'tb-small-post-grid';
 
@@ -2258,7 +2258,7 @@ function themeblvd_get_small_post_grid( $args = array() ) {
 		'element'   => $element,
 		'shortcode' => $shortcode,
 		'class'     => $class,
-	));
+	) );
 
 	ob_start();
 

@@ -684,7 +684,7 @@ function themeblvd_get_search_types() {
 	$results = new WP_Query( array(
 		's'              => get_search_query(),
 		'posts_per_page' => -1,
-	));
+	) );
 
 	$types = array();
 

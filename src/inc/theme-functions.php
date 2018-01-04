@@ -86,7 +86,7 @@ function jumpstart_bases() {
 				'name' => __( 'Executive', '@@text-domain' ),
 				'desc' => __( 'A more classic, corporate design with a lot of user options.', '@@text-domain' ),
 			),
-		));
+		) );
 
 		$admin = new Theme_Blvd_Bases( $bases, themeblvd_get_default_base() ); // Class included with is_admin().
 

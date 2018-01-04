@@ -246,7 +246,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 			$categories = get_categories( array(
 				'hide_empty' => false,
-			));
+			) );
 
 			foreach ( $categories as $category ) {
 

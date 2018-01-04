@@ -573,7 +573,7 @@ function jumpstart_ex_css() {
 		} else {
 
 			$print .= sprintf( "\tbackground-color: %s;\n", $color['end'] );
-			$print .= sprintf( "\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $color['start'], $color['end'] );
+			$print .= sprintf( "\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s) );\n", $color['start'], $color['end'] );
 			$print .= sprintf( "\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
 			$print .= sprintf( "\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
 			$print .= sprintf( "\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $color['start'], $color['end'] );
@@ -868,7 +868,7 @@ function jumpstart_ex_css() {
 			$end = themeblvd_get_rgb( $options['bg_gradient']['end'], $options['bg_color_opacity'] );
 
 			$print .= sprintf( "\tbackground-color: %s;\n", $end );
-			$print .= sprintf( "\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s));\n", $start, $end );
+			$print .= sprintf( "\tbackground-image: -webkit-gradient(linear, left top, left bottom, from(%s), to(%s) );\n", $start, $end );
 			$print .= sprintf( "\tbackground-image: -webkit-linear-gradient(top, %s, %s);\n", $start, $end );
 			$print .= sprintf( "\tbackground-image: -moz-linear-gradient(top, %s, %s);\n", $start, $end );
 			$print .= sprintf( "\tbackground-image: -o-linear-gradient(top, %s, %s);\n", $start, $end );

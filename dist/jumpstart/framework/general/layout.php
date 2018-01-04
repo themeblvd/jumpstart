@@ -119,7 +119,7 @@ function themeblvd_element( $args ) {
 		'total'     => 1,
 		'context'   => 'element',
 		'max_width' => '',
-	));
+	) );
 
 	$args['options']['max_width'] = $args['max_width'];
 
@@ -655,7 +655,7 @@ function themeblvd_get_element_class( $args ) {
 		'num'       => 1,
 		'total'     => 1,
 		'context'   => 'element',
-	));
+	) );
 
 	$class = array(
 		'element',
@@ -1318,7 +1318,7 @@ function themeblvd_columns( $args, $columns = null ) {
 		'stack'      => 'md',
 		'height'     => 0,
 		'align'      => 'top',
-	));
+	) );
 
 	$num = intval( $args['num'] );
 
@@ -1525,7 +1525,7 @@ function themeblvd_columns( $args, $columns = null ) {
 
 		themeblvd_close_row( array(
 			'wrap' => true,
-		));
+		) );
 
 	} else {
 
@@ -1560,7 +1560,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 		'fx'         => 'fade',
 		'timeout'    => '3',
 		'nav'        => '1',
-	));
+	) );
 
 	$output = '';
 
@@ -1698,7 +1698,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 		$output .= themeblvd_get_slider_controls( array(
 			'carousel' => $slider_id,
 			'color'    => 'trans',
-		));
+		) );
 
 		$output .= '</div><!-- .carousel-control-wrap (end) -->';
 

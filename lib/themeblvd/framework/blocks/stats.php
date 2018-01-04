@@ -50,7 +50,7 @@ function themeblvd_get_chart( $type, $args ) {
 		'fill'     => '1',
 		'dot'      => '1',
 		'zero'     => '1',
-	));
+	) );
 
 	$class = 'tb-chart';
 
@@ -244,7 +244,7 @@ function themeblvd_get_milestone( $args ) {
 		'color'     => '#0c9df0',
 		'text'      => '',
 		'boxed'     => '0',
-	));
+	) );
 
 	$class = 'tb-milestone';
 
@@ -354,7 +354,7 @@ function themeblvd_get_milestone_ring( $args ) {
 		'text'        => '',
 		'text_align'  => 'center',
 		'boxed'       => '0',
-	));
+	) );
 
 	$class = 'tb-milestone-percent text-' . $args['text_align'];
 
@@ -478,7 +478,7 @@ function themeblvd_get_progress_bar( $args ) {
 		'value'       => '50',
 		'total'       => '100',
 		'color'       => '#428bca',
-	));
+	) );
 
 	$class = 'tb-progress';
 
@@ -598,7 +598,7 @@ function themeblvd_get_progress_bars( $args ) {
 
 	$args = wp_parse_args( $args, array(
 		'bars' => array(),
-	));
+	) );
 
 	$output = '<div class="tb-progress-bars">';
 

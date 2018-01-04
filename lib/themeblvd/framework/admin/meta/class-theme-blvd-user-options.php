@@ -126,7 +126,7 @@ class Theme_Blvd_User_Options {
 				'option' => __( 'Twitter URL', '@@text-domain' ),
 				'key'    => '_tb_contact_twitter',
 			),
-		));
+		) );
 
 	}
 

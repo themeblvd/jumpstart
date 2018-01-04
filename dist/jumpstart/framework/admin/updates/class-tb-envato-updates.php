@@ -190,7 +190,7 @@ class Theme_Blvd_Envato_Updates {
 		$result = copy_dir( $from, $to );
 		if ( is_wp_error( $result ) ) {
 			// @todo Can we delete temporary downloaded theme at /upgrades/ if error?
-			wp_die($result->get_error_message());
+			wp_die($result->get_error_message() );
 		}
 
 		// End the process

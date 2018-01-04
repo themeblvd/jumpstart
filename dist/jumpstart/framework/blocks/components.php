@@ -30,7 +30,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
 		'style'   => 'default',
 		'class'   => '',
 		'wpautop' => 'true',
-	));
+	) );
 
 	$class = sprintf( 'tb-alert alert alert-%s entry-content', $args['style'] );
 
@@ -136,7 +136,7 @@ function themeblvd_get_divider( $args = array() ) {
 		'width'      => '',
 		'align'      => 'center',
 		'placement'  => 'equal',
-	));
+	) );
 
 	$class = sprintf( 'tb-divider %s align-%s', $args['type'], $args['align'] );
 
@@ -356,7 +356,7 @@ function themeblvd_get_map( $args ) {
 		'zoom_control' => '1',
 		'pan_control'  => '1',
 		'draggable'    => '1',
-	));
+	) );
 
 	$hue = '0';
 
@@ -607,7 +607,7 @@ function themeblvd_get_icon_box( $args ) {
 		'text_color'  => 'none',
 		'bg_color'    => '#cccccc',
 		'bg_opacity'  => '1',
-	));
+	) );
 
 	$class = sprintf( 'tb-icon-box icon-%s', $args['location'] );
 
@@ -846,7 +846,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 		'buttons_block'             => '0',
 		'wpautop'                   => '1',
 		'class'                     => '',
-	));
+	) );
 
 	$class = sprintf(
 		'tb-jumbotron jumbotron entry-content text-%s',
@@ -1109,7 +1109,7 @@ function themeblvd_get_logos( $args ) {
 		'height'    => '100',
 		'boxed'     => '1',
 		'greyscale' => '1',
-	));
+	) );
 
 	$class = 'tb-logos ' . $args['display'];
 
@@ -1358,7 +1358,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
 		'max_width'  => '',
 		'class'      => '',
 		'wpautop'    => 'true',
-	));
+	) );
 
 	// CSS classes
 	$class = sprintf( 'tb-panel panel panel-%s', $args['style'] );
@@ -1507,7 +1507,7 @@ function themeblvd_get_slogan( $args ) {
 		'button_target'      => '_self',
 		'button_icon_before' => '',
 		'button_icon_after'  => '',
-	));
+	) );
 
 	// CSS classes.
 	$class = sprintf( 'tb-slogan clearfix' );
@@ -1764,7 +1764,7 @@ function themeblvd_get_tabs( $id, $args ) {
 		'nav'    => 'tabs',
 		'style'  => 'framed',
 		'height' => '0',
-	));
+	) );
 
 	$navigation = '';
 
@@ -1984,7 +1984,7 @@ function themeblvd_get_team_member( $args ) {
 		'tagline' => '',
 		'icons'   => array(),
 		'text'    => '',
-	));
+	) );
 
 	$output = '<div class="tb-team-member">';
 
@@ -2022,7 +2022,7 @@ function themeblvd_get_team_member( $args ) {
 				'style'   => 'light',
 				'class'   => 'member-contact',
 				'tooltip' => false,
-			));
+			) );
 
 		}
 
@@ -2104,7 +2104,7 @@ function themeblvd_get_testimonial( $args ) {
 		'company_url' => '',
 		'image'       => array(),
 		'display'     => 'standard',
-	));
+	) );
 
 	$class = sprintf( 'tb-testimonial %s', $args['display'] );
 
@@ -2271,7 +2271,7 @@ function themeblvd_get_testimonial_slider( $args ) {
 		'timeout'      => '3',
 		'nav'          => '1',
 		'display'      => 'standard',
-	));
+	) );
 
 	if ( ! $args['fx'] ) {
 
@@ -2419,7 +2419,7 @@ function themeblvd_get_toggle( $args ) {
 		'open'    => 'false',
 		'class'   => '',
 		'last'    => false,
-	));
+	) );
 
 	/**
 	 * Filters the color of the toggle.
@@ -2554,7 +2554,7 @@ function themeblvd_get_toggles( $id, $args ) {
 	$args = wp_parse_args( $args, array(
 		'toggles'   => array(),
 		'accordion' => 'false',
-	));
+	) );
 
 	$accordion = false;
 
@@ -2649,7 +2649,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
 	$args = wp_parse_args( $args, array(
 		'currency'           => '$',
 		'currency_placement' => 'before',
-	));
+	) );
 
 	if ( $cols ) {
 
@@ -2696,7 +2696,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
 				'button_size'        => '',
 				'button_icon_before' => '',
 				'button_icon_after'  => '',
-			));
+			) );
 
 			$class = sprintf( 'col %s price-column', $grid_class );
 

@@ -126,7 +126,7 @@ class Theme_Blvd_User_Options {
 				'option' => __( 'Twitter URL', 'jumpstart' ),
 				'key'    => '_tb_contact_twitter',
 			),
-		));
+		) );
 
 	}
 

@@ -183,7 +183,7 @@ class Theme_Blvd_Frontend_Init {
 			'panel'              => 'panel',         // content-panel.php
 			'mobile_panel'       => 'mobile-panel',  // content-mobile-panel.php
 
-		));
+		) );
 
 	}
 
@@ -724,7 +724,7 @@ class Theme_Blvd_Frontend_Init {
 			$custom_sidebars = get_posts( array(
 				'post_type'   => 'tb_sidebar',
 				'numberposts' => -1,
-			));
+			) );
 
 			$sidebar_overrides = get_post_meta(
 				$this->config['id'],
@@ -1330,7 +1330,7 @@ class Theme_Blvd_Frontend_Init {
 				'thumbs'        => $thumbs,
 				'show_meta'     => $show_meta,
 				'show_sub_meta' => $show_sub_meta,
-			));
+			) );
 
 		}
 

@@ -47,7 +47,7 @@ function themeblvd_get_meta( $args = array() ) {
 		'comments' => 'standard',
 		'time'     => 'standard',
 		'class'    => '',
-	));
+	) );
 
 	/**
 	 * Filters the FontAwesome icons used for each
@@ -71,7 +71,7 @@ function themeblvd_get_meta( $args = array() ) {
 		'comments'  => 'comment',
 		'category'  => 'folder',
 		'portfolio' => 'briefcase',
-	));
+	) );
 
 	/*
 	 * If comments are supposed to be included in meta
@@ -615,7 +615,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 		'thumbs'       => 'smaller',
 		'meta'         => true,
 		'query'        => '',
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 

@@ -28,7 +28,7 @@ function themeblvd_post_table( $post_type, $columns ) {
 		'numberposts' => -1,
 		'orderby'     => 'title',
 		'order'       => 'ASC',
-	));
+	) );
 
 	if ( 'tb_sidebar' === $post_type ) {
 		$conflicts = themeblvd_get_assignment_conflicts( $posts );
@@ -940,7 +940,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 				$terms = get_terms( $tax, array(
 					'hide_empty' => false,
-				));
+				) );
 
 				if ( ! empty( $terms ) ) {
 
@@ -982,7 +982,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 					'post_type' => 'forum',
 					'orderby' => 'title',
 					'order' => 'DESC',
-				));
+				) );
 
 				if ( $forums ) {
 
@@ -1297,7 +1297,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		'value_width'  => $current_value['width'],
 		'value_height' => $current_value['height'],
 		'name'         => 'image',
-	));
+	) );
 
 	$image_upload .= '</div>';
 
@@ -1312,7 +1312,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		'id'          => $id,
 		'value'       => $current_retina['url'],
 		'name'        => 'image_2x',
-	));
+	) );
 
 	$image_upload .= '</div>';
 
@@ -1624,7 +1624,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 	$custom_layouts = get_posts( array(
 		'post_type'   => 'tb_layout',
 		'numberposts' => -1,
-	));
+	) );
 
 	$output = '<p><strong>' . esc_html__( 'Custom Layout', 'jumpstart' ) . '</strong></p>';
 
@@ -1667,7 +1667,7 @@ function themeblvd_icon_browser( $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		'type' => 'vector', // Currently, only "vector" is a valid type.
-	));
+	) );
 
 	?>
 	<div id="themeblvd-icon-browser-<?php echo $args['type']; ?>" class="themeblvd-modal-wrap themeblvd-icon-browser hide">
@@ -1807,7 +1807,7 @@ function themeblvd_ajax_post_browser() {
 	$posts = get_posts( array(
 		's'         => $_POST['data'],
 		'post_type' => 'any',
-	));
+	) );
 
 	?>
 	<table class="widefat">
@@ -1990,7 +1990,7 @@ function themeblvd_display_presets( $args, $option_name = '' ) {
 		'id'    => '',
 		'sets'  => array(),
 		'level' => 1,
-	));
+	) );
 
 	$class = 'tb-presets level-' . $args['level'];
 

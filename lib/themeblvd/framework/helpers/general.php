@@ -43,7 +43,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 				$function,
 				$version,
 				esc_html( $message )
-			));
+			) );
 
 		} elseif ( $replacement ) {
 
@@ -53,7 +53,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 				$function,
 				$version,
 				$replacement
-			));
+			) );
 
 		} else {
 
@@ -62,7 +62,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available.', '@@text-domain' ),
 				$function,
 				$version
-			));
+			) );
 
 		}
 	}
@@ -118,7 +118,7 @@ function themeblvd_is_200( $url ) {
 
 	$response = wp_remote_head( $url, array(
 		'timeout' => 5,
-	));
+	) );
 
 	if ( ! is_wp_error( $response ) && isset( $response['response']['code'] ) ) {
 

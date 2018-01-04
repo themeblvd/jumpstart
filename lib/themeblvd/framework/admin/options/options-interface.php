@@ -1151,7 +1151,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'typekit'     => '',    // @since @@name-framework 2.6.0
 					'typekit_kit' => '',    // @since @@name-framework 2.6.0
 					'custom'      => '',    // @since @@name-framework 2.7.0
-				));
+				) );
 
 				// Add font-size selection to output.
 				if ( in_array( 'size', $option['atts'] ) ) {
@@ -1433,7 +1433,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'id'          => $option['id'],
 					'value'       => $current_bg_url,
 					'name'        => 'image',
-				));
+				) );
 
 				$class = 'tb-background-properties of-background-properties';
 
@@ -1616,7 +1616,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'id'          => $option['id'],
 					'value'       => $video_url,
 					'name'        => 'mp4',
-				));
+				) );
 
 				$output .= '</div><!-- .controls (end) -->';
 
@@ -1646,7 +1646,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					'id'          => $option['id'],
 					'value'       => $img_url,
 					'name'        => 'fallback',
-				));
+				) );
 
 				$output .= '</div><!-- .controls (end) -->';
 

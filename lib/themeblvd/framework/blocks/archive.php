@@ -356,7 +356,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 			'tooltip'    => 'top',
 			'class'      => 'author-box',
 			'authorship' => true,
-		));
+		) );
 
 	}
 

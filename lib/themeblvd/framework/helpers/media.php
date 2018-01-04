@@ -489,7 +489,7 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 				'item'  => $content,
 				'link'  => $url[1],
 				'class' => 'tb-thumb-link ' . $lightbox,
-			));
+			) );
 
 		} else {
 

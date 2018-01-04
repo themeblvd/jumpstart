@@ -287,7 +287,7 @@ function themeblvd_recognized_background_repeat() {
 		'repeat-x'  => __( 'Background Repeat: Repeat Horizontally', '@@text-domain' ),
 		'repeat-y'  => __( 'Background Repeat: Repeat Vertically', '@@text-domain' ),
 		'repeat'    => __( 'Background Repeat: Repeat All', '@@text-domain' ),
-	));
+	) );
 
 }
 
@@ -354,7 +354,7 @@ function themeblvd_recognized_background_position() {
 		'center bottom' => __( 'Background Position: Bottom Center', '@@text-domain' ),
 		'left bottom'   => __( 'Background Position: Bottom Left', '@@text-domain' ),
 		'right bottom'  => __( 'Background Position: Bottom Right', '@@text-domain' ),
-	));
+	) );
 
 }
 
@@ -419,7 +419,7 @@ function themeblvd_recognized_background_attachment() {
 		'scroll'   => __( 'Background Scrolling: Normal', '@@text-domain' ),
 		'parallax' => __( 'Background Scrolling: Parallax Effect', '@@text-domain' ),
 		'fixed'    => __( 'Background Scrolling: Fixed in Place', '@@text-domain' ),
-	));
+	) );
 
 }
 
@@ -483,7 +483,7 @@ function themeblvd_recognized_background_size() {
 		'100% 100%' => __( 'Background Size: 100% x 100%', '@@text-domain' ),
 		'100% auto' => __( 'Background Size: Fit Horizontally', '@@text-domain' ),
 		'auto 100%' => __( 'Background Size: Fit Vertically', '@@text-domain' ),
-	));
+	) );
 
 }
 
@@ -742,7 +742,7 @@ function themeblvd_recognized_font_styles() {
 		'uppercase'        => __( 'Uppercase', '@@text-domain' ),
 		'italic'           => __( 'Italic', '@@text-domain' ),
 		'uppercase-italic' => __( 'Uppercase Italic', '@@text-domain' ),
-	));
+	) );
 
 }
 
@@ -805,7 +805,7 @@ function themeblvd_recognized_font_weights() {
 		'700' => __( '700 (bold)', '@@text-domain' ),
 		'800' => __( '800', '@@text-domain' ),
 		'900' => __( '900', '@@text-domain' ),
-	));
+	) );
 
 }
 
@@ -876,7 +876,7 @@ function themeblvd_recognized_font_faces() {
 		'google'      => 'Google Font',
 		'typekit'     => 'Typekit Font',
 		'custom'      => 'Custom Font',
-	));
+	) );
 
 }
 

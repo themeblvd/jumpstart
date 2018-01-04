@@ -64,7 +64,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 		'class'      => '',
 		'authorship' => false,
 		'container'  => 'ul',
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -366,7 +366,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	$defaults = apply_filters( 'themeblvd_floating_search_trigger_defaults', array(
 		'open'  => 'search',
 		'class' => '',
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -444,7 +444,7 @@ function themeblvd_get_side_trigger( $args = array() ) {
 	 */
 	$defaults = apply_filters( 'themeblvd_side_trigger_defaults', array(
 		'class' => '',
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -538,7 +538,7 @@ function themeblvd_get_cart_popup( $args = array() ) {
 		'size'    => 'sm',
 		'id'      => 'floating-shopping-cart',
 		'class'   => '',
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -548,7 +548,7 @@ function themeblvd_get_cart_popup( $args = array() ) {
 
 		$output .= themeblvd_get_cart_popup_trigger( array(
 			'target' => $args['id'],
-		));
+		) );
 
 	}
 
@@ -694,7 +694,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 		'target' => 'floating-shopping-cart',    // HTML ID of floating shopping cart linking to.
 		'url'    => '#',                         // Cart URL.
 		'count'  => '',                          // Cart item count.
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -1164,7 +1164,7 @@ function themeblvd_get_buttons( $buttons, $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		'stack' => false,
-	));
+	) );
 
 	// Set default button attributes.
 	$btn_std = array(
@@ -1630,7 +1630,7 @@ function themeblvd_get_breadcrumbs_trail( $args = array() ) {
 		'home_link' => themeblvd_get_home_url(),
 		'before'    => '<span class="current">',
 		'after'     => '</span>',
-	));
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -1906,7 +1906,7 @@ function themeblvd_get_slider_controls( $args = array() ) {
 		'direction' => 'horz',
 		'prev'      => themeblvd_get_local( 'previous' ),
 		'next'      => themeblvd_get_local( 'next' ),
-	));
+	) );
 
 	if ( 'horz' === $args['direction'] ) {
 
@@ -2000,7 +2000,7 @@ function themeblvd_get_to_top( $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		'class' => '',
-	));
+	) );
 
 	$class = 'tb-scroll-to-top';
 

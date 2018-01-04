@@ -1099,7 +1099,7 @@ function themeblvd_read_more_link( $read_more, $more_link_text ) {
 		'icon_before' => null,
 		'icon_after'  => null,
 		'addon'       => null,
-	));
+	) );
 
 	$button = themeblvd_button(
 		$args['text'],

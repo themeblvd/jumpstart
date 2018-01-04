@@ -352,7 +352,7 @@ function themeblvd_admin_module_cap( $page ) {
 		'options'  => 'edit_theme_options', // Role: Administrator
 		'sidebars' => 'edit_theme_options', // Role: Administrator
 		'updates'  => 'edit_theme_options', // Role: Administrator
-	));
+	) );
 
 	$cap = '';
 
@@ -1338,7 +1338,7 @@ function themeblvd_get_full_width_option_types() {
 		'testimonials',
 		'text_blocks',
 		'toggles',
-	));
+	) );
 
 	return $types;
 

@@ -804,7 +804,7 @@ class Theme_Blvd_Query {
 				'template_list.php',
 				'template_grid.php',
 				'template_builder.php',
-			));
+			) );
 
 			$template = get_post_meta( $q->get( 'page_id' ), '_wp_page_template', true );
 

@@ -20,7 +20,7 @@ $views = apply_filters( 'themeblvd_woo_views', array(
 	'grid' 		=> '<i class="' . themeblvd_get_icon_class( 'th' ) . '"></i>',
 	'list' 		=> '<i class="' . themeblvd_get_icon_class( 'th-list' ) . '"></i>',
 	'catalog' 	=> '<i class="' . themeblvd_get_icon_class( 'list' ) . '"></i>'
-));
+) );
 ?>
 <div class="tb-woo-ordering">
 

@@ -43,7 +43,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 		'orange'        => array( __( 'Orange', '@@text-domain' ), '#d15627', '#b85128' ),
 		'red'           => array( __( 'Red', '@@text-domain' ), '#c03b2b', '#a93b2a' ),
 		'grey'          => array( __( 'Grey', '@@text-domain' ), '#7f8c8d', '#727e7e' ),
-	));
+	) );
 
 	// Predefined attributes.
 	$atts = array(

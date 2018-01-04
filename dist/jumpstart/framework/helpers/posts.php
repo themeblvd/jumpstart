@@ -266,7 +266,7 @@ function themeblvd_get_modes() {
 		'list'     => __( 'List', 'jumpstart' ),
 		'grid'     => __( 'Grid', 'jumpstart' ),
 		'showcase' => __( 'Showcase', 'jumpstart' ),
-	));
+	) );
 
 }
 

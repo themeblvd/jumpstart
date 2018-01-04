@@ -586,7 +586,7 @@ function themeblvd_content_audio( $placeholder = false ) {
 	$img = themeblvd_get_post_thumbnail( themeblvd_get_att( 'crop' ), array(
 		'link'        => false,
 		'placeholder' => false,
-	));
+	) );
 
 	if ( ! $img && $placeholder && false !== strpos( $audio, '[audio' ) ) {
 

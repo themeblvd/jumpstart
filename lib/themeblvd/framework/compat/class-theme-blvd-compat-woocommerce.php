@@ -1034,14 +1034,14 @@ class Theme_Blvd_Compat_WooCommerce {
 
 			echo wp_get_attachment_image( $image_id, $size, false, array(
 				'class' => $class . ' hover',
-			));
+			) );
 
 		}
 
 		// Output standard product image.
 		the_post_thumbnail( $size, array(
 			'class' => $class,
-		));
+		) );
 
 		echo '</span><!-- .product-thumb (end) -->';
 
@@ -1256,7 +1256,7 @@ class Theme_Blvd_Compat_WooCommerce {
 			'orderby'        => apply_filters( 'woocommerce_upsells_orderby', 'rand' ), // WooCoomerce default filter; let's keep it for compat.
 			'order'          => 'desc',
 			'columns'        => $this->loop_columns(),
-		));
+		) );
 
 		woocommerce_upsell_display(
 			$args['posts_per_page'],
@@ -1302,7 +1302,7 @@ class Theme_Blvd_Compat_WooCommerce {
 				'order'          => 'desc',
 				'orderby'        => 'rand',
 				'columns'        => $this->loop_columns(),
-			));
+			) );
 
 			woocommerce_cross_sell_display(
 				$args['posts_per_page'],
@@ -1652,7 +1652,7 @@ class Theme_Blvd_Compat_WooCommerce {
 
 		$fragments['.tb-woocommerce-cart-page-link'] = themeblvd_get_cart_popup_trigger( array(
 			'target' => null,
-		));
+		) );
 
 		$fragments['#mobile-to-cart'] = themeblvd_get_mobile_cart_link();
 
