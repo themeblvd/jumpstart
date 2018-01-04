@@ -239,9 +239,11 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 *
-	 * @param string $icon Final HTML output for icon.
+	 * @param string $icon      Final HTML output for icon.
+	 * @param string $type      Type of thumbnail link, `image`, `video`, `post` or `external`.
+	 * @param string $icon_name Icon name.
 	 */
-	return apply_filters( 'themeblvd_thumbnail_link_icon', $icon );
+	return apply_filters( 'themeblvd_thumbnail_link_icon', $icon, $type, $icon_name );
 
 }
 
