@@ -123,54 +123,82 @@ jQuery(document).ready(function($) {
 	// which denote if user is on a true mobile device
 	if ( window_width < 768 ) {
 
-		$body.addClass('mobile-on');
-		$body.removeClass('tablet-on');
+		$body.addClass( 'mobile-on' );
 
-		if ( $header.hasClass('transparent') ) {
-			$header.removeClass('transparent');
-			$header.addClass('transparent-off');
+		$body.removeClass( 'tablet-on' );
+
+		if ( $header.hasClass( 'transparent') ) {
+
+			$header.removeClass( 'transparent' );
+
+			$header.addClass( 'transparent-off' );
+
 		}
 
 	} else if ( window_width < 992 ) {
-		$body.addClass('tablet-on');
-		$body.removeClass('mobile-on');
+
+		$body.addClass( 'tablet-on' );
+
+		$body.removeClass( 'mobile-on' );
+
+		if ( $header.hasClass( 'transparent') ) {
+
+			$header.removeClass( 'transparent' );
+
+			$header.addClass( 'transparent-off' );
+
+		}
+
 	}
 
-	$window.on('resize', function(){
+	$window.on( 'resize', function() {
 
 		var window_width = $window.width();
 
 		if ( window_width < 768 ) {
 
-			$body.addClass('mobile-on');
-			$body.removeClass('tablet-on');
+			$body.addClass( 'mobile-on' );
 
-			if ( $header.hasClass('transparent') ) {
-				$header.removeClass('transparent');
-				$header.addClass('transparent-off');
+			$body.removeClass( 'tablet-on' );
+
+			if ( $header.hasClass( 'transparent' ) ) {
+
+				$header.removeClass( 'transparent' );
+
+				$header.addClass( 'transparent-off' );
+
 			}
 
 		} else if ( window_width < 992 ) {
 
-			$body.addClass('tablet-on');
-			$body.removeClass('mobile-on');
+			$body.addClass( 'tablet-on' );
 
-			if ( $header.hasClass('transparent-off') ) {
-				$header.removeClass('transparent-off');
-				$header.addClass('transparent');
+			$body.removeClass( 'mobile-on' );
+
+			if ( $header.hasClass( 'transparent' ) ) {
+
+				$header.removeClass( 'transparent' );
+
+				$header.addClass( 'transparent-off' );
+
 			}
 
 		} else {
 
-			$body.removeClass('tablet-on');
-			$body.removeClass('mobile-on');
+			$body.removeClass( 'tablet-on' );
 
-			if ( $header.hasClass('transparent-off') ) {
-				$header.removeClass('transparent-off');
-				$header.addClass('transparent');
+			$body.removeClass( 'mobile-on' );
+
+			if ( $header.hasClass( 'transparent-off' ) ) {
+
+				$header.removeClass( 'transparent-off' );
+
+				$header.addClass( 'transparent' );
+
 			}
 		}
-	});
+
+	} );
 
 	// ---------------------------------------------------------
 	// Menus
