@@ -878,7 +878,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			}
 
-			$img_src = esc_url( $img['src'] );
+			$img_src = $img['src'];
 
 			if ( is_ssl() ) {
 
@@ -886,7 +886,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 
 			}
 
-			$output .= sprintf( '<img src="%s" alt="%s"', $img_src, esc_attr( $img['alt'] ) );
+			$output .= sprintf( '<img src="%s" alt="%s"', esc_url( $img_src ), esc_attr( $img['alt'] ) );
 
 			if ( $img['width'] ) {
 

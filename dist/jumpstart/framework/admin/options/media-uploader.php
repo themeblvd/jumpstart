@@ -18,38 +18,40 @@
  * @param  array $args {
  *     Arguments for uploader.
  *
- *     @type string $option_name  Prefix for form name attributes.
- *     @type string $id           A token to identify this field, extending onto $option_name like `$option_name[$id]`.
- *     @type string $name         Option to go deeper in top-level $id token, like `$option_name[$id][$name]`.
- *     @type string $type         Type of media uploader, `standard` (an image), `advanced` (an image w/crop settings), `logo`, `logo_2x`, `background`, `slider`, `video`, `media`.
- *     @type string $send_back    On type `standard` send back image url or attachment ID to text input - url, id.
- *     @type string $value        The value of the field, if present.
- *     @type string $value_id     Attachment ID used w/ `slider`, or stored ID in `advanced` type.
- *     @type string $value_src    Image URL used in `advanced` type.
- *     @type string $value_title  Title of attachment image used for `slider` type.
- *     @type string $value_width  Width value used for `logo` and `advanced` types.
- *     @type string $value_height Height baclue used for `logo` and `advanced` types.
- *     @type string $value_title  Title of image used with `advanced` type.
- *     @type string $value_crop   Crop size of image used with `advanced` type.
+ *     @type string $option_name   Prefix for form name attributes.
+ *     @type string $id            A token to identify this field, extending onto $option_name like `$option_name[$id]`.
+ *     @type string $name          Option to go deeper in top-level $id token, like `$option_name[$id][$name]`.
+ *     @type string $type          Type of media uploader, `standard` (an image), `advanced` (an image w/crop settings), `logo`, `logo_2x`, `background`, `slider`, `video`, `media`.
+ *     @type string $send_back     On type `standard` send back image url or attachment ID to text input - url, id.
+ *     @type string $value         The value of the field, if present.
+ *     @type string $value_id      Attachment ID used w/ `slider`, or stored ID in `advanced` type.
+ *     @type string $value_src     Image URL used in `advanced` type.
+ *     @type string $value_title   Title of attachment image used for `slider`, `advanced` and `background` types.
+ *     @type string $value_alt     Alternative text for `advanced` and `background` types.
+ *     @type string $value_caption Caption text for `advanced` and `background` types.
+ *     @type string $value_width   Width value used for `logo` and `advanced` types.
+ *     @type string $value_height  Height baclue used for `logo` and `advanced` types.
+ *     @type string $value_crop    Crop size of image used with `advanced` and `background` types.
  * }
  * @param string $output Final HTML output for media uploader.
  */
 function themeblvd_media_uploader( $args ) {
 
 	$args = wp_parse_args( $args, array(
-		'option_name'  => '',
-		'id'           => '',
-		'name'         => '',
-		'type'         => 'standard',
-		'send_back'    => 'url',
-		'value'        => '',
-		'value_id'     => '',
-		'value_src'    => '',
-		'value_title'  => '',
-		'value_width'  => '',
-		'value_height' => '',
-		'value_title'  => '',
-		'value_crop'   => '',
+		'option_name'   => '',
+		'id'            => '',
+		'name'          => '',
+		'type'          => 'standard',
+		'send_back'     => 'url',
+		'value'         => '',
+		'value_id'      => '',
+		'value_src'     => '',
+		'value_title'   => '',
+		'value_alt'     => '',
+		'value_caption' => '',
+		'value_width'   => '',
+		'value_height'  => '',
+		'value_crop'    => '',
 	) );
 
 	$output = '';
@@ -454,28 +456,70 @@ function themeblvd_media_uploader( $args ) {
 
 	$output .= '</div>' . "\n";
 
-	if ( 'advanced' === $type ) {
+	if ( 'advanced' === $type || 'background' === $type ) {
+
+		if ( 'background' === $type ) {
+			$advanced_name = themeblvd_remove_trailing_char( $name, ']' ) . '_id]';
+		} else {
+			$advanced_name = $name . '[id]';
+		}
 
 		$output .= sprintf(
-			'<input id="id-%s" class="image-id" name="%s[id]" type="hidden" value="%s" />',
+			'<input id="id-%s" class="image-id" name="%s" type="hidden" value="%s" />',
 			$formfield,
-			esc_attr( $name ),
+			esc_attr( $advanced_name ),
 			esc_attr( $args['value_id'] )
 		);
 
+		if ( 'background' === $type ) {
+			$advanced_name = themeblvd_remove_trailing_char( $name, ']' ) . '_title]';
+		} else {
+			$advanced_name = $name . '[title]';
+		}
+
 		$output .= sprintf(
-			'<input id="title-%s" class="image-title" name="%s[title]" type="hidden" value="%s" />',
+			'<input id="title-%s" class="image-title" name="%s" type="hidden" value="%s" />',
 			$formfield,
-			esc_attr( $name ),
+			esc_attr( $advanced_name ),
 			esc_attr( $args['value_title'] )
 		);
 
+		if ( 'background' === $type ) {
+			$advanced_name = themeblvd_remove_trailing_char( $name, ']' ) . '_alt]';
+		} else {
+			$advanced_name = $name . '[alt]';
+		}
+
 		$output .= sprintf(
-			'<input id="crop-%s" class="image-crop" name="%s[crop]" type="hidden" value="%s" />',
+			'<input id="alt-%s" class="image-alt" name="%s" type="hidden" value="%s" />',
 			$formfield,
-			esc_attr( $name ),
-			esc_attr( $args['value_crop'] )
+			esc_attr( $advanced_name ),
+			esc_attr( $args['value_alt'] )
 		);
+
+		if ( 'background' === $type ) {
+			$advanced_name = themeblvd_remove_trailing_char( $name, ']' ) . '_caption]';
+		} else {
+			$advanced_name = $name . '[caption]';
+		}
+
+		$output .= sprintf(
+			'<input id="caption-%s" class="image-caption" name="%s" type="hidden" value="%s" />',
+			$formfield,
+			esc_attr( $advanced_name ),
+			esc_attr( $args['value_caption'] )
+		);
+
+		if ( 'advanced' === $type ) {
+
+			$output .= sprintf(
+				'<input id="crop-%s" class="image-crop" name="%s" type="hidden" value="%s" />',
+				$formfield,
+				esc_attr( $name . '[crop]' ),
+				esc_attr( $args['value_crop'] )
+			);
+
+		}
 
 	}
 

@@ -1304,12 +1304,13 @@ window.themeblvd.options = {};
 		}
 
 		var newFrame   = null,
-			uploadType = $section.find( '.trigger' ).data( 'type' ),
-			title      = $section.find( '.trigger' ).data( 'title' ),
-			select     = $section.find( '.trigger' ).data( 'select' ),
-			cssClass   = $section.find( '.trigger' ).data( 'class' ),
-			sendBack   = $section.find( '.trigger' ).data( 'send-back' ),
-			link       = $section.find( '.trigger' ).data( 'link' ),
+			$trigger   = $section.find( '.trigger' ),
+			uploadType = $trigger.data( 'type' ),
+			title      = $trigger.data( 'title' ),
+			select     = $trigger.data( 'select' ),
+			cssClass   = $trigger.data( 'class' ),
+			sendBack   = $trigger.data( 'send-back' ),
+			link       = $trigger.data( 'link' ),
 			mediaType  = 'image',
 			workflow   = 'select',
 			multiple   = false, // @todo future feature of Quick Slider
@@ -1381,7 +1382,7 @@ window.themeblvd.options = {};
 
 			/*
 			 * Determine Image URL. If it's "advanced" will pull
-			 * from crop size selection
+			 * from crop size selection.
 			 */
 			if ( 'advanced' === uploadType ) {
 
@@ -1455,14 +1456,22 @@ window.themeblvd.options = {};
 				} );
 			}
 
-			if ( 'advanced' === uploadType ) {
+			if ( 'advanced' === uploadType || 'background' === uploadType ) {
 
 				// Send info back.
-				$section.find( '.image-id' ).val(attachment.attributes.id);
+				$section.find( '.image-id' ).val( attachment.attributes.id );
 
-				$section.find( '.image-title' ).val(attachment.attributes.title);
+				$section.find( '.image-title' ).val( attachment.attributes.title );
 
-				$section.find( '.image-crop' ).val(size);
+				$section.find( '.image-alt' ).val( attachment.attributes.alt );
+
+				$section.find( '.image-caption' ).val( attachment.attributes.caption );
+
+				if ( size ) {
+
+					$section.find( '.image-crop' ).val( size );
+
+				}
 
 				// $section.find( '.image-width' ).val( attachment.attributes.sizes[size].width );
 

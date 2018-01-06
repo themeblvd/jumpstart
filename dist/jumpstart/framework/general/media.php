@@ -930,7 +930,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 				$class,
 				themeblvd_get_bg_parallax( array(
 					'src' => $img_src,
-				))
+				) )
 			);
 
 		} else {
@@ -1010,6 +1010,8 @@ function themeblvd_get_bg_parallax( $display ) {
 
 	$src = '';
 
+	$alt = '';
+
 	$texture = '';
 
 	if ( 'image' === $type ) {
@@ -1021,6 +1023,12 @@ function themeblvd_get_bg_parallax( $display ) {
 		} elseif ( ! empty( $display['bg_image']['image'] ) ) {
 
 			$src = $display['bg_image']['image'];
+
+		}
+
+		if ( ! empty( $display['bg_image']['image_alt'] ) ) {
+
+			$alt = $display['bg_image']['image_alt'];
 
 		}
 	} elseif ( 'texture' === $type ) {
@@ -1064,7 +1072,7 @@ function themeblvd_get_bg_parallax( $display ) {
 
 	} else {
 
-		$output .= sprintf( '<img src="%s" alt="" />', esc_url( $src ) );
+		$output .= sprintf( '<img src="%s" alt="%s" />', esc_url( $src ), esc_attr( $alt ) );
 
 	}
 

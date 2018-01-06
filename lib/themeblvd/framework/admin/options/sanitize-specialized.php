@@ -31,13 +31,15 @@
  * @return array $output {
  *     Sanitized value.
  *
- *     @type string $id     Attachment ID.
- *     @type string $src    Attachment URL.
- *     @type string $title  Attachment title.
- *     @type string $crop   Attachment crop size.
- *     @type string $width  Attachment width.
- *     @type string $height Attachment height.
- *     @type string $full   Full-size attachment URL, limited to 1200x1200.
+ *     @type string $id      Attachment ID.
+ *     @type string $src     Attachment URL.
+ *     @type string $title   Attachment title.
+ *     @type string $alt     Attachment alternative text.
+ *     @type string $caption Attachment caption.
+ *     @type string $crop    Attachment crop size.
+ *     @type string $width   Attachment width.
+ *     @type string $height  Attachment height.
+ *     @type string $full    Full-size attachment URL, limited to 1200x1200.
  * }
  */
 function themeblvd_sanitize_upload( $input ) {
@@ -59,13 +61,15 @@ function themeblvd_sanitize_upload( $input ) {
 		add_filter( 'editor_max_image_size', 'themeblvd_editor_max_image_size' );
 
 		$output = array(
-			'id'     => 0,
-			'src'    => '',
-			'full'   => '',
-			'title'  => '',
-			'crop'   => '',
-			'width'  => 0,
-			'height' => 0,
+			'id'      => 0,
+			'src'     => '',
+			'full'    => '',
+			'title'   => '',
+			'alt'     => '',
+			'caption' => '',
+			'crop'    => '',
+			'width'   => 0,
+			'height'  => 0,
 		);
 
 		if ( isset( $input['id'] ) ) {
@@ -93,8 +97,16 @@ function themeblvd_sanitize_upload( $input ) {
 			$output['title'] = wp_kses( $input['title'], array() );
 		}
 
+		if ( isset( $input['alt'] ) ) {
+			$output['alt'] = wp_kses( $input['alt'], array() );
+		}
+
+		if ( isset( $input['caption'] ) ) {
+			$output['caption'] = wp_kses( $input['caption'], array() );
+		}
+
 		if ( isset( $input['crop'] ) ) {
-			$output['crop'] = wp_kses( $input['crop'], array() );
+			$output['crop'] = esc_attr( $input['crop'] );
 		}
 
 		/*
@@ -125,12 +137,15 @@ function themeblvd_sanitize_upload( $input ) {
  * @param  array $input {
  *     Original value.
  *
- *     @type string $color      Background color.
- *     @type string $image      Background image URL.
- *     @type string $repeat     CSS background-repeat property.
- *     @type string $position   CSS background-position property.
- *     @type string $attachment CSS background-attachment property, or `parallax`.
- *     @type string $size       CSS background-size property.
+ *     @type string $color       Background color.
+ *     @type string $image       Background image URL.
+ *     @type string $image_id    Background image attachment ID.
+ *     @type string $image_title Background image attachment title.
+ *     @type string $image_alt   Background image alternative text.
+ *     @type string $repeat      CSS background-repeat property.
+ *     @type string $position    CSS background-position property.
+ *     @type string $attachment  CSS background-attachment property, or `parallax`.
+ *     @type string $size        CSS background-size property.
  * }
  * @return array $output {
  *     Sanitized value. Structured same as $input.
@@ -139,12 +154,15 @@ function themeblvd_sanitize_upload( $input ) {
 function themeblvd_sanitize_background( $input ) {
 
 	$output = array(
-		'color'      => '',
-		'image'      => '',
-		'repeat'     => 'repeat',
-		'position'   => 'top center',
-		'attachment' => 'scroll',
-		'size'       => 'auto',
+		'color'       => '',
+		'image'       => '',
+		'image_id'    => '',
+		'image_title' => '',
+		'image_alt'   => '',
+		'repeat'      => 'repeat',
+		'position'    => 'top center',
+		'attachment'  => 'scroll',
+		'size'        => 'auto',
 	);
 
 	if ( isset( $input['color'] ) ) {
@@ -155,6 +173,18 @@ function themeblvd_sanitize_background( $input ) {
 	if ( isset( $input['image'] ) ) {
 		/** This filter is documented in framework/admin/options/class-theme-blvd-options-page.php */
 		$output['image'] = apply_filters( 'themeblvd_sanitize_upload', $input['image'] );
+	}
+
+	if ( isset( $input['image_id'] ) ) {
+		$output['image_id'] = esc_attr( $input['image_id'] );
+	}
+
+	if ( isset( $input['image_title'] ) ) {
+		$output['image_title'] = wp_kses( $input['image_title'], array() );
+	}
+
+	if ( isset( $input['image_alt'] ) ) {
+		$output['image_alt'] = wp_kses( $input['image_alt'], array() );
 	}
 
 	if ( isset( $input['repeat'] ) ) {

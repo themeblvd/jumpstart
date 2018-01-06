@@ -1058,35 +1058,37 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				if ( ! empty( $option['advanced'] ) ) {
 
+					if ( ! $current || ! is_array( $current ) ) {
+						$current = array();
+					}
+
+					$current = wp_parse_args( $current, array(
+						'id'      => '',
+						'src'     => '',
+						'title'   => '',
+						'alt'     => '', // @since @@name-framework 2.7.0
+						'caption' => '', // @since @@name-framework 2.7.0
+						'crop'    => '',
+					) );
+
 					/*
 					 * Advanced type will allow for selecting
 					 * image crop size for URL.
 					 */
 					$args['type'] = 'advanced';
 
-					if ( isset( $current['src'] ) ) {
+					$args['value_id'] = $current['id'];
 
-						$args['value_src'] = $current['src'];
+					$args['value_src'] = $current['src'];
 
-					}
+					$args['value_title'] = $current['title'];
 
-					if ( isset( $current['id'] ) ) {
+					$args['value_alt'] = $current['alt'];
 
-						$args['value_id'] = $current['id'];
+					$args['value_caption'] = $current['caption'];
 
-					}
+					$args['value_crop'] = $current['crop'];
 
-					if ( isset( $current['title'] ) ) {
-
-						$args['value_title'] = $current['title'];
-
-					}
-
-					if ( isset( $current['crop'] ) ) {
-
-						$args['value_crop'] = $current['crop'];
-
-					}
 				} else {
 
 					$args['value'] = $current;
@@ -1141,6 +1143,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * }
 			 */
 			case 'typography':
+				if ( ! $current || ! is_array( $current ) ) {
+					$current = array();
+				}
+
 				$current = wp_parse_args( $current, array(
 					'size'        => '0px',
 					'style'       => '',
@@ -1399,45 +1405,39 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 			 * }
 			 */
 			case 'background':
-				$background = array();
-
-				if ( $current ) {
-
-					$background = $current;
-
+				if ( ! $current || ! is_array( $current ) ) {
+					$current = array();
 				}
 
-				// Add background-image upload to output.
-				if ( ! isset( $background['image'] ) ) {
-
-					$background['image'] = '';
-
-				}
-
-				$current_bg_url = '';
-
-				if ( ! empty( $background['image'] ) ) {
-
-					$current_bg_url = $background['image'];
-
-				}
-
-				$current_bg_image = array(
-					'url' => $current_bg_url,
-					'id'  => '',
-				);
+				$current = wp_parse_args( $current, array(
+					'image'         => '',
+					'image_id'      => '', // @since @@name-framework 2.7.0
+					'image_title'   => '', // @since @@name-framework 2.7.0
+					'image_alt'     => '', // @since @@name-framework 2.7.0
+					'image_caption' => '', // @since @@name-framework 2.7.0
+					'color'         => '',
+		            'image'         => '',
+		            'repeat'        => '',
+		            'position'      => '',
+		            'attachment'    => '',
+		            'size'          => '',
+				) );
 
 				$output .= themeblvd_media_uploader( array(
-					'option_name' => $option_name,
-					'type'        => 'background',
-					'id'          => $option['id'],
-					'value'       => $current_bg_url,
-					'name'        => 'image',
+					'option_name'   => $option_name,
+					'type'          => 'background',
+					'id'            => $option['id'],
+					'name'          => 'image',
+					'value_src'     => $current['image'],
+					'value_id'      => $current['image_id'],
+					'value_title'   => $current['image_title'],
+					'value_alt'     => $current['image_alt'],
+					'value_caption' => $current['image_caption'],
 				) );
 
 				$class = 'tb-background-properties of-background-properties';
 
-				if ( empty( $background['image'] ) ) {
+				if ( empty( $current['image'] ) ) {
 
 					$class .= ' hide';
 
@@ -1446,12 +1446,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '<div class="' . esc_attr( $class ) . '">';
 
 				// Add background-repeat selection to output.
-				$current_repeat = '';
-
-				if ( ! empty( $background['repeat'] ) ) {
-					$current_repeat = $background['repeat'];
-				}
-
 				$output .= sprintf(
 					'<select class="tb-background tb-background-repeat of-background of-background-repeat" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][repeat]' ),
@@ -1465,7 +1459,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= sprintf(
 						'<option value="%s" %s>%s</option>',
 						esc_attr( $key ),
-						selected( $current_repeat, $key, false ),
+						selected( $current['repeat'], $key, false ),
 						esc_html( $repeat )
 					);
 
@@ -1474,14 +1468,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</select>';
 
 				// Add background-attachment selection to output.
-				$current_attachment = '';
-
-				if ( ! empty( $background['attachment'] ) ) {
-
-					$current_attachment = $background['attachment'];
-
-				}
-
 				$output .= sprintf(
 					'<select class="tb-background tb-background-attachment of-background of-background-attachment" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][attachment]' ),
@@ -1509,7 +1495,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= sprintf(
 						'<option value="%s" %s>%s</option>',
 						esc_attr( $key ),
-						selected( $current_attachment, $key, false ),
+						selected( $current['attachment'], $key, false ),
 						esc_attr( $attachment )
 					);
 
@@ -1518,14 +1504,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</select>';
 
 				// Add background-position selection to output.
-				$current_position = '';
-
-				if ( ! empty( $background['position'] ) ) {
-
-					$current_position = $background['position'];
-
-				}
-
 				$output .= '<select class="tb-background tb-background-position of-background of-background-position" name="' . esc_attr( $option_name . '[' . $option['id'] . '][position]' ) . '" id="' . esc_attr( $option['id'] . '_position' ) . '">';
 
 				$positions = themeblvd_recognized_background_position();
@@ -1535,7 +1513,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= sprintf(
 						'<option value="%s" %s>%s</option>',
 						esc_attr( $key ),
-						selected( $current_position, $key, false ),
+						selected( $current['position'], $key, false ),
 						esc_attr( $position )
 					);
 
@@ -1544,14 +1522,6 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$output .= '</select>';
 
 				// Add background-size selection to output.
-				$current_size = '';
-
-				if ( ! empty( $background['size'] ) ) {
-
-					$current_size = $background['size'];
-
-				}
-
 				$output .= sprintf(
 					'<select class="tb-background tb-background-size of-background of-background-size" name="%s" id="%s">',
 					esc_attr( $option_name . '[' . $option['id'] . '][size]' ),
@@ -1565,7 +1535,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= sprintf(
 						'<option value="%s" %s>%s</option>',
 						esc_attr( $key ),
-						selected( $current_size, $key, false ),
+						selected( $current['size'], $key, false ),
 						esc_attr( $size )
 					);
 
