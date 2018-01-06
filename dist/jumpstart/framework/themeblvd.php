@@ -357,6 +357,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/content.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/components.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/loop.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/media.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/nav.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/parts.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/post.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/blocks/stats.php' );
