@@ -36,11 +36,10 @@ if ( themeblvd_show_breadcrumbs() ) {
 	<?php
 	$attachment_id = get_post_thumbnail_id( get_option( 'woocommerce_shop_page_id' ) );
 
-	$attachment = wp_get_attachment_image_src( $attachment_id );
-
 	themeblvd_the_archive_banner_image( array(
 		'id'   => $attachment_id,
-		'src'  => $attachment[0],
+		'src'  => wp_get_attachment_image_url( $attachment_id ),
+		'alt'  => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true )
 		'crop' => 'full'
 	) );
 	?>

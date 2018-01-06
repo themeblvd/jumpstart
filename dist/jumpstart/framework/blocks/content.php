@@ -670,6 +670,7 @@ function themeblvd_the_archive_title() {
  *
  *     @type int    $id    Attachment ID.
  *     @type string $src   Source URL of cropped image.
+ *     @type string $alt   Image alternative text.
  *     @type string $full  Source URL of full-size image.
  *     @type string $title Image title.
  *     @type string $crop  Image crop size.
@@ -685,6 +686,13 @@ function themeblvd_get_the_archive_banner_image( $image = array() ) {
 		$image = themeblvd_get_option( 'archive_banner' );
 
 	}
+
+	$image = wp_parse_args( $image, array(
+		'id'   => 0,
+		'src'  => '',
+		'alt'  => '',
+		'crop' => '',
+	) );
 
 	/**
 	 * Filters the archive banner image arguments.
@@ -707,6 +715,7 @@ function themeblvd_get_the_archive_banner_image( $image = array() ) {
 
 		$output .= themeblvd_get_bg_parallax( array(
 			'src' => $image['src'],
+			'alt' => $image['alt'],
 		) );
 
 		$to = 'main';

@@ -81,6 +81,7 @@ if ( is_page_template( 'template_builder.php' ) ) {
 			<?php
 			themeblvd_bg_parallax( array(
 				'src' => wp_get_attachment_image_url( get_post_thumbnail_id(), 'tb_x_large' ),
+				'alt' => get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ),
 			) );
 			?>
 

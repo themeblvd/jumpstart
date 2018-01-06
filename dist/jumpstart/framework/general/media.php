@@ -1026,7 +1026,11 @@ function themeblvd_get_bg_parallax( $display ) {
 
 		}
 
-		if ( ! empty( $display['bg_image']['image_alt'] ) ) {
+		if ( ! empty( $display['alt'] ) ) { // Manually pass in.
+
+			$alt = $display['alt'];
+
+		} elseif ( ! empty( $display['bg_image']['image_alt'] ) ) {
 
 			$alt = $display['bg_image']['image_alt'];
 
