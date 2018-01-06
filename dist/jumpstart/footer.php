@@ -101,6 +101,12 @@
 	 * Fires after all HTML markup, but before
 	 * wp_footer().
 	 *
+	 * @hooked themeblvd_widgets_below_footer - 5
+	 * @hooked themeblvd_floating_search - 10
+	 * @hooked themeblvd_to_top - 10
+	 * @hooked themeblvd_side_panel - 10
+	 * @hooked themeblvd_mobile_panel - 10
+	 *
 	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_after' );

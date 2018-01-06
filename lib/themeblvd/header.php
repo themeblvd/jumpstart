@@ -31,6 +31,8 @@
 	 * Fires just inside the <body> tag, before
 	 * any HTML markup.
 	 *
+	 * @hooked themeblvd_widgets_above_header - 20
+	 *
 	 * @since @@name-framework 2.0.0
 	 */
 	do_action( 'themeblvd_before' );
