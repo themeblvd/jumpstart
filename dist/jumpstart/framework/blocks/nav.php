@@ -683,19 +683,7 @@ function themeblvd_get_side_trigger( $args = array() ) {
 
 	}
 
-	$output  = sprintf( "<a href=\"#\" class=\"%s\">\n", $class );
-
-	$output .= "\t<span class=\"hamburger\">\n";
-
-	$output .= "\t\t<span class=\"top\"></span>\n";
-
-	$output .= "\t\t<span class=\"middle\"></span>\n";
-
-	$output .= "\t\t<span class=\"bottom\"></span>\n";
-
-	$output .= "\t</span>\n";
-
-	$output .= "</a>\n";
+	$output = themeblvd_get_nav_button( $class );
 
 	/**
 	 * Filters the final HTML output for a link to

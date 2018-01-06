@@ -765,3 +765,49 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
 	return apply_filters( 'themeblvd_filter_val', $value, $tax, $post_id );
 
 }
+
+/**
+ * Get the "hamburger" style button, generally
+ * used for opening menus.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @param  string|array $class  CSS class added to button.
+ * @return string       $output Final HTML output.
+ */
+function themeblvd_get_nav_button( $class = '' ) {
+
+	$output = '';
+
+	if ( is_array( $class ) ) {
+
+		$class = implode( ' ', $class );
+
+	}
+
+	$output .= sprintf( "<a href=\"#\" class=\"%s\">\n", $class );
+
+	$output .= "\t<span class=\"hamburger\">\n";
+
+	$output .= "\t\t<span class=\"top\"></span>\n";
+
+	$output .= "\t\t<span class=\"middle\"></span>\n";
+
+	$output .= "\t\t<span class=\"bottom\"></span>\n";
+
+	$output .= "\t</span>\n";
+
+	$output .= "</a>\n";
+
+	/**
+	 * Filters the "hamburger" style button, generally
+	 * used for opening menus.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $class  CSS class added to button.
+	 * @param string $output Final HTML output.
+	 */
+	return apply_filters( 'themeblvd_nav_button', $output, $class );
+
+}
