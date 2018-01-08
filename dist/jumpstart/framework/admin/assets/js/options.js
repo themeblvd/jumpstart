@@ -62,7 +62,7 @@ window.themeblvd.options = {};
 
 			} else {
 
-				$subgroup.find( '.receiver' ).each(function(){
+				$subgroup.find( '.receiver' ).each( function() {
 					$( this ).find( 'input, textarea, select' ).prop( 'disabled', true );
 				} );
 
@@ -98,11 +98,11 @@ window.themeblvd.options = {};
 				value = $trigger.find( '.of-input' ).val();
 			}
 
-			$subgroup.children( '.receiver' ).each(function(){
+			$subgroup.children( '.receiver' ).each( function() {
 				$( this ).hide().find( 'input, textarea, select' ).prop( 'disabled', true );
 			} );
 
-			$subgroup.children( '.receiver-'+value).each(function(){
+			$subgroup.children( '.receiver-' + value).each( function() {
 				$( this ).show().find( 'input, textarea, select' ).prop( 'disabled', false );
 			} );
 
