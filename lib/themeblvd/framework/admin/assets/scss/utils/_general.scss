@@ -82,11 +82,11 @@
 }
 .tb-options-wrap .conflict:before {
 	content: '\e804';
-	color: $clr-success;
+	color: $clr-danger;
 }
 .tb-options-wrap .no-conflict:before {
 	content: '\e80e';
-	color: $clr-danger;
+	color: $clr-success;
 }
 
 //

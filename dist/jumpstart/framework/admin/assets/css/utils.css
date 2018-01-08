@@ -282,12 +282,12 @@
 
 .tb-options-wrap .conflict:before {
   content: '\e804';
-  color: #57da23;
+  color: #d54e21;
 }
 
 .tb-options-wrap .no-conflict:before {
   content: '\e80e';
-  color: #d54e21;
+  color: #57da23;
 }
 
 .tb-options-wrap .ajax-update {
