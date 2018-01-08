@@ -367,36 +367,32 @@ function jumpstart_ag_css() {
 	$bg = themeblvd_get_option( 'header_bg_color' );
 
 	// Background color
-	$print .= "@media (min-width: 992px) {\n";
-
 	if ( themeblvd_config( 'suck_up' ) ) {
 
-		$print .= "\t.site-header.transparent {\n";
-		$print .= "\t\tbackground-color: transparent;\n";
+		$print .= ".site-header.transparent {\n";
+		$print .= "\tbackground-color: transparent;\n";
 
 		$opacity = themeblvd_get_option( 'header_trans_bg_color_opacity' );
 
 		if ( $opacity ) {
 
-			$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option( 'header_trans_bg_color' ), $opacity ) );
+			$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( themeblvd_get_option( 'header_trans_bg_color' ), $opacity ) );
 
 		}
 
-		$print .= "\t}\n";
+		$print .= "}\n";
 
 	} else {
 
-		$print .= "\t.site-header {\n";
+		$print .= ".site-header {\n";
 		$print .= sprintf( "\t\tbackground-color: %s;\n", $bg );
-		$print .= "\t}\n";
+		$print .= "}\n";
 
 	}
 
-	$print .= "\t.tb-sticky-menu {\n";
-	$print .= sprintf( "\t\tbackground-color: %s;\n", $bg );
-	$print .= sprintf( "\t\tbackground-color: %s;\n", themeblvd_get_rgb( $bg, '0.9' ) );
-	$print .= "\t}\n";
-
+	$print .= ".tb-sticky-menu {\n";
+	$print .= sprintf( "\tbackground-color: %s;\n", $bg );
+	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $bg, '0.9' ) );
 	$print .= "}\n";
 
 	// Mobile Header
@@ -428,26 +424,22 @@ function jumpstart_ag_css() {
 
 	}
 
-	$print .= "@media (min-width: 992px) {\n";
-
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
-		$print .= "\t.site-header.stretch .header-toolbar:before,\n";
+		$print .= ".site-header.stretch .header-toolbar:before,\n";
 	}
 
-	$print .= "\t.header-content > .wrap,\n";
-	$print .= "\t.has-sticky #top {\n";
+	$print .= ".header-content > .wrap,\n";
+	$print .= ".has-sticky #top {\n";
 	$print .= sprintf( "\t\theight: %spx;\n", $height );
-	$print .= "\t}\n";
+	$print .= "}\n";
 
 	if ( themeblvd_get_option( 'header_stretch' ) ) {
 
-		$print .= "\t.site-header.stretch .header-toolbar:before {\n";
-		$print .= sprintf( "\t\ttop: -%spx;\n", round( ($height - 58) / 2 ) );
-		$print .= "\t}\n";
+		$print .= ".site-header.stretch .header-toolbar:before {\n";
+		$print .= sprintf( "\ttop: -%spx;\n", round( ($height - 58) / 2 ) );
+		$print .= "}\n";
 
 	}
-
-	$print .= "}\n";
 
 	// Main Menu Dropdowns
 	$print .= ".tb-primary-menu ul.non-mega-sub-menu,\n";
@@ -586,9 +578,6 @@ function jumpstart_ag_header_class( $class ) {
 
 	}
 
-	// Header brightness.
-	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
-
 	// Dropdown brightness.
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_drop_bg_color_brightness' );
 
@@ -611,7 +600,17 @@ function jumpstart_ag_header_class( $class ) {
 	return $class;
 
 }
-add_filter( 'themeblvd_header_class', 'jumpstart_ag_header_class', 10, 2 );
+add_filter( 'themeblvd_header_class', 'jumpstart_ag_header_class' );
+
+/*
+ * Add CSS classes to mobile header.
+ */
+add_filter( 'themeblvd_header_class', 'jumpstart_mobile_header_class' );
+
+/*
+ * Modify mobile header breakpoint with user option.
+ */
+add_filter( 'themeblvd_mobile_header_breakpoint', 'jumpstart_mobile_header_breakpoint' );
 
 /*
  * Remove header top.

@@ -745,7 +745,7 @@ function jumpstart_ex_css() {
 		}
 
 		// Header Top Bar
-		if ( themeblvd_get_option( 'header_info' ) == 'header_top' ) {
+		if ( 'header_top' === themeblvd_get_option( 'header_info' ) ) {
 
 			$options = array();
 
@@ -784,25 +784,25 @@ function jumpstart_ex_css() {
 	// Header Padding
 	if ( themeblvd_get_option( 'header_apply_padding_top' ) || themeblvd_get_option( 'header_apply_padding_bottom' ) ) {
 
-		$print .= "@media (min-width: 992px) {\n";
-
 		if ( themeblvd_get_option( 'header_apply_padding_top' ) ) {
 
-			$print .= "\t.header-content > .wrap {\n";
-			$print .= sprintf( "\t\tpadding-top: %s;\n", themeblvd_get_option( 'header_padding_top' ) );
-			$print .= "\t}\n";
+			$print .= ".header-content > .wrap {\n";
+
+			$print .= sprintf( "\tpadding-top: %s;\n", themeblvd_get_option( 'header_padding_top' ) );
+
+			$print .= "}\n";
 
 		}
 
 		if ( ! themeblvd_config( 'suck_up' ) && themeblvd_get_option( 'header_apply_padding_bottom' ) ) { // Bottom padding doesn't get applied on suck_up
 
-			$print .= "\t.site-header > .wrap {\n";
-			$print .= sprintf( "\t\tpadding-bottom: %s;\n", themeblvd_get_option( 'header_padding_bottom' ) );
-			$print .= "\t}\n";
+			$print .= ".site-header > .wrap {\n";
+
+			$print .= sprintf( "\tpadding-bottom: %s;\n", themeblvd_get_option( 'header_padding_bottom' ) );
+
+			$print .= "}\n";
 
 		}
-
-		$print .= "}\n";
 
 	}
 
@@ -1220,14 +1220,22 @@ function jumpstart_ex_header_class( $class ) {
 
 	}
 
-	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
-
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_sub_bg_color_brightness' );
 
 	return $class;
 
 }
 add_filter( 'themeblvd_header_class', 'jumpstart_ex_header_class' );
+
+/*
+ * Add CSS classes to mobile header.
+ */
+add_filter( 'themeblvd_header_class', 'jumpstart_mobile_header_class' );
+
+/*
+ * Modify mobile header breakpoint with user option.
+ */
+add_filter( 'themeblvd_mobile_header_breakpoint', 'jumpstart_mobile_header_breakpoint' );
 
 /**
  * Add CSS classes to header top bar.

@@ -810,13 +810,11 @@ function jumpstart_ent_css() {
 	// Header Height and Main Menu
 	$height = intval( themeblvd_get_option( 'header_height' ) );
 
-	$print .= "@media (min-width: 992px) {\n";
-	$print .= "\t.header-content {\n";
-	$print .= sprintf( "\t\theight: %spx;\n", $height );
-	$print .= "\t}\n";
-	$print .= "\t.header-content .header-logo img {\n";
-	$print .= sprintf( "\t\theight: %spx;\n", $height - 20 );
-	$print .= "\t}\n";
+	$print .= ".header-content {\n";
+	$print .= sprintf( "\theight: %spx;\n", $height );
+	$print .= "}\n";
+	$print .= ".header-content .header-logo img {\n";
+	$print .= sprintf( "\theight: %spx;\n", $height - 20 );
 	$print .= "}\n";
 
 	$top = round( ($height - 20) / 2 ); // 20px line-height for font
@@ -1171,14 +1169,22 @@ function jumpstart_ent_header_class( $class ) {
 
 	}
 
-	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
-
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_sub_bg_color_brightness' );
 
 	return $class;
 
 }
 add_filter( 'themeblvd_header_class', 'jumpstart_ent_header_class' );
+
+/*
+ * Add CSS classes to mobile header.
+ */
+add_filter( 'themeblvd_header_class', 'jumpstart_mobile_header_class' );
+
+/*
+ * Modify mobile header breakpoint with user option.
+ */
+add_filter( 'themeblvd_mobile_header_breakpoint', 'jumpstart_mobile_header_breakpoint' );
 
 /**
  * Add CSS classes to header top bar.

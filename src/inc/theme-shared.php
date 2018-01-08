@@ -12,7 +12,7 @@
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
  * @package   @@name-package
- * @since     @@name-package 2.2.0
+ * @since     @@name-package 2.7.0
  */
 
 /**
@@ -26,7 +26,7 @@
  * Note: For the `typography` set options, the theme base
  * must pass in the $defaults.
  *
- * @since @@name-package 2.2.0
+ * @since @@name-package 2.7.0
  *
  * @param  string $set      Type of option set, like `typography`, `buttons`, `widgets`, etc.
  * @param  array  $defaults Any custom default values.
@@ -44,7 +44,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 		case 'mobile-header':
 			$options['header_mobile_info'] = array(
 				'id'   => 'header_mobile_info',
-				'desc' => __( 'These styles are applied to your header across most mobile devices and portrait tablets.', '@@text-domain' ),
+				'desc' => __( 'These styles are applied to your header across smaller devices.', '@@text-domain' ),
 				'type' => 'info',
 			);
 
@@ -79,12 +79,26 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 			$options['header_mobile_height'] = array(
 				'id'      => 'header_mobile_height',
 				'name'    => __( 'Height', '@@text-domain' ),
-				'desc'    => __( 'Set the height of your mobile header in pixels. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
+				'desc'    => __( 'Set the height of your mobile header. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
 				'std'     => '64px',
 				'type'    => 'slide',
 				'options' => array(
 					'min'   => '40',
 					'max'   => '150',
+					'step'  => '1',
+					'units' => 'px',
+				)
+			);
+
+			$options['header_mobile_breakpoint'] = array(
+				'id'      => 'header_mobile_breakpoint',
+				'name'    => __( 'Breakpoint', '@@text-domain' ),
+				'desc'    => __( 'Set the viewport size breakpoint where the desktop header should be hidden, and the mobile header displayed.', '@@text-domain' ),
+				'std'     => '991px',
+				'type'    => 'slide',
+				'options' => array(
+					'min'   => '0',
+					'max'   => '1400',
 					'step'  => '1',
 					'units' => 'px',
 				)
@@ -569,7 +583,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
  * Get styles output for shared sections used in
  * different theme bases.
  *
- * @since @@name-package 2.2.0
+ * @since @@name-package 2.7.0
  *
  * @param  string $set    Type of option set to style, like `footer`.
  * @return string $output CSS output used with wp_add_inline_style().
@@ -584,65 +598,48 @@ function themeblvd_get_shared_style( $set ) {
 		 * Style the mobile header.
 		 */
 		case 'mobile-header':
-			$output .= "@media (max-width: 991px) {\n";
-
-			$output .= "\t.site-header {\n";
+			$output .= ".tb-mobile-header {\n";
 
 			$output .= sprintf(
-				"\t\tbackground-color: %s;\n",
+				"\tbackground-color: %s;\n",
 				esc_attr( themeblvd_get_option( 'header_mobile_bg_color' ) )
 			);
 
-			$output .= "\t}\n";
+			$output .= "}\n";
 
-			$output .= "\t.header-content > .wrap {\n";
+			$output .= ".tb-mobile-header > .wrap {\n";
 
 			$output .= sprintf(
-				"\t\theight: %s;\n",
+				"\theight: %s;\n",
 				esc_attr( themeblvd_get_option( 'header_mobile_height' ) )
 			);
 
-			$output .= "\t}\n";
+			$output .= "}\n";
 
-			$output .= "\t.header-logo img {\n";
+			$output .= ".tb-mobile-header .header-logo img {\n";
 
 			$output .= sprintf(
-				"\t\tmax-height: %s;\n",
+				"\tmax-height: %s;\n",
 				esc_attr( themeblvd_get_option( 'header_mobile_height' ) )
 			);
 
-			$output .= "\t}\n";
+			$output .= "}\n";
 
 			$icon_color = themeblvd_get_option( 'header_mobile_icon_color' );
 
-			$output .= "\t.site-header .mobile-nav > li > a {\n";
+			$output .= ".mobile-nav > li > a,\n";
 
-			$output .= sprintf(
-				"\t\tcolor: %s;\n",
-				esc_attr( themeblvd_get_rgb( $icon_color, '0.7' ) )
-			);
+			$output .= ".mobile-nav > li > a:hover {\n";
 
-			$output .= "\t}\n";
+			$output .= sprintf( "\tcolor: %s;\n", esc_attr( $icon_color ) );
 
-			$output .= "\t.site-header .mobile-nav > li > a:hover {\n";
+			$output .= "}\n";
 
-			$output .= sprintf( "\t\tcolor: %s;\n", esc_attr( $icon_color ) );
+			$output .= ".tb-nav-trigger .hamburger span,\n";
 
-			$output .= "\t}\n";
-
-			$output .= "\t.site-header .tb-nav-trigger .hamburger span {\n";
-
-			$output .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( themeblvd_get_rgb( $icon_color, '0.7' ) ) );
-
-			$output .= "\t}\n";
-
-			$output .= "\t.site-header .tb-nav-trigger:hover .hamburger span,\n";
-
-			$output .= "\t.site-header .tb-nav-trigger.collapse .hamburger span {\n";
+			$output .= ".tb-nav-trigger:hover .hamburger span {\n";
 
 			$output .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( $icon_color ) );
-
-			$output .= "\t}\n";
 
 			$output .= "}\n";
 
@@ -721,9 +718,25 @@ function themeblvd_get_shared_style( $set ) {
 }
 
 /**
+ * Add CSS classes to mobile header.
+ *
+ * @since @@name-package 2.7.0
+ *
+ * @param  array $class CSS classes being added to mobile header.
+ * @return array $class Modified CSS classes being added to mobile header.
+ */
+function jumpstart_mobile_header_class( $class ) {
+
+	$class[] = themeblvd_get_option( 'header_mobile_bg_color_brightness' );
+
+	return $class;
+
+}
+
+/**
  * Add CSS classes to side panel and mobile menu.
  *
- * @since @@name-package 2.1.0
+ * @since @@name-package 2.7.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -739,7 +752,7 @@ function jumpstart_side_panel_class( $class ) {
 /**
  * Add CSS classes to footer.
  *
- * @since @@name-package 2.2.0
+ * @since @@name-package 2.7.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -774,7 +787,7 @@ function jumpstart_footer_class( $class ) {
  * Add CSS classes to site copyright at the
  * bottom of the footer.
  *
- * @since @@name-package 2.2.0
+ * @since @@name-package 2.7.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -798,7 +811,7 @@ function jumpstart_copyright_class( $class ) {
  * To use, filter onto:
  * `themeblvd_panel_contact_bar_args`
  *
- * @since @@name-package 2.2.0
+ * @since @@name-package 2.7.0
  *
  * @param  array $args Arguments to pass to themeblvd_contact_bar().
  * @return array $args Modified arguments to pass to themeblvd_contact_bar().
@@ -821,7 +834,7 @@ function jumpstart_panel_contact_bar_args( $args ) {
  * To use, filter onto:
  * `themeblvd_copyright_contact_bar_args`
  *
- * @since @@name-package 2.2.0
+ * @since @@name-package 2.7.0
  *
  * @param  array $args Arguments to pass to themeblvd_contact_bar().
  * @return array $args Modified arguments to pass to themeblvd_contact_bar().
@@ -842,5 +855,33 @@ function jumpstart_copyright_contact_bar_args( $args ) {
 	}
 
 	return $args;
+
+}
+
+/**
+ * Adjust the mobile header breakpoint.
+ *
+ * This is the viewport size where the desktop
+ * is hidden and the mobile header is displayed.
+ *
+ * To use, filter onto:
+ * `themeblvd_mobile_header_breakpoint`
+ *
+ * @since @@name-package 2.7.0
+ *
+ * @param  int $breakpoint Breakpoint, like `991`.
+ * @return int $breakpoint Modified breakpoint, like `991`.
+ */
+function jumpstart_mobile_header_breakpoint( $breakpoint ) {
+
+	$new = themeblvd_get_option( 'header_mobile_breakpoint' );
+
+	if ( $new ) {
+
+		$breakpoint = intval( $new );
+
+	}
+
+	return $breakpoint;
 
 }

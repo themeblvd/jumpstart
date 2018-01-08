@@ -53,11 +53,6 @@ Author URI: http://www.themeblvd.com
 	padding: 6px 0 0 0;
 	text-align: right;
 }
-@media (max-width: 991px) {
-	.header-addon {
-		display: none;
-	}
-}
 .header-addon .tb-cart-trigger .trigger-label {
 	left: 12px;
 }
@@ -79,22 +74,13 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Header Logo */
-@media (min-width: 768px) {
-	.site-header.dark .header-text-logo .tb-text-logo,
-	.site-header.dark .header-text-logo .tagline {
-		color: #fff;
-	}
+.site-header.dark .header-text-logo .tb-text-logo,
+.site-header.dark .header-text-logo .tagline {
+	color: #fff;
 }
-@media (max-width: 767px) {
-	.mobile-light .header-text-logo .tb-text-logo {
-		color: #222;
-	}
-}
-@media (min-width: 992px) {
-	.js-center-logo .header-content .header-logo {
-		float: none;
-		text-align: center;
-	}
+.js-center-logo .header-content .header-logo {
+	float: none;
+	margin: auto;
 }
 .js-center-logo .header-addon,
 .js-center-logo .header-addon.header-addon-with-text {
@@ -113,10 +99,8 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Mobile Header Logo */
-@media (max-width: 991px) {
-	.site-header.mobile-light .header-text-logo .tb-text-logo {
-		color: #333;
-	}
+.tb-mobile-header.light .header-text-logo .tb-text-logo {
+	color: #333;
 }
 
 /* Epic Thumb */

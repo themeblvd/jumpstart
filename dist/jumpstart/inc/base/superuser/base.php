@@ -791,13 +791,11 @@ function jumpstart_su_css() {
 	// Header content padding
 	if ( themeblvd_get_option( 'header_apply_padding' ) ) {
 
-		$print .= "@media (min-width: 992px) {\n";
-		$print .= "\t.header-content > .wrap {\n";
-		$print .= sprintf( "\t\tpadding-top: %s;\n", themeblvd_get_option( 'header_padding_top' ) );
-		$print .= sprintf( "\t\tpadding-right: %s;\n", themeblvd_get_option( 'header_padding_right' ) );
-		$print .= sprintf( "\t\tpadding-bottom: %s;\n", themeblvd_get_option( 'header_padding_bottom' ) );
-		$print .= sprintf( "\t\tpadding-left: %s;\n", themeblvd_get_option( 'header_padding_left' ) );
-		$print .= "\t}\n";
+		$print .= ".header-content > .wrap {\n";
+		$print .= sprintf( "\tpadding-top: %s;\n", themeblvd_get_option( 'header_padding_top' ) );
+		$print .= sprintf( "\tpadding-right: %s;\n", themeblvd_get_option( 'header_padding_right' ) );
+		$print .= sprintf( "\tpadding-bottom: %s;\n", themeblvd_get_option( 'header_padding_bottom' ) );
+		$print .= sprintf( "\tpadding-left: %s;\n", themeblvd_get_option( 'header_padding_left' ) );
 		$print .= "}\n";
 
 	}
@@ -1159,14 +1157,22 @@ function jumpstart_su_header_class( $class ) {
 
 	}
 
-	$class[] = 'mobile-' . themeblvd_get_option( 'header_mobile_bg_color_brightness' );
-
 	$class[] = 'drop-' . themeblvd_get_option( 'menu_sub_bg_color_brightness' );
 
 	return $class;
 
 }
 add_filter( 'themeblvd_header_class', 'jumpstart_su_header_class' );
+
+/*
+ * Add CSS classes to mobile header.
+ */
+add_filter( 'themeblvd_header_class', 'jumpstart_mobile_header_class' );
+
+/*
+ * Modify mobile header breakpoint with user option.
+ */
+add_filter( 'themeblvd_mobile_header_breakpoint', 'jumpstart_mobile_header_breakpoint' );
 
 /**
  * Add CSS classes to header top bar.
