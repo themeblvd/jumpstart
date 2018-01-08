@@ -283,8 +283,8 @@ function themeblvd_get_js_locals() {
 	 */
 	$locals['mobile_header_breakpoint'] = apply_filters( 'themeblvd_mobile_header_breakpoint', '991' );
 
-	// Responsive nav menu fixed to the side on mobile.
-	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'display', 'mobile_panel' ) ) {
+	// Set up mobile panel.
+	if ( themeblvd_supports( 'display', 'mobile_panel' ) ) {
 
 		$locals['mobile_panel'] = 'true';
 

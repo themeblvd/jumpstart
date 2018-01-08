@@ -74,7 +74,6 @@ function themeblvd_setup() {
 	);
 
 	$setup['display'] = array(
-		'responsive'       => true,  // Responsive elements.
 		'sticky'           => true,  // Sticky header as user scrolls past header.
 		'mobile_header'    => true,  // Alternative version of site header, for mobile.
 		'mobile_panel'     => true,  // Responsive menu position fixed to the side of the screen on mobile.

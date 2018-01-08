@@ -16,28 +16,6 @@
  * @since      Theme_Blvd 2.2.0
  */
 
-if ( ! function_exists( 'themeblvd_viewport_default' ) ) {
-
-	/**
-	 * Add viewport meta, if responsive design is
-	 * enabled in framework.
-	 *
-	 * This function is hooked to:
-	 * 1. `wp_head` - 2
-	 *
-	 * @since Theme_Blvd 2.2.0
-	 */
-	function themeblvd_viewport_default() {
-
-		if ( themeblvd_supports( 'display', 'responsive' ) ) {
-
-			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' . "\n";
-
-		}
-
-	}
-}
-
 if ( ! function_exists( 'themeblvd_widgets_above_header' ) ) {
 
 	/**

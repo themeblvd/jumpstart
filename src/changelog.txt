@@ -52,6 +52,8 @@ Jump Start Changelog
 	* Removed the function `themeblvd_responsive_menu_toggle()`; use function `themeblvd_mobile_panel_trigger()` instead.
 	* Removed old html5shiv for HTML5 compatibility with IE8.
 	* Removed `themeblvd_featured_*` action hooks, which were deprecated in framework 2.5.
+	* Removed `responsiveness` from the global configuration; it's now assumed that your site will always be responsive.
+	* Removed `themeblvd_viewport_default()` function, that was hooked to `wp_head`; now you can edit `content-head.php`.
 	* Optimized (minified) CSS file included on frontend for each theme base.
 * New: [FontAwesome 5](https://fontawesome.com) Implementation.
 	* More modern implementation of icons through JavaScript.

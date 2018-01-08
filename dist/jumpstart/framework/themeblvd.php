@@ -416,7 +416,6 @@ add_action( 'after_setup_theme', 'themeblvd_frontend_init', 1001 );
  */
 add_action( 'wp_enqueue_scripts', 'themeblvd_include_scripts' );
 add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles' );
-add_action( 'wp_head', 'themeblvd_viewport_default', 2 );
 
 /*
  * Hook frontend actions for the website header.
