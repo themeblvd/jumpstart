@@ -1137,11 +1137,11 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		'image'         => __( 'Image', '@@text-domain' ),
 	);
 
-	if ( 'trans_logo' !== $id && 'mobile_logo' !== $id ) {
+	if ( 'logo' === $id ) {
 		unset( $types['default'] );
 	}
 
-	if ( 'mobile_logo' === $id ) {
+	if ( 'mobile_logo' === $id || 'sticky_logo' === $id ) {
 		unset( $types['title_tagline'] );
 	}
 
@@ -1235,17 +1235,21 @@ function themeblvd_logo_option( $id, $name, $val ) {
 		esc_attr( $current_value )
 	);
 
-	$custom_text .= sprintf(
-		'<p><label class="inner-label"><strong>%s</strong> (%s)</label>',
-		esc_html__( 'Tagline', '@@text-domain' ),
-		esc_html__( 'optional', '@@text-domain' )
-	);
+	if ( 'mobile_logo' !== $id && 'sticky_logo' !== $id ) {
 
-	$custom_text .= sprintf(
-		'<input type="text" name="%s" value="%s" /></p>',
-		esc_attr( $name . '[' . $id . '][custom_tagline]' ),
-		esc_attr( $current_tagline )
-	);
+		$custom_text .= sprintf(
+			'<p><label class="inner-label"><strong>%s</strong> (%s)</label>',
+			esc_html__( 'Tagline', '@@text-domain' ),
+			esc_html__( 'optional', '@@text-domain' )
+		);
+
+		$custom_text .= sprintf(
+			'<input type="text" name="%s" value="%s" /></p>',
+			esc_attr( $name . '[' . $id . '][custom_tagline]' ),
+			esc_attr( $current_tagline )
+		);
+
+	}
 
 	$custom_text .= sprintf(
 		'<p class="note">%s</p>',

@@ -172,11 +172,14 @@ class Theme_Blvd_Options_API {
 	 *      - header_text
 	 *      - social_media_style
 	 *      - searchform
-	 *  - Mobile Header
-	 *      - mobile_logo
 	 *  - Transparent Header
 	 *      - trans_logo
 	 *      - trans_social_media_style
+	 *  - Sticky Header
+	 *      - sticky
+	 *      - sticky_logo
+	 *  - Mobile Header
+	 *      - mobile_logo
 	 *  - Footer
 	 *      - footer_setup
 	 *      - footer_col_1
@@ -394,26 +397,6 @@ class Theme_Blvd_Options_API {
 				), // End header options.
 			),
 
-			// Section: Mobile Header
-			'header_mobile' => array(
-				'name'    => __( 'Mobile Header', 'jumpstart' ),
-				'options' => array(
-					'mobile_logo' => array(
-						'name'     => __( 'Mobile Logo', 'jumpstart' ),
-						'desc'     => __( 'Configure the primary branding logo for the mobile header of your site. The mobile header is 64px tall; so you\'ll want to use an image shorter than that.', 'jumpstart' ) . '<br /><br /><em>' . __( 'Note: If you\'re inputting a "HiDPI-optimized" image, it needs to be twice as large as you intend it to be displayed, and have the same aspect ratio as the standard image. Feel free to leave the HiDPI image field blank if you\'d like it to simply not have any effect.', 'jumpstart' ) . '</em>',
-						'id'       => 'mobile_logo',
-						'std'      => array(
-							'type'         => 'image',
-							'image'        => get_template_directory_uri() . '/assets/img/logo-smaller-light.png',
-							'image_width'  => '85',
-							'image_height' => '25',
-							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-smaller-light_2x.png',
-						),
-						'type'     => 'logo',
-					),
-				), // End mobile header options.
-			),
-
 			// Section: Transparent Header
 			'header_trans' => array(
 				'name'    => __( 'Transparent Header', 'jumpstart' ),
@@ -447,6 +430,62 @@ class Theme_Blvd_Options_API {
 						),
 					),
 				), // End trans header options.
+			),
+
+			// Section: Sticky Header
+			'header_sticky' => array(
+				'name'    => __( 'Sticky Header', 'jumpstart' ),
+				'options' => array(
+					'sticky_sub_group_start' => array(
+						'type'   => 'subgroup_start',
+						'class'  => 'show-hide-toggle',
+					),
+					'sticky' => array(
+						'name'    => __( 'Sticky Header', 'jumpstart' ),
+						'desc'    => __( 'If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page.', 'jumpstart' ),
+						'id'      => 'sticky',
+						'std'     => 'show',
+						'type'    => 'select',
+						'options' => array(
+							'show'  => __( 'Yes, show sticky header', 'jumpstart' ),
+							'hide'  => __( 'No, don\'t show it', 'jumpstart' ),
+						),
+						'class'   => 'trigger',
+					),
+					'sticky_logo' => array(
+						'name'  => __( 'Sticky Header Logo', 'jumpstart' ),
+						'desc'  => __( 'Configure the primary branding logo for the sticky header of your site.', 'jumpstart' ) . '<br /><br /><em>' . __( 'Note: Your logo will be scaled to fit within the 50px tall sticky header.', 'jumpstart' ) . '</em>',
+						'id'    => 'sticky_logo',
+						'std'   => array(
+							'type' => 'default'
+						),
+						'type'  => 'logo',
+						'class' => 'hide receiver receiver-show',
+					),
+					'sticky_sub_group_end' => array(
+						'type'   => 'subgroup_end',
+					),
+				), // End sticky header options.
+			),
+
+			// Section: Mobile Header
+			'header_mobile' => array(
+				'name'    => __( 'Mobile Header', 'jumpstart' ),
+				'options' => array(
+					'mobile_logo' => array(
+						'name' => __( 'Mobile Logo', 'jumpstart' ),
+						'desc' => __( 'Configure the primary branding logo for the mobile header of your site.', 'jumpstart' ),
+						'id'   => 'mobile_logo',
+						'std'  => array(
+							'type'         => 'image',
+							'image'        => get_template_directory_uri() . '/assets/img/logo-smaller-light.png',
+							'image_width'  => '85',
+							'image_height' => '25',
+							'image_2x'     => get_template_directory_uri() . '/assets/img/logo-smaller-light_2x.png',
+						),
+						'type' => 'logo',
+					),
+				), // End mobile header options.
 			),
 
 			// Section: Footer
@@ -644,17 +683,6 @@ class Theme_Blvd_Options_API {
 			'extras' => array(
 				'name'    => __( 'Extras', 'jumpstart' ),
 				'options' => array(
-					'sticky' => array(
-						'name'    => __( 'Sticky Header', 'jumpstart' ),
-						'desc'    => __( 'If enabled, this will display compact version of the site header, fixed to the top of the browser, as the user scrolls down the page.', 'jumpstart' ),
-						'id'      => 'sticky',
-						'std'     => 'show',
-						'type'    => 'select',
-						'options' => array(
-							'show'  => __( 'Yes, show sticky header', 'jumpstart' ),
-							'hide'  => __( 'No, don\'t show it', 'jumpstart' ),
-						),
-					),
 					'breadcrumbs' => array(
 						'name'    => __( 'Breadcrumbs', 'jumpstart' ),
 						'desc'    => __( 'Select whether you\'d like breadcrumbs to show throughout the site or not.', 'jumpstart' ),
@@ -1761,9 +1789,9 @@ class Theme_Blvd_Options_API {
 
 		if ( ! themeblvd_supports( 'display', 'sticky' ) ) {
 
-			if ( isset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] ) ) {
+			if ( isset( $this->raw_options['layout']['sections']['header_sticky'] ) ) {
 
-				unset( $this->raw_options['layout']['sections']['extras']['options']['sticky'] );
+				unset( $this->raw_options['layout']['sections']['header_sticky'] );
 
 			}
 		}
