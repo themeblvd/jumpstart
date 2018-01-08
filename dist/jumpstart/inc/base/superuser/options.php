@@ -1041,13 +1041,6 @@ function jumpstart_su_options() {
 				'std'       => '1',
 				'type'      => 'checkbox',
 			),
-			'thumbnail_circles' => array(
-				'id'        => 'thumbnail_circles',
-				'name'      => null,
-				'desc'      => __( 'Display avatars and small featured images as circles', 'jumpstart' ),
-				'std'       => '1',
-				'type'      => 'checkbox',
-			),
 		),
 		'css' => array(
 			'custom_styles' => array(

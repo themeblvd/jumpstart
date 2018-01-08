@@ -1568,6 +1568,17 @@ article.tb-naked-page {
 /* =Parts
 ----------------------------------------------- */
 
+/* Mini Post List / Grid */
+.tb-mini-post-grid img,
+.tb-mini-post-grid .placeholder,
+.tb-mini-post-grid .tb-thumb-link .thumb-link-icon,
+.tb-mini-post-list img,
+.tb-mini-post-list .placeholder,
+.tb-mini-post-list .tb-thumb-link .thumb-link-icon,
+.product_list_widget li > a > img {
+	border-radius: 2px;
+}
+
 /* Box Titles */
 .box-title,
 .fixed-sidebar .widget-title,

@@ -984,15 +984,6 @@ textarea {
 	}
 }
 
-/* Mini Post List / Grid */
-.tb-mini-post-grid img,
-.tb-mini-post-grid .placeholder,
-.tb-mini-post-list img,
-.tb-mini-post-list .placeholder,
-.product_list_widget li > a > img {
-	border-radius: 2px;
-}
-
 /* Tooltips */
 .tooltip {
 	font-family: inherit;

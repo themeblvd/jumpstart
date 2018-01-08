@@ -409,26 +409,6 @@ function jumpstart_su_css() {
 
 	}
 
-	// Disable circlular avatars & small thumbs
-	if ( themeblvd_get_option( 'thumbnail_circles' ) ) {
-
-		if ( themeblvd_installed( 'woocommerce' ) && themeblvd_supports( 'plugins', 'woocommerce' ) ) {
-
-			$print .= ".product_list_widget li > a > img,\n";
-
-		}
-
-		$print .= "#comments .comment-body .avatar,\n";
-		$print .= ".tb-author-box .avatar-wrap img,\n";
-		$print .= ".tb-mini-post-grid img,\n";
-		$print .= ".tb-mini-post-grid .placeholder,\n";
-		$print .= ".tb-mini-post-list img,\n";
-		$print .= ".tb-mini-post-list .placeholder {\n";
-		$print .= "\tborder-radius: 100%;\n";
-		$print .= "}\n";
-
-	}
-
 	// Highlight Color
 	$highlight = themeblvd_get_option( 'highlight' );
 
