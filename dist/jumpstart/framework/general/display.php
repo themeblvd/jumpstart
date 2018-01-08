@@ -139,62 +139,6 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 	}
 }
 
-if ( ! function_exists( 'themeblvd_responsive_menu_toggle' ) ) {
-
-	/**
-	 * Display the mobile navigation buttons.
-	 *
-	 * This function is hooked to:
-	 * 1. `themeblvd_header_addon` - 10
-	 *
-	 * @since Theme_Blvd 2.0.0
-	 */
-	function themeblvd_responsive_menu_toggle() {
-
-		if ( ! themeblvd_supports( 'display', 'mobile_panel' ) && ! themeblvd_do_cart() ) {
-
-			return;
-
-		}
-
-		?>
-		<ul class="mobile-nav list-unstyled">
-
-			<?php if ( themeblvd_supports( 'display', 'mobile_panel' ) ) : ?>
-
-				<li>
-					<a href="#" class="btn-navbar tb-nav-trigger">
-						<?php
-						/**
-						 * Filters the HTML output for the "hamburger"
-						 * mobile menu toggle button.
-						 *
-						 * @since Theme_Blvd 2.0.0
-						 *
-						 * @param array Final HTML output.
-						 */
-						echo apply_filters(
-							'themeblvd_btn_navbar_text',
-							'<span class="hamburger"><span class="top"></span><span class="middle"></span><span class="bottom"></span></span>'
-						);
-						?>
-					</a>
-				</li>
-
-			<?php endif; ?>
-
-			<?php if ( themeblvd_do_cart() ) : ?>
-
-				<li><?php themeblvd_mobile_cart_link(); ?></li>
-
-			<?php endif; ?>
-
-		</ul>
-		<?php
-
-	}
-}
-
 if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 
 	/**
@@ -269,52 +213,13 @@ if ( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 	 */
 	function themeblvd_header_logo_default() {
 
-		$logo = themeblvd_get_option( 'logo' );
+		$logo = array();
 
-		if ( $logo ) {
+		if ( themeblvd_config( 'suck_up' ) ) {
 
-			$trans = themeblvd_get_option( 'trans_logo' );
+			$logo = themeblvd_get_option( 'trans_logo' );
 
-			if ( themeblvd_config( 'suck_up' ) && ! empty( $trans['type'] ) ) {
-
-				$logo['class'] = 'logo-standard';
-
-				echo themeblvd_get_logo( $logo );
-
-				if ( $trans['type'] == 'default' ) {
-
-					$trans = $logo;
-
-				}
-
-				$trans['class'] = 'logo-trans';
-
-				echo themeblvd_get_logo( $trans );
-
-			} else {
-
-				$logo['class'] = 'logo-standard';
-
-				echo themeblvd_get_logo( $logo );
-
-			}
 		}
-	}
-}
-
-if ( ! function_exists( 'themeblvd_header_logo_mobile' ) ) {
-
-	/**
-	 * Display the mobile logo.
-	 *
-	 * This function is hooked to:
-	 * 1. `themeblvd_header_logo` - 20
-	 *
-	 * @since Theme_Blvd 2.6.0
-	 */
-	function themeblvd_header_logo_mobile() {
-
-		$logo = themeblvd_get_option( 'mobile_logo' );
 
 		if ( ! $logo || ( ! empty( $logo['type'] ) && 'default' === $logo['type'] ) ) {
 
@@ -324,12 +229,22 @@ if ( ! function_exists( 'themeblvd_header_logo_mobile' ) ) {
 
 		if ( $logo ) {
 
-			$logo['class'] = 'logo-mobile';
+			if ( themeblvd_config( 'suck_up' ) ) {
+
+				$logo['class'] = 'logo-trans';
+
+			} else {
+
+				$logo['class'] = 'logo-standard';
+
+			}
 
 			echo themeblvd_get_logo( $logo );
 
 		}
+
 	}
+
 }
 
 if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
@@ -391,6 +306,96 @@ if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_menu_after' );
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_header' ) ) {
+
+	/**
+	 * Display the mobile header logo.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_before` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_mobile_header() {
+
+		if ( themeblvd_supports( 'display', 'mobile_header' ) ) {
+
+			themeblvd_get_template_part( 'mobile_header' );
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_header_logo' ) ) {
+
+	/**
+	 * Display the mobile header logo.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_mobile_header` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_mobile_header_logo() {
+
+		$logo = themeblvd_get_option( 'mobile_logo' );
+
+		if ( ! $logo || ( ! empty( $logo['type'] ) && 'default' === $logo['type'] ) ) {
+
+			$logo = themeblvd_get_option( 'logo' );
+
+		}
+
+		if ( $logo ) {
+
+			$logo['class'] = 'logo-mobile';
+
+			echo themeblvd_get_logo( $logo );
+
+		}
+	}
+}
+
+if ( ! function_exists( 'themeblvd_mobile_header_menu' ) ) {
+
+	/**
+	 * Display the mobile header menu.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_mobile_header` - 20
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_mobile_header_menu() {
+
+		if ( ! themeblvd_supports( 'display', 'mobile_panel' ) && ! themeblvd_do_cart() ) {
+
+			return;
+
+		}
+
+		?>
+		<ul class="mobile-nav list-unstyled">
+
+			<?php if ( themeblvd_supports( 'display', 'mobile_panel' ) ) : ?>
+
+				<li><?php echo themeblvd_get_menu_toggle( 'tb-nav-trigger btn-navbar' ); ?></li>
+
+			<?php endif; ?>
+
+			<?php if ( themeblvd_do_cart() ) : ?>
+
+				<li><?php themeblvd_mobile_cart_link(); ?></li>
+
+			<?php endif; ?>
+
+		</ul>
+		<?php
 
 	}
 }

@@ -644,6 +644,78 @@ function themeblvd_floating_search_trigger( $args = array() ) {
 }
 
 /**
+ * Get a link to display the mobile panel.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param  array  $args {
+ *     Link arguments.
+ *
+ *     @type string $class CSS classes to add to link, like `foo bar baz`.
+ * }
+ * @return string $output Final HTML output for link.
+ */
+function themeblvd_get_mobile_panel_trigger( $args = array() ) {
+
+	/**
+	 * Filters the default arguments for a link to
+	 * open the mobile panel.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param array {
+	 *     Default link arguments.
+	 *
+	 *     @type string $class CSS classes to add to link, like `foo bar baz`.
+	 * }
+	 */
+	$defaults = apply_filters( 'themeblvd_mobile_panel_trigger_defaults', array(
+		'class' => '',
+	) );
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$class = 'tb-nav-trigger btn-navbar';
+
+	if ( $args['class'] ) {
+
+		$class .= ' ' . $args['class'];
+
+	}
+
+	$output = themeblvd_get_menu_toggle( $class );
+
+	/**
+	 * Filters the final HTML output for a link to
+	 * display the side panel
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string $output Final HTML output of link.
+	 * @param array  $args {
+	 *     Link arguments.
+	 *
+	 *     @type string $class CSS classes to add to link, like `foo bar baz`.
+	 * }
+	 */
+	return apply_filters( 'themeblvd_mobile_panel_trigger', $output, $args );
+
+}
+
+/**
+ * Display a link to open the mobile panel.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param array $args Link arguments, see themeblvd_get_mobile_panel_trigger() docs.
+ */
+function themeblvd_mobile_panel_trigger( $args = array() ) {
+
+	echo themeblvd_get_mobile_panel_trigger( $args );
+
+}
+
+/**
  * Get a link to display the side panel.
  *
  * @since Theme_Blvd 2.6.0
@@ -683,7 +755,7 @@ function themeblvd_get_side_trigger( $args = array() ) {
 
 	}
 
-	$output = themeblvd_get_nav_button( $class );
+	$output = themeblvd_get_menu_toggle( $class );
 
 	/**
 	 * Filters the final HTML output for a link to

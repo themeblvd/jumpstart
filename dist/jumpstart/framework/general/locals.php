@@ -197,7 +197,9 @@ function themeblvd_get_js_locals() {
 	 * w/out having to also remove functions from themeblvd.js.
 	 */
 	if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
+
 		$locals['bootstrap'] = 'true';
+
 	}
 
 	// Add Magnific Popup Lightbox integration.
@@ -269,12 +271,22 @@ function themeblvd_get_js_locals() {
 
 	}
 
+	/**
+	 * Filters the mobile header breakpoint.
+	 *
+	 * This will be the viewport size where the mobile
+	 * header is displayed and desktop header is hidden.
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 *
+	 * @param string|int Viewport size, like `991`.
+	 */
+	$locals['mobile_header_breakpoint'] = apply_filters( 'themeblvd_mobile_header_breakpoint', '991' );
+
 	// Responsive nav menu fixed to the side on mobile.
 	if ( themeblvd_supports( 'display', 'responsive' ) && themeblvd_supports( 'display', 'mobile_panel' ) ) {
 
 		$locals['mobile_panel'] = 'true';
-
-		$locals['mobile_menu_viewport_max'] = '992';
 
 		$location = 'right';
 
@@ -305,7 +317,7 @@ function themeblvd_get_js_locals() {
 
 		$locals['sticky_offset'] = apply_filters( 'themeblvd_sticky_offset', '48' );
 
-		$locals['sticky_logo'] = apply_filters( 'themeblvd_sticky_logo_uri', '' ); // Optional override, so theme's header logo isn't used
+		$locals['sticky_logo'] = apply_filters( 'themeblvd_sticky_logo_uri', '' ); // Optional override, so theme's header logo isn't used.
 
 	}
 

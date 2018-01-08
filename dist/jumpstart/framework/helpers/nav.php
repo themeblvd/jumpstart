@@ -775,7 +775,7 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
  * @param  string|array $class  CSS class added to button.
  * @return string       $output Final HTML output.
  */
-function themeblvd_get_nav_button( $class = '' ) {
+function themeblvd_get_menu_toggle( $class = '' ) {
 
 	$output = '';
 
@@ -785,17 +785,29 @@ function themeblvd_get_nav_button( $class = '' ) {
 
 	}
 
+	$text = "\t<span class=\"hamburger\">\n";
+
+	$text .= "\t\t<span class=\"top\"></span>\n";
+
+	$text .= "\t\t<span class=\"middle\"></span>\n";
+
+	$text .= "\t\t<span class=\"bottom\"></span>\n";
+
+	$text .= "\t</span>\n";
+
+	/**
+	 * Filters the HTML output for the "hamburger"
+	 * mobile menu toggle button.
+	 *
+	 * @since Theme_Blvd 2.0.0
+	 *
+	 * @param array Final HTML output.
+	 */
+	$text = apply_filters( 'themeblvd_btn_navbar_text', $text );
+
 	$output .= sprintf( "<a href=\"#\" class=\"%s\">\n", $class );
 
-	$output .= "\t<span class=\"hamburger\">\n";
-
-	$output .= "\t\t<span class=\"top\"></span>\n";
-
-	$output .= "\t\t<span class=\"middle\"></span>\n";
-
-	$output .= "\t\t<span class=\"bottom\"></span>\n";
-
-	$output .= "\t</span>\n";
+	$output .= $text;
 
 	$output .= "</a>\n";
 

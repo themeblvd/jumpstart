@@ -31,7 +31,7 @@ Jump Start Changelog
 	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
 	* All template part files moved from the theme root to a `template-parts` directory.
-	* New template parts added, `content-head.php`, `content-header.php`, `content-footer.php`, `content-panel.php` and `content-mobile-panel.php`.
+	* New template parts added, `content-head.php`, `content-header.php`, `content-mobile-header.php`, `content-footer.php`, `content-panel.php` and `content-mobile-panel.php`.
 	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
@@ -49,6 +49,9 @@ Jump Start Changelog
 	* Added improved script and stylesheet debugging by setting WordPress's `SCRIPT_DEBUG` constants to `true`.
 	* Added `alt` tags to parallax background image HTML output from the layout builder; you must re-insert and save your background image for the `alt` tags to start outputting.
 	* Removed overly complex stylesheet API; all framework CSS files now enqueued through simple, pluggable function `themeblvd_include_styles()`.
+	* Removed the function `themeblvd_responsive_menu_toggle()`; use function `themeblvd_mobile_panel_trigger()` instead.
+	* Removed old html5shiv for HTML5 compatibility with IE8.
+	* Removed `themeblvd_featured_*` action hooks, which were deprecated in framework 2.5.
 	* Optimized (minified) CSS file included on frontend for each theme base.
 * New: [FontAwesome 5](https://fontawesome.com) Implementation.
 	* More modern implementation of icons through JavaScript.
@@ -71,6 +74,7 @@ Jump Start Changelog
 * New: Added a new feature for displaying a banner across post archives; see *Appearance > Theme Options > Content > Archives > Apply banner to post archives*.
 * New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header*.
 * New: Added option for mobile header navigational icon color at *Appearance > Theme Options > Styles > Mobile Header*.
+* New: Added option for mobile header breakpoint at *Appearance > Theme Options > Styles > Mobile Header*.
 * New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
 * New: Added support for applying background shade to individual columns in the layout builder.
 * New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
@@ -104,9 +108,7 @@ Jump Start Changelog
 * Removed: No more "Background Color Brightness" option at *Appearance > Theme Options > Styles > Mobile Header*; use new "Icon Color" option instead.
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
-* Removed: No more html5shiv for HTML5 compatibility with IE8.
 * Removed: No more "Dark" site-wide content style.
-* Removed: The long-time deprecated "featured" areas (as of framework 2.5), using `themeblvd_featured_*` action hooks have been completely removed.
 * Updated: FontAwesome to 5.0.1.
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.

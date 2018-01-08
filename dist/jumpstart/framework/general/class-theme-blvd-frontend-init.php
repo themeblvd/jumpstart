@@ -139,6 +139,7 @@ class Theme_Blvd_Frontend_Init {
 			// Set header template parts.
 			'head'               => 'head',          // content-head.php
 			'header'             => 'header',        // content-header.php
+			'mobile_header'      => 'mobile-header', // content-mobile-header.php
 
 			// Set footer template parts.
 			'footer'             => 'footer',        // content-footer.php

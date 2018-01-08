@@ -1,4 +1,3 @@
-/* Generated with CSSJanus */
 /**
  * Table of Contents:
  *
@@ -29,193 +28,195 @@
  * 6.0 - Header
  *   6.1 - Text Logo
  *   6.2 - Suck layout up into header
- *   6.3 - Sticky Menu
- * 7.0 - Primary Navigation
- *   7.1 - Standard
- *   7.2 - Mega Menu Dropdown
- *   7.3 - Frontend menu warning
- * 8.0 - Secondary Navigation
- *   8.1 - Setup
- *   8.2 - All levels
- *   8.3 - Level 1
- *   8.4 - Levels 2-3
- *   8.5 - Responsive
- * 9.0 - Side Navigation
- *   9.1 - General
- *   9.2 - Level 1
- *   9.4 - Level 2
- *   9.5 - Level 2+
- *   9.6 - Level 3+
- *   9.7 - Toggle button (hidden by default)
- * 10.0 - Responsive Elements
- *   10.1 - Responsive visiblity classes
- *   10.2 - iOS Zoom Bug fix
- *   10.3 - Menu Toggle
- *   10.4 - Side Panel Container
- *   10.5 - Mobile Menu Container
- *   10.6 - Mobile Menu (override .tb-side-menu)
- *   10.7 - Videos (oEmbed)
- *   10.8 - Self-hosted video embed
- *   10.9 - WP Post Embed
- *   10.10 - Background Utilities
- *   10.11 - Padding Utilities
- * 11.0 - Plugins
- *   11.1 - FlexSlider
- *   11.2 - Subtitles
- * 12.0 - Sliders
- *   12.1 - Block Slider
- *   12.2 - Hero Unit Slider (formerly Jumbotron Slider)
- *   12.3 - Common slider arrows
- *   12.4 - Showcase Slider
- * 13.0 - Social Icons
- *   13.1 - Contact Bar
- *   13.2 - Color (flat) Social Icons
- *   13.3 - Color (image) Social Icons
- * 14.0 - Forms
- *   14.1 - General
- *   14.2 - Form Buttons
- * 15.0 - Buttons
- *   15.1 - All Colors
- *   15.2 - Black
- *   15.3 - Blue
- *   15.4 - Brown
- *   15.5 - Dark Blue
- *   15.6 - Dark Brown
- *   15.7 - Dark Green
- *   15.8 - Green
- *   15.9 - Orange
- *   15.10 - Pearl
- *   15.11 - Pink
- *   15.12 - Purple
- *   15.13 - Red
- *   15.14 - Royal Blue
- *   15.15 - Slate Grey
- *   15.15 - Silver
- *   15.17 - Steel Blue
- *   15.18 - Teal
- *   15.19 - Yellow
- *   15.20 - Wheat
- * 16.0 - Textures
- * 17.0 - Shortcodes
- *   17.1 - Buttons
- *   17.2 - Icon List
- *   17.3 - Icon Link
- *   17.4 - Text Highlighting
- *   17.5 - Drop Caps
- *   17.6 - Popup
- * 18.0 - Widgets
- *   18.1 - Widgets w/lists
- *   18.2 - Widgets w/menu tree
- *   18.3 - WP Text Widget
- *   18.4 - WP RSS Widget
- *   18.5 - WP Tag Cloud
- *   18.6 - WP Calendar Widget
- *   18.7 - WP Recent Posts Widget
- *   18.8 - Twitter Widget
- *   18.9 - Simple Contact
- * 19.0 - Lightbox
- *   19.1 - Basic inline popup styling
- *   19.2 - MPF close button
- *   19.3 - Next/Prev
- *   19.4 - Bottom bar for iframe popups in a gallery
- *   19.5 - General iframe animation fix
- *   19.6 - Fade animation
- * 20.0 - Parallax background
- * 21.0 - Custom Layouts
- *   21.1 - Stray Elements
- *   21.2 - Sections
- *   21.3 - Elements
- *   21.4 - BG shade
- *   21.5 - Section BG slideshow
- *   21.6 - Section BG video
- *   21.7 - Columns
- *   21.8 - Animations
- * 22.0 - Content (content.php)
- *   22.1 - Content (direct input)
- *   22.2 - Headline
- *   22.3 - Quote
- * 23.0 - Media (media.php)
- *   23.1 - Image
- *   23.2 - Video
- *   23.3 - Simple Slider
- *   23.4 - BG Slideshow/Jumbotron Slider Fade
- *   23.5 - BG Video
- *   23.6 - BG Video - Self-Hosted HTML5
- *   23.7 - BG Video - Youtube / Vimeo
- *   23.8 - Gallery Carousel
- *   23.9 - Epic Thumbnails
- * 24.0 - Post Display (loop.php)
- *   24.1 - Post List
- *   24.2 - Post Grid
- *   24.3 - Post Showcase
- *   24.4 - Post Slider (inherits from .tb-simple-slider)
- *   24.5 - Mini Post List
- *   24.6 - Mini Post Grid
- *   24.7 - Small Post List
- *   24.8 - Small Post Grid
- *   24.9 - Search Results
- *   24.10 - Posts using isotope
- * 25.0 - Components (components.php)
- *   25.1 - Alert
- *   25.2 - Divider
- *   25.3 - Google Maps
- *   25.4 - Icon Box
- *   25.5 - Jumbotron
- *   25.6 - Panel
- *   25.7 - Partner Logos (inherits from tb-block-slider)
- *   25.8 - Pricing Tables
- *   25.9 - Promo Box (slogan)
- *   25.10 - Tabs
- *   25.11 - Team Member
- *   25.12 - Testimonial
- *   25.13 - Testimonial Slider
- *   25.14 - Toggles
- * 26.0 - Parts (parts.php)
- *   26.1 - Breadcrumbs
- *   26.2 - Contact
- *   26.3 - Search Form (also searchform.php)
- *   26.4 - Mini Search
- *   26.5 - Floating Search
- *   26.6 - Contact Popover
- *   26.7 - Loader
- *   26.8 - Tags
- *   26.9 - Share Icons
- *   26.10 - Scroll-to-Top Button
- *   26.11 - Scroll-to-Section Button
- *   26.12 - Info Boxes
- *   26.13 - Author Box (inherits from info box)
- *   26.14 - Related Posts
- *   26.15 - Inline Menu
- *   26.16 - Date Block
- *   26.17 - Text Blocks (used in jumbotron)
- * 27.0 - Charts and Graphs (stats.php)
- *   27.1 - Charts
- *   27.2 - Milestone
- *   27.3 - Milestone Ring
- *   27.4 - Progress Bars
- * 28.0 - Pages
- *   28.1 - Blank Page
- *   28.2 - Search Results
- * 29.0 - Tweeple
- *   29.1 - General
- *   29.2 - "Tweet" Builder Element
- * 30.0 - WPML Bridge
- *   30.1 - Flag List
- *   30.2 - Header menu addon
- *   30.3 - Breadcrumbs
- * 31.0 - Dark Text Color
- *   31.1 - Typography
- *   31.2 - Captions
- *   31.3 - Forms
- *   31.4 - Form Buttons
- * 32.0 - Light Text Color
- *   32.1 - Typography
- *   32.2 - Breadcrumbs
- *   32.3 - Block Slider Nav
- *   32.4 - Captions
- *   32.5 - Forms
- *   32.6 - Form Buttons
- * 33.0 - Primary Color
+ * 7.0 - Mobile Header
+ * 8.0 - Sticky Header
+ * 9.0 - Primary Navigation
+ *   9.1 - Standard
+ *   9.2 - Mega Menu Dropdown
+ *   9.3 - Frontend menu warning
+ * 10.0 - Secondary Navigation
+ *   10.1 - Setup
+ *   10.2 - All levels
+ *   10.3 - Level 1
+ *   10.4 - Levels 2-3
+ *   10.5 - Responsive
+ * 11.0 - Side Navigation
+ *   11.1 - General
+ *   11.2 - Level 1
+ *   11.4 - Level 2
+ *   11.5 - Level 2+
+ *   11.6 - Level 3+
+ *   11.7 - Toggle button (hidden by default)
+ * 12.0 - Responsive Elements
+ *   12.1 - Responsive visiblity classes
+ *   12.2 - iOS Zoom Bug fix
+ *   12.3 - Menu Toggle
+ *   12.4 - Side Panel Container
+ *   12.5 - Mobile Panel Container
+ *   12.6 - Mobile Panel Content
+ *   12.7 - Mobile Menu (override .tb-side-menu)
+ *   12.8 - Videos (oEmbed)
+ *   12.9 - Self-hosted video embed
+ *   12.10 - WP Post Embed
+ *   12.11 - Background Utilities
+ *   12.12 - Padding Utilities
+ * 13.0 - Plugins
+ *   13.1 - FlexSlider
+ *   13.2 - Subtitles
+ * 14.0 - Sliders
+ *   14.1 - Block Slider
+ *   14.2 - Hero Unit Slider (formerly Jumbotron Slider)
+ *   14.3 - Common slider arrows
+ *   14.4 - Showcase Slider
+ * 15.0 - Social Icons
+ *   15.1 - Contact Bar
+ *   15.2 - Color (flat) Social Icons
+ *   15.3 - Color (image) Social Icons
+ * 16.0 - Forms
+ *   16.1 - General
+ *   16.2 - Form Buttons
+ * 17.0 - Buttons
+ *   17.1 - All Colors
+ *   17.2 - Black
+ *   17.3 - Blue
+ *   17.4 - Brown
+ *   17.5 - Dark Blue
+ *   17.6 - Dark Brown
+ *   17.7 - Dark Green
+ *   17.8 - Green
+ *   17.9 - Orange
+ *   17.10 - Pearl
+ *   17.11 - Pink
+ *   17.12 - Purple
+ *   17.13 - Red
+ *   17.14 - Royal Blue
+ *   17.15 - Slate Grey
+ *   17.15 - Silver
+ *   17.17 - Steel Blue
+ *   17.18 - Teal
+ *   17.19 - Yellow
+ *   17.20 - Wheat
+ * 18.0 - Textures
+ * 19.0 - Shortcodes
+ *   19.1 - Buttons
+ *   19.2 - Icon List
+ *   19.3 - Icon Link
+ *   19.4 - Text Highlighting
+ *   19.5 - Drop Caps
+ *   19.6 - Popup
+ * 20.0 - Widgets
+ *   20.1 - Widgets w/lists
+ *   20.2 - Widgets w/menu tree
+ *   20.3 - WP Text Widget
+ *   20.4 - WP RSS Widget
+ *   20.5 - WP Tag Cloud
+ *   20.6 - WP Calendar Widget
+ *   20.7 - WP Recent Posts Widget
+ *   20.8 - Twitter Widget
+ *   20.9 - Simple Contact
+ * 21.0 - Lightbox
+ *   21.1 - Basic inline popup styling
+ *   21.2 - MPF close button
+ *   21.3 - Next/Prev
+ *   21.4 - Bottom bar for iframe popups in a gallery
+ *   21.5 - General iframe animation fix
+ *   21.6 - Fade animation
+ * 22.0 - Parallax background
+ * 23.0 - Custom Layouts
+ *   23.1 - Stray Elements
+ *   23.2 - Sections
+ *   23.3 - Elements
+ *   23.4 - BG shade
+ *   23.5 - Section BG slideshow
+ *   23.6 - Section BG video
+ *   23.7 - Columns
+ *   23.8 - Animations
+ * 24.0 - Content (content.php)
+ *   24.1 - Content (direct input)
+ *   24.2 - Headline
+ *   24.3 - Quote
+ * 25.0 - Media (media.php)
+ *   25.1 - Image
+ *   25.2 - Video
+ *   25.3 - Simple Slider
+ *   25.4 - BG Slideshow/Jumbotron Slider Fade
+ *   25.5 - BG Video
+ *   25.6 - BG Video - Self-Hosted HTML5
+ *   25.7 - BG Video - Youtube / Vimeo
+ *   25.8 - Gallery Carousel
+ *   25.9 - Epic Thumbnails
+ * 26.0 - Post Display (loop.php)
+ *   26.1 - Post List
+ *   26.2 - Post Grid
+ *   26.3 - Post Showcase
+ *   26.4 - Post Slider (inherits from .tb-simple-slider)
+ *   26.5 - Mini Post List
+ *   26.6 - Mini Post Grid
+ *   26.7 - Small Post List
+ *   26.8 - Small Post Grid
+ *   26.9 - Search Results
+ *   26.10 - Posts using isotope
+ * 27.0 - Components (components.php)
+ *   27.1 - Alert
+ *   27.2 - Divider
+ *   27.3 - Google Maps
+ *   27.4 - Icon Box
+ *   27.5 - Jumbotron
+ *   27.6 - Panel
+ *   27.7 - Partner Logos (inherits from tb-block-slider)
+ *   27.8 - Pricing Tables
+ *   27.9 - Promo Box (slogan)
+ *   27.10 - Tabs
+ *   27.11 - Team Member
+ *   27.12 - Testimonial
+ *   27.13 - Testimonial Slider
+ *   27.14 - Toggles
+ * 28.0 - Parts (parts.php)
+ *   28.1 - Breadcrumbs
+ *   28.2 - Contact
+ *   28.3 - Search Form (also searchform.php)
+ *   28.4 - Mini Search
+ *   28.5 - Floating Search
+ *   28.6 - Contact Popover
+ *   28.7 - Loader
+ *   28.8 - Tags
+ *   28.9 - Share Icons
+ *   28.10 - Scroll-to-Top Button
+ *   28.11 - Scroll-to-Section Button
+ *   28.12 - Info Boxes
+ *   28.13 - Author Box (inherits from info box)
+ *   28.14 - Related Posts
+ *   28.15 - Inline Menu
+ *   28.16 - Date Block
+ *   28.17 - Text Blocks (used in jumbotron)
+ * 29.0 - Charts and Graphs (stats.php)
+ *   29.1 - Charts
+ *   29.2 - Milestone
+ *   29.3 - Milestone Ring
+ *   29.4 - Progress Bars
+ * 30.0 - Pages
+ *   30.1 - Blank Page
+ *   30.2 - Search Results
+ * 31.0 - Tweeple
+ *   31.1 - General
+ *   31.2 - "Tweet" Builder Element
+ * 32.0 - WPML Bridge
+ *   32.1 - Flag List
+ *   32.2 - Header menu addon
+ *   32.3 - Breadcrumbs
+ * 33.0 - Dark Text Color
+ *   33.1 - Typography
+ *   33.2 - Captions
+ *   33.3 - Forms
+ *   33.4 - Form Buttons
+ * 34.0 - Light Text Color
+ *   34.1 - Typography
+ *   34.2 - Breadcrumbs
+ *   34.3 - Block Slider Nav
+ *   34.4 - Captions
+ *   34.5 - Forms
+ *   34.6 - Form Buttons
+ * 35.0 - Primary Color
 ----------------------------------------------- */
 
 /* =Bootstrap Mods
@@ -771,6 +772,13 @@ img.size-full {
 /* =Header
 -----------------------------------------------*/
 
+#top {
+	display: none;
+}
+.mobile-header-off #top {
+	display: block;
+}
+
 /* Text Logo */
 .header-text-logo {
 	padding: 10px 0;
@@ -787,30 +795,17 @@ img.size-full {
 	font-size: 13px;
 	line-height: 1.2;
 }
-.site-header .logo-mobile,
-.site-header .logo-trans,
-.site-header .social-trans {
-	display: none;
-}
-@media (max-width: 991px) {
-	.site-header .logo-standard {
-		display: none;
-	}
-	.site-header .logo-mobile {
-		display: block;
-	}
-}
 .site-header.transparent > .wrap,
 .site-header.transparent > .wrap .tb-text-logo {
 	color: #ffffff;
 }
 .site-header.transparent > .wrap .header-logo .tb-text-logo,
-.site-header.transparent > .wrap.header-logo .tagline {
+.site-header.transparent > .wrap .header-logo .tagline {
 	text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
 /* Suck layout up into header */
-@media (min-width: 992px) {
+@media (min-width: 992px) { /* @TODO Will use .mobile-header-off */
 	body.tb-suck-up #container {
 		position: relative;
 	}
@@ -845,7 +840,19 @@ img.size-full {
 	padding: 0 10px;
 }
 
-/* Sticky Menu */
+/* =Mobile Header
+-----------------------------------------------*/
+
+.tb-mobile-header {
+	display: none;
+}
+.mobile-header-on .tb-mobile-header {
+	display: block;
+}
+
+/* =Sticky Header
+-----------------------------------------------*/
+
 .tb-sticky-menu {
 	background: rgba(255,255,255,0.9);
 	color: #333333;
@@ -1466,97 +1473,99 @@ html {
 .tb-side-panel {
 	display: none;
 }
-@media (min-width: 992px) {
-	.has-side-panel .tb-side-panel {
-		display: block;
-		padding: 0;
-		overflow: auto;
-		position: fixed;
-		top: 0;
-		left: -280px;
-		bottom: 0;
-		width: 280px;
-	}
-	.has-side-panel .tb-side-panel,
-	.has-side-panel #wrapper {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-		-webkit-transition: transform .2s ease-out;
-		transition: transform .2s ease-out;
-	}
-	.has-side-panel.side-panel-on .tb-side-panel,
-	.has-side-panel.side-panel-on #wrapper {
-		-webkit-transform: translate3d(280px, 0, 0);
-		transform: translate3d(280px, 0, 0);
-	}
+.has-side-panel.mobile-header-off .tb-side-panel {
+	display: block;
+	padding: 0;
+	overflow: auto;
+	position: fixed;
+	top: 0;
+	left: -280px;
+	bottom: 0;
+	width: 280px;
+}
+.has-side-panel.mobile-header-off .tb-side-panel,
+.has-side-panel.mobile-header-off #wrapper {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: transform .2s ease-out;
+	transition: transform .2s ease-out;
+}
+.has-side-panel.mobile-header-off.side-panel-on .tb-side-panel,
+.has-side-panel.mobile-header-off.side-panel-on #wrapper {
+	-webkit-transform: translate3d(280px, 0, 0);
+	transform: translate3d(280px, 0, 0);
 }
 
-/* Mobile Menu Container */
+/* Mobile Panel Container */
 .tb-mobile-panel {
 	display: none;
 }
-@media (max-width: 991px) {
-	body.mobile-menu-right-on,
-	body.mobile-menu-left-on {
-		overflow: hidden;
-	}
-	.tb-mobile-panel {
-		border: 0;
-		border-radius: 0;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-		display: block;
-		margin: 0 !important;
-		padding: 0;
-		overflow: auto !important;
-		position: fixed !important;
-		top: 0;
-		bottom: 0;
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-		-webkit-transition: transform .2s ease-out;
-		transition: transform .2s ease-out;
-		width: 280px;
-		z-index: 200;
-	}
-	/* @noflip */
-	.tb-mobile-panel.right {
-		right: -280px;
-	}
-	/* @noflip */
-	.tb-mobile-panel.left {
-		left: -280px;
-	}
-	/* @noflip */
-	body.mobile-menu-right-on .tb-mobile-panel {
-		-webkit-transform: translate3d(-280px, 0, 0);
-		transform: translate3d(-280px, 0, 0);
-	}
-	/* @noflip */
-	body.mobile-menu-left-on .tb-mobile-panel {
-		-webkit-transform: translate3d(280px, 0, 0);
-		transform: translate3d(280px, 0, 0);
-	}
-	body.mobile-menu-right-off #wrapper,
-	body.mobile-menu-left-off #wrapper,
-	body.mobile-menu-right-on #wrapper,
-	body.mobile-menu-left-on #wrapper {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-		-webkit-transition: transform .2s ease-out;
-		transition: transform .2s ease-out;
-	}
-	/* @noflip */
-	body.mobile-menu-right-on #wrapper {
-		-webkit-transform: translate3d(-280px, 0, 0);
-		transform: translate3d(-280px, 0, 0);
-	}
-	/* @noflip */
-	body.mobile-menu-left-on #wrapper {
-		-webkit-transform: translate3d(280px, 0, 0);
-		transform: translate3d(280px, 0, 0);
-	}
+.mobile-header-on .tb-mobile-panel {
+	display: block;
 }
+.mobile-menu-right-on.mobile-header-on,
+.mobile-menu-left-on.mobile-header-on {
+	overflow: hidden;
+}
+.tb-mobile-panel {
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: transform .2s ease-out;
+	transition: transform .2s ease-out;
+	width: 280px;
+	z-index: 200;
+}
+/* @noflip */
+.tb-mobile-panel.right {
+	right: -280px;
+}
+/* @noflip */
+.tb-mobile-panel.left {
+	left: -280px;
+}
+/* @noflip */
+.mobile-menu-right-on.mobile-header-on .tb-mobile-panel {
+	-webkit-transform: translate3d(-280px, 0, 0);
+	transform: translate3d(-280px, 0, 0);
+}
+/* @noflip */
+.mobile-menu-left-on.mobile-header-on .tb-mobile-panel {
+	-webkit-transform: translate3d(280px, 0, 0);
+	transform: translate3d(280px, 0, 0);
+}
+.mobile-menu-right-off.mobile-header-on #wrapper,
+.mobile-menu-left-off.mobile-header-on #wrapper,
+.mobile-menu-right-on.mobile-header-on #wrapper,
+.mobile-menu-left-on.mobile-header-on #wrapper,
+.mobile-menu-right-off.mobile-header-on .tb-mobile-header,
+.mobile-menu-left-off.mobile-header-on .tb-mobile-header,
+.mobile-menu-right-on.mobile-header-on .tb-mobile-header,
+.mobile-menu-left-on.mobile-header-on .tb-mobile-header {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: transform .2s ease-out;
+	transition: transform .2s ease-out;
+}
+/* @noflip */
+.mobile-menu-right-on.mobile-header-on #wrapper,
+.mobile-menu-right-on.mobile-header-on .tb-mobile-header {
+	-webkit-transform: translate3d(-280px, 0, 0);
+	transform: translate3d(-280px, 0, 0);
+}
+/* @noflip */
+.mobile-menu-left-on.mobile-header-on #wrapper,
+.mobile-menu-left-on.mobile-header-on .tb-mobile-header {
+	-webkit-transform: translate3d(280px, 0, 0);
+	transform: translate3d(280px, 0, 0);
+}
+
+/* Mobile Panel Content */
 .tb-mobile-panel .panel-item {
 	margin: 20px 0;
 }

@@ -1,9 +1,8 @@
-/* Generated with CSSJanus */
 /**
  * Table of Contents:
  *
  * 1.0 - Primary Structure
- * 2.0 - Top
+ * 2.0 - Header
  *   2.1 - Header Top
  *   2.2 - Header Content
  *   2.3 - Primary Navigation
@@ -14,54 +13,55 @@
  *   2.8 - Mobile Panel
  *   2.9 - Transparent Header
  *   2.10 - Menu Highlight
- * 3.0 - Main
- *   3.1 - Breadcrumbs
- * 4.0 - Bottom
- * 5.0 - Content
- *   5.1 - Typography
- *   5.2 - Content Background
- *   5.2 - Posts
- *   5.4 - Pages
- *   5.5 - Titles
- *   5.6 - Meta
- *   5.7 - Sub Meta
- *   5.8 - Post Formats
- *   5.9 - Related Posts/Products
- *   5.10 - Edit Link
- *   5.11 - Popout Media
- *   5.12 - Captions
- *   5.13 - Galleries
- *   5.14 - Video
- * 6.0 - Comments
- *   6.1 - Comment List
- *   6.2 - Admin Comment
- *   6.3 - Children
- *   6.4 - Mobile Comments
- *   6.5 - Comment Form
- *   6.6 - Comment Form (in reply)
- * 7.0 - Archives
- *   7.1 - Archive Info and Author Box
- *   7.2 - Search Results
- *   7.3 - Posts Wrap
- * 8.0 - Page Templates
- *   8.1 - Post List
- *   8.2 - Post Grid
- *   8.3 - Post Showcase
- *   8.4 - Blank Page
- *   8.5 - Custom Layout
- * 9.0 - Parts
- *   9.1 - Mini Post List/Grid
- *   9.2 - Box Titles
- *   9.3 - Tooltips
- *   9.4 - Popover
- * 10.0 - Widgets
- *   10.1 - General
- *   10.2 - Collapsible
- *   10.3 - Fixed Sidebars
- *   10.4 - Footer
- *   10.5 - List Widgets
- *   10.6 - Search Widget
- * 11.0 - Printing
+ * 3.0 - Mobile Header
+ * 4.0 - Breadcrumbs
+ * 5.0 - Main
+ * 6.0 - Footer
+ * 7.0 - Content
+ *   7.1 - Typography
+ *   7.2 - Content Background
+ *   7.2 - Posts
+ *   7.4 - Pages
+ *   7.5 - Titles
+ *   7.6 - Meta
+ *   7.7 - Sub Meta
+ *   7.8 - Post Formats
+ *   7.9 - Related Posts/Products
+ *   7.10 - Edit Link
+ *   7.11 - Popout Media
+ *   7.12 - Captions
+ *   7.13 - Galleries
+ *   7.14 - Video
+ * 8.0 - Comments
+ *   8.1 - Comment List
+ *   8.2 - Admin Comment
+ *   8.3 - Children
+ *   8.4 - Mobile Comments
+ *   8.5 - Comment Form
+ *   8.6 - Comment Form (in reply)
+ * 9.0 - Archives
+ *   9.1 - Archive Info and Author Box
+ *   9.2 - Search Results
+ *   9.3 - Posts Wrap
+ * 10.0 - Page Templates
+ *   10.1 - Post List
+ *   10.2 - Post Grid
+ *   10.3 - Post Showcase
+ *   10.4 - Blank Page
+ *   10.5 - Custom Layout
+ * 11.0 - Parts
+ *   11.1 - Mini Post List/Grid
+ *   11.2 - Box Titles
+ *   11.3 - Tooltips
+ *   11.4 - Popover
+ * 12.0 - Widgets
+ *   12.1 - General
+ *   12.2 - Collapsible
+ *   12.3 - Fixed Sidebars
+ *   12.4 - Footer
+ *   12.5 - List Widgets
+ *   12.6 - Search Widget
+ * 13.0 - Printing
  ----------------------------------------------- */
 
 /* =Primary Structure
@@ -75,6 +75,7 @@ body {
 .header-top > .wrap,
 .header-content > .wrap,
 .header-nav > .wrap,
+.tb-mobile-header > .wrap,
 .tb-sticky-menu > .wrap,
 .site-breadcrumbs > .wrap,
 .site-inner > .wrap,
@@ -102,6 +103,7 @@ body {
 	.header-top > .wrap,
 	.header-content > .wrap,
 	.header-nav > .wrap,
+	.tb-mobile-header > .wrap,
 	.tb-sticky-menu > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
@@ -123,8 +125,9 @@ body {
 	.widgets-above-header > .wrap,
 	.widgets-below-footer > .wrap,
 	.header-top > .wrap,
+	.header-above > .wrap,
 	.header-content > .wrap,
-	.header-nav > .wrap,
+	.tb-mobile-header > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -144,6 +147,7 @@ body {
 	.widgets-below-footer > .wrap,
 	.header-content > .wrap,
 	.header-nav > .wrap,
+	.tb-mobile-header > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -173,17 +177,12 @@ body {
 	}
 }
 
-/* =Top
+/* =Header
 ----------------------------------------------- */
 
 .site-header {
 	background: #f5f5f5;
 	position: relative;
-}
-@media (max-width: 991px) {
-	.site-header {
-		background: #333333;
-	}
 }
 
 /* Header Top */
@@ -195,11 +194,6 @@ body {
 .header-top-mini .header-top {
 	font-size: 12px;
 }
-@media (max-width: 991px) {
-	.header-top {
-		display: none;
-	}
-}
 .header-top > .wrap {
 	padding: 12px 10px;
 }
@@ -208,7 +202,7 @@ body {
 }
 .header-text {
 	float: right;
-	line-height: 24px; /* Match height of social icons */
+	line-height: 24px; /* Match height of social icons. */
 }
 .header-top-mini .header-text {
 	line-height: 20px;
@@ -299,129 +293,16 @@ body {
 	position: relative;
 	z-index: 2;
 }
-@media (max-width: 991px) {
-	.header-content > .wrap {
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		-ms-flex-align: center;
-		align-items: center;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-pack: justify;
-		-webkit-justify-content: space-between;
-		-ms-flex-pack: justify;
-		height: 64px;
-		justify-content: space-between;
-	}
-}
-@media (max-width: 767px) {
-	.header-content > .wrap {
-		padding: 0 20px;
-	}
-}
-.header-logo {
+.header-content .header-logo {
 	float: right;
 }
-.header-logo a {
+.header-content .header-logo a {
 	display: block;
-}
-@media (max-width: 991px) {
-	.header-logo {
-		float: none;
-		margin: 0 0 0 auto;
-		padding: 0;
-	}
-	.header-logo img {
-		max-height: 64px;
-    	width: auto;
-	}
-}
-@media (max-width: 991px) {
-	.header-text-logo .tb-text-logo {
-		color: #ffffff;
-		font-size: 16px;
-	}
-	.header-text-logo .tagline {
-		display: none;
-	}
-}
-.mobile-nav {
-	margin: 0 auto 0 0;
-}
-.mobile-nav > li {
-	float: left;
-	margin-left: 5px;
-	padding: 0;
-}
-.mobile-nav > li > a {
-	color: rgba(255,255,255,.8);
-	display: block;
-	font-size: 20px;
-	line-height: 40px; /* Min header height allowed by mobile header height options. */
-	padding: 0 18px;
-}
-.mobile-nav > li > a:hover {
-	color: #ffffff;
-}
-.mobile-nav > li > a .svg-inline--fa {
-	width: 22px;
-}
-.mobile-nav .tb-nav-trigger {
-	padding-top: 13px;
-	padding-bottom: 13px;
-}
-.tb-nav-trigger .hamburger span {
-    background-color: rgba(26,26,26,.7);
-}
-.tb-nav-trigger:hover .hamburger span {
-    background-color: rgba(26,26,26,.9);
-}
-@media (max-width: 991px) {
-	.tb-nav-trigger .hamburger span {
-	    background-color: rgba(255,255,255,.8);
-	}
-	.tb-nav-trigger:hover .hamburger span {
-	    background-color: #ffffff;
-	}
-}
-.mobile-nav .cart {
-	position: relative;
-}
-.mobile-nav .cart .cart-count {
-	background: rgba(255,255,255,.1);
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
-	display: inline-block;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 8px;
-	font-weight: 700;
-	height: 16px;
-	line-height: 16px;
-	margin: 2px 0px 0 2px;
-	min-width: 16px;
-	padding: 0 4px;
-	position: absolute;
-	top: 50%;
-	right: 50%;
-	text-align: center;
 }
 
 /* Primary Navigation */
 .header-nav {
 	background: #333333;
-}
-.mobile-nav {
-	display: none;
-}
-@media (max-width: 991px) {
-	.header-nav {
-		display: none;
-	}
-	.mobile-nav {
-		display: block;
-	}
 }
 .tb-primary-menu .menu-btn {
 	display: block;
@@ -781,6 +662,108 @@ body {
 	padding: 6px 8px;
 }
 
+/* =Mobile Header
+----------------------------------------------- */
+
+.tb-mobile-header {
+	background: #222222;
+}
+.tb-mobile-header > .wrap {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	height: 64px;
+	justify-content: space-between;
+	padding: 20px 10px;
+}
+@media (max-width: 767px) {
+	.tb-mobile-header > .wrap {
+		padding: 0 20px;
+	}
+}
+
+/* Logo */
+.tb-mobile-header .header-logo {
+	margin: 0 0 0 auto;
+}
+.tb-mobile-header .header-logo img {
+	max-height: 64px;
+	width: auto;
+}
+.tb-mobile-header .header-text-logo .tb-text-logo {
+	color: #ffffff;
+	font-size: 16px;
+}
+.tb-mobile-header .header-text-logo .tagline {
+	display: none;
+}
+
+/* Navigation */
+.mobile-nav {
+	margin: 0 auto 0 0;
+}
+.mobile-nav > li {
+	float: left;
+	margin-left: 5px;
+	padding: 0;
+}
+.mobile-nav > li > a {
+	color: rgba(255,255,255,.8);
+	display: block;
+	font-size: 20px;
+	line-height: 40px; /* Min header height allowed by mobile header height options. */
+	padding: 0 18px;
+}
+.mobile-nav > li > a:hover {
+	color: #ffffff;
+}
+.mobile-nav > li > a .svg-inline--fa {
+	width: 22px;
+}
+
+/* Navigation: Menu Toggle */
+.tb-nav-trigger {
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+.tb-nav-trigger .hamburger span {
+	background-color: rgba(255,255,255,.8);
+}
+.tb-nav-trigger:hover .hamburger span {
+	background-color: #ffffff;
+}
+
+/* Navigation: Shopping Cart */
+.mobile-nav .cart {
+	position: relative;
+}
+.mobile-nav .cart .cart-count {
+	background: rgba(255,255,255,.1);
+	-webkit-border-radius: 100px;
+	border-radius: 100px;
+	display: inline-block;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 8px;
+	font-weight: 700;
+	height: 16px;
+	line-height: 16px;
+	margin: 2px 0px 0 2px;
+	min-width: 16px;
+	padding: 0 4px;
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	text-align: center;
+}
+
 /* =Breadcrumbs
 ----------------------------------------------- */
 
@@ -826,7 +809,7 @@ body {
 	}
 }
 
-/* =Bottom
+/* =Footer
 ----------------------------------------------- */
 
 .site-footer {

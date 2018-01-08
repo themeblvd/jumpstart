@@ -6,13 +6,14 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	var $window			= $(window),
-		window_width	= $window.width(),
-		$body			= $('body'),
-		$header			= $('#branding'),
-		$primaryMenu	= $('.tb-primary-menu'),
-		$popout_img 	= $('.site-inner.full_width .entry-content .alignnone'),
-		tbmethods		= {
+	var $window			       = $(window),
+		windowWidth	           = $window.width(),
+		mobileHeaderBreakpoint = parseInt( themeblvd.mobile_header_breakpoint ),
+		$body			       = $('body'),
+		$header			       = $('#branding'),
+		$primaryMenu	       = $('.tb-primary-menu'),
+		$popout_img 	       = $('.site-inner.full_width .entry-content .alignnone'),
+		tbmethods		       = {
 
 			/**
 			 * Resize background video to fit
@@ -115,73 +116,49 @@ jQuery(document).ready(function($) {
 	// Dynamic Body Classes
 	// ---------------------------------------------------------
 
-	// Add "mobile-on" and "tablet-on" classes to body,
-	// only depending on viewport size.
-	//
-	// NOTE: These are different than the default "mobile"
-	// and "desktop" classes filtered onto WP's body_class(),
-	// which denote if user is on a true mobile device
-	if ( window_width < 768 ) {
+	if ( windowWidth < 768 ) {
 
 		$body.addClass( 'mobile-on' );
 
 		$body.removeClass( 'tablet-on' );
 
-		if ( $header.hasClass( 'transparent') ) {
-
-			$header.removeClass( 'transparent' );
-
-			$header.addClass( 'transparent-off' );
-
-		}
-
-	} else if ( window_width < 992 ) {
+	} else if ( windowWidth < 992 ) {
 
 		$body.addClass( 'tablet-on' );
 
 		$body.removeClass( 'mobile-on' );
 
-		if ( $header.hasClass( 'transparent') ) {
+	}
 
-			$header.removeClass( 'transparent' );
+	if ( windowWidth <= mobileHeaderBreakpoint ) {
 
-			$header.addClass( 'transparent-off' );
+		$body.removeClass( 'mobile-header-off' );
 
-		}
+		$body.addClass( 'mobile-header-on' );
+
+	} else {
+
+		$body.removeClass( 'mobile-header-on' );
+
+		$body.addClass( 'mobile-header-off' );
 
 	}
 
 	$window.on( 'resize', function() {
 
-		var window_width = $window.width();
+		var windowWidth = $window.width();
 
-		if ( window_width < 768 ) {
+		if ( windowWidth < 768 ) {
 
 			$body.addClass( 'mobile-on' );
 
 			$body.removeClass( 'tablet-on' );
 
-			if ( $header.hasClass( 'transparent' ) ) {
-
-				$header.removeClass( 'transparent' );
-
-				$header.addClass( 'transparent-off' );
-
-			}
-
-		} else if ( window_width < 992 ) {
+		} else if ( windowWidth < 992 ) {
 
 			$body.addClass( 'tablet-on' );
 
 			$body.removeClass( 'mobile-on' );
-
-			if ( $header.hasClass( 'transparent' ) ) {
-
-				$header.removeClass( 'transparent' );
-
-				$header.addClass( 'transparent-off' );
-
-			}
 
 		} else {
 
@@ -189,13 +166,20 @@ jQuery(document).ready(function($) {
 
 			$body.removeClass( 'mobile-on' );
 
-			if ( $header.hasClass( 'transparent-off' ) ) {
+		}
 
-				$header.removeClass( 'transparent-off' );
+		if ( windowWidth <= mobileHeaderBreakpoint ) {
 
-				$header.addClass( 'transparent' );
+			$body.removeClass( 'mobile-header-off' );
 
-			}
+			$body.addClass( 'mobile-header-on' );
+
+		} else {
+
+			$body.removeClass( 'mobile-header-on' );
+
+			$body.addClass( 'mobile-header-off' );
+
 		}
 
 	} );
@@ -209,12 +193,11 @@ jQuery(document).ready(function($) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	if ( themeblvd.mobile_panel == 'true' ) {
+	if ( 'true' == themeblvd.mobile_panel ) {
 
 		var $mobilePanel        = $( '.tb-mobile-panel > .wrap' ),
 			$mobilePanelTrigger = $( '.tb-nav-trigger' ),
 			$sidePanel          = $( '.tb-side-panel > .wrap' ),
-			mobilePanelMax      = parseInt( themeblvd.mobile_menu_viewport_max ),
 			primaryMenuItems    = '';
 
 
@@ -300,7 +283,7 @@ jQuery(document).ready(function($) {
 
 			}
 
-			return false; // Stop #wrapper click.
+			return false; // Stop `#wrapper` and `.tb-mobile-header` click.
 
 		} );
 
@@ -308,7 +291,7 @@ jQuery(document).ready(function($) {
 		 * Close the mobile menu with click/tap on
 		 * the main site wrapper.
 		 */
-		$( '#wrapper' ).on( 'click', function() {
+		$( '#wrapper, #mobile-header' ).on( 'click', function() {
 
 			$body
 				.removeClass( 'mobile-menu-' + themeblvd.mobile_menu_location + '-on')
@@ -327,7 +310,7 @@ jQuery(document).ready(function($) {
 		 */
 		$window.on( 'resize', function() {
 
-			if ( $window.width() > mobilePanelMax ) {
+			if ( $window.width() > mobileHeaderBreakpoint ) {
 
 				$body
 					.removeClass( 'mobile-menu-' + themeblvd.mobile_menu_location + '-on' )
@@ -443,7 +426,7 @@ jQuery(document).ready(function($) {
 			repeat: true,
 			callbackFunction: function($elem, action){
 
-				if ( $elem.hasClass('visible') ) {
+				if ( $elem.hasClass('visible') || $body.hasClass('mobile-header-on') ) {
 
 					$body.removeClass('sticky-on');
 

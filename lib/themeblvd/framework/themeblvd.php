@@ -426,10 +426,17 @@ add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle' );
 add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
-add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_mobile', 20 );
 add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 add_action( 'themeblvd_header_after', 'themeblvd_epic_thumb' );
 add_filter( 'themeblvd_header_text', 'themeblvd_do_fa' );
+
+/*
+ * Hook frontend actions for the website mobile
+ * header.
+ */
+add_action( 'themeblvd_before', 'themeblvd_mobile_header' );
+add_action( 'themeblvd_mobile_header', 'themeblvd_mobile_header_logo', 10 );
+add_action( 'themeblvd_mobile_header', 'themeblvd_mobile_header_menu', 20 );
 
 /*
  * Hook frontend actions for the website sidebars.
