@@ -1724,10 +1724,12 @@ class Theme_Blvd_Options_API {
 		);
 
 		if ( themeblvd_supports( 'admin', 'base' ) ) {
+
 			$this->formatted_options['theme_base'] = array(
 				'id'   => 'theme_base',
 				'type' => 'hidden',
 			);
+
 		}
 
 		// Remove any options for unsupported features.
@@ -1745,6 +1747,16 @@ class Theme_Blvd_Options_API {
 				unset( $this->raw_options['content']['sections']['archives']['options']['apply_archive_trans_header'] );
 
 			}
+		}
+
+		if ( ! themeblvd_supports( 'display', 'mobile_header' ) ) {
+
+			if ( isset( $this->raw_options['content']['sections']['header_mobile'] ) ) {
+
+				unset( $this->raw_options['content']['sections']['header_mobile'] );
+
+			}
+
 		}
 
 		if ( ! themeblvd_supports( 'display', 'sticky' ) ) {

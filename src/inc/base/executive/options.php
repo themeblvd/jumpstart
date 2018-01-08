@@ -1023,16 +1023,24 @@ function jumpstart_ex_options() {
 	 * Add standard mobile header options, shared across
 	 * all theme bases.
 	 */
-	$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
+	if ( themeblvd_supports( 'display', 'mobile_header' ) ) {
+
+		$options['header_mobile'] = jumpstart_get_shared_options( 'mobile-header' );
+
+	}
 
 	/*
 	 * Add standard side panel options, shared across
 	 * all theme bases.
 	 */
-	$options['side'] = jumpstart_get_shared_options( 'side-panel', array(
-		'side_bg_color'            => '#222222',
-		'side_bg_color_brightness' => 'dark',
-	) );
+	if ( themeblvd_supports( 'display', 'side_panel' ) || themeblvd_supports( 'display', 'mobile_panel' ) ) {
+
+		$options['side'] = jumpstart_get_shared_options( 'side-panel', array(
+			'side_bg_color'            => '#222222',
+			'side_bg_color_brightness' => 'dark',
+		) );
+
+	}
 
 	/*
 	 * Add standard footer options, shared across all
