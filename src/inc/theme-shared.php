@@ -79,7 +79,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 			$options['header_mobile_height'] = array(
 				'id'      => 'header_mobile_height',
 				'name'    => __( 'Height', '@@text-domain' ),
-				'desc'    => __( 'Set the height of your mobile header. This number should be higher than the height of your mobile logo image at <em>Layout > Mobile Header</em>.', '@@text-domain' ),
+				'desc'    => __( 'Set the height of your mobile header.', '@@text-domain' ),
 				'std'     => '64px',
 				'type'    => 'slide',
 				'options' => array(
@@ -618,9 +618,15 @@ function themeblvd_get_shared_style( $set ) {
 
 			$output .= ".tb-mobile-header .header-logo img {\n";
 
+			$height = themeblvd_get_option( 'header_mobile_height' );
+
+			$height = intval( $height ) - 10;
+
+			$height = $height . 'px';
+
 			$output .= sprintf(
 				"\tmax-height: %s;\n",
-				esc_attr( themeblvd_get_option( 'header_mobile_height' ) )
+				$height
 			);
 
 			$output .= "}\n";
@@ -640,6 +646,36 @@ function themeblvd_get_shared_style( $set ) {
 			$output .= ".tb-nav-trigger:hover .hamburger span {\n";
 
 			$output .= sprintf( "\t\tbackground-color: %s;\n", esc_attr( $icon_color ) );
+
+			$output .= "}\n";
+
+			$breakpoint = intval( themeblvd_get_option( 'header_mobile_breakpoint', null, '991px' ) );
+
+			$output .= "#top,\n";
+
+			$output .= ".tb-mobile-header {\n";
+
+			$output .= "\tdisplay: none;\n";
+
+			$output .= "}\n";
+
+			$output .= sprintf( "@media (min-width: %spx) {\n", $breakpoint + 1 );
+
+			$output .= "\t#top {\n";
+
+			$output .= "\t\tdisplay: block;\n";
+
+			$output .= "\t}\n";
+
+			$output .= "}\n";
+
+			$output .= sprintf( "@media (max-width: %spx) {\n", $breakpoint );
+
+			$output .= "\t.tb-mobile-header {\n";
+
+			$output .= "\t\tdisplay: block;\n";
+
+			$output .= "\t}\n";
 
 			$output .= "}\n";
 

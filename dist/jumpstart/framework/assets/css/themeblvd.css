@@ -756,8 +756,10 @@ img.size-full {
 #top {
 	display: none;
 }
-.mobile-header-off #top {
-	display: block;
+@media (min-width: 992px) {
+	#top {
+		display: block;
+	}
 }
 
 /* Text Logo */
@@ -827,8 +829,10 @@ img.size-full {
 .tb-mobile-header {
 	display: none;
 }
-.mobile-header-on .tb-mobile-header {
-	display: block;
+@media (max-width: 991px) {
+	.tb-mobile-header {
+		display: block;
+	}
 }
 
 /* =Sticky Header
