@@ -301,23 +301,15 @@ function themeblvd_get_js_locals() {
 
 	}
 
-	if ( themeblvd_do_side_panel() ) {
-
-		$locals['side_panel'] = 'true';
-
-	}
-
-	$locals['sticky'] = 'false';
-
 	if ( themeblvd_do_sticky() ) {
 
 		$locals['sticky'] = 'true';
 
-		$locals['sticky_class'] = implode( ' ', apply_filters( 'themeblvd_sticky_class', array() ) );
+	}
 
-		$locals['sticky_offset'] = apply_filters( 'themeblvd_sticky_offset', '48' );
+	if ( themeblvd_do_side_panel() ) {
 
-		$locals['sticky_logo'] = apply_filters( 'themeblvd_sticky_logo_uri', '' ); // Optional override, so theme's header logo isn't used.
+		$locals['side_panel'] = 'true';
 
 	}
 
@@ -327,7 +319,7 @@ function themeblvd_get_js_locals() {
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
-	 * @param string CSS value like `20px`.
+	 * @param string CSS value, like `20px`.
 	 */
 	$offset = apply_filters( 'themeblvd_scroll_to_section_offset', '' );
 
