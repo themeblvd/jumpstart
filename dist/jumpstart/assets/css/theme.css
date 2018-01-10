@@ -793,6 +793,12 @@ body {
 	max-height: 30px; /* {Sticky header height} - 10px = 30px */
 	width: auto;
 }
+.tb-sticky-header .logo-sticky .tb-text-logo {
+	font-size: 16px;
+}
+.tb-sticky-header .logo-sticky .tagline {
+	display: none;
+}
 
 /* Menu */
 .tb-sticky-header .tb-primary-menu {
