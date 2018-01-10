@@ -1178,23 +1178,28 @@ function themeblvd_get_bg_video( $video ) {
 
 	$source = themeblvd_get_video_source( $video['mp4'] );
 
-	$output = sprintf(
-		"\n<div class=\"tb-bg-video %s\" data-ratio=\"%s\">",
-		esc_attr( $source ),
-		esc_attr( $video['ratio'] )
-	);
+	$output = '';
 
 	switch ( $source ) {
 
 		case 'html5':
 			wp_enqueue_script( 'wp-mediaelement' );
 
+			/*
+			 * Since mediaelement script will replace the
+			 * <video>, we need to add the unqiue ID to the
+			 * wrapping <div>.
+			 */
+			$output .= sprintf(
+				"\n<div id=\"%s\" class=\"tb-bg-video %s\" data-ratio=\"%s\">",
+				esc_attr( $video['id'] ),
+				esc_attr( $source ),
+				esc_attr( $video['ratio'] )
+			);
+
 			preg_match( '!^(.+?)(?:\.([^.]+))?$!', $video['mp4'], $path_split );
 
-			$output .= sprintf(
-				"\n\t<video id=\"%s\" class=\"video\" controls",
-				esc_attr( $video['id'] )
-			);
+			$output .= "\n\t<video class=\"video\" controls";
 
 			if ( $video['fallback'] && themeblvd_is_200( $video['fallback'] ) ) {
 
@@ -1276,20 +1281,31 @@ function themeblvd_get_bg_video( $video ) {
 				 */
 				$args = apply_filters( 'themeblvd_youtube_bg_args', array(
 					'vid'            => $youtube_id,
-					'autoplay'       => 'true',
-					'loop'           => 'true',
-					'hd'             => 'true',
-					'controls'       => 'false',
-					'showinfo'       => 'false',
-					'modestbranding' => 'true',
+					'autoplay'       => '1',
+					'loop'           => '1',
+					'hd'             => '1',
+					'controls'       => '0',
+					'showinfo'       => '0',
+					'modestbranding' => '1',
 					'iv_load_policy' => '3',
-					'rel'            => 'false',
+					'rel'            => '0',
 					'version'        => '3',
-					'enablejsapi'    => 'true',
+					'enablejsapi'    => '1',
 					'wmode'          => 'opaque',
 					'playlist'       => $youtube_id,
 				), $video );
 
+				$output .= sprintf(
+					"\n<div class=\"tb-bg-video %s\" data-ratio=\"%s\">",
+					esc_attr( $source ),
+					esc_attr( $video['ratio'] )
+				);
+
+				/*
+				 * With the YouTube API, we need the unique ID of
+				 * the video to be on the <div>, where the video
+				 * <iframe> will get inserted within.
+				 */
 				$output .= sprintf(
 					"\n\t<div id=\"%s\" class=\"video\"",
 					esc_attr( $video['id'] )
@@ -1317,14 +1333,12 @@ function themeblvd_get_bg_video( $video ) {
 			$vimeo_id = end( $vimeo_id );
 
 			/*
-			 * Re-start output.
-			 *
 			 * Unlike the YouTube API which, *replaces* the outer
 			 * <div>, the Vimeo API adds the <iframe> inside; so
 			 * the video API parameters need to be on the outer
 			 * <div>, itself.
 			 */
-			$output = sprintf(
+			$output .= sprintf(
 				'<div id="%s" class="tb-bg-video vimeo" data-ratio="%s" ',
 				esc_attr( $video['id'] ),
 				esc_attr( $video['ratio'] )
@@ -1348,13 +1362,13 @@ function themeblvd_get_bg_video( $video ) {
 			 */
 			$args = apply_filters( 'themeblvd_vimeo_bg_args', array(
 				'id'         => $vimeo_id,
-				'autoplay'   => 'true',
-				'loop'       => 'true',
-				'autopause'  => 'false',
-				'byline'     => 'false',
-				'title'      => 'false',
-				'portrait'   => 'false',
-				'background' => 'true', // Supposed to take care of autoplay but works inconsistently.
+				'autoplay'   => '1',
+				'loop'       => '1',
+				'autopause'  => '0',
+				'byline'     => '0',
+				'title'      => '0',
+				'portrait'   => '0',
+				'background' => '1', // Supposed to take care of autoplay but works inconsistently.
 			), $video );
 
 			foreach ( $args as $key => $value ) {
