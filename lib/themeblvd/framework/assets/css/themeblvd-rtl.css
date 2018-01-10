@@ -853,121 +853,34 @@ img.size-full {
 /* =Sticky Header
 -----------------------------------------------*/
 
-.tb-sticky-menu {
-	background: rgba(255,255,255,0.9);
-	color: #333333;
+.tb-sticky-header {
+	display: none;
 	opacity: 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	-webkit-transition: -webkit-transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 	transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-	-webkit-transform: translate3d(0, -48px, 0);
-	transform: translate3d(0, -48px, 0);
+	-webkit-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
 	z-index: 1000;
 }
-.sticky-on .tb-sticky-menu {
-	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
-	box-shadow: 0 0 10px rgba(0,0,0,.2);
+.mobile-header-off .tb-sticky-header {
+	display: block;
+}
+.sticky-on .tb-sticky-header {
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	opacity: 1;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
-.admin-bar.sticky-on .tb-sticky-menu {
-	-webkit-transform: translate3d(0, 32px, 0);
-	transform: translate3d(0, 32px, 0);
+.admin-bar .tb-sticky-header {
+	margin-top: 32px;
 }
-.tb-sticky-menu > .wrap {
+.tb-sticky-header > .wrap {
 	margin: 0 auto;
-	position: relative; /* So mega menus are relative to this container */
-	width: 1200px;
-}
-.tb-sticky-menu .header-logo {
-	display: block !important;
-	float: none;
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 0;
-	-ms-transform: translate(0, -50%); /* IE9 */
-	-webkit-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-}
-.tb-sticky-menu .header-logo img {
-	display: block;
-	width: auto;
-	max-height: 30px;
-}
-.tb-sticky-menu .header-text-logo {
-	padding: 0;
-}
-.tb-sticky-menu .header-text-logo .tb-text-logo {
-	font-size: 20px;
-	line-height: 38px;
-}
-.tb-sticky-menu .header-text-logo .tagline {
-	display: none;
-}
-.tb-sticky-menu .nav {
-	float: left;
-}
-.tb-sticky-menu .tb-primary-menu {
-	float: right;
-	padding: 0;
-	position: static; /* Allow mega menu to position based on entire .wrap */
-}
-.tb-sticky-menu .tb-primary-menu > li > .menu-btn {
-	color: #666666;
-	color: rgba(26,26,26,.7);
-	font-size: 12px;
-	line-height: 48px;
-	padding: 0 12px;
-}
-.tb-sticky-menu .tb-primary-menu > li > .menu-btn .svg-inline--fa {
-	height: 12px;
-}
-.tb-sticky-menu .tb-primary-menu > li.menu-search > .menu-btn,
-.tb-sticky-menu .tb-primary-menu > li.menu-contact > .menu-btn,
-.tb-sticky-menu .tb-primary-menu > li.menu-cart > .menu-btn {
-	outline: none;
-	padding-right: 10px;
-	padding-left: 10px;
-}
-.tb-sticky-menu .tb-primary-menu > li.menu-search > .menu-btn .svg-inline--fa,
-.tb-sticky-menu .tb-primary-menu > li.menu-contact > .menu-btn .svg-inline--fa,
-.tb-sticky-menu .tb-primary-menu > li.menu-cart > .menu-btn .svg-inline--fa {
-	margin: 0;
-	width: 1em;
-	text-align: center;
-}
-.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label {
-	padding-left: 17px;
-}
-.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-2 {
-	padding-left: 24px;
-}
-.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-3 {
-	padding-left: 32px;
-}
-.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-4 {
-	padding-left: 37px;
-}
-.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger.has-label.char-5 {
-	padding-left: 45px;
-}
-.tb-sticky-menu .tb-primary-menu > li > .tb-cart-trigger .trigger-label {
-	top: 50%;
-	right: 20px;
-	margin-top: -2px;
-}
-.tb-sticky-menu .tb-contact-popover.bottom {
-	margin-top: -1px;
-}
-@media (max-width: 991px) {
-	.tb-sticky-menu {
-		display: none;
-	}
+	position: relative; /* Mega menus are relative to this container. */
 }
 
 /* =Primary Navigation

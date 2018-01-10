@@ -8,60 +8,60 @@
  *   2.3 - Primary Navigation
  *   2.4 - Level 1
  *   2.5 - Level 2+
- *   2.6 - Sticky Menu
- *   2.7 - Side Panel
- *   2.8 - Mobile Panel
- *   2.9 - Transparent Header
- *   2.10 - Menu Highlight
+ *   2.6 - Side Panel
+ *   2.7 - Mobile Panel
+ *   2.8 - Transparent Header
+ *   2.9 - Menu Highlight
  * 3.0 - Mobile Header
- * 4.0 - Breadcrumbs
- * 5.0 - Main
- * 6.0 - Footer
- * 7.0 - Content
- *   7.1 - Typography
- *   7.2 - Content Background
- *   7.2 - Posts
- *   7.4 - Pages
- *   7.5 - Titles
- *   7.6 - Meta
- *   7.7 - Sub Meta
- *   7.8 - Post Formats
- *   7.9 - Related Posts/Products
- *   7.10 - Edit Link
- *   7.11 - Popout Media
- *   7.12 - Captions
- *   7.13 - Galleries
- *   7.14 - Video
- * 8.0 - Comments
- *   8.1 - Comment List
- *   8.2 - Admin Comment
- *   8.3 - Children
- *   8.4 - Mobile Comments
- *   8.5 - Comment Form
- *   8.6 - Comment Form (in reply)
- * 9.0 - Archives
- *   9.1 - Archive Info and Author Box
- *   9.2 - Search Results
- *   9.3 - Posts Wrap
- * 10.0 - Page Templates
- *   10.1 - Post List
- *   10.2 - Post Grid
- *   10.3 - Post Showcase
- *   10.4 - Blank Page
- *   10.5 - Custom Layout
- * 11.0 - Parts
- *   11.1 - Mini Post List/Grid
- *   11.2 - Box Titles
- *   11.3 - Tooltips
- *   11.4 - Popover
- * 12.0 - Widgets
- *   12.1 - General
- *   12.2 - Collapsible
- *   12.3 - Fixed Sidebars
- *   12.4 - Footer
- *   12.5 - List Widgets
- *   12.6 - Search Widget
- * 13.0 - Printing
+ * 4.0 - Mobile Header
+ * 5.0 - Breadcrumbs
+ * 6.0 - Main
+ * 7.0 - Footer
+ * 8.0 - Content
+ *   8.1 - Typography
+ *   8.2 - Content Background
+ *   8.2 - Posts
+ *   8.4 - Pages
+ *   8.5 - Titles
+ *   8.6 - Meta
+ *   8.7 - Sub Meta
+ *   8.8 - Post Formats
+ *   8.9 - Related Posts/Products
+ *   8.10 - Edit Link
+ *   8.11 - Popout Media
+ *   8.12 - Captions
+ *   8.13 - Galleries
+ *   8.14 - Video
+ * 9.0 - Comments
+ *   9.1 - Comment List
+ *   9.2 - Admin Comment
+ *   9.3 - Children
+ *   9.4 - Mobile Comments
+ *   9.5 - Comment Form
+ *   9.6 - Comment Form (in reply)
+ * 10.0 - Archives
+ *   10.1 - Archive Info and Author Box
+ *   10.2 - Search Results
+ *   10.3 - Posts Wrap
+ * 11.0 - Page Templates
+ *   11.1 - Post List
+ *   11.2 - Post Grid
+ *   11.3 - Post Showcase
+ *   11.4 - Blank Page
+ *   11.5 - Custom Layout
+ * 12.0 - Parts
+ *   12.1 - Mini Post List/Grid
+ *   12.2 - Box Titles
+ *   12.3 - Tooltips
+ *   12.4 - Popover
+ * 13.0 - Widgets
+ *   13.1 - General
+ *   13.2 - Collapsible
+ *   13.3 - Fixed Sidebars
+ *   13.4 - Footer
+ *   13.5 - List Widgets
+ *   13.6 - Search Widget
+ * 14.0 - Printing
  ----------------------------------------------- */
 
 /* =Primary Structure
@@ -76,7 +76,7 @@ body {
 .header-content > .wrap,
 .header-nav > .wrap,
 .tb-mobile-header > .wrap,
-.tb-sticky-menu > .wrap,
+.tb-sticky-header > .wrap,
 .site-breadcrumbs > .wrap,
 .site-inner > .wrap,
 .element-section > .element,
@@ -104,7 +104,7 @@ body {
 	.header-content > .wrap,
 	.header-nav > .wrap,
 	.tb-mobile-header > .wrap,
-	.tb-sticky-menu > .wrap,
+	.tb-sticky-header > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -366,11 +366,6 @@ body {
 	margin: 0 18px; /* offset previous level padding, either direction */
 }
 
-/* Sticky Menu */
-.tb-sticky-menu .tb-primary-menu > li > .menu-btn:hover {
-	background: #f8f8f8;
-}
-
 /* Side Panel */
 .tb-side-panel {
     background: #222222;
@@ -595,20 +590,20 @@ body {
 /* Menu Highlight */
 .site-header .tb-primary-menu > li.highlight,
 .site-header.transparent .header-nav .tb-primary-menu > li.highlight,
-.tb-sticky-menu .tb-primary-menu > li.highlight,
+.tb-sticky-header .tb-primary-menu > li.highlight,
 .tb-side-panel li.highlight,
 .tb-mobile-panel li.highlight {
 	background-color: transparent;
 }
 .site-header .tb-primary-menu > li.highlight > a,
 .site-header.transparent .header-nav .tb-primary-menu > li.highlight > a,
-.tb-sticky-menu .tb-primary-menu > li.highlight > a,
+.tb-sticky-header .tb-primary-menu > li.highlight > a,
 .tb-side-panel li.highlight > a {
 	border: 2px solid rgba(255,255,255,.85);
 }
 .site-header .tb-primary-menu > li.highlight > a:hover,
 .site-header.transparent .header-nav .tb-primary-menu > li.highlight > a:hover,
-.tb-sticky-menu .tb-primary-menu > li.highlight > a:hover,
+.tb-sticky-header .tb-primary-menu > li.highlight > a:hover,
 .tb-side-panel li.highlight > a:hover {
 	background-color: #ffffff;
 	border-color: transparent;
@@ -624,17 +619,17 @@ body {
 }
 
 /* Menu Highlight: Sticky Menu */
-.tb-sticky-menu .tb-primary-menu > li.highlight {
-	padding: 4px 6px;
+.tb-sticky-header .tb-primary-menu > li.highlight {
+	padding: 0 6px;
 }
-.tb-sticky-menu .tb-primary-menu > li.highlight > .menu-btn {
+.tb-sticky-header .tb-primary-menu > li.highlight > .menu-btn {
 	border-color: #333333;
-	line-height: 36px;
+	line-height: 26px;
 	padding: 0 12px;
 }
-.tb-sticky-menu .tb-primary-menu > li.highlight > .menu-btn:hover {
-	background-color: #333333;
-	color: #ffffff;
+.tb-sticky-header .tb-primary-menu > li.highlight > .menu-btn:hover {
+	background-color: #333;
+	color: #fff;
 }
 
 /* Menu Highlight: Side Panel */
@@ -677,10 +672,10 @@ body {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	height: 64px;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	-ms-flex-pack: justify;
-	height: 64px;
 	justify-content: space-between;
 	padding: 20px 10px;
 }
@@ -762,6 +757,100 @@ body {
 	top: 50%;
 	right: 50%;
 	text-align: center;
+}
+
+/* =Sticky Header
+----------------------------------------------- */
+
+.tb-sticky-header {
+	background: rgba(255,255,255,0.9);
+	color: #333;
+}
+.tb-sticky-header > .wrap {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	height: 40px; /* Sticky header height = 40px */
+}
+.tb-sticky-header .logo-sticky {
+	margin: 0 0 0 auto;
+}
+.tb-sticky-header .menu-sticky {
+	margin: 0 auto 0 0;
+}
+
+/* Logo */
+.tb-sticky-header .logo-sticky img {
+	max-height: 30px; /* {Sticky header height} - 10px = 30px */
+	width: auto;
+}
+
+/* Menu */
+.tb-sticky-header .tb-primary-menu {
+	padding: 0;
+	position: static; /* Allow mega menu to position based on entire .wrap */
+}
+.tb-sticky-header .tb-primary-menu > li {
+	height: 40px; /* Sticky header height = 40px */
+}
+.tb-sticky-header .tb-primary-menu > li > .menu-btn {
+	color: #666;
+	font-size: 12px;
+	line-height: 40px;
+	padding: 0 12px;
+	position: relative;
+    top: 50%;
+	-webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.tb-sticky-header .tb-primary-menu > li > .menu-btn:hover,
+.tb-sticky-header .tb-primary-menu > li > .menu-btn:focus {
+	background: #fff;
+	color: #333;
+}
+.tb-sticky-header .tb-primary-menu > li > .menu-btn .svg-inline--fa {
+	height: 12px;
+}
+.tb-sticky-header .tb-primary-menu > li.menu-search > .menu-btn,
+.tb-sticky-header .tb-primary-menu > li.menu-cart > .menu-btn {
+	outline: none;
+	padding-left: 10px;
+	padding-left: 10px;
+}
+.tb-sticky-header .tb-primary-menu > li.menu-search > .menu-btn .svg-inline--fa,
+.tb-sticky-header .tb-primary-menu > li.menu-cart > .menu-btn .svg-inline--fa {
+	margin: 0;
+	width: 1em;
+	text-align: center;
+}
+.tb-sticky-header .tb-primary-menu > li > .tb-cart-trigger.has-label {
+	padding-left: 17px;
+}
+.tb-sticky-header .tb-primary-menu > li > .tb-cart-trigger.has-label.char-2 {
+	padding-left: 24px;
+}
+.tb-sticky-header .tb-primary-menu > li > .tb-cart-trigger.has-label.char-3 {
+	padding-left: 32px;
+}
+.tb-sticky-header .tb-primary-menu > li > .tb-cart-trigger.has-label.char-4 {
+	padding-left: 37px;
+}
+.tb-sticky-header .tb-primary-menu > li > .tb-cart-trigger.has-label.char-5 {
+	padding-left: 45px;
+}
+.tb-sticky-header .tb-primary-menu > li > .tb-cart-trigger .trigger-label {
+	top: 50%;
+	right: 20px;
+	margin-top: -2px;
 }
 
 /* =Breadcrumbs

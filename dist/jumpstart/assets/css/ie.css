@@ -5,7 +5,7 @@
 .ie8 .thumb-wrapper img {
 	width: auto;
 }
-.ie8 .tb-sticky-menu {
+.ie8 .tb-sticky-header {
 	display: none;
 }
 .tb-blend {
