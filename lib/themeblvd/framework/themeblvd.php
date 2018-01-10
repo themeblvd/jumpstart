@@ -423,7 +423,6 @@ add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles' );
 add_action( 'themeblvd_before', 'themeblvd_widgets_above_header', 20 );
 add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
-add_action( 'themeblvd_header_addon', 'themeblvd_responsive_menu_toggle' );
 add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );
 add_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
 add_action( 'themeblvd_header_after', 'themeblvd_epic_thumb' );
@@ -436,6 +435,14 @@ add_filter( 'themeblvd_header_text', 'themeblvd_do_fa' );
 add_action( 'themeblvd_before', 'themeblvd_mobile_header' );
 add_action( 'themeblvd_mobile_header', 'themeblvd_mobile_header_logo', 10 );
 add_action( 'themeblvd_mobile_header', 'themeblvd_mobile_header_menu', 20 );
+
+/*
+ * Hook frontend actions for the website sticky
+ * header.
+ */
+add_action( 'themeblvd_after', 'themeblvd_sticky_header' );
+add_action( 'themeblvd_sticky_header', 'themeblvd_sticky_header_logo', 10 );
+add_action( 'themeblvd_sticky_header', 'themeblvd_sticky_header_menu', 20 );
 
 /*
  * Hook frontend actions for the website sidebars.

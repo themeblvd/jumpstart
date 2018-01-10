@@ -386,6 +386,45 @@ function themeblvd_mobile_header_class() {
 }
 
 /**
+ * Display HTML class for the sticky website
+ * header.
+ *
+ * @since @@name-framework 2.7.0
+ */
+function themeblvd_sticky_class() {
+
+	$class = array( 'tb-sticky-header' );
+
+	/**
+	 * Filters the CSS classes used with the sticky
+	 * website header.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param array $class CSS classes.
+	 */
+	$class = apply_filters( 'themeblvd_sticky_class', $class );
+
+	if ( $class ) {
+
+		$output = sprintf( 'class="%s"', esc_attr( implode( ' ', $class ) ) );
+
+	}
+
+	/**
+	 * Filters the full HTML output of the CSS classes
+	 * for the sticky website header.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $output HTML output CSS classes.
+	 * @param array  $class  CSS classes.
+	 */
+	echo apply_filters( 'themeblvd_sticky_class_output', $output, $class );
+
+}
+
+/**
  * Display HTML class for the main website
  * content wrapper.
  *

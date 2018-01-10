@@ -300,11 +300,19 @@ if ( ! function_exists( 'themeblvd_mobile_header' ) ) {
 	 */
 	function themeblvd_mobile_header() {
 
-		if ( themeblvd_supports( 'display', 'mobile_header' ) ) {
+		if ( ! themeblvd_supports( 'display', 'mobile_header' ) ) {
 
-			themeblvd_get_template_part( 'mobile_header' );
+			return;
 
 		}
+
+		if ( ! themeblvd_config( 'top' ) ) {
+
+			return;
+
+		}
+
+		themeblvd_get_template_part( 'mobile_header' );
 
 	}
 }
@@ -336,6 +344,7 @@ if ( ! function_exists( 'themeblvd_mobile_header_logo' ) ) {
 			echo themeblvd_get_logo( $logo );
 
 		}
+
 	}
 }
 
@@ -373,6 +382,110 @@ if ( ! function_exists( 'themeblvd_mobile_header_menu' ) ) {
 			<?php endif; ?>
 
 		</ul>
+		<?php
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_sticky_header' ) ) {
+
+	/**
+	 * Display the sticky header logo.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_before` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_sticky_header() {
+
+		if ( themeblvd_do_sticky() ) {
+
+			themeblvd_get_template_part( 'sticky_header' );
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_sticky_header_logo' ) ) {
+
+	/**
+	 * Display the sticky header logo.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_sticky_header` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_sticky_header_logo() {
+
+		$logo = array();
+
+		/**
+		 * Filters the sticky header logo image directly.
+		 *
+		 * This filter existed before there was a user
+		 * option at *Theme Options > Layout > Sticky
+		 * Header* to configure a sticky header logo; so
+		 * we've got it here mainly for backwards compat.
+		 *
+		 * @since Theme_Blvd 2.5.0
+		 *
+		 * @param string Logo image URL, like `http://mysite.com/image.jpg`.
+		 */
+		$image = apply_filters( 'themeblvd_sticky_logo_uri', '' );
+
+		if ( $image ) {
+
+			$logo = array(
+				'type'         => 'image',
+				'image'        => $image,
+				'image_width'  => 0,
+				'image_height' => 0,
+			);
+
+		}
+
+		if ( ! $logo ) {
+
+			$logo = themeblvd_get_option( 'sticky_logo' );
+
+		}
+
+		if ( ! $logo || ( ! empty( $logo['type'] ) && 'default' === $logo['type'] ) ) {
+
+			$logo = themeblvd_get_option( 'logo' );
+
+		}
+
+		if ( $logo ) {
+
+			$logo['class'] = 'logo-sticky';
+
+			echo themeblvd_get_logo( $logo );
+
+		}
+
+	}
+}
+
+if ( ! function_exists( 'themeblvd_sticky_header_menu' ) ) {
+
+	/**
+	 * Display the sticky header menu.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_sticky_header` - 20
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_sticky_header_menu() {
+
+		?>
+		<nav class="menu-sticky">
+			<!-- Menu inserted with JavaScript. -->
+		</nav>
 		<?php
 
 	}
