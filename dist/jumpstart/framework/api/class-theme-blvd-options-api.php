@@ -454,7 +454,7 @@ class Theme_Blvd_Options_API {
 					),
 					'sticky_logo' => array(
 						'name'  => __( 'Sticky Header Logo', 'jumpstart' ),
-						'desc'  => __( 'Configure the primary branding logo for the sticky header of your site.', 'jumpstart' ) . '<br /><br /><em>' . __( 'Note: Your logo will be scaled to fit within the 50px tall sticky header.', 'jumpstart' ) . '</em>',
+						'desc'  => __( 'Configure the primary branding logo for the sticky header of your site.', 'jumpstart' ) . '<br /><br /><em>' . __( 'Note: Your logo will be scaled to fit within the sticky header.', 'jumpstart' ) . '</em>',
 						'id'    => 'sticky_logo',
 						'std'   => array(
 							'type' => 'default'
