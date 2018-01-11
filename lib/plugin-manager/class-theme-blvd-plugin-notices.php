@@ -232,7 +232,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Notices' ) ) {
 				return;
 			}
 
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$suffix = themeblvd_script_debug() ? '' : '.min';
 
 			wp_enqueue_script(
 				'themeblvd-plugin-notices',

@@ -332,7 +332,7 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function load_styles() {
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+		$suffix = themeblvd_script_debug() ? '' : '.min';
 
 		themeblvd_admin_assets( 'styles' );
 
@@ -352,7 +352,7 @@ class Theme_Blvd_Options_Page {
 	 */
 	public function load_scripts() {
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+		$suffix = themeblvd_script_debug() ? '' : '.min';
 
 		if ( $this->gmap ) {
 

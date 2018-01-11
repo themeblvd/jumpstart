@@ -113,7 +113,7 @@ if ( $base ) {
  */
 function jumpstart_css() {
 
-	$suffix = SCRIPT_DEBUG ? '' : '.min';
+	$suffix = themeblvd_script_debug() ? '' : '.min';
 
 	$theme = wp_get_theme( get_template() );
 

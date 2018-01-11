@@ -69,7 +69,7 @@ class Theme_Blvd_Menu_Options {
 
 		if ( 'nav-menus.php' === $hook ) {
 
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$suffix = themeblvd_script_debug() ? '' : '.min';
 
 			wp_enqueue_style(
 				'themeblvd-admin-menus', esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/menu{$suffix}.css" ),

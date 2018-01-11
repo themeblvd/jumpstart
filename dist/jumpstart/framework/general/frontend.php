@@ -797,7 +797,7 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	 */
 	function themeblvd_include_scripts() {
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+		$suffix = themeblvd_script_debug() ? '' : '.min';
 
 		$in_footer = themeblvd_supports( 'assets', 'in_footer' ); // Will be TRUE, by default.
 
@@ -980,7 +980,7 @@ if ( ! function_exists( 'themeblvd_include_styles' ) ) {
 	 */
 	function themeblvd_include_styles() {
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+		$suffix = themeblvd_script_debug() ? '' : '.min';
 
 		if ( themeblvd_supports( 'assets', 'bootstrap' ) ) {
 

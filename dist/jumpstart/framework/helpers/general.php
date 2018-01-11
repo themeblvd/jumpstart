@@ -332,11 +332,15 @@ function themeblvd_allowed_tags() {
 	$tags = wp_kses_allowed_html( 'post' );
 
 	$tags['a']['data-bg'] = true;
+
 	$tags['a']['data-bg-hover'] = true;
+
 	$tags['a']['data-text'] = true;
+
 	$tags['a']['data-text-hover'] = true;
 
 	$tags['img']['srcset'] = true;
+
 	$tags['img']['sizes'] = true;
 
 	$tags['iframe'] = array(
@@ -399,5 +403,30 @@ function themeblvd_kses( $input ) {
 	}
 
 	return wp_kses( $input, themeblvd_allowed_tags() );
+
+}
+
+/**
+ * Check if script debugging is enabled.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @return bool Whether script debugging is enabled.
+ */
+function themeblvd_script_debug() {
+
+	if ( ! defined( 'SCRIPT_DEBUG' ) ) {
+
+		return false;
+
+	}
+
+	if ( ! SCRIPT_DEBUG ) {
+
+		return false;
+
+	}
+
+	return true;
 
 }

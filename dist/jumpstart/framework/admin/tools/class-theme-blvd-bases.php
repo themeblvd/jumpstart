@@ -85,7 +85,7 @@ class Theme_Blvd_Bases {
 
 		if ( 'appearance_page_' . get_template() . '-base' === $page->base ) {
 
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$suffix = themeblvd_script_debug() ? '' : '.min';
 
 			themeblvd_admin_assets();
 

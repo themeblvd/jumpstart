@@ -922,7 +922,7 @@ function themeblvd_get_icon_search_data() {
  */
 function themeblvd_get_icon_js_file() {
 
-	$suffix = SCRIPT_DEBUG ? '' : '.min';
+	$suffix = themeblvd_script_debug() ? '' : '.min';
 
 	/**
 	 * Filters the URL to include the icon font

@@ -75,7 +75,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 
 		if ( themeblvd_get_option( 'gforms_styles' ) ) {
 
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$suffix = themeblvd_script_debug() ? '' : '.min';
 
 			wp_enqueue_style(
 				'themeblvd-gravityforms',

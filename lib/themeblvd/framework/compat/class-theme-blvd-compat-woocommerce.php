@@ -375,7 +375,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 */
 	public function assets() {
 
-		$suffix = SCRIPT_DEBUG ? '' : '.min';
+		$suffix = themeblvd_script_debug() ? '' : '.min';
 
 		wp_enqueue_style(
 			'themeblvd-woocommerce',

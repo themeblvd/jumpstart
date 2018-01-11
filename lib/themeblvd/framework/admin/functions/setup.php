@@ -221,7 +221,7 @@ function themeblvd_admin_enqueue() {
 
 	global $pagenow;
 
-	$suffix = SCRIPT_DEBUG ? '' : '.min';
+	$suffix = themeblvd_script_debug() ? '' : '.min';
 
 	/*
 	 * Enqueue assets required for editing posts and
@@ -268,7 +268,7 @@ function themeblvd_admin_enqueue() {
  */
 function themeblvd_admin_assets( $type = '' ) {
 
-	$suffix = SCRIPT_DEBUG ? '' : '.min';
+	$suffix = themeblvd_script_debug() ? '' : '.min';
 
 	// Enqueue stylesheets.
 	if ( ! $type || 'styles' === $type ) {

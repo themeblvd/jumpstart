@@ -95,7 +95,7 @@ class Theme_Blvd_Welcome {
 
 		if ( ! get_user_meta( $current_user->ID, 'themeblvd-ignore-welcome', true ) ) {
 
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
+			$suffix = themeblvd_script_debug() ? '' : '.min';
 
 			wp_enqueue_media();
 
