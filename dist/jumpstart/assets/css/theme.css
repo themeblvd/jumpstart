@@ -811,7 +811,7 @@ body {
 .tb-sticky-header .tb-primary-menu > li > .menu-btn {
 	color: #666;
 	font-size: 12px;
-	line-height: 50px; /* Smallest height of sticky header */
+	line-height: 50px; /* Sticky header height = 50px */
 	padding: 0 12px;
 	position: relative;
     top: 50%;

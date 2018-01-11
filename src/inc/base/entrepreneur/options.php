@@ -740,6 +740,16 @@ function jumpstart_ent_options() {
 	);
 
 	/*
+	 * Add standard sticky header options, shared across
+	 * all theme bases.
+	 */
+	if ( themeblvd_supports( 'display', 'sticky' ) ) {
+
+		$options['header_sticky'] = jumpstart_get_shared_options( 'sticky-header' );
+
+	}
+
+	/*
 	 * Add standard mobile header options, shared across
 	 * all theme bases.
 	 */
@@ -864,6 +874,8 @@ function jumpstart_ent_options() {
 	themeblvd_add_option_section( 'styles', 'ent_header_info',   __( 'Header Info', '@@text-domain' ),     null, $options['header_info'] );
 
 	themeblvd_add_option_section( 'styles', 'ent_header',        __( 'Header', '@@text-domain' ),          null, $options['header'] );
+
+	themeblvd_add_option_section( 'styles', 'ent_sticky_header', __( 'Sticky Header', '@@text-domain' ),   null, $options['header_sticky'] );
 
 	themeblvd_add_option_section( 'styles', 'ent_header_mobile', __( 'Mobile Header', '@@text-domain' ),   null, $options['header_mobile'] );
 

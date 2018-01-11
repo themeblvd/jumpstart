@@ -395,6 +395,9 @@ function jumpstart_ag_css() {
 	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $bg, '0.9' ) );
 	$print .= "}\n";
 
+	// Sticky Header
+	$print .= themeblvd_get_shared_style( 'sticky-header' );
+
 	// Mobile Header
 	$print .= themeblvd_get_shared_style( 'mobile-header' );
 

@@ -39,6 +39,32 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 	switch ( $set ) {
 
 		/*
+		 * Set up sticky header options.
+		 */
+		case 'sticky-header':
+			$options['sticky_info'] = array(
+				'id'   => 'sticky_info',
+				'desc' => __( 'These styles are applied to your sticky header, which displays when the standard website header is scrolled out of view.', '@@text-domain' ),
+				'type' => 'info',
+			);
+
+			$options['sticky_height'] = array(
+				'id'      => 'sticky_height',
+				'name'    => __( 'Height', '@@text-domain' ),
+				'desc'    => __( 'Set the height of your sticky header.', '@@text-domain' ),
+				'std'     => '50px',
+				'type'    => 'slide',
+				'options' => array(
+					'min'   => '40',
+					'max'   => '100',
+					'step'  => '1',
+					'units' => 'px',
+				)
+			);
+
+			break;
+
+		/*
 		 * Set up mobile header options.
 		 */
 		case 'mobile-header':
@@ -593,6 +619,38 @@ function themeblvd_get_shared_style( $set ) {
 	$output = '';
 
 	switch ( $set ) {
+
+		/*
+		 * Style the sticky header.
+		 */
+		case 'sticky-header':
+			$height = intval( themeblvd_get_option( 'sticky_height' ) );
+
+			if ( $height ) {
+
+				$output .= ".tb-sticky-header > .wrap,\n";
+
+				$output .= ".tb-sticky-header .tb-primary-menu > li {\n";
+
+				$output .= sprintf( "\theight: %spx;\n", $height );
+
+				$output .= "}\n";
+
+				$output .= ".tb-sticky-header .logo-sticky img {\n";
+
+				$output .= sprintf( "\tmax-height: %spx; /* {height} - 10px */\n", $height - 10 );
+
+				$output .= "}\n";
+
+				$output .= ".tb-sticky-header .tb-primary-menu > li > .menu-btn {\n";
+
+				$output .= sprintf( "\tline-height: %spx;\n", $height );
+
+				$output .= "}\n";
+
+			}
+
+			break;
 
 		/*
 		 * Style the mobile header.

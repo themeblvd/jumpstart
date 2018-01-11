@@ -780,6 +780,9 @@ function jumpstart_su_css() {
 
 	}
 
+	// Sticky Header
+	$print .= themeblvd_get_shared_style( 'sticky-header' );
+
 	// Mobile Header
 	$print .= themeblvd_get_shared_style( 'mobile-header' );
 

@@ -863,6 +863,9 @@ function jumpstart_ent_css() {
 	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_option( 'menu_sub_bg_color' ) );
 	$print .= "}\n";
 
+	// Sticky Header
+	$print .= themeblvd_get_shared_style( 'sticky-header' );
+
 	// Mobile Header
 	$print .= themeblvd_get_shared_style( 'mobile-header' );
 
