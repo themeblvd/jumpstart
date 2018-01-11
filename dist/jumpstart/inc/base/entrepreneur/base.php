@@ -642,7 +642,7 @@ function jumpstart_ent_css() {
 
 		if ( $border > 0 ) {
 
-			$print .= ".tb-boxed .tb-sticky-menu {\n";
+			$print .= ".tb-boxed .tb-sticky-header {\n";
 
 			$width = 1170 - ( 2 * $border );
 
@@ -653,7 +653,7 @@ function jumpstart_ent_css() {
 
 			$print .= "@media (max-width: 1199px) {\n";
 
-			$print .= "\t.tb-boxed .tb-sticky-menu {\n";
+			$print .= "\t.tb-boxed .tb-sticky-header {\n";
 
 			$width = 960 - ( 2 * $border );
 
@@ -793,7 +793,7 @@ function jumpstart_ent_css() {
 	$print .= ".header-content {\n";
 	$print .= sprintf( "\theight: %spx;\n", $height );
 	$print .= "}\n";
-	$print .= ".header-content .header-logo img {\n";
+	$print .= ".header-content .site-logo img {\n";
 	$print .= sprintf( "\theight: %spx;\n", $height - 20 );
 	$print .= "}\n";
 
@@ -815,7 +815,7 @@ function jumpstart_ent_css() {
 	$menu_font = themeblvd_get_option( 'font_menu' );
 
 	$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
-	$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
+	$print .= ".tb-sticky-header .tb-primary-menu > li > .menu-btn,\n";
 	$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
 	$print .= ".tb-mobile-panel .tb-mobile-menu > li > .menu-btn {\n";
 	$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $menu_font ) );
@@ -869,7 +869,7 @@ function jumpstart_ent_css() {
 	// Header sticky menu
 	if ( in_array( $header_bg_type, array( 'color', 'texture', 'image' ) ) ) {
 
-		$print .= ".tb-sticky-menu {\n";
+		$print .= ".tb-sticky-header {\n";
 		$print .= sprintf( "\tbackground-color: %s;\n", $header_bg_color );
 		$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $header_bg_color, '0.9' ) );
 		$print .= "}\n";
@@ -880,7 +880,7 @@ function jumpstart_ent_css() {
 
 	if ( $font ) {
 
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn {\n";
+		$print .= ".tb-sticky-header .tb-primary-menu > li > .menu-btn {\n";
 		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
 		$print .= sprintf( "\tletter-spacing: %s;\n", themeblvd_get_option( 'font_menu_sp' ) );
 		$print .= sprintf( "\ttext-transform: %s;\n", themeblvd_get_text_transform( $font ) );
@@ -1159,7 +1159,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_ent_header_class' );
 /*
  * Add CSS classes to mobile header.
  */
-add_filter( 'themeblvd_header_class', 'jumpstart_mobile_header_class' );
+add_filter( 'themeblvd_mobile_header_class', 'jumpstart_mobile_header_class' );
 
 /*
  * Modify mobile header breakpoint with user option.

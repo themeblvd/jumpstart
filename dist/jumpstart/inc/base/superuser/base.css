@@ -58,11 +58,11 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Header Logo */
-.site-header.dark .header-text-logo .tb-text-logo,
-.site-header.dark .header-text-logo .tagline {
+.site-header.dark .site-logo.text-logo .tb-text-logo,
+.site-header.dark .site-logo.text-logo .tagline {
 	color: #fff;
 }
-.js-center-logo .header-content .header-logo {
+.js-center-logo .header-content .site-logo {
 	float: none;
 	margin: auto;
 }
@@ -83,7 +83,7 @@ Author URI: http://www.themeblvd.com
 }
 
 /* Mobile Header Logo */
-.tb-mobile-header.light .header-text-logo .tb-text-logo {
+.tb-mobile-header.light .site-logo.text-logo .tb-text-logo {
 	color: #333;
 }
 
@@ -200,24 +200,6 @@ Author URI: http://www.themeblvd.com
 	text-align: right;
 }
 
-/* Sticky Menu */
-.tb-sticky-menu.dark .tb-primary-menu > li > .menu-btn {
-	color: #ffffff;
-}
-.tb-sticky-menu.dark .tb-primary-menu > li > .menu-btn:hover {
-	background-color: #000000;
-	background-color: rgba(255,255,255,.1);
-}
-.tb-sticky-menu.dark .tb-primary-menu > li.highlight > a {
-	border-color: #ffffff;
-	color: #ffffff;
-}
-.tb-sticky-menu.dark .tb-primary-menu > li.highlight > .menu-btn:hover {
-	background-color: #ffffff;
-	border-color: transparent;
-	color: #333333;
-}
-
 /* Side Panel */
 .tb-side-panel.light .menu-btn,
 .tb-side-panel.light .secondary-menu a {
@@ -311,6 +293,30 @@ Author URI: http://www.themeblvd.com
 	color: rgba(26,26,26,.25);
 }
 
+/* =Sticky Header
+----------------------------------------------- */
+
+.tb-sticky-header.dark .tb-text-logo {
+	color: #fff;
+}
+.tb-sticky-header.dark .tb-primary-menu > li > .menu-btn {
+	color: #fff;
+}
+.tb-sticky-header.dark .tb-primary-menu > li > .menu-btn:hover,
+.tb-sticky-header.dark .tb-primary-menu > li > .menu-btn:focus {
+	background-color: #000;
+	background-color: rgba(255, 255, 255, .1);
+}
+.tb-sticky-header.dark .tb-primary-menu > li.highlight > a {
+	border-color: #fff;
+	color: #fff;
+}
+.tb-sticky-header.dark .tb-primary-menu > li.highlight > .menu-btn:hover {
+	background-color: #fff;
+	border-color: transparent;
+	color: #333;
+}
+
 /* =Bottom
 ----------------------------------------------- */
 
@@ -393,18 +399,18 @@ Author URI: http://www.themeblvd.com
 .tb-boxed .site-header.transparent {
 	background-color: transparent;
 }
-.tb-boxed .tb-sticky-menu {
+.tb-boxed .tb-sticky-header {
 	margin-left: -585px;
 	max-width: 1170px;
 	left: 50%;
 }
 @media (max-width: 1199px) {
-	.tb-boxed .tb-sticky-menu {
+	.tb-boxed .tb-sticky-header {
 		margin-left: -480px;
 		max-width: 960px;
 	}
 }
-.tb-boxed .tb-sticky-menu > .wrap {
+.tb-boxed .tb-sticky-header > .wrap {
 	padding: 0 15px;
 }
 .tb-boxed .header-top > .wrap,

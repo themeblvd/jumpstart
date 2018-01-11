@@ -325,7 +325,7 @@ function jumpstart_ag_css() {
 	if ( $font ) {
 
 		$print .= ".header-nav .tb-primary-menu > li > .menu-btn,\n";
-		$print .= ".tb-sticky-menu .tb-primary-menu > li > .menu-btn,\n";
+		$print .= ".tb-sticky-header .tb-primary-menu > li > .menu-btn,\n";
 		$print .= ".tb-side-panel .menu > li > .menu-btn,\n";
 		$print .= ".tb-mobile-panel .tb-mobile-menu > li > .menu-btn {\n";
 		$print .= sprintf( "\tfont-family: %s;\n", themeblvd_get_font_face( $font ) );
@@ -390,7 +390,7 @@ function jumpstart_ag_css() {
 
 	}
 
-	$print .= ".tb-sticky-menu {\n";
+	$print .= ".tb-sticky-header {\n";
 	$print .= sprintf( "\tbackground-color: %s;\n", $bg );
 	$print .= sprintf( "\tbackground-color: %s;\n", themeblvd_get_rgb( $bg, '0.9' ) );
 	$print .= "}\n";
@@ -549,15 +549,6 @@ add_filter( 'body_class', 'jumpstart_ag_body_class' );
  */
 function jumpstart_ag_header_class( $class ) {
 
-	// Remove sticky class, because we're adding it to the body.
-	$key = array_search( 'has-sticky', $class );
-
-	if ( false !== $key ) {
-
-		unset( $class[ $key ] );
-
-	}
-
 	// Background brightness.
 	if ( themeblvd_config( 'suck_up' ) ) {
 
@@ -605,7 +596,7 @@ add_filter( 'themeblvd_header_class', 'jumpstart_ag_header_class' );
 /*
  * Add CSS classes to mobile header.
  */
-add_filter( 'themeblvd_header_class', 'jumpstart_mobile_header_class' );
+add_filter( 'themeblvd_mobile_header_class', 'jumpstart_mobile_header_class' );
 
 /*
  * Modify mobile header breakpoint with user option.
