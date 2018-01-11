@@ -693,11 +693,11 @@ body {
 	max-height: 64px;
 	width: auto;
 }
-.tb-mobile-header .site-logo.text-logo .tb-text-logo {
+.tb-mobile-header .site-logo .tb-text-logo {
 	color: #ffffff;
 	font-size: 16px;
 }
-.tb-mobile-header .site-logo.text-logo .tagline {
+.tb-mobile-header .site-logo .tagline {
 	display: none;
 }
 

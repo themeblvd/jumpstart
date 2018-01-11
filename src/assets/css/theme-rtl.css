@@ -687,7 +687,7 @@ body {
 
 /* Logo */
 .tb-mobile-header .site-logo {
-	margin: 0 auto 0 0;
+	margin: 0 0 0 auto;
 }
 .tb-mobile-header .site-logo img {
 	max-height: 64px;
