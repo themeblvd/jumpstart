@@ -612,25 +612,20 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 
 	if ( $logo ) {
 
-		$class = 'header-logo header_logo header_logo_' . $logo['type'];
+		$class = 'site-logo';
 
-		if ( 'custom' === $logo['type'] || 'title' === $logo['type'] || 'title_tagline' === $logo['type'] ) {
+		if ( in_array( $logo['type'], array( 'custom', 'title', 'title_tagline' ) ) ) {
 
-			$class .= ' header-text-logo';
+			$class .= ' text-logo';
 
-			$class .= ' header_logo_text'; // @deprecated legacy class.
+			if ( 'title_tagline' === $logo['type'] || ( 'custom' === $logo['type'] && ! empty( $logo['custom_tagline'] ) ) ) {
 
-		}
+				$class .= ' has-tagline';
 
-		if ( 'custom' === $logo['type'] && ! empty( $logo['custom_tagline'] ) ) {
+			}
+		} elseif ( 'image' === $logo['type'] ) {
 
-			$class .= ' header_logo_has_tagline';
-
-		}
-
-		if ( 'title_tagline' === $logo['type'] ) {
-
-			$class .= ' header_logo_has_tagline';
+			$class .= ' image-logo';
 
 		}
 
@@ -818,7 +813,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 			}
 		}
 
-		$output .= '</div><!-- .header-logo (end) -->';
+		$output .= '</div><!-- .site-logo (end) -->';
 
 	}
 

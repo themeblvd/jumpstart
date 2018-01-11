@@ -616,7 +616,7 @@ function themeblvd_get_shared_style( $set ) {
 
 			$output .= "}\n";
 
-			$output .= ".tb-mobile-header .header-logo img {\n";
+			$output .= ".tb-mobile-header .site-logo img {\n";
 
 			$height = themeblvd_get_option( 'header_mobile_height' );
 
