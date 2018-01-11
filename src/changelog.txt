@@ -4,39 +4,73 @@ Jump Start Changelog
 2.2.0 - XX/XX/XXXX
 ------------------
 
-* **Important General Notes:**
-	* If icons you've implemented are not showing up, [take a look here](https://fontawesome.com/how-to-use/upgrading-from-4#icon-name-changes-complete-list) to make sure you're not using FontAwesome icon names that they changed in v5.
-	* The following sections at *Appearance > Theme Options* have been added or modified. Make sure to double check these options are set up the way you want after updating.
-		* *Styles > Mobile Header* (All theme bases, except Developer)
-		* *Styles > Footer* -- All theme bases, except Developer.
-		* *Layout > Contact* -- All theme bases, except Agent.
-		* *Content > General* -- All theme bases.
-		* *Plugins > bbPress* -- All theme bases, if using bbPress plugin.
-		* *Plugins > Gravity Forms* -- All theme bases, if using Gravity Forms plugin.
-		* *Plugins > WooCommerce* -- All theme bases, if using WooCommerce plugin.
-	* With this theme update, you must also update the following plugins, if you're using any of them.
-		* Theme Blvd Layout Builder to 2.2+.
-		* Theme Blvd Widget Areas to 1.3+.
-		* Theme Blvd Shortcodes to 1.6+.
-		* Tweeple to 0.9.5+.
+**Important General Notes:**
 
-* **Important Developer Notes:**
-	* If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
-	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
-	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
-	* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
+* If icons you've implemented are not showing up, [take a look here](https://fontawesome.com/how-to-use/upgrading-from-4#icon-name-changes-complete-list) to make sure you're not using FontAwesome icon names that they changed in v5.
+* The following sections at *Appearance > Theme Options* have been added or modified. Make sure to double check these options are set up the way you want after updating.
+	* (new) *Styles > Sticky Header* -- All theme bases, except Developer.
+	* (modified) *Styles > Mobile Header* -- All theme bases, except Developer.
+	* (modified) *Styles > Footer* -- All theme bases, except Developer.
+	* (new) *Layout > Sticky Header* -- All theme bases.
+	* (new) *Layout > Contact* -- All theme bases, except Agent.
+	* (modified) *Content > General* -- All theme bases.
+	* (modified) *Plugins > bbPress* -- All theme bases, if using bbPress plugin.
+	* (modified) *Plugins > Gravity Forms* -- All theme bases, if using Gravity Forms plugin.
+	* (modified) *Plugins > WooCommerce* -- All theme bases, if using WooCommerce plugin.
+* With this theme update, you must also update the following plugins, if you're using any of them.
+	* Theme Blvd Layout Builder to 2.2+.
+	* Theme Blvd Widget Areas to 1.3+.
+	* Theme Blvd Shortcodes to 1.6+.
+	* Tweeple to 0.9.5+.
 
-* **Full List of Changes:**
-* New: Theme Code Overhaul
+**Important Developer Notes:**
+
+* If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
+* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
+* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
+* Website logo CSS classes have been re-structured; so check any custom CSS you may have applied to your website's header.
+
+**Full List of Changes:**
+
+* New: Added a new feature for displaying a banner across post archives; see *Appearance > Theme Options > Content > Archives > Apply banner to post archives*.
+* New: Added option for sticky header height at *Appearance > Theme Options > Styles > Sticky Header* (for all theme bases except Developer).
+* New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
+* New: Added option for mobile header navigational icon color at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
+* New: Added option for mobile header breakpoint at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
+* New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
+* New: Added support for applying background shade to individual columns in the layout builder.
+* New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
+* New: Added "Custom Font" selection to typography options; this allows you to use custom web fonts with the theme, that you've included yourself through customization or a third-party plugin.
+* New: Added "Small Header Font" option at *Appearance > Theme Options > Styles > Typography* (this already existed for Agent theme base).
+* New: Added new suggested plugin manager; this swaps [TGMPA](http://tgmpluginactivation.com) for [My Plugin Manager](http://mypluginmanager.com).
+* New: Added options section at *Appearance > Theme Options > Layout > Sticky Header*; you can now designate a custom logo for the sticky header.
+* New: Added options section at *Appearance > Theme Options > Layout > Contact* (this already existed for Agent theme base); your social media contact icons are no longer directly associated with the website header, but can be displayed in different locations.
+* New: Contact icons can now show directly in the main menu of the Entrepreneur and Agent theme bases; this also replaces the popover style contact icons that used to exist with the Entrepreneur base.
+* New: [FontAwesome 5](https://fontawesome.com) Implementation.
+	* More modern implementation of icons through JavaScript.
+	* Improved admin icon browser with live search.
+	* More icons to choose from; all free FontAwesome 5 solid and brand icons included by default.
+	* New filters added for developers to implement FontAwesome Pro (or alternative icon styles) on frontend and into admin icon browser.
+* Theme Code Overhaul
 	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
-	* All template part files moved from the theme root to a `template-parts` directory.
-	* New template parts added, `content-head.php`, `content-header.php`, `content-mobile-header.php`, `content-footer.php`, `content-panel.php` and `content-mobile-panel.php`.
+	* All template part files were moved from the theme root to a `template-parts` directory; **if using any template parts in your child theme, make sure you also move these into a `template-parts` directory!**
+	* New template parts added, that can be copied to your child theme:
+		* `/template-parts/content-head.php` -- Edit the website `<head>`.
+		* `/template-parts/content-header.php` -- Edit the desktop website header content.
+		* `/template-parts/content-mobile-header.php` -- Edit the mobile website header content.
+		* `/template-parts/content-sticky-header.php` -- Edit the sticky header content.
+		* `/template-parts/content-footer.php` -- Edit the website footer.
+		* `/template-parts/content-panel.php` -- Edit desktop side panel content.
+		* `/template-parts/content-mobile-panel.php` -- Edit the mobile menu panel content.
+	* Mobile header is now a completely separate component from the desktop header.
+	* Sticky header and mobile panel content can now be edited through template parts and/or action hooks; they no longer rely solely on JavaScript to be built.
 	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
 	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
 	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
 	* Improved security for saving options added to Edit Tag and Edit Category screens.
 	* Improved security for saving options added to Edit Profile screen.
+	* Improved security for clearing the theme options page.
 	* Re-structured all admin JavaScript for better organization and efficiency.
 	* Re-structured all admin CSS for better organization and efficiency.
 	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
@@ -53,18 +87,13 @@ Jump Start Changelog
 	* Removed old html5shiv for HTML5 compatibility with IE8.
 	* Removed `themeblvd_featured_*` action hooks, which were deprecated in framework 2.5.
 	* Removed `responsiveness` from the global configuration; it's now assumed that your site will always be responsive.
-	* Removed `themeblvd_viewport_default()` function, that was hooked to `wp_head`; now you can edit `content-head.php`.
+	* Removed `themeblvd_viewport_default()` function, that was hooked to `wp_head`; now you can just edit `content-head.php` instead.
 	* Optimized (minified) CSS file included on frontend for each theme base.
-* New: [FontAwesome 5](https://fontawesome.com) Implementation.
-	* More modern implementation of icons through JavaScript.
-	* Improved admin icon browser with live search.
-	* More icons to choose from; all free FontAwesome 5 solid and brand icons included by default.
-	* New filters added for developers to implement FontAwesome Pro (or alternative icon styles) on frontend and into admin icon browser.
 * Third-Party Plugin Compatibility
 	* [bbPress](https://wordpress.org/plugins/bbpress/): "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* [bbPress](https://wordpress.org/plugins/bbpress/): Added new option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
 	* [Gravity Forms](http://themeblvd.com/links/gforms): Added new option to disable theme's Gravity Forms styling at *Appearance > Theme Options > Plugins > Gravity Forms*.
-	* [Subtitles](https://wordpress.org/plugins/subtitles/): When a subtitle exists for a post in a post showcase, it will replace the current taxonomy term output, when hovering on the featured image.
+	* [Subtitles](https://wordpress.org/plugins/subtitles/): When a subtitle exists for a post in a post showcase, it will replace the current taxonomy (i.e. category or portfolio) term output, when hovering on the featured image.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Added new option to disable theme's custom WooCommerce styling at *Appearance > Theme Options > Plugins > WooCommerce*.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Added new "Shop Banner" option at *Appearance > Theme Options > Plugins > WooCommerce.*
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Removed any legacy code for WooCommerce versions prior to 3.0.
@@ -73,18 +102,7 @@ Jump Start Changelog
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed deprecated use of `WC_Cart::get_cart_url`.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed WPML options showing on Theme Options, when WPML isn't installed.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed theme's language switcher not getting added to the mobile navigation, when using the Agent base.
-* New: Added a new feature for displaying a banner across post archives; see *Appearance > Theme Options > Content > Archives > Apply banner to post archives*.
-* New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header*.
-* New: Added option for mobile header navigational icon color at *Appearance > Theme Options > Styles > Mobile Header*.
-* New: Added option for mobile header breakpoint at *Appearance > Theme Options > Styles > Mobile Header*.
-* New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
-* New: Added support for applying background shade to individual columns in the layout builder.
-* New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
-* New: Added "Custom Font" selection to typography options; this allows you to use custom fonts with the theme, that you've included yourself through customization or a third-party plugin.
-* New: Added "Small Header Font" option at *Appearance > Theme Options > Styles > Typography*, to Super User, Executive and Entrepreneur theme bases (like Agent base already has).
-* New: Added new suggested plugin manager; this swaps TGMPA for [My Plugin Manager](http://mypluginmanager.com).
-* New: Added options section at *Appearance > Theme Options > Layout > Contact* for Developer, Super User, Executive and Entrepreneur bases; your social media contact icons are no longer directly associated with the website header, but can be displayed in different locations.
-* Improvement: Mobile header styling is now applied consistently at 991px and below to ease the transition from desktop to mobile, and generally simplify styling.
+* Improvement: There is now a clear separation between the desktop header and the mobile header, and when one is shown, the other is hidden.
 * Improvement: Footer design and user options have now been standardized across all theme bases; for all theme bases except Developer, see modified options at *Appearance > Theme Options > Styles > Footer*.
 * Improvement: Better handling of background video; instead of just a black screen, the placeholder image will now display as a background image while the video is loading, and continue to show when the video can't be loaded.
 * Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
@@ -97,7 +115,6 @@ Jump Start Changelog
 * Improvement: New styling for the "Tweet" element added to the layout builder from the [Tweeple plugin](https://wordpress.org/plugins/tweeple).
 * Improvement: There is now only one Post Slider and Simple Slider element; apply the "Popout" display option to these elements to achieve the full-width versions, which now display inline images.
 * Improvement: For simplification, side panel background color and mobile menu background color options on Super User, Executive and Entrepreneur theme bases have been combined into one option; this was already the case on the Agent theme base.
-* Improvement: Contact icons can now show in the main menu of the Entrepreneur and Agent theme bases; this also replaces the popover style contact icons that used to exist with the Entrepreneur base.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
 * Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
 * Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.
@@ -106,6 +123,7 @@ Jump Start Changelog
 * Fixed: Social contact icons not showing in correct color on transparent header in some cases, with Super User and Executive theme bases.
 * Fixed: "Blank Page" template not displaying correctly with white background on Agent base.
 * Fixed: Minor responsive styling issues with epic thumbnail parallax background images.
+* Fixed: Self-hosted background video error in Safari, "[Error] TypeError: undefined is not an object ..."
 * Removed: Header background options were simplified a bit for Super User, Executive and Entrepreneur theme bases; there are no more background parallax, slideshow or video options.
 * Removed: No more "Background Color Brightness" option at *Appearance > Theme Options > Styles > Mobile Header*; use new "Icon Color" option instead.
 * Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
