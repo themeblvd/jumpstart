@@ -134,20 +134,28 @@ function themeblvd_save_page_atts( $post_id ) {
  */
 function themeblvd_clear_options() {
 
-	if ( isset( $_POST['themeblvd_clear_options'] ) ) {
+	if ( ! isset( $_POST['themeblvd_clear_options'] ) ) {
 
-		check_admin_referer( $_POST['option_page'] . '-options' );
-
-		delete_option( $_POST['themeblvd_clear_options'] );
-
-		add_settings_error(
-			$_POST['themeblvd_clear_options'] ,
-			'clear_defaults',
-			__( 'Options cleared from database.', 'jumpstart' ),
-			'themeblvd-error error'
-		);
+		return;
 
 	}
+
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+
+		return;
+
+	}
+
+	check_admin_referer( $_POST['option_page'] . '-options' );
+
+	delete_option( $_POST['themeblvd_clear_options'] );
+
+	add_settings_error(
+		$_POST['themeblvd_clear_options'] ,
+		'clear_defaults',
+		__( 'Options cleared from database.', 'jumpstart' ),
+		'themeblvd-error error'
+	);
 
 }
 
