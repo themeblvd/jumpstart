@@ -779,7 +779,7 @@ body {
 	-webkit-justify-content: space-between;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
-	height: 40px; /* Sticky header height = 40px */
+	height: 50px; /* Sticky header height = 50px */
 }
 .tb-sticky-header .logo-sticky {
 	margin: 0 0 0 auto;
@@ -790,7 +790,7 @@ body {
 
 /* Logo */
 .tb-sticky-header .logo-sticky img {
-	max-height: 30px; /* {Sticky header height} - 10px = 30px */
+	max-height: 40px; /* {Sticky header height} - 10px = 40px */
 	width: auto;
 }
 .tb-sticky-header .logo-sticky .tb-text-logo {
@@ -806,12 +806,12 @@ body {
 	position: static; /* Allow mega menu to position based on entire .wrap */
 }
 .tb-sticky-header .tb-primary-menu > li {
-	height: 40px; /* Sticky header height = 40px */
+	height: 50px; /* Sticky header height = 50px */
 }
 .tb-sticky-header .tb-primary-menu > li > .menu-btn {
 	color: #666;
-	font-size: 11px;
-	line-height: 40px;
+	font-size: 12px;
+	line-height: 50px; /* Smallest height of sticky header */
 	padding: 0 12px;
 	position: relative;
     top: 50%;
