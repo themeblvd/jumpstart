@@ -12,43 +12,47 @@
  * @since      @@name-framework 2.7.0
  */
 ?>
-<header id="branding" <?php themeblvd_header_class(); ?>>
+<div id="top">
 
-	<div class="wrap clearfix">
+	<header id="branding" <?php themeblvd_header_class(); ?>>
 
-		<?php
-		/**
-		 * Fires at the top of the header.
-		 *
-		 * By default, this is where the optional
-		 * header top bar gets displayed.
-		 *
-		 * @hooked themeblvd_header_top_default - 10
-		 *
-		 * @since @@name-framework 2.0.0
-		 */
-		do_action( 'themeblvd_header_top' );
+		<div class="wrap clearfix">
 
-		/**
-		 * Fires where the content of the header
-		 * goes.
-		 *
-		 * @hooked themeblvd_header_content_default - 10
-		 *
-		 * @since @@name-framework 2.0.0
-		 */
-		do_action( 'themeblvd_header_content' );
+			<?php
+			/**
+			 * Fires at the top of the header.
+			 *
+			 * By default, this is where the optional
+			 * header top bar gets displayed.
+			 *
+			 * @hooked themeblvd_header_top_default - 10
+			 *
+			 * @since @@name-framework 2.0.0
+			 */
+			do_action( 'themeblvd_header_top' );
 
-		/**
-		 * Fires where the main menu goes.
-		 *
-		 * @hooked themeblvd_header_menu_default - 10
-		 *
-		 * @since @@name-framework 2.0.0
-		 */
-		do_action( 'themeblvd_header_menu' );
-		?>
+			/**
+			 * Fires where the content of the header
+			 * goes.
+			 *
+			 * @hooked themeblvd_header_content_default - 10
+			 *
+			 * @since @@name-framework 2.0.0
+			 */
+			do_action( 'themeblvd_header_content' );
 
-	</div><!-- .wrap -->
+			/**
+			 * Fires where the main menu goes.
+			 *
+			 * @hooked themeblvd_header_menu_default - 10
+			 *
+			 * @since @@name-framework 2.0.0
+			 */
+			do_action( 'themeblvd_header_menu' );
+			?>
 
-</header><!-- #branding -->
+		</div><!-- .wrap -->
+
+	</header><!-- #branding -->
+
+</div><!-- #top -->

@@ -54,9 +54,9 @@
 			do_action( 'themeblvd_footer_before' );
 			?>
 
-			<!-- FOOTER (start) -->
-
 			<?php if ( themeblvd_config( 'bottom' ) ) : ?>
+
+				<!-- FOOTER (start) -->
 
 				<?php if ( themeblvd_config( 'bottom_builder_post_id' ) ) : ?>
 
@@ -67,21 +67,17 @@
 						do_action( 'themeblvd_builder_content', 'footer' );
 						?>
 
-					</div><!-- #custom-bottom (end) -->
+					</div><!-- #custom-bottom -->
 
 				<?php else : ?>
 
-					<div id="bottom">
-
-						<?php themeblvd_get_template_part( 'footer' ); ?>
-
-					</div><!-- #bottom -->
+					<?php themeblvd_get_template_part( 'footer' ); ?>
 
 				<?php endif; ?>
 
-			<?php endif; ?>
+				<!-- FOOTER (end) -->
 
-			<!-- FOOTER (end) -->
+			<?php endif; ?>
 
 			<?php
 			/**

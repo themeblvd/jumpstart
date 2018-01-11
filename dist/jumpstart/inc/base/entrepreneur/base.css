@@ -518,23 +518,27 @@ Author URI: http://www.themeblvd.com
 /* =Boxed Layout
 -----------------------------------------------*/
 
-.tb-boxed #container {
+.tb-boxed #container,
+.tb-boxed .tb-mobile-header {
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1170px;
 }
 @media (max-width: 1199px) {
-	.tb-boxed #container {
+	.tb-boxed #container,
+	.tb-boxed .tb-mobile-header {
 		max-width: 960px;
 	}
 }
 @media (max-width: 991px) {
-	.tb-boxed #container {
+	.tb-boxed #container,
+	.tb-boxed .tb-mobile-header {
 		max-width: 720px;
 	}
 }
 @media (max-width: 767px) {
-	.tb-boxed #container {
+	.tb-boxed #container,
+	.tb-boxed .tb-mobile-header {
 		max-width: 480px;
 	}
 }
@@ -564,6 +568,7 @@ Author URI: http://www.themeblvd.com
 .tb-boxed .header-top > .wrap,
 .tb-boxed .header-content > .wrap,
 .tb-boxed .header-nav > .wrap,
+.tb-boxed .tb-mobile-header > .wrap,
 .tb-boxed .site-breadcrumbs > .wrap,
 .tb-boxed .site-inner > .wrap,
 .tb-boxed .element-section > .element.no-popout,
@@ -575,6 +580,12 @@ Author URI: http://www.themeblvd.com
 .tb-boxed .header-content > .wrap {
 	padding-right: 15px;
 	padding-left: 15px;
+}
+.tb-boxed .tb-mobile-header > .wrap {
+	padding: 20px 10px 20px 20px;
+}
+.tb-boxed.rtl .tb-mobile-header > .wrap {
+	padding: 20px 20px 20px 10px;
 }
 .tb-boxed #breadcrumbs {
 	padding: 30px 30px 0 30px;

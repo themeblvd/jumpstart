@@ -55,19 +55,15 @@
 			do_action( 'themeblvd_header_before' );
 			?>
 
-			<!-- HEADER (start) -->
-
 			<?php if ( themeblvd_config( 'top' ) ) : ?>
 
-				<div id="top">
+				<!-- HEADER (start) -->
 
-					<?php themeblvd_get_template_part( 'header' ); ?>
+				<?php themeblvd_get_template_part( 'header' ); ?>
 
-				</div><!-- #top -->
+				<!-- HEADER (end) -->
 
 			<?php endif; ?>
-
-			<!-- HEADER (end) -->
 
 			<?php
 			/**
