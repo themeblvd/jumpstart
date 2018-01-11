@@ -1007,14 +1007,6 @@ function jumpstart_su_css() {
 
 	$print = htmlspecialchars_decode( $print );
 
-	if ( ! themeblvd_script_debug() ) {
-
-		$print = str_replace( "\n", '', $print );
-
-		$print = str_replace( "\t", '', $print );
-
-	}
-
 	/**
 	 * Filters final printed inline CSS output
 	 * for Super User theme base.
