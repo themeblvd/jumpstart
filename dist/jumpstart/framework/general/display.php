@@ -955,6 +955,66 @@ if ( ! function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) {
 	}
 }
 
+if ( ! function_exists( 'themeblvd_footer_default' ) ) {
+
+	/**
+	 * Display the website footer.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_footer` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_footer_default() {
+
+		/**
+		 * Fires before the footer.
+		 *
+		 * @since Theme_Blvd 2.0.0
+		 */
+		do_action( 'themeblvd_footer_before' );
+		?>
+
+		<?php if ( themeblvd_config( 'bottom' ) ) : ?>
+
+			<!-- FOOTER (start) -->
+
+			<?php if ( themeblvd_config( 'bottom_builder_post_id' ) ) : ?>
+
+				<div id="custom-bottom" class="clearfix" role="contentinfo">
+
+					<?php
+					/** This action is documented in template_builder.php */
+					do_action( 'themeblvd_builder_content', 'footer' );
+					?>
+
+				</div><!-- #custom-bottom -->
+
+			<?php else : ?>
+
+				<div id="bottom">
+
+					<?php themeblvd_get_template_part( 'footer' ); ?>
+
+				</div><!-- #bottom -->
+
+			<?php endif; ?>
+
+			<!-- FOOTER (end) -->
+
+		<?php endif; ?>
+
+		<?php
+		/**
+		 * Fires after the footer.
+		 *
+		 * @since Theme_Blvd 2.0.0
+		 */
+		do_action( 'themeblvd_footer_after' );
+
+	}
+}
+
 if ( ! function_exists( 'themeblvd_footer_content_default' ) ) {
 
 	/**

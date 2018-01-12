@@ -75,6 +75,7 @@ Jump Start Changelog
 	* Re-structured all admin JavaScript for better organization and efficiency.
 	* Re-structured all admin CSS for better organization and efficiency.
 	* Added action hook `themeblvd_header`, giving you control over the entire website header, as a whole.
+	* Added action hook `themeblvd_footer`, giving you control over the entire website footer, as a whole.
 	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_do_debug_info` to return `false`.
 	* Added filter to remove admin framework welcome message; just filter `themeblvd_do_welcome_message` to `false`.
 	* Added filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.

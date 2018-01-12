@@ -47,45 +47,13 @@
 			}
 
 			/**
-			 * Fires before the header.
+			 * Fires where the website footer goes.
 			 *
-			 * @since @@name-framework 2.0.0
-			 */
-			do_action( 'themeblvd_footer_before' );
-			?>
-
-			<?php if ( themeblvd_config( 'bottom' ) ) : ?>
-
-				<!-- FOOTER (start) -->
-
-				<?php if ( themeblvd_config( 'bottom_builder_post_id' ) ) : ?>
-
-					<div id="custom-bottom" class="clearfix" role="contentinfo">
-
-						<?php
-						/** This action is documented in template_builder.php */
-						do_action( 'themeblvd_builder_content', 'footer' );
-						?>
-
-					</div><!-- #custom-bottom -->
-
-				<?php else : ?>
-
-					<?php themeblvd_get_template_part( 'footer' ); ?>
-
-				<?php endif; ?>
-
-				<!-- FOOTER (end) -->
-
-			<?php endif; ?>
-
-			<?php
-			/**
-			 * Fires after the footer.
+			 * @hooked themeblvd_footer_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since @@name-framework 2.7.0
 			 */
-			do_action( 'themeblvd_footer_after' );
+			do_action( 'themeblvd_footer' );
 			?>
 
 		</div><!-- #container -->

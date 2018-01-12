@@ -465,6 +465,7 @@ add_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );
 /*
  * Hook frontend actions for the website footer.
  */
+add_action( 'themeblvd_footer', 'themeblvd_footer_default' );
 add_action( 'themeblvd_footer_content', 'themeblvd_footer_content_default' );
 add_action( 'themeblvd_footer_sub_content', 'themeblvd_footer_sub_content_default' );
 add_action( 'themeblvd_after', 'themeblvd_widgets_below_footer', 5 );
