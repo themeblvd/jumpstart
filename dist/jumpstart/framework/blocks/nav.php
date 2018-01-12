@@ -1119,7 +1119,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 * @param array {
 	 *     Default link arguments.
 	 *
-	 *     @type string $open  FontAwesome icon name used for link.
+	 *     @type string $iconn FontAwesome icon name used for link.
 	 *     @type string $class CSS classes to add to link, like `foo bar baz`.
 	 * }
 	 */
@@ -1155,8 +1155,14 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output Final HTML output.
+	 * @param array  $args {
+	 *     Default link arguments.
+	 *
+	 *     @type string $icon  FontAwesome icon name used for link.
+	 *     @type string $class CSS classes to add to link, like `foo bar baz`.
+	 * }
 	 */
-	return apply_filters( 'themeblvd_lang_popup_trigger', $output );
+	return apply_filters( 'themeblvd_lang_popup_trigger', $output, $args );
 
 }
 
