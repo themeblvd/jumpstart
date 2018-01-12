@@ -74,7 +74,7 @@ Jump Start Changelog
 	* Improved security for clearing the theme options page.
 	* Re-structured all admin JavaScript for better organization and efficiency.
 	* Re-structured all admin CSS for better organization and efficiency.
-	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
+	* Added action hook `themeblvd_header`, giving you control over the entire website header, as a whole.
 	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_do_debug_info` to return `false`.
 	* Added filter to remove admin framework welcome message; just filter `themeblvd_do_welcome_message` to `false`.
 	* Added filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.
@@ -83,6 +83,7 @@ Jump Start Changelog
 	* Added additional CSS classes to contact buttons and social sharing buttons, for more complex styling.
 	* Added improved script and stylesheet debugging by setting WordPress's `SCRIPT_DEBUG` constants to `true`.
 	* Added `alt` tags to parallax background image HTML output from the layout builder; you must re-insert and save your background image for the `alt` tags to start outputting.
+	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
 	* Removed overly complex stylesheet API; all framework CSS files now enqueued through simple, pluggable function `themeblvd_include_styles()`.
 	* Removed the function `themeblvd_responsive_menu_toggle()`; use function `themeblvd_mobile_panel_trigger()` instead.
 	* Removed old html5shiv for HTML5 compatibility with IE8.

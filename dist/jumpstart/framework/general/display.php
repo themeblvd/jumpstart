@@ -34,6 +34,59 @@ if ( ! function_exists( 'themeblvd_widgets_above_header' ) ) {
 	}
 }
 
+if ( ! function_exists( 'themeblvd_header_default' ) ) {
+
+	/**
+	 * Display the website header.
+	 *
+	 * This function is hooked to:
+	 * 1. `themeblvd_header` - 10
+	 *
+	 * @since Theme_Blvd 2.7.0
+	 */
+	function themeblvd_header_default() {
+
+		/**
+		 * Fires just inside the main container, before
+		 * the header has started.
+		 *
+		 * @hooked themeblvd_header_before_default - 10
+		 *
+		 * @since Theme_Blvd 2.0.0
+		 */
+		do_action( 'themeblvd_header_before' );
+		?>
+
+		<?php if ( themeblvd_config( 'top' ) ) : ?>
+
+			<!-- HEADER (start) -->
+
+			<div id="top">
+
+				<?php themeblvd_get_template_part( 'header' ); ?>
+
+			</div><!-- #top -->
+
+			<!-- HEADER (end) -->
+
+		<?php endif; ?>
+
+		<?php
+		/**
+		 * Fires after the header.
+		 *
+		 * By default, this is where full-width and
+		 * full-screen featured images display.
+		 *
+		 * @hooked themeblvd_epic_thumb - 10
+		 *
+		 * @since Theme_Blvd 2.0.0
+		 */
+		do_action( 'themeblvd_header_after' );
+
+	}
+}
+
 if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 
 	/**

@@ -421,6 +421,7 @@ add_action( 'wp_enqueue_scripts', 'themeblvd_include_styles' );
  * Hook frontend actions for the website header.
  */
 add_action( 'themeblvd_before', 'themeblvd_widgets_above_header', 20 );
+add_action( 'themeblvd_header', 'themeblvd_header_default' );
 add_action( 'themeblvd_header_top', 'themeblvd_header_top_default' );
 add_action( 'themeblvd_header_content', 'themeblvd_header_content_default' );
 add_action( 'themeblvd_header_logo', 'themeblvd_header_logo_default' );

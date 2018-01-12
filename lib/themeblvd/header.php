@@ -45,38 +45,13 @@
 
 			<?php
 			/**
-			 * Fires just inside the main container, before
-			 * the header has started.
+			 * Fires where the website header goes.
 			 *
-			 * @hooked themeblvd_header_before_default - 10
+			 * @hooked themeblvd_header_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since @@name-framework 2.7.0
 			 */
-			do_action( 'themeblvd_header_before' );
-			?>
-
-			<?php if ( themeblvd_config( 'top' ) ) : ?>
-
-				<!-- HEADER (start) -->
-
-				<?php themeblvd_get_template_part( 'header' ); ?>
-
-				<!-- HEADER (end) -->
-
-			<?php endif; ?>
-
-			<?php
-			/**
-			 * Fires after the header.
-			 *
-			 * By default, this is where full-width and
-			 * full-screen featured images display.
-			 *
-			 * @hooked themeblvd_epic_thumb - 10
-			 *
-			 * @since @@name-framework 2.0.0
-			 */
-			do_action( 'themeblvd_header_after' );
+			do_action( 'themeblvd_header' );
 
 			/**
 			 * Fires where the breadcrumbs go.
