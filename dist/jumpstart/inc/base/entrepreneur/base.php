@@ -1057,11 +1057,9 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 		$items .= sprintf(
 			'<li class="menu-item level-1 menu-side-panel no-sticky">%s</li>',
-			themeblvd_get_side_trigger(
-				array(
-					'class' => 'menu-btn',
-				)
-			)
+			themeblvd_get_side_trigger( array(
+				'class' => 'menu-btn',
+			) )
 		);
 
 	}
