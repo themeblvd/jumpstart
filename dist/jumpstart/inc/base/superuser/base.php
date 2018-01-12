@@ -412,6 +412,13 @@ function jumpstart_su_css() {
 	// Highlight Color
 	$highlight = themeblvd_get_option( 'highlight' );
 
+	if ( themeblvd_supports( 'plugins', 'wpml' ) && themeblvd_installed( 'wpml' ) ) {
+
+		$print .= ".tb-lang-popup a:hover,\n";
+		$print .= ".tb-lang-popup a:focus,\n";
+
+	}
+
 	$print .= ".tb-tag-cloud .tagcloud a:hover,\n";
 	$print .= ".tb-tags a:hover,\n";
 	$print .= ".tb-tags a:focus,\n";
