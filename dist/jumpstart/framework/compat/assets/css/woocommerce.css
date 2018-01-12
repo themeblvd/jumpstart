@@ -1938,6 +1938,11 @@ ul.woocommerce-info {
   float: left;
 }
 
+.tb-cart-popup .woocommerce-mini-cart__empty-message {
+  margin: 0;
+  padding: 15px;
+}
+
 /* Empty Cart */
 .product_list_widget li.empty,
 .product_list_widget li.empty:hover {

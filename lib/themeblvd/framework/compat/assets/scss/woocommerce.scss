@@ -1706,6 +1706,10 @@ ul.woocommerce-info {
 .rtl .tb-cart-popup .widget_shopping_cart .buttons .button.checkout {
 	float: left;
 }
+.tb-cart-popup .woocommerce-mini-cart__empty-message {
+	margin: 0;
+	padding: 15px;
+}
 
 /* Empty Cart */
 .product_list_widget li.empty,

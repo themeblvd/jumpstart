@@ -101,6 +101,7 @@ Jump Start Changelog
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed "Billing details" and "Ship to a different address" columns being reversed on Checkout page.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed shipping method selection styling on Shopping Cart page.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed deprecated use of `WC_Cart::get_cart_url`.
+	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed empty floating shopping cart inner spacing.
 	* [WPML](http://themeblvd.com/links/wpml): Language switcher is now more accessible across all theme bases on mobile.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed language switcher not showing with Entrepreneur base, when header top info bar isn't displayed.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed WPML options showing on Theme Options, when WPML isn't installed.
