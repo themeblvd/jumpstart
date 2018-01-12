@@ -61,6 +61,7 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 		'widget_bg_color_brightness'        => 'light',
 		'searchform'                        => 'show',
 		'custom_styles'                     => '',
+		'social_header'                     => '0',
 		'font_menu_sp'                      => '1px',
 		'font_menu'                         => array(
 			'color'       => '#ffffff',
