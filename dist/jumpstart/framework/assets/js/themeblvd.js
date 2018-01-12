@@ -196,7 +196,7 @@ jQuery(document).ready(function($) {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 */
-	if ( 'true' == themeblvd.mobile_panel ) {
+	if ( themeblvd.mobile_panel ) {
 
 		var $mobilePanel        = $( '.tb-mobile-panel > .wrap' ),
 			$mobilePanelTrigger = $( '.tb-nav-trigger' ),
@@ -212,7 +212,7 @@ jQuery(document).ready(function($) {
 		}
 
 		// Merge side panel menu, if exists.
-		if ( 'true' == themeblvd.side_panel ) {
+		if ( themeblvd.side_panel ) {
 
 			primaryMenuItems += $sidePanel.find( '.menu' ).html();
 
@@ -224,25 +224,8 @@ jQuery(document).ready(function($) {
 		// Remove items copied over, not needed for the mobile panel.
 		$mobilePanel.find( '.submenu-toggle' ).remove();
 
-		$mobilePanel.find( '.primary-menu' ).find( 'li.menu-search, li.menu-side-panel, li.menu-cart, li.contact-bar-item' ).remove();
+		$mobilePanel.find( '.primary-menu' ).find( 'li.menu-search, li.menu-side-panel, li.menu-cart, li.menu-lang, li.contact-bar-item' ).remove();
 
-		// Merge WPML switcher, if exists.
-		if ( ! $header.find( '.menu-item-language' ).length ) { // Make sure main nav doesn't already have switcher.
-
-			var $lang        = $header.find( '.tb-wpml-switcher' ).first(),
-				$langTop     = $( '<span class="menu-btn">' + $header.find( '.tb-wpml-switcher > ul > li > a' ).html() + '</span>' ),
-				$langNew     = $( '<li class="menu-item mobile-wpml"></li>' ),
-				$langSubmenu = $lang.find( '.lang-sub-menu' );
-
-			if ( $langSubmenu.length ) {
-
-				$langNew
-					.append( $langTop )
-					.append( $langSubmenu.clone().addClass('sub-menu non-mega-sub-menu') )
-					.appendTo( $mobilePanel.find( '.tb-mobile-menu' ) );
-
-			}
-		}
 		// Build the secondary menu.
 		if ( 'true' == themeblvd.side_panel ) {
 

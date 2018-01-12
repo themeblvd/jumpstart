@@ -360,7 +360,7 @@ if ( ! function_exists( 'themeblvd_mobile_header_menu' ) ) {
 	 */
 	function themeblvd_mobile_header_menu() {
 
-		if ( ! themeblvd_supports( 'display', 'mobile_panel' ) && ! themeblvd_do_cart() ) {
+		if ( ! themeblvd_supports( 'display', 'mobile_panel' ) && ! themeblvd_do_lang_selector() && ! themeblvd_do_cart() ) {
 
 			return;
 
@@ -372,6 +372,12 @@ if ( ! function_exists( 'themeblvd_mobile_header_menu' ) ) {
 			<?php if ( themeblvd_supports( 'display', 'mobile_panel' ) ) : ?>
 
 				<li><?php echo themeblvd_get_menu_toggle( 'tb-nav-trigger btn-navbar' ); ?></li>
+
+			<?php endif; ?>
+
+			<?php if ( themeblvd_do_lang_selector() ) : ?>
+
+				<li><?php themeblvd_lang_popup_trigger(); ?></li>
 
 			<?php endif; ?>
 

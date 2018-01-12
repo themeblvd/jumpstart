@@ -75,6 +75,9 @@ class Theme_Blvd_Compat_WPML {
 			// Add custom language switcher.
 			add_action( 'icl_language_selector', array( $this, 'language_selector' ) );
 
+			// Add custom language switcher.
+			add_action( 'themeblvd_after', array( $this, 'language_popup' ) );
+
 			/*
 			 * Let framework know that a language switcher of some
 			 * kind is enabled.
@@ -219,11 +222,107 @@ class Theme_Blvd_Compat_WPML {
 		 * Note: This funcionality can also be completely disabled
 		 * by filtering to `themeblvd_wpml_has_switcher` FALSE.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since @@name-framework 2.7.0
 		 *
 		 * @param string $output Final HTML for language switcher block.
 		 */
 		return apply_filters( 'themeblvd_wpml_switcher', $output );
+
+	}
+
+	/**
+	 * Get custom language switcher popup.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @return string $output Final HTML output for block.
+	 */
+	public function get_language_popup() {
+
+		$output  = "<div id=\"floating-lang-switcher\" class=\"tb-lang-popup modal fade\">\n";
+
+		$output .= "\t<div class=\"modal-dialog modal-sm\">\n";
+
+		$output .= "\t\t<div class=\"modal-content\">\n";
+
+		$output .= "\t\t\t<div class=\"modal-header\">\n";
+
+		$output .= sprintf(
+			"\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"%s\">",
+			themeblvd_get_local( 'close' )
+		);
+
+		$output .= '<span aria-hidden="true">&times;</span>';
+
+		$output .= "</button>\n";
+
+		$output .= sprintf(
+			"\t\t\t\t<h4 class=\"modal-title\">%s</h4>\n",
+			themeblvd_get_local( 'language' )
+		);
+
+		$output .= "\t\t\t</div>\n";
+
+		$output .= "\t\t\t<div class=\"modal-body clearfix\">\n";
+
+		if ( function_exists( 'icl_get_languages' ) ) {
+
+			$langs = icl_get_languages( 'skip_missing=1' );
+
+			if ( $langs ) {
+
+				$output .= "\t\t\t\t<ul class=\"tb-lang-selector list-unstyled\">\n";
+
+				foreach ( $langs as $lang ) {
+
+					$class = 'lang-' . $lang['language_code'];
+
+					if ( $lang['active'] ) {
+
+						$class .= ' active';
+
+					}
+
+					$output .= sprintf( "\t\t\t\t\t<li class=\"%s\">", $class );
+
+					if ( $lang['active'] ) {
+
+						$output .= sprintf( '<span title="%1$s">%1$s</span>', $lang['translated_name'] );
+
+					} else {
+
+						$output .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', $lang['url'], $lang['translated_name'] );
+
+					}
+
+					$output .= "</li>\n";
+
+				}
+
+				$output .= "\t\t\t\t</ul>\n";
+			}
+		}
+
+		$output .= "\t\t\t</div><!-- .modal-body (end) -->\n";
+
+		$output .= "\t\t</div><!-- .modal-content (end) -->\n";
+
+		$output .= "\t</div><!-- .modal-dialog (end) -->\n";
+
+		$output .= "</div><!-- .tb-lang-popup (end) -->\n";
+
+		/**
+		 * Filters the final output for the custom language
+		 * switcher the theme adds, which is used as a popup.
+		 *
+		 * Note: This funcionality can also be completely disabled
+		 * by filtering to `themeblvd_wpml_has_switcher` FALSE.
+		 *
+		 * @since @@name-framework 2.5.0
+		 *
+		 * @param string $output Final HTML for language switcher block.
+		 */
+		return apply_filters( 'themeblvd_wpml_popup', $output );
 
 	}
 
@@ -238,6 +337,20 @@ class Theme_Blvd_Compat_WPML {
 	public function language_selector() {
 
 		echo $this->get_language_selector();
+
+	}
+
+	/**
+	 * Display custom language switcher block.
+	 *
+	 * This method is hooked to:
+	 * 1. `themeblvd_after` - 10
+	 *
+	 * @since @@name-framework 2.5.0
+	 */
+	public function language_popup() {
+
+		echo $this->get_language_popup();
 
 	}
 

@@ -715,7 +715,7 @@ body {
 	display: block;
 	font-size: 20px;
 	line-height: 40px; /* Min header height allowed by mobile header height options. */
-	padding: 0 18px;
+	padding: 0 10px;
 }
 .mobile-nav > li > a:hover {
 	color: #ffffff;
@@ -827,13 +827,15 @@ body {
 	height: 12px;
 }
 .tb-sticky-header .tb-primary-menu > li.menu-search > .menu-btn,
-.tb-sticky-header .tb-primary-menu > li.menu-cart > .menu-btn {
+.tb-sticky-header .tb-primary-menu > li.menu-cart > .menu-btn,
+.tb-sticky-header .tb-primary-menu > li.menu-lang > .menu-btn {
 	outline: none;
 	padding-right: 10px;
 	padding-left: 10px;
 }
 .tb-sticky-header .tb-primary-menu > li.menu-search > .menu-btn .svg-inline--fa,
-.tb-sticky-header .tb-primary-menu > li.menu-cart > .menu-btn .svg-inline--fa {
+.tb-sticky-header .tb-primary-menu > li.menu-cart > .menu-btn .svg-inline--fa,
+.tb-sticky-header .tb-primary-menu > li.menu-lang > .menu-btn .svg-inline--fa {
 	margin: 0;
 	width: 1em;
 	text-align: center;

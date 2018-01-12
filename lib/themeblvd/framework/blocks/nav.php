@@ -1006,6 +1006,8 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
  * cart block.
  *
  * @since @@name-framework 2.5.0
+ *
+ * @param array $args See themeblvd_get_cart_popup_trigger() docs.
  */
 function themeblvd_cart_popup_trigger( $args = array() ) {
 
@@ -1089,6 +1091,86 @@ function themeblvd_get_mobile_cart_link() {
 function themeblvd_mobile_cart_link() {
 
 	echo themeblvd_get_mobile_cart_link();
+
+}
+
+/**
+ * Get a link to display the floating language
+ * switcher block.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @param  array  $args {
+ *     Link arguments.
+ *
+ *     @type string $icon  FontAwesome icon name used for link.
+ *     @type string $class CSS classes to add to link, like `foo bar baz`.
+ * }
+ * @return string $output Final HTML output.
+ */
+function themeblvd_get_lang_popup_trigger( $args = array() ) {
+
+	/**
+	 * Filters the default arguments for a link to
+	 * open a floating language switcher.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param array {
+	 *     Default link arguments.
+	 *
+	 *     @type string $open  FontAwesome icon name used for link.
+	 *     @type string $class CSS classes to add to link, like `foo bar baz`.
+	 * }
+	 */
+	$defaults = apply_filters( 'themeblvd_lang_popup_trigger_defaults', array(
+		'icon'  => 'globe',
+		'class' => '',
+	) );
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$class = 'tb-lang-trigger';
+
+	if ( $args['class'] ) {
+
+		$class .= ' ' . $args['class'];
+
+	}
+
+	$output = sprintf(
+		'<a href="#" class="%s" title="%s" data-toggle="modal" data-target="#floating-lang-switcher">',
+		esc_attr( $class ),
+		esc_attr( themeblvd_get_local( 'language' ) )
+	);
+
+	$output .= sprintf( '<i class="%s"></i>', esc_attr( themeblvd_get_icon_class( $args['icon'] ) ) );
+
+	$output .= '</a>';
+
+	/**
+	 * Filters a link to display the floating language
+	 * switcher block.
+	 *
+	 * @since @@name-framework 2.7.0
+	 *
+	 * @param string $output Final HTML output.
+	 */
+	return apply_filters( 'themeblvd_lang_popup_trigger', $output );
+
+}
+
+/**
+ * Display a link to display the floating language
+ * switcher block.
+ *
+ * @since @@name-framework 2.7.0
+ *
+ * @param array $args Link arguments, see themeblvd_get_floating_search_trigger() docs.
+ */
+function themeblvd_lang_popup_trigger( $args = array() ) {
+
+	echo themeblvd_get_lang_popup_trigger( $args );
 
 }
 

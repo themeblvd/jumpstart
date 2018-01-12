@@ -101,8 +101,8 @@ Jump Start Changelog
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed "Billing details" and "Ship to a different address" columns being reversed on Checkout page.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed shipping method selection styling on Shopping Cart page.
 	* [WooCommerce](https://wordpress.org/plugins/woocommerce/): Fixed deprecated use of `WC_Cart::get_cart_url`.
+	* [WPML](http://themeblvd.com/links/wpml): Language switcher is now more accessible across all theme bases on mobile.
 	* [WPML](http://themeblvd.com/links/wpml): Fixed WPML options showing on Theme Options, when WPML isn't installed.
-	* [WPML](http://themeblvd.com/links/wpml): Fixed theme's language switcher not getting added to the mobile navigation, when using the Agent base.
 * Improvement: There is now a clear separation between the desktop header and the mobile header, and when one is shown, the other is hidden.
 * Improvement: Footer design and user options have now been standardized across all theme bases; for all theme bases except Developer, see modified options at *Appearance > Theme Options > Styles > Footer*.
 * Improvement: Better handling of background video; instead of just a black screen, the placeholder image will now display as a background image while the video is loading, and continue to show when the video can't be loaded.
