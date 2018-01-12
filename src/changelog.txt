@@ -32,6 +32,7 @@ Jump Start Changelog
 
 **Full List of Changes:**
 
+* **Updated Theme Blvd framework to 2.7.0**
 * New: Added a new feature for displaying a banner across post archives; see *Appearance > Theme Options > Content > Archives > Apply banner to post archives*.
 * New: Added option for sticky header height at *Appearance > Theme Options > Styles > Sticky Header* (for all theme bases except Developer).
 * New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
