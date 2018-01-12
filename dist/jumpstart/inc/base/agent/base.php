@@ -664,15 +664,7 @@ function jumpstart_ag_header_menu() {
 
 					<?php if ( themeblvd_do_lang_selector() ) : ?>
 
-						<li class="top-wpml">
-							<a href="#" class="tb-lang-trigger" title="<?php echo themeblvd_get_local( 'language' ); ?>" data-toggle="modal" data-target="#floating-lang-switcher">
-								<i class="<?php echo esc_attr( themeblvd_get_icon_class( 'globe' ) ); ?>"></i>
-							</a>
-							<!-- Used to build mobile menu's language switcher -->
-							<div class="hide">
-								<?php do_action( 'icl_language_selector' ); ?>
-							</div>
-						</li>
+						<li class="top-wpml"><?php themeblvd_lang_popup_trigger(); ?></li>
 
 					<?php endif; ?>
 
@@ -813,104 +805,6 @@ function jumpstart_ag_sidebar_layouts( $layouts, $stack ) {
 
 }
 add_filter( 'themeblvd_sidebar_layouts', 'jumpstart_ag_sidebar_layouts', 9, 2 );
-
-/**
- * Get modal window for WPML language switcher.
- *
- * @since 2.0.0
- */
-function jumpstart_ag_get_lang_popup() {
-
-	$output  = '<div id="floating-lang-switcher" class="tb-lang-popup modal fade">';
-
-	$output .= '<div class="modal-dialog modal-sm">';
-
-	$output .= '<div class="modal-content">';
-
-	$output .= '<div class="modal-header">';
-
-	$output .= '<button type="button" class="close" data-dismiss="modal" aria-label="' . themeblvd_get_local( 'close' ) . '"><span aria-hidden="true">&times;</span></button>';
-
-	$output .= '<h4 class="modal-title">' . themeblvd_get_local( 'language' ) . '</h4>';
-
-	$output .= '</div>';
-
-	$output .= '<div class="modal-body clearfix">';
-
-	if ( function_exists( 'icl_get_languages' ) ) {
-
-		$langs = icl_get_languages( 'skip_missing=1' );
-
-		if ( $langs ) {
-
-			$output .= '<ul class="tb-lang-selector list-unstyled">';
-
-			foreach ( $langs as $lang ) {
-
-				$class = 'lang-' . $lang['language_code'];
-
-				if ( $lang['active'] ) {
-
-					$class .= ' active';
-
-				}
-
-				$output .= '<li class="' . $class . '">';
-
-				if ( $lang['active'] ) {
-
-					$output .= sprintf( '<span title="%1$s">%1$s</span>', $lang['translated_name'] );
-
-				} else {
-
-					$output .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', $lang['url'], $lang['translated_name'] );
-
-				}
-
-				$output .= '</li>';
-
-			}
-
-			$output .= '</ul>';
-		}
-	}
-
-	$output .= '</div><!-- .modal-body (end) -->';
-
-	$output .= '</div><!-- .modal-content (end) -->';
-
-	$output .= '</div><!-- .modal-dialog (end) -->';
-
-	$output .= '</div><!-- .tb-lang-popup (end) -->';
-
-	/**
-	 * Filters the output for the WPML language
-	 * switcher popup in Agent base.
-	 *
-	 * @since Jump_Start 2.1.0
-	 *
-	 * @param string $output HTML output for switcher.
-	 */
-	return apply_filters( 'jumpstart_ag_lang_selector', $output );
-
-}
-
-/**
- * Output modal window for WPML language
- * switcher.
- *
- * @since Jump_Start 2.1.0
- */
-function jumpstart_ag_lang_popup() {
-
-	if ( themeblvd_do_lang_selector() ) {
-
-		echo jumpstart_ag_get_lang_popup();
-
-	}
-
-}
-add_action( 'themeblvd_after', 'jumpstart_ag_lang_popup' );
 
 /**
  * Filter args that get filtered in when sidebars

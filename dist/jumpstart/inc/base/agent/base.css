@@ -532,39 +532,6 @@ body {
 	color: rgba(26,26,26,.25);
 }
 
-/* Floating Language Selector */
-.tb-lang-popup .modal-body {
-	padding: 0;
-}
-.tb-lang-popup .modal-content {
-	border-radius: 0;
-}
-.tb-lang-popup ul {
-	margin: 0;
-}
-.tb-lang-popup li {
-	border-bottom: 2px solid #e5e5e5;
-}
-.tb-lang-popup li:last-child {
-	border-bottom: none;
-}
-.tb-lang-popup a,
-.tb-lang-popup .active span {
-	display: block;
-	font-size: 20px;
-	color: #666666;
-	padding: 10px 15px;
-}
-.tb-lang-popup .active span {
-	background-color: #f2f2f2;
-	cursor: default;
-}
-.tb-lang-popup a:hover,
-.tb-lang-popup a:focus {
-	background-color: #2ea3f2; /* highlight */
-	color: #ffffff;
-}
-
 /* =Sticky Header
 ----------------------------------------------- */
 
