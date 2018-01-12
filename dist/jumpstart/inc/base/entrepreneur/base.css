@@ -193,6 +193,7 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li.menu-search,
 .header-nav .tb-primary-menu > li.menu-contact,
 .header-nav .tb-primary-menu > li.menu-cart,
+.header-nav .tb-primary-menu > li.menu-lang,
 .header-nav .tb-primary-menu > li.menu-side-panel,
 .header-nav .tb-primary-menu > li.contact-bar-item {
 	margin: 0;
@@ -200,6 +201,7 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li.menu-search > .tb-search-trigger,
 .header-nav .tb-primary-menu > li.menu-contact > .tb-contact-trigger,
 .header-nav .tb-primary-menu > li.menu-cart > .tb-cart-trigger,
+.header-nav .tb-primary-menu > li.menu-lang > .tb-lang-trigger,
 .header-nav .tb-primary-menu > li.menu-side-panel > .tb-side-trigger,
 .header-nav .tb-primary-menu > li.contact-bar-item > .tb-icon {
 	font-size: 14px; /* Without this, user-selected menu font size will apply to icon. */
@@ -210,6 +212,7 @@ Author URI: http://www.themeblvd.com
 .header-nav .tb-primary-menu > li > .tb-search-trigger .svg-inline--fa,
 .header-nav .tb-primary-menu > li > .tb-contact-trigger .svg-inline--fa,
 .header-nav .tb-primary-menu > li > .tb-cart-trigger .svg-inline--fa,
+.header-nav .tb-primary-menu > li > .tb-lang-trigger .svg-inline--fa,
 .header-nav .tb-primary-menu > li > .tb-icon .svg-inline--fa {
 	margin: 0;
 	width: 1em;

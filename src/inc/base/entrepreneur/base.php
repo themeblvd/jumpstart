@@ -1031,15 +1031,24 @@ function jumpstart_ent_menu_addon( $items, $args ) {
 
 	}
 
+	if ( themeblvd_do_lang_selector() ) {
+
+		$items .= sprintf(
+			'<li class="menu-item level-1 menu-lang">%s</li>',
+			themeblvd_get_lang_popup_trigger( array(
+				'class' => 'menu-btn',
+			) )
+		);
+
+	}
+
 	if ( 'show' === themeblvd_get_option( 'searchform' ) ) {
 
 		$items .= sprintf(
 			'<li class="menu-item level-1 menu-search">%s</li>',
-			themeblvd_get_floating_search_trigger(
-				array(
-					'class' => 'menu-btn',
-				)
-			)
+			themeblvd_get_floating_search_trigger( array(
+				'class' => 'menu-btn',
+			) )
 		);
 
 	}
