@@ -39,7 +39,7 @@ if ( themeblvd_show_breadcrumbs() ) {
 	themeblvd_the_archive_banner_image( array(
 		'id'   => $attachment_id,
 		'src'  => wp_get_attachment_image_url( $attachment_id ),
-		'alt'  => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true )
+		'alt'  => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
 		'crop' => 'full'
 	) );
 	?>
