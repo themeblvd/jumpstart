@@ -326,7 +326,7 @@ function themeblvd_get_share_patterns() {
 			'pattern'     => 'mailto:?subject=[title]&amp;body=[permalink]',
 			'encode'      => true,
 			'encode_urls' => false,
-			'icon'        => 'envelope-o',
+			'icon'        => 'envelope',
 		),
 		'facebook' => array(
 			'pattern'     => 'http://www.facebook.com/sharer.php?u=[permalink]&amp;t=[title]',
