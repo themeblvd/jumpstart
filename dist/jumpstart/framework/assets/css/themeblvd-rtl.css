@@ -6259,9 +6259,9 @@ body.mobile .tb-bg-video {
 }
 .tb-search .search-input {
 	margin: 0;
-	padding: 6px 32px 6px 10px; /* Added 32px to right for icon. */
+	padding: 12px 36px 12px 10px; /* Added 36px to right for icon. */
 	width: 100%;
-	height: 35px;
+	height: auto;
 }
 .tb-search .search-input:focus {
 	-webkit-box-shadow: none;
@@ -6274,7 +6274,7 @@ body.mobile .tb-bg-video {
 	line-height: 1em;
 	position: absolute;
 	top: 50%;
-	right: 10px;
+	right: 14px;
 	text-align: center;
 	-webkit-transform: translate(0, -50%);
 	transform: translate(0, -50%);

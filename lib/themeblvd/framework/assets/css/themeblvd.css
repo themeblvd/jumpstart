@@ -6248,6 +6248,7 @@ body.mobile .tb-bg-video {
 
 /* Search Form (also searchform.php) */
 .tb-search .search-wrap {
+	font-size: 14px;
 	position: relative;
 }
 .entry-content .tb-search .search-wrap,
@@ -6256,9 +6257,9 @@ body.mobile .tb-bg-video {
 }
 .tb-search .search-input {
 	margin: 0;
-	padding: 6px 10px 6px 32px; /* Added 32px to left for icon. */
+	padding: 12px 14px 12px 36px; /* Added 36px to left for icon. */
 	width: 100%;
-	height: 35px;
+	height: auto;
 }
 .tb-search .search-input:focus {
 	-webkit-box-shadow: none;
@@ -6271,7 +6272,7 @@ body.mobile .tb-bg-video {
 	line-height: 1em;
 	position: absolute;
 	top: 50%;
-	left: 10px;
+	left: 14px;
 	text-align: center;
 	-webkit-transform: translate(0, -50%);
 	transform: translate(0, -50%);
