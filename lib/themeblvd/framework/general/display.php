@@ -207,7 +207,6 @@ if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 				 * the header.
 				 *
 				 * @hooked themeblvd_header_logo_default - 10
-				 * @hooked themeblvd_header_logo_mobile - 20
 				 *
 				 * @since @@name-framework 2.0.0
 				 */
