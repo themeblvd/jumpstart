@@ -33,7 +33,6 @@
  * 9.0 - Primary Navigation
  *   9.1 - Standard
  *   9.2 - Mega Menu Dropdown
- *   9.3 - Frontend menu warning
  * 10.0 - Secondary Navigation
  *   10.1 - Setup
  *   10.2 - All levels
@@ -1011,16 +1010,6 @@ img.size-full {
 	font-size: inherit !important;
 	display: inline !important;
 	padding: 0 !important;
-}
-
-/* Frontend menu warning */
-.tb-menu-warning {
-	font-size: 12px;
-	margin: 6px 0;
-	padding: 5px 10px;
-}
-.tb-menu-warning p {
-	margin: 0;
 }
 
 /* =Secondary Navigation
