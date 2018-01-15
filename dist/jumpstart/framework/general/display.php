@@ -1311,6 +1311,8 @@ if ( ! function_exists( 'themeblvd_mobile_panel_search' ) ) {
 
 			get_search_form();
 
+			themeblvd_remove_att( 'search_class' );
+
 		}
 
 	}
