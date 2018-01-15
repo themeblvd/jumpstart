@@ -190,6 +190,21 @@ function themeblvd_set_att( $key, $value ) {
 }
 
 /**
+ * Remove a single global template attributes.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param string $key Template attributes key.
+ */
+function themeblvd_remove_att( $key ) {
+
+	$config = Theme_Blvd_Frontend_Init::get_instance();
+
+	return $config->remove_att( $key );
+
+}
+
+/**
  * Get a single global template attribute.
  *
  * Retrieves a single attribute set with
