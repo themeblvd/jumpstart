@@ -9,7 +9,8 @@ var gulp         = require('gulp'),
 	sass         = require('gulp-sass'),
 	minifycss    = require('gulp-clean-css'),
 	autoprefixer = require('gulp-autoprefixer'),
-	yaml         = require('gulp-yaml');
+	yaml         = require('gulp-yaml'),
+	wpPot        = require('gulp-wp-pot');
 
 /* =========== THEME INFO (START) =========== */
 
@@ -356,9 +357,22 @@ gulp.task('delete-unused-files', ['render-text-domain'], function() {
 });
 
 /**
+ * Generate .pot localization file.
+ */
+gulp.task('render-pot', ['delete-unused-files'], function() {
+    return gulp.src('dist/' + theme + '/**/*.php')
+        .pipe(wpPot({
+            domain: theme,
+            package: themeName + ' ' + version,
+			relativeTo: 'dist/' + theme + '/languages/'
+        }))
+        .pipe(gulp.dest('dist/' + theme + '/languages/' + theme + '.pot'));
+});
+
+/**
  * Zip WordPress theme.
  */
-gulp.task('render-theme-zip', ['delete-unused-files'], function() {
+gulp.task('render-theme-zip', ['render-pot'], function() {
 
 	return gulp.src('dist/**')
 		.pipe(zip(theme + '-' + version + '.zip'))

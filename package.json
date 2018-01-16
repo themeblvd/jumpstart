@@ -27,6 +27,7 @@
     "gulp-replace": "latest",
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
+    "gulp-wp-pot": "^2.0.7",
     "gulp-yaml": "^1.0.1",
     "gulp-zip": "latest"
   },
