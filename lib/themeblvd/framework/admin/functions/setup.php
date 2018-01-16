@@ -141,7 +141,7 @@ function themeblvd_plugins() {
 		'sidebars' => array(
 			'name'    => 'Theme Blvd Widget Areas',
 			'slug'    => 'theme-blvd-widget-areas',
-			'version' => '1.2.5+',
+			'version' => '1.3+',
 		),
 		'widgets' => array(
 			'name'    => 'Theme Blvd Widget Pack',
@@ -151,7 +151,7 @@ function themeblvd_plugins() {
 		'shortcodes' => array(
 			'name'    => 'Theme Blvd Shortcodes',
 			'slug'    => 'theme-blvd-shortcodes',
-			'version' => '1.6+',
+			'version' => '1.6.4+',
 		),
 		'importer' => array(
 			'name'    => 'Theme Blvd Importer',

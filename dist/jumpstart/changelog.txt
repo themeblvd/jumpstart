@@ -21,7 +21,7 @@ Jump Start Changelog
 * With this theme update, you must also update the following plugins, if you're using any of them.
 	* Theme Blvd Layout Builder to 2.2+.
 	* Theme Blvd Widget Areas to 1.3+.
-	* Theme Blvd Shortcodes to 1.6+.
+	* Theme Blvd Shortcodes to 1.6.4+.
 	* Tweeple to 0.9.5+.
 
 **Important Developer Notes:**
