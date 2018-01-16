@@ -1518,5 +1518,4 @@ function themeblvd_su_sidebar_args( $args, $sidebar, $location ) {
 	return $args;
 
 }
-add_filter( 'themeblvd_default_sidebar_args', 'themeblvd_su_sidebar_args', 10, 3 );
-add_filter( 'themeblvd_custom_sidebar_args', 'themeblvd_su_sidebar_args', 10, 3 );
+add_filter( 'themeblvd_sidebar_args', 'themeblvd_su_sidebar_args', 10, 3 );
