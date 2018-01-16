@@ -3169,6 +3169,14 @@ ul.tb-icon-list {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 }
+.tb-icon-list li {
+	padding: 0.3125em 0;
+	position: relative;
+}
+.tb-icon-list .svg-inline--fa {
+	top: 0.650em;
+	height: .85em;
+}
 
 /* Icon Link */
 .tb-icon-link {
