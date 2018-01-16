@@ -1834,7 +1834,7 @@ article.tb-naked-page {
 .site-footer .tweeple-feed li.tweet {
 	padding-left: 0;
 }
-.site-footer .tweeple-feed li.tweet:before {
+.site-footer .tweeple-feed li.tweet .svg-inline--fa {
 	display: none;
 }
 .site-footer .tweeple-feed .tweet-meta {
