@@ -305,10 +305,10 @@ ul {
 		margin-top: 5px;
 	}
 }
-.btn > .fa.before {
+.btn > .before {
 	margin-left: 0.5em;
 }
-.btn > .fa.after {
+.btn > .after {
 	margin-right: 0.5em;
 }
 
