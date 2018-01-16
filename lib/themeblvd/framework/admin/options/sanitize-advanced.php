@@ -611,7 +611,7 @@ function themeblvd_sanitize_slider( $input ) {
 				}
 
 				if ( isset( $item['thumb'] ) ) {
-					$output[ $item_id ]['thumb'] = eapply_filters( 'themeblvd_sanitize_upload', $item['thumb'] );
+					$output[ $item_id ]['thumb'] = apply_filters( 'themeblvd_sanitize_upload', $item['thumb'] );
 				} else {
 					$output[ $item_id ]['thumb'] = '';
 				}
