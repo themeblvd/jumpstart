@@ -156,7 +156,7 @@ function themeblvd_plugins() {
 		'importer' => array(
 			'name'    => 'Theme Blvd Importer',
 			'slug'    => 'theme-blvd-importer',
-			'version' => '1.0.3+',
+			'version' => '1.0.4+',
 		),
 		'portfolios' => array(
 			'name'    => 'Portfolios',

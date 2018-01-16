@@ -22,6 +22,7 @@ Jump Start Changelog
 	* Theme Blvd Layout Builder to 2.2+.
 	* Theme Blvd Widget Areas to 1.3+.
 	* Theme Blvd Shortcodes to 1.6.4+.
+	* Theme Blvd Importer to 1.0.4+.
 	* Tweeple to 0.9.5+.
 
 **Important Developer Notes:**
