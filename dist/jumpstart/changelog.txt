@@ -1,7 +1,7 @@
 Jump Start Changelog
 ====================
 
-2.2.0 - XX/XX/XXXX
+2.2.0 - 01/16/2018
 ------------------
 
 **Important General Notes:**
@@ -14,6 +14,7 @@ Jump Start Changelog
 	* (new) *Layout > Sticky Header* -- All theme bases.
 	* (new) *Layout > Contact* -- All theme bases, except Agent.
 	* (modified) *Content > General* -- All theme bases.
+	* (modified) *Content > Archives* -- All theme bases.
 	* (modified) *Plugins > bbPress* -- All theme bases, if using bbPress plugin.
 	* (modified) *Plugins > Gravity Forms* -- All theme bases, if using Gravity Forms plugin.
 	* (modified) *Plugins > WooCommerce* -- All theme bases, if using WooCommerce plugin.
