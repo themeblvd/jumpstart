@@ -1,4 +1,5 @@
 var gulp         = require('gulp'),
+	del          = require('del'),
 	zip          = require('gulp-zip'),
 	clean        = require('gulp-clean'),
 	replace      = require('gulp-replace'),
@@ -9,6 +10,8 @@ var gulp         = require('gulp'),
 	minifycss    = require('gulp-clean-css'),
 	autoprefixer = require('gulp-autoprefixer'),
 	yaml         = require('gulp-yaml');
+
+/* =========== THEME INFO (START) =========== */
 
 /**
  * Theme slug.
@@ -29,6 +32,13 @@ var frameworkName = 'Theme Blvd';
  * Theme version.
  */
 var version = '2.2.0';
+
+/**
+ * Unused framework files.
+ */
+var unusedFiles = [];
+
+/* =========== THEME INFO (END) =========== */
 
 /**
  * Supported browsers for CSS autoprefixer.
@@ -337,9 +347,18 @@ gulp.task('render-text-domain', ['render-info'], function() {
 });
 
 /**
+ * Remove any usused framework files.
+ */
+gulp.task('delete-unused-files', ['render-text-domain'], function() {
+
+	return del(unusedFiles);
+
+});
+
+/**
  * Zip WordPress theme.
  */
-gulp.task('render-theme-zip', ['render-text-domain'], function() {
+gulp.task('render-theme-zip', ['delete-unused-files'], function() {
 
 	return gulp.src('dist/**')
 		.pipe(zip(theme + '-' + version + '.zip'))

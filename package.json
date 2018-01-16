@@ -17,7 +17,8 @@
   },
   "homepage": "https://wpjumpstart.com",
   "devDependencies": {
-    "gulp": "latest",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "latest",
     "gulp-clean": "latest",
     "gulp-clean-css": "latest",
