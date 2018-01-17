@@ -127,7 +127,6 @@ body {
 	.header-top > .wrap,
 	.header-above > .wrap,
 	.header-content > .wrap,
-	.tb-mobile-header > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -147,7 +146,6 @@ body {
 	.widgets-below-footer > .wrap,
 	.header-content > .wrap,
 	.header-nav > .wrap,
-	.tb-mobile-header > .wrap,
 	.site-breadcrumbs > .wrap,
 	.site-inner > .wrap,
 	.element-section > .element,
@@ -677,12 +675,7 @@ body {
 	-ms-flex-pack: justify;
 	height: 64px;
 	justify-content: space-between;
-	padding: 20px 10px;
-}
-@media (max-width: 767px) {
-	.tb-mobile-header > .wrap {
-		padding: 0 20px;
-	}
+	padding: 20px;
 }
 
 /* Logo */
