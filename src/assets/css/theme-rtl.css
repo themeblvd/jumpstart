@@ -912,11 +912,11 @@ body {
 .site-footer {
 	font-size: 14px;
 }
+.site-footer > .wrap {
+	padding-top: 50px;
+}
 
 /* Footer Columns */
-.footer-content > .wrap > .row {
-	padding: 50px 0 0 0;
-}
 .footer-content > .wrap > .row > .col {
 	margin-bottom: 50px;
 }

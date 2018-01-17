@@ -484,6 +484,11 @@ function themeblvd_footer_class() {
 
 	$class = array( 'site-footer' );
 
+	if ( themeblvd_get_option( 'footer_setup' ) ) {
+
+		$class[] = 'has-columns';
+	}
+
 	/**
 	 * Filters the CSS classes used with the main
 	 * website footer.
