@@ -4996,8 +4996,6 @@ body.mobile .tb-bg-video {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	-webkit-transform: scale(1,1);
-	transform: scale(1,1);
 }
 .tb-mini-post-grid .tb-thumb-link .thumb-link-icon .svg-inline--fa {
 	position: absolute;
