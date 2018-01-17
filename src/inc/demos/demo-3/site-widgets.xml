@@ -10,7 +10,7 @@
 	</setting>
 	<setting>
 		<id>widget_themeblvd_horz_menu_widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_themeblvd_mini_post_grid_widget</id>
@@ -21,20 +21,32 @@
 		<value><![CDATA[YToyOntpOjI7YTo2OntzOjU6InRpdGxlIjtzOjEyOiJSZWNlbnQgUG9zdHMiO3M6NToidGh1bWIiO3M6Nzoic21hbGxlciI7czo0OiJtZXRhIjtzOjQ6InNob3ciO3M6ODoiY2F0ZWdvcnkiO3M6MzoiYWxsIjtzOjExOiJudW1iZXJwb3N0cyI7czoxOiI0IjtzOjU6InF1ZXJ5IjtzOjA6IiI7fXM6MTI6Il9tdWx0aXdpZGdldCI7aToxO30=]]></value>
 	</setting>
 	<setting>
-		<id>widget_themeblvd_video_widget</id>
-		<value><![CDATA[]]></value>
-	</setting>
-	<setting>
 		<id>widget_pages</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_calendar</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_archives</id>
 		<value><![CDATA[YToyOntpOjI7YTozOntzOjU6InRpdGxlIjtzOjA6IiI7czo1OiJjb3VudCI7aTowO3M6ODoiZHJvcGRvd24iO2k6MDt9czoxMjoiX211bHRpd2lkZ2V0IjtpOjE7fQ==]]></value>
+	</setting>
+	<setting>
+		<id>widget_media_audio</id>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+	</setting>
+	<setting>
+		<id>widget_media_image</id>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+	</setting>
+	<setting>
+		<id>widget_media_gallery</id>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+	</setting>
+	<setting>
+		<id>widget_media_video</id>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_meta</id>
@@ -70,10 +82,14 @@
 	</setting>
 	<setting>
 		<id>widget_nav_menu</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
+	</setting>
+	<setting>
+		<id>widget_custom_html</id>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 	<setting>
 		<id>widget_gform_widget</id>
-		<value><![CDATA[]]></value>
+		<value><![CDATA[YToxOntzOjEyOiJfbXVsdGl3aWRnZXQiO2k6MTt9]]></value>
 	</setting>
 </settings>
