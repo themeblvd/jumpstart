@@ -3888,17 +3888,12 @@ blockquote small {
 	width: 4em;
 	height: 4em;
 	text-align: center;
-	-webkit-transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
-	transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
-	-ms-transform: scale(0.9,0.9);
-	-webkit-transform: scale(0.9,0.9);
-	transform: scale(0.9,0.9);
+	-webkit-transition: opacity 0.25s ease-in-out;
+	transition: opacity 0.25s ease-in-out;
 	z-index: 2;
 }
 .tb-thumb-link:hover .thumb-link-icon {
 	opacity: 1;
-	-webkit-transform: scale(1,1);
-	transform: scale(1,1);
 }
 .element-image .tb-thumb-link {
 	display: inline-block;
