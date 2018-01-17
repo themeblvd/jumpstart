@@ -581,7 +581,7 @@ if ( ! function_exists( 'themeblvd_epic_thumb' ) ) {
 
 			$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
 
-			themeblvd_get_template_part( 'featured-wc' );
+			themeblvd_get_template_part( 'featured_wc' );
 
 		} elseif ( is_category() || is_tag() || is_author() || is_date() ) {
 
@@ -597,7 +597,7 @@ if ( ! function_exists( 'themeblvd_epic_thumb' ) ) {
 
 			$class = themeblvd_set_att( 'epic_class', implode( ' ',  $class ) );
 
-			themeblvd_get_template_part( 'featured-archives' );
+			themeblvd_get_template_part( 'featured_archives' );
 
 		} else {
 

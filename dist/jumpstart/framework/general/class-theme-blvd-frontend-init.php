@@ -137,53 +137,54 @@ class Theme_Blvd_Frontend_Init {
 		$this->template_parts = apply_filters( 'themeblvd_template_parts', array(
 
 			// Set header template parts.
-			'head'               => 'head',          // content-head.php
-			'header'             => 'header',        // content-header.php
-			'mobile_header'      => 'mobile-header', // content-mobile-header.php
-			'sticky_header'      => 'sticky-header', // content-sticky-header.php
+			'head'               => 'head',              // content-head.php
+			'header'             => 'header',            // content-header.php
+			'mobile_header'      => 'mobile-header',     // content-mobile-header.php
+			'sticky_header'      => 'sticky-header',     // content-sticky-header.php
 
 			// Set footer template parts.
-			'footer'             => 'footer',        // content-footer.php
+			'footer'             => 'footer',            // content-footer.php
 
 			// Set blog template parts.
-			'blog'               => 'blog',          // content-blog.php
-			'blog_paginated'     => 'blog',          // content-blog.php
-			'single'             => 'single',        // content-single.php (doesn't exist by default)
-			'featured'           => 'featured',      // content-featured.php
-			'featured-wc'        => 'featured-wc',   // content-featured-wc.php
+			'blog'               => 'blog',              // content-blog.php
+			'blog_paginated'     => 'blog',              // content-blog.php
+			'single'             => 'single',            // content-single.php (doesn't exist by default)
+			'featured'           => 'featured',          // content-featured.php
+			'featured_wc'        => 'featured-wc',       // content-featured-wc.php
+			'featured_archives'  => 'featured-archives', // content-featured-archives.php
 
 			// Set post list template parts.
-			'list'               => 'list',          // content-list.php
-			'list_paginated'     => 'list',          // content-list.php
-			'list_small'         => 'small-list',    // content-mini-list.php
-			'list_mini'          => 'mini-list',     // content-mini-list.php
+			'list'               => 'list',              // content-list.php
+			'list_paginated'     => 'list',              // content-list.php
+			'list_small'         => 'small-list',        // content-mini-list.php
+			'list_mini'          => 'mini-list',         // content-mini-list.php
 
 			// Set post grid template parts.
-			'grid'               => 'grid',          // content-grid.php
-			'grid_paginated'     => 'grid',          // content-grid.php
-			'grid_slider'        => 'grid',          // content-grid.php
-			'grid_small'         => 'small-grid',    // content-small-grid.php
-			'grid_mini'          => 'mini-grid',     // content-mini-grid.php
+			'grid'               => 'grid',              // content-grid.php
+			'grid_paginated'     => 'grid',              // content-grid.php
+			'grid_slider'        => 'grid',              // content-grid.php
+			'grid_small'         => 'small-grid',        // content-small-grid.php
+			'grid_mini'          => 'mini-grid',         // content-mini-grid.php
 
 			// Set post showcase template parts.
-			'showcase'           => 'showcase',      // content-showcase.php
-			'showcase_paginated' => 'showcase',      // content-showcase.php
+			'showcase'           => 'showcase',          // content-showcase.php
+			'showcase_paginated' => 'showcase',          // content-showcase.php
 
 			// Set page template parts.
-			'page'               => 'page',          // content-page.php
-			'naked_page'         => 'page',          // content-page.php
-			'404'                => '404',           // content-404.php
+			'page'               => 'page',              // content-page.php
+			'naked_page'         => 'page',              // content-page.php
+			'404'                => '404',               // content-404.php
 
 			// Set search result template parts.
-			'search'             => 'page-search',   // content-page-search.php
-			'search_results'     => 'search-result', // content-search-result.php
+			'search'             => 'page-search',       // content-page-search.php
+			'search_results'     => 'search-result',     // content-search-result.php
 
 			// Set single attachment template parts.
-			'attachment'         => 'attachment',    // content-attachment.php
+			'attachment'         => 'attachment',        // content-attachment.php
 
 			// Set side and mobile panel template parts.
-			'panel'              => 'panel',         // content-panel.php
-			'mobile_panel'       => 'mobile-panel',  // content-mobile-panel.php
+			'panel'              => 'panel',             // content-panel.php
+			'mobile_panel'       => 'mobile-panel',      // content-mobile-panel.php
 
 		) );
 
