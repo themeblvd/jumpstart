@@ -812,7 +812,7 @@ add_filter( 'themeblvd_sidebar_layouts', 'jumpstart_ag_sidebar_layouts', 9, 2 );
  *
  * @since Jump_Start 2.1.0
  */
-function themeblvd_agent_sidebar_args( $args, $sidebar, $location ) {
+function themeblvd_ag_sidebar_args( $args, $sidebar, $location ) {
 
 	if ( in_array( $location, array( 'sidebar_left', 'sidebar_right' ) ) ) {
 
