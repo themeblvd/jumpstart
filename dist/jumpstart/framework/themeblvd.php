@@ -125,7 +125,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/general/grid.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/locals.php' );
 
 /**
- * Include media-related helper functions.
+ * Include media-related functions.
  */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/media.php' );
 
@@ -329,6 +329,11 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/general/tags.php' );
  * of blocks (see next section).
  */
 include_once( TB_FRAMEWORK_DIRECTORY . '/general/layout.php' );
+
+/**
+ * Include deprecated functions, no longer being used.
+ */
+include_once( TB_FRAMEWORK_DIRECTORY . '/general/deprecated.php' );
 
 /**
  * Include general helper functions.

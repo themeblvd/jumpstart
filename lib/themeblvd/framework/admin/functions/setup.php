@@ -283,7 +283,7 @@ function themeblvd_admin_assets( $type = '' ) {
 		);
 
 		wp_enqueue_style(
-			'themeblvd-admin-options', // @TODO separation of options page and options?
+			'themeblvd-admin-options',
 			esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/options{$suffix}.css" ),
 			null,
 			TB_FRAMEWORK_VERSION

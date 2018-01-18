@@ -216,8 +216,6 @@ if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 				 * Fires last within the main content of
 				 * the header.
 				 *
-				 * @hooked themeblvd_responsive_menu_toggle - 10
-				 *
 				 * @since @@name-framework 2.0.0
 				 */
 				do_action( 'themeblvd_header_addon' );
