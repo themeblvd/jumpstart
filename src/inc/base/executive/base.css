@@ -82,6 +82,9 @@ Author URI: http://www.themeblvd.com
 	float: none;
 	margin: auto;
 }
+.js-center-logo .header-content .site-logo.text-logo {
+	text-align: center;
+}
 .js-center-logo .header-addon,
 .js-center-logo .header-addon.header-addon-with-text {
 	margin: 10px 0;
