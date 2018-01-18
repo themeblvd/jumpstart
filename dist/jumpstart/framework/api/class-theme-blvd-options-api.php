@@ -1085,7 +1085,7 @@ class Theme_Blvd_Options_API {
 						'name'    => __( 'Read More Text', 'jumpstart' ),
 						'desc'    => __( 'Enter the text you\'d like to use to lead the reader to the full post.', 'jumpstart' ),
 						'id'      => 'list_more_text',
-						'std'     => 'Read More <i class="fas fa-long-arrow-right"></i>',
+						'std'     => 'Read More',
 						'type'    => 'text',
 						'class'   => 'hide receiver receiver-text receiver-button',
 					),
