@@ -151,7 +151,7 @@ function themeblvd_plugins() {
 		'shortcodes' => array(
 			'name'    => 'Theme Blvd Shortcodes',
 			'slug'    => 'theme-blvd-shortcodes',
-			'version' => '1.6.4+',
+			'version' => '1.6.5+',
 		),
 		'importer' => array(
 			'name'    => 'Theme Blvd Importer',
