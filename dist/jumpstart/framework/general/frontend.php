@@ -866,6 +866,31 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 				$in_footer
 			);
 
+			/**
+			 * Filters whether the FontAwesome v4 shim is
+			 * included.
+			 *
+			 * This also points icons to using the "fa"
+			 * class by default, which is deprecated by
+			 * FontAwesome.
+			 *
+			 * @see themeblvd_get_icon_class()
+			 *
+			 * @since Theme_Blvd 2.7.1
+			 *
+			 * @param bool Whether shim is included.
+			 */
+			if ( apply_filters( 'themeblvd_icon_shims', false ) ) {
+
+				wp_enqueue_script(
+					'fontawesome-v4-shims',
+					esc_url( TB_FRAMEWORK_URI . "/assets/js/fa-v4-shims{$suffix}.js" ),
+					array(),
+					esc_attr( $file['version'] ),
+					$in_footer
+				);
+
+			}
 		}
 
 		if ( themeblvd_supports( 'assets', 'flexslider' ) ) {

@@ -780,27 +780,38 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 	// If no base class, figure out what to use.
 	if ( ! $has_base_class ) {
 
-		$brands = themeblvd_get_icons( 'brands' );
+		$base = '';
 
-		if ( in_array( $icon_name, $brands ) ) {
+		/** This filter is documented in framework/general/frontend.php */
+		if ( apply_filters( 'themeblvd_icon_shims', false ) ) {
 
-			array_unshift( $class, 'fab' );
+			$base = 'fa'; // @deprecated v4 icon name.
 
 		} else {
 
-			/**
-			 * Filters the default fallback base class
-			 * used for icons.
-			 *
-			 * @since Theme_Blvd 2.7.0
-			 *
-			 * @param string Default base class.
-			 */
-			$base = apply_filters( 'themeblvd_icon_base_class', 'fas', $icon_name );
+			$brands = themeblvd_get_icons( 'brands' );
 
-			array_unshift( $class, $base );
+			if ( in_array( $icon_name, $brands ) ) {
 
+				$base = 'fab';
+
+			} else {
+
+				/**
+				 * Filters the default fallback base class
+				 * used for icons.
+				 *
+				 * @since Theme_Blvd 2.7.0
+				 *
+				 * @param string Default base class.
+				 */
+				$base = apply_filters( 'themeblvd_icon_base_class', 'fas', $icon_name );
+
+			}
 		}
+
+		array_unshift( $class, $base );
+
 	}
 
 	/**

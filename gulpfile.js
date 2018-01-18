@@ -115,9 +115,24 @@ gulp.task('render-fontawesome', ['render-plugin-manager'], function() {
 });
 
 /**
+ * Merge FontAwesome v4 shim into theme.
+ */
+gulp.task('render-fontawesome-shim', ['render-fontawesome'], function() {
+
+	var files = [
+		'lib/fontawesome/svg-with-js/js/fa-v4-shims.js',
+		'lib/fontawesome/svg-with-js/js/fa-v4-shims.min.js',
+	];
+
+	return gulp.src(files)
+    	.pipe(gulp.dest('dist/' + theme + '/framework/assets/js/'));
+
+});
+
+/**
  * Merge FontAwesome yml.
  */
-gulp.task('render-fontawesome-yml', ['render-fontawesome'], function() {
+gulp.task('render-fontawesome-yml', ['render-fontawesome-shim'], function() {
 
 	return gulp.src('lib/fontawesome/advanced-options/metadata/icons.yml')
 		.pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
