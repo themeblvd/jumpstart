@@ -566,7 +566,7 @@ function tbc_confirm( message, args, callback ) {
 
 					event.preventDefault();
 
-					admin.comfirm( deleteMsg, { 'confirm': true }, function( response ) {
+					admin.confirm( deleteMsg, { 'confirm': true }, function( response ) {
 
 						if ( response ) {
 

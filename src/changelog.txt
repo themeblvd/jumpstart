@@ -7,6 +7,7 @@ Jump Start Changelog
 * **Updated Theme Blvd framework to 2.7.1**
 * Fixed: Publish dates in "time ago" format showing, "0 seconds ago."
 * Fixed: Text logo not centering when "Center Logo" is checked with Super User and Executive bases.
+* Fixed: "Delete All Icons" button not working when configuring contact links.
 
 --------------------------------------------------------------
 

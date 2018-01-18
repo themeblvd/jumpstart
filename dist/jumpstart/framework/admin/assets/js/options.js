@@ -2446,7 +2446,7 @@ window.themeblvd.options = {};
 					$option = $link.closest( '.tb-sortable-option' ),
 					$items  = $option.find( '.item' );
 
-				admin.comfirm( $link.attr( 'title' ), { 'confirm': true }, function( response ) {
+				admin.confirm( $link.attr( 'title' ), { 'confirm': true }, function( response ) {
 
 					if ( response ) {
 
