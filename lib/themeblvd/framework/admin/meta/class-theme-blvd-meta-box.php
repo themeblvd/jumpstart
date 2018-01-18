@@ -245,7 +245,7 @@ class Theme_Blvd_Meta_Box {
 			),
 		);
 
-		$options = array_merge( $hidden, $this->options );
+		$options = array_merge( $this->options, $hidden );
 
 		$form = themeblvd_option_fields(
 			'themeblvd_meta[' . $this->id . ']',
