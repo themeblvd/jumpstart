@@ -919,5 +919,7 @@ function jumpstart_ent_options() {
 
 	themeblvd_edit_option( 'layout', 'header', 'social_media_style', 'desc', $desc );
 
+	themeblvd_edit_option( 'layout', 'header_trans', 'trans_social_media_style', 'desc', $desc );
+
 }
 add_action( 'after_setup_theme', 'jumpstart_ent_options' );
