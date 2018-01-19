@@ -312,7 +312,11 @@ function themeblvd_admin_assets( $type = '' ) {
 
 			} elseif ( 'editor' === $handle ) {
 
-				wp_enqueue_editor();
+				if ( function_exists( 'wp_enqueue_editor' ) ) { // WordPress 4.8+
+
+					wp_enqueue_editor();
+
+				}
 
 			} else {
 
