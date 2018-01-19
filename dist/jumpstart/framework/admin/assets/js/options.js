@@ -2619,8 +2619,6 @@ window.themeblvd.options = {};
 			var value   = $( this ).val(),
 				results = [];
 
-			console.log( 'VALUE: ' + value );
-
 			if ( ! value ) {
 				$iconBrowser.find( '.select-icon' ).show();
 				return;

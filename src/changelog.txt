@@ -10,6 +10,7 @@ Jump Start Changelog
 * Fixed: Publish dates in "time ago" format showing, "0 seconds ago."
 * Fixed: Text logo not centering when "Center Logo" is checked with Super User and Executive bases.
 * Fixed: "Delete All Icons" button not working when configuring contact links.
+* Fixed: A minor tweak to our framework modal script, which will allow the [Theme Blvd Shortcodes](https://wordpress.org/plugins/theme-blvd-shortcodes/) plugin to insert icons properly from the icon browser in the shortcode generator,
 
 --------------------------------------------------------------
 

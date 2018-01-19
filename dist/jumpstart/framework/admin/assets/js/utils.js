@@ -449,8 +449,6 @@ function tbc_confirm( message, args, callback ) {
 
 		var self = Object.create( admin.modal );
 
-		// var self = admin.modal;
-
 		self.element   = element;
 		self.$element  = $( element );
 		self.secondary = false;
@@ -512,7 +510,7 @@ function tbc_confirm( message, args, callback ) {
 
 				event.preventDefault();
 
-				$( this ).trigger( 'themeblvd-modal-close' );
+				$( this ).trigger( 'themeblvd-modal-close', self );
 
 				self.settings.onCancel( self );
 
@@ -527,7 +525,7 @@ function tbc_confirm( message, args, callback ) {
 
 				event.preventDefault();
 
-				$( this ).trigger( 'themeblvd-modal-insert' );
+				$( this ).trigger( 'themeblvd-modal-insert', self );
 
 				self.settings.onSave( self );
 
@@ -546,7 +544,7 @@ function tbc_confirm( message, args, callback ) {
 
 					event.preventDefault();
 
-					$( this ).trigger( 'themeblvd-modal-secondary' );
+					$( this ).trigger( 'themeblvd-modal-secondary', self );
 
 					self.settings.onSecondary( self );
 
@@ -570,7 +568,7 @@ function tbc_confirm( message, args, callback ) {
 
 						if ( response ) {
 
-							$( this ).trigger( 'themeblvd-modal-delete' );
+							$( this ).trigger( 'themeblvd-modal-delete', self );
 
 							self.settings.onDelete( self );
 
