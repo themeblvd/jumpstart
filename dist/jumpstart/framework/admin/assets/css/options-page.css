@@ -218,3 +218,7 @@
   margin-bottom: 0 !important;
   width: 780px;
 }
+
+.tb-options-page .tb-insert-shortcode {
+  display: none;
+}

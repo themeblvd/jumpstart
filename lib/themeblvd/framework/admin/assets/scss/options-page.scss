@@ -237,3 +237,14 @@
 		width: $options-page-width;
 	}
 }
+
+//
+// Hide "Add Shortcode" button for any
+// rich-text editors.
+//
+
+.tb-options-page {
+	.tb-insert-shortcode {
+		display: none;
+	}
+}

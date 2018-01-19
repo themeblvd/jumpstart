@@ -49,6 +49,13 @@ function themeblvd_get_admin_locals( $type ) {
 				'text_color_hover' => __( 'Text Hover Color', 'jumpstart' ),
 				'yes'              => __( 'Yes', 'jumpstart' ),
 			);
+
+			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) ) {
+
+				$locals['add_shortcode'] = __( 'Add Shortcode', 'jumpstart' );
+
+			}
+
 			break;
 
 		case 'customizer_js':

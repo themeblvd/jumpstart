@@ -3449,6 +3449,10 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+#: ../framework/admin/functions/locals.php:55
+msgid "Add Shortcode"
+msgstr ""
+
 #: ../framework/admin/functions/setup.php:182, ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:296
 msgid "Suggested Plugins"
 msgstr ""
