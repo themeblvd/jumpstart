@@ -305,6 +305,22 @@ function themeblvd_get_js_locals() {
 
 		$locals['sticky'] = 'true';
 
+		/**
+		 * Filters the offset for scroll to JavaScript
+		 * functionality.
+		 *
+		 * @since @@name-framework 2.5.0
+		 *
+		 * @param int|string Number of pixels, like `50`.
+		 */
+		$offset = apply_filters( 'themeblvd_sticky_offset', 50 );
+
+		if ( $offset ) {
+
+			$locals['sticky_offset'] = $offset;
+
+		}
+
 	}
 
 	if ( themeblvd_do_side_panel() ) {

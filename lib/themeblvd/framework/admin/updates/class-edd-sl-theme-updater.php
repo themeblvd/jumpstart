@@ -70,7 +70,7 @@ class EDD_SL_Theme_Updater {
 				);
 			echo '</div>';
 			echo '<div id="' . $this->theme_slug . '_' . 'changelog" style="display:none;">';
-				echo wpautop( $api_response->sections['changelog'] );
+			echo wpautop( $api_response->sections['changelog'] );
 			echo '</div>';
 		}
 	}

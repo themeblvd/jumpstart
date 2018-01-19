@@ -741,19 +741,23 @@ jQuery(document).ready(function($) {
 
 	}
 
-	$('.tb-scroll-to').on('click', function(){
+	$( '.tb-scroll-to' ).on( 'click', function( event ) {
 
-		var $el = $(this),
-			to = null,
+		event.preventDefault();
+
+		var $el = $( this ),
+			to  = null,
 			top = 0;
 
-		if ( this.hash && this.hash != '#' ) {
+		if ( this.hash && '#' != this.hash ) {
 			to = this.hash;
 		} else {
-			to = '#'+$el.closest('.element-section').next().attr('id');
+			to = '#' + $el.closest( '.element-section' ).next().attr( 'id' );
 		}
 
-		top = $(to).offset().top;
+		top = $( to ).offset().top;
+
+		console.log(top);
 
 		if ( themeblvd.scroll_to_section_offset ) {
 			top = top - parseInt( themeblvd.scroll_to_section_offset );
@@ -765,8 +769,7 @@ jQuery(document).ready(function($) {
 			scrollTop: top
 		}, 800);
 
-		return false;
-	});
+	} );
 
 	// ---------------------------------------------------------
 	// Social Share Buttons
