@@ -18,7 +18,7 @@
 get_header();
 ?>
 
-<div id="custom-main" class="clearfix" role="main">
+<div id="custom-main" <?php themeblvd_main_class(); ?> role="main">
 
 	<?php themeblvd_content_top(); ?>
 

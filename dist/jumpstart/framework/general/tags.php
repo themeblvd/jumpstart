@@ -434,16 +434,25 @@ function themeblvd_main_class() {
 
 	$config = Theme_Blvd_Frontend_Init::get_instance();
 
-	$class = array(
-		'site-inner',
-		$config->get_config( 'sidebar_layout' )
-	);
+	$class = array();
+
+	$class[] = 'site-main';
+
+	if ( ! is_page_template( 'template_builder.php' ) ) {
+
+		$class[] = 'site-inner';
+
+		$class[] = $config->get_config( 'sidebar_layout' );
+
+	}
 
 	if ( themeblvd_get_att( 'epic_thumb' ) ) {
 
 		$class[] = 'has-epic-thumb-above';
 
 	}
+
+	$class[] = 'clearfix';
 
 	/**
 	 * Filters the CSS classes used with the main
