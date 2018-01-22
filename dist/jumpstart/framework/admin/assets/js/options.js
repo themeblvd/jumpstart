@@ -1126,15 +1126,15 @@ window.themeblvd.options = {};
 
 			if ( $( this ).is( ':checked' ) ) {
 
-				$this.find( '.standard-footer-setup' ).hide();
+				$element.find( '.standard-footer-setup' ).hide();
 
-				$this.find( '.footer-template-setup' ).show();
+				$element.find( '.footer-template-setup' ).show();
 
 			} else {
 
-				$this.find( '.standard-footer-setup' ).show();
+				$element.find( '.standard-footer-setup' ).show();
 
-				$this.find( '.footer-template-setup' ).hide();
+				$element.find( '.footer-template-setup' ).hide();
 
 			}
 

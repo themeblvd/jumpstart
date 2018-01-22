@@ -11,7 +11,9 @@
 * Fixed: Text logo not centering when "Center Logo" is checked with Super User and Executive bases.
 * Fixed: "Delete All Icons" button not working when configuring contact links.
 * Fixed: A minor tweak to our framework modal script, which allows the [Theme Blvd Shortcodes](https://wordpress.org/plugins/theme-blvd-shortcodes/) plugin to insert icons properly from the icon browser in the shortcode generator.
-* Fixed: The "scroll-to-section" buttons not working, which scroll the user to the next section in hero units and full-screen featured images.
+* Fixed: The "scroll-to-section" buttons not working, which scrolls the user to the next section in hero units and full-screen featured images.
+* Fixed: Icons not vertically centering within an icon box, when using the "transparent badge" display style.
+* Fixed: Footer sync checkbox on theme options page not working.
 
 --------------------------------------------------------------
 
