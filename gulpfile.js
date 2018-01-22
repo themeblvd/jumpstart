@@ -105,7 +105,7 @@ gulp.task('render-fontawesome', ['render-plugin-manager'], function() {
 		// 'lib/fontawesome/svg-with-js/js/fontawesome-all.js'
 	];
 
-	var find_icons = [
+	var find_icons = [ // Original icons from fa-solid.js
 		// angle-down
 		"M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z",
 		// angle-left
@@ -116,7 +116,7 @@ gulp.task('render-fontawesome', ['render-plugin-manager'], function() {
 		"M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"
 	];
 
-	var replace_icons = [
+	var replace_icons = [ // Same icons, but taken from pro's fa-regular.js
 		// angle-down
 		"M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z",
 		// angle-left
