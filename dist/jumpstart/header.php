@@ -84,8 +84,6 @@
 				 * Fires just inside the main content
 				 * wrapper.
 				 *
-				 * @hooked themeblvd_main_top_default - 10
-				 *
 				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_main_top' );
