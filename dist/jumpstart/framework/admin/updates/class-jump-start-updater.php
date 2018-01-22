@@ -88,7 +88,7 @@ class Jump_Start_Updater {
 
 		add_action( 'load-update-core.php', array( $this, 'delete_theme_update_transient' ) );
 
-		add_action( 'load-update-core.php', array( $this, 'load_update_nag' ) );
+		// add_action( 'load-update-core.php', array( $this, 'load_update_nag' ) );
 
 		add_action( 'load-themes.php', array( $this, 'delete_theme_update_transient' ) );
 
