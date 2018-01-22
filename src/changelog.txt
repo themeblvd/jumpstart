@@ -4,6 +4,7 @@
 
 * **Updated Theme Blvd framework to 2.7.1**
 * Improvement: Added FontAwesome v4 shim; use `add_filter( 'themeblvd_icon_shims', '__return_true' );` in your child theme to get v4 icon names working until you can update them all to be compatible with FontAwesome v5.
+* Improvement: Customized `angle-*` solid FontAwesome icons to be thinner; this gets the main navigation submenu indicator icons looking more how they did previously. 
 * Improvement: When using the [Theme Blvd Shortcodes](https://wordpress.org/plugins/theme-blvd-shortcodes/) plugin, the "Add Shortcode" button has been added to the new framework rich-text editors, used in the layout builder.
 * Improvement: Added back `themeblvd_responsive_menu_toggle()` as a deprecated function to avoid fatal errors, if being used in a child theme.
 * Improvement: If deemed to be a "major upgrade" theme updates will now display a notice which includes helpful information about [updating responsibly](http://themeblvd.com/links/update-responsibly).
