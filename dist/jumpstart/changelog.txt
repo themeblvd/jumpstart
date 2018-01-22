@@ -16,6 +16,7 @@
 * Fixed: Icons not vertically centering within an icon box, when using the "transparent badge" display style.
 * Fixed: Footer sync checkbox on theme options page not working.
 * Fixed: Minor console error in Chrome for Edit Profile screen, "[DOM] Found 2 elements with non-unique id #_tb_box_archive."
+* Fixed: Minor JavaScript issues in the admin, when plugin notice is present.
 * Updated: FontAwesome to 5.0.4.
 
 --------------------------------------------------------------

@@ -2,7 +2,7 @@
 /**
  * Plugin Manager Notices
  *
- * @version    1.0.1
+ * @version    1.0.2
  * @author     Jason Bobich, Theme Blvd
  * @copyright  2009-2017 Theme Blvd
  * @link       http://mypluginmanager.com
@@ -232,12 +232,12 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Notices' ) ) {
 				return;
 			}
 
-			$suffix = themeblvd_script_debug() ? '' : '.min';
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 			wp_enqueue_script(
 				'themeblvd-plugin-notices',
 				esc_url( $this->args['package_url'] . "/assets/js/plugin-notices$suffix.js" ),
-				array( 'jquery', 'common' )
+				array( 'jquery' )
 			);
 
 		}
