@@ -61,7 +61,7 @@ function jumpstart_updates() {
 
 	}
 
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-edd-sl-theme-updater.php' );
+	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-jump-start-updater.php' );
 
 	$args['license'] = $license_key;
 
@@ -80,7 +80,7 @@ function jumpstart_updates() {
 	/*
 	 * Run Updater.
 	 */
-	$_tb_jumpstart_edd_updater = new EDD_SL_Theme_Updater( $args );
+	$_tb_jumpstart_edd_updater = new Jump_Start_Updater( $args );
 
 }
 
