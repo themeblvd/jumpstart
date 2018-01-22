@@ -223,26 +223,54 @@ function themeblvd_admin_enqueue() {
 
 	$suffix = themeblvd_script_debug() ? '' : '.min';
 
+	$icon_file = themeblvd_get_icon_js_file();
+
+	wp_register_script(
+		$icon_file['handle'],
+		esc_url( $icon_file['url'] ),
+		array(),
+		esc_attr( $icon_file['version'] )
+	);
+
+	wp_localize_script(
+		$icon_file['handle'],
+		'themeblvdIconSearchData',
+		themeblvd_get_icon_search_data()
+	);
+
+	wp_register_script(
+		'themeblvd-admin-utils',
+		esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/utils{$suffix}.js" ),
+		array(
+			'jquery',
+			'jquery-ui-core',
+			'jquery-ui-sortable',
+			'jquery-ui-slider',
+			'wp-color-picker',
+			'media-editor',
+			'editor',
+		),
+		TB_FRAMEWORK_VERSION
+	);
+
+	wp_localize_script(
+		'themeblvd-admin-utils',
+		'themeblvdL10n',
+		themeblvd_get_admin_locals( 'js' )
+	);
+
+	wp_register_script(
+		'themeblvd-admin-options',
+		esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/options{$suffix}.js" ),
+		array( 'themeblvd-admin-utils' ),
+		TB_FRAMEWORK_VERSION
+	);
+
 	/*
 	 * Enqueue assets required for editing posts and
 	 * pages.
 	 */
 	if ( 'post-new.php' === $pagenow || 'post.php' === $pagenow ) {
-
-		$icon_file = themeblvd_get_icon_js_file();
-
-		wp_register_script(
-			$icon_file['handle'],
-			esc_url( $icon_file['url'] ),
-			array(),
-			esc_attr( $icon_file['version'] )
-		);
-
-		wp_localize_script(
-			$icon_file['handle'],
-			'themeblvdIconSearchData',
-			themeblvd_get_icon_search_data()
-		);
 
 		themeblvd_admin_assets();
 
@@ -340,25 +368,9 @@ function themeblvd_admin_assets( $type = '' ) {
 			}
 		}
 
-		wp_enqueue_script(
-			'themeblvd-admin-utils',
-			esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/utils{$suffix}.js" ),
-			$required,
-			TB_FRAMEWORK_VERSION
-		);
+		wp_enqueue_script( 'themeblvd-admin-utils' );
 
-		wp_localize_script(
-			'themeblvd-admin-utils',
-			'themeblvdL10n',
-			themeblvd_get_admin_locals( 'js' )
-		);
-
-		wp_enqueue_script(
-			'themeblvd-admin-options',
-			esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/options{$suffix}.js" ),
-			array( 'themeblvd-admin-utils' ),
-			TB_FRAMEWORK_VERSION
-		);
+		wp_enqueue_script( 'themeblvd-admin-options' );
 
 	}
 
