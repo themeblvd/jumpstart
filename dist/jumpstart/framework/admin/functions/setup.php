@@ -229,6 +229,21 @@ function themeblvd_admin_enqueue() {
 	 */
 	if ( 'post-new.php' === $pagenow || 'post.php' === $pagenow ) {
 
+		$icon_file = themeblvd_get_icon_js_file();
+
+		wp_register_script(
+			$icon_file['handle'],
+			esc_url( $icon_file['url'] ),
+			array(),
+			esc_attr( $icon_file['version'] )
+		);
+
+		wp_localize_script(
+			$icon_file['handle'],
+			'themeblvdIconSearchData',
+			themeblvd_get_icon_search_data()
+		);
+
 		themeblvd_admin_assets();
 
 		wp_enqueue_script(
