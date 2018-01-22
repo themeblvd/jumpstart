@@ -14,6 +14,7 @@
 * Fixed: The "scroll-to-section" buttons not working, which scrolls the user to the next section in hero units and full-screen featured images.
 * Fixed: Icons not vertically centering within an icon box, when using the "transparent badge" display style.
 * Fixed: Footer sync checkbox on theme options page not working.
+* Fixed: Minor console error in Chrome for Edit Profile screen, "[DOM] Found 2 elements with non-unique id #_tb_box_archive."
 
 --------------------------------------------------------------
 

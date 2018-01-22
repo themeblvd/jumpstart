@@ -256,7 +256,7 @@ class Theme_Blvd_User_Options {
 							<?php esc_html_e( 'Display Author Box on user\'s archive', '@@text-domain' ); ?>
 						</label><br>
 						<label for="_tb_box_email">
-							<input id="_tb_box_archive" name="_tb_box_email" type="checkbox" value="1" <?php checked( $box_email, '1' ); ?> />
+							<input id="_tb_box_email" name="_tb_box_email" type="checkbox" value="1" <?php checked( $box_email, '1' ); ?> />
 							<?php esc_html_e( 'Display email icon in Author Box', '@@text-domain' ); ?>
 						</label><br>
 						<label for="_tb_box_archive_link">
