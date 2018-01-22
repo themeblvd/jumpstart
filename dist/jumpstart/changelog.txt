@@ -1,8 +1,6 @@
-Jump Start Changelog
-====================
+# Jump Start Changelog
 
-2.2.1 - XX/XX/2018
-------------------
+## 2.2.1 - XX/XX/2018
 
 * **Updated Theme Blvd framework to 2.7.1**
 * Improvement: Added FontAwesome v4 shim; add `add_filter( 'themeblvd_icon_shims', '__return_true' );` to your child theme to get v4 icon names working until you can update them all to be compatible with FontAwesome v5.
@@ -16,38 +14,9 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.2.0 - 01/16/2018
-------------------
+## 2.2.0 - 01/16/2018
 
-**Important General Notes:**
-
-* If icons you've implemented are not showing up, [take a look here](https://fontawesome.com/how-to-use/upgrading-from-4#icon-name-changes-complete-list) to make sure you're not using FontAwesome icon names that they changed in v5.
-* The following sections at *Appearance > Theme Options* have been added or modified. Make sure to double check these options are set up the way you want after updating.
-	* (new) *Styles > Sticky Header* -- All theme bases, except Developer.
-	* (modified) *Styles > Mobile Header* -- All theme bases, except Developer.
-	* (modified) *Styles > Footer* -- All theme bases, except Developer.
-	* (new) *Layout > Sticky Header* -- All theme bases.
-	* (new) *Layout > Contact* -- All theme bases, except Agent.
-	* (modified) *Content > General* -- All theme bases.
-	* (modified) *Content > Archives* -- All theme bases.
-	* (modified) *Plugins > bbPress* -- All theme bases, if using bbPress plugin.
-	* (modified) *Plugins > Gravity Forms* -- All theme bases, if using Gravity Forms plugin.
-	* (modified) *Plugins > WooCommerce* -- All theme bases, if using WooCommerce plugin.
-* With this theme update, you must also update the following plugins, if you're using any of them.
-	* Theme Blvd Layout Builder to 2.2+.
-	* Theme Blvd Widget Areas to 1.3+.
-	* Theme Blvd Shortcodes to 1.6.5+.
-	* Theme Blvd Importer to 1.0.4+.
-	* Tweeple to 0.9.5+.
-
-**Important Developer Notes:**
-
-* If you have [template part files](http://dev.themeblvd.com/tutorial/template-parts-framework-2-5/) in your child theme, they MUST be moved into a directory named `template-parts`.
-* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
-* The files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
-* Website logo CSS classes have been re-structured; so check any custom CSS you may have applied to your website's header.
-
-**Full List of Changes:**
+*Warning: Make sure to read this article before updating: [Updating to Framework 2.7](http://themeblvd.com/2018/01/21/updating-framework-v2-7)*
 
 * **Updated Theme Blvd framework to 2.7.0**
 * New: Added a new feature for displaying a banner across post archives; see *Appearance > Theme Options > Content > Archives > Apply banner to post archives*.
@@ -55,7 +24,7 @@ Jump Start Changelog
 * New: Added option for mobile header height at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
 * New: Added option for mobile header navigational icon color at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
 * New: Added option for mobile header breakpoint at *Appearance > Theme Options > Styles > Mobile Header* (for all theme bases except Developer).
-* New: Added rich-editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
+* New: Added rich-text editing capabilities throughout theme options and layout builder; you can filter this off with `add_filter( 'themeblvd_do_rich_editing', '__return_false' )`.
 * New: Added support for applying background shade to individual columns in the layout builder.
 * New: Added option for disabling scroll effects at *Appearance > Theme Options > Content > General*.
 * New: Added "Custom Font" selection to typography options; this allows you to use custom web fonts with the theme, that you've included yourself through customization or a third-party plugin.
@@ -69,46 +38,6 @@ Jump Start Changelog
 	* Improved admin icon browser with live search.
 	* More icons to choose from; all free FontAwesome 5 solid and brand icons included by default.
 	* New filters added for developers to implement FontAwesome Pro (or alternative icon styles) on frontend and into admin icon browser.
-* Theme Code Overhaul
-	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
-	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
-	* All template part files were moved from the theme root to a `template-parts` directory; **if using any template parts in your child theme, make sure you also move these into a `template-parts` directory!**
-	* New template parts added, that can be copied to your child theme:
-		* `/template-parts/content-head.php` -- Edit the website `<head>`.
-		* `/template-parts/content-header.php` -- Edit the desktop website header content.
-		* `/template-parts/content-mobile-header.php` -- Edit the mobile website header content.
-		* `/template-parts/content-sticky-header.php` -- Edit the sticky header content.
-		* `/template-parts/content-footer.php` -- Edit the website footer.
-		* `/template-parts/content-panel.php` -- Edit desktop side panel content.
-		* `/template-parts/content-mobile-panel.php` -- Edit the mobile menu panel content.
-	* Mobile header is now a completely separate component from the desktop header.
-	* Sticky header and mobile panel content can now be edited through template parts and/or action hooks; they no longer rely solely on JavaScript to be built.
-	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
-	* Better handling of adding "Sidebar Layout" selection to "Page Attributes" meta box on Edit Page screen, and improved security when saving.
-	* Improved security for saving meta boxes using `Theme_Blvd_Meta_Box` class.
-	* Improved security for saving options added to Edit Tag and Edit Category screens.
-	* Improved security for saving options added to Edit Profile screen.
-	* Improved security for clearing the theme options page.
-	* Re-structured all admin JavaScript for better organization and efficiency.
-	* Re-structured all admin CSS for better organization and efficiency.
-	* Added action hook `themeblvd_header`, giving you control over the entire website header, as a whole.
-	* Added action hook `themeblvd_footer`, giving you control over the entire website footer, as a whole.
-	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_do_debug_info` to return `false`.
-	* Added filter to remove admin framework welcome message; just filter `themeblvd_do_welcome_message` to `false`.
-	* Added filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.
-	* Added filter `themeblvd_element_{$type}_options` to modify options for any element being outputted from the layout builder.
-	* Added filter `themeblvd_element_{$type}_display` to modify display options for any element being outputted from the layout builder.
-	* Added additional CSS classes to contact buttons and social sharing buttons, for more complex styling.
-	* Added improved script and stylesheet debugging by setting WordPress's `SCRIPT_DEBUG` constant to `true`.
-	* Added `alt` tags to parallax background image HTML output from the layout builder; you must re-insert and save your background image for the `alt` tags to start outputting.
-	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
-	* Removed overly complex stylesheet API; all framework CSS files now enqueued through simple, pluggable function `themeblvd_include_styles()`.
-	* Removed the function `themeblvd_responsive_menu_toggle()`; use function `themeblvd_mobile_panel_trigger()` instead.
-	* Removed old html5shiv for HTML5 compatibility with IE8.
-	* Removed `themeblvd_featured_*` action hooks, which were deprecated in framework 2.5.
-	* Removed `responsiveness` from the global configuration; it's now assumed that your site will always be responsive.
-	* Removed `themeblvd_viewport_default()` function, that was hooked to `wp_head`; now you can just edit `content-head.php` instead.
-	* Optimized (minified) CSS file included on frontend for each theme base.
 * Third-Party Plugin Compatibility
 	* [bbPress](https://wordpress.org/plugins/bbpress/): "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* [bbPress](https://wordpress.org/plugins/bbpress/): Added new option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
@@ -138,7 +67,6 @@ Jump Start Changelog
 * Improvement: There is now only one Post Slider and Simple Slider element; apply the "Popout" display option to these elements to achieve the full-width versions, which now display inline images.
 * Improvement: For simplification, side panel background color and mobile menu background color options on Super User, Executive and Entrepreneur theme bases have been combined into one option; this was already the case on the Agent theme base.
 * Fixed: When text logo is used with Agent base and dark-colored header, header text was not colored properly so it could be seen.
-* Fixed: Custom layout builder elements are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
 * Fixed: Light logo text color (for non-image main site logo) not getting applied with dark header backgrounds; bug was present in Super User, Executive, Entrepreneur theme bases.
 * Fixed: Tab deep linking not working, when enabled from child theme (see [tutorial](http://dev.themeblvd.com/tutorial/tab-deeplinking)).
 * Fixed: Post ID browser modal window not closing in admin when selecting post.
@@ -148,10 +76,48 @@ Jump Start Changelog
 * Fixed: Self-hosted background video error in Safari, "[Error] TypeError: undefined is not an object ..."
 * Removed: Header background options were simplified a bit for Super User, Executive and Entrepreneur theme bases; there are no more background parallax, slideshow or video options.
 * Removed: No more "Background Color Brightness" option at *Appearance > Theme Options > Styles > Mobile Header*; use new "Icon Color" option instead.
-* Removed: No more support for thumbnail borders; the filter `themeblvd_featured_thumb_frame` has been removed. Use CSS customization instead.
 * Removed: No more support for [Theme Blvd Sliders](https://wordpress.org/plugins/theme-blvd-sliders/) plugin.
 * Removed: No more "Dark" site-wide content style.
 * Removed: No more circular thumbnail images; the corresponding user option on Super User, Entrepreneur and Executive bases has also been removed.
+* Theme Code Overhaul
+	* All PHP code now meets [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
+	* All function, action, and filter comments now meet WordPress's [PHP Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php).
+	* All template part files were moved from the theme root to a `template-parts` directory; **if using any template parts in your child theme, make sure you also move these into a `template-parts` directory!**
+	* New template parts added, that can be copied to your child theme:
+		* `/template-parts/content-head.php` -- Edit the website `<head>`.
+		* `/template-parts/content-header.php` -- Edit the desktop website header content.
+		* `/template-parts/content-mobile-header.php` -- Edit the mobile website header content.
+		* `/template-parts/content-sticky-header.php` -- Edit the sticky header content.
+		* `/template-parts/content-footer.php` -- Edit the website footer.
+		* `/template-parts/content-panel.php` -- Edit desktop side panel content.
+		* `/template-parts/content-mobile-panel.php` -- Edit the mobile menu panel content.
+	* Template part files `content-template_archives.php` and `content-template_sitemap.php` were renamed to `content-template-archives.php` and `content-template-sitemap.php`.
+	* Mobile header is now a completely separate component from the desktop header.
+	* Sticky header and mobile panel content can now be edited through template parts and/or action hooks; they no longer rely solely on JavaScript to be built.
+	* Use of `themeblvd_get_part()` now deprecated; all instances of `get_template_part()` replaced with new `themeblvd_get_template_part()` wrapper function; all previous, related filters have remained in place and work as before.
+	* Re-structured all admin CSS and JavaScript for better organization and efficiency.
+	* The "Agent" theme base’s footer has become the default website footer across all theme bases. This means there’s new CSS applied to the footer in all other theme bases. And for the “Agent” base, it means that it has default framework functions hooked for the footer content.
+	* Your [custom layout builder elements](http://dev.themeblvd.com/tutorial/add-custom-builder-elements/) are now hooked to an action `themeblvd_element_{$type}` instead of just `themeblvd_{$type}`, to not conflict with filtering standard output of elements.
+	* Deprecated the function `themeblvd_responsive_menu_toggle()`; use function `themeblvd_mobile_panel_trigger()` instead.
+	* Added various security improvements.
+	* Added action hooks `themeblvd_header` and `themeblvd_footer`, giving you control over these entire sections at the top-level. All previous actions hooks still exist within (except `themeblvd_header_above`).
+	* Added filter to remove frontend debug info from printing in source code; just filter `themeblvd_do_debug_info` to return `false`.
+	* Added filter to remove admin framework welcome message; just filter `themeblvd_do_welcome_message` to `false`.
+	* Added filter `themeblvd_sidebar_args` added, which is shared with Theme Blvd Widget Areas plugin; this filters arguments passed to `register_sidebar()` for custom and theme widget areas.
+	* Added filter `themeblvd_element_{$type}_options` to modify options for any element being outputted from the layout builder.
+	* Added filter `themeblvd_element_{$type}_display` to modify display options for any element being outputted from the layout builder.
+	* Added additional CSS classes to contact buttons and social sharing buttons, for more complex styling possibilities.
+	* Added improved script and stylesheet debugging, when WordPress's `SCRIPT_DEBUG` constant is set to `true`.
+	* Added `alt` tags to parallax background image HTML output from the layout builder; you must re-insert and save your background image for the `alt` tags to start outputting.
+	* Removed all "fancy selects" styling on admin UI select menus; we're now relying on default WordPress styling.
+	* Removed overly complex stylesheet API; all framework CSS files now enqueued through simple, pluggable function `themeblvd_include_styles()`.
+	* Removed old html5shiv for HTML5 compatibility with IE8.
+	* Removed `themeblvd_featured_*` action hooks, which were deprecated in framework 2.5.
+	* Removed `responsiveness` from the global configuration; it's now assumed that your site will always be responsive.
+	* Removed `themeblvd_viewport_default()` function, that was hooked to `wp_head`; now you can just edit `content-head.php` instead.
+	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
+	* Removed the filter `themeblvd_featured_thumb_frame` to add old Bootstrap thumbnail border to images; use CSS customization instead.
+	* Optimized (minified) CSS file included on frontend for each theme base.
 * Updated: FontAwesome to 5.0.1.
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.
@@ -161,16 +127,14 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.15 - 11/20/2017
--------------------
+## 2.1.15 - 11/20/2017
 
 * **Updated Theme Blvd framework to 2.6.14**
 * Fixed: Self-hosted background video not working with WordPress 4.9.
 
 --------------------------------------------------------------
 
-2.1.14 - 11/08/2017
--------------------
+## 2.1.14 - 11/08/2017
 
 * **Updated Theme Blvd framework to 2.6.13**
 * Improvement: Better consistency loading background video from YouTube and Vimeo.
@@ -179,16 +143,14 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.13 - 09/19/2017
--------------------
+## 2.1.13 - 09/19/2017
 
 * **Updated Theme Blvd framework to 2.6.12**
 * Fixed: TinyMCE toolbar's dropdown menus not showing when the using Visual Editor within Theme Blvd Layout Builder.
 
 --------------------------------------------------------------
 
-2.1.12 - 09/11/2017
--------------------
+## 2.1.12 - 09/11/2017
 
 * **Updated Theme Blvd framework to 2.6.11**
 * Improvement: Sticky menu is now at 0 opacity when it's hidden for protection against systems that allow temporary scrolling past the viewport top.
@@ -197,16 +159,14 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.11 - 08/07/2017
--------------------
+## 2.1.11 - 08/07/2017
 
 * **Updated Theme Blvd framework to 2.6.10**
 * Fixed: "Iframe" 16:9 lightbox type getting applied where it shouldn't.
 
 --------------------------------------------------------------
 
-2.1.10 - 08/03/2017
--------------------
+## 2.1.10 - 08/03/2017
 
 * **Updated Theme Blvd framework to 2.6.9**
 * Fixed: Image `srcset` property not getting printed out when featured image is linked to lightbox.
@@ -217,10 +177,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
---------------------------------------------------------------
-
-2.1.9 - 05/31/2017
-------------------
+## 2.1.9 - 05/31/2017
 
 * **Updated Theme Blvd framework to 2.6.8**
 * New: Added option at *Appearance > Theme Options > Content > Blog Homepage* to set a separate post display for the blog homepage or "posts page."
@@ -232,8 +189,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.8 - 05/08/2017
-------------------
+## 2.1.8 - 05/08/2017
 
 * **Updated Theme Blvd framework to 2.6.7**
 
@@ -244,9 +200,7 @@ Jump Start Changelog
 * Fixed: Occasional buggy behavior in loading variable-width Owl Carousel.
 * Fixed: Simple slider image links to lightbox not working.
 
---------------------------------------------------------------
-
-2.1.7 - 04/14/2017
+## 2.1.7 - 04/14/2017
 ------------------
 
 * **Updated Theme Blvd framework to 2.6.6**
@@ -256,8 +210,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.6 - 04/10/2017
-------------------
+## 2.1.6 - 04/10/2017
 
 * **Updated Theme Blvd framework to 2.6.5**
 * WooCommerce v3 compatibility.
@@ -277,8 +230,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.5 - 03/10/2017
-------------------
+## 2.1.5 - 03/10/2017
 
 * **Updated Theme Blvd framework to 2.6.4**
 * Improvement: Floating search will now close on focusing out of search input box.
@@ -297,8 +249,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.4 - 01/16/2017
-------------------
+## 2.1.4 - 01/16/2017
 
 * **Updated Theme Blvd framework to 2.6.3**
 * Improvement: Much better support translating pages with custom layouts in WPML.
@@ -316,8 +267,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.3 - 11/10/2016
-------------------
+## 2.1.3 - 11/10/2016
 
 * **Updated Theme Blvd framework to 2.6.2**
 * Improvement: Moved "Ads Above Header" widget area before header, outside of the `#top` container; this causes less interference with all the potential user options that can be applied to he header.
@@ -331,8 +281,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.2 - 07/12/2016
-------------------
+## 2.1.2 - 07/12/2016
 
 * Improvement: Better RTL support for uses of Bootstrap carousel, like with simple slider element.
 * Fixed: Black background getting applied to single post content, when full-width or parallax featured image is set.
@@ -341,8 +290,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.1 - 07/08/2016
-------------------
+## 2.1.1 - 07/08/2016
 
 * **Updated Theme Blvd framework to 2.6.1**
 * New: Styles presets added to theme options; see *Appearance > Theme Options > Styles*.
@@ -369,8 +317,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.1.0 - 05/05/2016
-------------------
+## 2.1.0 - 05/05/2016
 
 *Warning: Make sure to read this article before updating: [Updating to Jump Start 2.1](http://news.themeblvd.com/2016/05/05/updating-to-jump-start-2-1/)*
 
@@ -481,8 +428,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.4 - 12/11/2015
-------------------
+## 2.0.4 - 12/11/2015
 
 * Improvement: Some frontend RTL fixes and improvements.
 * Improvement: Admin RTL fixes and improvements.
@@ -498,8 +444,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.3 - 11/10/2015
-------------------
+## 2.0.3 - 11/10/2015
 
 * New: Added compatibility for [Nav Menu Roles](https://wordpress.org/plugins/nav-menu-roles) plugin.
 * Fixed: Banner Meta box display issue on Edit Page screen in admin.
@@ -510,8 +455,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.2 - 10/15/2015
-------------------
+## 2.0.2 - 10/15/2015
 
 * **Updated Theme Blvd framework to 2.5.2**
 * New: Optional width and height scaling options for custom Google map marker images.
@@ -540,8 +484,7 @@ Jump Start Changelog
 
 --------------------------------------------------------------
 
-2.0.1 - 08/24/2015
-------------------
+## 2.0.1 - 08/24/2015
 
 * **Updated Theme Blvd framework to 2.5.1**
 * Cleaned up and optimized assets in `/framework` directory, reducing file size by about 2MB.
@@ -568,15 +511,9 @@ Jump Start Changelog
 * Updated: Bootstrap to 3.3.5.
 * Updated: FontAwesome to 4.4.
 
-**Important!** For best results with this update:
-
-* You should update to the latest version of the Theme Blvd Layout Builder plugin.
-* You should update to the latest version of the Theme Blvd Shortcodes plugin.
-
 --------------------------------------------------------------
 
-2.0.0 - 07/09/2015
-------------------
+## 2.0.0 - 07/09/2015
 
 * **Updated Theme Blvd framework to 2.5.0**
 * New: Support for tons of new elements and enhancements in [Layout Builder 2.0](https://wordpress.org/plugins/theme-blvd-layout-builder/changelog/) update.
