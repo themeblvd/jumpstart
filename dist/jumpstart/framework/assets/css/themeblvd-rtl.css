@@ -5416,12 +5416,11 @@ body.mobile .tb-bg-video {
 }
 /* @noflip */
 .tb-icon-box .icon.trans-badge .svg-inline--fa {
-	line-height: 3em;
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	text-align: center;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
 /* Jumbotron */
