@@ -114,6 +114,10 @@
   width: 100%;
 }
 
+.tb-options-wrap .controls input[type="text"] {
+  padding: 6px 8px;
+}
+
 .tb-options-wrap .controls textarea {
   line-height: 150%;
 }
