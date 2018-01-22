@@ -130,12 +130,12 @@ gulp.task('render-fontawesome-shim', ['render-fontawesome'], function() {
 });
 
 /**
- * Merge FontAwesome yml.
+ * Merge FontAwesome json.
  */
-gulp.task('render-fontawesome-yml', ['render-fontawesome-shim'], function() {
+gulp.task('render-fontawesome-json', ['render-fontawesome-shim'], function() {
 
-	return gulp.src('lib/fontawesome/advanced-options/metadata/icons.yml')
-		.pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
+	return gulp.src('lib/fontawesome/advanced-options/metadata/icons.json')
+		// .pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
     	.pipe(gulp.dest('dist/' + theme + '/framework/admin/assets/data'));
 
 });
@@ -143,7 +143,7 @@ gulp.task('render-fontawesome-yml', ['render-fontawesome-shim'], function() {
 /**
  * Render WordPress theme.
  */
-gulp.task('render-src', ['render-fontawesome-yml'], function() {
+gulp.task('render-src', ['render-fontawesome-json'], function() {
 
 	return gulp.src('src/**')
     	.pipe(gulp.dest('dist/' + theme));
