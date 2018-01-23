@@ -6,8 +6,9 @@
 * Improvement: Added FontAwesome v4 shim; use `add_filter( 'themeblvd_icon_shims', '__return_true' );` in your child theme to get v4 icon names working until you can update them all to be compatible with FontAwesome v5.
 * Improvement: Customized `angle-*` solid FontAwesome icons to be thinner; this gets the main navigation submenu indicator icons looking more how they did previously.
 * Improvement: When using the [Theme Blvd Shortcodes](https://wordpress.org/plugins/theme-blvd-shortcodes/) plugin, the "Add Shortcode" button has been added to the new framework rich-text editors, used in the layout builder.
-* Improvement: Added back `themeblvd_responsive_menu_toggle()` as a deprecated function to avoid fatal errors, if being used in a child theme.
 * Improvement: If deemed to be a "major upgrade" theme updates will now display a notice which includes helpful information about [updating responsibly](http://themeblvd.com/links/update-responsibly).
+* Improvement: Added back `themeblvd_responsive_menu_toggle()` as a deprecated function to avoid fatal errors, if being used in a child theme.
+* Improvement: Added back `themeblvd_slider()` as a deprecated function to avoid fatal errors for those still using the Theme Blvd Sliders plugin; the function does nothing except output a message when `WP_DEBUG` is enabled.
 * Fixed: Publish dates in "time ago" format showing, "0 seconds ago."
 * Fixed: Text logo not centering when "Center Logo" is checked with Super User and Executive bases.
 * Fixed: "Delete All Icons" button not working when configuring contact links.
