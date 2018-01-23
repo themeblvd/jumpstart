@@ -18,6 +18,7 @@
 * Fixed: Footer sync checkbox on theme options page not working.
 * Fixed: Minor console error in Chrome for Edit Profile screen, "[DOM] Found 2 elements with non-unique id #_tb_box_archive."
 * Fixed: Minor JavaScript issues in the admin, when plugin notice is present.
+* Fixed: Mobile panel printing "undefined" when a Secondary Side Navigation is set without a Primary Side Navigation.
 * Updated: FontAwesome to 5.0.4.
 
 --------------------------------------------------------------
