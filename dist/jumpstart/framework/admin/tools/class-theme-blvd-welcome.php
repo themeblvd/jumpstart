@@ -67,7 +67,7 @@ class Theme_Blvd_Welcome {
 
 		add_action( 'admin_init', array( $this, 'disable' ) );
 
-		add_action( 'switch_theme', array( $this, 'reset' ) );
+		// add_action( 'switch_theme', array( $this, 'reset' ) );
 
 	}
 
