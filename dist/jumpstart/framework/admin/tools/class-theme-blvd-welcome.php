@@ -63,8 +63,6 @@ class Theme_Blvd_Welcome {
 	 */
 	private function __construct() {
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
-
 		add_action( 'admin_notices', array( $this, 'show' ), 9 );
 
 		add_action( 'admin_init', array( $this, 'disable' ) );
@@ -85,45 +83,6 @@ class Theme_Blvd_Welcome {
 	}
 
 	/**
-	 * Include scripts.
-	 *
-	 * @since Theme_Blvd 2.6.0
-	 */
-	public function assets() {
-
-		global $current_user;
-
-		if ( ! get_user_meta( $current_user->ID, 'themeblvd-ignore-welcome', true ) ) {
-
-			$suffix = themeblvd_script_debug() ? '' : '.min';
-
-			wp_enqueue_media();
-
-			wp_enqueue_style(
-				'themeblvd_admin',
-				esc_url( TB_FRAMEWORK_URI . "/admin/assets/css/admin-style{$suffix}.css" ),
-				null,
-				TB_FRAMEWORK_VERSION
-			);
-
-			wp_enqueue_script(
-				'themeblvd_modal',
-				esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/modal{$suffix}.js" ),
-				array( 'jquery' ),
-				TB_FRAMEWORK_VERSION
-			);
-
-			wp_enqueue_script(
-				'themeblvd_welcome',
-				esc_url( TB_FRAMEWORK_URI . "/admin/assets/js/welcome{$suffix}.js" ),
-				array( 'jquery' ),
-				TB_FRAMEWORK_VERSION
-			);
-
-		}
-	}
-
-	/**
 	 * Show welcome message.
 	 *
 	 * @since Theme_Blvd 2.6.0
@@ -131,6 +90,14 @@ class Theme_Blvd_Welcome {
 	public function show() {
 
 		global $current_user;
+
+		$screen = get_current_screen();
+
+		if ( 'themes' != $screen->base ) {
+
+			return;
+
+		}
 
 		if ( get_user_meta( $current_user->ID, 'themeblvd-ignore-welcome', true ) ) {
 
@@ -158,7 +125,7 @@ class Theme_Blvd_Welcome {
 		$msg .= sprintf(
 			// translators: 1: link to documentation website
 			'<p>' . __( 'Below are some resources to get started. You can find more videos and information at %s.', 'jumpstart' ) . '</p>',
-			'<a href="http://docs.themeblvd.com" target="_blank">http://docs.themeblvd.com</a>'
+			'<a href="http://docs.themeblvd.com" target="_blank">docs.themeblvd.com</a>'
 		);
 
 		/**
@@ -171,7 +138,7 @@ class Theme_Blvd_Welcome {
 		 *     @type string $msg   Message with HTML printed within box.
 		 *     @type string $btn   Text of button leading to lightbox video.
 		 *     @type string $title Text of button's title leading to lightbox video.
-		 *     @type string $video ID of video on Vimeo to display in lightbox.
+		 *     @type string $link  URL where Betting Started button goes.
 		 * }
 		 * @param WP_Theme Parent theme object.
 		 */
@@ -179,7 +146,7 @@ class Theme_Blvd_Welcome {
 			'msg'   => $msg,
 			'btn'   => __( 'Getting Started', 'jumpstart' ),
 			'title' => __( 'Getting Started', 'jumpstart' ),
-			'video' => '124567552',
+			'link'  => 'http://docs.themeblvd.com/article/7-overview',
 		), $theme );
 
 		?>
@@ -188,7 +155,7 @@ class Theme_Blvd_Welcome {
 			<?php echo themeblvd_kses( $args['msg'] ); ?>
 
 			<p>
-				<a href="#" id="themeblvd-welcome-video-link" class="button button-secondary" title="<?php echo esc_attr( $args['title'] ); ?>" data-video="<?php echo esc_attr( $args['video'] ); ?>">
+				<a href="<?php echo esc_url( $args['link'] ); ?>" id="themeblvd-welcome-video-link" class="button button-secondary" title="<?php echo esc_attr( $args['title'] ); ?>" target="_blank">
 					<span class="dashicons dashicons-video-alt3" style="line-height:26px;"></span>
 					<?php echo esc_html( $args['btn'] ); ?>
 				</a>

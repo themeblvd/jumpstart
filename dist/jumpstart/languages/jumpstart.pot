@@ -5181,7 +5181,7 @@ msgstr ""
 msgid "Manage suggested plugins"
 msgstr ""
 
-#: ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:308, ../framework/admin/tools/class-theme-blvd-welcome.php:211
+#: ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:308, ../framework/admin/tools/class-theme-blvd-welcome.php:178
 msgid "Dismiss this notice"
 msgstr ""
 
@@ -5359,7 +5359,7 @@ msgstr ""
 msgid "Security check failed. Couldn't update theme base."
 msgstr ""
 
-#: ../framework/admin/tools/class-theme-blvd-bases.php:155, ../framework/admin/tools/class-theme-blvd-welcome.php:205
+#: ../framework/admin/tools/class-theme-blvd-bases.php:155, ../framework/admin/tools/class-theme-blvd-welcome.php:172
 msgid "Configure Theme Options"
 msgstr ""
 
@@ -5375,19 +5375,19 @@ msgstr ""
 msgid "Select the %s theme base that's right for you."
 msgstr ""
 
-#: ../framework/admin/tools/class-theme-blvd-bases.php:228, ../framework/admin/tools/class-theme-blvd-welcome.php:199
+#: ../framework/admin/tools/class-theme-blvd-bases.php:228, ../framework/admin/tools/class-theme-blvd-welcome.php:166
 msgid "Select Theme Base"
 msgstr ""
 
-#: ../framework/admin/tools/class-theme-blvd-welcome.php:153
+#: ../framework/admin/tools/class-theme-blvd-welcome.php:120
 msgid "Thank you for using %1$s with Theme Blvd Framework %2$s."
 msgstr ""
 
-#: ../framework/admin/tools/class-theme-blvd-welcome.php:160
+#: ../framework/admin/tools/class-theme-blvd-welcome.php:127
 msgid "Below are some resources to get started. You can find more videos and information at %s."
 msgstr ""
 
-#: ../framework/admin/tools/class-theme-blvd-welcome.php:180, ../framework/admin/tools/class-theme-blvd-welcome.php:181
+#: ../framework/admin/tools/class-theme-blvd-welcome.php:147, ../framework/admin/tools/class-theme-blvd-welcome.php:148
 msgid "Getting Started"
 msgstr ""
 

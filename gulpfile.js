@@ -189,8 +189,7 @@ gulp.task('render-admin-js', ['render-src'], function() {
 		dir + 'menu.js',
 		dir + 'meta-box.js',
 		dir + 'modal.js',
-		dir + 'options-page.js',
-		dir + 'welcome.js'
+		dir + 'options-page.js'
 	];
 
 	return gulp.src(files)
