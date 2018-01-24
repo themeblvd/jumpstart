@@ -954,7 +954,7 @@ function themeblvd_loop( $args = array() ) {
 		}
 
 		// When displaying any grid, open the first row.
-		if ( 'grid' === $context || 'small-grid' === $context || 'showcase' === $context || $ppc ) {
+		if ( 'grid' === $context || 'small-grid' === $context || 'showcase' === $context || 'list' === $context || $ppc ) {
 
 			themeblvd_open_row();
 
@@ -1020,7 +1020,7 @@ function themeblvd_loop( $args = array() ) {
 			 * Note: When using isotope script, we do not separate
 			 * posts into rows.
 			 */
-			if ( ! $isotope && ( $context == 'grid' || $context == 'small-grid' || $context == 'showcase' ) && $counter % $columns == 0 && $total != $counter ) {
+			if ( ! $isotope && ( 'grid' == $context || 'small-grid' == $context || 'showcase' == $context ) && $counter % $columns == 0 && $total != $counter ) {
 
 				// Close current row.
 				themeblvd_close_row();
@@ -1054,7 +1054,7 @@ function themeblvd_loop( $args = array() ) {
 		}
 
 		// For grid displays, close the final row.
-		if ( $context == 'grid' || $context == 'small-grid' || $context == 'showcase' || $ppc ) {
+		if ( 'grid' == $context || 'small-grid' == $context || 'showcase' == $context || 'list' == $context || $ppc ) {
 
 			themeblvd_close_row();
 
