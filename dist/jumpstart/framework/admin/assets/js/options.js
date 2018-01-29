@@ -2165,7 +2165,7 @@ window.themeblvd.options = {};
 					$section.find( '.col-' + i ).css( 'width', width + '%' );
 
 					if ( i > 1 ) {
-						$section.find( '.col-'+i).css( 'left', left + '%' );
+						$section.find( '.col-' + i ).css( 'left', left + '%' );
 					}
 
 					left += width;
@@ -2188,7 +2188,7 @@ window.themeblvd.options = {};
 
 					left += ( ( 1 / grid ) * 100 );
 
-					$section.find( '.grid-col-'+i).css( 'left', left + '%' );
+					$section.find( '.grid-col-' + i ).css( 'left', left + '%' );
 
 				}
 
