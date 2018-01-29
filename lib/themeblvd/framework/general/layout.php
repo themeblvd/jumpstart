@@ -1498,6 +1498,15 @@ function themeblvd_columns( $args, $columns = null ) {
 
 			}
 
+			if ( ! empty( $display['bg_type'] ) && 'video' == $display['bg_type'] ) {
+
+				if ( ! empty( $display['bg_video'] ) ) {
+
+					themeblvd_bg_video( $display['bg_video'] );
+
+				}
+			}
+
 			if ( ! empty( $column['elements'] ) ) {
 
 				$blocks = $column['elements'];
