@@ -2981,6 +2981,42 @@ msgstr ""
 msgid "Linkedin"
 msgstr ""
 
+#: ../inc/admin/class-jump-start-license-admin.php:109, ../inc/admin/class-jump-start-license-admin.php:109, ../inc/admin/class-jump-start-license-admin.php:121
+msgid "Theme License"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-license-admin.php:128
+msgid "License Key"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-license-admin.php:132
+msgid "Enter your license key"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-license-admin.php:138, ../inc/admin/class-jump-start-license-admin.php:144
+msgid "Activate License"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-license-admin.php:142
+msgid "active"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-updater.php:157
+msgid "<strong>%1$s %2$s</strong> is available. This is a major upgrade. Please %3$s for important details on this release and keep in mind that major upgrades may affect child theme customization. So use caution and %4$s."
+msgstr ""
+
+#: ../inc/admin/class-jump-start-updater.php:163
+msgid "view the changelog"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-updater.php:168, ../inc/admin/class-jump-start-updater.php:335
+msgid "update responsibly"
+msgstr ""
+
+#: ../inc/admin/class-jump-start-updater.php:331
+msgid "This is a major upgrade that may affect child theme customization. Use caution and %s."
+msgstr ""
+
 #: ../framework/admin/functions/display.php:57, ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:503
 msgid "Bulk Actions"
 msgstr ""
@@ -5389,74 +5425,6 @@ msgstr ""
 
 #: ../framework/admin/tools/class-theme-blvd-welcome.php:147, ../framework/admin/tools/class-theme-blvd-welcome.php:148
 msgid "Getting Started"
-msgstr ""
-
-#: ../framework/admin/updates/class-envato-protected-api.php:67
-msgid "Please enter your Envato Marketplace Username."
-msgstr ""
-
-#: ../framework/admin/updates/class-envato-protected-api.php:71
-msgid "Please enter your Envato Marketplace API Key."
-msgstr ""
-
-#: ../framework/admin/updates/class-envato-protected-api.php:96
-msgid "The API \"set\" is a required parameter."
-msgstr ""
-
-#: ../framework/admin/updates/class-envato-protected-api.php:167
-msgid "The Envato Marketplace \"item ID\" is a required parameter."
-msgstr ""
-
-#: ../framework/admin/updates/class-jump-start-updater.php:157
-msgid "<strong>%1$s %2$s</strong> is available. This is a major upgrade. Please %3$s for important details on this release and keep in mind that major upgrades may affect child theme customization. So use caution and %4$s."
-msgstr ""
-
-#: ../framework/admin/updates/class-jump-start-updater.php:163
-msgid "view the changelog"
-msgstr ""
-
-#: ../framework/admin/updates/class-jump-start-updater.php:168, ../framework/admin/updates/class-jump-start-updater.php:335
-msgid "update responsibly"
-msgstr ""
-
-#: ../framework/admin/updates/class-jump-start-updater.php:331
-msgid "This is a major upgrade that may affect child theme customization. Use caution and %s."
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-envato-updates.php:169
-msgid "Backing up %2$s v%1$s before udpating to new version..."
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-envato-updates.php:174
-msgid "Unable to locate WordPress Theme directory."
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-envato-updates.php:184
-msgid "Could not create directory for backup."
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-envato-updates.php:198
-msgid "%2$s v%1$s has been backed up sucessfully to %3$s..."
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-license-admin.php:109, ../framework/admin/updates/class-tb-license-admin.php:109, ../framework/admin/updates/class-tb-license-admin.php:121
-msgid "Theme License"
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-license-admin.php:128
-msgid "License Key"
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-license-admin.php:132
-msgid "Enter your license key"
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-license-admin.php:138, ../framework/admin/updates/class-tb-license-admin.php:144
-msgid "Activate License"
-msgstr ""
-
-#: ../framework/admin/updates/class-tb-license-admin.php:142
-msgid "active"
 msgstr ""
 
 #: ../inc/base/agent/options.php:22, ../inc/base/entrepreneur/options.php:491, ../inc/base/executive/options.php:771, ../inc/base/superuser/options.php:806

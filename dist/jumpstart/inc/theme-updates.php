@@ -38,7 +38,7 @@ function jumpstart_updates() {
 
 	global $_tb_jumpstart_license_admin;
 
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-tb-license-admin.php' );
+	include_once( get_template_directory() . '/inc/admin/class-jump-start-license-admin.php' );
 
 	$theme = get_template();
 
@@ -49,7 +49,7 @@ function jumpstart_updates() {
 		'item_name'      => $theme_data->get( 'Name' ), // Name of the theme.
 	);
 
-	$_tb_jumpstart_license_admin = new Theme_Blvd_License_Admin( $args );
+	$_tb_jumpstart_license_admin = new Jump_Start_License_Admin( $args );
 
 	$license_key = get_option( 'themeblvd_license_key' );
 
@@ -61,7 +61,7 @@ function jumpstart_updates() {
 
 	}
 
-	include_once( TB_FRAMEWORK_DIRECTORY . '/admin/updates/class-jump-start-updater.php' );
+	include_once( get_template_directory() . '/inc/admin/class-jump-start-updater.php' );
 
 	$args['license'] = $license_key;
 

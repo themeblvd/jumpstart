@@ -11,7 +11,7 @@
  * @subpackage @@name-framework
  * @since      @@name-framework 2.0.0
  */
-class Theme_Blvd_License_Admin {
+class Jump_Start_License_Admin {
 
 	private $remote_api_url;
 	private $item_name;
