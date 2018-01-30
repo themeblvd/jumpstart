@@ -738,7 +738,7 @@ msgid "Featured Images &amp; Galleries"
 msgstr ""
 
 #: ../framework/api/class-theme-blvd-options-api.php:815
-msgid "Choose how you want your featured images to show on the single post, by default. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those fetured images to show on the single posts."
+msgid "Choose how you want your featured images to show on the single post, by default. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those featured images to show on the single posts."
 msgstr ""
 
 #: ../framework/api/class-theme-blvd-options-api.php:820, ../framework/api/class-theme-blvd-options-api.php:874, ../framework/api/class-theme-blvd-options-api.php:961, ../framework/admin/meta/meta.php:236, ../framework/admin/meta/meta.php:398

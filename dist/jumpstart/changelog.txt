@@ -6,6 +6,10 @@
 * Improvement: Framework welcome message will now only show on Themes screen, and only once per user dismiss; it will no longer display again when switching back and forth themes.
 * Fixed: JavaScript issues in the admin, when theme welcome message is present.
 * Fixed: Isotope filtering not working with post lists.
+* Fixed: Background video not working on individual columns from the layout builder.
+* Fixed: Line, Bar, Pie and Doughnut charts not working.
+
+--------------------------------------------------------------
 
 ## 2.2.1 - 01/22/2018
 

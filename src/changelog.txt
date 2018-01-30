@@ -7,6 +7,7 @@
 * Fixed: JavaScript issues in the admin, when theme welcome message is present.
 * Fixed: Isotope filtering not working with post lists.
 * Fixed: Background video not working on individual columns from the layout builder.
+* Fixed: Line, Bar, Pie and Doughnut charts not working.
 
 --------------------------------------------------------------
 
