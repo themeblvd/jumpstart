@@ -336,6 +336,11 @@ function themeblvd_loop( $args = array() ) {
 
 				$text = $args['more_text'];
 
+				if ( ! $text ) {
+
+					$text = themeblvd_get_option( 'list_more_text', null, themeblvd_get_local( 'read_more' ) );
+
+				}
 			}
 
 			if ( 'hide' === $more ) {
@@ -430,7 +435,15 @@ function themeblvd_loop( $args = array() ) {
 
 				themeblvd_set_att( 'more', $args['more'] );
 
-				themeblvd_set_att( 'more_text', $args['more_text'] );
+				$text = $args['more_text'];
+
+				if ( ! $text ) {
+
+					$text = themeblvd_get_option( 'list_more_text', null, themeblvd_get_local( 'read_more' ) );
+
+				}
+
+				themeblvd_set_att( 'more_text', $text );
 
 			}
 
