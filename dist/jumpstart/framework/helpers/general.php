@@ -301,6 +301,13 @@ function themeblvd_get_home_url() {
 
 	}
 
+	/**
+	 * Filters the home URL.
+	 *
+	 * @since Theme_Blvd 2.5.0
+	 *
+	 * @param string $url URL to website home.
+	 */
 	return apply_filters( 'themeblvd_home_url', $url );
 
 }
