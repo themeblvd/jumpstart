@@ -812,7 +812,7 @@ class Theme_Blvd_Options_API {
 					),
 					'single_thumbs' => array(
 						'name'    => __( 'Featured Images &amp; Galleries', '@@text-domain' ),
-						'desc'    => __( 'Choose how you want your featured images to show on the single post, by default. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those fetured images to show on the single posts.', '@@text-domain' ),
+						'desc'    => __( 'Choose how you want your featured images to show on the single post, by default. This option can be useful if you\'ve set featured images strictly for use in a blog, post grid, portfolio, etc, but you don\'t want those featured images to show on the single posts.', '@@text-domain' ),
 						'id'      => 'single_thumbs',
 						'std'     => 'full',
 						'type'    => 'select',
