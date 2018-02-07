@@ -125,7 +125,7 @@ function themeblvd_sanitize_buttons( $input ) {
 			}
 
 			if ( isset( $item['url'] ) ) {
-				$output[ $item_id ]['url'] = esc_url( $item['url'] );
+				$output[ $item_id ]['url'] = esc_url( trim( $item['url'] ) );
 			}
 
 			if ( isset( $item['target'] ) ) {
@@ -341,7 +341,7 @@ function themeblvd_sanitize_price_cols( $input ) {
 			}
 
 			if ( isset( $item['button_url'] ) ) {
-				$output[ $item_id ]['button_url'] = esc_url( $item['button_url'] );
+				$output[ $item_id ]['button_url'] = esc_url( trim( $item['button_url'] ) );
 			}
 
 			if ( isset( $item['button_size'] ) ) {
@@ -452,7 +452,7 @@ function themeblvd_sanitize_social_media( $input ) {
 			}
 
 			if ( isset( $item['url'] ) ) {
-				$output[ $item_id ]['url'] = esc_url( $item['url'] );
+				$output[ $item_id ]['url'] = esc_url( trim( $item['url'] ) );
 			}
 
 			if ( isset( $item['label'] ) ) {
@@ -635,7 +635,7 @@ function themeblvd_sanitize_slider( $input ) {
 			}
 
 			if ( isset( $item['link_url'] ) ) {
-				$output[ $item_id ]['link_url'] = esc_url( $item['link_url'] );
+				$output[ $item_id ]['link_url'] = esc_url( trim( $item['link_url'] ) );
 			}
 		}
 	}
@@ -744,7 +744,7 @@ function themeblvd_sanitize_logos( $input ) {
 			}
 
 			if ( isset( $item['link'] ) ) {
-				$output[ $item_id ]['link'] = esc_url( $item['link'] );
+				$output[ $item_id ]['link'] = esc_url( trim( $item['link'] ) );
 			}
 		}
 	}

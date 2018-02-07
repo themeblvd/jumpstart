@@ -118,7 +118,7 @@ function themeblvd_sanitize_upload( $input ) {
 
 	} else {
 
-		$output = esc_url( $input );
+		$output = esc_url( trim( $input ) );
 
 	}
 

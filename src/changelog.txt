@@ -9,6 +9,7 @@
 * Fixed: Background video not working on individual columns from the layout builder.
 * Fixed: Line, Bar, Pie and Doughnut charts not working.
 * Fixed: Option type `button` not showing labels for colors being chosen.
+* Fixed: URLs with inadvertent spaces added to start or end not saving in theme options and layout builder.
 
 --------------------------------------------------------------
 
