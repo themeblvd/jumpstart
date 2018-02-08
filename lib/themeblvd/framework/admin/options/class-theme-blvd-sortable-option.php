@@ -800,6 +800,36 @@ abstract class Theme_Blvd_Sortable_Option {
 				case 'editor':
 					if ( themeblvd_do_rich_editing() ) {
 
+						/** This filter is documented in framework/admin/options/options-interace.php */
+						$plugins = apply_filters( 'themeblvd_editor_tinymce_plugins', array() );
+
+						$plugin_data = sprintf(
+							'data-plugins="%s"',
+							implode( ' ', $plugins )
+						);
+
+						/** This filter is documented in framework/admin/options/options-interace.php */
+						$toolbars = apply_filters( 'themeblvd_editor_tinymce_toolbar', array(
+							'toolbar1' => array(),
+							'toolbar2' => array(),
+							'toolbar3' => array(),
+							'toolbar4' => array(),
+						) );
+
+						$toolbar_data = array();
+
+						foreach ( $toolbars as $toolbar => $buttons ) {
+
+							$toolbar_data[] = sprintf(
+								'data-%s="%s"',
+								$toolbar,
+								implode( ',', $buttons )
+							);
+
+						}
+
+						$toolbar_data = implode( ' ', $toolbar_data );
+
 						add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
 
 						/** This filter is documented in wp-includes/class-wp-editor.php */
@@ -815,9 +845,11 @@ abstract class Theme_Blvd_Sortable_Option {
 						$current = preg_replace( '#</textarea#i', '&lt;/textarea', $current );
 
 						$item_output .= sprintf(
-							'<textarea id="%s" class="tb-editor-input" name="%s">%s</textarea>',
+							'<textarea id="%s" class="tb-editor-input" name="%s" %s %s>%s</textarea>',
 							esc_attr( uniqid( 'tb-editor-' . $option['id'] ) ),
 							esc_attr( $option_name . '[' . $option_id . '][' . $item_id . '][' . $option['id'] . ']' ),
+							$toolbar_data,
+							$plugin_data,
 							$current
 						);
 

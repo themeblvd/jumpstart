@@ -1793,7 +1793,11 @@ window.themeblvd.options = {};
 				editorID  = $textarea.attr( 'id' ),
 				style     = $textarea.data( 'style' ),
 				height    = 250,
-				toolbar   = 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link';
+				plugins   = 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
+				toolbar1  = 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link',
+				toolbar2  = null,
+				toolbar3  = null,
+				toolbar4  = null;
 
 			// The user has disabled TinyMCE.
 			if ( 'undefined' === typeof window.tinymce ) {
@@ -1814,7 +1818,31 @@ window.themeblvd.options = {};
 
 			if ( 'mini' == style ) {
 				height = 200;
-				toolbar = 'formatselect bold italic bullist link';
+				toolbar1 = 'formatselect bold italic bullist link';
+			}
+
+			if ( 'mini' != style ) {
+
+				if ( $textarea.data( 'plugins' ) ) {
+					plugins = $textarea.data( 'plugins' );
+				}
+
+				if ( $textarea.data( 'toolbar1' ) ) {
+					toolbar1 = $textarea.data( 'toolbar1' );
+				}
+
+				if ( $textarea.data( 'toolbar2' ) ) {
+					toolbar2 = $textarea.data( 'toolbar2' );
+				}
+
+				if ( $textarea.data( 'toolbar3' ) ) {
+					toolbar3 = $textarea.data( 'toolbar3' );
+				}
+
+				if ( $textarea.data( 'toolbar4' ) ) {
+					toolbar4 = $textarea.data( 'toolbar4' );
+				}
+
 			}
 
 			// Initialize editor with QuickTags and TinyMCE.
@@ -1823,8 +1851,11 @@ window.themeblvd.options = {};
 					wpautop: true,
 					theme: 'modern',
 					height : height,
-					plugins : 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
-					toolbar1: toolbar
+					plugins : plugins,
+					toolbar1: toolbar1,
+					toolbar2: toolbar2,
+					toolbar3: toolbar3,
+					toolbar4: toolbar4
 				},
 				quicktags: true,
 				mediaButtons: true

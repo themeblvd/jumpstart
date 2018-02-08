@@ -117,7 +117,7 @@ msgstr ""
 msgid "These styles are applied to your header across smaller devices."
 msgstr ""
 
-#: ../inc/theme-shared.php:79, ../inc/theme-shared.php:442, ../inc/theme-shared.php:560, ../framework/admin/functions/locals.php:32, ../framework/admin/options/class-theme-blvd-sortable-option.php:2515, ../inc/base/agent/options.php:44, ../inc/base/agent/options.php:105, ../inc/base/agent/options.php:179, ../inc/base/entrepreneur/options.php:300, ../inc/base/executive/options.php:307, ../inc/base/executive/options.php:528, ../inc/base/superuser/options.php:307, ../inc/base/superuser/options.php:537
+#: ../inc/theme-shared.php:79, ../inc/theme-shared.php:442, ../inc/theme-shared.php:560, ../framework/admin/functions/locals.php:32, ../framework/admin/options/class-theme-blvd-sortable-option.php:2547, ../inc/base/agent/options.php:44, ../inc/base/agent/options.php:105, ../inc/base/agent/options.php:179, ../inc/base/entrepreneur/options.php:300, ../inc/base/executive/options.php:307, ../inc/base/executive/options.php:528, ../inc/base/superuser/options.php:307, ../inc/base/superuser/options.php:537
 msgid "Background Color"
 msgstr ""
 
@@ -341,7 +341,7 @@ msgstr ""
 msgid "Select a background color for the footer columns."
 msgstr ""
 
-#: ../inc/theme-shared.php:451, ../framework/admin/options/class-theme-blvd-sortable-option.php:2523, ../inc/base/agent/options.php:112, ../inc/base/entrepreneur/options.php:308, ../inc/base/executive/options.php:315, ../inc/base/executive/options.php:547, ../inc/base/superuser/options.php:315, ../inc/base/superuser/options.php:556
+#: ../inc/theme-shared.php:451, ../framework/admin/options/class-theme-blvd-sortable-option.php:2555, ../inc/base/agent/options.php:112, ../inc/base/entrepreneur/options.php:308, ../inc/base/executive/options.php:315, ../inc/base/executive/options.php:547, ../inc/base/superuser/options.php:315, ../inc/base/superuser/options.php:556
 msgid "Background Color Opacity"
 msgstr ""
 
@@ -441,7 +441,7 @@ msgstr ""
 msgid "Flat Light"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:383, ../framework/api/class-theme-blvd-options-api.php:429, ../framework/admin/meta/class-theme-blvd-user-options.php:284, ../framework/admin/options/class-theme-blvd-sortable-option.php:1030, ../framework/admin/options/class-theme-blvd-sortable-option.php:1268, ../framework/admin/options/class-theme-blvd-sortable-option.php:1681
+#: ../framework/api/class-theme-blvd-options-api.php:383, ../framework/api/class-theme-blvd-options-api.php:429, ../framework/admin/meta/class-theme-blvd-user-options.php:284, ../framework/admin/options/class-theme-blvd-sortable-option.php:1062, ../framework/admin/options/class-theme-blvd-sortable-option.php:1300, ../framework/admin/options/class-theme-blvd-sortable-option.php:1713
 msgid "Color"
 msgstr ""
 
@@ -2497,7 +2497,7 @@ msgstr ""
 msgid "The lightbox media could not be loaded."
 msgstr ""
 
-#: ../framework/general/locals.php:84, ../framework/admin/options/class-theme-blvd-sortable-option.php:2050
+#: ../framework/general/locals.php:84, ../framework/admin/options/class-theme-blvd-sortable-option.php:2082
 msgid "Link"
 msgstr ""
 
@@ -2521,7 +2521,7 @@ msgstr ""
 msgid "My Account"
 msgstr ""
 
-#: ../framework/general/locals.php:90, ../framework/admin/options/class-theme-blvd-sortable-option.php:2377
+#: ../framework/general/locals.php:90, ../framework/admin/options/class-theme-blvd-sortable-option.php:2409
 msgid "Name"
 msgstr ""
 
@@ -3151,7 +3151,7 @@ msgstr ""
 msgid "You haven't created any pages."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:636, ../framework/admin/options/class-theme-blvd-sortable-option.php:2585, ../framework/admin/options/class-theme-blvd-sortable-option.php:2671
+#: ../framework/admin/functions/display.php:636, ../framework/admin/options/class-theme-blvd-sortable-option.php:2617, ../framework/admin/options/class-theme-blvd-sortable-option.php:2703
 msgid "Apply WordPress automatic formatting."
 msgstr ""
 
@@ -3273,7 +3273,7 @@ msgstr ""
 msgid "You can change your site title by going %s."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1229, ../framework/admin/functions/display.php:1821, ../framework/admin/options/class-theme-blvd-sortable-option.php:1458, ../framework/admin/options/class-theme-blvd-sortable-option.php:2662
+#: ../framework/admin/functions/display.php:1229, ../framework/admin/functions/display.php:1821, ../framework/admin/options/class-theme-blvd-sortable-option.php:1490, ../framework/admin/options/class-theme-blvd-sortable-option.php:2694
 msgid "Title"
 msgstr ""
 
@@ -3525,7 +3525,7 @@ msgstr ""
 msgid "Restore Defaults"
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:48, ../framework/admin/options/class-theme-blvd-sortable-option.php:2496, ../inc/base/entrepreneur/options.php:289, ../inc/base/executive/options.php:296, ../inc/base/superuser/options.php:296
+#: ../framework/admin/functions/locals.php:48, ../framework/admin/options/class-theme-blvd-sortable-option.php:2528, ../inc/base/entrepreneur/options.php:289, ../inc/base/executive/options.php:296, ../inc/base/superuser/options.php:296
 msgid "Text Color"
 msgstr ""
 
@@ -4129,803 +4129,803 @@ msgstr ""
 msgid "Example Address"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1003
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1035
 msgid "Display Label"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1004
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1036
 msgid "Enter a label for this display."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1004
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1036
 msgid "Ex: Graphic Design"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1010
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1042
 msgid "Value Display Label"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1011
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1043
 msgid "Enter a label to display the value."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1011
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1043
 msgid "Ex: 80%"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1016, ../framework/admin/options/class-theme-blvd-sortable-option.php:1674
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1048, ../framework/admin/options/class-theme-blvd-sortable-option.php:1706
 msgid "Value"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1017
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1049
 msgid "Enter a number for the value."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1017
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1049
 msgid "Ex: 80"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1023
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1055
 msgid "Total"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1024
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1056
 msgid "Enter a number, which your above value should be divided into. If your above value is meant to represent a straight percantage, then this \"total\" number should be 100."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1031
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1063
 msgid "Select a color that represents this progress bar."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1053
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1085
 msgid "Add Progress Bar"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1054
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1086
 msgid "Delete Progress Bar"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1055
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1087
 msgid "Are you sure you want to delete this progress bar?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1056
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1088
 msgid "Delete All Progress Bars"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1057
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1089
 msgid "Are you sure you want to delete all progress bars?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1106, ../framework/admin/options/class-theme-blvd-sortable-option.php:1524
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1138, ../framework/admin/options/class-theme-blvd-sortable-option.php:1556
 msgid "Button Color"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1107, ../framework/admin/options/class-theme-blvd-sortable-option.php:1525
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1139, ../framework/admin/options/class-theme-blvd-sortable-option.php:1557
 msgid "Select what color you'd like to use for this button."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1114, ../framework/admin/options/class-theme-blvd-sortable-option.php:1532
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1146, ../framework/admin/options/class-theme-blvd-sortable-option.php:1564
 msgid "Custom Button Color"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1115, ../framework/admin/options/class-theme-blvd-sortable-option.php:1533
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1147, ../framework/admin/options/class-theme-blvd-sortable-option.php:1565
 msgid "Configure a custom style for the button."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1133, ../framework/admin/options/class-theme-blvd-sortable-option.php:1551
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1165, ../framework/admin/options/class-theme-blvd-sortable-option.php:1583
 msgid "Button Text"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1134, ../framework/admin/options/class-theme-blvd-sortable-option.php:1552
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1166, ../framework/admin/options/class-theme-blvd-sortable-option.php:1584
 msgid "Enter the text for the button."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1141, ../framework/admin/options/class-theme-blvd-sortable-option.php:1567
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1173, ../framework/admin/options/class-theme-blvd-sortable-option.php:1599
 msgid "Button Size"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1142, ../framework/admin/options/class-theme-blvd-sortable-option.php:1568
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1174, ../framework/admin/options/class-theme-blvd-sortable-option.php:1600
 msgid "Select the size you'd like used for this button."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1146, ../framework/admin/options/class-theme-blvd-sortable-option.php:1573
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1178, ../framework/admin/options/class-theme-blvd-sortable-option.php:1605
 msgid "Mini"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1147, ../framework/admin/options/class-theme-blvd-sortable-option.php:1574
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1179, ../framework/admin/options/class-theme-blvd-sortable-option.php:1606
 msgid "Small"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1148, ../framework/admin/options/class-theme-blvd-sortable-option.php:1575, ../framework/admin/options/sanitize-specialized.php:771
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1180, ../framework/admin/options/class-theme-blvd-sortable-option.php:1607, ../framework/admin/options/sanitize-specialized.php:771
 msgid "Normal"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1149, ../framework/admin/options/class-theme-blvd-sortable-option.php:1576
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1181, ../framework/admin/options/class-theme-blvd-sortable-option.php:1608
 msgid "Large"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1150
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1182
 msgid "X-Large"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1151
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1183
 msgid "XX-Large"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1152
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1184
 msgid "XXX-Large"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1157, ../framework/admin/options/class-theme-blvd-sortable-option.php:1559, ../framework/admin/options/class-theme-blvd-sortable-option.php:1840, ../framework/admin/options/class-theme-blvd-sortable-option.php:2064
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1189, ../framework/admin/options/class-theme-blvd-sortable-option.php:1591, ../framework/admin/options/class-theme-blvd-sortable-option.php:1872, ../framework/admin/options/class-theme-blvd-sortable-option.php:2096
 msgid "Link URL"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1158, ../framework/admin/options/class-theme-blvd-sortable-option.php:1560
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1190, ../framework/admin/options/class-theme-blvd-sortable-option.php:1592
 msgid "Enter the full URL where you want the button's link to go."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1164, ../framework/admin/options/class-theme-blvd-sortable-option.php:1852
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1196, ../framework/admin/options/class-theme-blvd-sortable-option.php:1884
 msgid "Link Target"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1165
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1197
 msgid "Select how you want the button to open the webpage."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1168, ../framework/admin/options/class-theme-blvd-sortable-option.php:1857
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1200, ../framework/admin/options/class-theme-blvd-sortable-option.php:1889
 msgid "Same Window"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1169, ../framework/admin/options/class-theme-blvd-sortable-option.php:1856
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1201, ../framework/admin/options/class-theme-blvd-sortable-option.php:1888
 msgid "New Window"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1170
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1202
 msgid "Lightbox Popup"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1175, ../framework/admin/options/class-theme-blvd-sortable-option.php:1582
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1207, ../framework/admin/options/class-theme-blvd-sortable-option.php:1614
 msgid "Icon Before Button Text (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1176, ../framework/admin/options/class-theme-blvd-sortable-option.php:1583
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1208, ../framework/admin/options/class-theme-blvd-sortable-option.php:1615
 msgid "Icon before text of button. This can be any FontAwesome vector icon ID."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1182, ../framework/admin/options/class-theme-blvd-sortable-option.php:1590
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1214, ../framework/admin/options/class-theme-blvd-sortable-option.php:1622
 msgid "Icon After Button Text (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1183, ../framework/admin/options/class-theme-blvd-sortable-option.php:1591
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1215, ../framework/admin/options/class-theme-blvd-sortable-option.php:1623
 msgid "Icon after text of button. This can be any FontAwesome vector icon ID."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1205
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1237
 msgid "Add Button"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1206
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1238
 msgid "Delete Button"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1207
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1239
 msgid "Are you sure you want to delete this button?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1208
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1240
 msgid "Delete All Buttons"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1209
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1241
 msgid "Are you sure you want to delete all buttons?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1254, ../framework/admin/options/class-theme-blvd-sortable-option.php:1667, ../framework/admin/options/class-theme-blvd-sortable-option.php:1761, ../framework/admin/options/class-theme-blvd-sortable-option.php:1846
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1286, ../framework/admin/options/class-theme-blvd-sortable-option.php:1699, ../framework/admin/options/class-theme-blvd-sortable-option.php:1793, ../framework/admin/options/class-theme-blvd-sortable-option.php:1878
 msgid "Label"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1255
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1287
 msgid "Enter a label for this dataset."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1261
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1293
 msgid "Values"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1262
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1294
 msgid "Enter a comma separated list of values for this data set."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1262
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1294
 msgid "Ex: 10, 20, 30, 40, 50, 60"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1269
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1301
 msgid "Select a color that represents this data set."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1291
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1323
 msgid "Add Data Set"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1292
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1324
 msgid "Delete Data Set"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1293
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1325
 msgid "Are you sure you want to delete this data set?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1294
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1326
 msgid "Delete All Data Sets"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1295
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1327
 msgid "Are you sure you want to delete all data sets?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1340
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1372
 msgid "Location Name"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1341
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1373
 msgid "Enter a name for this location."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1347
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1379
 msgid "Location Latitude and Longitude"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1348
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1380
 msgid "For this marker to be displayed, there needs to be a latitude and longitude saved. You can use the tool below the text fields to generate the coordinates."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1357
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1389
 msgid "Location Information"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1358
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1390
 msgid "When the marker is clicked, this information will be shown. You can put basic HTML formatting in here, if you like; just don't get too carried away."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1363
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1395
 msgid "Custom Marker Image (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1364
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1396
 msgid "If you'd like a custom image to replace the default Google Map marker, you can insert it here."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1371
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1403
 msgid "Custom Marker Image Width (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1372
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1404
 msgid "If you'd like to scale your custom marker image, input a width in pixels. Ex: 50"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1377
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1409
 msgid "Custom Marker Image Height (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1378
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1410
 msgid "If you'd like to scale your custom marker image, input a height in pixels. Ex: 32"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1399
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1431
 msgid "Add Map Location"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1400
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1432
 msgid "Delete Location"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1401
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1433
 msgid "Are you sure you want to delete this location?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1402
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1434
 msgid "Delete All Locations"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1403
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1435
 msgid "Are you sure you want to delete all map locations?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1450, ../inc/base/entrepreneur/options.php:442, ../inc/base/entrepreneur/options.php:717, ../inc/base/executive/options.php:997, ../inc/base/superuser/options.php:1032
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1482, ../inc/base/entrepreneur/options.php:442, ../inc/base/entrepreneur/options.php:717, ../inc/base/executive/options.php:997, ../inc/base/superuser/options.php:1032
 msgid "Highlight Color"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1451
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1483
 msgid "If you wish, you can give the column a highlight color."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1459
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1491
 msgid "Enter a title for this column."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1459
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1491
 msgid "Ex: Gold Package"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1471
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1503
 msgid "Pop out column so it stands out from the rest."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1477
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1509
 msgid "Popout Title Subline"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1478
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1510
 msgid "Because the column is popped out, enter a very brief subline for the title."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1478
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1510
 msgid "Ex: Best Value"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1488
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1520
 msgid "Price"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1489
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1521
 msgid "Enter a value for the price, without the currency symbol."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1489
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1521
 msgid "Ex: 50"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1495
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1527
 msgid "Price Subline (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1496
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1528
 msgid "Enter a very brief subline for the price to show what it represents."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1496
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1528
 msgid "Ex: per month"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1502
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1534
 msgid "Feature List"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1503
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1535
 msgid "Enter each feature, seprated by a line break. If you like, spice it up with some icons."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1513
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1545
 msgid "Button"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1514
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1546
 msgid "Show button below feature list?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1577
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1609
 msgid "Extra Large"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1618
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1650
 msgid "Add Pricing Table Column"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1619
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1651
 msgid "Remove Column"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1620
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1652
 msgid "Are you sure you want to delete this column?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1621
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1653
 msgid "Remove All Columns"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1622
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1654
 msgid "Are you sure you want to remove all columns?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1668
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1700
 msgid "Enter a label for this sector."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1675
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1707
 msgid "Enter a numeric value for this sector."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1682
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1714
 msgid "Select a color that represents this sector."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1704
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1736
 msgid "Add Sector"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1705
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1737
 msgid "Delete Sector"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1706
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1738
 msgid "Are you sure you want to delete this sector?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1707
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1739
 msgid "Delete All Sectors"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1708
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1740
 msgid "Are you sure you want to delete all sectors?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1753, ../framework/admin/options/class-theme-blvd-sortable-option.php:1832
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1785, ../framework/admin/options/class-theme-blvd-sortable-option.php:1864
 msgid "Social Icon"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1783
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1815
 msgid "Add Share Icon"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1784
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1816
 msgid "Delete Share Icon"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1785
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1817
 msgid "Are you sure you want to delete this share icon?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1786
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1818
 msgid "Delete All Share Icons"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1787
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1819
 msgid "Are you sure you want to delete all share icons?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1878
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1910
 msgid "Add Icon"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1879
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1911
 msgid "Delete Icon"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1880
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1912
 msgid "Are you sure you want to delete this icon?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1881
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1913
 msgid "Delete All Icons"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1882
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:1914
 msgid "Are you sure you want to delete all icons?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2030
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2062
 msgid "Title (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2031
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2063
 msgid "If you'd like a headline to show on the slide, you may enter it here."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2038
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2070
 msgid "Description (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2039
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2071
 msgid "If you'd like a description to show on the slide, you may enter it here."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2051
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2083
 msgid "Select if and how this image should be linked."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2054
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2086
 msgid "No Link"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2055
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2087
 msgid "Link to webpage in same window."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2056
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2088
 msgid "Link to webpage in new window."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2057
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2089
 msgid "Link to image in lightbox popup."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2058
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2090
 msgid "Link to video in lightbox popup."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2066
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2098
 msgid "Enter a URL to a webpage.<br />Ex: http://yoursite.com/example"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2067
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2099
 msgid "Enter a URL to a webpage.<br />Ex: http://google.com"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2068
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2100
 msgid "Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2069
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2101
 msgid "Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2069
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2101
 msgid "Ex: https://youtube.com/watch?v=ginTCwWfGNY"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2097, ../framework/admin/options/class-theme-blvd-sortable-option.php:2102
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2129, ../framework/admin/options/class-theme-blvd-sortable-option.php:2134
 msgid "Add Images"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2098
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2130
 msgid "Remove Image"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2099
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2131
 msgid "Remove All Images"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2100
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2132
 msgid "Are you sure you want to remove all images?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2101
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2133
 msgid "Select Images"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2202
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2234
 msgid "Partner Name"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2203
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2235
 msgid "Enter a name that corresponds to this logo."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2218
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2250
 msgid "Partner Link (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2219
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2251
 msgid "Enter a URL you'd like this logo to link to."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2219
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2251
 msgid "Ex: http://partersite.com"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2241, ../framework/admin/options/class-theme-blvd-sortable-option.php:2246
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2273, ../framework/admin/options/class-theme-blvd-sortable-option.php:2278
 msgid "Add Logos"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2242
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2274
 msgid "Remove Logo"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2243
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2275
 msgid "Remove All Logos"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2244
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2276
 msgid "Are you sure you want to remove all logos?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2245
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2277
 msgid "Select Logos"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2291
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2323
 msgid "Tab Title"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2292
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2324
 msgid "Enter a short title to represent this tab."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2299
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2331
 msgid "Tab Content"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2300
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2332
 msgid "Configure the content of the tab. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within a set of tabs."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2322
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2354
 msgid "Add Tab"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2323
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2355
 msgid "Delete Tab"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2324, ../framework/admin/options/class-theme-blvd-sortable-option.php:2702
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2356, ../framework/admin/options/class-theme-blvd-sortable-option.php:2734
 msgid "Are you sure you want to delete this tab?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2325
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2357
 msgid "Delete All Tabs"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2326
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2358
 msgid "Are you sure you want to delete all tabs?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2372
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2404
 msgid "Enter the text for the testimonial in the editor above."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2378
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2410
 msgid "Enter the name of the person giving the testimonial."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2384
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2416
 msgid "Tagline (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2385
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2417
 msgid "Enter a tagline for the person giving the testimonial."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2385
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2417
 msgid "Ex: Founder and CEO"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2390
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2422
 msgid "Company (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2391
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2423
 msgid "Enter the company the person giving the testimonial belongs to."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2396
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2428
 msgid "Company URL (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2397
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2429
 msgid "Enter the website URL for the company or the person giving the testimonial."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2403
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2435
 msgid "Image (optional)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2404
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2436
 msgid "Select a small image for the person giving the testimonial.  This will look best if you select an image size that is square."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2426
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2458
 msgid "Add Testimonial"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2427
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2459
 msgid "Delete Testimonial"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2428
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2460
 msgid "Are you sure you want to delete this testimonial?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2429
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2461
 msgid "Delete All Testimonials"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2430
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2462
 msgid "Are you sure you want to delete all testimonials?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2475
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2507
 msgid "Text"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2476
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2508
 msgid "Enter the text to display in this text block."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2483
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2515
 msgid "Text Size"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2484
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2516
 msgid "Set the size of the text, relative to the site's main font size."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2497
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2529
 msgid "Select the color of the text."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2508
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2540
 msgid "Apply background color around text block."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2516
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2548
 msgid "Select the color of the background around the text."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2524, ../inc/base/entrepreneur/options.php:309, ../inc/base/executive/options.php:316, ../inc/base/superuser/options.php:316
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2556, ../inc/base/entrepreneur/options.php:309, ../inc/base/executive/options.php:316, ../inc/base/superuser/options.php:316
 msgid "Select the opacity of the background color. Selecting \"100%\" means that the background color is not transparent, at all."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2557
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2589
 msgid "Use header font."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2564
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2596
 msgid "Italicize the text."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2571
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2603
 msgid "Display text in all caps."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2578
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2610
 msgid "Reduce space below text block."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2607
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2639
 msgid "Add Text Block"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2608
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2640
 msgid "Delete Text Block"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2609
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2641
 msgid "Are you sure you want to delete this text block?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2610
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2642
 msgid "Delete All Text Blocks"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2611
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2643
 msgid "Are you sure you want to delete all text blocks?"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2657
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2689
 msgid "Enter the content of the toggle in the editor above. Try not to make the content too complex, as it is possible that not all shortcodes and HTML will work as expected within toggle which is initially hidden."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2663
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2695
 msgid "Enter a short title to represent this toggle."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2670
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2702
 msgid "Content Formatting"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2677
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2709
 msgid "Initial State"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2678
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2710
 msgid "Toggle is open when the page intially loads."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2700
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2732
 msgid "Add Toggle"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2701
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2733
 msgid "Delete Toggle"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2703
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2735
 msgid "Delete All Toggles"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2704
+#: ../framework/admin/options/class-theme-blvd-sortable-option.php:2736
 msgid "Are you sure you want to delete all toggles?"
 msgstr ""
 
