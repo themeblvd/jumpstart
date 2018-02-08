@@ -32,7 +32,7 @@ var frameworkName = 'Theme Blvd';
 /**
  * Theme version.
  */
-var version = '2.2.1';
+var version = '2.2.2';
 
 /**
  * Unused framework files.
@@ -360,10 +360,49 @@ gulp.task('clear-compat-scss', ['render-compat-css'], function() {
 
 });
 
+/* =========== CUSTOM THEME TASKS (START) =========== */
+
+/**
+ * Render license admin CSS.
+ */
+gulp.task('render-license-admin', ['clear-compat-scss'], function() {
+
+	var dir = 'dist/' + theme + '/inc/admin/assets/';
+
+	return gulp.src(dir + 'scss/license-admin.scss')
+		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		.pipe(autoprefixer({
+            browsers: browsers,
+            cascade: false
+        }))
+		.pipe(gulp.dest(dir + 'css'))
+		.pipe(minifycss())
+		.pipe(rename({ suffix: '.min' }))
+    	.pipe(gulp.dest(dir + 'css'));
+
+});
+
+/**
+ * Clear license admin Sass files from distributed
+ * directory.
+ */
+gulp.task('clear-license-admin-scss', ['render-license-admin'], function() {
+
+	var dir = 'dist/' + theme + '/inc/admin/assets/scss';
+
+	return gulp.src(dir, {read: false})
+        .pipe(clean());
+
+});
+
+var lastTask = 'clear-license-admin-scss';
+
+/* =========== CUSTOM THEME TASKS (END) =========== */
+
 /**
  * Render theme info through PHP DocBlocks.
  */
-gulp.task('render-info', ['clear-compat-scss'], function() {
+gulp.task('render-info', [ lastTask ], function() {
 
 	var packageSlug = themeName.replace(' ', '_'),
 		frameworkSlug = frameworkName.replace(' ', '_');

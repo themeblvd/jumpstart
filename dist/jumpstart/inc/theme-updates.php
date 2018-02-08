@@ -20,6 +20,12 @@ function jumpstart_updates_init() {
 
 	if ( is_admin() ) {
 
+		include_once( get_template_directory() . '/inc/admin/class-jump-start-extension.php' );
+
+		include_once( get_template_directory() . '/inc/admin/class-jump-start-license-admin.php' );
+
+		include_once( get_template_directory() . '/inc/admin/class-jump-start-updater.php' );
+
 		add_action( 'init', 'jumpstart_updates' );
 
 	}
@@ -34,53 +40,69 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
  */
 function jumpstart_updates() {
 
-	global $_tb_jumpstart_edd_updater;
+	$template = get_template();
 
-	global $_tb_jumpstart_license_admin;
+	$license_admin = new Jump_Start_License_Admin();
 
-	include_once( get_template_directory() . '/inc/admin/class-jump-start-license-admin.php' );
+	$settings_id = $license_admin->get_settings_id();
 
-	$theme = get_template();
+	$item_name = $license_admin->get_item_name();
 
-	$theme_data = wp_get_theme( $theme );
+	$item_shortname = $license_admin->get_item_shortname();
 
-	$args = array(
-		'remote_api_url' => 'http://wpjumpstart.com', // Store URL.
-		'item_name'      => $theme_data->get( 'Name' ), // Name of the theme.
-	);
+	$items = get_option( $settings_id );
 
-	$_tb_jumpstart_license_admin = new Jump_Start_License_Admin( $args );
+	/*
+	 * Add backwards compatibility to license admin.
+	 *
+	 * If the user is updating from prior to Jump Start 2.2.2
+	 * their license data will be saved to these old settings;
+	 * so let's move the data and delete the old settings.
+	 */
+	if ( ! $items && get_option( 'themeblvd_license_key' ) ) {
 
-	$license_key = get_option( 'themeblvd_license_key' );
+		$items = array();
 
-	$license_key_status = get_option( 'themeblvd_license_key_status' );
+		$item = $license_admin->check_license( array(
+			'item_name' => $item_name,
+			'key'       => get_option( 'themeblvd_license_key' ),
+		) );
 
-	if ( ! $license_key || ! $license_key_status ) {
+		$items[ $item_shortname ] = $item;
+
+		update_option( $settings_id, $items );
+
+		delete_option( 'themeblvd_license_key' );
+
+		delete_option( 'themeblvd_license_key_status' );
+
+	}
+
+	if ( ! $items ) {
 
 		return;
 
 	}
 
-	include_once( get_template_directory() . '/inc/admin/class-jump-start-updater.php' );
-
-	$args['license'] = $license_key;
-
-	$args['author'] = 'Theme Blvd';
+	$args = array(
+		'item_name'      => $item_name,
+		'item_shortname' => $item_shortname,
+	);
 
 	/**
 	 * Filter changelog URL.
 	 *
 	 * @since Theme_Blvd 2.0.0
 	 *
-	 * @param string        Website URL to changelog.
-	 * @param string $theme Template slug retrieved from get_template().
+	 * @param string           Website URL to changelog.
+	 * @param string $template Template slug retrieved from get_template().
 	 */
-	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme=' . $theme, $theme );
+	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme=' . $template, $template );
 
 	/*
 	 * Run Updater.
 	 */
-	$_tb_jumpstart_edd_updater = new Jump_Start_Updater( $args );
+	$updater = new Jump_Start_Updater( $items, $args );
 
 }
 
@@ -91,7 +113,7 @@ function jumpstart_updates() {
  * @since Jump_Start 2.1.3
  *
  * @param  array  $args An array of HTTP request arguments.
- * @param  string $url The request URL.
+ * @param  string $url  The request URL.
  * @return bool   $args Modified sample layouts.
  */
 function jumpstart_updates_ssl_verify( $args, $url ) {

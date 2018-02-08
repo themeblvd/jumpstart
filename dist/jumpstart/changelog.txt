@@ -4,6 +4,7 @@
 
 * **Updated Theme Blvd framework to 2.7.2**
 * Improvement: Framework welcome message will now only show on Themes screen, and only once per user dismiss; it will no longer display again when switching back and forth themes.
+* Improvement: Theme's license management admin has been re-designed to accommodate [Jump Start extensions](https://wpjumpstart.com/extensions?utm_campaign=changelog).
 * Fixed: JavaScript issues in the admin, when theme welcome message is present.
 * Fixed: Isotope filtering not working with post lists.
 * Fixed: Background video not working on individual columns from the layout builder.
