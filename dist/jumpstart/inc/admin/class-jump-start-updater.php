@@ -183,7 +183,6 @@ class Jump_Start_Updater {
 					$this->extensions[ $shortname ] = $item;
 
 				}
-
 			}
 		}
 
@@ -653,7 +652,8 @@ class Jump_Start_Updater {
 		if ( ! current_user_can( 'update_plugins' ) ) {
 
 			printf(
-				__( 'There is a new version of %s available. View <a href="%s" target="_blank">version %s details</a>.', 'jumpstart' ),
+				// translators: 1. item name, 2. item URL, 3. item's new version
+				__( 'There is a new version of %1$s available. View <a href="%2$s" target="_blank">version %3$s details</a>.', 'jumpstart' ),
 				$response->name,
 				$response->url,
 				$response->new_version
@@ -662,14 +662,15 @@ class Jump_Start_Updater {
 		} else {
 
 			printf(
-				__( 'There is a new version of %s available. View <a href="%s" target="_blank">version %s details</a> or <a href="%s" %s>update now</a>.', 'jumpstart' ),
+				// translators: 1. item name, 2. item URL, 3. item's new version, 4. update action URL, 5. link class and aria label
+				__( 'There is a new version of %1$s available. View <a href="%2$s" target="_blank">version %3$s details</a> or <a href="%4$s" %5$s>update now</a>.', 'jumpstart' ),
 				$response->name,
 				$response->url,
 				$response->new_version,
 				wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' ) . $file, 'upgrade-plugin_' . $file ),
 				sprintf(
 					'class="update-link" aria-label="%s"',
-					/* translators: 1. plugin name */
+					// translators: 1. plugin name
 					esc_attr( sprintf( __( 'Update %s now' ), $response->name ) )
 				)
 			);
@@ -816,7 +817,7 @@ class Jump_Start_Updater {
 
 			if ( ! empty( $update_data->sections ) ) {
 
-				foreach( $update_data->sections as $key => $section ) {
+				foreach ( $update_data->sections as $key => $section ) {
 
 					$update_data->$key = (array) $section;
 

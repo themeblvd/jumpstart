@@ -2997,76 +2997,76 @@ msgstr ""
 msgid "To receive updates, please enter your valid %s license key"
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:567
-msgid "Your license key expired on %s. Please <a href=\"%s\" target=\"_blank\">renew your license key</a>."
+#: ../inc/admin/class-jump-start-license-admin.php:566
+msgid "Your license key expired on %1$s. Please <a href=\"%2$s\" target=\"_blank\">renew your license key</a>."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:580
+#: ../inc/admin/class-jump-start-license-admin.php:578
 msgid "Your license key has been disabled. Please <a href=\"%s\" target=\"_blank\">contact support</a> for more information."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:592
+#: ../inc/admin/class-jump-start-license-admin.php:589
 msgid "Invalid license. Please <a href=\"%s\" target=\"_blank\">visit your account page</a> and verify it."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:605
-msgid "Your %s is not active for this URL. Please <a href=\"%s\" target=\"_blank\">visit your account page</a> to manage your license key URLs."
+#: ../inc/admin/class-jump-start-license-admin.php:601
+msgid "Your %1$s is not active for this URL. Please <a href=\"%2$s\" target=\"_blank\">visit your account page</a> to manage your license key URLs."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:618
+#: ../inc/admin/class-jump-start-license-admin.php:613
 msgid "This appears to be an invalid license key for %s."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:629
+#: ../inc/admin/class-jump-start-license-admin.php:624
 msgid "Your license key has reached its activation limit. <a href=\"%s\">View possible upgrades</a> now."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:639
+#: ../inc/admin/class-jump-start-license-admin.php:633
 msgid "The key you entered belongs to a bundle, please use the product specific license key."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:647
+#: ../inc/admin/class-jump-start-license-admin.php:640
 msgid "unknown_error"
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:651
-msgid "There was an error with this license key: %s. Please <a href=\"%s\">contact our support team</a>."
+#: ../inc/admin/class-jump-start-license-admin.php:644
+msgid "There was an error with this license key: %1$s. Please <a href=\"%2$s\">contact our support team</a>."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:669
+#: ../inc/admin/class-jump-start-license-admin.php:662
 msgid "License key never expires."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:681
-msgid "Your license key expires soon! It expires on %s. <a href=\"%s\" target=\"_blank\">Renew your license key</a>."
+#: ../inc/admin/class-jump-start-license-admin.php:674
+msgid "Your license key expires soon! It expires on %1$s. <a href=\"%2$s\" target=\"_blank\">Renew your license key</a>."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-license-admin.php:690
+#: ../inc/admin/class-jump-start-license-admin.php:683
 msgid "Your license key expires on %s."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-updater.php:248
+#: ../inc/admin/class-jump-start-updater.php:247
 msgid "<strong>%1$s %2$s</strong> is available. This is a major upgrade. Please %3$s for important details on this release and keep in mind that major upgrades may affect child theme customization. So use caution and %4$s."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-updater.php:254
+#: ../inc/admin/class-jump-start-updater.php:253
 msgid "view the changelog"
 msgstr ""
 
-#: ../inc/admin/class-jump-start-updater.php:259, ../inc/admin/class-jump-start-updater.php:398
+#: ../inc/admin/class-jump-start-updater.php:258, ../inc/admin/class-jump-start-updater.php:397
 msgid "update responsibly"
 msgstr ""
 
-#: ../inc/admin/class-jump-start-updater.php:394
+#: ../inc/admin/class-jump-start-updater.php:393
 msgid "This is a major upgrade that may affect child theme customization. Use caution and %s."
 msgstr ""
 
 #: ../inc/admin/class-jump-start-updater.php:656
-msgid "There is a new version of %s available. View <a href=\"%s\" target=\"_blank\">version %s details</a>."
+msgid "There is a new version of %1$s available. View <a href=\"%2$s\" target=\"_blank\">version %3$s details</a>."
 msgstr ""
 
-#: ../inc/admin/class-jump-start-updater.php:665
-msgid "There is a new version of %s available. View <a href=\"%s\" target=\"_blank\">version %s details</a> or <a href=\"%s\" %s>update now</a>."
+#: ../inc/admin/class-jump-start-updater.php:666
+msgid "There is a new version of %1$s available. View <a href=\"%2$s\" target=\"_blank\">version %3$s details</a> or <a href=\"%4$s\" %5$s>update now</a>."
 msgstr ""
 
 #: ../framework/admin/functions/display.php:57, ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:503
@@ -5484,7 +5484,7 @@ msgid "%s Licenses"
 msgstr ""
 
 #: ../inc/admin/partials/licenses.php:21
-msgid "Enter your license keys here to receive updates for %s and purchased <a href=\"%s\" title=\"%s\" target=\"_blank\">extensions</a>."
+msgid "Enter your license keys here to receive updates for %1$s and purchased <a href=\"%2$s\" title=\"%3$s\" target=\"_blank\">extensions</a>."
 msgstr ""
 
 #: ../inc/admin/partials/licenses.php:24
