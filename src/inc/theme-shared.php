@@ -59,7 +59,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 					'max'   => '100',
 					'step'  => '1',
 					'units' => 'px',
-				)
+				),
 			);
 
 			break;
@@ -87,10 +87,10 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 				'name'    => __( 'Background Color Brightness', '@@text-domain' ),
 				'desc'    => __( 'In the previous option, did you go dark or light?', '@@text-domain' ),
 				'std'     => 'dark',
-				'type' 	  => 'select',
+				'type'    => 'select',
 				'options' => array(
 					'light' => __( 'I chose a light color in the previous option.', '@@text-domain' ),
-					'dark' 	=> __( 'I chose a dark color in the previous option.', '@@text-domain' )
+					'dark'  => __( 'I chose a dark color in the previous option.', '@@text-domain' ),
 				),
 			);
 
@@ -113,7 +113,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 					'max'   => '150',
 					'step'  => '1',
 					'units' => 'px',
-				)
+				),
 			);
 
 			$options['header_mobile_breakpoint'] = array(
@@ -127,7 +127,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 					'max'   => '1400',
 					'step'  => '1',
 					'units' => 'px',
-				)
+				),
 			);
 
 			break;
@@ -585,7 +585,6 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 			// @TODO Issue #264
 			// @link https://github.com/themeblvd/jumpstart/issues/264
 
-
 	}
 
 	if ( $defaults && $options ) {
@@ -598,7 +597,6 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
 
 			}
 		}
-
 	}
 
 	return $options;
@@ -942,7 +940,7 @@ function jumpstart_copyright_contact_bar_args( $args ) {
 			$args['style'] = 'light';
 
 		}
-	} else if ( 'dark' === themeblvd_get_option( 'footer_bg_color_brightness' ) ) {
+	} elseif ( 'dark' === themeblvd_get_option( 'footer_bg_color_brightness' ) ) {
 
 		$args['style'] = 'light';
 
